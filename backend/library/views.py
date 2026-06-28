@@ -31,7 +31,8 @@ class BookListView(generics.ListAPIView):
         return (
             Book.objects.filter(is_published=True, language=_language(self.request))
             .select_related("author")
-            .annotate(chapter_count=Count("chapters"))
+            .annotate(num_chapters=Count("chapters"))
+            .order_by("sort_order", "title")
         )
 
 
@@ -42,7 +43,7 @@ class BookDetailView(generics.RetrieveAPIView):
         return get_object_or_404(
             Book.objects.filter(is_published=True)
             .select_related("author")
-            .annotate(chapter_count=Count("chapters"))
+            .annotate(num_chapters=Count("chapters"))
             .prefetch_related("chapters"),
             slug=self.kwargs["slug"],
             language=_language(self.request),

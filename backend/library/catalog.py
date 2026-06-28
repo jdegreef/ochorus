@@ -1,13 +1,15 @@
 """The Ochorus launch shelf: 10 public-domain Christian classics.
 
-`ccel_id` is the work's path under ccel.org/ccel/<ccel_id>. These are best-guess
-identifiers verified/corrected against the live site during ingestion. The order
-of this list is the shelf order.
+Each book declares its `source` ("ccel" or "gutenberg") and a `source_ref`:
+  - ccel:      the work path under ccel.org/ccel/<ref>  (e.g. "spurgeon/grace")
+  - gutenberg: the Project Gutenberg ebook id as a string (e.g. "57121")
+
+The order of BOOKS is the shelf order.
 """
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
@@ -24,10 +26,10 @@ class BookEntry:
     slug: str
     title: str
     author_slug: str
-    ccel_id: str
+    source: str  # "ccel" | "gutenberg"
+    source_ref: str
     subtitle: str = ""
     cover_color: str = ""
-    aliases: tuple[str, ...] = field(default_factory=tuple)
 
 
 AUTHORS: dict[str, AuthorEntry] = {
@@ -37,8 +39,8 @@ AUTHORS: dict[str, AuthorEntry] = {
         birth_year=1828,
         death_year=1917,
         bio=(
-            "South African pastor and writer of the Dutch Reformed Church, "
-            "known for devotional classics on prayer, humility, and abiding in Christ."
+            "South African pastor and writer of the Dutch Reformed Church, known "
+            "for devotional classics on prayer, humility, and abiding in Christ."
         ),
     ),
     "charles-spurgeon": AuthorEntry(
@@ -47,34 +49,36 @@ AUTHORS: dict[str, AuthorEntry] = {
         birth_year=1834,
         death_year=1892,
         bio=(
-            "English Baptist preacher, the “Prince of Preachers,” whose sermons "
-            "and devotional writings have been read by millions."
+            "English Baptist preacher, the “Prince of Preachers,” whose sermons and "
+            "devotional writings have been read by millions."
         ),
     ),
 }
 
-# Shelf order matters: tiny, clean books first (best first-ingest test cases).
+# Shelf order. Small, clean books first.
 BOOKS: list[BookEntry] = [
-    BookEntry("humility", "Humility", "andrew-murray", "murray/humility",
+    BookEntry("humility", "Humility", "andrew-murray", "gutenberg", "57121",
               subtitle="The Beauty of Holiness", cover_color="#3b5bdb"),
-    BookEntry("all-of-grace", "All of Grace", "charles-spurgeon", "spurgeon/grace",
+    BookEntry("all-of-grace", "All of Grace", "charles-spurgeon", "ccel", "spurgeon/grace",
               subtitle="An Earnest Word to Those Seeking Salvation", cover_color="#b08900"),
-    BookEntry("abide-in-christ", "Abide in Christ", "andrew-murray", "murray/abide",
-              cover_color="#2b8a3e"),
-    BookEntry("school-of-prayer", "With Christ in the School of Prayer",
-              "andrew-murray", "murray/prayer", cover_color="#5f3dc4"),
     BookEntry("absolute-surrender", "Absolute Surrender", "andrew-murray",
-              "murray/surrender", cover_color="#c92a2a"),
-    BookEntry("waiting-on-god", "Waiting on God", "andrew-murray", "murray/waiting",
+              "ccel", "murray/surrender", cover_color="#c92a2a"),
+    BookEntry("school-of-prayer", "With Christ in the School of Prayer",
+              "andrew-murray", "ccel", "murray/prayer", cover_color="#5f3dc4"),
+    BookEntry("true-vine", "The True Vine", "andrew-murray", "ccel", "murray/true_vine",
+              subtitle="Meditations for a Month on John 15", cover_color="#2b8a3e"),
+    BookEntry("waiting-on-god", "Waiting on God", "andrew-murray", "ccel", "murray/waiting",
               cover_color="#1864ab"),
-    BookEntry("inner-chamber", "The Inner Chamber", "andrew-murray",
-              "murray/innerchamber", cover_color="#0b7285"),
-    BookEntry("according-to-promise", "According to Promise", "charles-spurgeon",
-              "spurgeon/promise", cover_color="#a61e4d"),
-    BookEntry("johnploughman", "John Ploughman's Talk", "charles-spurgeon",
-              "spurgeon/ploughman",
-              subtitle="Plain Advice for Plain People", cover_color="#846358"),
+    BookEntry("ministry-of-intercession", "The Ministry of Intercession",
+              "andrew-murray", "gutenberg", "29296",
+              subtitle="A Plea for More Prayer", cover_color="#0b7285"),
+    BookEntry("around-the-wicket-gate", "Around the Wicket Gate", "charles-spurgeon",
+              "gutenberg", "60669",
+              subtitle="A Friendly Talk with Seekers", cover_color="#a61e4d"),
+    BookEntry("talks-to-farmers", "Talks to Farmers", "charles-spurgeon",
+              "gutenberg", "42518",
+              subtitle="Plain Advice in Parables", cover_color="#846358"),
     BookEntry("cheque-book", "The Cheque Book of the Bank of Faith",
-              "charles-spurgeon", "spurgeon/checkbook",
+              "charles-spurgeon", "ccel", "spurgeon/checkbook",
               subtitle="Daily Readings on God's Promises", cover_color="#2f9e44"),
 ]

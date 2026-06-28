@@ -13,7 +13,7 @@ class BookListSerializer(serializers.ModelSerializer):
     """Shelf view — enough to render a cover card, no chapter bodies."""
 
     author = AuthorSerializer(read_only=True)
-    chapter_count = serializers.IntegerField(read_only=True)
+    chapter_count = serializers.IntegerField(source="num_chapters", read_only=True)
 
     class Meta:
         model = Book
