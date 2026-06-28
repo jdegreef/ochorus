@@ -25,6 +25,7 @@ class BookListSerializer(serializers.ModelSerializer):
             "author",
             "source_type",
             "cover_color",
+            "cover_url",
             "chapter_count",
         ]
 
@@ -43,7 +44,9 @@ class BookDetailSerializer(BookListSerializer):
     chapters = ChapterTocSerializer(many=True, read_only=True)
 
     class Meta(BookListSerializer.Meta):
-        fields = BookListSerializer.Meta.fields + ["description", "source_url", "chapters"]
+        fields = BookListSerializer.Meta.fields + [
+            "description", "source_url", "pdf_url", "chapters",
+        ]
 
 
 class ChapterDetailSerializer(serializers.ModelSerializer):

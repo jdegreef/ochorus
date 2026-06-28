@@ -50,20 +50,29 @@
 						class="group block hover:no-underline"
 						data-testid="book-card"
 					>
-						<div
-							class="flex aspect-[3/4] flex-col justify-between rounded-card p-4 shadow-sm transition-transform group-hover:-translate-y-1"
-							style="background: {onCover(book.cover_color || '#3b5bdb')}"
-						>
-							<span class="text-[0.7rem] font-semibold uppercase tracking-wider text-white/70">
-								{book.author.name.split(' ').slice(-1)}
-							</span>
-							<span
-								style="font-family: var(--font-display)"
-								class="text-[1.15rem] font-semibold leading-tight text-white"
+						{#if book.cover_url}
+							<img
+								src={book.cover_url}
+								alt="Cover of {book.title}"
+								loading="lazy"
+								class="aspect-[3/4] w-full rounded-card object-cover shadow-sm transition-transform group-hover:-translate-y-1"
+							/>
+						{:else}
+							<div
+								class="flex aspect-[3/4] flex-col justify-between rounded-card p-4 shadow-sm transition-transform group-hover:-translate-y-1"
+								style="background: {onCover(book.cover_color || '#3b5bdb')}"
 							>
-								{book.title}
-							</span>
-						</div>
+								<span class="text-[0.7rem] font-semibold uppercase tracking-wider text-white/70">
+									{book.author.name.split(' ').slice(-1)}
+								</span>
+								<span
+									style="font-family: var(--font-display)"
+									class="text-[1.15rem] font-semibold leading-tight text-white"
+								>
+									{book.title}
+								</span>
+							</div>
+						{/if}
 						<div class="mt-2 px-0.5">
 							<div class="text-small font-medium text-text">{book.title}</div>
 							<div class="text-[0.8rem] text-muted">{book.chapter_count} chapters</div>

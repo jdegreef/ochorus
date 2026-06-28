@@ -18,6 +18,7 @@ export interface BookSummary {
 	author: Author;
 	source_type: SourceType;
 	cover_color: string;
+	cover_url: string;
 	chapter_count: number;
 }
 
@@ -30,6 +31,7 @@ export interface ChapterToc {
 export interface BookDetail extends BookSummary {
 	description: string;
 	source_url: string;
+	pdf_url: string;
 	chapters: ChapterToc[];
 }
 

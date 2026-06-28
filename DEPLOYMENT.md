@@ -58,10 +58,12 @@ Re-run the importers locally and regenerate the fixture, then commit:
 
 ```bash
 cd backend
-DJANGO_DEBUG=true uv run python manage.py import_ccel
-DJANGO_DEBUG=true uv run python manage.py import_gutenberg
+DJANGO_DEBUG=true uv run python manage.py import_ochorus   # re-scrape ochorus.com
 DJANGO_DEBUG=true uv run python manage.py dumpdata library --indent 1 -o library/fixtures/launch.json
 ```
+
+(The `import_ccel` / `import_gutenberg` commands remain available for adding
+public-domain titles from those sources.)
 
 (The seed step only runs on an *empty* database, so to push content updates to an
 existing deployment, load the fixture from the Render shell:

@@ -21,14 +21,22 @@
 	<a href="/" class="text-small text-muted">← Library</a>
 
 	<header class="mt-5 flex flex-col gap-5 sm:flex-row sm:items-start">
-		<div
-			class="flex aspect-[3/4] w-32 shrink-0 items-end rounded-card p-3 shadow-md"
-			style="background: linear-gradient(150deg, {book.cover_color || '#3b5bdb'}, #0008)"
-		>
-			<span style="font-family: var(--font-display)" class="text-base font-semibold text-white">
-				{book.title}
-			</span>
-		</div>
+		{#if book.cover_url}
+			<img
+				src={book.cover_url}
+				alt="Cover of {book.title}"
+				class="aspect-[3/4] w-32 shrink-0 rounded-card object-cover shadow-md"
+			/>
+		{:else}
+			<div
+				class="flex aspect-[3/4] w-32 shrink-0 items-end rounded-card p-3 shadow-md"
+				style="background: linear-gradient(150deg, {book.cover_color || '#3b5bdb'}, #0008)"
+			>
+				<span style="font-family: var(--font-display)" class="text-base font-semibold text-white">
+					{book.title}
+				</span>
+			</div>
+		{/if}
 
 		<div class="flex-1">
 			<h1 class="text-h1">{book.title}</h1>
@@ -45,6 +53,11 @@
 					<a href="/books/{book.slug}/1" class="btn btn-ghost">Start over</a>
 				{:else}
 					<a href="/books/{book.slug}/1" class="btn btn-primary">Begin reading</a>
+				{/if}
+				{#if book.pdf_url}
+					<a href={book.pdf_url} class="btn btn-ghost" target="_blank" rel="noreferrer">
+						Download PDF
+					</a>
 				{/if}
 				<span class="text-small text-muted">{book.chapter_count} chapters</span>
 			</div>

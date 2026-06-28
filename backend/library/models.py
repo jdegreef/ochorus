@@ -50,7 +50,11 @@ class Book(models.Model):
         default=SourceType.PUBLIC_DOMAIN,
     )
     source_url = models.URLField(blank=True)
-    # Optional hex accent (e.g. "#3b5bdb") used to tint the generated cover.
+    # Optional cover image and original PDF (used by the ochorus.com importer).
+    cover_url = models.URLField(blank=True)
+    pdf_url = models.URLField(blank=True)
+    # Optional hex accent (e.g. "#3b5bdb") used to tint a generated cover when
+    # there's no cover image.
     cover_color = models.CharField(max_length=9, blank=True)
 
     sort_order = models.PositiveIntegerField(default=0)
