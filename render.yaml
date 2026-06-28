@@ -1,0 +1,50 @@
+# Render blueprint for Ochorus — deploys the API + reader from this repo.
+# In Render: New → Blueprint → connect this GitHub repo. You'll be prompted to
+# fill in the values marked `sync: false`. See DEPLOYMENT.md for the full walk-through.
+
+services:
+  # --- Django API (Docker web service) -------------------------------------
+  - name: ochorus-api
+    type: web
+    runtime: docker
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    plan: starter # always-on; avoids cold-start spin-down
+    healthCheckPath: /api/health/
+    autoDeploy: true
+    # Per deploy, before the new version goes live: apply migrations, then seed
+    # the library from the committed fixture if (and only if) the DB is empty.
+    # If this fails, Render keeps the current version up.
+    preDeployCommand: "uv run python manage.py migrate --noinput && uv run python manage.py seed_if_empty"
+    envVars:
+      - key: DJANGO_DEBUG
+        value: "false"
+      - key: DJANGO_SECRET_KEY
+        generateValue: true # Render generates a strong secret
+      - key: DATABASE_URL # Supabase session-pooler connection string
+        sync: false
+      - key: SUPABASE_URL # https://<project-ref>.supabase.co
+        sync: false
+      - key: DJANGO_ALLOWED_HOSTS # the ochorus-api host, e.g. ochorus-api.onrender.com
+        sync: false
+      - key: CORS_ALLOWED_ORIGINS # the ochorus-web URL, after first deploy
+        sync: false
+      - key: CSRF_TRUSTED_ORIGINS # same frontend URL (used by the Django admin)
+        sync: false
+
+  # --- SvelteKit reader (static SPA) ---------------------------------------
+  - name: ochorus-web
+    type: web
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./build
+    autoDeploy: true
+    routes:
+      # Pure SPA: every path falls back to the app shell.
+      - type: rewrite
+        source: /*
+        destination: /200.html
+    envVars:
+      - key: PUBLIC_API_BASE_URL # the ochorus-api URL, after first deploy
+        sync: false
