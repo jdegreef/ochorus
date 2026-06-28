@@ -1,0 +1,192 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/hanken-grotesk';
+
+/* Map semantic theme tokens onto Tailwind color utilities so `bg-surface
+   text-text border-border` respond to the runtime [data-theme] switch. */
+@theme inline {
+	--color-bg: var(--bg);
+	--color-surface: var(--surface);
+	--color-surface-2: var(--surface-2);
+	--color-text: var(--text);
+	--color-muted: var(--muted);
+	--color-accent: var(--accent);
+	--color-accent-contrast: var(--accent-contrast);
+	--color-accent-soft: var(--accent-soft);
+	--color-gold: var(--gold);
+	--color-border: var(--border);
+	--color-danger: var(--danger);
+	--radius-card: 12px;
+	--font-display: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+	--font-sans: 'Hanken Grotesk Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+/* Type scale — modular ratio 1.25, anchored at 1rem body. */
+:root {
+	--fs-small: 0.875rem;
+	--fs-body: 1rem;
+	--fs-h3: 1.25rem;
+	--fs-h2: 1.563rem;
+	--fs-h1: 1.953rem;
+	--fs-display: clamp(2rem, 5vw, 2.75rem);
+}
+
+/* Runtime theme variables. Default = "lamplight" (dark); [data-theme='light']
+   = "paper". Signature accent: indigo + gold. (Shared with Take Root.) */
+:root {
+	--bg: #16130f;
+	--surface: #201b15;
+	--surface-2: #2a241c;
+	--text: #ece3d4;
+	--muted: #998e7d;
+	--accent: #9c9af2;
+	--accent-contrast: #16130f;
+	--accent-soft: #221f33;
+	--gold: #e0b45c;
+	--border: #2d261d;
+	--danger: #e8857a;
+	--font-display: 'Fraunces Variable', Georgia, serif;
+	--font-sans: 'Hanken Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
+	--radius: 12px;
+	--radius-sm: 9px;
+	--reading-scale: 1;
+}
+
+:root[data-theme='light'] {
+	--bg: #faf6ef;
+	--surface: #ffffff;
+	--surface-2: #f4eee3;
+	--text: #221c15;
+	--muted: #6e6358;
+	--accent: #3f3d9a;
+	--accent-contrast: #ffffff;
+	--accent-soft: #ecebf7;
+	--gold: #b07d22;
+	--border: #e8dfcf;
+	--danger: #b23a48;
+}
+
+@layer base {
+	html {
+		font-family: var(--font-sans);
+		font-optical-sizing: auto;
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+	}
+	body {
+		background: var(--bg);
+		color: var(--text);
+		min-height: 100%;
+	}
+	a {
+		color: var(--accent);
+		text-decoration: none;
+	}
+	a:hover {
+		text-decoration: underline;
+	}
+	h1,
+	h2,
+	h3 {
+		font-family: var(--font-display);
+		color: var(--text);
+	}
+	h1 {
+		font-size: var(--fs-h1);
+		font-weight: 600;
+		line-height: 1.15;
+		letter-spacing: -0.01em;
+	}
+	h2 {
+		font-size: var(--fs-h2);
+		font-weight: 600;
+		line-height: 1.2;
+	}
+	h3 {
+		font-size: var(--fs-h3);
+		font-weight: 600;
+	}
+	:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 2px;
+	}
+}
+
+@layer components {
+	.text-display {
+		font-family: var(--font-display);
+		font-size: var(--fs-display);
+		line-height: 1.1;
+		letter-spacing: -0.018em;
+		font-weight: 600;
+	}
+	/* A soft, devotional button. */
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		padding: 0.6rem 1.1rem;
+		border-radius: var(--radius-sm);
+		font-family: var(--font-sans);
+		font-weight: 600;
+		font-size: 0.95rem;
+		border: 1px solid transparent;
+		cursor: pointer;
+		transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+	}
+	.btn-primary {
+		background: var(--accent);
+		color: var(--accent-contrast);
+	}
+	.btn-primary:hover {
+		text-decoration: none;
+		filter: brightness(1.06);
+	}
+	.btn-ghost {
+		background: transparent;
+		color: var(--text);
+		border-color: var(--border);
+	}
+	.btn-ghost:hover {
+		background: var(--surface-2);
+		text-decoration: none;
+	}
+}
+
+/* ── Reading view ───────────────────────────────────────────────────────────
+   Long-form prose set like a printed devotional page. Body in Fraunces, gently
+   leaded. --reading-scale is driven by the reader's A-/A+ controls. */
+.reading {
+	font-family: var(--font-display);
+	font-size: calc(1.18rem * var(--reading-scale));
+	line-height: 1.85;
+	color: var(--text);
+}
+.reading p {
+	margin: 0 0 1.15em;
+	hanging-punctuation: first;
+}
+.reading h2,
+.reading h3 {
+	font-family: var(--font-display);
+	margin: 1.8em 0 0.7em;
+	line-height: 1.25;
+}
+.reading blockquote {
+	margin: 1.4em 0;
+	padding-left: 1.1em;
+	border-left: 3px solid var(--accent-soft);
+	color: var(--muted);
+	font-style: italic;
+}
+.reading em,
+.reading i {
+	font-style: italic;
+}
+.reading hr {
+	border: none;
+	border-top: 1px solid var(--border);
+	margin: 2em auto;
+	width: 40%;
+}

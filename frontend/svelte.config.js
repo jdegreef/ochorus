@@ -1,0 +1,18 @@
+import adapter from '@sveltejs/adapter-static';
+
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
+	compilerOptions: {
+		// Force runes mode except for node_modules libraries.
+		runes: ({ filename }) =>
+			filename.split(/[/\\]/).includes('node_modules') ? undefined : true
+	},
+	kit: {
+		// Static SPA: serve the app shell for every route via the 200.html
+		// fallback. (SEO prerendering can be added later for the web target.)
+		adapter: adapter({ fallback: '200.html' }),
+		paths: { relative: false }
+	}
+};
+
+export default config;

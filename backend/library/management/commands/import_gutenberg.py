@@ -70,17 +70,22 @@ def pick_heading_tag(root) -> str | None:
     return None
 
 
-def chapter_title(heading) -> str:
+def resolve_title(heading):
+    """Return (title, consumed_node).
+
+    For a bare-numeral heading (Humility's "<h5>I.</h5>") the real title is the
+    next node; we fold it into the title and return it as `consumed_node` so the
+    caller can omit it from the body (otherwise it duplicates as the first line).
+    """
     title = clean_title(heading.get_text(" ", strip=True))
-    # Bare numerals (Humility's "<h5>I.</h5>") borrow the next node as the title.
     if _ROMAN_OR_NUM.match(title):
         sib = heading.find_next(["h3", "h4", "p"])
         if sib:
             extra = clean_title(sib.get_text(" ", strip=True))
             if extra:
                 sep = "" if title.endswith(".") else "."
-                title = f"{title}{sep} {extra}"
-    return title
+                return f"{title}{sep} {extra}", sib
+    return title, None
 
 
 def split_by_heading(root, tag) -> list[tuple[str, str]]:
@@ -96,12 +101,15 @@ def split_by_heading(root, tag) -> list[tuple[str, str]]:
     head_ids = {id(h) for h in heads}
     out: list[tuple[str, str]] = []
     for h in heads:
+        title, consumed = resolve_title(h)
         parts: list[str] = []
         for sib in h.next_siblings:
             if getattr(sib, "name", None) and id(sib) in head_ids:
                 break
+            if consumed is not None and sib is consumed:
+                continue  # folded into the title; don't repeat it in the body
             parts.append(str(sib))
-        out.append((chapter_title(h), clean_fragment("".join(parts))))
+        out.append((title, clean_fragment("".join(parts))))
     return out
 
 
