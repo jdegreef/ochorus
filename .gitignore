@@ -1,0 +1,16 @@
+# Python / Django
+__pycache__/
+*.py[cod]
+.venv/
+db.sqlite3
+staticfiles/
+.env
+
+# Node / SvelteKit
+node_modules/
+/frontend/build/
+/frontend/.svelte-kit/
+.DS_Store
+
+# Editor
+*.swp
