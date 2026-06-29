@@ -81,4 +81,7 @@ BOOKS: list[BookEntry] = [
     BookEntry("cheque-book", "The Cheque Book of the Bank of Faith",
               "charles-spurgeon", "ccel", "spurgeon/checkbook",
               subtitle="Daily Readings on God's Promises", cover_color="#2f9e44"),
+    BookEntry("till-he-come", "Till He Come",
+              "charles-spurgeon", "ccel", "spurgeon/till_he_come",
+              subtitle="Communion Meditations and Addresses", cover_color="#704881"),
 ]

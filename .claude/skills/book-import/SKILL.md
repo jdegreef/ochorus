@@ -111,6 +111,26 @@ dropped; chapters under 120 words are dropped as stubs.
   usually fall below the 120-word stub threshold and merge away; if not, the
   running-header ban or a tighter `thresh` (currently `body*1.18`) helps.
 
+## Adding a public-domain book NOT on ochorus.com
+
+When the catalogue lacks a wanted title (e.g. more Spurgeon), source it from
+CCEL or Project Gutenberg instead:
+
+1. Add a `BookEntry` to `library/catalog.py` (`source` = "ccel" with a
+   `<author>/<work>` path, or "gutenberg" with the ebook id). For CCEL, first
+   check the TOC section count — `inspect`/curl `<work>.toc.html`; 10–40 sections
+   is good, 2 means it won't chapter well (skip), Gutenberg books with no
+   headings import as one giant chapter (skip).
+2. Import: `import_ccel <slug>` or `import_gutenberg <slug>` (these read
+   `catalog.py`, not ochorus.com).
+3. **Consolidate the author.** These importers create an author from the catalog
+   slug; reassign the new book(s) to the canonical DB author (e.g.
+   `charles-h-spurgeon`) and delete the duplicate, so they group correctly on the
+   shelf and share one bio.
+4. **Generate a cover** — CCEL/Gutenberg books have none:
+   `python manage.py generate_covers <slug> ...` writes an on-brand SVG to
+   `frontend/static/covers/<slug>.svg` and sets `cover_url`.
+
 ## Two kinds of fix
 
 - **Improve the importer** (`import_ochorus.py`) when the pattern recurs across
