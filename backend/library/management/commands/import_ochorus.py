@@ -24,6 +24,7 @@ from django.core.management.base import BaseCommand
 from django.db import transaction
 from django.utils.text import slugify
 
+from library.corrections import chapter_title_overrides
 from library.ingest import is_front_matter
 from library.models import Author, Book, Chapter
 
@@ -325,25 +326,27 @@ def upsert(meta: dict, chapters: list[tuple[str, str]], sort_order: int) -> Book
         slug=slugify(meta["author"])[:120] or "ochorus",
         defaults={"name": meta["author"]},
     )
+    fields = {
+        "author": author,
+        "title": meta["title"],
+        "description": meta["description"],
+        "source_type": Book.SourceType.PUBLIC_DOMAIN,
+        "source_url": meta["source_url"],
+        "cover_url": meta["cover_url"],
+        "pdf_url": meta["pdf_url"],
+        "is_published": bool(chapters),
+    }
     book, _ = Book.objects.update_or_create(
         slug=meta["slug"],
         language="en",
-        defaults={
-            "author": author,
-            "title": meta["title"],
-            "description": meta["description"],
-            "source_type": Book.SourceType.PUBLIC_DOMAIN,
-            "source_url": meta["source_url"],
-            "cover_url": meta["cover_url"],
-            "pdf_url": meta["pdf_url"],
-            "sort_order": sort_order,
-            "is_published": bool(chapters),
-        },
+        defaults=fields,  # on update: keep existing sort_order
+        create_defaults={**fields, "sort_order": sort_order},  # only on first import
     )
     book.chapters.all().delete()
+    overrides = chapter_title_overrides(meta["slug"])
     for order, (title, body) in enumerate(chapters, start=1):
         Chapter.objects.create(
-            book=book, order=order, title=title[:300], body_html=body,
+            book=book, order=order, title=overrides.get(order, title)[:300], body_html=body,
             word_count=len(re.sub(r"<[^>]+>", " ", body).split()),
         )
     return book
@@ -358,16 +361,20 @@ class Command(BaseCommand):
         parser.add_argument("--limit", type=int, default=0, help="Only the first N books.")
 
     def handle(self, *args, **opts):
-        slugs = catalog_slugs()
         if opts["list"]:
+            slugs = catalog_slugs()
             for s in slugs:
                 self.stdout.write(s)
             self.stdout.write(f"\n{len(slugs)} books.")
             return
+        # Explicit slugs are imported directly by their book-page URL, so a book
+        # can be (re)imported even when the catalogue listing omits it.
         if opts["slugs"]:
-            slugs = [s for s in slugs if s in set(opts["slugs"])]
-        if opts["limit"]:
-            slugs = slugs[: opts["limit"]]
+            slugs = list(opts["slugs"])
+        else:
+            slugs = catalog_slugs()
+            if opts["limit"]:
+                slugs = slugs[: opts["limit"]]
 
         for i, slug in enumerate(slugs):
             self._import_one(slug, i)
