@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { BookDetail } from '$lib/library';
 	import { getProgress } from '$lib/progress';
+	import { readingMinutes, readingTime } from '$lib/reading';
 
 	let { data } = $props();
 	const book = $derived<BookDetail>(data.book);
@@ -13,6 +14,8 @@
 	const years = $derived(
 		book.author.birth_year ? `${book.author.birth_year}–${book.author.death_year ?? ''}` : ''
 	);
+
+	const totalWords = $derived(book.chapters.reduce((sum, c) => sum + c.word_count, 0));
 </script>
 
 <svelte:head><title>{book.title} — {book.author.name} — Ochorus</title></svelte:head>
@@ -59,7 +62,9 @@
 						Download PDF
 					</a>
 				{/if}
-				<span class="text-small text-muted">{book.chapter_count} chapters</span>
+				<span class="text-small text-muted">
+					{book.chapter_count} chapters · {readingTime(totalWords)}
+				</span>
 			</div>
 		</div>
 	</header>
@@ -79,7 +84,7 @@
 					>
 						<span class="w-6 shrink-0 text-small text-muted">{ch.order}</span>
 						<span class="flex-1 text-body text-text">{ch.title}</span>
-						<span class="text-[0.8rem] text-muted">{ch.word_count.toLocaleString()} words</span>
+						<span class="text-[0.8rem] text-muted">{readingMinutes(ch.word_count)} min</span>
 					</a>
 				</li>
 			{/each}

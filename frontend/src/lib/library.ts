@@ -47,8 +47,30 @@ export interface Chapter {
 	word_count: number;
 	book_title: string;
 	book_slug: string;
+	author_name: string;
+	author_slug: string;
 	prev: ChapterNav | null;
 	next: ChapterNav | null;
+}
+
+export interface Language {
+	code: string;
+	name: string;
+	native_name: string;
+}
+
+export interface SearchHit {
+	book_slug: string;
+	book_title: string;
+	author_name: string;
+	chapter_order: number;
+	chapter_title: string;
+	snippet: string;
+}
+
+export interface SearchResponse {
+	query: string;
+	results: SearchHit[];
 }
 
 export interface AuthorBio {
@@ -70,3 +92,10 @@ export const getBook = (slug: string, language = 'en') =>
 
 export const getChapter = (slug: string, order: number, language = 'en') =>
 	apiFetch<Chapter>(`/api/library/books/${slug}/chapters/${order}/?language=${language}`);
+
+export const listLanguages = () => apiFetch<Language[]>('/api/library/languages/');
+
+export const search = (q: string, language = 'en') =>
+	apiFetch<SearchResponse>(
+		`/api/library/search/?q=${encodeURIComponent(q)}&language=${language}`
+	);

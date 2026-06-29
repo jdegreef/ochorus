@@ -12,23 +12,49 @@ def health(request):
 
 
 class MeView(APIView):
-    """Return the authenticated user's profile (and create it on first call)."""
+    """Read/update the authenticated user's profile (reading preferences)."""
 
     permission_classes = [IsAuthenticated]
 
-    def get(self, request):
+    def _profile(self, request):
         from .models import UserProfile
 
         profile, _ = UserProfile.objects.get_or_create(
             user=request.user,
             defaults={"supabase_uid": request.user.username, "email": request.user.email},
         )
-        return Response(
-            {
-                "email": profile.email,
-                "display_name": profile.display_name,
-                "locale": profile.locale,
-                "theme": profile.theme,
-                "font_scale": profile.font_scale,
-            }
-        )
+        return profile
+
+    def _serialize(self, profile) -> dict:
+        return {
+            "email": profile.email,
+            "display_name": profile.display_name,
+            "locale": profile.locale,
+            "theme": profile.theme,
+            "font_scale": profile.font_scale,
+        }
+
+    def get(self, request):
+        return Response(self._serialize(self._profile(request)))
+
+    def patch(self, request):
+        profile = self._profile(request)
+        data = request.data
+        updated = []
+
+        if isinstance(data.get("locale"), str) and data["locale"]:
+            profile.locale = data["locale"][:10]
+            updated.append("locale")
+        if data.get("theme") in ("paper", "light", "dark"):
+            profile.theme = data["theme"]
+            updated.append("theme")
+        try:
+            if data.get("font_scale") is not None:
+                profile.font_scale = max(0.8, min(1.6, float(data["font_scale"])))
+                updated.append("font_scale")
+        except (TypeError, ValueError):
+            pass
+
+        if updated:
+            profile.save(update_fields=[*updated, "updated_at"])
+        return Response(self._serialize(profile))

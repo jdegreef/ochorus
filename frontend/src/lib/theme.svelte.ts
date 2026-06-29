@@ -13,7 +13,11 @@ class Theme {
 	}
 
 	toggle() {
-		this.current = this.current === 'dark' ? 'light' : 'dark';
+		this.set(this.current === 'dark' ? 'light' : 'dark');
+	}
+
+	set(mode: Mode) {
+		this.current = mode;
 		if (browser) localStorage.setItem('theme', this.current);
 		this.#apply();
 	}

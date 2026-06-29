@@ -1,6 +1,9 @@
 @import 'tailwindcss';
 @import '@fontsource-variable/fraunces';
 @import '@fontsource-variable/hanken-grotesk';
+/* Dyslexia-friendly reading option (see readerPrefs). */
+@import '@fontsource/opendyslexic/400.css';
+@import '@fontsource/opendyslexic/700.css';
 
 /* Map semantic theme tokens onto Tailwind color utilities so `bg-surface
    text-text border-border` respond to the runtime [data-theme] switch. */
@@ -155,12 +158,13 @@
 }
 
 /* ── Reading view ───────────────────────────────────────────────────────────
-   Long-form prose set like a printed devotional page. Body in Fraunces, gently
-   leaded. --reading-scale is driven by the reader's A-/A+ controls. */
+   Long-form prose set like a printed devotional page. Typeface, size, leading
+   and measure are all driven by reader controls (see readerPrefs) via custom
+   properties, with sensible fallbacks if they're unset. */
 .reading {
-	font-family: var(--font-display);
-	font-size: calc(1.18rem * var(--reading-scale));
-	line-height: 1.85;
+	font-family: var(--reading-font, var(--font-display));
+	font-size: calc(1.18rem * var(--reading-scale, 1));
+	line-height: var(--reading-leading, 1.85);
 	color: var(--text);
 }
 .reading p {
