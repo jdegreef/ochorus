@@ -148,6 +148,30 @@ def _normalize_number(num: str, trailing: str) -> tuple[str, str]:
     return label.title(), trailing.strip(" .:-")
 
 
+def _ends_sentence(s: str) -> bool:
+    """True if a block ends a sentence (so the next block is a new paragraph)."""
+    s = s.rstrip()
+    while s and s[-1] in "\"”’')]":  # ignore trailing quotes/brackets
+        s = s[:-1]
+    return (not s) or s[-1] in ".!?"
+
+
+def _merge_paragraphs(paras: list[str]) -> list[str]:
+    """Rejoin paragraphs that the PDF split across line/page breaks.
+
+    PyMuPDF emits one block per visual chunk, so a single source paragraph
+    often arrives as several blocks ("…struggle with" + "doubt, let me make it
+    clearer."). When a block doesn't end a sentence, the next block continues it.
+    """
+    out: list[str] = []
+    for p in paras:
+        if out and not _ends_sentence(out[-1]):
+            out[-1] = f"{out[-1]} {p}".strip()
+        else:
+            out.append(p)
+    return out
+
+
 def _is_title_block(p: str) -> bool:
     """A short heading-like block (a chapter title or a biography name)."""
     words = p.split()
@@ -202,6 +226,7 @@ def _segment(blocks: list[tuple[str, float]], is_head) -> list[tuple[str, str]]:
                 k += 1
             title = " ".join(title_parts).strip()
             body_paras = seg[k:]
+        body_paras = _merge_paragraphs(body_paras)
         body_html = "".join(f"<p>{html.escape(p)}</p>" for p in body_paras)
         if len(re.sub(r"<[^>]+>", " ", body_html).split()) < 120:  # stub / TOC entry
             continue
