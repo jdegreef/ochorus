@@ -47,9 +47,10 @@ book preserves its `sort_order`.
    ```
    Cross-check the chapter count against the book's own table of contents.
 
-2. **Diagnose the PDF** — the single most useful step:
+2. **Diagnose the PDF** — the single most useful step (run from `backend/` so
+   PyMuPDF is on the path):
    ```bash
-   uv run python ../.claude/skills/book-import/inspect_pdf.py SLUG --around "some chapter title"
+   uv run python ~/dev/ochorus/.claude/skills/book-import/inspect_pdf.py SLUG --around "some chapter title"
    ```
    It prints the font-size distribution and the raw blocks around a boundary.
    Identify: the **body** size (the mode), the **real title** size, any
