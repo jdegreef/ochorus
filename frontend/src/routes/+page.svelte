@@ -1,85 +1,114 @@
 <script lang="ts">
-	import type { BookSummary } from '$lib/library';
+	import type { BookSummary, AuthorBio } from '$lib/library';
 
 	let { data } = $props();
-	const books = $derived<BookSummary[]>(data.books);
+	const featured = $derived<BookSummary[]>(data.featured);
+	const authors = $derived<AuthorBio[]>(data.authors);
+	const totalBooks = $derived<number>(data.totalBooks);
 
-	// Group books by author, preserving shelf order.
-	const groups = $derived.by(() => {
-		const map = new Map<string, { name: string; books: BookSummary[] }>();
-		for (const b of books) {
-			const g = map.get(b.author.slug) ?? { name: b.author.name, books: [] };
-			g.books.push(b);
-			map.set(b.author.slug, g);
-		}
-		return [...map.values()];
-	});
-
-	const onCover = (hex: string) => `linear-gradient(150deg, ${hex} 0%, ${shade(hex, -28)} 100%)`;
-
-	// Darken a #rrggbb hex by `amt` (percentage points of each channel).
-	function shade(hex: string, amt: number): string {
-		const n = hex.replace('#', '');
-		if (n.length !== 6) return hex;
-		const c = [0, 2, 4].map((i) => {
-			const v = Math.round(parseInt(n.slice(i, i + 2), 16) * (1 + amt / 100));
-			return Math.max(0, Math.min(255, v)).toString(16).padStart(2, '0');
-		});
-		return `#${c.join('')}`;
-	}
+	const initials = (name: string) =>
+		name
+			.split(' ')
+			.filter(Boolean)
+			.map((w) => w[0])
+			.slice(0, 2)
+			.join('')
+			.toUpperCase();
 </script>
 
-<svelte:head><title>Ochorus — public-domain Christian classics</title></svelte:head>
+<svelte:head>
+	<title>Ochorus — Equipping People with Classic Christian Books</title>
+	<meta
+		name="description"
+		content="Ochorus — read classic Christian books from Andrew Murray, Charles Spurgeon, Watchman Nee and more. Free, beautifully set, in your language."
+	/>
+</svelte:head>
 
-<div class="mx-auto max-w-3xl px-5 py-10">
-	<section class="mb-10">
-		<h1 class="text-display mb-3">A quiet library of Christian classics.</h1>
-		<p class="text-body max-w-xl text-muted">
-			Timeless devotional books from Andrew Murray, Charles Spurgeon, and more —
+<!-- Hero -->
+<section class="border-b border-border bg-surface-2">
+	<div class="mx-auto max-w-4xl px-5 py-20 text-center">
+		<p class="mb-4 text-small font-semibold uppercase tracking-widest text-accent">
+			Read, Reflect, and Be Transformed
+		</p>
+		<h1 class="text-display mx-auto mb-5 max-w-3xl">
+			Equipping People with Classic Christian Books
+		</h1>
+		<p class="mx-auto mb-8 max-w-xl text-body text-muted">
+			Timeless devotional classics from Andrew Murray, Charles Spurgeon, Watchman Nee and more —
 			free to read, beautifully set, in your language soon.
 		</p>
-	</section>
+		<div class="flex flex-wrap justify-center gap-3">
+			<a href="/books" class="btn btn-primary">Browse the Library</a>
+			<a href="/about" class="btn btn-ghost">About Ochorus</a>
+		</div>
+	</div>
+</section>
 
-	{#each groups as group (group.name)}
-		<section class="mb-10">
-			<h2 class="mb-4 text-h3 text-muted">{group.name}</h2>
-			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
-				{#each group.books as book (book.slug)}
-					<a
-						href="/books/{book.slug}"
-						class="group block hover:no-underline"
-						data-testid="book-card"
-					>
-						{#if book.cover_url}
-							<img
-								src={book.cover_url}
-								alt="Cover of {book.title}"
-								loading="lazy"
-								class="aspect-[3/4] w-full rounded-card object-cover shadow-sm transition-transform group-hover:-translate-y-1"
-							/>
-						{:else}
-							<div
-								class="flex aspect-[3/4] flex-col justify-between rounded-card p-4 shadow-sm transition-transform group-hover:-translate-y-1"
-								style="background: {onCover(book.cover_color || '#3b5bdb')}"
-							>
-								<span class="text-[0.7rem] font-semibold uppercase tracking-wider text-white/70">
-									{book.author.name.split(' ').slice(-1)}
-								</span>
-								<span
-									style="font-family: var(--font-display)"
-									class="text-[1.15rem] font-semibold leading-tight text-white"
-								>
-									{book.title}
-								</span>
-							</div>
-						{/if}
-						<div class="mt-2 px-0.5">
-							<div class="text-small font-medium text-text">{book.title}</div>
-							<div class="text-[0.8rem] text-muted">{book.chapter_count} chapters</div>
-						</div>
-					</a>
-				{/each}
-			</div>
-		</section>
-	{/each}
-</div>
+<!-- Discover Your Next Book -->
+<section class="mx-auto max-w-5xl px-5 py-14">
+	<div class="mb-6 flex items-end justify-between">
+		<h2 class="text-h1">Discover Your Next Book</h2>
+		<a href="/books" class="text-small font-semibold text-accent">All {totalBooks} books →</a>
+	</div>
+	<div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-6">
+		{#each featured as book (book.slug)}
+			<a href="/books/{book.slug}" class="group block hover:no-underline">
+				{#if book.cover_url}
+					<img
+						src={book.cover_url}
+						alt="Cover of {book.title}"
+						loading="lazy"
+						class="aspect-[3/4] w-full rounded-card object-cover shadow-sm transition-transform group-hover:-translate-y-1"
+					/>
+				{:else}
+					<div
+						class="aspect-[3/4] w-full rounded-card shadow-sm"
+						style="background: {book.cover_color || '#3b5bdb'}"
+					></div>
+				{/if}
+				<div class="mt-2 text-small font-medium text-text">{book.title}</div>
+			</a>
+		{/each}
+	</div>
+</section>
+
+<!-- Mission teaser -->
+<section class="border-y border-border bg-surface-2">
+	<div class="mx-auto max-w-3xl px-5 py-14 text-center">
+		<h2 class="text-h1 mb-3">Spreading the Gospel Through Literature</h2>
+		<p class="mx-auto max-w-xl text-body text-muted">
+			Based in Kampala, Uganda and established in 2021, Ochorus is a ministry devoted to making
+			exceptional classic Christian literature freely accessible to every corner of the world.
+		</p>
+		<a href="/about" class="btn btn-ghost mt-6">Our Story</a>
+	</div>
+</section>
+
+<!-- Christian Authors -->
+<section class="mx-auto max-w-5xl px-5 py-14">
+	<div class="mb-6 flex items-end justify-between">
+		<h2 class="text-h1">Christian Authors</h2>
+		<a href="/biographies" class="text-small font-semibold text-accent">All biographies →</a>
+	</div>
+	<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+		{#each authors as author (author.slug)}
+			<a
+				href="/biographies#{author.slug}"
+				class="flex items-center gap-3 rounded-card border border-border p-4 hover:no-underline hover:bg-surface-2"
+			>
+				<span
+					class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-soft text-small font-semibold text-accent"
+					style="font-family: var(--font-display)"
+				>
+					{initials(author.name)}
+				</span>
+				<span>
+					<span class="block text-small font-semibold text-text">{author.name}</span>
+					<span class="block text-[0.8rem] text-muted">
+						{author.book_count} book{author.book_count === 1 ? '' : 's'}
+					</span>
+				</span>
+			</a>
+		{/each}
+	</div>
+</section>

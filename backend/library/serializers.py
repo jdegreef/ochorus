@@ -9,6 +9,16 @@ class AuthorSerializer(serializers.ModelSerializer):
         fields = ["slug", "name", "bio", "birth_year", "death_year"]
 
 
+class AuthorListSerializer(serializers.ModelSerializer):
+    """Authors for the Biographies page, with how many books each has."""
+
+    book_count = serializers.IntegerField(source="num_books", read_only=True)
+
+    class Meta:
+        model = Author
+        fields = ["slug", "name", "bio", "birth_year", "death_year", "book_count"]
+
+
 class BookListSerializer(serializers.ModelSerializer):
     """Shelf view — enough to render a cover card, no chapter bodies."""
 

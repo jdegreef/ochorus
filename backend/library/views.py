@@ -4,12 +4,13 @@ Books are addressed by their canonical ``slug`` plus a ``language`` query param
 (default "en"). All endpoints are public (AllowAny via the project default).
 """
 
-from django.db.models import Count
+from django.db.models import Count, Q
 from django.shortcuts import get_object_or_404
 from rest_framework import generics
 
-from .models import Book, Chapter
+from .models import Author, Book, Chapter
 from .serializers import (
+    AuthorListSerializer,
     BookDetailSerializer,
     BookListSerializer,
     ChapterDetailSerializer,
@@ -20,6 +21,19 @@ DEFAULT_LANGUAGE = "en"
 
 def _language(request) -> str:
     return request.query_params.get("language", DEFAULT_LANGUAGE)
+
+
+class AuthorListView(generics.ListAPIView):
+    """Authors for the Biographies page (those with a bio), with book counts."""
+
+    serializer_class = AuthorListSerializer
+
+    def get_queryset(self):
+        return (
+            Author.objects.exclude(bio="")
+            .annotate(num_books=Count("books", filter=Q(books__is_published=True)))
+            .order_by("name")
+        )
 
 
 class BookListView(generics.ListAPIView):

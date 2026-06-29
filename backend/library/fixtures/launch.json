@@ -5,7 +5,7 @@
  "fields": {
   "slug": "andrew-murray",
   "name": "Andrew Murray",
-  "bio": "South African pastor and writer of the Dutch Reformed Church, known for devotional classics on prayer, humility, and abiding in Christ.",
+  "bio": "Andrew Murray Jr., born in 1828 in South Africa, served as a minister and theologian, influencing many through his teachings on prayer. He established educational institutions, authored over 240 works, and profoundly impacted Christian thought until his death in 1917. His books on deeper spiritual life continue to guide believers worldwide. Murray emphasized humility, absolute surrender to God, and the indwelling Christ. His classic works remain essential reading for Christians seeking deeper spiritual maturity.",
   "birth_year": 1828,
   "death_year": 1917,
   "original_language": "en",
@@ -18,7 +18,7 @@
  "fields": {
   "slug": "watchman-nee",
   "name": "Watchman Nee",
-  "bio": "",
+  "bio": "Watchman Nee, born in 1903 in Foochow, China, was a prominent figure in 20th-century Christianity and Chinese church leadership. He embraced Christianity at 17, dedicated his life to ministry, and authored numerous influential works like \"The Normal Christian Life.\" Persecuted for his faith, he died in 1972 while imprisoned at 69. His legacy continues through the Local Church movement worldwide. Nee's teachings emphasized the spiritual realities of the church and the believer's position in Christ.",
   "birth_year": null,
   "death_year": null,
   "original_language": "en",
@@ -57,7 +57,7 @@
  "fields": {
   "slug": "gareth-evans",
   "name": "Gareth Evans",
-  "bio": "",
+  "bio": "Gareth Evans, born in 1938 in Merthyr Tydfil, is an itinerant pastor, teacher, and author. He studied physics, taught globally, authored devotionals, and now ministers to the hurting church through his website. Gareth, married to Anne, has three daughters, eight grand children, and fourteen great-grand children. His teachings emphasize practical faith and biblical wisdom. With a unique blend of scientific background and spiritual insight, Evans brings clarity to complex theological concepts.",
   "birth_year": null,
   "death_year": null,
   "original_language": "en",
@@ -70,7 +70,7 @@
  "fields": {
   "slug": "hannah-whitall-smith",
   "name": "Hannah Whitall Smith",
-  "bio": "",
+  "bio": "Hannah Whitall Smith, born in 1832 in Philadelphia, was a prominent Quaker speaker and writer during the Holiness movement. Her influential book \"The Christian's Secret of a Happy Life\" became a classic of Christian devotional literature. Despite personal tragedies, she maintained a vibrant faith that influenced generations of believers until her death in 1911. Her teachings emphasized the victorious Christian life through faith. Smith's message of consecration revolutionized Christian thinking, presenting sanctification as resting in Christ's completed work.",
   "birth_year": null,
   "death_year": null,
   "original_language": "en",
@@ -96,7 +96,7 @@
  "fields": {
   "slug": "charles-h-spurgeon",
   "name": "Charles H. Spurgeon",
-  "bio": "",
+  "bio": "Charles Haddon Spurgeon, born in 1834 in Kelvedon, Essex, England, became known as the \"Prince of Preachers.\" Converted at age 15, he began preaching at 16 and by age 20 became pastor of London's New Park Street Chapel, later the Metropolitan Tabernacle. Spurgeon authored over 3,500 sermons, numerous books, and founded a pastors' college, orphanage, and various Christian ministries. Despite battling depression and illness, he maintained a prolific ministry until his death in 1892. His biblical expository preaching and literary works continue to influence Christians worldwide.",
   "birth_year": null,
   "death_year": null,
   "original_language": "en",
@@ -109,7 +109,7 @@
  "fields": {
   "slug": "william-booth",
   "name": "William Booth",
-  "bio": "",
+  "bio": "William Booth, born in 1829 in Nottingham, England, was the founder of The Salvation Army. Originally a Methodist minister, he felt called to serve the urban poor and began his ministry in London's East End. In 1865, he established the Christian Mission, which later became The Salvation Army in 1878. Booth and his wife Catherine pioneered innovative approaches to evangelism and social welfare, establishing shelters, rehabilitation centers, and soup kitchens.",
   "birth_year": null,
   "death_year": null,
   "original_language": "en",
@@ -135,7 +135,7 @@
  "fields": {
   "slug": "amy-carmichael",
   "name": "Amy Carmichael",
-  "bio": "",
+  "bio": "Amy Beatrice Carmichael, born in 1867 in Millisle, Ireland, was a Protestant missionary in India. She served for 55 years without furlough, founding the Dohnavur Fellowship to rescue children from temple prostitution. Known for her deep devotion and writings on prayer, she authored 35 books and remained in India until her death in 1951. Her work continues through the ongoing ministry she established. Carmichael's life demonstrated radical obedience to Christ's call and cultural adaptation.",
   "birth_year": null,
   "death_year": null,
   "original_language": "en",
@@ -148,11 +148,50 @@
  "fields": {
   "slug": "frederick-brotherton-meyer",
   "name": "Frederick Brotherton Meyer",
-  "bio": "",
+  "bio": "Frederick Brotherton Meyer was born on April 8, 1847, in Clapham, London, to Frederick Meyer, a business owner, and his wife, Ann. Raised in a deeply religious household that cherished the authority of Scripture, Meyer became a prominent Baptist pastor, teacher, and evangelist, based primarily in London. He was known for his expository preaching and devotional writings. Meyer pastored several prominent churches including Christ Church in London and Melbourne's Collins Street Baptist Church.",
   "birth_year": null,
   "death_year": null,
   "original_language": "en",
   "created_at": "2026-06-28T15:50:48.807Z"
+ }
+},
+{
+ "model": "library.author",
+ "pk": 15,
+ "fields": {
+  "slug": "catherine-booth",
+  "name": "Catherine Booth",
+  "bio": "Catherine Booth, born in 1829 in Ashbourne, Derbyshire, England, was co-founder of The Salvation Army alongside her husband William Booth. A powerful preacher and advocate for women's rights, she challenged Victorian conventions by preaching publicly and advocating for women's ministry. Catherine authored \"Female Ministry: Women's Right to Preach\" and was instrumental in shaping The Salvation Army's theology and social programs. Her passionate preaching and compassionate heart for the poor made her a beloved figure.",
+  "birth_year": null,
+  "death_year": null,
+  "original_language": "en",
+  "created_at": "2026-06-29T01:16:40.469Z"
+ }
+},
+{
+ "model": "library.author",
+ "pk": 16,
+ "fields": {
+  "slug": "jeanne-guyon",
+  "name": "Jeanne Guyon",
+  "bio": "Jeanne Guyon, born in 1648 in Montargis, France, became a leading voice of Christian mysticism. Drawn early to deep prayer, she dedicated her life to interior surrender and spiritual renewal. Her teachings stirred both devotion and controversy, eventually leading to imprisonment. She died in 1717, but her writings still influence Christian spirituality today. Her autobiography remains a classic of spiritual literature. Guyon's emphasis on pure love and abandonment to God challenged formal religion.",
+  "birth_year": null,
+  "death_year": null,
+  "original_language": "en",
+  "created_at": "2026-06-29T01:16:40.471Z"
+ }
+},
+{
+ "model": "library.author",
+ "pk": 17,
+ "fields": {
+  "slug": "susanna-wesley",
+  "name": "Susanna Wesley",
+  "bio": "Susanna Wesley, born in 1669 in London, England, was the mother of John and Charles Wesley, founders of Methodism. A devout Anglican and mother of nineteen children (ten survived to adulthood), she provided rigorous religious education to her children, establishing daily routines of prayer and Scripture study. Despite financial hardships and her husband's absences, she maintained a strong spiritual household. Susanna's theological letters and writings influenced her sons' ministry and the development of Methodist doctrine.",
+  "birth_year": null,
+  "death_year": null,
+  "original_language": "en",
+  "created_at": "2026-06-29T01:16:40.474Z"
  }
 },
 {

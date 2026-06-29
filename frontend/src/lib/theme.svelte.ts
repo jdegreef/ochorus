@@ -3,12 +3,12 @@ import { browser } from '$app/environment';
 type Mode = 'dark' | 'light';
 
 class Theme {
-	current = $state<Mode>('dark');
+	current = $state<Mode>('light');
 
 	init() {
 		if (!browser) return;
 		const saved = localStorage.getItem('theme');
-		this.current = saved === 'light' ? 'light' : 'dark';
+		this.current = saved === 'dark' ? 'dark' : 'light';
 		this.#apply();
 	}
 

@@ -51,8 +51,19 @@ export interface Chapter {
 	next: ChapterNav | null;
 }
 
+export interface AuthorBio {
+	slug: string;
+	name: string;
+	bio: string;
+	birth_year: number | null;
+	death_year: number | null;
+	book_count: number;
+}
+
 export const listBooks = (language = 'en') =>
 	apiFetch<BookSummary[]>(`/api/library/books/?language=${language}`);
+
+export const listAuthors = () => apiFetch<AuthorBio[]>('/api/library/authors/');
 
 export const getBook = (slug: string, language = 'en') =>
 	apiFetch<BookDetail>(`/api/library/books/${slug}/?language=${language}`);
