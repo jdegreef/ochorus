@@ -11,13 +11,28 @@ export class ApiError extends Error {
 }
 
 /**
- * Fetch wrapper for the Django API. The library is public, so no auth header is
- * attached yet — Supabase Bearer tokens get added here when login lands.
+ * Supplies the current Supabase access token, if any. The auth store registers
+ * this (via `setAuthTokenProvider`) so we avoid an import cycle: api ↔ auth.
+ */
+let tokenProvider: () => string | null = () => null;
+
+export function setAuthTokenProvider(fn: () => string | null) {
+	tokenProvider = fn;
+}
+
+/**
+ * Fetch wrapper for the Django API. The library is public (AllowAny), but when a
+ * user is signed in we attach their Supabase Bearer token so authenticated
+ * endpoints (e.g. /api/auth/me) work.
  */
 export async function apiFetch<T = unknown>(path: string, init: RequestInit = {}): Promise<T> {
 	const headers = new Headers(init.headers);
 	if (init.body && !headers.has('Content-Type')) {
 		headers.set('Content-Type', 'application/json');
+	}
+	const token = tokenProvider();
+	if (token && !headers.has('Authorization')) {
+		headers.set('Authorization', `Bearer ${token}`);
 	}
 
 	const res = await fetch(`${API_BASE_URL}${path}`, { ...init, headers });

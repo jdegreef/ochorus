@@ -1,0 +1,73 @@
+import { browser } from '$app/environment';
+
+/**
+ * Lightweight UI-string i18n. This is deliberately a small in-repo dictionary
+ * rather than a full ICU/Paraglide setup: the *content* (books) is the main
+ * multilingual surface, and the chrome has few strings. Adding a locale = adding
+ * one entry to `MESSAGES`; missing keys fall back to English, then to the key.
+ *
+ * The active UI locale defaults to the chosen content language but can diverge.
+ */
+
+type Dict = Record<string, string>;
+
+const EN: Dict = {
+	'nav.about': 'About Us',
+	'nav.books': 'Books',
+	'nav.biographies': 'Biographies',
+	'nav.contact': 'Contact',
+	'nav.search': 'Search',
+	'reader.focus': 'Focus',
+	'reader.exitFocus': 'Exit focus',
+	'reader.contents': 'Contents',
+	'reader.previous': 'Previous',
+	'reader.next': 'Next',
+	'reader.backToContents': 'Back to contents',
+	'reader.textSettings': 'Text settings',
+	'reader.size': 'Size',
+	'reader.spacing': 'Spacing',
+	'reader.width': 'Width',
+	'reader.typeface': 'Typeface',
+	'reader.copyQuote': 'Copy quote',
+	'reader.share': 'Share',
+	'reader.highlight': 'Highlight',
+	'reader.note': 'Note',
+	'spacing.compact': 'Compact',
+	'spacing.normal': 'Normal',
+	'spacing.relaxed': 'Relaxed',
+	'width.narrow': 'Narrow',
+	'width.normal': 'Normal',
+	'width.wide': 'Wide',
+	'font.serif': 'Serif',
+	'font.sans': 'Sans',
+	'font.dyslexic': 'Dyslexic',
+	'search.placeholder': 'Search books, authors, text…',
+	'search.title': 'Search',
+	'search.noResults': 'No results for',
+	'search.prompt': 'Type at least two characters to search.'
+};
+
+// Add locale dictionaries here as translations are reviewed, e.g. `sw: { ... }`.
+const MESSAGES: Record<string, Dict> = { en: EN };
+
+const KEY = 'ochorus:ui-locale';
+
+class I18n {
+	locale = $state('en');
+
+	init(fallback = 'en') {
+		if (browser) this.locale = localStorage.getItem(KEY) || fallback;
+	}
+
+	set(locale: string) {
+		this.locale = locale;
+		if (browser) localStorage.setItem(KEY, locale);
+	}
+
+	t = (key: string): string => {
+		const dict = MESSAGES[this.locale] ?? EN;
+		return dict[key] ?? EN[key] ?? key;
+	};
+}
+
+export const i18n = new I18n();

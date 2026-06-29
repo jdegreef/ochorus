@@ -66,12 +66,15 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
     next = serializers.SerializerMethodField()
     book_title = serializers.CharField(source="book.title", read_only=True)
     book_slug = serializers.CharField(source="book.slug", read_only=True)
+    author_name = serializers.CharField(source="book.author.name", read_only=True)
+    author_slug = serializers.CharField(source="book.author.slug", read_only=True)
 
     class Meta:
         model = Chapter
         fields = [
             "order", "title", "body_html", "word_count",
-            "book_title", "book_slug", "prev", "next",
+            "book_title", "book_slug", "author_name", "author_slug",
+            "prev", "next",
         ]
 
     def _sibling(self, obj, delta):
