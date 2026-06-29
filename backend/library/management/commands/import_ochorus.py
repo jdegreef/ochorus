@@ -24,6 +24,7 @@ from django.core.management.base import BaseCommand
 from django.db import transaction
 from django.utils.text import slugify
 
+from library.ingest import is_front_matter
 from library.models import Author, Book, Chapter
 
 CATALOG_URL = "https://ochorus.com/ochorus-books/"
@@ -109,7 +110,6 @@ def pdf_blocks(pdf_bytes: bytes) -> tuple[list[tuple[str, float]], float]:
     doc = fitz.open(stream=pdf_bytes, filetype="pdf")
     sizes: Counter[int] = Counter()
     blocks: list[tuple[str, float]] = []
-    dropcap = ""  # a decorative initial extracted as its own one-letter block
     for page in doc:
         for b in page.get_text("dict").get("blocks", []):
             if b.get("type") != 0:  # skip images
@@ -122,16 +122,9 @@ def pdf_blocks(pdf_bytes: bytes) -> tuple[list[tuple[str, float]], float]:
                 continue
             for s in spans:
                 sizes[round(s["size"])] += max(1, len(s["text"].strip()))
-            size = max(s["size"] for s in spans)
-            # A lone uppercase letter is a drop cap; glue it to the next block
-            # (e.g. "I" + "n regard…" → "In regard…").
-            if len(t) == 1 and t.isalpha() and t.isupper():
-                dropcap = t
-                continue
-            if dropcap:
-                t = dropcap + t
-                dropcap = ""
-            blocks.append((t, size))
+            # Single-letter blocks (decorative drop caps, often extracted out of
+            # reading order) are kept as-is; they're reattached per chapter later.
+            blocks.append((t, max(s["size"] for s in spans)))
     doc.close()
     body = float(sizes.most_common(1)[0][0]) if sizes else 12.0
     return blocks, body
@@ -172,6 +165,39 @@ def _merge_paragraphs(paras: list[str]) -> list[str]:
     return out
 
 
+def _norm(t: str) -> str:
+    return " ".join(t.lower().split())
+
+
+_DROPCAP_PUNCT = " \"'“”‘’.-"
+
+
+def _dropcap_letter(t: str) -> str:
+    """If a block is a decorative initial — a single capital, possibly wrapped in
+    quotes (e.g. '\"A') — return the letter; else "". These are not headings."""
+    core = t.strip(_DROPCAP_PUNCT)
+    return core if len(core) == 1 and core.isalpha() and core.isupper() else ""
+
+
+def _is_dropcap(t: str) -> bool:
+    return bool(_dropcap_letter(t))
+
+
+def _repair_dropcaps(paras: list[str], caps: list[str]) -> list[str]:
+    """Reattach decorative initials: a paragraph that begins lowercase has lost
+    its drop cap, so prepend the next available one ("hat is…" + "W" → "What is…")."""
+    if not caps:
+        return paras
+    ci = 0
+    out: list[str] = []
+    for p in paras:
+        if ci < len(caps) and p[:1].islower():
+            p = caps[ci] + p
+            ci += 1
+        out.append(p)
+    return out
+
+
 def _is_title_block(p: str) -> bool:
     """A short heading-like block (a chapter title or a biography name)."""
     words = p.split()
@@ -182,51 +208,73 @@ def _is_title_block(p: str) -> bool:
     return bool(mostly_caps or _BIO_YEARS.search(p))
 
 
-def _chapter_marker_title(block_texts: list[str]) -> tuple[str, list[str]]:
-    """Title + remaining body paragraphs for a 'CHAPTER X' segment."""
-    m = _CHAP_RE.match(block_texts[0])
-    number, trailing = _normalize_number(m.group(1), m.group(2))
-    title_parts: list[str] = []
-    body_paras: list[str] = []
-    cap = re.match(r"([A-Z0-9'’,\- ]{3,}?)(?=[a-z]|$)", trailing)
-    if cap and cap.group(1).strip(" '-,"):
-        title_parts.append(cap.group(1).strip(" '-,"))
-        leftover = trailing[cap.end():].strip(" .:-")
-        if len(leftover.split()) > 4:
-            body_paras.append(leftover)
-    rest = block_texts[1:]
-    k = 0
-    while not body_paras and k < len(rest) and _is_title_block(rest[k]):
-        title_parts.append(rest[k])
-        k += 1
-    body_paras.extend(rest[k:])
-    title = f"Chapter {number}"
-    if title_parts:
-        title += ". " + " ".join(title_parts).title()
-    return title, body_paras
+def _smart_title(s: str) -> str:
+    """Title-case an ALL-CAPS heading; leave already-mixed-case text unchanged."""
+    s = s.strip(" .:-")
+    letters = [c for c in s if c.isalpha()]
+    if letters and sum(c.isupper() for c in letters) / len(letters) > 0.7:
+        return re.sub(r"(^|\s)([A-Za-z])", lambda m: m.group(1) + m.group(2).upper(), s.lower())
+    return s
 
 
-def _segment(blocks: list[tuple[str, float]], is_head) -> list[tuple[str, str]]:
-    """Split blocks into chapters wherever `is_head(text, size)` is true."""
-    starts = [i for i, (t, s) in enumerate(blocks) if is_head(t, s)]
+def _titleish(t: str, s: float, thresh: float) -> bool:
+    """A short block that reads as a title — set large, ALL-CAPS, or a bio name."""
+    return len(t.split()) <= 14 and (s >= thresh or _is_title_block(t))
+
+
+def _segment(blocks, is_heading, is_noise, thresh) -> list[tuple[str, str]]:
+    """Split blocks into chapters at each heading.
+
+    `is_heading(t, s)` marks a chapter title; `is_noise(t, s)` marks a running
+    header/footer to drop entirely. A "CHAPTER X" marker borrows the following
+    title block (set large or ALL-CAPS) as its descriptive title. Drop caps are
+    reattached and split paragraphs rejoined per chapter.
+    """
+    starts = [i for i, (t, s) in enumerate(blocks) if is_heading(t, s)]
     if len(starts) < 2:
         return []
     chapters: list[tuple[str, str]] = []
     for j, idx in enumerate(starts):
         end = starts[j + 1] if j + 1 < len(starts) else len(blocks)
-        seg = [t for t, _ in blocks[idx:end]]
-        if _CHAP_RE.match(seg[0]):
-            title, body_paras = _chapter_marker_title(seg)
+        seg = blocks[idx:end]
+        head = seg[0][0]
+        rest = [(t, s) for t, s in seg[1:] if not is_noise(t, s)]
+
+        title_parts: list[str] = []
+        body_paras: list[str] = []
+        if _CHAP_RE.match(head):
+            m = _CHAP_RE.match(head)
+            number, trailing = _normalize_number(m.group(1), m.group(2))
+            cap = re.match(r"([A-Z0-9'’,\- ]{3,}?)(?=[a-z]|$)", trailing)
+            if cap and cap.group(1).strip(" '-,"):
+                title_parts.append(cap.group(1).strip(" '-,"))
+                leftover = trailing[cap.end():].strip(" .:-")
+                if len(leftover.split()) > 4:
+                    body_paras.append(leftover)
+            k = 0
+            if not body_paras:  # borrow the following title block(s)
+                while k < len(rest) and _titleish(rest[k][0], rest[k][1], thresh):
+                    title_parts.append(rest[k][0])
+                    k += 1
+            title = f"Chapter {number}"
+            if title_parts:
+                title += ". " + _smart_title(" ".join(title_parts))
+            body_paras += [t for t, s in rest[k:]]
         else:
             # Font heading: the heading block(s) are the title.
-            title_parts = [seg[0]]
-            k = 1
-            while k < len(seg) and _is_title_block(seg[k]) and not _CHAP_RE.match(seg[k]):
-                title_parts.append(seg[k])
+            title_parts = [head]
+            k = 0
+            while k < len(rest) and _titleish(rest[k][0], rest[k][1], thresh) and not _CHAP_RE.match(rest[k][0]):
+                title_parts.append(rest[k][0])
                 k += 1
-            title = " ".join(title_parts).strip()
-            body_paras = seg[k:]
-        body_paras = _merge_paragraphs(body_paras)
+            title = _smart_title(" ".join(title_parts))
+            body_paras = [t for t, s in rest[k:]]
+
+        if is_front_matter(title):  # contents / title page / index
+            continue
+        caps = [_dropcap_letter(p) for p in body_paras if _is_dropcap(p)]
+        body_paras = [p for p in body_paras if not _is_dropcap(p)]
+        body_paras = _repair_dropcaps(_merge_paragraphs(body_paras), caps)
         body_html = "".join(f"<p>{html.escape(p)}</p>" for p in body_paras)
         if len(re.sub(r"<[^>]+>", " ", body_html).split()) < 120:  # stub / TOC entry
             continue
@@ -235,32 +283,40 @@ def _segment(blocks: list[tuple[str, float]], is_head) -> list[tuple[str, str]]:
 
 
 def chapterize(blocks: list[tuple[str, float]], body_size: float) -> list[tuple[str, str]]:
-    """Prefer reliable 'CHAPTER X' markers; fall back to font-size headings for
-    PDFs that don't use them (or that yield too few chapters that way)."""
-    by_marker = _segment(blocks, lambda t, s: bool(_CHAP_RE.match(t)))
+    """Detect chapters.
+
+    Prefer reliable "CHAPTER X" markers; fall back to font-size headings for PDFs
+    that title chapters by size alone. A heading-like block that *repeats* across
+    the book is a running header/footer (e.g. "Chapter 3" or "Introduction" on
+    every page) — those are banned from being headings and dropped from the text,
+    so they pollute neither path.
+    """
+    thresh = body_size * 1.18
+
+    def short(t: str) -> bool:
+        return len(t.split()) <= 14 and not _is_dropcap(t)
+
+    freq = Counter(
+        _norm(t)
+        for t, s in blocks
+        if short(t) and (s >= thresh or _CHAP_RE.match(t))
+    )
+    banned = {k for k, v in freq.items() if v > 2}
+
+    def is_noise(t: str, s: float) -> bool:
+        return _norm(t) in banned
+
+    def is_marker(t: str, s: float) -> bool:
+        return short(t) and bool(_CHAP_RE.match(t)) and _norm(t) not in banned
+
+    by_marker = _segment(blocks, is_marker, is_noise, thresh)
     if len(by_marker) >= 3:
         return by_marker
 
-    # Font fallback. Big text that repeats across the book is a running
-    # header/footer (e.g. "Introduction" on every page), not a chapter title —
-    # ban anything that appears as a heading more than twice.
-    thresh = body_size * 1.18
-    head_freq = Counter(
-        " ".join(t.lower().split()) for t, s in blocks if s >= thresh and len(t.split()) <= 14
-    )
-    banned = {k for k, v in head_freq.items() if v > 2}
+    def is_font(t: str, s: float) -> bool:
+        return short(t) and (s >= thresh or bool(_CHAP_RE.match(t))) and _norm(t) not in banned
 
-    def is_font_head(t: str, s: float) -> bool:
-        if _CHAP_RE.match(t):
-            return True
-        return (
-            s >= thresh
-            and len(t.split()) <= 14
-            and " ".join(t.lower().split()) not in banned
-        )
-
-    by_font = _segment(blocks, is_font_head)
-    return by_font if len(by_font) > len(by_marker) else by_marker
+    return _segment(blocks, is_font, is_noise, thresh)
 
 
 @transaction.atomic
