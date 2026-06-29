@@ -24,7 +24,7 @@ from django.core.management.base import BaseCommand
 from django.db import transaction
 from django.utils.text import slugify
 
-from library.corrections import chapter_title_overrides
+from library.corrections import EXCLUDED_SLUGS, chapter_title_overrides
 from library.ingest import is_front_matter
 from library.models import Author, Book, Chapter
 
@@ -372,7 +372,7 @@ class Command(BaseCommand):
         if opts["slugs"]:
             slugs = list(opts["slugs"])
         else:
-            slugs = catalog_slugs()
+            slugs = [s for s in catalog_slugs() if s not in EXCLUDED_SLUGS]
             if opts["limit"]:
                 slugs = slugs[: opts["limit"]]
 

@@ -16,6 +16,14 @@ Shape:
 
 from __future__ import annotations
 
+# Catalogue slugs to skip on a full import (e.g. duplicate/teen editions we don't
+# want in the library). An explicit `import_ochorus <slug>` still imports them.
+EXCLUDED_SLUGS: set[str] = {
+    # Teens edition of "The Person and Work of the Holy Spirit"; we keep the
+    # adult original (the-person-and-work-of-the-holy-spirit).
+    "the-person-and-work-of-the-holy-spirit-2",
+}
+
 CORRECTIONS: dict[str, dict] = {
     "the-normal-christian-life": {
         # Ch.12's title is inline ("Chapter 12: The Cross and the Soul Life") in
