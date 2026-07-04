@@ -48,3 +48,7 @@ services:
     envVars:
       - key: PUBLIC_API_BASE_URL # the ochorus-api URL, after first deploy
         sync: false
+      - key: PUBLIC_SUPABASE_URL # https://<project-ref>.supabase.co (enables login)
+        sync: false
+      - key: PUBLIC_SUPABASE_ANON_KEY # Supabase anon/publishable key (safe in the browser)
+        sync: false
