@@ -1,0 +1,21 @@
+"""Run the pre-deploy / release steps in a single command.
+
+Render's `preDeployCommand` runs one executable (not a shell), so we can't chain
+`migrate && seed_if_empty` with `&&`. This command runs both in order: apply
+migrations, then seed the library from the committed fixture if the DB is empty.
+"""
+
+from __future__ import annotations
+
+from django.core.management import call_command
+from django.core.management.base import BaseCommand
+
+
+class Command(BaseCommand):
+    help = "Apply migrations, then seed the library if empty (deploy step)."
+
+    def handle(self, *args, **opts):
+        self.stdout.write("→ migrate")
+        call_command("migrate", interactive=False, verbosity=1)
+        self.stdout.write("→ seed_if_empty")
+        call_command("seed_if_empty")

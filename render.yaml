@@ -15,7 +15,7 @@ services:
     # Per deploy, before the new version goes live: apply migrations, then seed
     # the library from the committed fixture if (and only if) the DB is empty.
     # If this fails, Render keeps the current version up.
-    preDeployCommand: "uv run python manage.py migrate --noinput && uv run python manage.py seed_if_empty"
+    preDeployCommand: "uv run python manage.py release"
     envVars:
       - key: DJANGO_DEBUG
         value: "false"
