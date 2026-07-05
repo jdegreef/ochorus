@@ -16,6 +16,7 @@
 	--color-accent: var(--accent);
 	--color-accent-contrast: var(--accent-contrast);
 	--color-accent-soft: var(--accent-soft);
+	--color-accent-soft-border: var(--accent-soft-border);
 	--color-gold: var(--gold);
 	--color-border: var(--border);
 	--color-danger: var(--danger);
@@ -24,8 +25,9 @@
 	--font-sans: 'Hanken Grotesk Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
-/* Type scale — modular ratio 1.25, anchored at 1rem body. */
+/* Type scale — modular ratio 1.25, anchored at 1rem body. (Shared with Take Root.) */
 :root {
+	--fs-eyebrow: 0.75rem;
 	--fs-small: 0.875rem;
 	--fs-body: 1rem;
 	--fs-h3: 1.25rem;
@@ -45,6 +47,7 @@
 	--accent: #9c9af2;
 	--accent-contrast: #16130f;
 	--accent-soft: #221f33;
+	--accent-soft-border: #36324f;
 	--gold: #e0b45c;
 	--border: #2d261d;
 	--danger: #e8857a;
@@ -64,6 +67,7 @@
 	--accent: #3f3d9a;
 	--accent-contrast: #ffffff;
 	--accent-soft: #ecebf7;
+	--accent-soft-border: #d9d7f0;
 	--gold: #b07d22;
 	--border: #e8dfcf;
 	--danger: #b23a48;
