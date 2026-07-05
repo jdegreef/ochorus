@@ -82,10 +82,17 @@ export interface AuthorBio {
 	book_count: number;
 }
 
+export interface AuthorDetail extends AuthorBio {
+	books: BookSummary[];
+}
+
 export const listBooks = (language = 'en') =>
 	apiFetch<BookSummary[]>(`/api/library/books/?language=${language}`);
 
 export const listAuthors = () => apiFetch<AuthorBio[]>('/api/library/authors/');
+
+export const getAuthor = (slug: string, language = 'en') =>
+	apiFetch<AuthorDetail>(`/api/library/authors/${slug}/?language=${language}`);
 
 export const getBook = (slug: string, language = 'en') =>
 	apiFetch<BookDetail>(`/api/library/books/${slug}/?language=${language}`);

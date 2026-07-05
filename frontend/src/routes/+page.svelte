@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { BookSummary, AuthorBio } from '$lib/library';
+	import { SITE_URL } from '$lib/config';
 
 	let { data } = $props();
 	const featured = $derived<BookSummary[]>(data.featured);
@@ -22,6 +23,16 @@
 		name="description"
 		content="Ochorus — read classic Christian books from Andrew Murray, Charles Spurgeon, Watchman Nee and more. Free, beautifully set, in your language."
 	/>
+	<link rel="canonical" href="{SITE_URL}/" />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="Ochorus" />
+	<meta property="og:title" content="Ochorus — Equipping People with Classic Christian Books" />
+	<meta
+		property="og:description"
+		content="Read classic Christian books from Andrew Murray, Charles Spurgeon, Watchman Nee and more — free, beautifully set, in your language."
+	/>
+	<meta property="og:url" content="{SITE_URL}/" />
+	<meta name="twitter:card" content="summary" />
 </svelte:head>
 
 <!-- Hero -->
@@ -93,7 +104,7 @@
 	<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
 		{#each authors as author (author.slug)}
 			<a
-				href="/biographies#{author.slug}"
+				href="/authors/{author.slug}"
 				class="flex items-center gap-3 rounded-card border border-border p-4 hover:no-underline hover:bg-surface-2"
 			>
 				<span
