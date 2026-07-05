@@ -42,7 +42,10 @@ The MCP tab is hidden/automated — three consequences:
    `[...document.querySelectorAll('button')].find(b=>b.textContent.trim()==='X').click()`
    — and match by exact text/aria-label, NEVER `.find()` on a broad container
    (an outer div's first button may be the header search).
-3. To fill inputs use the native setter + input event:
+3. Programmatic `scrollTo()` does NOT emit a `scroll` event in the hidden
+   tab — scroll-driven logic (anchor saving) looks broken. After scrollTo,
+   `window.dispatchEvent(new Event('scroll'))` to exercise the handler.
+4. To fill inputs use the native setter + input event:
    `Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(el,'q'); el.dispatchEvent(new Event('input',{bubbles:true}))`
 
 ## Offline / PWA test procedure
