@@ -75,6 +75,19 @@ book preserves its `sort_order`.
    DJANGO_DEBUG=true uv run python manage.py dumpdata library --indent 1 -o library/fixtures/launch.json
    ```
 
+7. **Ship it to prod (two gotchas — see DEPLOYMENT.md).** A book-data change
+   doesn't reach the live site by pushing alone:
+   - **The live DB isn't re-seeded from the fixture** (`seed_if_empty` only fills
+     an empty DB). A transform over existing rows must ship as a **data
+     migration** (auto-runs on deploy via `manage.py release`; e.g.
+     `0003_clean_chapter_titles`). A re-import's new rows need `loaddata launch`
+     from the Render shell, or the migration path.
+   - **The prerendered `/books/<slug>` + `/authors/<slug>` pages won't refresh
+     from a backend-only commit.** Render skips the `ochorus-web` build when
+     nothing under `frontend/` changed, so the API + reader update but the static
+     pages stay stale. Manually redeploy the frontend: Render → `ochorus-web` →
+     **Manual Deploy → "Clear cache & deploy latest commit."**
+
 ## How chapter detection works (so you can fix it)
 
 A **heading** is a short block that is either a `CHAPTER X` marker OR set larger

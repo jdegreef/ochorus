@@ -78,3 +78,20 @@ DJANGO_DEBUG=true uv run python manage.py dumpdata library --indent 1 -o library
 ```
 
 (`import_ccel` / `import_gutenberg` add public-domain titles from those sources.)
+
+### Getting a data change onto the live site — two gotchas
+
+1. **The live DB isn't re-seeded from the fixture.** `seed_if_empty` only fills
+   an *empty* database, so a fixture change alone never reaches production. To
+   update live data, ship it as a **data migration** (runs on deploy via
+   `manage.py release`; see `0003_clean_chapter_titles`) — or, for a one-off,
+   `loaddata launch` from the Render shell.
+
+2. **A backend-only change does NOT refresh the prerendered pages.** The public
+   `/books/<slug>` and `/authors/<slug>` pages are static HTML baked at *frontend
+   build* time. Render skips the `ochorus-web` build when a commit touches
+   nothing under `frontend/`, so after a data/migration-only change the API and
+   the (client-side) reader update immediately, but the prerendered book/author
+   pages stay frozen on the old content. **Fix: manually redeploy the frontend** —
+   Render → `ochorus-web` → **Manual Deploy → "Clear cache & deploy latest
+   commit"** — to re-prerender against the fresh API.
