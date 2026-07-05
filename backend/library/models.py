@@ -86,6 +86,10 @@ class Chapter(models.Model):
     title = models.CharField(max_length=300, blank=True)
     # Cleaned, structured HTML (paragraphs, headings, blockquotes).
     body_html = models.TextField()
+    # Plain text derived from body_html — what full-text search matches and
+    # snippets. Kept by save(); fixture loads bypass save(), so the
+    # backfill_body_text command (run on every deploy) fills any gaps.
+    body_text = models.TextField(blank=True, default="")
     word_count = models.PositiveIntegerField(default=0)
 
     class Meta:
@@ -98,3 +102,12 @@ class Chapter(models.Model):
 
     def __str__(self) -> str:
         return f"{self.book.slug}/{self.order} — {self.title}"
+
+    def save(self, *args, **kwargs):
+        from .text import html_to_text
+
+        self.body_text = html_to_text(self.body_html)
+        update_fields = kwargs.get("update_fields")
+        if update_fields is not None and "body_html" in update_fields:
+            kwargs["update_fields"] = list(update_fields) + ["body_text"]
+        super().save(*args, **kwargs)

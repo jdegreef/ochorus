@@ -19,3 +19,6 @@ class Command(BaseCommand):
         call_command("migrate", interactive=False, verbosity=1)
         self.stdout.write("→ seed_if_empty")
         call_command("seed_if_empty")
+        # Fixture loads bypass Chapter.save(), so derive search text afterwards.
+        self.stdout.write("→ backfill_body_text")
+        call_command("backfill_body_text")

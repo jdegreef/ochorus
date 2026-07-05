@@ -4,12 +4,11 @@ Books are addressed by their canonical ``slug`` plus a ``language`` query param
 (default "en"). All endpoints are public (AllowAny via the project default).
 """
 
-import html
 import re
 
+from django.db import connection
 from django.db.models import Count, Q
 from django.shortcuts import get_object_or_404
-from django.utils.html import strip_tags
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -49,9 +48,18 @@ def _language_entry(code: str) -> dict:
     return {"code": code, "name": name, "native_name": native}
 
 
-def _snippet(body_html: str, query: str, radius: int = 90) -> str:
-    """A short plain-text excerpt centred on the first match of ``query``."""
-    text = re.sub(r"\s+", " ", html.unescape(strip_tags(body_html))).strip()
+# Snippet highlight markers. The API returns *plain text* snippets with matches
+# wrapped in these; the client HTML-escapes the text and then swaps the markers
+# for <mark> tags, so no HTML ever crosses the boundary unescaped.
+HL_START = "⟦"  # ⟦
+HL_END = "⟧"  # ⟧
+
+
+def _fallback_snippet(text: str, query: str, radius: int = 90) -> str:
+    """Excerpt centred on the first match, with all matches marker-wrapped.
+
+    Used on SQLite (dev); Postgres builds use SearchHeadline instead.
+    """
     idx = text.lower().find(query.lower())
     if idx == -1:
         return text[: radius * 2] + ("…" if len(text) > radius * 2 else "")
@@ -59,7 +67,10 @@ def _snippet(body_html: str, query: str, radius: int = 90) -> str:
     end = min(len(text), idx + len(query) + radius)
     prefix = "…" if start > 0 else ""
     suffix = "…" if end < len(text) else ""
-    return f"{prefix}{text[start:end]}{suffix}"
+    excerpt = text[start:end]
+    pattern = re.compile(re.escape(query), re.IGNORECASE)
+    excerpt = pattern.sub(lambda m: f"{HL_START}{m.group(0)}{HL_END}", excerpt)
+    return f"{prefix}{excerpt}{suffix}"
 
 
 class AuthorListView(generics.ListAPIView):
@@ -137,12 +148,26 @@ class LanguageListView(APIView):
         return Response([_language_entry(c) for c in codes])
 
 
-class SearchView(APIView):
-    """Full-text-ish search across published books, authors and chapter bodies.
+# Postgres text-search configs per content language. Languages without a
+# shipped stemmer (Swahili, Luganda, …) use "simple": exact-word matching, no
+# stemming — still ranked and highlighted.
+FTS_CONFIGS = {
+    "en": "english",
+    "fr": "french",
+    "es": "spanish",
+    "pt": "portuguese",
+}
 
-    Uses Postgres full-text search when available (production) and falls back to
-    case-insensitive ``icontains`` on SQLite (local dev), so results are returned
-    in either environment. Each hit carries a short plain-text snippet.
+
+class SearchView(APIView):
+    """Ranked full-text search across published books, authors and chapter text.
+
+    On Postgres (production): websearch-style query parsing, weighted ranking
+    (chapter/book titles > author > body) via SearchRank, and SearchHeadline
+    snippets with matches wrapped in HL_START/HL_END markers. On SQLite (dev):
+    a case-insensitive substring fallback producing the same response shape.
+    Snippets are plain text either way; the client escapes them and renders the
+    markers as <mark>.
     """
 
     MAX_RESULTS = 30
@@ -153,28 +178,68 @@ class SearchView(APIView):
         if len(q) < 2:
             return Response({"query": q, "results": []})
 
-        chapters = (
-            Chapter.objects.filter(book__is_published=True, book__language=language)
-            .filter(
-                Q(body_html__icontains=q)
-                | Q(title__icontains=q)
-                | Q(book__title__icontains=q)
-                | Q(book__subtitle__icontains=q)
-                | Q(book__author__name__icontains=q)
-            )
-            .select_related("book", "book__author")
-            .order_by("book__sort_order", "book__title", "order")[: self.MAX_RESULTS]
+        base = Chapter.objects.filter(
+            book__is_published=True, book__language=language
+        ).select_related("book", "book__author")
+
+        if connection.vendor == "postgresql":
+            results = self._search_postgres(base, q, language)
+        else:
+            results = self._search_fallback(base, q)
+        return Response({"query": q, "results": results})
+
+    def _search_postgres(self, base, q, language):
+        from django.contrib.postgres.search import (
+            SearchHeadline,
+            SearchQuery,
+            SearchRank,
+            SearchVector,
         )
 
-        results = [
-            {
-                "book_slug": c.book.slug,
-                "book_title": c.book.title,
-                "author_name": c.book.author.name,
-                "chapter_order": c.order,
-                "chapter_title": c.title,
-                "snippet": _snippet(c.body_html, q),
-            }
-            for c in chapters
-        ]
-        return Response({"query": q, "results": results})
+        config = FTS_CONFIGS.get(language, "simple")
+        query = SearchQuery(q, config=config, search_type="websearch")
+        vector = (
+            SearchVector("title", weight="A", config=config)
+            + SearchVector("book__title", weight="A", config=config)
+            + SearchVector("book__author__name", weight="B", config=config)
+            + SearchVector("body_text", weight="C", config=config)
+        )
+        chapters = (
+            base.annotate(
+                search=vector,
+                rank=SearchRank(vector, query),
+                headline=SearchHeadline(
+                    "body_text",
+                    query,
+                    config=config,
+                    start_sel=HL_START,
+                    stop_sel=HL_END,
+                    max_words=40,
+                    min_words=20,
+                ),
+            )
+            .filter(search=query)
+            .order_by("-rank", "book__sort_order", "order")[: self.MAX_RESULTS]
+        )
+        return [self._hit(c, snippet=c.headline) for c in chapters]
+
+    def _search_fallback(self, base, q):
+        chapters = base.filter(
+            Q(body_text__icontains=q)
+            | Q(title__icontains=q)
+            | Q(book__title__icontains=q)
+            | Q(book__subtitle__icontains=q)
+            | Q(book__author__name__icontains=q)
+        ).order_by("book__sort_order", "book__title", "order")[: self.MAX_RESULTS]
+        return [self._hit(c, snippet=_fallback_snippet(c.body_text, q)) for c in chapters]
+
+    @staticmethod
+    def _hit(c, snippet):
+        return {
+            "book_slug": c.book.slug,
+            "book_title": c.book.title,
+            "author_name": c.book.author.name,
+            "chapter_order": c.order,
+            "chapter_title": c.title,
+            "snippet": snippet,
+        }
