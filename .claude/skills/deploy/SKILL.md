@@ -58,6 +58,19 @@ A typical deploy takes ~5–10 min; poll every ~4 min.
    back to the SPA shell.
 4. `preDeployCommand` failures keep the old version live — check the Render
    deploy logs for the `release` output if the api hash never flips.
+5. **Parallel PRs adding migrations → divergent leaves** (killed the PR #8
+   deploy): another PR can land on main between your last fetch and your
+   merge, adding a same-numbered migration; prod `migrate` then fails with
+   "conflicting migrations / multiple leaf nodes" and the deploy dies in
+   pre-deploy. Prevention: `git fetch && git log main..origin/main` right
+   before merging, and re-check `ls backend/*/migrations/` for new numbers.
+   Cure: `makemigrations --merge` (a merge migration) in a quick follow-up
+   PR — see PR #12. The events page (dashboard → service → Events) shows
+   which commit failed and which is live; the dashboard is the ONLY place
+   deploy failures are visible (the old version keeps serving healthily).
+6. Render's static host serves unknown extensions as binary/octet-stream —
+   name web-served static files with known extensions (.json not
+   .webmanifest; see PR #13).
 
 ## Post-deploy verification (adapt per feature shipped)
 
@@ -78,7 +91,7 @@ curl -s "https://ochorus-api.onrender.com/api/library/plans/?language=en"
 curl -s -o /dev/null -w "%{http_code}" https://ochorus-api.onrender.com/api/reading/state/   # 401
 # PWA served:
 curl -s -I https://ochorus-web.onrender.com/service-worker.js | grep -i "200\|content-type"
-curl -s -I https://ochorus-web.onrender.com/manifest.webmanifest | grep -i "200\|content-type"
+curl -s -I https://ochorus-web.onrender.com/manifest.json | grep -i "200\|content-type"   # application/json
 ```
 
 Then a quick browser pass on the live site (home, a chapter, search) if the
