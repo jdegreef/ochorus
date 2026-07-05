@@ -41,12 +41,36 @@ services:
     staticPublishPath: ./build
     autoDeploy: true
     routes:
-      # Pure SPA: every path falls back to the app shell.
+      # Serve the prerendered HTML for the public (crawlable) pages. Render
+      # doesn't auto-map extensionless URLs to their .html files, so map them
+      # here. Single-segment :slug matches a book/author but NOT the 3-segment
+      # reader path, so the reader falls through to the SPA shell below.
+      - type: rewrite
+        source: /books
+        destination: /books.html
+      - type: rewrite
+        source: /biographies
+        destination: /biographies.html
+      - type: rewrite
+        source: /about
+        destination: /about.html
+      - type: rewrite
+        source: /contact
+        destination: /contact.html
+      - type: rewrite
+        source: /books/:slug
+        destination: /books/:slug.html
+      - type: rewrite
+        source: /authors/:slug
+        destination: /authors/:slug.html
+      # Everything else (the reader, search) falls back to the SPA app shell.
       - type: rewrite
         source: /*
         destination: /200.html
     envVars:
       - key: PUBLIC_API_BASE_URL # the ochorus-api URL, after first deploy
+        sync: false
+      - key: PUBLIC_SITE_URL # public origin for canonical/OG/sitemap; the ochorus-web URL (or ochorus.com later)
         sync: false
       - key: PUBLIC_SUPABASE_URL # https://<project-ref>.supabase.co (enables login)
         sync: false

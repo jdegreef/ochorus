@@ -40,6 +40,34 @@ class BookListSerializer(serializers.ModelSerializer):
         ]
 
 
+class AuthorDetailSerializer(serializers.ModelSerializer):
+    """An author page: bio, dates, and their published books in a language."""
+
+    book_count = serializers.SerializerMethodField()
+    books = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Author
+        fields = ["slug", "name", "bio", "birth_year", "death_year", "book_count", "books"]
+
+    def _books(self, obj):
+        from django.db.models import Count
+
+        language = self.context.get("language", "en")
+        return (
+            obj.books.filter(is_published=True, language=language)
+            .select_related("author")
+            .annotate(num_chapters=Count("chapters"))
+            .order_by("sort_order", "title")
+        )
+
+    def get_books(self, obj):
+        return BookListSerializer(self._books(obj), many=True).data
+
+    def get_book_count(self, obj):
+        return self._books(obj).count()
+
+
 class ChapterTocSerializer(serializers.ModelSerializer):
     """A chapter's metadata for the table of contents (no body)."""
 

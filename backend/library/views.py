@@ -16,6 +16,7 @@ from rest_framework.views import APIView
 
 from .models import Author, Book, Chapter
 from .serializers import (
+    AuthorDetailSerializer,
     AuthorListSerializer,
     BookDetailSerializer,
     BookListSerializer,
@@ -73,6 +74,20 @@ class AuthorListView(generics.ListAPIView):
             .annotate(num_books=Count("books", filter=Q(books__is_published=True)))
             .order_by("name")
         )
+
+
+class AuthorDetailView(generics.RetrieveAPIView):
+    """A single author with their published books (for the author page)."""
+
+    serializer_class = AuthorDetailSerializer
+
+    def get_object(self):
+        return get_object_or_404(Author, slug=self.kwargs["slug"])
+
+    def get_serializer_context(self):
+        ctx = super().get_serializer_context()
+        ctx["language"] = _language(self.request)
+        return ctx
 
 
 class BookListView(generics.ListAPIView):
