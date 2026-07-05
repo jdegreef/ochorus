@@ -41,6 +41,7 @@
 	const NAV = $derived([
 		{ href: '/about', label: t('nav.about') },
 		{ href: '/books', label: t('nav.books') },
+		{ href: '/sermons', label: t('nav.sermons') },
 		{ href: '/biographies', label: t('nav.biographies') },
 		{ href: '/contact', label: t('nav.contact') }
 	]);
@@ -106,6 +107,7 @@
 					<h3 class="mb-3 text-small font-semibold uppercase tracking-wider text-text">Explore</h3>
 					<ul class="space-y-2 text-small text-muted">
 						<li><a href="/books" class="hover:text-text">{t('nav.books')}</a></li>
+						<li><a href="/sermons" class="hover:text-text">{t('nav.sermons')}</a></li>
 						<li><a href="/biographies" class="hover:text-text">{t('nav.biographies')}</a></li>
 						<li><a href="/about" class="hover:text-text">{t('nav.about')}</a></li>
 						<li><a href="/contact" class="hover:text-text">{t('nav.contact')}</a></li>

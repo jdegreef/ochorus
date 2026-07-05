@@ -73,6 +73,23 @@ export interface SearchResponse {
 	results: SearchHit[];
 }
 
+export interface SermonSummary {
+	slug: string;
+	language: string;
+	title: string;
+	scripture_ref: string;
+	preached_on: string | null;
+	word_count: number;
+	author: Author;
+}
+
+export interface Sermon extends SermonSummary {
+	body_html: string;
+	source_url: string;
+	author_name: string;
+	author_slug: string;
+}
+
 export interface AuthorBio {
 	slug: string;
 	name: string;
@@ -83,7 +100,9 @@ export interface AuthorBio {
 }
 
 export interface AuthorDetail extends AuthorBio {
+	bio_html: string;
 	books: BookSummary[];
+	sermons: SermonSummary[];
 }
 
 export const listBooks = (language = 'en') =>
@@ -99,6 +118,12 @@ export const getBook = (slug: string, language = 'en') =>
 
 export const getChapter = (slug: string, order: number, language = 'en') =>
 	apiFetch<Chapter>(`/api/library/books/${slug}/chapters/${order}/?language=${language}`);
+
+export const listSermons = (language = 'en') =>
+	apiFetch<SermonSummary[]>(`/api/library/sermons/?language=${language}`);
+
+export const getSermon = (slug: string, language = 'en') =>
+	apiFetch<Sermon>(`/api/library/sermons/${slug}/?language=${language}`);
 
 export const listLanguages = () => apiFetch<Language[]>('/api/library/languages/');
 
