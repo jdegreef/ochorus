@@ -5,13 +5,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content="Ochorus — a free library of public-domain Christian classics." />
 		<meta name="theme-color" content="#faf6ef" />
+		<link rel="manifest" href="/manifest.webmanifest" />
+		<link rel="icon" href="/icons/icon-192.png" />
+		<link rel="apple-touch-icon" href="/icons/icon-192.png" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-title" content="Ochorus" />
 		<title>Ochorus</title>
 		<script>
 			try {
-				document.documentElement.setAttribute(
-					'data-theme',
-					localStorage.getItem('theme') === 'dark' ? 'dark' : 'light'
-				);
+				var dark = localStorage.getItem('theme') === 'dark';
+				document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+				// Match the browser UI (address bar / status bar) to the active theme.
+				var tc = document.querySelector('meta[name="theme-color"]');
+				if (tc) tc.setAttribute('content', dark ? '#16130f' : '#faf6ef');
 			} catch (e) {}
 		</script>
 		%sveltekit.head%

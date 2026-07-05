@@ -44,7 +44,12 @@ const EN: Dict = {
 	'search.placeholder': 'Search books, authors, text…',
 	'search.title': 'Search',
 	'search.noResults': 'No results for',
-	'search.prompt': 'Type at least two characters to search.'
+	'search.prompt': 'Type at least two characters to search.',
+	'pwa.offline': 'Offline — reading from your device',
+	'pwa.ready': 'Ochorus is ready to read offline.',
+	'pwa.dismiss': 'Dismiss',
+	'pwa.updateReady': 'A new version is available.',
+	'pwa.refresh': 'Refresh'
 };
 
 // Add locale dictionaries here as translations are reviewed, e.g. `sw: { ... }`.

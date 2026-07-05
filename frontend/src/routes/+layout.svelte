@@ -9,9 +9,11 @@
 	import { lang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { auth } from '$lib/auth.svelte';
+	import { pwa } from '$lib/pwa.svelte';
 	import { listLanguages } from '$lib/library';
 	import LanguagePicker from '$lib/components/LanguagePicker.svelte';
 	import AccountMenu from '$lib/components/AccountMenu.svelte';
+	import PwaToasts from '$lib/components/PwaToasts.svelte';
 
 	let { children } = $props();
 	const t = i18n.t;
@@ -22,6 +24,7 @@
 		i18n.init(lang.current);
 		readerPrefs.init();
 		auth.init();
+		pwa.init();
 		try {
 			lang.setAvailable(await listLanguages());
 		} catch {
@@ -123,3 +126,5 @@
 		</footer>
 	{/if}
 </div>
+
+<PwaToasts />
