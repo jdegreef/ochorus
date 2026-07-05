@@ -7,6 +7,7 @@
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { marks } from '$lib/marks.svelte';
 	import { i18n } from '$lib/i18n.svelte';
+	import { getLang } from '$lib/lang.svelte';
 	import { readingTime } from '$lib/reading';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import SelectionBar from '$lib/components/SelectionBar.svelte';
@@ -35,8 +36,9 @@
 	$effect(() => {
 		const s = slug;
 		const order = chapter.order;
-		saveProgress(s, order);
-		marks.load(s, order);
+		const language = getLang();
+		saveProgress(s, order, language);
+		marks.load(s, order, language);
 
 		let cleanup: (() => void) | undefined;
 		(async () => {
@@ -45,6 +47,14 @@
 			cleanup = observeTitle();
 		})();
 		return () => cleanup?.();
+	});
+
+	// A first-sign-in sync can replace the local cache underneath us — re-read the
+	// current chapter's marks so freshly-pulled highlights/notes appear.
+	onMount(() => {
+		const onSync = () => marks.refresh();
+		window.addEventListener('ochorus:sync', onSync);
+		return () => window.removeEventListener('ochorus:sync', onSync);
 	});
 
 	function restoreScroll(s: string, order: number) {

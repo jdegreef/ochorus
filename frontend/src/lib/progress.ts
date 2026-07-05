@@ -1,12 +1,18 @@
 import { browser } from '$app/environment';
+import { readingSync, type ProgressRecord } from './readingSync';
 
 /**
- * Reading progress, stored in localStorage (keyed by book slug). When login
- * lands this becomes a thin cache in front of a synced server-side record.
+ * Reading progress, stored in localStorage (keyed by book slug) as the offline
+ * cache. When signed in, every change is also mirrored to the account via
+ * `readingSync` so the reader's place follows them across devices.
+ *
+ * A record captures the exact resume point: the last `order` (chapter) opened
+ * plus the `paragraph_index` scrolled to within it, so "Continue reading" can
+ * deep-link straight back to the spot.
  */
 const KEY = 'ochorus:progress';
 
-type ProgressMap = Record<string, { order: number; at: number }>;
+type ProgressMap = Record<string, ProgressRecord>;
 
 function read(): ProgressMap {
 	if (!browser) return {};
@@ -17,20 +23,41 @@ function read(): ProgressMap {
 	}
 }
 
+function write(map: ProgressMap) {
+	if (browser) localStorage.setItem(KEY, JSON.stringify(map));
+}
+
+/** All in-progress books, newest first — powers the "Continue reading" lists. */
+export function allProgress(): (ProgressRecord & { slug: string })[] {
+	return Object.entries(read())
+		.map(([slug, r]) => ({ slug, ...r }))
+		.sort((a, b) => b.at - a.at);
+}
+
 export function getProgress(slug: string): number | null {
 	return read()[slug]?.order ?? null;
 }
 
-export function saveProgress(slug: string, order: number): void {
+export function getProgressRecord(slug: string): ProgressRecord | null {
+	return read()[slug] ?? null;
+}
+
+/** Record which chapter is open. Resets the in-chapter anchor for the new spot. */
+export function saveProgress(slug: string, order: number, language = 'en'): void {
 	if (!browser) return;
 	const map = read();
-	map[slug] = { order, at: Date.now() };
-	localStorage.setItem(KEY, JSON.stringify(map));
+	const paragraph_index = getScrollAnchor(slug, order) ?? 0;
+	const rec: ProgressRecord = { order, paragraph_index, language, at: Date.now() };
+	map[slug] = rec;
+	write(map);
+	readingSync.pushProgress(slug, rec);
 }
 
 /**
  * In-chapter scroll position, anchored to a paragraph index rather than a pixel
- * offset so it survives font-size / measure changes. Keyed by `slug:order`.
+ * offset so it survives font-size / measure changes. Keyed by `slug:order`. The
+ * anchor for the *current* chapter is also folded into the book's progress
+ * record so a resume lands on the exact paragraph.
  */
 const ANCHOR_KEY = 'ochorus:anchors';
 
@@ -60,4 +87,14 @@ export function saveScrollAnchor(slug: string, order: number, paragraphIndex: nu
 		map[anchorKey(slug, order)] = paragraphIndex;
 	}
 	localStorage.setItem(ANCHOR_KEY, JSON.stringify(map));
+
+	// Keep the book's resume point in step with where we actually are.
+	const progress = read();
+	const rec = progress[slug];
+	if (rec && rec.order === order) {
+		rec.paragraph_index = Math.max(0, paragraphIndex);
+		rec.at = Date.now();
+		write(progress);
+		readingSync.pushProgress(slug, rec);
+	}
 }
