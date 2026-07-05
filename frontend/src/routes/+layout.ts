@@ -1,3 +1,4 @@
-// Pure client-rendered SPA: data is fetched from the API in the browser.
-export const ssr = false;
-export const prerender = false;
+// Public pages are prerendered to static HTML at build time for SEO (the load
+// functions fetch from the API during the build). The reader and search opt out
+// (prerender=false + ssr=false) and run as a client-side SPA.
+export const prerender = true;

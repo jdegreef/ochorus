@@ -21,7 +21,7 @@ def backfill(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("library", "0003_chapter_body_text"),
+        ("library", "0005_chapter_body_text"),
     ]
 
     operations = [

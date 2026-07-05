@@ -278,7 +278,7 @@
 	<nav class="mb-5 flex flex-wrap items-center gap-1.5 text-small text-muted" aria-label="Breadcrumb">
 		<a href="/books" class="hover:text-text">{t('nav.books')}</a>
 		<span>›</span>
-		<a href="/biographies#{chapter.author_slug}" class="hover:text-text">{chapter.author_name}</a>
+		<a href="/authors/{chapter.author_slug}" class="hover:text-text">{chapter.author_name}</a>
 		<span>›</span>
 		<a href="/books/{slug}" class="hover:text-text">{chapter.book_title}</a>
 	</nav>

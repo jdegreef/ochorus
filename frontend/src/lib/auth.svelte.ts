@@ -15,6 +15,11 @@ export interface Profile {
 	font_scale: number;
 }
 
+const NOT_CONFIGURED = 'Sign-in is not configured yet.';
+
+/** Absolute app origin for redirect URLs (magic link / OAuth land back here). */
+const origin = () => (browser ? window.location.origin : undefined);
+
 /**
  * Auth + cross-device preference sync. Supabase owns the credentials; on sign-in
  * we pull the Django-side profile (reading prefs) and apply it, and we push prefs
@@ -58,17 +63,63 @@ class Auth {
 		readingSync.setSignedIn(!!session);
 	}
 
+	// Auth actions. Each returns an error message on failure, or null on success
+	// (Google redirects away, so it never resolves to null on success).
+
 	async signIn(email: string, password: string): Promise<string | null> {
 		const sb = supabase();
-		if (!sb) return 'Auth is not configured.';
+		if (!sb) return NOT_CONFIGURED;
 		const { error } = await sb.auth.signInWithPassword({ email, password });
 		return error?.message ?? null;
 	}
 
 	async signUp(email: string, password: string): Promise<string | null> {
 		const sb = supabase();
-		if (!sb) return 'Auth is not configured.';
-		const { error } = await sb.auth.signUp({ email, password });
+		if (!sb) return NOT_CONFIGURED;
+		const { error } = await sb.auth.signUp({
+			email,
+			password,
+			options: { emailRedirectTo: origin() }
+		});
+		return error?.message ?? null;
+	}
+
+	/** Passwordless: email the user a one-time sign-in link. */
+	async signInWithMagicLink(email: string): Promise<string | null> {
+		const sb = supabase();
+		if (!sb) return NOT_CONFIGURED;
+		const { error } = await sb.auth.signInWithOtp({
+			email,
+			options: { emailRedirectTo: origin() }
+		});
+		return error?.message ?? null;
+	}
+
+	/** OAuth via Google. On success the browser navigates away to Google. */
+	async signInWithGoogle(): Promise<string | null> {
+		const sb = supabase();
+		if (!sb) return NOT_CONFIGURED;
+		const { error } = await sb.auth.signInWithOAuth({
+			provider: 'google',
+			options: { redirectTo: origin() }
+		});
+		return error?.message ?? null;
+	}
+
+	/** Email a password-reset link that lands on /reset-password. */
+	async sendPasswordReset(email: string): Promise<string | null> {
+		const sb = supabase();
+		if (!sb) return NOT_CONFIGURED;
+		const redirectTo = browser ? `${window.location.origin}/reset-password` : undefined;
+		const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo });
+		return error?.message ?? null;
+	}
+
+	/** Set a new password during a recovery session (from the reset link). */
+	async updatePassword(password: string): Promise<string | null> {
+		const sb = supabase();
+		if (!sb) return NOT_CONFIGURED;
+		const { error } = await sb.auth.updateUser({ password });
 		return error?.message ?? null;
 	}
 

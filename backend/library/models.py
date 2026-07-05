@@ -15,7 +15,12 @@ from django.db import models
 class Author(models.Model):
     slug = models.SlugField(max_length=120, unique=True)
     name = models.CharField(max_length=200)
+    # Short summary (a few sentences) — used on cards, lists and SEO meta.
     bio = models.TextField(blank=True)
+    # Long-form biography as cleaned HTML (paragraphs, <h2> sections, pull-quote
+    # <blockquote>s, and <aside class="prayer"> callouts). Rendered on the author
+    # page above their books. Written via the `write-biography` skill.
+    bio_html = models.TextField(blank=True)
     birth_year = models.IntegerField(null=True, blank=True)
     death_year = models.IntegerField(null=True, blank=True)
     original_language = models.CharField(max_length=10, default="en")
@@ -111,6 +116,44 @@ class Chapter(models.Model):
         if update_fields is not None and "body_html" in update_fields:
             kwargs["update_fields"] = list(update_fields) + ["body_text"]
         super().save(*args, **kwargs)
+
+
+class Sermon(models.Model):
+    """A single sermon by an author — like a Book, but a standalone piece with no
+    chapters. Grouped under the author and listed on the /sermons shelf.
+    """
+
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name="sermons")
+    # Canonical identifier shared across languages, unique per language.
+    slug = models.SlugField(max_length=180)
+    language = models.CharField(max_length=10, default="en")
+
+    title = models.CharField(max_length=300)
+    # The sermon's text — e.g. "John 3:16" or "Isaiah 45:22".
+    scripture_ref = models.CharField(max_length=160, blank=True)
+    # When it was preached, if known (day precision optional — see year note).
+    preached_on = models.DateField(null=True, blank=True)
+    # Cleaned, structured HTML body (paragraphs, headings, blockquotes).
+    body_html = models.TextField()
+    word_count = models.PositiveIntegerField(default=0)
+    source_url = models.URLField(blank=True)
+
+    sort_order = models.PositiveIntegerField(default=0)
+    is_published = models.BooleanField(default=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["sort_order", "title"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["slug", "language"], name="uniq_sermon_slug_language"
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.title} — {self.author.name} ({self.language})"
 
 
 class Plan(models.Model):

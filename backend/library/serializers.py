@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Author, Book, Chapter, Plan, PlanDay
+from .models import Author, Book, Chapter, Plan, PlanDay, Sermon
 
 
 class AuthorSerializer(serializers.ModelSerializer):
@@ -38,6 +38,88 @@ class BookListSerializer(serializers.ModelSerializer):
             "cover_url",
             "chapter_count",
         ]
+
+
+class SermonListSerializer(serializers.ModelSerializer):
+    """A sermon card — enough for the shelf and the author page (no body)."""
+
+    author = AuthorSerializer(read_only=True)
+
+    class Meta:
+        model = Sermon
+        fields = [
+            "slug",
+            "language",
+            "title",
+            "scripture_ref",
+            "preached_on",
+            "word_count",
+            "author",
+        ]
+
+
+class SermonDetailSerializer(serializers.ModelSerializer):
+    """A single sermon with its full body, for the reader."""
+
+    author_name = serializers.CharField(source="author.name", read_only=True)
+    author_slug = serializers.CharField(source="author.slug", read_only=True)
+
+    class Meta:
+        model = Sermon
+        fields = [
+            "slug",
+            "language",
+            "title",
+            "scripture_ref",
+            "preached_on",
+            "word_count",
+            "body_html",
+            "source_url",
+            "author_name",
+            "author_slug",
+        ]
+
+
+class AuthorDetailSerializer(serializers.ModelSerializer):
+    """An author page: bio, dates, their books and their sermons in a language."""
+
+    book_count = serializers.SerializerMethodField()
+    books = serializers.SerializerMethodField()
+    sermons = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Author
+        fields = [
+            "slug", "name", "bio", "bio_html", "birth_year", "death_year",
+            "book_count", "books", "sermons",
+        ]
+
+    def _language(self):
+        return self.context.get("language", "en")
+
+    def _books(self, obj):
+        from django.db.models import Count
+
+        return (
+            obj.books.filter(is_published=True, language=self._language())
+            .select_related("author")
+            .annotate(num_chapters=Count("chapters"))
+            .order_by("sort_order", "title")
+        )
+
+    def get_books(self, obj):
+        return BookListSerializer(self._books(obj), many=True).data
+
+    def get_book_count(self, obj):
+        return self._books(obj).count()
+
+    def get_sermons(self, obj):
+        sermons = (
+            obj.sermons.filter(is_published=True, language=self._language())
+            .select_related("author")
+            .order_by("sort_order", "title")
+        )
+        return SermonListSerializer(sermons, many=True).data
 
 
 class ChapterTocSerializer(serializers.ModelSerializer):

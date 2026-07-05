@@ -14,3 +14,4 @@ node_modules/
 
 # Editor
 *.swp
+frontend/node_modules

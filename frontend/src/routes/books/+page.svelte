@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { BookSummary } from '$lib/library';
+	import { SITE_URL } from '$lib/config';
 
 	let { data } = $props();
 	const books = $derived<BookSummary[]>(data.books);
@@ -27,7 +28,17 @@
 	}
 </script>
 
-<svelte:head><title>Books — Ochorus</title></svelte:head>
+<svelte:head>
+	<title>Books — Ochorus</title>
+	<meta
+		name="description"
+		content="Browse the Ochorus library — classic Christian books by Andrew Murray, Charles Spurgeon, Watchman Nee, Hannah Whitall Smith and more. Free to read."
+	/>
+	<link rel="canonical" href="{SITE_URL}/books" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Books — Ochorus" />
+	<meta property="og:url" content="{SITE_URL}/books" />
+</svelte:head>
 
 <div class="mx-auto max-w-5xl px-5 py-10">
 	<header class="mb-8">

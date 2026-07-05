@@ -20,7 +20,10 @@ export function supabase(): SupabaseClient | null {
 	if (!authEnabled) return null;
 	if (!client) {
 		client = createClient(url!, anonKey!, {
-			auth: { persistSession: true, autoRefreshToken: true }
+			// detectSessionInUrl lets the client complete the Google OAuth and
+			// magic-link redirects automatically when the user lands back on the
+			// app, so no dedicated /auth/callback route is needed.
+			auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
 		});
 	}
 	return client;

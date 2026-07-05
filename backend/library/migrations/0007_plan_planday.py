@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('library', '0004_backfill_body_text'),
+        ('library', '0006_backfill_body_text'),
     ]
 
     operations = [

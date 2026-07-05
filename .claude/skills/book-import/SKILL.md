@@ -75,6 +75,19 @@ book preserves its `sort_order`.
    DJANGO_DEBUG=true uv run python manage.py dumpdata library --indent 1 -o library/fixtures/launch.json
    ```
 
+7. **Ship it to prod (two gotchas — see DEPLOYMENT.md).** A book-data change
+   doesn't reach the live site by pushing alone:
+   - **The live DB isn't re-seeded from the fixture** (`seed_if_empty` only fills
+     an empty DB). A transform over existing rows must ship as a **data
+     migration** (auto-runs on deploy via `manage.py release`; e.g.
+     `0003_clean_chapter_titles`). A re-import's new rows need `loaddata launch`
+     from the Render shell, or the migration path.
+   - **The prerendered `/books/<slug>` + `/authors/<slug>` pages won't refresh
+     from a backend-only commit.** Render skips the `ochorus-web` build when
+     nothing under `frontend/` changed, so the API + reader update but the static
+     pages stay stale. Manually redeploy the frontend: Render → `ochorus-web` →
+     **Manual Deploy → "Clear cache & deploy latest commit."**
+
 ## How chapter detection works (so you can fix it)
 
 A **heading** is a short block that is either a `CHAPTER X` marker OR set larger
@@ -90,6 +103,30 @@ dropped; chapters under 120 words are dropped as stubs.
 
 ## Known failure modes & fixes (append as we learn)
 
+- **Paragraphs broken into fragments** (sentences split mid-thought). PyMuPDF
+  emits one block per visual chunk. Fix lives in `_merge_paragraphs`: a block
+  that doesn't end in `.?!` continues the previous one. *(2026-06)*
+- **Redundant `Chapter N.` prefix in the title** (e.g. "Chapter One. The Morning
+  Hour" — the reader already shows the number, so it renders "1. Chapter One.
+  …"). Stripped by `ingest.clean_title` (`_CHAPTER_PREFIX`), applied by the
+  importer to every title. Only strips when a descriptive title follows; a bare
+  "Chapter 3" is left alone. *(Inner Chamber et al., 2026-07)*
+- **Quotation marks in a title** ("Their eyes were opened…", `You"`, `"in Him"`).
+  `ingest.clean_title` removes double quotes everywhere and edge single quotes,
+  but **preserves apostrophes** in possessives/contractions (God's, Paul's) by
+  only stripping a straight `'` that isn't flanked by letters. Also capitalises
+  the first letter so a dequoted "in Him" → "In Him". *(Jesus Himself,
+  Unselfishness of God, 2026-07)*
+- **Title captured only the tail word** when the real title is a long quoted
+  sentence that wraps across lines (title-borrow grabbed just "You" from "I will
+  come and dwell with you…"). Heuristics can't infer the whole sentence — use a
+  per-book `corrections.py` entry with the full title from the PDF's TOC.
+  *(jesus-himself-2 ch2, 2026-07)*
+- **Backfilling the live library after a title-rule change:** prod isn't
+  re-seeded from the fixture (`seed_if_empty` only fills an empty DB), so a pure
+  title transform ships as a **data migration** that calls `clean_title` (+ the
+  corrections) over all existing `Chapter` rows. It runs automatically via
+  `manage.py release` on deploy. See `0003_clean_chapter_titles`. *(2026-07)*
 - **Paragraphs broken into fragments** (sentences split mid-thought). PyMuPDF
   emits one block per visual chunk. Fix lives in `_merge_paragraphs`: a block
   that doesn't end in `.?!` continues the previous one. *(2026-06)*

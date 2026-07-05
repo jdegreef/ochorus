@@ -13,14 +13,17 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Author, Book, Chapter, Plan
+from .models import Author, Book, Chapter, Plan, Sermon
 from .serializers import (
+    AuthorDetailSerializer,
     AuthorListSerializer,
     BookDetailSerializer,
     BookListSerializer,
     ChapterDetailSerializer,
     PlanDetailSerializer,
     PlanListSerializer,
+    SermonDetailSerializer,
+    SermonListSerializer,
 )
 
 DEFAULT_LANGUAGE = "en"
@@ -88,6 +91,20 @@ class AuthorListView(generics.ListAPIView):
         )
 
 
+class AuthorDetailView(generics.RetrieveAPIView):
+    """A single author with their published books (for the author page)."""
+
+    serializer_class = AuthorDetailSerializer
+
+    def get_object(self):
+        return get_object_or_404(Author, slug=self.kwargs["slug"])
+
+    def get_serializer_context(self):
+        ctx = super().get_serializer_context()
+        ctx["language"] = _language(self.request)
+        return ctx
+
+
 class BookListView(generics.ListAPIView):
     """All published books for a language, ordered for the shelf."""
 
@@ -130,6 +147,31 @@ class ChapterDetailView(generics.RetrieveAPIView):
             Chapter.objects.select_related("book__author"),
             book=book,
             order=self.kwargs["order"],
+        )
+
+
+class SermonListView(generics.ListAPIView):
+    """All published sermons for a language, ordered for the shelf."""
+
+    serializer_class = SermonListSerializer
+
+    def get_queryset(self):
+        return (
+            Sermon.objects.filter(is_published=True, language=_language(self.request))
+            .select_related("author")
+            .order_by("author__name", "sort_order", "title")
+        )
+
+
+class SermonDetailView(generics.RetrieveAPIView):
+    serializer_class = SermonDetailSerializer
+
+    def get_object(self):
+        return get_object_or_404(
+            Sermon.objects.select_related("author"),
+            slug=self.kwargs["slug"],
+            language=_language(self.request),
+            is_published=True,
         )
 
 

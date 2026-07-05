@@ -1,14 +1,13 @@
 <script lang="ts">
 	import type { BookSummary, AuthorBio } from '$lib/library';
-	import { i18n } from '$lib/i18n.svelte';
+	import { SITE_URL } from '$lib/config';
 	import ContinueReading from '$lib/components/ContinueReading.svelte';
+	import TodaysReading from '$lib/components/TodaysReading.svelte';
 
 	let { data } = $props();
 	const featured = $derived<BookSummary[]>(data.featured);
 	const authors = $derived<AuthorBio[]>(data.authors);
 	const totalBooks = $derived<number>(data.totalBooks);
-	const today = $derived(data.today);
-	const t = i18n.t;
 
 	const initials = (name: string) =>
 		name
@@ -26,6 +25,16 @@
 		name="description"
 		content="Ochorus — read classic Christian books from Andrew Murray, Charles Spurgeon, Watchman Nee and more. Free, beautifully set, in your language."
 	/>
+	<link rel="canonical" href="{SITE_URL}/" />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="Ochorus" />
+	<meta property="og:title" content="Ochorus — Equipping People with Classic Christian Books" />
+	<meta
+		property="og:description"
+		content="Read classic Christian books from Andrew Murray, Charles Spurgeon, Watchman Nee and more — free, beautifully set, in your language."
+	/>
+	<meta property="og:url" content="{SITE_URL}/" />
+	<meta name="twitter:card" content="summary" />
 </svelte:head>
 
 <!-- Hero -->
@@ -48,35 +57,9 @@
 	</div>
 </section>
 
-<!-- Continue reading (only renders when something is in progress) -->
+<!-- Personal blocks — client-side only (this page is prerendered) -->
 <ContinueReading books={data.books} />
-
-<!-- Reading of the day -->
-{#if today}
-	<section class="mx-auto max-w-5xl px-5 pt-14">
-		<div
-			class="flex flex-wrap items-center justify-between gap-4 rounded-card border border-border bg-surface p-6"
-		>
-			<div class="min-w-0">
-				<p class="mb-1 text-small font-semibold uppercase tracking-widest text-accent">
-					{t('plans.todaysReading')}
-				</p>
-				<h2 class="text-h3 truncate text-text">
-					{today.chapterTitle || today.bookTitle}
-				</h2>
-				<p class="mt-0.5 text-small text-muted">
-					{today.plan.title} · {t('plans.day')} {today.day} {t('plans.of')} {today.plan.day_count}
-				</p>
-			</div>
-			<div class="flex shrink-0 items-center gap-3">
-				<a href={today.href} class="btn btn-primary">
-					{today.isStarted ? t('plans.continue') : t('plans.start')}
-				</a>
-				<a href="/plans" class="text-small font-semibold text-accent">{t('plans.all')} →</a>
-			</div>
-		</div>
-	</section>
-{/if}
+<TodaysReading />
 
 <!-- Discover Your Next Book -->
 <section class="mx-auto max-w-5xl px-5 py-14">
@@ -127,7 +110,7 @@
 	<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
 		{#each authors as author (author.slug)}
 			<a
-				href="/biographies#{author.slug}"
+				href="/authors/{author.slug}"
 				class="flex items-center gap-3 rounded-card border border-border p-4 hover:no-underline hover:bg-surface-2"
 			>
 				<span

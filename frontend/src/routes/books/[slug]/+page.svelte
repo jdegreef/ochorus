@@ -2,6 +2,8 @@
 	import type { BookDetail } from '$lib/library';
 	import { getProgress } from '$lib/progress';
 	import { readingMinutes, readingTime } from '$lib/reading';
+	import { SITE_URL } from '$lib/config';
+	import { absUrl, jsonLd, breadcrumb } from '$lib/seo';
 
 	let { data } = $props();
 	const book = $derived<BookDetail>(data.book);
@@ -16,9 +18,53 @@
 	);
 
 	const totalWords = $derived(book.chapters.reduce((sum, c) => sum + c.word_count, 0));
+
+	const canonical = $derived(`${SITE_URL}/books/${book.slug}`);
+	const description = $derived(
+		(book.description || `${book.title} by ${book.author.name} — free to read on Ochorus.`).slice(
+			0,
+			300
+		)
+	);
+	const ogImage = $derived(book.cover_url ? absUrl(book.cover_url) : '');
+	const bookLd = $derived(
+		jsonLd({
+			'@context': 'https://schema.org',
+			'@type': 'Book',
+			name: book.title,
+			author: { '@type': 'Person', name: book.author.name },
+			description: book.description || undefined,
+			image: ogImage || undefined,
+			inLanguage: book.language,
+			url: canonical,
+			isAccessibleForFree: true,
+			numberOfPages: book.chapter_count
+		})
+	);
+	const crumbsLd = $derived(
+		jsonLd(
+			breadcrumb([
+				{ name: 'Home', url: '/' },
+				{ name: 'Books', url: '/books' },
+				{ name: book.title, url: `/books/${book.slug}` }
+			])
+		)
+	);
 </script>
 
-<svelte:head><title>{book.title} — {book.author.name} — Ochorus</title></svelte:head>
+<svelte:head>
+	<title>{book.title} — {book.author.name} — Ochorus</title>
+	<meta name="description" content={description} />
+	<link rel="canonical" href={canonical} />
+	<meta property="og:type" content="book" />
+	<meta property="og:title" content="{book.title} — {book.author.name}" />
+	<meta property="og:description" content={description} />
+	<meta property="og:url" content={canonical} />
+	{#if ogImage}<meta property="og:image" content={ogImage} />{/if}
+	<meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+	{@html bookLd}
+	{@html crumbsLd}
+</svelte:head>
 
 <div class="mx-auto max-w-3xl px-5 py-8">
 	<a href="/" class="text-small text-muted">← Library</a>
@@ -45,7 +91,9 @@
 			<h1 class="text-h1">{book.title}</h1>
 			{#if book.subtitle}<p class="mt-1 text-h3 text-muted">{book.subtitle}</p>{/if}
 			<p class="mt-2 text-body">
-				{book.author.name}{#if years}<span class="text-muted"> · {years}</span>{/if}
+				<a href="/authors/{book.author.slug}" class="text-accent hover:underline"
+					>{book.author.name}</a
+				>{#if years}<span class="text-muted"> · {years}</span>{/if}
 			</p>
 
 			<div class="mt-5 flex flex-wrap items-center gap-3">
