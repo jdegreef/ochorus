@@ -4,6 +4,11 @@ import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ depends }) => {
 	depends('app:lang');
-	const sermons = await listSermons(getLang());
-	return { sermons };
+	// Tolerate a lagging/absent sermon endpoint at prerender time (see the
+	// [slug] entries generator) — render an empty list rather than fail the build.
+	try {
+		return { sermons: await listSermons(getLang()) };
+	} catch {
+		return { sermons: [] };
+	}
 };
