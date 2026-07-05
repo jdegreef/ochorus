@@ -25,7 +25,7 @@ from django.db import transaction
 from django.utils.text import slugify
 
 from library.corrections import EXCLUDED_SLUGS, chapter_title_overrides
-from library.ingest import is_front_matter
+from library.ingest import clean_title, is_front_matter
 from library.models import Author, Book, Chapter
 
 CATALOG_URL = "https://ochorus.com/ochorus-books/"
@@ -345,8 +345,9 @@ def upsert(meta: dict, chapters: list[tuple[str, str]], sort_order: int) -> Book
     book.chapters.all().delete()
     overrides = chapter_title_overrides(meta["slug"])
     for order, (title, body) in enumerate(chapters, start=1):
+        final = clean_title(overrides.get(order, title))
         Chapter.objects.create(
-            book=book, order=order, title=overrides.get(order, title)[:300], body_html=body,
+            book=book, order=order, title=final[:300], body_html=body,
             word_count=len(re.sub(r"<[^>]+>", " ", body).split()),
         )
     return book

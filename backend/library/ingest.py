@@ -32,6 +32,17 @@ DROP_SELECTORS = [
 _PAGE_MARKER = re.compile(r"\[p\s*[ivxlcdm0-9]+\s*\]", re.I)
 _WS = re.compile(r"\s+")
 
+# A redundant "Chapter <n>." prefix (word / digit / roman numeral, any
+# separator) — the reader already shows the chapter number, so it reads as
+# "1. Chapter One. The Morning Hour". Stripped only when a descriptive title
+# follows (a bare "Chapter 3" is left alone — there's nothing else to show).
+_CHAPTER_PREFIX = re.compile(r"^\s*chapter\s+\S[^.:—–]*?\s*[.:—–]\s+", re.I)
+# Quotation marks are noise in a title. Double quotes (incl. straight ") go
+# everywhere; a straight single quote only when it's NOT flanked by letters, so
+# apostrophes in contractions/possessives (God's, Paul's) are preserved.
+_DQUOTE = re.compile(r"[“”„‟«»″‶\"]")
+_SQUOTE = re.compile(r"(?<![A-Za-z])'|'(?![A-Za-z])")
+
 
 def clean_html(node: Tag) -> str:
     """Reduce a parsed content node to safe, attribute-free HTML."""
@@ -57,10 +68,29 @@ def clean_fragment(html: str) -> str:
 
 
 def clean_title(raw: str) -> str:
-    """Tidy a chapter heading: drop page markers and a trailing 'Contents' link."""
-    t = _PAGE_MARKER.sub("", raw)
+    """Normalise a chapter heading for display.
+
+    Drops page markers and a trailing 'Contents' link, strips a redundant
+    "Chapter N." prefix, removes quotation marks (keeping apostrophes), and
+    capitalises the first letter. Idempotent — safe to apply more than once.
+    """
+    t = _PAGE_MARKER.sub("", raw or "")
     t = _WS.sub(" ", t).strip()
     t = re.sub(r"\s*Contents$", "", t).strip()
+    # Drop the "Chapter N." prefix when a descriptive title remains.
+    m = _CHAPTER_PREFIX.match(t)
+    if m and t[m.end():].strip():
+        t = t[m.end():]
+    # Remove quotation marks; tidy stray wrapping punctuation and spacing.
+    t = _DQUOTE.sub("", t)
+    t = _SQUOTE.sub("", t)
+    t = re.sub(r"^[\s`~]+|[\s`~]+$", "", t)
+    t = _WS.sub(" ", t).strip()
+    # Capitalise the first alphabetic character ("in Him" -> "In Him").
+    for i, ch in enumerate(t):
+        if ch.isalpha():
+            t = t[:i] + ch.upper() + t[i + 1:]
+            break
     return t
 
 
