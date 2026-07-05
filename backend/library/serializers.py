@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Author, Book, Chapter
+from .models import Author, Book, Chapter, Plan, PlanDay
 
 
 class AuthorSerializer(serializers.ModelSerializer):
@@ -90,3 +90,45 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
 
     def get_next(self, obj):
         return self._sibling(obj, +1)
+
+
+class PlanListSerializer(serializers.ModelSerializer):
+    """Plans index — enough for a browse card."""
+
+    day_count = serializers.IntegerField(source="num_days", read_only=True)
+
+    class Meta:
+        model = Plan
+        fields = ["slug", "language", "title", "description", "day_count"]
+
+
+class PlanDaySerializer(serializers.ModelSerializer):
+    """One day's reading, enriched with display titles for the linked chapter."""
+
+    book_title = serializers.CharField(read_only=True, default="")
+    chapter_title = serializers.CharField(read_only=True, default="")
+
+    class Meta:
+        model = PlanDay
+        fields = ["day", "book_slug", "chapter_order", "book_title", "chapter_title"]
+
+
+class PlanDetailSerializer(PlanListSerializer):
+    days = serializers.SerializerMethodField()
+
+    class Meta(PlanListSerializer.Meta):
+        fields = PlanListSerializer.Meta.fields + ["days"]
+
+    def get_days(self, obj):
+        days = list(obj.days.all())
+        # Resolve chapter/book titles for every day in two queries, not 2N.
+        slugs = {d.book_slug for d in days}
+        chapters = Chapter.objects.filter(
+            book__slug__in=slugs, book__language=obj.language
+        ).values("book__slug", "book__title", "order", "title")
+        lookup = {(c["book__slug"], c["order"]): c for c in chapters}
+        for d in days:
+            c = lookup.get((d.book_slug, d.chapter_order))
+            d.book_title = c["book__title"] if c else ""
+            d.chapter_title = c["title"] if c else ""
+        return PlanDaySerializer(days, many=True).data

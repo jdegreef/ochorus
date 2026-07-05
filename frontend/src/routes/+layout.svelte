@@ -44,6 +44,7 @@
 	const NAV = $derived([
 		{ href: '/about', label: t('nav.about') },
 		{ href: '/books', label: t('nav.books') },
+		{ href: '/plans', label: t('nav.plans') },
 		{ href: '/biographies', label: t('nav.biographies') },
 		{ href: '/contact', label: t('nav.contact') }
 	]);

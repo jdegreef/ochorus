@@ -13,12 +13,14 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Author, Book, Chapter
+from .models import Author, Book, Chapter, Plan
 from .serializers import (
     AuthorListSerializer,
     BookDetailSerializer,
     BookListSerializer,
     ChapterDetailSerializer,
+    PlanDetailSerializer,
+    PlanListSerializer,
 )
 
 DEFAULT_LANGUAGE = "en"
@@ -146,6 +148,32 @@ class LanguageListView(APIView):
             .order_by("language")
         )
         return Response([_language_entry(c) for c in codes])
+
+
+class PlanListView(generics.ListAPIView):
+    """Published reading plans for a language."""
+
+    serializer_class = PlanListSerializer
+
+    def get_queryset(self):
+        return (
+            Plan.objects.filter(is_published=True, language=_language(self.request))
+            .annotate(num_days=Count("days"))
+            .order_by("sort_order", "title")
+        )
+
+
+class PlanDetailView(generics.RetrieveAPIView):
+    serializer_class = PlanDetailSerializer
+
+    def get_object(self):
+        return get_object_or_404(
+            Plan.objects.filter(is_published=True)
+            .annotate(num_days=Count("days"))
+            .prefetch_related("days"),
+            slug=self.kwargs["slug"],
+            language=_language(self.request),
+        )
 
 
 # Postgres text-search configs per content language. Languages without a

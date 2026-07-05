@@ -111,3 +111,51 @@ class Chapter(models.Model):
         if update_fields is not None and "body_html" in update_fields:
             kwargs["update_fields"] = list(update_fields) + ["body_text"]
         super().save(*args, **kwargs)
+
+
+class Plan(models.Model):
+    """A curated, daily-cadence reading plan: one chapter per day, in order.
+
+    Like books, plans are addressed by ``slug`` + ``language`` so the same plan
+    can exist per translation. Days reference chapters by (book_slug,
+    chapter_order) rather than FK — the same soft-reference convention the
+    reading app uses, so plans survive book re-imports.
+    """
+
+    slug = models.SlugField(max_length=160)
+    language = models.CharField(max_length=10, default="en")
+    title = models.CharField(max_length=300)
+    description = models.TextField(blank=True)
+    sort_order = models.PositiveIntegerField(default=0)
+    is_published = models.BooleanField(default=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["sort_order", "title"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["slug", "language"], name="uniq_plan_slug_language"
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.title} ({self.language})"
+
+
+class PlanDay(models.Model):
+    plan = models.ForeignKey(Plan, on_delete=models.CASCADE, related_name="days")
+    # 1-based day within the plan.
+    day = models.PositiveIntegerField()
+    book_slug = models.SlugField(max_length=160)
+    chapter_order = models.PositiveIntegerField()
+
+    class Meta:
+        ordering = ["day"]
+        constraints = [
+            models.UniqueConstraint(fields=["plan", "day"], name="uniq_plan_day"),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.plan_id} day {self.day} → {self.book_slug}/{self.chapter_order}"

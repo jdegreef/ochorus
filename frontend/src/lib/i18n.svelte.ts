@@ -55,7 +55,22 @@ const EN: Dict = {
 	'reader.resume': 'Resume',
 	'reader.speed': 'Speed',
 	'reader.voice': 'Voice',
-	'reader.stopListening': 'Stop listening'
+	'reader.stopListening': 'Stop listening',
+	'nav.plans': 'Plans',
+	'plans.title': 'Reading Plans',
+	'plans.tagline': 'A chapter a day, in order — build a habit around a classic.',
+	'plans.none': 'No plans available in this language yet.',
+	'plans.days': 'days',
+	'plans.day': 'Day',
+	'plans.of': 'of',
+	'plans.start': 'Start the plan',
+	'plans.continue': 'Continue',
+	'plans.finished': 'Plan finished',
+	'plans.today': 'Today',
+	'plans.markDone': 'Mark day done',
+	'plans.dayDone': 'Day complete',
+	'plans.todaysReading': "Today's reading",
+	'plans.all': 'All plans'
 };
 
 // Add locale dictionaries here as translations are reviewed, e.g. `sw: { ... }`.

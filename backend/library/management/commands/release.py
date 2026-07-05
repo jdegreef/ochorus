@@ -22,3 +22,5 @@ class Command(BaseCommand):
         # Fixture loads bypass Chapter.save(), so derive search text afterwards.
         self.stdout.write("→ backfill_body_text")
         call_command("backfill_body_text")
+        self.stdout.write("→ seed_plans")
+        call_command("seed_plans")

@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { onMount, tick } from 'svelte';
 	import { page } from '$app/stores';
-	import type { Chapter } from '$lib/library';
+	import { goto } from '$app/navigation';
+	import { getPlan, type Chapter, type PlanDetail } from '$lib/library';
+	import { planProgress } from '$lib/planProgress.svelte';
 	import { saveProgress, getScrollAnchor, saveScrollAnchor } from '$lib/progress';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
@@ -66,6 +68,37 @@
 		void chapter.order;
 		return () => listen.stop();
 	});
+
+	// Reading-plan context (?plan=<slug>&day=<n>): show the Day N of M strip and
+	// a mark-done action. The plan is fetched lazily — only when the params are
+	// present — and cached across day navigations within the same plan.
+	const planSlug = $derived($page.url.searchParams.get('plan'));
+	const planDay = $derived(Number($page.url.searchParams.get('day')) || 0);
+	let plan = $state<PlanDetail | null>(null);
+	$effect(() => {
+		const s = planSlug;
+		if (!s) {
+			plan = null;
+			return;
+		}
+		if (plan?.slug === s) return;
+		getPlan(s, getLang())
+			.then((p) => (plan = p))
+			.catch(() => (plan = null));
+	});
+
+	/** Mark today done, then continue: next day's chapter, or back to the plan. */
+	function completePlanDay() {
+		if (!plan || !planDay) return;
+		planProgress.markDone(plan.slug, planDay);
+		const next = planProgress.nextDay(plan.slug, plan.day_count);
+		const nextEntry = next && plan.days.find((d) => d.day === next);
+		if (nextEntry) {
+			goto(`/books/${nextEntry.book_slug}/${nextEntry.chapter_order}?plan=${plan.slug}&day=${nextEntry.day}`);
+		} else {
+			goto(`/plans/${plan.slug}`);
+		}
+	}
 
 	/** Read the chapter aloud from the topmost visible paragraph. */
 	function startListening() {
@@ -239,6 +272,28 @@
 		<span>›</span>
 		<a href="/books/{slug}" class="hover:text-text">{chapter.book_title}</a>
 	</nav>
+
+	{#if plan && planDay}
+		<div
+			class="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-card border border-border bg-surface-2 px-4 py-3"
+		>
+			<div class="min-w-0">
+				<a href="/plans/{plan.slug}" class="block truncate text-small font-semibold text-text hover:text-accent">
+					{plan.title}
+				</a>
+				<span class="text-small text-muted">
+					{t('plans.day')} {planDay} {t('plans.of')} {plan.day_count}
+				</span>
+			</div>
+			{#if planProgress.isDone(plan.slug, planDay)}
+				<span class="text-small font-semibold text-accent">✓ {t('plans.dayDone')}</span>
+			{:else}
+				<button class="btn btn-primary !py-1.5 text-small" onclick={completePlanDay}>
+					{t('plans.markDone')}
+				</button>
+			{/if}
+		</div>
+	{/if}
 
 	<p class="mb-1 text-small uppercase tracking-wider text-muted">
 		Chapter {chapter.order} · {readingTime(chapter.word_count)}

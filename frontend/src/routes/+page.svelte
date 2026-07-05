@@ -1,10 +1,13 @@
 <script lang="ts">
 	import type { BookSummary, AuthorBio } from '$lib/library';
+	import { i18n } from '$lib/i18n.svelte';
 
 	let { data } = $props();
 	const featured = $derived<BookSummary[]>(data.featured);
 	const authors = $derived<AuthorBio[]>(data.authors);
 	const totalBooks = $derived<number>(data.totalBooks);
+	const today = $derived(data.today);
+	const t = i18n.t;
 
 	const initials = (name: string) =>
 		name
@@ -43,6 +46,33 @@
 		</div>
 	</div>
 </section>
+
+<!-- Reading of the day -->
+{#if today}
+	<section class="mx-auto max-w-5xl px-5 pt-14">
+		<div
+			class="flex flex-wrap items-center justify-between gap-4 rounded-card border border-border bg-surface p-6"
+		>
+			<div class="min-w-0">
+				<p class="mb-1 text-small font-semibold uppercase tracking-widest text-accent">
+					{t('plans.todaysReading')}
+				</p>
+				<h2 class="text-h3 truncate text-text">
+					{today.chapterTitle || today.bookTitle}
+				</h2>
+				<p class="mt-0.5 text-small text-muted">
+					{today.plan.title} · {t('plans.day')} {today.day} {t('plans.of')} {today.plan.day_count}
+				</p>
+			</div>
+			<div class="flex shrink-0 items-center gap-3">
+				<a href={today.href} class="btn btn-primary">
+					{today.isStarted ? t('plans.continue') : t('plans.start')}
+				</a>
+				<a href="/plans" class="text-small font-semibold text-accent">{t('plans.all')} →</a>
+			</div>
+		</div>
+	</section>
+{/if}
 
 <!-- Discover Your Next Book -->
 <section class="mx-auto max-w-5xl px-5 py-14">
