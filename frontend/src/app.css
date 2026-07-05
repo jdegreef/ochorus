@@ -119,6 +119,19 @@
 	}
 }
 
+/* Respect the OS "reduce motion" setting: kill transitions/animations and
+   instant-scroll (see STYLE_GUIDE §6/§7). Matches Take Root. */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
 @layer components {
 	.text-display {
 		font-family: var(--font-display);
@@ -142,13 +155,16 @@
 		cursor: pointer;
 		transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 	}
+	/* Primary is soft, not bold: a brand-tinted button, never a solid indigo
+	   block (see STYLE_GUIDE §5). Matches Take Root. */
 	.btn-primary {
-		background: var(--accent);
-		color: var(--accent-contrast);
+		background: var(--accent-soft);
+		color: var(--accent);
+		border-color: var(--accent-soft-border);
 	}
 	.btn-primary:hover {
 		text-decoration: none;
-		filter: brightness(1.06);
+		border-color: var(--accent);
 	}
 	.btn-ghost {
 		background: transparent;

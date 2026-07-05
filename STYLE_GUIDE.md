@@ -140,9 +140,8 @@ weight 600, a 150ms transition).
 | **Ghost** | `.btn .btn-ghost` | transparent | `--muted`/`--text` | transparent | Low-emphasis (dismiss, back) |
 
 - **Primary is soft, not bold** — a brand-tinted button (accent-soft fill, accent
-  text), never a solid filled indigo block. It reads as "the main thing" without
-  shouting. *(See §9 — the current `.btn-primary` is still solid indigo and needs
-  aligning to this soft treatment, matching Take Root.)*
+  text, `--accent-soft-border`), never a solid filled indigo block. It reads as
+  "the main thing" without shouting.
 - Hover: default → `--surface` + accent-soft border; primary → border to `--accent`.
 - ❌ Don't invent bespoke button styles per page — extend the system.
 
@@ -186,7 +185,8 @@ group, and contact. Hidden in focus mode.
   (`:focus-visible` → 2px accent outline, 2px offset). Don't remove it.
 - **Names:** icon-only controls get an `aria-label`; nav/footer link groups are
   labelled; async results (search) should be discoverable.
-- **Motion:** respect `prefers-reduced-motion`. *(See §9 — not yet wired.)*
+- **Motion:** respect `prefers-reduced-motion` (a global block disables
+  transitions/animations under it).
 
 ---
 
@@ -220,11 +220,10 @@ Known gaps to close (tracked as follow-ups):
 
 - ✅ **Colour tokens, typefaces, type scale, radii** — identical to Take Root.
 - ✅ **Themes, focus rings, nav, footer, reader focus mode** — in place.
-- ⚠️ **Primary button is still solid indigo** (`.btn-primary { background: --accent }`)
-  — should become the **soft** treatment (accent-soft fill, accent text,
-  `--accent-soft-border`) to match §5 / Take Root.
-- ⚠️ **`prefers-reduced-motion`** — not yet honoured; add a global block that
-  disables transitions/animations under it.
+- ✅ **Soft primary button** — `.btn-primary` now uses the soft treatment
+  (accent-soft fill, accent text, `--accent-soft-border`), matching §5 / Take Root.
+- ✅ **`prefers-reduced-motion`** — honoured by a global block that disables
+  transitions/animations under it.
 - ⚠️ **Icons are ad-hoc Unicode glyphs** — fine for now; move to a small
   `currentColor` stroke-1.8 line-icon set if the surface grows.
 - ⚠️ **Class naming** differs slightly from Take Root (`.btn-primary`/`.btn-ghost`
