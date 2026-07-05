@@ -7,7 +7,9 @@ export async function GET() {
 	const [books, authors, sermons] = await Promise.all([
 		listBooks('en'),
 		listAuthors(),
-		listSermons('en')
+		// Tolerate a lagging/absent sermon endpoint at build time — omit sermon
+		// URLs rather than fail the sitemap prerender.
+		listSermons('en').catch(() => [])
 	]);
 
 	const authorSlugs = new Set<string>();
