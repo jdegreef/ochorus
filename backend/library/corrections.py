@@ -28,7 +28,13 @@ CORRECTIONS: dict[str, dict] = {
     "the-normal-christian-life": {
         # Ch.12's title is inline ("Chapter 12: The Cross and the Soul Life") in
         # the PDF, so it isn't detected as a standalone heading. From the TOC:
-        "chapter_titles": {12: "Chapter 12. The Cross and the Soul Life"},
+        "chapter_titles": {12: "The Cross and the Soul Life"},
+    },
+    "jesus-himself-2": {
+        # Ch.2's title is a long quoted sentence that wraps across lines in the
+        # PDF, so the title-borrow captured only the final word ("You"). Full
+        # title from the PDF's table of contents:
+        "chapter_titles": {2: "I will come and dwell with you, and I will never leave you"},
     },
 }
 
