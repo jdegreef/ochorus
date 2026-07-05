@@ -210,8 +210,15 @@ def _is_title_block(p: str) -> bool:
 
 
 def _smart_title(s: str) -> str:
-    """Title-case an ALL-CAPS heading; leave already-mixed-case text unchanged."""
+    """Title-case an ALL-CAPS heading; leave already-mixed-case text unchanged.
+
+    Also drops a trailing "Introduction" — a section subhead that some layouts
+    set inside the same block as the chapter title ("THE BROKEN FENCE
+    Introduction"). Guarded so a chapter actually titled "Introduction" keeps it.
+    """
     s = s.strip(" .:-")
+    if len(s.split()) > 1:
+        s = re.sub(r"\s+introduction\s*$", "", s, flags=re.I)
     letters = [c for c in s if c.isalpha()]
     if letters and sum(c.isupper() for c in letters) / len(letters) > 0.7:
         return re.sub(r"(^|\s)([A-Za-z])", lambda m: m.group(1) + m.group(2).upper(), s.lower())
@@ -226,12 +233,12 @@ def _titleish(t: str, s: float, thresh: float) -> bool:
 def _segment(blocks, is_heading, is_noise, thresh) -> list[tuple[str, str]]:
     """Split blocks into chapters at each heading.
 
-    `is_heading(t, s)` marks a chapter title; `is_noise(t, s)` marks a running
+    `is_heading(i, t, s)` marks a chapter title; `is_noise(t, s)` marks a running
     header/footer to drop entirely. A "CHAPTER X" marker borrows the following
     title block (set large or ALL-CAPS) as its descriptive title. Drop caps are
     reattached and split paragraphs rejoined per chapter.
     """
-    starts = [i for i, (t, s) in enumerate(blocks) if is_heading(t, s)]
+    starts = [i for i, (t, s) in enumerate(blocks) if is_heading(i, t, s)]
     if len(starts) < 2:
         return []
     chapters: list[tuple[str, str]] = []
@@ -246,14 +253,23 @@ def _segment(blocks, is_heading, is_noise, thresh) -> list[tuple[str, str]]:
         if _CHAP_RE.match(head):
             m = _CHAP_RE.match(head)
             number, trailing = _normalize_number(m.group(1), m.group(2))
-            cap = re.match(r"([A-Z0-9'’,\- ]{3,}?)(?=[a-z]|$)", trailing)
-            if cap and cap.group(1).strip(" '-,"):
-                title_parts.append(cap.group(1).strip(" '-,"))
-                leftover = trailing[cap.end():].strip(" .:-")
-                if len(leftover.split()) > 4:
-                    body_paras.append(leftover)
             k = 0
-            if not body_paras:  # borrow the following title block(s)
+            if trailing and len(trailing.split()) <= 14:
+                # "Chapter 1: Charles Spurgeon — The Prince of Preachers" —
+                # the whole trailing text IS the descriptive title (mixed-case
+                # included; it used to be silently dropped unless ALL-CAPS).
+                title_parts.append(trailing.strip(" .:-"))
+            elif trailing:
+                # Long trailing = the chapter text starts inline on the marker
+                # line. Take a leading ALL-CAPS run (if any) as the title and
+                # push the rest into the body.
+                cap = re.match(r"([A-Z0-9'’,\- ]{3,}?)(?=[a-z]|$)", trailing)
+                if cap and cap.group(1).strip(" '-,"):
+                    title_parts.append(cap.group(1).strip(" '-,"))
+                    leftover = trailing[cap.end():].strip(" .:-")
+                    if len(leftover.split()) > 4:
+                        body_paras.append(leftover)
+            if not title_parts and not body_paras:  # borrow the following title block(s)
                 while k < len(rest) and _titleish(rest[k][0], rest[k][1], thresh):
                     title_parts.append(rest[k][0])
                     k += 1
@@ -283,6 +299,59 @@ def _segment(blocks, is_heading, is_noise, thresh) -> list[tuple[str, str]]:
     return chapters
 
 
+def _merge_heading_runs(blocks: list[tuple[str, float]], thresh: float) -> list[tuple[str, float]]:
+    """Rejoin a title that wraps across blocks ("Chapter 1: Charles Spurgeon —
+    The Prince of" + "Preachers Who Prayed"). Adjacent heading-size blocks of the
+    same size merge while the first doesn't end a sentence and the result stays
+    title-length."""
+    out: list[tuple[str, float]] = []
+    for t, s in blocks:
+        if (
+            out
+            and s >= thresh
+            and out[-1][1] >= thresh
+            and round(s) == round(out[-1][1])
+            and not _ends_sentence(out[-1][0])
+            and len(f"{out[-1][0]} {t}".split()) <= 18
+        ):
+            out[-1] = (f"{out[-1][0]} {t}", max(out[-1][1], s))
+        else:
+            out.append((t, s))
+    return out
+
+
+# Standalone section headings that bound a chapter just like a CHAPTER marker
+# when set at heading size (Introduction, Conclusion, Scripture Appendix, …).
+_SECTION_RE = re.compile(
+    r"^(introduction|conclusion|preface|prologue|epilogue|foreword|afterword"
+    r"|(\w+\s+){0,2}appendix)\b", re.I,
+)
+# A table-of-contents line: text followed by a dot leader.
+_TOC_LINE_RE = re.compile(r"\.{4,}")
+
+_ROMAN = {"i": 1, "v": 5, "x": 10, "l": 50, "c": 100}
+_WORD_NUMS = {w.lower(): n for n, w in enumerate(
+    ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight",
+     "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
+     "sixteen", "seventeen", "eighteen", "nineteen", "twenty"])}
+
+
+def _chapter_int(label: str) -> int | None:
+    """Parse a CHAPTER label ("7", "VII", "Seven") to an int; None if we can't."""
+    label = label.strip().lower()
+    if label.isdigit():
+        return int(label)
+    if label in _WORD_NUMS:
+        return _WORD_NUMS[label]
+    if label and all(c in _ROMAN for c in label):
+        total = 0
+        for a, b in zip(label, label[1:] + " "):
+            v = _ROMAN[a]
+            total += -v if _ROMAN.get(b, 0) > v else v
+        return total
+    return None
+
+
 def chapterize(blocks: list[tuple[str, float]], body_size: float) -> list[tuple[str, str]]:
     """Detect chapters.
 
@@ -293,6 +362,7 @@ def chapterize(blocks: list[tuple[str, float]], body_size: float) -> list[tuple[
     so they pollute neither path.
     """
     thresh = body_size * 1.18
+    blocks = _merge_heading_runs(blocks, thresh)
 
     def short(t: str) -> bool:
         return len(t.split()) <= 14 and not _is_dropcap(t)
@@ -305,17 +375,57 @@ def chapterize(blocks: list[tuple[str, float]], body_size: float) -> list[tuple[
     banned = {k for k, v in freq.items() if v > 2}
 
     def is_noise(t: str, s: float) -> bool:
-        return _norm(t) in banned
+        return _norm(t) in banned or bool(_TOC_LINE_RE.search(t))
 
-    def is_marker(t: str, s: float) -> bool:
-        return short(t) and bool(_CHAP_RE.match(t)) and _norm(t) not in banned
+    # Decide which CHAPTER markers are real chapter starts. When the book sets
+    # its markers at heading size, a body-size match is usually an echo — a TOC
+    # line or an appendix cross-reference ("Chapter 3 — Rees Howells"). But some
+    # books drop a real marker to body size ("Chapter 6" amid size-15 siblings),
+    # so a body-size marker that CONTINUES the number sequence is kept, while
+    # one that restarts it (appendix "Chapter 1" after "Chapter 10") is not.
+    markers_are_large = any(
+        s >= thresh and short(t) and _CHAP_RE.match(t) and _norm(t) not in banned
+        for t, s in blocks
+    )
+    marker_idx: set[int] = set()
+    prev_num: int | None = None
+    for i, (t, s) in enumerate(blocks):
+        if not short(t) or _norm(t) in banned or _TOC_LINE_RE.search(t):
+            continue
+        m = _CHAP_RE.match(t)
+        if not m:
+            continue
+        n = _chapter_int(m.group(1))
+        if s >= thresh or not markers_are_large or (
+            n is not None and prev_num is not None and n == prev_num + 1
+        ):
+            marker_idx.add(i)
+            prev_num = n if n is not None else prev_num
+
+    def is_marker(i: int, t: str, s: float) -> bool:
+        if i in marker_idx:
+            return True
+        # Heading-size section breaks (Introduction / Conclusion / Appendix)
+        # bound chapters alongside the numbered markers.
+        return (
+            s >= thresh
+            and short(t)
+            and _norm(t) not in banned
+            and not _TOC_LINE_RE.search(t)
+            and bool(_SECTION_RE.match(t))
+        )
 
     by_marker = _segment(blocks, is_marker, is_noise, thresh)
     if len(by_marker) >= 3:
         return by_marker
 
-    def is_font(t: str, s: float) -> bool:
-        return short(t) and (s >= thresh or bool(_CHAP_RE.match(t))) and _norm(t) not in banned
+    def is_font(i: int, t: str, s: float) -> bool:
+        return (
+            short(t)
+            and (s >= thresh or bool(_CHAP_RE.match(t)))
+            and _norm(t) not in banned
+            and not _TOC_LINE_RE.search(t)
+        )
 
     return _segment(blocks, is_font, is_noise, thresh)
 

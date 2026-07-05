@@ -147,6 +147,44 @@ dropped; chapters under 120 words are dropped as stubs.
 - **Over-splitting** on sub-headings or pull-quotes set larger than body — they
   usually fall below the 120-word stub threshold and merge away; if not, the
   running-header ban or a tighter `thresh` (currently `body*1.18`) helps.
+- **Two-line wrapped titles captured only the tail** ("Chapter 1: Charles
+  Spurgeon — The Prince of" + "Preachers Who Prayed" → title "Preachers Who
+  Prayed"). `_merge_heading_runs` rejoins adjacent same-size heading blocks
+  before segmentation. *(Ochorus Originals bio collections, 2026-07)*
+- **Mixed-case trailing after "Chapter N:" was silently dropped** — the old
+  code only kept an ALL-CAPS run. Now a ≤14-word trailing IS the title; longer
+  trailing still splits into ALL-CAPS-title + body. *(2026-07)*
+- **TOC lines as phantom chapters** ("Chapter 3: … ......."). Dot-leader lines
+  (`_TOC_LINE_RE`, 4+ dots) are noise everywhere. *(2026-07)*
+- **Appendix cross-references as phantom chapters** ("Chapter 1 — Charles
+  Spurgeon" at body size inside a Scripture Appendix, RESTARTING the number
+  sequence). When real markers are heading-size, a body-size marker is accepted
+  only if it CONTINUES the sequence (prev+1) — Normal Christian Life's real
+  "Chapter 6"/"Chapter 12" are body-size amid size-15 siblings and must stay.
+  Sequence-aware pre-pass in `chapterize`. *(2026-07)*
+- **Introduction/Conclusion/Appendix sections lost or mis-attached** — the
+  marker pass used to drop the Introduction entirely and fold the Conclusion
+  into the last chapter. `_SECTION_RE` headings at heading size now split
+  alongside CHAPTER markers. `is_front_matter` still eats Contents/title-page/
+  Index, not these. *(2026-07)*
+- **"Introduction" subhead glued into the title block** ("THE BROKEN FENCE
+  Introduction"). `_smart_title` strips a trailing "Introduction" when other
+  words remain. *(Talks to the Farmer, 2026-07)*
+- **Title block fused with subhead AND body text in one oversized block**
+  ("THE SLUGGARD'S FARM  Introduction  From a neglected field…") — no heading
+  to borrow; use a `corrections.py` title. The body keeping the fused lead text
+  is a known cosmetic wart. *(talks-to-the-farmer ch1, 2026-07)*
+- **Shipping a structural re-chapterization** (counts/orders change, not just
+  titles): a title-transform migration can't help — write a migration that
+  reads `fixtures/launch.json`, deletes the affected books' chapters, and
+  bulk-creates the corrected sets (safe: nothing FKs Chapter; progress/marks are
+  localStorage slug+order). Pattern: `0005_rechapterize_bio_collections`. NOTE:
+  orders can shift (Inner Chamber gained a Preface as ch1), which nudges
+  readers' saved positions by one chapter. *(2026-07)*
+- **Known limits (unfixed):** a book whose Introduction heading is fused with
+  its body text in one block loses that intro (feasting-at-the-table); a drop
+  cap belonging mid-paragraph after a scripture-ref merge isn't reattached
+  ("Ephesians 2:11-22 aul writes").
 
 ## Adding a public-domain book NOT on ochorus.com
 

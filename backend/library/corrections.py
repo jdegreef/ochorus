@@ -36,6 +36,12 @@ CORRECTIONS: dict[str, dict] = {
         # title from the PDF's table of contents:
         "chapter_titles": {2: "I will come and dwell with you, and I will never leave you"},
     },
+    "talks-to-the-farmer": {
+        # Ch.1's title block is fused with the subhead and opening body text in
+        # one oversized block ("THE SLUGGARD'S FARM  Introduction  From a
+        # neglected field…"), so no title can be borrowed. From the TOC:
+        "chapter_titles": {1: "The Sluggard's Farm"},
+    },
 }
 
 
