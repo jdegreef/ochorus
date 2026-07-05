@@ -1,10 +1,14 @@
 import { SITE_URL } from '$lib/config';
-import { listAuthors, listBooks } from '$lib/library';
+import { listAuthors, listBooks, listSermons } from '$lib/library';
 
 export const prerender = true;
 
 export async function GET() {
-	const [books, authors] = await Promise.all([listBooks('en'), listAuthors()]);
+	const [books, authors, sermons] = await Promise.all([
+		listBooks('en'),
+		listAuthors(),
+		listSermons('en')
+	]);
 
 	const authorSlugs = new Set<string>();
 	for (const b of books) authorSlugs.add(b.author.slug);
@@ -13,10 +17,12 @@ export async function GET() {
 	const paths = [
 		'/',
 		'/books',
+		'/sermons',
 		'/biographies',
 		'/about',
 		'/contact',
 		...books.map((b) => `/books/${b.slug}`),
+		...sermons.map((s) => `/sermons/${s.slug}`),
 		...[...authorSlugs].map((s) => `/authors/${s}`)
 	];
 
