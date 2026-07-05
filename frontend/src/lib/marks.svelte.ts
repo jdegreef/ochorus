@@ -1,4 +1,5 @@
 import { browser } from '$app/environment';
+import { readingSync } from './readingSync';
 
 /**
  * Highlights and notes, anchored at *paragraph* granularity (the index of a
@@ -6,8 +7,8 @@ import { browser } from '$app/environment';
  * robust — it survives re-rendering and font changes without the fragile
  * text-offset bookkeeping that character-range anchoring needs.
  *
- * Stored device-local in localStorage now; syncs to the account when login
- * lands (the shape mirrors what a future `/api/reading/marks` would return).
+ * Stored device-local in localStorage as the offline cache; when signed in each
+ * change is mirrored to the account via `readingSync` (which owns the API call).
  */
 
 const KEY = 'ochorus:marks';
@@ -40,14 +41,26 @@ class Marks {
 	notes = $state<Record<number, string>>({});
 	#slug = '';
 	#order = 0;
+	#language = 'en';
 
 	/** Load marks for a chapter into the reactive view. */
-	load(slug: string, order: number) {
+	load(slug: string, order: number, language = 'en') {
 		this.#slug = slug;
 		this.#order = order;
-		const entry = readAll()[chapterKey(slug, order)];
+		this.#language = language;
+		this.#hydrate();
+	}
+
+	/** (Re)read the current chapter's marks from the cache into the view. */
+	#hydrate() {
+		const entry = readAll()[chapterKey(this.#slug, this.#order)];
 		this.highlights = new Set(entry?.h ?? []);
 		this.notes = { ...(entry?.n ?? {}) };
+	}
+
+	/** Re-read after the cache was replaced underneath us (e.g. a sign-in sync). */
+	refresh() {
+		if (this.#slug) this.#hydrate();
 	}
 
 	#persist() {
@@ -61,6 +74,7 @@ class Marks {
 			store[key] = { h, n };
 		}
 		writeAll(store);
+		readingSync.pushMarks(this.#slug, this.#order, { h, n }, this.#language);
 	}
 
 	isHighlighted(i: number) {

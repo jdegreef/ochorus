@@ -9,9 +9,11 @@
 	import { lang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { auth } from '$lib/auth.svelte';
+	import { pwa } from '$lib/pwa.svelte';
 	import { listLanguages } from '$lib/library';
 	import LanguagePicker from '$lib/components/LanguagePicker.svelte';
 	import AccountMenu from '$lib/components/AccountMenu.svelte';
+	import PwaToasts from '$lib/components/PwaToasts.svelte';
 
 	let { children } = $props();
 	const t = i18n.t;
@@ -22,6 +24,7 @@
 		i18n.init(lang.current);
 		readerPrefs.init();
 		auth.init();
+		pwa.init();
 		try {
 			lang.setAvailable(await listLanguages());
 		} catch {
@@ -41,6 +44,7 @@
 	const NAV = $derived([
 		{ href: '/about', label: t('nav.about') },
 		{ href: '/books', label: t('nav.books') },
+		{ href: '/plans', label: t('nav.plans') },
 		{ href: '/sermons', label: t('nav.sermons') },
 		{ href: '/biographies', label: t('nav.biographies') },
 		{ href: '/contact', label: t('nav.contact') }
@@ -125,3 +129,5 @@
 		</footer>
 	{/if}
 </div>
+
+<PwaToasts />

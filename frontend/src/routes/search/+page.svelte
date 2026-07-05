@@ -30,12 +30,14 @@
 		}, 250);
 	}
 
-	// Bold the matched term inside a snippet (term is plain text from the user).
-	function mark(snippet: string, term: string): string {
-		const esc = snippet.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]!);
-		if (!term) return esc;
-		const re = new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'ig');
-		return esc.replace(re, '<mark>$1</mark>');
+	// Snippets arrive as plain text with matches wrapped in ⟦…⟧ markers (set
+	// server-side by full-text search). Escape everything, then swap the markers
+	// for <mark> — so the only HTML rendered is what we construct here.
+	function mark(snippet: string): string {
+		return snippet
+			.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]!)
+			.replaceAll('⟦', '<mark>')
+			.replaceAll('⟧', '</mark>');
 	}
 </script>
 
@@ -75,7 +77,7 @@
 							<div class="text-body font-semibold text-text">{hit.chapter_title}</div>
 							<p class="mt-1 text-small text-muted">
 								<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-								{@html mark(hit.snippet, ran)}
+								{@html mark(hit.snippet)}
 							</p>
 						</a>
 					</li>

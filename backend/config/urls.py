@@ -10,4 +10,5 @@ urlpatterns = [
     path("api/health/", health, name="health"),
     path("api/auth/me/", MeView.as_view(), name="me"),
     path("api/library/", include("library.urls")),
+    path("api/reading/", include("reading.urls")),
 ]

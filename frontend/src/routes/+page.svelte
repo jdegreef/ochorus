@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type { BookSummary, AuthorBio } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
+	import ContinueReading from '$lib/components/ContinueReading.svelte';
+	import TodaysReading from '$lib/components/TodaysReading.svelte';
 
 	let { data } = $props();
 	const featured = $derived<BookSummary[]>(data.featured);
@@ -54,6 +56,10 @@
 		</div>
 	</div>
 </section>
+
+<!-- Personal blocks — client-side only (this page is prerendered) -->
+<ContinueReading books={data.books} />
+<TodaysReading />
 
 <!-- Discover Your Next Book -->
 <section class="mx-auto max-w-5xl px-5 py-14">

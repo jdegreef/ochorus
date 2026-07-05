@@ -1,0 +1,88 @@
+"""Per-user reading state: where you are in a book, and what you've marked.
+
+All rows hang off :class:`accounts.UserProfile` (the app-side identity for a
+Supabase-authenticated user). Content is referenced by ``book_slug`` +
+``language`` rather than a FK to :class:`library.Book`, mirroring how the rest of
+the app addresses books: the slug is the canonical, language-agnostic handle, so
+a reader's progress in "humility" survives a book row being re-imported and works
+uniformly across translations. The frontend keeps the same data in localStorage
+as an offline cache; these rows are the synced source of truth when signed in.
+"""
+
+from __future__ import annotations
+
+from django.db import models
+
+
+class ReadingProgress(models.Model):
+    """The last place a reader was in a given book.
+
+    One row per (user, book). ``paragraph_index`` is the top-level block index
+    within the chapter's rendered ``.reading`` container — the same paragraph
+    anchor the frontend uses, chosen so a saved position survives font-size and
+    column-width changes (unlike a pixel offset).
+    """
+
+    profile = models.ForeignKey(
+        "accounts.UserProfile",
+        on_delete=models.CASCADE,
+        related_name="progress",
+    )
+    book_slug = models.SlugField(max_length=160)
+    language = models.CharField(max_length=10, default="en")
+    chapter_order = models.PositiveIntegerField(default=1)
+    paragraph_index = models.PositiveIntegerField(default=0)
+
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-updated_at"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["profile", "book_slug"], name="uniq_progress_profile_book"
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.profile_id}:{self.book_slug} → ch{self.chapter_order}"
+
+
+class ChapterMarks(models.Model):
+    """A reader's highlights and notes within one chapter.
+
+    Marks are anchored at *paragraph* granularity: ``highlights`` is a JSON array
+    of block indices, ``notes`` a JSON object of ``{index: text}``. Paragraph-
+    level anchoring is deliberately coarse — it survives re-rendering without the
+    fragile character-offset bookkeeping that text-range anchoring needs, and it
+    matches the shape the frontend already stores locally.
+    """
+
+    profile = models.ForeignKey(
+        "accounts.UserProfile",
+        on_delete=models.CASCADE,
+        related_name="marks",
+    )
+    book_slug = models.SlugField(max_length=160)
+    language = models.CharField(max_length=10, default="en")
+    chapter_order = models.PositiveIntegerField()
+
+    highlights = models.JSONField(default=list)
+    notes = models.JSONField(default=dict)
+
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["book_slug", "chapter_order"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["profile", "book_slug", "chapter_order"],
+                name="uniq_marks_profile_book_chapter",
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.profile_id}:{self.book_slug}/{self.chapter_order}"
+
+    @property
+    def is_empty(self) -> bool:
+        return not self.highlights and not self.notes
