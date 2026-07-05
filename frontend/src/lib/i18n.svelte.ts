@@ -70,7 +70,15 @@ const EN: Dict = {
 	'plans.markDone': 'Mark day done',
 	'plans.dayDone': 'Day complete',
 	'plans.todaysReading': "Today's reading",
-	'plans.all': 'All plans'
+	'plans.all': 'All plans',
+	'continue.title': 'Continue reading',
+	'continue.chapter': 'Chapter',
+	'account.title': 'My account',
+	'account.signedInAs': 'Signed in as',
+	'account.syncNote': 'your reading place, highlights and notes sync across devices.',
+	'account.signedOutNote': 'Sign in (top right) to sync your reading across devices.',
+	'account.localNote': 'Your reading progress is saved on this device.',
+	'account.signOut': 'Sign out'
 };
 
 // Add locale dictionaries here as translations are reviewed, e.g. `sw: { ... }`.

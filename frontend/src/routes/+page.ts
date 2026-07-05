@@ -44,6 +44,7 @@ export const load: PageLoad = async ({ depends }) => {
 		readingOfTheDay(language)
 	]);
 	return {
+		books,
 		featured: books.slice(0, 6),
 		totalBooks: books.length,
 		authors: authors.filter((a) => a.book_count > 0),

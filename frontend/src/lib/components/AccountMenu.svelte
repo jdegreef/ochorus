@@ -33,7 +33,11 @@
 {#if auth.enabled}
 	{#if auth.user}
 		<div class="flex items-center gap-2">
-			<span class="hidden text-small text-muted sm:inline">{auth.user.email}</span>
+			<a
+				href="/account"
+				class="hidden rounded-md px-2 py-1.5 text-small text-muted hover:bg-surface-2 hover:no-underline sm:inline"
+				>{auth.user.email}</a
+			>
 			<button
 				class="rounded-md px-2.5 py-1.5 text-small text-muted hover:bg-surface-2"
 				onclick={() => auth.signOut()}>Sign out</button

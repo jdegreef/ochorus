@@ -42,11 +42,17 @@ export function getProgressRecord(slug: string): ProgressRecord | null {
 	return read()[slug] ?? null;
 }
 
-/** Record which chapter is open. Resets the in-chapter anchor for the new spot. */
+/** Record which chapter is open. Keeps the best-known paragraph position: the
+ * device-local anchor, else (same chapter, e.g. fresh device after a sync) the
+ * synced paragraph_index — so opening a chapter never clobbers the resume point
+ * before the reader has restored it. */
 export function saveProgress(slug: string, order: number, language = 'en'): void {
 	if (!browser) return;
 	const map = read();
-	const paragraph_index = getScrollAnchor(slug, order) ?? 0;
+	const prev = map[slug];
+	const paragraph_index =
+		getScrollAnchor(slug, order) ??
+		(prev && prev.order === order ? prev.paragraph_index : 0);
 	const rec: ProgressRecord = { order, paragraph_index, language, at: Date.now() };
 	map[slug] = rec;
 	write(map);

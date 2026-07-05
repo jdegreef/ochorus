@@ -4,7 +4,12 @@
 	import { goto } from '$app/navigation';
 	import { getPlan, type Chapter, type PlanDetail } from '$lib/library';
 	import { planProgress } from '$lib/planProgress.svelte';
-	import { saveProgress, getScrollAnchor, saveScrollAnchor } from '$lib/progress';
+	import {
+		saveProgress,
+		getScrollAnchor,
+		saveScrollAnchor,
+		getProgressRecord
+	} from '$lib/progress';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { marks } from '$lib/marks.svelte';
@@ -130,7 +135,12 @@
 	});
 
 	function restoreScroll(s: string, order: number) {
-		const idx = getScrollAnchor(s, order);
+		// Prefer the device-local anchor; fall back to the synced resume point so
+		// "continue reading" lands on the right paragraph on a fresh device too.
+		const rec = getProgressRecord(s);
+		const idx =
+			getScrollAnchor(s, order) ??
+			(rec && rec.order === order ? rec.paragraph_index : null);
 		if (idx && body && body.children[idx]) {
 			body.children[idx].scrollIntoView({ block: 'start' });
 			window.scrollBy(0, -HEADER_OFFSET);

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { BookSummary, AuthorBio } from '$lib/library';
 	import { i18n } from '$lib/i18n.svelte';
+	import ContinueReading from '$lib/components/ContinueReading.svelte';
 
 	let { data } = $props();
 	const featured = $derived<BookSummary[]>(data.featured);
@@ -46,6 +47,9 @@
 		</div>
 	</div>
 </section>
+
+<!-- Continue reading (only renders when something is in progress) -->
+<ContinueReading books={data.books} />
 
 <!-- Reading of the day -->
 {#if today}
