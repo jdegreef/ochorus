@@ -5,6 +5,7 @@ import { readerPrefs } from './readerPrefs.svelte';
 import { theme } from './theme.svelte';
 import { lang } from './lang.svelte';
 import { i18n } from './i18n.svelte';
+import { readingSync } from './readingSync';
 
 export interface Profile {
 	email: string;
@@ -41,18 +42,25 @@ class Auth {
 
 		const { data } = await sb.auth.getSession();
 		this.#applySession(data.session);
-		if (data.session) await this.#pullProfile();
+		if (data.session) {
+			await this.#pullProfile();
+			await readingSync.mergeOnSignIn();
+		}
 
 		sb.auth.onAuthStateChange((_event, session) => {
 			const wasSignedIn = !!this.user;
 			this.#applySession(session);
-			if (session && !wasSignedIn) this.#pullProfile();
+			if (session && !wasSignedIn) {
+				this.#pullProfile();
+				readingSync.mergeOnSignIn();
+			}
 		});
 	}
 
 	#applySession(session: { access_token: string; user: { email?: string } } | null) {
 		this.#token = session?.access_token ?? null;
 		this.user = session ? { email: session.user.email ?? '' } : null;
+		readingSync.setSignedIn(!!session);
 	}
 
 	// Auth actions. Each returns an error message on failure, or null on success

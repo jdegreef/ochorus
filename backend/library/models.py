@@ -91,6 +91,10 @@ class Chapter(models.Model):
     title = models.CharField(max_length=300, blank=True)
     # Cleaned, structured HTML (paragraphs, headings, blockquotes).
     body_html = models.TextField()
+    # Plain text derived from body_html — what full-text search matches and
+    # snippets. Kept by save(); fixture loads bypass save(), so the
+    # backfill_body_text command (run on every deploy) fills any gaps.
+    body_text = models.TextField(blank=True, default="")
     word_count = models.PositiveIntegerField(default=0)
 
     class Meta:
@@ -103,6 +107,15 @@ class Chapter(models.Model):
 
     def __str__(self) -> str:
         return f"{self.book.slug}/{self.order} — {self.title}"
+
+    def save(self, *args, **kwargs):
+        from .text import html_to_text
+
+        self.body_text = html_to_text(self.body_html)
+        update_fields = kwargs.get("update_fields")
+        if update_fields is not None and "body_html" in update_fields:
+            kwargs["update_fields"] = list(update_fields) + ["body_text"]
+        super().save(*args, **kwargs)
 
 
 class Sermon(models.Model):
@@ -141,3 +154,51 @@ class Sermon(models.Model):
 
     def __str__(self) -> str:
         return f"{self.title} — {self.author.name} ({self.language})"
+
+
+class Plan(models.Model):
+    """A curated, daily-cadence reading plan: one chapter per day, in order.
+
+    Like books, plans are addressed by ``slug`` + ``language`` so the same plan
+    can exist per translation. Days reference chapters by (book_slug,
+    chapter_order) rather than FK — the same soft-reference convention the
+    reading app uses, so plans survive book re-imports.
+    """
+
+    slug = models.SlugField(max_length=160)
+    language = models.CharField(max_length=10, default="en")
+    title = models.CharField(max_length=300)
+    description = models.TextField(blank=True)
+    sort_order = models.PositiveIntegerField(default=0)
+    is_published = models.BooleanField(default=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["sort_order", "title"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["slug", "language"], name="uniq_plan_slug_language"
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.title} ({self.language})"
+
+
+class PlanDay(models.Model):
+    plan = models.ForeignKey(Plan, on_delete=models.CASCADE, related_name="days")
+    # 1-based day within the plan.
+    day = models.PositiveIntegerField()
+    book_slug = models.SlugField(max_length=160)
+    chapter_order = models.PositiveIntegerField()
+
+    class Meta:
+        ordering = ["day"]
+        constraints = [
+            models.UniqueConstraint(fields=["plan", "day"], name="uniq_plan_day"),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.plan_id} day {self.day} → {self.book_slug}/{self.chapter_order}"

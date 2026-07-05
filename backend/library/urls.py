@@ -7,6 +7,8 @@ from .views import (
     BookListView,
     ChapterDetailView,
     LanguageListView,
+    PlanDetailView,
+    PlanListView,
     SearchView,
     SermonDetailView,
     SermonListView,
@@ -19,6 +21,8 @@ urlpatterns = [
     path("sermons/", SermonListView.as_view(), name="sermon-list"),
     path("languages/", LanguageListView.as_view(), name="language-list"),
     path("search/", SearchView.as_view(), name="search"),
+    path("plans/", PlanListView.as_view(), name="plan-list"),
+    path("plans/<slug:slug>/", PlanDetailView.as_view(), name="plan-detail"),
     path("books/<slug:slug>/", BookDetailView.as_view(), name="book-detail"),
     path("sermons/<slug:slug>/", SermonDetailView.as_view(), name="sermon-detail"),
     path(

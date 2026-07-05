@@ -131,3 +131,29 @@ export const search = (q: string, language = 'en') =>
 	apiFetch<SearchResponse>(
 		`/api/library/search/?q=${encodeURIComponent(q)}&language=${language}`
 	);
+
+export interface PlanSummary {
+	slug: string;
+	language: string;
+	title: string;
+	description: string;
+	day_count: number;
+}
+
+export interface PlanDay {
+	day: number;
+	book_slug: string;
+	chapter_order: number;
+	book_title: string;
+	chapter_title: string;
+}
+
+export interface PlanDetail extends PlanSummary {
+	days: PlanDay[];
+}
+
+export const listPlans = (language = 'en') =>
+	apiFetch<PlanSummary[]>(`/api/library/plans/?language=${language}`);
+
+export const getPlan = (slug: string, language = 'en') =>
+	apiFetch<PlanDetail>(`/api/library/plans/${slug}/?language=${language}`);
