@@ -31,7 +31,7 @@ const APP_SHELL = '/';
 
 // Essential shell to precache: hashed build output (JS/CSS/fonts) + PWA assets.
 // Covers and other static files are cached on demand to keep install fast.
-const PRECACHE = [...build, '/manifest.webmanifest', '/icons/icon-192.png'];
+const PRECACHE = [...build, '/manifest.json', '/icons/icon-192.png'];
 
 sw.addEventListener('install', (event) => {
 	event.waitUntil(
