@@ -9,8 +9,10 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { readingTime } from '$lib/reading';
+	import { listen } from '$lib/listen.svelte';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import SelectionBar from '$lib/components/SelectionBar.svelte';
+	import ListenBar from '$lib/components/ListenBar.svelte';
 
 	let { data } = $props();
 	const chapter = $derived(data.chapter as Chapter);
@@ -30,6 +32,7 @@
 
 	onMount(() => {
 		readerPrefs.init();
+		listen.init();
 	});
 
 	// Per-chapter setup: progress, marks, restore scroll, observe title.
@@ -55,6 +58,42 @@
 		const onSync = () => marks.refresh();
 		window.addEventListener('ochorus:sync', onSync);
 		return () => window.removeEventListener('ochorus:sync', onSync);
+	});
+
+	// Listen mode: stop speech when the chapter changes or the reader unmounts.
+	$effect(() => {
+		void slug;
+		void chapter.order;
+		return () => listen.stop();
+	});
+
+	/** Read the chapter aloud from the topmost visible paragraph. */
+	function startListening() {
+		if (!body) return;
+		const paragraphs = [...body.children].map((el) => (el as HTMLElement).innerText);
+		listen.start(paragraphs, topVisibleIndex(), getLang());
+	}
+
+	function topVisibleIndex(): number {
+		if (!body) return 0;
+		const kids = body.children;
+		for (let i = 0; i < kids.length; i++) {
+			if (kids[i].getBoundingClientRect().bottom > HEADER_OFFSET) return i;
+		}
+		return 0;
+	}
+
+	// Highlight the paragraph being spoken and keep it in view.
+	$effect(() => {
+		const current = listen.current;
+		if (!body) return;
+		const kids = body.children;
+		for (let i = 0; i < kids.length; i++) {
+			kids[i].classList.toggle('tts-current', i === current);
+		}
+		if (current >= 0 && kids[current]) {
+			kids[current].scrollIntoView({ block: 'center', behavior: 'smooth' });
+		}
 	});
 
 	function restoreScroll(s: string, order: number) {
@@ -159,6 +198,15 @@
 						aria-label={t('reader.next')}>›</a
 					>
 				{/if}
+				{#if listen.supported}
+					<button
+						class="btn btn-ghost !px-2.5 !py-1"
+						class:!text-accent={listen.status !== 'idle'}
+						onclick={() => (listen.status === 'idle' ? startListening() : listen.stop())}
+						aria-label={t('reader.listen')}
+						title={t('reader.listen')}>▶</button
+					>
+				{/if}
 				<ReaderControls />
 				<button
 					class="btn btn-ghost !px-3 !py-1"
@@ -234,6 +282,8 @@
 	isHighlighted={(i) => marks.isHighlighted(i)}
 />
 
+<ListenBar />
+
 {#if noteOpen}
 	<div class="note-overlay" role="dialog" aria-modal="true" aria-label={t('reader.note')}>
 		<div class="note-card">
@@ -263,6 +313,13 @@
 		border-left: 3px solid var(--gold);
 		padding-left: 0.9em;
 		margin-left: -1.2em;
+	}
+	/* Paragraph currently being read aloud in Listen mode. */
+	:global(.reading > .tts-current) {
+		background: color-mix(in srgb, var(--accent) 10%, transparent);
+		border-radius: 4px;
+		box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 10%, transparent);
+		transition: background 0.3s ease;
 	}
 	.note-overlay {
 		position: fixed;

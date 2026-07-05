@@ -49,7 +49,13 @@ const EN: Dict = {
 	'pwa.ready': 'Ochorus is ready to read offline.',
 	'pwa.dismiss': 'Dismiss',
 	'pwa.updateReady': 'A new version is available.',
-	'pwa.refresh': 'Refresh'
+	'pwa.refresh': 'Refresh',
+	'reader.listen': 'Listen',
+	'reader.pause': 'Pause',
+	'reader.resume': 'Resume',
+	'reader.speed': 'Speed',
+	'reader.voice': 'Voice',
+	'reader.stopListening': 'Stop listening'
 };
 
 // Add locale dictionaries here as translations are reviewed, e.g. `sw: { ... }`.
