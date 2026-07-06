@@ -18,5 +18,5 @@
 		<a href="mailto:support@ochorus.com" class="btn btn-primary mt-4">Email support@ochorus.com</a>
 	</div>
 
-	<p class="mt-8 text-small text-muted">Based in Kampala, Uganda · A ministry since 2021.</p>
+	<p class="mt-8 text-small text-muted">Based in Victoria BC, Canada and Kampala, Uganda · A ministry since 2021.</p>
 </div>
