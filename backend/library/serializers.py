@@ -6,7 +6,7 @@ from .models import Author, Book, Chapter, Plan, PlanDay, Sermon
 class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Author
-        fields = ["slug", "name", "bio", "birth_year", "death_year"]
+        fields = ["slug", "name", "bio", "photo_url", "birth_year", "death_year"]
 
 
 class AuthorListSerializer(serializers.ModelSerializer):
@@ -16,7 +16,7 @@ class AuthorListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Author
-        fields = ["slug", "name", "bio", "birth_year", "death_year", "book_count"]
+        fields = ["slug", "name", "bio", "photo_url", "birth_year", "death_year", "book_count"]
 
 
 class BookListSerializer(serializers.ModelSerializer):
@@ -90,8 +90,8 @@ class AuthorDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Author
         fields = [
-            "slug", "name", "bio", "bio_html", "birth_year", "death_year",
-            "book_count", "books", "sermons",
+            "slug", "name", "bio", "bio_html", "photo_url", "birth_year",
+            "death_year", "book_count", "books", "sermons",
         ]
 
     def _language(self):

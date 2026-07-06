@@ -43,16 +43,31 @@
 			<article id={author.slug} class="scroll-mt-24">
 				<div class="flex items-center gap-4">
 					<a href="/authors/{author.slug}" class="shrink-0 hover:no-underline">
-						<span
-							class="flex h-14 w-14 items-center justify-center rounded-full bg-accent-soft text-h3 font-semibold text-accent"
-							style="font-family: var(--font-display)"
-						>
-							{initials(author.name)}
-						</span>
+						{#if author.photo_url}
+							<img
+								src={author.photo_url}
+								alt="Portrait of {author.name}"
+								loading="lazy"
+								class="h-14 w-14 rounded-full border border-border object-cover"
+								style="filter: grayscale(1)"
+							/>
+						{:else}
+							<span
+								class="flex h-14 w-14 items-center justify-center rounded-full bg-accent-soft text-h3 font-semibold text-accent"
+								style="font-family: var(--font-display)"
+							>
+								{initials(author.name)}
+							</span>
+						{/if}
 					</a>
 					<div>
 						<h2 class="text-h2">
 							<a href="/authors/{author.slug}" class="!text-text hover:underline">{author.name}</a>
+							{#if author.birth_year}
+								<span class="ml-2 text-body font-normal text-muted"
+									>{author.birth_year}–{author.death_year ?? ''}</span
+								>
+							{/if}
 						</h2>
 						<a href="/authors/{author.slug}" class="text-small font-semibold text-accent">
 							{#if author.book_count > 0}
