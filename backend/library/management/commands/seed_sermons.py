@@ -54,8 +54,8 @@ class Command(BaseCommand):
             self.stdout.write("No fixture available — nothing to seed.")
             return
 
-        author_slug_by_pk = {
-            r["pk"]: r["fields"]["slug"]
+        author_fields_by_pk = {
+            r["pk"]: r["fields"]
             for r in rows
             if r.get("model") == "library.author"
         }
@@ -65,11 +65,21 @@ class Command(BaseCommand):
             if row.get("model") != "library.sermon":
                 continue
             f = row["fields"]
-            author = Author.objects.filter(
-                slug=author_slug_by_pk.get(f["author"], "")
-            ).first()
-            if author is None:
+            af = author_fields_by_pk.get(f["author"])
+            if af is None:
                 continue
+            # A sermon may introduce an author with no books yet (e.g. Moody) —
+            # create the author from the fixture rather than skipping the sermon.
+            author, _ = Author.objects.get_or_create(
+                slug=af["slug"],
+                defaults={
+                    "name": af.get("name", ""),
+                    "bio": af.get("bio", ""),
+                    "bio_html": af.get("bio_html", ""),
+                    "birth_year": af.get("birth_year"),
+                    "death_year": af.get("death_year"),
+                },
+            )
 
             sermon = Sermon.objects.filter(
                 slug=f["slug"], language=f.get("language", "en")

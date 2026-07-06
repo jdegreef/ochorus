@@ -135,6 +135,21 @@ class SermonBodyTextTests(TestCase):
         )
         self.assertEqual(s.body_text, "Hear my cry.")
 
+
+class SeedSermonsTests(TestCase):
+    def test_creates_missing_authors_from_fixture(self):
+        # Prod regression (2026-07-06): a sermon whose author has no books yet
+        # (Moody) was silently skipped because the author row didn't exist.
+        from django.core.management import call_command
+
+        self.assertFalse(Author.objects.filter(slug="dwight-l-moody").exists())
+        call_command("seed_sermons", verbosity=0)
+        self.assertTrue(Author.objects.filter(slug="dwight-l-moody").exists())
+        self.assertGreaterEqual(
+            Sermon.objects.filter(author__slug="dwight-l-moody").count(), 5
+        )
+        self.assertGreaterEqual(Sermon.objects.count(), 18)
+
     @skipUnless(connection.vendor == "postgresql", "Postgres-only FTS path")
     def test_postgres_stemming_and_ranking(self):
         # "depend" should stem-match "dependence" under the english config.
