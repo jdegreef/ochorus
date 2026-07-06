@@ -4,7 +4,7 @@ from django.db import connection
 from django.test import TestCase
 from rest_framework.test import APIClient
 
-from .models import Author, Book, Chapter, Plan, PlanDay
+from .models import Author, Book, Chapter, Plan, PlanDay, Sermon
 from .text import html_to_text
 
 
@@ -63,6 +63,23 @@ class SearchTests(TestCase):
         Chapter.objects.create(
             book=unpublished, order=1, title="X", body_html="<p>dependence secret</p>"
         )
+        spurgeon = Author.objects.create(slug="charles-h-spurgeon", name="Charles H. Spurgeon")
+        Sermon.objects.create(
+            author=spurgeon,
+            slug="the-ravens-cry",
+            language="en",
+            title="The Ravens' Cry",
+            scripture_ref="Psalm 147:9",
+            body_html="<p>He gives to the beast his food, and to the young ravens which cry.</p>",
+        )
+        Sermon.objects.create(
+            author=spurgeon,
+            slug="hidden-sermon",
+            language="en",
+            title="Hidden Sermon",
+            body_html="<p>ravens unpublished</p>",
+            is_published=False,
+        )
 
     def search(self, q, language="en"):
         res = self.client.get(f"/api/library/search/?q={q}&language={language}")
@@ -91,6 +108,32 @@ class SearchTests(TestCase):
     def test_no_html_in_snippets(self):
         for hit in self.search("pride"):
             self.assertNotIn("<", hit["snippet"])
+
+    def test_sermons_included_with_type(self):
+        results = self.search("ravens")
+        sermon_hits = [r for r in results if r["type"] == "sermon"]
+        self.assertEqual(len(sermon_hits), 1)
+        hit = sermon_hits[0]
+        self.assertEqual(hit["sermon_slug"], "the-ravens-cry")
+        self.assertEqual(hit["scripture_ref"], "Psalm 147:9")
+        self.assertIn("ravens", hit["snippet"])
+
+    def test_unpublished_sermons_excluded(self):
+        slugs = {r.get("sermon_slug") for r in self.search("ravens")}
+        self.assertNotIn("hidden-sermon", slugs)
+
+    def test_chapter_hits_typed(self):
+        results = self.search("dependence")
+        self.assertEqual(results[0]["type"], "chapter")
+
+
+class SermonBodyTextTests(TestCase):
+    def test_save_derives_body_text(self):
+        author = Author.objects.create(slug="a", name="A")
+        s = Sermon.objects.create(
+            author=author, slug="s", title="S", body_html="<p>Hear my <b>cry</b>.</p>"
+        )
+        self.assertEqual(s.body_text, "Hear my cry.")
 
     @skipUnless(connection.vendor == "postgresql", "Postgres-only FTS path")
     def test_postgres_stemming_and_ranking(self):

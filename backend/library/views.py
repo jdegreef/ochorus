@@ -251,14 +251,17 @@ class SearchView(APIView):
         base = Chapter.objects.filter(
             book__is_published=True, book__language=language
         ).select_related("book", "book__author")
+        sermons = Sermon.objects.filter(
+            is_published=True, language=language
+        ).select_related("author")
 
         if connection.vendor == "postgresql":
-            results = self._search_postgres(base, q, language)
+            results = self._search_postgres(base, sermons, q, language)
         else:
-            results = self._search_fallback(base, q)
+            results = self._search_fallback(base, sermons, q)
         return Response({"query": q, "results": results})
 
-    def _search_postgres(self, base, q, language):
+    def _search_postgres(self, base, sermons, q, language):
         from django.contrib.postgres.search import (
             SearchHeadline,
             SearchQuery,
@@ -268,6 +271,18 @@ class SearchView(APIView):
 
         config = FTS_CONFIGS.get(language, "simple")
         query = SearchQuery(q, config=config, search_type="websearch")
+
+        def headline(field):
+            return SearchHeadline(
+                field,
+                query,
+                config=config,
+                start_sel=HL_START,
+                stop_sel=HL_END,
+                max_words=40,
+                min_words=20,
+            )
+
         vector = (
             SearchVector("title", weight="A", config=config)
             + SearchVector("book__title", weight="A", config=config)
@@ -278,22 +293,37 @@ class SearchView(APIView):
             base.annotate(
                 search=vector,
                 rank=SearchRank(vector, query),
-                headline=SearchHeadline(
-                    "body_text",
-                    query,
-                    config=config,
-                    start_sel=HL_START,
-                    stop_sel=HL_END,
-                    max_words=40,
-                    min_words=20,
-                ),
+                headline=headline("body_text"),
             )
             .filter(search=query)
             .order_by("-rank", "book__sort_order", "order")[: self.MAX_RESULTS]
         )
-        return [self._hit(c, snippet=c.headline) for c in chapters]
 
-    def _search_fallback(self, base, q):
+        sermon_vector = (
+            SearchVector("title", weight="A", config=config)
+            + SearchVector("author__name", weight="B", config=config)
+            + SearchVector("scripture_ref", weight="B", config=config)
+            + SearchVector("body_text", weight="C", config=config)
+        )
+        sermon_hits = (
+            sermons.annotate(
+                search=sermon_vector,
+                rank=SearchRank(sermon_vector, query),
+                headline=headline("body_text"),
+            )
+            .filter(search=query)
+            .order_by("-rank", "sort_order")[: self.MAX_RESULTS]
+        )
+
+        merged = [
+            (c.rank, self._hit(c, snippet=c.headline)) for c in chapters
+        ] + [
+            (s.rank, self._sermon_hit(s, snippet=s.headline)) for s in sermon_hits
+        ]
+        merged.sort(key=lambda pair: pair[0], reverse=True)
+        return [hit for _, hit in merged[: self.MAX_RESULTS]]
+
+    def _search_fallback(self, base, sermons, q):
         chapters = base.filter(
             Q(body_text__icontains=q)
             | Q(title__icontains=q)
@@ -301,15 +331,45 @@ class SearchView(APIView):
             | Q(book__subtitle__icontains=q)
             | Q(book__author__name__icontains=q)
         ).order_by("book__sort_order", "book__title", "order")[: self.MAX_RESULTS]
-        return [self._hit(c, snippet=_fallback_snippet(c.body_text, q)) for c in chapters]
+        # Unranked fallback: reserve a few slots so sermon matches aren't
+        # crowded out when many chapters match a common word.
+        sermon_hits = list(
+            sermons.filter(
+                Q(body_text__icontains=q)
+                | Q(title__icontains=q)
+                | Q(scripture_ref__icontains=q)
+                | Q(author__name__icontains=q)
+            ).order_by("sort_order", "title")[:6]
+        )
+        results = [
+            self._hit(c, snippet=_fallback_snippet(c.body_text, q))
+            for c in chapters[: self.MAX_RESULTS - len(sermon_hits)]
+        ]
+        results += [
+            self._sermon_hit(s, snippet=_fallback_snippet(s.body_text, q))
+            for s in sermon_hits
+        ]
+        return results
 
     @staticmethod
     def _hit(c, snippet):
         return {
+            "type": "chapter",
             "book_slug": c.book.slug,
             "book_title": c.book.title,
             "author_name": c.book.author.name,
             "chapter_order": c.order,
             "chapter_title": c.title,
+            "snippet": snippet,
+        }
+
+    @staticmethod
+    def _sermon_hit(s, snippet):
+        return {
+            "type": "sermon",
+            "sermon_slug": s.slug,
+            "sermon_title": s.title,
+            "author_name": s.author.name,
+            "scripture_ref": s.scripture_ref,
             "snippet": snippet,
         }

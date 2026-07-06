@@ -59,7 +59,8 @@ export interface Language {
 	native_name: string;
 }
 
-export interface SearchHit {
+export interface ChapterHit {
+	type: 'chapter';
 	book_slug: string;
 	book_title: string;
 	author_name: string;
@@ -67,6 +68,17 @@ export interface SearchHit {
 	chapter_title: string;
 	snippet: string;
 }
+
+export interface SermonHit {
+	type: 'sermon';
+	sermon_slug: string;
+	sermon_title: string;
+	author_name: string;
+	scripture_ref: string;
+	snippet: string;
+}
+
+export type SearchHit = ChapterHit | SermonHit;
 
 export interface SearchResponse {
 	query: string;

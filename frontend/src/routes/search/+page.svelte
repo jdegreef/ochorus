@@ -65,21 +65,35 @@
 			<p class="text-small text-muted">{t('search.noResults')} “{ran}”.</p>
 		{:else}
 			<ul class="divide-y divide-border">
-				{#each hits as hit (hit.book_slug + ':' + hit.chapter_order)}
+				{#each hits as hit (hit.type === 'sermon' ? 'sermon:' + hit.sermon_slug : hit.book_slug + ':' + hit.chapter_order)}
 					<li class="py-4">
-						<a
-							href="/books/{hit.book_slug}/{hit.chapter_order}"
-							class="block hover:no-underline"
-						>
-							<div class="text-small text-muted">
-								{hit.book_title} · {hit.author_name}
-							</div>
-							<div class="text-body font-semibold text-text">{hit.chapter_title}</div>
-							<p class="mt-1 text-small text-muted">
-								<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-								{@html mark(hit.snippet)}
-							</p>
-						</a>
+						{#if hit.type === 'sermon'}
+							<a href="/sermons/{hit.sermon_slug}" class="block hover:no-underline">
+								<div class="text-small text-muted">
+									Sermon · {hit.author_name}{#if hit.scripture_ref}
+										· {hit.scripture_ref}{/if}
+								</div>
+								<div class="text-body font-semibold text-text">{hit.sermon_title}</div>
+								<p class="mt-1 text-small text-muted">
+									<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+									{@html mark(hit.snippet)}
+								</p>
+							</a>
+						{:else}
+							<a
+								href="/books/{hit.book_slug}/{hit.chapter_order}"
+								class="block hover:no-underline"
+							>
+								<div class="text-small text-muted">
+									{hit.book_title} · {hit.author_name}
+								</div>
+								<div class="text-body font-semibold text-text">{hit.chapter_title}</div>
+								<p class="mt-1 text-small text-muted">
+									<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+									{@html mark(hit.snippet)}
+								</p>
+							</a>
+						{/if}
 					</li>
 				{/each}
 			</ul>
