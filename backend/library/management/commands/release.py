@@ -22,5 +22,8 @@ class Command(BaseCommand):
         # Fixture loads bypass Chapter.save(), so derive search text afterwards.
         self.stdout.write("→ backfill_body_text")
         call_command("backfill_body_text")
+        # Idempotent text repairs (no-op when the fixture is already fixed).
+        self.stdout.write("→ apply_body_corrections")
+        call_command("apply_body_corrections")
         self.stdout.write("→ seed_plans")
         call_command("seed_plans")

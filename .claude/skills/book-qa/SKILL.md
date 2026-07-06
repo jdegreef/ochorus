@@ -22,13 +22,19 @@ a scratch script. The seeded local DB mirrors prod content.
 3. **Tiny chapters** — `word_count < 150`: front matter, a split heading, or a
    failed merge. Read the body before judging; some prefaces are legitimately
    short.
-4. **Giant chapters** — `word_count > 8000`: chapter breaks probably missed.
+4. **Giant chapters** — `word_count > 8000`: chapter breaks POSSIBLY missed —
+   but Torrey and Nee genuinely write 10–15k-word chapters; check the PDF TOC
+   before recommending a split (and remember order shifts break seeded plans).
 5. **Fragmented paragraphs** — high `<p>`-count-to-word-count ratio
    (avg words/paragraph < 25): PDF line-break noise the re-merge missed.
 6. **Missing drop caps** — body_text starting lowercase or mid-word
    (`^[a-z]` or an obvious truncated first word): image-based drop cap lost.
 7. **Running-header noise** — book title or author name appearing repeatedly
-   INSIDE body_text.
+   INSIDE body_text. HIGH FALSE-POSITIVE RATE: a book's title is often its
+   subject ("Baptism with the Holy Spirit" appears 27–39×/chapter as Torrey's
+   prose; "Jesus Himself" is a sermon refrain). Only flag after reading the
+   contexts — real header noise sits isolated between sentences, usually next
+   to page numbers. Confirm with inspect_pdf before recommending a fix.
 8. **Mid-sentence chapter splits** — previous chapter's body_text not ending
    in terminal punctuation (`[.!?"'”]$`).
 9. **Coverage basics** — books with 0 chapters; chapters with empty
@@ -46,3 +52,9 @@ cluster (which skill handles it) — not one per chapter.
 
 - `jesus-himself-2` genuinely has 2 chapters (PDF is two addresses).
 - Contemporary "Ochorus Originals" have simpler structure than the classics.
+- `till-he-come/23` is a HYMN — short verse lines are correct, not fragments.
+- Giant chapters in `the-person-and-work-of-the-holy-spirit` (ch5 "…As
+  Revealed In His Names", ch20) and `the-body-of-christ-a-reality/6` are the
+  authors' real structure (verified against PDFs 2026-07).
+- Repeated-title counts in baptism-with-the-holy-spirit / jesus-himself-2 /
+  the-inner-chamber etc. are prose usage, not running headers (2026-07).

@@ -47,3 +47,85 @@ CORRECTIONS: dict[str, dict] = {
 
 def chapter_title_overrides(slug: str) -> dict[int, str]:
     return CORRECTIONS.get(slug, {}).get("chapter_titles", {})
+
+
+# --- Body-text corrections ------------------------------------------------------
+# Extraction artifacts inside chapter bodies that heuristics can't fix:
+#
+#   dropcap_letters: {order: "G"} — the chapter's opening letter was an IMAGE
+#     drop cap in the source, so the text layer starts one letter short
+#     ("reat numbers…"). The letter is unambiguous from context; we restore it.
+#   replacements: [(old, new)] — exact-string repairs for OCR damage (a letter
+#     split off before punctuation: "blesse d!" → "blessed!"). Kept as literal
+#     pairs — no clever regex — so scripture citations like "Song i." are never
+#     touched. Verify each in context before adding.
+#
+# Applied on every import AND backfillable over stored rows (management command
+# `apply_body_corrections`, plus a data migration for prod).
+
+import re as _re
+
+BODY_CORRECTIONS: dict[str, dict] = {
+    "around-the-wicket-gate": {
+        # Image drop caps (Gutenberg source) — first letter of every chapter.
+        "dropcap_letters": {
+            1: "G",   # G(reat numbers of persons…)
+            2: "W",   # W(e cannot, too often…)
+            3: "T",   # T(here is a wretched tendency…)
+            4: "T",   # T(o many, faith seems…)
+            5: "I",   # I(t is an odd product…)
+            6: "I",   # I(t may be that the reader…)
+            7: "T",   # T(o help the seeker…)
+            8: "A",   # A(lthough it is by no means…)
+            9: "I",   # I(n these days…)
+            10: "S",  # S(ome think it hard…)
+            11: "F",  # F(riends, if now you have begun…)
+        },
+    },
+    "the-unselfishness-of-god": {
+        "replacements": [
+            ("blesse d!", "blessed!"),
+            ("crystallize d,", "crystallized,"),
+            ("scepti c!", "sceptic!"),
+            ("lif e.", "life."),
+            ("evangelical s,", "evangelicals,"),
+        ],
+    },
+    "feasting-at-the-table": {
+        "replacements": [("repea t:", "repeat:"), ("wif e!", "wife!")],
+    },
+    "the-christians-secret-of-a-happy-life-4": {
+        "replacements": [("sel f,", "self,")],
+    },
+    "men-of-prayer-2": {
+        "replacements": [("conversatio n.", "conversation.")],
+    },
+    "the-person-and-work-of-the-holy-spirit": {
+        "replacements": [
+            ("Jesu s,", "Jesus,"),
+            ("faithfulnes s.", "faithfulness."),
+            ("eart h”", "earth”"),
+            ("saved i. e. ,", "saved i.e.,"),
+            ("salvatio n,", "salvation,"),
+        ],
+    },
+}
+
+# First lowercase letter opening the first paragraph of a body.
+_FIRST_LOWER = _re.compile(r"<p[^>]*>\s*([a-z])")
+
+
+def apply_body_corrections(slug: str, order: int, body_html: str) -> str:
+    """Apply this book's body corrections to one chapter's HTML. Idempotent."""
+    entry = BODY_CORRECTIONS.get(slug)
+    if not entry:
+        return body_html
+    for old, new in entry.get("replacements", []):
+        body_html = body_html.replace(old, new)
+    letter = entry.get("dropcap_letters", {}).get(order)
+    if letter:
+        # Only when the first paragraph still starts lowercase (not yet fixed).
+        m = _FIRST_LOWER.search(body_html, 0, 200)
+        if m:
+            body_html = body_html[: m.start(1)] + letter + body_html[m.start(1) :]
+    return body_html

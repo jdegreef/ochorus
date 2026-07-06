@@ -24,8 +24,12 @@ from django.core.management.base import BaseCommand
 from django.db import transaction
 from django.utils.text import slugify
 
-from library.corrections import EXCLUDED_SLUGS, chapter_title_overrides
-from library.ingest import clean_title, is_front_matter
+from library.corrections import (
+    EXCLUDED_SLUGS,
+    apply_body_corrections,
+    chapter_title_overrides,
+)
+from library.ingest import clean_title, is_front_matter, strip_trailing_pagenum
 from library.models import Author, Book, Chapter
 
 CATALOG_URL = "https://ochorus.com/ochorus-books/"
@@ -396,6 +400,11 @@ def chapterize(blocks: list[tuple[str, float]], body_size: float) -> list[tuple[
         if not m:
             continue
         n = _chapter_int(m.group(1))
+        # A body-size "chapter …" whose label isn't a number is prose, not a
+        # marker ("The first chapter deals with the doctrines…" split a real
+        # sentence in The Key in My Hand). Heading-size markers stay trusted.
+        if n is None and s < thresh:
+            continue
         if s >= thresh or not markers_are_large or (
             n is not None and prev_num is not None and n == prev_num + 1
         ):
@@ -420,12 +429,14 @@ def chapterize(blocks: list[tuple[str, float]], body_size: float) -> list[tuple[
         return by_marker
 
     def is_font(i: int, t: str, s: float) -> bool:
-        return (
-            short(t)
-            and (s >= thresh or bool(_CHAP_RE.match(t)))
-            and _norm(t) not in banned
-            and not _TOC_LINE_RE.search(t)
-        )
+        if not short(t) or _norm(t) in banned or _TOC_LINE_RE.search(t):
+            return False
+        if s >= thresh:
+            return True
+        # Body-size "chapter …" lines only count when the label is a real
+        # number — prose like "chapter deals with…" must not split a chapter.
+        m = _CHAP_RE.match(t)
+        return bool(m) and _chapter_int(m.group(1)) is not None
 
     return _segment(blocks, is_font, is_noise, thresh)
 
@@ -456,6 +467,8 @@ def upsert(meta: dict, chapters: list[tuple[str, str]], sort_order: int) -> Book
     overrides = chapter_title_overrides(meta["slug"])
     for order, (title, body) in enumerate(chapters, start=1):
         final = clean_title(overrides.get(order, title))
+        body = strip_trailing_pagenum(body)
+        body = apply_body_corrections(meta["slug"], order, body)
         Chapter.objects.create(
             book=book, order=order, title=final[:300], body_html=body,
             word_count=len(re.sub(r"<[^>]+>", " ", body).split()),
