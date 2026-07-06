@@ -19,28 +19,30 @@ from pathlib import Path
 
 from django.db import migrations
 
-# Books whose chapter sets were rebuilt by the fixed importer.
+# Books whose chapter sets were rebuilt by the fixed importer. Books the
+# re-import left identical are omitted; the-inner-chamber is deliberately kept
+# on its current 36 chapters (the re-import would add a Preface as ch1, which
+# shifts every chapter_order and breaks the seeded 36-day reading plan and
+# readers' saved positions — not worth a bonus preface).
 AFFECTED_SLUGS = {
     "men-who-moved-heaven",
     "men-who-tended-the-flock-2",
     "women-who-moved-heaven-2",
     "men-and-women-who-gave-everything-2",
+    "men-of-prayer-2",
     "talks-to-the-farmer",
     "feasting-at-the-table",
-    "the-inner-chamber",
-    "the-masters-indwelling",
-    "men-of-prayer-2",
-    "purity-of-heart",
-    "the-normal-christian-life",
-    "jesus-himself-2",
     "stepping-stones-2",
-    "the-unselfishness-of-god",
 }
 
 FIXTURE = Path(__file__).resolve().parent.parent / "fixtures" / "launch.json"
 
 
 def replace_chapters(apps, schema_editor):
+    # Real helper so body_text derives exactly as Chapter.save() would —
+    # bulk_create bypasses save(), and the fixture deliberately omits body_text.
+    from library.text import html_to_text
+
     Book = apps.get_model("library", "Book")
     Chapter = apps.get_model("library", "Chapter")
 
@@ -71,6 +73,7 @@ def replace_chapters(apps, schema_editor):
                 order=f["order"],
                 title=f["title"],
                 body_html=f["body_html"],
+                body_text=html_to_text(f["body_html"]),
                 word_count=f["word_count"],
             )
             for f in sorted(fields, key=lambda f: f["order"])
@@ -84,7 +87,7 @@ def noop(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("library", "0004_author_bio_html_sermon"),
+        ("library", "0008_merge_20260705_2246"),
     ]
 
     operations = [

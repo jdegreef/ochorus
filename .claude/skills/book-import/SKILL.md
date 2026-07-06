@@ -178,9 +178,12 @@ dropped; chapters under 120 words are dropped as stubs.
   titles): a title-transform migration can't help — write a migration that
   reads `fixtures/launch.json`, deletes the affected books' chapters, and
   bulk-creates the corrected sets (safe: nothing FKs Chapter; progress/marks are
-  localStorage slug+order). Pattern: `0005_rechapterize_bio_collections`. NOTE:
-  orders can shift (Inner Chamber gained a Preface as ch1), which nudges
-  readers' saved positions by one chapter. *(2026-07)*
+  localStorage slug+order — but CHECK PlanDay: reading plans soft-reference
+  chapters by (book_slug, chapter_order), so an order shift breaks seeded
+  plans). Pattern: `0009_rechapterize_bio_collections`. Ship only books that
+  MATERIALLY changed — a re-import that merely adds a Preface as ch1 shifts
+  every chapter_order, breaking the book's seeded plan and readers' saved
+  positions (we excluded the-inner-chamber for exactly this). *(2026-07)*
 - **Known limits (unfixed):** a book whose Introduction heading is fused with
   its body text in one block loses that intro (feasting-at-the-table); a drop
   cap belonging mid-paragraph after a scripture-ref merge isn't reattached
