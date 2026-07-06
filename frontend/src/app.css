@@ -220,14 +220,21 @@
    the bar, and the controls (preferences gear, account avatar) at the right.
    Same spacing, radii and tokens as Take Root's app.css. */
 nav.appnav {
+	border-bottom: 1px solid var(--border);
+	background: var(--surface-2);
+}
+/* The bar's content sits in a centred container (like Take Root's live nav),
+   so the brand and controls are inset from the viewport edges and align with
+   the page content on wide screens. */
+nav.appnav .appnav-inner {
 	position: relative;
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
 	gap: 0.45rem 0.9rem;
+	max-width: 88rem;
+	margin-inline: auto;
 	padding: 0.6rem 1.25rem;
-	border-bottom: 1px solid var(--border);
-	background: var(--surface-2);
 }
 /* On wide screens the links are centred in the bar regardless of the brand /
    control widths: out of flow, pinned to the bar's centre. */
@@ -301,10 +308,9 @@ nav.appnav .navtoggle {
 nav.appnav .navtoggle:hover {
 	color: var(--accent);
 }
-/* Ochorus has seven centre links (Take Root has five), so the absolute
-   centring would collide with the brand/controls sooner: below 1120px, let
-   the links flow in the bar instead. */
-@media (max-width: 1120px) {
+/* Below this the absolute centring would collide with the brand/controls:
+   let the links flow in the bar instead. */
+@media (max-width: 960px) {
 	nav.appnav .navlinks {
 		position: static;
 		transform: none;
@@ -453,4 +459,35 @@ nav.appnav .navtoggle:hover {
 	border: none;
 	color: var(--gold);
 	cursor: pointer;
+}
+
+/* Narrower / wider stepper (prefs menu), styled as a joined button pair. */
+.widthctl {
+	display: flex;
+	align-items: stretch;
+}
+.widthctl button {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.3rem 0.75rem;
+	background: transparent;
+	border: 1px solid var(--border);
+	color: var(--text);
+	cursor: pointer;
+}
+.widthctl button:first-child {
+	border-start-start-radius: var(--radius-sm);
+	border-end-start-radius: var(--radius-sm);
+}
+.widthctl button:last-child {
+	margin-inline-start: -1px;
+	border-start-end-radius: var(--radius-sm);
+	border-end-end-radius: var(--radius-sm);
+}
+.widthctl button:hover:not(:disabled) {
+	background: var(--surface-2);
+}
+.widthctl button:disabled {
+	opacity: 0.4;
+	cursor: default;
 }

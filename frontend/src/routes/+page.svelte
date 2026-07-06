@@ -96,7 +96,7 @@
 	<div class="mx-auto max-w-3xl px-5 py-14 text-center">
 		<h2 class="text-h1 mb-3">Spreading the Gospel Through Literature</h2>
 		<p class="mx-auto max-w-xl text-body text-muted">
-			Based in Kampala, Uganda and established in 2021, Ochorus is a ministry devoted to making
+			Based in Victoria BC, Canada and Kampala, Uganda, and established in 2021, Ochorus is a ministry devoted to making
 			exceptional classic Christian literature freely accessible to every corner of the world.
 		</p>
 		<a href="/about" class="btn btn-ghost mt-6">Our Story</a>

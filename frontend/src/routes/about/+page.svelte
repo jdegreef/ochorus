@@ -7,7 +7,7 @@
 	<div class="reading-page space-y-5 text-body text-muted">
 		<h2 class="text-h2 !text-text">Spreading the Gospel Through Literature</h2>
 		<p>
-			Based in Kampala, Uganda, Ochorus is a dedicated ministry with a profound mission: providing
+			Based in Victoria BC, Canada and Kampala, Uganda, Ochorus is a dedicated ministry with a profound mission: providing
 			exceptional classic Christian literature and resources at no cost, to readers everywhere.
 		</p>
 		<p>

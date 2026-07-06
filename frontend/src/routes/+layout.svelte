@@ -15,6 +15,8 @@
 	import PwaToasts from '$lib/components/PwaToasts.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import type { IconName } from '$lib/components/Icon.svelte';
+	import BrandMark from '$lib/components/BrandMark.svelte';
+	import WidthControl from '$lib/components/WidthControl.svelte';
 
 	let { children } = $props();
 	const t = i18n.t;
@@ -42,13 +44,13 @@
 		if (auth.user) auth.pushPrefs();
 	});
 
+	// App destinations only — About Us and Contact live in the footer (matching
+	// Take Root, whose app nav carries five primary destinations).
 	const NAV = $derived<{ href: string; label: string; icon: IconName }[]>([
-		{ href: '/about', label: t('nav.about'), icon: 'info' },
 		{ href: '/books', label: t('nav.books'), icon: 'book' },
 		{ href: '/plans', label: t('nav.plans'), icon: 'calendar' },
 		{ href: '/sermons', label: t('nav.sermons'), icon: 'mic' },
 		{ href: '/biographies', label: t('nav.biographies'), icon: 'users' },
-		{ href: '/contact', label: t('nav.contact'), icon: 'mail' },
 		{ href: '/search', label: t('nav.search'), icon: 'search' }
 	]);
 
@@ -80,7 +82,8 @@
 <div class="flex min-h-screen flex-col">
 	{#if !readerUi.focus}
 		<nav class="appnav">
-			<a class="brand" href="/">Ochorus</a>
+			<div class="appnav-inner">
+			<a class="brand" href="/"><BrandMark size={24} /><span>Ochorus</span></a>
 			<button
 				class="navtoggle"
 				aria-label="Menu"
@@ -131,6 +134,10 @@
 										<Icon name={theme.current === 'dark' ? 'sun' : 'moon'} />
 									</button>
 								</div>
+								<div class="prefs-row">
+									<span class="prefs-label">Reading width</span>
+									<WidthControl />
+								</div>
 								{#if lang.available.length > 1}
 									<div class="prefs-row">
 										<span class="prefs-label">Language</span>
@@ -143,6 +150,7 @@
 					<AccountMenu />
 				</div>
 			</div>
+			</div>
 		</nav>
 	{/if}
 
@@ -154,7 +162,9 @@
 		<footer class="border-t border-border bg-surface-2">
 			<div class="mx-auto grid max-w-5xl gap-8 px-5 py-12 sm:grid-cols-3">
 				<div>
-					<div class="text-display !text-xl !text-text">Ochorus</div>
+					<div class="flex items-center gap-2 text-display !text-xl !text-text">
+						<BrandMark size={22} /><span>Ochorus</span>
+					</div>
 					<p class="mt-2 max-w-xs text-small text-muted">
 						Equipping people with classic Christian books — free to read, in your language.
 					</p>
@@ -163,6 +173,7 @@
 					<h3 class="mb-3 text-small font-semibold uppercase tracking-wider text-text">Explore</h3>
 					<ul class="space-y-2 text-small text-muted">
 						<li><a href="/books" class="hover:text-text">{t('nav.books')}</a></li>
+						<li><a href="/plans" class="hover:text-text">{t('nav.plans')}</a></li>
 						<li><a href="/sermons" class="hover:text-text">{t('nav.sermons')}</a></li>
 						<li><a href="/biographies" class="hover:text-text">{t('nav.biographies')}</a></li>
 						<li><a href="/about" class="hover:text-text">{t('nav.about')}</a></li>
@@ -175,7 +186,9 @@
 						Reach us at
 						<a href="mailto:support@ochorus.com" class="text-accent">support@ochorus.com</a>.
 					</p>
-					<p class="mt-4 text-[0.78rem] text-muted">A ministry since 2021 · Kampala, Uganda</p>
+					<p class="mt-4 text-[0.78rem] text-muted">
+						A ministry since 2021 · Victoria BC, Canada · Kampala, Uganda
+					</p>
 				</div>
 			</div>
 		</footer>
