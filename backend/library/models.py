@@ -21,6 +21,9 @@ class Author(models.Model):
     # <blockquote>s, and <aside class="prayer"> callouts). Rendered on the author
     # page above their books. Written via the `write-biography` skill.
     bio_html = models.TextField(blank=True)
+    # Public-domain portrait (self-hosted under /portraits/, B&W-processed).
+    # Blank for contemporary authors — the UI falls back to an initials avatar.
+    photo_url = models.URLField(blank=True)
     birth_year = models.IntegerField(null=True, blank=True)
     death_year = models.IntegerField(null=True, blank=True)
     original_language = models.CharField(max_length=10, default="en")

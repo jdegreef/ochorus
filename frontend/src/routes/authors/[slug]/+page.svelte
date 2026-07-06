@@ -16,7 +16,13 @@
 	const description = $derived(
 		(author.bio || `${author.name} on Ochorus — free classic Christian books.`).slice(0, 300)
 	);
-	const ogImage = $derived(author.books[0]?.cover_url ? absUrl(author.books[0].cover_url) : '');
+	const ogImage = $derived(
+		author.photo_url
+			? absUrl(author.photo_url)
+			: author.books[0]?.cover_url
+				? absUrl(author.books[0].cover_url)
+				: ''
+	);
 
 	const personLd = $derived(
 		jsonLd({
@@ -64,13 +70,22 @@
 		<span class="text-text">{author.name}</span>
 	</nav>
 
-	<header class="flex items-center gap-4">
-		<span
-			class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-accent-soft text-h2 font-semibold text-accent"
-			style="font-family: var(--font-display)"
-		>
-			{initials(author.name)}
-		</span>
+	<header class="flex items-center gap-5">
+		{#if author.photo_url}
+			<img
+				src={author.photo_url}
+				alt="Portrait of {author.name}"
+				class="h-24 w-24 shrink-0 rounded-full border border-border object-cover shadow-sm"
+				style="filter: grayscale(1)"
+			/>
+		{:else}
+			<span
+				class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-accent-soft text-h2 font-semibold text-accent"
+				style="font-family: var(--font-display)"
+			>
+				{initials(author.name)}
+			</span>
+		{/if}
 		<div>
 			<h1 class="text-h1">{author.name}</h1>
 			{#if years}<p class="text-body text-muted">{years}</p>{/if}

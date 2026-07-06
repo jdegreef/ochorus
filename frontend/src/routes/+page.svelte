@@ -115,12 +115,22 @@
 				href="/authors/{author.slug}"
 				class="flex items-center gap-3 rounded-card border border-border p-4 hover:no-underline hover:bg-surface-2"
 			>
-				<span
-					class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-soft text-small font-semibold text-accent"
-					style="font-family: var(--font-display)"
-				>
-					{initials(author.name)}
-				</span>
+				{#if author.photo_url}
+					<img
+						src={author.photo_url}
+						alt="Portrait of {author.name}"
+						loading="lazy"
+						class="h-11 w-11 shrink-0 rounded-full border border-border object-cover"
+						style="filter: grayscale(1)"
+					/>
+				{:else}
+					<span
+						class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-soft text-small font-semibold text-accent"
+						style="font-family: var(--font-display)"
+					>
+						{initials(author.name)}
+					</span>
+				{/if}
 				<span>
 					<span class="block text-small font-semibold text-text">{author.name}</span>
 					<span class="block text-[0.8rem] text-muted">

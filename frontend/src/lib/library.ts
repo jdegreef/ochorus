@@ -4,6 +4,7 @@ export interface Author {
 	slug: string;
 	name: string;
 	bio: string;
+	photo_url: string;
 	birth_year: number | null;
 	death_year: number | null;
 }
@@ -106,6 +107,7 @@ export interface AuthorBio {
 	slug: string;
 	name: string;
 	bio: string;
+	photo_url: string;
 	birth_year: number | null;
 	death_year: number | null;
 	book_count: number;
