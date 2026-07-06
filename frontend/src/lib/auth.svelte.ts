@@ -135,7 +135,10 @@ class Auth {
 			const p = await apiFetch<Profile>('/api/auth/me/');
 			if (p.theme === 'dark' || p.theme === 'light') theme.set(p.theme);
 			if (p.font_scale) readerPrefs.setScale(p.font_scale);
-			if (p.locale) {
+			// Only adopt the saved locale if it's a language we still offer content
+			// in — otherwise a stale profile locale (from when more languages were
+			// listed) would re-wedge the reader on every sign-in.
+			if (p.locale && lang.isAvailable(p.locale)) {
 				lang.set(p.locale);
 				i18n.set(p.locale);
 			}

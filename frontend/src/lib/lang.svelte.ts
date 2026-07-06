@@ -28,7 +28,19 @@ class Lang {
 	}
 
 	setAvailable(langs: Language[]) {
-		if (langs.length) this.available = langs;
+		if (!langs.length) return;
+		this.available = langs;
+		// Heal a stuck selection: if the persisted language is no longer offered
+		// (e.g. content was reduced to English-only after it had been chosen),
+		// fall back to the first available language. Without this, every content
+		// fetch 404s for that language and the reader is wedged.
+		if (!this.isAvailable(this.current)) {
+			this.set(langs[0].code);
+		}
+	}
+
+	isAvailable(code: string): boolean {
+		return this.available.some((l) => l.code === code);
 	}
 
 	/** Change content language and persist. Returns true if it actually changed. */

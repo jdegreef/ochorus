@@ -1,4 +1,4 @@
-import { apiFetch } from './api';
+import { apiFetch, ApiError } from './api';
 
 export interface Author {
 	slug: string;
@@ -117,19 +117,37 @@ export interface AuthorDetail extends AuthorBio {
 	sermons: SermonSummary[];
 }
 
+/**
+ * Fetch a single localized item, falling back to English when it doesn't exist
+ * in the requested language. Content is currently English-only, and even once
+ * translations exist a missing one should degrade to the original rather than
+ * throw — otherwise a reader whose language has no copy of a book gets a raw
+ * 500 on the page load instead of readable text.
+ */
+async function localized<T>(path: (lang: string) => string, language: string): Promise<T> {
+	try {
+		return await apiFetch<T>(path(language));
+	} catch (e) {
+		if (language !== 'en' && e instanceof ApiError && e.status === 404) {
+			return apiFetch<T>(path('en'));
+		}
+		throw e;
+	}
+}
+
 export const listBooks = (language = 'en') =>
 	apiFetch<BookSummary[]>(`/api/library/books/?language=${language}`);
 
 export const listAuthors = () => apiFetch<AuthorBio[]>('/api/library/authors/');
 
 export const getAuthor = (slug: string, language = 'en') =>
-	apiFetch<AuthorDetail>(`/api/library/authors/${slug}/?language=${language}`);
+	localized<AuthorDetail>((l) => `/api/library/authors/${slug}/?language=${l}`, language);
 
 export const getBook = (slug: string, language = 'en') =>
-	apiFetch<BookDetail>(`/api/library/books/${slug}/?language=${language}`);
+	localized<BookDetail>((l) => `/api/library/books/${slug}/?language=${l}`, language);
 
 export const getChapter = (slug: string, order: number, language = 'en') =>
-	apiFetch<Chapter>(`/api/library/books/${slug}/chapters/${order}/?language=${language}`);
+	localized<Chapter>((l) => `/api/library/books/${slug}/chapters/${order}/?language=${l}`, language);
 
 export const listSermons = (language = 'en') =>
 	apiFetch<SermonSummary[]>(`/api/library/sermons/?language=${language}`);
