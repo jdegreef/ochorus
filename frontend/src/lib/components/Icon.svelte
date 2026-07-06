@@ -5,6 +5,7 @@
 	// has no adjacent text.
 	export type IconName =
 		| 'info'
+		| 'grid'
 		| 'book'
 		| 'calendar'
 		| 'mic'
@@ -48,6 +49,11 @@
 		<circle cx="12" cy="12" r="9" />
 		<path d="M12 11v5" />
 		<path d="M12 8h.01" />
+	{:else if name === 'grid'}
+		<rect x="4" y="4" width="6.5" height="6.5" rx="1.4" />
+		<rect x="13.5" y="4" width="6.5" height="6.5" rx="1.4" />
+		<rect x="4" y="13.5" width="6.5" height="6.5" rx="1.4" />
+		<rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.4" />
 	{:else if name === 'book'}
 		<path d="M12 6.5C10.5 5 8 4.5 5 5v12c3-.5 5.5 0 7 1.5" />
 		<path d="M12 6.5C13.5 5 16 4.5 19 5v12c-3-.5-5.5 0-7 1.5" />

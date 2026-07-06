@@ -13,6 +13,7 @@ type Dict = Record<string, string>;
 
 const EN: Dict = {
 	'nav.about': 'About Us',
+	'nav.dashboard': 'Dashboard',
 	'nav.books': 'Books',
 	'nav.sermons': 'Sermons',
 	'nav.biographies': 'Biographies',
