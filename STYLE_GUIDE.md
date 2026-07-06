@@ -12,9 +12,22 @@ component classes). This document explains and governs it.
 > Take Root are sibling apps and deliberately share one look and feel — the same
 > **colour tokens, typefaces, type scale, spacing, radii, and component
 > philosophy**. The tokens in §1–§3 are kept **identical** across both repos; when
-> one changes a shared value, change it in both. What differs is domain surface,
-> not style: Take Root has Scripture/garden imagery Ochorus doesn't; Ochorus has
-> the long-form reader Take Root doesn't.
+> one changes a shared value, change it in both. UI patterns (nav, menus, cards,
+> buttons, empty states) should match Take Root's unless the reading domain
+> genuinely demands otherwise.
+
+> **Brand metaphor — the ONE deliberate difference.** Each app carries its own
+> theme through iconography, illustration, naming, empty states, and microcopy:
+>
+> - **Take Root** — *gardening & growth*: plant a seed, take root, grow, bear
+>   fruit. Sprouts, leaves, trees, watering, harvest.
+> - **Ochorus** — *books & learning*: book, library, shelf, page, bookmark,
+>   study, learn, read. Open books, bookmarks, reading lamps, shelves, scrolls,
+>   marginalia.
+>
+> When Take Root would reach for a sprout, Ochorus reaches for a bookmark. New
+> icons, illustrations, feature names, and copy should draw from the reading/
+> library register — never the garden one (and vice versa in Take Root).
 
 > **Design direction — "Quiet Devotional."** Warm, calm, and reverent. The **text
 > is the hero**; the UI is a quiet frame around it. Soft over bold, tinted over
