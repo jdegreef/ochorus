@@ -63,6 +63,18 @@ services:
       - type: rewrite
         source: /authors/:slug
         destination: /authors/:slug.html
+      - type: rewrite
+        source: /sermons
+        destination: /sermons.html
+      - type: rewrite
+        source: /sermons/:slug
+        destination: /sermons/:slug.html
+      - type: rewrite
+        source: /plans
+        destination: /plans.html
+      - type: rewrite
+        source: /plans/:slug
+        destination: /plans/:slug.html
       # Everything else (the reader, search) falls back to the SPA app shell.
       - type: rewrite
         source: /*
