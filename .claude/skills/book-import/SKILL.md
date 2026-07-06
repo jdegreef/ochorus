@@ -65,10 +65,15 @@ book preserves its `sort_order`.
 5. **Check for regressions** — re-import a few diverse books and confirm their
    counts/titles are unchanged or better:
    ```bash
-   DJANGO_DEBUG=true uv run python manage.py import_ochorus the-inner-chamber the-masters-indwelling men-of-prayer-2 purity-of-heart
+   DJANGO_DEBUG=true uv run python manage.py import_ochorus the-masters-indwelling men-of-prayer-2 purity-of-heart talks-to-the-farmer
    ```
    Marker-style (CHAPTER N), font-title-style, and biography collections each
-   stress different paths.
+   stress different paths. **Do NOT re-import `the-inner-chamber` or
+   `humility-2`**: both back seeded reading plans (PlanDay maps day → chapter
+   order) and a re-import that picks up a previously-dropped Preface shifts
+   every order. Snapshot counts+first-titles BEFORE the regression imports and
+   diff after; restore any regressed book from `fixtures/launch.json` (delete
+   its chapters, recreate from the fixture entries).
 
 6. **Regenerate the fixture and commit:**
    ```bash
@@ -184,6 +189,29 @@ dropped; chapters under 120 words are dropped as stubs.
   MATERIALLY changed — a re-import that merely adds a Preface as ch1 shifts
   every chapter_order, breaking the book's seeded plan and readers' saved
   positions (we excluded the-inner-chamber for exactly this). *(2026-07)*
+- **Prose starting with "chapter" split a real sentence** ("The first /
+  chapter deals with the doctrines…" became a phantom chapter titled "Chapter
+  Deals With"). `_CHAP_RE` matches any word after CHAPTER, so BOTH the marker
+  pre-pass AND the `is_font` fallback now reject a body-size match whose label
+  isn't a parseable number. *(the-key-in-my-hand 16→15 ch, 2026-07)*
+- **Trailing page/section number absorbed at chapter end** ("…Amen. 4",
+  "…evermore!”10" — inside OR just outside the final `</p>`).
+  `ingest.strip_trailing_pagenum` runs on every import; requires terminal
+  punctuation first so verse refs ("Psalm 145:7") and years are safe.
+  *(till-he-come ch2–22, 2026-07)*
+- **OCR letter-splits** ("blesse d!", "lif e.", "conversatio n.") and
+  **image-drop-cap first letters** lost from the text layer: recorded as
+  explicit literal pairs / letters in `corrections.py` `BODY_CORRECTIONS`
+  (never a clever regex — "Song i." is a citation, not an error), applied on
+  every import by both importer paths and backfillable over stored rows via
+  `manage.py apply_body_corrections`. *(around-the-wicket-gate all 11 caps +
+  13 OCR pairs across 6 books, 2026-07)*
+- **Repeated book-title counts are NOT running headers by themselves** — Torrey
+  writes "Baptism with the Holy Spirit" 27–39×/chapter as prose; "Jesus
+  Himself" is the sermon's refrain. Confirm with inspect_pdf (isolated
+  heading-size blocks near page edges) before treating as noise. Likewise
+  10–15k-word chapters can be the author's real structure (Torrey, Nee) —
+  check the PDF TOC before splitting. *(2026-07)*
 - **Known limits (unfixed):** a book whose Introduction heading is fused with
   its body text in one block loses that intro (feasting-at-the-table); a drop
   cap belonging mid-paragraph after a scripture-ref merge isn't reattached

@@ -2,7 +2,6 @@
 	import '../app.css';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import { goto } from '$app/navigation';
 	import { theme } from '$lib/theme.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
@@ -14,6 +13,8 @@
 	import LanguagePicker from '$lib/components/LanguagePicker.svelte';
 	import AccountMenu from '$lib/components/AccountMenu.svelte';
 	import PwaToasts from '$lib/components/PwaToasts.svelte';
+	import Icon from '$lib/components/Icon.svelte';
+	import type { IconName } from '$lib/components/Icon.svelte';
 
 	let { children } = $props();
 	const t = i18n.t;
@@ -41,57 +42,108 @@
 		if (auth.user) auth.pushPrefs();
 	});
 
-	const NAV = $derived([
-		{ href: '/about', label: t('nav.about') },
-		{ href: '/books', label: t('nav.books') },
-		{ href: '/plans', label: t('nav.plans') },
-		{ href: '/sermons', label: t('nav.sermons') },
-		{ href: '/biographies', label: t('nav.biographies') },
-		{ href: '/contact', label: t('nav.contact') }
+	const NAV = $derived<{ href: string; label: string; icon: IconName }[]>([
+		{ href: '/about', label: t('nav.about'), icon: 'info' },
+		{ href: '/books', label: t('nav.books'), icon: 'book' },
+		{ href: '/plans', label: t('nav.plans'), icon: 'calendar' },
+		{ href: '/sermons', label: t('nav.sermons'), icon: 'mic' },
+		{ href: '/biographies', label: t('nav.biographies'), icon: 'users' },
+		{ href: '/contact', label: t('nav.contact'), icon: 'mail' },
+		{ href: '/search', label: t('nav.search'), icon: 'search' }
 	]);
 
 	const isActive = (href: string) =>
 		href === '/' ? $page.url.pathname === '/' : $page.url.pathname.startsWith(href);
+
+	// Preferences dropdown (gear) — groups the secondary controls (theme,
+	// language) so the primary destinations stay dominant. Mirrors Take Root.
+	// It wraps interactive controls, so it closes only on a click outside.
+	let prefsOpen = $state(false);
+	let prefsEl: HTMLElement | undefined = $state();
+
+	// Mobile nav drawer (collapsed behind a hamburger on small screens).
+	let navOpen = $state(false);
 </script>
+
+<svelte:window
+	onclick={(e) => {
+		if (prefsOpen && prefsEl && !e.composedPath().includes(prefsEl)) prefsOpen = false;
+	}}
+	onkeydown={(e) => {
+		if (e.key === 'Escape') {
+			prefsOpen = false;
+			navOpen = false;
+		}
+	}}
+/>
 
 <div class="flex min-h-screen flex-col">
 	{#if !readerUi.focus}
-		<header class="sticky top-0 z-20 border-b border-border bg-bg/90 backdrop-blur">
-			<div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-5 py-3.5">
-				<a href="/" class="text-display !text-2xl !text-text hover:no-underline">Ochorus</a>
-				<nav class="flex items-center gap-1 sm:gap-2">
+		<nav class="appnav">
+			<a class="brand" href="/">Ochorus</a>
+			<button
+				class="navtoggle"
+				aria-label="Menu"
+				aria-expanded={navOpen}
+				onclick={(e) => {
+					e.stopPropagation();
+					navOpen = !navOpen;
+				}}
+			>
+				{#if navOpen}
+					<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+				{:else}
+					<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+				{/if}
+			</button>
+			<div class="navmenu" class:open={navOpen}>
+				<div class="navlinks">
 					{#each NAV as item (item.href)}
 						<a
 							href={item.href}
-							class="rounded-md px-2.5 py-1.5 text-small font-medium hover:bg-surface-2 hover:no-underline sm:px-3"
-							class:text-text={isActive(item.href)}
-							class:text-muted={!isActive(item.href)}
+							class:active={isActive(item.href)}
 							aria-current={isActive(item.href) ? 'page' : undefined}
+							onclick={() => (navOpen = false)}><Icon name={item.icon} />{item.label}</a
 						>
-							{item.label}
-						</a>
 					{/each}
-					<button
-						class="rounded-md px-2.5 py-1.5 text-small text-muted hover:bg-surface-2"
-						onclick={() => goto('/search')}
-						aria-label={t('nav.search')}
-						title={t('nav.search')}
-					>
-						⌕
-					</button>
-					<LanguagePicker />
-					<button
-						class="rounded-md px-2.5 py-1.5 text-small text-muted hover:bg-surface-2"
-						onclick={() => theme.toggle()}
-						aria-label="Toggle light and dark theme"
-						title="Toggle theme"
-					>
-						{theme.current === 'dark' ? '☾' : '☀'}
-					</button>
+				</div>
+				<div class="navctl">
+					<div class="prefs" bind:this={prefsEl}>
+						<button
+							class="prefs-btn"
+							aria-haspopup="true"
+							aria-expanded={prefsOpen}
+							aria-label="Preferences"
+							onclick={() => (prefsOpen = !prefsOpen)}
+						>
+							<Icon name="gear" size={19} />
+						</button>
+						{#if prefsOpen}
+							<div class="account-menu prefs-menu" role="group" aria-label="Preferences">
+								<div class="prefs-row">
+									<span class="prefs-label">Theme</span>
+									<button
+										class="prefs-toggle"
+										onclick={() => theme.toggle()}
+										title="Toggle theme"
+										aria-label="Toggle light and dark theme"
+									>
+										<Icon name={theme.current === 'dark' ? 'sun' : 'moon'} />
+									</button>
+								</div>
+								{#if lang.available.length > 1}
+									<div class="prefs-row">
+										<span class="prefs-label">Language</span>
+										<LanguagePicker />
+									</div>
+								{/if}
+							</div>
+						{/if}
+					</div>
 					<AccountMenu />
-				</nav>
+				</div>
 			</div>
-		</header>
+		</nav>
 	{/if}
 
 	<main class="flex-1">

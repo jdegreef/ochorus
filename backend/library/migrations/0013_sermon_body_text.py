@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('library', '0010_backfill_more_bios'),
+        ('library', '0012_body_corrections'),
     ]
 
     operations = [
