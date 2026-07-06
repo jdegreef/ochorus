@@ -83,7 +83,7 @@ def apply(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("library", "0010_backfill_more_bios"),
+        ("library", "0011_backfill_gareth_bio"),
     ]
 
     operations = [
