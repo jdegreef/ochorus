@@ -135,6 +135,8 @@ class Sermon(models.Model):
     preached_on = models.DateField(null=True, blank=True)
     # Cleaned, structured HTML body (paragraphs, headings, blockquotes).
     body_html = models.TextField()
+    # Plain text derived from body_html; what full-text search indexes.
+    body_text = models.TextField(blank=True, default="")
     word_count = models.PositiveIntegerField(default=0)
     source_url = models.URLField(blank=True)
 
@@ -154,6 +156,15 @@ class Sermon(models.Model):
 
     def __str__(self) -> str:
         return f"{self.title} — {self.author.name} ({self.language})"
+
+    def save(self, *args, **kwargs):
+        from .text import html_to_text
+
+        self.body_text = html_to_text(self.body_html)
+        update_fields = kwargs.get("update_fields")
+        if update_fields is not None and "body_html" in update_fields:
+            kwargs["update_fields"] = list(update_fields) + ["body_text"]
+        super().save(*args, **kwargs)
 
 
 class Plan(models.Model):

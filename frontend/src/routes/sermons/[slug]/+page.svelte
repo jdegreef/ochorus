@@ -1,18 +1,48 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { Sermon } from '$lib/library';
+	import { listSermons, type Sermon, type SermonSummary } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingTime } from '$lib/reading';
+	import { getLang } from '$lib/lang.svelte';
+	import { listen } from '$lib/listen.svelte';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
+	import ListenBar from '$lib/components/ListenBar.svelte';
 
 	let { data } = $props();
 	const sermon = $derived(data.sermon as Sermon);
 	const t = i18n.t;
 
-	onMount(() => readerPrefs.init());
+	let body = $state<HTMLElement | undefined>();
+	// Other sermons on the same Bible book, fetched client-side (page is
+	// prerendered; the list is small and cached by the browser).
+	let related = $state<SermonSummary[]>([]);
+
+	/** "1 Peter 2:7" -> "1 Peter"; "Matthew 11:28" -> "Matthew". */
+	const refBook = (ref: string) => ref.match(/^(\d?\s?[A-Za-z]+)/)?.[1]?.trim() ?? '';
+	const book = $derived(refBook(sermon.scripture_ref || ''));
+
+	onMount(() => {
+		readerPrefs.init();
+		if (book) {
+			listSermons(getLang())
+				.then((all) => {
+					related = all.filter(
+						(s) => s.slug !== sermon.slug && refBook(s.scripture_ref || '') === book
+					);
+				})
+				.catch(() => (related = []));
+		}
+	});
+
+	/** Read the sermon aloud from the top. */
+	function startListening() {
+		if (!body) return;
+		const paragraphs = [...body.children].map((el) => (el as HTMLElement).innerText);
+		listen.start(paragraphs, 0, getLang());
+	}
 
 	const canonical = $derived(`${SITE_URL}/sermons/${sermon.slug}`);
 	const preachedYear = $derived(sermon.preached_on ? sermon.preached_on.slice(0, 4) : '');
@@ -30,6 +60,15 @@
 		<div class="mx-auto flex max-w-3xl items-center justify-between gap-3 px-5 py-2.5">
 			<a href="/sermons" class="text-small text-muted hover:text-text">← {t('nav.sermons')}</a>
 			<div class="flex shrink-0 items-center gap-1">
+				{#if listen.supported}
+					<button
+						class="btn btn-ghost !px-2.5 !py-1"
+						class:!text-accent={listen.status !== 'idle'}
+						onclick={() => (listen.status === 'idle' ? startListening() : listen.stop())}
+						aria-label={t('reader.listen')}
+						title={t('reader.listen')}>▶</button
+					>
+				{/if}
 				<ReaderControls />
 				<button
 					class="btn btn-ghost !px-3 !py-1"
@@ -66,7 +105,21 @@
 	{/if}
 
 	<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. -->
-	<div class="reading">{@html sermon.body_html}</div>
+	<div class="reading" bind:this={body}>{@html sermon.body_html}</div>
+
+	{#if related.length}
+		<section class="mt-12 border-t border-border pt-6">
+			<h2 class="text-h3 mb-3">More sermons on {book}</h2>
+			<ul class="space-y-2">
+				{#each related as r (r.slug)}
+					<li>
+						<a href="/sermons/{r.slug}" class="text-body font-medium">{r.title}</a>
+						<span class="text-small text-muted"> · {r.scripture_ref} · {r.author.name}</span>
+					</li>
+				{/each}
+			</ul>
+		</section>
+	{/if}
 
 	{#if sermon.source_url}
 		<p class="mt-12 border-t border-border pt-5 text-[0.8rem] text-muted">
@@ -79,3 +132,5 @@
 		<a href="/authors/{sermon.author_slug}" class="btn btn-ghost">← More from {sermon.author_name}</a>
 	</nav>
 </article>
+
+<ListenBar />

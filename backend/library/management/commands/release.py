@@ -27,3 +27,6 @@ class Command(BaseCommand):
         call_command("apply_body_corrections")
         self.stdout.write("→ seed_plans")
         call_command("seed_plans")
+        # Upsert fixture sermons into an already-seeded DB (new/updated ones).
+        self.stdout.write("→ seed_sermons")
+        call_command("seed_sermons")
