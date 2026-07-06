@@ -12,6 +12,7 @@ from bs4 import BeautifulSoup, Tag
 from django.db import transaction
 
 from library.catalog import AUTHORS, BOOKS, BookEntry
+from library.corrections import apply_body_corrections
 from library.models import Author, Book, Chapter
 
 # Tags we keep in chapter bodies; everything else is unwrapped (kept text) or
@@ -109,6 +110,23 @@ def is_front_matter(title: str) -> bool:
     return t in {"contents", "table of contents", "title page"}
 
 
+# A bare 1–3 digit number stuck to the very end of a chapter, directly after
+# terminal punctuation ("Amen.  4", "evermore!”10") — the next section's number
+# or a page number absorbed at the chapter boundary. It appears either inside
+# the last paragraph ("…Amen. 4</p>") or as loose text after it ("…Amen.</p>4").
+# Requiring the punctuation first means verse references ("Psalm 145:7") and
+# years (4 digits) are never touched.
+_TRAILING_NUM_IN = re.compile(r"([.!?…”\"'])\s*\d{1,3}\s*(</p>\s*)$")
+_TRAILING_NUM_OUT = re.compile(r"([.!?…”\"']\s*</p>)\s*\d{1,3}\s*$")
+
+
+def strip_trailing_pagenum(body_html: str) -> str:
+    """Drop an absorbed page/section number from the end of a chapter body."""
+    body_html = body_html.rstrip()
+    body_html = _TRAILING_NUM_IN.sub(r"\1\2", body_html)
+    return _TRAILING_NUM_OUT.sub(r"\1", body_html)
+
+
 @transaction.atomic
 def upsert_book(entry: BookEntry, sections: list[tuple[str, str]], language: str = "en") -> Book:
     """Create/replace a Book and its chapters from (title, body_html) sections."""
@@ -143,6 +161,8 @@ def upsert_book(entry: BookEntry, sections: list[tuple[str, str]], language: str
         if not body or word_count(body) < 5:
             continue
         order += 1
+        body = strip_trailing_pagenum(body)
+        body = apply_body_corrections(entry.slug, order, body)
         Chapter.objects.create(
             book=book,
             order=order,
