@@ -1,0 +1,84 @@
+<script lang="ts">
+	// Lightweight inline-SVG line icons, matching Take Root's icon set: 24-unit
+	// viewBox, no fill, currentColor stroke, round caps/joins. Decorative by
+	// default (aria-hidden); pass `label` for an accessible name when the icon
+	// has no adjacent text.
+	export type IconName =
+		| 'info'
+		| 'book'
+		| 'calendar'
+		| 'mic'
+		| 'users'
+		| 'mail'
+		| 'search'
+		| 'gear'
+		| 'sun'
+		| 'moon';
+
+	let {
+		name,
+		size = 18,
+		label,
+		strokeWidth = 1.8,
+		class: klass = ''
+	}: {
+		name: IconName;
+		size?: number;
+		label?: string;
+		strokeWidth?: number;
+		class?: string;
+	} = $props();
+</script>
+
+<svg
+	class={klass}
+	width={size}
+	height={size}
+	viewBox="0 0 24 24"
+	fill="none"
+	stroke="currentColor"
+	stroke-width={strokeWidth}
+	stroke-linecap="round"
+	stroke-linejoin="round"
+	role={label ? 'img' : undefined}
+	aria-label={label}
+	aria-hidden={label ? undefined : 'true'}
+>
+	{#if name === 'info'}
+		<circle cx="12" cy="12" r="9" />
+		<path d="M12 11v5" />
+		<path d="M12 8h.01" />
+	{:else if name === 'book'}
+		<path d="M12 6.5C10.5 5 8 4.5 5 5v12c3-.5 5.5 0 7 1.5" />
+		<path d="M12 6.5C13.5 5 16 4.5 19 5v12c-3-.5-5.5 0-7 1.5" />
+		<path d="M12 6.5v12" />
+	{:else if name === 'calendar'}
+		<rect x="4" y="5" width="16" height="15" rx="2" />
+		<path d="M8 3v4M16 3v4M4 10h16" />
+	{:else if name === 'mic'}
+		<rect x="9" y="3" width="6" height="11" rx="3" />
+		<path d="M5 11a7 7 0 0 0 14 0" />
+		<path d="M12 18v3" />
+	{:else if name === 'users'}
+		<circle cx="9" cy="8" r="3.2" />
+		<path d="M3.5 19.5c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5" />
+		<path d="M15.5 5.2a3.2 3.2 0 0 1 0 5.6" />
+		<path d="M17.5 14.9c1.6.7 2.7 2.2 3 4.6" />
+	{:else if name === 'mail'}
+		<rect x="3" y="5.5" width="18" height="13" rx="2" />
+		<path d="m4 7.5 8 6 8-6" />
+	{:else if name === 'search'}
+		<circle cx="11" cy="11" r="7" />
+		<path d="m21 21-4.3-4.3" />
+	{:else if name === 'gear'}
+		<circle cx="12" cy="12" r="3" />
+		<path
+			d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.03 1.56V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1.11-1.56 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.56-1.03H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.65 8.9a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34h.08A1.7 1.7 0 0 0 10.12 3V3a2 2 0 1 1 4 0v.09c0 .68.4 1.3 1.03 1.56a1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87v.08c.26.63.88 1.03 1.56 1.03H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.56 1.03Z"
+		/>
+	{:else if name === 'sun'}
+		<circle cx="12" cy="12" r="4" />
+		<path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+	{:else if name === 'moon'}
+		<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+	{/if}
+</svg>
