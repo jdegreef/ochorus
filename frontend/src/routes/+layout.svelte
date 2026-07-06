@@ -47,6 +47,7 @@
 	// App destinations only — About Us and Contact live in the footer (matching
 	// Take Root, whose app nav carries five primary destinations).
 	const NAV = $derived<{ href: string; label: string; icon: IconName }[]>([
+		{ href: '/', label: t('nav.dashboard'), icon: 'grid' },
 		{ href: '/books', label: t('nav.books'), icon: 'book' },
 		{ href: '/plans', label: t('nav.plans'), icon: 'calendar' },
 		{ href: '/sermons', label: t('nav.sermons'), icon: 'mic' },
