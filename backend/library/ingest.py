@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup, Tag
 from django.db import transaction
 
 from library.catalog import AUTHORS, BOOKS, BookEntry
-from library.corrections import apply_body_corrections
+from library.corrections import apply_body_corrections, chapter_title_overrides
 from library.models import Author, Book, Chapter
 
 # Tags we keep in chapter bodies; everything else is unwrapped (kept text) or
@@ -198,6 +198,7 @@ def upsert_book(entry: BookEntry, sections: list[tuple[str, str]], language: str
         },
     )
     book.chapters.all().delete()
+    title_overrides = chapter_title_overrides(entry.slug)
     order = 0
     for title, body in sections:
         if not body or word_count(body) < 5:
@@ -208,7 +209,7 @@ def upsert_book(entry: BookEntry, sections: list[tuple[str, str]], language: str
         Chapter.objects.create(
             book=book,
             order=order,
-            title=(title or f"Chapter {order}")[:300],
+            title=(title_overrides.get(order) or title or f"Chapter {order}")[:300],
             body_html=body,
             word_count=word_count(body),
         )

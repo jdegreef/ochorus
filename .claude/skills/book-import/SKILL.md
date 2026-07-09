@@ -243,19 +243,48 @@ dropped; chapters under 120 words are dropped as stubs.
   will CLOBBER the good bio. Copy the existing bio + birth/death years verbatim
   into the new `AuthorEntry`. *(amy-carmichael, frederick-brotherton-meyer,
   2026-07)*
+- **`chapter_title_overrides` now applies in `upsert_book`** (was only in
+  `import_ochorus`), so per-book title corrections work for every source. *(2026-07)*
+- **Internet Archive OCR import** (`import_archive`, `source="archive"`): reflow
+  is the whole job. A DjVu text layer is hard-wrapped and double-spaced with page
+  furniture that INTERRUPTS paragraphs (a bare page number + a running header
+  mid-paragraph). Rules that worked: drop bare-number lines; treat a blank/furniture
+  line as a paragraph break ONLY when the buffer ends on terminal punctuation
+  (else it's a mid-paragraph page break — keep accumulating); de-hyphenate
+  end-of-line splits and rejoin space-split compounds ("fifty- four"). *(susanna-
+  wesley-clarke, 2026-07)*
+- **Archive running-header vs. letter signature:** the header "60 SUSANNA WESLEY."
+  and the letter signature "SUSANNA WESLEY." differ by one thing — the header
+  carries a PAGE NUMBER. Detect a header as "line contains a digit AND its
+  letters-only core is ALL CAPS"; that keeps signatures (no digit) and all-caps
+  prose openings (have lowercase) as prose. Tolerates OCR-mangled page digits
+  (`'60`, `€2`, `•94`, `]26`) that a `^\d` regex would miss. *(2026-07)*
+- **Archive OCR residue** goes in `corrections.py` `replacements` as literal
+  pairs: opening-word drop-cap misreads ("OP the"→"OF the", "MBS."→"MRS."),
+  R↔E title misreads (fix via `chapter_titles`), and number-word merges
+  ("twentyone"→"twenty-one"). Scan for merges with a "digit-word glued to
+  [a-z]" regex, but hand-filter — "eighteenth"/"understand" are real words.
+  *(2026-07)*
 
 ## Adding a public-domain book NOT on ochorus.com
 
 When the catalogue lacks a wanted title (e.g. more Spurgeon), source it from
-CCEL or Project Gutenberg instead:
+elsewhere. Preference order — cleaner text first: **CCEL** (`source="ccel"`,
+`<author>/<work>` path) → **Project Gutenberg** (`source="gutenberg"`, ebook id)
+→ **arbitrary web** (`source="web"`, per-chapter URLs in `catalog.WEB_CHAPTERS`,
+`import_web`) → **Internet Archive OCR** (`source="archive"`, item id,
+`import_archive`). The first two are transcription-clean; Archive is an OCR text
+layer and needs a cleanup/verify pass (see below). **Wikisource caveat:** a work
+can be only partially transcribed — Clarke's *Susanna Wesley* lists 16 chapters
+but Wikisource has only 5, so it would import as a truncated book. Always count
+the transcribed chapters against the work's own TOC before choosing it.
 
-1. Add a `BookEntry` to `library/catalog.py` (`source` = "ccel" with a
-   `<author>/<work>` path, or "gutenberg" with the ebook id). For CCEL, first
-   check the TOC section count — `inspect`/curl `<work>.toc.html`; 10–40 sections
-   is good, 2 means it won't chapter well (skip), Gutenberg books with no
-   headings import as one giant chapter (skip).
-2. Import: `import_ccel <slug>` or `import_gutenberg <slug>` (these read
-   `catalog.py`, not ochorus.com).
+1. Add a `BookEntry` to `library/catalog.py`. For CCEL, first check the TOC
+   section count — `inspect`/curl `<work>.toc.html`; 10–40 sections is good, 2
+   means it won't chapter well (skip), Gutenberg books with no headings import as
+   one giant chapter (skip).
+2. Import: `import_ccel <slug>` / `import_gutenberg <slug>` / `import_web <slug>`
+   / `import_archive <slug>` (all read `catalog.py`, not ochorus.com).
 3. **Consolidate the author.** These importers create an author from the catalog
    slug; reassign the new book(s) to the canonical DB author (e.g.
    `charles-h-spurgeon`) and delete the duplicate, so they group correctly on the

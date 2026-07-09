@@ -108,6 +108,22 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Collins Street Baptist Church."
         ),
     ),
+    "susanna-wesley": AuthorEntry(
+        slug="susanna-wesley",
+        name="Susanna Wesley",
+        birth_year=1669,
+        death_year=1742,
+        bio=(
+            "Susanna Wesley, born in 1669 in London, England, was the mother of "
+            "John and Charles Wesley, founders of Methodism. A devout Anglican and "
+            "mother of nineteen children (ten survived to adulthood), she provided "
+            "rigorous religious education to her children, establishing daily "
+            "routines of prayer and Scripture study. Despite financial hardships and "
+            "her husband's absences, she maintained a strong spiritual household. "
+            "Susanna's theological letters and writings influenced her sons' "
+            "ministry and the development of Methodist doctrine."
+        ),
+    ),
 }
 
 # Shelf order. Small, clean books first.
@@ -161,6 +177,9 @@ BOOKS: list[BookEntry] = [
     BookEntry("way-into-holiest", "The Way Into the Holiest", "frederick-brotherton-meyer",
               "ccel", "meyer/into_holiest",
               subtitle="Expositions of the Epistle to the Hebrews", cover_color="#1971c2"),
+    BookEntry("susanna-wesley-clarke", "Susanna Wesley", "susanna-wesley",
+              "archive", "susannawesley00clariala",
+              subtitle="A Biography by Eliza Clarke", cover_color="#6d4482"),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an
