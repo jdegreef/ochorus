@@ -268,6 +268,14 @@ dropped; chapters under 120 words are dropped as stubs.
 
 ## Adding a public-domain book NOT on ochorus.com
 
+**Vet US public-domain status by PUBLICATION year, not author death.** A work
+first published before 1929 is US-PD regardless of when the author died — and a
+long-lived author can have both PD and still-copyrighted books. Amy Carmichael
+(d. 1951): *Things as They Are* (1903) is safe; *If*, *Gold Cord*, *Rose from
+Brier* (1930s–40s) are very likely still under US copyright. Pick an early
+edition; when a "restored/complete" modern reprint exists (e.g. Finney's
+*Memoirs*), use the original pre-1929 scan, not the copyrighted reprint.
+
 When the catalogue lacks a wanted title (e.g. more Spurgeon), source it from
 elsewhere. Preference order — cleaner text first: **CCEL** (`source="ccel"`,
 `<author>/<work>` path) → **Project Gutenberg** (`source="gutenberg"`, ebook id)
