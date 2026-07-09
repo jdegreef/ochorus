@@ -24,11 +24,17 @@ export interface ProgressRecord {
 }
 type ProgressMap = Record<string, ProgressRecord>;
 
-interface ChapterMarks {
-	h: number[];
-	n: Record<number, string>;
+interface StoredMark {
+	id: string;
+	p: number;
+	s: number;
+	e: number;
+	note?: string;
 }
-type MarksMap = Record<string, ChapterMarks>;
+interface ChapterEntry {
+	m: StoredMark[];
+}
+type MarksMap = Record<string, ChapterEntry>;
 
 interface ServerProgress {
 	book_slug: string;
@@ -41,8 +47,7 @@ interface ServerMarks {
 	book_slug: string;
 	language: string;
 	chapter_order: number;
-	highlights: number[];
-	notes: Record<string, string>;
+	marks: StoredMark[];
 	updated_at: string;
 }
 interface ServerState {
@@ -103,16 +108,12 @@ class ReadingSync {
 		});
 	}
 
-	pushMarks(slug: string, order: number, marks: ChapterMarks, language: string) {
+	pushMarks(slug: string, order: number, marks: StoredMark[], language: string) {
 		if (!this.signedIn || !browser) return;
 		this.#debounce(`m:${slug}:${order}`, () => {
 			apiFetch(`/api/reading/marks/${slug}/${order}/`, {
 				method: 'PUT',
-				body: JSON.stringify({
-					language,
-					highlights: marks.h,
-					notes: marks.n
-				})
+				body: JSON.stringify({ language, marks })
 			}).catch(() => {});
 		});
 	}
@@ -135,14 +136,18 @@ class ReadingSync {
 				updated_at: r.at
 			})),
 			marks: Object.entries(localMarks)
-				.map(([key, m]) => {
+				.map(([key, entry]) => {
 					const parsed = parseMarksKey(key);
 					if (!parsed) return null;
+					// A not-yet-migrated legacy entry ({h, n}) passes its legacy
+					// keys through — the server converts, so nothing is lost.
+					const legacy = entry as unknown as { h?: number[]; n?: Record<string, string> };
 					return {
 						book_slug: parsed.slug,
 						chapter_order: parsed.order,
-						highlights: m.h ?? [],
-						notes: m.n ?? {}
+						...(Array.isArray(entry.m)
+							? { marks: entry.m }
+							: { highlights: legacy.h ?? [], notes: legacy.n ?? {} })
 					};
 				})
 				.filter(Boolean)
@@ -173,9 +178,7 @@ class ReadingSync {
 		}
 		const marks: MarksMap = {};
 		for (const m of state.marks) {
-			const n: Record<number, string> = {};
-			for (const [k, v] of Object.entries(m.notes || {})) n[Number(k)] = v;
-			marks[marksKey(m.book_slug, m.chapter_order)] = { h: m.highlights ?? [], n };
+			marks[marksKey(m.book_slug, m.chapter_order)] = { m: m.marks ?? [] };
 		}
 		localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
 		localStorage.setItem(MARKS_KEY, JSON.stringify(marks));
