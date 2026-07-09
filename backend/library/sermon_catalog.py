@@ -30,6 +30,7 @@ class SermonEntry:
     section: str = ""  # gutenberg: the h1 heading text of the sermon
     scripture_ref: str = ""  # override; parsed from the page when empty
     preached_on: str = ""  # ISO date override; parsed from the page when empty
+    body_starts: str = ""  # web: literal text the sermon's first paragraph starts with
 
 
 # Authors that sermons may introduce before any of their books exist in the
@@ -43,6 +44,17 @@ SERMON_AUTHORS: dict[str, AuthorEntry] = {
         bio=(
             "English Baptist preacher, the “Prince of Preachers,” whose sermons "
             "and devotional writings have been read by millions."
+        ),
+    ),
+    "a-b-simpson": AuthorEntry(
+        slug="a-b-simpson",
+        name="A. B. Simpson",
+        birth_year=1843,
+        death_year=1919,
+        bio=(
+            "Canadian-born preacher and founder of the Christian and Missionary "
+            "Alliance, whose \"Fourfold Gospel\" called readers past every "
+            "blessing to Christ Himself."
         ),
     ),
     "dwight-l-moody": AuthorEntry(
@@ -228,5 +240,39 @@ SERMONS: list[SermonEntry] = [
         "33015",
         section="\"COME THOU AND ALL THY HOUSE INTO THE ARK.\"",
         scripture_ref="Genesis 7:1",
+    ),
+    # --- A. B. Simpson — the deeper life (undated addresses) -----------------
+    SermonEntry(
+        "himself",
+        "Himself",
+        "a-b-simpson",
+        "web",
+        "https://www.biblebelievers.com/simpson-ab_himself.html",
+        scripture_ref="Colossians 1:27",
+        body_starts="I wish to speak to you about Jesus",
+    ),
+    SermonEntry(
+        "the-power-of-stillness",
+        "The Power of Stillness",
+        "a-b-simpson",
+        "web",
+        "http://hanswaldvogel.com/lib/Simpson%20-%20Power%20of%20Stillness.html",
+        scripture_ref="1 Kings 19:12",
+    ),
+    SermonEntry(
+        "the-possibilities-of-faith",
+        "The Possibilities of Faith",
+        "a-b-simpson",
+        "web",
+        "https://online.ambrose.edu/alliancestudies/simpson/larglif1.htm",
+        scripture_ref="Mark 9:23",
+    ),
+    SermonEntry(
+        "the-joy-of-the-lord",
+        "The Joy of the Lord",
+        "a-b-simpson",
+        "web",
+        "https://online.ambrose.edu/alliancestudies/simpson/larglif3.htm",
+        scripture_ref="Nehemiah 8:10",
     ),
 ]

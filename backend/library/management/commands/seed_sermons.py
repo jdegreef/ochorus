@@ -76,6 +76,7 @@ class Command(BaseCommand):
                     "name": af.get("name", ""),
                     "bio": af.get("bio", ""),
                     "bio_html": af.get("bio_html", ""),
+                    "photo_url": af.get("photo_url", ""),
                     "birth_year": af.get("birth_year"),
                     "death_year": af.get("death_year"),
                 },

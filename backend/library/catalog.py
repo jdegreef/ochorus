@@ -64,6 +64,18 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Institute."
         ),
     ),
+    "a-b-simpson": AuthorEntry(
+        slug="a-b-simpson",
+        name="A. B. Simpson",
+        birth_year=1843,
+        death_year=1919,
+        bio=(
+            "Canadian-born preacher and founder of the Christian and Missionary "
+            "Alliance, whose \"Fourfold Gospel\" — Christ as Saviour, Sanctifier, "
+            "Healer, and Coming King — called readers past every blessing to "
+            "Christ Himself."
+        ),
+    ),
 }
 
 # Shelf order. Small, clean books first.
@@ -101,4 +113,35 @@ BOOKS: list[BookEntry] = [
     BookEntry("prevailing-prayer", "Prevailing Prayer", "dwight-l-moody",
               "gutenberg", "61883",
               subtitle="What Hinders It?", cover_color="#365314"),
+    BookEntry("the-fourfold-gospel", "The Fourfold Gospel", "a-b-simpson",
+              "web", "https://online.ambrose.edu/alliancestudies/simpson/4fold.html",
+              subtitle="Christ Our Saviour, Sanctifier, Healer, and Coming King",
+              cover_color="#7c2d12"),
+    BookEntry("the-gospel-of-healing", "The Gospel of Healing", "a-b-simpson",
+              "pdf", "https://cdn.cmalliance.org/wordpress/cmalliance/the-gospel-of-healing.pdf",
+              cover_color="#14532d"),
+    BookEntry("days-of-heaven-upon-earth", "Days of Heaven Upon Earth", "a-b-simpson",
+              "gutenberg", "28416",
+              subtitle="A Year of Daily Devotions", cover_color="#1e3a8a"),
 ]
+
+# Chapters of source="web" books: (title, page URL, optional anchor). When an
+# anchor is given, only content AFTER <a name="anchor"> is the chapter (the
+# Ambrose edition of The Fourfold Gospel merges the publisher's introduction
+# and chapter I on one page; the intro is not Simpson's text and is dropped).
+WEB_CHAPTERS: dict[str, list[tuple[str, str, str]]] = {
+    "the-fourfold-gospel": [
+        ("Christ Our Saviour",
+         "https://online.ambrose.edu/alliancestudies/simpson/4fold1.htm", "saviour"),
+        ("Christ Our Sanctifier",
+         "https://online.ambrose.edu/alliancestudies/simpson/4fold2.htm", ""),
+        ("Christ Our Healer",
+         "https://online.ambrose.edu/alliancestudies/simpson/4fold4.htm", ""),
+        ("Christ Our Coming Lord",
+         "https://online.ambrose.edu/alliancestudies/simpson/4fold5.htm", ""),
+        ("The Walk With God",
+         "https://online.ambrose.edu/alliancestudies/simpson/4fold7.htm", ""),
+        ("Kept",
+         "https://online.ambrose.edu/alliancestudies/simpson/4fold8.htm", ""),
+    ],
+}
