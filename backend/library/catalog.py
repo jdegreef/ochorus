@@ -53,6 +53,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "devotional writings have been read by millions."
         ),
     ),
+    "dwight-l-moody": AuthorEntry(
+        slug="dwight-l-moody",
+        name="Dwight L. Moody",
+        birth_year=1837,
+        death_year=1899,
+        bio=(
+            "American evangelist whose plain, warm gospel addresses reached "
+            "millions across America and Britain; founder of the Moody Bible "
+            "Institute."
+        ),
+    ),
 }
 
 # Shelf order. Small, clean books first.
@@ -84,4 +95,10 @@ BOOKS: list[BookEntry] = [
     BookEntry("till-he-come", "Till He Come",
               "charles-spurgeon", "ccel", "spurgeon/till_he_come",
               subtitle="Communion Meditations and Addresses", cover_color="#704881"),
+    BookEntry("the-way-to-god", "The Way to God", "dwight-l-moody",
+              "gutenberg", "30449",
+              subtitle="And How to Find It", cover_color="#9a3412"),
+    BookEntry("prevailing-prayer", "Prevailing Prayer", "dwight-l-moody",
+              "gutenberg", "61883",
+              subtitle="What Hinders It?", cover_color="#365314"),
 ]

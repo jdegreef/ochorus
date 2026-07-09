@@ -87,6 +87,9 @@ def clean_title(raw: str) -> str:
     t = _SQUOTE.sub("", t)
     t = re.sub(r"^[\s`~]+|[\s`~]+$", "", t)
     t = _WS.sub(" ", t).strip()
+    # A single trailing full stop is typographic noise in a title ("Adoration.",
+    # "Love That Passeth Knowledge ."); ellipses are left alone.
+    t = re.sub(r"(?<!\.)\s*\.$", "", t)
     # Capitalise the first alphabetic character ("in Him" -> "In Him").
     for i, ch in enumerate(t):
         if ch.isalpha():
@@ -107,7 +110,7 @@ def is_front_matter(title: str) -> bool:
     t = title.strip().lower().rstrip(".")
     if t.startswith("index"):  # "Index", "Indexes", "Index of Bible Verses Used"
         return True
-    return t in {"contents", "table of contents", "title page"}
+    return t in {"contents", "table of contents", "title page", "prefatory note"}
 
 
 # A bare 1–3 digit number stuck to the very end of a chapter, directly after
