@@ -102,6 +102,15 @@ Search FTS: es/en stem properly on prod Postgres; sw/lg use "simple" config
   translate in-session using the same `scripture_context()` helpers + glossary
   + wrapper protocol, writing rows through the same ai_unreviewed path — no
   API key needed. The `translate_book` command is for unattended scale.
+- **`Chapter.save()` derives `body_text` but NOT `word_count`** — an ad-hoc
+  loader that only sets title/body_html leaves word_count=0 ("0 min" reading
+  time in the UI). Set it via `library.ingest.word_count(body_html)`
+  (`translate_book` already does).
+- **Dev browser-verify plumbing**: the worktree's `backend/.env`
+  `CORS_ALLOWED_ORIGINS` must include the frontend dev origin, and
+  `frontend/.env` `PUBLIC_API_BASE_URL` must point at the backend port you
+  actually started — a mismatch is a silent client-side "TypeError: Failed to
+  fetch" → 500 page.
 - **Model response missing wrapper tags** → `translate_chapter` raises; the
   run is resumable. Usually a truncation (`max_tokens`) on a huge chapter —
   split with `--chapters` or raise max_tokens.
