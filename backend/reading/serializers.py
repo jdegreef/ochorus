@@ -23,8 +23,7 @@ class ChapterMarksSerializer(serializers.ModelSerializer):
             "book_slug",
             "language",
             "chapter_order",
-            "highlights",
-            "notes",
+            "marks",
             "updated_at",
         ]
         read_only_fields = ["updated_at"]

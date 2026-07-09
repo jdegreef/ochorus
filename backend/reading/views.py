@@ -18,6 +18,7 @@ from rest_framework.views import APIView
 
 from accounts.models import UserProfile
 
+from .marks import clean_mark_list, from_legacy, merge_mark_lists
 from .models import ChapterMarks, ReadingProgress
 from .serializers import ChapterMarksSerializer, ReadingProgressSerializer
 
@@ -45,18 +46,11 @@ def _ms_to_dt(ms) -> datetime | None:
         return None
 
 
-def _clean_marks(highlights, notes) -> tuple[list[int], dict[str, str]]:
-    """Coerce arbitrary client input into a safe (highlights, notes) pair."""
-    clean_h = sorted(
-        {i for i in (_clamp_int(x, default=-1, low=0) for x in highlights or []) if i >= 0}
-    )
-    clean_n: dict[str, str] = {}
-    if isinstance(notes, dict):
-        for k, v in notes.items():
-            idx = _clamp_int(k, default=-1, low=0)
-            if idx >= 0 and isinstance(v, str) and v.strip():
-                clean_n[str(idx)] = v.strip()
-    return clean_h, clean_n
+def _marks_from_payload(data) -> list[dict]:
+    """Marks from a client payload — range shape, or converted legacy h/n."""
+    if isinstance(data.get("marks"), list):
+        return clean_mark_list(data["marks"])
+    return from_legacy(data.get("highlights"), data.get("notes"))
 
 
 class StateView(APIView):
@@ -101,13 +95,13 @@ class MarksView(APIView):
     def put(self, request, slug, order):
         profile = _profile(request)
         data = request.data
-        highlights, notes = _clean_marks(data.get("highlights"), data.get("notes"))
+        marks = _marks_from_payload(data)
 
-        if not highlights and not notes:
+        if not marks:
             ChapterMarks.objects.filter(
                 profile=profile, book_slug=slug, chapter_order=order
             ).delete()
-            return Response({"highlights": [], "notes": {}})
+            return Response({"marks": []})
 
         obj, _ = ChapterMarks.objects.update_or_create(
             profile=profile,
@@ -115,8 +109,9 @@ class MarksView(APIView):
             chapter_order=order,
             defaults={
                 "language": (data.get("language") or "en")[:10],
-                "highlights": highlights,
-                "notes": notes,
+                "marks": marks,
+                "highlights": [],
+                "notes": {},
             },
         )
         return Response(ChapterMarksSerializer(obj).data)
@@ -169,17 +164,15 @@ class MergeView(APIView):
             order = _clamp_int(row.get("chapter_order"), default=-1, low=0)
             if not slug or order < 0:
                 continue
-            highlights, notes = _clean_marks(row.get("highlights"), row.get("notes"))
+            marks = _marks_from_payload(row)
             server = existing.get((slug, order))
             if server:
-                highlights = sorted(set(server.highlights) | set(highlights))
-                merged_notes = {str(k): v for k, v in server.notes.items()}
-                for k, v in notes.items():
-                    # On collision keep the longer text; never silently drop one.
-                    if len(v) >= len(merged_notes.get(k, "")):
-                        merged_notes[k] = v
-                notes = merged_notes
-            if not highlights and not notes:
+                # A pre-conversion server row folds its legacy fields in too.
+                server_marks = server.marks or from_legacy(
+                    server.highlights, server.notes
+                )
+                marks = merge_mark_lists(server_marks, marks)
+            if not marks:
                 continue
             ChapterMarks.objects.update_or_create(
                 profile=profile,
@@ -187,8 +180,9 @@ class MergeView(APIView):
                 chapter_order=order,
                 defaults={
                     "language": (row.get("language") or "en")[:10],
-                    "highlights": highlights,
-                    "notes": notes,
+                    "marks": marks,
+                    "highlights": [],
+                    "notes": {},
                 },
             )
 

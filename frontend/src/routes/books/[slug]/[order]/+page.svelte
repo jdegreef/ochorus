@@ -2,7 +2,7 @@
 	import { onMount, tick } from 'svelte';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
-	import { getPlan, type Chapter, type PlanDetail } from '$lib/library';
+	import { getBook, getPlan, type BookDetail, type Chapter, type PlanDetail } from '$lib/library';
 	import { planProgress } from '$lib/planProgress.svelte';
 	import {
 		saveProgress,
@@ -13,11 +13,16 @@
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { marks } from '$lib/marks.svelte';
+	import { renderMarks } from '$lib/rangeMarks';
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
-	import { readingTime } from '$lib/reading';
+	import { readingTime, readingMinutes } from '$lib/reading';
 	import { listen } from '$lib/listen.svelte';
+	import { define } from '$lib/define.svelte';
+	import { API_BASE_URL } from '$lib/config';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
+	import DefinePopover from '$lib/components/DefinePopover.svelte';
+	import TocDrawer from '$lib/components/TocDrawer.svelte';
 	import SelectionBar from '$lib/components/SelectionBar.svelte';
 	import ListenBar from '$lib/components/ListenBar.svelte';
 
@@ -30,12 +35,59 @@
 	let titleEl: HTMLHeadingElement | undefined = $state();
 	let titleVisible = $state(true);
 
-	// Note editor state.
+	// Note editor state — edits the note of an existing mark group, or creates
+	// a new mark from pending selection segments when noteId is null.
 	let noteOpen = $state(false);
-	let noteIndex = $state(-1);
+	let noteId = $state<string | null>(null);
+	let notePending = $state<{ p: number; s: number; e: number }[]>([]);
 	let noteDraft = $state('');
 
 	const HEADER_OFFSET = 72;
+	let tocOpen = $state(false);
+
+	// --- Reading-progress indicators -------------------------------------------
+	// Fraction of the current chapter scrolled past (0..1), updated by the same
+	// throttled scroll handler that saves the position anchor.
+	let chapterFrac = $state(0);
+	let bookForProgress = $state<BookDetail | null>(null);
+
+	$effect(() => {
+		const s2 = slug;
+		void chapter.order;
+		chapterFrac = 0;
+		if (bookForProgress?.slug !== s2) {
+			bookForProgress = null;
+			getBook(s2, getLang())
+				.then((b) => (bookForProgress = b))
+				.catch(() => (bookForProgress = null));
+		}
+	});
+
+	function updateFraction() {
+		if (!body) return;
+		const rect = body.getBoundingClientRect();
+		const total = rect.height;
+		if (total <= 0) return;
+		const seen = Math.min(Math.max(window.innerHeight - rect.top, 0), total);
+		chapterFrac = Math.min(1, Math.max(0, seen / total));
+	}
+
+	const minutesLeft = $derived(
+		Math.ceil(readingMinutes(chapter.word_count) * (1 - chapterFrac))
+	);
+	const bookPercent = $derived.by(() => {
+		const b = bookForProgress;
+		if (!b || b.slug !== slug || !b.chapters.length) return null;
+		const totalWords = b.chapters.reduce((sum, c) => sum + c.word_count, 0);
+		if (!totalWords) return null;
+		const before = b.chapters
+			.filter((c) => c.order < chapter.order)
+			.reduce((sum, c) => sum + c.word_count, 0);
+		return Math.min(
+			100,
+			Math.round(((before + chapter.word_count * chapterFrac) / totalWords) * 100)
+		);
+	});
 
 	onMount(() => {
 		readerPrefs.init();
@@ -54,6 +106,7 @@
 		(async () => {
 			await tick();
 			restoreScroll(s, order);
+			updateFraction();
 			cleanup = observeTitle();
 		})();
 		return () => cleanup?.();
@@ -72,6 +125,73 @@
 		void slug;
 		void chapter.order;
 		return () => listen.stop();
+	});
+
+	function gotoChapter(target: { order: number } | null) {
+		if (target) goto(`/books/${slug}/${target.order}`);
+	}
+
+	/** Keyboard: ←/→ chapters (or paragraph skip while listening), space pages. */
+	function onKeydown(e: KeyboardEvent) {
+		if (e.metaKey || e.ctrlKey || e.altKey) return;
+		const el = e.target as HTMLElement;
+		if (
+			el?.closest?.('input, textarea, select, [contenteditable="true"]') ||
+			noteOpen ||
+			define.open ||
+			tocOpen
+		) {
+			return;
+		}
+		if (e.key === 'ArrowRight') {
+			e.preventDefault();
+			if (listen.status !== 'idle') listen.skip(1);
+			else gotoChapter(chapter.next);
+		} else if (e.key === 'ArrowLeft') {
+			e.preventDefault();
+			if (listen.status !== 'idle') listen.skip(-1);
+			else gotoChapter(chapter.prev);
+		} else if (e.key === ' ') {
+			e.preventDefault();
+			window.scrollBy({
+				top: (e.shiftKey ? -1 : 1) * window.innerHeight * 0.85,
+				behavior: 'smooth'
+			});
+		}
+	}
+
+	/** Edge tap zones on touch devices: outer 15% turns the chapter. */
+	function onArticleClick(e: MouseEvent) {
+		if (!window.matchMedia('(pointer: coarse)').matches) return;
+		const el = e.target as HTMLElement;
+		if (el.closest('a, button, mark, input, textarea, select, .selbar, .define-pop')) return;
+		if (window.getSelection()?.toString()) return;
+		const x = e.clientX / window.innerWidth;
+		if (x < 0.15) gotoChapter(chapter.prev);
+		else if (x > 0.85) gotoChapter(chapter.next);
+	}
+
+	// Prefetch the next chapter when the browser is idle: the plain GET flows
+	// through the service worker's stale-while-revalidate cache, so the next
+	// tap is instant and the chapter becomes readable offline too.
+	$effect(() => {
+		const next = chapter.next;
+		const s = slug;
+		const language = getLang();
+		if (!next) return;
+		const url = `${API_BASE_URL}/api/library/books/${s}/chapters/${next.order}/?language=${language}`;
+		// timeout guarantees the prefetch even when idle never comes (busy or
+		// backgrounded tab); setTimeout covers browsers without rIC (Safari).
+		const idle =
+			'requestIdleCallback' in window
+				? (fn: () => void) =>
+						(window as Window & {
+							requestIdleCallback: (cb: () => void, opts?: { timeout: number }) => number;
+						}).requestIdleCallback(fn, { timeout: 3000 })
+				: (fn: () => void) => setTimeout(fn, 1500);
+		idle(() => {
+			fetch(url).catch(() => {});
+		});
 	});
 
 	// Reading-plan context (?plan=<slug>&day=<n>): show the Day N of M strip and
@@ -155,6 +275,7 @@
 		clearTimeout(saveTimer);
 		saveTimer = setTimeout(() => {
 			if (!body) return;
+			updateFraction();
 			const kids = body.children;
 			let topIndex = 0;
 			for (let i = 0; i < kids.length; i++) {
@@ -176,17 +297,16 @@
 		return () => io.disconnect();
 	}
 
-	// Decorate rendered paragraphs with highlight backgrounds + note markers.
+	// Render text-range marks as <mark> spans; clicking one opens its note.
 	$effect(() => {
-		const hl = marks.highlights;
-		const notes = marks.notes;
+		const list = marks.list;
 		if (!body) return;
-		const kids = body.children;
-		for (let i = 0; i < kids.length; i++) {
-			const el = kids[i] as HTMLElement;
-			el.classList.toggle('mark-hl', hl.has(i));
-			el.classList.toggle('mark-note', notes[i] != null);
-		}
+		renderMarks(body, list, (id) => {
+			noteId = id;
+			notePending = [];
+			noteDraft = marks.getNote(id);
+			noteOpen = true;
+		});
 	});
 
 	const cite = $derived({
@@ -196,19 +316,30 @@
 		url: $page.url.href
 	});
 
-	function openNote(i: number) {
-		noteIndex = i;
-		noteDraft = marks.getNote(i);
+	/** Note on a fresh selection: highlight it first, then attach the note. */
+	function openNoteForSelection(segments: { p: number; s: number; e: number }[]) {
+		const existing = marks.groupCovering(segments);
+		noteId = existing;
+		notePending = existing ? [] : segments;
+		noteDraft = existing ? marks.getNote(existing) : '';
 		noteOpen = true;
 	}
 	function saveNote() {
-		marks.setNote(noteIndex, noteDraft);
+		if (noteId) {
+			marks.setNote(noteId, noteDraft);
+		} else if (notePending.length && noteDraft.trim()) {
+			marks.add(notePending, noteDraft);
+		}
+		noteOpen = false;
+	}
+	function removeMark() {
+		if (noteId) marks.remove(noteId);
 		noteOpen = false;
 	}
 </script>
 
 <svelte:head><title>{chapter.title} — {chapter.book_title} — Ochorus</title></svelte:head>
-<svelte:window onscroll={onScroll} />
+<svelte:window onscroll={onScroll} onkeydown={onKeydown} />
 
 <!-- Reader top bar: breadcrumb / context + controls. Hidden in focus mode. -->
 {#if !readerUi.focus}
@@ -241,6 +372,12 @@
 						aria-label={t('reader.next')}>›</a
 					>
 				{/if}
+				<button
+					class="btn btn-ghost !px-2.5 !py-1"
+					onclick={() => (tocOpen = true)}
+					aria-label={t('reader.contents')}
+					title={t('reader.contents')}>☰</button
+				>
 				{#if listen.supported}
 					<button
 						class="btn btn-ghost !px-2.5 !py-1"
@@ -269,10 +406,12 @@
 	>
 {/if}
 
+<!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events -->
 <article
 	class="mx-auto px-5 py-10"
 	style="{readerPrefs.style}; max-width: var(--reading-measure)"
 	dir="auto"
+	onclick={onArticleClick}
 >
 	<!-- Breadcrumb -->
 	<nav class="mb-5 flex flex-wrap items-center gap-1.5 text-small text-muted" aria-label="Breadcrumb">
@@ -339,13 +478,33 @@
 	</nav>
 </article>
 
+<!-- Reading-progress footer: quiet, fixed, hidden in focus/Listen modes. -->
+{#if !readerUi.focus && listen.status === 'idle'}
+	<div class="progress-foot" aria-hidden="true">
+		<span>{minutesLeft} {t('progress.minLeft')}</span>
+		{#if bookPercent !== null}
+			<span class="mx-1.5 opacity-50">·</span>
+			<span>{bookPercent}% {t('progress.through')}</span>
+		{/if}
+	</div>
+{/if}
+
 <SelectionBar
 	container={body}
 	{cite}
-	onHighlight={(i) => marks.toggleHighlight(i)}
-	onNote={openNote}
-	isHighlighted={(i) => marks.isHighlighted(i)}
+	onHighlight={(segments) => {
+		const existing = marks.groupCovering(segments);
+		if (existing) marks.remove(existing);
+		else marks.add(segments);
+	}}
+	onNote={openNoteForSelection}
+	isHighlighted={(segments) => marks.groupCovering(segments) !== null}
+	onDefine={(word, top, left) => define.show(word, top, left)}
 />
+
+<DefinePopover />
+
+<TocDrawer {slug} currentOrder={chapter.order} bind:open={tocOpen} />
 
 <ListenBar />
 
@@ -359,7 +518,13 @@
 				class="w-full rounded-sm border border-border bg-bg p-3 text-body text-text"
 				placeholder="…"
 			></textarea>
-			<div class="mt-3 flex justify-end gap-2">
+			<div class="mt-3 flex items-center gap-2">
+				{#if noteId}
+					<button class="btn btn-ghost !text-red-700 dark:!text-red-400" onclick={removeMark}>
+						{t('reader.removeHighlight')}
+					</button>
+				{/if}
+				<span class="flex-1"></span>
 				<button class="btn btn-ghost" onclick={() => (noteOpen = false)}>Cancel</button>
 				<button class="btn btn-primary" onclick={saveNote}>Save</button>
 			</div>
@@ -368,16 +533,36 @@
 {/if}
 
 <style>
-	/* Paragraph-level marks decorate {@html} children imperatively. */
-	:global(.reading > .mark-hl) {
-		background: color-mix(in srgb, var(--gold) 22%, transparent);
-		border-radius: 4px;
-		box-shadow: 0 0 0 4px color-mix(in srgb, var(--gold) 22%, transparent);
+	.progress-foot {
+		position: fixed;
+		inset-inline: 0;
+		bottom: 0;
+		z-index: 30;
+		padding: 0.3rem 1rem 0.45rem;
+		text-align: center;
+		font-size: 0.72rem;
+		color: var(--muted);
+		background: color-mix(in srgb, var(--bg) 82%, transparent);
+		backdrop-filter: blur(6px);
+		pointer-events: none;
 	}
-	:global(.reading > .mark-note) {
-		border-left: 3px solid var(--gold);
-		padding-left: 0.9em;
-		margin-left: -1.2em;
+
+	/* Text-range marks: <mark> spans wrapped around the selected text. */
+	:global(.reading mark.range-mark) {
+		background: color-mix(in srgb, var(--gold) 28%, transparent);
+		color: inherit;
+		border-radius: 2px;
+		padding: 0.08em 0;
+		box-decoration-break: clone;
+		-webkit-box-decoration-break: clone;
+		cursor: pointer;
+	}
+	:global(.reading mark.range-mark:hover) {
+		background: color-mix(in srgb, var(--gold) 42%, transparent);
+	}
+	/* A mark carrying a note gets a subtle underline cue. */
+	:global(.reading mark.range-mark.has-note) {
+		border-bottom: 2px solid var(--gold);
 	}
 	/* Paragraph currently being read aloud in Listen mode. */
 	:global(.reading > .tts-current) {
