@@ -18,7 +18,9 @@
 	import { getLang } from '$lib/lang.svelte';
 	import { readingTime } from '$lib/reading';
 	import { listen } from '$lib/listen.svelte';
+	import { define } from '$lib/define.svelte';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
+	import DefinePopover from '$lib/components/DefinePopover.svelte';
 	import SelectionBar from '$lib/components/SelectionBar.svelte';
 	import ListenBar from '$lib/components/ListenBar.svelte';
 
@@ -362,7 +364,10 @@
 	}}
 	onNote={openNoteForSelection}
 	isHighlighted={(segments) => marks.groupCovering(segments) !== null}
+	onDefine={(word, top, left) => define.show(word, top, left)}
 />
+
+<DefinePopover />
 
 <ListenBar />
 

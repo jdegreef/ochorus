@@ -15,13 +15,15 @@
 		cite,
 		onHighlight,
 		onNote,
-		isHighlighted
+		isHighlighted,
+		onDefine
 	}: {
 		container: HTMLElement | undefined;
 		cite: Cite;
 		onHighlight?: (segments: Segment[]) => void;
 		onNote?: (segments: Segment[]) => void;
 		isHighlighted?: (segments: Segment[]) => boolean;
+		onDefine?: (word: string, top: number, left: number) => void;
 	} = $props();
 	const t = i18n.t;
 
@@ -40,14 +42,23 @@
 	function update() {
 		const sel = window.getSelection();
 		const text = sel?.toString().trim() ?? '';
-		if (
-			!sel ||
-			sel.rangeCount === 0 ||
-			text.length < 4 ||
-			!container ||
-			!container.contains(sel.anchorNode) ||
-			!container.contains(sel.focusNode)
-		) {
+		const inContainer =
+			!!sel &&
+			sel.rangeCount > 0 &&
+			!!container &&
+			container.contains(sel.anchorNode) &&
+			container.contains(sel.focusNode);
+
+		// A single selected word (double-click / mobile long-press) opens the
+		// definition popover instead of the action bar.
+		if (inContainer && onDefine && /^[A-Za-z’'-]{2,}$/.test(text)) {
+			const rect = sel.getRangeAt(0).getBoundingClientRect();
+			onDefine(text, rect.bottom + window.scrollY, rect.left + window.scrollX + rect.width / 2);
+			visible = false;
+			return;
+		}
+
+		if (!inContainer || text.length < 4) {
 			visible = false;
 			return;
 		}
