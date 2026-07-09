@@ -4,8 +4,10 @@
 	import { readingMinutes, readingTime } from '$lib/reading';
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumb } from '$lib/seo';
+	import { i18n } from '$lib/i18n.svelte';
 
 	let { data } = $props();
+	const t = i18n.t;
 	const book = $derived<BookDetail>(data.book);
 
 	let resumeOrder = $state<number | null>(null);
@@ -95,6 +97,20 @@
 					>{book.author.name}</a
 				>{#if years}<span class="text-muted"> · {years}</span>{/if}
 			</p>
+
+			{#if book.source_type === 'ai_unreviewed'}
+				<p
+					class="mt-3 inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-small text-gold"
+				>
+					{t('book.aiUnreviewed')}
+				</p>
+			{:else if book.source_type === 'ai_reviewed'}
+				<p
+					class="mt-3 inline-flex items-center gap-1.5 rounded-full border border-border bg-surface-2 px-3 py-1 text-small text-muted"
+				>
+					{t('book.aiReviewed')}
+				</p>
+			{/if}
 
 			<div class="mt-5 flex flex-wrap items-center gap-3">
 				{#if resumeOrder && resumeOrder > 1}

@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Ochorus — a free reader for public-domain Christian classics. Django + DRF API."
 requires-python = ">=3.12"
 dependencies = [
+    "anthropic>=0.116.0",
     "beautifulsoup4>=4.13.0",
     "dj-database-url>=3.1.2",
     "django>=6.0.6",
