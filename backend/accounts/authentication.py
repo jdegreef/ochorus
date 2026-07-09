@@ -29,11 +29,21 @@ class SupabaseJWTAuthentication(authentication.BaseAuthentication):
         if not header or header[0].lower() != self.keyword.lower().encode():
             return None  # let other authenticators (or AnonymousUser) handle it
         if len(header) != 2:
-            raise exceptions.AuthenticationFailed("Invalid Authorization header.")
+            return None  # malformed header — treat as anonymous, not a hard 401
 
         token = header[1].decode()
-        payload = self._decode(token)
-        user = self._get_or_create_user(payload)
+        try:
+            payload = self._decode(token)
+            user = self._get_or_create_user(payload)
+        except exceptions.AuthenticationFailed:
+            # An expired or invalid token must NOT break public (AllowAny)
+            # endpoints. DRF runs authentication before the permission check, so
+            # raising here 401s the whole request — meaning a signed-in user whose
+            # Supabase token has expired gets a 500 on every book/author/chapter
+            # page (the frontend load throws the 401). Treat a bad token as
+            # anonymous instead; protected endpoints still return 401 via
+            # IsAuthenticated on the resulting AnonymousUser.
+            return None
         return (user, payload)
 
     def authenticate_header(self, request):
