@@ -76,6 +76,38 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Christ Himself."
         ),
     ),
+    "amy-carmichael": AuthorEntry(
+        slug="amy-carmichael",
+        name="Amy Carmichael",
+        birth_year=1867,
+        death_year=1951,
+        bio=(
+            "Amy Beatrice Carmichael, born in 1867 in Millisle, Ireland, was a "
+            "Protestant missionary in India. She served for 55 years without "
+            "furlough, founding the Dohnavur Fellowship to rescue children from "
+            "temple prostitution. Known for her deep devotion and writings on "
+            "prayer, she authored 35 books and remained in India until her death "
+            "in 1951. Her work continues through the ongoing ministry she "
+            "established. Carmichael's life demonstrated radical obedience to "
+            "Christ's call and cultural adaptation."
+        ),
+    ),
+    "frederick-brotherton-meyer": AuthorEntry(
+        slug="frederick-brotherton-meyer",
+        name="Frederick Brotherton Meyer",
+        birth_year=1847,
+        death_year=1929,
+        bio=(
+            "Frederick Brotherton Meyer was born on April 8, 1847, in Clapham, "
+            "London, to Frederick Meyer, a business owner, and his wife, Ann. "
+            "Raised in a deeply religious household that cherished the authority "
+            "of Scripture, Meyer became a prominent Baptist pastor, teacher, and "
+            "evangelist, based primarily in London. He was known for his "
+            "expository preaching and devotional writings. Meyer pastored several "
+            "prominent churches including Christ Church in London and Melbourne's "
+            "Collins Street Baptist Church."
+        ),
+    ),
 }
 
 # Shelf order. Small, clean books first.
@@ -123,6 +155,12 @@ BOOKS: list[BookEntry] = [
     BookEntry("days-of-heaven-upon-earth", "Days of Heaven Upon Earth", "a-b-simpson",
               "gutenberg", "28416",
               subtitle="A Year of Daily Devotions", cover_color="#1e3a8a"),
+    BookEntry("things-as-they-are", "Things as They Are", "amy-carmichael",
+              "gutenberg", "29426",
+              subtitle="Mission Work in Southern India", cover_color="#a4133c"),
+    BookEntry("way-into-holiest", "The Way Into the Holiest", "frederick-brotherton-meyer",
+              "ccel", "meyer/into_holiest",
+              subtitle="Expositions of the Epistle to the Hebrews", cover_color="#1971c2"),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an

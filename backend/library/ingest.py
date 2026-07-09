@@ -43,6 +43,33 @@ _CHAPTER_PREFIX = re.compile(r"^\s*chapter\s+\S[^.:—–]*?\s*[.:—–]\s+", r
 # apostrophes in contractions/possessives (God's, Paul's) are preserved.
 _DQUOTE = re.compile(r"[“”„‟«»″‶\"]")
 _SQUOTE = re.compile(r"(?<![A-Za-z])'|'(?![A-Za-z])")
+# CCEL headings are often ALL-CAPS with a roman-numeral prefix ("II. THE DIGNITY
+# OF CHRIST"); the rest of the library is Title Case. A roman-numeral prefix and
+# a set of lowercase-in-title connector words for the caps→title-case pass.
+_ROMAN_PREFIX = re.compile(r"^[IVXLCDM]+\.\s+")
+_TITLE_SMALL = {
+    "a", "an", "and", "as", "at", "but", "by", "for", "if", "in", "into", "nor",
+    "of", "on", "or", "the", "to", "up", "with",
+}
+
+
+def _titlecase_caps(s: str) -> str:
+    """Title-case an ALL-CAPS heading, keeping connector words lowercase and
+    preserving apostrophes ("CHRIST'S" -> "Christ's", not "Christ'S")."""
+    words = s.split()
+    out: list[str] = []
+    for i, w in enumerate(words):
+        low = w.lower()
+        core = low.strip("\"“”'‘’.,;:?!()[]")
+        if 0 < i < len(words) - 1 and core in _TITLE_SMALL:
+            out.append(low)
+            continue
+        for j, ch in enumerate(low):  # capitalise the first alphabetic character
+            if ch.isalpha():
+                low = low[:j] + ch.upper() + low[j + 1:]
+                break
+        out.append(low)
+    return " ".join(out)
 
 
 def clean_html(node: Tag) -> str:
@@ -90,6 +117,18 @@ def clean_title(raw: str) -> str:
     # A single trailing full stop is typographic noise in a title ("Adoration.",
     # "Love That Passeth Knowledge ."); ellipses are left alone.
     t = re.sub(r"(?<!\.)\s*\.$", "", t)
+    # Drop a leading roman-numeral chapter prefix ("VI. Perfect through
+    # sufferings" -> "Perfect through sufferings"), but never a person's initials
+    # ("D. L. Moody") — require a multi-letter word, not another initial, to follow.
+    m = _ROMAN_PREFIX.match(t)
+    if m and re.match(r"[A-Za-z]{2,}", t[m.end():]):
+        t = t[m.end():]
+    # ALL-CAPS CCEL heading -> Title Case. Gated on every letter being uppercase,
+    # so mixed-case and already-clean titles are never touched; a bare roman
+    # numeral ("IV") is left alone rather than mangled to "Iv".
+    letters = [ch for ch in t if ch.isalpha()]
+    if letters and all(ch.isupper() for ch in letters) and not re.fullmatch(r"[IVXLCDM]+", t):
+        t = _titlecase_caps(t)
     # Capitalise the first alphabetic character ("in Him" -> "In Him").
     for i, ch in enumerate(t):
         if ch.isalpha():

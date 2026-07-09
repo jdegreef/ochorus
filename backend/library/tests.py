@@ -4,8 +4,34 @@ from django.db import connection
 from django.test import TestCase
 from rest_framework.test import APIClient
 
+from .ingest import clean_title
 from .models import Author, Book, Chapter, Plan, PlanDay, Sermon
 from .text import html_to_text
+
+
+class CleanTitleTests(TestCase):
+    def test_allcaps_ccel_heading_becomes_title_case(self):
+        self.assertEqual(clean_title("II. THE DIGNITY OF CHRIST"), "The Dignity of Christ")
+        self.assertEqual(clean_title("XXXII. GOD A CONSUMING FIRE."), "God a Consuming Fire")
+
+    def test_preserves_apostrophe_when_recasing(self):
+        self.assertEqual(
+            clean_title("VIII. CHRIST'S MERCIFUL AND FAITHFUL HELP"),
+            "Christ's Merciful and Faithful Help",
+        )
+
+    def test_strips_roman_prefix_from_mixed_case_title(self):
+        self.assertEqual(clean_title("VI. “Perfect through sufferings”"), "Perfect through sufferings")
+
+    def test_does_not_eat_personal_initials(self):
+        # "D." is a roman-numeral char but this is a name, not a chapter prefix.
+        self.assertEqual(clean_title("D. L. Moody (1837 – 1899)"), "D. L. Moody (1837 – 1899)")
+
+    def test_bare_roman_numeral_left_alone(self):
+        self.assertEqual(clean_title("IV"), "IV")
+
+    def test_idempotent_on_clean_title(self):
+        self.assertEqual(clean_title("The Dignity of Christ"), "The Dignity of Christ")
 
 
 class HtmlToTextTests(TestCase):

@@ -216,6 +216,33 @@ dropped; chapters under 120 words are dropped as stubs.
   its body text in one block loses that intro (feasting-at-the-table); a drop
   cap belonging mid-paragraph after a scripture-ref merge isn't reattached
   ("Ephesians 2:11-22 aul writes").
+- **CCEL two-level section numbering** (`<work>.i.ii.html` = part i, chapter ii).
+  The `toc_sections` pattern matched only single-segment `<work>.iii.html`, so a
+  parts-divided work imported as 1 chapter. Regex now allows one-or-more dotted
+  roman/numeric segments; single-level works are unaffected. *(meyer/into_holiest,
+  2026-07)*
+- **CCEL part-divider / half-title leaking in as a chapter** — with multi-level
+  matching, the one-level parent page (`<work>.i.html` = "THE WAY INTO THE
+  HOLIEST:") is a structural divider, not prose. `toc_sections` now drops any
+  section whose stem is a strict prefix of another's (parent of `i.ii`); no-op
+  for single-level works. *(2026-07)*
+- **CCEL importer never ran `clean_title`** — earlier CCEL sources happened to be
+  Title Case so it was never needed; Meyer's TOC is ALL-CAPS with roman prefixes
+  ("II. THE DIGNITY OF CHRIST"). `import_ccel` now applies `clean_title`, and
+  `clean_title` gained an ALL-CAPS→Title-Case pass (gated on *every* letter being
+  uppercase, so mixed-case titles like "D. L. Moody" are untouched) plus a
+  roman-numeral-prefix strip guarded to never eat personal initials. *(2026-07)*
+- **Order matters: `is_front_matter` must run on the RAW title, before
+  `clean_title`.** `clean_title` strips a trailing "Contents", so a TOC section
+  titled "Contents" cleans to `""`, slips past `is_front_matter`, and leaks in as
+  a phantom "Chapter N" (inflated till-he-come 23→24). Gate front matter first,
+  then clean the survivors. *(2026-07)*
+- **Adding a book for an author who already exists in the DB with a scraped bio:**
+  `upsert_book` does `Author.objects.update_or_create(defaults={bio, years…})`
+  from the catalog `AuthorEntry`, so a new `AuthorEntry` with an empty/short bio
+  will CLOBBER the good bio. Copy the existing bio + birth/death years verbatim
+  into the new `AuthorEntry`. *(amy-carmichael, frederick-brotherton-meyer,
+  2026-07)*
 
 ## Adding a public-domain book NOT on ochorus.com
 
