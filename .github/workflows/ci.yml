@@ -77,3 +77,9 @@ jobs:
         env:
           PUBLIC_API_BASE_URL: http://localhost:8000
         run: npm run build
+
+      # Stop the background API before the job's post-steps run — a lingering
+      # `uv run … runserver` process makes setup-uv's cache-prune fail (exit 2).
+      - name: Stop local API
+        if: always()
+        run: pkill -f "manage.py runserver" 2>/dev/null || true
