@@ -90,6 +90,12 @@ def pick_heading_tag(root) -> str | None:
         n = len(root.find_all(f"h{lvl}"))
         if 3 <= n <= 80:
             return f"h{lvl}"
+    # Daily devotionals run to hundreds of sections (365 + front matter);
+    # extract_chapters folds those into month chapters afterwards.
+    for lvl in range(1, 7):
+        n = len(root.find_all(f"h{lvl}"))
+        if 80 < n <= 400:
+            return f"h{lvl}"
     return None
 
 
@@ -190,6 +196,30 @@ def split_by_heading(root, tag) -> list[tuple[str, str]]:
     return out
 
 
+_MONTHS = (
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December",
+)
+_MONTH_DAY = re.compile(rf"^({'|'.join(_MONTHS)})\s+\d{{1,2}}\.?$", re.I)
+
+
+def group_daily_entries(sections: list[tuple[str, str]]) -> list[tuple[str, str]]:
+    """Fold a 365-entry daily devotional into 12 month chapters.
+
+    Each day keeps its heading as an <h3> above its entry. Sections that
+    aren't month-day entries (title page, publisher's note) are dropped.
+    """
+    months: dict[str, list[str]] = {}
+    for t, b in sections:
+        m = _MONTH_DAY.match(t.strip())
+        if not m:
+            continue
+        months.setdefault(m.group(1).title(), []).append(
+            f"<h3>{clean_title(t)}</h3>{b}"
+        )
+    return [(month, "".join(months[month])) for month in _MONTHS if month in months]
+
+
 def extract_chapters(html: str) -> list[tuple[str, str]]:
     root = content_root(html)
     tag = pick_heading_tag(root)
@@ -198,6 +228,12 @@ def extract_chapters(html: str) -> list[tuple[str, str]]:
     sections = [
         (t, b) for t, b in split_by_heading(root, tag) if not is_front_matter(t)
     ]
+    # A year-long daily devotional (e.g. Days of Heaven Upon Earth): hundreds
+    # of "January 1."-style sections become 12 month chapters.
+    if len(sections) > 80:
+        daily = sum(1 for t, _ in sections if _MONTH_DAY.match(t.strip()))
+        if daily > len(sections) * 0.8:
+            return group_daily_entries(sections)
     # Tiny sections are not chapters: interleaved hymns/poems join the chapter
     # they follow (title kept as an <h3>); tiny sections BEFORE any chapter
     # (prefatory notes, epigraph poems) are front matter and dropped.

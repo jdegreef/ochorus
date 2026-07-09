@@ -28,6 +28,8 @@ import requests
 from django.core.management.base import BaseCommand, CommandError
 
 from library.ingest import clean_fragment, soup, word_count
+from library.management.commands.import_web import extract_page as extract_web_page
+from library.management.commands.import_web import fetch as fetch_web
 from library.models import Author, Sermon
 from library.sermon_catalog import SERMON_AUTHORS, SERMONS, SermonEntry
 
@@ -153,8 +155,53 @@ def extract(html: str) -> tuple[str, str, datetime.date | None]:
     return body, scripture_ref, preached_on
 
 
+def extract_web_sermon(html: str, title: str, body_starts: str = "") -> str:
+    """A standalone sermon on an arbitrary web page.
+
+    Builds on the web-book chapter extractor, then removes sermon-page
+    furniture: spacer paragraphs, title/byline headings and paragraphs (leading
+    or repeated mid-body above an appended hymn), a third-person introduction
+    before the sermon proper (cut via the catalog's ``body_starts`` marker),
+    and a trailing "Back to <site>" link.
+    """
+
+    def _text(fragment: str) -> str:
+        t = re.sub(r"&nbsp;", " ", re.sub(r"<[^>]+>", " ", fragment))
+        return re.sub(r"\s+", " ", t).strip()
+
+    body = extract_web_page(html, "", title)
+    body = re.sub(r"<p>(?:\s|&nbsp;|\xa0)*</p>", "", body)
+
+    # Title/byline furniture, wherever it appears ("<h2>HIMSELF</h2>",
+    # "<p><b>The Power of Stillness</b></p>", "<h4>by A. B. Simpson</h4>").
+    def _is_furniture(m: re.Match) -> str:
+        t = _text(m.group(0)).strip(" .")
+        if t.casefold() == title.strip(" .").casefold():
+            return ""
+        if re.match(r"^by\s.{0,60}$", t, re.I):
+            return ""
+        return m.group(0)
+
+    body = re.sub(r"<(h[1-6]|p)>.{0,160}?</\1>", _is_furniture, body, flags=re.S)
+
+    # Cut a third-person introduction: the sermon starts at the marker.
+    if body_starts:
+        m = re.search(rf"<p>\s*(?:<[^>]+>\s*)*{re.escape(body_starts)}", body)
+        if m:
+            body = body[m.start():]
+
+    # Trailing site-navigation text, inside or outside a paragraph.
+    body = re.sub(
+        r"(?:<hr/>|\s)*(?:<p>)?\s*(?:back to|return to)[^<]{0,100}(?:</p>)?\s*$",
+        "",
+        body,
+        flags=re.I,
+    ).strip()
+    return body
+
+
 class Command(BaseCommand):
-    help = "Import public-domain sermons from CCEL into the library."
+    help = "Import public-domain sermons from CCEL, Gutenberg, and the web."
 
     def add_arguments(self, parser):
         parser.add_argument("slugs", nargs="*", help="Sermon slugs (default: all).")
@@ -191,6 +238,11 @@ class Command(BaseCommand):
                     f"{entry.source_ref}/pg{entry.source_ref}-images.html"
                 )
                 body = extract_gutenberg_section(fetch(url), entry.section)
+                scripture_ref, preached_on = "", None
+            elif entry.source == "web":
+                body = extract_web_sermon(
+                    fetch_web(entry.source_ref), entry.title, entry.body_starts
+                )
                 scripture_ref, preached_on = "", None
             else:
                 body, scripture_ref, preached_on = extract(fetch(entry.source_ref))
