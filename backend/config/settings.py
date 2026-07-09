@@ -222,3 +222,19 @@ if not DEBUG and not _skip_config_checks:
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
+
+
+# --- Error monitoring (Sentry) ------------------------------------------------
+# Opt-in: does nothing until SENTRY_DSN is set, so local dev and unconfigured
+# deploys are unaffected. Set SENTRY_DSN in the Render dashboard to turn it on.
+SENTRY_DSN = os.getenv("SENTRY_DSN", "").strip()
+if SENTRY_DSN:
+    import sentry_sdk
+
+    sentry_sdk.init(
+        dsn=SENTRY_DSN,
+        environment=os.getenv("SENTRY_ENVIRONMENT", "production" if not DEBUG else "development"),
+        # Errors only by default; raise these later if you want tracing/profiling.
+        traces_sample_rate=float(os.getenv("SENTRY_TRACES_SAMPLE_RATE", "0")),
+        send_default_pii=False,
+    )

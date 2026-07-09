@@ -1,0 +1,79 @@
+name: CI
+
+# Quality gate for every PR and push to main. Blocks a merge until the backend
+# tests + migration check pass and the frontend type-checks and builds. Add this
+# workflow as a required status check in the repo's branch-protection settings so
+# it actually gates merges (autoDeploy ships main to production).
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    env:
+      DJANGO_DEBUG: 'true' # local SQLite, no external services
+    steps:
+      - uses: actions/checkout@v4
+
+      # --- Backend gate -----------------------------------------------------
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Backend — install (frozen)
+        working-directory: backend
+        run: uv sync --frozen
+
+      - name: Backend — check for missing migrations
+        working-directory: backend
+        run: uv run python manage.py makemigrations --check --dry-run
+
+      - name: Backend — tests
+        working-directory: backend
+        run: uv run python manage.py test --verbosity 1
+
+      # The frontend build prerenders pages by fetching the API, so bring a
+      # seeded API up locally (mirrors the real Render web build against the API).
+      - name: Backend — seed + start API for prerender
+        working-directory: backend
+        run: |
+          uv run python manage.py migrate --noinput
+          uv run python manage.py seed_if_empty
+          uv run python manage.py runserver 8000 --noreload &
+          for i in $(seq 1 30); do
+            curl -sf http://localhost:8000/api/health/ >/dev/null && break
+            sleep 1
+          done
+          curl -sf http://localhost:8000/api/health/
+
+      # --- Frontend gate ----------------------------------------------------
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Frontend — install (locked)
+        working-directory: frontend
+        run: npm ci
+
+      - name: Frontend — type-check
+        working-directory: frontend
+        env:
+          PUBLIC_API_BASE_URL: http://localhost:8000
+        run: npm run check
+
+      - name: Frontend — build
+        working-directory: frontend
+        env:
+          PUBLIC_API_BASE_URL: http://localhost:8000
+        run: npm run build

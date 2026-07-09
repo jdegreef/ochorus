@@ -31,13 +31,15 @@ services:
         sync: false
       - key: CSRF_TRUSTED_ORIGINS # same frontend URL (used by the Django admin)
         sync: false
+      - key: SENTRY_DSN # optional: paste a Sentry DSN to turn on API error monitoring
+        sync: false
 
   # --- SvelteKit reader (static SPA) ---------------------------------------
   - name: ochorus-web
     type: web
     runtime: static
     rootDir: frontend
-    buildCommand: npm install && npm run build
+    buildCommand: npm ci && npm run build
     staticPublishPath: ./build
     autoDeploy: true
     routes:
@@ -87,4 +89,6 @@ services:
       - key: PUBLIC_SUPABASE_URL # https://<project-ref>.supabase.co (enables login)
         sync: false
       - key: PUBLIC_SUPABASE_ANON_KEY # Supabase anon/publishable key (safe in the browser)
+        sync: false
+      - key: PUBLIC_SENTRY_DSN # optional: paste a Sentry DSN to turn on browser error monitoring
         sync: false
