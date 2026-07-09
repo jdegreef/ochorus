@@ -56,10 +56,16 @@ def backfill_bios_and_sermons(apps, fixture: Path = FIXTURE) -> tuple[int, int]:
         if bio and author.bio_html != bio:
             author.bio_html = bio
             changed.append("bio_html")
+        # Like bio_html, the short bio follows the fixture when they differ —
+        # the fixture is the single source of truth (prod is never hand-edited).
         short = f.get("bio") or ""
-        if short and not author.bio:
+        if short and author.bio != short:
             author.bio = short
             changed.append("bio")
+        photo = f.get("photo_url") or ""
+        if photo and author.photo_url != photo:
+            author.photo_url = photo
+            changed.append("photo_url")
         if not author.birth_year and f.get("birth_year"):
             author.birth_year = f["birth_year"]
             changed.append("birth_year")
