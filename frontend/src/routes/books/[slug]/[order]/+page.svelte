@@ -2,7 +2,7 @@
 	import { onMount, tick } from 'svelte';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
-	import { getPlan, type Chapter, type PlanDetail } from '$lib/library';
+	import { getBook, getPlan, type BookDetail, type Chapter, type PlanDetail } from '$lib/library';
 	import { planProgress } from '$lib/planProgress.svelte';
 	import {
 		saveProgress,
@@ -16,7 +16,7 @@
 	import { renderMarks } from '$lib/rangeMarks';
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
-	import { readingTime } from '$lib/reading';
+	import { readingTime, readingMinutes } from '$lib/reading';
 	import { listen } from '$lib/listen.svelte';
 	import { define } from '$lib/define.svelte';
 	import { API_BASE_URL } from '$lib/config';
@@ -45,6 +45,50 @@
 	const HEADER_OFFSET = 72;
 	let tocOpen = $state(false);
 
+	// --- Reading-progress indicators -------------------------------------------
+	// Fraction of the current chapter scrolled past (0..1), updated by the same
+	// throttled scroll handler that saves the position anchor.
+	let chapterFrac = $state(0);
+	let bookForProgress = $state<BookDetail | null>(null);
+
+	$effect(() => {
+		const s2 = slug;
+		void chapter.order;
+		chapterFrac = 0;
+		if (bookForProgress?.slug !== s2) {
+			bookForProgress = null;
+			getBook(s2, getLang())
+				.then((b) => (bookForProgress = b))
+				.catch(() => (bookForProgress = null));
+		}
+	});
+
+	function updateFraction() {
+		if (!body) return;
+		const rect = body.getBoundingClientRect();
+		const total = rect.height;
+		if (total <= 0) return;
+		const seen = Math.min(Math.max(window.innerHeight - rect.top, 0), total);
+		chapterFrac = Math.min(1, Math.max(0, seen / total));
+	}
+
+	const minutesLeft = $derived(
+		Math.ceil(readingMinutes(chapter.word_count) * (1 - chapterFrac))
+	);
+	const bookPercent = $derived.by(() => {
+		const b = bookForProgress;
+		if (!b || b.slug !== slug || !b.chapters.length) return null;
+		const totalWords = b.chapters.reduce((sum, c) => sum + c.word_count, 0);
+		if (!totalWords) return null;
+		const before = b.chapters
+			.filter((c) => c.order < chapter.order)
+			.reduce((sum, c) => sum + c.word_count, 0);
+		return Math.min(
+			100,
+			Math.round(((before + chapter.word_count * chapterFrac) / totalWords) * 100)
+		);
+	});
+
 	onMount(() => {
 		readerPrefs.init();
 		listen.init();
@@ -62,6 +106,7 @@
 		(async () => {
 			await tick();
 			restoreScroll(s, order);
+			updateFraction();
 			cleanup = observeTitle();
 		})();
 		return () => cleanup?.();
@@ -230,6 +275,7 @@
 		clearTimeout(saveTimer);
 		saveTimer = setTimeout(() => {
 			if (!body) return;
+			updateFraction();
 			const kids = body.children;
 			let topIndex = 0;
 			for (let i = 0; i < kids.length; i++) {
@@ -432,6 +478,17 @@
 	</nav>
 </article>
 
+<!-- Reading-progress footer: quiet, fixed, hidden in focus/Listen modes. -->
+{#if !readerUi.focus && listen.status === 'idle'}
+	<div class="progress-foot" aria-hidden="true">
+		<span>{minutesLeft} {t('progress.minLeft')}</span>
+		{#if bookPercent !== null}
+			<span class="mx-1.5 opacity-50">·</span>
+			<span>{bookPercent}% {t('progress.through')}</span>
+		{/if}
+	</div>
+{/if}
+
 <SelectionBar
 	container={body}
 	{cite}
@@ -476,6 +533,20 @@
 {/if}
 
 <style>
+	.progress-foot {
+		position: fixed;
+		inset-inline: 0;
+		bottom: 0;
+		z-index: 30;
+		padding: 0.3rem 1rem 0.45rem;
+		text-align: center;
+		font-size: 0.72rem;
+		color: var(--muted);
+		background: color-mix(in srgb, var(--bg) 82%, transparent);
+		backdrop-filter: blur(6px);
+		pointer-events: none;
+	}
+
 	/* Text-range marks: <mark> spans wrapped around the selected text. */
 	:global(.reading mark.range-mark) {
 		background: color-mix(in srgb, var(--gold) 28%, transparent);

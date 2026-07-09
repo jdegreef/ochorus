@@ -41,6 +41,8 @@ const EN: Dict = {
 	'reader.noDefinition': 'No definition found for this word.',
 	'reader.markOne': 'mark',
 	'reader.markMany': 'marks',
+	'progress.minLeft': 'min left in chapter',
+	'progress.through': 'through book',
 	'spacing.compact': 'Compact',
 	'spacing.normal': 'Normal',
 	'spacing.relaxed': 'Relaxed',
