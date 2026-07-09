@@ -136,6 +136,23 @@ class SermonBodyTextTests(TestCase):
         self.assertEqual(s.body_text, "Hear my cry.")
 
 
+class SeedBooksTests(TestCase):
+    def test_creates_missing_books_with_chapters_and_author(self):
+        from django.core.management import call_command
+
+        self.assertFalse(Book.objects.filter(slug="the-way-to-god").exists())
+        call_command("seed_books", verbosity=0)
+        book = Book.objects.get(slug="the-way-to-god", language="en")
+        self.assertEqual(book.author.slug, "dwight-l-moody")
+        self.assertGreaterEqual(book.chapter_count, 9)
+        # Chapters created via save() so search text is derived.
+        self.assertTrue(all(c.body_text for c in book.chapters.all()))
+        # Idempotent: second run creates nothing new.
+        before = Book.objects.count()
+        call_command("seed_books", verbosity=0)
+        self.assertEqual(Book.objects.count(), before)
+
+
 class SeedSermonsTests(TestCase):
     def test_creates_missing_authors_from_fixture(self):
         # Prod regression (2026-07-06): a sermon whose author has no books yet

@@ -66,6 +66,13 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 import re as _re
 
 BODY_CORRECTIONS: dict[str, dict] = {
+    "the-way-to-god": {
+        # Source defect (Gutenberg #30449, ch. 8): the epigraph line lost its
+        # quotation and opening paren — only "Colossians iii. 11.)" remains.
+        "replacements": [
+            ("<p>Colossians iii. 11.)</p>", "<p>(Colossians iii. 11.)</p>"),
+        ],
+    },
     "around-the-wicket-gate": {
         # Image drop caps (Gutenberg source) — first letter of every chapter.
         "dropcap_letters": {
