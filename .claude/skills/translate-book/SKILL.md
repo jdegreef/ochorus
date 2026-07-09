@@ -1,54 +1,94 @@
 ---
 name: translate-book
-description: Translate an Ochorus book into another language via the AI-translate-then-review pipeline, producing a new Book row (same slug, new language) flagged ai_unreviewed until human review upgrades it. Use when asked to translate a book, add a language to the library, or review/approve a machine translation. NOTE — the translation pipeline is not built yet; until it exists this skill defines the contract and the review gate, and any invocation should first confirm scope with the user.
+description: Translate an Ochorus book into another language via the AI-translate-then-review pipeline (translate_book management command), producing a new Book row (same slug, new language) flagged ai_unreviewed until approve_translation upgrades it. Use when asked to translate a book, add a language to the library, review/approve a machine translation, or add a new target language to the pipeline. This is a living playbook — append new failure modes and language notes as we find them.
 ---
 
 # Translating a book (AI-translate → review)
 
-**STATUS: pipeline not yet built.** What exists today: the data model and the
-frontend language plumbing. If invoked before the pipeline lands, tell the
-user what's missing and offer to build it — don't improvise a one-off.
+**STATUS: pipeline BUILT and browser-verified (2026-07-09).** Engine in
+`backend/library/translation.py`; commands `translate_book` /
+`approve_translation`. Pilot languages: Spanish (es), Swahili (sw),
+Luganda (lg).
 
-## The locked design (decisions from 2026-06)
+## How it works
 
-- One `Book` row PER LANGUAGE, same `slug` — `(slug, language)` unique. The
-  shared slug is what ties translations together; there is no "Work" row.
-- `source_type` drives trust labelling:
-  `public_domain` (original) → `ai_unreviewed` (machine, labelled "AI,
-  unreviewed" in the UI) → `ai_reviewed` (after native/theological review).
-- Reading progress, marks, and plans reference `book_slug` + language, so a
-  reader's state carries per translation automatically.
+1. **Source** is the English Book row's chapters (`body_html`, canonical after
+   book-import QA) — never the PDF.
+2. **Scripture is never machine-translated.** `translation.py` detects Bible
+   references (English book names → USFM), fetches those chapters in the
+   target language from the **Take Root Bible API**
+   (`api.takeroot.bible/api/bible/<code>/<usfm>/<ch>/` — es→rv1858,
+   sw→swhonen, lg→lug, all complete Bibles) and supplies them to the model as
+   `<authoritative_scripture>` — quoted verses must use that wording.
+3. **Model**: `claude-opus-4-8`, adaptive thinking, `--effort high` default
+   (doctrinal fidelity > speed), streaming. Chapters travel in
+   `<chapter_title>`/`<chapter_body>` wrappers; HTML structure must round-trip
+   exactly (marks/highlights anchor to paragraph indices — structure drift
+   breaks reader anchors).
+4. **Per-language glossary** in `LANGUAGES` pins theological terms
+   (justification/sanctification/atonement/…). Grow it when review finds an
+   inconsistency.
+5. Target Book row: same slug, `source_type=ai_unreviewed`, copies
+   cover/sort, **pdf_url deliberately empty** (the PDF is the English
+   edition). `body_text` derives via `Chapter.save()`.
 
-## Pipeline contract (build to this)
+## Commands
 
-1. **Source**: the English Book row's chapters (`body_html`, canonical after
-   book-import QA). Never translate from the PDF.
-2. **Translate per chapter**, preserving the HTML structure exactly (same tag
-   set, same paragraph boundaries — marks anchor to paragraph indices, so
-   structure drift breaks reader anchors across languages).
-3. **Create** Author-translation metadata only if needed (author names stay
-   canonical); Book row copies cover/pdf/sort fields, `source_type=ai_unreviewed`.
-4. **Derived fields**: `body_text` comes free via `Chapter.save()`; word_count
-   recompute; verify search works with the language's FTS config (stemmed:
-   en/fr/es/pt; everything else uses "simple" — exact-word match only).
-5. **Plans**: seeded plans are per-language — decide with the user whether to
-   seed the language's plan variants.
-6. **Ship** via ship-content-fix rules (fixture refresh + migration/seed path)
-   — remember prod is never re-seeded.
+```bash
+# needs ANTHROPIC_API_KEY (backend/.env is dotenv-loaded, or export it)
+manage.py translate_book <slug> --language es [--chapters 1,2] [--force] [--effort high] [--dry-run]
+manage.py approve_translation <slug> --language es    # after native review ONLY
+```
+
+Idempotent/resumable: existing target chapters are skipped unless `--force`,
+so a failed run is just re-run. Cost/time: an Opus chapter of ~1,000 words ≈
+1–3 minutes; run long books with nohup + a log tail.
+
+## UI plumbing (already wired — don't rebuild)
+
+- Language picker: gear menu → Language; appears automatically when a second
+  language has ≥1 published book (`/api/library/languages/` is derived from
+  Book rows). Labels come from `LANGUAGE_NAMES` in `library/views.py`.
+- Trust badge on the book page: `ai_unreviewed` → gold "AI translation —
+  awaiting native review" pill; `ai_reviewed` → muted "reviewed" pill.
+- UI strings: `frontend/src/lib/i18n.svelte.ts` `MESSAGES` dicts (en/es/sw/lg;
+  missing keys fall back to EN). **Adding a language = LANGUAGES entry in
+  translation.py + LANGUAGE_NAMES entry + a MESSAGES dict.**
 
 ## Review gate (required before ai_reviewed)
 
-- A native / theologically-literate reviewer reads a sample: first chapter,
-  one middle chapter, and any doctrinally dense passages flagged during
-  translation.
-- Check: meaning fidelity (no doctrinal drift), scripture quotations match a
-  recognised translation in that language (do NOT machine-translate Bible
-  quotes — substitute the established text), names/terms consistent across
-  chapters.
-- Only the user flips `source_type` to `ai_reviewed` — never auto-promote.
+- A native / theologically-literate reviewer reads: first chapter, one middle
+  chapter, and every scripture-quoting passage.
+- Check: meaning fidelity (no doctrinal drift), scripture quotes match the
+  target Bible wording, glossary terms consistent across chapters, natural
+  register (not translationese).
+- The UI dictionaries are ALSO ai-drafted — include them in the language's
+  first review.
+- Only the user decides to run `approve_translation` — never auto-promote.
 
-## Language priorities
+## Shipping translations to prod
 
-Follow the Bible-language priorities memory (top-30 African languages research)
-when the user asks "which language next" — reach + existing PD scripture
-availability matter more than ease.
+Translations are **new Book+Chapter rows** → ship per ship-content-fix:
+regenerate the fixture (canonical shape: strip `body_text` keys + plan rows),
+plus a data migration that inserts the translated books from the fixture
+(match books by fixture-pk→slug, resolve Author by slug, set body_text via
+`library.text.html_to_text`); then the manual `ochorus-web` redeploy for
+prerendered pages. Search FTS: es/en stem properly on prod Postgres; sw/lg use
+"simple" config (exact-word match only) — acceptable, note it.
+
+## Known failure modes & language notes (append as we learn)
+
+- **No ANTHROPIC_API_KEY on the machine** → the command dies with "Could not
+  resolve authentication method". Backend `settings.py` dotenv-loads
+  `backend/.env`, so the user can put the key there (never paste keys into
+  chat). Check `ant auth status` too before asking.
+- **Model response missing wrapper tags** → `translate_chapter` raises; the
+  run is resumable. Usually a truncation (`max_tokens`) on a huge chapter —
+  split with `--chapters` or raise max_tokens.
+- **Book has no `original_language` field** — the model docstring mentions the
+  concept but the column doesn't exist on Book; don't set it.
+- **Nested dropdowns clip in the gear menu** — `.prefs-menu` needs
+  `overflow: visible` (fixed 2026-07-09).
+- Reference detection covers `Book C:V` patterns with full English book names
+  (Psalm/Psalms, Song of Solomon/Songs variants). Abbreviations ("Ps. 23:1")
+  are NOT detected yet — add to `_REF_RE` when a book needs it.

@@ -435,6 +435,8 @@ nav.appnav .navtoggle:hover {
 .prefs-menu {
 	min-width: 14rem;
 	padding: 0.25rem;
+	/* The language picker opens its own dropdown inside this menu — don't clip it. */
+	overflow: visible;
 }
 .prefs-row {
 	display: flex;
