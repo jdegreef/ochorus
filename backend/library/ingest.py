@@ -53,6 +53,15 @@ _TITLE_SMALL = {
 }
 
 
+def _cap_first(s: str) -> str:
+    """Uppercase the first alphabetic character ("in Him" -> "In Him", "'once'"
+    -> "'Once'"), leaving everything else — apostrophes, quotes — untouched."""
+    for i, ch in enumerate(s):
+        if ch.isalpha():
+            return s[:i] + ch.upper() + s[i + 1:]
+    return s
+
+
 def _titlecase_caps(s: str) -> str:
     """Title-case an ALL-CAPS heading, keeping connector words lowercase and
     preserving apostrophes ("CHRIST'S" -> "Christ's", not "Christ'S")."""
@@ -63,12 +72,8 @@ def _titlecase_caps(s: str) -> str:
         core = low.strip("\"“”'‘’.,;:?!()[]")
         if 0 < i < len(words) - 1 and core in _TITLE_SMALL:
             out.append(low)
-            continue
-        for j, ch in enumerate(low):  # capitalise the first alphabetic character
-            if ch.isalpha():
-                low = low[:j] + ch.upper() + low[j + 1:]
-                break
-        out.append(low)
+        else:
+            out.append(_cap_first(low))
     return " ".join(out)
 
 
@@ -104,7 +109,9 @@ def clean_title(raw: str) -> str:
     """
     t = _PAGE_MARKER.sub("", raw or "")
     t = _WS.sub(" ", t).strip()
-    t = re.sub(r"\s*Contents$", "", t).strip()
+    # Drop a trailing "Contents" nav link, but never blank the whole title — a
+    # bare "Contents" must stay so is_front_matter can recognise and drop it.
+    t = re.sub(r"\s*Contents$", "", t).strip() or t
     # Drop the "Chapter N." prefix when a descriptive title remains.
     m = _CHAPTER_PREFIX.match(t)
     if m and t[m.end():].strip():
@@ -126,15 +133,13 @@ def clean_title(raw: str) -> str:
     # ALL-CAPS CCEL heading -> Title Case. Gated on every letter being uppercase,
     # so mixed-case and already-clean titles are never touched; a bare roman
     # numeral ("IV") is left alone rather than mangled to "Iv".
-    letters = [ch for ch in t if ch.isalpha()]
-    if letters and all(ch.isupper() for ch in letters) and not re.fullmatch(r"[IVXLCDM]+", t):
+    if (
+        any(c.isalpha() for c in t)
+        and all(c.isupper() for c in t if c.isalpha())
+        and not re.fullmatch(r"[IVXLCDM]+", t)
+    ):
         t = _titlecase_caps(t)
-    # Capitalise the first alphabetic character ("in Him" -> "In Him").
-    for i, ch in enumerate(t):
-        if ch.isalpha():
-            t = t[:i] + ch.upper() + t[i + 1:]
-            break
-    return t
+    return _cap_first(t)
 
 
 def text_of(html: str) -> str:

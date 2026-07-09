@@ -75,7 +75,7 @@ def toc_sections(ref: str) -> list[tuple[str, str]]:
     parents = {
         url
         for url, st in stems.items()
-        if any(other != st and other.startswith(st + ".") for other in stems.values())
+        if any(other.startswith(st + ".") for other in stems.values())
     }
     return [(url, titles[url]) for url in order if url not in parents]
 

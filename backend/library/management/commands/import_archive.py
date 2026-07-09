@@ -28,11 +28,18 @@ from library.ingest import clean_title, is_front_matter, upsert_book, word_count
 
 USER_AGENT = "OchorusBot/0.1 (+https://ochorus.org; public-domain book reader)"
 
+# NB: the chapter-marker and running-header patterns below are tuned to the one
+# archive book in the catalogue (Clarke's Susanna Wesley). They are provisional,
+# not settled infrastructure — a future archive book with spelled-out or numeric
+# chapter headings, or a different header style, will need them revisited (or a
+# per-book config on BookEntry). The _reflow logic, by contrast, is general.
 _CHAPTER = re.compile(r"^\s*CHAPTER\s+[IVXLC]+\.?\s*$", re.I)
 _BARE_NUM = re.compile(r"^\s*\d{1,4}\s*$")
 _HYPHEN_EOL = re.compile(r"([A-Za-z])-$")
+_HYPHEN_SPACE = re.compile(r"([a-z])-\s+([a-z])")  # OCR split a compound: "fifty- four"
 _WS = re.compile(r"\s+")
 _DIGIT = re.compile(r"\d")
+_NON_LETTER = re.compile(r"[^A-Za-z]")
 
 
 def _is_header(line: str) -> bool:
@@ -44,8 +51,8 @@ def _is_header(line: str) -> bool:
     (leading '‘€•*] junk) since those are exactly what break a naive regex."""
     if not _DIGIT.search(line):
         return False
-    core = _WS.sub(" ", re.sub(r"[^A-Za-z ]", " ", line)).strip()
-    return bool(core) and core.isupper()
+    letters = _NON_LETTER.sub("", line)  # str.isupper() ignores the dropped chars
+    return bool(letters) and letters.isupper()
 
 
 def fetch_text(item_id: str) -> str:
@@ -67,7 +74,7 @@ def _reflow(lines: list[str]) -> str:
         text = _WS.sub(" ", buf).strip()
         # Rejoin a hyphenated compound the OCR split with a space ("fifty- four").
         # Lowercase-both-sides only, so a spaced dash used as punctuation is safe.
-        text = re.sub(r"([a-z])-\s+([a-z])", r"\1-\2", text)
+        text = _HYPHEN_SPACE.sub(r"\1-\2", text)
         if text:
             paras.append(text)
         buf = ""
