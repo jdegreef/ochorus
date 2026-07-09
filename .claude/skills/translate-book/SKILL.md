@@ -68,13 +68,24 @@ so a failed run is just re-run. Cost/time: an Opus chapter of ~1,000 words ≈
 
 ## Shipping translations to prod
 
-Translations are **new Book+Chapter rows** → ship per ship-content-fix:
-regenerate the fixture (canonical shape: strip `body_text` keys + plan rows),
-plus a data migration that inserts the translated books from the fixture
-(match books by fixture-pk→slug, resolve Author by slug, set body_text via
-`library.text.html_to_text`); then the manual `ochorus-web` redeploy for
-prerendered pages. Search FTS: es/en stem properly on prod Postgres; sw/lg use
-"simple" config (exact-word match only) — acceptable, note it.
+Translations are **new (slug, language) Book+Chapter rows**, and the
+`seed_books` release step already creates any fixture book missing from prod
+on every deploy. So shipping is just:
+
+1. **Patch `launch.json`** — append the translated book+chapter rows (include
+   `body_text`/`word_count`; derive with `library.text.html_to_text` +
+   `library.ingest.word_count`). PATCH the file textually (targeted append
+   before the closing `]`, `json.dumps(row, indent=1, ensure_ascii=False)`,
+   objects at column 0) — a full json round-trip rewrites all ~9MB because
+   escape styles vary across rows. NO migration needed for the new rows.
+2. A data migration ONLY for transforms of **existing** rows (e.g. cleaning
+   the EN description). Guard it to no-op when the book isn't there yet
+   (fresh installs seed from the fixture after migrate).
+3. Merge → api deploys → then the manual `ochorus-web` "Clear cache & deploy"
+   for prerendered pages.
+
+Search FTS: es/en stem properly on prod Postgres; sw/lg use "simple" config
+(exact-word match only) — acceptable, note it.
 
 ## Known failure modes & language notes (append as we learn)
 
