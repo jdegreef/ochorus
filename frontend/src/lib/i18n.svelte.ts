@@ -34,6 +34,7 @@ const EN: Dict = {
 	'reader.share': 'Share',
 	'reader.highlight': 'Highlight',
 	'reader.note': 'Note',
+	'reader.removeHighlight': 'Remove highlight',
 	'spacing.compact': 'Compact',
 	'spacing.normal': 'Normal',
 	'spacing.relaxed': 'Relaxed',

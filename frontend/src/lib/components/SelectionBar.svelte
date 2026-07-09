@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { i18n } from '$lib/i18n.svelte';
+	import { segmentsFromSelection } from '$lib/rangeMarks';
+	import type { Segment } from '$lib/marks.svelte';
 
 	interface Cite {
 		author: string;
@@ -17,9 +19,9 @@
 	}: {
 		container: HTMLElement | undefined;
 		cite: Cite;
-		onHighlight?: (paragraphIndex: number) => void;
-		onNote?: (paragraphIndex: number) => void;
-		isHighlighted?: (paragraphIndex: number) => boolean;
+		onHighlight?: (segments: Segment[]) => void;
+		onNote?: (segments: Segment[]) => void;
+		isHighlighted?: (segments: Segment[]) => boolean;
 	} = $props();
 	const t = i18n.t;
 
@@ -27,21 +29,12 @@
 	let top = $state(0);
 	let left = $state(0);
 	let selectedText = $state('');
-	let paragraphIndex = $state(-1);
+	let segments = $state<Segment[]>([]);
 	let copied = $state(false);
 
 	function attribution(): string {
 		const where = cite.chapter ? `${cite.book}, ${cite.chapter}` : cite.book;
 		return `“${selectedText}”\n— ${cite.author}, ${where}\n${cite.url}`;
-	}
-
-	/** Index of the top-level block (paragraph) within `container` holding `node`. */
-	function blockIndexOf(node: Node | null): number {
-		if (!container || !node) return -1;
-		let el: Node | null = node;
-		while (el && el.parentNode !== container) el = el.parentNode;
-		if (!el) return -1;
-		return Array.prototype.indexOf.call(container.children, el);
 	}
 
 	function update() {
@@ -59,7 +52,7 @@
 			return;
 		}
 		selectedText = text;
-		paragraphIndex = blockIndexOf(sel.anchorNode);
+		segments = segmentsFromSelection(container, sel);
 		const rect = sel.getRangeAt(0).getBoundingClientRect();
 		top = rect.top + window.scrollY - 8;
 		left = rect.left + window.scrollX + rect.width / 2;
@@ -90,7 +83,7 @@
 	}
 
 	const highlighted = $derived(
-		isHighlighted && paragraphIndex >= 0 ? isHighlighted(paragraphIndex) : false
+		isHighlighted && segments.length > 0 ? isHighlighted(segments) : false
 	);
 </script>
 
@@ -108,18 +101,29 @@
 		</button>
 		<span class="selbar-sep"></span>
 		<button class="selbar-btn" onclick={share}>{t('reader.share')}</button>
-		{#if onHighlight && paragraphIndex >= 0}
+		{#if onHighlight && segments.length > 0}
 			<span class="selbar-sep"></span>
 			<button
 				class="selbar-btn"
 				class:on={highlighted}
-				onclick={() => onHighlight(paragraphIndex)}
+				onclick={() => {
+					onHighlight(segments);
+					window.getSelection()?.removeAllRanges();
+					visible = false;
+				}}
 				aria-pressed={highlighted}>{t('reader.highlight')}</button
 			>
 		{/if}
-		{#if onNote && paragraphIndex >= 0}
+		{#if onNote && segments.length > 0}
 			<span class="selbar-sep"></span>
-			<button class="selbar-btn" onclick={() => onNote(paragraphIndex)}>{t('reader.note')}</button>
+			<button
+				class="selbar-btn"
+				onclick={() => {
+					onNote(segments);
+					window.getSelection()?.removeAllRanges();
+					visible = false;
+				}}>{t('reader.note')}</button
+			>
 		{/if}
 	</div>
 {/if}

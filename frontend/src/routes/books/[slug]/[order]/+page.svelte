@@ -13,6 +13,7 @@
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { marks } from '$lib/marks.svelte';
+	import { renderMarks } from '$lib/rangeMarks';
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { readingTime } from '$lib/reading';
@@ -30,9 +31,11 @@
 	let titleEl: HTMLHeadingElement | undefined = $state();
 	let titleVisible = $state(true);
 
-	// Note editor state.
+	// Note editor state — edits the note of an existing mark group, or creates
+	// a new mark from pending selection segments when noteId is null.
 	let noteOpen = $state(false);
-	let noteIndex = $state(-1);
+	let noteId = $state<string | null>(null);
+	let notePending = $state<{ p: number; s: number; e: number }[]>([]);
 	let noteDraft = $state('');
 
 	const HEADER_OFFSET = 72;
@@ -176,17 +179,16 @@
 		return () => io.disconnect();
 	}
 
-	// Decorate rendered paragraphs with highlight backgrounds + note markers.
+	// Render text-range marks as <mark> spans; clicking one opens its note.
 	$effect(() => {
-		const hl = marks.highlights;
-		const notes = marks.notes;
+		const list = marks.list;
 		if (!body) return;
-		const kids = body.children;
-		for (let i = 0; i < kids.length; i++) {
-			const el = kids[i] as HTMLElement;
-			el.classList.toggle('mark-hl', hl.has(i));
-			el.classList.toggle('mark-note', notes[i] != null);
-		}
+		renderMarks(body, list, (id) => {
+			noteId = id;
+			notePending = [];
+			noteDraft = marks.getNote(id);
+			noteOpen = true;
+		});
 	});
 
 	const cite = $derived({
@@ -196,13 +198,24 @@
 		url: $page.url.href
 	});
 
-	function openNote(i: number) {
-		noteIndex = i;
-		noteDraft = marks.getNote(i);
+	/** Note on a fresh selection: highlight it first, then attach the note. */
+	function openNoteForSelection(segments: { p: number; s: number; e: number }[]) {
+		const existing = marks.groupCovering(segments);
+		noteId = existing;
+		notePending = existing ? [] : segments;
+		noteDraft = existing ? marks.getNote(existing) : '';
 		noteOpen = true;
 	}
 	function saveNote() {
-		marks.setNote(noteIndex, noteDraft);
+		if (noteId) {
+			marks.setNote(noteId, noteDraft);
+		} else if (notePending.length && noteDraft.trim()) {
+			marks.add(notePending, noteDraft);
+		}
+		noteOpen = false;
+	}
+	function removeMark() {
+		if (noteId) marks.remove(noteId);
 		noteOpen = false;
 	}
 </script>
@@ -342,9 +355,13 @@
 <SelectionBar
 	container={body}
 	{cite}
-	onHighlight={(i) => marks.toggleHighlight(i)}
-	onNote={openNote}
-	isHighlighted={(i) => marks.isHighlighted(i)}
+	onHighlight={(segments) => {
+		const existing = marks.groupCovering(segments);
+		if (existing) marks.remove(existing);
+		else marks.add(segments);
+	}}
+	onNote={openNoteForSelection}
+	isHighlighted={(segments) => marks.groupCovering(segments) !== null}
 />
 
 <ListenBar />
@@ -359,7 +376,13 @@
 				class="w-full rounded-sm border border-border bg-bg p-3 text-body text-text"
 				placeholder="…"
 			></textarea>
-			<div class="mt-3 flex justify-end gap-2">
+			<div class="mt-3 flex items-center gap-2">
+				{#if noteId}
+					<button class="btn btn-ghost !text-red-700 dark:!text-red-400" onclick={removeMark}>
+						{t('reader.removeHighlight')}
+					</button>
+				{/if}
+				<span class="flex-1"></span>
 				<button class="btn btn-ghost" onclick={() => (noteOpen = false)}>Cancel</button>
 				<button class="btn btn-primary" onclick={saveNote}>Save</button>
 			</div>
@@ -368,16 +391,22 @@
 {/if}
 
 <style>
-	/* Paragraph-level marks decorate {@html} children imperatively. */
-	:global(.reading > .mark-hl) {
-		background: color-mix(in srgb, var(--gold) 22%, transparent);
-		border-radius: 4px;
-		box-shadow: 0 0 0 4px color-mix(in srgb, var(--gold) 22%, transparent);
+	/* Text-range marks: <mark> spans wrapped around the selected text. */
+	:global(.reading mark.range-mark) {
+		background: color-mix(in srgb, var(--gold) 28%, transparent);
+		color: inherit;
+		border-radius: 2px;
+		padding: 0.08em 0;
+		box-decoration-break: clone;
+		-webkit-box-decoration-break: clone;
+		cursor: pointer;
 	}
-	:global(.reading > .mark-note) {
-		border-left: 3px solid var(--gold);
-		padding-left: 0.9em;
-		margin-left: -1.2em;
+	:global(.reading mark.range-mark:hover) {
+		background: color-mix(in srgb, var(--gold) 42%, transparent);
+	}
+	/* A mark carrying a note gets a subtle underline cue. */
+	:global(.reading mark.range-mark.has-note) {
+		border-bottom: 2px solid var(--gold);
 	}
 	/* Paragraph currently being read aloud in Listen mode. */
 	:global(.reading > .tts-current) {

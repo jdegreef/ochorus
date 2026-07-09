@@ -4,9 +4,17 @@ from rest_framework.test import APIClient
 
 from accounts.models import UserProfile
 
+from .marks import from_legacy, merge_mark_lists
 from .models import ChapterMarks, ReadingProgress
 
 User = get_user_model()
+
+
+def mark(p, s, e, note=None, id=None):
+    m = {"id": id or f"{p}:{s}:{e}", "p": p, "s": s, "e": e}
+    if note:
+        m["note"] = note
+    return m
 
 
 class ReadingSyncTests(TestCase):
@@ -27,7 +35,6 @@ class ReadingSyncTests(TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.data["chapter_order"], 3)
 
-        # Upserting again updates the same row, not a new one.
         self.client.put(
             "/api/reading/progress/humility/",
             {"chapter_order": 5, "paragraph_index": 0},
@@ -39,26 +46,34 @@ class ReadingSyncTests(TestCase):
         self.assertEqual(len(state["progress"]), 1)
         self.assertEqual(state["progress"][0]["chapter_order"], 5)
 
-    def test_marks_put_and_delete(self):
+    def test_range_marks_put_and_delete(self):
         res = self.client.put(
             "/api/reading/marks/humility/2/",
-            {"highlights": [1, 4, 4], "notes": {"1": " keep ", "9": ""}},
+            {"marks": [mark(1, 5, 42, note=" keep "), mark(1, 5, 42), {"p": -1}]},
             format="json",
         )
         self.assertEqual(res.status_code, 200)
-        self.assertEqual(res.data["highlights"], [1, 4])  # deduped + sorted
-        self.assertEqual(res.data["notes"], {"1": "keep"})  # trimmed, empties dropped
+        # deduped by range, malformed dropped, note trimmed
+        self.assertEqual(len(res.data["marks"]), 1)
+        self.assertEqual(res.data["marks"][0]["note"], "keep")
 
-        # Empty payload removes the row.
-        self.client.put(
-            "/api/reading/marks/humility/2/",
-            {"highlights": [], "notes": {}},
-            format="json",
-        )
+        self.client.put("/api/reading/marks/humility/2/", {"marks": []}, format="json")
         self.assertEqual(ChapterMarks.objects.count(), 0)
 
-    def test_merge_unions_marks_and_keeps_newer_progress(self):
-        # Server already has some state.
+    def test_legacy_payload_converts(self):
+        # An old client (cached SPA) still sends paragraph-level h/n.
+        res = self.client.put(
+            "/api/reading/marks/humility/1/",
+            {"highlights": [3], "notes": {"5": "old note"}},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        ranges = {(m["p"], m["s"], m["e"]) for m in res.data["marks"]}
+        self.assertEqual(ranges, {(3, 0, -1), (5, 0, -1)})
+        by_p = {m["p"]: m for m in res.data["marks"]}
+        self.assertEqual(by_p[5]["note"], "old note")
+
+    def test_merge_unions_ranges_and_keeps_newer_progress(self):
         ReadingProgress.objects.create(
             profile=self.profile, book_slug="humility", chapter_order=2, paragraph_index=1
         )
@@ -66,13 +81,11 @@ class ReadingSyncTests(TestCase):
             profile=self.profile,
             book_slug="humility",
             chapter_order=1,
-            highlights=[1],
-            notes={"1": "short"},
+            marks=[mark(1, 0, 20, note="short")],
         )
 
         payload = {
             "progress": [
-                # Newer than the server row (year ~2286 in ms) → should win.
                 {
                     "book_slug": "humility",
                     "chapter_order": 7,
@@ -85,22 +98,62 @@ class ReadingSyncTests(TestCase):
                 {
                     "book_slug": "humility",
                     "chapter_order": 1,
-                    "highlights": [2],
-                    "notes": {"1": "a much longer note", "5": "new"},
+                    "marks": [
+                        mark(1, 0, 20, note="a much longer note"),
+                        mark(2, 4, 9),
+                    ],
                 }
             ],
         }
         state = self.client.post("/api/reading/merge/", payload, format="json").data
 
         prog = {p["book_slug"]: p for p in state["progress"]}
-        self.assertEqual(prog["humility"]["chapter_order"], 7)  # local newer won
-        self.assertIn("abide", prog)  # local-only book added
+        self.assertEqual(prog["humility"]["chapter_order"], 7)
+        self.assertIn("abide", prog)
 
-        marks = state["marks"][0]
-        self.assertEqual(marks["highlights"], [1, 2])  # unioned
-        self.assertEqual(marks["notes"]["1"], "a much longer note")  # longer wins
-        self.assertEqual(marks["notes"]["5"], "new")
+        ms = state["marks"][0]["marks"]
+        self.assertEqual({(m["p"], m["s"], m["e"]) for m in ms}, {(1, 0, 20), (2, 4, 9)})
+        self.assertEqual(ms[0]["note"], "a much longer note")  # longer note won
+
+    def test_merge_folds_in_unconverted_server_row(self):
+        # Server row predating the range conversion (only legacy fields set).
+        ChapterMarks.objects.create(
+            profile=self.profile,
+            book_slug="humility",
+            chapter_order=4,
+            marks=[],
+            highlights=[2],
+            notes={"2": "legacy"},
+        )
+        payload = {
+            "marks": [
+                {"book_slug": "humility", "chapter_order": 4, "marks": [mark(0, 1, 9)]}
+            ]
+        }
+        state = self.client.post("/api/reading/merge/", payload, format="json").data
+        ms = state["marks"][0]["marks"]
+        self.assertEqual(
+            {(m["p"], m["s"], m["e"]) for m in ms}, {(0, 1, 9), (2, 0, -1)}
+        )
 
     def test_requires_auth(self):
         anon = APIClient()
         self.assertEqual(anon.get("/api/reading/state/").status_code, 401)
+
+
+class MarkHelpersTests(TestCase):
+    def test_from_legacy(self):
+        ms = from_legacy([1, 3], {"3": "note on 3", "9": "solo note"})
+        self.assertEqual(
+            {(m["p"], m["s"], m["e"]) for m in ms}, {(1, 0, -1), (3, 0, -1), (9, 0, -1)}
+        )
+        by_p = {m["p"]: m for m in ms}
+        self.assertEqual(by_p[3]["note"], "note on 3")
+        self.assertNotIn("note", by_p[1])
+
+    def test_merge_is_a_union(self):
+        a = [mark(0, 0, 5), mark(1, 2, 8, note="x")]
+        b = [mark(1, 2, 8, note="longer note"), mark(2, 0, -1)]
+        merged = merge_mark_lists(a, b)
+        self.assertEqual(len(merged), 3)
+        self.assertEqual(merged[1]["note"], "longer note")

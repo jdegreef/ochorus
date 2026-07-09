@@ -66,6 +66,10 @@ class ChapterMarks(models.Model):
     language = models.CharField(max_length=10, default="en")
     chapter_order = models.PositiveIntegerField()
 
+    # Text-range marks: [{"id", "p", "s", "e", "note"?}, ...] — see reading/marks.py.
+    marks = models.JSONField(default=list)
+    # Legacy paragraph-level fields, converted to `marks` by data migration
+    # 0002 and no longer written; kept only so old rows remain inspectable.
     highlights = models.JSONField(default=list)
     notes = models.JSONField(default=dict)
 
@@ -85,4 +89,4 @@ class ChapterMarks(models.Model):
 
     @property
     def is_empty(self) -> bool:
-        return not self.highlights and not self.notes
+        return not self.marks
