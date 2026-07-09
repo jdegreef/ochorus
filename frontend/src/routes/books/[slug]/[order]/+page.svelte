@@ -19,6 +19,7 @@
 	import { readingTime } from '$lib/reading';
 	import { listen } from '$lib/listen.svelte';
 	import { define } from '$lib/define.svelte';
+	import { API_BASE_URL } from '$lib/config';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import DefinePopover from '$lib/components/DefinePopover.svelte';
 	import SelectionBar from '$lib/components/SelectionBar.svelte';
@@ -77,6 +78,72 @@
 		void slug;
 		void chapter.order;
 		return () => listen.stop();
+	});
+
+	function gotoChapter(target: { order: number } | null) {
+		if (target) goto(`/books/${slug}/${target.order}`);
+	}
+
+	/** Keyboard: ←/→ chapters (or paragraph skip while listening), space pages. */
+	function onKeydown(e: KeyboardEvent) {
+		if (e.metaKey || e.ctrlKey || e.altKey) return;
+		const el = e.target as HTMLElement;
+		if (
+			el?.closest?.('input, textarea, select, [contenteditable="true"]') ||
+			noteOpen ||
+			define.open
+		) {
+			return;
+		}
+		if (e.key === 'ArrowRight') {
+			e.preventDefault();
+			if (listen.status !== 'idle') listen.skip(1);
+			else gotoChapter(chapter.next);
+		} else if (e.key === 'ArrowLeft') {
+			e.preventDefault();
+			if (listen.status !== 'idle') listen.skip(-1);
+			else gotoChapter(chapter.prev);
+		} else if (e.key === ' ') {
+			e.preventDefault();
+			window.scrollBy({
+				top: (e.shiftKey ? -1 : 1) * window.innerHeight * 0.85,
+				behavior: 'smooth'
+			});
+		}
+	}
+
+	/** Edge tap zones on touch devices: outer 15% turns the chapter. */
+	function onArticleClick(e: MouseEvent) {
+		if (!window.matchMedia('(pointer: coarse)').matches) return;
+		const el = e.target as HTMLElement;
+		if (el.closest('a, button, mark, input, textarea, select, .selbar, .define-pop')) return;
+		if (window.getSelection()?.toString()) return;
+		const x = e.clientX / window.innerWidth;
+		if (x < 0.15) gotoChapter(chapter.prev);
+		else if (x > 0.85) gotoChapter(chapter.next);
+	}
+
+	// Prefetch the next chapter when the browser is idle: the plain GET flows
+	// through the service worker's stale-while-revalidate cache, so the next
+	// tap is instant and the chapter becomes readable offline too.
+	$effect(() => {
+		const next = chapter.next;
+		const s = slug;
+		const language = getLang();
+		if (!next) return;
+		const url = `${API_BASE_URL}/api/library/books/${s}/chapters/${next.order}/?language=${language}`;
+		// timeout guarantees the prefetch even when idle never comes (busy or
+		// backgrounded tab); setTimeout covers browsers without rIC (Safari).
+		const idle =
+			'requestIdleCallback' in window
+				? (fn: () => void) =>
+						(window as Window & {
+							requestIdleCallback: (cb: () => void, opts?: { timeout: number }) => number;
+						}).requestIdleCallback(fn, { timeout: 3000 })
+				: (fn: () => void) => setTimeout(fn, 1500);
+		idle(() => {
+			fetch(url).catch(() => {});
+		});
 	});
 
 	// Reading-plan context (?plan=<slug>&day=<n>): show the Day N of M strip and
@@ -223,7 +290,7 @@
 </script>
 
 <svelte:head><title>{chapter.title} — {chapter.book_title} — Ochorus</title></svelte:head>
-<svelte:window onscroll={onScroll} />
+<svelte:window onscroll={onScroll} onkeydown={onKeydown} />
 
 <!-- Reader top bar: breadcrumb / context + controls. Hidden in focus mode. -->
 {#if !readerUi.focus}
@@ -284,10 +351,12 @@
 	>
 {/if}
 
+<!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events -->
 <article
 	class="mx-auto px-5 py-10"
 	style="{readerPrefs.style}; max-width: var(--reading-measure)"
 	dir="auto"
+	onclick={onArticleClick}
 >
 	<!-- Breadcrumb -->
 	<nav class="mb-5 flex flex-wrap items-center gap-1.5 text-small text-muted" aria-label="Breadcrumb">
