@@ -82,6 +82,15 @@ prerendered pages. Search FTS: es/en stem properly on prod Postgres; sw/lg use
   resolve authentication method". Backend `settings.py` dotenv-loads
   `backend/.env`, so the user can put the key there (never paste keys into
   chat). Check `ant auth status` too before asking.
+- **Placeholder key pasted verbatim** — a user given `echo 'ANTHROPIC_API_KEY=sk-ant-...'`
+  may run it literally. Verify WITHOUT printing the secret:
+  `awk -F= '/^ANTHROPIC_API_KEY=/{print length($2)}' .env` — a real key is
+  ~100+ chars; ~10 means the literal `sk-ant-...` placeholder. Also dedupe
+  repeated lines (`sed -i '' '/^ANTHROPIC_API_KEY=/d'` then re-add once).
+- **Key-less pilot path**: for a small pilot (a few chapters), Claude Code can
+  translate in-session using the same `scripture_context()` helpers + glossary
+  + wrapper protocol, writing rows through the same ai_unreviewed path — no
+  API key needed. The `translate_book` command is for unattended scale.
 - **Model response missing wrapper tags** → `translate_chapter` raises; the
   run is resumable. Usually a truncation (`max_tokens`) on a huge chapter —
   split with `--chapters` or raise max_tokens.
