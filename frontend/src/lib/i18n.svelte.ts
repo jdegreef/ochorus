@@ -39,6 +39,8 @@ const EN: Dict = {
 	'reader.glossarySource': 'Ochorus glossary',
 	'reader.dictionarySource': 'Dictionary',
 	'reader.noDefinition': 'No definition found for this word.',
+	'reader.markOne': 'mark',
+	'reader.markMany': 'marks',
 	'spacing.compact': 'Compact',
 	'spacing.normal': 'Normal',
 	'spacing.relaxed': 'Relaxed',
