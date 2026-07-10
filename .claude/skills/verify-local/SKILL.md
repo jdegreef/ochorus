@@ -15,6 +15,21 @@ Two ways to serve the frontend — pick by what you're testing:
 Backend: `cd backend && DJANGO_DEBUG=true uv run python manage.py runserver 8000`
 (seeded per the dev-setup skill; CORS must include the frontend port).
 
+## First run in a fresh worktree (two traps)
+
+1. **`node_modules` is not shared across worktrees.** A brand-new worktree has no
+   frontend deps, so `npm run dev` dies with `sh: vite: command not found`. Run
+   `cd frontend && npm install` once first. The frontend also needs
+   `frontend/.env` with `PUBLIC_API_BASE_URL=http://localhost:8000` (copy from
+   `.env.example`), else client fetches hit the wrong origin.
+2. **CORS port must match the dev port.** The dev server runs on **5180**
+   (launch.json), and the backend default `CORS_ALLOWED_ORIGINS` now includes
+   both 5173 and 5180 — but if you run the frontend on any other port, the page
+   chrome renders yet the book/API content 500s with a client-side
+   `TypeError: Failed to fetch` (CORS preflight returns 200 with NO
+   `access-control-allow-*` headers). Fix: launch the backend with
+   `CORS_ALLOWED_ORIGINS=http://localhost:<port>` including your actual port.
+
 ## THE stale-preview trap (bites every time)
 
 `vite preview` snapshots the build directory AT STARTUP. Rebuilding does

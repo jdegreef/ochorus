@@ -216,19 +216,100 @@ dropped; chapters under 120 words are dropped as stubs.
   its body text in one block loses that intro (feasting-at-the-table); a drop
   cap belonging mid-paragraph after a scripture-ref merge isn't reattached
   ("Ephesians 2:11-22 aul writes").
+- **CCEL two-level section numbering** (`<work>.i.ii.html` = part i, chapter ii).
+  The `toc_sections` pattern matched only single-segment `<work>.iii.html`, so a
+  parts-divided work imported as 1 chapter. Regex now allows one-or-more dotted
+  roman/numeric segments; single-level works are unaffected. *(meyer/into_holiest,
+  2026-07)*
+- **CCEL part-divider / half-title leaking in as a chapter** — with multi-level
+  matching, the one-level parent page (`<work>.i.html` = "THE WAY INTO THE
+  HOLIEST:") is a structural divider, not prose. `toc_sections` now drops any
+  section whose stem is a strict prefix of another's (parent of `i.ii`); no-op
+  for single-level works. *(2026-07)*
+- **CCEL importer never ran `clean_title`** — earlier CCEL sources happened to be
+  Title Case so it was never needed; Meyer's TOC is ALL-CAPS with roman prefixes
+  ("II. THE DIGNITY OF CHRIST"). `import_ccel` now applies `clean_title`, and
+  `clean_title` gained an ALL-CAPS→Title-Case pass (gated on *every* letter being
+  uppercase, so mixed-case titles like "D. L. Moody" are untouched) plus a
+  roman-numeral-prefix strip guarded to never eat personal initials. *(2026-07)*
+- **Order matters: `is_front_matter` must run on the RAW title, before
+  `clean_title`.** `clean_title` strips a trailing "Contents", so a TOC section
+  titled "Contents" cleans to `""`, slips past `is_front_matter`, and leaks in as
+  a phantom "Chapter N" (inflated till-he-come 23→24). Gate front matter first,
+  then clean the survivors. *(2026-07)*
+- **Adding a book for an author who already exists in the DB with a scraped bio:**
+  `upsert_book` does `Author.objects.update_or_create(defaults={bio, years…})`
+  from the catalog `AuthorEntry`, so a new `AuthorEntry` with an empty/short bio
+  will CLOBBER the good bio. Copy the existing bio + birth/death years verbatim
+  into the new `AuthorEntry`. *(amy-carmichael, frederick-brotherton-meyer,
+  2026-07)*
+- **`chapter_title_overrides` now applies in `upsert_book`** (was only in
+  `import_ochorus`), so per-book title corrections work for every source. Apply
+  `clean_title` to the override in BOTH paths so the same correction yields the
+  same stored title. *(2026-07)*
+- **A `clean_title` change silently regresses existing books on their NEXT
+  re-import — and some books (Humility, the Murray/Spurgeon CCEL set) are
+  imported at DEPLOY, not seeded from the fixture, so the regression only shows
+  in prod.** After ANY clean_title edit, re-import a diverse sample AND diff every
+  title vs `fixtures/launch.json` (see the gutenberg-title-diff pattern in the
+  transcript). Real regressions this caught: an un-gated roman-prefix strip
+  dropping Murray's "I. Humility: …" numeral; ordinal "1st"→"1St";
+  "II CORINTHIANS"→"Ii Corinthians".
+- **ALL-CAPS→Title-Case rules that hold:** gate the roman-numeral-prefix strip to
+  ALL-CAPS headings only (mixed-case "I. Humility: …" / "II. Timothy" must keep
+  the numeral); block the strip only on an actual initial (`L.` in "D. L. MOODY"),
+  not an article (`A` in "IX. A WARNING"); PRESERVE whole-token roman numerals in
+  the caps pass ("PSALM CXIX", "II CORINTHIANS"); never uppercase a letter that
+  follows a digit ("1st"). Titles in this library are uniformly Title Case, so an
+  ALL-CAPS or "Ii"/"Iii" stored title is a red flag. *(2026-07)*
+- **Internet Archive OCR import** (`import_archive`, `source="archive"`): reflow
+  is the whole job. A DjVu text layer is hard-wrapped and double-spaced with page
+  furniture that INTERRUPTS paragraphs (a bare page number + a running header
+  mid-paragraph). Rules that worked: drop bare-number lines; treat a blank/furniture
+  line as a paragraph break ONLY when the buffer ends on terminal punctuation
+  (else it's a mid-paragraph page break — keep accumulating); de-hyphenate
+  end-of-line splits and rejoin space-split compounds ("fifty- four"). *(susanna-
+  wesley-clarke, 2026-07)*
+- **Archive running-header vs. letter signature:** the header "60 SUSANNA WESLEY."
+  and the letter signature "SUSANNA WESLEY." differ by one thing — the header
+  carries a PAGE NUMBER. Detect a header as "line contains a digit AND its
+  letters-only core is ALL CAPS"; that keeps signatures (no digit) and all-caps
+  prose openings (have lowercase) as prose. Tolerates OCR-mangled page digits
+  (`'60`, `€2`, `•94`, `]26`) that a `^\d` regex would miss. *(2026-07)*
+- **Archive OCR residue** goes in `corrections.py` `replacements` as literal
+  pairs: opening-word drop-cap misreads ("OP the"→"OF the", "MBS."→"MRS."),
+  R↔E title misreads (fix via `chapter_titles`), and number-word merges
+  ("twentyone"→"twenty-one"). Scan for merges with a "digit-word glued to
+  [a-z]" regex, but hand-filter — "eighteenth"/"understand" are real words.
+  *(2026-07)*
 
 ## Adding a public-domain book NOT on ochorus.com
 
-When the catalogue lacks a wanted title (e.g. more Spurgeon), source it from
-CCEL or Project Gutenberg instead:
+**Vet US public-domain status by PUBLICATION year, not author death.** A work
+first published before 1929 is US-PD regardless of when the author died — and a
+long-lived author can have both PD and still-copyrighted books. Amy Carmichael
+(d. 1951): *Things as They Are* (1903) is safe; *If*, *Gold Cord*, *Rose from
+Brier* (1930s–40s) are very likely still under US copyright. Pick an early
+edition; when a "restored/complete" modern reprint exists (e.g. Finney's
+*Memoirs*), use the original pre-1929 scan, not the copyrighted reprint.
 
-1. Add a `BookEntry` to `library/catalog.py` (`source` = "ccel" with a
-   `<author>/<work>` path, or "gutenberg" with the ebook id). For CCEL, first
-   check the TOC section count — `inspect`/curl `<work>.toc.html`; 10–40 sections
-   is good, 2 means it won't chapter well (skip), Gutenberg books with no
-   headings import as one giant chapter (skip).
-2. Import: `import_ccel <slug>` or `import_gutenberg <slug>` (these read
-   `catalog.py`, not ochorus.com).
+When the catalogue lacks a wanted title (e.g. more Spurgeon), source it from
+elsewhere. Preference order — cleaner text first: **CCEL** (`source="ccel"`,
+`<author>/<work>` path) → **Project Gutenberg** (`source="gutenberg"`, ebook id)
+→ **arbitrary web** (`source="web"`, per-chapter URLs in `catalog.WEB_CHAPTERS`,
+`import_web`) → **Internet Archive OCR** (`source="archive"`, item id,
+`import_archive`). The first two are transcription-clean; Archive is an OCR text
+layer and needs a cleanup/verify pass (see below). **Wikisource caveat:** a work
+can be only partially transcribed — Clarke's *Susanna Wesley* lists 16 chapters
+but Wikisource has only 5, so it would import as a truncated book. Always count
+the transcribed chapters against the work's own TOC before choosing it.
+
+1. Add a `BookEntry` to `library/catalog.py`. For CCEL, first check the TOC
+   section count — `inspect`/curl `<work>.toc.html`; 10–40 sections is good, 2
+   means it won't chapter well (skip), Gutenberg books with no headings import as
+   one giant chapter (skip).
+2. Import: `import_ccel <slug>` / `import_gutenberg <slug>` / `import_web <slug>`
+   / `import_archive <slug>` (all read `catalog.py`, not ochorus.com).
 3. **Consolidate the author.** These importers create an author from the catalog
    slug; reassign the new book(s) to the canonical DB author (e.g.
    `charles-h-spurgeon`) and delete the duplicate, so they group correctly on the

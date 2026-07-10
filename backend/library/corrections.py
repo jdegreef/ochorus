@@ -42,6 +42,17 @@ CORRECTIONS: dict[str, dict] = {
         # neglected field…"), so no title can be borrowed. From the TOC:
         "chapter_titles": {1: "The Sluggard's Farm"},
     },
+    "susanna-wesley-clarke": {
+        # OCR misread two ALL-CAPS chapter headings (R->E): "THE HOME EEBUILT",
+        # "THE SUPERNATUEAL NOISES". Corrected from the front-page TOC.
+        "chapter_titles": {9: "The Home Rebuilt", 11: "The Supernatural Noises"},
+    },
+    "way-into-holiest": {
+        # Ch.7's CCEL heading is a mixed-case quoted phrase ("VI. \"Perfect through
+        # sufferings\""), so the roman-prefix strip — which only fires on ALL-CAPS
+        # headings — leaves the "VI." in place. Give the clean title directly.
+        "chapter_titles": {7: "Perfect through sufferings"},
+    },
 }
 
 
@@ -106,6 +117,20 @@ BODY_CORRECTIONS: dict[str, dict] = {
     },
     "men-of-prayer-2": {
         "replacements": [("conversatio n.", "conversation.")],
+    },
+    "susanna-wesley-clarke": {
+        # Archive OCR artifacts. Opening-word errors at two chapter starts
+        # (ch.7 "OP the next" -> "OF the next"; ch.12 "MBS. WESLEY" -> "MRS.
+        # WESLEY") and compound words/numbers whose hyphen or space the OCR lost.
+        "replacements": [
+            ("<p>OP the next", "<p>OF the next"),
+            ("<p>MBS. WESLEY", "<p>MRS. WESLEY"),
+            ("fiftyseven", "fifty-seven"),
+            ("twentyeight", "twenty-eight"),
+            ("twentyseven", "twenty-seven"),
+            ("twentyone", "twenty-one"),
+            ("earlypart", "early part"),
+        ],
     },
     "the-person-and-work-of-the-holy-spirit": {
         "replacements": [
