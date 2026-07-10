@@ -6,8 +6,7 @@ import type { PageLoad } from './$types';
 export const prerender = false;
 export const ssr = false;
 
-export const load: PageLoad = async ({ params, depends }) => {
-	depends('app:lang');
+export const load: PageLoad = async ({ params }) => {
 	const chapter = await getChapter(params.slug, Number(params.order), getLang());
 	return { chapter, slug: params.slug };
 };

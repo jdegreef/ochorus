@@ -12,8 +12,7 @@ export const entries: EntryGenerator = async () => {
 	return [...slugs].map((slug) => ({ slug }));
 };
 
-export const load: PageLoad = async ({ params, depends }) => {
-	depends('app:lang');
+export const load: PageLoad = async ({ params }) => {
 	const author = await getAuthor(params.slug, getLang());
 	// A mid-deploy API (before the sermon fields ship) may omit these; default
 	// them so the page renders instead of throwing during prerender.

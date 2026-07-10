@@ -29,21 +29,18 @@ const asEntry = (code: string): Language => ({
 	native_name: LOCALE_NAMES[code] ?? code
 });
 
+// All configured UI locales, computed once (the set is compile-time constant).
+const AVAILABLE: Language[] = (locales as readonly string[]).map(asEntry);
+
 class Lang {
 	/** All configured UI locales (independent of per-book content availability). */
 	get available(): Language[] {
-		return (locales as readonly string[]).map(asEntry);
+		return AVAILABLE;
 	}
 
 	get current(): string {
 		return getLocale();
 	}
-
-	/** No-op: locale is URL-driven. Kept so existing init() calls still resolve. */
-	init() {}
-
-	/** Content-availability list is no longer used to gate the picker. */
-	setAvailable(_langs: Language[]) {}
 
 	isAvailable(code: string): boolean {
 		return (locales as readonly string[]).includes(code);

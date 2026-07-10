@@ -5,8 +5,7 @@ import type { PageLoad } from './$types';
 // NOTE: this page is prerendered — only PUBLIC data belongs here. Personal
 // blocks (Continue reading, Today's reading) fetch client-side in their
 // components so the baked HTML is the same for everyone.
-export const load: PageLoad = async ({ depends }) => {
-	depends('app:lang');
+export const load: PageLoad = async () => {
 	const [books, authors] = await Promise.all([listBooks(getLang()), listAuthors()]);
 	return {
 		books,

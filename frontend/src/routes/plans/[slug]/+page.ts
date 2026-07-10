@@ -15,7 +15,6 @@ export const entries: EntryGenerator = async () => {
 	}
 };
 
-export const load: PageLoad = async ({ params, depends }) => {
-	depends('app:lang');
+export const load: PageLoad = async ({ params }) => {
 	return { plan: await getPlan(params.slug, getLang()) };
 };

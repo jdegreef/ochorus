@@ -157,8 +157,6 @@ export const listSermons = (language = 'en') =>
 export const getSermon = (slug: string, language = 'en') =>
 	apiFetch<Sermon>(`/api/library/sermons/${slug}/?language=${language}`);
 
-export const listLanguages = () => apiFetch<Language[]>('/api/library/languages/');
-
 export const search = (q: string, language = 'en') =>
 	apiFetch<SearchResponse>(
 		`/api/library/search/?q=${encodeURIComponent(q)}&language=${language}`
