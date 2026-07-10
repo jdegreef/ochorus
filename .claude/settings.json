@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "jdegreef": {
+      "source": {
+        "source": "github",
+        "repo": "jdegreef/claude-plugins"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "founder-kit@jdegreef": true
+  }
+}

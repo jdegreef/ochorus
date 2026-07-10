@@ -13,10 +13,14 @@ class AuthorListSerializer(serializers.ModelSerializer):
     """Authors for the Biographies page, with how many books each has."""
 
     book_count = serializers.IntegerField(source="num_books", read_only=True)
+    bio = serializers.SerializerMethodField()
 
     class Meta:
         model = Author
         fields = ["slug", "name", "bio", "photo_url", "birth_year", "death_year", "book_count"]
+
+    def get_bio(self, obj):
+        return obj.bio_for(self.context.get("language", "en"))
 
 
 class BookListSerializer(serializers.ModelSerializer):
@@ -86,6 +90,8 @@ class AuthorDetailSerializer(serializers.ModelSerializer):
     book_count = serializers.SerializerMethodField()
     books = serializers.SerializerMethodField()
     sermons = serializers.SerializerMethodField()
+    bio = serializers.SerializerMethodField()
+    bio_html = serializers.SerializerMethodField()
 
     class Meta:
         model = Author
@@ -96,6 +102,12 @@ class AuthorDetailSerializer(serializers.ModelSerializer):
 
     def _language(self):
         return self.context.get("language", "en")
+
+    def get_bio(self, obj):
+        return obj.bio_for(self._language())
+
+    def get_bio_html(self, obj):
+        return obj.bio_html_for(self._language())
 
     def _books(self, obj):
         from django.db.models import Count

@@ -35,6 +35,62 @@ class Author(models.Model):
     def __str__(self) -> str:
         return self.name
 
+    def _localized(self, field: str, language: str) -> str:
+        """A translated prose field in ``language``, else the English original.
+
+        Reads ``self.translations.all()`` (not ``.filter()``) so a caller that
+        prefetched translations pays no extra query.
+        """
+        if language and language != self.original_language:
+            tr = next((t for t in self.translations.all() if t.language == language), None)
+            if tr and getattr(tr, field):
+                return getattr(tr, field)
+        return getattr(self, field)
+
+    def bio_for(self, language: str) -> str:
+        """Short bio in ``language``, falling back to the English original."""
+        return self._localized("bio", language)
+
+    def bio_html_for(self, language: str) -> str:
+        """Long-form bio HTML in ``language``, falling back to the English original."""
+        return self._localized("bio_html", language)
+
+
+class AuthorTranslation(models.Model):
+    """A translated copy of an Author's prose (short ``bio`` and/or long-form
+    ``bio_html``) in one language. Kept in a side-table rather than per-language
+    Author rows so the Author FK graph (books, sermons) stays intact — the
+    English Author is canonical and every language points at the same row.
+
+    Populated by the AI-translate pipeline (``manage.py translate_author``).
+    ``reviewed`` tracks whether a native speaker has approved the wording
+    (flipped by ``approve_author_translation``); it records review state but is
+    not yet surfaced in the UI, so a bio is served whether or not it's reviewed.
+    """
+
+    author = models.ForeignKey(
+        Author, on_delete=models.CASCADE, related_name="translations"
+    )
+    language = models.CharField(max_length=10)
+    # Either field may be blank: the short bio and the long bio_html are
+    # translated in separate passes, and the serializer falls back per-field.
+    bio = models.TextField(blank=True)
+    bio_html = models.TextField(blank=True)
+    reviewed = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["author", "language"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["author", "language"], name="uniq_author_translation"
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.author.slug} [{self.language}]"
+
 
 class Book(models.Model):
     class SourceType(models.TextChoices):
