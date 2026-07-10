@@ -155,9 +155,14 @@
 		</ol>
 	</section>
 
-	{#if book.source_url}
+	{#if book.source_url && book.source_type === 'public_domain'}
 		<p class="mt-8 text-[0.8rem] text-muted">
 			Public domain. Source text from
+			<a href={book.source_url} target="_blank" rel="noreferrer">the original edition</a>.
+		</p>
+	{:else if book.source_url}
+		<p class="mt-8 text-[0.8rem] text-muted">
+			Translation of a public-domain original. Source text from
 			<a href={book.source_url} target="_blank" rel="noreferrer">the original edition</a>.
 		</p>
 	{/if}
