@@ -43,7 +43,7 @@ def unapply(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("library", "0021_author_bios_es"),
+        ("library", "0022_unpublish_copyrighted_books"),
     ]
 
     operations = [
