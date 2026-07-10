@@ -33,6 +33,10 @@ else degrades gracefully. Only set them when specifically testing auth/sync.
 ```bash
 cd backend  && uv run python manage.py check        # uv creates .venv on first run
 cd frontend && npm install && npm run prepare       # svelte-kit sync
+# i18n runtime is generated + gitignored ($lib/paraglide). svelte-kit sync does
+# NOT produce it, so `npm run check` fails on a fresh worktree until it exists.
+# `npm run dev`/`build` generate it via the Vite plugin; to type-check first, run:
+npx @inlang/paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide
 ```
 
 ## 4. Database (local SQLite, no services needed)
