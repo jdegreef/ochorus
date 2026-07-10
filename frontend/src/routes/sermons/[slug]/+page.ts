@@ -1,5 +1,6 @@
 import { getSermon, listSermons } from '$lib/library';
 import { getLang } from '$lib/lang.svelte';
+import { orNotFound } from '$lib/loadHelpers';
 import type { EntryGenerator, PageLoad } from './$types';
 
 // Prerender one page per sermon — the slug list comes from the API at build
@@ -16,6 +17,6 @@ export const entries: EntryGenerator = async () => {
 };
 
 export const load: PageLoad = async ({ params }) => {
-	const sermon = await getSermon(params.slug, getLang());
+	const sermon = await orNotFound(() => getSermon(params.slug, getLang()));
 	return { sermon };
 };

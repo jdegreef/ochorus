@@ -1,5 +1,6 @@
 import { getBook, listBooks } from '$lib/library';
 import { getLang } from '$lib/lang.svelte';
+import { orNotFound } from '$lib/loadHelpers';
 import type { EntryGenerator, PageLoad } from './$types';
 
 // Prerender one page per book — the slug list comes from the API at build time.
@@ -9,6 +10,6 @@ export const entries: EntryGenerator = async () => {
 };
 
 export const load: PageLoad = async ({ params }) => {
-	const book = await getBook(params.slug, getLang());
+	const book = await orNotFound(() => getBook(params.slug, getLang()));
 	return { book };
 };

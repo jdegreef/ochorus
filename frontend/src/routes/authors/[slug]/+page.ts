@@ -1,5 +1,6 @@
 import { getAuthor, listAuthors, listBooks } from '$lib/library';
 import { getLang } from '$lib/lang.svelte';
+import { orNotFound } from '$lib/loadHelpers';
 import type { EntryGenerator, PageLoad } from './$types';
 
 // Prerender a page for every author who has books or a biography. The slug set
@@ -17,7 +18,7 @@ export const entries: EntryGenerator = async () => {
 // on the API before the web build runs, else the localized page bakes English
 // and needs a fresh ochorus-web deploy once the API catches up.
 export const load: PageLoad = async ({ params }) => {
-	const author = await getAuthor(params.slug, getLang());
+	const author = await orNotFound(() => getAuthor(params.slug, getLang()));
 	// A mid-deploy API (before the sermon fields ship) may omit these; default
 	// them so the page renders instead of throwing during prerender.
 	return { author: { ...author, sermons: author.sermons ?? [], bio_html: author.bio_html ?? '' } };
