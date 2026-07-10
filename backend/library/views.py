@@ -86,9 +86,15 @@ class AuthorListView(generics.ListAPIView):
     def get_queryset(self):
         return (
             Author.objects.exclude(bio="")
+            .prefetch_related("translations")
             .annotate(num_books=Count("books", filter=Q(books__is_published=True)))
             .order_by("name")
         )
+
+    def get_serializer_context(self):
+        ctx = super().get_serializer_context()
+        ctx["language"] = _language(self.request)
+        return ctx
 
 
 class AuthorDetailView(generics.RetrieveAPIView):
@@ -97,7 +103,9 @@ class AuthorDetailView(generics.RetrieveAPIView):
     serializer_class = AuthorDetailSerializer
 
     def get_object(self):
-        return get_object_or_404(Author, slug=self.kwargs["slug"])
+        return get_object_or_404(
+            Author.objects.prefetch_related("translations"), slug=self.kwargs["slug"]
+        )
 
     def get_serializer_context(self):
         ctx = super().get_serializer_context()

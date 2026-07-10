@@ -140,7 +140,8 @@ async function localized<T>(path: (lang: string) => string, language: string): P
 export const listBooks = (language = 'en') =>
 	apiFetch<BookSummary[]>(`/api/library/books/?language=${language}`);
 
-export const listAuthors = () => apiFetch<AuthorBio[]>('/api/library/authors/');
+export const listAuthors = (language = 'en') =>
+	apiFetch<AuthorBio[]>(`/api/library/authors/?language=${language}`);
 
 export const getAuthor = (slug: string, language = 'en') =>
 	localized<AuthorDetail>((l) => `/api/library/authors/${slug}/?language=${l}`, language);
