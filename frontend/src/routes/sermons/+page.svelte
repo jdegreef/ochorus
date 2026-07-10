@@ -1,6 +1,10 @@
 <script lang="ts">
 	import type { SermonSummary } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
+	import { localizeHref } from '$lib/paraglide/runtime';
+	import { i18n } from '$lib/i18n.svelte';
+
+	const t = i18n.t;
 
 	let { data } = $props();
 	const sermons = $derived<SermonSummary[]>(data.sermons);
@@ -35,10 +39,10 @@
 
 <div class="mx-auto max-w-3xl px-5 py-12">
 	<header class="mb-10">
-		<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">Sermons</p>
-		<h1 class="text-display mb-3">The Preached Word</h1>
+		<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">{t('nav.sermons')}</p>
+		<h1 class="text-display mb-3">{t('sermons.title')}</h1>
 		<p class="text-body text-muted">
-			Classic Christian sermons — free to read, from the writers in our library.
+			{t('sermons.tagline')}
 		</p>
 	</header>
 
@@ -47,13 +51,13 @@
 			{#each grouped as group (group.slug)}
 				<section>
 					<h2 class="mb-3 text-h3">
-						<a href="/authors/{group.slug}" class="!text-text hover:underline">{group.name}</a>
+						<a href={localizeHref(`/authors/${group.slug}`)} class="!text-text hover:underline">{group.name}</a>
 					</h2>
 					<ul class="divide-y divide-border">
 						{#each group.items as sermon (sermon.slug)}
 							<li>
 								<a
-									href="/sermons/{sermon.slug}"
+									href={localizeHref(`/sermons/${sermon.slug}`)}
 									class="flex items-baseline justify-between gap-3 py-3 hover:no-underline"
 								>
 									<span class="flex-1">

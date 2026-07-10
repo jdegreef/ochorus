@@ -1,3 +1,7 @@
+<script lang="ts">
+	import { localizeHref } from '$lib/paraglide/runtime';
+</script>
+
 <svelte:head><title>About Us — Ochorus</title></svelte:head>
 
 <div class="mx-auto max-w-2xl px-5 py-12">
@@ -26,7 +30,7 @@
 	</div>
 
 	<div class="mt-10 flex flex-wrap gap-3">
-		<a href="/books" class="btn btn-primary">Browse the Library</a>
-		<a href="/contact" class="btn btn-ghost">Get in Touch</a>
+		<a href={localizeHref('/books')} class="btn btn-primary">Browse the Library</a>
+		<a href={localizeHref('/contact')} class="btn btn-ghost">Get in Touch</a>
 	</div>
 </div>

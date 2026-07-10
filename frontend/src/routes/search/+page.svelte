@@ -2,6 +2,7 @@
 	import { search, type SearchHit } from '$lib/library';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
+	import { localizeHref } from '$lib/paraglide/runtime';
 
 	const t = i18n.t;
 	let q = $state('');
@@ -68,7 +69,7 @@
 				{#each hits as hit (hit.type === 'sermon' ? 'sermon:' + hit.sermon_slug : hit.book_slug + ':' + hit.chapter_order)}
 					<li class="py-4">
 						{#if hit.type === 'sermon'}
-							<a href="/sermons/{hit.sermon_slug}" class="block hover:no-underline">
+							<a href={localizeHref(`/sermons/${hit.sermon_slug}`)} class="block hover:no-underline">
 								<div class="text-small text-muted">
 									Sermon · {hit.author_name}{#if hit.scripture_ref}
 										· {hit.scripture_ref}{/if}
@@ -81,7 +82,7 @@
 							</a>
 						{:else}
 							<a
-								href="/books/{hit.book_slug}/{hit.chapter_order}"
+								href={localizeHref(`/books/${hit.book_slug}/${hit.chapter_order}`)}
 								class="block hover:no-underline"
 							>
 								<div class="text-small text-muted">

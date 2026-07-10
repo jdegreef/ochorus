@@ -1,343 +1,46 @@
-import { browser } from '$app/environment';
+import * as messages from '$lib/paraglide/messages.js';
+import { getLocale, setLocale, locales } from '$lib/paraglide/runtime';
 
 /**
- * Lightweight UI-string i18n. This is deliberately a small in-repo dictionary
- * rather than a full ICU/Paraglide setup: the *content* (books) is the main
- * multilingual surface, and the chrome has few strings. Adding a locale = adding
- * one entry to `MESSAGES`; missing keys fall back to English, then to the key.
+ * UI-string access, now backed by Paraglide (URL-prefixed locales: /es, /sw, /lg).
  *
- * The active UI locale defaults to the chosen content language but can diverge.
+ * The active locale comes from the URL, not localStorage — so this is a thin
+ * facade over the compiled Paraglide messages: `t('nav.books')` resolves the
+ * `nav_books` message in the URL's locale. Keys are the same dotted names the
+ * app already uses; they're mapped to Paraglide's snake_case at lookup.
+ *
+ * Kept as a facade (rather than rewriting every call site to `m.nav_books()`)
+ * to hold the migration diff down; message functions are param-free.
  */
 
-type Dict = Record<string, string>;
+const toSnake = (key: string): string =>
+	key
+		.replace(/([a-z0-9])([A-Z])/g, '$1_$2')
+		.replace(/\./g, '_')
+		.toLowerCase();
 
-const EN: Dict = {
-	'nav.about': 'About Us',
-	'nav.dashboard': 'Dashboard',
-	'nav.books': 'Books',
-	'nav.sermons': 'Sermons',
-	'nav.biographies': 'Biographies',
-	'nav.contact': 'Contact',
-	'nav.search': 'Search',
-	'reader.focus': 'Focus',
-	'reader.exitFocus': 'Exit focus',
-	'reader.contents': 'Contents',
-	'reader.previous': 'Previous',
-	'reader.next': 'Next',
-	'reader.backToContents': 'Back to contents',
-	'reader.textSettings': 'Text settings',
-	'reader.size': 'Size',
-	'reader.spacing': 'Spacing',
-	'reader.width': 'Width',
-	'reader.typeface': 'Typeface',
-	'reader.copyQuote': 'Copy quote',
-	'reader.share': 'Share',
-	'reader.highlight': 'Highlight',
-	'reader.note': 'Note',
-	'reader.removeHighlight': 'Remove highlight',
-	'reader.definition': 'Definition',
-	'reader.glossarySource': 'Ochorus glossary',
-	'reader.dictionarySource': 'Dictionary',
-	'reader.noDefinition': 'No definition found for this word.',
-	'reader.markOne': 'mark',
-	'reader.markMany': 'marks',
-	'progress.minLeft': 'min left in chapter',
-	'progress.through': 'through book',
-	'spacing.compact': 'Compact',
-	'spacing.normal': 'Normal',
-	'spacing.relaxed': 'Relaxed',
-	'width.narrow': 'Narrow',
-	'width.normal': 'Normal',
-	'width.wide': 'Wide',
-	'font.serif': 'Serif',
-	'font.sans': 'Sans',
-	'font.dyslexic': 'Dyslexic',
-	'search.placeholder': 'Search books, authors, text…',
-	'search.title': 'Search',
-	'search.noResults': 'No results for',
-	'search.prompt': 'Type at least two characters to search.',
-	'pwa.offline': 'Offline — reading from your device',
-	'pwa.ready': 'Ochorus is ready to read offline.',
-	'pwa.dismiss': 'Dismiss',
-	'pwa.updateReady': 'A new version is available.',
-	'pwa.refresh': 'Refresh',
-	'reader.listen': 'Listen',
-	'reader.pause': 'Pause',
-	'reader.resume': 'Resume',
-	'reader.speed': 'Speed',
-	'reader.voice': 'Voice',
-	'reader.stopListening': 'Stop listening',
-	'nav.plans': 'Plans',
-	'plans.title': 'Reading Plans',
-	'plans.tagline': 'A chapter a day, in order — build a habit around a classic.',
-	'plans.none': 'No plans available in this language yet.',
-	'plans.days': 'days',
-	'plans.day': 'Day',
-	'plans.of': 'of',
-	'plans.start': 'Start the plan',
-	'plans.continue': 'Continue',
-	'plans.finished': 'Plan finished',
-	'plans.today': 'Today',
-	'plans.markDone': 'Mark day done',
-	'plans.dayDone': 'Day complete',
-	'plans.todaysReading': "Today's reading",
-	'plans.all': 'All plans',
-	'continue.title': 'Continue reading',
-	'continue.chapter': 'Chapter',
-	'account.title': 'My account',
-	'account.signedInAs': 'Signed in as',
-	'account.syncNote': 'your reading place, highlights and notes sync across devices.',
-	'account.signedOutNote': 'Sign in (top right) to sync your reading across devices.',
-	'account.localNote': 'Your reading progress is saved on this device.',
-	'account.signOut': 'Sign out',
-	'book.aiUnreviewed': 'AI translation — awaiting native review',
-	'book.aiReviewed': 'AI translation — reviewed'
-};
-
-
-// Pilot locale dictionaries (AI-drafted, pending native review — same gate as
-// the book translations; correct freely).
-const ES: Dict = {
-	'nav.about': 'Nosotros',
-	'nav.dashboard': 'Panel',
-	'nav.books': 'Libros',
-	'nav.sermons': 'Sermones',
-	'nav.biographies': 'Biografías',
-	'nav.contact': 'Contacto',
-	'nav.search': 'Buscar',
-	'reader.focus': 'Concentración',
-	'reader.exitFocus': 'Salir de concentración',
-	'reader.contents': 'Índice',
-	'reader.previous': 'Anterior',
-	'reader.next': 'Siguiente',
-	'reader.backToContents': 'Volver al índice',
-	'reader.textSettings': 'Ajustes de texto',
-	'reader.size': 'Tamaño',
-	'reader.spacing': 'Interlineado',
-	'reader.width': 'Ancho',
-	'reader.typeface': 'Tipografía',
-	'reader.copyQuote': 'Copiar cita',
-	'reader.share': 'Compartir',
-	'reader.highlight': 'Subrayar',
-	'reader.note': 'Nota',
-	'spacing.compact': 'Compacto',
-	'spacing.normal': 'Normal',
-	'spacing.relaxed': 'Amplio',
-	'width.narrow': 'Estrecho',
-	'width.normal': 'Normal',
-	'width.wide': 'Ancho',
-	'font.serif': 'Serif',
-	'font.sans': 'Sans',
-	'font.dyslexic': 'Dislexia',
-	'search.placeholder': 'Buscar libros, autores, texto…',
-	'search.title': 'Buscar',
-	'search.noResults': 'Sin resultados para',
-	'search.prompt': 'Escribe al menos dos caracteres para buscar.',
-	'pwa.offline': 'Sin conexión — leyendo desde tu dispositivo',
-	'pwa.ready': 'Ochorus está listo para leer sin conexión.',
-	'pwa.dismiss': 'Cerrar',
-	'pwa.updateReady': 'Hay una nueva versión disponible.',
-	'pwa.refresh': 'Actualizar',
-	'reader.listen': 'Escuchar',
-	'reader.pause': 'Pausar',
-	'reader.resume': 'Reanudar',
-	'reader.speed': 'Velocidad',
-	'reader.voice': 'Voz',
-	'reader.stopListening': 'Dejar de escuchar',
-	'nav.plans': 'Planes',
-	'plans.title': 'Planes de lectura',
-	'plans.tagline': 'Un capítulo al día, en orden — crea un hábito con un clásico.',
-	'plans.none': 'Aún no hay planes disponibles en este idioma.',
-	'plans.days': 'días',
-	'plans.day': 'Día',
-	'plans.of': 'de',
-	'plans.start': 'Comenzar el plan',
-	'plans.continue': 'Continuar',
-	'plans.finished': 'Plan terminado',
-	'plans.today': 'Hoy',
-	'plans.markDone': 'Marcar día como leído',
-	'plans.dayDone': 'Día completado',
-	'plans.todaysReading': 'Lectura de hoy',
-	'plans.all': 'Todos los planes',
-	'continue.title': 'Seguir leyendo',
-	'continue.chapter': 'Capítulo',
-	'account.title': 'Mi cuenta',
-	'account.signedInAs': 'Sesión iniciada como',
-	'account.syncNote': 'tu lugar de lectura, subrayados y notas se sincronizan entre dispositivos.',
-	'account.signedOutNote': 'Inicia sesión (arriba a la derecha) para sincronizar tu lectura entre dispositivos.',
-	'account.localNote': 'Tu progreso de lectura se guarda en este dispositivo.',
-	'account.signOut': 'Cerrar sesión',
-	'book.aiUnreviewed': 'Traducción por IA — pendiente de revisión',
-	'book.aiReviewed': 'Traducción por IA — revisada'
-};
-
-const SW: Dict = {
-	'nav.about': 'Kutuhusu',
-	'nav.dashboard': 'Dashibodi',
-	'nav.books': 'Vitabu',
-	'nav.sermons': 'Mahubiri',
-	'nav.biographies': 'Wasifu',
-	'nav.contact': 'Wasiliana Nasi',
-	'nav.search': 'Tafuta',
-	'reader.focus': 'Makini',
-	'reader.exitFocus': 'Toka hali ya makini',
-	'reader.contents': 'Yaliyomo',
-	'reader.previous': 'Iliyotangulia',
-	'reader.next': 'Inayofuata',
-	'reader.backToContents': 'Rudi kwenye yaliyomo',
-	'reader.textSettings': 'Mipangilio ya maandishi',
-	'reader.size': 'Ukubwa',
-	'reader.spacing': 'Nafasi',
-	'reader.width': 'Upana',
-	'reader.typeface': 'Fonti',
-	'reader.copyQuote': 'Nakili nukuu',
-	'reader.share': 'Shiriki',
-	'reader.highlight': 'Tia alama',
-	'reader.note': 'Kumbukumbu',
-	'spacing.compact': 'Finyu',
-	'spacing.normal': 'Kawaida',
-	'spacing.relaxed': 'Wazi',
-	'width.narrow': 'Nyembamba',
-	'width.normal': 'Kawaida',
-	'width.wide': 'Pana',
-	'font.serif': 'Serif',
-	'font.sans': 'Sans',
-	'font.dyslexic': 'Dyslexic',
-	'search.placeholder': 'Tafuta vitabu, waandishi, maandishi…',
-	'search.title': 'Tafuta',
-	'search.noResults': 'Hakuna matokeo ya',
-	'search.prompt': 'Andika angalau herufi mbili ili kutafuta.',
-	'pwa.offline': 'Nje ya mtandao — unasoma kutoka kifaa chako',
-	'pwa.ready': 'Ochorus iko tayari kusomwa bila mtandao.',
-	'pwa.dismiss': 'Funga',
-	'pwa.updateReady': 'Toleo jipya linapatikana.',
-	'pwa.refresh': 'Pakia upya',
-	'reader.listen': 'Sikiliza',
-	'reader.pause': 'Simamisha',
-	'reader.resume': 'Endelea',
-	'reader.speed': 'Kasi',
-	'reader.voice': 'Sauti',
-	'reader.stopListening': 'Acha kusikiliza',
-	'nav.plans': 'Mipango',
-	'plans.title': 'Mipango ya Kusoma',
-	'plans.tagline': 'Sura moja kwa siku, kwa mpangilio — jenga mazoea na kitabu cha kale.',
-	'plans.none': 'Hakuna mipango inayopatikana kwa lugha hii bado.',
-	'plans.days': 'siku',
-	'plans.day': 'Siku',
-	'plans.of': 'kati ya',
-	'plans.start': 'Anza mpango',
-	'plans.continue': 'Endelea',
-	'plans.finished': 'Mpango umekamilika',
-	'plans.today': 'Leo',
-	'plans.markDone': 'Weka siku imekamilika',
-	'plans.dayDone': 'Siku imekamilika',
-	'plans.todaysReading': 'Somo la leo',
-	'plans.all': 'Mipango yote',
-	'continue.title': 'Endelea kusoma',
-	'continue.chapter': 'Sura',
-	'account.title': 'Akaunti yangu',
-	'account.signedInAs': 'Umeingia kama',
-	'account.syncNote': 'mahali unaposoma, alama na kumbukumbu zako zinasawazishwa kati ya vifaa.',
-	'account.signedOutNote': 'Ingia (juu kulia) ili kusawazisha usomaji wako kati ya vifaa.',
-	'account.localNote': 'Maendeleo yako ya kusoma yanahifadhiwa kwenye kifaa hiki.',
-	'account.signOut': 'Toka',
-	'book.aiUnreviewed': 'Tafsiri ya AI — inasubiri mapitio ya mzawa',
-	'book.aiReviewed': 'Tafsiri ya AI — imepitiwa'
-};
-
-const LG: Dict = {
-	'nav.about': 'Ebitukwatako',
-	'nav.dashboard': 'Dashibodi',
-	'nav.books': 'Ebitabo',
-	'nav.sermons': 'Okubuulira',
-	'nav.biographies': 'Ebyafaayo',
-	'nav.contact': 'Tukwatageko',
-	'nav.search': 'Noonya',
-	'reader.focus': 'Okwessimbu',
-	'reader.exitFocus': 'Va mu kwessimbu',
-	'reader.contents': 'Ebirimu',
-	'reader.previous': 'Ekyasooka',
-	'reader.next': 'Ekiddako',
-	'reader.backToContents': 'Ddayo eri ebirimu',
-	'reader.textSettings': 'Entegeka y’ebiwandiiko',
-	'reader.size': 'Obunene',
-	'reader.spacing': 'Amabanga',
-	'reader.width': 'Obugazi',
-	'reader.typeface': 'Ennukuta',
-	'reader.copyQuote': 'Koppa ekigambo',
-	'reader.share': 'Gabana',
-	'reader.highlight': 'Teekako akabonero',
-	'reader.note': 'Ekigambo ky’ojjukira',
-	'spacing.compact': 'Kafunda',
-	'spacing.normal': 'Ekya bulijjo',
-	'spacing.relaxed': 'Kagazi',
-	'width.narrow': 'Kafunda',
-	'width.normal': 'Ekya bulijjo',
-	'width.wide': 'Kagazi',
-	'font.serif': 'Serif',
-	'font.sans': 'Sans',
-	'font.dyslexic': 'Dyslexic',
-	'search.placeholder': 'Noonya ebitabo, abawandiisi, ebiwandiiko…',
-	'search.title': 'Noonya',
-	'search.noResults': 'Tewali bizuuliddwa ku',
-	'search.prompt': 'Wandiika waakiri ennukuta bbiri okunoonya.',
-	'pwa.offline': 'Toli ku mutimbagano — osoma okuva ku kyuma kyo',
-	'pwa.ready': 'Ochorus yeetegese okusomebwa nga toli ku mutimbagano.',
-	'pwa.dismiss': 'Ggalawo',
-	'pwa.updateReady': 'Waliwo enkyusa empya.',
-	'pwa.refresh': 'Zza buggya',
-	'reader.listen': 'Wuliriza',
-	'reader.pause': 'Yimiriza',
-	'reader.resume': 'Weyongere',
-	'reader.speed': 'Sipiidi',
-	'reader.voice': 'Eddoboozi',
-	'reader.stopListening': 'Lekera awo okuwuliriza',
-	'nav.plans': 'Entegeka',
-	'plans.title': 'Entegeka z’Okusoma',
-	'plans.tagline': 'Essuula emu buli lunaku, mu nsengeka — zimba akalombolombo n’ekitabo eky’edda.',
-	'plans.none': 'Tewali ntegeka ziriwo mu lulimi luno okutuusa kaakano.',
-	'plans.days': 'ennaku',
-	'plans.day': 'Olunaku',
-	'plans.of': 'ku',
-	'plans.start': 'Tandika entegeka',
-	'plans.continue': 'Weyongere',
-	'plans.finished': 'Entegeka ewedde',
-	'plans.today': 'Leero',
-	'plans.markDone': 'Teeka olunaku nga luwedde',
-	'plans.dayDone': 'Olunaku luwedde',
-	'plans.todaysReading': 'Okusoma kwa leero',
-	'plans.all': 'Entegeka zonna',
-	'continue.title': 'Weyongere okusoma',
-	'continue.chapter': 'Essuula',
-	'account.title': 'Akaunti yange',
-	'account.signedInAs': 'Oyingidde nga',
-	'account.syncNote': 'w’osoma, obubonero n’ebigambo byo bikwatagana ku byuma byonna.',
-	'account.signedOutNote': 'Yingira (waggulu ku ddyo) okukwataganya okusoma kwo ku byuma byonna.',
-	'account.localNote': 'Okusoma kwo kuterekebwa ku kyuma kino.',
-	'account.signOut': 'Fuluma',
-	'book.aiUnreviewed': 'Okuvvuunula kwa AI — kulindirira okukebera kw’omuzaaliranwa',
-	'book.aiReviewed': 'Okuvvuunula kwa AI — kukeberedwa'
-};
-
-const MESSAGES: Record<string, Dict> = { en: EN, es: ES, sw: SW, lg: LG };
-
-const KEY = 'ochorus:ui-locale';
+type MessageFn = () => string;
+const dict = messages as unknown as Record<string, MessageFn>;
 
 class I18n {
-	locale = $state('en');
-
-	init(fallback = 'en') {
-		if (browser) this.locale = localStorage.getItem(KEY) || fallback;
+	/** Current locale, read from the URL via Paraglide. */
+	get locale(): string {
+		return getLocale();
 	}
 
+	/** No-op: the locale is URL-driven and resolved per request/navigation. */
+	init(_fallback = 'en') {}
+
+	/** Switch locale — navigates to the locale-prefixed URL (full reload). */
 	set(locale: string) {
-		this.locale = locale;
-		if (browser) localStorage.setItem(KEY, locale);
+		if ((locales as readonly string[]).includes(locale)) {
+			setLocale(locale as (typeof locales)[number]);
+		}
 	}
 
 	t = (key: string): string => {
-		const dict = MESSAGES[this.locale] ?? EN;
-		return dict[key] ?? EN[key] ?? key;
+		const fn = dict[toSnake(key)];
+		return fn ? fn() : key;
 	};
 }
 

@@ -2,6 +2,10 @@
 	import type { AuthorDetail } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumb } from '$lib/seo';
+	import { i18n } from '$lib/i18n.svelte';
+	import { localizeHref } from '$lib/paraglide/runtime';
+
+	const t = i18n.t;
 
 	let { data } = $props();
 	const author = $derived<AuthorDetail>(data.author);
@@ -63,9 +67,9 @@
 <div class="mx-auto max-w-3xl px-5 py-12">
 	<!-- Breadcrumb -->
 	<nav class="mb-6 flex flex-wrap items-center gap-1.5 text-small text-muted" aria-label="Breadcrumb">
-		<a href="/" class="hover:text-text">Home</a>
+		<a href={localizeHref('/')} class="hover:text-text">{t('common.home')}</a>
 		<span>›</span>
-		<a href="/biographies" class="hover:text-text">Biographies</a>
+		<a href={localizeHref('/biographies')} class="hover:text-text">{t('bios.eyebrow')}</a>
 		<span>›</span>
 		<span class="text-text">{author.name}</span>
 	</nav>
@@ -106,12 +110,12 @@
 	{#if author.books.length}
 		<section class="mt-14">
 			<h2 class="mb-4 text-h3">
-				Books by {author.name}
+				{t('author.booksBy')} {author.name}
 				<span class="text-small font-normal text-muted">({author.books.length})</span>
 			</h2>
 			<div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
 				{#each author.books as book (book.slug)}
-					<a href="/books/{book.slug}" class="group block hover:no-underline">
+					<a href={localizeHref(`/books/${book.slug}`)} class="group block hover:no-underline">
 						{#if book.cover_url}
 							<img
 								src={book.cover_url}
@@ -126,7 +130,10 @@
 							></div>
 						{/if}
 						<div class="mt-2 text-small font-medium text-text">{book.title}</div>
-						<div class="text-[0.8rem] text-muted">{book.chapter_count} chapters</div>
+						<div class="text-[0.8rem] text-muted">
+							{book.chapter_count}
+							{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}
+						</div>
 					</a>
 				{/each}
 			</div>
@@ -137,14 +144,14 @@
 	{#if author.sermons.length}
 		<section class="mt-14">
 			<h2 class="mb-4 text-h3">
-				Sermons by {author.name}
+				{t('author.sermonsBy')} {author.name}
 				<span class="text-small font-normal text-muted">({author.sermons.length})</span>
 			</h2>
 			<ul class="divide-y divide-border">
 				{#each author.sermons as sermon (sermon.slug)}
 					<li>
 						<a
-							href="/sermons/{sermon.slug}"
+							href={localizeHref(`/sermons/${sermon.slug}`)}
 							class="flex items-baseline justify-between gap-3 py-3 hover:no-underline"
 						>
 							<span class="flex-1">
@@ -164,7 +171,7 @@
 	{/if}
 
 	{#if !author.books.length && !author.sermons.length}
-		<p class="mt-10 text-body text-muted">No books or sermons in the library yet for this writer.</p>
+		<p class="mt-10 text-body text-muted">{t('author.empty')}</p>
 	{/if}
 </div>
 

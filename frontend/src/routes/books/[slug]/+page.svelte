@@ -5,6 +5,7 @@
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumb } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
+	import { localizeHref } from '$lib/paraglide/runtime';
 
 	let { data } = $props();
 	const t = i18n.t;
@@ -69,7 +70,7 @@
 </svelte:head>
 
 <div class="mx-auto max-w-3xl px-5 py-8">
-	<a href="/" class="text-small text-muted">← Library</a>
+	<a href={localizeHref('/')} class="text-small text-muted">← {t('common.library')}</a>
 
 	<header class="mt-5 flex flex-col gap-5 sm:flex-row sm:items-start">
 		{#if book.cover_url}
@@ -93,7 +94,7 @@
 			<h1 class="text-h1">{book.title}</h1>
 			{#if book.subtitle}<p class="mt-1 text-h3 text-muted">{book.subtitle}</p>{/if}
 			<p class="mt-2 text-body">
-				<a href="/authors/{book.author.slug}" class="text-accent hover:underline"
+				<a href={localizeHref(`/authors/${book.author.slug}`)} class="text-accent hover:underline"
 					>{book.author.name}</a
 				>{#if years}<span class="text-muted"> · {years}</span>{/if}
 			</p>
@@ -114,20 +115,23 @@
 
 			<div class="mt-5 flex flex-wrap items-center gap-3">
 				{#if resumeOrder && resumeOrder > 1}
-					<a href="/books/{book.slug}/{resumeOrder}" class="btn btn-primary">
-						Continue · ch. {resumeOrder}
+					<a href={localizeHref(`/books/${book.slug}/${resumeOrder}`)} class="btn btn-primary">
+						{t('book.continueCh')} {resumeOrder}
 					</a>
-					<a href="/books/{book.slug}/1" class="btn btn-ghost">Start over</a>
+					<a href={localizeHref(`/books/${book.slug}/1`)} class="btn btn-ghost">{t('book.startOver')}</a>
 				{:else}
-					<a href="/books/{book.slug}/1" class="btn btn-primary">Begin reading</a>
+					<a href={localizeHref(`/books/${book.slug}/1`)} class="btn btn-primary">{t('book.beginReading')}</a>
 				{/if}
 				{#if book.pdf_url}
 					<a href={book.pdf_url} class="btn btn-ghost" target="_blank" rel="noreferrer">
-						Download PDF
+						{t('book.downloadPdf')}
 					</a>
 				{/if}
 				<span class="text-small text-muted">
-					{book.chapter_count} chapters · {readingTime(totalWords)}
+					{book.chapter_count}
+					{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')} · {readingTime(
+						totalWords
+					)}
 				</span>
 			</div>
 		</div>
@@ -138,12 +142,12 @@
 	{/if}
 
 	<section class="mt-9">
-		<h2 class="mb-3 text-h3">Contents</h2>
+		<h2 class="mb-3 text-h3">{t('reader.contents')}</h2>
 		<ol class="divide-y divide-border">
 			{#each book.chapters as ch (ch.order)}
 				<li>
 					<a
-						href="/books/{book.slug}/{ch.order}"
+						href={localizeHref(`/books/${book.slug}/${ch.order}`)}
 						class="flex items-baseline gap-3 py-2.5 hover:no-underline"
 					>
 						<span class="w-6 shrink-0 text-small text-muted">{ch.order}</span>
@@ -157,13 +161,13 @@
 
 	{#if book.source_url && book.source_type === 'public_domain'}
 		<p class="mt-8 text-[0.8rem] text-muted">
-			Public domain. Source text from
-			<a href={book.source_url} target="_blank" rel="noreferrer">the original edition</a>.
+			{t('book.publicDomain')}
+			<a href={book.source_url} target="_blank" rel="noreferrer">{t('book.originalEdition')}</a>.
 		</p>
 	{:else if book.source_url}
 		<p class="mt-8 text-[0.8rem] text-muted">
-			Translation of a public-domain original. Source text from
-			<a href={book.source_url} target="_blank" rel="noreferrer">the original edition</a>.
+			{t('book.translationOf')}
+			<a href={book.source_url} target="_blank" rel="noreferrer">{t('book.originalEdition')}</a>.
 		</p>
 	{/if}
 </div>

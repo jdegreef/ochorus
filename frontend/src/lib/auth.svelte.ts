@@ -4,7 +4,6 @@ import { authEnabled, supabase } from './supabase';
 import { readerPrefs } from './readerPrefs.svelte';
 import { theme } from './theme.svelte';
 import { lang } from './lang.svelte';
-import { i18n } from './i18n.svelte';
 import { readingSync } from './readingSync';
 
 export interface Profile {
@@ -138,9 +137,10 @@ class Auth {
 			// Only adopt the saved locale if it's a language we still offer content
 			// in — otherwise a stale profile locale (from when more languages were
 			// listed) would re-wedge the reader on every sign-in.
+			// Cross-device restore: navigate to the saved locale's URL prefix if it
+			// differs from the current one (lang.set is a no-op when they match).
 			if (p.locale && lang.isAvailable(p.locale)) {
 				lang.set(p.locale);
-				i18n.set(p.locale);
 			}
 		} catch {
 			/* first-time profile or API down — keep local prefs */

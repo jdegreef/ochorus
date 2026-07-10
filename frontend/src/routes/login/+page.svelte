@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import { auth } from '$lib/auth.svelte';
+	import { localizeHref } from '$lib/paraglide/runtime';
 
 	type Mode = 'signin' | 'signup' | 'reset';
 
@@ -15,7 +16,9 @@
 	let resentMsg = $state<string | null>(null);
 	let routed = false;
 
-	const redirectTarget = $derived($page.url.searchParams.get('redirect') || '/');
+	// The redirect param is captured from the (already locale-prefixed) URL, so
+	// it needs no re-localizing; only the fallback home does.
+	const redirectTarget = $derived($page.url.searchParams.get('redirect') || localizeHref('/'));
 
 	// Once a session exists (password sign-in, or returning from a magic/OAuth
 	// redirect), leave the login page for wherever the user was headed.
@@ -113,7 +116,7 @@
 			</div>
 		</div>
 		<p class="mt-4 text-center text-small">
-			<a href="/login" onclick={() => (sent = null)} class="text-accent">← Back to sign in</a>
+			<a href={localizeHref('/login')} onclick={() => (sent = null)} class="text-accent">← Back to sign in</a>
 		</p>
 	{:else}
 		<div class="mb-6 text-center">

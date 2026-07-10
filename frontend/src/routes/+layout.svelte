@@ -5,11 +5,12 @@
 	import { theme } from '$lib/theme.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
+	import { browser } from '$app/environment';
 	import { lang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { pwa } from '$lib/pwa.svelte';
-	import { listLanguages } from '$lib/library';
+	import { localizeHref, getLocale, getTextDirection } from '$lib/paraglide/runtime';
 	import LanguagePicker from '$lib/components/LanguagePicker.svelte';
 	import AccountMenu from '$lib/components/AccountMenu.svelte';
 	import PwaToasts from '$lib/components/PwaToasts.svelte';
@@ -21,17 +22,18 @@
 	let { children } = $props();
 	const t = i18n.t;
 
-	onMount(async () => {
+	onMount(() => {
 		theme.init();
-		lang.init();
-		i18n.init(lang.current);
 		readerPrefs.init();
 		auth.init();
 		pwa.init();
-		try {
-			lang.setAvailable(await listLanguages());
-		} catch {
-			/* keep the English default if the API is unreachable */
+	});
+
+	// Reflect the URL locale on <html> for accessibility + correct hyphenation.
+	$effect(() => {
+		if (browser) {
+			document.documentElement.lang = getLocale();
+			document.documentElement.dir = getTextDirection(getLocale());
 		}
 	});
 
@@ -40,7 +42,6 @@
 		// touch the values so the effect tracks them
 		void theme.current;
 		void readerPrefs.scale;
-		void lang.current;
 		if (auth.user) auth.pushPrefs();
 	});
 
@@ -55,8 +56,10 @@
 		{ href: '/search', label: t('nav.search'), icon: 'search' }
 	]);
 
+	// The reroute hook strips the locale prefix before routing, so page.route.id
+	// is the canonical path ("/books", "/books/[slug]") — compare against that.
 	const isActive = (href: string) =>
-		href === '/' ? $page.url.pathname === '/' : $page.url.pathname.startsWith(href);
+		href === '/' ? $page.route.id === '/' : ($page.route.id?.startsWith(href) ?? false);
 
 	// Preferences dropdown (gear) — groups the secondary controls (theme,
 	// language) so the primary destinations stay dominant. Mirrors Take Root.
@@ -84,7 +87,7 @@
 	{#if !readerUi.focus}
 		<nav class="appnav">
 			<div class="appnav-inner">
-			<a class="brand" href="/"><BrandMark size={24} /><span>Ochorus</span></a>
+			<a class="brand" href={localizeHref('/')}><BrandMark size={24} /><span>Ochorus</span></a>
 			<button
 				class="navtoggle"
 				aria-label="Menu"
@@ -104,7 +107,7 @@
 				<div class="navlinks">
 					{#each NAV as item (item.href)}
 						<a
-							href={item.href}
+							href={localizeHref(item.href)}
 							class:active={isActive(item.href)}
 							aria-current={isActive(item.href) ? 'page' : undefined}
 							onclick={() => (navOpen = false)}><Icon name={item.icon} />{item.label}</a
@@ -125,7 +128,7 @@
 						{#if prefsOpen}
 							<div class="account-menu prefs-menu" role="group" aria-label="Preferences">
 								<div class="prefs-row">
-									<span class="prefs-label">Theme</span>
+									<span class="prefs-label">{t('nav.theme')}</span>
 									<button
 										class="prefs-toggle"
 										onclick={() => theme.toggle()}
@@ -136,12 +139,12 @@
 									</button>
 								</div>
 								<div class="prefs-row">
-									<span class="prefs-label">Reading width</span>
+									<span class="prefs-label">{t('nav.readingWidth')}</span>
 									<WidthControl />
 								</div>
 								{#if lang.available.length > 1}
 									<div class="prefs-row">
-										<span class="prefs-label">Language</span>
+										<span class="prefs-label">{t('nav.language')}</span>
 										<LanguagePicker />
 									</div>
 								{/if}
@@ -167,28 +170,28 @@
 						<BrandMark size={22} /><span>Ochorus</span>
 					</div>
 					<p class="mt-2 max-w-xs text-small text-muted">
-						Equipping people with classic Christian books — free to read, in your language.
+						{t('footer.tagline')}
 					</p>
 				</div>
 				<div>
-					<h3 class="mb-3 text-small font-semibold uppercase tracking-wider text-text">Explore</h3>
+					<h3 class="mb-3 text-small font-semibold uppercase tracking-wider text-text">{t('footer.explore')}</h3>
 					<ul class="space-y-2 text-small text-muted">
-						<li><a href="/books" class="hover:text-text">{t('nav.books')}</a></li>
-						<li><a href="/plans" class="hover:text-text">{t('nav.plans')}</a></li>
-						<li><a href="/sermons" class="hover:text-text">{t('nav.sermons')}</a></li>
-						<li><a href="/biographies" class="hover:text-text">{t('nav.biographies')}</a></li>
-						<li><a href="/about" class="hover:text-text">{t('nav.about')}</a></li>
-						<li><a href="/contact" class="hover:text-text">{t('nav.contact')}</a></li>
+						<li><a href={localizeHref('/books')} class="hover:text-text">{t('nav.books')}</a></li>
+						<li><a href={localizeHref('/plans')} class="hover:text-text">{t('nav.plans')}</a></li>
+						<li><a href={localizeHref('/sermons')} class="hover:text-text">{t('nav.sermons')}</a></li>
+						<li><a href={localizeHref('/biographies')} class="hover:text-text">{t('nav.biographies')}</a></li>
+						<li><a href={localizeHref('/about')} class="hover:text-text">{t('nav.about')}</a></li>
+						<li><a href={localizeHref('/contact')} class="hover:text-text">{t('nav.contact')}</a></li>
 					</ul>
 				</div>
 				<div>
-					<h3 class="mb-3 text-small font-semibold uppercase tracking-wider text-text">Newsletter</h3>
+					<h3 class="mb-3 text-small font-semibold uppercase tracking-wider text-text">{t('footer.newsletter')}</h3>
 					<p class="text-small text-muted">
-						Reach us at
+						{t('footer.reachUs')}
 						<a href="mailto:support@ochorus.com" class="text-accent">support@ochorus.com</a>.
 					</p>
 					<p class="mt-4 text-[0.78rem] text-muted">
-						A ministry since 2021 · Victoria BC, Canada · Kampala, Uganda
+						{t('footer.ministry')}
 					</p>
 				</div>
 			</div>

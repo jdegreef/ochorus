@@ -3,6 +3,7 @@
 	import type { BookSummary } from '$lib/library';
 	import { allProgress } from '$lib/progress';
 	import { i18n } from '$lib/i18n.svelte';
+	import { localizeHref } from '$lib/paraglide/runtime';
 
 	/**
 	 * In-progress books with a progress bar and a resume link. Progress comes
@@ -47,7 +48,7 @@
 		<div class="grid gap-4 sm:grid-cols-2" class:lg:grid-cols-4={limit >= 4}>
 			{#each items as item (item.book.slug)}
 				<a
-					href="/books/{item.book.slug}/{item.order}"
+					href={localizeHref(`/books/${item.book.slug}/${item.order}`)}
 					class="group flex gap-4 rounded-card border border-border p-4 hover:bg-surface-2 hover:no-underline"
 				>
 					{#if item.book.cover_url}

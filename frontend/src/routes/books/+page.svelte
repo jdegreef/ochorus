@@ -1,6 +1,10 @@
 <script lang="ts">
 	import type { BookSummary } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
+	import { localizeHref } from '$lib/paraglide/runtime';
+	import { i18n } from '$lib/i18n.svelte';
+
+	const t = i18n.t;
 
 	let { data } = $props();
 	const books = $derived<BookSummary[]>(data.books);
@@ -42,9 +46,9 @@
 
 <div class="mx-auto max-w-5xl px-5 py-10">
 	<header class="mb-8">
-		<h1 class="text-display mb-2">Books</h1>
+		<h1 class="text-display mb-2">{t('nav.books')}</h1>
 		<p class="text-body text-muted">
-			Classic Christian literature, free to read and beautifully set.
+			{t('books.tagline')}
 		</p>
 	</header>
 
@@ -53,7 +57,7 @@
 			<h2 class="mb-4 text-h3 text-muted">{group.name}</h2>
 			<div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
 				{#each group.books as book (book.slug)}
-					<a href="/books/{book.slug}" class="group block hover:no-underline" data-testid="book-card">
+					<a href={localizeHref(`/books/${book.slug}`)} class="group block hover:no-underline" data-testid="book-card">
 						{#if book.cover_url}
 							<img
 								src={book.cover_url}
@@ -79,7 +83,10 @@
 						{/if}
 						<div class="mt-2 px-0.5">
 							<div class="text-small font-medium text-text">{book.title}</div>
-							<div class="text-[0.8rem] text-muted">{book.chapter_count} chapters</div>
+							<div class="text-[0.8rem] text-muted">
+								{book.chapter_count}
+								{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}
+							</div>
 						</div>
 					</a>
 				{/each}
