@@ -47,6 +47,11 @@ _SQUOTE = re.compile(r"(?<![A-Za-z])'|'(?![A-Za-z])")
 # OF CHRIST"); the rest of the library is Title Case. A roman-numeral prefix and
 # a set of lowercase-in-title connector words for the caps→title-case pass.
 _ROMAN_PREFIX = re.compile(r"^[IVXLCDM]+\.\s+")
+# A whole-token roman numeral ("II", "IV", "CXIX", "XLV") — used to KEEP such a
+# word uppercase through the caps→title-case pass so scripture/section headings
+# don't mangle ("II CORINTHIANS" -> "II Corinthians", not "Ii Corinthians").
+_ROMAN_WORD = re.compile(r"M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})", re.I)
+_TITLE_EDGE = "\"“”'‘’.,;:?!()[]"
 _TITLE_SMALL = {
     "a", "an", "and", "as", "at", "but", "by", "for", "if", "in", "into", "nor",
     "of", "on", "or", "the", "to", "up", "with",
@@ -55,21 +60,30 @@ _TITLE_SMALL = {
 
 def _cap_first(s: str) -> str:
     """Uppercase the first alphabetic character ("in Him" -> "In Him", "'once'"
-    -> "'Once'"), leaving everything else — apostrophes, quotes — untouched."""
+    -> "'Once'"), leaving everything else — apostrophes, quotes — untouched.
+    A letter that follows a digit is left alone so ordinals stay lowercase
+    ("1st" -> "1st", not "1St")."""
     for i, ch in enumerate(s):
         if ch.isalpha():
+            if i > 0 and s[i - 1].isdigit():
+                return s
             return s[:i] + ch.upper() + s[i + 1:]
     return s
 
 
 def _titlecase_caps(s: str) -> str:
     """Title-case an ALL-CAPS heading, keeping connector words lowercase and
-    preserving apostrophes ("CHRIST'S" -> "Christ's", not "Christ'S")."""
+    preserving apostrophes ("CHRIST'S" -> "Christ's", not "Christ'S") and
+    roman-numeral words ("PSALM CXIX" -> "Psalm CXIX")."""
     words = s.split()
     out: list[str] = []
     for i, w in enumerate(words):
+        stripped = w.strip(_TITLE_EDGE)
+        if len(stripped) >= 2 and _ROMAN_WORD.fullmatch(stripped):
+            out.append(w)  # keep roman numerals uppercase
+            continue
         low = w.lower()
-        core = low.strip("\"“”'‘’.,;:?!()[]")
+        core = low.strip(_TITLE_EDGE)
         if 0 < i < len(words) - 1 and core in _TITLE_SMALL:
             out.append(low)
         else:
@@ -124,20 +138,22 @@ def clean_title(raw: str) -> str:
     # A single trailing full stop is typographic noise in a title ("Adoration.",
     # "Love That Passeth Knowledge ."); ellipses are left alone.
     t = re.sub(r"(?<!\.)\s*\.$", "", t)
-    # Drop a leading roman-numeral chapter prefix ("VI. Perfect through
-    # sufferings" -> "Perfect through sufferings"), but never a person's initials
-    # ("D. L. Moody") — require a multi-letter word, not another initial, to follow.
-    m = _ROMAN_PREFIX.match(t)
-    if m and re.match(r"[A-Za-z]{2,}", t[m.end():]):
-        t = t[m.end():]
-    # ALL-CAPS CCEL heading -> Title Case. Gated on every letter being uppercase,
-    # so mixed-case and already-clean titles are never touched; a bare roman
-    # numeral ("IV") is left alone rather than mangled to "Iv".
-    if (
-        any(c.isalpha() for c in t)
-        and all(c.isupper() for c in t if c.isalpha())
-        and not re.fullmatch(r"[IVXLCDM]+", t)
-    ):
+    is_allcaps = any(c.isalpha() for c in t) and all(c.isupper() for c in t if c.isalpha())
+    # Drop a leading roman-numeral chapter prefix ("II. THE DIGNITY OF CHRIST" ->
+    # "THE DIGNITY OF CHRIST"), but ONLY on ALL-CAPS CCEL-style headings. A
+    # mixed-case numbered title (Murray's "I. Humility: The Glory of the
+    # Creature"), a Bible book ("II. Timothy"), and a person's initials
+    # ("D. L. Moody") must keep the leading token — so require both all-caps and a
+    # multi-letter (non-initial) word after the numeral.
+    if is_allcaps:
+        m = _ROMAN_PREFIX.match(t)
+        # Strip unless what follows is another initial ("L." in "D. L. MOODY") —
+        # an article/word like "A" in "IX. A WARNING" should still be stripped.
+        if m and not re.match(r"[A-Za-z]\.", t[m.end():]):
+            t = t[m.end():]
+    # ALL-CAPS heading -> Title Case. A bare roman numeral ("IV") is left alone
+    # rather than mangled to "Iv"; roman-numeral words inside are preserved.
+    if is_allcaps and not re.fullmatch(r"[IVXLCDM]+", t):
         t = _titlecase_caps(t)
     return _cap_first(t)
 
@@ -211,10 +227,14 @@ def upsert_book(entry: BookEntry, sections: list[tuple[str, str]], language: str
         order += 1
         body = strip_trailing_pagenum(body)
         body = apply_body_corrections(entry.slug, order, body)
+        # A per-book override is normalised the same way import_ochorus does, so
+        # the same declared correction yields the same stored title on any source.
+        override = title_overrides.get(order)
+        final_title = clean_title(override) if override else (title or f"Chapter {order}")
         Chapter.objects.create(
             book=book,
             order=order,
-            title=(title_overrides.get(order) or title or f"Chapter {order}")[:300],
+            title=final_title[:300],
             body_html=body,
             word_count=word_count(body),
         )

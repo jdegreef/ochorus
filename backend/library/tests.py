@@ -20,8 +20,24 @@ class CleanTitleTests(TestCase):
             "Christ's Merciful and Faithful Help",
         )
 
-    def test_strips_roman_prefix_from_mixed_case_title(self):
-        self.assertEqual(clean_title("VI. “Perfect through sufferings”"), "Perfect through sufferings")
+    def test_strips_roman_prefix_only_from_allcaps_heading(self):
+        # ALL-CAPS CCEL heading: the redundant numeral is dropped.
+        self.assertEqual(clean_title("IV. DRIFTING"), "Drifting")
+        # Mixed-case numbered title (Murray's Humility) keeps its numeral, so its
+        # chapter numbering survives a re-import.
+        self.assertEqual(
+            clean_title("I. Humility: The Glory of the Creature"),
+            "I. Humility: The Glory of the Creature",
+        )
+        # A Bible-book title likewise keeps its numeral.
+        self.assertEqual(clean_title("II. Timothy"), "II. Timothy")
+
+    def test_preserves_roman_numeral_words_in_allcaps(self):
+        self.assertEqual(clean_title("II CORINTHIANS"), "II Corinthians")
+        self.assertEqual(clean_title("PSALM CXIX"), "Psalm CXIX")
+
+    def test_ordinals_not_miscapitalised(self):
+        self.assertEqual(clean_title("THE 1ST AWAKENING"), "The 1st Awakening")
 
     def test_does_not_eat_personal_initials(self):
         # "D." is a roman-numeral char but this is a name, not a chapter prefix.

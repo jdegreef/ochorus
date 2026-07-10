@@ -47,6 +47,12 @@ CORRECTIONS: dict[str, dict] = {
         # "THE SUPERNATUEAL NOISES". Corrected from the front-page TOC.
         "chapter_titles": {9: "The Home Rebuilt", 11: "The Supernatural Noises"},
     },
+    "way-into-holiest": {
+        # Ch.7's CCEL heading is a mixed-case quoted phrase ("VI. \"Perfect through
+        # sufferings\""), so the roman-prefix strip — which only fires on ALL-CAPS
+        # headings — leaves the "VI." in place. Give the clean title directly.
+        "chapter_titles": {7: "Perfect through sufferings"},
+    },
 }
 
 

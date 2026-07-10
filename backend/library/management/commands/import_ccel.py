@@ -67,6 +67,10 @@ def toc_sections(ref: str) -> list[tuple[str, str]]:
     # part-divider / half-title page whose children (`<work>.i.ii.html`) hold the
     # real prose — drop any section whose stem is a strict prefix of another's.
     # Single-level works have no such parents, so this is a no-op for them.
+    # Assumption: a parent page carries no prose of its own (true for the CCEL
+    # part/chapter convention). If a future work puts an introduction ON the
+    # parent page as well as chapters beneath it, that intro would be dropped —
+    # revisit here (fetch + word-count the parent) if that book appears.
     def stem(url: str) -> str:
         name = url.rstrip("/").split("/")[-1]
         return name[len(work) + 1 : -len(".html")]
