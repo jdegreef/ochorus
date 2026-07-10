@@ -42,7 +42,7 @@ def republish(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("library", "0019_jesus_himself_pilot_translations"),
+        ("library", "0021_author_bios_es"),
     ]
 
     operations = [
