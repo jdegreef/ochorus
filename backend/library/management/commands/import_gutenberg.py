@@ -31,21 +31,11 @@ USER_AGENT = "OchorusBot/0.1 (+https://ochorus.org; public-domain book reader)"
 # A heading that is only a number — bare ("I.") or labelled ("CHAPTER IV.").
 # Either way the real title lives in the next node and must be borrowed.
 _ROMAN_OR_NUM = re.compile(r"^(?:chapter\s+)?[IVXLCDM\d]+\.?$", re.I)
-_SMALL_WORDS = {"a", "an", "and", "at", "by", "for", "in", "of", "on", "or", "the", "to"}
 # Sections shorter than this merge into the previous chapter (interleaved
 # hymns/poems, e.g. Prevailing Prayer) or, before any chapter exists, are
 # dropped as front matter (prefatory notes, epigraph poems). Real chapters
 # in the library run 1,300+ words; the longest hymn coda is ~250.
 _TINY_SECTION_WORDS = 300
-
-
-def _titlecase(text: str) -> str:
-    """Title-case an ALL-CAPS heading, apostrophe-safe ("GOD'S" -> "God's")."""
-    words = text.lower().split()
-    out = []
-    for i, w in enumerate(words):
-        out.append(w if (w in _SMALL_WORDS and i > 0) else w[:1].upper() + w[1:])
-    return " ".join(out)
 
 
 def fetch_html(book_id: str) -> str:
@@ -106,20 +96,18 @@ def resolve_title(heading):
     next node; we fold it into the title and return it as `consumed_node` so the
     caller can omit it from the body (otherwise it duplicates as the first line).
     """
+    # clean_title now handles ALL-CAPS -> Title Case itself, so headings/siblings
+    # need no separate title-casing here.
     title = clean_title(heading.get_text(" ", strip=True))
     if _ROMAN_OR_NUM.match(title):
         sib = heading.find_next(["h3", "h4", "p"])
         if sib:
             extra = clean_title(sib.get_text(" ", strip=True))
             if extra:
-                if extra.isupper():
-                    extra = _titlecase(extra)
                 sep = "" if title.endswith(".") else "."
                 # clean_title strips the "Chapter N." label when a descriptive
                 # title follows (bare "I." numerals are kept, as before).
                 return clean_title(f"{title}{sep} {extra}"), sib
-    if title.isupper():
-        title = _titlecase(title)
     return title, None
 
 
