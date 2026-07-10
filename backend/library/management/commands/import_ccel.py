@@ -18,7 +18,7 @@ import requests
 from django.core.management.base import BaseCommand, CommandError
 
 from library.catalog import BOOKS, BookEntry
-from library.ingest import clean_html, is_front_matter, soup, upsert_book
+from library.ingest import clean_html, clean_title, is_front_matter, soup, upsert_book
 
 CCEL_BASE = "https://ccel.org/ccel/"
 USER_AGENT = "OchorusBot/0.1 (+https://ochorus.org; public-domain book reader)"
@@ -43,7 +43,10 @@ def toc_sections(ref: str) -> list[tuple[str, str]]:
     work = ref.rstrip("/").split("/")[-1]
     toc_url = base + "toc.html"
     s = soup(fetch(toc_url))
-    pattern = re.compile(rf"{re.escape(work)}\.[ivxlcdm0-9]+\.html$", re.I)
+    # Section files are `<work>.iii.html`, but works split into parts use a
+    # two-level scheme (`<work>.i.ii.html` = part i, chapter ii). Match one or
+    # more dotted roman/numeric segments so both flatten to the same chapter list.
+    pattern = re.compile(rf"{re.escape(work)}(?:\.[ivxlcdm0-9]+)+\.html$", re.I)
     # A section can be linked more than once (e.g. an untitled "start reading"
     # button plus the titled TOC entry). Keep the longest title per URL, and
     # preserve first-seen order.
@@ -60,7 +63,25 @@ def toc_sections(ref: str) -> list[tuple[str, str]]:
             titles[absolute] = title
         elif len(title) > len(titles[absolute]):
             titles[absolute] = title
-    return [(url, titles[url]) for url in order]
+    # In a two-level work the one-level parent (`<work>.i.html`) is just a
+    # part-divider / half-title page whose children (`<work>.i.ii.html`) hold the
+    # real prose — drop any section whose stem is a strict prefix of another's.
+    # Single-level works have no such parents, so this is a no-op for them.
+    # Assumption: a parent page carries no prose of its own (true for the CCEL
+    # part/chapter convention). If a future work puts an introduction ON the
+    # parent page as well as chapters beneath it, that intro would be dropped —
+    # revisit here (fetch + word-count the parent) if that book appears.
+    def stem(url: str) -> str:
+        name = url.rstrip("/").split("/")[-1]
+        return name[len(work) + 1 : -len(".html")]
+
+    stems = {url: stem(url) for url in order}
+    parents = {
+        url
+        for url, st in stems.items()
+        if any(other.startswith(st + ".") for other in stems.values())
+    }
+    return [(url, titles[url]) for url in order if url not in parents]
 
 
 def extract_body(html: str) -> str:
@@ -102,8 +123,12 @@ class Command(BaseCommand):
 
         chapters: list[tuple[str, str]] = []
         for url, title in sections:
+            # Gate front matter on the RAW title — clean_title strips a trailing
+            # "Contents", which would turn a "Contents" TOC section into an empty
+            # title that slips past is_front_matter and leaks in as a chapter.
             if is_front_matter(title):
                 continue
+            title = clean_title(title)
             try:
                 time.sleep(DELAY)
                 body = extract_body(fetch(url))
