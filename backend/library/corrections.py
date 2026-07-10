@@ -22,6 +22,15 @@ EXCLUDED_SLUGS: set[str] = {
     # Teens edition of "The Person and Work of the Holy Spirit"; we keep the
     # adult original (the-person-and-work-of-the-holy-spirit).
     "the-person-and-work-of-the-holy-spirit-2",
+    # NOT public domain (copyright audit 2026-07-10) — unpublished in migration
+    # 0020 and kept out of re-import. Watchman Nee's English editions (1957–1983,
+    # Kinnear/CLC/CFP) and Amy Carmichael's "If" (1938, URAA-restored).
+    "the-normal-christian-life",
+    "grace-for-grace-2",
+    "the-body-of-christ-a-reality",
+    "the-body-of-christ-teens",
+    "let-us-pray-2",
+    "if",
 }
 
 CORRECTIONS: dict[str, dict] = {

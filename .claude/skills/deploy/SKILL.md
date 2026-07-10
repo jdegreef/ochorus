@@ -71,6 +71,17 @@ A typical deploy takes ~5–10 min; poll every ~4 min.
 6. Render's static host serves unknown extensions as binary/octet-stream —
    name web-served static files with known extensions (.json not
    .webmanifest; see PR #13).
+7. **`launch.json` is a full `dumpdata` — a text-merge of two branches that both
+   regenerated it produces DUPLICATE rows** (same `(book, order)` / same pk),
+   which fails `SeedBooksTests` in CI with `UNIQUE constraint failed:
+   library_chapter.book_id, library_chapter.order` (PR #41, 2026-07-10 — a
+   parallel translation PR regenerated the fixture). A "clean" auto-merge with no
+   conflict markers still corrupts it. Cure: DON'T hand-dedup — rebuild the
+   fixture: `flush` → `loaddata` the base branch's version (`git show
+   origin/main:backend/library/fixtures/launch.json > /tmp/main.json`) →
+   re-run your import commands for the new/changed books → `dumpdata library
+   --indent 1 -o library/fixtures/launch.json`. Verify zero duplicate
+   `(book, order, language)` and zero duplicate `(model, pk)` before pushing.
 
 ## Post-deploy verification (adapt per feature shipped)
 
