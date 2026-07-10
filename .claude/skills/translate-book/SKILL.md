@@ -68,13 +68,24 @@ so a failed run is just re-run. Cost/time: an Opus chapter of ~1,000 words ≈
 
 ## Shipping translations to prod
 
-Translations are **new Book+Chapter rows** → ship per ship-content-fix:
-regenerate the fixture (canonical shape: strip `body_text` keys + plan rows),
-plus a data migration that inserts the translated books from the fixture
-(match books by fixture-pk→slug, resolve Author by slug, set body_text via
-`library.text.html_to_text`); then the manual `ochorus-web` redeploy for
-prerendered pages. Search FTS: es/en stem properly on prod Postgres; sw/lg use
-"simple" config (exact-word match only) — acceptable, note it.
+Translations are **new (slug, language) Book+Chapter rows**, and the
+`seed_books` release step already creates any fixture book missing from prod
+on every deploy. So shipping is just:
+
+1. **Patch `launch.json`** — append the translated book+chapter rows (include
+   `body_text`/`word_count`; derive with `library.text.html_to_text` +
+   `library.ingest.word_count`). PATCH the file textually (targeted append
+   before the closing `]`, `json.dumps(row, indent=1, ensure_ascii=False)`,
+   objects at column 0) — a full json round-trip rewrites all ~9MB because
+   escape styles vary across rows. NO migration needed for the new rows.
+2. A data migration ONLY for transforms of **existing** rows (e.g. cleaning
+   the EN description). Guard it to no-op when the book isn't there yet
+   (fresh installs seed from the fixture after migrate).
+3. Merge → api deploys → then the manual `ochorus-web` "Clear cache & deploy"
+   for prerendered pages.
+
+Search FTS: es/en stem properly on prod Postgres; sw/lg use "simple" config
+(exact-word match only) — acceptable, note it.
 
 ## Known failure modes & language notes (append as we learn)
 
@@ -82,6 +93,24 @@ prerendered pages. Search FTS: es/en stem properly on prod Postgres; sw/lg use
   resolve authentication method". Backend `settings.py` dotenv-loads
   `backend/.env`, so the user can put the key there (never paste keys into
   chat). Check `ant auth status` too before asking.
+- **Placeholder key pasted verbatim** — a user given `echo 'ANTHROPIC_API_KEY=sk-ant-...'`
+  may run it literally. Verify WITHOUT printing the secret:
+  `awk -F= '/^ANTHROPIC_API_KEY=/{print length($2)}' .env` — a real key is
+  ~100+ chars; ~10 means the literal `sk-ant-...` placeholder. Also dedupe
+  repeated lines (`sed -i '' '/^ANTHROPIC_API_KEY=/d'` then re-add once).
+- **Key-less pilot path**: for a small pilot (a few chapters), Claude Code can
+  translate in-session using the same `scripture_context()` helpers + glossary
+  + wrapper protocol, writing rows through the same ai_unreviewed path — no
+  API key needed. The `translate_book` command is for unattended scale.
+- **`Chapter.save()` derives `body_text` but NOT `word_count`** — an ad-hoc
+  loader that only sets title/body_html leaves word_count=0 ("0 min" reading
+  time in the UI). Set it via `library.ingest.word_count(body_html)`
+  (`translate_book` already does).
+- **Dev browser-verify plumbing**: the worktree's `backend/.env`
+  `CORS_ALLOWED_ORIGINS` must include the frontend dev origin, and
+  `frontend/.env` `PUBLIC_API_BASE_URL` must point at the backend port you
+  actually started — a mismatch is a silent client-side "TypeError: Failed to
+  fetch" → 500 page.
 - **Model response missing wrapper tags** → `translate_chapter` raises; the
   run is resumable. Usually a truncation (`max_tokens`) on a huge chapter —
   split with `--chapters` or raise max_tokens.
