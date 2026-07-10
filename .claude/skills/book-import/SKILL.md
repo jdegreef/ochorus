@@ -244,7 +244,24 @@ dropped; chapters under 120 words are dropped as stubs.
   into the new `AuthorEntry`. *(amy-carmichael, frederick-brotherton-meyer,
   2026-07)*
 - **`chapter_title_overrides` now applies in `upsert_book`** (was only in
-  `import_ochorus`), so per-book title corrections work for every source. *(2026-07)*
+  `import_ochorus`), so per-book title corrections work for every source. Apply
+  `clean_title` to the override in BOTH paths so the same correction yields the
+  same stored title. *(2026-07)*
+- **A `clean_title` change silently regresses existing books on their NEXT
+  re-import — and some books (Humility, the Murray/Spurgeon CCEL set) are
+  imported at DEPLOY, not seeded from the fixture, so the regression only shows
+  in prod.** After ANY clean_title edit, re-import a diverse sample AND diff every
+  title vs `fixtures/launch.json` (see the gutenberg-title-diff pattern in the
+  transcript). Real regressions this caught: an un-gated roman-prefix strip
+  dropping Murray's "I. Humility: …" numeral; ordinal "1st"→"1St";
+  "II CORINTHIANS"→"Ii Corinthians".
+- **ALL-CAPS→Title-Case rules that hold:** gate the roman-numeral-prefix strip to
+  ALL-CAPS headings only (mixed-case "I. Humility: …" / "II. Timothy" must keep
+  the numeral); block the strip only on an actual initial (`L.` in "D. L. MOODY"),
+  not an article (`A` in "IX. A WARNING"); PRESERVE whole-token roman numerals in
+  the caps pass ("PSALM CXIX", "II CORINTHIANS"); never uppercase a letter that
+  follows a digit ("1st"). Titles in this library are uniformly Title Case, so an
+  ALL-CAPS or "Ii"/"Iii" stored title is a red flag. *(2026-07)*
 - **Internet Archive OCR import** (`import_archive`, `source="archive"`): reflow
   is the whole job. A DjVu text layer is hard-wrapped and double-spaced with page
   furniture that INTERRUPTS paragraphs (a bare page number + a running header
