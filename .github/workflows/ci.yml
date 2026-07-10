@@ -66,6 +66,13 @@ jobs:
         working-directory: frontend
         run: npm ci
 
+      - name: Frontend — compile i18n messages
+        working-directory: frontend
+        # Paraglide output ($lib/paraglide) is gitignored (generated), so it must
+        # be compiled before svelte-check, which would otherwise fail on the
+        # $lib/paraglide/* imports. The build step regenerates it via the Vite plugin.
+        run: npx @inlang/paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide
+
       - name: Frontend — type-check
         working-directory: frontend
         env:
