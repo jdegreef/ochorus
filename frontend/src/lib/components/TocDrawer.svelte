@@ -5,6 +5,7 @@
 	import { marks } from '$lib/marks.svelte';
 	import { readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
+	import { localizeHref } from '$lib/paraglide/runtime';
 
 	/**
 	 * Slide-over table of contents for the reader. The book's chapter list is
@@ -106,7 +107,7 @@
 						{@const markCount = marks.countFor(slug, ch.order)}
 						<li>
 							<a
-								href="/books/{slug}/{ch.order}"
+								href={localizeHref(`/books/${slug}/${ch.order}`)}
 								class="toc-item"
 								class:current={ch.order === currentOrder}
 								aria-current={ch.order === currentOrder ? 'page' : undefined}

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { auth } from '$lib/auth.svelte';
+	import { localizeHref } from '$lib/paraglide/runtime';
 
 	// Matches Take Root's account control: a round initials avatar that opens a
 	// small dropdown (email + account + sign out); a soft button when signed out.
@@ -47,7 +48,7 @@
 				<div class="account-menu" role="menu">
 					<div class="truncate px-3 py-1.5 text-small text-muted">{auth.user.email}</div>
 					<div class="my-1 border-t border-border"></div>
-					<a class="account-item" role="menuitem" href="/account" onclick={() => (open = false)}
+					<a class="account-item" role="menuitem" href={localizeHref('/account')} onclick={() => (open = false)}
 						>Account</a
 					>
 					<button
@@ -62,7 +63,7 @@
 			{/if}
 		</div>
 	{:else}
-		<a href={loginHref} class="btn btn-primary !px-3.5 !py-1.5 !text-small hover:no-underline">
+		<a href={localizeHref(loginHref)} class="btn btn-primary !px-3.5 !py-1.5 !text-small hover:no-underline">
 			Sign in
 		</a>
 	{/if}

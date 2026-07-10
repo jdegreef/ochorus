@@ -77,7 +77,110 @@ services:
       - type: rewrite
         source: /plans/:slug
         destination: /plans/:slug.html
-      # Everything else (the reader, search) falls back to the SPA app shell.
+      # Localized (URL-prefixed) copies of the prerendered pages. Render has no
+      # wildcard for the locale segment, so each locale repeats the block above.
+      # Keep these before the SPA catch-all.
+      - type: rewrite
+        source: /es
+        destination: /es.html
+      - type: rewrite
+        source: /es/books
+        destination: /es/books.html
+      - type: rewrite
+        source: /es/biographies
+        destination: /es/biographies.html
+      - type: rewrite
+        source: /es/about
+        destination: /es/about.html
+      - type: rewrite
+        source: /es/contact
+        destination: /es/contact.html
+      - type: rewrite
+        source: /es/books/:slug
+        destination: /es/books/:slug.html
+      - type: rewrite
+        source: /es/authors/:slug
+        destination: /es/authors/:slug.html
+      - type: rewrite
+        source: /es/sermons
+        destination: /es/sermons.html
+      - type: rewrite
+        source: /es/sermons/:slug
+        destination: /es/sermons/:slug.html
+      - type: rewrite
+        source: /es/plans
+        destination: /es/plans.html
+      - type: rewrite
+        source: /es/plans/:slug
+        destination: /es/plans/:slug.html
+      - type: rewrite
+        source: /sw
+        destination: /sw.html
+      - type: rewrite
+        source: /sw/books
+        destination: /sw/books.html
+      - type: rewrite
+        source: /sw/biographies
+        destination: /sw/biographies.html
+      - type: rewrite
+        source: /sw/about
+        destination: /sw/about.html
+      - type: rewrite
+        source: /sw/contact
+        destination: /sw/contact.html
+      - type: rewrite
+        source: /sw/books/:slug
+        destination: /sw/books/:slug.html
+      - type: rewrite
+        source: /sw/authors/:slug
+        destination: /sw/authors/:slug.html
+      - type: rewrite
+        source: /sw/sermons
+        destination: /sw/sermons.html
+      - type: rewrite
+        source: /sw/sermons/:slug
+        destination: /sw/sermons/:slug.html
+      - type: rewrite
+        source: /sw/plans
+        destination: /sw/plans.html
+      - type: rewrite
+        source: /sw/plans/:slug
+        destination: /sw/plans/:slug.html
+      - type: rewrite
+        source: /lg
+        destination: /lg.html
+      - type: rewrite
+        source: /lg/books
+        destination: /lg/books.html
+      - type: rewrite
+        source: /lg/biographies
+        destination: /lg/biographies.html
+      - type: rewrite
+        source: /lg/about
+        destination: /lg/about.html
+      - type: rewrite
+        source: /lg/contact
+        destination: /lg/contact.html
+      - type: rewrite
+        source: /lg/books/:slug
+        destination: /lg/books/:slug.html
+      - type: rewrite
+        source: /lg/authors/:slug
+        destination: /lg/authors/:slug.html
+      - type: rewrite
+        source: /lg/sermons
+        destination: /lg/sermons.html
+      - type: rewrite
+        source: /lg/sermons/:slug
+        destination: /lg/sermons/:slug.html
+      - type: rewrite
+        source: /lg/plans
+        destination: /lg/plans.html
+      - type: rewrite
+        source: /lg/plans/:slug
+        destination: /lg/plans/:slug.html
+      # Everything else (the reader, search, /es/books/:slug/:order) falls back
+      # to the SPA app shell.
       - type: rewrite
         source: /*
         destination: /200.html

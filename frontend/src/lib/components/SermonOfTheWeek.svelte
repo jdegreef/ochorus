@@ -3,6 +3,7 @@
 	import { listSermons, type SermonSummary } from '$lib/library';
 	import { getLang } from '$lib/lang.svelte';
 	import { readingTime } from '$lib/reading';
+	import { localizeHref } from '$lib/paraglide/runtime';
 
 	/**
 	 * "Sermon of the week" — a weekly rotating pick from the sermon shelf.
@@ -38,7 +39,7 @@
 {#if pick}
 	<section class="mx-auto max-w-5xl px-5 pt-14">
 		<a
-			href="/sermons/{pick.slug}"
+			href={localizeHref(`/sermons/${pick.slug}`)}
 			class="block rounded-card border border-border bg-surface-2 px-6 py-6 transition-colors hover:bg-surface hover:no-underline sm:px-8"
 		>
 			<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">

@@ -8,8 +8,7 @@ export const entries: EntryGenerator = async () => {
 	return books.map((b) => ({ slug: b.slug }));
 };
 
-export const load: PageLoad = async ({ params, depends }) => {
-	depends('app:lang');
+export const load: PageLoad = async ({ params }) => {
 	const book = await getBook(params.slug, getLang());
 	return { book };
 };

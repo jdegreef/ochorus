@@ -2,6 +2,7 @@
 	import type { PlanSummary } from '$lib/library';
 	import { planProgress } from '$lib/planProgress.svelte';
 	import { i18n } from '$lib/i18n.svelte';
+	import { localizeHref } from '$lib/paraglide/runtime';
 
 	let { data } = $props();
 	const plans = $derived<PlanSummary[]>(data.plans);
@@ -23,7 +24,7 @@
 			{@const done = planProgress.doneDays(plan.slug).length}
 			{@const started = planProgress.isStarted(plan.slug)}
 			<a
-				href="/plans/{plan.slug}"
+				href={localizeHref(`/plans/${plan.slug}`)}
 				class="block rounded-card border border-border p-5 hover:bg-surface-2 hover:no-underline"
 			>
 				<div class="flex items-baseline justify-between gap-3">

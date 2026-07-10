@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { paraglideVitePlugin } from '@inlang/paraglide-js';
 import { sveltekit } from '@sveltejs/kit/vite';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, type Plugin } from 'vite';
@@ -37,5 +38,17 @@ const absoluteAssetUrls = (): Plugin => ({
 });
 
 export default defineConfig({
-	plugins: [tailwindcss(), sveltekit(), absoluteAssetUrls()]
+	plugins: [
+		tailwindcss(),
+		// Compiles messages/*.json into $lib/paraglide and provides the URL-locale
+		// runtime (localizeHref/deLocalizeUrl). URL prefix wins, then cookie, then
+		// the English base locale. Must run before sveltekit().
+		paraglideVitePlugin({
+			project: './project.inlang',
+			outdir: './src/lib/paraglide',
+			strategy: ['url', 'cookie', 'baseLocale']
+		}),
+		sveltekit(),
+		absoluteAssetUrls()
+	]
 });

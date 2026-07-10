@@ -4,6 +4,7 @@
 	import { planProgress } from '$lib/planProgress.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
+	import { localizeHref } from '$lib/paraglide/runtime';
 
 	/**
 	 * "Today's reading" — the next unread day of the reader's most recently
@@ -71,10 +72,10 @@
 				</p>
 			</div>
 			<div class="flex shrink-0 items-center gap-3">
-				<a href={today.href} class="btn btn-primary">
+				<a href={localizeHref(today.href)} class="btn btn-primary">
 					{today.isStarted ? t('plans.continue') : t('plans.start')}
 				</a>
-				<a href="/plans" class="text-small font-semibold text-accent">{t('plans.all')} →</a>
+				<a href={localizeHref('/plans')} class="text-small font-semibold text-accent">{t('plans.all')} →</a>
 			</div>
 		</div>
 	</section>

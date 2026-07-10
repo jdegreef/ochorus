@@ -8,6 +8,7 @@
 	import { readingTime } from '$lib/reading';
 	import { getLang } from '$lib/lang.svelte';
 	import { listen } from '$lib/listen.svelte';
+	import { localizeHref } from '$lib/paraglide/runtime';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import ListenBar from '$lib/components/ListenBar.svelte';
 
@@ -58,7 +59,7 @@
 {#if !readerUi.focus}
 	<div class="sticky top-0 z-10 border-b border-border bg-bg/90 backdrop-blur">
 		<div class="mx-auto flex max-w-3xl items-center justify-between gap-3 px-5 py-2.5">
-			<a href="/sermons" class="text-small text-muted hover:text-text">← {t('nav.sermons')}</a>
+			<a href={localizeHref('/sermons')} class="text-small text-muted hover:text-text">← {t('nav.sermons')}</a>
 			<div class="flex shrink-0 items-center gap-1">
 				{#if listen.supported}
 					<button
@@ -91,9 +92,9 @@
 <article class="mx-auto px-5 py-10" style="{readerPrefs.style}; max-width: var(--reading-measure)" dir="auto">
 	<!-- Breadcrumb -->
 	<nav class="mb-5 flex flex-wrap items-center gap-1.5 text-small text-muted" aria-label="Breadcrumb">
-		<a href="/sermons" class="hover:text-text">{t('nav.sermons')}</a>
+		<a href={localizeHref('/sermons')} class="hover:text-text">{t('nav.sermons')}</a>
 		<span>›</span>
-		<a href="/authors/{sermon.author_slug}" class="hover:text-text">{sermon.author_name}</a>
+		<a href={localizeHref(`/authors/${sermon.author_slug}`)} class="hover:text-text">{sermon.author_name}</a>
 	</nav>
 
 	<p class="mb-1 text-small uppercase tracking-wider text-muted">
@@ -113,7 +114,7 @@
 			<ul class="space-y-2">
 				{#each related as r (r.slug)}
 					<li>
-						<a href="/sermons/{r.slug}" class="text-body font-medium">{r.title}</a>
+						<a href={localizeHref(`/sermons/${r.slug}`)} class="text-body font-medium">{r.title}</a>
 						<span class="text-small text-muted"> · {r.scripture_ref} · {r.author.name}</span>
 					</li>
 				{/each}
@@ -129,7 +130,7 @@
 	{/if}
 
 	<nav class="mt-8">
-		<a href="/authors/{sermon.author_slug}" class="btn btn-ghost">← More from {sermon.author_name}</a>
+		<a href={localizeHref(`/authors/${sermon.author_slug}`)} class="btn btn-ghost">← More from {sermon.author_name}</a>
 	</nav>
 </article>
 

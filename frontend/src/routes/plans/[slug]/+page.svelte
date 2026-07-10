@@ -2,6 +2,7 @@
 	import type { PlanDetail } from '$lib/library';
 	import { planProgress } from '$lib/planProgress.svelte';
 	import { i18n } from '$lib/i18n.svelte';
+	import { localizeHref } from '$lib/paraglide/runtime';
 
 	let { data } = $props();
 	const plan = $derived<PlanDetail>(data.plan);
@@ -13,7 +14,7 @@
 
 	const dayHref = (day: number) => {
 		const d = plan.days.find((x) => x.day === day);
-		return d ? `/books/${d.book_slug}/${d.chapter_order}?plan=${plan.slug}&day=${day}` : '#';
+		return d ? localizeHref(`/books/${d.book_slug}/${d.chapter_order}?plan=${plan.slug}&day=${day}`) : '#';
 	};
 </script>
 
@@ -21,7 +22,7 @@
 
 <div class="mx-auto max-w-3xl px-5 py-10">
 	<nav class="mb-5 text-small text-muted" aria-label="Breadcrumb">
-		<a href="/plans" class="hover:text-text">{t('plans.title')}</a>
+		<a href={localizeHref('/plans')} class="hover:text-text">{t('plans.title')}</a>
 		<span> › </span>
 		<span class="text-text">{plan.title}</span>
 	</nav>

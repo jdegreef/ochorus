@@ -1,17 +1,17 @@
 <script lang="ts">
-	import { invalidate } from '$app/navigation';
 	import { lang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
+
+	const t = i18n.t;
 
 	let open = $state(false);
 	let wrap = $state<HTMLDivElement>();
 
-	async function choose(code: string) {
+	function choose(code: string) {
 		open = false;
-		if (lang.set(code)) {
-			i18n.set(code); // UI locale follows content language by default
-			await invalidate('app:lang'); // re-run book/chapter loads
-		}
+		// setLocale navigates to the locale-prefixed URL (full reload), which
+		// re-renders the chrome and re-fetches content in the new language.
+		lang.set(code);
 	}
 
 	function onWindowClick(e: MouseEvent) {
@@ -28,7 +28,7 @@
 			onclick={() => (open = !open)}
 			aria-haspopup="listbox"
 			aria-expanded={open}
-			aria-label="Language"
+			aria-label={t('nav.language')}
 		>
 			{lang.currentEntry?.native_name ?? lang.current}
 			<span aria-hidden="true">▾</span>

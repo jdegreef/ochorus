@@ -1,58 +1,60 @@
-import { browser } from '$app/environment';
 import type { Language } from './library';
+import { getLocale, setLocale, locales } from '$lib/paraglide/runtime';
 
 /**
- * Selected *content* language — which set of (per-language) Books the reader
- * sees. Distinct from any future UI-string locale, though they default together.
- * Persisted device-local; synced to the profile `locale` when login lands.
+ * Content language = UI locale, both now driven by the URL prefix (/es, /sw,
+ * /lg) via Paraglide. `getLang()` returns the URL's locale and is safe inside
+ * SvelteKit `load` functions (server prerender + client), so content fetches
+ * (`listBooks(getLang())` etc.) follow the same locale as the chrome.
  *
- * `getLang()` is a plain synchronous read for use inside SvelteKit `load`
- * functions (which run outside component reactivity); the `lang` store is the
- * reactive view for components.
+ * This stays a thin facade over the Paraglide runtime so the many `getLang()` /
+ * `lang.*` call sites didn't have to change.
  */
 
-const KEY = 'ochorus:language';
-const DEFAULT = 'en';
+/** Native names for the picker; a locale not listed falls back to its code. */
+export const LOCALE_NAMES: Record<string, string> = {
+	en: 'English',
+	es: 'Español',
+	sw: 'Kiswahili',
+	lg: 'Luganda'
+};
 
 export function getLang(): string {
-	if (!browser) return DEFAULT;
-	return localStorage.getItem(KEY) || DEFAULT;
+	return getLocale();
 }
 
-class Lang {
-	current = $state(DEFAULT);
-	available = $state<Language[]>([{ code: 'en', name: 'English', native_name: 'English' }]);
+const asEntry = (code: string): Language => ({
+	code,
+	name: LOCALE_NAMES[code] ?? code,
+	native_name: LOCALE_NAMES[code] ?? code
+});
 
-	init() {
-		if (browser) this.current = getLang();
+// All configured UI locales, computed once (the set is compile-time constant).
+const AVAILABLE: Language[] = (locales as readonly string[]).map(asEntry);
+
+class Lang {
+	/** All configured UI locales (independent of per-book content availability). */
+	get available(): Language[] {
+		return AVAILABLE;
 	}
 
-	setAvailable(langs: Language[]) {
-		if (!langs.length) return;
-		this.available = langs;
-		// Heal a stuck selection: if the persisted language is no longer offered
-		// (e.g. content was reduced to English-only after it had been chosen),
-		// fall back to the first available language. Without this, every content
-		// fetch 404s for that language and the reader is wedged.
-		if (!this.isAvailable(this.current)) {
-			this.set(langs[0].code);
-		}
+	get current(): string {
+		return getLocale();
 	}
 
 	isAvailable(code: string): boolean {
-		return this.available.some((l) => l.code === code);
+		return (locales as readonly string[]).includes(code);
 	}
 
-	/** Change content language and persist. Returns true if it actually changed. */
+	/** Switch locale — navigates to the locale-prefixed URL (full reload). */
 	set(code: string): boolean {
 		if (code === this.current) return false;
-		this.current = code;
-		if (browser) localStorage.setItem(KEY, code);
+		if (this.isAvailable(code)) setLocale(code as (typeof locales)[number]);
 		return true;
 	}
 
 	get currentEntry(): Language {
-		return this.available.find((l) => l.code === this.current) ?? this.available[0];
+		return asEntry(this.current);
 	}
 }
 

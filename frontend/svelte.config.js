@@ -16,6 +16,22 @@ const config = {
 		// can surface an "update available" prompt instead of updating silently.
 		serviceWorker: { register: false },
 		prerender: {
+			// Seed the crawler with each locale's landing page + localized index
+			// pages. From these it follows the localizeHref() links to discover the
+			// localized dynamic pages (/es/books/<slug>, /es/authors/<slug>, …).
+			// English pages are covered by the default '*' crawl from '/'.
+			entries: [
+				'*',
+				...['es', 'sw', 'lg'].flatMap((l) => [
+					`/${l}`,
+					`/${l}/books`,
+					`/${l}/biographies`,
+					`/${l}/sermons`,
+					`/${l}/plans`,
+					`/${l}/about`,
+					`/${l}/contact`
+				])
+			],
 			// Routes that are prerenderable but legitimately unreached at build:
 			// /sermons/[slug] and /plans/[slug] have no pages when their API
 			// endpoints have no content (or lag a simultaneous deploy), and

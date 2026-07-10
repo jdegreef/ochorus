@@ -20,6 +20,7 @@
 	import { listen } from '$lib/listen.svelte';
 	import { define } from '$lib/define.svelte';
 	import { API_BASE_URL } from '$lib/config';
+	import { localizeHref } from '$lib/paraglide/runtime';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import DefinePopover from '$lib/components/DefinePopover.svelte';
 	import TocDrawer from '$lib/components/TocDrawer.svelte';
@@ -128,7 +129,7 @@
 	});
 
 	function gotoChapter(target: { order: number } | null) {
-		if (target) goto(`/books/${slug}/${target.order}`);
+		if (target) goto(localizeHref(`/books/${slug}/${target.order}`));
 	}
 
 	/** Keyboard: ←/→ chapters (or paragraph skip while listening), space pages. */
@@ -219,9 +220,13 @@
 		const next = planProgress.nextDay(plan.slug, plan.day_count);
 		const nextEntry = next && plan.days.find((d) => d.day === next);
 		if (nextEntry) {
-			goto(`/books/${nextEntry.book_slug}/${nextEntry.chapter_order}?plan=${plan.slug}&day=${nextEntry.day}`);
+			goto(
+				localizeHref(
+					`/books/${nextEntry.book_slug}/${nextEntry.chapter_order}?plan=${plan.slug}&day=${nextEntry.day}`
+				)
+			);
 		} else {
-			goto(`/plans/${plan.slug}`);
+			goto(localizeHref(`/plans/${plan.slug}`));
 		}
 	}
 
@@ -347,7 +352,7 @@
 		<div class="mx-auto flex max-w-3xl items-center justify-between gap-3 px-5 py-2.5">
 			<div class="min-w-0 flex-1">
 				{#if titleVisible}
-					<a href="/books/{slug}" class="text-small text-muted hover:text-text">
+					<a href={localizeHref(`/books/${slug}`)} class="text-small text-muted hover:text-text">
 						← {chapter.book_title}
 					</a>
 				{:else}
@@ -360,14 +365,14 @@
 			<div class="flex shrink-0 items-center gap-1">
 				{#if chapter.prev}
 					<a
-						href="/books/{slug}/{chapter.prev.order}"
+						href={localizeHref(`/books/${slug}/${chapter.prev.order}`)}
 						class="btn btn-ghost !px-2.5 !py-1"
 						aria-label={t('reader.previous')}>‹</a
 					>
 				{/if}
 				{#if chapter.next}
 					<a
-						href="/books/{slug}/{chapter.next.order}"
+						href={localizeHref(`/books/${slug}/${chapter.next.order}`)}
 						class="btn btn-ghost !px-2.5 !py-1"
 						aria-label={t('reader.next')}>›</a
 					>
@@ -415,11 +420,11 @@
 >
 	<!-- Breadcrumb -->
 	<nav class="mb-5 flex flex-wrap items-center gap-1.5 text-small text-muted" aria-label="Breadcrumb">
-		<a href="/books" class="hover:text-text">{t('nav.books')}</a>
+		<a href={localizeHref('/books')} class="hover:text-text">{t('nav.books')}</a>
 		<span>›</span>
-		<a href="/authors/{chapter.author_slug}" class="hover:text-text">{chapter.author_name}</a>
+		<a href={localizeHref(`/authors/${chapter.author_slug}`)} class="hover:text-text">{chapter.author_name}</a>
 		<span>›</span>
-		<a href="/books/{slug}" class="hover:text-text">{chapter.book_title}</a>
+		<a href={localizeHref(`/books/${slug}`)} class="hover:text-text">{chapter.book_title}</a>
 	</nav>
 
 	{#if plan && planDay}
@@ -427,7 +432,7 @@
 			class="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-card border border-border bg-surface-2 px-4 py-3"
 		>
 			<div class="min-w-0">
-				<a href="/plans/{plan.slug}" class="block truncate text-small font-semibold text-text hover:text-accent">
+				<a href={localizeHref(`/plans/${plan.slug}`)} class="block truncate text-small font-semibold text-text hover:text-accent">
 					{plan.title}
 				</a>
 				<span class="text-small text-muted">
@@ -455,7 +460,7 @@
 	<nav class="mt-14 flex items-stretch justify-between gap-3 border-t border-border pt-6">
 		{#if chapter.prev}
 			<a
-				href="/books/{slug}/{chapter.prev.order}"
+				href={localizeHref(`/books/${slug}/${chapter.prev.order}`)}
 				class="btn btn-ghost flex-1 !flex-col !items-start gap-0.5 text-left"
 			>
 				<span class="text-[0.7rem] uppercase tracking-wider text-muted">{t('reader.previous')}</span>
@@ -466,14 +471,14 @@
 		{/if}
 		{#if chapter.next}
 			<a
-				href="/books/{slug}/{chapter.next.order}"
+				href={localizeHref(`/books/${slug}/${chapter.next.order}`)}
 				class="btn btn-primary flex-1 !flex-col !items-end gap-0.5 text-right"
 			>
 				<span class="text-[0.7rem] uppercase tracking-wider opacity-75">{t('reader.next')}</span>
 				<span class="text-small">{chapter.next.title}</span>
 			</a>
 		{:else}
-			<a href="/books/{slug}" class="btn btn-ghost flex-1 text-center">{t('reader.backToContents')}</a>
+			<a href={localizeHref(`/books/${slug}`)} class="btn btn-ghost flex-1 text-center">{t('reader.backToContents')}</a>
 		{/if}
 	</nav>
 </article>
