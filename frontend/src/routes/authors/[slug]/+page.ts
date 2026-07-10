@@ -12,6 +12,10 @@ export const entries: EntryGenerator = async () => {
 	return [...slugs].map((slug) => ({ slug }));
 };
 
+// This page is prerendered per locale, baking the author's bio/bio_html in
+// getLang() at build time — so author-bio *content* translations must be live
+// on the API before the web build runs, else the localized page bakes English
+// and needs a fresh ochorus-web deploy once the API catches up.
 export const load: PageLoad = async ({ params }) => {
 	const author = await getAuthor(params.slug, getLang());
 	// A mid-deploy API (before the sermon fields ship) may omit these; default
