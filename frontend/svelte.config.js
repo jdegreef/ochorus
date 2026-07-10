@@ -16,6 +16,10 @@ const config = {
 		// can surface an "update available" prompt instead of updating silently.
 		serviceWorker: { register: false },
 		prerender: {
+			// The crawler only follows links from the live index pages, so
+			// unpublished books/authors are dropped from the prerendered set on the
+			// next build (a backend-only unpublish doesn't rebuild the web service —
+			// force one; see the deploy skill, gotcha #2). 2026-07-10.
 			// Seed the crawler with each locale's landing page + localized index
 			// pages. From these it follows the localizeHref() links to discover the
 			// localized dynamic pages (/es/books/<slug>, /es/authors/<slug>, …).
