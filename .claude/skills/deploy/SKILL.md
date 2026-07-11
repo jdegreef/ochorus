@@ -68,6 +68,17 @@ A typical deploy takes ~5–10 min; poll every ~4 min.
    (missing-slug -> not-found) waited on the sync. Verify post-merge with a URL
    that bypasses the rule (e.g. a trailing slash hits the dir index directly): if
    it works but the clean URL doesn't, it's a pending route sync, not a bad build.
+   **HARDER TRUTH (2026-07-11): a completed Blueprint Sync + a fresh deploy still
+   did NOT drop the removed `:slug` rewrites** — Render's redirect/rewrite rules
+   proved STICKY; the render.yaml route REMOVAL was never applied (verified: a
+   brand-new uncached missing slug stayed blank while `/*` still worked for
+   top-level paths, and origin/main's render.yaml had the rules gone). So don't
+   assume a sync applies route deletions. Remedies are dashboard-only (user
+   action): ochorus-web → Settings → **Redirect and Rewrite Rules** → delete the
+   stale rules by hand, or set a **Not Found Page → /200.html**. Lesson: the
+   build-safe hedge (works under both route states) is load-bearing, because the
+   route side may never move — and NO render.yaml route edit (removal OR redirect)
+   can be relied on to take effect once the rules already exist.
 4. `preDeployCommand` failures keep the old version live — check the Render
    deploy logs for the `release` output if the api hash never flips.
 5. **Parallel PRs adding migrations → divergent leaves** (killed the PR #8
