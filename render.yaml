@@ -43,10 +43,17 @@ services:
     staticPublishPath: ./build
     autoDeploy: true
     routes:
-      # Serve the prerendered HTML for the public (crawlable) pages. Render
-      # doesn't auto-map extensionless URLs to their .html files, so map them
-      # here. Single-segment :slug matches a book/author but NOT the 3-segment
-      # reader path, so the reader falls through to the SPA shell below.
+      # INDEX pages: Render doesn't auto-map extensionless URLs to their .html
+      # files, so map each one here.
+      #
+      # DETAIL pages (/books|authors|sermons|plans /:slug) are NOT rewritten.
+      # scripts/dir-style-detail.mjs emits them as directory indexes
+      # (<slug>/index.html), which Render serves natively for /books/:slug — so a
+      # real book resolves to a file before any rule runs, while a MISSING or
+      # unpublished slug matches no rule and falls through to the /* -> /200.html
+      # SPA catch-all, which renders the designed not-found page. (A :slug ->
+      # :slug.html rewrite instead served a blank empty-200 for a missing slug —
+      # deploy skill, gotcha #8.)
       - type: rewrite
         source: /books
         destination: /books.html
@@ -60,24 +67,12 @@ services:
         source: /contact
         destination: /contact.html
       - type: rewrite
-        source: /books/:slug
-        destination: /books/:slug.html
-      - type: rewrite
-        source: /authors/:slug
-        destination: /authors/:slug.html
-      - type: rewrite
         source: /sermons
         destination: /sermons.html
       - type: rewrite
-        source: /sermons/:slug
-        destination: /sermons/:slug.html
-      - type: rewrite
         source: /plans
         destination: /plans.html
-      - type: rewrite
-        source: /plans/:slug
-        destination: /plans/:slug.html
-      # Localized (URL-prefixed) copies of the prerendered pages. Render has no
+      # Localized (URL-prefixed) copies of the index pages. Render has no
       # wildcard for the locale segment, so each locale repeats the block above.
       # Keep these before the SPA catch-all.
       - type: rewrite
@@ -96,23 +91,11 @@ services:
         source: /es/contact
         destination: /es/contact.html
       - type: rewrite
-        source: /es/books/:slug
-        destination: /es/books/:slug.html
-      - type: rewrite
-        source: /es/authors/:slug
-        destination: /es/authors/:slug.html
-      - type: rewrite
         source: /es/sermons
         destination: /es/sermons.html
       - type: rewrite
-        source: /es/sermons/:slug
-        destination: /es/sermons/:slug.html
-      - type: rewrite
         source: /es/plans
         destination: /es/plans.html
-      - type: rewrite
-        source: /es/plans/:slug
-        destination: /es/plans/:slug.html
       - type: rewrite
         source: /sw
         destination: /sw.html
@@ -129,23 +112,11 @@ services:
         source: /sw/contact
         destination: /sw/contact.html
       - type: rewrite
-        source: /sw/books/:slug
-        destination: /sw/books/:slug.html
-      - type: rewrite
-        source: /sw/authors/:slug
-        destination: /sw/authors/:slug.html
-      - type: rewrite
         source: /sw/sermons
         destination: /sw/sermons.html
       - type: rewrite
-        source: /sw/sermons/:slug
-        destination: /sw/sermons/:slug.html
-      - type: rewrite
         source: /sw/plans
         destination: /sw/plans.html
-      - type: rewrite
-        source: /sw/plans/:slug
-        destination: /sw/plans/:slug.html
       - type: rewrite
         source: /lg
         destination: /lg.html
@@ -162,25 +133,14 @@ services:
         source: /lg/contact
         destination: /lg/contact.html
       - type: rewrite
-        source: /lg/books/:slug
-        destination: /lg/books/:slug.html
-      - type: rewrite
-        source: /lg/authors/:slug
-        destination: /lg/authors/:slug.html
-      - type: rewrite
         source: /lg/sermons
         destination: /lg/sermons.html
       - type: rewrite
-        source: /lg/sermons/:slug
-        destination: /lg/sermons/:slug.html
-      - type: rewrite
         source: /lg/plans
         destination: /lg/plans.html
-      - type: rewrite
-        source: /lg/plans/:slug
-        destination: /lg/plans/:slug.html
-      # Everything else (the reader, search, /es/books/:slug/:order) falls back
-      # to the SPA app shell.
+      # Everything else — detail pages (served natively as <slug>/index.html),
+      # the reader, search, and any missing/unpublished slug — falls back to the
+      # SPA app shell, which renders the real page or the not-found page.
       - type: rewrite
         source: /*
         destination: /200.html
@@ -192,6 +152,4 @@ services:
       - key: PUBLIC_SUPABASE_URL # https://<project-ref>.supabase.co (enables login)
         sync: false
       - key: PUBLIC_SUPABASE_ANON_KEY # Supabase anon/publishable key (safe in the browser)
-        sync: false
-      - key: PUBLIC_SENTRY_DSN # optional: paste a Sentry DSN to turn on browser error monitoring
         sync: false
