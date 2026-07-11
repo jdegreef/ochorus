@@ -153,3 +153,5 @@ services:
         sync: false
       - key: PUBLIC_SUPABASE_ANON_KEY # Supabase anon/publishable key (safe in the browser)
         sync: false
+      - key: PUBLIC_SENTRY_DSN # optional: paste a Sentry DSN to turn on browser error monitoring
+        sync: false
