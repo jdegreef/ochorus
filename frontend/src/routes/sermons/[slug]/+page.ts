@@ -20,3 +20,7 @@ export const load: PageLoad = async ({ params }) => {
 	const sermon = await orNotFound(() => getSermon(params.slug, getLang()));
 	return { sermon };
 };
+
+// NOTE: prerendered per locale — the Spanish sermon translations (es) must be
+// live on the API before the web build runs, else /es/sermons/<slug> bakes
+// English and needs a fresh ochorus-web deploy once the API catches up.
