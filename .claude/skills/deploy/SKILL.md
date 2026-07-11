@@ -82,19 +82,25 @@ A typical deploy takes ~5–10 min; poll every ~4 min.
    re-run your import commands for the new/changed books → `dumpdata library
    --indent 1 -o library/fixtures/launch.json`. Verify zero duplicate
    `(book, order, language)` and zero duplicate `(model, pk)` before pushing.
-8. **A missing prerendered page (`/books/:slug` for an unpublished/unknown slug)
-   serves a BLANK empty-200, not a 404 page** (PR #52, 2026-07-10). render.yaml
-   rewrites `/books/:slug -> /books/:slug.html`; when that `.html` doesn't exist
-   Render returns `content-length: 0` and — verified post-deploy — does NOT fall
-   back to `/404.html` (a `404.html` copy of the SPA shell is never served,
-   because the specific rewrite already "matched" and shadows the `/* ->
-   /200.html` catch-all). So `+error.svelte` only shows for client-side nav
-   (SPA already loaded) and for unknown paths that hit `/*`. The blank-page fix
-   needs directory-style prerender output (`books/<slug>/index.html`) so Render's
-   native directory serving handles real books and its 404.html handles the rest
-   — dropping the per-slug rewrites. Not yet done. (Separately: a load that lets
-   an API `ApiError(404)` propagate renders as a 500, not a 404 — translate it
-   with `throw error(404)`; see `lib/loadHelpers.ts`.)
+8. **A missing prerendered detail page must NOT get a `:slug -> :slug.html`
+   rewrite** — that serves a BLANK empty-200 for an unpublished/unknown slug
+   (render.yaml returns `content-length: 0`; verified post-deploy that Render
+   does NOT fall back to `404.html` here, because the rewrite already "matched"
+   and shadows the `/* -> /200.html` catch-all). **Fix, shipped PR #55:** emit
+   detail pages as directory indexes (`books/<slug>/index.html`, via
+   `frontend/scripts/dir-style-detail.mjs`) and DROP the per-slug rewrites.
+   Render serves an existing static file — incl. a directory's `index.html` —
+   before route rules, so a real book resolves natively (keeping its prerendered
+   SEO HTML), and a missing slug matches no rule and falls to `/* -> /200.html`,
+   which boots the SPA and renders `+error.svelte`. This is a soft-404 (HTTP 200
+   + not-found page), which is fine — it also lets search engines drop
+   unpublished titles. When adding a NEW prerendered detail route type, add it to
+   `dir-style-detail.mjs`'s `TYPES`, do NOT add a `:slug` rewrite, and verify
+   post-deploy that `/x/<real>` serves the prerendered HTML (200, no divergent
+   trailing-slash redirect) and `/x/<missing>` shows the not-found page.
+   (Separately: a load that lets an API `ApiError(404)` propagate renders as a
+   500, not a 404 — translate it with `throw error(404)`; see
+   `lib/loadHelpers.ts`.)
 
 ## Post-deploy verification (adapt per feature shipped)
 
