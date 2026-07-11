@@ -55,7 +55,19 @@ A typical deploy takes ~5–10 min; poll every ~4 min.
    `/authors/<slug>` pages keep serving stale data. If book DATA changed, also
    manually redeploy ochorus-web (Clear cache & deploy latest commit).
 3. **render.yaml route changes** need a blueprint re-sync, or new pages fall
-   back to the SPA shell.
+   back to the SPA shell. CONFIRMED again (PR #55, 2026-07-10): removing the
+   per-slug rewrites did NOT auto-apply on merge/autoDeploy — the new build went
+   live but the routes stayed stale until a manual **Render → Blueprints →
+   Sync** (which the CLI/agent can't trigger; it's a dashboard action for the
+   user). **So when a BUILD change depends on a ROUTE change, make the build safe
+   under BOTH the old and new route state** — otherwise the build ships in the
+   sync gap against stale routes and breaks live pages. PR #55's hedge: the build
+   emitted detail pages as BOTH `<slug>.html` (old `:slug -> :slug.html` rewrite
+   still resolves it) AND `<slug>/index.html` (served natively once the rewrite
+   is gone), so real pages served under either state and only the new behavior
+   (missing-slug -> not-found) waited on the sync. Verify post-merge with a URL
+   that bypasses the rule (e.g. a trailing slash hits the dir index directly): if
+   it works but the clean URL doesn't, it's a pending route sync, not a bad build.
 4. `preDeployCommand` failures keep the old version live — check the Render
    deploy logs for the `release` output if the api hash never flips.
 5. **Parallel PRs adding migrations → divergent leaves** (killed the PR #8
