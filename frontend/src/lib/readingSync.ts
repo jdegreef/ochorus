@@ -1,5 +1,15 @@
 import { browser } from '$app/environment';
 import { apiFetch } from './api';
+import {
+	PROGRESS_KEY,
+	MARKS_KEY,
+	chapterKey,
+	parseChapterKey,
+	type Mark,
+	type MarksStore,
+	type ProgressRecord,
+	type ProgressMap
+} from './reading-schema';
 
 /**
  * Cross-device sync for reading progress, highlights and notes.
@@ -13,29 +23,6 @@ import { apiFetch } from './api';
  * the merged whole back over the local cache.
  */
 
-const PROGRESS_KEY = 'ochorus:progress';
-const MARKS_KEY = 'ochorus:marks';
-
-export interface ProgressRecord {
-	order: number;
-	paragraph_index: number;
-	language: string;
-	at: number;
-}
-type ProgressMap = Record<string, ProgressRecord>;
-
-interface StoredMark {
-	id: string;
-	p: number;
-	s: number;
-	e: number;
-	note?: string;
-}
-interface ChapterEntry {
-	m: StoredMark[];
-}
-type MarksMap = Record<string, ChapterEntry>;
-
 interface ServerProgress {
 	book_slug: string;
 	language: string;
@@ -47,7 +34,7 @@ interface ServerMarks {
 	book_slug: string;
 	language: string;
 	chapter_order: number;
-	marks: StoredMark[];
+	marks: Mark[];
 	updated_at: string;
 }
 interface ServerState {
@@ -62,16 +49,6 @@ function readJson<T>(key: string, fallback: T): T {
 	} catch {
 		return fallback;
 	}
-}
-
-// `slug:order` marks keys — slugs never contain ':' so split on the last one.
-const marksKey = (slug: string, order: number) => `${slug}:${order}`;
-function parseMarksKey(key: string): { slug: string; order: number } | null {
-	const i = key.lastIndexOf(':');
-	if (i < 0) return null;
-	const order = Number(key.slice(i + 1));
-	if (!Number.isFinite(order)) return null;
-	return { slug: key.slice(0, i), order };
 }
 
 class ReadingSync {
@@ -108,7 +85,7 @@ class ReadingSync {
 		});
 	}
 
-	pushMarks(slug: string, order: number, marks: StoredMark[], language: string) {
+	pushMarks(slug: string, order: number, marks: Mark[], language: string) {
 		if (!this.signedIn || !browser) return;
 		this.#debounce(`m:${slug}:${order}`, () => {
 			apiFetch(`/api/reading/marks/${slug}/${order}/`, {
@@ -125,7 +102,7 @@ class ReadingSync {
 	async mergeOnSignIn() {
 		if (!browser) return;
 		const localProgress = readJson<ProgressMap>(PROGRESS_KEY, {});
-		const localMarks = readJson<MarksMap>(MARKS_KEY, {});
+		const localMarks = readJson<MarksStore>(MARKS_KEY, {});
 
 		const payload = {
 			progress: Object.entries(localProgress).map(([slug, r]) => ({
@@ -137,7 +114,7 @@ class ReadingSync {
 			})),
 			marks: Object.entries(localMarks)
 				.map(([key, entry]) => {
-					const parsed = parseMarksKey(key);
+					const parsed = parseChapterKey(key);
 					if (!parsed) return null;
 					// A not-yet-migrated legacy entry ({h, n}) passes its legacy
 					// keys through — the server converts, so nothing is lost.
@@ -176,9 +153,9 @@ class ReadingSync {
 				at: Date.parse(p.updated_at) || Date.now()
 			};
 		}
-		const marks: MarksMap = {};
+		const marks: MarksStore = {};
 		for (const m of state.marks) {
-			marks[marksKey(m.book_slug, m.chapter_order)] = { m: m.marks ?? [] };
+			marks[chapterKey(m.book_slug, m.chapter_order)] = { m: m.marks ?? [] };
 		}
 		localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
 		localStorage.setItem(MARKS_KEY, JSON.stringify(marks));

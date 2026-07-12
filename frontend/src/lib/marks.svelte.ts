@@ -1,5 +1,6 @@
 import { browser } from '$app/environment';
 import { readingSync } from './readingSync';
+import { MARKS_KEY, chapterKey, type ChapterMarks, type MarksStore, type Mark } from './reading-schema';
 
 /**
  * Text-range highlights and notes.
@@ -17,28 +18,13 @@ import { readingSync } from './readingSync';
  * entries ({h, n}) are migrated to ranges on first read.
  */
 
-const KEY = 'ochorus:marks';
-
-export interface Mark {
-	id: string;
-	p: number;
-	s: number;
-	e: number; // -1 = to end of paragraph
-	note?: string;
-}
-
-interface ChapterEntry {
-	m: Mark[];
-}
+// Re-exported so components already importing `Mark` from this store keep working.
+export type { Mark };
 
 interface LegacyEntry {
 	h?: number[];
 	n?: Record<number, string>;
 }
-
-type Store = Record<string, ChapterEntry>;
-
-const chapterKey = (slug: string, order: number) => `${slug}:${order}`;
 
 function fromLegacy(entry: LegacyEntry): Mark[] {
 	const byP = new Map<number, Mark>();
@@ -56,26 +42,26 @@ function fromLegacy(entry: LegacyEntry): Mark[] {
 }
 
 /** Read the store, migrating any legacy chapter entries in place. */
-function readAll(): Store {
+function readAll(): MarksStore {
 	if (!browser) return {};
 	try {
-		const raw = JSON.parse(localStorage.getItem(KEY) || '{}');
+		const raw = JSON.parse(localStorage.getItem(MARKS_KEY) || '{}');
 		let migrated = false;
 		for (const [key, entry] of Object.entries<Record<string, unknown>>(raw)) {
-			if (entry && !Array.isArray((entry as unknown as ChapterEntry).m) && ('h' in entry || 'n' in entry)) {
+			if (entry && !Array.isArray((entry as unknown as ChapterMarks).m) && ('h' in entry || 'n' in entry)) {
 				raw[key] = { m: fromLegacy(entry as LegacyEntry) };
 				migrated = true;
 			}
 		}
-		if (migrated) localStorage.setItem(KEY, JSON.stringify(raw));
+		if (migrated) localStorage.setItem(MARKS_KEY, JSON.stringify(raw));
 		return raw;
 	} catch {
 		return {};
 	}
 }
 
-function writeAll(store: Store) {
-	if (browser) localStorage.setItem(KEY, JSON.stringify(store));
+function writeAll(store: MarksStore) {
+	if (browser) localStorage.setItem(MARKS_KEY, JSON.stringify(store));
 }
 
 export interface Segment {

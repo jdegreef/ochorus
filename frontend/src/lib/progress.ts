@@ -1,5 +1,12 @@
 import { browser } from '$app/environment';
-import { readingSync, type ProgressRecord } from './readingSync';
+import { readingSync } from './readingSync';
+import {
+	PROGRESS_KEY,
+	ANCHOR_KEY,
+	chapterKey,
+	type ProgressRecord,
+	type ProgressMap
+} from './reading-schema';
 
 /**
  * Reading progress, stored in localStorage (keyed by book slug) as the offline
@@ -10,21 +17,17 @@ import { readingSync, type ProgressRecord } from './readingSync';
  * plus the `paragraph_index` scrolled to within it, so "Continue reading" can
  * deep-link straight back to the spot.
  */
-const KEY = 'ochorus:progress';
-
-type ProgressMap = Record<string, ProgressRecord>;
-
 function read(): ProgressMap {
 	if (!browser) return {};
 	try {
-		return JSON.parse(localStorage.getItem(KEY) || '{}');
+		return JSON.parse(localStorage.getItem(PROGRESS_KEY) || '{}');
 	} catch {
 		return {};
 	}
 }
 
 function write(map: ProgressMap) {
-	if (browser) localStorage.setItem(KEY, JSON.stringify(map));
+	if (browser) localStorage.setItem(PROGRESS_KEY, JSON.stringify(map));
 }
 
 /** All in-progress books, newest first — powers the "Continue reading" lists. */
@@ -65,8 +68,6 @@ export function saveProgress(slug: string, order: number, language = 'en'): void
  * anchor for the *current* chapter is also folded into the book's progress
  * record so a resume lands on the exact paragraph.
  */
-const ANCHOR_KEY = 'ochorus:anchors';
-
 type AnchorMap = Record<string, number>;
 
 function readAnchors(): AnchorMap {
@@ -78,19 +79,17 @@ function readAnchors(): AnchorMap {
 	}
 }
 
-const anchorKey = (slug: string, order: number) => `${slug}:${order}`;
-
 export function getScrollAnchor(slug: string, order: number): number | null {
-	return readAnchors()[anchorKey(slug, order)] ?? null;
+	return readAnchors()[chapterKey(slug, order)] ?? null;
 }
 
 export function saveScrollAnchor(slug: string, order: number, paragraphIndex: number): void {
 	if (!browser) return;
 	const map = readAnchors();
 	if (paragraphIndex <= 0) {
-		delete map[anchorKey(slug, order)];
+		delete map[chapterKey(slug, order)];
 	} else {
-		map[anchorKey(slug, order)] = paragraphIndex;
+		map[chapterKey(slug, order)] = paragraphIndex;
 	}
 	localStorage.setItem(ANCHOR_KEY, JSON.stringify(map));
 
