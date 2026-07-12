@@ -9,33 +9,39 @@
 	let loading = $state(true);
 	let denied = $state(false);
 	let error = $state<string | null>(null);
-	let lastUser = $state<string | null | undefined>(undefined);
+	// Monotonic request id: only the latest load()'s outcome is applied, so a
+	// stale early request can't clobber the authenticated one that supersedes it.
+	let seq = 0;
 
 	async function load() {
+		const id = ++seq;
 		loading = true;
 		denied = false;
 		error = null;
 		try {
-			stats = await getAdminStats();
+			const result = await getAdminStats();
+			if (id !== seq) return; // superseded by a newer load
+			stats = result;
 		} catch (e) {
+			if (id !== seq) return;
 			if (e instanceof ApiError && (e.status === 401 || e.status === 403)) {
 				denied = true;
 			} else {
 				error = e instanceof Error ? e.message : 'Something went wrong loading the dashboard.';
 			}
 		} finally {
-			loading = false;
+			if (id === seq) loading = false;
 		}
 	}
 
-	// Load on mount and whenever the signed-in identity changes (auth initialises
-	// asynchronously, so the user may arrive after the first paint).
+	// Fetch once auth has settled, and again whenever the signed-in identity
+	// changes. Gating on `auth.initialized` avoids firing an unauthenticated
+	// request before the Supabase session is restored on a fresh page load — that
+	// premature request 401s and would otherwise flash "Not authorised".
 	$effect(() => {
-		const email = auth.user?.email ?? null;
-		if (email !== lastUser) {
-			lastUser = email;
-			load();
-		}
+		if (auth.enabled && !auth.initialized) return;
+		void auth.user?.email;
+		load();
 	});
 
 	const nf = new Intl.NumberFormat('en');
