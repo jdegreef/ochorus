@@ -11,6 +11,7 @@ from library.admin_views import (
     AdminLanguageDetailView,
     AdminReviewQueueView,
     AdminStatsView,
+    AdminUsersView,
 )
 
 urlpatterns = [
@@ -25,6 +26,7 @@ urlpatterns = [
         AdminEngagementView.as_view(),
         name="admin-engagement",
     ),
+    path("api/admin/users/", AdminUsersView.as_view(), name="admin-users"),
     path(
         "api/admin/review-queue/",
         AdminReviewQueueView.as_view(),

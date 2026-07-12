@@ -608,3 +608,52 @@ class AdminEngagementTests(TestCase):
     def test_requires_admin(self):
         res = self.client.get("/api/admin/engagement/")
         self.assertIn(res.status_code, (401, 403))
+
+
+class AdminUsersTests(TestCase):
+    def setUp(self):
+        import uuid
+
+        from django.contrib.auth import get_user_model
+
+        from accounts.models import UserProfile
+        from reading.models import ReadingProgress
+
+        self.client = APIClient()
+        User = get_user_model()
+
+        def mk(locale="en", theme="paper"):
+            u = User.objects.create(username=str(uuid.uuid4()))
+            return UserProfile.objects.create(
+                user=u, supabase_uid=uuid.uuid4(), locale=locale, theme=theme
+            )
+
+        self.p1 = mk("en", "dark")
+        self.p2 = mk("sw", "paper")
+        self.p3 = mk("en", "paper")  # dormant (no progress)
+        ReadingProgress.objects.create(profile=self.p1, book_slug="humility", language="en")
+        ReadingProgress.objects.create(profile=self.p2, book_slug="humility", language="sw")
+
+    @override_settings(DEBUG=True)
+    def test_users_analytics(self):
+        res = self.client.get("/api/admin/users/")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["total"], 3)
+        self.assertEqual(res.data["with_activity"], 2)
+        self.assertEqual(res.data["dormant"], 1)
+        self.assertEqual(res.data["signups_7d"], 3)
+
+        by_locale = {r["code"]: r["count"] for r in res.data["by_locale"]}
+        self.assertEqual(by_locale["en"], 2)
+        self.assertEqual(by_locale["sw"], 1)
+        by_theme = {r["theme"]: r["count"] for r in res.data["by_theme"]}
+        self.assertEqual(by_theme["paper"], 2)
+        self.assertEqual(by_theme["dark"], 1)
+
+        self.assertEqual(len(res.data["weekly_signups"]), 12)
+        self.assertEqual(res.data["weekly_signups"][-1]["count"], 3)  # all signed up this week
+
+    @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
+    def test_requires_admin(self):
+        res = self.client.get("/api/admin/users/")
+        self.assertIn(res.status_code, (401, 403))
