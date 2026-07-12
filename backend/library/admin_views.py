@@ -93,6 +93,7 @@ class AdminStatsView(APIView):
                         "chapters": 0,
                         "sermons": 0,
                         "plans": 0,
+                        "bios": 0,
                         "words": 0,
                         "source_types": {
                             "public_domain": 0,
@@ -137,6 +138,18 @@ class AdminStatsView(APIView):
 
         for r in Plan.objects.values("language").annotate(n=Count("id")):
             row(r["language"])["plans"] = r["n"]
+
+        # Translated long-form (bio_html) author biographies, per language. The
+        # English row counts the canonical authors that have one.
+        for r in (
+            AuthorTranslation.objects.exclude(bio_html="")
+            .values("language")
+            .annotate(n=Count("id"))
+        ):
+            row(r["language"])["bios"] = r["n"]
+        en_bios = Author.objects.exclude(bio_html="").count()
+        if en_bios:
+            row("en")["bios"] = en_bios
 
         return sorted(
             rows.values(),
@@ -192,3 +205,177 @@ class AdminStatsView(APIView):
             }
             for b in books
         ]
+
+
+# How many "next to work on" items to surface per content type.
+TODO_LIMIT = 4
+
+
+class AdminLanguageDetailView(APIView):
+    """Per-language drill-down: what's translated into a language, and the next
+    few items to translate next.
+
+    "Present" lists everything published (or drafted) in the language. The
+    "todo" lists are the highest-priority English works (by ``sort_order``) that
+    do *not* yet exist in the language — the natural next targets for the
+    translate-book / write-biography pipelines. English is the source language,
+    so it has no todo lists.
+    """
+
+    permission_classes = [IsAdminEmail]
+
+    def get(self, request, code):
+        code = code.lower()
+        return Response(
+            {
+                "language": _language_entry(code),
+                "is_source": code == "en",
+                "english_counts": self._english_counts(),
+                "books": self._books(code),
+                "sermons": self._sermons(code),
+                "plans": self._plans(code),
+                "bios": self._bios(code),
+                "todo": {
+                    "books": self._books_todo(code),
+                    "sermons": self._sermons_todo(code),
+                    "plans": self._plans_todo(code),
+                    "bios": self._bios_todo(code),
+                },
+            }
+        )
+
+    # -- present ---------------------------------------------------------------
+
+    def _books(self, code) -> list[dict]:
+        books = (
+            Book.objects.filter(language=code)
+            .select_related("author")
+            .annotate(num_chapters=Count("chapters"))
+            .order_by("sort_order", "title")
+        )
+        return [
+            {
+                "slug": b.slug,
+                "title": b.title,
+                "author": b.author.name,
+                "chapters": b.num_chapters,
+                "source_type": b.source_type,
+                "is_published": b.is_published,
+            }
+            for b in books
+        ]
+
+    def _sermons(self, code) -> list[dict]:
+        sermons = (
+            Sermon.objects.filter(language=code)
+            .select_related("author")
+            .order_by("sort_order", "title")
+        )
+        return [
+            {
+                "slug": s.slug,
+                "title": s.title,
+                "author": s.author.name,
+                "word_count": s.word_count,
+                "is_published": s.is_published,
+            }
+            for s in sermons
+        ]
+
+    def _plans(self, code) -> list[dict]:
+        plans = (
+            Plan.objects.filter(language=code)
+            .annotate(num_days=Count("days"))
+            .order_by("sort_order", "title")
+        )
+        return [
+            {
+                "slug": p.slug,
+                "title": p.title,
+                "days": p.num_days,
+                "is_published": p.is_published,
+            }
+            for p in plans
+        ]
+
+    def _bios(self, code) -> list[dict]:
+        """Authors whose long-form (bio_html) biography exists in this language."""
+        if code == "en":
+            authors = Author.objects.exclude(bio_html="").order_by("name")
+            return [
+                {"slug": a.slug, "name": a.name, "reviewed": True} for a in authors
+            ]
+        trs = (
+            AuthorTranslation.objects.filter(language=code)
+            .exclude(bio_html="")
+            .select_related("author")
+            .order_by("author__name")
+        )
+        return [
+            {"slug": t.author.slug, "name": t.author.name, "reviewed": t.reviewed}
+            for t in trs
+        ]
+
+    # -- next to work on -------------------------------------------------------
+
+    def _books_todo(self, code) -> list[dict]:
+        if code == "en":
+            return []
+        have = set(Book.objects.filter(language=code).values_list("slug", flat=True))
+        qs = (
+            Book.objects.filter(language="en", is_published=True)
+            .exclude(slug__in=have)
+            .select_related("author")
+            .order_by("sort_order", "title")[:TODO_LIMIT]
+        )
+        return [
+            {"slug": b.slug, "title": b.title, "author": b.author.name} for b in qs
+        ]
+
+    def _sermons_todo(self, code) -> list[dict]:
+        if code == "en":
+            return []
+        have = set(Sermon.objects.filter(language=code).values_list("slug", flat=True))
+        qs = (
+            Sermon.objects.filter(language="en", is_published=True)
+            .exclude(slug__in=have)
+            .select_related("author")
+            .order_by("sort_order", "title")[:TODO_LIMIT]
+        )
+        return [
+            {"slug": s.slug, "title": s.title, "author": s.author.name} for s in qs
+        ]
+
+    def _plans_todo(self, code) -> list[dict]:
+        if code == "en":
+            return []
+        have = set(Plan.objects.filter(language=code).values_list("slug", flat=True))
+        qs = (
+            Plan.objects.filter(language="en", is_published=True)
+            .exclude(slug__in=have)
+            .order_by("sort_order", "title")[:TODO_LIMIT]
+        )
+        return [{"slug": p.slug, "title": p.title} for p in qs]
+
+    def _bios_todo(self, code) -> list[dict]:
+        if code == "en":
+            return []
+        translated = set(
+            AuthorTranslation.objects.filter(language=code)
+            .exclude(bio_html="")
+            .values_list("author__slug", flat=True)
+        )
+        qs = (
+            Author.objects.exclude(bio_html="")
+            .exclude(slug__in=translated)
+            .order_by("name")[:TODO_LIMIT]
+        )
+        return [{"slug": a.slug, "name": a.name} for a in qs]
+
+    def _english_counts(self) -> dict:
+        return {
+            "books": Book.objects.filter(language="en", is_published=True).count(),
+            "sermons": Sermon.objects.filter(language="en", is_published=True).count(),
+            "plans": Plan.objects.filter(language="en", is_published=True).count(),
+            "bios": Author.objects.exclude(bio_html="").count(),
+        }

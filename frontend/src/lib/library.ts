@@ -226,6 +226,7 @@ export interface AdminLanguageStat {
 	chapters: number;
 	sermons: number;
 	plans: number;
+	bios: number;
 	words: number;
 	source_types: AdminSourceTypeCounts;
 }
@@ -258,3 +259,57 @@ export interface AdminStats {
 }
 
 export const getAdminStats = () => apiFetch<AdminStats>('/api/admin/stats/');
+
+// Per-language drill-down: what's translated into a language + the next items
+// to work on.
+
+export interface AdminLangBook {
+	slug: string;
+	title: string;
+	author: string;
+	chapters: number;
+	source_type: SourceType;
+	is_published: boolean;
+}
+
+export interface AdminLangSermon {
+	slug: string;
+	title: string;
+	author: string;
+	word_count: number;
+	is_published: boolean;
+}
+
+export interface AdminLangPlan {
+	slug: string;
+	title: string;
+	days: number;
+	is_published: boolean;
+}
+
+export interface AdminLangBio {
+	slug: string;
+	name: string;
+	reviewed: boolean;
+}
+
+export interface AdminLangTodo {
+	books: { slug: string; title: string; author: string }[];
+	sermons: { slug: string; title: string; author: string }[];
+	plans: { slug: string; title: string }[];
+	bios: { slug: string; name: string }[];
+}
+
+export interface AdminLanguageDetail {
+	language: Language;
+	is_source: boolean;
+	english_counts: { books: number; sermons: number; plans: number; bios: number };
+	books: AdminLangBook[];
+	sermons: AdminLangSermon[];
+	plans: AdminLangPlan[];
+	bios: AdminLangBio[];
+	todo: AdminLangTodo;
+}
+
+export const getAdminLanguageDetail = (code: string) =>
+	apiFetch<AdminLanguageDetail>(`/api/admin/languages/${encodeURIComponent(code)}/`);
