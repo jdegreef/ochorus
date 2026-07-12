@@ -363,3 +363,43 @@ export const approveReview = (body: { kind: 'book' | 'bio'; slug: string; langua
 		method: 'POST',
 		body: JSON.stringify(body)
 	});
+
+// Content audit: quality (book-qa heuristics) + integrity findings. Each check
+// is a capped list with a total.
+
+export interface Capped<T> {
+	total: number;
+	items: T[];
+}
+
+export interface AuditChapterFinding {
+	book: string;
+	language: string;
+	order: number;
+	title: string;
+	word_count?: number;
+	avg_words?: number;
+	paragraphs?: number;
+	starts?: string;
+	ends?: string;
+}
+
+export interface AdminAudit {
+	quality: {
+		generic_titles: Capped<AuditChapterFinding>;
+		tiny_chapters: Capped<AuditChapterFinding>;
+		giant_chapters: Capped<AuditChapterFinding>;
+		fragmented: Capped<AuditChapterFinding>;
+		missing_dropcap: Capped<AuditChapterFinding>;
+		mid_sentence_splits: Capped<AuditChapterFinding>;
+		duplicate_titles: Capped<{ book: string; title: string; count: number }>;
+	};
+	integrity: {
+		empty_books: Capped<{ book: string; language: string; title: string; author: string }>;
+		empty_chapters: Capped<AuditChapterFinding>;
+		order_gaps: Capped<{ book: string; missing: number[]; count: number }>;
+		broken_plan_days: Capped<{ plan: string; language: string; day: number; book: string; order: number }>;
+	};
+}
+
+export const getAdminAudit = () => apiFetch<AdminAudit>('/api/admin/audit/');

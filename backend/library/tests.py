@@ -503,3 +503,50 @@ class AdminReviewQueueTests(TestCase):
     def test_requires_admin(self):
         res = self.client.get("/api/admin/review-queue/")
         self.assertIn(res.status_code, (401, 403))
+
+
+class AdminAuditTests(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+        self.author = Author.objects.create(slug="am", name="Andrew Murray")
+        self.book = Book.objects.create(author=self.author, slug="humility", language="en", title="Humility")
+        # ch1: generic title + doesn't end in terminal punctuation (mid-split, has next).
+        Chapter.objects.create(book=self.book, order=1, title="Chapter I", body_html="<p>text runs on</p>", word_count=300)
+        # ch2: empty chapter (also an order gap will exist since order 3 skipped).
+        Chapter.objects.create(book=self.book, order=2, title="Real Title", body_html="", word_count=0)
+        # ch4: starts lowercase (missing drop cap); order 3 is missing → gap.
+        Chapter.objects.create(book=self.book, order=4, title="Good", body_html="<p>and so it began.</p>", word_count=200)
+        # A book with no chapters at all.
+        Book.objects.create(author=self.author, slug="empty", language="en", title="Empty Book")
+        # A plan whose day points at a non-existent chapter.
+        plan = Plan.objects.create(slug="p1", language="en", title="Plan One")
+        PlanDay.objects.create(plan=plan, day=1, book_slug="humility", chapter_order=1)  # valid
+        PlanDay.objects.create(plan=plan, day=2, book_slug="humility", chapter_order=99)  # broken
+
+    @override_settings(DEBUG=True)
+    def test_quality_checks(self):
+        res = self.client.get("/api/admin/audit/")
+        self.assertEqual(res.status_code, 200)
+        q = res.data["quality"]
+        gen = [(f["book"], f["order"]) for f in q["generic_titles"]["items"]]
+        self.assertIn(("humility", 1), gen)
+        mids = [(f["book"], f["order"]) for f in q["mid_sentence_splits"]["items"]]
+        self.assertIn(("humility", 1), mids)  # order 1, has a later chapter, no terminal punct
+        drops = [(f["book"], f["order"]) for f in q["missing_dropcap"]["items"]]
+        self.assertIn(("humility", 4), drops)
+
+    @override_settings(DEBUG=True)
+    def test_integrity_checks(self):
+        res = self.client.get("/api/admin/audit/")
+        integ = res.data["integrity"]
+        self.assertIn("empty", [b["book"] for b in integ["empty_books"]["items"]])
+        self.assertIn(("humility", 2), [(c["book"], c["order"]) for c in integ["empty_chapters"]["items"]])
+        gaps = {g["book"]: g["missing"] for g in integ["order_gaps"]["items"]}
+        self.assertEqual(gaps.get("humility"), [3])
+        broken = [(d["plan"], d["day"]) for d in integ["broken_plan_days"]["items"]]
+        self.assertEqual(broken, [("p1", 2)])
+
+    @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
+    def test_requires_admin(self):
+        res = self.client.get("/api/admin/audit/")
+        self.assertIn(res.status_code, (401, 403))
