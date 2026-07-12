@@ -170,7 +170,9 @@ def is_front_matter(title: str) -> bool:
     t = title.strip().lower().rstrip(".")
     if t.startswith("index"):  # "Index", "Indexes", "Index of Bible Verses Used"
         return True
-    return t in {"contents", "table of contents", "title page", "prefatory note"}
+    # "title" = a bare title-page section (CCEL lists one for some works); note
+    # "the title" (a real exposition section) is a different string and kept.
+    return t in {"contents", "table of contents", "title", "title page", "prefatory note"}
 
 
 # A bare 1–3 digit number stuck to the very end of a chapter, directly after

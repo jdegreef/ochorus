@@ -275,4 +275,13 @@ SERMONS: list[SermonEntry] = [
         "https://online.ambrose.edu/alliancestudies/simpson/larglif3.htm",
         scripture_ref="Nehemiah 8:10",
     ),
+    SermonEntry(
+        "unfailing-springs",
+        "Unfailing Springs",
+        "hudson-taylor",
+        "gutenberg",
+        "57109",
+        section="Unfailing Springs",
+        scripture_ref="John 4:14",
+    ),
 ]
