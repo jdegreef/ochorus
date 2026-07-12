@@ -35,7 +35,11 @@ class MeView(APIView):
         }
 
     def get(self, request):
-        return Response(self._serialize(self._profile(request)))
+        from .permissions import is_admin_user
+
+        data = self._serialize(self._profile(request))
+        data["is_admin"] = is_admin_user(request.user)
+        return Response(data)
 
     def patch(self, request):
         profile = self._profile(request)

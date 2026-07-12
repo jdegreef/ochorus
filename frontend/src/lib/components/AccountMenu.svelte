@@ -48,6 +48,11 @@
 				<div class="account-menu" role="menu">
 					<div class="truncate px-3 py-1.5 text-small text-muted">{auth.user.email}</div>
 					<div class="my-1 border-t border-border"></div>
+					{#if auth.isAdmin}
+						<a class="account-item" role="menuitem" href={localizeHref('/admin')} onclick={() => (open = false)}
+							>Admin</a
+						>
+					{/if}
 					<a class="account-item" role="menuitem" href={localizeHref('/account')} onclick={() => (open = false)}
 						>Account</a
 					>

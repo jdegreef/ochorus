@@ -12,6 +12,7 @@ export interface Profile {
 	locale: string;
 	theme: string;
 	font_scale: number;
+	is_admin?: boolean;
 }
 
 const NOT_CONFIGURED = 'Sign-in is not configured yet.';
@@ -27,6 +28,8 @@ const origin = () => (browser ? window.location.origin : undefined);
 class Auth {
 	enabled = authEnabled;
 	user = $state<{ email: string } | null>(null);
+	// Whether the signed-in user may see the /admin dashboard (from the profile).
+	isAdmin = $state(false);
 	#token: string | null = null;
 	#ready = false;
 	#pushTimer: ReturnType<typeof setTimeout> | undefined;
@@ -59,6 +62,7 @@ class Auth {
 	#applySession(session: { access_token: string; user: { email?: string } } | null) {
 		this.#token = session?.access_token ?? null;
 		this.user = session ? { email: session.user.email ?? '' } : null;
+		if (!session) this.isAdmin = false;
 		readingSync.setSignedIn(!!session);
 	}
 
@@ -126,12 +130,14 @@ class Auth {
 		await supabase()?.auth.signOut();
 		this.user = null;
 		this.#token = null;
+		this.isAdmin = false;
 	}
 
 	/** Pull the saved profile and apply reading preferences locally. */
 	async #pullProfile() {
 		try {
 			const p = await apiFetch<Profile>('/api/auth/me/');
+			this.isAdmin = !!p.is_admin;
 			if (p.theme === 'dark' || p.theme === 'light') theme.set(p.theme);
 			if (p.font_scale) readerPrefs.setScale(p.font_scale);
 			// Only adopt the saved locale if it's a language we still offer content
