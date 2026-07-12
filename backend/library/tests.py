@@ -383,3 +383,44 @@ class AdminLanguageDetailTests(TestCase):
     def test_requires_admin(self):
         res = self.client.get("/api/admin/languages/sw/")
         self.assertIn(res.status_code, (401, 403))
+
+
+class AdminCoverageTests(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+        author = Author.objects.create(slug="am", name="Andrew Murray")
+        Book.objects.create(author=author, slug="humility", language="en", title="Humility", sort_order=0)
+        Book.objects.create(
+            author=author, slug="humility", language="sw", title="Unyenyekevu",
+            source_type=Book.SourceType.AI_UNREVIEWED, sort_order=0,
+        )
+        Book.objects.create(author=author, slug="abide", language="en", title="Abide", sort_order=1)
+        Sermon.objects.create(author=author, slug="grace", language="en", title="Grace", body_html="<p>g</p>")
+        Plan.objects.create(slug="p1", language="es", title="Plan Uno")
+
+    @override_settings(DEBUG=True)
+    def test_matrix_shape_and_cells(self):
+        res = self.client.get("/api/admin/coverage/")
+        self.assertEqual(res.status_code, 200)
+
+        # Columns are the union of all content languages, English first.
+        codes = [l["code"] for l in res.data["languages"]]
+        self.assertEqual(codes[0], "en")
+        self.assertEqual(set(codes), {"en", "sw", "es"})
+
+        books = {b["slug"]: b for b in res.data["books"]}
+        # Canonical title comes from the English row; cells carry source_type.
+        self.assertEqual(books["humility"]["title"], "Humility")
+        self.assertEqual(books["humility"]["cells"]["en"], "public_domain")
+        self.assertEqual(books["humility"]["cells"]["sw"], "ai_unreviewed")
+        self.assertNotIn("es", books["humility"]["cells"])  # missing → absent
+        # Rows ordered by sort_order.
+        self.assertEqual([b["slug"] for b in res.data["books"]], ["humility", "abide"])
+
+        self.assertEqual(res.data["sermons"][0]["cells"], {"en": "present"})
+        self.assertEqual(res.data["plans"][0]["cells"], {"es": "present"})
+
+    @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
+    def test_requires_admin(self):
+        res = self.client.get("/api/admin/coverage/")
+        self.assertIn(res.status_code, (401, 403))
