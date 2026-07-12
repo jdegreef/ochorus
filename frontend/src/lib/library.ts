@@ -332,3 +332,34 @@ export interface AdminCoverage {
 }
 
 export const getAdminCoverage = () => apiFetch<AdminCoverage>('/api/admin/coverage/');
+
+// AI-translation review queue: unreviewed books + author bios, with approve.
+
+export interface ReviewQueueBook {
+	slug: string;
+	language: string;
+	title: string;
+	author: string;
+	chapters: number;
+}
+
+export interface ReviewQueueBio {
+	slug: string;
+	language: string;
+	name: string;
+	has_short: boolean;
+	has_long: boolean;
+}
+
+export interface ReviewQueue {
+	books: ReviewQueueBook[];
+	bios: ReviewQueueBio[];
+}
+
+export const getReviewQueue = () => apiFetch<ReviewQueue>('/api/admin/review-queue/');
+
+export const approveReview = (body: { kind: 'book' | 'bio'; slug: string; language: string }) =>
+	apiFetch<{ ok: boolean }>('/api/admin/review-queue/', {
+		method: 'POST',
+		body: JSON.stringify(body)
+	});

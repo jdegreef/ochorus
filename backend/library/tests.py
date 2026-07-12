@@ -424,3 +424,82 @@ class AdminCoverageTests(TestCase):
     def test_requires_admin(self):
         res = self.client.get("/api/admin/coverage/")
         self.assertIn(res.status_code, (401, 403))
+
+
+class AdminReviewQueueTests(TestCase):
+    def setUp(self):
+        from .models import AuthorTranslation
+
+        self.client = APIClient()
+        self.author = Author.objects.create(slug="am", name="Andrew Murray")
+        self.book = Book.objects.create(
+            author=self.author, slug="humility", language="sw", title="Unyenyekevu",
+            source_type=Book.SourceType.AI_UNREVIEWED,
+        )
+        # A reviewed book and a public-domain original should NOT appear.
+        Book.objects.create(
+            author=self.author, slug="abide", language="es", title="Permaneced",
+            source_type=Book.SourceType.AI_REVIEWED,
+        )
+        Book.objects.create(author=self.author, slug="humility", language="en", title="Humility")
+        self.tr = AuthorTranslation.objects.create(
+            author=self.author, language="sw", bio_html="<p>Wasifu.</p>", reviewed=False
+        )
+        AuthorTranslation.objects.create(
+            author=self.author, language="es", bio="Bio.", reviewed=True
+        )  # reviewed → excluded
+
+    @override_settings(DEBUG=True)
+    def test_lists_only_unreviewed(self):
+        res = self.client.get("/api/admin/review-queue/")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual([b["slug"] for b in res.data["books"]], ["humility"])
+        self.assertEqual(res.data["books"][0]["language"], "sw")
+        self.assertEqual([b["language"] for b in res.data["bios"]], ["sw"])
+        self.assertTrue(res.data["bios"][0]["has_long"])
+
+    @override_settings(DEBUG=True)
+    def test_approve_book_flips_source_type(self):
+        res = self.client.post(
+            "/api/admin/review-queue/",
+            {"kind": "book", "slug": "humility", "language": "sw"},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        self.book.refresh_from_db()
+        self.assertEqual(self.book.source_type, Book.SourceType.AI_REVIEWED)
+        # It drops out of the queue afterwards.
+        follow = self.client.get("/api/admin/review-queue/")
+        self.assertEqual(follow.data["books"], [])
+
+    @override_settings(DEBUG=True)
+    def test_approve_bio_marks_reviewed(self):
+        res = self.client.post(
+            "/api/admin/review-queue/",
+            {"kind": "bio", "slug": "am", "language": "sw"},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        self.tr.refresh_from_db()
+        self.assertTrue(self.tr.reviewed)
+
+    @override_settings(DEBUG=True)
+    def test_approve_public_domain_book_rejected(self):
+        res = self.client.post(
+            "/api/admin/review-queue/",
+            {"kind": "book", "slug": "humility", "language": "en"},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 400)
+
+    @override_settings(DEBUG=True)
+    def test_bad_payload_rejected(self):
+        res = self.client.post(
+            "/api/admin/review-queue/", {"kind": "book"}, format="json"
+        )
+        self.assertEqual(res.status_code, 400)
+
+    @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
+    def test_requires_admin(self):
+        res = self.client.get("/api/admin/review-queue/")
+        self.assertIn(res.status_code, (401, 403))
