@@ -77,15 +77,15 @@
 		<div class="mx-auto my-12 flex max-w-md items-center gap-4 text-gold">
 			<span class="h-px flex-1 bg-gold/30"></span>
 			<span class="text-small font-semibold whitespace-nowrap uppercase tracking-[0.2em]">
-				A few to try · fresh daily
+				{t('error.picksLabel')}
 			</span>
 			<span class="h-px flex-1 bg-gold/30"></span>
 		</div>
 
 		{#if bookPicks.length}
 			<section class="mb-14">
-				<h2 class="text-h2 mb-1">Three books to begin with</h2>
-				<p class="mb-6 text-small text-muted">Different voices, changing every day.</p>
+				<h2 class="text-h2 mb-1">{t('error.picksBooksHeading')}</h2>
+				<p class="mb-6 text-small text-muted">{t('error.picksBooksSub')}</p>
 				<div class="grid grid-cols-3 gap-4 sm:gap-6">
 					{#each bookPicks as book (book.slug)}
 						<a
@@ -128,8 +128,8 @@
 
 		{#if sermonPicks.length}
 			<section>
-				<h2 class="text-h2 mb-1">Four sermons worth an evening</h2>
-				<p class="mb-6 text-small text-muted">Short reads — or listen with ▶.</p>
+				<h2 class="text-h2 mb-1">{t('error.picksSermonsHeading')}</h2>
+				<p class="mb-6 text-small text-muted">{t('error.picksSermonsSub')}</p>
 				<div class="grid gap-4 sm:grid-cols-2">
 					{#each sermonPicks as sermon (sermon.slug)}
 						<a
