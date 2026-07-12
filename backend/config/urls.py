@@ -5,6 +5,7 @@ from django.urls import include, path
 
 from accounts.views import MeView, health
 from library.admin_views import (
+    AdminAuditView,
     AdminCoverageView,
     AdminLanguageDetailView,
     AdminReviewQueueView,
@@ -17,6 +18,7 @@ urlpatterns = [
     path("api/auth/me/", MeView.as_view(), name="me"),
     path("api/admin/stats/", AdminStatsView.as_view(), name="admin-stats"),
     path("api/admin/coverage/", AdminCoverageView.as_view(), name="admin-coverage"),
+    path("api/admin/audit/", AdminAuditView.as_view(), name="admin-audit"),
     path(
         "api/admin/review-queue/",
         AdminReviewQueueView.as_view(),
