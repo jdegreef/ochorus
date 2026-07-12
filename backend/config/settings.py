@@ -13,6 +13,8 @@ from pathlib import Path
 import dj_database_url
 from dotenv import load_dotenv
 
+from common.env import origin_url
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv(BASE_DIR / ".env")
@@ -143,7 +145,10 @@ REST_FRAMEWORK = {
 
 # --- Supabase -----------------------------------------------------------------
 
-SUPABASE_URL = os.getenv("SUPABASE_URL", "").rstrip("/")
+# Normalized to the project origin: the auth layer appends the JWKS path to
+# this, so a pasted REST/auth path (…/rest/v1) would otherwise break token
+# validation. See common.env.origin_url.
+SUPABASE_URL = origin_url(os.getenv("SUPABASE_URL", ""))
 SUPABASE_JWT_SECRET = os.getenv("SUPABASE_JWT_SECRET", "")
 SUPABASE_JWT_AUDIENCE = os.getenv("SUPABASE_JWT_AUDIENCE", "authenticated")
 SUPABASE_SERVICE_ROLE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY", "")

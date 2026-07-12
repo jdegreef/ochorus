@@ -12,12 +12,16 @@ the Supabase user (``sub`` claim, a UUID) to a Django User + UserProfile.
 
 from __future__ import annotations
 
+import logging
+
 import jwt
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from rest_framework import authentication, exceptions
 
 User = get_user_model()
+
+logger = logging.getLogger(__name__)
 
 
 class SupabaseJWTAuthentication(authentication.BaseAuthentication):
@@ -35,7 +39,7 @@ class SupabaseJWTAuthentication(authentication.BaseAuthentication):
         try:
             payload = self._decode(token)
             user = self._get_or_create_user(payload)
-        except exceptions.AuthenticationFailed:
+        except exceptions.AuthenticationFailed as exc:
             # An expired or invalid token must NOT break public (AllowAny)
             # endpoints. DRF runs authentication before the permission check, so
             # raising here 401s the whole request — meaning a signed-in user whose
@@ -43,6 +47,16 @@ class SupabaseJWTAuthentication(authentication.BaseAuthentication):
             # page (the frontend load throws the 401). Treat a bad token as
             # anonymous instead; protected endpoints still return 401 via
             # IsAuthenticated on the resulting AnonymousUser.
+            #
+            # Log the reason (never the token) so a misconfiguration — a wrong
+            # SUPABASE_URL, an unreachable JWKS, an audience mismatch — is visible
+            # instead of silently 401ing every authenticated request. Routine
+            # expiry is noise, so it's logged quietly.
+            msg = str(exc)
+            if "expired" in msg.lower():
+                logger.info("Ignoring expired Supabase token")
+            else:
+                logger.warning("Rejected Supabase token: %s", msg)
             return None
         return (user, payload)
 
@@ -70,6 +84,8 @@ class SupabaseJWTAuthentication(authentication.BaseAuthentication):
             return jwt.decode(token, key, algorithms=[alg], audience=audience)
         except exceptions.AuthenticationFailed:
             raise
+        except jwt.ExpiredSignatureError:
+            raise exceptions.AuthenticationFailed("Token has expired")
         except jwt.PyJWTError as exc:
             raise exceptions.AuthenticationFailed(f"Invalid token: {exc}")
 
