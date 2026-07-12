@@ -73,9 +73,7 @@
 <svelte:head><title>Admin · Coverage — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
 
 <div class="mx-auto max-w-6xl px-5 py-10">
-	<a href="/admin" class="text-small text-accent hover:underline">← Back to dashboard</a>
-
-	<header class="mb-6 mt-3">
+	<header class="mb-6">
 		<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">Admin</p>
 		<h1 class="text-display">Coverage matrix</h1>
 		<p class="mt-2 text-body text-muted">Every work × language — where each is translated, and where the gaps are.</p>

@@ -135,13 +135,6 @@
 			<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">Admin</p>
 			<h1 class="text-display">Content dashboard</h1>
 			<p class="mt-2 text-body text-muted">A snapshot of the library — quantities, languages and health.</p>
-			<nav class="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-small font-semibold">
-				<a href="/admin/coverage" class="text-accent hover:underline">Coverage matrix</a>
-				<a href="/admin/review" class="text-accent hover:underline">Review queue</a>
-				<a href="/admin/audit" class="text-accent hover:underline">Content audit</a>
-				<a href="/admin/engagement" class="text-accent hover:underline">Engagement</a>
-				<a href="/admin/users" class="text-accent hover:underline">Users</a>
-			</nav>
 		</div>
 		{#if stats}
 			<div class="flex flex-wrap items-center gap-2">
