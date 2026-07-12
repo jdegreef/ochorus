@@ -41,9 +41,21 @@ must be noted to the user).
    `/books/<slug>` + `/authors/<slug>` pages keep the OLD data. Manually
    redeploy ochorus-web (Clear cache & deploy latest commit) after the api
    is live.
-6. Verify on prod: hit the changed book's API endpoint AND its prerendered
-   page (check content, not just status — the SPA catch-all serves 200 for
-   everything).
+   **THE CONTENT-RACE (bites when the SAME PR changes a migration AND
+   frontend):** both services autoDeploy in parallel, so the web build's
+   PRERENDER can run BEFORE the api migration lands and bake the OLD data —
+   even though the web DID rebuild (so it looks fine). Symptom: the API has the
+   new value but the prerendered page still shows the old one (my portraits:
+   `/biographies` baked 13, not 18). Fix is a SECOND rebuild AFTER the api is
+   live: a one-line frontend touch (a dated comment on the relevant `+page.ts`)
+   → merge → re-prerender. This recurs constantly — see the "Refresh … prerender
+   (content-race)" PRs #50/#53/#58/#64. Client-side nav already shows the new
+   data (the load re-fetches); only the prerendered initial HTML / SEO is stale.
+6. Verify on prod: hit the changed item's API endpoint AND its prerendered
+   page (check the CONTENT — grep the baked value, e.g. the portrait count or
+   `photo_url` — not just status; the SPA catch-all serves 200 for everything).
+   If the API is right but the page is stale, it's the content-race → do step 5's
+   refresh, don't re-debug.
 
 ## Text-change etiquette
 
