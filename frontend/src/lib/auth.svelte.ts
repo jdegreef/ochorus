@@ -30,6 +30,10 @@ class Auth {
 	user = $state<{ email: string } | null>(null);
 	// Whether the signed-in user may see the /admin dashboard (from the profile).
 	isAdmin = $state(false);
+	// True once the initial session has been resolved (or auth is unconfigured),
+	// so callers can wait before making authenticated requests rather than firing
+	// a premature unauthenticated one on a fresh page load.
+	initialized = $state(false);
 	#token: string | null = null;
 	#ready = false;
 	#pushTimer: ReturnType<typeof setTimeout> | undefined;
@@ -40,10 +44,14 @@ class Auth {
 		setAuthTokenProvider(() => this.#token);
 
 		const sb = supabase();
-		if (!sb) return;
+		if (!sb) {
+			this.initialized = true; // auth unconfigured — nothing to restore
+			return;
+		}
 
 		const { data } = await sb.auth.getSession();
 		this.#applySession(data.session);
+		this.initialized = true; // session resolved and token attached (if any)
 		if (data.session) {
 			await this.#pullProfile();
 			await readingSync.mergeOnSignIn();
