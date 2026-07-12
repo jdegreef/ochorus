@@ -313,3 +313,22 @@ export interface AdminLanguageDetail {
 
 export const getAdminLanguageDetail = (code: string) =>
 	apiFetch<AdminLanguageDetail>(`/api/admin/languages/${encodeURIComponent(code)}/`);
+
+// Translation-coverage matrix: works (rows) × languages (columns). A book cell
+// carries its source_type; sermon/plan cells are "present". Missing = absent.
+
+export interface AdminCoverageRow {
+	slug: string;
+	title: string;
+	author?: string;
+	cells: Record<string, SourceType | 'present'>;
+}
+
+export interface AdminCoverage {
+	languages: Language[];
+	books: AdminCoverageRow[];
+	sermons: AdminCoverageRow[];
+	plans: AdminCoverageRow[];
+}
+
+export const getAdminCoverage = () => apiFetch<AdminCoverage>('/api/admin/coverage/');

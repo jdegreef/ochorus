@@ -379,3 +379,85 @@ class AdminLanguageDetailView(APIView):
             "plans": Plan.objects.filter(language="en", is_published=True).count(),
             "bios": Author.objects.exclude(bio_html="").count(),
         }
+
+
+class AdminCoverageView(APIView):
+    """Translation-coverage matrices: every canonical work (row) × language
+    (column), so gaps across the whole library are visible at a glance.
+
+    Books, sermons and plans each get their own matrix but share one column set
+    (every language present in any of them, English first). A book cell carries
+    its ``source_type``; sermon/plan cells are simply "present" (those models
+    have no source_type). A missing language is absent from the row's ``cells``.
+    """
+
+    permission_classes = [IsAdminEmail]
+
+    def get(self, request):
+        codes = self._language_codes()
+        return Response(
+            {
+                "languages": [_language_entry(c) for c in codes],
+                "books": self._book_rows(),
+                "sermons": self._sermon_rows(),
+                "plans": self._plan_rows(),
+            }
+        )
+
+    def _language_codes(self) -> list[str]:
+        codes: set[str] = set()
+        for model in (Book, Sermon, Plan):
+            codes.update(model.objects.values_list("language", flat=True).distinct())
+        return sorted(codes, key=lambda c: (c != "en", c))
+
+    def _rows(self, records, cell_value, *, with_author: bool) -> list[dict]:
+        """Collapse per-(slug, language) records into one row per slug.
+
+        ``records`` is an iterable of dicts with slug/language/title/sort_order
+        (and author__name when ``with_author``). The canonical title/author is
+        taken from the English row when present, else the first seen.
+        """
+        rows: dict[str, dict] = {}
+        for r in records:
+            slug = r["slug"]
+            row = rows.get(slug)
+            is_en = r["language"] == "en"
+            if row is None:
+                row = rows[slug] = {
+                    "slug": slug,
+                    "title": r["title"],
+                    "sort_order": r["sort_order"],
+                    "cells": {},
+                    "_have_en": False,
+                }
+                if with_author:
+                    row["author"] = r["author__name"]
+            # Prefer the English row's display metadata.
+            if is_en and not row["_have_en"]:
+                row["title"] = r["title"]
+                row["sort_order"] = r["sort_order"]
+                if with_author:
+                    row["author"] = r["author__name"]
+                row["_have_en"] = True
+            row["cells"][r["language"]] = cell_value(r)
+        ordered = sorted(rows.values(), key=lambda r: (r["sort_order"], r["title"]))
+        for r in ordered:
+            r.pop("sort_order")
+            r.pop("_have_en")
+        return ordered
+
+    def _book_rows(self) -> list[dict]:
+        records = Book.objects.select_related("author").values(
+            "slug", "language", "source_type", "title", "author__name", "sort_order"
+        )
+        return self._rows(records, lambda r: r["source_type"], with_author=True)
+
+    def _sermon_rows(self) -> list[dict]:
+        records = Sermon.objects.select_related("author").values(
+            "slug", "language", "title", "author__name", "sort_order"
+        )
+        return self._rows(records, lambda r: "present", with_author=True)
+
+    def _plan_rows(self) -> list[dict]:
+        records = Plan.objects.values("slug", "language", "title", "sort_order")
+        return self._rows(records, lambda r: "present", with_author=False)

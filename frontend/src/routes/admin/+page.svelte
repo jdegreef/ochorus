@@ -171,7 +171,10 @@
 
 		<!-- By language -->
 		<section class="mb-10">
-			<h2 class="text-h2 mb-3">By language</h2>
+			<div class="mb-1 flex flex-wrap items-center justify-between gap-2">
+				<h2 class="text-h2">By language</h2>
+				<a href="/admin/coverage" class="text-small font-semibold text-accent hover:underline">Coverage matrix →</a>
+			</div>
 			<p class="mb-3 text-small text-muted">Select a language to see what's translated and what to work on next.</p>
 			<div class="overflow-x-auto rounded-2xl border border-border bg-surface">
 				<table class="w-full min-w-[44rem] border-collapse text-body">
