@@ -119,6 +119,7 @@
 				<a href="/admin/coverage" class="text-accent hover:underline">Coverage matrix</a>
 				<a href="/admin/review" class="text-accent hover:underline">Review queue</a>
 				<a href="/admin/audit" class="text-accent hover:underline">Content audit</a>
+				<a href="/admin/engagement" class="text-accent hover:underline">Engagement</a>
 			</nav>
 		</div>
 		{#if stats}
