@@ -698,3 +698,39 @@ class AdminBookDetailTests(TestCase):
     def test_requires_admin(self):
         res = self.client.get("/api/admin/books/humility/")
         self.assertIn(res.status_code, (401, 403))
+
+
+class AdminExportTests(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+        author = Author.objects.create(slug="am", name="Andrew Murray", bio="x")
+        b = Book.objects.create(author=author, slug="humility", language="en", title="Humility")
+        Chapter.objects.create(book=b, order=1, title="One", body_html="<p>x</p>", word_count=100)
+        Sermon.objects.create(author=author, slug="grace", language="en", title="Grace", body_html="<p>g</p>", word_count=50)
+        Plan.objects.create(slug="p1", language="en", title="Plan One")
+
+    @override_settings(DEBUG=True)
+    def test_json_inventory(self):
+        res = self.client.get("/api/admin/export/")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["books"][0]["chapters"], 1)
+        self.assertEqual(res.data["books"][0]["words"], 100)
+        self.assertEqual(res.data["sermons"][0]["slug"], "grace")
+        self.assertEqual(res.data["plans"][0]["slug"], "p1")
+        self.assertEqual(res.data["authors"][0]["has_bio"], True)
+
+    @override_settings(DEBUG=True)
+    def test_csv_inventory(self):
+        res = self.client.get("/api/admin/export/?fmt=csv")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res["Content-Type"], "text/csv")
+        self.assertIn("attachment; filename=", res["Content-Disposition"])
+        body = res.content.decode()
+        self.assertIn("type,slug,language,title", body)
+        self.assertIn("book,humility,en,Humility", body)
+        self.assertIn("sermon,grace,en,Grace", body)
+
+    @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
+    def test_requires_admin(self):
+        res = self.client.get("/api/admin/export/")
+        self.assertIn(res.status_code, (401, 403))

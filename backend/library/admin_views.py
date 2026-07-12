@@ -1077,3 +1077,114 @@ class AdminBookDetailView(APIView):
                 "languages": languages,
             }
         )
+
+
+class AdminExportView(APIView):
+    """Download the full content inventory as JSON (default) or CSV.
+
+    ``?format=csv`` streams a flat one-row-per-item table (books, sermons,
+    plans); otherwise a structured JSON object (books, sermons, plans, authors)
+    for offline analysis or reporting. Admin-gated.
+    """
+
+    permission_classes = [IsAdminEmail]
+
+    def get(self, request):
+        data = self._inventory()
+        # Note: not "format" — DRF reserves that query param for renderer
+        # negotiation, so ?format=csv would 404 before reaching here.
+        if request.query_params.get("fmt", "").lower() == "csv":
+            return self._csv(data)
+        return Response(data)
+
+    def _inventory(self) -> dict:
+        books = [
+            {
+                "type": "book",
+                "slug": b.slug,
+                "language": b.language,
+                "title": b.title,
+                "subtitle": b.subtitle,
+                "author": b.author.name,
+                "source_type": b.source_type,
+                "is_published": b.is_published,
+                "chapters": b.num_chapters,
+                "words": b.words or 0,
+                "source_url": b.source_url,
+            }
+            for b in Book.objects.select_related("author")
+            .annotate(num_chapters=Count("chapters"), words=Sum("chapters__word_count"))
+            .order_by("slug", "language")
+        ]
+        sermons = [
+            {
+                "type": "sermon",
+                "slug": s.slug,
+                "language": s.language,
+                "title": s.title,
+                "author": s.author.name,
+                "is_published": s.is_published,
+                "words": s.word_count,
+                "source_url": s.source_url,
+            }
+            for s in Sermon.objects.select_related("author").order_by("slug", "language")
+        ]
+        plans = [
+            {
+                "type": "plan",
+                "slug": p.slug,
+                "language": p.language,
+                "title": p.title,
+                "is_published": p.is_published,
+                "days": p.num_days,
+            }
+            for p in Plan.objects.annotate(num_days=Count("days")).order_by(
+                "slug", "language"
+            )
+        ]
+        authors = [
+            {
+                "slug": a.slug,
+                "name": a.name,
+                "birth_year": a.birth_year,
+                "death_year": a.death_year,
+                "has_bio": bool(a.bio),
+                "has_bio_html": bool(a.bio_html),
+            }
+            for a in Author.objects.order_by("name")
+        ]
+        return {"books": books, "sermons": sermons, "plans": plans, "authors": authors}
+
+    def _csv(self, data: dict):
+        import csv
+        import io
+
+        from django.http import HttpResponse
+        from django.utils import timezone
+
+        buf = io.StringIO()
+        writer = csv.writer(buf)
+        writer.writerow(
+            ["type", "slug", "language", "title", "author", "source_type",
+             "published", "chapters_or_days", "words", "source_url"]
+        )
+        for b in data["books"]:
+            writer.writerow(
+                ["book", b["slug"], b["language"], b["title"], b["author"],
+                 b["source_type"], b["is_published"], b["chapters"], b["words"],
+                 b["source_url"]]
+            )
+        for s in data["sermons"]:
+            writer.writerow(
+                ["sermon", s["slug"], s["language"], s["title"], s["author"], "",
+                 s["is_published"], "", s["words"], s["source_url"]]
+            )
+        for p in data["plans"]:
+            writer.writerow(
+                ["plan", p["slug"], p["language"], p["title"], "", "",
+                 p["is_published"], p["days"], "", ""]
+            )
+        stamp = timezone.now().date().isoformat()
+        resp = HttpResponse(buf.getvalue(), content_type="text/csv")
+        resp["Content-Disposition"] = f'attachment; filename="ochorus-inventory-{stamp}.csv"'
+        return resp

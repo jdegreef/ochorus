@@ -9,6 +9,7 @@ from library.admin_views import (
     AdminBookDetailView,
     AdminCoverageView,
     AdminEngagementView,
+    AdminExportView,
     AdminLanguageDetailView,
     AdminReviewQueueView,
     AdminStatsView,
@@ -28,6 +29,7 @@ urlpatterns = [
         name="admin-engagement",
     ),
     path("api/admin/users/", AdminUsersView.as_view(), name="admin-users"),
+    path("api/admin/export/", AdminExportView.as_view(), name="admin-export"),
     path(
         "api/admin/books/<slug:slug>/",
         AdminBookDetailView.as_view(),

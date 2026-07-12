@@ -1,8 +1,28 @@
 <script lang="ts">
 	import { auth } from '$lib/auth.svelte';
-	import { ApiError } from '$lib/api';
+	import { ApiError, apiFetchRaw } from '$lib/api';
 	import { getAdminStats, type AdminStats, type SourceType } from '$lib/library';
 	import { localizeHref } from '$lib/paraglide/runtime';
+
+	let exporting = $state<'csv' | 'json' | null>(null);
+
+	async function exportInventory(fmt: 'csv' | 'json') {
+		exporting = fmt;
+		try {
+			const res = await apiFetchRaw(`/api/admin/export/${fmt === 'csv' ? '?fmt=csv' : ''}`);
+			const blob = await res.blob();
+			const url = URL.createObjectURL(blob);
+			const a = document.createElement('a');
+			a.href = url;
+			a.download = `ochorus-inventory.${fmt}`;
+			a.click();
+			URL.revokeObjectURL(url);
+		} catch {
+			/* denied or offline — the dashboard already surfaces auth errors */
+		} finally {
+			exporting = null;
+		}
+	}
 
 	// Internal tool: copy is English-only (not run through Paraglide).
 	let stats = $state<AdminStats | null>(null);
@@ -124,9 +144,17 @@
 			</nav>
 		</div>
 		{#if stats}
-			<button class="btn btn-ghost" onclick={load} disabled={loading}>
-				{loading ? 'Refreshing…' : 'Refresh'}
-			</button>
+			<div class="flex flex-wrap items-center gap-2">
+				<button class="btn btn-ghost !py-1.5 !text-small" onclick={() => exportInventory('csv')} disabled={!!exporting}>
+					{exporting === 'csv' ? 'Exporting…' : 'Export CSV'}
+				</button>
+				<button class="btn btn-ghost !py-1.5 !text-small" onclick={() => exportInventory('json')} disabled={!!exporting}>
+					{exporting === 'json' ? 'Exporting…' : 'Export JSON'}
+				</button>
+				<button class="btn btn-ghost" onclick={load} disabled={loading}>
+					{loading ? 'Refreshing…' : 'Refresh'}
+				</button>
+			</div>
 		{/if}
 	</header>
 
