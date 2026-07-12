@@ -42,6 +42,17 @@ services:
     buildCommand: npm ci && npm run build
     staticPublishPath: ./build
     autoDeploy: true
+    # By default Render rebuilds this static service only when files under its
+    # rootDir (frontend/) change — so a backend-only content commit (new authors,
+    # book/title edits) leaves the prerendered /books|authors|sermons pages stale
+    # until a MANUAL redeploy (deploy skill, gotcha #2). The library fixture is the
+    # single source of truth for that content and is refreshed on every content
+    # change (ship-content-fix), so trigger a rebuild when it changes too. NOTE:
+    # render.yaml changes need a manual Blueprint → Sync to take effect (gotcha #3).
+    buildFilter:
+      paths:
+        - frontend/**
+        - backend/library/fixtures/**
     routes:
       # INDEX pages: Render doesn't auto-map extensionless URLs to their .html
       # files, so map each one here.
