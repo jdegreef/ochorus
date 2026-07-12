@@ -3,7 +3,7 @@
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumb } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref, locales } from '$lib/paraglide/runtime';
 
 	const t = i18n.t;
 
@@ -16,7 +16,15 @@
 	const years = $derived(
 		author.birth_year ? `${author.birth_year}–${author.death_year ?? ''}` : ''
 	);
-	const canonical = $derived(`${SITE_URL}/authors/${author.slug}`);
+	// Self-referential canonical + hreflang: this page is prerendered per locale,
+	// so each localized copy points at ITSELF (not the English URL) and links its
+	// siblings, instead of every locale canonicalizing to /authors/<slug> (which
+	// deindexes the translations). Mirrors the /biographies list page.
+	const path = $derived(`/authors/${author.slug}`);
+	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
+	const alternates = $derived(
+		locales.map((loc) => ({ loc, href: `${SITE_URL}${localizeHref(path, { locale: loc })}` }))
+	);
 	const description = $derived(
 		(author.bio || `${author.name} on Ochorus — free classic Christian books.`).slice(0, 300)
 	);
@@ -34,6 +42,7 @@
 			'@type': 'Person',
 			name: author.name,
 			description: author.bio || undefined,
+			image: ogImage || undefined,
 			birthDate: author.birth_year ? String(author.birth_year) : undefined,
 			deathDate: author.death_year ? String(author.death_year) : undefined,
 			url: canonical
@@ -54,6 +63,10 @@
 	<title>{author.name} — Ochorus</title>
 	<meta name="description" content={description} />
 	<link rel="canonical" href={canonical} />
+	{#each alternates as a (a.loc)}
+		<link rel="alternate" hreflang={a.loc} href={a.href} />
+	{/each}
+	<link rel="alternate" hreflang="x-default" href="{SITE_URL}{localizeHref(path, { locale: 'en' })}" />
 	<meta property="og:type" content="profile" />
 	<meta property="og:title" content="{author.name} — Ochorus" />
 	<meta property="og:description" content={description} />
