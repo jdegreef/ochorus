@@ -124,6 +124,45 @@ AUTHORS: dict[str, AuthorEntry] = {
             "ministry and the development of Methodist doctrine."
         ),
     ),
+    # Added with their first book (2026-07-10). bio matches the existing DB
+    # author (from the biographies import) so upsert_book doesn't clobber it;
+    # bio_html (the long biography) is left untouched.
+    "george-muller": AuthorEntry(
+        slug="george-muller",
+        name="George Müller",
+        birth_year=1805,
+        death_year=1898,
+        bio=(
+            "George Müller (1805–1898) was a Prussian-born evangelist who, after "
+            "a dissolute youth that included theft and a spell in prison, was "
+            "converted at a prayer meeting in Halle in 1825 and gave his life to "
+            "living by faith. Settling in Bristol, he founded the Ashley Down "
+            "orphanages, where he housed and fed more than ten thousand orphans "
+            "over his lifetime without ever once asking a human being for money — "
+            "relying on prayer alone and keeping meticulous records of the "
+            "answers. His aim was to leave the world a visible proof that God "
+            "still hears prayer; he preached across forty-two countries into his "
+            "eighties and died at his orphanage in 1898."
+        ),
+    ),
+    "hudson-taylor": AuthorEntry(
+        slug="hudson-taylor",
+        name="Hudson Taylor",
+        birth_year=1832,
+        death_year=1905,
+        bio=(
+            "James Hudson Taylor (1832–1905) was an English missionary to China "
+            "and founder of the China Inland Mission. Converted at seventeen "
+            "while his mother prayed for him miles away, he gave his life to "
+            "reaching China's unreached inland provinces, pioneering a "
+            "faith-mission that took no debt and solicited no funds but told "
+            "every need to God in prayer. Through immense fruit and immense loss "
+            "— the deaths of his children, both wives, and dozens of his "
+            "missionaries in the 1900 Boxer Uprising — he became a byword for "
+            "trusting God absolutely, and his mission continues today as OMF "
+            "International."
+        ),
+    ),
 }
 
 # Shelf order. Small, clean books first.
@@ -180,6 +219,12 @@ BOOKS: list[BookEntry] = [
     BookEntry("susanna-wesley-clarke", "Susanna Wesley", "susanna-wesley",
               "archive", "susannawesley00clariala",
               subtitle="A Biography by Eliza Clarke", cover_color="#6d4482"),
+    BookEntry("answers-to-prayer", "Answers to Prayer", "george-muller",
+              "gutenberg", "25891",
+              subtitle="From George Müller's Narratives", cover_color="#0b7285"),
+    BookEntry("union-and-communion", "Union and Communion", "hudson-taylor",
+              "ccel", "taylor_jh/union",
+              subtitle="Thoughts on the Song of Solomon", cover_color="#862e9c"),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an

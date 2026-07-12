@@ -34,6 +34,12 @@ EXCLUDED_SLUGS: set[str] = {
 }
 
 CORRECTIONS: dict[str, dict] = {
+    "union-and-communion": {
+        # CCEL's TOC labels the foreword "Forward" (a period typo); fix it.
+        # After the bare "Title" page is dropped as front matter, the foreword
+        # is order 1.
+        "chapter_titles": {1: "Foreword"},
+    },
     "the-normal-christian-life": {
         # Ch.12's title is inline ("Chapter 12: The Cross and the Soul Life") in
         # the PDF, so it isn't detected as a standalone heading. From the TOC:
