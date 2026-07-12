@@ -91,11 +91,15 @@
 	const flags = $derived(
 		stats
 			? [
-					{ label: 'unpublished books', n: stats.attention.unpublished_books },
-					{ label: 'unpublished sermons', n: stats.attention.unpublished_sermons },
-					{ label: 'unreviewed AI translations', n: stats.attention.unreviewed_translations },
-					{ label: 'authors without a bio', n: stats.attention.authors_without_bio },
-					{ label: 'empty chapters', n: stats.attention.empty_chapters }
+					{ label: 'unpublished books', n: stats.attention.unpublished_books, href: null },
+					{ label: 'unpublished sermons', n: stats.attention.unpublished_sermons, href: null },
+					{
+						label: 'unreviewed AI translations',
+						n: stats.attention.unreviewed_translations,
+						href: '/admin/review'
+					},
+					{ label: 'authors without a bio', n: stats.attention.authors_without_bio, href: null },
+					{ label: 'empty chapters', n: stats.attention.empty_chapters, href: null }
 				].filter((f) => f.n > 0)
 			: []
 	);
@@ -148,12 +152,22 @@
 		{#if flags.length}
 			<div class="mb-8 flex flex-wrap gap-2">
 				{#each flags as f (f.label)}
-					<span
-						class="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-small text-gold"
-					>
-						<strong class="font-semibold">{fmt(f.n)}</strong>
-						{f.label}
-					</span>
+					{#if f.href}
+						<a
+							href={f.href}
+							class="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-small text-gold hover:bg-gold/20 hover:no-underline"
+						>
+							<strong class="font-semibold">{fmt(f.n)}</strong>
+							{f.label} →
+						</a>
+					{:else}
+						<span
+							class="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-small text-gold"
+						>
+							<strong class="font-semibold">{fmt(f.n)}</strong>
+							{f.label}
+						</span>
+					{/if}
 				{/each}
 			</div>
 		{/if}

@@ -7,6 +7,7 @@ from accounts.views import MeView, health
 from library.admin_views import (
     AdminCoverageView,
     AdminLanguageDetailView,
+    AdminReviewQueueView,
     AdminStatsView,
 )
 
@@ -16,6 +17,11 @@ urlpatterns = [
     path("api/auth/me/", MeView.as_view(), name="me"),
     path("api/admin/stats/", AdminStatsView.as_view(), name="admin-stats"),
     path("api/admin/coverage/", AdminCoverageView.as_view(), name="admin-coverage"),
+    path(
+        "api/admin/review-queue/",
+        AdminReviewQueueView.as_view(),
+        name="admin-review-queue",
+    ),
     path(
         "api/admin/languages/<str:code>/",
         AdminLanguageDetailView.as_view(),
