@@ -44,8 +44,10 @@
 
 	const rows = $derived<AdminCoverageRow[]>(cov ? cov[tab] : []);
 	const langs = $derived(cov?.languages ?? []);
+	// Books link to their admin detail page; sermons/plans (no admin detail yet)
+	// link to their live pages.
 	const rowHref = (slug: string) =>
-		tab === 'books' ? `/books/${slug}` : tab === 'sermons' ? `/sermons/${slug}` : `/plans/${slug}`;
+		tab === 'books' ? `/admin/books/${slug}` : tab === 'sermons' ? `/sermons/${slug}` : `/plans/${slug}`;
 
 	// Per-language totals for the active matrix (how many works exist in each).
 	const totals = $derived(

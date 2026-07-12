@@ -454,3 +454,38 @@ export interface AdminUsers {
 }
 
 export const getAdminUsers = () => apiFetch<AdminUsers>('/api/admin/users/');
+
+// Per-book detail: a canonical work across all its languages.
+
+export interface AdminBookChapter {
+	order: number;
+	title: string;
+	word_count: number;
+	flags: string[];
+}
+
+export interface AdminBookLang extends Language {
+	id: number;
+	title: string;
+	subtitle: string;
+	description: string;
+	source_type: SourceType;
+	is_published: boolean;
+	sort_order: number;
+	cover_url: string;
+	cover_color: string;
+	source_url: string;
+	pdf_url: string;
+	word_count: number;
+	chapters: AdminBookChapter[];
+}
+
+export interface AdminBookDetail {
+	slug: string;
+	title: string;
+	author: { name: string; slug: string; id: number };
+	languages: AdminBookLang[];
+}
+
+export const getAdminBook = (slug: string) =>
+	apiFetch<AdminBookDetail>(`/api/admin/books/${encodeURIComponent(slug)}/`);

@@ -275,7 +275,7 @@
 							<li class="flex items-start justify-between gap-3">
 								<div class="min-w-0">
 									<a
-										href={localizeHref(`/books/${b.slug}`)}
+										href={`/admin/books/${b.slug}`}
 										class="block truncate font-semibold text-text hover:text-accent"
 										>{b.title}</a
 									>

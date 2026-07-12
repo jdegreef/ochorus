@@ -566,6 +566,40 @@ TERMINAL_PUNCT = tuple('.!?"\'”’»)')
 # reported.
 AUDIT_LIMIT = 100
 
+# Shared chapter-quality thresholds (see the book-qa skill). Kept as constants so
+# the audit and the per-book detail agree on what counts as a problem.
+TINY_MAX = 150
+GIANT_MIN = 8000
+FRAG_MIN_PARAS = 10
+FRAG_MIN_WORDS = 100
+FRAG_MAX_AVG = 20
+
+
+def chapter_flags(title, wc, body_text, body_html, has_next) -> list[str]:
+    """Quality flags for one chapter (a subset of the audit heuristics), used
+    for the per-book detail badges. ``empty`` short-circuits the body checks."""
+    flags = []
+    t = (title or "").strip()
+    body = (body_text or "").strip()
+    if not t or GENERIC_TITLE.match(t):
+        flags.append("generic-title")
+    if not body or wc == 0:
+        flags.append("empty")
+        return flags
+    if 0 < wc < TINY_MAX:
+        flags.append("tiny")
+    if wc > GIANT_MIN:
+        flags.append("giant")
+    paras = (body_html or "").count("<p")
+    if paras >= FRAG_MIN_PARAS and wc >= FRAG_MIN_WORDS and wc / paras < FRAG_MAX_AVG:
+        flags.append("fragmented")
+    first_alpha = next((c for c in body if c.isalpha()), "")
+    if first_alpha and first_alpha.islower():
+        flags.append("no-dropcap")
+    if has_next and not body.endswith(TERMINAL_PUNCT):
+        flags.append("mid-split")
+    return flags
+
 
 def _capped(items: list) -> dict:
     return {"total": len(items), "items": items[:AUDIT_LIMIT]}
@@ -631,13 +665,13 @@ class AdminAuditView(APIView):
             if not body or wc == 0:
                 empty.append(finding())
                 continue  # remaining checks need body text
-            if 0 < wc < 150:
+            if 0 < wc < TINY_MAX:
                 tiny.append(finding(word_count=wc))
-            if wc > 8000:
+            if wc > GIANT_MIN:
                 giant.append(finding(word_count=wc))
 
             paras = c["body_html"].count("<p")
-            if paras >= 10 and wc >= 100 and wc / paras < 20:
+            if paras >= FRAG_MIN_PARAS and wc >= FRAG_MIN_WORDS and wc / paras < FRAG_MAX_AVG:
                 fragmented.append(finding(avg_words=round(wc / paras, 1), paragraphs=paras))
 
             first_alpha = next((ch for ch in body if ch.isalpha()), "")
@@ -972,3 +1006,74 @@ class AdminUsersView(APIView):
             wk = this_week - timedelta(weeks=i)
             out.append({"week": wk.isoformat(), "count": buckets.get(wk, 0)})
         return out
+
+
+class AdminBookDetailView(APIView):
+    """A single canonical work across all its languages, for the admin.
+
+    Each language row carries its metadata (source, cover, links) and its
+    chapter list with word counts and quality flags (see ``chapter_flags``),
+    plus ids for deep-linking into the Django admin. English is listed first.
+    """
+
+    permission_classes = [IsAdminEmail]
+
+    def get(self, request, slug):
+        books = list(Book.objects.filter(slug=slug).select_related("author"))
+        if not books:
+            return Response({"detail": "No such work."}, status=404)
+        canonical = next((b for b in books if b.language == "en"), books[0])
+
+        languages = []
+        for b in sorted(books, key=lambda x: (x.language != "en", x.language)):
+            rows = list(
+                b.chapters.order_by("order").values(
+                    "order", "title", "word_count", "body_text", "body_html"
+                )
+            )
+            max_order = max((r["order"] for r in rows), default=0)
+            chapters = []
+            for r in rows:
+                chapters.append(
+                    {
+                        "order": r["order"],
+                        "title": r["title"],
+                        "word_count": r["word_count"] or 0,
+                        "flags": chapter_flags(
+                            r["title"], r["word_count"] or 0,
+                            r["body_text"], r["body_html"],
+                            r["order"] < max_order,
+                        ),
+                    }
+                )
+            languages.append(
+                {
+                    **_language_entry(b.language),
+                    "id": b.id,
+                    "title": b.title,
+                    "subtitle": b.subtitle,
+                    "description": b.description,
+                    "source_type": b.source_type,
+                    "is_published": b.is_published,
+                    "sort_order": b.sort_order,
+                    "cover_url": b.cover_url,
+                    "cover_color": b.cover_color,
+                    "source_url": b.source_url,
+                    "pdf_url": b.pdf_url,
+                    "word_count": sum(ch["word_count"] for ch in chapters),
+                    "chapters": chapters,
+                }
+            )
+
+        return Response(
+            {
+                "slug": slug,
+                "title": canonical.title,
+                "author": {
+                    "name": canonical.author.name,
+                    "slug": canonical.author.slug,
+                    "id": canonical.author_id,
+                },
+                "languages": languages,
+            }
+        )
