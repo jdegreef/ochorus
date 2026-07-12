@@ -13,3 +13,7 @@ export const load: PageLoad = async ({ params }) => {
 	const book = await orNotFound(() => getBook(params.slug, getLang()));
 	return { book };
 };
+
+// New public-domain books/sermons are prerendered per slug; a backend-only
+// content merge skips the web build, so new /books/<slug> pages need this
+// rebuild to exist as static HTML.
