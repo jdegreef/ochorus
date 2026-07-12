@@ -48,3 +48,19 @@ export async function apiFetch<T = unknown>(path: string, init: RequestInit = {}
 	if (res.status === 204) return null as T;
 	return (await res.json()) as T;
 }
+
+/**
+ * Like {@link apiFetch} but returns the raw Response (with the Bearer token
+ * attached) instead of parsing JSON — for downloads (CSV/blob) where a plain
+ * `<a href>` can't carry the auth header.
+ */
+export async function apiFetchRaw(path: string, init: RequestInit = {}): Promise<Response> {
+	const headers = new Headers(init.headers);
+	const token = tokenProvider();
+	if (token && !headers.has('Authorization')) {
+		headers.set('Authorization', `Bearer ${token}`);
+	}
+	const res = await fetch(`${API_BASE_URL}${path}`, { ...init, headers });
+	if (!res.ok) throw new ApiError(res.status, await res.text().catch(() => null));
+	return res;
+}
