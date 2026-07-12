@@ -439,3 +439,18 @@ export interface AdminEngagement {
 }
 
 export const getAdminEngagement = () => apiFetch<AdminEngagement>('/api/admin/engagement/');
+
+// Account analytics: sign-up growth, locale/theme split, activation.
+
+export interface AdminUsers {
+	total: number;
+	with_activity: number;
+	dormant: number;
+	signups_7d: number;
+	signups_30d: number;
+	weekly_signups: { week: string; count: number }[];
+	by_locale: (Language & { count: number })[];
+	by_theme: { theme: string; label: string; count: number }[];
+}
+
+export const getAdminUsers = () => apiFetch<AdminUsers>('/api/admin/users/');

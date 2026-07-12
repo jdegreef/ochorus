@@ -120,6 +120,7 @@
 				<a href="/admin/review" class="text-accent hover:underline">Review queue</a>
 				<a href="/admin/audit" class="text-accent hover:underline">Content audit</a>
 				<a href="/admin/engagement" class="text-accent hover:underline">Engagement</a>
+				<a href="/admin/users" class="text-accent hover:underline">Users</a>
 			</nav>
 		</div>
 		{#if stats}
