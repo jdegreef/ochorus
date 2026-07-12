@@ -172,8 +172,9 @@
 		<!-- By language -->
 		<section class="mb-10">
 			<h2 class="text-h2 mb-3">By language</h2>
+			<p class="mb-3 text-small text-muted">Select a language to see what's translated and what to work on next.</p>
 			<div class="overflow-x-auto rounded-2xl border border-border bg-surface">
-				<table class="w-full min-w-[40rem] border-collapse text-body">
+				<table class="w-full min-w-[44rem] border-collapse text-body">
 					<thead>
 						<tr class="border-b border-border text-small uppercase tracking-wide text-muted">
 							<th class="px-4 py-3 text-left font-semibold">Language</th>
@@ -181,15 +182,16 @@
 							<th class="px-4 py-3 text-right font-semibold">Chapters</th>
 							<th class="px-4 py-3 text-right font-semibold">Sermons</th>
 							<th class="px-4 py-3 text-right font-semibold">Plans</th>
+							<th class="px-4 py-3 text-right font-semibold">Bios</th>
 							<th class="px-4 py-3 text-right font-semibold">Words</th>
 							<th class="px-4 py-3 text-left font-semibold">Source</th>
 						</tr>
 					</thead>
 					<tbody>
 						{#each stats.languages as l (l.code)}
-							<tr class="border-b border-border last:border-0">
+							<tr class="border-b border-border last:border-0 hover:bg-surface-2">
 								<td class="px-4 py-3">
-									<span class="font-semibold text-text">{l.name}</span>
+									<a href="/admin/languages/{l.code}" class="font-semibold text-accent hover:underline">{l.name}</a>
 									<span class="text-small text-muted">· {l.code}</span>
 								</td>
 								<td class="px-4 py-3 text-right tabular-nums">
@@ -201,6 +203,7 @@
 								<td class="px-4 py-3 text-right tabular-nums">{fmt(l.chapters)}</td>
 								<td class="px-4 py-3 text-right tabular-nums">{fmt(l.sermons)}</td>
 								<td class="px-4 py-3 text-right tabular-nums">{fmt(l.plans)}</td>
+								<td class="px-4 py-3 text-right tabular-nums">{fmt(l.bios)}</td>
 								<td class="px-4 py-3 text-right tabular-nums">{fmt(l.words)}</td>
 								<td class="px-4 py-3 text-small text-muted">
 									{#if l.source_types.public_domain}<span title="Public domain">PD {l.source_types.public_domain}</span>{/if}

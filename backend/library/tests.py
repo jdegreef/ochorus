@@ -309,3 +309,77 @@ class AdminStatsTests(TestCase):
         # Anonymous → 401 (authenticate), a signed-in non-admin would get 403.
         res = self.client.get("/api/admin/stats/")
         self.assertIn(res.status_code, (401, 403))
+
+    @override_settings(DEBUG=True)
+    def test_language_bios_count(self):
+        # A translated long-form bio counts toward the language's bios tally.
+        from .models import Author, AuthorTranslation
+
+        murray = Author.objects.get(slug="am")
+        murray.bio_html = "<p>Long English bio.</p>"
+        murray.save(update_fields=["bio_html"])
+        AuthorTranslation.objects.create(
+            author=murray, language="sw", bio_html="<p>Wasifu.</p>", reviewed=True
+        )
+        langs = {row["code"]: row for row in self.client.get("/api/admin/stats/").data["languages"]}
+        self.assertEqual(langs["en"]["bios"], 1)
+        self.assertEqual(langs["sw"]["bios"], 1)
+
+
+class AdminLanguageDetailTests(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+        self.murray = Author.objects.create(
+            slug="am", name="Andrew Murray", bio="Preacher.", bio_html="<p>Bio.</p>"
+        )
+        # Two published English books; one translated to Swahili.
+        for i, slug in enumerate(("humility", "abide", "with-christ")):
+            b = Book.objects.create(
+                author=self.murray, slug=slug, language="en", title=slug.title(),
+                sort_order=i,
+            )
+            Chapter.objects.create(book=b, order=1, title="One", body_html="<p>x</p>")
+        Book.objects.create(
+            author=self.murray, slug="humility", language="sw", title="Unyenyekevu",
+            source_type=Book.SourceType.AI_UNREVIEWED,
+        )
+        Sermon.objects.create(
+            author=self.murray, slug="grace", language="en", title="Grace",
+            body_html="<p>g</p>", word_count=10,
+        )
+        Plan.objects.create(slug="p1", language="en", title="Plan One")
+
+    @override_settings(DEBUG=True)
+    def test_present_and_todo_for_translation_language(self):
+        res = self.client.get("/api/admin/languages/sw/")
+        self.assertEqual(res.status_code, 200)
+        self.assertFalse(res.data["is_source"])
+        self.assertEqual(res.data["language"]["name"], "Swahili")
+
+        # Present: the one translated book, nothing else yet.
+        self.assertEqual([b["slug"] for b in res.data["books"]], ["humility"])
+        self.assertEqual(res.data["sermons"], [])
+
+        # Todo: highest-priority English books not yet in Swahili, by sort_order,
+        # excluding the already-translated "humility".
+        todo_slugs = [b["slug"] for b in res.data["todo"]["books"]]
+        self.assertEqual(todo_slugs, ["abide", "with-christ"])
+        self.assertEqual([s["slug"] for s in res.data["todo"]["sermons"]], ["grace"])
+        self.assertEqual([p["slug"] for p in res.data["todo"]["plans"]], ["p1"])
+        # Murray's bio isn't translated to Swahili yet → he's a bio todo.
+        self.assertEqual([a["slug"] for a in res.data["todo"]["bios"]], ["am"])
+
+        self.assertEqual(res.data["english_counts"]["books"], 3)
+
+    @override_settings(DEBUG=True)
+    def test_source_language_has_no_todo(self):
+        res = self.client.get("/api/admin/languages/en/")
+        self.assertTrue(res.data["is_source"])
+        self.assertEqual(len(res.data["books"]), 3)
+        self.assertEqual(res.data["todo"]["books"], [])
+        self.assertEqual([a["slug"] for a in res.data["bios"]], ["am"])
+
+    @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
+    def test_requires_admin(self):
+        res = self.client.get("/api/admin/languages/sw/")
+        self.assertIn(res.status_code, (401, 403))
