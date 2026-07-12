@@ -1,7 +1,7 @@
 from unittest import skipUnless
 
 from django.db import connection
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from rest_framework.test import APIClient
 
 from .ingest import clean_title
@@ -247,3 +247,65 @@ class PlanTests(TestCase):
         call_command("seed_plans")
         call_command("seed_plans")
         self.assertEqual(Plan.objects.filter(slug="humility-12-days").count(), 1)
+
+
+class AdminStatsTests(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+        author = Author.objects.create(slug="am", name="Andrew Murray", bio="Preacher.")
+        Author.objects.create(slug="cs", name="Charles Spurgeon")  # no bio
+
+        en = Book.objects.create(author=author, slug="humility", language="en", title="Humility")
+        Chapter.objects.create(book=en, order=1, title="One", body_html="<p>one two three</p>")
+        Chapter.objects.create(book=en, order=2, title="Two", body_html="<p>four five</p>")
+        # A published Swahili AI translation and an unpublished English draft.
+        Book.objects.create(
+            author=author,
+            slug="humility",
+            language="sw",
+            title="Unyenyekevu",
+            source_type=Book.SourceType.AI_UNREVIEWED,
+        )
+        Book.objects.create(
+            author=author, slug="secret", language="en", title="Draft", is_published=False
+        )
+        Sermon.objects.create(
+            author=author, slug="all-of-grace", language="en", title="All of Grace",
+            body_html="<p>grace</p>", word_count=120,
+        )
+        Plan.objects.create(slug="p1", language="en", title="Plan One")
+
+    @override_settings(DEBUG=True)
+    def test_totals_and_language_breakdown(self):
+        res = self.client.get("/api/admin/stats/")
+        self.assertEqual(res.status_code, 200)
+        totals = res.data["totals"]
+        self.assertEqual(totals["works"], 2)  # humility, secret
+        self.assertEqual(totals["books"], 3)
+        self.assertEqual(totals["published_books"], 2)
+        self.assertEqual(totals["unpublished_books"], 1)
+        self.assertEqual(totals["chapters"], 2)
+        self.assertEqual(totals["authors"], 2)
+        self.assertEqual(totals["authors_with_bio"], 1)
+        self.assertEqual(totals["languages"], 2)
+
+        langs = {row["code"]: row for row in res.data["languages"]}
+        self.assertEqual(langs["en"]["books"], 2)
+        self.assertEqual(langs["en"]["chapters"], 2)
+        self.assertEqual(langs["sw"]["source_types"]["ai_unreviewed"], 1)
+        # English comes first (owner language), then by book count.
+        self.assertEqual(res.data["languages"][0]["code"], "en")
+
+    @override_settings(DEBUG=True)
+    def test_attention_flags(self):
+        res = self.client.get("/api/admin/stats/")
+        attn = res.data["attention"]
+        self.assertEqual(attn["unpublished_books"], 1)
+        self.assertEqual(attn["unreviewed_translations"], 1)
+        self.assertEqual(attn["authors_without_bio"], 1)
+
+    @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
+    def test_forbidden_without_admin_email(self):
+        # Anonymous → 401 (authenticate), a signed-in non-admin would get 403.
+        res = self.client.get("/api/admin/stats/")
+        self.assertIn(res.status_code, (401, 403))

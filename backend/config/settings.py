@@ -149,6 +149,19 @@ SUPABASE_JWT_AUDIENCE = os.getenv("SUPABASE_JWT_AUDIENCE", "authenticated")
 SUPABASE_SERVICE_ROLE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY", "")
 
 
+# --- Admin dashboard ----------------------------------------------------------
+# Emails allowed to view the /admin content dashboard and call /api/admin/*.
+# There is no is_staff concept (auth is Supabase-only), so admin access is an
+# email allowlist. Comma-separated; defaults to the project owner so the
+# dashboard works out of the box on deploy. Under DEBUG the check is bypassed
+# (see accounts.permissions.is_admin_user).
+ADMIN_EMAILS = {
+    e.strip().lower()
+    for e in os.getenv("ADMIN_EMAILS", "james.degreef@gmail.com").split(",")
+    if e.strip()
+}
+
+
 # --- CORS ---------------------------------------------------------------------
 
 CORS_ALLOWED_ORIGINS = [

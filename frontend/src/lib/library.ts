@@ -188,3 +188,73 @@ export const listPlans = (language = 'en') =>
 
 export const getPlan = (slug: string, language = 'en') =>
 	apiFetch<PlanDetail>(`/api/library/plans/${slug}/?language=${language}`);
+
+// --- Admin dashboard ---------------------------------------------------------
+// Aggregate content stats for the /admin page. Admin-only (see backend
+// accounts.permissions); a non-admin request 401s/403s.
+
+export interface AdminSourceTypeCounts {
+	public_domain: number;
+	ai_reviewed: number;
+	ai_unreviewed: number;
+}
+
+export interface AdminTotals {
+	works: number;
+	books: number;
+	published_books: number;
+	unpublished_books: number;
+	chapters: number;
+	sermons: number;
+	published_sermons: number;
+	plans: number;
+	published_plans: number;
+	authors: number;
+	authors_with_bio: number;
+	languages: number;
+	words: number;
+	chapter_words: number;
+	sermon_words: number;
+}
+
+export interface AdminLanguageStat {
+	code: string;
+	name: string;
+	native_name: string;
+	books: number;
+	published_books: number;
+	chapters: number;
+	sermons: number;
+	plans: number;
+	words: number;
+	source_types: AdminSourceTypeCounts;
+}
+
+export interface AdminAttention {
+	unpublished_books: number;
+	unpublished_sermons: number;
+	unreviewed_translations: number;
+	authors_without_bio: number;
+	empty_chapters: number;
+}
+
+export interface AdminRecentBook {
+	slug: string;
+	title: string;
+	language: string;
+	author: string;
+	source_type: SourceType;
+	is_published: boolean;
+	created_at: string;
+}
+
+export interface AdminStats {
+	totals: AdminTotals;
+	languages: AdminLanguageStat[];
+	source_types: AdminSourceTypeCounts;
+	author_translations: { total: number; reviewed: number; unreviewed: number };
+	attention: AdminAttention;
+	recent_books: AdminRecentBook[];
+}
+
+export const getAdminStats = () => apiFetch<AdminStats>('/api/admin/stats/');
