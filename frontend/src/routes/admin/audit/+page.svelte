@@ -71,9 +71,7 @@
 <svelte:head><title>Admin · Audit — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
 
 <div class="mx-auto max-w-4xl px-5 py-10">
-	<a href="/admin" class="text-small text-accent hover:underline">← Back to dashboard</a>
-
-	<header class="mb-6 mt-3 flex flex-wrap items-end justify-between gap-3">
+	<header class="mb-6 flex flex-wrap items-end justify-between gap-3">
 		<div>
 			<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">Admin</p>
 			<h1 class="text-display">Content audit</h1>
