@@ -716,3 +716,172 @@ class AdminAuditView(APIView):
                 )
         out.sort(key=lambda r: (r["plan"], r["day"]))
         return out
+
+
+class AdminEngagementView(APIView):
+    """Reading-engagement analytics from ReadingProgress / ChapterMarks.
+
+    Aggregate-only — counts and per-book/-language rollups, never individual
+    readers' identities. "Active" is distinct profiles whose progress was
+    touched within the window; "finishers" reached (or passed) the book's last
+    English chapter.
+    """
+
+    permission_classes = [IsAdminEmail]
+
+    def get(self, request):
+        from datetime import timedelta
+
+        from django.utils import timezone
+
+        from reading.models import ChapterMarks, ReadingProgress
+
+        now = timezone.now()
+
+        def active(days):
+            return (
+                ReadingProgress.objects.filter(updated_at__gte=now - timedelta(days=days))
+                .values("profile")
+                .distinct()
+                .count()
+            )
+
+        overview = {
+            "readers": ReadingProgress.objects.values("profile").distinct().count(),
+            "progress_rows": ReadingProgress.objects.count(),
+            "active_1d": active(1),
+            "active_7d": active(7),
+            "active_30d": active(30),
+            "readers_with_marks": ChapterMarks.objects.exclude(marks=[])
+            .values("profile")
+            .distinct()
+            .count(),
+            "marked_chapters": ChapterMarks.objects.exclude(marks=[]).count(),
+            "total_users": self._total_users(),
+        }
+        return Response(
+            {
+                "overview": overview,
+                "most_read": self._most_read(),
+                "most_marked": self._most_marked(),
+                "by_language": self._by_language(),
+                "weekly_active": self._weekly_active(now),
+            }
+        )
+
+    def _total_users(self) -> int:
+        from accounts.models import UserProfile
+
+        return UserProfile.objects.count()
+
+    def _book_meta(self) -> dict:
+        meta: dict[str, tuple[str, str]] = {}
+        for b in Book.objects.values("slug", "language", "title", "author__name"):
+            if b["language"] == "en" or b["slug"] not in meta:
+                meta[b["slug"]] = (b["title"], b["author__name"])
+        return meta
+
+    def _chapter_counts(self) -> dict:
+        return {
+            r["book__slug"]: r["n"]
+            for r in Chapter.objects.filter(book__language="en")
+            .values("book__slug")
+            .annotate(n=Count("id"))
+        }
+
+    def _most_read(self, limit: int = 10) -> list[dict]:
+        from reading.models import ReadingProgress
+
+        meta = self._book_meta()
+        counts = self._chapter_counts()
+        top = (
+            ReadingProgress.objects.values("book_slug")
+            .annotate(readers=Count("profile", distinct=True))
+            .order_by("-readers")[:limit]
+        )
+        out = []
+        for r in top:
+            slug = r["book_slug"]
+            title, author = meta.get(slug, (slug, ""))
+            length = counts.get(slug)
+            finishers = (
+                ReadingProgress.objects.filter(
+                    book_slug=slug, chapter_order__gte=length
+                )
+                .values("profile")
+                .distinct()
+                .count()
+                if length
+                else 0
+            )
+            out.append(
+                {
+                    "slug": slug,
+                    "title": title,
+                    "author": author,
+                    "readers": r["readers"],
+                    "finishers": finishers,
+                }
+            )
+        return out
+
+    def _most_marked(self, limit: int = 10) -> list[dict]:
+        from reading.models import ChapterMarks
+
+        meta = self._book_meta()
+        top = (
+            ChapterMarks.objects.exclude(marks=[])
+            .values("book_slug")
+            .annotate(readers=Count("profile", distinct=True), chapters=Count("id"))
+            .order_by("-readers", "-chapters")[:limit]
+        )
+        out = []
+        for r in top:
+            title, author = meta.get(r["book_slug"], (r["book_slug"], ""))
+            out.append(
+                {
+                    "slug": r["book_slug"],
+                    "title": title,
+                    "author": author,
+                    "readers": r["readers"],
+                    "chapters": r["chapters"],
+                }
+            )
+        return out
+
+    def _by_language(self) -> list[dict]:
+        from reading.models import ReadingProgress
+
+        rows = (
+            ReadingProgress.objects.values("language")
+            .annotate(readers=Count("profile", distinct=True))
+            .order_by("-readers")
+        )
+        out = []
+        for r in rows:
+            entry = _language_entry(r["language"])
+            entry["readers"] = r["readers"]
+            out.append(entry)
+        return out
+
+    def _weekly_active(self, now, weeks: int = 8) -> list[dict]:
+        from datetime import timedelta
+
+        from reading.models import ReadingProgress
+
+        today = now.date()
+        this_week = today - timedelta(days=today.weekday())  # Monday
+        out = []
+        for i in range(weeks - 1, -1, -1):
+            start = this_week - timedelta(weeks=i)
+            end = start + timedelta(weeks=1)
+            readers = (
+                ReadingProgress.objects.filter(
+                    updated_at__date__gte=start, updated_at__date__lt=end
+                )
+                .values("profile")
+                .distinct()
+                .count()
+            )
+            out.append({"week": start.isoformat(), "readers": readers})
+        return out

@@ -550,3 +550,61 @@ class AdminAuditTests(TestCase):
     def test_requires_admin(self):
         res = self.client.get("/api/admin/audit/")
         self.assertIn(res.status_code, (401, 403))
+
+
+class AdminEngagementTests(TestCase):
+    def setUp(self):
+        import uuid
+
+        from django.contrib.auth import get_user_model
+
+        from accounts.models import UserProfile
+        from reading.models import ChapterMarks, ReadingProgress
+
+        self.client = APIClient()
+        author = Author.objects.create(slug="am", name="Andrew Murray")
+        book = Book.objects.create(author=author, slug="humility", language="en", title="Humility")
+        for i in (1, 2, 3):
+            Chapter.objects.create(book=book, order=i, title=f"C{i}", body_html="<p>x</p>")
+        Book.objects.create(author=author, slug="abide", language="en", title="Abide")
+
+        User = get_user_model()
+        self.p1 = UserProfile.objects.create(user=User.objects.create(username=str(uuid.uuid4())), supabase_uid=uuid.uuid4())
+        self.p2 = UserProfile.objects.create(user=User.objects.create(username=str(uuid.uuid4())), supabase_uid=uuid.uuid4())
+
+        # p1 finished humility (ch3 of 3) + started abide; p2 at humility ch1.
+        ReadingProgress.objects.create(profile=self.p1, book_slug="humility", language="en", chapter_order=3)
+        ReadingProgress.objects.create(profile=self.p2, book_slug="humility", language="en", chapter_order=1)
+        ReadingProgress.objects.create(profile=self.p1, book_slug="abide", language="en", chapter_order=1)
+        ChapterMarks.objects.create(
+            profile=self.p1, book_slug="humility", language="en", chapter_order=1,
+            marks=[{"id": "a", "p": 0, "s": 0, "e": 5}],
+        )
+
+    @override_settings(DEBUG=True)
+    def test_overview_and_rollups(self):
+        res = self.client.get("/api/admin/engagement/")
+        self.assertEqual(res.status_code, 200)
+        ov = res.data["overview"]
+        self.assertEqual(ov["readers"], 2)
+        self.assertEqual(ov["total_users"], 2)
+        self.assertEqual(ov["active_7d"], 2)
+        self.assertEqual(ov["readers_with_marks"], 1)
+        self.assertEqual(ov["marked_chapters"], 1)
+
+        most = {b["slug"]: b for b in res.data["most_read"]}
+        self.assertEqual(most["humility"]["readers"], 2)
+        self.assertEqual(most["humility"]["finishers"], 1)  # only p1 reached ch3
+        self.assertEqual(most["abide"]["readers"], 1)
+
+        self.assertEqual(res.data["most_marked"][0]["slug"], "humility")
+        by_lang = {r["code"]: r["readers"] for r in res.data["by_language"]}
+        self.assertEqual(by_lang["en"], 2)
+        # 8 weekly buckets; this week has activity.
+        self.assertEqual(len(res.data["weekly_active"]), 8)
+        self.assertEqual(res.data["weekly_active"][-1]["readers"], 2)
+
+    @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
+    def test_requires_admin(self):
+        res = self.client.get("/api/admin/engagement/")
+        self.assertIn(res.status_code, (401, 403))

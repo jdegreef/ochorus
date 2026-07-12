@@ -403,3 +403,39 @@ export interface AdminAudit {
 }
 
 export const getAdminAudit = () => apiFetch<AdminAudit>('/api/admin/audit/');
+
+// Reading-engagement analytics (aggregate-only).
+
+export interface EngagementOverview {
+	readers: number;
+	progress_rows: number;
+	active_1d: number;
+	active_7d: number;
+	active_30d: number;
+	readers_with_marks: number;
+	marked_chapters: number;
+	total_users: number;
+}
+
+export interface EngagementBook {
+	slug: string;
+	title: string;
+	author: string;
+	readers: number;
+	finishers?: number;
+	chapters?: number;
+}
+
+export interface EngagementLang extends Language {
+	readers: number;
+}
+
+export interface AdminEngagement {
+	overview: EngagementOverview;
+	most_read: EngagementBook[];
+	most_marked: EngagementBook[];
+	by_language: EngagementLang[];
+	weekly_active: { week: string; readers: number }[];
+}
+
+export const getAdminEngagement = () => apiFetch<AdminEngagement>('/api/admin/engagement/');
