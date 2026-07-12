@@ -657,3 +657,44 @@ class AdminUsersTests(TestCase):
     def test_requires_admin(self):
         res = self.client.get("/api/admin/users/")
         self.assertIn(res.status_code, (401, 403))
+
+
+class AdminBookDetailTests(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+        author = Author.objects.create(slug="am", name="Andrew Murray")
+        en = Book.objects.create(author=author, slug="humility", language="en", title="Humility")
+        # ch1 has a next and doesn't end in punctuation → mid-split (+ no drop cap);
+        # ch2 has a generic title and ends fine.
+        Chapter.objects.create(book=en, order=1, title="Real", body_html="<p>runs on</p>", word_count=300)
+        Chapter.objects.create(book=en, order=2, title="Chapter II", body_html="<p>All is well.</p>", word_count=200)
+        Book.objects.create(
+            author=author, slug="humility", language="sw", title="Unyenyekevu",
+            source_type=Book.SourceType.AI_UNREVIEWED,
+        )
+
+    @override_settings(DEBUG=True)
+    def test_book_detail_across_languages(self):
+        res = self.client.get("/api/admin/books/humility/")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["title"], "Humility")
+        self.assertEqual(res.data["author"]["slug"], "am")
+
+        langs = {l["code"]: l for l in res.data["languages"]}
+        self.assertEqual(res.data["languages"][0]["code"], "en")  # English first
+        self.assertEqual(langs["en"]["word_count"], 500)
+        chapters = {c["order"]: c for c in langs["en"]["chapters"]}
+        self.assertIn("mid-split", chapters[1]["flags"])
+        self.assertIn("generic-title", chapters[2]["flags"])
+        self.assertNotIn("mid-split", chapters[2]["flags"])  # last chapter, no next
+        self.assertEqual(langs["sw"]["source_type"], "ai_unreviewed")
+
+    @override_settings(DEBUG=True)
+    def test_unknown_slug_404(self):
+        res = self.client.get("/api/admin/books/nope/")
+        self.assertEqual(res.status_code, 404)
+
+    @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
+    def test_requires_admin(self):
+        res = self.client.get("/api/admin/books/humility/")
+        self.assertIn(res.status_code, (401, 403))

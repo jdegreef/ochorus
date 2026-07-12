@@ -6,6 +6,7 @@ from django.urls import include, path
 from accounts.views import MeView, health
 from library.admin_views import (
     AdminAuditView,
+    AdminBookDetailView,
     AdminCoverageView,
     AdminEngagementView,
     AdminLanguageDetailView,
@@ -27,6 +28,11 @@ urlpatterns = [
         name="admin-engagement",
     ),
     path("api/admin/users/", AdminUsersView.as_view(), name="admin-users"),
+    path(
+        "api/admin/books/<slug:slug>/",
+        AdminBookDetailView.as_view(),
+        name="admin-book-detail",
+    ),
     path(
         "api/admin/review-queue/",
         AdminReviewQueueView.as_view(),
