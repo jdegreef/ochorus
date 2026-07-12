@@ -18,6 +18,9 @@ export const entries: EntryGenerator = async () => {
 // on the API before the web build runs, else the localized page bakes English
 // and needs a fresh ochorus-web deploy once the API catches up. Author bios are
 // currently translated in es, sw and lg (English is the source / fallback).
+// Same content-race applies to photo_url: migration 0027 added 5 PD portraits,
+// which the web build must re-prerender AFTER the API migration lands — this
+// refresh forces that rebuild (Müller/Taylor/Allen/Crowther/Berry Smith). 2026-07-11.
 export const load: PageLoad = async ({ params }) => {
 	const author = await orNotFound(() => getAuthor(params.slug, getLang()));
 	// A mid-deploy API (before the sermon fields ship) may omit these; default
