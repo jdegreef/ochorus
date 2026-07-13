@@ -107,6 +107,20 @@
 		);
 	});
 
+	// A Kindle-style page count for this chapter (estimated from word count), and
+	// which one the current scroll position lands on.
+	const WORDS_PER_PAGE = 280;
+	const pageCount = $derived(Math.max(1, Math.ceil(chapter.word_count / WORDS_PER_PAGE)));
+	const currentPage = $derived(Math.min(pageCount, Math.max(1, Math.round(chapterFrac * pageCount) || 1)));
+
+	/** Scroll to a fraction of the chapter — drives the draggable scrubber. */
+	function scrubTo(frac: number) {
+		if (!body) return;
+		const rect = body.getBoundingClientRect();
+		const bodyTop = window.scrollY + rect.top;
+		window.scrollTo({ top: Math.max(0, bodyTop - window.innerHeight + frac * rect.height) });
+	}
+
 	onMount(() => {
 		readerPrefs.init();
 		listen.init();
@@ -521,14 +535,30 @@
 	</nav>
 </article>
 
-<!-- Reading-progress footer: quiet, fixed, hidden in focus/Listen modes. -->
+<!-- Reading-progress footer: a draggable scrubber + location, fixed, hidden in
+     focus/Listen modes. -->
 {#if !readerUi.focus && listen.status === 'idle'}
-	<div class="progress-foot" aria-hidden="true">
-		<span>{minutesLeft} {t('progress.minLeft')}</span>
-		{#if bookPercent !== null}
+	<div class="progress-foot">
+		<input
+			class="scrubber"
+			type="range"
+			min="0"
+			max="1"
+			step="0.005"
+			value={chapterFrac}
+			oninput={(e) => scrubTo(Number(e.currentTarget.value))}
+			aria-label={t('progress.scrub')}
+			aria-valuetext="{t('progress.page')} {currentPage} / {pageCount}"
+		/>
+		<div class="progress-meta">
+			<span>{t('progress.page')} {currentPage} / {pageCount}</span>
 			<span class="mx-1.5 opacity-50">·</span>
-			<span>{bookPercent}% {t('progress.through')}</span>
-		{/if}
+			<span>{minutesLeft} {t('progress.minLeft')}</span>
+			{#if bookPercent !== null}
+				<span class="mx-1.5 opacity-50">·</span>
+				<span>{bookPercent}% {t('progress.through')}</span>
+			{/if}
+		</div>
 	</div>
 {/if}
 
@@ -581,13 +611,25 @@
 		inset-inline: 0;
 		bottom: 0;
 		z-index: 30;
-		padding: 0.3rem 1rem 0.45rem;
+		padding: 0.25rem 1rem 0.4rem;
 		text-align: center;
 		font-size: 0.72rem;
 		color: var(--muted);
 		background: color-mix(in srgb, var(--bg) 82%, transparent);
 		backdrop-filter: blur(6px);
-		pointer-events: none;
+	}
+	.progress-meta {
+		margin-top: 0.1rem;
+	}
+	.scrubber {
+		display: block;
+		width: min(42rem, 100%);
+		max-width: 100%;
+		margin: 0 auto;
+		height: 1.1rem;
+		cursor: pointer;
+		accent-color: var(--accent);
+		background: transparent;
 	}
 
 	/* Text-range marks: <mark> spans wrapped around the selected text. */
