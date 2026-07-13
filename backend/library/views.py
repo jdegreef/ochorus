@@ -84,10 +84,21 @@ class AuthorListView(generics.ListAPIView):
     serializer_class = AuthorListSerializer
 
     def get_queryset(self):
+        # Count only books available in the requested language, so a localized
+        # biographies page reflects what a reader can actually open in that
+        # language (matches AuthorDetailSerializer, which lists books per-locale).
+        # Authors with no book in this language fall to the "view biography"
+        # link in the UI.
+        lang = _language(self.request)
         return (
             Author.objects.exclude(bio="")
             .prefetch_related("translations")
-            .annotate(num_books=Count("books", filter=Q(books__is_published=True)))
+            .annotate(
+                num_books=Count(
+                    "books",
+                    filter=Q(books__is_published=True, books__language=lang),
+                )
+            )
             .order_by("name")
         )
 
