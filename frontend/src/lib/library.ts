@@ -155,6 +155,11 @@ export const getChapter = (slug: string, order: number, language = 'en') =>
 export const listSermons = (language = 'en') =>
 	apiFetch<SermonSummary[]>(`/api/library/sermons/?language=${language}`);
 
+// Every language the library supports publishing in — not just ones that
+// already have content — so the admin import picker can start a new language.
+export const listImportLanguages = () =>
+	apiFetch<Language[]>('/api/admin/import/languages/');
+
 export const getSermon = (slug: string, language = 'en') =>
 	apiFetch<Sermon>(`/api/library/sermons/${slug}/?language=${language}`);
 

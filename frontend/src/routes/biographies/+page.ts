@@ -10,3 +10,7 @@ export const load: PageLoad = async () => {
 	const authors = await listAuthors(getLang());
 	return { authors };
 };
+
+// Biographies book counts are locale-aware (server-side) and prerendered per
+// locale; a backend-only change to the count needs a web rebuild to refresh
+// the static pages.

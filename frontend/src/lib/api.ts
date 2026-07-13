@@ -61,6 +61,16 @@ export async function apiFetchRaw(path: string, init: RequestInit = {}): Promise
 		headers.set('Authorization', `Bearer ${token}`);
 	}
 	const res = await fetch(`${API_BASE_URL}${path}`, { ...init, headers });
-	if (!res.ok) throw new ApiError(res.status, await res.text().catch(() => null));
+	if (!res.ok) {
+		// Parse the error body as JSON when possible (DRF errors are JSON) so
+		// callers can read `.detail`, matching apiFetch; fall back to raw text.
+		let body: unknown = null;
+		try {
+			body = await res.json();
+		} catch {
+			body = await res.text().catch(() => null);
+		}
+		throw new ApiError(res.status, body);
+	}
 	return res;
 }
