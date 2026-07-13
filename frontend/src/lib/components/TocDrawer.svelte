@@ -3,6 +3,7 @@
 	import { getLang } from '$lib/lang.svelte';
 	import { getScrollAnchor } from '$lib/progress';
 	import { marks } from '$lib/marks.svelte';
+	import { bookmarks } from '$lib/bookmarks.svelte';
 	import { readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
@@ -31,6 +32,7 @@
 	$effect(() => {
 		if (!open) return;
 		opener = document.activeElement;
+		bookmarks.load(slug);
 		if (!book || book.slug !== slug) {
 			getBook(slug, getLang())
 				.then((b) => (book = b))
@@ -99,6 +101,32 @@
 		</header>
 
 		<nav class="toc-list" aria-label={t('reader.contents')}>
+			{#if bookmarks.list.length}
+				<div class="bm-section">
+					<p class="bm-heading">🔖 {t('reader.bookmarks')}</p>
+					<ul>
+						{#each bookmarks.list as bm (bm.id)}
+							<li class="bm-row">
+								<a
+									href={localizeHref(`/books/${slug}/${bm.order}?p=${bm.p}`)}
+									class="toc-item min-w-0 flex-1"
+									onclick={close}
+								>
+									<span class="min-w-0 flex-1">
+										<span class="block truncate text-small text-text">{bm.snippet || bm.title}</span>
+										<span class="block text-[0.72rem] text-muted">{bm.order}. {bm.title}</span>
+									</span>
+								</a>
+								<button
+									class="bm-remove"
+									onclick={() => bookmarks.remove(bm.id)}
+									aria-label={t('reader.bookmark')}>✕</button
+								>
+							</li>
+						{/each}
+					</ul>
+				</div>
+			{/if}
 			{#if !book}
 				<p class="px-5 py-4 text-small text-muted">…</p>
 			{:else}
@@ -177,6 +205,34 @@
 	}
 	.toc-item:hover {
 		background: var(--surface-2);
+	}
+	.bm-section {
+		border-bottom: 1px solid var(--border);
+		padding-bottom: 0.5rem;
+		margin-bottom: 0.25rem;
+	}
+	.bm-heading {
+		padding: 0.75rem 1.25rem 0.25rem;
+		font-size: 0.72rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: var(--muted);
+	}
+	.bm-row {
+		display: flex;
+		align-items: center;
+	}
+	.bm-remove {
+		flex-shrink: 0;
+		padding: 0.4rem 1rem 0.4rem 0.4rem;
+		color: var(--muted);
+		background: none;
+		border: none;
+		cursor: pointer;
+	}
+	.bm-remove:hover {
+		color: var(--text);
 	}
 	.toc-item.current {
 		background: color-mix(in srgb, var(--accent) 8%, transparent);
