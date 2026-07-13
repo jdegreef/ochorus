@@ -183,6 +183,7 @@
 						<li><a href={localizeHref('/plans')} class="hover:text-text">{t('nav.plans')}</a></li>
 						<li><a href={localizeHref('/sermons')} class="hover:text-text">{t('nav.sermons')}</a></li>
 						<li><a href={localizeHref('/biographies')} class="hover:text-text">{t('nav.biographies')}</a></li>
+						<li><a href={localizeHref('/notebook')} class="hover:text-text">{t('notebook.title')}</a></li>
 						<li><a href={localizeHref('/about')} class="hover:text-text">{t('nav.about')}</a></li>
 						<li><a href={localizeHref('/contact')} class="hover:text-text">{t('nav.contact')}</a></li>
 					</ul>
