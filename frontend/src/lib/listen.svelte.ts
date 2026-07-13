@@ -121,6 +121,39 @@ class Listen {
 		this.#restartCurrent();
 	}
 
+	/**
+	 * Speak a short sample in a given voice/rate so the listener can audition it
+	 * from the settings panel. Stops any active reading first (SpeechSynthesis is
+	 * single-channel) and does NOT enter the paragraph queue, so it leaves the
+	 * reader's play state idle rather than showing the Listen bar.
+	 */
+	preview(sample: string, voiceURI = this.voiceURI, rate = this.rate) {
+		if (!this.supported || !sample.trim()) return;
+		this.init();
+		this.stop();
+		const u = new SpeechSynthesisUtterance(sample);
+		u.rate = rate;
+		const voice = this.voices.find((v) => v.voiceURI === voiceURI);
+		if (voice) {
+			u.voice = voice;
+			u.lang = voice.lang;
+		}
+		speechSynthesis.speak(u);
+	}
+
+	/** All available voices grouped by BCP-47 language tag, for a settings picker. */
+	get voicesByLang(): { lang: string; voices: SpeechSynthesisVoice[] }[] {
+		const groups = new Map<string, SpeechSynthesisVoice[]>();
+		for (const v of this.voices) {
+			const list = groups.get(v.lang) ?? [];
+			list.push(v);
+			groups.set(v.lang, list);
+		}
+		return [...groups.entries()]
+			.map(([lang, voices]) => ({ lang, voices: voices.sort((a, b) => a.name.localeCompare(b.name)) }))
+			.sort((a, b) => a.lang.localeCompare(b.lang));
+	}
+
 	/** Apply a rate/voice change immediately by re-speaking the paragraph. */
 	#restartCurrent() {
 		if (this.status !== 'idle' && this.current >= 0) this.#speakFrom(this.current);
