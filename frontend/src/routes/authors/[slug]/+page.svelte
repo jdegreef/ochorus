@@ -20,7 +20,7 @@
 	function startListening() {
 		if (!bioEl) return;
 		const paragraphs = [...bioEl.children].map((el) => (el as HTMLElement).innerText);
-		listen.start(paragraphs, 0, getLang());
+		listen.start(paragraphs, 0, getLang(), { title: author.name, artist: t('bios.eyebrow') });
 	}
 	onDestroy(() => listen.stop());
 

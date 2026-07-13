@@ -234,7 +234,10 @@
 	function startListening() {
 		if (!body) return;
 		const paragraphs = [...body.children].map((el) => (el as HTMLElement).innerText);
-		listen.start(paragraphs, topVisibleIndex(), getLang());
+		listen.start(paragraphs, topVisibleIndex(), getLang(), {
+			title: chapter.title,
+			artist: `${chapter.author_name} · ${chapter.book_title}`
+		});
 	}
 
 	function topVisibleIndex(): number {

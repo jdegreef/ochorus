@@ -55,6 +55,24 @@
 				</select>
 			{/if}
 
+			<select
+				class="rounded-sm border bg-surface px-1 py-1 text-small tabular-nums"
+				class:border-accent={listen.sleepMinutes > 0}
+				class:text-accent={listen.sleepMinutes > 0}
+				class:border-border={listen.sleepMinutes === 0}
+				class:text-muted={listen.sleepMinutes === 0}
+				value={listen.sleepMinutes}
+				onchange={(e) => listen.setSleep(Number(e.currentTarget.value))}
+				aria-label={t('reader.sleepTimer')}
+				title={t('reader.sleepTimer')}
+			>
+				<option value={0}>🌙</option>
+				<option value={5}>5m</option>
+				<option value={15}>15m</option>
+				<option value={30}>30m</option>
+				<option value={60}>60m</option>
+			</select>
+
 			<button class="btn btn-ghost !px-2.5 !py-1" onclick={() => listen.stop()} aria-label={t('reader.stopListening')}>
 				✕
 			</button>
