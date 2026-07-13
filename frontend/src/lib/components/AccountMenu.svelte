@@ -53,6 +53,9 @@
 							>Admin</a
 						>
 					{/if}
+					<a class="account-item" role="menuitem" href={localizeHref('/notebook')} onclick={() => (open = false)}
+						>Notebook</a
+					>
 					<a class="account-item" role="menuitem" href={localizeHref('/account')} onclick={() => (open = false)}
 						>Account</a
 					>

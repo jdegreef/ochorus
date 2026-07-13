@@ -1,6 +1,13 @@
 import { browser } from '$app/environment';
 import { readingSync } from './readingSync';
-import { MARKS_KEY, chapterKey, type ChapterMarks, type MarksStore, type Mark } from './reading-schema';
+import {
+	MARKS_KEY,
+	chapterKey,
+	parseChapterKey,
+	type ChapterMarks,
+	type MarksStore,
+	type Mark
+} from './reading-schema';
 
 /**
  * Text-range highlights and notes.
@@ -157,6 +164,18 @@ class Marks {
 		const e = readAll()[chapterKey(slug, order)];
 		if (!e?.m) return 0;
 		return new Set(e.m.map((m) => m.id)).size;
+	}
+
+	/** Every chapter's marks across all books, for the notebook. */
+	all(): { slug: string; order: number; marks: Mark[] }[] {
+		const out: { slug: string; order: number; marks: Mark[] }[] = [];
+		for (const [key, entry] of Object.entries(readAll())) {
+			const parsed = parseChapterKey(key);
+			if (parsed && entry.m?.length) {
+				out.push({ slug: parsed.slug, order: parsed.order, marks: entry.m });
+			}
+		}
+		return out;
 	}
 }
 
