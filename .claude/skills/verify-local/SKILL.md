@@ -44,6 +44,18 @@ ls frontend/build/_app/immutable/entry/app.*.js   # hashes must match
 
 If a change "isn't taking effect", check this FIRST.
 
+## Stale Paraglide compile after editing message catalogs
+
+Adding/changing keys in `messages/{en,es,sw,lg}.json` does NOT hot-reload — a
+running `vite dev` (or `preview`) serves the Paraglide compile from when it
+started, so new UI strings render as **English (or the raw key)** and you'll
+think the translation is broken when it isn't. Fix: `npm run paraglide` (or
+`npm run check`, which runs it) and **restart the dev server**. Paraglide 2.x
+compiles one file per message under `src/lib/paraglide/messages/<key>.js`
+(gitignored) — grep there to confirm a new key compiled. The i18n facade
+(`t('a.b')` → `a_b`) returns the raw key when a message fn is missing, so a raw
+key on screen = not compiled, not a missing translation.
+
 ## Browser verification (Chrome MCP)
 
 The MCP tab is hidden/automated — three consequences:
