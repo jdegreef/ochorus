@@ -27,3 +27,6 @@ export const load: PageLoad = async ({ params }) => {
 // Book detail is prerendered per locale; a backend-only content merge skips
 // the web build, so a newly-translated book (e.g. the-inner-chamber in lg)
 // needs this rebuild to prerender in that language.
+
+// Refresh prerender: Finney + Brainerd (books, author bios, portrait) added
+// via fixture; the web build prerendered before the API seeded them. 2026-07-13.
