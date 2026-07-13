@@ -25,6 +25,7 @@
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import DefinePopover from '$lib/components/DefinePopover.svelte';
 	import TocDrawer from '$lib/components/TocDrawer.svelte';
+	import SearchDrawer from '$lib/components/SearchDrawer.svelte';
 	import SelectionBar from '$lib/components/SelectionBar.svelte';
 	import ListenBar from '$lib/components/ListenBar.svelte';
 
@@ -46,6 +47,7 @@
 
 	const HEADER_OFFSET = 72;
 	let tocOpen = $state(false);
+	let searchOpen = $state(false);
 
 	// --- Reading-progress indicators -------------------------------------------
 	// Fraction of the current chapter scrolled past (0..1), updated by the same
@@ -181,7 +183,8 @@
 			el?.closest?.('input, textarea, select, [contenteditable="true"]') ||
 			noteOpen ||
 			define.open ||
-			tocOpen
+			tocOpen ||
+			searchOpen
 		) {
 			return;
 		}
@@ -431,6 +434,12 @@
 				>
 				<button
 					class="btn btn-ghost !px-2.5 !py-1"
+					onclick={() => (searchOpen = true)}
+					aria-label={t('reader.search')}
+					title={t('reader.search')}>🔍</button
+				>
+				<button
+					class="btn btn-ghost !px-2.5 !py-1"
 					onclick={() => (tocOpen = true)}
 					aria-label={t('reader.contents')}
 					title={t('reader.contents')}>☰</button
@@ -578,6 +587,8 @@
 <DefinePopover />
 
 <TocDrawer {slug} currentOrder={chapter.order} bind:open={tocOpen} />
+
+<SearchDrawer {slug} bind:open={searchOpen} />
 
 <ListenBar />
 
