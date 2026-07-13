@@ -45,7 +45,7 @@
 		listen.start(paragraphs, 0, getLang());
 	}
 
-	const canonical = $derived(`${SITE_URL}/sermons/${sermon.slug}`);
+	const canonical = $derived(`${SITE_URL}/sermons/${sermon.slug}/`);
 	const preachedYear = $derived(sermon.preached_on ? sermon.preached_on.slice(0, 4) : '');
 </script>
 

@@ -2,6 +2,10 @@ import { getPlan, listPlans } from '$lib/library';
 import { getLang } from '$lib/lang.svelte';
 import type { EntryGenerator, PageLoad } from './$types';
 
+// Trailing-slash canonical -> prerenders to plans/<slug>/index.html, which the
+// static host serves as a directory index (see books/[slug] for the full note).
+export const trailingSlash = 'always';
+
 // Prerender one page per plan — the slug list comes from the API at build
 // time. The plans endpoint may lag on a fresh deploy (api + web build
 // together), so degrade to no plan pages rather than fail the whole build;

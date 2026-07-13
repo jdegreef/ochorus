@@ -3,6 +3,10 @@ import { getLang } from '$lib/lang.svelte';
 import { orNotFound } from '$lib/loadHelpers';
 import type { EntryGenerator, PageLoad } from './$types';
 
+// Trailing-slash canonical -> prerenders to authors/<slug>/index.html, which the
+// static host serves as a directory index (see books/[slug] for the full note).
+export const trailingSlash = 'always';
+
 // Prerender a page for every author who has books or a biography. The slug set
 // is the union of book authors and bio'd authors, from the API at build time.
 export const entries: EntryGenerator = async () => {

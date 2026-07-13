@@ -23,9 +23,11 @@ export async function GET() {
 		'/biographies',
 		'/about',
 		'/contact',
-		...books.map((b) => `/books/${b.slug}`),
-		...sermons.map((s) => `/sermons/${s.slug}`),
-		...[...authorSlugs].map((s) => `/authors/${s}`)
+		// Detail pages canonicalize to a trailing slash (prerendered as directory
+		// indexes; the static host serves those only for the trailing-slash URL).
+		...books.map((b) => `/books/${b.slug}/`),
+		...sermons.map((s) => `/sermons/${s.slug}/`),
+		...[...authorSlugs].map((s) => `/authors/${s}/`)
 	];
 
 	const xml =
