@@ -23,3 +23,7 @@ export const load: PageLoad = async ({ params }) => {
 // New public-domain books/sermons are prerendered per slug; a backend-only
 // content merge skips the web build, so new /books/<slug> pages need this
 // rebuild to exist as static HTML.
+
+// Book detail is prerendered per locale; a backend-only content merge skips
+// the web build, so a newly-translated book (e.g. the-inner-chamber in lg)
+// needs this rebuild to prerender in that language.
