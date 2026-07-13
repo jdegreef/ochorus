@@ -22,8 +22,12 @@ from .views import LANGUAGE_NAMES, _language_entry
 
 
 def _unique_author_slug(name: str) -> str:
-    """A globally-unique Author slug derived from the name."""
-    root = slugify(name)[:120] or "author"
+    """A globally-unique Author slug derived from the name.
+
+    The root is capped short of ``SlugField(max_length=120)`` so an appended
+    ``-N`` collision suffix can never overflow the column.
+    """
+    root = slugify(name)[:110] or "author"
     slug = root
     n = 2
     while Author.objects.filter(slug=slug).exists():
@@ -33,11 +37,11 @@ def _unique_author_slug(name: str) -> str:
 
 
 class AdminAuthorCreateView(APIView):
-    """POST {name, bio?, birth_year?, death_year?} → create a stub Author.
+    """POST {name} → create a name-only stub Author.
 
     Lets the import flow add an author who isn't in the system yet without
-    leaving the page; the long-form bio and portrait are filled in later. Returns
-    the ``AuthorBio``-shaped row so the picker can select it immediately.
+    leaving the page; the bio and portrait are filled in later. Returns the
+    ``AuthorBio``-shaped row so the picker can select it immediately.
     """
 
     permission_classes = [IsAdminEmail]
@@ -46,13 +50,7 @@ class AdminAuthorCreateView(APIView):
         name = (request.data.get("name") or "").strip()
         if not name:
             return Response({"detail": "An author name is required."}, status=400)
-        author = Author.objects.create(
-            slug=_unique_author_slug(name),
-            name=name[:200],
-            bio=(request.data.get("bio") or "").strip(),
-            birth_year=upload_import._clean_year(request.data.get("birth_year")),
-            death_year=upload_import._clean_year(request.data.get("death_year")),
-        )
+        author = Author.objects.create(slug=_unique_author_slug(name), name=name[:200])
         # AuthorSerializer covers the prose/date fields; book_count is trivially
         # 0 for a just-created author (avoids re-querying for the annotation).
         return Response({**AuthorSerializer(author).data, "book_count": 0}, status=201)

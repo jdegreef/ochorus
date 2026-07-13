@@ -214,6 +214,34 @@ class CreateTests(TestCase):
         self.assertEqual(book.cover_url, "")
         self.assertIsNone(book.publication_year)
 
+    def test_clean_hex_only_accepts_valid_css_lengths(self):
+        self.assertEqual(ui._clean_hex("#123"), "#123")  # 3
+        self.assertEqual(ui._clean_hex("#1234"), "#1234")  # 4
+        self.assertEqual(ui._clean_hex("#112233"), "#112233")  # 6
+        self.assertEqual(ui._clean_hex("#11223344"), "#11223344")  # 8
+        self.assertEqual(ui._clean_hex("#12345"), "")  # 5 — invalid CSS hex
+        self.assertEqual(ui._clean_hex("#1234567"), "")  # 7 — invalid CSS hex
+
+    def test_http_url_requires_a_real_scheme(self):
+        self.assertEqual(ui._http_url("httpfoo"), "")  # startswith("http") is not enough
+        self.assertEqual(ui._http_url("httpx://evil"), "")
+        self.assertEqual(ui._http_url("https://ok.example/x.jpg"), "https://ok.example/x.jpg")
+
+    def test_create_book_tolerates_non_string_metadata(self):
+        # A malformed payload sending a number/None must not crash create_book.
+        book = ui.create_book(
+            self.author,
+            "Coerced",
+            [{"title": "One", "html": f"<p>{BODY}</p>"}],
+            "en",
+            subtitle=1885,  # int, not str
+            cover_color=123,
+            attribution=None,
+        )
+        self.assertEqual(book.subtitle, "1885")
+        self.assertEqual(book.cover_color, "")
+        self.assertEqual(book.attribution, "")
+
 
 @override_settings(DEBUG=True)  # bypasses the admin email gate (see permissions)
 class EndpointTests(TestCase):
@@ -335,6 +363,17 @@ class AuthorCreateTests(TestCase):
     def test_create_author_requires_name(self):
         r = self.client.post("/api/admin/authors/", {"name": "   "}, format="json")
         self.assertEqual(r.status_code, 400)
+
+    def test_create_author_long_name_slug_within_limit(self):
+        # A very long name, created twice so the second collides, must not
+        # overflow SlugField(120) when the -N suffix is appended.
+        long_name = "Reverend " + ("Wordsworth " * 40)
+        r1 = self.client.post("/api/admin/authors/", {"name": long_name}, format="json")
+        r2 = self.client.post("/api/admin/authors/", {"name": long_name}, format="json")
+        self.assertEqual((r1.status_code, r2.status_code), (201, 201))
+        self.assertLessEqual(len(r1.json()["slug"]), 120)
+        self.assertLessEqual(len(r2.json()["slug"]), 120)
+        self.assertNotEqual(r1.json()["slug"], r2.json()["slug"])
 
 
 @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})

@@ -58,11 +58,11 @@
 
 	async function addAuthor() {
 		const name = newAuthorName.trim();
-		if (!name) return;
+		if (!name || busy) return; // in-flight guard: a held/double Enter must not double-create
 		busy = true;
 		error = null;
 		try {
-			const a = await createAuthor({ name });
+			const a = await createAuthor(name);
 			authors = [...authors, a].sort((x, y) => x.name.localeCompare(y.name));
 			authorSlug = a.slug;
 			addingAuthor = false;
@@ -230,6 +230,7 @@
 						bind:value={newAuthorName}
 						placeholder="Author's full name"
 						autofocus
+						disabled={busy}
 						onkeydown={(e) => e.key === 'Enter' && addAuthor()}
 						class="min-w-0 flex-1 rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
 					/>
@@ -357,8 +358,10 @@
 						</label>
 						<input
 							id="pubyear"
+							type="number"
+							min="1"
+							max="2100"
 							bind:value={publicationYear}
-							inputmode="numeric"
 							placeholder="e.g. 1885"
 							class="w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
 						/>

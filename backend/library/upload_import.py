@@ -190,10 +190,10 @@ def _unique_slug(base: str, model, language: str) -> str:
     return slug
 
 
-def _clean_hex(value: str) -> str:
-    """A validated hex accent (``#rgb``..``#rrggbbaa``), else empty."""
-    v = (value or "").strip()
-    return v if re.fullmatch(r"#[0-9a-fA-F]{3,8}", v) else ""
+def _clean_hex(value) -> str:
+    """A validated CSS hex accent (#rgb / #rgba / #rrggbb / #rrggbbaa), else empty."""
+    v = str(value or "").strip()
+    return v if re.fullmatch(r"#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})", v) else ""
 
 
 def _clean_year(value) -> int | None:
@@ -205,9 +205,10 @@ def _clean_year(value) -> int | None:
     return y if 0 < y <= 2100 else None
 
 
-def _http_url(value: str) -> str:
-    v = (value or "").strip()
-    return v if v.startswith("http") else ""
+def _http_url(value) -> str:
+    """An http(s) URL, else empty (the model's URLField isn't full_clean()'d here)."""
+    v = str(value or "").strip()
+    return v if v.startswith(("http://", "https://")) else ""
 
 
 @transaction.atomic
@@ -237,13 +238,13 @@ def create_book(
         slug=slug,
         language=language,
         title=title.strip()[:300],
-        subtitle=(subtitle or "").strip()[:300],
+        subtitle=str(subtitle or "").strip()[:300],
         source_type=Book.SourceType.PUBLIC_DOMAIN,
         source_url=_http_url(source_url),
         cover_url=_http_url(cover_url),
         cover_color=_clean_hex(cover_color),
         publication_year=_clean_year(publication_year),
-        attribution=(attribution or "").strip(),
+        attribution=str(attribution or "").strip(),
         sort_order=last + 1,
         is_published=True,
     )
