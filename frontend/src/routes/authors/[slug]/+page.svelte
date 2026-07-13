@@ -20,7 +20,7 @@
 	// so each localized copy points at ITSELF (not the English URL) and links its
 	// siblings, instead of every locale canonicalizing to /authors/<slug> (which
 	// deindexes the translations). Mirrors the /biographies list page.
-	const path = $derived(`/authors/${author.slug}`);
+	const path = $derived(`/authors/${author.slug}/`);
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
 	const alternates = $derived(
 		locales.map((loc) => ({ loc, href: `${SITE_URL}${localizeHref(path, { locale: loc })}` }))

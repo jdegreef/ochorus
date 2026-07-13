@@ -3,6 +3,10 @@ import { getLang } from '$lib/lang.svelte';
 import { orNotFound } from '$lib/loadHelpers';
 import type { EntryGenerator, PageLoad } from './$types';
 
+// Trailing-slash canonical -> prerenders to sermons/<slug>/index.html, which the
+// static host serves as a directory index (see books/[slug] for the full note).
+export const trailingSlash = 'always';
+
 // Prerender one page per sermon — the slug list comes from the API at build
 // time. The sermon endpoint may lag on a fresh deploy (api + web build together),
 // so degrade to no sermon pages rather than fail the whole build; a later

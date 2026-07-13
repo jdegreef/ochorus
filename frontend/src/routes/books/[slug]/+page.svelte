@@ -22,7 +22,7 @@
 
 	const totalWords = $derived(book.chapters.reduce((sum, c) => sum + c.word_count, 0));
 
-	const canonical = $derived(`${SITE_URL}/books/${book.slug}`);
+	const canonical = $derived(`${SITE_URL}/books/${book.slug}/`);
 	const description = $derived(
 		(book.description || `${book.title} by ${book.author.name} — free to read on Ochorus.`).slice(
 			0,
