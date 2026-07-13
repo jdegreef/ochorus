@@ -18,9 +18,10 @@ from html import escape
 
 import mammoth
 from bs4 import BeautifulSoup
+from django.db import transaction
 from django.utils.text import slugify
 
-from .ingest import clean_fragment, clean_title, word_count
+from .ingest import clean_fragment, clean_title, strip_trailing_pagenum, word_count
 from .management.commands.import_ochorus import chapterize, pdf_blocks
 from .models import Author, Book, Chapter, Sermon
 
@@ -71,15 +72,8 @@ def _blocks_to_html(blocks: list[tuple[str, float]]) -> str:
     return "".join(f"<p>{escape(text)}</p>" for text, _ in blocks if text.strip())
 
 
-def _pdf_html(data: bytes) -> str:
-    """All of a PDF's text as paragraphs (for a sermon — no chapter splitting)."""
-    blocks, _ = pdf_blocks(data)
-    return _blocks_to_html(blocks)
-
-
-def _looks_scanned(data: bytes) -> bool:
+def _looks_scanned(blocks: list[tuple[str, float]]) -> bool:
     """A PDF with no meaningful text layer is a scan — we can't extract it."""
-    blocks, _ = pdf_blocks(data)
     return sum(len(t.strip()) for t, _ in blocks) < 40
 
 
@@ -90,14 +84,15 @@ def _finalize(sections: list[Section]) -> list[dict]:
     """Clean each section and drop the empties; return preview dicts."""
     out: list[dict] = []
     for raw_title, raw_body in sections:
-        body = clean_fragment(raw_body)
-        if word_count(body) < 5:
+        body = strip_trailing_pagenum(clean_fragment(raw_body))
+        words = word_count(body)
+        if words < 5:
             continue
         out.append(
             {
                 "title": clean_title(raw_title) if raw_title else "",
                 "html": body,
-                "words": word_count(body),
+                "words": words,
             }
         )
     return out
@@ -123,14 +118,20 @@ def parse_upload(data: bytes, filename: str, kind: str) -> dict:
     if not (is_pdf or is_docx):
         raise ParseError("Unsupported file — upload a .docx or .pdf.")
 
-    if is_pdf and _looks_scanned(data):
-        raise ParseError(
-            "This PDF looks like a scanned image with no text to extract. "
-            "OCR isn't supported yet — please upload a text PDF or a Word document."
-        )
+    # Extract PDF text once here; the scanned check, chapterizer, and sermon body
+    # all reuse these blocks rather than re-parsing the file.
+    blocks: list[tuple[str, float]] = []
+    body_size = 0.0
+    if is_pdf:
+        blocks, body_size = pdf_blocks(data)
+        if _looks_scanned(blocks):
+            raise ParseError(
+                "This PDF looks like a scanned image with no text to extract. "
+                "OCR isn't supported yet — please upload a text PDF or a Word document."
+            )
 
     if kind == "sermon":
-        html = _docx_html(data) if is_docx else _pdf_html(data)
+        html = _docx_html(data) if is_docx else _blocks_to_html(blocks)
         chapters = _finalize([("", html)])
     elif is_docx:
         html = _docx_html(data)
@@ -139,7 +140,6 @@ def parse_upload(data: bytes, filename: str, kind: str) -> dict:
         sections = _split_on_headings(html) or [("", html)]
         chapters = _finalize(sections)
     else:  # book, pdf
-        blocks, body_size = pdf_blocks(data)
         # Fall back to the whole document as one chapter when the chapterizer
         # can't find breaks — better a reviewable single chapter than an error.
         sections = chapterize(blocks, body_size) or [("", _blocks_to_html(blocks))]
@@ -170,10 +170,16 @@ def _unique_slug(base: str, model, language: str) -> str:
     return slug
 
 
+@transaction.atomic
 def create_book(
     author: Author, title: str, chapters: list[dict], language: str = "en", source_url: str = ""
 ) -> Book:
-    """Create a published Book with chapters from reviewed preview sections."""
+    """Create a published Book with chapters from reviewed preview sections.
+
+    The section HTML is re-cleaned here (not trusted from the client round-trip),
+    so a tampered payload can only yield valid content or a rejection. Raises
+    ``ParseError`` — rolling back the whole write — if no chapter survives.
+    """
     slug = _unique_slug(title, Book, language)
     last = Book.objects.order_by("-sort_order").values_list("sort_order", flat=True).first() or 0
     book = Book.objects.create(
@@ -188,8 +194,9 @@ def create_book(
     )
     order = 0
     for ch in chapters:
-        body = clean_fragment(ch.get("html", ""))
-        if word_count(body) < 5:
+        body = strip_trailing_pagenum(clean_fragment(ch.get("html", "")))
+        words = word_count(body)
+        if words < 5:
             continue
         order += 1
         Chapter.objects.create(
@@ -197,8 +204,10 @@ def create_book(
             order=order,
             title=clean_title(ch.get("title") or "") or f"Chapter {order}",
             body_html=body,
-            word_count=word_count(body),
+            word_count=words,
         )
+    if order == 0:
+        raise ParseError("No chapters had readable text.")
     return book
 
 
@@ -210,8 +219,11 @@ def create_sermon(
     scripture_ref: str = "",
     source_url: str = "",
 ) -> Sermon:
-    """Create a published Sermon from a reviewed preview body."""
-    body = clean_fragment(body_html)
+    """Create a published Sermon from a reviewed preview body.
+
+    The body is re-cleaned here rather than trusted from the client round-trip.
+    """
+    body = strip_trailing_pagenum(clean_fragment(body_html))
     slug = _unique_slug(title, Sermon, language)
     last = Sermon.objects.order_by("-sort_order").values_list("sort_order", flat=True).first() or 0
     return Sermon.objects.create(

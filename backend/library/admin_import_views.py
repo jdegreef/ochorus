@@ -60,10 +60,10 @@ class AdminImportPublishView(APIView):
             chapters = d.get("chapters") or []
             if not isinstance(chapters, list) or not chapters:
                 return Response({"detail": "No chapters to publish."}, status=400)
-            book = upload_import.create_book(author, title, chapters, language, source_url)
-            if book.chapters.count() == 0:
-                book.delete()
-                return Response({"detail": "No chapters had readable text."}, status=400)
+            try:
+                book = upload_import.create_book(author, title, chapters, language, source_url)
+            except upload_import.ParseError as exc:
+                return Response({"detail": str(exc)}, status=400)
             return Response(
                 {
                     "kind": "book",
@@ -78,14 +78,17 @@ class AdminImportPublishView(APIView):
         body = d.get("body_html") or ""
         if not body.strip():
             return Response({"detail": "The sermon body is empty."}, status=400)
-        sermon = upload_import.create_sermon(
-            author,
-            title,
-            body,
-            language,
-            scripture_ref=(d.get("scripture_ref") or ""),
-            source_url=source_url,
-        )
+        try:
+            sermon = upload_import.create_sermon(
+                author,
+                title,
+                body,
+                language,
+                scripture_ref=(d.get("scripture_ref") or ""),
+                source_url=source_url,
+            )
+        except upload_import.ParseError as exc:
+            return Response({"detail": str(exc)}, status=400)
         return Response(
             {"kind": "sermon", "slug": sermon.slug, "title": sermon.title, "path": f"/sermons/{sermon.slug}"},
             status=201,

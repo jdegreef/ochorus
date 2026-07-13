@@ -155,6 +155,8 @@ export const getChapter = (slug: string, order: number, language = 'en') =>
 export const listSermons = (language = 'en') =>
 	apiFetch<SermonSummary[]>(`/api/library/sermons/?language=${language}`);
 
+export const listLanguages = () => apiFetch<Language[]>('/api/library/languages/');
+
 export const getSermon = (slug: string, language = 'en') =>
 	apiFetch<Sermon>(`/api/library/sermons/${slug}/?language=${language}`);
 

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { ApiError, apiFetch, apiFetchRaw } from '$lib/api';
-	import { listAuthors, type AuthorBio, type Language } from '$lib/library';
+	import { listAuthors, listLanguages, type AuthorBio, type Language } from '$lib/library';
 
 	type Chapter = { title: string; html: string; words: number };
 	type Preview = { kind: 'book' | 'sermon'; chapters: Chapter[]; suggested_title: string };
@@ -28,7 +28,7 @@
 		try {
 			[authors, languages] = await Promise.all([
 				listAuthors(),
-				apiFetch<Language[]>('/api/library/languages/').catch(() => languages)
+				listLanguages().catch(() => languages)
 			]);
 		} catch {
 			/* leave defaults */
@@ -88,22 +88,17 @@
 		busy = true;
 		error = null;
 		try {
+			const base = { author_slug: authorSlug, title, language, source_url: sourceUrl };
 			const payload =
 				preview.kind === 'book'
 					? {
+							...base,
 							kind: 'book',
-							author_slug: authorSlug,
-							title,
-							language,
-							source_url: sourceUrl,
 							chapters: preview.chapters.map((c) => ({ title: c.title, html: c.html }))
 						}
 					: {
+							...base,
 							kind: 'sermon',
-							author_slug: authorSlug,
-							title,
-							language,
-							source_url: sourceUrl,
 							scripture_ref: scriptureRef,
 							body_html: preview.chapters[0]?.html ?? ''
 						};
