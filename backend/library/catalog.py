@@ -163,6 +163,39 @@ AUTHORS: dict[str, AuthorEntry] = {
             "International."
         ),
     ),
+    "charles-finney": AuthorEntry(
+        slug="charles-finney",
+        name="Charles G. Finney",
+        birth_year=1792,
+        death_year=1875,
+        bio=(
+            "Charles Grandison Finney (1792–1875) was a lawyer turned evangelist "
+            "whose preaching helped drive the Second Great Awakening across upstate "
+            "New York and beyond. Convinced that revival was not a miracle to be "
+            "waited for but the right use of God-given means, he pioneered the "
+            "“new measures” of protracted meetings and direct appeal, saw whole "
+            "towns transformed, and later became president of Oberlin College. His "
+            "Lectures on Revivals of Religion has shaped how the English-speaking "
+            "church has thought about revival ever since."
+        ),
+    ),
+    "david-brainerd": AuthorEntry(
+        slug="david-brainerd",
+        name="David Brainerd",
+        birth_year=1718,
+        death_year=1747,
+        bio=(
+            "David Brainerd (1718–1747) was a young missionary to the Native "
+            "American peoples of colonial New Jersey and Pennsylvania. Expelled "
+            "from Yale for his zeal, he gave his brief life to prayer and "
+            "itinerant preaching among the Delaware and others, seeing a "
+            "remarkable awakening shortly before dying of tuberculosis at "
+            "twenty-nine. The diary he kept — published after his death by "
+            "Jonathan Edwards — became one of the most influential missionary "
+            "memoirs ever written, stirring generations that followed, from "
+            "William Carey to Henry Martyn."
+        ),
+    ),
 }
 
 # Shelf order. Small, clean books first.
@@ -225,6 +258,13 @@ BOOKS: list[BookEntry] = [
     BookEntry("union-and-communion", "Union and Communion", "hudson-taylor",
               "ccel", "taylor_jh/union",
               subtitle="Thoughts on the Song of Solomon", cover_color="#862e9c"),
+    # Revival & Awakening — clean CCEL/Gutenberg sources.
+    BookEntry("revival-lectures", "Lectures on Revivals of Religion", "charles-finney",
+              "ccel", "finney/revivals",
+              subtitle="How Revival Comes", cover_color="#a61e4d"),
+    BookEntry("life-and-diary-of-david-brainerd", "The Life and Diary of David Brainerd",
+              "david-brainerd", "gutenberg", "65066",
+              subtitle="Edited by Jonathan Edwards", cover_color="#5f3dc4"),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an
