@@ -349,7 +349,7 @@
 						<label class="mb-1 block text-small font-semibold text-text" for="subtitle">
 							Subtitle <span class="font-normal text-muted">(optional)</span>
 						</label>
-						<input id="subtitle" bind:value={subtitle} placeholder="Subtitle" class="field" />
+						<input id="subtitle" bind:value={subtitle} placeholder="Subtitle" class="w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text" />
 					</div>
 					<div>
 						<label class="mb-1 block text-small font-semibold text-text" for="pubyear">
@@ -360,7 +360,7 @@
 							bind:value={publicationYear}
 							inputmode="numeric"
 							placeholder="e.g. 1885"
-							class="field"
+							class="w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
 						/>
 					</div>
 					<div>
@@ -375,14 +375,18 @@
 								aria-label="Cover accent colour"
 								class="h-9 w-12 shrink-0 rounded-sm border border-border bg-bg"
 							/>
-							<input bind:value={coverColor} placeholder="#3b5bdb" class="field min-w-0 flex-1" />
+							<input
+							bind:value={coverColor}
+							placeholder="#3b5bdb"
+							class="min-w-0 flex-1 rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+						/>
 						</div>
 					</div>
 					<div>
 						<label class="mb-1 block text-small font-semibold text-text" for="coverurl">
 							Cover image URL <span class="font-normal text-muted">(optional)</span>
 						</label>
-						<input id="coverurl" bind:value={coverUrl} placeholder="https://…" class="field" />
+						<input id="coverurl" bind:value={coverUrl} placeholder="https://…" class="w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text" />
 					</div>
 				</div>
 				<label class="mb-1 mt-3 block text-small font-semibold text-text" for="attr">
@@ -393,7 +397,7 @@
 					bind:value={attribution}
 					rows="2"
 					placeholder="e.g. Public domain — scanned by CCEL"
-					class="field"
+					class="w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
 				></textarea>
 			{/if}
 
@@ -455,14 +459,5 @@
 		height: 1px;
 		overflow: hidden;
 		clip: rect(0 0 0 0);
-	}
-	.field {
-		width: 100%;
-		border-radius: var(--radius-sm);
-		border: 1px solid var(--border);
-		background: var(--bg);
-		padding: 0.5rem 0.75rem;
-		font-size: 0.95rem;
-		color: var(--text);
 	}
 </style>

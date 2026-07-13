@@ -17,14 +17,8 @@ from accounts.permissions import IsAdminEmail
 
 from . import upload_import
 from .models import Author
+from .serializers import AuthorSerializer
 from .views import LANGUAGE_NAMES, _language_entry
-
-
-def _int_or_none(value) -> int | None:
-    try:
-        return int(str(value).strip())
-    except (TypeError, ValueError):
-        return None
 
 
 def _unique_author_slug(name: str) -> str:
@@ -56,21 +50,12 @@ class AdminAuthorCreateView(APIView):
             slug=_unique_author_slug(name),
             name=name[:200],
             bio=(request.data.get("bio") or "").strip(),
-            birth_year=_int_or_none(request.data.get("birth_year")),
-            death_year=_int_or_none(request.data.get("death_year")),
+            birth_year=upload_import._clean_year(request.data.get("birth_year")),
+            death_year=upload_import._clean_year(request.data.get("death_year")),
         )
-        return Response(
-            {
-                "slug": author.slug,
-                "name": author.name,
-                "bio": author.bio,
-                "photo_url": author.photo_url,
-                "birth_year": author.birth_year,
-                "death_year": author.death_year,
-                "book_count": 0,
-            },
-            status=201,
-        )
+        # AuthorSerializer covers the prose/date fields; book_count is trivially
+        # 0 for a just-created author (avoids re-querying for the annotation).
+        return Response({**AuthorSerializer(author).data, "book_count": 0}, status=201)
 
 
 class AdminImportLanguagesView(APIView):
@@ -139,11 +124,11 @@ class AdminImportPublishView(APIView):
                     chapters,
                     language,
                     source_url,
-                    subtitle=(d.get("subtitle") or ""),
-                    cover_color=(d.get("cover_color") or ""),
-                    cover_url=(d.get("cover_url") or ""),
+                    subtitle=d.get("subtitle"),
+                    cover_color=d.get("cover_color"),
+                    cover_url=d.get("cover_url"),
                     publication_year=d.get("publication_year"),
-                    attribution=(d.get("attribution") or ""),
+                    attribution=d.get("attribution"),
                 )
             except upload_import.ParseError as exc:
                 return Response({"detail": str(exc)}, status=400)
