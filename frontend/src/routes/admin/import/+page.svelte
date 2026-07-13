@@ -1,0 +1,331 @@
+<script lang="ts">
+	import { onMount } from 'svelte';
+	import { ApiError, apiFetch, apiFetchRaw } from '$lib/api';
+	import { listAuthors, listImportLanguages, type AuthorBio, type Language } from '$lib/library';
+
+	type Chapter = { title: string; html: string; words: number };
+	type Preview = { kind: 'book' | 'sermon'; chapters: Chapter[]; suggested_title: string };
+	type Published = { kind: string; slug: string; title: string; path: string; chapters?: number };
+
+	let authors = $state<AuthorBio[]>([]);
+	let languages = $state<Language[]>([{ code: 'en', name: 'English', native_name: 'English' }]);
+
+	let kind = $state<'book' | 'sermon'>('book');
+	let authorSlug = $state('');
+	let language = $state('en');
+	let file = $state<File | null>(null);
+
+	let preview = $state<Preview | null>(null);
+	let title = $state('');
+	let scriptureRef = $state('');
+	let sourceUrl = $state('');
+
+	let busy = $state(false);
+	let error = $state<string | null>(null);
+	let published = $state<Published | null>(null);
+
+	onMount(async () => {
+		try {
+			[authors, languages] = await Promise.all([
+				listAuthors(),
+				listImportLanguages().catch(() => languages)
+			]);
+		} catch {
+			/* leave defaults */
+		}
+	});
+
+	function pickFile(e: Event) {
+		file = (e.target as HTMLInputElement).files?.[0] ?? null;
+	}
+
+	function errMsg(e: unknown, fallback: string): string {
+		if (e instanceof ApiError) {
+			const b = e.body as { detail?: string } | string | null;
+			if (b && typeof b === 'object' && b.detail) return b.detail;
+			if (typeof b === 'string' && b) return b;
+		}
+		return fallback;
+	}
+
+	async function parse() {
+		if (!file) {
+			error = 'Choose a Word or PDF file first.';
+			return;
+		}
+		busy = true;
+		error = null;
+		try {
+			const form = new FormData();
+			form.append('file', file);
+			form.append('kind', kind);
+			const res = await apiFetchRaw('/api/admin/import/parse/', { method: 'POST', body: form });
+			const data: Preview = await res.json();
+			preview = data;
+			title = data.suggested_title || title;
+		} catch (e) {
+			error = errMsg(e, 'Could not read that document.');
+		} finally {
+			busy = false;
+		}
+	}
+
+	function removeChapter(i: number) {
+		if (!preview) return;
+		preview.chapters = preview.chapters.filter((_, idx) => idx !== i);
+	}
+
+	async function publish() {
+		if (!preview) return;
+		if (!authorSlug) {
+			error = 'Pick the author.';
+			return;
+		}
+		if (!title.trim()) {
+			error = 'Enter a title.';
+			return;
+		}
+		busy = true;
+		error = null;
+		try {
+			const base = { author_slug: authorSlug, title, language, source_url: sourceUrl };
+			const payload =
+				preview.kind === 'book'
+					? {
+							...base,
+							kind: 'book',
+							chapters: preview.chapters.map((c) => ({ title: c.title, html: c.html }))
+						}
+					: {
+							...base,
+							kind: 'sermon',
+							scripture_ref: scriptureRef,
+							body_html: preview.chapters[0]?.html ?? ''
+						};
+			published = await apiFetch<Published>('/api/admin/import/publish/', {
+				method: 'POST',
+				body: JSON.stringify(payload)
+			});
+		} catch (e) {
+			error = errMsg(e, 'Could not publish.');
+		} finally {
+			busy = false;
+		}
+	}
+
+	function reset() {
+		preview = null;
+		published = null;
+		file = null;
+		title = '';
+		scriptureRef = '';
+		sourceUrl = '';
+		error = null;
+	}
+
+	const totalWords = $derived(preview?.chapters.reduce((n, c) => n + c.words, 0) ?? 0);
+	const plainText = (html: string) => html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+</script>
+
+<svelte:head><title>Import a document — Ochorus Admin</title></svelte:head>
+
+<div class="mx-auto max-w-2xl px-5 py-8">
+	<h1 class="text-h2">Import a document</h1>
+	<p class="mt-1 text-body text-muted">
+		Upload a Word (.docx) or text PDF of a book or sermon, choose its author, and Ochorus will
+		parse it into content. Review the result before publishing.
+	</p>
+
+	{#if published}
+		<!-- Success -->
+		<div class="mt-8 rounded-card border border-border bg-surface p-6 text-center">
+			<div class="mail-badge mx-auto mb-3">✓</div>
+			<h2 class="text-h3 mb-1">Published</h2>
+			<p class="mb-4 text-body text-muted">
+				“{published.title}” is live{#if published.chapters}
+					· {published.chapters} chapters{/if}.
+			</p>
+			<div class="flex flex-wrap justify-center gap-3">
+				<a class="btn btn-primary" href={published.path}>View it</a>
+				<button class="btn btn-ghost" onclick={reset}>Import another</button>
+			</div>
+		</div>
+	{:else if !preview}
+		<!-- Step 1: upload form -->
+		<div class="mt-6 rounded-card border border-border bg-surface p-6">
+			<fieldset class="mb-4">
+				<legend class="mb-2 text-small font-semibold text-text">Type</legend>
+				<div class="flex gap-2">
+					<label class="typechip" class:on={kind === 'book'}>
+						<input type="radio" bind:group={kind} value="book" class="sr-only" /> Book
+					</label>
+					<label class="typechip" class:on={kind === 'sermon'}>
+						<input type="radio" bind:group={kind} value="sermon" class="sr-only" /> Sermon
+					</label>
+				</div>
+			</fieldset>
+
+			<label class="mb-1 block text-small font-semibold text-text" for="author">Author</label>
+			<select
+				id="author"
+				bind:value={authorSlug}
+				class="mb-4 w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+			>
+				<option value="" disabled>Choose the author…</option>
+				{#each authors as a (a.slug)}
+					<option value={a.slug}>{a.name}</option>
+				{/each}
+			</select>
+
+			<label class="mb-1 block text-small font-semibold text-text" for="lang">Language</label>
+			<select
+				id="lang"
+				bind:value={language}
+				class="mb-4 w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+			>
+				{#each languages as l (l.code)}
+					<option value={l.code}>{l.name}</option>
+				{/each}
+			</select>
+
+			<label class="mb-1 block text-small font-semibold text-text" for="file">Document</label>
+			<input
+				id="file"
+				type="file"
+				accept=".pdf,.docx"
+				onchange={pickFile}
+				class="mb-4 block w-full text-small text-muted file:mr-3 file:rounded-sm file:border file:border-border file:bg-surface-2 file:px-3 file:py-1.5 file:text-text"
+			/>
+
+			{#if error}<p class="mb-3 text-small text-danger">{error}</p>{/if}
+
+			<button class="btn btn-primary" onclick={parse} disabled={busy || !file || !authorSlug}>
+				{busy ? 'Reading…' : 'Read document'}
+			</button>
+			<p class="mt-3 text-[0.78rem] text-muted">
+				Scanned image PDFs aren't supported yet — use a text PDF or Word document.
+			</p>
+		</div>
+	{:else}
+		<!-- Step 2: review & publish -->
+		<div class="mt-6 rounded-card border border-border bg-surface p-6">
+			<div class="mb-4 flex items-center justify-between">
+				<span class="text-small font-semibold uppercase tracking-wider text-accent">
+					Review {preview.kind}
+				</span>
+				<span class="text-small text-muted">
+					{#if preview.kind === 'book'}{preview.chapters.length} chapters ·
+					{/if}{totalWords.toLocaleString()} words
+				</span>
+			</div>
+
+			<label class="mb-1 block text-small font-semibold text-text" for="title">Title</label>
+			<input
+				id="title"
+				bind:value={title}
+				placeholder="Title"
+				class="mb-4 w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+			/>
+
+			{#if preview.kind === 'sermon'}
+				<label class="mb-1 block text-small font-semibold text-text" for="ref">
+					Scripture reference <span class="font-normal text-muted">(optional)</span>
+				</label>
+				<input
+					id="ref"
+					bind:value={scriptureRef}
+					placeholder="e.g. John 3:16"
+					class="mb-4 w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+				/>
+				<p class="rounded-sm border border-border bg-bg p-3 text-small text-muted">
+					{plainText(preview.chapters[0]?.html ?? '').slice(0, 400)}…
+				</p>
+			{:else}
+				<p class="mb-2 text-small font-semibold text-text">Chapters</p>
+				<ol class="space-y-2">
+					{#each preview.chapters as ch, i (i)}
+						<li class="flex items-center gap-2 rounded-sm border border-border bg-bg p-2">
+							<span class="w-6 shrink-0 text-center text-small text-muted">{i + 1}</span>
+							<input
+								bind:value={ch.title}
+								placeholder="Chapter title"
+								class="min-w-0 flex-1 rounded-sm border border-border bg-surface px-2 py-1 text-small text-text"
+							/>
+							<span class="shrink-0 text-[0.78rem] text-muted">{ch.words}w</span>
+							<button
+								class="shrink-0 rounded-sm px-2 py-1 text-small text-muted hover:text-danger"
+								onclick={() => removeChapter(i)}
+								aria-label="Remove chapter"
+								title="Remove chapter">✕</button
+							>
+						</li>
+					{/each}
+				</ol>
+				{#if preview.chapters.length === 1}
+					<p class="mt-2 text-[0.78rem] text-muted">
+						Only one chapter detected — if this book has more, its source may not mark chapter
+						breaks in a way the parser recognises.
+					</p>
+				{/if}
+			{/if}
+
+			<label class="mb-1 mt-4 block text-small font-semibold text-text" for="src">
+				Source URL <span class="font-normal text-muted">(optional)</span>
+			</label>
+			<input
+				id="src"
+				bind:value={sourceUrl}
+				placeholder="https://…"
+				class="mb-4 w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+			/>
+
+			{#if error}<p class="mb-3 text-small text-danger">{error}</p>{/if}
+
+			<div class="flex flex-wrap gap-3">
+				<button
+					class="btn btn-primary"
+					onclick={publish}
+					disabled={busy || (preview.kind === 'book' && preview.chapters.length === 0)}
+				>
+					{busy ? 'Publishing…' : `Publish ${preview.kind}`}
+				</button>
+				<button class="btn btn-ghost" onclick={reset} disabled={busy}>Start over</button>
+			</div>
+		</div>
+	{/if}
+</div>
+
+<style>
+	.typechip {
+		cursor: pointer;
+		border-radius: var(--radius-sm);
+		border: 1px solid var(--border);
+		padding: 0.4rem 1rem;
+		font-size: 0.9rem;
+		font-weight: 600;
+		color: var(--muted);
+	}
+	.typechip.on {
+		border-color: var(--accent-soft-border);
+		background: var(--accent-soft);
+		color: var(--accent);
+	}
+	.mail-badge {
+		display: flex;
+		height: 3rem;
+		width: 3rem;
+		align-items: center;
+		justify-content: center;
+		border-radius: 999px;
+		font-size: 1.4rem;
+		color: var(--accent);
+		background: color-mix(in srgb, var(--accent) 15%, transparent);
+	}
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip: rect(0 0 0 0);
+	}
+</style>

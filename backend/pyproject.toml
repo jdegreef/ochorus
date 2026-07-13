@@ -12,6 +12,7 @@ dependencies = [
     "djangorestframework>=3.17.1",
     "gunicorn>=26.0.0",
     "lxml>=5.3.0",
+    "mammoth>=1.9.0",
     "psycopg[binary]>=3.3.4",
     "pyjwt[crypto]>=2.13.0",
     "pymupdf>=1.24.0",
