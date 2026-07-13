@@ -5,6 +5,7 @@
 	import { theme } from '$lib/theme.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
+	import { listen } from '$lib/listen.svelte';
 	import { browser } from '$app/environment';
 	import { lang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
@@ -42,6 +43,8 @@
 		// touch the values so the effect tracks them
 		void theme.current;
 		void readerPrefs.scale;
+		void listen.rate;
+		void listen.voiceURI;
 		if (auth.user) auth.pushPrefs();
 	});
 
