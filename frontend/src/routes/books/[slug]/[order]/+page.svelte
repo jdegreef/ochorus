@@ -13,6 +13,7 @@
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { marks } from '$lib/marks.svelte';
+	import { bookmarks } from '$lib/bookmarks.svelte';
 	import { renderMarks } from '$lib/rangeMarks';
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
@@ -64,6 +65,11 @@
 		}
 	});
 
+	// Paragraph at the top of the viewport — tracked on the throttled scroll pass
+	// so the bookmark toggle can reflect whether the current spot is bookmarked.
+	let topIndex = $state(0);
+	const currentBookmarked = $derived(bookmarks.has(chapter.order, topIndex));
+
 	function updateFraction() {
 		if (!body) return;
 		const rect = body.getBoundingClientRect();
@@ -71,6 +77,17 @@
 		if (total <= 0) return;
 		const seen = Math.min(Math.max(window.innerHeight - rect.top, 0), total);
 		chapterFrac = Math.min(1, Math.max(0, seen / total));
+		topIndex = topVisibleIndex();
+	}
+
+	/** Bookmark (or un-bookmark) the paragraph at the top of the viewport. */
+	function toggleBookmark() {
+		if (!body) return;
+		const p = topVisibleIndex();
+		const el = body.children[p] as HTMLElement | undefined;
+		const snippet = (el?.innerText ?? '').trim().replace(/\s+/g, ' ').slice(0, 90);
+		bookmarks.toggle(chapter.order, p, snippet, chapter.title);
+		topIndex = p;
 	}
 
 	const minutesLeft = $derived(
@@ -102,11 +119,21 @@
 		const language = getLang();
 		saveProgress(s, order, language);
 		marks.load(s, order, language);
+		bookmarks.load(s);
+
+		// Jump straight to a paragraph when arriving from a bookmark (?p=N).
+		const pParam = $page.url.searchParams.get('p');
+		const jumpTo = pParam !== null ? Number(pParam) : NaN;
 
 		let cleanup: (() => void) | undefined;
 		(async () => {
 			await tick();
-			restoreScroll(s, order);
+			if (Number.isFinite(jumpTo) && body?.children[jumpTo]) {
+				body.children[jumpTo].scrollIntoView({ block: 'start' });
+				window.scrollBy(0, -HEADER_OFFSET);
+			} else {
+				restoreScroll(s, order);
+			}
 			updateFraction();
 			cleanup = observeTitle();
 		})();
@@ -380,6 +407,14 @@
 						aria-label={t('reader.next')}>›</a
 					>
 				{/if}
+				<button
+					class="btn btn-ghost !px-2.5 !py-1"
+					class:!text-accent={currentBookmarked}
+					onclick={toggleBookmark}
+					aria-label={t('reader.bookmark')}
+					title={t('reader.bookmark')}
+					aria-pressed={currentBookmarked}>{currentBookmarked ? '🔖' : '🏷'}</button
+				>
 				<button
 					class="btn btn-ghost !px-2.5 !py-1"
 					onclick={() => (tocOpen = true)}

@@ -14,6 +14,7 @@
 export const PROGRESS_KEY = 'ochorus:progress';
 export const MARKS_KEY = 'ochorus:marks';
 export const ANCHOR_KEY = 'ochorus:anchors';
+export const BOOKMARKS_KEY = 'ochorus:bookmarks';
 
 // --- Highlights & notes -------------------------------------------------------
 /**
@@ -36,6 +37,25 @@ export interface ChapterMarks {
 
 /** `chapterKey(slug, order)` -> ChapterMarks. */
 export type MarksStore = Record<string, ChapterMarks>;
+
+// --- Bookmarks ----------------------------------------------------------------
+/**
+ * A saved place in a book: a chapter (`order`) + a paragraph index (`p`) within
+ * it, with a short `snippet` and the chapter `title` captured at save time so
+ * the list renders without re-fetching. Distinct from `ProgressRecord` (the
+ * single auto-saved resume point) and from `Mark` (a text-range highlight).
+ */
+export interface Bookmark {
+	id: string;
+	order: number;
+	p: number;
+	snippet: string;
+	title: string;
+	at: number;
+}
+
+/** book slug -> that book's bookmarks. */
+export type BookmarksStore = Record<string, Bookmark[]>;
 
 // --- Reading position ---------------------------------------------------------
 /** The resume point for a book: last chapter opened + paragraph within it. */
