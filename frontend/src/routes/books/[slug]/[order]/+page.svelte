@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount, tick } from 'svelte';
+	import { onMount, tick, untrack } from 'svelte';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import { getBook, getPlan, type BookDetail, type Chapter, type PlanDetail } from '$lib/library';
@@ -109,11 +109,42 @@
 		);
 	});
 
-	// A Kindle-style page count for this chapter (estimated from word count), and
-	// which one the current scroll position lands on.
+	// --- Page-turn mode --------------------------------------------------------
+	// An opt-in e-reader layout (readerPrefs.paged): the chapter body is laid out
+	// in full-width CSS columns inside a fixed viewport and turned one page at a
+	// time with a translateX, instead of scrolling. Only active while not
+	// listening — Listen mode keeps the scrolling layout it was built against.
+	let articleEl = $state<HTMLElement>();
+	let pager = $state<HTMLElement>();
+	let chromeEl = $state<HTMLElement>();
+	let footEl = $state<HTMLElement>();
+	let pageIndex = $state(0);
+	let pageTotal = $state(1);
+	let pageW = $state(0);
+	const paged = $derived(readerPrefs.paged && listen.status === 'idle');
+
+	// The paged viewport is fixed between the reader chrome and the progress
+	// footer; measure their real heights (the chrome wraps to several rows on
+	// narrow screens) so the columns never sit under either bar.
+	function applyInsets() {
+		if (!articleEl) return;
+		const top = readerUi.focus ? 0 : (chromeEl?.offsetHeight ?? 54);
+		const bot = readerUi.focus ? 0 : (footEl?.offsetHeight ?? 50);
+		articleEl.style.setProperty('--pgtop', `${top}px`);
+		articleEl.style.setProperty('--pgbot', `${bot}px`);
+	}
+
+	// A Kindle-style page count. In page-turn mode it's the real column count; in
+	// scroll mode it's estimated from word count and the current scroll position.
 	const WORDS_PER_PAGE = 280;
-	const pageCount = $derived(Math.max(1, Math.ceil(chapter.word_count / WORDS_PER_PAGE)));
-	const currentPage = $derived(Math.min(pageCount, Math.max(1, Math.round(chapterFrac * pageCount) || 1)));
+	const pageCount = $derived(
+		paged ? pageTotal : Math.max(1, Math.ceil(chapter.word_count / WORDS_PER_PAGE))
+	);
+	const currentPage = $derived(
+		paged
+			? pageIndex + 1
+			: Math.min(pageCount, Math.max(1, Math.round(chapterFrac * pageCount) || 1))
+	);
 
 	/** Scroll to a fraction of the chapter — drives the draggable scrubber. */
 	function scrubTo(frac: number) {
@@ -121,6 +152,61 @@
 		const rect = body.getBoundingClientRect();
 		const bodyTop = window.scrollY + rect.top;
 		window.scrollTo({ top: Math.max(0, bodyTop - window.innerHeight + frac * rect.height) });
+	}
+
+	/** Which page a body child (paragraph) sits on — transform-independent. */
+	function pageOf(el: HTMLElement): number {
+		return pageW > 0 ? Math.max(0, Math.floor(el.offsetLeft / pageW)) : 0;
+	}
+	/** Index of the first paragraph laid out on a given page (top-left of it). */
+	function firstIndexOnPage(p: number): number {
+		if (!body) return 0;
+		const kids = body.children;
+		let best = -1;
+		let bestTop = Infinity;
+		for (let i = 0; i < kids.length; i++) {
+			const el = kids[i] as HTMLElement;
+			if (pageOf(el) === p && el.offsetTop < bestTop) {
+				bestTop = el.offsetTop;
+				best = i;
+			}
+		}
+		return best < 0 ? 0 : best;
+	}
+
+	/** Re-measure the page width and count from the current layout. */
+	function measurePages() {
+		if (!paged || !articleEl || !pager) return;
+		applyInsets();
+		const w = articleEl.clientWidth;
+		pageW = w;
+		// Apply the column width imperatively so the scrollWidth read below reflows
+		// against it synchronously (Svelte's reactive style flush is async).
+		pager.style.setProperty('--page-w', `${w}px`);
+		pageTotal = w > 0 ? Math.max(1, Math.round(pager.scrollWidth / w)) : 1;
+		if (pageIndex > pageTotal - 1) pageIndex = pageTotal - 1;
+	}
+
+	/** Turn to page p, persisting the paragraph now at the top of the page. */
+	function goToPage(p: number, save = true) {
+		pageIndex = Math.min(pageTotal - 1, Math.max(0, p));
+		chapterFrac = pageTotal > 1 ? pageIndex / (pageTotal - 1) : 1;
+		if (save) {
+			topIndex = firstIndexOnPage(pageIndex);
+			saveScrollAnchor(slug, chapter.order, topIndex);
+		}
+	}
+
+	/** Turn forward/back a page, rolling over to the adjacent chapter at the ends. */
+	function turnPage(dir: 1 | -1) {
+		const next = pageIndex + dir;
+		if (next < 0) {
+			if (chapter.prev) goto(localizeHref(`/books/${slug}/${chapter.prev.order}?pg=last`));
+		} else if (next > pageTotal - 1) {
+			gotoChapter(chapter.next);
+		} else {
+			goToPage(next);
+		}
 	}
 
 	onMount(() => {
@@ -140,20 +226,64 @@
 		// Jump straight to a paragraph when arriving from a bookmark (?p=N).
 		const pParam = $page.url.searchParams.get('p');
 		const jumpTo = pParam !== null ? Number(pParam) : NaN;
+		// A backward chapter turn in page mode asks to land on the last page.
+		const wantLast = $page.url.searchParams.get('pg') === 'last';
 
 		let cleanup: (() => void) | undefined;
 		(async () => {
 			await tick();
-			if (Number.isFinite(jumpTo) && body?.children[jumpTo]) {
+			if (paged) {
+				measurePages();
+				let target = 0;
+				if (wantLast) target = pageTotal - 1;
+				else if (Number.isFinite(jumpTo) && body?.children[jumpTo]) {
+					target = pageOf(body.children[jumpTo] as HTMLElement);
+				} else {
+					const rec = getProgressRecord(s);
+					const idx =
+						getScrollAnchor(s, order) ??
+						(rec && rec.order === order ? rec.paragraph_index : null);
+					if (idx && body?.children[idx]) target = pageOf(body.children[idx] as HTMLElement);
+				}
+				goToPage(target, false);
+			} else if (Number.isFinite(jumpTo) && body?.children[jumpTo]) {
 				body.children[jumpTo].scrollIntoView({ block: 'start' });
 				window.scrollBy(0, -HEADER_OFFSET);
 			} else {
 				restoreScroll(s, order);
 			}
-			updateFraction();
+			if (!paged) updateFraction();
 			cleanup = observeTitle();
 		})();
 		return () => cleanup?.();
+	});
+
+	// Re-measure the page count when the layout changes under us — text prefs,
+	// freshly rendered marks — so the "Page X / Y" total and the scrubber stay
+	// honest. Initial positioning is owned by the per-chapter effect above; this
+	// only re-counts and clamps, so it never fights that effect.
+	$effect(() => {
+		if (!paged) return;
+		void readerPrefs.scale;
+		void readerPrefs.leading;
+		void readerPrefs.measure;
+		void readerPrefs.font;
+		void marks.list;
+		void readerUi.focus;
+		untrack(() => {
+			(async () => {
+				await tick();
+				measurePages();
+			})();
+		});
+	});
+
+	// Keep the count correct across viewport resizes / orientation changes.
+	$effect(() => {
+		if (!paged) return;
+		const onResize = () => untrack(() => measurePages());
+		window.addEventListener('resize', onResize);
+		return () => window.removeEventListener('resize', onResize);
 	});
 
 	// A first-sign-in sync can replace the local cache underneath us — re-read the
@@ -191,28 +321,35 @@
 		if (e.key === 'ArrowRight') {
 			e.preventDefault();
 			if (listen.status !== 'idle') listen.skip(1);
+			else if (paged) turnPage(1);
 			else gotoChapter(chapter.next);
 		} else if (e.key === 'ArrowLeft') {
 			e.preventDefault();
 			if (listen.status !== 'idle') listen.skip(-1);
+			else if (paged) turnPage(-1);
 			else gotoChapter(chapter.prev);
 		} else if (e.key === ' ') {
 			e.preventDefault();
-			window.scrollBy({
-				top: (e.shiftKey ? -1 : 1) * window.innerHeight * 0.85,
-				behavior: 'smooth'
-			});
+			if (paged) turnPage(e.shiftKey ? -1 : 1);
+			else
+				window.scrollBy({
+					top: (e.shiftKey ? -1 : 1) * window.innerHeight * 0.85,
+					behavior: 'smooth'
+				});
 		}
 	}
 
-	/** Edge tap zones on touch devices: outer 15% turns the chapter. */
+	/** Edge tap zones: outer 15% turns the page (paged) or chapter (scroll, touch). */
 	function onArticleClick(e: MouseEvent) {
-		if (!window.matchMedia('(pointer: coarse)').matches) return;
+		if (!paged && !window.matchMedia('(pointer: coarse)').matches) return;
 		const el = e.target as HTMLElement;
 		if (el.closest('a, button, mark, input, textarea, select, .selbar, .define-pop')) return;
 		if (window.getSelection()?.toString()) return;
 		const x = e.clientX / window.innerWidth;
-		if (x < 0.15) gotoChapter(chapter.prev);
+		if (paged) {
+			if (x < 0.15) turnPage(-1);
+			else if (x > 0.85) turnPage(1);
+		} else if (x < 0.15) gotoChapter(chapter.prev);
 		else if (x > 0.85) gotoChapter(chapter.next);
 	}
 
@@ -395,7 +532,7 @@
 
 <!-- Reader top bar: breadcrumb / context + controls. Hidden in focus mode. -->
 {#if !readerUi.focus}
-	<div class="sticky top-0 z-10 border-b border-border bg-bg/90 backdrop-blur">
+	<div bind:this={chromeEl} class="sticky top-0 z-10 border-b border-border bg-bg/90 backdrop-blur">
 		<div class="mx-auto flex max-w-3xl items-center justify-between gap-3 px-5 py-2.5">
 			<div class="min-w-0 flex-1">
 				{#if titleVisible}
@@ -474,7 +611,10 @@
 
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events -->
 <article
+	bind:this={articleEl}
 	class="mx-auto px-5 py-10"
+	class:paged
+	class:focus={readerUi.focus}
 	style="{readerPrefs.style}; max-width: var(--reading-measure)"
 	dir="auto"
 	onclick={onArticleClick}
@@ -510,13 +650,18 @@
 		</div>
 	{/if}
 
-	<p class="mb-1 text-small uppercase tracking-wider text-muted">
-		Chapter {chapter.order} · {readingTime(chapter.word_count)}
-	</p>
-	<h1 bind:this={titleEl} class="text-h1 mb-8">{chapter.title}</h1>
+	<!-- The pager wraps the chapter's own content (label, title, body). In scroll
+	     mode it is display:contents (no effect); in page mode it becomes the
+	     translated CSS-column content and the surrounding chrome is hidden. -->
+	<div class="pager" bind:this={pager} style="--page-w:{pageW}px; --page-idx:{pageIndex};">
+		<p class="mb-1 text-small uppercase tracking-wider text-muted">
+			Chapter {chapter.order} · {readingTime(chapter.word_count)}
+		</p>
+		<h1 bind:this={titleEl} class="text-h1 mb-8">{chapter.title}</h1>
 
-	<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. -->
-	<div class="reading" bind:this={body}>{@html chapter.body_html}</div>
+		<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. -->
+		<div class="reading" bind:this={body}>{@html chapter.body_html}</div>
+	</div>
 
 	<nav class="mt-14 flex items-stretch justify-between gap-3 border-t border-border pt-6">
 		{#if chapter.prev}
@@ -547,7 +692,7 @@
 <!-- Reading-progress footer: a draggable scrubber + location, fixed, hidden in
      focus/Listen modes. -->
 {#if !readerUi.focus && listen.status === 'idle'}
-	<div class="progress-foot">
+	<div bind:this={footEl} class="progress-foot">
 		<input
 			class="scrubber"
 			type="range"
@@ -555,7 +700,11 @@
 			max="1"
 			step="0.005"
 			value={chapterFrac}
-			oninput={(e) => scrubTo(Number(e.currentTarget.value))}
+			oninput={(e) => {
+				const frac = Number(e.currentTarget.value);
+				if (paged) goToPage(Math.round(frac * (pageTotal - 1)));
+				else scrubTo(frac);
+			}}
 			aria-label={t('progress.scrub')}
 			aria-valuetext="{t('progress.page')} {currentPage} / {pageCount}"
 		/>
@@ -617,6 +766,55 @@
 {/if}
 
 <style>
+	/* --- Page-turn mode --------------------------------------------------------
+	   The pager is transparent (display:contents) in scroll mode; in page mode
+	   the <article> becomes a fixed, measure-capped viewport and the pager its
+	   CSS-column content, turned a page at a time via translateX. Each page is
+	   one full-width column; the gap between columns is twice the side gutter so
+	   the next column parks fully off-screen (no sliver in the gutter). */
+	.pager {
+		display: contents;
+	}
+	article.paged {
+		position: fixed;
+		top: var(--pgtop, 3.4rem);
+		bottom: var(--pgbot, 3.1rem);
+		left: 0;
+		right: 0;
+		z-index: 5;
+		margin-inline: auto;
+		padding: 0 !important;
+		overflow: hidden;
+		background: var(--bg);
+	}
+	article.paged.focus {
+		top: 0;
+		bottom: 0;
+	}
+	/* Hide the surrounding chrome (breadcrumb, plan strip, chapter nav) in page
+	   mode — only the pager's content is paginated. */
+	article.paged > :not(.pager) {
+		display: none;
+	}
+	.paged .pager {
+		--pgpad: 1.25rem;
+		display: block;
+		height: 100%;
+		max-width: none;
+		box-sizing: border-box;
+		padding: 0.85rem var(--pgpad) 0.5rem;
+		column-width: calc(var(--page-w) - 2 * var(--pgpad));
+		column-gap: calc(2 * var(--pgpad));
+		column-fill: auto;
+		transform: translateX(calc(-1 * var(--page-idx) * var(--page-w)));
+		transition: transform 0.28s ease;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.paged .pager {
+			transition: none;
+		}
+	}
+
 	.progress-foot {
 		position: fixed;
 		inset-inline: 0;

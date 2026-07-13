@@ -55,6 +55,31 @@
 			role="dialog"
 			aria-label={t('reader.textSettings')}
 		>
+			<!-- Layout: continuous scroll vs. paged (page-turn) reading -->
+			<div class="mb-3">
+				<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.layout')}</span>
+				<div class="grid grid-cols-2 gap-1">
+					<button
+						class="rounded-sm border px-2 py-1.5 text-[0.8rem]"
+						class:border-accent={!readerPrefs.paged}
+						class:text-accent={!readerPrefs.paged}
+						class:border-border={readerPrefs.paged}
+						class:text-muted={readerPrefs.paged}
+						onclick={() => readerPrefs.setPaged(false)}
+						aria-pressed={!readerPrefs.paged}>{t('reader.layoutScroll')}</button
+					>
+					<button
+						class="rounded-sm border px-2 py-1.5 text-[0.8rem]"
+						class:border-accent={readerPrefs.paged}
+						class:text-accent={readerPrefs.paged}
+						class:border-border={!readerPrefs.paged}
+						class:text-muted={!readerPrefs.paged}
+						onclick={() => readerPrefs.setPaged(true)}
+						aria-pressed={readerPrefs.paged}>{t('reader.layoutPage')}</button
+					>
+				</div>
+			</div>
+
 			<!-- Font size -->
 			<div class="mb-3 flex items-center justify-between">
 				<span class="text-small font-semibold text-text">{t('reader.size')}</span>
