@@ -160,6 +160,15 @@ export const listSermons = (language = 'en') =>
 export const listImportLanguages = () =>
 	apiFetch<Language[]>('/api/admin/import/languages/');
 
+// Create a stub author from the import flow when the writer isn't in the system
+// yet (bio/portrait filled in later). Returns the AuthorBio-shaped new row.
+export const createAuthor = (body: {
+	name: string;
+	bio?: string;
+	birth_year?: number | null;
+	death_year?: number | null;
+}) => apiFetch<AuthorBio>('/api/admin/authors/', { method: 'POST', body: JSON.stringify(body) });
+
 export const getSermon = (slug: string, language = 'en') =>
 	apiFetch<Sermon>(`/api/library/sermons/${slug}/?language=${language}`);
 

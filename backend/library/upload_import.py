@@ -14,6 +14,7 @@ and are detected and reported rather than silently producing an empty import.
 from __future__ import annotations
 
 import io
+import re
 from html import escape
 
 import mammoth
@@ -189,9 +190,39 @@ def _unique_slug(base: str, model, language: str) -> str:
     return slug
 
 
+def _clean_hex(value: str) -> str:
+    """A validated hex accent (``#rgb``..``#rrggbbaa``), else empty."""
+    v = (value or "").strip()
+    return v if re.fullmatch(r"#[0-9a-fA-F]{3,8}", v) else ""
+
+
+def _clean_year(value) -> int | None:
+    """A plausible publication year (1..2100), else None."""
+    try:
+        y = int(str(value).strip())
+    except (TypeError, ValueError):
+        return None
+    return y if 0 < y <= 2100 else None
+
+
+def _http_url(value: str) -> str:
+    v = (value or "").strip()
+    return v if v.startswith("http") else ""
+
+
 @transaction.atomic
 def create_book(
-    author: Author, title: str, chapters: list[dict], language: str = "en", source_url: str = ""
+    author: Author,
+    title: str,
+    chapters: list[dict],
+    language: str = "en",
+    source_url: str = "",
+    *,
+    subtitle: str = "",
+    cover_color: str = "",
+    cover_url: str = "",
+    publication_year=None,
+    attribution: str = "",
 ) -> Book:
     """Create a published Book with chapters from reviewed preview sections.
 
@@ -206,8 +237,13 @@ def create_book(
         slug=slug,
         language=language,
         title=title.strip()[:300],
+        subtitle=(subtitle or "").strip()[:300],
         source_type=Book.SourceType.PUBLIC_DOMAIN,
-        source_url=source_url if source_url.startswith("http") else "",
+        source_url=_http_url(source_url),
+        cover_url=_http_url(cover_url),
+        cover_color=_clean_hex(cover_color),
+        publication_year=_clean_year(publication_year),
+        attribution=(attribution or "").strip(),
         sort_order=last + 1,
         is_published=True,
     )
@@ -259,7 +295,7 @@ def create_sermon(
         scripture_ref=scripture_ref.strip()[:160],
         body_html=body,
         word_count=words,
-        source_url=source_url if source_url.startswith("http") else "",
+        source_url=_http_url(source_url),
         sort_order=last + 1,
         is_published=True,
     )

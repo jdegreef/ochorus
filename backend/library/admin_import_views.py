@@ -8,6 +8,7 @@ admin-gated (see ``accounts.permissions``). Parsing lives in ``upload_import``.
 
 from __future__ import annotations
 
+from django.utils.text import slugify
 from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -17,6 +18,59 @@ from accounts.permissions import IsAdminEmail
 from . import upload_import
 from .models import Author
 from .views import LANGUAGE_NAMES, _language_entry
+
+
+def _int_or_none(value) -> int | None:
+    try:
+        return int(str(value).strip())
+    except (TypeError, ValueError):
+        return None
+
+
+def _unique_author_slug(name: str) -> str:
+    """A globally-unique Author slug derived from the name."""
+    root = slugify(name)[:120] or "author"
+    slug = root
+    n = 2
+    while Author.objects.filter(slug=slug).exists():
+        slug = f"{root}-{n}"
+        n += 1
+    return slug
+
+
+class AdminAuthorCreateView(APIView):
+    """POST {name, bio?, birth_year?, death_year?} → create a stub Author.
+
+    Lets the import flow add an author who isn't in the system yet without
+    leaving the page; the long-form bio and portrait are filled in later. Returns
+    the ``AuthorBio``-shaped row so the picker can select it immediately.
+    """
+
+    permission_classes = [IsAdminEmail]
+
+    def post(self, request):
+        name = (request.data.get("name") or "").strip()
+        if not name:
+            return Response({"detail": "An author name is required."}, status=400)
+        author = Author.objects.create(
+            slug=_unique_author_slug(name),
+            name=name[:200],
+            bio=(request.data.get("bio") or "").strip(),
+            birth_year=_int_or_none(request.data.get("birth_year")),
+            death_year=_int_or_none(request.data.get("death_year")),
+        )
+        return Response(
+            {
+                "slug": author.slug,
+                "name": author.name,
+                "bio": author.bio,
+                "photo_url": author.photo_url,
+                "birth_year": author.birth_year,
+                "death_year": author.death_year,
+                "book_count": 0,
+            },
+            status=201,
+        )
 
 
 class AdminImportLanguagesView(APIView):
@@ -79,7 +133,18 @@ class AdminImportPublishView(APIView):
             if not isinstance(chapters, list) or not chapters:
                 return Response({"detail": "No chapters to publish."}, status=400)
             try:
-                book = upload_import.create_book(author, title, chapters, language, source_url)
+                book = upload_import.create_book(
+                    author,
+                    title,
+                    chapters,
+                    language,
+                    source_url,
+                    subtitle=(d.get("subtitle") or ""),
+                    cover_color=(d.get("cover_color") or ""),
+                    cover_url=(d.get("cover_url") or ""),
+                    publication_year=d.get("publication_year"),
+                    attribution=(d.get("attribution") or ""),
+                )
             except upload_import.ParseError as exc:
                 return Response({"detail": str(exc)}, status=400)
             return Response(

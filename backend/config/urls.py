@@ -5,6 +5,7 @@ from django.urls import include, path
 
 from accounts.views import MeView, health
 from library.admin_import_views import (
+    AdminAuthorCreateView,
     AdminImportLanguagesView,
     AdminImportParseView,
     AdminImportPublishView,
@@ -35,6 +36,7 @@ urlpatterns = [
     ),
     path("api/admin/users/", AdminUsersView.as_view(), name="admin-users"),
     path("api/admin/export/", AdminExportView.as_view(), name="admin-export"),
+    path("api/admin/authors/", AdminAuthorCreateView.as_view(), name="admin-author-create"),
     path(
         "api/admin/import/languages/",
         AdminImportLanguagesView.as_view(),

@@ -107,6 +107,9 @@ class Book(models.Model):
     title = models.CharField(max_length=300)
     subtitle = models.CharField(max_length=300, blank=True)
     description = models.TextField(blank=True)
+    # Year the work was first published (e.g. 1885). Optional — many classics
+    # are known only by era.
+    publication_year = models.PositiveIntegerField(null=True, blank=True)
 
     source_type = models.CharField(
         max_length=20,
@@ -114,6 +117,9 @@ class Book(models.Model):
         default=SourceType.PUBLIC_DOMAIN,
     )
     source_url = models.URLField(blank=True)
+    # Free-text licence / attribution / rights note (e.g. "Public domain —
+    # scanned by CCEL" or an edition/translation credit). Shown on the book page.
+    attribution = models.TextField(blank=True)
     # Optional cover image and original PDF (used by the ochorus.com importer).
     cover_url = models.URLField(blank=True)
     pdf_url = models.URLField(blank=True)
