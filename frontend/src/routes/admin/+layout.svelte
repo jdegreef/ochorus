@@ -8,6 +8,7 @@
 	// nav highlights nothing while you're deep in one of those detail pages.
 	const sections = [
 		{ href: '/admin', label: 'Dashboard', exact: true },
+		{ href: '/admin/import', label: 'Import document' },
 		{ href: '/admin/coverage', label: 'Coverage matrix' },
 		{ href: '/admin/review', label: 'Review queue' },
 		{ href: '/admin/audit', label: 'Content audit' },

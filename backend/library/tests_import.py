@@ -1,0 +1,195 @@
+"""Tests for the admin document-upload import (upload_import + the endpoints)."""
+
+from __future__ import annotations
+
+import io
+import zipfile
+
+import fitz  # PyMuPDF
+from django.test import TestCase, override_settings
+from rest_framework.test import APIClient
+
+from library import upload_import as ui
+from library.models import Author, Book, Sermon
+
+# --- fixtures: build real PDF / DOCX bytes in-memory ------------------------
+
+
+def make_pdf(pages: list[tuple[str, str]]) -> bytes:
+    """pages = [(heading, body)]; heading is large text, body is small text."""
+    doc = fitz.open()
+    for heading, body in pages:
+        page = doc.new_page()
+        page.insert_text((72, 90), heading, fontsize=22)
+        for i, line in enumerate(body.split("\n")):
+            page.insert_text((72, 140 + i * 16), line, fontsize=11)
+    return doc.tobytes()
+
+
+_STYLES = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+<w:style w:type="paragraph" w:styleId="Heading1"><w:name w:val="heading 1"/></w:style>
+</w:styles>"""
+
+_CT = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+<Default Extension="xml" ContentType="application/xml"/>
+<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>
+<Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/>
+</Types>"""
+
+_RELS = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
+</Relationships>"""
+
+_DOC_RELS = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>
+</Relationships>"""
+
+
+def make_docx(paragraphs: list[tuple[str | None, str]]) -> bytes:
+    """paragraphs = [(style|None, text)]; style 'Heading1' → a chapter heading."""
+    body = []
+    for style, text in paragraphs:
+        ppr = f'<w:pPr><w:pStyle w:val="{style}"/></w:pPr>' if style else ""
+        body.append(f"<w:p>{ppr}<w:r><w:t>{text}</w:t></w:r></w:p>")
+    document = (
+        '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">'
+        f'<w:body>{"".join(body)}</w:body></w:document>'
+    )
+    out = io.BytesIO()
+    with zipfile.ZipFile(out, "w") as z:
+        z.writestr("[Content_Types].xml", _CT)
+        z.writestr("_rels/.rels", _RELS)
+        z.writestr("word/_rels/document.xml.rels", _DOC_RELS)
+        z.writestr("word/styles.xml", _STYLES)
+        z.writestr("word/document.xml", document)
+    return out.getvalue()
+
+
+BODY = "This is body text with plenty of words to comfortably clear the minimum count."
+
+
+class ParseTests(TestCase):
+    def test_split_on_headings(self):
+        html = "<p>intro</p><h1>One</h1><p>a</p><h2>Two</h2><p>b</p>"
+        secs = ui._split_on_headings(html)
+        titles = [t for t, _ in secs]
+        self.assertIn("One", titles)
+        self.assertIn("Two", titles)
+
+    def test_pdf_book_chapterizes_or_falls_back(self):
+        data = make_pdf([("Chapter One", BODY + "\n" + BODY), ("Chapter Two", BODY)])
+        res = ui.parse_upload(data, "book.pdf", "book")
+        self.assertEqual(res["kind"], "book")
+        self.assertGreaterEqual(len(res["chapters"]), 1)
+        self.assertTrue(all(c["words"] >= 5 for c in res["chapters"]))
+
+    def test_pdf_sermon_is_single_body(self):
+        data = make_pdf([("Sermon", BODY)])
+        res = ui.parse_upload(data, "s.pdf", "sermon")
+        self.assertEqual(len(res["chapters"]), 1)
+
+    def test_docx_book_splits_on_word_headings(self):
+        data = make_docx(
+            [("Heading1", "Chapter One"), (None, BODY), ("Heading1", "Chapter Two"), (None, BODY)]
+        )
+        res = ui.parse_upload(data, "book.docx", "book")
+        self.assertEqual(len(res["chapters"]), 2)
+        self.assertEqual(res["chapters"][0]["title"], "Chapter One")
+
+    def test_docx_sermon(self):
+        data = make_docx([(None, BODY)])
+        res = ui.parse_upload(data, "s.docx", "sermon")
+        self.assertEqual(len(res["chapters"]), 1)
+        self.assertIn("body text", res["chapters"][0]["html"])
+
+    def test_scanned_pdf_rejected(self):
+        blank = fitz.open()
+        blank.new_page()
+        with self.assertRaises(ui.ParseError):
+            ui.parse_upload(blank.tobytes(), "scan.pdf", "book")
+
+    def test_unsupported_file_rejected(self):
+        with self.assertRaises(ui.ParseError):
+            ui.parse_upload(b"hello", "notes.txt", "book")
+
+
+class CreateTests(TestCase):
+    def setUp(self):
+        self.author = Author.objects.create(slug="a-writer", name="A Writer")
+
+    def test_create_book(self):
+        chapters = [{"title": "One", "html": f"<p>{BODY}</p>"}, {"title": "", "html": f"<p>{BODY}</p>"}]
+        book = ui.create_book(self.author, "My Book", chapters, "en")
+        self.assertEqual(book.chapters.count(), 2)
+        self.assertEqual(book.chapters.get(order=2).title, "Chapter 2")  # untitled → numbered
+        self.assertTrue(book.chapters.first().body_text)  # derived on save
+
+    def test_slug_uniqueness(self):
+        b1 = ui.create_book(self.author, "Same Name", [{"title": "x", "html": f"<p>{BODY}</p>"}], "en")
+        b2 = ui.create_book(self.author, "Same Name", [{"title": "x", "html": f"<p>{BODY}</p>"}], "en")
+        self.assertNotEqual(b1.slug, b2.slug)
+
+    def test_create_sermon(self):
+        s = ui.create_sermon(self.author, "A Sermon", f"<p>{BODY}</p>", "en", scripture_ref="John 3:16")
+        self.assertEqual(s.scripture_ref, "John 3:16")
+        self.assertGreater(s.word_count, 5)
+
+
+@override_settings(DEBUG=True)  # bypasses the admin email gate (see permissions)
+class EndpointTests(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+        self.author = Author.objects.create(slug="e-writer", name="E Writer")
+
+    def test_parse_then_publish_book(self):
+        pdf = make_pdf([("Chapter One", BODY + "\n" + BODY)])
+        upload = io.BytesIO(pdf)
+        upload.name = "book.pdf"
+        r = self.client.post("/api/admin/import/parse/", {"file": upload, "kind": "book"}, format="multipart")
+        self.assertEqual(r.status_code, 200)
+        chapters = r.json()["chapters"]
+        self.assertGreaterEqual(len(chapters), 1)
+
+        r2 = self.client.post(
+            "/api/admin/import/publish/",
+            {"kind": "book", "author_slug": "e-writer", "title": "Published Book", "chapters": chapters},
+            format="json",
+        )
+        self.assertEqual(r2.status_code, 201)
+        self.assertTrue(Book.objects.filter(slug=r2.json()["slug"]).exists())
+        self.assertEqual(r2.json()["path"], f"/books/{r2.json()['slug']}")
+
+    def test_publish_sermon(self):
+        r = self.client.post(
+            "/api/admin/import/publish/",
+            {"kind": "sermon", "author_slug": "e-writer", "title": "Pub Sermon", "body_html": f"<p>{BODY}</p>"},
+            format="json",
+        )
+        self.assertEqual(r.status_code, 201)
+        self.assertTrue(Sermon.objects.filter(slug=r.json()["slug"]).exists())
+
+    def test_parse_requires_file(self):
+        r = self.client.post("/api/admin/import/parse/", {"kind": "book"}, format="multipart")
+        self.assertEqual(r.status_code, 400)
+
+    def test_publish_unknown_author(self):
+        r = self.client.post(
+            "/api/admin/import/publish/",
+            {"kind": "sermon", "author_slug": "nobody", "title": "X", "body_html": f"<p>{BODY}</p>"},
+            format="json",
+        )
+        self.assertEqual(r.status_code, 400)
+
+
+@override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
+class ImportAuthTests(TestCase):
+    def test_import_endpoints_require_admin(self):
+        client = APIClient()
+        self.assertEqual(client.post("/api/admin/import/parse/").status_code, 401)
+        self.assertEqual(client.post("/api/admin/import/publish/").status_code, 401)
