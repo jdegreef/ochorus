@@ -4,7 +4,11 @@ from django.contrib import admin
 from django.urls import include, path
 
 from accounts.views import MeView, health
-from library.admin_import_views import AdminImportParseView, AdminImportPublishView
+from library.admin_import_views import (
+    AdminImportLanguagesView,
+    AdminImportParseView,
+    AdminImportPublishView,
+)
 from library.admin_views import (
     AdminAuditView,
     AdminBookDetailView,
@@ -31,6 +35,11 @@ urlpatterns = [
     ),
     path("api/admin/users/", AdminUsersView.as_view(), name="admin-users"),
     path("api/admin/export/", AdminExportView.as_view(), name="admin-export"),
+    path(
+        "api/admin/import/languages/",
+        AdminImportLanguagesView.as_view(),
+        name="admin-import-languages",
+    ),
     path(
         "api/admin/import/parse/",
         AdminImportParseView.as_view(),

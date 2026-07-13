@@ -16,6 +16,21 @@ from accounts.permissions import IsAdminEmail
 
 from . import upload_import
 from .models import Author
+from .views import LANGUAGE_NAMES, _language_entry
+
+
+class AdminImportLanguagesView(APIView):
+    """GET → every language we support publishing in (not just ones with content).
+
+    The public ``LanguageListView`` only lists languages that already have a
+    published book, which would make it impossible to import the *first* book in
+    a new language. The import picker uses this fuller list instead.
+    """
+
+    permission_classes = [IsAdminEmail]
+
+    def get(self, request):
+        return Response([_language_entry(code) for code in LANGUAGE_NAMES])
 
 
 class AdminImportParseView(APIView):
@@ -29,6 +44,9 @@ class AdminImportParseView(APIView):
         kind = (request.data.get("kind") or "book").strip()
         if not upload:
             return Response({"detail": "No file uploaded."}, status=400)
+        # Reject by declared size before read() pulls the whole file into memory.
+        if upload.size and upload.size > upload_import.MAX_UPLOAD_BYTES:
+            return Response({"detail": "File is too large (max 25 MB)."}, status=400)
         try:
             result = upload_import.parse_upload(upload.read(), upload.name, kind)
         except upload_import.ParseError as exc:

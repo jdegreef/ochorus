@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { ApiError, apiFetch, apiFetchRaw } from '$lib/api';
-	import { listAuthors, listLanguages, type AuthorBio, type Language } from '$lib/library';
+	import { listAuthors, listImportLanguages, type AuthorBio, type Language } from '$lib/library';
 
 	type Chapter = { title: string; html: string; words: number };
 	type Preview = { kind: 'book' | 'sermon'; chapters: Chapter[]; suggested_title: string };
@@ -28,7 +28,7 @@
 		try {
 			[authors, languages] = await Promise.all([
 				listAuthors(),
-				listLanguages().catch(() => languages)
+				listImportLanguages().catch(() => languages)
 			]);
 		} catch {
 			/* leave defaults */

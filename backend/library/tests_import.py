@@ -118,6 +118,23 @@ class ParseTests(TestCase):
         with self.assertRaises(ui.ParseError):
             ui.parse_upload(b"hello", "notes.txt", "book")
 
+    def test_corrupt_pdf_raises_parse_error(self):
+        # A file named .pdf whose bytes aren't a valid PDF must surface as a
+        # ParseError (→ 400), not an uncaught PyMuPDF error (→ 500).
+        with self.assertRaises(ui.ParseError):
+            ui.parse_upload(b"%PDF-not-really-a-pdf", "broken.pdf", "book")
+
+    def test_docx_front_matter_heading_dropped(self):
+        # A "Contents" heading is front matter and must not become a chapter,
+        # matching the PDF chapterizer's behaviour.
+        data = make_docx(
+            [("Heading1", "Contents"), (None, BODY), ("Heading1", "Chapter One"), (None, BODY)]
+        )
+        res = ui.parse_upload(data, "book.docx", "book")
+        titles = [c["title"] for c in res["chapters"]]
+        self.assertNotIn("Contents", titles)
+        self.assertIn("Chapter One", titles)
+
 
 class CreateTests(TestCase):
     def setUp(self):
@@ -139,6 +156,30 @@ class CreateTests(TestCase):
         s = ui.create_sermon(self.author, "A Sermon", f"<p>{BODY}</p>", "en", scripture_ref="John 3:16")
         self.assertEqual(s.scripture_ref, "John 3:16")
         self.assertGreater(s.word_count, 5)
+
+    def test_create_book_empty_rolls_back(self):
+        # No chapter clears the word floor → ParseError, and the Book row is
+        # rolled back (no orphan) rather than left behind for the view to delete.
+        with self.assertRaises(ui.ParseError):
+            ui.create_book(self.author, "Empty", [{"title": "x", "html": "<p>hi</p>"}], "en")
+        self.assertFalse(Book.objects.filter(title="Empty").exists())
+
+    def test_create_book_tolerates_non_dict_chapters(self):
+        chapters = ["junk", None, {"title": "Real", "html": f"<p>{BODY}</p>"}]
+        book = ui.create_book(self.author, "Mixed", chapters, "en")
+        self.assertEqual(book.chapters.count(), 1)
+
+    def test_create_book_truncates_long_titles(self):
+        long = "T" * 400
+        book = ui.create_book(self.author, long, [{"title": long, "html": f"<p>{BODY}</p>"}], "en")
+        self.assertLessEqual(len(book.title), 300)
+        self.assertLessEqual(len(book.chapters.first().title), 300)
+
+    def test_create_sermon_blank_body_rejected(self):
+        # Tag-only markup cleans to nothing → ParseError, no blank sermon saved.
+        with self.assertRaises(ui.ParseError):
+            ui.create_sermon(self.author, "Blank", "<script>x</script>", "en")
+        self.assertFalse(Sermon.objects.filter(title="Blank").exists())
 
 
 @override_settings(DEBUG=True)  # bypasses the admin email gate (see permissions)
@@ -185,6 +226,36 @@ class EndpointTests(TestCase):
             format="json",
         )
         self.assertEqual(r.status_code, 400)
+
+    def test_corrupt_pdf_upload_is_400_not_500(self):
+        upload = io.BytesIO(b"%PDF-broken")
+        upload.name = "broken.pdf"
+        r = self.client.post(
+            "/api/admin/import/parse/", {"file": upload, "kind": "book"}, format="multipart"
+        )
+        self.assertEqual(r.status_code, 400)
+
+    def test_publish_book_all_empty_is_400(self):
+        r = self.client.post(
+            "/api/admin/import/publish/",
+            {
+                "kind": "book",
+                "author_slug": "e-writer",
+                "title": "No Text",
+                "chapters": [{"title": "x", "html": "<p>hi</p>"}],
+            },
+            format="json",
+        )
+        self.assertEqual(r.status_code, 400)
+        self.assertFalse(Book.objects.filter(title="No Text").exists())
+
+    def test_import_languages_lists_more_than_content_languages(self):
+        # No books exist, yet the picker must still offer languages to import into.
+        r = self.client.get("/api/admin/import/languages/")
+        self.assertEqual(r.status_code, 200)
+        codes = {row["code"] for row in r.json()}
+        self.assertIn("en", codes)
+        self.assertIn("fr", codes)  # a supported language with no content yet
 
 
 @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})

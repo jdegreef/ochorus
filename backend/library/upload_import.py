@@ -21,7 +21,13 @@ from bs4 import BeautifulSoup
 from django.db import transaction
 from django.utils.text import slugify
 
-from .ingest import clean_fragment, clean_title, strip_trailing_pagenum, word_count
+from .ingest import (
+    clean_fragment,
+    clean_title,
+    is_front_matter,
+    strip_trailing_pagenum,
+    word_count,
+)
 from .management.commands.import_ochorus import chapterize, pdf_blocks
 from .models import Author, Book, Chapter, Sermon
 
@@ -80,21 +86,31 @@ def _looks_scanned(blocks: list[tuple[str, float]]) -> bool:
 # --- public API ---------------------------------------------------------------
 
 
+def _clean_body(html: str) -> tuple[str, int]:
+    """The one cleaning contract, shared by preview and publish.
+
+    Strips to the allowlisted-tag fragment, drops an absorbed trailing page
+    number, and returns ``(cleaned_html, word_count)`` so callers apply the same
+    "< 5 words is empty" floor everywhere.
+    """
+    body = strip_trailing_pagenum(clean_fragment(html))
+    return body, word_count(body)
+
+
 def _finalize(sections: list[Section]) -> list[dict]:
-    """Clean each section and drop the empties; return preview dicts."""
+    """Clean each section, drop empties and front matter; return preview dicts."""
     out: list[dict] = []
     for raw_title, raw_body in sections:
-        body = strip_trailing_pagenum(clean_fragment(raw_body))
-        words = word_count(body)
+        title = clean_title(raw_title) if raw_title else ""
+        # Skip TOC / index / title-page sections the same way the PDF chapterizer
+        # does, so a .docx whose front matter is styled as a heading doesn't
+        # publish it as a real chapter.
+        if title and is_front_matter(title):
+            continue
+        body, words = _clean_body(raw_body)
         if words < 5:
             continue
-        out.append(
-            {
-                "title": clean_title(raw_title) if raw_title else "",
-                "html": body,
-                "words": words,
-            }
-        )
+        out.append({"title": title, "html": body, "words": words})
     return out
 
 
@@ -123,7 +139,10 @@ def parse_upload(data: bytes, filename: str, kind: str) -> dict:
     blocks: list[tuple[str, float]] = []
     body_size = 0.0
     if is_pdf:
-        blocks, body_size = pdf_blocks(data)
+        try:
+            blocks, body_size = pdf_blocks(data)
+        except Exception as exc:  # PyMuPDF raises on corrupt / mislabelled PDFs
+            raise ParseError(f"Couldn't read this PDF: {exc}") from exc
         if _looks_scanned(blocks):
             raise ParseError(
                 "This PDF looks like a scanned image with no text to extract. "
@@ -186,7 +205,7 @@ def create_book(
         author=author,
         slug=slug,
         language=language,
-        title=title.strip(),
+        title=title.strip()[:300],
         source_type=Book.SourceType.PUBLIC_DOMAIN,
         source_url=source_url if source_url.startswith("http") else "",
         sort_order=last + 1,
@@ -194,15 +213,16 @@ def create_book(
     )
     order = 0
     for ch in chapters:
-        body = strip_trailing_pagenum(clean_fragment(ch.get("html", "")))
-        words = word_count(body)
+        if not isinstance(ch, dict):  # tolerate a malformed publish payload
+            continue
+        body, words = _clean_body(ch.get("html", ""))
         if words < 5:
             continue
         order += 1
         Chapter.objects.create(
             book=book,
             order=order,
-            title=clean_title(ch.get("title") or "") or f"Chapter {order}",
+            title=(clean_title(ch.get("title") or "") or f"Chapter {order}")[:300],
             body_html=body,
             word_count=words,
         )
@@ -211,6 +231,7 @@ def create_book(
     return book
 
 
+@transaction.atomic
 def create_sermon(
     author: Author,
     title: str,
@@ -221,19 +242,23 @@ def create_sermon(
 ) -> Sermon:
     """Create a published Sermon from a reviewed preview body.
 
-    The body is re-cleaned here rather than trusted from the client round-trip.
+    The body is re-cleaned here rather than trusted from the client round-trip;
+    if nothing readable survives, raises ``ParseError`` instead of committing a
+    blank sermon (the same floor ``create_book`` applies per chapter).
     """
-    body = strip_trailing_pagenum(clean_fragment(body_html))
+    body, words = _clean_body(body_html)
+    if words < 5:
+        raise ParseError("The sermon had no readable text.")
     slug = _unique_slug(title, Sermon, language)
     last = Sermon.objects.order_by("-sort_order").values_list("sort_order", flat=True).first() or 0
     return Sermon.objects.create(
         author=author,
         slug=slug,
         language=language,
-        title=title.strip(),
-        scripture_ref=scripture_ref.strip(),
+        title=title.strip()[:300],
+        scripture_ref=scripture_ref.strip()[:160],
         body_html=body,
-        word_count=word_count(body),
+        word_count=words,
         source_url=source_url if source_url.startswith("http") else "",
         sort_order=last + 1,
         is_published=True,
