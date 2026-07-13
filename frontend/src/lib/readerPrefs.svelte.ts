@@ -42,9 +42,16 @@ interface Stored {
 	leading: Leading;
 	measure: Measure;
 	font: ReaderFont;
+	paged: boolean;
 }
 
-const DEFAULTS: Stored = { scale: 1, leading: 'normal', measure: 'normal', font: 'serif' };
+const DEFAULTS: Stored = {
+	scale: 1,
+	leading: 'normal',
+	measure: 'normal',
+	font: 'serif',
+	paged: false
+};
 
 function load(): Stored {
 	if (!browser) return { ...DEFAULTS };
@@ -57,7 +64,8 @@ function load(): Stored {
 			scale,
 			leading: raw.leading in LEADING ? raw.leading : DEFAULTS.leading,
 			measure: raw.measure in MEASURE ? raw.measure : DEFAULTS.measure,
-			font: raw.font in FONT_STACK ? raw.font : DEFAULTS.font
+			font: raw.font in FONT_STACK ? raw.font : DEFAULTS.font,
+			paged: typeof raw.paged === 'boolean' ? raw.paged : DEFAULTS.paged
 		};
 	} catch {
 		return { ...DEFAULTS };
@@ -69,6 +77,7 @@ class ReaderPrefs {
 	leading = $state<Leading>(DEFAULTS.leading);
 	measure = $state<Measure>(DEFAULTS.measure);
 	font = $state<ReaderFont>(DEFAULTS.font);
+	paged = $state(DEFAULTS.paged);
 	#loaded = false;
 
 	/** Hydrate from localStorage. Safe to call repeatedly (runs once). */
@@ -79,6 +88,7 @@ class ReaderPrefs {
 		this.leading = s.leading;
 		this.measure = s.measure;
 		this.font = s.font;
+		this.paged = s.paged;
 		this.#loaded = true;
 	}
 
@@ -88,7 +98,8 @@ class ReaderPrefs {
 			scale: this.scale,
 			leading: this.leading,
 			measure: this.measure,
-			font: this.font
+			font: this.font,
+			paged: this.paged
 		};
 		localStorage.setItem(KEY, JSON.stringify(s));
 	}
@@ -110,6 +121,10 @@ class ReaderPrefs {
 	}
 	setFont(v: ReaderFont) {
 		this.font = v;
+		this.#save();
+	}
+	setPaged(v: boolean) {
+		this.paged = v;
 		this.#save();
 	}
 
