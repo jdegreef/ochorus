@@ -4,11 +4,25 @@
 	import { absUrl, jsonLd, breadcrumb } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
+	import { listen } from '$lib/listen.svelte';
+	import { getLang } from '$lib/lang.svelte';
+	import ListenBar from '$lib/components/ListenBar.svelte';
+	import { onDestroy } from 'svelte';
 
 	const t = i18n.t;
 
 	let { data } = $props();
 	const author = $derived<AuthorDetail>(data.author);
+
+	// Read the long-form biography aloud (device Text-to-Speech), same engine as
+	// the chapter/sermon reader. Each top-level block is one utterance.
+	let bioEl = $state<HTMLElement | undefined>();
+	function startListening() {
+		if (!bioEl) return;
+		const paragraphs = [...bioEl.children].map((el) => (el as HTMLElement).innerText);
+		listen.start(paragraphs, 0, getLang());
+	}
+	onDestroy(() => listen.stop());
 
 	const initials = (name: string) =>
 		name.split(' ').filter(Boolean).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
@@ -107,11 +121,20 @@
 			<h1 class="text-h1">{author.name}</h1>
 			{#if years}<p class="text-body text-muted">{years}</p>{/if}
 		</div>
+		{#if listen.supported && author.bio_html}
+			<button
+				class="btn btn-ghost ml-auto shrink-0 !px-2.5 !py-1"
+				class:!text-accent={listen.status !== 'idle'}
+				onclick={() => (listen.status === 'idle' ? startListening() : listen.stop())}
+				aria-label={t('reader.listen')}
+				title={t('reader.listen')}>▶ {t('reader.listen')}</button
+			>
+		{/if}
 	</header>
 
 	<!-- Biography -->
 	{#if author.bio_html}
-		<div class="bio mx-auto mt-8 max-w-[40rem]">
+		<div class="bio mx-auto mt-8 max-w-[40rem]" bind:this={bioEl}>
 			<!-- Long-form biography; cleaned HTML with pull-quotes + prayer callouts. -->
 			{@html author.bio_html}
 		</div>
@@ -187,6 +210,8 @@
 		<p class="mt-10 text-body text-muted">{t('author.empty')}</p>
 	{/if}
 </div>
+
+<ListenBar />
 
 <style>
 	/* Long-form biography styling. Targets the injected {@html} via :global.

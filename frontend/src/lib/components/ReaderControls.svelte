@@ -1,10 +1,16 @@
 <script lang="ts">
 	import { readerPrefs, type Leading, type Measure, type ReaderFont } from '$lib/readerPrefs.svelte';
+	import { listen, RATES } from '$lib/listen.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 
 	let open = $state(false);
 	let wrap = $state<HTMLDivElement>();
 	const t = i18n.t;
+
+	// Load the device voice list when the panel opens (async on some browsers).
+	$effect(() => {
+		if (open) listen.init();
+	});
 
 	const LEADINGS: { v: Leading; k: string }[] = [
 		{ v: 'compact', k: 'spacing.compact' },
@@ -122,6 +128,55 @@
 					{/each}
 				</div>
 			</div>
+
+			<!-- Listening (voice + speed): device Text-to-Speech settings, applied to
+			     chapters, sermons and biographies alike. -->
+			{#if listen.supported}
+				<div class="mt-3 border-t border-border pt-3">
+					<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.listen')}</span>
+
+					{#if listen.voices.length}
+						<select
+							class="mb-2 w-full rounded-sm border border-border bg-surface px-2 py-1.5 text-small text-text"
+							value={listen.voiceURI}
+							onchange={(e) => listen.setVoice(e.currentTarget.value)}
+							aria-label={t('reader.voice')}
+						>
+							<option value="">{t('reader.voice')}</option>
+							{#each listen.voicesByLang as group (group.lang)}
+								<optgroup label={group.lang}>
+									{#each group.voices as voice (voice.voiceURI)}
+										<option value={voice.voiceURI}>{voice.name}</option>
+									{/each}
+								</optgroup>
+							{/each}
+						</select>
+					{/if}
+
+					<div class="flex items-center gap-2">
+						<div class="grid flex-1 grid-cols-5 gap-1">
+							{#each RATES as r (r)}
+								<button
+									class="rounded-sm border px-1 py-1.5 text-[0.8rem] tabular-nums"
+									class:border-accent={listen.rate === r}
+									class:text-accent={listen.rate === r}
+									class:border-border={listen.rate !== r}
+									class:text-muted={listen.rate !== r}
+									onclick={() => listen.setRate(r)}
+									aria-label={t('reader.speed')}
+									aria-pressed={listen.rate === r}>{r}×</button
+								>
+							{/each}
+						</div>
+						<button
+							class="btn btn-ghost !px-2.5 !py-1.5"
+							onclick={() => listen.preview(t('bios.tagline'))}
+							aria-label={t('reader.listen')}
+							title={t('reader.listen')}>▶</button
+						>
+					</div>
+				</div>
+			{/if}
 		</div>
 	{/if}
 </div>
