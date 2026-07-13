@@ -2,6 +2,7 @@ import { browser } from '$app/environment';
 import { apiFetch, setAuthTokenProvider } from './api';
 import { authEnabled, supabase } from './supabase';
 import { readerPrefs } from './readerPrefs.svelte';
+import { listen } from './listen.svelte';
 import { theme } from './theme.svelte';
 import { lang } from './lang.svelte';
 import { readingSync } from './readingSync';
@@ -12,6 +13,8 @@ export interface Profile {
 	locale: string;
 	theme: string;
 	font_scale: number;
+	tts_rate?: number;
+	tts_voice_uri?: string;
 	is_admin?: boolean;
 }
 
@@ -148,6 +151,10 @@ class Auth {
 			this.isAdmin = !!p.is_admin;
 			if (p.theme === 'dark' || p.theme === 'light') theme.set(p.theme);
 			if (p.font_scale) readerPrefs.setScale(p.font_scale);
+			// Listening prefs: rate always applies; a voiceURI only resolves if the
+			// device actually has that voice (best-effort across devices).
+			if (typeof p.tts_rate === 'number') listen.setRate(p.tts_rate);
+			if (typeof p.tts_voice_uri === 'string') listen.setVoice(p.tts_voice_uri);
 			// Only adopt the saved locale if it's a language we still offer content
 			// in — otherwise a stale profile locale (from when more languages were
 			// listed) would re-wedge the reader on every sign-in.
@@ -171,6 +178,8 @@ class Auth {
 				body: JSON.stringify({
 					theme: theme.current,
 					font_scale: readerPrefs.scale,
+					tts_rate: listen.rate,
+					tts_voice_uri: listen.voiceURI,
 					locale: lang.current
 				})
 			}).catch(() => {});

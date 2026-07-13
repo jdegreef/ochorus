@@ -22,6 +22,11 @@ class UserProfile(models.Model):
     # Reader preferences.
     theme = models.CharField(max_length=20, default="paper")
     font_scale = models.FloatField(default=1.0)
+    # Listening (Text-to-Speech) preferences. tts_voice_uri is the device
+    # SpeechSynthesis voiceURI — best-effort across devices (a voice absent on
+    # another device is ignored and the default is used).
+    tts_rate = models.FloatField(default=1.0)
+    tts_voice_uri = models.CharField(max_length=255, blank=True, default="")
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

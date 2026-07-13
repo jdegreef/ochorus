@@ -32,6 +32,8 @@ class MeView(APIView):
             "locale": profile.locale,
             "theme": profile.theme,
             "font_scale": profile.font_scale,
+            "tts_rate": profile.tts_rate,
+            "tts_voice_uri": profile.tts_voice_uri,
         }
 
     def get(self, request):
@@ -58,6 +60,15 @@ class MeView(APIView):
                 updated.append("font_scale")
         except (TypeError, ValueError):
             pass
+        try:
+            if data.get("tts_rate") is not None:
+                profile.tts_rate = max(0.5, min(3.0, float(data["tts_rate"])))
+                updated.append("tts_rate")
+        except (TypeError, ValueError):
+            pass
+        if isinstance(data.get("tts_voice_uri"), str):
+            profile.tts_voice_uri = data["tts_voice_uri"][:255]
+            updated.append("tts_voice_uri")
 
         if updated:
             profile.save(update_fields=[*updated, "updated_at"])
