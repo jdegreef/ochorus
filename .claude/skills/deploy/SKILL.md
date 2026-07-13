@@ -98,18 +98,26 @@ A typical deploy takes ~5–10 min; poll every ~4 min.
    rewrite** — that serves a BLANK empty-200 for an unpublished/unknown slug
    (render.yaml returns `content-length: 0`; verified post-deploy that Render
    does NOT fall back to `404.html` here, because the rewrite already "matched"
-   and shadows the `/* -> /200.html` catch-all). **Fix, shipped PR #55:** emit
-   detail pages as directory indexes (`books/<slug>/index.html`, via
-   `frontend/scripts/dir-style-detail.mjs`) and DROP the per-slug rewrites.
-   Render serves an existing static file — incl. a directory's `index.html` —
-   before route rules, so a real book resolves natively (keeping its prerendered
-   SEO HTML), and a missing slug matches no rule and falls to `/* -> /200.html`,
-   which boots the SPA and renders `+error.svelte`. This is a soft-404 (HTTP 200
-   + not-found page), which is fine — it also lets search engines drop
-   unpublished titles. When adding a NEW prerendered detail route type, add it to
-   `dir-style-detail.mjs`'s `TYPES`, do NOT add a `:slug` rewrite, and verify
-   post-deploy that `/x/<real>` serves the prerendered HTML (200, no divergent
-   trailing-slash redirect) and `/x/<missing>` shows the not-found page.
+   and shadows the `/* -> /200.html` catch-all). **Final fix (PR #85, supersedes
+   #55):** make detail routes canonical TRAILING-SLASH via
+   `export const trailingSlash = 'always'` on their `+page.ts`
+   (books/authors/sermons/plans `[slug]`). SvelteKit then prerenders them to
+   `<slug>/index.html`, and — the load-bearing fact — **Render serves a directory
+   index ONLY for the trailing-slash URL.** So `/books/<slug>/` serves the
+   prerendered HTML, and a missing `/books/<slug>` (or its slash form) matches no
+   rule and falls to `/* -> /200.html` (SPA not-found, a fine soft-404). Also
+   update canonicals + sitemap to the trailing-slash form. WATCH OUT: the
+   no-slash `/books/<slug>` is NOT served the dir index — it hits `/* -> 200.html`
+   and the SPA redirects to the slash; so a no-slash canonical LOSES its
+   prerender (this exact SEO regression hit us — real pages served an empty shell
+   until the canonicals/sitemap were moved to trailing slash). The old
+   `dir-style-detail.mjs` (which copied flat+dir) is removed — `trailingSlash`
+   emits the dir index itself; no per-slug rewrite; no render.yaml/dashboard
+   change (this is why #55's dashboard route-deletion left real pages on the
+   no-slash SPA shell — see gotcha #3). When adding a NEW prerendered detail route
+   type: set `trailingSlash='always'` on it, use trailing-slash canonical/sitemap
+   URLs, and verify post-deploy that `/x/<real>/` serves prerendered HTML and
+   `/x/<missing>/` shows not-found.
    (Separately: a load that lets an API `ApiError(404)` propagate renders as a
    500, not a 404 — translate it with `throw error(404)`; see
    `lib/loadHelpers.ts`.)
