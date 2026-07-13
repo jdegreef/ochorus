@@ -45,9 +45,14 @@ class Listen {
 	rate = $state(1);
 	voiceURI = $state('');
 	voices = $state<SpeechSynthesisVoice[]>([]);
+	/** Minutes until playback auto-stops (0 = off). Session-only, not persisted. */
+	sleepMinutes = $state(0);
 
 	#paragraphs: string[] = [];
 	#lang = 'en';
+	#media: { title: string; artist?: string } | null = null;
+	#mediaBound = false;
+	#sleepTimer: ReturnType<typeof setTimeout> | null = null;
 	// Keep a reference to the active utterance — Chrome garbage-collects it
 	// otherwise and the onend callback (our advance mechanism) never fires.
 	#utterance: SpeechSynthesisUtterance | null = null;
@@ -72,14 +77,19 @@ class Listen {
 		return match.length ? match : this.voices;
 	}
 
-	/** Begin reading `paragraphs` (plain text, in order) from `startAt`. */
-	start(paragraphs: string[], startAt = 0, lang = 'en') {
+	/**
+	 * Begin reading `paragraphs` (plain text, in order) from `startAt`. `media`
+	 * populates the OS Media Session (lock-screen / background controls).
+	 */
+	start(paragraphs: string[], startAt = 0, lang = 'en', media?: { title: string; artist?: string }) {
 		if (!this.supported) return;
 		this.init();
 		this.stop();
 		this.#paragraphs = paragraphs;
 		this.#lang = lang;
 		this.total = paragraphs.length;
+		this.#media = media ?? null;
+		this.#setupMedia();
 		this.#speakFrom(Math.max(0, Math.min(startAt, paragraphs.length - 1)));
 	}
 
@@ -92,6 +102,7 @@ class Listen {
 			speechSynthesis.resume();
 			this.status = 'playing';
 		}
+		this.#mediaState();
 	}
 
 	stop() {
@@ -100,6 +111,7 @@ class Listen {
 		speechSynthesis.cancel();
 		this.status = 'idle';
 		this.current = -1;
+		this.#mediaState();
 	}
 
 	skip(delta: number) {
@@ -195,7 +207,67 @@ class Listen {
 		this.#utterance = u;
 		this.current = index;
 		this.status = 'playing';
+		this.#mediaState();
 		speechSynthesis.speak(u);
+	}
+
+	// --- OS Media Session (lock-screen / background / headset controls) --------
+
+	#setupMedia() {
+		if (!this.supported || !('mediaSession' in navigator)) return;
+		const ms = navigator.mediaSession;
+		if (this.#media) {
+			try {
+				ms.metadata = new MediaMetadata({
+					title: this.#media.title,
+					artist: this.#media.artist ?? 'Ochorus'
+				});
+			} catch {
+				/* MediaMetadata unavailable — the action handlers below still help */
+			}
+		}
+		if (this.#mediaBound) return; // handlers reference the singleton — bind once
+		this.#mediaBound = true;
+		const set = (action: MediaSessionAction, handler: () => void) => {
+			try {
+				ms.setActionHandler(action, handler);
+			} catch {
+				/* this action isn't supported on this browser */
+			}
+		};
+		set('play', () => this.status === 'paused' && this.toggle());
+		set('pause', () => this.status === 'playing' && this.toggle());
+		set('previoustrack', () => this.skip(-1));
+		set('nexttrack', () => this.skip(1));
+		set('stop', () => this.stop());
+	}
+
+	#mediaState() {
+		if (this.supported && 'mediaSession' in navigator) {
+			navigator.mediaSession.playbackState =
+				this.status === 'playing' ? 'playing' : this.status === 'paused' ? 'paused' : 'none';
+		}
+	}
+
+	// --- Sleep timer -----------------------------------------------------------
+
+	/** Auto-stop playback after `minutes` (0 = off). Survives chapter changes. */
+	setSleep(minutes: number) {
+		this.sleepMinutes = minutes;
+		if (this.#sleepTimer) {
+			clearTimeout(this.#sleepTimer);
+			this.#sleepTimer = null;
+		}
+		if (minutes > 0) {
+			this.#sleepTimer = setTimeout(
+				() => {
+					this.#sleepTimer = null;
+					this.sleepMinutes = 0;
+					this.stop();
+				},
+				minutes * 60_000
+			);
+		}
 	}
 }
 

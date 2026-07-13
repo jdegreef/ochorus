@@ -42,7 +42,7 @@
 	function startListening() {
 		if (!body) return;
 		const paragraphs = [...body.children].map((el) => (el as HTMLElement).innerText);
-		listen.start(paragraphs, 0, getLang());
+		listen.start(paragraphs, 0, getLang(), { title: sermon.title, artist: sermon.author_name });
 	}
 
 	const canonical = $derived(`${SITE_URL}/sermons/${sermon.slug}/`);
