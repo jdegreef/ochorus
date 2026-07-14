@@ -42,6 +42,7 @@ export interface BookDetail extends BookSummary {
 	pdf_url: string;
 	chapters: ChapterToc[];
 	topics: TopicChip[];
+	related: BookSummary[];
 }
 
 export interface ChapterNav {

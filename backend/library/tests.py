@@ -326,6 +326,70 @@ class TopicTests(TestCase):
         )
 
 
+class RelatedBooksTests(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+        self.murray = Author.objects.create(slug="am", name="Andrew Murray")
+        other = Author.objects.create(slug="cs", name="Charles Spurgeon")
+
+        def book(slug, author, title):
+            b = Book.objects.create(author=author, slug=slug, language="en", title=title)
+            Chapter.objects.create(book=b, order=1, title="One", body_html="<p>a b c</p>")
+            return b
+
+        # subject 'a' plus candidates. 'b' shares two topics, 'c' one, 'd' none
+        # (but is by the same author), 'e' is unrelated (no topic, other author).
+        book("a", self.murray, "A")
+        book("b", other, "B")
+        book("c", other, "C")
+        book("d", self.murray, "D")  # same author, no shared topic
+        book("e", other, "E")  # unrelated
+
+        t1 = Topic.objects.create(slug="t1", title="T1")
+        t2 = Topic.objects.create(slug="t2", title="T2")
+        for slug in ("a", "b", "c"):
+            TopicBook.objects.create(topic=t1, book_slug=slug)
+        for slug in ("a", "b"):
+            TopicBook.objects.create(topic=t2, book_slug=slug)
+
+    def _related(self, slug="a", language="en"):
+        res = self.client.get(f"/api/library/books/{slug}/?language={language}")
+        self.assertEqual(res.status_code, 200)
+        return [b["slug"] for b in res.data["related"]]
+
+    def test_ranks_by_shared_topics_then_author(self):
+        # b: 2 topics × 2 = 4; c: 1 topic × 2 = 2; d: same author = 1.
+        self.assertEqual(self._related("a"), ["b", "c", "d"])
+
+    def test_excludes_self_and_unrelated(self):
+        related = self._related("a")
+        self.assertNotIn("a", related)  # never suggest the book itself
+        self.assertNotIn("e", related)  # no topic or author link
+
+    def test_only_same_language_suggestions(self):
+        # A Swahili copy of 'b' shares the slug but must not surface for English
+        # 'a' — related is filtered to the requested language.
+        Book.objects.create(author=self.murray, slug="b", language="sw", title="B sw")
+        res = self.client.get("/api/library/books/a/?language=en")
+        self.assertEqual(res.status_code, 200)
+        self.assertTrue(res.data["related"])  # still finds the English matches
+        self.assertEqual({b["language"] for b in res.data["related"]}, {"en"})
+
+    def test_limited_to_six(self):
+        big = Topic.objects.create(slug="big", title="Big")
+        TopicBook.objects.create(topic=big, book_slug="a")
+        for i in range(8):
+            Book.objects.create(author=self.murray, slug=f"x{i}", language="en", title=f"X{i}")
+            TopicBook.objects.create(topic=big, book_slug=f"x{i}")
+        self.assertEqual(len(self._related("a")), 6)
+
+    def test_no_topics_or_author_returns_empty(self):
+        solo = Author.objects.create(slug="solo", name="Solo")
+        b = Book.objects.create(author=solo, slug="solo-book", language="en", title="Solo")
+        Chapter.objects.create(book=b, order=1, title="One", body_html="<p>x</p>")
+        self.assertEqual(self._related("solo-book"), [])
+
+
 class AdminStatsTests(TestCase):
     def setUp(self):
         self.client = APIClient()
