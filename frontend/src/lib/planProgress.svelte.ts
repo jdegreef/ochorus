@@ -1,4 +1,4 @@
-import { browser } from '$app/environment';
+import { readJSON, writeJSON } from './persisted';
 
 /**
  * Per-device reading-plan progress: which plans the reader started and which
@@ -16,21 +16,14 @@ interface PlanState {
 
 type Store = Record<string, PlanState>;
 
-function readAll(): Store {
-	if (!browser) return {};
-	try {
-		return JSON.parse(localStorage.getItem(KEY) || '{}');
-	} catch {
-		return {};
-	}
-}
+const readAll = (): Store => readJSON<Store>(KEY, {});
 
 class PlanProgress {
 	/** Bumped on every mutation so `$derived` consumers refresh. */
 	ticks = $state(0);
 
 	#write(store: Store) {
-		if (browser) localStorage.setItem(KEY, JSON.stringify(store));
+		writeJSON(KEY, store);
 		this.ticks++;
 	}
 

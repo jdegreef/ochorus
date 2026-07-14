@@ -1,4 +1,5 @@
 import { browser } from '$app/environment';
+import { readJSON, writeJSON } from './persisted';
 
 /**
  * "Listen" mode — reads the open chapter aloud with the browser's built-in
@@ -23,16 +24,14 @@ interface Stored {
 }
 
 function loadPrefs(): Stored {
-	if (!browser) return { rate: 1, voiceURI: '' };
-	try {
-		const raw = JSON.parse(localStorage.getItem(KEY) || '{}');
-		return {
-			rate: RATES.includes(raw.rate) ? raw.rate : 1,
-			voiceURI: typeof raw.voiceURI === 'string' ? raw.voiceURI : ''
-		};
-	} catch {
-		return { rate: 1, voiceURI: '' };
-	}
+	const raw = readJSON<{ rate?: number; voiceURI?: unknown }>(KEY, {});
+	return {
+		rate:
+			typeof raw.rate === 'number' && (RATES as readonly number[]).includes(raw.rate)
+				? raw.rate
+				: 1,
+		voiceURI: typeof raw.voiceURI === 'string' ? raw.voiceURI : ''
+	};
 }
 
 class Listen {
@@ -172,8 +171,7 @@ class Listen {
 	}
 
 	#savePrefs() {
-		if (!browser) return;
-		localStorage.setItem(KEY, JSON.stringify({ rate: this.rate, voiceURI: this.voiceURI }));
+		writeJSON(KEY, { rate: this.rate, voiceURI: this.voiceURI });
 	}
 
 	#speakFrom(index: number) {
