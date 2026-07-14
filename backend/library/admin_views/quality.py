@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-import re
-
 from django.db.models import Count, Max
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -11,6 +9,16 @@ from rest_framework.views import APIView
 from accounts.permissions import IsAdminEmail
 
 from ..models import AuthorTranslation, Book, Chapter, PlanDay
+from ..qa import (
+    FRAG_MAX_AVG,
+    FRAG_MIN_PARAS,
+    FRAG_MIN_WORDS,
+    GENERIC_TITLE,
+    GIANT_MIN,
+    TERMINAL_PUNCT,
+    TINY_MAX,
+    chapter_flags,
+)
 
 
 class AdminReviewQueueView(APIView):
@@ -103,50 +111,12 @@ class AdminReviewQueueView(APIView):
 
 
 # --- Content audit (quality + integrity) -------------------------------------
+# Chapter-quality heuristics (chapter_flags + thresholds) live in library.qa,
+# the single source of truth shared with the import preview.
 
-# A chapter title the chapterizer failed to capture: empty, or a bare
-# "Chapter <n>" with no real heading.
-GENERIC_TITLE = re.compile(r"^chapter\s+[\divxlc]+\.?$", re.IGNORECASE)
-# Sentence-final punctuation; a body not ending in one of these before the next
-# chapter suggests a mid-sentence split.
-TERMINAL_PUNCT = tuple('.!?"\'”’»)')
 # Per-list cap so the payload stays bounded on a large library; totals are still
 # reported.
 AUDIT_LIMIT = 100
-
-# Shared chapter-quality thresholds (see the book-qa skill). Kept as constants so
-# the audit and the per-book detail agree on what counts as a problem.
-TINY_MAX = 150
-GIANT_MIN = 8000
-FRAG_MIN_PARAS = 10
-FRAG_MIN_WORDS = 100
-FRAG_MAX_AVG = 20
-
-
-def chapter_flags(title, wc, body_text, body_html, has_next) -> list[str]:
-    """Quality flags for one chapter (a subset of the audit heuristics), used
-    for the per-book detail badges. ``empty`` short-circuits the body checks."""
-    flags = []
-    t = (title or "").strip()
-    body = (body_text or "").strip()
-    if not t or GENERIC_TITLE.match(t):
-        flags.append("generic-title")
-    if not body or wc == 0:
-        flags.append("empty")
-        return flags
-    if 0 < wc < TINY_MAX:
-        flags.append("tiny")
-    if wc > GIANT_MIN:
-        flags.append("giant")
-    paras = (body_html or "").count("<p")
-    if paras >= FRAG_MIN_PARAS and wc >= FRAG_MIN_WORDS and wc / paras < FRAG_MAX_AVG:
-        flags.append("fragmented")
-    first_alpha = next((c for c in body if c.isalpha()), "")
-    if first_alpha and first_alpha.islower():
-        flags.append("no-dropcap")
-    if has_next and not body.endswith(TERMINAL_PUNCT):
-        flags.append("mid-split")
-    return flags
 
 
 def _capped(items: list) -> dict:

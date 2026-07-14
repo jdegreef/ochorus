@@ -93,6 +93,7 @@ class ParseTests(TestCase):
         data = make_pdf([("Sermon", BODY)])
         res = ui.parse_upload(data, "s.pdf", "sermon")
         self.assertEqual(len(res["chapters"]), 1)
+        self.assertEqual(res["warnings"], [])  # chapter checks don't apply to a sermon
 
     def test_docx_book_splits_on_word_headings(self):
         data = make_docx(
@@ -257,6 +258,7 @@ class EndpointTests(TestCase):
         self.assertEqual(r.status_code, 200)
         chapters = r.json()["chapters"]
         self.assertGreaterEqual(len(chapters), 1)
+        self.assertIsInstance(r.json()["warnings"], list)  # QA audit runs on the preview
 
         r2 = self.client.post(
             "/api/admin/import/publish/",
