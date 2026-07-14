@@ -12,13 +12,11 @@
 	import { auth } from '$lib/auth.svelte';
 	import { pwa } from '$lib/pwa.svelte';
 	import { localizeHref, getLocale, getTextDirection } from '$lib/paraglide/runtime';
-	import LanguagePicker from '$lib/components/LanguagePicker.svelte';
 	import AccountMenu from '$lib/components/AccountMenu.svelte';
 	import PwaToasts from '$lib/components/PwaToasts.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import type { IconName } from '$lib/components/Icon.svelte';
 	import BrandMark from '$lib/components/BrandMark.svelte';
-	import WidthControl from '$lib/components/WidthControl.svelte';
 
 	let { children } = $props();
 	const t = i18n.t;
@@ -64,25 +62,13 @@
 	const isActive = (href: string) =>
 		href === '/' ? $page.route.id === '/' : ($page.route.id?.startsWith(href) ?? false);
 
-	// Preferences dropdown (gear) — groups the secondary controls (theme,
-	// language) so the primary destinations stay dominant. Mirrors Take Root.
-	// It wraps interactive controls, so it closes only on a click outside.
-	let prefsOpen = $state(false);
-	let prefsEl: HTMLElement | undefined = $state();
-
 	// Mobile nav drawer (collapsed behind a hamburger on small screens).
 	let navOpen = $state(false);
 </script>
 
 <svelte:window
-	onclick={(e) => {
-		if (prefsOpen && prefsEl && !e.composedPath().includes(prefsEl)) prefsOpen = false;
-	}}
 	onkeydown={(e) => {
-		if (e.key === 'Escape') {
-			prefsOpen = false;
-			navOpen = false;
-		}
+		if (e.key === 'Escape') navOpen = false;
 	}}
 />
 
@@ -118,42 +104,16 @@
 					{/each}
 				</div>
 				<div class="navctl">
-					<div class="prefs" bind:this={prefsEl}>
-						<button
-							class="prefs-btn"
-							aria-haspopup="true"
-							aria-expanded={prefsOpen}
-							aria-label="Preferences"
-							onclick={() => (prefsOpen = !prefsOpen)}
-						>
-							<Icon name="gear" size={19} />
-						</button>
-						{#if prefsOpen}
-							<div class="account-menu prefs-menu" role="group" aria-label="Preferences">
-								<div class="prefs-row">
-									<span class="prefs-label">{t('nav.theme')}</span>
-									<button
-										class="prefs-toggle"
-										onclick={() => theme.toggle()}
-										title="Toggle theme"
-										aria-label="Toggle light and dark theme"
-									>
-										<Icon name={theme.current === 'dark' ? 'sun' : 'moon'} />
-									</button>
-								</div>
-								<div class="prefs-row">
-									<span class="prefs-label">{t('nav.readingWidth')}</span>
-									<WidthControl />
-								</div>
-								{#if lang.available.length > 1}
-									<div class="prefs-row">
-										<span class="prefs-label">{t('nav.language')}</span>
-										<LanguagePicker />
-									</div>
-								{/if}
-							</div>
-						{/if}
-					</div>
+					<!-- Settings (theme, language, reading, voice all live on the page now). -->
+					<a
+						class="prefs-btn"
+						href={localizeHref('/settings')}
+						aria-label={t('settings.title')}
+						title={t('settings.title')}
+						onclick={() => (navOpen = false)}
+					>
+						<Icon name="gear" size={19} />
+					</a>
 					<AccountMenu />
 				</div>
 			</div>

@@ -78,6 +78,32 @@ class Listen {
 	}
 
 	/**
+	 * The best voices for a language (BCP-47 prefix), capped — for the Settings
+	 * voice picker. The browser's raw list is long, device-dependent, and full of
+	 * robotic legacy voices; this surfaces only the top few. "Best" heuristic:
+	 * prefer natural/neural cloud voices (Google, Neural, Premium, Enhanced,
+	 * WaveNet, Siri) and known-good system voices, then the platform default, then
+	 * cloud over local — deduped by name so a voice listed twice appears once.
+	 */
+	topVoices(langCode: string, max = 4): SpeechSynthesisVoice[] {
+		const prefix = langCode.toLowerCase().split('-')[0];
+		const matches = this.voices.filter((v) => v.lang.toLowerCase().startsWith(prefix));
+		const NATURAL = /google|neural|natural|premium|enhanced|wavenet|siri/i;
+		// Apple's higher-quality named voices (they don't advertise "natural").
+		const NAMED = /samantha|daniel|karen|moira|tessa|serena|allison|ava|zoe|nicky|aaron|fiona|rishi/i;
+		const score = (v: SpeechSynthesisVoice) =>
+			(NATURAL.test(v.name) ? 5 : 0) +
+			(NAMED.test(v.name) ? 2 : 0) +
+			(v.default ? 1 : 0) +
+			(v.localService ? 0 : 1);
+		const byName = new Map<string, SpeechSynthesisVoice>();
+		for (const v of [...matches].sort((a, b) => score(b) - score(a))) {
+			if (!byName.has(v.name)) byName.set(v.name, v);
+		}
+		return [...byName.values()].slice(0, max);
+	}
+
+	/**
 	 * Begin reading `paragraphs` (plain text, in order) from `startAt`. `media`
 	 * populates the OS Media Session (lock-screen / background controls).
 	 */
