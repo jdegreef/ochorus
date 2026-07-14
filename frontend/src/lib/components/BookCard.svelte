@@ -37,14 +37,11 @@
 	</div>
 
 	<div class="mt-2 px-0.5">
-		<div class="text-small font-medium leading-snug text-text">{book.title}</div>
+		<div class="line-clamp-2 text-small font-medium leading-snug text-text">{book.title}</div>
 		{#if showAuthor}
-			<div class="text-[0.8rem] text-muted">{book.author.name}</div>
+			<div class="truncate text-[0.8rem] text-muted">{book.author.name}</div>
 		{/if}
-		{#if book.subtitle}
-			<div class="line-clamp-1 text-[0.78rem] italic text-muted">{book.subtitle}</div>
-		{/if}
-		<div class="mt-0.5 text-[0.78rem] text-muted">
+		<div class="mt-0.5 text-[0.72rem] text-muted">
 			{chapters}{#if book.word_count}
 				<span class="opacity-50"> · </span>{readingTime(book.word_count)}{/if}
 		</div>
