@@ -32,17 +32,23 @@ const config = {
 					`/${l}/biographies`,
 					`/${l}/sermons`,
 					`/${l}/plans`,
+					`/${l}/topics`,
 					`/${l}/about`,
 					`/${l}/contact`
 				])
 			],
 			// Routes that are prerenderable but legitimately unreached at build:
-			// /sermons/[slug] and /plans/[slug] have no pages when their API
-			// endpoints have no content (or lag a simultaneous deploy), and
-			// /account is only linked at runtime (signed-in header). Any other
+			// /sermons/[slug], /plans/[slug] and /topics/[slug] have no pages when
+			// their API endpoints have no content (or lag a simultaneous deploy),
+			// and /account is only linked at runtime (signed-in header). Any other
 			// unseen prerenderable route is still a real error.
 			handleUnseenRoutes: ({ routes }) => {
-				const expected = new Set(['/sermons/[slug]', '/plans/[slug]', '/account']);
+				const expected = new Set([
+					'/sermons/[slug]',
+					'/plans/[slug]',
+					'/topics/[slug]',
+					'/account'
+				]);
 				const unexpected = routes.filter((id) => !expected.has(id));
 				if (unexpected.length) {
 					throw new Error(
