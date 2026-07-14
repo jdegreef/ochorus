@@ -4,9 +4,6 @@ Books are addressed by their canonical ``slug`` plus a ``language`` query param
 (default "en"). All endpoints are public (AllowAny via the project default).
 """
 
-import re
-
-from django.db import connection
 from django.db.models import Count, Q
 from django.shortcuts import get_object_or_404
 from rest_framework import generics
@@ -14,6 +11,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import Author, Book, Chapter, Plan, Sermon
+from .search import search_library
 from .serializers import (
     AuthorDetailSerializer,
     AuthorListSerializer,
@@ -56,28 +54,6 @@ def _language_entry(code: str) -> dict:
 # Snippet highlight markers. The API returns *plain text* snippets with matches
 # wrapped in these; the client HTML-escapes the text and then swaps the markers
 # for <mark> tags, so no HTML ever crosses the boundary unescaped.
-HL_START = "⟦"  # ⟦
-HL_END = "⟧"  # ⟧
-
-
-def _fallback_snippet(text: str, query: str, radius: int = 90) -> str:
-    """Excerpt centred on the first match, with all matches marker-wrapped.
-
-    Used on SQLite (dev); Postgres builds use SearchHeadline instead.
-    """
-    idx = text.lower().find(query.lower())
-    if idx == -1:
-        return text[: radius * 2] + ("…" if len(text) > radius * 2 else "")
-    start = max(0, idx - radius)
-    end = min(len(text), idx + len(query) + radius)
-    prefix = "…" if start > 0 else ""
-    suffix = "…" if end < len(text) else ""
-    excerpt = text[start:end]
-    pattern = re.compile(re.escape(query), re.IGNORECASE)
-    excerpt = pattern.sub(lambda m: f"{HL_START}{m.group(0)}{HL_END}", excerpt)
-    return f"{prefix}{excerpt}{suffix}"
-
-
 class AuthorListView(generics.ListAPIView):
     """Authors for the Biographies page (those with a bio), with book counts."""
 
@@ -237,158 +213,17 @@ class PlanDetailView(generics.RetrieveAPIView):
         )
 
 
-# Postgres text-search configs per content language. Languages without a
-# shipped stemmer (Swahili, Luganda, …) use "simple": exact-word matching, no
-# stemming — still ranked and highlighted.
-FTS_CONFIGS = {
-    "en": "english",
-    "fr": "french",
-    "es": "spanish",
-    "pt": "portuguese",
-}
-
-
 class SearchView(APIView):
-    """Ranked full-text search across published books, authors and chapter text.
+    """Ranked full-text search across published chapters and sermons.
 
-    On Postgres (production): websearch-style query parsing, weighted ranking
-    (chapter/book titles > author > body) via SearchRank, and SearchHeadline
-    snippets with matches wrapped in HL_START/HL_END markers. On SQLite (dev):
-    a case-insensitive substring fallback producing the same response shape.
-    Snippets are plain text either way; the client escapes them and renders the
-    markers as <mark>.
+    Delegates to ``library.search.search_library`` (see there for the Postgres
+    vs SQLite behaviour). Snippets come back with matches marker-wrapped for the
+    client to render as ``<mark>``.
     """
-
-    MAX_RESULTS = 30
 
     def get(self, request):
         q = (request.query_params.get("q") or "").strip()
         language = _language(request)
         if len(q) < 2:
             return Response({"query": q, "results": []})
-
-        base = Chapter.objects.filter(
-            book__is_published=True, book__language=language
-        ).select_related("book", "book__author")
-        sermons = Sermon.objects.filter(
-            is_published=True, language=language
-        ).select_related("author")
-
-        if connection.vendor == "postgresql":
-            results = self._search_postgres(base, sermons, q, language)
-        else:
-            results = self._search_fallback(base, sermons, q)
-        return Response({"query": q, "results": results})
-
-    def _search_postgres(self, base, sermons, q, language):
-        from django.contrib.postgres.search import (
-            SearchHeadline,
-            SearchQuery,
-            SearchRank,
-            SearchVector,
-        )
-
-        config = FTS_CONFIGS.get(language, "simple")
-        query = SearchQuery(q, config=config, search_type="websearch")
-
-        def headline(field):
-            return SearchHeadline(
-                field,
-                query,
-                config=config,
-                start_sel=HL_START,
-                stop_sel=HL_END,
-                max_words=40,
-                min_words=20,
-            )
-
-        vector = (
-            SearchVector("title", weight="A", config=config)
-            + SearchVector("book__title", weight="A", config=config)
-            + SearchVector("book__author__name", weight="B", config=config)
-            + SearchVector("body_text", weight="C", config=config)
-        )
-        chapters = (
-            base.annotate(
-                search=vector,
-                rank=SearchRank(vector, query),
-                headline=headline("body_text"),
-            )
-            .filter(search=query)
-            .order_by("-rank", "book__sort_order", "order")[: self.MAX_RESULTS]
-        )
-
-        sermon_vector = (
-            SearchVector("title", weight="A", config=config)
-            + SearchVector("author__name", weight="B", config=config)
-            + SearchVector("scripture_ref", weight="B", config=config)
-            + SearchVector("body_text", weight="C", config=config)
-        )
-        sermon_hits = (
-            sermons.annotate(
-                search=sermon_vector,
-                rank=SearchRank(sermon_vector, query),
-                headline=headline("body_text"),
-            )
-            .filter(search=query)
-            .order_by("-rank", "sort_order")[: self.MAX_RESULTS]
-        )
-
-        merged = [
-            (c.rank, self._hit(c, snippet=c.headline)) for c in chapters
-        ] + [
-            (s.rank, self._sermon_hit(s, snippet=s.headline)) for s in sermon_hits
-        ]
-        merged.sort(key=lambda pair: pair[0], reverse=True)
-        return [hit for _, hit in merged[: self.MAX_RESULTS]]
-
-    def _search_fallback(self, base, sermons, q):
-        chapters = base.filter(
-            Q(body_text__icontains=q)
-            | Q(title__icontains=q)
-            | Q(book__title__icontains=q)
-            | Q(book__subtitle__icontains=q)
-            | Q(book__author__name__icontains=q)
-        ).order_by("book__sort_order", "book__title", "order")[: self.MAX_RESULTS]
-        # Unranked fallback: reserve a few slots so sermon matches aren't
-        # crowded out when many chapters match a common word.
-        sermon_hits = list(
-            sermons.filter(
-                Q(body_text__icontains=q)
-                | Q(title__icontains=q)
-                | Q(scripture_ref__icontains=q)
-                | Q(author__name__icontains=q)
-            ).order_by("sort_order", "title")[:6]
-        )
-        results = [
-            self._hit(c, snippet=_fallback_snippet(c.body_text, q))
-            for c in chapters[: self.MAX_RESULTS - len(sermon_hits)]
-        ]
-        results += [
-            self._sermon_hit(s, snippet=_fallback_snippet(s.body_text, q))
-            for s in sermon_hits
-        ]
-        return results
-
-    @staticmethod
-    def _hit(c, snippet):
-        return {
-            "type": "chapter",
-            "book_slug": c.book.slug,
-            "book_title": c.book.title,
-            "author_name": c.book.author.name,
-            "chapter_order": c.order,
-            "chapter_title": c.title,
-            "snippet": snippet,
-        }
-
-    @staticmethod
-    def _sermon_hit(s, snippet):
-        return {
-            "type": "sermon",
-            "sermon_slug": s.slug,
-            "sermon_title": s.title,
-            "author_name": s.author.name,
-            "scripture_ref": s.scripture_ref,
-            "snippet": snippet,
-        }
+        return Response({"query": q, "results": search_library(q, language)})
