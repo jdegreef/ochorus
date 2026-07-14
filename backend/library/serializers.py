@@ -43,6 +43,7 @@ class BookListSerializer(serializers.ModelSerializer):
             "cover_url",
             "chapter_count",
             "word_count",
+            "created_at",
         ]
 
 
