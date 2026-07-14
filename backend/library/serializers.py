@@ -161,10 +161,16 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
 
     prev = serializers.SerializerMethodField()
     next = serializers.SerializerMethodField()
+    body_html = serializers.SerializerMethodField()
     book_title = serializers.CharField(source="book.title", read_only=True)
     book_slug = serializers.CharField(source="book.slug", read_only=True)
     author_name = serializers.CharField(source="book.author.name", read_only=True)
     author_slug = serializers.CharField(source="book.author.slug", read_only=True)
+
+    def get_body_html(self, obj):
+        from .scripture import annotate_references
+
+        return annotate_references(obj.body_html)
 
     class Meta:
         model = Chapter

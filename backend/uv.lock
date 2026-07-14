@@ -568,6 +568,8 @@ dependencies = [
     { name = "pyjwt", extra = ["crypto"] },
     { name = "pymupdf" },
     { name = "python-dotenv" },
+    { name = "pythonbible" },
+    { name = "pythonbible-asv" },
     { name = "requests" },
     { name = "sentry-sdk", extra = ["django"] },
     { name = "whitenoise" },
@@ -588,6 +590,8 @@ requires-dist = [
     { name = "pyjwt", extras = ["crypto"], specifier = ">=2.13.0" },
     { name = "pymupdf", specifier = ">=1.24.0" },
     { name = "python-dotenv", specifier = ">=1.2.2" },
+    { name = "pythonbible", specifier = ">=0.15.0" },
+    { name = "pythonbible-asv", specifier = ">=0.0.2" },
     { name = "requests", specifier = ">=2.34.2" },
     { name = "sentry-sdk", extras = ["django"], specifier = ">=2.20.0" },
     { name = "whitenoise", specifier = ">=6.12.0" },
@@ -796,6 +800,30 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/82/ed/0301aeeac3e5353ef3d94b6ec08bbcabd04a72018415dcb29e588514bba8/python_dotenv-1.2.2.tar.gz", hash = "sha256:2c371a91fbd7ba082c2c1dc1f8bf89ca22564a087c2c287cd9b662adde799cf3", size = 50135, upload-time = "2026-03-01T16:00:26.196Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/0b/d7/1959b9648791274998a9c3526f6d0ec8fd2233e4d4acce81bbae76b44b2a/python_dotenv-1.2.2-py3-none-any.whl", hash = "sha256:1d8214789a24de455a8b8bd8ae6fe3c6b69a5e3d64aa8a8e5d68e694bbcb285a", size = 22101, upload-time = "2026-03-01T16:00:25.09Z" },
+]
+
+[[package]]
+name = "pythonbible"
+version = "0.15.5"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pythonbible-asv" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/cf/b8/fdbd5901214220aac438409a868ea833395b80b513a436351ca4a266df16/pythonbible-0.15.5.tar.gz", hash = "sha256:c1e4866b98670e69248621137b927282615dbf820bc55d1731560ab1e06eea96", size = 28466, upload-time = "2026-01-25T03:35:14.371Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/03/ca/58debcb7234ccc75c06d84869e2e8e8fa348155aaa87291faff2c026f36e/pythonbible-0.15.5-py3-none-any.whl", hash = "sha256:ddc74862d7be8db63fd9de05cfcb4c42973239da911e077ae3f79e67852673a5", size = 36700, upload-time = "2026-01-25T03:35:15.714Z" },
+]
+
+[[package]]
+name = "pythonbible-asv"
+version = "0.0.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pythonbible" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/11/ad/6c7f710ef3c18321f69f40278a7f1adb7dd7871aee22e40719d358a990fc/pythonbible_asv-0.0.2.tar.gz", hash = "sha256:15522d869a7f85c094c7c74c2a4176e1e76fd6dc0b6305b104684ff087b50031", size = 9979681, upload-time = "2026-01-01T21:32:59.669Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/69/69/7b4230d04929ddf21069ec265eb0bbc531f4fe90c8d7f2dee798b4d817b2/pythonbible_asv-0.0.2-py3-none-any.whl", hash = "sha256:d5f7a0ff67967b6b1f901a7f57895e2e38f5e748743bbafdbfbffdc8895f37c8", size = 9978693, upload-time = "2026-01-01T21:33:03.879Z" },
 ]
 
 [[package]]
