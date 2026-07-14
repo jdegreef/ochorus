@@ -734,3 +734,45 @@ class AdminExportTests(TestCase):
     def test_requires_admin(self):
         res = self.client.get("/api/admin/export/")
         self.assertIn(res.status_code, (401, 403))
+
+
+class ScriptureTests(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+
+    def test_annotate_wraps_valid_references_only(self):
+        from library.scripture import annotate_references
+
+        html = "<p>As John 3:16 says, and see Romans 8:28. But Room 3:16 is not.</p>"
+        out = annotate_references(html)
+        self.assertIn('<a class="scripture-ref" data-ref="John 3:16">John 3:16</a>', out)
+        self.assertIn('data-ref="Romans 8:28"', out)
+        self.assertNotIn('data-ref="Room 3:16"', out)  # not a real book
+        self.assertIn("Room 3:16 is not", out)
+
+    def test_annotate_skips_attributes_and_existing_anchors(self):
+        from library.scripture import annotate_references
+
+        # Reference inside an existing <a> must not be double-wrapped.
+        html = '<p><a href="/x">John 3:16</a></p>'
+        self.assertEqual(annotate_references(html).count("<a"), 1)
+        self.assertEqual(annotate_references(""), "")
+
+    def test_lookup_endpoint_returns_asv_text(self):
+        res = self.client.get("/api/library/scripture/?ref=John 3:16")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["reference"], "John 3:16")
+        self.assertEqual(res.data["verses"][0]["number"], 16)
+        self.assertIn("God so loved the world", res.data["verses"][0]["text"])
+        self.assertEqual(res.data["version"], "American Standard Version")
+
+    def test_lookup_endpoint_range(self):
+        res = self.client.get("/api/library/scripture/?ref=Romans 8:28-29")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(len(res.data["verses"]), 2)
+
+    def test_lookup_endpoint_bad_and_missing(self):
+        self.assertEqual(self.client.get("/api/library/scripture/").status_code, 400)
+        self.assertEqual(
+            self.client.get("/api/library/scripture/?ref=Nope 1:1").status_code, 404
+        )

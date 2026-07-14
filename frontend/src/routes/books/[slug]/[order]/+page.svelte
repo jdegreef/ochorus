@@ -20,10 +20,12 @@
 	import { readingTime, readingMinutes } from '$lib/reading';
 	import { listen } from '$lib/listen.svelte';
 	import { define } from '$lib/define.svelte';
+	import { scripture } from '$lib/scripture.svelte';
 	import { API_BASE_URL } from '$lib/config';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import DefinePopover from '$lib/components/DefinePopover.svelte';
+	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
 	import TocDrawer from '$lib/components/TocDrawer.svelte';
 	import SearchDrawer from '$lib/components/SearchDrawer.svelte';
 	import SelectionBar from '$lib/components/SelectionBar.svelte';
@@ -339,11 +341,22 @@
 		}
 	}
 
+	/** Tap a server-wrapped Bible reference → open the scripture popover. */
+	function tryScriptureClick(e: MouseEvent): boolean {
+		const a = (e.target as HTMLElement).closest?.('a.scripture-ref') as HTMLElement | null;
+		if (!a?.dataset.ref) return false;
+		e.preventDefault();
+		const r = a.getBoundingClientRect();
+		scripture.show(a.dataset.ref, r.bottom + window.scrollY, r.left + window.scrollX + r.width / 2);
+		return true;
+	}
+
 	/** Edge tap zones: outer 15% turns the page (paged) or chapter (scroll, touch). */
 	function onArticleClick(e: MouseEvent) {
+		if (tryScriptureClick(e)) return;
 		if (!paged && !window.matchMedia('(pointer: coarse)').matches) return;
 		const el = e.target as HTMLElement;
-		if (el.closest('a, button, mark, input, textarea, select, .selbar, .define-pop')) return;
+		if (el.closest('a, button, mark, input, textarea, select, .selbar, .define-pop, .scripture-pop')) return;
 		if (window.getSelection()?.toString()) return;
 		const x = e.clientX / window.innerWidth;
 		if (paged) {
@@ -734,6 +747,7 @@
 />
 
 <DefinePopover />
+<ScripturePopover />
 
 <TocDrawer {slug} currentOrder={chapter.order} bind:open={tocOpen} />
 

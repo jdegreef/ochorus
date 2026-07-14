@@ -27,6 +27,8 @@
   "reader_glossary_source": "Ochorus glossary",
   "reader_dictionary_source": "Dictionary",
   "reader_no_definition": "No definition found for this word.",
+  "reader_scripture": "Escritura",
+  "reader_scripture_unavailable": "No se pudo cargar el texto del versículo.",
   "reader_mark_one": "mark",
   "reader_mark_many": "marks",
   "progress_min_left": "min left in chapter",

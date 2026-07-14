@@ -233,3 +233,23 @@ class SearchView(APIView):
         if len(q) < 2:
             return Response({"query": q, "results": []})
         return Response({"query": q, "results": search_library(q, language)})
+
+
+class ScriptureView(APIView):
+    """Verse text for a Bible reference — the reader's cross-reference popover.
+
+    Public-domain American Standard Version, resolved locally (no external Bible
+    API, so it works offline). ``?ref=John 3:16`` — ranges and common
+    abbreviations are accepted.
+    """
+
+    def get(self, request):
+        from .scripture import lookup
+
+        ref = (request.query_params.get("ref") or "").strip()
+        if not ref:
+            return Response({"detail": "A 'ref' query parameter is required."}, status=400)
+        data = lookup(ref[:120])
+        if not data:
+            return Response({"detail": "No such reference."}, status=404)
+        return Response(data)

@@ -1,0 +1,103 @@
+"""In-text Scripture cross-references for the reader.
+
+Two jobs:
+
+* :func:`annotate_references` wraps Bible references appearing in a chapter's
+  cleaned HTML in ``<a class="scripture-ref" data-ref="…">`` so the reader can
+  make them tappable. A cheap regex finds *candidate* spans (for their position
+  in the HTML) and ``pythonbible`` validates each one, so a capitalised word that
+  merely looks like a book (``Room 3:16``) is left alone.
+* :func:`lookup` resolves a reference to its verse text for the popover, from the
+  public-domain **American Standard Version** bundled by ``pythonbible-asv`` —
+  no network, so it works offline and needs no external Bible API.
+
+English (ASV) only for now; a target-language edition can layer on later.
+"""
+
+from __future__ import annotations
+
+import re
+from functools import lru_cache
+
+import pythonbible as bible
+from pythonbible.versions import Version
+
+VERSION = Version.AMERICAN_STANDARD
+VERSION_LABEL = "American Standard Version"
+
+# A "Book chapter:verse[-verse]" candidate: an optional leading 1/2/3, a
+# capitalised word (+ optional trailing period for abbreviations), then the
+# chapter:verse. Deliberately loose — pythonbible does the real validation.
+_CANDIDATE = re.compile(
+    r"\b((?:[1-3]\s+)?[A-Z][A-Za-z]+\.?\s+\d{1,3}\s*[:.]\s*\d{1,3}(?:\s*[-–]\s*\d{1,3})?)"
+)
+_TAG_SPLIT = re.compile(r"(<[^>]+>)")
+_MAX_VERSES = 25
+
+
+@lru_cache(maxsize=4096)
+def _first_reference(text: str):
+    """The first valid Bible reference in ``text``, or None."""
+    try:
+        refs = bible.get_references(text)
+    except Exception:
+        return None
+    return refs[0] if refs else None
+
+
+def annotate_references(html: str) -> str:
+    """Wrap valid Bible references in tappable anchors, in text only.
+
+    Splits on tags so attribute values are never touched, and skips text inside
+    an existing ``<a>`` so references already linked aren't double-wrapped.
+    """
+    if not html or ":" not in html:
+        return html
+    parts = _TAG_SPLIT.split(html)
+    anchor_depth = 0
+    for i, part in enumerate(parts):
+        if i % 2 == 1:  # a tag
+            tag = part[:3].lower()
+            if tag.startswith("<a") and not part.lower().startswith("<area"):
+                anchor_depth += 1
+            elif tag == "</a":
+                anchor_depth = max(0, anchor_depth - 1)
+            continue
+        if anchor_depth or ":" not in part:
+            continue
+        parts[i] = _wrap_text(part)
+    return "".join(parts)
+
+
+def _wrap_text(text: str) -> str:
+    def repl(match: re.Match) -> str:
+        candidate = match.group(1)
+        if _first_reference(candidate) is None:
+            return candidate
+        return f'<a class="scripture-ref" data-ref="{candidate}">{candidate}</a>'
+
+    return _CANDIDATE.sub(repl, text)
+
+
+@lru_cache(maxsize=4096)
+def lookup(ref_text: str) -> dict | None:
+    """Resolve a reference to ASV verse text for the popover, or None."""
+    ref = _first_reference(ref_text)
+    if ref is None:
+        return None
+    verse_ids = bible.convert_reference_to_verse_ids(ref)[:_MAX_VERSES]
+    verses = []
+    for vid in verse_ids:
+        try:
+            text = bible.get_verse_text(vid, version=VERSION)
+        except Exception:
+            continue
+        if text:
+            verses.append({"number": vid % 1000, "text": text})
+    if not verses:
+        return None
+    return {
+        "reference": bible.format_scripture_references([ref]),
+        "verses": verses,
+        "version": VERSION_LABEL,
+    }
