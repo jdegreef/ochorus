@@ -70,6 +70,8 @@
   "notebook_title": "Notebook",
   "notebook_subtitle": "Your bookmarks, highlights and notes.",
   "notebook_empty": "Nothing saved yet — bookmark a spot or highlight a passage while reading.",
+  "notebook_search": "Search your notes…",
+  "notebook_no_matches": "No notes match your search.",
   "nav_plans": "Plans",
   "plans_title": "Reading Plans",
   "plans_tagline": "A chapter a day, in order — build a habit around a classic.",

@@ -70,6 +70,8 @@
   "notebook_title": "Cuaderno",
   "notebook_subtitle": "Tus marcadores, subrayados y notas.",
   "notebook_empty": "Aún no has guardado nada: añade un marcador o subraya un pasaje mientras lees.",
+  "notebook_search": "Busca en tus notas…",
+  "notebook_no_matches": "Ninguna nota coincide con tu búsqueda.",
   "nav_plans": "Planes",
   "plans_title": "Planes de lectura",
   "plans_tagline": "Un capítulo al día, en orden — crea un hábito con un clásico.",
