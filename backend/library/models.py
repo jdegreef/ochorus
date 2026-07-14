@@ -278,3 +278,98 @@ class PlanDay(models.Model):
 
     def __str__(self) -> str:
         return f"{self.plan_id} day {self.day} → {self.book_slug}/{self.chapter_order}"
+
+
+class Topic(models.Model):
+    """A curated topical shelf — a themed grouping of works (e.g. "On Prayer").
+
+    A topic is language-agnostic: unlike Book/Plan there is a *single* Topic row
+    per subject, and its members are referenced by canonical ``book_slug`` (a
+    soft reference, like PlanDay), so one topic serves every language and each
+    reader sees the members that exist in their language. Prose (title,
+    description) is translated in a side-table (``TopicTranslation``), the same
+    pattern Author uses, and falls back to the English original per field.
+    """
+
+    slug = models.SlugField(max_length=160, unique=True)
+    title = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+    sort_order = models.PositiveIntegerField(default=0)
+    is_published = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["sort_order", "title"]
+
+    def __str__(self) -> str:
+        return self.title
+
+    def _localized(self, field: str, language: str) -> str:
+        """A translated prose field in ``language``, else the English original.
+
+        Reads ``self.translations.all()`` (not ``.filter()``) so a caller that
+        prefetched translations pays no extra query.
+        """
+        if language and language != "en":
+            tr = next((t for t in self.translations.all() if t.language == language), None)
+            if tr and getattr(tr, field):
+                return getattr(tr, field)
+        return getattr(self, field)
+
+    def title_for(self, language: str) -> str:
+        return self._localized("title", language)
+
+    def description_for(self, language: str) -> str:
+        return self._localized("description", language)
+
+
+class TopicTranslation(models.Model):
+    """A translated copy of a Topic's title/description in one language.
+
+    Kept in a side-table (rather than per-language Topic rows) so a topic stays
+    a single subject across languages; the serializers fall back per-field to
+    the English original when a translation is missing.
+    """
+
+    topic = models.ForeignKey(
+        Topic, on_delete=models.CASCADE, related_name="translations"
+    )
+    language = models.CharField(max_length=10)
+    title = models.CharField(max_length=200, blank=True)
+    description = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["topic", "language"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["topic", "language"], name="uniq_topic_translation"
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.topic.slug} [{self.language}]"
+
+
+class TopicBook(models.Model):
+    """Membership of a work in a topic, by canonical ``book_slug``.
+
+    A soft reference (like PlanDay) rather than an FK, so it's language-agnostic
+    and survives book re-imports. A work may belong to several topics.
+    """
+
+    topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name="entries")
+    book_slug = models.SlugField(max_length=160)
+    sort_order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["sort_order", "id"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["topic", "book_slug"], name="uniq_topic_book"
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.topic.slug} ⊃ {self.book_slug}"

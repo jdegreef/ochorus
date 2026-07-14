@@ -53,6 +53,7 @@
 	const NAV = $derived<{ href: string; label: string; icon: IconName }[]>([
 		{ href: '/', label: t('nav.dashboard'), icon: 'grid' },
 		{ href: '/books', label: t('nav.books'), icon: 'book' },
+		{ href: '/topics', label: t('nav.topics'), icon: 'tag' },
 		{ href: '/plans', label: t('nav.plans'), icon: 'calendar' },
 		{ href: '/sermons', label: t('nav.sermons'), icon: 'mic' },
 		{ href: '/biographies', label: t('nav.biographies'), icon: 'users' },
@@ -180,6 +181,7 @@
 					<h3 class="mb-3 text-small font-semibold uppercase tracking-wider text-text">{t('footer.explore')}</h3>
 					<ul class="space-y-2 text-small text-muted">
 						<li><a href={localizeHref('/books')} class="hover:text-text">{t('nav.books')}</a></li>
+						<li><a href={localizeHref('/topics')} class="hover:text-text">{t('nav.topics')}</a></li>
 						<li><a href={localizeHref('/plans')} class="hover:text-text">{t('nav.plans')}</a></li>
 						<li><a href={localizeHref('/sermons')} class="hover:text-text">{t('nav.sermons')}</a></li>
 						<li><a href={localizeHref('/biographies')} class="hover:text-text">{t('nav.biographies')}</a></li>

@@ -10,7 +10,7 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Author, Book, Chapter, Plan, Sermon
+from .models import Author, Book, Chapter, Plan, Sermon, Topic
 from .search import search_library
 from .serializers import (
     AuthorDetailSerializer,
@@ -22,6 +22,8 @@ from .serializers import (
     PlanListSerializer,
     SermonDetailSerializer,
     SermonListSerializer,
+    TopicDetailSerializer,
+    TopicListSerializer,
 )
 
 DEFAULT_LANGUAGE = "en"
@@ -217,6 +219,72 @@ class PlanDetailView(generics.RetrieveAPIView):
             slug=self.kwargs["slug"],
             language=_language(self.request),
         )
+
+
+def _attach_books(topics, language):
+    """Attach ``books_in_language`` (curated-ordered, published member books in
+    ``language``) to each topic in ``topics``, using two queries total rather
+    than per-topic — then callers can filter out topics that are empty in the
+    language. Returns the same list for convenience."""
+    from django.db.models import Count, Sum
+
+    wanted = {e.book_slug for t in topics for e in t.entries.all()}
+    books = (
+        Book.objects.filter(slug__in=wanted, language=language, is_published=True)
+        .select_related("author")
+        .annotate(num_chapters=Count("chapters"), total_words=Sum("chapters__word_count"))
+    )
+    by_slug = {b.slug: b for b in books}
+    for t in topics:
+        t.books_in_language = [
+            by_slug[e.book_slug] for e in t.entries.all() if e.book_slug in by_slug
+        ]
+    return topics
+
+
+class TopicListView(generics.ListAPIView):
+    """Published topical shelves that have at least one member book in the
+    requested language (so a partially-translated library never shows an empty
+    shelf). Localized titles/descriptions, with a few sample covers each."""
+
+    serializer_class = TopicListSerializer
+    pagination_class = None
+
+    def get_serializer_context(self):
+        ctx = super().get_serializer_context()
+        ctx["language"] = _language(self.request)
+        return ctx
+
+    def get_queryset(self):
+        language = _language(self.request)
+        topics = list(
+            Topic.objects.filter(is_published=True)
+            .prefetch_related("translations", "entries")
+            .order_by("sort_order", "title")
+        )
+        _attach_books(topics, language)
+        return [t for t in topics if t.books_in_language]
+
+
+class TopicDetailView(generics.RetrieveAPIView):
+    """A single topical shelf with its member books in the requested language."""
+
+    serializer_class = TopicDetailSerializer
+
+    def get_serializer_context(self):
+        ctx = super().get_serializer_context()
+        ctx["language"] = _language(self.request)
+        return ctx
+
+    def get_object(self):
+        topic = get_object_or_404(
+            Topic.objects.filter(is_published=True).prefetch_related(
+                "translations", "entries"
+            ),
+            slug=self.kwargs["slug"],
+        )
+        _attach_books([topic], _language(self.request))
+        return topic
 
 
 class SearchView(APIView):
