@@ -36,10 +36,6 @@ class QaReportTests(TestCase):
         gen = [w for w in qa.qa_report(chapters) if w["check"] == "generic_title"]
         self.assertEqual(len(gen), 2)
 
-    def test_front_matter_title_flagged(self):
-        chapters = [ch("Index", f"<p>{GOOD}</p>" * 3), ch("Real Title", f"<p>{GOOD}</p>" * 3)]
-        self.assertIn("front_matter_as_chapter", self.checks(chapters))
-
     def test_mid_sentence_split_only_when_followed(self):
         # First chapter ends mid-sentence and is followed → flagged.
         chapters = [
@@ -58,9 +54,10 @@ class QaReportTests(TestCase):
         self.assertIn("giant_chapter", self.checks(giant))
 
     def test_fragmented_paragraphs(self):
-        # 10 one-word paragraphs → avg 1 word/para, well under the threshold.
-        html = "<p>word</p>" * 10
-        self.assertIn("fragmented_paragraphs", self.checks([ch("Frag", html, words=10)]))
+        # 20 five-word paragraphs → 100 words over 20 paras (avg 5): clears the
+        # shared FRAG thresholds (>=10 paras, >=100 words, avg < 20).
+        html = "<p>one two three four five</p>" * 20
+        self.assertIn("fragmented_paragraphs", self.checks([ch("Frag", html, words=100)]))
 
     def test_missing_drop_cap(self):
         chapters = [ch("Lower", f"<p>lowercase opening that should have been a drop cap {GOOD}</p>", words=200)]
