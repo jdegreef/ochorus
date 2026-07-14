@@ -6,6 +6,7 @@
 	import { absUrl, jsonLd, breadcrumb } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
+	import BookCard from '$lib/components/BookCard.svelte';
 
 	let { data } = $props();
 	const t = i18n.t;
@@ -172,6 +173,17 @@
 			{/each}
 		</ol>
 	</section>
+
+	{#if book.related?.length}
+		<section class="mt-12">
+			<h2 class="mb-4 text-h3">{t('book.related')}</h2>
+			<div class="grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4 md:grid-cols-6">
+				{#each book.related as rel (rel.slug)}
+					<BookCard book={rel} showAuthor />
+				{/each}
+			</div>
+		</section>
+	{/if}
 
 	{#if book.source_url && book.source_type === 'public_domain'}
 		<p class="mt-8 text-[0.8rem] text-muted">

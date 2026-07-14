@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Author, Book, Chapter, Plan, PlanDay, Sermon, Topic
+from .models import Author, Book, Chapter, Plan, PlanDay, Sermon, Topic, TopicBook
 
 
 class AuthorSerializer(serializers.ModelSerializer):
@@ -146,15 +146,23 @@ class ChapterTocSerializer(serializers.ModelSerializer):
 
 
 class BookDetailSerializer(BookListSerializer):
-    """Book detail — adds description, the chapter TOC, and topic chips."""
+    """Book detail — adds description, the chapter TOC, topic chips, and a
+    "more like this" list of related books."""
 
     chapters = ChapterTocSerializer(many=True, read_only=True)
     topics = serializers.SerializerMethodField()
+    related = serializers.SerializerMethodField()
+
+    # How many related books to surface, and how much a shared topic counts
+    # relative to sharing the author (a shared topic is the stronger signal).
+    RELATED_LIMIT = 6
+    TOPIC_WEIGHT = 2
+    AUTHOR_WEIGHT = 1
 
     class Meta(BookListSerializer.Meta):
         fields = BookListSerializer.Meta.fields + [
             "description", "source_url", "pdf_url", "chapters",
-            "publication_year", "attribution", "topics",
+            "publication_year", "attribution", "topics", "related",
         ]
 
     def get_topics(self, obj):
@@ -167,6 +175,56 @@ class BookDetailSerializer(BookListSerializer):
             .order_by("sort_order", "title")
         )
         return [{"slug": t.slug, "title": t.title_for(obj.language)} for t in topics]
+
+    def get_related(self, obj):
+        """"More like this" — other books in the same language ranked by how
+        many topics they share with this one (the strong signal), then a boost
+        for being by the same author. Books present only in another language are
+        excluded, so every suggestion is one the reader can open here."""
+        from django.db.models import Count, Sum
+
+        scores: dict[str, int] = {}
+
+        # Shared-topic overlap: how many of this work's topics each other work
+        # also sits in. (topic, book_slug) is unique, so each row is one topic.
+        topic_ids = list(
+            TopicBook.objects.filter(book_slug=obj.slug).values_list("topic_id", flat=True)
+        )
+        if topic_ids:
+            overlaps = (
+                TopicBook.objects.filter(topic_id__in=topic_ids)
+                .exclude(book_slug=obj.slug)
+                .values("book_slug")
+                .annotate(shared=Count("topic_id", distinct=True))
+            )
+            for row in overlaps:
+                scores[row["book_slug"]] = row["shared"] * self.TOPIC_WEIGHT
+
+        # Same-author boost — limited to works published in this language.
+        author_slugs = (
+            Book.objects.filter(
+                author_id=obj.author_id, language=obj.language, is_published=True
+            )
+            .exclude(slug=obj.slug)
+            .values_list("slug", flat=True)
+        )
+        for slug in author_slugs:
+            scores[slug] = scores.get(slug, 0) + self.AUTHOR_WEIGHT
+
+        if not scores:
+            return []
+
+        candidates = (
+            Book.objects.filter(
+                slug__in=scores.keys(), language=obj.language, is_published=True
+            )
+            .select_related("author")
+            .annotate(num_chapters=Count("chapters"), total_words=Sum("chapters__word_count"))
+        )
+        ranked = sorted(
+            candidates, key=lambda b: (-scores.get(b.slug, 0), b.sort_order, b.title)
+        )
+        return BookListSerializer(ranked[: self.RELATED_LIMIT], many=True).data
 
 
 class ChapterDetailSerializer(serializers.ModelSerializer):
