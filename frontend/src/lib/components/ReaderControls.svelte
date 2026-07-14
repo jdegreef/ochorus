@@ -1,5 +1,11 @@
 <script lang="ts">
-	import { readerPrefs, type Leading, type Measure, type ReaderFont } from '$lib/readerPrefs.svelte';
+	import {
+		readerPrefs,
+		type Align,
+		type Leading,
+		type Measure,
+		type ReaderFont
+	} from '$lib/readerPrefs.svelte';
 	import { listen, RATES } from '$lib/listen.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 
@@ -26,6 +32,10 @@
 		{ v: 'serif', k: 'font.serif' },
 		{ v: 'sans', k: 'font.sans' },
 		{ v: 'dyslexic', k: 'font.dyslexic' }
+	];
+	const ALIGNMENTS: { v: Align; k: string }[] = [
+		{ v: 'left', k: 'align.left' },
+		{ v: 'justify', k: 'align.justify' }
 	];
 
 	function onWindowClick(e: MouseEvent) {
@@ -149,6 +159,24 @@
 							class:text-muted={readerPrefs.font !== o.v}
 							onclick={() => readerPrefs.setFont(o.v)}
 							aria-pressed={readerPrefs.font === o.v}>{t(o.k)}</button
+						>
+					{/each}
+				</div>
+			</div>
+
+			<!-- Text alignment -->
+			<div class="mt-3">
+				<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.alignment')}</span>
+				<div class="grid grid-cols-2 gap-1">
+					{#each ALIGNMENTS as o (o.v)}
+						<button
+							class="rounded-sm border px-2 py-1.5 text-[0.8rem]"
+							class:border-accent={readerPrefs.align === o.v}
+							class:text-accent={readerPrefs.align === o.v}
+							class:border-border={readerPrefs.align !== o.v}
+							class:text-muted={readerPrefs.align !== o.v}
+							onclick={() => readerPrefs.setAlign(o.v)}
+							aria-pressed={readerPrefs.align === o.v}>{t(o.k)}</button
 						>
 					{/each}
 				</div>

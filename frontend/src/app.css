@@ -190,6 +190,10 @@
 .reading p {
 	margin: 0 0 1.15em;
 	hanging-punctuation: first;
+	/* Reader-controlled text alignment; justified prose enables hyphenation so
+	   the ragged spacing stays tight (uses the element's inherited lang). */
+	text-align: var(--reading-align, start);
+	hyphens: var(--reading-hyphens, manual);
 }
 .reading h2,
 .reading h3 {
