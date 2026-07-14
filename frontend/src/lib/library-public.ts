@@ -22,6 +22,7 @@ export interface BookSummary {
 	cover_url: string;
 	chapter_count: number;
 	word_count: number | null;
+	created_at: string;
 }
 
 export interface ChapterToc {
