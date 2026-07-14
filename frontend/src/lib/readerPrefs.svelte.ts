@@ -14,6 +14,7 @@ import { readJSON, writeJSON } from './persisted';
 export type Leading = 'compact' | 'normal' | 'relaxed';
 export type Measure = 'narrow' | 'normal' | 'wide';
 export type ReaderFont = 'serif' | 'sans' | 'dyslexic';
+export type Align = 'left' | 'justify';
 
 export const LEADING: Record<Leading, number> = {
 	compact: 1.55,
@@ -43,6 +44,7 @@ interface Stored {
 	leading: Leading;
 	measure: Measure;
 	font: ReaderFont;
+	align: Align;
 	paged: boolean;
 }
 
@@ -51,8 +53,11 @@ const DEFAULTS: Stored = {
 	leading: 'normal',
 	measure: 'normal',
 	font: 'serif',
+	align: 'left',
 	paged: false
 };
+
+const ALIGNS: readonly Align[] = ['left', 'justify'];
 
 function load(): Stored {
 	const raw = readJSON<Record<string, unknown>>(KEY, {});
@@ -65,6 +70,7 @@ function load(): Stored {
 		leading: (raw.leading as Leading) in LEADING ? (raw.leading as Leading) : DEFAULTS.leading,
 		measure: (raw.measure as Measure) in MEASURE ? (raw.measure as Measure) : DEFAULTS.measure,
 		font: (raw.font as ReaderFont) in FONT_STACK ? (raw.font as ReaderFont) : DEFAULTS.font,
+		align: ALIGNS.includes(raw.align as Align) ? (raw.align as Align) : DEFAULTS.align,
 		paged: typeof raw.paged === 'boolean' ? raw.paged : DEFAULTS.paged
 	};
 }
@@ -74,6 +80,7 @@ class ReaderPrefs {
 	leading = $state<Leading>(DEFAULTS.leading);
 	measure = $state<Measure>(DEFAULTS.measure);
 	font = $state<ReaderFont>(DEFAULTS.font);
+	align = $state<Align>(DEFAULTS.align);
 	paged = $state(DEFAULTS.paged);
 	#loaded = false;
 
@@ -85,6 +92,7 @@ class ReaderPrefs {
 		this.leading = s.leading;
 		this.measure = s.measure;
 		this.font = s.font;
+		this.align = s.align;
 		this.paged = s.paged;
 		this.#loaded = true;
 	}
@@ -95,6 +103,7 @@ class ReaderPrefs {
 			leading: this.leading,
 			measure: this.measure,
 			font: this.font,
+			align: this.align,
 			paged: this.paged
 		};
 		writeJSON(KEY, s);
@@ -119,6 +128,10 @@ class ReaderPrefs {
 		this.font = v;
 		this.#save();
 	}
+	setAlign(v: Align) {
+		this.align = v;
+		this.#save();
+	}
 	setPaged(v: boolean) {
 		this.paged = v;
 		this.#save();
@@ -130,7 +143,9 @@ class ReaderPrefs {
 			`--reading-scale:${this.scale}`,
 			`--reading-leading:${LEADING[this.leading]}`,
 			`--reading-measure:${MEASURE[this.measure]}`,
-			`--reading-font:${FONT_STACK[this.font]}`
+			`--reading-font:${FONT_STACK[this.font]}`,
+			`--reading-align:${this.align === 'justify' ? 'justify' : 'start'}`,
+			`--reading-hyphens:${this.align === 'justify' ? 'auto' : 'manual'}`
 		].join(';');
 	}
 }

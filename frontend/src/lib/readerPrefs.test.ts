@@ -32,6 +32,15 @@ describe('readerPrefs store', () => {
 		expect(stored().font).toBe('dyslexic');
 	});
 
+	it('persists text alignment and enables hyphenation when justified', () => {
+		readerPrefs.setAlign('justify');
+		expect(stored().align).toBe('justify');
+		expect(readerPrefs.style).toContain('--reading-align:justify');
+		expect(readerPrefs.style).toContain('--reading-hyphens:auto');
+		readerPrefs.setAlign('left');
+		expect(readerPrefs.style).toContain('--reading-align:start');
+	});
+
 	it('builds a CSS custom-property string the reader can consume', () => {
 		readerPrefs.setLeading('relaxed');
 		readerPrefs.setMeasure('wide');
