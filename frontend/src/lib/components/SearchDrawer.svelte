@@ -2,6 +2,7 @@
 	import { getBook, getChapter } from '$lib/library';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
+	import { highlightAround } from '$lib/highlight';
 	import { localizeHref } from '$lib/paraglide/runtime';
 
 	/**
@@ -37,26 +38,6 @@
 	let query = $state('');
 	const MAX_RESULTS = 80;
 
-	function escapeHtml(s: string): string {
-		return s
-			.replace(/&/g, '&amp;')
-			.replace(/</g, '&lt;')
-			.replace(/>/g, '&gt;');
-	}
-
-	// A window of text around the first match, with the query wrapped in <mark>.
-	function snippet(text: string, q: string): string {
-		const idx = text.toLowerCase().indexOf(q.toLowerCase());
-		if (idx < 0) return escapeHtml(text.slice(0, 140));
-		const radius = 60;
-		const start = Math.max(0, idx - radius);
-		const end = Math.min(text.length, idx + q.length + radius);
-		const before = (start > 0 ? '… ' : '') + escapeHtml(text.slice(start, idx));
-		const match = escapeHtml(text.slice(idx, idx + q.length));
-		const after = escapeHtml(text.slice(idx + q.length, end)) + (end < text.length ? ' …' : '');
-		return `${before}<mark>${match}</mark>${after}`;
-	}
-
 	const results = $derived.by<Hit[]>(() => {
 		const q = query.trim();
 		if (q.length < 2) return [];
@@ -64,7 +45,12 @@
 		const hits: Hit[] = [];
 		for (const para of indexed) {
 			if (para.text.toLowerCase().includes(needle)) {
-				hits.push({ order: para.order, title: para.title, p: para.p, snippet: snippet(para.text, q) });
+				hits.push({
+				order: para.order,
+				title: para.title,
+				p: para.p,
+				snippet: highlightAround(para.text, q)
+			});
 				if (hits.length >= MAX_RESULTS) break;
 			}
 		}

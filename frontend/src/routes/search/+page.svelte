@@ -2,6 +2,7 @@
 	import { search, type SearchHit } from '$lib/library';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
+	import { markSnippet } from '$lib/highlight';
 	import { localizeHref } from '$lib/paraglide/runtime';
 
 	const t = i18n.t;
@@ -31,15 +32,9 @@
 		}, 250);
 	}
 
-	// Snippets arrive as plain text with matches wrapped in ⟦…⟧ markers (set
-	// server-side by full-text search). Escape everything, then swap the markers
-	// for <mark> — so the only HTML rendered is what we construct here.
-	function mark(snippet: string): string {
-		return snippet
-			.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]!)
-			.replaceAll('⟦', '<mark>')
-			.replaceAll('⟧', '</mark>');
-	}
+	// Server snippets arrive with matches wrapped in full-text markers; markSnippet
+	// escapes them and swaps the markers for <mark> (shared with the in-book search).
+	const mark = markSnippet;
 </script>
 
 <svelte:head><title>{t('search.title')} — Ochorus</title></svelte:head>
