@@ -19,11 +19,11 @@
 	type Sort = 'shelf' | 'title' | 'longest' | 'shortest';
 	type Group = 'author' | 'all';
 	type Source = 'all' | 'public_domain' | 'translated';
-	const PREFS_KEY = 'ochorus:books-view';
+	const PREFS_KEY = 'ochorus:books-view2';
 
 	let view = $state<View>('grid');
 	let sort = $state<Sort>('shelf');
-	let group = $state<Group>('author');
+	let group = $state<Group>('all');
 	let source = $state<Source>('all');
 	let queryText = $state('');
 
@@ -135,7 +135,7 @@
 	{@html `<script type="application/ld+json">${jsonLd}<\/script>`}
 </svelte:head>
 
-<div class="mx-auto max-w-5xl px-5 py-10">
+<div class="mx-auto max-w-6xl px-5 py-10">
 	<header class="mb-6">
 		<h1 class="text-display mb-2">{t('nav.books')}</h1>
 		<p class="text-body text-muted">{t('books.tagline')}</p>
@@ -273,7 +273,7 @@
 					<span class="text-small font-normal opacity-60">{g.books.length}</span>
 				</h2>
 				{#if view === 'grid'}
-					<div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+					<div class="grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
 						{#each g.books as book (book.slug)}
 							<BookCard {book} />
 						{/each}
@@ -288,7 +288,7 @@
 			</section>
 		{/each}
 	{:else if view === 'grid'}
-		<div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+		<div class="grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
 			{#each sorted as book (book.slug)}
 				<BookCard {book} showAuthor />
 			{/each}
