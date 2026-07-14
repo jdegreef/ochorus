@@ -9,7 +9,9 @@
 		"preview": "vite preview",
 		"paraglide": "paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide",
 		"prepare": "npm run paraglide && svelte-kit sync || echo ''",
-		"check": "npm run paraglide && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json"
+		"check": "npm run paraglide && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"test": "vitest run",
+		"test:watch": "vitest"
 	},
 	"devDependencies": {
 		"@inlang/paraglide-js": "^2.21.0",
@@ -18,11 +20,13 @@
 		"@sveltejs/vite-plugin-svelte": "^7.1.2",
 		"@tailwindcss/vite": "^4.3.1",
 		"@types/node": "^25.9.3",
+		"jsdom": "^29.1.1",
 		"svelte": "^5.56.1",
 		"svelte-check": "^4.6.0",
 		"tailwindcss": "^4.3.1",
 		"typescript": "^6.0.3",
-		"vite": "^8.0.16"
+		"vite": "^8.0.16",
+		"vitest": "^4.1.10"
 	},
 	"dependencies": {
 		"@fontsource-variable/fraunces": "^5.2.9",
