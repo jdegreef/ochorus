@@ -1,0 +1,459 @@
+"""Admin dashboard API — content inventory (stats, per-language, coverage)."""
+
+from __future__ import annotations
+
+from django.db.models import Count, Q, Sum
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from accounts.permissions import IsAdminEmail
+
+from ..models import Author, AuthorTranslation, Book, Chapter, Plan, Sermon
+from ..views import _language_entry
+
+
+class AdminStatsView(APIView):
+    """Library-wide content statistics for the admin dashboard."""
+
+    permission_classes = [IsAdminEmail]
+
+    def get(self, request):
+        return Response(
+            {
+                "totals": self._totals(),
+                "languages": self._languages(),
+                "source_types": self._source_types(),
+                "author_translations": self._author_translations(),
+                "attention": self._attention(),
+                "recent_books": self._recent_books(),
+            }
+        )
+
+    # -- sections --------------------------------------------------------------
+
+    def _totals(self) -> dict:
+        book_agg = Book.objects.aggregate(
+            total=Count("id"),
+            published=Count("id", filter=Q(is_published=True)),
+        )
+        sermon_agg = Sermon.objects.aggregate(
+            total=Count("id"),
+            published=Count("id", filter=Q(is_published=True)),
+            words=Sum("word_count"),
+        )
+        plan_agg = Plan.objects.aggregate(
+            total=Count("id"),
+            published=Count("id", filter=Q(is_published=True)),
+        )
+        chapter_agg = Chapter.objects.aggregate(
+            total=Count("id"), words=Sum("word_count")
+        )
+        # Distinct canonical works: one per slug regardless of how many languages
+        # it's published in.
+        works = Book.objects.values("slug").distinct().count()
+
+        chapter_words = chapter_agg["words"] or 0
+        sermon_words = sermon_agg["words"] or 0
+        return {
+            "works": works,
+            "books": book_agg["total"],
+            "published_books": book_agg["published"],
+            "unpublished_books": book_agg["total"] - book_agg["published"],
+            "chapters": chapter_agg["total"],
+            "sermons": sermon_agg["total"],
+            "published_sermons": sermon_agg["published"],
+            "plans": plan_agg["total"],
+            "published_plans": plan_agg["published"],
+            "authors": Author.objects.count(),
+            "authors_with_bio": Author.objects.exclude(bio="").count(),
+            "languages": Book.objects.values("language").distinct().count(),
+            "words": chapter_words + sermon_words,
+            "chapter_words": chapter_words,
+            "sermon_words": sermon_words,
+        }
+
+    def _languages(self) -> list[dict]:
+        """Per-language content breakdown, one row per language code that has
+        any book, sermon or plan. Merged from four grouped queries."""
+        rows: dict[str, dict] = {}
+
+        def row(code: str) -> dict:
+            if code not in rows:
+                entry = _language_entry(code)
+                entry.update(
+                    {
+                        "books": 0,
+                        "published_books": 0,
+                        "chapters": 0,
+                        "sermons": 0,
+                        "plans": 0,
+                        "bios": 0,
+                        "words": 0,
+                        "source_types": {
+                            "public_domain": 0,
+                            "ai_reviewed": 0,
+                            "ai_unreviewed": 0,
+                        },
+                    }
+                )
+                rows[code] = entry
+            return rows[code]
+
+        for r in (
+            Book.objects.values("language", "source_type").annotate(n=Count("id"))
+        ):
+            entry = row(r["language"])
+            entry["books"] += r["n"]
+            st = entry["source_types"]
+            st[r["source_type"]] = st.get(r["source_type"], 0) + r["n"]
+
+        for r in (
+            Book.objects.filter(is_published=True)
+            .values("language")
+            .annotate(n=Count("id"))
+        ):
+            row(r["language"])["published_books"] = r["n"]
+
+        for r in (
+            Chapter.objects.values("book__language").annotate(
+                n=Count("id"), words=Sum("word_count")
+            )
+        ):
+            entry = row(r["book__language"])
+            entry["chapters"] = r["n"]
+            entry["words"] += r["words"] or 0
+
+        for r in Sermon.objects.values("language").annotate(
+            n=Count("id"), words=Sum("word_count")
+        ):
+            entry = row(r["language"])
+            entry["sermons"] = r["n"]
+            entry["words"] += r["words"] or 0
+
+        for r in Plan.objects.values("language").annotate(n=Count("id")):
+            row(r["language"])["plans"] = r["n"]
+
+        # Translated long-form (bio_html) author biographies, per language. The
+        # English row counts the canonical authors that have one.
+        for r in (
+            AuthorTranslation.objects.exclude(bio_html="")
+            .values("language")
+            .annotate(n=Count("id"))
+        ):
+            row(r["language"])["bios"] = r["n"]
+        en_bios = Author.objects.exclude(bio_html="").count()
+        if en_bios:
+            row("en")["bios"] = en_bios
+
+        return sorted(
+            rows.values(),
+            key=lambda e: (e["code"] != "en", -e["books"], e["code"]),
+        )
+
+    def _source_types(self) -> dict:
+        counts = {
+            r["source_type"]: r["n"]
+            for r in Book.objects.values("source_type").annotate(n=Count("id"))
+        }
+        return {
+            "public_domain": counts.get("public_domain", 0),
+            "ai_reviewed": counts.get("ai_reviewed", 0),
+            "ai_unreviewed": counts.get("ai_unreviewed", 0),
+        }
+
+    def _author_translations(self) -> dict:
+        agg = AuthorTranslation.objects.aggregate(
+            total=Count("id"),
+            reviewed=Count("id", filter=Q(reviewed=True)),
+        )
+        total = agg["total"] or 0
+        reviewed = agg["reviewed"] or 0
+        return {"total": total, "reviewed": reviewed, "unreviewed": total - reviewed}
+
+    def _attention(self) -> dict:
+        """Content-health signals worth surfacing at a glance."""
+        return {
+            "unpublished_books": Book.objects.filter(is_published=False).count(),
+            "unpublished_sermons": Sermon.objects.filter(is_published=False).count(),
+            "unreviewed_translations": Book.objects.filter(
+                source_type=Book.SourceType.AI_UNREVIEWED
+            ).count(),
+            "authors_without_bio": Author.objects.filter(bio="").count(),
+            "empty_chapters": Chapter.objects.filter(word_count=0).count(),
+        }
+
+    def _recent_books(self, limit: int = 8) -> list[dict]:
+        books = (
+            Book.objects.select_related("author")
+            .order_by("-created_at")[:limit]
+        )
+        return [
+            {
+                "slug": b.slug,
+                "title": b.title,
+                "language": b.language,
+                "author": b.author.name,
+                "source_type": b.source_type,
+                "is_published": b.is_published,
+                "created_at": b.created_at.isoformat(),
+            }
+            for b in books
+        ]
+
+
+# How many "next to work on" items to surface per content type.
+TODO_LIMIT = 4
+
+
+class AdminLanguageDetailView(APIView):
+    """Per-language drill-down: what's translated into a language, and the next
+    few items to translate next.
+
+    "Present" lists everything published (or drafted) in the language. The
+    "todo" lists are the highest-priority English works (by ``sort_order``) that
+    do *not* yet exist in the language — the natural next targets for the
+    translate-book / write-biography pipelines. English is the source language,
+    so it has no todo lists.
+    """
+
+    permission_classes = [IsAdminEmail]
+
+    def get(self, request, code):
+        code = code.lower()
+        return Response(
+            {
+                "language": _language_entry(code),
+                "is_source": code == "en",
+                "english_counts": self._english_counts(),
+                "books": self._books(code),
+                "sermons": self._sermons(code),
+                "plans": self._plans(code),
+                "bios": self._bios(code),
+                "todo": {
+                    "books": self._books_todo(code),
+                    "sermons": self._sermons_todo(code),
+                    "plans": self._plans_todo(code),
+                    "bios": self._bios_todo(code),
+                },
+            }
+        )
+
+    # -- present ---------------------------------------------------------------
+
+    def _books(self, code) -> list[dict]:
+        books = (
+            Book.objects.filter(language=code)
+            .select_related("author")
+            .annotate(num_chapters=Count("chapters"))
+            .order_by("sort_order", "title")
+        )
+        return [
+            {
+                "slug": b.slug,
+                "title": b.title,
+                "author": b.author.name,
+                "chapters": b.num_chapters,
+                "source_type": b.source_type,
+                "is_published": b.is_published,
+            }
+            for b in books
+        ]
+
+    def _sermons(self, code) -> list[dict]:
+        sermons = (
+            Sermon.objects.filter(language=code)
+            .select_related("author")
+            .order_by("sort_order", "title")
+        )
+        return [
+            {
+                "slug": s.slug,
+                "title": s.title,
+                "author": s.author.name,
+                "word_count": s.word_count,
+                "is_published": s.is_published,
+            }
+            for s in sermons
+        ]
+
+    def _plans(self, code) -> list[dict]:
+        plans = (
+            Plan.objects.filter(language=code)
+            .annotate(num_days=Count("days"))
+            .order_by("sort_order", "title")
+        )
+        return [
+            {
+                "slug": p.slug,
+                "title": p.title,
+                "days": p.num_days,
+                "is_published": p.is_published,
+            }
+            for p in plans
+        ]
+
+    def _bios(self, code) -> list[dict]:
+        """Authors whose long-form (bio_html) biography exists in this language."""
+        if code == "en":
+            authors = Author.objects.exclude(bio_html="").order_by("name")
+            return [
+                {"slug": a.slug, "name": a.name, "reviewed": True} for a in authors
+            ]
+        trs = (
+            AuthorTranslation.objects.filter(language=code)
+            .exclude(bio_html="")
+            .select_related("author")
+            .order_by("author__name")
+        )
+        return [
+            {"slug": t.author.slug, "name": t.author.name, "reviewed": t.reviewed}
+            for t in trs
+        ]
+
+    # -- next to work on -------------------------------------------------------
+
+    def _books_todo(self, code) -> list[dict]:
+        if code == "en":
+            return []
+        have = set(Book.objects.filter(language=code).values_list("slug", flat=True))
+        qs = (
+            Book.objects.filter(language="en", is_published=True)
+            .exclude(slug__in=have)
+            .select_related("author")
+            .order_by("sort_order", "title")[:TODO_LIMIT]
+        )
+        return [
+            {"slug": b.slug, "title": b.title, "author": b.author.name} for b in qs
+        ]
+
+    def _sermons_todo(self, code) -> list[dict]:
+        if code == "en":
+            return []
+        have = set(Sermon.objects.filter(language=code).values_list("slug", flat=True))
+        qs = (
+            Sermon.objects.filter(language="en", is_published=True)
+            .exclude(slug__in=have)
+            .select_related("author")
+            .order_by("sort_order", "title")[:TODO_LIMIT]
+        )
+        return [
+            {"slug": s.slug, "title": s.title, "author": s.author.name} for s in qs
+        ]
+
+    def _plans_todo(self, code) -> list[dict]:
+        if code == "en":
+            return []
+        have = set(Plan.objects.filter(language=code).values_list("slug", flat=True))
+        qs = (
+            Plan.objects.filter(language="en", is_published=True)
+            .exclude(slug__in=have)
+            .order_by("sort_order", "title")[:TODO_LIMIT]
+        )
+        return [{"slug": p.slug, "title": p.title} for p in qs]
+
+    def _bios_todo(self, code) -> list[dict]:
+        if code == "en":
+            return []
+        translated = set(
+            AuthorTranslation.objects.filter(language=code)
+            .exclude(bio_html="")
+            .values_list("author__slug", flat=True)
+        )
+        qs = (
+            Author.objects.exclude(bio_html="")
+            .exclude(slug__in=translated)
+            .order_by("name")[:TODO_LIMIT]
+        )
+        return [{"slug": a.slug, "name": a.name} for a in qs]
+
+    def _english_counts(self) -> dict:
+        return {
+            "books": Book.objects.filter(language="en", is_published=True).count(),
+            "sermons": Sermon.objects.filter(language="en", is_published=True).count(),
+            "plans": Plan.objects.filter(language="en", is_published=True).count(),
+            "bios": Author.objects.exclude(bio_html="").count(),
+        }
+
+
+class AdminCoverageView(APIView):
+    """Translation-coverage matrices: every canonical work (row) × language
+    (column), so gaps across the whole library are visible at a glance.
+
+    Books, sermons and plans each get their own matrix but share one column set
+    (every language present in any of them, English first). A book cell carries
+    its ``source_type``; sermon/plan cells are simply "present" (those models
+    have no source_type). A missing language is absent from the row's ``cells``.
+    """
+
+    permission_classes = [IsAdminEmail]
+
+    def get(self, request):
+        codes = self._language_codes()
+        return Response(
+            {
+                "languages": [_language_entry(c) for c in codes],
+                "books": self._book_rows(),
+                "sermons": self._sermon_rows(),
+                "plans": self._plan_rows(),
+            }
+        )
+
+    def _language_codes(self) -> list[str]:
+        codes: set[str] = set()
+        for model in (Book, Sermon, Plan):
+            codes.update(model.objects.values_list("language", flat=True).distinct())
+        return sorted(codes, key=lambda c: (c != "en", c))
+
+    def _rows(self, records, cell_value, *, with_author: bool) -> list[dict]:
+        """Collapse per-(slug, language) records into one row per slug.
+
+        ``records`` is an iterable of dicts with slug/language/title/sort_order
+        (and author__name when ``with_author``). The canonical title/author is
+        taken from the English row when present, else the first seen.
+        """
+        rows: dict[str, dict] = {}
+        for r in records:
+            slug = r["slug"]
+            row = rows.get(slug)
+            is_en = r["language"] == "en"
+            if row is None:
+                row = rows[slug] = {
+                    "slug": slug,
+                    "title": r["title"],
+                    "sort_order": r["sort_order"],
+                    "cells": {},
+                    "_have_en": False,
+                }
+                if with_author:
+                    row["author"] = r["author__name"]
+            # Prefer the English row's display metadata.
+            if is_en and not row["_have_en"]:
+                row["title"] = r["title"]
+                row["sort_order"] = r["sort_order"]
+                if with_author:
+                    row["author"] = r["author__name"]
+                row["_have_en"] = True
+            row["cells"][r["language"]] = cell_value(r)
+        ordered = sorted(rows.values(), key=lambda r: (r["sort_order"], r["title"]))
+        for r in ordered:
+            r.pop("sort_order")
+            r.pop("_have_en")
+        return ordered
+
+    def _book_rows(self) -> list[dict]:
+        records = Book.objects.select_related("author").values(
+            "slug", "language", "source_type", "title", "author__name", "sort_order"
+        )
+        return self._rows(records, lambda r: r["source_type"], with_author=True)
+
+    def _sermon_rows(self) -> list[dict]:
+        records = Sermon.objects.select_related("author").values(
+            "slug", "language", "title", "author__name", "sort_order"
+        )
+        return self._rows(records, lambda r: "present", with_author=True)
+
+    def _plan_rows(self) -> list[dict]:
+        records = Plan.objects.values("slug", "language", "title", "sort_order")
+        return self._rows(records, lambda r: "present", with_author=False)
+
+
