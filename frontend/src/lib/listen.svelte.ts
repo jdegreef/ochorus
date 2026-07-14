@@ -70,13 +70,6 @@ class Listen {
 		speechSynthesis.addEventListener?.('voiceschanged', load);
 	}
 
-	/** Voices matching the chapter's language, or every voice if none do. */
-	get matchingVoices(): SpeechSynthesisVoice[] {
-		const prefix = this.#lang.toLowerCase().split('-')[0];
-		const match = this.voices.filter((v) => v.lang.toLowerCase().startsWith(prefix));
-		return match.length ? match : this.voices;
-	}
-
 	/**
 	 * The best voices for a language (BCP-47 prefix), capped — for the Settings
 	 * voice picker. The browser's raw list is long, device-dependent, and full of
@@ -177,19 +170,6 @@ class Listen {
 			u.lang = voice.lang;
 		}
 		speechSynthesis.speak(u);
-	}
-
-	/** All available voices grouped by BCP-47 language tag, for a settings picker. */
-	get voicesByLang(): { lang: string; voices: SpeechSynthesisVoice[] }[] {
-		const groups = new Map<string, SpeechSynthesisVoice[]>();
-		for (const v of this.voices) {
-			const list = groups.get(v.lang) ?? [];
-			list.push(v);
-			groups.set(v.lang, list);
-		}
-		return [...groups.entries()]
-			.map(([lang, voices]) => ({ lang, voices: voices.sort((a, b) => a.name.localeCompare(b.name)) }))
-			.sort((a, b) => a.lang.localeCompare(b.lang));
 	}
 
 	/** Apply a rate/voice change immediately by re-speaking the paragraph. */
