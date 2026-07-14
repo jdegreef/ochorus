@@ -85,7 +85,7 @@ def parse_book_page(slug: str) -> dict:
     description = ""
     m = re.search(r"Description:\s*(?:Book Overview)?\s*(.+?)(?:Download|Related|Newsletter|$)", text)
     if m:
-        description = m.group(1).strip()[:1500]
+        description = _clean_description(m.group(1).strip())[:1500]
 
     return {
         "slug": slug,
@@ -96,6 +96,30 @@ def parse_book_page(slug: str) -> dict:
         "description": description,
         "source_url": url,
     }
+
+
+_FOOTER_RE = re.compile(r"\s*Back Ochorus\s*‍?We identify great Christian books.*$", re.S)
+
+
+def _clean_description(desc: str) -> str:
+    """Drop the site-footer run the flat-text scrape drags in after the
+    description ("Back Ochorus ‍We identify great Christian books… Explore
+    About Us Books Biographies Contact"), plus the often-empty "Contents"
+    heading before it. A genuine contents list is kept as "Contents: …".
+    (Migrations 0029/0030 cleaned the rows imported before this existed.)"""
+    desc = _FOOTER_RE.sub("", desc).rstrip()
+    bare = re.search(r"\s*Contents\s*$", desc)
+    idx = desc.rfind(" Contents ")
+    if bare:
+        desc = desc[: bare.start()].rstrip()
+    elif idx != -1:
+        head, tail = desc[:idx].rstrip(), desc[idx + len(" Contents ") :].strip()
+        sep = " Contents: " if head.endswith((".", "!", "?")) else ". Contents: "
+        desc = head + sep + tail
+    desc = desc.replace("?.", "?").replace(" .", ".")
+    if desc and not desc.endswith((".", "!", "?", "”")):
+        desc += "."
+    return desc
 
 
 def _field(text: str, name: str) -> str:
