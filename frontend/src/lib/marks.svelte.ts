@@ -1,10 +1,9 @@
-import { browser } from '$app/environment';
 import { readingSync } from './readingSync';
+import { readJSON, writeJSON } from './persisted';
 import {
 	MARKS_KEY,
 	chapterKey,
 	parseChapterKey,
-	type ChapterMarks,
 	type MarksStore,
 	type Mark
 } from './reading-schema';
@@ -50,26 +49,19 @@ function fromLegacy(entry: LegacyEntry): Mark[] {
 
 /** Read the store, migrating any legacy chapter entries in place. */
 function readAll(): MarksStore {
-	if (!browser) return {};
-	try {
-		const raw = JSON.parse(localStorage.getItem(MARKS_KEY) || '{}');
-		let migrated = false;
-		for (const [key, entry] of Object.entries<Record<string, unknown>>(raw)) {
-			if (entry && !Array.isArray((entry as unknown as ChapterMarks).m) && ('h' in entry || 'n' in entry)) {
-				raw[key] = { m: fromLegacy(entry as LegacyEntry) };
-				migrated = true;
-			}
+	const raw = readJSON<MarksStore>(MARKS_KEY, {});
+	let migrated = false;
+	for (const [key, entry] of Object.entries(raw)) {
+		if (entry && !Array.isArray(entry.m) && ('h' in entry || 'n' in entry)) {
+			raw[key] = { m: fromLegacy(entry as unknown as LegacyEntry) };
+			migrated = true;
 		}
-		if (migrated) localStorage.setItem(MARKS_KEY, JSON.stringify(raw));
-		return raw;
-	} catch {
-		return {};
 	}
+	if (migrated) writeJSON(MARKS_KEY, raw);
+	return raw;
 }
 
-function writeAll(store: MarksStore) {
-	if (browser) localStorage.setItem(MARKS_KEY, JSON.stringify(store));
-}
+const writeAll = (store: MarksStore) => writeJSON(MARKS_KEY, store);
 
 export interface Segment {
 	p: number;
