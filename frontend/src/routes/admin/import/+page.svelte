@@ -122,7 +122,7 @@
 		preview.chapters = preview.chapters.filter((_, idx) => idx !== i);
 		// Keep the warning "Ch N" references aligned: drop the removed chapter's
 		// warnings and shift indices above it down by one.
-		preview.warnings = preview.warnings
+		preview.warnings = (preview.warnings ?? [])
 			.filter((w) => w.chapter_index !== i)
 			.map((w) =>
 				w.chapter_index !== null && w.chapter_index > i
@@ -316,12 +316,13 @@
 				</span>
 			</div>
 
-			{#if preview.warnings.length}
-				<!-- Content-quality heads-up from the import (advisory, not blocking). -->
+			{#if preview.warnings?.length}
+				<!-- Content-quality heads-up on the parsed file (advisory, not blocking).
+				     A parse-time snapshot: it doesn't re-run as you edit the fields below. -->
 				<div class="mb-4 rounded-sm border border-border bg-bg p-3">
 					<p class="mb-2 text-small font-semibold text-text">
-						{preview.warnings.length}
-						{preview.warnings.length === 1 ? 'thing' : 'things'} worth a look before publishing
+						From the imported file · {preview.warnings.length}
+						{preview.warnings.length === 1 ? 'thing' : 'things'} worth a look
 					</p>
 					<ul class="space-y-1.5">
 						{#each preview.warnings as w (w.check + '-' + (w.chapter_index ?? 'book'))}
@@ -337,7 +338,7 @@
 						{/each}
 					</ul>
 					<p class="mt-2 text-[0.72rem] text-muted">
-						These are suggestions — fix the titles below, or publish as-is.
+						Fix the titles below, or publish as-is.
 					</p>
 				</div>
 			{/if}

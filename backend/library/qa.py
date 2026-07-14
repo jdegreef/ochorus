@@ -58,35 +58,47 @@ def chapter_flags(title, wc, body_text, body_html, has_next) -> list[str]:
     return flags
 
 
-# flag → (stable check id for the preview, severity)
-_FLAG_MAP = {
-    "generic-title": ("generic_title", "high"),
-    "empty": ("empty_body", "high"),
-    "mid-split": ("mid_sentence_split", "high"),
-    "tiny": ("tiny_chapter", "medium"),
-    "fragmented": ("fragmented_paragraphs", "medium"),
-    "no-dropcap": ("missing_drop_cap", "medium"),
-    "giant": ("giant_chapter", "low"),
+# One table maps each chapter_flags flag → (preview check id, severity, message
+# builder). Keeping the id/severity/message together means adding a flag is a
+# single edit, and an unmapped flag is skipped (below) rather than crashing.
+_FLAG_INFO = {
+    "generic-title": (
+        "generic_title",
+        "high",
+        lambda w, p: "No real chapter title was captured — give it one so the contents and search read well.",
+    ),
+    "empty": (
+        "empty_body",
+        "high",
+        lambda w, p: "This chapter has no readable text.",
+    ),
+    "mid-split": (
+        "mid_sentence_split",
+        "high",
+        lambda w, p: "Chapter doesn't end on a sentence — it may run into the next one.",
+    ),
+    "tiny": (
+        "tiny_chapter",
+        "medium",
+        lambda w, p: f"Only {w} words — may be a split heading or a stray fragment.",
+    ),
+    "fragmented": (
+        "fragmented_paragraphs",
+        "medium",
+        lambda w, p: f"Short average paragraph (~{w // max(p, 1)} words) — line breaks may not have merged.",
+    ),
+    "no-dropcap": (
+        "missing_drop_cap",
+        "medium",
+        lambda w, p: "Opens with a lowercase letter — a drop-cap capital may have been lost.",
+    ),
+    "giant": (
+        "giant_chapter",
+        "low",
+        lambda w, p: f"{w:,} words — unusually long; a chapter break may have been missed.",
+    ),
 }
 _SEVERITY_ORDER = {"high": 0, "medium": 1, "low": 2}
-
-
-def _flag_message(flag: str, words: int, paras: int) -> str:
-    if flag == "generic-title":
-        return "No real chapter title was captured — give it one so the contents and search read well."
-    if flag == "empty":
-        return "This chapter has no readable text."
-    if flag == "mid-split":
-        return "Chapter doesn't end on a sentence — it may run into the next one."
-    if flag == "tiny":
-        return f"Only {words} words — may be a split heading or a stray fragment."
-    if flag == "giant":
-        return f"{words:,} words — unusually long; a chapter break may have been missed."
-    if flag == "fragmented":
-        return f"Short average paragraph (~{words // max(paras, 1)} words) — line breaks may not have merged."
-    if flag == "no-dropcap":
-        return "Opens with a lowercase letter — a drop-cap capital may have been lost."
-    return flag
 
 
 def qa_report(chapters: list[dict]) -> list[dict]:
@@ -121,14 +133,17 @@ def qa_report(chapters: list[dict]) -> list[dict]:
         paras = html.count("<p")
         flags = chapter_flags(title, words, text_of(html), html, has_next=(i < n - 1))
         for flag in flags:
-            check, severity = _FLAG_MAP[flag]
+            info = _FLAG_INFO.get(flag)
+            if info is None:  # a flag with no preview mapping — skip, never crash
+                continue
+            check, severity, message = info
             warnings.append(
                 {
                     "check": check,
                     "severity": severity,
                     "chapter_index": i,
                     "title": label,
-                    "message": _flag_message(flag, words, paras),
+                    "message": message(words, paras),
                 }
             )
         if title:
@@ -142,7 +157,7 @@ def qa_report(chapters: list[dict]) -> list[dict]:
                     "check": "duplicate_title",
                     "severity": "medium",
                     "chapter_index": first,
-                    "title": chapters[first].get("title") or "",
+                    "title": (chapters[first].get("title") or "").strip(),
                     "message": f"{len(idxs)} chapters share this title — sub-headings may be mistaken for chapters.",
                 }
             )
