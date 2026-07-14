@@ -181,6 +181,67 @@ class CreateTests(TestCase):
             ui.create_sermon(self.author, "Blank", "<script>x</script>", "en")
         self.assertFalse(Sermon.objects.filter(title="Blank").exists())
 
+    def test_create_book_with_metadata(self):
+        book = ui.create_book(
+            self.author,
+            "Rich",
+            [{"title": "One", "html": f"<p>{BODY}</p>"}],
+            "en",
+            subtitle="A Subtitle",
+            cover_color="#3b5bdb",
+            cover_url="https://example.org/c.jpg",
+            publication_year=1885,
+            attribution="Public domain — CCEL scan",
+        )
+        self.assertEqual(book.subtitle, "A Subtitle")
+        self.assertEqual(book.cover_color, "#3b5bdb")
+        self.assertEqual(book.cover_url, "https://example.org/c.jpg")
+        self.assertEqual(book.publication_year, 1885)
+        self.assertEqual(book.attribution, "Public domain — CCEL scan")
+
+    def test_create_book_metadata_is_validated(self):
+        # Bad hex, non-http cover url, and out-of-range year are dropped, not stored.
+        book = ui.create_book(
+            self.author,
+            "Bad Meta",
+            [{"title": "One", "html": f"<p>{BODY}</p>"}],
+            "en",
+            cover_color="red; drop table",
+            cover_url="javascript:alert(1)",
+            publication_year=99999,
+        )
+        self.assertEqual(book.cover_color, "")
+        self.assertEqual(book.cover_url, "")
+        self.assertIsNone(book.publication_year)
+
+    def test_clean_hex_only_accepts_valid_css_lengths(self):
+        self.assertEqual(ui._clean_hex("#123"), "#123")  # 3
+        self.assertEqual(ui._clean_hex("#1234"), "#1234")  # 4
+        self.assertEqual(ui._clean_hex("#112233"), "#112233")  # 6
+        self.assertEqual(ui._clean_hex("#11223344"), "#11223344")  # 8
+        self.assertEqual(ui._clean_hex("#12345"), "")  # 5 — invalid CSS hex
+        self.assertEqual(ui._clean_hex("#1234567"), "")  # 7 — invalid CSS hex
+
+    def test_http_url_requires_a_real_scheme(self):
+        self.assertEqual(ui._http_url("httpfoo"), "")  # startswith("http") is not enough
+        self.assertEqual(ui._http_url("httpx://evil"), "")
+        self.assertEqual(ui._http_url("https://ok.example/x.jpg"), "https://ok.example/x.jpg")
+
+    def test_create_book_tolerates_non_string_metadata(self):
+        # A malformed payload sending a number/None must not crash create_book.
+        book = ui.create_book(
+            self.author,
+            "Coerced",
+            [{"title": "One", "html": f"<p>{BODY}</p>"}],
+            "en",
+            subtitle=1885,  # int, not str
+            cover_color=123,
+            attribution=None,
+        )
+        self.assertEqual(book.subtitle, "1885")
+        self.assertEqual(book.cover_color, "")
+        self.assertEqual(book.attribution, "")
+
 
 @override_settings(DEBUG=True)  # bypasses the admin email gate (see permissions)
 class EndpointTests(TestCase):
@@ -257,6 +318,63 @@ class EndpointTests(TestCase):
         self.assertIn("en", codes)
         self.assertIn("fr", codes)  # a supported language with no content yet
 
+    def test_publish_book_persists_metadata(self):
+        r = self.client.post(
+            "/api/admin/import/publish/",
+            {
+                "kind": "book",
+                "author_slug": "e-writer",
+                "title": "Meta Book",
+                "subtitle": "The Sub",
+                "cover_color": "#112233",
+                "publication_year": 1900,
+                "attribution": "PD",
+                "chapters": [{"title": "One", "html": f"<p>{BODY}</p>"}],
+            },
+            format="json",
+        )
+        self.assertEqual(r.status_code, 201)
+        book = Book.objects.get(slug=r.json()["slug"])
+        self.assertEqual(book.subtitle, "The Sub")
+        self.assertEqual(book.cover_color, "#112233")
+        self.assertEqual(book.publication_year, 1900)
+        self.assertEqual(book.attribution, "PD")
+
+
+@override_settings(DEBUG=True)  # bypasses the admin email gate (see permissions)
+class AuthorCreateTests(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+
+    def test_create_author(self):
+        r = self.client.post("/api/admin/authors/", {"name": "John Owen"}, format="json")
+        self.assertEqual(r.status_code, 201)
+        body = r.json()
+        self.assertEqual(body["slug"], "john-owen")
+        self.assertEqual(body["book_count"], 0)
+        self.assertTrue(Author.objects.filter(slug="john-owen").exists())
+
+    def test_create_author_dedupes_slug(self):
+        Author.objects.create(slug="john-owen", name="John Owen")
+        r = self.client.post("/api/admin/authors/", {"name": "John Owen"}, format="json")
+        self.assertEqual(r.status_code, 201)
+        self.assertEqual(r.json()["slug"], "john-owen-2")
+
+    def test_create_author_requires_name(self):
+        r = self.client.post("/api/admin/authors/", {"name": "   "}, format="json")
+        self.assertEqual(r.status_code, 400)
+
+    def test_create_author_long_name_slug_within_limit(self):
+        # A very long name, created twice so the second collides, must not
+        # overflow SlugField(120) when the -N suffix is appended.
+        long_name = "Reverend " + ("Wordsworth " * 40)
+        r1 = self.client.post("/api/admin/authors/", {"name": long_name}, format="json")
+        r2 = self.client.post("/api/admin/authors/", {"name": long_name}, format="json")
+        self.assertEqual((r1.status_code, r2.status_code), (201, 201))
+        self.assertLessEqual(len(r1.json()["slug"]), 120)
+        self.assertLessEqual(len(r2.json()["slug"]), 120)
+        self.assertNotEqual(r1.json()["slug"], r2.json()["slug"])
+
 
 @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
 class ImportAuthTests(TestCase):
@@ -264,3 +382,4 @@ class ImportAuthTests(TestCase):
         client = APIClient()
         self.assertEqual(client.post("/api/admin/import/parse/").status_code, 401)
         self.assertEqual(client.post("/api/admin/import/publish/").status_code, 401)
+        self.assertEqual(client.post("/api/admin/authors/").status_code, 401)

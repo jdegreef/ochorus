@@ -150,6 +150,7 @@ class BookDetailSerializer(BookListSerializer):
     class Meta(BookListSerializer.Meta):
         fields = BookListSerializer.Meta.fields + [
             "description", "source_url", "pdf_url", "chapters",
+            "publication_year", "attribution",
         ]
 
 

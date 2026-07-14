@@ -1,7 +1,13 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { ApiError, apiFetch, apiFetchRaw } from '$lib/api';
-	import { listAuthors, listImportLanguages, type AuthorBio, type Language } from '$lib/library';
+	import {
+		createAuthor,
+		listAuthors,
+		listImportLanguages,
+		type AuthorBio,
+		type Language
+	} from '$lib/library';
 
 	type Chapter = { title: string; html: string; words: number };
 	type Preview = { kind: 'book' | 'sermon'; chapters: Chapter[]; suggested_title: string };
@@ -20,6 +26,17 @@
 	let scriptureRef = $state('');
 	let sourceUrl = $state('');
 
+	// Optional book metadata, captured at import instead of a separate edit later.
+	let subtitle = $state('');
+	let coverColor = $state('');
+	let coverUrl = $state('');
+	let publicationYear = $state('');
+	let attribution = $state('');
+
+	// Inline "New author…" — create a stub without leaving the page.
+	let addingAuthor = $state(false);
+	let newAuthorName = $state('');
+
 	let busy = $state(false);
 	let error = $state<string | null>(null);
 	let published = $state<Published | null>(null);
@@ -37,6 +54,24 @@
 
 	function pickFile(e: Event) {
 		file = (e.target as HTMLInputElement).files?.[0] ?? null;
+	}
+
+	async function addAuthor() {
+		const name = newAuthorName.trim();
+		if (!name || busy) return; // in-flight guard: a held/double Enter must not double-create
+		busy = true;
+		error = null;
+		try {
+			const a = await createAuthor(name);
+			authors = [...authors, a].sort((x, y) => x.name.localeCompare(y.name));
+			authorSlug = a.slug;
+			addingAuthor = false;
+			newAuthorName = '';
+		} catch (e) {
+			error = errMsg(e, 'Could not add the author.');
+		} finally {
+			busy = false;
+		}
 	}
 
 	function errMsg(e: unknown, fallback: string): string {
@@ -94,6 +129,11 @@
 					? {
 							...base,
 							kind: 'book',
+							subtitle,
+							cover_color: coverColor,
+							cover_url: coverUrl,
+							publication_year: publicationYear,
+							attribution,
 							chapters: preview.chapters.map((c) => ({ title: c.title, html: c.html }))
 						}
 					: {
@@ -120,6 +160,11 @@
 		title = '';
 		scriptureRef = '';
 		sourceUrl = '';
+		subtitle = '';
+		coverColor = '';
+		coverUrl = '';
+		publicationYear = '';
+		attribution = '';
 		error = null;
 	}
 
@@ -143,7 +188,7 @@
 			<h2 class="text-h3 mb-1">Published</h2>
 			<p class="mb-4 text-body text-muted">
 				“{published.title}” is live{#if published.chapters}
-					· {published.chapters} chapters{/if}.
+					· {published.chapters} {published.chapters === 1 ? 'chapter' : 'chapters'}{/if}.
 			</p>
 			<div class="flex flex-wrap justify-center gap-3">
 				<a class="btn btn-primary" href={published.path}>View it</a>
@@ -165,17 +210,48 @@
 				</div>
 			</fieldset>
 
-			<label class="mb-1 block text-small font-semibold text-text" for="author">Author</label>
-			<select
-				id="author"
-				bind:value={authorSlug}
-				class="mb-4 w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
-			>
-				<option value="" disabled>Choose the author…</option>
-				{#each authors as a (a.slug)}
-					<option value={a.slug}>{a.name}</option>
-				{/each}
-			</select>
+			<div class="mb-1 flex items-center justify-between">
+				<label class="text-small font-semibold text-text" for="author">Author</label>
+				<button
+					type="button"
+					class="text-small font-semibold text-accent hover:underline"
+					onclick={() => {
+						addingAuthor = !addingAuthor;
+						error = null;
+					}}
+				>
+					{addingAuthor ? 'Pick existing' : '+ New author'}
+				</button>
+			</div>
+			{#if addingAuthor}
+				<div class="mb-4 flex gap-2">
+					<!-- svelte-ignore a11y_autofocus -->
+					<input
+						bind:value={newAuthorName}
+						placeholder="Author's full name"
+						autofocus
+						disabled={busy}
+						onkeydown={(e) => e.key === 'Enter' && addAuthor()}
+						class="min-w-0 flex-1 rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+					/>
+					<button
+						class="btn btn-primary shrink-0"
+						onclick={addAuthor}
+						disabled={busy || !newAuthorName.trim()}>Add</button
+					>
+				</div>
+			{:else}
+				<select
+					id="author"
+					bind:value={authorSlug}
+					class="mb-4 w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+				>
+					<option value="" disabled>Choose the author…</option>
+					{#each authors as a (a.slug)}
+						<option value={a.slug}>{a.name}</option>
+					{/each}
+				</select>
+			{/if}
 
 			<label class="mb-1 block text-small font-semibold text-text" for="lang">Language</label>
 			<select
@@ -267,6 +343,65 @@
 						breaks in a way the parser recognises.
 					</p>
 				{/if}
+
+				<!-- Optional book metadata, captured here instead of a later edit. -->
+				<div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+					<div>
+						<label class="mb-1 block text-small font-semibold text-text" for="subtitle">
+							Subtitle <span class="font-normal text-muted">(optional)</span>
+						</label>
+						<input id="subtitle" bind:value={subtitle} placeholder="Subtitle" class="w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text" />
+					</div>
+					<div>
+						<label class="mb-1 block text-small font-semibold text-text" for="pubyear">
+							First published <span class="font-normal text-muted">(year)</span>
+						</label>
+						<input
+							id="pubyear"
+							type="number"
+							min="1"
+							max="2100"
+							bind:value={publicationYear}
+							placeholder="e.g. 1885"
+							class="w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+						/>
+					</div>
+					<div>
+						<label class="mb-1 block text-small font-semibold text-text" for="cover">
+							Cover accent <span class="font-normal text-muted">(no image)</span>
+						</label>
+						<div class="flex gap-2">
+							<input
+								id="cover"
+								type="color"
+								bind:value={coverColor}
+								aria-label="Cover accent colour"
+								class="h-9 w-12 shrink-0 rounded-sm border border-border bg-bg"
+							/>
+							<input
+							bind:value={coverColor}
+							placeholder="#3b5bdb"
+							class="min-w-0 flex-1 rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+						/>
+						</div>
+					</div>
+					<div>
+						<label class="mb-1 block text-small font-semibold text-text" for="coverurl">
+							Cover image URL <span class="font-normal text-muted">(optional)</span>
+						</label>
+						<input id="coverurl" bind:value={coverUrl} placeholder="https://…" class="w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text" />
+					</div>
+				</div>
+				<label class="mb-1 mt-3 block text-small font-semibold text-text" for="attr">
+					Attribution / licence note <span class="font-normal text-muted">(optional)</span>
+				</label>
+				<textarea
+					id="attr"
+					bind:value={attribution}
+					rows="2"
+					placeholder="e.g. Public domain — scanned by CCEL"
+					class="w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+				></textarea>
 			{/if}
 
 			<label class="mb-1 mt-4 block text-small font-semibold text-text" for="src">
