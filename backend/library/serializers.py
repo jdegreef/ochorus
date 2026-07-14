@@ -28,6 +28,7 @@ class BookListSerializer(serializers.ModelSerializer):
 
     author = AuthorSerializer(read_only=True)
     chapter_count = serializers.IntegerField(source="num_chapters", read_only=True)
+    word_count = serializers.IntegerField(source="total_words", read_only=True)
 
     class Meta:
         model = Book
@@ -41,6 +42,7 @@ class BookListSerializer(serializers.ModelSerializer):
             "cover_color",
             "cover_url",
             "chapter_count",
+            "word_count",
         ]
 
 
