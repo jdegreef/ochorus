@@ -33,3 +33,6 @@ class Command(BaseCommand):
         # Upsert fixture sermons into an already-seeded DB (new/updated ones).
         self.stdout.write("→ seed_sermons")
         call_command("seed_sermons")
+        # Create/refresh the curated topical shelves.
+        self.stdout.write("→ seed_topics")
+        call_command("seed_topics")

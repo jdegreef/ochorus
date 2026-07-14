@@ -13,6 +13,8 @@ from .views import (
     SearchView,
     SermonDetailView,
     SermonListView,
+    TopicDetailView,
+    TopicListView,
 )
 
 urlpatterns = [
@@ -25,6 +27,8 @@ urlpatterns = [
     path("scripture/", ScriptureView.as_view(), name="scripture"),
     path("plans/", PlanListView.as_view(), name="plan-list"),
     path("plans/<slug:slug>/", PlanDetailView.as_view(), name="plan-detail"),
+    path("topics/", TopicListView.as_view(), name="topic-list"),
+    path("topics/<slug:slug>/", TopicDetailView.as_view(), name="topic-detail"),
     path("books/<slug:slug>/", BookDetailView.as_view(), name="book-detail"),
     path("sermons/<slug:slug>/", SermonDetailView.as_view(), name="sermon-detail"),
     path(

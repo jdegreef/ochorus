@@ -141,6 +141,20 @@
 		<p class="mt-7 max-w-xl text-body text-muted">{book.author.bio}</p>
 	{/if}
 
+	{#if book.topics?.length}
+		<nav class="mt-6 flex flex-wrap items-center gap-2" aria-label={t('topics.title')}>
+			<span class="text-small text-muted">{t('topics.title')}:</span>
+			{#each book.topics as topic (topic.slug)}
+				<a
+					href={localizeHref(`/topics/${topic.slug}`)}
+					class="rounded-full border border-border px-3 py-1 text-small text-muted hover:border-accent hover:text-accent hover:no-underline"
+				>
+					{topic.title}
+				</a>
+			{/each}
+		</nav>
+	{/if}
+
 	<section class="mt-9">
 		<h2 class="mb-3 text-h3">{t('reader.contents')}</h2>
 		<ol class="divide-y divide-border">

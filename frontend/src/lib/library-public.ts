@@ -30,11 +30,17 @@ export interface ChapterToc {
 	word_count: number;
 }
 
+export interface TopicChip {
+	slug: string;
+	title: string;
+}
+
 export interface BookDetail extends BookSummary {
 	description: string;
 	source_url: string;
 	pdf_url: string;
 	chapters: ChapterToc[];
+	topics: TopicChip[];
 }
 
 export interface ChapterNav {
@@ -199,3 +205,27 @@ export const listPlans = (language = 'en') =>
 
 export const getPlan = (slug: string, language = 'en') =>
 	apiFetch<PlanDetail>(`/api/library/plans/${slug}/?language=${language}`);
+
+export interface TopicCover {
+	cover_url: string;
+	cover_color: string;
+	title: string;
+}
+
+export interface TopicSummary {
+	slug: string;
+	title: string;
+	description: string;
+	book_count: number;
+	covers: TopicCover[];
+}
+
+export interface TopicDetail extends TopicSummary {
+	books: BookSummary[];
+}
+
+export const listTopics = (language = 'en') =>
+	apiFetch<TopicSummary[]>(`/api/library/topics/?language=${language}`);
+
+export const getTopic = (slug: string, language = 'en') =>
+	apiFetch<TopicDetail>(`/api/library/topics/${slug}/?language=${language}`);

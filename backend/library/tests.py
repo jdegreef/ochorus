@@ -5,7 +5,17 @@ from django.test import TestCase, override_settings
 from rest_framework.test import APIClient
 
 from .ingest import clean_title
-from .models import Author, Book, Chapter, Plan, PlanDay, Sermon
+from .models import (
+    Author,
+    Book,
+    Chapter,
+    Plan,
+    PlanDay,
+    Sermon,
+    Topic,
+    TopicBook,
+    TopicTranslation,
+)
 from .text import html_to_text
 
 
@@ -247,6 +257,73 @@ class PlanTests(TestCase):
         call_command("seed_plans")
         call_command("seed_plans")
         self.assertEqual(Plan.objects.filter(slug="humility-12-days").count(), 1)
+
+
+class TopicTests(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+        author = Author.objects.create(slug="am", name="Andrew Murray")
+        # Two works, both English + one with a Swahili translation.
+        for slug, title in (("humility-2", "Humility"), ("prayer", "On Prayer Book")):
+            b = Book.objects.create(author=author, slug=slug, language="en", title=title)
+            Chapter.objects.create(book=b, order=1, title="One", body_html="<p>hello there</p>")
+        Book.objects.create(author=author, slug="humility-2", language="sw", title="Unyenyekevu")
+
+        self.topic = Topic.objects.create(slug="prayer", title="On Prayer", description="Pray.")
+        # Curated order deliberately reversed vs. alphabetical, so ordering is testable.
+        TopicBook.objects.create(topic=self.topic, book_slug="prayer", sort_order=0)
+        TopicBook.objects.create(topic=self.topic, book_slug="humility-2", sort_order=1)
+        TopicTranslation.objects.create(
+            topic=self.topic, language="sw", title="Kuhusu Maombi"
+        )
+        # A topic with no member present in English → hidden from the EN shelf.
+        empty = Topic.objects.create(slug="empty", title="Empty", sort_order=1)
+        TopicBook.objects.create(topic=empty, book_slug="does-not-exist")
+        # An unpublished topic is never listed.
+        Topic.objects.create(slug="draft", title="Draft", is_published=False, sort_order=2)
+
+    def test_list_localizes_and_hides_empty_and_unpublished(self):
+        res = self.client.get("/api/library/topics/?language=en")
+        self.assertEqual(res.status_code, 200)
+        slugs = [t["slug"] for t in res.data]
+        self.assertEqual(slugs, ["prayer"])  # empty + draft excluded
+        self.assertEqual(res.data[0]["title"], "On Prayer")
+        self.assertEqual(res.data[0]["book_count"], 2)
+
+    def test_list_localized_title_falls_back_per_language(self):
+        res = self.client.get("/api/library/topics/?language=sw")
+        self.assertEqual(res.status_code, 200)
+        # Swahili has a translation for the title...
+        self.assertEqual(res.data[0]["title"], "Kuhusu Maombi")
+        # ...but only humility-2 exists in Swahili, so the shelf shows one book.
+        self.assertEqual(res.data[0]["book_count"], 1)
+
+    def test_detail_returns_members_in_curated_order(self):
+        res = self.client.get("/api/library/topics/prayer/?language=en")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual([b["slug"] for b in res.data["books"]], ["prayer", "humility-2"])
+        # Book cards carry their chapter counts (annotation wired through).
+        self.assertEqual(res.data["books"][0]["chapter_count"], 1)
+
+    def test_detail_unpublished_is_404(self):
+        self.assertEqual(self.client.get("/api/library/topics/draft/").status_code, 404)
+
+    def test_book_detail_lists_its_topics(self):
+        res = self.client.get("/api/library/books/prayer/?language=en")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["topics"], [{"slug": "prayer", "title": "On Prayer"}])
+
+    def test_seed_topics_idempotent_and_upserts_membership(self):
+        from django.core.management import call_command
+        call_command("seed_topics")
+        call_command("seed_topics")
+        self.assertEqual(Topic.objects.filter(slug="prayer").count(), 1)
+        # The seed's curated prayer membership includes the-inner-chamber.
+        self.assertTrue(
+            TopicBook.objects.filter(
+                topic__slug="prayer", book_slug="the-inner-chamber"
+            ).exists()
+        )
 
 
 class AdminStatsTests(TestCase):

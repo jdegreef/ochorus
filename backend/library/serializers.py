@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Author, Book, Chapter, Plan, PlanDay, Sermon
+from .models import Author, Book, Chapter, Plan, PlanDay, Sermon, Topic
 
 
 class AuthorSerializer(serializers.ModelSerializer):
@@ -145,15 +145,27 @@ class ChapterTocSerializer(serializers.ModelSerializer):
 
 
 class BookDetailSerializer(BookListSerializer):
-    """Book detail — adds description and the chapter table of contents."""
+    """Book detail — adds description, the chapter TOC, and topic chips."""
 
     chapters = ChapterTocSerializer(many=True, read_only=True)
+    topics = serializers.SerializerMethodField()
 
     class Meta(BookListSerializer.Meta):
         fields = BookListSerializer.Meta.fields + [
             "description", "source_url", "pdf_url", "chapters",
-            "publication_year", "attribution",
+            "publication_year", "attribution", "topics",
         ]
+
+    def get_topics(self, obj):
+        """Published topics this work belongs to, localized to the book's
+        language — small chips linking to each topical shelf."""
+        topics = (
+            Topic.objects.filter(is_published=True, entries__book_slug=obj.slug)
+            .prefetch_related("translations")
+            .distinct()
+            .order_by("sort_order", "title")
+        )
+        return [{"slug": t.slug, "title": t.title_for(obj.language)} for t in topics]
 
 
 class ChapterDetailSerializer(serializers.ModelSerializer):
@@ -235,3 +247,70 @@ class PlanDetailSerializer(PlanListSerializer):
             d.book_title = c["book__title"] if c else ""
             d.chapter_title = c["title"] if c else ""
         return PlanDaySerializer(days, many=True).data
+
+
+class TopicListSerializer(serializers.ModelSerializer):
+    """A topical shelf card — localized title/description, member count, and a
+    handful of member covers for the browse page. ``book_count`` and ``covers``
+    are computed against the requested language (see ``TopicListView``)."""
+
+    title = serializers.SerializerMethodField()
+    description = serializers.SerializerMethodField()
+    book_count = serializers.SerializerMethodField()
+    covers = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Topic
+        fields = ["slug", "title", "description", "book_count", "covers"]
+
+    def _language(self):
+        return self.context.get("language", "en")
+
+    def get_title(self, obj):
+        return obj.title_for(self._language())
+
+    def get_description(self, obj):
+        return obj.description_for(self._language())
+
+    def get_book_count(self, obj):
+        return len(self._books(obj))
+
+    def get_covers(self, obj):
+        return [
+            {"cover_url": b.cover_url, "cover_color": b.cover_color, "title": b.title}
+            for b in self._books(obj)[:4]
+        ]
+
+    def _books(self, obj):
+        """Member books present in the requested language, in the topic's curated
+        order. ``obj.books_in_language`` is attached by the view (one query for
+        all topics); fall back to a direct query if it isn't."""
+        cached = getattr(obj, "books_in_language", None)
+        if cached is not None:
+            return cached
+        from django.db.models import Count, Sum
+
+        from .models import Book
+
+        order = [e.book_slug for e in obj.entries.all()]
+        by_slug = {
+            b.slug: b
+            for b in Book.objects.filter(
+                slug__in=order, language=self._language(), is_published=True
+            )
+            .select_related("author")
+            .annotate(num_chapters=Count("chapters"), total_words=Sum("chapters__word_count"))
+        }
+        return [by_slug[s] for s in order if s in by_slug]
+
+
+class TopicDetailSerializer(TopicListSerializer):
+    """A topic page — the shelf metadata plus the full list of member books."""
+
+    books = serializers.SerializerMethodField()
+
+    class Meta(TopicListSerializer.Meta):
+        fields = TopicListSerializer.Meta.fields + ["books"]
+
+    def get_books(self, obj):
+        return BookListSerializer(self._books(obj), many=True).data
