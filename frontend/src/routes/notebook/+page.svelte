@@ -24,6 +24,32 @@
 	let books = $state<BookBlock[]>([]);
 	const isEmpty = $derived(!loading && books.length === 0);
 
+	// Live search across every book, chapter title, highlight, note and bookmark.
+	let query = $state('');
+	const q = $derived(query.trim().toLowerCase());
+	const filtered = $derived.by(() => {
+		if (!q) return books;
+		const hit = (s: string) => s.toLowerCase().includes(q);
+		return books
+			.map((bk) => {
+				const bookHit = hit(bk.title) || hit(bk.author);
+				const bookmarks = bookHit
+					? bk.bookmarks
+					: bk.bookmarks.filter((b) => hit(b.snippet) || hit(b.title));
+				const chapters = bk.chapters
+					.map((ch) => ({
+						...ch,
+						highlights: bookHit
+							? ch.highlights
+							: ch.highlights.filter((h) => hit(h.text) || hit(h.note ?? '') || hit(ch.title))
+					}))
+					.filter((ch) => ch.highlights.length);
+				return { ...bk, bookmarks, chapters };
+			})
+			.filter((bk) => bk.bookmarks.length || bk.chapters.length);
+	});
+	const noMatches = $derived(!loading && books.length > 0 && q.length > 0 && filtered.length === 0);
+
 	// Split a chapter's cleaned HTML into its top-level blocks' text — the same
 	// blocks the reader indexes marks against (p = block, s/e = chars in it).
 	function paragraphs(bodyHtml: string): string[] {
@@ -116,7 +142,23 @@
 			<p class="text-body text-muted">{t('notebook.empty')}</p>
 		</div>
 	{:else}
-		{#each books as bk (bk.slug)}
+		<div class="mb-6">
+			<input
+				type="search"
+				bind:value={query}
+				placeholder={t('notebook.search')}
+				aria-label={t('notebook.search')}
+				class="w-full rounded-xl border border-border bg-surface px-4 py-2.5 text-body text-text placeholder:text-muted focus:border-accent focus:outline-none"
+			/>
+		</div>
+
+		{#if noMatches}
+			<div class="rounded-2xl border border-border bg-surface p-8 text-center">
+				<p class="text-body text-muted">{t('notebook.no_matches')}</p>
+			</div>
+		{/if}
+
+		{#each filtered as bk (bk.slug)}
 			<section class="mb-10">
 				<h2 class="text-h2">
 					<a href={localizeHref(`/books/${bk.slug}`)} class="hover:text-accent">{bk.title}</a>
