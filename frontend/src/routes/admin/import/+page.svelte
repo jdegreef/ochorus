@@ -10,7 +10,19 @@
 	} from '$lib/library';
 
 	type Chapter = { title: string; html: string; words: number };
-	type Preview = { kind: 'book' | 'sermon'; chapters: Chapter[]; suggested_title: string };
+	type Warning = {
+		check: string;
+		severity: 'high' | 'medium' | 'low';
+		chapter_index: number | null;
+		title: string;
+		message: string;
+	};
+	type Preview = {
+		kind: 'book' | 'sermon';
+		chapters: Chapter[];
+		suggested_title: string;
+		warnings: Warning[];
+	};
 	type Published = { kind: string; slug: string; title: string; path: string; chapters?: number };
 
 	let authors = $state<AuthorBio[]>([]);
@@ -108,6 +120,15 @@
 	function removeChapter(i: number) {
 		if (!preview) return;
 		preview.chapters = preview.chapters.filter((_, idx) => idx !== i);
+		// Keep the warning "Ch N" references aligned: drop the removed chapter's
+		// warnings and shift indices above it down by one.
+		preview.warnings = preview.warnings
+			.filter((w) => w.chapter_index !== i)
+			.map((w) =>
+				w.chapter_index !== null && w.chapter_index > i
+					? { ...w, chapter_index: w.chapter_index - 1 }
+					: w
+			);
 	}
 
 	async function publish() {
@@ -295,6 +316,32 @@
 				</span>
 			</div>
 
+			{#if preview.warnings.length}
+				<!-- Content-quality heads-up from the import (advisory, not blocking). -->
+				<div class="mb-4 rounded-sm border border-border bg-bg p-3">
+					<p class="mb-2 text-small font-semibold text-text">
+						{preview.warnings.length}
+						{preview.warnings.length === 1 ? 'thing' : 'things'} worth a look before publishing
+					</p>
+					<ul class="space-y-1.5">
+						{#each preview.warnings as w (w.check + '-' + (w.chapter_index ?? 'book'))}
+							<li class="flex gap-2 text-small">
+								<span class="qa-dot qa-{w.severity}" title={w.severity} aria-hidden="true"></span>
+								<span class="text-muted">
+									{#if w.chapter_index !== null}<span class="font-semibold text-text"
+											>Ch {w.chapter_index + 1}{#if w.title} · {w.title}{/if}:</span
+										>
+									{/if}{w.message}
+								</span>
+							</li>
+						{/each}
+					</ul>
+					<p class="mt-2 text-[0.72rem] text-muted">
+						These are suggestions — fix the titles below, or publish as-is.
+					</p>
+				</div>
+			{/if}
+
 			<label class="mb-1 block text-small font-semibold text-text" for="title">Title</label>
 			<input
 				id="title"
@@ -462,5 +509,22 @@
 		height: 1px;
 		overflow: hidden;
 		clip: rect(0 0 0 0);
+	}
+	.qa-dot {
+		margin-top: 0.42rem;
+		height: 0.5rem;
+		width: 0.5rem;
+		flex-shrink: 0;
+		border-radius: 999px;
+		background: var(--muted);
+	}
+	.qa-high {
+		background: var(--danger);
+	}
+	.qa-medium {
+		background: var(--accent);
+	}
+	.qa-low {
+		background: color-mix(in srgb, var(--muted) 60%, transparent);
 	}
 </style>

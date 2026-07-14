@@ -22,6 +22,7 @@ from bs4 import BeautifulSoup
 from django.db import transaction
 from django.utils.text import slugify
 
+from . import qa
 from .ingest import (
     clean_fragment,
     clean_title,
@@ -173,7 +174,16 @@ def parse_upload(data: bytes, filename: str, kind: str) -> dict:
     if not suggested and filename:
         suggested = filename.rsplit(".", 1)[0].replace("-", " ").replace("_", " ").strip()
 
-    return {"kind": kind, "chapters": chapters, "suggested_title": suggested}
+    # Content-quality warnings for the reviewer. Chapter-title/split checks only
+    # make sense for a multi-chapter book; a sermon is a single body.
+    warnings = qa.qa_report(chapters) if kind == "book" else []
+
+    return {
+        "kind": kind,
+        "chapters": chapters,
+        "suggested_title": suggested,
+        "warnings": warnings,
+    }
 
 
 # --- publishing ---------------------------------------------------------------
