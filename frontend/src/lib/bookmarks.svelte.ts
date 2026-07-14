@@ -1,5 +1,5 @@
-import { browser } from '$app/environment';
 import { BOOKMARKS_KEY, type Bookmark, type BookmarksStore } from './reading-schema';
+import { readJSON, writeJSON } from './persisted';
 
 /**
  * Explicit bookmarks — places the reader saved on purpose (a chapter + paragraph),
@@ -8,18 +8,8 @@ import { BOOKMARKS_KEY, type Bookmark, type BookmarksStore } from './reading-sch
  * now; account-sync can follow the marks/progress pattern later.
  */
 
-function readAll(): BookmarksStore {
-	if (!browser) return {};
-	try {
-		return JSON.parse(localStorage.getItem(BOOKMARKS_KEY) || '{}');
-	} catch {
-		return {};
-	}
-}
-
-function writeAll(store: BookmarksStore) {
-	if (browser) localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(store));
-}
+const readAll = (): BookmarksStore => readJSON<BookmarksStore>(BOOKMARKS_KEY, {});
+const writeAll = (store: BookmarksStore) => writeJSON(BOOKMARKS_KEY, store);
 
 const byPosition = (a: Bookmark, b: Bookmark) => a.order - b.order || a.p - b.p;
 

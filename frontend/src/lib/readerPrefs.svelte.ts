@@ -1,4 +1,5 @@
 import { browser } from '$app/environment';
+import { readJSON, writeJSON } from './persisted';
 
 /**
  * Reader comfort preferences — font size, leading (line-height), measure (column
@@ -54,22 +55,18 @@ const DEFAULTS: Stored = {
 };
 
 function load(): Stored {
-	if (!browser) return { ...DEFAULTS };
-	try {
-		const raw = JSON.parse(localStorage.getItem(KEY) || '{}');
-		const scale = Number.isFinite(raw.scale)
+	const raw = readJSON<Record<string, unknown>>(KEY, {});
+	const scale =
+		typeof raw.scale === 'number' && Number.isFinite(raw.scale)
 			? Math.min(SCALE_MAX, Math.max(SCALE_MIN, raw.scale))
 			: DEFAULTS.scale;
-		return {
-			scale,
-			leading: raw.leading in LEADING ? raw.leading : DEFAULTS.leading,
-			measure: raw.measure in MEASURE ? raw.measure : DEFAULTS.measure,
-			font: raw.font in FONT_STACK ? raw.font : DEFAULTS.font,
-			paged: typeof raw.paged === 'boolean' ? raw.paged : DEFAULTS.paged
-		};
-	} catch {
-		return { ...DEFAULTS };
-	}
+	return {
+		scale,
+		leading: (raw.leading as Leading) in LEADING ? (raw.leading as Leading) : DEFAULTS.leading,
+		measure: (raw.measure as Measure) in MEASURE ? (raw.measure as Measure) : DEFAULTS.measure,
+		font: (raw.font as ReaderFont) in FONT_STACK ? (raw.font as ReaderFont) : DEFAULTS.font,
+		paged: typeof raw.paged === 'boolean' ? raw.paged : DEFAULTS.paged
+	};
 }
 
 class ReaderPrefs {
@@ -93,7 +90,6 @@ class ReaderPrefs {
 	}
 
 	#save() {
-		if (!browser) return;
 		const s: Stored = {
 			scale: this.scale,
 			leading: this.leading,
@@ -101,7 +97,7 @@ class ReaderPrefs {
 			font: this.font,
 			paged: this.paged
 		};
-		localStorage.setItem(KEY, JSON.stringify(s));
+		writeJSON(KEY, s);
 	}
 
 	setScale(next: number) {
