@@ -82,10 +82,16 @@ def parse_book_page(slug: str) -> dict:
     # Metadata + description are rendered as a flat text run on the page.
     text = re.sub(r"\s+", " ", soup.get_text(" ", strip=True))
     author = _field(text, "Author")
+    # "Back Ochorus" starts the site footer — without it in the terminator the
+    # capture drags in WordPress boilerplate (cleaned up by migrations 0029/0030
+    # for rows imported before this fix).
     description = ""
-    m = re.search(r"Description:\s*(?:Book Overview)?\s*(.+?)(?:Download|Related|Newsletter|$)", text)
+    m = re.search(
+        r"Description:\s*(?:Book Overview)?\s*(.+?)(?:Download|Related|Newsletter|Back Ochorus|$)",
+        text,
+    )
     if m:
-        description = m.group(1).strip()[:1500]
+        description = _clean_description(m.group(1).strip())[:1500]
 
     return {
         "slug": slug,
@@ -96,6 +102,23 @@ def parse_book_page(slug: str) -> dict:
         "description": description,
         "source_url": url,
     }
+
+
+def _clean_description(desc: str) -> str:
+    """Tidy a scraped description: the flat text run carries the page's
+    "Contents" heading (often empty) at the end — drop a bare heading, keep a
+    genuine contents list as "Contents: …" — plus stray-punctuation fixes."""
+    bare = re.search(r"\s*Contents\s*$", desc)
+    if bare:
+        desc = desc[: bare.start()].rstrip()
+    elif (idx := desc.rfind(" Contents ")) != -1:
+        head, tail = desc[:idx].rstrip(), desc[idx + len(" Contents ") :].strip()
+        sep = " Contents: " if _ends_sentence(head) else ". Contents: "
+        desc = head + sep + tail
+    desc = desc.replace("?.", "?").replace(" .", ".")
+    if desc and not _ends_sentence(desc):
+        desc += "."
+    return desc
 
 
 def _field(text: str, name: str) -> str:
