@@ -85,6 +85,7 @@
 	let hits = $state<SearchHit[]>([]);
 	let loading = $state(false);
 	let ran = $state('');
+	let suggestion = $state('');
 	let timer: ReturnType<typeof setTimeout> | undefined;
 
 	type ResultRow = Row & { type: SearchHit['type'] };
@@ -226,6 +227,7 @@
 		if (term.length < 2) {
 			hits = [];
 			ran = '';
+			suggestion = '';
 			return;
 		}
 		timer = setTimeout(async () => {
@@ -234,10 +236,17 @@
 				const res = await search(term, getLang());
 				hits = res.results;
 				ran = res.query;
+				suggestion = res.suggestion ?? '';
 			} finally {
 				loading = false;
 			}
 		}, 250);
+	}
+
+	// Accept a "did you mean" suggestion: swap it in and search immediately.
+	function applySuggestion(term: string) {
+		q = term;
+		onInput();
 	}
 
 	// Server snippets arrive with matches wrapped in full-text markers; markSnippet
@@ -279,6 +288,18 @@
 			<p class="text-small text-muted">{t('search.prompt')}</p>
 		{:else if ran && hits.length === 0}
 			<p class="text-small text-muted">{t('search.noResults')} “{ran}”.</p>
+			{#if suggestion}
+				<p class="mt-2 text-small text-muted">
+					{t('search.didYouMean')}
+					<button
+						type="button"
+						class="font-semibold text-accent hover:underline"
+						onclick={() => applySuggestion(suggestion)}
+					>
+						{suggestion}
+					</button>?
+				</p>
+			{/if}
 		{:else}
 			<!-- Type facet + result count -->
 			<div class="mb-5 flex flex-wrap items-center gap-2">

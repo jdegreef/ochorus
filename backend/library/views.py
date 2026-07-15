@@ -11,7 +11,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import Author, Book, Chapter, Plan, Sermon, Topic
-from .search import search_library
+from .search import search_library, suggest
 from .serializers import (
     AuthorDetailSerializer,
     AuthorListSerializer,
@@ -300,7 +300,15 @@ class SearchView(APIView):
         language = _language(request)
         if len(q) < 2:
             return Response({"query": q, "results": []})
-        return Response({"query": q, "results": search_library(q, language)})
+        results = search_library(q, language)
+        payload = {"query": q, "results": results}
+        # Only pay the fuzzy-match cost when nothing was found — the "did you
+        # mean" case. A hit means the spelling was close enough already.
+        if not results:
+            hint = suggest(q, language)
+            if hint:
+                payload["suggestion"] = hint
+        return Response(payload)
 
 
 class ScriptureView(APIView):
