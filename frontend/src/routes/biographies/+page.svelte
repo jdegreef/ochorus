@@ -14,6 +14,44 @@
 	const initials = (name: string) =>
 		name.split(' ').filter(Boolean).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
 
+	// --- Search · filter · sort -------------------------------------------------
+	type Filter = 'all' | 'library' | 'bio';
+	type Sort = 'name' | 'era' | 'books';
+	let queryText = $state('');
+	let filter = $state<Filter>('all');
+	let sort = $state<Sort>('name');
+
+	const filtered = $derived.by(() => {
+		const q = queryText.trim().toLowerCase();
+		return authors.filter((a) => {
+			if (filter === 'library' && a.book_count === 0) return false;
+			if (filter === 'bio' && a.book_count > 0) return false;
+			if (!q) return true;
+			return a.name.toLowerCase().includes(q) || (a.bio ?? '').toLowerCase().includes(q);
+		});
+	});
+
+	const sorted = $derived.by(() => {
+		const arr = [...filtered];
+		switch (sort) {
+			case 'era':
+				// Earliest-born first; unknown birth years sink to the end.
+				return arr.sort(
+					(a, b) => (a.birth_year ?? 9999) - (b.birth_year ?? 9999) || a.name.localeCompare(b.name)
+				);
+			case 'books':
+				return arr.sort((a, b) => b.book_count - a.book_count || a.name.localeCompare(b.name));
+			default:
+				return arr.sort((a, b) => a.name.localeCompare(b.name));
+		}
+	});
+
+	const FILTERS: { v: Filter; k: string }[] = [
+		{ v: 'all', k: 'bios.filterAll' },
+		{ v: 'library', k: 'bios.filterInLibrary' },
+		{ v: 'bio', k: 'bios.filterBioOnly' }
+	];
+
 	// Redirect old /biographies#<slug> deep-links to the new author pages.
 	onMount(() => {
 		const slug = location.hash.replace(/^#/, '');
@@ -39,8 +77,46 @@
 		</p>
 	</header>
 
+	<!-- Controls: search · filter · sort -->
+	<div class="mb-8 flex flex-wrap items-center gap-2">
+		<input
+			bind:value={queryText}
+			type="search"
+			class="min-w-[10rem] flex-1 rounded-sm border border-border bg-surface px-3 py-1.5 text-small text-text"
+			placeholder={t('bios.filterPlaceholder')}
+			aria-label={t('bios.filterPlaceholder')}
+		/>
+
+		<div class="flex overflow-hidden rounded-sm border border-border text-[0.78rem]">
+			{#each FILTERS as opt (opt.v)}
+				<button
+					class="px-2.5 py-1.5"
+					class:bg-accent={filter === opt.v}
+					class:text-white={filter === opt.v}
+					class:text-muted={filter !== opt.v}
+					onclick={() => (filter = opt.v)}
+					aria-pressed={filter === opt.v}>{t(opt.k)}</button
+				>
+			{/each}
+		</div>
+
+		<select
+			bind:value={sort}
+			class="rounded-sm border border-border bg-surface px-2 py-1.5 text-small text-text"
+			aria-label={t('bios.sort')}
+		>
+			<option value="name">{t('bios.sortName')}</option>
+			<option value="era">{t('bios.sortEra')}</option>
+			<option value="books">{t('bios.sortBooks')}</option>
+		</select>
+	</div>
+
+	{#if sorted.length === 0}
+		<p class="py-16 text-center text-body text-muted">{t('bios.noResults')}</p>
+	{/if}
+
 	<div class="space-y-10">
-		{#each authors as author (author.slug)}
+		{#each sorted as author (author.slug)}
 			<article id={author.slug} class="scroll-mt-24">
 				<div class="flex items-center gap-4">
 					<a href={localizeHref(`/authors/${author.slug}`)} class="shrink-0 hover:no-underline">
