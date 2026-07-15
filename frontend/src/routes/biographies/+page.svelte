@@ -1,15 +1,28 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
-	import type { AuthorBio } from '$lib/library';
+	import type { AuthorBio, BookSummary } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
+	import BookCover from '$lib/components/BookCover.svelte';
 
 	const t = i18n.t;
 
 	let { data } = $props();
 	const authors = $derived<AuthorBio[]>(data.authors);
+	const books = $derived<BookSummary[]>(data.books ?? []);
+
+	// Group the library's books by author slug for the per-writer cover strip.
+	const booksByAuthor = $derived.by(() => {
+		const m = new Map<string, BookSummary[]>();
+		for (const b of books) {
+			const arr = m.get(b.author.slug);
+			if (arr) arr.push(b);
+			else m.set(b.author.slug, [b]);
+		}
+		return m;
+	});
 
 	const initials = (name: string) =>
 		name.split(' ').filter(Boolean).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
@@ -117,6 +130,7 @@
 
 	<div class="space-y-10">
 		{#each sorted as author (author.slug)}
+			{@const shelf = booksByAuthor.get(author.slug) ?? []}
 			<article id={author.slug} class="scroll-mt-24">
 				<div class="flex items-center gap-4">
 					<a href={localizeHref(`/authors/${author.slug}`)} class="shrink-0 hover:no-underline">
@@ -166,6 +180,22 @@
 					>
 						{t('bios.readMore')} →
 					</a>
+				{/if}
+
+				<!-- Their works: a scrollable strip of the writer's books, straight
+				     into the reader. -->
+				{#if shelf.length}
+					<div class="mt-4 flex gap-3 overflow-x-auto pb-1" aria-label={t('nav.books')}>
+						{#each shelf.slice(0, 8) as book (book.slug)}
+							<a
+								href={localizeHref(`/books/${book.slug}`)}
+								class="w-16 shrink-0 hover:no-underline"
+								title={book.title}
+							>
+								<BookCover {book} />
+							</a>
+						{/each}
+					</div>
 				{/if}
 			</article>
 		{/each}
