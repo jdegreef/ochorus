@@ -134,7 +134,7 @@ TOPIC_TRANSLATIONS = {
             "kwonna — amawulire amalungi eri abakooye.",
         ),
         "revival-and-missions": (
-            "Okuzuukusibwa n'Obweereza",
+            "Okuzuukusibwa n'Obuweereza bw'Enjiri",
             "Obulamu obwawaayo olw'enjiri, n'ebiseera eby'okuzuukusibwa — "
             "eky'okwongera omuliro mu mutima ogwaka.",
         ),

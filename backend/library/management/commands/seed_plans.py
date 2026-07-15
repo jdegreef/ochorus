@@ -88,23 +88,26 @@ def _prose(slug, lang, en_title, en_description):
 class Command(BaseCommand):
     help = "Seed launch reading plans from existing books (idempotent)."
 
-    def _refresh_prose(self, plan, title, description):
-        """Keep an already-seeded plan's prose in sync with the defs/translations
-        (so an edited or newly-added translation reaches prod on redeploy)."""
+    def _reconcile_existing(self, slug, lang, title, description) -> bool:
+        """If a plan already exists for (slug, lang), keep its prose in sync with
+        the defs/translations and return True (caller skips creation). An edited
+        or newly-added translation thus reaches prod on the next redeploy."""
+        plan = Plan.objects.filter(slug=slug, language=lang).first()
+        if not plan:
+            return False
         if (plan.title, plan.description) != (title, description):
             plan.title = title
             plan.description = description
             plan.save(update_fields=["title", "description"])
-            self.stdout.write(f"Updated plan {plan.slug} ({plan.language}) prose.")
+            self.stdout.write(f"Updated plan {slug} ({lang}) prose.")
+        return True
 
     def handle(self, *args, **opts):
         created = 0
         for slug, book_slug, title, description in LAUNCH_PLANS:
             for book in Book.objects.filter(slug=book_slug, is_published=True):
                 t, d = _prose(slug, book.language, title, description)
-                existing = Plan.objects.filter(slug=slug, language=book.language).first()
-                if existing:
-                    self._refresh_prose(existing, t, d)
+                if self._reconcile_existing(slug, book.language, t, d):
                     continue
                 orders = list(
                     book.chapters.order_by("order").values_list("order", flat=True)
@@ -152,9 +155,7 @@ class Command(BaseCommand):
             )
             for lang in sorted(langs):
                 t, d = _prose(slug, lang, title, description)
-                existing = Plan.objects.filter(slug=slug, language=lang).first()
-                if existing:
-                    self._refresh_prose(existing, t, d)
+                if self._reconcile_existing(slug, lang, t, d):
                     continue
                 by_slug = {
                     b.slug: b
