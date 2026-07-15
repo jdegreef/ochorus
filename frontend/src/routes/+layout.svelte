@@ -13,6 +13,7 @@
 	import { pwa } from '$lib/pwa.svelte';
 	import { localizeHref, getLocale, getTextDirection } from '$lib/paraglide/runtime';
 	import AccountMenu from '$lib/components/AccountMenu.svelte';
+	import CommandPalette from '$lib/components/CommandPalette.svelte';
 	import PwaToasts from '$lib/components/PwaToasts.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import type { IconName } from '$lib/components/Icon.svelte';
@@ -165,4 +166,5 @@
 	{/if}
 </div>
 
+<CommandPalette />
 <PwaToasts />
