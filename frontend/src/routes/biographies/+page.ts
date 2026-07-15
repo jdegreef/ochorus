@@ -1,4 +1,4 @@
-import { listAuthors } from '$lib/library';
+import { listAuthors, listBooks, type BookSummary } from '$lib/library';
 import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
 
@@ -7,8 +7,17 @@ import type { PageLoad } from './$types';
 // the API before the web build runs — otherwise the localized page bakes English
 // and needs a fresh ochorus-web deploy once the API catches up.
 export const load: PageLoad = async () => {
-	const authors = await listAuthors(getLang());
-	return { authors };
+	const lang = getLang();
+	const authors = await listAuthors(lang);
+	// Books power the per-writer cover strip; degrade to no strips if unavailable
+	// so the biographies still render.
+	let books: BookSummary[] = [];
+	try {
+		books = await listBooks(lang);
+	} catch {
+		books = [];
+	}
+	return { authors, books };
 };
 
 // Biographies book counts are locale-aware (server-side) and prerendered per
