@@ -114,6 +114,17 @@
 		}));
 	});
 
+	// Type facet: narrow the result set to one kind. Chips are built from the
+	// groups actually present (with counts); selecting one shows only that
+	// section. Reset to "all" on each new query.
+	let typeFilter = $state('all');
+	const shownGroups = $derived(
+		typeFilter === 'all' || !groups.some((g) => g.type === typeFilter)
+			? groups
+			: groups.filter((g) => g.type === typeFilter)
+	);
+	const shownCount = $derived(shownGroups.reduce((n, g) => n + g.rows.length, 0));
+
 	// Within the Passages section, collapse a book's chapter matches under the
 	// book so "where does this theme live across the work" reads as a map, not a
 	// scatter of unrelated-looking lines. Books over the preview cap get a toggle.
@@ -160,7 +171,7 @@
 	const nav = $derived.by(() => {
 		const keys: string[] = [];
 		const map = new Map<string, string>();
-		for (const g of groups) {
+		for (const g of shownGroups) {
 			if (g.type === 'chapter') {
 				for (const pb of passageBooks) {
 					const shown = expandedBooks.has(pb.slug)
@@ -209,6 +220,7 @@
 
 	function onInput() {
 		activeIndex = -1;
+		typeFilter = 'all';
 		clearTimeout(timer);
 		const term = q.trim();
 		if (term.length < 2) {
@@ -268,12 +280,48 @@
 		{:else if ran && hits.length === 0}
 			<p class="text-small text-muted">{t('search.noResults')} “{ran}”.</p>
 		{:else}
-			<p class="mb-4 text-small text-muted" aria-live="polite">
-				{hits.length}
-				{hits.length === 1 ? t('search.resultsOne') : t('search.resultsMany')}
-			</p>
+			<!-- Type facet + result count -->
+			<div class="mb-5 flex flex-wrap items-center gap-2">
+				{#if groups.length > 1}
+					<div class="flex flex-wrap gap-1.5" role="group" aria-label={t('search.filterByType')}>
+						<button
+							type="button"
+							class="rounded-full border px-2.5 py-1 text-[0.78rem]"
+							class:border-accent={typeFilter === 'all'}
+							class:bg-accent={typeFilter === 'all'}
+							class:text-white={typeFilter === 'all'}
+							class:border-border={typeFilter !== 'all'}
+							class:text-muted={typeFilter !== 'all'}
+							onclick={() => (typeFilter = 'all')}
+							aria-pressed={typeFilter === 'all'}
+						>
+							{t('search.filterAll')}
+						</button>
+						{#each groups as g (g.type)}
+							<button
+								type="button"
+								class="rounded-full border px-2.5 py-1 text-[0.78rem]"
+								class:border-accent={typeFilter === g.type}
+								class:bg-accent={typeFilter === g.type}
+								class:text-white={typeFilter === g.type}
+								class:border-border={typeFilter !== g.type}
+								class:text-muted={typeFilter !== g.type}
+								onclick={() => (typeFilter = g.type)}
+								aria-pressed={typeFilter === g.type}
+							>
+								{t(g.labelKey)}
+								<span class="tabular-nums opacity-70">{g.rows.length}</span>
+							</button>
+						{/each}
+					</div>
+				{/if}
+				<p class="text-small text-muted sm:ml-auto" aria-live="polite">
+					{shownCount}
+					{shownCount === 1 ? t('search.resultsOne') : t('search.resultsMany')}
+				</p>
+			</div>
 			<div class="space-y-8">
-				{#each groups as g (g.type)}
+				{#each shownGroups as g (g.type)}
 					<section>
 						<h2
 							class="mb-2 flex items-baseline gap-2 text-small font-semibold uppercase tracking-wide text-muted"
