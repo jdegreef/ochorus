@@ -573,7 +573,16 @@
 
 <!-- Reader top bar: breadcrumb / context + controls. Hidden in focus mode. -->
 {#if !readerUi.focus}
-	<div bind:this={chromeEl} class="sticky top-0 z-10 border-b border-border bg-bg/90 backdrop-blur">
+	<!-- Pinned to the top. In scroll mode it's `sticky` (rides the scroll, then
+	     sticks); in page mode nothing scrolls, so it's `fixed` — and crucially a
+	     `sticky` sibling makes Chromium drop the top line of the reader's later
+	     paged columns (a paint bug), which `fixed` avoids. -->
+	<div
+		bind:this={chromeEl}
+		class="top-0 inset-x-0 z-10 border-b border-border bg-bg/90 backdrop-blur"
+		class:fixed={paged}
+		class:sticky={!paged}
+	>
 		<div class="mx-auto flex max-w-3xl items-center justify-between gap-3 px-5 py-2.5">
 			<div class="min-w-0 flex-1">
 				{#if titleVisible}
@@ -651,6 +660,12 @@
 		class="fixed right-4 top-4 z-30 rounded-full border border-border bg-surface/90 px-3 py-1.5 text-small text-muted shadow-md backdrop-blur hover:text-text"
 		onclick={() => readerUi.exitFocus()}>✕ {t('reader.exitFocus')}</button
 	>
+{/if}
+
+<!-- A full-viewport wash behind the paged columns, so the margins beside the
+     measure-capped spread are the same shade as the page — no lighter corners. -->
+{#if paged}
+	<div class="paged-backdrop" aria-hidden="true"></div>
 {/if}
 
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events -->
@@ -848,6 +863,14 @@
 	article.paged.focus {
 		top: 0;
 		bottom: 0;
+	}
+	/* Sits below the columns (z 5) and the edge arrows (z 6), above the page, so
+	   the whole reading surface is one uniform shade. */
+	.paged-backdrop {
+		position: fixed;
+		inset: 0;
+		z-index: 4;
+		background: var(--bg);
 	}
 	/* Hide the surrounding chrome (breadcrumb, plan strip, chapter nav) in page
 	   mode — only the pager's content is paginated. */
