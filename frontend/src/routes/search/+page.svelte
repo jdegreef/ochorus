@@ -86,7 +86,32 @@
 	let ran = $state('');
 	let timer: ReturnType<typeof setTimeout> | undefined;
 
-	const rows = $derived(hits.map(toRow));
+	type ResultRow = Row & { type: SearchHit['type'] };
+	const rows = $derived<ResultRow[]>(hits.map((h) => ({ ...toRow(h), type: h.type })));
+
+	// Cluster the flat result list into type sections in a fixed reading order —
+	// navigational entities first, passages last — keeping only sections present.
+	const GROUP_ORDER: { type: SearchHit['type']; labelKey: string }[] = [
+		{ type: 'book', labelKey: 'search.groupBooks' },
+		{ type: 'author', labelKey: 'search.groupAuthors' },
+		{ type: 'topic', labelKey: 'search.groupTopics' },
+		{ type: 'plan', labelKey: 'search.groupPlans' },
+		{ type: 'chapter', labelKey: 'search.groupPassages' },
+		{ type: 'sermon', labelKey: 'search.groupSermons' }
+	];
+	const groups = $derived.by(() => {
+		const by = new Map<string, ResultRow[]>();
+		for (const r of rows) {
+			const arr = by.get(r.type);
+			if (arr) arr.push(r);
+			else by.set(r.type, [r]);
+		}
+		return GROUP_ORDER.filter((g) => by.has(g.type)).map((g) => ({
+			type: g.type,
+			labelKey: g.labelKey,
+			rows: by.get(g.type)!
+		}));
+	});
 
 	function onInput() {
 		clearTimeout(timer);
@@ -136,29 +161,36 @@
 		{:else if ran && hits.length === 0}
 			<p class="text-small text-muted">{t('search.noResults')} “{ran}”.</p>
 		{:else}
-			<ul class="divide-y divide-border">
-				{#each rows as row (row.key)}
-					<li class="py-4">
-						<a href={localizeHref(row.href)} class="block hover:no-underline">
-							<div class="flex items-center gap-2 text-small text-muted">
-								<span
-									class="rounded-full bg-surface-2 px-2 py-0.5 text-[0.68rem] font-semibold uppercase tracking-wide text-accent"
-								>
-									{row.label}
-								</span>
-								{#if row.meta}<span>{row.meta}</span>{/if}
-							</div>
-							<div class="mt-1 text-body font-semibold text-text">{row.title}</div>
-							{#if row.snippet}
-								<p class="mt-1 text-small text-muted">
-									<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-									{@html mark(row.snippet)}
-								</p>
-							{/if}
-						</a>
-					</li>
+			<div class="space-y-8">
+				{#each groups as g (g.type)}
+					<section>
+						<h2
+							class="mb-2 flex items-baseline gap-2 text-small font-semibold uppercase tracking-wide text-muted"
+						>
+							{t(g.labelKey)}
+							<span class="text-[0.78rem] font-normal tabular-nums text-muted/70">{g.rows.length}</span>
+						</h2>
+						<ul class="divide-y divide-border">
+							{#each g.rows as row (row.key)}
+								<li class="py-4">
+									<a href={localizeHref(row.href)} class="block hover:no-underline">
+										{#if row.meta}
+											<div class="text-small text-muted">{row.meta}</div>
+										{/if}
+										<div class="text-body font-semibold text-text">{row.title}</div>
+										{#if row.snippet}
+											<p class="mt-1 text-small text-muted">
+												<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+												{@html mark(row.snippet)}
+											</p>
+										{/if}
+									</a>
+								</li>
+							{/each}
+						</ul>
+					</section>
 				{/each}
-			</ul>
+			</div>
 		{/if}
 	</div>
 </div>
