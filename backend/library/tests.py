@@ -258,6 +258,39 @@ class PlanTests(TestCase):
         call_command("seed_plans")
         self.assertEqual(Plan.objects.filter(slug="humility-12-days").count(), 1)
 
+    def test_seed_plans_localizes_lg_prose_and_leaves_en(self):
+        from django.core.management import call_command
+
+        # humility-2 also exists in Luganda → seed creates a Luganda plan row.
+        lg_book = Book.objects.create(
+            author=Author.objects.get(slug="am"), slug="humility-2", language="lg", title="Obwetoowaze"
+        )
+        for i in (1, 2):
+            Chapter.objects.create(book=lg_book, order=i, title=f"Ess {i}", body_html="<p>x</p>")
+        call_command("seed_plans")
+
+        en = Plan.objects.get(slug="humility-12-days", language="en")
+        lg = Plan.objects.get(slug="humility-12-days", language="lg")
+        self.assertEqual(en.title, "Humility in 12 Days")  # English row untouched
+        self.assertEqual(lg.title, "Obwetoowaze mu Nnaku 12")  # Luganda title
+        self.assertTrue(lg.description)  # Luganda description present
+
+    def test_seed_plans_refreshes_stale_english_lg_row(self):
+        # A Luganda plan row seeded earlier with English prose (prod's state)
+        # is refreshed to Luganda on the next seed run.
+        from django.core.management import call_command
+
+        lg_book = Book.objects.create(
+            author=Author.objects.get(slug="am"), slug="humility-2", language="lg", title="Obwetoowaze"
+        )
+        Chapter.objects.create(book=lg_book, order=1, title="Ess 1", body_html="<p>x</p>")
+        stale = Plan.objects.create(
+            slug="humility-12-days", language="lg", title="Humility in 12 Days", description="old"
+        )
+        call_command("seed_plans")
+        stale.refresh_from_db()
+        self.assertEqual(stale.title, "Obwetoowaze mu Nnaku 12")
+
 
 class TopicTests(TestCase):
     def setUp(self):
@@ -323,6 +356,22 @@ class TopicTests(TestCase):
             TopicBook.objects.filter(
                 topic__slug="prayer", book_slug="the-inner-chamber"
             ).exists()
+        )
+
+    def test_seed_topics_populates_lg_translations(self):
+        from django.core.management import call_command
+
+        call_command("seed_topics")
+        topic = Topic.objects.get(slug="prayer")
+        # An lg TopicTranslation is upserted, and it differs from the English.
+        self.assertEqual(topic.title_for("en"), "On Prayer")
+        self.assertEqual(topic.title_for("lg"), "Ku Kusaba")
+        self.assertTrue(topic.description_for("lg"))
+        self.assertNotEqual(topic.description_for("lg"), topic.description_for("en"))
+        # Idempotent: a second run doesn't duplicate the translation row.
+        call_command("seed_topics")
+        self.assertEqual(
+            TopicTranslation.objects.filter(topic=topic, language="lg").count(), 1
         )
 
 
