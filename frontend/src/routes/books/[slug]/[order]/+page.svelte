@@ -25,6 +25,7 @@
 	import { API_BASE_URL } from '$lib/config';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
+	import Icon from '$lib/components/Icon.svelte';
 	import DefinePopover from '$lib/components/DefinePopover.svelte';
 	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
 	import TocDrawer from '$lib/components/TocDrawer.svelte';
@@ -586,56 +587,59 @@
 					</div>
 				{/if}
 			</div>
-			<div class="flex shrink-0 items-center gap-1">
+			<div class="flex shrink-0 items-center gap-0.5">
 				{#if chapter.prev}
 					<a
 						href={localizeHref(`/books/${slug}/${chapter.prev.order}`)}
-						class="btn btn-ghost !px-2.5 !py-1"
-						aria-label={t('reader.previous')}>‹</a
+						class="btn btn-ghost !px-2 !py-1.5"
+						aria-label={t('reader.previous')}
+						title={t('reader.previous')}><Icon name="chevron-left" size={18} /></a
 					>
 				{/if}
 				{#if chapter.next}
 					<a
 						href={localizeHref(`/books/${slug}/${chapter.next.order}`)}
-						class="btn btn-ghost !px-2.5 !py-1"
-						aria-label={t('reader.next')}>›</a
+						class="btn btn-ghost !px-2 !py-1.5"
+						aria-label={t('reader.next')}
+						title={t('reader.next')}><Icon name="chevron-right" size={18} /></a
 					>
 				{/if}
+				<span class="mx-1 h-5 w-px bg-border" aria-hidden="true"></span>
 				<button
-					class="btn btn-ghost !px-2.5 !py-1"
+					class="btn btn-ghost !px-2 !py-1.5"
 					class:!text-accent={currentBookmarked}
 					onclick={toggleBookmark}
 					aria-label={t('reader.bookmark')}
 					title={t('reader.bookmark')}
-					aria-pressed={currentBookmarked}>{currentBookmarked ? '🔖' : '🏷'}</button
+					aria-pressed={currentBookmarked}><Icon name="bookmark" size={18} /></button
 				>
 				<button
-					class="btn btn-ghost !px-2.5 !py-1"
-					onclick={() => (searchOpen = true)}
-					aria-label={t('reader.search')}
-					title={t('reader.search')}>🔍</button
-				>
-				<button
-					class="btn btn-ghost !px-2.5 !py-1"
+					class="btn btn-ghost !px-2 !py-1.5"
 					onclick={() => (tocOpen = true)}
 					aria-label={t('reader.contents')}
-					title={t('reader.contents')}>☰</button
+					title={t('reader.contents')}><Icon name="list" size={18} /></button
+				>
+				<button
+					class="btn btn-ghost !px-2 !py-1.5"
+					onclick={() => (searchOpen = true)}
+					aria-label={t('reader.search')}
+					title={t('reader.search')}><Icon name="search" size={18} /></button
 				>
 				{#if listen.supported}
 					<button
-						class="btn btn-ghost !px-2.5 !py-1"
+						class="btn btn-ghost !px-2 !py-1.5"
 						class:!text-accent={listen.status !== 'idle'}
 						onclick={() => (listen.status === 'idle' ? startListening() : listen.stop())}
 						aria-label={t('reader.listen')}
-						title={t('reader.listen')}>▶</button
+						title={t('reader.listen')}><Icon name="headphones" size={18} /></button
 					>
 				{/if}
 				<ReaderControls />
 				<button
-					class="btn btn-ghost !px-3 !py-1"
+					class="btn btn-ghost !px-2 !py-1.5"
 					onclick={() => readerUi.toggleFocus()}
 					aria-label={t('reader.focus')}
-					title={t('reader.focus')}>☾</button
+					title={t('reader.focus')}><Icon name="maximize" size={18} /></button
 				>
 			</div>
 		</div>

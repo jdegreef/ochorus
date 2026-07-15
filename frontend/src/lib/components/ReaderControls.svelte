@@ -8,6 +8,7 @@
 	} from '$lib/readerPrefs.svelte';
 	import { listen, RATES } from '$lib/listen.svelte';
 	import { i18n } from '$lib/i18n.svelte';
+	import Icon from './Icon.svelte';
 
 	let open = $state(false);
 	let wrap = $state<HTMLDivElement>();
@@ -210,7 +211,7 @@
 							class="btn btn-ghost !px-2.5 !py-1.5"
 							onclick={() => listen.preview(t('bios.tagline'))}
 							aria-label={t('reader.listen')}
-							title={t('reader.listen')}>▶</button
+							title={t('reader.listen')}><Icon name="play" size={15} /></button
 						>
 					</div>
 				</div>

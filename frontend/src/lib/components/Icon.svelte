@@ -15,7 +15,14 @@
 		| 'gear'
 		| 'sun'
 		| 'moon'
-		| 'tag';
+		| 'tag'
+		| 'list'
+		| 'bookmark'
+		| 'headphones'
+		| 'maximize'
+		| 'chevron-left'
+		| 'chevron-right'
+		| 'play';
 
 	let {
 		name,
@@ -90,5 +97,22 @@
 	{:else if name === 'tag'}
 		<path d="M4 4h7l9 9-7 7-9-9V4z" />
 		<circle cx="8" cy="8" r="1.4" />
+	{:else if name === 'list'}
+		<path d="M8.5 6.5h11M8.5 12h11M8.5 17.5h11" />
+		<path d="M4.5 6.5h.01M4.5 12h.01M4.5 17.5h.01" />
+	{:else if name === 'bookmark'}
+		<path d="M6.5 4h11a1 1 0 0 1 1 1v15l-6.5-3.8L5.5 20V5a1 1 0 0 1 1-1z" />
+	{:else if name === 'headphones'}
+		<path d="M4 14v-2a8 8 0 0 1 16 0v2" />
+		<path d="M4 14h2a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z" />
+		<path d="M20 14h-2a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1z" />
+	{:else if name === 'maximize'}
+		<path d="M4 9V5a1 1 0 0 1 1-1h4M20 9V5a1 1 0 0 0-1-1h-4M4 15v4a1 1 0 0 0 1 1h4M20 15v4a1 1 0 0 1-1 1h-4" />
+	{:else if name === 'chevron-left'}
+		<path d="M15 6l-6 6 6 6" />
+	{:else if name === 'chevron-right'}
+		<path d="M9 6l6 6-6 6" />
+	{:else if name === 'play'}
+		<path d="M8 5.5v13l11-6.5z" fill="currentColor" stroke="none" />
 	{/if}
 </svg>
