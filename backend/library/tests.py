@@ -224,6 +224,58 @@ class SearchTests(TestCase):
         self.assertNotIn("ghost", slugs)
 
 
+class ScriptureSearchTests(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+        a = Author.objects.create(slug="cs", name="Charles Spurgeon")
+        Sermon.objects.create(
+            author=a,
+            slug="new-birth",
+            language="en",
+            title="The New Birth",
+            scripture_ref="John 3:14-21",
+            body_html="<p>You must be born from above.</p>",
+        )
+        Sermon.objects.create(
+            author=a,
+            slug="the-vine",
+            language="en",
+            title="The True Vine",
+            scripture_ref="John 15:1-8",
+            body_html="<p>Abide in me and bear much fruit.</p>",
+        )
+
+    def search(self, q, language="en"):
+        res = self.client.get("/api/library/search/", {"q": q, "language": language})
+        self.assertEqual(res.status_code, 200)
+        return res.data["results"]
+
+    def test_verse_inside_range_matches(self):
+        # John 3:16 falls inside John 3:14-21 — matched by verse overlap, not text.
+        slugs = {r.get("sermon_slug") for r in self.search("John 3:16")}
+        self.assertIn("new-birth", slugs)
+        self.assertNotIn("the-vine", slugs)
+
+    def test_abbreviated_reference_matches(self):
+        slugs = {r.get("sermon_slug") for r in self.search("Jn 3:16")}
+        self.assertIn("new-birth", slugs)
+
+    def test_chapter_reference_matches(self):
+        slugs = {r.get("sermon_slug") for r in self.search("John 15")}
+        self.assertIn("the-vine", slugs)
+        self.assertNotIn("new-birth", slugs)
+
+    def test_non_reference_query_uses_text_only(self):
+        # A normal word query still works and pulls in nothing by verse logic.
+        slugs = {r.get("sermon_slug") for r in self.search("abide")}
+        self.assertIn("the-vine", slugs)
+
+    def test_reference_hit_not_duplicated(self):
+        # A sermon found by both text and verse overlap appears once.
+        results = [r for r in self.search("John 15:1") if r.get("sermon_slug") == "the-vine"]
+        self.assertEqual(len(results), 1)
+
+
 class SermonBodyTextTests(TestCase):
     def test_save_derives_body_text(self):
         author = Author.objects.create(slug="a", name="A")

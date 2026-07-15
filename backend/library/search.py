@@ -23,6 +23,7 @@ from django.db import connection
 from django.db.models import Q
 
 from .models import Author, Book, Chapter, Plan, Sermon, Topic
+from .scripture import reference_verse_ids
 
 MAX_RESULTS = 30
 
@@ -98,8 +99,18 @@ def search_library(q: str, language: str) -> list[dict]:
 
     ctx = _Ctx(q=q, language=language)
     if connection.vendor == "postgresql":
-        return _search_postgres(ctx, authors, books, topics, plans, chapters, sermons)
-    return _search_fallback(ctx, authors, books, topics, plans, chapters, sermons)
+        base = _search_postgres(ctx, authors, books, topics, plans, chapters, sermons)
+    else:
+        base = _search_fallback(ctx, authors, books, topics, plans, chapters, sermons)
+
+    # If the query is itself a scripture reference, add every sermon that
+    # expounds an overlapping passage — matched by verse id, so it works where
+    # plain text search can't (abbreviations, chapter-only, a verse inside a
+    # range). Scripture matches lead, since the reference is the reader's intent.
+    extra = _scripture_sermon_hits(q, sermons, base)
+    if extra:
+        return (extra + base)[:MAX_RESULTS]
+    return base
 
 
 class _Ctx:
@@ -325,3 +336,31 @@ def _sermon_hit(s, snippet):
         "scripture_ref": s.scripture_ref,
         "snippet": snippet,
     }
+
+
+def _lead(text: str, n: int = 160) -> str:
+    """A plain lead excerpt (no highlight markers) for scripture-match snippets,
+    whose query is a reference, not words found in the body."""
+    text = (text or "").strip()
+    return text[:n] + ("…" if len(text) > n else "")
+
+
+def _scripture_sermon_hits(q, sermons, base):
+    """Sermons whose ``scripture_ref`` overlaps the query's referenced verses.
+
+    Returns [] when ``q`` isn't a scripture reference. Deduped against sermons
+    already present in ``base`` so a sermon found by text search isn't repeated.
+    """
+    target = reference_verse_ids(q)
+    if not target:
+        return []
+    already = {h["sermon_slug"] for h in base if h["type"] == "sermon"}
+    hits = []
+    for s in sermons.exclude(scripture_ref="").order_by("sort_order", "title"):
+        if s.slug in already:
+            continue
+        if reference_verse_ids(s.scripture_ref) & target:
+            hits.append(_sermon_hit(s, snippet=_lead(s.body_text)))
+            if len(hits) >= CAPS["sermon"]:
+                break
+    return hits
