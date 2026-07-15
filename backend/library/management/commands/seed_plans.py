@@ -51,14 +51,63 @@ CURATED_PLANS = [
 ]
 
 
+# Per-language plan prose. A plan is a per-language row (like Book), so the
+# translation replaces the English title/description on the row for that
+# language; missing languages/plans fall back to the English tuple in the defs.
+# AI-drafted, pending native review.
+#   {language: {slug: (title, description)}}
+PLAN_TRANSLATIONS = {
+    "lg": {
+        "humility-12-days": (
+            "Obwetoowaze mu Nnaku 12",
+            "Ekitabo kya Andrew Murray eky'edda ku musingi gwa buli mpisa "
+            "ennungi — essuula emu ennyimpi buli lunaku okumala ennaku kkumi na "
+            "bbiri.",
+        ),
+        "the-inner-chamber-month": (
+            "Omwezi mu Kisenge eky'omunda",
+            "Zimba empisa eya buli lunaku ey'okusaba n'Ekigambo: enkya amakumi "
+            "asatu mu mukaaga ne Andrew Murray, essuula emu buli lunaku.",
+        ),
+        "school-of-prayer": (
+            "Essomero ery'Okusaba",
+            "Wiiki nnya mu ssomero ery'okusaba n'abakulembeze basatu: Andrew "
+            "Murray ku ngeri Mukama gy'atuyigiriza yekka okusaba, D. L. Moody ku "
+            "kusaba okuwangula, ne Hannah Buyinza ku kusaba ng'okukuba kw'omutima "
+            "okwa buli lunaku mu bulamu obw'Ekikristaayo.",
+        ),
+    },
+}
+
+
+def _prose(slug, lang, en_title, en_description):
+    """Localized (title, description) for a plan, else the English original."""
+    return PLAN_TRANSLATIONS.get(lang, {}).get(slug) or (en_title, en_description)
+
+
 class Command(BaseCommand):
     help = "Seed launch reading plans from existing books (idempotent)."
+
+    def _reconcile_existing(self, slug, lang, title, description) -> bool:
+        """If a plan already exists for (slug, lang), keep its prose in sync with
+        the defs/translations and return True (caller skips creation). An edited
+        or newly-added translation thus reaches prod on the next redeploy."""
+        plan = Plan.objects.filter(slug=slug, language=lang).first()
+        if not plan:
+            return False
+        if (plan.title, plan.description) != (title, description):
+            plan.title = title
+            plan.description = description
+            plan.save(update_fields=["title", "description"])
+            self.stdout.write(f"Updated plan {slug} ({lang}) prose.")
+        return True
 
     def handle(self, *args, **opts):
         created = 0
         for slug, book_slug, title, description in LAUNCH_PLANS:
             for book in Book.objects.filter(slug=book_slug, is_published=True):
-                if Plan.objects.filter(slug=slug, language=book.language).exists():
+                t, d = _prose(slug, book.language, title, description)
+                if self._reconcile_existing(slug, book.language, t, d):
                     continue
                 orders = list(
                     book.chapters.order_by("order").values_list("order", flat=True)
@@ -68,8 +117,8 @@ class Command(BaseCommand):
                 plan = Plan.objects.create(
                     slug=slug,
                     language=book.language,
-                    title=title,
-                    description=description,
+                    title=t,
+                    description=d,
                     sort_order=created,
                 )
                 PlanDay.objects.bulk_create(
@@ -105,7 +154,8 @@ class Command(BaseCommand):
                 .values_list("language", flat=True)
             )
             for lang in sorted(langs):
-                if Plan.objects.filter(slug=slug, language=lang).exists():
+                t, d = _prose(slug, lang, title, description)
+                if self._reconcile_existing(slug, lang, t, d):
                     continue
                 by_slug = {
                     b.slug: b
@@ -127,8 +177,8 @@ class Command(BaseCommand):
                 plan = Plan.objects.create(
                     slug=slug,
                     language=lang,
-                    title=title,
-                    description=description,
+                    title=t,
+                    description=d,
                     sort_order=sort_base + created,
                 )
                 PlanDay.objects.bulk_create(

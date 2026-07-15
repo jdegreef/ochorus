@@ -16,7 +16,7 @@ from __future__ import annotations
 
 from django.core.management.base import BaseCommand
 
-from library.models import Topic, TopicBook
+from library.models import Topic, TopicBook, TopicTranslation
 
 # (slug, title, description, [ordered member book slugs]). A book may appear in
 # several topics — topics are overlapping shelves, not exclusive categories.
@@ -106,6 +106,47 @@ TOPICS = [
 ]
 
 
+# Per-language topic prose, upserted into TopicTranslation each run. Missing
+# languages / topics fall back per-field to the English original above.
+# AI-drafted, pending native review (the same review flow as book translations).
+#   {language: {slug: (title, description)}}
+TOPIC_TRANSLATIONS = {
+    "lg": {
+        "prayer": (
+            "Ku Kusaba",
+            "Okuyiga okusaba — era n'okunyiikira okusaba obutakoowa. Ebitabo "
+            "eby'edda ebyogera ku bulamu obw'omunda obw'okusaba, okuva mu kifo "
+            "eky'ekyama okutuuka ku kwegayiririra abalala okw'amaanyi.",
+        ),
+        "holy-spirit": (
+            "Omwoyo Omutukuvu",
+            "Okubatizibwa kw'Omwoyo, okutuula kwe mu ffe, n'omulimu gwe — amaanyi "
+            "agaasuubizibwa ag'obulamu obw'Ekikristaayo.",
+        ),
+        "deeper-life": (
+            "Obulamu Obw'obuziba",
+            "Obutukuvu, okwewaayo, n'obulamu obw'ekyengera obukwekeddwa mu Kristo "
+            "— ebitabo eby'okugenda mu maaso ennyo mu by'omwoyo.",
+        ),
+        "grace-and-comfort": (
+            "Ekisa n'Okubudaabuda",
+            "Ekisa kya Katonda ekitaggwaawo n'okubudaabuda kwe mu kugezesebwa "
+            "kwonna — amawulire amalungi eri abakooye.",
+        ),
+        "revival-and-missions": (
+            "Okuzuukusibwa n'Obuweereza bw'Enjiri",
+            "Obulamu obwawaayo olw'enjiri, n'ebiseera eby'okuzuukusibwa — "
+            "eky'okwongera omuliro mu mutima ogwaka.",
+        ),
+        "faith-and-guidance": (
+            "Okukkiriza n'Obulagirizi",
+            "Okwesiga Katonda olw'emmere eya buli lunaku, obulagirizi, na buli "
+            "kisuubizo — okutambula mu kukkiriza, so si mu kulaba.",
+        ),
+    },
+}
+
+
 class Command(BaseCommand):
     help = "Seed the curated topical shelves and their membership (idempotent)."
 
@@ -132,6 +173,17 @@ class Command(BaseCommand):
                 )
                 if entry_created:
                     added += 1
+            # Upsert per-language prose each run so an edited/added translation
+            # reaches an already-seeded topic on the next deploy.
+            for lang, by_slug in TOPIC_TRANSLATIONS.items():
+                tr = by_slug.get(slug)
+                if not tr:
+                    continue
+                TopicTranslation.objects.update_or_create(
+                    topic=topic,
+                    language=lang,
+                    defaults={"title": tr[0], "description": tr[1]},
+                )
             if was_created:
                 self.stdout.write(
                     self.style.SUCCESS(
