@@ -155,12 +155,16 @@ class Auth {
 			// device actually has that voice (best-effort across devices).
 			if (typeof p.tts_rate === 'number') listen.setRate(p.tts_rate);
 			if (typeof p.tts_voice_uri === 'string') listen.setVoice(p.tts_voice_uri);
-			// Only adopt the saved locale if it's a language we still offer content
-			// in — otherwise a stale profile locale (from when more languages were
-			// listed) would re-wedge the reader on every sign-in.
-			// Cross-device restore: navigate to the saved locale's URL prefix if it
-			// differs from the current one (lang.set is a no-op when they match).
-			if (p.locale && lang.isAvailable(p.locale)) {
+			// Language: a locale the reader explicitly picked on this device wins
+			// over the synced profile (otherwise the profile would bounce them back
+			// out of the language they just chose). When they have such a choice,
+			// reconcile the profile to it so their other devices follow. Only on a
+			// device with no local choice do we adopt the saved profile locale
+			// (cross-device restore) — and only if it's a language we still offer.
+			const chosen = lang.chosen();
+			if (chosen) {
+				if (p.locale !== lang.current) this.pushPrefs();
+			} else if (p.locale && lang.isAvailable(p.locale)) {
 				lang.set(p.locale);
 			}
 		} catch {

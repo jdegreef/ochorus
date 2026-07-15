@@ -9,9 +9,11 @@
 
 	function choose(code: string) {
 		open = false;
-		// setLocale navigates to the locale-prefixed URL (full reload), which
-		// re-renders the chrome and re-fetches content in the new language.
-		lang.set(code);
+		// A reader-initiated switch: record the explicit choice (so a synced
+		// account profile can't bounce them back) and navigate to the
+		// locale-prefixed URL (full reload), which re-renders the chrome and
+		// re-fetches content in the new language.
+		lang.choose(code);
 	}
 
 	function onWindowClick(e: MouseEvent) {

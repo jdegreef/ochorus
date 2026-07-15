@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { theme } from '$lib/theme.svelte';
@@ -16,7 +18,19 @@
 		{ id: 'reading', label: t('settings.navReading'), icon: 'book' },
 		{ id: 'appearance', label: t('settings.navAppearance'), icon: 'sun' }
 	];
-	let section = $state<Section>('profile');
+	// The active section lives in the URL (?section=…) so it survives the full
+	// reload a language change triggers, and so it's shareable/back-navigable.
+	const isSection = (s: string | null): s is Section =>
+		s === 'profile' || s === 'reading' || s === 'appearance';
+	const initial = $page.url.searchParams.get('section');
+	let section = $state<Section>(isSection(initial) ? initial : 'profile');
+
+	function selectSection(id: Section) {
+		section = id;
+		const url = new URL($page.url);
+		url.searchParams.set('section', id);
+		goto(url, { replaceState: true, keepFocus: true, noScroll: true });
+	}
 
 	const FONTS: { id: ReaderFont; label: string }[] = [
 		{ id: 'serif', label: t('settings.fontSerif') },
@@ -52,7 +66,7 @@
 					class:active-nav={section === s.id}
 					class:text-muted={section !== s.id}
 					aria-current={section === s.id ? 'page' : undefined}
-					onclick={() => (section = s.id)}
+					onclick={() => selectSection(s.id)}
 				>
 					<Icon name={s.icon} size={18} />{s.label}
 				</button>
@@ -90,7 +104,7 @@
 						<select
 							class="settings-select"
 							value={lang.current}
-							onchange={(e) => lang.set((e.currentTarget as HTMLSelectElement).value)}
+							onchange={(e) => lang.choose((e.currentTarget as HTMLSelectElement).value)}
 						>
 							{#each lang.available as l (l.code)}
 								<option value={l.code}>{l.native_name}</option>
