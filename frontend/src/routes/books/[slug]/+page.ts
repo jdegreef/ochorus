@@ -1,6 +1,6 @@
-// Rebuild marker 2026-07-14: backend-only PR #108 cleaned scraped footer junk
-// from 30 book descriptions; Render skips the web build for backend commits,
-// so this touch forces a prerender against the migrated API data.
+// Rebuild marker 2026-07-15: backend-only PR #121 backfilled descriptions for
+// 16 books that imported without one; Render skips the web build for backend
+// commits, so this touch forces a prerender against the migrated API data.
 import { getBook, listBooks } from '$lib/library';
 import { getLang } from '$lib/lang.svelte';
 import { orNotFound } from '$lib/loadHelpers';
