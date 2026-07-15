@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { search, type SearchHit } from '$lib/library';
+	import { search, type SearchHit, type ChapterHit } from '$lib/library';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { markSnippet } from '$lib/highlight';
@@ -113,6 +113,45 @@
 		}));
 	});
 
+	// Within the Passages section, collapse a book's chapter matches under the
+	// book so "where does this theme live across the work" reads as a map, not a
+	// scatter of unrelated-looking lines. Books over the preview cap get a toggle.
+	const PASSAGE_PREVIEW = 3;
+	let expandedBooks = $state(new Set<string>());
+
+	type PassageBook = {
+		slug: string;
+		title: string;
+		author: string;
+		chapters: { key: string; order: number; title: string; snippet: string }[];
+	};
+	const passageBooks = $derived.by<PassageBook[]>(() => {
+		const by = new Map<string, PassageBook>();
+		for (const h of hits) {
+			if (h.type !== 'chapter') continue;
+			const c = h as ChapterHit;
+			let g = by.get(c.book_slug);
+			if (!g) {
+				g = { slug: c.book_slug, title: c.book_title, author: c.author_name, chapters: [] };
+				by.set(c.book_slug, g);
+			}
+			g.chapters.push({
+				key: `${c.book_slug}:${c.chapter_order}`,
+				order: c.chapter_order,
+				title: c.chapter_title || c.book_title,
+				snippet: c.snippet
+			});
+		}
+		return [...by.values()];
+	});
+
+	function toggleBook(slug: string) {
+		const next = new Set(expandedBooks);
+		if (next.has(slug)) next.delete(slug);
+		else next.add(slug);
+		expandedBooks = next;
+	}
+
 	function onInput() {
 		clearTimeout(timer);
 		const term = q.trim();
@@ -170,24 +209,73 @@
 							{t(g.labelKey)}
 							<span class="text-[0.78rem] font-normal tabular-nums text-muted/70">{g.rows.length}</span>
 						</h2>
-						<ul class="divide-y divide-border">
-							{#each g.rows as row (row.key)}
-								<li class="py-4">
-									<a href={localizeHref(row.href)} class="block hover:no-underline">
-										{#if row.meta}
-											<div class="text-small text-muted">{row.meta}</div>
+						{#if g.type === 'chapter'}
+							<!-- Passages: matches collapsed under their book. -->
+							<div class="space-y-5">
+								{#each passageBooks as pb (pb.slug)}
+									{@const expanded = expandedBooks.has(pb.slug)}
+									{@const shown = expanded ? pb.chapters : pb.chapters.slice(0, PASSAGE_PREVIEW)}
+									<div>
+										<a
+											href={localizeHref(`/books/${pb.slug}`)}
+											class="text-small font-semibold text-text hover:text-accent hover:no-underline"
+										>
+											{pb.title} <span class="font-normal text-muted">· {pb.author}</span>
+										</a>
+										<ul class="mt-1 divide-y divide-border border-l border-border pl-3">
+											{#each shown as ch (ch.key)}
+												<li class="py-2.5">
+													<a
+														href={localizeHref(`/books/${pb.slug}/${ch.order}`)}
+														class="block hover:no-underline"
+													>
+														<div class="text-small font-medium text-text">{ch.title}</div>
+														{#if ch.snippet}
+															<p class="mt-0.5 text-small text-muted">
+																<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+																{@html mark(ch.snippet)}
+															</p>
+														{/if}
+													</a>
+												</li>
+											{/each}
+										</ul>
+										{#if pb.chapters.length > PASSAGE_PREVIEW}
+											<button
+												type="button"
+												onclick={() => toggleBook(pb.slug)}
+												class="mt-1.5 pl-3 text-small font-semibold text-accent"
+											>
+												{#if expanded}
+													{t('search.showLess')}
+												{:else}
+													+{pb.chapters.length - PASSAGE_PREVIEW} {t('search.morePassages')}
+												{/if}
+											</button>
 										{/if}
-										<div class="text-body font-semibold text-text">{row.title}</div>
-										{#if row.snippet}
-											<p class="mt-1 text-small text-muted">
-												<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-												{@html mark(row.snippet)}
-											</p>
-										{/if}
-									</a>
-								</li>
-							{/each}
-						</ul>
+									</div>
+								{/each}
+							</div>
+						{:else}
+							<ul class="divide-y divide-border">
+								{#each g.rows as row (row.key)}
+									<li class="py-4">
+										<a href={localizeHref(row.href)} class="block hover:no-underline">
+											{#if row.meta}
+												<div class="text-small text-muted">{row.meta}</div>
+											{/if}
+											<div class="text-body font-semibold text-text">{row.title}</div>
+											{#if row.snippet}
+												<p class="mt-1 text-small text-muted">
+													<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+													{@html mark(row.snippet)}
+												</p>
+											{/if}
+										</a>
+									</li>
+								{/each}
+							</ul>
+						{/if}
 					</section>
 				{/each}
 			</div>
