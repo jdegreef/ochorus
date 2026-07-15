@@ -10,6 +10,10 @@ import type { PageLoad } from './$types';
  * Prerender refresh 2026-07-15: force an ochorus-web rebuild after the api went
  * live with the 4 new Spanish (es) books, so the localized /es/books index and
  * the /es/books/<slug> pages re-crawl and bake with the new titles.
+ *
+ * Prerender refresh 2026-07-15 (lg/sw): same again after the Luganda + Swahili
+ * translations went live, so /lg/books and /sw/books (and their /<slug> pages)
+ * re-crawl and bake with the new titles.
  */
 export const load: PageLoad = async () => {
 	try {
