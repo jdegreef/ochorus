@@ -132,6 +132,19 @@ class SearchTests(TestCase):
             body_html="<p>ravens unpublished</p>",
             is_published=False,
         )
+        Topic.objects.create(
+            slug="prayer",
+            title="Prayer",
+            description="Classics on communion with God.",
+            is_published=True,
+        )
+        Plan.objects.create(
+            slug="thirty-days",
+            language="en",
+            title="Thirty Days of Humility",
+            description="A month with Andrew Murray.",
+            is_published=True,
+        )
 
     def search(self, q, language="en"):
         res = self.client.get(f"/api/library/search/?q={q}&language={language}")
@@ -177,6 +190,38 @@ class SearchTests(TestCase):
     def test_chapter_hits_typed(self):
         results = self.search("dependence")
         self.assertEqual(results[0]["type"], "chapter")
+
+    def test_book_entity_hit(self):
+        hits = [r for r in self.search("Humility") if r["type"] == "book"]
+        self.assertEqual(len(hits), 1)
+        self.assertEqual(hits[0]["book_slug"], "humility")
+        self.assertEqual(hits[0]["author_name"], "Andrew Murray")
+
+    def test_author_entity_hit(self):
+        hits = [r for r in self.search("Murray") if r["type"] == "author"]
+        self.assertEqual(len(hits), 1)
+        self.assertEqual(hits[0]["author_slug"], "andrew-murray")
+
+    def test_topic_entity_hit(self):
+        hits = [r for r in self.search("Prayer") if r["type"] == "topic"]
+        self.assertEqual(len(hits), 1)
+        self.assertEqual(hits[0]["topic_slug"], "prayer")
+
+    def test_plan_entity_hit(self):
+        hits = [r for r in self.search("Thirty") if r["type"] == "plan"]
+        self.assertEqual(len(hits), 1)
+        self.assertEqual(hits[0]["plan_slug"], "thirty-days")
+
+    def test_entities_lead_over_passages(self):
+        # A book/author/topic/plan match should rank above raw body-text hits.
+        results = self.search("Humility")
+        self.assertIn(results[0]["type"], {"book", "author", "topic", "plan"})
+
+    def test_unpublished_author_excluded(self):
+        # An author with nothing published in the language shouldn't surface.
+        Author.objects.create(slug="ghost", name="Ghost Humility Writer")
+        slugs = {r.get("author_slug") for r in self.search("Humility")}
+        self.assertNotIn("ghost", slugs)
 
 
 class SermonBodyTextTests(TestCase):

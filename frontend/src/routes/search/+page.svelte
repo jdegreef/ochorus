@@ -6,11 +6,87 @@
 	import { localizeHref } from '$lib/paraglide/runtime';
 
 	const t = i18n.t;
+
+	// One flat shape for every hit type, so the list renders uniformly (and so
+	// grouping by type is a small step from here). `label` is the type chip;
+	// `meta` is the muted line under the title; `snippet` may be empty for
+	// entities with no prose.
+	type Row = {
+		key: string;
+		label: string;
+		href: string;
+		title: string;
+		meta: string;
+		snippet: string;
+	};
+
+	function toRow(hit: SearchHit): Row {
+		switch (hit.type) {
+			case 'author':
+				return {
+					key: 'author:' + hit.author_slug,
+					label: t('search.typeAuthor'),
+					href: `/authors/${hit.author_slug}`,
+					title: hit.author_name,
+					meta: '',
+					snippet: hit.snippet
+				};
+			case 'book':
+				return {
+					key: 'book:' + hit.book_slug,
+					label: t('search.typeBook'),
+					href: `/books/${hit.book_slug}`,
+					title: hit.book_title,
+					meta: hit.author_name,
+					snippet: hit.snippet
+				};
+			case 'topic':
+				return {
+					key: 'topic:' + hit.topic_slug,
+					label: t('search.typeTopic'),
+					href: `/topics/${hit.topic_slug}`,
+					title: hit.topic_title,
+					meta: '',
+					snippet: hit.snippet
+				};
+			case 'plan':
+				return {
+					key: 'plan:' + hit.plan_slug,
+					label: t('search.typePlan'),
+					href: `/plans/${hit.plan_slug}`,
+					title: hit.plan_title,
+					meta: '',
+					snippet: hit.snippet
+				};
+			case 'sermon':
+				return {
+					key: 'sermon:' + hit.sermon_slug,
+					label: t('search.typeSermon'),
+					href: `/sermons/${hit.sermon_slug}`,
+					title: hit.sermon_title,
+					meta: hit.scripture_ref
+						? `${hit.author_name} · ${hit.scripture_ref}`
+						: hit.author_name,
+					snippet: hit.snippet
+				};
+			default:
+				return {
+					key: `chapter:${hit.book_slug}:${hit.chapter_order}`,
+					label: t('search.typeChapter'),
+					href: `/books/${hit.book_slug}/${hit.chapter_order}`,
+					title: hit.chapter_title || hit.book_title,
+					meta: `${hit.book_title} · ${hit.author_name}`,
+					snippet: hit.snippet
+				};
+		}
+	}
 	let q = $state('');
 	let hits = $state<SearchHit[]>([]);
 	let loading = $state(false);
 	let ran = $state('');
 	let timer: ReturnType<typeof setTimeout> | undefined;
+
+	const rows = $derived(hits.map(toRow));
 
 	function onInput() {
 		clearTimeout(timer);
@@ -61,35 +137,25 @@
 			<p class="text-small text-muted">{t('search.noResults')} “{ran}”.</p>
 		{:else}
 			<ul class="divide-y divide-border">
-				{#each hits as hit (hit.type === 'sermon' ? 'sermon:' + hit.sermon_slug : hit.book_slug + ':' + hit.chapter_order)}
+				{#each rows as row (row.key)}
 					<li class="py-4">
-						{#if hit.type === 'sermon'}
-							<a href={localizeHref(`/sermons/${hit.sermon_slug}`)} class="block hover:no-underline">
-								<div class="text-small text-muted">
-									Sermon · {hit.author_name}{#if hit.scripture_ref}
-										· {hit.scripture_ref}{/if}
-								</div>
-								<div class="text-body font-semibold text-text">{hit.sermon_title}</div>
+						<a href={localizeHref(row.href)} class="block hover:no-underline">
+							<div class="flex items-center gap-2 text-small text-muted">
+								<span
+									class="rounded-full bg-surface-2 px-2 py-0.5 text-[0.68rem] font-semibold uppercase tracking-wide text-accent"
+								>
+									{row.label}
+								</span>
+								{#if row.meta}<span>{row.meta}</span>{/if}
+							</div>
+							<div class="mt-1 text-body font-semibold text-text">{row.title}</div>
+							{#if row.snippet}
 								<p class="mt-1 text-small text-muted">
 									<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-									{@html mark(hit.snippet)}
+									{@html mark(row.snippet)}
 								</p>
-							</a>
-						{:else}
-							<a
-								href={localizeHref(`/books/${hit.book_slug}/${hit.chapter_order}`)}
-								class="block hover:no-underline"
-							>
-								<div class="text-small text-muted">
-									{hit.book_title} · {hit.author_name}
-								</div>
-								<div class="text-body font-semibold text-text">{hit.chapter_title}</div>
-								<p class="mt-1 text-small text-muted">
-									<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-									{@html mark(hit.snippet)}
-								</p>
-							</a>
-						{/if}
+							{/if}
+						</a>
 					</li>
 				{/each}
 			</ul>
