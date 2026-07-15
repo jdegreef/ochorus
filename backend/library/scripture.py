@@ -80,6 +80,27 @@ def _wrap_text(text: str) -> str:
 
 
 @lru_cache(maxsize=4096)
+def reference_verse_ids(text: str) -> frozenset:
+    """Every ASV verse id referenced by ``text`` (empty if it isn't a reference).
+
+    Used by search to match a scripture query against a sermon's ``scripture_ref``
+    by verse *overlap* — so "John 3:16" finds a sermon on "John 3:14-21", and
+    abbreviations ("Jn 3:16") and chapter-only queries ("John 3") resolve too.
+    """
+    try:
+        refs = bible.get_references(text)
+    except Exception:
+        return frozenset()
+    ids: set[int] = set()
+    for ref in refs:
+        try:
+            ids.update(bible.convert_reference_to_verse_ids(ref))
+        except Exception:
+            continue
+    return frozenset(ids)
+
+
+@lru_cache(maxsize=4096)
 def lookup(ref_text: str) -> dict | None:
     """Resolve a reference to ASV verse text for the popover, or None."""
     ref = _first_reference(ref_text)
