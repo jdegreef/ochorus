@@ -42,18 +42,7 @@
 				{listen.rate}×
 			</button>
 
-			{#if listen.matchingVoices.length > 1}
-				<select
-					class="max-w-32 rounded-sm border border-border bg-surface px-1.5 py-1 text-small text-muted"
-					value={listen.voiceURI}
-					onchange={(e) => listen.setVoice(e.currentTarget.value)}
-					aria-label={t('reader.voice')}
-				>
-					{#each listen.matchingVoices as voice (voice.voiceURI)}
-						<option value={voice.voiceURI}>{voice.name}</option>
-					{/each}
-				</select>
-			{/if}
+			<!-- Voice is chosen in Settings → Reading → Listen. -->
 
 			<select
 				class="rounded-sm border bg-surface px-1 py-1 text-small tabular-nums"

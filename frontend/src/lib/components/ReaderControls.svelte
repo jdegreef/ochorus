@@ -188,23 +188,8 @@
 				<div class="mt-3 border-t border-border pt-3">
 					<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.listen')}</span>
 
-					{#if listen.voices.length}
-						<select
-							class="mb-2 w-full rounded-sm border border-border bg-surface px-2 py-1.5 text-small text-text"
-							value={listen.voiceURI}
-							onchange={(e) => listen.setVoice(e.currentTarget.value)}
-							aria-label={t('reader.voice')}
-						>
-							<option value="">{t('reader.voice')}</option>
-							{#each listen.voicesByLang as group (group.lang)}
-								<optgroup label={group.lang}>
-									{#each group.voices as voice (voice.voiceURI)}
-										<option value={voice.voiceURI}>{voice.name}</option>
-									{/each}
-								</optgroup>
-							{/each}
-						</select>
-					{/if}
+					<!-- Voice is chosen in Settings → Reading → Listen (top voices per
+					     language); the reader keeps only the speed control below. -->
 
 					<div class="flex items-center gap-2">
 						<div class="grid flex-1 grid-cols-5 gap-1">
