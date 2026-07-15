@@ -66,6 +66,39 @@
 		{ v: 'bio', k: 'bios.filterBioOnly' }
 	];
 
+	// --- Eras -------------------------------------------------------------------
+	// Named church-history buckets derived purely from birth year (no per-author
+	// data). The label characterises the era; the year range beside it keeps the
+	// generalisation honest. Undated writers (Ochorus' contemporary contributors)
+	// fall to a trailing "Contemporary" group.
+	type EraId = 'puritans' | 'awakenings' | 'missionary' | 'modern' | 'contemporary';
+	const ERAS: { id: EraId; k: string; range: string }[] = [
+		{ id: 'puritans', k: 'bios.eraPuritans', range: '–1699' },
+		{ id: 'awakenings', k: 'bios.eraAwakenings', range: '1700–1799' },
+		{ id: 'missionary', k: 'bios.eraMissionary', range: '1800–1899' },
+		{ id: 'modern', k: 'bios.eraModern', range: '1900–' },
+		{ id: 'contemporary', k: 'bios.eraContemporary', range: '' }
+	];
+	function eraOf(birth: number | null): EraId {
+		if (birth == null) return 'contemporary';
+		if (birth < 1700) return 'puritans';
+		if (birth < 1800) return 'awakenings';
+		if (birth < 1900) return 'missionary';
+		return 'modern';
+	}
+	// Grouped, era-ordered sections built from `sorted` (already ascending by
+	// birth year in the era sort), keeping only eras that have writers.
+	const eraGroups = $derived.by(() => {
+		const byId = new Map<EraId, AuthorBio[]>();
+		for (const a of sorted) {
+			const id = eraOf(a.birth_year);
+			const arr = byId.get(id);
+			if (arr) arr.push(a);
+			else byId.set(id, [a]);
+		}
+		return ERAS.filter((e) => byId.has(e.id)).map((e) => ({ era: e, authors: byId.get(e.id)! }));
+	});
+
 	// schema.org ItemList of Person entities — one per writer, mirroring the
 	// Person data on each author page. Gives search engines a structured roster
 	// of the writers (rich results + entity discovery). Built from the full list,
@@ -152,13 +185,8 @@
 		</select>
 	</div>
 
-	{#if sorted.length === 0}
-		<p class="py-16 text-center text-body text-muted">{t('bios.noResults')}</p>
-	{/if}
-
-	<div class="space-y-10">
-		{#each sorted as author (author.slug)}
-			{@const shelf = booksByAuthor.get(author.slug) ?? []}
+	{#snippet card(author: AuthorBio)}
+		{@const shelf = booksByAuthor.get(author.slug) ?? []}
 			<article id={author.slug} class="scroll-mt-24">
 				<div class="flex items-center gap-4">
 					<a href={localizeHref(`/authors/${author.slug}`)} class="shrink-0 hover:no-underline">
@@ -226,6 +254,40 @@
 					</div>
 				{/if}
 			</article>
+	{/snippet}
+
+	{#if sorted.length === 0}
+		<p class="py-16 text-center text-body text-muted">{t('bios.noResults')}</p>
+	{:else if sort === 'era'}
+		{#if eraGroups.length > 1}
+			<nav class="mb-8 flex flex-wrap gap-1.5" aria-label={t('bios.sortEra')}>
+				{#each eraGroups as g (g.era.id)}
+					<a
+						href="#era-{g.era.id}"
+						class="rounded-full border border-border px-2.5 py-1 text-[0.75rem] text-muted hover:border-accent hover:text-accent hover:no-underline"
+					>{t(g.era.k)}</a>
+				{/each}
+			</nav>
+		{/if}
+		{#each eraGroups as g (g.era.id)}
+			<section id="era-{g.era.id}" class="mb-12 scroll-mt-24">
+				<h2 class="mb-6 flex items-baseline gap-2 border-b border-border pb-2 text-h3 text-text">
+					{t(g.era.k)}
+					{#if g.era.range}<span class="text-small font-normal text-muted">{g.era.range}</span>{/if}
+					<span class="ml-auto text-small font-normal text-muted">{g.authors.length}</span>
+				</h2>
+				<div class="space-y-10">
+					{#each g.authors as author (author.slug)}
+						{@render card(author)}
+					{/each}
+				</div>
+			</section>
 		{/each}
-	</div>
+	{:else}
+		<div class="space-y-10">
+			{#each sorted as author (author.slug)}
+				{@render card(author)}
+			{/each}
+		</div>
+	{/if}
 </div>
