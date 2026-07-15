@@ -122,6 +122,8 @@ export type SearchHit = ChapterHit | SermonHit | AuthorHit | BookHit | TopicHit 
 export interface SearchResponse {
 	query: string;
 	results: SearchHit[];
+	/** A "did you mean" term when the query found nothing (fuzzy-matched). */
+	suggestion?: string;
 }
 
 export interface SermonSummary {

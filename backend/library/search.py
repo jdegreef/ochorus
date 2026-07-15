@@ -17,6 +17,7 @@ are plain text either way; the client escapes them and renders the markers as
 
 from __future__ import annotations
 
+import difflib
 import re
 
 from django.db import connection
@@ -364,3 +365,62 @@ def _scripture_sermon_hits(q, sermons, base):
             if len(hits) >= CAPS["sermon"]:
                 break
     return hits
+
+
+# --- Did-you-mean -------------------------------------------------------------
+
+_SUGGEST_CUTOFF = 0.72
+_WORD = re.compile(r"[^\W\d_]{4,}", re.UNICODE)
+
+
+def suggest(q: str, language: str) -> str | None:
+    """Closest library term to a query that found nothing — the "did you mean".
+
+    Fuzzy-matches (difflib, DB-agnostic) against a small vocabulary of author
+    names and book/topic/plan titles plus their significant words, so a
+    misspelt author ("Spurgen") or title ("humilty") resolves. Returns None
+    when nothing is close enough or the best match is the query itself.
+    """
+    ql = q.strip().lower()
+    if len(ql) < 3:
+        return None
+
+    # search-key (lowercased) -> display term, deduped. Each source string
+    # contributes itself and its individual long words, so a surname buried in
+    # a full name is reachable.
+    vocab: dict[str, str] = {}
+
+    def add(s: str) -> None:
+        if not s:
+            return
+        vocab.setdefault(s.lower(), s)
+        for w in _WORD.findall(s):
+            vocab.setdefault(w.lower(), w)
+
+    names = (
+        Author.objects.filter(
+            Q(books__is_published=True, books__language=language)
+            | Q(sermons__is_published=True, sermons__language=language)
+        )
+        .distinct()
+        .values_list("name", flat=True)
+    )
+    for name in names:
+        add(name)
+    for title in Book.objects.filter(
+        is_published=True, language=language
+    ).values_list("title", flat=True):
+        add(title)
+    for title in Plan.objects.filter(
+        is_published=True, language=language
+    ).values_list("title", flat=True):
+        add(title)
+    for title in Topic.objects.filter(is_published=True).values_list(
+        "title", flat=True
+    ):
+        add(title)
+
+    best = difflib.get_close_matches(ql, list(vocab), n=1, cutoff=_SUGGEST_CUTOFF)
+    if not best or best[0] == ql:
+        return None
+    return vocab[best[0]]

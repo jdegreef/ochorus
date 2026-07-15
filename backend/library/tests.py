@@ -223,6 +223,30 @@ class SearchTests(TestCase):
         slugs = {r.get("author_slug") for r in self.search("Humility")}
         self.assertNotIn("ghost", slugs)
 
+    def _raw(self, q, language="en"):
+        res = self.client.get("/api/library/search/", {"q": q, "language": language})
+        self.assertEqual(res.status_code, 200)
+        return res.data
+
+    def test_suggests_on_misspelled_title(self):
+        data = self._raw("humilty")
+        self.assertEqual(data["results"], [])
+        self.assertEqual(data.get("suggestion", "").lower(), "humility")
+
+    def test_suggests_misspelled_author_surname(self):
+        data = self._raw("Spurgen")
+        self.assertEqual(data.get("suggestion", "").lower(), "spurgeon")
+
+    def test_no_suggestion_when_results_found(self):
+        data = self._raw("Humility")
+        self.assertTrue(data["results"])
+        self.assertNotIn("suggestion", data)
+
+    def test_no_suggestion_for_gibberish(self):
+        data = self._raw("zxqwvbn")
+        self.assertEqual(data["results"], [])
+        self.assertNotIn("suggestion", data)
+
 
 class ScriptureSearchTests(TestCase):
     def setUp(self):
