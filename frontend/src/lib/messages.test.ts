@@ -25,12 +25,16 @@ const keysOf = (l: string) => Object.keys(data[l]).filter((k) => k !== '$schema'
 
 // Terms deliberately identical to English across locales: typography names and
 // (in Spanish) "Normal". Anything else identical to English is untranslated.
+// The settings page repeats several of these under `settings_*` keys.
 const SAME_AS_ENGLISH_OK = new Set([
 	'font_serif',
 	'font_sans',
 	'font_dyslexic',
 	'spacing_normal',
-	'width_normal'
+	'width_normal',
+	'settings_font_serif',
+	'settings_font_sans',
+	'settings_width_normal'
 ]);
 
 const toSnake = (key: string) =>
