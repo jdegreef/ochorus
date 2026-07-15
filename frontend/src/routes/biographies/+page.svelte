@@ -3,6 +3,7 @@
 	import { goto } from '$app/navigation';
 	import type { AuthorBio, BookSummary } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
+	import { absUrl, jsonLd } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import BookCover from '$lib/components/BookCover.svelte';
@@ -65,6 +66,32 @@
 		{ v: 'bio', k: 'bios.filterBioOnly' }
 	];
 
+	// schema.org ItemList of Person entities — one per writer, mirroring the
+	// Person data on each author page. Gives search engines a structured roster
+	// of the writers (rich results + entity discovery). Built from the full list,
+	// not the current filter, so the markup describes the page's whole content.
+	const peopleLd = $derived(
+		jsonLd({
+			'@context': 'https://schema.org',
+			'@type': 'ItemList',
+			name: 'Christian writers on Ochorus',
+			numberOfItems: authors.length,
+			itemListElement: authors.map((a, i) => ({
+				'@type': 'ListItem',
+				position: i + 1,
+				item: {
+					'@type': 'Person',
+					name: a.name,
+					url: absUrl(localizeHref(`/authors/${a.slug}`)),
+					image: a.photo_url ? absUrl(a.photo_url) : undefined,
+					description: a.bio || undefined,
+					birthDate: a.birth_year ? String(a.birth_year) : undefined,
+					deathDate: a.death_year ? String(a.death_year) : undefined
+				}
+			}))
+		})
+	);
+
 	// Redirect old /biographies#<slug> deep-links to the new author pages.
 	onMount(() => {
 		const slug = location.hash.replace(/^#/, '');
@@ -79,6 +106,7 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="{t('bios.eyebrow')} — Ochorus" />
 	<meta property="og:url" content="{SITE_URL}{localizeHref('/biographies')}" />
+	{@html peopleLd}
 </svelte:head>
 
 <div class="mx-auto max-w-3xl px-5 py-12">
