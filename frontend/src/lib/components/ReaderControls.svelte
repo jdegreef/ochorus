@@ -6,18 +6,11 @@
 		type Measure,
 		type ReaderFont
 	} from '$lib/readerPrefs.svelte';
-	import { listen, RATES } from '$lib/listen.svelte';
 	import { i18n } from '$lib/i18n.svelte';
-	import Icon from './Icon.svelte';
 
 	let open = $state(false);
 	let wrap = $state<HTMLDivElement>();
 	const t = i18n.t;
-
-	// Load the device voice list when the panel opens (async on some browsers).
-	$effect(() => {
-		if (open) listen.init();
-	});
 
 	const LEADINGS: { v: Leading; k: string }[] = [
 		{ v: 'compact', k: 'spacing.compact' },
@@ -66,31 +59,6 @@
 			role="dialog"
 			aria-label={t('reader.textSettings')}
 		>
-			<!-- Layout: continuous scroll vs. paged (page-turn) reading -->
-			<div class="mb-3">
-				<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.layout')}</span>
-				<div class="grid grid-cols-2 gap-1">
-					<button
-						class="rounded-sm border px-2 py-1.5 text-[0.8rem]"
-						class:border-accent={!readerPrefs.paged}
-						class:text-accent={!readerPrefs.paged}
-						class:border-border={readerPrefs.paged}
-						class:text-muted={readerPrefs.paged}
-						onclick={() => readerPrefs.setPaged(false)}
-						aria-pressed={!readerPrefs.paged}>{t('reader.layoutScroll')}</button
-					>
-					<button
-						class="rounded-sm border px-2 py-1.5 text-[0.8rem]"
-						class:border-accent={readerPrefs.paged}
-						class:text-accent={readerPrefs.paged}
-						class:border-border={!readerPrefs.paged}
-						class:text-muted={!readerPrefs.paged}
-						onclick={() => readerPrefs.setPaged(true)}
-						aria-pressed={readerPrefs.paged}>{t('reader.layoutPage')}</button
-					>
-				</div>
-			</div>
-
 			<!-- Font size -->
 			<div class="mb-3 flex items-center justify-between">
 				<span class="text-small font-semibold text-text">{t('reader.size')}</span>
@@ -183,39 +151,32 @@
 				</div>
 			</div>
 
-			<!-- Listening (voice + speed): device Text-to-Speech settings, applied to
-			     chapters, sermons and biographies alike. -->
-			{#if listen.supported}
-				<div class="mt-3 border-t border-border pt-3">
-					<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.listen')}</span>
-
-					<!-- Voice is chosen in Settings → Reading → Listen (top voices per
-					     language); the reader keeps only the speed control below. -->
-
-					<div class="flex items-center gap-2">
-						<div class="grid flex-1 grid-cols-5 gap-1">
-							{#each RATES as r (r)}
-								<button
-									class="rounded-sm border px-1 py-1.5 text-[0.8rem] tabular-nums"
-									class:border-accent={listen.rate === r}
-									class:text-accent={listen.rate === r}
-									class:border-border={listen.rate !== r}
-									class:text-muted={listen.rate !== r}
-									onclick={() => listen.setRate(r)}
-									aria-label={t('reader.speed')}
-									aria-pressed={listen.rate === r}>{r}×</button
-								>
-							{/each}
-						</div>
-						<button
-							class="btn btn-ghost !px-2.5 !py-1.5"
-							onclick={() => listen.preview(t('bios.tagline'))}
-							aria-label={t('reader.listen')}
-							title={t('reader.listen')}><Icon name="play" size={15} /></button
-						>
-					</div>
+			<!-- Layout: continuous scroll vs. paged (page-turn) reading. Below the
+			     type controls — it's a mode switch, changed far less often than size
+			     or spacing. Listening (voice + speed) lives in Settings → Reading. -->
+			<div class="mt-3 border-t border-border pt-3">
+				<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.layout')}</span>
+				<div class="grid grid-cols-2 gap-1">
+					<button
+						class="rounded-sm border px-2 py-1.5 text-[0.8rem]"
+						class:border-accent={!readerPrefs.paged}
+						class:text-accent={!readerPrefs.paged}
+						class:border-border={readerPrefs.paged}
+						class:text-muted={readerPrefs.paged}
+						onclick={() => readerPrefs.setPaged(false)}
+						aria-pressed={!readerPrefs.paged}>{t('reader.layoutScroll')}</button
+					>
+					<button
+						class="rounded-sm border px-2 py-1.5 text-[0.8rem]"
+						class:border-accent={readerPrefs.paged}
+						class:text-accent={readerPrefs.paged}
+						class:border-border={!readerPrefs.paged}
+						class:text-muted={!readerPrefs.paged}
+						onclick={() => readerPrefs.setPaged(true)}
+						aria-pressed={readerPrefs.paged}>{t('reader.layoutPage')}</button
+					>
 				</div>
-			{/if}
+			</div>
 		</div>
 	{/if}
 </div>

@@ -37,6 +37,11 @@ export const FONT_STACK: Record<ReaderFont, string> = {
 const SCALE_MIN = 0.8;
 const SCALE_MAX = 1.6;
 
+// Viewport width (px) at/above which the page-turn layout is the first-run
+// default — wide enough for a comfortable two-column spread. Matches the
+// reader's own two-column threshold.
+const WIDE_SCREEN_MIN = 1024;
+
 const KEY = 'ochorus:reader-prefs';
 
 interface Stored {
@@ -71,7 +76,13 @@ function load(): Stored {
 		measure: (raw.measure as Measure) in MEASURE ? (raw.measure as Measure) : DEFAULTS.measure,
 		font: (raw.font as ReaderFont) in FONT_STACK ? (raw.font as ReaderFont) : DEFAULTS.font,
 		align: ALIGNS.includes(raw.align as Align) ? (raw.align as Align) : DEFAULTS.align,
-		paged: typeof raw.paged === 'boolean' ? raw.paged : DEFAULTS.paged
+		// Default to the page-turn (two-column) layout on wide screens, where it
+		// reads like an open book; keep scrolling on phones/tablets. Once the
+		// reader picks a layout it's stored and honoured everywhere.
+		paged:
+			typeof raw.paged === 'boolean'
+				? raw.paged
+				: browser && window.innerWidth >= WIDE_SCREEN_MIN
 	};
 }
 
