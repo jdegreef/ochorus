@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount, tick, untrack } from 'svelte';
+	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import { getBook, getPlan, type BookDetail, type Chapter, type PlanDetail } from '$lib/library';
@@ -125,6 +126,23 @@
 	let pageW = $state(0);
 	const paged = $derived(readerPrefs.paged && listen.status === 'idle');
 
+	// Kindle-style two-column spread: when the viewport is wide enough for two
+	// comfortable columns, page mode lays the text out as an open book (two
+	// columns per page) rather than one narrow centred column that wastes the
+	// sides. Below the threshold it stays single-column. Tracked reactively so a
+	// resize (or entering/leaving page mode) re-lays out immediately.
+	const TWO_COL_MIN = 1024;
+	let viewportW = $state(browser ? window.innerWidth : 0);
+	const cols = $derived(paged && viewportW >= TWO_COL_MIN ? 2 : 1);
+	// Single column keeps the reader's chosen measure; a two-column spread sizes
+	// to two of that measure plus a centre gutter (capped to the viewport), so
+	// each column stays near the comfort width the reader picked.
+	const articleMax = $derived(
+		cols === 2
+			? 'min(calc(2 * var(--reading-measure) + 4rem), calc(100vw - 2rem))'
+			: 'var(--reading-measure)'
+	);
+
 	// The paged viewport is fixed between the reader chrome and the progress
 	// footer; measure their real heights (the chrome wraps to several rows on
 	// narrow screens) so the columns never sit under either bar.
@@ -182,10 +200,14 @@
 		applyInsets();
 		const w = articleEl.clientWidth;
 		pageW = w;
-		// Apply the column width imperatively so the scrollWidth read below reflows
-		// against it synchronously (Svelte's reactive style flush is async).
+		// Apply the column width + count imperatively so the scrollWidth read below
+		// reflows against them synchronously (Svelte's reactive style flush is async).
 		pager.style.setProperty('--page-w', `${w}px`);
-		pageTotal = w > 0 ? Math.max(1, Math.round(pager.scrollWidth / w)) : 1;
+		pager.style.setProperty('--cols', `${cols}`);
+		// Pages are `pageW`-wide windows over the column flow. ceil (with a small
+		// epsilon to absorb sub-pixel over-report) counts a trailing partial page —
+		// needed for a two-column spread whose last page may hold a single column.
+		pageTotal = w > 0 ? Math.max(1, Math.ceil(pager.scrollWidth / w - 0.02)) : 1;
 		if (pageIndex > pageTotal - 1) pageIndex = pageTotal - 1;
 	}
 
@@ -272,6 +294,7 @@
 		void readerPrefs.font;
 		void marks.list;
 		void readerUi.focus;
+		void cols; // one- vs two-column spread changes the page width and count
 		untrack(() => {
 			(async () => {
 				await tick();
@@ -280,10 +303,14 @@
 		});
 	});
 
-	// Keep the count correct across viewport resizes / orientation changes.
+	// Keep the count correct — and the one/two-column choice current — across
+	// viewport resizes / orientation changes.
 	$effect(() => {
-		if (!paged) return;
-		const onResize = () => untrack(() => measurePages());
+		if (!browser) return;
+		const onResize = () => {
+			viewportW = window.innerWidth;
+			if (paged) untrack(() => measurePages());
+		};
 		window.addEventListener('resize', onResize);
 		return () => window.removeEventListener('resize', onResize);
 	});
@@ -628,7 +655,8 @@
 	class="mx-auto px-5 py-10"
 	class:paged
 	class:focus={readerUi.focus}
-	style="{readerPrefs.style}; max-width: var(--reading-measure)"
+	class:twocol={cols === 2}
+	style="{readerPrefs.style}; max-width: {articleMax}"
 	dir="auto"
 	onclick={onArticleClick}
 >
@@ -666,7 +694,7 @@
 	<!-- The pager wraps the chapter's own content (label, title, body). In scroll
 	     mode it is display:contents (no effect); in page mode it becomes the
 	     translated CSS-column content and the surrounding chrome is hidden. -->
-	<div class="pager" bind:this={pager} style="--page-w:{pageW}px; --page-idx:{pageIndex};">
+	<div class="pager" bind:this={pager} style="--page-w:{pageW}px; --page-idx:{pageIndex}; --cols:{cols};">
 		<p class="mb-1 text-small uppercase tracking-wider text-muted">
 			Chapter {chapter.order} · {readingTime(chapter.word_count)}
 		</p>
@@ -701,6 +729,18 @@
 		{/if}
 	</nav>
 </article>
+
+<!-- Kindle-style edge page-turn arrows (page mode only). The outer screen edge
+     is already an invisible tap zone; these are the visible affordance for
+     pointer users, and roll over to the adjacent chapter at a chapter's ends. -->
+{#if paged}
+	<button class="pageturn left" onclick={() => turnPage(-1)} aria-label={t('reader.previous')} title={t('reader.previous')}>
+		<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6" /></svg>
+	</button>
+	<button class="pageturn right" onclick={() => turnPage(1)} aria-label={t('reader.next')} title={t('reader.next')}>
+		<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
+	</button>
+{/if}
 
 <!-- Reading-progress footer: a draggable scrubber + location, fixed, hidden in
      focus/Listen modes. -->
@@ -812,20 +852,73 @@
 	}
 	.paged .pager {
 		--pgpad: 1.25rem;
+		--cols: 1;
 		display: block;
 		height: 100%;
 		max-width: none;
 		box-sizing: border-box;
 		padding: 0.85rem var(--pgpad) 0.5rem;
-		column-width: calc(var(--page-w) - 2 * var(--pgpad));
+		/* Each page window (width --page-w) holds --cols columns. With the gap set
+		   to twice the side padding, the columns land flush inside the page and the
+		   inter-page gutter parks the next column fully off-screen (no sliver). This
+		   one formula yields a single column when --cols is 1 and a Kindle-style
+		   two-column spread when it's 2. */
+		column-width: calc(var(--page-w) / var(--cols) - 2 * var(--pgpad));
 		column-gap: calc(2 * var(--pgpad));
 		column-fill: auto;
 		transform: translateX(calc(-1 * var(--page-idx) * var(--page-w)));
 		transition: transform 0.28s ease;
 	}
+	/* A touch more breathing room around a two-column spread. */
+	.paged.twocol .pager {
+		--pgpad: 2rem;
+	}
 	@media (prefers-reduced-motion: reduce) {
 		.paged .pager {
 			transition: none;
+		}
+	}
+
+	/* Large, unobtrusive edge page-turn buttons — the visible twin of the outer
+	   tap zones, vertically centred like a Kindle spread. */
+	.pageturn {
+		position: fixed;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 6;
+		display: grid;
+		place-items: center;
+		width: 3rem;
+		height: 3rem;
+		border-radius: 9999px;
+		border: 1px solid var(--border);
+		color: var(--muted);
+		background: color-mix(in srgb, var(--bg) 70%, transparent);
+		backdrop-filter: blur(4px);
+		opacity: 0.55;
+		transition:
+			opacity 0.15s ease,
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+	.pageturn:hover {
+		opacity: 1;
+		color: var(--text);
+		border-color: var(--accent);
+	}
+	/* Park each arrow just outside the (centred) reading column. The offset keys
+	   off the normal-measure spread width; max() keeps it on-screen when the
+	   column runs wide, and touch screens hide the arrows entirely (below). */
+	.pageturn.left {
+		left: max(0.5rem, calc((100vw - 88rem) / 2 - 3.75rem));
+	}
+	.pageturn.right {
+		right: max(0.5rem, calc((100vw - 88rem) / 2 - 3.75rem));
+	}
+	/* On touch screens the tap zones suffice; keep the edges clean. */
+	@media (pointer: coarse) {
+		.pageturn {
+			display: none;
 		}
 	}
 
