@@ -88,7 +88,36 @@ export interface SermonHit {
 	snippet: string;
 }
 
-export type SearchHit = ChapterHit | SermonHit;
+export interface AuthorHit {
+	type: 'author';
+	author_slug: string;
+	author_name: string;
+	snippet: string;
+}
+
+export interface BookHit {
+	type: 'book';
+	book_slug: string;
+	book_title: string;
+	author_name: string;
+	snippet: string;
+}
+
+export interface TopicHit {
+	type: 'topic';
+	topic_slug: string;
+	topic_title: string;
+	snippet: string;
+}
+
+export interface PlanHit {
+	type: 'plan';
+	plan_slug: string;
+	plan_title: string;
+	snippet: string;
+}
+
+export type SearchHit = ChapterHit | SermonHit | AuthorHit | BookHit | TopicHit | PlanHit;
 
 export interface SearchResponse {
 	query: string;
