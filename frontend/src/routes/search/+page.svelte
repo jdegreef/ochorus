@@ -4,6 +4,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { markSnippet } from '$lib/highlight';
 	import { localizeHref } from '$lib/paraglide/runtime';
+	import { goto } from '$app/navigation';
 
 	const t = i18n.t;
 
@@ -152,7 +153,62 @@
 		expandedBooks = next;
 	}
 
+	// --- Keyboard navigation ---------------------------------------------------
+	// Flatten the *visible* leaf results (entity/sermon rows + the shown passage
+	// chapters, in display order) so ↑/↓ walk them and Enter opens the active one.
+	let activeIndex = $state(-1);
+	const nav = $derived.by(() => {
+		const keys: string[] = [];
+		const map = new Map<string, string>();
+		for (const g of groups) {
+			if (g.type === 'chapter') {
+				for (const pb of passageBooks) {
+					const shown = expandedBooks.has(pb.slug)
+						? pb.chapters
+						: pb.chapters.slice(0, PASSAGE_PREVIEW);
+					for (const ch of shown) {
+						keys.push(ch.key);
+						map.set(ch.key, `/books/${pb.slug}/${ch.order}`);
+					}
+				}
+			} else {
+				for (const row of g.rows) {
+					keys.push(row.key);
+					map.set(row.key, row.href);
+				}
+			}
+		}
+		return { keys, map };
+	});
+	const activeKey = $derived(
+		activeIndex >= 0 && activeIndex < nav.keys.length ? nav.keys[activeIndex] : ''
+	);
+
+	// Keep the highlighted result in view as it moves.
+	$effect(() => {
+		if (activeKey) document.getElementById(`res-${activeKey}`)?.scrollIntoView({ block: 'nearest' });
+	});
+
+	function onKeydown(e: KeyboardEvent) {
+		const n = nav.keys.length;
+		if (!n) return;
+		if (e.key === 'ArrowDown') {
+			e.preventDefault();
+			activeIndex = (activeIndex + 1) % n;
+		} else if (e.key === 'ArrowUp') {
+			e.preventDefault();
+			activeIndex = activeIndex <= 0 ? n - 1 : activeIndex - 1;
+		} else if (e.key === 'Enter') {
+			const key = activeIndex >= 0 ? nav.keys[activeIndex] : nav.keys[0];
+			const href = nav.map.get(key);
+			if (href) goto(localizeHref(href));
+		} else if (e.key === 'Escape') {
+			activeIndex = -1;
+		}
+	}
+
 	function onInput() {
+		activeIndex = -1;
 		clearTimeout(timer);
 		const term = q.trim();
 		if (term.length < 2) {
@@ -185,21 +241,37 @@
 	<input
 		bind:value={q}
 		oninput={onInput}
+		onkeydown={onKeydown}
 		type="search"
 		autocomplete="off"
+		role="combobox"
+		aria-expanded={hits.length > 0}
+		aria-controls="search-results"
 		placeholder={t('search.placeholder')}
 		aria-label={t('search.title')}
 		class="w-full rounded-card border border-border bg-surface px-4 py-3 text-body text-text"
 	/>
 
-	<div class="mt-6">
+	<div class="mt-6" id="search-results">
 		{#if loading}
-			<p class="text-small text-muted">…</p>
+			<div class="space-y-6" aria-hidden="true">
+				{#each Array(4) as _, i (i)}
+					<div class="animate-pulse space-y-2">
+						<div class="h-3 w-1/4 rounded bg-surface-2"></div>
+						<div class="h-4 w-2/3 rounded bg-surface-2"></div>
+						<div class="h-3 w-full rounded bg-surface-2"></div>
+					</div>
+				{/each}
+			</div>
 		{:else if q.trim().length < 2}
 			<p class="text-small text-muted">{t('search.prompt')}</p>
 		{:else if ran && hits.length === 0}
 			<p class="text-small text-muted">{t('search.noResults')} “{ran}”.</p>
 		{:else}
+			<p class="mb-4 text-small text-muted" aria-live="polite">
+				{hits.length}
+				{hits.length === 1 ? t('search.resultsOne') : t('search.resultsMany')}
+			</p>
 			<div class="space-y-8">
 				{#each groups as g (g.type)}
 					<section>
@@ -227,7 +299,9 @@
 												<li class="py-2.5">
 													<a
 														href={localizeHref(`/books/${pb.slug}/${ch.order}`)}
-														class="block hover:no-underline"
+														id="res-{ch.key}"
+														class="-mx-2 block rounded px-2 hover:no-underline"
+														class:bg-surface-2={ch.key === activeKey}
 													>
 														<div class="text-small font-medium text-text">{ch.title}</div>
 														{#if ch.snippet}
@@ -260,7 +334,12 @@
 							<ul class="divide-y divide-border">
 								{#each g.rows as row (row.key)}
 									<li class="py-4">
-										<a href={localizeHref(row.href)} class="block hover:no-underline">
+										<a
+											href={localizeHref(row.href)}
+											id="res-{row.key}"
+											class="-mx-2 block rounded px-2 hover:no-underline"
+											class:bg-surface-2={row.key === activeKey}
+										>
 											{#if row.meta}
 												<div class="text-small text-muted">{row.meta}</div>
 											{/if}
