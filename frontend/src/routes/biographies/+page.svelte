@@ -156,7 +156,17 @@
 						</a>
 					</div>
 				</div>
-				<p class="mt-4 text-body leading-relaxed text-muted">{author.bio}</p>
+				<p class="mt-4 line-clamp-3 text-body leading-relaxed text-muted">{author.bio}</p>
+				<!-- The "View biography →" CTA above already serves book-less authors;
+				     add the read-more only where the CTA above is a book count. -->
+				{#if author.book_count > 0}
+					<a
+						href={localizeHref(`/authors/${author.slug}`)}
+						class="mt-1.5 inline-block text-small font-semibold text-accent"
+					>
+						{t('bios.readMore')} →
+					</a>
+				{/if}
 			</article>
 		{/each}
 	</div>
