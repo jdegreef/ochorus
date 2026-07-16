@@ -340,6 +340,27 @@ class SeedSermonsTests(TestCase):
         )
         self.assertGreaterEqual(Sermon.objects.count(), 18)
 
+    def test_seeds_the_translation_badge_on_create(self):
+        from django.core.management import call_command
+
+        call_command("seed_sermons", verbosity=0)
+        lg = Sermon.objects.get(slug="the-immutability-of-god", language="lg")
+        self.assertEqual(lg.source_type, Book.SourceType.AI_UNREVIEWED)
+
+    def test_seed_never_reverts_an_approved_translation(self):
+        # source_type is create-only. It ships in the fixture as ai_unreviewed,
+        # but once a native speaker approves a translation the review workflow
+        # owns it — re-asserting the fixture value on the next deploy would
+        # silently restore the "awaiting native review" badge and make
+        # approve_sermon_translation useless.
+        from django.core.management import call_command
+
+        call_command("seed_sermons", verbosity=0)
+        call_command("approve_sermon_translation", "the-immutability-of-god", language="lg")
+        call_command("seed_sermons", verbosity=0)  # the next deploy
+        lg = Sermon.objects.get(slug="the-immutability-of-god", language="lg")
+        self.assertEqual(lg.source_type, Book.SourceType.AI_REVIEWED)
+
     @skipUnless(connection.vendor == "postgresql", "Postgres-only FTS path")
     def test_postgres_stemming_and_ranking(self):
         # "depend" should stem-match "dependence" under the english config.
@@ -609,6 +630,21 @@ class SermonTranslationLabelTests(TestCase):
         self._relabel()
         t.refresh_from_db()
         self.assertEqual(t.source_type, Book.SourceType.AI_UNREVIEWED)
+
+    def test_slug_collision_across_authors_is_not_a_translation(self):
+        # slug is unique per language, not per author: a native-language
+        # original may legitimately share a slug with an unrelated English
+        # sermon. Matching on slug alone would brand a human's own work as
+        # machine output.
+        self._sermon("rest", "en")  # Spurgeon's English sermon
+        other = Author.objects.create(slug="hb", name="Hannah Buyinza")
+        native = Sermon.objects.create(
+            author=other, slug="rest", language="lg", title="Okuwummula",
+            body_html="<p>an original Luganda sermon</p>",
+        )
+        self._relabel()
+        native.refresh_from_db()
+        self.assertEqual(native.source_type, Book.SourceType.PUBLIC_DOMAIN)
 
 
 class FixtureSermonLabelTests(TestCase):

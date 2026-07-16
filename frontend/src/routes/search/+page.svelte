@@ -4,7 +4,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { markSnippet } from '$lib/highlight';
 	import { localizeHref } from '$lib/paraglide/runtime';
-	import { goto } from '$app/navigation';
+	import { beforeNavigate, goto } from '$app/navigation';
 	import { page } from '$app/stores';
 
 	const t = i18n.t;
@@ -90,7 +90,11 @@
 	let timer: ReturnType<typeof setTimeout> | undefined;
 	// The query currently reflected in the URL. Plain (non-reactive) — it exists
 	// only to tell "the reader navigated" apart from "we just wrote the URL".
+	// Set before the goto, which is safe because SvelteKit cancels a superseded
+	// navigation, so an earlier goto can never land after a later one.
 	let urlQuery = '';
+	// Monotonic token: only the newest in-flight search may write the results.
+	let searchSeq = 0;
 
 	type ResultRow = Row & { type: SearchHit['type'] };
 	const rows = $derived<ResultRow[]>(hits.map((h) => ({ ...toRow(h), type: h.type })));
@@ -230,14 +234,19 @@
 	}
 
 	async function runSearch(term: string) {
+		// Responses can land out of order (a cold body-text scan overtaken by a
+		// cached one), so only the newest request may write the list — otherwise
+		// an older reply repaints stale hits over the term the reader can see.
+		const token = ++searchSeq;
 		loading = true;
 		try {
 			const res = await search(term, getLang());
+			if (token !== searchSeq) return;
 			hits = res.results;
 			ran = res.query;
 			suggestion = res.suggestion ?? '';
 		} finally {
-			loading = false;
+			if (token === searchSeq) loading = false;
 		}
 	}
 
@@ -272,16 +281,28 @@
 			syncUrl('');
 			return;
 		}
-		// Reset the facet/selection on the keystroke rather than 250ms later, so
-		// the list stops looking filtered the moment the query changes.
+		// Reset the facet/selection on the keystroke, not 250ms later: the list
+		// stops looking filtered the moment the query changes, and a chip the
+		// reader clicks while waiting for results isn't yanked out from under
+		// them when the debounce fires.
 		clearTimeout(timer);
 		activeIndex = -1;
 		typeFilter = 'all';
 		timer = setTimeout(() => {
 			syncUrl(term);
-			applyTerm(term);
+			runSearch(term);
 		}, 250);
 	}
+
+	// A pending debounce must not survive the reader leaving. Its callback
+	// navigates (syncUrl -> goto), and that goto would *cancel* the navigation
+	// they just started — clicking a result while a keystroke is still debouncing
+	// would pull them straight back to /search. Clear it as the departure begins;
+	// a destroy-time cleanup is too late, since the timer fires first.
+	// Our own ?q= writes keep the same path, so they must not cancel the search.
+	beforeNavigate(({ to }) => {
+		if (to && to.url.pathname !== $page.url.pathname) clearTimeout(timer);
+	});
 
 	// The URL is the source of truth for which search is showing: this covers the
 	// first load of a shared /search?q=… link and the Back/Forward buttons. The

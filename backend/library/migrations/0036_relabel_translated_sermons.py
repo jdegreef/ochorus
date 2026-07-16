@@ -10,23 +10,32 @@ consequences:
 * ``approve_sermon_translation`` refused them outright ("that sermon is a
   public-domain original, not a translation"), so they could never be reviewed.
 
-A non-English sermon that shares its slug with an English one *is* a translation
-of it — that is the same (slug, language) convention Book uses. Relabel exactly
-those, and only where they still carry the default: never downgrade a row an
-approver already marked reviewed, and never touch a genuine non-English original
-(which would have no English sibling).
+A non-English sermon that shares its slug *and author* with an English one is a
+translation of it — the same (slug, language) convention Book uses. Match on the
+author too, not the slug alone: slug is unique per language, not per author, so a
+native-language original could legitimately collide with an unrelated English
+sermon's slug (an original Luganda sermon on rest, say, against Spurgeon's
+"rest") and would otherwise be stamped as machine output.
+
+Only rows still carrying the default are touched: never downgrade one an
+approver already marked reviewed, and never touch a genuine non-English original.
 """
 
 from django.db import migrations
+from django.db.models import Q
 
 
 def relabel_translations(apps, schema_editor):
     Sermon = apps.get_model("library", "Sermon")
-    en_slugs = set(Sermon.objects.filter(language="en").values_list("slug", flat=True))
-    if not en_slugs:
+    english = Sermon.objects.filter(language="en").values_list("slug", "author_id")
+    if not english:
         return  # fresh DB: English sermons are seeded after migrate — no-op
-    Sermon.objects.filter(source_type="public_domain", slug__in=en_slugs).exclude(
-        language="en"
+    # Each translation must match one English sermon on BOTH slug and author.
+    match = Q()
+    for slug, author_id in english:
+        match |= Q(slug=slug, author_id=author_id)
+    Sermon.objects.filter(source_type="public_domain").exclude(language="en").filter(
+        match
     ).update(source_type="ai_unreviewed")
 
 
