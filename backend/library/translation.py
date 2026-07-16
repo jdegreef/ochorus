@@ -209,11 +209,22 @@ the translated chapter in the exact same wrapper tags — no preamble, no notes,
 
 
 def translate_chapter(
-    client, language: str, title: str, body_html: str, *, effort: str = "high"
+    client,
+    language: str,
+    title: str,
+    body_html: str,
+    *,
+    effort: str = "high",
+    scripture_source: str | None = None,
 ) -> tuple[str, str, object]:
-    """Translate one chapter. Returns (title, body_html, usage)."""
+    """Translate one chapter (or any title+body unit). Returns (title, body_html, usage).
+
+    ``scripture_source`` overrides the text scanned for Bible references (a
+    sermon, say, wants its ``scripture_ref`` included); defaults to the title
+    and body.
+    """
     cfg = LANGUAGES[language]
-    scripture = scripture_context(f"{title}\n{body_html}", cfg["bible"])
+    scripture = scripture_context(scripture_source or f"{title}\n{body_html}", cfg["bible"])
     user = ""
     if scripture:
         user += f"<authoritative_scripture>\n{scripture}\n</authoritative_scripture>\n\n"
@@ -275,3 +286,55 @@ def translate_book_meta(
     )
     text = next(b.text for b in response.content if b.type == "text")
     return json.loads(text)
+
+
+# --- Sermons ------------------------------------------------------------------
+# A sermon is a single title+body unit (no chapters), so it reuses the chapter
+# translator — but its scripture_ref (the preached text) is folded into the
+# reference scan so that passage is fetched authoritatively too.
+
+
+def translate_sermon(
+    client, language: str, title: str, body_html: str, scripture_ref: str,
+    *, effort: str = "high",
+) -> tuple[str, str, object]:
+    """Translate a sermon's title and body. Returns (title, body_html, usage)."""
+    source = f"{scripture_ref}\n{title}\n{body_html}"
+    return translate_chapter(
+        client, language, title, body_html, effort=effort, scripture_source=source
+    )
+
+
+SCRIPTURE_REF_SCHEMA = {
+    "type": "object",
+    "properties": {"reference": {"type": "string"}},
+    "required": ["reference"],
+    "additionalProperties": False,
+}
+
+
+def translate_scripture_ref(client, language: str, ref: str) -> str:
+    """Localize a sermon's reference (book name → target language; keep numbers)."""
+    if not ref.strip():
+        return ""
+    cfg = LANGUAGES[language]
+    response = client.messages.create(
+        model=MODEL,
+        max_tokens=200,
+        thinking={"type": "adaptive"},
+        system=system_prompt(language),
+        output_config={"format": {"type": "json_schema", "schema": SCRIPTURE_REF_SCHEMA}},
+        messages=[
+            {
+                "role": "user",
+                "content": (
+                    "Translate this Bible reference's book name into its conventional "
+                    f"{cfg['name']} biblical form, keeping the chapter and verse numbers "
+                    "exactly as given. Return JSON with a single key 'reference'.\n\n"
+                    f"{ref}"
+                ),
+            }
+        ],
+    )
+    text = next(b.text for b in response.content if b.type == "text")
+    return json.loads(text)["reference"]

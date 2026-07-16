@@ -1087,3 +1087,131 @@ class ScriptureTests(TestCase):
         self.assertEqual(
             self.client.get("/api/library/scripture/?ref=Nope 1:1").status_code, 404
         )
+
+
+class _FakeUsage:
+    input_tokens = 120
+    output_tokens = 240
+
+
+class _FakeBlock:
+    type = "text"
+
+    def __init__(self, text):
+        self.text = text
+
+
+class _FakeMessage:
+    def __init__(self, text):
+        self.content = [_FakeBlock(text)]
+        self.usage = _FakeUsage()
+
+
+class _FakeStream:
+    def __init__(self, message):
+        self._message = message
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return False
+
+    def get_final_message(self):
+        return self._message
+
+
+class _FakeMessages:
+    """Stands in for anthropic client.messages — stream() for the body,
+    create() for the structured scripture-ref call."""
+
+    def stream(self, **kwargs):
+        return _FakeStream(
+            _FakeMessage(
+                "<chapter_title>El Nuevo Nacimiento</chapter_title>"
+                "<chapter_body><p>Debéis nacer de nuevo.</p></chapter_body>"
+            )
+        )
+
+    def create(self, **kwargs):
+        return _FakeMessage('{"reference": "Juan 3:3"}')
+
+
+class _FakeClient:
+    def __init__(self, *a, **k):
+        self.messages = _FakeMessages()
+
+
+from unittest.mock import patch  # noqa: E402
+
+
+@patch("library.translation.fetch_chapter", return_value=None)  # no Bible API network
+@patch(
+    "library.management.commands.translate_sermon.anthropic.Anthropic",
+    new=_FakeClient,
+)
+class SermonTranslationTests(TestCase):
+    def setUp(self):
+        from django.core.management import call_command  # noqa: F401
+
+        self.author = Author.objects.create(slug="cs", name="Charles Spurgeon")
+        self.source = Sermon.objects.create(
+            author=self.author,
+            slug="the-new-birth",
+            language="en",
+            title="The New Birth",
+            scripture_ref="John 3:3",
+            body_html="<p>You must be born again.</p>",
+            sort_order=4,
+        )
+
+    def _translate(self, language="es"):
+        from django.core.management import call_command
+
+        call_command("translate_sermon", "the-new-birth", language=language)
+
+    def test_creates_ai_unreviewed_translation(self, _fetch):
+        self._translate("es")
+        s = Sermon.objects.get(slug="the-new-birth", language="es")
+        self.assertEqual(s.source_type, "ai_unreviewed")
+        self.assertEqual(s.title, "El Nuevo Nacimiento")
+        self.assertIn("Debéis nacer de nuevo", s.body_html)
+        self.assertEqual(s.scripture_ref, "Juan 3:3")
+        self.assertEqual(s.author, self.author)
+        self.assertEqual(s.sort_order, 4)
+        self.assertTrue(s.is_published)
+
+    def test_derives_body_text_and_word_count(self, _fetch):
+        self._translate("es")
+        s = Sermon.objects.get(slug="the-new-birth", language="es")
+        self.assertEqual(s.body_text, "Debéis nacer de nuevo.")
+        self.assertGreater(s.word_count, 0)
+
+    def test_idempotent_without_force(self, _fetch):
+        self._translate("es")
+        self._translate("es")  # second run should skip, not duplicate
+        self.assertEqual(
+            Sermon.objects.filter(slug="the-new-birth", language="es").count(), 1
+        )
+
+    def test_unknown_slug_errors(self, _fetch):
+        from django.core.management.base import CommandError
+        from django.core.management import call_command
+
+        with self.assertRaises(CommandError):
+            call_command("translate_sermon", "nope", language="es")
+
+    def test_approve_flips_to_reviewed(self, _fetch):
+        from django.core.management import call_command
+
+        self._translate("es")
+        call_command("approve_sermon_translation", "the-new-birth", language="es")
+        s = Sermon.objects.get(slug="the-new-birth", language="es")
+        self.assertEqual(s.source_type, "ai_reviewed")
+
+    def test_approve_rejects_public_domain_original(self, _fetch):
+        from django.core.management.base import CommandError
+        from django.core.management import call_command
+
+        with self.assertRaises(CommandError):
+            call_command("approve_sermon_translation", "the-new-birth", language="en")

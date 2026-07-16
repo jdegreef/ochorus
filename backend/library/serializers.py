@@ -81,6 +81,7 @@ class SermonDetailSerializer(serializers.ModelSerializer):
             "preached_on",
             "word_count",
             "body_html",
+            "source_type",
             "source_url",
             "author_name",
             "author_slug",
