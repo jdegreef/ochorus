@@ -2,7 +2,10 @@
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import { auth } from '$lib/auth.svelte';
+	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
+
+	const t = i18n.t;
 
 	type Mode = 'signin' | 'signup' | 'reset';
 
@@ -29,11 +32,11 @@
 		}
 	});
 
-	const titles: Record<Mode, string> = {
-		signin: 'Welcome back',
-		signup: 'Create your account',
-		reset: 'Reset your password'
-	};
+	const titles = $derived<Record<Mode, string>>({
+		signin: t('login.welcomeBack'),
+		signup: t('login.signupTitle'),
+		reset: t('login.resetTitle')
+	});
 
 	function switchMode(m: Mode) {
 		mode = m;
@@ -62,7 +65,7 @@
 
 	async function magicLink() {
 		if (!email) {
-			error = 'Enter your email first.';
+			error = t('login.enterEmailFirst');
 			return;
 		}
 		busy = true;
@@ -88,47 +91,48 @@
 		resentMsg = null;
 		const err =
 			sent === 'reset' ? await auth.sendPasswordReset(email) : await auth.signInWithMagicLink(email);
-		resentMsg = err ?? 'Sent again — check your inbox.';
+		resentMsg = err ?? t('login.sentAgain');
 	}
 
 	const sentBody = $derived(
-		sent === 'signup'
-			? `We sent a confirmation link to ${email}. Click it to activate your account.`
+		(sent === 'signup'
+			? t('login.sentSignup')
 			: sent === 'reset'
-				? `We sent a password-reset link to ${email}.`
-				: `We sent a one-time sign-in link to ${email}. Click it and you're in — no password needed.`
+				? t('login.sentReset')
+				: t('login.sentMagic')
+		).replace('%email%', email)
 	);
 </script>
 
-<svelte:head><title>Sign in — Ochorus</title></svelte:head>
+<svelte:head><title>{t('account.signIn')} — Ochorus</title></svelte:head>
 
 <div class="mx-auto max-w-[26rem] px-5 py-12">
 	{#if sent}
 		<!-- Email dispatched: confirmation card -->
 		<div class="rounded-card border border-border bg-surface p-6 text-center">
 			<div class="mail-badge mx-auto mb-3">✉</div>
-			<h1 class="text-h2 mb-2">Check your email</h1>
+			<h1 class="text-h2 mb-2">{t('login.checkEmail')}</h1>
 			<p class="mb-4 text-body text-muted">{sentBody}</p>
 			<div class="border-t border-border pt-4">
-				<p class="mb-2 text-small text-muted">Didn't get it? Check spam, or resend.</p>
-				<button class="btn btn-ghost" onclick={resend}>Resend</button>
+				<p class="mb-2 text-small text-muted">{t('login.didntGet')}</p>
+				<button class="btn btn-ghost" onclick={resend}>{t('login.resend')}</button>
 				{#if resentMsg}<p class="mt-2 text-small text-muted">{resentMsg}</p>{/if}
 			</div>
 		</div>
 		<p class="mt-4 text-center text-small">
-			<a href={localizeHref('/login')} onclick={() => (sent = null)} class="text-accent">← Back to sign in</a>
+			<a href={localizeHref('/login')} onclick={() => (sent = null)} class="text-accent">← {t('login.backToSignIn')}</a>
 		</p>
 	{:else}
 		<div class="mb-6 text-center">
 			<div class="brand-mark mx-auto mb-3">❦</div>
 			<h1 class="text-h1">{titles[mode]}</h1>
 			<p class="mt-1 text-small text-muted">
-				Sync your reading — highlights, notes, and place — across devices.
+				{t('login.syncNote')}
 			</p>
 		</div>
 
 		<form class="rounded-card border border-border bg-surface p-6" onsubmit={submit}>
-			<label class="mb-1 block text-small font-medium text-muted" for="email">Email</label>
+			<label class="mb-1 block text-small font-medium text-muted" for="email">{t('login.email')}</label>
 			<input
 				id="email"
 				type="email"
@@ -140,7 +144,7 @@
 			/>
 
 			{#if mode !== 'reset'}
-				<label class="mb-1 block text-small font-medium text-muted" for="password">Password</label>
+				<label class="mb-1 block text-small font-medium text-muted" for="password">{t('login.password')}</label>
 				<input
 					id="password"
 					type="password"
@@ -156,7 +160,13 @@
 			{#if error}<p class="mb-3 text-small text-danger">{error}</p>{/if}
 
 			<button class="btn btn-primary w-full" type="submit" disabled={busy || !auth.enabled}>
-				{busy ? '…' : mode === 'signin' ? 'Sign in' : mode === 'signup' ? 'Create account' : 'Send reset link'}
+				{busy
+					? '…'
+					: mode === 'signin'
+						? t('account.signIn')
+						: mode === 'signup'
+							? t('login.createAccountBtn')
+							: t('login.sendReset')}
 			</button>
 
 			{#if mode !== 'reset'}
@@ -166,10 +176,10 @@
 					onclick={magicLink}
 					disabled={busy || !auth.enabled}
 				>
-					Email me a magic link
+					{t('login.magicLink')}
 				</button>
 
-				<div class="or-divider text-small text-muted" aria-hidden="true">or</div>
+				<div class="or-divider text-small text-muted" aria-hidden="true">{t('login.or')}</div>
 
 				<button
 					class="google-btn"
@@ -183,14 +193,14 @@
 						<path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
 						<path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
 					</svg>
-					Continue with Google
+					{t('login.google')}
 				</button>
 			{/if}
 
 			{#if mode === 'signin'}
 				<p class="mt-4 mb-0 text-center text-small">
 					<button type="button" class="text-accent" onclick={() => switchMode('reset')}>
-						Forgot your password?
+						{t('login.forgot')}
 					</button>
 				</p>
 			{/if}
@@ -198,19 +208,19 @@
 
 		<p class="mt-4 text-center text-small text-muted">
 			{#if mode === 'signin'}
-				New to Ochorus?
-				<button type="button" class="text-accent" onclick={() => switchMode('signup')}>Create an account</button>
+				{t('login.newTo')}
+				<button type="button" class="text-accent" onclick={() => switchMode('signup')}>{t('login.createAccountLink')}</button>
 			{:else if mode === 'signup'}
-				Already have an account?
-				<button type="button" class="text-accent" onclick={() => switchMode('signin')}>Sign in</button>
+				{t('login.haveAccount')}
+				<button type="button" class="text-accent" onclick={() => switchMode('signin')}>{t('account.signIn')}</button>
 			{:else}
-				<button type="button" class="text-accent" onclick={() => switchMode('signin')}>← Back to sign in</button>
+				<button type="button" class="text-accent" onclick={() => switchMode('signin')}>← {t('login.backToSignIn')}</button>
 			{/if}
 		</p>
 
 		{#if !auth.enabled}
 			<p class="mt-4 text-center text-small text-muted">
-				Accounts aren't enabled in this environment yet.
+				{t('login.accountsDisabled')}
 			</p>
 		{/if}
 	{/if}

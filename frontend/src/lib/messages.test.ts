@@ -35,7 +35,8 @@ const SAME_AS_ENGLISH_OK = new Set([
 	'settings_font_serif',
 	'settings_font_sans',
 	'settings_width_normal',
-	'common_min'
+	'common_min',
+	'login_email'
 ]);
 
 const toSnake = (key: string) =>
