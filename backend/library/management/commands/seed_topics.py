@@ -106,6 +106,75 @@ TOPICS = [
 ]
 
 
+# A themed Scripture epigraph per topic (KJV — public domain), shown on the
+# topic page. {slug: (reference, verse text)}
+TOPIC_SCRIPTURE = {
+    "prayer": (
+        "Jeremiah 33:3",
+        "Call unto me, and I will answer thee, and shew thee great and mighty "
+        "things, which thou knowest not.",
+    ),
+    "holy-spirit": (
+        "Zechariah 4:6",
+        "Not by might, nor by power, but by my spirit, saith the Lord of hosts.",
+    ),
+    "deeper-life": (
+        "Colossians 3:3",
+        "For ye are dead, and your life is hid with Christ in God.",
+    ),
+    "grace-and-comfort": (
+        "2 Corinthians 12:9",
+        "My grace is sufficient for thee: for my strength is made perfect in "
+        "weakness.",
+    ),
+    "revival-and-missions": (
+        "Habakkuk 3:2",
+        "O Lord, revive thy work in the midst of the years, in the midst of the "
+        "years make known.",
+    ),
+    "faith-and-guidance": (
+        "Proverbs 3:6",
+        "In all thy ways acknowledge him, and he shall direct thy paths.",
+    ),
+}
+
+# Localized epigraphs (reference localized to the target-language Bible book
+# name; verse in that language's reverent register). AI-drafted, pending native
+# review. {language: {slug: (reference, verse text)}}
+TOPIC_SCRIPTURE_TR = {
+    "lg": {
+        "prayer": (
+            "Yeremiya 33:3",
+            "Munkoowoole, nange ndikuyitaba, ne nkulaga ebintu ebikulu era "
+            "eby'ekitalo, by'otomanyi.",
+        ),
+        "holy-spirit": (
+            "Zekkaliya 4:6",
+            "Si na maanyi, so si na buyinza, wabula na Mwoyo gwange, bw'ayogera "
+            "Mukama ow'eggye.",
+        ),
+        "deeper-life": (
+            "Abakkolosaayi 3:3",
+            "Kubanga mwafa, n'obulamu bwammwe bukwekeddwa mu Kristo mu Katonda.",
+        ),
+        "grace-and-comfort": (
+            "2 Abakkolinso 12:9",
+            "Ekisa kyange kikumala: kubanga amaanyi gange gatuukirizibwa mu "
+            "bunafu.",
+        ),
+        "revival-and-missions": (
+            "Kaabakuuku 3:2",
+            "Ai Mukama, zzaamu obulamu omulimu gwo wakati mu myaka, wakati mu "
+            "myaka gumanyise.",
+        ),
+        "faith-and-guidance": (
+            "Engero 3:6",
+            "Mu makubo go gonna mumumanye, naye alitereeza amakubo go.",
+        ),
+    },
+}
+
+
 # Per-language topic prose, upserted into TopicTranslation each run. Missing
 # languages / topics fall back per-field to the English original above.
 # AI-drafted, pending native review (the same review flow as book translations).
@@ -153,16 +222,24 @@ class Command(BaseCommand):
     def handle(self, *args, **opts):
         created = 0
         for order, (slug, title, description, book_slugs) in enumerate(TOPICS):
+            ref, verse = TOPIC_SCRIPTURE.get(slug, ("", ""))
             topic, was_created = Topic.objects.get_or_create(
                 slug=slug,
                 defaults={
                     "title": title,
                     "description": description,
+                    "scripture_ref": ref,
+                    "scripture_text": verse,
                     "sort_order": order,
                 },
             )
             if was_created:
                 created += 1
+            elif (topic.scripture_ref, topic.scripture_text) != (ref, verse):
+                # Backfill/refresh the epigraph on an already-seeded topic.
+                topic.scripture_ref = ref
+                topic.scripture_text = verse
+                topic.save(update_fields=["scripture_ref", "scripture_text"])
             # Upsert membership each run so new books join existing shelves.
             added = 0
             for i, book_slug in enumerate(book_slugs):
@@ -175,14 +252,19 @@ class Command(BaseCommand):
                     added += 1
             # Upsert per-language prose each run so an edited/added translation
             # reaches an already-seeded topic on the next deploy.
-            for lang, by_slug in TOPIC_TRANSLATIONS.items():
-                tr = by_slug.get(slug)
-                if not tr:
+            langs = set(TOPIC_TRANSLATIONS) | set(TOPIC_SCRIPTURE_TR)
+            for lang in langs:
+                tr = TOPIC_TRANSLATIONS.get(lang, {}).get(slug)
+                sc = TOPIC_SCRIPTURE_TR.get(lang, {}).get(slug)
+                if not tr and not sc:
                     continue
+                defaults = {}
+                if tr:
+                    defaults["title"], defaults["description"] = tr
+                if sc:
+                    defaults["scripture_ref"], defaults["scripture_text"] = sc
                 TopicTranslation.objects.update_or_create(
-                    topic=topic,
-                    language=lang,
-                    defaults={"title": tr[0], "description": tr[1]},
+                    topic=topic, language=lang, defaults=defaults
                 )
             if was_created:
                 self.stdout.write(

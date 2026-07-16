@@ -254,6 +254,8 @@ export interface TopicSummary {
 }
 
 export interface TopicDetail extends TopicSummary {
+	scripture_ref: string;
+	scripture_text: string;
 	books: BookSummary[];
 }
 

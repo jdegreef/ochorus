@@ -52,7 +52,15 @@
 			{#if topic.description}
 				<p class="max-w-xl text-body text-muted">{topic.description}</p>
 			{/if}
-			<p class="mt-1 text-small text-muted">
+			{#if topic.scripture_text}
+				<figure class="verse">
+					<blockquote>{topic.scripture_text}</blockquote>
+					{#if topic.scripture_ref}
+						<figcaption>— {topic.scripture_ref}</figcaption>
+					{/if}
+				</figure>
+			{/if}
+			<p class="mt-3 text-small text-muted">
 				{topic.books.length}
 				{topic.books.length === 1 ? t('common.bookOne') : t('common.bookMany')}
 			</p>
@@ -93,5 +101,26 @@
 		color: color-mix(in srgb, var(--topic) 82%, var(--color-text));
 		background: color-mix(in srgb, var(--topic) 16%, var(--color-surface));
 		box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--topic) 35%, transparent);
+	}
+	/* A themed Scripture epigraph, set off by an accent rule. */
+	.verse {
+		margin: 0.9rem 0 0;
+		padding-left: 0.9rem;
+		border-left: 2px solid color-mix(in srgb, var(--topic) 55%, var(--color-border));
+		max-width: 34rem;
+	}
+	.verse blockquote {
+		margin: 0;
+		font-family: var(--font-display, Georgia, serif);
+		font-style: italic;
+		font-size: 1.05rem;
+		line-height: 1.5;
+		color: var(--color-text);
+	}
+	.verse figcaption {
+		margin-top: 0.3rem;
+		font-size: 0.8rem;
+		letter-spacing: 0.02em;
+		color: color-mix(in srgb, var(--topic) 70%, var(--color-muted));
 	}
 </style>

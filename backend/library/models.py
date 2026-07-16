@@ -294,6 +294,9 @@ class Topic(models.Model):
     slug = models.SlugField(max_length=160, unique=True)
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
+    # A themed Scripture epigraph shown on the topic page (public-domain wording).
+    scripture_ref = models.CharField(max_length=120, blank=True)
+    scripture_text = models.TextField(blank=True)
     sort_order = models.PositiveIntegerField(default=0)
     is_published = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -322,6 +325,12 @@ class Topic(models.Model):
     def description_for(self, language: str) -> str:
         return self._localized("description", language)
 
+    def scripture_ref_for(self, language: str) -> str:
+        return self._localized("scripture_ref", language)
+
+    def scripture_text_for(self, language: str) -> str:
+        return self._localized("scripture_text", language)
+
 
 class TopicTranslation(models.Model):
     """A translated copy of a Topic's title/description in one language.
@@ -337,6 +346,8 @@ class TopicTranslation(models.Model):
     language = models.CharField(max_length=10)
     title = models.CharField(max_length=200, blank=True)
     description = models.TextField(blank=True)
+    scripture_ref = models.CharField(max_length=120, blank=True)
+    scripture_text = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
