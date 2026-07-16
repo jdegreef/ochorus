@@ -138,6 +138,7 @@ export interface SermonSummary {
 
 export interface Sermon extends SermonSummary {
 	body_html: string;
+	source_type: SourceType;
 	source_url: string;
 	author_name: string;
 	author_slug: string;

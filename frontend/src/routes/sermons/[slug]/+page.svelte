@@ -102,7 +102,22 @@
 	</p>
 	<h1 class="text-h1 mb-2">{sermon.title}</h1>
 	{#if sermon.scripture_ref}
-		<p class="mb-8 text-h3 text-accent" style="font-family: var(--font-display)">{sermon.scripture_ref}</p>
+		<p class="mb-3 text-h3 text-accent" style="font-family: var(--font-display)">{sermon.scripture_ref}</p>
+	{/if}
+	{#if sermon.source_type === 'ai_unreviewed'}
+		<p
+			class="mb-8 inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-small text-gold"
+		>
+			{t('book.aiUnreviewed')}
+		</p>
+	{:else if sermon.source_type === 'ai_reviewed'}
+		<p
+			class="mb-8 inline-flex items-center gap-1.5 rounded-full border border-border bg-surface-2 px-3 py-1 text-small text-muted"
+		>
+			{t('book.aiReviewed')}
+		</p>
+	{:else}
+		<div class="mb-8"></div>
 	{/if}
 
 	<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. -->

@@ -196,6 +196,13 @@ class Sermon(models.Model):
     title = models.CharField(max_length=300)
     # The sermon's text — e.g. "John 3:16" or "Isaiah 45:22".
     scripture_ref = models.CharField(max_length=160, blank=True)
+    # Provenance / translation status — shares Book's vocabulary so a machine
+    # translation carries the same "awaiting native review" trust badge.
+    source_type = models.CharField(
+        max_length=20,
+        choices=Book.SourceType.choices,
+        default=Book.SourceType.PUBLIC_DOMAIN,
+    )
     # When it was preached, if known (day precision optional — see year note).
     preached_on = models.DateField(null=True, blank=True)
     # Cleaned, structured HTML body (paragraphs, headings, blockquotes).
