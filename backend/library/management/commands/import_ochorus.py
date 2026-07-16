@@ -349,9 +349,20 @@ def _merge_heading_runs(blocks: list[tuple[str, float]], thresh: float) -> list[
 
 # Standalone section headings that bound a chapter just like a CHAPTER marker
 # when set at heading size (Introduction, Conclusion, Scripture Appendix, …).
+#
+# Sermon/address collections need this too: a book can number its main body with
+# CHAPTER markers and then title its closing pieces "SECOND ADDRESS", "Sermon
+# III", "Addresses on Holiness…". The marker pass wins whenever it finds >=3
+# chapters, so without these the end matter silently merges into the last
+# chapter (Catherine Booth's Godliness: 4 addresses fused into one 7.8k-word
+# chapter). Anchored at the start, so a mid-sentence "an address delivered…"
+# subtitle is not a boundary.
 _SECTION_RE = re.compile(
     r"^(introduction|conclusion|preface|prologue|epilogue|foreword|afterword"
-    r"|(\w+\s+){0,2}appendix)\b", re.I,
+    r"|(\w+\s+){0,2}appendix"
+    r"|(first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth"
+    r"|[ivxlc]+|\d+)?\s*addresse?s?\b"
+    r"|(sermon|lecture|discourse)s?\b)", re.I,
 )
 # A table-of-contents line: text followed by a dot leader.
 _TOC_LINE_RE = re.compile(r"\.{4,}")
