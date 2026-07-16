@@ -2,6 +2,7 @@
 	import '../app.css';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
+	import { afterNavigate } from '$app/navigation';
 	import { theme } from '$lib/theme.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
@@ -30,6 +31,9 @@
 		auth.init();
 		pwa.init();
 	});
+
+	// Leaving a chapter is the safe moment to take a waiting app update.
+	afterNavigate(() => pwa.navigated());
 
 	// Reflect the URL locale on <html> for accessibility + correct hyphenation.
 	$effect(() => {
