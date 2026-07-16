@@ -14,7 +14,7 @@
 	import { localizeHref, getLocale, getTextDirection } from '$lib/paraglide/runtime';
 	import AccountMenu from '$lib/components/AccountMenu.svelte';
 	import QuickSettings from '$lib/components/QuickSettings.svelte';
-	import { MEASURE } from '$lib/readerPrefs.svelte';
+	import { MEASURE, PAGE_SCALE } from '$lib/readerPrefs.svelte';
 	import CommandPalette from '$lib/components/CommandPalette.svelte';
 	import PwaToasts from '$lib/components/PwaToasts.svelte';
 	import Icon from '$lib/components/Icon.svelte';
@@ -76,7 +76,10 @@
 	}}
 />
 
-<div class="flex min-h-screen flex-col" style="--reading-measure: {MEASURE[readerPrefs.measure]}">
+<div
+	class="flex min-h-screen flex-col"
+	style="--reading-measure: {MEASURE[readerPrefs.measure]}; --page-scale: {PAGE_SCALE[readerPrefs.measure]}"
+>
 	{#if !readerUi.focus}
 		<nav class="appnav">
 			<div class="appnav-inner">
