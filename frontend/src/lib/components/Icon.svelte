@@ -22,7 +22,13 @@
 		| 'maximize'
 		| 'chevron-left'
 		| 'chevron-right'
-		| 'play';
+		| 'play'
+		| 'sparkle'
+		| 'wind'
+		| 'mountain'
+		| 'heart'
+		| 'flame'
+		| 'compass';
 
 	let {
 		name,
@@ -114,5 +120,21 @@
 		<path d="M9 6l6 6-6 6" />
 	{:else if name === 'play'}
 		<path d="M8 5.5v13l11-6.5z" fill="currentColor" stroke="none" />
+	{:else if name === 'sparkle'}
+		<path d="M12 3l1.7 5.6c.2.6.6 1 1.2 1.2L20.5 11.5l-5.6 1.7c-.6.2-1 .6-1.2 1.2L12 20l-1.7-5.6c-.2-.6-.6-1-1.2-1.2L3.5 11.5l5.6-1.7c.6-.2 1-.6 1.2-1.2z" />
+	{:else if name === 'wind'}
+		<path d="M3 8.5h10.5A2.5 2.5 0 1 0 11 6" />
+		<path d="M3 12.5h15A2.5 2.5 0 1 1 15.5 15" />
+		<path d="M3 16.5h8.5A2.5 2.5 0 1 1 9 19" />
+	{:else if name === 'mountain'}
+		<path d="M3 20h18L14 6l-3.2 6-2.3-3z" />
+		<path d="m10.8 12 1.2-2 2 4" />
+	{:else if name === 'heart'}
+		<path d="M12 20.5S4 15.9 4 10.3A4.3 4.3 0 0 1 12 8a4.3 4.3 0 0 1 8 2.3c0 5.6-8 10.2-8 10.2z" />
+	{:else if name === 'flame'}
+		<path d="M12 2c1.6 3.2 4.6 4.7 4.6 8.6a4.6 4.6 0 0 1-9.2 0c0-2 1-3.3 2.1-4.3.2 1.4 1 2.3 2 2.3 1.3 0 1.9-1.2 1.6-2.6C12.8 4.9 12 3.6 12 2z" />
+	{:else if name === 'compass'}
+		<circle cx="12" cy="12" r="9" />
+		<path d="m15.6 8.4-2 5.2-5.2 2 2-5.2z" />
 	{/if}
 </svg>
