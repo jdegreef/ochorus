@@ -715,7 +715,7 @@
 	     translated CSS-column content and the surrounding chrome is hidden. -->
 	<div class="pager" bind:this={pager} style="--page-w:{pageW}px; --page-idx:{pageIndex}; --cols:{cols};">
 		<p class="mb-1 text-small uppercase tracking-wider text-muted">
-			Chapter {chapter.order} · {readingTime(chapter.word_count)}
+			{t('continue.chapter')} {chapter.order} · {readingTime(chapter.word_count)}
 		</p>
 		<h1 bind:this={titleEl} class="text-h1 mb-8">{chapter.title}</h1>
 
@@ -831,8 +831,8 @@
 					</button>
 				{/if}
 				<span class="flex-1"></span>
-				<button class="btn btn-ghost" onclick={() => (noteOpen = false)}>Cancel</button>
-				<button class="btn btn-primary" onclick={saveNote}>Save</button>
+				<button class="btn btn-ghost" onclick={() => (noteOpen = false)}>{t('common.cancel')}</button>
+				<button class="btn btn-primary" onclick={saveNote}>{t('common.save')}</button>
 			</div>
 		</div>
 	</div>
