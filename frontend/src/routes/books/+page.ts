@@ -14,6 +14,11 @@ import type { PageLoad } from './$types';
  * Prerender refresh 2026-07-15 (lg/sw): same again after the Luganda + Swahili
  * translations went live, so /lg/books and /sw/books (and their /<slug> pages)
  * re-crawl and bake with the new titles.
+ *
+ * Prerender refresh 2026-07-15 (classic authors): force an ochorus-web rebuild
+ * after the api went live with 11 new public-domain works (Bunyan, Watson,
+ * Baxter, Edwards, Whitefield, Wesley), so the /books index, the new
+ * /books/<slug> and /authors/<slug> pages, and the sitemap re-crawl and bake.
  */
 export const load: PageLoad = async () => {
 	try {
