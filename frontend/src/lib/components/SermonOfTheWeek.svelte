@@ -3,7 +3,10 @@
 	import { listSermons, type SermonSummary } from '$lib/library';
 	import { getLang } from '$lib/lang.svelte';
 	import { readingTime } from '$lib/reading';
+	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
+
+	const t = i18n.t;
 
 	/**
 	 * "Sermon of the week" — a weekly rotating pick from the sermon shelf.
@@ -43,12 +46,12 @@
 			class="block rounded-card border border-border bg-surface-2 px-6 py-6 transition-colors hover:bg-surface hover:no-underline sm:px-8"
 		>
 			<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">
-				Sermon of the Week
+				{t('home.sermonOfWeek')}
 			</p>
 			<h2 class="text-h2 mb-1">{pick.title}</h2>
 			<p class="text-small text-muted">
 				{pick.author.name}{#if pick.scripture_ref}
-					· {pick.scripture_ref}{/if} · {readingTime(pick.word_count)} — read it, or listen with ▶
+					· {pick.scripture_ref}{/if} · {readingTime(pick.word_count)} — {t('home.sermonReadOrListen')} ▶
 			</p>
 		</a>
 	</section>

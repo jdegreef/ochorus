@@ -167,7 +167,7 @@
 					>
 						<span class="w-6 shrink-0 text-small text-muted">{ch.order}</span>
 						<span class="flex-1 text-body text-text">{ch.title}</span>
-						<span class="text-[0.8rem] text-muted">{readingMinutes(ch.word_count)} min</span>
+						<span class="text-[0.8rem] text-muted">{readingMinutes(ch.word_count)} {t('common.min')}</span>
 					</a>
 				</li>
 			{/each}
