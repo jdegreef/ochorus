@@ -1,0 +1,15 @@
+<svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Pilgrim&#x27;s Progress">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0" stop-color="#2e2a5a"/>
+      <stop offset="1" stop-color="#191731"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <rect x="26" y="26" width="548" height="748" fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="1.5"/>
+  <text x="300" y="96" text-anchor="middle" fill="#ffffff" fill-opacity="0.7" font-family="Georgia, serif" font-size="19" letter-spacing="7">OCHORUS</text>
+  <text text-anchor="middle" fill="#ffffff" font-family="Georgia, 'Times New Roman', serif" font-weight="600" font-size="58"><tspan x="300" y="294">The</tspan><tspan x="300" y="360">Pilgrim&#x27;s</tspan><tspan x="300" y="426">Progress</tspan></text>
+  <line x1="262" y1="472" x2="338" y2="472" stroke="#ffffff" stroke-opacity="0.55" stroke-width="1.5"/>
+  <text x="300" y="512" text-anchor="middle" fill="#ffffff" fill-opacity="0.85" font-family="Georgia, serif" font-style="italic" font-size="22">From This World to That Which Is to Come</text>
+  <text x="300" y="724" text-anchor="middle" fill="#ffffff" fill-opacity="0.82" font-family="Georgia, serif" font-size="22" letter-spacing="3">JOHN BUNYAN</text>
+</svg>

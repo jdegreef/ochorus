@@ -196,6 +196,79 @@ AUTHORS: dict[str, AuthorEntry] = {
             "William Carey to Henry Martyn."
         ),
     ),
+    # Puritans & Reformers (17th century).
+    "john-bunyan": AuthorEntry(
+        slug="john-bunyan",
+        name="John Bunyan",
+        birth_year=1628,
+        death_year=1688,
+        bio=(
+            "English writer and Puritan preacher, a Bedford tinker by trade who "
+            "was imprisoned for more than a decade for preaching without a "
+            "licence. During that confinement he wrote The Pilgrim's Progress, "
+            "one of the most published allegories in the English language."
+        ),
+    ),
+    "thomas-watson": AuthorEntry(
+        slug="thomas-watson",
+        name="Thomas Watson",
+        birth_year=1620,
+        death_year=1686,
+        bio=(
+            "English Nonconformist Puritan preacher and rector of St Stephen "
+            "Walbrook in London, ejected from his living in 1662. He is "
+            "remembered for warm, vivid, and remarkably accessible devotional "
+            "writing."
+        ),
+    ),
+    "richard-baxter": AuthorEntry(
+        slug="richard-baxter",
+        name="Richard Baxter",
+        birth_year=1615,
+        death_year=1691,
+        bio=(
+            "English Puritan church leader and pastor at Kidderminster, ejected "
+            "from the Church of England in 1662. A prolific author of practical "
+            "divinity whose pastoral and devotional works became enduring "
+            "Christian classics."
+        ),
+    ),
+    # The Great Awakenings (18th century).
+    "jonathan-edwards": AuthorEntry(
+        slug="jonathan-edwards",
+        name="Jonathan Edwards",
+        birth_year=1703,
+        death_year=1758,
+        bio=(
+            "American Congregationalist preacher and theologian, a central "
+            "figure of the First Great Awakening. He pastored in Northampton, "
+            "Massachusetts, and briefly served as president of the College of "
+            "New Jersey (later Princeton)."
+        ),
+    ),
+    "george-whitefield": AuthorEntry(
+        slug="george-whitefield",
+        name="George Whitefield",
+        birth_year=1714,
+        death_year=1770,
+        bio=(
+            "English Anglican cleric and one of the founders of Methodism and "
+            "the evangelical revival. A famed open-air preacher, he toured "
+            "Britain and colonial America and became a leading figure of the "
+            "Great Awakening."
+        ),
+    ),
+    "john-wesley": AuthorEntry(
+        slug="john-wesley",
+        name="John Wesley",
+        birth_year=1703,
+        death_year=1791,
+        bio=(
+            "English Anglican cleric and evangelist who founded Methodism. A "
+            "tireless itinerant preacher and organiser, he was a central figure "
+            "of the 18th-century evangelical revival."
+        ),
+    ),
 }
 
 # Shelf order. Small, clean books first.
@@ -265,6 +338,43 @@ BOOKS: list[BookEntry] = [
     BookEntry("life-and-diary-of-david-brainerd", "The Life and Diary of David Brainerd",
               "david-brainerd", "gutenberg", "65066",
               subtitle="Edited by Jonathan Edwards", cover_color="#5f3dc4"),
+
+    # Puritans & Reformers (17th century) — CCEL sources.
+    BookEntry("pilgrims-progress", "The Pilgrim's Progress", "john-bunyan",
+              "ccel", "bunyan/pilgrim",
+              subtitle="From This World to That Which Is to Come", cover_color="#2e2a5a"),
+    BookEntry("grace-abounding", "Grace Abounding to the Chief of Sinners", "john-bunyan",
+              "ccel", "bunyan/grace",
+              subtitle="The Mercy of God in Christ to His Servant", cover_color="#4a2c1a"),
+    BookEntry("all-things-for-good", "All Things for Good", "thomas-watson",
+              "ccel", "watson/cordial",
+              subtitle="A Divine Cordial", cover_color="#2b6b4f"),
+    BookEntry("ten-commandments", "The Ten Commandments", "thomas-watson",
+              "ccel", "watson/commandments",
+              subtitle="A Body of Practical Divinity", cover_color="#5a4a6b"),
+    BookEntry("the-reformed-pastor", "The Reformed Pastor", "richard-baxter",
+              "ccel", "baxter/pastor",
+              subtitle="On the Duties of the Christian Ministry", cover_color="#3f4c6b"),
+    BookEntry("a-call-to-the-unconverted", "A Call to the Unconverted", "richard-baxter",
+              "ccel", "baxter/unconverted",
+              subtitle="To Turn and Live", cover_color="#7a5a3a"),
+
+    # The Great Awakenings (18th century) — CCEL sources.
+    BookEntry("religious-affections", "A Treatise Concerning Religious Affections",
+              "jonathan-edwards", "ccel", "edwards/affections",
+              subtitle="The Nature of True Religion", cover_color="#3b5b6b"),
+    BookEntry("freedom-of-the-will", "Freedom of the Will", "jonathan-edwards",
+              "ccel", "edwards/will",
+              subtitle="A Careful and Strict Inquiry", cover_color="#6b4a3b"),
+    BookEntry("selected-sermons-whitefield", "Selected Sermons of George Whitefield",
+              "george-whitefield", "ccel", "whitefield/sermons",
+              subtitle="Fifty-Nine Sermons", cover_color="#6b4e3d"),
+    BookEntry("plain-account-christian-perfection", "A Plain Account of Christian Perfection",
+              "john-wesley", "ccel", "wesley/perfection",
+              subtitle="As Believed and Taught by John Wesley", cover_color="#5b7c6e"),
+    BookEntry("sermons-on-several-occasions", "Sermons on Several Occasions", "john-wesley",
+              "ccel", "wesley/sermons",
+              subtitle="Selected Standard Sermons", cover_color="#7a5c48"),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an
