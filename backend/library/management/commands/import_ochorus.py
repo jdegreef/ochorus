@@ -355,14 +355,16 @@ def _merge_heading_runs(blocks: list[tuple[str, float]], thresh: float) -> list[
 # III", "Addresses on Holiness…". The marker pass wins whenever it finds >=3
 # chapters, so without these the end matter silently merges into the last
 # chapter (Catherine Booth's Godliness: 4 addresses fused into one 7.8k-word
-# chapter). Anchored at the start, so a mid-sentence "an address delivered…"
-# subtitle is not a boundary.
+# chapter). The ordinal list is closed (not `\w+`) and the pattern is anchored,
+# so the size-12 subtitle "AN ADDRESS DELIVERED IN EXETER HALL" sitting under a
+# title is NOT a boundary — a `\w+` prefix would swallow it. Numbered sermons
+# carry their number as a suffix ("Sermon III"), so no prefix arm is needed there.
 _SECTION_RE = re.compile(
-    r"^(introduction|conclusion|preface|prologue|epilogue|foreword|afterword"
-    r"|(\w+\s+){0,2}appendix"
-    r"|(first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth"
-    r"|[ivxlc]+|\d+)?\s*addresse?s?\b"
-    r"|(sermon|lecture|discourse)s?\b)", re.I,
+    r"^(?:introduction|conclusion|preface|prologue|epilogue|foreword|afterword"
+    r"|(?:\w+\s+){0,2}appendix"
+    r"|(?:(?:first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth)\s+)?"
+    r"address(?:es)?\b"
+    r"|(?:sermon|lecture|discourse)s?\b)", re.I,
 )
 # A table-of-contents line: text followed by a dot leader.
 _TOC_LINE_RE = re.compile(r"\.{4,}")
