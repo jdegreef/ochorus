@@ -65,11 +65,16 @@
 	const crumbsLd = $derived(
 		jsonLd(
 			breadcrumb([
-				{ name: 'Home', url: '/' },
-				{ name: 'Biographies', url: '/biographies' },
+				{ name: t('common.home'), url: '/' },
+				{ name: t('bios.eyebrow'), url: '/biographies' },
 				{ name: author.name, url: `/authors/${author.slug}` }
 			])
 		)
+	);
+	// Prayer-callout labels are rendered by CSS ::before content; pass the
+	// localized strings in as custom properties so they follow the locale.
+	const bioLabels = $derived(
+		`--label-in-prayer: '${t('bios.inPrayer')}'; --label-answered: '${t('bios.answerToPrayer')}'`
 	);
 </script>
 
@@ -134,7 +139,7 @@
 
 	<!-- Biography -->
 	{#if author.bio_html}
-		<div class="bio mx-auto mt-8 max-w-[40rem]" bind:this={bioEl}>
+		<div class="bio mx-auto mt-8 max-w-[40rem]" style={bioLabels} bind:this={bioEl}>
 			<!-- Long-form biography; cleaned HTML with pull-quotes + prayer callouts. -->
 			{@html author.bio_html}
 		</div>
@@ -270,7 +275,7 @@
 		margin-bottom: 0;
 	}
 	:global(.bio .prayer)::before {
-		content: '✦ In prayer';
+		content: '✦ ' var(--label-in-prayer, 'In prayer');
 		display: block;
 		margin-bottom: 0.5rem;
 		font-family: var(--font-sans);
@@ -285,7 +290,7 @@
 		border-color: var(--accent-soft-border);
 	}
 	:global(.bio .prayer.answered)::before {
-		content: '✦ Answer to prayer';
+		content: '✦ ' var(--label-answered, 'Answer to prayer');
 		color: var(--accent);
 	}
 </style>
