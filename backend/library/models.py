@@ -27,6 +27,11 @@ class Author(models.Model):
     birth_year = models.IntegerField(null=True, blank=True)
     death_year = models.IntegerField(null=True, blank=True)
     original_language = models.CharField(max_length=10, default="en")
+    # A house byline rather than a human (e.g. "Ochorus Originals", which
+    # authors the compiled anthologies). Kept off the Biographies shelf, whose
+    # cards and schema.org ItemList both speak of Person — their works are still
+    # reachable from /books and the byline's own author page.
+    is_imprint = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

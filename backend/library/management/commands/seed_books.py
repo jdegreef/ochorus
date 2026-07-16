@@ -79,6 +79,10 @@ class Command(BaseCommand):
                     "photo_url": af.get("photo_url", ""),
                     "birth_year": af.get("birth_year"),
                     "death_year": af.get("death_year"),
+                    # Carry the flag through, else an imprint added to the
+                    # fixture later is created unflagged on the existing prod DB
+                    # (seed_if_empty no-ops there) and lands on Biographies.
+                    "is_imprint": af.get("is_imprint", False),
                 },
             )
             book = Book.objects.create(

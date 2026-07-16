@@ -340,6 +340,27 @@ class SeedSermonsTests(TestCase):
         )
         self.assertGreaterEqual(Sermon.objects.count(), 18)
 
+    def test_seeds_the_translation_badge_on_create(self):
+        from django.core.management import call_command
+
+        call_command("seed_sermons", verbosity=0)
+        lg = Sermon.objects.get(slug="the-immutability-of-god", language="lg")
+        self.assertEqual(lg.source_type, Book.SourceType.AI_UNREVIEWED)
+
+    def test_seed_never_reverts_an_approved_translation(self):
+        # source_type is create-only. It ships in the fixture as ai_unreviewed,
+        # but once a native speaker approves a translation the review workflow
+        # owns it — re-asserting the fixture value on the next deploy would
+        # silently restore the "awaiting native review" badge and make
+        # approve_sermon_translation useless.
+        from django.core.management import call_command
+
+        call_command("seed_sermons", verbosity=0)
+        call_command("approve_sermon_translation", "the-immutability-of-god", language="lg")
+        call_command("seed_sermons", verbosity=0)  # the next deploy
+        lg = Sermon.objects.get(slug="the-immutability-of-god", language="lg")
+        self.assertEqual(lg.source_type, Book.SourceType.AI_REVIEWED)
+
     @skipUnless(connection.vendor == "postgresql", "Postgres-only FTS path")
     def test_postgres_stemming_and_ranking(self):
         # "depend" should stem-match "dependence" under the english config.
@@ -494,6 +515,157 @@ class TopicTests(TestCase):
         self.assertEqual(
             TopicTranslation.objects.filter(topic=topic, language="lg").count(), 1
         )
+
+
+class AuthorListTests(TestCase):
+    """The Biographies shelf: anyone with a bio OR a book to read."""
+
+    def setUp(self):
+        self.client = APIClient()
+        # Has books but no bio written yet (the R. A. Torrey case).
+        bookish = Author.objects.create(slug="torrey", name="R. A. Torrey")
+        Book.objects.create(author=bookish, slug="baptism", language="en", title="Baptism")
+        # Has a bio but no books (a figure we tell the story of).
+        Author.objects.create(slug="bunyan", name="John Bunyan", bio="A tinker who dreamed.")
+        # Neither: nothing to show.
+        Author.objects.create(slug="ghost", name="No One")
+        # Books only in another language → nothing to open on the English shelf.
+        other = Author.objects.create(slug="lg-only", name="Lg Only")
+        Book.objects.create(author=other, slug="lg-book", language="lg", title="Ekitabo")
+        # A house byline with books — not a person, so not on this shelf.
+        imprint = Author.objects.create(slug="house", name="House Originals", is_imprint=True)
+        Book.objects.create(author=imprint, slug="anthology", language="en", title="Anthology")
+
+    def slugs(self, lang="en"):
+        res = self.client.get(f"/api/library/authors/?language={lang}")
+        self.assertEqual(res.status_code, 200)
+        return [a["slug"] for a in res.data]
+
+    def test_author_with_books_but_no_bio_is_listed(self):
+        # Previously excluded by exclude(bio="") — an author with 5 books simply
+        # vanished from the page that lists the library's writers.
+        self.assertIn("torrey", self.slugs())
+
+    def test_author_with_bio_but_no_books_is_listed(self):
+        self.assertIn("bunyan", self.slugs())
+
+    def test_author_with_neither_is_not_listed(self):
+        self.assertNotIn("ghost", self.slugs())
+
+    def test_books_only_in_another_language_do_not_carry_an_author(self):
+        # No bio and no book a reader could open in this language → nothing to show.
+        self.assertNotIn("lg-only", self.slugs("en"))
+        # …but they are on their own language's shelf.
+        self.assertIn("lg-only", self.slugs("lg"))
+
+    def test_book_count_is_per_language(self):
+        res = self.client.get("/api/library/authors/?language=en")
+        torrey = next(a for a in res.data if a["slug"] == "torrey")
+        self.assertEqual(torrey["book_count"], 1)
+
+    def test_imprint_is_not_listed(self):
+        # A house byline has books, but this shelf — and the schema.org
+        # ItemList of Person it emits — is about people.
+        self.assertNotIn("house", self.slugs())
+
+    def test_fixture_flags_the_house_imprint(self):
+        # The migration flags prod, but a fresh DB is loaded from the fixture
+        # *after* migrate runs — so the flag has to ship in the fixture too.
+        import json
+        from pathlib import Path
+
+        rows = json.loads(
+            (Path(__file__).resolve().parent / "fixtures" / "launch.json").read_text()
+        )
+        imprints = {
+            r["fields"]["slug"]
+            for r in rows
+            if r.get("model") == "library.author" and r["fields"].get("is_imprint")
+        }
+        self.assertIn("ochorus-originals", imprints)
+
+
+class SermonTranslationLabelTests(TestCase):
+    """0036: AI translations were left labelled as public-domain originals."""
+
+    def _relabel(self):
+        import importlib
+
+        from django.apps import apps as global_apps
+
+        mod = importlib.import_module("library.migrations.0036_relabel_translated_sermons")
+        mod.relabel_translations(global_apps, None)
+
+    def setUp(self):
+        self.a = Author.objects.create(slug="cs", name="C. Spurgeon")
+
+    def _sermon(self, slug, language, **kw):
+        return Sermon.objects.create(
+            author=self.a, slug=slug, language=language, title=f"{slug} {language}",
+            body_html="<p>some words here</p>", **kw
+        )
+
+    def test_relabels_only_genuine_translations(self):
+        en = self._sermon("himself", "en")
+        translated = self._sermon("himself", "lg")  # default: public_domain
+        # A non-English sermon with no English sibling is a real original.
+        original = self._sermon("okusaba", "lg")
+        # An already-approved translation must never be downgraded.
+        self._sermon("rest", "en")
+        approved = self._sermon("rest", "lg", source_type=Book.SourceType.AI_REVIEWED)
+
+        self._relabel()
+        for s in (en, translated, original, approved):
+            s.refresh_from_db()
+
+        self.assertEqual(translated.source_type, Book.SourceType.AI_UNREVIEWED)
+        self.assertEqual(en.source_type, Book.SourceType.PUBLIC_DOMAIN)
+        self.assertEqual(original.source_type, Book.SourceType.PUBLIC_DOMAIN)
+        self.assertEqual(approved.source_type, Book.SourceType.AI_REVIEWED)
+
+    def test_is_idempotent(self):
+        self._sermon("himself", "en")
+        t = self._sermon("himself", "lg")
+        self._relabel()
+        self._relabel()
+        t.refresh_from_db()
+        self.assertEqual(t.source_type, Book.SourceType.AI_UNREVIEWED)
+
+    def test_slug_collision_across_authors_is_not_a_translation(self):
+        # slug is unique per language, not per author: a native-language
+        # original may legitimately share a slug with an unrelated English
+        # sermon. Matching on slug alone would brand a human's own work as
+        # machine output.
+        self._sermon("rest", "en")  # Spurgeon's English sermon
+        other = Author.objects.create(slug="hb", name="Hannah Buyinza")
+        native = Sermon.objects.create(
+            author=other, slug="rest", language="lg", title="Okuwummula",
+            body_html="<p>an original Luganda sermon</p>",
+        )
+        self._relabel()
+        native.refresh_from_db()
+        self.assertEqual(native.source_type, Book.SourceType.PUBLIC_DOMAIN)
+
+
+class FixtureSermonLabelTests(TestCase):
+    """Guard the fixture itself: a shipped translation must carry its badge."""
+
+    def test_no_translated_sermon_ships_as_public_domain(self):
+        import json
+        from pathlib import Path
+
+        fixture = Path(__file__).resolve().parent / "fixtures" / "launch.json"
+        rows = json.loads(fixture.read_text())
+        sermons = [r["fields"] for r in rows if r.get("model") == "library.sermon"]
+        english = {s["slug"] for s in sermons if s["language"] == "en"}
+        mislabelled = [
+            f"{s['language']}/{s['slug']}"
+            for s in sermons
+            if s["language"] != "en"
+            and s["slug"] in english
+            and s.get("source_type", "public_domain") == "public_domain"
+        ]
+        self.assertEqual(mislabelled, [], "translated sermons must not ship as public_domain")
 
 
 class RelatedBooksTests(TestCase):

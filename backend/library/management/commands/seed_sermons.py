@@ -35,6 +35,13 @@ SERMON_FIELDS = (
     "is_published",
 )
 
+# Seeded when the row is first created, then owned by the review workflow.
+# approve_sermon_translation flips ai_unreviewed -> ai_reviewed; re-asserting the
+# fixture's value on every deploy would silently walk an approved translation
+# back to "awaiting native review".
+CREATE_ONLY_FIELDS = frozenset({"source_type"})
+UPDATE_FIELDS = tuple(f for f in SERMON_FIELDS if f not in CREATE_ONLY_FIELDS)
+
 
 def _date(value):
     if isinstance(value, str) and value:
@@ -80,6 +87,8 @@ class Command(BaseCommand):
                     "photo_url": af.get("photo_url", ""),
                     "birth_year": af.get("birth_year"),
                     "death_year": af.get("death_year"),
+                    # Carry the flag through — see seed_books for why.
+                    "is_imprint": af.get("is_imprint", False),
                 },
             )
 
@@ -101,7 +110,7 @@ class Command(BaseCommand):
                 continue
 
             changed = [
-                k for k in SERMON_FIELDS if k in f and getattr(sermon, k) != f[k]
+                k for k in UPDATE_FIELDS if k in f and getattr(sermon, k) != f[k]
             ]
             if sermon.preached_on != preached_on:
                 sermon.preached_on = preached_on
