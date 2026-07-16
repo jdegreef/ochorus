@@ -23,10 +23,13 @@ import { get } from 'svelte/store';
 // hook, so these match in every language (/lg/books/x/1 included).
 const READER_ROUTES = new Set(['/books/[slug]/[order]', '/sermons/[slug]']);
 
-// Set once a tab has auto-applied an update. Belt-and-braces: if a deploy ever
-// served two versions in turn, an unguarded auto-apply could reload in a loop.
-// The prompt still works after this point.
-const AUTO_APPLIED_KEY = 'ochorus:pwa-auto-applied';
+// When this tab last auto-applied an update. Belt-and-braces: if a deploy ever
+// served two versions in turn, an unguarded auto-apply could reload in a loop,
+// so a second one hard on the heels of the first is left to the prompt instead.
+// Only back-to-back applies are suppressed — a genuine later deploy, minutes or
+// days into a long-lived tab, still applies on its own.
+const AUTO_APPLIED_AT_KEY = 'ochorus:pwa-auto-applied-at';
+const LOOP_WINDOW_MS = 30_000;
 
 class Pwa {
 	/** True once the app shell + assets are cached (first successful install). */
@@ -100,8 +103,9 @@ class Pwa {
 	 */
 	#applyWhenSafe() {
 		if (!this.#waiting || this.#inReader()) return;
-		if (sessionStorage.getItem(AUTO_APPLIED_KEY)) return;
-		sessionStorage.setItem(AUTO_APPLIED_KEY, '1');
+		const last = Number(sessionStorage.getItem(AUTO_APPLIED_AT_KEY)) || 0;
+		if (Date.now() - last < LOOP_WINDOW_MS) return;
+		sessionStorage.setItem(AUTO_APPLIED_AT_KEY, String(Date.now()));
 		this.applyUpdate();
 	}
 
