@@ -29,6 +29,7 @@ SERMON_FIELDS = (
     "scripture_ref",
     "body_html",
     "word_count",
+    "source_type",
     "source_url",
     "sort_order",
     "is_published",
@@ -92,13 +93,15 @@ class Command(BaseCommand):
                     slug=f["slug"],
                     language=f.get("language", "en"),
                     preached_on=preached_on,
-                    **{k: f.get(k) for k in SERMON_FIELDS},
+                    # Omit fields the fixture row doesn't carry so the model
+                    # default applies — e.g. older rows predating source_type.
+                    **{k: f[k] for k in SERMON_FIELDS if k in f},
                 )
                 created += 1
                 continue
 
             changed = [
-                k for k in SERMON_FIELDS if getattr(sermon, k) != f.get(k)
+                k for k in SERMON_FIELDS if k in f and getattr(sermon, k) != f[k]
             ]
             if sermon.preached_on != preached_on:
                 sermon.preached_on = preached_on
