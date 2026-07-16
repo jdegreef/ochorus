@@ -13,6 +13,8 @@
 	import { pwa } from '$lib/pwa.svelte';
 	import { localizeHref, getLocale, getTextDirection } from '$lib/paraglide/runtime';
 	import AccountMenu from '$lib/components/AccountMenu.svelte';
+	import QuickSettings from '$lib/components/QuickSettings.svelte';
+	import { MEASURE } from '$lib/readerPrefs.svelte';
 	import CommandPalette from '$lib/components/CommandPalette.svelte';
 	import PwaToasts from '$lib/components/PwaToasts.svelte';
 	import Icon from '$lib/components/Icon.svelte';
@@ -74,7 +76,7 @@
 	}}
 />
 
-<div class="flex min-h-screen flex-col">
+<div class="flex min-h-screen flex-col" style="--reading-measure: {MEASURE[readerPrefs.measure]}">
 	{#if !readerUi.focus}
 		<nav class="appnav">
 			<div class="appnav-inner">
@@ -106,16 +108,9 @@
 					{/each}
 				</div>
 				<div class="navctl">
-					<!-- Settings (theme, language, reading, voice all live on the page now). -->
-					<a
-						class="prefs-btn"
-						href={localizeHref('/settings')}
-						aria-label={t('settings.title')}
-						title={t('settings.title')}
-						onclick={() => (navOpen = false)}
-					>
-						<Icon name="gear" size={19} />
-					</a>
+					<!-- Quick settings: gear opens a theme + reading-width popover (the
+					     full Settings page is still linked from the account menu). -->
+					<QuickSettings />
 					<AccountMenu />
 				</div>
 			</div>
