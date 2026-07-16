@@ -105,7 +105,7 @@
 		{#if author.photo_url}
 			<img
 				src={author.photo_url}
-				alt="Portrait of {author.name}"
+				alt="{t('a11y.portraitOf')} {author.name}"
 				class="h-24 w-24 shrink-0 rounded-full border border-border object-cover shadow-sm"
 				style="filter: grayscale(1)"
 			/>
@@ -155,7 +155,7 @@
 						{#if book.cover_url}
 							<img
 								src={book.cover_url}
-								alt="Cover of {book.title}"
+								alt="{t('a11y.coverOf')} {book.title}"
 								loading="lazy"
 								class="aspect-[3/4] w-full rounded-card object-cover shadow-sm transition-transform group-hover:-translate-y-1"
 							/>

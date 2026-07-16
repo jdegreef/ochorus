@@ -77,7 +77,7 @@
 		{#if book.cover_url}
 			<img
 				src={book.cover_url}
-				alt="Cover of {book.title}"
+				alt="{t('a11y.coverOf')} {book.title}"
 				class="aspect-[3/4] w-32 shrink-0 rounded-card object-cover shadow-md"
 			/>
 		{:else}

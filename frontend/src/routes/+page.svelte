@@ -74,7 +74,7 @@
 				{#if book.cover_url}
 					<img
 						src={book.cover_url}
-						alt="Cover of {book.title}"
+						alt="{t('a11y.coverOf')} {book.title}"
 						loading="lazy"
 						class="aspect-[3/4] w-full rounded-card object-cover shadow-sm transition-transform group-hover:-translate-y-1"
 					/>
@@ -116,7 +116,7 @@
 				{#if author.photo_url}
 					<img
 						src={author.photo_url}
-						alt="Portrait of {author.name}"
+						alt="{t('a11y.portraitOf')} {author.name}"
 						loading="lazy"
 						class="h-11 w-11 shrink-0 rounded-full border border-border object-cover"
 						style="filter: grayscale(1)"

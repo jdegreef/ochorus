@@ -1,5 +1,8 @@
 <script lang="ts">
 	import type { BookSummary } from '$lib/library';
+	import { i18n } from '$lib/i18n.svelte';
+
+	const t = i18n.t;
 
 	/**
 	 * A book's cover: the real cover image when there is one, otherwise a
@@ -61,7 +64,7 @@
 		{/if}
 		<img
 			src={book.cover_url}
-			alt="Cover of {book.title}"
+			alt="{t('a11y.coverOf')} {book.title}"
 			loading="lazy"
 			onload={() => (loaded = true)}
 			onerror={() => (failed = true)}
@@ -75,7 +78,7 @@
 			class="h-full w-full"
 			preserveAspectRatio="xMidYMid slice"
 			role="img"
-			aria-label="Cover of {book.title}"
+			aria-label="{t('a11y.coverOf')} {book.title}"
 		>
 			<defs>
 				<linearGradient id={gradId} x1="0" y1="0" x2="0.3" y2="1">
