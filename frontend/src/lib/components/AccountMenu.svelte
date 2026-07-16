@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { auth } from '$lib/auth.svelte';
+	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
+
+	const t = i18n.t;
 
 	// Matches Take Root's account control: a round initials avatar that opens a
 	// small dropdown (email + account + sign out); a soft button when signed out.
@@ -36,7 +39,7 @@
 				class="account-btn"
 				aria-haspopup="menu"
 				aria-expanded={open}
-				aria-label="Account"
+				aria-label={t('account.title')}
 				onclick={(e) => {
 					e.stopPropagation();
 					open = !open;
@@ -54,10 +57,10 @@
 						>
 					{/if}
 					<a class="account-item" role="menuitem" href={localizeHref('/notebook')} onclick={() => (open = false)}
-						>Notebook</a
+						>{t('notebook.title')}</a
 					>
 					<a class="account-item" role="menuitem" href={localizeHref('/settings')} onclick={() => (open = false)}
-						>Settings</a
+						>{t('settings.title')}</a
 					>
 					<button
 						class="account-item"
@@ -65,14 +68,14 @@
 						onclick={() => {
 							open = false;
 							auth.signOut();
-						}}>Sign out</button
+						}}>{t('account.signOut')}</button
 					>
 				</div>
 			{/if}
 		</div>
 	{:else}
 		<a href={localizeHref(loginHref)} class="btn btn-primary !px-3.5 !py-1.5 !text-small hover:no-underline">
-			Sign in
+			{t('account.signIn')}
 		</a>
 	{/if}
 {/if}
