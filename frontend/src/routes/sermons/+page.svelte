@@ -26,14 +26,14 @@
 </script>
 
 <svelte:head>
-	<title>Sermons — Ochorus</title>
+	<title>{t('nav.sermons')} — Ochorus</title>
 	<meta
 		name="description"
 		content="Classic Christian sermons — free to read. The preached word from the writers whose books you can read on Ochorus."
 	/>
 	<link rel="canonical" href="{SITE_URL}/sermons" />
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content="Sermons — Ochorus" />
+	<meta property="og:title" content="{t('nav.sermons')} — Ochorus" />
 	<meta property="og:url" content="{SITE_URL}/sermons" />
 </svelte:head>
 
@@ -66,7 +66,7 @@
 											<span class="text-small text-accent">{sermon.scripture_ref}</span>
 										{/if}
 									</span>
-									<span class="shrink-0 text-[0.8rem] text-muted">{readMins(sermon.word_count)} min</span>
+									<span class="shrink-0 text-[0.8rem] text-muted">{readMins(sermon.word_count)} {t('common.min')}</span>
 								</a>
 							</li>
 						{/each}
@@ -75,6 +75,6 @@
 			{/each}
 		</div>
 	{:else}
-		<p class="text-body text-muted">No sermons in the library yet — check back soon.</p>
+		<p class="text-body text-muted">{t('sermons.empty')}</p>
 	{/if}
 </div>

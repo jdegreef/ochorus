@@ -197,7 +197,7 @@
 								{/if}
 							</span>
 							<span class="shrink-0 text-[0.8rem] text-muted">
-								{Math.max(1, Math.round(sermon.word_count / 200))} min
+								{Math.max(1, Math.round(sermon.word_count / 200))} {t('common.min')}
 							</span>
 						</a>
 					</li>

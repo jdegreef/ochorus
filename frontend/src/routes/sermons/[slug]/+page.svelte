@@ -98,7 +98,7 @@
 	</nav>
 
 	<p class="mb-1 text-small uppercase tracking-wider text-muted">
-		Sermon · {readingTime(sermon.word_count)}{#if preachedYear} · {preachedYear}{/if}
+		{t('search.typeSermon')} · {readingTime(sermon.word_count)}{#if preachedYear} · {preachedYear}{/if}
 	</p>
 	<h1 class="text-h1 mb-2">{sermon.title}</h1>
 	{#if sermon.scripture_ref}
@@ -125,7 +125,7 @@
 
 	{#if related.length}
 		<section class="mt-12 border-t border-border pt-6">
-			<h2 class="text-h3 mb-3">More sermons on {book}</h2>
+			<h2 class="text-h3 mb-3">{t('sermon.moreOn')} {book}</h2>
 			<ul class="space-y-2">
 				{#each related as r (r.slug)}
 					<li>
@@ -139,13 +139,13 @@
 
 	{#if sermon.source_url}
 		<p class="mt-12 border-t border-border pt-5 text-[0.8rem] text-muted">
-			Public domain. Source text from
-			<a href={sermon.source_url} target="_blank" rel="noreferrer">the original edition</a>.
+			{t('book.publicDomain')}
+			<a href={sermon.source_url} target="_blank" rel="noreferrer">{t('book.originalEdition')}</a>.
 		</p>
 	{/if}
 
 	<nav class="mt-8">
-		<a href={localizeHref(`/authors/${sermon.author_slug}`)} class="btn btn-ghost">← More from {sermon.author_name}</a>
+		<a href={localizeHref(`/authors/${sermon.author_slug}`)} class="btn btn-ghost">← {t('sermon.moreFrom')} {sermon.author_name}</a>
 	</nav>
 </article>
 
