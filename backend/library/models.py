@@ -384,3 +384,29 @@ class TopicBook(models.Model):
 
     def __str__(self) -> str:
         return f"{self.topic.slug} ⊃ {self.book_slug}"
+
+
+class TopicSermon(models.Model):
+    """Membership of a sermon in a topic, by canonical ``sermon_slug``.
+
+    The sermon companion to ``TopicBook`` — same soft-reference, language-
+    agnostic pattern, so a topic lists a sermon slug and each language shows it
+    if that sermon exists there.
+    """
+
+    topic = models.ForeignKey(
+        Topic, on_delete=models.CASCADE, related_name="sermon_entries"
+    )
+    sermon_slug = models.SlugField(max_length=160)
+    sort_order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["sort_order", "id"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["topic", "sermon_slug"], name="uniq_topic_sermon"
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.topic.slug} ⊃ {self.sermon_slug}"

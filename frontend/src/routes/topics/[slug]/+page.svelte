@@ -4,6 +4,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import BookCard from '$lib/components/BookCard.svelte';
+	import SermonCard from '$lib/components/SermonCard.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import { topicMeta } from '$lib/topics';
 
@@ -20,12 +21,20 @@
 			name: topic.title,
 			description: topic.description || undefined,
 			url: canonical,
-			hasPart: topic.books.slice(0, 60).map((b) => ({
-				'@type': 'Book',
-				name: b.title,
-				author: { '@type': 'Person', name: b.author.name },
-				url: `${SITE_URL}/books/${b.slug}`
-			}))
+			hasPart: [
+				...topic.books.slice(0, 60).map((b) => ({
+					'@type': 'Book',
+					name: b.title,
+					author: { '@type': 'Person', name: b.author.name },
+					url: `${SITE_URL}/books/${b.slug}`
+				})),
+				...topic.sermons.slice(0, 60).map((s) => ({
+					'@type': 'CreativeWork',
+					name: s.title,
+					author: { '@type': 'Person', name: s.author.name },
+					url: `${SITE_URL}/sermons/${s.slug}`
+				}))
+			]
 		}).replace(/</g, '\\u003c')
 	);
 </script>
@@ -63,18 +72,38 @@
 			<p class="mt-3 text-small text-muted">
 				{topic.books.length}
 				{topic.books.length === 1 ? t('common.bookOne') : t('common.bookMany')}
+				{#if topic.sermons.length}
+					· {topic.sermons.length}
+					{topic.sermons.length === 1 ? t('common.sermonOne') : t('common.sermonMany')}
+				{/if}
 			</p>
 		</div>
 	</header>
 
-	{#if topic.books.length === 0}
+	{#if topic.books.length === 0 && topic.sermons.length === 0}
 		<p class="text-small text-muted">{t('topics.empty')}</p>
-	{:else}
-		<div class="grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
-			{#each topic.books as book (book.slug)}
-				<BookCard {book} showAuthor />
-			{/each}
-		</div>
+	{/if}
+
+	{#if topic.books.length}
+		<section class="mb-10">
+			<h2 class="section-label">{t('topics.books')}</h2>
+			<div class="grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+				{#each topic.books as book (book.slug)}
+					<BookCard {book} showAuthor />
+				{/each}
+			</div>
+		</section>
+	{/if}
+
+	{#if topic.sermons.length}
+		<section>
+			<h2 class="section-label">{t('topics.sermons')}</h2>
+			<div class="grid gap-3 sm:grid-cols-2">
+				{#each topic.sermons as sermon (sermon.slug)}
+					<SermonCard {sermon} showAuthor />
+				{/each}
+			</div>
+		</section>
 	{/if}
 </div>
 
@@ -101,6 +130,14 @@
 		color: color-mix(in srgb, var(--topic) 82%, var(--color-text));
 		background: color-mix(in srgb, var(--topic) 16%, var(--color-surface));
 		box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--topic) 35%, transparent);
+	}
+	.section-label {
+		font-size: 0.72rem;
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--color-muted);
+		margin-bottom: 0.9rem;
 	}
 	/* A themed Scripture epigraph, set off by an accent rule. */
 	.verse {

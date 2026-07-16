@@ -316,11 +316,12 @@ class TopicListSerializer(serializers.ModelSerializer):
     title = serializers.SerializerMethodField()
     description = serializers.SerializerMethodField()
     book_count = serializers.SerializerMethodField()
+    sermon_count = serializers.SerializerMethodField()
     covers = serializers.SerializerMethodField()
 
     class Meta:
         model = Topic
-        fields = ["slug", "title", "description", "book_count", "covers"]
+        fields = ["slug", "title", "description", "book_count", "sermon_count", "covers"]
 
     def _language(self):
         return self.context.get("language", "en")
@@ -333,6 +334,9 @@ class TopicListSerializer(serializers.ModelSerializer):
 
     def get_book_count(self, obj):
         return len(self._books(obj))
+
+    def get_sermon_count(self, obj):
+        return len(self._sermons(obj))
 
     def get_covers(self, obj):
         return [
@@ -362,11 +366,29 @@ class TopicListSerializer(serializers.ModelSerializer):
         }
         return [by_slug[s] for s in order if s in by_slug]
 
+    def _sermons(self, obj):
+        """Member sermons present in the requested language, in curated order.
+        ``sermons_in_language`` is attached by the view; fall back to a query."""
+        cached = getattr(obj, "sermons_in_language", None)
+        if cached is not None:
+            return cached
+        from .models import Sermon
+
+        order = [e.sermon_slug for e in obj.sermon_entries.all()]
+        by_slug = {
+            s.slug: s
+            for s in Sermon.objects.filter(
+                slug__in=order, language=self._language(), is_published=True
+            ).select_related("author")
+        }
+        return [by_slug[s] for s in order if s in by_slug]
+
 
 class TopicDetailSerializer(TopicListSerializer):
     """A topic page — the shelf metadata plus the full list of member books."""
 
     books = serializers.SerializerMethodField()
+    sermons = serializers.SerializerMethodField()
     scripture_ref = serializers.SerializerMethodField()
     scripture_text = serializers.SerializerMethodField()
 
@@ -375,6 +397,7 @@ class TopicDetailSerializer(TopicListSerializer):
             "scripture_ref",
             "scripture_text",
             "books",
+            "sermons",
         ]
 
     def get_scripture_ref(self, obj):
@@ -385,3 +408,6 @@ class TopicDetailSerializer(TopicListSerializer):
 
     def get_books(self, obj):
         return BookListSerializer(self._books(obj), many=True).data
+
+    def get_sermons(self, obj):
+        return SermonListSerializer(self._sermons(obj), many=True).data
