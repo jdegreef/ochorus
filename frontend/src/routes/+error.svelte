@@ -96,7 +96,7 @@
 							{#if book.cover_url}
 								<img
 									src={book.cover_url}
-									alt="Cover of {book.title}"
+									alt="{t('a11y.coverOf')} {book.title}"
 									loading="lazy"
 									class="aspect-[3/4] w-full rounded-card object-cover shadow-sm transition-transform group-hover:-translate-y-1"
 								/>

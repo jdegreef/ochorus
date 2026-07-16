@@ -193,7 +193,7 @@
 						{#if author.photo_url}
 							<img
 								src={author.photo_url}
-								alt="Portrait of {author.name}"
+								alt="{t('a11y.portraitOf')} {author.name}"
 								loading="lazy"
 								class="h-14 w-14 rounded-full border border-border object-cover"
 								style="filter: grayscale(1)"
