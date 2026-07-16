@@ -105,7 +105,7 @@
 		class="selbar"
 		style="top: {top}px; left: {left}px"
 		role="toolbar"
-		aria-label="Selection actions"
+		aria-label={t('a11y.selectionActions')}
 	>
 		<button class="selbar-btn" onclick={copy}>
 			{copied ? '✓ ' : ''}{t('reader.copyQuote')}

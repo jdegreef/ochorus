@@ -66,7 +66,7 @@
 					<button
 						class="btn btn-ghost !px-2.5 !py-1"
 						onclick={() => readerPrefs.bumpScale(-0.1)}
-						aria-label="Smaller text">A−</button
+						aria-label={t('a11y.smallerText')}>A−</button
 					>
 					<span class="w-10 text-center text-small text-muted"
 						>{Math.round(readerPrefs.scale * 100)}%</span
@@ -74,7 +74,7 @@
 					<button
 						class="btn btn-ghost !px-2.5 !py-1 !text-base"
 						onclick={() => readerPrefs.bumpScale(0.1)}
-						aria-label="Larger text">A+</button
+						aria-label={t('a11y.largerText')}>A+</button
 					>
 				</div>
 			</div>

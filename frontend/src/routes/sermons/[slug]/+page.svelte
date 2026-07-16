@@ -91,7 +91,7 @@
 
 <article class="mx-auto px-5 py-10" style="{readerPrefs.style}; max-width: var(--reading-measure)" dir="auto">
 	<!-- Breadcrumb -->
-	<nav class="mb-5 flex flex-wrap items-center gap-1.5 text-small text-muted" aria-label="Breadcrumb">
+	<nav class="mb-5 flex flex-wrap items-center gap-1.5 text-small text-muted" aria-label={t('a11y.breadcrumb')}>
 		<a href={localizeHref('/sermons')} class="hover:text-text">{t('nav.sermons')}</a>
 		<span>›</span>
 		<a href={localizeHref(`/authors/${sermon.author_slug}`)} class="hover:text-text">{sermon.author_name}</a>

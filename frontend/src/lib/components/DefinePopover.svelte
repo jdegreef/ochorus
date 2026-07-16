@@ -28,7 +28,7 @@
 			{#if define.result?.phonetic}
 				<span class="text-small text-muted">{define.result.phonetic}</span>
 			{/if}
-			<button class="define-close" onclick={() => define.close()} aria-label="Close">✕</button>
+			<button class="define-close" onclick={() => define.close()} aria-label={t('a11y.close')}>✕</button>
 		</div>
 
 		{#if define.loading}

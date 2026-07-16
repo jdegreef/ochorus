@@ -21,7 +21,7 @@
 <svelte:head><title>{plan.title} — Ochorus</title></svelte:head>
 
 <div class="mx-auto max-w-3xl px-5 py-10">
-	<nav class="mb-5 text-small text-muted" aria-label="Breadcrumb">
+	<nav class="mb-5 text-small text-muted" aria-label={t('a11y.breadcrumb')}>
 		<a href={localizeHref('/plans')} class="hover:text-text">{t('plans.title')}</a>
 		<span> › </span>
 		<span class="text-text">{plan.title}</span>

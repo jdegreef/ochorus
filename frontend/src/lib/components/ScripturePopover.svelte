@@ -25,7 +25,7 @@
 	>
 		<div class="flex items-baseline justify-between gap-3">
 			<span class="scripture-ref-title">{scripture.result?.reference ?? scripture.ref}</span>
-			<button class="scripture-close" onclick={() => scripture.close()} aria-label="Close">✕</button>
+			<button class="scripture-close" onclick={() => scripture.close()} aria-label={t('a11y.close')}>✕</button>
 		</div>
 
 		{#if scripture.loading}
