@@ -510,3 +510,31 @@ nav.appnav .navtoggle:hover {
 	opacity: 0.4;
 	cursor: default;
 }
+
+/* Browse-page width follows the quick-settings Reading width control. The
+   reading column (book/sermon body) uses --reading-measure directly; the page
+   shells — the `mx-auto max-w-*` containers inside <main> — multiply their
+   natural Tailwind width by --page-scale (set on the app root from the same
+   preference). Scoped to main so the nav bar and footer hold still, and
+   limited to the large shells (3xl+): the xl/2xl forms (login, contact)
+   shouldn't stretch. */
+main .max-w-3xl {
+	max-width: calc(48rem * var(--page-scale, 1));
+}
+main .max-w-4xl {
+	max-width: calc(56rem * var(--page-scale, 1));
+}
+main .max-w-5xl {
+	max-width: calc(64rem * var(--page-scale, 1));
+}
+main .max-w-6xl {
+	max-width: calc(72rem * var(--page-scale, 1));
+}
+@media (prefers-reduced-motion: no-preference) {
+	main .max-w-3xl,
+	main .max-w-4xl,
+	main .max-w-5xl,
+	main .max-w-6xl {
+		transition: max-width 0.25s ease;
+	}
+}
