@@ -58,6 +58,10 @@
 							<span class="shrink-0 text-small text-muted">
 								{topic.book_count}
 								{topic.book_count === 1 ? t('common.bookOne') : t('common.bookMany')}
+								{#if topic.sermon_count}
+									· {topic.sermon_count}
+									{topic.sermon_count === 1 ? t('common.sermonOne') : t('common.sermonMany')}
+								{/if}
 							</span>
 						</div>
 						<p class="mt-1.5 text-small text-muted">{topic.description}</p>

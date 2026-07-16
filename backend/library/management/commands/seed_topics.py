@@ -16,7 +16,7 @@ from __future__ import annotations
 
 from django.core.management.base import BaseCommand
 
-from library.models import Topic, TopicBook, TopicTranslation
+from library.models import Topic, TopicBook, TopicSermon, TopicTranslation
 
 # (slug, title, description, [ordered member book slugs]). A book may appear in
 # several topics — topics are overlapping shelves, not exclusive categories.
@@ -104,6 +104,32 @@ TOPICS = [
         ],
     ),
 ]
+
+
+# Sermon members per topic, by canonical sermon slug (language-agnostic, like
+# the book members). A sermon shows on a topic's shelf in each language it
+# exists in. {topic slug: [ordered sermon slugs]}
+TOPIC_SERMONS = {
+    "prayer": [
+        "the-golden-key-of-prayer",
+        "order-and-argument-in-prayer",
+        "pauls-first-prayer",
+    ],
+    "deeper-life": ["himself", "christ-all-in-all"],
+    "grace-and-comfort": [
+        "free-grace",
+        "the-immutability-of-god",
+        "sweet-comfort-for-feeble-saints",
+        "comfort-for-the-desponding",
+        "consolation-in-the-furnace",
+    ],
+    "revival-and-missions": [
+        "compel-them-to-come-in",
+        "the-way-of-salvation",
+        "christs-boundless-compassion",
+    ],
+    "faith-and-guidance": ["the-possibilities-of-faith", "unfailing-springs"],
+}
 
 
 # A themed Scripture epigraph per topic (KJV — public domain), shown on the
@@ -246,6 +272,15 @@ class Command(BaseCommand):
                 _, entry_created = TopicBook.objects.update_or_create(
                     topic=topic,
                     book_slug=book_slug,
+                    defaults={"sort_order": i},
+                )
+                if entry_created:
+                    added += 1
+            # Upsert sermon membership the same way.
+            for i, sermon_slug in enumerate(TOPIC_SERMONS.get(slug, [])):
+                _, entry_created = TopicSermon.objects.update_or_create(
+                    topic=topic,
+                    sermon_slug=sermon_slug,
                     defaults={"sort_order": i},
                 )
                 if entry_created:

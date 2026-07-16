@@ -250,6 +250,7 @@ export interface TopicSummary {
 	title: string;
 	description: string;
 	book_count: number;
+	sermon_count: number;
 	covers: TopicCover[];
 }
 
@@ -257,6 +258,7 @@ export interface TopicDetail extends TopicSummary {
 	scripture_ref: string;
 	scripture_text: string;
 	books: BookSummary[];
+	sermons: SermonSummary[];
 }
 
 export const listTopics = (language = 'en') =>

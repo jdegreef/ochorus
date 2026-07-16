@@ -242,6 +242,24 @@ def _attach_books(topics, language):
     return topics
 
 
+def _attach_sermons(topics, language):
+    """Attach ``sermons_in_language`` (curated-ordered, published member sermons
+    in ``language``) to each topic, in two queries total — the sermon companion
+    to ``_attach_books``."""
+    wanted = {e.sermon_slug for t in topics for e in t.sermon_entries.all()}
+    sermons = Sermon.objects.filter(
+        slug__in=wanted, language=language, is_published=True
+    ).select_related("author")
+    by_slug = {s.slug: s for s in sermons}
+    for t in topics:
+        t.sermons_in_language = [
+            by_slug[e.sermon_slug]
+            for e in t.sermon_entries.all()
+            if e.sermon_slug in by_slug
+        ]
+    return topics
+
+
 class TopicListView(generics.ListAPIView):
     """Published topical shelves that have at least one member book in the
     requested language (so a partially-translated library never shows an empty
@@ -259,11 +277,12 @@ class TopicListView(generics.ListAPIView):
         language = _language(self.request)
         topics = list(
             Topic.objects.filter(is_published=True)
-            .prefetch_related("translations", "entries")
+            .prefetch_related("translations", "entries", "sermon_entries")
             .order_by("sort_order", "title")
         )
         _attach_books(topics, language)
-        return [t for t in topics if t.books_in_language]
+        _attach_sermons(topics, language)
+        return [t for t in topics if t.books_in_language or t.sermons_in_language]
 
 
 class TopicDetailView(generics.RetrieveAPIView):
@@ -279,11 +298,13 @@ class TopicDetailView(generics.RetrieveAPIView):
     def get_object(self):
         topic = get_object_or_404(
             Topic.objects.filter(is_published=True).prefetch_related(
-                "translations", "entries"
+                "translations", "entries", "sermon_entries"
             ),
             slug=self.kwargs["slug"],
         )
-        _attach_books([topic], _language(self.request))
+        language = _language(self.request)
+        _attach_books([topic], language)
+        _attach_sermons([topic], language)
         return topic
 
 
