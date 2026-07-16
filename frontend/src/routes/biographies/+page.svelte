@@ -226,10 +226,15 @@
 						</a>
 					</div>
 				</div>
-				<p class="mt-4 line-clamp-3 text-body leading-relaxed text-muted">{author.bio}</p>
+				<!-- An author can be in the library before their bio is written: show
+				     their works and omit the blurb rather than render an empty gap. -->
+				{#if author.bio}
+					<p class="mt-4 line-clamp-3 text-body leading-relaxed text-muted">{author.bio}</p>
+				{/if}
 				<!-- The "View biography →" CTA above already serves book-less authors;
-				     add the read-more only where the CTA above is a book count. -->
-				{#if author.book_count > 0}
+				     add the read-more only where the CTA is a book count AND there is
+				     actually a biography to go and read. -->
+				{#if author.book_count > 0 && author.bio}
 					<a
 						href={localizeHref(`/authors/${author.slug}`)}
 						class="mt-1.5 inline-block text-small font-semibold text-accent"

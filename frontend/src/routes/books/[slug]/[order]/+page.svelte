@@ -226,7 +226,7 @@
 	function turnPage(dir: 1 | -1) {
 		const next = pageIndex + dir;
 		if (next < 0) {
-			if (chapter.prev) goto(localizeHref(`/books/${slug}/${chapter.prev.order}?pg=last`));
+			if (chapter.prev) goto(chapterHref(chapter.prev.order, 'last'));
 		} else if (next > pageTotal - 1) {
 			gotoChapter(chapter.next);
 		} else {
@@ -331,8 +331,32 @@
 		return () => listen.stop();
 	});
 
+	/** The plan day covering a chapter of THIS book, when following a plan. */
+	function planDayFor(order: number): number | null {
+		const d = plan?.days.find((x) => x.book_slug === slug && x.chapter_order === order);
+		return d?.day ?? null;
+	}
+
+	/**
+	 * A chapter link that carries the reader's plan context (?plan=&day=) when the
+	 * target chapter is itself a day of the plan they're following — recomputing
+	 * the day rather than passing the old one through. Plain link otherwise, since
+	 * a chapter outside the plan means they've stepped off its path.
+	 */
+	function chapterHref(order: number, pg?: 'last'): string {
+		const qs = new URLSearchParams();
+		if (pg) qs.set('pg', pg); // land on the last page when paging backwards
+		const day = planDayFor(order);
+		if (plan && day) {
+			qs.set('plan', plan.slug);
+			qs.set('day', String(day));
+		}
+		const q = qs.toString();
+		return localizeHref(`/books/${slug}/${order}${q ? `?${q}` : ''}`);
+	}
+
 	function gotoChapter(target: { order: number } | null) {
-		if (target) goto(localizeHref(`/books/${slug}/${target.order}`));
+		if (target) goto(chapterHref(target.order));
 	}
 
 	/** Keyboard: ←/→ chapters (or paragraph skip while listening), space pages. */
@@ -599,7 +623,7 @@
 			<div class="flex shrink-0 items-center gap-0.5">
 				{#if chapter.prev}
 					<a
-						href={localizeHref(`/books/${slug}/${chapter.prev.order}`)}
+						href={chapterHref(chapter.prev.order)}
 						class="btn btn-ghost !px-2 !py-1.5"
 						aria-label={t('reader.previous')}
 						title={t('reader.previous')}><Icon name="chevron-left" size={18} /></a
@@ -607,7 +631,7 @@
 				{/if}
 				{#if chapter.next}
 					<a
-						href={localizeHref(`/books/${slug}/${chapter.next.order}`)}
+						href={chapterHref(chapter.next.order)}
 						class="btn btn-ghost !px-2 !py-1.5"
 						aria-label={t('reader.next')}
 						title={t('reader.next')}><Icon name="chevron-right" size={18} /></a
@@ -726,7 +750,7 @@
 	<nav class="mt-14 flex items-stretch justify-between gap-3 border-t border-border pt-6">
 		{#if chapter.prev}
 			<a
-				href={localizeHref(`/books/${slug}/${chapter.prev.order}`)}
+				href={chapterHref(chapter.prev.order)}
 				class="btn btn-ghost flex-1 !flex-col !items-start gap-0.5 text-left"
 			>
 				<span class="text-[0.7rem] uppercase tracking-wider text-muted">{t('reader.previous')}</span>
@@ -737,7 +761,7 @@
 		{/if}
 		{#if chapter.next}
 			<a
-				href={localizeHref(`/books/${slug}/${chapter.next.order}`)}
+				href={chapterHref(chapter.next.order)}
 				class="btn btn-primary flex-1 !flex-col !items-end gap-0.5 text-right"
 			>
 				<span class="text-[0.7rem] uppercase tracking-wider opacity-75">{t('reader.next')}</span>

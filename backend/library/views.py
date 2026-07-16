@@ -57,7 +57,7 @@ def _language_entry(code: str) -> dict:
 # wrapped in these; the client HTML-escapes the text and then swaps the markers
 # for <mark> tags, so no HTML ever crosses the boundary unescaped.
 class AuthorListView(generics.ListAPIView):
-    """Authors for the Biographies page (those with a bio), with book counts."""
+    """Authors for the Biographies page: anyone with a bio OR a book to read."""
 
     serializer_class = AuthorListSerializer
 
@@ -67,9 +67,18 @@ class AuthorListView(generics.ListAPIView):
         # language (matches AuthorDetailSerializer, which lists books per-locale).
         # Authors with no book in this language fall to the "view biography"
         # link in the UI.
+        #
+        # Include an author who has books here even with no bio yet: they are
+        # part of the library, so hiding them from the page that lists the
+        # library's writers loses them entirely (the card then shows their works
+        # and omits the bio blurb rather than faking one). An author with
+        # neither a bio nor a book in this language still has nothing to show.
+        #
+        # Imprints are excluded: this page — and the schema.org ItemList it
+        # emits — describes people, and a house byline is not one.
         lang = _language(self.request)
         return (
-            Author.objects.exclude(bio="")
+            Author.objects.filter(is_imprint=False)
             .prefetch_related("translations")
             .annotate(
                 num_books=Count(
@@ -77,6 +86,7 @@ class AuthorListView(generics.ListAPIView):
                     filter=Q(books__is_published=True, books__language=lang),
                 )
             )
+            .filter(Q(num_books__gt=0) | ~Q(bio=""))
             .order_by("name")
         )
 

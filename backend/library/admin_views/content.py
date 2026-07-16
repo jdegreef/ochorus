@@ -178,7 +178,9 @@ class AdminStatsView(APIView):
             "unreviewed_translations": Book.objects.filter(
                 source_type=Book.SourceType.AI_UNREVIEWED
             ).count(),
-            "authors_without_bio": Author.objects.filter(bio="").count(),
+            # Imprints are bylines, not people — they never get a bio, so
+            # counting them would leave this to-do permanently unfinishable.
+            "authors_without_bio": Author.objects.filter(bio="", is_imprint=False).count(),
             "empty_chapters": Chapter.objects.filter(word_count=0).count(),
         }
 
