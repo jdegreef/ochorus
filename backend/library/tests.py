@@ -496,6 +496,118 @@ class TopicTests(TestCase):
         )
 
 
+class AuthorListTests(TestCase):
+    """The Biographies shelf: anyone with a bio OR a book to read."""
+
+    def setUp(self):
+        self.client = APIClient()
+        # Has books but no bio written yet (the R. A. Torrey case).
+        bookish = Author.objects.create(slug="torrey", name="R. A. Torrey")
+        Book.objects.create(author=bookish, slug="baptism", language="en", title="Baptism")
+        # Has a bio but no books (a figure we tell the story of).
+        Author.objects.create(slug="bunyan", name="John Bunyan", bio="A tinker who dreamed.")
+        # Neither: nothing to show.
+        Author.objects.create(slug="ghost", name="No One")
+        # Books only in another language → nothing to open on the English shelf.
+        other = Author.objects.create(slug="lg-only", name="Lg Only")
+        Book.objects.create(author=other, slug="lg-book", language="lg", title="Ekitabo")
+
+    def slugs(self, lang="en"):
+        res = self.client.get(f"/api/library/authors/?language={lang}")
+        self.assertEqual(res.status_code, 200)
+        return [a["slug"] for a in res.data]
+
+    def test_author_with_books_but_no_bio_is_listed(self):
+        # Previously excluded by exclude(bio="") — an author with 5 books simply
+        # vanished from the page that lists the library's writers.
+        self.assertIn("torrey", self.slugs())
+
+    def test_author_with_bio_but_no_books_is_listed(self):
+        self.assertIn("bunyan", self.slugs())
+
+    def test_author_with_neither_is_not_listed(self):
+        self.assertNotIn("ghost", self.slugs())
+
+    def test_books_only_in_another_language_do_not_carry_an_author(self):
+        # No bio and no book a reader could open in this language → nothing to show.
+        self.assertNotIn("lg-only", self.slugs("en"))
+        # …but they are on their own language's shelf.
+        self.assertIn("lg-only", self.slugs("lg"))
+
+    def test_book_count_is_per_language(self):
+        res = self.client.get("/api/library/authors/?language=en")
+        torrey = next(a for a in res.data if a["slug"] == "torrey")
+        self.assertEqual(torrey["book_count"], 1)
+
+
+class SermonTranslationLabelTests(TestCase):
+    """0036: AI translations were left labelled as public-domain originals."""
+
+    def _relabel(self):
+        import importlib
+
+        from django.apps import apps as global_apps
+
+        mod = importlib.import_module("library.migrations.0036_relabel_translated_sermons")
+        mod.relabel_translations(global_apps, None)
+
+    def setUp(self):
+        self.a = Author.objects.create(slug="cs", name="C. Spurgeon")
+
+    def _sermon(self, slug, language, **kw):
+        return Sermon.objects.create(
+            author=self.a, slug=slug, language=language, title=f"{slug} {language}",
+            body_html="<p>some words here</p>", **kw
+        )
+
+    def test_relabels_only_genuine_translations(self):
+        en = self._sermon("himself", "en")
+        translated = self._sermon("himself", "lg")  # default: public_domain
+        # A non-English sermon with no English sibling is a real original.
+        original = self._sermon("okusaba", "lg")
+        # An already-approved translation must never be downgraded.
+        self._sermon("rest", "en")
+        approved = self._sermon("rest", "lg", source_type=Book.SourceType.AI_REVIEWED)
+
+        self._relabel()
+        for s in (en, translated, original, approved):
+            s.refresh_from_db()
+
+        self.assertEqual(translated.source_type, Book.SourceType.AI_UNREVIEWED)
+        self.assertEqual(en.source_type, Book.SourceType.PUBLIC_DOMAIN)
+        self.assertEqual(original.source_type, Book.SourceType.PUBLIC_DOMAIN)
+        self.assertEqual(approved.source_type, Book.SourceType.AI_REVIEWED)
+
+    def test_is_idempotent(self):
+        self._sermon("himself", "en")
+        t = self._sermon("himself", "lg")
+        self._relabel()
+        self._relabel()
+        t.refresh_from_db()
+        self.assertEqual(t.source_type, Book.SourceType.AI_UNREVIEWED)
+
+
+class FixtureSermonLabelTests(TestCase):
+    """Guard the fixture itself: a shipped translation must carry its badge."""
+
+    def test_no_translated_sermon_ships_as_public_domain(self):
+        import json
+        from pathlib import Path
+
+        fixture = Path(__file__).resolve().parent / "fixtures" / "launch.json"
+        rows = json.loads(fixture.read_text())
+        sermons = [r["fields"] for r in rows if r.get("model") == "library.sermon"]
+        english = {s["slug"] for s in sermons if s["language"] == "en"}
+        mislabelled = [
+            f"{s['language']}/{s['slug']}"
+            for s in sermons
+            if s["language"] != "en"
+            and s["slug"] in english
+            and s.get("source_type", "public_domain") == "public_domain"
+        ]
+        self.assertEqual(mislabelled, [], "translated sermons must not ship as public_domain")
+
+
 class RelatedBooksTests(TestCase):
     def setUp(self):
         self.client = APIClient()

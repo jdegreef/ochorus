@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { untrack } from 'svelte';
 	import { search, type SearchHit, type ChapterHit } from '$lib/library';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { markSnippet } from '$lib/highlight';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	const t = i18n.t;
 
@@ -87,6 +89,9 @@
 	let ran = $state('');
 	let suggestion = $state('');
 	let timer: ReturnType<typeof setTimeout> | undefined;
+	// The query currently reflected in the URL. Plain (non-reactive) — it exists
+	// only to tell "the reader navigated" apart from "we just wrote the URL".
+	let urlQuery = '';
 
 	type ResultRow = Row & { type: SearchHit['type'] };
 	const rows = $derived<ResultRow[]>(hits.map((h) => ({ ...toRow(h), type: h.type })));
@@ -219,29 +224,71 @@
 		}
 	}
 
+	function clearResults() {
+		hits = [];
+		ran = '';
+		suggestion = '';
+	}
+
+	async function runSearch(term: string) {
+		loading = true;
+		try {
+			const res = await search(term, getLang());
+			hits = res.results;
+			ran = res.query;
+			suggestion = res.suggestion ?? '';
+		} finally {
+			loading = false;
+		}
+	}
+
+	/**
+	 * Mirror the query into ?q= so a search is linkable, survives a reload, and
+	 * comes back intact when the reader returns with Back after opening a result.
+	 * replaceState (not push) so typing doesn't bury their history; keepFocus so
+	 * the caret stays in the box mid-word.
+	 */
+	function syncUrl(term: string) {
+		if (term === urlQuery) return;
+		urlQuery = term;
+		const url = new URL($page.url);
+		if (term) url.searchParams.set('q', term);
+		else url.searchParams.delete('q');
+		goto(url, { replaceState: true, keepFocus: true, noScroll: true });
+	}
+
 	function onInput() {
 		activeIndex = -1;
 		typeFilter = 'all';
 		clearTimeout(timer);
 		const term = q.trim();
 		if (term.length < 2) {
-			hits = [];
-			ran = '';
-			suggestion = '';
+			clearResults();
+			syncUrl('');
 			return;
 		}
-		timer = setTimeout(async () => {
-			loading = true;
-			try {
-				const res = await search(term, getLang());
-				hits = res.results;
-				ran = res.query;
-				suggestion = res.suggestion ?? '';
-			} finally {
-				loading = false;
-			}
+		timer = setTimeout(() => {
+			syncUrl(term);
+			runSearch(term);
 		}, 250);
 	}
+
+	// The URL is the source of truth for which search is showing. This covers the
+	// first load of a shared /search?q=… link and the Back/Forward buttons; our
+	// own syncUrl writes are filtered out by the urlQuery guard, so no loop.
+	$effect(() => {
+		const term = ($page.url.searchParams.get('q') ?? '').trim();
+		untrack(() => {
+			if (term === urlQuery) return;
+			urlQuery = term;
+			q = term;
+			clearTimeout(timer);
+			activeIndex = -1;
+			typeFilter = 'all';
+			if (term.length < 2) clearResults();
+			else runSearch(term);
+		});
+	});
 
 	// Accept a "did you mean" suggestion: swap it in and search immediately.
 	function applySuggestion(term: string) {
