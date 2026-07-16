@@ -367,9 +367,21 @@ class TopicDetailSerializer(TopicListSerializer):
     """A topic page — the shelf metadata plus the full list of member books."""
 
     books = serializers.SerializerMethodField()
+    scripture_ref = serializers.SerializerMethodField()
+    scripture_text = serializers.SerializerMethodField()
 
     class Meta(TopicListSerializer.Meta):
-        fields = TopicListSerializer.Meta.fields + ["books"]
+        fields = TopicListSerializer.Meta.fields + [
+            "scripture_ref",
+            "scripture_text",
+            "books",
+        ]
+
+    def get_scripture_ref(self, obj):
+        return obj.scripture_ref_for(self._language())
+
+    def get_scripture_text(self, obj):
+        return obj.scripture_text_for(self._language())
 
     def get_books(self, obj):
         return BookListSerializer(self._books(obj), many=True).data
