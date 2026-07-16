@@ -73,9 +73,13 @@ class AuthorListView(generics.ListAPIView):
         # library's writers loses them entirely (the card then shows their works
         # and omits the bio blurb rather than faking one). An author with
         # neither a bio nor a book in this language still has nothing to show.
+        #
+        # Imprints are excluded: this page — and the schema.org ItemList it
+        # emits — describes people, and a house byline is not one.
         lang = _language(self.request)
         return (
-            Author.objects.prefetch_related("translations")
+            Author.objects.filter(is_imprint=False)
+            .prefetch_related("translations")
             .annotate(
                 num_books=Count(
                     "books",

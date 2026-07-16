@@ -226,7 +226,7 @@
 	function turnPage(dir: 1 | -1) {
 		const next = pageIndex + dir;
 		if (next < 0) {
-			if (chapter.prev) goto(chapterHref(chapter.prev.order, { pg: 'last' }));
+			if (chapter.prev) goto(chapterHref(chapter.prev.order, 'last'));
 		} else if (next > pageTotal - 1) {
 			gotoChapter(chapter.next);
 		} else {
@@ -343,8 +343,9 @@
 	 * the day rather than passing the old one through. Plain link otherwise, since
 	 * a chapter outside the plan means they've stepped off its path.
 	 */
-	function chapterHref(order: number, params: Record<string, string> = {}): string {
-		const qs = new URLSearchParams(params);
+	function chapterHref(order: number, pg?: 'last'): string {
+		const qs = new URLSearchParams();
+		if (pg) qs.set('pg', pg); // land on the last page when paging backwards
 		const day = planDayFor(order);
 		if (plan && day) {
 			qs.set('plan', plan.slug);

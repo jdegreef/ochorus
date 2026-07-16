@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { untrack } from 'svelte';
 	import { search, type SearchHit, type ChapterHit } from '$lib/library';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
@@ -257,37 +256,43 @@
 		goto(url, { replaceState: true, keepFocus: true, noScroll: true });
 	}
 
-	function onInput() {
+	/** Show `term`: reset the list state, then search it (or clear if too short). */
+	function applyTerm(term: string) {
+		clearTimeout(timer);
 		activeIndex = -1;
 		typeFilter = 'all';
-		clearTimeout(timer);
+		if (term.length < 2) clearResults();
+		else runSearch(term);
+	}
+
+	function onInput() {
 		const term = q.trim();
 		if (term.length < 2) {
-			clearResults();
+			applyTerm(term); // drops any pending search and clears the list
 			syncUrl('');
 			return;
 		}
+		// Reset the facet/selection on the keystroke rather than 250ms later, so
+		// the list stops looking filtered the moment the query changes.
+		clearTimeout(timer);
+		activeIndex = -1;
+		typeFilter = 'all';
 		timer = setTimeout(() => {
 			syncUrl(term);
-			runSearch(term);
+			applyTerm(term);
 		}, 250);
 	}
 
-	// The URL is the source of truth for which search is showing. This covers the
-	// first load of a shared /search?q=… link and the Back/Forward buttons; our
-	// own syncUrl writes are filtered out by the urlQuery guard, so no loop.
+	// The URL is the source of truth for which search is showing: this covers the
+	// first load of a shared /search?q=… link and the Back/Forward buttons. The
+	// urlQuery guard is what stops a loop — syncUrl sets it before writing the
+	// URL, so the effect our own write triggers falls straight through.
 	$effect(() => {
 		const term = ($page.url.searchParams.get('q') ?? '').trim();
-		untrack(() => {
-			if (term === urlQuery) return;
-			urlQuery = term;
-			q = term;
-			clearTimeout(timer);
-			activeIndex = -1;
-			typeFilter = 'all';
-			if (term.length < 2) clearResults();
-			else runSearch(term);
-		});
+		if (term === urlQuery) return;
+		urlQuery = term;
+		q = term;
+		applyTerm(term);
 	});
 
 	// Accept a "did you mean" suggestion: swap it in and search immediately.

@@ -511,6 +511,9 @@ class AuthorListTests(TestCase):
         # Books only in another language → nothing to open on the English shelf.
         other = Author.objects.create(slug="lg-only", name="Lg Only")
         Book.objects.create(author=other, slug="lg-book", language="lg", title="Ekitabo")
+        # A house byline with books — not a person, so not on this shelf.
+        imprint = Author.objects.create(slug="house", name="House Originals", is_imprint=True)
+        Book.objects.create(author=imprint, slug="anthology", language="en", title="Anthology")
 
     def slugs(self, lang="en"):
         res = self.client.get(f"/api/library/authors/?language={lang}")
@@ -538,6 +541,27 @@ class AuthorListTests(TestCase):
         res = self.client.get("/api/library/authors/?language=en")
         torrey = next(a for a in res.data if a["slug"] == "torrey")
         self.assertEqual(torrey["book_count"], 1)
+
+    def test_imprint_is_not_listed(self):
+        # A house byline has books, but this shelf — and the schema.org
+        # ItemList of Person it emits — is about people.
+        self.assertNotIn("house", self.slugs())
+
+    def test_fixture_flags_the_house_imprint(self):
+        # The migration flags prod, but a fresh DB is loaded from the fixture
+        # *after* migrate runs — so the flag has to ship in the fixture too.
+        import json
+        from pathlib import Path
+
+        rows = json.loads(
+            (Path(__file__).resolve().parent / "fixtures" / "launch.json").read_text()
+        )
+        imprints = {
+            r["fields"]["slug"]
+            for r in rows
+            if r.get("model") == "library.author" and r["fields"].get("is_imprint")
+        }
+        self.assertIn("ochorus-originals", imprints)
 
 
 class SermonTranslationLabelTests(TestCase):
