@@ -81,7 +81,7 @@
 			<a class="brand" href={localizeHref('/')}><BrandMark size={24} /><span>Ochorus</span></a>
 			<button
 				class="navtoggle"
-				aria-label="Menu"
+				aria-label={t('a11y.menu')}
 				aria-expanded={navOpen}
 				onclick={(e) => {
 					e.stopPropagation();

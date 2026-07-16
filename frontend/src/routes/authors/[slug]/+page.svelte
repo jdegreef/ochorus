@@ -93,7 +93,7 @@
 
 <div class="mx-auto max-w-3xl px-5 py-12">
 	<!-- Breadcrumb -->
-	<nav class="mb-6 flex flex-wrap items-center gap-1.5 text-small text-muted" aria-label="Breadcrumb">
+	<nav class="mb-6 flex flex-wrap items-center gap-1.5 text-small text-muted" aria-label={t('a11y.breadcrumb')}>
 		<a href={localizeHref('/')} class="hover:text-text">{t('common.home')}</a>
 		<span>›</span>
 		<a href={localizeHref('/biographies')} class="hover:text-text">{t('bios.eyebrow')}</a>

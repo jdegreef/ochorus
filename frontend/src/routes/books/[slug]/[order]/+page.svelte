@@ -680,7 +680,7 @@
 	onclick={onArticleClick}
 >
 	<!-- Breadcrumb -->
-	<nav class="mb-5 flex flex-wrap items-center gap-1.5 text-small text-muted" aria-label="Breadcrumb">
+	<nav class="mb-5 flex flex-wrap items-center gap-1.5 text-small text-muted" aria-label={t('a11y.breadcrumb')}>
 		<a href={localizeHref('/books')} class="hover:text-text">{t('nav.books')}</a>
 		<span>›</span>
 		<a href={localizeHref(`/authors/${chapter.author_slug}`)} class="hover:text-text">{chapter.author_name}</a>
