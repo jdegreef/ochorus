@@ -48,8 +48,8 @@
 	const crumbsLd = $derived(
 		jsonLd(
 			breadcrumb([
-				{ name: 'Home', url: '/' },
-				{ name: 'Books', url: '/books' },
+				{ name: t('common.home'), url: '/' },
+				{ name: t('nav.books'), url: '/books' },
 				{ name: book.title, url: `/books/${book.slug}` }
 			])
 		)
