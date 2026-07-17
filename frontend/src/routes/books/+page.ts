@@ -27,6 +27,10 @@ import type { PageLoad } from './$types';
  * Prerender refresh 2026-07-17 (queue job #170): same again after the Luganda
  * edition of The Key in My Hand (Ekisumuluzo Ekiri mu Mukono Gwange, PR #174)
  * went live, so the /lg/books pages re-crawl and bake with the new title.
+ *
+ * Prerender refresh 2026-07-17 (queue job #179): same again after the Luganda
+ * edition of Godliness (Okutya Katonda, PR #184) went live, so the /lg/books
+ * pages re-crawl and bake with the new title.
  */
 export const load: PageLoad = async () => {
 	try {
