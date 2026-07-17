@@ -128,6 +128,14 @@
 						{t('book.downloadPdf')}
 					</a>
 				{/if}
+				{#if book.has_modern_edition}
+					<a
+						href={localizeHref(`/books/${book.slug}/${resumeOrder && resumeOrder > 1 ? resumeOrder : 1}?edition=modern`)}
+						class="btn btn-ghost"
+					>
+						{t('book.readModern')}
+					</a>
+				{/if}
 				<span class="text-small text-muted">
 					{book.chapter_count}
 					{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')} · {readingTime(

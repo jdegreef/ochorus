@@ -36,6 +36,9 @@
 	let { data } = $props();
 	const chapter = $derived(data.chapter as Chapter);
 	const slug = $derived(data.slug as string);
+	// 'modern' when reading the Modern English edition, else null. Carried in the
+	// URL and preserved across every in-reader chapter link.
+	const edition = $derived((data.edition as 'modern' | null) ?? null);
 	const t = i18n.t;
 
 	let body: HTMLDivElement | undefined = $state();
@@ -351,8 +354,23 @@
 			qs.set('plan', plan.slug);
 			qs.set('day', String(day));
 		}
+		if (edition === 'modern') qs.set('edition', 'modern');
 		const q = qs.toString();
 		return localizeHref(`/books/${slug}/${order}${q ? `?${q}` : ''}`);
+	}
+
+	/** The current chapter in the opposite edition — drives the Modern ⇄ Original
+	 *  toggle. Keeps the reader's plan context on the same chapter. */
+	function editionToggleHref(): string {
+		const qs = new URLSearchParams();
+		if (edition !== 'modern') qs.set('edition', 'modern'); // flip to modern
+		const day = planDayFor(chapter.order);
+		if (plan && day) {
+			qs.set('plan', plan.slug);
+			qs.set('day', String(day));
+		}
+		const q = qs.toString();
+		return localizeHref(`/books/${slug}/${chapter.order}${q ? `?${q}` : ''}`);
 	}
 
 	function gotoChapter(target: { order: number } | null) {
@@ -424,7 +442,7 @@
 	$effect(() => {
 		const next = chapter.next;
 		const s = slug;
-		const language = getLang();
+		const language = edition === 'modern' ? 'en-modern' : getLang();
 		if (!next) return;
 		const url = `${API_BASE_URL}/api/library/books/${s}/chapters/${next.order}/?language=${language}`;
 		// timeout guarantees the prefetch even when idle never comes (busy or
@@ -637,6 +655,19 @@
 						title={t('reader.next')}><Icon name="chevron-right" size={18} /></a
 					>
 				{/if}
+				{#if chapter.has_modern_edition}
+					<span class="mx-1 h-5 w-px bg-border" aria-hidden="true"></span>
+					<a
+						href={editionToggleHref()}
+						data-sveltekit-noscroll
+						class="btn btn-ghost !px-2 !py-1.5 text-small"
+						class:!text-accent={edition === 'modern'}
+						title={edition === 'modern' ? t('reader.readOriginal') : t('reader.readModern')}
+						aria-label={edition === 'modern' ? t('reader.readOriginal') : t('reader.readModern')}
+					>
+						{edition === 'modern' ? t('reader.original') : t('reader.modern')}
+					</a>
+				{/if}
 				<span class="mx-1 h-5 w-px bg-border" aria-hidden="true"></span>
 				<button
 					class="btn btn-ghost !px-2 !py-1.5"
@@ -740,6 +771,9 @@
 	<div class="pager" bind:this={pager} style="--page-w:{pageW}px; --page-idx:{pageIndex}; --cols:{cols};">
 		<p class="mb-1 text-small uppercase tracking-wider text-muted">
 			{t('continue.chapter')} {chapter.order} · {readingTime(chapter.word_count)}
+			{#if chapter.is_modern_edition}
+				<span class="ml-1 text-accent">· {t('reader.modernEdition')}</span>
+			{/if}
 		</p>
 		<h1 bind:this={titleEl} class="text-h1 mb-8">{chapter.title}</h1>
 
@@ -832,7 +866,7 @@
 <DefinePopover />
 <ScripturePopover />
 
-<TocDrawer {slug} currentOrder={chapter.order} bind:open={tocOpen} />
+<TocDrawer {slug} currentOrder={chapter.order} {edition} bind:open={tocOpen} />
 
 <SearchDrawer {slug} bind:open={searchOpen} />
 

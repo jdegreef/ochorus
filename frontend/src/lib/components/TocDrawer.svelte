@@ -17,10 +17,13 @@
 	let {
 		slug,
 		currentOrder,
+		edition = null,
 		open = $bindable(false)
 	}: {
 		slug: string;
 		currentOrder: number;
+		/** 'modern' keeps the TOC on the Modern English edition. */
+		edition?: 'modern' | null;
 		open?: boolean;
 	} = $props();
 
@@ -29,12 +32,17 @@
 	let panel = $state<HTMLElement>();
 	let opener: Element | null = null;
 
+	// Carry the reader's edition onto every chapter link (and fetch the matching
+	// TOC titles) so tapping a chapter in the drawer stays in the same edition.
+	const suffix = $derived(edition === 'modern' ? '?edition=modern' : '');
+	const contentLang = $derived(edition === 'modern' ? 'en-modern' : getLang());
+
 	$effect(() => {
 		if (!open) return;
 		opener = document.activeElement;
 		bookmarks.load(slug);
-		if (!book || book.slug !== slug) {
-			getBook(slug, getLang())
+		if (!book || book.slug !== slug || book.is_modern_edition !== (edition === 'modern')) {
+			getBook(slug, contentLang)
 				.then((b) => (book = b))
 				.catch(() => (book = null));
 		}
@@ -108,7 +116,9 @@
 						{#each bookmarks.list as bm (bm.id)}
 							<li class="bm-row">
 								<a
-									href={localizeHref(`/books/${slug}/${bm.order}?p=${bm.p}`)}
+									href={localizeHref(
+										`/books/${slug}/${bm.order}?p=${bm.p}${edition === 'modern' ? '&edition=modern' : ''}`
+									)}
 									class="toc-item min-w-0 flex-1"
 									onclick={close}
 								>
@@ -135,7 +145,7 @@
 						{@const markCount = marks.countFor(slug, ch.order)}
 						<li>
 							<a
-								href={localizeHref(`/books/${slug}/${ch.order}`)}
+								href={localizeHref(`/books/${slug}/${ch.order}${suffix}`)}
 								class="toc-item"
 								class:current={ch.order === currentOrder}
 								aria-current={ch.order === currentOrder ? 'page' : undefined}

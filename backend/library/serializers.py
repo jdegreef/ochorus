@@ -1,6 +1,14 @@
 from rest_framework import serializers
 
+from .contemporize import MODERN_LANGUAGE
 from .models import Author, Book, Chapter, Plan, PlanDay, Sermon, Topic, TopicBook
+
+
+def _modern_edition_available(slug: str) -> bool:
+    """Whether a published Modern English edition of this work exists."""
+    return Book.objects.filter(
+        slug=slug, language=MODERN_LANGUAGE, is_published=True
+    ).exists()
 
 
 class AuthorSerializer(serializers.ModelSerializer):
@@ -153,6 +161,10 @@ class BookDetailSerializer(BookListSerializer):
     chapters = ChapterTocSerializer(many=True, read_only=True)
     topics = serializers.SerializerMethodField()
     related = serializers.SerializerMethodField()
+    # A parallel "Modern English" edition (language en-modern) can exist for an
+    # English work; these let the reader offer a per-book toggle to it.
+    is_modern_edition = serializers.SerializerMethodField()
+    has_modern_edition = serializers.SerializerMethodField()
 
     # How many related books to surface, and how much a shared topic counts
     # relative to sharing the author (a shared topic is the stronger signal).
@@ -164,7 +176,18 @@ class BookDetailSerializer(BookListSerializer):
         fields = BookListSerializer.Meta.fields + [
             "description", "source_url", "pdf_url", "chapters",
             "publication_year", "attribution", "topics", "related",
+            "is_modern_edition", "has_modern_edition",
         ]
+
+    def get_is_modern_edition(self, obj):
+        return obj.language == MODERN_LANGUAGE
+
+    def get_has_modern_edition(self, obj):
+        if obj.language == MODERN_LANGUAGE:
+            return True
+        if obj.language != "en":
+            return False
+        return _modern_edition_available(obj.slug)
 
     def get_topics(self, obj):
         """Published topics this work belongs to, localized to the book's
@@ -238,17 +261,31 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
     book_slug = serializers.CharField(source="book.slug", read_only=True)
     author_name = serializers.CharField(source="book.author.name", read_only=True)
     author_slug = serializers.CharField(source="book.author.slug", read_only=True)
+    # Lets the reader show the Modern English ⇄ Original toggle in place.
+    is_modern_edition = serializers.SerializerMethodField()
+    has_modern_edition = serializers.SerializerMethodField()
 
     def get_body_html(self, obj):
         from .scripture import annotate_references
 
         return annotate_references(obj.body_html)
 
+    def get_is_modern_edition(self, obj):
+        return obj.book.language == MODERN_LANGUAGE
+
+    def get_has_modern_edition(self, obj):
+        if obj.book.language == MODERN_LANGUAGE:
+            return True
+        if obj.book.language != "en":
+            return False
+        return _modern_edition_available(obj.book.slug)
+
     class Meta:
         model = Chapter
         fields = [
             "order", "title", "body_html", "word_count",
             "book_title", "book_slug", "author_name", "author_slug",
+            "is_modern_edition", "has_modern_edition",
             "prev", "next",
         ]
 

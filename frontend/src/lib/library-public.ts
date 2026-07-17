@@ -11,6 +11,9 @@ export interface Author {
 
 export type SourceType = 'public_domain' | 'ai_reviewed' | 'ai_unreviewed';
 
+/** Content-language code of the Modern English edition (not a UI locale). */
+export const MODERN_EDITION = 'en-modern';
+
 export interface BookSummary {
 	slug: string;
 	language: string;
@@ -43,6 +46,10 @@ export interface BookDetail extends BookSummary {
 	chapters: ChapterToc[];
 	topics: TopicChip[];
 	related: BookSummary[];
+	/** This row IS the Modern English edition (language en-modern). */
+	is_modern_edition: boolean;
+	/** A Modern English edition of this work is published and can be read. */
+	has_modern_edition: boolean;
 }
 
 export interface ChapterNav {
@@ -59,6 +66,10 @@ export interface Chapter {
 	book_slug: string;
 	author_name: string;
 	author_slug: string;
+	/** This chapter belongs to the Modern English edition. */
+	is_modern_edition: boolean;
+	/** A Modern English edition of this work exists (offer the toggle). */
+	has_modern_edition: boolean;
 	prev: ChapterNav | null;
 	next: ChapterNav | null;
 }
