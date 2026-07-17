@@ -51,6 +51,16 @@ CORRECTIONS: dict[str, dict] = {
         # title from the PDF's table of contents:
         "chapter_titles": {2: "I will come and dwell with you, and I will never leave you"},
     },
+    "godliness": {
+        # Ch.11's ALL-CAPS subtitle ("AN ADDRESS DELIVERED IN EXETER HALL") sits
+        # at body size right under the size-18 title, so the title-borrow absorbs
+        # it. Ch.13's parenthetical is mis-cased by the title-caser. Both from the
+        # PDF's own table of contents (house style: Title Case throughout):
+        "chapter_titles": {
+            11: "Enthusiasm And Full Salvation",
+            13: "Addresses On Holiness In Exeter Hall (First Address)",
+        },
+    },
     "talks-to-the-farmer": {
         # Ch.1's title block is fused with the subhead and opening body text in
         # one oversized block ("THE SLUGGARD'S FARM  Introduction  From a
