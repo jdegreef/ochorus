@@ -1,4 +1,6 @@
 import { browser, dev } from '$app/environment';
+import { page } from '$app/stores';
+import { get } from 'svelte/store';
 
 /**
  * Progressive-web-app lifecycle: registers the service worker, tracks whether
@@ -10,7 +12,25 @@ import { browser, dev } from '$app/environment';
  * The service worker is only registered in production builds — running it under
  * the Vite dev server would serve stale, cache-first chunks and break HMR. In
  * dev we still track online/offline so the indicator can be exercised.
+ *
+ * A waiting update is applied automatically as soon as the reader isn't
+ * mid-chapter (see #applyWhenSafe); the prompt is only the fallback for when
+ * they are.
  */
+
+// Reading surfaces, where a reload would cost the reader their place and cut
+// off text-to-speech mid-sentence. Route ids are de-localized by the reroute
+// hook, so these match in every language (/lg/books/x/1 included).
+const READER_ROUTES = new Set(['/books/[slug]/[order]', '/sermons/[slug]']);
+
+// When this tab last auto-applied an update. Belt-and-braces: if a deploy ever
+// served two versions in turn, an unguarded auto-apply could reload in a loop,
+// so a second one hard on the heels of the first is left to the prompt instead.
+// Only back-to-back applies are suppressed — a genuine later deploy, minutes or
+// days into a long-lived tab, still applies on its own.
+const AUTO_APPLIED_AT_KEY = 'ochorus:pwa-auto-applied-at';
+const LOOP_WINDOW_MS = 30_000;
+
 class Pwa {
 	/** True once the app shell + assets are cached (first successful install). */
 	offlineReady = $state(false);
@@ -72,6 +92,31 @@ class Pwa {
 	#setWaiting(worker: ServiceWorker) {
 		this.#waiting = worker;
 		this.updateReady = true;
+		this.#applyWhenSafe();
+	}
+
+	/**
+	 * Take a waiting update unless the reader is mid-chapter. Left to the prompt
+	 * alone, an ignored update strands them on the old build indefinitely: the
+	 * old worker keeps control for as long as any tab is open, so even a reload
+	 * (or a locale switch, which is a full reload) still runs the old code.
+	 */
+	#applyWhenSafe() {
+		if (!this.#waiting || this.#inReader()) return;
+		const last = Number(sessionStorage.getItem(AUTO_APPLIED_AT_KEY)) || 0;
+		if (Date.now() - last < LOOP_WINDOW_MS) return;
+		sessionStorage.setItem(AUTO_APPLIED_AT_KEY, String(Date.now()));
+		this.applyUpdate();
+	}
+
+	#inReader(): boolean {
+		return READER_ROUTES.has(get(page).route.id ?? '');
+	}
+
+	/** Called after each client-side navigation: a page change is the natural
+	 *  moment to take an update the reader was too busy for. */
+	navigated() {
+		if (browser && !dev) this.#applyWhenSafe();
 	}
 
 	/** Apply the waiting update; the controllerchange handler reloads the page. */

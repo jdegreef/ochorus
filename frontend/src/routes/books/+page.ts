@@ -19,6 +19,10 @@ import type { PageLoad } from './$types';
  * after the api went live with 11 new public-domain works (Bunyan, Watson,
  * Baxter, Edwards, Whitefield, Wesley), so the /books index, the new
  * /books/<slug> and /authors/<slug> pages, and the sitemap re-crawl and bake.
+ *
+ * Prerender refresh 2026-07-17 (queue job #169): same again after the Luganda
+ * edition of Clothed with Strength and Dignity went live, so /lg/books and
+ * its /books/<slug> pages re-crawl and bake with the new title.
  */
 export const load: PageLoad = async () => {
 	try {

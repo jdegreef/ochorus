@@ -1710,3 +1710,71 @@ class ContemporizeCarefulTests(TestCase):
         ch = Book.objects.get(slug="humility", language="en-modern").chapters.get(order=1)
         self.assertIn("You must be born again", ch.body_html)
         self.assertEqual(ch.book.source_type, "ai_unreviewed")
+
+
+class ContentQAFixesTests(TestCase):
+    """The 2026-07 QA body corrections (also enforced on every re-import)."""
+
+    def test_inner_chamber_dashes_and_full_stop(self):
+        from library.corrections import apply_body_corrections
+
+        h = apply_body_corrections(
+            "the-inner-chamber",
+            5,
+            "<p>practising the scales- only practice makes perfect- set yourself "
+            "to learn thoroughly and to apply the needed first lessons</p>",
+        )
+        self.assertIn("the scales — only practice", h)
+        self.assertIn("makes perfect — set", h)
+        self.assertTrue(h.rstrip().endswith("apply the needed first lessons.</p>"))
+
+    def test_unselfishness_ch22_full_stop(self):
+        from library.corrections import apply_body_corrections
+
+        self.assertIn(
+            "filled me with joy.</p>",
+            apply_body_corrections(
+                "the-unselfishness-of-god", 22, "<p>read in the spirit — filled me with joy</p>"
+            ),
+        )
+
+    def test_teens_heading_unfused_from_body(self):
+        from library.corrections import apply_body_corrections
+
+        h = apply_body_corrections(
+            "the-body-of-christ-teens",
+            1,
+            "<p>Understanding the Life God Gives Us When God saves you, He does…</p>",
+        )
+        self.assertTrue(
+            h.startswith("<h3>Understanding the Life God Gives Us</h3><p>When God saves you,")
+        )
+
+    def test_things_as_they_are_preface_rebuild(self):
+        import importlib.util
+        from pathlib import Path
+
+        p = Path(__file__).resolve().parent / "migrations" / "0039_content_qa_fixes.py"
+        spec = importlib.util.spec_from_file_location("m0038", str(p))
+        m = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(m)
+
+        # A sample carrying the Foreword signature, an Illustrations plate-list,
+        # every glossary term jammed to its definition, and the title-page block.
+        gloss = " ".join(f"{t}Def{i}." for i, t in enumerate(m.GLOSSARY_TERMS))
+        body = (
+            "<p>Foreword body.</p> EUGENE STOCK.<br/> "
+            "<hr/><h3>Illustrations</h3>An Old Brahman A Potter at his Wheel "
+            f"<hr/><h3>Glossary</h3>{gloss} "
+            "<hr/><h3>Things as They Are</h3><h3>MISSION WORK IN SOUTHERN INDIA</h3> <hr/>"
+        )
+        out = m._rebuild_things_as_they_are_preface(body)
+        self.assertIsNotNone(out)
+        self.assertNotIn("Illustrations", out)
+        self.assertNotIn("MISSION WORK IN SOUTHERN INDIA", out)
+        self.assertIn("<p>— Eugene Stock</p>", out)
+        # One clean entry per glossary term, no jammed "TermDef".
+        self.assertEqual(out.count("<p><i>"), len(m.GLOSSARY_TERMS))
+        self.assertIn("<p><i>Vishnu</i> — Def", out)
+        # Idempotent: a second pass finds nothing to rebuild.
+        self.assertIsNone(m._rebuild_things_as_they_are_preface(out))
