@@ -132,6 +132,28 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("scepti c!", "sceptic!"),
             ("lif e.", "life."),
             ("evangelical s,", "evangelicals,"),
+            # ch22 ended without its closing full stop.
+            ("filled me with joy</p>", "filled me with joy.</p>"),
+        ],
+    },
+    "the-inner-chamber": {
+        # ch5: hyphens standing in for em-dashes, and a dropped closing full
+        # stop; ch25: dropped closing full stop. (This book backs a seeded plan,
+        # so it's never re-chapterized — these are body-only, order-safe fixes.)
+        "replacements": [
+            ("the scales- only practice", "the scales — only practice"),
+            ("makes perfect- set yourself", "makes perfect — set yourself"),
+            ("apply the needed first lessons</p>", "apply the needed first lessons.</p>"),
+            ("seat of His light and Holy Spirit</p>", "seat of His light and Holy Spirit.</p>"),
+        ],
+    },
+    "the-body-of-christ-teens": {
+        # ch1's section heading was fused into the first sentence of the body.
+        "replacements": [
+            (
+                "<p>Understanding the Life God Gives Us When God saves you,",
+                "<h3>Understanding the Life God Gives Us</h3><p>When God saves you,",
+            ),
         ],
     },
     "feasting-at-the-table": {
