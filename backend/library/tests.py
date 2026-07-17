@@ -1314,6 +1314,24 @@ class _FakeClient:
         self.messages = _FakeMessages()
 
 
+class _FakeModernMessages:
+    """Stands in for the client used by the contemporize careful pass: returns a
+    modernized chapter in the same <chapter_title>/<chapter_body> wrapper."""
+
+    def stream(self, **kwargs):
+        return _FakeStream(
+            _FakeMessage(
+                "<chapter_title>Of Humility</chapter_title>"
+                "<chapter_body><p>You must be born again.</p></chapter_body>"
+            )
+        )
+
+
+class _FakeModernClient:
+    def __init__(self, *a, **k):
+        self.messages = _FakeModernMessages()
+
+
 from unittest.mock import patch  # noqa: E402
 
 
@@ -1531,3 +1549,140 @@ class AdminTranslationJobsTests(TestCase):
     def test_requires_admin(self):
         res = self.client.get("/api/admin/translation-jobs/")
         self.assertIn(res.status_code, (401, 403))
+
+
+class ContemporizeLightTests(TestCase):
+    """The deterministic light modernization pass (no model, no key)."""
+
+    def test_pronoun_and_verb_phrases(self):
+        from library.contemporize import modernize_light
+
+        self.assertEqual(modernize_light("Thou art mine."), "You are mine.")
+        self.assertEqual(modernize_light("What hast thou done?"), "What have you done?")
+        self.assertEqual(
+            modernize_light("He hath spoken; he cometh."), "He has spoken; he comes."
+        )
+        self.assertEqual(modernize_light("shew me thy ways"), "show me your ways")
+
+    def test_case_is_preserved(self):
+        from library.contemporize import modernize_light
+
+        self.assertEqual(modernize_light("Thou knowest"), "You know")
+        self.assertEqual(modernize_light("thou knowest"), "you know")
+
+    def test_unlisted_words_and_html_untouched(self):
+        from library.contemporize import modernize_light
+
+        # A modern homograph ("art" the noun) and the HTML tags must survive.
+        self.assertEqual(
+            modernize_light("<p>the fine art of prayer</p>"),
+            "<p>the fine art of prayer</p>",
+        )
+        self.assertEqual(modernize_light("<em>God is love</em>"), "<em>God is love</em>")
+
+
+class ContemporizeCommandTests(TestCase):
+    """The light-mode command end to end: creates an en-modern edition."""
+
+    def setUp(self):
+        self.author = Author.objects.create(slug="am", name="Andrew Murray")
+        self.book = Book.objects.create(
+            author=self.author,
+            slug="humility",
+            language="en",
+            title="Humility",
+            source_type=Book.SourceType.PUBLIC_DOMAIN,
+            sort_order=3,
+        )
+        Chapter.objects.create(
+            book=self.book,
+            order=1,
+            title="Thou Art Called",
+            body_html="<p>Thou hast been called; walk thou humbly.</p>",
+        )
+
+    def _run(self, **kw):
+        from django.core.management import call_command
+
+        call_command("contemporize_book", "humility", **kw)
+
+    def test_light_creates_modern_edition(self):
+        self._run()  # default mode is light
+        mb = Book.objects.get(slug="humility", language="en-modern")
+        self.assertEqual(mb.source_type, "ai_unreviewed")
+        self.assertEqual(mb.author, self.author)
+        ch = mb.chapters.get(order=1)
+        self.assertIn("You have been called", ch.body_html)
+        self.assertNotIn("Thou", ch.body_html)
+        self.assertNotIn("Thou", ch.title)
+        self.assertIn("You are", ch.title)
+        self.assertGreater(ch.word_count, 0)
+        self.assertTrue(ch.body_text)  # derived on save
+
+    def test_original_english_is_untouched(self):
+        self._run()
+        en = Chapter.objects.get(
+            book__slug="humility", book__language="en", order=1
+        )
+        self.assertIn("Thou hast", en.body_html)
+
+    def test_idempotent_without_force(self):
+        self._run()
+        self._run()
+        self.assertEqual(
+            Book.objects.filter(slug="humility", language="en-modern").count(), 1
+        )
+        self.assertEqual(
+            Chapter.objects.filter(
+                book__slug="humility", book__language="en-modern"
+            ).count(),
+            1,
+        )
+
+    def test_rejects_non_public_domain_source(self):
+        from django.core.management.base import CommandError
+
+        self.book.source_type = Book.SourceType.AI_UNREVIEWED
+        self.book.save(update_fields=["source_type"])
+        with self.assertRaises(CommandError):
+            self._run()
+
+    def test_approve_flips_modern_edition_to_reviewed(self):
+        from django.core.management import call_command
+
+        self._run()
+        call_command("approve_translation", "humility", language="en-modern")
+        mb = Book.objects.get(slug="humility", language="en-modern")
+        self.assertEqual(mb.source_type, "ai_reviewed")
+
+
+@patch(
+    "library.management.commands.contemporize_book.anthropic.Anthropic",
+    new=_FakeModernClient,
+)
+class ContemporizeCarefulTests(TestCase):
+    """The model-backed careful mode, with a stubbed Anthropic client."""
+
+    def setUp(self):
+        self.author = Author.objects.create(slug="am", name="Andrew Murray")
+        self.book = Book.objects.create(
+            author=self.author,
+            slug="humility",
+            language="en",
+            title="Humility",
+            source_type=Book.SourceType.PUBLIC_DOMAIN,
+        )
+        Chapter.objects.create(
+            book=self.book,
+            order=1,
+            title="Of Humility",
+            body_html="<p>Thou must be born again.</p>",
+        )
+
+    def test_careful_uses_model_output(self):
+        from django.core.management import call_command
+
+        call_command("contemporize_book", "humility", mode="careful")
+        ch = Book.objects.get(slug="humility", language="en-modern").chapters.get(order=1)
+        self.assertIn("You must be born again", ch.body_html)
+        self.assertEqual(ch.book.source_type, "ai_unreviewed")
