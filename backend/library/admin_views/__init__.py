@@ -7,6 +7,7 @@ Previously one 1,190-line module. The view classes are re-exported here so
 from .analytics import AdminEngagementView, AdminUsersView
 from .content import AdminCoverageView, AdminLanguageDetailView, AdminStatsView
 from .detail import AdminBookDetailView, AdminExportView
+from .jobs import AdminTranslationJobsView
 from .quality import AdminAuditView, AdminReviewQueueView
 
 __all__ = [
@@ -18,5 +19,6 @@ __all__ = [
     "AdminLanguageDetailView",
     "AdminReviewQueueView",
     "AdminStatsView",
+    "AdminTranslationJobsView",
     "AdminUsersView",
 ]

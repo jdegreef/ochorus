@@ -23,6 +23,8 @@ services:
         generateValue: true # Render generates a strong secret
       - key: DATABASE_URL # Supabase session-pooler connection string
         sync: false
+      - key: GITHUB_TRANSLATION_TOKEN # repo-scoped token for the translation job queue (issues read/write)
+        sync: false
       - key: SUPABASE_URL # https://<project-ref>.supabase.co
         sync: false
       - key: DJANGO_ALLOWED_HOSTS # the ochorus-api host, e.g. ochorus-api.onrender.com

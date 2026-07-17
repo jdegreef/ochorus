@@ -166,6 +166,13 @@ ADMIN_EMAILS = {
     if e.strip()
 }
 
+# Translation job queue (admin "Translate" buttons → GitHub issues; see
+# library/admin_views/jobs.py). A repo-scoped token that can read/create issues.
+# Deliberately NOT an Anthropic credential — prod never holds one; the queued
+# jobs are processed by Claude Code worker sessions off-server.
+GITHUB_TRANSLATION_TOKEN = os.getenv("GITHUB_TRANSLATION_TOKEN", "")
+GITHUB_TRANSLATION_REPO = os.getenv("GITHUB_TRANSLATION_REPO", "jdegreef/ochorus")
+
 
 # --- CORS ---------------------------------------------------------------------
 

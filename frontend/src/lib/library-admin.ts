@@ -126,6 +126,41 @@ export interface AdminLanguageDetail {
 export const getAdminLanguageDetail = (code: string) =>
 	apiFetch<AdminLanguageDetail>(`/api/admin/languages/${encodeURIComponent(code)}/`);
 
+// Translation job queue: the "Translate" buttons on the language page file
+// GitHub issues that a Claude Code worker session processes one at a time.
+// State is derived — queued = open issue, in_progress = claimed by a worker;
+// a finished job's item simply leaves the todo list once its translation ships.
+
+export type TranslationJobType = 'book' | 'sermon';
+
+export interface AdminTranslationJob {
+	type: TranslationJobType;
+	slug: string;
+	language: string;
+	url: string;
+	number: number;
+	state: 'queued' | 'in_progress';
+	created_at: string;
+}
+
+export interface AdminTranslationJobs {
+	configured: boolean;
+	jobs: AdminTranslationJob[];
+}
+
+export const getAdminTranslationJobs = () =>
+	apiFetch<AdminTranslationJobs>('/api/admin/translation-jobs/');
+
+export const createAdminTranslationJob = (body: {
+	type: TranslationJobType;
+	slug: string;
+	language: string;
+}) =>
+	apiFetch<{ job: AdminTranslationJob; created: boolean }>('/api/admin/translation-jobs/', {
+		method: 'POST',
+		body: JSON.stringify(body)
+	});
+
 // Translation-coverage matrix: works (rows) × languages (columns). A book cell
 // carries its source_type; sermon/plan cells are "present". Missing = absent.
 
