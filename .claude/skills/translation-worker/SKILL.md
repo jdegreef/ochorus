@@ -104,3 +104,12 @@ preached_on from the English row); `seed_sermons` upserts it on deploy.
   validation and fill gaps rather than restarting from zero.
 - `library/tests.py` `ScriptureTests` fail locally without `pythonbible` —
   install it via `uv pip install pythonbible` (CI has it; don't skip tests).
+- Job already shipped out-of-band (job #170): another session translated and
+  merged the content PR but left the issue open, unlabeled, with follow-ups
+  undone. So after claiming, ALWAYS check the fixture on fresh `origin/main`
+  for the `(slug, lang)` row before translating anything. If it exists:
+  validate the shipped rows (per-chapter `<p>` counts vs the English source,
+  non-empty titles/`body_text`, `ai_unreviewed`), do whatever follow-ups are
+  missing (typically the prerender refresh — check whether any frontend
+  commit landed after the content merge), then close out normally citing the
+  existing PR. Don't re-translate; the fixture guard would reject it anyway.
