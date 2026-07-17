@@ -855,6 +855,28 @@ class AdminLanguageDetailTests(TestCase):
         self.assertEqual(res.data["english_counts"]["books"], 3)
 
     @override_settings(DEBUG=True)
+    def test_sermon_todo_round_robins_across_authors(self):
+        # Five more Murray sermons would fill the todo list by sort_order alone;
+        # the list should instead lead with one sermon per preacher and only
+        # repeat an author once every preacher is represented.
+        moody = Author.objects.create(slug="dm", name="Dwight Moody", bio="P.")
+        for i, slug in enumerate(("m1", "m2", "m3", "m4", "m5"), start=1):
+            Sermon.objects.create(
+                author=self.murray, slug=slug, language="en", title=slug.upper(),
+                body_html="<p>x</p>", word_count=10, sort_order=i,
+            )
+        Sermon.objects.create(
+            author=moody, slug="fire", language="en", title="Fire",
+            body_html="<p>f</p>", word_count=10, sort_order=99,
+        )
+        todo = self.client.get("/api/admin/languages/sw/").data["todo"]["sermons"]
+        # Murray's best ("grace", sort_order 0), then Moody's only sermon despite
+        # its low priority, then back to Murray's queue in order.
+        self.assertEqual(
+            [s["slug"] for s in todo], ["grace", "fire", "m1", "m2"]
+        )
+
+    @override_settings(DEBUG=True)
     def test_source_language_has_no_todo(self):
         res = self.client.get("/api/admin/languages/en/")
         self.assertTrue(res.data["is_source"])
