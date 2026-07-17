@@ -36,7 +36,9 @@ const SAME_AS_ENGLISH_OK = new Set([
 	'settings_font_sans',
 	'settings_width_normal',
 	'common_min',
-	'login_email'
+	'login_email',
+	// "Original" is the same word in Spanish — a legitimate borrowed term.
+	'reader_original'
 ]);
 
 const toSnake = (key: string) =>

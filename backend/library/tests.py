@@ -1655,6 +1655,30 @@ class ContemporizeCommandTests(TestCase):
         mb = Book.objects.get(slug="humility", language="en-modern")
         self.assertEqual(mb.source_type, "ai_reviewed")
 
+    def test_api_exposes_modern_edition_flags(self):
+        # Before an edition exists, the English book advertises none.
+        res = self.client.get("/api/library/books/humility/?language=en")
+        self.assertEqual(res.status_code, 200)
+        self.assertFalse(res.data["has_modern_edition"])
+        self.assertFalse(res.data["is_modern_edition"])
+
+        # After contemporizing, the English book advertises it and the modern
+        # row identifies itself.
+        self._run()
+        res = self.client.get("/api/library/books/humility/?language=en")
+        self.assertTrue(res.data["has_modern_edition"])
+        self.assertFalse(res.data["is_modern_edition"])
+
+        res = self.client.get("/api/library/books/humility/?language=en-modern")
+        self.assertEqual(res.status_code, 200)
+        self.assertTrue(res.data["is_modern_edition"])
+        self.assertTrue(res.data["has_modern_edition"])
+        # The chapter endpoint carries the same flags for the reader toggle.
+        ch = self.client.get(
+            "/api/library/books/humility/chapters/1/?language=en-modern"
+        )
+        self.assertTrue(ch.data["is_modern_edition"])
+
 
 @patch(
     "library.management.commands.contemporize_book.anthropic.Anthropic",

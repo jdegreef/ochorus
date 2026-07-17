@@ -5,8 +5,9 @@ description: Produce a "Modern English" edition of a classic English Ochorus boo
 
 # Contemporizing a book (Modern English edition)
 
-**STATUS: pipeline BUILT (2026-07-17), light pass ships today; careful pass
-needs a key. Reader toggle NOT yet built — see "Surfacing" below.**
+**STATUS: pipeline + reader toggle BUILT (2026-07-17). Light pass ships today;
+careful pass needs a key. Once a modern edition is shipped, readers get a
+per-book Modern English ⇄ Original toggle.**
 
 A "Modern English" edition is a **separate `Book` row sharing the work's slug**,
 in content language **`en-modern`**. The original English row is never touched,
@@ -63,19 +64,30 @@ Ship the resulting rows to prod as data like any content change — see the
 **ship-content-fix** skill (fixture refresh or data migration), then the
 static-page redeploy step.
 
-## Surfacing to readers (NOT yet built — next PR)
+## Surfacing to readers (BUILT)
 
 `en-modern` is a **content** language, deliberately NOT a Paraglide UI locale
 (the switcher still shows only en/es/sw/lg). Because it has its own language
 code, a modern edition is **invisible** to every existing query
 (`?language=en` etc.) until something asks for `en-modern` — so shipping the
-backend/data is safe and changes nothing for users on its own.
+backend/data is safe and changes nothing for users until an edition exists.
 
-To make it readable, a follow-up adds a per-book **"Modern English ⇄ Original"
-toggle** on the book and reader pages that refetches the book with
-`?language=en-modern`, plus the same `ai_unreviewed` review badge the
-translations show. Keep the toggle per-book and local — do NOT route it through
-the global locale switch.
+How the reader surfaces it (PR, 2026-07-17):
+
+- The API advertises availability: `BookDetailSerializer` /
+  `ChapterDetailSerializer` return `has_modern_edition` (a published en-modern
+  row exists for this English work) and `is_modern_edition` (this row IS it).
+- The edition is a **reader-level mode carried in the URL** as
+  `?edition=modern`, NOT the UI locale. The reader/book loads map it to content
+  language `en-modern`; every in-reader chapter link (prev/next, TOC drawer,
+  bookmarks) preserves the param so you stay in the edition as you navigate.
+- The book page shows a "Read in Modern English" entry button when
+  `has_modern_edition`; the reader chrome shows a compact **Modern ⇄ Original**
+  toggle, and the chapter meta line tags the modern edition.
+- Reading progress / marks stay keyed to the UI locale (not the edition), so a
+  reader's place carries across a mid-book edition switch (chapter orders match
+  1:1). Caveat: a character-offset highlight made on one edition may drift on
+  the other's modernized wording — acceptable for v1; revisit if it bites.
 
 ## Extending the light map
 
