@@ -1387,3 +1387,147 @@ class SermonTranslationTests(TestCase):
 
         with self.assertRaises(CommandError):
             call_command("approve_sermon_translation", "the-new-birth", language="en")
+
+
+class AdminTranslationJobsTests(TestCase):
+    """The admin translation queue: buttons → GitHub issues (mocked GitHub)."""
+
+    @classmethod
+    def setUpTestData(cls):
+        author = Author.objects.create(slug="andrew-murray", name="Andrew Murray")
+        Book.objects.create(
+            author=author, slug="humility", language="en", title="Humility"
+        )
+        Book.objects.create(
+            author=author,
+            slug="the-inner-chamber",
+            language="en",
+            title="The Inner Chamber",
+        )
+        Book.objects.create(
+            author=author,
+            slug="the-inner-chamber",
+            language="lg",
+            title="Ekisenge Eky'omunda",
+            source_type=Book.SourceType.AI_UNREVIEWED,
+        )
+        Sermon.objects.create(
+            author=author, slug="himself", language="en", title="Himself",
+            body_html="<p>x</p>", word_count=10,
+        )
+
+    def setUp(self):
+        self.client = APIClient()
+
+    @staticmethod
+    def _issue(title, labels=("translation-job",), number=7):
+        return {
+            "title": title,
+            "labels": [{"name": name} for name in labels],
+            "html_url": f"https://github.com/o/r/issues/{number}",
+            "number": number,
+            "created_at": "2026-07-16T00:00:00Z",
+        }
+
+    @override_settings(DEBUG=True)
+    def test_get_unconfigured(self):
+        res = self.client.get("/api/admin/translation-jobs/")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data, {"configured": False, "jobs": []})
+
+    @override_settings(DEBUG=True)
+    def test_post_unconfigured_is_503(self):
+        res = self.client.post(
+            "/api/admin/translation-jobs/",
+            {"type": "book", "slug": "humility", "language": "lg"},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 503)
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_post_validation(self):
+        from unittest.mock import patch
+
+        cases = [
+            ({"type": "plan", "slug": "humility", "language": "lg"}, 400),  # type not yet supported
+            ({"type": "book", "slug": "humility", "language": "en"}, 400),  # source language
+            ({"type": "book", "slug": "humility", "language": "xx"}, 400),  # unknown code
+            ({"type": "book", "slug": "nope", "language": "lg"}, 404),  # no English source
+            ({"type": "book", "slug": "the-inner-chamber", "language": "lg"}, 409),  # exists
+        ]
+        with patch("library.admin_views.jobs.requests"):
+            for body, expected in cases:
+                res = self.client.post("/api/admin/translation-jobs/", body, format="json")
+                self.assertEqual(res.status_code, expected, body)
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_post_creates_issue(self):
+        from unittest.mock import MagicMock, patch
+
+        with patch("library.admin_views.jobs.requests") as gh:
+            gh.get.return_value = MagicMock(json=lambda: [], raise_for_status=lambda: None)
+            created = self._issue("[translation] book:humility -> lg")
+            gh.post.return_value = MagicMock(
+                json=lambda: created, raise_for_status=lambda: None
+            )
+            res = self.client.post(
+                "/api/admin/translation-jobs/",
+                {"type": "book", "slug": "humility", "language": "lg"},
+                format="json",
+            )
+        self.assertEqual(res.status_code, 201)
+        self.assertTrue(res.data["created"])
+        self.assertEqual(res.data["job"]["slug"], "humility")
+        self.assertEqual(res.data["job"]["state"], "queued")
+        # The issue was filed with the deterministic title + queue label.
+        payload = gh.post.call_args.kwargs["json"]
+        self.assertEqual(payload["title"], "[translation] book:humility -> lg")
+        self.assertEqual(payload["labels"], ["translation-job"])
+        self.assertIn("Humility", payload["body"])
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_post_duplicate_returns_existing(self):
+        from unittest.mock import MagicMock, patch
+
+        existing = self._issue("[translation] book:humility -> lg")
+        with patch("library.admin_views.jobs.requests") as gh:
+            gh.get.return_value = MagicMock(
+                json=lambda: [existing], raise_for_status=lambda: None
+            )
+            res = self.client.post(
+                "/api/admin/translation-jobs/",
+                {"type": "book", "slug": "humility", "language": "lg"},
+                format="json",
+            )
+        self.assertEqual(res.status_code, 200)
+        self.assertFalse(res.data["created"])
+        gh.post.assert_not_called()
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_get_lists_jobs_with_state(self):
+        from unittest.mock import MagicMock, patch
+
+        issues = [
+            self._issue("[translation] book:humility -> lg"),
+            self._issue(
+                "[translation] sermon:himself -> sw",
+                labels=("translation-job", "in-progress"),
+                number=8,
+            ),
+            self._issue("unrelated issue", number=9),  # ignored: not a job title
+        ]
+        with patch("library.admin_views.jobs.requests") as gh:
+            gh.get.return_value = MagicMock(
+                json=lambda: issues, raise_for_status=lambda: None
+            )
+            res = self.client.get("/api/admin/translation-jobs/")
+        self.assertEqual(res.status_code, 200)
+        self.assertTrue(res.data["configured"])
+        self.assertEqual(len(res.data["jobs"]), 2)
+        self.assertEqual(res.data["jobs"][0]["state"], "queued")
+        self.assertEqual(res.data["jobs"][1]["state"], "in_progress")
+
+    @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
+    def test_requires_admin(self):
+        res = self.client.get("/api/admin/translation-jobs/")
+        self.assertIn(res.status_code, (401, 403))
