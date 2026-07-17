@@ -332,14 +332,29 @@ class AdminLanguageDetailView(APIView):
         if code == "en":
             return []
         have = set(Sermon.objects.filter(language=code).values_list("slug", flat=True))
-        qs = (
+        candidates = (
             Sermon.objects.filter(language="en", is_published=True)
             .exclude(slug__in=have)
             .select_related("author")
-            .order_by("sort_order", "title")[:TODO_LIMIT]
+            .order_by("sort_order", "title")
         )
+        # Round-robin across preachers so the suggestions span different voices
+        # (one Spurgeon, one Moody, ...) instead of whoever dominates the top of
+        # the sort_order — repeats only once every preacher is represented.
+        queues: dict[int, list[Sermon]] = {}
+        for s in candidates:
+            queues.setdefault(s.author_id, []).append(s)
+        picked: list[Sermon] = []
+        while queues and len(picked) < TODO_LIMIT:
+            for author_id in list(queues):
+                picked.append(queues[author_id].pop(0))
+                if not queues[author_id]:
+                    del queues[author_id]
+                if len(picked) >= TODO_LIMIT:
+                    break
         return [
-            {"slug": s.slug, "title": s.title, "author": s.author.name} for s in qs
+            {"slug": s.slug, "title": s.title, "author": s.author.name}
+            for s in picked
         ]
 
     def _plans_todo(self, code) -> list[dict]:
