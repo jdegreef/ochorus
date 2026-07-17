@@ -94,6 +94,40 @@ force if every paragraph is a box.
    ```bash
    DJANGO_DEBUG=true uv run python manage.py dumpdata library --indent 1 -o library/fixtures/launch.json
    ```
+5. **If the author ALREADY EXISTS on prod, the fixture is not enough** — prod is
+   never re-seeded, and `seed_books` only CREATES missing rows, so a fixture-only
+   bio silently reaches fresh installs and never the live site. Add a data
+   migration that re-applies the fixture to live rows (it syncs `bio_html`,
+   `bio`, and `photo_url`):
+   ```python
+   def backfill(apps, schema_editor):
+       from library.content_sync import backfill_bios_and_sermons
+       backfill_bios_and_sermons(apps)   # idempotent
+   ```
+   Copy `0017_backfill_moody_bio.py` / `0036_classic_author_bios_and_portraits.py`.
+   Only a brand-new author arriving with its own books can skip this (seed_books
+   creates it from the fixture, bio and all).
+
+## The portrait (optional, same page)
+
+Without `photo_url` the page falls back to an initials monogram (which looks
+fine — a portrait is not mandatory, and some Puritans have no known likeness).
+House format: **grayscale JPEG, max 600px, `frontend/static/portraits/<slug>.jpg`,
+`photo_url="/portraits/<slug>.jpg"`.**
+
+Source pre-1900 figures from Wikimedia Commons and **verify the licence** — never
+assume. Find the lead portrait via the Wikipedia `pageimages` API, then check
+`extmetadata.LicenseShortName == "Public domain"` via the Commons `imageinfo`
+API before using it. Convert with PIL (`magick`/`convert` are NOT installed):
+
+```python
+im = Image.open(io.BytesIO(raw)).convert("L")   # "L" = the house B&W look
+im.thumbnail((600, 600), Image.LANCZOS)
+im.save(f"frontend/static/portraits/{slug}.jpg", "JPEG", quality=85, optimize=True)
+```
+Check the result visually (a contact sheet of several at once is quickest) — the
+API's lead image is occasionally a statue, a book cover, or the wrong person.
+Ship `photo_url` the same way as `bio_html` (step 5 above).
 
 ## Adding sermons (optional, same page)
 
