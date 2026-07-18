@@ -6,6 +6,10 @@ to the fixture never reaches an already-seeded production DB. Data migrations ca
 this helper to re-apply that content to live rows without a re-import. The fixture
 stays the single source of truth; fresh installs (which loaddata it directly) are
 unaffected because there are no live rows to update yet.
+
+Historical: called only by data migrations (0005-0036 era). On the
+natural-key fixture it deliberately no-ops (format guard below). Do not wire
+new callers to it — new content ships via the seed commands.
 """
 
 from __future__ import annotations
@@ -37,6 +41,14 @@ def backfill_bios_and_sermons(apps, fixture: Path = FIXTURE) -> tuple[int, int]:
     try:
         rows = json.loads(Path(fixture).read_text())
     except (OSError, ValueError):
+        return (0, 0)
+
+    if rows and "pk" not in rows[0]:
+        # Natural-key-format fixture (no integer pks): these historical
+        # backfills predate the format switch and their content is already IN
+        # the fixture the seeds load — correct no-op for fresh installs, and
+        # prod applied them long ago.
+        print("content_sync: natural-key fixture detected — historical backfill skipped")
         return (0, 0)
 
     pk_to_slug: dict[int, str] = {}

@@ -1,22 +1,25 @@
 """Integrity guard for the content fixture (``launch.json``).
 
-The fixture is appended to by many parallel branches, each assigning integer
-primary keys by hand. Git merges are textual, so two branches claiming the same
-pk for different content can MERGE CLEANLY and only fail (or worse, silently
-corrupt) at load time:
+The fixture is **natural-key format**: rows carry no integer primary keys, and
+references are self-describing tuples — a book's author is ``["slug"]``, a
+chapter's book is ``["slug", "language"]``. Identity is content-derived, so two
+parallel branches appending different content *cannot* collide on a key the way
+hand-assigned integer pks did (two PRs claimed the same pks in one week,
+2026-07-17 — the incident this architecture retires).
 
-* under ``loaddata`` a duplicate pk silently replaces the earlier row;
-* under ``seed_books``/``seed_sermons`` the pk is the join key between rows, so
-  a collision merges one book's chapters into another and aborts the pre-deploy
-  release command on the unique-constraint violation.
+What can still go wrong, and what this suite (CI, every PR, ~0.1s, no DB)
+catches loudly:
 
-This suite runs in CI on every PR and on main, turning that silent corruption
-into a loud red build. It validates the *file*, not the database, so it needs
-no fixtures loaded and runs in ~a second.
-
-Nearly happened for real: two PRs in one week both claimed book pk 90 and
-chapters 4403+; only a manual remap during conflict resolution prevented one
-Luganda book from overwriting another (2026-07-17).
+* an old-format (pk) row appended by a stale branch — under ``loaddata`` a
+  non-colliding pk row can load silently with the WRONG author (integer FKs
+  resolve against re-assigned auto-pks); the seeds hard-fail on it, and so
+  does this suite, earlier;
+* the same work added twice (duplicate natural key) — ``loaddata`` is silent
+  last-write-wins, and the DB's unique constraints brick a fresh load;
+* a reference to a row that isn't in the file (author lost in a merge);
+* foreign models leaking in from a bare ``dumpdata library`` on a seeded dev DB
+  (the regen recipe pins exactly these six models —
+  ``backend/scripts/regen_fixture.py``).
 """
 
 from __future__ import annotations
@@ -29,9 +32,6 @@ from django.test import SimpleTestCase
 
 FIXTURE = Path(__file__).resolve().parent / "fixtures" / "launch.json"
 
-# The fixture deliberately contains exactly these models. Anything else (Topic,
-# TopicBook, AuthorTranslation, ...) means someone ran a bare `dumpdata library`
-# from a seeded dev DB instead of the pinned 6-model regen recipe.
 EXPECTED_MODELS = {
     "library.author",
     "library.book",
@@ -66,7 +66,7 @@ class FixtureIntegrityTests(SimpleTestCase):
             extra, set(),
             "Unexpected model in launch.json — a bare `dumpdata library` from a "
             "seeded dev DB leaks Topic/translation rows; use the pinned 6-model "
-            "regen recipe (see the ship-content-fix skill).",
+            "regen recipe (backend/scripts/regen_fixture.py).",
         )
         self.assertEqual(
             missing, set(),
@@ -74,36 +74,33 @@ class FixtureIntegrityTests(SimpleTestCase):
             "update EXPECTED_MODELS consciously.",
         )
 
-    def test_primary_keys_are_integers(self):
-        # A string pk ("90") would dodge the duplicate check below yet coerce
-        # to the same DB pk as int 90 at load time — the collision in disguise.
-        for model, rows in self.by_model.items():
-            bad = [r["pk"] for r in rows if not isinstance(r["pk"], int)]
-            self.assertEqual(bad, [], f"{model}: non-integer pk(s) {bad[:5]}")
-
-    def test_primary_keys_unique_per_model(self):
-        # A duplicate pk is exactly the parallel-append collision: it merges
-        # cleanly in git and silently overwrites (loaddata) or corrupts the
-        # chapter join (seed commands) at load time.
-        for model, rows in self.by_model.items():
-            dupes = _dupes(Counter(r["pk"] for r in rows))
-            self.assertEqual(
-                dupes, [],
-                f"{model}: duplicate primary key(s) {dupes[:5]} — two branches "
-                "assigned the same pk. Re-key the newer rows to fresh pks.",
-            )
+    def test_no_integer_pk_rows(self):
+        # The fixture is natural-key format. A stale old-format row is the one
+        # remaining silent-corruption path: its integer FK resolves against
+        # whatever auto-pks the target DB happens to have (experimentally shown
+        # attributing a sermon to the wrong author). Reject it outright.
+        stale = [
+            (r["model"], r["fields"].get("slug", "?"))
+            for r in self.rows if "pk" in r
+        ]
+        self.assertEqual(
+            stale[:5], [],
+            f"{len(stale)} old-format (integer-pk) row(s), first {stale[:5]}. "
+            "Re-serialize with Django's serializer using natural keys "
+            "(CLAUDE.md: The fixture (the sharp edge)) — never hand-assign pks.",
+        )
 
     def test_natural_identity_unique(self):
-        # Content identity is slug (+ language) — the DB enforces this with
-        # unique constraints, so a duplicate here bricks loaddata on a fresh
-        # database even when the pks differ.
+        # Content identity: what the DB's unique constraints enforce at load
+        # time. A duplicate here is the same work added twice — loaddata is
+        # silent last-write-wins, so only this check makes it loud.
         checks = {
             "library.author": lambda f: f["slug"],
             "library.book": lambda f: (f["slug"], f.get("language", "en")),
             "library.sermon": lambda f: (f["slug"], f.get("language", "en")),
             "library.plan": lambda f: (f["slug"], f.get("language", "en")),
-            "library.chapter": lambda f: (f["book"], f["order"]),
-            "library.planday": lambda f: (f["plan"], f["day"]),
+            "library.chapter": lambda f: (tuple(f["book"]), f["order"]),
+            "library.planday": lambda f: (tuple(f["plan"]), f["day"]),
         }
         for model, key in checks.items():
             dupes = _dupes(
@@ -116,21 +113,31 @@ class FixtureIntegrityTests(SimpleTestCase):
             )
 
     def test_references_resolve(self):
-        # A dangling reference means a row points at content that isn't in the
-        # file (e.g. a book whose author row was lost in a merge).
-        author_pks = {r["pk"] for r in self.by_model.get("library.author", [])}
-        book_pks = {r["pk"] for r in self.by_model.get("library.book", [])}
-        plan_pks = {r["pk"] for r in self.by_model.get("library.plan", [])}
+        # Every natural-key reference must resolve within the file — loaddata
+        # runs as ONE call over one file, and all FKs here are NOT NULL, so a
+        # dangling reference aborts a fresh-database load.
+        author_keys = {
+            (r["fields"]["slug"],) for r in self.by_model.get("library.author", [])
+        }
+        book_keys = {
+            (r["fields"]["slug"], r["fields"].get("language", "en"))
+            for r in self.by_model.get("library.book", [])
+        }
+        plan_keys = {
+            (r["fields"]["slug"], r["fields"].get("language", "en"))
+            for r in self.by_model.get("library.plan", [])
+        }
 
         refs = [
-            ("library.book", "author", author_pks),
-            ("library.sermon", "author", author_pks),
-            ("library.chapter", "book", book_pks),
-            ("library.planday", "plan", plan_pks),
+            ("library.book", "author", author_keys),
+            ("library.sermon", "author", author_keys),
+            ("library.chapter", "book", book_keys),
+            ("library.planday", "plan", plan_keys),
         ]
         for model, field, valid in refs:
             dangling = sorted(
-                {r["fields"][field] for r in self.by_model.get(model, [])} - valid
+                {tuple(r["fields"][field]) for r in self.by_model.get(model, [])}
+                - valid
             )
             self.assertEqual(
                 dangling, [],
@@ -152,6 +159,29 @@ class FixtureIntegrityTests(SimpleTestCase):
             "plan day points at a book that isn't in the fixture.",
         )
 
+    def test_reference_shapes(self):
+        # Natural-key references are lists of the right arity. A malformed
+        # reference (say, an integer FK surviving a hand edit) would otherwise
+        # surface as a confusing TypeError above — or worse, load.
+        shapes = [
+            ("library.book", "author", 1),
+            ("library.sermon", "author", 1),
+            ("library.chapter", "book", 2),
+            ("library.planday", "plan", 2),
+        ]
+        for model, field, arity in shapes:
+            bad = [
+                r["fields"][field]
+                for r in self.by_model.get(model, [])
+                if not (isinstance(r["fields"][field], list)
+                        and len(r["fields"][field]) == arity)
+            ][:3]
+            self.assertEqual(
+                bad, [],
+                f"{model}.{field}: malformed natural-key reference(s) {bad} — "
+                f"expected a {arity}-element list.",
+            )
+
     def test_required_content_fields_present(self):
         # Rows missing slug/order/day would defeat the identity checks above
         # and break the seed commands' joins.
@@ -167,5 +197,53 @@ class FixtureIntegrityTests(SimpleTestCase):
                 missing = [k for k in required if k not in r["fields"]]
                 self.assertEqual(
                     missing, [],
-                    f"{model} pk={r['pk']}: missing required field(s) {missing}",
+                    f"{model} {r['fields'].get('slug', '?')}: missing required "
+                    f"field(s) {missing}",
                 )
+
+
+class SeedFieldCoverageTests(SimpleTestCase):
+    """The seed commands' field lists must cover the models they create.
+
+    seed_books once silently dropped ``attribution``/``publication_year`` (added
+    in migration 0028, never added to BOOK_FIELDS) — the first fixture book
+    carrying them would have reached production stripped. This pins the lists to
+    the models, so a new model field fails CI until the seed learns it.
+    """
+
+    def _content_fields(self, model, exclude):
+        return {
+            f.name for f in model._meta.concrete_fields
+            if f.name not in exclude and not f.auto_created
+        }
+
+    def test_book_fields_cover_model(self):
+        from library.management.commands.seed_books import BOOK_FIELDS
+        from library.models import Book
+
+        expected = self._content_fields(
+            Book, exclude={"id", "author", "slug", "language", "created_at", "updated_at"}
+        )
+        self.assertEqual(set(BOOK_FIELDS), expected)
+
+    def test_chapter_fields_cover_model(self):
+        from library.management.commands.seed_books import CHAPTER_FIELDS
+        from library.models import Chapter
+
+        # body_text is derived by save(); the seed must not set it directly.
+        expected = self._content_fields(
+            Chapter, exclude={"id", "book", "body_text", "created_at", "updated_at"}
+        )
+        self.assertEqual(set(CHAPTER_FIELDS), expected)
+
+    def test_sermon_fields_cover_model(self):
+        from library.management.commands.seed_sermons import SERMON_FIELDS
+        from library.models import Sermon
+
+        # preached_on is handled separately (date parsing); body_text derived.
+        expected = self._content_fields(
+            Sermon,
+            exclude={"id", "author", "slug", "language", "preached_on",
+                     "body_text", "created_at", "updated_at"},
+        )
+        self.assertEqual(set(SERMON_FIELDS), expected)

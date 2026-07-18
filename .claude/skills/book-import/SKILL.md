@@ -77,7 +77,7 @@ book preserves its `sort_order`.
 
 6. **Regenerate the fixture and commit:**
    ```bash
-   DJANGO_DEBUG=true uv run python manage.py dumpdata library --indent 1 -o library/fixtures/launch.json
+   uv run python scripts/regen_fixture.py   # pinned 6-model natural-key regen; NEVER bare `dumpdata library`
    ```
 
 7. **Ship it to prod (two gotchas — see DEPLOYMENT.md).** A book-data change

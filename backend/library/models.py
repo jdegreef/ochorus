@@ -12,6 +12,11 @@ from __future__ import annotations
 from django.db import models
 
 
+class AuthorManager(models.Manager):
+    def get_by_natural_key(self, slug):
+        return self.get(slug=slug)
+
+
 class Author(models.Model):
     slug = models.SlugField(max_length=120, unique=True)
     name = models.CharField(max_length=200)
@@ -34,8 +39,13 @@ class Author(models.Model):
     is_imprint = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    objects = AuthorManager()
+
     class Meta:
         ordering = ["name"]
+
+    def natural_key(self):
+        return (self.slug,)
 
     def __str__(self) -> str:
         return self.name
@@ -97,6 +107,11 @@ class AuthorTranslation(models.Model):
         return f"{self.author.slug} [{self.language}]"
 
 
+class BookManager(models.Manager):
+    def get_by_natural_key(self, slug, language):
+        return self.get(slug=slug, language=language)
+
+
 class Book(models.Model):
     class SourceType(models.TextChoices):
         PUBLIC_DOMAIN = "public_domain", "Public domain (original language)"
@@ -138,6 +153,8 @@ class Book(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    objects = BookManager()
+
     class Meta:
         ordering = ["sort_order", "title"]
         constraints = [
@@ -146,12 +163,22 @@ class Book(models.Model):
             ),
         ]
 
+    def natural_key(self):
+        return (self.slug, self.language)
+
+    natural_key.dependencies = ["library.author"]
+
     def __str__(self) -> str:
         return f"{self.title} ({self.language})"
 
     @property
     def chapter_count(self) -> int:
         return self.chapters.count()
+
+
+class ChapterManager(models.Manager):
+    def get_by_natural_key(self, slug, language, order):
+        return self.get(book__slug=slug, book__language=language, order=order)
 
 
 class Chapter(models.Model):
@@ -167,6 +194,8 @@ class Chapter(models.Model):
     body_text = models.TextField(blank=True, default="")
     word_count = models.PositiveIntegerField(default=0)
 
+    objects = ChapterManager()
+
     class Meta:
         ordering = ["order"]
         constraints = [
@@ -174,6 +203,11 @@ class Chapter(models.Model):
                 fields=["book", "order"], name="uniq_chapter_book_order"
             ),
         ]
+
+    def natural_key(self):
+        return self.book.natural_key() + (self.order,)
+
+    natural_key.dependencies = ["library.book"]
 
     def __str__(self) -> str:
         return f"{self.book.slug}/{self.order} — {self.title}"
@@ -186,6 +220,11 @@ class Chapter(models.Model):
         if update_fields is not None and "body_html" in update_fields:
             kwargs["update_fields"] = list(update_fields) + ["body_text"]
         super().save(*args, **kwargs)
+
+
+class SermonManager(models.Manager):
+    def get_by_natural_key(self, slug, language):
+        return self.get(slug=slug, language=language)
 
 
 class Sermon(models.Model):
@@ -223,6 +262,8 @@ class Sermon(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    objects = SermonManager()
+
     class Meta:
         ordering = ["sort_order", "title"]
         constraints = [
@@ -230,6 +271,11 @@ class Sermon(models.Model):
                 fields=["slug", "language"], name="uniq_sermon_slug_language"
             ),
         ]
+
+    def natural_key(self):
+        return (self.slug, self.language)
+
+    natural_key.dependencies = ["library.author"]
 
     def __str__(self) -> str:
         return f"{self.title} — {self.author.name} ({self.language})"
@@ -242,6 +288,11 @@ class Sermon(models.Model):
         if update_fields is not None and "body_html" in update_fields:
             kwargs["update_fields"] = list(update_fields) + ["body_text"]
         super().save(*args, **kwargs)
+
+
+class PlanManager(models.Manager):
+    def get_by_natural_key(self, slug, language):
+        return self.get(slug=slug, language=language)
 
 
 class Plan(models.Model):
@@ -263,6 +314,8 @@ class Plan(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    objects = PlanManager()
+
     class Meta:
         ordering = ["sort_order", "title"]
         constraints = [
@@ -271,8 +324,16 @@ class Plan(models.Model):
             ),
         ]
 
+    def natural_key(self):
+        return (self.slug, self.language)
+
     def __str__(self) -> str:
         return f"{self.title} ({self.language})"
+
+
+class PlanDayManager(models.Manager):
+    def get_by_natural_key(self, slug, language, day):
+        return self.get(plan__slug=slug, plan__language=language, day=day)
 
 
 class PlanDay(models.Model):
@@ -282,11 +343,18 @@ class PlanDay(models.Model):
     book_slug = models.SlugField(max_length=160)
     chapter_order = models.PositiveIntegerField()
 
+    objects = PlanDayManager()
+
     class Meta:
         ordering = ["day"]
         constraints = [
             models.UniqueConstraint(fields=["plan", "day"], name="uniq_plan_day"),
         ]
+
+    def natural_key(self):
+        return self.plan.natural_key() + (self.day,)
+
+    natural_key.dependencies = ["library.plan"]
 
     def __str__(self) -> str:
         return f"{self.plan_id} day {self.day} → {self.book_slug}/{self.chapter_order}"

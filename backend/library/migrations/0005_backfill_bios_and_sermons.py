@@ -39,6 +39,12 @@ def backfill(apps, schema_editor):
     except (OSError, ValueError):
         return  # no fixture available — nothing to backfill
 
+    if rows and "pk" not in rows[0]:
+        # Natural-key-format fixture: this historical backfill's content is
+        # already in the fixture the seeds load — no-op (see content_sync).
+        print("0005: natural-key fixture detected — historical backfill skipped")
+        return
+
     # Fixture FKs are by pk; map author pk -> slug to resolve the live rows.
     pk_to_slug: dict[int, str] = {}
 

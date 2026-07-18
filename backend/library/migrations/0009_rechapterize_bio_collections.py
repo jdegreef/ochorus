@@ -47,6 +47,11 @@ def replace_chapters(apps, schema_editor):
     Chapter = apps.get_model("library", "Chapter")
 
     rows = json.loads(FIXTURE.read_text())
+    if rows and "pk" not in rows[0]:
+        # Natural-key-format fixture: this historical re-chapterise is already
+        # reflected in the fixture the seeds load — no-op (see content_sync).
+        print("0009: natural-key fixture detected — historical backfill skipped")
+        return
     # Fixture book pk -> (slug, language); chapters reference books by pk.
     book_key = {
         r["pk"]: (r["fields"]["slug"], r["fields"]["language"])

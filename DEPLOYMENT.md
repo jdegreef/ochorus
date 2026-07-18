@@ -67,14 +67,15 @@ it to `DJANGO_ALLOWED_HOSTS` / `CORS_ALLOWED_ORIGINS` / `CSRF_TRUSTED_ORIGINS`
 ## Refreshing / adding content later
 
 Re-run the importers locally, regenerate the fixture, commit, and push (Render
-auto-deploys). The seed step only runs on an *empty* DB, so to push content
-updates to the live database, load the fixture from the Render shell
-(`python manage.py loaddata launch`).
+auto-deploys). New content reaches the live database via the deploy's seed
+commands (`seed_books`/`seed_sermons` run on every release). **Never run raw
+`loaddata` against production** — it full-row-overwrites, silently reverting
+approved review states (`source_type`).
 
 ```bash
 cd backend
-DJANGO_DEBUG=true uv run python manage.py import_ochorus            # re-scrape ochorus.com
-DJANGO_DEBUG=true uv run python manage.py dumpdata library --indent 1 -o library/fixtures/launch.json
+DJANGO_DEBUG=true uv run python manage.py import_ochorus   # re-scrape ochorus.com
+uv run python scripts/regen_fixture.py   # pinned 6-model natural-key regen; NEVER bare `dumpdata library`
 ```
 
 (`import_ccel` / `import_gutenberg` add public-domain titles from those sources.)

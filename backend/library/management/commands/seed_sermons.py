@@ -18,8 +18,9 @@ import datetime
 import json
 from pathlib import Path
 
-from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand, CommandError
 
+from library.management.commands.seed_books import require_natural_format
 from library.models import Author, Sermon
 
 FIXTURE = Path(__file__).resolve().parent.parent.parent / "fixtures" / "launch.json"
@@ -62,8 +63,11 @@ class Command(BaseCommand):
             self.stdout.write("No fixture available — nothing to seed.")
             return
 
-        author_fields_by_pk = {
-            r["pk"]: r["fields"]
+        require_natural_format(rows, "seed_sermons")
+
+        # Natural-key join: a sermon's author is referenced as ["slug"].
+        author_fields_by_slug = {
+            r["fields"]["slug"]: r["fields"]
             for r in rows
             if r.get("model") == "library.author"
         }
@@ -73,9 +77,14 @@ class Command(BaseCommand):
             if row.get("model") != "library.sermon":
                 continue
             f = row["fields"]
-            af = author_fields_by_pk.get(f["author"])
+            af = author_fields_by_slug.get(f["author"][0])
             if af is None:
-                continue
+                # Forbidden by the CI integrity test — a corrupt fixture must
+                # abort the deploy, not silently drop the sermon.
+                raise CommandError(
+                    f"seed_sermons: sermon {f['slug']!r} references missing "
+                    f"author {f['author'][0]!r}"
+                )
             # A sermon may introduce an author with no books yet (e.g. Moody) —
             # create the author from the fixture rather than skipping the sermon.
             author, _ = Author.objects.get_or_create(
