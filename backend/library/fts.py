@@ -1,23 +1,24 @@
 """Stored full-text search vectors (Postgres only).
 
 ``Chapter.search_vector`` and ``Sermon.search_vector`` are tsvector columns,
-GIN-indexed (migration 0040), so search reads are index lookups instead of
+GIN-indexed (migration 0041), so search reads are index lookups instead of
 building ``to_tsvector`` over every row's body at query time. The stored
 vector bakes in exactly the fields the old query-time SearchVector used —
 including the related book title and author name — so recall and ranking are
 unchanged ("wesley prayer" still matches Wesley's chapters by author name).
 
-Kept fresh three ways, mirroring the ``body_text`` pattern:
-- ``Chapter.save()`` / ``Sermon.save()`` refresh the row (all normal writes:
-  imports, admin uploads, corrections).
+Kept fresh the same way ``body_text`` is:
+- ``save()`` hooks refresh affected rows — a chapter/sermon refreshes itself,
+  and because related text is baked in, ``Book.save()`` refreshes its
+  chapters and ``Author.save()`` refreshes the author's chapters + sermons.
 - ``backfill_search_vectors`` (release step) fills NULL vectors — fixture
-  loads bypass ``save()``, exactly like ``backfill_body_text``.
-- Migration 0040 populates existing rows once on already-deployed databases.
+  loads bypass ``save()``, exactly like ``backfill_body_text``. Its ``--all``
+  flag rebuilds everything, the remedy after a raw ``queryset.update()``
+  rename that bypassed the save hooks.
+- Migration 0041 populates existing rows once on already-deployed databases.
 
-Known staleness edge: renaming an author or a book does NOT ripple into
-already-stored chapter/sermon vectors (their vectors embed the old name).
-Renames are rare and ship via imports/migrations that re-save chapters; after
-a bare rename, run ``manage.py backfill_search_vectors --all``.
+Table names are spelled out in the SQL (matching migration 0041's index DDL);
+these are Django's defaults and none of the models set ``db_table``.
 
 Everything here no-ops on SQLite (dev) — the SQLite search path uses
 icontains and never reads these columns.
@@ -44,73 +45,83 @@ def config_for(language: str) -> str:
 # Same weights as the old query-time vectors in search._search_postgres:
 # chapter = title A + book title A + author B + body C;
 # sermon = title A + author B + scripture_ref B + body C.
+# Both alias the updated table ``t`` so scope clauses ({extra}) are shared.
 _CHAPTER_SQL = """
-UPDATE {chapter} AS c
+UPDATE library_chapter AS t
 SET search_vector =
-    setweight(to_tsvector(%(config)s::regconfig, coalesce(c.title, '')), 'A') ||
+    setweight(to_tsvector(%(config)s::regconfig, coalesce(t.title, '')), 'A') ||
     setweight(to_tsvector(%(config)s::regconfig, coalesce(b.title, '')), 'A') ||
     setweight(to_tsvector(%(config)s::regconfig, coalesce(a.name, '')), 'B') ||
-    setweight(to_tsvector(%(config)s::regconfig, coalesce(c.body_text, '')), 'C')
-FROM {book} AS b
-JOIN {author} AS a ON a.id = b.author_id
-WHERE b.id = c.book_id AND b.language = %(language)s{extra}
+    setweight(to_tsvector(%(config)s::regconfig, coalesce(t.body_text, '')), 'C')
+FROM library_book AS b
+JOIN library_author AS a ON a.id = b.author_id
+WHERE b.id = t.book_id AND b.language = %(language)s{extra}
 """
 
 _SERMON_SQL = """
-UPDATE {sermon} AS s
+UPDATE library_sermon AS t
 SET search_vector =
-    setweight(to_tsvector(%(config)s::regconfig, coalesce(s.title, '')), 'A') ||
+    setweight(to_tsvector(%(config)s::regconfig, coalesce(t.title, '')), 'A') ||
     setweight(to_tsvector(%(config)s::regconfig, coalesce(a.name, '')), 'B') ||
-    setweight(to_tsvector(%(config)s::regconfig, coalesce(s.scripture_ref, '')), 'B') ||
-    setweight(to_tsvector(%(config)s::regconfig, coalesce(s.body_text, '')), 'C')
-FROM {author} AS a
-WHERE a.id = s.author_id AND s.language = %(language)s{extra}
+    setweight(to_tsvector(%(config)s::regconfig, coalesce(t.scripture_ref, '')), 'B') ||
+    setweight(to_tsvector(%(config)s::regconfig, coalesce(t.body_text, '')), 'C')
+FROM library_author AS a
+WHERE a.id = t.author_id AND t.language = %(language)s{extra}
 """
 
 
-def _tables():
-    # Imported lazily: models.py imports this module for the save() hooks.
-    from .models import Author, Book, Chapter, Sermon
-
-    return {
-        "chapter": Chapter._meta.db_table,
-        "book": Book._meta.db_table,
-        "sermon": Sermon._meta.db_table,
-        "author": Author._meta.db_table,
-    }
-
-
-def _run(template: str, params: dict, extra: str) -> int:
+def _refresh(template: str, language: str, extra: str = "", **params) -> int:
+    if connection.vendor != "postgresql":
+        return 0
+    params.update(config=config_for(language), language=language)
     with connection.cursor() as cursor:
-        cursor.execute(template.format(extra=extra, **_tables()), params)
+        cursor.execute(template.format(extra=extra), params)
         return cursor.rowcount
 
 
 def refresh_chapter(chapter) -> None:
     """Recompute one chapter's vector (called from Chapter.save)."""
-    if connection.vendor != "postgresql":
-        return
-    language = chapter.book.language
-    _run(
-        _CHAPTER_SQL,
-        {"config": config_for(language), "language": language, "id": chapter.pk},
-        extra=" AND c.id = %(id)s",
+    _refresh(
+        _CHAPTER_SQL, chapter.book.language, " AND t.id = %(id)s", id=chapter.pk
     )
 
 
 def refresh_sermon(sermon) -> None:
     """Recompute one sermon's vector (called from Sermon.save)."""
+    _refresh(_SERMON_SQL, sermon.language, " AND t.id = %(id)s", id=sermon.pk)
+
+
+def refresh_book_chapters(book) -> None:
+    """Recompute a book's chapters' vectors (called from Book.save).
+
+    The book title is baked into each chapter's vector, so a retitle must
+    ripple. On create this matches zero rows (no chapters yet) — free.
+    """
+    _refresh(
+        _CHAPTER_SQL, book.language, " AND b.id = %(book_id)s", book_id=book.pk
+    )
+
+
+def refresh_author_works(author) -> None:
+    """Recompute an author's chapters' + sermons' vectors (Author.save).
+
+    The author name is baked into both; their works may span languages, so
+    refresh per language (each language's rows use its own config).
+    """
     if connection.vendor != "postgresql":
         return
-    _run(
-        _SERMON_SQL,
-        {
-            "config": config_for(sermon.language),
-            "language": sermon.language,
-            "id": sermon.pk,
-        },
-        extra=" AND s.id = %(id)s",
-    )
+    from .models import Book, Sermon
+
+    author_books = Book.objects.filter(author=author)
+    for language in author_books.values_list("language", flat=True).distinct():
+        _refresh(
+            _CHAPTER_SQL, language, " AND a.id = %(author_id)s", author_id=author.pk
+        )
+    author_sermons = Sermon.objects.filter(author=author)
+    for language in author_sermons.values_list("language", flat=True).distinct():
+        _refresh(
+            _SERMON_SQL, language, " AND a.id = %(author_id)s", author_id=author.pk
+        )
 
 
 def backfill(only_null: bool = True) -> tuple[int, int]:
@@ -118,26 +129,18 @@ def backfill(only_null: bool = True) -> tuple[int, int]:
 
     ``only_null=True`` (the release step) touches only rows loaddata created
     with no vector — idempotent and cheap on a healthy database. ``--all``
-    rebuilds everything (after an author/book rename).
+    rebuilds everything (after a save-bypassing bulk rename).
     """
     if connection.vendor != "postgresql":
         return (0, 0)
     from .models import Book, Sermon
 
-    chapters = 0
-    extra = " AND c.search_vector IS NULL" if only_null else ""
-    for language in Book.objects.values_list("language", flat=True).distinct():
-        chapters += _run(
-            _CHAPTER_SQL,
-            {"config": config_for(language), "language": language},
-            extra=extra,
-        )
-    sermons = 0
-    extra = " AND s.search_vector IS NULL" if only_null else ""
-    for language in Sermon.objects.values_list("language", flat=True).distinct():
-        sermons += _run(
-            _SERMON_SQL,
-            {"config": config_for(language), "language": language},
-            extra=extra,
-        )
-    return (chapters, sermons)
+    extra = " AND t.search_vector IS NULL" if only_null else ""
+    counts = []
+    # Chapters carry no language column of their own — it lives on Book.
+    for template, language_source in ((_CHAPTER_SQL, Book), (_SERMON_SQL, Sermon)):
+        languages = language_source.objects.values_list(
+            "language", flat=True
+        ).distinct()
+        counts.append(sum(_refresh(template, lang, extra) for lang in languages))
+    return (counts[0], counts[1])

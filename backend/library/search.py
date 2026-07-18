@@ -23,9 +23,9 @@ import re
 from django.db import connection
 from django.db.models import F, Q
 
-# Configs shared with the stored-vector write path (library/fts.py) so query
-# config always matches what the row was indexed with.
-from .fts import FTS_CONFIGS
+# Config lookup shared with the stored-vector write path (library/fts.py) so
+# query config always matches what the row was indexed with.
+from .fts import config_for
 from .models import Author, Book, Chapter, Plan, Sermon, Topic
 from .scripture import reference_verse_ids
 
@@ -40,7 +40,6 @@ CAPS = {"author": 5, "book": 8, "topic": 5, "plan": 5, "chapter": 20, "sermon": 
 
 HL_START = "⟦"
 HL_END = "⟧"
-
 
 
 def fallback_snippet(text: str, query: str, radius: int = 90) -> str:
@@ -129,7 +128,7 @@ def _search_postgres(ctx, authors, books, topics, plans, chapters, sermons):
         SearchVector,
     )
 
-    config = FTS_CONFIGS.get(ctx.language, "simple")
+    config = config_for(ctx.language)
     query = SearchQuery(ctx.q, config=config, search_type="websearch")
 
     def sv(field, weight):

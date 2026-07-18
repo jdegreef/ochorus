@@ -247,6 +247,13 @@ class SearchTests(TestCase):
         self.assertEqual(data["results"], [])
         self.assertNotIn("suggestion", data)
 
+    @skipUnless(connection.vendor == "postgresql", "Postgres-only FTS path")
+    def test_postgres_stemming_and_ranking(self):
+        # "depend" should stem-match "dependence" under the english config.
+        results = self.search("depend")
+        self.assertTrue(results)
+        self.assertIn("⟦", results[0]["snippet"])
+
 
 class ScriptureSearchTests(TestCase):
     def setUp(self):
@@ -360,13 +367,6 @@ class SeedSermonsTests(TestCase):
         call_command("seed_sermons", verbosity=0)  # the next deploy
         lg = Sermon.objects.get(slug="the-immutability-of-god", language="lg")
         self.assertEqual(lg.source_type, Book.SourceType.AI_REVIEWED)
-
-    @skipUnless(connection.vendor == "postgresql", "Postgres-only FTS path")
-    def test_postgres_stemming_and_ranking(self):
-        # "depend" should stem-match "dependence" under the english config.
-        results = self.search("depend")
-        self.assertTrue(results)
-        self.assertIn("⟦", results[0]["snippet"])
 
 
 class PlanTests(TestCase):
@@ -1874,10 +1874,29 @@ class StoredSearchVectorTests(TestCase):
             any(h["type"] == "chapter" for h in self._search("zeal"))
         )
 
-    def test_backfill_all_refreshes_after_rename(self):
+    def test_author_rename_cascades_into_work_vectors(self):
+        # Author.save() ripples the new name into chapter + sermon vectors.
+        self.author.name = "Juan Wesley"
+        self.author.save()
+        self.assertTrue(
+            any(h["type"] == "chapter" for h in self._search("juan prayer"))
+        )
+        self.assertTrue(
+            any(h["type"] == "sermon" for h in self._search("juan race"))
+        )
+
+    def test_book_retitle_cascades_into_chapter_vectors(self):
+        self.book.title = "A Candid Account"
+        self.book.save()
+        self.assertTrue(
+            any(h["type"] == "chapter" for h in self._search("candid prayer"))
+        )
+
+    def test_backfill_all_refreshes_after_save_bypassing_rename(self):
         from django.core.management import call_command
 
-        # A bare rename leaves dependent vectors stale (documented edge)…
+        # A queryset.update() rename bypasses the save cascade — vectors go
+        # stale (documented edge)…
         Author.objects.filter(pk=self.author.pk).update(name="Juan Wesley")
         self.assertFalse(
             any(h["type"] == "chapter" for h in self._search("juan prayer"))
