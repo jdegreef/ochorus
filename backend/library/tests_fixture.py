@@ -1,6 +1,11 @@
-"""Integrity guard for the content fixture (``launch.json``).
+"""Integrity guard for the split content fixtures (``fixtures/content/``).
 
-The fixture is **natural-key format**: rows carry no integer primary keys, and
+One file per work — ``authors.json``, ``books/<slug>.<lang>.json`` (book +
+chapters), ``sermons/<slug>.<lang>.json``, ``plans.json`` — so parallel
+sessions adding content touch different files and cannot conflict, and a new
+translation reviews as one small file. See ``library.content_fixtures``.
+
+The rows are **natural-key format**: rows carry no integer primary keys, and
 references are self-describing tuples — a book's author is ``["slug"]``, a
 chapter's book is ``["slug", "language"]``. Identity is content-derived, so two
 parallel branches appending different content *cannot* collide on a key the way
@@ -10,7 +15,7 @@ hand-assigned integer pks did (two PRs claimed the same pks in one week,
 What can still go wrong, and what this suite (CI, every PR, ~0.1s, no DB)
 catches loudly:
 
-* an old-format (pk) row appended by a stale branch — under ``loaddata`` a
+* an old-format (pk) row added by a stale branch — under ``loaddata`` a
   non-colliding pk row can load silently with the WRONG author (integer FKs
   resolve against re-assigned auto-pks); the seeds hard-fail on it, and so
   does this suite, earlier;
@@ -24,13 +29,19 @@ catches loudly:
 
 from __future__ import annotations
 
-import json
 from collections import Counter
-from pathlib import Path
 
 from django.test import SimpleTestCase
 
-FIXTURE = Path(__file__).resolve().parent / "fixtures" / "launch.json"
+from library.content_fixtures import (
+    AUTHORS_FILE,
+    BOOKS_DIR,
+    PLANS_FILE,
+    SERMONS_DIR,
+    load_all_rows,
+    rows_by_file,
+    work_filename,
+)
 
 EXPECTED_MODELS = {
     "library.author",
@@ -54,7 +65,8 @@ class FixtureIntegrityTests(SimpleTestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.rows = json.loads(FIXTURE.read_text())
+        cls.files = rows_by_file()
+        cls.rows = [r for rows in cls.files.values() for r in rows]
         cls.by_model = {}
         for r in cls.rows:
             cls.by_model.setdefault(r["model"], []).append(r)
@@ -64,13 +76,13 @@ class FixtureIntegrityTests(SimpleTestCase):
         missing = EXPECTED_MODELS - set(self.by_model)
         self.assertEqual(
             extra, set(),
-            "Unexpected model in launch.json — a bare `dumpdata library` from a "
+            "Unexpected model in the content fixtures — a bare `dumpdata library` from a "
             "seeded dev DB leaks Topic/translation rows; use the pinned 6-model "
             "regen recipe (backend/scripts/regen_fixture.py).",
         )
         self.assertEqual(
             missing, set(),
-            "A content model has no rows in launch.json — if intentional, "
+            "A content model has no rows in the content fixtures — if intentional, "
             "update EXPECTED_MODELS consciously.",
         )
 
@@ -247,3 +259,79 @@ class SeedFieldCoverageTests(SimpleTestCase):
                      "body_text", "created_at", "updated_at"},
         )
         self.assertEqual(set(SERMON_FIELDS), expected)
+
+
+class FileCoherenceTests(SimpleTestCase):
+    """Each file must contain exactly what its name and role promise.
+
+    A mismatched file (a book file whose slug differs from its name, chapters
+    of another book, an author row in a book file) would load fine — the layout
+    is a convention loaddata doesn't know about — so only this check keeps the
+    per-work structure honest.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.files = rows_by_file()
+
+    def test_authors_file_is_authors_only(self):
+        models = {r["model"] for r in self.files.get(AUTHORS_FILE, [])}
+        self.assertEqual(models, {"library.author"})
+
+    def test_plans_file_shape(self):
+        rows = self.files.get(PLANS_FILE, [])
+        self.assertEqual(
+            {r["model"] for r in rows}, {"library.plan", "library.planday"}
+        )
+        # Every planday must FOLLOW its plan row (one loaddata call, NOT NULL
+        # FK — order inside the file is load order).
+        seen_plans = set()
+        for r in rows:
+            f = r["fields"]
+            if r["model"] == "library.plan":
+                seen_plans.add((f["slug"], f.get("language", "en")))
+            else:
+                self.assertIn(
+                    tuple(f["plan"]), seen_plans,
+                    f"planday day={f['day']} appears before its plan {f['plan']}",
+                )
+
+    def test_book_files_coherent(self):
+        for path, rows in self.files.items():
+            if path.parent != BOOKS_DIR:
+                continue
+            books = [r for r in rows if r["model"] == "library.book"]
+            self.assertEqual(
+                len(books), 1, f"{path.name}: expected exactly one book row"
+            )
+            f = books[0]["fields"]
+            self.assertEqual(
+                path.name, work_filename(f["slug"], f.get("language", "en")),
+                f"{path.name}: file name doesn't match its book row",
+            )
+            self.assertEqual(rows[0]["model"], "library.book",
+                             f"{path.name}: the book row must come first")
+            key = [f["slug"], f.get("language", "en")]
+            for r in rows[1:]:
+                self.assertEqual(r["model"], "library.chapter",
+                                 f"{path.name}: only chapters may follow the book")
+                self.assertEqual(
+                    r["fields"]["book"], key,
+                    f"{path.name}: chapter order={r['fields']['order']} belongs "
+                    f"to {r['fields']['book']}, not this file's book",
+                )
+
+    def test_sermon_files_coherent(self):
+        for path, rows in self.files.items():
+            if path.parent != SERMONS_DIR:
+                continue
+            self.assertEqual(
+                [r["model"] for r in rows], ["library.sermon"],
+                f"{path.name}: a sermon file holds exactly one sermon row",
+            )
+            f = rows[0]["fields"]
+            self.assertEqual(
+                path.name, work_filename(f["slug"], f.get("language", "en")),
+                f"{path.name}: file name doesn't match its sermon row",
+            )

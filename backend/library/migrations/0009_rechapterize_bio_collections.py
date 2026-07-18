@@ -46,7 +46,10 @@ def replace_chapters(apps, schema_editor):
     Book = apps.get_model("library", "Book")
     Chapter = apps.get_model("library", "Chapter")
 
-    rows = json.loads(FIXTURE.read_text())
+    try:
+        rows = json.loads(FIXTURE.read_text())
+    except OSError:
+        return  # split-fixture era: the monofile is gone; historical no-op
     if rows and "pk" not in rows[0]:
         # Natural-key-format fixture: this historical re-chapterise is already
         # reflected in the fixture the seeds load — no-op (see content_sync).

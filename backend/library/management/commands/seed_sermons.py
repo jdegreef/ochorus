@@ -15,15 +15,12 @@ migration each time.
 from __future__ import annotations
 
 import datetime
-import json
-from pathlib import Path
 
 from django.core.management.base import BaseCommand, CommandError
 
+from library.content_fixtures import load_all_rows
 from library.management.commands.seed_books import require_natural_format
 from library.models import Author, Sermon
-
-FIXTURE = Path(__file__).resolve().parent.parent.parent / "fixtures" / "launch.json"
 
 SERMON_FIELDS = (
     "title",
@@ -58,9 +55,9 @@ class Command(BaseCommand):
 
     def handle(self, *args, **opts):
         try:
-            rows = json.loads(FIXTURE.read_text())
+            rows = load_all_rows()
         except (OSError, ValueError):
-            self.stdout.write("No fixture available — nothing to seed.")
+            self.stdout.write("No content fixtures available — nothing to seed.")
             return
 
         require_natural_format(rows, "seed_sermons")

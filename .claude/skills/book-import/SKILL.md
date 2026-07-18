@@ -72,7 +72,7 @@ book preserves its `sort_order`.
    `humility-2`**: both back seeded reading plans (PlanDay maps day → chapter
    order) and a re-import that picks up a previously-dropped Preface shifts
    every order. Snapshot counts+first-titles BEFORE the regression imports and
-   diff after; restore any regressed book from `fixtures/launch.json` (delete
+   diff after; restore any regressed book from its `fixtures/content/books/<slug>.<lang>.json` (delete
    its chapters, recreate from the fixture entries).
 
 6. **Regenerate the fixture and commit:**
@@ -181,7 +181,7 @@ dropped; chapters under 120 words are dropped as stubs.
   is a known cosmetic wart. *(talks-to-the-farmer ch1, 2026-07)*
 - **Shipping a structural re-chapterization** (counts/orders change, not just
   titles): a title-transform migration can't help — write a migration that
-  reads `fixtures/launch.json`, deletes the affected books' chapters, and
+  reads the book's `fixtures/content/books/` file, deletes the affected books' chapters, and
   bulk-creates the corrected sets (safe: nothing FKs Chapter; progress/marks are
   localStorage slug+order — but CHECK PlanDay: reading plans soft-reference
   chapters by (book_slug, chapter_order), so an order shift breaks seeded
@@ -251,7 +251,7 @@ dropped; chapters under 120 words are dropped as stubs.
   re-import — and some books (Humility, the Murray/Spurgeon CCEL set) are
   imported at DEPLOY, not seeded from the fixture, so the regression only shows
   in prod.** After ANY clean_title edit, re-import a diverse sample AND diff every
-  title vs `fixtures/launch.json` (see the gutenberg-title-diff pattern in the
+  title vs its `fixtures/content/books/` file (see the gutenberg-title-diff pattern in the
   transcript). Real regressions this caught: an un-gated roman-prefix strip
   dropping Murray's "I. Humility: …" numeral; ordinal "1st"→"1St";
   "II CORINTHIANS"→"Ii Corinthians".

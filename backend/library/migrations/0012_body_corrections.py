@@ -36,7 +36,10 @@ def apply(apps, schema_editor):
     Chapter = apps.get_model("library", "Chapter")
 
     # 1. Replace the re-imported books' chapters from the (fixed) fixture.
-    data = json.loads(FIXTURE.read_text())
+    try:
+        data = json.loads(FIXTURE.read_text())
+    except OSError:
+        return  # split-fixture era: the monofile is gone; historical no-op
     if data and "pk" not in data[0]:
         # Natural-key-format fixture: corrections are already baked into the
         # fixture the seeds load — no-op (see content_sync).

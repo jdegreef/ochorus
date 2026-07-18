@@ -571,12 +571,9 @@ class AuthorListTests(TestCase):
     def test_fixture_flags_the_house_imprint(self):
         # The migration flags prod, but a fresh DB is loaded from the fixture
         # *after* migrate runs — so the flag has to ship in the fixture too.
-        import json
-        from pathlib import Path
+        from library.content_fixtures import load_all_rows
 
-        rows = json.loads(
-            (Path(__file__).resolve().parent / "fixtures" / "launch.json").read_text()
-        )
+        rows = load_all_rows()
         imprints = {
             r["fields"]["slug"]
             for r in rows
@@ -651,11 +648,9 @@ class FixtureSermonLabelTests(TestCase):
     """Guard the fixture itself: a shipped translation must carry its badge."""
 
     def test_no_translated_sermon_ships_as_public_domain(self):
-        import json
-        from pathlib import Path
+        from library.content_fixtures import load_all_rows
 
-        fixture = Path(__file__).resolve().parent / "fixtures" / "launch.json"
-        rows = json.loads(fixture.read_text())
+        rows = load_all_rows()
         sermons = [r["fields"] for r in rows if r.get("model") == "library.sermon"]
         english = {s["slug"] for s in sermons if s["language"] == "en"}
         mislabelled = [

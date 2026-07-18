@@ -1,20 +1,25 @@
 #!/usr/bin/env python3
-"""Regenerate ``library/fixtures/launch.json`` — the ONLY sanctioned way.
+"""Regenerate the split content fixtures — the ONLY sanctioned way.
+
+Layout (see ``library/content_fixtures.py``): ``fixtures/content/`` with
+``authors.json``, one ``books/<slug>.<language>.json`` per book (book row then
+its chapters), one ``sermons/<slug>.<language>.json`` per sermon, and
+``plans.json``. Natural-key format throughout — no integer pks.
 
 The pinned recipe (any deviation mutates content relative to the committed
-file):
+files):
 
-    fresh scratch DB -> migrate -> loaddata launch -> dumpdata of EXACTLY the
-    six content models with --natural-primary --natural-foreign
+    fresh scratch DB -> migrate -> loaddata (all content fixtures, in order)
+    -> dumpdata of EXACTLY the six content models with
+    --natural-primary --natural-foreign -> split into the layout
 
-Nothing else may run in between: the seed/backfill commands
-(``backfill_body_text``, ``apply_body_corrections``, ``seed_topics``, ...)
-mutate rows relative to the fixture, and a bare ``dumpdata library`` from a
-seeded dev DB leaks Topic/translation rows into the file.
+Nothing else may run in between: the seed/backfill commands mutate rows
+relative to the fixtures, and a bare ``dumpdata library`` from a seeded dev DB
+leaks Topic/translation rows.
 
-The script verifies its own output before replacing the fixture: the multiset
-of natural identities (and each row's field values) must survive the round
-trip. Run from ``backend/``:
+The script verifies its own output before replacing anything: the multiset of
+natural identities and every field value must survive the round trip. Run from
+``backend/``:
 
     uv run python scripts/regen_fixture.py
 """
@@ -23,13 +28,27 @@ from __future__ import annotations
 
 import json
 import os
+import shutil
 import subprocess
 import sys
 import tempfile
 from pathlib import Path
 
 BACKEND = Path(__file__).resolve().parent.parent
-FIXTURE = BACKEND / "library" / "fixtures" / "launch.json"
+sys.path.insert(0, str(BACKEND))
+
+from library.content_fixtures import (  # noqa: E402  (path set above; no Django needed)
+    AUTHORS_FILE,
+    BOOKS_DIR,
+    CONTENT_DIR,
+    PLANS_FILE,
+    SERMONS_DIR,
+    load_all_rows,
+    ordered_fixture_paths,
+    work_filename,
+)
+
+LEGACY_MONOFILE = BACKEND / "library" / "fixtures" / "launch.json"
 
 MODELS = [
     "library.author",
@@ -63,44 +82,70 @@ def identity(row):
     if m in ("library.book", "library.sermon", "library.plan"):
         return (m, f["slug"], f.get("language", "en"))
     if m == "library.chapter":
-        return (m, tuple(f["book"]) if isinstance(f["book"], list) else f["book"], f["order"])
+        return (m, tuple(f["book"]), f["order"])
     if m == "library.planday":
-        return (m, tuple(f["plan"]) if isinstance(f["plan"], list) else f["plan"], f["day"])
+        return (m, tuple(f["plan"]), f["day"])
     return (m, json.dumps(f, sort_keys=True))
 
 
-def normalize_pk_rows(rows):
-    """Rewrite pk-format rows to natural-key shape (for comparison only).
+def render(rows: list[dict]) -> str:
+    """Byte-stable Django-fixture formatting (records at column 0, indent=1)."""
+    return "[\n" + ",\n".join(
+        json.dumps(r, indent=1, ensure_ascii=False) for r in rows
+    ) + "\n]\n"
 
-    ONE-SHOT scaffolding for the first pk-to-NK regen; once the committed
-    fixture is natural-key format this is a no-op. Delete it (and identity()'s
-    isinstance fallbacks) at leisure.
 
-    Lets the first regen — pk source, NK output — still verify the full
-    identity multiset instead of just row counts.
-    """
-    if not rows or "pk" not in rows[0]:
-        return rows
-    authors = {r["pk"]: r["fields"]["slug"] for r in rows if r["model"] == "library.author"}
-    books = {r["pk"]: [r["fields"]["slug"], r["fields"].get("language", "en")]
-             for r in rows if r["model"] == "library.book"}
-    plans = {r["pk"]: [r["fields"]["slug"], r["fields"].get("language", "en")]
-             for r in rows if r["model"] == "library.plan"}
-    out = []
+def split_layout(rows: list[dict]) -> dict[Path, list[dict]]:
+    """Assign every dumped row to its file, preserving in-file load order."""
+    by_model: dict[str, list[dict]] = {}
     for r in rows:
-        f = dict(r["fields"])
-        if r["model"] in ("library.book", "library.sermon"):
-            f["author"] = [authors[f["author"]]]
-        elif r["model"] == "library.chapter":
-            f["book"] = books[f["book"]]
-        elif r["model"] == "library.planday":
-            f["plan"] = plans[f["plan"]]
-        out.append({"model": r["model"], "fields": f})
-    return out
+        by_model.setdefault(r["model"], []).append(r)
+
+    files: dict[Path, list[dict]] = {AUTHORS_FILE: by_model.get("library.author", [])}
+
+    chapters_by_book: dict[tuple, list[dict]] = {}
+    for r in by_model.get("library.chapter", []):
+        chapters_by_book.setdefault(tuple(r["fields"]["book"]), []).append(r)
+    for b in by_model.get("library.book", []):
+        f = b["fields"]
+        key = (f["slug"], f.get("language", "en"))
+        chs = sorted(chapters_by_book.pop(key, []), key=lambda c: c["fields"]["order"])
+        files[BOOKS_DIR / work_filename(*key)] = [b] + chs
+    if chapters_by_book:
+        sys.exit(f"orphan chapters for {sorted(chapters_by_book)[:3]} — aborting.")
+
+    for s in by_model.get("library.sermon", []):
+        f = s["fields"]
+        files[SERMONS_DIR / work_filename(f["slug"], f.get("language", "en"))] = [s]
+
+    days_by_plan: dict[tuple, list[dict]] = {}
+    for r in by_model.get("library.planday", []):
+        days_by_plan.setdefault(tuple(r["fields"]["plan"]), []).append(r)
+    plan_rows: list[dict] = []
+    for p in by_model.get("library.plan", []):
+        f = p["fields"]
+        key = (f["slug"], f.get("language", "en"))
+        plan_rows.append(p)
+        plan_rows.extend(sorted(days_by_plan.pop(key, []), key=lambda d: d["fields"]["day"]))
+    if days_by_plan:
+        sys.exit(f"orphan plan days for {sorted(days_by_plan)[:3]} — aborting.")
+    files[PLANS_FILE] = plan_rows
+
+    return files
 
 
 def main():
-    src_rows = normalize_pk_rows(json.loads(FIXTURE.read_text()))
+    # Source of truth: the split layout, or the legacy monofile on first run.
+    if CONTENT_DIR.is_dir() and ordered_fixture_paths():
+        src_rows = load_all_rows()
+        load_args = [str(p) for p in ordered_fixture_paths()]
+    elif LEGACY_MONOFILE.exists():
+        src_rows = json.loads(LEGACY_MONOFILE.read_text())
+        load_args = ["launch"]
+    else:
+        sys.exit("no content fixtures found — nothing to regenerate.")
+    if src_rows and "pk" in src_rows[0]:
+        sys.exit("source fixture is pk-format — Stage 1's regen must run first.")
     src_ids = sorted(identity(r) for r in src_rows)
 
     with tempfile.TemporaryDirectory() as td:
@@ -108,27 +153,22 @@ def main():
                "DATABASE_URL": f"sqlite:///{td}/regen.sqlite3"}
         print("→ migrate (fresh scratch DB)")
         manage(env, "migrate", "--verbosity", "0")
-        print("→ loaddata launch")
-        manage(env, "loaddata", "launch", "--verbosity", "0")
+        print(f"→ loaddata ({len(load_args)} fixture file(s), ordered)")
+        manage(env, "loaddata", *load_args, "--verbosity", "0")
         print("→ dumpdata (6 models, natural keys)")
-        out = td + "/launch-nk.json"
+        out = td + "/dump-nk.json"
         manage(env, "dumpdata", *MODELS,
                "--natural-primary", "--natural-foreign", "--indent", "1",
                "-o", out)
-        new_raw = Path(out).read_text()
-
-    new_rows = json.loads(new_raw)
+        new_rows = json.loads(Path(out).read_text())
 
     # --- verification: nothing lost, nothing invented -----------------------
-    new_ids = sorted(identity(r) for r in new_rows)
-    # Source identities may be pk-based (first regen) — compare by count and by
-    # per-model natural identity where derivable.
     if len(new_rows) != len(src_rows):
         sys.exit(f"ROW COUNT CHANGED: {len(src_rows)} -> {len(new_rows)} — aborting.")
-    stale = [r for r in new_rows if "pk" in r]
-    if stale:
+    if any("pk" in r for r in new_rows):
         sys.exit("output contains pk rows — dump flags wrong; aborting.")
 
+    new_ids = sorted(identity(r) for r in new_rows)
     if src_ids != new_ids:
         gone = [i for i in src_ids if i not in set(new_ids)][:3]
         added = [i for i in new_ids if i not in set(src_ids)][:3]
@@ -156,9 +196,19 @@ def main():
     if materialized:
         sys.exit(f"{materialized} unexpected new field(s) — aborting.")
 
-    was = FIXTURE.stat().st_size
-    FIXTURE.write_text(new_raw)
-    print(f"✓ regenerated: {len(new_rows)} rows, {len(new_raw):,} bytes (was {was:,})")
+    # --- write the layout ----------------------------------------------------
+    files = split_layout(new_rows)
+    assert sum(len(v) for v in files.values()) == len(new_rows)
+    if CONTENT_DIR.is_dir():
+        shutil.rmtree(CONTENT_DIR)
+    for path, rows in files.items():
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(render(rows))
+    if LEGACY_MONOFILE.exists():
+        LEGACY_MONOFILE.unlink()
+        print("✓ removed legacy launch.json")
+    print(f"✓ regenerated: {len(new_rows)} rows across {len(files)} files "
+          f"in {CONTENT_DIR.relative_to(BACKEND)}")
     print("Run `manage.py test library.tests_fixture` to confirm the gate.")
 
 
