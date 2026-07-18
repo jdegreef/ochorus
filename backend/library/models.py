@@ -54,11 +54,21 @@ class Author(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):
-        update_fields = kwargs.get("update_fields")
-        super().save(*args, **kwargs)
         # The author name is baked into their chapters' and sermons' search
-        # vectors (library/fts.py) — a rename must ripple into them.
-        if update_fields is None or "name" in update_fields:
+        # vectors (library/fts.py) — a rename must ripple into them. The
+        # rebuild re-tokenises the author's whole corpus, so compare against
+        # the stored name first: a bio edit costs one SELECT, not a cascade.
+        update_fields = kwargs.get("update_fields")
+        ripple = update_fields is None or "name" in update_fields
+        if ripple and self.pk:
+            old_name = (
+                Author.objects.filter(pk=self.pk)
+                .values_list("name", flat=True)
+                .first()
+            )
+            ripple = old_name != self.name
+        super().save(*args, **kwargs)
+        if ripple:
             fts.refresh_author_works(self)
 
     def _localized(self, field: str, language: str) -> str:
@@ -183,14 +193,24 @@ class Book(models.Model):
         return f"{self.title} ({self.language})"
 
     def save(self, *args, **kwargs):
+        # The book title (and language, which picks the FTS config) is baked
+        # into its chapters' search vectors (library/fts.py) — a retitle must
+        # ripple. Compare against the stored row first so unrelated edits
+        # (covers, sort order) don't re-tokenise the whole book; on create the
+        # refresh matches zero chapter rows, so it's free either way.
         update_fields = kwargs.get("update_fields")
+        ripple = update_fields is None or not {
+            "title", "language", "author", "author_id"
+        }.isdisjoint(update_fields)
+        if ripple and self.pk:
+            old = (
+                Book.objects.filter(pk=self.pk)
+                .values_list("title", "language", "author_id")
+                .first()
+            )
+            ripple = old != (self.title, self.language, self.author_id)
         super().save(*args, **kwargs)
-        # The book title is baked into its chapters' search vectors
-        # (library/fts.py) — a retitle must ripple. On create this matches
-        # zero chapter rows, so it's free.
-        if update_fields is None or not {"title", "language", "author"}.isdisjoint(
-            update_fields
-        ):
+        if ripple:
             fts.refresh_book_chapters(self)
 
     @property
@@ -247,9 +267,10 @@ class Chapter(models.Model):
         super().save(*args, **kwargs)
         # Skip the vector rebuild when a scoped save touches no indexed field
         # (it re-tokenises the whole body — pure waste for a flag flip).
-        if update_fields is None or not {"title", "body_html", "book"}.isdisjoint(
-            update_fields
-        ):
+        # Both the FK name and its attname: update_fields accepts either.
+        if update_fields is None or not {
+            "title", "body_html", "body_text", "book", "book_id"
+        }.isdisjoint(update_fields):
             fts.refresh_chapter(self)
 
 
@@ -324,8 +345,10 @@ class Sermon(models.Model):
         super().save(*args, **kwargs)
         # Skip the vector rebuild when a scoped save touches no indexed field
         # (e.g. approve_sermon_translation flips only source_type).
+        # Both the FK name and its attname: update_fields accepts either.
         if update_fields is None or not {
-            "title", "body_html", "scripture_ref", "author", "language"
+            "title", "body_html", "body_text", "scripture_ref",
+            "author", "author_id", "language",
         }.isdisjoint(update_fields):
             fts.refresh_sermon(self)
 
