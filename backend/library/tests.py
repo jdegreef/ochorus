@@ -1795,3 +1795,95 @@ class ContentQAFixesTests(TestCase):
         self.assertIn("<p><i>Vishnu</i> — Def", out)
         # Idempotent: a second pass finds nothing to rebuild.
         self.assertIsNone(m._rebuild_things_as_they_are_preface(out))
+
+
+@skipUnless(connection.vendor == "postgresql", "Stored search vectors are Postgres-only")
+class StoredSearchVectorTests(TestCase):
+    """The stored tsvector machinery (library/fts.py + migrations 0040/0041).
+
+    Only runs on the Postgres CI leg / prod-shaped databases — SQLite search
+    never reads search_vector.
+    """
+
+    def setUp(self):
+        self.author = Author.objects.create(slug="john-wesley", name="John Wesley")
+        self.book = Book.objects.create(
+            author=self.author, slug="perfection", language="en",
+            title="A Plain Account of Christian Perfection",
+        )
+        self.chapter = Chapter.objects.create(
+            book=self.book, order=1, title="The Circumcision of the Heart",
+            body_html="<p>Prayer is the lifting up of the heart to God.</p>",
+        )
+        self.sermon = Sermon.objects.create(
+            author=self.author, slug="the-almost-christian", language="en",
+            title="The Almost Christian", scripture_ref="Acts 26:28",
+            body_html="<p>He runs the race that is set before him.</p>",
+        )
+
+    def _search(self, q, language="en"):
+        from .search import search_library
+
+        return search_library(q, language)
+
+    def test_save_populates_vectors(self):
+        self.chapter.refresh_from_db()
+        self.sermon.refresh_from_db()
+        self.assertIsNotNone(self.chapter.search_vector)
+        self.assertIsNotNone(self.sermon.search_vector)
+
+    def test_gin_indexes_exist(self):
+        with connection.cursor() as cur:
+            cur.execute(
+                "SELECT indexname FROM pg_indexes WHERE indexname IN "
+                "('library_chapter_search_vector_gin', 'library_sermon_search_vector_gin')"
+            )
+            names = {row[0] for row in cur.fetchall()}
+        self.assertEqual(
+            names,
+            {"library_chapter_search_vector_gin", "library_sermon_search_vector_gin"},
+        )
+
+    def test_author_name_baked_into_passage_vectors(self):
+        # Recall parity with the old query-time vector: an author-name term
+        # ANDed with a body term must still match the passage row itself.
+        chapter_hits = [h for h in self._search("wesley prayer") if h["type"] == "chapter"]
+        self.assertTrue(chapter_hits)
+        sermon_hits = [h for h in self._search("wesley race") if h["type"] == "sermon"]
+        self.assertTrue(sermon_hits)
+
+    def test_english_config_stems(self):
+        # body says "runs"; english config stems "running" to match it.
+        hits = [h for h in self._search("running") if h["type"] == "sermon"]
+        self.assertTrue(hits)
+
+    def test_backfill_covers_fixture_loaded_rows(self):
+        from django.core.management import call_command
+
+        # bulk_create bypasses save(), like loaddata does on deploy.
+        Chapter.objects.bulk_create([
+            Chapter(book=self.book, order=2, title="On Zeal",
+                    body_html="<p>x</p>", body_text="Let zeal be guided by knowledge."),
+        ])
+        self.assertFalse(
+            any(h["type"] == "chapter" and "zeal" in h["snippet"].lower()
+                for h in self._search("zeal"))
+        )
+        call_command("backfill_search_vectors", verbosity=0)
+        self.assertTrue(
+            any(h["type"] == "chapter" for h in self._search("zeal"))
+        )
+
+    def test_backfill_all_refreshes_after_rename(self):
+        from django.core.management import call_command
+
+        # A bare rename leaves dependent vectors stale (documented edge)…
+        Author.objects.filter(pk=self.author.pk).update(name="Juan Wesley")
+        self.assertFalse(
+            any(h["type"] == "chapter" for h in self._search("juan prayer"))
+        )
+        # …and --all is the documented remedy.
+        call_command("backfill_search_vectors", "--all", verbosity=0)
+        self.assertTrue(
+            any(h["type"] == "chapter" for h in self._search("juan prayer"))
+        )

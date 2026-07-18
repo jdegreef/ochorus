@@ -19,6 +19,21 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DJANGO_DEBUG: 'true' # local SQLite, no external services
+    # Throwaway Postgres so the production search path (stored tsvectors,
+    # GIN migration, websearch queries) actually runs in CI — the SQLite
+    # test run skips every @skipUnless(vendor == "postgresql") test.
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
     steps:
       - uses: actions/checkout@v4
 
@@ -38,6 +53,12 @@ jobs:
 
       - name: Backend — tests
         working-directory: backend
+        run: uv run python manage.py test --verbosity 1
+
+      - name: Backend — tests (Postgres, the production search path)
+        working-directory: backend
+        env:
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
         run: uv run python manage.py test --verbosity 1
 
       # The frontend build prerenders pages by fetching the API, so bring a

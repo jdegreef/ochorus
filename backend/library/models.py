@@ -9,7 +9,10 @@ it's what the AI-translation pipeline keys on (same slug, new language).
 
 from __future__ import annotations
 
+from django.contrib.postgres.search import SearchVectorField
 from django.db import models
+
+from . import fts
 
 
 class AuthorManager(models.Manager):
@@ -193,6 +196,9 @@ class Chapter(models.Model):
     # backfill_body_text command (run on every deploy) fills any gaps.
     body_text = models.TextField(blank=True, default="")
     word_count = models.PositiveIntegerField(default=0)
+    # Stored tsvector (Postgres only; NULL on SQLite). Kept by save() +
+    # backfill_search_vectors; GIN-indexed in migration 0040. See library/fts.py.
+    search_vector = SearchVectorField(null=True, editable=False, serialize=False)
 
     objects = ChapterManager()
 
@@ -220,6 +226,7 @@ class Chapter(models.Model):
         if update_fields is not None and "body_html" in update_fields:
             kwargs["update_fields"] = list(update_fields) + ["body_text"]
         super().save(*args, **kwargs)
+        fts.refresh_chapter(self)
 
 
 class SermonManager(models.Manager):
@@ -254,6 +261,9 @@ class Sermon(models.Model):
     # Plain text derived from body_html; what full-text search indexes.
     body_text = models.TextField(blank=True, default="")
     word_count = models.PositiveIntegerField(default=0)
+    # Stored tsvector (Postgres only; NULL on SQLite). Kept by save() +
+    # backfill_search_vectors; GIN-indexed in migration 0040. See library/fts.py.
+    search_vector = SearchVectorField(null=True, editable=False, serialize=False)
     source_url = models.URLField(blank=True)
 
     sort_order = models.PositiveIntegerField(default=0)
@@ -288,6 +298,7 @@ class Sermon(models.Model):
         if update_fields is not None and "body_html" in update_fields:
             kwargs["update_fields"] = list(update_fields) + ["body_text"]
         super().save(*args, **kwargs)
+        fts.refresh_sermon(self)
 
 
 class PlanManager(models.Manager):

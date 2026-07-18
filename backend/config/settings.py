@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    # Needed for SearchVectorField (library.fts); harmless under SQLite dev.
+    "django.contrib.postgres",
     "django.contrib.staticfiles",
     # Third-party
     "rest_framework",
