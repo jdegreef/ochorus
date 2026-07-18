@@ -12,6 +12,9 @@ import type { PageLoad } from './$types';
  *
  * Prerender refresh 2026-07-18 (queue job #182): same again after the Luganda
  * sermon Ebisoboka by'Okukkiriza (PR #191) went live.
+ *
+ * Prerender refresh 2026-07-18 (queue job #183): same again after the Luganda
+ * sermon Kristo Byonna mu Byonna (PR #193) went live.
  */
 export const load: PageLoad = async () => {
 	// Tolerate a lagging/absent sermon endpoint at prerender time (see the
