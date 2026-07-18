@@ -60,12 +60,26 @@ class FixtureIntegrityTests(SimpleTestCase):
             cls.by_model.setdefault(r["model"], []).append(r)
 
     def test_only_expected_models(self):
+        extra = set(self.by_model) - EXPECTED_MODELS
+        missing = EXPECTED_MODELS - set(self.by_model)
         self.assertEqual(
-            set(self.by_model), EXPECTED_MODELS,
+            extra, set(),
             "Unexpected model in launch.json — a bare `dumpdata library` from a "
             "seeded dev DB leaks Topic/translation rows; use the pinned 6-model "
             "regen recipe (see the ship-content-fix skill).",
         )
+        self.assertEqual(
+            missing, set(),
+            "A content model has no rows in launch.json — if intentional, "
+            "update EXPECTED_MODELS consciously.",
+        )
+
+    def test_primary_keys_are_integers(self):
+        # A string pk ("90") would dodge the duplicate check below yet coerce
+        # to the same DB pk as int 90 at load time — the collision in disguise.
+        for model, rows in self.by_model.items():
+            bad = [r["pk"] for r in rows if not isinstance(r["pk"], int)]
+            self.assertEqual(bad, [], f"{model}: non-integer pk(s) {bad[:5]}")
 
     def test_primary_keys_unique_per_model(self):
         # A duplicate pk is exactly the parallel-append collision: it merges
@@ -84,16 +98,16 @@ class FixtureIntegrityTests(SimpleTestCase):
         # unique constraints, so a duplicate here bricks loaddata on a fresh
         # database even when the pks differ.
         checks = {
-            "library.author": lambda f, pk: f["slug"],
-            "library.book": lambda f, pk: (f["slug"], f.get("language", "en")),
-            "library.sermon": lambda f, pk: (f["slug"], f.get("language", "en")),
-            "library.plan": lambda f, pk: (f["slug"], f.get("language", "en")),
-            "library.chapter": lambda f, pk: (f["book"], f["order"]),
-            "library.planday": lambda f, pk: (f["plan"], f["day"]),
+            "library.author": lambda f: f["slug"],
+            "library.book": lambda f: (f["slug"], f.get("language", "en")),
+            "library.sermon": lambda f: (f["slug"], f.get("language", "en")),
+            "library.plan": lambda f: (f["slug"], f.get("language", "en")),
+            "library.chapter": lambda f: (f["book"], f["order"]),
+            "library.planday": lambda f: (f["plan"], f["day"]),
         }
         for model, key in checks.items():
             dupes = _dupes(
-                Counter(key(r["fields"], r["pk"]) for r in self.by_model[model])
+                Counter(key(r["fields"]) for r in self.by_model.get(model, []))
             )
             self.assertEqual(
                 dupes, [],
@@ -104,9 +118,9 @@ class FixtureIntegrityTests(SimpleTestCase):
     def test_references_resolve(self):
         # A dangling reference means a row points at content that isn't in the
         # file (e.g. a book whose author row was lost in a merge).
-        author_pks = {r["pk"] for r in self.by_model["library.author"]}
-        book_pks = {r["pk"] for r in self.by_model["library.book"]}
-        plan_pks = {r["pk"] for r in self.by_model["library.plan"]}
+        author_pks = {r["pk"] for r in self.by_model.get("library.author", [])}
+        book_pks = {r["pk"] for r in self.by_model.get("library.book", [])}
+        plan_pks = {r["pk"] for r in self.by_model.get("library.plan", [])}
 
         refs = [
             ("library.book", "author", author_pks),
@@ -116,13 +130,27 @@ class FixtureIntegrityTests(SimpleTestCase):
         ]
         for model, field, valid in refs:
             dangling = sorted(
-                {r["fields"][field] for r in self.by_model[model]} - valid
+                {r["fields"][field] for r in self.by_model.get(model, [])} - valid
             )
             self.assertEqual(
                 dangling, [],
                 f"{model}.{field}: dangling reference(s) {dangling[:5]} — the "
                 "target row is missing from the fixture.",
             )
+
+        # PlanDay's soft references: the slug must at least exist as a book in
+        # SOME language (checking the plan's exact language would false-fail a
+        # translated plan shipping ahead of its books).
+        book_slugs = {r["fields"]["slug"] for r in self.by_model.get("library.book", [])}
+        stray = sorted(
+            {r["fields"]["book_slug"] for r in self.by_model.get("library.planday", [])}
+            - book_slugs
+        )
+        self.assertEqual(
+            stray, [],
+            f"library.planday.book_slug: unknown book slug(s) {stray[:5]} — a "
+            "plan day points at a book that isn't in the fixture.",
+        )
 
     def test_required_content_fields_present(self):
         # Rows missing slug/order/day would defeat the identity checks above
@@ -131,11 +159,11 @@ class FixtureIntegrityTests(SimpleTestCase):
             "library.author": ("slug", "name"),
             "library.book": ("slug", "title", "author"),
             "library.chapter": ("book", "order", "body_html"),
-            "library.sermon": ("slug", "title", "author"),
+            "library.sermon": ("slug", "title", "author", "body_html"),
             "library.plan": ("slug", "title"),
             "library.planday": ("plan", "day", "book_slug", "chapter_order"),
         }.items():
-            for r in self.by_model[model]:
+            for r in self.by_model.get(model, []):
                 missing = [k for k in required if k not in r["fields"]]
                 self.assertEqual(
                     missing, [],
