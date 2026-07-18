@@ -55,13 +55,30 @@ def ordered_fixture_paths() -> list[Path]:
 def load_all_rows() -> list[dict]:
     """All content rows across the split layout, in load order.
 
-    The drop-in replacement for ``json.loads(launch.json)`` — the seed commands
-    and the CI gate consume this.
+    The seed commands and the CI gate consume this. A corrupt file raises with
+    its PATH named — with 119 files, "some file is broken" must never collapse
+    into "no fixtures available".
     """
     rows: list[dict] = []
     for path in ordered_fixture_paths():
-        rows.extend(json.loads(path.read_text()))
+        try:
+            rows.extend(json.loads(path.read_text()))
+        except ValueError as exc:
+            raise ValueError(f"corrupt content fixture {path}: {exc}") from exc
     return rows
+
+
+def unexpected_files() -> list[Path]:
+    """Files under content/ that the layout does NOT load.
+
+    A fixture written to the wrong place (content/ root, a .json.new suffix, a
+    nested dir) is silently invisible to loaddata AND the seeds — this is how
+    the CI gate makes that loud.
+    """
+    sanctioned = set(ordered_fixture_paths())
+    return sorted(
+        p for p in CONTENT_DIR.rglob("*") if p.is_file() and p not in sanctioned
+    )
 
 
 def rows_by_file() -> dict[Path, list[dict]]:

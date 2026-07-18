@@ -40,6 +40,7 @@ from library.content_fixtures import (
     SERMONS_DIR,
     load_all_rows,
     rows_by_file,
+    unexpected_files,
     work_filename,
 )
 
@@ -65,11 +66,22 @@ class FixtureIntegrityTests(SimpleTestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.files = rows_by_file()
-        cls.rows = [r for rows in cls.files.values() for r in rows]
+        cls.rows = load_all_rows()
         cls.by_model = {}
         for r in cls.rows:
             cls.by_model.setdefault(r["model"], []).append(r)
+
+    def test_no_unloaded_files(self):
+        # A file outside the sanctioned layout (content/ root, .json.new, a
+        # nested dir) is silently invisible to loaddata AND the seeds — the
+        # work would merge green and never ship.
+        stray = [str(p) for p in unexpected_files()]
+        self.assertEqual(
+            stray, [],
+            f"file(s) under fixtures/content/ that nothing loads: {stray[:5]} — "
+            "books go in books/<slug>.<lang>.json, sermons in sermons/, authors "
+            "in authors.json, plans in plans.json.",
+        )
 
     def test_only_expected_models(self):
         extra = set(self.by_model) - EXPECTED_MODELS
@@ -99,7 +111,7 @@ class FixtureIntegrityTests(SimpleTestCase):
             stale[:5], [],
             f"{len(stale)} old-format (integer-pk) row(s), first {stale[:5]}. "
             "Re-serialize with Django's serializer using natural keys "
-            "(CLAUDE.md: The fixture (the sharp edge)) — never hand-assign pks.",
+            "(CLAUDE.md: The fixture) — never hand-assign pks.",
         )
 
     def test_natural_identity_unique(self):
@@ -126,7 +138,7 @@ class FixtureIntegrityTests(SimpleTestCase):
 
     def test_references_resolve(self):
         # Every natural-key reference must resolve within the file — loaddata
-        # runs as ONE call over one file, and all FKs here are NOT NULL, so a
+        # runs as ONE call over all the files, and all FKs here are NOT NULL, so a
         # dangling reference aborts a fresh-database load.
         author_keys = {
             (r["fields"]["slug"],) for r in self.by_model.get("library.author", [])

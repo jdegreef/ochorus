@@ -85,8 +85,9 @@ book preserves its `sort_order`.
    - **The live DB isn't re-seeded from the fixture** (`seed_if_empty` only fills
      an empty DB). A transform over existing rows must ship as a **data
      migration** (auto-runs on deploy via `manage.py release`; e.g.
-     `0003_clean_chapter_titles`). A re-import's new rows need `loaddata launch`
-     from the Render shell, or the migration path.
+     `0003_clean_chapter_titles`). A re-import's NEW rows reach prod
+     automatically: the release step's `seed_books` creates any fixture book
+     missing on prod (no Render-shell step needed).
    - **The prerendered `/books/<slug>` + `/authors/<slug>` pages won't refresh
      from a backend-only commit.** Render skips the `ochorus-web` build when
      nothing under `frontend/` changed, so the API + reader update but the static

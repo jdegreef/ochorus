@@ -59,7 +59,7 @@ def require_natural_format(rows, command_name: str):
             f"(first: {first.get('model')} "
             f"{first.get('fields', {}).get('slug', first.get('pk'))!r}). The "
             "fixture is natural-key format — re-serialize without pks/integer "
-            "FKs (see CLAUDE.md: The fixture (the sharp edge))."
+            "FKs (see CLAUDE.md: The fixture)."
         )
 
 
@@ -70,9 +70,11 @@ class Command(BaseCommand):
     def handle(self, *args, **opts):
         try:
             rows = load_all_rows()
-        except (OSError, ValueError):
+        except OSError:
             self.stdout.write("No content fixtures available — nothing to seed.")
             return
+        # A ValueError (corrupt file, path named) propagates: with 119 files,
+        # "one file is broken" must abort the deploy, not skip all content.
 
         require_natural_format(rows, "seed_books")
 

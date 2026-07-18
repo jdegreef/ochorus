@@ -48,8 +48,6 @@ from library.content_fixtures import (  # noqa: E402  (path set above; no Django
     work_filename,
 )
 
-LEGACY_MONOFILE = BACKEND / "library" / "fixtures" / "launch.json"
-
 MODELS = [
     "library.author",
     "library.book",
@@ -135,17 +133,12 @@ def split_layout(rows: list[dict]) -> dict[Path, list[dict]]:
 
 
 def main():
-    # Source of truth: the split layout, or the legacy monofile on first run.
-    if CONTENT_DIR.is_dir() and ordered_fixture_paths():
-        src_rows = load_all_rows()
-        load_args = [str(p) for p in ordered_fixture_paths()]
-    elif LEGACY_MONOFILE.exists():
-        src_rows = json.loads(LEGACY_MONOFILE.read_text())
-        load_args = ["launch"]
-    else:
-        sys.exit("no content fixtures found — nothing to regenerate.")
+    if not (CONTENT_DIR.is_dir() and ordered_fixture_paths()):
+        sys.exit("no content fixtures found under fixtures/content/ — nothing to regenerate.")
+    src_rows = load_all_rows()
+    load_args = [str(p) for p in ordered_fixture_paths()]
     if src_rows and "pk" in src_rows[0]:
-        sys.exit("source fixture is pk-format — Stage 1's regen must run first.")
+        sys.exit("source fixture is pk-format — regenerate from a natural-key layout.")
     src_ids = sorted(identity(r) for r in src_rows)
 
     with tempfile.TemporaryDirectory() as td:
@@ -199,14 +192,17 @@ def main():
     # --- write the layout ----------------------------------------------------
     files = split_layout(new_rows)
     assert sum(len(v) for v in files.values()) == len(new_rows)
-    if CONTENT_DIR.is_dir():
-        shutil.rmtree(CONTENT_DIR)
+    # Write the full layout to a sibling temp dir, then swap — a crash mid-write
+    # must never leave a half-empty content/ in the working tree.
+    staging = CONTENT_DIR.with_name("content.regen-tmp")
+    if staging.exists():
+        shutil.rmtree(staging)
     for path, rows in files.items():
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(render(rows))
-    if LEGACY_MONOFILE.exists():
-        LEGACY_MONOFILE.unlink()
-        print("✓ removed legacy launch.json")
+        target = staging / path.relative_to(CONTENT_DIR)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(render(rows))
+    shutil.rmtree(CONTENT_DIR)
+    staging.rename(CONTENT_DIR)
     print(f"✓ regenerated: {len(new_rows)} rows across {len(files)} files "
           f"in {CONTENT_DIR.relative_to(BACKEND)}")
     print("Run `manage.py test library.tests_fixture` to confirm the gate.")
