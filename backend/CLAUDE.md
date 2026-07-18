@@ -38,7 +38,9 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
   a deploy walks it back. (This bit us; there's a regression test guarding it.)
 - A fresh DB loads the fixture *after* migrate runs, so a data migration that
   depends on fixture rows no-ops on a rebuild — put the same fact in the
-  fixture, not only the migration.
+  fixture, not only the migration. (The historical pk-parsing migrations no-op
+  loudly on the natural-key fixture via format guards — keep that pattern for
+  any new fixture-reading migration.)
 
 ## Shared logic
 

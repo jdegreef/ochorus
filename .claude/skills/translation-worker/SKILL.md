@@ -67,11 +67,18 @@ worker specifics that shipped ~11 editions:
 - **Validate before anything ships:** every chapter's `<p>` count equals the
   source's; JSON parses; title/body non-empty. Re-dispatch only the gaps.
 - Translate book metadata (title/subtitle/description) too.
-- Ship: textual append to `backend/library/fixtures/launch.json` (fresh pks
-  above current max; copy author pk/source_url/cover_url/sort_order from the
-  English fixture row; `source_type=ai_unreviewed`; `pdf_url` empty;
-  `body_text` via `library.text.html_to_text`). NO dumpdata round-trip. Verify
-  `seed_books` recreates the rows locally; run `manage.py test library`.
+- Ship: textual append to `backend/library/fixtures/launch.json`. The fixture
+  is **natural-key format — rows carry NO `pk` key** (a `pk` fails CI and the
+  seeds hard-fail on it): a book's `"author"` is `["author-slug"]`, a chapter's
+  `"book"` is `["book-slug", "lang"]`. Serialize the new rows with Django
+  (`django.core.serializers.serialize("json", objs,
+  use_natural_primary_keys=True, use_natural_foreign_keys=True)`) — never
+  hand-write pks, never `json.dumps`. Copy source_url/cover_url/sort_order from
+  the English fixture row; `source_type=ai_unreviewed`; `pdf_url` empty;
+  `body_text` via `library.text.html_to_text`. NO whole-file dumpdata
+  round-trip (full regens go through `backend/scripts/regen_fixture.py`).
+  Verify `seed_books` recreates the rows locally; run
+  `manage.py test library.tests_fixture library`.
 - Scripture: if `api.takeroot.bible` is reachable, use `scripture_context()`
   for authoritative wording; if egress-blocked (the current default), render
   quotations conservatively in the language's reverent biblical register and
@@ -80,8 +87,9 @@ worker specifics that shipped ~11 editions:
 **Sermon** — same shape, smaller: single body instead of chapters; translate
 `title`, `scripture_ref` (localize the Bible book name, keep chapter:verse),
 and `body_html` (preserve ALL tags 1:1 — blockquote/h2/br/i, hymn stanzas);
-append a `library.sermon` fixture row (copy author/source_url/sort_order/
-preached_on from the English row); `seed_sermons` upserts it on deploy.
+append a `library.sermon` fixture row (natural-key format — `"author":
+["author-slug"]`, no `pk`; copy source_url/sort_order/preached_on from the
+English row); `seed_sermons` upserts it on deploy.
 
 ## Guardrails
 

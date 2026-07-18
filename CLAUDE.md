@@ -31,10 +31,16 @@ See also `backend/CLAUDE.md` and `frontend/CLAUDE.md`.
 
 - `backend/library/fixtures/launch.json` (~50 MB) is the content source of
   truth; the `seed_*` commands upsert it into prod on every deploy.
-- **Appending content — use fresh primary keys.** Check the current max book/
-  chapter pk first: parallel sessions append to the same tail, and a duplicate
-  pk **silently overwrites** another row on `loaddata`. Splice rows in
-  textually; never round-trip the 50 MB file through `dumpdata`.
+- The fixture is **natural-key format: rows carry NO integer pks**. A book's
+  `"author"` is `["author-slug"]`, a chapter's `"book"` is `["slug", "lang"]` —
+  identity is the slug (+ language), so parallel appends cannot collide on a
+  key. CI (`tests_fixture`) rejects any `pk` key, duplicate identities, and
+  dangling references; the seeds hard-fail on old-format rows.
+- **Appending content:** serialize the new rows with Django's serializer using
+  `use_natural_primary_keys=True, use_natural_foreign_keys=True` and splice
+  them in textually. Never hand-write pks, never `json.dumps`, never round-trip
+  the 50 MB file — a full regen is only `backend/scripts/regen_fixture.py`
+  (pinned 6-model recipe).
 - Because seeds re-upsert every deploy, any field a workflow owns after creation
   (review state, hand-edits) must be **create-only** in the seed — else a deploy
   reverts it. See `backend/CLAUDE.md`.

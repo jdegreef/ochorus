@@ -15,7 +15,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
 from library.models import Author, Book, Chapter
@@ -26,8 +26,10 @@ BOOK_FIELDS = (
     "title",
     "subtitle",
     "description",
+    "publication_year",
     "source_type",
     "source_url",
+    "attribution",
     "cover_url",
     "pdf_url",
     "cover_color",
@@ -35,6 +37,24 @@ BOOK_FIELDS = (
     "is_published",
 )
 CHAPTER_FIELDS = ("order", "title", "body_html", "word_count")
+
+
+def require_natural_format(rows, command_name: str):
+    """Hard-fail on an old-format (integer-pk) fixture row.
+
+    After the natural-key switch a stale pk-format row could silently
+    mis-resolve (an integer FK "means" a different row against re-assigned
+    pks) or silently skip. Loud failure here — inside the atomic seed — aborts
+    the deploy instead of shipping wrong or missing content.
+    """
+    stale = [r for r in rows if "pk" in r]
+    if stale:
+        raise CommandError(
+            f"{command_name}: {len(stale)} old-format (pk) row(s) in launch.json "
+            f"(first: {stale[0].get('model')} pk={stale[0]['pk']}). The fixture "
+            "is natural-key format — re-serialize these rows without pks (see "
+            "backend/CLAUDE.md: The fixture)."
+        )
 
 
 class Command(BaseCommand):
@@ -48,13 +68,19 @@ class Command(BaseCommand):
             self.stdout.write("No fixture available — nothing to seed.")
             return
 
+        require_natural_format(rows, "seed_books")
+
+        # Natural-key joins: an author is referenced as ["slug"], a chapter's
+        # book as ["slug", "language"] — self-describing, no pk map to build.
         authors = {
-            r["pk"]: r["fields"] for r in rows if r.get("model") == "library.author"
+            r["fields"]["slug"]: r["fields"]
+            for r in rows
+            if r.get("model") == "library.author"
         }
-        chapters_by_book_pk: dict[int, list[dict]] = {}
+        chapters_by_book: dict[tuple, list[dict]] = {}
         for r in rows:
             if r.get("model") == "library.chapter":
-                chapters_by_book_pk.setdefault(r["fields"]["book"], []).append(
+                chapters_by_book.setdefault(tuple(r["fields"]["book"]), []).append(
                     r["fields"]
                 )
 
@@ -67,9 +93,15 @@ class Command(BaseCommand):
                 slug=f["slug"], language=f.get("language", "en")
             ).exists():
                 continue
-            af = authors.get(f["author"])
+            af = authors.get(f["author"][0])
             if af is None:
-                continue
+                # The CI integrity test forbids dangling references, so this is
+                # a corrupt fixture — abort the deploy rather than silently
+                # skipping the book.
+                raise CommandError(
+                    f"seed_books: book {f['slug']!r} references missing author "
+                    f"{f['author'][0]!r}"
+                )
             author, _ = Author.objects.get_or_create(
                 slug=af["slug"],
                 defaults={
@@ -89,10 +121,13 @@ class Command(BaseCommand):
                 author=author,
                 slug=f["slug"],
                 language=f.get("language", "en"),
-                **{k: f.get(k) for k in BOOK_FIELDS},
+                # Omit fields the fixture row doesn't carry so the model
+                # default applies (e.g. older rows predating a field).
+                **{k: f[k] for k in BOOK_FIELDS if k in f},
             )
             for cf in sorted(
-                chapters_by_book_pk.get(row["pk"], []), key=lambda c: c["order"]
+                chapters_by_book.get((f["slug"], f.get("language", "en")), []),
+                key=lambda c: c["order"],
             ):
                 # .create() runs save(), which derives body_text.
                 Chapter.objects.create(

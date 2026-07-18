@@ -39,6 +39,14 @@ def backfill_bios_and_sermons(apps, fixture: Path = FIXTURE) -> tuple[int, int]:
     except (OSError, ValueError):
         return (0, 0)
 
+    if rows and "pk" not in rows[0]:
+        # Natural-key-format fixture (no integer pks): these historical
+        # backfills predate the format switch and their content is already IN
+        # the fixture the seeds load — correct no-op for fresh installs, and
+        # prod applied them long ago.
+        print("content_sync: natural-key fixture detected — historical backfill skipped")
+        return (0, 0)
+
     pk_to_slug: dict[int, str] = {}
     authors_updated = 0
     sermons_upserted = 0

@@ -37,6 +37,11 @@ def apply(apps, schema_editor):
 
     # 1. Replace the re-imported books' chapters from the (fixed) fixture.
     data = json.loads(FIXTURE.read_text())
+    if data and "pk" not in data[0]:
+        # Natural-key-format fixture: corrections are already baked into the
+        # fixture the seeds load — no-op (see content_sync).
+        print("0012: natural-key fixture detected — historical backfill skipped")
+        return
     fixture_books = {
         o["pk"]: o["fields"]["slug"]
         for o in data
