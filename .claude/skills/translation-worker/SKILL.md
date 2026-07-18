@@ -67,18 +67,18 @@ worker specifics that shipped ~11 editions:
 - **Validate before anything ships:** every chapter's `<p>` count equals the
   source's; JSON parses; title/body non-empty. Re-dispatch only the gaps.
 - Translate book metadata (title/subtitle/description) too.
-- Ship: textual append to `backend/library/fixtures/launch.json`. The fixture
-  is **natural-key format — rows carry NO `pk` key** (a `pk` fails CI and the
-  seeds hard-fail on it): a book's `"author"` is `["author-slug"]`, a chapter's
-  `"book"` is `["book-slug", "lang"]`. Serialize the new rows with Django
+- Ship: write **one new file** `backend/library/fixtures/content/books/
+  <slug>.<lang>.json` — the translated Book row first, then its Chapters, in
+  natural-key format (NO `pk` keys; `"author"` is `["author-slug"]`, each
+  chapter's `"book"` is `["<slug>", "<lang>"]`). Serialize with Django
   (`django.core.serializers.serialize("json", objs,
   use_natural_primary_keys=True, use_natural_foreign_keys=True)`) — never
   hand-write pks, never `json.dumps`. Copy source_url/cover_url/sort_order from
-  the English fixture row; `source_type=ai_unreviewed`; `pdf_url` empty;
-  `body_text` via `library.text.html_to_text`. NO whole-file dumpdata
-  round-trip (full regens go through `backend/scripts/regen_fixture.py`).
+  the English file; `source_type=ai_unreviewed`; `pdf_url` empty; `body_text`
+  via `library.text.html_to_text`. No other file is touched — parallel jobs
+  cannot conflict. Full regens only via `backend/scripts/regen_fixture.py`.
   Verify `seed_books` recreates the rows locally; run `manage.py test library`
-  (which includes the fixture gate).
+  (which includes the fixture + file-coherence gates).
 - Scripture: if `api.takeroot.bible` is reachable, use `scripture_context()`
   for authoritative wording; if egress-blocked (the current default), render
   quotations conservatively in the language's reverent biblical register and
@@ -87,17 +87,18 @@ worker specifics that shipped ~11 editions:
 **Sermon** — same shape, smaller: single body instead of chapters; translate
 `title`, `scripture_ref` (localize the Bible book name, keep chapter:verse),
 and `body_html` (preserve ALL tags 1:1 — blockquote/h2/br/i, hymn stanzas);
-append a `library.sermon` fixture row (natural-key format — `"author":
-["author-slug"]`, no `pk`; copy source_url/sort_order/preached_on from the
-English row); `seed_sermons` upserts it on deploy.
+write one new file `content/sermons/<slug>.<lang>.json` holding the single
+translated Sermon row (natural-key format — `"author": ["author-slug"]`, no
+`pk`; copy source_url/sort_order/preached_on from the English file); `seed_sermons` upserts it on deploy.
 
 ## Guardrails
 
 - **Never** run more than one job per session run, even if the queue is deep.
 - **Never** auto-promote: everything ships `ai_unreviewed`; only the user runs
   `approve_translation`.
-- The fixture-append guard (`assert (slug, lang) not in fixture`) is the last
-  line of defence against double-shipping a re-run job — keep it.
+- The double-ship guard is now structural: the target file existing means the
+  job already shipped — check `content/books/<slug>.<lang>.json` (or sermons/)
+  before starting; CI's duplicate-identity check is the backstop.
 - Token budget sanity: a book is roughly 25–45k output tokens per chapter. If
   a job would obviously exhaust the session (e.g. a 50-chapter book late in a
   budget), say so on the issue instead of half-finishing — partial output

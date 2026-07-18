@@ -1,0 +1,941 @@
+[
+{
+ "model": "library.plan",
+ "fields": {
+  "slug": "humility-12-days",
+  "language": "en",
+  "title": "Humility in 12 Days",
+  "description": "Andrew Murray's classic on the root of every virtue — one short chapter a day for twelve days.",
+  "sort_order": 0,
+  "is_published": true,
+  "created_at": "2026-07-06T01:17:49.836Z",
+  "updated_at": "2026-07-06T01:17:49.836Z"
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "humility-12-days",
+   "en"
+  ],
+  "day": 1,
+  "book_slug": "humility-2",
+  "chapter_order": 1
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "humility-12-days",
+   "en"
+  ],
+  "day": 2,
+  "book_slug": "humility-2",
+  "chapter_order": 2
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "humility-12-days",
+   "en"
+  ],
+  "day": 3,
+  "book_slug": "humility-2",
+  "chapter_order": 3
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "humility-12-days",
+   "en"
+  ],
+  "day": 4,
+  "book_slug": "humility-2",
+  "chapter_order": 4
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "humility-12-days",
+   "en"
+  ],
+  "day": 5,
+  "book_slug": "humility-2",
+  "chapter_order": 5
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "humility-12-days",
+   "en"
+  ],
+  "day": 6,
+  "book_slug": "humility-2",
+  "chapter_order": 6
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "humility-12-days",
+   "en"
+  ],
+  "day": 7,
+  "book_slug": "humility-2",
+  "chapter_order": 7
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "humility-12-days",
+   "en"
+  ],
+  "day": 8,
+  "book_slug": "humility-2",
+  "chapter_order": 8
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "humility-12-days",
+   "en"
+  ],
+  "day": 9,
+  "book_slug": "humility-2",
+  "chapter_order": 9
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "humility-12-days",
+   "en"
+  ],
+  "day": 10,
+  "book_slug": "humility-2",
+  "chapter_order": 10
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "humility-12-days",
+   "en"
+  ],
+  "day": 11,
+  "book_slug": "humility-2",
+  "chapter_order": 11
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "humility-12-days",
+   "en"
+  ],
+  "day": 12,
+  "book_slug": "humility-2",
+  "chapter_order": 12
+ }
+},
+{
+ "model": "library.plan",
+ "fields": {
+  "slug": "the-inner-chamber-month",
+  "language": "en",
+  "title": "A Month in the Inner Chamber",
+  "description": "Build a daily habit of prayer and the Word: thirty-six mornings with Andrew Murray, one chapter each day.",
+  "sort_order": 1,
+  "is_published": true,
+  "created_at": "2026-07-06T01:17:49.837Z",
+  "updated_at": "2026-07-06T01:17:49.837Z"
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 1,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 1
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 2,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 2
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 3,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 3
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 4,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 4
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 5,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 5
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 6,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 6
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 7,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 7
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 8,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 8
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 9,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 9
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 10,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 10
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 11,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 11
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 12,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 12
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 13,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 13
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 14,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 14
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 15,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 15
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 16,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 16
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 17,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 17
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 18,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 18
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 19,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 19
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 20,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 20
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 21,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 21
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 22,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 22
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 23,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 23
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 24,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 24
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 25,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 25
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 26,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 26
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 27,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 27
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 28,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 28
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 29,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 29
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 30,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 30
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 31,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 31
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 32,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 32
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 33,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 33
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 34,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 34
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 35,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 35
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "the-inner-chamber-month",
+   "en"
+  ],
+  "day": 36,
+  "book_slug": "the-inner-chamber",
+  "chapter_order": 36
+ }
+},
+{
+ "model": "library.plan",
+ "fields": {
+  "slug": "school-of-prayer",
+  "language": "en",
+  "title": "A School of Prayer",
+  "description": "Four weeks in the school of prayer with three guides: Andrew Murray on how the Lord himself teaches us to pray, D. L. Moody on prevailing prayer, and Hannah Buyinza on prayer as the daily pulse of the Christian life.",
+  "sort_order": 0,
+  "is_published": true,
+  "created_at": "2026-07-12T20:25:29.754Z",
+  "updated_at": "2026-07-12T20:25:29.754Z"
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 1,
+  "book_slug": "lord-teach-us-to-pray-2",
+  "chapter_order": 1
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 2,
+  "book_slug": "lord-teach-us-to-pray-2",
+  "chapter_order": 2
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 3,
+  "book_slug": "lord-teach-us-to-pray-2",
+  "chapter_order": 3
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 4,
+  "book_slug": "lord-teach-us-to-pray-2",
+  "chapter_order": 4
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 5,
+  "book_slug": "prevailing-prayer",
+  "chapter_order": 1
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 6,
+  "book_slug": "prevailing-prayer",
+  "chapter_order": 2
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 7,
+  "book_slug": "prevailing-prayer",
+  "chapter_order": 3
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 8,
+  "book_slug": "prevailing-prayer",
+  "chapter_order": 4
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 9,
+  "book_slug": "prevailing-prayer",
+  "chapter_order": 5
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 10,
+  "book_slug": "prevailing-prayer",
+  "chapter_order": 6
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 11,
+  "book_slug": "prevailing-prayer",
+  "chapter_order": 7
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 12,
+  "book_slug": "prevailing-prayer",
+  "chapter_order": 8
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 13,
+  "book_slug": "prevailing-prayer",
+  "chapter_order": 9
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 14,
+  "book_slug": "prevailing-prayer",
+  "chapter_order": 10
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 15,
+  "book_slug": "prevailing-prayer",
+  "chapter_order": 11
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 16,
+  "book_slug": "prayer-the-pulse-of-life",
+  "chapter_order": 1
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 17,
+  "book_slug": "prayer-the-pulse-of-life",
+  "chapter_order": 2
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 18,
+  "book_slug": "prayer-the-pulse-of-life",
+  "chapter_order": 3
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 19,
+  "book_slug": "prayer-the-pulse-of-life",
+  "chapter_order": 4
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 20,
+  "book_slug": "prayer-the-pulse-of-life",
+  "chapter_order": 5
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 21,
+  "book_slug": "prayer-the-pulse-of-life",
+  "chapter_order": 6
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 22,
+  "book_slug": "prayer-the-pulse-of-life",
+  "chapter_order": 7
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 23,
+  "book_slug": "prayer-the-pulse-of-life",
+  "chapter_order": 8
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 24,
+  "book_slug": "prayer-the-pulse-of-life",
+  "chapter_order": 9
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 25,
+  "book_slug": "prayer-the-pulse-of-life",
+  "chapter_order": 10
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 26,
+  "book_slug": "prayer-the-pulse-of-life",
+  "chapter_order": 11
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 27,
+  "book_slug": "prayer-the-pulse-of-life",
+  "chapter_order": 12
+ }
+}
+]

@@ -86,7 +86,8 @@ uv run python scripts/regen_fixture.py   # pinned 6-model natural-key regen; NEV
    an *empty* database, so a fixture change alone never reaches production. To
    update live data, ship it as a **data migration** (runs on deploy via
    `manage.py release`; see `0003_clean_chapter_titles`) — or, for a one-off,
-   `loaddata launch` from the Render shell.
+   the release step's seed commands (`seed_books`/`seed_sermons`) — no
+   Render-shell step needed.
 
 2. **A backend-only change does NOT refresh the prerendered pages.** The public
    `/books/<slug>` and `/authors/<slug>` pages are static HTML baked at *frontend

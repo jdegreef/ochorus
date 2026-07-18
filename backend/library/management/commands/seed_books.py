@@ -12,15 +12,11 @@ Runs on every deploy (see the release command); idempotent. Companion to
 
 from __future__ import annotations
 
-import json
-from pathlib import Path
-
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
+from library.content_fixtures import load_all_rows
 from library.models import Author, Book, Chapter
-
-FIXTURE = Path(__file__).resolve().parent.parent.parent / "fixtures" / "launch.json"
 
 BOOK_FIELDS = (
     "title",
@@ -59,11 +55,11 @@ def require_natural_format(rows, command_name: str):
     if stale:
         first = stale[0]
         raise CommandError(
-            f"{command_name}: {len(stale)} old-format row(s) in launch.json "
+            f"{command_name}: {len(stale)} old-format row(s) in the content fixtures "
             f"(first: {first.get('model')} "
             f"{first.get('fields', {}).get('slug', first.get('pk'))!r}). The "
             "fixture is natural-key format — re-serialize without pks/integer "
-            "FKs (see CLAUDE.md: The fixture (the sharp edge))."
+            "FKs (see CLAUDE.md: The fixture)."
         )
 
 
@@ -73,10 +69,12 @@ class Command(BaseCommand):
     @transaction.atomic
     def handle(self, *args, **opts):
         try:
-            rows = json.loads(FIXTURE.read_text())
-        except (OSError, ValueError):
-            self.stdout.write("No fixture available — nothing to seed.")
+            rows = load_all_rows()
+        except OSError:
+            self.stdout.write("No content fixtures available — nothing to seed.")
             return
+        # A ValueError (corrupt file, path named) propagates: with 119 files,
+        # "one file is broken" must abort the deploy, not skip all content.
 
         require_natural_format(rows, "seed_books")
 

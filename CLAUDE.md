@@ -27,20 +27,20 @@ See also `backend/CLAUDE.md` and `frontend/CLAUDE.md`.
   `approve_sermon_translation`. Never auto-approve; never present an unreviewed
   translation as an original.
 
-## The fixture (the sharp edge)
+## The fixture (now a friendly edge)
 
-- `backend/library/fixtures/launch.json` (~50 MB) is the content source of
-  truth; the `seed_*` commands upsert it into prod on every deploy.
-- The fixture is **natural-key format: rows carry NO integer pks**. A book's
-  `"author"` is `["author-slug"]`, a chapter's `"book"` is `["slug", "lang"]` —
-  identity is the slug (+ language), so parallel appends cannot collide on a
-  key. CI (`tests_fixture`) rejects any `pk` key, duplicate identities, and
-  dangling references; the seeds hard-fail on old-format rows.
-- **Appending content:** serialize the new rows with Django's serializer using
-  `use_natural_primary_keys=True, use_natural_foreign_keys=True` and splice
-  them in textually. Never hand-write pks, never `json.dumps`, never round-trip
-  the 50 MB file — a full regen is only `backend/scripts/regen_fixture.py`
-  (pinned 6-model recipe).
+- Content lives in `backend/library/fixtures/content/` — **one file per work**:
+  `authors.json`, `books/<slug>.<language>.json` (book row then its chapters),
+  `sermons/<slug>.<language>.json`, `plans.json`. Natural-key format: **no
+  integer pks**; a book's `"author"` is `["author-slug"]`, a chapter's
+  `"book"` is `["slug", "lang"]`. See `library/content_fixtures.py`.
+- **Adding a work = writing ONE NEW FILE** (serialize with Django's serializer,
+  `use_natural_primary_keys=True, use_natural_foreign_keys=True`; book row
+  first, then chapters). No splicing, no pk math, no tail conflicts — parallel
+  sessions cannot collide. New authors are appended to `authors.json`.
+- CI (`tests_fixture`) rejects pk rows, duplicate identities, dangling refs,
+  and files whose name/contents disagree; the seeds hard-fail on old-format
+  rows. Full regens only via `backend/scripts/regen_fixture.py`.
 - Because seeds re-upsert every deploy, any field a workflow owns after creation
   (review state, hand-edits) must be **create-only** in the seed — else a deploy
   reverts it. See `backend/CLAUDE.md`.
