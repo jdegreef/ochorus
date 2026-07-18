@@ -92,7 +92,7 @@ force if every paragraph is a box.
    check the pull-quotes and prayer callouts look right and the prose reads well.
 4. **Regenerate the fixture and commit:**
    ```bash
-   DJANGO_DEBUG=true uv run python manage.py dumpdata library --indent 1 -o library/fixtures/launch.json
+   uv run python scripts/regen_fixture.py   # pinned 6-model natural-key regen; NEVER bare `dumpdata library`
    ```
 5. **If the author ALREADY EXISTS on prod, the fixture is not enough** — prod is
    never re-seeded, and `seed_books` only CREATES missing rows, so a fixture-only

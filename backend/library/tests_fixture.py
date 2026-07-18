@@ -18,7 +18,8 @@ catches loudly:
   last-write-wins, and the DB's unique constraints brick a fresh load;
 * a reference to a row that isn't in the file (author lost in a merge);
 * foreign models leaking in from a bare ``dumpdata library`` on a seeded dev DB
-  (the regen recipe pins exactly these six models — see ship-content-fix).
+  (the regen recipe pins exactly these six models —
+  ``backend/scripts/regen_fixture.py``).
 """
 
 from __future__ import annotations
@@ -78,13 +79,15 @@ class FixtureIntegrityTests(SimpleTestCase):
         # remaining silent-corruption path: its integer FK resolves against
         # whatever auto-pks the target DB happens to have (experimentally shown
         # attributing a sermon to the wrong author). Reject it outright.
-        stale = [r for r in self.rows if "pk" in r]
+        stale = [
+            (r["model"], r["fields"].get("slug", "?"))
+            for r in self.rows if "pk" in r
+        ]
         self.assertEqual(
-            stale, [],
-            f"{len(stale)} old-format (integer-pk) row(s) — e.g. "
-            f"{stale[0]['model'] if stale else ''}. Re-serialize with "
-            "Django's serializer using natural keys (backend/CLAUDE.md: The "
-            "fixture) — never hand-assign pks.",
+            stale[:5], [],
+            f"{len(stale)} old-format (integer-pk) row(s), first {stale[:5]}. "
+            "Re-serialize with Django's serializer using natural keys "
+            "(CLAUDE.md: The fixture (the sharp edge)) — never hand-assign pks.",
         )
 
     def test_natural_identity_unique(self):

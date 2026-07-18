@@ -77,8 +77,8 @@ worker specifics that shipped ~11 editions:
   the English fixture row; `source_type=ai_unreviewed`; `pdf_url` empty;
   `body_text` via `library.text.html_to_text`. NO whole-file dumpdata
   round-trip (full regens go through `backend/scripts/regen_fixture.py`).
-  Verify `seed_books` recreates the rows locally; run
-  `manage.py test library.tests_fixture library`.
+  Verify `seed_books` recreates the rows locally; run `manage.py test library`
+  (which includes the fixture gate).
 - Scripture: if `api.takeroot.bible` is reachable, use `scripture_context()`
   for authoritative wording; if egress-blocked (the current default), render
   quotations conservatively in the language's reverent biblical register and

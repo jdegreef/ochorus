@@ -48,12 +48,22 @@ def require_natural_format(rows, command_name: str):
     the deploy instead of shipping wrong or missing content.
     """
     stale = [r for r in rows if "pk" in r]
+    if not stale:
+        # Hybrid hand-edits: no pk key but an integer FK — equally dangerous
+        # (loaddata would resolve it against arbitrary auto-pks).
+        fk = {"library.book": "author", "library.sermon": "author",
+              "library.chapter": "book", "library.planday": "plan"}
+        stale = [r for r in rows
+                 if r.get("model") in fk
+                 and not isinstance(r["fields"].get(fk[r["model"]]), list)]
     if stale:
+        first = stale[0]
         raise CommandError(
-            f"{command_name}: {len(stale)} old-format (pk) row(s) in launch.json "
-            f"(first: {stale[0].get('model')} pk={stale[0]['pk']}). The fixture "
-            "is natural-key format — re-serialize these rows without pks (see "
-            "backend/CLAUDE.md: The fixture)."
+            f"{command_name}: {len(stale)} old-format row(s) in launch.json "
+            f"(first: {first.get('model')} "
+            f"{first.get('fields', {}).get('slug', first.get('pk'))!r}). The "
+            "fixture is natural-key format — re-serialize without pks/integer "
+            "FKs (see CLAUDE.md: The fixture (the sharp edge))."
         )
 
 
@@ -131,7 +141,7 @@ class Command(BaseCommand):
             ):
                 # .create() runs save(), which derives body_text.
                 Chapter.objects.create(
-                    book=book, **{k: cf.get(k) for k in CHAPTER_FIELDS}
+                    book=book, **{k: cf[k] for k in CHAPTER_FIELDS if k in cf}
                 )
             created += 1
             self.stdout.write(f"  + {book.slug} ({book.chapters.count()} chapters)")

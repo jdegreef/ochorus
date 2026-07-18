@@ -6,6 +6,10 @@ to the fixture never reaches an already-seeded production DB. Data migrations ca
 this helper to re-apply that content to live rows without a re-import. The fixture
 stays the single source of truth; fresh installs (which loaddata it directly) are
 unaffected because there are no live rows to update yet.
+
+Historical: called only by data migrations (0005-0036 era). On the
+natural-key fixture it deliberately no-ops (format guard below). Do not wire
+new callers to it — new content ships via the seed commands.
 """
 
 from __future__ import annotations

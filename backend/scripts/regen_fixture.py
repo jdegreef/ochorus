@@ -72,6 +72,10 @@ def identity(row):
 def normalize_pk_rows(rows):
     """Rewrite pk-format rows to natural-key shape (for comparison only).
 
+    ONE-SHOT scaffolding for the first pk-to-NK regen; once the committed
+    fixture is natural-key format this is a no-op. Delete it (and identity()'s
+    isinstance fallbacks) at leisure.
+
     Lets the first regen — pk source, NK output — still verify the full
     identity multiset instead of just row counts.
     """
@@ -125,30 +129,36 @@ def main():
     if stale:
         sys.exit("output contains pk rows — dump flags wrong; aborting.")
 
-    # Field-level drift check where identities are directly comparable.
-    if src_ids == new_ids:
-        src_by_id = {identity(r): r["fields"] for r in src_rows}
-        drift = []
-        for r in new_rows:
-            old = src_by_id[identity(r)]
-            for k, v in r["fields"].items():
-                if k in old and old[k] != v and not (
-                    isinstance(old[k], list) or isinstance(v, list)
-                ):
-                    drift.append((identity(r), k))
-        if drift:
-            sys.exit(f"FIELD DRIFT on {len(drift)} value(s), e.g. {drift[:3]} — aborting.")
-        materialized = sum(
-            1 for r in new_rows
-            for k in r["fields"]
-            if k not in src_by_id[identity(r)] and k not in DEFAULTED_OK
-        )
-        if materialized:
-            sys.exit(f"{materialized} unexpected new field(s) — aborting.")
+    if src_ids != new_ids:
+        gone = [i for i in src_ids if i not in set(new_ids)][:3]
+        added = [i for i in new_ids if i not in set(src_ids)][:3]
+        sys.exit(f"IDENTITY SET CHANGED — lost {gone}, gained {added} — aborting.")
 
+    # Field-level drift: every value (including natural-key FK references —
+    # a wrong-author regen must not pass) must survive the round trip.
+    src_by_id = {identity(r): r["fields"] for r in src_rows}
+    drift = []
+    for r in new_rows:
+        old = src_by_id[identity(r)]
+        for k, v in r["fields"].items():
+            if k in old and old[k] != v:
+                drift.append((identity(r), k))
+        for k in old:
+            if k not in r["fields"]:
+                drift.append((identity(r), "-" + k))
+    if drift:
+        sys.exit(f"FIELD DRIFT on {len(drift)} value(s), e.g. {drift[:3]} — aborting.")
+    materialized = sum(
+        1 for r in new_rows
+        for k in r["fields"]
+        if k not in src_by_id[identity(r)] and k not in DEFAULTED_OK
+    )
+    if materialized:
+        sys.exit(f"{materialized} unexpected new field(s) — aborting.")
+
+    was = FIXTURE.stat().st_size
     FIXTURE.write_text(new_raw)
-    print(f"✓ regenerated: {len(new_rows)} rows, {len(new_raw):,} bytes "
-          f"(was {FIXTURE.stat().st_size:,})")
+    print(f"✓ regenerated: {len(new_rows)} rows, {len(new_raw):,} bytes (was {was:,})")
     print("Run `manage.py test library.tests_fixture` to confirm the gate.")
 
 
