@@ -2,7 +2,7 @@
 	import type { TopicDetail } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
 	import { i18n } from '$lib/i18n.svelte';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import SermonCard from '$lib/components/SermonCard.svelte';
 	import Icon from '$lib/components/Icon.svelte';
@@ -13,7 +13,13 @@
 	const topic = $derived<TopicDetail>(data.topic);
 	const meta = $derived(topicMeta(topic.slug));
 
-	const canonical = $derived(`${SITE_URL}/topics/${topic.slug}/`);
+	// Self-referential canonical + hreflang per locale (mirrors authors/[slug]) —
+	// an English canonical here would deindex the translated topic pages.
+	const path = $derived(`/topics/${topic.slug}/`);
+	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
+	const alternates = $derived(
+		locales.map((loc) => ({ loc, href: `${SITE_URL}${localizeHref(path, { locale: loc })}` }))
+	);
 	const jsonLd = $derived(
 		JSON.stringify({
 			'@context': 'https://schema.org',
@@ -43,6 +49,10 @@
 	<title>{topic.title} — Ochorus</title>
 	<meta name="description" content={topic.description} />
 	<link rel="canonical" href={canonical} />
+	{#each alternates as a (a.loc)}
+		<link rel="alternate" hreflang={a.loc} href={a.href} />
+	{/each}
+	<link rel="alternate" hreflang="x-default" href="{SITE_URL}{localizeHref(path, { locale: 'en' })}" />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="{topic.title} — Ochorus" />
 	<meta property="og:description" content={topic.description} />

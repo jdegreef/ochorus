@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { SermonSummary } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingMinutes } from '$lib/reading';
 
@@ -60,10 +60,18 @@
 		name="description"
 		content="Classic Christian sermons — free to read. The preached word from the writers whose books you can read on Ochorus."
 	/>
-	<link rel="canonical" href="{SITE_URL}/sermons" />
+	<link rel="canonical" href="{SITE_URL}{localizeHref('/sermons')}" />
+	{#each locales as loc (loc)}
+		<link
+			rel="alternate"
+			hreflang={loc}
+			href="{SITE_URL}{localizeHref('/sermons', { locale: loc })}"
+		/>
+	{/each}
+	<link rel="alternate" hreflang="x-default" href="{SITE_URL}/sermons" />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="{t('nav.sermons')} — Ochorus" />
-	<meta property="og:url" content="{SITE_URL}/sermons" />
+	<meta property="og:url" content="{SITE_URL}{localizeHref('/sermons')}" />
 </svelte:head>
 
 <div class="mx-auto max-w-3xl px-5 py-12">

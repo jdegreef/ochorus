@@ -8,7 +8,7 @@
 	import { readingTime } from '$lib/reading';
 	import { getLang } from '$lib/lang.svelte';
 	import { listen } from '$lib/listen.svelte';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import ListenBar from '$lib/components/ListenBar.svelte';
 
@@ -45,7 +45,13 @@
 		listen.start(paragraphs, 0, getLang(), { title: sermon.title, artist: sermon.author_name });
 	}
 
-	const canonical = $derived(`${SITE_URL}/sermons/${sermon.slug}/`);
+	// Self-referential canonical + hreflang per locale (mirrors authors/[slug]) —
+	// an English canonical here would deindex the translated sermon pages.
+	const path = $derived(`/sermons/${sermon.slug}/`);
+	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
+	const alternates = $derived(
+		locales.map((loc) => ({ loc, href: `${SITE_URL}${localizeHref(path, { locale: loc })}` }))
+	);
 	const preachedYear = $derived(sermon.preached_on ? sermon.preached_on.slice(0, 4) : '');
 </script>
 
@@ -53,6 +59,10 @@
 	<title>{sermon.title} — {sermon.author_name} — Ochorus</title>
 	<meta name="description" content="{sermon.title} — a sermon by {sermon.author_name}." />
 	<link rel="canonical" href={canonical} />
+	{#each alternates as a (a.loc)}
+		<link rel="alternate" hreflang={a.loc} href={a.href} />
+	{/each}
+	<link rel="alternate" hreflang="x-default" href="{SITE_URL}{localizeHref(path, { locale: 'en' })}" />
 </svelte:head>
 
 <!-- Reader top bar -->
