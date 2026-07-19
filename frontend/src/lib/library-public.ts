@@ -142,6 +142,8 @@ export interface SermonSummary {
 	language: string;
 	title: string;
 	scripture_ref: string;
+	scripture_book: string | null;
+	scripture_book_order: number | null;
 	preached_on: string | null;
 	word_count: number;
 	author: Author;

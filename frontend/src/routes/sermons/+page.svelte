@@ -3,26 +3,55 @@
 	import { SITE_URL } from '$lib/config';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import { i18n } from '$lib/i18n.svelte';
+	import { readingMinutes } from '$lib/reading';
 
 	const t = i18n.t;
 
 	let { data } = $props();
 	const sermons = $derived<SermonSummary[]>(data.sermons);
 
-	// Group sermons by author, preserving the API's author-ordered sequence.
-	const grouped = $derived(
-		(() => {
-			const map = new Map<string, { name: string; slug: string; items: SermonSummary[] }>();
-			for (const s of sermons) {
-				const key = s.author.slug;
-				if (!map.has(key)) map.set(key, { name: s.author.name, slug: key, items: [] });
-				map.get(key)!.items.push(s);
-			}
-			return [...map.values()];
-		})()
-	);
+	// --- Filters ----------------------------------------------------------------
+	let queryText = $state('');
+	let bibleBook = $state('');
 
-	const readMins = (words: number) => Math.max(1, Math.round(words / 200));
+	// Books of the Bible present on this shelf, in canonical order, with counts.
+	const bookFacets = $derived.by(() => {
+		const m = new Map<string, { name: string; order: number; count: number }>();
+		for (const s of sermons) {
+			if (!s.scripture_book) continue;
+			const e = m.get(s.scripture_book);
+			if (e) e.count++;
+			else m.set(s.scripture_book, { name: s.scripture_book, order: s.scripture_book_order ?? 999, count: 1 });
+		}
+		return [...m.values()].sort((a, b) => a.order - b.order);
+	});
+
+	const filtered = $derived.by(() => {
+		const q = queryText.trim().toLowerCase();
+		return sermons.filter((s) => {
+			if (bibleBook && s.scripture_book !== bibleBook) return false;
+			if (!q) return true;
+			return (
+				s.title.toLowerCase().includes(q) ||
+				s.author.name.toLowerCase().includes(q) ||
+				s.scripture_ref.toLowerCase().includes(q)
+			);
+		});
+	});
+
+	const filtering = $derived(queryText.trim() !== '' || bibleBook !== '');
+
+	// Group sermons by author, preserving the API's author-ordered sequence.
+	const grouped = $derived.by(() => {
+		const map = new Map<string, { name: string; slug: string; items: SermonSummary[] }>();
+		for (const s of filtered) {
+			const key = s.author.slug;
+			if (!map.has(key)) map.set(key, { name: s.author.name, slug: key, items: [] });
+			map.get(key)!.items.push(s);
+		}
+		return [...map.values()];
+	});
+
 </script>
 
 <svelte:head>
@@ -46,6 +75,44 @@
 		</p>
 	</header>
 
+	<!-- Filter bar: free text + which book of the Bible the sermon expounds. -->
+	<div class="mb-8 flex flex-wrap items-center gap-3">
+		<input
+			bind:value={queryText}
+			type="search"
+			autocomplete="off"
+			placeholder={t('sermons.filterPlaceholder')}
+			aria-label={t('sermons.filterPlaceholder')}
+			class="min-w-0 flex-1 rounded-card border border-border bg-surface px-4 py-2.5 text-body text-text"
+		/>
+		<select
+			bind:value={bibleBook}
+			aria-label={t('sermons.allBooks')}
+			class="rounded-card border border-border bg-surface px-3 py-2.5 text-small text-text"
+		>
+			<option value="">{t('sermons.allBooks')}</option>
+			{#each bookFacets as b (b.name)}
+				<option value={b.name}>{b.name} ({b.count})</option>
+			{/each}
+		</select>
+		{#if filtering}
+			<button
+				class="btn btn-ghost !py-2"
+				onclick={() => {
+					queryText = '';
+					bibleBook = '';
+				}}>{t('sermons.clear')}</button
+			>
+		{/if}
+	</div>
+
+	{#if filtering}
+		<p class="mb-6 text-small text-muted" aria-live="polite">
+			{filtered.length}
+			{filtered.length === 1 ? t('sermons.matchOne') : t('sermons.matches')}
+		</p>
+	{/if}
+
 	{#if grouped.length}
 		<div class="space-y-10">
 			{#each grouped as group (group.slug)}
@@ -66,7 +133,7 @@
 											<span class="text-small text-accent">{sermon.scripture_ref}</span>
 										{/if}
 									</span>
-									<span class="shrink-0 text-[0.8rem] text-muted">{readMins(sermon.word_count)} {t('common.min')}</span>
+									<span class="shrink-0 text-[0.8rem] text-muted">{readingMinutes(sermon.word_count)} {t('common.min')}</span>
 								</a>
 							</li>
 						{/each}
@@ -75,6 +142,8 @@
 			{/each}
 		</div>
 	{:else}
-		<p class="text-body text-muted">{t('sermons.empty')}</p>
+		<p class="text-body text-muted">
+			{filtering ? t('sermons.noMatches') : t('sermons.empty')}
+		</p>
 	{/if}
 </div>

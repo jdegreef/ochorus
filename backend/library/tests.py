@@ -1906,3 +1906,26 @@ class StoredSearchVectorTests(TestCase):
         self.assertTrue(
             any(h["type"] == "chapter" for h in self._search("juan prayer"))
         )
+
+
+class SermonBookFacetTests(TestCase):
+    def test_scripture_book_derivation(self):
+        from .scripture import book_of
+
+        self.assertEqual(book_of("Malachi 3:6"), ("Malachi", 39))
+        self.assertEqual(book_of("1 Peter 2:7"), ("1 Peter", 60))
+        self.assertIsNone(book_of("Malaki 3:6"))  # localized ref: facet-less
+        self.assertIsNone(book_of(""))
+
+    def test_sermon_list_carries_book_facet(self):
+        from rest_framework.test import APIClient
+
+        author = Author.objects.create(slug="s", name="S")
+        Sermon.objects.create(
+            author=author, slug="x", language="en", title="X",
+            scripture_ref="Malachi 3:6", body_html="<p>w</p>",
+        )
+        res = APIClient().get("/api/library/sermons/?language=en")
+        row = next(r for r in res.data if r["slug"] == "x")
+        self.assertEqual(row["scripture_book"], "Malachi")
+        self.assertEqual(row["scripture_book_order"], 39)

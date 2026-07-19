@@ -341,5 +341,11 @@
   "settings_font_serif": "Serif",
   "settings_font_sans": "Sans-serif",
   "settings_font_dyslexic": "Dyslexic-friendly",
-  "settings_font_sample": "The light shines in the darkness."
+  "settings_font_sample": "The light shines in the darkness.",
+  "sermons_filter_placeholder": "Filter by title, author, or passage…",
+  "sermons_all_books": "All books of the Bible",
+  "sermons_matches": "sermons match",
+  "sermons_match_one": "sermon matches",
+  "sermons_no_matches": "No sermons match — try clearing the filters.",
+  "sermons_clear": "Clear"
 }

@@ -2,6 +2,7 @@ from rest_framework import serializers
 
 from .contemporize import MODERN_LANGUAGE
 from .models import Author, Book, Chapter, Plan, PlanDay, Sermon, Topic, TopicBook
+from .scripture import book_of
 
 
 def _modern_edition_available(slug: str) -> bool:
@@ -59,6 +60,20 @@ class SermonListSerializer(serializers.ModelSerializer):
     """A sermon card — enough for the shelf and the author page (no body)."""
 
     author = AuthorSerializer(read_only=True)
+    # Which Bible book the sermon's text is from, for the shelf's book facet
+    # ("Malachi", canonical position 39). Null for unparseable/localized refs
+    # ("" included — book_of returns None). lru_cached, so the paired calls
+    # per row cost one parse total.
+    scripture_book = serializers.SerializerMethodField()
+    scripture_book_order = serializers.SerializerMethodField()
+
+    def get_scripture_book(self, obj):
+        info = book_of(obj.scripture_ref)
+        return info[0] if info else None
+
+    def get_scripture_book_order(self, obj):
+        info = book_of(obj.scripture_ref)
+        return info[1] if info else None
 
     class Meta:
         model = Sermon
@@ -67,6 +82,8 @@ class SermonListSerializer(serializers.ModelSerializer):
             "language",
             "title",
             "scripture_ref",
+            "scripture_book",
+            "scripture_book_order",
             "preached_on",
             "word_count",
             "author",

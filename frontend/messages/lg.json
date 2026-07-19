@@ -341,5 +341,11 @@
   "settings_font_serif": "Serif",
   "settings_font_sans": "Sans-serif",
   "settings_font_dyslexic": "Ennyangu eri ab'obuzibu bw'okusoma",
-  "settings_font_sample": "Ekitangaala kyakaayakana mu kizikiza."
+  "settings_font_sample": "Ekitangaala kyakaayakana mu kizikiza.",
+  "sermons_filter_placeholder": "Sunsula ng'okozesa omutwe, omubuulizi, oba ekyawandiikibwa…",
+  "sermons_all_books": "Ebitabo byonna ebya Bayibuli",
+  "sermons_matches": "eby'okubuulira ebisangiddwa",
+  "sermons_match_one": "eky'okubuulira ekisangiddwa",
+  "sermons_no_matches": "Tewali kubuulira kusangiddwa — gezaako okuggyako ensunsula.",
+  "sermons_clear": "Ggyako"
 }

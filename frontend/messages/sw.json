@@ -341,5 +341,11 @@
   "settings_font_serif": "Serif",
   "settings_font_sans": "Sans-serif",
   "settings_font_dyslexic": "Rafiki kwa dyslexia",
-  "settings_font_sample": "Nuru yang'aa gizani."
+  "settings_font_sample": "Nuru yang'aa gizani.",
+  "sermons_filter_placeholder": "Chuja kwa kichwa, mhubiri, au fungu…",
+  "sermons_all_books": "Vitabu vyote vya Biblia",
+  "sermons_matches": "mahubiri yanalingana",
+  "sermons_match_one": "hubiri linalingana",
+  "sermons_no_matches": "Hakuna mahubiri yanayolingana — jaribu kufuta vichujio.",
+  "sermons_clear": "Futa"
 }
