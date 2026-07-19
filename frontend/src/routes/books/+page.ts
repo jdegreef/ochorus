@@ -31,6 +31,11 @@ import type { PageLoad } from './$types';
  * Prerender refresh 2026-07-17 (queue job #179): same again after the Luganda
  * edition of Godliness (Okutya Katonda, PR #184) went live, so the /lg/books
  * pages re-crawl and bake with the new title.
+ *
+ * Prerender refresh 2026-07-19 (queue job #199): same again after the Spanish
+ * edition of Prayer – The Pulse of Life (Oración – El Pulso de la Vida, PR
+ * #226) went live, so the /es/books index and its /books/<slug> pages re-crawl
+ * and bake with the new title.
  */
 export const load: PageLoad = async () => {
 	try {
