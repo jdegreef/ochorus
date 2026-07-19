@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { BookSummary, AuthorBio } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
+	import { goto } from '$app/navigation';
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import { i18n } from '$lib/i18n.svelte';
 	import ContinueReading from '$lib/components/ContinueReading.svelte';
@@ -12,6 +13,16 @@
 	const authors = $derived<AuthorBio[]>(data.authors);
 
 	const t = i18n.t;
+
+	// Hero search → the full search page. Progressive enhancement: the form is a
+	// real GET to /search (works with no JS); with JS we intercept and navigate
+	// client-side so it stays in the SPA.
+	let query = $state('');
+	function submitSearch(e: Event) {
+		e.preventDefault();
+		const q = query.trim();
+		goto(localizeHref('/search') + (q ? `?q=${encodeURIComponent(q)}` : ''));
+	}
 
 	const initials = (name: string) =>
 		name
@@ -48,9 +59,39 @@
 		<h1 class="text-display mx-auto mb-5 max-w-3xl">
 			{t('home.heroTitle')}
 		</h1>
-		<p class="mx-auto mb-8 max-w-xl text-body text-muted">
+		<p class="mx-auto mb-7 max-w-xl text-body text-muted">
 			{t('home.heroTagline')}
 		</p>
+		<form
+			onsubmit={submitSearch}
+			method="GET"
+			action={localizeHref('/search')}
+			role="search"
+			class="mx-auto mb-6 flex max-w-lg items-center gap-2 rounded-full border border-border bg-surface px-2 py-1.5 shadow-sm focus-within:border-accent"
+		>
+			<svg
+				class="ml-2 h-5 w-5 shrink-0 text-muted"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				aria-hidden="true"
+			>
+				<circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
+			</svg>
+			<input
+				bind:value={query}
+				name="q"
+				type="search"
+				enterkeyhint="search"
+				placeholder={t('search.placeholder')}
+				aria-label={t('nav.search')}
+				class="min-w-0 flex-1 bg-transparent py-1 text-body text-text outline-none placeholder:text-muted"
+			/>
+			<button type="submit" class="btn btn-primary shrink-0 !rounded-full">{t('nav.search')}</button>
+		</form>
 		<div class="flex flex-wrap justify-center gap-3">
 			<a href={localizeHref('/books')} class="btn btn-primary">{t('home.browseLibrary')}</a>
 			<a href={localizeHref('/about')} class="btn btn-ghost">{t('home.aboutOchorus')}</a>
