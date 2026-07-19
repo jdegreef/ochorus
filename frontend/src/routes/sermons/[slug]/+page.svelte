@@ -1,11 +1,12 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, tick } from 'svelte';
 	import { listSermons, type Sermon, type SermonSummary } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { i18n } from '$lib/i18n.svelte';
-	import { readingTime } from '$lib/reading';
+	import { readingTime, readingMinutes } from '$lib/reading';
+	import { getSermonAnchor, saveSermonAnchor } from '$lib/sermonProgress';
 	import { getLang } from '$lib/lang.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import { scripture } from '$lib/scripture.svelte';
@@ -22,6 +23,55 @@
 	// Other sermons on the same Bible book, fetched client-side (page is
 	// prerendered; the list is small and cached by the browser).
 	let related = $state<SermonSummary[]>([]);
+
+	// --- Reading progress ------------------------------------------------------
+	// Long sermons need orientation: a scroll-progress bar, an estimate of the
+	// time remaining, and a resume point. Anchored to the top-visible paragraph
+	// so it survives text-size / width changes (mirrors the chapter reader).
+	const HEADER_OFFSET = 64;
+	let frac = $state(0);
+	let saveTimer: ReturnType<typeof setTimeout> | undefined;
+	const minutesLeft = $derived(
+		Math.max(1, Math.ceil(readingMinutes(sermon.word_count) * (1 - frac)))
+	);
+
+	function topVisibleIndex(): number {
+		if (!body) return 0;
+		const kids = body.children;
+		for (let i = 0; i < kids.length; i++) {
+			if (kids[i].getBoundingClientRect().bottom > HEADER_OFFSET) return i;
+		}
+		return Math.max(0, kids.length - 1);
+	}
+
+	function updateFraction() {
+		if (!body) return;
+		const rect = body.getBoundingClientRect();
+		if (rect.height <= 0) return;
+		const seen = Math.min(Math.max(window.innerHeight - rect.top, 0), rect.height);
+		frac = Math.min(1, Math.max(0, seen / rect.height));
+	}
+
+	function onScroll() {
+		clearTimeout(saveTimer);
+		saveTimer = setTimeout(() => {
+			updateFraction();
+			saveSermonAnchor(sermon.slug, topVisibleIndex());
+		}, 250);
+	}
+
+	// Restore the saved spot on open (and once the body has rendered).
+	onMount(() => {
+		(async () => {
+			await tick();
+			const idx = getSermonAnchor(sermon.slug);
+			if (idx > 0 && body?.children[idx]) {
+				body.children[idx].scrollIntoView({ block: 'start' });
+				window.scrollBy(0, -HEADER_OFFSET);
+			}
+			updateFraction();
+		})();
+	});
 
 	/** "1 Peter 2:7" -> "1 Peter"; "Matthew 11:28" -> "Matthew". */
 	const refBook = (ref: string) => ref.match(/^(\d?\s?[A-Za-z]+)/)?.[1]?.trim() ?? '';
@@ -75,6 +125,11 @@
 	{/each}
 	<link rel="alternate" hreflang="x-default" href="{SITE_URL}{localizeHref(path, { locale: 'en' })}" />
 </svelte:head>
+
+<svelte:window onscroll={onScroll} />
+
+<!-- Scroll-progress bar, pinned to the very top of the viewport. -->
+<div class="read-progress" style="transform: scaleX({frac})" aria-hidden="true"></div>
 
 <!-- Reader top bar -->
 {#if !readerUi.focus}
@@ -172,5 +227,41 @@
 	</nav>
 </article>
 
+<!-- Time-remaining pill; hidden in focus and while listening. -->
+{#if !readerUi.focus && listen.status === 'idle' && frac < 0.99}
+	<div class="min-left" aria-hidden="true">{minutesLeft} {t('sermon.minLeft')}</div>
+{/if}
+
 <ScripturePopover />
 <ListenBar />
+
+<style>
+	/* Scroll-progress bar: a thin accent line scaled by reading fraction. */
+	.read-progress {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 2px;
+		z-index: 40;
+		background: var(--accent);
+		transform-origin: left center;
+		transition: transform 0.1s linear;
+		pointer-events: none;
+	}
+	.min-left {
+		position: fixed;
+		bottom: 1rem;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 30;
+		border-radius: 9999px;
+		border: 1px solid var(--border);
+		background: color-mix(in srgb, var(--bg) 85%, transparent);
+		backdrop-filter: blur(6px);
+		padding: 0.25rem 0.8rem;
+		font-size: 0.72rem;
+		color: var(--muted);
+		pointer-events: none;
+	}
+</style>
