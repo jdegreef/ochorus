@@ -1432,6 +1432,8 @@ class ScriptureTests(TestCase):
             '<a class="scripture-ref" data-ref="Hebrews 11:1">Hebrews 11:1</a>',
             res.data["body_html"],
         )
+        # The reader header needs the author's portrait.
+        self.assertIn("author_photo", res.data)
 
 
 class _FakeUsage:
