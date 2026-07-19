@@ -40,7 +40,7 @@ class MeView(APIView):
         from .permissions import is_admin_user
 
         data = self._serialize(self._profile(request))
-        data["is_admin"] = is_admin_user(request.user)
+        data["is_admin"] = is_admin_user(request.user, request)
         return Response(data)
 
     def patch(self, request):
