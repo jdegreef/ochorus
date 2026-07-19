@@ -19,6 +19,10 @@ export default defineConfig({
 				replacement: fileURLToPath(new URL('./src/test/app-environment.ts', import.meta.url))
 			},
 			{
+				find: /^\$env\/(static|dynamic)\/public$/,
+				replacement: fileURLToPath(new URL('./src/test/env-public.ts', import.meta.url))
+			},
+			{
 				find: /^\$lib\/(.*)$/,
 				replacement: fileURLToPath(new URL('./src/lib/', import.meta.url)) + '$1'
 			},

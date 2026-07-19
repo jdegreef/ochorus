@@ -15,6 +15,21 @@ export const PROGRESS_KEY = 'ochorus:progress';
 export const MARKS_KEY = 'ochorus:marks';
 export const ANCHOR_KEY = 'ochorus:anchors';
 export const BOOKMARKS_KEY = 'ochorus:bookmarks';
+export const PLANS_KEY = 'ochorus:plans';
+
+/**
+ * Every key holding the *reader's own data* (positions, highlights, notes,
+ * bookmarks, plan progress) — as opposed to device preferences (theme, font,
+ * language). These must be wiped on sign-out: on a shared device, whatever is
+ * left here gets merged into the NEXT account that signs in.
+ */
+export const READING_DATA_KEYS = [
+	PROGRESS_KEY,
+	MARKS_KEY,
+	ANCHOR_KEY,
+	BOOKMARKS_KEY,
+	PLANS_KEY
+] as const;
 
 // --- Highlights & notes -------------------------------------------------------
 /**

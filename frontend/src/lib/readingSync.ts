@@ -3,6 +3,7 @@ import { apiFetch } from './api';
 import {
 	PROGRESS_KEY,
 	MARKS_KEY,
+	READING_DATA_KEYS,
 	chapterKey,
 	parseChapterKey,
 	type Mark,
@@ -139,6 +140,23 @@ class ReadingSync {
 		} catch {
 			/* offline or API down — keep the local cache untouched */
 		}
+	}
+
+	/**
+	 * Sign-out teardown. Cancels any in-flight debounced pushes (they'd fire as
+	 * unauthenticated 401s) and wipes the reader's own data from localStorage —
+	 * on a shared device, anything left behind would be merged into the next
+	 * account that signs in (`mergeOnSignIn`). Device preferences (theme, font,
+	 * language) deliberately survive; they aren't identity data.
+	 */
+	clearOnSignOut() {
+		if (!browser) return;
+		for (const timer of this.#timers.values()) clearTimeout(timer);
+		this.#timers.clear();
+		for (const key of READING_DATA_KEYS) localStorage.removeItem(key);
+		// Let open views (reader marks, continue-reading cards, plan pages) know
+		// the cache was emptied underneath them.
+		window.dispatchEvent(new CustomEvent('ochorus:sync'));
 	}
 
 	/** Overwrite the local cache with server state (used after a merge/pull). */

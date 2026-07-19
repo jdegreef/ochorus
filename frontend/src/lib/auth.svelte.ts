@@ -138,10 +138,15 @@ class Auth {
 	}
 
 	async signOut() {
+		// Cancel a pending prefs push — it would fire after the token is gone.
+		clearTimeout(this.#pushTimer);
 		await supabase()?.auth.signOut();
 		this.user = null;
 		this.#token = null;
 		this.isAdmin = false;
+		// Wipe this user's reading data from the device: on a shared browser it
+		// would otherwise be merged into the next account that signs in.
+		readingSync.clearOnSignOut();
 	}
 
 	/** Pull the saved profile and apply reading preferences locally. */
