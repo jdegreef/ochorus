@@ -1,4 +1,6 @@
+import { browser } from '$app/environment';
 import { readJSON, writeJSON } from './persisted';
+import { PLANS_KEY as KEY } from './reading-schema';
 
 /**
  * Per-device reading-plan progress: which plans the reader started and which
@@ -6,8 +8,6 @@ import { readJSON, writeJSON } from './persisted';
  * cadence is daily and self-paced, so "done" days are the only state. A
  * version bump `ticks` lets Svelte views re-derive after any mutation.
  */
-
-const KEY = 'ochorus:plans';
 
 interface PlanState {
 	startedAt: number;
@@ -21,6 +21,12 @@ const readAll = (): Store => readJSON<Store>(KEY, {});
 class PlanProgress {
 	/** Bumped on every mutation so `$derived` consumers refresh. */
 	ticks = $state(0);
+
+	constructor() {
+		// The cache can be replaced/emptied underneath us (sign-out wipe, sign-in
+		// merge) — re-derive open plan views when that happens.
+		if (browser) window.addEventListener('ochorus:sync', () => this.ticks++);
+	}
 
 	#write(store: Store) {
 		writeJSON(KEY, store);
