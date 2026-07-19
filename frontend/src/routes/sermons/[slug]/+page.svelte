@@ -101,6 +101,7 @@
 
 	onMount(() => {
 		readerPrefs.init();
+		listen.init();
 		if (book) {
 			listSermons(getLang())
 				.then((all) => {
@@ -121,12 +122,34 @@
 		scripture.show(a.dataset.ref, r.bottom + window.scrollY, r.left + window.scrollX + r.width / 2);
 	}
 
-	/** Read the sermon aloud from the top. */
+	/** Read the sermon aloud, starting from the paragraph you're reading. */
 	function startListening() {
 		if (!body) return;
 		const paragraphs = [...body.children].map((el) => (el as HTMLElement).innerText);
-		listen.start(paragraphs, 0, getLang(), { title: sermon.title, artist: sermon.author_name });
+		listen.start(paragraphs, topVisibleIndex(), getLang(), {
+			title: sermon.title,
+			artist: sermon.author_name
+		});
 	}
+
+	// Follow-along: highlight the paragraph being spoken and keep it in view.
+	$effect(() => {
+		const current = listen.current;
+		if (!body) return;
+		const kids = body.children;
+		for (let i = 0; i < kids.length; i++) {
+			kids[i].classList.toggle('tts-current', i === current);
+		}
+		if (current >= 0 && kids[current]) {
+			kids[current].scrollIntoView({ block: 'center', behavior: 'smooth' });
+		}
+	});
+
+	// Stop speech when navigating to another sermon or leaving the page.
+	$effect(() => {
+		void sermon.slug;
+		return () => listen.stop();
+	});
 
 	// Self-referential canonical + hreflang per locale (mirrors authors/[slug]) —
 	// an English canonical here would deindex the translated sermon pages.
@@ -313,6 +336,14 @@
 		font-size: 0.72rem;
 		color: var(--muted);
 		pointer-events: none;
+	}
+
+	/* Paragraph currently being read aloud in Listen mode. */
+	:global(.reading > .tts-current) {
+		background: color-mix(in srgb, var(--accent) 10%, transparent);
+		border-radius: 4px;
+		box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 10%, transparent);
+		transition: background 0.3s ease;
 	}
 
 	/* Jump-to-section outline: a light popover under the reader bar. */
