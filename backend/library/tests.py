@@ -1,3 +1,5 @@
+import json
+from pathlib import Path
 from unittest import skipUnless
 
 from django.db import connection
@@ -367,6 +369,89 @@ class SeedSermonsTests(TestCase):
         call_command("seed_sermons", verbosity=0)  # the next deploy
         lg = Sermon.objects.get(slug="the-immutability-of-god", language="lg")
         self.assertEqual(lg.source_type, Book.SourceType.AI_REVIEWED)
+
+
+class SeedAuthorTranslationsTests(TestCase):
+    """The es/sw/lg author bios must survive a fresh-DB rebuild (the PR #204
+    class of loss): they shipped only via guarded data migrations (0021/0023/
+    0024) that no-op when authors are seeded after migrate, and
+    AuthorTranslation has no fixture — the seed_author_translations release
+    step is what recreates them."""
+
+    DATA = Path(__file__).resolve().parent / "migrations" / "data"
+
+    def _slugs(self, lang):
+        d = self.DATA / f"author_bios_{lang}"
+        short = json.loads((d / "short.json").read_text(encoding="utf-8"))
+        return sorted(set(short) | {p.stem for p in d.glob("*.html")})
+
+    def _create_authors(self):
+        for slug in {s for lang in ("es", "sw", "lg") for s in self._slugs(lang)}:
+            Author.objects.create(slug=slug, name=slug.replace("-", " ").title())
+
+    def test_fills_all_languages_on_a_fresh_db(self):
+        from django.core.management import call_command
+
+        from .models import AuthorTranslation
+
+        self._create_authors()
+        call_command("seed_author_translations", verbosity=0)
+        for lang in ("es", "sw", "lg"):
+            rows = AuthorTranslation.objects.filter(language=lang)
+            self.assertEqual(rows.count(), len(self._slugs(lang)))
+            for tr in rows:
+                self.assertTrue(tr.bio, f"{tr.author.slug} [{lang}] short bio empty")
+                self.assertTrue(tr.bio_html, f"{tr.author.slug} [{lang}] bio_html empty")
+                self.assertFalse(tr.reviewed)
+
+    def test_idempotent_and_never_reverts_an_approved_review(self):
+        # reviewed is owned by approve_author_translation once flipped; the
+        # deploy step must not walk it back (same rule as seed_sermons's
+        # create-only source_type).
+        from django.core.management import call_command
+
+        from .models import AuthorTranslation
+
+        self._create_authors()
+        call_command("seed_author_translations", verbosity=0)
+        AuthorTranslation.objects.filter(language="es").update(reviewed=True)
+        before = list(
+            AuthorTranslation.objects.values_list("bio", "bio_html", "reviewed")
+        )
+        call_command("seed_author_translations", verbosity=0)
+        after = list(
+            AuthorTranslation.objects.values_list("bio", "bio_html", "reviewed")
+        )
+        self.assertEqual(before, after)
+
+    def test_missing_author_is_a_soft_skip(self):
+        # Translation data may land ahead of its author (like seed_topics's
+        # soft slug-references) — the deploy must not fail on it.
+        from django.core.management import call_command
+
+        from .models import AuthorTranslation
+
+        Author.objects.create(slug="andrew-murray", name="Andrew Murray")
+        call_command("seed_author_translations", verbosity=0)
+        self.assertEqual(
+            AuthorTranslation.objects.filter(author__slug="andrew-murray").count(), 3
+        )
+        self.assertEqual(AuthorTranslation.objects.count(), 3)
+
+    def test_es_short_json_matches_migration_0021(self):
+        # data/author_bios_es/short.json duplicates the inline dict migration
+        # 0021 applied to prod. They must stay byte-identical, or a rebuilt DB
+        # would diverge from the live rows.
+        import importlib.util
+
+        path = self.DATA.parent / "0021_author_bios_es.py"
+        spec = importlib.util.spec_from_file_location("m0021", path)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        short = json.loads(
+            (self.DATA / "author_bios_es" / "short.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(short, mod.BIOS_ES)
 
 
 class PlanTests(TestCase):

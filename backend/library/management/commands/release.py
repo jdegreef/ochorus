@@ -33,6 +33,9 @@ class Command(BaseCommand):
         # Upsert fixture sermons into an already-seeded DB (new/updated ones).
         self.stdout.write("→ seed_sermons")
         call_command("seed_sermons")
+        # Fill missing translated author bios (AuthorTranslation has no fixture).
+        self.stdout.write("→ seed_author_translations")
+        call_command("seed_author_translations")
         # Create/refresh the curated topical shelves.
         self.stdout.write("→ seed_topics")
         call_command("seed_topics")

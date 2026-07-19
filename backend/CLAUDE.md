@@ -32,8 +32,8 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
   don't renumber.
 - `manage.py release` runs the deploy chain: migrate → seed_if_empty →
   backfill_body_text → apply_body_corrections → seed_books → seed_plans →
-  seed_sermons → seed_topics → backfill_search_vectors. Seeds are idempotent
-  and **re-run every deploy**. backfill_search_vectors is last on purpose:
+  seed_sermons → seed_author_translations → seed_topics →
+  backfill_search_vectors. Seeds are idempotent and **re-run every deploy**. backfill_search_vectors is last on purpose:
   vectors derive from body_text and bake in seed-created rows (library/fts.py).
 - Therefore any field a workflow owns after creation — review state
   (`source_type`), an approver's edit — must be **create-only** in the seed, or
@@ -42,7 +42,11 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
   depends on fixture rows no-ops on a rebuild — put the same fact in the
   fixture, not only the migration. (The historical pk-parsing migrations no-op
   loudly on the natural-key fixture via format guards — keep that pattern for
-  any new fixture-reading migration.)
+  any new fixture-reading migration.) For models with no fixture
+  (AuthorTranslation), the fact lives in an idempotent seed step instead:
+  translated author bios ship as files under
+  `library/migrations/data/author_bios_<lang>/` (short.json + `<slug>.html`)
+  and `seed_author_translations` fills them — no new migration per batch.
 - Chapter/Sermon carry stored `search_vector` tsvectors kept fresh by `save()`
   hooks (library/fts.py); the release backfill repairs **NULL vectors only**.
   A data migration or command that changes chapter/sermon text, titles, or
