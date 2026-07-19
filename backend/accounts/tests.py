@@ -44,10 +44,33 @@ class OriginUrlTests(TestCase):
         self.assertEqual(origin_url("  "), "")
 
 
+def _request(remote_addr: str):
+    from django.test import RequestFactory
+
+    return RequestFactory().get("/api/admin/stats/", REMOTE_ADDR=remote_addr)
+
+
 class IsAdminUserTests(TestCase):
     @override_settings(DEBUG=True, ADMIN_EMAILS=set())
-    def test_debug_bypasses_check(self):
-        self.assertTrue(is_admin_user(User(email="")))
+    def test_debug_bypasses_check_for_loopback_requests(self):
+        self.assertTrue(is_admin_user(User(email=""), _request("127.0.0.1")))
+        self.assertTrue(is_admin_user(User(email=""), _request("::1")))
+
+    @override_settings(DEBUG=True, ADMIN_EMAILS={"admin@example.com"})
+    def test_debug_does_not_bypass_for_remote_requests(self):
+        # A misconfigured DJANGO_DEBUG=true on a real host must not open the
+        # admin surface to the internet — remote clients still need the list.
+        self.assertFalse(is_admin_user(User(email=""), _request("203.0.113.9")))
+        self.assertFalse(
+            is_admin_user(User(email="someone@example.com"), _request("203.0.113.9"))
+        )
+        self.assertTrue(
+            is_admin_user(User(email="admin@example.com"), _request("203.0.113.9"))
+        )
+
+    @override_settings(DEBUG=True, ADMIN_EMAILS=set())
+    def test_debug_does_not_bypass_without_a_request(self):
+        self.assertFalse(is_admin_user(User(email="")))
 
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
     def test_allowlisted_email_allowed(self):
