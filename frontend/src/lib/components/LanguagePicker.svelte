@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { lang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
+	import { focusTrap } from '$lib/actions/focusTrap';
 
 	const t = i18n.t;
 
@@ -19,6 +20,19 @@
 	function onWindowClick(e: MouseEvent) {
 		if (open && wrap && !wrap.contains(e.target as Node)) open = false;
 	}
+
+	// Arrow-key roving between options, so the announced `role="listbox"`
+	// actually behaves like one for keyboard/screen-reader users.
+	function onListKeydown(e: KeyboardEvent) {
+		if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+		const opts = [...(e.currentTarget as HTMLElement).querySelectorAll<HTMLElement>('[role="option"]')];
+		const i = opts.indexOf(document.activeElement as HTMLElement);
+		const next = e.key === 'ArrowDown' ? i + 1 : i - 1;
+		if (opts[next]) {
+			e.preventDefault();
+			opts[next].focus();
+		}
+	}
 </script>
 
 <svelte:window onclick={onWindowClick} />
@@ -36,9 +50,13 @@
 			<span aria-hidden="true">▾</span>
 		</button>
 		{#if open}
+			<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 			<ul
 				class="absolute right-0 z-30 mt-2 max-h-72 w-44 overflow-auto rounded-card border border-border bg-surface py-1 shadow-lg"
 				role="listbox"
+				aria-label={t('nav.language')}
+				use:focusTrap={{ onEscape: () => (open = false) }}
+				onkeydown={onListKeydown}
 			>
 				{#each lang.available as l (l.code)}
 					<li>

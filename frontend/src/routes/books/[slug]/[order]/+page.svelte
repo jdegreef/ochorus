@@ -24,6 +24,7 @@
 	import { scripture } from '$lib/scripture.svelte';
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
 	import { jsonLd } from '$lib/seo';
+	import { focusTrap } from '$lib/actions/focusTrap';
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import Icon from '$lib/components/Icon.svelte';
@@ -962,7 +963,13 @@
 <ListenBar />
 
 {#if noteOpen}
-	<div class="note-overlay" role="dialog" aria-modal="true" aria-label={t('reader.note')}>
+	<div
+		class="note-overlay"
+		role="dialog"
+		aria-modal="true"
+		aria-label={t('reader.note')}
+		use:focusTrap={{ onEscape: () => (noteOpen = false) }}
+	>
 		<div class="note-card">
 			<h2 class="mb-2 text-h3">{t('reader.note')}</h2>
 			<textarea
