@@ -56,10 +56,7 @@
 
 <svelte:head>
 	<title>{t('nav.sermons')} — Ochorus</title>
-	<meta
-		name="description"
-		content="Classic Christian sermons — free to read. The preached word from the writers whose books you can read on Ochorus."
-	/>
+	<meta name="description" content={t('sermons.metaDescription')} />
 	<link rel="canonical" href="{SITE_URL}{localizeHref('/sermons')}" />
 	{#each locales as loc (loc)}
 		<link

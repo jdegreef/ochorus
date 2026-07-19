@@ -37,7 +37,15 @@
 			300
 		)
 	);
-	const ogImage = $derived(book.cover_url ? absUrl(book.cover_url) : '');
+	// og:image must be raster — WhatsApp/Facebook/Twitter refuse SVG preview
+	// images. Books without a raster cover fall back to the pre-rasterized PNG
+	// of their generated typographic cover (static/covers/<slug>.png; regenerate
+	// alongside the SVGs when new coverless books ship).
+	const ogImage = $derived(
+		book.cover_url && !book.cover_url.endsWith('.svg')
+			? absUrl(book.cover_url)
+			: absUrl(`/covers/${book.slug}.png`)
+	);
 	const bookLd = $derived(
 		jsonLd({
 			'@context': 'https://schema.org',
