@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { BookSummary, AuthorBio } from '$lib/library';
+	import type { BookSummary, AuthorBio, TopicSummary } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
 	import { goto } from '$app/navigation';
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
@@ -12,6 +12,7 @@
 	let { data } = $props();
 	const featured = $derived<BookSummary[]>(data.featured);
 	const authors = $derived<AuthorBio[]>(data.authors);
+	const topics = $derived<TopicSummary[]>(data.topics ?? []);
 
 	const t = i18n.t;
 
@@ -117,6 +118,29 @@
 		{/each}
 	</div>
 </section>
+
+<!-- Browse by topic -->
+{#if topics.length}
+	<section class="mx-auto max-w-5xl px-5 pb-4">
+		<div class="mb-5 flex items-end justify-between">
+			<h2 class="text-h1">{t('home.browseTopic')}</h2>
+			<a href={localizeHref('/topics')} class="text-small font-semibold text-accent"
+				>{t('home.allTopics')} →</a
+			>
+		</div>
+		<div class="flex flex-wrap gap-2.5">
+			{#each topics as topic (topic.slug)}
+				<a
+					href={localizeHref(`/topics/${topic.slug}`)}
+					class="inline-flex items-baseline gap-1.5 rounded-full border border-border bg-surface px-4 py-2 text-small font-medium text-text hover:border-accent hover:text-accent hover:no-underline"
+				>
+					{topic.title}
+					<span class="text-[0.75rem] font-normal text-muted">{topic.book_count}</span>
+				</a>
+			{/each}
+		</div>
+	</section>
+{/if}
 
 <!-- Mission teaser -->
 <section class="border-y border-border bg-surface-2">
