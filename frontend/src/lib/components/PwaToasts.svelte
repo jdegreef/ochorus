@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { pwa } from '$lib/pwa.svelte';
+	import { storageHealth } from '$lib/storageHealth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 
 	const t = i18n.t;
@@ -25,6 +26,13 @@
 		<div class="pwa-toast pwa-update">
 			<span>{t('pwa.updateReady')}</span>
 			<button class="pwa-cta" onclick={() => pwa.applyUpdate()}>{t('pwa.refresh')}</button>
+		</div>
+	{/if}
+
+	{#if storageHealth.writeFailed}
+		<div class="pwa-toast" role="alert">
+			<span>{t('storage.saveFailed')}</span>
+			<button class="pwa-link" onclick={() => storageHealth.acknowledge()}>{t('pwa.dismiss')}</button>
 		</div>
 	{/if}
 </div>

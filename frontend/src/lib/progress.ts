@@ -1,5 +1,6 @@
 import { browser } from '$app/environment';
 import { readingSync } from './readingSync';
+import { storageHealth } from './storageHealth.svelte';
 import {
 	PROGRESS_KEY,
 	ANCHOR_KEY,
@@ -7,6 +8,17 @@ import {
 	type ProgressRecord,
 	type ProgressMap
 } from './reading-schema';
+
+/** Guarded localStorage write: never throws (a quota error here runs inside the
+ * reader's per-chapter effect), and flags storageHealth so the reader is warned
+ * their place/notes may not persist rather than losing them silently. */
+function safeSet(key: string, value: string): void {
+	try {
+		localStorage.setItem(key, value);
+	} catch {
+		storageHealth.fail();
+	}
+}
 
 /**
  * Reading progress, stored in localStorage (keyed by book slug) as the offline
@@ -27,7 +39,7 @@ function read(): ProgressMap {
 }
 
 function write(map: ProgressMap) {
-	if (browser) localStorage.setItem(PROGRESS_KEY, JSON.stringify(map));
+	if (browser) safeSet(PROGRESS_KEY, JSON.stringify(map));
 }
 
 /** All in-progress books, newest first — powers the "Continue reading" lists. */
@@ -91,7 +103,7 @@ export function saveScrollAnchor(slug: string, order: number, paragraphIndex: nu
 	} else {
 		map[chapterKey(slug, order)] = paragraphIndex;
 	}
-	localStorage.setItem(ANCHOR_KEY, JSON.stringify(map));
+	safeSet(ANCHOR_KEY, JSON.stringify(map));
 
 	// Keep the book's resume point in step with where we actually are.
 	const progress = read();
