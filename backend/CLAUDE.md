@@ -44,9 +44,10 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
   loudly on the natural-key fixture via format guards — keep that pattern for
   any new fixture-reading migration.) For models with no fixture
   (AuthorTranslation), the fact lives in an idempotent seed step instead:
-  translated author bios ship as files under
-  `library/migrations/data/author_bios_<lang>/` (short.json + `<slug>.html`)
-  and `seed_author_translations` fills them — no new migration per batch.
+  translated author bios ship (and get corrected) as files under
+  `library/migrations/data/author_bios_<lang>/` (short.json + `<slug>.html`);
+  `seed_author_translations` upserts unreviewed rows from them — reviewed rows
+  are approver-owned and never touched — no new migration per batch.
 - Chapter/Sermon carry stored `search_vector` tsvectors kept fresh by `save()`
   hooks (library/fts.py); the release backfill repairs **NULL vectors only**.
   A data migration or command that changes chapter/sermon text, titles, or

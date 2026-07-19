@@ -6,19 +6,21 @@ migrate runs, so those migrations deliberately no-op there — and a rebuild
 silently loses all 39 translated bios (the same latent loss PR #204 fixed for
 the Spanish sermons). AuthorTranslation is not one of the fixture models, so
 the backend/CLAUDE.md rule ("put the same fact in the fixture, not only the
-migration") takes its release-step form here: this command reads the same data
-files the migrations read (``migrations/data/author_bios_<lang>/``) and fills
-any missing rows or fields. Runs on every deploy (see the release command).
+migration") takes its release-step form here: this command upserts the rows
+from the same data files the migrations read
+(``migrations/data/author_bios_<lang>/``). Runs on every deploy (see the
+release command).
 
-Fill-if-empty, matching the migrations' semantics: a field that already has
-content is never overwritten, and ``reviewed`` is stamped False only when a
-field is actually filled — an ``approve_author_translation`` flip survives
-deploys (the same create-only philosophy as seed_sermons's ``source_type``).
-On prod, where every row already has its content, the whole run is a no-op.
+Ownership follows the seed_sermons split: the repo files are the single source
+of truth for **unreviewed** rows — new bios are created and corrected ones
+updated on the next deploy — while a row an approver has flipped to
+``reviewed=True`` belongs to the review workflow and is never touched. Fields
+are only ever written, never blanked: a missing short.json entry or .html file
+leaves the stored value alone.
 
-Future bio translations ship by adding ``short.json`` entries and/or
-``<slug>.html`` files under a ``data/author_bios_<lang>/`` directory — no new
-migration needed.
+Future bio translations (or corrections) ship by editing ``short.json`` and/or
+``<slug>.html`` under a ``data/author_bios_<lang>/`` directory — no new
+migration per batch.
 """
 
 from __future__ import annotations
@@ -43,55 +45,65 @@ def language_dirs() -> list[tuple[str, Path]]:
     )
 
 
+def read_bios(d: Path) -> dict[str, dict[str, str]]:
+    """slug -> {bio, bio_html} for one language dir (absent fields omitted)."""
+    bios: dict[str, dict[str, str]] = {}
+    short_path = d / "short.json"
+    if short_path.exists():
+        for slug, bio in json.loads(short_path.read_text(encoding="utf-8")).items():
+            if bio:
+                bios.setdefault(slug, {})["bio"] = bio
+    for path in d.glob("*.html"):
+        html = path.read_text(encoding="utf-8").strip()
+        if html:
+            bios.setdefault(path.stem, {})["bio_html"] = html
+    return bios
+
+
 class Command(BaseCommand):
-    help = "Fill missing translated author bios from migrations/data (deploy step)."
+    help = "Upsert unreviewed translated author bios from migrations/data (deploy step)."
 
     def handle(self, *args, **opts):
-        created = filled = 0
+        per_lang = {lang: read_bios(d) for lang, d in language_dirs()}
+        slugs = {slug for bios in per_lang.values() for slug in bios}
+        authors = Author.objects.in_bulk(slugs, field_name="slug")
+        existing = {
+            (tr.author_id, tr.language): tr
+            for tr in AuthorTranslation.objects.filter(language__in=per_lang)
+        }
+
+        upserted = 0
         skipped: list[str] = []
-        for lang, d in language_dirs():
-            short_path = d / "short.json"
-            short = (
-                json.loads(short_path.read_text(encoding="utf-8"))
-                if short_path.exists()
-                else {}
-            )
-            slugs = sorted(set(short) | {p.stem for p in d.glob("*.html")})
-            for slug in slugs:
-                author = Author.objects.filter(slug=slug).first()
+        for lang, bios in per_lang.items():
+            for slug, fields in sorted(bios.items()):
+                author = authors.get(slug)
                 if author is None:
                     # Soft slug-reference (like seed_topics): the data can land
                     # ahead of its author without failing the deploy.
                     skipped.append(f"{slug} [{lang}]")
                     continue
-                changed = []
-                tr = AuthorTranslation.objects.filter(
-                    author=author, language=lang
-                ).first()
-                is_new = tr is None
-                if is_new:
+                tr = existing.get((author.id, lang))
+                if tr is None:
                     tr = AuthorTranslation(author=author, language=lang)
-                if not tr.bio and short.get(slug):
-                    tr.bio = short[slug]
-                    changed.append("bio")
-                html_path = d / f"{slug}.html"
-                if not tr.bio_html and html_path.exists():
-                    tr.bio_html = html_path.read_text(encoding="utf-8").strip()
-                    changed.append("bio_html")
-                if changed:
-                    tr.reviewed = False
-                    tr.save()
-                    created += is_new
-                    filled += 1
+                elif tr.reviewed:
+                    continue  # approver-owned; the review workflow has it now
+                changed = [
+                    name for name, value in fields.items()
+                    if getattr(tr, name) != value
+                ]
+                if not changed:
+                    continue
+                for name in changed:
+                    setattr(tr, name, fields[name])
+                tr.save()
+                upserted += 1
         if skipped:
             self.stdout.write(
                 self.style.WARNING(f"No author yet for: {', '.join(skipped)}")
             )
-        if filled:
+        if upserted:
             self.stdout.write(
-                self.style.SUCCESS(
-                    f"Author translations: {created} created, {filled} filled."
-                )
+                self.style.SUCCESS(f"Author translations: {upserted} created/updated.")
             )
         else:
             self.stdout.write("Author translations already up to date.")

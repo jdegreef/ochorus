@@ -1,5 +1,3 @@
-import json
-from pathlib import Path
 from unittest import skipUnless
 
 from django.db import connection
@@ -9,6 +7,7 @@ from rest_framework.test import APIClient
 from .ingest import clean_title
 from .models import (
     Author,
+    AuthorTranslation,
     Book,
     Chapter,
     Plan,
@@ -378,43 +377,67 @@ class SeedAuthorTranslationsTests(TestCase):
     AuthorTranslation has no fixture — the seed_author_translations release
     step is what recreates them."""
 
-    DATA = Path(__file__).resolve().parent / "migrations" / "data"
-
-    def _slugs(self, lang):
-        d = self.DATA / f"author_bios_{lang}"
-        short = json.loads((d / "short.json").read_text(encoding="utf-8"))
-        return sorted(set(short) | {p.stem for p in d.glob("*.html")})
-
     def _create_authors(self):
-        for slug in {s for lang in ("es", "sw", "lg") for s in self._slugs(lang)}:
+        from library.management.commands.seed_author_translations import (
+            language_dirs,
+            read_bios,
+        )
+
+        for slug in {s for _, d in language_dirs() for s in read_bios(d)}:
             Author.objects.create(slug=slug, name=slug.replace("-", " ").title())
 
     def test_fills_all_languages_on_a_fresh_db(self):
         from django.core.management import call_command
 
-        from .models import AuthorTranslation
+        from library.management.commands.seed_author_translations import (
+            language_dirs,
+            read_bios,
+        )
 
         self._create_authors()
         call_command("seed_author_translations", verbosity=0)
-        for lang in ("es", "sw", "lg"):
-            rows = AuthorTranslation.objects.filter(language=lang)
-            self.assertEqual(rows.count(), len(self._slugs(lang)))
+        dirs = language_dirs()
+        self.assertGreaterEqual(len(dirs), 3)  # es, sw, lg at minimum
+        for lang, d in dirs:
+            bios = read_bios(d)
+            rows = AuthorTranslation.objects.filter(language=lang).select_related(
+                "author"
+            )
+            self.assertEqual(rows.count(), len(bios))
             for tr in rows:
-                self.assertTrue(tr.bio, f"{tr.author.slug} [{lang}] short bio empty")
-                self.assertTrue(tr.bio_html, f"{tr.author.slug} [{lang}] bio_html empty")
+                self.assertEqual(tr.bio, bios[tr.author.slug].get("bio", ""))
+                self.assertEqual(tr.bio_html, bios[tr.author.slug].get("bio_html", ""))
                 self.assertFalse(tr.reviewed)
 
-    def test_idempotent_and_never_reverts_an_approved_review(self):
-        # reviewed is owned by approve_author_translation once flipped; the
-        # deploy step must not walk it back (same rule as seed_sermons's
+    def test_upserts_corrections_to_unreviewed_rows(self):
+        # The repo data files are the source of truth while a row is
+        # unreviewed (same contract as seed_sermons): a corrected bio committed
+        # to short.json/<slug>.html must reach prod on the next deploy.
+        from django.core.management import call_command
+
+        self._create_authors()
+        call_command("seed_author_translations", verbosity=0)
+        tr = AuthorTranslation.objects.get(author__slug="andrew-murray", language="es")
+        good_bio, good_html = tr.bio, tr.bio_html
+        tr.bio, tr.bio_html = "stale", "<p>stale</p>"
+        tr.save()
+        call_command("seed_author_translations", verbosity=0)
+        tr.refresh_from_db()
+        self.assertEqual(tr.bio, good_bio)
+        self.assertEqual(tr.bio_html, good_html)
+
+    def test_idempotent_and_never_touches_an_approved_review(self):
+        # Once approve_author_translation flips reviewed=True the review
+        # workflow owns the whole row — the deploy step must not walk back the
+        # flag OR an approver's wording (same rule as seed_sermons's
         # create-only source_type).
         from django.core.management import call_command
 
-        from .models import AuthorTranslation
-
         self._create_authors()
         call_command("seed_author_translations", verbosity=0)
-        AuthorTranslation.objects.filter(language="es").update(reviewed=True)
+        AuthorTranslation.objects.filter(language="es").update(
+            reviewed=True, bio="Approver's wording."
+        )
         before = list(
             AuthorTranslation.objects.values_list("bio", "bio_html", "reviewed")
         )
@@ -429,29 +452,12 @@ class SeedAuthorTranslationsTests(TestCase):
         # soft slug-references) — the deploy must not fail on it.
         from django.core.management import call_command
 
-        from .models import AuthorTranslation
-
         Author.objects.create(slug="andrew-murray", name="Andrew Murray")
         call_command("seed_author_translations", verbosity=0)
         self.assertEqual(
             AuthorTranslation.objects.filter(author__slug="andrew-murray").count(), 3
         )
         self.assertEqual(AuthorTranslation.objects.count(), 3)
-
-    def test_es_short_json_matches_migration_0021(self):
-        # data/author_bios_es/short.json duplicates the inline dict migration
-        # 0021 applied to prod. They must stay byte-identical, or a rebuilt DB
-        # would diverge from the live rows.
-        import importlib.util
-
-        path = self.DATA.parent / "0021_author_bios_es.py"
-        spec = importlib.util.spec_from_file_location("m0021", path)
-        mod = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(mod)
-        short = json.loads(
-            (self.DATA / "author_bios_es" / "short.json").read_text(encoding="utf-8")
-        )
-        self.assertEqual(short, mod.BIOS_ES)
 
 
 class PlanTests(TestCase):
