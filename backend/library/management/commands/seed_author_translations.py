@@ -14,13 +14,19 @@ release command).
 Ownership follows the seed_sermons split: the repo files are the single source
 of truth for **unreviewed** rows — new bios are created and corrected ones
 updated on the next deploy — while a row an approver has flipped to
-``reviewed=True`` belongs to the review workflow and is never touched. Fields
-are only ever written, never blanked: a missing short.json entry or .html file
-leaves the stored value alone.
+``reviewed=True`` belongs to the review workflow: its wording is never
+rewritten, and only a still-EMPTY field may land (e.g. a long-form bio_html
+batch arriving after the short bio was approved), which re-gates the row to
+``reviewed=False`` exactly as migrations 0023/0024 did. Fields are only ever
+written, never blanked: a missing short.json entry or .html file leaves the
+stored value alone.
 
 Future bio translations (or corrections) ship by editing ``short.json`` and/or
 ``<slug>.html`` under a ``data/author_bios_<lang>/`` directory — no new
-migration per batch.
+migration per batch. NOTE: migration 0021 embeds the es short bios in code;
+``author_bios_es/short.json`` supersedes that immutable copy — edit only the
+data files. Corrections must land here, not in the prod DB: this seed re-asserts
+the files over hand-edited unreviewed rows on the next deploy.
 """
 
 from __future__ import annotations
@@ -67,9 +73,13 @@ class Command(BaseCommand):
         per_lang = {lang: read_bios(d) for lang, d in language_dirs()}
         slugs = {slug for bios in per_lang.values() for slug in bios}
         authors = Author.objects.in_bulk(slugs, field_name="slug")
+        # Scoped to seeded authors: pipeline-translated rows for other authors
+        # (translate_author) are none of this command's business.
         existing = {
             (tr.author_id, tr.language): tr
-            for tr in AuthorTranslation.objects.filter(language__in=per_lang)
+            for tr in AuthorTranslation.objects.filter(
+                language__in=per_lang, author__slug__in=slugs
+            )
         }
 
         upserted = 0
@@ -85,16 +95,17 @@ class Command(BaseCommand):
                 tr = existing.get((author.id, lang))
                 if tr is None:
                     tr = AuthorTranslation(author=author, language=lang)
-                elif tr.reviewed:
-                    continue  # approver-owned; the review workflow has it now
-                changed = [
-                    name for name, value in fields.items()
-                    if getattr(tr, name) != value
-                ]
+                if tr.pk and tr.reviewed:
+                    # Approver-owned wording: only a still-empty field may land
+                    # (a later-shipped bio_html), re-gating the row for review.
+                    changed = [n for n in fields if not getattr(tr, n)]
+                else:
+                    changed = [n for n, v in fields.items() if getattr(tr, n) != v]
                 if not changed:
                     continue
                 for name in changed:
                     setattr(tr, name, fields[name])
+                tr.reviewed = False
                 tr.save()
                 upserted += 1
         if skipped:

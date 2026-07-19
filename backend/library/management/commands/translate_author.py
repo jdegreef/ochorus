@@ -1,9 +1,13 @@
 """Translate author biographies into a target language via the AI pipeline.
 
 Runs locally (needs ANTHROPIC_API_KEY); the result is AuthorTranslation rows
-(reviewed=False), shipped to prod as data like any other content change (see
-the ship-content-fix skill). The short ``bio`` is translated by default; pass
---long to also translate the long-form ``bio_html``.
+(reviewed=False). To SHIP them, export the text to
+``migrations/data/author_bios_<lang>/`` (``short.json`` + ``<slug>.html``) —
+the ``seed_author_translations`` deploy step is the delivery path, survives a
+fresh-DB rebuild, and re-asserts those files over unreviewed DB rows on every
+deploy, so rows shipped any other way don't stick. The short ``bio`` is
+translated by default; pass --long to also translate the long-form
+``bio_html``.
 
 Reuses translate_chapter (a titled HTML blob with Scripture substitution) with
 an empty title — a bio is just a prose body.

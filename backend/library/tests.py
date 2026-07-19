@@ -408,6 +408,12 @@ class SeedAuthorTranslationsTests(TestCase):
                 self.assertEqual(tr.bio, bios[tr.author.slug].get("bio", ""))
                 self.assertEqual(tr.bio_html, bios[tr.author.slug].get("bio_html", ""))
                 self.assertFalse(tr.reviewed)
+        # One literal oracle, independent of read_bios (which fed the seed too).
+        murray_es = AuthorTranslation.objects.get(
+            author__slug="andrew-murray", language="es"
+        )
+        self.assertTrue(murray_es.bio.startswith("Andrew Murray hijo"))
+        self.assertIn("<", murray_es.bio_html)
 
     def test_upserts_corrections_to_unreviewed_rows(self):
         # The repo data files are the source of truth while a row is
@@ -426,11 +432,11 @@ class SeedAuthorTranslationsTests(TestCase):
         self.assertEqual(tr.bio, good_bio)
         self.assertEqual(tr.bio_html, good_html)
 
-    def test_idempotent_and_never_touches_an_approved_review(self):
+    def test_idempotent_and_never_rewrites_an_approved_wording(self):
         # Once approve_author_translation flips reviewed=True the review
-        # workflow owns the whole row — the deploy step must not walk back the
-        # flag OR an approver's wording (same rule as seed_sermons's
-        # create-only source_type).
+        # workflow owns the wording — the deploy step must not walk back the
+        # flag or the text (same rule as seed_sermons's create-only
+        # source_type).
         from django.core.management import call_command
 
         self._create_authors()
@@ -447,17 +453,44 @@ class SeedAuthorTranslationsTests(TestCase):
         )
         self.assertEqual(before, after)
 
+    def test_reviewed_row_still_receives_a_later_shipped_field(self):
+        # Migrations 0023/0024 filled still-empty fields even on reviewed rows
+        # and re-gated review; the seed must keep that delivery path — an
+        # approved short bio would otherwise block the long-form bio_html
+        # batch forever.
+        from django.core.management import call_command
+
+        self._create_authors()
+        call_command("seed_author_translations", verbosity=0)
+        tr = AuthorTranslation.objects.get(author__slug="andrew-murray", language="sw")
+        tr.bio, tr.bio_html, tr.reviewed = "Approved wording.", "", True
+        tr.save()
+        call_command("seed_author_translations", verbosity=0)
+        tr.refresh_from_db()
+        self.assertEqual(tr.bio, "Approved wording.")  # approver's text kept
+        self.assertTrue(tr.bio_html)  # the empty field was delivered
+        self.assertFalse(tr.reviewed)  # and the row re-gated for review
+
     def test_missing_author_is_a_soft_skip(self):
         # Translation data may land ahead of its author (like seed_topics's
         # soft slug-references) — the deploy must not fail on it.
         from django.core.management import call_command
 
+        from library.management.commands.seed_author_translations import (
+            language_dirs,
+            read_bios,
+        )
+
+        n_langs = sum(
+            1 for _, d in language_dirs() if "andrew-murray" in read_bios(d)
+        )
         Author.objects.create(slug="andrew-murray", name="Andrew Murray")
         call_command("seed_author_translations", verbosity=0)
         self.assertEqual(
-            AuthorTranslation.objects.filter(author__slug="andrew-murray").count(), 3
+            AuthorTranslation.objects.filter(author__slug="andrew-murray").count(),
+            n_langs,
         )
-        self.assertEqual(AuthorTranslation.objects.count(), 3)
+        self.assertEqual(AuthorTranslation.objects.count(), n_langs)
 
 
 class PlanTests(TestCase):
