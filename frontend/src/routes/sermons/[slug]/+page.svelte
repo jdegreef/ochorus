@@ -10,9 +10,11 @@
 	import { getLang } from '$lib/lang.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import { scripture } from '$lib/scripture.svelte';
+	import { buildOutline, type OutlineEntry } from '$lib/sermonOutline';
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
+	import Icon from '$lib/components/Icon.svelte';
 	import ListenBar from '$lib/components/ListenBar.svelte';
 
 	let { data } = $props();
@@ -58,6 +60,26 @@
 			updateFraction();
 			saveSermonAnchor(sermon.slug, topVisibleIndex());
 		}, 250);
+	}
+
+	// --- Jump-to-section outline ----------------------------------------------
+	// Built from the rendered body once it's in the page (headings + the classic
+	// "I. / II. / III." homiletic points). Shown only when there's real
+	// structure to navigate.
+	let outline = $state<OutlineEntry[]>([]);
+	let outlineOpen = $state(false);
+	$effect(() => {
+		void sermon.slug; // rebuild when navigating between sermons
+		outline = body ? buildOutline(body) : [];
+	});
+
+	function scrollToSection(id: string) {
+		const el = document.getElementById(id);
+		if (el) {
+			const y = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET - 8;
+			window.scrollTo({ top: y, behavior: 'smooth' });
+		}
+		outlineOpen = false;
 	}
 
 	// Restore the saved spot on open (and once the body has rendered).
@@ -137,6 +159,16 @@
 		<div class="mx-auto flex max-w-3xl items-center justify-between gap-3 px-5 py-2.5">
 			<a href={localizeHref('/sermons')} class="text-small text-muted hover:text-text">← {t('nav.sermons')}</a>
 			<div class="flex shrink-0 items-center gap-1">
+				{#if outline.length >= 2}
+					<button
+						class="btn btn-ghost !px-2 !py-1.5"
+						class:!text-accent={outlineOpen}
+						onclick={() => (outlineOpen = !outlineOpen)}
+						aria-label={t('sermon.outline')}
+						title={t('sermon.outline')}
+						aria-expanded={outlineOpen}><Icon name="list" size={18} /></button
+					>
+				{/if}
 				{#if listen.supported}
 					<button
 						class="btn btn-ghost !px-2.5 !py-1"
@@ -163,6 +195,24 @@
 		class="fixed right-4 top-4 z-30 rounded-full border border-border bg-surface/90 px-3 py-1.5 text-small text-muted shadow-md backdrop-blur hover:text-text"
 		onclick={() => readerUi.exitFocus()}>✕ {t('reader.exitFocus')}</button
 	>
+{/if}
+
+<!-- Jump-to-section outline panel (opened from the top bar). -->
+{#if outlineOpen}
+	<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
+	<div class="outline-backdrop" onclick={() => (outlineOpen = false)}></div>
+	<nav class="outline-panel" aria-label={t('sermon.outline')}>
+		<p class="outline-title">{t('sermon.outline')}</p>
+		<ul>
+			{#each outline as s (s.id)}
+				<li>
+					<button class="outline-item" class:point={s.kind === 'point'} onclick={() => scrollToSection(s.id)}>
+						{s.label}
+					</button>
+				</li>
+			{/each}
+		</ul>
+	</nav>
 {/if}
 
 <article class="mx-auto px-5 py-10" style="{readerPrefs.style}; max-width: var(--reading-measure)" dir="auto">
@@ -263,5 +313,55 @@
 		font-size: 0.72rem;
 		color: var(--muted);
 		pointer-events: none;
+	}
+
+	/* Jump-to-section outline: a light popover under the reader bar. */
+	.outline-backdrop {
+		position: fixed;
+		inset: 0;
+		z-index: 20;
+	}
+	.outline-panel {
+		position: fixed;
+		top: 3.4rem;
+		right: max(0.75rem, calc((100vw - 48rem) / 2));
+		z-index: 21;
+		width: min(20rem, calc(100vw - 1.5rem));
+		max-height: 70vh;
+		overflow-y: auto;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
+		background: var(--surface);
+		box-shadow: 0 10px 40px rgb(0 0 0 / 0.25);
+		padding: 0.5rem;
+	}
+	.outline-title {
+		padding: 0.35rem 0.6rem;
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--muted);
+	}
+	.outline-item {
+		display: block;
+		width: 100%;
+		text-align: left;
+		padding: 0.45rem 0.6rem;
+		border-radius: var(--radius-sm, 6px);
+		font-size: 0.9rem;
+		color: var(--text);
+		line-height: 1.35;
+	}
+	.outline-item:hover {
+		background: var(--surface-2);
+		color: var(--accent);
+	}
+	/* Real headings sit flush; homiletic points get a subtle indent + accent. */
+	.outline-item.point {
+		color: var(--muted);
+	}
+	.outline-item.point:hover {
+		color: var(--accent);
 	}
 </style>
