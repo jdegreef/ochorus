@@ -112,16 +112,35 @@
 	let chapterFrac = $state(0);
 	let bookForProgress = $state<BookDetail | null>(null);
 
+	// Reset the scroll fraction when the CHAPTER changes — a fresh chapter opens
+	// at the top until the per-chapter effect below restores the saved position.
+	// This is deliberately separate from the book fetch: the old combined effect
+	// also read `bookForProgress`, so that fetch's async write re-ran the effect
+	// and snapped `chapterFrac` back to 0 *after* the position had been restored,
+	// jumping the progress footer/scrubber to page 1.
 	$effect(() => {
-		const s2 = slug;
+		void slug;
 		void chapter.order;
 		chapterFrac = 0;
-		if (bookForProgress?.slug !== s2) {
-			bookForProgress = null;
-			getBook(s2, getLang())
-				.then((b) => (bookForProgress = b))
-				.catch(() => (bookForProgress = null));
-		}
+	});
+
+	// Fetch the book once per (slug, language) for the book-level progress
+	// figures. It must NOT read `bookForProgress` — setting it would otherwise
+	// re-trigger this effect. Only slug/language are tracked, so chapter turns
+	// (same book) don't refetch and don't disturb the restored position.
+	$effect(() => {
+		const s2 = slug;
+		const lang = getLang();
+		bookForProgress = null;
+		let cancelled = false;
+		getBook(s2, lang)
+			.then((b) => {
+				if (!cancelled) bookForProgress = b;
+			})
+			.catch(() => {});
+		return () => {
+			cancelled = true;
+		};
 	});
 
 	// Paragraph at the top of the viewport — tracked on the throttled scroll pass
@@ -297,13 +316,20 @@
 		const s = slug;
 		const order = chapter.order;
 		const language = getLang();
+
+		// Arriving from a bookmark / notebook deep-link (?p=N): seed the scroll
+		// anchor to N *before* saveProgress reads it, so the book's resume point
+		// records paragraph N. Without this, saveProgress ran with no anchor yet
+		// and stored paragraph 0 — leaving the chapter before scrolling threw the
+		// bookmarked spot away.
+		const pParam = $page.url.searchParams.get('p');
+		const jumpTo = pParam !== null ? Number(pParam) : NaN;
+		if (Number.isFinite(jumpTo) && jumpTo > 0) saveScrollAnchor(s, order, jumpTo);
+
 		saveProgress(s, order, language);
 		marks.load(s, order, language);
 		bookmarks.load(s);
 
-		// Jump straight to a paragraph when arriving from a bookmark (?p=N).
-		const pParam = $page.url.searchParams.get('p');
-		const jumpTo = pParam !== null ? Number(pParam) : NaN;
 		// A backward chapter turn in page mode asks to land on the last page.
 		const wantLast = $page.url.searchParams.get('pg') === 'last';
 
