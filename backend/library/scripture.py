@@ -122,3 +122,17 @@ def lookup(ref_text: str) -> dict | None:
         "verses": verses,
         "version": VERSION_LABEL,
     }
+
+
+@lru_cache(maxsize=512)
+def book_of(ref_text: str) -> tuple[str, int] | None:
+    """(display name, canonical order) of the Bible book a reference is in.
+
+    Powers the sermons page's book facet: "Malachi 3:6" -> ("Malachi", 39).
+    None when the text isn't a parseable English reference (e.g. the localized
+    refs on translated sermons — those still match the plain text filter).
+    """
+    ref = _first_reference(ref_text)
+    if ref is None:
+        return None
+    return (ref.book.title, ref.book.value)
