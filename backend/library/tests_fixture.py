@@ -351,3 +351,42 @@ class FileCoherenceTests(SimpleTestCase):
                 path.name, work_filename(f["slug"], f.get("language", "en")),
                 f"{path.name}: file name doesn't match its sermon row",
             )
+
+
+class AuthorBioDataIntegrityTests(SimpleTestCase):
+    """The translated author bios (migrations/data/author_bios_<lang>/) are
+    delivered by the seed_author_translations deploy step, which soft-skips a
+    slug with no matching Author — deliberately deploy-safe, which means a
+    typo'd short.json key or misnamed <slug>.html would silently never ship.
+    This suite makes that loud at CI time instead (the same strict-check role
+    FixtureIntegrityTests plays for the fixture's own references)."""
+
+    def test_every_bio_slug_resolves_against_the_fixture_authors(self):
+        import json as _json
+
+        from library.management.commands.seed_author_translations import (
+            language_dirs,
+            read_bios,
+        )
+
+        author_slugs = {
+            r["fields"]["slug"]
+            for r in _json.loads(AUTHORS_FILE.read_text())
+            if r["model"] == "library.author"
+        }
+        dirs = language_dirs()
+        self.assertGreaterEqual(len(dirs), 3)  # es, sw, lg at minimum
+        for lang, d in dirs:
+            # A stray dir ("author_bios_es 2", "author_bios_es_old") would
+            # seed bogus rows under a junk language code — max_length=10 on
+            # the model, and real codes are short and lowercase.
+            self.assertRegex(
+                lang, r"^[a-z]{2,3}(-[a-z0-9]{1,6})?$",
+                f"{d.name}: suffix doesn't look like a language code",
+            )
+            dangling = sorted(set(read_bios(d)) - author_slugs)
+            self.assertEqual(
+                dangling, [],
+                f"{d.name}: bios for slugs missing from authors.json — the "
+                "seed would soft-skip these forever",
+            )
