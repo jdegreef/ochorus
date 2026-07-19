@@ -10,11 +10,15 @@
 	import { getLang } from '$lib/lang.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import { scripture, type ScriptureResult } from '$lib/scripture.svelte';
+	import { define } from '$lib/define.svelte';
 	import { apiFetch } from '$lib/api';
+	import { page } from '$app/stores';
 	import { buildOutline, type OutlineEntry } from '$lib/sermonOutline';
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
+	import SelectionBar from '$lib/components/SelectionBar.svelte';
+	import DefinePopover from '$lib/components/DefinePopover.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import ListenBar from '$lib/components/ListenBar.svelte';
 
@@ -176,6 +180,16 @@
 		locales.map((loc) => ({ loc, href: `${SITE_URL}${localizeHref(path, { locale: loc })}` }))
 	);
 	const preachedYear = $derived(sermon.preached_on ? sermon.preached_on.slice(0, 4) : '');
+
+	// Selecting text in the sermon offers copy-quote / share (with attribution),
+	// and a single word opens the dictionary — same as the chapter reader. No
+	// persistence: sermon highlights/notes are a separate, heavier feature.
+	const cite = $derived({
+		author: sermon.author_name,
+		book: sermon.title,
+		chapter: '',
+		url: $page.url.href
+	});
 </script>
 
 <svelte:head>
@@ -357,7 +371,14 @@
 	<div class="min-left" aria-hidden="true">{minutesLeft} {t('sermon.minLeft')}</div>
 {/if}
 
+<SelectionBar
+	container={body}
+	{cite}
+	onDefine={(word, top, left) => define.show(word, top, left)}
+/>
+
 <ScripturePopover />
+<DefinePopover />
 <ListenBar />
 
 <style>
