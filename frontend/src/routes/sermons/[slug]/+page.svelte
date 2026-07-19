@@ -9,7 +9,8 @@
 	import { getSermonAnchor, saveSermonAnchor } from '$lib/sermonProgress';
 	import { getLang } from '$lib/lang.svelte';
 	import { listen } from '$lib/listen.svelte';
-	import { scripture } from '$lib/scripture.svelte';
+	import { scripture, type ScriptureResult } from '$lib/scripture.svelte';
+	import { apiFetch } from '$lib/api';
 	import { buildOutline, type OutlineEntry } from '$lib/sermonOutline';
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
@@ -93,6 +94,22 @@
 			}
 			updateFraction();
 		})();
+	});
+
+	const initials = (name: string) =>
+		name.split(' ').filter(Boolean).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
+
+	// The sermon's preaching text — the verse(s) it's built on — for the header
+	// card. Fetched client-side (the page is prerendered); absent = card shows
+	// just the reference.
+	let preachingText = $state<ScriptureResult | null>(null);
+	$effect(() => {
+		const ref = sermon.scripture_ref;
+		preachingText = null;
+		if (!ref) return;
+		apiFetch<ScriptureResult>(`/api/library/scripture/?ref=${encodeURIComponent(ref)}`)
+			.then((v) => (preachingText = v))
+			.catch(() => (preachingText = null));
 	});
 
 	/** "1 Peter 2:7" -> "1 Peter"; "Matthew 11:28" -> "Matthew". */
@@ -249,10 +266,45 @@
 	<p class="mb-1 text-small uppercase tracking-wider text-muted">
 		{t('search.typeSermon')} · {readingTime(sermon.word_count)}{#if preachedYear} · {preachedYear}{/if}
 	</p>
-	<h1 class="text-h1 mb-2">{sermon.title}</h1>
+	<h1 class="text-h1 mb-3">{sermon.title}</h1>
+
+	<!-- Author row: portrait + name -->
+	<a
+		href={localizeHref(`/authors/${sermon.author_slug}`)}
+		class="group mb-5 inline-flex items-center gap-2.5 hover:no-underline"
+	>
+		{#if sermon.author_photo}
+			<img
+				src={sermon.author_photo}
+				alt="{t('a11y.portraitOf')} {sermon.author_name}"
+				class="h-9 w-9 shrink-0 rounded-full border border-border object-cover"
+				style="filter: grayscale(1)"
+				loading="lazy"
+			/>
+		{:else}
+			<span
+				class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent-soft text-small font-semibold text-accent"
+			>
+				{initials(sermon.author_name)}
+			</span>
+		{/if}
+		<span class="text-body font-medium text-text group-hover:text-accent">{sermon.author_name}</span>
+	</a>
+
+	<!-- Preaching text: the reference, and its verse(s) when available -->
 	{#if sermon.scripture_ref}
-		<p class="mb-3 text-h3 text-accent" style="font-family: var(--font-display)">{sermon.scripture_ref}</p>
+		<div class="text-card">
+			<p class="text-card-eyebrow">{t('sermon.text')}</p>
+			<p class="text-card-ref">{sermon.scripture_ref}</p>
+			{#if preachingText?.verses?.length}
+				<p class="text-card-verse">
+					{#each preachingText.verses as v (v.number)}{v.text}{' '}{/each}
+				</p>
+				<p class="text-card-version">{preachingText.version}</p>
+			{/if}
+		</div>
 	{/if}
+
 	{#if sermon.source_type === 'ai_unreviewed'}
 		<p
 			class="mb-8 inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-small text-gold"
@@ -336,6 +388,42 @@
 		font-size: 0.72rem;
 		color: var(--muted);
 		pointer-events: none;
+	}
+
+	/* Preaching-text card: the sermon's reference + verse(s) as an epigraph. */
+	.text-card {
+		margin: 0 0 2rem;
+		padding: 0.85rem 1.1rem;
+		border-left: 3px solid var(--accent);
+		border-radius: 0 var(--radius-card) var(--radius-card) 0;
+		background: var(--accent-soft);
+	}
+	.text-card-eyebrow {
+		font-size: 0.66rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--accent);
+	}
+	.text-card-ref {
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		color: var(--accent);
+		margin-top: 0.1rem;
+	}
+	.text-card-verse {
+		margin-top: 0.5rem;
+		font-family: var(--font-display);
+		font-style: italic;
+		line-height: 1.6;
+		color: var(--text);
+	}
+	.text-card-version {
+		margin-top: 0.45rem;
+		font-size: 0.66rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--muted);
 	}
 
 	/* Paragraph currently being read aloud in Listen mode. */

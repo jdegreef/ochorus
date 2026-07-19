@@ -155,6 +155,7 @@ export interface Sermon extends SermonSummary {
 	source_url: string;
 	author_name: string;
 	author_slug: string;
+	author_photo: string;
 }
 
 export interface AuthorBio {

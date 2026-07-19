@@ -95,6 +95,7 @@ class SermonDetailSerializer(serializers.ModelSerializer):
 
     author_name = serializers.CharField(source="author.name", read_only=True)
     author_slug = serializers.CharField(source="author.slug", read_only=True)
+    author_photo = serializers.CharField(source="author.photo_url", read_only=True)
     body_html = serializers.SerializerMethodField()
 
     def get_body_html(self, obj):
@@ -118,6 +119,7 @@ class SermonDetailSerializer(serializers.ModelSerializer):
             "source_url",
             "author_name",
             "author_slug",
+            "author_photo",
         ]
 
 
