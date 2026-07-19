@@ -50,8 +50,11 @@
 			</p>
 			<h2 class="text-h2 mb-1">{pick.title}</h2>
 			<p class="text-small text-muted">
-				{pick.author.name}{#if pick.scripture_ref}
-					· {pick.scripture_ref}{/if} · {readingTime(pick.word_count)} — {t('home.sermonReadOrListen')} ▶
+				<!-- The separators are expressions: text at an {#if} block boundary gets
+				     its leading whitespace trimmed by the compiler, which rendered
+				     "A. B. Simpson· 1 Kings" with the space missing. -->
+				{pick.author.name}{#if pick.scripture_ref}{` · ${pick.scripture_ref}`}{/if}
+				· {readingTime(pick.word_count)} — {t('home.sermonReadOrListen')} ▶
 			</p>
 		</a>
 	</section>

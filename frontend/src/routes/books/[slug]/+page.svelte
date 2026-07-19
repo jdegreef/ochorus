@@ -105,10 +105,13 @@
 		<div class="flex-1">
 			<h1 class="text-h1">{book.title}</h1>
 			{#if book.subtitle}<p class="mt-1 text-h3 text-muted">{book.subtitle}</p>{/if}
+			<!-- Separator as an expression, not literal text: the span's leading space
+			     sits at an {#if} boundary and gets compiler-trimmed, which rendered
+			     "Booth· 1829" with the space missing. -->
 			<p class="mt-2 text-body">
 				<a href={localizeHref(`/authors/${book.author.slug}`)} class="text-accent hover:underline"
 					>{book.author.name}</a
-				>{#if years}<span class="text-muted"> · {years}</span>{/if}
+				>{#if years}<span class="text-muted">{` · ${years}`}</span>{/if}
 			</p>
 
 			{#if book.source_type === 'ai_unreviewed'}

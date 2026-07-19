@@ -33,11 +33,12 @@ SERMON_FIELDS = (
     "is_published",
 )
 
-# Seeded when the row is first created, then owned by the review workflow.
-# approve_sermon_translation flips ai_unreviewed -> ai_reviewed; re-asserting the
-# fixture's value on every deploy would silently walk an approved translation
-# back to "awaiting native review".
-CREATE_ONLY_FIELDS = frozenset({"source_type"})
+# Seeded when the row is first created, then owned by workflows that act on the
+# live DB. approve_sermon_translation flips ai_unreviewed -> ai_reviewed, and an
+# urgent unpublish happens directly in the DB; re-asserting the fixture's value
+# on every deploy would silently walk either back (re-gating an approved
+# translation, or resurrecting a pulled sermon).
+CREATE_ONLY_FIELDS = frozenset({"source_type", "is_published"})
 UPDATE_FIELDS = tuple(f for f in SERMON_FIELDS if f not in CREATE_ONLY_FIELDS)
 
 
