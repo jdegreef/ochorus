@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import type { BookSummary } from '$lib/library';
 	import { allProgress } from '$lib/progress';
+	import { bookProgressPercent } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
 
@@ -9,8 +10,10 @@
 	 * In-progress books with a progress bar and a resume link. Progress comes
 	 * from the local cache (which the sign-in merge keeps in step with the
 	 * account), joined against the provided book list for titles and covers.
-	 * Books that are finished (last chapter reached) or unknown in this
-	 * language are skipped. Renders nothing when there's nothing in progress.
+	 * Books unknown in this language are skipped; a book stays here through its
+	 * last chapter (opening the last chapter isn't finishing it — the old code
+	 * hid it immediately) and ages off naturally as newer reads push it past the
+	 * limit. Renders nothing when there's nothing in progress.
 	 */
 	let { books, limit = 4 }: { books: BookSummary[]; limit?: number } = $props();
 
@@ -32,10 +35,11 @@
 			.map((p) => {
 				const book = bySlug.get(p.slug);
 				if (!book) return null;
-				// order is the chapter currently being read → count it as reached.
-				const pct = Math.min(100, Math.round((p.order / Math.max(1, book.chapter_count)) * 100));
-				const finished = p.order >= book.chapter_count && pct >= 100;
-				return finished ? null : { book, order: p.order, pct };
+				// order is the chapter currently open. Treat it as in-progress, not
+				// finished — the midpoint estimate keeps the book visible (and honest
+				// about position) all the way through the last chapter.
+				const pct = bookProgressPercent(p.order, book.chapter_count);
+				return { book, order: p.order, pct };
 			})
 			.filter((x) => x !== null)
 			.slice(0, limit);

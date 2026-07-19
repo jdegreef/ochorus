@@ -6,6 +6,22 @@ export function readingMinutes(words: number): number {
 }
 
 /**
+ * Book-progress percent for the "Continue reading" card, from the chapter
+ * currently open (`order`, 1-based) and the book's chapter count.
+ *
+ * The current chapter is treated as half-read (a midpoint estimate — we know
+ * which chapter is open but not how far through it), so the value never reads
+ * 0% for someone on chapter 1, never counts the open chapter as fully finished,
+ * and stays below 100% until the whole book is genuinely done. Clamped to
+ * [1, 99] so the bar is always visibly started and never claims completion.
+ */
+export function bookProgressPercent(order: number, chapterCount: number): number {
+	if (chapterCount <= 0) return 0;
+	const raw = ((order - 0.5) / chapterCount) * 100;
+	return Math.min(99, Math.max(1, Math.round(raw)));
+}
+
+/**
  * Localized reading-time label, e.g. "12 min read" / "dakika 12 za kusoma".
  * The count is substituted into the locale's template so word order stays
  * correct per language (the number isn't always at the front).
