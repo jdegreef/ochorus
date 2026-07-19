@@ -44,3 +44,6 @@ class Command(BaseCommand):
         # after body_text exists and all seed steps have created their rows.
         self.stdout.write("→ backfill_search_vectors")
         call_command("backfill_search_vectors")
+        # Bound the anonymous search-analytics log (reads cover 30 days).
+        self.stdout.write("→ trim_search_log")
+        call_command("trim_search_log")

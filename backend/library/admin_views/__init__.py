@@ -4,7 +4,7 @@ Previously one 1,190-line module. The view classes are re-exported here so
 ``from library.admin_views import AdminStatsView`` (config/urls.py) is unchanged.
 """
 
-from .analytics import AdminEngagementView, AdminUsersView
+from .analytics import AdminEngagementView, AdminSearchView, AdminUsersView
 from .content import AdminCoverageView, AdminLanguageDetailView, AdminStatsView
 from .detail import AdminBookDetailView, AdminExportView
 from .jobs import AdminTranslationJobsView
@@ -15,6 +15,7 @@ __all__ = [
     "AdminBookDetailView",
     "AdminCoverageView",
     "AdminEngagementView",
+    "AdminSearchView",
     "AdminExportView",
     "AdminLanguageDetailView",
     "AdminReviewQueueView",

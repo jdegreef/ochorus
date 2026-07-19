@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from django.db.models import Count
+from django.db.models import Count, Q
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -268,3 +268,112 @@ class AdminUsersView(APIView):
         return out
 
 
+
+
+class AdminSearchView(APIView):
+    """Search analytics — what readers look for, and what they don't find.
+
+    Aggregate-only, from the anonymous SearchQueryLog. Zero-result queries are
+    the roadmap signal: each one is a reader asking for content or spelling
+    tolerance we don't have yet. Top lists skip fragments under 3 characters
+    (search-as-you-type prefixes) and fold case.
+
+    Overview counts are searches SERVED, so type-ahead prefixes inflate them
+    relative to typed intent (deliberate: 2-char queries are real searches in
+    e.g. Chinese, and the engine did the work either way). Compare trends, not
+    absolutes.
+    """
+
+    permission_classes = [IsAdminEmail]
+
+    def get(self, request):
+        from datetime import timedelta
+
+        from django.db.models.functions import Length, Lower, TruncDate
+        from django.utils import timezone
+
+        from ..models import SearchQueryLog
+
+        now = timezone.now()
+        window = SearchQueryLog.objects.filter(created_at__gte=now - timedelta(days=30))
+
+        def overview(qs):
+            counts = qs.aggregate(
+                searches=Count("id"), zero=Count("id", filter=Q(result_count=0))
+            )
+            return {
+                "searches": counts["searches"],
+                "distinct_queries": qs.annotate(q=Lower("query"))
+                .values("q")
+                .distinct()
+                .count(),
+                "zero_results": counts["zero"],
+                "zero_rate": round(counts["zero"] / counts["searches"], 3)
+                if counts["searches"]
+                else 0.0,
+            }
+
+        def top(qs):
+            rows = (
+                qs.annotate(q=Lower("query"), qlen=Length("query"))
+                .filter(qlen__gte=3)
+                .values("q")
+                .annotate(count=Count("id"))
+                .order_by("-count", "q")[:20]
+            )
+            return [{"query": r["q"], "count": r["count"]} for r in rows]
+
+        # Exactly the last 14 UTC calendar days, zero-filled — a sparse
+        # aggregate would render adjacent bars for non-adjacent dates.
+        days = [(now - timedelta(days=i)).date() for i in range(13, -1, -1)]
+        buckets = {
+            str(r["day"]): r
+            for r in SearchQueryLog.objects.filter(created_at__date__gte=days[0])
+            .annotate(day=TruncDate("created_at"))
+            .values("day")
+            .annotate(
+                searches=Count("id"),
+                zero=Count("id", filter=Q(result_count=0)),
+            )
+        }
+        daily = [
+            {
+                "day": str(d),
+                "searches": buckets.get(str(d), {}).get("searches", 0),
+                "zero": buckets.get(str(d), {}).get("zero", 0),
+            }
+            for d in days
+        ]
+
+        # Capped: language comes from an unauthenticated query param, so junk
+        # codes (≤10 chars) can create rows — don't let them flood the page.
+        by_language = (
+            window.values("language")
+            .annotate(
+                searches=Count("id"),
+                zero=Count("id", filter=Q(result_count=0)),
+            )
+            .order_by("-searches")[:20]
+        )
+
+        return Response(
+            {
+                "overview": {
+                    "7d": overview(
+                        window.filter(created_at__gte=now - timedelta(days=7))
+                    ),
+                    "30d": overview(window),
+                },
+                "top_queries": top(window.filter(result_count__gt=0)),
+                "zero_result_queries": top(window.filter(result_count=0)),
+                "daily": daily,
+                "by_language": [
+                    {
+                        **_language_entry(r["language"]),
+                        "searches": r["searches"],
+                        "zero": r["zero"],
+                    }
+                    for r in by_language
+                ],
+            }
+        )
