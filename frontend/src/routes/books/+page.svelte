@@ -20,10 +20,7 @@
 
 <svelte:head>
 	<title>{t('nav.books')} — Ochorus</title>
-	<meta
-		name="description"
-		content="Browse the Ochorus library — classic Christian books by Andrew Murray, Charles Spurgeon, Watchman Nee, Hannah Whitall Smith and more. Free to read."
-	/>
+	<meta name="description" content={t('books.metaDescription')} />
 	<link rel="canonical" href={canonical} />
 	{#each alternates as a (a.loc)}
 		<link rel="alternate" hreflang={a.loc} href={a.href} />
