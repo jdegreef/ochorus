@@ -369,6 +369,20 @@ class SeedSermonsTests(TestCase):
         lg = Sermon.objects.get(slug="the-immutability-of-god", language="lg")
         self.assertEqual(lg.source_type, Book.SourceType.AI_REVIEWED)
 
+    def test_seed_never_republishes_an_unpublished_sermon(self):
+        # is_published is create-only for the same reason as source_type: an
+        # urgent unpublish happens directly in the live DB, and the fixture
+        # (which still says is_published=True) must not resurrect the sermon on
+        # the next deploy.
+        from django.core.management import call_command
+
+        call_command("seed_sermons", verbosity=0)
+        sermon = Sermon.objects.filter(language="en").first()
+        Sermon.objects.filter(pk=sermon.pk).update(is_published=False)
+        call_command("seed_sermons", verbosity=0)  # the next deploy
+        sermon.refresh_from_db()
+        self.assertFalse(sermon.is_published)
+
 
 class SeedAuthorTranslationsTests(TestCase):
     """The es/sw/lg author bios must survive a fresh-DB rebuild (the PR #204
