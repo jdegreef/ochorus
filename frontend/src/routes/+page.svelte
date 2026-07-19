@@ -7,6 +7,7 @@
 	import ContinueReading from '$lib/components/ContinueReading.svelte';
 	import TodaysReading from '$lib/components/TodaysReading.svelte';
 	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
+	import BookCard from '$lib/components/BookCard.svelte';
 
 	let { data } = $props();
 	const featured = $derived<BookSummary[]>(data.featured);
@@ -112,22 +113,7 @@
 	</div>
 	<div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-6">
 		{#each featured as book (book.slug)}
-			<a href={localizeHref(`/books/${book.slug}`)} class="group block hover:no-underline">
-				{#if book.cover_url}
-					<img
-						src={book.cover_url}
-						alt="{t('a11y.coverOf')} {book.title}"
-						loading="lazy"
-						class="aspect-[3/4] w-full rounded-card object-cover shadow-sm transition-transform group-hover:-translate-y-1"
-					/>
-				{:else}
-					<div
-						class="aspect-[3/4] w-full rounded-card shadow-sm"
-						style="background: {book.cover_color || '#3b5bdb'}"
-					></div>
-				{/if}
-				<div class="mt-2 text-small font-medium text-text">{book.title}</div>
-			</a>
+			<BookCard {book} showAuthor />
 		{/each}
 	</div>
 </section>
