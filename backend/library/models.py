@@ -569,6 +569,8 @@ class SearchQueryLog(models.Model):
 
     query = models.CharField(max_length=200)
     language = models.CharField(max_length=10)
+    # Capped at search.MAX_RESULTS (30) — zero vs nonzero is the meaningful
+    # signal; don't average this expecting true match counts.
     result_count = models.PositiveIntegerField()
     # A "did you mean" hint was offered (only computed for zero-result queries).
     suggested = models.BooleanField(default=False)

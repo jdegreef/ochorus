@@ -356,7 +356,7 @@ export interface AdminSearchStats {
 	top_queries: SearchTopQuery[];
 	zero_result_queries: SearchTopQuery[];
 	daily: { day: string; searches: number; zero: number }[];
-	by_language: { language: string; searches: number; zero: number }[];
+	by_language: (Language & { searches: number; zero: number })[];
 }
 
 export const getAdminSearchStats = () => apiFetch<AdminSearchStats>('/api/admin/search-stats/');

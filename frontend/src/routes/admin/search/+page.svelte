@@ -173,9 +173,9 @@
 			<section class="mt-6 rounded-2xl border border-border bg-surface p-5">
 				<h2 class="text-h3 mb-3">Searches by language · 30d</h2>
 				<ul class="space-y-2">
-					{#each d.by_language as l (l.language)}
+					{#each d.by_language as l (l.code)}
 						<li class="flex items-center gap-3">
-							<span class="w-16 shrink-0 text-body text-text">{l.language}</span>
+							<span class="w-28 shrink-0 truncate text-body text-text">{l.name} <span class="text-small text-muted">{l.code}</span></span>
 							<div class="h-3 flex-1 overflow-hidden rounded-full bg-surface-2">
 								<div class="h-full rounded-full bg-accent-soft" style="width: {(l.searches / langMax) * 100}%"></div>
 							</div>

@@ -344,16 +344,19 @@ class SearchView(APIView):
             if hint:
                 payload["suggestion"] = hint
         # Anonymous analytics (admin "what do readers search for / not find").
-        # Fail-open: a logging hiccup must never break search itself.
+        # Fail-open: a logging hiccup must never break search itself. Warning
+        # level on purpose — an exception-level event would carry the request
+        # URL (raw ?q= text) into Sentry and fire once per search during a
+        # durable DB issue; server logs still record it.
         try:
             SearchQueryLog.objects.create(
                 query=q[:200],
-                language=language,
+                language=language[:10],
                 result_count=len(results),
                 suggested="suggestion" in payload,
             )
         except Exception:
-            logger.exception("search query logging failed")
+            logger.warning("search query logging failed", exc_info=True)
         return Response(payload)
 
 
