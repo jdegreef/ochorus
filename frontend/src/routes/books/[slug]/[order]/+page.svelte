@@ -2,7 +2,7 @@
 	import { onMount, tick, untrack } from 'svelte';
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
-	import { goto } from '$app/navigation';
+	import { goto, invalidateAll } from '$app/navigation';
 	import { getBook, getPlan, type BookDetail, type Chapter, type PlanDetail } from '$lib/library';
 	import { planProgress } from '$lib/planProgress.svelte';
 	import {
@@ -22,8 +22,9 @@
 	import { listen } from '$lib/listen.svelte';
 	import { define } from '$lib/define.svelte';
 	import { scripture } from '$lib/scripture.svelte';
-	import { API_BASE_URL } from '$lib/config';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { API_BASE_URL, SITE_URL } from '$lib/config';
+	import { jsonLd } from '$lib/seo';
+	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import DefinePopover from '$lib/components/DefinePopover.svelte';
@@ -41,9 +42,58 @@
 	const edition = $derived((data.edition as 'modern' | null) ?? null);
 	const t = i18n.t;
 
+	// --- SEO head (this page prerenders — see +page.ts) -------------------------
+	// Self-referential canonical + hreflang, same convention as books/[slug].
+	const seoPath = $derived(`/books/${slug}/${chapter.order}/`);
+	const canonical = $derived(`${SITE_URL}${localizeHref(seoPath)}`);
+	const seoAlternates = $derived(
+		locales.map((loc) => ({ loc, href: `${SITE_URL}${localizeHref(seoPath, { locale: loc })}` }))
+	);
+	const metaDescription = $derived(
+		chapter.body_html
+			.replace(/<[^>]+>/g, ' ')
+			// Decode the entities the sanitized body uses, else they double-escape
+			// into the meta text ("&quot;Then he said..." in search snippets).
+			.replace(/&quot;/g, '"')
+			.replace(/&#x27;|&#39;/g, "'")
+			.replace(/&lt;/g, '<')
+			.replace(/&gt;/g, '>')
+			.replace(/&nbsp;/g, ' ')
+			.replace(/&amp;/g, '&')
+			.replace(/\s+/g, ' ')
+			.trim()
+			.slice(0, 250)
+	);
+	const chapterLd = $derived(
+		jsonLd({
+			'@context': 'https://schema.org',
+			'@type': 'Chapter',
+			name: chapter.title,
+			position: chapter.order,
+			isPartOf: {
+				'@type': 'Book',
+				name: chapter.book_title,
+				author: { '@type': 'Person', name: chapter.author_name },
+				url: `${SITE_URL}${localizeHref(`/books/${slug}/`)}`
+			},
+			url: canonical,
+			isAccessibleForFree: true,
+			inLanguage: getLang()
+		})
+	);
+
 	let body: HTMLDivElement | undefined = $state();
 	let titleEl: HTMLHeadingElement | undefined = $state();
 	let titleVisible = $state(true);
+
+	// The prerendered HTML is always the standard edition (query params don't
+	// exist at build time — see +page.ts). A direct visit to ?edition=modern
+	// hydrates with that standard-edition data, so re-run load client-side once
+	// to fetch the Modern English chapter.
+	onMount(() => {
+		const wantsModern = new URLSearchParams(location.search).get('edition') === 'modern';
+		if (wantsModern && edition !== 'modern') invalidateAll();
+	});
 
 	// Note editor state — edits the note of an existing mark group, or creates
 	// a new mark from pending selection segments when noteId is null.
@@ -610,7 +660,20 @@
 	}
 </script>
 
-<svelte:head><title>{chapter.title} — {chapter.book_title} — Ochorus</title></svelte:head>
+<svelte:head>
+	<title>{chapter.title} — {chapter.book_title} — Ochorus</title>
+	<meta name="description" content={metaDescription} />
+	<link rel="canonical" href={canonical} />
+	{#each seoAlternates as a (a.loc)}
+		<link rel="alternate" hreflang={a.loc} href={a.href} />
+	{/each}
+	<link rel="alternate" hreflang="x-default" href="{SITE_URL}{localizeHref(seoPath, { locale: 'en' })}" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="{chapter.title} — {chapter.book_title}" />
+	<meta property="og:description" content={metaDescription} />
+	<meta property="og:url" content={canonical} />
+	{@html chapterLd}
+</svelte:head>
 <svelte:window onscroll={onScroll} onkeydown={onKeydown} />
 
 <!-- Reader top bar: breadcrumb / context + controls. Hidden in focus mode. -->

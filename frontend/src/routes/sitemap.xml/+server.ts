@@ -97,6 +97,21 @@ export async function GET() {
 	collect('topics', (s) => `/topics/${s}/`);
 	collect('plans', (s) => `/plans/${s}/`);
 
+	// Chapter pages (prerendered): one entry per (work, chapter), again listing
+	// only the locales whose edition actually has that chapter.
+	const byChapter = new Map<string, Entry>();
+	for (const slice of perLocale) {
+		for (const b of slice.books) {
+			for (let order = 1; order <= b.chapter_count; order++) {
+				const key = `${b.slug}#${order}`;
+				let e = byChapter.get(key);
+				if (!e) byChapter.set(key, (e = { byLocale: new Map() }));
+				e.byLocale.set(slice.locale, `/books/${b.slug}/${order}/`);
+			}
+		}
+	}
+	entries.push(...byChapter.values());
+
 	const xml =
 		'<?xml version="1.0" encoding="UTF-8"?>\n' +
 		'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"' +
