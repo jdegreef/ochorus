@@ -166,7 +166,7 @@
 				<button
 					class="px-2.5 py-1.5"
 					class:bg-accent={filter === opt.v}
-					class:text-white={filter === opt.v}
+					class:text-accent-contrast={filter === opt.v}
 					class:text-muted={filter !== opt.v}
 					onclick={() => (filter = opt.v)}
 					aria-pressed={filter === opt.v}>{t(opt.k)}</button

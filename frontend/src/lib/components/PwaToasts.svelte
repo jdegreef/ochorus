@@ -83,7 +83,9 @@
 	.pwa-cta {
 		border-radius: 999px;
 		background: var(--accent);
-		color: white;
+		/* Theme-aware foreground: white fails contrast on the light-lavender dark
+		   accent (~2.5:1); --accent-contrast is dark there, white in light mode. */
+		color: var(--accent-contrast);
 		padding: 0.25rem 0.75rem;
 		font-weight: 600;
 		font-size: 0.8rem;

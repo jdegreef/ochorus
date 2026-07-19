@@ -229,7 +229,7 @@
 						<button
 							class="px-2.5 py-1.5"
 							class:bg-accent={source === opt[0]}
-							class:text-white={source === opt[0]}
+							class:text-accent-contrast={source === opt[0]}
 							class:text-muted={source !== opt[0]}
 							onclick={() => (source = opt[0] as Source)}
 							aria-pressed={source === opt[0]}>{opt[1]}</button
@@ -254,7 +254,7 @@
 				<button
 					class="px-2.5 py-1.5"
 					class:bg-accent={group === 'author'}
-					class:text-white={group === 'author'}
+					class:text-accent-contrast={group === 'author'}
 					class:text-muted={group !== 'author'}
 					onclick={() => setGroup('author')}
 					aria-pressed={group === 'author'}>{t('books.groupAuthor')}</button
@@ -262,7 +262,7 @@
 				<button
 					class="px-2.5 py-1.5"
 					class:bg-accent={group === 'all'}
-					class:text-white={group === 'all'}
+					class:text-accent-contrast={group === 'all'}
 					class:text-muted={group !== 'all'}
 					onclick={() => setGroup('all')}
 					aria-pressed={group === 'all'}>{t('books.groupAll')}</button
@@ -273,7 +273,7 @@
 				<button
 					class="px-2.5 py-1.5"
 					class:bg-accent={view === 'grid'}
-					class:text-white={view === 'grid'}
+					class:text-accent-contrast={view === 'grid'}
 					class:text-muted={view !== 'grid'}
 					onclick={() => setView('grid')}
 					aria-label={t('books.viewGrid')}
@@ -282,7 +282,7 @@
 				<button
 					class="px-2.5 py-1.5"
 					class:bg-accent={view === 'list'}
-					class:text-white={view === 'list'}
+					class:text-accent-contrast={view === 'list'}
 					class:text-muted={view !== 'list'}
 					onclick={() => setView('list')}
 					aria-label={t('books.viewList')}

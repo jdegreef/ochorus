@@ -64,7 +64,7 @@
 						class:text-accent={isNext && !done}
 						class:border-border={!isNext}
 						class:bg-accent={done}
-						class:text-white={done}
+						class:text-accent-contrast={done}
 						class:text-muted={!done && !isNext}
 					>
 						{done ? '✓' : d.day}
