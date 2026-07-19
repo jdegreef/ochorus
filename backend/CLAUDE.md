@@ -32,7 +32,9 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
   don't renumber.
 - `manage.py release` runs the deploy chain: migrate → seed_if_empty →
   backfill_body_text → apply_body_corrections → seed_books → seed_plans →
-  seed_sermons → seed_topics. Seeds are idempotent and **re-run every deploy**.
+  seed_sermons → seed_topics → backfill_search_vectors. Seeds are idempotent
+  and **re-run every deploy**. backfill_search_vectors is last on purpose:
+  vectors derive from body_text and bake in seed-created rows (library/fts.py).
 - Therefore any field a workflow owns after creation — review state
   (`source_type`), an approver's edit — must be **create-only** in the seed, or
   a deploy walks it back. (This bit us; there's a regression test guarding it.)
@@ -41,6 +43,14 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
   fixture, not only the migration. (The historical pk-parsing migrations no-op
   loudly on the natural-key fixture via format guards — keep that pattern for
   any new fixture-reading migration.)
+- Chapter/Sermon carry stored `search_vector` tsvectors kept fresh by `save()`
+  hooks (library/fts.py); the release backfill repairs **NULL vectors only**.
+  A data migration or command that changes chapter/sermon text, titles, or
+  author names via `queryset.update()` or historical-model `.save()` (which
+  lacks the hooks) leaves vectors STALE, not NULL — search silently keeps
+  matching the old text. Such a change must also NULL `search_vector` on the
+  touched rows (the release backfill then repairs them) or run
+  `manage.py backfill_search_vectors --all`.
 
 ## Shared logic
 

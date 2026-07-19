@@ -21,8 +21,11 @@ import difflib
 import re
 
 from django.db import connection
-from django.db.models import Q
+from django.db.models import F, Q
 
+# Config lookup shared with the stored-vector write path (library/fts.py) so
+# query config always matches what the row was indexed with.
+from .fts import config_for
 from .models import Author, Book, Chapter, Plan, Sermon, Topic
 from .scripture import reference_verse_ids
 
@@ -37,14 +40,6 @@ CAPS = {"author": 5, "book": 8, "topic": 5, "plan": 5, "chapter": 20, "sermon": 
 
 HL_START = "⟦"
 HL_END = "⟧"
-
-# Postgres text-search configs by language (falls back to "simple").
-FTS_CONFIGS = {
-    "en": "english",
-    "fr": "french",
-    "es": "spanish",
-    "pt": "portuguese",
-}
 
 
 def fallback_snippet(text: str, query: str, radius: int = 90) -> str:
@@ -133,7 +128,7 @@ def _search_postgres(ctx, authors, books, topics, plans, chapters, sermons):
         SearchVector,
     )
 
-    config = FTS_CONFIGS.get(ctx.language, "simple")
+    config = config_for(ctx.language)
     query = SearchQuery(ctx.q, config=config, search_type="websearch")
 
     def sv(field, weight):
@@ -177,32 +172,26 @@ def _search_postgres(ctx, authors, books, topics, plans, chapters, sermons):
         plans, sv("title", "A") + sv("description", "C"), _plan_hit, "plan"
     )
 
-    chapter_vector = (
-        sv("title", "A") + sv("book__title", "A") + sv("book__author__name", "B")
-        + sv("body_text", "C")
-    )
+    # Chapters and sermons match against their STORED vector (GIN-indexed,
+    # populated by library/fts.py with the same fields + weights the old
+    # query-time vector used) — an index lookup instead of re-tokenising
+    # every body on every keystroke.
     chapter_rows = (
-        chapters.annotate(
-            search=chapter_vector,
-            rank=SearchRank(chapter_vector, query),
+        chapters.filter(search_vector=query)
+        .annotate(
+            rank=SearchRank(F("search_vector"), query),
             headline=headline("body_text"),
         )
-        .filter(search=query)
         .order_by("-rank", "book__sort_order", "order")[: CAPS["chapter"]]
     )
     pairs += [(float(c.rank), _chapter_hit(c, snippet=c.headline)) for c in chapter_rows]
 
-    sermon_vector = (
-        sv("title", "A") + sv("author__name", "B") + sv("scripture_ref", "B")
-        + sv("body_text", "C")
-    )
     sermon_rows = (
-        sermons.annotate(
-            search=sermon_vector,
-            rank=SearchRank(sermon_vector, query),
+        sermons.filter(search_vector=query)
+        .annotate(
+            rank=SearchRank(F("search_vector"), query),
             headline=headline("body_text"),
         )
-        .filter(search=query)
         .order_by("-rank", "sort_order")[: CAPS["sermon"]]
     )
     pairs += [(float(s.rank), _sermon_hit(s, snippet=s.headline)) for s in sermon_rows]

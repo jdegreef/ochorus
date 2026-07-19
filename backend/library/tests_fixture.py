@@ -254,9 +254,12 @@ class SeedFieldCoverageTests(SimpleTestCase):
         from library.management.commands.seed_books import CHAPTER_FIELDS
         from library.models import Chapter
 
-        # body_text is derived by save(); the seed must not set it directly.
+        # body_text and search_vector are derived by save(); the seed must
+        # not set them directly.
         expected = self._content_fields(
-            Chapter, exclude={"id", "book", "body_text", "created_at", "updated_at"}
+            Chapter,
+            exclude={"id", "book", "body_text", "search_vector",
+                     "created_at", "updated_at"},
         )
         self.assertEqual(set(CHAPTER_FIELDS), expected)
 
@@ -264,11 +267,12 @@ class SeedFieldCoverageTests(SimpleTestCase):
         from library.management.commands.seed_sermons import SERMON_FIELDS
         from library.models import Sermon
 
-        # preached_on is handled separately (date parsing); body_text derived.
+        # preached_on is handled separately (date parsing); body_text and
+        # search_vector are derived.
         expected = self._content_fields(
             Sermon,
             exclude={"id", "author", "slug", "language", "preached_on",
-                     "body_text", "created_at", "updated_at"},
+                     "body_text", "search_vector", "created_at", "updated_at"},
         )
         self.assertEqual(set(SERMON_FIELDS), expected)
 

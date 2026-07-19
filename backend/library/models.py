@@ -9,7 +9,10 @@ it's what the AI-translation pipeline keys on (same slug, new language).
 
 from __future__ import annotations
 
+from django.contrib.postgres.search import SearchVectorField
 from django.db import models
+
+from . import fts
 
 
 class AuthorManager(models.Manager):
@@ -49,6 +52,24 @@ class Author(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+    def save(self, *args, **kwargs):
+        # The author name is baked into their chapters' and sermons' search
+        # vectors (library/fts.py) — a rename must ripple into them. The
+        # rebuild re-tokenises the author's whole corpus, so compare against
+        # the stored name first: a bio edit costs one SELECT, not a cascade.
+        update_fields = kwargs.get("update_fields")
+        ripple = update_fields is None or "name" in update_fields
+        if ripple and self.pk:
+            old_name = (
+                Author.objects.filter(pk=self.pk)
+                .values_list("name", flat=True)
+                .first()
+            )
+            ripple = old_name != self.name
+        super().save(*args, **kwargs)
+        if ripple:
+            fts.refresh_author_works(self)
 
     def _localized(self, field: str, language: str) -> str:
         """A translated prose field in ``language``, else the English original.
@@ -171,6 +192,27 @@ class Book(models.Model):
     def __str__(self) -> str:
         return f"{self.title} ({self.language})"
 
+    def save(self, *args, **kwargs):
+        # The book title (and language, which picks the FTS config) is baked
+        # into its chapters' search vectors (library/fts.py) — a retitle must
+        # ripple. Compare against the stored row first so unrelated edits
+        # (covers, sort order) don't re-tokenise the whole book; on create the
+        # refresh matches zero chapter rows, so it's free either way.
+        update_fields = kwargs.get("update_fields")
+        ripple = update_fields is None or not {
+            "title", "language", "author", "author_id"
+        }.isdisjoint(update_fields)
+        if ripple and self.pk:
+            old = (
+                Book.objects.filter(pk=self.pk)
+                .values_list("title", "language", "author_id")
+                .first()
+            )
+            ripple = old != (self.title, self.language, self.author_id)
+        super().save(*args, **kwargs)
+        if ripple:
+            fts.refresh_book_chapters(self)
+
     @property
     def chapter_count(self) -> int:
         return self.chapters.count()
@@ -193,6 +235,9 @@ class Chapter(models.Model):
     # backfill_body_text command (run on every deploy) fills any gaps.
     body_text = models.TextField(blank=True, default="")
     word_count = models.PositiveIntegerField(default=0)
+    # Stored tsvector (Postgres only; NULL on SQLite). Kept by save() +
+    # backfill_search_vectors; GIN-indexed in migration 0041. See library/fts.py.
+    search_vector = SearchVectorField(null=True, editable=False, serialize=False)
 
     objects = ChapterManager()
 
@@ -220,6 +265,13 @@ class Chapter(models.Model):
         if update_fields is not None and "body_html" in update_fields:
             kwargs["update_fields"] = list(update_fields) + ["body_text"]
         super().save(*args, **kwargs)
+        # Skip the vector rebuild when a scoped save touches no indexed field
+        # (it re-tokenises the whole body — pure waste for a flag flip).
+        # Both the FK name and its attname: update_fields accepts either.
+        if update_fields is None or not {
+            "title", "body_html", "body_text", "book", "book_id"
+        }.isdisjoint(update_fields):
+            fts.refresh_chapter(self)
 
 
 class SermonManager(models.Manager):
@@ -254,6 +306,9 @@ class Sermon(models.Model):
     # Plain text derived from body_html; what full-text search indexes.
     body_text = models.TextField(blank=True, default="")
     word_count = models.PositiveIntegerField(default=0)
+    # Stored tsvector (Postgres only; NULL on SQLite). Kept by save() +
+    # backfill_search_vectors; GIN-indexed in migration 0041. See library/fts.py.
+    search_vector = SearchVectorField(null=True, editable=False, serialize=False)
     source_url = models.URLField(blank=True)
 
     sort_order = models.PositiveIntegerField(default=0)
@@ -288,6 +343,14 @@ class Sermon(models.Model):
         if update_fields is not None and "body_html" in update_fields:
             kwargs["update_fields"] = list(update_fields) + ["body_text"]
         super().save(*args, **kwargs)
+        # Skip the vector rebuild when a scoped save touches no indexed field
+        # (e.g. approve_sermon_translation flips only source_type).
+        # Both the FK name and its attname: update_fields accepts either.
+        if update_fields is None or not {
+            "title", "body_html", "body_text", "scripture_ref",
+            "author", "author_id", "language",
+        }.isdisjoint(update_fields):
+            fts.refresh_sermon(self)
 
 
 class PlanManager(models.Manager):

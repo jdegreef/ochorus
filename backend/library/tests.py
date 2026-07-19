@@ -247,6 +247,13 @@ class SearchTests(TestCase):
         self.assertEqual(data["results"], [])
         self.assertNotIn("suggestion", data)
 
+    @skipUnless(connection.vendor == "postgresql", "Postgres-only FTS path")
+    def test_postgres_stemming_and_ranking(self):
+        # "depend" should stem-match "dependence" under the english config.
+        results = self.search("depend")
+        self.assertTrue(results)
+        self.assertIn("⟦", results[0]["snippet"])
+
 
 class ScriptureSearchTests(TestCase):
     def setUp(self):
@@ -360,13 +367,6 @@ class SeedSermonsTests(TestCase):
         call_command("seed_sermons", verbosity=0)  # the next deploy
         lg = Sermon.objects.get(slug="the-immutability-of-god", language="lg")
         self.assertEqual(lg.source_type, Book.SourceType.AI_REVIEWED)
-
-    @skipUnless(connection.vendor == "postgresql", "Postgres-only FTS path")
-    def test_postgres_stemming_and_ranking(self):
-        # "depend" should stem-match "dependence" under the english config.
-        results = self.search("depend")
-        self.assertTrue(results)
-        self.assertIn("⟦", results[0]["snippet"])
 
 
 class PlanTests(TestCase):
@@ -1795,3 +1795,114 @@ class ContentQAFixesTests(TestCase):
         self.assertIn("<p><i>Vishnu</i> — Def", out)
         # Idempotent: a second pass finds nothing to rebuild.
         self.assertIsNone(m._rebuild_things_as_they_are_preface(out))
+
+
+@skipUnless(connection.vendor == "postgresql", "Stored search vectors are Postgres-only")
+class StoredSearchVectorTests(TestCase):
+    """The stored tsvector machinery (library/fts.py + migrations 0040/0041).
+
+    Only runs on the Postgres CI leg / prod-shaped databases — SQLite search
+    never reads search_vector.
+    """
+
+    def setUp(self):
+        self.author = Author.objects.create(slug="john-wesley", name="John Wesley")
+        self.book = Book.objects.create(
+            author=self.author, slug="perfection", language="en",
+            title="A Plain Account of Christian Perfection",
+        )
+        self.chapter = Chapter.objects.create(
+            book=self.book, order=1, title="The Circumcision of the Heart",
+            body_html="<p>Prayer is the lifting up of the heart to God.</p>",
+        )
+        self.sermon = Sermon.objects.create(
+            author=self.author, slug="the-almost-christian", language="en",
+            title="The Almost Christian", scripture_ref="Acts 26:28",
+            body_html="<p>He runs the race that is set before him.</p>",
+        )
+
+    def _search(self, q, language="en"):
+        from .search import search_library
+
+        return search_library(q, language)
+
+    def test_save_populates_vectors(self):
+        self.chapter.refresh_from_db()
+        self.sermon.refresh_from_db()
+        self.assertIsNotNone(self.chapter.search_vector)
+        self.assertIsNotNone(self.sermon.search_vector)
+
+    def test_gin_indexes_exist(self):
+        with connection.cursor() as cur:
+            cur.execute(
+                "SELECT indexname FROM pg_indexes WHERE indexname IN "
+                "('library_chapter_search_vector_gin', 'library_sermon_search_vector_gin')"
+            )
+            names = {row[0] for row in cur.fetchall()}
+        self.assertEqual(
+            names,
+            {"library_chapter_search_vector_gin", "library_sermon_search_vector_gin"},
+        )
+
+    def test_author_name_baked_into_passage_vectors(self):
+        # Recall parity with the old query-time vector: an author-name term
+        # ANDed with a body term must still match the passage row itself.
+        chapter_hits = [h for h in self._search("wesley prayer") if h["type"] == "chapter"]
+        self.assertTrue(chapter_hits)
+        sermon_hits = [h for h in self._search("wesley race") if h["type"] == "sermon"]
+        self.assertTrue(sermon_hits)
+
+    def test_english_config_stems(self):
+        # body says "runs"; english config stems "running" to match it.
+        hits = [h for h in self._search("running") if h["type"] == "sermon"]
+        self.assertTrue(hits)
+
+    def test_backfill_covers_fixture_loaded_rows(self):
+        from django.core.management import call_command
+
+        # bulk_create bypasses save(), like loaddata does on deploy.
+        Chapter.objects.bulk_create([
+            Chapter(book=self.book, order=2, title="On Zeal",
+                    body_html="<p>x</p>", body_text="Let zeal be guided by knowledge."),
+        ])
+        self.assertFalse(
+            any(h["type"] == "chapter" and "zeal" in h["snippet"].lower()
+                for h in self._search("zeal"))
+        )
+        call_command("backfill_search_vectors", verbosity=0)
+        self.assertTrue(
+            any(h["type"] == "chapter" for h in self._search("zeal"))
+        )
+
+    def test_author_rename_cascades_into_work_vectors(self):
+        # Author.save() ripples the new name into chapter + sermon vectors.
+        self.author.name = "Juan Wesley"
+        self.author.save()
+        self.assertTrue(
+            any(h["type"] == "chapter" for h in self._search("juan prayer"))
+        )
+        self.assertTrue(
+            any(h["type"] == "sermon" for h in self._search("juan race"))
+        )
+
+    def test_book_retitle_cascades_into_chapter_vectors(self):
+        self.book.title = "A Candid Account"
+        self.book.save()
+        self.assertTrue(
+            any(h["type"] == "chapter" for h in self._search("candid prayer"))
+        )
+
+    def test_backfill_all_refreshes_after_save_bypassing_rename(self):
+        from django.core.management import call_command
+
+        # A queryset.update() rename bypasses the save cascade — vectors go
+        # stale (documented edge)…
+        Author.objects.filter(pk=self.author.pk).update(name="Juan Wesley")
+        self.assertFalse(
+            any(h["type"] == "chapter" for h in self._search("juan prayer"))
+        )
+        # …and --all is the documented remedy.
+        call_command("backfill_search_vectors", "--all", verbosity=0)
+        self.assertTrue(
+            any(h["type"] == "chapter" for h in self._search("juan prayer"))
+        )

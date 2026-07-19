@@ -36,3 +36,7 @@ class Command(BaseCommand):
         # Create/refresh the curated topical shelves.
         self.stdout.write("→ seed_topics")
         call_command("seed_topics")
+        # Fixture loads bypass save(), so fill any NULL search vectors last —
+        # after body_text exists and all seed steps have created their rows.
+        self.stdout.write("→ backfill_search_vectors")
+        call_command("backfill_search_vectors")
