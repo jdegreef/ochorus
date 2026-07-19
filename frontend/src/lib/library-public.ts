@@ -219,8 +219,12 @@ export const listImportLanguages = () =>
 export const createAuthor = (name: string) =>
 	apiFetch<AuthorBio>('/api/admin/authors/', { method: 'POST', body: JSON.stringify({ name }) });
 
+// Falls back to English on a 404, like getBook/getChapter: a sermon detail view
+// filters by (slug, language), so a language-switch on a sermon page or a shared
+// /lg/sermons/<slug> link to an untranslated sermon would otherwise dead-end at
+// the not-found page instead of degrading to the readable English original.
 export const getSermon = (slug: string, language = 'en') =>
-	apiFetch<Sermon>(`/api/library/sermons/${slug}/?language=${language}`);
+	localized<Sermon>((l) => `/api/library/sermons/${slug}/?language=${l}`, language);
 
 export const search = (q: string, language = 'en') =>
 	apiFetch<SearchResponse>(
@@ -250,8 +254,11 @@ export interface PlanDetail extends PlanSummary {
 export const listPlans = (language = 'en') =>
 	apiFetch<PlanSummary[]>(`/api/library/plans/?language=${language}`);
 
+// English fallback on 404, same reasoning as getSermon: a plan detail view
+// filters by (slug, language), so an untranslated plan opened under a locale
+// prefix should degrade to English rather than 404.
 export const getPlan = (slug: string, language = 'en') =>
-	apiFetch<PlanDetail>(`/api/library/plans/${slug}/?language=${language}`);
+	localized<PlanDetail>((l) => `/api/library/plans/${slug}/?language=${l}`, language);
 
 export interface TopicCover {
 	cover_url: string;
