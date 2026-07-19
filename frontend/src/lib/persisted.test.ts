@@ -1,7 +1,12 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { readJSON, writeJSON } from './persisted';
+import { storageHealth } from './storageHealth.svelte';
 
-beforeEach(() => localStorage.clear());
+beforeEach(() => {
+	localStorage.clear();
+	storageHealth.acknowledge();
+});
+afterEach(() => vi.restoreAllMocks());
 
 describe('readJSON', () => {
 	it('returns the fallback when the key is absent', () => {
@@ -21,7 +26,17 @@ describe('readJSON', () => {
 
 describe('writeJSON', () => {
 	it('round-trips a value through localStorage', () => {
-		writeJSON('k', { hello: 'world', n: 3 });
+		expect(writeJSON('k', { hello: 'world', n: 3 })).toBe(true);
 		expect(readJSON('k', null)).toEqual({ hello: 'world', n: 3 });
+		expect(storageHealth.writeFailed).toBe(false);
+	});
+
+	it('flags storageHealth and returns false when the write throws (quota/private mode)', () => {
+		vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
+			throw new DOMException('QuotaExceededError');
+		});
+		expect(writeJSON('k', { big: 'x' })).toBe(false);
+		// A failed write must warn rather than lose the data silently.
+		expect(storageHealth.writeFailed).toBe(true);
 	});
 });

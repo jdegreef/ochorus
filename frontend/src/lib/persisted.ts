@@ -1,4 +1,5 @@
 import { browser } from '$app/environment';
+import { storageHealth } from './storageHealth.svelte';
 
 /**
  * The one place the reader's localStorage access lives.
@@ -29,15 +30,19 @@ export function readJSON<T>(key: string, fallback: T): T {
 }
 
 /**
- * Write a JSON-encoded value to localStorage. A no-op during SSR, and swallows
- * write failures (storage full or disabled) — the in-memory state is still
- * correct, so the reader keeps working for the session.
+ * Write a JSON-encoded value to localStorage. A no-op during SSR. The in-memory
+ * state is still correct so the reader keeps working this session, but a failure
+ * (storage full or disabled in private mode) means the value won't survive a
+ * reload — so we flag `storageHealth` to warn the reader rather than losing
+ * their highlights/notes/place silently. Returns whether the write succeeded.
  */
-export function writeJSON(key: string, value: unknown): void {
-	if (!browser) return;
+export function writeJSON(key: string, value: unknown): boolean {
+	if (!browser) return false;
 	try {
 		localStorage.setItem(key, JSON.stringify(value));
+		return true;
 	} catch {
-		/* quota exceeded or storage disabled — ignore */
+		storageHealth.fail();
+		return false;
 	}
 }
