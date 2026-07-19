@@ -3,6 +3,7 @@
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
+	import { focusTrap } from '$lib/actions/focusTrap';
 	import { goto } from '$app/navigation';
 
 	const t = i18n.t;
@@ -140,13 +141,15 @@
 		role="presentation"
 		onclick={close}
 	>
-		<!-- Panel -->
+		<!-- Panel. focusTrap keeps Tab inside the dialog and returns focus to
+		     whatever opened it on close; the field self-focuses (autoFocus:false). -->
 		<div
 			class="w-full max-w-xl overflow-hidden rounded-card border border-border bg-surface shadow-xl"
 			role="dialog"
 			aria-modal="true"
 			aria-label={t('search.title')}
 			tabindex="-1"
+			use:focusTrap={{ onEscape: close, autoFocus: false }}
 			onclick={(e) => e.stopPropagation()}
 		>
 			<input
