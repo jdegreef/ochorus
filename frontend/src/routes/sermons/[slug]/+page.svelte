@@ -8,8 +8,10 @@
 	import { readingTime } from '$lib/reading';
 	import { getLang } from '$lib/lang.svelte';
 	import { listen } from '$lib/listen.svelte';
+	import { scripture } from '$lib/scripture.svelte';
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
+	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
 	import ListenBar from '$lib/components/ListenBar.svelte';
 
 	let { data } = $props();
@@ -37,6 +39,15 @@
 				.catch(() => (related = []));
 		}
 	});
+
+	/** Tap a server-wrapped Bible reference → open the scripture popover. */
+	function onBodyClick(e: MouseEvent) {
+		const a = (e.target as HTMLElement).closest?.('a.scripture-ref') as HTMLElement | null;
+		if (!a?.dataset.ref) return;
+		e.preventDefault();
+		const r = a.getBoundingClientRect();
+		scripture.show(a.dataset.ref, r.bottom + window.scrollY, r.left + window.scrollX + r.width / 2);
+	}
 
 	/** Read the sermon aloud from the top. */
 	function startListening() {
@@ -130,8 +141,10 @@
 		<div class="mb-8"></div>
 	{/if}
 
-	<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. -->
-	<div class="reading" bind:this={body}>{@html sermon.body_html}</div>
+	<!-- Body HTML is cleaned server-side to a safe tag subset on ingest;
+	     Bible references are wrapped as tappable spans (scripture popover). -->
+	<!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events -->
+	<div class="reading" bind:this={body} onclick={onBodyClick}>{@html sermon.body_html}</div>
 
 	{#if related.length}
 		<section class="mt-12 border-t border-border pt-6">
@@ -159,4 +172,5 @@
 	</nav>
 </article>
 
+<ScripturePopover />
 <ListenBar />

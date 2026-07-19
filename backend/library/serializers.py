@@ -95,6 +95,14 @@ class SermonDetailSerializer(serializers.ModelSerializer):
 
     author_name = serializers.CharField(source="author.name", read_only=True)
     author_slug = serializers.CharField(source="author.slug", read_only=True)
+    body_html = serializers.SerializerMethodField()
+
+    def get_body_html(self, obj):
+        # Wrap Bible references as clickable spans, so the reader's scripture
+        # popover works in sermons too (same treatment chapters get).
+        from .scripture import annotate_references
+
+        return annotate_references(obj.body_html)
 
     class Meta:
         model = Sermon

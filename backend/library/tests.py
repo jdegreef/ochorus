@@ -1416,6 +1416,23 @@ class ScriptureTests(TestCase):
             self.client.get("/api/library/scripture/?ref=Nope 1:1").status_code, 404
         )
 
+    def test_sermon_body_references_are_annotated(self):
+        author = Author.objects.create(slug="cs-scrip", name="Charles Spurgeon")
+        Sermon.objects.create(
+            author=author,
+            slug="faith-and-life",
+            language="en",
+            title="Faith and Life",
+            body_html="<p>Consider Hebrews 11:1 and take heart.</p>",
+            sort_order=1,
+        )
+        res = self.client.get("/api/library/sermons/faith-and-life/?language=en")
+        self.assertEqual(res.status_code, 200)
+        self.assertIn(
+            '<a class="scripture-ref" data-ref="Hebrews 11:1">Hebrews 11:1</a>',
+            res.data["body_html"],
+        )
+
 
 class _FakeUsage:
     input_tokens = 120
