@@ -268,3 +268,87 @@ class AdminUsersView(APIView):
         return out
 
 
+
+
+class AdminSearchView(APIView):
+    """Search analytics — what readers look for, and what they don't find.
+
+    Aggregate-only, from the anonymous SearchQueryLog. Zero-result queries are
+    the roadmap signal: each one is a reader asking for content or spelling
+    tolerance we don't have yet. Top lists skip fragments under 3 characters
+    (search-as-you-type prefixes) and fold case.
+    """
+
+    permission_classes = [IsAdminEmail]
+
+    WINDOW_DAYS = 30
+    TOP_N = 20
+
+    def get(self, request):
+        from datetime import timedelta
+
+        from django.db.models import Q as DQ
+        from django.db.models.functions import Length, Lower, TruncDate
+        from django.utils import timezone
+
+        from ..models import SearchQueryLog
+
+        now = timezone.now()
+
+        def overview(days):
+            w = SearchQueryLog.objects.filter(created_at__gte=now - timedelta(days=days))
+            total = w.count()
+            zero = w.filter(result_count=0).count()
+            return {
+                "searches": total,
+                "distinct_queries": w.annotate(q=Lower("query")).values("q").distinct().count(),
+                "zero_results": zero,
+                "zero_rate": round(zero / total, 3) if total else 0.0,
+            }
+
+        window = SearchQueryLog.objects.filter(
+            created_at__gte=now - timedelta(days=self.WINDOW_DAYS)
+        )
+
+        def top(qs):
+            rows = (
+                qs.annotate(q=Lower("query"), qlen=Length("query"))
+                .filter(qlen__gte=3)
+                .values("q")
+                .annotate(count=Count("id"))
+                .order_by("-count", "q")[: self.TOP_N]
+            )
+            return [{"query": r["q"], "count": r["count"]} for r in rows]
+
+        daily = (
+            SearchQueryLog.objects.filter(created_at__gte=now - timedelta(days=14))
+            .annotate(day=TruncDate("created_at"))
+            .values("day")
+            .annotate(
+                searches=Count("id"),
+                zero=Count("id", filter=DQ(result_count=0)),
+            )
+            .order_by("day")
+        )
+
+        by_language = (
+            window.values("language")
+            .annotate(
+                searches=Count("id"),
+                zero=Count("id", filter=DQ(result_count=0)),
+            )
+            .order_by("-searches")
+        )
+
+        return Response(
+            {
+                "overview": {"7d": overview(7), "30d": overview(30)},
+                "top_queries": top(window.filter(result_count__gt=0)),
+                "zero_result_queries": top(window.filter(result_count=0)),
+                "daily": [
+                    {"day": str(r["day"]), "searches": r["searches"], "zero": r["zero"]}
+                    for r in daily
+                ],
+                "by_language": list(by_language),
+            }
+        )

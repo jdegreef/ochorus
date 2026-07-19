@@ -4,13 +4,15 @@ Books are addressed by their canonical ``slug`` plus a ``language`` query param
 (default "en"). All endpoints are public (AllowAny via the project default).
 """
 
+import logging
+
 from django.db.models import Count, Q, Sum
 from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Author, Book, Chapter, Plan, Sermon, Topic
+from .models import Author, Book, Chapter, Plan, SearchQueryLog, Sermon, Topic
 from .search import search_library, suggest
 from .serializers import (
     AuthorDetailSerializer,
@@ -25,6 +27,8 @@ from .serializers import (
     TopicDetailSerializer,
     TopicListSerializer,
 )
+
+logger = logging.getLogger(__name__)
 
 DEFAULT_LANGUAGE = "en"
 
@@ -339,6 +343,17 @@ class SearchView(APIView):
             hint = suggest(q, language)
             if hint:
                 payload["suggestion"] = hint
+        # Anonymous analytics (admin "what do readers search for / not find").
+        # Fail-open: a logging hiccup must never break search itself.
+        try:
+            SearchQueryLog.objects.create(
+                query=q[:200],
+                language=language,
+                result_count=len(results),
+                suggested="suggestion" in payload,
+            )
+        except Exception:
+            logger.exception("search query logging failed")
         return Response(payload)
 
 

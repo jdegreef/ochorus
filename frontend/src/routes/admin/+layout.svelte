@@ -13,6 +13,7 @@
 		{ href: '/admin/review', label: 'Review queue' },
 		{ href: '/admin/audit', label: 'Content audit' },
 		{ href: '/admin/engagement', label: 'Engagement' },
+		{ href: '/admin/search', label: 'Search' },
 		{ href: '/admin/users', label: 'Users' }
 	];
 

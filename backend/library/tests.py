@@ -2053,3 +2053,95 @@ class SermonBookFacetTests(TestCase):
         row = next(r for r in res.data if r["slug"] == "x")
         self.assertEqual(row["scripture_book"], "Malachi")
         self.assertEqual(row["scripture_book_order"], 39)
+
+
+class SearchLogTests(TestCase):
+    """The anonymous search-query log + its admin analytics endpoint."""
+
+    def setUp(self):
+        from .models import SearchQueryLog
+
+        self.SearchQueryLog = SearchQueryLog
+        self.client = APIClient()
+        author = Author.objects.create(slug="andrew-murray", name="Andrew Murray")
+        book = Book.objects.create(
+            author=author, slug="humility", language="en", title="Humility"
+        )
+        Chapter.objects.create(
+            book=book, order=1, title="The Glory of the Creature",
+            body_html="<p>Humility is the place of entire dependence on God.</p>",
+        )
+
+    def search(self, q, language="en"):
+        return self.client.get(f"/api/library/search/?q={q}&language={language}")
+
+    def test_search_is_logged(self):
+        res = self.search("humility")
+        self.assertEqual(res.status_code, 200)
+        row = self.SearchQueryLog.objects.get()
+        self.assertEqual(row.query, "humility")
+        self.assertEqual(row.language, "en")
+        self.assertGreater(row.result_count, 0)
+        self.assertFalse(row.suggested)
+
+    def test_zero_result_query_logged_with_suggestion_flag(self):
+        res = self.search("humilty")  # typo → did-you-mean fires
+        self.assertEqual(res.status_code, 200)
+        row = self.SearchQueryLog.objects.get()
+        self.assertEqual(row.result_count, 0)
+        self.assertEqual(row.suggested, "suggestion" in res.data)
+
+    def test_short_query_not_logged(self):
+        self.search("h")
+        self.assertEqual(self.SearchQueryLog.objects.count(), 0)
+
+    def test_logging_failure_never_breaks_search(self):
+        from unittest.mock import patch
+
+        with patch.object(
+            self.SearchQueryLog.objects, "create", side_effect=RuntimeError("db down")
+        ):
+            res = self.search("humility")
+        self.assertEqual(res.status_code, 200)
+        self.assertTrue(res.data["results"])
+
+    def test_trim_command_prunes_old_rows_only(self):
+        from datetime import timedelta
+
+        from django.core.management import call_command
+        from django.utils import timezone
+
+        self.search("humility")  # fresh row
+        old = self.SearchQueryLog.objects.create(
+            query="ancient", language="en", result_count=0
+        )
+        self.SearchQueryLog.objects.filter(pk=old.pk).update(
+            created_at=timezone.now() - timedelta(days=200)
+        )
+        call_command("trim_search_log", verbosity=0)
+        remaining = list(self.SearchQueryLog.objects.values_list("query", flat=True))
+        self.assertEqual(remaining, ["humility"])
+
+    @override_settings(DEBUG=True)
+    def test_admin_search_stats_aggregates(self):
+        for q in ("humility", "humility", "Humility", "grace", "gr"):
+            self.search(q)
+        res = self.client.get("/api/admin/search-stats/")
+        self.assertEqual(res.status_code, 200)
+        ov = res.data["overview"]["30d"]
+        self.assertEqual(ov["searches"], 5)
+        # Case folds: humility×3 is one distinct query.
+        self.assertEqual(ov["distinct_queries"], 3)
+        top = {r["query"]: r["count"] for r in res.data["top_queries"]}
+        self.assertEqual(top.get("humility"), 3)
+        # Zero-result list holds the misses; the 2-char fragment is filtered out.
+        zero = [r["query"] for r in res.data["zero_result_queries"]]
+        self.assertIn("grace", zero)
+        self.assertNotIn("gr", zero)
+        self.assertEqual(res.data["by_language"][0]["language"], "en")
+        self.assertTrue(res.data["daily"])
+
+    @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
+    def test_admin_search_stats_requires_admin(self):
+        res = self.client.get("/api/admin/search-stats/")
+        self.assertIn(res.status_code, (401, 403))

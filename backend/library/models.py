@@ -553,3 +553,29 @@ class TopicSermon(models.Model):
 
     def __str__(self) -> str:
         return f"{self.topic.slug} ⊃ {self.sermon_slug}"
+
+
+class SearchQueryLog(models.Model):
+    """One executed library search — anonymous by design (no user, ever).
+
+    Written fail-open by SearchView and read only by the admin search
+    analytics (top queries, zero-result queries — the data that decides what
+    content and features to build next). Search-as-you-type means prefix
+    fragments ("pra", "pray") land here too; the analytics aggregate by full
+    query string and skip fragments under 3 characters in the top lists, so
+    the noise washes out. Rows older than 180 days are pruned by the
+    trim_search_log release step.
+    """
+
+    query = models.CharField(max_length=200)
+    language = models.CharField(max_length=10)
+    result_count = models.PositiveIntegerField()
+    # A "did you mean" hint was offered (only computed for zero-result queries).
+    suggested = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+
+    def __str__(self) -> str:
+        return f"{self.query!r} [{self.language}] → {self.result_count}"

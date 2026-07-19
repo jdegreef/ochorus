@@ -336,3 +336,27 @@ export interface AdminBookDetail {
 
 export const getAdminBook = (slug: string) =>
 	apiFetch<AdminBookDetail>(`/api/admin/books/${encodeURIComponent(slug)}/`);
+
+// Search analytics: what readers look for, and what they don't find.
+
+export interface SearchStatsWindow {
+	searches: number;
+	distinct_queries: number;
+	zero_results: number;
+	zero_rate: number;
+}
+
+export interface SearchTopQuery {
+	query: string;
+	count: number;
+}
+
+export interface AdminSearchStats {
+	overview: { '7d': SearchStatsWindow; '30d': SearchStatsWindow };
+	top_queries: SearchTopQuery[];
+	zero_result_queries: SearchTopQuery[];
+	daily: { day: string; searches: number; zero: number }[];
+	by_language: { language: string; searches: number; zero: number }[];
+}
+
+export const getAdminSearchStats = () => apiFetch<AdminSearchStats>('/api/admin/search-stats/');
