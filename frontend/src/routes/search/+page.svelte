@@ -383,7 +383,7 @@
 							class="rounded-full border px-2.5 py-1 text-[0.78rem]"
 							class:border-accent={typeFilter === 'all'}
 							class:bg-accent={typeFilter === 'all'}
-							class:text-white={typeFilter === 'all'}
+							class:text-accent-contrast={typeFilter === 'all'}
 							class:border-border={typeFilter !== 'all'}
 							class:text-muted={typeFilter !== 'all'}
 							onclick={() => (typeFilter = 'all')}
@@ -397,7 +397,7 @@
 								class="rounded-full border px-2.5 py-1 text-[0.78rem]"
 								class:border-accent={typeFilter === g.type}
 								class:bg-accent={typeFilter === g.type}
-								class:text-white={typeFilter === g.type}
+								class:text-accent-contrast={typeFilter === g.type}
 								class:border-border={typeFilter !== g.type}
 								class:text-muted={typeFilter !== g.type}
 								onclick={() => (typeFilter = g.type)}
