@@ -3,6 +3,7 @@
 	import { SITE_URL } from '$lib/config';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import { i18n } from '$lib/i18n.svelte';
+	import { readingMinutes } from '$lib/reading';
 
 	const t = i18n.t;
 
@@ -33,7 +34,7 @@
 			return (
 				s.title.toLowerCase().includes(q) ||
 				s.author.name.toLowerCase().includes(q) ||
-				(s.scripture_ref ?? '').toLowerCase().includes(q)
+				s.scripture_ref.toLowerCase().includes(q)
 			);
 		});
 	});
@@ -41,19 +42,16 @@
 	const filtering = $derived(queryText.trim() !== '' || bibleBook !== '');
 
 	// Group sermons by author, preserving the API's author-ordered sequence.
-	const grouped = $derived(
-		(() => {
-			const map = new Map<string, { name: string; slug: string; items: SermonSummary[] }>();
-			for (const s of filtered) {
-				const key = s.author.slug;
-				if (!map.has(key)) map.set(key, { name: s.author.name, slug: key, items: [] });
-				map.get(key)!.items.push(s);
-			}
-			return [...map.values()];
-		})()
-	);
+	const grouped = $derived.by(() => {
+		const map = new Map<string, { name: string; slug: string; items: SermonSummary[] }>();
+		for (const s of filtered) {
+			const key = s.author.slug;
+			if (!map.has(key)) map.set(key, { name: s.author.name, slug: key, items: [] });
+			map.get(key)!.items.push(s);
+		}
+		return [...map.values()];
+	});
 
-	const readMins = (words: number) => Math.max(1, Math.round(words / 200));
 </script>
 
 <svelte:head>
@@ -135,7 +133,7 @@
 											<span class="text-small text-accent">{sermon.scripture_ref}</span>
 										{/if}
 									</span>
-									<span class="shrink-0 text-[0.8rem] text-muted">{readMins(sermon.word_count)} {t('common.min')}</span>
+									<span class="shrink-0 text-[0.8rem] text-muted">{readingMinutes(sermon.word_count)} {t('common.min')}</span>
 								</a>
 							</li>
 						{/each}
