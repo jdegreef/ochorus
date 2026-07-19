@@ -2,7 +2,7 @@
 	import type { TopicSummary } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
 	import { i18n } from '$lib/i18n.svelte';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import Icon from '$lib/components/Icon.svelte';
 	import { topicMeta } from '$lib/topics';
 
@@ -17,10 +17,14 @@
 <svelte:head>
 	<title>{t('topics.title')} — Ochorus</title>
 	<meta name="description" content={t('topics.tagline')} />
-	<link rel="canonical" href="{SITE_URL}/topics" />
+	<link rel="canonical" href="{SITE_URL}{localizeHref('/topics')}" />
+	{#each locales as loc (loc)}
+		<link rel="alternate" hreflang={loc} href="{SITE_URL}{localizeHref('/topics', { locale: loc })}" />
+	{/each}
+	<link rel="alternate" hreflang="x-default" href="{SITE_URL}/topics" />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="{t('topics.title')} — Ochorus" />
-	<meta property="og:url" content="{SITE_URL}/topics" />
+	<meta property="og:url" content="{SITE_URL}{localizeHref('/topics')}" />
 </svelte:head>
 
 <div class="mx-auto max-w-5xl px-5 py-10">

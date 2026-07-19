@@ -5,7 +5,7 @@
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumb } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import BookCard from '$lib/components/BookCard.svelte';
 
 	let { data } = $props();
@@ -23,7 +23,14 @@
 
 	const totalWords = $derived(book.chapters.reduce((sum, c) => sum + c.word_count, 0));
 
-	const canonical = $derived(`${SITE_URL}/books/${book.slug}/`);
+	// Self-referential canonical + hreflang: this page is prerendered per locale,
+	// so each localized copy points at ITSELF (not the English URL, which would
+	// deindex the translations) and links its siblings. Mirrors authors/[slug].
+	const path = $derived(`/books/${book.slug}/`);
+	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
+	const alternates = $derived(
+		locales.map((loc) => ({ loc, href: `${SITE_URL}${localizeHref(path, { locale: loc })}` }))
+	);
 	const description = $derived(
 		(book.description || `${book.title} by ${book.author.name} — free to read on Ochorus.`).slice(
 			0,
@@ -60,6 +67,10 @@
 	<title>{book.title} — {book.author.name} — Ochorus</title>
 	<meta name="description" content={description} />
 	<link rel="canonical" href={canonical} />
+	{#each alternates as a (a.loc)}
+		<link rel="alternate" hreflang={a.loc} href={a.href} />
+	{/each}
+	<link rel="alternate" hreflang="x-default" href="{SITE_URL}{localizeHref(path, { locale: 'en' })}" />
 	<meta property="og:type" content="book" />
 	<meta property="og:title" content="{book.title} — {book.author.name}" />
 	<meta property="og:description" content={description} />

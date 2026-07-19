@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { BookSummary, AuthorBio } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import { i18n } from '$lib/i18n.svelte';
 	import ContinueReading from '$lib/components/ContinueReading.svelte';
 	import TodaysReading from '$lib/components/TodaysReading.svelte';
@@ -26,15 +26,16 @@
 <svelte:head>
 	<title>Ochorus — {t('home.heroTitle')}</title>
 	<meta name="description" content={t('home.metaDescription')} />
-	<link rel="canonical" href="{SITE_URL}/" />
+	<link rel="canonical" href="{SITE_URL}{localizeHref('/')}" />
+	{#each locales as loc (loc)}
+		<link rel="alternate" hreflang={loc} href="{SITE_URL}{localizeHref('/', { locale: loc })}" />
+	{/each}
+	<link rel="alternate" hreflang="x-default" href="{SITE_URL}/" />
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="Ochorus" />
-	<meta property="og:title" content="Ochorus — Equipping People with Classic Christian Books" />
-	<meta
-		property="og:description"
-		content="Read classic Christian books from Andrew Murray, Charles Spurgeon, Watchman Nee and more — free, beautifully set, in your language."
-	/>
-	<meta property="og:url" content="{SITE_URL}/" />
+	<meta property="og:title" content="Ochorus — {t('home.heroTitle')}" />
+	<meta property="og:description" content={t('home.metaDescription')} />
+	<meta property="og:url" content="{SITE_URL}{localizeHref('/')}" />
 	<meta name="twitter:card" content="summary" />
 </svelte:head>
 
