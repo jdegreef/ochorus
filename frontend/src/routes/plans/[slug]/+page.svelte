@@ -3,12 +3,60 @@
 	import { planProgress } from '$lib/planProgress.svelte';
 	import { readingMinutes, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { SITE_URL } from '$lib/config';
+	import { jsonLd, breadcrumb } from '$lib/seo';
+	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 
 	let { data } = $props();
 	const plan = $derived<PlanDetail>(data.plan);
 	const t = i18n.t;
+
+	// Self-referential canonical + hreflang per locale (mirrors topics/[slug]) —
+	// an English canonical here would deindex the translated plan pages.
+	const path = $derived(`/plans/${plan.slug}/`);
+	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
+	const alternates = $derived(
+		locales.map((loc) => ({ loc, href: `${SITE_URL}${localizeHref(path, { locale: loc })}` }))
+	);
+	// The distinct books the plan reads through (first appearance), for an ItemList.
+	const planBooks = $derived.by(() => {
+		const seen = new Set<string>();
+		const out: { slug: string; title: string }[] = [];
+		for (const d of plan.days) {
+			if (!seen.has(d.book_slug)) {
+				seen.add(d.book_slug);
+				out.push({ slug: d.book_slug, title: d.book_title });
+			}
+		}
+		return out;
+	});
+	const planLd = $derived(
+		jsonLd({
+			'@context': 'https://schema.org',
+			'@type': 'ItemList',
+			name: plan.title,
+			description: plan.description || undefined,
+			numberOfItems: plan.day_count,
+			inLanguage: plan.language,
+			url: canonical,
+			itemListElement: planBooks.map((b, i) => ({
+				'@type': 'ListItem',
+				position: i + 1,
+				name: b.title,
+				url: `${SITE_URL}/books/${b.slug}`
+			}))
+		})
+	);
+	const crumbsLd = $derived(
+		jsonLd(
+			breadcrumb([
+				{ name: t('common.home'), url: '/' },
+				{ name: t('plans.title'), url: '/plans' },
+				{ name: plan.title, url: `/plans/${plan.slug}` }
+			])
+		)
+	);
 
 	const started = $derived(planProgress.isStarted(plan.slug));
 	const next = $derived(planProgress.nextDay(plan.slug, plan.day_count));
@@ -27,7 +75,21 @@
 	};
 </script>
 
-<svelte:head><title>{plan.title} — Ochorus</title></svelte:head>
+<svelte:head>
+	<title>{plan.title} — Ochorus</title>
+	<meta name="description" content={plan.description} />
+	<link rel="canonical" href={canonical} />
+	{#each alternates as a (a.loc)}
+		<link rel="alternate" hreflang={a.loc} href={a.href} />
+	{/each}
+	<link rel="alternate" hreflang="x-default" href="{SITE_URL}{localizeHref(path, { locale: 'en' })}" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="{plan.title} — Ochorus" />
+	<meta property="og:description" content={plan.description} />
+	<meta property="og:url" content={canonical} />
+	{@html planLd}
+	{@html crumbsLd}
+</svelte:head>
 
 <div class="mx-auto max-w-3xl px-5 py-10">
 	<nav class="mb-5 text-small text-muted" aria-label={t('a11y.breadcrumb')}>
