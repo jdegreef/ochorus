@@ -275,6 +275,8 @@
   "books_source_all": "Todos",
   "books_source_public": "Dominio público",
   "books_source_translated": "Traducido",
+  "books_topic_all": "Todos los temas",
+  "books_filter_topic": "Filtrar por tema",
   "books_badge_translated": "Traducido",
   "books_new_title": "Nuevo en la biblioteca",
   "books_load_error": "No pudimos cargar la biblioteca en este momento.",

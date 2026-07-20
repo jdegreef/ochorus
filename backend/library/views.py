@@ -132,6 +132,24 @@ class BookListView(generics.ListAPIView):
             .order_by("sort_order", "title")
         )
 
+    def get_serializer_context(self):
+        """Attach a ``book_slug -> [topic chip]`` map so each book's topics
+        cost the shelf a fixed handful of queries, not one per book."""
+        ctx = super().get_serializer_context()
+        lang = _language(self.request)
+        book_topics: dict[str, list[dict]] = {}
+        topics = Topic.objects.filter(is_published=True).prefetch_related(
+            "translations", "entries"
+        )
+        for topic in topics:
+            chip = {"slug": topic.slug, "title": topic.title_for(lang)}
+            for entry in topic.entries.all():
+                book_topics.setdefault(entry.book_slug, []).append(chip)
+        for chips in book_topics.values():
+            chips.sort(key=lambda c: c["title"])
+        ctx["book_topics"] = book_topics
+        return ctx
+
 
 class BookDetailView(generics.RetrieveAPIView):
     serializer_class = BookDetailSerializer

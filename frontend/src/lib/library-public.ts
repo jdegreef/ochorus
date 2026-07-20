@@ -25,6 +25,8 @@ export interface BookSummary {
 	cover_url: string;
 	chapter_count: number;
 	word_count: number | null;
+	/** Published topics this book belongs to (for the shelf's topic filter). */
+	topics: TopicChip[];
 	created_at: string;
 }
 
