@@ -14,6 +14,10 @@
 	import { apiFetch } from '$lib/api';
 	import { page } from '$app/stores';
 	import { buildOutline, type OutlineEntry } from '$lib/sermonOutline';
+	import { sermonMarks } from '$lib/sermonMarks.svelte';
+	import { renderMarks } from '$lib/rangeMarks';
+	import type { Segment } from '$lib/marks.svelte';
+	import { focusTrap } from '$lib/actions/focusTrap';
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
@@ -181,15 +185,57 @@
 	);
 	const preachedYear = $derived(sermon.preached_on ? sermon.preached_on.slice(0, 4) : '');
 
-	// Selecting text in the sermon offers copy-quote / share (with attribution),
-	// and a single word opens the dictionary — same as the chapter reader. No
-	// persistence: sermon highlights/notes are a separate, heavier feature.
+	// Selecting text offers copy-quote / share (with attribution), highlight and
+	// note; a single word opens the dictionary — same as the chapter reader.
 	const cite = $derived({
 		author: sermon.author_name,
 		book: sermon.title,
 		chapter: '',
 		url: $page.url.href
 	});
+
+	// --- Highlights & notes ----------------------------------------------------
+	// Device-local text-range marks over the sermon body (shared range model with
+	// the book reader; see sermonMarks.svelte.ts). A note editor opens on tap of a
+	// marked span or via the selection bar's "Note".
+	let noteOpen = $state(false);
+	let noteId = $state<string | null>(null);
+	let notePending = $state<Segment[]>([]);
+	let noteDraft = $state('');
+
+	$effect(() => {
+		sermonMarks.load(sermon.slug); // reload when navigating between sermons
+	});
+
+	// Paint marks as <mark> spans; clicking one opens its note editor.
+	$effect(() => {
+		const list = sermonMarks.list;
+		if (!body) return;
+		renderMarks(body, list, (id) => {
+			noteId = id;
+			notePending = [];
+			noteDraft = sermonMarks.getNote(id);
+			noteOpen = true;
+		});
+	});
+
+	/** Note on a fresh selection: highlight it first, then attach the note. */
+	function openNoteForSelection(segments: Segment[]) {
+		const existing = sermonMarks.groupCovering(segments);
+		noteId = existing;
+		notePending = existing ? [] : segments;
+		noteDraft = existing ? sermonMarks.getNote(existing) : '';
+		noteOpen = true;
+	}
+	function saveNote() {
+		if (noteId) sermonMarks.setNote(noteId, noteDraft);
+		else if (notePending.length && noteDraft.trim()) sermonMarks.add(notePending, noteDraft);
+		noteOpen = false;
+	}
+	function removeMark() {
+		if (noteId) sermonMarks.remove(noteId);
+		noteOpen = false;
+	}
 </script>
 
 <svelte:head>
@@ -374,12 +420,49 @@
 <SelectionBar
 	container={body}
 	{cite}
+	onHighlight={(segments) => {
+		const existing = sermonMarks.groupCovering(segments);
+		if (existing) sermonMarks.remove(existing);
+		else sermonMarks.add(segments);
+	}}
+	onNote={openNoteForSelection}
+	isHighlighted={(segments) => sermonMarks.groupCovering(segments) !== null}
 	onDefine={(word, top, left) => define.show(word, top, left)}
 />
 
 <ScripturePopover />
 <DefinePopover />
 <ListenBar />
+
+{#if noteOpen}
+	<div
+		class="note-overlay"
+		role="dialog"
+		aria-modal="true"
+		aria-label={t('reader.note')}
+		use:focusTrap={{ onEscape: () => (noteOpen = false) }}
+	>
+		<div class="note-card">
+			<h2 class="mb-2 text-h3">{t('reader.note')}</h2>
+			<textarea
+				bind:value={noteDraft}
+				rows="5"
+				class="w-full rounded-sm border border-border bg-bg p-3 text-body text-text"
+				placeholder="…"
+			></textarea>
+			<div class="mt-3 flex items-center gap-2">
+				{#if noteId}
+					<button class="btn btn-ghost !text-red-700 dark:!text-red-400" onclick={removeMark}>
+						{t('reader.removeHighlight')}
+					</button>
+				{/if}
+				<span class="flex-1"></span>
+				<button class="btn btn-ghost" onclick={() => (noteOpen = false)}>{t('common.cancel')}</button>
+				<button class="btn btn-primary" onclick={saveNote}>{t('common.save')}</button>
+			</div>
+		</div>
+	</div>
+{/if}
 
 <style>
 	/* Scroll-progress bar: a thin accent line scaled by reading fraction. */
@@ -453,6 +536,44 @@
 		border-radius: 4px;
 		box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 10%, transparent);
 		transition: background 0.3s ease;
+	}
+
+	/* Text-range marks: <mark> spans wrapped around the selected text. */
+	:global(.reading mark.range-mark) {
+		background: color-mix(in srgb, var(--gold) 28%, transparent);
+		color: inherit;
+		border-radius: 2px;
+		padding: 0.08em 0;
+		box-decoration-break: clone;
+		-webkit-box-decoration-break: clone;
+		cursor: pointer;
+	}
+	:global(.reading mark.range-mark:hover) {
+		background: color-mix(in srgb, var(--gold) 42%, transparent);
+	}
+	/* A mark carrying a note gets a subtle underline cue. */
+	:global(.reading mark.range-mark.has-note) {
+		border-bottom: 2px solid var(--gold);
+	}
+
+	.note-overlay {
+		position: fixed;
+		inset: 0;
+		z-index: 50;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 1rem;
+		background: rgb(0 0 0 / 0.4);
+	}
+	.note-card {
+		width: 100%;
+		max-width: 32rem;
+		border-radius: var(--radius-card);
+		border: 1px solid var(--border);
+		background: var(--surface);
+		padding: 1.25rem;
+		box-shadow: 0 10px 40px rgb(0 0 0 / 0.35);
 	}
 
 	/* Jump-to-section outline: a light popover under the reader bar. */
