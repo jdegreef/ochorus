@@ -71,8 +71,8 @@
 	<meta property="og:url" content="{SITE_URL}{localizeHref('/sermons')}" />
 </svelte:head>
 
-<div class="mx-auto max-w-3xl px-5 py-12">
-	<header class="mb-10">
+<div class="mx-auto max-w-3xl px-5 py-10">
+	<header class="mb-8">
 		<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">{t('nav.sermons')}</p>
 		<h1 class="text-display mb-3">{t('sermons.title')}</h1>
 		<p class="text-body text-muted">

@@ -330,7 +330,7 @@
 <svelte:head><title>{t('search.title')} — Ochorus</title></svelte:head>
 
 <div class="mx-auto max-w-2xl px-5 py-10">
-	<h1 class="text-h1 mb-5">{t('search.title')}</h1>
+	<h1 class="text-h1 mb-8">{t('search.title')}</h1>
 
 	<input
 		bind:value={q}
