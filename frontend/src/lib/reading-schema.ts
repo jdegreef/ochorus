@@ -13,6 +13,7 @@
 // --- localStorage keys --------------------------------------------------------
 export const PROGRESS_KEY = 'ochorus:progress';
 export const MARKS_KEY = 'ochorus:marks';
+export const SERMON_MARKS_KEY = 'ochorus:sermon-marks';
 export const ANCHOR_KEY = 'ochorus:anchors';
 export const BOOKMARKS_KEY = 'ochorus:bookmarks';
 export const PLANS_KEY = 'ochorus:plans';
@@ -26,6 +27,7 @@ export const PLANS_KEY = 'ochorus:plans';
 export const READING_DATA_KEYS = [
 	PROGRESS_KEY,
 	MARKS_KEY,
+	SERMON_MARKS_KEY,
 	ANCHOR_KEY,
 	BOOKMARKS_KEY,
 	PLANS_KEY
