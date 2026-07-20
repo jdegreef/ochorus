@@ -26,6 +26,7 @@
 	let sort = $state<Sort>('shelf');
 	let group = $state<Group>('all');
 	let source = $state<Source>('all');
+	let topic = $state(''); // selected topic slug; '' = all topics
 	let queryText = $state('');
 
 	function save() {
@@ -57,9 +58,16 @@
 	});
 
 	// --- Derived --------------------------------------------------------------
-	const searching = $derived(queryText.trim().length > 0 || source !== 'all');
+	const searching = $derived(queryText.trim().length > 0 || source !== 'all' || topic !== '');
 	const sourceTypes = $derived(new Set(books.map((b) => b.source_type)));
 	const showSourceFilter = $derived(sourceTypes.size > 1);
+
+	// Distinct topics present on the shelf, alphabetical — the topic-filter chips.
+	const allTopics = $derived.by(() => {
+		const m = new Map<string, string>();
+		for (const b of books) for (const tc of b.topics ?? []) m.set(tc.slug, tc.title);
+		return [...m].map(([slug, title]) => ({ slug, title })).sort((a, b) => a.title.localeCompare(b.title));
+	});
 	const authorCount = $derived(new Set(books.map((b) => b.author.slug)).size);
 	const isEnglish = $derived(getLang() === 'en');
 
@@ -74,6 +82,7 @@
 		return books.filter((b) => {
 			if (source === 'public_domain' && b.source_type !== 'public_domain') return false;
 			if (source === 'translated' && b.source_type === 'public_domain') return false;
+			if (topic && !(b.topics ?? []).some((tc) => tc.slug === topic)) return false;
 			if (!q) return true;
 			return (
 				b.title.toLowerCase().includes(q) ||
@@ -290,6 +299,38 @@
 				>
 			</div>
 		</div>
+
+		<!-- Topic filter -->
+		{#if allTopics.length > 1}
+			<div class="mb-6 flex flex-wrap gap-1.5" aria-label={t('books.filterTopic')} role="group">
+				<button
+					class="rounded-full border px-2.5 py-1 text-[0.75rem]"
+					class:border-accent={topic === ''}
+					class:bg-accent={topic === ''}
+					class:text-accent-contrast={topic === ''}
+					class:border-border={topic !== ''}
+					class:text-muted={topic !== ''}
+					onclick={() => (topic = '')}
+					aria-pressed={topic === ''}
+				>
+					{t('books.topicAll')}
+				</button>
+				{#each allTopics as tc (tc.slug)}
+					<button
+						class="rounded-full border px-2.5 py-1 text-[0.75rem]"
+						class:border-accent={topic === tc.slug}
+						class:bg-accent={topic === tc.slug}
+						class:text-accent-contrast={topic === tc.slug}
+						class:border-border={topic !== tc.slug}
+						class:text-muted={topic !== tc.slug}
+						onclick={() => (topic = topic === tc.slug ? '' : tc.slug)}
+						aria-pressed={topic === tc.slug}
+					>
+						{tc.title}
+					</button>
+				{/each}
+			</div>
+		{/if}
 
 		<!-- Author quick-nav -->
 		{#if groups && groups.length > 1}

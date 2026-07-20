@@ -640,6 +640,23 @@ class TopicTests(TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.data["topics"], [{"slug": "prayer", "title": "On Prayer"}])
 
+    def test_books_list_carries_topic_chips(self):
+        # The shelf endpoint attaches each book's published topics (for the
+        # topic filter) — both members here belong to the one topic.
+        res = self.client.get("/api/library/books/?language=en")
+        self.assertEqual(res.status_code, 200)
+        by_slug = {b["slug"]: b for b in res.data}
+        chip = [{"slug": "prayer", "title": "On Prayer"}]
+        self.assertEqual(by_slug["prayer"]["topics"], chip)
+        self.assertEqual(by_slug["humility-2"]["topics"], chip)
+
+    def test_books_list_topic_chips_localize(self):
+        res = self.client.get("/api/library/books/?language=sw")
+        by_slug = {b["slug"]: b for b in res.data}
+        self.assertEqual(
+            by_slug["humility-2"]["topics"], [{"slug": "prayer", "title": "Kuhusu Maombi"}]
+        )
+
     def test_seed_topics_idempotent_and_upserts_membership(self):
         from django.core.management import call_command
         call_command("seed_topics")

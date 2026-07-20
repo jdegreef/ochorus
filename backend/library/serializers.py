@@ -38,6 +38,7 @@ class BookListSerializer(serializers.ModelSerializer):
     author = AuthorSerializer(read_only=True)
     chapter_count = serializers.IntegerField(source="num_chapters", read_only=True)
     word_count = serializers.IntegerField(source="total_words", read_only=True)
+    topics = serializers.SerializerMethodField()
 
     class Meta:
         model = Book
@@ -52,8 +53,16 @@ class BookListSerializer(serializers.ModelSerializer):
             "cover_url",
             "chapter_count",
             "word_count",
+            "topics",
             "created_at",
         ]
+
+    def get_topics(self, obj):
+        """Published topics this book belongs to, for the shelf's topic filter.
+        Served from a slug→chips map the view builds once (see
+        ``BookListView.get_serializer_context``) so the shelf stays one query
+        for topics regardless of how many books are on it."""
+        return self.context.get("book_topics", {}).get(obj.slug, [])
 
 
 class SermonListSerializer(serializers.ModelSerializer):

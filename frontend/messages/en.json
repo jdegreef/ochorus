@@ -275,6 +275,8 @@
   "books_source_all": "All",
   "books_source_public": "Public domain",
   "books_source_translated": "Translated",
+  "books_topic_all": "All topics",
+  "books_filter_topic": "Filter by topic",
   "books_badge_translated": "Translated",
   "books_new_title": "New to the library",
   "books_load_error": "We couldn't load the library just now.",
