@@ -101,12 +101,11 @@
 	</div>
 </section>
 
-<!-- Personal blocks — client-side only (this page is prerendered) -->
+<!-- Continue reading (resume) stays first for returning readers; empty for
+     new visitors, so browsing books leads for them. Client-side only. -->
 <ContinueReading books={data.books} />
-<TodaysReading />
-<SermonOfTheWeek />
 
-<!-- Discover Your Next Book -->
+<!-- Discover Your Next Book — above the plan/sermon blocks -->
 <section class="mx-auto max-w-5xl px-5 py-14">
 	<div class="mb-6 flex items-end justify-between">
 		<h2 class="text-h1">{t('home.discoverNext')}</h2>
@@ -118,6 +117,10 @@
 		{/each}
 	</div>
 </section>
+
+<!-- Personal plan / sermon blocks — client-side only (this page is prerendered) -->
+<TodaysReading />
+<SermonOfTheWeek />
 
 <!-- Browse by topic -->
 {#if topics.length}
