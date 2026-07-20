@@ -12,7 +12,14 @@
 
 	const started = $derived(planProgress.isStarted(plan.slug));
 	const next = $derived(planProgress.nextDay(plan.slug, plan.day_count));
-	const doneCount = $derived(planProgress.doneDays(plan.slug).length);
+	const doneSet = $derived(new Set(planProgress.doneDays(plan.slug)));
+	const doneCount = $derived(doneSet.size);
+	const pct = $derived(plan.day_count ? Math.round((doneCount / plan.day_count) * 100) : 0);
+	const daysLeft = $derived(Math.max(0, plan.day_count - doneCount));
+	/** Words still to read across the days not yet marked done. */
+	const wordsLeft = $derived(
+		plan.days.filter((d) => !doneSet.has(d.day)).reduce((s, d) => s + (d.word_count || 0), 0)
+	);
 
 	const dayHref = (day: number) => {
 		const d = plan.days.find((x) => x.day === day);
@@ -54,23 +61,36 @@
 		<p class="btn btn-ghost pointer-events-none inline-block">✓ {t('plans.finished')}</p>
 	{/if}
 
-	{#if started}
-		<div class="mt-5 h-1.5 max-w-md overflow-hidden rounded-full bg-surface-2">
-			<div
-				class="h-full rounded-full bg-accent"
-				style="width: {Math.round((doneCount / plan.day_count) * 100)}%"
-			></div>
+	{#if started && next !== null}
+		<div class="mt-6 max-w-md">
+			<div class="mb-2 flex items-baseline justify-between gap-3 text-small">
+				<span class="font-semibold text-text">{pct}% {t('plans.complete')}</span>
+				<span class="text-muted">
+					{t('plans.daysLeft').replace('%n%', String(daysLeft))}{#if wordsLeft}
+						<span class="opacity-60"> · </span>{t('plans.minLeft').replace(
+							'%n%',
+							String(readingMinutes(wordsLeft))
+						)}{/if}
+				</span>
+			</div>
+			<div class="h-2 overflow-hidden rounded-full bg-surface-2">
+				<div
+					class="h-full rounded-full bg-accent transition-[width] duration-500"
+					style="width: {pct}%"
+				></div>
+			</div>
 		</div>
 	{/if}
 
 	<ol class="mt-8 divide-y divide-border">
 		{#each plan.days as d (d.day)}
-			{@const done = planProgress.isDone(plan.slug, d.day)}
+			{@const done = doneSet.has(d.day)}
 			{@const isNext = d.day === next}
 			<li>
 				<a
 					href={dayHref(d.day)}
-					class="flex items-center gap-4 py-3.5 hover:no-underline"
+					class="flex items-center gap-4 py-3.5 transition-opacity hover:no-underline hover:opacity-100"
+					class:opacity-55={done && !isNext}
 					onclick={() => planProgress.start(plan.slug)}
 				>
 					<span
