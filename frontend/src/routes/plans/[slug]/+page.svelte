@@ -86,24 +86,31 @@
 		{#each plan.days as d (d.day)}
 			{@const done = doneSet.has(d.day)}
 			{@const isNext = d.day === next}
-			<li>
+			<li
+				class="flex items-center gap-4 py-3.5 transition-opacity hover:opacity-100"
+				class:opacity-55={done && !isNext}
+			>
+				<button
+					type="button"
+					onclick={() => planProgress.toggleDone(plan.slug, d.day)}
+					aria-pressed={done}
+					aria-label={done ? t('plans.dayDone') : t('plans.markDone')}
+					title={done ? t('plans.dayDone') : t('plans.markDone')}
+					class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-small font-semibold transition-colors hover:border-accent"
+					class:border-accent={isNext}
+					class:text-accent={isNext && !done}
+					class:border-border={!isNext}
+					class:bg-accent={done}
+					class:text-accent-contrast={done}
+					class:text-muted={!done && !isNext}
+				>
+					{done ? '✓' : d.day}
+				</button>
 				<a
 					href={dayHref(d.day)}
-					class="flex items-center gap-4 py-3.5 transition-opacity hover:no-underline hover:opacity-100"
-					class:opacity-55={done && !isNext}
+					class="flex min-w-0 flex-1 items-center gap-4 hover:no-underline"
 					onclick={() => planProgress.start(plan.slug)}
 				>
-					<span
-						class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-small font-semibold"
-						class:border-accent={isNext}
-						class:text-accent={isNext && !done}
-						class:border-border={!isNext}
-						class:bg-accent={done}
-						class:text-accent-contrast={done}
-						class:text-muted={!done && !isNext}
-					>
-						{done ? '✓' : d.day}
-					</span>
 					<span class="min-w-0 flex-1">
 						<span class="block truncate text-body text-text" class:font-semibold={isNext}>
 							{d.chapter_title || `${t('plans.day')} ${d.day}`}
