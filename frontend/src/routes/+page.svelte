@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { BookSummary, AuthorBio, TopicSummary } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
+	import { jsonLd } from '$lib/seo';
 	import { goto } from '$app/navigation';
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import { i18n } from '$lib/i18n.svelte';
@@ -34,6 +35,32 @@
 			.slice(0, 2)
 			.join('')
 			.toUpperCase();
+
+	// Site-level structured data: a WebSite with the sitelinks-searchbox action
+	// (the hero search posts to /search) and the publishing Organization.
+	const siteLd = jsonLd([
+		{
+			'@context': 'https://schema.org',
+			'@type': 'WebSite',
+			name: 'Ochorus',
+			url: `${SITE_URL}/`,
+			potentialAction: {
+				'@type': 'SearchAction',
+				target: {
+					'@type': 'EntryPoint',
+					urlTemplate: `${SITE_URL}/search?q={search_term_string}`
+				},
+				'query-input': 'required name=search_term_string'
+			}
+		},
+		{
+			'@context': 'https://schema.org',
+			'@type': 'Organization',
+			name: 'Ochorus',
+			url: `${SITE_URL}/`,
+			description: t('home.metaDescription')
+		}
+	]);
 </script>
 
 <svelte:head>
@@ -50,6 +77,7 @@
 	<meta property="og:description" content={t('home.metaDescription')} />
 	<meta property="og:url" content="{SITE_URL}{localizeHref('/')}" />
 	<meta name="twitter:card" content="summary" />
+	{@html siteLd}
 </svelte:head>
 
 <!-- Hero -->

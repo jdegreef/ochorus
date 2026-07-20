@@ -24,6 +24,7 @@
 	<link rel="alternate" hreflang="x-default" href="{SITE_URL}/topics" />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="{t('topics.title')} — Ochorus" />
+	<meta property="og:description" content={t('topics.tagline')} />
 	<meta property="og:url" content="{SITE_URL}{localizeHref('/topics')}" />
 </svelte:head>
 

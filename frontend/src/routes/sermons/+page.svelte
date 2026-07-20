@@ -68,6 +68,7 @@
 	<link rel="alternate" hreflang="x-default" href="{SITE_URL}/sermons" />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="{t('nav.sermons')} — Ochorus" />
+	<meta property="og:description" content={t('sermons.metaDescription')} />
 	<meta property="og:url" content="{SITE_URL}{localizeHref('/sermons')}" />
 </svelte:head>
 
