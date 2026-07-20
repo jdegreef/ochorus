@@ -531,6 +531,14 @@ class PlanTests(TestCase):
         # Total words across the plan's days (each stub chapter is one word).
         self.assertEqual(res.data[0]["total_words"], 200)
 
+    def test_list_and_detail_expose_book_covers(self):
+        # The plan draws from one distinct book → one cover descriptor, in
+        # first-appearance order, on both the list and the detail response.
+        lst = self.client.get("/api/library/plans/?language=en")
+        self.assertEqual([c["title"] for c in lst.data[0]["covers"]], ["Humility"])
+        detail = self.client.get("/api/library/plans/humility-12-days/?language=en")
+        self.assertEqual([c["title"] for c in detail.data["covers"]], ["Humility"])
+
     def test_detail_resolves_chapter_titles(self):
         res = self.client.get("/api/library/plans/humility-12-days/?language=en")
         self.assertEqual(res.status_code, 200)

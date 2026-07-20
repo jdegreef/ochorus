@@ -240,6 +240,8 @@ export interface PlanSummary {
 	day_count: number;
 	/** Total words across all the plan's days (for a reading-time estimate). */
 	total_words: number;
+	/** Distinct book covers the plan draws from (first-appearance order). */
+	covers: TopicCover[];
 }
 
 export interface PlanDay {
