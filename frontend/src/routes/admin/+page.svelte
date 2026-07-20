@@ -130,7 +130,7 @@
 <svelte:head><title>Admin — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
 
 <div class="mx-auto max-w-6xl px-5 py-10">
-	<header class="mb-8 flex flex-wrap items-end justify-between gap-4">
+	<header class="mb-10 flex flex-wrap items-end justify-between gap-4">
 		<div>
 			<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">Admin</p>
 			<h1 class="text-display">Content dashboard</h1>
@@ -178,7 +178,7 @@
 	{:else if stats}
 		<!-- Attention flags -->
 		{#if flags.length}
-			<div class="mb-8 flex flex-wrap gap-2">
+			<div class="mb-10 flex flex-wrap gap-2">
 				{#each flags as f (f.label)}
 					{#if f.href}
 						<a
@@ -201,9 +201,9 @@
 		{/if}
 
 		<!-- Headline totals -->
-		<section class="mb-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
+		<section class="mb-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
 			{#each cards as c (c.label)}
-				<div class="rounded-2xl border border-border bg-surface p-4">
+				<div class="rounded-2xl border border-border bg-surface p-5">
 					<div class="text-display !text-3xl !leading-none text-text">{fmt(c.value)}</div>
 					<div class="mt-2 text-small font-semibold text-text">{c.label}</div>
 					<div class="text-small text-muted">{c.sub}</div>
