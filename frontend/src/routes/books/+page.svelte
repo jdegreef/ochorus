@@ -28,6 +28,7 @@
 	<link rel="alternate" hreflang="x-default" href="{SITE_URL}/books" />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="{t('nav.books')} — Ochorus" />
+	<meta property="og:description" content={t('books.metaDescription')} />
 	<meta property="og:url" content={canonical} />
 </svelte:head>
 

@@ -5,7 +5,7 @@
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import BookCover from '$lib/components/BookCover.svelte';
 
 	const t = i18n.t;
@@ -136,8 +136,13 @@
 	<title>{t('bios.eyebrow')} — Ochorus</title>
 	<meta name="description" content={t('bios.metaDescription')} />
 	<link rel="canonical" href="{SITE_URL}{localizeHref('/biographies')}" />
+	{#each locales as loc (loc)}
+		<link rel="alternate" hreflang={loc} href="{SITE_URL}{localizeHref('/biographies', { locale: loc })}" />
+	{/each}
+	<link rel="alternate" hreflang="x-default" href="{SITE_URL}/biographies" />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="{t('bios.eyebrow')} — Ochorus" />
+	<meta property="og:description" content={t('bios.metaDescription')} />
 	<meta property="og:url" content="{SITE_URL}{localizeHref('/biographies')}" />
 	{@html peopleLd}
 </svelte:head>
