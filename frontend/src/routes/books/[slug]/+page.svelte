@@ -89,7 +89,7 @@
 	{@html crumbsLd}
 </svelte:head>
 
-<div class="mx-auto max-w-3xl px-5 py-8">
+<div class="mx-auto max-w-3xl px-5 py-10">
 	<a href={localizeHref('/')} class="text-small text-muted">← {t('common.library')}</a>
 
 	<header class="mt-5 flex flex-col gap-5 sm:flex-row sm:items-start">
