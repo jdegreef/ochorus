@@ -4,6 +4,7 @@
 	import { readingMinutes, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
+	import CoverStrip from '$lib/components/CoverStrip.svelte';
 
 	let { data } = $props();
 	const plan = $derived<PlanDetail>(data.plan);
@@ -28,12 +29,21 @@
 		<span class="text-text">{plan.title}</span>
 	</nav>
 
-	<h1 class="text-h1 mb-2">{plan.title}</h1>
-	<p class="mb-3 max-w-xl text-body text-muted">{plan.description}</p>
-	<p class="mb-6 text-small text-muted">
-		{plan.day_count} {t('plans.days')}{#if plan.total_words}
-			<span class="opacity-60"> · </span>{readingTime(plan.total_words)}{/if}
-	</p>
+	<div class="flex items-start justify-between gap-4">
+		<div class="min-w-0 flex-1">
+			<h1 class="text-h1 mb-2">{plan.title}</h1>
+			<p class="mb-3 max-w-xl text-body text-muted">{plan.description}</p>
+			<p class="mb-6 text-small text-muted">
+				{plan.day_count} {t('plans.days')}{#if plan.total_words}
+					<span class="opacity-60"> · </span>{readingTime(plan.total_words)}{/if}
+			</p>
+		</div>
+		{#if plan.covers.length}
+			<div class="hidden shrink-0 pt-1 sm:block">
+				<CoverStrip covers={plan.covers} max={5} />
+			</div>
+		{/if}
+	</div>
 
 	{#if next !== null}
 		<a href={dayHref(next)} class="btn btn-primary" onclick={() => planProgress.start(plan.slug)}>

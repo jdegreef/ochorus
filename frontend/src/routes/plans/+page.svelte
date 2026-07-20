@@ -4,6 +4,7 @@
 	import { readingMinutes } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
+	import CoverStrip from '$lib/components/CoverStrip.svelte';
 
 	let { data } = $props();
 	const plans = $derived<PlanSummary[]>(data.plans);
@@ -32,14 +33,21 @@
 				href={localizeHref(`/plans/${plan.slug}`)}
 				class="block rounded-card border border-border p-5 hover:bg-surface-2 hover:no-underline"
 			>
-				<div class="flex items-baseline justify-between gap-3">
-					<h2 class="text-h3 text-text">{plan.title}</h2>
-					<span class="shrink-0 text-small text-muted">
-						{plan.day_count} {t('plans.days')}{#if plan.total_words}
-							<span class="opacity-60"> · </span>~{perDay(plan)} {t('plans.minPerDay')}{/if}
-					</span>
+				<div class="flex items-start justify-between gap-4">
+					<div class="min-w-0 flex-1">
+						<h2 class="text-h3 text-text">{plan.title}</h2>
+						<p class="mt-0.5 text-small text-muted">
+							{plan.day_count} {t('plans.days')}{#if plan.total_words}
+								<span class="opacity-60"> · </span>~{perDay(plan)} {t('plans.minPerDay')}{/if}
+						</p>
+						<p class="mt-2 text-small text-muted">{plan.description}</p>
+					</div>
+					{#if plan.covers.length}
+						<div class="hidden shrink-0 pt-1 sm:block">
+							<CoverStrip covers={plan.covers} />
+						</div>
+					{/if}
 				</div>
-				<p class="mt-1 text-small text-muted">{plan.description}</p>
 				{#if started}
 					<div class="mt-3">
 						<div class="h-1.5 overflow-hidden rounded-full bg-surface-2">

@@ -336,13 +336,20 @@ class PlanListSerializer(serializers.ModelSerializer):
 
     day_count = serializers.IntegerField(source="num_days", read_only=True)
     total_words = serializers.SerializerMethodField()
+    covers = serializers.SerializerMethodField()
 
     class Meta:
         model = Plan
-        fields = ["slug", "language", "title", "description", "day_count", "total_words"]
+        fields = [
+            "slug", "language", "title", "description", "day_count",
+            "total_words", "covers",
+        ]
 
     def get_total_words(self, obj):
         return _plan_total_words(obj, obj.language)
+
+    def get_covers(self, obj):
+        return _plan_covers(obj, obj.language)
 
 
 def _plan_total_words(plan, language):
@@ -359,6 +366,31 @@ def _plan_total_words(plan, language):
         ).values("book__slug", "order", "word_count")
     }
     return sum(wc.get(p, 0) for p in pairs)
+
+
+def _plan_covers(plan, language, limit=5):
+    """The distinct books a plan draws from (first-appearance order), as small
+    cover descriptors — mirrors a topic's covers strip. One query for books."""
+    order = []
+    for d in plan.days.all():
+        if d.book_slug not in order:
+            order.append(d.book_slug)
+    if not order:
+        return []
+    books = {
+        b.slug: b
+        for b in Book.objects.filter(slug__in=order, language=language)
+    }
+    covers = []
+    for slug in order:
+        b = books.get(slug)
+        if b:
+            covers.append(
+                {"cover_url": b.cover_url, "cover_color": b.cover_color, "title": b.title}
+            )
+        if len(covers) >= limit:
+            break
+    return covers
 
 
 class PlanDaySerializer(serializers.ModelSerializer):
