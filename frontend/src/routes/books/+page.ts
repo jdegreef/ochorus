@@ -61,6 +61,11 @@ import type { PageLoad } from './$types';
  * edition of Talks to the Farmer (Ebigambo eri Omulimi, PR #262) by C. H.
  * Spurgeon went live, so the /lg/books index and its /books/<slug> pages
  * re-crawl and bake with the new title.
+ *
+ * Prerender refresh 2026-07-20 (queue job #248): same again after the Luganda
+ * edition of The Way to God (Ekkubo Erituusa eri Katonda, PR #264) by D. L.
+ * Moody went live, so the /lg/books index and its /books/<slug> pages re-crawl
+ * and bake with the new title.
  */
 export const load: PageLoad = async () => {
 	try {
