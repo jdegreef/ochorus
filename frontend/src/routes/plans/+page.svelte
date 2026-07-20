@@ -3,19 +3,39 @@
 	import { planProgress } from '$lib/planProgress.svelte';
 	import { readingMinutes } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { SITE_URL } from '$lib/config';
+	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 
 	let { data } = $props();
 	const plans = $derived<PlanSummary[]>(data.plans);
 	const t = i18n.t;
 
+	// Self-referential canonical + hreflang per locale (mirrors /books, /topics).
+	const canonical = `${SITE_URL}${localizeHref('/plans')}`;
+	const alternates = locales.map((loc) => ({
+		loc,
+		href: `${SITE_URL}${localizeHref('/plans', { locale: loc })}`
+	}));
+
 	/** Rounded minutes of reading in an average day of a plan. */
 	const perDay = (plan: PlanSummary) =>
 		plan.day_count ? Math.max(1, readingMinutes(Math.round(plan.total_words / plan.day_count))) : 0;
 </script>
 
-<svelte:head><title>{t('plans.title')} — Ochorus</title></svelte:head>
+<svelte:head>
+	<title>{t('plans.title')} — Ochorus</title>
+	<meta name="description" content={t('plans.tagline')} />
+	<link rel="canonical" href={canonical} />
+	{#each alternates as a (a.loc)}
+		<link rel="alternate" hreflang={a.loc} href={a.href} />
+	{/each}
+	<link rel="alternate" hreflang="x-default" href="{SITE_URL}/plans" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="{t('plans.title')} — Ochorus" />
+	<meta property="og:description" content={t('plans.tagline')} />
+	<meta property="og:url" content={canonical} />
+</svelte:head>
 
 <div class="mx-auto max-w-3xl px-5 py-10">
 	<h1 class="text-h1 mb-2">{t('plans.title')}</h1>
