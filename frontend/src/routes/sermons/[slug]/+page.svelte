@@ -14,6 +14,7 @@
 	import { apiFetch } from '$lib/api';
 	import { page } from '$app/stores';
 	import { buildOutline, type OutlineEntry } from '$lib/sermonOutline';
+	import { absUrl, jsonLd, breadcrumb } from '$lib/seo';
 	import { sermonMarks } from '$lib/sermonMarks.svelte';
 	import { renderMarks } from '$lib/rangeMarks';
 	import type { Segment } from '$lib/marks.svelte';
@@ -185,6 +186,44 @@
 	);
 	const preachedYear = $derived(sermon.preached_on ? sermon.preached_on.slice(0, 4) : '');
 
+	// --- SEO -------------------------------------------------------------------
+	// A real description from the opening prose (beats the generic template) and
+	// structured data: an Article for the sermon (its preaching text as `about`)
+	// plus a breadcrumb. og:image is the author portrait when present (raster).
+	const metaDescription = $derived(
+		(sermon.body_html || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 155) ||
+			`${sermon.title} — a sermon by ${sermon.author_name}.`
+	);
+	const ogImage = $derived(sermon.author_photo ? absUrl(sermon.author_photo) : '');
+	const sermonLd = $derived(
+		jsonLd({
+			'@context': 'https://schema.org',
+			'@type': 'Article',
+			headline: sermon.title,
+			author: {
+				'@type': 'Person',
+				name: sermon.author_name,
+				url: absUrl(`/authors/${sermon.author_slug}`)
+			},
+			inLanguage: sermon.language,
+			url: canonical,
+			isAccessibleForFree: true,
+			datePublished: sermon.preached_on || undefined,
+			image: ogImage || undefined,
+			about: sermon.scripture_ref ? { '@type': 'Thing', name: sermon.scripture_ref } : undefined,
+			publisher: { '@type': 'Organization', name: 'Ochorus' }
+		})
+	);
+	const crumbsLd = $derived(
+		jsonLd(
+			breadcrumb([
+				{ name: t('common.home'), url: '/' },
+				{ name: t('nav.sermons'), url: '/sermons' },
+				{ name: sermon.title, url: `/sermons/${sermon.slug}` }
+			])
+		)
+	);
+
 	// Selecting text offers copy-quote / share (with attribution), highlight and
 	// note; a single word opens the dictionary — same as the chapter reader.
 	const cite = $derived({
@@ -240,12 +279,20 @@
 
 <svelte:head>
 	<title>{sermon.title} — {sermon.author_name} — Ochorus</title>
-	<meta name="description" content="{sermon.title} — a sermon by {sermon.author_name}." />
+	<meta name="description" content={metaDescription} />
 	<link rel="canonical" href={canonical} />
 	{#each alternates as a (a.loc)}
 		<link rel="alternate" hreflang={a.loc} href={a.href} />
 	{/each}
 	<link rel="alternate" hreflang="x-default" href="{SITE_URL}{localizeHref(path, { locale: 'en' })}" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="{sermon.title} — {sermon.author_name}" />
+	<meta property="og:description" content={metaDescription} />
+	<meta property="og:url" content={canonical} />
+	{#if ogImage}<meta property="og:image" content={ogImage} />{/if}
+	<meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+	{@html sermonLd}
+	{@html crumbsLd}
 </svelte:head>
 
 <svelte:window onscroll={onScroll} />
