@@ -106,7 +106,7 @@
 <ContinueReading books={data.books} />
 
 <!-- Discover Your Next Book — above the plan/sermon blocks -->
-<section class="mx-auto max-w-5xl px-5 py-14">
+<section class="mx-auto max-w-5xl px-5 pt-14">
 	<div class="mb-6 flex items-end justify-between">
 		<h2 class="text-h1">{t('home.discoverNext')}</h2>
 		<a href={localizeHref('/books')} class="text-small font-semibold text-accent">{t('home.allBooks')} →</a>
@@ -124,8 +124,8 @@
 
 <!-- Browse by topic -->
 {#if topics.length}
-	<section class="mx-auto max-w-5xl px-5 pb-4">
-		<div class="mb-5 flex items-end justify-between">
+	<section class="mx-auto max-w-5xl px-5 pt-14">
+		<div class="mb-6 flex items-end justify-between">
 			<h2 class="text-h1">{t('home.browseTopic')}</h2>
 			<a href={localizeHref('/topics')} class="text-small font-semibold text-accent"
 				>{t('home.allTopics')} →</a
@@ -146,8 +146,8 @@
 {/if}
 
 <!-- Mission teaser -->
-<section class="border-y border-border bg-surface-2">
-	<div class="mx-auto max-w-3xl px-5 py-14 text-center">
+<section class="mt-14 border-y border-border bg-surface-2">
+	<div class="mx-auto max-w-3xl px-5 py-16 text-center">
 		<h2 class="text-h1 mb-3">{t('home.missionTitle')}</h2>
 		<p class="mx-auto max-w-xl text-body text-muted">
 			{t('home.missionText')}
@@ -157,7 +157,7 @@
 </section>
 
 <!-- Christian Authors -->
-<section class="mx-auto max-w-5xl px-5 py-14">
+<section class="mx-auto max-w-5xl px-5 pt-14 pb-20">
 	<div class="mb-6 flex items-end justify-between">
 		<h2 class="text-h1">{t('home.authorsTitle')}</h2>
 		<a href={localizeHref('/biographies')} class="text-small font-semibold text-accent">{t('home.allBiographies')} →</a>
