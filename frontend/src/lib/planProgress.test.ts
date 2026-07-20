@@ -23,6 +23,23 @@ describe('planProgress store', () => {
 		expect(planProgress.isDone('humility', 2)).toBe(false);
 	});
 
+	it('toggleDone flips a day and starts the plan on first mark', () => {
+		expect(planProgress.isStarted('t')).toBe(false);
+		planProgress.toggleDone('t', 2); // mark → also starts
+		expect(planProgress.isStarted('t')).toBe(true);
+		expect(planProgress.isDone('t', 2)).toBe(true);
+
+		planProgress.toggleDone('t', 2); // unmark
+		expect(planProgress.isDone('t', 2)).toBe(false);
+		expect(planProgress.doneDays('t')).toEqual([]);
+	});
+
+	it('unmarkDone is a no-op for an unmarked day', () => {
+		planProgress.markDone('u', 1);
+		planProgress.unmarkDone('u', 5); // never marked
+		expect(planProgress.doneDays('u')).toEqual([1]);
+	});
+
 	it('nextDay returns the first uncompleted day, or null when finished', () => {
 		planProgress.markDone('p', 1);
 		planProgress.markDone('p', 2);

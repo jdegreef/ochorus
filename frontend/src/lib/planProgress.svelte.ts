@@ -63,6 +63,22 @@ class PlanProgress {
 		this.#write(store);
 	}
 
+	/** Un-complete a day (for the detail-page toggle). No-op if not marked. */
+	unmarkDone(slug: string, day: number) {
+		const store = readAll();
+		const state = store[slug];
+		if (!state?.done.includes(day)) return;
+		state.done = state.done.filter((d) => d !== day);
+		store[slug] = state;
+		this.#write(store);
+	}
+
+	/** Flip a day's done state; marking a day also starts the plan (via markDone). */
+	toggleDone(slug: string, day: number) {
+		if (this.isDone(slug, day)) this.unmarkDone(slug, day);
+		else this.markDone(slug, day);
+	}
+
 	/** The next uncompleted day (1-based), or null when the plan is finished. */
 	nextDay(slug: string, totalDays: number): number | null {
 		const done = new Set(this.doneDays(slug));
