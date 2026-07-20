@@ -1638,6 +1638,11 @@ class AdminTranslationJobsTests(TestCase):
             author=author, slug="himself", language="en", title="Himself",
             body_html="<p>x</p>", word_count=10,
         )
+        # An English plan and an author with a long-form bio, so plan/bio jobs
+        # have real English sources to resolve against.
+        Plan.objects.create(slug="humility-12-days", language="en", title="Humility in 12 Days")
+        author.bio_html = "<p>A long-form biography.</p>"
+        author.save(update_fields=["bio_html"])
 
     def setUp(self):
         self.client = APIClient()
@@ -1672,11 +1677,13 @@ class AdminTranslationJobsTests(TestCase):
         from unittest.mock import patch
 
         cases = [
-            ({"type": "plan", "slug": "humility", "language": "lg"}, 400),  # type not yet supported
+            ({"type": "essay", "slug": "humility", "language": "lg"}, 400),  # unknown type
             ({"type": "book", "slug": "humility", "language": "en"}, 400),  # source language
             ({"type": "book", "slug": "humility", "language": "xx"}, 400),  # unknown code
             ({"type": "book", "slug": "nope", "language": "lg"}, 404),  # no English source
             ({"type": "book", "slug": "the-inner-chamber", "language": "lg"}, 409),  # exists
+            ({"type": "plan", "slug": "nope", "language": "lg"}, 404),  # no English plan
+            ({"type": "bio", "slug": "nope", "language": "lg"}, 404),  # no author with a bio
         ]
         with patch("library.admin_views.jobs.requests"):
             for body, expected in cases:
@@ -1707,6 +1714,31 @@ class AdminTranslationJobsTests(TestCase):
         self.assertEqual(payload["title"], "[translation] book:humility -> lg")
         self.assertEqual(payload["labels"], ["translation-job"])
         self.assertIn("Humility", payload["body"])
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_post_creates_plan_and_bio_issues(self):
+        from unittest.mock import MagicMock, patch
+
+        for type_, slug, marker in (
+            ("plan", "humility-12-days", "Humility in 12 Days"),
+            ("bio", "andrew-murray", "Andrew Murray"),
+        ):
+            title = f"[translation] {type_}:{slug} -> lg"
+            with patch("library.admin_views.jobs.requests") as gh:
+                gh.get.return_value = MagicMock(json=lambda: [], raise_for_status=lambda: None)
+                gh.post.return_value = MagicMock(
+                    json=lambda t=title: self._issue(t), raise_for_status=lambda: None
+                )
+                res = self.client.post(
+                    "/api/admin/translation-jobs/",
+                    {"type": type_, "slug": slug, "language": "lg"},
+                    format="json",
+                )
+            self.assertEqual(res.status_code, 201, type_)
+            self.assertEqual(res.data["job"]["type"], type_)
+            payload = gh.post.call_args.kwargs["json"]
+            self.assertEqual(payload["title"], title)
+            self.assertIn(marker, payload["body"])
 
     @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
     def test_post_duplicate_returns_existing(self):
