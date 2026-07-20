@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { getBook, getChapter, type BookDetail } from '$lib/library';
+	import { getBook, getChapter, getSermon, type BookDetail } from '$lib/library';
 	import { getLang } from '$lib/lang.svelte';
 	import { bookmarks } from '$lib/bookmarks.svelte';
 	import { marks } from '$lib/marks.svelte';
+	import { sermonMarks } from '$lib/sermonMarks.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import type { Bookmark, Mark } from '$lib/reading-schema';
@@ -20,9 +21,12 @@
 		chapters: ChapterBlock[];
 	};
 
+	type SermonBlock = { slug: string; title: string; author: string; highlights: HL[] };
+
 	let loading = $state(true);
 	let books = $state<BookBlock[]>([]);
-	const isEmpty = $derived(!loading && books.length === 0);
+	let sermons = $state<SermonBlock[]>([]);
+	const isEmpty = $derived(!loading && books.length === 0 && sermons.length === 0);
 
 	// Live search across every book, chapter title, highlight, note and bookmark.
 	let query = $state('');
@@ -48,7 +52,23 @@
 			})
 			.filter((bk) => bk.bookmarks.length || bk.chapters.length);
 	});
-	const noMatches = $derived(!loading && books.length > 0 && q.length > 0 && filtered.length === 0);
+	const filteredSermons = $derived.by(() => {
+		if (!q) return sermons;
+		const hit = (s: string) => s.toLowerCase().includes(q);
+		return sermons
+			.map((sm) => {
+				const sermonHit = hit(sm.title) || hit(sm.author);
+				const highlights = sermonHit
+					? sm.highlights
+					: sm.highlights.filter((h) => hit(h.text) || hit(h.note ?? ''));
+				return { ...sm, highlights };
+			})
+			.filter((sm) => sm.highlights.length);
+	});
+	const hasContent = $derived(books.length > 0 || sermons.length > 0);
+	const noMatches = $derived(
+		!loading && hasContent && q.length > 0 && filtered.length === 0 && filteredSermons.length === 0
+	);
 
 	// Split a chapter's cleaned HTML into its top-level blocks' text — the same
 	// blocks the reader indexes marks against (p = block, s/e = chars in it).
@@ -122,6 +142,25 @@
 			});
 		}
 		books = out.sort((a, b) => a.title.localeCompare(b.title));
+
+		// Sermon highlights (device-local, keyed by sermon slug — no chapters).
+		const sOut: SermonBlock[] = [];
+		for (const { slug, marks: ms } of sermonMarks.all()) {
+			let paras: string[] = [];
+			let title = slug;
+			let author = '';
+			try {
+				const sermon = await getSermon(slug, lang);
+				paras = paragraphs(sermon.body_html);
+				title = sermon.title;
+				author = sermon.author_name;
+			} catch {
+				/* offline — the highlight still links through, just without its text */
+			}
+			sOut.push({ slug, title, author, highlights: groupMarks(paras, ms) });
+		}
+		sermons = sOut.sort((a, b) => a.title.localeCompare(b.title));
+
 		loading = false;
 	});
 </script>
@@ -206,6 +245,35 @@
 						</ul>
 					{/if}
 				{/each}
+			</section>
+		{/each}
+
+		{#each filteredSermons as sm (sm.slug)}
+			<section class="mb-10">
+				<p class="mb-1 text-small font-semibold uppercase tracking-widest text-accent">
+					{t('search.typeSermon')}
+				</p>
+				<h2 class="text-h2">
+					<a href={localizeHref(`/sermons/${sm.slug}`)} class="hover:text-accent">{sm.title}</a>
+				</h2>
+				{#if sm.author}<p class="mb-3 text-small text-muted">{sm.author}</p>{/if}
+				<ul class="space-y-2">
+					{#each sm.highlights as hl (hl.id)}
+						<li>
+							<a
+								href={localizeHref(`/sermons/${sm.slug}`)}
+								class="block rounded-lg border-l-2 border-gold bg-surface px-4 py-2.5 hover:no-underline"
+							>
+								{#if hl.text}
+									<span class="block text-body italic text-text">“{hl.text}”</span>
+								{/if}
+								{#if hl.note}
+									<span class="mt-1 block text-small text-muted">📝 {hl.note}</span>
+								{/if}
+							</a>
+						</li>
+					{/each}
+				</ul>
 			</section>
 		{/each}
 	{/if}
