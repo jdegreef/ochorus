@@ -117,6 +117,7 @@
   "plans_tagline": "Un capítulo al día, en orden — crea un hábito con un clásico.",
   "plans_none": "Aún no hay planes disponibles en este idioma.",
   "plans_days": "días",
+  "plans_min_per_day": "min/día",
   "plans_day": "Día",
   "plans_of": "de",
   "plans_start": "Comenzar el plan",

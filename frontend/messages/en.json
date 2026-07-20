@@ -117,6 +117,7 @@
   "plans_tagline": "A chapter a day, in order — build a habit around a classic.",
   "plans_none": "No plans available in this language yet.",
   "plans_days": "days",
+  "plans_min_per_day": "min/day",
   "plans_day": "Day",
   "plans_of": "of",
   "plans_start": "Start the plan",

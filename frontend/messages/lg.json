@@ -117,6 +117,7 @@
   "plans_tagline": "Essuula emu buli lunaku, mu nsengeka — zimba akalombolombo n’ekitabo eky’edda.",
   "plans_none": "Tewali ntegeka ziriwo mu lulimi luno okutuusa kaakano.",
   "plans_days": "ennaku",
+  "plans_min_per_day": "eddakiika/lunaku",
   "plans_day": "Olunaku",
   "plans_of": "ku",
   "plans_start": "Tandika entegeka",
