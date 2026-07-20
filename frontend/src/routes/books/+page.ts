@@ -46,6 +46,11 @@ import type { PageLoad } from './$types';
  * edition of Godliness (La piedad, PR #230) by Catherine Booth went live, so
  * the /es/books index and its /books/<slug> pages re-crawl and bake with the
  * new title.
+ *
+ * Prerender refresh 2026-07-20 (queue job #202): same again after the Spanish
+ * edition of The Key in My Hand (La llave en mi mano, PR #235) by Gareth Evans
+ * went live, so the /es/books index and its /books/<slug> pages re-crawl and
+ * bake with the new title.
  */
 export const load: PageLoad = async () => {
 	try {
