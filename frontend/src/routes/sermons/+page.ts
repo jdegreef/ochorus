@@ -19,6 +19,11 @@ import type { PageLoad } from './$types';
  * Prerender refresh 2026-07-20 (queue job #249): same again after the Luganda
  * edition of Spurgeon's sermon Free Grace (Ekisa eky'Obwereere, PR #266) went
  * live, so the /lg/sermons pages re-crawl and bake with the new title.
+ *
+ * Prerender refresh 2026-07-20 (queue job #250): same again after the Luganda
+ * edition of A. B. Simpson's sermon The Joy of the Lord (Essanyu lya Mukama,
+ * PR #268) went live, so the /lg/sermons pages re-crawl and bake with the new
+ * title.
  */
 export const load: PageLoad = async () => {
 	// Tolerate a lagging/absent sermon endpoint at prerender time (see the
