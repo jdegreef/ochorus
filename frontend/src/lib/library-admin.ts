@@ -131,7 +131,7 @@ export const getAdminLanguageDetail = (code: string) =>
 // State is derived — queued = open issue, in_progress = claimed by a worker;
 // a finished job's item simply leaves the todo list once its translation ships.
 
-export type TranslationJobType = 'book' | 'sermon';
+export type TranslationJobType = 'book' | 'sermon' | 'plan' | 'bio';
 
 export interface AdminTranslationJob {
 	type: TranslationJobType;

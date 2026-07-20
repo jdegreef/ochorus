@@ -222,9 +222,17 @@
 				{#if d.todo.bios.length}
 					<div class="mt-4 border-t border-border pt-3">
 						<p class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">Next to work on</p>
+						{#if queueError}
+							<p class="mb-2 text-small text-gold">{queueError}</p>
+						{/if}
 						<ul class="space-y-1.5">
 							{#each d.todo.bios as a (a.slug)}
-								<li class="text-body"><a href="/authors/{a.slug}" class="text-accent hover:underline">{a.name}</a></li>
+								<li class="flex items-center justify-between gap-3 text-body">
+									<span class="min-w-0 truncate">
+										<a href="/authors/{a.slug}" class="text-accent hover:underline">{a.name}</a>
+									</span>
+									{@render queueControl('bio', a.slug)}
+								</li>
 							{/each}
 						</ul>
 					</div>
@@ -289,9 +297,17 @@
 				{#if d.todo.plans.length}
 					<div class="mt-4 border-t border-border pt-3">
 						<p class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">Next to work on</p>
+						{#if queueError}
+							<p class="mb-2 text-small text-gold">{queueError}</p>
+						{/if}
 						<ul class="space-y-1.5">
 							{#each d.todo.plans as p (p.slug)}
-								<li class="text-body"><a href="/plans/{p.slug}" class="text-accent hover:underline">{p.title}</a></li>
+								<li class="flex items-center justify-between gap-3 text-body">
+									<span class="min-w-0 truncate">
+										<a href="/plans/{p.slug}" class="text-accent hover:underline">{p.title}</a>
+									</span>
+									{@render queueControl('plan', p.slug)}
+								</li>
 							{/each}
 						</ul>
 					</div>

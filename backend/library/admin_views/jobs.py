@@ -29,24 +29,78 @@ from rest_framework.views import APIView
 
 from accounts.permissions import IsAdminEmail
 
-from ..models import Book, Sermon
+from ..models import Author, AuthorTranslation, Book, Plan, Sermon
 from ..views import LANGUAGE_NAMES
 
 # Env-overridable so local dev / tests can point at a mock GitHub.
 GITHUB_API = os.getenv("GITHUB_API_BASE", "https://api.github.com")
 LABEL = "translation-job"
 IN_PROGRESS_LABEL = "in-progress"
-# Job types the translation-worker skill can produce AND ship end-to-end today.
-# Plans and long-form bios join once their delivery vehicles are wired up.
-JOB_TYPES = ("book", "sermon")
+# Every content type the queue can enqueue. Each ships through its own delivery
+# vehicle once translated (see ``_JOB_GUIDANCE``); the worker skill picks the
+# right one from the job type.
+JOB_TYPES = ("book", "sermon", "plan", "bio")
 
 # Deterministic issue title — it is the job's identity (duplicate-press guard)
 # and what the worker parses, so both ends share this exact shape.
-_TITLE_RE = re.compile(r"^\[translation\] (book|sermon):([a-z0-9-]+) -> ([a-z-]{2,10})$")
+_TITLE_RE = re.compile(
+    r"^\[translation\] (book|sermon|plan|bio):([a-z0-9-]+) -> ([a-z-]{2,10})$"
+)
+
+# How each translated type is delivered — appended to the issue body so the
+# worker session knows which pipeline ships it.
+_JOB_GUIDANCE = {
+    "book": "Produces an `ai_unreviewed` book translation shipped via the normal PR flow.",
+    "sermon": "Produces an `ai_unreviewed` sermon translation shipped via the normal PR flow.",
+    "plan": (
+        "Ships as a localized `Plan` + `PlanDay` rows for this language "
+        "(the `seed_plans` release step upserts them from the plan definition)."
+    ),
+    "bio": (
+        "Ships as an `ai_unreviewed` long-form biography under "
+        "`library/migrations/data/author_bios_<language>/` (`short.json` + "
+        "`<slug>.html`); the `seed_author_translations` release step upserts it."
+    ),
+}
 
 
 def _job_title(type_: str, slug: str, language: str) -> str:
     return f"[translation] {type_}:{slug} -> {language}"
+
+
+def _resolve_source(type_: str, slug: str, language: str):
+    """Look up the English source for a job and whether it's already translated.
+
+    Returns ``(title, byline, exists_in_language)`` where ``byline`` is the
+    author's name (or None for authorless plans), or ``None`` when there is no
+    English source to translate. Each type has its own home: books/sermons are
+    per-language rows; a plan is a per-language row too; a long-form bio lives
+    on ``Author.bio_html`` with translations in ``AuthorTranslation``.
+    """
+    if type_ in ("book", "sermon"):
+        model = Book if type_ == "book" else Sermon
+        src = model.objects.filter(slug=slug, language="en").select_related("author").first()
+        if src is None:
+            return None
+        exists = model.objects.filter(slug=slug, language=language).exists()
+        return src.title, src.author.name, exists
+    if type_ == "plan":
+        src = Plan.objects.filter(slug=slug, language="en").first()
+        if src is None:
+            return None
+        exists = Plan.objects.filter(slug=slug, language=language).exists()
+        return src.title, None, exists
+    if type_ == "bio":
+        author = Author.objects.filter(slug=slug).exclude(bio_html="").first()
+        if author is None:
+            return None
+        exists = (
+            AuthorTranslation.objects.filter(author__slug=slug, language=language)
+            .exclude(bio_html="")
+            .exists()
+        )
+        return f"the biography of {author.name}", author.name, exists
+    return None
 
 
 def _headers() -> dict:
@@ -120,16 +174,14 @@ class AdminTranslationJobsView(APIView):
         if not re.fullmatch(r"[a-z0-9-]+", slug or ""):
             return Response({"detail": "invalid slug."}, status=status.HTTP_400_BAD_REQUEST)
 
-        model = Book if type_ == "book" else Sermon
-        source = (
-            model.objects.filter(slug=slug, language="en").select_related("author").first()
-        )
-        if source is None:
+        resolved = _resolve_source(type_, slug, language)
+        if resolved is None:
             return Response(
                 {"detail": f"no English {type_} with slug {slug!r}."},
                 status=status.HTTP_404_NOT_FOUND,
             )
-        if model.objects.filter(slug=slug, language=language).exists():
+        source_title, byline, exists = resolved
+        if exists:
             return Response(
                 {"detail": f"a {language} version of this {type_} already exists."},
                 status=status.HTTP_409_CONFLICT,
@@ -151,16 +203,16 @@ class AdminTranslationJobsView(APIView):
                 if (job["type"], job["slug"], job["language"]) == (type_, slug, language):
                     return Response({"job": job, "created": False})
 
+            what = f"**{source_title}**" + (f" by {byline}" if byline else "")
             body = (
-                f"Translate the {type_} **{source.title}** by {source.author.name} "
-                f"into **{lang_name}** (`{language}`).\n\n"
+                f"Translate the {type_} {what} into **{lang_name}** (`{language}`).\n\n"
                 "```json\n"
                 f'{{"type": "{type_}", "slug": "{slug}", "language": "{language}"}}\n'
                 "```\n\n"
                 "Filed from the Ochorus admin dashboard. Processed one at a time by a "
                 "Claude Code worker session — start one and say “process the translation "
-                "queue” (see `.claude/skills/translation-worker`). The result ships as an "
-                "`ai_unreviewed` translation via the normal PR flow."
+                "queue” (see `.claude/skills/translation-worker`).\n\n"
+                f"{_JOB_GUIDANCE[type_]}"
             )
             r = requests.post(
                 f"{GITHUB_API}/repos/{settings.GITHUB_TRANSLATION_REPO}/issues",
