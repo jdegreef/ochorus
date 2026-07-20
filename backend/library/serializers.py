@@ -335,10 +335,30 @@ class PlanListSerializer(serializers.ModelSerializer):
     """Plans index — enough for a browse card."""
 
     day_count = serializers.IntegerField(source="num_days", read_only=True)
+    total_words = serializers.SerializerMethodField()
 
     class Meta:
         model = Plan
-        fields = ["slug", "language", "title", "description", "day_count"]
+        fields = ["slug", "language", "title", "description", "day_count", "total_words"]
+
+    def get_total_words(self, obj):
+        return _plan_total_words(obj, obj.language)
+
+
+def _plan_total_words(plan, language):
+    """Sum the word counts of every day's chapter for a plan (one query for the
+    chapters; days are prefetched on the list, queried on detail)."""
+    pairs = [(d.book_slug, d.chapter_order) for d in plan.days.all()]
+    if not pairs:
+        return 0
+    slugs = {slug for slug, _ in pairs}
+    wc = {
+        (c["book__slug"], c["order"]): c["word_count"]
+        for c in Chapter.objects.filter(
+            book__slug__in=slugs, book__language=language
+        ).values("book__slug", "order", "word_count")
+    }
+    return sum(wc.get(p, 0) for p in pairs)
 
 
 class PlanDaySerializer(serializers.ModelSerializer):
@@ -346,10 +366,14 @@ class PlanDaySerializer(serializers.ModelSerializer):
 
     book_title = serializers.CharField(read_only=True, default="")
     chapter_title = serializers.CharField(read_only=True, default="")
+    word_count = serializers.IntegerField(read_only=True, default=0)
 
     class Meta:
         model = PlanDay
-        fields = ["day", "book_slug", "chapter_order", "book_title", "chapter_title"]
+        fields = [
+            "day", "book_slug", "chapter_order", "book_title", "chapter_title",
+            "word_count",
+        ]
 
 
 class PlanDetailSerializer(PlanListSerializer):
@@ -364,12 +388,13 @@ class PlanDetailSerializer(PlanListSerializer):
         slugs = {d.book_slug for d in days}
         chapters = Chapter.objects.filter(
             book__slug__in=slugs, book__language=obj.language
-        ).values("book__slug", "book__title", "order", "title")
+        ).values("book__slug", "book__title", "order", "title", "word_count")
         lookup = {(c["book__slug"], c["order"]): c for c in chapters}
         for d in days:
             c = lookup.get((d.book_slug, d.chapter_order))
             d.book_title = c["book__title"] if c else ""
             d.chapter_title = c["title"] if c else ""
+            d.word_count = c["word_count"] if c else 0
         return PlanDaySerializer(days, many=True).data
 
 

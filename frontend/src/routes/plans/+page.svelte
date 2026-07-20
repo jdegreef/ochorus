@@ -1,12 +1,17 @@
 <script lang="ts">
 	import type { PlanSummary } from '$lib/library';
 	import { planProgress } from '$lib/planProgress.svelte';
+	import { readingMinutes } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
 
 	let { data } = $props();
 	const plans = $derived<PlanSummary[]>(data.plans);
 	const t = i18n.t;
+
+	/** Rounded minutes of reading in an average day of a plan. */
+	const perDay = (plan: PlanSummary) =>
+		plan.day_count ? Math.max(1, readingMinutes(Math.round(plan.total_words / plan.day_count))) : 0;
 </script>
 
 <svelte:head><title>{t('plans.title')} — Ochorus</title></svelte:head>
@@ -30,7 +35,8 @@
 				<div class="flex items-baseline justify-between gap-3">
 					<h2 class="text-h3 text-text">{plan.title}</h2>
 					<span class="shrink-0 text-small text-muted">
-						{plan.day_count} {t('plans.days')}
+						{plan.day_count} {t('plans.days')}{#if plan.total_words}
+							<span class="opacity-60"> · </span>~{perDay(plan)} {t('plans.minPerDay')}{/if}
 					</span>
 				</div>
 				<p class="mt-1 text-small text-muted">{plan.description}</p>

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { PlanDetail } from '$lib/library';
 	import { planProgress } from '$lib/planProgress.svelte';
+	import { readingMinutes, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
 
@@ -28,7 +29,11 @@
 	</nav>
 
 	<h1 class="text-h1 mb-2">{plan.title}</h1>
-	<p class="mb-6 max-w-xl text-body text-muted">{plan.description}</p>
+	<p class="mb-3 max-w-xl text-body text-muted">{plan.description}</p>
+	<p class="mb-6 text-small text-muted">
+		{plan.day_count} {t('plans.days')}{#if plan.total_words}
+			<span class="opacity-60"> · </span>{readingTime(plan.total_words)}{/if}
+	</p>
 
 	{#if next !== null}
 		<a href={dayHref(next)} class="btn btn-primary" onclick={() => planProgress.start(plan.slug)}>
@@ -73,7 +78,10 @@
 						<span class="block truncate text-body text-text" class:font-semibold={isNext}>
 							{d.chapter_title || `${t('plans.day')} ${d.day}`}
 						</span>
-						<span class="block text-small text-muted">{d.book_title}</span>
+						<span class="block text-small text-muted">
+							{d.book_title}{#if d.word_count}
+								<span class="opacity-60"> · </span>{readingMinutes(d.word_count)} {t('common.min')}{/if}
+						</span>
 					</span>
 					{#if isNext}
 						<span class="shrink-0 text-small font-semibold text-accent">{t('plans.today')}</span>

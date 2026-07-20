@@ -218,6 +218,7 @@ class PlanListView(generics.ListAPIView):
         return (
             Plan.objects.filter(is_published=True, language=_language(self.request))
             .annotate(num_days=Count("days"))
+            .prefetch_related("days")
             .order_by("sort_order", "title")
         )
 

@@ -238,6 +238,8 @@ export interface PlanSummary {
 	title: string;
 	description: string;
 	day_count: number;
+	/** Total words across all the plan's days (for a reading-time estimate). */
+	total_words: number;
 }
 
 export interface PlanDay {
@@ -246,6 +248,7 @@ export interface PlanDay {
 	chapter_order: number;
 	book_title: string;
 	chapter_title: string;
+	word_count: number;
 }
 
 export interface PlanDetail extends PlanSummary {
