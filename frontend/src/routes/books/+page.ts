@@ -56,6 +56,11 @@ import type { PageLoad } from './$types';
  * edition of Humility (Obwetoowaze, PR #255) by Andrew Murray went live, so the
  * /lg/books index and its /books/<slug> pages re-crawl and bake with the new
  * title.
+ *
+ * Prerender refresh 2026-07-20 (queue job #247): same again after the Luganda
+ * edition of Talks to the Farmer (Ebigambo eri Omulimi, PR #262) by C. H.
+ * Spurgeon went live, so the /lg/books index and its /books/<slug> pages
+ * re-crawl and bake with the new title.
  */
 export const load: PageLoad = async () => {
 	try {
