@@ -4,6 +4,7 @@ import {
 	MARKS_KEY,
 	chapterKey,
 	parseChapterKey,
+	DEFAULT_HIGHLIGHT,
 	type MarksStore,
 	type Mark
 } from './reading-schema';
@@ -105,17 +106,33 @@ class Marks {
 	}
 
 	/** Add a group of range segments (one selection) as a single mark unit. */
-	add(segments: Segment[], note?: string): string {
+	add(segments: Segment[], note?: string, color?: string): string {
 		const first = segments[0];
 		if (!first) return '';
 		const id = `${Date.now().toString(36)}:${first.p}:${first.s}`;
+		const tint = color && color !== DEFAULT_HIGHLIGHT ? { color } : {};
 		const existing = new Set(this.list.map(rangeKey));
 		const fresh = segments
 			.filter((seg) => !existing.has(rangeKey(seg)))
-			.map((seg, i) => ({ id, ...seg, ...(i === 0 && note ? { note } : {}) }));
+			.map((seg, i) => ({ id, ...seg, ...tint, ...(i === 0 && note ? { note } : {}) }));
 		this.list = [...this.list, ...fresh].sort((a, b) => a.p - b.p || a.s - b.s);
 		this.#persist();
 		return id;
+	}
+
+	/** The highlight colour of a mark group (default gold when unset). */
+	getColor(id: string): string {
+		return this.list.find((m) => m.id === id)?.color ?? DEFAULT_HIGHLIGHT;
+	}
+
+	/** Recolour every segment of a mark group (default clears the stored key). */
+	setColor(id: string, color: string) {
+		this.list = this.list.map((m) => {
+			if (m.id !== id) return m;
+			const { color: _drop, ...rest } = m;
+			return color && color !== DEFAULT_HIGHLIGHT ? { ...rest, color } : rest;
+		});
+		this.#persist();
 	}
 
 	/** Remove every segment of a mark group. */
