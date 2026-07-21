@@ -238,6 +238,10 @@ class Chapter(models.Model):
     # Stored tsvector (Postgres only; NULL on SQLite). Kept by save() +
     # backfill_search_vectors; GIN-indexed in migration 0041. See library/fts.py.
     search_vector = SearchVectorField(null=True, editable=False, serialize=False)
+    # When this chapter's Bible citations were last indexed (see
+    # ChapterCitation + the index_citations release step). Cleared by save()
+    # so a body edit triggers reindexing on the next deploy.
+    citations_indexed_at = models.DateTimeField(null=True, editable=False)
 
     objects = ChapterManager()
 
@@ -264,6 +268,14 @@ class Chapter(models.Model):
         update_fields = kwargs.get("update_fields")
         if update_fields is not None and "body_html" in update_fields:
             kwargs["update_fields"] = list(update_fields) + ["body_text"]
+        # A body change invalidates the citation index; the index_citations
+        # release step re-scans stamped-null chapters on the next deploy.
+        if update_fields is None or "body_html" in update_fields:
+            self.citations_indexed_at = None
+            if update_fields is not None:
+                kwargs["update_fields"] = list(kwargs["update_fields"]) + [
+                    "citations_indexed_at"
+                ]
         super().save(*args, **kwargs)
         # Skip the vector rebuild when a scoped save touches no indexed field
         # (it re-tokenises the whole body — pure waste for a flag flip).
@@ -272,6 +284,43 @@ class Chapter(models.Model):
             "title", "body_html", "body_text", "book", "book_id"
         }.isdisjoint(update_fields):
             fts.refresh_chapter(self)
+
+
+class ChapterCitation(models.Model):
+    """One Bible reference cited in a chapter's text, as a verse-id span.
+
+    Spans use pythonbible's numeric verse ids (BBBCCCVVV), so range overlap
+    against a query's verse ids finds a chapter that cites "John 3:14-21" when
+    the reader searches "John 3:16". Populated by the index_citations release
+    step from body_text; `offset` points at the first occurrence for snippet
+    centring, `count` records how often the same span recurs in the chapter.
+    """
+
+    chapter = models.ForeignKey(
+        Chapter, on_delete=models.CASCADE, related_name="citations"
+    )
+    ref_text = models.CharField(max_length=80)
+    start_verse_id = models.IntegerField()
+    end_verse_id = models.IntegerField()
+    offset = models.PositiveIntegerField(default=0)
+    count = models.PositiveSmallIntegerField(default=1)
+
+    class Meta:
+        indexes = [
+            models.Index(
+                fields=["start_verse_id", "end_verse_id"],
+                name="idx_citation_span",
+            ),
+        ]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["chapter", "start_verse_id", "end_verse_id"],
+                name="uniq_citation_chapter_span",
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.chapter_id} cites {self.ref_text}"
 
 
 class SermonManager(models.Manager):

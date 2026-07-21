@@ -26,7 +26,7 @@ from django.db.models import F, Q
 # Config lookup shared with the stored-vector write path (library/fts.py) so
 # query config always matches what the row was indexed with.
 from .fts import config_for
-from .models import Author, Book, Chapter, Plan, Sermon, Topic
+from .models import Author, Book, Chapter, Plan, Sermon, Topic, ChapterCitation
 from .scripture import reference_verse_ids
 
 MAX_RESULTS = 30
@@ -99,11 +99,25 @@ def search_library(q: str, language: str) -> list[dict]:
     else:
         base = _search_fallback(ctx, authors, books, topics, plans, chapters, sermons)
 
-    # If the query is itself a scripture reference, add every sermon that
-    # expounds an overlapping passage — matched by verse id, so it works where
-    # plain text search can't (abbreviations, chapter-only, a verse inside a
-    # range). Scripture matches lead, since the reference is the reader's intent.
+    # If the query is itself a scripture reference, lead with everything that
+    # engages the passage — sermons preached on an overlapping text, then
+    # chapters whose body CITES an overlapping reference (ChapterCitation
+    # verse-id spans). Matched by verse id, so it works where plain text
+    # search can't (abbreviations, chapter-only, a verse inside a range).
     extra = _scripture_sermon_hits(q, sermons, base)
+    cite_hits = _scripture_chapter_hits(q, language, extra)
+    if cite_hits:
+        # A chapter found by BOTH citation and plain text keeps its citation
+        # hit (ranked by specificity, snippet centred on the reference) and
+        # drops the text duplicate from the base list.
+        cited = {(h["book_slug"], h["chapter_order"]) for h in cite_hits}
+        base = [
+            h
+            for h in base
+            if h["type"] != "chapter"
+            or (h["book_slug"], h["chapter_order"]) not in cited
+        ]
+    extra += cite_hits
     if extra:
         return (extra + base)[:MAX_RESULTS]
     return base
@@ -354,6 +368,71 @@ def _scripture_sermon_hits(q, sermons, base):
             if len(hits) >= CAPS["sermon"]:
                 break
     return hits
+
+
+def _scripture_chapter_hits(q, language, existing):
+    """Chapters whose body cites a reference overlapping the query's verses.
+
+    Range-overlap on ChapterCitation's (start, end) verse-id spans, so a
+    chapter citing "John 3:3-36" answers a search for "John 3:16". Most
+    specific citations first (narrowest span), deduped against hits already
+    found by text search. The snippet is centred on the citation itself.
+    """
+    target = reference_verse_ids(q)
+    if not target:
+        return []
+    q_start, q_end = min(target), max(target)
+    already = {
+        (h["book_slug"], h["chapter_order"])
+        for h in existing
+        if h["type"] == "chapter"
+    }
+    rows = (
+        ChapterCitation.objects.filter(
+            start_verse_id__lte=q_end,
+            end_verse_id__gte=q_start,
+            chapter__book__is_published=True,
+            chapter__book__language=language,
+        )
+        .select_related("chapter__book__author")
+        .order_by("start_verse_id")
+    )
+    best: dict[tuple, ChapterCitation] = {}
+    for row in rows:
+        key = (row.chapter.book.slug, row.chapter.order)
+        if key in already:
+            continue
+        prev = best.get(key)
+        # Prefer the chapter's narrowest overlapping citation (most specific).
+        if prev is None or (row.end_verse_id - row.start_verse_id) < (
+            prev.end_verse_id - prev.start_verse_id
+        ):
+            best[key] = row
+    hits = []
+    for row in sorted(
+        best.values(), key=lambda r: (r.end_verse_id - r.start_verse_id, -r.count)
+    )[: CAPS["chapter"]]:
+        hits.append(
+            _chapter_hit(row.chapter, snippet=_citation_snippet(row))
+        )
+    return hits
+
+
+def _citation_snippet(row, radius: int = 90) -> str:
+    """An excerpt centred on the citation, with the reference marker-wrapped."""
+    text = row.chapter.body_text or ""
+    i = row.offset
+    ref = row.ref_text
+    if not text[i : i + len(ref)] == ref:  # body changed since indexing
+        i = max(text.find(ref), 0)
+    start = max(0, i - radius)
+    end = min(len(text), i + len(ref) + radius)
+    prefix = "…" if start > 0 else ""
+    suffix = "…" if end < len(text) else ""
+    excerpt = (
+        text[start:i] + HL_START + text[i : i + len(ref)] + HL_END + text[i + len(ref) : end]
+    )
+    return f"{prefix}{excerpt}{suffix}"
 
 
 # --- Did-you-mean -------------------------------------------------------------

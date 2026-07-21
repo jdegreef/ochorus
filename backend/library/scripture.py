@@ -136,3 +136,41 @@ def book_of(ref_text: str) -> tuple[str, int] | None:
     if ref is None:
         return None
     return (ref.book.title, ref.book.value)
+
+
+def extract_citations(text: str) -> list[dict]:
+    """Every Bible reference cited in plain text, as indexable verse-id spans.
+
+    Returns [{"ref": "John 3:16", "start": 43003016, "end": 43003016,
+    "offset": 118, "count": 2}, ...] — one entry per distinct verse span, with
+    the character offset of its FIRST occurrence (for snippet centring) and how
+    often it recurs. Spans use pythonbible's numeric verse ids (BBBCCCVVV), so
+    a (start, end) pair covers a reference even when it crosses a chapter
+    boundary; range overlap against a query's ids is exact because ids in the
+    numeric gaps between chapters do not correspond to real verses and can
+    never be queried.
+    """
+    found: dict[tuple[int, int], dict] = {}
+    for m in _CANDIDATE.finditer(text or ""):
+        ref = _first_reference(m.group(1))
+        if ref is None:
+            continue
+        try:
+            ids = bible.convert_reference_to_verse_ids(ref)
+        except Exception:
+            continue
+        if not ids:
+            continue
+        key = (ids[0], ids[-1])
+        entry = found.get(key)
+        if entry:
+            entry["count"] += 1
+        else:
+            found[key] = {
+                "ref": m.group(1).strip(),
+                "start": ids[0],
+                "end": ids[-1],
+                "offset": m.start(1),
+                "count": 1,
+            }
+    return sorted(found.values(), key=lambda e: e["offset"])
