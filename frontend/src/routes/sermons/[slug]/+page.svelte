@@ -67,6 +67,7 @@
 	}
 
 	function onScroll() {
+		updateActiveSection(); // cheap; keep the outline rail responsive
 		clearTimeout(saveTimer);
 		saveTimer = setTimeout(() => {
 			updateFraction();
@@ -80,10 +81,27 @@
 	// structure to navigate.
 	let outline = $state<OutlineEntry[]>([]);
 	let outlineOpen = $state(false);
+	// The section the reader is currently in — for the desktop rail's highlight.
+	let activeSection = $state('');
 	$effect(() => {
 		void sermon.slug; // rebuild when navigating between sermons
 		outline = body ? buildOutline(body) : [];
+		// Off the reactive graph: reading `outline` here would re-trigger this
+		// effect (which writes it) — an update-depth loop.
+		if (typeof requestAnimationFrame !== 'undefined') requestAnimationFrame(updateActiveSection);
 	});
+
+	/** The last outline section whose heading has scrolled up past the top bar. */
+	function updateActiveSection() {
+		let current = '';
+		for (const s of outline) {
+			const el = document.getElementById(s.id);
+			if (!el) continue;
+			if (el.getBoundingClientRect().top <= HEADER_OFFSET + 40) current = s.id;
+			else break; // outline is in document order — nothing below can be active
+		}
+		activeSection = current;
+	}
 
 	function scrollToSection(id: string) {
 		const el = document.getElementById(id);
@@ -353,7 +371,7 @@
 			<div class="flex shrink-0 items-center gap-1">
 				{#if outline.length >= 2}
 					<button
-						class="btn btn-ghost !px-2 !py-1.5"
+						class="outline-toggle-btn btn btn-ghost !px-2 !py-1.5"
 						class:!text-accent={outlineOpen}
 						onclick={() => (outlineOpen = !outlineOpen)}
 						aria-label={t('sermon.outline')}
@@ -403,6 +421,28 @@
 			{#each outline as s (s.id)}
 				<li>
 					<button class="outline-item" class:point={s.kind === 'point'} onclick={() => scrollToSection(s.id)}>
+						{s.label}
+					</button>
+				</li>
+			{/each}
+		</ul>
+	</nav>
+{/if}
+
+<!-- Persistent outline rail (wide screens): mirrors the popover, highlighting
+     the section you're reading. The top-bar toggle takes over below 1200px. -->
+{#if outline.length >= 2 && !readerUi.focus}
+	<nav class="outline-rail" aria-label={t('sermon.outline')}>
+		<p class="outline-rail-title">{t('sermon.outline')}</p>
+		<ul>
+			{#each outline as s (s.id)}
+				<li>
+					<button
+						class="outline-rail-item"
+						class:point={s.kind === 'point'}
+						class:active={activeSection === s.id}
+						onclick={() => scrollToSection(s.id)}
+					>
 						{s.label}
 					</button>
 				</li>
@@ -722,5 +762,56 @@
 	}
 	.outline-item.point:hover {
 		color: var(--accent);
+	}
+
+	/* Persistent outline rail — hidden until there's room beside the article. */
+	.outline-rail {
+		display: none;
+	}
+	@media (min-width: 1200px) {
+		.outline-rail {
+			display: block;
+			position: fixed;
+			top: 5rem;
+			right: max(1rem, calc((100vw - var(--reading-measure, 46rem)) / 2 - 15rem));
+			width: 14rem;
+			max-height: calc(100vh - 7rem);
+			overflow-y: auto;
+			z-index: 5;
+		}
+		/* The top-bar toggle is redundant once the rail is visible. */
+		.outline-toggle-btn {
+			display: none;
+		}
+	}
+	.outline-rail-title {
+		padding: 0 0.6rem 0.4rem;
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--muted);
+	}
+	.outline-rail-item {
+		display: block;
+		width: 100%;
+		text-align: left;
+		padding: 0.3rem 0.6rem;
+		border-left: 2px solid transparent;
+		font-size: 0.85rem;
+		line-height: 1.35;
+		color: var(--muted);
+		transition: color 0.15s ease;
+	}
+	.outline-rail-item:hover {
+		color: var(--accent);
+	}
+	.outline-rail-item.point {
+		padding-left: 1.1rem;
+	}
+	.outline-rail-item.active {
+		color: var(--accent);
+		border-left-color: var(--accent);
+		font-weight: 600;
 	}
 </style>
