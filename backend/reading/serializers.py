@@ -1,12 +1,13 @@
 from rest_framework import serializers
 
-from .models import ChapterMarks, ReadingProgress, SermonMarks
+from .models import ChapterMarks, ReadingProgress
 
 
 class ReadingProgressSerializer(serializers.ModelSerializer):
     class Meta:
         model = ReadingProgress
         fields = [
+            "kind",
             "book_slug",
             "language",
             "chapter_order",
@@ -20,6 +21,7 @@ class ChapterMarksSerializer(serializers.ModelSerializer):
     class Meta:
         model = ChapterMarks
         fields = [
+            "kind",
             "book_slug",
             "language",
             "chapter_order",
@@ -28,14 +30,3 @@ class ChapterMarksSerializer(serializers.ModelSerializer):
         ]
         read_only_fields = ["updated_at"]
 
-
-class SermonMarksSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = SermonMarks
-        fields = [
-            "sermon_slug",
-            "language",
-            "marks",
-            "updated_at",
-        ]
-        read_only_fields = ["updated_at"]

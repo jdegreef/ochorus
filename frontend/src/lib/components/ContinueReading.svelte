@@ -1,19 +1,23 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { BookSummary } from '$lib/library';
+	import { listSermons, type BookSummary, type SermonSummary } from '$lib/library';
 	import { allProgress } from '$lib/progress';
+	import { workSlugKey } from '$lib/reading-schema';
 	import { bookProgressPercent } from '$lib/reading';
+	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
 
 	/**
-	 * In-progress books with a progress bar and a resume link. Progress comes
+	 * In-progress works (books and sermons) with a resume link. Progress comes
 	 * from the local cache (which the sign-in merge keeps in step with the
-	 * account), joined against the provided book list for titles and covers.
-	 * Books unknown in this language are skipped; a book stays here through its
-	 * last chapter (opening the last chapter isn't finishing it — the old code
-	 * hid it immediately) and ages off naturally as newer reads push it past the
-	 * limit. Renders nothing when there's nothing in progress.
+	 * account); books join against the provided list for titles and covers,
+	 * sermons against a lazily fetched sermon list — fetched only when sermon
+	 * progress actually exists, so most renders cost nothing extra. Works
+	 * unknown in this language are skipped; a book stays here through its last
+	 * chapter (opening the last chapter isn't finishing it) and ages off
+	 * naturally as newer reads push it past the limit. Renders nothing when
+	 * there's nothing in progress.
 	 */
 	let { books, limit = 4 }: { books: BookSummary[]; limit?: number } = $props();
 
@@ -22,24 +26,73 @@
 	// localStorage is read on mount (not during load) so a sign-in sync that
 	// lands after navigation still shows up via the ochorus:sync event below.
 	let ticks = $state(0);
+	let sermonList = $state<SermonSummary[] | null>(null);
+
+	function fetchSermonsIfNeeded() {
+		if (sermonList === null && allProgress().some((p) => p.kind === 'sermon')) {
+			listSermons(getLang())
+				.then((l) => (sermonList = l))
+				.catch(() => {});
+		}
+	}
+
 	onMount(() => {
-		const bump = () => ticks++;
+		const bump = () => {
+			ticks++;
+			fetchSermonsIfNeeded();
+		};
+		fetchSermonsIfNeeded();
 		window.addEventListener('ochorus:sync', bump);
 		return () => window.removeEventListener('ochorus:sync', bump);
 	});
 
+	type Item = {
+		key: string;
+		href: string;
+		title: string;
+		author: string;
+		cover_url?: string;
+		cover_color?: string;
+		/** null for sermons — a single document has no chapter meter. */
+		pct: number | null;
+		meta: string;
+	};
+
 	const items = $derived.by(() => {
 		void ticks;
 		const bySlug = new Map(books.map((b) => [b.slug, b]));
+		const sermonBySlug = new Map((sermonList ?? []).map((s) => [s.slug, s]));
 		return allProgress()
-			.map((p) => {
+			.map((p): Item | null => {
+				if (p.kind === 'sermon') {
+					const sermon = sermonBySlug.get(p.slug);
+					if (!sermon) return null;
+					const resume = p.paragraph_index > 0 ? `?p=${p.paragraph_index}` : '';
+					return {
+						key: workSlugKey(p.kind, p.slug),
+						href: `/sermons/${p.slug}${resume}`,
+						title: sermon.title,
+						author: sermon.author.name,
+						pct: null,
+						meta: t('search.typeSermon')
+					};
+				}
 				const book = bySlug.get(p.slug);
 				if (!book) return null;
 				// order is the chapter currently open. Treat it as in-progress, not
 				// finished — the midpoint estimate keeps the book visible (and honest
 				// about position) all the way through the last chapter.
 				const pct = bookProgressPercent(p.order, book.chapter_count);
-				return { book, order: p.order, pct };
+				return {
+					key: workSlugKey(p.kind, p.slug),
+					href: `/books/${book.slug}/${p.order}`,
+					title: book.title,
+					author: book.author.name,
+					cover_url: book.cover_url,
+					cover_color: book.cover_color,
+					pct,
+					meta: `${t('continue.chapter')} ${p.order} / ${book.chapter_count} · ${pct}%`
+				};
 			})
 			.filter((x) => x !== null)
 			.slice(0, limit);
@@ -50,14 +103,14 @@
 	<section class="mx-auto max-w-5xl px-5 pt-14">
 		<h2 class="text-h1 mb-6">{t('continue.title')}</h2>
 		<div class="grid gap-4 sm:grid-cols-2" class:lg:grid-cols-4={limit >= 4}>
-			{#each items as item (item.book.slug)}
+			{#each items as item (item.key)}
 				<a
-					href={localizeHref(`/books/${item.book.slug}/${item.order}`)}
+					href={localizeHref(item.href)}
 					class="group flex gap-4 rounded-card border border-border p-4 hover:bg-surface-2 hover:no-underline"
 				>
-					{#if item.book.cover_url}
+					{#if item.cover_url}
 						<img
-							src={item.book.cover_url}
+							src={item.cover_url}
 							alt=""
 							loading="lazy"
 							class="h-20 w-14 shrink-0 rounded-sm object-cover shadow-sm"
@@ -65,19 +118,18 @@
 					{:else}
 						<div
 							class="h-20 w-14 shrink-0 rounded-sm shadow-sm"
-							style="background: {item.book.cover_color || '#3b5bdb'}"
+							style="background: {item.cover_color || '#3b5bdb'}"
 						></div>
 					{/if}
 					<div class="min-w-0 flex-1 self-center">
-						<div class="truncate text-small font-semibold text-text">{item.book.title}</div>
-						<div class="mt-0.5 truncate text-[0.78rem] text-muted">{item.book.author.name}</div>
-						<div class="mt-2 h-1.5 overflow-hidden rounded-full bg-surface-2">
-							<div class="h-full rounded-full bg-accent" style="width: {item.pct}%"></div>
-						</div>
-						<div class="mt-1 text-[0.72rem] text-muted">
-							{t('continue.chapter')}
-							{item.order} / {item.book.chapter_count} · {item.pct}%
-						</div>
+						<div class="truncate text-small font-semibold text-text">{item.title}</div>
+						<div class="mt-0.5 truncate text-[0.78rem] text-muted">{item.author}</div>
+						{#if item.pct !== null}
+							<div class="mt-2 h-1.5 overflow-hidden rounded-full bg-surface-2">
+								<div class="h-full rounded-full bg-accent" style="width: {item.pct}%"></div>
+							</div>
+						{/if}
+						<div class="mt-1 text-[0.72rem] text-muted">{item.meta}</div>
 					</div>
 				</a>
 			{/each}

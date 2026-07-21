@@ -1,10 +1,12 @@
 import { readingSync } from './readingSync';
 import { readJSON, writeJSON } from './persisted';
 import {
-	MARKS_KEY,
-	chapterKey,
-	parseChapterKey,
 	DEFAULT_HIGHLIGHT,
+	MARKS_KEY,
+	migrateLegacySermonState,
+	workKey,
+	parseWorkKey,
+	type WorkKind,
 	type MarksStore,
 	type Mark
 } from './reading-schema';
@@ -48,8 +50,9 @@ function fromLegacy(entry: LegacyEntry): Mark[] {
 	return [...byP.values()].sort((a, b) => a.p - b.p);
 }
 
-/** Read the store, migrating any legacy chapter entries in place. */
+/** Read the store, migrating any legacy entries in place. */
 function readAll(): MarksStore {
+	migrateLegacySermonState();
 	const raw = readJSON<MarksStore>(MARKS_KEY, {});
 	let migrated = false;
 	for (const [key, entry] of Object.entries(raw)) {
@@ -78,16 +81,18 @@ class Marks {
 	#slug = '';
 	#order = 0;
 	#language = 'en';
+	#kind: WorkKind = 'book';
 
-	load(slug: string, order: number, language = 'en') {
+	load(slug: string, order: number, language = 'en', kind: WorkKind = 'book') {
 		this.#slug = slug;
 		this.#order = order;
 		this.#language = language;
+		this.#kind = kind;
 		this.#hydrate();
 	}
 
 	#hydrate() {
-		const entry = readAll()[chapterKey(this.#slug, this.#order)];
+		const entry = readAll()[workKey(this.#kind, this.#slug, this.#order)];
 		this.list = [...(entry?.m ?? [])].sort((a, b) => a.p - b.p || a.s - b.s);
 	}
 
@@ -98,11 +103,11 @@ class Marks {
 
 	#persist() {
 		const store = readAll();
-		const key = chapterKey(this.#slug, this.#order);
+		const key = workKey(this.#kind, this.#slug, this.#order);
 		if (this.list.length === 0) delete store[key];
 		else store[key] = { m: this.list };
 		writeAll(store);
-		readingSync.pushMarks(this.#slug, this.#order, this.list, this.#language);
+		readingSync.pushMarks(this.#kind, this.#slug, this.#order, this.list, this.#language);
 	}
 
 	/** Add a group of range segments (one selection) as a single mark unit. */
@@ -110,29 +115,16 @@ class Marks {
 		const first = segments[0];
 		if (!first) return '';
 		const id = `${Date.now().toString(36)}:${first.p}:${first.s}`;
-		const tint = color && color !== DEFAULT_HIGHLIGHT ? { color } : {};
 		const existing = new Set(this.list.map(rangeKey));
+		// The default colour is stored as absence so pre-colour marks and
+		// default-colour marks are indistinguishable (both render gold).
+		const tint = color && color !== DEFAULT_HIGHLIGHT ? { color } : {};
 		const fresh = segments
 			.filter((seg) => !existing.has(rangeKey(seg)))
 			.map((seg, i) => ({ id, ...seg, ...tint, ...(i === 0 && note ? { note } : {}) }));
 		this.list = [...this.list, ...fresh].sort((a, b) => a.p - b.p || a.s - b.s);
 		this.#persist();
 		return id;
-	}
-
-	/** The highlight colour of a mark group (default gold when unset). */
-	getColor(id: string): string {
-		return this.list.find((m) => m.id === id)?.color ?? DEFAULT_HIGHLIGHT;
-	}
-
-	/** Recolour every segment of a mark group (default clears the stored key). */
-	setColor(id: string, color: string) {
-		this.list = this.list.map((m) => {
-			if (m.id !== id) return m;
-			const { color: _drop, ...rest } = m;
-			return color && color !== DEFAULT_HIGHLIGHT ? { ...rest, color } : rest;
-		});
-		this.#persist();
 	}
 
 	/** Remove every segment of a mark group. */
@@ -147,6 +139,21 @@ class Marks {
 		const byKey = new Map(this.list.map((m) => [rangeKey(m), m]));
 		if (!segments.every((s) => byKey.has(rangeKey(s)))) return null;
 		return byKey.get(rangeKey(segments[0]))?.id ?? null;
+	}
+
+	/** The mark group's colour (absent = the default gold). */
+	getColor(id: string): string {
+		return this.list.find((m) => m.id === id)?.color ?? DEFAULT_HIGHLIGHT;
+	}
+
+	/** Recolour every segment of a mark group. */
+	setColor(id: string, color: string) {
+		this.list = this.list.map((m) => {
+			if (m.id !== id) return m;
+			const { color: _drop, ...rest } = m;
+			return color && color !== DEFAULT_HIGHLIGHT ? { ...rest, color } : rest;
+		});
+		this.#persist();
 	}
 
 	getNote(id: string): string {
@@ -169,19 +176,19 @@ class Marks {
 	}
 
 	/** Mark-group count for a chapter without loading it (for the TOC). */
-	countFor(slug: string, order: number): number {
-		const e = readAll()[chapterKey(slug, order)];
+	countFor(slug: string, order: number, kind: WorkKind = 'book'): number {
+		const e = readAll()[workKey(kind, slug, order)];
 		if (!e?.m) return 0;
 		return new Set(e.m.map((m) => m.id)).size;
 	}
 
-	/** Every chapter's marks across all books, for the notebook. */
-	all(): { slug: string; order: number; marks: Mark[] }[] {
-		const out: { slug: string; order: number; marks: Mark[] }[] = [];
+	/** Every work's marks across books and sermons, for the notebook. */
+	all(): { kind: WorkKind; slug: string; order: number; marks: Mark[] }[] {
+		const out: { kind: WorkKind; slug: string; order: number; marks: Mark[] }[] = [];
 		for (const [key, entry] of Object.entries(readAll())) {
-			const parsed = parseChapterKey(key);
+			const parsed = parseWorkKey(key);
 			if (parsed && entry.m?.length) {
-				out.push({ slug: parsed.slug, order: parsed.order, marks: entry.m });
+				out.push({ ...parsed, marks: entry.m });
 			}
 		}
 		return out;

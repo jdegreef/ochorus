@@ -49,6 +49,9 @@
 
 		const bySlug = new Map(books.map((b) => [b.slug, b]));
 		continueBooks = allProgress()
+			// Books only — a sermon sharing a slug with a book must not render
+			// as a phantom "Chapter 1" tile (or duplicate an each-block key).
+			.filter((r) => r.kind === 'book')
 			.map((r) => {
 				const book = bySlug.get(r.slug);
 				return book ? { book, order: r.order } : null;

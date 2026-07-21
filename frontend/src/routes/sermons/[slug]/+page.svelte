@@ -6,7 +6,8 @@
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingTime, readingMinutes } from '$lib/reading';
-	import { getSermonAnchor, saveSermonAnchor } from '$lib/sermonProgress';
+	import { getScrollAnchor, saveScrollAnchor, saveProgress, getProgressRecord } from '$lib/progress';
+	import { SERMON_CHAPTER_ORDER } from '$lib/reading-schema';
 	import { getLang } from '$lib/lang.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import { scripture, type ScriptureResult } from '$lib/scripture.svelte';
@@ -15,10 +16,10 @@
 	import { page } from '$app/stores';
 	import { buildOutline, type OutlineEntry } from '$lib/sermonOutline';
 	import { absUrl, jsonLd, breadcrumb } from '$lib/seo';
-	import { sermonMarks } from '$lib/sermonMarks.svelte';
+
 	import { renderMarks } from '$lib/rangeMarks';
 	import { HIGHLIGHT_COLORS, DEFAULT_HIGHLIGHT } from '$lib/reading-schema';
-	import type { Segment } from '$lib/marks.svelte';
+	import { marks, type Segment } from '$lib/marks.svelte';
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
@@ -69,7 +70,7 @@
 		clearTimeout(saveTimer);
 		saveTimer = setTimeout(() => {
 			updateFraction();
-			saveSermonAnchor(sermon.slug, topVisibleIndex());
+			saveScrollAnchor(sermon.slug, SERMON_CHAPTER_ORDER, topVisibleIndex(), 'sermon');
 		}, 250);
 	}
 
@@ -93,17 +94,52 @@
 		outlineOpen = false;
 	}
 
-	// Restore the saved spot on open (and once the body has rendered).
-	onMount(() => {
+	// Record the visit (so the sermon lands in "Continue reading") and restore
+	// the saved spot — a `?p=` deep link (notebook highlights) wins over the
+	// device anchor. Effect, not onMount: client-side nav between sermons
+	// reuses this component.
+	let restoredFor = '';
+	$effect(() => {
+		const slug = sermon.slug;
+		if (!body || restoredFor === slug) return;
+		restoredFor = slug;
+		// A pending scroll-save from the PREVIOUS sermon must not fire against
+		// this one's body (it would record a bogus synced resume point).
+		clearTimeout(saveTimer);
+		// Seed a ?p= deep link into the anchor FIRST so the progress record
+		// (and the resume point that syncs to the account) starts at the
+		// jumped-to paragraph — the chapter reader's documented ordering.
+		const fromUrl = Number($page.url.searchParams.get('p'));
+		if (Number.isFinite(fromUrl) && fromUrl > 0) {
+			saveScrollAnchor(slug, SERMON_CHAPTER_ORDER, fromUrl, 'sermon');
+		}
+		saveProgress(slug, SERMON_CHAPTER_ORDER, sermon.language, 'sermon');
 		(async () => {
 			await tick();
-			const idx = getSermonAnchor(sermon.slug);
+			// Deep link > device anchor > synced resume point (fresh device).
+			const idx =
+				Number.isFinite(fromUrl) && fromUrl > 0
+					? fromUrl
+					: (getScrollAnchor(slug, SERMON_CHAPTER_ORDER, 'sermon') ??
+						getProgressRecord(slug, 'sermon')?.paragraph_index ??
+						0);
 			if (idx > 0 && body?.children[idx]) {
 				body.children[idx].scrollIntoView({ block: 'start' });
 				window.scrollBy(0, -HEADER_OFFSET);
 			}
 			updateFraction();
 		})();
+	});
+
+	// Marks can be replaced underneath us (sign-in merge / sign-out wipe),
+	// and a scroll-save timer must not outlive the page.
+	onMount(() => {
+		const onSync = () => marks.refresh();
+		window.addEventListener('ochorus:sync', onSync);
+		return () => {
+			clearTimeout(saveTimer);
+			window.removeEventListener('ochorus:sync', onSync);
+		};
 	});
 
 	const initials = (name: string) =>
@@ -236,7 +272,7 @@
 
 	// --- Highlights & notes ----------------------------------------------------
 	// Device-local text-range marks over the sermon body (shared range model with
-	// the book reader; see sermonMarks.svelte.ts). A note editor opens on tap of a
+	// the book reader; see marks.svelte.ts). A note editor opens on tap of a
 	// marked span or via the selection bar's "Note".
 	let noteOpen = $state(false);
 	let noteId = $state<string | null>(null);
@@ -245,42 +281,43 @@
 	let noteColor = $state<string>(DEFAULT_HIGHLIGHT);
 
 	$effect(() => {
-		sermonMarks.load(sermon.slug, getLang()); // reload when navigating between sermons
+		// Reload when navigating between sermons.
+		marks.load(sermon.slug, SERMON_CHAPTER_ORDER, sermon.language, 'sermon');
 	});
 
 	// Paint marks as <mark> spans; clicking one opens its note editor.
 	$effect(() => {
-		const list = sermonMarks.list;
+		const list = marks.list;
 		if (!body) return;
 		renderMarks(body, list, (id) => {
 			noteId = id;
 			notePending = [];
-			noteDraft = sermonMarks.getNote(id);
-			noteColor = sermonMarks.getColor(id);
+			noteDraft = marks.getNote(id);
+			noteColor = marks.getColor(id);
 			noteOpen = true;
 		});
 	});
 
 	/** Note on a fresh selection: highlight it first, then attach the note. */
 	function openNoteForSelection(segments: Segment[]) {
-		const existing = sermonMarks.groupCovering(segments);
+		const existing = marks.groupCovering(segments);
 		noteId = existing;
 		notePending = existing ? [] : segments;
-		noteDraft = existing ? sermonMarks.getNote(existing) : '';
-		noteColor = existing ? sermonMarks.getColor(existing) : DEFAULT_HIGHLIGHT;
+		noteDraft = existing ? marks.getNote(existing) : '';
+		noteColor = existing ? marks.getColor(existing) : DEFAULT_HIGHLIGHT;
 		noteOpen = true;
 	}
 	function saveNote() {
 		if (noteId) {
-			sermonMarks.setNote(noteId, noteDraft);
-			sermonMarks.setColor(noteId, noteColor);
+			marks.setNote(noteId, noteDraft);
+			marks.setColor(noteId, noteColor);
 		} else if (notePending.length && noteDraft.trim()) {
-			sermonMarks.add(notePending, noteDraft, noteColor);
+			marks.add(notePending, noteDraft, noteColor);
 		}
 		noteOpen = false;
 	}
 	function removeMark() {
-		if (noteId) sermonMarks.remove(noteId);
+		if (noteId) marks.remove(noteId);
 		noteOpen = false;
 	}
 </script>
@@ -480,15 +517,15 @@
 	container={body}
 	{cite}
 	onHighlight={(segments, color) => {
-		const existing = sermonMarks.groupCovering(segments);
-		if (!existing) sermonMarks.add(segments, undefined, color);
-		else if (sermonMarks.getColor(existing) === color) sermonMarks.remove(existing);
-		else sermonMarks.setColor(existing, color);
+		const existing = marks.groupCovering(segments);
+		if (!existing) marks.add(segments, undefined, color);
+		else if (marks.getColor(existing) === color) marks.remove(existing);
+		else marks.setColor(existing, color);
 	}}
 	onNote={openNoteForSelection}
 	highlightColor={(segments) => {
-		const id = sermonMarks.groupCovering(segments);
-		return id ? sermonMarks.getColor(id) : null;
+		const id = marks.groupCovering(segments);
+		return id ? marks.getColor(id) : null;
 	}}
 	onDefine={(word, top, left) => define.show(word, top, left)}
 />

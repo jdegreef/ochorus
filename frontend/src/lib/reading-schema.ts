@@ -13,10 +13,15 @@
 // --- localStorage keys --------------------------------------------------------
 export const PROGRESS_KEY = 'ochorus:progress';
 export const MARKS_KEY = 'ochorus:marks';
-export const SERMON_MARKS_KEY = 'ochorus:sermon-marks';
 export const ANCHOR_KEY = 'ochorus:anchors';
 export const BOOKMARKS_KEY = 'ochorus:bookmarks';
 export const PLANS_KEY = 'ochorus:plans';
+// Legacy device-local sermon stores, folded into MARKS_KEY / ANCHOR_KEY under
+// `sermon:`-prefixed keys when sermons joined the synced reading layer
+// (roadmap #10). Kept only so the one-time migrations and the sign-out wipe
+// can still find stragglers.
+export const LEGACY_SERMON_MARKS_KEY = 'ochorus:sermon-marks';
+export const LEGACY_SERMON_ANCHOR_KEY = 'ochorus:sermon-anchor';
 
 /**
  * Every key holding the *reader's own data* (positions, highlights, notes,
@@ -27,11 +32,103 @@ export const PLANS_KEY = 'ochorus:plans';
 export const READING_DATA_KEYS = [
 	PROGRESS_KEY,
 	MARKS_KEY,
-	SERMON_MARKS_KEY,
 	ANCHOR_KEY,
 	BOOKMARKS_KEY,
-	PLANS_KEY
+	PLANS_KEY,
+	LEGACY_SERMON_MARKS_KEY,
+	LEGACY_SERMON_ANCHOR_KEY
 ] as const;
+
+// --- Work kind ----------------------------------------------------------------
+/**
+ * What a slug names: a chaptered book, or a sermon (a single document whose
+ * one "chapter" is order 1). Books keep their historical bare storage keys
+ * (`slug` / `slug:order`) so nobody's existing cache is invalidated; sermons
+ * are namespaced with a `sermon:` prefix — slugs never contain ':', so the
+ * prefix is unambiguous. The server stores the same distinction as a `kind`
+ * column; `readingSync` maps between prefix and column.
+ */
+export type WorkKind = 'book' | 'sermon';
+
+export const SERMON_CHAPTER_ORDER = 1;
+
+const SERMON_PREFIX = 'sermon:';
+
+/** Progress-map key for a work (books stay bare — cache compatibility). */
+export const workSlugKey = (kind: WorkKind, slug: string) =>
+	kind === 'book' ? slug : SERMON_PREFIX + slug;
+
+export function parseWorkSlugKey(key: string): { kind: WorkKind; slug: string } {
+	return key.startsWith(SERMON_PREFIX)
+		? { kind: 'sermon', slug: key.slice(SERMON_PREFIX.length) }
+		: { kind: 'book', slug: key };
+}
+
+/** Chapter-scoped key for a work (marks and anchors). */
+export const workKey = (kind: WorkKind, slug: string, order: number) =>
+	chapterKey(workSlugKey(kind, slug), order);
+
+export function parseWorkKey(
+	key: string
+): { kind: WorkKind; slug: string; order: number } | null {
+	const parsed = parseChapterKey(key);
+	if (!parsed) return null;
+	const { kind, slug } = parseWorkSlugKey(parsed.slug);
+	return { kind, slug, order: parsed.order };
+}
+
+/**
+ * One-time fold-in of the legacy device-local sermon stores (pre-#10, when
+ * sermons lived outside the synced reading layer) into the unified keys.
+ *
+ * Lives HERE — not in the stores — because every reader of the unified keys
+ * must run it first, *including* `readingSync.mergeOnSignIn`: a merge that
+ * read `MARKS_KEY` before the fold would upload a payload without the legacy
+ * sermon marks, and its response would then overwrite the folded cache —
+ * permanently destroying pre-upgrade highlights (a real race: the fold used
+ * to run lazily in the stores while the merge fetch was in flight).
+ *
+ * Idempotent and quota-safe: each legacy key is removed only after the fold
+ * has durably written (a full/private-mode storage keeps the legacy copy and
+ * retries next read instead of destroying the only copy).
+ */
+export function migrateLegacySermonState(): void {
+	if (typeof localStorage === 'undefined') return;
+	try {
+		const rawMarks = localStorage.getItem(LEGACY_SERMON_MARKS_KEY);
+		if (rawMarks) {
+			const store: MarksStore = JSON.parse(localStorage.getItem(MARKS_KEY) || '{}');
+			for (const [slug, ms] of Object.entries(
+				JSON.parse(rawMarks) as Record<string, Mark[]>
+			)) {
+				const key = workKey('sermon', slug, SERMON_CHAPTER_ORDER);
+				if (!store[key] && Array.isArray(ms) && ms.length) store[key] = { m: ms };
+			}
+			localStorage.setItem(MARKS_KEY, JSON.stringify(store));
+			localStorage.removeItem(LEGACY_SERMON_MARKS_KEY);
+		}
+	} catch {
+		/* corrupt blob or quota failure — keep the legacy copy, retry later */
+	}
+	try {
+		const rawAnchors = localStorage.getItem(LEGACY_SERMON_ANCHOR_KEY);
+		if (rawAnchors) {
+			const anchors: Record<string, number> = JSON.parse(
+				localStorage.getItem(ANCHOR_KEY) || '{}'
+			);
+			for (const [slug, p] of Object.entries(
+				JSON.parse(rawAnchors) as Record<string, number>
+			)) {
+				const key = workKey('sermon', slug, SERMON_CHAPTER_ORDER);
+				if (anchors[key] == null && p > 0) anchors[key] = p;
+			}
+			localStorage.setItem(ANCHOR_KEY, JSON.stringify(anchors));
+			localStorage.removeItem(LEGACY_SERMON_ANCHOR_KEY);
+		}
+	} catch {
+		/* corrupt blob or quota failure — keep the legacy copy, retry later */
+	}
+}
 
 // --- Highlights & notes -------------------------------------------------------
 /**
@@ -64,7 +161,7 @@ export interface ChapterMarks {
 	m: Mark[];
 }
 
-/** `chapterKey(slug, order)` -> ChapterMarks. */
+/** `workKey(kind, slug, order)` -> ChapterMarks. */
 export type MarksStore = Record<string, ChapterMarks>;
 
 // --- Bookmarks ----------------------------------------------------------------
@@ -95,7 +192,7 @@ export interface ProgressRecord {
 	at: number;
 }
 
-/** book slug -> ProgressRecord. */
+/** `workSlugKey(kind, slug)` -> ProgressRecord. */
 export type ProgressMap = Record<string, ProgressRecord>;
 
 // --- Chapter-scoped key -------------------------------------------------------

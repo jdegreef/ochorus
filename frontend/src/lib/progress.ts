@@ -4,7 +4,11 @@ import { storageHealth } from './storageHealth.svelte';
 import {
 	PROGRESS_KEY,
 	ANCHOR_KEY,
-	chapterKey,
+	migrateLegacySermonState,
+	workKey,
+	workSlugKey,
+	parseWorkSlugKey,
+	type WorkKind,
 	type ProgressRecord,
 	type ProgressMap
 } from './reading-schema';
@@ -21,13 +25,15 @@ function safeSet(key: string, value: string): void {
 }
 
 /**
- * Reading progress, stored in localStorage (keyed by book slug) as the offline
- * cache. When signed in, every change is also mirrored to the account via
- * `readingSync` so the reader's place follows them across devices.
+ * Reading progress, stored in localStorage (keyed by work — bare slug for
+ * books, `sermon:slug` for sermons) as the offline cache. When signed in,
+ * every change is also mirrored to the account via `readingSync` so the
+ * reader's place follows them across devices.
  *
  * A record captures the exact resume point: the last `order` (chapter) opened
- * plus the `paragraph_index` scrolled to within it, so "Continue reading" can
- * deep-link straight back to the spot.
+ * plus the `paragraph_index` scrolled to within it (sermons are single
+ * documents — their order is always 1), so "Continue reading" can deep-link
+ * straight back to the spot.
  */
 function read(): ProgressMap {
 	if (!browser) return {};
@@ -42,48 +48,56 @@ function write(map: ProgressMap) {
 	if (browser) safeSet(PROGRESS_KEY, JSON.stringify(map));
 }
 
-/** All in-progress books, newest first — powers the "Continue reading" lists. */
-export function allProgress(): (ProgressRecord & { slug: string })[] {
+/** All in-progress works, newest first — powers the "Continue reading" lists. */
+export function allProgress(): (ProgressRecord & { slug: string; kind: WorkKind })[] {
 	return Object.entries(read())
-		.map(([slug, r]) => ({ slug, ...r }))
+		.map(([key, r]) => ({ ...parseWorkSlugKey(key), ...r }))
 		.sort((a, b) => b.at - a.at);
 }
 
-export function getProgress(slug: string): number | null {
-	return read()[slug]?.order ?? null;
+export function getProgress(slug: string, kind: WorkKind = 'book'): number | null {
+	return read()[workSlugKey(kind, slug)]?.order ?? null;
 }
 
-export function getProgressRecord(slug: string): ProgressRecord | null {
-	return read()[slug] ?? null;
+export function getProgressRecord(slug: string, kind: WorkKind = 'book'): ProgressRecord | null {
+	return read()[workSlugKey(kind, slug)] ?? null;
 }
 
 /** Record which chapter is open. Keeps the best-known paragraph position: the
  * device-local anchor, else (same chapter, e.g. fresh device after a sync) the
  * synced paragraph_index — so opening a chapter never clobbers the resume point
  * before the reader has restored it. */
-export function saveProgress(slug: string, order: number, language = 'en'): void {
+export function saveProgress(
+	slug: string,
+	order: number,
+	language = 'en',
+	kind: WorkKind = 'book'
+): void {
 	if (!browser) return;
 	const map = read();
-	const prev = map[slug];
+	const key = workSlugKey(kind, slug);
+	const prev = map[key];
 	const paragraph_index =
-		getScrollAnchor(slug, order) ??
+		getScrollAnchor(slug, order, kind) ??
 		(prev && prev.order === order ? prev.paragraph_index : 0);
 	const rec: ProgressRecord = { order, paragraph_index, language, at: Date.now() };
-	map[slug] = rec;
+	map[key] = rec;
 	write(map);
-	readingSync.pushProgress(slug, rec);
+	readingSync.pushProgress(kind, slug, rec);
 }
 
 /**
  * In-chapter scroll position, anchored to a paragraph index rather than a pixel
- * offset so it survives font-size / measure changes. Keyed by `slug:order`. The
- * anchor for the *current* chapter is also folded into the book's progress
- * record so a resume lands on the exact paragraph.
+ * offset so it survives font-size / measure changes. Keyed by `slug:order`
+ * (books) / `sermon:slug:1` (sermons). The anchor for the *current* chapter is
+ * also folded into the work's progress record so a resume lands on the exact
+ * paragraph.
  */
 type AnchorMap = Record<string, number>;
 
 function readAnchors(): AnchorMap {
 	if (!browser) return {};
+	migrateLegacySermonState();
 	try {
 		return JSON.parse(localStorage.getItem(ANCHOR_KEY) || '{}');
 	} catch {
@@ -91,27 +105,36 @@ function readAnchors(): AnchorMap {
 	}
 }
 
-export function getScrollAnchor(slug: string, order: number): number | null {
-	return readAnchors()[chapterKey(slug, order)] ?? null;
+export function getScrollAnchor(
+	slug: string,
+	order: number,
+	kind: WorkKind = 'book'
+): number | null {
+	return readAnchors()[workKey(kind, slug, order)] ?? null;
 }
 
-export function saveScrollAnchor(slug: string, order: number, paragraphIndex: number): void {
+export function saveScrollAnchor(
+	slug: string,
+	order: number,
+	paragraphIndex: number,
+	kind: WorkKind = 'book'
+): void {
 	if (!browser) return;
 	const map = readAnchors();
 	if (paragraphIndex <= 0) {
-		delete map[chapterKey(slug, order)];
+		delete map[workKey(kind, slug, order)];
 	} else {
-		map[chapterKey(slug, order)] = paragraphIndex;
+		map[workKey(kind, slug, order)] = paragraphIndex;
 	}
 	safeSet(ANCHOR_KEY, JSON.stringify(map));
 
-	// Keep the book's resume point in step with where we actually are.
+	// Keep the work's resume point in step with where we actually are.
 	const progress = read();
-	const rec = progress[slug];
+	const rec = progress[workSlugKey(kind, slug)];
 	if (rec && rec.order === order) {
 		rec.paragraph_index = Math.max(0, paragraphIndex);
 		rec.at = Date.now();
 		write(progress);
-		readingSync.pushProgress(slug, rec);
+		readingSync.pushProgress(kind, slug, rec);
 	}
 }

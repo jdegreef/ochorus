@@ -3,18 +3,18 @@ import { apiFetch } from './api';
 import {
 	PROGRESS_KEY,
 	MARKS_KEY,
-	SERMON_MARKS_KEY,
 	READING_DATA_KEYS,
-	chapterKey,
-	parseChapterKey,
+	migrateLegacySermonState,
+	workKey,
+	workSlugKey,
+	parseWorkKey,
+	parseWorkSlugKey,
+	type WorkKind,
 	type Mark,
 	type MarksStore,
 	type ProgressRecord,
 	type ProgressMap
 } from './reading-schema';
-
-/** Device-local sermon marks: sermon slug -> its marks. */
-type SermonMarksStore = Record<string, Mark[]>;
 
 /**
  * Cross-device sync for reading progress, highlights and notes.
@@ -29,6 +29,7 @@ type SermonMarksStore = Record<string, Mark[]>;
  */
 
 interface ServerProgress {
+	kind: WorkKind;
 	book_slug: string;
 	language: string;
 	chapter_order: number;
@@ -36,22 +37,16 @@ interface ServerProgress {
 	updated_at: string;
 }
 interface ServerMarks {
+	kind: WorkKind;
 	book_slug: string;
 	language: string;
 	chapter_order: number;
 	marks: Mark[];
 	updated_at: string;
 }
-interface ServerSermonMarks {
-	sermon_slug: string;
-	language: string;
-	marks: Mark[];
-	updated_at: string;
-}
 interface ServerState {
 	progress: ServerProgress[];
 	marks: ServerMarks[];
-	sermon_marks: ServerSermonMarks[];
 }
 
 function readJson<T>(key: string, fallback: T): T {
@@ -83,12 +78,19 @@ class ReadingSync {
 		);
 	}
 
-	pushProgress(slug: string, rec: ProgressRecord) {
+	/** `?kind=` only for non-book works: book URLs stay byte-identical to the
+	 * pre-#10 contract, so nothing changes for existing readers mid-deploy. */
+	#kindQuery(kind: WorkKind): string {
+		return kind === 'book' ? '' : `?kind=${kind}`;
+	}
+
+	pushProgress(kind: WorkKind, slug: string, rec: ProgressRecord) {
 		if (!this.signedIn || !browser) return;
-		this.#debounce(`p:${slug}`, () => {
-			apiFetch(`/api/reading/progress/${slug}/`, {
+		this.#debounce(`p:${workSlugKey(kind, slug)}`, () => {
+			apiFetch(`/api/reading/progress/${slug}/${this.#kindQuery(kind)}`, {
 				method: 'PUT',
 				body: JSON.stringify({
+					kind,
 					language: rec.language,
 					chapter_order: rec.order,
 					paragraph_index: rec.paragraph_index
@@ -97,22 +99,12 @@ class ReadingSync {
 		});
 	}
 
-	pushMarks(slug: string, order: number, marks: Mark[], language: string) {
+	pushMarks(kind: WorkKind, slug: string, order: number, marks: Mark[], language: string) {
 		if (!this.signedIn || !browser) return;
-		this.#debounce(`m:${slug}:${order}`, () => {
-			apiFetch(`/api/reading/marks/${slug}/${order}/`, {
+		this.#debounce(`m:${workKey(kind, slug, order)}`, () => {
+			apiFetch(`/api/reading/marks/${slug}/${order}/${this.#kindQuery(kind)}`, {
 				method: 'PUT',
-				body: JSON.stringify({ language, marks })
-			}).catch(() => {});
-		});
-	}
-
-	pushSermonMarks(slug: string, marks: Mark[], language: string) {
-		if (!this.signedIn || !browser) return;
-		this.#debounce(`sm:${slug}`, () => {
-			apiFetch(`/api/reading/sermon-marks/${slug}/`, {
-				method: 'PUT',
-				body: JSON.stringify({ language, marks })
+				body: JSON.stringify({ kind, language, marks })
 			}).catch(() => {});
 		});
 	}
@@ -123,26 +115,35 @@ class ReadingSync {
 	 */
 	async mergeOnSignIn() {
 		if (!browser) return;
+		// Fold any legacy sermon state in BEFORE building the payload: a merge
+		// that read the cache pre-fold would upload without those marks, and
+		// its response would then overwrite the folded cache — destroying
+		// pre-upgrade sermon highlights.
+		migrateLegacySermonState();
 		const localProgress = readJson<ProgressMap>(PROGRESS_KEY, {});
 		const localMarks = readJson<MarksStore>(MARKS_KEY, {});
-		const localSermonMarks = readJson<SermonMarksStore>(SERMON_MARKS_KEY, {});
 
 		const payload = {
-			progress: Object.entries(localProgress).map(([slug, r]) => ({
-				book_slug: slug,
-				language: r.language || 'en',
-				chapter_order: r.order,
-				paragraph_index: r.paragraph_index || 0,
-				updated_at: r.at
-			})),
+			progress: Object.entries(localProgress).map(([key, r]) => {
+				const { kind, slug } = parseWorkSlugKey(key);
+				return {
+					kind,
+					book_slug: slug,
+					language: r.language || 'en',
+					chapter_order: r.order,
+					paragraph_index: r.paragraph_index || 0,
+					updated_at: r.at
+				};
+			}),
 			marks: Object.entries(localMarks)
 				.map(([key, entry]) => {
-					const parsed = parseChapterKey(key);
+					const parsed = parseWorkKey(key);
 					if (!parsed) return null;
 					// A not-yet-migrated legacy entry ({h, n}) passes its legacy
 					// keys through — the server converts, so nothing is lost.
 					const legacy = entry as unknown as { h?: number[]; n?: Record<string, string> };
 					return {
+						kind: parsed.kind,
 						book_slug: parsed.slug,
 						chapter_order: parsed.order,
 						...(Array.isArray(entry.m)
@@ -150,11 +151,7 @@ class ReadingSync {
 							: { highlights: legacy.h ?? [], notes: legacy.n ?? {} })
 					};
 				})
-				.filter(Boolean),
-			sermon_marks: Object.entries(localSermonMarks).map(([slug, marks]) => ({
-				sermon_slug: slug,
-				marks
-			}))
+				.filter(Boolean)
 		};
 
 		try {
@@ -162,6 +159,17 @@ class ReadingSync {
 				method: 'POST',
 				body: JSON.stringify(payload)
 			});
+			// Deploy-overlap guard: if we sent sermon rows but the server echoed
+			// rows with no `kind` at all, it's the pre-#10 API — writing its
+			// state back would re-key our sermon entries as books, making every
+			// sermon highlight vanish locally with no self-heal. Keep the local
+			// cache authoritative; the first merge after the API deploy syncs.
+			const sentSermonRows =
+				payload.progress.some((r) => r.kind !== 'book') ||
+				payload.marks.some((r) => r !== null && r.kind !== 'book');
+			const serverRows = [...state.progress, ...state.marks];
+			const serverKnowsKinds = serverRows.some((r) => 'kind' in r);
+			if (sentSermonRows && serverRows.length > 0 && !serverKnowsKinds) return;
 			this.#writeState(state);
 		} catch {
 			/* offline or API down — keep the local cache untouched */
@@ -190,7 +198,7 @@ class ReadingSync {
 		if (!browser) return;
 		const progress: ProgressMap = {};
 		for (const p of state.progress) {
-			progress[p.book_slug] = {
+			progress[workSlugKey(p.kind ?? 'book', p.book_slug)] = {
 				order: p.chapter_order,
 				paragraph_index: p.paragraph_index,
 				language: p.language,
@@ -199,15 +207,10 @@ class ReadingSync {
 		}
 		const marks: MarksStore = {};
 		for (const m of state.marks) {
-			marks[chapterKey(m.book_slug, m.chapter_order)] = { m: m.marks ?? [] };
-		}
-		const sermonMarks: SermonMarksStore = {};
-		for (const m of state.sermon_marks ?? []) {
-			if (m.marks?.length) sermonMarks[m.sermon_slug] = m.marks;
+			marks[workKey(m.kind ?? 'book', m.book_slug, m.chapter_order)] = { m: m.marks ?? [] };
 		}
 		localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
 		localStorage.setItem(MARKS_KEY, JSON.stringify(marks));
-		localStorage.setItem(SERMON_MARKS_KEY, JSON.stringify(sermonMarks));
 		// Let open views know the cache changed underneath them.
 		window.dispatchEvent(new CustomEvent('ochorus:sync'));
 	}

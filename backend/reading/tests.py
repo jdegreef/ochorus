@@ -5,7 +5,7 @@ from rest_framework.test import APIClient
 from accounts.models import UserProfile
 
 from .marks import clean_mark_list, from_legacy, merge_mark_lists
-from .models import ChapterMarks, ReadingProgress, SermonMarks
+from .models import ChapterMarks, ReadingProgress
 
 User = get_user_model()
 
@@ -68,7 +68,10 @@ class ReadingSyncTests(TestCase):
         self.assertEqual(cleaned[0].get("color"), "blue")
         self.assertNotIn("color", cleaned[1])
 
-    def test_sermon_marks_put_and_delete(self):
+    def test_sermon_marks_shim_writes_unified_rows(self):
+        # The pre-unification endpoint (PR #293 bundles) keeps working, but
+        # its writes land in ChapterMarks(kind="sermon") and its response
+        # keeps the old shape.
         res = self.client.put(
             "/api/reading/sermon-marks/himself/",
             {"marks": [{**mark(2, 0, 9, note="a"), "color": "green"}], "language": "en"},
@@ -77,19 +80,24 @@ class ReadingSyncTests(TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.data["sermon_slug"], "himself")
         self.assertEqual(res.data["marks"][0]["color"], "green")
-        self.assertEqual(SermonMarks.objects.count(), 1)
+        row = ChapterMarks.objects.get()
+        self.assertEqual((row.kind, row.book_slug, row.chapter_order), ("sermon", "himself", 1))
         self.client.put("/api/reading/sermon-marks/himself/", {"marks": []}, format="json")
-        self.assertEqual(SermonMarks.objects.count(), 0)
+        self.assertEqual(ChapterMarks.objects.count(), 0)
 
-    def test_sermon_marks_merge_and_state(self):
-        SermonMarks.objects.create(
-            profile=self.profile, sermon_slug="himself", marks=[mark(0, 0, 3)]
+    def test_sermon_marks_merge_and_state_compat(self):
+        # Old-shape merge payloads fold into the unified table and the state
+        # echo still carries the legacy field (old bundles rehydrate from it).
+        ChapterMarks.objects.create(
+            profile=self.profile, kind="sermon", book_slug="himself",
+            chapter_order=1, marks=[mark(0, 0, 3)],
         )
         payload = {"sermon_marks": [{"sermon_slug": "himself", "marks": [mark(1, 0, 4)]}]}
         state = self.client.post("/api/reading/merge/", payload, format="json").data
         self.assertIn("sermon_marks", state)
         rows = {m["sermon_slug"]: m for m in state["sermon_marks"]}
         self.assertEqual(len(rows["himself"]["marks"]), 2)  # unioned, none dropped
+        self.assertEqual(ChapterMarks.objects.get().kind, "sermon")
 
     def test_legacy_payload_converts(self):
         # An old client (cached SPA) still sends paragraph-level h/n.
@@ -188,3 +196,89 @@ class MarkHelpersTests(TestCase):
         merged = merge_mark_lists(a, b)
         self.assertEqual(len(merged), 3)
         self.assertEqual(merged[1]["note"], "longer note")
+
+
+class WorkKindTests(TestCase):
+    """Sermons in the reading layer (kind discriminator, roadmap #10)."""
+
+    def setUp(self):
+        self.user = User.objects.create(username="00000000-0000-0000-0000-000000000002")
+        self.profile = UserProfile.objects.create(
+            user=self.user, supabase_uid=self.user.username, email="k@example.com"
+        )
+        self.client = APIClient()
+        self.client.force_authenticate(self.user)
+
+    def test_sermon_and_book_progress_share_a_slug_without_colliding(self):
+        self.client.put(
+            "/api/reading/progress/humility/",
+            {"chapter_order": 3, "paragraph_index": 5},
+            format="json",
+        )
+        res = self.client.put(
+            "/api/reading/progress/humility/?kind=sermon",
+            {"paragraph_index": 40},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["kind"], "sermon")
+        rows = ReadingProgress.objects.filter(profile=self.profile)
+        self.assertEqual(rows.count(), 2)
+        self.assertEqual(
+            {(r.kind, r.chapter_order, r.paragraph_index) for r in rows},
+            {("book", 3, 5), ("sermon", 1, 40)},
+        )
+
+    def test_unknown_kind_rejected_not_misfiled(self):
+        res = self.client.put(
+            "/api/reading/progress/humility/?kind=plan",
+            {"paragraph_index": 1},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 400)
+        self.assertEqual(ReadingProgress.objects.count(), 0)
+
+    def test_sermon_marks_are_scoped_by_kind(self):
+        self.client.put(
+            "/api/reading/marks/free-grace/1/",
+            {"marks": [mark(0, 0, 10)]},
+            format="json",
+        )
+        self.client.put(
+            "/api/reading/marks/free-grace/1/?kind=sermon",
+            {"marks": [mark(2, 5, 20, note="amen")]},
+            format="json",
+        )
+        self.assertEqual(ChapterMarks.objects.count(), 2)
+        # Deleting the sermon's marks (empty payload) leaves the book row.
+        self.client.put(
+            "/api/reading/marks/free-grace/1/?kind=sermon", {"marks": []}, format="json"
+        )
+        remaining = ChapterMarks.objects.get()
+        self.assertEqual(remaining.kind, "book")
+
+    def test_merge_carries_kind_and_skips_unknown(self):
+        res = self.client.post(
+            "/api/reading/merge/",
+            {
+                "progress": [
+                    {"book_slug": "humility", "chapter_order": 2},  # legacy: no kind
+                    {"book_slug": "free-grace", "kind": "sermon", "paragraph_index": 7},
+                    {"book_slug": "future", "kind": "plan", "paragraph_index": 1},
+                ],
+                "marks": [
+                    {"book_slug": "free-grace", "kind": "sermon", "chapter_order": 1,
+                     "marks": [mark(1, 0, 5)]},
+                ],
+            },
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        kinds = {(p.kind, p.book_slug) for p in ReadingProgress.objects.all()}
+        self.assertEqual(kinds, {("book", "humility"), ("sermon", "free-grace")})
+        m = ChapterMarks.objects.get()
+        self.assertEqual((m.kind, m.book_slug, m.chapter_order), ("sermon", "free-grace", 1))
+        # The state echo includes kind so clients can rehydrate by kind.
+        self.assertEqual(
+            {r["kind"] for r in res.data["progress"]}, {"book", "sermon"}
+        )

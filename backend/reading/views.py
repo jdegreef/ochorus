@@ -19,12 +19,8 @@ from rest_framework.views import APIView
 from accounts.models import UserProfile
 
 from .marks import clean_mark_list, from_legacy, merge_mark_lists
-from .models import ChapterMarks, ReadingProgress, SermonMarks
-from .serializers import (
-    ChapterMarksSerializer,
-    ReadingProgressSerializer,
-    SermonMarksSerializer,
-)
+from .models import ChapterMarks, ReadingProgress, WorkKind
+from .serializers import ChapterMarksSerializer, ReadingProgressSerializer
 
 
 def _profile(request) -> UserProfile:
@@ -48,6 +44,19 @@ def _ms_to_dt(ms) -> datetime | None:
         return datetime.fromtimestamp(float(ms) / 1000.0, tz=timezone.utc)
     except (TypeError, ValueError, OverflowError, OSError):
         return None
+
+
+def _kind_or_none(value) -> str | None:
+    """A valid WorkKind, defaulting to book when absent; None when invalid.
+
+    Absent means an older client that predates sermons in the reading layer —
+    its rows are book rows. An *unknown* value is a newer client than this
+    server; misfiling that data under "book" would corrupt it, so callers
+    reject (PUT) or skip (merge) instead.
+    """
+    if value in (None, ""):
+        return WorkKind.BOOK
+    return value if value in WorkKind.values else None
 
 
 def _marks_from_payload(data) -> list[dict]:
@@ -79,8 +88,12 @@ class ProgressView(APIView):
     def put(self, request, slug):
         profile = _profile(request)
         data = request.data
+        kind = _kind_or_none(request.query_params.get("kind") or data.get("kind"))
+        if kind is None:
+            return Response({"detail": "Unknown kind."}, status=400)
         obj, _ = ReadingProgress.objects.update_or_create(
             profile=profile,
+            kind=kind,
             book_slug=slug,
             defaults={
                 "language": (data.get("language") or "en")[:10],
@@ -99,16 +112,20 @@ class MarksView(APIView):
     def put(self, request, slug, order):
         profile = _profile(request)
         data = request.data
+        kind = _kind_or_none(request.query_params.get("kind") or data.get("kind"))
+        if kind is None:
+            return Response({"detail": "Unknown kind."}, status=400)
         marks = _marks_from_payload(data)
 
         if not marks:
             ChapterMarks.objects.filter(
-                profile=profile, book_slug=slug, chapter_order=order
+                profile=profile, kind=kind, book_slug=slug, chapter_order=order
             ).delete()
             return Response({"marks": []})
 
         obj, _ = ChapterMarks.objects.update_or_create(
             profile=profile,
+            kind=kind,
             book_slug=slug,
             chapter_order=order,
             defaults={
@@ -122,7 +139,13 @@ class MarksView(APIView):
 
 
 class SermonMarksView(APIView):
-    """Replace the reader's marks for one sermon (empty payload deletes them)."""
+    """COMPAT SHIM for pre-unification clients (PR #293's deployed bundle).
+
+    Sermon marks now live in ChapterMarks(kind="sermon", chapter_order=1);
+    this keeps the old URL and payload shape working for stale PWA bundles so
+    their pushes keep syncing until they pick up the new build. Retire once
+    old bundles have aged out.
+    """
 
     permission_classes = [IsAuthenticated]
 
@@ -132,18 +155,24 @@ class SermonMarksView(APIView):
         marks = _marks_from_payload(data)
 
         if not marks:
-            SermonMarks.objects.filter(profile=profile, sermon_slug=slug).delete()
+            ChapterMarks.objects.filter(
+                profile=profile, kind=WorkKind.SERMON, book_slug=slug, chapter_order=1
+            ).delete()
             return Response({"marks": []})
 
-        obj, _ = SermonMarks.objects.update_or_create(
+        obj, _ = ChapterMarks.objects.update_or_create(
             profile=profile,
-            sermon_slug=slug,
+            kind=WorkKind.SERMON,
+            book_slug=slug,
+            chapter_order=1,
             defaults={
                 "language": (data.get("language") or "en")[:10],
                 "marks": marks,
+                "highlights": [],
+                "notes": {},
             },
         )
-        return Response(SermonMarksSerializer(obj).data)
+        return Response(_legacy_sermon_shape(obj))
 
 
 class MergeView(APIView):
@@ -165,18 +194,20 @@ class MergeView(APIView):
         return Response(_serialize_state(profile))
 
     def _merge_progress(self, profile, incoming):
-        existing = {p.book_slug: p for p in profile.progress.all()}
+        existing = {(p.kind, p.book_slug): p for p in profile.progress.all()}
         for row in incoming:
             slug = row.get("book_slug")
-            if not slug:
+            kind = _kind_or_none(row.get("kind"))
+            if not slug or kind is None:
                 continue
             local_dt = _ms_to_dt(row.get("updated_at"))
-            server = existing.get(slug)
+            server = existing.get((kind, slug))
             # Keep the server row unless the local one is strictly newer.
             if server and local_dt and server.updated_at >= local_dt:
                 continue
             ReadingProgress.objects.update_or_create(
                 profile=profile,
+                kind=kind,
                 book_slug=slug,
                 defaults={
                     "language": (row.get("language") or "en")[:10],
@@ -187,15 +218,16 @@ class MergeView(APIView):
 
     def _merge_marks(self, profile, incoming):
         existing = {
-            (m.book_slug, m.chapter_order): m for m in profile.marks.all()
+            (m.kind, m.book_slug, m.chapter_order): m for m in profile.marks.all()
         }
         for row in incoming:
             slug = row.get("book_slug")
+            kind = _kind_or_none(row.get("kind"))
             order = _clamp_int(row.get("chapter_order"), default=-1, low=0)
-            if not slug or order < 0:
+            if not slug or kind is None or order < 0:
                 continue
             marks = _marks_from_payload(row)
-            server = existing.get((slug, order))
+            server = existing.get((kind, slug, order))
             if server:
                 # A pre-conversion server row folds its legacy fields in too.
                 server_marks = server.marks or from_legacy(
@@ -206,6 +238,7 @@ class MergeView(APIView):
                 continue
             ChapterMarks.objects.update_or_create(
                 profile=profile,
+                kind=kind,
                 book_slug=slug,
                 chapter_order=order,
                 defaults={
@@ -217,25 +250,42 @@ class MergeView(APIView):
             )
 
     def _merge_sermon_marks(self, profile, incoming):
-        existing = {m.sermon_slug: m for m in profile.sermon_marks.all()}
+        """COMPAT: old bundles send sermon marks in their own payload field —
+        fold them into ChapterMarks(kind="sermon") so nothing is dropped."""
         for row in incoming:
             slug = row.get("sermon_slug")
             if not slug:
                 continue
             marks = _marks_from_payload(row)
-            server = existing.get(slug)
+            server = ChapterMarks.objects.filter(
+                profile=profile, kind=WorkKind.SERMON, book_slug=slug, chapter_order=1
+            ).first()
             if server:
                 marks = merge_mark_lists(server.marks or [], marks)
             if not marks:
                 continue
-            SermonMarks.objects.update_or_create(
+            ChapterMarks.objects.update_or_create(
                 profile=profile,
-                sermon_slug=slug,
+                kind=WorkKind.SERMON,
+                book_slug=slug,
+                chapter_order=1,
                 defaults={
                     "language": (row.get("language") or "en")[:10],
                     "marks": marks,
+                    "highlights": [],
+                    "notes": {},
                 },
             )
+
+
+def _legacy_sermon_shape(m) -> dict:
+    """A ChapterMarks sermon row in the old SermonMarks response shape."""
+    return {
+        "sermon_slug": m.book_slug,
+        "language": m.language,
+        "marks": m.marks,
+        "updated_at": m.updated_at,
+    }
 
 
 def _serialize_state(profile) -> dict:
@@ -244,7 +294,9 @@ def _serialize_state(profile) -> dict:
             profile.progress.all(), many=True
         ).data,
         "marks": ChapterMarksSerializer(profile.marks.all(), many=True).data,
-        "sermon_marks": SermonMarksSerializer(
-            profile.sermon_marks.all(), many=True
-        ).data,
+        # COMPAT: old bundles rehydrate their sermon store from this field.
+        "sermon_marks": [
+            _legacy_sermon_shape(m)
+            for m in profile.marks.filter(kind=WorkKind.SERMON)
+        ],
     }
