@@ -41,15 +41,18 @@ class Command(BaseCommand):
                     ChapterCitation.objects.bulk_create(
                         ChapterCitation(
                             chapter=chapter,
-                            ref_text=c["ref"][:80],
+                            ref_text=c["ref"],
                             start_verse_id=c["start"],
                             end_verse_id=c["end"],
-                            offset=c["offset"],
-                            count=min(c["count"], 32767),
+                            count=c["count"],
                         )
                         for c in cites
                     )
-                # .update() skips save() so the stamp isn't immediately re-cleared.
+                # .update() skips save() so the stamp isn't immediately
+                # re-cleared. Known, accepted race: a concurrent body save
+                # between our read and this stamp loses its invalidation until
+                # the next body save or --all; the window is sub-second and
+                # deploy-time only.
                 Chapter.objects.filter(pk=chapter.pk).update(
                     citations_indexed_at=now
                 )

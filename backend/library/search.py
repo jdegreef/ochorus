@@ -105,7 +105,7 @@ def search_library(q: str, language: str) -> list[dict]:
     # verse-id spans). Matched by verse id, so it works where plain text
     # search can't (abbreviations, chapter-only, a verse inside a range).
     extra = _scripture_sermon_hits(q, sermons, base)
-    cite_hits = _scripture_chapter_hits(q, language, extra)
+    cite_hits = _scripture_chapter_hits(q, language)
     if cite_hits:
         # A chapter found by BOTH citation and plain text keeps its citation
         # hit (ranked by specificity, snippet centred on the reference) and
@@ -370,69 +370,60 @@ def _scripture_sermon_hits(q, sermons, base):
     return hits
 
 
-def _scripture_chapter_hits(q, language, existing):
+def _scripture_chapter_hits(q, language):
     """Chapters whose body cites a reference overlapping the query's verses.
 
-    Range-overlap on ChapterCitation's (start, end) verse-id spans, so a
-    chapter citing "John 3:3-36" answers a search for "John 3:16". Most
-    specific citations first (narrowest span), deduped against hits already
-    found by text search. The snippet is centred on the citation itself.
+    The verse-id range filter is only a PREFILTER: a multi-reference query
+    ("John 3:16 and Romans 8:28") spans two books, and everything cited in
+    between falls inside min..max — so rows are re-checked against the exact
+    verse-id set before ranking (the same set-intersection contract as
+    _scripture_sermon_hits). Bare book names ("Matthew") parse as whole-book
+    references and would bury the text results under twenty incidental
+    citations, so the citation lead requires a chapter-or-verse query (a
+    digit). Row values first, winner chapters fetched after — a whole-book
+    prefilter can match hundreds of rows, and dragging each chapter's body
+    through the join costs tens of MB (measured 40 MB for "Matthew").
     """
+    if not any(ch.isdigit() for ch in q):
+        return []
     target = reference_verse_ids(q)
     if not target:
         return []
-    q_start, q_end = min(target), max(target)
-    already = {
-        (h["book_slug"], h["chapter_order"])
-        for h in existing
-        if h["type"] == "chapter"
+    rows = ChapterCitation.objects.filter(
+        start_verse_id__lte=max(target),
+        end_verse_id__gte=min(target),
+        chapter__book__is_published=True,
+        chapter__book__language=language,
+    ).values("chapter_id", "start_verse_id", "end_verse_id", "count", "ref_text")
+    matches = [
+        r
+        for r in rows
+        if not target.isdisjoint(range(r["start_verse_id"], r["end_verse_id"] + 1))
+    ]
+    # Narrowest citation first (most specific), then most-repeated; one pass
+    # keeps each chapter's best row via insertion order.
+    best: dict[int, dict] = {}
+    for r in sorted(
+        matches, key=lambda r: (r["end_verse_id"] - r["start_verse_id"], -r["count"])
+    ):
+        best.setdefault(r["chapter_id"], r)
+    winners = list(best.values())[: CAPS["chapter"]]
+    chapters = {
+        c.pk: c
+        for c in Chapter.objects.filter(pk__in=[w["chapter_id"] for w in winners])
+        .select_related("book__author")
+        .defer("body_html", "search_vector")
     }
-    rows = (
-        ChapterCitation.objects.filter(
-            start_verse_id__lte=q_end,
-            end_verse_id__gte=q_start,
-            chapter__book__is_published=True,
-            chapter__book__language=language,
+    return [
+        _chapter_hit(
+            chapters[w["chapter_id"]],
+            snippet=fallback_snippet(
+                chapters[w["chapter_id"]].body_text or "", w["ref_text"]
+            ),
         )
-        .select_related("chapter__book__author")
-        .order_by("start_verse_id")
-    )
-    best: dict[tuple, ChapterCitation] = {}
-    for row in rows:
-        key = (row.chapter.book.slug, row.chapter.order)
-        if key in already:
-            continue
-        prev = best.get(key)
-        # Prefer the chapter's narrowest overlapping citation (most specific).
-        if prev is None or (row.end_verse_id - row.start_verse_id) < (
-            prev.end_verse_id - prev.start_verse_id
-        ):
-            best[key] = row
-    hits = []
-    for row in sorted(
-        best.values(), key=lambda r: (r.end_verse_id - r.start_verse_id, -r.count)
-    )[: CAPS["chapter"]]:
-        hits.append(
-            _chapter_hit(row.chapter, snippet=_citation_snippet(row))
-        )
-    return hits
-
-
-def _citation_snippet(row, radius: int = 90) -> str:
-    """An excerpt centred on the citation, with the reference marker-wrapped."""
-    text = row.chapter.body_text or ""
-    i = row.offset
-    ref = row.ref_text
-    if not text[i : i + len(ref)] == ref:  # body changed since indexing
-        i = max(text.find(ref), 0)
-    start = max(0, i - radius)
-    end = min(len(text), i + len(ref) + radius)
-    prefix = "…" if start > 0 else ""
-    suffix = "…" if end < len(text) else ""
-    excerpt = (
-        text[start:i] + HL_START + text[i : i + len(ref)] + HL_END + text[i + len(ref) : end]
-    )
-    return f"{prefix}{excerpt}{suffix}"
+        for w in winners
+        if w["chapter_id"] in chapters
+    ]
 
 
 # --- Did-you-mean -------------------------------------------------------------

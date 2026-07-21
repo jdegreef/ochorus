@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='chapter',
             name='citations_indexed_at',
-            field=models.DateTimeField(editable=False, null=True),
+            field=models.DateTimeField(editable=False, null=True, serialize=False),
         ),
         migrations.CreateModel(
             name='ChapterCitation',
@@ -23,7 +23,6 @@ class Migration(migrations.Migration):
                 ('ref_text', models.CharField(max_length=80)),
                 ('start_verse_id', models.IntegerField()),
                 ('end_verse_id', models.IntegerField()),
-                ('offset', models.PositiveIntegerField(default=0)),
                 ('count', models.PositiveSmallIntegerField(default=1)),
                 ('chapter', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='citations', to='library.chapter')),
             ],

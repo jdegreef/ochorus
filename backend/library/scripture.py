@@ -35,7 +35,7 @@ _TAG_SPLIT = re.compile(r"(<[^>]+>)")
 _MAX_VERSES = 25
 
 
-@lru_cache(maxsize=4096)
+@lru_cache(maxsize=None)  # ~8k distinct candidates corpus-wide; 4096 thrashed (23% hits)
 def _first_reference(text: str):
     """The first valid Bible reference in ``text``, or None."""
     try:
@@ -153,7 +153,14 @@ def extract_citations(text: str) -> list[dict]:
     found: dict[tuple[int, int], dict] = {}
     for m in _CANDIDATE.finditer(text or ""):
         ref = _first_reference(m.group(1))
-        if ref is None:
+        if ref is not None and ref.start_chapter is None:
+            # A period after a FULL book name ("Matthew. 1:23") detaches the
+            # numbers and pythonbible falls back to the whole book — a span of
+            # 28 chapters for a single-verse citation. Retry without the
+            # period; if it still parses book-only, skip: citation rows must
+            # come from explicit chapter:verse text, never whole books.
+            ref = _first_reference(m.group(1).replace(". ", " ", 1))
+        if ref is None or ref.start_chapter is None:
             continue
         try:
             ids = bible.convert_reference_to_verse_ids(ref)

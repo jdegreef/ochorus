@@ -2347,3 +2347,59 @@ class CitationIndexTests(TestCase):
         self.assertLess(
             chapter_hits.index(("cite-book", 1)), chapter_hits.index(("cite-book", 2))
         )
+
+    def test_multi_reference_query_uses_exact_intersection(self):
+        """"John 3:16 and Romans 8:28" must not match everything in between."""
+        from django.core.management import call_command
+
+        book = self._book(slug="span-book")
+        Chapter.objects.create(
+            book=book, order=1, title="True1",
+            body_html="<p>See John 3:16 for the promise.</p>",
+        )
+        Chapter.objects.create(
+            book=book, order=2, title="True2",
+            body_html="<p>And Romans 8:28 for the assurance.</p>",
+        )
+        # Falls inside min..max of the two references but overlaps neither.
+        Chapter.objects.create(
+            book=book, order=3, title="Between",
+            body_html="<p>Acts 2:38 stands between them.</p>",
+        )
+        call_command("index_citations")
+
+        from .search import search_library
+
+        hits = [
+            (r["book_slug"], r["chapter_order"])
+            for r in search_library("John 3:16 and Romans 8:28", "en")
+            if r["type"] == "chapter"
+        ]
+        self.assertIn(("span-book", 1), hits)
+        self.assertIn(("span-book", 2), hits)
+        self.assertNotIn(("span-book", 3), hits)
+
+    def test_full_book_name_with_period_is_not_whole_book(self):
+        """"Matthew. 1:23" must index one verse, not 28 chapters."""
+        from .scripture import extract_citations
+
+        cites = extract_citations("the words in Matthew. 1:23, well known.")
+        self.assertEqual(len(cites), 1)
+        self.assertEqual(cites[0]["start"], cites[0]["end"])  # single verse
+        self.assertEqual(cites[0]["start"], 40001023)
+
+    def test_bare_book_name_skips_citation_lead(self):
+        """"Matthew" is a text query, not a whole-book citation sweep."""
+        from django.core.management import call_command
+
+        book = self._book(slug="matt-citer")
+        Chapter.objects.create(
+            book=book, order=1, title="C",
+            body_html="<p>Matthew 5:3 opens the sermon.</p>",
+        )
+        call_command("index_citations")
+
+        from .search import _scripture_chapter_hits
+
+        self.assertEqual(_scripture_chapter_hits("Matthew", "en"), [])
+        self.assertEqual(len(_scripture_chapter_hits("Matthew 5:3", "en")), 1)
