@@ -42,6 +42,9 @@ class Command(BaseCommand):
         call_command("seed_topics")
         # Fixture loads bypass save(), so fill any NULL search vectors last —
         # after body_text exists and all seed steps have created their rows.
+        # Citation index feeds scripture search; incremental after body edits.
+        self.stdout.write("→ index_citations")
+        call_command("index_citations")
         self.stdout.write("→ backfill_search_vectors")
         call_command("backfill_search_vectors")
         # Bound the anonymous search-analytics log (reads cover 30 days).

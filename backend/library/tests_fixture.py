@@ -255,11 +255,12 @@ class SeedFieldCoverageTests(SimpleTestCase):
         from library.models import Chapter
 
         # body_text and search_vector are derived by save(); the seed must
-        # not set them directly.
+        # not set them directly. citations_indexed_at must stay unset so the
+        # index_citations release step scans freshly seeded chapters.
         expected = self._content_fields(
             Chapter,
             exclude={"id", "book", "body_text", "search_vector",
-                     "created_at", "updated_at"},
+                     "citations_indexed_at", "created_at", "updated_at"},
         )
         self.assertEqual(set(CHAPTER_FIELDS), expected)
 
