@@ -2,6 +2,8 @@
 	import { search, type SearchHit, type ChapterHit } from '$lib/library';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
+	import { apiFetch } from '$lib/api';
+	import type { ScriptureResult } from '$lib/scripture.svelte';
 	import { markSnippet } from '$lib/highlight';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import { beforeNavigate, goto } from '$app/navigation';
@@ -231,6 +233,31 @@
 		hits = [];
 		ran = '';
 		suggestion = '';
+		scriptureAnswer = null;
+	}
+
+	// --- Instant scripture answer ----------------------------------------------
+	// When the query looks like a Bible reference ("John 3:16", "1 Cor 13",
+	// "Psalm 23"), fetch the passage and show it above the results — the answer,
+	// not just links to sermons about it. The backend is the real judge: a
+	// non-reference simply returns nothing and the card stays hidden.
+	let scriptureAnswer = $state<ScriptureResult | null>(null);
+	const REF_RE = /^\s*(?:[123]\s*|I{1,3}\s+)?[A-Za-z][A-Za-z.]{1,}\s+\d{1,3}(?::\d{1,3}(?:[-–]\d{1,3})?)?\s*$/;
+
+	async function maybeScripture(term: string, token: number) {
+		if (!REF_RE.test(term)) {
+			scriptureAnswer = null;
+			return;
+		}
+		try {
+			const data = await apiFetch<ScriptureResult>(
+				`/api/library/scripture/?ref=${encodeURIComponent(term)}`
+			);
+			if (token !== searchSeq) return;
+			scriptureAnswer = data?.verses?.length ? data : null;
+		} catch {
+			if (token === searchSeq) scriptureAnswer = null;
+		}
 	}
 
 	async function runSearch(term: string) {
@@ -239,6 +266,7 @@
 		// an older reply repaints stale hits over the term the reader can see.
 		const token = ++searchSeq;
 		loading = true;
+		void maybeScripture(term, token); // in parallel; independent of the list
 		try {
 			const res = await search(term, getLang());
 			if (token !== searchSeq) return;
@@ -345,6 +373,24 @@
 		aria-label={t('search.title')}
 		class="w-full rounded-card border border-border bg-surface px-4 py-3 text-body text-text"
 	/>
+
+	{#if scriptureAnswer}
+		<!-- Instant scripture answer: the passage text for a reference query. -->
+		<div class="mt-6 rounded-card border-l-4 border-accent bg-accent-soft p-4">
+			<p class="text-[0.66rem] font-bold uppercase tracking-[0.1em] text-accent">
+				{t('reader.scripture')}
+			</p>
+			<p class="scripture-answer-ref">{scriptureAnswer.reference}</p>
+			<p class="scripture-answer-body mt-2">
+				{#each scriptureAnswer.verses as v (v.number)}<sup class="scripture-answer-num"
+						>{v.number}</sup
+					>{v.text}{' '}{/each}
+			</p>
+			<p class="mt-2 text-[0.66rem] uppercase tracking-[0.08em] text-muted">
+				{scriptureAnswer.version}
+			</p>
+		</div>
+	{/if}
 
 	<div class="mt-6" id="search-results">
 		{#if loading}
@@ -510,5 +556,25 @@
 		color: var(--text);
 		border-radius: 3px;
 		padding: 0 0.15em;
+	}
+	.scripture-answer-ref {
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		color: var(--accent);
+		margin-top: 0.1rem;
+	}
+	.scripture-answer-body {
+		font-family: var(--font-display);
+		font-style: italic;
+		line-height: 1.6;
+		color: var(--text);
+	}
+	.scripture-answer-num {
+		font-size: 0.62em;
+		font-weight: 600;
+		color: var(--muted);
+		margin-right: 0.15em;
+		vertical-align: super;
+		font-style: normal;
 	}
 </style>
