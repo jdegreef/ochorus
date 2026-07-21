@@ -81,6 +81,11 @@ import type { PageLoad } from './$types';
  * edition of Prevailing Prayer (Okusaba Okuwangula, PR #306) by D. L. Moody
  * went live, so the /lg/books index and its /books/<slug> pages re-crawl and
  * bake with the new title.
+ *
+ * Prerender refresh 2026-07-21 (queue job #276): same again after the Luganda
+ * edition of All of Grace (Byonna Bya Kisa, PR #311) by C. H. Spurgeon went
+ * live, so the /lg/books index and its /books/<slug> pages re-crawl and bake
+ * with the new title.
  */
 export const load: PageLoad = async () => {
 	try {
