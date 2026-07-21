@@ -245,7 +245,7 @@
 	let noteColor = $state<string>(DEFAULT_HIGHLIGHT);
 
 	$effect(() => {
-		sermonMarks.load(sermon.slug); // reload when navigating between sermons
+		sermonMarks.load(sermon.slug, getLang()); // reload when navigating between sermons
 	});
 
 	// Paint marks as <mark> spans; clicking one opens its note editor.

@@ -90,3 +90,33 @@ class ChapterMarks(models.Model):
     @property
     def is_empty(self) -> bool:
         return not self.marks
+
+
+class SermonMarks(models.Model):
+    """A reader's highlights and notes within one sermon.
+
+    A sermon is a single body (no chapters), so — unlike ``ChapterMarks`` — this
+    is keyed by ``sermon_slug`` alone. Same text-range shape (``reading/marks.py``).
+    """
+
+    profile = models.ForeignKey(
+        "accounts.UserProfile",
+        on_delete=models.CASCADE,
+        related_name="sermon_marks",
+    )
+    sermon_slug = models.SlugField(max_length=160)
+    language = models.CharField(max_length=10, default="en")
+    marks = models.JSONField(default=list)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["sermon_slug"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["profile", "sermon_slug"],
+                name="uniq_sermon_marks_profile_slug",
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.profile_id}:sermon:{self.sermon_slug}"

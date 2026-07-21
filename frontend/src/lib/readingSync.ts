@@ -3,6 +3,7 @@ import { apiFetch } from './api';
 import {
 	PROGRESS_KEY,
 	MARKS_KEY,
+	SERMON_MARKS_KEY,
 	READING_DATA_KEYS,
 	chapterKey,
 	parseChapterKey,
@@ -11,6 +12,9 @@ import {
 	type ProgressRecord,
 	type ProgressMap
 } from './reading-schema';
+
+/** Device-local sermon marks: sermon slug -> its marks. */
+type SermonMarksStore = Record<string, Mark[]>;
 
 /**
  * Cross-device sync for reading progress, highlights and notes.
@@ -38,9 +42,16 @@ interface ServerMarks {
 	marks: Mark[];
 	updated_at: string;
 }
+interface ServerSermonMarks {
+	sermon_slug: string;
+	language: string;
+	marks: Mark[];
+	updated_at: string;
+}
 interface ServerState {
 	progress: ServerProgress[];
 	marks: ServerMarks[];
+	sermon_marks: ServerSermonMarks[];
 }
 
 function readJson<T>(key: string, fallback: T): T {
@@ -96,6 +107,16 @@ class ReadingSync {
 		});
 	}
 
+	pushSermonMarks(slug: string, marks: Mark[], language: string) {
+		if (!this.signedIn || !browser) return;
+		this.#debounce(`sm:${slug}`, () => {
+			apiFetch(`/api/reading/sermon-marks/${slug}/`, {
+				method: 'PUT',
+				body: JSON.stringify({ language, marks })
+			}).catch(() => {});
+		});
+	}
+
 	/**
 	 * First-sign-in reconciliation. Sends the local cache to the merge endpoint,
 	 * then overwrites the cache with the merged server truth so both sides agree.
@@ -104,6 +125,7 @@ class ReadingSync {
 		if (!browser) return;
 		const localProgress = readJson<ProgressMap>(PROGRESS_KEY, {});
 		const localMarks = readJson<MarksStore>(MARKS_KEY, {});
+		const localSermonMarks = readJson<SermonMarksStore>(SERMON_MARKS_KEY, {});
 
 		const payload = {
 			progress: Object.entries(localProgress).map(([slug, r]) => ({
@@ -128,7 +150,11 @@ class ReadingSync {
 							: { highlights: legacy.h ?? [], notes: legacy.n ?? {} })
 					};
 				})
-				.filter(Boolean)
+				.filter(Boolean),
+			sermon_marks: Object.entries(localSermonMarks).map(([slug, marks]) => ({
+				sermon_slug: slug,
+				marks
+			}))
 		};
 
 		try {
@@ -175,8 +201,13 @@ class ReadingSync {
 		for (const m of state.marks) {
 			marks[chapterKey(m.book_slug, m.chapter_order)] = { m: m.marks ?? [] };
 		}
+		const sermonMarks: SermonMarksStore = {};
+		for (const m of state.sermon_marks ?? []) {
+			if (m.marks?.length) sermonMarks[m.sermon_slug] = m.marks;
+		}
 		localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
 		localStorage.setItem(MARKS_KEY, JSON.stringify(marks));
+		localStorage.setItem(SERMON_MARKS_KEY, JSON.stringify(sermonMarks));
 		// Let open views know the cache changed underneath them.
 		window.dispatchEvent(new CustomEvent('ochorus:sync'));
 	}

@@ -4,8 +4,8 @@ from rest_framework.test import APIClient
 
 from accounts.models import UserProfile
 
-from .marks import from_legacy, merge_mark_lists
-from .models import ChapterMarks, ReadingProgress
+from .marks import clean_mark_list, from_legacy, merge_mark_lists
+from .models import ChapterMarks, ReadingProgress, SermonMarks
 
 User = get_user_model()
 
@@ -59,6 +59,37 @@ class ReadingSyncTests(TestCase):
 
         self.client.put("/api/reading/marks/humility/2/", {"marks": []}, format="json")
         self.assertEqual(ChapterMarks.objects.count(), 0)
+
+    def test_marks_preserve_highlight_colour(self):
+        # A valid colour survives; an unknown one is dropped (default = gold).
+        cleaned = clean_mark_list(
+            [{**mark(0, 0, 5), "color": "blue"}, {**mark(1, 0, 5), "color": "chartreuse"}]
+        )
+        self.assertEqual(cleaned[0].get("color"), "blue")
+        self.assertNotIn("color", cleaned[1])
+
+    def test_sermon_marks_put_and_delete(self):
+        res = self.client.put(
+            "/api/reading/sermon-marks/himself/",
+            {"marks": [{**mark(2, 0, 9, note="a"), "color": "green"}], "language": "en"},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["sermon_slug"], "himself")
+        self.assertEqual(res.data["marks"][0]["color"], "green")
+        self.assertEqual(SermonMarks.objects.count(), 1)
+        self.client.put("/api/reading/sermon-marks/himself/", {"marks": []}, format="json")
+        self.assertEqual(SermonMarks.objects.count(), 0)
+
+    def test_sermon_marks_merge_and_state(self):
+        SermonMarks.objects.create(
+            profile=self.profile, sermon_slug="himself", marks=[mark(0, 0, 3)]
+        )
+        payload = {"sermon_marks": [{"sermon_slug": "himself", "marks": [mark(1, 0, 4)]}]}
+        state = self.client.post("/api/reading/merge/", payload, format="json").data
+        self.assertIn("sermon_marks", state)
+        rows = {m["sermon_slug"]: m for m in state["sermon_marks"]}
+        self.assertEqual(len(rows["himself"]["marks"]), 2)  # unioned, none dropped
 
     def test_legacy_payload_converts(self):
         # An old client (cached SPA) still sends paragraph-level h/n.

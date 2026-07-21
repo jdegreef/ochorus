@@ -19,8 +19,12 @@ from rest_framework.views import APIView
 from accounts.models import UserProfile
 
 from .marks import clean_mark_list, from_legacy, merge_mark_lists
-from .models import ChapterMarks, ReadingProgress
-from .serializers import ChapterMarksSerializer, ReadingProgressSerializer
+from .models import ChapterMarks, ReadingProgress, SermonMarks
+from .serializers import (
+    ChapterMarksSerializer,
+    ReadingProgressSerializer,
+    SermonMarksSerializer,
+)
 
 
 def _profile(request) -> UserProfile:
@@ -117,6 +121,31 @@ class MarksView(APIView):
         return Response(ChapterMarksSerializer(obj).data)
 
 
+class SermonMarksView(APIView):
+    """Replace the reader's marks for one sermon (empty payload deletes them)."""
+
+    permission_classes = [IsAuthenticated]
+
+    def put(self, request, slug):
+        profile = _profile(request)
+        data = request.data
+        marks = _marks_from_payload(data)
+
+        if not marks:
+            SermonMarks.objects.filter(profile=profile, sermon_slug=slug).delete()
+            return Response({"marks": []})
+
+        obj, _ = SermonMarks.objects.update_or_create(
+            profile=profile,
+            sermon_slug=slug,
+            defaults={
+                "language": (data.get("language") or "en")[:10],
+                "marks": marks,
+            },
+        )
+        return Response(SermonMarksSerializer(obj).data)
+
+
 class MergeView(APIView):
     """First-sign-in reconciliation of local (offline) state with the server.
 
@@ -132,6 +161,7 @@ class MergeView(APIView):
         profile = _profile(request)
         self._merge_progress(profile, request.data.get("progress") or [])
         self._merge_marks(profile, request.data.get("marks") or [])
+        self._merge_sermon_marks(profile, request.data.get("sermon_marks") or [])
         return Response(_serialize_state(profile))
 
     def _merge_progress(self, profile, incoming):
@@ -186,6 +216,27 @@ class MergeView(APIView):
                 },
             )
 
+    def _merge_sermon_marks(self, profile, incoming):
+        existing = {m.sermon_slug: m for m in profile.sermon_marks.all()}
+        for row in incoming:
+            slug = row.get("sermon_slug")
+            if not slug:
+                continue
+            marks = _marks_from_payload(row)
+            server = existing.get(slug)
+            if server:
+                marks = merge_mark_lists(server.marks or [], marks)
+            if not marks:
+                continue
+            SermonMarks.objects.update_or_create(
+                profile=profile,
+                sermon_slug=slug,
+                defaults={
+                    "language": (row.get("language") or "en")[:10],
+                    "marks": marks,
+                },
+            )
+
 
 def _serialize_state(profile) -> dict:
     return {
@@ -193,4 +244,7 @@ def _serialize_state(profile) -> dict:
             profile.progress.all(), many=True
         ).data,
         "marks": ChapterMarksSerializer(profile.marks.all(), many=True).data,
+        "sermon_marks": SermonMarksSerializer(
+            profile.sermon_marks.all(), many=True
+        ).data,
     }
