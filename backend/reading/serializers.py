@@ -29,3 +29,4 @@ class ChapterMarksSerializer(serializers.ModelSerializer):
             "updated_at",
         ]
         read_only_fields = ["updated_at"]
+

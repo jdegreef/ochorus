@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('accounts', '0002_userprofile_tts_rate_userprofile_tts_voice_uri'),
-        ('reading', '0003_convert_legacy_marks'),
+        ('reading', '0004_sermonmarks'),
     ]
 
     operations = [

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { i18n } from '$lib/i18n.svelte';
 	import { segmentsFromSelection } from '$lib/rangeMarks';
+	import { HIGHLIGHT_COLORS } from '$lib/reading-schema';
 	import type { Segment } from '$lib/marks.svelte';
 
 	interface Cite {
@@ -15,14 +16,16 @@
 		cite,
 		onHighlight,
 		onNote,
-		isHighlighted,
+		highlightColor,
 		onDefine
 	}: {
 		container: HTMLElement | undefined;
 		cite: Cite;
-		onHighlight?: (segments: Segment[]) => void;
+		/** Toggle/recolour: called with the picked colour key. */
+		onHighlight?: (segments: Segment[], color: string) => void;
 		onNote?: (segments: Segment[]) => void;
-		isHighlighted?: (segments: Segment[]) => boolean;
+		/** Current highlight colour of the selection, or null if not highlighted. */
+		highlightColor?: (segments: Segment[]) => string | null;
 		onDefine?: (word: string, top: number, left: number) => void;
 	} = $props();
 	const t = i18n.t;
@@ -93,8 +96,8 @@
 		}
 	}
 
-	const highlighted = $derived(
-		isHighlighted && segments.length > 0 ? isHighlighted(segments) : false
+	const activeColor = $derived(
+		highlightColor && segments.length > 0 ? highlightColor(segments) : null
 	);
 </script>
 
@@ -114,16 +117,23 @@
 		<button class="selbar-btn" onclick={share}>{t('reader.share')}</button>
 		{#if onHighlight && segments.length > 0}
 			<span class="selbar-sep"></span>
-			<button
-				class="selbar-btn"
-				class:on={highlighted}
-				onclick={() => {
-					onHighlight(segments);
-					window.getSelection()?.removeAllRanges();
-					visible = false;
-				}}
-				aria-pressed={highlighted}>{t('reader.highlight')}</button
-			>
+			<span class="selbar-swatches" role="group" aria-label={t('reader.highlight')}>
+				{#each HIGHLIGHT_COLORS as color (color)}
+					<button
+						class="hl-swatch"
+						data-color={color}
+						class:active={activeColor === color}
+						aria-pressed={activeColor === color}
+						aria-label="{t('reader.highlight')}: {t(`reader.hl_${color}`)}"
+						title={t(`reader.hl_${color}`)}
+						onclick={() => {
+							onHighlight(segments, color);
+							window.getSelection()?.removeAllRanges();
+							visible = false;
+						}}
+					></button>
+				{/each}
+			</span>
 		{/if}
 		{#if onNote && segments.length > 0}
 			<span class="selbar-sep"></span>
@@ -165,8 +175,11 @@
 	.selbar-btn:hover {
 		background: var(--surface-2);
 	}
-	.selbar-btn.on {
-		color: var(--gold);
+	.selbar-swatches {
+		display: flex;
+		align-items: center;
+		gap: 0.3rem;
+		padding: 0 0.35rem;
 	}
 	.selbar-sep {
 		width: 1px;

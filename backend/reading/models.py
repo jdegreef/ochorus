@@ -110,3 +110,4 @@ class ChapterMarks(models.Model):
     @property
     def is_empty(self) -> bool:
         return not self.marks
+

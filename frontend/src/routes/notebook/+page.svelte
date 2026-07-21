@@ -6,11 +6,11 @@
 	import { marks } from '$lib/marks.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
-	import type { Bookmark, Mark } from '$lib/reading-schema';
+	import { HIGHLIGHT_COLORS, DEFAULT_HIGHLIGHT, type Bookmark, type Mark } from '$lib/reading-schema';
 
 	const t = i18n.t;
 
-	type HL = { id: string; p: number; text: string; note?: string };
+	type HL = { id: string; p: number; text: string; note?: string; color: string };
 	type ChapterBlock = { order: number; title: string; highlights: HL[] };
 	type BookBlock = {
 		slug: string;
@@ -27,24 +27,32 @@
 	let sermons = $state<SermonBlock[]>([]);
 	const isEmpty = $derived(!loading && books.length === 0 && sermons.length === 0);
 
-	// Live search across every book, chapter title, highlight, note and bookmark.
+	// Live search across every book, chapter title, highlight, note and bookmark,
+	// plus an optional filter to one highlight colour.
 	let query = $state('');
+	let colorFilter = $state(''); // '' = all colours
 	const q = $derived(query.trim().toLowerCase());
+	const active = $derived(q.length > 0 || colorFilter !== '');
 	const filtered = $derived.by(() => {
-		if (!q) return books;
+		if (!active) return books;
 		const hit = (s: string) => s.toLowerCase().includes(q);
 		return books
 			.map((bk) => {
-				const bookHit = hit(bk.title) || hit(bk.author);
-				const bookmarks = bookHit
-					? bk.bookmarks
-					: bk.bookmarks.filter((b) => hit(b.snippet) || hit(b.title));
+				const bookHit = !q || hit(bk.title) || hit(bk.author);
+				// Bookmarks aren't coloured, so a colour filter hides them.
+				const bookmarks = colorFilter
+					? []
+					: bookHit
+						? bk.bookmarks
+						: bk.bookmarks.filter((b) => hit(b.snippet) || hit(b.title));
 				const chapters = bk.chapters
 					.map((ch) => ({
 						...ch,
-						highlights: bookHit
-							? ch.highlights
-							: ch.highlights.filter((h) => hit(h.text) || hit(h.note ?? '') || hit(ch.title))
+						highlights: ch.highlights.filter(
+							(h) =>
+								(!colorFilter || h.color === colorFilter) &&
+								(bookHit || hit(h.text) || hit(h.note ?? '') || hit(ch.title))
+						)
 					}))
 					.filter((ch) => ch.highlights.length);
 				return { ...bk, bookmarks, chapters };
@@ -52,21 +60,23 @@
 			.filter((bk) => bk.bookmarks.length || bk.chapters.length);
 	});
 	const filteredSermons = $derived.by(() => {
-		if (!q) return sermons;
+		if (!active) return sermons;
 		const hit = (s: string) => s.toLowerCase().includes(q);
 		return sermons
 			.map((sm) => {
-				const sermonHit = hit(sm.title) || hit(sm.author);
-				const highlights = sermonHit
-					? sm.highlights
-					: sm.highlights.filter((h) => hit(h.text) || hit(h.note ?? ''));
+				const sermonHit = !q || hit(sm.title) || hit(sm.author);
+				const highlights = sm.highlights.filter(
+					(h) =>
+						(!colorFilter || h.color === colorFilter) &&
+						(sermonHit || hit(h.text) || hit(h.note ?? ''))
+				);
 				return { ...sm, highlights };
 			})
 			.filter((sm) => sm.highlights.length);
 	});
 	const hasContent = $derived(books.length > 0 || sermons.length > 0);
 	const noMatches = $derived(
-		!loading && hasContent && q.length > 0 && filtered.length === 0 && filteredSermons.length === 0
+		!loading && hasContent && active && filtered.length === 0 && filteredSermons.length === 0
 	);
 
 	// Split a chapter's cleaned HTML into its top-level blocks' text — the same
@@ -95,7 +105,8 @@
 				id: segs[0].id,
 				p: segs[0].p,
 				text: segs.map((s) => segText(paras, s)).filter(Boolean).join(' … '),
-				note: segs.find((s) => s.note)?.note
+				note: segs.find((s) => s.note)?.note,
+				color: segs.find((s) => s.color)?.color ?? DEFAULT_HIGHLIGHT
 			};
 		});
 	}
@@ -143,7 +154,7 @@
 		}
 		books = out.sort((a, b) => a.title.localeCompare(b.title));
 
-		// Sermon highlights — same synced store, kind="sermon" (single chapter).
+		// Sermon highlights (device-local, keyed by sermon slug — no chapters).
 		const sOut: SermonBlock[] = [];
 		for (const { slug, marks: ms } of allMarks.filter((m) => m.kind === 'sermon')) {
 			let paras: string[] = [];
@@ -181,14 +192,38 @@
 			<p class="text-body text-muted">{t('notebook.empty')}</p>
 		</div>
 	{:else}
-		<div class="mb-6">
+		<div class="mb-6 flex flex-wrap items-center gap-3">
 			<input
 				type="search"
 				bind:value={query}
 				placeholder={t('notebook.search')}
 				aria-label={t('notebook.search')}
-				class="w-full rounded-xl border border-border bg-surface px-4 py-2.5 text-body text-text placeholder:text-muted focus:border-accent focus:outline-none"
+				class="min-w-[12rem] flex-1 rounded-xl border border-border bg-surface px-4 py-2.5 text-body text-text placeholder:text-muted focus:border-accent focus:outline-none"
 			/>
+			<div class="flex items-center gap-2" role="group" aria-label={t('notebook.filterColor')}>
+				<button
+					class="rounded-full border px-2.5 py-1 text-small"
+					class:border-accent={colorFilter === ''}
+					class:text-accent={colorFilter === ''}
+					class:border-border={colorFilter !== ''}
+					class:text-muted={colorFilter !== ''}
+					onclick={() => (colorFilter = '')}
+					aria-pressed={colorFilter === ''}
+				>
+					{t('notebook.allColors')}
+				</button>
+				{#each HIGHLIGHT_COLORS as color (color)}
+					<button
+						class="hl-swatch"
+						data-color={color}
+						class:active={colorFilter === color}
+						onclick={() => (colorFilter = colorFilter === color ? '' : color)}
+						aria-pressed={colorFilter === color}
+						aria-label="{t('notebook.filterColor')}: {t(`reader.hl_${color}`)}"
+						title={t(`reader.hl_${color}`)}
+					></button>
+				{/each}
+			</div>
 		</div>
 
 		{#if noMatches}
@@ -231,7 +266,8 @@
 								<li>
 									<a
 										href={localizeHref(`/books/${bk.slug}/${ch.order}?p=${hl.p}`)}
-										class="block rounded-lg border-l-2 border-gold bg-surface px-4 py-2.5 hover:no-underline"
+										class="block rounded-lg border-l-2 bg-surface px-4 py-2.5 hover:no-underline"
+										style="border-left-color: var(--hl-{hl.color})"
 									>
 										{#if hl.text}
 											<span class="block text-body italic text-text">“{hl.text}”</span>
@@ -262,7 +298,8 @@
 						<li>
 							<a
 								href={localizeHref(`/sermons/${sm.slug}?p=${hl.p}`)}
-								class="block rounded-lg border-l-2 border-gold bg-surface px-4 py-2.5 hover:no-underline"
+								class="block rounded-lg border-l-2 bg-surface px-4 py-2.5 hover:no-underline"
+								style="border-left-color: var(--hl-{hl.color})"
 							>
 								{#if hl.text}
 									<span class="block text-body italic text-text">“{hl.text}”</span>

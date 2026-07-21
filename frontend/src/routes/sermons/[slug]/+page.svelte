@@ -16,7 +16,9 @@
 	import { page } from '$app/stores';
 	import { buildOutline, type OutlineEntry } from '$lib/sermonOutline';
 	import { absUrl, jsonLd, breadcrumb } from '$lib/seo';
+
 	import { renderMarks } from '$lib/rangeMarks';
+	import { HIGHLIGHT_COLORS, DEFAULT_HIGHLIGHT } from '$lib/reading-schema';
 	import { marks, type Segment } from '$lib/marks.svelte';
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
@@ -101,10 +103,12 @@
 		const slug = sermon.slug;
 		if (!body || restoredFor === slug) return;
 		restoredFor = slug;
+		// A pending scroll-save from the PREVIOUS sermon must not fire against
+		// this one's body (it would record a bogus synced resume point).
+		clearTimeout(saveTimer);
 		// Seed a ?p= deep link into the anchor FIRST so the progress record
 		// (and the resume point that syncs to the account) starts at the
-		// jumped-to paragraph, not wherever the last visit ended — the same
-		// deliberate ordering as the chapter reader.
+		// jumped-to paragraph — the chapter reader's documented ordering.
 		const fromUrl = Number($page.url.searchParams.get('p'));
 		if (Number.isFinite(fromUrl) && fromUrl > 0) {
 			saveScrollAnchor(slug, SERMON_CHAPTER_ORDER, fromUrl, 'sermon');
@@ -112,9 +116,7 @@
 		saveProgress(slug, SERMON_CHAPTER_ORDER, sermon.language, 'sermon');
 		(async () => {
 			await tick();
-			// A ?p= deep link wins; else the device anchor; else the synced
-			// resume point (fresh device after a sign-in sync) — same ladder
-			// as the chapter reader's restoreScroll.
+			// Deep link > device anchor > synced resume point (fresh device).
 			const idx =
 				Number.isFinite(fromUrl) && fromUrl > 0
 					? fromUrl
@@ -129,11 +131,15 @@
 		})();
 	});
 
-	// Marks can be replaced underneath us (sign-in merge / sign-out wipe).
+	// Marks can be replaced underneath us (sign-in merge / sign-out wipe),
+	// and a scroll-save timer must not outlive the page.
 	onMount(() => {
 		const onSync = () => marks.refresh();
 		window.addEventListener('ochorus:sync', onSync);
-		return () => window.removeEventListener('ochorus:sync', onSync);
+		return () => {
+			clearTimeout(saveTimer);
+			window.removeEventListener('ochorus:sync', onSync);
+		};
 	});
 
 	const initials = (name: string) =>
@@ -265,13 +271,14 @@
 	});
 
 	// --- Highlights & notes ----------------------------------------------------
-	// Text-range marks over the sermon body — the same synced store as the book
-	// reader (kind="sermon", single chapter). A note editor opens on tap of a
+	// Device-local text-range marks over the sermon body (shared range model with
+	// the book reader; see marks.svelte.ts). A note editor opens on tap of a
 	// marked span or via the selection bar's "Note".
 	let noteOpen = $state(false);
 	let noteId = $state<string | null>(null);
 	let notePending = $state<Segment[]>([]);
 	let noteDraft = $state('');
+	let noteColor = $state<string>(DEFAULT_HIGHLIGHT);
 
 	$effect(() => {
 		// Reload when navigating between sermons.
@@ -286,6 +293,7 @@
 			noteId = id;
 			notePending = [];
 			noteDraft = marks.getNote(id);
+			noteColor = marks.getColor(id);
 			noteOpen = true;
 		});
 	});
@@ -296,11 +304,16 @@
 		noteId = existing;
 		notePending = existing ? [] : segments;
 		noteDraft = existing ? marks.getNote(existing) : '';
+		noteColor = existing ? marks.getColor(existing) : DEFAULT_HIGHLIGHT;
 		noteOpen = true;
 	}
 	function saveNote() {
-		if (noteId) marks.setNote(noteId, noteDraft);
-		else if (notePending.length && noteDraft.trim()) marks.add(notePending, noteDraft);
+		if (noteId) {
+			marks.setNote(noteId, noteDraft);
+			marks.setColor(noteId, noteColor);
+		} else if (notePending.length && noteDraft.trim()) {
+			marks.add(notePending, noteDraft, noteColor);
+		}
 		noteOpen = false;
 	}
 	function removeMark() {
@@ -380,7 +393,11 @@
 {#if outlineOpen}
 	<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
 	<div class="outline-backdrop" onclick={() => (outlineOpen = false)}></div>
-	<nav class="outline-panel" aria-label={t('sermon.outline')}>
+	<nav
+		class="outline-panel"
+		aria-label={t('sermon.outline')}
+		use:focusTrap={{ onEscape: () => (outlineOpen = false) }}
+	>
 		<p class="outline-title">{t('sermon.outline')}</p>
 		<ul>
 			{#each outline as s (s.id)}
@@ -499,13 +516,17 @@
 <SelectionBar
 	container={body}
 	{cite}
-	onHighlight={(segments) => {
+	onHighlight={(segments, color) => {
 		const existing = marks.groupCovering(segments);
-		if (existing) marks.remove(existing);
-		else marks.add(segments);
+		if (!existing) marks.add(segments, undefined, color);
+		else if (marks.getColor(existing) === color) marks.remove(existing);
+		else marks.setColor(existing, color);
 	}}
 	onNote={openNoteForSelection}
-	isHighlighted={(segments) => marks.groupCovering(segments) !== null}
+	highlightColor={(segments) => {
+		const id = marks.groupCovering(segments);
+		return id ? marks.getColor(id) : null;
+	}}
 	onDefine={(word, top, left) => define.show(word, top, left)}
 />
 
@@ -523,10 +544,25 @@
 	>
 		<div class="note-card">
 			<h2 class="mb-2 text-h3">{t('reader.note')}</h2>
+			<div class="mb-3 flex items-center gap-2.5" role="group" aria-label={t('reader.highlight')}>
+				{#each HIGHLIGHT_COLORS as color (color)}
+					<button
+						type="button"
+						class="hl-swatch"
+						data-color={color}
+						class:active={noteColor === color}
+						aria-pressed={noteColor === color}
+						aria-label="{t('reader.highlight')}: {t(`reader.hl_${color}`)}"
+						title={t(`reader.hl_${color}`)}
+						onclick={() => (noteColor = color)}
+					></button>
+				{/each}
+			</div>
 			<textarea
 				bind:value={noteDraft}
 				rows="5"
 				class="w-full rounded-sm border border-border bg-bg p-3 text-body text-text"
+				aria-label={t('reader.note')}
 				placeholder="…"
 			></textarea>
 			<div class="mt-3 flex items-center gap-2">
@@ -617,24 +653,7 @@
 		transition: background 0.3s ease;
 	}
 
-	/* Text-range marks: <mark> spans wrapped around the selected text. */
-	:global(.reading mark.range-mark) {
-		background: color-mix(in srgb, var(--gold) 28%, transparent);
-		color: inherit;
-		border-radius: 2px;
-		padding: 0.08em 0;
-		box-decoration-break: clone;
-		-webkit-box-decoration-break: clone;
-		cursor: pointer;
-	}
-	:global(.reading mark.range-mark:hover) {
-		background: color-mix(in srgb, var(--gold) 42%, transparent);
-	}
-	/* A mark carrying a note gets a subtle underline cue. */
-	:global(.reading mark.range-mark.has-note) {
-		border-bottom: 2px solid var(--gold);
-	}
-
+	/* Text-range marks (<mark> spans) are styled globally in app.css. */
 	.note-overlay {
 		position: fixed;
 		inset: 0;

@@ -1,13 +1,14 @@
 <script lang="ts">
-	import type { AuthorDetail } from '$lib/library';
+	import { type AuthorDetail, type AuthorBio, listAuthors } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumb } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import { listen } from '$lib/listen.svelte';
 	import { getLang } from '$lib/lang.svelte';
+	import BookCard from '$lib/components/BookCard.svelte';
 	import ListenBar from '$lib/components/ListenBar.svelte';
-	import { onDestroy } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 
 	const t = i18n.t;
 
@@ -30,6 +31,38 @@
 	const years = $derived(
 		author.birth_year ? `${author.birth_year}–${author.death_year ?? ''}` : ''
 	);
+
+	// A one-line "what's here" summary under the name: era + work counts.
+	const summaryBits = $derived(
+		[
+			years,
+			author.books.length
+				? `${author.books.length} ${author.books.length === 1 ? t('common.bookOne') : t('common.bookMany')}`
+				: '',
+			author.sermons.length
+				? `${author.sermons.length} ${author.sermons.length === 1 ? t('common.sermonOne') : t('common.sermonMany')}`
+				: ''
+		].filter(Boolean)
+	);
+
+	// "More lives to explore": nearest contemporaries by birth year (loaded after
+	// mount; the page is prerendered). Falls back to any other authors when this
+	// one has no dated birth year.
+	let contemporaries = $state<AuthorBio[]>([]);
+	onMount(async () => {
+		try {
+			const all = await listAuthors(getLang());
+			const by = author.birth_year;
+			const dist = (a: AuthorBio) =>
+				by == null || a.birth_year == null ? Infinity : Math.abs(a.birth_year - by);
+			contemporaries = all
+				.filter((a) => a.slug !== author.slug && (a.book_count > 0 || !!a.bio))
+				.sort((a, b) => dist(a) - dist(b) || a.name.localeCompare(b.name))
+				.slice(0, 6);
+		} catch {
+			contemporaries = [];
+		}
+	});
 	// Self-referential canonical + hreflang: this page is prerendered per locale,
 	// so each localized copy points at ITSELF (not the English URL) and links its
 	// siblings, instead of every locale canonicalizing to /authors/<slug> (which
@@ -116,15 +149,19 @@
 			/>
 		{:else}
 			<span
-				class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-accent-soft text-h2 font-semibold text-accent"
+				class="flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-accent-soft text-h1 font-semibold text-accent"
 				style="font-family: var(--font-display)"
 			>
 				{initials(author.name)}
 			</span>
 		{/if}
-		<div>
+		<div class="min-w-0">
 			<h1 class="text-h1">{author.name}</h1>
-			{#if years}<p class="text-body text-muted">{years}</p>{/if}
+			{#if summaryBits.length}
+				<p class="mt-1 text-body text-muted">
+					{#each summaryBits as bit, i (i)}{#if i > 0}<span class="opacity-50"> · </span>{/if}{bit}{/each}
+				</p>
+			{/if}
 		</div>
 		{#if listen.supported && author.bio_html}
 			<button
@@ -156,26 +193,7 @@
 			</h2>
 			<div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
 				{#each author.books as book (book.slug)}
-					<a href={localizeHref(`/books/${book.slug}`)} class="group block hover:no-underline">
-						{#if book.cover_url}
-							<img
-								src={book.cover_url}
-								alt="{t('a11y.coverOf')} {book.title}"
-								loading="lazy"
-								class="aspect-[3/4] w-full rounded-card object-cover shadow-sm transition-transform group-hover:-translate-y-1"
-							/>
-						{:else}
-							<div
-								class="aspect-[3/4] w-full rounded-card shadow-sm"
-								style="background: {book.cover_color || '#3b5bdb'}"
-							></div>
-						{/if}
-						<div class="mt-2 text-small font-medium text-text">{book.title}</div>
-						<div class="text-[0.8rem] text-muted">
-							{book.chapter_count}
-							{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}
-						</div>
-					</a>
+					<BookCard {book} />
 				{/each}
 			</div>
 		</section>
@@ -213,6 +231,43 @@
 
 	{#if !author.books.length && !author.sermons.length}
 		<p class="mt-10 text-body text-muted">{t('author.empty')}</p>
+	{/if}
+
+	<!-- More lives to explore: nearest contemporaries by era. -->
+	{#if contemporaries.length}
+		<section class="mt-16 border-t border-border pt-8">
+			<h2 class="mb-4 text-h3">{t('author.moreLives')}</h2>
+			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
+				{#each contemporaries as c (c.slug)}
+					<a
+						href={localizeHref(`/authors/${c.slug}`)}
+						class="flex items-center gap-3 rounded-card border border-border p-3 hover:border-accent hover:no-underline"
+					>
+						{#if c.photo_url}
+							<img
+								src={c.photo_url}
+								alt="{t('a11y.portraitOf')} {c.name}"
+								loading="lazy"
+								class="h-11 w-11 shrink-0 rounded-full border border-border object-cover"
+								style="filter: grayscale(1)"
+							/>
+						{:else}
+							<span
+								class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-soft text-small font-semibold text-accent"
+							>
+								{initials(c.name)}
+							</span>
+						{/if}
+						<span class="min-w-0">
+							<span class="block truncate text-body font-medium text-text">{c.name}</span>
+							{#if c.birth_year}
+								<span class="block text-small text-muted">{c.birth_year}–{c.death_year ?? ''}</span>
+							{/if}
+						</span>
+					</a>
+				{/each}
+			</div>
+		</section>
 	{/if}
 </div>
 

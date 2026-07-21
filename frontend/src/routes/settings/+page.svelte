@@ -103,6 +103,7 @@
 						</div>
 						<select
 							class="settings-select"
+							aria-label={t('nav.language')}
 							value={lang.current}
 							onchange={(e) => lang.choose((e.currentTarget as HTMLSelectElement).value)}
 						>
@@ -140,6 +141,7 @@
 						<div class="flex items-center gap-2">
 							<select
 								class="settings-select"
+								aria-label={t('settings.voice')}
 								value={voiceValue}
 								onchange={(e) => listen.setVoice((e.currentTarget as HTMLSelectElement).value)}
 							>
@@ -197,6 +199,7 @@
 					</div>
 					<select
 						class="settings-select"
+						aria-label={t('settings.font')}
 						value={readerPrefs.font}
 						onchange={(e) => readerPrefs.setFont((e.currentTarget as HTMLSelectElement).value as ReaderFont)}
 					>

@@ -138,6 +138,43 @@ class MarksView(APIView):
         return Response(ChapterMarksSerializer(obj).data)
 
 
+class SermonMarksView(APIView):
+    """COMPAT SHIM for pre-unification clients (PR #293's deployed bundle).
+
+    Sermon marks now live in ChapterMarks(kind="sermon", chapter_order=1);
+    this keeps the old URL and payload shape working for stale PWA bundles so
+    their pushes keep syncing until they pick up the new build. Retire once
+    old bundles have aged out.
+    """
+
+    permission_classes = [IsAuthenticated]
+
+    def put(self, request, slug):
+        profile = _profile(request)
+        data = request.data
+        marks = _marks_from_payload(data)
+
+        if not marks:
+            ChapterMarks.objects.filter(
+                profile=profile, kind=WorkKind.SERMON, book_slug=slug, chapter_order=1
+            ).delete()
+            return Response({"marks": []})
+
+        obj, _ = ChapterMarks.objects.update_or_create(
+            profile=profile,
+            kind=WorkKind.SERMON,
+            book_slug=slug,
+            chapter_order=1,
+            defaults={
+                "language": (data.get("language") or "en")[:10],
+                "marks": marks,
+                "highlights": [],
+                "notes": {},
+            },
+        )
+        return Response(_legacy_sermon_shape(obj))
+
+
 class MergeView(APIView):
     """First-sign-in reconciliation of local (offline) state with the server.
 
@@ -153,6 +190,7 @@ class MergeView(APIView):
         profile = _profile(request)
         self._merge_progress(profile, request.data.get("progress") or [])
         self._merge_marks(profile, request.data.get("marks") or [])
+        self._merge_sermon_marks(profile, request.data.get("sermon_marks") or [])
         return Response(_serialize_state(profile))
 
     def _merge_progress(self, profile, incoming):
@@ -211,6 +249,44 @@ class MergeView(APIView):
                 },
             )
 
+    def _merge_sermon_marks(self, profile, incoming):
+        """COMPAT: old bundles send sermon marks in their own payload field —
+        fold them into ChapterMarks(kind="sermon") so nothing is dropped."""
+        for row in incoming:
+            slug = row.get("sermon_slug")
+            if not slug:
+                continue
+            marks = _marks_from_payload(row)
+            server = ChapterMarks.objects.filter(
+                profile=profile, kind=WorkKind.SERMON, book_slug=slug, chapter_order=1
+            ).first()
+            if server:
+                marks = merge_mark_lists(server.marks or [], marks)
+            if not marks:
+                continue
+            ChapterMarks.objects.update_or_create(
+                profile=profile,
+                kind=WorkKind.SERMON,
+                book_slug=slug,
+                chapter_order=1,
+                defaults={
+                    "language": (row.get("language") or "en")[:10],
+                    "marks": marks,
+                    "highlights": [],
+                    "notes": {},
+                },
+            )
+
+
+def _legacy_sermon_shape(m) -> dict:
+    """A ChapterMarks sermon row in the old SermonMarks response shape."""
+    return {
+        "sermon_slug": m.book_slug,
+        "language": m.language,
+        "marks": m.marks,
+        "updated_at": m.updated_at,
+    }
+
 
 def _serialize_state(profile) -> dict:
     return {
@@ -218,4 +294,9 @@ def _serialize_state(profile) -> dict:
             profile.progress.all(), many=True
         ).data,
         "marks": ChapterMarksSerializer(profile.marks.all(), many=True).data,
+        # COMPAT: old bundles rehydrate their sermon store from this field.
+        "sermon_marks": [
+            _legacy_sermon_shape(m)
+            for m in profile.marks.filter(kind=WorkKind.SERMON)
+        ],
     }

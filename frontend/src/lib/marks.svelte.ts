@@ -1,6 +1,7 @@
 import { readingSync } from './readingSync';
 import { readJSON, writeJSON } from './persisted';
 import {
+	DEFAULT_HIGHLIGHT,
 	MARKS_KEY,
 	migrateLegacySermonState,
 	workKey,
@@ -110,14 +111,17 @@ class Marks {
 	}
 
 	/** Add a group of range segments (one selection) as a single mark unit. */
-	add(segments: Segment[], note?: string): string {
+	add(segments: Segment[], note?: string, color?: string): string {
 		const first = segments[0];
 		if (!first) return '';
 		const id = `${Date.now().toString(36)}:${first.p}:${first.s}`;
 		const existing = new Set(this.list.map(rangeKey));
+		// The default colour is stored as absence so pre-colour marks and
+		// default-colour marks are indistinguishable (both render gold).
+		const tint = color && color !== DEFAULT_HIGHLIGHT ? { color } : {};
 		const fresh = segments
 			.filter((seg) => !existing.has(rangeKey(seg)))
-			.map((seg, i) => ({ id, ...seg, ...(i === 0 && note ? { note } : {}) }));
+			.map((seg, i) => ({ id, ...seg, ...tint, ...(i === 0 && note ? { note } : {}) }));
 		this.list = [...this.list, ...fresh].sort((a, b) => a.p - b.p || a.s - b.s);
 		this.#persist();
 		return id;
@@ -135,6 +139,21 @@ class Marks {
 		const byKey = new Map(this.list.map((m) => [rangeKey(m), m]));
 		if (!segments.every((s) => byKey.has(rangeKey(s)))) return null;
 		return byKey.get(rangeKey(segments[0]))?.id ?? null;
+	}
+
+	/** The mark group's colour (absent = the default gold). */
+	getColor(id: string): string {
+		return this.list.find((m) => m.id === id)?.color ?? DEFAULT_HIGHLIGHT;
+	}
+
+	/** Recolour every segment of a mark group. */
+	setColor(id: string, color: string) {
+		this.list = this.list.map((m) => {
+			if (m.id !== id) return m;
+			const { color: _drop, ...rest } = m;
+			return color && color !== DEFAULT_HIGHLIGHT ? { ...rest, color } : rest;
+		});
+		this.#persist();
 	}
 
 	getNote(id: string): string {
