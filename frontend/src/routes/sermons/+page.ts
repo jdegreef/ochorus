@@ -24,6 +24,11 @@ import type { PageLoad } from './$types';
  * edition of A. B. Simpson's sermon The Joy of the Lord (Essanyu lya Mukama,
  * PR #268) went live, so the /lg/sermons pages re-crawl and bake with the new
  * title.
+ *
+ * Prerender refresh 2026-07-21 (queue job #251): same again after the Luganda
+ * edition of D. L. Moody's sermon Eight "I Wills" of Christ ('Ndikola' Munaana
+ * eza Kristo, PR #277) went live, so the /lg/sermons pages re-crawl and bake
+ * with the new title.
  */
 export const load: PageLoad = async () => {
 	// Tolerate a lagging/absent sermon endpoint at prerender time (see the
