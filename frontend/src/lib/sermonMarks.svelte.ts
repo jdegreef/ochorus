@@ -1,4 +1,5 @@
 import { browser } from '$app/environment';
+import { readingSync } from './readingSync';
 import { readJSON, writeJSON } from './persisted';
 import { SERMON_MARKS_KEY as KEY, DEFAULT_HIGHLIGHT } from './reading-schema';
 import type { Mark, Segment } from './marks.svelte';
@@ -25,14 +26,17 @@ class SermonMarks {
 	/** Reactive marks of the currently open sermon, sorted by position. */
 	list = $state<Mark[]>([]);
 	#slug = '';
+	#language = 'en';
 
 	constructor() {
-		// The cache can be replaced underneath us (sign-out wipe) — re-derive.
+		// The cache can be replaced underneath us (sign-in merge / sign-out wipe) —
+		// re-derive open sermon views when that happens.
 		if (browser) window.addEventListener('ochorus:sync', () => this.refresh());
 	}
 
-	load(slug: string) {
+	load(slug: string, language = 'en') {
 		this.#slug = slug;
+		this.#language = language;
 		this.#hydrate();
 	}
 
@@ -50,6 +54,7 @@ class SermonMarks {
 		if (this.list.length === 0) delete store[this.#slug];
 		else store[this.#slug] = this.list;
 		writeAll(store);
+		readingSync.pushSermonMarks(this.#slug, this.list, this.#language);
 	}
 
 	/** Add a group of range segments (one selection) as a single mark unit. */

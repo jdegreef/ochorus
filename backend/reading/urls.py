@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import MarksView, MergeView, ProgressView, StateView
+from .views import MarksView, MergeView, ProgressView, SermonMarksView, StateView
 
 urlpatterns = [
     path("state/", StateView.as_view(), name="reading-state"),
@@ -10,5 +10,10 @@ urlpatterns = [
         "marks/<slug:slug>/<int:order>/",
         MarksView.as_view(),
         name="reading-marks",
+    ),
+    path(
+        "sermon-marks/<slug:slug>/",
+        SermonMarksView.as_view(),
+        name="reading-sermon-marks",
     ),
 ]

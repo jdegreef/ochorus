@@ -19,6 +19,11 @@ range, and a paragraph note attaches to that range (or creates one).
 
 from __future__ import annotations
 
+# Highlight colour keys the reader can set (mirrors HIGHLIGHT_COLORS on the
+# frontend). Gold is the default and is stored implicitly (absent), but accepted
+# here if a client sends it. Anything outside this set is dropped.
+_HL_COLORS = {"gold", "blue", "green", "rose"}
+
 
 def _int(value, default=-1) -> int:
     try:
@@ -54,6 +59,9 @@ def clean_mark_list(raw) -> list[dict]:
         note = m.get("note")
         if isinstance(note, str) and note.strip():
             mark["note"] = note.strip()
+        color = m.get("color")
+        if isinstance(color, str) and color in _HL_COLORS:
+            mark["color"] = color
         out.append(mark)
     out.sort(key=lambda m: (m["p"], m["s"]))
     return out
