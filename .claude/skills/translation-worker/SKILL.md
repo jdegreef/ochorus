@@ -122,8 +122,10 @@ fixture model; translations ship as files, upserted (unreviewed) by
   one-paragraph summary) for `slug`.
 - Translate both, **preserving the bio's semantic markup 1:1**: `<h2>` section
   headings, `<blockquote>`+`<cite>` pull-quotes, and the prayer callouts
-  `<div class="prayer">` / `<div class="prayer answered">` (the author page
-  renders these via CSS — dropping the classes loses the styling).
+  `<aside class="prayer">` / `<aside class="prayer answered">` (the author page
+  renders these via CSS keyed on the `.prayer` / `.prayer.answered` classes —
+  dropping the classes loses the styling; keep the `<aside>` element too, to
+  match the `write-biography` markup and the shipped en/es/lg/sw bios).
 - Deliver two files under `backend/library/migrations/data/author_bios_<lang>/`:
   write the translated long-form HTML to `<slug>.html`, and add/replace the
   `"<slug>": "<translated short bio>"` entry in that dir's `short.json`
