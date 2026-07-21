@@ -86,6 +86,11 @@ import type { PageLoad } from './$types';
  * edition of All of Grace (Byonna Bya Kisa, PR #311) by C. H. Spurgeon went
  * live, so the /lg/books index and its /books/<slug> pages re-crawl and bake
  * with the new title.
+ *
+ * Prerender refresh 2026-07-21 (queue job #278): same again after the Swahili
+ * edition of Clothed with Strength and Dignity (Amevaa Nguvu na Heshima,
+ * PR #314) went live, so the /sw/books index and its /books/<slug> pages
+ * re-crawl and bake with the new title.
  */
 export const load: PageLoad = async () => {
 	try {
