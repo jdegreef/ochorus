@@ -45,7 +45,19 @@ export interface Mark {
 	s: number;
 	e: number;
 	note?: string;
+	/** Highlight colour key (see HIGHLIGHT_COLORS); absent = the default gold. */
+	color?: string;
 }
+
+/**
+ * The highlight palette. Keys are stored on marks (locale-independent) and map
+ * to CSS via `mark.range-mark[data-color="…"]` in app.css. The first entry is
+ * the default — a mark with no `color` renders as gold, so existing highlights
+ * are unaffected.
+ */
+export const HIGHLIGHT_COLORS = ['gold', 'blue', 'green', 'rose'] as const;
+export type HighlightColor = (typeof HIGHLIGHT_COLORS)[number];
+export const DEFAULT_HIGHLIGHT: HighlightColor = 'gold';
 
 /** All marks for one chapter. */
 export interface ChapterMarks {

@@ -26,6 +26,24 @@ describe('sermonMarks store', () => {
 		expect(sermonMarks.getNote(id)).toBe('revised');
 	});
 
+	it('stores a highlight colour and recolours a group', () => {
+		sermonMarks.load('faith');
+		const id = sermonMarks.add([{ p: 0, s: 0, e: 5 }], undefined, 'blue');
+		expect(sermonMarks.getColor(id)).toBe('blue');
+		sermonMarks.setColor(id, 'green');
+		expect(sermonMarks.getColor(id)).toBe('green');
+		// The default clears the stored key — getColor falls back to gold.
+		sermonMarks.setColor(id, 'gold');
+		expect(sermonMarks.getColor(id)).toBe('gold');
+		expect(sermonMarks.list.every((m) => m.color === undefined)).toBe(true);
+	});
+
+	it('defaults to gold when no colour was set', () => {
+		sermonMarks.load('faith');
+		const id = sermonMarks.add([{ p: 1, s: 0, e: 3 }]);
+		expect(sermonMarks.getColor(id)).toBe('gold');
+	});
+
 	it('scopes marks per sermon slug and persists across loads', () => {
 		sermonMarks.load('a');
 		sermonMarks.add([{ p: 0, s: 0, e: 2 }]);

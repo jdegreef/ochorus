@@ -17,6 +17,7 @@
 	import { absUrl, jsonLd, breadcrumb } from '$lib/seo';
 	import { sermonMarks } from '$lib/sermonMarks.svelte';
 	import { renderMarks } from '$lib/rangeMarks';
+	import { HIGHLIGHT_COLORS, DEFAULT_HIGHLIGHT } from '$lib/reading-schema';
 	import type { Segment } from '$lib/marks.svelte';
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
@@ -241,6 +242,7 @@
 	let noteId = $state<string | null>(null);
 	let notePending = $state<Segment[]>([]);
 	let noteDraft = $state('');
+	let noteColor = $state<string>(DEFAULT_HIGHLIGHT);
 
 	$effect(() => {
 		sermonMarks.load(sermon.slug); // reload when navigating between sermons
@@ -254,6 +256,7 @@
 			noteId = id;
 			notePending = [];
 			noteDraft = sermonMarks.getNote(id);
+			noteColor = sermonMarks.getColor(id);
 			noteOpen = true;
 		});
 	});
@@ -264,11 +267,16 @@
 		noteId = existing;
 		notePending = existing ? [] : segments;
 		noteDraft = existing ? sermonMarks.getNote(existing) : '';
+		noteColor = existing ? sermonMarks.getColor(existing) : DEFAULT_HIGHLIGHT;
 		noteOpen = true;
 	}
 	function saveNote() {
-		if (noteId) sermonMarks.setNote(noteId, noteDraft);
-		else if (notePending.length && noteDraft.trim()) sermonMarks.add(notePending, noteDraft);
+		if (noteId) {
+			sermonMarks.setNote(noteId, noteDraft);
+			sermonMarks.setColor(noteId, noteColor);
+		} else if (notePending.length && noteDraft.trim()) {
+			sermonMarks.add(notePending, noteDraft, noteColor);
+		}
 		noteOpen = false;
 	}
 	function removeMark() {
@@ -471,13 +479,17 @@
 <SelectionBar
 	container={body}
 	{cite}
-	onHighlight={(segments) => {
+	onHighlight={(segments, color) => {
 		const existing = sermonMarks.groupCovering(segments);
-		if (existing) sermonMarks.remove(existing);
-		else sermonMarks.add(segments);
+		if (!existing) sermonMarks.add(segments, undefined, color);
+		else if (sermonMarks.getColor(existing) === color) sermonMarks.remove(existing);
+		else sermonMarks.setColor(existing, color);
 	}}
 	onNote={openNoteForSelection}
-	isHighlighted={(segments) => sermonMarks.groupCovering(segments) !== null}
+	highlightColor={(segments) => {
+		const id = sermonMarks.groupCovering(segments);
+		return id ? sermonMarks.getColor(id) : null;
+	}}
 	onDefine={(word, top, left) => define.show(word, top, left)}
 />
 
@@ -495,6 +507,20 @@
 	>
 		<div class="note-card">
 			<h2 class="mb-2 text-h3">{t('reader.note')}</h2>
+			<div class="mb-3 flex items-center gap-2.5" role="group" aria-label={t('reader.highlight')}>
+				{#each HIGHLIGHT_COLORS as color (color)}
+					<button
+						type="button"
+						class="hl-swatch"
+						data-color={color}
+						class:active={noteColor === color}
+						aria-pressed={noteColor === color}
+						aria-label="{t('reader.highlight')}: {t(`reader.hl_${color}`)}"
+						title={t(`reader.hl_${color}`)}
+						onclick={() => (noteColor = color)}
+					></button>
+				{/each}
+			</div>
 			<textarea
 				bind:value={noteDraft}
 				rows="5"
@@ -590,24 +616,7 @@
 		transition: background 0.3s ease;
 	}
 
-	/* Text-range marks: <mark> spans wrapped around the selected text. */
-	:global(.reading mark.range-mark) {
-		background: color-mix(in srgb, var(--gold) 28%, transparent);
-		color: inherit;
-		border-radius: 2px;
-		padding: 0.08em 0;
-		box-decoration-break: clone;
-		-webkit-box-decoration-break: clone;
-		cursor: pointer;
-	}
-	:global(.reading mark.range-mark:hover) {
-		background: color-mix(in srgb, var(--gold) 42%, transparent);
-	}
-	/* A mark carrying a note gets a subtle underline cue. */
-	:global(.reading mark.range-mark.has-note) {
-		border-bottom: 2px solid var(--gold);
-	}
-
+	/* Text-range marks (<mark> spans) are styled globally in app.css. */
 	.note-overlay {
 		position: fixed;
 		inset: 0;

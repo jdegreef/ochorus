@@ -62,6 +62,7 @@ function wrapRange(block: HTMLElement, s: number, e: number, mark: Mark) {
 		const el = document.createElement('mark');
 		el.className = 'range-mark';
 		el.dataset.markId = mark.id;
+		if (mark.color) el.dataset.color = mark.color;
 		if (mark.note) el.classList.add('has-note');
 		target.parentNode?.replaceChild(el, target);
 		el.appendChild(target);

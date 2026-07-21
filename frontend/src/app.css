@@ -138,6 +138,69 @@
 	transform: translateY(0);
 }
 
+/* Highlight palette — the four colours a reader can mark text in. Keys live on
+   the mark (data-color); gold is the default (no key). Each mark sets its hue
+   as --mark-hue so background, hover and the has-note underline all follow it. */
+:root {
+	--hl-gold: var(--gold);
+	--hl-blue: #3b82f6;
+	--hl-green: #16a34a;
+	--hl-rose: #e11d48;
+}
+.reading mark.range-mark {
+	--mark-hue: var(--hl-gold);
+	background: color-mix(in srgb, var(--mark-hue) 28%, transparent);
+	color: inherit;
+	border-radius: 2px;
+	padding: 0.08em 0;
+	box-decoration-break: clone;
+	-webkit-box-decoration-break: clone;
+	cursor: pointer;
+}
+.reading mark.range-mark[data-color='blue'] {
+	--mark-hue: var(--hl-blue);
+}
+.reading mark.range-mark[data-color='green'] {
+	--mark-hue: var(--hl-green);
+}
+.reading mark.range-mark[data-color='rose'] {
+	--mark-hue: var(--hl-rose);
+}
+.reading mark.range-mark:hover {
+	background: color-mix(in srgb, var(--mark-hue) 42%, transparent);
+}
+/* A mark carrying a note gets a subtle underline cue in its own hue. */
+.reading mark.range-mark.has-note {
+	border-bottom: 2px solid var(--mark-hue);
+}
+
+/* Colour swatch used by the selection bar and the note dialog. Hue by data-color. */
+.hl-swatch {
+	width: 1.15rem;
+	height: 1.15rem;
+	border-radius: 9999px;
+	cursor: pointer;
+	background: var(--swatch-hue, var(--hl-gold));
+	box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.15);
+}
+.hl-swatch[data-color='gold'] {
+	--swatch-hue: var(--hl-gold);
+}
+.hl-swatch[data-color='blue'] {
+	--swatch-hue: var(--hl-blue);
+}
+.hl-swatch[data-color='green'] {
+	--swatch-hue: var(--hl-green);
+}
+.hl-swatch[data-color='rose'] {
+	--swatch-hue: var(--hl-rose);
+}
+.hl-swatch.active {
+	box-shadow:
+		0 0 0 2px var(--surface),
+		0 0 0 4px var(--swatch-hue);
+}
+
 /* Respect the OS "reduce motion" setting: kill transitions/animations and
    instant-scroll (see STYLE_GUIDE §6/§7). Matches Take Root. */
 @media (prefers-reduced-motion: reduce) {
