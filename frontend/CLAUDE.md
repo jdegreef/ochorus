@@ -39,9 +39,9 @@ API. Public content routes are prerendered for SEO (`prerender = true` + an
 
 ## Gates & verification
 
-- `npm run check` must be 0 errors. `npm run test` (vitest) currently **fails
-  locally** under jsdom/Node but passes in CI — CI is the gate; don't chase the
-  local red (see the `verify-local` skill).
+- `npm run check` must be 0 errors, and `npm run test` (vitest, jsdom) must be
+  green — it runs locally and gates every PR in CI. Keep pure reader logic and
+  the localStorage stores covered by a `*.test.ts` beside them.
 - Verify user-visible changes in the browser (`verify-local` skill). Beware the
   localized-page trap: a persistent session's stored `en` preference
   de-localizes `/lg` URLs — wipe storage or use `curl` for ground truth.
