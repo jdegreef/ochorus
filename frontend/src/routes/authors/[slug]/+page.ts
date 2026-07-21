@@ -25,6 +25,10 @@ export const entries: EntryGenerator = async () => {
 // Same content-race applies to photo_url: migration 0027 added 5 PD portraits,
 // which the web build must re-prerender AFTER the API migration lands — this
 // refresh forces that rebuild (Müller/Taylor/Allen/Crowther/Berry Smith). 2026-07-11.
+//
+// Prerender refresh 2026-07-21 (queue job #270): force a rebuild after the
+// Luganda edition of the David Brainerd biography (PR #301) went live, so
+// /lg/authors/david-brainerd re-crawls and bakes the translated bio.
 export const load: PageLoad = async ({ params }) => {
 	const author = await orNotFound(() => getAuthor(params.slug, getLang()));
 	// A mid-deploy API (before the sermon fields ship) may omit these; default
