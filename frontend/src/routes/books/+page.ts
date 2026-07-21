@@ -66,6 +66,11 @@ import type { PageLoad } from './$types';
  * edition of The Way to God (Ekkubo Erituusa eri Katonda, PR #264) by D. L.
  * Moody went live, so the /lg/books index and its /books/<slug> pages re-crawl
  * and bake with the new title.
+ *
+ * Prerender refresh 2026-07-21 (queue job #273): same again after the Luganda
+ * edition of The God of All Comfort (Katonda ow'Okubudaabuda Kwonna, PR #295)
+ * by Hannah Whitall Smith went live, so the /lg/books index and its
+ * /books/<slug> pages re-crawl and bake with the new title.
  */
 export const load: PageLoad = async () => {
 	try {
