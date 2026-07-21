@@ -4,8 +4,11 @@ import {
 	PROGRESS_KEY,
 	MARKS_KEY,
 	READING_DATA_KEYS,
-	chapterKey,
-	parseChapterKey,
+	workKey,
+	workSlugKey,
+	parseWorkKey,
+	parseWorkSlugKey,
+	type WorkKind,
 	type Mark,
 	type MarksStore,
 	type ProgressRecord,
@@ -25,6 +28,7 @@ import {
  */
 
 interface ServerProgress {
+	kind: WorkKind;
 	book_slug: string;
 	language: string;
 	chapter_order: number;
@@ -32,6 +36,7 @@ interface ServerProgress {
 	updated_at: string;
 }
 interface ServerMarks {
+	kind: WorkKind;
 	book_slug: string;
 	language: string;
 	chapter_order: number;
@@ -72,12 +77,19 @@ class ReadingSync {
 		);
 	}
 
-	pushProgress(slug: string, rec: ProgressRecord) {
+	/** `?kind=` only for non-book works: book URLs stay byte-identical to the
+	 * pre-#10 contract, so nothing changes for existing readers mid-deploy. */
+	#kindQuery(kind: WorkKind): string {
+		return kind === 'book' ? '' : `?kind=${kind}`;
+	}
+
+	pushProgress(kind: WorkKind, slug: string, rec: ProgressRecord) {
 		if (!this.signedIn || !browser) return;
-		this.#debounce(`p:${slug}`, () => {
-			apiFetch(`/api/reading/progress/${slug}/`, {
+		this.#debounce(`p:${workSlugKey(kind, slug)}`, () => {
+			apiFetch(`/api/reading/progress/${slug}/${this.#kindQuery(kind)}`, {
 				method: 'PUT',
 				body: JSON.stringify({
+					kind,
 					language: rec.language,
 					chapter_order: rec.order,
 					paragraph_index: rec.paragraph_index
@@ -86,12 +98,12 @@ class ReadingSync {
 		});
 	}
 
-	pushMarks(slug: string, order: number, marks: Mark[], language: string) {
+	pushMarks(kind: WorkKind, slug: string, order: number, marks: Mark[], language: string) {
 		if (!this.signedIn || !browser) return;
-		this.#debounce(`m:${slug}:${order}`, () => {
-			apiFetch(`/api/reading/marks/${slug}/${order}/`, {
+		this.#debounce(`m:${workKey(kind, slug, order)}`, () => {
+			apiFetch(`/api/reading/marks/${slug}/${order}/${this.#kindQuery(kind)}`, {
 				method: 'PUT',
-				body: JSON.stringify({ language, marks })
+				body: JSON.stringify({ kind, language, marks })
 			}).catch(() => {});
 		});
 	}
@@ -106,21 +118,26 @@ class ReadingSync {
 		const localMarks = readJson<MarksStore>(MARKS_KEY, {});
 
 		const payload = {
-			progress: Object.entries(localProgress).map(([slug, r]) => ({
-				book_slug: slug,
-				language: r.language || 'en',
-				chapter_order: r.order,
-				paragraph_index: r.paragraph_index || 0,
-				updated_at: r.at
-			})),
+			progress: Object.entries(localProgress).map(([key, r]) => {
+				const { kind, slug } = parseWorkSlugKey(key);
+				return {
+					kind,
+					book_slug: slug,
+					language: r.language || 'en',
+					chapter_order: r.order,
+					paragraph_index: r.paragraph_index || 0,
+					updated_at: r.at
+				};
+			}),
 			marks: Object.entries(localMarks)
 				.map(([key, entry]) => {
-					const parsed = parseChapterKey(key);
+					const parsed = parseWorkKey(key);
 					if (!parsed) return null;
 					// A not-yet-migrated legacy entry ({h, n}) passes its legacy
 					// keys through — the server converts, so nothing is lost.
 					const legacy = entry as unknown as { h?: number[]; n?: Record<string, string> };
 					return {
+						kind: parsed.kind,
 						book_slug: parsed.slug,
 						chapter_order: parsed.order,
 						...(Array.isArray(entry.m)
@@ -164,7 +181,7 @@ class ReadingSync {
 		if (!browser) return;
 		const progress: ProgressMap = {};
 		for (const p of state.progress) {
-			progress[p.book_slug] = {
+			progress[workSlugKey(p.kind ?? 'book', p.book_slug)] = {
 				order: p.chapter_order,
 				paragraph_index: p.paragraph_index,
 				language: p.language,
@@ -173,7 +190,7 @@ class ReadingSync {
 		}
 		const marks: MarksStore = {};
 		for (const m of state.marks) {
-			marks[chapterKey(m.book_slug, m.chapter_order)] = { m: m.marks ?? [] };
+			marks[workKey(m.kind ?? 'book', m.book_slug, m.chapter_order)] = { m: m.marks ?? [] };
 		}
 		localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
 		localStorage.setItem(MARKS_KEY, JSON.stringify(marks));

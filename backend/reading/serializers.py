@@ -7,6 +7,7 @@ class ReadingProgressSerializer(serializers.ModelSerializer):
     class Meta:
         model = ReadingProgress
         fields = [
+            "kind",
             "book_slug",
             "language",
             "chapter_order",
@@ -20,6 +21,7 @@ class ChapterMarksSerializer(serializers.ModelSerializer):
     class Meta:
         model = ChapterMarks
         fields = [
+            "kind",
             "book_slug",
             "language",
             "chapter_order",

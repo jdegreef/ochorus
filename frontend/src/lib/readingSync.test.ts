@@ -31,7 +31,7 @@ describe('readingSync.clearOnSignOut', () => {
 		const fetchSpy = vi.spyOn(globalThis, 'fetch');
 		try {
 			readingSync.setSignedIn(true);
-			readingSync.pushProgress('humility', {
+			readingSync.pushProgress('book', 'humility', {
 				order: 3,
 				paragraph_index: 5,
 				language: 'en',

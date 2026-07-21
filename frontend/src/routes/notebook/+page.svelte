@@ -4,7 +4,6 @@
 	import { getLang } from '$lib/lang.svelte';
 	import { bookmarks } from '$lib/bookmarks.svelte';
 	import { marks } from '$lib/marks.svelte';
-	import { sermonMarks } from '$lib/sermonMarks.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import type { Bookmark, Mark } from '$lib/reading-schema';
@@ -104,7 +103,8 @@
 	onMount(async () => {
 		const lang = getLang();
 		const bms = bookmarks.all();
-		const mks = marks.all();
+		const allMarks = marks.all();
+		const mks = allMarks.filter((m) => m.kind === 'book');
 		const slugs = [...new Set([...bms.map((b) => b.slug), ...mks.map((m) => m.slug)])];
 
 		const out: BookBlock[] = [];
@@ -143,9 +143,9 @@
 		}
 		books = out.sort((a, b) => a.title.localeCompare(b.title));
 
-		// Sermon highlights (device-local, keyed by sermon slug — no chapters).
+		// Sermon highlights — same synced store, kind="sermon" (single chapter).
 		const sOut: SermonBlock[] = [];
-		for (const { slug, marks: ms } of sermonMarks.all()) {
+		for (const { slug, marks: ms } of allMarks.filter((m) => m.kind === 'sermon')) {
 			let paras: string[] = [];
 			let title = slug;
 			let author = '';
@@ -261,7 +261,7 @@
 					{#each sm.highlights as hl (hl.id)}
 						<li>
 							<a
-								href={localizeHref(`/sermons/${sm.slug}`)}
+								href={localizeHref(`/sermons/${sm.slug}?p=${hl.p}`)}
 								class="block rounded-lg border-l-2 border-gold bg-surface px-4 py-2.5 hover:no-underline"
 							>
 								{#if hl.text}

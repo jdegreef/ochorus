@@ -14,10 +14,23 @@ from __future__ import annotations
 from django.db import models
 
 
-class ReadingProgress(models.Model):
-    """The last place a reader was in a given book.
+class WorkKind(models.TextChoices):
+    """What a row's ``book_slug`` names.
 
-    One row per (user, book). ``paragraph_index`` is the top-level block index
+    Sermons joined the reading layer in 2026-07 (roadmap #10): a sermon is a
+    single document, so its rows pin ``chapter_order`` to 1. The slug column
+    keeps its historical ``book_slug`` name to spare a rename across the API,
+    merge payloads, and every reader's localStorage cache.
+    """
+
+    BOOK = "book", "Book"
+    SERMON = "sermon", "Sermon"
+
+
+class ReadingProgress(models.Model):
+    """The last place a reader was in a given work (book or sermon).
+
+    One row per (user, kind, work). ``paragraph_index`` is the top-level block index
     within the chapter's rendered ``.reading`` container — the same paragraph
     anchor the frontend uses, chosen so a saved position survives font-size and
     column-width changes (unlike a pixel offset).
@@ -27,6 +40,9 @@ class ReadingProgress(models.Model):
         "accounts.UserProfile",
         on_delete=models.CASCADE,
         related_name="progress",
+    )
+    kind = models.CharField(
+        max_length=10, choices=WorkKind.choices, default=WorkKind.BOOK
     )
     book_slug = models.SlugField(max_length=160)
     language = models.CharField(max_length=10, default="en")
@@ -39,12 +55,13 @@ class ReadingProgress(models.Model):
         ordering = ["-updated_at"]
         constraints = [
             models.UniqueConstraint(
-                fields=["profile", "book_slug"], name="uniq_progress_profile_book"
+                fields=["profile", "kind", "book_slug"],
+                name="uniq_progress_profile_work",
             ),
         ]
 
     def __str__(self) -> str:
-        return f"{self.profile_id}:{self.book_slug} → ch{self.chapter_order}"
+        return f"{self.profile_id}:{self.kind}:{self.book_slug} → ch{self.chapter_order}"
 
 
 class ChapterMarks(models.Model):
@@ -61,6 +78,9 @@ class ChapterMarks(models.Model):
         "accounts.UserProfile",
         on_delete=models.CASCADE,
         related_name="marks",
+    )
+    kind = models.CharField(
+        max_length=10, choices=WorkKind.choices, default=WorkKind.BOOK
     )
     book_slug = models.SlugField(max_length=160)
     language = models.CharField(max_length=10, default="en")
@@ -79,8 +99,8 @@ class ChapterMarks(models.Model):
         ordering = ["book_slug", "chapter_order"]
         constraints = [
             models.UniqueConstraint(
-                fields=["profile", "book_slug", "chapter_order"],
-                name="uniq_marks_profile_book_chapter",
+                fields=["profile", "kind", "book_slug", "chapter_order"],
+                name="uniq_marks_profile_work_chapter",
             ),
         ]
 

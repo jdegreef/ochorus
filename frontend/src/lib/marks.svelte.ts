@@ -2,8 +2,11 @@ import { readingSync } from './readingSync';
 import { readJSON, writeJSON } from './persisted';
 import {
 	MARKS_KEY,
-	chapterKey,
-	parseChapterKey,
+	LEGACY_SERMON_MARKS_KEY,
+	SERMON_CHAPTER_ORDER,
+	workKey,
+	parseWorkKey,
+	type WorkKind,
 	type MarksStore,
 	type Mark
 } from './reading-schema';
@@ -47,7 +50,7 @@ function fromLegacy(entry: LegacyEntry): Mark[] {
 	return [...byP.values()].sort((a, b) => a.p - b.p);
 }
 
-/** Read the store, migrating any legacy chapter entries in place. */
+/** Read the store, migrating any legacy entries in place. */
 function readAll(): MarksStore {
 	const raw = readJSON<MarksStore>(MARKS_KEY, {});
 	let migrated = false;
@@ -56,6 +59,24 @@ function readAll(): MarksStore {
 			raw[key] = { m: fromLegacy(entry as unknown as LegacyEntry) };
 			migrated = true;
 		}
+	}
+	// One-time fold-in of the legacy device-local sermon marks (pre-#10 they
+	// lived in their own key, unsynced): sermon slug -> Mark[] becomes a
+	// `sermon:slug:1` entry here, after which they sync like everything else.
+	try {
+		const legacyRaw = localStorage.getItem(LEGACY_SERMON_MARKS_KEY);
+		if (legacyRaw) {
+			for (const [slug, ms] of Object.entries(
+				JSON.parse(legacyRaw) as Record<string, Mark[]>
+			)) {
+				const key = workKey('sermon', slug, SERMON_CHAPTER_ORDER);
+				if (!raw[key] && Array.isArray(ms) && ms.length) raw[key] = { m: ms };
+			}
+			localStorage.removeItem(LEGACY_SERMON_MARKS_KEY);
+			migrated = true;
+		}
+	} catch {
+		/* SSR or corrupt legacy blob — nothing worth keeping */
 	}
 	if (migrated) writeJSON(MARKS_KEY, raw);
 	return raw;
@@ -77,16 +98,18 @@ class Marks {
 	#slug = '';
 	#order = 0;
 	#language = 'en';
+	#kind: WorkKind = 'book';
 
-	load(slug: string, order: number, language = 'en') {
+	load(slug: string, order: number, language = 'en', kind: WorkKind = 'book') {
 		this.#slug = slug;
 		this.#order = order;
 		this.#language = language;
+		this.#kind = kind;
 		this.#hydrate();
 	}
 
 	#hydrate() {
-		const entry = readAll()[chapterKey(this.#slug, this.#order)];
+		const entry = readAll()[workKey(this.#kind, this.#slug, this.#order)];
 		this.list = [...(entry?.m ?? [])].sort((a, b) => a.p - b.p || a.s - b.s);
 	}
 
@@ -97,11 +120,11 @@ class Marks {
 
 	#persist() {
 		const store = readAll();
-		const key = chapterKey(this.#slug, this.#order);
+		const key = workKey(this.#kind, this.#slug, this.#order);
 		if (this.list.length === 0) delete store[key];
 		else store[key] = { m: this.list };
 		writeAll(store);
-		readingSync.pushMarks(this.#slug, this.#order, this.list, this.#language);
+		readingSync.pushMarks(this.#kind, this.#slug, this.#order, this.list, this.#language);
 	}
 
 	/** Add a group of range segments (one selection) as a single mark unit. */
@@ -152,19 +175,19 @@ class Marks {
 	}
 
 	/** Mark-group count for a chapter without loading it (for the TOC). */
-	countFor(slug: string, order: number): number {
-		const e = readAll()[chapterKey(slug, order)];
+	countFor(slug: string, order: number, kind: WorkKind = 'book'): number {
+		const e = readAll()[workKey(kind, slug, order)];
 		if (!e?.m) return 0;
 		return new Set(e.m.map((m) => m.id)).size;
 	}
 
-	/** Every chapter's marks across all books, for the notebook. */
-	all(): { slug: string; order: number; marks: Mark[] }[] {
-		const out: { slug: string; order: number; marks: Mark[] }[] = [];
+	/** Every work's marks across books and sermons, for the notebook. */
+	all(): { kind: WorkKind; slug: string; order: number; marks: Mark[] }[] {
+		const out: { kind: WorkKind; slug: string; order: number; marks: Mark[] }[] = [];
 		for (const [key, entry] of Object.entries(readAll())) {
-			const parsed = parseChapterKey(key);
+			const parsed = parseWorkKey(key);
 			if (parsed && entry.m?.length) {
-				out.push({ slug: parsed.slug, order: parsed.order, marks: entry.m });
+				out.push({ ...parsed, marks: entry.m });
 			}
 		}
 		return out;

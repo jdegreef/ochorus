@@ -6,7 +6,8 @@
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingTime, readingMinutes } from '$lib/reading';
-	import { getSermonAnchor, saveSermonAnchor } from '$lib/sermonProgress';
+	import { getScrollAnchor, saveScrollAnchor, saveProgress, getProgressRecord } from '$lib/progress';
+	import { SERMON_CHAPTER_ORDER } from '$lib/reading-schema';
 	import { getLang } from '$lib/lang.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import { scripture, type ScriptureResult } from '$lib/scripture.svelte';
@@ -15,9 +16,8 @@
 	import { page } from '$app/stores';
 	import { buildOutline, type OutlineEntry } from '$lib/sermonOutline';
 	import { absUrl, jsonLd, breadcrumb } from '$lib/seo';
-	import { sermonMarks } from '$lib/sermonMarks.svelte';
 	import { renderMarks } from '$lib/rangeMarks';
-	import type { Segment } from '$lib/marks.svelte';
+	import { marks, type Segment } from '$lib/marks.svelte';
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
@@ -68,7 +68,7 @@
 		clearTimeout(saveTimer);
 		saveTimer = setTimeout(() => {
 			updateFraction();
-			saveSermonAnchor(sermon.slug, topVisibleIndex());
+			saveScrollAnchor(sermon.slug, SERMON_CHAPTER_ORDER, topVisibleIndex(), 'sermon');
 		}, 250);
 	}
 
@@ -92,17 +92,41 @@
 		outlineOpen = false;
 	}
 
-	// Restore the saved spot on open (and once the body has rendered).
-	onMount(() => {
+	// Record the visit (so the sermon lands in "Continue reading") and restore
+	// the saved spot — a `?p=` deep link (notebook highlights) wins over the
+	// device anchor. Effect, not onMount: client-side nav between sermons
+	// reuses this component.
+	let restoredFor = '';
+	$effect(() => {
+		const slug = sermon.slug;
+		if (!body || restoredFor === slug) return;
+		restoredFor = slug;
+		saveProgress(slug, SERMON_CHAPTER_ORDER, sermon.language, 'sermon');
 		(async () => {
 			await tick();
-			const idx = getSermonAnchor(sermon.slug);
+			// A ?p= deep link wins; else the device anchor; else the synced
+			// resume point (fresh device after a sign-in sync) — same ladder
+			// as the chapter reader's restoreScroll.
+			const fromUrl = Number($page.url.searchParams.get('p'));
+			const idx =
+				Number.isFinite(fromUrl) && fromUrl > 0
+					? fromUrl
+					: (getScrollAnchor(slug, SERMON_CHAPTER_ORDER, 'sermon') ??
+						getProgressRecord(slug, 'sermon')?.paragraph_index ??
+						0);
 			if (idx > 0 && body?.children[idx]) {
 				body.children[idx].scrollIntoView({ block: 'start' });
 				window.scrollBy(0, -HEADER_OFFSET);
 			}
 			updateFraction();
 		})();
+	});
+
+	// Marks can be replaced underneath us (sign-in merge / sign-out wipe).
+	onMount(() => {
+		const onSync = () => marks.refresh();
+		window.addEventListener('ochorus:sync', onSync);
+		return () => window.removeEventListener('ochorus:sync', onSync);
 	});
 
 	const initials = (name: string) =>
@@ -234,8 +258,8 @@
 	});
 
 	// --- Highlights & notes ----------------------------------------------------
-	// Device-local text-range marks over the sermon body (shared range model with
-	// the book reader; see sermonMarks.svelte.ts). A note editor opens on tap of a
+	// Text-range marks over the sermon body — the same synced store as the book
+	// reader (kind="sermon", single chapter). A note editor opens on tap of a
 	// marked span or via the selection bar's "Note".
 	let noteOpen = $state(false);
 	let noteId = $state<string | null>(null);
@@ -243,36 +267,37 @@
 	let noteDraft = $state('');
 
 	$effect(() => {
-		sermonMarks.load(sermon.slug); // reload when navigating between sermons
+		// Reload when navigating between sermons.
+		marks.load(sermon.slug, SERMON_CHAPTER_ORDER, sermon.language, 'sermon');
 	});
 
 	// Paint marks as <mark> spans; clicking one opens its note editor.
 	$effect(() => {
-		const list = sermonMarks.list;
+		const list = marks.list;
 		if (!body) return;
 		renderMarks(body, list, (id) => {
 			noteId = id;
 			notePending = [];
-			noteDraft = sermonMarks.getNote(id);
+			noteDraft = marks.getNote(id);
 			noteOpen = true;
 		});
 	});
 
 	/** Note on a fresh selection: highlight it first, then attach the note. */
 	function openNoteForSelection(segments: Segment[]) {
-		const existing = sermonMarks.groupCovering(segments);
+		const existing = marks.groupCovering(segments);
 		noteId = existing;
 		notePending = existing ? [] : segments;
-		noteDraft = existing ? sermonMarks.getNote(existing) : '';
+		noteDraft = existing ? marks.getNote(existing) : '';
 		noteOpen = true;
 	}
 	function saveNote() {
-		if (noteId) sermonMarks.setNote(noteId, noteDraft);
-		else if (notePending.length && noteDraft.trim()) sermonMarks.add(notePending, noteDraft);
+		if (noteId) marks.setNote(noteId, noteDraft);
+		else if (notePending.length && noteDraft.trim()) marks.add(notePending, noteDraft);
 		noteOpen = false;
 	}
 	function removeMark() {
-		if (noteId) sermonMarks.remove(noteId);
+		if (noteId) marks.remove(noteId);
 		noteOpen = false;
 	}
 </script>
@@ -468,12 +493,12 @@
 	container={body}
 	{cite}
 	onHighlight={(segments) => {
-		const existing = sermonMarks.groupCovering(segments);
-		if (existing) sermonMarks.remove(existing);
-		else sermonMarks.add(segments);
+		const existing = marks.groupCovering(segments);
+		if (existing) marks.remove(existing);
+		else marks.add(segments);
 	}}
 	onNote={openNoteForSelection}
-	isHighlighted={(segments) => sermonMarks.groupCovering(segments) !== null}
+	isHighlighted={(segments) => marks.groupCovering(segments) !== null}
 	onDefine={(word, top, left) => define.show(word, top, left)}
 />
 
