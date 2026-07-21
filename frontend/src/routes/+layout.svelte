@@ -84,8 +84,9 @@
 	class="flex min-h-screen flex-col"
 	style="--reading-measure: {MEASURE[readerPrefs.measure]}; --page-scale: {PAGE_SCALE[readerPrefs.measure]}"
 >
+	<a href="#main" class="skip-link">{t('a11y.skipToContent')}</a>
 	{#if !readerUi.focus}
-		<nav class="appnav">
+		<nav class="appnav" aria-label={t('a11y.mainNav')}>
 			<div class="appnav-inner">
 			<a class="brand" href={localizeHref('/')}><BrandMark size={24} /><span>Ochorus</span></a>
 			<button
@@ -125,7 +126,7 @@
 		</nav>
 	{/if}
 
-	<main class="flex-1">
+	<main id="main" class="flex-1">
 		{@render children()}
 	</main>
 
