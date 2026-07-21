@@ -29,6 +29,10 @@ export const entries: EntryGenerator = async () => {
 // Prerender refresh 2026-07-21 (queue job #270): force a rebuild after the
 // Luganda edition of the David Brainerd biography (PR #301) went live, so
 // /lg/authors/david-brainerd re-crawls and bakes the translated bio.
+//
+// Prerender refresh 2026-07-21 (queue job #271): same again after the Luganda
+// edition of the Amanda Berry Smith biography (PR #303) went live, so
+// /lg/authors/amanda-berry-smith re-crawls and bakes the translated bio.
 export const load: PageLoad = async ({ params }) => {
 	const author = await orNotFound(() => getAuthor(params.slug, getLang()));
 	// A mid-deploy API (before the sermon fields ship) may omit these; default
