@@ -109,6 +109,21 @@
 	const bioLabels = $derived(
 		`--label-in-prayer: '${t('bios.inPrayer')}'; --label-answered: '${t('bios.answerToPrayer')}'`
 	);
+
+	// A featured pull-quote for the header: the first <blockquote> in the bio,
+	// tag-stripped (drop the <cite> attribution). Regex, not the DOM, so it works
+	// during prerender too. Absent / too-short quotes just don't show.
+	const featuredQuote = $derived.by(() => {
+		const m = (author.bio_html || '').match(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/i);
+		if (!m) return '';
+		const text = m[1]
+			.replace(/<cite[\s\S]*?<\/cite>/i, '')
+			.replace(/<[^>]+>/g, ' ')
+			.replace(/\s+/g, ' ')
+			.trim();
+		if (text.length < 20) return '';
+		return text.length > 220 ? text.slice(0, 217).trimEnd() + '…' : text;
+	});
 </script>
 
 <svelte:head>
@@ -173,6 +188,11 @@
 			>
 		{/if}
 	</header>
+
+	<!-- Featured pull-quote: a hook above the biography. -->
+	{#if featuredQuote}
+		<blockquote class="author-quote mx-auto mt-8 max-w-[40rem]">{featuredQuote}</blockquote>
+	{/if}
 
 	<!-- Biography -->
 	{#if author.bio_html}
@@ -274,6 +294,23 @@
 <ListenBar />
 
 <style>
+	/* Featured header pull-quote — a hook above the biography. */
+	.author-quote {
+		font-family: var(--font-display);
+		font-style: italic;
+		font-size: 1.5rem;
+		line-height: 1.4;
+		color: var(--text);
+		border-left: 3px solid var(--gold);
+		padding: 0.1em 0 0.1em 1.25rem;
+	}
+	.author-quote::before {
+		content: '“';
+	}
+	.author-quote::after {
+		content: '”';
+	}
+
 	/* Long-form biography styling. Targets the injected {@html} via :global.
 	   Prose in the reading serif; pull-quotes and prayer callouts stand out. */
 	:global(.bio) {
