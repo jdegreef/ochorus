@@ -3,6 +3,9 @@
 from django.db import migrations, models
 
 
+# NOTE: effectively IRREVERSIBLE once sermon rows exist — the reverse
+# re-adds the (profile, book_slug) uniqueness, which a profile holding both a
+# book and a sermon row for the same slug would violate mid-transaction.
 class Migration(migrations.Migration):
 
     dependencies = [

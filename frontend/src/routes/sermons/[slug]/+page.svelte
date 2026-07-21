@@ -101,13 +101,20 @@
 		const slug = sermon.slug;
 		if (!body || restoredFor === slug) return;
 		restoredFor = slug;
+		// Seed a ?p= deep link into the anchor FIRST so the progress record
+		// (and the resume point that syncs to the account) starts at the
+		// jumped-to paragraph, not wherever the last visit ended — the same
+		// deliberate ordering as the chapter reader.
+		const fromUrl = Number($page.url.searchParams.get('p'));
+		if (Number.isFinite(fromUrl) && fromUrl > 0) {
+			saveScrollAnchor(slug, SERMON_CHAPTER_ORDER, fromUrl, 'sermon');
+		}
 		saveProgress(slug, SERMON_CHAPTER_ORDER, sermon.language, 'sermon');
 		(async () => {
 			await tick();
 			// A ?p= deep link wins; else the device anchor; else the synced
 			// resume point (fresh device after a sign-in sync) — same ladder
 			// as the chapter reader's restoreScroll.
-			const fromUrl = Number($page.url.searchParams.get('p'));
 			const idx =
 				Number.isFinite(fromUrl) && fromUrl > 0
 					? fromUrl

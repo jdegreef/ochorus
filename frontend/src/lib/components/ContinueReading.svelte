@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { listSermons, type BookSummary, type SermonSummary } from '$lib/library';
 	import { allProgress } from '$lib/progress';
+	import { workSlugKey } from '$lib/reading-schema';
 	import { bookProgressPercent } from '$lib/reading';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
@@ -68,7 +69,7 @@
 					if (!sermon) return null;
 					const resume = p.paragraph_index > 0 ? `?p=${p.paragraph_index}` : '';
 					return {
-						key: `sermon:${p.slug}`,
+						key: workSlugKey(p.kind, p.slug),
 						href: `/sermons/${p.slug}${resume}`,
 						title: sermon.title,
 						author: sermon.author.name,
@@ -83,7 +84,7 @@
 				// about position) all the way through the last chapter.
 				const pct = bookProgressPercent(p.order, book.chapter_count);
 				return {
-					key: book.slug,
+					key: workSlugKey(p.kind, p.slug),
 					href: `/books/${book.slug}/${p.order}`,
 					title: book.title,
 					author: book.author.name,

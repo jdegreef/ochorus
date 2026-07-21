@@ -4,8 +4,7 @@ import { storageHealth } from './storageHealth.svelte';
 import {
 	PROGRESS_KEY,
 	ANCHOR_KEY,
-	LEGACY_SERMON_ANCHOR_KEY,
-	SERMON_CHAPTER_ORDER,
+	migrateLegacySermonState,
 	workKey,
 	workSlugKey,
 	parseWorkSlugKey,
@@ -98,28 +97,12 @@ type AnchorMap = Record<string, number>;
 
 function readAnchors(): AnchorMap {
 	if (!browser) return {};
-	let map: AnchorMap;
+	migrateLegacySermonState();
 	try {
-		map = JSON.parse(localStorage.getItem(ANCHOR_KEY) || '{}');
+		return JSON.parse(localStorage.getItem(ANCHOR_KEY) || '{}');
 	} catch {
-		map = {};
+		return {};
 	}
-	// One-time fold-in of the legacy device-local sermon anchors (pre-#10,
-	// when sermons lived outside the synced reading layer).
-	const legacyRaw = localStorage.getItem(LEGACY_SERMON_ANCHOR_KEY);
-	if (legacyRaw) {
-		try {
-			for (const [slug, p] of Object.entries(JSON.parse(legacyRaw) as AnchorMap)) {
-				const key = workKey('sermon', slug, SERMON_CHAPTER_ORDER);
-				if (map[key] == null && p > 0) map[key] = p;
-			}
-			safeSet(ANCHOR_KEY, JSON.stringify(map));
-		} catch {
-			/* corrupt legacy blob — nothing worth keeping */
-		}
-		localStorage.removeItem(LEGACY_SERMON_ANCHOR_KEY);
-	}
-	return map;
 }
 
 export function getScrollAnchor(

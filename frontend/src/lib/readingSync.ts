@@ -4,6 +4,7 @@ import {
 	PROGRESS_KEY,
 	MARKS_KEY,
 	READING_DATA_KEYS,
+	migrateLegacySermonState,
 	workKey,
 	workSlugKey,
 	parseWorkKey,
@@ -114,6 +115,11 @@ class ReadingSync {
 	 */
 	async mergeOnSignIn() {
 		if (!browser) return;
+		// Fold any legacy sermon state in BEFORE building the payload: a merge
+		// that read the cache pre-fold would upload without those marks, and
+		// its response would then overwrite the folded cache — destroying
+		// pre-upgrade sermon highlights.
+		migrateLegacySermonState();
 		const localProgress = readJson<ProgressMap>(PROGRESS_KEY, {});
 		const localMarks = readJson<MarksStore>(MARKS_KEY, {});
 
@@ -153,6 +159,17 @@ class ReadingSync {
 				method: 'POST',
 				body: JSON.stringify(payload)
 			});
+			// Deploy-overlap guard: if we sent sermon rows but the server echoed
+			// rows with no `kind` at all, it's the pre-#10 API — writing its
+			// state back would re-key our sermon entries as books, making every
+			// sermon highlight vanish locally with no self-heal. Keep the local
+			// cache authoritative; the first merge after the API deploy syncs.
+			const sentSermonRows =
+				payload.progress.some((r) => r.kind !== 'book') ||
+				payload.marks.some((r) => r !== null && r.kind !== 'book');
+			const serverRows = [...state.progress, ...state.marks];
+			const serverKnowsKinds = serverRows.some((r) => 'kind' in r);
+			if (sentSermonRows && serverRows.length > 0 && !serverKnowsKinds) return;
 			this.#writeState(state);
 		} catch {
 			/* offline or API down — keep the local cache untouched */

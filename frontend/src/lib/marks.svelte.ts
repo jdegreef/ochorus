@@ -2,8 +2,7 @@ import { readingSync } from './readingSync';
 import { readJSON, writeJSON } from './persisted';
 import {
 	MARKS_KEY,
-	LEGACY_SERMON_MARKS_KEY,
-	SERMON_CHAPTER_ORDER,
+	migrateLegacySermonState,
 	workKey,
 	parseWorkKey,
 	type WorkKind,
@@ -52,6 +51,7 @@ function fromLegacy(entry: LegacyEntry): Mark[] {
 
 /** Read the store, migrating any legacy entries in place. */
 function readAll(): MarksStore {
+	migrateLegacySermonState();
 	const raw = readJSON<MarksStore>(MARKS_KEY, {});
 	let migrated = false;
 	for (const [key, entry] of Object.entries(raw)) {
@@ -59,24 +59,6 @@ function readAll(): MarksStore {
 			raw[key] = { m: fromLegacy(entry as unknown as LegacyEntry) };
 			migrated = true;
 		}
-	}
-	// One-time fold-in of the legacy device-local sermon marks (pre-#10 they
-	// lived in their own key, unsynced): sermon slug -> Mark[] becomes a
-	// `sermon:slug:1` entry here, after which they sync like everything else.
-	try {
-		const legacyRaw = localStorage.getItem(LEGACY_SERMON_MARKS_KEY);
-		if (legacyRaw) {
-			for (const [slug, ms] of Object.entries(
-				JSON.parse(legacyRaw) as Record<string, Mark[]>
-			)) {
-				const key = workKey('sermon', slug, SERMON_CHAPTER_ORDER);
-				if (!raw[key] && Array.isArray(ms) && ms.length) raw[key] = { m: ms };
-			}
-			localStorage.removeItem(LEGACY_SERMON_MARKS_KEY);
-			migrated = true;
-		}
-	} catch {
-		/* SSR or corrupt legacy blob — nothing worth keeping */
 	}
 	if (migrated) writeJSON(MARKS_KEY, raw);
 	return raw;

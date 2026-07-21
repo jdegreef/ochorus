@@ -68,3 +68,15 @@ describe('sermon marks via the unified store (kind="sermon")', () => {
 		expect(JSON.parse(localStorage.getItem(ANCHOR_KEY)!)['sermon:faith:1']).toBe(7);
 	});
 });
+
+describe('note lifecycle on the unified store', () => {
+	it('round-trips a note through setNote/getNote and clears it', () => {
+		marks.load('faith', SERMON_CHAPTER_ORDER, 'en', 'sermon');
+		const id = marks.add([{ p: 2, s: 1, e: 4 }], 'a thought');
+		expect(marks.getNote(id)).toBe('a thought');
+		marks.setNote(id, 'revised');
+		expect(marks.getNote(id)).toBe('revised');
+		marks.setNote(id, '');
+		expect(marks.getNote(id)).toBe('');
+	});
+});
