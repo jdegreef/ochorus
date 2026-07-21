@@ -71,6 +71,11 @@ import type { PageLoad } from './$types';
  * edition of The God of All Comfort (Katonda ow'Okubudaabuda Kwonna, PR #295)
  * by Hannah Whitall Smith went live, so the /lg/books index and its
  * /books/<slug> pages re-crawl and bake with the new title.
+ *
+ * Prerender refresh 2026-07-21 (queue job #274): same again after the Luganda
+ * edition of Stepping Stones (Amayinja g'Okulinnyirako, PR #298) by Gareth
+ * Evans went live, so the /lg/books index and its /books/<slug> pages re-crawl
+ * and bake with the new title.
  */
 export const load: PageLoad = async () => {
 	try {
