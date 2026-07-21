@@ -3,6 +3,7 @@
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumb } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
+	import { readingTime } from '$lib/reading';
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import { listen } from '$lib/listen.svelte';
 	import { getLang } from '$lib/lang.svelte';
@@ -110,6 +111,14 @@
 		`--label-in-prayer: '${t('bios.inPrayer')}'; --label-answered: '${t('bios.answerToPrayer')}'`
 	);
 
+	// Where to start + how much there is to read: the first book (the API's
+	// featured order) and the total reading time across every work.
+	const startWork = $derived(author.books[0] ?? null);
+	const totalWords = $derived(
+		author.books.reduce((n, b) => n + (b.word_count ?? 0), 0) +
+			author.sermons.reduce((n, s) => n + (s.word_count ?? 0), 0)
+	);
+
 	// A featured pull-quote for the header: the first <blockquote> in the bio,
 	// tag-stripped (drop the <cite> attribution). Regex, not the DOM, so it works
 	// during prerender too. Absent / too-short quotes just don't show.
@@ -192,6 +201,26 @@
 	<!-- Featured pull-quote: a hook above the biography. -->
 	{#if featuredQuote}
 		<blockquote class="author-quote mx-auto mt-8 max-w-[40rem]">{featuredQuote}</blockquote>
+	{/if}
+
+	<!-- Where to start + total reading time. -->
+	{#if startWork || totalWords}
+		<div
+			class="mx-auto mt-6 flex max-w-[40rem] flex-wrap items-center gap-x-5 gap-y-1.5 rounded-card border border-border bg-surface px-4 py-3 text-small"
+		>
+			{#if startWork}
+				<span class="text-muted">
+					{t('author.startWith')}
+					<a
+						href={localizeHref(`/books/${startWork.slug}`)}
+						class="font-semibold text-accent hover:underline">{startWork.title}</a
+					>
+				</span>
+			{/if}
+			{#if totalWords}
+				<span class="text-muted sm:ml-auto">{t('author.allWorks')} · {readingTime(totalWords)}</span>
+			{/if}
+		</div>
 	{/if}
 
 	<!-- Biography -->
