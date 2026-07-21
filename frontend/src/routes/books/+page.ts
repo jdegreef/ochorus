@@ -76,6 +76,11 @@ import type { PageLoad } from './$types';
  * edition of Stepping Stones (Amayinja g'Okulinnyirako, PR #298) by Gareth
  * Evans went live, so the /lg/books index and its /books/<slug> pages re-crawl
  * and bake with the new title.
+ *
+ * Prerender refresh 2026-07-21 (queue job #275): same again after the Luganda
+ * edition of Prevailing Prayer (Okusaba Okuwangula, PR #306) by D. L. Moody
+ * went live, so the /lg/books index and its /books/<slug> pages re-crawl and
+ * bake with the new title.
  */
 export const load: PageLoad = async () => {
 	try {
