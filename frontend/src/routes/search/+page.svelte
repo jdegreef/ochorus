@@ -1,8 +1,10 @@
 <script lang="ts">
-	import { search, type SearchHit, type ChapterHit } from '$lib/library';
+	import { onMount } from 'svelte';
+	import { search, listTopics, type SearchHit, type ChapterHit, type TopicSummary } from '$lib/library';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { apiFetch } from '$lib/api';
+	import { readJSON, writeJSON } from '$lib/persisted';
 	import type { ScriptureResult } from '$lib/scripture.svelte';
 	import { markSnippet } from '$lib/highlight';
 	import { localizeHref } from '$lib/paraglide/runtime';
@@ -329,7 +331,12 @@
 	// a destroy-time cleanup is too late, since the timer fires first.
 	// Our own ?q= writes keep the same path, so they must not cancel the search.
 	beforeNavigate(({ to }) => {
-		if (to && to.url.pathname !== $page.url.pathname) clearTimeout(timer);
+		if (to && to.url.pathname !== $page.url.pathname) {
+			clearTimeout(timer);
+			// Opening a result (or any departure to a real page) means this search
+			// was useful — remember it for the empty-state shortcuts.
+			recordRecent(ran || q);
+		}
 	});
 
 	// The URL is the source of truth for which search is showing: this covers the
@@ -353,6 +360,32 @@
 	// Server snippets arrive with matches wrapped in full-text markers; markSnippet
 	// escapes them and swaps the markers for <mark> (shared with the in-book search).
 	const mark = markSnippet;
+
+	// --- Empty-state suggestions -----------------------------------------------
+	// A blank search page is dead space; fill it with the reader's recent
+	// searches (device-local) and a few topics to browse into.
+	const RECENT_KEY = 'ochorus:recent-searches';
+	let recent = $state<string[]>([]);
+	let topics = $state<TopicSummary[]>([]);
+
+	onMount(() => {
+		recent = readJSON<string[]>(RECENT_KEY, []).filter((s) => typeof s === 'string');
+		listTopics(getLang())
+			.then((all) => (topics = all.slice(0, 10)))
+			.catch(() => (topics = []));
+	});
+
+	/** Remember a query that led somewhere (most-recent-first, deduped, capped). */
+	function recordRecent(term: string) {
+		const t2 = term.trim();
+		if (t2.length < 2) return;
+		recent = [t2, ...recent.filter((r) => r.toLowerCase() !== t2.toLowerCase())].slice(0, 6);
+		writeJSON(RECENT_KEY, recent);
+	}
+	function clearRecent() {
+		recent = [];
+		writeJSON(RECENT_KEY, []);
+	}
 </script>
 
 <svelte:head><title>{t('search.title')} — Ochorus</title></svelte:head>
@@ -404,7 +437,49 @@
 				{/each}
 			</div>
 		{:else if q.trim().length < 2}
-			<p class="text-small text-muted">{t('search.prompt')}</p>
+			{#if recent.length}
+				<section class="mb-8">
+					<div class="mb-2 flex items-center justify-between">
+						<h2 class="text-small font-semibold uppercase tracking-wide text-muted">
+							{t('search.recent')}
+						</h2>
+						<button type="button" class="text-small text-accent hover:underline" onclick={clearRecent}>
+							{t('search.clearRecent')}
+						</button>
+					</div>
+					<div class="flex flex-wrap gap-2">
+						{#each recent as term (term)}
+							<button
+								type="button"
+								class="rounded-full border border-border px-3 py-1 text-small text-text hover:border-accent hover:text-accent"
+								onclick={() => applySuggestion(term)}
+							>
+								{term}
+							</button>
+						{/each}
+					</div>
+				</section>
+			{/if}
+			{#if topics.length}
+				<section>
+					<h2 class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">
+						{t('search.browseTopics')}
+					</h2>
+					<div class="flex flex-wrap gap-2">
+						{#each topics as tp (tp.slug)}
+							<a
+								href={localizeHref(`/topics/${tp.slug}`)}
+								class="rounded-full border border-border px-3 py-1 text-small text-text hover:border-accent hover:text-accent hover:no-underline"
+							>
+								{tp.title}
+							</a>
+						{/each}
+					</div>
+				</section>
+			{/if}
+			{#if !recent.length && !topics.length}
+				<p class="text-small text-muted">{t('search.prompt')}</p>
+			{/if}
 		{:else if ran && hits.length === 0}
 			<p class="text-small text-muted">{t('search.noResults')} “{ran}”.</p>
 			{#if suggestion}
