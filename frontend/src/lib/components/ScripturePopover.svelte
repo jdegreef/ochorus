@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { scripture } from '$lib/scripture.svelte';
+	import { focusTrap } from '$lib/actions/focusTrap';
 	import { i18n } from '$lib/i18n.svelte';
 
 	const t = i18n.t;
@@ -22,6 +23,7 @@
 		style="top: {scripture.top}px; left: {scripture.left}px"
 		role="dialog"
 		aria-label="{t('reader.scripture')}: {scripture.result?.reference ?? scripture.ref}"
+		use:focusTrap={{ onEscape: () => scripture.close() }}
 	>
 		<div class="flex items-baseline justify-between gap-3">
 			<span class="scripture-ref-title">{scripture.result?.reference ?? scripture.ref}</span>

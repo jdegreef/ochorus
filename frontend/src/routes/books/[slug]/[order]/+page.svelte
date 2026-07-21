@@ -976,6 +976,7 @@
 				bind:value={noteDraft}
 				rows="5"
 				class="w-full rounded-sm border border-border bg-bg p-3 text-body text-text"
+				aria-label={t('reader.note')}
 				placeholder="…"
 			></textarea>
 			<div class="mt-3 flex items-center gap-2">

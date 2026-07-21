@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { define } from '$lib/define.svelte';
+	import { focusTrap } from '$lib/actions/focusTrap';
 	import { i18n } from '$lib/i18n.svelte';
 
 	const t = i18n.t;
@@ -22,6 +23,7 @@
 		style="top: {define.top}px; left: {define.left}px"
 		role="dialog"
 		aria-label="{t('reader.definition')}: {define.word}"
+		use:focusTrap={{ onEscape: () => define.close() }}
 	>
 		<div class="flex items-baseline justify-between gap-3">
 			<span class="define-word">{define.word}</span>

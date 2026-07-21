@@ -348,7 +348,11 @@
 {#if outlineOpen}
 	<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
 	<div class="outline-backdrop" onclick={() => (outlineOpen = false)}></div>
-	<nav class="outline-panel" aria-label={t('sermon.outline')}>
+	<nav
+		class="outline-panel"
+		aria-label={t('sermon.outline')}
+		use:focusTrap={{ onEscape: () => (outlineOpen = false) }}
+	>
 		<p class="outline-title">{t('sermon.outline')}</p>
 		<ul>
 			{#each outline as s (s.id)}
@@ -495,6 +499,7 @@
 				bind:value={noteDraft}
 				rows="5"
 				class="w-full rounded-sm border border-border bg-bg p-3 text-body text-text"
+				aria-label={t('reader.note')}
 				placeholder="…"
 			></textarea>
 			<div class="mt-3 flex items-center gap-2">
