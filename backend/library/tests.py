@@ -896,6 +896,34 @@ class SermonNeighboursTests(TestCase):
         self.assertEqual(d["next"]["slug"], "gamma")
 
 
+class SermonScriptureRefsTests(TestCase):
+    """The scripture-index chip row: the sermon's text + body citations."""
+
+    def setUp(self):
+        self.client = APIClient()
+        a = Author.objects.create(slug="cs", name="C. Spurgeon")
+        Sermon.objects.create(
+            author=a, slug="faith", language="en", title="Faith",
+            scripture_ref="Mark 9:23",
+            body_html=(
+                "<p>Consider John 3:16 and what Romans 8:28 promises. "
+                "As Mark 9:23 says again — and Jn 3:16 repeats — believe. "
+                "Room 3:16 is not scripture.</p>"
+            ),
+        )
+
+    def test_chips_lead_with_text_and_dedupe(self):
+        res = self.client.get("/api/library/sermons/faith/?language=en")
+        self.assertEqual(res.status_code, 200)
+        refs = res.data["scripture_refs"]
+        # The sermon's own text first; body citations deduped (Mark 9:23 again
+        # and the Jn/John spellings collapse); non-references skipped.
+        self.assertEqual(refs[0], "Mark 9:23")
+        self.assertIn("John 3:16", refs)
+        self.assertIn("Romans 8:28", refs)
+        self.assertEqual(len(refs), 3)
+
+
 class FixtureSermonLabelTests(TestCase):
     """Guard the fixture itself: a shipped translation must carry its badge."""
 

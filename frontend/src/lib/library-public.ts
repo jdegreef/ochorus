@@ -179,6 +179,8 @@ export interface Sermon extends SermonSummary {
 	/** Previous / next sermon by the same author (shelf order); null at the ends. */
 	prev: SermonNeighbour | null;
 	next: SermonNeighbour | null;
+	/** Distinct passages the sermon engages (its text + body citations). */
+	scripture_refs: string[];
 }
 
 export interface AuthorBio {

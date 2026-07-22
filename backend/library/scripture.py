@@ -79,6 +79,38 @@ def _wrap_text(text: str) -> str:
     return _CANDIDATE.sub(repl, text)
 
 
+def cited_references(html: str, limit: int = 8) -> list[str]:
+    """Distinct Bible references cited in cleaned HTML, first-appearance order.
+
+    The same candidate regex + pythonbible validation ``annotate_references``
+    uses, run over the text between tags. Each hit is rendered in canonical
+    form ("Jn 3:16" and "John 3:16" collapse to one chip) and deduped, capped
+    at ``limit`` so a citation-dense sermon yields an index, not a wall.
+    """
+    if not html or ":" not in html:
+        return []
+    out: list[str] = []
+    seen: set[str] = set()
+    for i, part in enumerate(_TAG_SPLIT.split(html)):
+        if i % 2 == 1 or ":" not in part:
+            continue
+        for match in _CANDIDATE.finditer(part):
+            ref = _first_reference(match.group(1))
+            if ref is None:
+                continue
+            try:
+                display = bible.format_scripture_references([ref])
+            except Exception:
+                display = match.group(1)
+            if display in seen:
+                continue
+            seen.add(display)
+            out.append(display)
+            if len(out) >= limit:
+                return out
+    return out
+
+
 @lru_cache(maxsize=4096)
 def reference_verse_ids(text: str) -> frozenset:
     """Every ASV verse id referenced by ``text`` (empty if it isn't a reference).

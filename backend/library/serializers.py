@@ -116,6 +116,27 @@ class SermonDetailSerializer(serializers.ModelSerializer):
 
         return annotate_references(obj.body_html)
 
+    scripture_refs = serializers.SerializerMethodField()
+
+    def get_scripture_refs(self, obj):
+        """The distinct passages this sermon engages — its text first, then
+        references cited in the body — for the scripture-index chip row. The
+        main text is deduped against body citations by verse overlap so
+        "Mark 9:23" doesn't appear twice under two spellings."""
+        from .scripture import cited_references, reference_verse_ids
+
+        refs: list[str] = []
+        main_ids = frozenset()
+        if obj.scripture_ref:
+            refs.append(obj.scripture_ref)
+            main_ids = reference_verse_ids(obj.scripture_ref)
+        for r in cited_references(obj.body_html):
+            ids = reference_verse_ids(r)
+            if main_ids and ids and ids <= main_ids:
+                continue
+            refs.append(r)
+        return refs[:8]
+
     def _neighbours(self, obj):
         """The (prev, next) sermon in this author's corpus, in shelf order.
 
@@ -163,6 +184,7 @@ class SermonDetailSerializer(serializers.ModelSerializer):
             "author_photo",
             "prev",
             "next",
+            "scripture_refs",
         ]
 
 
