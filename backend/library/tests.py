@@ -344,6 +344,134 @@ class SeedBooksTests(TestCase):
         call_command("seed_books", verbosity=0)
         self.assertEqual(Book.objects.count(), before)
 
+    def test_updates_changed_book_metadata(self):
+        # The PR #355 regression: generate_covers set cover_url locally, the
+        # value reached the fixture, and prod never saw it because seed_books
+        # only created. Simulate a prod row that predates a fixture edit.
+        from django.core.management import call_command
+
+        call_command("seed_books", verbosity=0)
+        book = Book.objects.get(slug="the-way-to-god", language="en")
+        Book.objects.filter(pk=book.pk).update(
+            cover_url="", description="stale", sort_order=999
+        )
+
+        call_command("seed_books", verbosity=0)  # the next deploy
+
+        book.refresh_from_db()
+        fixture = self._fixture_fields("the-way-to-god", "en")
+        self.assertEqual(book.cover_url, fixture["cover_url"])
+        self.assertEqual(book.description, fixture["description"])
+        self.assertEqual(book.sort_order, fixture["sort_order"])
+
+    def test_second_run_updates_nothing(self):
+        # A no-op deploy must not touch a single row — updated_at is the tell.
+        from django.core.management import call_command
+
+        call_command("seed_books", verbosity=0)
+        stamps = dict(Book.objects.values_list("pk", "updated_at"))
+        call_command("seed_books", verbosity=0)
+        self.assertEqual(dict(Book.objects.values_list("pk", "updated_at")), stamps)
+
+    def test_seed_never_reverts_an_approved_translation(self):
+        # source_type is create-only. It ships in the fixture as ai_unreviewed,
+        # but once a native speaker approves a translation the review workflow
+        # owns it — re-asserting the fixture value on the next deploy would
+        # silently restore the "awaiting native review" badge and make
+        # approve_translation useless.
+        from django.core.management import call_command
+
+        call_command("seed_books", verbosity=0)
+        translated = Book.objects.filter(
+            source_type=Book.SourceType.AI_UNREVIEWED
+        ).first()
+        self.assertIsNotNone(translated, "fixture has no AI-translated book")
+        call_command(
+            "approve_translation", translated.slug, language=translated.language
+        )
+
+        call_command("seed_books", verbosity=0)  # the next deploy
+
+        translated.refresh_from_db()
+        self.assertEqual(translated.source_type, Book.SourceType.AI_REVIEWED)
+
+    def test_seed_never_republishes_an_unpublished_book(self):
+        # is_published is create-only for the same reason as source_type: an
+        # urgent unpublish (a copyright complaint) happens directly in the live
+        # DB, and the fixture must not resurrect the book on the next deploy.
+        from django.core.management import call_command
+
+        call_command("seed_books", verbosity=0)
+        book = Book.objects.get(slug="the-way-to-god", language="en")
+        self.assertTrue(book.is_published)  # the fixture says published
+        Book.objects.filter(pk=book.pk).update(is_published=False)
+
+        call_command("seed_books", verbosity=0)  # the next deploy
+
+        book.refresh_from_db()
+        self.assertFalse(book.is_published)
+
+    def test_update_goes_through_save_so_search_vectors_ripple(self):
+        # queryset.update() would leave the book's chapters' stored search
+        # vectors STALE (not NULL), and backfill_search_vectors — which fills
+        # NULLs only — would never repair them. Pin the call to Book.save().
+        from unittest.mock import patch
+
+        from django.core.management import call_command
+
+        call_command("seed_books", verbosity=0)
+        book = Book.objects.get(slug="the-way-to-god", language="en")
+        Book.objects.filter(pk=book.pk).update(title="Stale Title")
+
+        with patch("library.fts.refresh_book_chapters") as ripple:
+            call_command("seed_books", verbosity=0)
+
+        book.refresh_from_db()
+        self.assertEqual(book.title, self._fixture_fields("the-way-to-god", "en")["title"])
+        self.assertIn(book.pk, [c.args[0].pk for c in ripple.call_args_list])
+
+    @skipUnless(connection.vendor == "postgresql", "Stored search vectors are Postgres-only")
+    def test_retitle_rebuilds_chapter_search_vectors(self):
+        # End-to-end proof of the above on the production database engine: the
+        # book title is baked into every chapter's stored tsvector, so after
+        # seed_books applies a retitle the OLD title must stop matching. If the
+        # update ever regresses to queryset.update() the vectors go stale — not
+        # NULL — and backfill_search_vectors will never notice.
+        from django.core.management import call_command
+
+        from library import fts
+        from library.search import search_library
+
+        call_command("seed_books", verbosity=0)
+        book = Book.objects.get(slug="the-way-to-god", language="en")
+        # Put the DB in the "prod predates the fixture edit" state: a stale
+        # title with search vectors consistently built from it.
+        Book.objects.filter(pk=book.pk).update(title="Quixotical")
+        book.refresh_from_db()
+        fts.refresh_book_chapters(book)
+        self.assertTrue(
+            [h for h in search_library("Quixotical", "en") if h["type"] == "chapter"]
+        )
+
+        call_command("seed_books", verbosity=0)  # the next deploy
+
+        self.assertEqual(
+            [h for h in search_library("Quixotical", "en") if h["type"] == "chapter"], []
+        )
+
+    def _fixture_fields(self, slug, language):
+        from library.content_fixtures import load_all_rows
+
+        for row in load_all_rows():
+            f = row["fields"]
+            if (
+                row.get("model") == "library.book"
+                and f["slug"] == slug
+                and f.get("language", "en") == language
+            ):
+                return f
+        raise AssertionError(f"no fixture book {slug!r} [{language}]")
+
 
 class SeedSermonsTests(TestCase):
     def test_creates_missing_authors_from_fixture(self):

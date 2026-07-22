@@ -296,6 +296,29 @@ class SeedFieldCoverageTests(SimpleTestCase):
         )
         self.assertEqual(set(SERMON_FIELDS), expected)
 
+    def test_create_only_fields_are_real_seeded_fields(self):
+        # Both seeds carve UPDATE_FIELDS out of their field tuple by set
+        # difference, so a typo'd or renamed entry in CREATE_ONLY_FIELDS is
+        # silent: the guard evaporates and the next deploy starts overwriting
+        # a workflow-owned field (re-gating an approved translation, or
+        # republishing a book pulled for copyright).
+        from library.management.commands import seed_books, seed_sermons
+
+        for mod, fields in (
+            (seed_books, seed_books.BOOK_FIELDS),
+            (seed_sermons, seed_sermons.SERMON_FIELDS),
+        ):
+            with self.subTest(command=mod.__name__):
+                self.assertTrue(mod.CREATE_ONLY_FIELDS <= set(fields))
+                self.assertEqual(
+                    set(mod.UPDATE_FIELDS),
+                    set(fields) - mod.CREATE_ONLY_FIELDS,
+                )
+                # The two review-gate flags are the ones that must never be
+                # re-asserted from the fixture; pin them by name.
+                self.assertIn("source_type", mod.CREATE_ONLY_FIELDS)
+                self.assertIn("is_published", mod.CREATE_ONLY_FIELDS)
+
 
 class FileCoherenceTests(SimpleTestCase):
     """Each file must contain exactly what its name and role promise.
