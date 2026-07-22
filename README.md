@@ -32,3 +32,5 @@ A canonical work is identified by `Book.slug`. Each *language* of that work is a
 separate `Book` row sharing the slug, unique by `(slug, language)`. The
 `source_type` field distinguishes public-domain originals from AI translations
 (reviewed / unreviewed).
+
+<!-- branch-protection probe: safe to delete -->
