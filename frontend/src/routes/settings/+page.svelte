@@ -8,6 +8,7 @@
 	import { lang } from '$lib/lang.svelte';
 	import { readerPrefs, FONT_STACK, MEASURE, type ReaderFont, type Measure } from '$lib/readerPrefs.svelte';
 	import { listen, RATES } from '$lib/listen.svelte';
+	import { readingSync } from '$lib/readingSync';
 	import { collectExport, toMarkdown, downloadFile } from '$lib/dataExport';
 	import Icon, { type IconName } from '$lib/components/Icon.svelte';
 
@@ -58,6 +59,44 @@
 		}
 	}
 
+	// Sync visibility — surface the otherwise-invisible cross-device sync: when it
+	// last succeeded and a manual "Sync now". `syncTick` re-reads the timestamp
+	// after a sync and on the 'ochorus:sync' event a merge/pull dispatches.
+	let syncing = $state(false);
+	let syncTick = $state(0);
+	const lastSynced = $derived.by(() => {
+		syncTick; // reactive dependency
+		return readingSync.readLastSynced();
+	});
+	// Localised relative time ("just now", "3 minutes ago", "yesterday").
+	const relSynced = $derived.by(() => {
+		const ts = lastSynced;
+		if (!ts) return t('settings.syncNever');
+		const diffS = Math.round((ts - Date.now()) / 1000);
+		if (Math.abs(diffS) < 45) return t('settings.syncJustNow');
+		const rtf = new Intl.RelativeTimeFormat(lang.current, { numeric: 'auto' });
+		const mins = Math.round(diffS / 60);
+		if (Math.abs(mins) < 60) return rtf.format(mins, 'minute');
+		const hrs = Math.round(diffS / 3600);
+		if (Math.abs(hrs) < 24) return rtf.format(hrs, 'hour');
+		return rtf.format(Math.round(diffS / 86400), 'day');
+	});
+	async function syncNow() {
+		if (syncing) return;
+		syncing = true;
+		try {
+			await readingSync.syncNow();
+		} finally {
+			syncing = false;
+			syncTick += 1;
+		}
+	}
+	onMount(() => {
+		const bump = () => (syncTick += 1);
+		window.addEventListener('ochorus:sync', bump);
+		return () => window.removeEventListener('ochorus:sync', bump);
+	});
+
 	// The device's TTS voices load asynchronously; init the store so they populate,
 	// then show only the best few for the currently-selected language.
 	onMount(() => listen.init());
@@ -102,7 +141,15 @@
 						{t('account.signedInAs')}
 						<span class="font-semibold text-text">{auth.user.email}</span>
 					</p>
-					<p class="mt-1 text-small text-muted">{t('account.syncNote')}</p>
+					<p class="mt-1 text-small text-muted">{t('settings.syncWhat')}</p>
+					<div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2">
+						<span class="text-small text-muted">
+							{t('settings.lastSynced')}: <span class="text-text">{relSynced}</span>
+						</span>
+						<button class="btn btn-ghost !py-1.5" disabled={syncing} onclick={syncNow}>
+							{syncing ? t('settings.syncing') : t('settings.syncNow')}
+						</button>
+					</div>
 					<button class="btn btn-ghost mt-5" onclick={() => auth.signOut()}>{t('account.signOut')}</button>
 				{:else if auth.enabled}
 					<p class="text-body text-muted">{t('account.signedOutNote')}</p>

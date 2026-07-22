@@ -1,8 +1,29 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { readingSync } from './readingSync';
-import { READING_DATA_KEYS, PROGRESS_KEY, MARKS_KEY } from './reading-schema';
+import { READING_DATA_KEYS, PROGRESS_KEY, MARKS_KEY, LAST_SYNC_KEY } from './reading-schema';
 
 beforeEach(() => localStorage.clear());
+
+describe('readingSync last-synced', () => {
+	it('parses the stored timestamp, and returns null when absent or garbage', () => {
+		expect(readingSync.readLastSynced()).toBeNull();
+		localStorage.setItem(LAST_SYNC_KEY, String(1_750_000_000_000));
+		expect(readingSync.readLastSynced()).toBe(1_750_000_000_000);
+		localStorage.setItem(LAST_SYNC_KEY, 'nonsense');
+		expect(readingSync.readLastSynced()).toBeNull();
+	});
+
+	it('syncNow is a no-op that resolves false when signed out', async () => {
+		readingSync.setSignedIn(false);
+		await expect(readingSync.syncNow()).resolves.toBe(false);
+	});
+
+	it('clearOnSignOut wipes the last-synced timestamp', () => {
+		localStorage.setItem(LAST_SYNC_KEY, String(1_750_000_000_000));
+		readingSync.clearOnSignOut();
+		expect(localStorage.getItem(LAST_SYNC_KEY)).toBeNull();
+	});
+});
 
 describe('readingSync.clearOnSignOut', () => {
 	it('removes every reading-data key but leaves device preferences alone', () => {
