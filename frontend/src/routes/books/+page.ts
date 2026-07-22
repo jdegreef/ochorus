@@ -101,6 +101,11 @@ import type { PageLoad } from './$types';
  * edition of Prayer – The Pulse of Life (Maombi – Mapigo ya Uhai, PR #322) by
  * Hannah Buyinza went live, so the /sw/books index and its /books/<slug> pages
  * re-crawl and bake with the new title.
+ *
+ * Prerender refresh 2026-07-22 (queue job #281): same again after the Swahili
+ * edition of Godliness (Utauwa, PR #332) by Catherine Booth went live, so the
+ * /sw/books index and its /books/<slug> pages re-crawl and bake with the new
+ * title.
  */
 export const load: PageLoad = async () => {
 	try {
