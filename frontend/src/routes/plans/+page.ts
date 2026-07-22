@@ -15,6 +15,11 @@ import type { PageLoad } from './$types';
  * missing source books shipped (PR #351), so seed_plans now materializes both
  * localized rows — Essomero ery'Okusaba (lg) and Shule ya Maombi (sw), 27 days
  * each. This touch re-crawls /lg/plans and /sw/plans so the plan cards appear.
+ *
+ * Prerender refresh 2026-07-22 (five new curated plans): added The Deeper Life,
+ * The Way to God, The God of All Comfort (also live in lg), Power from on High,
+ * and Everything for Christ — all English-first, materializing per language as
+ * their source books get translated. This touch bakes the new /plans cards.
  */
 export const load: PageLoad = async () => {
 	// Tolerate a lagging/absent plans endpoint at prerender time (api + web can
