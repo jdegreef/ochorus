@@ -91,6 +91,11 @@ import type { PageLoad } from './$types';
  * edition of Clothed with Strength and Dignity (Amevaa Nguvu na Heshima,
  * PR #314) went live, so the /sw/books index and its /books/<slug> pages
  * re-crawl and bake with the new title.
+ *
+ * Prerender refresh 2026-07-22 (queue job #279): same again after the Swahili
+ * edition of The Key in My Hand (Ufunguo Ulio Mkononi Mwangu, PR #316) by
+ * Gareth Evans went live, so the /sw/books index and its /books/<slug> pages
+ * re-crawl and bake with the new title.
  */
 export const load: PageLoad = async () => {
 	try {
