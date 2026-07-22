@@ -16,6 +16,7 @@ from .models import (
     Sermon,
     Topic,
     TopicBook,
+    TopicSermon,
     TopicTranslation,
 )
 from .text import html_to_text
@@ -665,6 +666,28 @@ class TopicTests(TestCase):
         self.assertEqual(
             by_slug["humility-2"]["topics"], [{"slug": "prayer", "title": "Kuhusu Maombi"}]
         )
+
+    def test_author_detail_lists_topics(self):
+        # The author page surfaces the topical shelves the author appears in.
+        res = self.client.get("/api/library/authors/am/?language=en")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["topics"], [{"slug": "prayer", "title": "On Prayer"}])
+
+    def test_author_topics_localize(self):
+        res = self.client.get("/api/library/authors/am/?language=sw")
+        self.assertEqual(res.data["topics"], [{"slug": "prayer", "title": "Kuhusu Maombi"}])
+
+    def test_author_topics_include_sermon_membership(self):
+        # A topic reachable only via one of the author's sermons still shows.
+        Sermon.objects.create(
+            author=Author.objects.get(slug="am"), slug="on-waiting", language="en",
+            title="On Waiting", body_html="<p>Wait on God.</p>",
+        )
+        waiting = Topic.objects.create(slug="waiting", title="On Waiting", sort_order=3)
+        TopicSermon.objects.create(topic=waiting, sermon_slug="on-waiting")
+        res = self.client.get("/api/library/authors/am/?language=en")
+        slugs = {t["slug"] for t in res.data["topics"]}
+        self.assertEqual(slugs, {"prayer", "waiting"})
 
     def test_seed_topics_idempotent_and_upserts_membership(self):
         from django.core.management import call_command

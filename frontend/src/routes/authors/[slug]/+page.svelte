@@ -233,6 +233,23 @@
 		<p class="mt-6 text-body leading-relaxed text-muted">{author.bio}</p>
 	{/if}
 
+	<!-- Topical shelves this author appears in: cross-navigation into browse. -->
+	{#if author.topics.length}
+		<div class="mx-auto mt-8 flex max-w-[40rem] flex-wrap items-center gap-2">
+			<span class="text-small font-semibold uppercase tracking-wide text-muted">
+				{t('author.themes')}
+			</span>
+			{#each author.topics as topic (topic.slug)}
+				<a
+					href={localizeHref(`/topics/${topic.slug}`)}
+					class="rounded-full border border-border px-3 py-1 text-small text-text hover:border-accent hover:text-accent hover:no-underline"
+				>
+					{topic.title}
+				</a>
+			{/each}
+		</div>
+	{/if}
+
 	<!-- Books -->
 	{#if author.books.length}
 		<section class="mt-14">
