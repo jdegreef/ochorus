@@ -67,6 +67,49 @@ class ReadingProgress(models.Model):
         return f"{self.profile_id}:{self.kind}:{self.book_slug} → ch{self.chapter_order}"
 
 
+class FavoriteKind(models.TextChoices):
+    """What a favorite's ``slug`` names.
+
+    Broader than :class:`WorkKind`: a reader follows *authors* and saves
+    *plans* as well as works. Kept as its own enum so the reading kinds and
+    the favoritable kinds can evolve independently.
+    """
+
+    AUTHOR = "author", "Author"
+    BOOK = "book", "Book"
+    PLAN = "plan", "Plan"
+    SERMON = "sermon", "Sermon"
+
+
+class Favorite(models.Model):
+    """A reader's saved author / book / plan / sermon (roadmap #18).
+
+    Slug-referenced like everything else in this app, so a favorite survives
+    content re-imports and is language-agnostic (a favorite author is the
+    same author in every language).
+    """
+
+    profile = models.ForeignKey(
+        "accounts.UserProfile",
+        on_delete=models.CASCADE,
+        related_name="favorites",
+    )
+    kind = models.CharField(max_length=10, choices=FavoriteKind.choices)
+    slug = models.SlugField(max_length=160)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["profile", "kind", "slug"], name="uniq_favorite_profile_item"
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.profile_id} ♥ {self.kind}:{self.slug}"
+
+
 class ChapterMarks(models.Model):
     """A reader's highlights and notes within one chapter.
 

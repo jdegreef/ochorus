@@ -3,6 +3,7 @@ import { apiFetch } from './api';
 import {
 	PROGRESS_KEY,
 	MARKS_KEY,
+	FAVORITES_KEY,
 	READING_DATA_KEYS,
 	migrateLegacySermonState,
 	workKey,
@@ -44,9 +45,15 @@ interface ServerMarks {
 	marks: Mark[];
 	updated_at: string;
 }
+interface ServerFavorite {
+	kind: string;
+	slug: string;
+	created_at: string;
+}
 interface ServerState {
 	progress: ServerProgress[];
 	marks: ServerMarks[];
+	favorites?: ServerFavorite[];
 }
 
 function readJson<T>(key: string, fallback: T): T {
@@ -109,6 +116,16 @@ class ReadingSync {
 		});
 	}
 
+	/** Mirror a heart toggle (kind: author | book | plan | sermon). */
+	pushFavorite(kind: string, slug: string, active: boolean) {
+		if (!this.signedIn || !browser) return;
+		this.#debounce(`f:${kind}:${slug}`, () => {
+			apiFetch(`/api/reading/favorites/${kind}/${slug}/`, {
+				method: active ? 'PUT' : 'DELETE'
+			}).catch(() => {});
+		});
+	}
+
 	/**
 	 * First-sign-in reconciliation. Sends the local cache to the merge endpoint,
 	 * then overwrites the cache with the merged server truth so both sides agree.
@@ -122,6 +139,7 @@ class ReadingSync {
 		migrateLegacySermonState();
 		const localProgress = readJson<ProgressMap>(PROGRESS_KEY, {});
 		const localMarks = readJson<MarksStore>(MARKS_KEY, {});
+		const localFavorites = readJson<Record<string, number>>(FAVORITES_KEY, {});
 
 		const payload = {
 			progress: Object.entries(localProgress).map(([key, r]) => {
@@ -151,7 +169,12 @@ class ReadingSync {
 							: { highlights: legacy.h ?? [], notes: legacy.n ?? {} })
 					};
 				})
-				.filter(Boolean)
+				.filter(Boolean),
+			// Favorites are stored as "kind:slug" -> savedAt; kinds never contain ':'.
+			favorites: Object.keys(localFavorites).map((key) => {
+				const i = key.indexOf(':');
+				return { kind: key.slice(0, i), slug: key.slice(i + 1) };
+			})
 		};
 
 		try {
@@ -211,6 +234,13 @@ class ReadingSync {
 		}
 		localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
 		localStorage.setItem(MARKS_KEY, JSON.stringify(marks));
+		if (state.favorites) {
+			const favs: Record<string, number> = {};
+			for (const f of state.favorites) {
+				favs[`${f.kind}:${f.slug}`] = Date.parse(f.created_at) || Date.now();
+			}
+			localStorage.setItem(FAVORITES_KEY, JSON.stringify(favs));
+		}
 		// Let open views know the cache changed underneath them.
 		window.dispatchEvent(new CustomEvent('ochorus:sync'));
 	}

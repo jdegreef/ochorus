@@ -17,6 +17,7 @@
 	} from '$lib/reading-schema';
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import BookCard from '$lib/components/BookCard.svelte';
+	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import ListenBar from '$lib/components/ListenBar.svelte';
 	import LifeTimeline from '$lib/components/LifeTimeline.svelte';
 	import SelectionBar from '$lib/components/SelectionBar.svelte';
@@ -263,15 +264,18 @@
 				</p>
 			{/if}
 		</div>
-		{#if listen.supported && author.bio_html}
-			<button
-				class="btn btn-ghost ml-auto shrink-0 !px-2.5 !py-1"
-				class:!text-accent={listen.status !== 'idle'}
-				onclick={() => (listen.status === 'idle' ? startListening() : listen.stop())}
-				aria-label={t('reader.listen')}
-				title={t('reader.listen')}>▶ {t('reader.listen')}</button
-			>
-		{/if}
+		<div class="ml-auto flex shrink-0 items-center gap-2">
+			<FavoriteButton kind="author" slug={author.slug} showLabel />
+			{#if listen.supported && author.bio_html}
+				<button
+					class="btn btn-ghost shrink-0 !px-2.5 !py-1"
+					class:!text-accent={listen.status !== 'idle'}
+					onclick={() => (listen.status === 'idle' ? startListening() : listen.stop())}
+					aria-label={t('reader.listen')}
+					title={t('reader.listen')}>▶ {t('reader.listen')}</button
+				>
+			{/if}
+		</div>
 	</header>
 
 	<!-- Lifespan timeline: places the author in history at a glance. -->

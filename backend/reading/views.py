@@ -19,8 +19,12 @@ from rest_framework.views import APIView
 from accounts.models import UserProfile
 
 from .marks import clean_mark_list, from_legacy, merge_mark_lists
-from .models import ChapterMarks, ReadingProgress, WorkKind
-from .serializers import ChapterMarksSerializer, ReadingProgressSerializer
+from .models import ChapterMarks, Favorite, FavoriteKind, ReadingProgress, WorkKind
+from .serializers import (
+    ChapterMarksSerializer,
+    FavoriteSerializer,
+    ReadingProgressSerializer,
+)
 
 
 def _profile(request) -> UserProfile:
@@ -175,6 +179,28 @@ class SermonMarksView(APIView):
         return Response(_legacy_sermon_shape(obj))
 
 
+class FavoriteView(APIView):
+    """Save / unsave one favorite (an author, book, plan or sermon)."""
+
+    permission_classes = [IsAuthenticated]
+
+    def put(self, request, kind, slug):
+        if kind not in FavoriteKind.values:
+            return Response({"detail": "Unknown kind."}, status=400)
+        profile = _profile(request)
+        obj, _ = Favorite.objects.get_or_create(
+            profile=profile, kind=kind, slug=slug
+        )
+        return Response(FavoriteSerializer(obj).data)
+
+    def delete(self, request, kind, slug):
+        if kind not in FavoriteKind.values:
+            return Response({"detail": "Unknown kind."}, status=400)
+        profile = _profile(request)
+        Favorite.objects.filter(profile=profile, kind=kind, slug=slug).delete()
+        return Response(status=204)
+
+
 class MergeView(APIView):
     """First-sign-in reconciliation of local (offline) state with the server.
 
@@ -191,7 +217,18 @@ class MergeView(APIView):
         self._merge_progress(profile, request.data.get("progress") or [])
         self._merge_marks(profile, request.data.get("marks") or [])
         self._merge_sermon_marks(profile, request.data.get("sermon_marks") or [])
+        self._merge_favorites(profile, request.data.get("favorites") or [])
         return Response(_serialize_state(profile))
+
+    def _merge_favorites(self, profile, incoming):
+        """Union: a heart set on either side survives (like marks, nothing a
+        reader saved offline is ever dropped). Unknown kinds are skipped."""
+        for row in incoming:
+            kind = row.get("kind")
+            slug = row.get("slug")
+            if not slug or kind not in FavoriteKind.values:
+                continue
+            Favorite.objects.get_or_create(profile=profile, kind=kind, slug=slug)
 
     def _merge_progress(self, profile, incoming):
         existing = {(p.kind, p.book_slug): p for p in profile.progress.all()}
@@ -294,6 +331,7 @@ def _serialize_state(profile) -> dict:
             profile.progress.all(), many=True
         ).data,
         "marks": ChapterMarksSerializer(profile.marks.all(), many=True).data,
+        "favorites": FavoriteSerializer(profile.favorites.all(), many=True).data,
         # COMPAT: old bundles rehydrate their sermon store from this field.
         "sermon_marks": [
             _legacy_sermon_shape(m)

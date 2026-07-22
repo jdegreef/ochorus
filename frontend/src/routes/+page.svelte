@@ -8,6 +8,7 @@
 	import ContinueReading from '$lib/components/ContinueReading.svelte';
 	import TodaysReading from '$lib/components/TodaysReading.svelte';
 	import PlansProgress from '$lib/components/PlansProgress.svelte';
+	import FavoritesShelf from '$lib/components/FavoritesShelf.svelte';
 	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
 
@@ -150,6 +151,7 @@
 <!-- Personal plan / sermon blocks — client-side only (this page is prerendered) -->
 <TodaysReading />
 <PlansProgress />
+<FavoritesShelf />
 <SermonOfTheWeek />
 
 <!-- Browse by topic -->

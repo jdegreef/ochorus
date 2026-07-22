@@ -16,6 +16,7 @@ export const MARKS_KEY = 'ochorus:marks';
 export const ANCHOR_KEY = 'ochorus:anchors';
 export const BOOKMARKS_KEY = 'ochorus:bookmarks';
 export const PLANS_KEY = 'ochorus:plans';
+export const FAVORITES_KEY = 'ochorus:favorites';
 // Legacy device-local sermon stores, folded into MARKS_KEY / ANCHOR_KEY under
 // `sermon:`-prefixed keys when sermons joined the synced reading layer
 // (roadmap #10). Kept only so the one-time migrations and the sign-out wipe
@@ -35,6 +36,7 @@ export const READING_DATA_KEYS = [
 	ANCHOR_KEY,
 	BOOKMARKS_KEY,
 	PLANS_KEY,
+	FAVORITES_KEY,
 	LEGACY_SERMON_MARKS_KEY,
 	LEGACY_SERMON_ANCHOR_KEY
 ] as const;
