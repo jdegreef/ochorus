@@ -3,7 +3,7 @@ import { apiFetch, setAuthTokenProvider } from './api';
 import { authEnabled, supabase } from './supabase';
 import { readerPrefs } from './readerPrefs.svelte';
 import { listen } from './listen.svelte';
-import { theme } from './theme.svelte';
+import { theme, normalizePref } from './theme.svelte';
 import { lang } from './lang.svelte';
 import { readingSync } from './readingSync';
 
@@ -154,7 +154,7 @@ class Auth {
 		try {
 			const p = await apiFetch<Profile>('/api/auth/me/');
 			this.isAdmin = !!p.is_admin;
-			if (p.theme === 'dark' || p.theme === 'light') theme.set(p.theme);
+			if (typeof p.theme === 'string' && p.theme) theme.set(normalizePref(p.theme));
 			if (p.font_scale) readerPrefs.setScale(p.font_scale);
 			// Listening prefs: rate always applies; a voiceURI only resolves if the
 			// device actually has that voice (best-effort across devices).
@@ -185,7 +185,7 @@ class Auth {
 			apiFetch('/api/auth/me/', {
 				method: 'PATCH',
 				body: JSON.stringify({
-					theme: theme.current,
+					theme: theme.preference,
 					font_scale: readerPrefs.scale,
 					tts_rate: listen.rate,
 					tts_voice_uri: listen.voiceURI,

@@ -200,15 +200,17 @@
 				<h2 class="text-h2 mb-1">{t('settings.navAppearance')}</h2>
 				<p class="mb-6 text-small text-muted">{t('settings.appearanceSubtitle')}</p>
 
-				<!-- Theme -->
+				<!-- Theme — preference (not the resolved theme): 'System' follows the OS. -->
 				<div class="setting-row">
 					<div>
 						<div class="setting-label">{t('nav.theme')}</div>
 						<div class="setting-sub">{t('settings.themeSub')}</div>
 					</div>
 					<div class="seg">
-						<button class:active={theme.current === 'light'} onclick={() => theme.set('light')}>{t('settings.themeLight')}</button>
-						<button class:active={theme.current === 'dark'} onclick={() => theme.set('dark')}>{t('settings.themeDark')}</button>
+						<button class:active={theme.preference === 'system'} onclick={() => theme.set('system')}>{t('settings.themeSystem')}</button>
+						<button class:active={theme.preference === 'light'} onclick={() => theme.set('light')}>{t('settings.themeLight')}</button>
+						<button class:active={theme.preference === 'sepia'} onclick={() => theme.set('sepia')}>{t('settings.themeSepia')}</button>
+						<button class:active={theme.preference === 'dark'} onclick={() => theme.set('dark')}>{t('settings.themeDark')}</button>
 					</div>
 				</div>
 
@@ -274,6 +276,8 @@
 	}
 	.seg {
 		display: inline-flex;
+		flex-wrap: wrap;
+		justify-content: flex-end;
 		gap: 0.15rem;
 		background: var(--color-surface-2);
 		border: 1px solid var(--color-border);

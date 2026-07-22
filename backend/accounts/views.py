@@ -51,7 +51,7 @@ class MeView(APIView):
         if isinstance(data.get("locale"), str) and data["locale"]:
             profile.locale = data["locale"][:10]
             updated.append("locale")
-        if data.get("theme") in ("paper", "light", "dark"):
+        if data.get("theme") in ("paper", "light", "dark", "sepia", "system"):
             profile.theme = data["theme"]
             updated.append("theme")
         try:

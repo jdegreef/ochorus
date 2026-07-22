@@ -73,6 +73,24 @@
 	--danger: #b23a48;
 }
 
+/* "Sepia" = a warm parchment reading tone: like paper but softer on the eyes
+   for long sessions. Deeper cream surfaces and warm-brown ink; keeps the brand
+   indigo accent so links/buttons stay recognisable. */
+:root[data-theme='sepia'] {
+	--bg: #f4ecd8;
+	--surface: #fbf5e6;
+	--surface-2: #ece0c8;
+	--text: #40331f;
+	--muted: #7c6a4f;
+	--accent: #3f3d9a;
+	--accent-contrast: #ffffff;
+	--accent-soft: #e9e5f3;
+	--accent-soft-border: #d7d2ec;
+	--gold: #9c6f1e;
+	--border: #ddcfb1;
+	--danger: #b23a48;
+}
+
 @layer base {
 	html {
 		font-family: var(--font-sans);

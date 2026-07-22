@@ -12,12 +12,22 @@
 		<!-- Page title and description are set per-page via svelte:head; do not add
 		     static ones here or they will collide with (and duplicate) those. -->
 		<script>
+			// Resolve the theme before hydration to avoid a flash. Mirrors
+			// $lib/theme.svelte.ts: 'system' follows the OS; 'paper' is legacy light.
 			try {
-				var dark = localStorage.getItem('theme') === 'dark';
-				document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+				var pref = localStorage.getItem('theme') || 'system';
+				if (pref === 'paper') pref = 'light';
+				var applied =
+					pref === 'dark' || pref === 'sepia' || pref === 'light'
+						? pref
+						: window.matchMedia('(prefers-color-scheme: dark)').matches
+							? 'dark'
+							: 'light';
+				document.documentElement.setAttribute('data-theme', applied);
 				// Match the browser UI (address bar / status bar) to the active theme.
+				var colors = { light: '#faf6ef', dark: '#16130f', sepia: '#f4ecd8' };
 				var tc = document.querySelector('meta[name="theme-color"]');
-				if (tc) tc.setAttribute('content', dark ? '#16130f' : '#faf6ef');
+				if (tc) tc.setAttribute('content', colors[applied] || '#faf6ef');
 			} catch (e) {}
 		</script>
 		%sveltekit.head%
