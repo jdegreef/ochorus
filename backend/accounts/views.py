@@ -48,6 +48,10 @@ class MeView(APIView):
         data = request.data
         updated = []
 
+        if isinstance(data.get("display_name"), str):
+            # Trimmed; empty string is allowed (clears the name back to the email).
+            profile.display_name = data["display_name"].strip()[:120]
+            updated.append("display_name")
         if isinstance(data.get("locale"), str) and data["locale"]:
             profile.locale = data["locale"][:10]
             updated.append("locale")

@@ -59,6 +59,26 @@
 		}
 	}
 
+	// Display name — editable profile field. Seeded from the profile until the
+	// reader edits it (nameDirty), so a late profile load can't clobber typing.
+	let nameInput = $state(auth.displayName);
+	let nameDirty = $state(false);
+	let nameSaving = $state(false);
+	$effect(() => {
+		if (!nameDirty) nameInput = auth.displayName;
+	});
+	const nameChanged = $derived(nameInput.trim() !== auth.displayName);
+	async function saveName() {
+		if (nameSaving || !nameChanged) return;
+		nameSaving = true;
+		try {
+			await auth.setDisplayName(nameInput);
+			nameDirty = false;
+		} finally {
+			nameSaving = false;
+		}
+	}
+
 	// Sync visibility — surface the otherwise-invisible cross-device sync: when it
 	// last succeeded and a manual "Sync now". `syncTick` re-reads the timestamp
 	// after a sync and on the 'ochorus:sync' event a merge/pull dispatches.
@@ -139,9 +159,32 @@
 				{#if auth.user}
 					<p class="text-body text-muted">
 						{t('account.signedInAs')}
-						<span class="font-semibold text-text">{auth.user.email}</span>
+						<span class="font-semibold text-text">{auth.displayName || auth.user.email}</span>
 					</p>
-					<p class="mt-1 text-small text-muted">{t('settings.syncWhat')}</p>
+					{#if auth.displayName}
+						<p class="text-small text-muted">{auth.user.email}</p>
+					{/if}
+
+					<!-- Display name -->
+					<div class="mt-5">
+						<label class="setting-label mb-1 block" for="displayName">{t('settings.displayName')}</label>
+						<div class="flex flex-wrap items-center gap-2">
+							<input
+								id="displayName"
+								class="settings-select !max-w-xs flex-1"
+								bind:value={nameInput}
+								oninput={() => (nameDirty = true)}
+								placeholder={t('settings.displayNamePlaceholder')}
+								maxlength="120"
+								autocomplete="name"
+							/>
+							<button class="btn btn-ghost !py-1.5" disabled={nameSaving || !nameChanged} onclick={saveName}>
+								{nameSaving ? t('settings.saving') : t('settings.save')}
+							</button>
+						</div>
+					</div>
+
+					<p class="mt-5 text-small text-muted">{t('settings.syncWhat')}</p>
 					<div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2">
 						<span class="text-small text-muted">
 							{t('settings.lastSynced')}: <span class="text-text">{relSynced}</span>
