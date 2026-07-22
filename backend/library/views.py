@@ -15,6 +15,7 @@ from rest_framework.views import APIView
 from .models import Author, Book, Chapter, Plan, SearchQueryLog, Sermon, Topic
 from .search import search_library, suggest
 from .serializers import (
+    DEFAULT_LANGUAGE,
     AuthorDetailSerializer,
     AuthorListSerializer,
     BookDetailSerializer,
@@ -30,7 +31,6 @@ from .serializers import (
 
 logger = logging.getLogger(__name__)
 
-DEFAULT_LANGUAGE = "en"
 
 # Display names for the languages we expect to publish in. Anything not listed
 # falls back to its bare code so a new language still appears in the picker.
@@ -125,6 +125,7 @@ class BookListView(generics.ListAPIView):
         return (
             Book.objects.filter(is_published=True, language=_language(self.request))
             .select_related("author")
+            .prefetch_related("author__translations")
             .annotate(
                 num_chapters=Count("chapters"),
                 total_words=Sum("chapters__word_count"),
@@ -162,7 +163,7 @@ class BookDetailView(generics.RetrieveAPIView):
                 num_chapters=Count("chapters"),
                 total_words=Sum("chapters__word_count"),
             )
-            .prefetch_related("chapters"),
+            .prefetch_related("chapters", "author__translations"),
             slug=self.kwargs["slug"],
             language=_language(self.request),
         )
@@ -194,6 +195,7 @@ class SermonListView(generics.ListAPIView):
         return (
             Sermon.objects.filter(is_published=True, language=_language(self.request))
             .select_related("author")
+            .prefetch_related("author__translations")
             .order_by("author__name", "sort_order", "title")
         )
 

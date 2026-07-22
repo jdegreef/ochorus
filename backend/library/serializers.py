@@ -5,6 +5,9 @@ from .models import Author, Book, Chapter, Plan, PlanDay, Sermon, Topic, TopicBo
 from .scripture import book_of
 
 
+DEFAULT_LANGUAGE = "en"
+
+
 def _modern_edition_available(slug: str) -> bool:
     """Whether a published Modern English edition of this work exists."""
     return Book.objects.filter(
@@ -12,13 +15,50 @@ def _modern_edition_available(slug: str) -> bool:
     ).exists()
 
 
-class AuthorSerializer(serializers.ModelSerializer):
+class Localized:
+    """Mixin for serializers whose output depends on the reader's language.
+
+    ``_language()`` prefers an explicit ``language`` in the context (a view
+    that resolved it, or a parent serializer passing it down) and otherwise
+    falls back to the request's own ``?language=``. The fallback is the point:
+    a view that forgets to thread the context still serves the right language
+    instead of silently serving English — which is exactly how the author
+    mini-bio stayed English on every localized book page.
+    """
+
+    def _language(self) -> str:
+        language = self.context.get("language")
+        if language:
+            return language
+        request = self.context.get("request")
+        # DRF wraps requests (query_params); a plain Django request (tests,
+        # management commands, non-DRF callers) only has GET — accept either
+        # rather than raising from inside a serializer field.
+        params = getattr(request, "query_params", None)
+        if params is None:
+            params = getattr(request, "GET", None)
+        if params is not None:
+            return params.get("language") or DEFAULT_LANGUAGE
+        return DEFAULT_LANGUAGE
+
+
+class AuthorSerializer(Localized, serializers.ModelSerializer):
+    """The author of a book/sermon card — name, portrait, and short bio.
+
+    The bio is localized (``AuthorTranslation``), like the biographies page's.
+    """
+
+    bio = serializers.SerializerMethodField()
+
     class Meta:
         model = Author
         fields = ["slug", "name", "bio", "photo_url", "birth_year", "death_year"]
 
+    def get_bio(self, obj):
+        return obj.bio_for(self._language())
 
-class AuthorListSerializer(serializers.ModelSerializer):
+
+class AuthorListSerializer(Localized, serializers.ModelSerializer):
     """Authors for the Biographies page, with how many books each has."""
 
     book_count = serializers.IntegerField(source="num_books", read_only=True)
@@ -29,7 +69,7 @@ class AuthorListSerializer(serializers.ModelSerializer):
         fields = ["slug", "name", "bio", "photo_url", "birth_year", "death_year", "book_count"]
 
     def get_bio(self, obj):
-        return obj.bio_for(self.context.get("language", "en"))
+        return obj.bio_for(self._language())
 
 
 class BookListSerializer(serializers.ModelSerializer):
@@ -188,7 +228,7 @@ class SermonDetailSerializer(serializers.ModelSerializer):
         ]
 
 
-class AuthorDetailSerializer(serializers.ModelSerializer):
+class AuthorDetailSerializer(Localized, serializers.ModelSerializer):
     """An author page: bio, dates, their books and their sermons in a language."""
 
     book_count = serializers.SerializerMethodField()
@@ -204,9 +244,6 @@ class AuthorDetailSerializer(serializers.ModelSerializer):
             "slug", "name", "bio", "bio_html", "photo_url", "birth_year",
             "death_year", "book_count", "books", "sermons", "topics",
         ]
-
-    def _language(self):
-        return self.context.get("language", "en")
 
     def get_bio(self, obj):
         return obj.bio_for(self._language())
@@ -225,7 +262,7 @@ class AuthorDetailSerializer(serializers.ModelSerializer):
         )
 
     def get_books(self, obj):
-        return BookListSerializer(self._books(obj), many=True).data
+        return BookListSerializer(self._books(obj), many=True, context=self.context).data
 
     def get_book_count(self, obj):
         return self._books(obj).count()
@@ -236,7 +273,7 @@ class AuthorDetailSerializer(serializers.ModelSerializer):
             .select_related("author")
             .order_by("sort_order", "title")
         )
-        return SermonListSerializer(sermons, many=True).data
+        return SermonListSerializer(sermons, many=True, context=self.context).data
 
     def get_topics(self, obj):
         """The published topical shelves this author appears in — any topic
@@ -370,7 +407,7 @@ class BookDetailSerializer(BookListSerializer):
         ranked = sorted(
             candidates, key=lambda b: (-scores.get(b.slug, 0), b.sort_order, b.title)
         )
-        return BookListSerializer(ranked[: self.RELATED_LIMIT], many=True).data
+        return BookListSerializer(ranked[: self.RELATED_LIMIT], many=True, context=self.context).data
 
 
 class ChapterDetailSerializer(serializers.ModelSerializer):
@@ -525,7 +562,7 @@ class PlanDetailSerializer(PlanListSerializer):
         return PlanDaySerializer(days, many=True).data
 
 
-class TopicListSerializer(serializers.ModelSerializer):
+class TopicListSerializer(Localized, serializers.ModelSerializer):
     """A topical shelf card — localized title/description, member count, and a
     handful of member covers for the browse page. ``book_count`` and ``covers``
     are computed against the requested language (see ``TopicListView``)."""
@@ -539,9 +576,6 @@ class TopicListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Topic
         fields = ["slug", "title", "description", "book_count", "sermon_count", "covers"]
-
-    def _language(self):
-        return self.context.get("language", "en")
 
     def get_title(self, obj):
         return obj.title_for(self._language())
@@ -624,7 +658,7 @@ class TopicDetailSerializer(TopicListSerializer):
         return obj.scripture_text_for(self._language())
 
     def get_books(self, obj):
-        return BookListSerializer(self._books(obj), many=True).data
+        return BookListSerializer(self._books(obj), many=True, context=self.context).data
 
     def get_sermons(self, obj):
-        return SermonListSerializer(self._sermons(obj), many=True).data
+        return SermonListSerializer(self._sermons(obj), many=True, context=self.context).data

@@ -2514,3 +2514,80 @@ class CitationIndexTests(TestCase):
 
         self.assertEqual(_scripture_chapter_hits("Matthew", "en"), [])
         self.assertEqual(len(_scripture_chapter_hits("Matthew 5:3", "en")), 1)
+
+
+class LocalizedAuthorBioTests(TestCase):
+    """The author mini-bio must follow the requested language everywhere.
+
+    It shipped English on every localized book page: the nested
+    AuthorSerializer returned the raw model field, and the book views never
+    put `language` in the serializer context. Both halves are covered here.
+    """
+
+    def setUp(self):
+        self.client = APIClient()
+        self.author = Author.objects.create(
+            slug="gareth-evans", name="Gareth Evans", bio="An itinerant pastor."
+        )
+        AuthorTranslation.objects.create(
+            author=self.author, language="lg", bio="Musumba atambulatambula."
+        )
+        for lang, title in (("en", "He Holds My Tomorrows"), ("lg", "Akwata Ennaku Zange")):
+            book = Book.objects.create(
+                author=self.author, slug="tomorrows", language=lang, title=title
+            )
+            Chapter.objects.create(book=book, order=1, title="One", body_html="<p>x</p>")
+        Sermon.objects.create(
+            author=self.author, slug="a-sermon", language="lg", title="Okubuulira",
+            body_html="<p>y</p>",
+        )
+
+    def test_book_detail_bio_is_localized(self):
+        res = self.client.get("/api/library/books/tomorrows/?language=lg")
+        self.assertEqual(res.data["author"]["bio"], "Musumba atambulatambula.")
+
+    def test_book_list_bio_is_localized(self):
+        res = self.client.get("/api/library/books/?language=lg")
+        self.assertEqual(res.data[0]["author"]["bio"], "Musumba atambulatambula.")
+
+    def test_sermon_list_bio_is_localized(self):
+        res = self.client.get("/api/library/sermons/?language=lg")
+        self.assertEqual(res.data[0]["author"]["bio"], "Musumba atambulatambula.")
+
+    def test_english_is_unaffected(self):
+        res = self.client.get("/api/library/books/tomorrows/?language=en")
+        self.assertEqual(res.data["author"]["bio"], "An itinerant pastor.")
+
+    def test_untranslated_language_falls_back_to_the_original(self):
+        res = self.client.get("/api/library/books/tomorrows/?language=lg")
+        self.assertEqual(res.data["author"]["bio"], "Musumba atambulatambula.")
+        # A language with no AuthorTranslation keeps the English original
+        # rather than rendering blank.
+        Book.objects.create(
+            author=self.author, slug="tomorrows", language="sw", title="Kesho"
+        )
+        res = self.client.get("/api/library/books/tomorrows/?language=sw")
+        self.assertEqual(res.data["author"]["bio"], "An itinerant pastor.")
+
+    def test_language_resolves_from_the_request_without_view_context(self):
+        # The regression guard: a serializer used by a view that never sets
+        # context["language"] still localizes, because Localized falls back to
+        # the request's own ?language=.
+        from rest_framework.test import APIRequestFactory
+
+        from library.serializers import AuthorSerializer
+
+        request = APIRequestFactory().get("/api/library/books/?language=lg")
+        data = AuthorSerializer(self.author, context={"request": request}).data
+        self.assertEqual(data["bio"], "Musumba atambulatambula.")
+
+    def test_shelf_does_not_query_translations_per_book(self):
+        # The bio is now rendered per card — without prefetching, a shelf of N
+        # books costs N extra queries.
+        for i in range(4):
+            Book.objects.create(
+                author=Author.objects.create(slug=f"a{i}", name=f"A{i}", bio="x"),
+                slug=f"b{i}", language="lg", title=f"B{i}",
+            )
+        with self.assertNumQueries(3):  # books + topics(+translations/entries)
+            self.client.get("/api/library/books/?language=lg")
