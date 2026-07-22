@@ -385,3 +385,76 @@ class ImportAuthTests(TestCase):
         self.assertEqual(client.post("/api/admin/import/parse/").status_code, 401)
         self.assertEqual(client.post("/api/admin/import/publish/").status_code, 401)
         self.assertEqual(client.post("/api/admin/authors/").status_code, 401)
+
+
+class TocLineDetectionTests(TestCase):
+    """Contents-page lines are dropped; prose that merely uses dots is not.
+
+    `_TOC_LINE_RE` used to be a bare `\\.{4,}`, so ANY block containing four
+    consecutive dots was deleted as page furniture. This author writes with
+    ellipses ("..... and blessed is he"), and the importer silently ate a
+    1 Corinthians 12 quotation and a whole giftings list out of "Soar Like the
+    Eagle". A contents line is dots leading TO A PAGE NUMBER.
+    """
+
+    def _chapterize(self, blocks):
+        from library.management.commands.import_ochorus import chapterize
+
+        return chapterize(blocks, 12.0)
+
+    def test_contents_lines_are_still_dropped(self):
+        from library.management.commands.import_ochorus import _TOC_LINE_RE
+
+        for line in (
+            "FLYING HIGH ............................................... 2",
+            "Chapter Two ...................................... 13",
+            "Appendix .... 137",
+        ):
+            self.assertTrue(_TOC_LINE_RE.search(line), line)
+
+    def test_prose_with_an_ellipsis_survives(self):
+        from library.management.commands.import_ochorus import _TOC_LINE_RE
+
+        for line in (
+            "vv 12 - 27 by one Spirit we were baptized into one body ... the body "
+            "is not one member but many..... The ear cannot say to the eye",
+            "Secular (the rod in my hand): airman or mariner; .... catering",
+            ".....and blessed is he who is not offended by me!",
+        ):
+            self.assertIsNone(_TOC_LINE_RE.search(line), line)
+
+    def test_multi_line_contents_block_is_dropped_whole(self):
+        # A PDF can emit its whole contents page as ONE block; the pattern is
+        # multiline so any entry line inside it still marks the block as noise.
+        from library.management.commands.import_ochorus import _TOC_LINE_RE
+
+        block = "Table of Contents\nChapter One ......... 2\nChapter Two ......... 13"
+        self.assertTrue(_TOC_LINE_RE.search(block))
+
+    def test_chapterizer_keeps_prose_containing_dot_runs(self):
+        # Bodies must clear the chapterizer's 120-word stub floor.
+        filler = " ".join(["the eagle mounts up with wings as it waits upon God"] * 14)
+        blocks = [
+            ("Contents", 12.0),
+            ("Chapter One ................ 2", 12.0),
+            ("Chapter Two ............... 9", 12.0),
+            ("Chapter Three ............. 17", 12.0),
+            ("CHAPTER ONE", 18.0),
+            ("Flying High", 18.0),
+            (f"He gives power to the faint..... and to them that have no might. {filler}", 12.0),
+            ("CHAPTER TWO", 18.0),
+            ("Love Gifts", 18.0),
+            (f"The ear cannot say to the eye 'I have no need of you'..... but God. {filler}", 12.0),
+            ("CHAPTER THREE", 18.0),
+            ("Vision", 18.0),
+            (f"Where there is no vision the people perish. {filler}", 12.0),
+        ]
+        sections = self._chapterize(blocks)
+        self.assertEqual(len(sections), 3)
+        bodies = " ".join(body for _, body in sections)
+        # The author's words survived …
+        self.assertIn("He gives power to the faint", bodies)
+        self.assertIn("The ear cannot say to the eye", bodies)
+        # … and the contents lines did not.
+        self.assertNotIn("................", bodies)
+        self.assertNotIn("Chapter Two ...", bodies)

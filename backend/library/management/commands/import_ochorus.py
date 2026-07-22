@@ -367,7 +367,11 @@ _SECTION_RE = re.compile(
     r"|(?:sermon|lecture|discourse)s?\b)", re.I,
 )
 # A table-of-contents line: text followed by a dot leader.
-_TOC_LINE_RE = re.compile(r"\.{4,}")
+# A contents-page line: dot leaders that lead TO A PAGE NUMBER
+# ("FLYING HIGH ....... 13"). Requiring the number matters — prose uses runs
+# of dots as an ellipsis (".....and blessed is he who is not offended by me"),
+# and a bare-dots pattern deleted those paragraphs outright.
+_TOC_LINE_RE = re.compile(r"\.{4,}\s*\d+\s*$", re.M)
 
 _ROMAN = {"i": 1, "v": 5, "x": 10, "l": 50, "c": 100}
 _WORD_NUMS = {w.lower(): n for n, w in enumerate(
