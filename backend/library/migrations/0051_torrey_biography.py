@@ -72,7 +72,7 @@ def noop(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("library", "0049_backfill_author_short_bios"),
+        ("library", "0050_self_host_covers"),
     ]
 
     operations = [
