@@ -40,7 +40,9 @@ const SAME_AS_ENGLISH_OK = new Set([
 	// "Original" is the same word in Spanish — a legitimate borrowed term.
 	'reader_original',
 	// "A–Z" is the same alphabetical-sort label in every language we support.
-	'search_sort_title'
+	'search_sort_title',
+	// "Sepia" is the borrowed colour-tone name, unchanged across our locales.
+	'settings_theme_sepia'
 ]);
 
 const toSnake = (key: string) =>
