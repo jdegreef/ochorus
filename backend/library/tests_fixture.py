@@ -391,3 +391,63 @@ class AuthorBioDataIntegrityTests(SimpleTestCase):
                 f"{d.name}: bios for slugs missing from authors.json — the "
                 "seed would soft-skip these forever",
             )
+
+
+class CoverAssetTests(SimpleTestCase):
+    """Covers must be served by Ochorus and must actually exist.
+
+    Both halves of this failed silently in production before PR #349: 28 books
+    hotlinked ochorus.com's WordPress media (the site being retired), and 18
+    rendered as blank cards because ``generate_covers`` set ``cover_url`` on the
+    developer's local db only — the artwork was committed and serving, but no
+    vehicle ever carried the db half to prod. Neither shows up as an error
+    anywhere: a hotlink 200s until the day it doesn't, and an empty cover_url is
+    a valid value.
+    """
+
+    STATIC_DIR = BOOKS_DIR.parents[4] / "frontend" / "static"
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.books = [r for r in load_all_rows() if r["model"] == "library.book"]
+
+    def test_published_covers_are_self_hosted(self):
+        external = sorted(
+            (f["slug"], f["language"], f["cover_url"])
+            for f in (r["fields"] for r in self.books)
+            if f.get("is_published") and "://" in (f.get("cover_url") or "")
+        )
+        self.assertEqual(
+            external, [],
+            "published books must serve covers from Ochorus, not a third-party "
+            "host — download into frontend/static/covers/ and repoint",
+        )
+
+    def test_cover_files_exist(self):
+        missing = sorted(
+            (f["slug"], f["language"], f["cover_url"])
+            for f in (r["fields"] for r in self.books)
+            if (f.get("cover_url") or "").startswith("/")
+            and not (self.STATIC_DIR / f["cover_url"].lstrip("/")).is_file()
+        )
+        self.assertEqual(missing, [], "cover_url points at a file that isn't committed")
+
+    def test_published_books_have_a_cover(self):
+        blank = sorted(
+            (f["slug"], f["language"])
+            for f in (r["fields"] for r in self.books)
+            if f.get("is_published") and not (f.get("cover_url") or "")
+        )
+        self.assertEqual(blank, [], "published book with no cover renders as a blank card")
+
+    def test_svg_covers_have_a_raster_twin_for_og_image(self):
+        # og:image falls back to /covers/<slug>.png when the cover is an SVG —
+        # social platforms refuse SVG previews (books/[slug]/+page.svelte).
+        missing = sorted(
+            f["slug"]
+            for f in (r["fields"] for r in self.books)
+            if (f.get("cover_url") or "").endswith(".svg")
+            and not (self.STATIC_DIR / "covers" / f"{f['slug']}.png").is_file()
+        )
+        self.assertEqual(missing, [], "generated SVG cover without its .png twin")
