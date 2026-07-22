@@ -186,6 +186,8 @@ export interface AuthorDetail extends AuthorBio {
 	bio_html: string;
 	books: BookSummary[];
 	sermons: SermonSummary[];
+	/** Topical shelves this author appears in (via their books/sermons). */
+	topics: TopicChip[];
 }
 
 /**

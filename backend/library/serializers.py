@@ -138,6 +138,7 @@ class AuthorDetailSerializer(serializers.ModelSerializer):
     book_count = serializers.SerializerMethodField()
     books = serializers.SerializerMethodField()
     sermons = serializers.SerializerMethodField()
+    topics = serializers.SerializerMethodField()
     bio = serializers.SerializerMethodField()
     bio_html = serializers.SerializerMethodField()
 
@@ -145,7 +146,7 @@ class AuthorDetailSerializer(serializers.ModelSerializer):
         model = Author
         fields = [
             "slug", "name", "bio", "bio_html", "photo_url", "birth_year",
-            "death_year", "book_count", "books", "sermons",
+            "death_year", "book_count", "books", "sermons", "topics",
         ]
 
     def _language(self):
@@ -180,6 +181,35 @@ class AuthorDetailSerializer(serializers.ModelSerializer):
             .order_by("sort_order", "title")
         )
         return SermonListSerializer(sermons, many=True).data
+
+    def get_topics(self, obj):
+        """The published topical shelves this author appears in — any topic
+        that includes one of their published books or sermons in this language.
+        Chips link back to the topic pages, so a reader can jump from an author
+        to the themes their work sits under (cross-navigation into browse)."""
+        from .models import Topic
+
+        lang = self._language()
+        book_slugs = set(self._books(obj).values_list("slug", flat=True))
+        sermon_slugs = set(
+            obj.sermons.filter(is_published=True, language=lang).values_list(
+                "slug", flat=True
+            )
+        )
+        if not book_slugs and not sermon_slugs:
+            return []
+        topics = Topic.objects.filter(is_published=True).prefetch_related(
+            "translations", "entries", "sermon_entries"
+        )
+        chips = []
+        for topic in topics:
+            in_topic = any(
+                e.book_slug in book_slugs for e in topic.entries.all()
+            ) or any(e.sermon_slug in sermon_slugs for e in topic.sermon_entries.all())
+            if in_topic:
+                chips.append({"slug": topic.slug, "title": topic.title_for(lang)})
+        chips.sort(key=lambda c: c["title"])
+        return chips
 
 
 class ChapterTocSerializer(serializers.ModelSerializer):
