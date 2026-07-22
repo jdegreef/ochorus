@@ -522,6 +522,24 @@
 	<!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
 	<div class="reading" bind:this={body} onclick={onBodyClick}>{@html sermon.body_html}</div>
 
+	<!-- Scripture index: the passages this sermon engages, each a jump into
+	     scripture search — so scripture is a navigation surface, not just text. -->
+	{#if sermon.scripture_refs?.length}
+		<div class="mt-10 flex flex-wrap items-center gap-2 border-t border-border pt-5">
+			<span class="text-small font-semibold uppercase tracking-wide text-muted">
+				{t('sermon.scriptureIndex')}
+			</span>
+			{#each sermon.scripture_refs as ref (ref)}
+				<a
+					href={localizeHref(`/search?q=${encodeURIComponent(ref)}`)}
+					class="rounded-full border border-border px-3 py-1 text-small text-text hover:border-accent hover:text-accent hover:no-underline"
+				>
+					{ref}
+				</a>
+			{/each}
+		</div>
+	{/if}
+
 	<!-- Sequential prev/next through this author's sermons, so a reader who
 	     finishes one keeps going instead of dead-ending at the bottom. -->
 	{#if sermon.prev || sermon.next}
