@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from .contemporize import MODERN_LANGUAGE
+from .localization import DEFAULT_LANGUAGE, language_from_request
 from .models import Author, Book, Chapter, Plan, PlanDay, Sermon, Topic, TopicBook
 from .scripture import book_of
 
@@ -12,13 +13,42 @@ def _modern_edition_available(slug: str) -> bool:
     ).exists()
 
 
-class AuthorSerializer(serializers.ModelSerializer):
+class LocalizedMixin:
+    """Mixin for serializers whose output depends on the reader's language.
+
+    ``_language()`` prefers an explicit ``language`` in the context (a view
+    that resolved it, or a parent serializer passing it down) and otherwise
+    reads the request's own ``?language=`` through the shared resolver. That
+    fallback is the point: a view can't serve English by forgetting to thread
+    the context — which is exactly how the author mini-bio stayed English on
+    every localized book page. Declared nested fields inherit the root's
+    context automatically; hand-instantiated ones must be passed
+    ``context=self.context``.
+    """
+
+    def _language(self) -> str:
+        return self.context.get("language") or language_from_request(
+            self.context.get("request")
+        )
+
+
+class AuthorSerializer(LocalizedMixin, serializers.ModelSerializer):
+    """The author of a book/sermon card — name, portrait, and short bio.
+
+    The bio is localized (``AuthorTranslation``), like the biographies page's.
+    """
+
+    bio = serializers.SerializerMethodField()
+
     class Meta:
         model = Author
         fields = ["slug", "name", "bio", "photo_url", "birth_year", "death_year"]
 
+    def get_bio(self, obj):
+        return obj.bio_for(self._language())
 
-class AuthorListSerializer(serializers.ModelSerializer):
+
+class AuthorListSerializer(LocalizedMixin, serializers.ModelSerializer):
     """Authors for the Biographies page, with how many books each has."""
 
     book_count = serializers.IntegerField(source="num_books", read_only=True)
@@ -29,7 +59,7 @@ class AuthorListSerializer(serializers.ModelSerializer):
         fields = ["slug", "name", "bio", "photo_url", "birth_year", "death_year", "book_count"]
 
     def get_bio(self, obj):
-        return obj.bio_for(self.context.get("language", "en"))
+        return obj.bio_for(self._language())
 
 
 class BookListSerializer(serializers.ModelSerializer):
@@ -188,7 +218,7 @@ class SermonDetailSerializer(serializers.ModelSerializer):
         ]
 
 
-class AuthorDetailSerializer(serializers.ModelSerializer):
+class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
     """An author page: bio, dates, their books and their sermons in a language."""
 
     book_count = serializers.SerializerMethodField()
@@ -205,9 +235,6 @@ class AuthorDetailSerializer(serializers.ModelSerializer):
             "death_year", "book_count", "books", "sermons", "topics",
         ]
 
-    def _language(self):
-        return self.context.get("language", "en")
-
     def get_bio(self, obj):
         return obj.bio_for(self._language())
 
@@ -220,12 +247,13 @@ class AuthorDetailSerializer(serializers.ModelSerializer):
         return (
             obj.books.filter(is_published=True, language=self._language())
             .select_related("author")
+            .prefetch_related("author__translations")
             .annotate(num_chapters=Count("chapters"))
             .order_by("sort_order", "title")
         )
 
     def get_books(self, obj):
-        return BookListSerializer(self._books(obj), many=True).data
+        return BookListSerializer(self._books(obj), many=True, context=self.context).data
 
     def get_book_count(self, obj):
         return self._books(obj).count()
@@ -234,9 +262,10 @@ class AuthorDetailSerializer(serializers.ModelSerializer):
         sermons = (
             obj.sermons.filter(is_published=True, language=self._language())
             .select_related("author")
+            .prefetch_related("author__translations")
             .order_by("sort_order", "title")
         )
-        return SermonListSerializer(sermons, many=True).data
+        return SermonListSerializer(sermons, many=True, context=self.context).data
 
     def get_topics(self, obj):
         """The published topical shelves this author appears in — any topic
@@ -365,12 +394,13 @@ class BookDetailSerializer(BookListSerializer):
                 slug__in=scores.keys(), language=obj.language, is_published=True
             )
             .select_related("author")
+            .prefetch_related("author__translations")
             .annotate(num_chapters=Count("chapters"), total_words=Sum("chapters__word_count"))
         )
         ranked = sorted(
             candidates, key=lambda b: (-scores.get(b.slug, 0), b.sort_order, b.title)
         )
-        return BookListSerializer(ranked[: self.RELATED_LIMIT], many=True).data
+        return BookListSerializer(ranked[: self.RELATED_LIMIT], many=True, context=self.context).data
 
 
 class ChapterDetailSerializer(serializers.ModelSerializer):
@@ -525,7 +555,7 @@ class PlanDetailSerializer(PlanListSerializer):
         return PlanDaySerializer(days, many=True).data
 
 
-class TopicListSerializer(serializers.ModelSerializer):
+class TopicListSerializer(LocalizedMixin, serializers.ModelSerializer):
     """A topical shelf card — localized title/description, member count, and a
     handful of member covers for the browse page. ``book_count`` and ``covers``
     are computed against the requested language (see ``TopicListView``)."""
@@ -539,9 +569,6 @@ class TopicListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Topic
         fields = ["slug", "title", "description", "book_count", "sermon_count", "covers"]
-
-    def _language(self):
-        return self.context.get("language", "en")
 
     def get_title(self, obj):
         return obj.title_for(self._language())
@@ -579,6 +606,7 @@ class TopicListSerializer(serializers.ModelSerializer):
                 slug__in=order, language=self._language(), is_published=True
             )
             .select_related("author")
+            .prefetch_related("author__translations")
             .annotate(num_chapters=Count("chapters"), total_words=Sum("chapters__word_count"))
         }
         return [by_slug[s] for s in order if s in by_slug]
@@ -624,7 +652,7 @@ class TopicDetailSerializer(TopicListSerializer):
         return obj.scripture_text_for(self._language())
 
     def get_books(self, obj):
-        return BookListSerializer(self._books(obj), many=True).data
+        return BookListSerializer(self._books(obj), many=True, context=self.context).data
 
     def get_sermons(self, obj):
-        return SermonListSerializer(self._sermons(obj), many=True).data
+        return SermonListSerializer(self._sermons(obj), many=True, context=self.context).data

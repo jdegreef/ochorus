@@ -2514,3 +2514,131 @@ class CitationIndexTests(TestCase):
 
         self.assertEqual(_scripture_chapter_hits("Matthew", "en"), [])
         self.assertEqual(len(_scripture_chapter_hits("Matthew 5:3", "en")), 1)
+
+
+class LocalizedAuthorBioTests(TestCase):
+    """The author mini-bio must follow the requested language everywhere.
+
+    It shipped English on every localized book page: the nested
+    AuthorSerializer returned the raw model field, and the book views never
+    put `language` in the serializer context. Both halves are covered here.
+    """
+
+    def setUp(self):
+        self.client = APIClient()
+        self.author = Author.objects.create(
+            slug="gareth-evans", name="Gareth Evans", bio="An itinerant pastor."
+        )
+        AuthorTranslation.objects.create(
+            author=self.author, language="lg", bio="Musumba atambulatambula."
+        )
+        for lang, title in (("en", "He Holds My Tomorrows"), ("lg", "Akwata Ennaku Zange")):
+            book = Book.objects.create(
+                author=self.author, slug="tomorrows", language=lang, title=title
+            )
+            Chapter.objects.create(book=book, order=1, title="One", body_html="<p>x</p>")
+        Sermon.objects.create(
+            author=self.author, slug="a-sermon", language="lg", title="Okubuulira",
+            body_html="<p>y</p>",
+        )
+
+    def test_book_detail_bio_is_localized(self):
+        res = self.client.get("/api/library/books/tomorrows/?language=lg")
+        self.assertEqual(res.data["author"]["bio"], "Musumba atambulatambula.")
+
+    def test_book_list_bio_is_localized(self):
+        res = self.client.get("/api/library/books/?language=lg")
+        self.assertEqual(res.data[0]["author"]["bio"], "Musumba atambulatambula.")
+
+    def test_sermon_list_bio_is_localized(self):
+        res = self.client.get("/api/library/sermons/?language=lg")
+        self.assertEqual(res.data[0]["author"]["bio"], "Musumba atambulatambula.")
+
+    def test_english_is_unaffected(self):
+        res = self.client.get("/api/library/books/tomorrows/?language=en")
+        self.assertEqual(res.data["author"]["bio"], "An itinerant pastor.")
+
+    def test_untranslated_language_falls_back_to_the_original(self):
+        # A language with no AuthorTranslation keeps the English original
+        # rather than rendering blank.
+        Book.objects.create(
+            author=self.author, slug="tomorrows", language="sw", title="Kesho"
+        )
+        res = self.client.get("/api/library/books/tomorrows/?language=sw")
+        self.assertEqual(res.data["author"]["bio"], "An itinerant pastor.")
+
+    def test_language_resolves_from_the_request_without_view_context(self):
+        # The regression guard: a serializer used by a view that never sets
+        # context["language"] still localizes, because Localized falls back to
+        # the request's own ?language=.
+        from rest_framework.request import Request
+        from rest_framework.test import APIRequestFactory
+
+        from library.serializers import AuthorSerializer
+
+        request = Request(APIRequestFactory().get("/api/library/books/?language=lg"))
+        data = AuthorSerializer(self.author, context={"request": request}).data
+        self.assertEqual(data["bio"], "Musumba atambulatambula.")
+
+    def _translation_queries(self, url):
+        from django.db import connection
+        from django.test.utils import CaptureQueriesContext
+
+        with CaptureQueriesContext(connection) as ctx:
+            self.client.get(url)
+        return [q for q in ctx.captured_queries if "authortranslation" in q["sql"].lower()]
+
+    def _add_books(self, n, *, author=None, offset=0):
+        for i in range(offset, offset + n):
+            Book.objects.create(
+                author=author
+                or Author.objects.create(slug=f"a{i}", name=f"A{i}", bio="x"),
+                slug=f"b{i}", language="lg", title=f"B{i}",
+            )
+
+    def _add_sermons(self, n, *, author=None, offset=0):
+        for i in range(offset, offset + n):
+            Sermon.objects.create(
+                author=author
+                or Author.objects.create(slug=f"s-a{i}", name=f"SA{i}", bio="x"),
+                slug=f"s{i}", language="lg", title=f"S{i}", body_html="<p>x</p>",
+            )
+
+    def test_bio_rendering_costs_a_constant_number_of_queries(self):
+        """Every path that renders a bio per row must prefetch translations.
+
+        Asserts invariance as the payload grows (not an absolute count, which
+        unrelated fixture changes would flip). Each case grows the rows THAT
+        endpoint actually renders — otherwise the assertion passes vacuously,
+        which is how the first version of this test missed a real N+1.
+        """
+        cases = [
+            # (url, grow more of what this endpoint renders)
+            ("/api/library/books/?language=lg", lambda n, off: self._add_books(n, offset=off)),
+            ("/api/library/sermons/?language=lg", lambda n, off: self._add_sermons(n, offset=off)),
+            # The author page lists that author's own books + sermons; book
+            # detail's "related" shelf is same-author too.
+            (
+                "/api/library/authors/gareth-evans/?language=lg",
+                lambda n, off: (
+                    self._add_books(n, author=self.author, offset=off),
+                    self._add_sermons(n, author=self.author, offset=off),
+                ),
+            ),
+            (
+                "/api/library/books/tomorrows/?language=lg",
+                lambda n, off: self._add_books(n, author=self.author, offset=off),
+            ),
+        ]
+        for url, grow in cases:
+            with self.subTest(url=url):
+                grow(2, 0)
+                small = len(self._translation_queries(url))
+                grow(4, 2)
+                self.assertEqual(
+                    len(self._translation_queries(url)), small,
+                    f"{url} issues a translations query per row",
+                )
+                Book.objects.exclude(slug="tomorrows").delete()
+                Sermon.objects.exclude(slug="a-sermon").delete()
+                Author.objects.exclude(slug="gareth-evans").delete()
