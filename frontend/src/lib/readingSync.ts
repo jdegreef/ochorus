@@ -244,6 +244,20 @@ class ReadingSync {
 	 * language) deliberately survive; they aren't identity data.
 	 */
 	clearOnSignOut() {
+		this.clearDeviceData();
+	}
+
+	/**
+	 * Wipe the reader's own data (positions, highlights, notes, bookmarks,
+	 * favorites, sync timestamp) from this device — shared by the sign-out
+	 * teardown and the settings "clear reading data" control. Cancels in-flight
+	 * debounced pushes first (they'd fire as unauthenticated 401s), then removes
+	 * every reading-data key. Device preferences (theme, font, language)
+	 * deliberately survive; they aren't identity data. Note: for a signed-in
+	 * reader this clears the local cache only — the next sync restores from the
+	 * account (the settings copy says so).
+	 */
+	clearDeviceData() {
 		if (!browser) return;
 		for (const timer of this.#timers.values()) clearTimeout(timer);
 		this.#timers.clear();

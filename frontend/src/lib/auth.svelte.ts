@@ -218,6 +218,23 @@ class Auth {
 			/* offline or API down — keep the optimistic value for this session */
 		}
 	}
+
+	/**
+	 * Delete the account: erase all server-side reading data (the profile and,
+	 * via CASCADE, progress/highlights/favorites), then sign out — which also
+	 * wipes the local cache. Resolves false if there's no session or the request
+	 * fails (so the UI can keep the reader on the page).
+	 */
+	async deleteAccount(): Promise<boolean> {
+		if (!this.user) return false;
+		try {
+			await apiFetch('/api/auth/me/', { method: 'DELETE' });
+		} catch {
+			return false;
+		}
+		await this.signOut();
+		return true;
+	}
 }
 
 export const auth = new Auth();
