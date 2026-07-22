@@ -10,8 +10,10 @@
 	import { readerPrefs, FONT_STACK, MEASURE, type ReaderFont, type Measure } from '$lib/readerPrefs.svelte';
 	import { listen, RATES } from '$lib/listen.svelte';
 	import { readingSync } from '$lib/readingSync';
+	import { SITE_URL } from '$lib/config';
 	import { collectExport, toMarkdown, downloadFile } from '$lib/dataExport';
 	import { collectReadingActivity, type ReadingStats, type HistoryItem } from '$lib/readingStats';
+	import { buildReminderICS } from '$lib/reminder';
 	import { relativeTime } from '$lib/relativeTime';
 	import Icon, { type IconName } from '$lib/components/Icon.svelte';
 
@@ -149,6 +151,31 @@
 			: h.kind === 'bio'
 				? localizeHref(`/authors/${h.slug}`)
 				: localizeHref(`/books/${h.slug}/${h.order}`);
+
+	// Daily reminder — a time the reader picks, emitted as a repeating .ics event
+	// they add to their own calendar (no server, works on every device).
+	const REMINDER_KEY = 'ochorus:reminder-time';
+	let reminderTime = $state('07:00');
+	onMount(() => {
+		const saved = localStorage.getItem(REMINDER_KEY);
+		if (saved && /^\d{2}:\d{2}$/.test(saved)) reminderTime = saved;
+	});
+	function addReminder() {
+		try {
+			localStorage.setItem(REMINDER_KEY, reminderTime);
+		} catch {
+			/* private mode — the picker just won't be remembered */
+		}
+		const uid = `${crypto.randomUUID?.() ?? Date.now()}@ochorus.com`;
+		const ics = buildReminderICS(reminderTime, {
+			now: new Date(),
+			uid,
+			summary: t('settings.reminderSummary'),
+			description: `${t('settings.reminderDescription')} ${SITE_URL}`,
+			url: SITE_URL
+		});
+		downloadFile('ochorus-reading-reminder.ics', 'text/calendar;charset=utf-8', ics);
+	}
 
 	// The device's TTS voices load asynchronously; init the store so they populate,
 	// then show only the best few for the currently-selected language.
@@ -303,6 +330,25 @@
 							onclick={() => readerPrefs.bumpScale(0.1)}
 							aria-label={t('a11y.largerText')}>A+</button
 						>
+					</div>
+				</div>
+
+				<!-- Daily reminder — downloads a repeating .ics calendar event. -->
+				<div class="setting-row">
+					<div>
+						<div class="setting-label">{t('settings.reminder')}</div>
+						<div class="setting-sub">{t('settings.reminderSub')}</div>
+					</div>
+					<div class="flex items-center gap-2">
+						<input
+							type="time"
+							class="settings-select"
+							bind:value={reminderTime}
+							aria-label={t('settings.reminder')}
+						/>
+						<button class="btn btn-ghost !py-1.5 whitespace-nowrap" onclick={addReminder}>
+							{t('settings.reminderAdd')}
+						</button>
 					</div>
 				</div>
 
