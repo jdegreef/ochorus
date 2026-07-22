@@ -33,7 +33,7 @@ def backwards(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("library", "0046_reindex_citations"),
+        ("library", "0047_sermon_summary"),
     ]
 
     operations = [
