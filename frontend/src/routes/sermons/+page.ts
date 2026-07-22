@@ -38,6 +38,11 @@ import type { PageLoad } from './$types';
  * Prerender refresh 2026-07-22 (queue job #283): same again after the Swahili
  * edition of A. B. Simpson's sermon Himself (Yeye Mwenyewe, PR #336) went
  * live, so the /sw/sermons pages re-crawl and bake with the new title.
+ *
+ * Prerender refresh 2026-07-22 (queue job #284): same again after the Swahili
+ * edition of D. L. Moody's sermon Christ's Boundless Compassion (Huruma
+ * Isiyo na Kikomo ya Kristo, PR #338) went live, so the /sw/sermons pages
+ * re-crawl and bake with the new title.
  */
 export const load: PageLoad = async () => {
 	// Tolerate a lagging/absent sermon endpoint at prerender time (see the
