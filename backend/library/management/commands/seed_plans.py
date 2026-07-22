@@ -48,6 +48,67 @@ CURATED_PLANS = [
             "prayer-the-pulse-of-life",
         ],
     ),
+    (
+        "deeper-life-in-christ",
+        "The Deeper Life: Christ in You",
+        "Not more effort, but a Person: the secret of the deeper life is Christ "
+        "himself living within. Andrew Murray opens with the wonder of Jesus "
+        "himself, then unfolds the indwelling life, and Hudson Taylor closes in "
+        "the rest of union and communion with the Beloved.",
+        [
+            "jesus-himself-2",
+            "the-masters-indwelling",
+            "union-and-communion",
+        ],
+    ),
+    (
+        "grace-for-every-sinner",
+        "The Way to God: Grace for Every Sinner",
+        "A month on the oldest good news there is. Richard Baxter's tender call "
+        "to the unconverted, D. L. Moody on the way to God, and Charles "
+        "Spurgeon's All of Grace — the plainest of guides to how a sinner is "
+        "saved, and how to know it.",
+        [
+            "a-call-to-the-unconverted",
+            "the-way-to-god",
+            "all-of-grace",
+        ],
+    ),
+    (
+        "faith-in-the-fire",
+        "The God of All Comfort: Faith in the Fire",
+        "For the days that are hard to pray through. Hannah Whitall Smith on the "
+        "God of all comfort, and Gareth Evans on trusting the One who holds our "
+        "tomorrows — a five-week walk into settled peace when life is uncertain.",
+        [
+            "the-god-of-all-comfort",
+            "he-holds-my-tomorrows",
+        ],
+    ),
+    (
+        "power-from-on-high",
+        "Power from on High: The Holy Spirit",
+        "Four weeks with R. A. Torrey on the Spirit-filled life: first the "
+        "baptism with the Holy Spirit and the power it brings for service, then "
+        "the fuller study of the Person and work of the Spirit who indwells "
+        "every believer.",
+        [
+            "baptism-with-the-holy-spirit",
+            "the-person-and-work-of-the-holy-spirit",
+        ],
+    ),
+    (
+        "everything-for-christ",
+        "Everything for Christ: A Life Poured Out",
+        "What does whole-hearted surrender cost, and what does it yield? David "
+        "Brainerd's searching missionary diary, followed by the stories of men "
+        "and women who gave everything for the sake of the gospel — a call to "
+        "consecration told through lives that answered it.",
+        [
+            "life-and-diary-of-david-brainerd",
+            "men-and-women-who-gave-everything-2",
+        ],
+    ),
 ]
 
 
@@ -68,6 +129,13 @@ PLAN_TRANSLATIONS = {
             "Omwezi mu Kisenge eky'omunda",
             "Zimba empisa eya buli lunaku ey'okusaba n'Ekigambo: enkya amakumi "
             "asatu mu mukaaga ne Andrew Murray, essuula emu buli lunaku.",
+        ),
+        "faith-in-the-fire": (
+            "Katonda ow'Okubudaabuda Kwonna: Okukkiriza mu Muliro",
+            "Ku nnaku ezo ezisinga okuzibuwalira okusaba. Hannah Whitall Smith "
+            "ku Katonda ow'okubudaabuda kwonna, ne Gareth Evans ku kwesiga oyo "
+            "akwata ennaku zaffe ez'omu maaso — olugendo lwa wiiki ttaano "
+            "okutuuka mu mirembe eginywevu ng'obulamu tebukakafu.",
         ),
         "school-of-prayer": (
             "Essomero ery'Okusaba",
