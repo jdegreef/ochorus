@@ -8,6 +8,7 @@
 	import { lang } from '$lib/lang.svelte';
 	import { readerPrefs, FONT_STACK, MEASURE, type ReaderFont, type Measure } from '$lib/readerPrefs.svelte';
 	import { listen, RATES } from '$lib/listen.svelte';
+	import { collectExport, toMarkdown, downloadFile } from '$lib/dataExport';
 	import Icon, { type IconName } from '$lib/components/Icon.svelte';
 
 	const t = i18n.t;
@@ -38,6 +39,24 @@
 		{ id: 'dyslexic', label: t('settings.fontDyslexic') }
 	];
 	const WIDTHS = Object.keys(MEASURE) as Measure[];
+
+	// Export my data — assemble the bundle (fetches catalogs for titles) then hand
+	// the reader a JSON or Markdown file. Device-local; works signed in or out.
+	let exporting = $state<'json' | 'md' | null>(null);
+	async function exportData(format: 'json' | 'md') {
+		if (exporting) return;
+		exporting = format;
+		try {
+			const bundle = await collectExport(lang.current, new Date().toISOString());
+			if (format === 'json') {
+				downloadFile('ochorus-data.json', 'application/json', JSON.stringify(bundle, null, 2));
+			} else {
+				downloadFile('ochorus-reading.md', 'text/markdown;charset=utf-8', toMarkdown(bundle));
+			}
+		} finally {
+			exporting = null;
+		}
+	}
 
 	// The device's TTS voices load asynchronously; init the store so they populate,
 	// then show only the best few for the currently-selected language.
@@ -90,6 +109,20 @@
 				{:else}
 					<p class="text-body text-muted">{t('account.localNote')}</p>
 				{/if}
+
+				<!-- Export my data — the reader's own devotional record, portable. -->
+				<div class="mt-8 border-t border-border pt-6">
+					<div class="setting-label">{t('settings.exportTitle')}</div>
+					<div class="setting-sub mb-4">{t('settings.exportSub')}</div>
+					<div class="flex flex-wrap gap-3">
+						<button class="btn btn-ghost" disabled={!!exporting} onclick={() => exportData('md')}>
+							{exporting === 'md' ? t('settings.exportBusy') : t('settings.exportMarkdown')}
+						</button>
+						<button class="btn btn-ghost" disabled={!!exporting} onclick={() => exportData('json')}>
+							{exporting === 'json' ? t('settings.exportBusy') : t('settings.exportJson')}
+						</button>
+					</div>
+				</div>
 			{:else if section === 'reading'}
 				<h2 class="text-h2 mb-1">{t('settings.navReading')}</h2>
 				<p class="mb-6 text-small text-muted">{t('settings.readingSubtitle')}</p>
