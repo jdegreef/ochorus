@@ -9,6 +9,7 @@
 	import { getLang } from '$lib/lang.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import ListenBar from '$lib/components/ListenBar.svelte';
+	import LifeTimeline from '$lib/components/LifeTimeline.svelte';
 	import { onDestroy, onMount } from 'svelte';
 
 	const t = i18n.t;
@@ -197,6 +198,9 @@
 			>
 		{/if}
 	</header>
+
+	<!-- Lifespan timeline: places the author in history at a glance. -->
+	<LifeTimeline birthYear={author.birth_year} deathYear={author.death_year} />
 
 	<!-- Featured pull-quote: a hook above the biography. -->
 	{#if featuredQuote}
