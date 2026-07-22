@@ -177,6 +177,24 @@
 		downloadFile('ochorus-reading-reminder.ics', 'text/calendar;charset=utf-8', ics);
 	}
 
+	// Reset preferences — restore reader comfort + theme to defaults. Two-click
+	// (not a modal) so an accidental tap can't wipe a carefully-tuned setup; it
+	// only touches preferences, never highlights/notes/reading places.
+	let resetConfirm = $state(false);
+	let resetTimer: ReturnType<typeof setTimeout>;
+	function resetPrefs() {
+		if (!resetConfirm) {
+			resetConfirm = true;
+			clearTimeout(resetTimer);
+			resetTimer = setTimeout(() => (resetConfirm = false), 4000);
+			return;
+		}
+		clearTimeout(resetTimer);
+		resetConfirm = false;
+		readerPrefs.reset();
+		theme.set('system');
+	}
+
 	// The device's TTS voices load asynchronously; init the store so they populate,
 	// then show only the best few for the currently-selected language.
 	onMount(() => listen.init());
@@ -452,6 +470,15 @@
 				<p class="pt-1 text-lg text-text" style="font-family: {FONT_STACK[readerPrefs.font]}">
 					{t('settings.fontSample')}
 				</p>
+
+				<!-- Reset preferences (theme + reader comfort; not reading data). -->
+				<div class="mt-8 border-t border-border pt-6">
+					<div class="setting-label">{t('settings.resetPrefs')}</div>
+					<div class="setting-sub mb-4">{t('settings.resetPrefsSub')}</div>
+					<button class="btn btn-ghost" class:!text-danger={resetConfirm} onclick={resetPrefs}>
+						{resetConfirm ? t('settings.resetConfirm') : t('settings.resetPrefsButton')}
+					</button>
+				</div>
 			{:else if section === 'activity'}
 				<h2 class="text-h2 mb-1">{t('settings.activityTitle')}</h2>
 				<p class="mb-6 text-small text-muted">{t('settings.activitySubtitle')}</p>
