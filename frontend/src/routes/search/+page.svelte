@@ -24,6 +24,7 @@
 		title: string;
 		meta: string;
 		snippet: string;
+		date: string;
 	};
 
 	function toRow(hit: SearchHit): Row {
@@ -35,7 +36,8 @@
 					href: `/authors/${hit.author_slug}`,
 					title: hit.author_name,
 					meta: '',
-					snippet: hit.snippet
+					snippet: hit.snippet,
+					date: hit.date
 				};
 			case 'book':
 				return {
@@ -44,7 +46,8 @@
 					href: `/books/${hit.book_slug}`,
 					title: hit.book_title,
 					meta: hit.author_name,
-					snippet: hit.snippet
+					snippet: hit.snippet,
+					date: hit.date
 				};
 			case 'topic':
 				return {
@@ -53,7 +56,8 @@
 					href: `/topics/${hit.topic_slug}`,
 					title: hit.topic_title,
 					meta: '',
-					snippet: hit.snippet
+					snippet: hit.snippet,
+					date: hit.date
 				};
 			case 'plan':
 				return {
@@ -62,7 +66,8 @@
 					href: `/plans/${hit.plan_slug}`,
 					title: hit.plan_title,
 					meta: '',
-					snippet: hit.snippet
+					snippet: hit.snippet,
+					date: hit.date
 				};
 			case 'sermon':
 				return {
@@ -73,7 +78,8 @@
 					meta: hit.scripture_ref
 						? `${hit.author_name} · ${hit.scripture_ref}`
 						: hit.author_name,
-					snippet: hit.snippet
+					snippet: hit.snippet,
+					date: hit.date
 				};
 			default:
 				return {
@@ -82,7 +88,8 @@
 					href: `/books/${hit.book_slug}/${hit.chapter_order}`,
 					title: hit.chapter_title || hit.book_title,
 					meta: `${hit.book_title} · ${hit.author_name}`,
-					snippet: hit.snippet
+					snippet: hit.snippet,
+					date: hit.date
 				};
 		}
 	}
@@ -102,6 +109,18 @@
 
 	type ResultRow = Row & { type: SearchHit['type'] };
 	const rows = $derived<ResultRow[]>(hits.map((h) => ({ ...toRow(h), type: h.type })));
+
+	// Sort order applied *within* each type section (grouping stays by type).
+	// 'relevance' keeps the server's ranking; the others reorder the fetched set
+	// locally — no round-trip. Array.sort is stable, so ties keep relevance order.
+	type SortMode = 'relevance' | 'title' | 'newest';
+	let sortMode = $state<SortMode>('relevance');
+	const SORTS: SortMode[] = ['relevance', 'title', 'newest'];
+	function sorted<T extends { title: string; date: string }>(arr: T[]): T[] {
+		if (sortMode === 'title') return [...arr].sort((a, b) => a.title.localeCompare(b.title));
+		if (sortMode === 'newest') return [...arr].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+		return arr;
+	}
 
 	// Cluster the flat result list into type sections in a fixed reading order —
 	// navigational entities first, passages last — keeping only sections present.
@@ -123,7 +142,7 @@
 		return GROUP_ORDER.filter((g) => by.has(g.type)).map((g) => ({
 			type: g.type,
 			labelKey: g.labelKey,
-			rows: by.get(g.type)!
+			rows: sorted(by.get(g.type)!)
 		}));
 	});
 
@@ -148,6 +167,7 @@
 		slug: string;
 		title: string;
 		author: string;
+		date: string;
 		chapters: { key: string; order: number; title: string; snippet: string }[];
 	};
 	const passageBooks = $derived.by<PassageBook[]>(() => {
@@ -157,7 +177,13 @@
 			const c = h as ChapterHit;
 			let g = by.get(c.book_slug);
 			if (!g) {
-				g = { slug: c.book_slug, title: c.book_title, author: c.author_name, chapters: [] };
+				g = {
+					slug: c.book_slug,
+					title: c.book_title,
+					author: c.author_name,
+					date: c.date,
+					chapters: []
+				};
 				by.set(c.book_slug, g);
 			}
 			g.chapters.push({
@@ -167,7 +193,8 @@
 				snippet: c.snippet
 			});
 		}
-		return [...by.values()];
+		// The sort toggle reorders the books; chapters keep their in-book order.
+		return sorted([...by.values()]);
 	});
 
 	function toggleBook(slug: string) {
@@ -300,6 +327,7 @@
 		clearTimeout(timer);
 		activeIndex = -1;
 		typeFilter = 'all';
+		sortMode = 'relevance';
 		if (term.length < 2) clearResults();
 		else runSearch(term);
 	}
@@ -318,6 +346,7 @@
 		clearTimeout(timer);
 		activeIndex = -1;
 		typeFilter = 'all';
+		sortMode = 'relevance';
 		timer = setTimeout(() => {
 			syncUrl(term);
 			runSearch(term);
@@ -530,10 +559,34 @@
 						{/each}
 					</div>
 				{/if}
-				<p class="text-small text-muted sm:ml-auto" aria-live="polite">
-					{shownCount}
-					{shownCount === 1 ? t('search.resultsOne') : t('search.resultsMany')}
-				</p>
+				<div class="flex flex-wrap items-center gap-x-3 gap-y-2 sm:ml-auto">
+					{#if shownCount > 1}
+						<div class="flex items-center gap-1.5" role="group" aria-label={t('search.sortBy')}>
+							<span class="text-small text-muted">{t('search.sortBy')}</span>
+							<div class="flex overflow-hidden rounded-full border border-border">
+								{#each SORTS as s, i (s)}
+									<button
+										type="button"
+										class="px-2.5 py-1 text-[0.78rem]"
+										class:bg-accent={sortMode === s}
+										class:text-accent-contrast={sortMode === s}
+										class:text-muted={sortMode !== s}
+										class:border-l={i > 0}
+										class:border-border={i > 0}
+										onclick={() => (sortMode = s)}
+										aria-pressed={sortMode === s}
+									>
+										{t(`search.sort_${s}`)}
+									</button>
+								{/each}
+							</div>
+						</div>
+					{/if}
+					<p class="text-small text-muted" aria-live="polite">
+						{shownCount}
+						{shownCount === 1 ? t('search.resultsOne') : t('search.resultsMany')}
+					</p>
+				</div>
 			</div>
 			<div class="space-y-8">
 				{#each shownGroups as g (g.type)}

@@ -282,12 +282,20 @@ def _search_fallback(ctx, authors, books, topics, plans, chapters, sermons):
 # --- Hit builders -------------------------------------------------------------
 
 
+def _date(dt) -> str:
+    """A hit's publish date as an ISO ``YYYY-MM-DD`` string (for the "newest"
+    client sort), or "" when absent. Date-only on purpose: enough to order by,
+    without leaking exact ingest timestamps."""
+    return dt.date().isoformat() if dt else ""
+
+
 def _author_hit(a, ctx):
     return {
         "type": "author",
         "author_slug": a.slug,
         "author_name": a.name,
         "snippet": fallback_snippet(a.bio_for(ctx.language), ctx.q),
+        "date": _date(a.created_at),
     }
 
 
@@ -298,6 +306,7 @@ def _book_hit(b, ctx):
         "book_title": b.title,
         "author_name": b.author.name,
         "snippet": fallback_snippet(b.description, ctx.q),
+        "date": _date(b.created_at),
     }
 
 
@@ -307,6 +316,7 @@ def _topic_hit(tp, ctx):
         "topic_slug": tp.slug,
         "topic_title": tp.title_for(ctx.language),
         "snippet": fallback_snippet(tp.description_for(ctx.language), ctx.q),
+        "date": _date(tp.created_at),
     }
 
 
@@ -316,10 +326,12 @@ def _plan_hit(p, ctx):
         "plan_slug": p.slug,
         "plan_title": p.title,
         "snippet": fallback_snippet(p.description, ctx.q),
+        "date": _date(p.created_at),
     }
 
 
 def _chapter_hit(c, snippet):
+    # Chapters have no date of their own; a chapter is as old as its book.
     return {
         "type": "chapter",
         "book_slug": c.book.slug,
@@ -328,6 +340,7 @@ def _chapter_hit(c, snippet):
         "chapter_order": c.order,
         "chapter_title": c.title,
         "snippet": snippet,
+        "date": _date(c.book.created_at),
     }
 
 
@@ -339,6 +352,7 @@ def _sermon_hit(s, snippet):
         "author_name": s.author.name,
         "scripture_ref": s.scripture_ref,
         "snippet": snippet,
+        "date": _date(s.created_at),
     }
 
 

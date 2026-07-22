@@ -161,6 +161,15 @@ class SearchTests(TestCase):
         self.assertEqual(hit["chapter_order"], 1)
         self.assertIn("⟦dependence⟧", hit["snippet"])
 
+    def test_hits_carry_iso_date_for_newest_sort(self):
+        # Every hit exposes a YYYY-MM-DD date (chapters borrow their book's) so
+        # the client can offer a "newest" sort. A book match and a chapter match:
+        results = self.search("humility")
+        self.assertTrue(results)
+        for hit in results:
+            self.assertIn("date", hit)
+            self.assertRegex(hit["date"], r"^\d{4}-\d{2}-\d{2}$")
+
     def test_short_query_returns_nothing(self):
         res = self.client.get("/api/library/search/?q=a")
         self.assertEqual(res.data["results"], [])

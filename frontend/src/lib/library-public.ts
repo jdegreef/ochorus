@@ -90,6 +90,8 @@ export interface ChapterHit {
 	chapter_order: number;
 	chapter_title: string;
 	snippet: string;
+	/** Publish date (YYYY-MM-DD) for the "newest" sort; "" if unknown. */
+	date: string;
 }
 
 export interface SermonHit {
@@ -99,6 +101,8 @@ export interface SermonHit {
 	author_name: string;
 	scripture_ref: string;
 	snippet: string;
+	/** Publish date (YYYY-MM-DD) for the "newest" sort; "" if unknown. */
+	date: string;
 }
 
 export interface AuthorHit {
@@ -106,6 +110,8 @@ export interface AuthorHit {
 	author_slug: string;
 	author_name: string;
 	snippet: string;
+	/** Publish date (YYYY-MM-DD) for the "newest" sort; "" if unknown. */
+	date: string;
 }
 
 export interface BookHit {
@@ -114,6 +120,8 @@ export interface BookHit {
 	book_title: string;
 	author_name: string;
 	snippet: string;
+	/** Publish date (YYYY-MM-DD) for the "newest" sort; "" if unknown. */
+	date: string;
 }
 
 export interface TopicHit {
@@ -121,6 +129,8 @@ export interface TopicHit {
 	topic_slug: string;
 	topic_title: string;
 	snippet: string;
+	/** Publish date (YYYY-MM-DD) for the "newest" sort; "" if unknown. */
+	date: string;
 }
 
 export interface PlanHit {
@@ -128,6 +138,8 @@ export interface PlanHit {
 	plan_slug: string;
 	plan_title: string;
 	snippet: string;
+	/** Publish date (YYYY-MM-DD) for the "newest" sort; "" if unknown. */
+	date: string;
 }
 
 export type SearchHit = ChapterHit | SermonHit | AuthorHit | BookHit | TopicHit | PlanHit;
