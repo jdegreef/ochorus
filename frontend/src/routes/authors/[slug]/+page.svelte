@@ -7,9 +7,19 @@
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import { listen } from '$lib/listen.svelte';
 	import { getLang } from '$lib/lang.svelte';
+	import { page } from '$app/stores';
+	import { renderMarks } from '$lib/rangeMarks';
+	import { marks, type Segment } from '$lib/marks.svelte';
+	import {
+		HIGHLIGHT_COLORS,
+		DEFAULT_HIGHLIGHT,
+		BIO_CHAPTER_ORDER
+	} from '$lib/reading-schema';
+	import { focusTrap } from '$lib/actions/focusTrap';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import ListenBar from '$lib/components/ListenBar.svelte';
 	import LifeTimeline from '$lib/components/LifeTimeline.svelte';
+	import SelectionBar from '$lib/components/SelectionBar.svelte';
 	import { onDestroy, onMount } from 'svelte';
 
 	const t = i18n.t;
@@ -26,6 +36,71 @@
 		listen.start(paragraphs, 0, getLang(), { title: author.name, artist: t('bios.eyebrow') });
 	}
 	onDestroy(() => listen.stop());
+
+	// --- Highlights & notes ----------------------------------------------------
+	// Device-local text-range marks over the biography (same range model as the
+	// book and sermon readers; kind 'bio', a single document at order 1). A note
+	// editor opens on tap of a marked span or via the selection bar's "Note".
+	let noteOpen = $state(false);
+	let noteId = $state<string | null>(null);
+	let notePending = $state<Segment[]>([]);
+	let noteDraft = $state('');
+	let noteColor = $state<string>(DEFAULT_HIGHLIGHT);
+
+	$effect(() => {
+		// Reload when navigating between authors.
+		marks.load(author.slug, BIO_CHAPTER_ORDER, getLang(), 'bio');
+	});
+
+	// Paint marks as <mark> spans; clicking one opens its note editor.
+	$effect(() => {
+		const list = marks.list;
+		if (!bioEl) return;
+		renderMarks(bioEl, list, (id) => {
+			noteId = id;
+			notePending = [];
+			noteDraft = marks.getNote(id);
+			noteColor = marks.getColor(id);
+			noteOpen = true;
+		});
+	});
+
+	// Marks can be replaced underneath us (sign-in merge / sign-out wipe).
+	onMount(() => {
+		const onSync = () => marks.refresh();
+		window.addEventListener('ochorus:sync', onSync);
+		return () => window.removeEventListener('ochorus:sync', onSync);
+	});
+
+	/** Note on a fresh selection: highlight it first, then attach the note. */
+	function openNoteForSelection(segments: Segment[]) {
+		const existing = marks.groupCovering(segments);
+		noteId = existing;
+		notePending = existing ? [] : segments;
+		noteDraft = existing ? marks.getNote(existing) : '';
+		noteColor = existing ? marks.getColor(existing) : DEFAULT_HIGHLIGHT;
+		noteOpen = true;
+	}
+	function saveNote() {
+		if (noteId) {
+			marks.setNote(noteId, noteDraft);
+			marks.setColor(noteId, noteColor);
+		} else if (notePending.length && noteDraft.trim()) {
+			marks.add(notePending, noteDraft, noteColor);
+		}
+		noteOpen = false;
+	}
+	function removeMark() {
+		if (noteId) marks.remove(noteId);
+		noteOpen = false;
+	}
+
+	const cite = $derived({
+		author: author.name,
+		book: t('bios.eyebrow'),
+		chapter: '',
+		url: $page.url.href
+	});
 
 	const initials = (name: string) =>
 		name.split(' ').filter(Boolean).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
@@ -343,7 +418,87 @@
 
 <ListenBar />
 
+<SelectionBar
+	container={bioEl}
+	{cite}
+	onHighlight={(segments, color) => {
+		const existing = marks.groupCovering(segments);
+		if (!existing) marks.add(segments, undefined, color);
+		else if (marks.getColor(existing) === color) marks.remove(existing);
+		else marks.setColor(existing, color);
+	}}
+	onNote={openNoteForSelection}
+	highlightColor={(segments) => {
+		const id = marks.groupCovering(segments);
+		return id ? marks.getColor(id) : null;
+	}}
+/>
+
+{#if noteOpen}
+	<div
+		class="note-overlay"
+		role="dialog"
+		aria-modal="true"
+		aria-label={t('reader.note')}
+		use:focusTrap={{ onEscape: () => (noteOpen = false) }}
+	>
+		<div class="note-card">
+			<h2 class="mb-2 text-h3">{t('reader.note')}</h2>
+			<div class="mb-3 flex items-center gap-2.5" role="group" aria-label={t('reader.highlight')}>
+				{#each HIGHLIGHT_COLORS as color (color)}
+					<button
+						type="button"
+						class="hl-swatch"
+						data-color={color}
+						class:active={noteColor === color}
+						aria-pressed={noteColor === color}
+						aria-label="{t('reader.highlight')}: {t(`reader.hl_${color}`)}"
+						title={t(`reader.hl_${color}`)}
+						onclick={() => (noteColor = color)}
+					></button>
+				{/each}
+			</div>
+			<textarea
+				bind:value={noteDraft}
+				rows="5"
+				class="w-full rounded-sm border border-border bg-bg p-3 text-body text-text"
+				aria-label={t('reader.note')}
+				placeholder="…"
+			></textarea>
+			<div class="mt-3 flex items-center gap-2">
+				{#if noteId}
+					<button class="btn btn-ghost !text-red-700 dark:!text-red-400" onclick={removeMark}>
+						{t('reader.removeHighlight')}
+					</button>
+				{/if}
+				<span class="flex-1"></span>
+				<button class="btn btn-ghost" onclick={() => (noteOpen = false)}>{t('common.cancel')}</button>
+				<button class="btn btn-primary" onclick={saveNote}>{t('common.save')}</button>
+			</div>
+		</div>
+	</div>
+{/if}
+
 <style>
+	.note-overlay {
+		position: fixed;
+		inset: 0;
+		z-index: 50;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 1rem;
+		background: rgb(0 0 0 / 0.4);
+	}
+	.note-card {
+		width: 100%;
+		max-width: 32rem;
+		border-radius: var(--radius-card);
+		border: 1px solid var(--border);
+		background: var(--surface);
+		padding: 1.25rem;
+		box-shadow: 0 10px 40px rgb(0 0 0 / 0.35);
+	}
 	/* Featured header pull-quote — a hook above the biography. */
 	.author-quote {
 		font-family: var(--font-display);

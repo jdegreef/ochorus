@@ -257,6 +257,28 @@ class WorkKindTests(TestCase):
         remaining = ChapterMarks.objects.get()
         self.assertEqual(remaining.kind, "book")
 
+    def test_bio_marks_are_a_valid_kind(self):
+        # Biography highlights (roadmap #12): kind="bio", single document like
+        # sermons (chapter_order pinned to 1), slug names the author.
+        res = self.client.put(
+            "/api/reading/marks/andrew-murray/1/?kind=bio",
+            {"marks": [mark(0, 0, 12, note="what a life")]},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        row = ChapterMarks.objects.get()
+        self.assertEqual((row.kind, row.book_slug, row.chapter_order), ("bio", "andrew-murray", 1))
+        # And the merge path carries it too.
+        res = self.client.post(
+            "/api/reading/merge/",
+            {"marks": [{"book_slug": "c-h-spurgeon", "kind": "bio", "chapter_order": 1,
+                        "marks": [mark(3, 2, 9)]}]},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        kinds = {(m.kind, m.book_slug) for m in ChapterMarks.objects.all()}
+        self.assertEqual(kinds, {("bio", "andrew-murray"), ("bio", "c-h-spurgeon")})
+
     def test_merge_carries_kind_and_skips_unknown(self):
         res = self.client.post(
             "/api/reading/merge/",

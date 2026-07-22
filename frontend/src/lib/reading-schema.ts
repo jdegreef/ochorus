@@ -41,27 +41,31 @@ export const READING_DATA_KEYS = [
 
 // --- Work kind ----------------------------------------------------------------
 /**
- * What a slug names: a chaptered book, or a sermon (a single document whose
- * one "chapter" is order 1). Books keep their historical bare storage keys
+ * What a slug names: a chaptered book, a sermon, or an author biography (the
+ * latter two are single documents whose one "chapter" is order 1; a bio's slug
+ * names the author). Books keep their historical bare storage keys
  * (`slug` / `slug:order`) so nobody's existing cache is invalidated; sermons
- * are namespaced with a `sermon:` prefix — slugs never contain ':', so the
- * prefix is unambiguous. The server stores the same distinction as a `kind`
- * column; `readingSync` maps between prefix and column.
+ * and bios are namespaced with a `sermon:` / `bio:` prefix — slugs never
+ * contain ':', so the prefixes are unambiguous. The server stores the same
+ * distinction as a `kind` column; `readingSync` maps between prefix and column.
  */
-export type WorkKind = 'book' | 'sermon';
+export type WorkKind = 'book' | 'sermon' | 'bio';
 
 export const SERMON_CHAPTER_ORDER = 1;
+/** A biography is a single document too — its one "chapter" is order 1. */
+export const BIO_CHAPTER_ORDER = 1;
 
 const SERMON_PREFIX = 'sermon:';
+const BIO_PREFIX = 'bio:';
 
 /** Progress-map key for a work (books stay bare — cache compatibility). */
 export const workSlugKey = (kind: WorkKind, slug: string) =>
-	kind === 'book' ? slug : SERMON_PREFIX + slug;
+	kind === 'book' ? slug : (kind === 'sermon' ? SERMON_PREFIX : BIO_PREFIX) + slug;
 
 export function parseWorkSlugKey(key: string): { kind: WorkKind; slug: string } {
-	return key.startsWith(SERMON_PREFIX)
-		? { kind: 'sermon', slug: key.slice(SERMON_PREFIX.length) }
-		: { kind: 'book', slug: key };
+	if (key.startsWith(SERMON_PREFIX)) return { kind: 'sermon', slug: key.slice(SERMON_PREFIX.length) };
+	if (key.startsWith(BIO_PREFIX)) return { kind: 'bio', slug: key.slice(BIO_PREFIX.length) };
+	return { kind: 'book', slug: key };
 }
 
 /** Chapter-scoped key for a work (marks and anchors). */
