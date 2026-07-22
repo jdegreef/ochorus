@@ -344,13 +344,28 @@ class SeedBooksTests(TestCase):
         call_command("seed_books", verbosity=0)
         self.assertEqual(Book.objects.count(), before)
 
+
+class SeedBooksUpsertTests(TestCase):
+    """The update branch: a fixture edit must reach an already-seeded DB.
+
+    Each test starts from a seeded database standing in for prod, mutates a row
+    to the state that predates a fixture edit, then runs seed_books again as
+    "the next deploy". Seeding once for the class matters — a full seed is 98
+    books and 1674 chapters, each derived through save().
+    """
+
+    @classmethod
+    def setUpTestData(cls):
+        from django.core.management import call_command
+
+        call_command("seed_books", verbosity=0)
+
     def test_updates_changed_book_metadata(self):
         # The PR #355 regression: generate_covers set cover_url locally, the
         # value reached the fixture, and prod never saw it because seed_books
         # only created. Simulate a prod row that predates a fixture edit.
         from django.core.management import call_command
 
-        call_command("seed_books", verbosity=0)
         book = Book.objects.get(slug="the-way-to-god", language="en")
         Book.objects.filter(pk=book.pk).update(
             cover_url="", description="stale", sort_order=999
@@ -368,7 +383,6 @@ class SeedBooksTests(TestCase):
         # A no-op deploy must not touch a single row — updated_at is the tell.
         from django.core.management import call_command
 
-        call_command("seed_books", verbosity=0)
         stamps = dict(Book.objects.values_list("pk", "updated_at"))
         call_command("seed_books", verbosity=0)
         self.assertEqual(dict(Book.objects.values_list("pk", "updated_at")), stamps)
@@ -381,7 +395,6 @@ class SeedBooksTests(TestCase):
         # approve_translation useless.
         from django.core.management import call_command
 
-        call_command("seed_books", verbosity=0)
         translated = Book.objects.filter(
             source_type=Book.SourceType.AI_UNREVIEWED
         ).first()
@@ -401,7 +414,6 @@ class SeedBooksTests(TestCase):
         # DB, and the fixture must not resurrect the book on the next deploy.
         from django.core.management import call_command
 
-        call_command("seed_books", verbosity=0)
         book = Book.objects.get(slug="the-way-to-god", language="en")
         self.assertTrue(book.is_published)  # the fixture says published
         Book.objects.filter(pk=book.pk).update(is_published=False)
@@ -411,38 +423,18 @@ class SeedBooksTests(TestCase):
         book.refresh_from_db()
         self.assertFalse(book.is_published)
 
-    def test_update_goes_through_save_so_search_vectors_ripple(self):
-        # queryset.update() would leave the book's chapters' stored search
-        # vectors STALE (not NULL), and backfill_search_vectors — which fills
-        # NULLs only — would never repair them. Pin the call to Book.save().
-        from unittest.mock import patch
-
-        from django.core.management import call_command
-
-        call_command("seed_books", verbosity=0)
-        book = Book.objects.get(slug="the-way-to-god", language="en")
-        Book.objects.filter(pk=book.pk).update(title="Stale Title")
-
-        with patch("library.fts.refresh_book_chapters") as ripple:
-            call_command("seed_books", verbosity=0)
-
-        book.refresh_from_db()
-        self.assertEqual(book.title, self._fixture_fields("the-way-to-god", "en")["title"])
-        self.assertIn(book.pk, [c.args[0].pk for c in ripple.call_args_list])
-
     @skipUnless(connection.vendor == "postgresql", "Stored search vectors are Postgres-only")
     def test_retitle_rebuilds_chapter_search_vectors(self):
-        # End-to-end proof of the above on the production database engine: the
-        # book title is baked into every chapter's stored tsvector, so after
-        # seed_books applies a retitle the OLD title must stop matching. If the
-        # update ever regresses to queryset.update() the vectors go stale — not
-        # NULL — and backfill_search_vectors will never notice.
+        # The update must go through Book.save(), whose hook rebuilds the
+        # chapters' stored tsvectors; queryset.update() would leave them stale
+        # (not NULL) and backfill_search_vectors would never notice. Asserted
+        # on the production engine, where the vectors actually exist: after
+        # seed_books applies a retitle, the OLD title must stop matching.
         from django.core.management import call_command
 
         from library import fts
         from library.search import search_library
 
-        call_command("seed_books", verbosity=0)
         book = Book.objects.get(slug="the-way-to-god", language="en")
         # Put the DB in the "prod predates the fixture edit" state: a stale
         # title with search vectors consistently built from it.
@@ -460,17 +452,18 @@ class SeedBooksTests(TestCase):
         )
 
     def _fixture_fields(self, slug, language):
-        from library.content_fixtures import load_all_rows
+        """The fixture's Book row for one work — its own file's first record.
 
-        for row in load_all_rows():
-            f = row["fields"]
-            if (
-                row.get("model") == "library.book"
-                and f["slug"] == slug
-                and f.get("language", "en") == language
-            ):
-                return f
-        raise AssertionError(f"no fixture book {slug!r} [{language}]")
+        FileCoherenceTests pins that layout, so this reads one file instead of
+        parsing all ~170 to find one row.
+        """
+        import json
+
+        from library.content_fixtures import BOOKS_DIR, work_filename
+
+        row = json.loads((BOOKS_DIR / work_filename(slug, language)).read_text())[0]
+        self.assertEqual(row["model"], "library.book")
+        return row["fields"]
 
 
 class SeedSermonsTests(TestCase):

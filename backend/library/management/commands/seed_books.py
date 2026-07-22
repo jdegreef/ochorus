@@ -8,19 +8,18 @@ a changed one is updated, an untouched one is left alone. Runs on every deploy
 (see the release command); idempotent, and the fixture stays the single source
 of truth for book metadata.
 
-Until 2026-07-22 this command only CREATED. Every edit to a book field —
-``cover_url``, ``title``, ``description``, ``sort_order``, … — therefore needed
-a hand-written data migration to reach prod, and forgetting one made the change
-invisible in production while looking fine locally (PR #355: 18 covers set by
-``generate_covers`` never shipped). The update branch below is the fix, and
-mirrors ``seed_sermons``.
+Until 2026-07-22 (PR #362) this command only CREATED, so every edit to a book
+field needed a hand-written data migration to reach prod — and forgetting one
+made the change invisible in production while looking fine locally (PR #355:
+18 covers set by ``generate_covers`` never shipped).
 
-SCOPE: the Book row only. An existing book's CHAPTERS are still left alone —
-chapter text is owned by the import/repair pipeline and by the transforms that
-data migrations have already applied to live rows, so re-asserting the fixture
-over them every deploy is a much larger blast radius than this command should
-carry. Chapter changes continue to ship as data migrations (or
-``apply_body_corrections``).
+SCOPE: the Book row only. An existing book's CHAPTERS are still left alone.
+Chapter ``order`` is a public contract — ``PlanDay.chapter_order``, readers'
+saved positions, prerendered URLs — so silently replacing a chapter set on
+every deploy could shift all three library-wide (see migration 0009, which
+excluded a book from re-chapterization for exactly that reason). Chapter
+changes keep shipping as data migrations, or as ``apply_body_corrections``
+entries for body repairs.
 """
 
 from __future__ import annotations
@@ -47,17 +46,11 @@ BOOK_FIELDS = (
 )
 CHAPTER_FIELDS = ("order", "title", "body_html", "word_count")
 
-# Seeded when the row is first created, then owned by workflows that act on the
-# live DB — re-asserting the fixture's value on every deploy would silently walk
-# either one back:
-#   source_type — the translation review gate. approve_translation flips
-#     ai_unreviewed -> ai_reviewed once a native speaker signs off (and only the
-#     user decides to run it); the fixture still says ai_unreviewed, so
-#     re-asserting it would restore the "awaiting review" badge on the next
-#     deploy and make approve_translation useless.
-#   is_published — an urgent unpublish (a copyright complaint) happens directly
-#     in the live DB; the fixture must not resurrect the book.
-# Same set, and the same reasoning, as seed_sermons.CREATE_ONLY_FIELDS.
+# Seeded on create, then owned by workflows that act on the live DB:
+# approve_translation flips source_type (37 fixture books still say
+# ai_unreviewed), and an urgent copyright unpublish clears is_published there.
+# Same set and same reasoning as seed_sermons.CREATE_ONLY_FIELDS, which spells
+# it out; a fixture that re-asserted either would walk the decision back.
 CREATE_ONLY_FIELDS = frozenset({"source_type", "is_published"})
 UPDATE_FIELDS = tuple(f for f in BOOK_FIELDS if f not in CREATE_ONLY_FIELDS)
 
@@ -169,7 +162,10 @@ class Command(BaseCommand):
                         book=book, **{k: cf[k] for k in CHAPTER_FIELDS if k in cf}
                     )
                 created += 1
-                self.stdout.write(f"  + {book.slug} ({book.chapters.count()} chapters)")
+                self.stdout.write(
+                    f"  + {book.slug} [{language}] "
+                    f"({book.chapters.count()} chapters)"
+                )
                 continue
 
             # A field absent from the fixture row (an older serialization
@@ -177,23 +173,21 @@ class Command(BaseCommand):
             changed = [
                 k for k in UPDATE_FIELDS if k in f and getattr(book, k) != f[k]
             ]
+            for k in changed:
+                setattr(book, k, f[k])
             if book.author_id != author.id:
                 book.author = author
                 changed.append("author")
             if changed:
-                for k in changed:
-                    if k in BOOK_FIELDS:
-                        setattr(book, k, f[k])
-                # save(), never queryset.update(): the book's title, language
-                # and author are baked into its chapters' stored search
-                # vectors, and only Book.save()'s hook ripples the change into
-                # them (library/fts.py). A bulk update would leave those
-                # vectors STALE rather than NULL, so the backfill_search_vectors
-                # release step — which fills NULLs only — would not repair them.
+                # save(), never queryset.update(): Book.save()'s hook ripples a
+                # changed title/language/author into its chapters' stored search
+                # vectors (library/fts.py). A bulk update would leave them STALE
+                # rather than NULL, so backfill_search_vectors — which fills
+                # NULLs only — would never repair them.
                 book.save()
                 updated += 1
                 self.stdout.write(
-                    f"  ~ {book.slug} [{book.language}] ({', '.join(changed)})"
+                    f"  ~ {book.slug} [{language}] ({', '.join(changed)})"
                 )
 
         if created or updated:
