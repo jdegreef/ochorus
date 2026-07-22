@@ -231,10 +231,12 @@
 						</a>
 					</div>
 				</div>
-				<!-- An author can be in the library before their bio is written: show
-				     their works and omit the blurb rather than render an empty gap. -->
+				<!-- Every writer carries a short mini-bio (2–4 sentences), localized to
+				     the reader's language. Rendered in full — the summaries are authored
+				     to card length, so we show complete sentences rather than clamping
+				     mid-word. The `{#if}` guards the rare row that still lacks prose. -->
 				{#if author.bio}
-					<p class="mt-4 line-clamp-3 text-body leading-relaxed text-muted">{author.bio}</p>
+					<p class="mt-4 text-body leading-relaxed text-muted">{author.bio}</p>
 				{/if}
 				<!-- The "View biography →" CTA above already serves book-less authors;
 				     add the read-more only where the CTA is a book count AND there is
