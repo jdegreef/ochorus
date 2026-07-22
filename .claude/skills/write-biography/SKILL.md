@@ -94,21 +94,39 @@ force if every paragraph is a box.
    ```bash
    uv run python scripts/regen_fixture.py   # pinned 6-model natural-key regen; NEVER bare `dumpdata library`
    ```
-5. **If the author ALREADY EXISTS on prod, the fixture is not enough** — prod is
-   never re-seeded, and `seed_books` only CREATES missing rows, so a fixture-only
-   bio silently reaches fresh installs and never the live site. Add a data
-   migration that re-applies the fixture to live rows (it syncs `bio_html`,
-   `bio`, and `photo_url`):
+5. **If the author ALREADY EXISTS on prod, the fixture is not enough** — and
+   THREE mechanisms look like they'd carry it but don't:
+   - `seed_if_empty` only fills an EMPTY database;
+   - `seed_books` sets `bio`/`bio_html` in `get_or_create(defaults=…)` — i.e.
+     **on CREATE only**, never on an existing author;
+   - `0049_backfill_author_short_bios` fills only bios that are still **empty**.
+
+   **`content_sync.backfill_bios_and_sermons` is RETIRED** — it detects the
+   natural-key fixture and no-ops by design (the old 0017/0036 migrations
+   predate the format switch). Do NOT copy those; a migration calling it is a
+   silent no-op and the bio never reaches the live site.
+
+   Write a fresh data migration that reads `content/authors.json` and updates
+   the row, with fill-only semantics so it can't clobber later prose. Model:
+   `0051_torrey_biography.py` —
    ```python
-   def backfill(apps, schema_editor):
-       from library.content_sync import backfill_bios_and_sermons
-       backfill_bios_and_sermons(apps)   # idempotent
+   Author.objects.filter(slug=SLUG, bio_html="").update(bio_html=bio_html)
+   # replacing NON-empty prose: anchor on the exact previous text, so a hand
+   # edit or a later deploy's wording always wins
+   Author.objects.filter(slug=SLUG, bio=PREVIOUS_TEXT).update(bio=bio)
    ```
-   Copy `0017_backfill_moody_bio.py` / `0036_classic_author_bios_and_portraits.py`.
+   Verify all four paths before shipping: fresh-DB seed, prod-shaped row,
+   idempotent re-run, and a hand-edited value surviving the migration.
+
    Only a brand-new author arriving with its own books can skip this (seed_books
    creates it from the fixture, bio and all).
 
 ## The portrait (optional, same page)
+
+**Check first — the portrait may already exist.** Several authors carry a
+`photo_url` and a file under `frontend/static/portraits/` even with an empty
+`bio_html` (Torrey did). `ls frontend/static/portraits/ | grep <slug>` and curl
+the live URL before doing any image work.
 
 Without `photo_url` the page falls back to an initials monogram (which looks
 fine — a portrait is not mandatory, and some Puritans have no known likeness).
