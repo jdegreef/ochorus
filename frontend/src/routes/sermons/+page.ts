@@ -43,6 +43,11 @@ import type { PageLoad } from './$types';
  * edition of D. L. Moody's sermon Christ's Boundless Compassion (Huruma
  * Isiyo na Kikomo ya Kristo, PR #338) went live, so the /sw/sermons pages
  * re-crawl and bake with the new title.
+ *
+ * Prerender refresh 2026-07-22 (queue job #285): same again after the Swahili
+ * edition of C. H. Spurgeon's sermon The Immutability of God (Kutobadilika
+ * kwa Mungu, PR #340) went live, so the /sw/sermons pages re-crawl and bake
+ * with the new title.
  */
 export const load: PageLoad = async () => {
 	// Tolerate a lagging/absent sermon endpoint at prerender time (see the
