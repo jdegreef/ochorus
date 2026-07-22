@@ -112,6 +112,12 @@ import type { PageLoad } from './$types';
  * Okusaba / Bwana, Tufundishe Kuomba) and the Swahili Prevailing Prayer
  * (Maombi Yenye Kushinda) went live (PR #351), so the /lg/books and /sw/books
  * indexes and their /books/<slug> pages re-crawl and bake with the new titles.
+ *
+ * Prerender refresh 2026-07-22 (Holy Spirit book in es/lg/sw): after the
+ * Spanish, Luganda and Swahili editions of Torrey's The Person and Work of the
+ * Holy Spirit (La Persona y la Obra del Espíritu Santo / Omuntu n'Omulimu
+ * gw'Omwoyo Omutukuvu / Nafsi na Kazi ya Roho Mtakatifu, PR #365) went live, so
+ * the /es|/lg|/sw books indexes and their /books/<slug> pages re-crawl and bake.
  */
 export const load: PageLoad = async () => {
 	try {

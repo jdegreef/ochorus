@@ -20,6 +20,11 @@ import type { PageLoad } from './$types';
  * The Way to God, The God of All Comfort (also live in lg), Power from on High,
  * and Everything for Christ — all English-first, materializing per language as
  * their source books get translated. This touch bakes the new /plans cards.
+ *
+ * Prerender refresh 2026-07-22 (Power from on High now live in es/lg/sw): the
+ * second source book (Torrey's Holy Spirit, PR #365) shipped in all three
+ * languages, so seed_plans now materializes the plan everywhere with localized
+ * prose. This touch re-crawls /es|/lg|/sw/plans so the plan card appears.
  */
 export const load: PageLoad = async () => {
 	// Tolerate a lagging/absent plans endpoint at prerender time (api + web can
