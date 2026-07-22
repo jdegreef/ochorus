@@ -77,6 +77,15 @@ PLAN_TRANSLATIONS = {
             "okwa buli lunaku mu bulamu obw'Ekikristaayo.",
         ),
     },
+    "sw": {
+        "school-of-prayer": (
+            "Shule ya Maombi",
+            "Wiki nne katika shule ya maombi pamoja na waelekezi watatu: Andrew "
+            "Murray kuhusu jinsi Bwana mwenyewe anavyotufundisha kuomba, D. L. "
+            "Moody kuhusu maombi yenye kushinda, na Hannah Buyinza kuhusu maombi "
+            "kama mapigo ya kila siku ya maisha ya Mkristo.",
+        ),
+    },
 }
 
 
