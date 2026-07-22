@@ -1,6 +1,13 @@
 // Rebuild marker 2026-07-15: backend-only PR #121 backfilled descriptions for
 // 16 books that imported without one; Render skips the web build for backend
 // commits, so this touch forces a prerender against the migrated API data.
+//
+// Rebuild marker 2026-07-22: PR #355 self-hosted the covers. That PR DID touch
+// frontend/ (the image files), so the web build ran — but it ran in parallel
+// with the api's migration and baked the pre-migration cover_urls into
+// og:image. The content-race, not a skipped build: verified 6 of 8 sampled
+// book pages still advertising ochorus.com artwork while the API served
+// /covers/. This touch re-prerenders now the migration is live.
 import { getBook, listBooks } from '$lib/library';
 import { getLang } from '$lib/lang.svelte';
 import { orNotFound } from '$lib/loadHelpers';
