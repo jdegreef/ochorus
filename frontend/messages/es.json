@@ -378,6 +378,8 @@
   "settings_reading_width_sub": "El ancho de la columna de lectura.",
   "settings_text_size": "Tamaño del texto",
   "settings_text_size_sub": "Qué tan grande es el texto de lectura.",
+  "settings_default_edition": "Edición predeterminada",
+  "settings_default_edition_sub": "Cuando existe una edición en inglés moderno, ábrela de forma predeterminada.",
   "settings_width_narrow": "Estrecho",
   "settings_width_normal": "Normal",
   "settings_width_wide": "Ancho",

@@ -378,6 +378,8 @@
   "settings_reading_width_sub": "Upana wa safu ya usomaji.",
   "settings_text_size": "Ukubwa wa maandishi",
   "settings_text_size_sub": "Ukubwa wa maandishi ya kusoma.",
+  "settings_default_edition": "Toleo la kawaida",
+  "settings_default_edition_sub": "Toleo la Kiingereza cha kisasa likiwepo, lifungue kwa chaguo-msingi.",
   "settings_width_narrow": "Nyembamba",
   "settings_width_normal": "Kawaida",
   "settings_width_wide": "Pana",

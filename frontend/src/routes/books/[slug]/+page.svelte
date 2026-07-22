@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { BookDetail } from '$lib/library';
 	import { getProgress } from '$lib/progress';
+	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readingMinutes, readingTime } from '$lib/reading';
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumb } from '$lib/seo';
@@ -23,6 +24,15 @@
 	);
 
 	const totalWords = $derived(book.chapters.reduce((sum, c) => sum + c.word_count, 0));
+
+	// "Prefer Modern English" (settings): when it's on and this book has a modern
+	// edition, the read CTAs open that edition by carrying ?edition=modern. The
+	// preference is applied at the link (not in the reader) so the reader's own
+	// Modern⇄Original toggle — which represents "original" as *no* param — still
+	// works within a session.
+	const useModern = $derived(readerPrefs.preferModern && book.has_modern_edition);
+	const readHref = (order: number) =>
+		localizeHref(`/books/${book.slug}/${order}${useModern ? '?edition=modern' : ''}`);
 
 	// Self-referential canonical + hreflang: this page is prerendered per locale,
 	// so each localized copy points at ITSELF (not the English URL, which would
@@ -139,12 +149,12 @@
 
 			<div class="mt-5 flex flex-wrap items-center gap-3">
 				{#if resumeOrder && resumeOrder > 1}
-					<a href={localizeHref(`/books/${book.slug}/${resumeOrder}`)} class="btn btn-primary">
+					<a href={readHref(resumeOrder)} class="btn btn-primary">
 						{t('book.continueCh')} {resumeOrder}
 					</a>
-					<a href={localizeHref(`/books/${book.slug}/1`)} class="btn btn-ghost">{t('book.startOver')}</a>
+					<a href={readHref(1)} class="btn btn-ghost">{t('book.startOver')}</a>
 				{:else}
-					<a href={localizeHref(`/books/${book.slug}/1`)} class="btn btn-primary">{t('book.beginReading')}</a>
+					<a href={readHref(1)} class="btn btn-primary">{t('book.beginReading')}</a>
 				{/if}
 				<FavoriteButton kind="book" slug={book.slug} />
 				{#if book.pdf_url}
@@ -153,12 +163,20 @@
 					</a>
 				{/if}
 				{#if book.has_modern_edition}
-					<a
-						href={localizeHref(`/books/${book.slug}/${resumeOrder && resumeOrder > 1 ? resumeOrder : 1}?edition=modern`)}
-						class="btn btn-ghost"
-					>
-						{t('book.readModern')}
-					</a>
+					{@const readOrder = resumeOrder && resumeOrder > 1 ? resumeOrder : 1}
+					{#if useModern}
+						<!-- Primary CTA already opens modern; offer the original as the alt. -->
+						<a href={localizeHref(`/books/${book.slug}/${readOrder}`)} class="btn btn-ghost">
+							{t('reader.readOriginal')}
+						</a>
+					{:else}
+						<a
+							href={localizeHref(`/books/${book.slug}/${readOrder}?edition=modern`)}
+							class="btn btn-ghost"
+						>
+							{t('book.readModern')}
+						</a>
+					{/if}
 				{/if}
 				<span class="text-small text-muted">
 					{book.chapter_count}

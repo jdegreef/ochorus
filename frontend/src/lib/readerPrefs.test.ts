@@ -32,6 +32,15 @@ describe('readerPrefs store', () => {
 		expect(stored().font).toBe('dyslexic');
 	});
 
+	it('persists the prefer-Modern-English default (off by default)', () => {
+		expect(readerPrefs.preferModern).toBe(false);
+		readerPrefs.setPreferModern(true);
+		expect(readerPrefs.preferModern).toBe(true);
+		expect(stored().preferModern).toBe(true);
+		readerPrefs.setPreferModern(false);
+		expect(stored().preferModern).toBe(false);
+	});
+
 	it('persists text alignment and enables hyphenation when justified', () => {
 		readerPrefs.setAlign('justify');
 		expect(stored().align).toBe('justify');

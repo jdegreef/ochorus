@@ -150,6 +150,22 @@
 					</div>
 				</div>
 
+				<!-- Default edition — carry the preference into the book page read CTAs. -->
+				<div class="setting-row">
+					<div>
+						<div class="setting-label">{t('settings.defaultEdition')}</div>
+						<div class="setting-sub">{t('settings.defaultEditionSub')}</div>
+					</div>
+					<div class="seg">
+						<button class:active={!readerPrefs.preferModern} onclick={() => readerPrefs.setPreferModern(false)}>
+							{t('reader.original')}
+						</button>
+						<button class:active={readerPrefs.preferModern} onclick={() => readerPrefs.setPreferModern(true)}>
+							{t('reader.modern')}
+						</button>
+					</div>
+				</div>
+
 				<!-- Listen: voice + speed -->
 				<div class="setting-row">
 					<div>

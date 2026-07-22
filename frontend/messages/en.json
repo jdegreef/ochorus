@@ -378,6 +378,8 @@
   "settings_reading_width_sub": "How wide the reading column runs.",
   "settings_text_size": "Text size",
   "settings_text_size_sub": "How large the reading text is.",
+  "settings_default_edition": "Default edition",
+  "settings_default_edition_sub": "When a Modern English edition exists, open it by default.",
   "settings_width_narrow": "Narrow",
   "settings_width_normal": "Normal",
   "settings_width_wide": "Wide",
