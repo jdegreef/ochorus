@@ -118,7 +118,23 @@ CURATED_PLANS = [
 # AI-drafted, pending native review.
 #   {language: {slug: (title, description)}}
 PLAN_TRANSLATIONS = {
+    "es": {
+        "power-from-on-high": (
+            "Poder de lo alto: El Espíritu Santo",
+            "Cuatro semanas con R. A. Torrey sobre la vida llena del Espíritu: "
+            "primero el bautismo con el Espíritu Santo y el poder que trae para "
+            "el servicio, y luego el estudio más pleno de la Persona y la obra "
+            "del Espíritu que mora en todo creyente.",
+        ),
+    },
     "lg": {
+        "power-from-on-high": (
+            "Amaanyi Agava Waggulu: Omwoyo Omutukuvu",
+            "Wiiki nnya ne R. A. Torrey ku bulamu obujjudde Omwoyo: okusooka "
+            "okubatizibwa n'Omwoyo Omutukuvu n'amaanyi ge galeeta olw'obuweereza, "
+            "n'oluvannyuma okuyiga okujjuvu ku Muntu n'omulimu gw'Omwoyo abeera mu "
+            "buli mukkiriza.",
+        ),
         "humility-12-days": (
             "Obwetoowaze mu Nnaku 12",
             "Ekitabo kya Andrew Murray eky'edda ku musingi gwa buli mpisa "
@@ -146,6 +162,13 @@ PLAN_TRANSLATIONS = {
         ),
     },
     "sw": {
+        "power-from-on-high": (
+            "Nguvu kutoka Juu: Roho Mtakatifu",
+            "Wiki nne pamoja na R. A. Torrey kuhusu maisha yaliyojaa Roho: kwanza "
+            "ubatizo wa Roho Mtakatifu na nguvu unazoleta kwa ajili ya huduma, "
+            "kisha uchunguzi kamili zaidi wa Nafsi na kazi ya Roho anayekaa ndani "
+            "ya kila mwamini.",
+        ),
         "school-of-prayer": (
             "Shule ya Maombi",
             "Wiki nne katika shule ya maombi pamoja na waelekezi watatu: Andrew "
