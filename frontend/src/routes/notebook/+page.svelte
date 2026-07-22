@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { getBook, getChapter, getSermon, type BookDetail } from '$lib/library';
+	import { getBook, getChapter, getSermon, getAuthor, type BookDetail } from '$lib/library';
 	import { getLang } from '$lib/lang.svelte';
 	import { bookmarks } from '$lib/bookmarks.svelte';
 	import { marks } from '$lib/marks.svelte';
@@ -21,11 +21,16 @@
 	};
 
 	type SermonBlock = { slug: string; title: string; author: string; highlights: HL[] };
+	// A biography block: the slug is the author's; the "title" is their name.
+	type BioBlock = { slug: string; name: string; highlights: HL[] };
 
 	let loading = $state(true);
 	let books = $state<BookBlock[]>([]);
 	let sermons = $state<SermonBlock[]>([]);
-	const isEmpty = $derived(!loading && books.length === 0 && sermons.length === 0);
+	let bios = $state<BioBlock[]>([]);
+	const isEmpty = $derived(
+		!loading && books.length === 0 && sermons.length === 0 && bios.length === 0
+	);
 
 	// Live search across every book, chapter title, highlight, note and bookmark,
 	// plus an optional filter to one highlight colour.
@@ -74,9 +79,29 @@
 			})
 			.filter((sm) => sm.highlights.length);
 	});
-	const hasContent = $derived(books.length > 0 || sermons.length > 0);
+	const filteredBios = $derived.by(() => {
+		if (!active) return bios;
+		const hit = (s: string) => s.toLowerCase().includes(q);
+		return bios
+			.map((b) => {
+				const bioHit = !q || hit(b.name);
+				const highlights = b.highlights.filter(
+					(h) =>
+						(!colorFilter || h.color === colorFilter) &&
+						(bioHit || hit(h.text) || hit(h.note ?? ''))
+				);
+				return { ...b, highlights };
+			})
+			.filter((b) => b.highlights.length);
+	});
+	const hasContent = $derived(books.length > 0 || sermons.length > 0 || bios.length > 0);
 	const noMatches = $derived(
-		!loading && hasContent && active && filtered.length === 0 && filteredSermons.length === 0
+		!loading &&
+			hasContent &&
+			active &&
+			filtered.length === 0 &&
+			filteredSermons.length === 0 &&
+			filteredBios.length === 0
 	);
 
 	// Split a chapter's cleaned HTML into its top-level blocks' text — the same
@@ -171,6 +196,22 @@
 			sOut.push({ slug, title, author, highlights: groupMarks(paras, ms) });
 		}
 		sermons = sOut.sort((a, b) => a.title.localeCompare(b.title));
+
+		// Biography highlights (kind 'bio'; the slug names the author).
+		const bOut: BioBlock[] = [];
+		for (const { slug, marks: ms } of allMarks.filter((m) => m.kind === 'bio')) {
+			let paras: string[] = [];
+			let name = slug;
+			try {
+				const a = await getAuthor(slug, lang);
+				paras = paragraphs(a.bio_html);
+				name = a.name;
+			} catch {
+				/* offline — the highlight still links through, just without its text */
+			}
+			bOut.push({ slug, name, highlights: groupMarks(paras, ms) });
+		}
+		bios = bOut.sort((a, b) => a.name.localeCompare(b.name));
 
 		loading = false;
 	});
@@ -298,6 +339,35 @@
 						<li>
 							<a
 								href={localizeHref(`/sermons/${sm.slug}?p=${hl.p}`)}
+								class="block rounded-lg border-l-2 bg-surface px-4 py-2.5 hover:no-underline"
+								style="border-left-color: var(--hl-{hl.color})"
+							>
+								{#if hl.text}
+									<span class="block text-body italic text-text">“{hl.text}”</span>
+								{/if}
+								{#if hl.note}
+									<span class="mt-1 block text-small text-muted">📝 {hl.note}</span>
+								{/if}
+							</a>
+						</li>
+					{/each}
+				</ul>
+			</section>
+		{/each}
+
+		{#each filteredBios as b (b.slug)}
+			<section class="mb-10">
+				<p class="mb-1 text-small font-semibold uppercase tracking-widest text-accent">
+					{t('bios.eyebrow')}
+				</p>
+				<h2 class="text-h2">
+					<a href={localizeHref(`/authors/${b.slug}`)} class="hover:text-accent">{b.name}</a>
+				</h2>
+				<ul class="mt-3 space-y-2">
+					{#each b.highlights as hl (hl.id)}
+						<li>
+							<a
+								href={localizeHref(`/authors/${b.slug}`)}
 								class="block rounded-lg border-l-2 bg-surface px-4 py-2.5 hover:no-underline"
 								style="border-left-color: var(--hl-{hl.color})"
 							>
