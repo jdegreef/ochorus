@@ -31,6 +31,9 @@ const origin = () => (browser ? window.location.origin : undefined);
 class Auth {
 	enabled = authEnabled;
 	user = $state<{ email: string } | null>(null);
+	// The reader's chosen display name (from the profile); '' when unset — callers
+	// fall back to the email. Kept separate from `user` (which mirrors the session).
+	displayName = $state('');
 	// Whether the signed-in user may see the /admin dashboard (from the profile).
 	isAdmin = $state(false);
 	// True once the initial session has been resolved (or auth is unconfigured),
@@ -144,6 +147,7 @@ class Auth {
 		this.user = null;
 		this.#token = null;
 		this.isAdmin = false;
+		this.displayName = '';
 		// Wipe this user's reading data from the device: on a shared browser it
 		// would otherwise be merged into the next account that signs in.
 		readingSync.clearOnSignOut();
@@ -154,6 +158,7 @@ class Auth {
 		try {
 			const p = await apiFetch<Profile>('/api/auth/me/');
 			this.isAdmin = !!p.is_admin;
+			this.displayName = p.display_name || '';
 			if (typeof p.theme === 'string' && p.theme) theme.set(normalizePref(p.theme));
 			if (p.font_scale) readerPrefs.setScale(p.font_scale);
 			// Listening prefs: rate always applies; a voiceURI only resolves if the
@@ -193,6 +198,25 @@ class Auth {
 				})
 			}).catch(() => {});
 		}, 600);
+	}
+
+	/**
+	 * Save the display name to the profile. Updates local state optimistically so
+	 * the greeting changes immediately; a failed request leaves the server as-is
+	 * (the next profile pull reconciles). `name` is trimmed; '' clears it.
+	 */
+	async setDisplayName(name: string) {
+		if (!this.user) return;
+		const trimmed = name.trim().slice(0, 120);
+		this.displayName = trimmed;
+		try {
+			await apiFetch('/api/auth/me/', {
+				method: 'PATCH',
+				body: JSON.stringify({ display_name: trimmed })
+			});
+		} catch {
+			/* offline or API down — keep the optimistic value for this session */
+		}
 	}
 }
 

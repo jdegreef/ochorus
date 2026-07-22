@@ -11,7 +11,9 @@
 	let open = $state(false);
 	let root = $state<HTMLDivElement>();
 
-	const initials = $derived((auth.user?.email?.[0] ?? '?').toUpperCase());
+	const initials = $derived(
+		((auth.displayName || auth.user?.email)?.[0] ?? '?').toUpperCase()
+	);
 
 	// Preserve where the user was, so sign-in returns them there.
 	const loginHref = $derived(
@@ -49,7 +51,12 @@
 			</button>
 			{#if open}
 				<div class="account-menu" role="menu">
-					<div class="truncate px-3 py-1.5 text-small text-muted">{auth.user.email}</div>
+					<div class="truncate px-3 py-1.5">
+						{#if auth.displayName}
+							<div class="text-small font-semibold text-text">{auth.displayName}</div>
+						{/if}
+						<div class="truncate text-small text-muted">{auth.user.email}</div>
+					</div>
 					<div class="my-1 border-t border-border"></div>
 					{#if auth.isAdmin}
 						<a class="account-item" role="menuitem" href={localizeHref('/admin')} onclick={() => (open = false)}
