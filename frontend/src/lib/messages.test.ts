@@ -38,7 +38,9 @@ const SAME_AS_ENGLISH_OK = new Set([
 	'common_min',
 	'login_email',
 	// "Original" is the same word in Spanish — a legitimate borrowed term.
-	'reader_original'
+	'reader_original',
+	// "A–Z" is the same alphabetical-sort label in every language we support.
+	'search_sort_title'
 ]);
 
 const toSnake = (key: string) =>
