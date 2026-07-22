@@ -29,6 +29,11 @@ import type { PageLoad } from './$types';
  * edition of D. L. Moody's sermon Eight "I Wills" of Christ ('Ndikola' Munaana
  * eza Kristo, PR #277) went live, so the /lg/sermons pages re-crawl and bake
  * with the new title.
+ *
+ * Prerender refresh 2026-07-22 (queue job #282): same again after the Swahili
+ * edition of Hudson Taylor's sermon Unfailing Springs (Chemchemi Zisizokauka,
+ * PR #335) went live, so the /sw/sermons pages re-crawl and bake with the new
+ * title.
  */
 export const load: PageLoad = async () => {
 	// Tolerate a lagging/absent sermon endpoint at prerender time (see the
