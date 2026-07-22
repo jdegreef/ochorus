@@ -6,6 +6,11 @@ import type { PageLoad } from './$types';
 // getLang() at build time. So author-bio *content* translations must be live on
 // the API before the web build runs — otherwise the localized page bakes English
 // and needs a fresh ochorus-web deploy once the API catches up.
+//
+// Prerender refresh 2026-07-22: force an ochorus-web rebuild after the API went
+// live with a complete set of localized mini-bios — every non-imprint author now
+// has a short bio translated into es/lg/sw, so the /es|/lg|/sw biographies pages
+// re-crawl and bake the translated blurbs instead of the English fallback.
 export const load: PageLoad = async () => {
 	const lang = getLang();
 	const authors = await listAuthors(lang);
