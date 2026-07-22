@@ -106,6 +106,8 @@ class SermonDetailSerializer(serializers.ModelSerializer):
     author_slug = serializers.CharField(source="author.slug", read_only=True)
     author_photo = serializers.CharField(source="author.photo_url", read_only=True)
     body_html = serializers.SerializerMethodField()
+    prev = serializers.SerializerMethodField()
+    next = serializers.SerializerMethodField()
 
     def get_body_html(self, obj):
         # Wrap Bible references as clickable spans, so the reader's scripture
@@ -113,6 +115,36 @@ class SermonDetailSerializer(serializers.ModelSerializer):
         from .scripture import annotate_references
 
         return annotate_references(obj.body_html)
+
+    def _neighbours(self, obj):
+        """The (prev, next) sermon in this author's corpus, in shelf order.
+
+        Sequential reading through one preacher's published sermons in this
+        language, ordered like the author page (sort_order, then title). Cached
+        on the instance so prev and next share one query. Ends are ``None``."""
+        cache = getattr(obj, "_neighbour_cache", None)
+        if cache is None:
+            corpus = list(
+                Sermon.objects.filter(
+                    author_id=obj.author_id,
+                    language=obj.language,
+                    is_published=True,
+                )
+                .order_by("sort_order", "title")
+                .values("slug", "title")
+            )
+            i = next((n for n, s in enumerate(corpus) if s["slug"] == obj.slug), None)
+            prev_ = corpus[i - 1] if i not in (None, 0) else None
+            next_ = corpus[i + 1] if i is not None and i + 1 < len(corpus) else None
+            cache = (prev_, next_)
+            obj._neighbour_cache = cache
+        return cache
+
+    def get_prev(self, obj):
+        return self._neighbours(obj)[0]
+
+    def get_next(self, obj):
+        return self._neighbours(obj)[1]
 
     class Meta:
         model = Sermon
@@ -129,6 +161,8 @@ class SermonDetailSerializer(serializers.ModelSerializer):
             "author_name",
             "author_slug",
             "author_photo",
+            "prev",
+            "next",
         ]
 
 
