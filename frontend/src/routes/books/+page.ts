@@ -96,6 +96,11 @@ import type { PageLoad } from './$types';
  * edition of The Key in My Hand (Ufunguo Ulio Mkononi Mwangu, PR #316) by
  * Gareth Evans went live, so the /sw/books index and its /books/<slug> pages
  * re-crawl and bake with the new title.
+ *
+ * Prerender refresh 2026-07-22 (queue job #280): same again after the Swahili
+ * edition of Prayer – The Pulse of Life (Maombi – Mapigo ya Uhai, PR #322) by
+ * Hannah Buyinza went live, so the /sw/books index and its /books/<slug> pages
+ * re-crawl and bake with the new title.
  */
 export const load: PageLoad = async () => {
 	try {
