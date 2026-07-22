@@ -7,6 +7,7 @@
 	import { jsonLd, breadcrumb } from '$lib/seo';
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
+	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 
 	let { data } = $props();
 	const plan = $derived<PlanDetail>(data.plan);
@@ -123,14 +124,17 @@
 		{/if}
 	</div>
 
-	{#if next !== null}
-		<a href={dayHref(next)} class="btn btn-primary" onclick={() => planProgress.start(plan.slug)}>
-			{started ? t('plans.continue') : t('plans.start')} — {t('plans.day')}
-			{next} {t('plans.of')} {plan.day_count}
-		</a>
-	{:else}
-		<p class="btn btn-ghost pointer-events-none inline-block">✓ {t('plans.finished')}</p>
-	{/if}
+	<div class="flex flex-wrap items-center gap-3">
+		{#if next !== null}
+			<a href={dayHref(next)} class="btn btn-primary" onclick={() => planProgress.start(plan.slug)}>
+				{started ? t('plans.continue') : t('plans.start')} — {t('plans.day')}
+				{next} {t('plans.of')} {plan.day_count}
+			</a>
+		{:else}
+			<p class="btn btn-ghost pointer-events-none inline-block">✓ {t('plans.finished')}</p>
+		{/if}
+		<FavoriteButton kind="plan" slug={plan.slug} />
+	</div>
 
 	{#if started && next !== null}
 		<div class="mt-6 max-w-md">

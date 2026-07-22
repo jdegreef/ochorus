@@ -1,6 +1,13 @@
 from rest_framework import serializers
 
-from .models import ChapterMarks, ReadingProgress
+from .models import ChapterMarks, Favorite, ReadingProgress
+
+
+class FavoriteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Favorite
+        fields = ["kind", "slug", "created_at"]
+        read_only_fields = ["created_at"]
 
 
 class ReadingProgressSerializer(serializers.ModelSerializer):

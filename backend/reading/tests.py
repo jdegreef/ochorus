@@ -5,7 +5,7 @@ from rest_framework.test import APIClient
 from accounts.models import UserProfile
 
 from .marks import clean_mark_list, from_legacy, merge_mark_lists
-from .models import ChapterMarks, ReadingProgress
+from .models import ChapterMarks, Favorite, ReadingProgress
 
 User = get_user_model()
 
@@ -178,6 +178,60 @@ class ReadingSyncTests(TestCase):
     def test_requires_auth(self):
         anon = APIClient()
         self.assertEqual(anon.get("/api/reading/state/").status_code, 401)
+
+
+class FavoriteTests(TestCase):
+    def setUp(self):
+        self.user = User.objects.create(username="00000000-0000-0000-0000-000000000002")
+        self.profile = UserProfile.objects.create(
+            user=self.user, supabase_uid=self.user.username, email="f@example.com"
+        )
+        self.client = APIClient()
+        self.client.force_authenticate(self.user)
+
+    def test_save_idempotent_unsave_and_state(self):
+        res = self.client.put("/api/reading/favorites/author/andrew-murray/")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual((res.data["kind"], res.data["slug"]), ("author", "andrew-murray"))
+        # Saving twice keeps one row.
+        self.client.put("/api/reading/favorites/author/andrew-murray/")
+        self.client.put("/api/reading/favorites/plan/school-of-prayer/")
+        self.assertEqual(Favorite.objects.filter(profile=self.profile).count(), 2)
+
+        state = self.client.get("/api/reading/state/").data
+        favs = {(f["kind"], f["slug"]) for f in state["favorites"]}
+        self.assertEqual(
+            favs, {("author", "andrew-murray"), ("plan", "school-of-prayer")}
+        )
+
+        res = self.client.delete("/api/reading/favorites/author/andrew-murray/")
+        self.assertEqual(res.status_code, 204)
+        self.assertEqual(Favorite.objects.filter(profile=self.profile).count(), 1)
+
+    def test_unknown_kind_rejected(self):
+        res = self.client.put("/api/reading/favorites/topic/prayer/")
+        self.assertEqual(res.status_code, 400)
+
+    def test_merge_unions_favorites_and_skips_unknown(self):
+        Favorite.objects.create(profile=self.profile, kind="book", slug="humility")
+        res = self.client.post(
+            "/api/reading/merge/",
+            {
+                "favorites": [
+                    {"kind": "book", "slug": "humility"},  # already on server
+                    {"kind": "author", "slug": "c-h-spurgeon"},  # offline heart
+                    {"kind": "galaxy", "slug": "andromeda"},  # unknown kind
+                ]
+            },
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        favs = {(f["kind"], f["slug"]) for f in res.data["favorites"]}
+        self.assertEqual(favs, {("book", "humility"), ("author", "c-h-spurgeon")})
+
+    def test_requires_auth(self):
+        anon = APIClient()
+        self.assertEqual(anon.put("/api/reading/favorites/book/humility/").status_code, 401)
 
 
 class MarkHelpersTests(TestCase):

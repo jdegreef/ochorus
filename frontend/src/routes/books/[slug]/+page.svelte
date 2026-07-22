@@ -7,6 +7,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import BookCard from '$lib/components/BookCard.svelte';
+	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 
 	let { data } = $props();
 	const t = i18n.t;
@@ -145,6 +146,7 @@
 				{:else}
 					<a href={localizeHref(`/books/${book.slug}/1`)} class="btn btn-primary">{t('book.beginReading')}</a>
 				{/if}
+				<FavoriteButton kind="book" slug={book.slug} />
 				{#if book.pdf_url}
 					<a href={book.pdf_url} class="btn btn-ghost" target="_blank" rel="noreferrer">
 						{t('book.downloadPdf')}
