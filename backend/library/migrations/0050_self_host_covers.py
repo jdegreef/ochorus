@@ -8,10 +8,13 @@ Two gaps, one cause — cover artwork lived outside the app's control:
    URL rather than the slug. The files now ship with the frontend
    (frontend/static/covers/), resized to the 600px canvas the generated covers
    already use: 33.9MB of originals became 1.5MB.
-2. 18 books rendered as blank cards. Their generated SVGs were committed and are
+2. 18 books had no cover_url at all. Their generated SVGs were committed and are
    serving fine at /covers/<slug>.svg — only Book.cover_url was never set on
    prod, because `generate_covers` writes the file and updates the LOCAL db, and
-   that db change was never given a vehicle to production.
+   that db change was never given a vehicle to production. BookCover.svelte
+   re-implements the generator client-side, so the book grid and shelves looked
+   right anyway; the flat-colour blocks were on the surfaces that use a raw
+   <img> (CoverStrip, ContinueReading, /topics, +error).
 
 Seeds never update an existing book row, so the fixture change alone would only
 reach fresh installs; this carries both halves to production. Idempotent: (1)
