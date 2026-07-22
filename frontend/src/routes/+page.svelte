@@ -7,6 +7,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import ContinueReading from '$lib/components/ContinueReading.svelte';
 	import TodaysReading from '$lib/components/TodaysReading.svelte';
+	import PlansProgress from '$lib/components/PlansProgress.svelte';
 	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
 
@@ -148,6 +149,7 @@
 
 <!-- Personal plan / sermon blocks — client-side only (this page is prerendered) -->
 <TodaysReading />
+<PlansProgress />
 <SermonOfTheWeek />
 
 <!-- Browse by topic -->
