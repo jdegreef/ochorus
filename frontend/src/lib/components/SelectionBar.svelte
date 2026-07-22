@@ -2,6 +2,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { segmentsFromSelection } from '$lib/rangeMarks';
 	import { HIGHLIGHT_COLORS } from '$lib/reading-schema';
+	import { shareQuoteCard } from '$lib/quoteCard';
 	import type { Segment } from '$lib/marks.svelte';
 
 	interface Cite {
@@ -36,6 +37,7 @@
 	let selectedText = $state('');
 	let segments = $state<Segment[]>([]);
 	let copied = $state(false);
+	let cardBusy = $state(false);
 
 	function attribution(): string {
 		const where = cite.chapter ? `${cite.book}, ${cite.chapter}` : cite.book;
@@ -96,6 +98,23 @@
 		}
 	}
 
+	async function quoteCard() {
+		if (cardBusy) return;
+		cardBusy = true;
+		try {
+			await shareQuoteCard({
+				quote: selectedText,
+				author: cite.author,
+				source: cite.chapter ? `${cite.book}, ${cite.chapter}` : cite.book,
+				site: 'ochorus.com'
+			});
+		} catch {
+			/* rendering/sharing failed — nothing to surface, the quote is still selected */
+		} finally {
+			cardBusy = false;
+		}
+	}
+
 	const activeColor = $derived(
 		highlightColor && segments.length > 0 ? highlightColor(segments) : null
 	);
@@ -115,6 +134,10 @@
 		</button>
 		<span class="selbar-sep"></span>
 		<button class="selbar-btn" onclick={share}>{t('reader.share')}</button>
+		<span class="selbar-sep"></span>
+		<button class="selbar-btn" onclick={quoteCard} disabled={cardBusy}>
+			{t('reader.quoteCard')}
+		</button>
 		{#if onHighlight && segments.length > 0}
 			<span class="selbar-sep"></span>
 			<span class="selbar-swatches" role="group" aria-label={t('reader.highlight')}>
