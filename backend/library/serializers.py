@@ -138,6 +138,12 @@ class SermonDetailSerializer(serializers.ModelSerializer):
     body_html = serializers.SerializerMethodField()
     prev = serializers.SerializerMethodField()
     next = serializers.SerializerMethodField()
+    difficulty = serializers.SerializerMethodField()
+
+    def get_difficulty(self, obj):
+        from .readability import difficulty
+
+        return difficulty(obj.body_text)
 
     def get_body_html(self, obj):
         # Wrap Bible references as clickable spans, so the reader's scripture
@@ -215,6 +221,8 @@ class SermonDetailSerializer(serializers.ModelSerializer):
             "prev",
             "next",
             "scripture_refs",
+            "summary",
+            "difficulty",
         ]
 
 
@@ -312,6 +320,7 @@ class BookDetailSerializer(BookListSerializer):
     chapters = ChapterTocSerializer(many=True, read_only=True)
     topics = serializers.SerializerMethodField()
     related = serializers.SerializerMethodField()
+    difficulty = serializers.SerializerMethodField()
     # A parallel "Modern English" edition (language en-modern) can exist for an
     # English work; these let the reader offer a per-book toggle to it.
     is_modern_edition = serializers.SerializerMethodField()
@@ -327,8 +336,16 @@ class BookDetailSerializer(BookListSerializer):
         fields = BookListSerializer.Meta.fields + [
             "description", "source_url", "pdf_url", "chapters",
             "publication_year", "attribution", "topics", "related",
-            "is_modern_edition", "has_modern_edition",
+            "difficulty", "is_modern_edition", "has_modern_edition",
         ]
+
+    def get_difficulty(self, obj):
+        """A relative reading-difficulty badge, from the prefetched chapters'
+        text (the readability sampler caps how much it reads)."""
+        from .readability import difficulty
+
+        text = " ".join(c.body_text for c in obj.chapters.all()[:5])
+        return difficulty(text)
 
     def get_is_modern_edition(self, obj):
         return obj.language == MODERN_LANGUAGE

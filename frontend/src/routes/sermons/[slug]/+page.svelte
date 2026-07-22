@@ -460,7 +460,8 @@
 	</nav>
 
 	<p class="mb-1 text-small uppercase tracking-wider text-muted">
-		{t('search.typeSermon')} · {readingTime(sermon.word_count)}{#if preachedYear} · {preachedYear}{/if}
+		{t('search.typeSermon')} · {readingTime(sermon.word_count)}{#if preachedYear} · {preachedYear}{/if}{#if sermon.difficulty}&nbsp;·
+			<span title={t('reader.difficulty')}>{t(`reader.difficulty_${sermon.difficulty}`)}</span>{/if}
 	</p>
 	<h1 class="text-h1 mb-3">{sermon.title}</h1>
 
@@ -515,6 +516,17 @@
 		</p>
 	{:else}
 		<div class="mb-8"></div>
+	{/if}
+
+	<!-- "In brief": an AI-drafted TL;DR so a reader knows in ten seconds
+	     whether this sermon is the one they need right now. -->
+	{#if sermon.summary}
+		<div class="mb-8 rounded-card border border-border bg-surface p-4">
+			<p class="mb-1.5 text-[0.66rem] font-bold uppercase tracking-[0.1em] text-accent">
+				{t('sermon.inBrief')}
+			</p>
+			<p class="text-small leading-relaxed text-muted">{sermon.summary}</p>
+		</div>
 	{/if}
 
 	<!-- Body HTML is cleaned server-side to a safe tag subset on ingest;

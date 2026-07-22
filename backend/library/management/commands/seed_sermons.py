@@ -25,6 +25,7 @@ from library.models import Author, Sermon
 SERMON_FIELDS = (
     "title",
     "scripture_ref",
+    "summary",
     "body_html",
     "word_count",
     "source_type",

@@ -164,7 +164,8 @@
 					{book.chapter_count}
 					{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')} · {readingTime(
 						totalWords
-					)}
+					)}{#if book.difficulty}&nbsp;·
+						<span title={t('reader.difficulty')}>{t(`reader.difficulty_${book.difficulty}`)}</span>{/if}
 				</span>
 			</div>
 		</div>
