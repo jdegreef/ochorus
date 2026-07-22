@@ -60,6 +60,7 @@ interface Stored {
 	font: ReaderFont;
 	align: Align;
 	paged: boolean;
+	preferModern: boolean;
 }
 
 const DEFAULTS: Stored = {
@@ -68,7 +69,8 @@ const DEFAULTS: Stored = {
 	measure: 'normal',
 	font: 'serif',
 	align: 'left',
-	paged: false
+	paged: false,
+	preferModern: false
 };
 
 const ALIGNS: readonly Align[] = ['left', 'justify'];
@@ -91,7 +93,8 @@ function load(): Stored {
 		paged:
 			typeof raw.paged === 'boolean'
 				? raw.paged
-				: browser && window.innerWidth >= WIDE_SCREEN_MIN
+				: browser && window.innerWidth >= WIDE_SCREEN_MIN,
+		preferModern: typeof raw.preferModern === 'boolean' ? raw.preferModern : DEFAULTS.preferModern
 	};
 }
 
@@ -102,6 +105,8 @@ class ReaderPrefs {
 	font = $state<ReaderFont>(DEFAULTS.font);
 	align = $state<Align>(DEFAULTS.align);
 	paged = $state(DEFAULTS.paged);
+	/** When a Modern English edition exists, open it by default (device-local). */
+	preferModern = $state(DEFAULTS.preferModern);
 	#loaded = false;
 
 	/** Hydrate from localStorage. Safe to call repeatedly (runs once). */
@@ -114,6 +119,7 @@ class ReaderPrefs {
 		this.font = s.font;
 		this.align = s.align;
 		this.paged = s.paged;
+		this.preferModern = s.preferModern;
 		this.#loaded = true;
 	}
 
@@ -124,7 +130,8 @@ class ReaderPrefs {
 			measure: this.measure,
 			font: this.font,
 			align: this.align,
-			paged: this.paged
+			paged: this.paged,
+			preferModern: this.preferModern
 		};
 		writeJSON(KEY, s);
 	}
@@ -154,6 +161,10 @@ class ReaderPrefs {
 	}
 	setPaged(v: boolean) {
 		this.paged = v;
+		this.#save();
+	}
+	setPreferModern(v: boolean) {
+		this.preferModern = v;
 		this.#save();
 	}
 
