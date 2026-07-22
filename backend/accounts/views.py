@@ -77,3 +77,11 @@ class MeView(APIView):
         if updated:
             profile.save(update_fields=[*updated, "updated_at"])
         return Response(self._serialize(profile))
+
+    def delete(self, request):
+        """Delete the reader's account data: the profile and, via CASCADE, all
+        their reading progress, highlights/notes and favorites. The Supabase
+        auth identity itself is managed by Supabase; a later sign-in simply
+        starts a fresh, empty profile."""
+        self._profile(request).delete()
+        return Response(status=204)

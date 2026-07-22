@@ -177,6 +177,40 @@
 		downloadFile('ochorus-reading-reminder.ics', 'text/calendar;charset=utf-8', ics);
 	}
 
+	// Danger zone — destructive actions, each a two-click confirm (no modal).
+	let clearConfirm = $state(false);
+	let clearTimer: ReturnType<typeof setTimeout>;
+	function clearDevice() {
+		if (!clearConfirm) {
+			clearConfirm = true;
+			clearTimeout(clearTimer);
+			clearTimer = setTimeout(() => (clearConfirm = false), 4000);
+			return;
+		}
+		clearTimeout(clearTimer);
+		clearConfirm = false;
+		readingSync.clearDeviceData();
+	}
+	let deleteConfirm = $state(false);
+	let deleteTimer: ReturnType<typeof setTimeout>;
+	let deleting = $state(false);
+	async function deleteAccount() {
+		if (!deleteConfirm) {
+			deleteConfirm = true;
+			clearTimeout(deleteTimer);
+			deleteTimer = setTimeout(() => (deleteConfirm = false), 4000);
+			return;
+		}
+		clearTimeout(deleteTimer);
+		deleteConfirm = false;
+		deleting = true;
+		try {
+			if (await auth.deleteAccount()) goto(localizeHref('/'));
+		} finally {
+			deleting = false;
+		}
+	}
+
 	// Reset preferences — restore reader comfort + theme to defaults. Two-click
 	// (not a modal) so an accidental tap can't wipe a carefully-tuned setup; it
 	// only touches preferences, never highlights/notes/reading places.
@@ -290,6 +324,34 @@
 							{exporting === 'json' ? t('settings.exportBusy') : t('settings.exportJson')}
 						</button>
 					</div>
+				</div>
+
+				<!-- Danger zone — destructive, two-click confirm each. -->
+				<div class="mt-8 rounded-card border border-danger/40 p-5">
+					<div class="mb-4 text-small font-semibold text-danger">{t('settings.dangerZone')}</div>
+
+					<div class="setting-label">{t('settings.clearDevice')}</div>
+					<div class="setting-sub mb-3">
+						{t('settings.clearDeviceSub')}{#if auth.user}{' '}{t('settings.clearDeviceSyncNote')}{/if}
+					</div>
+					<button class="btn btn-ghost" class:!text-danger={clearConfirm} onclick={clearDevice}>
+						{clearConfirm ? t('settings.resetConfirm') : t('settings.clearDeviceButton')}
+					</button>
+
+					{#if auth.user}
+						<div class="mt-6 border-t border-border pt-5">
+							<div class="setting-label">{t('settings.deleteAccount')}</div>
+							<div class="setting-sub mb-3">{t('settings.deleteAccountSub')}</div>
+							<button
+								class="btn btn-ghost text-danger"
+								class:font-semibold={deleteConfirm}
+								disabled={deleting}
+								onclick={deleteAccount}
+							>
+								{deleteConfirm ? t('settings.resetConfirm') : t('settings.deleteAccountButton')}
+							</button>
+						</div>
+					{/if}
 				</div>
 			{:else if section === 'reading'}
 				<h2 class="text-h2 mb-1">{t('settings.navReading')}</h2>
