@@ -32,6 +32,20 @@ describe('readerPrefs store', () => {
 		expect(stored().font).toBe('dyslexic');
 	});
 
+	it('reset() restores every preference to its default', () => {
+		readerPrefs.setScale(1.4);
+		readerPrefs.setFont('dyslexic');
+		readerPrefs.setMeasure('wide');
+		readerPrefs.setPreferModern(true);
+		readerPrefs.reset();
+		expect(readerPrefs.scale).toBe(1);
+		expect(readerPrefs.font).toBe('serif');
+		expect(readerPrefs.measure).toBe('normal');
+		expect(readerPrefs.preferModern).toBe(false);
+		expect(stored().scale).toBe(1);
+		expect(stored().font).toBe('serif');
+	});
+
 	it('persists the prefer-Modern-English default (off by default)', () => {
 		expect(readerPrefs.preferModern).toBe(false);
 		readerPrefs.setPreferModern(true);

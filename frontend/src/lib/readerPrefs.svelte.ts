@@ -168,6 +168,19 @@ class ReaderPrefs {
 		this.#save();
 	}
 
+	/** Restore every reader comfort preference to its default (Settings → reset).
+	 *  Does not touch reading data (progress, highlights) — only preferences. */
+	reset() {
+		this.scale = DEFAULTS.scale;
+		this.leading = DEFAULTS.leading;
+		this.measure = DEFAULTS.measure;
+		this.font = DEFAULTS.font;
+		this.align = DEFAULTS.align;
+		this.paged = DEFAULTS.paged;
+		this.preferModern = DEFAULTS.preferModern;
+		this.#save();
+	}
+
 	/** Inline `style` string for the reading <article>. */
 	get style(): string {
 		return [
