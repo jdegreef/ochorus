@@ -129,6 +129,27 @@
 					</div>
 				</div>
 
+				<!-- Text size — mirrors the reader's Aa stepper (same readerPrefs.scale). -->
+				<div class="setting-row">
+					<div>
+						<div class="setting-label">{t('settings.textSize')}</div>
+						<div class="setting-sub">{t('settings.textSizeSub')}</div>
+					</div>
+					<div class="flex items-center gap-1">
+						<button
+							class="btn btn-ghost !px-2.5 !py-1"
+							onclick={() => readerPrefs.bumpScale(-0.1)}
+							aria-label={t('a11y.smallerText')}>A−</button
+						>
+						<span class="w-12 text-center text-small text-muted">{Math.round(readerPrefs.scale * 100)}%</span>
+						<button
+							class="btn btn-ghost !px-2.5 !py-1 !text-base"
+							onclick={() => readerPrefs.bumpScale(0.1)}
+							aria-label={t('a11y.largerText')}>A+</button
+						>
+					</div>
+				</div>
+
 				<!-- Listen: voice + speed -->
 				<div class="setting-row">
 					<div>
