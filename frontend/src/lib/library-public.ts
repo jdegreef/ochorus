@@ -41,6 +41,9 @@ export interface TopicChip {
 	title: string;
 }
 
+/** Relative reading-difficulty badge, computed server-side; null = unjudged. */
+export type Difficulty = 'accessible' | 'moderate' | 'advanced' | null;
+
 export interface BookDetail extends BookSummary {
 	description: string;
 	source_url: string;
@@ -48,6 +51,7 @@ export interface BookDetail extends BookSummary {
 	chapters: ChapterToc[];
 	topics: TopicChip[];
 	related: BookSummary[];
+	difficulty: Difficulty;
 	/** This row IS the Modern English edition (language en-modern). */
 	is_modern_edition: boolean;
 	/** A Modern English edition of this work is published and can be read. */
@@ -181,6 +185,9 @@ export interface Sermon extends SermonSummary {
 	next: SermonNeighbour | null;
 	/** Distinct passages the sermon engages (its text + body citations). */
 	scripture_refs: string[];
+	/** "In brief" TL;DR (plain text); "" when none has been written yet. */
+	summary: string;
+	difficulty: Difficulty;
 }
 
 export interface AuthorBio {

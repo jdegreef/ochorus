@@ -349,6 +349,10 @@ class Sermon(models.Model):
     )
     # When it was preached, if known (day precision optional — see year note).
     preached_on = models.DateField(null=True, blank=True)
+    # An "In brief" TL;DR (2–4 sentences, plain text). AI-drafted off-server
+    # and shipped in the sermon's fixture file, per the pipeline's founding
+    # rule (prod holds no model credentials); blank = the reader shows none.
+    summary = models.TextField(blank=True, default="")
     # Cleaned, structured HTML body (paragraphs, headings, blockquotes).
     body_html = models.TextField()
     # Plain text derived from body_html; what full-text search indexes.
