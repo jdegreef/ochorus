@@ -11,6 +11,28 @@
 	const plans = $derived<PlanSummary[]>(data.plans);
 	const t = i18n.t;
 
+	// Length filter: help a reader pick a plan that fits the time they have, and
+	// keep the list scannable as it grows. Buckets are derived from the day count
+	// — short (up to two weeks), medium (up to a month), long (a month or more).
+	type LengthBucket = 'all' | 'short' | 'medium' | 'long';
+	const BUCKETS: LengthBucket[] = ['all', 'short', 'medium', 'long'];
+	const bucketOf = (days: number): Exclude<LengthBucket, 'all'> =>
+		days <= 14 ? 'short' : days <= 30 ? 'medium' : 'long';
+	let lengthFilter = $state<LengthBucket>('all');
+	const counts = $derived.by(() => {
+		const c: Record<string, number> = { all: plans.length, short: 0, medium: 0, long: 0 };
+		for (const p of plans) c[bucketOf(p.day_count)]++;
+		return c;
+	});
+	const shownPlans = $derived(
+		lengthFilter === 'all' ? plans : plans.filter((p) => bucketOf(p.day_count) === lengthFilter)
+	);
+	// Only offer the filter once there are enough plans (and enough spread) for it
+	// to earn its place; a two-plan list doesn't need filtering.
+	const showLengthFilter = $derived(
+		plans.length >= 3 && BUCKETS.filter((b) => b !== 'all' && counts[b] > 0).length >= 2
+	);
+
 	// Self-referential canonical + hreflang per locale (mirrors /books, /topics).
 	const canonical = `${SITE_URL}${localizeHref('/plans')}`;
 	const alternates = locales.map((loc) => ({
@@ -45,8 +67,32 @@
 		<p class="text-small text-muted">{t('plans.none')}</p>
 	{/if}
 
+	{#if showLengthFilter}
+		<div class="mb-6 flex flex-wrap items-center gap-1.5" role="group" aria-label={t('plans.filterLength')}>
+			<span class="mr-1 text-small text-muted">{t('plans.filterLength')}</span>
+			{#each BUCKETS as b (b)}
+				{#if b === 'all' || counts[b] > 0}
+					<button
+						type="button"
+						class="rounded-full border px-2.5 py-1 text-[0.78rem]"
+						class:border-accent={lengthFilter === b}
+						class:bg-accent={lengthFilter === b}
+						class:text-accent-contrast={lengthFilter === b}
+						class:border-border={lengthFilter !== b}
+						class:text-muted={lengthFilter !== b}
+						onclick={() => (lengthFilter = b)}
+						aria-pressed={lengthFilter === b}
+					>
+						{t(`plans.length_${b}`)}
+						<span class="tabular-nums opacity-70">{counts[b]}</span>
+					</button>
+				{/if}
+			{/each}
+		</div>
+	{/if}
+
 	<div class="space-y-4">
-		{#each plans as plan (plan.slug)}
+		{#each shownPlans as plan (plan.slug)}
 			{@const done = planProgress.doneDays(plan.slug).length}
 			{@const started = planProgress.isStarted(plan.slug)}
 			<a
