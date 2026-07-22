@@ -1,13 +1,25 @@
-"""Create fixture books that are missing from an already-seeded database.
+"""Upsert the fixture's books into an already-seeded database.
 
-``seed_if_empty`` only populates a *fresh* database, so a NEW book added to the
-committed fixture never reaches an existing production DB on its own. This
-command creates any fixture book (with its chapters, and its author if absent)
-whose ``(slug, language)`` doesn't exist yet. Existing books are left entirely
-alone — transforms of existing rows still ship as data migrations.
+``seed_if_empty`` only populates a *fresh* database, so neither a NEW book nor
+an edit to an existing one reaches an existing production DB on its own. This
+command reads the same fixture and upserts every book row — a missing
+``(slug, language)`` is created (with its chapters, and its author if absent),
+a changed one is updated, an untouched one is left alone. Runs on every deploy
+(see the release command); idempotent, and the fixture stays the single source
+of truth for book metadata.
 
-Runs on every deploy (see the release command); idempotent. Companion to
-``seed_sermons``, which does the same for sermons (and also updates them).
+Until 2026-07-22 (PR #362) this command only CREATED, so every edit to a book
+field needed a hand-written data migration to reach prod — and forgetting one
+made the change invisible in production while looking fine locally (PR #355:
+18 covers set by ``generate_covers`` never shipped).
+
+SCOPE: the Book row only. An existing book's CHAPTERS are still left alone.
+Chapter ``order`` is a public contract — ``PlanDay.chapter_order``, readers'
+saved positions, prerendered URLs — so silently replacing a chapter set on
+every deploy could shift all three library-wide (see migration 0009, which
+excluded a book from re-chapterization for exactly that reason). Chapter
+changes keep shipping as data migrations, or as ``apply_body_corrections``
+entries for body repairs.
 """
 
 from __future__ import annotations
@@ -33,6 +45,14 @@ BOOK_FIELDS = (
     "is_published",
 )
 CHAPTER_FIELDS = ("order", "title", "body_html", "word_count")
+
+# Seeded on create, then owned by workflows that act on the live DB:
+# approve_translation flips source_type (37 fixture books still say
+# ai_unreviewed), and an urgent copyright unpublish clears is_published there.
+# Same set and same reasoning as seed_sermons.CREATE_ONLY_FIELDS, which spells
+# it out; a fixture that re-asserted either would walk the decision back.
+CREATE_ONLY_FIELDS = frozenset({"source_type", "is_published"})
+UPDATE_FIELDS = tuple(f for f in BOOK_FIELDS if f not in CREATE_ONLY_FIELDS)
 
 
 def require_natural_format(rows, command_name: str):
@@ -64,7 +84,7 @@ def require_natural_format(rows, command_name: str):
 
 
 class Command(BaseCommand):
-    help = "Create fixture books missing from an existing DB (deploy step)."
+    help = "Upsert the fixture's books into an existing DB (deploy step)."
 
     @transaction.atomic
     def handle(self, *args, **opts):
@@ -92,15 +112,11 @@ class Command(BaseCommand):
                     r["fields"]
                 )
 
-        created = 0
+        created = updated = 0
         for row in rows:
             if row.get("model") != "library.book":
                 continue
             f = row["fields"]
-            if Book.objects.filter(
-                slug=f["slug"], language=f.get("language", "en")
-            ).exists():
-                continue
             af = authors.get(f["author"][0])
             if af is None:
                 # The CI integrity test forbids dangling references, so this is
@@ -125,26 +141,58 @@ class Command(BaseCommand):
                     "is_imprint": af.get("is_imprint", False),
                 },
             )
-            book = Book.objects.create(
-                author=author,
-                slug=f["slug"],
-                language=f.get("language", "en"),
-                # Omit fields the fixture row doesn't carry so the model
-                # default applies (e.g. older rows predating a field).
-                **{k: f[k] for k in BOOK_FIELDS if k in f},
-            )
-            for cf in sorted(
-                chapters_by_book.get((f["slug"], f.get("language", "en")), []),
-                key=lambda c: c["order"],
-            ):
-                # .create() runs save(), which derives body_text.
-                Chapter.objects.create(
-                    book=book, **{k: cf[k] for k in CHAPTER_FIELDS if k in cf}
-                )
-            created += 1
-            self.stdout.write(f"  + {book.slug} ({book.chapters.count()} chapters)")
+            language = f.get("language", "en")
+            book = Book.objects.filter(slug=f["slug"], language=language).first()
 
-        if created:
-            self.stdout.write(self.style.SUCCESS(f"Books: {created} created."))
+            if book is None:
+                book = Book.objects.create(
+                    author=author,
+                    slug=f["slug"],
+                    language=language,
+                    # Omit fields the fixture row doesn't carry so the model
+                    # default applies (e.g. older rows predating a field).
+                    **{k: f[k] for k in BOOK_FIELDS if k in f},
+                )
+                for cf in sorted(
+                    chapters_by_book.get((f["slug"], language), []),
+                    key=lambda c: c["order"],
+                ):
+                    # .create() runs save(), which derives body_text.
+                    Chapter.objects.create(
+                        book=book, **{k: cf[k] for k in CHAPTER_FIELDS if k in cf}
+                    )
+                created += 1
+                self.stdout.write(
+                    f"  + {book.slug} [{language}] "
+                    f"({book.chapters.count()} chapters)"
+                )
+                continue
+
+            # A field absent from the fixture row (an older serialization
+            # predating it) is not "changed to the default" — leave it be.
+            changed = [
+                k for k in UPDATE_FIELDS if k in f and getattr(book, k) != f[k]
+            ]
+            for k in changed:
+                setattr(book, k, f[k])
+            if book.author_id != author.id:
+                book.author = author
+                changed.append("author")
+            if changed:
+                # save(), never queryset.update(): Book.save()'s hook ripples a
+                # changed title/language/author into its chapters' stored search
+                # vectors (library/fts.py). A bulk update would leave them STALE
+                # rather than NULL, so backfill_search_vectors — which fills
+                # NULLs only — would never repair them.
+                book.save()
+                updated += 1
+                self.stdout.write(
+                    f"  ~ {book.slug} [{language}] ({', '.join(changed)})"
+                )
+
+        if created or updated:
+            self.stdout.write(
+                self.style.SUCCESS(f"Books: {created} created, {updated} updated.")
+            )
         else:
             self.stdout.write("Books already up to date.")

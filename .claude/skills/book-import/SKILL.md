@@ -82,12 +82,16 @@ book preserves its `sort_order`.
 
 7. **Ship it to prod (two gotchas — see DEPLOYMENT.md).** A book-data change
    doesn't reach the live site by pushing alone:
-   - **The live DB isn't re-seeded from the fixture** (`seed_if_empty` only fills
-     an empty DB). A transform over existing rows must ship as a **data
-     migration** (auto-runs on deploy via `manage.py release`; e.g.
-     `0003_clean_chapter_titles`). A re-import's NEW rows reach prod
-     automatically: the release step's `seed_books` creates any fixture book
-     missing on prod (no Render-shell step needed).
+   - **The live DB isn't re-seeded wholesale from the fixture** (`seed_if_empty`
+     only fills an empty DB). **Book rows** are fine — the release step's
+     `seed_books` upserts them: a NEW book is created with its chapters, and a
+     changed book field (`title`, `cover_url`, `description`, `sort_order`, …)
+     is updated on the next deploy, straight from the fixture. But an existing
+     book's **chapters** are left alone, so a re-import that rewrites chapter
+     text, and any other transform over existing rows, still ships as a **data
+     migration** (auto-runs via `manage.py release`; e.g.
+     `0003_clean_chapter_titles`). `source_type` / `is_published` are
+     create-only — the review and unpublish workflows own them.
    - **The prerendered `/books/<slug>` + `/authors/<slug>` pages won't refresh
      from a backend-only commit.** Render skips the `ochorus-web` build when
      nothing under `frontend/` changed, so the API + reader update but the static

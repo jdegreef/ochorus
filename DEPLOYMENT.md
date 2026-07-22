@@ -82,12 +82,21 @@ uv run python scripts/regen_fixture.py   # pinned 6-model natural-key regen; NEV
 
 ### Getting a data change onto the live site — two gotchas
 
-1. **The live DB isn't re-seeded from the fixture.** `seed_if_empty` only fills
-   an *empty* database, so a fixture change alone never reaches production. To
-   update live data, ship it as a **data migration** (runs on deploy via
-   `manage.py release`; see `0003_clean_chapter_titles`) — or, for a one-off,
-   the release step's seed commands (`seed_books`/`seed_sermons`) — no
-   Render-shell step needed.
+1. **The live DB isn't re-seeded wholesale from the fixture.** `seed_if_empty`
+   only fills an *empty* database. What carries a change to prod depends on the
+   row:
+   - **Book rows and sermon rows** — the fixture *is* the vehicle. `seed_books`
+     and `seed_sermons` run on every release and **upsert** them: a new
+     `(slug, language)` is created, a changed field (`title`, `cover_url`,
+     `description`, `sort_order`, …) is updated. Regen the fixture and push; no
+     migration, no Render-shell step.
+   - **Everything else** — chapter text, author bios, taxonomy, anything an
+     existing book's *chapters* carry — still needs a **data migration** (runs
+     on deploy via `manage.py release`; see `0003_clean_chapter_titles`).
+   - `source_type` and `is_published` are **create-only** in both seeds: they're
+     owned by the review/unpublish workflow on the live DB, so the fixture never
+     re-asserts them. Changing one on prod still needs a migration (or the
+     `approve_translation` command).
 
 2. **A backend-only change does NOT refresh the prerendered pages.** The public
    `/books/<slug>` and `/authors/<slug>` pages are static HTML baked at *frontend

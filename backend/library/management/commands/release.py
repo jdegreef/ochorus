@@ -25,7 +25,8 @@ class Command(BaseCommand):
         # Idempotent text repairs (no-op when the fixture is already fixed).
         self.stdout.write("→ apply_body_corrections")
         call_command("apply_body_corrections")
-        # Create fixture books that are missing from an already-seeded DB.
+        # Upsert fixture books into an already-seeded DB (new books arrive with
+        # their chapters; changed book fields are updated — chapters are not).
         self.stdout.write("→ seed_books")
         call_command("seed_books")
         self.stdout.write("→ seed_plans")
