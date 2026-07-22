@@ -522,6 +522,31 @@
 	<!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
 	<div class="reading" bind:this={body} onclick={onBodyClick}>{@html sermon.body_html}</div>
 
+	<!-- Sequential prev/next through this author's sermons, so a reader who
+	     finishes one keeps going instead of dead-ending at the bottom. -->
+	{#if sermon.prev || sermon.next}
+		<nav class="mt-12 flex gap-3 border-t border-border pt-6" aria-label={t('sermon.sequentialNav')}>
+			{#if sermon.prev}
+				<a
+					href={localizeHref(`/sermons/${sermon.prev.slug}`)}
+					class="group flex-1 rounded-card border border-border p-3 hover:border-accent hover:no-underline"
+				>
+					<div class="text-[0.72rem] uppercase tracking-wide text-muted">← {t('reader.previous')}</div>
+					<div class="mt-0.5 text-small font-semibold text-text group-hover:text-accent">{sermon.prev.title}</div>
+				</a>
+			{/if}
+			{#if sermon.next}
+				<a
+					href={localizeHref(`/sermons/${sermon.next.slug}`)}
+					class="group flex-1 rounded-card border border-border p-3 text-right hover:border-accent hover:no-underline"
+				>
+					<div class="text-[0.72rem] uppercase tracking-wide text-muted">{t('reader.next')} →</div>
+					<div class="mt-0.5 text-small font-semibold text-text group-hover:text-accent">{sermon.next.title}</div>
+				</a>
+			{/if}
+		</nav>
+	{/if}
+
 	{#if related.length}
 		<section class="mt-12 border-t border-border pt-6">
 			<h2 class="text-h3 mb-3">{t('sermon.moreOn')} {book}</h2>

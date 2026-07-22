@@ -845,6 +845,57 @@ class SermonTranslationLabelTests(TestCase):
         self.assertEqual(native.source_type, Book.SourceType.PUBLIC_DOMAIN)
 
 
+class SermonNeighboursTests(TestCase):
+    """Sequential prev/next through an author's sermon corpus (shelf order)."""
+
+    def setUp(self):
+        self.client = APIClient()
+        self.a = Author.objects.create(slug="cs", name="C. Spurgeon")
+        # Deliberately created out of order; shelf order is (sort_order, title).
+        for slug, order, title in (
+            ("gamma", 2, "Gamma"),
+            ("alpha", 0, "Alpha"),
+            ("beta", 1, "Beta"),
+        ):
+            Sermon.objects.create(
+                author=self.a, slug=slug, language="en", title=title,
+                sort_order=order, body_html="<p>words</p>",
+            )
+        # A sermon by another author must never be a neighbour.
+        other = Author.objects.create(slug="dm", name="D. L. Moody")
+        Sermon.objects.create(
+            author=other, slug="delta", language="en", title="Delta",
+            body_html="<p>x</p>",
+        )
+        # An unpublished sermon is skipped in the sequence.
+        Sermon.objects.create(
+            author=self.a, slug="hidden", language="en", title="Hidden",
+            sort_order=1, body_html="<p>x</p>", is_published=False,
+        )
+
+    def _detail(self, slug):
+        res = self.client.get(f"/api/library/sermons/{slug}/?language=en")
+        self.assertEqual(res.status_code, 200)
+        return res.data
+
+    def test_middle_has_both_neighbours(self):
+        d = self._detail("beta")
+        self.assertEqual(d["prev"], {"slug": "alpha", "title": "Alpha"})
+        self.assertEqual(d["next"], {"slug": "gamma", "title": "Gamma"})
+
+    def test_ends_are_null(self):
+        self.assertIsNone(self._detail("alpha")["prev"])
+        self.assertIsNone(self._detail("gamma")["next"])
+
+    def test_neighbours_stay_within_author_and_published(self):
+        # gamma's next would be the other author's "delta" if not scoped — it isn't.
+        self.assertIsNone(self._detail("gamma")["next"])
+        # beta's neighbours skip the unpublished "hidden".
+        d = self._detail("beta")
+        self.assertEqual(d["prev"]["slug"], "alpha")
+        self.assertEqual(d["next"]["slug"], "gamma")
+
+
 class FixtureSermonLabelTests(TestCase):
     """Guard the fixture itself: a shipped translation must carry its badge."""
 

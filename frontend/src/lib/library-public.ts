@@ -163,6 +163,12 @@ export interface SermonSummary {
 	author: Author;
 }
 
+/** Adjacent sermon in the author's corpus, for prev/next navigation. */
+export interface SermonNeighbour {
+	slug: string;
+	title: string;
+}
+
 export interface Sermon extends SermonSummary {
 	body_html: string;
 	source_type: SourceType;
@@ -170,6 +176,9 @@ export interface Sermon extends SermonSummary {
 	author_name: string;
 	author_slug: string;
 	author_photo: string;
+	/** Previous / next sermon by the same author (shelf order); null at the ends. */
+	prev: SermonNeighbour | null;
+	next: SermonNeighbour | null;
 }
 
 export interface AuthorBio {
