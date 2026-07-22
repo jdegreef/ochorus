@@ -106,6 +106,12 @@ import type { PageLoad } from './$types';
  * edition of Godliness (Utauwa, PR #332) by Catherine Booth went live, so the
  * /sw/books index and its /books/<slug> pages re-crawl and bake with the new
  * title.
+ *
+ * Prerender refresh 2026-07-22 (School of Prayer source books): after the
+ * Luganda + Swahili editions of Lord, Teach Us To Pray (Mukama, Tuyigirize
+ * Okusaba / Bwana, Tufundishe Kuomba) and the Swahili Prevailing Prayer
+ * (Maombi Yenye Kushinda) went live (PR #351), so the /lg/books and /sw/books
+ * indexes and their /books/<slug> pages re-crawl and bake with the new titles.
  */
 export const load: PageLoad = async () => {
 	try {
