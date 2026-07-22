@@ -30,7 +30,9 @@ catches loudly:
 from __future__ import annotations
 
 from collections import Counter
+from functools import lru_cache
 
+from django.conf import settings
 from django.test import SimpleTestCase
 
 from library.content_fixtures import (
@@ -58,6 +60,23 @@ def _dupes(counter: Counter) -> list:
     return sorted(k for k, n in counter.items() if n > 1)
 
 
+@lru_cache(maxsize=1)
+def all_rows() -> list:
+    """Every content row, parsed once for the whole module.
+
+    ``load_all_rows`` re-reads all 166 files on each call (~114MB of transient
+    allocation), and several classes here want the same rows. Cached in the test
+    module rather than in ``content_fixtures`` so the seed commands, which run in
+    long-lived processes, don't hold the parsed tree forever.
+    """
+    return load_all_rows()
+
+
+def _cover(fields: dict) -> str:
+    """A book row's cover_url, absent-or-null normalised to ''."""
+    return fields.get("cover_url") or ""
+
+
 class FixtureIntegrityTests(SimpleTestCase):
     """File-level invariants every content append must preserve."""
 
@@ -66,7 +85,7 @@ class FixtureIntegrityTests(SimpleTestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.rows = load_all_rows()
+        cls.rows = all_rows()
         cls.by_model = {}
         for r in cls.rows:
             cls.by_model.setdefault(r["model"], []).append(r)
@@ -391,3 +410,77 @@ class AuthorBioDataIntegrityTests(SimpleTestCase):
                 f"{d.name}: bios for slugs missing from authors.json — the "
                 "seed would soft-skip these forever",
             )
+
+
+class CoverAssetTests(SimpleTestCase):
+    """Covers must be served by Ochorus and must actually exist.
+
+    Two silent failures preceded PR #355. 28 books hotlinked ochorus.com's
+    WordPress media — the site being retired — and those URLs also fed
+    ``og:image``. And 18 had no ``cover_url`` at all, because
+    ``generate_covers`` writes the SVG *and* sets the field, but only in the
+    developer's local db; the artwork was committed and serving while the db
+    half never had a vehicle to production. Neither surfaces as an error: a
+    hotlink 200s until the day it doesn't, and an empty cover_url is a valid
+    value that ``BookCover.svelte`` quietly papers over on most surfaces.
+
+    These guard the fixture, which is where a *new* mistake enters. They cannot
+    catch fixture-correct-but-prod-stale drift — that needs ``seed_books`` to
+    upsert the way ``seed_sermons`` already does.
+    """
+
+    # Anchored on settings, like generate_covers' COVERS_DIR — walking up from
+    # the fixture dir would encode the content layout's depth into a fact about
+    # the frontend tree.
+    STATIC_DIR = settings.BASE_DIR.parent / "frontend" / "static"
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.books = [
+            r["fields"] for r in all_rows() if r["model"] == "library.book"
+        ]
+
+    def test_published_covers_are_self_hosted(self):
+        external = sorted(
+            (f["slug"], f["language"], _cover(f))
+            for f in self.books
+            if f.get("is_published") and "://" in _cover(f)
+        )
+        self.assertEqual(
+            external, [],
+            "published books must serve covers from Ochorus, not a third-party "
+            "host — download into frontend/static/covers/ and repoint",
+        )
+
+    def test_cover_files_exist(self):
+        missing = sorted(
+            (f["slug"], f["language"], _cover(f))
+            for f in self.books
+            if _cover(f).startswith("/")
+            and not (self.STATIC_DIR / _cover(f).lstrip("/")).is_file()
+        )
+        self.assertEqual(missing, [], "cover_url points at a file that isn't committed")
+
+    def test_published_books_have_a_cover(self):
+        blank = sorted(
+            (f["slug"], f["language"])
+            for f in self.books
+            if f.get("is_published") and not _cover(f)
+        )
+        self.assertEqual(
+            blank, [],
+            "published book with no cover — flat colour on every surface that "
+            "doesn't route through BookCover (CoverStrip, ContinueReading, /topics)",
+        )
+
+    def test_svg_covers_have_a_raster_twin_for_og_image(self):
+        # og:image falls back to /covers/<slug>.png when the cover is an SVG —
+        # social platforms refuse SVG previews (books/[slug]/+page.svelte).
+        missing = sorted(
+            f["slug"]
+            for f in self.books
+            if _cover(f).endswith(".svg")
+            and not (self.STATIC_DIR / "covers" / f"{f['slug']}.png").is_file()
+        )
+        self.assertEqual(missing, [], "generated SVG cover without its .png twin")
