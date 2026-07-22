@@ -17,6 +17,9 @@ export const ANCHOR_KEY = 'ochorus:anchors';
 export const BOOKMARKS_KEY = 'ochorus:bookmarks';
 export const PLANS_KEY = 'ochorus:plans';
 export const FAVORITES_KEY = 'ochorus:favorites';
+// When the device last successfully synced with the account (ms epoch, as a
+// bare string). Tied to the signed-in session, so it's wiped on sign-out.
+export const LAST_SYNC_KEY = 'ochorus:last-sync';
 // Legacy device-local sermon stores, folded into MARKS_KEY / ANCHOR_KEY under
 // `sermon:`-prefixed keys when sermons joined the synced reading layer
 // (roadmap #10). Kept only so the one-time migrations and the sign-out wipe
@@ -37,6 +40,7 @@ export const READING_DATA_KEYS = [
 	BOOKMARKS_KEY,
 	PLANS_KEY,
 	FAVORITES_KEY,
+	LAST_SYNC_KEY,
 	LEGACY_SERMON_MARKS_KEY,
 	LEGACY_SERMON_ANCHOR_KEY
 ] as const;

@@ -4,6 +4,7 @@ import {
 	PROGRESS_KEY,
 	MARKS_KEY,
 	FAVORITES_KEY,
+	LAST_SYNC_KEY,
 	READING_DATA_KEYS,
 	migrateLegacySermonState,
 	workKey,
@@ -73,6 +74,35 @@ class ReadingSync {
 		this.signedIn = v;
 	}
 
+	/** Epoch-ms of the last successful sync, or null if never (read from storage
+	 *  so the settings page needs no reactive bridge into this plain module). */
+	readLastSynced(): number | null {
+		if (!browser) return null;
+		const v = Number(localStorage.getItem(LAST_SYNC_KEY));
+		return Number.isFinite(v) && v > 0 ? v : null;
+	}
+
+	/** Record a successful sync. Kept quiet (no 'ochorus:sync' dispatch) so the
+	 *  frequent debounced pushes don't churn every open view; the settings page
+	 *  re-reads this on its own events. */
+	#markSynced() {
+		if (!browser) return;
+		try {
+			localStorage.setItem(LAST_SYNC_KEY, String(Date.now()));
+		} catch {
+			/* storage full / private mode — the timestamp just won't persist */
+		}
+	}
+
+	/** Manual re-sync from the settings page: push the local cache and pull the
+	 *  server truth (the same idempotent union merge used at sign-in). Resolves
+	 *  false when there's no signed-in session to sync with. */
+	async syncNow(): Promise<boolean> {
+		if (!this.signedIn || !browser) return false;
+		await this.mergeOnSignIn();
+		return true;
+	}
+
 	/** Debounce a push, coalescing rapid updates to the same resource. */
 	#debounce(key: string, fn: () => void, ms = 800) {
 		clearTimeout(this.#timers.get(key));
@@ -102,7 +132,9 @@ class ReadingSync {
 					chapter_order: rec.order,
 					paragraph_index: rec.paragraph_index
 				})
-			}).catch(() => {});
+			})
+				.then(() => this.#markSynced())
+				.catch(() => {});
 		});
 	}
 
@@ -112,7 +144,9 @@ class ReadingSync {
 			apiFetch(`/api/reading/marks/${slug}/${order}/${this.#kindQuery(kind)}`, {
 				method: 'PUT',
 				body: JSON.stringify({ kind, language, marks })
-			}).catch(() => {});
+			})
+				.then(() => this.#markSynced())
+				.catch(() => {});
 		});
 	}
 
@@ -122,7 +156,9 @@ class ReadingSync {
 		this.#debounce(`f:${kind}:${slug}`, () => {
 			apiFetch(`/api/reading/favorites/${kind}/${slug}/`, {
 				method: active ? 'PUT' : 'DELETE'
-			}).catch(() => {});
+			})
+				.then(() => this.#markSynced())
+				.catch(() => {});
 		});
 	}
 
@@ -194,6 +230,7 @@ class ReadingSync {
 			const serverKnowsKinds = serverRows.some((r) => 'kind' in r);
 			if (sentSermonRows && serverRows.length > 0 && !serverKnowsKinds) return;
 			this.#writeState(state);
+			this.#markSynced();
 		} catch {
 			/* offline or API down — keep the local cache untouched */
 		}
