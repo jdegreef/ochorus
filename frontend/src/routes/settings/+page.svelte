@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
+	import { localizeHref } from '$lib/paraglide/runtime';
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { theme } from '$lib/theme.svelte';
@@ -10,20 +11,23 @@
 	import { listen, RATES } from '$lib/listen.svelte';
 	import { readingSync } from '$lib/readingSync';
 	import { collectExport, toMarkdown, downloadFile } from '$lib/dataExport';
+	import { collectReadingActivity, type ReadingStats, type HistoryItem } from '$lib/readingStats';
+	import { relativeTime } from '$lib/relativeTime';
 	import Icon, { type IconName } from '$lib/components/Icon.svelte';
 
 	const t = i18n.t;
 
-	type Section = 'profile' | 'reading' | 'appearance';
+	type Section = 'profile' | 'reading' | 'appearance' | 'activity';
 	const SECTIONS: { id: Section; label: string; icon: IconName }[] = [
 		{ id: 'profile', label: t('settings.navProfile'), icon: 'users' },
 		{ id: 'reading', label: t('settings.navReading'), icon: 'book' },
-		{ id: 'appearance', label: t('settings.navAppearance'), icon: 'sun' }
+		{ id: 'appearance', label: t('settings.navAppearance'), icon: 'sun' },
+		{ id: 'activity', label: t('settings.navActivity'), icon: 'compass' }
 	];
 	// The active section lives in the URL (?section=…) so it survives the full
 	// reload a language change triggers, and so it's shareable/back-navigable.
 	const isSection = (s: string | null): s is Section =>
-		s === 'profile' || s === 'reading' || s === 'appearance';
+		s === 'profile' || s === 'reading' || s === 'appearance' || s === 'activity';
 	const initial = $page.url.searchParams.get('section');
 	let section = $state<Section>(isSection(initial) ? initial : 'profile');
 
@@ -90,16 +94,9 @@
 	});
 	// Localised relative time ("just now", "3 minutes ago", "yesterday").
 	const relSynced = $derived.by(() => {
+		syncTick; // re-evaluate after a manual sync / cache event
 		const ts = lastSynced;
-		if (!ts) return t('settings.syncNever');
-		const diffS = Math.round((ts - Date.now()) / 1000);
-		if (Math.abs(diffS) < 45) return t('settings.syncJustNow');
-		const rtf = new Intl.RelativeTimeFormat(lang.current, { numeric: 'auto' });
-		const mins = Math.round(diffS / 60);
-		if (Math.abs(mins) < 60) return rtf.format(mins, 'minute');
-		const hrs = Math.round(diffS / 3600);
-		if (Math.abs(hrs) < 24) return rtf.format(hrs, 'hour');
-		return rtf.format(Math.round(diffS / 86400), 'day');
+		return ts ? relativeTime(ts, lang.current, t('settings.syncJustNow')) : t('settings.syncNever');
 	});
 	async function syncNow() {
 		if (syncing) return;
@@ -116,6 +113,42 @@
 		window.addEventListener('ochorus:sync', bump);
 		return () => window.removeEventListener('ochorus:sync', bump);
 	});
+
+	// "Your reading" — stats + recent history, loaded when the section is first
+	// opened (it fetches the catalogs to resolve titles) and refreshed on sync.
+	let activityLoaded = $state(false);
+	let stats = $state<ReadingStats | null>(null);
+	let history = $state<HistoryItem[]>([]);
+	async function loadActivity() {
+		const { stats: s, history: h } = await collectReadingActivity(lang.current);
+		stats = s;
+		history = h;
+		activityLoaded = true;
+	}
+	$effect(() => {
+		syncTick; // reload after a sync/merge changes the local cache
+		if (section === 'activity') loadActivity();
+	});
+	// Ordered stat tiles for the grid (label + value), zeros included.
+	const statTiles = $derived(
+		stats
+			? [
+					{ label: t('settings.statInProgress'), value: stats.inProgress },
+					{ label: t('settings.statFinished'), value: stats.finished },
+					{ label: t('settings.statHighlights'), value: stats.highlights },
+					{ label: t('settings.statNotes'), value: stats.notes },
+					{ label: t('settings.statFavorites'), value: stats.favorites },
+					{ label: t('settings.statBookmarks'), value: stats.bookmarks }
+				]
+			: []
+	);
+	// Resume link for a history row (books deep-link to the chapter).
+	const historyHref = (h: HistoryItem) =>
+		h.kind === 'sermon'
+			? localizeHref(`/sermons/${h.slug}`)
+			: h.kind === 'bio'
+				? localizeHref(`/authors/${h.slug}`)
+				: localizeHref(`/books/${h.slug}/${h.order}`);
 
 	// The device's TTS voices load asynchronously; init the store so they populate,
 	// then show only the best few for the currently-selected language.
@@ -373,6 +406,45 @@
 				<p class="pt-1 text-lg text-text" style="font-family: {FONT_STACK[readerPrefs.font]}">
 					{t('settings.fontSample')}
 				</p>
+			{:else if section === 'activity'}
+				<h2 class="text-h2 mb-1">{t('settings.activityTitle')}</h2>
+				<p class="mb-6 text-small text-muted">{t('settings.activitySubtitle')}</p>
+
+				{#if stats}
+					<!-- Stat tiles -->
+					<div class="grid grid-cols-3 gap-3 sm:grid-cols-6">
+						{#each statTiles as tile (tile.label)}
+							<div class="rounded-card border border-border bg-surface-2 px-3 py-4 text-center">
+								<div class="text-h2 font-semibold text-text" style="font-family: var(--font-display)">{tile.value}</div>
+								<div class="mt-0.5 text-[0.75rem] text-muted">{tile.label}</div>
+							</div>
+						{/each}
+					</div>
+
+					<!-- Recently reading -->
+					<h3 class="text-h3 mb-3 mt-9">{t('settings.recentReading')}</h3>
+					{#if history.length}
+						<ol class="divide-y divide-border">
+							{#each history as h (h.kind + ':' + h.slug)}
+								<li>
+									<a href={historyHref(h)} class="flex items-baseline gap-3 py-2.5 hover:no-underline">
+										<span class="flex-1 min-w-0">
+											<span class="block truncate text-body text-text">{h.title}</span>
+											<span class="block truncate text-[0.8rem] text-muted">
+												{#if h.author}{h.author}{/if}{#if h.kind === 'book'} · {t('settings.chapterN')} {h.order}{/if}{#if h.finished} · {t('settings.statFinished')}{/if}
+											</span>
+										</span>
+										<span class="shrink-0 text-[0.8rem] text-muted">{relativeTime(h.at, lang.current, t('settings.syncJustNow'))}</span>
+									</a>
+								</li>
+							{/each}
+						</ol>
+					{:else}
+						<p class="text-body text-muted">{t('settings.activityEmpty')}</p>
+					{/if}
+				{:else}
+					<p class="text-small text-muted">…</p>
+				{/if}
 			{/if}
 		</section>
 	</div>
