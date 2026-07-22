@@ -2559,8 +2559,6 @@ class LocalizedAuthorBioTests(TestCase):
         self.assertEqual(res.data["author"]["bio"], "An itinerant pastor.")
 
     def test_untranslated_language_falls_back_to_the_original(self):
-        res = self.client.get("/api/library/books/tomorrows/?language=lg")
-        self.assertEqual(res.data["author"]["bio"], "Musumba atambulatambula.")
         # A language with no AuthorTranslation keeps the English original
         # rather than rendering blank.
         Book.objects.create(
@@ -2573,21 +2571,74 @@ class LocalizedAuthorBioTests(TestCase):
         # The regression guard: a serializer used by a view that never sets
         # context["language"] still localizes, because Localized falls back to
         # the request's own ?language=.
+        from rest_framework.request import Request
         from rest_framework.test import APIRequestFactory
 
         from library.serializers import AuthorSerializer
 
-        request = APIRequestFactory().get("/api/library/books/?language=lg")
+        request = Request(APIRequestFactory().get("/api/library/books/?language=lg"))
         data = AuthorSerializer(self.author, context={"request": request}).data
         self.assertEqual(data["bio"], "Musumba atambulatambula.")
 
-    def test_shelf_does_not_query_translations_per_book(self):
-        # The bio is now rendered per card — without prefetching, a shelf of N
-        # books costs N extra queries.
-        for i in range(4):
+    def _translation_queries(self, url):
+        from django.db import connection
+        from django.test.utils import CaptureQueriesContext
+
+        with CaptureQueriesContext(connection) as ctx:
+            self.client.get(url)
+        return [q for q in ctx.captured_queries if "authortranslation" in q["sql"].lower()]
+
+    def _add_books(self, n, *, author=None, offset=0):
+        for i in range(offset, offset + n):
             Book.objects.create(
-                author=Author.objects.create(slug=f"a{i}", name=f"A{i}", bio="x"),
+                author=author
+                or Author.objects.create(slug=f"a{i}", name=f"A{i}", bio="x"),
                 slug=f"b{i}", language="lg", title=f"B{i}",
             )
-        with self.assertNumQueries(3):  # books + topics(+translations/entries)
-            self.client.get("/api/library/books/?language=lg")
+
+    def _add_sermons(self, n, *, author=None, offset=0):
+        for i in range(offset, offset + n):
+            Sermon.objects.create(
+                author=author
+                or Author.objects.create(slug=f"s-a{i}", name=f"SA{i}", bio="x"),
+                slug=f"s{i}", language="lg", title=f"S{i}", body_html="<p>x</p>",
+            )
+
+    def test_bio_rendering_costs_a_constant_number_of_queries(self):
+        """Every path that renders a bio per row must prefetch translations.
+
+        Asserts invariance as the payload grows (not an absolute count, which
+        unrelated fixture changes would flip). Each case grows the rows THAT
+        endpoint actually renders — otherwise the assertion passes vacuously,
+        which is how the first version of this test missed a real N+1.
+        """
+        cases = [
+            # (url, grow more of what this endpoint renders)
+            ("/api/library/books/?language=lg", lambda n, off: self._add_books(n, offset=off)),
+            ("/api/library/sermons/?language=lg", lambda n, off: self._add_sermons(n, offset=off)),
+            # The author page lists that author's own books + sermons; book
+            # detail's "related" shelf is same-author too.
+            (
+                "/api/library/authors/gareth-evans/?language=lg",
+                lambda n, off: (
+                    self._add_books(n, author=self.author, offset=off),
+                    self._add_sermons(n, author=self.author, offset=off),
+                ),
+            ),
+            (
+                "/api/library/books/tomorrows/?language=lg",
+                lambda n, off: self._add_books(n, author=self.author, offset=off),
+            ),
+        ]
+        for url, grow in cases:
+            with self.subTest(url=url):
+                grow(2, 0)
+                small = len(self._translation_queries(url))
+                grow(4, 2)
+                self.assertEqual(
+                    len(self._translation_queries(url)), small,
+                    f"{url} issues a translations query per row",
+                )
+                Book.objects.exclude(slug="tomorrows").delete()
+                Sermon.objects.exclude(slug="a-sermon").delete()
+                Author.objects.exclude(slug="gareth-evans").delete()

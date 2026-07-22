@@ -12,10 +12,10 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from .localization import DEFAULT_LANGUAGE, language_from_request
 from .models import Author, Book, Chapter, Plan, SearchQueryLog, Sermon, Topic
 from .search import search_library, suggest
 from .serializers import (
-    DEFAULT_LANGUAGE,
     AuthorDetailSerializer,
     AuthorListSerializer,
     BookDetailSerializer,
@@ -49,7 +49,7 @@ LANGUAGE_NAMES = {
 
 
 def _language(request) -> str:
-    return request.query_params.get("language", DEFAULT_LANGUAGE)
+    return language_from_request(request)
 
 
 def _language_entry(code: str) -> dict:
@@ -267,6 +267,7 @@ def _attach_books(topics, language):
     books = (
         Book.objects.filter(slug__in=wanted, language=language, is_published=True)
         .select_related("author")
+        .prefetch_related("author__translations")
         .annotate(num_chapters=Count("chapters"), total_words=Sum("chapters__word_count"))
     )
     by_slug = {b.slug: b for b in books}
@@ -282,9 +283,11 @@ def _attach_sermons(topics, language):
     in ``language``) to each topic, in two queries total — the sermon companion
     to ``_attach_books``."""
     wanted = {e.sermon_slug for t in topics for e in t.sermon_entries.all()}
-    sermons = Sermon.objects.filter(
-        slug__in=wanted, language=language, is_published=True
-    ).select_related("author")
+    sermons = (
+        Sermon.objects.filter(slug__in=wanted, language=language, is_published=True)
+        .select_related("author")
+        .prefetch_related("author__translations")
+    )
     by_slug = {s.slug: s for s in sermons}
     for t in topics:
         t.sermons_in_language = [

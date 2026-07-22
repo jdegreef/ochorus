@@ -1,11 +1,9 @@
 from rest_framework import serializers
 
 from .contemporize import MODERN_LANGUAGE
+from .localization import DEFAULT_LANGUAGE, language_from_request
 from .models import Author, Book, Chapter, Plan, PlanDay, Sermon, Topic, TopicBook
 from .scripture import book_of
-
-
-DEFAULT_LANGUAGE = "en"
 
 
 def _modern_edition_available(slug: str) -> bool:
@@ -15,34 +13,26 @@ def _modern_edition_available(slug: str) -> bool:
     ).exists()
 
 
-class Localized:
+class LocalizedMixin:
     """Mixin for serializers whose output depends on the reader's language.
 
     ``_language()`` prefers an explicit ``language`` in the context (a view
     that resolved it, or a parent serializer passing it down) and otherwise
-    falls back to the request's own ``?language=``. The fallback is the point:
-    a view that forgets to thread the context still serves the right language
-    instead of silently serving English — which is exactly how the author
-    mini-bio stayed English on every localized book page.
+    reads the request's own ``?language=`` through the shared resolver. That
+    fallback is the point: a view can't serve English by forgetting to thread
+    the context — which is exactly how the author mini-bio stayed English on
+    every localized book page. Declared nested fields inherit the root's
+    context automatically; hand-instantiated ones must be passed
+    ``context=self.context``.
     """
 
     def _language(self) -> str:
-        language = self.context.get("language")
-        if language:
-            return language
-        request = self.context.get("request")
-        # DRF wraps requests (query_params); a plain Django request (tests,
-        # management commands, non-DRF callers) only has GET — accept either
-        # rather than raising from inside a serializer field.
-        params = getattr(request, "query_params", None)
-        if params is None:
-            params = getattr(request, "GET", None)
-        if params is not None:
-            return params.get("language") or DEFAULT_LANGUAGE
-        return DEFAULT_LANGUAGE
+        return self.context.get("language") or language_from_request(
+            self.context.get("request")
+        )
 
 
-class AuthorSerializer(Localized, serializers.ModelSerializer):
+class AuthorSerializer(LocalizedMixin, serializers.ModelSerializer):
     """The author of a book/sermon card — name, portrait, and short bio.
 
     The bio is localized (``AuthorTranslation``), like the biographies page's.
@@ -58,7 +48,7 @@ class AuthorSerializer(Localized, serializers.ModelSerializer):
         return obj.bio_for(self._language())
 
 
-class AuthorListSerializer(Localized, serializers.ModelSerializer):
+class AuthorListSerializer(LocalizedMixin, serializers.ModelSerializer):
     """Authors for the Biographies page, with how many books each has."""
 
     book_count = serializers.IntegerField(source="num_books", read_only=True)
@@ -228,7 +218,7 @@ class SermonDetailSerializer(serializers.ModelSerializer):
         ]
 
 
-class AuthorDetailSerializer(Localized, serializers.ModelSerializer):
+class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
     """An author page: bio, dates, their books and their sermons in a language."""
 
     book_count = serializers.SerializerMethodField()
@@ -257,6 +247,7 @@ class AuthorDetailSerializer(Localized, serializers.ModelSerializer):
         return (
             obj.books.filter(is_published=True, language=self._language())
             .select_related("author")
+            .prefetch_related("author__translations")
             .annotate(num_chapters=Count("chapters"))
             .order_by("sort_order", "title")
         )
@@ -271,6 +262,7 @@ class AuthorDetailSerializer(Localized, serializers.ModelSerializer):
         sermons = (
             obj.sermons.filter(is_published=True, language=self._language())
             .select_related("author")
+            .prefetch_related("author__translations")
             .order_by("sort_order", "title")
         )
         return SermonListSerializer(sermons, many=True, context=self.context).data
@@ -402,6 +394,7 @@ class BookDetailSerializer(BookListSerializer):
                 slug__in=scores.keys(), language=obj.language, is_published=True
             )
             .select_related("author")
+            .prefetch_related("author__translations")
             .annotate(num_chapters=Count("chapters"), total_words=Sum("chapters__word_count"))
         )
         ranked = sorted(
@@ -562,7 +555,7 @@ class PlanDetailSerializer(PlanListSerializer):
         return PlanDaySerializer(days, many=True).data
 
 
-class TopicListSerializer(Localized, serializers.ModelSerializer):
+class TopicListSerializer(LocalizedMixin, serializers.ModelSerializer):
     """A topical shelf card — localized title/description, member count, and a
     handful of member covers for the browse page. ``book_count`` and ``covers``
     are computed against the requested language (see ``TopicListView``)."""
@@ -613,6 +606,7 @@ class TopicListSerializer(Localized, serializers.ModelSerializer):
                 slug__in=order, language=self._language(), is_published=True
             )
             .select_related("author")
+            .prefetch_related("author__translations")
             .annotate(num_chapters=Count("chapters"), total_words=Sum("chapters__word_count"))
         }
         return [by_slug[s] for s in order if s in by_slug]
