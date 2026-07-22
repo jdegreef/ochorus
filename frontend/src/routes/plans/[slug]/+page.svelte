@@ -19,18 +19,27 @@
 	const alternates = $derived(
 		locales.map((loc) => ({ loc, href: `${SITE_URL}${localizeHref(path, { locale: loc })}` }))
 	);
-	// The distinct books the plan reads through (first appearance), for an ItemList.
+	// The distinct books the plan reads through, in first-appearance order, with
+	// the span of days each occupies. Powers both the ItemList JSON-LD and the
+	// "In this plan" preview — a reader sees the shape of the journey (which
+	// works, in what order, over how many days) before committing.
 	const planBooks = $derived.by(() => {
-		const seen = new Set<string>();
-		const out: { slug: string; title: string }[] = [];
+		const map = new Map<string, { slug: string; title: string; first: number; last: number; days: number }>();
 		for (const d of plan.days) {
-			if (!seen.has(d.book_slug)) {
-				seen.add(d.book_slug);
-				out.push({ slug: d.book_slug, title: d.book_title });
+			let e = map.get(d.book_slug);
+			if (!e) {
+				e = { slug: d.book_slug, title: d.book_title, first: d.day, last: d.day, days: 0 };
+				map.set(d.book_slug, e);
 			}
+			e.last = d.day;
+			e.days++;
 		}
-		return out;
+		return [...map.values()];
 	});
+	const dayRange = (b: { first: number; last: number }) =>
+		b.first === b.last
+			? `${t('plans.day')} ${b.first}`
+			: `${t('plans.daysLabel')} ${b.first}–${b.last}`;
 	const planLd = $derived(
 		jsonLd({
 			'@context': 'https://schema.org',
@@ -142,6 +151,30 @@
 				></div>
 			</div>
 		</div>
+	{/if}
+
+	<!-- Preview: the works this plan reads through, in order, with day spans —
+	     so a reader sees the whole journey before starting. Multi-book plans
+	     benefit most; a single-book plan is already summarised in the header. -->
+	{#if planBooks.length > 1}
+		<section class="mt-8">
+			<h2 class="mb-3 text-small font-semibold uppercase tracking-wide text-muted">
+				{t('plans.inThisPlan')}
+			</h2>
+			<ol class="space-y-2.5">
+				{#each planBooks as b (b.slug)}
+					<li class="flex items-baseline justify-between gap-3">
+						<a
+							href={localizeHref(`/books/${b.slug}`)}
+							class="min-w-0 text-body font-medium text-text hover:text-accent hover:underline"
+						>
+							{b.title}
+						</a>
+						<span class="shrink-0 text-small tabular-nums text-muted">{dayRange(b)}</span>
+					</li>
+				{/each}
+			</ol>
+		</section>
 	{/if}
 
 	<ol class="mt-8 divide-y divide-border">

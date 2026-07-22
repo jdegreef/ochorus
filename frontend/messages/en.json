@@ -136,6 +136,8 @@
   "plans_length_short": "Short",
   "plans_length_medium": "Medium",
   "plans_length_long": "Long",
+  "plans_in_this_plan": "In this plan",
+  "plans_days_label": "Days",
   "plans_day": "Day",
   "plans_of": "of",
   "plans_start": "Start the plan",
