@@ -15,6 +15,7 @@ export function GET() {
 		'Disallow: /reset-password',
 		'',
 		`Sitemap: ${SITE_URL}/sitemap.xml`,
+		`Feed: ${SITE_URL}/feed.xml`,
 		''
 	].join('\n');
 	return new Response(body, { headers: { 'content-type': 'text/plain' } });

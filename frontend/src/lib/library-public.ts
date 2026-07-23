@@ -174,6 +174,8 @@ export interface SermonSummary {
 	preached_on: string | null;
 	word_count: number;
 	author: Author;
+	/** When the sermon was added to Ochorus (ISO) — powers the "recent" feed. */
+	created_at: string;
 }
 
 /** Adjacent sermon in the author's corpus, for prev/next navigation. */
