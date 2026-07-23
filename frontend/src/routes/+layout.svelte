@@ -21,6 +21,14 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import type { IconName } from '$lib/components/Icon.svelte';
 	import BrandMark from '$lib/components/BrandMark.svelte';
+	// Preload the primary Latin subsets of the two brand fonts (display + body).
+	// @fontsource already ships them font-display:swap; preloading fetches them on
+	// the critical path so the hero/headings (Fraunces) and body copy (Hanken)
+	// swap in sooner — a small LCP win. Vite resolves these to the same hashed
+	// URLs the @fontsource CSS requests, so there's no duplicate download. The
+	// Latin-ext / Vietnamese / Cyrillic subsets stay lazy (rare glyphs).
+	import frauncesLatin from '@fontsource-variable/fraunces/files/fraunces-latin-wght-normal.woff2?url';
+	import hankenLatin from '@fontsource-variable/hanken-grotesk/files/hanken-grotesk-latin-wght-normal.woff2?url';
 
 	let { children } = $props();
 	const t = i18n.t;
@@ -73,6 +81,11 @@
 	// Mobile nav drawer (collapsed behind a hamburger on small screens).
 	let navOpen = $state(false);
 </script>
+
+<svelte:head>
+	<link rel="preload" href={frauncesLatin} as="font" type="font/woff2" crossorigin="anonymous" />
+	<link rel="preload" href={hankenLatin} as="font" type="font/woff2" crossorigin="anonymous" />
+</svelte:head>
 
 <svelte:window
 	onkeydown={(e) => {
