@@ -10,7 +10,7 @@ returns the merged whole.
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -19,7 +19,14 @@ from rest_framework.views import APIView
 from accounts.models import UserProfile
 
 from .marks import clean_mark_list, from_legacy, merge_mark_lists
-from .models import ChapterMarks, Favorite, FavoriteKind, ReadingProgress, WorkKind
+from .models import (
+    ChapterMarks,
+    Favorite,
+    FavoriteKind,
+    ReadingDay,
+    ReadingProgress,
+    WorkKind,
+)
 from .serializers import (
     ChapterMarksSerializer,
     FavoriteSerializer,
@@ -33,6 +40,16 @@ def _profile(request) -> UserProfile:
         defaults={"supabase_uid": request.user.username, "email": request.user.email},
     )
     return profile
+
+
+def _parse_day(value) -> date | None:
+    """A 'YYYY-MM-DD' string → a date, or None if malformed."""
+    if not isinstance(value, str):
+        return None
+    try:
+        return date.fromisoformat(value)
+    except ValueError:
+        return None
 
 
 def _clamp_int(value, default=0, low=0) -> int:
@@ -201,6 +218,20 @@ class FavoriteView(APIView):
         return Response(status=204)
 
 
+class ActivityView(APIView):
+    """Record one day the reader read (the streak's activity log)."""
+
+    permission_classes = [IsAuthenticated]
+
+    def put(self, request, day):
+        parsed = _parse_day(day)
+        if parsed is None:
+            return Response({"detail": "Bad date."}, status=400)
+        profile = _profile(request)
+        ReadingDay.objects.get_or_create(profile=profile, day=parsed)
+        return Response({"day": parsed.isoformat()})
+
+
 class MergeView(APIView):
     """First-sign-in reconciliation of local (offline) state with the server.
 
@@ -218,7 +249,16 @@ class MergeView(APIView):
         self._merge_marks(profile, request.data.get("marks") or [])
         self._merge_sermon_marks(profile, request.data.get("sermon_marks") or [])
         self._merge_favorites(profile, request.data.get("favorites") or [])
+        self._merge_activity(profile, request.data.get("activity") or [])
         return Response(_serialize_state(profile))
+
+    def _merge_activity(self, profile, incoming):
+        """Union: a day read on either side counts (a streak is the union of
+        active days across all the reader's devices). Malformed dates skipped."""
+        for value in incoming:
+            parsed = _parse_day(value)
+            if parsed is not None:
+                ReadingDay.objects.get_or_create(profile=profile, day=parsed)
 
     def _merge_favorites(self, profile, incoming):
         """Union: a heart set on either side survives (like marks, nothing a
@@ -332,6 +372,8 @@ def _serialize_state(profile) -> dict:
         ).data,
         "marks": ChapterMarksSerializer(profile.marks.all(), many=True).data,
         "favorites": FavoriteSerializer(profile.favorites.all(), many=True).data,
+        # Activity log (the streak): just the set of days, newest first.
+        "activity": [d.day.isoformat() for d in profile.reading_days.all()],
         # COMPAT: old bundles rehydrate their sermon store from this field.
         "sermon_marks": [
             _legacy_sermon_shape(m)

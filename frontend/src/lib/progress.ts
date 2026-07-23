@@ -1,5 +1,6 @@
 import { browser } from '$app/environment';
 import { readingSync } from './readingSync';
+import { readingActivity } from './readingActivity.svelte';
 import { storageHealth } from './storageHealth.svelte';
 import {
 	PROGRESS_KEY,
@@ -84,6 +85,8 @@ export function saveProgress(
 	map[key] = rec;
 	write(map);
 	readingSync.pushProgress(kind, slug, rec);
+	// Opening/advancing a chapter is the "read today" signal for the streak.
+	readingActivity.recordToday();
 }
 
 /**

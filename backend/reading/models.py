@@ -157,3 +157,33 @@ class ChapterMarks(models.Model):
     def is_empty(self) -> bool:
         return not self.marks
 
+
+
+class ReadingDay(models.Model):
+    """One calendar day on which the reader read something — the activity log
+    behind the reading streak.
+
+    Deliberately coarse: a single row per (profile, day), not per session, so
+    it's cheap and union-merges perfectly across devices (a day read on *any*
+    device counts toward the streak). The day is stored as the reader's local
+    date (the client sends 'YYYY-MM-DD'); a streak is a human, wall-clock notion,
+    so we don't normalise to UTC.
+    """
+
+    profile = models.ForeignKey(
+        "accounts.UserProfile",
+        on_delete=models.CASCADE,
+        related_name="reading_days",
+    )
+    day = models.DateField()
+
+    class Meta:
+        ordering = ["-day"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["profile", "day"], name="uniq_readingday_profile_day"
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.profile_id} read {self.day}"

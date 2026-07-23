@@ -3,7 +3,9 @@ import { saveProgress, saveScrollAnchor, getProgressRecord } from './progress';
 
 // The account mirror is a no-op in these unit tests — we only assert the local
 // cache the reader resumes from.
-vi.mock('./readingSync', () => ({ readingSync: { pushProgress: () => {} } }));
+vi.mock('./readingSync', () => ({
+	readingSync: { pushProgress: () => {}, pushActivity: () => {} }
+}));
 
 beforeEach(() => localStorage.clear());
 
