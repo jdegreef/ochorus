@@ -28,6 +28,7 @@
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import DefinePopover from '$lib/components/DefinePopover.svelte';
 	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
@@ -692,20 +693,15 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{chapter.title} — {chapter.book_title} — Ochorus</title>
-	<meta name="description" content={metaDescription} />
-	<link rel="canonical" href={canonical} />
-	{#each hreflang.alternates as a (a.loc)}
-		<link rel="alternate" hreflang={a.loc} href={a.href} />
-	{/each}
-	<link rel="alternate" hreflang="x-default" href={hreflang.xDefault} />
-	<meta property="og:type" content="article" />
-	<meta property="og:title" content="{chapter.title} — {chapter.book_title}" />
-	<meta property="og:description" content={metaDescription} />
-	<meta property="og:url" content={canonical} />
-	{@html chapterLd}
-</svelte:head>
+<Seo
+	title="{chapter.title} — {chapter.book_title} — Ochorus"
+	description={metaDescription}
+	{canonical}
+	{hreflang}
+	ogType="article"
+	ogTitle="{chapter.title} — {chapter.book_title}"
+	structuredData={[chapterLd]}
+/>
 <svelte:window onscroll={onScroll} onkeydown={onKeydown} />
 
 <!-- Reader top bar: breadcrumb / context + controls. Hidden in focus mode. -->

@@ -9,6 +9,7 @@
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 
 	let { data } = $props();
 	const t = i18n.t;
@@ -82,23 +83,16 @@
 	);
 </script>
 
-<svelte:head>
-	<title>{book.title} — {book.author.name} — Ochorus</title>
-	<meta name="description" content={description} />
-	<link rel="canonical" href={canonical} />
-	{#each hreflang.alternates as a (a.loc)}
-		<link rel="alternate" hreflang={a.loc} href={a.href} />
-	{/each}
-	<link rel="alternate" hreflang="x-default" href={hreflang.xDefault} />
-	<meta property="og:type" content="book" />
-	<meta property="og:title" content="{book.title} — {book.author.name}" />
-	<meta property="og:description" content={description} />
-	<meta property="og:url" content={canonical} />
-	{#if ogImage}<meta property="og:image" content={ogImage} />{/if}
-	<meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
-	{@html bookLd}
-	{@html crumbsLd}
-</svelte:head>
+<Seo
+	title="{book.title} — {book.author.name} — Ochorus"
+	{description}
+	{canonical}
+	{hreflang}
+	ogType="book"
+	ogTitle="{book.title} — {book.author.name}"
+	{ogImage}
+	structuredData={[bookLd, crumbsLd]}
+/>
 
 <div class="mx-auto max-w-3xl px-5 py-10">
 	<a href={localizeHref('/')} class="text-small text-muted">← {t('common.library')}</a>

@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { type AuthorDetail, type AuthorBio, listAuthors } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
-	import { absUrl, jsonLd, breadcrumb } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumb, hreflangAll } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingTime } from '$lib/reading';
-	import { localizeHref, locales } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/paraglide/runtime';
 	import { listen } from '$lib/listen.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { page } from '$app/stores';
@@ -18,6 +18,7 @@
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import ListenBar from '$lib/components/ListenBar.svelte';
 	import LifeTimeline from '$lib/components/LifeTimeline.svelte';
 	import SelectionBar from '$lib/components/SelectionBar.svelte';
@@ -147,9 +148,10 @@
 	// deindexes the translations). Mirrors the /biographies list page.
 	const path = $derived(`/authors/${author.slug}/`);
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
-	const alternates = $derived(
-		locales.map((loc) => ({ loc, href: `${SITE_URL}${localizeHref(path, { locale: loc })}` }))
-	);
+	// Authors render in every locale (bio falls back to English), so all four are
+	// real hreflang alternates — unlike books/sermons, which list only the
+	// locales they exist in.
+	const hreflang = $derived(hreflangAll(path));
 	const description = $derived(
 		(author.bio || `${author.name} on Ochorus — free classic Christian books.`).slice(0, 300)
 	);
@@ -212,23 +214,15 @@
 	});
 </script>
 
-<svelte:head>
-	<title>{author.name} — Ochorus</title>
-	<meta name="description" content={description} />
-	<link rel="canonical" href={canonical} />
-	{#each alternates as a (a.loc)}
-		<link rel="alternate" hreflang={a.loc} href={a.href} />
-	{/each}
-	<link rel="alternate" hreflang="x-default" href="{SITE_URL}{localizeHref(path, { locale: 'en' })}" />
-	<meta property="og:type" content="profile" />
-	<meta property="og:title" content="{author.name} — Ochorus" />
-	<meta property="og:description" content={description} />
-	<meta property="og:url" content={canonical} />
-	{#if ogImage}<meta property="og:image" content={ogImage} />{/if}
-	<meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
-	{@html personLd}
-	{@html crumbsLd}
-</svelte:head>
+<Seo
+	title="{author.name} — Ochorus"
+	{description}
+	{canonical}
+	{hreflang}
+	ogType="profile"
+	{ogImage}
+	structuredData={[personLd, crumbsLd]}
+/>
 
 <div class="mx-auto max-w-3xl px-5 py-10">
 	<!-- Breadcrumb -->
