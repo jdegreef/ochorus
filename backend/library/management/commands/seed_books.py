@@ -19,7 +19,10 @@ saved positions, prerendered URLs — so silently replacing a chapter set on
 every deploy could shift all three library-wide (see migration 0009, which
 excluded a book from re-chapterization for exactly that reason). Chapter
 changes keep shipping as data migrations, or as ``apply_body_corrections``
-entries for body repairs.
+entries for body repairs. That makes chapters the one thing this command does
+NOT keep in sync, so it also emits a report-only ``chapter_drift`` warning
+(never a failure) when a book's stored chapters have diverged from the fixture
+— the signal that a live-DB transform needs a fixture regen.
 """
 
 from __future__ import annotations
@@ -53,6 +56,53 @@ CHAPTER_FIELDS = ("order", "title", "body_html", "word_count")
 # it out; a fixture that re-asserted either would walk the decision back.
 CREATE_ONLY_FIELDS = frozenset({"source_type", "is_published"})
 UPDATE_FIELDS = tuple(f for f in BOOK_FIELDS if f not in CREATE_ONLY_FIELDS)
+
+
+def chapter_drift(books, chapters_by_book):
+    """Report-only: yield ``(book, reason)`` for books whose stored chapters
+    differ from the fixture.
+
+    seed_books upserts the Book ROW but deliberately never touches an existing
+    book's chapters (chapter ``order`` is a public contract — see the module
+    docstring). That leaves one silent gap: a chapter-transform data migration,
+    or a correction applied to the live DB, can diverge prod chapters from the
+    fixture with nothing to detect it — ``regen_fixture`` rebuilds the fixture
+    *from* the fixture, so neither side notices. Book metadata now auto-syncs,
+    which makes chapters the lone exception, exactly the shape that gets
+    forgotten.
+
+    This surfaces the gap as a deploy-log warning. It only READS — it never
+    mutates a chapter or fails the deploy; the fix is a fixture regen (or a
+    migration), decided by a human. On a faithful install the fixture and DB
+    agree, so a clean deploy prints nothing.
+
+    Stops at the first drifted chapter per book — the point is *which book*
+    needs attention, not an exhaustive per-chapter diff.
+    """
+    for book in books:
+        fixture = {
+            c["order"]: c
+            for c in chapters_by_book.get((book.slug, book.language), [])
+        }
+        if not fixture:
+            # A book with no fixture chapters at all (e.g. one added straight to
+            # prod) — there's nothing to compare it against, so don't guess.
+            continue
+        db = {c.order: c for c in book.chapters.all()}
+        if fixture.keys() != db.keys():
+            yield book, f"{len(db)} chapter(s) in DB, {len(fixture)} in fixture"
+            continue
+        for order, fc in sorted(fixture.items()):
+            dc = db[order]
+            if (fc.get("title") or "") != (dc.title or ""):
+                yield book, (
+                    f"chapter {order} title {dc.title!r} (DB) != "
+                    f"{fc.get('title')!r} (fixture)"
+                )
+                break
+            if fc.get("body_html", "") != dc.body_html:
+                yield book, f"chapter {order} body differs from fixture"
+                break
 
 
 def require_natural_format(rows, command_name: str):
@@ -196,3 +246,26 @@ class Command(BaseCommand):
             )
         else:
             self.stdout.write("Books already up to date.")
+
+        # Report-only: warn if any existing book's chapters have diverged from
+        # the fixture (a transform applied to the live DB without a fixture
+        # regen). prefetch_related keeps this to two queries. Just-created books
+        # match by construction, so they never trip it.
+        drifted = list(
+            chapter_drift(
+                Book.objects.prefetch_related("chapters"), chapters_by_book
+            )
+        )
+        if drifted:
+            self.stdout.write(
+                self.style.WARNING(
+                    f"⚠ Chapter drift: {len(drifted)} book(s) differ from the "
+                    "fixture. seed_books does not sync chapters — regenerate the "
+                    "fixture (scripts/regen_fixture.py) or ship a data migration "
+                    "(see the ship-content-fix skill)."
+                )
+            )
+            for book, reason in drifted:
+                self.stdout.write(
+                    self.style.WARNING(f"    {book.slug} [{book.language}]: {reason}")
+                )

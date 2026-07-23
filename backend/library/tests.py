@@ -1,3 +1,4 @@
+from io import StringIO
 from unittest import skipUnless
 
 from django.db import connection
@@ -464,6 +465,70 @@ class SeedBooksUpsertTests(TestCase):
         row = json.loads((BOOKS_DIR / work_filename(slug, language)).read_text())[0]
         self.assertEqual(row["model"], "library.book")
         return row["fields"]
+
+
+class SeedBooksChapterDriftTests(TestCase):
+    """seed_books syncs the Book row but not its chapters, so it emits a
+    report-only warning when a book's stored chapters diverge from the fixture
+    (a live-DB transform that never got a fixture regen). It must never mutate
+    a chapter or fail — the deploy just gets a heads-up."""
+
+    @classmethod
+    def setUpTestData(cls):
+        from django.core.management import call_command
+
+        call_command("seed_books", verbosity=0)
+        cls.book = Book.objects.filter(language="en").first()
+
+    def _drift(self):
+        # chapters_by_book keyed exactly as the command builds it.
+        from library.content_fixtures import load_all_rows
+        from library.management.commands.seed_books import chapter_drift
+
+        chapters_by_book: dict = {}
+        for r in load_all_rows():
+            if r["model"] == "library.chapter":
+                chapters_by_book.setdefault(
+                    tuple(r["fields"]["book"]), []
+                ).append(r["fields"])
+        drifted = dict(
+            (b.slug, reason)
+            for b, reason in chapter_drift(
+                Book.objects.prefetch_related("chapters"), chapters_by_book
+            )
+        )
+        return drifted
+
+    def test_faithful_seed_reports_no_drift(self):
+        self.assertEqual(self._drift(), {})
+
+    def test_missing_chapter_is_drift(self):
+        self.book.chapters.order_by("-order").first().delete()
+        self.assertIn("chapter(s) in DB", self._drift()[self.book.slug])
+
+    def test_retitled_chapter_is_drift(self):
+        c = self.book.chapters.first()
+        Chapter.objects.filter(pk=c.pk).update(title="mangled")
+        self.assertIn("title", self._drift()[self.book.slug])
+
+    def test_edited_body_is_drift(self):
+        c = self.book.chapters.first()
+        Chapter.objects.filter(pk=c.pk).update(body_html="<p>tampered</p>")
+        self.assertIn("body differs", self._drift()[self.book.slug])
+
+    def test_warning_is_report_only_and_never_mutates_chapters(self):
+        from django.core.management import call_command
+
+        c = self.book.chapters.first()
+        Chapter.objects.filter(pk=c.pk).update(body_html="<p>tampered</p>")
+        out = StringIO()
+        call_command("seed_books", stdout=out, stderr=out)
+        # It warned…
+        self.assertIn("Chapter drift", out.getvalue())
+        self.assertIn(self.book.slug, out.getvalue())
+        # …but did not "fix" the divergent chapter back to the fixture.
+        c.refresh_from_db()
+        self.assertEqual(c.body_html, "<p>tampered</p>")
 
 
 class SeedSermonsTests(TestCase):
