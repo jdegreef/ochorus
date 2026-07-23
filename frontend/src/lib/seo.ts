@@ -64,6 +64,27 @@ export function jsonLd(data: unknown): string {
 	return `<script type="application/ld+json">${json}</script>`;
 }
 
+/**
+ * A schema.org ItemList as a ready-to-inject JSON-LD script — the structured
+ * counterpart of a browse/shelf page, so search engines see an ordered roster
+ * of the works instead of an opaque grid. `items` are {name, url} in display
+ * order; urls are made absolute. Mirrors the biographies page's people list.
+ */
+export function itemList(name: string, items: { name: string; url: string }[]): string {
+	return jsonLd({
+		'@context': 'https://schema.org',
+		'@type': 'ItemList',
+		name,
+		numberOfItems: items.length,
+		itemListElement: items.map((it, i) => ({
+			'@type': 'ListItem',
+			position: i + 1,
+			name: it.name,
+			url: absUrl(it.url)
+		}))
+	});
+}
+
 /** schema.org BreadcrumbList from [name, url] pairs (urls made absolute). */
 export function breadcrumb(items: { name: string; url: string }[]) {
 	return {

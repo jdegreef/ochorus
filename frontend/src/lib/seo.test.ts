@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { absUrl, jsonLd, breadcrumb, hreflangFor } from './seo';
+import { absUrl, jsonLd, breadcrumb, hreflangFor, itemList } from './seo';
 import { SITE_URL } from './config';
 
 describe('absUrl', () => {
@@ -80,6 +80,31 @@ describe('hreflangFor', () => {
 		const { alternates, xDefault } = hreflangFor('/books/humility/', []);
 		expect(alternates.map((a) => a.loc)).toEqual(['en', 'es', 'sw', 'lg']);
 		expect(xDefault).toBe(`${SITE_URL}/books/humility/`);
+	});
+});
+
+describe('itemList', () => {
+	it('builds a positioned ItemList with absolute item URLs', () => {
+		const out = itemList('Books', [
+			{ name: 'Humility', url: '/books/humility' },
+			{ name: 'All of Grace', url: '/books/all-of-grace' }
+		]);
+		const inner = out.replace(/^<script[^>]*>/, '').replace(/<\/script>$/, '');
+		const data = JSON.parse(inner.replace(/\\u003c/g, '<'));
+		expect(data['@type']).toBe('ItemList');
+		expect(data.numberOfItems).toBe(2);
+		expect(data.itemListElement[0]).toMatchObject({
+			position: 1,
+			name: 'Humility',
+			url: `${SITE_URL}/books/humility`
+		});
+		expect(data.itemListElement[1].position).toBe(2);
+	});
+
+	it('wraps the payload as an ld+json script', () => {
+		const out = itemList('Empty', []);
+		expect(out.startsWith('<script type="application/ld+json">')).toBe(true);
+		expect(out.endsWith('</script>')).toBe(true);
 	});
 });
 

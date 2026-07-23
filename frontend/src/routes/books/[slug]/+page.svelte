@@ -63,13 +63,19 @@
 			'@context': 'https://schema.org',
 			'@type': 'Book',
 			name: book.title,
-			author: { '@type': 'Person', name: book.author.name },
+			author: {
+				'@type': 'Person',
+				name: book.author.name,
+				url: absUrl(localizeHref(`/authors/${book.author.slug}`))
+			},
 			description: book.description || undefined,
 			image: ogImage || undefined,
 			inLanguage: book.language,
 			url: canonical,
 			isAccessibleForFree: true,
-			numberOfPages: book.chapter_count
+			numberOfPages: book.chapter_count,
+			datePublished: book.publication_year ? String(book.publication_year) : undefined,
+			publisher: { '@type': 'Organization', name: 'Ochorus' }
 		})
 	);
 	const crumbsLd = $derived(

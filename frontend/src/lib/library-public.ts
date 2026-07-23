@@ -52,6 +52,8 @@ export interface BookDetail extends BookSummary {
 	topics: TopicChip[];
 	related: BookSummary[];
 	difficulty: Difficulty;
+	/** Original publication year of the source work; null when unknown. */
+	publication_year: number | null;
 	/** This row IS the Modern English edition (language en-modern). */
 	is_modern_edition: boolean;
 	/** A Modern English edition of this work is published and can be read. */

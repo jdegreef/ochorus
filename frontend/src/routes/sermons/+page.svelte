@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { SermonSummary } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
+	import { itemList } from '$lib/seo';
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingMinutes } from '$lib/reading';
@@ -11,6 +12,14 @@
 
 	let { data } = $props();
 	const sermons = $derived<SermonSummary[]>(data.sermons);
+
+	// schema.org ItemList of the sermon shelf — an ordered roster for crawlers.
+	const sermonsLd = $derived(
+		itemList(
+			t('nav.sermons'),
+			sermons.map((s) => ({ name: s.title, url: localizeHref(`/sermons/${s.slug}`) }))
+		)
+	);
 
 	// --- Filters ----------------------------------------------------------------
 	let queryText = $state('');
@@ -72,6 +81,8 @@
 	<meta property="og:title" content="{t('nav.sermons')} — Ochorus" />
 	<meta property="og:description" content={t('sermons.metaDescription')} />
 	<meta property="og:url" content="{SITE_URL}{localizeHref('/sermons')}" />
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{#if sermons.length}{@html sermonsLd}{/if}
 </svelte:head>
 
 <div class="mx-auto max-w-3xl px-5 py-10">

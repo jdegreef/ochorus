@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { TopicSummary } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
+	import { itemList } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import Icon from '$lib/components/Icon.svelte';
@@ -9,6 +10,14 @@
 	let { data } = $props();
 	const topics = $derived<TopicSummary[]>(data.topics);
 	const t = i18n.t;
+
+	// schema.org ItemList of the topical shelves — an ordered roster for crawlers.
+	const topicsLd = $derived(
+		itemList(
+			t('topics.title'),
+			topics.map((tp) => ({ name: tp.title, url: localizeHref(`/topics/${tp.slug}`) }))
+		)
+	);
 
 	const coverBg = (hex: string) =>
 		`linear-gradient(150deg, ${hex || '#3b5bdb'} 0%, #0008 100%)`;
@@ -26,6 +35,8 @@
 	<meta property="og:title" content="{t('topics.title')} — Ochorus" />
 	<meta property="og:description" content={t('topics.tagline')} />
 	<meta property="og:url" content="{SITE_URL}{localizeHref('/topics')}" />
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{#if topics.length}{@html topicsLd}{/if}
 </svelte:head>
 
 <div class="mx-auto max-w-5xl px-5 py-10">
