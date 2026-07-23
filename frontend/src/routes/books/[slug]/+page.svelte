@@ -105,9 +105,13 @@
 
 	<header class="mt-5 flex flex-col gap-5 sm:flex-row sm:items-start">
 		{#if book.cover_url}
+			<!-- Intrinsic 3:4 (matches the aspect class) so space is reserved even
+			     before app.css applies — the main content image on the page. -->
 			<img
 				src={book.cover_url}
 				alt="{t('a11y.coverOf')} {book.title}"
+				width="300"
+				height="400"
 				class="aspect-[3/4] w-32 shrink-0 rounded-card object-cover shadow-md"
 			/>
 		{:else}

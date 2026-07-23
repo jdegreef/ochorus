@@ -55,7 +55,13 @@
 	}
 </script>
 
-<svelte:head><title>{title} — Ochorus</title></svelte:head>
+<svelte:head>
+	<title>{title} — Ochorus</title>
+	<!-- Never index error/not-found pages. The static adapter serves 200.html for
+	     unknown paths, so without this a mistyped or stale URL could be indexed as
+	     a soft-404 duplicate of the app shell. -->
+	<meta name="robots" content="noindex" />
+</svelte:head>
 
 <div class="mx-auto max-w-5xl px-5 pb-24">
 	<!-- Hero -->
