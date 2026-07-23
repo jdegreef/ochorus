@@ -11,6 +11,7 @@
 	import BookCard from './BookCard.svelte';
 	import BookListRow from './BookListRow.svelte';
 	import BookCover from './BookCover.svelte';
+	import CatalogLanguageNudge from './CatalogLanguageNudge.svelte';
 
 	let { books, loadError = false }: { books: BookSummary[]; loadError?: boolean } = $props();
 	const t = i18n.t;
@@ -161,6 +162,8 @@
 			</p>
 		{/if}
 	</header>
+
+	<CatalogLanguageNudge kind="books" localizedCount={books.length} />
 
 	{#if loadError}
 		<!-- The API couldn't be reached (client-side navigation). -->

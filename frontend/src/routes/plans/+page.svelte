@@ -6,6 +6,7 @@
 	import { SITE_URL } from '$lib/config';
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
+	import CatalogLanguageNudge from '$lib/components/CatalogLanguageNudge.svelte';
 
 	let { data } = $props();
 	const plans = $derived<PlanSummary[]>(data.plans);
@@ -78,6 +79,8 @@
 <div class="mx-auto max-w-3xl px-5 py-10">
 	<h1 class="text-h1 mb-2">{t('plans.title')}</h1>
 	<p class="mb-8 max-w-xl text-body text-muted">{t('plans.tagline')}</p>
+
+	<CatalogLanguageNudge kind="plans" localizedCount={plans.length} />
 
 	{#if plans.length === 0}
 		<p class="text-small text-muted">{t('plans.none')}</p>

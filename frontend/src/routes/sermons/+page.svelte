@@ -5,6 +5,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingMinutes } from '$lib/reading';
 	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
+	import CatalogLanguageNudge from '$lib/components/CatalogLanguageNudge.svelte';
 
 	const t = i18n.t;
 
@@ -81,6 +82,8 @@
 			{t('sermons.tagline')}
 		</p>
 	</header>
+
+	<CatalogLanguageNudge kind="sermons" localizedCount={sermons.length} />
 
 	<!-- A weekly pick to open the page on a focal point rather than a cold list.
 	     Hidden once the reader is actively filtering (they've stated intent). -->
