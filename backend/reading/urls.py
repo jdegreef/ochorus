@@ -1,6 +1,7 @@
 from django.urls import path
 
 from .views import (
+    ActivityView,
     FavoriteView,
     MarksView,
     MergeView,
@@ -12,6 +13,7 @@ from .views import (
 urlpatterns = [
     path("state/", StateView.as_view(), name="reading-state"),
     path("merge/", MergeView.as_view(), name="reading-merge"),
+    path("activity/<str:day>/", ActivityView.as_view(), name="reading-activity"),
     path(
         "favorites/<slug:kind>/<slug:slug>/",
         FavoriteView.as_view(),

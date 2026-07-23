@@ -17,6 +17,9 @@ export const ANCHOR_KEY = 'ochorus:anchors';
 export const BOOKMARKS_KEY = 'ochorus:bookmarks';
 export const PLANS_KEY = 'ochorus:plans';
 export const FAVORITES_KEY = 'ochorus:favorites';
+// The reading-streak activity log: a JSON array of local 'YYYY-MM-DD' days the
+// reader read on. Synced (union-merged) with the account like the rest.
+export const ACTIVITY_KEY = 'ochorus:activity';
 // When the device last successfully synced with the account (ms epoch, as a
 // bare string). Tied to the signed-in session, so it's wiped on sign-out.
 export const LAST_SYNC_KEY = 'ochorus:last-sync';
@@ -40,6 +43,7 @@ export const READING_DATA_KEYS = [
 	BOOKMARKS_KEY,
 	PLANS_KEY,
 	FAVORITES_KEY,
+	ACTIVITY_KEY,
 	LAST_SYNC_KEY,
 	LEGACY_SERMON_MARKS_KEY,
 	LEGACY_SERMON_ANCHOR_KEY

@@ -4,6 +4,7 @@ import {
 	PROGRESS_KEY,
 	MARKS_KEY,
 	FAVORITES_KEY,
+	ACTIVITY_KEY,
 	LAST_SYNC_KEY,
 	READING_DATA_KEYS,
 	migrateLegacySermonState,
@@ -55,6 +56,7 @@ interface ServerState {
 	progress: ServerProgress[];
 	marks: ServerMarks[];
 	favorites?: ServerFavorite[];
+	activity?: string[];
 }
 
 function readJson<T>(key: string, fallback: T): T {
@@ -150,6 +152,16 @@ class ReadingSync {
 		});
 	}
 
+	/** Mirror a newly-recorded reading day to the account (append-only). */
+	pushActivity(day: string) {
+		if (!this.signedIn || !browser) return;
+		this.#debounce(`a:${day}`, () => {
+			apiFetch(`/api/reading/activity/${day}/`, { method: 'PUT' })
+				.then(() => this.#markSynced())
+				.catch(() => {});
+		});
+	}
+
 	/** Mirror a heart toggle (kind: author | book | plan | sermon). */
 	pushFavorite(kind: string, slug: string, active: boolean) {
 		if (!this.signedIn || !browser) return;
@@ -176,6 +188,15 @@ class ReadingSync {
 		const localProgress = readJson<ProgressMap>(PROGRESS_KEY, {});
 		const localMarks = readJson<MarksStore>(MARKS_KEY, {});
 		const localFavorites = readJson<Record<string, number>>(FAVORITES_KEY, {});
+		// Activity is a bare array, so read it directly (readJson spreads onto an
+		// object fallback, which would mangle an array).
+		let localActivity: string[] = [];
+		try {
+			const raw = JSON.parse(localStorage.getItem(ACTIVITY_KEY) || '[]');
+			if (Array.isArray(raw)) localActivity = raw.filter((d) => typeof d === 'string');
+		} catch {
+			/* corrupt blob — treat as empty */
+		}
 
 		const payload = {
 			progress: Object.entries(localProgress).map(([key, r]) => {
@@ -210,7 +231,8 @@ class ReadingSync {
 			favorites: Object.keys(localFavorites).map((key) => {
 				const i = key.indexOf(':');
 				return { kind: key.slice(0, i), slug: key.slice(i + 1) };
-			})
+			}),
+			activity: localActivity
 		};
 
 		try {
@@ -291,6 +313,12 @@ class ReadingSync {
 				favs[`${f.kind}:${f.slug}`] = Date.parse(f.created_at) || Date.now();
 			}
 			localStorage.setItem(FAVORITES_KEY, JSON.stringify(favs));
+		}
+		if (state.activity) {
+			localStorage.setItem(
+				ACTIVITY_KEY,
+				JSON.stringify(state.activity.filter((d) => typeof d === 'string'))
+			);
 		}
 		// Let open views know the cache changed underneath them.
 		window.dispatchEvent(new CustomEvent('ochorus:sync'));

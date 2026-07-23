@@ -5,7 +5,7 @@ from rest_framework.test import APIClient
 from accounts.models import UserProfile
 
 from .marks import clean_mark_list, from_legacy, merge_mark_lists
-from .models import ChapterMarks, Favorite, ReadingProgress
+from .models import ChapterMarks, Favorite, ReadingDay, ReadingProgress
 
 User = get_user_model()
 
@@ -358,3 +358,47 @@ class WorkKindTests(TestCase):
         self.assertEqual(
             {r["kind"] for r in res.data["progress"]}, {"book", "sermon"}
         )
+
+
+class ActivityTests(TestCase):
+    def setUp(self):
+        self.user = User.objects.create(username="00000000-0000-0000-0000-000000000003")
+        self.profile = UserProfile.objects.create(
+            user=self.user, supabase_uid=self.user.username, email="a@example.com"
+        )
+        self.client = APIClient()
+        self.client.force_authenticate(self.user)
+
+    def test_record_day_idempotent_and_in_state(self):
+        res = self.client.put("/api/reading/activity/2026-07-20/")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["day"], "2026-07-20")
+        # Recording the same day again keeps one row.
+        self.client.put("/api/reading/activity/2026-07-20/")
+        self.client.put("/api/reading/activity/2026-07-21/")
+        self.assertEqual(ReadingDay.objects.filter(profile=self.profile).count(), 2)
+        state = self.client.get("/api/reading/state/").data
+        self.assertEqual(set(state["activity"]), {"2026-07-20", "2026-07-21"})
+
+    def test_bad_date_rejected(self):
+        res = self.client.put("/api/reading/activity/not-a-date/")
+        self.assertEqual(res.status_code, 400)
+        self.assertEqual(ReadingDay.objects.count(), 0)
+
+    def test_merge_unions_activity_and_skips_bad(self):
+        ReadingDay.objects.create(profile=self.profile, day="2026-07-20")
+        res = self.client.post(
+            "/api/reading/merge/",
+            {"activity": ["2026-07-20", "2026-07-22", "garbage"]},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(
+            {d.day.isoformat() for d in ReadingDay.objects.filter(profile=self.profile)},
+            {"2026-07-20", "2026-07-22"},
+        )
+        self.assertEqual(set(res.data["activity"]), {"2026-07-20", "2026-07-22"})
+
+    def test_requires_auth(self):
+        anon = APIClient()
+        self.assertEqual(anon.put("/api/reading/activity/2026-07-20/").status_code, 401)

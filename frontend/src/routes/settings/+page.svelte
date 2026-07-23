@@ -13,6 +13,8 @@
 	import { SITE_URL } from '$lib/config';
 	import { collectExport, toMarkdown, downloadFile } from '$lib/dataExport';
 	import { collectReadingActivity, type ReadingStats, type HistoryItem } from '$lib/readingStats';
+	import { readingActivity } from '$lib/readingActivity.svelte';
+	import { currentStreak, longestStreak, localToday } from '$lib/streak';
 	import { buildReminderICS } from '$lib/reminder';
 	import { relativeTime } from '$lib/relativeTime';
 	import Icon, { type IconName } from '$lib/components/Icon.svelte';
@@ -144,6 +146,11 @@
 				]
 			: []
 	);
+	// Reading streak — derived from the synced activity log (see readingActivity).
+	const activityDays = $derived(readingActivity.days());
+	const streak = $derived(currentStreak(activityDays, localToday()));
+	const longest = $derived(longestStreak(activityDays));
+
 	// Resume link for a history row (books deep-link to the chapter).
 	const historyHref = (h: HistoryItem) =>
 		h.kind === 'sermon'
@@ -546,6 +553,26 @@
 				<p class="mb-6 text-small text-muted">{t('settings.activitySubtitle')}</p>
 
 				{#if stats}
+					{#if activityDays.length}
+						<!-- Reading streak -->
+						<div class="mb-6 flex items-center gap-4 rounded-card border border-border bg-surface-2 px-5 py-4">
+							<span class="text-gold"><Icon name="flame" size={30} /></span>
+							<div>
+								{#if streak > 0}
+									<div class="text-text">
+										<span class="text-h1 font-semibold" style="font-family: var(--font-display)">{streak}</span>
+										<span class="ml-1 text-body">{t('settings.streakLabel')}</span>
+									</div>
+								{:else}
+									<div class="text-body text-text">{t('settings.streakNone')}</div>
+								{/if}
+								<div class="mt-0.5 text-small text-muted">
+									{t('settings.streakLongest')} {longest} · {activityDays.length} {t('settings.streakDaysRead')}
+								</div>
+							</div>
+						</div>
+					{/if}
+
 					<!-- Stat tiles -->
 					<div class="grid grid-cols-3 gap-3 sm:grid-cols-6">
 						{#each statTiles as tile (tile.label)}
