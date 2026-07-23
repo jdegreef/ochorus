@@ -552,6 +552,24 @@
 		</div>
 	{/if}
 
+	<!-- Topical shelves this sermon appears on — the same membership the author
+	     and topic pages surface; a reader moved by it can find kindred works. -->
+	{#if sermon.topics?.length}
+		<div class="mt-4 flex flex-wrap items-center gap-2">
+			<span class="text-small font-semibold uppercase tracking-wide text-muted">
+				{t('sermon.topics')}
+			</span>
+			{#each sermon.topics as topic (topic.slug)}
+				<a
+					href={localizeHref(`/topics/${topic.slug}`)}
+					class="rounded-full bg-surface-2 px-3 py-1 text-small text-text hover:text-accent hover:no-underline"
+				>
+					{topic.title}
+				</a>
+			{/each}
+		</div>
+	{/if}
+
 	<!-- Sequential prev/next through this author's sermons, so a reader who
 	     finishes one keeps going instead of dead-ending at the bottom. -->
 	{#if sermon.prev || sermon.next}

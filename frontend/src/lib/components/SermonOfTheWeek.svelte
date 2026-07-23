@@ -15,6 +15,11 @@
 	 * CLIENT-SIDE: the homepage is prerendered, and baking the pick at build
 	 * time would freeze it on whatever week the site last deployed.
 	 */
+	// `embedded` drops the home-page section chrome (own max-width + top
+	// padding) so the card can sit inside another page's column (e.g. the
+	// sermons shelf) without fighting its container.
+	let { embedded = false }: { embedded?: boolean } = $props();
+
 	let pick = $state<SermonSummary | null>(null);
 
 	function isoWeek(d: Date): { year: number; week: number } {
@@ -40,7 +45,7 @@
 </script>
 
 {#if pick}
-	<section class="mx-auto max-w-5xl px-5 pt-14">
+	<section class={embedded ? '' : 'mx-auto max-w-5xl px-5 pt-14'}>
 		<a
 			href={localizeHref(`/sermons/${pick.slug}`)}
 			class="block rounded-card border border-border bg-surface-2 px-6 py-6 transition-colors hover:bg-surface hover:no-underline sm:px-8"

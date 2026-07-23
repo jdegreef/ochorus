@@ -188,6 +188,8 @@ export interface Sermon extends SermonSummary {
 	/** "In brief" TL;DR (plain text); "" when none has been written yet. */
 	summary: string;
 	difficulty: Difficulty;
+	/** Topical shelves this sermon belongs to (localized), for cross-links. */
+	topics: TopicChip[];
 }
 
 export interface AuthorBio {
@@ -198,6 +200,9 @@ export interface AuthorBio {
 	birth_year: number | null;
 	death_year: number | null;
 	book_count: number;
+	sermon_count: number;
+	/** A full long-form biography exists (vs. a one-line stub). */
+	has_long_bio: boolean;
 }
 
 export interface AuthorDetail extends AuthorBio {
@@ -240,6 +245,11 @@ export const getBook = (slug: string, language = 'en') =>
 
 export const getChapter = (slug: string, order: number, language = 'en') =>
 	localized<Chapter>((l) => `/api/library/books/${slug}/chapters/${order}/?language=${l}`, language);
+
+/** The queries readers search most (aggregate, public). Empty when the log is
+ * too sparse — the caller falls back to browse-topic chips. */
+export const getPopularSearches = (language = 'en') =>
+	apiFetch<{ queries: string[] }>(`/api/library/popular-searches/?language=${language}`);
 
 export const listSermons = (language = 'en') =>
 	apiFetch<SermonSummary[]>(`/api/library/sermons/?language=${language}`);

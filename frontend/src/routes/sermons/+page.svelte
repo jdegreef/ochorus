@@ -4,6 +4,7 @@
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingMinutes } from '$lib/reading';
+	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
 
 	const t = i18n.t;
 
@@ -80,6 +81,14 @@
 			{t('sermons.tagline')}
 		</p>
 	</header>
+
+	<!-- A weekly pick to open the page on a focal point rather than a cold list.
+	     Hidden once the reader is actively filtering (they've stated intent). -->
+	{#if !filtering}
+		<div class="mb-8">
+			<SermonOfTheWeek embedded />
+		</div>
+	{/if}
 
 	<!-- Filter bar: free text + which book of the Bible the sermon expounds. -->
 	<div class="mb-8 flex flex-wrap items-center gap-3">

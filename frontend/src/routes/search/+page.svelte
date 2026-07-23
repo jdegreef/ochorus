@@ -1,6 +1,13 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { search, listTopics, type SearchHit, type ChapterHit, type TopicSummary } from '$lib/library';
+	import {
+		search,
+		listTopics,
+		getPopularSearches,
+		type SearchHit,
+		type ChapterHit,
+		type TopicSummary
+	} from '$lib/library';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { apiFetch } from '$lib/api';
@@ -397,11 +404,18 @@
 	let recent = $state<string[]>([]);
 	let topics = $state<TopicSummary[]>([]);
 
+	// What other readers search most (aggregate, server-side). Empty when the
+	// log is too sparse — the section simply doesn't render.
+	let popular = $state<string[]>([]);
+
 	onMount(() => {
 		recent = readJSON<string[]>(RECENT_KEY, []).filter((s) => typeof s === 'string');
 		listTopics(getLang())
 			.then((all) => (topics = all.slice(0, 10)))
 			.catch(() => (topics = []));
+		getPopularSearches(getLang())
+			.then((r) => (popular = r.queries ?? []))
+			.catch(() => (popular = []));
 	});
 
 	/** Remember a query that led somewhere (most-recent-first, deduped, capped). */
@@ -489,6 +503,24 @@
 					</div>
 				</section>
 			{/if}
+			{#if popular.length}
+				<section class="mb-8">
+					<h2 class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">
+						{t('search.popular')}
+					</h2>
+					<div class="flex flex-wrap gap-2">
+						{#each popular as term (term)}
+							<button
+								type="button"
+								class="rounded-full border border-border px-3 py-1 text-small text-text hover:border-accent hover:text-accent"
+								onclick={() => applySuggestion(term)}
+							>
+								{term}
+							</button>
+						{/each}
+					</div>
+				</section>
+			{/if}
 			{#if topics.length}
 				<section>
 					<h2 class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">
@@ -506,7 +538,7 @@
 					</div>
 				</section>
 			{/if}
-			{#if !recent.length && !topics.length}
+			{#if !recent.length && !topics.length && !popular.length}
 				<p class="text-small text-muted">{t('search.prompt')}</p>
 			{/if}
 		{:else if ran && hits.length === 0}

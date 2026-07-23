@@ -2782,3 +2782,85 @@ class LocalizedAuthorBioTests(TestCase):
                 Book.objects.exclude(slug="tomorrows").delete()
                 Sermon.objects.exclude(slug="a-sermon").delete()
                 Author.objects.exclude(slug="gareth-evans").delete()
+
+
+class DiscoveryQuickWinsTests(TestCase):
+    """Popular-searches endpoint, sermon topic chips, and biographies-list
+    sermon_count / has_long_bio — the discovery quick-wins."""
+
+    def setUp(self):
+        self.client = APIClient()
+        self.author = Author.objects.create(
+            slug="cs", name="Charles Spurgeon", bio="short", bio_html="<p>long life</p>"
+        )
+        self.book = Book.objects.create(
+            author=self.author, slug="morning", language="en", title="Morning by Morning"
+        )
+        Chapter.objects.create(book=self.book, order=1, title="Jan 1", body_html="<p>x</p>")
+        self.sermon = Sermon.objects.create(
+            author=self.author, slug="ravens-cry", language="en",
+            title="The Raven's Cry", scripture_ref="Psalm 147:9", body_html="<p>y</p>",
+        )
+        self.topic = Topic.objects.create(slug="prayer", title="On Prayer", is_published=True)
+        TopicSermon.objects.create(topic=self.topic, sermon_slug="ravens-cry")
+
+    def test_sermon_detail_exposes_topic_chips(self):
+        res = self.client.get("/api/library/sermons/ravens-cry/?language=en")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["topics"], [{"slug": "prayer", "title": "On Prayer"}])
+
+    def test_unpublished_topic_not_shown_on_sermon(self):
+        self.topic.is_published = False
+        self.topic.save(update_fields=["is_published"])
+        res = self.client.get("/api/library/sermons/ravens-cry/?language=en")
+        self.assertEqual(res.data["topics"], [])
+
+    def test_biographies_list_carries_sermon_count_and_long_bio_flag(self):
+        res = self.client.get("/api/library/authors/?language=en")
+        row = next(a for a in res.data if a["slug"] == "cs")
+        self.assertEqual(row["book_count"], 1)
+        self.assertEqual(row["sermon_count"], 1)
+        self.assertTrue(row["has_long_bio"])
+
+    def test_sermon_only_author_appears_on_biographies_list(self):
+        # An author with only a sermon (no book, no bio) is still library
+        # content and must not be filtered out or read as empty.
+        a = Author.objects.create(slug="mo", name="D. L. Moody", bio="")
+        Sermon.objects.create(
+            author=a, slug="sowing", language="en", title="Sowing", body_html="<p>z</p>"
+        )
+        res = self.client.get("/api/library/authors/?language=en")
+        row = next((x for x in res.data if x["slug"] == "mo"), None)
+        self.assertIsNotNone(row)
+        self.assertEqual(row["sermon_count"], 1)
+        self.assertFalse(row["has_long_bio"])
+
+    def test_book_count_not_inflated_by_sermon_join(self):
+        # Two annotations over two relations must each stay distinct — a naive
+        # double LEFT JOIN would multiply the counts.
+        Book.objects.create(author=self.author, slug="evening", language="en", title="Evening")
+        res = self.client.get("/api/library/authors/?language=en")
+        row = next(a for a in res.data if a["slug"] == "cs")
+        self.assertEqual(row["book_count"], 2)
+        self.assertEqual(row["sermon_count"], 1)
+
+    def test_popular_searches_is_aggregate_and_private(self):
+        # A query that recurs (>= MIN_COUNT) and found results surfaces.
+        for _ in range(3):
+            SearchQueryLog.objects.create(query="Prayer", language="en", result_count=5)
+        # A one-off never does — no single reader's query can leak.
+        SearchQueryLog.objects.create(query="my secret note", language="en", result_count=4)
+        # A frequent ZERO-result query never does either (only useful queries).
+        for _ in range(5):
+            SearchQueryLog.objects.create(query="missing", language="en", result_count=0)
+        # Wrong language is scoped out.
+        for _ in range(3):
+            SearchQueryLog.objects.create(query="oracion", language="es", result_count=5)
+
+        res = self.client.get("/api/library/popular-searches/?language=en")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["queries"], ["prayer"])  # case-folded, only the recurring hit
+
+    def test_popular_searches_empty_when_sparse(self):
+        res = self.client.get("/api/library/popular-searches/?language=en")
+        self.assertEqual(res.data["queries"], [])
