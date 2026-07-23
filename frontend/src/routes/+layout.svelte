@@ -85,6 +85,8 @@
 <svelte:head>
 	<link rel="preload" href={frauncesLatin} as="font" type="font/woff2" crossorigin="anonymous" />
 	<link rel="preload" href={hankenLatin} as="font" type="font/woff2" crossorigin="anonymous" />
+	<!-- Feed autodiscovery: browsers and readers surface the "new works" Atom feed. -->
+	<link rel="alternate" type="application/atom+xml" title="Ochorus — New in the Library" href="/feed.xml" />
 </svelte:head>
 
 <svelte:window

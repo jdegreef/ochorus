@@ -2559,6 +2559,20 @@ class SermonBookFacetTests(TestCase):
         self.assertEqual(row["scripture_book"], "Malachi")
         self.assertEqual(row["scripture_book_order"], 39)
 
+    def test_sermon_list_carries_created_at(self):
+        # The Atom feed orders newest-first by when a work was added; the sermon
+        # list must expose created_at for that (books already do).
+        from rest_framework.test import APIClient
+
+        author = Author.objects.create(slug="s", name="S")
+        Sermon.objects.create(
+            author=author, slug="x", language="en", title="X", body_html="<p>w</p>"
+        )
+        res = APIClient().get("/api/library/sermons/?language=en")
+        row = next(r for r in res.data if r["slug"] == "x")
+        self.assertIn("created_at", row)
+        self.assertTrue(row["created_at"])
+
 
 class SearchLogTests(TestCase):
     """The anonymous search-query log + its admin analytics endpoint."""

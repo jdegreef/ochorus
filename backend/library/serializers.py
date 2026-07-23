@@ -173,6 +173,7 @@ class SermonListSerializer(serializers.ModelSerializer):
             "preached_on",
             "word_count",
             "author",
+            "created_at",
         ]
 
 
