@@ -1,10 +1,74 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase, override_settings
+from rest_framework.test import APIClient
 
+from accounts.models import UserProfile
 from accounts.permissions import is_admin_user
 from common.env import origin_url
+from reading.models import ChapterMarks, Favorite, ReadingDay, ReadingProgress
 
 User = get_user_model()
+
+
+class MeViewTests(TestCase):
+    """The authenticated profile endpoint — profile mutation and, critically,
+    account deletion (a destructive, hard-to-undo action)."""
+
+    def setUp(self):
+        self.user = User.objects.create(username="11111111-1111-1111-1111-111111111111")
+        self.profile = UserProfile.objects.create(
+            user=self.user, supabase_uid=self.user.username, email="me@example.com"
+        )
+        self.client = APIClient()
+        self.client.force_authenticate(self.user)
+
+    def test_patch_sets_trims_and_clears_display_name(self):
+        res = self.client.patch("/api/auth/me/", {"display_name": "  James  "}, format="json")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["display_name"], "James")
+        self.profile.refresh_from_db()
+        self.assertEqual(self.profile.display_name, "James")
+        # Empty string clears it back to the email.
+        self.client.patch("/api/auth/me/", {"display_name": ""}, format="json")
+        self.profile.refresh_from_db()
+        self.assertEqual(self.profile.display_name, "")
+
+    def test_delete_removes_profile_and_cascades_all_reading_data(self):
+        ReadingProgress.objects.create(
+            profile=self.profile, kind="book", book_slug="humility",
+            language="en", chapter_order=1, paragraph_index=0,
+        )
+        Favorite.objects.create(profile=self.profile, kind="book", slug="humility")
+        ChapterMarks.objects.create(
+            profile=self.profile, kind="book", book_slug="humility",
+            chapter_order=1, marks=[],
+        )
+        ReadingDay.objects.create(profile=self.profile, day="2026-07-20")
+        pid = self.profile.id
+
+        res = self.client.delete("/api/auth/me/")
+        self.assertEqual(res.status_code, 204)
+
+        self.assertFalse(UserProfile.objects.filter(id=pid).exists())
+        for model in (ReadingProgress, Favorite, ChapterMarks, ReadingDay):
+            self.assertEqual(model.objects.filter(profile_id=pid).count(), 0)
+
+    def test_delete_only_touches_the_requesters_own_data(self):
+        other_user = User.objects.create(username="22222222-2222-2222-2222-222222222222")
+        other = UserProfile.objects.create(
+            user=other_user, supabase_uid=other_user.username, email="other@example.com"
+        )
+        Favorite.objects.create(profile=other, kind="book", slug="humility")
+
+        self.client.delete("/api/auth/me/")
+
+        self.assertTrue(UserProfile.objects.filter(id=other.id).exists())
+        self.assertEqual(Favorite.objects.filter(profile=other).count(), 1)
+
+    def test_requires_auth(self):
+        anon = APIClient()
+        self.assertEqual(anon.get("/api/auth/me/").status_code, 401)
+        self.assertEqual(anon.delete("/api/auth/me/").status_code, 401)
 
 
 class OriginUrlTests(TestCase):
