@@ -519,9 +519,9 @@ def _plan_day_one(plan, language):
     One query for the single chapter — days are prefetched and ordered by day,
     so days.all()[0] is day one."""
     days = plan.days.all()
-    first = days[0] if days else None
-    if first is None:
+    if not days:
         return None
+    first = days[0]  # prefetched and ordered by day, so [0] is day one
     chapter = (
         Chapter.objects.filter(
             book__slug=first.book_slug,
