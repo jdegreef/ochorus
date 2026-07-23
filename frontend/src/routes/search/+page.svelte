@@ -431,6 +431,18 @@
 	}
 </script>
 
+<!-- A clickable query chip — shared by the "recent" and "popular" rows, which
+     render identically (both re-run the search via applySuggestion). -->
+{#snippet queryChip(term: string)}
+	<button
+		type="button"
+		class="rounded-full border border-border px-3 py-1 text-small text-text hover:border-accent hover:text-accent"
+		onclick={() => applySuggestion(term)}
+	>
+		{term}
+	</button>
+{/snippet}
+
 <svelte:head><title>{t('search.title')} — Ochorus</title></svelte:head>
 
 <div class="mx-auto max-w-2xl px-5 py-10">
@@ -491,15 +503,7 @@
 						</button>
 					</div>
 					<div class="flex flex-wrap gap-2">
-						{#each recent as term (term)}
-							<button
-								type="button"
-								class="rounded-full border border-border px-3 py-1 text-small text-text hover:border-accent hover:text-accent"
-								onclick={() => applySuggestion(term)}
-							>
-								{term}
-							</button>
-						{/each}
+						{#each recent as term (term)}{@render queryChip(term)}{/each}
 					</div>
 				</section>
 			{/if}
@@ -509,15 +513,7 @@
 						{t('search.popular')}
 					</h2>
 					<div class="flex flex-wrap gap-2">
-						{#each popular as term (term)}
-							<button
-								type="button"
-								class="rounded-full border border-border px-3 py-1 text-small text-text hover:border-accent hover:text-accent"
-								onclick={() => applySuggestion(term)}
-							>
-								{term}
-							</button>
-						{/each}
+						{#each popular as term (term)}{@render queryChip(term)}{/each}
 					</div>
 				</section>
 			{/if}

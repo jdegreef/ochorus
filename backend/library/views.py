@@ -395,15 +395,18 @@ class SearchView(APIView):
 class PopularSearchesView(APIView):
     """The queries readers search most — for the search page's empty state.
 
-    Public and aggregate-only. Privacy is enforced by construction, not policy:
-    only queries that (a) actually found something, (b) are typed words not
-    search-as-you-type fragments, and (c) were run by at least MIN_DISTINCT
-    times over the window are returned — so no single reader's one-off query
-    can ever surface. Language-scoped, since a reader browses in one language.
+    Public and aggregate-only. The privacy guarantee is structural: a query is
+    only returned if ``result_count > 0``, i.e. it matched published library
+    content — so a reader's private text (which won't match the corpus) never
+    surfaces, however many times it's typed. The log is fully anonymous (no
+    user column), so counts are of rows, not readers; MIN_COUNT is therefore a
+    noise filter — "this is a real recurring query, not a fluke" — not the
+    privacy mechanism. Fragments under 3 chars (type-ahead prefixes) are
+    dropped, and results are scoped to the reader's language.
     """
 
     WINDOW_DAYS = 30
-    MIN_COUNT = 3  # a query must recur to count as "popular", never a one-off
+    MIN_COUNT = 3  # a query must recur to read as "popular", not a one-off blip
     LIMIT = 8
 
     def get(self, request):
