@@ -10,6 +10,7 @@
 	import BookCard from '$lib/components/BookCard.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
+	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import { offlineBooks } from '$lib/offlineBooks.svelte';
 	import { pwa } from '$lib/pwa.svelte';
 
@@ -86,14 +87,15 @@
 			publisher: { '@type': 'Organization', name: 'Ochorus' }
 		})
 	);
+	// One crumb trail feeds both the visible <Breadcrumb> and the JSON-LD, so the
+	// on-page path and the structured BreadcrumbList can't drift apart.
+	const crumbs = $derived([
+		{ name: t('common.home'), href: '/' },
+		{ name: t('nav.books'), href: '/books' },
+		{ name: book.title, href: `/books/${book.slug}` }
+	]);
 	const crumbsLd = $derived(
-		jsonLd(
-			breadcrumb([
-				{ name: t('common.home'), url: '/' },
-				{ name: t('nav.books'), url: '/books' },
-				{ name: book.title, url: `/books/${book.slug}` }
-			])
-		)
+		jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))))
 	);
 </script>
 
@@ -109,7 +111,7 @@
 />
 
 <div class="mx-auto max-w-3xl px-5 py-10">
-	<a href={localizeHref('/')} class="text-small text-muted">← {t('common.library')}</a>
+	<Breadcrumb items={crumbs} />
 
 	<header class="mt-5 flex flex-col gap-5 sm:flex-row sm:items-start">
 		{#if book.cover_url}
