@@ -677,6 +677,25 @@ class PlanTests(TestCase):
         self.assertEqual(res.data["days"][0]["book_title"], "Humility")
         self.assertEqual(res.data["days"][0]["word_count"], 100)
 
+    def test_list_exposes_day_one_teaser(self):
+        # The card leads with where the plan starts — day 1's book + chapter.
+        res = self.client.get("/api/library/plans/?language=en")
+        self.assertEqual(
+            res.data[0]["day_one"],
+            {"book_title": "Humility", "chapter_title": "Ch 1"},
+        )
+
+    def test_day_one_null_when_chapter_unresolved(self):
+        # A locale where day 1's book isn't translated can't resolve the chapter;
+        # the field degrades to null rather than erroring (mirrors covers/detail).
+        Plan.objects.create(slug="humility-12-days", language="lg", title="Obwetoowaze")
+        PlanDay.objects.create(
+            plan=Plan.objects.get(slug="humility-12-days", language="lg"),
+            day=1, book_slug="humility-2", chapter_order=1,
+        )
+        res = self.client.get("/api/library/plans/?language=lg")
+        self.assertIsNone(res.data[0]["day_one"])
+
     def test_seed_plans_idempotent(self):
         from django.core.management import call_command
         call_command("seed_plans")

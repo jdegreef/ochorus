@@ -479,12 +479,13 @@ class PlanListSerializer(serializers.ModelSerializer):
     day_count = serializers.IntegerField(source="num_days", read_only=True)
     total_words = serializers.SerializerMethodField()
     covers = serializers.SerializerMethodField()
+    day_one = serializers.SerializerMethodField()
 
     class Meta:
         model = Plan
         fields = [
             "slug", "language", "title", "description", "day_count",
-            "total_words", "covers",
+            "total_words", "covers", "day_one",
         ]
 
     def get_total_words(self, obj):
@@ -492,6 +493,9 @@ class PlanListSerializer(serializers.ModelSerializer):
 
     def get_covers(self, obj):
         return _plan_covers(obj, obj.language)
+
+    def get_day_one(self, obj):
+        return _plan_day_one(obj, obj.language)
 
 
 def _plan_total_words(plan, language):
@@ -508,6 +512,28 @@ def _plan_total_words(plan, language):
         ).values("book__slug", "order", "word_count")
     }
     return sum(wc.get(p, 0) for p in pairs)
+
+
+def _plan_day_one(plan, language):
+    """Day 1's book + chapter titles, so a card can say where the plan starts.
+    One query for the single chapter — days are prefetched and ordered by day,
+    so days.all()[0] is day one."""
+    days = plan.days.all()
+    if not days:
+        return None
+    first = days[0]  # prefetched and ordered by day, so [0] is day one
+    chapter = (
+        Chapter.objects.filter(
+            book__slug=first.book_slug,
+            book__language=language,
+            order=first.chapter_order,
+        )
+        .values("book__title", "title")
+        .first()
+    )
+    if chapter is None:
+        return None
+    return {"book_title": chapter["book__title"], "chapter_title": chapter["title"]}
 
 
 def _plan_covers(plan, language, limit=5):

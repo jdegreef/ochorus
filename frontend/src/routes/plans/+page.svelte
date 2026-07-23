@@ -107,6 +107,13 @@
 								<span class="opacity-60"> · </span>~{perDay(plan)} {t('plans.minPerDay')}{/if}
 						</p>
 						<p class="mt-2 text-small text-muted">{plan.description}</p>
+						{#if !started && plan.day_one}
+							<p class="mt-2 text-[0.78rem] text-muted">
+								<span class="font-medium text-text">{t('plans.day')} 1</span>
+								<span class="opacity-60"> · </span>{plan.day_one.book_title}
+								<span class="opacity-60"> — </span><span class="italic">{plan.day_one.chapter_title}</span>
+							</p>
+						{/if}
 					</div>
 					{#if plan.covers.length}
 						<div class="hidden shrink-0 pt-1 sm:block">
