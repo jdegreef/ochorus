@@ -15,13 +15,13 @@
 	import { apiFetch } from '$lib/api';
 	import { page } from '$app/stores';
 	import { buildOutline, type OutlineEntry } from '$lib/sermonOutline';
-	import { absUrl, jsonLd, breadcrumb } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
 
 	import { renderMarks } from '$lib/rangeMarks';
 	import { HIGHLIGHT_COLORS, DEFAULT_HIGHLIGHT } from '$lib/reading-schema';
 	import { marks, type Segment } from '$lib/marks.svelte';
 	import { focusTrap } from '$lib/actions/focusTrap';
-	import { localizeHref, locales } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/paraglide/runtime';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
 	import SelectionBar from '$lib/components/SelectionBar.svelte';
@@ -232,13 +232,12 @@
 		return () => listen.stop();
 	});
 
-	// Self-referential canonical + hreflang per locale (mirrors authors/[slug]) —
-	// an English canonical here would deindex the translated sermon pages.
+	// Self-referential canonical + hreflang — an English canonical here would
+	// deindex the translated sermon pages. Sermons are per-language rows with no
+	// English fallback, so hreflang lists only the locales this sermon exists in.
 	const path = $derived(`/sermons/${sermon.slug}/`);
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
-	const alternates = $derived(
-		locales.map((loc) => ({ loc, href: `${SITE_URL}${localizeHref(path, { locale: loc })}` }))
-	);
+	const hreflang = $derived(hreflangFor(path, sermon.available_languages));
 	const preachedYear = $derived(sermon.preached_on ? sermon.preached_on.slice(0, 4) : '');
 
 	// --- SEO -------------------------------------------------------------------
@@ -344,10 +343,10 @@
 	<title>{sermon.title} — {sermon.author_name} — Ochorus</title>
 	<meta name="description" content={metaDescription} />
 	<link rel="canonical" href={canonical} />
-	{#each alternates as a (a.loc)}
+	{#each hreflang.alternates as a (a.loc)}
 		<link rel="alternate" hreflang={a.loc} href={a.href} />
 	{/each}
-	<link rel="alternate" hreflang="x-default" href="{SITE_URL}{localizeHref(path, { locale: 'en' })}" />
+	<link rel="alternate" hreflang="x-default" href={hreflang.xDefault} />
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content="{sermon.title} — {sermon.author_name}" />
 	<meta property="og:description" content={metaDescription} />

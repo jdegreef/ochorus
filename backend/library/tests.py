@@ -1243,6 +1243,68 @@ class RelatedBooksTests(TestCase):
         self.assertEqual(self._related("solo-book"), [])
 
 
+class AvailableLanguagesTests(TestCase):
+    """Detail endpoints report the locales a per-language work actually exists
+    in, so the frontend advertises hreflang only for real translations (books,
+    sermons, and plans have no English fallback — see hreflangFor)."""
+
+    def setUp(self):
+        self.client = APIClient()
+        self.author = Author.objects.create(slug="am", name="Andrew Murray")
+
+    def _book(self, slug, language, published=True):
+        b = Book.objects.create(
+            author=self.author, slug=slug, language=language,
+            title=f"{slug} {language}", is_published=published,
+        )
+        Chapter.objects.create(book=b, order=1, title="One", body_html="<p>x</p>")
+        return b
+
+    def test_book_detail_lists_published_locales_sorted(self):
+        self._book("humility", "en")
+        self._book("humility", "sw")
+        self._book("humility", "es")
+        res = self.client.get("/api/library/books/humility/?language=en")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["available_languages"], ["en", "es", "sw"])
+
+    def test_book_detail_excludes_unpublished_and_modern_edition(self):
+        self._book("humility", "en")
+        self._book("humility", "lg", published=False)  # draft translation
+        self._book("humility", "en-modern")  # in-page toggle, not a locale
+        res = self.client.get("/api/library/books/humility/?language=en")
+        self.assertEqual(res.data["available_languages"], ["en"])
+
+    def test_chapter_detail_uses_the_books_locales(self):
+        self._book("humility", "en")
+        self._book("humility", "lg")
+        res = self.client.get("/api/library/books/humility/chapters/1/?language=en")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["available_languages"], ["en", "lg"])
+
+    def test_sermon_detail_lists_published_locales(self):
+        for lang in ("en", "lg"):
+            Sermon.objects.create(
+                author=self.author, slug="himself", language=lang,
+                title=f"Himself {lang}", body_html="<p>x</p>",
+            )
+        Sermon.objects.create(
+            author=self.author, slug="himself", language="sw",
+            title="Himself sw", body_html="<p>x</p>", is_published=False,
+        )
+        res = self.client.get("/api/library/sermons/himself/?language=en")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["available_languages"], ["en", "lg"])
+
+    def test_plan_detail_lists_published_locales(self):
+        for lang in ("en", "sw"):
+            p = Plan.objects.create(slug="prayer", language=lang, title=f"Prayer {lang}")
+            PlanDay.objects.create(plan=p, day=1, book_slug="humility", chapter_order=1)
+        res = self.client.get("/api/library/plans/prayer/?language=en")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["available_languages"], ["en", "sw"])
+
+
 class AdminStatsTests(TestCase):
     def setUp(self):
         self.client = APIClient()

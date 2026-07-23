@@ -56,6 +56,10 @@ export interface BookDetail extends BookSummary {
 	is_modern_edition: boolean;
 	/** A Modern English edition of this work is published and can be read. */
 	has_modern_edition: boolean;
+	/** Content locales this work is actually published in (sorted, en-modern
+	 * excluded) — the only locales an hreflang alternate should point at, since
+	 * books are per-language rows with no English fallback. */
+	available_languages: string[];
 }
 
 export interface ChapterNav {
@@ -76,6 +80,9 @@ export interface Chapter {
 	is_modern_edition: boolean;
 	/** A Modern English edition of this work exists (offer the toggle). */
 	has_modern_edition: boolean;
+	/** The book's published locales (en-modern excluded) — for hreflang on the
+	 * chapter page. Chapter counts match across a book's translations. */
+	available_languages: string[];
 	prev: ChapterNav | null;
 	next: ChapterNav | null;
 }
@@ -190,6 +197,10 @@ export interface Sermon extends SermonSummary {
 	difficulty: Difficulty;
 	/** Topical shelves this sermon belongs to (localized), for cross-links. */
 	topics: TopicChip[];
+	/** Content locales this sermon is published in (sorted, en-modern excluded)
+	 * — the only locales an hreflang alternate should point at (per-language
+	 * rows, no English fallback). */
+	available_languages: string[];
 }
 
 export interface AuthorBio {
@@ -302,6 +313,10 @@ export interface PlanDay {
 
 export interface PlanDetail extends PlanSummary {
 	days: PlanDay[];
+	/** Content locales this plan is published in (sorted) — the only locales an
+	 * hreflang alternate should point at. A plan materializes per language only
+	 * once its source books are all translated, so this can be a subset. */
+	available_languages: string[];
 }
 
 export const listPlans = (language = 'en') =>

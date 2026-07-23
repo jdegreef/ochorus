@@ -4,9 +4,9 @@
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readingMinutes, readingTime } from '$lib/reading';
 	import { SITE_URL } from '$lib/config';
-	import { absUrl, jsonLd, breadcrumb } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
-	import { localizeHref, locales } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/paraglide/runtime';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 
@@ -36,12 +36,12 @@
 
 	// Self-referential canonical + hreflang: this page is prerendered per locale,
 	// so each localized copy points at ITSELF (not the English URL, which would
-	// deindex the translations) and links its siblings. Mirrors authors/[slug].
+	// deindex the translations) and links its siblings. Books are per-language
+	// rows with no English fallback, so hreflang lists only the locales this book
+	// actually exists in — see hreflangFor.
 	const path = $derived(`/books/${book.slug}/`);
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
-	const alternates = $derived(
-		locales.map((loc) => ({ loc, href: `${SITE_URL}${localizeHref(path, { locale: loc })}` }))
-	);
+	const hreflang = $derived(hreflangFor(path, book.available_languages));
 	const description = $derived(
 		(book.description || `${book.title} by ${book.author.name} — free to read on Ochorus.`).slice(
 			0,
@@ -86,10 +86,10 @@
 	<title>{book.title} — {book.author.name} — Ochorus</title>
 	<meta name="description" content={description} />
 	<link rel="canonical" href={canonical} />
-	{#each alternates as a (a.loc)}
+	{#each hreflang.alternates as a (a.loc)}
 		<link rel="alternate" hreflang={a.loc} href={a.href} />
 	{/each}
-	<link rel="alternate" hreflang="x-default" href="{SITE_URL}{localizeHref(path, { locale: 'en' })}" />
+	<link rel="alternate" hreflang="x-default" href={hreflang.xDefault} />
 	<meta property="og:type" content="book" />
 	<meta property="og:title" content="{book.title} — {book.author.name}" />
 	<meta property="og:description" content={description} />

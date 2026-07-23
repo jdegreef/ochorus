@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { absUrl, jsonLd, breadcrumb } from './seo';
+import { absUrl, jsonLd, breadcrumb, hreflangFor } from './seo';
 import { SITE_URL } from './config';
 
 describe('absUrl', () => {
@@ -41,6 +41,45 @@ describe('jsonLd', () => {
 		const data = { '@type': 'Article', headline: 'Faith < Hope' };
 		const inner = jsonLd(data).replace(/^<script[^>]*>/, '').replace(/<\/script>$/, '');
 		expect(JSON.parse(inner.replace(/\\u003c/g, '<'))).toEqual(data);
+	});
+});
+
+describe('hreflangFor', () => {
+	// Locale order follows the canonical set (en, es, sw, lg); en is unprefixed,
+	// other locales carry a /<loc> prefix (localizeHref's own behaviour).
+	it('emits an alternate only for the locales the work exists in', () => {
+		const { alternates } = hreflangFor('/books/humility/', ['en', 'sw']);
+		expect(alternates.map((a) => a.loc)).toEqual(['en', 'sw']);
+		expect(alternates[0].href).toBe(`${SITE_URL}/books/humility/`);
+		expect(alternates[1].href).toContain(`${SITE_URL}/sw/books/humility`);
+	});
+
+	it('points x-default at the English URL when the work exists in English', () => {
+		const { alternates, xDefault } = hreflangFor('/books/humility/', ['en', 'lg']);
+		// x-default mirrors the English alternate's href exactly.
+		expect(xDefault).toBe(alternates.find((a) => a.loc === 'en')!.href);
+		expect(xDefault).toBe(`${SITE_URL}/books/humility/`);
+	});
+
+	it('points x-default at the first available locale when English is absent', () => {
+		// A work translated to Swahili + Luganda but never published in English:
+		// x-default must not claim an English URL that would soft-404 — it points
+		// at the first available locale (the Swahili alternate) instead.
+		const { alternates, xDefault } = hreflangFor('/sermons/himself/', ['sw', 'lg']);
+		expect(alternates.map((a) => a.loc)).toEqual(['sw', 'lg']);
+		expect(xDefault).toBe(alternates[0].href);
+		expect(xDefault).toContain('/sw/sermons/himself');
+	});
+
+	it('ignores unknown/foreign locale codes from the API', () => {
+		const { alternates } = hreflangFor('/plans/prayer/', ['en', 'fr', 'es']);
+		expect(alternates.map((a) => a.loc)).toEqual(['en', 'es']);
+	});
+
+	it('falls back to every locale when availability is empty (older API)', () => {
+		const { alternates, xDefault } = hreflangFor('/books/humility/', []);
+		expect(alternates.map((a) => a.loc)).toEqual(['en', 'es', 'sw', 'lg']);
+		expect(xDefault).toBe(`${SITE_URL}/books/humility/`);
 	});
 });
 
