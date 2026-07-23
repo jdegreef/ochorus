@@ -516,6 +516,15 @@ class SeedBooksChapterDriftTests(TestCase):
         Chapter.objects.filter(pk=c.pk).update(body_html="<p>tampered</p>")
         self.assertIn("body differs", self._drift()[self.book.slug])
 
+    def test_reordered_chapters_report_the_odd_orders(self):
+        # Same count, shifted order numbers — the message must name the orders,
+        # not read "N vs N".
+        last = self.book.chapters.order_by("-order").first()
+        Chapter.objects.filter(pk=last.pk).update(order=last.order + 100)
+        reason = self._drift()[self.book.slug]
+        self.assertIn("order(s)", reason)
+        self.assertIn(str(last.order + 100), reason)
+
     def test_warning_is_report_only_and_never_mutates_chapters(self):
         from django.core.management import call_command
 
@@ -529,6 +538,28 @@ class SeedBooksChapterDriftTests(TestCase):
         # …but did not "fix" the divergent chapter back to the fixture.
         c.refresh_from_db()
         self.assertEqual(c.body_html, "<p>tampered</p>")
+
+    def test_drift_check_failure_never_aborts_the_seed(self):
+        # The drift pass runs inside seed_books' @transaction.atomic handle(),
+        # so a bug in this diagnostics-only code must not roll back a good seed
+        # or fail the deploy — it's caught and reported, and the command still
+        # succeeds (creating a book that was missing).
+        from unittest.mock import patch
+
+        from django.core.management import call_command
+
+        self.book.delete()  # so this run has real work to commit
+        out = StringIO()
+        with patch(
+            "library.management.commands.seed_books.chapter_drift",
+            side_effect=RuntimeError("boom"),
+        ):
+            call_command("seed_books", stdout=out, stderr=out)
+        self.assertIn("Chapter-drift check skipped", out.getvalue())
+        # The seed itself committed despite the diagnostics blowing up.
+        self.assertTrue(
+            Book.objects.filter(slug=self.book.slug, language="en").exists()
+        )
 
 
 class SeedSermonsTests(TestCase):

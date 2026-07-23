@@ -90,7 +90,13 @@ def chapter_drift(books, chapters_by_book):
             continue
         db = {c.order: c for c in book.chapters.all()}
         if fixture.keys() != db.keys():
-            yield book, f"{len(db)} chapter(s) in DB, {len(fixture)} in fixture"
+            if len(db) == len(fixture):
+                # Same count, different order numbers — a plain count would read
+                # as "3 vs 3". Name the orders that don't line up instead.
+                odd = sorted(set(db) ^ set(fixture))
+                yield book, f"chapter order(s) {odd} differ between DB and fixture"
+            else:
+                yield book, f"{len(db)} chapter(s) in DB, {len(fixture)} in fixture"
             continue
         for order, fc in sorted(fixture.items()):
             dc = db[order]
@@ -100,7 +106,7 @@ def chapter_drift(books, chapters_by_book):
                     f"{fc.get('title')!r} (fixture)"
                 )
                 break
-            if fc.get("body_html", "") != dc.body_html:
+            if (fc.get("body_html") or "") != dc.body_html:
                 yield book, f"chapter {order} body differs from fixture"
                 break
 
@@ -249,13 +255,22 @@ class Command(BaseCommand):
 
         # Report-only: warn if any existing book's chapters have diverged from
         # the fixture (a transform applied to the live DB without a fixture
-        # regen). prefetch_related keeps this to two queries. Just-created books
-        # match by construction, so they never trip it.
-        drifted = list(
-            chapter_drift(
-                Book.objects.prefetch_related("chapters"), chapters_by_book
+        # regen). prefetch_related keeps this to two queries; just-created books
+        # match by construction, so they never trip it. This is diagnostics, and
+        # handle() is @transaction.atomic — a bug in it must NOT roll back a
+        # good seed, so its reads are swallowed (only reads, so the transaction
+        # stays usable) rather than allowed to propagate out of the block.
+        try:
+            drifted = list(
+                chapter_drift(
+                    Book.objects.prefetch_related("chapters"), chapters_by_book
+                )
             )
-        )
+        except Exception as exc:  # noqa: BLE001 — never let diagnostics fail a deploy
+            self.stdout.write(
+                self.style.WARNING(f"⚠ Chapter-drift check skipped ({exc!r}).")
+            )
+            return
         if drifted:
             self.stdout.write(
                 self.style.WARNING(
