@@ -4,6 +4,7 @@
 	import { readingMinutes } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { SITE_URL } from '$lib/config';
+	import { itemList } from '$lib/seo';
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import CatalogLanguageNudge from '$lib/components/CatalogLanguageNudge.svelte';
@@ -35,6 +36,14 @@
 	);
 
 	// Self-referential canonical + hreflang per locale (mirrors /books, /topics).
+	// schema.org ItemList of the plans shelf — an ordered roster for crawlers.
+	const plansLd = $derived(
+		itemList(
+			t('plans.title'),
+			plans.map((p) => ({ name: p.title, url: localizeHref(`/plans/${p.slug}`) }))
+		)
+	);
+
 	const canonical = `${SITE_URL}${localizeHref('/plans')}`;
 	const alternates = locales.map((loc) => ({
 		loc,
@@ -74,6 +83,8 @@
 	<meta property="og:title" content="{t('plans.title')} — Ochorus" />
 	<meta property="og:description" content={t('plans.tagline')} />
 	<meta property="og:url" content={canonical} />
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{#if plans.length}{@html plansLd}{/if}
 </svelte:head>
 
 <div class="mx-auto max-w-3xl px-5 py-10">

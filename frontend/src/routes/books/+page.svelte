@@ -1,5 +1,7 @@
 <script lang="ts">
+	import type { BookSummary } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
+	import { itemList } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import BooksShelf from '$lib/components/BooksShelf.svelte';
@@ -7,6 +9,16 @@
 	const t = i18n.t;
 
 	let { data } = $props();
+	const books = $derived<BookSummary[]>(data.books ?? []);
+
+	// schema.org ItemList of the shelf — an ordered roster of the library so a
+	// crawler sees the works, not an opaque grid. Built from the full set.
+	const booksLd = $derived(
+		itemList(
+			t('nav.books'),
+			books.map((b) => ({ name: b.title, url: localizeHref(`/books/${b.slug}`) }))
+		)
+	);
 
 	// Self-referential canonical + hreflang: each localized copy of this
 	// prerendered page points at ITSELF, not the English URL (which would
@@ -30,6 +42,8 @@
 	<meta property="og:title" content="{t('nav.books')} — Ochorus" />
 	<meta property="og:description" content={t('books.metaDescription')} />
 	<meta property="og:url" content={canonical} />
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{#if books.length}{@html booksLd}{/if}
 </svelte:head>
 
 <BooksShelf books={data.books} loadError={data.loadError} />
