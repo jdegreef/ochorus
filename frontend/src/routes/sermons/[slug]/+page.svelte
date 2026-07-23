@@ -23,6 +23,7 @@
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
 	import SelectionBar from '$lib/components/SelectionBar.svelte';
 	import DefinePopover from '$lib/components/DefinePopover.svelte';
@@ -339,23 +340,16 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{sermon.title} — {sermon.author_name} — Ochorus</title>
-	<meta name="description" content={metaDescription} />
-	<link rel="canonical" href={canonical} />
-	{#each hreflang.alternates as a (a.loc)}
-		<link rel="alternate" hreflang={a.loc} href={a.href} />
-	{/each}
-	<link rel="alternate" hreflang="x-default" href={hreflang.xDefault} />
-	<meta property="og:type" content="article" />
-	<meta property="og:title" content="{sermon.title} — {sermon.author_name}" />
-	<meta property="og:description" content={metaDescription} />
-	<meta property="og:url" content={canonical} />
-	{#if ogImage}<meta property="og:image" content={ogImage} />{/if}
-	<meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
-	{@html sermonLd}
-	{@html crumbsLd}
-</svelte:head>
+<Seo
+	title="{sermon.title} — {sermon.author_name} — Ochorus"
+	description={metaDescription}
+	{canonical}
+	{hreflang}
+	ogType="article"
+	ogTitle="{sermon.title} — {sermon.author_name}"
+	{ogImage}
+	structuredData={[sermonLd, crumbsLd]}
+/>
 
 <svelte:window onscroll={onScroll} />
 

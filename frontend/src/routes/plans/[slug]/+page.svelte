@@ -8,6 +8,7 @@
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 
 	let { data } = $props();
 	const plan = $derived<PlanDetail>(data.plan);
@@ -85,21 +86,13 @@
 	};
 </script>
 
-<svelte:head>
-	<title>{plan.title} — Ochorus</title>
-	<meta name="description" content={plan.description} />
-	<link rel="canonical" href={canonical} />
-	{#each hreflang.alternates as a (a.loc)}
-		<link rel="alternate" hreflang={a.loc} href={a.href} />
-	{/each}
-	<link rel="alternate" hreflang="x-default" href={hreflang.xDefault} />
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content="{plan.title} — Ochorus" />
-	<meta property="og:description" content={plan.description} />
-	<meta property="og:url" content={canonical} />
-	{@html planLd}
-	{@html crumbsLd}
-</svelte:head>
+<Seo
+	title="{plan.title} — Ochorus"
+	description={plan.description}
+	{canonical}
+	{hreflang}
+	structuredData={[planLd, crumbsLd]}
+/>
 
 <div class="mx-auto max-w-3xl px-5 py-10">
 	<nav class="mb-5 text-small text-muted" aria-label={t('a11y.breadcrumb')}>

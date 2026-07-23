@@ -38,6 +38,15 @@ export function hreflangFor(path: string, available: string[]): Hreflang {
 	return { alternates, xDefault: `${SITE_URL}${localizeHref(path, { locale: def })}` };
 }
 
+/**
+ * hreflang alternates for a page that genuinely exists in every locale — an
+ * author or a topic, which render in all four via a bio/name fallback. Every
+ * locale is a real alternate here, and x-default is always English.
+ */
+export function hreflangAll(path: string): Hreflang {
+	return hreflangFor(path, [...locales]);
+}
+
 /** Make a path absolute against the site origin (pass-through for full URLs). */
 export function absUrl(path: string): string {
 	if (!path) return SITE_URL;

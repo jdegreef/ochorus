@@ -1,10 +1,12 @@
 <script lang="ts">
 	import type { TopicDetail } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
+	import { jsonLd, hreflangAll } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
-	import { localizeHref, locales } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/paraglide/runtime';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import SermonCard from '$lib/components/SermonCard.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import { topicMeta } from '$lib/topics';
 
@@ -13,15 +15,14 @@
 	const topic = $derived<TopicDetail>(data.topic);
 	const meta = $derived(topicMeta(topic.slug));
 
-	// Self-referential canonical + hreflang per locale (mirrors authors/[slug]) —
-	// an English canonical here would deindex the translated topic pages.
+	// Self-referential canonical + hreflang: topics render in every locale (title
+	// falls back), so all four are real alternates — an English canonical here
+	// would deindex the translated topic pages.
 	const path = $derived(`/topics/${topic.slug}/`);
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
-	const alternates = $derived(
-		locales.map((loc) => ({ loc, href: `${SITE_URL}${localizeHref(path, { locale: loc })}` }))
-	);
-	const jsonLd = $derived(
-		JSON.stringify({
+	const hreflang = $derived(hreflangAll(path));
+	const topicLd = $derived(
+		jsonLd({
 			'@context': 'https://schema.org',
 			'@type': 'CollectionPage',
 			name: topic.title,
@@ -41,25 +42,17 @@
 					url: `${SITE_URL}/sermons/${s.slug}`
 				}))
 			]
-		}).replace(/</g, '\\u003c')
+		})
 	);
 </script>
 
-<svelte:head>
-	<title>{topic.title} — Ochorus</title>
-	<meta name="description" content={topic.description} />
-	<link rel="canonical" href={canonical} />
-	{#each alternates as a (a.loc)}
-		<link rel="alternate" hreflang={a.loc} href={a.href} />
-	{/each}
-	<link rel="alternate" hreflang="x-default" href="{SITE_URL}{localizeHref(path, { locale: 'en' })}" />
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content="{topic.title} — Ochorus" />
-	<meta property="og:description" content={topic.description} />
-	<meta property="og:url" content={canonical} />
-	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-	{@html `<script type="application/ld+json">${jsonLd}<\/script>`}
-</svelte:head>
+<Seo
+	title="{topic.title} — Ochorus"
+	description={topic.description}
+	{canonical}
+	{hreflang}
+	structuredData={[topicLd]}
+/>
 
 <div class="mx-auto max-w-5xl px-5 py-10" style="--topic: {meta.accent}">
 	<a href={localizeHref('/topics')} class="text-small text-muted">← {t('topics.title')}</a>
