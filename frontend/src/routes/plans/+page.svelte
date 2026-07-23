@@ -43,6 +43,22 @@
 	/** Rounded minutes of reading in an average day of a plan. */
 	const perDay = (plan: PlanSummary) =>
 		plan.day_count ? Math.max(1, readingMinutes(Math.round(plan.total_words / plan.day_count))) : 0;
+
+	// "Continue your plans" hub: the reader's started-but-unfinished plans,
+	// most recently started first, so a daily reader lands straight on where
+	// they left off instead of re-hunting through the catalogue. `started()`
+	// exposes this ordering; join it against the loaded plan metadata.
+	const bySlug = $derived(new Map(plans.map((p) => [p.slug, p])));
+	const activePlans = $derived.by(() => {
+		void planProgress.ticks;
+		return planProgress
+			.started()
+			.map((s) => bySlug.get(s.slug))
+			.filter(
+				(p): p is PlanSummary =>
+					!!p && planProgress.doneDays(p.slug).length < p.day_count
+			);
+	});
 </script>
 
 <svelte:head>
@@ -65,6 +81,41 @@
 
 	{#if plans.length === 0}
 		<p class="text-small text-muted">{t('plans.none')}</p>
+	{/if}
+
+	<!-- Continue your plans: pick up where you left off. Only shown when the
+	     reader has an unfinished plan in progress. -->
+	{#if activePlans.length}
+		<section class="mb-8">
+			<h2 class="mb-3 text-small font-semibold uppercase tracking-wide text-muted">
+				{t('plans.continueHeading')}
+			</h2>
+			<div class="space-y-3">
+				{#each activePlans as plan (plan.slug)}
+					{@const done = planProgress.doneDays(plan.slug).length}
+					<a
+						href={localizeHref(`/plans/${plan.slug}`)}
+						class="block rounded-card border border-accent-soft bg-surface-2 p-4 hover:bg-surface hover:no-underline"
+					>
+						<div class="flex items-baseline justify-between gap-3">
+							<h3 class="text-body font-semibold text-text">{plan.title}</h3>
+							<span class="shrink-0 text-small text-accent">
+								{t('plans.day')}
+								{planProgress.nextDay(plan.slug, plan.day_count)}
+								{t('plans.of')}
+								{plan.day_count} →
+							</span>
+						</div>
+						<div class="mt-2 h-1.5 overflow-hidden rounded-full bg-surface">
+							<div
+								class="h-full rounded-full bg-accent"
+								style="width: {Math.round((done / plan.day_count) * 100)}%"
+							></div>
+						</div>
+					</a>
+				{/each}
+			</div>
+		</section>
 	{/if}
 
 	{#if showLengthFilter}

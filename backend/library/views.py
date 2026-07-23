@@ -88,9 +88,17 @@ class AuthorListView(generics.ListAPIView):
                 num_books=Count(
                     "books",
                     filter=Q(books__is_published=True, books__language=lang),
-                )
+                    distinct=True,
+                ),
+                # Sermons in this language too — a sermon-only author is part of
+                # the library and shouldn't read as empty on the shelf.
+                num_sermons=Count(
+                    "sermons",
+                    filter=Q(sermons__is_published=True, sermons__language=lang),
+                    distinct=True,
+                ),
             )
-            .filter(Q(num_books__gt=0) | ~Q(bio=""))
+            .filter(Q(num_books__gt=0) | Q(num_sermons__gt=0) | ~Q(bio=""))
             .order_by("name")
         )
 
@@ -382,6 +390,45 @@ class SearchView(APIView):
         except Exception:
             logger.warning("search query logging failed", exc_info=True)
         return Response(payload)
+
+
+class PopularSearchesView(APIView):
+    """The queries readers search most — for the search page's empty state.
+
+    Public and aggregate-only. The privacy guarantee is structural: a query is
+    only returned if ``result_count > 0``, i.e. it matched published library
+    content — so a reader's private text (which won't match the corpus) never
+    surfaces, however many times it's typed. The log is fully anonymous (no
+    user column), so counts are of rows, not readers; MIN_COUNT is therefore a
+    noise filter — "this is a real recurring query, not a fluke" — not the
+    privacy mechanism. Fragments under 3 chars (type-ahead prefixes) are
+    dropped, and results are scoped to the reader's language.
+    """
+
+    WINDOW_DAYS = 30
+    MIN_COUNT = 3  # a query must recur to read as "popular", not a one-off blip
+    LIMIT = 8
+
+    def get(self, request):
+        from datetime import timedelta
+
+        from django.db.models.functions import Length, Lower
+        from django.utils import timezone
+
+        language = _language(request)
+        since = timezone.now() - timedelta(days=self.WINDOW_DAYS)
+        rows = (
+            SearchQueryLog.objects.filter(
+                created_at__gte=since, language=language, result_count__gt=0
+            )
+            .annotate(q=Lower("query"), qlen=Length("query"))
+            .filter(qlen__gte=3)
+            .values("q")
+            .annotate(count=Count("id"))
+            .filter(count__gte=self.MIN_COUNT)
+            .order_by("-count", "q")[: self.LIMIT]
+        )
+        return Response({"queries": [r["q"] for r in rows]})
 
 
 class ScriptureView(APIView):

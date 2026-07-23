@@ -220,11 +220,27 @@
 									>{author.birth_year}–{author.death_year ?? ''}</span
 								>
 							{/if}
+							{#if author.has_long_bio}
+								<span
+									class="ml-2 align-middle rounded-full bg-accent-soft px-2 py-0.5 text-[0.68rem] font-semibold uppercase tracking-wide text-accent"
+									title={t('bios.fullLifeHint')}
+								>
+									{t('bios.fullLife')}
+								</span>
+							{/if}
 						</h2>
 						<a href={localizeHref(`/authors/${author.slug}`)} class="text-small font-semibold text-accent">
 							{#if author.book_count > 0}
 								{author.book_count}
-								{author.book_count === 1 ? t('bios.booksInLibraryOne') : t('bios.booksInLibraryMany')} →
+								{author.book_count === 1 ? t('bios.booksInLibraryOne') : t('bios.booksInLibraryMany')}
+								{#if author.sermon_count > 0}
+									· {author.sermon_count}
+									{author.sermon_count === 1 ? t('bios.sermonsOne') : t('bios.sermonsMany')}
+								{/if}
+								→
+							{:else if author.sermon_count > 0}
+								{author.sermon_count}
+								{author.sermon_count === 1 ? t('bios.sermonsOne') : t('bios.sermonsMany')} →
 							{:else}
 								{t('bios.viewBiography')} →
 							{/if}

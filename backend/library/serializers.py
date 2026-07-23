@@ -13,6 +13,23 @@ def _modern_edition_available(slug: str) -> bool:
     ).exists()
 
 
+def _topic_chips(language: str, **membership) -> list[dict]:
+    """Localized {slug, title} chips for the published topics a work belongs to.
+
+    ``membership`` is the reverse-relation filter that selects the topic set —
+    ``entries__book_slug=…`` for a book, ``sermon_entries__sermon_slug=…`` for a
+    sermon. Shared by the book and sermon detail serializers so the chip shape
+    and ordering live in one place.
+    """
+    topics = (
+        Topic.objects.filter(is_published=True, **membership)
+        .prefetch_related("translations")
+        .distinct()
+        .order_by("sort_order", "title")
+    )
+    return [{"slug": t.slug, "title": t.title_for(language)} for t in topics]
+
+
 class LocalizedMixin:
     """Mixin for serializers whose output depends on the reader's language.
 
@@ -52,11 +69,23 @@ class AuthorListSerializer(LocalizedMixin, serializers.ModelSerializer):
     """Authors for the Biographies page, with how many books each has."""
 
     book_count = serializers.IntegerField(source="num_books", read_only=True)
+    sermon_count = serializers.IntegerField(source="num_sermons", read_only=True)
     bio = serializers.SerializerMethodField()
+    # Whether a full long-form biography exists — so the card can signal a rich
+    # read vs. a one-line stub. A boolean, not the HTML (kept out of the list
+    # payload); the long bio itself lives on the author detail endpoint.
+    has_long_bio = serializers.SerializerMethodField()
 
     class Meta:
         model = Author
-        fields = ["slug", "name", "bio", "photo_url", "birth_year", "death_year", "book_count"]
+        fields = [
+            "slug", "name", "bio", "photo_url", "birth_year", "death_year",
+            "book_count", "sermon_count", "has_long_bio",
+        ]
+
+    def get_has_long_bio(self, obj):
+        # The long bio is localized like the short one; a translation counts.
+        return bool(obj.bio_html_for(self._language()).strip())
 
     def get_bio(self, obj):
         return obj.bio_for(self._language())
@@ -203,6 +232,15 @@ class SermonDetailSerializer(serializers.ModelSerializer):
     def get_next(self, obj):
         return self._neighbours(obj)[1]
 
+    topics = serializers.SerializerMethodField()
+
+    def get_topics(self, obj):
+        """Published topics this sermon belongs to, localized — small chips
+        linking to each topical shelf. Mirrors BookDetailSerializer.get_topics;
+        the author and topic pages already surface this membership, the sermon
+        page didn't."""
+        return _topic_chips(obj.language, sermon_entries__sermon_slug=obj.slug)
+
     class Meta:
         model = Sermon
         fields = [
@@ -223,6 +261,7 @@ class SermonDetailSerializer(serializers.ModelSerializer):
             "scripture_refs",
             "summary",
             "difficulty",
+            "topics",
         ]
 
 
@@ -236,11 +275,18 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
     bio = serializers.SerializerMethodField()
     bio_html = serializers.SerializerMethodField()
 
+    # Present so AuthorDetail honours the AuthorBio contract the list shares;
+    # the detail page already has the full sermons array + bio_html, so these
+    # are just the summary numbers.
+    sermon_count = serializers.SerializerMethodField()
+    has_long_bio = serializers.SerializerMethodField()
+
     class Meta:
         model = Author
         fields = [
             "slug", "name", "bio", "bio_html", "photo_url", "birth_year",
-            "death_year", "book_count", "books", "sermons", "topics",
+            "death_year", "book_count", "sermon_count", "has_long_bio",
+            "books", "sermons", "topics",
         ]
 
     def get_bio(self, obj):
@@ -248,6 +294,20 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
 
     def get_bio_html(self, obj):
         return obj.bio_html_for(self._language())
+
+    def get_sermon_count(self, obj):
+        return len(self._sermons(obj))
+
+    def get_has_long_bio(self, obj):
+        return bool(obj.bio_html_for(self._language()).strip())
+
+    def _sermons(self, obj):
+        return list(
+            obj.sermons.filter(is_published=True, language=self._language())
+            .select_related("author")
+            .prefetch_related("author__translations")
+            .order_by("sort_order", "title")
+        )
 
     def _books(self, obj):
         from django.db.models import Count
@@ -267,13 +327,9 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
         return self._books(obj).count()
 
     def get_sermons(self, obj):
-        sermons = (
-            obj.sermons.filter(is_published=True, language=self._language())
-            .select_related("author")
-            .prefetch_related("author__translations")
-            .order_by("sort_order", "title")
-        )
-        return SermonListSerializer(sermons, many=True, context=self.context).data
+        return SermonListSerializer(
+            self._sermons(obj), many=True, context=self.context
+        ).data
 
     def get_topics(self, obj):
         """The published topical shelves this author appears in — any topic
@@ -360,13 +416,7 @@ class BookDetailSerializer(BookListSerializer):
     def get_topics(self, obj):
         """Published topics this work belongs to, localized to the book's
         language — small chips linking to each topical shelf."""
-        topics = (
-            Topic.objects.filter(is_published=True, entries__book_slug=obj.slug)
-            .prefetch_related("translations")
-            .distinct()
-            .order_by("sort_order", "title")
-        )
-        return [{"slug": t.slug, "title": t.title_for(obj.language)} for t in topics]
+        return _topic_chips(obj.language, entries__book_slug=obj.slug)
 
     def get_related(self, obj):
         """"More like this" — other books in the same language ranked by how
