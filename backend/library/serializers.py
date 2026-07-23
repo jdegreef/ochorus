@@ -13,6 +13,24 @@ def _modern_edition_available(slug: str) -> bool:
     ).exists()
 
 
+def _available_languages(model, slug: str) -> list[str]:
+    """Sorted content locales this work is published in — for hreflang.
+
+    Books/sermons/plans are per-language rows with no English fallback, so a
+    detail page must advertise ``<link rel="alternate" hreflang>`` only for the
+    locales that actually have a row. Advertising every locale unconditionally
+    (the old behaviour) points crawlers at localized URLs that soft-404. The
+    Modern English edition (``en-modern``) is an in-page toggle, not a
+    browsable locale, so it's excluded.
+    """
+    return sorted(
+        model.objects.filter(slug=slug, is_published=True)
+        .exclude(language=MODERN_LANGUAGE)
+        .values_list("language", flat=True)
+        .distinct()
+    )
+
+
 def _topic_chips(language: str, **membership) -> list[dict]:
     """Localized {slug, title} chips for the published topics a work belongs to.
 
@@ -241,6 +259,11 @@ class SermonDetailSerializer(serializers.ModelSerializer):
         page didn't."""
         return _topic_chips(obj.language, sermon_entries__sermon_slug=obj.slug)
 
+    available_languages = serializers.SerializerMethodField()
+
+    def get_available_languages(self, obj):
+        return _available_languages(Sermon, obj.slug)
+
     class Meta:
         model = Sermon
         fields = [
@@ -262,6 +285,7 @@ class SermonDetailSerializer(serializers.ModelSerializer):
             "summary",
             "difficulty",
             "topics",
+            "available_languages",
         ]
 
 
@@ -381,6 +405,7 @@ class BookDetailSerializer(BookListSerializer):
     # English work; these let the reader offer a per-book toggle to it.
     is_modern_edition = serializers.SerializerMethodField()
     has_modern_edition = serializers.SerializerMethodField()
+    available_languages = serializers.SerializerMethodField()
 
     # How many related books to surface, and how much a shared topic counts
     # relative to sharing the author (a shared topic is the stronger signal).
@@ -393,7 +418,11 @@ class BookDetailSerializer(BookListSerializer):
             "description", "source_url", "pdf_url", "chapters",
             "publication_year", "attribution", "topics", "related",
             "difficulty", "is_modern_edition", "has_modern_edition",
+            "available_languages",
         ]
+
+    def get_available_languages(self, obj):
+        return _available_languages(Book, obj.slug)
 
     def get_difficulty(self, obj):
         """A relative reading-difficulty badge, from the prefetched chapters'
@@ -483,6 +512,13 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
     # Lets the reader show the Modern English ⇄ Original toggle in place.
     is_modern_edition = serializers.SerializerMethodField()
     has_modern_edition = serializers.SerializerMethodField()
+    # The book's published locales, so the chapter page advertises hreflang only
+    # for translations that exist at this same chapter URL (per-language rows,
+    # no English fallback). Chapter counts match across a book's translations.
+    available_languages = serializers.SerializerMethodField()
+
+    def get_available_languages(self, obj):
+        return _available_languages(Book, obj.book.slug)
 
     def get_body_html(self, obj):
         from .scripture import annotate_references
@@ -504,7 +540,7 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
         fields = [
             "order", "title", "body_html", "word_count",
             "book_title", "book_slug", "author_name", "author_slug",
-            "is_modern_edition", "has_modern_edition",
+            "is_modern_edition", "has_modern_edition", "available_languages",
             "prev", "next",
         ]
 
@@ -628,9 +664,13 @@ class PlanDaySerializer(serializers.ModelSerializer):
 
 class PlanDetailSerializer(PlanListSerializer):
     days = serializers.SerializerMethodField()
+    available_languages = serializers.SerializerMethodField()
 
     class Meta(PlanListSerializer.Meta):
-        fields = PlanListSerializer.Meta.fields + ["days"]
+        fields = PlanListSerializer.Meta.fields + ["days", "available_languages"]
+
+    def get_available_languages(self, obj):
+        return _available_languages(Plan, obj.slug)
 
     def get_days(self, obj):
         days = list(obj.days.all())

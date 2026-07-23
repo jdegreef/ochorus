@@ -4,8 +4,8 @@
 	import { readingMinutes, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { SITE_URL } from '$lib/config';
-	import { jsonLd, breadcrumb } from '$lib/seo';
-	import { localizeHref, locales } from '$lib/paraglide/runtime';
+	import { jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
+	import { localizeHref } from '$lib/paraglide/runtime';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 
@@ -13,13 +13,13 @@
 	const plan = $derived<PlanDetail>(data.plan);
 	const t = i18n.t;
 
-	// Self-referential canonical + hreflang per locale (mirrors topics/[slug]) —
-	// an English canonical here would deindex the translated plan pages.
+	// Self-referential canonical + hreflang — an English canonical here would
+	// deindex the translated plan pages. A plan materializes per language only
+	// once its source books are all translated, so hreflang lists only the
+	// locales this plan actually exists in.
 	const path = $derived(`/plans/${plan.slug}/`);
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
-	const alternates = $derived(
-		locales.map((loc) => ({ loc, href: `${SITE_URL}${localizeHref(path, { locale: loc })}` }))
-	);
+	const hreflang = $derived(hreflangFor(path, plan.available_languages));
 	// The distinct books the plan reads through, in first-appearance order, with
 	// the span of days each occupies. Powers both the ItemList JSON-LD and the
 	// "In this plan" preview — a reader sees the shape of the journey (which
@@ -89,10 +89,10 @@
 	<title>{plan.title} — Ochorus</title>
 	<meta name="description" content={plan.description} />
 	<link rel="canonical" href={canonical} />
-	{#each alternates as a (a.loc)}
+	{#each hreflang.alternates as a (a.loc)}
 		<link rel="alternate" hreflang={a.loc} href={a.href} />
 	{/each}
-	<link rel="alternate" hreflang="x-default" href="{SITE_URL}{localizeHref(path, { locale: 'en' })}" />
+	<link rel="alternate" hreflang="x-default" href={hreflang.xDefault} />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="{plan.title} — Ochorus" />
 	<meta property="og:description" content={plan.description} />

@@ -24,9 +24,9 @@
 	import { define } from '$lib/define.svelte';
 	import { scripture } from '$lib/scripture.svelte';
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
-	import { jsonLd } from '$lib/seo';
+	import { jsonLd, hreflangFor } from '$lib/seo';
 	import { focusTrap } from '$lib/actions/focusTrap';
-	import { localizeHref, locales } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/paraglide/runtime';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import DefinePopover from '$lib/components/DefinePopover.svelte';
@@ -45,12 +45,12 @@
 	const t = i18n.t;
 
 	// --- SEO head (this page prerenders — see +page.ts) -------------------------
-	// Self-referential canonical + hreflang, same convention as books/[slug].
+	// Self-referential canonical + hreflang, same convention as books/[slug]:
+	// only the locales this book actually exists in (chapter counts match across
+	// a book's translations, so the same order URL resolves in each).
 	const seoPath = $derived(`/books/${slug}/${chapter.order}/`);
 	const canonical = $derived(`${SITE_URL}${localizeHref(seoPath)}`);
-	const seoAlternates = $derived(
-		locales.map((loc) => ({ loc, href: `${SITE_URL}${localizeHref(seoPath, { locale: loc })}` }))
-	);
+	const hreflang = $derived(hreflangFor(seoPath, chapter.available_languages));
 	const metaDescription = $derived(
 		chapter.body_html
 			.replace(/<[^>]+>/g, ' ')
@@ -696,10 +696,10 @@
 	<title>{chapter.title} — {chapter.book_title} — Ochorus</title>
 	<meta name="description" content={metaDescription} />
 	<link rel="canonical" href={canonical} />
-	{#each seoAlternates as a (a.loc)}
+	{#each hreflang.alternates as a (a.loc)}
 		<link rel="alternate" hreflang={a.loc} href={a.href} />
 	{/each}
-	<link rel="alternate" hreflang="x-default" href="{SITE_URL}{localizeHref(seoPath, { locale: 'en' })}" />
+	<link rel="alternate" hreflang="x-default" href={hreflang.xDefault} />
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content="{chapter.title} — {chapter.book_title}" />
 	<meta property="og:description" content={metaDescription} />

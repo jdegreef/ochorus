@@ -1,4 +1,42 @@
 import { SITE_URL } from './config';
+import { localizeHref, locales } from '$lib/paraglide/runtime';
+
+export interface Hreflang {
+	/** One alternate per locale the work actually exists in. */
+	alternates: { loc: string; href: string }[];
+	/** The x-default target: English when present, else the first available. */
+	xDefault: string;
+}
+
+/**
+ * hreflang alternates for a per-language work — a book, chapter, sermon, or
+ * plan. These have NO English fallback: a locale with no row simply doesn't
+ * show the item, so advertising `<link rel="alternate" hreflang>` for every
+ * locale points crawlers at localized URLs that soft-404 (an English page
+ * claiming Swahili/Luganda siblings that 404). We advertise an alternate only
+ * for the locales the API reports the work is published in (`available`, from
+ * the serializer's `available_languages`).
+ *
+ * When `available` is empty — an older API, or a prerender that raced the field
+ * being served — we fall back to advertising every locale (the prior, lenient
+ * behaviour) rather than emitting a lone self-link. Ordering follows the
+ * canonical `locales` order, not the API's. x-default is English when the work
+ * exists in it, else the first available locale (mirrors sitemap.xml).
+ *
+ * (Authors and topics do NOT use this: they render in every locale via a
+ * bio/name fallback, so their all-locale hreflang is correct.)
+ */
+export function hreflangFor(path: string, available: string[]): Hreflang {
+	const has = new Set(available);
+	const langs = locales.filter((l) => has.has(l));
+	const emit = langs.length ? langs : [...locales];
+	const alternates = emit.map((loc) => ({
+		loc,
+		href: `${SITE_URL}${localizeHref(path, { locale: loc })}`
+	}));
+	const def = emit.includes('en') ? 'en' : emit[0];
+	return { alternates, xDefault: `${SITE_URL}${localizeHref(path, { locale: def })}` };
+}
 
 /** Make a path absolute against the site origin (pass-through for full URLs). */
 export function absUrl(path: string): string {
