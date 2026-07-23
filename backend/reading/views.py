@@ -42,6 +42,11 @@ def _profile(request) -> UserProfile:
     return profile
 
 
+# Upper bound on days accepted in one activity merge — generous (well over a
+# decade of daily reading) but finite, so an oversized bundle can't fan out.
+MAX_ACTIVITY_MERGE = 6000
+
+
 def _parse_day(value) -> date | None:
     """A 'YYYY-MM-DD' string → a date, or None if malformed."""
     if not isinstance(value, str):
@@ -254,8 +259,13 @@ class MergeView(APIView):
 
     def _merge_activity(self, profile, incoming):
         """Union: a day read on either side counts (a streak is the union of
-        active days across all the reader's devices). Malformed dates skipped."""
-        for value in incoming:
+        active days across all the reader's devices). Malformed dates skipped;
+        a non-list is ignored, and the batch is capped so a malformed or
+        oversized bundle can't fan out into an unbounded number of writes
+        (MAX_ACTIVITY_MERGE ≈ years of daily reading — no honest client hits it)."""
+        if not isinstance(incoming, list):
+            return
+        for value in incoming[:MAX_ACTIVITY_MERGE]:
             parsed = _parse_day(value)
             if parsed is not None:
                 ReadingDay.objects.get_or_create(profile=profile, day=parsed)

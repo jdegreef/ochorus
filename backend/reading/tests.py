@@ -402,3 +402,14 @@ class ActivityTests(TestCase):
     def test_requires_auth(self):
         anon = APIClient()
         self.assertEqual(anon.put("/api/reading/activity/2026-07-20/").status_code, 401)
+
+    def test_merge_ignores_a_non_list_activity_payload(self):
+        # A dict's keys look like valid dates; without the type guard they'd be
+        # iterated and (mis)merged. The guard makes a non-list a no-op.
+        res = self.client.post(
+            "/api/reading/merge/",
+            {"activity": {"2026-07-20": 1}},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(ReadingDay.objects.filter(profile=self.profile).count(), 0)
