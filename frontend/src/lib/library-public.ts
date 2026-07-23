@@ -276,6 +276,9 @@ export interface PlanSummary {
 	total_words: number;
 	/** Distinct book covers the plan draws from (first-appearance order). */
 	covers: TopicCover[];
+	/** Where the plan starts, for a "begin here" teaser. Null if day 1's
+	 * chapter can't be resolved (e.g. an untranslated book in this locale). */
+	day_one: { book_title: string; chapter_title: string } | null;
 }
 
 export interface PlanDay {
