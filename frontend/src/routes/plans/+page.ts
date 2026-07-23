@@ -25,6 +25,12 @@ import type { PageLoad } from './$types';
  * second source book (Torrey's Holy Spirit, PR #365) shipped in all three
  * languages, so seed_plans now materializes the plan everywhere with localized
  * prose. This touch re-crawls /es|/lg|/sw/plans so the plan card appears.
+ *
+ * Prerender refresh 2026-07-23 (day-one teaser, PR #371): PlanListSerializer
+ * gained a `day_one` field, but the web build raced the api and prerendered
+ * /plans before it was served, so the baked cards lack the "Day 1 · book —
+ * chapter" line (hydration adds it; first paint and no-JS don't). This touch
+ * re-crawls once the field is live. Verified 8/8 plans return day_one.
  */
 export const load: PageLoad = async () => {
 	// Tolerate a lagging/absent plans endpoint at prerender time (api + web can
