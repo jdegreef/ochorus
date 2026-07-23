@@ -7,6 +7,7 @@
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
+	import Icon from '$lib/components/Icon.svelte';
 
 	/**
 	 * In-progress works (books and sermons) with a resume link. Progress comes
@@ -47,6 +48,7 @@
 	});
 
 	type Item = {
+		kind: 'book' | 'sermon';
 		key: string;
 		href: string;
 		title: string;
@@ -70,11 +72,15 @@
 					const resume = p.paragraph_index > 0 ? `?p=${p.paragraph_index}` : '';
 					return {
 						key: workSlugKey(p.kind, p.slug),
+						kind: 'sermon',
 						href: `/sermons/${p.slug}${resume}`,
 						title: sermon.title,
 						author: sermon.author.name,
 						pct: null,
-						meta: t('search.typeSermon')
+						// Scripture ref gives the (meter-less) sermon card some substance.
+						meta: sermon.scripture_ref
+							? `${t('search.typeSermon')} · ${sermon.scripture_ref}`
+							: t('search.typeSermon')
 					};
 				}
 				const book = bySlug.get(p.slug);
@@ -84,6 +90,7 @@
 				// about position) all the way through the last chapter.
 				const pct = bookProgressPercent(p.order, book.chapter_count);
 				return {
+					kind: 'book',
 					key: workSlugKey(p.kind, p.slug),
 					href: `/books/${book.slug}/${p.order}`,
 					title: book.title,
@@ -115,10 +122,16 @@
 							loading="lazy"
 							class="h-20 w-14 shrink-0 rounded-sm object-cover shadow-sm"
 						/>
+					{:else if item.kind === 'sermon'}
+						<!-- Sermons have no cover; a soft mic tile (matching SermonCard's
+						     visual language) reads as intentional, not a blank block. -->
+						<div class="sermon-thumb flex h-20 w-14 shrink-0 items-center justify-center rounded-sm border shadow-sm">
+							<Icon name="mic" size={22} />
+						</div>
 					{:else}
 						<div
 							class="h-20 w-14 shrink-0 rounded-sm shadow-sm"
-							style="background: {item.cover_color || '#3b5bdb'}"
+							style="background: {item.cover_color || 'var(--color-accent-soft)'}"
 						></div>
 					{/if}
 					<div class="min-w-0 flex-1 self-center">
@@ -136,3 +149,13 @@
 		</div>
 	</section>
 {/if}
+
+<style>
+	/* Sermon thumbnail: a soft, accent-tinted tile with the mic glyph, sized to
+	   the same footprint as book covers. Theme-aware via the shared tokens. */
+	.sermon-thumb {
+		color: var(--color-accent);
+		border-color: var(--color-accent-soft-border);
+		background: linear-gradient(155deg, var(--color-accent-soft), var(--color-surface-2));
+	}
+</style>
