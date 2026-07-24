@@ -7,12 +7,14 @@ import { PLANS_KEY as KEY } from './reading-schema';
  * Reading-plan progress: which plans the reader started and which days they've
  * completed. localStorage is the offline source of truth; when signed in, each
  * change also mirrors to the account via `readingSync` so plan progress follows
- * the reader across devices (roadmap #6 — books synced, plans didn't). The
- * cadence is daily and self-paced, so "done" days are the only state. A version
+ * the reader across devices (roadmap #6 — books synced, plans didn't). Completed
+ * days union across devices (never lost); un-marking a day is device-local and
+ * may not propagate — the safe tradeoff for a progress log. The cadence is
+ * daily and self-paced, so "done" days are the only state. A version
  * bump `ticks` lets Svelte views re-derive after any mutation.
  */
 
-interface PlanState {
+export interface PlanState {
 	startedAt: number;
 	done: number[]; // completed day numbers
 }

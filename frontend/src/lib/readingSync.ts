@@ -1,5 +1,6 @@
 import { browser } from '$app/environment';
 import { apiFetch } from './api';
+import type { PlanState } from './planProgress.svelte';
 import {
 	PROGRESS_KEY,
 	MARKS_KEY,
@@ -67,11 +68,6 @@ interface ServerState {
 	plan_progress?: ServerPlanProgress[];
 }
 
-/** The local plan-progress cache shape (planProgress.svelte.ts). */
-interface LocalPlanState {
-	startedAt: number;
-	done: number[];
-}
 
 function readJson<T>(key: string, fallback: T): T {
 	if (!browser) return fallback;
@@ -189,7 +185,7 @@ class ReadingSync {
 	}
 
 	/** Mirror a plan's progress (started + completed days) to the account. */
-	pushPlan(slug: string, state: LocalPlanState) {
+	pushPlan(slug: string, state: PlanState) {
 		if (!this.signedIn || !browser) return;
 		this.#debounce(`plan:${slug}`, () => {
 			apiFetch(`/api/reading/plan/${slug}/`, {
@@ -215,7 +211,7 @@ class ReadingSync {
 		const localProgress = readJson<ProgressMap>(PROGRESS_KEY, {});
 		const localMarks = readJson<MarksStore>(MARKS_KEY, {});
 		const localFavorites = readJson<Record<string, number>>(FAVORITES_KEY, {});
-		const localPlans = readJson<Record<string, LocalPlanState>>(PLANS_KEY, {});
+		const localPlans = readJson<Record<string, PlanState>>(PLANS_KEY, {});
 		// Activity is a bare array, so read it directly (readJson spreads onto an
 		// object fallback, which would mangle an array).
 		let localActivity: string[] = [];
@@ -354,7 +350,7 @@ class ReadingSync {
 			);
 		}
 		if (state.plan_progress) {
-			const plans: Record<string, LocalPlanState> = {};
+			const plans: Record<string, PlanState> = {};
 			for (const p of state.plan_progress) {
 				plans[p.plan_slug] = {
 					startedAt: Date.parse(p.started_at) || Date.now(),

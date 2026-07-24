@@ -436,7 +436,7 @@ class PlanProgressSyncTests(TestCase):
 
         res = self.client.put(
             "/api/reading/plan/school-of-prayer/",
-            {"started_at": self._ms(), "done": [3, 1, 2, "junk", 401, 3, -1]},
+            {"started_at": self._ms(), "done": [3, 1, 2, "junk", 9999, 3, -1, 0]},
             format="json",
         )
         self.assertEqual(res.status_code, 200)
@@ -466,15 +466,26 @@ class PlanProgressSyncTests(TestCase):
         self.assertEqual(obj.started_at, early)
         self.assertEqual(obj.done, [1, 2])
 
-    def test_delete_removes_progress(self):
+    def test_put_unions_and_never_loses_a_completion(self):
+        # A stale device PUTting a shorter list must NOT wipe days completed
+        # elsewhere — completions are monotonic (findings #1/#2).
         from reading.models import PlanProgress
 
         self.client.put(
-            "/api/reading/plan/x/", {"started_at": self._ms(), "done": [1]}, format="json"
+            "/api/reading/plan/p/", {"started_at": self._ms(), "done": [1, 2, 3]}, format="json"
         )
-        res = self.client.delete("/api/reading/plan/x/")
-        self.assertEqual(res.status_code, 204)
-        self.assertEqual(PlanProgress.objects.count(), 0)
+        res = self.client.put(
+            "/api/reading/plan/p/", {"started_at": self._ms(), "done": [1, 4]}, format="json"
+        )
+        self.assertEqual(res.data["done"], [1, 2, 3, 4])  # unioned, 2 & 3 kept
+        self.assertEqual(PlanProgress.objects.get().done, [1, 2, 3, 4])
+
+    def test_merge_ignores_a_malformed_plan_progress_payload(self):
+        # A non-list must not 500 the whole sign-in reconciliation.
+        res = self.client.post(
+            "/api/reading/merge/", {"plan_progress": "garbage"}, format="json"
+        )
+        self.assertEqual(res.status_code, 200)
 
     def test_merge_unions_done_and_takes_earliest_start(self):
         from reading.models import PlanProgress
