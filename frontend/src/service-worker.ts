@@ -6,31 +6,38 @@
 /**
  * Ochorus offline service worker.
  *
- * Caching strategy:
- *  - App shell (hashed build chunks, fonts, CSS) → precached on install,
- *    served cache-first. These are immutable per `version`, so a new deploy
- *    ships a new cache and the old one is dropped on activate.
+ * Two caches:
+ *  - `ochorus-cache-<version>` (versioned) — the app shell (hashed build
+ *    chunks, fonts, CSS) plus content cached *opportunistically* as you browse.
+ *    Immutable per `version`; a new deploy ships a fresh one and the old is
+ *    dropped on activate.
+ *  - `ochorus-offline` (DURABLE) — content the reader *explicitly downloaded*
+ *    for offline (a whole book's chapters + cover, via lib/offlineBooks). It is
+ *    NOT version-suffixed, so a downloaded book survives deploys.
+ *
+ * Strategy:
+ *  - App shell / build assets → precached, cache-first (versioned).
  *  - Navigations → network-first, falling back to the cached SPA shell so the
- *    app opens with no connection.
- *  - Book content (`/api/library/…`) → stale-while-revalidate: the reader gets
- *    an instant cached response and a fresh copy lands in the background, so any
- *    chapter you've opened before is readable offline.
- *  - Other same-origin assets (covers, icons) → cache-first, filled on demand.
+ *    app opens with no connection (the client then renders from cached data).
+ *  - Book content (`/api/library/…`) → durable cache first (explicit
+ *    downloads), else stale-while-revalidate into the versioned cache (so any
+ *    chapter you've merely opened is also readable offline).
+ *  - Cover images (often cross-origin) → durable cache first, else network.
+ *  - Other same-origin assets → cache-first, filled on demand.
  *
  * Registered manually from lib/pwa.svelte.ts (kit.serviceWorker.register=false)
- * so the client can prompt before applying an update rather than reloading under
- * the reader.
+ * so the client can prompt before applying an update.
  */
 
-import { build, files, version } from '$service-worker';
+import { build, version } from '$service-worker';
 
 const sw = self as unknown as ServiceWorkerGlobalScope;
 
 const CACHE = `ochorus-cache-${version}`;
+const OFFLINE = 'ochorus-offline';
 const APP_SHELL = '/';
 
 // Essential shell to precache: hashed build output (JS/CSS/fonts) + PWA assets.
-// Covers and other static files are cached on demand to keep install fast.
 const PRECACHE = [...build, '/manifest.json', '/icons/icon-192.png'];
 
 sw.addEventListener('install', (event) => {
@@ -38,7 +45,6 @@ sw.addEventListener('install', (event) => {
 		(async () => {
 			const cache = await caches.open(CACHE);
 			await cache.addAll(PRECACHE);
-			// Cache the SPA shell HTML so navigations work offline.
 			try {
 				const res = await fetch(APP_SHELL, { cache: 'reload' });
 				if (res.ok) await cache.put(APP_SHELL, res.clone());
@@ -54,7 +60,8 @@ sw.addEventListener('activate', (event) => {
 	event.waitUntil(
 		(async () => {
 			for (const key of await caches.keys()) {
-				if (key !== CACHE) await caches.delete(key);
+				// Keep the current versioned cache AND the durable downloads cache.
+				if (key !== CACHE && key !== OFFLINE) await caches.delete(key);
 			}
 			await sw.clients.claim();
 		})()
@@ -67,6 +74,7 @@ sw.addEventListener('message', (event) => {
 });
 
 const isLibraryApi = (url: URL) => url.pathname.includes('/api/library/');
+const isImage = (url: URL) => /\.(png|jpe?g|webp|avif|gif|svg)$/i.test(url.pathname);
 const isPrecached = (url: URL) =>
 	url.origin === sw.location.origin &&
 	(build.includes(url.pathname) || PRECACHE.includes(url.pathname));
@@ -82,13 +90,51 @@ sw.addEventListener('fetch', (event) => {
 		return;
 	}
 	if (isLibraryApi(url)) {
-		event.respondWith(staleWhileRevalidate(request));
+		event.respondWith(offlineThenSWR(request));
+		return;
+	}
+	if (isImage(url)) {
+		event.respondWith(offlineThenImage(request));
 		return;
 	}
 	if (isPrecached(url) || url.origin === sw.location.origin) {
 		event.respondWith(cacheFirst(request));
 	}
 });
+
+/** A hit in the durable downloads cache, if any. */
+async function offlineHit(request: Request): Promise<Response | undefined> {
+	return (await caches.open(OFFLINE)).match(request);
+}
+
+async function offlineThenSWR(request: Request): Promise<Response> {
+	const downloaded = await offlineHit(request);
+	if (downloaded) {
+		// Refresh the durable copy in the background when online; never fatal.
+		fetch(request)
+			.then((res) => {
+				if (res.ok) caches.open(OFFLINE).then((c) => c.put(request, res.clone()));
+			})
+			.catch(() => {});
+		return downloaded;
+	}
+	return staleWhileRevalidate(request);
+}
+
+async function offlineThenImage(request: Request): Promise<Response> {
+	const downloaded = await offlineHit(request);
+	if (downloaded) return downloaded;
+	// Cross-origin covers can't be safely stored in the versioned cache; just
+	// pass through to the network (they show online, and offline once downloaded).
+	if (new URL(request.url).origin !== sw.location.origin) {
+		try {
+			return await fetch(request);
+		} catch {
+			return Response.error();
+		}
+	}
+	return cacheFirst(request);
+}
 
 async function cacheFirst(request: Request): Promise<Response> {
 	const cache = await caches.open(CACHE);
