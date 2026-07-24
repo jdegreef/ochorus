@@ -413,3 +413,110 @@ class ActivityTests(TestCase):
         )
         self.assertEqual(res.status_code, 200)
         self.assertEqual(ReadingDay.objects.filter(profile=self.profile).count(), 0)
+
+
+class PlanProgressSyncTests(TestCase):
+    """Server-synced reading-plan progress (roadmap #6)."""
+
+    def setUp(self):
+        self.user = User.objects.create(username="00000000-0000-0000-0000-0000000000aa")
+        self.profile = UserProfile.objects.create(
+            user=self.user, supabase_uid=self.user.username, email="p@example.com"
+        )
+        self.client = APIClient()
+        self.client.force_authenticate(self.user)
+
+    def _ms(self, days_ago=0):
+        import time
+
+        return int(time.time() * 1000) - days_ago * 86_400_000
+
+    def test_put_normalizes_done_and_appears_in_state(self):
+        from reading.models import PlanProgress
+
+        res = self.client.put(
+            "/api/reading/plan/school-of-prayer/",
+            {"started_at": self._ms(), "done": [3, 1, 2, "junk", 9999, 3, -1, 0]},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        # unique, sorted, 1..400 only
+        self.assertEqual(res.data["done"], [1, 2, 3])
+        self.assertEqual(PlanProgress.objects.filter(profile=self.profile).count(), 1)
+        state = self.client.get("/api/reading/state/").data
+        self.assertEqual(len(state["plan_progress"]), 1)
+        self.assertEqual(state["plan_progress"][0]["plan_slug"], "school-of-prayer")
+
+    def test_started_at_keeps_the_earliest(self):
+        from reading.models import PlanProgress
+
+        self.client.put(
+            "/api/reading/plan/humility-12-days/",
+            {"started_at": self._ms(days_ago=1), "done": [1]},
+            format="json",
+        )
+        early = PlanProgress.objects.get().started_at
+        # a later PUT with a NEWER start must not move the start forward
+        self.client.put(
+            "/api/reading/plan/humility-12-days/",
+            {"started_at": self._ms(days_ago=0), "done": [1, 2]},
+            format="json",
+        )
+        obj = PlanProgress.objects.get()
+        self.assertEqual(obj.started_at, early)
+        self.assertEqual(obj.done, [1, 2])
+
+    def test_put_unions_and_never_loses_a_completion(self):
+        # A stale device PUTting a shorter list must NOT wipe days completed
+        # elsewhere — completions are monotonic (findings #1/#2).
+        from reading.models import PlanProgress
+
+        self.client.put(
+            "/api/reading/plan/p/", {"started_at": self._ms(), "done": [1, 2, 3]}, format="json"
+        )
+        res = self.client.put(
+            "/api/reading/plan/p/", {"started_at": self._ms(), "done": [1, 4]}, format="json"
+        )
+        self.assertEqual(res.data["done"], [1, 2, 3, 4])  # unioned, 2 & 3 kept
+        self.assertEqual(PlanProgress.objects.get().done, [1, 2, 3, 4])
+
+    def test_merge_ignores_a_malformed_plan_progress_payload(self):
+        # A non-list must not 500 the whole sign-in reconciliation.
+        res = self.client.post(
+            "/api/reading/merge/", {"plan_progress": "garbage"}, format="json"
+        )
+        self.assertEqual(res.status_code, 200)
+
+    def test_merge_unions_done_and_takes_earliest_start(self):
+        from reading.models import PlanProgress
+
+        from django.utils import timezone
+
+        # server already has some progress (started "now")
+        PlanProgress.objects.create(
+            profile=self.profile,
+            plan_slug="school-of-prayer",
+            started_at=timezone.now(),
+            done=[5, 6],
+        )
+        payload = {
+            "plan_progress": [
+                {"plan_slug": "school-of-prayer", "started_at": self._ms(days_ago=2), "done": [1, 2, 5]},
+                {"plan_slug": "the-inner-chamber-month", "started_at": self._ms(), "done": [1]},
+            ]
+        }
+        state = self.client.post("/api/reading/merge/", payload, format="json").data
+        rows = {r["plan_slug"]: r for r in state["plan_progress"]}
+        # union: nothing a reader finished on either side is dropped
+        self.assertEqual(rows["school-of-prayer"]["done"], [1, 2, 5, 6])
+        self.assertEqual(rows["the-inner-chamber-month"]["done"], [1])
+        # the local start (2 days ago) is earlier than the server's, so it wins
+        obj = PlanProgress.objects.get(plan_slug="school-of-prayer")
+        self.assertLess(obj.started_at.timestamp(), self._ms() / 1000)
+
+    def test_requires_auth(self):
+        anon = APIClient()
+        self.assertIn(
+            anon.put("/api/reading/plan/x/", {"done": [1]}, format="json").status_code,
+            (401, 403),
+        )

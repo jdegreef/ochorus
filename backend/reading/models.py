@@ -187,3 +187,38 @@ class ReadingDay(models.Model):
 
     def __str__(self) -> str:
         return f"{self.profile_id} read {self.day}"
+
+
+class PlanProgress(models.Model):
+    """A reader's progress through one reading plan — synced across devices.
+
+    A plan is a fixed sequence of daily readings; progress is which day-numbers
+    the reader has completed plus when they started. Both union-merge cleanly:
+    a day marked done on any device stays done (like Favorites / ReadingDay),
+    and the earliest start wins. Slug-referenced like everything in this app, so
+    progress survives a plan re-import and is language-agnostic (a plan is the
+    same plan in every language it's published in).
+
+    ``done`` is a JSON list of 1-based day numbers, kept sorted and unique.
+    """
+
+    profile = models.ForeignKey(
+        "accounts.UserProfile",
+        on_delete=models.CASCADE,
+        related_name="plan_progress",
+    )
+    plan_slug = models.SlugField(max_length=160)
+    started_at = models.DateTimeField()
+    done = models.JSONField(default=list)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-updated_at"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["profile", "plan_slug"], name="uniq_planprogress_profile_plan"
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.profile_id} plan:{self.plan_slug} ({len(self.done)} done)"

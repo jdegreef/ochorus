@@ -1,6 +1,13 @@
 from rest_framework import serializers
 
-from .models import ChapterMarks, Favorite, ReadingProgress
+from .models import ChapterMarks, Favorite, PlanProgress, ReadingProgress
+
+
+class PlanProgressSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PlanProgress
+        fields = ["plan_slug", "started_at", "done", "updated_at"]
+        read_only_fields = ["updated_at"]
 
 
 class FavoriteSerializer(serializers.ModelSerializer):

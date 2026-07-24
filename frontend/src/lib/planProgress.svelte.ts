@@ -1,15 +1,20 @@
 import { browser } from '$app/environment';
 import { readJSON, writeJSON } from './persisted';
+import { readingSync } from './readingSync';
 import { PLANS_KEY as KEY } from './reading-schema';
 
 /**
- * Per-device reading-plan progress: which plans the reader started and which
- * days they've completed. Deliberately simple and local (localStorage) — the
- * cadence is daily and self-paced, so "done" days are the only state. A
- * version bump `ticks` lets Svelte views re-derive after any mutation.
+ * Reading-plan progress: which plans the reader started and which days they've
+ * completed. localStorage is the offline source of truth; when signed in, each
+ * change also mirrors to the account via `readingSync` so plan progress follows
+ * the reader across devices (roadmap #6 — books synced, plans didn't). Completed
+ * days union across devices (never lost); un-marking a day is device-local and
+ * may not propagate — the safe tradeoff for a progress log. The cadence is
+ * daily and self-paced, so "done" days are the only state. A version
+ * bump `ticks` lets Svelte views re-derive after any mutation.
  */
 
-interface PlanState {
+export interface PlanState {
 	startedAt: number;
 	done: number[]; // completed day numbers
 }
@@ -28,9 +33,12 @@ class PlanProgress {
 		if (browser) window.addEventListener('ochorus:sync', () => this.ticks++);
 	}
 
-	#write(store: Store) {
+	/** Persist the store and mirror the ONE plan that changed to the account.
+	 * Every mutation goes through here, so the sync push lives in one place. */
+	#write(store: Store, changed: string) {
 		writeJSON(KEY, store);
 		this.ticks++;
+		if (store[changed]) readingSync.pushPlan(changed, store[changed]);
 	}
 
 	isStarted(slug: string): boolean {
@@ -42,7 +50,7 @@ class PlanProgress {
 		const store = readAll();
 		if (!store[slug]) {
 			store[slug] = { startedAt: Date.now(), done: [] };
-			this.#write(store);
+			this.#write(store, slug);
 		}
 	}
 
@@ -60,7 +68,7 @@ class PlanProgress {
 		const state = store[slug] ?? { startedAt: Date.now(), done: [] };
 		if (!state.done.includes(day)) state.done = [...state.done, day].sort((a, b) => a - b);
 		store[slug] = state;
-		this.#write(store);
+		this.#write(store, slug);
 	}
 
 	/** Un-complete a day (for the detail-page toggle). No-op if not marked. */
@@ -70,7 +78,7 @@ class PlanProgress {
 		if (!state?.done.includes(day)) return;
 		state.done = state.done.filter((d) => d !== day);
 		store[slug] = state;
-		this.#write(store);
+		this.#write(store, slug);
 	}
 
 	/** Flip a day's done state; marking a day also starts the plan (via markDone). */

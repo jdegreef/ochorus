@@ -23,6 +23,7 @@ from .models import (
     ChapterMarks,
     Favorite,
     FavoriteKind,
+    PlanProgress,
     ReadingDay,
     ReadingProgress,
     WorkKind,
@@ -30,6 +31,7 @@ from .models import (
 from .serializers import (
     ChapterMarksSerializer,
     FavoriteSerializer,
+    PlanProgressSerializer,
     ReadingProgressSerializer,
 )
 
@@ -62,6 +64,50 @@ def _clamp_int(value, default=0, low=0) -> int:
         return max(low, int(value))
     except (TypeError, ValueError):
         return default
+
+
+# Generous upper bound on a plan's day number — well beyond any real plan
+# (the longest today is ~36 days), so it never drops a legitimate completion,
+# while still bounding the accepted set so a malformed payload can't store an
+# unbounded list.
+MAX_PLAN_DAYS = 1000
+
+
+def _clean_done(value) -> set[int]:
+    """A client 'done days' payload → a set of valid 1-based day numbers."""
+    if not isinstance(value, list):
+        return set()
+    days = set()
+    for v in value:
+        try:
+            n = int(v)
+        except (TypeError, ValueError):
+            continue
+        if 1 <= n <= MAX_PLAN_DAYS:
+            days.add(n)
+    return days
+
+
+def _upsert_plan_progress(profile, slug, done, started):
+    """Merge one plan's progress into the reader's row and return it.
+
+    ``done`` UNIONS with whatever the row already has and ``started`` takes the
+    EARLIEST — the same lossless reconciliation whether the write comes from a
+    live PUT or the sign-in merge, so a completion earned on any device is never
+    lost. (The tradeoff: un-marking a day is therefore device-local and may not
+    propagate — deliberately, since silently losing a day a reader completed is
+    far worse than an un-check that doesn't sync.)
+    """
+    existing = PlanProgress.objects.filter(profile=profile, plan_slug=slug).first()
+    if existing:
+        done = set(done) | set(existing.done)
+        started = min(started, existing.started_at)
+    obj, _ = PlanProgress.objects.update_or_create(
+        profile=profile,
+        plan_slug=slug,
+        defaults={"started_at": started, "done": sorted(done)},
+    )
+    return obj
 
 
 def _ms_to_dt(ms) -> datetime | None:
@@ -223,6 +269,28 @@ class FavoriteView(APIView):
         return Response(status=204)
 
 
+class PlanProgressView(APIView):
+    """Upsert the reader's progress in one reading plan.
+
+    Completed days UNION with the server's set and the earliest start wins (see
+    ``_upsert_plan_progress``), so a day finished on any device is never lost —
+    even when two devices are signed in at once and neither has re-synced. The
+    cost is that un-marking a day is device-local; that's the right tradeoff for
+    a progress log.
+    """
+
+    permission_classes = [IsAuthenticated]
+
+    def put(self, request, slug):
+        profile = _profile(request)
+        data = request.data
+        started = _ms_to_dt(data.get("started_at")) or datetime.now(timezone.utc)
+        obj = _upsert_plan_progress(
+            profile, slug, _clean_done(data.get("done")), started
+        )
+        return Response(PlanProgressSerializer(obj).data)
+
+
 class ActivityView(APIView):
     """Record one day the reader read (the streak's activity log)."""
 
@@ -255,7 +323,23 @@ class MergeView(APIView):
         self._merge_sermon_marks(profile, request.data.get("sermon_marks") or [])
         self._merge_favorites(profile, request.data.get("favorites") or [])
         self._merge_activity(profile, request.data.get("activity") or [])
+        self._merge_plan_progress(profile, request.data.get("plan_progress") or [])
         return Response(_serialize_state(profile))
+
+    def _merge_plan_progress(self, profile, incoming):
+        """Union done days + earliest start (same rule as a live PUT — see
+        ``_upsert_plan_progress``). A non-list is ignored, matching the activity
+        merge, so a malformed bundle can't 500 the whole sign-in reconciliation."""
+        if not isinstance(incoming, list):
+            return
+        for row in incoming:
+            if not isinstance(row, dict):
+                continue
+            slug = row.get("plan_slug")
+            if not slug:
+                continue
+            started = _ms_to_dt(row.get("started_at")) or datetime.now(timezone.utc)
+            _upsert_plan_progress(profile, slug, _clean_done(row.get("done")), started)
 
     def _merge_activity(self, profile, incoming):
         """Union: a day read on either side counts (a streak is the union of
@@ -382,6 +466,9 @@ def _serialize_state(profile) -> dict:
         ).data,
         "marks": ChapterMarksSerializer(profile.marks.all(), many=True).data,
         "favorites": FavoriteSerializer(profile.favorites.all(), many=True).data,
+        "plan_progress": PlanProgressSerializer(
+            profile.plan_progress.all(), many=True
+        ).data,
         # Activity log (the streak): just the set of days, newest first.
         "activity": [d.day.isoformat() for d in profile.reading_days.all()],
         # COMPAT: old bundles rehydrate their sermon store from this field.
