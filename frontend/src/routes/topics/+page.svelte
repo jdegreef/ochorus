@@ -35,6 +35,8 @@
 	<meta property="og:title" content="{t('topics.title')} — Ochorus" />
 	<meta property="og:description" content={t('topics.tagline')} />
 	<meta property="og:url" content="{SITE_URL}{localizeHref('/topics')}" />
+	<meta property="og:image" content="{SITE_URL}/og/topics.png" />
+	<meta name="twitter:card" content="summary_large_image" />
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{#if topics.length}{@html topicsLd}{/if}
 </svelte:head>

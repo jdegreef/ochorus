@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { TopicDetail } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
-	import { jsonLd, breadcrumb, hreflangAll } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumb, hreflangAll } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import BookCard from '$lib/components/BookCard.svelte';
@@ -61,6 +61,7 @@
 	description={topic.description}
 	{canonical}
 	{hreflang}
+	ogImage={absUrl('/og/topics.png')}
 	structuredData={[topicLd, crumbsLd]}
 />
 

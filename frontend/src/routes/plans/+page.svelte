@@ -83,6 +83,8 @@
 	<meta property="og:title" content="{t('plans.title')} — Ochorus" />
 	<meta property="og:description" content={t('plans.tagline')} />
 	<meta property="og:url" content={canonical} />
+	<meta property="og:image" content="{SITE_URL}/og/plans.png" />
+	<meta name="twitter:card" content="summary_large_image" />
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{#if plans.length}{@html plansLd}{/if}
 </svelte:head>

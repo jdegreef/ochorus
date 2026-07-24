@@ -144,6 +144,8 @@
 	<meta property="og:title" content="{t('bios.eyebrow')} — Ochorus" />
 	<meta property="og:description" content={t('bios.metaDescription')} />
 	<meta property="og:url" content="{SITE_URL}{localizeHref('/biographies')}" />
+	<meta property="og:image" content="{SITE_URL}/og/biographies.png" />
+	<meta name="twitter:card" content="summary_large_image" />
 	{@html peopleLd}
 </svelte:head>
 

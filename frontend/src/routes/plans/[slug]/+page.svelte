@@ -4,7 +4,7 @@
 	import { readingMinutes, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { SITE_URL } from '$lib/config';
-	import { jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
@@ -92,6 +92,7 @@
 	description={plan.description}
 	{canonical}
 	{hreflang}
+	ogImage={absUrl('/og/plans.png')}
 	structuredData={[planLd, crumbsLd]}
 />
 

@@ -81,6 +81,8 @@
 	<meta property="og:title" content="{t('nav.sermons')} — Ochorus" />
 	<meta property="og:description" content={t('sermons.metaDescription')} />
 	<meta property="og:url" content="{SITE_URL}{localizeHref('/sermons')}" />
+	<meta property="og:image" content="{SITE_URL}/og/sermons.png" />
+	<meta name="twitter:card" content="summary_large_image" />
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{#if sermons.length}{@html sermonsLd}{/if}
 </svelte:head>
