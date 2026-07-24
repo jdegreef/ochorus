@@ -9,6 +9,7 @@
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
+	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 
 	let { data } = $props();
 	const plan = $derived<PlanDetail>(data.plan);
@@ -59,14 +60,14 @@
 			}))
 		})
 	);
+	// One crumb trail feeds both the visible <Breadcrumb> and the JSON-LD.
+	const crumbs = $derived([
+		{ name: t('common.home'), href: '/' },
+		{ name: t('plans.title'), href: '/plans' },
+		{ name: plan.title, href: `/plans/${plan.slug}` }
+	]);
 	const crumbsLd = $derived(
-		jsonLd(
-			breadcrumb([
-				{ name: t('common.home'), url: '/' },
-				{ name: t('plans.title'), url: '/plans' },
-				{ name: plan.title, url: `/plans/${plan.slug}` }
-			])
-		)
+		jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))))
 	);
 
 	const started = $derived(planProgress.isStarted(plan.slug));
@@ -95,11 +96,7 @@
 />
 
 <div class="mx-auto max-w-3xl px-5 py-10">
-	<nav class="mb-5 text-small text-muted" aria-label={t('a11y.breadcrumb')}>
-		<a href={localizeHref('/plans')} class="hover:text-text">{t('plans.title')}</a>
-		<span> › </span>
-		<span class="text-text">{plan.title}</span>
-	</nav>
+	<Breadcrumb items={crumbs} />
 
 	<div class="flex items-start justify-between gap-4">
 		<div class="min-w-0 flex-1">

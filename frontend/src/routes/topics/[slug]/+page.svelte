@@ -1,12 +1,13 @@
 <script lang="ts">
 	import type { TopicDetail } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
-	import { jsonLd, hreflangAll } from '$lib/seo';
+	import { jsonLd, breadcrumb, hreflangAll } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import SermonCard from '$lib/components/SermonCard.svelte';
 	import Seo from '$lib/components/Seo.svelte';
+	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import { topicMeta } from '$lib/topics';
 
@@ -21,6 +22,15 @@
 	const path = $derived(`/topics/${topic.slug}/`);
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
 	const hreflang = $derived(hreflangAll(path));
+	// One crumb trail feeds both the visible <Breadcrumb> and the JSON-LD.
+	const crumbs = $derived([
+		{ name: t('common.home'), href: '/' },
+		{ name: t('topics.title'), href: '/topics' },
+		{ name: topic.title, href: `/topics/${topic.slug}` }
+	]);
+	const crumbsLd = $derived(
+		jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))))
+	);
 	const topicLd = $derived(
 		jsonLd({
 			'@context': 'https://schema.org',
@@ -51,11 +61,11 @@
 	description={topic.description}
 	{canonical}
 	{hreflang}
-	structuredData={[topicLd]}
+	structuredData={[topicLd, crumbsLd]}
 />
 
 <div class="mx-auto max-w-5xl px-5 py-10" style="--topic: {meta.accent}">
-	<a href={localizeHref('/topics')} class="text-small text-muted">← {t('topics.title')}</a>
+	<Breadcrumb items={crumbs} />
 
 	<header class="hero mb-8 mt-4">
 		<span class="badge"><Icon name={meta.icon} size={26} /></span>
