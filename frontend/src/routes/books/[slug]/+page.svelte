@@ -10,10 +10,18 @@
 	import BookCard from '$lib/components/BookCard.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
+	import { offlineBooks } from '$lib/offlineBooks.svelte';
+	import { pwa } from '$lib/pwa.svelte';
 
 	let { data } = $props();
 	const t = i18n.t;
 	const book = $derived<BookDetail>(data.book);
+
+	// Download-for-offline state for this book.
+	const savedOffline = $derived(offlineBooks.has(book.slug));
+	const downloading = $derived(
+		offlineBooks.active?.slug === book.slug ? offlineBooks.active : null
+	);
 
 	let resumeOrder = $state<number | null>(null);
 	$effect(() => {
@@ -161,6 +169,30 @@
 					<a href={readHref(1)} class="btn btn-primary">{t('book.beginReading')}</a>
 				{/if}
 				<FavoriteButton kind="book" slug={book.slug} />
+				<!-- Download for offline: precache every chapter so the whole book
+				     reads with no connection (see lib/offlineBooks). -->
+				{#if downloading}
+					<span class="btn btn-ghost !cursor-default">
+						{t('offline.downloading')} {Math.round((downloading.done / downloading.total) * 100)}%
+					</span>
+				{:else if savedOffline}
+					<button
+						class="btn btn-ghost"
+						title={t('offline.remove')}
+						onclick={() => offlineBooks.remove(book.slug)}
+					>
+						✓ {t('offline.saved')}
+					</button>
+				{:else}
+					<button
+						class="btn btn-ghost"
+						disabled={!pwa.online}
+						title={pwa.online ? undefined : t('offline.needsConnection')}
+						onclick={() => offlineBooks.download(book)}
+					>
+						{t('offline.download')}
+					</button>
+				{/if}
 				{#if book.pdf_url}
 					<a href={book.pdf_url} class="btn btn-ghost" target="_blank" rel="noreferrer">
 						{t('book.downloadPdf')}

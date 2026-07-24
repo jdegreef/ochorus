@@ -14,6 +14,7 @@
 	import { collectExport, toMarkdown, downloadFile } from '$lib/dataExport';
 	import { collectReadingActivity, type ReadingStats, type HistoryItem } from '$lib/readingStats';
 	import { readingActivity } from '$lib/readingActivity.svelte';
+	import { offlineBooks } from '$lib/offlineBooks.svelte';
 	import { currentStreak, longestStreak, localToday } from '$lib/streak';
 	import { buildReminderICS } from '$lib/reminder';
 	import { relativeTime } from '$lib/relativeTime';
@@ -150,6 +151,9 @@
 	const activityDays = $derived(readingActivity.days());
 	const streak = $derived(currentStreak(activityDays, localToday()));
 	const longest = $derived(longestStreak(activityDays));
+
+	// Books saved for offline (manage / remove).
+	const offlineList = $derived(offlineBooks.list());
 
 	// Resume link for a history row (books deep-link to the chapter).
 	const historyHref = (h: HistoryItem) =>
@@ -606,6 +610,28 @@
 					{/if}
 				{:else}
 					<p class="text-small text-muted">…</p>
+				{/if}
+
+				{#if offlineList.length}
+					<h3 class="text-h3 mb-3 mt-9">{t('settings.downloadsTitle')}</h3>
+					<ol class="divide-y divide-border">
+						{#each offlineList as b (b.slug)}
+							<li class="flex items-baseline gap-3 py-2.5">
+								<a href={localizeHref(`/books/${b.slug}`)} class="min-w-0 flex-1 hover:no-underline">
+									<span class="block truncate text-body text-text">{b.title}</span>
+									<span class="block truncate text-[0.8rem] text-muted">
+										{#if b.author}{b.author} · {/if}{b.chapterCount} {t('settings.downloadsChapters')}
+									</span>
+								</a>
+								<button
+									class="shrink-0 text-small text-muted hover:text-danger"
+									onclick={() => offlineBooks.remove(b.slug)}
+								>
+									{t('offline.remove')}
+								</button>
+							</li>
+						{/each}
+					</ol>
 				{/if}
 			{/if}
 		</section>
