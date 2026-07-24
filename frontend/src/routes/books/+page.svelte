@@ -42,6 +42,8 @@
 	<meta property="og:title" content="{t('nav.books')} — Ochorus" />
 	<meta property="og:description" content={t('books.metaDescription')} />
 	<meta property="og:url" content={canonical} />
+	<meta property="og:image" content="{SITE_URL}/og/books.png" />
+	<meta name="twitter:card" content="summary_large_image" />
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{#if books.length}{@html booksLd}{/if}
 </svelte:head>
