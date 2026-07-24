@@ -56,6 +56,24 @@ services:
         - frontend/**
         - backend/library/fixtures/**
     routes:
+      # Legacy WordPress URLs (ochorus.com was a WordPress site before this app
+      # took the domain). Book pages already share the app's /books/<slug>/ shape,
+      # but the two index pages moved — 301 the old paths so inbound links and
+      # search results don't 404. Both the trailing- and non-trailing-slash forms
+      # are listed because Render matches the source path exactly. These come
+      # first so they win before the SPA catch-all.
+      - type: redirect
+        source: /author-biographies
+        destination: /biographies
+      - type: redirect
+        source: /author-biographies/
+        destination: /biographies
+      - type: redirect
+        source: /ochorus-books
+        destination: /books
+      - type: redirect
+        source: /ochorus-books/
+        destination: /books
       # INDEX pages: Render doesn't auto-map extensionless URLs to their .html
       # files, so map each one here.
       #

@@ -58,11 +58,96 @@ Also set the Supabase **Site URL** (step 1.4) to the `ochorus-web` URL so login
 redirects resolve. Render redeploys automatically on env change. Done — the site
 is live with all 36 books, and login + cross-device sync work.
 
-## 5. Custom domain (optional)
+## 5. Custom domain (ochorus.com)
 
-Add your domain to `ochorus-web` (Render → Settings → Custom Domains), then add
-it to `DJANGO_ALLOWED_HOSTS` / `CORS_ALLOWED_ORIGINS` / `CSRF_TRUSTED_ORIGINS`
-(api) and the Supabase Site URL.
+Point `ochorus.com` at the app. The setup below makes the bare apex
+(`ochorus.com`) the primary/canonical host, redirects `www` to it, and gives the
+API its own `api.ochorus.com` subdomain. Because ochorus.com previously served a
+**WordPress** site, this is a cutover — do the app-config changes (step 5.2)
+*before* flipping DNS so everything works the instant the new records resolve.
+
+> ⚠️ **Before you start.** Screenshot the current DNS records at your registrar
+> (the existing `@` A-record and `www`) — that's your rollback. **Do not touch
+> `MX` or `TXT` records**: those carry email for `support@ochorus.com` plus
+> SPF/DKIM, and deleting them breaks mail. This cutover only changes the *website*
+> records (`A` / `CNAME`). Keep WordPress running until you've verified, then
+> decommission it.
+
+### 5.1 Add the domains in Render (no traffic moves yet)
+
+- **`ochorus-web` → Settings → Custom Domains:** add `ochorus.com` **and**
+  `www.ochorus.com`. Render serves both and 301-redirects `www` → apex.
+- **`ochorus-api` → Settings → Custom Domains:** add `api.ochorus.com`.
+- Render shows the exact DNS target for each — **use what Render displays.** As
+  of writing that's an apex **A record → `216.24.57.1`** and **CNAME** targets of
+  `ochorus-web.onrender.com` / `ochorus-api.onrender.com` for the subdomains.
+
+### 5.2 Update app config (do this *before* the DNS flip)
+
+**`ochorus-api` env vars** — add the new values, keep the onrender ones through
+the transition:
+
+```
+DJANGO_ALLOWED_HOSTS   = ochorus-api.onrender.com,api.ochorus.com
+CORS_ALLOWED_ORIGINS   = https://ochorus-web.onrender.com,https://ochorus.com,https://www.ochorus.com
+CSRF_TRUSTED_ORIGINS   = https://ochorus-web.onrender.com,https://ochorus.com,https://www.ochorus.com
+```
+
+**`ochorus-web` env vars:**
+
+```
+PUBLIC_API_BASE_URL = https://api.ochorus.com
+PUBLIC_SITE_URL     = https://ochorus.com
+```
+
+> `PUBLIC_SITE_URL` is baked into the prerendered pages (canonical / OG / sitemap)
+> at **build** time, so after changing it run `ochorus-web` → **Manual Deploy →
+> "Clear cache & deploy latest commit"**. A plain env save won't re-bake the
+> static HTML (same trap as gotcha #2 below).
+
+**Supabase → Authentication → URL Configuration:**
+
+```
+Site URL       = https://ochorus.com
+Redirect URLs  = add  https://ochorus.com/**  and  https://www.ochorus.com/**
+```
+
+(otherwise magic-link / OAuth redirects bounce to the old onrender URL.)
+
+### 5.3 Flip DNS at the registrar (GoDaddy)
+
+GoDaddy → your domain → **DNS → Manage Zones / Records**, and make sure **Domain
+→ Forwarding is OFF** (GoDaddy forwarding frames/masks the site). Edit the
+existing parked `@` and `www` records rather than adding duplicates:
+
+| Type  | Name  | Value                             | TTL  |
+|-------|-------|-----------------------------------|------|
+| A     | `@`   | `216.24.57.1` *(what Render shows)* | 600  |
+| CNAME | `www` | `ochorus-web.onrender.com`        | 600  |
+| CNAME | `api` | `ochorus-api.onrender.com`        | 600  |
+
+Leave everything else (`MX`, `TXT`, …) untouched. **Tip:** a day ahead, lower the
+TTL on the current `@`/`www` records to `600` so the switch propagates in minutes
+and rollback is fast.
+
+### 5.4 Verify
+
+Allow a few minutes to ~an hour for DNS propagation and Render's automatic
+Let's Encrypt certificates, then check:
+
+- `https://ochorus.com` loads the reader with a valid padlock; `https://www.ochorus.com`
+  redirects to it.
+- A book page (e.g. `https://ochorus.com/books/godliness/`) renders with covers.
+- **Login works** — this proves CORS + the Supabase redirect + `api.ochorus.com`
+  are all wired.
+- `https://api.ochorus.com/api/health/` returns OK.
+- A legacy path redirects: `https://ochorus.com/author-biographies/` → `/biographies`,
+  `https://ochorus.com/ochorus-books/` → `/books` (see the redirect rules in
+  `render.yaml`; **`render.yaml` route changes only take effect after a
+  Blueprint → Sync** in the Render dashboard — a plain push won't apply them).
+
+**Rollback:** restore the old `@`/`www` values at the registrar — the low TTL
+makes it quick.
 
 ## Refreshing / adding content later
 
