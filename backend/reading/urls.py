@@ -5,6 +5,7 @@ from .views import (
     FavoriteView,
     MarksView,
     MergeView,
+    PlanProgressView,
     ProgressView,
     SermonMarksView,
     StateView,
@@ -20,6 +21,7 @@ urlpatterns = [
         name="reading-favorite",
     ),
     path("progress/<slug:slug>/", ProgressView.as_view(), name="reading-progress"),
+    path("plan/<slug:slug>/", PlanProgressView.as_view(), name="reading-plan"),
     path(
         "marks/<slug:slug>/<int:order>/",
         MarksView.as_view(),

@@ -413,3 +413,99 @@ class ActivityTests(TestCase):
         )
         self.assertEqual(res.status_code, 200)
         self.assertEqual(ReadingDay.objects.filter(profile=self.profile).count(), 0)
+
+
+class PlanProgressSyncTests(TestCase):
+    """Server-synced reading-plan progress (roadmap #6)."""
+
+    def setUp(self):
+        self.user = User.objects.create(username="00000000-0000-0000-0000-0000000000aa")
+        self.profile = UserProfile.objects.create(
+            user=self.user, supabase_uid=self.user.username, email="p@example.com"
+        )
+        self.client = APIClient()
+        self.client.force_authenticate(self.user)
+
+    def _ms(self, days_ago=0):
+        import time
+
+        return int(time.time() * 1000) - days_ago * 86_400_000
+
+    def test_put_normalizes_done_and_appears_in_state(self):
+        from reading.models import PlanProgress
+
+        res = self.client.put(
+            "/api/reading/plan/school-of-prayer/",
+            {"started_at": self._ms(), "done": [3, 1, 2, "junk", 401, 3, -1]},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        # unique, sorted, 1..400 only
+        self.assertEqual(res.data["done"], [1, 2, 3])
+        self.assertEqual(PlanProgress.objects.filter(profile=self.profile).count(), 1)
+        state = self.client.get("/api/reading/state/").data
+        self.assertEqual(len(state["plan_progress"]), 1)
+        self.assertEqual(state["plan_progress"][0]["plan_slug"], "school-of-prayer")
+
+    def test_started_at_keeps_the_earliest(self):
+        from reading.models import PlanProgress
+
+        self.client.put(
+            "/api/reading/plan/humility-12-days/",
+            {"started_at": self._ms(days_ago=1), "done": [1]},
+            format="json",
+        )
+        early = PlanProgress.objects.get().started_at
+        # a later PUT with a NEWER start must not move the start forward
+        self.client.put(
+            "/api/reading/plan/humility-12-days/",
+            {"started_at": self._ms(days_ago=0), "done": [1, 2]},
+            format="json",
+        )
+        obj = PlanProgress.objects.get()
+        self.assertEqual(obj.started_at, early)
+        self.assertEqual(obj.done, [1, 2])
+
+    def test_delete_removes_progress(self):
+        from reading.models import PlanProgress
+
+        self.client.put(
+            "/api/reading/plan/x/", {"started_at": self._ms(), "done": [1]}, format="json"
+        )
+        res = self.client.delete("/api/reading/plan/x/")
+        self.assertEqual(res.status_code, 204)
+        self.assertEqual(PlanProgress.objects.count(), 0)
+
+    def test_merge_unions_done_and_takes_earliest_start(self):
+        from reading.models import PlanProgress
+
+        from django.utils import timezone
+
+        # server already has some progress (started "now")
+        PlanProgress.objects.create(
+            profile=self.profile,
+            plan_slug="school-of-prayer",
+            started_at=timezone.now(),
+            done=[5, 6],
+        )
+        payload = {
+            "plan_progress": [
+                {"plan_slug": "school-of-prayer", "started_at": self._ms(days_ago=2), "done": [1, 2, 5]},
+                {"plan_slug": "the-inner-chamber-month", "started_at": self._ms(), "done": [1]},
+            ]
+        }
+        state = self.client.post("/api/reading/merge/", payload, format="json").data
+        rows = {r["plan_slug"]: r for r in state["plan_progress"]}
+        # union: nothing a reader finished on either side is dropped
+        self.assertEqual(rows["school-of-prayer"]["done"], [1, 2, 5, 6])
+        self.assertEqual(rows["the-inner-chamber-month"]["done"], [1])
+        # the local start (2 days ago) is earlier than the server's, so it wins
+        obj = PlanProgress.objects.get(plan_slug="school-of-prayer")
+        self.assertLess(obj.started_at.timestamp(), self._ms() / 1000)
+
+    def test_requires_auth(self):
+        anon = APIClient()
+        self.assertIn(
+            anon.put("/api/reading/plan/x/", {"done": [1]}, format="json").status_code,
+            (401, 403),
+        )

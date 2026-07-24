@@ -5,6 +5,7 @@ import {
 	MARKS_KEY,
 	FAVORITES_KEY,
 	ACTIVITY_KEY,
+	PLANS_KEY,
 	LAST_SYNC_KEY,
 	READING_DATA_KEYS,
 	migrateLegacySermonState,
@@ -52,11 +53,24 @@ interface ServerFavorite {
 	slug: string;
 	created_at: string;
 }
+interface ServerPlanProgress {
+	plan_slug: string;
+	started_at: string;
+	done: number[];
+	updated_at: string;
+}
 interface ServerState {
 	progress: ServerProgress[];
 	marks: ServerMarks[];
 	favorites?: ServerFavorite[];
 	activity?: string[];
+	plan_progress?: ServerPlanProgress[];
+}
+
+/** The local plan-progress cache shape (planProgress.svelte.ts). */
+interface LocalPlanState {
+	startedAt: number;
+	done: number[];
 }
 
 function readJson<T>(key: string, fallback: T): T {
@@ -174,6 +188,19 @@ class ReadingSync {
 		});
 	}
 
+	/** Mirror a plan's progress (started + completed days) to the account. */
+	pushPlan(slug: string, state: LocalPlanState) {
+		if (!this.signedIn || !browser) return;
+		this.#debounce(`plan:${slug}`, () => {
+			apiFetch(`/api/reading/plan/${slug}/`, {
+				method: 'PUT',
+				body: JSON.stringify({ started_at: state.startedAt, done: state.done })
+			})
+				.then(() => this.#markSynced())
+				.catch(() => {});
+		});
+	}
+
 	/**
 	 * First-sign-in reconciliation. Sends the local cache to the merge endpoint,
 	 * then overwrites the cache with the merged server truth so both sides agree.
@@ -188,6 +215,7 @@ class ReadingSync {
 		const localProgress = readJson<ProgressMap>(PROGRESS_KEY, {});
 		const localMarks = readJson<MarksStore>(MARKS_KEY, {});
 		const localFavorites = readJson<Record<string, number>>(FAVORITES_KEY, {});
+		const localPlans = readJson<Record<string, LocalPlanState>>(PLANS_KEY, {});
 		// Activity is a bare array, so read it directly (readJson spreads onto an
 		// object fallback, which would mangle an array).
 		let localActivity: string[] = [];
@@ -232,7 +260,12 @@ class ReadingSync {
 				const i = key.indexOf(':');
 				return { kind: key.slice(0, i), slug: key.slice(i + 1) };
 			}),
-			activity: localActivity
+			activity: localActivity,
+			plan_progress: Object.entries(localPlans).map(([slug, p]) => ({
+				plan_slug: slug,
+				started_at: p.startedAt,
+				done: Array.isArray(p.done) ? p.done : []
+			}))
 		};
 
 		try {
@@ -319,6 +352,16 @@ class ReadingSync {
 				ACTIVITY_KEY,
 				JSON.stringify(state.activity.filter((d) => typeof d === 'string'))
 			);
+		}
+		if (state.plan_progress) {
+			const plans: Record<string, LocalPlanState> = {};
+			for (const p of state.plan_progress) {
+				plans[p.plan_slug] = {
+					startedAt: Date.parse(p.started_at) || Date.now(),
+					done: Array.isArray(p.done) ? p.done : []
+				};
+			}
+			localStorage.setItem(PLANS_KEY, JSON.stringify(plans));
 		}
 		// Let open views know the cache changed underneath them.
 		window.dispatchEvent(new CustomEvent('ochorus:sync'));

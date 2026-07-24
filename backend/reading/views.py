@@ -23,6 +23,7 @@ from .models import (
     ChapterMarks,
     Favorite,
     FavoriteKind,
+    PlanProgress,
     ReadingDay,
     ReadingProgress,
     WorkKind,
@@ -30,6 +31,7 @@ from .models import (
 from .serializers import (
     ChapterMarksSerializer,
     FavoriteSerializer,
+    PlanProgressSerializer,
     ReadingProgressSerializer,
 )
 
@@ -62,6 +64,26 @@ def _clamp_int(value, default=0, low=0) -> int:
         return max(low, int(value))
     except (TypeError, ValueError):
         return default
+
+
+# A plan can't sensibly exceed a year or so of days; bound the accepted set so a
+# malformed payload can't store an unbounded list.
+MAX_PLAN_DAYS = 400
+
+
+def _clean_done(value) -> list[int]:
+    """Normalise a client 'done days' list: 1-based ints, unique, sorted, bounded."""
+    if not isinstance(value, list):
+        return []
+    days = set()
+    for v in value:
+        try:
+            n = int(v)
+        except (TypeError, ValueError):
+            continue
+        if 1 <= n <= MAX_PLAN_DAYS:
+            days.add(n)
+    return sorted(days)
 
 
 def _ms_to_dt(ms) -> datetime | None:
@@ -223,6 +245,40 @@ class FavoriteView(APIView):
         return Response(status=204)
 
 
+class PlanProgressView(APIView):
+    """Upsert the reader's progress in one reading plan.
+
+    ``started_at`` (client epoch ms) is kept as the EARLIEST start seen — a
+    reader may have started the plan on another device first; ``done`` REPLACES
+    the server's set (the client sends its full, already-merged list, since the
+    sign-in merge unions the two sides before any push).
+    """
+
+    permission_classes = [IsAuthenticated]
+
+    def put(self, request, slug):
+        profile = _profile(request)
+        data = request.data
+        done = _clean_done(data.get("done"))
+        started = _ms_to_dt(data.get("started_at")) or datetime.now(timezone.utc)
+        existing = PlanProgress.objects.filter(
+            profile=profile, plan_slug=slug
+        ).first()
+        if existing and existing.started_at < started:
+            started = existing.started_at
+        obj, _ = PlanProgress.objects.update_or_create(
+            profile=profile,
+            plan_slug=slug,
+            defaults={"started_at": started, "done": done},
+        )
+        return Response(PlanProgressSerializer(obj).data)
+
+    def delete(self, request, slug):
+        profile = _profile(request)
+        PlanProgress.objects.filter(profile=profile, plan_slug=slug).delete()
+        return Response(status=204)
+
+
 class ActivityView(APIView):
     """Record one day the reader read (the streak's activity log)."""
 
@@ -255,7 +311,30 @@ class MergeView(APIView):
         self._merge_sermon_marks(profile, request.data.get("sermon_marks") or [])
         self._merge_favorites(profile, request.data.get("favorites") or [])
         self._merge_activity(profile, request.data.get("activity") or [])
+        self._merge_plan_progress(profile, request.data.get("plan_progress") or [])
         return Response(_serialize_state(profile))
+
+    def _merge_plan_progress(self, profile, incoming):
+        """Union: a day completed on either side stays done, and the earliest
+        start wins — a reader never loses a day they finished on another device.
+        Unlike book progress (recency wins), plan completion is monotonic, so
+        union is the honest reconciliation."""
+        existing = {p.plan_slug: p for p in profile.plan_progress.all()}
+        for row in incoming:
+            slug = row.get("plan_slug")
+            if not slug:
+                continue
+            done = set(_clean_done(row.get("done")))
+            started = _ms_to_dt(row.get("started_at")) or datetime.now(timezone.utc)
+            server = existing.get(slug)
+            if server:
+                done |= set(server.done)
+                started = min(started, server.started_at)
+            PlanProgress.objects.update_or_create(
+                profile=profile,
+                plan_slug=slug,
+                defaults={"started_at": started, "done": sorted(done)},
+            )
 
     def _merge_activity(self, profile, incoming):
         """Union: a day read on either side counts (a streak is the union of
@@ -382,6 +461,9 @@ def _serialize_state(profile) -> dict:
         ).data,
         "marks": ChapterMarksSerializer(profile.marks.all(), many=True).data,
         "favorites": FavoriteSerializer(profile.favorites.all(), many=True).data,
+        "plan_progress": PlanProgressSerializer(
+            profile.plan_progress.all(), many=True
+        ).data,
         # Activity log (the streak): just the set of days, newest first.
         "activity": [d.day.isoformat() for d in profile.reading_days.all()],
         # COMPAT: old bundles rehydrate their sermon store from this field.

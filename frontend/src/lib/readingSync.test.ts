@@ -68,6 +68,41 @@ describe('readingSync.clearOnSignOut', () => {
 		}
 	});
 
+	it('pushPlan PUTs a plan\'s progress when signed in', async () => {
+		const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+			new Response('{}', { status: 200 })
+		);
+		vi.useFakeTimers();
+		try {
+			readingSync.setSignedIn(true);
+			readingSync.pushPlan('school-of-prayer', { startedAt: 1000, done: [1, 2, 3] });
+			await vi.runAllTimersAsync();
+			expect(fetchSpy).toHaveBeenCalledTimes(1);
+			const [url, init] = fetchSpy.mock.calls[0];
+			expect(String(url)).toContain('/api/reading/plan/school-of-prayer/');
+			expect(init?.method).toBe('PUT');
+			expect(JSON.parse(String(init?.body))).toEqual({ started_at: 1000, done: [1, 2, 3] });
+		} finally {
+			fetchSpy.mockRestore();
+			vi.useRealTimers();
+			readingSync.setSignedIn(false);
+		}
+	});
+
+	it('does not push a plan when signed out', () => {
+		const fetchSpy = vi.spyOn(globalThis, 'fetch');
+		vi.useFakeTimers();
+		try {
+			readingSync.setSignedIn(false);
+			readingSync.pushPlan('x', { startedAt: 1, done: [1] });
+			vi.runAllTimers();
+			expect(fetchSpy).not.toHaveBeenCalled();
+		} finally {
+			fetchSpy.mockRestore();
+			vi.useRealTimers();
+		}
+	});
+
 	it('leaves the next sign-in with an empty local cache to merge', () => {
 		localStorage.setItem(PROGRESS_KEY, '{"humility":{"order":3}}');
 		localStorage.setItem(MARKS_KEY, '{"humility:3":{"m":[]}}');
