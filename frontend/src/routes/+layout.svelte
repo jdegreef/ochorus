@@ -170,10 +170,12 @@
 					</ul>
 				</div>
 				<div>
-					<h3 class="mb-3 text-small font-semibold uppercase tracking-wider text-text">{t('footer.newsletter')}</h3>
+					<h3 class="mb-3 text-small font-semibold uppercase tracking-wider text-text">{t('footer.ministryHeading')}</h3>
 					<p class="text-small text-muted">
-						{t('footer.reachUs')}
-						<a href="mailto:support@ochorus.com" class="text-accent">support@ochorus.com</a>.
+						{t('footer.mission')}
+					</p>
+					<p class="mt-3 text-small">
+						<a href={localizeHref('/legal')} class="text-accent hover:text-text">{t('footer.legal')}</a>
 					</p>
 					<p class="mt-4 text-[0.78rem] text-muted">
 						{t('footer.ministry')}

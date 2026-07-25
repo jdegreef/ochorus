@@ -17,7 +17,27 @@
 		<p>{t('about.p2')}</p>
 		<p>{t('about.p3')}</p>
 		<p>{t('about.p4')}</p>
+
+		<h2 class="text-h2 !text-text pt-4">{t('about.outreachHeading')}</h2>
+		<p>{t('about.outreachP1')}</p>
+		<p>{t('about.outreachP2')}</p>
 	</div>
+
+	<!-- Rooted in Scripture: three verses as callouts. Public-domain wording
+	     (WEB in English); the es/sw/lg renderings await a native-review pass. -->
+	<section class="mt-12">
+		<h2 class="text-h2 !text-text mb-5">{t('about.scripturesHeading')}</h2>
+		<div class="space-y-4">
+			{#each [['about.scripture1', 'about.scripture1Ref'], ['about.scripture2', 'about.scripture2Ref'], ['about.scripture3', 'about.scripture3Ref']] as [text, ref] (ref)}
+				<figure class="rounded-card border-l-2 border-gold bg-surface-2 py-4 pl-5 pr-4">
+					<blockquote class="text-body text-text" style="font-family: var(--font-display)">
+						“{t(text)}”
+					</blockquote>
+					<figcaption class="mt-2 text-small text-muted">{t(ref)}</figcaption>
+				</figure>
+			{/each}
+		</div>
+	</section>
 
 	<div class="mt-10 flex flex-wrap gap-3">
 		<a href={localizeHref('/books')} class="btn btn-primary">{t('home.browseLibrary')}</a>
