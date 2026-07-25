@@ -46,6 +46,10 @@ export const entries: EntryGenerator = async () => {
 // Prerender refresh 2026-07-25 (queue job #391): same for the Luganda Amy
 // Carmichael biography (PR #435) — /lg/authors/amy-carmichael re-crawls and
 // bakes the fresh translated bio, completing the es/sw/lg re-translation set.
+//
+// Prerender refresh 2026-07-25 (queue job #392): the Spanish Andrew Murray
+// biography was re-translated from the expanded English source (PR #438) —
+// /es/authors/andrew-murray re-crawls and bakes the fresh translated bio.
 export const load: PageLoad = async ({ params }) => {
 	const author = await orNotFound(() => getAuthor(params.slug, getLang()));
 	// A mid-deploy API (before the sermon fields ship) may omit these; default
