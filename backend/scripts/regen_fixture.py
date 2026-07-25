@@ -59,7 +59,10 @@ MODELS = [
 
 # Fields whose absence in the source simply means "model default" — the regen
 # materializes them, which is semantically inert and expected.
-DEFAULTED_OK = {"is_imprint", "attribution", "publication_year", "source_type", "body_text"}
+DEFAULTED_OK = {
+    "is_imprint", "attribution", "publication_year", "source_type", "body_text",
+    "summary",  # Sermon "In brief" TL;DR (PR #341) — blank default, fixture-owned
+}
 
 
 def manage(env, *args):
@@ -181,13 +184,20 @@ def main():
                 drift.append((identity(r), "-" + k))
     if drift:
         sys.exit(f"FIELD DRIFT on {len(drift)} value(s), e.g. {drift[:3]} — aborting.")
-    materialized = sum(
-        1 for r in new_rows
-        for k in r["fields"]
-        if k not in src_by_id[identity(r)] and k not in DEFAULTED_OK
-    )
+    materialized: dict[tuple[str, str], int] = {}
+    for r in new_rows:
+        for k in r["fields"]:
+            if k not in src_by_id[identity(r)] and k not in DEFAULTED_OK:
+                key = (r["model"], k)
+                materialized[key] = materialized.get(key, 0) + 1
     if materialized:
-        sys.exit(f"{materialized} unexpected new field(s) — aborting.")
+        detail = ", ".join(f"{m}.{k}×{n}" for (m, k), n in sorted(materialized.items()))
+        sys.exit(
+            f"{sum(materialized.values())} unexpected new field(s) — aborting.\n"
+            f"  {detail}\n"
+            "If a field is a semantically-inert model default, add it to "
+            "DEFAULTED_OK; otherwise exclude it from the dump."
+        )
 
     # --- write the layout ----------------------------------------------------
     files = split_layout(new_rows)
