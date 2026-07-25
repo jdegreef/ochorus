@@ -257,6 +257,33 @@ def _titleish(t: str, s: float, thresh: float) -> bool:
     return len(t.split()) <= 14 and (s >= thresh or _is_title_block(t))
 
 
+# A line that ends a sentence (or trails off) is prose, not a heading.
+_SENTENCE_END = re.compile(r"[.?!:;,]$")
+
+
+def _flat_marker_title(t: str) -> bool:
+    """A body-size line that is really the chapter's descriptive title.
+
+    Some PDFs are typographically flat: the "CHAPTER 1" marker AND the title
+    below it are both set at body size, with only the running header set larger
+    (Murray's *Divine Healing*). ``_titleish`` can't see such a title — it is
+    neither larger than body nor ALL-CAPS — so the chapter keeps a bare
+    "Chapter 1" and the title text is left to be merged into the first
+    paragraph, gluing "Pardon and Healing" onto the epigraph that follows.
+
+    Deliberately strict, because this runs at body size where prose lives: a
+    handful of words, no terminal punctuation, and not an opening quotation
+    (which marks the epigraph, the other thing that commonly follows a marker).
+    """
+    words = t.split()
+    return (
+        1 <= len(words) <= 8
+        and not _SENTENCE_END.search(t)
+        and t[:1] not in ('"', "“", "'", "‘", "(", "[")
+        and any(c.isalpha() for c in t)
+    )
+
+
 def _segment(blocks, is_heading, is_noise, thresh) -> list[tuple[str, str]]:
     """Split blocks into chapters at each heading.
 
@@ -298,6 +325,11 @@ def _segment(blocks, is_heading, is_noise, thresh) -> list[tuple[str, str]]:
                         body_paras.append(leftover)
             if not title_parts and not body_paras:  # borrow the following title block(s)
                 while k < len(rest) and _titleish(rest[k][0], rest[k][1], thresh):
+                    title_parts.append(rest[k][0])
+                    k += 1
+                # Flat PDF: nothing stood out by size or caps, so the single
+                # short unpunctuated line after the marker IS the title.
+                if not title_parts and k < len(rest) and _flat_marker_title(rest[k][0]):
                     title_parts.append(rest[k][0])
                     k += 1
             title = f"Chapter {number}"
