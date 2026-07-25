@@ -96,9 +96,19 @@ CSRF_TRUSTED_ORIGINS   = https://ochorus-web.onrender.com,https://ochorus.com,ht
 **`ochorus-web` env vars:**
 
 ```
-PUBLIC_API_BASE_URL = https://api.ochorus.com
+PUBLIC_API_BASE_URL = https://ochorus-api.onrender.com   # ← keep the onrender host until api.ochorus.com's cert is Issued
 PUBLIC_SITE_URL     = https://ochorus.com
 ```
+
+> ⚠️ **Do not point `PUBLIC_API_BASE_URL` at `https://api.ochorus.com` until that
+> domain shows *Certificate: Issued* in Render.** The frontend build prerenders
+> every public page by **fetching this URL at build time**; if the custom API
+> domain's TLS cert isn't live yet, every prerender fetch fails the TLS handshake
+> (`ssl/tls alert handshake failure`, SSL alert 40) and the build exits 1. Ship on
+> the always-valid `ochorus-api.onrender.com` host first (CORS already allows both
+> origins, so the site is fully functional), then flip to `https://api.ochorus.com`
+> and redeploy **after** the cert is issued. `PUBLIC_SITE_URL` has no such
+> constraint — it's only baked into meta-tag strings, never fetched.
 
 > `PUBLIC_SITE_URL` is baked into the prerendered pages (canonical / OG / sitemap)
 > at **build** time, so after changing it run `ochorus-web` → **Manual Deploy →
