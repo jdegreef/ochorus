@@ -19,7 +19,6 @@
 		<p class="text-small text-muted">
 			{t('contact.messageSub')}
 		</p>
-		<a href="mailto:support@ochorus.com" class="btn btn-primary mt-4">{t('contact.emailBtn')}</a>
 	</div>
 
 	<p class="mt-8 text-small text-muted">{t('contact.basedIn')}</p>
