@@ -90,10 +90,22 @@ force if every paragraph is a box.
    ```
 3. **Verify it renders**: run the app and open `/authors/SLUG` in light and dark —
    check the pull-quotes and prayer callouts look right and the prose reads well.
-4. **Regenerate the fixture and commit:**
-   ```bash
-   uv run python scripts/regen_fixture.py   # pinned 6-model natural-key regen; NEVER bare `dumpdata library`
+4. **Get the prose into the FIXTURE — the dev-DB write above does NOT carry.**
+   `scripts/regen_fixture.py` regenerates from the COMMITTED fixture files via
+   a scratch DB (loaddata → dumpdata round-trip); it never reads your dev DB.
+   So edit `library/fixtures/content/authors.json` directly — set the row's
+   `bio_html` — and rewrite the file in the regen script's exact format so the
+   diff stays one line per author:
+   ```python
+   rows = json.load(open(PATH));  # ... set fields ...
+   out = "[\n" + ",\n".join(json.dumps(r, indent=1, ensure_ascii=False) for r in rows) + "\n]\n"
    ```
+   Then verify with a scratch-DB loaddata (migrate + loaddata all ordered
+   fixtures into a temp sqlite; assert the new lengths). Running the regen
+   script afterwards is ideal when it works — but it aborts on any
+   pre-existing field drift (new model fields not yet in DEFAULTED_OK), which
+   is NOT your change's fault; the loaddata check is the gate that matters.
+   NEVER bare `dumpdata library`.
 5. **If the author ALREADY EXISTS on prod, the fixture is not enough** — and
    THREE mechanisms look like they'd carry it but don't:
    - `seed_if_empty` only fills an EMPTY database;
@@ -177,5 +189,26 @@ current signatures in `library/ingest.py` before relying on them.)
 5. Only the allowed tags; no inline styles; valid, clean HTML.
 6. Reads well and looks good in **both themes**; the short `bio` summary is set.
 7. Fixture regenerated.
+
+## Pitfalls found in practice (2026-07-24, PR #387)
+
+- **Use literal Unicode, never named HTML entities.** The author-page hero
+  epigraph extracts the first `<blockquote>` as PLAIN TEXT, so `&lsquo;` /
+  `&mdash;` / `&hellip;` in `bio_html` render RAW on the page ("&lsquo;stepping
+  stones&rsquo;"). Write ’ — … £ é directly (the fixture is UTF-8 JSON). Keep
+  only `&amp;` `&lt;` `&gt;`.
+- **Replacing a NON-empty bio in a migration: anchor on the md5** of the exact
+  previous `bio_html` (captured from the committed fixture) instead of pasting
+  ~10KB of old prose into the migration. Update only when
+  `md5(row.bio_html) == anchor` or the row is empty — a hand edit or newer
+  deploy always wins; re-runs are no-ops. See `0052_site_bio_expansions.py`.
+- **Sourcing from ochorus.com: bios live at `/biographies/<slug>/`**, NOT
+  `/authors/<slug>/` (those are book-listing stubs; some even redirect to a
+  portrait PNG — curl gives you image bytes). A few slugs differ from the
+  app's (`amy-beatrice-carmichael`, `charles-spurgeon`,
+  `reuben-archer-torrey`, `aurelius-augustinus`).
+- **Verify site facts before adopting.** ochorus.com bios contain real errors
+  (wrong parent names, date conflations); adjudicate contradictions against
+  external sources and document per-author which claims were rejected.
 
 _This is a living playbook — append tips and pitfalls as we write more._
