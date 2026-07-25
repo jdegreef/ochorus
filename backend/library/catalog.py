@@ -285,6 +285,13 @@ BOOKS: list[BookEntry] = [
               subtitle="Meditations for a Month on John 15", cover_color="#2b8a3e"),
     BookEntry("waiting-on-god", "Waiting on God", "andrew-murray", "ccel", "murray/waiting",
               cover_color="#1864ab"),
+    # Divine Healing (1900) — US public domain by publication year. CCEL has no
+    # clean edition of this title, so source it from a public-domain PDF (same
+    # `source="pdf"` path as A. B. Simpson's The Gospel of Healing above). If a
+    # CCEL edition surfaces, prefer it (cleaner transcription than PDF OCR).
+    BookEntry("divine-healing", "Divine Healing", "andrew-murray",
+              "pdf", "https://www.hopefaithprayer.com/books/Divine%20Healing%20-%20Andrew%20Murray.pdf",
+              cover_color="#0b7285"),
     BookEntry("ministry-of-intercession", "The Ministry of Intercession",
               "andrew-murray", "gutenberg", "29296",
               subtitle="A Plea for More Prayer", cover_color="#0b7285"),
