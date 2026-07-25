@@ -79,6 +79,8 @@ book preserves its `sort_order`.
    ```bash
    uv run python scripts/regen_fixture.py   # pinned 6-model natural-key regen; NEVER bare `dumpdata library`
    ```
+   If it aborts with `N unexpected new field(s)`, that's not your import — see
+   the fixture-regen entry under Known failure modes.
 
 7. **Ship it to prod (two gotchas — see DEPLOYMENT.md).** A book-data change
    doesn't reach the live site by pushing alone:
@@ -287,6 +289,16 @@ dropped; chapters under 120 words are dropped as stubs.
   ("twentyone"→"twenty-one"). Scan for merges with a "digit-word glued to
   [a-z]" regex, but hand-filter — "eighteenth"/"understand" are real words.
   *(2026-07)*
+- **`regen_fixture.py` aborts with `N unexpected new field(s)`** — nothing to do
+  with your import. Someone added a model field with a blank/false default, so
+  dumpdata now materializes it on every older row while the committed fixtures
+  lack it. The abort names the culprit as `model.field×count`. Decide per field:
+  a semantically-inert default (optional text, a flag) goes in the script's
+  `DEFAULTED_OK` as a `(model, field)` pair; anything load-bearing should be
+  excluded from the dump instead. Then re-run — the first regen after the fix
+  legitimately rewrites every affected file, so diff-check that the only change
+  is the new key. (Fields declared `serialize=False`, like `search_vector`,
+  never dump and are never the cause.) *(Sermon.summary, 61 sermons, 2026-07)*
 
 ## Adding a public-domain book NOT on ochorus.com
 
