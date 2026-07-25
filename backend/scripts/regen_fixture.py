@@ -28,11 +28,11 @@ from __future__ import annotations
 
 import json
 import os
-from collections import Counter
 import shutil
 import subprocess
 import sys
 import tempfile
+from collections import Counter
 from pathlib import Path
 
 BACKEND = Path(__file__).resolve().parent.parent
