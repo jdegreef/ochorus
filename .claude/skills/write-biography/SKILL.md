@@ -106,7 +106,8 @@ force if every paragraph is a box.
    predate the format switch). Do NOT copy those; a migration calling it is a
    silent no-op and the bio never reaches the live site.
 
-   Write a fresh data migration that reads `content/authors.json` and updates
+   Write a fresh data migration that reads `library/fixtures/content/authors.json`
+   (the split-fixture layout; there is no top-level `content/`) and updates
    the row, with fill-only semantics so it can't clobber later prose. Model:
    `0051_torrey_biography.py` —
    ```python
@@ -120,6 +121,22 @@ force if every paragraph is a box.
 
    Only a brand-new author arriving with its own books can skip this (seed_books
    creates it from the fixture, bio and all).
+
+   **A BOOKLESS new author needs a CREATE migration, not a fill-only one.** An
+   author added for the biography alone (no books, no sermons yet) is reached by
+   *nothing*: `seed_if_empty` skips a populated prod DB, and `seed_books` only
+   ever creates authors that own a book fixture. Use `get_or_create(slug=…,
+   defaults=…)` so the row is created where absent, then fill-only-update the
+   prose/photo fields where it already exists. Model: `0052_three_biographies.py`.
+   Such an author still appears on `/biographies` — `AuthorListView` admits
+   anyone with a non-empty short `bio` — so set `bio`, not just `bio_html`.
+
+6. **`scripts/regen_fixture.py` is currently BROKEN on `main`** (aborts with
+   "61 unexpected new field(s)" — model fields added since `DEFAULTED_OK` was
+   last updated). It fails identically on a pristine tree, so it is not your
+   change. It aborts *before* writing, so a hand-edited `authors.json` survives;
+   hand-edit the fixture and let `manage.py test library.tests_fixture` (20
+   tests — the real CI gate) be your check.
 
 ## The portrait (optional, same page)
 
