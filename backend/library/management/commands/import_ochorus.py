@@ -257,8 +257,16 @@ def _titleish(t: str, s: float, thresh: float) -> bool:
     return len(t.split()) <= 14 and (s >= thresh or _is_title_block(t))
 
 
-# A line that ends a sentence (or trails off) is prose, not a heading.
-_SENTENCE_END = re.compile(r"[.?!:;,]$")
+# Prose-ending punctuation. "?" and "!" are NOT here: a chapter title may end
+# in either ("Is Sickness a Chastisement?"), and the word cap already keeps real
+# sentences out.
+_PROSE_END = re.compile(r"[.,;:]$")
+# A parenthesised chapter-and-verse citation — "(Matt. 9:6)", "(John 15:5)".
+# It marks the epigraph, never the title, even when the two share wording.
+_VERSE_CITATION = re.compile(r"\(\s*[\w.\s]+\d+\s*:\s*\d+")
+# A line that is ONLY a scripture reference ("Mark 5 :25—34", "I Corinthians
+# 12:4, 9, 11") — these sit under the title in this layout and are not one.
+_BARE_REFERENCE = re.compile(r"^[IVX\d]*\s*[A-Z][A-Za-z]*\.?\s+\d+\s*:", re.A)
 
 
 def _flat_marker_title(t: str) -> bool:
@@ -271,15 +279,19 @@ def _flat_marker_title(t: str) -> bool:
     "Chapter 1" and the title text is left to be merged into the first
     paragraph, gluing "Pardon and Healing" onto the epigraph that follows.
 
-    Deliberately strict, because this runs at body size where prose lives: a
-    handful of words, no terminal punctuation, and not an opening quotation
-    (which marks the epigraph, the other thing that commonly follows a marker).
+    The line has to be told apart from the two other things that follow a
+    marker: the scripture epigraph and the opening of the prose. Length does
+    most of the work (an epigraph or a real sentence runs long), so the rest is
+    deliberately narrow — reject prose-ending punctuation, a verse citation, and
+    a line that is nothing but a scripture reference. A title may legitimately
+    be quoted ("Ye Are the Branches") or ask a question, so neither is excluded.
     """
     words = t.split()
     return (
-        1 <= len(words) <= 8
-        and not _SENTENCE_END.search(t)
-        and t[:1] not in ('"', "“", "'", "‘", "(", "[")
+        1 <= len(words) <= 12
+        and not _PROSE_END.search(t)
+        and not _VERSE_CITATION.search(t)
+        and not _BARE_REFERENCE.match(t)
         and any(c.isalpha() for c in t)
     )
 
