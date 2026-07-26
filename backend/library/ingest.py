@@ -30,7 +30,14 @@ DROP_SELECTORS = [
     # the number lands mid-sentence (or alone at the top of a chapter) in a
     # reflowable reader. Exact selector — "pb" is too short to substring-match.
     "span.pb",
-    "[class*=navbar]", "[class*=toolbar]", "[class*=footnote]",
+    "[class*=navbar i]", "[class*=toolbar i]",
+    # CCEL's whole footnote apparatus: the note text (`class="Footnote"`) plus
+    # the superscript markers that point at it (`Note`, `NoteRef`, `mnote`).
+    # `i` = case-insensitive — a case-sensitive `[class*=footnote]` missed the
+    # capitalised classes entirely and inlined note text into the prose
+    # ("desires knowledge 2 Aristotle, Metaphysics, i. 1. ; but"), while the
+    # markers left bare digits mid-sentence.
+    "[class*=note i]",
     "[class*=pg-boilerplate]", "[class*=pginternal]",
     "[id*=navbar]", "[id*=toc]",
 ]
@@ -176,6 +183,8 @@ def word_count(html: str) -> int:
 def is_front_matter(title: str) -> bool:
     t = title.strip().lower().rstrip(".")
     if t.startswith("index"):  # "Index", "Indexes", "Index of Bible Verses Used"
+        return True
+    if t.endswith(" index"):  # "Subject Index", "Scripture Index"
         return True
     # "title" = a bare title-page section (CCEL lists one for some works); note
     # "the title" (a real exposition section) is a different string and kept.
