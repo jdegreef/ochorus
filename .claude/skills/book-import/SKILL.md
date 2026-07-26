@@ -191,10 +191,20 @@ dropped; chapters under 120 words are dropped as stubs.
   title below it are BOTH at body size, and the only larger size is the running
   header. `_titleish` sees no title (not larger, not ALL-CAPS), so nothing is
   borrowed, and `_merge_paragraphs` then fuses the unpunctuated title line into
-  the epigraph that follows. `_flat_marker_title` takes the single short,
-  unpunctuated, non-quoted line after a marker as the title — and only when the
-  normal borrow found nothing, so it can't change a book that already works.
-  *(Divine Healing, 2026-07)*
+  the epigraph that follows. `_flat_marker_title` takes the single short line
+  after a marker as the title — and only when the normal borrow found nothing,
+  so it can't change a book that already works.
+  **Tune such a guard loose, then let length do the work.** The first cut
+  (≤8 words, no terminal punctuation, no leading quote) still shipped 3 of 32
+  chapters broken, because each guard rejected a real title: "Your Body Is the
+  Temple of the Holy Ghost" (9 words), "Is Sickness a Chastisement?" (`?` ends
+  titles too), "Ye Are the Branches" (titles get quoted). What actually
+  separates a title from an epigraph is **length** (≤12 words) plus a
+  *parenthesised verse citation* — the citation is the only thing that rejects
+  `“Ye are the branches” (John 15:5).`, an epigraph that repeats its own
+  chapter title almost word for word. Reject `[.,;:]` but never `?`/`!`, and
+  reject lines that are only a scripture reference ("Mark 5 :25—34"), which sit
+  under the title in this layout. *(Divine Healing, 2026-07)*
 - **CCEL page numbers and spacer gaps in the body** — CCEL marks a print page
   break as `<span class="pb">17</span>` (lands mid-sentence, or alone at the top
   of a chapter) and uses `<p><br/></p>` for vertical space (a ragged gap when
@@ -205,11 +215,21 @@ dropped; chapters under 120 words are dropped as stubs.
   title** — most CCEL works mark the heading as a real `<h2>`; a few set it as
   consecutive one-line paragraphs ("First Day." / "WAITING ON GOD:" / the
   title). `import_ccel.fold_leading_heading` joins a leading run of 2+ very
-  short paragraphs into one `<h2>`. It **stops at the first quoted line** —
-  these chapters follow the heading with a scripture epigraph broken into
-  verse-length paragraphs, and without that guard the opening line of Scripture
-  is swallowed into the heading (caught by dry-running the fold over every
-  stored CCEL chapter before re-importing — do that). *(Waiting on God, 2026-07)*
+  short paragraphs into one `<h2>`. CCEL also sets **poetry and verse epigraphs
+  one line per paragraph**, so an unguarded run eats Scripture — or the whole
+  chapter. Four guards, all earned: stop at a quoted OR dashed line (the
+  epigraph and its `—Ps. 62:5` citation), cap the run, refuse a fold that would
+  leave nothing behind, and require at least one line that reads as a heading
+  (ALL-CAPS or ending in a colon) so two short narrative paragraphs — "He was
+  gone." / "She did not know." — are left alone. *(Waiting on God, 2026-07)*
+- **Dry-running a body-cleaning change over STORED chapters understates it.**
+  The natural check for a fold/clean change is to run it over every stored
+  chapter and count what would change — but stored HTML was produced by the
+  *old* cleaner. Here a leading `<p><br/></p>` used to be what STOPPED the
+  fold, and the new empty-block rule deletes it first, so the fold reached
+  further than the dry run showed. Pipe each stored chapter through
+  `clean_fragment` (the new rules) **before** applying the change under test.
+  *(2026-07)*
 - **Shipping a structural re-chapterization** (counts/orders change, not just
   titles): a title-transform migration can't help — write a migration that
   reads the book's `fixtures/content/books/` file, deletes the affected books' chapters, and
