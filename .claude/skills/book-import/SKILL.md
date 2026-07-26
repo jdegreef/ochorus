@@ -297,12 +297,15 @@ dropped; chapters under 120 words are dropped as stubs.
   `bio`/`birth_year`/`death_year` now go in **`create_defaults`**: they apply
   only when the author row is first created and never overwrite an existing one.
   `authors.json` stays the source of truth (the rule `seed_books` already
-  followed), and `content_sync` re-asserts it over the DB — so a catalog bio
-  stops being read the moment that author has a fixture row. **Write a one-line
-  stub, never a full biography.** The seven pasted-in bios were shortened back,
-  and `UpsertBookAuthorBioTests.test_catalog_bios_stay_short_stubs` now fails
-  the build if a catalog bio grows past 320 chars, so the trap can't be re-set
-  by hand. *(hit amy-carmichael, f-b-meyer, susanna-wesley, george-muller,
+  followed). **Write a one-line stub, never a full biography** — the seven
+  pasted-in bios were shortened back, and
+  `AuthorBioDataIntegrityTests.test_catalog_bios_stay_short_stubs`
+  (tests_fixture.py) caps catalog bio length so the trap can't be re-set by
+  hand. But make the stub a real sentence: **nothing overwrites a non-empty
+  author bio.** `seed_books` is `get_or_create`, migration 0049 fills only rows
+  whose bio is `""`, and `content_sync` no-ops on the natural-key fixture — so
+  for an author first created by an import, the catalog stub is what the site
+  shows, permanently, even after you add them to `authors.json`. *(hit amy-carmichael, f-b-meyer, susanna-wesley, george-muller,
   andrew-murray before the fix)*
 - **`chapter_title_overrides` now applies in `upsert_book`** (was only in
   `import_ochorus`), so per-book title corrections work for every source. Apply

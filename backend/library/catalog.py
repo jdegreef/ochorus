@@ -18,13 +18,12 @@ class AuthorEntry:
     name: str
     birth_year: int
     death_year: int
-    # A one-line placeholder, NOT the author's real biography. Both readers
-    # (`upsert_book`, `import_sermons`) apply it only when the author row is
-    # first created, so it exists purely so a brand-new author isn't born with
-    # an empty bio. `fixtures/content/authors.json` is the source of truth, and
-    # `content_sync` re-asserts it over whatever is in the database — so the
-    # moment an author has a fixture row, the text here stops being read.
-    # Keep it short: a full bio copied down here only rots out of sync.
+    # A one-line stub, NOT the author's real biography — that lives in
+    # `fixtures/content/authors.json`. Both readers (`upsert_book`,
+    # `import_sermons`) apply this only when the author row is first created;
+    # see the rationale on `upsert_book`. Write a real sentence, though: nothing
+    # overwrites a non-empty bio afterwards, so for an author imported before
+    # they reach authors.json, this is what the site shows.
     bio: str = ""
 
 
@@ -114,7 +113,6 @@ AUTHORS: dict[str, AuthorEntry] = {
             "prayer and Scripture study shaped the sons who founded Methodism."
         ),
     ),
-    # Added with their first book (2026-07-10).
     "george-muller": AuthorEntry(
         slug="george-muller",
         name="George Müller",
