@@ -293,12 +293,17 @@ dropped; chapters under 120 words are dropped as stubs.
   needed — fixed at the root (PR #449).** `upsert_book` used to push the catalog
   stub through `defaults=`, so importing ANY book truncated that author's real
   bio; the workaround was to paste the long bio back into `catalog.py`, which is
-  why 15 of 17 catalog bios became hand-synced copies of `authors.json`.
+  why 14 of 17 catalog bios became hand-synced copies of `authors.json`.
   `bio`/`birth_year`/`death_year` now go in **`create_defaults`**: they apply
   only when the author row is first created and never overwrite an existing one.
   `authors.json` stays the source of truth (the rule `seed_books` already
-  followed). A short catalog stub is fine again. *(hit amy-carmichael,
-  f-b-meyer, susanna-wesley, george-muller, andrew-murray before the fix)*
+  followed), and `content_sync` re-asserts it over the DB — so a catalog bio
+  stops being read the moment that author has a fixture row. **Write a one-line
+  stub, never a full biography.** The seven pasted-in bios were shortened back,
+  and `UpsertBookAuthorBioTests.test_catalog_bios_stay_short_stubs` now fails
+  the build if a catalog bio grows past 320 chars, so the trap can't be re-set
+  by hand. *(hit amy-carmichael, f-b-meyer, susanna-wesley, george-muller,
+  andrew-murray before the fix)*
 - **`chapter_title_overrides` now applies in `upsert_book`** (was only in
   `import_ochorus`), so per-book title corrections work for every source. Apply
   `clean_title` to the override in BOTH paths so the same correction yields the

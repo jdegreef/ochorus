@@ -18,6 +18,13 @@ class AuthorEntry:
     name: str
     birth_year: int
     death_year: int
+    # A one-line placeholder, NOT the author's real biography. Both readers
+    # (`upsert_book`, `import_sermons`) apply it only when the author row is
+    # first created, so it exists purely so a brand-new author isn't born with
+    # an empty bio. `fixtures/content/authors.json` is the source of truth, and
+    # `content_sync` re-asserts it over whatever is in the database — so the
+    # moment an author has a fixture row, the text here stops being read.
+    # Keep it short: a full bio copied down here only rots out of sync.
     bio: str = ""
 
 
@@ -82,14 +89,9 @@ AUTHORS: dict[str, AuthorEntry] = {
         birth_year=1867,
         death_year=1951,
         bio=(
-            "Amy Beatrice Carmichael, born in 1867 in Millisle, Ireland, was a "
-            "Protestant missionary in India. She served for 55 years without "
+            "Irish-born missionary to India who served fifty-five years without "
             "furlough, founding the Dohnavur Fellowship to rescue children from "
-            "temple prostitution. Known for her deep devotion and writings on "
-            "prayer, she authored 35 books and remained in India until her death "
-            "in 1951. Her work continues through the ongoing ministry she "
-            "established. Carmichael's life demonstrated radical obedience to "
-            "Christ's call and cultural adaptation."
+            "temple prostitution."
         ),
     ),
     "frederick-brotherton-meyer": AuthorEntry(
@@ -98,14 +100,8 @@ AUTHORS: dict[str, AuthorEntry] = {
         birth_year=1847,
         death_year=1929,
         bio=(
-            "Frederick Brotherton Meyer was born on April 8, 1847, in Clapham, "
-            "London, to Frederick Meyer, a business owner, and his wife, Ann. "
-            "Raised in a deeply religious household that cherished the authority "
-            "of Scripture, Meyer became a prominent Baptist pastor, teacher, and "
-            "evangelist, based primarily in London. He was known for his "
-            "expository preaching and devotional writings. Meyer pastored several "
-            "prominent churches including Christ Church in London and Melbourne's "
-            "Collins Street Baptist Church."
+            "English Baptist pastor, teacher, and evangelist in London, known "
+            "for expository preaching and a long shelf of devotional writing."
         ),
     ),
     "susanna-wesley": AuthorEntry(
@@ -114,35 +110,20 @@ AUTHORS: dict[str, AuthorEntry] = {
         birth_year=1669,
         death_year=1742,
         bio=(
-            "Susanna Wesley, born in 1669 in London, England, was the mother of "
-            "John and Charles Wesley, founders of Methodism. A devout Anglican and "
-            "mother of nineteen children (ten survived to adulthood), she provided "
-            "rigorous religious education to her children, establishing daily "
-            "routines of prayer and Scripture study. Despite financial hardships and "
-            "her husband's absences, she maintained a strong spiritual household. "
-            "Susanna's theological letters and writings influenced her sons' "
-            "ministry and the development of Methodist doctrine."
+            "Mother of John and Charles Wesley, whose rigorous household of "
+            "prayer and Scripture study shaped the sons who founded Methodism."
         ),
     ),
-    # Added with their first book (2026-07-10). bio matches the existing DB
-    # author (from the biographies import) so upsert_book doesn't clobber it;
-    # bio_html (the long biography) is left untouched.
+    # Added with their first book (2026-07-10).
     "george-muller": AuthorEntry(
         slug="george-muller",
         name="George Müller",
         birth_year=1805,
         death_year=1898,
         bio=(
-            "George Müller (1805–1898) was a Prussian-born evangelist who, after "
-            "a dissolute youth that included theft and a spell in prison, was "
-            "converted at a prayer meeting in Halle in 1825 and gave his life to "
-            "living by faith. Settling in Bristol, he founded the Ashley Down "
-            "orphanages, where he housed and fed more than ten thousand orphans "
-            "over his lifetime without ever once asking a human being for money — "
-            "relying on prayer alone and keeping meticulous records of the "
-            "answers. His aim was to leave the world a visible proof that God "
-            "still hears prayer; he preached across forty-two countries into his "
-            "eighties and died at his orphanage in 1898."
+            "Prussian-born evangelist who founded the Ashley Down orphanages in "
+            "Bristol, feeding more than ten thousand orphans over his lifetime "
+            "without ever asking anyone but God for money."
         ),
     ),
     "hudson-taylor": AuthorEntry(
@@ -151,16 +132,9 @@ AUTHORS: dict[str, AuthorEntry] = {
         birth_year=1832,
         death_year=1905,
         bio=(
-            "James Hudson Taylor (1832–1905) was an English missionary to China "
-            "and founder of the China Inland Mission. Converted at seventeen "
-            "while his mother prayed for him miles away, he gave his life to "
-            "reaching China's unreached inland provinces, pioneering a "
-            "faith-mission that took no debt and solicited no funds but told "
-            "every need to God in prayer. Through immense fruit and immense loss "
-            "— the deaths of his children, both wives, and dozens of his "
-            "missionaries in the 1900 Boxer Uprising — he became a byword for "
-            "trusting God absolutely, and his mission continues today as OMF "
-            "International."
+            "English missionary to China and founder of the China Inland "
+            "Mission, who pioneered a faith mission that took no debt and "
+            "solicited no funds but told every need to God in prayer."
         ),
     ),
     "charles-finney": AuthorEntry(
@@ -169,14 +143,9 @@ AUTHORS: dict[str, AuthorEntry] = {
         birth_year=1792,
         death_year=1875,
         bio=(
-            "Charles Grandison Finney (1792–1875) was a lawyer turned evangelist "
-            "whose preaching helped drive the Second Great Awakening across upstate "
-            "New York and beyond. Convinced that revival was not a miracle to be "
-            "waited for but the right use of God-given means, he pioneered the "
-            "“new measures” of protracted meetings and direct appeal, saw whole "
-            "towns transformed, and later became president of Oberlin College. His "
-            "Lectures on Revivals of Religion has shaped how the English-speaking "
-            "church has thought about revival ever since."
+            "American lawyer turned evangelist whose preaching helped drive the "
+            "Second Great Awakening across upstate New York and beyond; later "
+            "president of Oberlin College."
         ),
     ),
     "david-brainerd": AuthorEntry(
@@ -185,15 +154,9 @@ AUTHORS: dict[str, AuthorEntry] = {
         birth_year=1718,
         death_year=1747,
         bio=(
-            "David Brainerd (1718–1747) was a young missionary to the Native "
-            "American peoples of colonial New Jersey and Pennsylvania. Expelled "
-            "from Yale for his zeal, he gave his brief life to prayer and "
-            "itinerant preaching among the Delaware and others, seeing a "
-            "remarkable awakening shortly before dying of tuberculosis at "
-            "twenty-nine. The diary he kept — published after his death by "
-            "Jonathan Edwards — became one of the most influential missionary "
-            "memoirs ever written, stirring generations that followed, from "
-            "William Carey to Henry Martyn."
+            "Missionary to the Native American peoples of colonial New Jersey "
+            "and Pennsylvania, whose diary, published after his death at "
+            "twenty-nine, stirred generations of missionaries."
         ),
     ),
     # Puritans & Reformers (17th century).

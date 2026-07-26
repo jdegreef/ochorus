@@ -13,6 +13,12 @@ from library import upload_import as ui
 from library.catalog import AUTHORS, BOOKS
 from library.ingest import upsert_book
 from library.models import Author, Book, Sermon
+from library.sermon_catalog import SERMON_AUTHORS
+
+# An AuthorEntry bio is a one-line stub, not a biography. Comfortably above the
+# longest real stub (256) and far below the 494-640 char range of the full
+# biographies that were pasted into catalog.py as clobbering workarounds.
+MAX_STUB_BIO = 320
 
 # --- fixtures: build real PDF / DOCX bytes in-memory ------------------------
 
@@ -638,3 +644,21 @@ class UpsertBookAuthorBioTests(TestCase):
         upsert_book(entry, [("Ch 1", "<p>Body text here, long enough.</p>")])
         a = Author.objects.get(slug=entry.author_slug)
         self.assertEqual(a.bio, AUTHORS[entry.author_slug].bio)
+
+    def test_catalog_bios_stay_short_stubs(self):
+        # The other half of the fix. Making the write create-only stopped the
+        # clobbering, but the seven full biographies pasted in as workarounds
+        # were still sitting in catalog.py, duplicating authors.json and drifting
+        # from it. This fails the build if one creeps back.
+        for source in (AUTHORS, SERMON_AUTHORS):
+            for slug, entry in source.items():
+                with self.subTest(slug=slug):
+                    # Non-empty: this is the only bio a brand-new author gets
+                    # until they have an authors.json row.
+                    self.assertTrue(entry.bio.strip(), f"{slug} has no bio")
+                    self.assertLessEqual(
+                        len(entry.bio),
+                        MAX_STUB_BIO,
+                        f"{slug}'s bio reads like a full biography — that belongs "
+                        f"in fixtures/content/authors.json, not catalog.py",
+                    )
