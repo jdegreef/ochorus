@@ -426,6 +426,36 @@ class AuthorBioDataIntegrityTests(SimpleTestCase):
                 "seed would soft-skip these forever",
             )
 
+    # Roughly two sentences. A tripwire for "someone pasted the real biography
+    # in here", not a style rule — the biography belongs in authors.json.
+    MAX_STUB_BIO = 320
+
+    def test_catalog_bios_stay_short_stubs(self):
+        """A catalog bio must not grow into a copy of the one in authors.json.
+
+        `upsert_book` and `import_sermons` apply an `AuthorEntry.bio` only when
+        the author row is first created (PR #449). Before that they overwrote on
+        every import, so a short stub truncated the author's real bio — and the
+        workaround each time was to paste the long `authors.json` text into the
+        catalog, until most entries were hand-synced duplicates. The write is
+        fixed; this keeps the duplicates from coming back.
+        """
+        from library.catalog import AUTHORS
+        from library.sermon_catalog import SERMON_AUTHORS
+
+        # Both catalogs, not a merged dict: a-b-simpson appears in each with
+        # different text, and merging would silently drop one of them.
+        for entry in (*AUTHORS.values(), *SERMON_AUTHORS.values()):
+            with self.subTest(slug=entry.slug):
+                # Non-empty: for an author imported before they exist in
+                # authors.json, this is the only bio they get.
+                self.assertTrue(entry.bio.strip(), f"{entry.slug} has no bio")
+                self.assertLessEqual(
+                    len(entry.bio), self.MAX_STUB_BIO,
+                    f"{entry.slug}'s bio reads like a full biography — that "
+                    f"belongs in fixtures/content/authors.json, not catalog.py",
+                )
+
 
 class CoverAssetTests(SimpleTestCase):
     """Covers must be served by Ochorus and must actually exist.

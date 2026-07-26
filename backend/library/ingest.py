@@ -208,7 +208,7 @@ def upsert_book(entry: BookEntry, sections: list[tuple[str, str]], language: str
     # short stub written when a book was first added. Overwriting on every import
     # meant importing ANY book silently truncated that author's real bio — it hit
     # amy-carmichael, f-b-meyer, susanna-wesley, george-muller and andrew-murray,
-    # and each fix was to paste the long bio back into catalog.py, until 15 of 17
+    # and each fix was to paste the long bio back into catalog.py, until most
     # catalog bios were hand-synced duplicates of authors.json. create_defaults
     # keeps the stub for a brand-new author and leaves an existing one alone —
     # same idiom as the book upsert in import_ochorus.

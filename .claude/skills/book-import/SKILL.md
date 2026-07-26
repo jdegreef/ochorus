@@ -288,17 +288,43 @@ dropped; chapters under 120 words are dropped as stubs.
   titled "Contents" cleans to `""`, slips past `is_front_matter`, and leaks in as
   a phantom "Chapter N" (inflated till-he-come 23→24). Gate front matter first,
   then clean the survivors. *(2026-07)*
+- **A `catalog.py` author slug that doesn't match `authors.json` silently forks
+  the author on re-import.** `upsert_book` creates whatever slug the
+  `AuthorEntry` names, so a mismatch produces a SECOND author row carrying only
+  the catalog stub — no `bio_html`, no photo — and re-points that book at it.
+  Live example (unfixed as of 2026-07-26): `catalog.py` uses
+  `charles-spurgeon` for five books, while the fixture and prod have only
+  `charles-h-spurgeon`. It can't fire on deploy (release runs `seed_books` off
+  the fixture), so it waits for exactly what step 5 above tells you to do —
+  re-import for regression testing, then regen the fixture, which commits the
+  duplicate. **Before re-importing, check the slug resolves:**
+  ```bash
+  DJANGO_DEBUG=true uv run python -c "
+  import django,json; django.setup()
+  from library.catalog import AUTHORS
+  fx={r['fields']['slug'] for r in json.load(open('library/fixtures/content/authors.json'))
+      if r['model']=='library.author'}
+  print('missing from authors.json:', sorted(set(AUTHORS)-fx))"
+  ```
 - **Adding a book for an author who already exists in the DB with a scraped bio:**
   ~~Copy the existing bio verbatim into the new `AuthorEntry`.~~ **No longer
   needed — fixed at the root (PR #449).** `upsert_book` used to push the catalog
   stub through `defaults=`, so importing ANY book truncated that author's real
   bio; the workaround was to paste the long bio back into `catalog.py`, which is
-  why 15 of 17 catalog bios became hand-synced copies of `authors.json`.
+  why 14 of 17 catalog bios became hand-synced copies of `authors.json`.
   `bio`/`birth_year`/`death_year` now go in **`create_defaults`**: they apply
   only when the author row is first created and never overwrite an existing one.
   `authors.json` stays the source of truth (the rule `seed_books` already
-  followed). A short catalog stub is fine again. *(hit amy-carmichael,
-  f-b-meyer, susanna-wesley, george-muller, andrew-murray before the fix)*
+  followed). **Write a one-line stub, never a full biography** — the seven
+  pasted-in bios were shortened back, and
+  `AuthorBioDataIntegrityTests.test_catalog_bios_stay_short_stubs`
+  (tests_fixture.py) caps catalog bio length so the trap can't be re-set by
+  hand. But make the stub a real sentence: **nothing overwrites a non-empty
+  author bio.** `seed_books` is `get_or_create`, migration 0049 fills only rows
+  whose bio is `""`, and `content_sync` no-ops on the natural-key fixture — so
+  for an author first created by an import, the catalog stub is what the site
+  shows, permanently, even after you add them to `authors.json`. *(hit amy-carmichael, f-b-meyer, susanna-wesley, george-muller,
+  andrew-murray before the fix)*
 - **`chapter_title_overrides` now applies in `upsert_book`** (was only in
   `import_ochorus`), so per-book title corrections work for every source. Apply
   `clean_title` to the override in BOTH paths so the same correction yields the
