@@ -10,6 +10,8 @@ from django.test import TestCase, override_settings
 from rest_framework.test import APIClient
 
 from library import upload_import as ui
+from library.catalog import AUTHORS, BOOKS
+from library.ingest import upsert_book
 from library.models import Author, Book, Sermon
 
 # --- fixtures: build real PDF / DOCX bytes in-memory ------------------------
@@ -599,3 +601,40 @@ class EmptyBlockCleaningTests(TestCase):
 
         out = clean_fragment('<p>they that are in the flesh cannot please <span class="pb">34</span> God.</p>')
         self.assertIn("cannot please God.", out)
+
+
+class UpsertBookAuthorBioTests(TestCase):
+    """upsert_book must never overwrite an existing author's bio.
+
+    `authors.json` is the source of truth for bios; `catalog.py`'s AuthorEntry
+    carries only the short stub written when a book was first added. When
+    upsert_book pushed that stub through `defaults=`, importing ANY book
+    truncated the author's real bio — it hit five authors, each "fixed" by
+    pasting the long bio back into the catalog.
+    """
+
+    def _entry(self):
+        return next(b for b in BOOKS if b.author_slug in AUTHORS)
+
+    def test_existing_author_bio_survives_an_import(self):
+        entry = self._entry()
+        stub = AUTHORS[entry.author_slug].bio
+        Author.objects.create(
+            slug=entry.author_slug, name="Placeholder",
+            bio="A much longer, reviewed biography that must not be clobbered.",
+            birth_year=1800, death_year=1880,
+        )
+        upsert_book(entry, [("Ch 1", "<p>Body text here, long enough.</p>")])
+        a = Author.objects.get(slug=entry.author_slug)
+        self.assertNotEqual(a.bio, stub)
+        self.assertTrue(a.bio.startswith("A much longer, reviewed biography"))
+        self.assertEqual(a.birth_year, 1800)  # years are create-only too
+        # The name still updates — it's the display label, not reviewed content.
+        self.assertEqual(a.name, AUTHORS[entry.author_slug].name)
+
+    def test_new_author_still_gets_the_catalog_bio(self):
+        entry = self._entry()
+        Author.objects.filter(slug=entry.author_slug).delete()
+        upsert_book(entry, [("Ch 1", "<p>Body text here, long enough.</p>")])
+        a = Author.objects.get(slug=entry.author_slug)
+        self.assertEqual(a.bio, AUTHORS[entry.author_slug].bio)

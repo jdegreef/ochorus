@@ -289,11 +289,16 @@ dropped; chapters under 120 words are dropped as stubs.
   a phantom "Chapter N" (inflated till-he-come 23→24). Gate front matter first,
   then clean the survivors. *(2026-07)*
 - **Adding a book for an author who already exists in the DB with a scraped bio:**
-  `upsert_book` does `Author.objects.update_or_create(defaults={bio, years…})`
-  from the catalog `AuthorEntry`, so a new `AuthorEntry` with an empty/short bio
-  will CLOBBER the good bio. Copy the existing bio + birth/death years verbatim
-  into the new `AuthorEntry`. *(amy-carmichael, frederick-brotherton-meyer,
-  2026-07)*
+  ~~Copy the existing bio verbatim into the new `AuthorEntry`.~~ **No longer
+  needed — fixed at the root (PR #449).** `upsert_book` used to push the catalog
+  stub through `defaults=`, so importing ANY book truncated that author's real
+  bio; the workaround was to paste the long bio back into `catalog.py`, which is
+  why 15 of 17 catalog bios became hand-synced copies of `authors.json`.
+  `bio`/`birth_year`/`death_year` now go in **`create_defaults`**: they apply
+  only when the author row is first created and never overwrite an existing one.
+  `authors.json` stays the source of truth (the rule `seed_books` already
+  followed). A short catalog stub is fine again. *(hit amy-carmichael,
+  f-b-meyer, susanna-wesley, george-muller, andrew-murray before the fix)*
 - **`chapter_title_overrides` now applies in `upsert_book`** (was only in
   `import_ochorus`), so per-book title corrections work for every source. Apply
   `clean_title` to the override in BOTH paths so the same correction yields the

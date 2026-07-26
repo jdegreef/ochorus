@@ -203,9 +203,19 @@ def strip_trailing_pagenum(body_html: str) -> str:
 def upsert_book(entry: BookEntry, sections: list[tuple[str, str]], language: str = "en") -> Book:
     """Create/replace a Book and its chapters from (title, body_html) sections."""
     a = AUTHORS[entry.author_slug]
+    # bio/years are CREATE-ONLY. authors.json is their source of truth (seed_books
+    # uses get_or_create for exactly this reason), while catalog entries carry the
+    # short stub written when a book was first added. Overwriting on every import
+    # meant importing ANY book silently truncated that author's real bio — it hit
+    # amy-carmichael, f-b-meyer, susanna-wesley, george-muller and andrew-murray,
+    # and each fix was to paste the long bio back into catalog.py, until 15 of 17
+    # catalog bios were hand-synced duplicates of authors.json. create_defaults
+    # keeps the stub for a brand-new author and leaves an existing one alone —
+    # same idiom as the book upsert in import_ochorus.
     author, _ = Author.objects.update_or_create(
         slug=a.slug,
-        defaults={
+        defaults={"name": a.name},
+        create_defaults={
             "name": a.name,
             "bio": a.bio,
             "birth_year": a.birth_year,
