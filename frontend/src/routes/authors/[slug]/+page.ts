@@ -33,6 +33,31 @@ export const entries: EntryGenerator = async () => {
 // Prerender refresh 2026-07-21 (queue job #271): same again after the Luganda
 // edition of the Amanda Berry Smith biography (PR #303) went live, so
 // /lg/authors/amanda-berry-smith re-crawls and bakes the translated bio.
+//
+// Prerender refresh 2026-07-25 (queue job #389): the Spanish Amy Carmichael
+// biography was re-translated from the expanded English source (PR #431), so
+// force a rebuild once the API ships it — /es/authors/amy-carmichael re-crawls
+// and bakes the fresh translated bio.
+//
+// Prerender refresh 2026-07-25 (queue job #390): same for the Swahili Amy
+// Carmichael biography (PR #433) — /sw/authors/amy-carmichael re-crawls and
+// bakes the fresh translated bio once the API ships it.
+//
+// Prerender refresh 2026-07-25 (queue job #391): same for the Luganda Amy
+// Carmichael biography (PR #435) — /lg/authors/amy-carmichael re-crawls and
+// bakes the fresh translated bio, completing the es/sw/lg re-translation set.
+//
+// Prerender refresh 2026-07-25 (queue job #392): the Spanish Andrew Murray
+// biography was re-translated from the expanded English source (PR #438) —
+// /es/authors/andrew-murray re-crawls and bakes the fresh translated bio.
+//
+// Prerender refresh 2026-07-25 (queue job #393): same for the Swahili Andrew
+// Murray biography (PR #441) — /sw/authors/andrew-murray re-crawls and bakes
+// the fresh translated bio.
+//
+// Prerender refresh 2026-07-25 (queue job #394): same for the Luganda Andrew
+// Murray biography (PR #444) — /lg/authors/andrew-murray re-crawls and bakes
+// the fresh translated bio, completing the es/sw/lg re-translation set.
 export const load: PageLoad = async ({ params }) => {
 	const author = await orNotFound(() => getAuthor(params.slug, getLang()));
 	// A mid-deploy API (before the sermon fields ship) may omit these; default

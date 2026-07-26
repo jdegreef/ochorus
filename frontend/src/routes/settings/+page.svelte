@@ -14,8 +14,11 @@
 	import { collectExport, toMarkdown, downloadFile } from '$lib/dataExport';
 	import { collectReadingActivity, type ReadingStats, type HistoryItem } from '$lib/readingStats';
 	import { readingActivity } from '$lib/readingActivity.svelte';
+	import { readingGoal } from '$lib/readingGoal.svelte';
 	import { offlineBooks } from '$lib/offlineBooks.svelte';
 	import { currentStreak, longestStreak, localToday } from '$lib/streak';
+	import { weekReadCount } from '$lib/heatmap';
+	import ReadingHeatmap from '$lib/components/ReadingHeatmap.svelte';
 	import { buildReminderICS } from '$lib/reminder';
 	import { relativeTime } from '$lib/relativeTime';
 	import Icon, { type IconName } from '$lib/components/Icon.svelte';
@@ -151,6 +154,11 @@
 	const activityDays = $derived(readingActivity.days());
 	const streak = $derived(currentStreak(activityDays, localToday()));
 	const longest = $derived(longestStreak(activityDays));
+	// Weekly goal — the target lives in readingGoal (a device preference); progress
+	// is this week's read-day count from the same activity log.
+	const weekCount = $derived(weekReadCount(activityDays, localToday()));
+	const goal = $derived(readingGoal.perWeek);
+	const goalMet = $derived(weekCount >= goal);
 
 	// Books saved for offline (manage / remove).
 	const offlineList = $derived(offlineBooks.list());
@@ -574,6 +582,44 @@
 									{t('settings.streakLongest')} {longest} · {activityDays.length} {t('settings.streakDaysRead')}
 								</div>
 							</div>
+						</div>
+
+						<!-- Weekly goal -->
+						<div class="mb-6 rounded-card border border-border bg-surface-2 px-5 py-4">
+							<div class="flex items-center justify-between gap-3">
+								<div>
+									<div class="text-body text-text">{t('settings.goalTitle')}</div>
+									<div class="mt-0.5 text-small text-muted">
+										{#if goalMet}
+											{t('settings.goalMet')}
+										{:else}
+											{weekCount} {t('settings.goalOf')} {goal} {t('settings.goalDaysThisWeek')}
+										{/if}
+									</div>
+								</div>
+								<label class="flex items-center gap-2 text-small text-muted">
+									{t('settings.goalPerWeek')}
+									<select
+										class="rounded-md border border-border bg-surface px-2 py-1 text-text"
+										value={goal}
+										onchange={(e) => readingGoal.set(+e.currentTarget.value)}
+									>
+										{#each [1, 2, 3, 4, 5, 6, 7] as n (n)}<option value={n}>{n}</option>{/each}
+									</select>
+								</label>
+							</div>
+							<!-- One pip per goal day, filled up to this week's read-day count. -->
+							<div class="mt-3 flex gap-1.5">
+								{#each Array(goal) as _, i (i)}
+									<span class="h-2 flex-1 rounded-full {i < weekCount ? 'bg-gold' : 'bg-border'}"></span>
+								{/each}
+							</div>
+						</div>
+
+						<!-- Reading calendar (contribution-style heatmap) -->
+						<h3 class="text-h3 mb-3">{t('settings.heatmapTitle')}</h3>
+						<div class="mb-2">
+							<ReadingHeatmap days={activityDays} today={localToday()} locale={lang.current} />
 						</div>
 					{/if}
 

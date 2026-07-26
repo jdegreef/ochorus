@@ -59,7 +59,8 @@ export async function GET() {
 		'/plans',
 		'/biographies',
 		'/about',
-		'/contact'
+		'/contact',
+		'/legal'
 	]) {
 		entries.push({ byLocale: new Map(locales.map((l) => [l, path])) });
 	}

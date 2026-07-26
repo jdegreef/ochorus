@@ -196,7 +196,11 @@
 					</button>
 				{/if}
 				{#if book.pdf_url}
-					<a href={book.pdf_url} class="btn btn-ghost" target="_blank" rel="noreferrer">
+					<!-- rel="external": a PDF is a file download, not an SPA route — this
+					     stops SvelteKit's prerender crawler from trying to resolve the
+					     same-origin /pdfs/<slug>.pdf as a page (which would fail the build
+					     for any PDF not yet present in static/pdfs). -->
+					<a href={book.pdf_url} class="btn btn-ghost" target="_blank" rel="external noreferrer">
 						{t('book.downloadPdf')}
 					</a>
 				{/if}

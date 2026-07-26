@@ -6,6 +6,7 @@
 	import { localizeHref, locales } from '$lib/paraglide/runtime';
 	import { i18n } from '$lib/i18n.svelte';
 	import ContinueReading from '$lib/components/ContinueReading.svelte';
+	import ReadingNudge from '$lib/components/ReadingNudge.svelte';
 	import TodaysReading from '$lib/components/TodaysReading.svelte';
 	import PlansProgress from '$lib/components/PlansProgress.svelte';
 	import FavoritesShelf from '$lib/components/FavoritesShelf.svelte';
@@ -135,6 +136,10 @@
 <!-- Continue reading (resume) stays first for returning readers; empty for
      new visitors, so browsing books leads for them. Client-side only. -->
 <ContinueReading books={data.books} />
+
+<!-- Streak + weekly-goal nudge for returning readers; renders nothing until
+     there's reading activity. Client-side only. -->
+<ReadingNudge />
 
 <!-- Discover Your Next Book — above the plan/sermon blocks -->
 <section class="mx-auto max-w-5xl px-5 pt-14">
