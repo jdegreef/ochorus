@@ -426,7 +426,9 @@ class AuthorBioDataIntegrityTests(SimpleTestCase):
                 "seed would soft-skip these forever",
             )
 
-    MAX_STUB_BIO = 320  # a stub, not a biography; the pasted-in bios ran 490+.
+    # Roughly two sentences. A tripwire for "someone pasted the real biography
+    # in here", not a style rule — the biography belongs in authors.json.
+    MAX_STUB_BIO = 320
 
     def test_catalog_bios_stay_short_stubs(self):
         """A catalog bio must not grow into a copy of the one in authors.json.

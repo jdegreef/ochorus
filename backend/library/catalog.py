@@ -23,8 +23,9 @@ class AuthorEntry:
     # `import_sermons`) apply this only when the author row is first created;
     # see the rationale on `upsert_book`. Write a real sentence, though: nothing
     # overwrites a non-empty bio afterwards, so for an author imported before
-    # they reach authors.json, this is what the site shows.
-    bio: str = ""
+    # they reach authors.json, this is what the site shows. Required, not
+    # defaulted, so a new entry can't silently ship with no bio at all.
+    bio: str
 
 
 @dataclass(frozen=True)
