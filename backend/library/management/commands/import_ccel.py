@@ -150,10 +150,26 @@ def fold_leading_heading(html: str) -> str:
 # LEADING heading that restates the TOC title; stop at the first heading that
 # is neither (Book III's "The Disciple" / "The Voice of Christ" speaker labels
 # are real content and must survive).
+# The counter in "The Twenty-Second Chapter" / "Chapter IV" / "Chapter 3":
+# an English ordinal word (hyphenated compounds included), a roman numeral, or
+# digits. Deliberately NOT `\w+` — that would also strip a real heading such as
+# "Chapter Summary".
+_COUNTER = (
+    r"(?:\d+|[ivxlcdm]+|"
+    r"(?:twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety)?[- ]?"
+    r"(?:first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|"
+    r"eleventh|twelfth|thirteenth|fourteenth|fifteenth|sixteenth|seventeenth|"
+    r"eighteenth|nineteenth|twentieth|thirtieth|fortieth|fiftieth|sixtieth|"
+    r"seventieth|eightieth|ninetieth|hundredth|"
+    r"one|two|three|four|five|six|seven|eight|nine|ten|last))"
+)
+
+
 def _is_ordinal_heading(text: str) -> bool:
     t = text.strip().rstrip(".")
-    return bool(re.fullmatch(r"(the\s+)?[\w-]+\s+chapter", t, re.I)) or bool(
-        re.fullmatch(r"chapter\s+[\w-]+", t, re.I)
+    return bool(
+        re.fullmatch(rf"(the\s+)?{_COUNTER}\s+chapter", t, re.I)
+        or re.fullmatch(rf"chapter\s+{_COUNTER}", t, re.I)
     )
 
 
