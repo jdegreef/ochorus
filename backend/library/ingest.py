@@ -26,6 +26,10 @@ ALLOWED_TAGS = {
 DROP_SELECTORS = [
     "script", "style", "nav", "header", "footer", "form", "button",
     "[class*=pagenum]", "[class*=pageno]", "[class*=page-num]",
+    # CCEL marks a print page break with <span class="pb">17</span>. Left in,
+    # the number lands mid-sentence (or alone at the top of a chapter) in a
+    # reflowable reader. Exact selector — "pb" is too short to substring-match.
+    "span.pb",
     "[class*=navbar]", "[class*=toolbar]", "[class*=footnote]",
     "[class*=pg-boilerplate]", "[class*=pginternal]",
     "[id*=navbar]", "[id*=toc]",
@@ -104,7 +108,10 @@ def clean_html(node: Tag) -> str:
     html = node.decode_contents() if isinstance(node, Tag) else str(node)
     html = _PAGE_MARKER.sub("", html)
     html = _WS.sub(" ", html)
-    html = re.sub(r"<(p|h2|h3|h4|blockquote|li)>\s*</\1>", "", html)
+    # Drop blocks left empty — including spacer paragraphs whose only content is
+    # a <br> (CCEL uses <p><br/></p> for vertical space; in a reflowable reader
+    # that renders as a ragged gap).
+    html = re.sub(r"<(p|h2|h3|h4|blockquote|li)>(?:\s|<br\s*/?>)*</\1>", "", html)
     return html.strip()
 
 

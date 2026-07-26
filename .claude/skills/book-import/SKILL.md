@@ -186,6 +186,50 @@ dropped; chapters under 120 words are dropped as stubs.
   ("THE SLUGGARD'S FARM  Introduction  From a neglected field…") — no heading
   to borrow; use a `corrections.py` title. The body keeping the fused lead text
   is a known cosmetic wart. *(talks-to-the-farmer ch1, 2026-07)*
+- **Every chapter titled a bare "Chapter N", real title glued to the first
+  paragraph** — a typographically FLAT PDF: the "CHAPTER 1" marker and the
+  title below it are BOTH at body size, and the only larger size is the running
+  header. `_titleish` sees no title (not larger, not ALL-CAPS), so nothing is
+  borrowed, and `_merge_paragraphs` then fuses the unpunctuated title line into
+  the epigraph that follows. `_flat_marker_title` takes the single short line
+  after a marker as the title — and only when the normal borrow found nothing,
+  so it can't change a book that already works.
+  **Tune such a guard loose, then let length do the work.** The first cut
+  (≤8 words, no terminal punctuation, no leading quote) still shipped 3 of 32
+  chapters broken, because each guard rejected a real title: "Your Body Is the
+  Temple of the Holy Ghost" (9 words), "Is Sickness a Chastisement?" (`?` ends
+  titles too), "Ye Are the Branches" (titles get quoted). What actually
+  separates a title from an epigraph is **length** (≤12 words) plus a
+  *parenthesised verse citation* — the citation is the only thing that rejects
+  `“Ye are the branches” (John 15:5).`, an epigraph that repeats its own
+  chapter title almost word for word. Reject `[.,;:]` but never `?`/`!`, and
+  reject lines that are only a scripture reference ("Mark 5 :25—34"), which sit
+  under the title in this layout. *(Divine Healing, 2026-07)*
+- **CCEL page numbers and spacer gaps in the body** — CCEL marks a print page
+  break as `<span class="pb">17</span>` (lands mid-sentence, or alone at the top
+  of a chapter) and uses `<p><br/></p>` for vertical space (a ragged gap when
+  reflowed). Both now dropped in `ingest` — `span.pb` in `DROP_SELECTORS`, and
+  the empty-block regex accepts `<br>`-only content. *(Waiting on God: 71 spacer
+  paragraphs, 2026-07)*
+- **A CCEL chapter opening with three stray one-line fragments that repeat the
+  title** — most CCEL works mark the heading as a real `<h2>`; a few set it as
+  consecutive one-line paragraphs ("First Day." / "WAITING ON GOD:" / the
+  title). `import_ccel.fold_leading_heading` joins a leading run of 2+ very
+  short paragraphs into one `<h2>`. CCEL also sets **poetry and verse epigraphs
+  one line per paragraph**, so an unguarded run eats Scripture — or the whole
+  chapter. Four guards, all earned: stop at a quoted OR dashed line (the
+  epigraph and its `—Ps. 62:5` citation), cap the run, refuse a fold that would
+  leave nothing behind, and require at least one line that reads as a heading
+  (ALL-CAPS or ending in a colon) so two short narrative paragraphs — "He was
+  gone." / "She did not know." — are left alone. *(Waiting on God, 2026-07)*
+- **Dry-running a body-cleaning change over STORED chapters understates it.**
+  The natural check for a fold/clean change is to run it over every stored
+  chapter and count what would change — but stored HTML was produced by the
+  *old* cleaner. Here a leading `<p><br/></p>` used to be what STOPPED the
+  fold, and the new empty-block rule deletes it first, so the fold reached
+  further than the dry run showed. Pipe each stored chapter through
+  `clean_fragment` (the new rules) **before** applying the change under test.
+  *(2026-07)*
 - **Shipping a structural re-chapterization** (counts/orders change, not just
   titles): a title-transform migration can't help — write a migration that
   reads the book's `fixtures/content/books/` file, deletes the affected books' chapters, and
@@ -343,6 +387,46 @@ the transcribed chapters against the work's own TOC before choosing it.
   heuristics genuinely can't infer (e.g. a chapter whose title is inline in the
   PDF). Keep these few and specific; they're applied on every re-import. Example:
   Normal Christian Life ch12 → "The Cross and the Soul Life".
+
+## Adding a NEW book from the catalog (not ochorus.com)
+
+`catalog.py` declares books with a `source` — `ccel` / `gutenberg` / `pdf` /
+`web` / `archive` — each with its own importer (`import_ccel`, `import_pdf`, …).
+A title can be **declared in the catalog but never imported**: check
+`library/fixtures/content/books/<slug>.en.json` before assuming it's missing.
+Also check the catalog before scraping — a book absent from ochorus.com (whose
+`/books/<slug>/` soft-404s with a 200 and no `<title>`) is often already
+declared against a CCEL or PDF source.
+
+A brand-new book needs **no data migration**: the deploy's `manage.py release`
+runs `seed_books`, which creates a new book *with its chapters* straight from
+the fixture (and is a clean no-op on re-run). Prove it before shipping by
+seeding a scratch DB from every fixture EXCEPT the new one, then running
+`seed_books`. Two things the importers do NOT give a new book, both caught late:
+
+- **`description`** — every other book has one; without it the book page falls
+  back to the author bio. Write it from the book's own preface, not memory.
+- **`cover_url`** — run `manage.py generate_covers <slug>`, then **rasterize a
+  600×800 PNG twin**: `library.tests_fixture` fails with "generated SVG cover
+  without its .png twin" (social scrapers reject SVG og:images). No committed
+  script; from `frontend/`:
+  ```bash
+  npm i -D --no-save @resvg/resvg-js   # --no-save: not an app dep
+  node -e "const{Resvg}=require('@resvg/resvg-js'),f=require('fs');for(const s of ['SLUG']){f.writeFileSync('static/covers/'+s+'.png',new Resvg(f.readFileSync('static/covers/'+s+'.svg','utf8'),{fitTo:{mode:'width',value:600},font:{loadSystemFonts:true}}).render().asPng())}"
+  ```
+
+Get the new book into the fixture with `scripts/regen_fixture.py` — it picks up
+a new book from the dev DB along with everything else. If it aborts, that is a
+pre-existing field-drift problem and NOT your import: see the
+`N unexpected new field(s)` entry above rather than hand-writing the file.
+
+**ochorus.com no longer serves `/pdfs/<slug>.pdf`** (404 as of 2026-07) — every
+`import_ochorus` re-import fails at the fetch. It fails safely, leaving existing
+rows untouched, but it means the ochorus-sourced books are effectively frozen:
+the skill's "re-import a few diverse books" regression step can no longer run.
+Regression-test `chapterize` changes against the `pdf`-source books instead
+(`import_pdf the-gospel-of-healing` — diff titles + word counts), and prefer
+changes that can only fire where the old code produced nothing.
 
 ## Text & grammar quality
 

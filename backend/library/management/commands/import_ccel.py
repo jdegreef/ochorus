@@ -84,10 +84,60 @@ def toc_sections(ref: str) -> list[tuple[str, str]]:
     return [(url, titles[url]) for url in order if url not in parents]
 
 
+_LEADING_P = re.compile(r"\s*<p>(.*?)</p>", re.S)
+# Opens an epigraph (or its dashed citation line) rather than a heading.
+_EPIGRAPH_LEAD = ("'", '"', "‘", "“", "—", "–", "-")
+_MAX_FOLD = 4
+
+
+def _heading_line(text: str) -> bool:
+    """ALL-CAPS, or ends in a colon — the marks of a heading, not a sentence."""
+    letters = [c for c in text if c.isalpha()]
+    return text.endswith(":") or (len(letters) > 1 and all(c.isupper() for c in letters))
+
+
+def fold_leading_heading(html: str) -> str:
+    """Fold a chapter's opening heading lines into one ``<h2>``.
+
+    Most CCEL works mark the chapter heading as a real ``<h2>``. A few instead
+    set it as consecutive one-line paragraphs — Murray's *Waiting on God* opens
+    every chapter with "First Day." / "WAITING ON GOD:" / "<the title>." Left as
+    paragraphs those render as three stray fragments under the chapter title,
+    repeating it. Joined into a single ``<h2>`` they read as the day heading the
+    print edition intended, and match how every other CCEL book renders.
+
+    Only a run of **two or more** very short leading paragraphs qualifies, so a
+    book that simply opens with one brief sentence is untouched. Three further
+    guards keep it from eating prose, because CCEL also sets poetry and verse
+    epigraphs one line per paragraph:
+
+    - the run stops at a quoted or dashed line (an epigraph or its citation) and
+      is capped, so it can never run away down the chapter;
+    - something must survive it — a fold that would consume the whole body is
+      refused outright;
+    - at least one line must actually look like a heading (ALL-CAPS, or ending
+      in a colon). Two short lines of narrative prose — "He was gone." / "She
+      did not know." — are left alone.
+    """
+    parts: list[str] = []
+    pos = 0
+    while len(parts) < _MAX_FOLD and (m := _LEADING_P.match(html, pos)) is not None:
+        text = re.sub(r"<[^>]+>", "", m.group(1)).strip()
+        if not text or len(text.split()) > 8 or text[:1] in _EPIGRAPH_LEAD:
+            break
+        parts.append(text)
+        pos = m.end()
+    if len(parts) < 2 or not html[pos:].strip():
+        return html
+    if not any(_heading_line(p) for p in parts):
+        return html
+    return f"<h2>{' '.join(parts)}</h2>" + html[pos:]
+
+
 def extract_body(html: str) -> str:
     s = soup(html)
     node = s.select_one("#theText") or s.select_one("[class*=contentSection]") or s.body
-    return clean_html(node) if node else ""
+    return fold_leading_heading(clean_html(node)) if node else ""
 
 
 class Command(BaseCommand):

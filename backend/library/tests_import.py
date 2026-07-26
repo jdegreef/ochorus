@@ -458,3 +458,144 @@ class TocLineDetectionTests(TestCase):
         # … and the contents lines did not.
         self.assertNotIn("................", bodies)
         self.assertNotIn("Chapter Two ...", bodies)
+
+
+class FlatMarkerTitleTests(TestCase):
+    """A "CHAPTER N" marker whose title is set at BODY size, not larger.
+
+    Murray's *Divine Healing* is typographically flat: the marker and the title
+    under it are both 12pt and only the running header is bigger, so the
+    size/ALL-CAPS title borrow finds nothing. The chapter then keeps a bare
+    "Chapter 1" AND the title line is merged into the epigraph that follows it
+    ("Pardon and Healing “But that ye may know…").
+    """
+
+    def _chapterize(self, blocks):
+        from library.management.commands.import_ochorus import chapterize
+
+        return chapterize(blocks, 12.0)
+
+    def _flat(self, text):
+        from library.management.commands.import_ochorus import _flat_marker_title
+
+        return _flat_marker_title(text)
+
+    def test_a_body_size_title_is_borrowed_and_leaves_the_body(self):
+        filler = "word " * 130
+        blocks = [
+            ("CHAPTER 1", 12.0),
+            ("Pardon and Healing", 12.0),
+            (f"“But that ye may know that the Son of man hath power. {filler}", 12.0),
+            ("CHAPTER 2", 12.0),
+            ("Because of Your Unbelief", 12.0),
+            (f"“Then came the disciples to Jesus apart. {filler}", 12.0),
+        ]
+        from library.ingest import clean_title
+
+        sections = self._chapterize(blocks)
+        # chapterize keeps the marker; clean_title (which every importer applies)
+        # drops it once a descriptive title is there to show instead.
+        self.assertEqual(
+            [t for t, _ in sections],
+            ["Chapter 1. Pardon and Healing", "Chapter 2. Because of Your Unbelief"],
+        )
+        self.assertEqual(
+            [clean_title(t) for t, _ in sections],
+            ["Pardon and Healing", "Because of Your Unbelief"],
+        )
+        # The title is the title, not the first words of the prose.
+        self.assertNotIn("Pardon and Healing", sections[0][1])
+        self.assertIn("But that ye may know", sections[0][1])
+
+    def test_titles_that_are_quoted_questions_or_long_are_still_taken(self):
+        # Each of these was rejected by the first cut of the guards, shipping a
+        # bare "Chapter N" with the title fused into the prose.
+        self.assertTrue(self._flat("Your Body Is the Temple of the Holy Ghost"))  # 9 words
+        self.assertTrue(self._flat("Is Sickness a Chastisement?"))               # ends "?"
+        self.assertTrue(self._flat("“Ye Are the Branches”"))                     # quoted
+        self.assertTrue(self._flat("Pardon and Healing"))
+
+    def test_prose_epigraphs_and_bare_references_are_refused(self):
+        # A full verse epigraph — too long, and carries a citation.
+        self.assertFalse(self._flat(
+            "“But that ye may know that the Son of man hath power on earth to "
+            "forgive sins, Arise, take up thy bed” (Matt. 9:6)."
+        ))
+        # A SHORT quoted epigraph is caught by its citation, not its length —
+        # this one repeats the chapter title almost word for word.
+        self.assertFalse(self._flat("“Ye are the branches” (John 15:5)."))
+        # Lines that are nothing but a scripture reference sit under the title.
+        self.assertFalse(self._flat("Mark 5 :25—34"))
+        self.assertFalse(self._flat("I Corinthians 12:4, 9, 11"))
+        # Ordinary prose.
+        self.assertFalse(self._flat("In man two natures are combined."))
+        self.assertFalse(self._flat(""))
+
+
+class CcelLeadingHeadingTests(TestCase):
+    """CCEL chapters whose heading is set as consecutive one-line paragraphs.
+
+    Most CCEL works mark it as a real <h2>; *Waiting on God* uses three <p>s
+    ("First Day." / "WAITING ON GOD:" / the title), which render as stray
+    fragments repeating the chapter title.
+    """
+
+    def _fold(self, html):
+        from library.management.commands.import_ccel import fold_leading_heading
+
+        return fold_leading_heading(html)
+
+    def test_the_heading_run_becomes_one_h2(self):
+        out = self._fold(
+            "<p>First Day.</p> <p>WAITING ON GOD:</p> <p>The God of Our Salvation.</p>"
+            " <p>'My soul waiteth only upon God.'</p> <p>IF salvation comes from God…</p>"
+        )
+        self.assertTrue(out.startswith("<h2>First Day. WAITING ON GOD: The God of Our Salvation.</h2>"))
+        self.assertIn("<p>'My soul waiteth only upon God.'</p>", out)
+
+    def test_it_is_idempotent(self):
+        once = self._fold("<p>First Day.</p> <p>WAITING ON GOD:</p> <p>Prose follows here.</p>")
+        self.assertEqual(self._fold(once), once)
+
+    def test_an_epigraph_broken_into_verse_lines_is_not_swallowed(self):
+        # CCEL sets poetry one line per <p>. Without the quote/dash stop these
+        # become part of the heading, losing the opening line of Scripture.
+        out = self._fold(
+            "<p>Third Day.</p> <p>WAITING ON GOD:</p> <p>The True Place of the Creature.</p>"
+            " <p>'These wait all upon Thee;</p> <p>That Thou mayest give them their meat.</p>"
+        )
+        self.assertIn("<p>'These wait all upon Thee;</p>", out)
+        self.assertNotIn("These wait all upon Thee", out.split("</h2>")[0])
+
+    def test_a_dashed_citation_line_stops_the_run(self):
+        out = self._fold("<p>First Day.</p> <p>WAITING:</p> <p>—Ps. 62:5</p> <p>Prose here.</p>")
+        self.assertEqual(out.split("</h2>")[0], "<h2>First Day. WAITING:")
+        self.assertIn("<p>—Ps. 62:5</p>", out)
+
+    def test_short_narrative_prose_is_left_alone(self):
+        # Two genuinely short prose paragraphs: no ALL-CAPS or colon line, so
+        # nothing here reads as a heading.
+        html = "<p>He was gone.</p> <p>She did not know.</p> <p>Then a much longer paragraph.</p>"
+        self.assertEqual(self._fold(html), html)
+
+    def test_a_fold_that_would_consume_the_whole_body_is_refused(self):
+        html = "<p>First Day.</p> <p>WAITING ON GOD:</p>"
+        self.assertEqual(self._fold(html), html)
+
+
+class EmptyBlockCleaningTests(TestCase):
+    """<p><br/></p> spacers and CCEL page-break markers are page furniture."""
+
+    def test_br_only_blocks_and_page_markers_go(self):
+        from library.ingest import clean_fragment
+
+        out = clean_fragment(
+            '<p><span class="pb">17</span></p><p><br/></p><p>Real prose.</p><p><br /></p>'
+        )
+        self.assertEqual(out.replace(" ", ""), "<p>Realprose.</p>")
+
+    def test_a_page_number_inside_a_sentence_does_not_join_words(self):
+        from library.ingest import clean_fragment
+
+        out = clean_fragment('<p>they that are in the flesh cannot please <span class="pb">34</span> God.</p>')
+        self.assertIn("cannot please God.", out)
