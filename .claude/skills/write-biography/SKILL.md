@@ -133,6 +133,22 @@ force if every paragraph is a box.
    Only a brand-new author arriving with its own books can skip this (seed_books
    creates it from the fixture, bio and all).
 
+6. **A brand-new author with NO books needs its own create-migration.**
+   `seed_books`/`seed_sermons` create authors only as a side effect of
+   importing a work, so a biography-only author never reaches prod from the
+   fixture alone. Pattern (`0053_three_new_biography_authors.py`, updating
+   `0026_add_biography_authors` for the split-fixture layout): read
+   `fixtures/content/authors.json`, `get_or_create` each new slug, and **guard
+   on `if not Book.objects.exists(): return`** — on a fresh install
+   `seed_if_empty` runs right after migrate and its loaddata would collide by
+   slug with rows created here. Verify three paths: fresh install, prod-shaped
+   create, idempotent re-run.
+
+7. **APPEND new rows to `authors.json` — never re-sort it.** The file is in
+   creation order, not slug order; sorting turns a 45-line addition into a
+   282-insert/237-delete diff. Append, then write with the regen renderer's
+   exact format (records at column 0, `indent=1`, trailing newline).
+
 ## The portrait (optional, same page)
 
 **Check first — the portrait may already exist.** Several authors carry a
@@ -144,6 +160,13 @@ Without `photo_url` the page falls back to an initials monogram (which looks
 fine — a portrait is not mandatory, and some Puritans have no known likeness).
 House format: **grayscale JPEG, max 600px, `frontend/static/portraits/<slug>.jpg`,
 `photo_url="/portraits/<slug>.jpg"`.**
+
+**Some subjects have no honest portrait.** William Law never permitted one to be
+taken in life, so every later engraving is an imagined likeness — and Commons'
+lead image for him is CC BY 4.0, not PD. When the only candidates are imagined
+or non-PD, **ship the monogram** and say why in the bio; a spurious face is
+worse than initials. (Checking the licence caught this: two of three portraits
+in that batch were PD, the third was not.)
 
 Source pre-1900 figures from Wikimedia Commons and **verify the licence** — never
 assume. Find the lead portrait via the Wikipedia `pageimages` API, then check
