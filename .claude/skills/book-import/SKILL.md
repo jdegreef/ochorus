@@ -415,15 +415,10 @@ seeding a scratch DB from every fixture EXCEPT the new one, then running
   node -e "const{Resvg}=require('@resvg/resvg-js'),f=require('fs');for(const s of ['SLUG']){f.writeFileSync('static/covers/'+s+'.png',new Resvg(f.readFileSync('static/covers/'+s+'.svg','utf8'),{fitTo:{mode:'width',value:600},font:{loadSystemFonts:true}}).render().asPng())}"
   ```
 
-**`scripts/regen_fixture.py` currently aborts** ("61 unexpected new field(s)")
-on a pristine tree: `search_vector` / `citations_indexed_at` are derived index
-fields added to the models after `DEFAULTED_OK` was last updated. It fails
-*before* writing, so nothing is corrupted. For a new book, write its fixture
-file directly — serialize the Book + its Chapters with
-`use_natural_primary_keys=True, use_natural_foreign_keys=True`, drop `pk` and
-those two derived fields, and render with regen's own `render()` (indent=1) so
-the file is byte-identical in format. `manage.py test library.tests_fixture`
-(20 tests) is the real gate.
+Get the new book into the fixture with `scripts/regen_fixture.py` — it picks up
+a new book from the dev DB along with everything else. If it aborts, that is a
+pre-existing field-drift problem and NOT your import: see the
+`N unexpected new field(s)` entry above rather than hand-writing the file.
 
 **ochorus.com no longer serves `/pdfs/<slug>.pdf`** (404 as of 2026-07) — every
 `import_ochorus` re-import fails at the fetch. It fails safely, leaving existing
