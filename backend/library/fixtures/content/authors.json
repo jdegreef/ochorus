@@ -491,7 +491,7 @@
   "death_year": 430,
   "original_language": "en",
   "is_imprint": false,
-  "created_at": "2026-07-25T18:00:00.000Z"
+  "created_at": "2026-07-25T18:00:00Z"
  }
 },
 {
@@ -506,7 +506,7 @@
   "death_year": 1833,
   "original_language": "en",
   "is_imprint": false,
-  "created_at": "2026-07-25T18:00:00.000Z"
+  "created_at": "2026-07-25T18:00:00Z"
  }
 },
 {
@@ -521,7 +521,7 @@
   "death_year": 1761,
   "original_language": "en",
   "is_imprint": false,
-  "created_at": "2026-07-25T18:00:00.000Z"
+  "created_at": "2026-07-25T18:00:00Z"
  }
 }
 ]

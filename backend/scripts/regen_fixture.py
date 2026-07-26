@@ -32,6 +32,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+from collections import Counter
 from pathlib import Path
 
 BACKEND = Path(__file__).resolve().parent.parent
@@ -57,9 +58,20 @@ MODELS = [
     "library.planday",
 ]
 
-# Fields whose absence in the source simply means "model default" — the regen
-# materializes them, which is semantically inert and expected.
-DEFAULTED_OK = {"is_imprint", "attribution", "publication_year", "source_type", "body_text"}
+# (model, field) pairs whose absence in the source simply means "model
+# default" — the regen materializes them, which is semantically inert and
+# expected. Keyed per model so allowlisting a field on one model doesn't
+# silently wave the same name through on another.
+DEFAULTED_OK = {
+    ("library.author", "is_imprint"),
+    ("library.book", "publication_year"),
+    ("library.book", "attribution"),
+    ("library.book", "source_type"),
+    ("library.chapter", "body_text"),
+    ("library.sermon", "source_type"),
+    ("library.sermon", "body_text"),
+    ("library.sermon", "summary"),  # "In brief" TL;DR — blank default, fixture-owned
+}
 
 
 def manage(env, *args):
@@ -181,13 +193,21 @@ def main():
                 drift.append((identity(r), "-" + k))
     if drift:
         sys.exit(f"FIELD DRIFT on {len(drift)} value(s), e.g. {drift[:3]} — aborting.")
-    materialized = sum(
-        1 for r in new_rows
+    materialized = Counter(
+        (r["model"], k)
+        for r in new_rows
         for k in r["fields"]
-        if k not in src_by_id[identity(r)] and k not in DEFAULTED_OK
+        if k not in src_by_id[identity(r)] and (r["model"], k) not in DEFAULTED_OK
     )
     if materialized:
-        sys.exit(f"{materialized} unexpected new field(s) — aborting.")
+        detail = ", ".join(f"{m}.{k}×{n}" for (m, k), n in sorted(materialized.items()))
+        sys.exit(
+            f"{len(materialized)} unexpected new field(s) across "
+            f"{sum(materialized.values())} row(s) — aborting.\n"
+            f"  {detail}\n"
+            "If a field is a semantically-inert model default, add it to "
+            "DEFAULTED_OK; otherwise exclude it from the dump."
+        )
 
     # --- write the layout ----------------------------------------------------
     files = split_layout(new_rows)
