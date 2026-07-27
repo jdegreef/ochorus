@@ -37,8 +37,8 @@ def work_base(ref: str) -> str:
     return urljoin(CCEL_BASE, f"{ref}/{work}.")
 
 
-def toc_sections(ref: str) -> list[tuple[str, str]]:
-    """Return [(absolute_section_url, title), ...] from the work's TOC page."""
+def _toc_entries(ref: str) -> tuple[str, list[str], dict[str, str], dict[str, str]]:
+    """Parse the work's TOC once: (work, ordered urls, url→title, url→stem)."""
     base = work_base(ref)
     work = ref.rstrip("/").split("/")[-1]
     toc_url = base + "toc.html"
@@ -72,25 +72,70 @@ def toc_sections(ref: str) -> list[tuple[str, str]]:
             titles[absolute] = title
         elif len(title) > len(titles[absolute]):
             titles[absolute] = title
-    # In a two-level work the one-level parent (`<work>.i.html`) is just a
-    # part-divider / half-title page whose children (`<work>.i.ii.html`) hold the
-    # real prose — drop any section whose stem is a strict prefix of another's.
-    # Single-level works have no such parents, so this is a no-op for them.
-    # Assumption: a parent page carries no prose of its own (true for the CCEL
-    # part/chapter convention). If a future work puts an introduction ON the
-    # parent page as well as chapters beneath it, that intro would be dropped —
-    # revisit here (fetch + word-count the parent) if that book appears.
+
     def stem(url: str) -> str:
         name = url.rstrip("/").split("/")[-1]
         return name[len(work) + 1 : -len(".html")]
 
-    stems = {url: stem(url) for url in order}
-    parents = {
+    return work, order, titles, {url: stem(url) for url in order}
+
+
+def _parent_urls(stems: dict[str, str]) -> set[str]:
+    """URLs whose stem is a strict prefix of another's — the part dividers.
+
+    In a two-level work the one-level parent (`<work>.i.html`) is a part-divider
+    / half-title page whose children (`<work>.i.ii.html`) hold the real prose.
+    Single-level works have no such parents, so this is empty for them.
+    Assumption: a parent page carries no prose of its own (true for the CCEL
+    part/chapter convention). If a future work puts an introduction ON the
+    parent page as well as chapters beneath it, that intro would be dropped —
+    revisit here (fetch + word-count the parent) if that book appears.
+    """
+    return {
         url
         for url, st in stems.items()
         if any(other.startswith(st + ".") for other in stems.values())
     }
+
+
+def toc_sections(ref: str) -> list[tuple[str, str]]:
+    """Return [(absolute_section_url, title), ...] from the work's TOC page."""
+    _work, order, titles, stems = _toc_entries(ref)
+    parents = _parent_urls(stems)
     return [(url, titles[url]) for url in order if url not in parents]
+
+
+def toc_parts(ref: str) -> list[tuple[str, list[tuple[str, str]]]]:
+    """Group a two-level work by its parts: [(part_title, [(url, title), …]), …].
+
+    The inverse view of ``toc_sections``, for works whose real reading unit is
+    the PART, not the leaf section. Augustine's *Confessions* is the case this
+    exists for: CCEL splits it into 278 leaf sections of 150–900 words, titled
+    "Chapter I" … "Chapter XXXVIII" — and those titles repeat in all thirteen
+    Books, so imported flat the book is unreadable and carries 13 sets of
+    duplicate chapter titles. Grouped, it is the thirteen Books everyone
+    actually cites, each a normal chapter-length read.
+
+    Leaf sections with no parent (front matter, a lone appendix) come back as
+    their own single-child part, so nothing is silently dropped.
+    """
+    _work, order, titles, stems = _toc_entries(ref)
+    parents = _parent_urls(stems)
+    groups: list[tuple[str, list[tuple[str, str]]]] = []
+    index: dict[str, int] = {}
+    for url in order:
+        if url in parents:
+            continue
+        # "ii.iv" → part key "ii"; a single-segment stem is its own part.
+        key = stems[url].split(".")[0]
+        if key not in index:
+            parent = next(
+                (p for p in parents if stems[p] == key), None
+            )  # the divider page carries the part's real title ("Book I")
+            index[key] = len(groups)
+            groups.append((titles[parent] if parent else titles[url], []))
+        groups[index[key]][1].append((url, titles[url]))
+    return groups
 
 
 _LEADING_P = re.compile(r"\s*<p>(.*?)</p>", re.S)
@@ -231,13 +276,17 @@ class Command(BaseCommand):
     def _import_one(self, entry: BookEntry):
         self.stdout.write(f"→ {entry.title}  (ccel:{entry.source_ref})")
         try:
-            sections = toc_sections(entry.source_ref)
+            sections = toc_parts(entry.source_ref) if entry.group_parts else toc_sections(
+                entry.source_ref
+            )
         except requests.RequestException as exc:
             self.stderr.write(self.style.ERROR(f"  TOC fetch failed: {exc}"))
             return
         if not sections:
             self.stderr.write(self.style.ERROR("  no sections found in TOC"))
             return
+        if entry.group_parts:
+            return self._import_parts(entry, sections)
 
         chapters: list[tuple[str, str]] = []
         for url, title in sections:
@@ -254,6 +303,40 @@ class Command(BaseCommand):
                 self.stderr.write(self.style.WARNING(f"  skip {url}: {exc}"))
                 continue
             chapters.append((title, body))
+
+        book = upsert_book(entry, chapters)
+        self.stdout.write(self.style.SUCCESS(f"  ✓ {book.chapter_count} chapters"))
+
+    def _import_parts(self, entry: BookEntry, parts: list[tuple[str, list[tuple[str, str]]]]):
+        """One chapter per PART, its leaf sections joined under `<h2>` subheadings.
+
+        The subheadings keep the work's own divisions visible and citable
+        (Confessions is quoted as Book VIII.12), while the reader gets thirteen
+        chapters instead of 278 fragments.
+        """
+        chapters: list[tuple[str, str]] = []
+        for part_title, leaves in parts:
+            if is_front_matter(part_title):
+                continue
+            pieces: list[str] = []
+            for url, leaf_title in leaves:
+                if is_front_matter(leaf_title):
+                    continue
+                leaf_title = clean_title(leaf_title)
+                try:
+                    time.sleep(DELAY)
+                    body = extract_body(fetch(url), leaf_title)
+                except requests.RequestException as exc:
+                    self.stderr.write(self.style.WARNING(f"  skip {url}: {exc}"))
+                    continue
+                if not body.strip():
+                    continue
+                # A single-leaf part is its own chapter — no subheading needed.
+                pieces.append(f"<h2>{leaf_title}</h2>{body}" if len(leaves) > 1 else body)
+            if not pieces:
+                continue
+            chapters.append((clean_title(part_title), "".join(pieces)))
+            self.stdout.write(f"    {part_title}: {len(pieces)} sections")
 
         book = upsert_book(entry, chapters)
         self.stdout.write(self.style.SUCCESS(f"  ✓ {book.chapter_count} chapters"))

@@ -152,6 +152,10 @@ def clean_title(raw: str) -> str:
     # A single trailing full stop is typographic noise in a title ("Adoration.",
     # "Love That Passeth Knowledge ."); ellipses are left alone.
     t = re.sub(r"(?<!\.)\s*\.$", "", t)
+    # A dangling dash left by a TOC that meant to continue ("Chapter VI—", CCEL's
+    # Confessions). Only a TRAILING dash with nothing after it — an internal one
+    # ("Elijah — The Man of God") is the author's punctuation and must stay.
+    t = re.sub(r"\s*[—–-]+$", "", t).strip() or t
     is_allcaps = any(c.isalpha() for c in t) and all(c.isupper() for c in t if c.isalpha())
     # Drop a leading roman-numeral chapter prefix ("II. THE DIGNITY OF CHRIST" ->
     # "THE DIGNITY OF CHRIST"), but ONLY on ALL-CAPS CCEL-style headings. A

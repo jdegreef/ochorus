@@ -38,6 +38,11 @@ class BookEntry:
     source_ref: str
     subtitle: str = ""
     cover_color: str = ""
+    # CCEL only: import one chapter per PART rather than per leaf section, with
+    # the leaves joined under subheadings. For works whose leaves are short
+    # numbered divisions ("Chapter I" … repeated in every Book) the part is the
+    # real reading unit — see `import_ccel.toc_parts`.
+    group_parts: bool = False
 
 
 AUTHORS: dict[str, AuthorEntry] = {
@@ -234,6 +239,18 @@ AUTHORS: dict[str, AuthorEntry] = {
     ),
     # `bio` here is the create-only stub for a brand-new author; authors.json
     # remains the source of truth (see upsert_book's create_defaults, #449).
+    "augustine-of-hippo": AuthorEntry(
+        slug="augustine-of-hippo",
+        name="Augustine of Hippo",
+        birth_year=354,
+        death_year=430,
+        bio=(
+            "Bishop of Hippo in Roman North Africa and the most influential "
+            "theologian of the Western church, whose Confessions invented the "
+            "spiritual autobiography and has never been out of readers' hands "
+            "since."
+        ),
+    ),
     "thomas-a-kempis": AuthorEntry(
         slug="thomas-a-kempis",
         name="Thomas à Kempis",
@@ -363,6 +380,15 @@ BOOKS: list[BookEntry] = [
               "ccel", "kempis/imitation",
               subtitle="Four Books of Counsel for the Inner Life",
               cover_color="#3d3a6e"),
+    # CCEL's `augustine/confessions` is Outler's 1955 translation — still in
+    # copyright, hosted there by permission. `augustine/confess` is Pusey's
+    # 1838 translation, public domain. group_parts: the 278 leaf sections are
+    # 150–900-word "Chapter I…XXXVIII" divisions repeated in all thirteen
+    # Books; the Book is the reading (and citation) unit.
+    BookEntry("confessions", "Confessions", "augustine-of-hippo",
+              "ccel", "augustine/confess",
+              subtitle="Translated by Edward B. Pusey",
+              cover_color="#5c4033", group_parts=True),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an
