@@ -35,11 +35,18 @@
 	let filter = $state<Filter>('all');
 	let sort = $state<Sort>('name');
 
+	// "In the library" means "has something to read here" — which includes a
+	// writer represented only by sermons. Keying these off book_count alone
+	// contradicted the card itself, whose CTA already offers "4 sermons →", and
+	// filed such a writer under "Biography only" despite their work being one
+	// click away.
+	const worksCount = (a: AuthorBio) => a.book_count + a.sermon_count;
+
 	const filtered = $derived.by(() => {
 		const q = queryText.trim().toLowerCase();
 		return authors.filter((a) => {
-			if (filter === 'library' && a.book_count === 0) return false;
-			if (filter === 'bio' && a.book_count > 0) return false;
+			if (filter === 'library' && worksCount(a) === 0) return false;
+			if (filter === 'bio' && worksCount(a) > 0) return false;
 			if (!q) return true;
 			return a.name.toLowerCase().includes(q) || (a.bio ?? '').toLowerCase().includes(q);
 		});
@@ -54,7 +61,8 @@
 					(a, b) => (a.birth_year ?? 9999) - (b.birth_year ?? 9999) || a.name.localeCompare(b.name)
 				);
 			case 'books':
-				return arr.sort((a, b) => b.book_count - a.book_count || a.name.localeCompare(b.name));
+				// Ranks by everything readable, matching the filter above.
+				return arr.sort((a, b) => worksCount(b) - worksCount(a) || a.name.localeCompare(b.name));
 			default:
 				return arr.sort((a, b) => a.name.localeCompare(b.name));
 		}
@@ -71,9 +79,10 @@
 	// data). The label characterises the era; the year range beside it keeps the
 	// generalisation honest. Undated writers (Ochorus' contemporary contributors)
 	// fall to a trailing "Contemporary" group.
-	type EraId = 'puritans' | 'awakenings' | 'missionary' | 'modern' | 'contemporary';
+	type EraId = 'early' | 'puritans' | 'awakenings' | 'missionary' | 'modern' | 'contemporary';
 	const ERAS: { id: EraId; k: string; range: string }[] = [
-		{ id: 'puritans', k: 'bios.eraPuritans', range: '–1699' },
+		{ id: 'early', k: 'bios.eraEarly', range: '–1499' },
+		{ id: 'puritans', k: 'bios.eraPuritans', range: '1500–1699' },
 		{ id: 'awakenings', k: 'bios.eraAwakenings', range: '1700–1799' },
 		{ id: 'missionary', k: 'bios.eraMissionary', range: '1800–1899' },
 		{ id: 'modern', k: 'bios.eraModern', range: '1900–' },
@@ -81,6 +90,10 @@
 	];
 	function eraOf(birth: number | null): EraId {
 		if (birth == null) return 'contemporary';
+		// Pre-Reformation writers get their own bucket: "Puritans & Reformers" was
+		// filing Augustine (b. 354) and Thomas à Kempis (b. 1380) under a label
+		// that is simply wrong for them.
+		if (birth < 1500) return 'early';
 		if (birth < 1700) return 'puritans';
 		if (birth < 1800) return 'awakenings';
 		if (birth < 1900) return 'missionary';
@@ -218,9 +231,17 @@
 						<h2 class="text-h2">
 							<a href={localizeHref(`/authors/${author.slug}`)} class="!text-text hover:underline">{author.name}</a>
 							{#if author.birth_year}
-								<span class="ml-2 text-body font-normal text-muted"
-									>{author.birth_year}–{author.death_year ?? ''}</span
-								>
+								<!-- `whitespace-nowrap` keeps the span of a life together: it was
+								     breaking after the en-dash on narrow screens ("1843–" / "1919").
+								     With no death year, a trailing dash reads as a typo, so a
+								     still-living (or simply undated) writer gets "b. 1938". -->
+								<span class="ml-2 whitespace-nowrap text-body font-normal text-muted">
+									{#if author.death_year}
+										{author.birth_year}–{author.death_year}
+									{:else}
+										{t('bios.bornPrefix')} {author.birth_year}
+									{/if}
+								</span>
 							{/if}
 							{#if author.has_long_bio}
 								<span
@@ -303,7 +324,10 @@
 			<section id="era-{g.era.id}" class="mb-12 scroll-mt-24">
 				<h2 class="mb-6 flex items-baseline gap-2 border-b border-border pb-2 text-h3 text-text">
 					{t(g.era.k)}
-					{#if g.era.range}<span class="text-small font-normal text-muted">{g.era.range}</span>{/if}
+					<!-- Same nowrap rule as the per-writer dates: a year range must never
+					     break across lines ("–" / "1499"). The longer era names make the
+					     heading wrap on narrow screens, so this is load-bearing here. -->
+					{#if g.era.range}<span class="whitespace-nowrap text-small font-normal text-muted">{g.era.range}</span>{/if}
 					<span class="ml-auto text-small font-normal text-muted">{g.authors.length}</span>
 				</h2>
 				<div class="space-y-10">
