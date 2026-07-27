@@ -77,9 +77,14 @@ services:
       # INDEX pages: Render doesn't auto-map extensionless URLs to their .html
       # files, so map each one here.
       #
-      # DETAIL pages (/books|authors|sermons|plans /:slug) are NOT rewritten:
-      # they are 301'd to their trailing-slash form just below, which then
-      # resolves to the prerendered <slug>/index.html.
+      # DETAIL pages (/books|authors|sermons|plans|topics /:slug) are NOT
+      # rewritten. They prerender to <slug>/index.html, which Render serves for
+      # the TRAILING-SLASH URL only; the no-slash form is 301'd to it below.
+      # (An earlier comment here claimed Render resolves the no-slash form
+      # natively and cited scripts/dir-style-detail.mjs — neither is true: the
+      # script no longer exists, and production served a 3,953 b shell.)
+      # A MISSING slug still matches no rule and falls to /* -> /200.html, so
+      # the designed not-found page is preserved (gotcha #8).
       # scripts/dir-style-detail.mjs emits them as directory indexes
       # (<slug>/index.html), which Render serves natively for /books/:slug — so a
       # real book resolves to a file before any rule runs, while a MISSING or
@@ -183,89 +188,35 @@ services:
       - type: rewrite
         source: /lg/plans
         destination: /lg/plans.html
-      # TRAILING SLASH (301). The six detail routes export trailingSlash='always',
-      # so each prerenders to <slug>/index.html. Render serves that for the SLASH
-      # URL, but the non-slash URL matches no file and falls through to the
-      # /* -> /200.html catch-all — an empty shell with no title or content. The
-      # comment above claiming Render resolves /books/:slug natively is wrong in
-      # production; this is what actually consolidates the two forms.
-      #
-      # Internal links now emit the slash directly (src/lib/href.ts); these rules
-      # exist for URLs already in search indexes and for inbound links. Render
-      # matches source paths exactly and has no wildcard for the locale segment,
-      # so each locale repeats the block. Placed before the SPA catch-all.
-      - type: redirect
-        source: /books/:slug
-        destination: /books/:slug/
-      - type: redirect
-        source: /authors/:slug
-        destination: /authors/:slug/
-      - type: redirect
-        source: /topics/:slug
-        destination: /topics/:slug/
-      - type: redirect
-        source: /sermons/:slug
-        destination: /sermons/:slug/
-      - type: redirect
-        source: /plans/:slug
-        destination: /plans/:slug/
-      - type: redirect
-        source: /books/:slug/:order
-        destination: /books/:slug/:order/
-      - type: redirect
-        source: /es/books/:slug
-        destination: /es/books/:slug/
-      - type: redirect
-        source: /es/authors/:slug
-        destination: /es/authors/:slug/
-      - type: redirect
-        source: /es/topics/:slug
-        destination: /es/topics/:slug/
-      - type: redirect
-        source: /es/sermons/:slug
-        destination: /es/sermons/:slug/
-      - type: redirect
-        source: /es/plans/:slug
-        destination: /es/plans/:slug/
-      - type: redirect
-        source: /es/books/:slug/:order
-        destination: /es/books/:slug/:order/
-      - type: redirect
-        source: /sw/books/:slug
-        destination: /sw/books/:slug/
-      - type: redirect
-        source: /sw/authors/:slug
-        destination: /sw/authors/:slug/
-      - type: redirect
-        source: /sw/topics/:slug
-        destination: /sw/topics/:slug/
-      - type: redirect
-        source: /sw/sermons/:slug
-        destination: /sw/sermons/:slug/
-      - type: redirect
-        source: /sw/plans/:slug
-        destination: /sw/plans/:slug/
-      - type: redirect
-        source: /sw/books/:slug/:order
-        destination: /sw/books/:slug/:order/
-      - type: redirect
-        source: /lg/books/:slug
-        destination: /lg/books/:slug/
-      - type: redirect
-        source: /lg/authors/:slug
-        destination: /lg/authors/:slug/
-      - type: redirect
-        source: /lg/topics/:slug
-        destination: /lg/topics/:slug/
-      - type: redirect
-        source: /lg/sermons/:slug
-        destination: /lg/sermons/:slug/
-      - type: redirect
-        source: /lg/plans/:slug
-        destination: /lg/plans/:slug/
-      - type: redirect
-        source: /lg/books/:slug/:order
-        destination: /lg/books/:slug/:order/
+      # /topics had NO rewrite at any locale, so topics.html (23 KB, titled)
+      # was never served — /topics and /topics/ both fell to the SPA shell in
+      # all four locales while sitting in the sitemap — same class of bug as the
+      # trailing-slash split, but with no working form at all.
+      - type: rewrite
+        source: /topics
+        destination: /topics.html
+      - type: rewrite
+        source: /es/topics
+        destination: /es/topics.html
+      - type: rewrite
+        source: /sw/topics
+        destination: /sw/topics.html
+      - type: rewrite
+        source: /lg/topics
+        destination: /lg/topics.html
+      # NO no-slash -> slash 301 here, deliberately. Render's route matcher is
+      # trailing-slash-INSENSITIVE: a rule with `source: /about` also serves
+      # `/about/` (verified live — there is no build/about/ directory, only
+      # about.html). So `source: /books/:slug` would match `/books/<slug>/` too,
+      # and for a path with NO prerendered file it would 301 the slashed URL to
+      # itself — an infinite redirect loop. Files beat rules, so real pages are
+      # safe, but every untranslated book (`/es/books/<en-only-slug>/`), typo'd
+      # slug and out-of-range chapter currently falls to the SPA not-found and
+      # would instead have looped. Internal links, canonicals and the sitemap all
+      # emit the slash form now, which is what actually fixes crawling; if the
+      # already-indexed no-slash URLs need an explicit 301, it has to be done
+      # where the no-slash form can be matched on its own — a Cloudflare rule
+      # conditioned on "URI path does not end with /".
       # Everything else — detail pages (served natively as <slug>/index.html),
       # the reader, search, and any missing/unpublished slug — falls back to the
       # SPA app shell, which renders the real page or the not-found page.

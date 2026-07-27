@@ -46,8 +46,11 @@ export function withTrailingSlash(href: string): string {
 	// an index page) and nothing deeper.
 	if (body.length < 2 || body.length > 3) return href;
 	if (!DETAIL_SECTIONS.has(body[0])) return href;
-	// A last segment with a dot is a file, not a page.
-	if (body[body.length - 1].includes('.')) return href;
+	// A real file extension means an asset, not a page. Matching a genuine
+	// extension rather than any dot keeps a dotted slug working: slugs are
+	// SlugFields so one cannot occur today, but `includes('.')` would fail OPEN
+	// (silently emitting the shell URL) if that ever changed.
+	if (/\.[a-z0-9]{2,5}$/i.test(body[body.length - 1])) return href;
 
 	return `${path}/${rest ?? ''}`;
 }

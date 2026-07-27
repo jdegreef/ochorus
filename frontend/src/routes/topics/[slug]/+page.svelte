@@ -3,7 +3,7 @@
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumb, hreflangAll } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/href';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import SermonCard from '$lib/components/SermonCard.svelte';
 	import Seo from '$lib/components/Seo.svelte';

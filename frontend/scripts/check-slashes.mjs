@@ -16,7 +16,13 @@
  *   node scripts/check-slashes.mjs --sitemap ../build/sitemap.xml
  *
  * Exit code 1 if any canonical (slash) URL looks like a shell, or if a non-slash
- * URL still returns a 200 shell instead of redirecting — i.e. it is CI-usable.
+ * URL still returns a 200 shell instead of redirecting.
+ *
+ * This is a POST-DEPLOY probe, not a CI gate: the non-slash checks depend on the
+ * render.yaml 301s, which only exist on the deployed host. Against `vite preview`
+ * no Render rule applies, so every non-slash URL returns the shell and it always
+ * exits 1. The CI-safe equivalent is the build-output assertion in
+ * src/lib/href.test.ts, which needs no network.
  */
 
 import { readFile } from 'node:fs/promises';

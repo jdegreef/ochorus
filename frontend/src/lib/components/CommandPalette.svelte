@@ -2,7 +2,7 @@
 	import { search, type SearchHit } from '$lib/library';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/href';
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { goto } from '$app/navigation';
 

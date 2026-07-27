@@ -56,3 +56,51 @@ describe('withTrailingSlash', () => {
 		expect(withTrailingSlash('/books/a/b/c')).toBe('/books/a/b/c');
 	});
 });
+
+/**
+ * The guard that would have caught this bug in the first place.
+ *
+ * `withTrailingSlash` being correct does not prove the SITE is correct — a link
+ * only benefits if it is actually routed through the wrapper, and a URL can also
+ * be hand-written in prose (one was: an author bio cross-linked another author
+ * without the slash). Asserting on the built HTML tests the property we actually
+ * care about, independent of how any given link is constructed.
+ *
+ * Skipped when there is no build/ — `npm run test` is run without one locally.
+ */
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
+import { join, resolve } from 'node:path';
+
+// Resolve from the working directory (vitest runs with cwd = frontend/, as CI
+// does) rather than import.meta.url, which vitest rewrites during transform —
+// that silently made this guard skip, which is worse than not having it.
+const BUILD = [resolve(process.cwd(), 'build'), resolve(process.cwd(), 'frontend/build')].find(existsSync) ?? '';
+const BARE_DETAIL = /href="(?:\/(?:es|sw|lg))?\/(?:books|authors|topics|sermons|plans)\/[^"/.]+(?:\/[^"/.]+)?"/g;
+
+function htmlFiles(dir: string, out: string[] = []): string[] {
+	for (const e of readdirSync(dir)) {
+		const p = join(dir, e);
+		if (statSync(p).isDirectory()) htmlFiles(p, out);
+		else if (e.endsWith('.html')) out.push(p);
+	}
+	return out;
+}
+
+describe.skipIf(!BUILD)('built output', () => {
+	// Prose served by the API can also contain a hand-written link, and the build
+	// fetches that prose from PRODUCTION — so a content fix only clears this once
+	// the backend has deployed it. Migration 0054 fixes the one instance; drop
+	// this entry (and the migration stays as history) after that deploy.
+	const CONTENT_PENDING_DEPLOY = ['href="/authors/susanna-wesley"'];
+
+	it('contains no bare (non-slash) detail-route links', () => {
+		const offenders: string[] = [];
+		for (const f of htmlFiles(BUILD)) {
+			const hits = (readFileSync(f, 'utf8').match(BARE_DETAIL) ?? []).filter(
+				(h) => !CONTENT_PENDING_DEPLOY.includes(h)
+			);
+			if (hits.length) offenders.push(`${f.replace(BUILD, '')}: ${[...new Set(hits)].join(', ')}`);
+		}
+		expect(offenders).toEqual([]);
+	});
+});
