@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
-	import type { AuthorBio, BookSummary } from '$lib/library';
+	import { type AuthorBio, type BookSummary, formatLifespan } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
@@ -35,11 +35,8 @@
 	let filter = $state<Filter>('all');
 	let sort = $state<Sort>('name');
 
-	// "In the library" means "has something to read here" — which includes a
-	// writer represented only by sermons. Keying these off book_count alone
-	// contradicted the card itself, whose CTA already offers "4 sermons →", and
-	// filed such a writer under "Biography only" despite their work being one
-	// click away.
+	// "In the library" means "has something to read here" — including writers
+	// represented only by sermons.
 	const worksCount = (a: AuthorBio) => a.book_count + a.sermon_count;
 
 	const filtered = $derived.by(() => {
@@ -80,25 +77,25 @@
 	// generalisation honest. Undated writers (Ochorus' contemporary contributors)
 	// fall to a trailing "Contemporary" group.
 	type EraId = 'early' | 'puritans' | 'awakenings' | 'missionary' | 'modern' | 'contemporary';
-	const ERAS: { id: EraId; k: string; range: string }[] = [
-		{ id: 'early', k: 'bios.eraEarly', range: '–1499' },
-		{ id: 'puritans', k: 'bios.eraPuritans', range: '1500–1699' },
-		{ id: 'awakenings', k: 'bios.eraAwakenings', range: '1700–1799' },
-		{ id: 'missionary', k: 'bios.eraMissionary', range: '1800–1899' },
-		{ id: 'modern', k: 'bios.eraModern', range: '1900–' },
-		{ id: 'contemporary', k: 'bios.eraContemporary', range: '' }
+	// `until` is the exclusive upper bound on birth year and is the single source
+	// of truth; `range` is only its display form, kept on the same row so the two
+	// can't drift. `until: null` marks the undated bucket.
+	//
+	// The first cut is 1480, not 1500: the Reformers had to land under "Puritans &
+	// Reformers", and Luther (b. 1483), Zwingli (1484), Cranmer (1489) and Tyndale
+	// (1494) are all plausible additions here. A 1500 cut would have filed them
+	// under "The Early Church & Middle Ages" — relocating the very mislabel this
+	// bucket was added to fix (Augustine, b. 354, reading as a Puritan).
+	const ERAS: { id: EraId; k: string; until: number | null; range: string }[] = [
+		{ id: 'early', k: 'bios.eraEarly', until: 1480, range: '–1479' },
+		{ id: 'puritans', k: 'bios.eraPuritans', until: 1700, range: '1480–1699' },
+		{ id: 'awakenings', k: 'bios.eraAwakenings', until: 1800, range: '1700–1799' },
+		{ id: 'missionary', k: 'bios.eraMissionary', until: 1900, range: '1800–1899' },
+		{ id: 'modern', k: 'bios.eraModern', until: Infinity, range: '1900–' },
+		{ id: 'contemporary', k: 'bios.eraContemporary', until: null, range: '' }
 	];
-	function eraOf(birth: number | null): EraId {
-		if (birth == null) return 'contemporary';
-		// Pre-Reformation writers get their own bucket: "Puritans & Reformers" was
-		// filing Augustine (b. 354) and Thomas à Kempis (b. 1380) under a label
-		// that is simply wrong for them.
-		if (birth < 1500) return 'early';
-		if (birth < 1700) return 'puritans';
-		if (birth < 1800) return 'awakenings';
-		if (birth < 1900) return 'missionary';
-		return 'modern';
-	}
+	const eraOf = (birth: number | null): EraId =>
+		birth == null ? 'contemporary' : ERAS.find((e) => e.until != null && birth < e.until)!.id;
 	// Grouped, era-ordered sections built from `sorted` (already ascending by
 	// birth year in the era sort), keeping only eras that have writers.
 	const eraGroups = $derived.by(() => {
@@ -231,17 +228,10 @@
 						<h2 class="text-h2">
 							<a href={localizeHref(`/authors/${author.slug}`)} class="!text-text hover:underline">{author.name}</a>
 							{#if author.birth_year}
-								<!-- `whitespace-nowrap` keeps the span of a life together: it was
-								     breaking after the en-dash on narrow screens ("1843–" / "1919").
-								     With no death year, a trailing dash reads as a typo, so a
-								     still-living (or simply undated) writer gets "b. 1938". -->
-								<span class="ml-2 whitespace-nowrap text-body font-normal text-muted">
-									{#if author.death_year}
-										{author.birth_year}–{author.death_year}
-									{:else}
-										{t('bios.bornPrefix')} {author.birth_year}
-									{/if}
-								</span>
+								<!-- nowrap: the dates were breaking after the en-dash ("1843–" / "1919"). -->
+								<span class="ml-2 whitespace-nowrap text-body font-normal text-muted"
+									>{formatLifespan(author.birth_year, author.death_year, t('common.bornPrefix'))}</span
+								>
 							{/if}
 							{#if author.has_long_bio}
 								<span

@@ -220,6 +220,20 @@ export interface AuthorBio {
 	has_long_bio: boolean;
 }
 
+/** A writer's dates as displayed: "1843–1919", or "b. 1938" when there is no
+ * death year — a bare "1938–" reads as a typo rather than as "still living".
+ * Empty when the birth year is unknown, so callers can drop the whole element.
+ *
+ * Shared because the same lifespan appears on the biographies list, the author
+ * page (twice) and a book's byline; inlined, the four drifted apart.
+ * `bornLabel` is passed in because translation lives in the component layer.
+ */
+export const formatLifespan = (
+	birth: number | null,
+	death: number | null,
+	bornLabel: string
+): string => (!birth ? '' : death ? `${birth}–${death}` : `${bornLabel} ${birth}`);
+
 export interface AuthorDetail extends AuthorBio {
 	bio_html: string;
 	books: BookSummary[];
