@@ -37,6 +37,7 @@ from django.test import SimpleTestCase
 
 from library.content_fixtures import (
     AUTHORS_FILE,
+    authors_by_slug,
     BOOKS_DIR,
     PLANS_FILE,
     SERMONS_DIR,
@@ -311,6 +312,19 @@ class SeedFieldCoverageTests(SimpleTestCase):
             with self.subTest(command=mod.__name__):
                 self.assertTrue(mod.CREATE_ONLY_FIELDS <= set(fields))
 
+    def test_fill_only_fields_are_real_author_fields(self):
+        # Same silent-failure shape as CREATE_ONLY_FIELDS above: author_sync
+        # reads each name off the fixture row with .get(), so a typo'd or
+        # renamed entry yields None, the truthiness check skips it, and that
+        # field simply never syncs again — no error, on any deploy, ever.
+        from library.author_sync import FILL_ONLY_FIELDS
+        from library.models import Author
+
+        model_fields = {f.name for f in Author._meta.concrete_fields}
+        self.assertTrue(set(FILL_ONLY_FIELDS) <= model_fields)
+        # `bio` has its own rule (empty-or-stub); it must not be fill-only too.
+        self.assertNotIn("bio", FILL_ONLY_FIELDS)
+
 
 class FileCoherenceTests(SimpleTestCase):
     """Each file must contain exactly what its name and role promise.
@@ -397,18 +411,12 @@ class AuthorBioDataIntegrityTests(SimpleTestCase):
     FixtureIntegrityTests plays for the fixture's own references)."""
 
     def test_every_bio_slug_resolves_against_the_fixture_authors(self):
-        import json as _json
-
         from library.management.commands.seed_author_translations import (
             language_dirs,
             read_bios,
         )
 
-        author_slugs = {
-            r["fields"]["slug"]
-            for r in _json.loads(AUTHORS_FILE.read_text())
-            if r["model"] == "library.author"
-        }
+        author_slugs = set(authors_by_slug())
         dirs = language_dirs()
         self.assertGreaterEqual(len(dirs), 3)  # es, sw, lg at minimum
         for lang, d in dirs:
@@ -443,8 +451,6 @@ class AuthorBioDataIntegrityTests(SimpleTestCase):
         from library.catalog import AUTHORS
         from library.sermon_catalog import SERMON_AUTHORS
 
-        # Both catalogs, not a merged dict: a-b-simpson appears in each with
-        # different text, and merging would silently drop one of them.
         for entry in (*AUTHORS.values(), *SERMON_AUTHORS.values()):
             with self.subTest(slug=entry.slug):
                 # Non-empty: for an author imported before they exist in
@@ -455,6 +461,30 @@ class AuthorBioDataIntegrityTests(SimpleTestCase):
                     f"{entry.slug}'s bio reads like a full biography — that "
                     f"belongs in fixtures/content/authors.json, not catalog.py",
                 )
+
+    def test_every_catalog_slug_exists_in_authors_json(self):
+        """A catalog author slug that authors.json doesn't have forks the author.
+
+        `upsert_book` / `import_sermons` create whatever slug the `AuthorEntry`
+        names. If that slug isn't the fixture's, a re-import doesn't update the
+        real author — it creates a SECOND row holding only the catalog stub, no
+        `bio_html`, no photo, and re-points the book at it. It can't fail at
+        deploy (release seeds from the fixture), so nothing catches it until a
+        local re-import plus a fixture regen commits the duplicate. That is
+        exactly how `charles-spurgeon` drifted from the fixture's
+        `charles-h-spurgeon` while five books pointed at it.
+        """
+        from library.catalog import AUTHORS
+        from library.sermon_catalog import SERMON_AUTHORS
+
+        fixture_slugs = set(authors_by_slug())
+        dangling = sorted((set(AUTHORS) | set(SERMON_AUTHORS)) - fixture_slugs)
+        self.assertEqual(
+            dangling, [],
+            "catalog author slugs missing from authors.json — importing one of "
+            "their books would create a duplicate author instead of updating "
+            "the real one",
+        )
 
 
 class CoverAssetTests(SimpleTestCase):

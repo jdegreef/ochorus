@@ -17,7 +17,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from library.catalog import AuthorEntry
+from library.catalog import AUTHORS, AuthorEntry
 
 
 @dataclass(frozen=True)
@@ -35,39 +35,17 @@ class SermonEntry:
 
 # Authors that sermons may introduce before any of their books exist in the
 # catalog. Keyed by the canonical DB slug.
+#
+# All three now also carry books, so they reuse the book catalog's entry rather
+# than restating it — three near-identical copies of the same author is how the
+# Spurgeon slug drifted (the sermon side said `charles-h-spurgeon`, matching the
+# fixture; the book side said `charles-spurgeon`, and re-importing a Spurgeon
+# book forked him into a second, bio-less author row). Add a literal
+# `AuthorEntry` here only for an author with no books at all — and give it the
+# slug `authors.json` uses.
 SERMON_AUTHORS: dict[str, AuthorEntry] = {
-    "charles-h-spurgeon": AuthorEntry(
-        slug="charles-h-spurgeon",
-        name="Charles H. Spurgeon",
-        birth_year=1834,
-        death_year=1892,
-        bio=(
-            "English Baptist preacher, the “Prince of Preachers,” whose sermons "
-            "and devotional writings have been read by millions."
-        ),
-    ),
-    "a-b-simpson": AuthorEntry(
-        slug="a-b-simpson",
-        name="A. B. Simpson",
-        birth_year=1843,
-        death_year=1919,
-        bio=(
-            "Canadian-born preacher and founder of the Christian and Missionary "
-            "Alliance, whose \"Fourfold Gospel\" called readers past every "
-            "blessing to Christ Himself."
-        ),
-    ),
-    "dwight-l-moody": AuthorEntry(
-        slug="dwight-l-moody",
-        name="Dwight L. Moody",
-        birth_year=1837,
-        death_year=1899,
-        bio=(
-            "American evangelist whose plain, warm gospel addresses reached "
-            "millions across America and Britain; founder of the Moody Bible "
-            "Institute."
-        ),
-    ),
+    slug: AUTHORS[slug]
+    for slug in ("charles-h-spurgeon", "a-b-simpson", "dwight-l-moody")
 }
 
 _CCEL = "https://ccel.org/ccel/spurgeon/"

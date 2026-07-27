@@ -106,20 +106,39 @@ force if every paragraph is a box.
    pre-existing field drift (new model fields not yet in DEFAULTED_OK), which
    is NOT your change's fault; the loaddata check is the gate that matters.
    NEVER bare `dumpdata library`.
-5. **If the author ALREADY EXISTS on prod, the fixture is not enough** — and
-   THREE mechanisms look like they'd carry it but don't:
+5. **If the author ALREADY EXISTS on prod:** the short `bio` now ships from the
+   fixture on its own; `bio_html` and `photo_url` still don't.
+
+   Since 2026-07-26 every deploy runs `author_sync.sync_all_authors` (from
+   `seed_books` / `seed_sermons`) over EVERY author in `authors.json`, including
+   the biography-only ones. It replaces a `bio` that is empty **or still a
+   verbatim `catalog.py` stub** — so writing the real short bio into the fixture
+   is now enough, and 0049/0051-style short-bio migrations are obsolete. It will
+   NOT touch a bio that is anything else: reviewed prose, a hand edit and a
+   translated-then-approved value all win.
+
+   `bio_html` and `photo_url` are **fill-only** — they move `""` to the fixture's
+   value and never overwrite. REPLACING either on a live row still needs a
+   migration (step below). Two more traps that still hold:
    - `seed_if_empty` only fills an EMPTY database;
-   - `seed_books` sets `bio`/`bio_html` in `get_or_create(defaults=…)` — i.e.
-     **on CREATE only**, never on an existing author;
-   - `0049_backfill_author_short_bios` fills only bios that are still **empty**.
+   - **`content_sync.backfill_bios_and_sermons` is RETIRED** — it detects the
+     natural-key fixture and no-ops by design (the old 0017/0036 migrations
+     predate the format switch). Do NOT copy those; a migration calling it is a
+     silent no-op and the bio never reaches the live site.
 
-   **`content_sync.backfill_bios_and_sermons` is RETIRED** — it detects the
-   natural-key fixture and no-ops by design (the old 0017/0036 migrations
-   predate the format switch). Do NOT copy those; a migration calling it is a
-   silent no-op and the bio never reaches the live site.
+   **The author PAGE lags by one deploy.** `/authors/<slug>` is prerendered and
+   bakes the bio at BUILD time from the live API, so the deploy that performs
+   the sync still serves the old text. Redeploy `ochorus-web` afterwards
+   (Manual Deploy → "Clear cache & deploy latest commit").
 
-   Write a fresh data migration that reads `content/authors.json` and updates
-   the row, with fill-only semantics so it can't clobber later prose. Model:
+   **Changing an English bio does NOT invalidate its translations.**
+   `AuthorTranslation` rows keep `reviewed=True` while the English moves out
+   from under them, so es/sw/lg can silently describe the old text. 31 authors
+   have translated short bios — re-translate deliberately after a real rewrite.
+
+   To REPLACE non-empty `bio_html`/`photo_url`, write a data migration that
+   reads `content/authors.json` and updates the row, with fill-only or
+   anchored semantics so it can't clobber later prose. Model:
    `0051_torrey_biography.py` —
    ```python
    Author.objects.filter(slug=SLUG, bio_html="").update(bio_html=bio_html)
@@ -132,6 +151,11 @@ force if every paragraph is a box.
 
    Only a brand-new author arriving with its own books can skip this (seed_books
    creates it from the fixture, bio and all).
+
+   Also fixed 2026-07-26: a `catalog.py` author slug that `authors.json` doesn't
+   have used to fork the author on re-import (`charles-spurgeon` vs
+   `charles-h-spurgeon`). CI now fails on any such mismatch — take an author's
+   slug FROM `authors.json`.
 
 6. **A brand-new author with NO books needs its own create-migration.**
    `seed_books`/`seed_sermons` create authors only as a side effect of

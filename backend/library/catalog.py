@@ -20,11 +20,12 @@ class AuthorEntry:
     death_year: int
     # A one-line stub, NOT the author's real biography — that lives in
     # `fixtures/content/authors.json`. Both readers (`upsert_book`,
-    # `import_sermons`) apply this only when the author row is first created;
-    # see the rationale on `upsert_book`. Write a real sentence, though: nothing
-    # overwrites a non-empty bio afterwards, so for an author imported before
-    # they reach authors.json, this is what the site shows. Required, not
-    # defaulted, so a new entry can't silently ship with no bio at all.
+    # `import_sermons`) apply it only when the author row is first created; see
+    # the rationale on `upsert_book`. It is what the site shows until that
+    # author reaches `authors.json`, at which point the next deploy replaces it
+    # (`library/author_sync`) — so write a real sentence, and keep the wording
+    # here in step with any live row still carrying it. Required, not defaulted,
+    # so a new entry can't silently ship with no bio at all.
     bio: str
 
 
@@ -50,8 +51,8 @@ AUTHORS: dict[str, AuthorEntry] = {
             "for devotional classics on prayer, humility, and abiding in Christ."
         ),
     ),
-    "charles-spurgeon": AuthorEntry(
-        slug="charles-spurgeon",
+    "charles-h-spurgeon": AuthorEntry(
+        slug="charles-h-spurgeon",
         name="Charles H. Spurgeon",
         birth_year=1834,
         death_year=1892,
@@ -251,7 +252,7 @@ AUTHORS: dict[str, AuthorEntry] = {
 BOOKS: list[BookEntry] = [
     BookEntry("humility", "Humility", "andrew-murray", "gutenberg", "57121",
               subtitle="The Beauty of Holiness", cover_color="#3b5bdb"),
-    BookEntry("all-of-grace", "All of Grace", "charles-spurgeon", "ccel", "spurgeon/grace",
+    BookEntry("all-of-grace", "All of Grace", "charles-h-spurgeon", "ccel", "spurgeon/grace",
               subtitle="An Earnest Word to Those Seeking Salvation", cover_color="#b08900"),
     BookEntry("absolute-surrender", "Absolute Surrender", "andrew-murray",
               "ccel", "murray/surrender", cover_color="#c92a2a"),
@@ -271,17 +272,17 @@ BOOKS: list[BookEntry] = [
     BookEntry("ministry-of-intercession", "The Ministry of Intercession",
               "andrew-murray", "gutenberg", "29296",
               subtitle="A Plea for More Prayer", cover_color="#0b7285"),
-    BookEntry("around-the-wicket-gate", "Around the Wicket Gate", "charles-spurgeon",
+    BookEntry("around-the-wicket-gate", "Around the Wicket Gate", "charles-h-spurgeon",
               "gutenberg", "60669",
               subtitle="A Friendly Talk with Seekers", cover_color="#a61e4d"),
-    BookEntry("talks-to-farmers", "Talks to Farmers", "charles-spurgeon",
+    BookEntry("talks-to-farmers", "Talks to Farmers", "charles-h-spurgeon",
               "gutenberg", "42518",
               subtitle="Plain Advice in Parables", cover_color="#846358"),
     BookEntry("cheque-book", "The Cheque Book of the Bank of Faith",
-              "charles-spurgeon", "ccel", "spurgeon/checkbook",
+              "charles-h-spurgeon", "ccel", "spurgeon/checkbook",
               subtitle="Daily Readings on God's Promises", cover_color="#2f9e44"),
     BookEntry("till-he-come", "Till He Come",
-              "charles-spurgeon", "ccel", "spurgeon/till_he_come",
+              "charles-h-spurgeon", "ccel", "spurgeon/till_he_come",
               subtitle="Communion Meditations and Addresses", cover_color="#704881"),
     BookEntry("the-way-to-god", "The Way to God", "dwight-l-moody",
               "gutenberg", "30449",

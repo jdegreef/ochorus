@@ -30,7 +30,8 @@ from __future__ import annotations
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
-from library.content_fixtures import load_all_rows
+from library.author_sync import sync_all_authors
+from library.content_fixtures import authors_by_slug, load_all_rows
 from library.models import Author, Book, Chapter
 
 BOOK_FIELDS = (
@@ -156,11 +157,7 @@ class Command(BaseCommand):
 
         # Natural-key joins: an author is referenced as ["slug"], a chapter's
         # book as ["slug", "language"] — self-describing, no pk map to build.
-        authors = {
-            r["fields"]["slug"]: r["fields"]
-            for r in rows
-            if r.get("model") == "library.author"
-        }
+        authors = authors_by_slug(rows)
         chapters_by_book: dict[tuple, list[dict]] = {}
         for r in rows:
             if r.get("model") == "library.chapter":
@@ -191,6 +188,10 @@ class Command(BaseCommand):
                     "photo_url": af.get("photo_url", ""),
                     "birth_year": af.get("birth_year"),
                     "death_year": af.get("death_year"),
+                    # Every fixture author is "en" today, so omitting this was
+                    # invisible; a non-English author created on prod would have
+                    # silently taken the model default and mis-fed _localized().
+                    "original_language": af.get("original_language", "en"),
                     # Carry the flag through, else an imprint added to the
                     # fixture later is created unflagged on the existing prod DB
                     # (seed_if_empty no-ops there) and lands on Biographies.
@@ -252,6 +253,11 @@ class Command(BaseCommand):
             )
         else:
             self.stdout.write("Books already up to date.")
+
+        # Every fixture author, not just those reached by the book loop — the
+        # biography-only authors have no book at all. See author_sync.
+        for slug, fields in sorted(sync_all_authors(Author, rows).items()):
+            self.stdout.write(f"  ~ author {slug} ({', '.join(fields)})")
 
         # Report-only: warn if any existing book's chapters have diverged from
         # the fixture (a transform applied to the live DB without a fixture

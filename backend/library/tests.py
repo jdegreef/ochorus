@@ -1,6 +1,7 @@
 from io import StringIO
 from unittest import skipUnless
 
+from django.core.management import call_command
 from django.db import connection
 from django.test import TestCase, override_settings
 from rest_framework.test import APIClient
@@ -450,6 +451,107 @@ class SeedBooksUpsertTests(TestCase):
 
         self.assertEqual(
             [h for h in search_library("Quixotical", "en") if h["type"] == "chapter"], []
+        )
+
+    # --- author sync -------------------------------------------------------
+    # An author's fields were create-only, so a biography written into
+    # authors.json after the row existed never reached production; every such
+    # correction shipped as a hand-written per-author migration (0049, 0051,
+    # 0052, 0053). seed_books/seed_sermons now sync them, under a rule that can
+    # only overwrite text the catalogs generated (library/author_sync).
+
+    def _author(self):
+        # An author whose fixture row carries a real biography.
+        return Author.objects.get(slug="andrew-murray")
+
+    def _fixture_bio(self, slug):
+        from library.content_fixtures import authors_by_slug
+
+        return authors_by_slug()[slug]["bio"]
+
+    def test_a_catalog_stub_is_upgraded_to_the_real_biography(self):
+        # The gap: an import created this author with catalog.py's one-liner,
+        # and writing the real bio into authors.json never reached the row.
+        from library.catalog import AUTHORS
+
+        stub = AUTHORS["andrew-murray"].bio
+        Author.objects.filter(slug="andrew-murray").update(bio=stub)
+
+        call_command("seed_books", verbosity=0)  # the next deploy
+
+        self.assertEqual(self._author().bio, self._fixture_bio("andrew-murray"))
+
+    def test_an_author_with_no_book_or_sermon_is_synced_too(self):
+        # The sync was first written inside the book loop, which silently
+        # skipped the 9 biography-only authors — including the three migration
+        # 0053 had to add by hand, i.e. exactly the case the feature is for.
+        from library.content_fixtures import authors_by_slug, load_all_rows
+
+        rows = load_all_rows()
+        with_work = {
+            r["fields"]["author"][0]
+            for r in rows
+            if r.get("model") in ("library.book", "library.sermon")
+        }
+        bookless = sorted(set(authors_by_slug(rows)) - with_work)
+        self.assertTrue(bookless, "fixture no longer has a biography-only author")
+
+        # These rows reach prod through the initial seed_if_empty loaddata (or a
+        # migration like 0053) — seed_books only ever CREATES authors that have
+        # a book, which is why the class's own seeding doesn't produce them.
+        slug = bookless[0]
+        Author.objects.create(slug=slug, name="Placeholder", bio="")
+
+        call_command("seed_books", verbosity=0)
+
+        self.assertEqual(Author.objects.get(slug=slug).bio, self._fixture_bio(slug))
+
+    def test_a_retired_stub_wording_is_still_upgraded(self):
+        # Recognition is by string equality, so rewording a stub would strand
+        # every live row still carrying the old text — nothing else can upgrade
+        # a non-empty bio. RETIRED_STUBS keeps those wordings recognisable; this
+        # fails if one is ever deleted rather than retired.
+        from library.author_sync import RETIRED_STUBS
+
+        Author.objects.filter(slug="andrew-murray").update(bio=RETIRED_STUBS[0])
+
+        call_command("seed_books", verbosity=0)
+
+        self.assertEqual(self._author().bio, self._fixture_bio("andrew-murray"))
+
+    def test_an_empty_bio_is_filled(self):
+        Author.objects.filter(slug="andrew-murray").update(bio="")
+        call_command("seed_books", verbosity=0)
+        self.assertEqual(self._author().bio, self._fixture_bio("andrew-murray"))
+
+    def test_reviewed_prose_is_never_overwritten(self):
+        # THE constraint. Blind-syncing the fixture would close the gap and also
+        # silently revert a hand edit or an approved translation — so anything
+        # that isn't empty or a verbatim catalog stub wins over the fixture.
+        edited = "A biography a human rewrote in the admin, after review."
+        Author.objects.filter(slug="andrew-murray").update(bio=edited)
+
+        call_command("seed_books", verbosity=0)
+
+        self.assertEqual(self._author().bio, edited)
+
+    def test_fill_only_fields_are_filled_but_not_overwritten(self):
+        Author.objects.filter(slug="andrew-murray").update(photo_url="")
+        call_command("seed_books", verbosity=0)
+        filled = self._author().photo_url
+
+        Author.objects.filter(slug="andrew-murray").update(photo_url="/custom.png")
+        call_command("seed_books", verbosity=0)
+        self.assertEqual(self._author().photo_url, "/custom.png")
+        self.assertNotEqual(filled, "/custom.png")
+
+    def test_a_no_op_deploy_changes_no_author(self):
+        # Author has no updated_at, so snapshot the synced fields themselves.
+        fields = ("slug", "bio", "bio_html", "photo_url", "birth_year", "death_year")
+        before = list(Author.objects.order_by("slug").values_list(*fields))
+        call_command("seed_books", verbosity=0)
+        self.assertEqual(
+            list(Author.objects.order_by("slug").values_list(*fields)), before
         )
 
     def _fixture_fields(self, slug, language):

@@ -17,8 +17,10 @@ from __future__ import annotations
 import datetime
 
 from django.core.management.base import BaseCommand, CommandError
+from django.db import transaction
 
-from library.content_fixtures import load_all_rows
+from library.author_sync import sync_all_authors
+from library.content_fixtures import authors_by_slug, load_all_rows
 from library.management.commands.seed_books import require_natural_format
 from library.models import Author, Sermon
 
@@ -55,6 +57,9 @@ def _date(value):
 class Command(BaseCommand):
     help = "Upsert the fixture's sermons into an existing DB (deploy step)."
 
+    # Atomic like seed_books: a CommandError on a dangling author reference, or
+    # any mid-loop DB error, must not leave prod with a half-synced author set.
+    @transaction.atomic
     def handle(self, *args, **opts):
         try:
             rows = load_all_rows()
@@ -67,11 +72,7 @@ class Command(BaseCommand):
         require_natural_format(rows, "seed_sermons")
 
         # Natural-key join: a sermon's author is referenced as ["slug"].
-        author_fields_by_slug = {
-            r["fields"]["slug"]: r["fields"]
-            for r in rows
-            if r.get("model") == "library.author"
-        }
+        author_fields_by_slug = authors_by_slug(rows)
 
         created = updated = 0
         for row in rows:
@@ -97,6 +98,10 @@ class Command(BaseCommand):
                     "photo_url": af.get("photo_url", ""),
                     "birth_year": af.get("birth_year"),
                     "death_year": af.get("death_year"),
+                    # Every fixture author is "en" today, so omitting this was
+                    # invisible; a non-English author created on prod would have
+                    # silently taken the model default and mis-fed _localized().
+                    "original_language": af.get("original_language", "en"),
                     # Carry the flag through — see seed_books for why.
                     "is_imprint": af.get("is_imprint", False),
                 },
@@ -141,3 +146,6 @@ class Command(BaseCommand):
             )
         else:
             self.stdout.write("Sermons already up to date.")
+
+        for slug, fields in sorted(sync_all_authors(Author, rows).items()):
+            self.stdout.write(f"  ~ author {slug} ({', '.join(fields)})")
