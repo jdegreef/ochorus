@@ -239,16 +239,10 @@ AUTHORS: dict[str, AuthorEntry] = {
         birth_year=1380,
         death_year=1471,
         bio=(
-            "Thomas à Kempis (c. 1380–1471) was a German-born Dutch monk who "
-            "spent roughly seventy years in a single monastery outside Zwolle, "
-            "copying manuscripts, keeping his community's chronicle, and "
-            "teaching its novices. Formed at Deventer among the Brethren of the "
-            "Common Life, he wrote for those young men four small booklets of "
-            "counsel that became The Imitation of Christ — after the Bible, the "
-            "most widely read Christian book ever written. Long circulated "
-            "anonymously and long disputed, it is now credited to him. His was "
-            "a hidden, unhurried life, and that hiddenness is the soil the book "
-            "grew in."
+            "German-born Dutch monk who spent some seventy years in one "
+            "monastery outside Zwolle, copying manuscripts and teaching "
+            "novices. For those young men he wrote The Imitation of Christ, "
+            "after the Bible the most widely read Christian book ever written."
         ),
     ),
 }
