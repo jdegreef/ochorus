@@ -20,7 +20,7 @@ from collections import defaultdict
 from django.core.management.base import BaseCommand, CommandError
 
 from library.author_sync import sync_author
-from library.content_fixtures import load_all_rows
+from library.content_fixtures import authors_by_slug, load_all_rows
 from library.management.commands.seed_books import require_natural_format
 from library.models import Author, Sermon
 
@@ -69,11 +69,7 @@ class Command(BaseCommand):
         require_natural_format(rows, "seed_sermons")
 
         # Natural-key join: a sermon's author is referenced as ["slug"].
-        author_fields_by_slug = {
-            r["fields"]["slug"]: r["fields"]
-            for r in rows
-            if r.get("model") == "library.author"
-        }
+        author_fields_by_slug = authors_by_slug(rows)
 
         created = updated = 0
         authors_synced: dict[str, set[str]] = defaultdict(set)

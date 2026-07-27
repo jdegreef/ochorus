@@ -84,3 +84,21 @@ def unexpected_files() -> list[Path]:
 def rows_by_file() -> dict[Path, list[dict]]:
     """Per-file rows, for checks that validate file-content coherence."""
     return {p: json.loads(p.read_text()) for p in ordered_fixture_paths()}
+
+
+def authors_by_slug(rows: list[dict] | None = None) -> dict[str, dict]:
+    """The fixture's author rows, keyed by slug — ``{slug: fields}``.
+
+    "Pick the library.author rows out and key them by slug" was written inline
+    seven times (both seed commands, migrations 0049/0051/0052/0053, the CI
+    gate), so the definition of "which rows are authors" drifted per copy.
+    Pass ``rows`` when you already have the whole fixture loaded — the seeds do,
+    and re-reading authors.json there would be wasted I/O on every deploy.
+    """
+    if rows is None:
+        rows = json.loads(AUTHORS_FILE.read_text())
+    return {
+        r["fields"]["slug"]: r["fields"]
+        for r in rows
+        if r.get("model") == "library.author"
+    }

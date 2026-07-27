@@ -1,6 +1,7 @@
 from io import StringIO
 from unittest import skipUnless
 
+from django.core.management import call_command
 from django.db import connection
 from django.test import TestCase, override_settings
 from rest_framework.test import APIClient
@@ -452,6 +453,82 @@ class SeedBooksUpsertTests(TestCase):
             [h for h in search_library("Quixotical", "en") if h["type"] == "chapter"], []
         )
 
+    # --- author sync -------------------------------------------------------
+    # An author's fields were create-only, so a biography written into
+    # authors.json after the row existed never reached production; every such
+    # correction shipped as a hand-written per-author migration (0049, 0051,
+    # 0052, 0053). seed_books/seed_sermons now sync them, under a rule that can
+    # only overwrite text the catalogs generated (library/author_sync).
+
+    def _author(self):
+        # An author whose fixture row carries a real biography.
+        return Author.objects.get(slug="andrew-murray")
+
+    def _fixture_bio(self, slug):
+        from library.content_fixtures import authors_by_slug
+
+        return authors_by_slug()[slug]["bio"]
+
+    def test_a_catalog_stub_is_upgraded_to_the_real_biography(self):
+        # The gap: an import created this author with catalog.py's one-liner,
+        # and writing the real bio into authors.json never reached the row.
+        from library.catalog import AUTHORS
+
+        stub = AUTHORS["andrew-murray"].bio
+        Author.objects.filter(slug="andrew-murray").update(bio=stub)
+
+        call_command("seed_books", verbosity=0)  # the next deploy
+
+        self.assertEqual(self._author().bio, self._fixture_bio("andrew-murray"))
+
+    def test_a_retired_stub_wording_is_still_upgraded(self):
+        # Recognition is by string equality, so rewording a stub would strand
+        # every live row still carrying the old text — nothing else can upgrade
+        # a non-empty bio. RETIRED_STUBS keeps those wordings recognisable; this
+        # fails if one is ever deleted rather than retired.
+        from library.author_sync import RETIRED_STUBS
+
+        Author.objects.filter(slug="andrew-murray").update(bio=RETIRED_STUBS[0])
+
+        call_command("seed_books", verbosity=0)
+
+        self.assertEqual(self._author().bio, self._fixture_bio("andrew-murray"))
+
+    def test_an_empty_bio_is_filled(self):
+        Author.objects.filter(slug="andrew-murray").update(bio="")
+        call_command("seed_books", verbosity=0)
+        self.assertEqual(self._author().bio, self._fixture_bio("andrew-murray"))
+
+    def test_reviewed_prose_is_never_overwritten(self):
+        # THE constraint. Blind-syncing the fixture would close the gap and also
+        # silently revert a hand edit or an approved translation — so anything
+        # that isn't empty or a verbatim catalog stub wins over the fixture.
+        edited = "A biography a human rewrote in the admin, after review."
+        Author.objects.filter(slug="andrew-murray").update(bio=edited)
+
+        call_command("seed_books", verbosity=0)
+
+        self.assertEqual(self._author().bio, edited)
+
+    def test_fill_only_fields_are_filled_but_not_overwritten(self):
+        Author.objects.filter(slug="andrew-murray").update(photo_url="")
+        call_command("seed_books", verbosity=0)
+        filled = self._author().photo_url
+
+        Author.objects.filter(slug="andrew-murray").update(photo_url="/custom.png")
+        call_command("seed_books", verbosity=0)
+        self.assertEqual(self._author().photo_url, "/custom.png")
+        self.assertNotEqual(filled, "/custom.png")
+
+    def test_a_no_op_deploy_changes_no_author(self):
+        # Author has no updated_at, so snapshot the synced fields themselves.
+        fields = ("slug", "bio", "bio_html", "photo_url", "birth_year", "death_year")
+        before = list(Author.objects.order_by("slug").values_list(*fields))
+        call_command("seed_books", verbosity=0)
+        self.assertEqual(
+            list(Author.objects.order_by("slug").values_list(*fields)), before
+        )
+
     def _fixture_fields(self, slug, language):
         """The fixture's Book row for one work — its own file's first record.
 
@@ -465,92 +542,6 @@ class SeedBooksUpsertTests(TestCase):
         row = json.loads((BOOKS_DIR / work_filename(slug, language)).read_text())[0]
         self.assertEqual(row["model"], "library.book")
         return row["fields"]
-
-
-class SeedAuthorBioSyncTests(TestCase):
-    """An author's fields were create-only, so a biography written into
-    authors.json after the row existed never reached production — every such
-    correction had to ship as a hand-written per-author data migration (0049,
-    0051, 0052, 0053). seed_books/seed_sermons now sync them, under a rule that
-    can only overwrite text the catalogs generated.
-    """
-
-    @classmethod
-    def setUpTestData(cls):
-        from django.core.management import call_command
-
-        call_command("seed_books", verbosity=0)
-
-    def _author(self):
-        # An author whose fixture row carries a real biography.
-        return Author.objects.get(slug="andrew-murray")
-
-    def _fixture_bio(self, slug):
-        import json
-
-        from library.content_fixtures import AUTHORS_FILE
-
-        for row in json.loads(AUTHORS_FILE.read_text()):
-            if row["model"] == "library.author" and row["fields"]["slug"] == slug:
-                return row["fields"]["bio"]
-        self.fail(f"{slug} missing from authors.json")
-
-    def test_a_catalog_stub_is_upgraded_to_the_real_biography(self):
-        # The gap: an import created this author with catalog.py's one-liner,
-        # and writing the real bio into authors.json never reached the row.
-        from django.core.management import call_command
-
-        from library.catalog import AUTHORS
-
-        stub = AUTHORS["andrew-murray"].bio
-        Author.objects.filter(slug="andrew-murray").update(bio=stub)
-
-        call_command("seed_books", verbosity=0)  # the next deploy
-
-        self.assertEqual(self._author().bio, self._fixture_bio("andrew-murray"))
-
-    def test_an_empty_bio_is_filled(self):
-        from django.core.management import call_command
-
-        Author.objects.filter(slug="andrew-murray").update(bio="")
-        call_command("seed_books", verbosity=0)
-        self.assertEqual(self._author().bio, self._fixture_bio("andrew-murray"))
-
-    def test_reviewed_prose_is_never_overwritten(self):
-        # THE constraint. Blind-syncing the fixture would close the gap and also
-        # silently revert a hand edit or an approved translation — so anything
-        # that isn't empty or a verbatim catalog stub wins over the fixture.
-        from django.core.management import call_command
-
-        edited = "A biography a human rewrote in the admin, after review."
-        Author.objects.filter(slug="andrew-murray").update(bio=edited)
-
-        call_command("seed_books", verbosity=0)
-
-        self.assertEqual(self._author().bio, edited)
-
-    def test_fill_only_fields_are_filled_but_not_overwritten(self):
-        from django.core.management import call_command
-
-        Author.objects.filter(slug="andrew-murray").update(photo_url="")
-        call_command("seed_books", verbosity=0)
-        filled = self._author().photo_url
-
-        Author.objects.filter(slug="andrew-murray").update(photo_url="/custom.png")
-        call_command("seed_books", verbosity=0)
-        self.assertEqual(self._author().photo_url, "/custom.png")
-        self.assertNotEqual(filled, "/custom.png")
-
-    def test_a_no_op_deploy_changes_no_author(self):
-        # Author has no updated_at, so snapshot the synced fields themselves.
-        from django.core.management import call_command
-
-        fields = ("slug", "bio", "bio_html", "photo_url", "birth_year", "death_year")
-        before = list(Author.objects.order_by("slug").values_list(*fields))
-        call_command("seed_books", verbosity=0)
-        self.assertEqual(
-            list(Author.objects.order_by("slug").values_list(*fields)), before
-        )
 
 
 class SeedBooksChapterDriftTests(TestCase):

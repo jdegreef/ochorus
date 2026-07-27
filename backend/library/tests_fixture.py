@@ -37,6 +37,7 @@ from django.test import SimpleTestCase
 
 from library.content_fixtures import (
     AUTHORS_FILE,
+    authors_by_slug,
     BOOKS_DIR,
     PLANS_FILE,
     SERMONS_DIR,
@@ -311,6 +312,19 @@ class SeedFieldCoverageTests(SimpleTestCase):
             with self.subTest(command=mod.__name__):
                 self.assertTrue(mod.CREATE_ONLY_FIELDS <= set(fields))
 
+    def test_fill_only_fields_are_real_author_fields(self):
+        # Same silent-failure shape as CREATE_ONLY_FIELDS above: author_sync
+        # reads each name off the fixture row with .get(), so a typo'd or
+        # renamed entry yields None, the truthiness check skips it, and that
+        # field simply never syncs again — no error, on any deploy, ever.
+        from library.author_sync import FILL_ONLY_FIELDS
+        from library.models import Author
+
+        model_fields = {f.name for f in Author._meta.concrete_fields}
+        self.assertTrue(set(FILL_ONLY_FIELDS) <= model_fields)
+        # `bio` has its own rule (empty-or-stub); it must not be fill-only too.
+        self.assertNotIn("bio", FILL_ONLY_FIELDS)
+
 
 class FileCoherenceTests(SimpleTestCase):
     """Each file must contain exactly what its name and role promise.
@@ -397,18 +411,12 @@ class AuthorBioDataIntegrityTests(SimpleTestCase):
     FixtureIntegrityTests plays for the fixture's own references)."""
 
     def test_every_bio_slug_resolves_against_the_fixture_authors(self):
-        import json as _json
-
         from library.management.commands.seed_author_translations import (
             language_dirs,
             read_bios,
         )
 
-        author_slugs = {
-            r["fields"]["slug"]
-            for r in _json.loads(AUTHORS_FILE.read_text())
-            if r["model"] == "library.author"
-        }
+        author_slugs = set(authors_by_slug())
         dirs = language_dirs()
         self.assertGreaterEqual(len(dirs), 3)  # es, sw, lg at minimum
         for lang, d in dirs:
@@ -466,16 +474,10 @@ class AuthorBioDataIntegrityTests(SimpleTestCase):
         exactly how `charles-spurgeon` drifted from the fixture's
         `charles-h-spurgeon` while five books pointed at it.
         """
-        import json as _json
-
         from library.catalog import AUTHORS
         from library.sermon_catalog import SERMON_AUTHORS
 
-        fixture_slugs = {
-            r["fields"]["slug"]
-            for r in _json.loads(AUTHORS_FILE.read_text())
-            if r["model"] == "library.author"
-        }
+        fixture_slugs = set(authors_by_slug())
         dangling = sorted((set(AUTHORS) | set(SERMON_AUTHORS)) - fixture_slugs)
         self.assertEqual(
             dangling, [],

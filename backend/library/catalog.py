@@ -20,11 +20,12 @@ class AuthorEntry:
     death_year: int
     # A one-line stub, NOT the author's real biography — that lives in
     # `fixtures/content/authors.json`. Both readers (`upsert_book`,
-    # `import_sermons`) apply this only when the author row is first created;
-    # see the rationale on `upsert_book`. Write a real sentence, though: nothing
-    # overwrites a non-empty bio afterwards, so for an author imported before
-    # they reach authors.json, this is what the site shows. Required, not
-    # defaulted, so a new entry can't silently ship with no bio at all.
+    # `import_sermons`) apply it only when the author row is first created; see
+    # the rationale on `upsert_book`. It is what the site shows until that
+    # author reaches `authors.json`, at which point the next deploy replaces it
+    # (`library/author_sync`) — so write a real sentence, and keep the wording
+    # here in step with any live row still carrying it. Required, not defaulted,
+    # so a new entry can't silently ship with no bio at all.
     bio: str
 
 

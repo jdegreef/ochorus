@@ -33,7 +33,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
 from library.author_sync import sync_author
-from library.content_fixtures import load_all_rows
+from library.content_fixtures import authors_by_slug, load_all_rows
 from library.models import Author, Book, Chapter
 
 BOOK_FIELDS = (
@@ -159,11 +159,7 @@ class Command(BaseCommand):
 
         # Natural-key joins: an author is referenced as ["slug"], a chapter's
         # book as ["slug", "language"] — self-describing, no pk map to build.
-        authors = {
-            r["fields"]["slug"]: r["fields"]
-            for r in rows
-            if r.get("model") == "library.author"
-        }
+        authors = authors_by_slug(rows)
         chapters_by_book: dict[tuple, list[dict]] = {}
         for r in rows:
             if r.get("model") == "library.chapter":

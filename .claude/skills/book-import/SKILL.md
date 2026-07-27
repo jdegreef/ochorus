@@ -347,10 +347,12 @@ dropped; chapters under 120 words are dropped as stubs.
   on every deploy they sync an existing author from `authors.json`, replacing a
   `bio` that is empty or still a verbatim catalog stub (see
   `library/author_sync.py`). Reviewed prose always wins, and `bio_html` /
-  `photo_url` / years are fill-only. So writing a real biography into
-  `authors.json` now reaches prod on its own — it no longer needs a
-  hand-written per-author data migration the way 0049/0051/0052/0053 did. *(hit amy-carmichael, f-b-meyer, susanna-wesley, george-muller,
-  andrew-murray before the fix)*
+  `photo_url` / years are fill-only. So a **short `bio`** written into
+  `authors.json` now reaches prod on its own, where 0049/0051 needed a
+  hand-written migration. **This does NOT cover `bio_html`** — the long-form
+  biography is fill-only, so REPLACING one on a live row still ships as a
+  migration with a digest anchor (the 0052 pattern). *(hit amy-carmichael,
+  f-b-meyer, susanna-wesley, george-muller, andrew-murray before the fix)*
 - **`chapter_title_overrides` now applies in `upsert_book`** (was only in
   `import_ochorus`), so per-book title corrections work for every source. Apply
   `clean_title` to the override in BOTH paths so the same correction yields the

@@ -1,59 +1,71 @@
 """Bring an existing Author row up to date with ``content/authors.json``.
 
-THE GAP THIS CLOSES. Both seed commands create authors with ``get_or_create``,
-so everything about an author is create-only: whatever the row held the first
-time it appeared is what production keeps. Nothing else re-asserts the fixture
-either — ``content_sync.backfill_bios_and_sermons`` reads the retired
-``launch.json`` and no-ops on the natural-key fixture, and migration 0049 fills
-only rows whose bio is ``""``. So an author first created by an *import* keeps
-the one-line stub from ``catalog.py`` forever, and writing their real biography
-into ``authors.json`` afterwards never reaches the live site. Every author bio
-that has ever needed correcting in production has therefore shipped as a
-hand-written per-author data migration (0049, 0051, 0052, 0053).
+Both seed commands create authors with ``get_or_create``, so every author field
+was create-only: an author first created by an *import* kept the one-line stub
+from ``catalog.py`` forever, and writing their real biography into the fixture
+afterwards never reached the live site. See the book-import skill for the full
+history (and which migrations had to paper over it).
 
-WHAT IT WILL AND WON'T OVERWRITE. Blind-syncing the fixture over the row would
-close the gap and also silently revert reviewed prose, so this follows the rule
-``0052_site_bio_expansions`` established: only replace text we know we
-generated ourselves. A short ``bio`` is replaced when the row is empty or still
-holds a verbatim ``catalog.py`` stub; anything else — a hand edit, an AI bio
-that a native speaker approved, a newer deploy — always wins. The remaining
-fields are fill-only: they move ``""``/``None`` to the fixture's value and never
-overwrite. Re-runs are no-ops, so this is safe on every deploy.
+THE RULE. Blind-syncing the fixture would close that gap and also silently
+revert reviewed prose, so this only replaces text we know we generated: a
+``bio`` that is empty or still a verbatim catalog stub. Anything else — a hand
+edit, an approved translation, a newer deploy — wins. Everything in
+``FILL_ONLY_FIELDS`` moves ``""``/``None`` to the fixture's value and never
+overwrites. Re-runs are no-ops, so this is safe on every deploy.
 """
 
 from __future__ import annotations
 
-# Filled lazily: importing the catalogs at module import time would drag
-# `library.catalog` into every consumer of this module.
-_STUBS: frozenset[str] | None = None
+from functools import cache
 
-# Fill-only. `bio` is handled separately (it has the stub rule); `name` is not
-# synced at all — `upsert_book` already keeps it current, and it is the one
-# field a rename is supposed to change from the catalog side.
+# Fill-only. `bio` has its own rule above; `name` is not synced at all —
+# `upsert_book` already keeps it current, and it is the one field a rename is
+# supposed to change from the catalog side.
 FILL_ONLY_FIELDS = ("bio_html", "photo_url", "birth_year", "death_year")
 
+# Stub wordings that USED to be in the catalogs. A live row still carrying one
+# is just as much a placeholder as a current stub — but string equality can't
+# know that, so rewording a stub would strand every row holding the old text,
+# permanently (nothing else upgrades a non-empty bio). Retiring a stub means
+# moving its exact text here, not deleting it.
+RETIRED_STUBS = (
+    # sermon_catalog carried its own copies until they were aliased to
+    # catalog.AUTHORS; these three are what `import_sermons` planted before that.
+    "Canadian-born preacher and founder of the Christian and Missionary "
+    'Alliance, whose "Fourfold Gospel" called readers past every '
+    "blessing to Christ Himself.",
+    "English Baptist preacher, the “Prince of Preachers,” whose sermons "
+    "and devotional writings have been read by millions.",
+    "American evangelist whose plain, warm gospel addresses reached "
+    "millions across America and Britain; founder of the Moody Bible "
+    "Institute.",
+)
 
+
+@cache
 def catalog_stubs() -> frozenset[str]:
     """Every one-line bio the catalogs can plant on a newly created author."""
-    global _STUBS
-    if _STUBS is None:
-        from library.catalog import AUTHORS
-        from library.sermon_catalog import SERMON_AUTHORS
+    # Imported lazily: `library.catalog` pulls in the whole book shelf, and this
+    # module is imported by the seeds at deploy time.
+    from library.catalog import AUTHORS
+    from library.sermon_catalog import SERMON_AUTHORS
 
-        _STUBS = frozenset(
-            e.bio.strip()
-            for e in (*AUTHORS.values(), *SERMON_AUTHORS.values())
-            if e.bio.strip()
+    return frozenset(
+        text
+        for text in (
+            *(e.bio for e in AUTHORS.values()),
+            *(e.bio for e in SERMON_AUTHORS.values()),
+            *RETIRED_STUBS,
         )
-    return _STUBS
+        if text.strip()
+    )
 
 
 def sync_author(author, fields: dict) -> list[str]:
     """Update ``author`` from a fixture author row. Returns the fields changed.
 
-    ``author`` is a live model instance (or the historical model inside a
-    migration); ``fields`` is the ``"fields"`` dict of a ``library.author``
-    fixture row. Saves only when something actually changed.
+    ``fields`` is the ``"fields"`` dict of a ``library.author`` fixture row.
+    Saves only when something actually changed.
     """
     changed: list[str] = []
 
