@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
-	import type { AuthorBio, BookSummary } from '$lib/library';
+	import { type AuthorBio, type BookSummary, formatLifespan } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
@@ -35,11 +35,15 @@
 	let filter = $state<Filter>('all');
 	let sort = $state<Sort>('name');
 
+	// "In the library" means "has something to read here" — including writers
+	// represented only by sermons.
+	const worksCount = (a: AuthorBio) => a.book_count + a.sermon_count;
+
 	const filtered = $derived.by(() => {
 		const q = queryText.trim().toLowerCase();
 		return authors.filter((a) => {
-			if (filter === 'library' && a.book_count === 0) return false;
-			if (filter === 'bio' && a.book_count > 0) return false;
+			if (filter === 'library' && worksCount(a) === 0) return false;
+			if (filter === 'bio' && worksCount(a) > 0) return false;
 			if (!q) return true;
 			return a.name.toLowerCase().includes(q) || (a.bio ?? '').toLowerCase().includes(q);
 		});
@@ -54,7 +58,8 @@
 					(a, b) => (a.birth_year ?? 9999) - (b.birth_year ?? 9999) || a.name.localeCompare(b.name)
 				);
 			case 'books':
-				return arr.sort((a, b) => b.book_count - a.book_count || a.name.localeCompare(b.name));
+				// Ranks by everything readable, matching the filter above.
+				return arr.sort((a, b) => worksCount(b) - worksCount(a) || a.name.localeCompare(b.name));
 			default:
 				return arr.sort((a, b) => a.name.localeCompare(b.name));
 		}
@@ -71,21 +76,26 @@
 	// data). The label characterises the era; the year range beside it keeps the
 	// generalisation honest. Undated writers (Ochorus' contemporary contributors)
 	// fall to a trailing "Contemporary" group.
-	type EraId = 'puritans' | 'awakenings' | 'missionary' | 'modern' | 'contemporary';
-	const ERAS: { id: EraId; k: string; range: string }[] = [
-		{ id: 'puritans', k: 'bios.eraPuritans', range: '–1699' },
-		{ id: 'awakenings', k: 'bios.eraAwakenings', range: '1700–1799' },
-		{ id: 'missionary', k: 'bios.eraMissionary', range: '1800–1899' },
-		{ id: 'modern', k: 'bios.eraModern', range: '1900–' },
-		{ id: 'contemporary', k: 'bios.eraContemporary', range: '' }
+	type EraId = 'early' | 'puritans' | 'awakenings' | 'missionary' | 'modern' | 'contemporary';
+	// `until` is the exclusive upper bound on birth year and is the single source
+	// of truth; `range` is only its display form, kept on the same row so the two
+	// can't drift. `until: null` marks the undated bucket.
+	//
+	// The first cut is 1480, not 1500: the Reformers had to land under "Puritans &
+	// Reformers", and Luther (b. 1483), Zwingli (1484), Cranmer (1489) and Tyndale
+	// (1494) are all plausible additions here. A 1500 cut would have filed them
+	// under "The Early Church & Middle Ages" — relocating the very mislabel this
+	// bucket was added to fix (Augustine, b. 354, reading as a Puritan).
+	const ERAS: { id: EraId; k: string; until: number | null; range: string }[] = [
+		{ id: 'early', k: 'bios.eraEarly', until: 1480, range: '–1479' },
+		{ id: 'puritans', k: 'bios.eraPuritans', until: 1700, range: '1480–1699' },
+		{ id: 'awakenings', k: 'bios.eraAwakenings', until: 1800, range: '1700–1799' },
+		{ id: 'missionary', k: 'bios.eraMissionary', until: 1900, range: '1800–1899' },
+		{ id: 'modern', k: 'bios.eraModern', until: Infinity, range: '1900–' },
+		{ id: 'contemporary', k: 'bios.eraContemporary', until: null, range: '' }
 	];
-	function eraOf(birth: number | null): EraId {
-		if (birth == null) return 'contemporary';
-		if (birth < 1700) return 'puritans';
-		if (birth < 1800) return 'awakenings';
-		if (birth < 1900) return 'missionary';
-		return 'modern';
-	}
+	const eraOf = (birth: number | null): EraId =>
+		birth == null ? 'contemporary' : ERAS.find((e) => e.until != null && birth < e.until)!.id;
 	// Grouped, era-ordered sections built from `sorted` (already ascending by
 	// birth year in the era sort), keeping only eras that have writers.
 	const eraGroups = $derived.by(() => {
@@ -218,8 +228,9 @@
 						<h2 class="text-h2">
 							<a href={localizeHref(`/authors/${author.slug}`)} class="!text-text hover:underline">{author.name}</a>
 							{#if author.birth_year}
-								<span class="ml-2 text-body font-normal text-muted"
-									>{author.birth_year}–{author.death_year ?? ''}</span
+								<!-- nowrap: the dates were breaking after the en-dash ("1843–" / "1919"). -->
+								<span class="ml-2 whitespace-nowrap text-body font-normal text-muted"
+									>{formatLifespan(author.birth_year, author.death_year, t('common.bornPrefix'))}</span
 								>
 							{/if}
 							{#if author.has_long_bio}
@@ -303,7 +314,10 @@
 			<section id="era-{g.era.id}" class="mb-12 scroll-mt-24">
 				<h2 class="mb-6 flex items-baseline gap-2 border-b border-border pb-2 text-h3 text-text">
 					{t(g.era.k)}
-					{#if g.era.range}<span class="text-small font-normal text-muted">{g.era.range}</span>{/if}
+					<!-- Same nowrap rule as the per-writer dates: a year range must never
+					     break across lines ("–" / "1499"). The longer era names make the
+					     heading wrap on narrow screens, so this is load-bearing here. -->
+					{#if g.era.range}<span class="whitespace-nowrap text-small font-normal text-muted">{g.era.range}</span>{/if}
 					<span class="ml-auto text-small font-normal text-muted">{g.authors.length}</span>
 				</h2>
 				<div class="space-y-10">

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { BookDetail } from '$lib/library';
+	import { type BookDetail, formatLifespan } from '$lib/library';
 	import { getProgress } from '$lib/progress';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readingMinutes, readingTime } from '$lib/reading';
@@ -30,7 +30,7 @@
 	});
 
 	const years = $derived(
-		book.author.birth_year ? `${book.author.birth_year}–${book.author.death_year ?? ''}` : ''
+		formatLifespan(book.author.birth_year, book.author.death_year, t('common.bornPrefix'))
 	);
 
 	const totalWords = $derived(book.chapters.reduce((sum, c) => sum + c.word_count, 0));

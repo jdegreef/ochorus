@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { type AuthorDetail, type AuthorBio, listAuthors } from '$lib/library';
+	import { type AuthorDetail, type AuthorBio, listAuthors, formatLifespan } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumb, hreflangAll } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
@@ -108,7 +108,7 @@
 		name.split(' ').filter(Boolean).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
 
 	const years = $derived(
-		author.birth_year ? `${author.birth_year}–${author.death_year ?? ''}` : ''
+		formatLifespan(author.birth_year, author.death_year, t('common.bornPrefix'))
 	);
 
 	// A one-line "what's here" summary under the name: era + work counts.
@@ -404,7 +404,9 @@
 						<span class="min-w-0">
 							<span class="block truncate text-body font-medium text-text">{c.name}</span>
 							{#if c.birth_year}
-								<span class="block text-small text-muted">{c.birth_year}–{c.death_year ?? ''}</span>
+								<span class="block whitespace-nowrap text-small text-muted"
+									>{formatLifespan(c.birth_year, c.death_year, t('common.bornPrefix'))}</span
+								>
 							{/if}
 						</span>
 					</a>
