@@ -205,6 +205,35 @@ dropped; chapters under 120 words are dropped as stubs.
   chapter title almost word for word. Reject `[.,;:]` but never `?`/`!`, and
   reject lines that are only a scripture reference ("Mark 5 :25—34"), which sit
   under the title in this layout. *(Divine Healing, 2026-07)*
+- **`import_ccel` reports "✓ N chapters" for whatever it found — ALWAYS check N
+  against the source TOC.** It printed "✓ **2** chapters" for the 115-chapter
+  *Imitation of Christ* and exited 0: the section-URL pattern matched only
+  roman/numeric path segments, but CCEL also names parts with a **word**
+  (`imitation.ONE.1.html`), so only two front/back-matter pages matched. Widened
+  to any alphanumeric segment (and the TOC's self-link excluded, since it now
+  matches too). The check takes one command — compare against the TOC's link
+  count before trusting any import:
+  ```bash
+  curl -s https://ccel.org/ccel/<ref>/<work>.toc.html | grep -c '<work>\.[A-Za-z0-9_.]*\.html'
+  ```
+  *(2026-07; the general lesson is review-report finding #35 — importers assert
+  almost nothing after the fact, so a dropped chapter looks like success.)*
+- **CCEL footnotes inlined into the prose** — the drop selector was
+  case-**sensitive**, so `class="Footnote"` sailed through and put the note text
+  mid-sentence ("desires knowledge 2 Aristotle, Metaphysics, i. 1. ; but"), with
+  the `Note`/`NoteRef` markers left as bare digits. Now `[class*=note i]` (the
+  `i` flag) covers the whole apparatus. When adding a drop selector for a CCEL
+  class, **assume capitalisation you haven't seen** and use `i`. *(2026-07)*
+- **Every CCEL chapter restating its own heading** — bodies open
+  `<h4>The Twenty-Second Chapter</h4><h3>{the title}</h3>` above prose the reader
+  already sees titled. `extract_body(html, title)` drops a leading ordinal
+  heading and a leading heading that restates the TOC title, stopping at the
+  first heading that is neither — so Book III's "The Disciple" / "The Voice of
+  Christ" speaker labels survive. Two traps: the ordinal matcher must accept only
+  real counters (ordinal word / roman / digits) or it eats a genuine "Chapter
+  Summary"; and `span.pb` must be decomposed *first*, since a page-break marker
+  sitting before the heading otherwise counts as content and blocks the strip.
+  *(2026-07)*
 - **CCEL page numbers and spacer gaps in the body** — CCEL marks a print page
   break as `<span class="pb">17</span>` (lands mid-sentence, or alone at the top
   of a chapter) and uses `<p><br/></p>` for vertical space (a ragged gap when
@@ -458,6 +487,25 @@ the skill's "re-import a few diverse books" regression step can no longer run.
 Regression-test `chapterize` changes against the `pdf`-source books instead
 (`import_pdf the-gospel-of-healing` — diff titles + word counts), and prefer
 changes that can only fire where the old code produced nothing.
+
+**Regression-testing a change to shared cleaning (`ingest.DROP_SELECTORS`,
+`clean_html`, `toc_sections`) without re-importing the library:** re-importing
+every book pollutes the dev DB and its fixtures with unrelated drift, and a
+fresh CCEL fetch differs from the committed fixture anyway (content drifts
+upstream — `till_he_come` was 13 words off before any change of mine). Two
+cheaper, sharper checks:
+
+1. **Isolate the change from upstream drift** by running the OLD and NEW logic
+   against the same freshly-fetched page and diffing the *outputs* — for a
+   `toc_sections` change, build both section lists in one throwaway script and
+   assert the URL lists are identical for every existing CCEL work.
+2. **Re-import one book that the change is most likely to break**, then compare
+   to its committed fixture body-by-body. Byte-identical is the bar. (Murray's
+   *Waiting on God* is the sensitive one for heading logic — it is the book
+   `fold_leading_heading` exists for.)
+
+Ship only the new book's fixture file. A one-line `updated_at` churn in an
+otherwise identical fixture is noise — `git checkout` it.
 
 ## Text & grammar quality
 

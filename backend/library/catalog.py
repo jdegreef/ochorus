@@ -231,6 +231,20 @@ AUTHORS: dict[str, AuthorEntry] = {
             "of the 18th-century evangelical revival."
         ),
     ),
+    # `bio` here is the create-only stub for a brand-new author; authors.json
+    # remains the source of truth (see upsert_book's create_defaults, #449).
+    "thomas-a-kempis": AuthorEntry(
+        slug="thomas-a-kempis",
+        name="Thomas à Kempis",
+        birth_year=1380,
+        death_year=1471,
+        bio=(
+            "German-born Dutch monk who spent some seventy years in one "
+            "monastery outside Zwolle, copying manuscripts and teaching "
+            "novices. For those young men he wrote The Imitation of Christ, "
+            "after the Bible the most widely read Christian book ever written."
+        ),
+    ),
 }
 
 # Shelf order. Small, clean books first.
@@ -344,6 +358,10 @@ BOOKS: list[BookEntry] = [
     BookEntry("sermons-on-several-occasions", "Sermons on Several Occasions", "john-wesley",
               "ccel", "wesley/sermons",
               subtitle="Selected Standard Sermons", cover_color="#7a5c48"),
+    BookEntry("the-imitation-of-christ", "The Imitation of Christ", "thomas-a-kempis",
+              "ccel", "kempis/imitation",
+              subtitle="Four Books of Counsel for the Inner Life",
+              cover_color="#3d3a6e"),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an

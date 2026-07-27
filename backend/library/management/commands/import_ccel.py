@@ -45,8 +45,15 @@ def toc_sections(ref: str) -> list[tuple[str, str]]:
     s = soup(fetch(toc_url))
     # Section files are `<work>.iii.html`, but works split into parts use a
     # two-level scheme (`<work>.i.ii.html` = part i, chapter ii). Match one or
-    # more dotted roman/numeric segments so both flatten to the same chapter list.
-    pattern = re.compile(rf"{re.escape(work)}(?:\.[ivxlcdm0-9]+)+\.html$", re.I)
+    # more dotted segments so both flatten to the same chapter list.
+    #
+    # Segments are usually roman numerals, but CCEL also names parts with a
+    # WORD — The Imitation of Christ is `imitation.ONE.1.html` … `.FOUR.18.html`
+    # — so the class must accept any alphanumeric segment, not just [ivxlcdm0-9].
+    # (A roman-only class silently matched just the two front/back-matter pages
+    # of the Imitation and reported "✓ 2 chapters".) `toc` is excluded below:
+    # the TOC page links to itself and now matches this wider pattern.
+    pattern = re.compile(rf"{re.escape(work)}(?:\.[a-z0-9_]+)+\.html$", re.I)
     # A section can be linked more than once (e.g. an untitled "start reading"
     # button plus the titled TOC entry). Keep the longest title per URL, and
     # preserve first-seen order.
@@ -57,6 +64,8 @@ def toc_sections(ref: str) -> list[tuple[str, str]]:
         if not pattern.search(href):
             continue
         absolute = urljoin(toc_url, href)
+        if absolute == toc_url:
+            continue  # the TOC's self-link is not a section
         title = a.get_text(" ", strip=True)
         if absolute not in titles:
             order.append(absolute)
@@ -134,10 +143,69 @@ def fold_leading_heading(html: str) -> str:
     return f"<h2>{' '.join(parts)}</h2>" + html[pos:]
 
 
-def extract_body(html: str) -> str:
+# A chapter body often opens by restating its own heading, e.g.
+#   <h4>The Twenty-Second Chapter</h4><h3>Remember the Innumerable Gifts of God</h3>
+# The reader already shows "Chapter 60" and the title above the prose, so both
+# lines read as duplication. Drop a LEADING ordinal-chapter heading and a
+# LEADING heading that restates the TOC title; stop at the first heading that
+# is neither (Book III's "The Disciple" / "The Voice of Christ" speaker labels
+# are real content and must survive).
+# The counter in "The Twenty-Second Chapter" / "Chapter IV" / "Chapter 3":
+# an English ordinal word (hyphenated compounds included), a roman numeral, or
+# digits. Deliberately NOT `\w+` — that would also strip a real heading such as
+# "Chapter Summary".
+_COUNTER = (
+    r"(?:\d+|[ivxlcdm]+|"
+    r"(?:twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety)?[- ]?"
+    r"(?:first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|"
+    r"eleventh|twelfth|thirteenth|fourteenth|fifteenth|sixteenth|seventeenth|"
+    r"eighteenth|nineteenth|twentieth|thirtieth|fortieth|fiftieth|sixtieth|"
+    r"seventieth|eightieth|ninetieth|hundredth|"
+    r"one|two|three|four|five|six|seven|eight|nine|ten|last))"
+)
+
+
+def _is_ordinal_heading(text: str) -> bool:
+    t = text.strip().rstrip(".")
+    return bool(
+        re.fullmatch(rf"(the\s+)?{_COUNTER}\s+chapter", t, re.I)
+        or re.fullmatch(rf"chapter\s+{_COUNTER}", t, re.I)
+    )
+
+
+def _norm(text: str) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", text.lower()).strip()
+
+
+def extract_body(html: str, title: str = "") -> str:
     s = soup(html)
     node = s.select_one("#theText") or s.select_one("[class*=contentSection]") or s.body
-    return fold_leading_heading(clean_html(node)) if node else ""
+    if node is None:
+        return ""
+    content = node.select_one("[class*=book-content]") or node
+    # Page-break markers are dropped by clean_html, but that runs last — and a
+    # `<span class="pb">3</span>` sitting before the opening heading would count
+    # as content here and block the duplicate-heading strip below. Remove them
+    # first so the heading really is what leads the chapter.
+    for pb in content.select("span.pb"):
+        pb.decompose()
+    for el in list(content.find_all(["h1", "h2", "h3", "h4", "h5"], recursive=True))[:2]:
+        # Only consider headings that still lead the content, so a mid-chapter
+        # heading is never touched. Empty markup (CCEL's `<span class="index">`
+        # anchors, stray whitespace) doesn't count as content.
+        if any(
+            (prev.get_text(strip=True) if prev.name else (prev.string or "").strip())
+            for prev in el.previous_siblings
+        ):
+            break
+        text = el.get_text(" ", strip=True)
+        if _is_ordinal_heading(text) or (title and _norm(text) == _norm(title)):
+            el.decompose()
+        else:
+            break
+    # fold_leading_heading then handles the other shape — works that set the
+    # heading as consecutive one-line paragraphs rather than a real <h2>.
+    return fold_leading_heading(clean_html(node))
 
 
 class Command(BaseCommand):
@@ -181,7 +249,7 @@ class Command(BaseCommand):
             title = clean_title(title)
             try:
                 time.sleep(DELAY)
-                body = extract_body(fetch(url))
+                body = extract_body(fetch(url), title)
             except requests.RequestException as exc:
                 self.stderr.write(self.style.WARNING(f"  skip {url}: {exc}"))
                 continue
