@@ -27,9 +27,12 @@ NOT keep in sync, so it also emits a report-only ``chapter_drift`` warning
 
 from __future__ import annotations
 
+from collections import defaultdict
+
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
+from library.author_sync import sync_author
 from library.content_fixtures import load_all_rows
 from library.models import Author, Book, Chapter
 
@@ -169,6 +172,7 @@ class Command(BaseCommand):
                 )
 
         created = updated = 0
+        authors_synced: dict[str, set[str]] = defaultdict(set)
         for row in rows:
             if row.get("model") != "library.book":
                 continue
@@ -182,7 +186,7 @@ class Command(BaseCommand):
                     f"seed_books: book {f['slug']!r} references missing author "
                     f"{f['author'][0]!r}"
                 )
-            author, _ = Author.objects.get_or_create(
+            author, author_created = Author.objects.get_or_create(
                 slug=af["slug"],
                 defaults={
                     "name": af.get("name", ""),
@@ -197,6 +201,13 @@ class Command(BaseCommand):
                     "is_imprint": af.get("is_imprint", False),
                 },
             )
+            if not author_created:
+                # get_or_create alone makes every author field create-only, so a
+                # biography added to the fixture after the row existed never
+                # reaches prod. See library/author_sync for what this will and
+                # won't overwrite (reviewed prose always wins).
+                for field in sync_author(author, af):
+                    authors_synced[af["slug"]].add(field)
             language = f.get("language", "en")
             book = Book.objects.filter(slug=f["slug"], language=language).first()
 
@@ -252,6 +263,9 @@ class Command(BaseCommand):
             )
         else:
             self.stdout.write("Books already up to date.")
+
+        for slug, fields in sorted(authors_synced.items()):
+            self.stdout.write(f"  ~ author {slug} ({', '.join(sorted(fields))})")
 
         # Report-only: warn if any existing book's chapters have diverged from
         # the fixture (a transform applied to the live DB without a fixture

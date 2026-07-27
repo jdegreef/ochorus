@@ -443,8 +443,6 @@ class AuthorBioDataIntegrityTests(SimpleTestCase):
         from library.catalog import AUTHORS
         from library.sermon_catalog import SERMON_AUTHORS
 
-        # Both catalogs, not a merged dict: a-b-simpson appears in each with
-        # different text, and merging would silently drop one of them.
         for entry in (*AUTHORS.values(), *SERMON_AUTHORS.values()):
             with self.subTest(slug=entry.slug):
                 # Non-empty: for an author imported before they exist in
@@ -455,6 +453,36 @@ class AuthorBioDataIntegrityTests(SimpleTestCase):
                     f"{entry.slug}'s bio reads like a full biography — that "
                     f"belongs in fixtures/content/authors.json, not catalog.py",
                 )
+
+    def test_every_catalog_slug_exists_in_authors_json(self):
+        """A catalog author slug that authors.json doesn't have forks the author.
+
+        `upsert_book` / `import_sermons` create whatever slug the `AuthorEntry`
+        names. If that slug isn't the fixture's, a re-import doesn't update the
+        real author — it creates a SECOND row holding only the catalog stub, no
+        `bio_html`, no photo, and re-points the book at it. It can't fail at
+        deploy (release seeds from the fixture), so nothing catches it until a
+        local re-import plus a fixture regen commits the duplicate. That is
+        exactly how `charles-spurgeon` drifted from the fixture's
+        `charles-h-spurgeon` while five books pointed at it.
+        """
+        import json as _json
+
+        from library.catalog import AUTHORS
+        from library.sermon_catalog import SERMON_AUTHORS
+
+        fixture_slugs = {
+            r["fields"]["slug"]
+            for r in _json.loads(AUTHORS_FILE.read_text())
+            if r["model"] == "library.author"
+        }
+        dangling = sorted((set(AUTHORS) | set(SERMON_AUTHORS)) - fixture_slugs)
+        self.assertEqual(
+            dangling, [],
+            "catalog author slugs missing from authors.json — importing one of "
+            "their books would create a duplicate author instead of updating "
+            "the real one",
+        )
 
 
 class CoverAssetTests(SimpleTestCase):

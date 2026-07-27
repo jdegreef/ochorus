@@ -321,20 +321,15 @@ dropped; chapters under 120 words are dropped as stubs.
   the author on re-import.** `upsert_book` creates whatever slug the
   `AuthorEntry` names, so a mismatch produces a SECOND author row carrying only
   the catalog stub — no `bio_html`, no photo — and re-points that book at it.
-  Live example (unfixed as of 2026-07-26): `catalog.py` uses
-  `charles-spurgeon` for five books, while the fixture and prod have only
-  `charles-h-spurgeon`. It can't fire on deploy (release runs `seed_books` off
-  the fixture), so it waits for exactly what step 5 above tells you to do —
-  re-import for regression testing, then regen the fixture, which commits the
-  duplicate. **Before re-importing, check the slug resolves:**
-  ```bash
-  DJANGO_DEBUG=true uv run python -c "
-  import django,json; django.setup()
-  from library.catalog import AUTHORS
-  fx={r['fields']['slug'] for r in json.load(open('library/fixtures/content/authors.json'))
-      if r['model']=='library.author'}
-  print('missing from authors.json:', sorted(set(AUTHORS)-fx))"
-  ```
+  It can't fire on deploy (release runs `seed_books` off the fixture), so it
+  waits for exactly what step 5 above tells you to do — re-import for regression
+  testing, then regen the fixture, which commits the duplicate. Found and fixed
+  2026-07-26: `catalog.py` said `charles-spurgeon` for five books while the
+  fixture and prod had only `charles-h-spurgeon`.
+  `AuthorBioDataIntegrityTests.test_every_catalog_slug_exists_in_authors_json`
+  now fails CI on any such mismatch, so a new entry can't reintroduce it — but
+  when ADDING an author, take the slug from `authors.json` rather than inventing
+  one. *(2026-07)*
 - **Adding a book for an author who already exists in the DB with a scraped bio:**
   ~~Copy the existing bio verbatim into the new `AuthorEntry`.~~ **No longer
   needed — fixed at the root (PR #449).** `upsert_book` used to push the catalog
@@ -348,11 +343,13 @@ dropped; chapters under 120 words are dropped as stubs.
   pasted-in bios were shortened back, and
   `AuthorBioDataIntegrityTests.test_catalog_bios_stay_short_stubs`
   (tests_fixture.py) caps catalog bio length so the trap can't be re-set by
-  hand. But make the stub a real sentence: **nothing overwrites a non-empty
-  author bio.** `seed_books` is `get_or_create`, migration 0049 fills only rows
-  whose bio is `""`, and `content_sync` no-ops on the natural-key fixture — so
-  for an author first created by an import, the catalog stub is what the site
-  shows, permanently, even after you add them to `authors.json`. *(hit amy-carmichael, f-b-meyer, susanna-wesley, george-muller,
+  hand. Since 2026-07-26 `seed_books` / `seed_sermons` also **upgrade** a stub:
+  on every deploy they sync an existing author from `authors.json`, replacing a
+  `bio` that is empty or still a verbatim catalog stub (see
+  `library/author_sync.py`). Reviewed prose always wins, and `bio_html` /
+  `photo_url` / years are fill-only. So writing a real biography into
+  `authors.json` now reaches prod on its own — it no longer needs a
+  hand-written per-author data migration the way 0049/0051/0052/0053 did. *(hit amy-carmichael, f-b-meyer, susanna-wesley, george-muller,
   andrew-murray before the fix)*
 - **`chapter_title_overrides` now applies in `upsert_book`** (was only in
   `import_ochorus`), so per-book title corrections work for every source. Apply

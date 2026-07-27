@@ -15,9 +15,11 @@ migration each time.
 from __future__ import annotations
 
 import datetime
+from collections import defaultdict
 
 from django.core.management.base import BaseCommand, CommandError
 
+from library.author_sync import sync_author
 from library.content_fixtures import load_all_rows
 from library.management.commands.seed_books import require_natural_format
 from library.models import Author, Sermon
@@ -74,6 +76,7 @@ class Command(BaseCommand):
         }
 
         created = updated = 0
+        authors_synced: dict[str, set[str]] = defaultdict(set)
         for row in rows:
             if row.get("model") != "library.sermon":
                 continue
@@ -88,7 +91,7 @@ class Command(BaseCommand):
                 )
             # A sermon may introduce an author with no books yet (e.g. Moody) —
             # create the author from the fixture rather than skipping the sermon.
-            author, _ = Author.objects.get_or_create(
+            author, author_created = Author.objects.get_or_create(
                 slug=af["slug"],
                 defaults={
                     "name": af.get("name", ""),
@@ -101,6 +104,10 @@ class Command(BaseCommand):
                     "is_imprint": af.get("is_imprint", False),
                 },
             )
+            if not author_created:
+                # Same create-only gap seed_books closes — see library/author_sync.
+                for field in sync_author(author, af):
+                    authors_synced[af["slug"]].add(field)
 
             sermon = Sermon.objects.filter(
                 slug=f["slug"], language=f.get("language", "en")
@@ -141,3 +148,6 @@ class Command(BaseCommand):
             )
         else:
             self.stdout.write("Sermons already up to date.")
+
+        for slug, fields in sorted(authors_synced.items()):
+            self.stdout.write(f"  ~ author {slug} ({', '.join(sorted(fields))})")

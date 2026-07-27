@@ -638,3 +638,25 @@ class UpsertBookAuthorBioTests(TestCase):
         upsert_book(entry, [("Ch 1", "<p>Body text here, long enough.</p>")])
         a = Author.objects.get(slug=entry.author_slug)
         self.assertEqual(a.bio, AUTHORS[entry.author_slug].bio)
+
+    def test_reimport_resolves_to_the_existing_author_not_a_fork(self):
+        # `catalog.py` said `charles-spurgeon` for five books while the fixture
+        # and prod had only `charles-h-spurgeon`, so re-importing any of them
+        # created a SECOND Spurgeon holding just the catalog stub — no bio_html,
+        # no photo — and re-pointed the book at it. Every catalog author slug
+        # must name a row that already exists (tests_fixture pins that against
+        # authors.json); this pins the behaviour it protects.
+        entry = next(b for b in BOOKS if b.author_slug == "charles-h-spurgeon")
+        real = Author.objects.create(
+            slug="charles-h-spurgeon", name="Charles H. Spurgeon",
+            bio="The full biography.", bio_html="<p>Long form.</p>",
+            photo_url="/spurgeon.png",
+        )
+
+        upsert_book(entry, [("Ch 1", "<p>Body text here, long enough.</p>")])
+
+        self.assertEqual(Author.objects.filter(slug__contains="spurgeon").count(), 1)
+        book = Book.objects.get(slug=entry.slug, language="en")
+        self.assertEqual(book.author_id, real.pk)
+        real.refresh_from_db()
+        self.assertEqual(real.photo_url, "/spurgeon.png")  # portrait not lost
