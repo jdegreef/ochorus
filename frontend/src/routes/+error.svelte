@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { i18n } from '$lib/i18n.svelte';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/href';
 	import { getLang } from '$lib/lang.svelte';
 	import { listBooks, listSermons, type BookSummary, type SermonSummary } from '$lib/library';
 	import { readingTime } from '$lib/reading';

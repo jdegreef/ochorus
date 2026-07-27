@@ -4,7 +4,9 @@ import { SITE_URL } from './config';
 
 describe('absUrl', () => {
 	it('makes a root-relative path absolute against the site origin', () => {
-		expect(absUrl('/books/humility')).toBe(`${SITE_URL}/books/humility`);
+		// Detail paths gain the trailing slash — the non-slash form is the empty
+		// SPA shell, so it must never be emitted as an absolute/canonical URL.
+		expect(absUrl('/books/humility')).toBe(`${SITE_URL}/books/humility/`);
 	});
 
 	it('adds the leading slash when a path lacks one', () => {
@@ -96,7 +98,7 @@ describe('itemList', () => {
 		expect(data.itemListElement[0]).toMatchObject({
 			position: 1,
 			name: 'Humility',
-			url: `${SITE_URL}/books/humility`
+			url: `${SITE_URL}/books/humility/`
 		});
 		expect(data.itemListElement[1].position).toBe(2);
 	});
@@ -121,7 +123,7 @@ describe('breadcrumb', () => {
 		expect(bc.itemListElement[2]).toMatchObject({
 			position: 3,
 			name: 'Humility',
-			item: `${SITE_URL}/books/humility`
+			item: `${SITE_URL}/books/humility/`
 		});
 	});
 });

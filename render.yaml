@@ -77,7 +77,9 @@ services:
       # INDEX pages: Render doesn't auto-map extensionless URLs to their .html
       # files, so map each one here.
       #
-      # DETAIL pages (/books|authors|sermons|plans /:slug) are NOT rewritten.
+      # DETAIL pages (/books|authors|sermons|plans /:slug) are NOT rewritten:
+      # they are 301'd to their trailing-slash form just below, which then
+      # resolves to the prerendered <slug>/index.html.
       # scripts/dir-style-detail.mjs emits them as directory indexes
       # (<slug>/index.html), which Render serves natively for /books/:slug — so a
       # real book resolves to a file before any rule runs, while a MISSING or
@@ -181,6 +183,89 @@ services:
       - type: rewrite
         source: /lg/plans
         destination: /lg/plans.html
+      # TRAILING SLASH (301). The six detail routes export trailingSlash='always',
+      # so each prerenders to <slug>/index.html. Render serves that for the SLASH
+      # URL, but the non-slash URL matches no file and falls through to the
+      # /* -> /200.html catch-all — an empty shell with no title or content. The
+      # comment above claiming Render resolves /books/:slug natively is wrong in
+      # production; this is what actually consolidates the two forms.
+      #
+      # Internal links now emit the slash directly (src/lib/href.ts); these rules
+      # exist for URLs already in search indexes and for inbound links. Render
+      # matches source paths exactly and has no wildcard for the locale segment,
+      # so each locale repeats the block. Placed before the SPA catch-all.
+      - type: redirect
+        source: /books/:slug
+        destination: /books/:slug/
+      - type: redirect
+        source: /authors/:slug
+        destination: /authors/:slug/
+      - type: redirect
+        source: /topics/:slug
+        destination: /topics/:slug/
+      - type: redirect
+        source: /sermons/:slug
+        destination: /sermons/:slug/
+      - type: redirect
+        source: /plans/:slug
+        destination: /plans/:slug/
+      - type: redirect
+        source: /books/:slug/:order
+        destination: /books/:slug/:order/
+      - type: redirect
+        source: /es/books/:slug
+        destination: /es/books/:slug/
+      - type: redirect
+        source: /es/authors/:slug
+        destination: /es/authors/:slug/
+      - type: redirect
+        source: /es/topics/:slug
+        destination: /es/topics/:slug/
+      - type: redirect
+        source: /es/sermons/:slug
+        destination: /es/sermons/:slug/
+      - type: redirect
+        source: /es/plans/:slug
+        destination: /es/plans/:slug/
+      - type: redirect
+        source: /es/books/:slug/:order
+        destination: /es/books/:slug/:order/
+      - type: redirect
+        source: /sw/books/:slug
+        destination: /sw/books/:slug/
+      - type: redirect
+        source: /sw/authors/:slug
+        destination: /sw/authors/:slug/
+      - type: redirect
+        source: /sw/topics/:slug
+        destination: /sw/topics/:slug/
+      - type: redirect
+        source: /sw/sermons/:slug
+        destination: /sw/sermons/:slug/
+      - type: redirect
+        source: /sw/plans/:slug
+        destination: /sw/plans/:slug/
+      - type: redirect
+        source: /sw/books/:slug/:order
+        destination: /sw/books/:slug/:order/
+      - type: redirect
+        source: /lg/books/:slug
+        destination: /lg/books/:slug/
+      - type: redirect
+        source: /lg/authors/:slug
+        destination: /lg/authors/:slug/
+      - type: redirect
+        source: /lg/topics/:slug
+        destination: /lg/topics/:slug/
+      - type: redirect
+        source: /lg/sermons/:slug
+        destination: /lg/sermons/:slug/
+      - type: redirect
+        source: /lg/plans/:slug
+        destination: /lg/plans/:slug/
+      - type: redirect
+        source: /lg/books/:slug/:order
+        destination: /lg/books/:slug/:order/
       # Everything else — detail pages (served natively as <slug>/index.html),
       # the reader, search, and any missing/unpublished slug — falls back to the
       # SPA app shell, which renders the real page or the not-found page.

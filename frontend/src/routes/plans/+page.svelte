@@ -5,7 +5,8 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { SITE_URL } from '$lib/config';
 	import { itemList } from '$lib/seo';
-	import { localizeHref, locales } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/href';
+	import { locales } from '$lib/paraglide/runtime';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import CatalogLanguageNudge from '$lib/components/CatalogLanguageNudge.svelte';
 

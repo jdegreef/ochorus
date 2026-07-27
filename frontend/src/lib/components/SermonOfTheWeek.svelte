@@ -4,7 +4,7 @@
 	import { getLang } from '$lib/lang.svelte';
 	import { readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/href';
 
 	const t = i18n.t;
 

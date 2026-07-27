@@ -14,7 +14,7 @@
 	import { readJSON, writeJSON } from '$lib/persisted';
 	import type { ScriptureResult } from '$lib/scripture.svelte';
 	import { markSnippet } from '$lib/highlight';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/href';
 	import { beforeNavigate, goto } from '$app/navigation';
 	import { page } from '$app/stores';
 

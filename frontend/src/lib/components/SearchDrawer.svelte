@@ -3,7 +3,7 @@
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { highlightAround } from '$lib/highlight';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/href';
 
 	/**
 	 * In-book search: a slide-over that indexes every chapter of the current book
