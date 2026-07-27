@@ -131,10 +131,12 @@ force if every paragraph is a box.
    the sync still serves the old text. Redeploy `ochorus-web` afterwards
    (Manual Deploy → "Clear cache & deploy latest commit").
 
-   **Changing an English bio does NOT invalidate its translations.**
-   `AuthorTranslation` rows keep `reviewed=True` while the English moves out
-   from under them, so es/sw/lg can silently describe the old text. 31 authors
-   have translated short bios — re-translate deliberately after a real rewrite.
+   **Replacing an English bio re-gates its translations.** Every
+   `AuthorTranslation` of that author's short bio flips to `reviewed=False`, and
+   the deploy log names the languages (`~ author x (bio — es/sw translation(s)
+   need re-review)`). Nothing re-translates on its own — the wording is left
+   alone and `translate_author` still needs `--force`, so treat that log line as
+   a to-do. `reviewed` isn't surfaced in the UI, so readers see no change.
 
    To REPLACE non-empty `bio_html`/`photo_url`, write a data migration that
    reads `content/authors.json` and updates the row, with fill-only or

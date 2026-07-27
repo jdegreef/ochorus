@@ -147,5 +147,5 @@ class Command(BaseCommand):
         else:
             self.stdout.write("Sermons already up to date.")
 
-        for slug, fields in sorted(sync_all_authors(Author, rows).items()):
-            self.stdout.write(f"  ~ author {slug} ({', '.join(fields)})")
+        for slug, summary in sorted(sync_all_authors(Author, rows).items()):
+            self.stdout.write(f"  ~ author {slug} ({summary})")

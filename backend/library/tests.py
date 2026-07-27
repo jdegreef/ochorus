@@ -506,6 +506,51 @@ class SeedBooksUpsertTests(TestCase):
 
         self.assertEqual(Author.objects.get(slug=slug).bio, self._fixture_bio(slug))
 
+    def test_replacing_the_english_bio_regates_its_translations(self):
+        # A translation approved against the stub still says reviewed=True while
+        # the English moves out from under it — the staleness is otherwise
+        # invisible. Same trigger seed_author_translations already uses when it
+        # changes a row's text; here the change comes from the English side.
+        from library.catalog import AUTHORS
+
+        author = self._author()
+        Author.objects.filter(pk=author.pk).update(bio=AUTHORS["andrew-murray"].bio)
+        AuthorTranslation.objects.create(
+            author=author, language="es", bio="Una biografía aprobada.", reviewed=True
+        )
+        AuthorTranslation.objects.create(
+            author=author, language="sw", bio="Wasifu ulioidhinishwa.", reviewed=True
+        )
+
+        call_command("seed_books", verbosity=0)
+
+        self.assertEqual(
+            sorted(
+                AuthorTranslation.objects.filter(
+                    author=author, reviewed=True
+                ).values_list("language", flat=True)
+            ),
+            [],
+        )
+        # The wording itself is untouched — this marks for re-review, it does
+        # not re-translate (translate_author still needs --force).
+        es = AuthorTranslation.objects.get(author=author, language="es")
+        self.assertEqual(es.bio, "Una biografía aprobada.")
+
+    def test_a_bio_that_does_not_change_leaves_translations_reviewed(self):
+        # Only a REPLACED English bio invalidates a translation. A deploy that
+        # changes nothing (or fills only photo_url) must not re-gate approvals.
+        author = self._author()
+        AuthorTranslation.objects.create(
+            author=author, language="es", bio="Aprobada.", reviewed=True
+        )
+
+        call_command("seed_books", verbosity=0)
+
+        self.assertTrue(
+            AuthorTranslation.objects.get(author=author, language="es").reviewed
+        )
+
     def test_a_retired_stub_wording_is_still_upgraded(self):
         # Recognition is by string equality, so rewording a stub would strand
         # every live row still carrying the old text — nothing else can upgrade

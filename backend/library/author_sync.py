@@ -72,11 +72,38 @@ def catalog_stubs() -> frozenset[str]:
     )
 
 
-def sync_author(author, fields: dict) -> list[str]:
-    """Update ``author`` from a fixture author row. Returns the fields changed.
+def regate_translations(author) -> list[str]:
+    """Mark this author's approved short-bio translations unreviewed.
 
-    ``fields`` is the ``"fields"`` dict of a ``library.author`` fixture row.
-    Saves only when something actually changed.
+    Returns the languages re-gated. When the English `bio` is replaced, every
+    translation of it describes text that no longer exists — but `reviewed=True`
+    keeps asserting a native speaker blessed that pairing, so the staleness is
+    invisible. `seed_author_translations` already re-gates on exactly this
+    trigger (it flips `reviewed=False` whenever it changes a row's text); this
+    applies the same rule when the change comes from the English side instead.
+
+    Only `reviewed=True` rows with a non-empty `bio` are touched, so re-runs
+    write nothing. `reviewed` is bookkeeping — not surfaced in the UI — so this
+    never changes what a reader sees; it marks the row for re-review, and
+    `translate_author` still needs `--force` to actually redo the wording.
+    """
+    from library.models import AuthorTranslation
+
+    stale = AuthorTranslation.objects.filter(
+        author=author, reviewed=True
+    ).exclude(bio="")
+    languages = sorted(stale.values_list("language", flat=True))
+    if languages:
+        stale.update(reviewed=False)
+    return languages
+
+
+def sync_author(author, fields: dict) -> tuple[list[str], list[str]]:
+    """Update ``author`` from a fixture author row.
+
+    Returns ``(fields changed, translation languages re-gated)``. ``fields`` is
+    the ``"fields"`` dict of a ``library.author`` fixture row. Saves only when
+    something actually changed.
     """
     changed: list[str] = []
 
@@ -94,13 +121,17 @@ def sync_author(author, fields: dict) -> list[str]:
             setattr(author, field, value)
             changed.append(field)
 
-    if changed:
-        author.save(update_fields=changed)
-    return changed
+    if not changed:
+        return [], []
+    author.save(update_fields=changed)
+    # Only the short bio has translations keyed to it; filling an empty
+    # bio_html/photo_url invalidates nothing.
+    regated = regate_translations(author) if "bio" in changed else []
+    return changed, regated
 
 
-def sync_all_authors(Author, rows: list[dict]) -> dict[str, list[str]]:
-    """Sync EVERY existing author the fixture describes. ``{slug: [fields]}``.
+def sync_all_authors(Author, rows: list[dict]) -> dict[str, str]:
+    """Sync EVERY existing author the fixture describes. ``{slug: summary}``.
 
     Deliberately not driven off the book/sermon loops: 9 of the 36 fixture
     authors have neither (the biography-only ones — Augustine, Lemuel Haynes,
@@ -114,9 +145,16 @@ def sync_all_authors(Author, rows: list[dict]) -> dict[str, list[str]]:
     from library.content_fixtures import authors_by_slug
 
     fixture = authors_by_slug(rows)
-    changed: dict[str, list[str]] = {}
+    changed: dict[str, str] = {}
     for author in Author.objects.filter(slug__in=fixture):
-        fields = sync_author(author, fixture[author.slug])
-        if fields:
-            changed[author.slug] = fields
+        fields, regated = sync_author(author, fixture[author.slug])
+        if not fields:
+            continue
+        summary = ", ".join(fields)
+        if regated:
+            # Loud on purpose: nothing re-translates automatically, so this line
+            # in the deploy log is the only notice that these languages now
+            # describe superseded English.
+            summary += f" — {'/'.join(regated)} translation(s) need re-review"
+        changed[author.slug] = summary
     return changed
