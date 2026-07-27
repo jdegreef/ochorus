@@ -27,12 +27,10 @@ NOT keep in sync, so it also emits a report-only ``chapter_drift`` warning
 
 from __future__ import annotations
 
-from collections import defaultdict
-
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
-from library.author_sync import sync_author
+from library.author_sync import sync_all_authors
 from library.content_fixtures import authors_by_slug, load_all_rows
 from library.models import Author, Book, Chapter
 
@@ -168,7 +166,6 @@ class Command(BaseCommand):
                 )
 
         created = updated = 0
-        authors_synced: dict[str, set[str]] = defaultdict(set)
         for row in rows:
             if row.get("model") != "library.book":
                 continue
@@ -182,7 +179,7 @@ class Command(BaseCommand):
                     f"seed_books: book {f['slug']!r} references missing author "
                     f"{f['author'][0]!r}"
                 )
-            author, author_created = Author.objects.get_or_create(
+            author, _ = Author.objects.get_or_create(
                 slug=af["slug"],
                 defaults={
                     "name": af.get("name", ""),
@@ -191,19 +188,16 @@ class Command(BaseCommand):
                     "photo_url": af.get("photo_url", ""),
                     "birth_year": af.get("birth_year"),
                     "death_year": af.get("death_year"),
+                    # Every fixture author is "en" today, so omitting this was
+                    # invisible; a non-English author created on prod would have
+                    # silently taken the model default and mis-fed _localized().
+                    "original_language": af.get("original_language", "en"),
                     # Carry the flag through, else an imprint added to the
                     # fixture later is created unflagged on the existing prod DB
                     # (seed_if_empty no-ops there) and lands on Biographies.
                     "is_imprint": af.get("is_imprint", False),
                 },
             )
-            if not author_created:
-                # get_or_create alone makes every author field create-only, so a
-                # biography added to the fixture after the row existed never
-                # reaches prod. See library/author_sync for what this will and
-                # won't overwrite (reviewed prose always wins).
-                for field in sync_author(author, af):
-                    authors_synced[af["slug"]].add(field)
             language = f.get("language", "en")
             book = Book.objects.filter(slug=f["slug"], language=language).first()
 
@@ -260,8 +254,10 @@ class Command(BaseCommand):
         else:
             self.stdout.write("Books already up to date.")
 
-        for slug, fields in sorted(authors_synced.items()):
-            self.stdout.write(f"  ~ author {slug} ({', '.join(sorted(fields))})")
+        # Every fixture author, not just those reached by the book loop — the
+        # biography-only authors have no book at all. See author_sync.
+        for slug, fields in sorted(sync_all_authors(Author, rows).items()):
+            self.stdout.write(f"  ~ author {slug} ({', '.join(fields)})")
 
         # Report-only: warn if any existing book's chapters have diverged from
         # the fixture (a transform applied to the live DB without a fixture

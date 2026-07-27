@@ -15,11 +15,11 @@ migration each time.
 from __future__ import annotations
 
 import datetime
-from collections import defaultdict
 
 from django.core.management.base import BaseCommand, CommandError
+from django.db import transaction
 
-from library.author_sync import sync_author
+from library.author_sync import sync_all_authors
 from library.content_fixtures import authors_by_slug, load_all_rows
 from library.management.commands.seed_books import require_natural_format
 from library.models import Author, Sermon
@@ -57,6 +57,9 @@ def _date(value):
 class Command(BaseCommand):
     help = "Upsert the fixture's sermons into an existing DB (deploy step)."
 
+    # Atomic like seed_books: a CommandError on a dangling author reference, or
+    # any mid-loop DB error, must not leave prod with a half-synced author set.
+    @transaction.atomic
     def handle(self, *args, **opts):
         try:
             rows = load_all_rows()
@@ -72,7 +75,6 @@ class Command(BaseCommand):
         author_fields_by_slug = authors_by_slug(rows)
 
         created = updated = 0
-        authors_synced: dict[str, set[str]] = defaultdict(set)
         for row in rows:
             if row.get("model") != "library.sermon":
                 continue
@@ -87,7 +89,7 @@ class Command(BaseCommand):
                 )
             # A sermon may introduce an author with no books yet (e.g. Moody) —
             # create the author from the fixture rather than skipping the sermon.
-            author, author_created = Author.objects.get_or_create(
+            author, _ = Author.objects.get_or_create(
                 slug=af["slug"],
                 defaults={
                     "name": af.get("name", ""),
@@ -96,14 +98,14 @@ class Command(BaseCommand):
                     "photo_url": af.get("photo_url", ""),
                     "birth_year": af.get("birth_year"),
                     "death_year": af.get("death_year"),
+                    # Every fixture author is "en" today, so omitting this was
+                    # invisible; a non-English author created on prod would have
+                    # silently taken the model default and mis-fed _localized().
+                    "original_language": af.get("original_language", "en"),
                     # Carry the flag through — see seed_books for why.
                     "is_imprint": af.get("is_imprint", False),
                 },
             )
-            if not author_created:
-                # Same create-only gap seed_books closes — see library/author_sync.
-                for field in sync_author(author, af):
-                    authors_synced[af["slug"]].add(field)
 
             sermon = Sermon.objects.filter(
                 slug=f["slug"], language=f.get("language", "en")
@@ -145,5 +147,5 @@ class Command(BaseCommand):
         else:
             self.stdout.write("Sermons already up to date.")
 
-        for slug, fields in sorted(authors_synced.items()):
-            self.stdout.write(f"  ~ author {slug} ({', '.join(sorted(fields))})")
+        for slug, fields in sorted(sync_all_authors(Author, rows).items()):
+            self.stdout.write(f"  ~ author {slug} ({', '.join(fields)})")

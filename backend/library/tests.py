@@ -481,6 +481,31 @@ class SeedBooksUpsertTests(TestCase):
 
         self.assertEqual(self._author().bio, self._fixture_bio("andrew-murray"))
 
+    def test_an_author_with_no_book_or_sermon_is_synced_too(self):
+        # The sync was first written inside the book loop, which silently
+        # skipped the 9 biography-only authors — including the three migration
+        # 0053 had to add by hand, i.e. exactly the case the feature is for.
+        from library.content_fixtures import authors_by_slug, load_all_rows
+
+        rows = load_all_rows()
+        with_work = {
+            r["fields"]["author"][0]
+            for r in rows
+            if r.get("model") in ("library.book", "library.sermon")
+        }
+        bookless = sorted(set(authors_by_slug(rows)) - with_work)
+        self.assertTrue(bookless, "fixture no longer has a biography-only author")
+
+        # These rows reach prod through the initial seed_if_empty loaddata (or a
+        # migration like 0053) — seed_books only ever CREATES authors that have
+        # a book, which is why the class's own seeding doesn't produce them.
+        slug = bookless[0]
+        Author.objects.create(slug=slug, name="Placeholder", bio="")
+
+        call_command("seed_books", verbosity=0)
+
+        self.assertEqual(Author.objects.get(slug=slug).bio, self._fixture_bio(slug))
+
     def test_a_retired_stub_wording_is_still_upgraded(self):
         # Recognition is by string equality, so rewording a stub would strand
         # every live row still carrying the old text — nothing else can upgrade

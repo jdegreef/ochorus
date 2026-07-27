@@ -18,9 +18,20 @@ from __future__ import annotations
 
 from functools import cache
 
-# Fill-only. `bio` has its own rule above; `name` is not synced at all —
-# `upsert_book` already keeps it current, and it is the one field a rename is
-# supposed to change from the catalog side.
+# Fill-only. `bio` has its own rule above.
+#
+# CAVEAT: "empty" is treated as "never set", but an admin CLEARING a field in
+# /superepic/ is also a decision — pull a portrait after a rights complaint and
+# the next deploy writes the fixture's URL straight back. Clear it in
+# `authors.json` too, which is where the fixture-is-source-of-truth rule already
+# points. (`seed_books.CREATE_ONLY_FIELDS` protects the analogous unpublish case
+# by never re-asserting at all; that is not an option here, since filling a gap
+# on an existing row is the whole point of this module.)
+#
+# `name` is deliberately absent, but NOT because anything else syncs it —
+# `upsert_book` does update it, and imports never run on a deploy, so a name
+# correction in the fixture still needs a migration. It is excluded because a
+# rename is a decision the catalog side owns.
 FILL_ONLY_FIELDS = ("bio_html", "photo_url", "birth_year", "death_year")
 
 # Stub wordings that USED to be in the catalogs. A live row still carrying one
@@ -51,7 +62,7 @@ def catalog_stubs() -> frozenset[str]:
     from library.sermon_catalog import SERMON_AUTHORS
 
     return frozenset(
-        text
+        text.strip()
         for text in (
             *(e.bio for e in AUTHORS.values()),
             *(e.bio for e in SERMON_AUTHORS.values()),
@@ -85,4 +96,27 @@ def sync_author(author, fields: dict) -> list[str]:
 
     if changed:
         author.save(update_fields=changed)
+    return changed
+
+
+def sync_all_authors(Author, rows: list[dict]) -> dict[str, list[str]]:
+    """Sync EVERY existing author the fixture describes. ``{slug: [fields]}``.
+
+    Deliberately not driven off the book/sermon loops: 9 of the 36 fixture
+    authors have neither (the biography-only ones — Augustine, Lemuel Haynes,
+    William Law et al., exactly what migration 0053 added), so a per-work sync
+    would silently never reach a quarter of the library, which is the same
+    "looks green, prod unchanged" failure this module exists to end.
+
+    Only updates rows that already exist — creating a missing author is the
+    seeds' job, and doing it here would resurrect one deliberately deleted.
+    """
+    from library.content_fixtures import authors_by_slug
+
+    fixture = authors_by_slug(rows)
+    changed: dict[str, list[str]] = {}
+    for author in Author.objects.filter(slug__in=fixture):
+        fields = sync_author(author, fixture[author.slug])
+        if fields:
+            changed[author.slug] = fields
     return changed

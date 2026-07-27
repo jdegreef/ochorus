@@ -347,11 +347,17 @@ dropped; chapters under 120 words are dropped as stubs.
   on every deploy they sync an existing author from `authors.json`, replacing a
   `bio` that is empty or still a verbatim catalog stub (see
   `library/author_sync.py`). Reviewed prose always wins, and `bio_html` /
-  `photo_url` / years are fill-only. So a **short `bio`** written into
-  `authors.json` now reaches prod on its own, where 0049/0051 needed a
-  hand-written migration. **This does NOT cover `bio_html`** — the long-form
-  biography is fill-only, so REPLACING one on a live row still ships as a
-  migration with a digest anchor (the 0052 pattern). *(hit amy-carmichael,
+  `photo_url` / years are fill-only, and every author in the fixture is synced —
+  not just those with a book, since 9 of 36 are biography-only. So a **short
+  `bio`** written into `authors.json` now reaches prod on its own, where
+  0049/0051 needed a hand-written migration. Two things it still does NOT cover:
+  **`bio_html`** is fill-only, so REPLACING a long-form biography on a live row
+  still ships as a migration with a digest anchor (the 0052 pattern); and a
+  **brand-new author with no book or sermon** is never CREATED by either seed
+  (only updated), so adding one still needs a migration the way 0053 did.
+  Prerender caveat: author pages bake the bio at BUILD time, so the sync lands
+  on the API first and the public page only picks it up on the next frontend
+  deploy. *(hit amy-carmichael,
   f-b-meyer, susanna-wesley, george-muller, andrew-murray before the fix)*
 - **Editing the WORDING of an existing catalog stub? Move the old text into
   `author_sync.RETIRED_STUBS`, don't just overwrite it.** A stub is recognised
