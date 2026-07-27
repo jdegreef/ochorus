@@ -353,6 +353,13 @@ dropped; chapters under 120 words are dropped as stubs.
   biography is fill-only, so REPLACING one on a live row still ships as a
   migration with a digest anchor (the 0052 pattern). *(hit amy-carmichael,
   f-b-meyer, susanna-wesley, george-muller, andrew-murray before the fix)*
+- **Editing the WORDING of an existing catalog stub? Move the old text into
+  `author_sync.RETIRED_STUBS`, don't just overwrite it.** A stub is recognised
+  by exact string match, so the old wording is how the sync knows a live row is
+  still a placeholder. Delete it and every prod row carrying that text is
+  stranded on the stub forever — nothing else upgrades a non-empty bio, and
+  there is no error to notice. Only matters for authors whose row was created
+  by an import rather than from `authors.json`. *(2026-07)*
 - **`chapter_title_overrides` now applies in `upsert_book`** (was only in
   `import_ochorus`), so per-book title corrections work for every source. Apply
   `clean_title` to the override in BOTH paths so the same correction yields the
