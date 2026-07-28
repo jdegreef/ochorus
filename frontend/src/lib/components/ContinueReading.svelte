@@ -6,7 +6,7 @@
 	import { bookProgressPercent } from '$lib/reading';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/href';
 	import Icon from '$lib/components/Icon.svelte';
 
 	/**

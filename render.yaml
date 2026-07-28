@@ -77,7 +77,14 @@ services:
       # INDEX pages: Render doesn't auto-map extensionless URLs to their .html
       # files, so map each one here.
       #
-      # DETAIL pages (/books|authors|sermons|plans /:slug) are NOT rewritten.
+      # DETAIL pages (/books|authors|sermons|plans|topics /:slug) are NOT
+      # rewritten. They prerender to <slug>/index.html, which Render serves for
+      # the TRAILING-SLASH URL only; the no-slash form is 301'd to it below.
+      # (An earlier comment here claimed Render resolves the no-slash form
+      # natively and cited scripts/dir-style-detail.mjs — neither is true: the
+      # script no longer exists, and production served a 3,953 b shell.)
+      # A MISSING slug still matches no rule and falls to /* -> /200.html, so
+      # the designed not-found page is preserved (gotcha #8).
       # scripts/dir-style-detail.mjs emits them as directory indexes
       # (<slug>/index.html), which Render serves natively for /books/:slug — so a
       # real book resolves to a file before any rule runs, while a MISSING or
@@ -181,6 +188,35 @@ services:
       - type: rewrite
         source: /lg/plans
         destination: /lg/plans.html
+      # /topics had NO rewrite at any locale, so topics.html (23 KB, titled)
+      # was never served — /topics and /topics/ both fell to the SPA shell in
+      # all four locales while sitting in the sitemap — same class of bug as the
+      # trailing-slash split, but with no working form at all.
+      - type: rewrite
+        source: /topics
+        destination: /topics.html
+      - type: rewrite
+        source: /es/topics
+        destination: /es/topics.html
+      - type: rewrite
+        source: /sw/topics
+        destination: /sw/topics.html
+      - type: rewrite
+        source: /lg/topics
+        destination: /lg/topics.html
+      # NO no-slash -> slash 301 here, deliberately. Render's route matcher is
+      # trailing-slash-INSENSITIVE: a rule with `source: /about` also serves
+      # `/about/` (verified live — there is no build/about/ directory, only
+      # about.html). So `source: /books/:slug` would match `/books/<slug>/` too,
+      # and for a path with NO prerendered file it would 301 the slashed URL to
+      # itself — an infinite redirect loop. Files beat rules, so real pages are
+      # safe, but every untranslated book (`/es/books/<en-only-slug>/`), typo'd
+      # slug and out-of-range chapter currently falls to the SPA not-found and
+      # would instead have looped. Internal links, canonicals and the sitemap all
+      # emit the slash form now, which is what actually fixes crawling; if the
+      # already-indexed no-slash URLs need an explicit 301, it has to be done
+      # where the no-slash form can be matched on its own — a Cloudflare rule
+      # conditioned on "URI path does not end with /".
       # Everything else — detail pages (served natively as <slug>/index.html),
       # the reader, search, and any missing/unpublished slug — falls back to the
       # SPA app shell, which renders the real page or the not-found page.

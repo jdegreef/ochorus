@@ -5,7 +5,8 @@
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
-	import { localizeHref, locales } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/href';
+	import { locales } from '$lib/paraglide/runtime';
 	import BookCover from '$lib/components/BookCover.svelte';
 
 	const t = i18n.t;

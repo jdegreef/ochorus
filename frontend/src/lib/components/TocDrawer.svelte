@@ -6,7 +6,7 @@
 	import { bookmarks } from '$lib/bookmarks.svelte';
 	import { readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/href';
 
 	/**
 	 * Slide-over table of contents for the reader. The book's chapter list is

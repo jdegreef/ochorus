@@ -1,5 +1,6 @@
 import { SITE_URL } from './config';
-import { localizeHref, locales } from '$lib/paraglide/runtime';
+import { localizeHref, withTrailingSlash } from '$lib/href';
+import { locales } from '$lib/paraglide/runtime';
 
 export interface Hreflang {
 	/** One alternate per locale the work actually exists in. */
@@ -51,7 +52,12 @@ export function hreflangAll(path: string): Hreflang {
 export function absUrl(path: string): string {
 	if (!path) return SITE_URL;
 	if (/^https?:\/\//.test(path)) return path;
-	return SITE_URL + (path.startsWith('/') ? path : `/${path}`);
+	// Normalize here rather than at each call site: breadcrumb items are built
+	// from raw paths (`/books/${slug}`) that never pass through localizeHref, so
+	// the BreadcrumbList was advertising the non-slash form — the empty shell —
+	// as the canonical position of every detail page. Asset paths carry a file
+	// extension and are left untouched (see withTrailingSlash).
+	return SITE_URL + withTrailingSlash(path.startsWith('/') ? path : `/${path}`);
 }
 
 /**

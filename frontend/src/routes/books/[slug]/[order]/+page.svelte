@@ -26,7 +26,7 @@
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
 	import { jsonLd, hreflangFor } from '$lib/seo';
 	import { focusTrap } from '$lib/actions/focusTrap';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/href';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Icon from '$lib/components/Icon.svelte';

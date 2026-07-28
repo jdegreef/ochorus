@@ -21,7 +21,7 @@
 	import { HIGHLIGHT_COLORS, DEFAULT_HIGHLIGHT } from '$lib/reading-schema';
 	import { marks, type Segment } from '$lib/marks.svelte';
 	import { focusTrap } from '$lib/actions/focusTrap';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/href';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import ScripturePopover from '$lib/components/ScripturePopover.svelte';

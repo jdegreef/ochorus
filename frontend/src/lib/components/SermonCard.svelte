@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { SermonSummary } from '$lib/library';
 	import { i18n } from '$lib/i18n.svelte';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/href';
 	import { readingTime } from '$lib/reading';
 	import Icon from '$lib/components/Icon.svelte';
 

@@ -5,7 +5,7 @@
 	import { bookmarks } from '$lib/bookmarks.svelte';
 	import { marks } from '$lib/marks.svelte';
 	import { i18n } from '$lib/i18n.svelte';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/href';
 	import { HIGHLIGHT_COLORS, DEFAULT_HIGHLIGHT, type Bookmark, type Mark } from '$lib/reading-schema';
 
 	const t = i18n.t;

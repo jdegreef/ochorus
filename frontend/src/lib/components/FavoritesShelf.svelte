@@ -13,7 +13,7 @@
 	import { favorites, type FavoriteEntry } from '$lib/favorites.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/href';
 
 	/**
 	 * "Your favorites" — the authors, books, plans and sermons the reader has

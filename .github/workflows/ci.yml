@@ -110,6 +110,13 @@ jobs:
           PUBLIC_API_BASE_URL: http://localhost:8000
         run: npm run build
 
+      # The trailing-slash guard asserts on BUILT html, so it has to run after the
+      # build — the "Frontend — unit tests" step above runs before build/ exists
+      # and skips it. A guard that silently skips is worse than no guard.
+      - name: Frontend — no bare detail links in built output
+        working-directory: frontend
+        run: npx vitest run src/lib/href.test.ts
+
       # Stop the background API before the job's post-steps run — a lingering
       # `uv run … runserver` process makes setup-uv's cache-prune fail (exit 2).
       - name: Stop local API

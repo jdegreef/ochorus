@@ -10,6 +10,7 @@
 		"paraglide": "paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide",
 		"prepare": "npm run paraglide && svelte-kit sync || echo ''",
 		"check": "npm run paraglide && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:slashes": "node scripts/check-slashes.mjs",
 		"test": "vitest run",
 		"test:watch": "vitest"
 	},

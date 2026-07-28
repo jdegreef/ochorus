@@ -5,7 +5,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/href';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';

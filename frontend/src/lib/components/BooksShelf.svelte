@@ -3,7 +3,7 @@
 	import type { BookSummary } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
 	import { getLang } from '$lib/lang.svelte';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readJSON, writeJSON } from '$lib/persisted';
 	import { allProgress } from '$lib/progress';

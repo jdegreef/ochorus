@@ -4,7 +4,7 @@
 	import { absUrl, jsonLd, breadcrumb, hreflangAll } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingTime } from '$lib/reading';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/href';
 	import { listen } from '$lib/listen.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { page } from '$app/stores';

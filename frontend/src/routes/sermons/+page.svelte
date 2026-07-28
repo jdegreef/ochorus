@@ -2,7 +2,8 @@
 	import type { SermonSummary } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
 	import { itemList } from '$lib/seo';
-	import { localizeHref, locales } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/href';
+	import { locales } from '$lib/paraglide/runtime';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingMinutes } from '$lib/reading';
 	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
