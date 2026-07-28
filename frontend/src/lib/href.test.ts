@@ -68,6 +68,7 @@ describe('withTrailingSlash', () => {
  *
  * Skipped when there is no build/ — `npm run test` is run without one locally.
  */
+import { locales } from '$lib/paraglide/runtime';
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 
@@ -75,7 +76,15 @@ import { join, resolve } from 'node:path';
 // does) rather than import.meta.url, which vitest rewrites during transform —
 // that silently made this guard skip, which is worse than not having it.
 const BUILD = [resolve(process.cwd(), 'build'), resolve(process.cwd(), 'frontend/build')].find(existsSync) ?? '';
-const BARE_DETAIL = /href="(?:\/(?:es|sw|lg))?\/(?:books|authors|topics|sermons|plans)\/[^"/.]+(?:\/[^"/.]+)?"/g;
+// Locales are DERIVED, never hardcoded. This listed es|sw|lg, and when
+// Portuguese was wired in as a fifth locale the guard silently stopped covering
+// /pt/ — a guard that quietly narrows is the very failure this change exists to
+// prevent.
+const LOCALE_PREFIX = locales.filter((l) => l !== 'en').join('|');
+const BARE_DETAIL = new RegExp(
+	`href="(?:/(?:${LOCALE_PREFIX}))?/(?:books|authors|topics|sermons|plans)/[^"/.]+(?:/[^"/.]+)?"`,
+	'g'
+);
 
 function htmlFiles(dir: string, out: string[] = []): string[] {
 	for (const e of readdirSync(dir)) {
@@ -87,19 +96,15 @@ function htmlFiles(dir: string, out: string[] = []): string[] {
 }
 
 describe.skipIf(!BUILD)('built output', () => {
-	// Prose served by the API can also contain a hand-written link, and the build
-	// fetches that prose from PRODUCTION — so a content fix only clears this once
-	// the backend has deployed it. Migration 0054 fixes the one instance; drop
-	// this entry (and the migration stays as history) after that deploy.
-	const CONTENT_PENDING_DEPLOY = ['href="/authors/susanna-wesley"'];
-
+	// Covers prose as well as components: the build pulls author and book prose
+	// from the API, so a hand-written link in a biography is caught here exactly
+	// like one in a template. That is how the Swahili and Luganda copies of the
+	// John Wesley cross-link were found (ochorus#466).
 	it('contains no bare (non-slash) detail-route links', () => {
 		const offenders: string[] = [];
 		for (const f of htmlFiles(BUILD)) {
-			const hits = (readFileSync(f, 'utf8').match(BARE_DETAIL) ?? []).filter(
-				(h) => !CONTENT_PENDING_DEPLOY.includes(h)
-			);
-			if (hits.length) offenders.push(`${f.replace(BUILD, '')}: ${[...new Set(hits)].join(', ')}`);
+			const hits = readFileSync(f, 'utf8').match(BARE_DETAIL);
+			if (hits) offenders.push(`${f.replace(BUILD, '')}: ${[...new Set(hits)].join(', ')}`);
 		}
 		expect(offenders).toEqual([]);
 	});
