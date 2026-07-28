@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 	import { type AuthorBio, type BookSummary, formatLifespan } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumb } from '$lib/seo';
@@ -31,11 +32,74 @@
 		name.split(' ').filter(Boolean).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
 
 	// --- Search · filter · sort -------------------------------------------------
-	type Filter = 'all' | 'library' | 'bio';
-	type Sort = 'name' | 'era' | 'books';
+	// Value lists are the single source of truth: the Filter/Sort types derive
+	// from them, and coerce() uses them to reject junk query-string values.
+	const FILTER_VALUES = ['all', 'library', 'bio'] as const;
+	const SORT_VALUES = ['name', 'era', 'books'] as const;
+	type Filter = (typeof FILTER_VALUES)[number];
+	type Sort = (typeof SORT_VALUES)[number];
+	const coerce = <T extends string>(v: string | null, allowed: readonly T[], dflt: T): T =>
+		allowed.includes((v ?? '') as T) ? ((v ?? '') as T) : dflt;
+
+	// The controls are URL-addressable (?q=&filter=&sort=&full=1) so a filtered
+	// view is shareable, survives a reload, and comes back with the Back button.
+	// State starts at defaults and is hydrated from the URL on mount by the
+	// reader $effect below (client-only), then written on change (syncUrl).
+	// We must NOT read $page.url.searchParams here: SvelteKit forbids query-param
+	// access while prerendering this page, and the prerendered HTML must not
+	// depend on the query string anyway (it's served for the bare /biographies).
+	// `urlState` is the loop guard shared by writer and reader — same pattern as
+	// /search.
 	let queryText = $state('');
 	let filter = $state<Filter>('all');
 	let sort = $state<Sort>('name');
+	let fullBioOnly = $state(false);
+
+	const snapshot = (q: string, f: Filter, s: Sort, full: boolean) =>
+		`${q.trim()}|${f}|${s}|${full ? '1' : '0'}`;
+	let urlState = snapshot('', 'all', 'name', false);
+
+	function syncUrl() {
+		const key = snapshot(queryText, filter, sort, fullBioOnly);
+		if (key === urlState) return;
+		urlState = key;
+		const url = new URL($page.url);
+		// Omit defaults so a pristine view stays a clean /biographies URL.
+		const put = (k: string, v: string) =>
+			v ? url.searchParams.set(k, v) : url.searchParams.delete(k);
+		put('q', queryText.trim());
+		put('filter', filter === 'all' ? '' : filter);
+		put('sort', sort === 'name' ? '' : sort);
+		put('full', fullBioOnly ? '1' : '');
+		goto(url, { replaceState: true, keepFocus: true, noScroll: true });
+	}
+
+	// URL → state, for shared links and Back/Forward. The urlState guard makes
+	// our own syncUrl writes fall straight through (no writer/reader loop).
+	$effect(() => {
+		const p = $page.url.searchParams;
+		const next = {
+			q: p.get('q') ?? '',
+			f: coerce(p.get('filter'), FILTER_VALUES, 'all'),
+			s: coerce(p.get('sort'), SORT_VALUES, 'name'),
+			full: p.get('full') === '1'
+		};
+		const key = snapshot(next.q, next.f, next.s, next.full);
+		if (key === urlState) return;
+		urlState = key;
+		queryText = next.q;
+		filter = next.f;
+		sort = next.s;
+		fullBioOnly = next.full;
+	});
+
+	function clearFilters() {
+		// Clears the search + filters but keeps the chosen sort order.
+		queryText = '';
+		filter = 'all';
+		fullBioOnly = false;
+		syncUrl();
+	}
 
 	// "In the library" means "has something to read here" — including writers
 	// represented only by sermons.
@@ -46,9 +110,26 @@
 		return authors.filter((a) => {
 			if (filter === 'library' && worksCount(a) === 0) return false;
 			if (filter === 'bio' && worksCount(a) > 0) return false;
+			if (fullBioOnly && !a.has_long_bio) return false;
 			if (!q) return true;
 			return a.name.toLowerCase().includes(q) || (a.bio ?? '').toLowerCase().includes(q);
 		});
+	});
+
+	// Count summary + whether any narrowing is active (sort doesn't count).
+	const isFiltered = $derived(queryText.trim() !== '' || filter !== 'all' || fullBioOnly);
+
+	// A–Z jump targets for the name sort: first writer per initial letter. Each
+	// card already carries id={slug} + scroll-mt, so the rail links to #<slug>.
+	const AZ = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+	const firstByLetter = $derived.by(() => {
+		const m = new Map<string, string>();
+		if (sort !== 'name') return m;
+		for (const a of sorted) {
+			const c = a.name.trim()[0]?.toUpperCase() ?? '';
+			if (c >= 'A' && c <= 'Z' && !m.has(c)) m.set(c, a.slug);
+		}
+		return m;
 	});
 
 	const sorted = $derived.by(() => {
@@ -193,9 +274,10 @@
 	</header>
 
 	<!-- Controls: search · filter · sort -->
-	<div class="mb-8 flex flex-wrap items-center gap-2">
+	<div class="mb-3 flex flex-wrap items-center gap-2">
 		<input
 			bind:value={queryText}
+			oninput={syncUrl}
 			type="search"
 			class="min-w-[10rem] flex-1 rounded-sm border border-border bg-surface px-3 py-1.5 text-small text-text"
 			placeholder={t('bios.filterPlaceholder')}
@@ -209,14 +291,26 @@
 					class:bg-accent={filter === opt.v}
 					class:text-accent-contrast={filter === opt.v}
 					class:text-muted={filter !== opt.v}
-					onclick={() => (filter = opt.v)}
+					onclick={() => { filter = opt.v; syncUrl(); }}
 					aria-pressed={filter === opt.v}>{t(opt.k)}</button
 				>
 			{/each}
 		</div>
 
+		<!-- Orthogonal to the library/bio segments: narrows to writers with a
+		     full-length biography (the "Full life" badge). -->
+		<button
+			class="rounded-sm border border-border px-2.5 py-1.5 text-[0.78rem]"
+			class:bg-accent={fullBioOnly}
+			class:text-accent-contrast={fullBioOnly}
+			class:text-muted={!fullBioOnly}
+			onclick={() => { fullBioOnly = !fullBioOnly; syncUrl(); }}
+			aria-pressed={fullBioOnly}>{t('bios.fullLife')}</button
+		>
+
 		<select
 			bind:value={sort}
+			onchange={syncUrl}
 			class="rounded-sm border border-border bg-surface px-2 py-1.5 text-small text-text"
 			aria-label={t('bios.sort')}
 		>
@@ -225,6 +319,37 @@
 			<option value="books">{t('bios.sortBooks')}</option>
 		</select>
 	</div>
+
+	<!-- Result count + a one-tap escape hatch when a filter is narrowing the list. -->
+	<div class="mb-6 flex items-center gap-2 text-small text-muted">
+		<span
+			>{t('bios.showing')
+				.replace('%shown%', String(sorted.length))
+				.replace('%total%', String(authors.length))}</span
+		>
+		{#if isFiltered}
+			<button onclick={clearFilters} class="font-semibold text-accent hover:underline"
+				>{t('bios.clearFilters')}</button
+			>
+		{/if}
+	</div>
+
+	<!-- A–Z rail: jump to the first writer under each initial (name sort only). -->
+	{#if sort === 'name' && sorted.length > 1}
+		<nav class="mb-8 flex flex-wrap gap-x-1 gap-y-0.5 text-small" aria-label={t('bios.jumpAz')}>
+			{#each AZ as letter (letter)}
+				{#if firstByLetter.has(letter)}
+					<a
+						href="#{firstByLetter.get(letter)}"
+						class="rounded px-1.5 py-0.5 font-semibold text-accent hover:bg-accent-soft hover:no-underline"
+						>{letter}</a
+					>
+				{:else}
+					<span class="px-1.5 py-0.5 text-muted opacity-40" aria-hidden="true">{letter}</span>
+				{/if}
+			{/each}
+		</nav>
+	{/if}
 
 	{#snippet card(author: AuthorBio)}
 		{@const shelf = booksByAuthor.get(author.slug) ?? []}
@@ -324,7 +449,16 @@
 	{/snippet}
 
 	{#if sorted.length === 0}
-		<p class="py-16 text-center text-body text-muted">{t('bios.noResults')}</p>
+		<div class="py-16 text-center">
+			<p class="text-body text-muted">{t('bios.noResults')}</p>
+			{#if isFiltered}
+				<button
+					onclick={clearFilters}
+					class="mt-3 text-small font-semibold text-accent hover:underline"
+					>{t('bios.clearFilters')}</button
+				>
+			{/if}
+		</div>
 	{:else if sort === 'era'}
 		{#if eraGroups.length > 1}
 			<nav class="mb-8 flex flex-wrap gap-1.5" aria-label={t('bios.sortEra')}>
