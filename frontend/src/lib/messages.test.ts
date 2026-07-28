@@ -11,7 +11,7 @@ import path from 'node:path';
  *     apart from a small allowlist of borrowed / proper-noun terms.
  */
 
-const LOCALES = ['en', 'es', 'sw', 'lg'] as const;
+const LOCALES = ['en', 'es', 'sw', 'lg', 'pt'] as const;
 const BASE = 'en';
 const MSG_DIR = path.resolve('messages');
 
@@ -42,7 +42,10 @@ const SAME_AS_ENGLISH_OK = new Set([
 	// "A–Z" is the same alphabetical-sort label in every language we support.
 	'search_sort_title',
 	// "Sepia" is the borrowed colour-tone name, unchanged across our locales.
-	'settings_theme_sepia'
+	'settings_theme_sepia',
+	// "Menu" is the natural UI term in Portuguese too (Spanish keeps its accent,
+	// "Menú", so this only exempts the pt collision).
+	'a11y_menu'
 ]);
 
 const toSnake = (key: string) =>
@@ -88,7 +91,7 @@ describe('i18n messages', () => {
 	});
 
 	it('non-English strings are actually translated (or allowlisted)', () => {
-		for (const l of ['es', 'sw', 'lg']) {
+		for (const l of ['es', 'sw', 'lg', 'pt']) {
 			const untranslated = keysOf(BASE).filter(
 				(k) => !SAME_AS_ENGLISH_OK.has(k) && data[l][k] === data[BASE][k]
 			);

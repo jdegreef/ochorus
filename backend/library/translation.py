@@ -24,7 +24,11 @@ import requests
 
 # --- Target languages --------------------------------------------------------
 # bible: the Take Root translation code whose wording is authoritative for
-# Scripture quotations. All three are complete 66-book Bibles.
+# Scripture quotations. es/sw/lg are complete 66-book Bibles verified against
+# the API; pt (Almeida) is wired from a public catalog but the exact Take Root
+# code is UNCONFIRMED here — the author session had no egress to api.takeroot.
+# Confirm/correct "bible" below on a networked box before running a pt content
+# job (the code is only read at translation time; seeds/tests never hit the API).
 
 LANGUAGES: dict[str, dict] = {
     "es": {
@@ -82,6 +86,27 @@ LANGUAGES: dict[str, dict] = {
             "godliness": "okutya Katonda",
             "intercession": "okwegayiririra abalala",
             "surrender": "okwewaayo",
+        },
+    },
+    "pt": {
+        "name": "Portuguese",
+        "native": "Português",
+        # TODO(egress): confirm Take Root code for the Almeida text before the
+        # first pt content job — this is a best guess made without API access.
+        "bible": "almeida",
+        "bible_label": "João Ferreira de Almeida (public domain)",
+        "glossary": {
+            "justification": "justificação",
+            "sanctification": "santificação",
+            "atonement": "expiação",
+            "grace": "graça",
+            "the flesh": "a carne",
+            "abide": "permanecer",
+            "the Holy Spirit": "o Espírito Santo",
+            "the Lord": "o Senhor",
+            "godliness": "piedade",
+            "intercession": "intercessão",
+            "surrender": "entrega / rendição",
         },
     },
 }

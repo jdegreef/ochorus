@@ -47,8 +47,8 @@ describe('jsonLd', () => {
 });
 
 describe('hreflangFor', () => {
-	// Locale order follows the canonical set (en, es, sw, lg); en is unprefixed,
-	// other locales carry a /<loc> prefix (localizeHref's own behaviour).
+	// Locale order follows the canonical set (en, es, sw, lg, pt); en is
+	// unprefixed, other locales carry a /<loc> prefix (localizeHref's behaviour).
 	it('emits an alternate only for the locales the work exists in', () => {
 		const { alternates } = hreflangFor('/books/humility/', ['en', 'sw']);
 		expect(alternates.map((a) => a.loc)).toEqual(['en', 'sw']);
@@ -80,7 +80,7 @@ describe('hreflangFor', () => {
 
 	it('falls back to every locale when availability is empty (older API)', () => {
 		const { alternates, xDefault } = hreflangFor('/books/humility/', []);
-		expect(alternates.map((a) => a.loc)).toEqual(['en', 'es', 'sw', 'lg']);
+		expect(alternates.map((a) => a.loc)).toEqual(['en', 'es', 'sw', 'lg', 'pt']);
 		expect(xDefault).toBe(`${SITE_URL}/books/humility/`);
 	});
 });
