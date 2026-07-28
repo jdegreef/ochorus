@@ -3,9 +3,18 @@
 Each book's "Download PDF" links to `/pdfs/<slug>.pdf`, served from this folder.
 The 33 PDFs below were previously hotlinked from the old WordPress site
 (`ochorus.com/wp-content/uploads/…`), which stopped serving them when the domain
-moved to the app. Add each file here under the exact `<slug>.pdf` name (the
-original WordPress filename is kept for provenance), then commit. Until a file is
-present, that book's download button 404s.
+moved to the app.
+
+**These 33 books currently have `pdf_url` blanked in the fixture**, so no download
+button renders for them — a hidden button beats one that 404s. To restore a
+download: add the file here under the exact `<slug>.pdf` name (the original
+WordPress filename is kept for provenance), set that book's `pdf_url` back to
+`/pdfs/<slug>.pdf` in `backend/library/fixtures/content/books/<slug>.en.json`, and
+commit both together. `pdf_url` is an updatable seed field, so the next deploy
+picks it up.
+
+Only `soar-like-the-eagle.pdf` is present today, and it is the one book that keeps
+a live download link.
 
 | Target file (add here) | Original WordPress source |
 |---|---|
