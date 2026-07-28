@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('library', '0053_three_new_biography_authors'),
+        ('library', '0054_bio_trailing_slash_links'),
     ]
 
     operations = [
