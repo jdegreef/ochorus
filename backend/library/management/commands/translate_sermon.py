@@ -25,6 +25,7 @@ from library.translation import (
     LANGUAGES,
     translate_scripture_ref,
     translate_sermon,
+    verify_bible_code,
 )
 
 
@@ -56,6 +57,13 @@ class Command(BaseCommand):
         if dry_run:
             self.stdout.write(f"  would translate sermon: {source.title[:60]} [{source.scripture_ref}]")
             return
+
+        # Preflight: a bad Bible code omits scripture silently, so check
+        # BEFORE any paid model work (see verify_bible_code).
+        try:
+            verify_bible_code(language)
+        except ValueError as e:
+            raise CommandError(str(e)) from e
 
         client = anthropic.Anthropic()  # ANTHROPIC_API_KEY / ant auth profile
 

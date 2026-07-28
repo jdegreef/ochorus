@@ -25,7 +25,7 @@ import anthropic
 from django.core.management.base import BaseCommand, CommandError
 
 from library.models import Author, AuthorTranslation
-from library.translation import LANGUAGES, translate_chapter
+from library.translation import LANGUAGES, translate_chapter, verify_bible_code
 
 
 class Command(BaseCommand):
@@ -73,6 +73,13 @@ class Command(BaseCommand):
                 todo = [f for f in fields if needs(a, f)]
                 self.stdout.write(f"  {a.slug}: {', '.join(todo)}")
             return
+
+        # Preflight: a bad Bible code omits scripture silently, so check
+        # BEFORE any paid model work (see verify_bible_code).
+        try:
+            verify_bible_code(language)
+        except ValueError as e:
+            raise CommandError(str(e)) from e
 
         client = anthropic.Anthropic()  # ANTHROPIC_API_KEY / ant auth profile
         total_in = total_out = 0

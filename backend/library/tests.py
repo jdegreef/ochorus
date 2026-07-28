@@ -1,12 +1,20 @@
+import os
 from io import StringIO
-from unittest import skipUnless
+from unittest import mock, skipUnless
 
 from django.core.management import call_command
 from django.db import connection
-from django.test import TestCase, override_settings
+from django.test import SimpleTestCase, TestCase, override_settings
 from rest_framework.test import APIClient
 
 from .ingest import clean_title
+from .translation import (
+    GLOSSARY_TERMS,
+    LANGUAGES,
+    Ref,
+    fetch_chapter,
+    verify_bible_code,
+)
 from .models import (
     Author,
     AuthorTranslation,
@@ -2162,7 +2170,13 @@ class _FakeModernClient:
 from unittest.mock import patch  # noqa: E402
 
 
-@patch("library.translation.fetch_chapter", return_value=None)  # no Bible API network
+# No Bible API network. Returns a minimal valid chapter rather than None: the
+# translate_* preflight (verify_bible_code) treats an unresolvable code as fatal,
+# and these tests exercise the translation flow, not a broken configuration.
+@patch(
+    "library.translation.fetch_chapter",
+    return_value={"reference": "John 3", "verses": [{"number": 3, "text": "…"}]},
+)
 @patch(
     "library.management.commands.translate_sermon.anthropic.Anthropic",
     new=_FakeClient,
@@ -3249,3 +3263,53 @@ class DiscoveryQuickWinsTests(TestCase):
     def test_popular_searches_empty_when_sparse(self):
         res = self.client.get("/api/library/popular-searches/?language=en")
         self.assertEqual(res.data["queries"], [])
+
+
+class TranslationLanguageConfigTests(SimpleTestCase):
+    """Guards on LANGUAGES; see the note above the dict in translation.py."""
+
+    def test_every_language_is_fully_configured(self):
+        for code, cfg in LANGUAGES.items():
+            with self.subTest(language=code):
+                for field in ("name", "native", "bible", "bible_label", "glossary"):
+                    self.assertTrue(cfg.get(field), f"{code}: empty {field}")
+
+    def test_glossaries_cover_the_shared_term_set(self):
+        for code, cfg in LANGUAGES.items():
+            with self.subTest(language=code):
+                self.assertEqual(
+                    set(cfg["glossary"]), set(GLOSSARY_TERMS),
+                    f"{code}: glossary terms differ from GLOSSARY_TERMS",
+                )
+
+    @skipUnless(
+        os.environ.get("CHECK_BIBLE_CODES"), "network check; CHECK_BIBLE_CODES=1 to run"
+    )
+    def test_bible_codes_resolve_against_take_root(self):
+        # Goes through fetch_chapter — the same call scripture_context makes on a
+        # real job — so this proves the codes work for the path that uses them,
+        # not for a URL the test built itself. Opt-in so CI stays hermetic:
+        #   CHECK_BIBLE_CODES=1 uv run python manage.py test \
+        #     library.tests.TranslationLanguageConfigTests
+        for code, cfg in LANGUAGES.items():
+            with self.subTest(language=code, bible=cfg["bible"]):
+                data = fetch_chapter(cfg["bible"], Ref("JHN", 1))
+                self.assertTrue(
+                    data and data.get("verses"),
+                    f"{code}: {cfg['bible']} returned no verses",
+                )
+
+    def test_verify_bible_code_raises_when_the_code_does_not_resolve(self):
+        # The preflight every translate_* command runs. Mocked so it stays
+        # hermetic — what matters is that a non-resolving code RAISES rather
+        # than letting the job proceed and quietly drop all scripture.
+        with mock.patch("library.translation.fetch_chapter", return_value=None):
+            with self.assertRaises(ValueError) as ctx:
+                verify_bible_code("pt")
+        self.assertIn("scripture would be silently omitted", str(ctx.exception))
+
+    def test_verify_bible_code_passes_when_verses_come_back(self):
+        with mock.patch(
+            "library.translation.fetch_chapter", return_value={"verses": [{"number": 1}]}
+        ):
+            verify_bible_code("pt")  # must not raise

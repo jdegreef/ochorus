@@ -20,7 +20,7 @@ import anthropic
 from django.core.management.base import BaseCommand, CommandError
 
 from library.models import Book, Chapter
-from library.translation import LANGUAGES, translate_book_meta, translate_chapter
+from library.translation import LANGUAGES, translate_book_meta, translate_chapter, verify_bible_code
 
 
 class Command(BaseCommand):
@@ -59,6 +59,13 @@ class Command(BaseCommand):
             for c in plan:
                 self.stdout.write(f"  would translate ch{c.order}: {c.title[:60]}")
             return
+
+        # Preflight: a bad Bible code omits scripture silently, so check
+        # BEFORE any paid model work (see verify_bible_code).
+        try:
+            verify_bible_code(language)
+        except ValueError as e:
+            raise CommandError(str(e)) from e
 
         client = anthropic.Anthropic()  # ANTHROPIC_API_KEY / ant auth profile
 
