@@ -256,8 +256,8 @@ class Command(BaseCommand):
 
         # Every fixture author, not just those reached by the book loop — the
         # biography-only authors have no book at all. See author_sync.
-        for slug, summary in sorted(sync_all_authors(Author, rows).items()):
-            self.stdout.write(f"  ~ author {slug} ({summary})")
+        for line in sync_all_authors(Author, rows):
+            self.stdout.write(line)
 
         # Report-only: warn if any existing book's chapters have diverged from
         # the fixture (a transform applied to the live DB without a fixture

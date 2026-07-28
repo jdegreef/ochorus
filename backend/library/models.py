@@ -113,6 +113,14 @@ class AuthorTranslation(models.Model):
     bio = models.TextField(blank=True)
     bio_html = models.TextField(blank=True)
     reviewed = models.BooleanField(default=False)
+    # The English this was translated from has since been replaced, so the
+    # wording may describe text that no longer exists. Deliberately NOT modelled
+    # by clearing `reviewed`: that field also tells `seed_author_translations`
+    # "an approver owns this wording, don't overwrite it", so flipping it to
+    # signal staleness drops that protection and the next deploy replaces the
+    # approved translation with the repo's AI text. The two facts are
+    # independent — a translation can be both approved and stale.
+    source_stale = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

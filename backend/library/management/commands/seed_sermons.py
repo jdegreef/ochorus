@@ -147,5 +147,5 @@ class Command(BaseCommand):
         else:
             self.stdout.write("Sermons already up to date.")
 
-        for slug, summary in sorted(sync_all_authors(Author, rows).items()):
-            self.stdout.write(f"  ~ author {slug} ({summary})")
+        for line in sync_all_authors(Author, rows):
+            self.stdout.write(line)

@@ -131,12 +131,20 @@ force if every paragraph is a box.
    the sync still serves the old text. Redeploy `ochorus-web` afterwards
    (Manual Deploy → "Clear cache & deploy latest commit").
 
-   **Replacing an English bio re-gates its translations.** Every
-   `AuthorTranslation` of that author's short bio flips to `reviewed=False`, and
-   the deploy log names the languages (`~ author x (bio — es/sw translation(s)
-   need re-review)`). Nothing re-translates on its own — the wording is left
-   alone and `translate_author` still needs `--force`, so treat that log line as
-   a to-do. `reviewed` isn't surfaced in the UI, so readers see no change.
+   **Replacing an English bio flags its translations stale.** Every
+   `AuthorTranslation` of that author's short bio gets `source_stale=True`, the
+   deploy log names the languages (`~ author x (bio — es/sw translation(s) now
+   stale)`), and the count surfaces on the founder dashboard. Nothing
+   re-translates on its own — the wording is untouched and `translate_author`
+   still needs `--force` — so treat that log line as a to-do.
+
+   **Never signal this by clearing `reviewed`.** That field also tells
+   `seed_author_translations` "an approver owns this wording, don't overwrite
+   it", and it runs LATER in the same release (`seed_books` → `seed_sermons` →
+   `seed_author_translations`). Clearing it drops the protection, so the same
+   deploy replaces the native reviewer's text with the repo's AI translation —
+   silently. That bug was written, measured doing exactly this, and replaced
+   with the separate `source_stale` flag; the two facts are independent.
 
    To REPLACE non-empty `bio_html`/`photo_url`, write a data migration that
    reads `content/authors.json` and updates the row, with fill-only or

@@ -506,50 +506,80 @@ class SeedBooksUpsertTests(TestCase):
 
         self.assertEqual(Author.objects.get(slug=slug).bio, self._fixture_bio(slug))
 
-    def test_replacing_the_english_bio_regates_its_translations(self):
-        # A translation approved against the stub still says reviewed=True while
-        # the English moves out from under it — the staleness is otherwise
-        # invisible. Same trigger seed_author_translations already uses when it
-        # changes a row's text; here the change comes from the English side.
+    def _plant_stub_with_translations(self):
         from library.catalog import AUTHORS
 
         author = self._author()
         Author.objects.filter(pk=author.pk).update(bio=AUTHORS["andrew-murray"].bio)
-        AuthorTranslation.objects.create(
-            author=author, language="es", bio="Una biografía aprobada.", reviewed=True
-        )
-        AuthorTranslation.objects.create(
-            author=author, language="sw", bio="Wasifu ulioidhinishwa.", reviewed=True
-        )
+        for lang, text in (("es", "Una biografía aprobada."),
+                           ("sw", "Wasifu ulioidhinishwa.")):
+            AuthorTranslation.objects.create(
+                author=author, language=lang, bio=text, reviewed=True
+            )
+        return author
+
+    def test_replacing_the_english_bio_flags_its_translations_stale(self):
+        # A translation approved against the stub describes text that no longer
+        # exists once the English is replaced, and nothing else records that.
+        author = self._plant_stub_with_translations()
 
         call_command("seed_books", verbosity=0)
 
         self.assertEqual(
             sorted(
                 AuthorTranslation.objects.filter(
-                    author=author, reviewed=True
+                    author=author, source_stale=True
                 ).values_list("language", flat=True)
             ),
-            [],
+            ["es", "sw"],
         )
-        # The wording itself is untouched — this marks for re-review, it does
-        # not re-translate (translate_author still needs --force).
+        # Marked, not re-translated: the wording is untouched, and approval is
+        # NOT cleared — see the release-order test below for why that matters.
         es = AuthorTranslation.objects.get(author=author, language="es")
         self.assertEqual(es.bio, "Una biografía aprobada.")
+        self.assertTrue(es.reviewed)
 
-    def test_a_bio_that_does_not_change_leaves_translations_reviewed(self):
-        # Only a REPLACED English bio invalidates a translation. A deploy that
-        # changes nothing (or fills only photo_url) must not re-gate approvals.
+    def test_the_full_release_order_preserves_approved_wording(self):
+        # THE regression. Signalling staleness by clearing `reviewed` looks
+        # right and destroys data: seed_author_translations reads `reviewed` as
+        # "an approver owns this wording", and it runs LATER in the same release
+        # (seed_books -> seed_sermons -> seed_author_translations). A re-gated
+        # row loses that protection and the approver's text is replaced by the
+        # repo's AI translation, in the same deploy, silently. Verified to
+        # happen before source_stale was introduced.
+        author = self._plant_stub_with_translations()
+
+        call_command("seed_books", verbosity=0)
+        call_command("seed_sermons", verbosity=0)
+        call_command("seed_author_translations", verbosity=0)
+
+        es = AuthorTranslation.objects.get(author=author, language="es")
+        # The property that matters: the approver's words are still there.
+        self.assertEqual(es.bio, "Una biografía aprobada.")
+        self.assertTrue(es.source_stale)
+        # `reviewed` may legitimately end up False here — seed_author_translations
+        # fills the row's still-empty bio_html from the repo and re-gates for
+        # review, which is its own pre-existing behaviour, not the sync's doing.
+        # What must never happen is the bio text being replaced.
+
+    def test_syncing_a_field_other_than_bio_flags_nothing_stale(self):
+        # Only a REPLACED English bio invalidates a translation. This exercises
+        # the `if "bio" in changed` guard specifically: clearing photo_url makes
+        # the deploy sync SOMETHING (so sync_author doesn't return early) while
+        # leaving the English bio alone, and approvals must survive that.
         author = self._author()
+        Author.objects.filter(pk=author.pk).update(photo_url="")
         AuthorTranslation.objects.create(
             author=author, language="es", bio="Aprobada.", reviewed=True
         )
 
         call_command("seed_books", verbosity=0)
 
-        self.assertTrue(
-            AuthorTranslation.objects.get(author=author, language="es").reviewed
-        )
+        author.refresh_from_db()
+        self.assertTrue(author.photo_url, "photo_url should have been filled")
+        es = AuthorTranslation.objects.get(author=author, language="es")
+        self.assertFalse(es.source_stale)
+        self.assertTrue(es.reviewed)
 
     def test_a_retired_stub_wording_is_still_upgraded(self):
         # Recognition is by string equality, so rewording a stub would strand
