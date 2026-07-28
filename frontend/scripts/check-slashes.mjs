@@ -15,14 +15,19 @@
  *   node scripts/check-slashes.mjs --limit 40             # sample, for a quick pass
  *   node scripts/check-slashes.mjs --sitemap ../build/sitemap.xml
  *
- * Exit code 1 if any canonical (slash) URL looks like a shell, or if a non-slash
- * URL still returns a 200 shell instead of redirecting.
+ * FAILS (exit 1) only on a broken CANONICAL — a slash URL that is missing or is
+ * itself a shell. That is the property the site actually guarantees.
  *
- * This is a POST-DEPLOY probe, not a CI gate: the non-slash checks depend on the
- * render.yaml 301s, which only exist on the deployed host. Against `vite preview`
- * no Render rule applies, so every non-slash URL returns the shell and it always
- * exits 1. The CI-safe equivalent is the build-output assertion in
- * src/lib/href.test.ts, which needs no network.
+ * The non-slash column is REPORTED, not asserted. There is deliberately no
+ * no-slash -> slash 301: Render's route matcher is trailing-slash-insensitive,
+ * so such a rule also matches the slashed form and infinite-loops on any path
+ * with no prerendered file (see render.yaml). Those URLs therefore keep serving
+ * the SPA shell until search engines recanonicalize from the corrected links and
+ * sitemap. Asserting on them would mean this script could never pass — which is
+ * how a check ends up ignored.
+ *
+ * A POST-DEPLOY probe, not a CI gate — it needs a deployed host. The CI-safe
+ * counterpart is the build-output assertion in src/lib/href.test.ts.
  */
 
 import { readFile } from 'node:fs/promises';
@@ -120,10 +125,10 @@ if (brokenCanonical.length) {
 	brokenCanonical.slice(0, 8).forEach((r) => console.log(`     ${pad(r.status, 4)} ${pad(r.bytes + 'b', 9)} ${r.url}`));
 }
 
-console.log('\nNON-SLASH (what internal links used to emit)');
+console.log('\nNON-SLASH (informational — no 301 by design, see the header)');
 console.log(`  301/308 redirect : ${plainRedirects.length}`);
 console.log(`  200 with <title> : ${plainOk.length}`);
-console.log(`  200 EMPTY SHELL  : ${plainShells.length}   <-- the bug`);
+console.log(`  200 shell        : ${plainShells.length}   (expected; recanonicalizes via links + sitemap)`);
 plainShells.slice(0, 8).forEach((r) => console.log(`     ${pad(r.status, 4)} ${pad(r.bytes + 'b', 9)} ${r.url}`));
 
 console.log('\nSAMPLE (both forms side by side)');
@@ -143,6 +148,9 @@ function median(ns) {
 	return s[Math.floor(s.length / 2)];
 }
 
-const failed = brokenCanonical.length > 0 || plainShells.length > 0;
-console.log(`\n${failed ? 'FAIL' : 'PASS'}: ${brokenCanonical.length} broken canonical, ${plainShells.length} non-slash shells`);
+const failed = brokenCanonical.length > 0;
+console.log(
+	`\n${failed ? 'FAIL' : 'PASS'}: ${brokenCanonical.length} broken canonical` +
+		` (${plainShells.length} non-slash shells, informational)`
+);
 process.exit(failed ? 1 : 0);
