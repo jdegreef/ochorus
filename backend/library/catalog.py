@@ -237,8 +237,10 @@ AUTHORS: dict[str, AuthorEntry] = {
             "of the 18th-century evangelical revival."
         ),
     ),
-    # `bio` here is the create-only stub for a brand-new author; authors.json
-    # remains the source of truth (see upsert_book's create_defaults, #449).
+    # Augustine is NOT a new author — authors.json already carries his full
+    # biography and portrait, and he had simply never had a book. The entry is
+    # required (upsert_book looks the slug up); the stub below is dead text that
+    # only an empty database would ever show. See AuthorEntry.bio.
     "augustine-of-hippo": AuthorEntry(
         slug="augustine-of-hippo",
         name="Augustine of Hippo",
