@@ -1,12 +1,15 @@
+import json
+import os
 from io import StringIO
 from unittest import skipUnless
 
 from django.core.management import call_command
 from django.db import connection
-from django.test import TestCase, override_settings
+from django.test import SimpleTestCase, TestCase, override_settings
 from rest_framework.test import APIClient
 
 from .ingest import clean_title
+from .translation import LANGUAGES
 from .models import (
     Author,
     AuthorTranslation,
@@ -3249,3 +3252,47 @@ class DiscoveryQuickWinsTests(TestCase):
     def test_popular_searches_empty_when_sparse(self):
         res = self.client.get("/api/library/popular-searches/?language=en")
         self.assertEqual(res.data["queries"], [])
+
+
+class TranslationLanguageConfigTests(SimpleTestCase):
+    """Guards on LANGUAGES, which nothing else can catch.
+
+    `bible` is read ONLY when a content-translation job runs — never by seeds,
+    serializers or any other test — so a wrong code sails through CI and only
+    shows up as garbled scripture in shipped content. ("almeida" was a guess
+    that 404'd, and sat in the tree until the first pt job would have hit it.)
+    """
+
+    def test_every_language_is_fully_configured(self):
+        for code, cfg in LANGUAGES.items():
+            with self.subTest(language=code):
+                for field in ("name", "native", "bible", "bible_label"):
+                    self.assertTrue(cfg.get(field), f"{code}: empty {field}")
+                self.assertTrue(cfg.get("glossary"), f"{code}: no glossary")
+
+    def test_glossaries_cover_the_same_terms(self):
+        # A language added with a partial glossary silently loses the term
+        # discipline the others enforce; compare against English as the spine.
+        spine = set(LANGUAGES["es"]["glossary"])
+        for code, cfg in LANGUAGES.items():
+            with self.subTest(language=code):
+                self.assertEqual(
+                    set(cfg["glossary"]), spine,
+                    f"{code}: glossary terms differ from the shared set",
+                )
+
+    @skipUnless(
+        os.environ.get("CHECK_BIBLE_CODES"), "network check; CHECK_BIBLE_CODES=1 to run"
+    )
+    def test_bible_codes_resolve_against_take_root(self):
+        # Opt-in so CI stays hermetic. Run after adding or changing a language:
+        #   CHECK_BIBLE_CODES=1 uv run python manage.py test \
+        #     library.tests.TranslationLanguageConfigTests
+        import urllib.request
+
+        for code, cfg in LANGUAGES.items():
+            with self.subTest(language=code):
+                url = f"https://api.takeroot.bible/api/bible/{cfg['bible']}/JHN/1/"
+                with urllib.request.urlopen(url, timeout=30) as r:
+                    self.assertEqual(r.status, 200)
+                    self.assertTrue(json.load(r).get("verses"), f"{code}: no verses")
