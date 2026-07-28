@@ -33,6 +33,23 @@ import requests
 # Prefer a PUBLIC-DOMAIN text: this is a public-domain library, and a CC-BY
 # Bible would put an attribution obligation on every quotation we render.
 
+# Every language's glossary must cover exactly these terms — the shared
+# discipline that keeps theological vocabulary consistent across translations.
+# Pinned by a test, so a new language can't ship a partial glossary.
+GLOSSARY_TERMS = (
+    "justification",
+    "sanctification",
+    "atonement",
+    "grace",
+    "the flesh",
+    "abide",
+    "the Holy Spirit",
+    "the Lord",
+    "godliness",
+    "intercession",
+    "surrender",
+)
+
 LANGUAGES: dict[str, dict] = {
     "es": {
         "name": "Spanish",
@@ -94,9 +111,9 @@ LANGUAGES: dict[str, dict] = {
     "pt": {
         "name": "Portuguese",
         "native": "Português",
-        # "almeida" was a guess and 404s. There is no standalone Almeida on Take
-        # Root; both Portuguese options are Bíblia Livre editions descended from
-        # it. Chose the PUBLIC-DOMAIN one — the alternative, porbr2018 ("Bíblia
+        # There is no standalone Almeida on Take Root; both Portuguese options
+        # are Bíblia Livre editions descended from it. Chose the PUBLIC-DOMAIN
+        # one — the alternative, porbr2018 ("Bíblia
         # Livre", CC BY 4.0, © 2018 Diego Santos, Mario Sérgio & Marco Teles),
         # would require carrying that attribution wherever we quote scripture.
         # porbrbsl also keeps the Almeida-tradition wording ("No princípio era o
@@ -189,6 +206,28 @@ def fetch_chapter(bible: str, ref: Ref) -> dict | None:
         except requests.RequestException:
             _verse_cache[key] = None
     return _verse_cache[key]
+
+
+def verify_bible_code(language: str) -> None:
+    """Fail fast if a language's configured Bible doesn't resolve.
+
+    scripture_context FAILS OPEN — it skips any passage whose fetch returns
+    None — so a wrong code doesn't raise, it silently yields a translation with
+    ZERO authoritative scripture, at full model cost, looking entirely normal.
+    ("almeida" was such a code, and sat in the tree unnoticed.) Every translate_*
+    command calls this before doing paid work; one request, and _verse_cache
+    means the job's own JHN 1 lookup reuses it.
+
+    Note the limit: this proves the code RESOLVES, not that it's the right
+    language — pt→swhonen would pass. Only review catches that.
+    """
+    cfg = LANGUAGES[language]
+    if not (fetch_chapter(cfg["bible"], Ref("JHN", 1)) or {}).get("verses"):
+        raise ValueError(
+            f"Bible code {cfg['bible']!r} for {language!r} returned no verses from "
+            f"{TAKEROOT_API} — scripture would be silently omitted. "
+            "Fix LANGUAGES in library/translation.py before running this job."
+        )
 
 
 def scripture_context(text: str, bible: str, max_refs: int = 12) -> str:
