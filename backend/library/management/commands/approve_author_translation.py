@@ -28,7 +28,10 @@ class Command(BaseCommand):
         if not rows:
             raise CommandError(f"no unreviewed author bios in language {language!r}")
         for tr in rows:
+            # Approving means someone read this against the English as it
+            # stands, so any staleness flag is answered.
             tr.reviewed = True
-            tr.save(update_fields=["reviewed"])
+            tr.source_stale = False
+            tr.save(update_fields=["reviewed", "source_stale"])
             self.stdout.write(self.style.SUCCESS(f"✓ {tr.author.slug} ({language}) reviewed"))
         self.stdout.write(self.style.SUCCESS(f"{len(rows)} bio(s) marked reviewed"))

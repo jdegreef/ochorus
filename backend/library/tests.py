@@ -581,6 +581,42 @@ class SeedBooksUpsertTests(TestCase):
         self.assertFalse(es.source_stale)
         self.assertTrue(es.reviewed)
 
+    def test_the_stale_flag_is_cleared_when_the_translation_is_rewritten(self):
+        # A flag nothing clears is a counter that only grows: the dashboard's
+        # stale count would never come back down and would stop meaning
+        # anything. Every path that rewrites the wording, or approves it against
+        # the current English, answers the flag.
+        from library.catalog import AUTHORS
+
+        author = self._author()
+        Author.objects.filter(pk=author.pk).update(bio=AUTHORS["andrew-murray"].bio)
+        # UNREVIEWED, so seed_author_translations owns the wording and will
+        # rewrite `bio` from the repo files — the path that answers the flag.
+        AuthorTranslation.objects.create(
+            author=author, language="es", bio="Texto viejo.", reviewed=False
+        )
+
+        call_command("seed_books", verbosity=0)
+        self.assertTrue(
+            AuthorTranslation.objects.get(author=author, language="es").source_stale
+        )
+
+        call_command("seed_author_translations", verbosity=0)
+        es = AuthorTranslation.objects.get(author=author, language="es")
+        self.assertNotEqual(es.bio, "Texto viejo.")  # it really was rewritten
+        self.assertFalse(es.source_stale)
+
+    def test_approving_a_translation_clears_the_stale_flag(self):
+        author = self._plant_stub_with_translations()
+        call_command("seed_books", verbosity=0)
+        AuthorTranslation.objects.filter(author=author).update(reviewed=False)
+
+        call_command("approve_author_translation", language="es", verbosity=0)
+
+        es = AuthorTranslation.objects.get(author=author, language="es")
+        self.assertTrue(es.reviewed)
+        self.assertFalse(es.source_stale)
+
     def test_a_retired_stub_wording_is_still_upgraded(self):
         # Recognition is by string equality, so rewording a stub would strand
         # every live row still carrying the old text — nothing else can upgrade

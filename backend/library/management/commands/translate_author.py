@@ -99,7 +99,12 @@ class Command(BaseCommand):
             AuthorTranslation.objects.update_or_create(
                 author=a,
                 language=language,
-                defaults={"bio": bio_out, "bio_html": html_out, "reviewed": False},
+                # source_stale clears: this wording was just made from the
+                # CURRENT English, whatever the old row was translated from.
+                defaults={
+                    "bio": bio_out, "bio_html": html_out,
+                    "reviewed": False, "source_stale": False,
+                },
             )
             self.stdout.write(self.style.SUCCESS(f"  ✓ {a.name}"))
 

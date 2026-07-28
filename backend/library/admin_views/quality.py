@@ -105,8 +105,10 @@ class AdminReviewQueueView(APIView):
             tr = AuthorTranslation.objects.get(author__slug=slug, language=language)
         except AuthorTranslation.DoesNotExist:
             return Response({"detail": "No such author-bio translation."}, status=404)
+        # Same as approve_author_translation: approval answers staleness.
         tr.reviewed = True
-        tr.save(update_fields=["reviewed"])
+        tr.source_stale = False
+        tr.save(update_fields=["reviewed", "source_stale"])
         return Response({"ok": True, "kind": "bio", "slug": slug, "language": language})
 
 
