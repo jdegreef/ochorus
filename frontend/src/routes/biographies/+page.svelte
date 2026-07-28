@@ -3,11 +3,12 @@
 	import { goto } from '$app/navigation';
 	import { type AuthorBio, type BookSummary, formatLifespan } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
-	import { absUrl, jsonLd } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumb } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { locales } from '$lib/paraglide/runtime';
 	import BookCover from '$lib/components/BookCover.svelte';
+	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 
 	const t = i18n.t;
 
@@ -110,29 +111,49 @@
 		return ERAS.filter((e) => byId.has(e.id)).map((e) => ({ era: e, authors: byId.get(e.id)! }));
 	});
 
-	// schema.org ItemList of Person entities — one per writer, mirroring the
-	// Person data on each author page. Gives search engines a structured roster
-	// of the writers (rich results + entity discovery). Built from the full list,
-	// not the current filter, so the markup describes the page's whole content.
+	// Breadcrumb trail (Home › Biographies) — the visible <Breadcrumb> below and
+	// this BreadcrumbList JSON-LD describe the same path, matching the rest of the
+	// site's detail pages. The last item is the current page but stays in the
+	// structured list (Google expects the full trail including the leaf).
+	const crumbs = $derived([
+		{ name: t('common.home'), href: '/' },
+		{ name: t('bios.eyebrow'), href: '/biographies' }
+	]);
+	const crumbsLd = $derived(
+		jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))))
+	);
+
+	// The page as a schema.org CollectionPage whose mainEntity is the roster of
+	// writers — an ItemList of Person entities, one per writer, mirroring the
+	// Person data on each author page. Gives search engines both a typed page
+	// (collection) and a structured list (rich results + entity discovery). Built
+	// from the full list, not the current filter, so the markup describes the
+	// page's whole content.
 	const peopleLd = $derived(
 		jsonLd({
 			'@context': 'https://schema.org',
-			'@type': 'ItemList',
-			name: 'Christian writers on Ochorus',
-			numberOfItems: authors.length,
-			itemListElement: authors.map((a, i) => ({
-				'@type': 'ListItem',
-				position: i + 1,
-				item: {
-					'@type': 'Person',
-					name: a.name,
-					url: absUrl(localizeHref(`/authors/${a.slug}`)),
-					image: a.photo_url ? absUrl(a.photo_url) : undefined,
-					description: a.bio || undefined,
-					birthDate: a.birth_year ? String(a.birth_year) : undefined,
-					deathDate: a.death_year ? String(a.death_year) : undefined
-				}
-			}))
+			'@type': 'CollectionPage',
+			name: `${t('bios.metaTitle')} — Ochorus`,
+			url: absUrl(localizeHref('/biographies')),
+			description: t('bios.metaDescription'),
+			mainEntity: {
+				'@type': 'ItemList',
+				name: 'Christian writers on Ochorus',
+				numberOfItems: authors.length,
+				itemListElement: authors.map((a, i) => ({
+					'@type': 'ListItem',
+					position: i + 1,
+					item: {
+						'@type': 'Person',
+						name: a.name,
+						url: absUrl(localizeHref(`/authors/${a.slug}`)),
+						image: a.photo_url ? absUrl(a.photo_url) : undefined,
+						description: a.bio || undefined,
+						birthDate: a.birth_year ? String(a.birth_year) : undefined,
+						deathDate: a.death_year ? String(a.death_year) : undefined
+					}
+				}))
+			}
 		})
 	);
 
@@ -144,7 +165,7 @@
 </script>
 
 <svelte:head>
-	<title>{t('bios.eyebrow')} — Ochorus</title>
+	<title>{t('bios.metaTitle')} — Ochorus</title>
 	<meta name="description" content={t('bios.metaDescription')} />
 	<link rel="canonical" href="{SITE_URL}{localizeHref('/biographies')}" />
 	{#each locales as loc (loc)}
@@ -152,15 +173,17 @@
 	{/each}
 	<link rel="alternate" hreflang="x-default" href="{SITE_URL}/biographies" />
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content="{t('bios.eyebrow')} — Ochorus" />
+	<meta property="og:title" content="{t('bios.metaTitle')} — Ochorus" />
 	<meta property="og:description" content={t('bios.metaDescription')} />
 	<meta property="og:url" content="{SITE_URL}{localizeHref('/biographies')}" />
 	<meta property="og:image" content="{SITE_URL}/og/biographies.png" />
 	<meta name="twitter:card" content="summary_large_image" />
 	{@html peopleLd}
+	{@html crumbsLd}
 </svelte:head>
 
 <div class="mx-auto max-w-3xl px-5 py-10">
+	<Breadcrumb items={crumbs} />
 	<header class="mb-8">
 		<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">{t('bios.eyebrow')}</p>
 		<h1 class="text-display mb-3">{t('bios.title')}</h1>
@@ -213,6 +236,8 @@
 								src={author.photo_url}
 								alt="{t('a11y.portraitOf')} {author.name}"
 								loading="lazy"
+								width="56"
+								height="56"
 								class="h-14 w-14 rounded-full border border-border object-cover"
 								style="filter: grayscale(1)"
 							/>
