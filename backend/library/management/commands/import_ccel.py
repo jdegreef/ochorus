@@ -37,8 +37,8 @@ def work_base(ref: str) -> str:
     return urljoin(CCEL_BASE, f"{ref}/{work}.")
 
 
-def toc_sections(ref: str) -> list[tuple[str, str]]:
-    """Return [(absolute_section_url, title), ...] from the work's TOC page."""
+def _toc_entries(ref: str) -> tuple[list[str], dict[str, str], dict[str, str]]:
+    """Parse the work's TOC once: (ordered urls, url→title, url→stem)."""
     base = work_base(ref)
     work = ref.rstrip("/").split("/")[-1]
     toc_url = base + "toc.html"
@@ -72,25 +72,78 @@ def toc_sections(ref: str) -> list[tuple[str, str]]:
             titles[absolute] = title
         elif len(title) > len(titles[absolute]):
             titles[absolute] = title
-    # In a two-level work the one-level parent (`<work>.i.html`) is just a
-    # part-divider / half-title page whose children (`<work>.i.ii.html`) hold the
-    # real prose — drop any section whose stem is a strict prefix of another's.
-    # Single-level works have no such parents, so this is a no-op for them.
-    # Assumption: a parent page carries no prose of its own (true for the CCEL
-    # part/chapter convention). If a future work puts an introduction ON the
-    # parent page as well as chapters beneath it, that intro would be dropped —
-    # revisit here (fetch + word-count the parent) if that book appears.
+
     def stem(url: str) -> str:
         name = url.rstrip("/").split("/")[-1]
         return name[len(work) + 1 : -len(".html")]
 
-    stems = {url: stem(url) for url in order}
-    parents = {
+    return order, titles, {url: stem(url) for url in order}
+
+
+def _parent_urls(stems: dict[str, str]) -> set[str]:
+    """URLs whose stem is a strict prefix of another's — the part dividers.
+
+    In a two-level work the one-level parent (`<work>.i.html`) is a part-divider
+    / half-title page whose children (`<work>.i.ii.html`) hold the real prose.
+    Single-level works have no such parents, so this is empty for them.
+    Assumption: a parent page carries no prose of its own (true for the CCEL
+    part/chapter convention). If a future work puts an introduction ON the
+    parent page as well as chapters beneath it, that intro would be dropped —
+    revisit here (fetch + word-count the parent) if that book appears.
+    """
+    return {
         url
         for url, st in stems.items()
         if any(other.startswith(st + ".") for other in stems.values())
     }
-    return [(url, titles[url]) for url in order if url not in parents]
+
+
+def toc_parts(ref: str) -> list[tuple[str, list[tuple[str, str]]]]:
+    """Group a two-level work by its parts: [(part_title, [(url, title), …]), …].
+
+    The grouped view of the TOC, for works whose real reading unit is the PART,
+    not the leaf section. Augustine's *Confessions* is the case this exists for:
+    CCEL splits it into 278 leaf sections of 150–900 words, titled "Chapter I" …
+    "Chapter XXXVIII" — and those titles repeat in all thirteen Books, so
+    imported flat the book is unreadable and carries 13 sets of duplicate
+    chapter titles. Grouped, it is the thirteen Books everyone actually cites,
+    each a normal chapter-length read.
+
+    Leaf sections with no parent (front matter, a lone appendix) come back as
+    their own single-child part, so nothing is silently dropped.
+
+    Note for later: under ``group_parts`` a leaf title becomes an ``<h3>``
+    inside the chapter body, so ``corrections.chapter_titles`` — which is keyed
+    by chapter order — can no longer address it. A leaf-title fix in a grouped
+    book has to be a general ``clean_title`` rule. If a second grouped book
+    needs per-leaf corrections, that is the point to add a hook rather than
+    widen ``clean_title`` again.
+    """
+    order, titles, stems = _toc_entries(ref)
+    parents = _parent_urls(stems)
+    # Stem → its divider page, so the part can take that page's real title
+    # ("Book I") instead of its first leaf's ("Chapter I").
+    divider = {stems[p]: p for p in parents}
+    groups: dict[str, tuple[str, list[tuple[str, str]]]] = {}
+    for url in order:
+        if url in parents:
+            continue
+        # "ii.iv" → part key "ii"; a single-segment stem is its own part.
+        key = stems[url].split(".")[0]
+        parent = divider.get(key)
+        groups.setdefault(key, (titles[parent] if parent else titles[url], []))
+        groups[key][1].append((url, titles[url]))
+    return list(groups.values())
+
+
+def toc_sections(ref: str) -> list[tuple[str, str]]:
+    """Return [(absolute_section_url, title), ...] from the work's TOC page.
+
+    The flat view: ``toc_parts`` with its grouping discarded. Defined in terms
+    of it so the two views can never disagree about what counts as a part
+    divider or about section order.
+    """
+    return [leaf for _, leaves in toc_parts(ref) for leaf in leaves]
 
 
 _LEADING_P = re.compile(r"\s*<p>(.*?)</p>", re.S)
@@ -231,29 +284,54 @@ class Command(BaseCommand):
     def _import_one(self, entry: BookEntry):
         self.stdout.write(f"→ {entry.title}  (ccel:{entry.source_ref})")
         try:
-            sections = toc_sections(entry.source_ref)
+            parts = toc_parts(entry.source_ref)
         except requests.RequestException as exc:
             self.stderr.write(self.style.ERROR(f"  TOC fetch failed: {exc}"))
             return
-        if not sections:
+        if not parts:
             self.stderr.write(self.style.ERROR("  no sections found in TOC"))
             return
+        if not entry.group_parts:
+            # The flat import is the degenerate grouped one: every leaf is its
+            # own chapter, titled by itself. One loop then serves both modes, so
+            # a fix to the crawl, the front-matter rule or the error handling
+            # can't land in only half of them.
+            parts = [(t, [(u, t)]) for _, leaves in parts for u, t in leaves]
 
         chapters: list[tuple[str, str]] = []
-        for url, title in sections:
+        for part_title, leaves in parts:
             # Gate front matter on the RAW title — clean_title strips a trailing
             # "Contents", which would turn a "Contents" TOC section into an empty
             # title that slips past is_front_matter and leaks in as a chapter.
-            if is_front_matter(title):
+            if is_front_matter(part_title):
                 continue
-            title = clean_title(title)
-            try:
-                time.sleep(DELAY)
-                body = extract_body(fetch(url), title)
-            except requests.RequestException as exc:
-                self.stderr.write(self.style.WARNING(f"  skip {url}: {exc}"))
+            pieces: list[str] = []
+            for url, leaf_title in leaves:
+                if is_front_matter(leaf_title):
+                    continue
+                leaf_title = clean_title(leaf_title)
+                body = self._section_body(url, leaf_title)
+                if not body:
+                    continue
+                # A single-leaf part is the whole chapter — no subheading needed.
+                # Multi-leaf parts keep each leaf's heading, so the work's own
+                # divisions stay visible and citable (Confessions is quoted as
+                # Book VIII.12). <h3> matches import_gutenberg's joined sections.
+                pieces.append(f"<h3>{leaf_title}</h3>{body}" if len(leaves) > 1 else body)
+            if not pieces:
                 continue
-            chapters.append((title, body))
+            chapters.append((clean_title(part_title), "".join(pieces)))
+            if entry.group_parts:
+                self.stdout.write(f"    {part_title}: {len(pieces)} sections")
 
         book = upsert_book(entry, chapters)
         self.stdout.write(self.style.SUCCESS(f"  ✓ {book.chapter_count} chapters"))
+
+    def _section_body(self, url: str, title: str) -> str:
+        """Fetch and clean one TOC section; "" when the request fails."""
+        try:
+            time.sleep(DELAY)
+            return extract_body(fetch(url), title)
+        except requests.RequestException as exc:
+            self.stderr.write(self.style.WARNING(f"  skip {url}: {exc}"))
+            return ""

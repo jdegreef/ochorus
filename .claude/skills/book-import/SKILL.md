@@ -296,6 +296,24 @@ dropped; chapters under 120 words are dropped as stubs.
   its body text in one block loses that intro (feasting-at-the-table); a drop
   cap belonging mid-paragraph after a scripture-ref merge isn't reattached
   ("Ephesians 2:11-22 aul writes").
+- **A CCEL work whose leaf sections are too small to be chapters** — Augustine's
+  *Confessions* is 278 leaves of 150–900 words titled "Chapter I" … "Chapter
+  XXXVIII", and those titles **repeat in every one of the thirteen Books**, so a
+  flat import is unreadable and trips `qa.duplicate_title` ~265 times. Set
+  `group_parts=True` on the `BookEntry`: `toc_parts` groups leaves under their
+  part divider and takes that divider's title ("Book I"). It is deliberately
+  opt-in — the part-vs-leaf choice is an editorial judgement about the reading
+  and citation unit, not something to auto-detect, and a flag cannot regress the
+  books already shipped. Two things to know before using it:
+  - **Joined leaf headings are `<h3>`**, matching `import_gutenberg`'s
+    `group_daily_entries` / tiny-section merge. Same construct, same level — an
+    `<h2>` renders a size larger than every Gutenberg book that does this.
+  - **`corrections.chapter_titles` can no longer reach those titles.** It is
+    keyed by chapter `order`, and a leaf title is now markup inside a chapter
+    body. A leaf-title fix in a grouped book has to be a general `clean_title`
+    rule (which is why *Confessions* ships with `Chapter XXi`/`Chapter Xi`
+    unfixed). If a second grouped book needs per-leaf fixes, add a hook rather
+    than widening `clean_title` again. *(2026-07)*
 - **CCEL two-level section numbering** (`<work>.i.ii.html` = part i, chapter ii).
   The `toc_sections` pattern matched only single-segment `<work>.iii.html`, so a
   parts-divided work imported as 1 chapter. Regex now allows one-or-more dotted
@@ -418,6 +436,22 @@ dropped; chapters under 120 words are dropped as stubs.
 
 ## Adding a public-domain book NOT on ochorus.com
 
+**For a TRANSLATED work, the translation is the thing that must be PD — and CCEL
+hosts in-copyright ones.** An ancient author guarantees nothing: CCEL's
+`augustine/confessions` is Albert Outler's translation, **first published 1955**,
+hosted there by the copyright holder's permission — permission that does not
+extend to us. The PD alternative sat one slug away: `augustine/confess`, Pusey's
+1838 translation. Both are "Augustine's Confessions" on the same site. Before
+importing any translated work (the Fathers, à Kempis, Guyon, anything not
+originally English), open a section page and read the title page for the
+translator and date:
+```bash
+curl -s https://ccel.org/ccel/<ref>/<work>.i.html | sed 's/<[^>]*>/ /g' | grep -iE "translat|copyright|first published"
+```
+A translator's name with a 20th-century date means stop. Record the translator in
+the book's `subtitle` and `attribution` so the next person can see which edition
+this is without re-deriving it. *(Confessions, 2026-07)*
+
 **Vet US public-domain status by PUBLICATION year, not author death.** A work
 first published before 1929 is US-PD regardless of when the author died — and a
 long-lived author can have both PD and still-copyrighted books. Amy Carmichael
@@ -487,10 +521,28 @@ seeding a scratch DB from every fixture EXCEPT the new one, then running
   node -e "const{Resvg}=require('@resvg/resvg-js'),f=require('fs');for(const s of ['SLUG']){f.writeFileSync('static/covers/'+s+'.png',new Resvg(f.readFileSync('static/covers/'+s+'.svg','utf8'),{fitTo:{mode:'width',value:600},font:{loadSystemFonts:true}}).render().asPng())}"
   ```
 
-Get the new book into the fixture with `scripts/regen_fixture.py` — it picks up
-a new book from the dev DB along with everything else. If it aborts, that is a
-pre-existing field-drift problem and NOT your import: see the
-`N unexpected new field(s)` entry above rather than hand-writing the file.
+**`regen_fixture.py` will NOT pick your new book up — write its fixture file
+yourself.** The script is a fixture→fixture round-trip (fresh scratch DB →
+`loaddata` every committed fixture → `dumpdata`); it never reads your dev DB, so
+a freshly imported book is simply absent from its output and the import silently
+ships as nothing. Serialize the book yourself, then re-run the regen to
+canonicalise the formatting and prove the file loads:
+```bash
+DJANGO_DEBUG=true uv run python manage.py shell -c "
+import json; from django.core import serializers; from library.models import Book
+b = Book.objects.get(slug='SLUG', language='en')
+rows = json.loads(serializers.serialize('json', [b, *b.chapters.order_by('order')],
+    use_natural_primary_keys=True, use_natural_foreign_keys=True))
+for r in rows: r.pop('pk', None)
+open('library/fixtures/content/books/SLUG.en.json','w').write(
+    json.dumps(rows, ensure_ascii=False, indent=1) + '\n')"
+DJANGO_DEBUG=true uv run python scripts/regen_fixture.py   # rewrites it in dumpdata style
+```
+The second step matters for more than tidiness: `json.dump(indent=1)` indents the
+top-level list items and `dumpdata` does not, so skipping it commits a file that
+differs from every other fixture. If the regen aborts, that is a pre-existing
+field-drift problem and NOT your import: see the `N unexpected new field(s)`
+entry above. *(Confessions, 2026-07)*
 
 **ochorus.com no longer serves `/pdfs/<slug>.pdf`** (404 as of 2026-07) — every
 `import_ochorus` re-import fails at the fetch. It fails safely, leaving existing
