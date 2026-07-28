@@ -165,10 +165,18 @@ class AdminStatsView(APIView):
         agg = AuthorTranslation.objects.aggregate(
             total=Count("id"),
             reviewed=Count("id", filter=Q(reviewed=True)),
+            # Translated from English that has since been replaced. Independent
+            # of `reviewed` — an approved translation can still go stale.
+            stale=Count("id", filter=Q(source_stale=True)),
         )
         total = agg["total"] or 0
         reviewed = agg["reviewed"] or 0
-        return {"total": total, "reviewed": reviewed, "unreviewed": total - reviewed}
+        return {
+            "total": total,
+            "reviewed": reviewed,
+            "unreviewed": total - reviewed,
+            "stale": agg["stale"] or 0,
+        }
 
     def _attention(self) -> dict:
         """Content-health signals worth surfacing at a glance."""

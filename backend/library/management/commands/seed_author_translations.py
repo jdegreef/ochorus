@@ -106,6 +106,12 @@ class Command(BaseCommand):
                 for name in changed:
                     setattr(tr, name, fields[name])
                 tr.reviewed = False
+                # Clear staleness only when the SHORT bio itself was rewritten —
+                # that is the field the flag tracks. Merely filling an empty
+                # bio_html leaves the short bio still describing the superseded
+                # English, so the flag must survive.
+                if "bio" in changed:
+                    tr.source_stale = False
                 tr.save()
                 upserted += 1
         if skipped:
