@@ -251,7 +251,7 @@
 			</span>
 		{/if}
 		<div class="min-w-0">
-			<h1 class="text-h1">{author.name}</h1>
+			<h1 class="text-h1" dir="auto">{author.name}</h1>
 			{#if summaryBits.length}
 				<p class="mt-1 text-body text-muted">
 					{#each summaryBits as bit, i (i)}{#if i > 0}<span class="opacity-50"> · </span>{/if}{bit}{/each}
@@ -302,7 +302,7 @@
 
 	<!-- Biography -->
 	{#if author.bio_html}
-		<div class="bio mx-auto mt-8 max-w-[40rem]" style={bioLabels} bind:this={bioEl}>
+		<div class="bio mx-auto mt-8 max-w-[40rem]" style={bioLabels} bind:this={bioEl} dir="auto">
 			<!-- Long-form biography; cleaned HTML with pull-quotes + prayer callouts. -->
 			{@html author.bio_html}
 		</div>

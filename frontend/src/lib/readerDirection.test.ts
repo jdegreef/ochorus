@@ -1,0 +1,81 @@
+import { existsSync, readFileSync } from 'node:fs';
+import { join, resolve } from 'node:path';
+import { describe, expect, it } from 'vitest';
+
+// resolve from cwd like href.test.ts, which documents that vitest rewrites
+// import.meta.url during transform.
+const FRONTEND = [resolve(process.cwd()), resolve(process.cwd(), 'frontend')].find((d) =>
+	existsSync(join(d, 'src/lib'))
+) as string;
+
+/**
+ * `dir="auto"` must sit on the CONTENT, never on a container that also holds
+ * localized chrome.
+ *
+ * The readers mix two directions: breadcrumbs and prev/next follow the UI
+ * locale, while the text follows the language the text is actually in. When
+ * `dir="auto"` sat on the outer <article>, it resolved from the first strong
+ * character in that element — the localized breadcrumb. Under /ar that is
+ * Arabic, so English book text inherited RTL and sentence-final punctuation
+ * rendered at the start of the line (".and defects await the creature").
+ *
+ * `auto` (rather than a `dir` derived from the content's language) is
+ * deliberate: `localized()` silently falls back to English when a translation
+ * is missing, so a language-derived direction would render that English RTL —
+ * the very bug this fixes. Reading the actual bytes is correct through the
+ * fallback. Known tradeoff: `auto` resolves from the FIRST strong character, so
+ * an Arabic chapter opening with a Latin epigraph resolves LTR.
+ *
+ * SCOPE, honestly: this pins the KNOWN content surfaces below. It cannot catch
+ * a NEW surface that renders content without `dir="auto"`. If a third reading
+ * surface appears, add it here — or extract a component that owns `dir="auto"`
+ * so it comes for free.
+ */
+const READERS = [
+	'src/routes/books/[slug]/[order]/+page.svelte',
+	'src/routes/sermons/[slug]/+page.svelte'
+];
+
+/** Other surfaces rendering content inside localized chrome: [file, anchor]. */
+const CONTENT_SURFACES: [path: string, needle: string][] = [
+	['src/routes/authors/[slug]/+page.svelte', 'bind:this={bioEl}'],
+	['src/routes/books/[slug]/+page.svelte', '{book.title}</h1>'],
+	['src/routes/books/[slug]/+page.svelte', '{ch.title}</span>']
+];
+
+const read = (path: string) => readFileSync(join(FRONTEND, path), 'utf8');
+
+describe('reader text direction', () => {
+	for (const path of READERS) {
+		it(`${path}: <article> does not carry dir`, () => {
+			// Anchored to line start: an unanchored /<article[^>]*>/ also matches the
+			// string "<article>" inside a CSS comment further down the file, which
+			// let a renamed tag pass silently.
+			const article = read(path).match(/^\s*<article[^>]*>/m)?.[0];
+			// Assert it was FOUND first: `?? ''` would sail past a rename or an
+			// extraction into a component — failing open on the assertion that
+			// matters most here.
+			expect(article, 'no <article> found — did the reader markup change?').toBeTruthy();
+			expect(article).not.toMatch(/\bdir=/);
+		});
+
+		it(`${path}: title and body carry dir="auto"`, () => {
+			const src = read(path);
+			// Assert on the whole source rather than capturing the tag: an inline
+			// arrow handler (onclick={() => f()}) contains '>' and would truncate a
+			// [^>]* capture — spurious failures, or worse a spurious pass.
+			expect(src, 'title dir="auto"').toMatch(/<h1[^>]*\sdir="auto"/);
+			expect(src, 'reading body dir="auto"').toMatch(/<div class="reading"[^>]*\sdir="auto"/);
+		});
+	}
+
+	for (const [path, needle] of CONTENT_SURFACES) {
+		it(`${path}: "${needle}" carries dir="auto"`, () => {
+			const line = read(path)
+				.split('\n')
+				.find((l) => l.includes(needle));
+			expect(line, `"${needle}" not found — markup changed?`).toBeTruthy();
+			expect(line).toMatch(/dir="auto"/);
+		});
+	}
+});

@@ -822,7 +822,6 @@
 	class:focus={readerUi.focus}
 	class:twocol={cols === 2}
 	style="{readerPrefs.style}; max-width: {articleMax}"
-	dir="auto"
 	onclick={onArticleClick}
 >
 	<!-- Breadcrumb -->
@@ -866,10 +865,10 @@
 				<span class="ml-1 text-accent">· {t('reader.modernEdition')}</span>
 			{/if}
 		</p>
-		<h1 bind:this={titleEl} class="text-h1 mb-8">{chapter.title}</h1>
+		<h1 bind:this={titleEl} class="text-h1 mb-8" dir="auto">{chapter.title}</h1>
 
 		<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. -->
-		<div class="reading" bind:this={body}>{@html chapter.body_html}</div>
+		<div class="reading" bind:this={body} dir="auto">{@html chapter.body_html}</div>
 	</div>
 
 	<nav class="mt-14 flex items-stretch justify-between gap-3 border-t border-border pt-6">
