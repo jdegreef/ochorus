@@ -68,6 +68,10 @@ export const entries: EntryGenerator = async () => {
 // same expanded English source — /sw/authors/catherine-booth and
 // /lg/authors/catherine-booth re-crawl and bake the fresh bios, completing the
 // Catherine Booth es/sw/lg re-translation set (one prerender PR for both langs).
+//
+// Prerender refresh 2026-07-29 (queue job #474): the first Portuguese author
+// biography — Andrew Murray — ships (new author_bios_pt/ dir). /pt/authors/
+// andrew-murray re-crawls and bakes the translated bio.
 export const load: PageLoad = async ({ params }) => {
 	const author = await orNotFound(() => getAuthor(params.slug, getLang()));
 	// A mid-deploy API (before the sermon fields ship) may omit these; default
