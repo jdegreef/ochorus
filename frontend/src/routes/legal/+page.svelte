@@ -1,11 +1,23 @@
 <script lang="ts">
+	import { SITE_URL } from '$lib/config';
+	import { hreflangAll } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref } from '$lib/href';
+	import Seo from '$lib/components/Seo.svelte';
 
 	const t = i18n.t;
+
+	const path = '/legal';
+	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
 </script>
 
-<svelte:head><title>{t('legal.title')} — Ochorus</title></svelte:head>
+<Seo
+	title="{t('legal.title')} — Ochorus"
+	description={t('legal.metaDescription')}
+	{canonical}
+	hreflang={hreflangAll(path)}
+	ogImage="{SITE_URL}/og/default.png"
+/>
 
 <div class="mx-auto max-w-2xl px-5 py-12">
 	<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">Ochorus</p>
