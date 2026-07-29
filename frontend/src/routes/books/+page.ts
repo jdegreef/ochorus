@@ -118,6 +118,17 @@ import type { PageLoad } from './$types';
  * Holy Spirit (La Persona y la Obra del Espíritu Santo / Omuntu n'Omulimu
  * gw'Omwoyo Omutukuvu / Nafsi na Kazi ya Roho Mtakatifu, PR #365) went live, so
  * the /es|/lg|/sw books indexes and their /books/<slug> pages re-crawl and bake.
+ *
+ * Prerender refresh 2026-07-29 (queue job #476): the first Portuguese book —
+ * The Inner Chamber (A Câmara Interior), 36 ch — ships (PR #522). The /pt books
+ * index and /pt/books/the-inner-chamber with its chapter pages re-crawl and
+ * bake the translation.
+ *
+ * Prerender refresh 2026-07-29 (queue jobs #484/#485/#491/#506/#507): the rest
+ * of the Portuguese library — Vestida de Força e Dignidade, A Chave na Minha
+ * Mão, O batismo com o Espírito Santo, Piedade and O Próprio Jesus, 53 chapters
+ * in all — ships (PR #534), so the /pt books index and each /pt/books/<slug>
+ * with its chapter pages re-crawl and bake the translations.
  */
 export const load: PageLoad = async () => {
 	try {

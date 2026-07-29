@@ -31,6 +31,11 @@ import type { PageLoad } from './$types';
  * /plans before it was served, so the baked cards lack the "Day 1 · book —
  * chapter" line (hydration adds it; first paint and no-JS don't). This touch
  * re-crawls once the field is live. Verified 8/8 plans return day_one.
+ *
+ * Prerender refresh 2026-07-29 (queue job #492): A Month in the Inner Chamber
+ * gained its Portuguese prose (Um Mês na Câmara Interior, PR #533). The pt plan
+ * row was auto-created when The Inner Chamber shipped in pt and had been
+ * falling back to the English title, so /pt/plans re-crawls and bakes it.
  */
 export const load: PageLoad = async () => {
 	// Tolerate a lagging/absent plans endpoint at prerender time (api + web can
