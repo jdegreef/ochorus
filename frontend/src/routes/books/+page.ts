@@ -123,6 +123,12 @@ import type { PageLoad } from './$types';
  * The Inner Chamber (A Câmara Interior), 36 ch — ships (PR #522). The /pt books
  * index and /pt/books/the-inner-chamber with its chapter pages re-crawl and
  * bake the translation.
+ *
+ * Prerender refresh 2026-07-29 (queue jobs #484/#485/#491/#506/#507): the rest
+ * of the Portuguese library — Vestida de Força e Dignidade, A Chave na Minha
+ * Mão, O batismo com o Espírito Santo, Piedade and O Próprio Jesus, 53 chapters
+ * in all — ships (PR #534), so the /pt books index and each /pt/books/<slug>
+ * with its chapter pages re-crawl and bake the translations.
  */
 export const load: PageLoad = async () => {
 	try {
