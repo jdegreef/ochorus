@@ -136,7 +136,7 @@
 		{/if}
 
 		<div class="flex-1">
-			<h1 class="text-h1">{book.title}</h1>
+			<h1 class="text-h1" dir="auto">{book.title}</h1>
 			{#if book.subtitle}<p class="mt-1 text-h3 text-muted">{book.subtitle}</p>{/if}
 			<!-- Separator as an expression, not literal text: the span's leading space
 			     sits at an {#if} boundary and gets compiler-trimmed, which rendered
@@ -234,7 +234,7 @@
 	</header>
 
 	{#if book.author.bio}
-		<p class="mt-7 max-w-xl text-body text-muted">{book.author.bio}</p>
+		<p class="mt-7 max-w-xl text-body text-muted" dir="auto">{book.author.bio}</p>
 	{/if}
 
 	{#if book.topics?.length}
@@ -261,7 +261,7 @@
 						class="flex items-baseline gap-3 py-2.5 hover:no-underline"
 					>
 						<span class="w-6 shrink-0 text-small text-muted">{ch.order}</span>
-						<span class="flex-1 text-body text-text">{ch.title}</span>
+						<span class="flex-1 text-body text-text" dir="auto">{ch.title}</span>
 						<span class="text-[0.8rem] text-muted">{readingMinutes(ch.word_count)} {t('common.min')}</span>
 					</a>
 				</li>
