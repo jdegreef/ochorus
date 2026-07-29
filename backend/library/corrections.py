@@ -102,6 +102,29 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 import re as _re
 
 BODY_CORRECTIONS: dict[str, dict] = {
+    "baptism-with-the-holy-spirit": {
+        # Source defects (OCR) in the English text, found while translating the
+        # book to Portuguese. Both are scripture references only — the prose is
+        # untouched. The surrounding reference lists use hyphenated ranges
+        # ("Acts 9:17, 20-22"), so the stray colon is plainly a mis-read; and
+        # the Saul/Jabesh-Gilead passage quoted is 1 Samuel 11:6, "11" being an
+        # OCR of the roman "I".
+        "replacements": [
+            ("Acts 4:8:13", "Acts 4:8-13"),
+            ("(11 Samuel 11:6)", "(1 Samuel 11:6)"),
+        ],
+    },
+    "the-key-in-my-hand": {
+        # Source defects found while translating the book to Portuguese.
+        # The verse-range typo also reached the sw/lg/pt editions, so the
+        # replacement is written to match in any language (the book name is
+        # localized around it, the numerals are not).
+        "replacements": [
+            ("18:19-10", "18:19-20"),          # quoted text is Matt 18:20
+            ("armor of God of God", "armor of God"),
+            ("God sees they as a sinner", "God sees them as a sinner"),
+        ],
+    },
     "the-way-to-god": {
         # Source defect (Gutenberg #30449, ch. 8): the epigraph line lost its
         # quotation and opening paren — only "Colossians iii. 11.)" remains.
