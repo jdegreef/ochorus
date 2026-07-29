@@ -9,6 +9,7 @@
 	import { listen } from '$lib/listen.svelte';
 	import { browser } from '$app/environment';
 	import { lang } from '$lib/lang.svelte';
+	import { isAdvertised } from '$lib/advertised-locales';
 	import { i18n } from '$lib/i18n.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { pwa } from '$lib/pwa.svelte';
@@ -81,11 +82,17 @@
 	// Mobile nav drawer (collapsed behind a hamburger on small screens).
 	let navOpen = $state(false);
 
-	// Footer language strip: every UI locale, named in its own language, linking
-	// to that locale's home page. Derived from `lang.available` (which reads the
-	// Paraglide locale list), so a newly wired locale appears here on its own
-	// rather than needing a second list kept in sync.
-	const footerLangs = $derived(lang.available);
+	// Footer language strip: the ADVERTISED locales, named in their own language,
+	// linking to that locale's home. Advertised — not every UI locale — because
+	// this strip is a promise: "Ochorus is available in your language." A locale
+	// with no books (pt and ar today) delivers a fully translated interface
+	// wrapped around an empty library, which is a worse first impression than not
+	// offering it. Same rule the sitemap and hreflang use, so the site makes one
+	// consistent claim about which languages it serves.
+	//
+	// Those locales stay switchable in the header picker, so a reader who wants
+	// the translated UI can still have it — this only stops us advertising it.
+	const footerLangs = $derived(lang.available.filter((l) => isAdvertised(l.code)));
 </script>
 
 <svelte:head>
