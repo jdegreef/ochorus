@@ -23,7 +23,8 @@ export const LOCALE_NAMES: Record<string, string> = {
 	es: 'Español',
 	sw: 'Kiswahili',
 	lg: 'Luganda',
-	pt: 'Português'
+	pt: 'Português',
+	ar: 'العربية'
 };
 
 export function getLang(): string {
