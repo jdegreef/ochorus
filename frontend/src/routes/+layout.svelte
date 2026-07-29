@@ -12,7 +12,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { pwa } from '$lib/pwa.svelte';
-	import { localizeHref, getLocale, getTextDirection } from '$lib/paraglide/runtime';
+	import { localizeHref, getLocale, getTextDirection, locales } from '$lib/paraglide/runtime';
 	import AccountMenu from '$lib/components/AccountMenu.svelte';
 	import QuickSettings from '$lib/components/QuickSettings.svelte';
 	import { MEASURE, PAGE_SCALE } from '$lib/readerPrefs.svelte';
@@ -80,6 +80,12 @@
 
 	// Mobile nav drawer (collapsed behind a hamburger on small screens).
 	let navOpen = $state(false);
+
+	// Footer language strip: every UI locale, named in its own language, linking
+	// to that locale's home page. Derived from `lang.available` (which reads the
+	// Paraglide locale list), so a newly wired locale appears here on its own
+	// rather than needing a second list kept in sync.
+	const footerLangs = $derived(lang.available);
 </script>
 
 <svelte:head>
@@ -182,6 +188,43 @@
 					</p>
 				</div>
 			</div>
+			<!-- Language strip. Each locale is named in its OWN language (Español, not
+			     "Spanish") — a reader scanning for their language recognises the
+			     autonym, not the English exonym. Real <a href>s so crawlers can reach
+			     every locale's home, but the click goes through lang.set(): Paraglide
+			     resolves the locale from the URL prefix, and a client-side navigation
+			     would change the URL without re-resolving it. No hreflang attribute
+			     here — on an <a> it carries no SEO weight (Google reads it from head
+			     <link>, the sitemap, or headers) and it makes audit tools report
+			     phantom broken alternates on every page. -->
+			<nav
+				class="border-t border-border"
+				aria-label={t('footer.languages')}
+			>
+				<div
+					class="mx-auto flex max-w-5xl flex-wrap items-baseline gap-x-4 gap-y-2 px-5 py-5 text-[0.78rem]"
+				>
+					<span class="font-semibold uppercase tracking-wider text-text">{t('footer.languages')}</span>
+					{#each footerLangs as l (l.code)}
+						<!-- nowrap per item: a language name breaking mid-word ("Kiswa- hili")
+						     is worse than the row wrapping between names. -->
+						{#if l.code === lang.current}
+							<span class="whitespace-nowrap font-semibold text-text" aria-current="true"
+								>{l.native_name}</span
+							>
+						{:else}
+							<a
+								href={localizeHref('/', { locale: l.code as (typeof locales)[number] })}
+								class="whitespace-nowrap text-muted hover:text-text"
+								onclick={(e) => {
+									e.preventDefault();
+									lang.set(l.code);
+								}}>{l.native_name}</a
+							>
+						{/if}
+					{/each}
+				</div>
+			</nav>
 		</footer>
 	{/if}
 </div>

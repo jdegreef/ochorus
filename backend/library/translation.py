@@ -134,6 +134,29 @@ LANGUAGES: dict[str, dict] = {
             "surrender": "entrega / rendição",
         },
     },
+    "ar": {
+        "name": "Arabic",
+        "native": "العربية",
+        # Smith–Van Dyck (1865): the standard Arabic Bible and the register
+        # Arabic Christian readers expect for devotional prose. Public domain —
+        # verified against Take Root's catalog (is_public_domain: true) and the
+        # live API.
+        "bible": "arb-vd",
+        "bible_label": "Van Dyck (1865)",
+        "glossary": {
+            "justification": "التبرير",
+            "sanctification": "التقديس",
+            "atonement": "الكفّارة",
+            "grace": "النعمة",
+            "the flesh": "الجسد",
+            "abide": "الثبات",
+            "the Holy Spirit": "الروح القدس",
+            "the Lord": "الرب",
+            "godliness": "التقوى",
+            "intercession": "الشفاعة",
+            "surrender": "التسليم",
+        },
+    },
 }
 
 # --- Bible reference detection ------------------------------------------------
