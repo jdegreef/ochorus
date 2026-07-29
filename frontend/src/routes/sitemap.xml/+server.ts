@@ -1,6 +1,7 @@
 import { SITE_URL } from '$lib/config';
 import { listAuthors, listBooks, listPlans, listSermons, listTopics } from '$lib/library';
 import { locales } from '$lib/paraglide/runtime';
+import { ERAS, eraOf } from '$lib/eras';
 
 export const prerender = true;
 
@@ -70,6 +71,15 @@ export async function GET() {
 	for (const { books } of perLocale) for (const b of books) authorSlugs.add(b.author.slug);
 	for (const slug of authorSlugs) {
 		entries.push({ byLocale: new Map(locales.map((l) => [l, `/authors/${slug}/`])) });
+	}
+
+	// Per-era biography landing pages — only eras that actually have writers
+	// (mirrors the route's entries()). Like author pages, they exist in every
+	// locale (bios fall back to English).
+	const presentEras = new Set(authors.map((a) => eraOf(a.birth_year)));
+	for (const e of ERAS) {
+		if (!presentEras.has(e.id)) continue;
+		entries.push({ byLocale: new Map(locales.map((l) => [l, `/biographies/era/${e.id}/`])) });
 	}
 
 	// Books / sermons / topics / plans: one entry per work, listing only the

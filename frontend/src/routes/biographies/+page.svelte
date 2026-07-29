@@ -2,13 +2,14 @@
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { type AuthorBio, type BookSummary, formatLifespan } from '$lib/library';
+	import { type AuthorBio, type BookSummary } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumb } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { locales } from '$lib/paraglide/runtime';
-	import BookCover from '$lib/components/BookCover.svelte';
+	import { ERAS, eraOf, type EraId } from '$lib/eras';
+	import AuthorBioCard from '$lib/components/AuthorBioCard.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 
 	const t = i18n.t;
@@ -27,9 +28,6 @@
 		}
 		return m;
 	});
-
-	const initials = (name: string) =>
-		name.split(' ').filter(Boolean).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
 
 	// --- Search · filter · sort -------------------------------------------------
 	// Value lists are the single source of truth: the Filter/Sort types derive
@@ -155,30 +153,7 @@
 	];
 
 	// --- Eras -------------------------------------------------------------------
-	// Named church-history buckets derived purely from birth year (no per-author
-	// data). The label characterises the era; the year range beside it keeps the
-	// generalisation honest. Undated writers (Ochorus' contemporary contributors)
-	// fall to a trailing "Contemporary" group.
-	type EraId = 'early' | 'puritans' | 'awakenings' | 'missionary' | 'modern' | 'contemporary';
-	// `until` is the exclusive upper bound on birth year and is the single source
-	// of truth; `range` is only its display form, kept on the same row so the two
-	// can't drift. `until: null` marks the undated bucket.
-	//
-	// The first cut is 1480, not 1500: the Reformers had to land under "Puritans &
-	// Reformers", and Luther (b. 1483), Zwingli (1484), Cranmer (1489) and Tyndale
-	// (1494) are all plausible additions here. A 1500 cut would have filed them
-	// under "The Early Church & Middle Ages" — relocating the very mislabel this
-	// bucket was added to fix (Augustine, b. 354, reading as a Puritan).
-	const ERAS: { id: EraId; k: string; until: number | null; range: string }[] = [
-		{ id: 'early', k: 'bios.eraEarly', until: 1480, range: '–1479' },
-		{ id: 'puritans', k: 'bios.eraPuritans', until: 1700, range: '1480–1699' },
-		{ id: 'awakenings', k: 'bios.eraAwakenings', until: 1800, range: '1700–1799' },
-		{ id: 'missionary', k: 'bios.eraMissionary', until: 1900, range: '1800–1899' },
-		{ id: 'modern', k: 'bios.eraModern', until: Infinity, range: '1900–' },
-		{ id: 'contemporary', k: 'bios.eraContemporary', until: null, range: '' }
-	];
-	const eraOf = (birth: number | null): EraId =>
-		birth == null ? 'contemporary' : ERAS.find((e) => e.until != null && birth < e.until)!.id;
+	// ERAS / eraOf live in $lib/eras (shared with the per-era landing pages).
 	// Grouped, era-ordered sections built from `sorted` (already ascending by
 	// birth year in the era sort), keeping only eras that have writers.
 	const eraGroups = $derived.by(() => {
@@ -351,103 +326,6 @@
 		</nav>
 	{/if}
 
-	{#snippet card(author: AuthorBio)}
-		{@const shelf = booksByAuthor.get(author.slug) ?? []}
-			<article id={author.slug} class="scroll-mt-24">
-				<div class="flex items-center gap-4">
-					<a href={localizeHref(`/authors/${author.slug}`)} class="shrink-0 hover:no-underline">
-						{#if author.photo_url}
-							<img
-								src={author.photo_url}
-								alt="{t('a11y.portraitOf')} {author.name}"
-								loading="lazy"
-								width="56"
-								height="56"
-								class="h-14 w-14 rounded-full border border-border object-cover"
-								style="filter: grayscale(1)"
-							/>
-						{:else}
-							<span
-								class="flex h-14 w-14 items-center justify-center rounded-full bg-accent-soft text-h3 font-semibold text-accent"
-								style="font-family: var(--font-display)"
-							>
-								{initials(author.name)}
-							</span>
-						{/if}
-					</a>
-					<div>
-						<h2 class="text-h2">
-							<a href={localizeHref(`/authors/${author.slug}`)} class="!text-text hover:underline">{author.name}</a>
-							{#if author.birth_year}
-								<!-- nowrap: the dates were breaking after the en-dash ("1843–" / "1919"). -->
-								<span class="ml-2 whitespace-nowrap text-body font-normal text-muted"
-									>{formatLifespan(author.birth_year, author.death_year, t('common.bornPrefix'))}</span
-								>
-							{/if}
-							{#if author.has_long_bio}
-								<span
-									class="ml-2 align-middle rounded-full bg-accent-soft px-2 py-0.5 text-[0.68rem] font-semibold uppercase tracking-wide text-accent"
-									title={t('bios.fullLifeHint')}
-								>
-									{t('bios.fullLife')}
-								</span>
-							{/if}
-						</h2>
-						<a href={localizeHref(`/authors/${author.slug}`)} class="text-small font-semibold text-accent">
-							{#if author.book_count > 0}
-								{author.book_count}
-								{author.book_count === 1 ? t('bios.booksInLibraryOne') : t('bios.booksInLibraryMany')}
-								{#if author.sermon_count > 0}
-									· {author.sermon_count}
-									{author.sermon_count === 1 ? t('bios.sermonsOne') : t('bios.sermonsMany')}
-								{/if}
-								→
-							{:else if author.sermon_count > 0}
-								{author.sermon_count}
-								{author.sermon_count === 1 ? t('bios.sermonsOne') : t('bios.sermonsMany')} →
-							{:else}
-								{t('bios.viewBiography')} →
-							{/if}
-						</a>
-					</div>
-				</div>
-				<!-- Every writer carries a short mini-bio (2–4 sentences), localized to
-				     the reader's language. Rendered in full — the summaries are authored
-				     to card length, so we show complete sentences rather than clamping
-				     mid-word. The `{#if}` guards the rare row that still lacks prose. -->
-				{#if author.bio}
-					<p class="mt-4 text-body leading-relaxed text-muted">{author.bio}</p>
-				{/if}
-				<!-- The "View biography →" CTA above already serves book-less authors;
-				     add the read-more only where the CTA is a book count AND there is
-				     actually a biography to go and read. -->
-				{#if author.book_count > 0 && author.bio}
-					<a
-						href={localizeHref(`/authors/${author.slug}`)}
-						class="mt-1.5 inline-block text-small font-semibold text-accent"
-					>
-						{t('bios.readMore')} →
-					</a>
-				{/if}
-
-				<!-- Their works: a scrollable strip of the writer's books, straight
-				     into the reader. -->
-				{#if shelf.length}
-					<div class="mt-4 flex gap-3 overflow-x-auto pb-1" aria-label={t('nav.books')}>
-						{#each shelf.slice(0, 8) as book (book.slug)}
-							<a
-								href={localizeHref(`/books/${book.slug}`)}
-								class="w-16 shrink-0 hover:no-underline"
-								title={book.title}
-							>
-								<BookCover {book} />
-							</a>
-						{/each}
-					</div>
-				{/if}
-			</article>
-	{/snippet}
-
 	{#if sorted.length === 0}
 		<div class="py-16 text-center">
 			<p class="text-body text-muted">{t('bios.noResults')}</p>
@@ -473,7 +351,10 @@
 		{#each eraGroups as g (g.era.id)}
 			<section id="era-{g.era.id}" class="mb-12 scroll-mt-24">
 				<h2 class="mb-6 flex items-baseline gap-2 border-b border-border pb-2 text-h3 text-text">
-					{t(g.era.k)}
+					<a
+						href={localizeHref(`/biographies/era/${g.era.id}`)}
+						class="!text-text hover:text-accent hover:no-underline">{t(g.era.k)}</a
+					>
 					<!-- Same nowrap rule as the per-writer dates: a year range must never
 					     break across lines ("–" / "1499"). The longer era names make the
 					     heading wrap on narrow screens, so this is load-bearing here. -->
@@ -482,7 +363,7 @@
 				</h2>
 				<div class="space-y-10">
 					{#each g.authors as author (author.slug)}
-						{@render card(author)}
+						<AuthorBioCard {author} shelf={booksByAuthor.get(author.slug) ?? []} />
 					{/each}
 				</div>
 			</section>
@@ -490,7 +371,7 @@
 	{:else}
 		<div class="space-y-10">
 			{#each sorted as author (author.slug)}
-				{@render card(author)}
+				<AuthorBioCard {author} shelf={booksByAuthor.get(author.slug) ?? []} />
 			{/each}
 		</div>
 	{/if}
