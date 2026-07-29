@@ -20,6 +20,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { readingTime, readingMinutes } from '$lib/reading';
+	import { pageOfOffset } from '$lib/pageMath';
 	import { listen } from '$lib/listen.svelte';
 	import { define } from '$lib/define.svelte';
 	import { scripture } from '$lib/scripture.svelte';
@@ -251,9 +252,22 @@
 		window.scrollTo({ top: Math.max(0, bodyTop - window.innerHeight + frac * rect.height) });
 	}
 
+	// Paging follows the CONTENT's direction, not the UI's: an English book pages
+	// left-to-right even under an Arabic shell, and an Arabic book pages
+	// right-to-left even under an English one. The browser's own bidi resolution
+	// of the body's dir="auto" is the source of truth — no API field to add, and
+	// it stays correct through localized()'s silent English fallback.
+	let contentRtl = $state(false);
+	// offsetLeft of the first element in the column flow. In LTR it is the left
+	// padding; in RTL the columns overflow LEFT, so offsetLeft counts DOWN from
+	// here (measured: 656 → 32 → -592 at pageW 1248). Distance from this origin is
+	// direction-agnostic, and in LTR gives byte-identical results to the old
+	// `offsetLeft / pageW`.
+	let flowOrigin = 0;
+
 	/** Which page a body child (paragraph) sits on — transform-independent. */
 	function pageOf(el: HTMLElement): number {
-		return pageW > 0 ? Math.max(0, Math.floor(el.offsetLeft / pageW)) : 0;
+		return pageOfOffset(el.offsetLeft, flowOrigin, pageW);
 	}
 	/** Index of the first paragraph laid out on a given page (top-left of it). */
 	function firstIndexOnPage(p: number): number {
@@ -281,6 +295,14 @@
 		// reflows against them synchronously (Svelte's reactive style flush is async).
 		pager.style.setProperty('--page-w', `${w}px`);
 		pager.style.setProperty('--cols', `${cols}`);
+		// Resolve the content direction, then drive the column flow from it. Setting
+		// it on the pager (rather than letting it inherit the locale) is what makes
+		// the column geometry match the text.
+		contentRtl = body ? getComputedStyle(body).direction === 'rtl' : false;
+		pager.style.direction = contentRtl ? 'rtl' : 'ltr';
+		// Sign for the page transform: RTL pages advance to the right.
+		pager.style.setProperty('--page-dir', contentRtl ? '-1' : '1');
+		flowOrigin = titleEl ? titleEl.offsetLeft : 0;
 		// Pages are `pageW`-wide windows over the column flow. ceil (with a small
 		// epsilon to absorb sub-pixel over-report) counts a trailing partial page —
 		// needed for a two-column spread whose last page may hold a single column.
@@ -472,13 +494,14 @@
 		}
 		if (e.key === 'ArrowRight') {
 			e.preventDefault();
+			// Physical key → logical direction: in RTL, right is BACKWARDS.
 			if (listen.status !== 'idle') listen.skip(1);
-			else if (paged) turnPage(1);
+			else if (paged) turnPage(contentRtl ? -1 : 1);
 			else gotoChapter(chapter.next);
 		} else if (e.key === 'ArrowLeft') {
 			e.preventDefault();
 			if (listen.status !== 'idle') listen.skip(-1);
-			else if (paged) turnPage(-1);
+			else if (paged) turnPage(contentRtl ? 1 : -1);
 			else gotoChapter(chapter.prev);
 		} else if (e.key === ' ') {
 			e.preventDefault();
@@ -510,8 +533,9 @@
 		if (window.getSelection()?.toString()) return;
 		const x = e.clientX / window.innerWidth;
 		if (paged) {
-			if (x < 0.15) turnPage(-1);
-			else if (x > 0.85) turnPage(1);
+			// Edge taps are physical; the page they turn to is logical.
+			if (x < 0.15) turnPage(contentRtl ? 1 : -1);
+			else if (x > 0.85) turnPage(contentRtl ? -1 : 1);
 		} else if (x < 0.15) gotoChapter(chapter.prev);
 		else if (x > 0.85) gotoChapter(chapter.next);
 	}
@@ -901,10 +925,20 @@
      is already an invisible tap zone; these are the visible affordance for
      pointer users, and roll over to the adjacent chapter at a chapter's ends. -->
 {#if paged}
-	<button class="pageturn left" onclick={() => turnPage(-1)} aria-label={t('reader.previous')} title={t('reader.previous')}>
+	<button
+		class="pageturn left"
+		onclick={() => turnPage(contentRtl ? 1 : -1)}
+		aria-label={contentRtl ? t('reader.next') : t('reader.previous')}
+		title={contentRtl ? t('reader.next') : t('reader.previous')}
+	>
 		<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6" /></svg>
 	</button>
-	<button class="pageturn right" onclick={() => turnPage(1)} aria-label={t('reader.next')} title={t('reader.next')}>
+	<button
+		class="pageturn right"
+		onclick={() => turnPage(contentRtl ? -1 : 1)}
+		aria-label={contentRtl ? t('reader.previous') : t('reader.next')}
+		title={contentRtl ? t('reader.previous') : t('reader.next')}
+	>
 		<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
 	</button>
 {/if}
@@ -1066,7 +1100,8 @@
 		column-width: calc(var(--page-w) / var(--cols) - 2 * var(--pgpad));
 		column-gap: calc(2 * var(--pgpad));
 		column-fill: auto;
-		transform: translateX(calc(-1 * var(--page-idx) * var(--page-w)));
+		/* --page-dir is 1 (LTR) or -1 (RTL): RTL pages advance rightwards. */
+		transform: translateX(calc(var(--page-dir, 1) * -1 * var(--page-idx) * var(--page-w)));
 		transition: transform 0.28s ease;
 	}
 	/* A touch more breathing room around a two-column spread. */
