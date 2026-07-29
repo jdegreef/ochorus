@@ -129,6 +129,12 @@ import type { PageLoad } from './$types';
  * Mão, O batismo com o Espírito Santo, Piedade and O Próprio Jesus, 53 chapters
  * in all — ships (PR #534), so the /pt books index and each /pt/books/<slug>
  * with its chapter pages re-crawl and bake the translations.
+ *
+ * Prerender refresh 2026-07-29 (salvaged from #525): Senhor, Ensina-nos a Orar
+ * (Lord, Teach Us To Pray), 4 ch — the one book #525 still had that main
+ * lacked — ships (PR #558), so the /pt books index and
+ * /pt/books/lord-teach-us-to-pray-2 with its chapter pages re-crawl and bake
+ * the translation.
  */
 export const load: PageLoad = async () => {
 	try {
