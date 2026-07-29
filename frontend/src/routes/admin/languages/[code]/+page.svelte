@@ -223,8 +223,12 @@
 							{v.label}
 						</button>
 					{/each}
+					<!-- "Live" means published, NOT necessarily reachable: the public
+					     site is a prerendered static build, so a newly published row
+					     only appears after the next frontend deploy — and only if the
+					     language is one of the URL locales compiled into the app. -->
 					<span class="text-small text-muted">
-						{#if view === 'live'}Published translations a reader can reach today.
+						{#if view === 'live'}Published — reaches readers after the next site build.
 						{:else if view === 'suggested'}Ranked queue of what to translate next.
 						{:else}Everything — translated and suggested.{/if}
 					</span>
