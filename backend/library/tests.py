@@ -1158,6 +1158,53 @@ class TopicTests(TestCase):
             ).exists()
         )
 
+    def test_every_translated_language_covers_every_topic(self):
+        """A language in TOPIC_TRANSLATIONS must cover ALL topics, not some.
+
+        There is no English fallback: a topic missing from a language's block is
+        omitted from that language's shelf list entirely. So a partial language
+        silently ships a partial set of shelves — the same discipline as the
+        per-language glossaries, which are pinned the same way.
+        """
+        from library.management.commands.seed_topics import (
+            TOPIC_TRANSLATIONS,
+            TOPICS,
+        )
+
+        slugs = {t[0] for t in TOPICS}
+        for lang, per_topic in TOPIC_TRANSLATIONS.items():
+            with self.subTest(language=lang):
+                self.assertEqual(
+                    set(per_topic),
+                    slugs,
+                    f"{lang}: translated topics differ from the seeded topics",
+                )
+                for slug, pair in per_topic.items():
+                    title, description = pair
+                    self.assertTrue(title.strip(), f"{lang}/{slug}: empty title")
+                    self.assertTrue(
+                        description.strip(), f"{lang}/{slug}: empty description"
+                    )
+
+    def test_seed_topics_translates_every_advertised_language(self):
+        """es, sw, lg and pt all get real shelves — not English ones, and not none.
+
+        Guards the regression this batch fixed: before these translations landed,
+        /es and /sw had six shelves whose titles were English, and closing that
+        leak emptied both pages until the prose existed.
+        """
+        from django.core.management import call_command
+
+        call_command("seed_topics")
+        topic = Topic.objects.get(slug="deeper-life")
+        english = topic.title_for("en")
+        for lang in ("es", "sw", "lg", "pt"):
+            with self.subTest(language=lang):
+                title = topic.title_for(lang)
+                self.assertTrue(title, f"{lang}: no translated title")
+                self.assertNotEqual(title, english, f"{lang}: title is the English")
+                self.assertTrue(topic.is_translated_into(lang))
+
     def test_seed_topics_populates_lg_translations(self):
         from django.core.management import call_command
 
