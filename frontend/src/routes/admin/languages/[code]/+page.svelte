@@ -6,11 +6,7 @@
 		getAdminTranslationJobs,
 		createAdminTranslationJob,
 		type AdminLangBio,
-		type AdminLangBook,
-		type AdminLangPlan,
-		type AdminLangSermon,
 		type AdminLanguageDetail,
-		type AdminLangTodo,
 		type AdminTranslationJob,
 		type SourceType,
 		type TranslationJobType
@@ -111,20 +107,8 @@
 	const suggested = <T,>(rows: T[]): T[] => (view === 'live' ? [] : rows);
 
 	// One derived view of the payload, so the template stays declarative —
-	// Svelte 5 won't allow {@const} as a direct child of <section>. Typed
-	// explicitly: inference through `present()` collapses to its constraint
-	// once `detail` may be null, which loses `name`/`reviewed` on the bios.
-	interface Shown {
-		books: AdminLangBook[];
-		sermons: AdminLangSermon[];
-		plans: AdminLangPlan[];
-		bios: AdminLangBio[];
-		todoBooks: AdminLangTodo['books'];
-		todoSermons: AdminLangTodo['sermons'];
-		todoPlans: AdminLangTodo['plans'];
-		todoBios: AdminLangTodo['bios'];
-	}
-	const shown: Shown = $derived({
+	// Svelte 5 won't allow {@const} as a direct child of <section>.
+	const shown = $derived({
 		books: present(detail?.books ?? []),
 		sermons: present(detail?.sermons ?? []),
 		plans: present(detail?.plans ?? []),
@@ -143,10 +127,10 @@
 	const fmt = (n: number | null | undefined) => nf.format(n ?? 0);
 
 	/** "5 books, 13 sermons" — why this author is where they are in the queue. */
-	const worksLabel = (a: { books: number; sermons: number }) =>
+	const worksLabel = (a: { book_count: number; sermon_count: number }) =>
 		[
-			a.books && `${fmt(a.books)} book${a.books === 1 ? '' : 's'}`,
-			a.sermons && `${fmt(a.sermons)} sermon${a.sermons === 1 ? '' : 's'}`
+			a.book_count && `${fmt(a.book_count)} book${a.book_count === 1 ? '' : 's'}`,
+			a.sermon_count && `${fmt(a.sermon_count)} sermon${a.sermon_count === 1 ? '' : 's'}`
 		]
 			.filter(Boolean)
 			.join(', ');
@@ -230,9 +214,9 @@
 				<div class="mt-4 flex flex-wrap items-center gap-2" role="group" aria-label="Filter what each section shows">
 					{#each VIEWS as v (v.id)}
 						<button
-							class="rounded-full border px-3 py-1 text-small transition-colors {view === v.id
-								? 'border-accent-soft-border bg-accent-soft font-semibold text-accent'
-								: 'border-border bg-surface text-muted hover:text-text'}"
+							class="rounded-full border px-3.5 py-1.5 text-small font-semibold {view === v.id
+								? 'border-accent-soft-border bg-accent-soft text-accent'
+								: 'border-border text-muted hover:text-text'}"
 							aria-pressed={view === v.id}
 							onclick={() => (view = v.id)}
 						>

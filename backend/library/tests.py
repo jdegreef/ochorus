@@ -1696,9 +1696,9 @@ class AdminLanguageDetailTests(TestCase):
         # but books break the tie — then Aaron, who carries nothing, last
         # despite sorting first alphabetically.
         self.assertEqual([a["slug"] for a in todo], ["am", "zz-many", "aa-one"])
-        self.assertEqual(todo[0]["books"], 3)
-        self.assertEqual(todo[0]["sermons"], 1)
-        self.assertEqual(todo[2]["books"], 0)
+        self.assertEqual(todo[0]["book_count"], 3)
+        self.assertEqual(todo[0]["sermon_count"], 1)
+        self.assertEqual(todo[2]["book_count"], 0)
 
     @override_settings(DEBUG=True)
     def test_source_language_has_no_todo(self):

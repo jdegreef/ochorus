@@ -401,27 +401,16 @@ class AdminLanguageDetailView(APIView):
         qs = (
             Author.objects.exclude(bio_html="")
             .exclude(slug__in=translated)
-            .annotate(
-                n_books=Count(
-                    "books",
-                    filter=Q(books__language="en", books__is_published=True),
-                    distinct=True,
-                ),
-                n_sermons=Count(
-                    "sermons",
-                    filter=Q(sermons__language="en", sermons__is_published=True),
-                    distinct=True,
-                ),
-            )
-            .annotate(n_works=F("n_books") + F("n_sermons"))
-            .order_by("-n_works", "-n_books", "name")[:TODO_LIMIT]
+            .with_work_counts("en")
+            .annotate(num_works=F("num_books") + F("num_sermons"))
+            .order_by("-num_works", "-num_books", "name")[:TODO_LIMIT]
         )
         return [
             {
                 "slug": a.slug,
                 "name": a.name,
-                "books": a.n_books,
-                "sermons": a.n_sermons,
+                "book_count": a.num_books,
+                "sermon_count": a.num_sermons,
             }
             for a in qs
         ]

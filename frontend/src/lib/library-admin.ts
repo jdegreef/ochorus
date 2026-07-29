@@ -110,7 +110,7 @@ export interface AdminLangTodo {
 	sermons: { slug: string; title: string; author: string }[];
 	plans: { slug: string; title: string }[];
 	/** Ranked by how much of the library the author carries — see _bios_todo. */
-	bios: { slug: string; name: string; books: number; sermons: number }[];
+	bios: { slug: string; name: string; book_count: number; sermon_count: number }[];
 }
 
 export interface AdminLanguageDetail {

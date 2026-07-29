@@ -81,23 +81,12 @@ class AuthorListView(generics.ListAPIView):
         # Imprints are excluded: this page — and the schema.org ItemList it
         # emits — describes people, and a house byline is not one.
         lang = _language(self.request)
+        # Sermons count too — a sermon-only author is part of the library and
+        # shouldn't read as empty on the shelf.
         return (
             Author.objects.filter(is_imprint=False)
             .prefetch_related("translations")
-            .annotate(
-                num_books=Count(
-                    "books",
-                    filter=Q(books__is_published=True, books__language=lang),
-                    distinct=True,
-                ),
-                # Sermons in this language too — a sermon-only author is part of
-                # the library and shouldn't read as empty on the shelf.
-                num_sermons=Count(
-                    "sermons",
-                    filter=Q(sermons__is_published=True, sermons__language=lang),
-                    distinct=True,
-                ),
-            )
+            .with_work_counts(lang)
             .filter(Q(num_books__gt=0) | Q(num_sermons__gt=0) | ~Q(bio=""))
             .order_by("name")
         )
