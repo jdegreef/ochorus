@@ -118,6 +118,33 @@ CURATED_PLANS = [
 # AI-drafted, pending native review.
 #   {language: {slug: (title, description)}}
 PLAN_TRANSLATIONS = {
+    "pt": {
+        "humility-12-days": (
+            "Humildade em 12 Dias",
+            "O clássico de Andrew Murray sobre a raiz de toda virtude — um "
+            "capítulo curto por dia durante doze dias.",
+        ),
+        "the-inner-chamber-month": (
+            "Um Mês na Câmara Interior",
+            "Construa o hábito diário da oração e da Palavra: trinta e seis "
+            "manhãs com Andrew Murray, um capítulo a cada dia.",
+        ),
+        "school-of-prayer": (
+            "Uma Escola de Oração",
+            "Quatro semanas na escola da oração com três guias: Andrew Murray "
+            "sobre como o próprio Senhor nos ensina a orar, D. L. Moody sobre a "
+            "oração perseverante e Hannah Buyinza sobre a oração como o pulso "
+            "diário da vida cristã.",
+        ),
+        "deeper-life-in-christ": (
+            "A Vida Mais Profunda: Cristo em Vós",
+            "Não mais esforço, mas uma Pessoa: o segredo da vida mais profunda é "
+            "o próprio Cristo vivendo em nós. Andrew Murray começa com a "
+            "maravilha de Jesus mesmo, depois desdobra a vida que habita no "
+            "interior, e Hudson Taylor conclui no repouso da união e comunhão "
+            "com o Amado.",
+        ),
+    },
     "es": {
         "power-from-on-high": (
             "Poder de lo alto: El Espíritu Santo",
