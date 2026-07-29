@@ -5,6 +5,7 @@
 		getAdminLanguageDetail,
 		getAdminTranslationJobs,
 		createAdminTranslationJob,
+		type AdminLangBio,
 		type AdminLanguageDetail,
 		type AdminTranslationJob,
 		type SourceType,
@@ -84,8 +85,55 @@
 		load(code);
 	});
 
+	// What each section shows. "Live" is what a reader can actually reach in this
+	// language right now (published rows only — an unpublished translation exists
+	// but serves nothing); "suggested" is the ranked queue of what to do next.
+	type View = 'all' | 'live' | 'suggested';
+	let view = $state<View>('all');
+	const VIEWS: { id: View; label: string }[] = [
+		{ id: 'all', label: 'All' },
+		{ id: 'live', label: 'Live on site' },
+		{ id: 'suggested', label: 'Suggested' }
+	];
+
+	/** Books/sermons/plans to list: none under "suggested", published-only under "live". */
+	const present = <T extends { is_published: boolean }>(rows: T[]): T[] =>
+		view === 'suggested' ? [] : view === 'live' ? rows.filter((r) => r.is_published) : rows;
+	/** Bios have no publish flag — a translated biography either exists or doesn't,
+	 *  and if it exists it is live. So "live" and "all" show the same rows. */
+	const presentBios = (rows: AdminLangBio[]): AdminLangBio[] =>
+		view === 'suggested' ? [] : rows;
+	/** Todo rows to list: hidden under "live". */
+	const suggested = <T,>(rows: T[]): T[] => (view === 'live' ? [] : rows);
+
+	// One derived view of the payload, so the template stays declarative —
+	// Svelte 5 won't allow {@const} as a direct child of <section>.
+	const shown = $derived({
+		books: present(detail?.books ?? []),
+		sermons: present(detail?.sermons ?? []),
+		plans: present(detail?.plans ?? []),
+		bios: presentBios(detail?.bios ?? []),
+		todoBooks: suggested(detail?.todo.books ?? []),
+		todoSermons: suggested(detail?.todo.sermons ?? []),
+		todoPlans: suggested(detail?.todo.plans ?? []),
+		todoBios: suggested(detail?.todo.bios ?? [])
+	});
+	// Under "suggested" an empty translated list is the point, not a gap.
+	const emptyLabel = $derived(
+		view === 'live' ? 'Nothing live yet.' : view === 'suggested' ? '' : 'None yet.'
+	);
+
 	const nf = new Intl.NumberFormat('en');
 	const fmt = (n: number | null | undefined) => nf.format(n ?? 0);
+
+	/** "5 books, 13 sermons" — why this author is where they are in the queue. */
+	const worksLabel = (a: { book_count: number; sermon_count: number }) =>
+		[
+			a.book_count && `${fmt(a.book_count)} book${a.book_count === 1 ? '' : 's'}`,
+			a.sermon_count && `${fmt(a.sermon_count)} sermon${a.sermon_count === 1 ? '' : 's'}`
+		]
+			.filter(Boolean)
+			.join(', ');
 
 	const SOURCE_BADGE: Record<SourceType, string> = {
 		public_domain: 'PD',
@@ -162,15 +210,39 @@
 					<strong class="text-text">{fmt(d.bios.length)}</strong>/{fmt(d.english_counts.bios)} long-form bios translated
 				</p>
 			{/if}
+			{#if !d.is_source}
+				<div class="mt-4 flex flex-wrap items-center gap-2" role="group" aria-label="Filter what each section shows">
+					{#each VIEWS as v (v.id)}
+						<button
+							class="rounded-full border px-3.5 py-1.5 text-small font-semibold {view === v.id
+								? 'border-accent-soft-border bg-accent-soft text-accent'
+								: 'border-border text-muted hover:text-text'}"
+							aria-pressed={view === v.id}
+							onclick={() => (view = v.id)}
+						>
+							{v.label}
+						</button>
+					{/each}
+					<!-- "Live" means published, NOT necessarily reachable: the public
+					     site is a prerendered static build, so a newly published row
+					     only appears after the next frontend deploy — and only if the
+					     language is one of the URL locales compiled into the app. -->
+					<span class="text-small text-muted">
+						{#if view === 'live'}Published — reaches readers after the next site build.
+						{:else if view === 'suggested'}Ranked queue of what to translate next.
+						{:else}Everything — translated and suggested.{/if}
+					</span>
+				</div>
+			{/if}
 		</header>
 
 		<div class="grid gap-6 md:grid-cols-2">
 			<!-- Books -->
 			<section class="rounded-2xl border border-border bg-surface p-5">
-				<h2 class="text-h3 mb-3">Books <span class="text-muted">({fmt(d.books.length)})</span></h2>
-				{#if d.books.length}
+				<h2 class="text-h3 mb-3">Books <span class="text-muted">({fmt(shown.books.length)})</span></h2>
+				{#if shown.books.length}
 					<ul class="space-y-2">
-						{#each d.books as b (b.slug)}
+						{#each shown.books as b (b.slug)}
 							<li class="flex items-start justify-between gap-3">
 								<a href="/books/{b.slug}" class="min-w-0 font-medium text-text hover:text-accent">
 									<span class="block truncate">{b.title}</span>
@@ -180,17 +252,17 @@
 							</li>
 						{/each}
 					</ul>
-				{:else}
-					<p class="text-body text-muted">None yet.</p>
+				{:else if emptyLabel}
+					<p class="text-body text-muted">{emptyLabel}</p>
 				{/if}
-				{#if d.todo.books.length}
+				{#if shown.todoBooks.length}
 					<div class="mt-4 border-t border-border pt-3">
 						<p class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">Next to work on</p>
 						{#if queueError}
 							<p class="mb-2 text-small text-gold">{queueError}</p>
 						{/if}
 						<ul class="space-y-1.5">
-							{#each d.todo.books as b (b.slug)}
+							{#each shown.todoBooks as b (b.slug)}
 								<li class="flex items-center justify-between gap-3 text-body">
 									<span class="min-w-0 truncate">
 										<a href="/books/{b.slug}" class="text-accent hover:underline">{b.title}</a>
@@ -206,30 +278,35 @@
 
 			<!-- Long-form bios -->
 			<section class="rounded-2xl border border-border bg-surface p-5">
-				<h2 class="text-h3 mb-3">Long-form bios <span class="text-muted">({fmt(d.bios.length)})</span></h2>
-				{#if d.bios.length}
+				<h2 class="text-h3 mb-3">Long-form bios <span class="text-muted">({fmt(shown.bios.length)})</span></h2>
+				{#if shown.bios.length}
 					<ul class="space-y-2">
-						{#each d.bios as a (a.slug)}
+						{#each shown.bios as a (a.slug)}
 							<li class="flex items-center justify-between gap-3">
 								<a href="/authors/{a.slug}" class="min-w-0 truncate font-medium text-text hover:text-accent">{a.name}</a>
 								{#if !a.reviewed}<span class="shrink-0 text-small text-gold" title="AI translation, unreviewed">unreviewed</span>{/if}
 							</li>
 						{/each}
 					</ul>
-				{:else}
-					<p class="text-body text-muted">None yet.</p>
+				{:else if emptyLabel}
+					<p class="text-body text-muted">{emptyLabel}</p>
 				{/if}
-				{#if d.todo.bios.length}
+				{#if shown.todoBios.length}
 					<div class="mt-4 border-t border-border pt-3">
-						<p class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">Next to work on</p>
+						<p class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">
+							Next to work on <span class="font-normal normal-case tracking-normal">· most-published authors first</span>
+						</p>
 						{#if queueError}
 							<p class="mb-2 text-small text-gold">{queueError}</p>
 						{/if}
 						<ul class="space-y-1.5">
-							{#each d.todo.bios as a (a.slug)}
+							{#each shown.todoBios as a (a.slug)}
 								<li class="flex items-center justify-between gap-3 text-body">
 									<span class="min-w-0 truncate">
 										<a href="/authors/{a.slug}" class="text-accent hover:underline">{a.name}</a>
+										{#if worksLabel(a)}
+											<span class="text-small text-muted">· {worksLabel(a)}</span>
+										{/if}
 									</span>
 									{@render queueControl('bio', a.slug)}
 								</li>
@@ -241,10 +318,10 @@
 
 			<!-- Sermons -->
 			<section class="rounded-2xl border border-border bg-surface p-5">
-				<h2 class="text-h3 mb-3">Sermons <span class="text-muted">({fmt(d.sermons.length)})</span></h2>
-				{#if d.sermons.length}
+				<h2 class="text-h3 mb-3">Sermons <span class="text-muted">({fmt(shown.sermons.length)})</span></h2>
+				{#if shown.sermons.length}
 					<ul class="space-y-2">
-						{#each d.sermons as s (s.slug)}
+						{#each shown.sermons as s (s.slug)}
 							<li class="flex items-start justify-between gap-3">
 								<a href="/sermons/{s.slug}" class="min-w-0 font-medium text-text hover:text-accent">
 									<span class="block truncate">{s.title}</span>
@@ -253,17 +330,17 @@
 							</li>
 						{/each}
 					</ul>
-				{:else}
-					<p class="text-body text-muted">None yet.</p>
+				{:else if emptyLabel}
+					<p class="text-body text-muted">{emptyLabel}</p>
 				{/if}
-				{#if d.todo.sermons.length}
+				{#if shown.todoSermons.length}
 					<div class="mt-4 border-t border-border pt-3">
 						<p class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">Next to work on</p>
 						{#if queueError}
 							<p class="mb-2 text-small text-gold">{queueError}</p>
 						{/if}
 						<ul class="space-y-1.5">
-							{#each d.todo.sermons as s (s.slug)}
+							{#each shown.todoSermons as s (s.slug)}
 								<li class="flex items-center justify-between gap-3 text-body">
 									<span class="min-w-0 truncate">
 										<a href="/sermons/{s.slug}" class="text-accent hover:underline">{s.title}</a>
@@ -279,10 +356,10 @@
 
 			<!-- Plans -->
 			<section class="rounded-2xl border border-border bg-surface p-5">
-				<h2 class="text-h3 mb-3">Plans <span class="text-muted">({fmt(d.plans.length)})</span></h2>
-				{#if d.plans.length}
+				<h2 class="text-h3 mb-3">Plans <span class="text-muted">({fmt(shown.plans.length)})</span></h2>
+				{#if shown.plans.length}
 					<ul class="space-y-2">
-						{#each d.plans as p (p.slug)}
+						{#each shown.plans as p (p.slug)}
 							<li class="flex items-start justify-between gap-3">
 								<a href="/plans/{p.slug}" class="min-w-0 font-medium text-text hover:text-accent">
 									<span class="block truncate">{p.title}</span>
@@ -291,17 +368,17 @@
 							</li>
 						{/each}
 					</ul>
-				{:else}
-					<p class="text-body text-muted">None yet.</p>
+				{:else if emptyLabel}
+					<p class="text-body text-muted">{emptyLabel}</p>
 				{/if}
-				{#if d.todo.plans.length}
+				{#if shown.todoPlans.length}
 					<div class="mt-4 border-t border-border pt-3">
 						<p class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">Next to work on</p>
 						{#if queueError}
 							<p class="mb-2 text-small text-gold">{queueError}</p>
 						{/if}
 						<ul class="space-y-1.5">
-							{#each d.todo.plans as p (p.slug)}
+							{#each shown.todoPlans as p (p.slug)}
 								<li class="flex items-center justify-between gap-3 text-body">
 									<span class="min-w-0 truncate">
 										<a href="/plans/{p.slug}" class="text-accent hover:underline">{p.title}</a>

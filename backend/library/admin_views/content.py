@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from django.db.models import Count, Q, Sum
+from django.db.models import Count, F, Q, Sum
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -211,8 +211,10 @@ class AdminStatsView(APIView):
         ]
 
 
-# How many "next to work on" items to surface per content type.
-TODO_LIMIT = 4
+# How many "next to work on" items to surface per content type. Ten is a
+# working session's worth of choices — enough to pick around a title you don't
+# want yet, short enough to stay a shortlist rather than a second inventory.
+TODO_LIMIT = 10
 
 
 class AdminLanguageDetailView(APIView):
@@ -377,6 +379,31 @@ class AdminLanguageDetailView(APIView):
         return [{"slug": p.slug, "title": p.title} for p in qs]
 
     def _bios_todo(self, code) -> list[dict]:
+        """Untranslated biographies, the authors who carry most of the library first.
+
+        Alphabetical order buried the people who matter — the queue opened on
+        A. B. Simpson while Spurgeon, with 5 books and 13 sermons, sat below the
+        fold.
+
+        The ranking is by **English** works, deliberately, and it is a bet on
+        future rather than current reach: an author with eighteen works in the
+        library is one whose works you are most likely to translate next, so his
+        biography is the one that will end up serving the most pages. Note the
+        consequence — for a language with almost nothing translated yet, the top
+        of this queue has no works in that language at all, and the bio is
+        reachable only from the localized biographies index until they arrive.
+        Ranking by works *in the target language* instead would invert that,
+        favouring immediate reach; a hybrid (target-language works first,
+        English as tie-break) is the option if this ever needs to serve both.
+
+        Books break ties over sermons (a book is the larger investment), name
+        last so the order is stable. Imprints are excluded, as they are on the
+        public biographies page: a house byline is not a person, and it carries
+        enough titles to head this queue on volume alone.
+
+        The counts ride along so the ranking explains itself in the UI rather
+        than looking like an arbitrary order.
+        """
         if code == "en":
             return []
         translated = set(
@@ -385,11 +412,22 @@ class AdminLanguageDetailView(APIView):
             .values_list("author__slug", flat=True)
         )
         qs = (
-            Author.objects.exclude(bio_html="")
+            Author.objects.filter(is_imprint=False)
+            .exclude(bio_html="")
             .exclude(slug__in=translated)
-            .order_by("name")[:TODO_LIMIT]
+            .with_work_counts("en")
+            .annotate(num_works=F("num_books") + F("num_sermons"))
+            .order_by("-num_works", "-num_books", "name")[:TODO_LIMIT]
         )
-        return [{"slug": a.slug, "name": a.name} for a in qs]
+        return [
+            {
+                "slug": a.slug,
+                "name": a.name,
+                "book_count": a.num_books,
+                "sermon_count": a.num_sermons,
+            }
+            for a in qs
+        ]
 
     def _english_counts(self) -> dict:
         return {

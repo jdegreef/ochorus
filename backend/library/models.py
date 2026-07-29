@@ -15,7 +15,31 @@ from django.db import models
 from . import fts
 
 
-class AuthorManager(models.Manager):
+class AuthorQuerySet(models.QuerySet):
+    def with_work_counts(self, language: str):
+        """Annotate ``num_books`` / ``num_sermons``: published works in ``language``.
+
+        The library's one definition of how much an author carries — used by the
+        public author list (which shows the counts) and by the admin's biography
+        queue (which ranks by them). ``distinct=True`` on both: two independent
+        reverse joins fan each other out, so a plain Count would multiply the
+        books by the sermons.
+        """
+        return self.annotate(
+            num_books=models.Count(
+                "books",
+                filter=models.Q(books__is_published=True, books__language=language),
+                distinct=True,
+            ),
+            num_sermons=models.Count(
+                "sermons",
+                filter=models.Q(sermons__is_published=True, sermons__language=language),
+                distinct=True,
+            ),
+        )
+
+
+class AuthorManager(models.Manager.from_queryset(AuthorQuerySet)):
     def get_by_natural_key(self, slug):
         return self.get(slug=slug)
 
