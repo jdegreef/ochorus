@@ -7,9 +7,10 @@ a given language simply doesn't appear on that language's shelf, so a topic can
 be seeded ahead of a book landing. Run on deploy (see release.py).
 
 Topic titles/descriptions are seeded in English; per-language translations live
-in ``TopicTranslation`` and are filled by review later — the shelf falls back to
-the English title in the meantime (the same way an untranslated book shows its
-English title). This mirrors ``seed_plans``, whose curated prose is English too.
+in ``TopicTranslation``. There is NO English fallback: a topic with no title in
+a language is omitted from that language's shelf list and its page 404s there
+(``Topic.is_translated_into``), so a shelf only exists where it has been
+translated. This mirrors ``seed_plans``, whose curated prose is English too.
 """
 
 from __future__ import annotations
@@ -201,9 +202,17 @@ TOPIC_SCRIPTURE_TR = {
 }
 
 
-# Per-language topic prose, upserted into TopicTranslation each run. Missing
-# languages / topics fall back per-field to the English original above.
+# Per-language topic prose, upserted into TopicTranslation each run. A language
+# missing here has NO shelf for that topic — it is omitted rather than shown in
+# English, so adding a language here is what makes its shelves exist.
 # AI-drafted, pending native review (the same review flow as book translations).
+# Theological vocabulary follows the per-language glossaries in
+# library/translation.py, so a shelf reads consistently with the books on it.
+#
+# Scripture (TOPIC_SCRIPTURE_TR) is deliberately NOT drafted here: verse wording
+# comes from the trusted Bible for that language via the Take Root API, never
+# from a model's memory (see library/translation.py). The topic page renders no
+# verse block when it's absent, so a shelf is complete without one.
 #   {language: {slug: (title, description)}}
 TOPIC_TRANSLATIONS = {
     "lg": {
@@ -237,6 +246,104 @@ TOPIC_TRANSLATIONS = {
             "Okukkiriza n'Obulagirizi",
             "Okwesiga Katonda olw'emmere eya buli lunaku, obulagirizi, na buli "
             "kisuubizo — okutambula mu kukkiriza, so si mu kulaba.",
+        ),
+    },
+    "es": {
+        "prayer": (
+            "Sobre la oración",
+            "Aprender a orar — y a seguir orando. Los clásicos sobre la vida "
+            "interior de la oración, desde el lugar secreto hasta la intercesión "
+            "perseverante.",
+        ),
+        "holy-spirit": (
+            "El Espíritu Santo",
+            "El bautismo del Espíritu, su morada en nosotros y su obra — el poder "
+            "prometido para la vida cristiana.",
+        ),
+        "deeper-life": (
+            "La vida más profunda",
+            "Santidad, entrega y la vida abundante escondida con Cristo — libros "
+            "para ir más adentro.",
+        ),
+        "grace-and-comfort": (
+            "Gracia y consuelo",
+            "La gracia inagotable de Dios y su consuelo en toda prueba — buenas "
+            "nuevas para el cansado.",
+        ),
+        "revival-and-missions": (
+            "Avivamiento y misiones",
+            "Vidas derramadas por el evangelio, y tiempos de despertar — "
+            "combustible para un corazón ardiente.",
+        ),
+        "faith-and-guidance": (
+            "Fe y dirección",
+            "Confiar en Dios para el pan de cada día, la dirección y toda promesa "
+            "— andar por fe, no por vista.",
+        ),
+    },
+    "sw": {
+        "prayer": (
+            "Kuhusu Maombi",
+            "Kujifunza kuomba — na kuendelea kuomba. Vitabu vya kale kuhusu "
+            "maisha ya ndani ya maombi, kutoka mahali pa faragha hadi maombezi "
+            "yenye kudumu.",
+        ),
+        "holy-spirit": (
+            "Roho Mtakatifu",
+            "Ubatizo wa Roho, kukaa kwake ndani yetu, na kazi yake — nguvu "
+            "iliyoahidiwa kwa maisha ya Kikristo.",
+        ),
+        "deeper-life": (
+            "Maisha ya Ndani Zaidi",
+            "Utakatifu, kujisalimisha, na maisha tele yaliyofichwa pamoja na "
+            "Kristo — vitabu vya kwenda ndani zaidi.",
+        ),
+        "grace-and-comfort": (
+            "Neema na Faraja",
+            "Neema ya Mungu isiyokoma na faraja yake katika kila jaribu — habari "
+            "njema kwa waliochoka.",
+        ),
+        "revival-and-missions": (
+            "Uamsho na Umisheni",
+            "Maisha yaliyomwagwa kwa ajili ya injili, na majira ya uamsho — kuni "
+            "kwa moyo unaowaka.",
+        ),
+        "faith-and-guidance": (
+            "Imani na Uongozi",
+            "Kumtumaini Mungu kwa riziki ya kila siku, mwelekeo, na kila ahadi — "
+            "kuenenda kwa imani, si kwa kuona.",
+        ),
+    },
+    "pt": {
+        "prayer": (
+            "Sobre a Oração",
+            "Aprender a orar — e a continuar orando. Os clássicos sobre a vida "
+            "interior da oração, do lugar secreto à intercessão perseverante.",
+        ),
+        "holy-spirit": (
+            "O Espírito Santo",
+            "O batismo do Espírito, a sua habitação em nós e a sua obra — o poder "
+            "prometido para a vida cristã.",
+        ),
+        "deeper-life": (
+            "A Vida Mais Profunda",
+            "Santidade, entrega e a vida abundante escondida com Cristo — livros "
+            "para ir mais fundo.",
+        ),
+        "grace-and-comfort": (
+            "Graça e Consolo",
+            "A graça inesgotável de Deus e o seu consolo em toda provação — boas "
+            "novas para o cansado.",
+        ),
+        "revival-and-missions": (
+            "Avivamento e Missões",
+            "Vidas derramadas pelo evangelho, e tempos de despertamento — "
+            "combustível para um coração ardente.",
+        ),
+        "faith-and-guidance": (
+            "Fé e Direção",
+            "Confiar em Deus para o pão de cada dia, a direção e toda promessa — "
+            "andar por fé, e não por vista.",
         ),
     },
 }
