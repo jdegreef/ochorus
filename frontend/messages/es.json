@@ -318,6 +318,7 @@
   "author_all_works": "Todas las obras",
   "author_themes": "Temas",
   "author_empty": "Aún no hay libros ni sermones en la biblioteca de este escritor.",
+  "author_meta_fallback": "%name% en Ochorus — libros cristianos clásicos gratuitos.",
   "error_not_found_title": "Página no encontrada",
   "error_generic_title": "Algo salió mal",
   "error_not_found_message": "No pudimos encontrar esa página. Puede haber cambiado de lugar o el enlace estar desactualizado.",

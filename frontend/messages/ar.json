@@ -318,6 +318,7 @@
   "author_all_works": "كل الأعمال",
   "author_themes": "الموضوعات",
   "author_empty": "لا توجد كتب أو عظات في المكتبة بعد لهذا الكاتب.",
+  "author_meta_fallback": "%name% على أوكوروس — كتب مسيحية كلاسيكية مجانية.",
   "error_not_found_title": "الصفحة غير موجودة",
   "error_generic_title": "حدث خطأ ما",
   "error_not_found_message": "لم نتمكّن من العثور على تلك الصفحة. ربما نُقلت، أو أن الرابط لم يعد صالحًا.",

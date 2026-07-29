@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { TopicDetail } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
-	import { absUrl, jsonLd, breadcrumb, hreflangAll } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import BookCard from '$lib/components/BookCard.svelte';
@@ -16,12 +16,14 @@
 	const topic = $derived<TopicDetail>(data.topic);
 	const meta = $derived(topicMeta(topic.slug));
 
-	// Self-referential canonical + hreflang: topics render in every locale (title
-	// falls back), so all four are real alternates — an English canonical here
-	// would deindex the translated topic pages.
+	// Self-referential canonical, and hreflang only for the locales this shelf
+	// actually exists in. A topic no longer falls back to its English title — it
+	// 404s in a locale with no translation — so advertising every locale here
+	// would point search engines at missing pages (see hreflangFor, and the
+	// same treatment on books/sermons).
 	const path = $derived(`/topics/${topic.slug}/`);
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
-	const hreflang = $derived(hreflangAll(path));
+	const hreflang = $derived(hreflangFor(path, topic.available_languages));
 	// One crumb trail feeds both the visible <Breadcrumb> and the JSON-LD.
 	const crumbs = $derived([
 		{ name: t('common.home'), href: '/' },

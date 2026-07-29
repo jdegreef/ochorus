@@ -45,7 +45,13 @@ def _topic_chips(language: str, **membership) -> list[dict]:
         .distinct()
         .order_by("sort_order", "title")
     )
-    return [{"slug": t.slug, "title": t.title_for(language)} for t in topics]
+    # Untranslated shelves are skipped rather than shown in English — a chip
+    # with no title in this language has nothing to render.
+    return [
+        {"slug": t.slug, "title": t.title_for(language)}
+        for t in topics
+        if t.is_translated_into(language)
+    ]
 
 
 class LocalizedMixin:
@@ -380,7 +386,7 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
             in_topic = any(
                 e.book_slug in book_slugs for e in topic.entries.all()
             ) or any(e.sermon_slug in sermon_slugs for e in topic.sermon_entries.all())
-            if in_topic:
+            if in_topic and topic.is_translated_into(lang):
                 chips.append({"slug": topic.slug, "title": topic.title_for(lang)})
         chips.sort(key=lambda c: c["title"])
         return chips
@@ -770,14 +776,29 @@ class TopicDetailSerializer(TopicListSerializer):
     sermons = serializers.SerializerMethodField()
     scripture_ref = serializers.SerializerMethodField()
     scripture_text = serializers.SerializerMethodField()
+    available_languages = serializers.SerializerMethodField()
 
     class Meta(TopicListSerializer.Meta):
         fields = TopicListSerializer.Meta.fields + [
             "scripture_ref",
             "scripture_text",
+            "available_languages",
             "books",
             "sermons",
         ]
+
+    def get_available_languages(self, obj):
+        """Locales this shelf actually exists in — for hreflang.
+
+        Matches Book.available_languages in purpose: the page 404s in a locale
+        with no translated title (TopicDetailView), so advertising an alternate
+        there would point search engines at a missing page.
+        """
+        langs = ["en"] if obj.title.strip() else []
+        langs += sorted(
+            t.language for t in obj.translations.all() if t.title.strip() and t.language != "en"
+        )
+        return langs
 
     def get_scripture_ref(self, obj):
         return obj.scripture_ref_for(self._language())

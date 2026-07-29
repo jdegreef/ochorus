@@ -148,12 +148,16 @@
 	// deindexes the translations). Mirrors the /biographies list page.
 	const path = $derived(`/authors/${author.slug}/`);
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
-	// Authors render in every locale (bio falls back to English), so all four are
-	// real hreflang alternates — unlike books/sermons, which list only the
-	// locales they exist in.
+	// An author page exists in every locale — the person, their dates and their
+	// works are language-independent — so all locales are real hreflang
+	// alternates, unlike books/sermons which list only the locales they exist in.
+	// (The bio itself no longer falls back to English: an untranslated bio is
+	// absent, and the page renders the works without it.)
 	const hreflang = $derived(hreflangAll(path));
+	// Localized, because the bio may legitimately be missing in this language and
+	// a hardcoded English sentence would then become the page's meta description.
 	const description = $derived(
-		(author.bio || `${author.name} on Ochorus — free classic Christian books.`).slice(0, 300)
+		(author.bio || t('author.metaFallback').replace('%name%', author.name)).slice(0, 300)
 	);
 	const ogImage = $derived(
 		author.photo_url

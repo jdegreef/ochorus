@@ -3127,14 +3127,24 @@ class LocalizedAuthorBioTests(TestCase):
         res = self.client.get("/api/library/books/tomorrows/?language=en")
         self.assertEqual(res.data["author"]["bio"], "An itinerant pastor.")
 
-    def test_untranslated_language_falls_back_to_the_original(self):
-        # A language with no AuthorTranslation keeps the English original
-        # rather than rendering blank.
+    def test_untranslated_language_is_blank_not_english(self):
+        # A language with no AuthorTranslation renders NO bio. Serving the
+        # English original here is the leak this rule exists to prevent: a
+        # reader who asked for Swahili must never be handed English prose.
         Book.objects.create(
             author=self.author, slug="tomorrows", language="sw", title="Kesho"
         )
         res = self.client.get("/api/library/books/tomorrows/?language=sw")
-        self.assertEqual(res.data["author"]["bio"], "An itinerant pastor.")
+        self.assertEqual(res.data["author"]["bio"], "")
+
+    def test_admin_surfaces_can_still_opt_into_the_original(self):
+        # The fallback isn't deleted, just off by default: coverage and admin
+        # views need to see what English text exists in order to queue it for
+        # translation.
+        self.assertEqual(self.author.bio_for("sw"), "")
+        self.assertEqual(
+            self.author.bio_for("sw", fallback=True), "An itinerant pastor."
+        )
 
     def test_language_resolves_from_the_request_without_view_context(self):
         # The regression guard: a serializer used by a view that never sets
@@ -3343,3 +3353,158 @@ class TranslationLanguageConfigTests(SimpleTestCase):
             "library.translation.fetch_chapter", return_value={"verses": [{"number": 1}]}
         ):
             verify_bible_code("pt")  # must not raise
+
+
+class NoSourceLanguageLeakTests(TestCase):
+    """The rule: a reader who asks for a non-source language is never handed
+    source-language prose.
+
+    Rather than pinning each field one at a time, this seeds every translatable
+    prose field with a distinctive English sentinel, translates NOTHING into
+    Swahili, then sweeps the public API in Swahili and asserts no sentinel comes
+    back. A new serializer field that forgets the rule fails here without anyone
+    having to remember to extend this test.
+    """
+
+    # Distinctive enough that a substring hit is a real leak, not a coincidence.
+    BIO = "ZZQ-ENGLISH-BIO-SENTINEL"
+    BIO_HTML = "ZZQ-ENGLISH-BIOHTML-SENTINEL"
+    TOPIC_TITLE = "ZZQ-ENGLISH-TOPICTITLE-SENTINEL"
+    TOPIC_DESC = "ZZQ-ENGLISH-TOPICDESC-SENTINEL"
+    TOPIC_SCRIPT_REF = "ZZQ-ENGLISH-SCRIPTREF-SENTINEL"
+    TOPIC_SCRIPT_TEXT = "ZZQ-ENGLISH-SCRIPTTEXT-SENTINEL"
+
+    def setUp(self):
+        self.client = APIClient()
+        self.author = Author.objects.create(
+            slug="jane-doe",
+            name="Jane Doe",
+            bio=self.BIO,
+            bio_html=f"<p>{self.BIO_HTML}</p>",
+        )
+        # Something to read in Swahili, so the author and shelf are not filtered
+        # out for emptiness — this test is about prose, not about presence.
+        self.sw_book = Book.objects.create(
+            author=self.author,
+            slug="kitabu",
+            language="sw",
+            title="Kitabu Changu",
+            description="Maelezo ya Kiswahili.",
+            is_published=True,
+        )
+        Chapter.objects.create(
+            book=self.sw_book, order=1, title="Sura", body_html="<p>Maandishi.</p>"
+        )
+        self.topic = Topic.objects.create(
+            slug="maombi",
+            title=self.TOPIC_TITLE,
+            description=self.TOPIC_DESC,
+            scripture_ref=self.TOPIC_SCRIPT_REF,
+            scripture_text=self.TOPIC_SCRIPT_TEXT,
+            is_published=True,
+        )
+        TopicBook.objects.create(topic=self.topic, book_slug="kitabu")
+
+    def _sentinels(self):
+        return [
+            self.BIO,
+            self.BIO_HTML,
+            self.TOPIC_TITLE,
+            self.TOPIC_DESC,
+            self.TOPIC_SCRIPT_REF,
+            self.TOPIC_SCRIPT_TEXT,
+        ]
+
+    def _public_urls(self):
+        return [
+            "/api/library/authors/?language=sw",
+            "/api/library/authors/jane-doe/?language=sw",
+            "/api/library/books/?language=sw",
+            "/api/library/books/kitabu/?language=sw",
+            "/api/library/books/kitabu/chapters/1/?language=sw",
+            "/api/library/sermons/?language=sw",
+            "/api/library/plans/?language=sw",
+            "/api/library/topics/?language=sw",
+            "/api/library/topics/maombi/?language=sw",
+            "/api/library/search/?q=Kitabu&language=sw",
+            "/api/library/search/?q=Jane&language=sw",
+        ]
+
+    def test_no_english_prose_reaches_a_swahili_reader(self):
+        for url in self._public_urls():
+            res = self.client.get(url)
+            self.assertIn(
+                res.status_code, (200, 404), msg=f"{url} returned {res.status_code}"
+            )
+            if res.status_code != 200:
+                continue
+            body = res.content.decode()
+            for sentinel in self._sentinels():
+                self.assertNotIn(
+                    sentinel,
+                    body,
+                    msg=(
+                        f"English prose leaked into a Swahili response.\n"
+                        f"  endpoint: {url}\n"
+                        f"  leaked:   {sentinel}\n"
+                        "A field with no Swahili translation must render as "
+                        "absent, not as the English original."
+                    ),
+                )
+
+    def test_english_readers_still_get_the_english_prose(self):
+        # The counterpart guard: closing the leak must not blank out English.
+        # The shelf needs an English book on it too — TopicListView has always
+        # hidden a shelf with nothing to read in the requested language.
+        Book.objects.create(
+            author=self.author,
+            slug="my-book",
+            language="en",
+            title="My Book",
+            is_published=True,
+        )
+        TopicBook.objects.create(topic=self.topic, book_slug="my-book")
+
+        res = self.client.get("/api/library/authors/jane-doe/?language=en")
+        self.assertEqual(res.status_code, 200)
+        self.assertIn(self.BIO, res.content.decode())
+
+        res = self.client.get("/api/library/topics/?language=en")
+        self.assertIn(self.TOPIC_TITLE, res.content.decode())
+
+    def test_topic_available_languages_drives_hreflang(self):
+        # A shelf 404s in a locale with no translated title, so it must not be
+        # advertised there — this field is what the page's hreflang is built from.
+        res = self.client.get("/api/library/topics/maombi/?language=en")
+        self.assertEqual(res.data["available_languages"], ["en"])
+
+        TopicTranslation.objects.create(
+            topic=self.topic, language="sw", title="Maombi"
+        )
+        res = self.client.get("/api/library/topics/maombi/?language=en")
+        self.assertEqual(res.data["available_languages"], ["en", "sw"])
+
+    def test_untranslated_topic_is_absent_from_its_locale(self):
+        # Omitted from the shelf list...
+        res = self.client.get("/api/library/topics/?language=sw")
+        self.assertEqual(res.data, [])
+        # ...and its page does not exist there either, rather than rendering
+        # with a blank title.
+        res = self.client.get("/api/library/topics/maombi/?language=sw")
+        self.assertEqual(res.status_code, 404)
+
+    def test_a_translated_field_is_served_in_that_language(self):
+        # And the leak fix must not break the case translation exists for.
+        AuthorTranslation.objects.create(
+            author=self.author, language="sw", bio="Wasifu wa Kiswahili."
+        )
+        TopicTranslation.objects.create(
+            topic=self.topic, language="sw", title="Maombi", description="Maelezo."
+        )
+        res = self.client.get("/api/library/authors/jane-doe/?language=sw")
+        self.assertIn("Wasifu wa Kiswahili.", res.content.decode())
+
+        res = self.client.get("/api/library/topics/?language=sw")
+        body = res.content.decode()
+        self.assertIn("Maombi", body)
+        self.assertNotIn(self.TOPIC_TITLE, body)

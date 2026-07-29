@@ -7,6 +7,7 @@ Books are addressed by their canonical ``slug`` plus a ``language`` query param
 import logging
 
 from django.db.models import Count, Q, Sum
+from django.http import Http404
 from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from rest_framework.response import Response
@@ -83,11 +84,22 @@ class AuthorListView(generics.ListAPIView):
         lang = _language(self.request)
         # Sermons count too — a sermon-only author is part of the library and
         # shouldn't read as empty on the shelf.
+        #
+        # The bio clause is per-language: qualifying on the English `bio` would
+        # put an author with nothing but an English essay on the Swahili page,
+        # where their card would then render blank (the serializer no longer
+        # falls back). An author earns a place here by having a work in this
+        # language, or a bio a reader of this language can actually read.
+        has_bio = (Q(original_language=lang) & (~Q(bio="") | ~Q(bio_html=""))) | (
+            Q(translations__language=lang)
+            & (~Q(translations__bio="") | ~Q(translations__bio_html=""))
+        )
         return (
             Author.objects.filter(is_imprint=False)
             .prefetch_related("translations")
             .with_work_counts(lang)
-            .filter(Q(num_books__gt=0) | Q(num_sermons__gt=0) | ~Q(bio=""))
+            .filter(Q(num_books__gt=0) | Q(num_sermons__gt=0) | has_bio)
+            .distinct()
             .order_by("name")
         )
 
@@ -140,6 +152,9 @@ class BookListView(generics.ListAPIView):
             "translations", "entries"
         )
         for topic in topics:
+            # Skip shelves with no title in this language — see _topic_chips.
+            if not topic.is_translated_into(lang):
+                continue
             chip = {"slug": topic.slug, "title": topic.title_for(lang)}
             for entry in topic.entries.all():
                 book_topics.setdefault(entry.book_slug, []).append(chip)
@@ -317,7 +332,15 @@ class TopicListView(generics.ListAPIView):
         )
         _attach_books(topics, language)
         _attach_sermons(topics, language)
-        return [t for t in topics if t.books_in_language or t.sermons_in_language]
+        # A shelf needs both something to hold and a name a reader of this
+        # language can read: an untranslated title would render blank now that
+        # the serializer no longer falls back to English.
+        return [
+            t
+            for t in topics
+            if (t.books_in_language or t.sermons_in_language)
+            and t.is_translated_into(language)
+        ]
 
 
 class TopicDetailView(generics.RetrieveAPIView):
@@ -338,6 +361,11 @@ class TopicDetailView(generics.RetrieveAPIView):
             slug=self.kwargs["slug"],
         )
         language = _language(self.request)
+        # Consistent with the list: a shelf with no title in this language does
+        # not exist here, so the reader gets the not-found page rather than an
+        # untitled shelf.
+        if not topic.is_translated_into(language):
+            raise Http404("No topic in this language")
         _attach_books([topic], language)
         _attach_sermons([topic], language)
         return topic
