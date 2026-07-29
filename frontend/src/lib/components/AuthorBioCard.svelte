@@ -87,10 +87,11 @@
 			</a>
 		</div>
 	</div>
-	<!-- Every writer carries a short mini-bio (2–4 sentences), localized to
-	     the reader's language. Rendered in full — the summaries are authored
-	     to card length, so we show complete sentences rather than clamping
-	     mid-word. The `{#if}` guards the rare row that still lacks prose. -->
+	<!-- A short mini-bio (2–4 sentences) in the reader's language. Rendered in
+	     full — the summaries are authored to card length, so we show complete
+	     sentences rather than clamping mid-word. The `{#if}` matters: a bio with
+	     no translation in this language is ABSENT, not English, so in a
+	     partially-translated locale many cards legitimately show works only. -->
 	{#if author.bio}
 		<p class="mt-4 text-body leading-relaxed text-muted">{author.bio}</p>
 	{/if}

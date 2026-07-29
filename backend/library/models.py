@@ -95,8 +95,13 @@ class Author(models.Model):
         if ripple:
             fts.refresh_author_works(self)
 
-    def _localized(self, field: str, language: str) -> str:
-        """A translated prose field in ``language``, else the English original.
+    def _localized(self, field: str, language: str, *, fallback: bool = False) -> str:
+        """A translated prose field in ``language``.
+
+        Returns ``""`` when the language has no translation, because a reader who
+        asked for Swahili must never be handed English prose — an untranslated
+        bio is absent, not English. Pass ``fallback=True`` only for surfaces that
+        exist to show what *is* there to translate (admin, coverage, tooling).
 
         Reads ``self.translations.all()`` (not ``.filter()``) so a caller that
         prefetched translations pays no extra query.
@@ -105,15 +110,21 @@ class Author(models.Model):
             tr = next((t for t in self.translations.all() if t.language == language), None)
             if tr and getattr(tr, field):
                 return getattr(tr, field)
+            return getattr(self, field) if fallback else ""
         return getattr(self, field)
 
-    def bio_for(self, language: str) -> str:
-        """Short bio in ``language``, falling back to the English original."""
-        return self._localized("bio", language)
+    def bio_for(self, language: str, *, fallback: bool = False) -> str:
+        """Short bio in ``language``; ``""`` when untranslated."""
+        return self._localized("bio", language, fallback=fallback)
 
-    def bio_html_for(self, language: str) -> str:
-        """Long-form bio HTML in ``language``, falling back to the English original."""
-        return self._localized("bio_html", language)
+    def bio_html_for(self, language: str, *, fallback: bool = False) -> str:
+        """Long-form bio HTML in ``language``; ``""`` when untranslated."""
+        return self._localized("bio_html", language, fallback=fallback)
+
+    def has_bio_in(self, language: str) -> bool:
+        """Whether a bio exists in ``language`` — the honest test for "does this
+        author have something to read here", used by the biographies page."""
+        return bool(self.bio_for(language).strip() or self.bio_html_for(language).strip())
 
 
 class AuthorTranslation(models.Model):
@@ -534,8 +545,11 @@ class Topic(models.Model):
     def __str__(self) -> str:
         return self.title
 
-    def _localized(self, field: str, language: str) -> str:
-        """A translated prose field in ``language``, else the English original.
+    def _localized(self, field: str, language: str, *, fallback: bool = False) -> str:
+        """A translated prose field in ``language``.
+
+        Returns ``""`` when untranslated rather than the English original — see
+        ``Author._localized``. Pass ``fallback=True`` for admin/coverage surfaces.
 
         Reads ``self.translations.all()`` (not ``.filter()``) so a caller that
         prefetched translations pays no extra query.
@@ -544,19 +558,30 @@ class Topic(models.Model):
             tr = next((t for t in self.translations.all() if t.language == language), None)
             if tr and getattr(tr, field):
                 return getattr(tr, field)
+            return getattr(self, field) if fallback else ""
         return getattr(self, field)
 
-    def title_for(self, language: str) -> str:
-        return self._localized("title", language)
+    def title_for(self, language: str, *, fallback: bool = False) -> str:
+        return self._localized("title", language, fallback=fallback)
 
-    def description_for(self, language: str) -> str:
-        return self._localized("description", language)
+    def description_for(self, language: str, *, fallback: bool = False) -> str:
+        return self._localized("description", language, fallback=fallback)
 
-    def scripture_ref_for(self, language: str) -> str:
-        return self._localized("scripture_ref", language)
+    def scripture_ref_for(self, language: str, *, fallback: bool = False) -> str:
+        return self._localized("scripture_ref", language, fallback=fallback)
 
-    def scripture_text_for(self, language: str) -> str:
-        return self._localized("scripture_text", language)
+    def scripture_text_for(self, language: str, *, fallback: bool = False) -> str:
+        return self._localized("scripture_text", language, fallback=fallback)
+
+    def is_translated_into(self, language: str) -> bool:
+        """Whether this shelf has a usable title in ``language``.
+
+        A topic is a curatorial label; without a translated title there is
+        nothing honest to render, so untranslated shelves are omitted from a
+        locale rather than shown in English. Its books stay reachable through
+        the catalogue, search and their author pages.
+        """
+        return bool(self.title_for(language).strip())
 
 
 class TopicTranslation(models.Model):

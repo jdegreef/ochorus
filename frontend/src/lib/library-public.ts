@@ -364,6 +364,8 @@ export interface TopicSummary {
 export interface TopicDetail extends TopicSummary {
 	scripture_ref: string;
 	scripture_text: string;
+	/** Locales this shelf exists in — it 404s elsewhere, so hreflang uses this. */
+	available_languages: string[];
 	books: BookSummary[];
 	sermons: SermonSummary[];
 }

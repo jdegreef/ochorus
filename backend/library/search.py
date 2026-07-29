@@ -21,12 +21,21 @@ import difflib
 import re
 
 from django.db import connection
-from django.db.models import F, Q
+from django.db.models import Exists, F, OuterRef, Q
 
 # Config lookup shared with the stored-vector write path (library/fts.py) so
 # query config always matches what the row was indexed with.
 from .fts import config_for
-from .models import Author, Book, Chapter, Plan, Sermon, Topic, ChapterCitation
+from .models import (
+    Author,
+    Book,
+    Chapter,
+    ChapterCitation,
+    Plan,
+    Sermon,
+    Topic,
+    TopicTranslation,
+)
 from .scripture import reference_verse_ids
 
 MAX_RESULTS = 30
@@ -82,6 +91,18 @@ def search_library(q: str, language: str) -> list[dict]:
     )
     plans = Plan.objects.filter(is_published=True, language=language)
     topics = Topic.objects.filter(is_published=True).prefetch_related("translations")
+    if language != "en":
+        # A shelf with no title in this language doesn't exist here (see
+        # TopicListView), so it must not surface as a titleless search hit.
+        # Exists() rather than a join filter: a topic translated into Spanish
+        # but not Swahili must not qualify for Swahili on a sibling row.
+        topics = topics.filter(
+            Exists(
+                TopicTranslation.objects.filter(
+                    topic=OuterRef("pk"), language=language
+                ).exclude(title="")
+            )
+        )
     # Only authors who actually have something published to read in this language,
     # mirroring the biographies roster (no ghost authors from unpublished drafts).
     authors = (
