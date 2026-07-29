@@ -198,9 +198,13 @@
 			<!-- Language strip. Each locale is named in its OWN language (Español, not
 			     "Spanish") — a reader scanning for their language recognises the
 			     autonym, not the English exonym. Real <a href>s so crawlers can reach
-			     every locale's home, but the click goes through lang.set(): Paraglide
+			     every locale's home, but the click goes through lang.choose(): Paraglide
 			     resolves the locale from the URL prefix, and a client-side navigation
-			     would change the URL without re-resolving it. No hreflang attribute
+			     would change the URL without re-resolving it. `choose`, not `set` — a
+			     reader-initiated switch MUST record the choice, or the next profile pull
+			     adopts the account's saved locale and bounces them straight back to
+			     English (that was the bug; langChoice.test.ts guards it).
+			     No hreflang attribute
 			     here — on an <a> it carries no SEO weight (Google reads it from head
 			     <link>, the sitemap, or headers) and it makes audit tools report
 			     phantom broken alternates on every page. -->
@@ -225,7 +229,7 @@
 								class="whitespace-nowrap text-muted hover:text-text"
 								onclick={(e) => {
 									e.preventDefault();
-									lang.set(l.code);
+									lang.choose(l.code);
 								}}>{l.native_name}</a
 							>
 						{/if}
