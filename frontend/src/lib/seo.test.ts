@@ -81,16 +81,17 @@ describe('hreflangFor', () => {
 	it('falls back to the ADVERTISED locales when availability is empty (older API)', () => {
 		// Never to every UI locale: this branch fires exactly when we know least
 		// about what exists, so it must not invent an alternate for a locale that
-		// has no content (pt today — wired in the UI, nothing to read).
+		// has no content (ar today — wired in the UI, nothing to read).
 		const { alternates, xDefault } = hreflangFor('/books/humility/', []);
-		expect(alternates.map((a) => a.loc)).toEqual(['en', 'es', 'sw', 'lg']);
+		expect(alternates.map((a) => a.loc)).toEqual(['en', 'es', 'sw', 'lg', 'pt']);
 		expect(xDefault).toBe(`${SITE_URL}/books/humility/`);
 	});
 
 	it('never advertises an unadvertised locale, even if the API reports it available', () => {
-		// pt has a single sermon; one work does not make a locale worth ranking,
-		// and a lone real page would still sit behind 45 English-fallback ones.
-		const { alternates } = hreflangFor('/sermons/x/', ['en', 'pt']);
+		// ar is wired in the UI with zero content; a stray available-in-ar flag
+		// must not put it in front of a crawler. (pt was this case until it got
+		// three translated books and was promoted.)
+		const { alternates } = hreflangFor('/sermons/x/', ['en', 'ar']);
 		expect(alternates.map((a) => a.loc)).toEqual(['en']);
 	});
 });

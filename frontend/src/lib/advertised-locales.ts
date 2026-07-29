@@ -9,7 +9,11 @@ import { locales } from '$lib/paraglide/runtime';
  * Portuguese was exactly that when it landed: 0 books, 0 plans, 0 topics, 1
  * sermon — author bios fall back to English. Arabic followed days later with
  * zero of everything. Two in one week is why this is a list and not a
- * one-off exclusion. Advertising it publishes English
+ * one-off exclusion.
+ *
+ * pt was PROMOTED once it had three translated books. The sitemap's own check
+ * is what forced the decision: it failed the build with "pt now has books but
+ * is not advertised" rather than letting the new content sit unindexed. Advertising it publishes English
  * prose at a Portuguese URL while `hreflang="pt"` asserts that page IS the
  * Portuguese version. That is thin/duplicate content, and it is worse than the
  * empty shell it would replace: a shell gets ignored, a thin page gets indexed
@@ -21,7 +25,7 @@ import { locales } from '$lib/paraglide/runtime';
  * per-locale counts, so a locale that gains (or loses) content fails the build
  * rather than drifting silently.
  */
-export const ADVERTISED_LOCALES = ['en', 'es', 'sw', 'lg'] as const;
+export const ADVERTISED_LOCALES = ['en', 'es', 'sw', 'lg', 'pt'] as const;
 
 export type AdvertisedLocale = (typeof ADVERTISED_LOCALES)[number];
 
