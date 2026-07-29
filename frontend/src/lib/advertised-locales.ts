@@ -21,7 +21,7 @@ import { locales } from '$lib/paraglide/runtime';
  * per-locale counts, so a locale that gains (or loses) content fails the build
  * rather than drifting silently.
  */
-export const ADVERTISED_LOCALES = ['en', 'es', 'sw', 'lg'] as const;
+export const ADVERTISED_LOCALES = ['en', 'es', 'sw', 'lg', 'pt'] as const;
 
 export type AdvertisedLocale = (typeof ADVERTISED_LOCALES)[number];
 
