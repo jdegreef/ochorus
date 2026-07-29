@@ -1,6 +1,7 @@
 import { SITE_URL } from '$lib/config';
 import { listAuthors, listBooks, listPlans, listSermons, listTopics } from '$lib/library';
 import { locales } from '$lib/paraglide/runtime';
+import { ADVERTISED_LOCALES, UNADVERTISED_LOCALES } from '$lib/advertised-locales';
 import { ERAS, eraOf } from '$lib/eras';
 
 export const prerender = true;
@@ -39,6 +40,8 @@ export async function GET() {
 	// translation exists. Endpoint hiccups degrade to omitting that slice
 	// rather than failing the whole sitemap prerender.
 	const perLocale = await Promise.all(
+		// Every UI locale is fetched, not just the advertised ones — the assertion
+		// below needs to see a locale that has GAINED content.
 		locales.map(async (l) => ({
 			locale: l,
 			books: await listBooks(l).catch(() => []),
@@ -48,6 +51,40 @@ export async function GET() {
 		}))
 	);
 	const authors = await listAuthors().catch(() => []);
+
+	// Emission uses only the advertised locales; `perLocale` (all UI locales)
+	// stays available for the drift check below.
+	const worksIn = (l: string) => {
+		const s = perLocale.find((x) => x.locale === l);
+		return s ? s.books.length + s.sermons.length + s.topics.length + s.plans.length : 0;
+	};
+	// Readiness is measured in BOOKS, not in any content at all: Ochorus is a
+	// library, and a locale with no books has nothing a reader came for.
+	// Portuguese has exactly one sermon and no books — enough to trip a
+	// "> 0 works" rule, nowhere near enough to advertise 46 pages of English
+	// prose behind a Portuguese hreflang. es/sw/lg carry 10/12/18 books.
+	const booksIn = (l: string) => perLocale.find((x) => x.locale === l)?.books.length ?? 0;
+	// Safe to throw on — a failed fetch degrades to an EMPTY slice, so it can
+	// never invent content and fail the build spuriously.
+	const readyToPromote = UNADVERTISED_LOCALES.filter((l) => booksIn(l) > 0);
+	if (readyToPromote.length) {
+		throw new Error(
+			`sitemap: ${readyToPromote.join(', ')} now has books but is not advertised — ` +
+				'add it to ADVERTISED_LOCALES (src/lib/advertised-locales.ts) so the sitemap ' +
+				'and hreflang alternates include it.'
+		);
+	}
+	// The reverse only WARNS: an advertised locale looking empty is more likely a
+	// transient endpoint failure (which this file deliberately degrades on) than
+	// content actually disappearing.
+	for (const l of ADVERTISED_LOCALES) {
+		if (l !== 'en' && worksIn(l) === 0) {
+			console.warn(`sitemap: advertised locale "${l}" reported no works — API hiccup, or drop it?`);
+		}
+	}
+	const advertisedSlices = perLocale.filter((x) =>
+		(ADVERTISED_LOCALES as readonly string[]).includes(x.locale)
+	);
 
 	const entries: Entry[] = [];
 
@@ -63,14 +100,14 @@ export async function GET() {
 		'/contact',
 		'/legal'
 	]) {
-		entries.push({ byLocale: new Map(locales.map((l) => [l, path])) });
+		entries.push({ byLocale: new Map(ADVERTISED_LOCALES.map((l) => [l, path])) });
 	}
 
 	// Author pages prerender for every locale (the bio falls back to English).
 	const authorSlugs = new Set<string>(authors.map((a) => a.slug));
 	for (const { books } of perLocale) for (const b of books) authorSlugs.add(b.author.slug);
 	for (const slug of authorSlugs) {
-		entries.push({ byLocale: new Map(locales.map((l) => [l, `/authors/${slug}/`])) });
+		entries.push({ byLocale: new Map(ADVERTISED_LOCALES.map((l) => [l, `/authors/${slug}/`])) });
 	}
 
 	// Per-era biography landing pages — only eras that actually have writers
@@ -79,7 +116,7 @@ export async function GET() {
 	const presentEras = new Set(authors.map((a) => eraOf(a.birth_year)));
 	for (const e of ERAS) {
 		if (!presentEras.has(e.id)) continue;
-		entries.push({ byLocale: new Map(locales.map((l) => [l, `/biographies/era/${e.id}/`])) });
+		entries.push({ byLocale: new Map(ADVERTISED_LOCALES.map((l) => [l, `/biographies/era/${e.id}/`])) });
 	}
 
 	// Books / sermons / topics / plans: one entry per work, listing only the
@@ -92,7 +129,7 @@ export async function GET() {
 		lastmodOf?: (item: { slug: string; created_at?: string }) => string | undefined
 	) => {
 		const byWork = new Map<string, Entry>();
-		for (const slice of perLocale) {
+		for (const slice of advertisedSlices) {
 			for (const item of slice[kind] as { slug: string; created_at?: string }[]) {
 				let e = byWork.get(item.slug);
 				if (!e) byWork.set(item.slug, (e = { byLocale: new Map() }));
@@ -111,7 +148,7 @@ export async function GET() {
 	// Chapter pages (prerendered): one entry per (work, chapter), again listing
 	// only the locales whose edition actually has that chapter.
 	const byChapter = new Map<string, Entry>();
-	for (const slice of perLocale) {
+	for (const slice of advertisedSlices) {
 		for (const b of slice.books) {
 			for (let order = 1; order <= b.chapter_count; order++) {
 				const key = `${b.slug}#${order}`;

@@ -1,6 +1,7 @@
 import { SITE_URL } from './config';
 import { localizeHref, withTrailingSlash } from '$lib/href';
 import { locales } from '$lib/paraglide/runtime';
+import { ADVERTISED_LOCALES } from '$lib/advertised-locales';
 
 export interface Hreflang {
 	/** One alternate per locale the work actually exists in. */
@@ -29,8 +30,12 @@ export interface Hreflang {
  */
 export function hreflangFor(path: string, available: string[]): Hreflang {
 	const has = new Set(available);
-	const langs = locales.filter((l) => has.has(l));
-	const emit = langs.length ? langs : [...locales];
+	// Intersected with ADVERTISED_LOCALES on both paths: a locale that is wired
+	// in the UI but has nothing to read must never be offered as an alternate,
+	// and the empty-`available` fallback below used to advertise EVERY locale —
+	// exactly the case where we know least about what exists.
+	const langs = ADVERTISED_LOCALES.filter((l) => has.has(l));
+	const emit = langs.length ? langs : [...ADVERTISED_LOCALES];
 	const alternates = emit.map((loc) => ({
 		loc,
 		href: `${SITE_URL}${localizeHref(path, { locale: loc })}`
@@ -40,12 +45,17 @@ export function hreflangFor(path: string, available: string[]): Hreflang {
 }
 
 /**
- * hreflang alternates for a page that genuinely exists in every locale — an
- * author or a topic, which render in all four via a bio/name fallback. Every
- * locale is a real alternate here, and x-default is always English.
+ * hreflang alternates for a page that exists in every ADVERTISED locale — an
+ * author or a topic, which render via a bio/name fallback rather than needing
+ * their own translation.
+ *
+ * "Every locale" is the wrong bar: a fallback page in a locale with no content
+ * is English prose at a localized URL, and claiming it as that language's
+ * version is a false alternate. Portuguese produced 230 of those before this
+ * gate — one on every page of the site.
  */
 export function hreflangAll(path: string): Hreflang {
-	return hreflangFor(path, [...locales]);
+	return hreflangFor(path, [...ADVERTISED_LOCALES]);
 }
 
 /** Make a path absolute against the site origin (pass-through for full URLs). */
