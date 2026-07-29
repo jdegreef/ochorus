@@ -15,9 +15,20 @@
 		name.split(' ').filter(Boolean).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
 </script>
 
-<article id={author.slug} class="scroll-mt-24">
+<!-- A bordered card (matching the site's rounded-card pattern) that reads as one
+     tappable unit: hovering it warms the whole thing — border → accent and the
+     portrait from grayscale to full colour. The author links carry preload-on-
+     hover so the click lands instantly. -->
+<article
+	id={author.slug}
+	class="group scroll-mt-24 rounded-card border border-border p-5 transition-colors hover:border-accent"
+>
 	<div class="flex items-center gap-4">
-		<a href={localizeHref(`/authors/${author.slug}`)} class="shrink-0 hover:no-underline">
+		<a
+			href={localizeHref(`/authors/${author.slug}`)}
+			data-sveltekit-preload-data="hover"
+			class="shrink-0 hover:no-underline"
+		>
 			{#if author.photo_url}
 				<img
 					src={author.photo_url}
@@ -25,8 +36,7 @@
 					loading="lazy"
 					width="56"
 					height="56"
-					class="h-14 w-14 rounded-full border border-border object-cover"
-					style="filter: grayscale(1)"
+					class="h-14 w-14 rounded-full border border-border object-cover grayscale transition-[filter] duration-300 group-hover:grayscale-0"
 				/>
 			{:else}
 				<span
@@ -39,7 +49,11 @@
 		</a>
 		<div>
 			<h2 class="text-h2">
-				<a href={localizeHref(`/authors/${author.slug}`)} class="!text-text hover:underline">{author.name}</a>
+				<a
+					href={localizeHref(`/authors/${author.slug}`)}
+					data-sveltekit-preload-data="hover"
+					class="!text-text hover:underline">{author.name}</a
+				>
 				{#if author.birth_year}
 					<!-- nowrap: the dates were breaking after the en-dash ("1843–" / "1919"). -->
 					<span class="ml-2 whitespace-nowrap text-body font-normal text-muted"

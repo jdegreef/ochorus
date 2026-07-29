@@ -105,7 +105,7 @@
 	{#if inEra.length === 0}
 		<p class="py-16 text-center text-body text-muted">{t('bios.noResults')}</p>
 	{:else}
-		<div class="space-y-10">
+		<div class="grid items-start gap-5 md:grid-cols-2">
 			{#each inEra as author (author.slug)}
 				<AuthorBioCard {author} shelf={booksByAuthor.get(author.slug) ?? []} />
 			{/each}

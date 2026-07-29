@@ -339,12 +339,29 @@
 		</div>
 	{:else if sort === 'era'}
 		{#if eraGroups.length > 1}
-			<nav class="mb-8 flex flex-wrap gap-1.5" aria-label={t('bios.sortEra')}>
+			<!-- A slim timeline: each era is a node on a baseline, its name + year
+			     range below, jumping to that section. Scrolls horizontally when the
+			     eras outrun the width. -->
+			<nav class="mb-10 flex gap-0.5 overflow-x-auto pb-2" aria-label={t('bios.sortEra')}>
 				{#each eraGroups as g (g.era.id)}
 					<a
 						href="#era-{g.era.id}"
-						class="rounded-full border border-border px-2.5 py-1 text-[0.75rem] text-muted hover:border-accent hover:text-accent hover:no-underline"
-					>{t(g.era.k)}</a>
+						class="group flex shrink-0 flex-col items-center gap-1.5 px-2 hover:no-underline"
+					>
+						<span class="relative flex h-2.5 w-full items-center justify-center">
+							<span class="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-border"></span>
+							<span
+								class="relative h-2.5 w-2.5 rounded-full border border-border bg-surface transition-colors group-hover:border-accent group-hover:bg-accent"
+							></span>
+						</span>
+						<span
+							class="whitespace-nowrap text-[0.72rem] font-semibold text-muted transition-colors group-hover:text-accent"
+							>{t(g.era.k)}</span
+						>
+						{#if g.era.range}<span class="whitespace-nowrap text-[0.65rem] text-muted opacity-70"
+								>{g.era.range}</span
+							>{/if}
+					</a>
 				{/each}
 			</nav>
 		{/if}
@@ -361,7 +378,7 @@
 					{#if g.era.range}<span class="whitespace-nowrap text-small font-normal text-muted">{g.era.range}</span>{/if}
 					<span class="ml-auto text-small font-normal text-muted">{g.authors.length}</span>
 				</h2>
-				<div class="space-y-10">
+				<div class="grid items-start gap-5 md:grid-cols-2">
 					{#each g.authors as author (author.slug)}
 						<AuthorBioCard {author} shelf={booksByAuthor.get(author.slug) ?? []} />
 					{/each}
@@ -369,7 +386,7 @@
 			</section>
 		{/each}
 	{:else}
-		<div class="space-y-10">
+		<div class="grid items-start gap-5 md:grid-cols-2">
 			{#each sorted as author (author.slug)}
 				<AuthorBioCard {author} shelf={booksByAuthor.get(author.slug) ?? []} />
 			{/each}
