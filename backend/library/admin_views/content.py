@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from django.db.models import Count, Q, Sum
+from django.db.models import Count, F, Q, Sum
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -211,8 +211,10 @@ class AdminStatsView(APIView):
         ]
 
 
-# How many "next to work on" items to surface per content type.
-TODO_LIMIT = 4
+# How many "next to work on" items to surface per content type. Ten is a
+# working session's worth of choices — enough to pick around a title you don't
+# want yet, short enough to stay a shortlist rather than a second inventory.
+TODO_LIMIT = 10
 
 
 class AdminLanguageDetailView(APIView):
@@ -377,6 +379,18 @@ class AdminLanguageDetailView(APIView):
         return [{"slug": p.slug, "title": p.title} for p in qs]
 
     def _bios_todo(self, code) -> list[dict]:
+        """Untranslated biographies, the most-represented authors first.
+
+        Alphabetical order buried the authors who matter: a bio is what a reader
+        lands on from any of that author's works, so translating Spurgeon's —
+        with dozens of sermons and several books in the language — serves far
+        more pages than one for an author carrying a single title. Rank by total
+        published English works, books breaking ties (a book is the larger
+        investment), name last so the order is stable.
+
+        The counts ride along so the ranking explains itself in the UI rather
+        than looking like an arbitrary order.
+        """
         if code == "en":
             return []
         translated = set(
@@ -387,9 +401,30 @@ class AdminLanguageDetailView(APIView):
         qs = (
             Author.objects.exclude(bio_html="")
             .exclude(slug__in=translated)
-            .order_by("name")[:TODO_LIMIT]
+            .annotate(
+                n_books=Count(
+                    "books",
+                    filter=Q(books__language="en", books__is_published=True),
+                    distinct=True,
+                ),
+                n_sermons=Count(
+                    "sermons",
+                    filter=Q(sermons__language="en", sermons__is_published=True),
+                    distinct=True,
+                ),
+            )
+            .annotate(n_works=F("n_books") + F("n_sermons"))
+            .order_by("-n_works", "-n_books", "name")[:TODO_LIMIT]
         )
-        return [{"slug": a.slug, "name": a.name} for a in qs]
+        return [
+            {
+                "slug": a.slug,
+                "name": a.name,
+                "books": a.n_books,
+                "sermons": a.n_sermons,
+            }
+            for a in qs
+        ]
 
     def _english_counts(self) -> dict:
         return {

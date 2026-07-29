@@ -1665,10 +1665,40 @@ class AdminLanguageDetailTests(TestCase):
         )
         todo = self.client.get("/api/admin/languages/sw/").data["todo"]["sermons"]
         # Murray's best ("grace", sort_order 0), then Moody's only sermon despite
-        # its low priority, then back to Murray's queue in order.
+        # its low priority, then back to Murray's queue in order once Moody's is
+        # exhausted. (Six candidates here, under TODO_LIMIT, so none are cut.)
         self.assertEqual(
-            [s["slug"] for s in todo], ["grace", "fire", "m1", "m2"]
+            [s["slug"] for s in todo], ["grace", "fire", "m1", "m2", "m3", "m4", "m5"]
         )
+
+    @override_settings(DEBUG=True)
+    def test_bio_todo_ranks_by_how_much_the_author_carries(self):
+        """The bio queue leads with the authors most of the library hangs off.
+
+        A translated bio is what a reader reaches from any of that author's
+        works, so it pays back in proportion to how many they have. Murray
+        (3 books + 1 sermon here) must outrank an author with a single sermon,
+        whatever the alphabet says.
+        """
+        prolific = Author.objects.create(
+            slug="zz-many", name="Zebedee Many", bio="P.", bio_html="<p>b</p>"
+        )
+        for i, slug in enumerate(("z1", "z2", "z3", "z4"), start=1):
+            Sermon.objects.create(
+                author=prolific, slug=slug, language="en", title=slug.upper(),
+                body_html="<p>x</p>", word_count=10, sort_order=i,
+            )
+        Author.objects.create(
+            slug="aa-one", name="Aaron One", bio="P.", bio_html="<p>b</p>"
+        )
+        todo = self.client.get("/api/admin/languages/sw/").data["todo"]["bios"]
+        # Zebedee (4 works) first, Murray (3 books + 1 sermon) — tied on total,
+        # but books break the tie — then Aaron, who carries nothing, last
+        # despite sorting first alphabetically.
+        self.assertEqual([a["slug"] for a in todo], ["am", "zz-many", "aa-one"])
+        self.assertEqual(todo[0]["books"], 3)
+        self.assertEqual(todo[0]["sermons"], 1)
+        self.assertEqual(todo[2]["books"], 0)
 
     @override_settings(DEBUG=True)
     def test_source_language_has_no_todo(self):
