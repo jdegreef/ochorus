@@ -48,6 +48,10 @@ import type { PageLoad } from './$types';
  * edition of C. H. Spurgeon's sermon The Immutability of God (Kutobadilika
  * kwa Mungu, PR #340) went live, so the /sw/sermons pages re-crawl and bake
  * with the new title.
+ *
+ * Prerender refresh 2026-07-29 (queue job #477): the first Portuguese sermon —
+ * A. B. Simpson's Himself (Ele Mesmo, PR #533) — went live, so the /pt/sermons
+ * pages re-crawl and bake with the translated title.
  */
 export const load: PageLoad = async () => {
 	// Tolerate a lagging/absent sermon endpoint at prerender time (see the
