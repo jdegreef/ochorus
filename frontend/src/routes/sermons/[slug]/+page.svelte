@@ -444,7 +444,7 @@
 	</nav>
 {/if}
 
-<article class="mx-auto px-5 py-10" style="{readerPrefs.style}; max-width: var(--reading-measure)" dir="auto">
+<article class="mx-auto px-5 py-10" style="{readerPrefs.style}; max-width: var(--reading-measure)">
 	<!-- Breadcrumb -->
 	<nav class="mb-5 flex flex-wrap items-center gap-1.5 text-small text-muted" aria-label={t('a11y.breadcrumb')}>
 		<a href={localizeHref('/sermons')} class="hover:text-text">{t('nav.sermons')}</a>
@@ -456,7 +456,7 @@
 		{t('search.typeSermon')} · {readingTime(sermon.word_count)}{#if preachedYear} · {preachedYear}{/if}{#if sermon.difficulty}&nbsp;·
 			<span title={t('reader.difficulty')}>{t(`reader.difficulty_${sermon.difficulty}`)}</span>{/if}
 	</p>
-	<h1 class="text-h1 mb-3">{sermon.title}</h1>
+	<h1 class="text-h1 mb-3" dir="auto">{sermon.title}</h1>
 
 	<!-- Author row: portrait + name -->
 	<a
@@ -525,7 +525,7 @@
 	<!-- Body HTML is cleaned server-side to a safe tag subset on ingest;
 	     Bible references are wrapped as tappable spans (scripture popover). -->
 	<!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
-	<div class="reading" bind:this={body} onclick={onBodyClick}>{@html sermon.body_html}</div>
+	<div class="reading" bind:this={body} onclick={onBodyClick} dir="auto">{@html sermon.body_html}</div>
 
 	<!-- Scripture index: the passages this sermon engages, each a jump into
 	     scripture search — so scripture is a navigation surface, not just text. -->
