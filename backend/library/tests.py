@@ -4003,13 +4003,27 @@ class ReadinessReportTests(TestCase):
         self.en = Language.objects.get(code="en")
         self.author = Author.objects.create(slug="a", name="A", bio="An English bio.")
 
-    def _report(self, lang):
-        # Network and frontend files are absent under test, so those two checks
-        # report `unknown`; everything else is pure data.
-        return readiness_module.report(lang)
+    def _report(self, lang, bible=None):
+        """A report with the Bible check stubbed out.
+
+        Two reasons, both learned the hard way. The Bible check makes a live call
+        to the Take Root API, so leaving it real would (a) make this suite depend
+        on a third party being up — a hidden network dependency in a unit test —
+        and (b) make results differ by environment: it passes in CI, which has
+        network, and reports `unknown` in a sandbox that doesn't. A test that
+        changes verdict with its surroundings isn't testing the code.
+        """
+        stub = bible or readiness_module.Check(
+            "bible", "Bible", readiness_module.PASS, "stubbed"
+        )
+        with mock.patch.object(readiness_module, "_bible_check", return_value=stub):
+            return readiness_module.report(lang)
 
     def test_the_source_language_skips_translation_checks(self):
-        r = self._report(self.en)
+        # Unstubbed on purpose: this asserts the real skip logic, and for the
+        # source language `_bible_check` returns early — before any network call
+        # — so it's safe to run for real here.
+        r = readiness_module.report(self.en)
         by_key = {c.key: c for c in r.checks}
         for key in ("bible", "glossary", "ui"):
             self.assertEqual(by_key[key].status, "skipped", key)
@@ -4046,14 +4060,36 @@ class ReadinessReportTests(TestCase):
         # no network, or an API container that can't see the frontend. Treating
         # that as failure would block a launch for an unrelated reason; the
         # interface rule is enforced at build time instead.
+        #
+        # The unknown is INJECTED rather than induced by the environment: an
+        # earlier version of this test just asserted "some check is unknown",
+        # which held in a sandbox with no network and failed in CI, where the
+        # Bible check really does resolve.
         self.es.min_books = 0
         self.es.min_bios = 0
         self.es.min_plans = 0
         self.es.require_all_topics = False
         self.es.save()
-        r = self._report(self.es)
+        unreachable = readiness_module.Check(
+            "bible", "Bible", readiness_module.UNKNOWN, "Could not reach the Bible API."
+        )
+        r = self._report(self.es, bible=unreachable)
         self.assertIn("unknown", {c.status for c in r.checks})
         self.assertTrue(r.ready, "an unanswerable check must not block")
+
+    def test_a_genuinely_bad_bible_does_block(self):
+        # The counterpart: `unknown` is forgiving, `fail` is not.
+        self.es.min_books = 0
+        self.es.min_bios = 0
+        self.es.min_plans = 0
+        self.es.require_all_topics = False
+        self.es.save()
+        bad = readiness_module.Check(
+            "bible", "Bible", readiness_module.FAIL, "Bible code 'nope' returned no verses."
+        )
+        r = self._report(self.es, bible=bad)
+        self.assertFalse(r.ready)
+        self.assertEqual([c.key for c in r.blockers], ["bible"])
 
     def test_untranslated_topics_block_when_required(self):
         Topic.objects.create(slug="t", title="T", description="d", is_published=True)
@@ -4078,9 +4114,35 @@ class AdminLanguageReadinessEndpointTests(TestCase):
         self.client = APIClient()
 
     def _patch_perm(self):
+        """Admin permission AND a stubbed Bible check.
+
+        The readiness endpoint calls the live Take Root API. Stubbing it here
+        keeps these tests hermetic — otherwise the suite fails whenever that
+        third party is unreachable, which has nothing to do with this endpoint.
+        """
         from unittest.mock import patch
 
-        return patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True)
+        perm = patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True)
+        bible = mock.patch.object(
+            readiness_module,
+            "_bible_check",
+            return_value=readiness_module.Check(
+                "bible", "Bible", readiness_module.PASS, "stubbed"
+            ),
+        )
+
+        class _Both:
+            def __enter__(self):
+                perm.start()
+                bible.start()
+                return self
+
+            def __exit__(self, *exc):
+                bible.stop()
+                perm.stop()
+                return False
+
+        return _Both()
 
     def test_report_lists_checks_and_current_thresholds(self):
         with self._patch_perm():
