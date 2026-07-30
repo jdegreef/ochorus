@@ -80,6 +80,14 @@ export const entries: EntryGenerator = async () => {
 // Prerender refresh 2026-07-29 (queue job #478): the Portuguese A. B. Simpson
 // biography ships (PR #533). /pt/authors/a-b-simpson re-crawls and bakes the
 // translated bio.
+//
+// Prerender refresh 2026-07-30 (queue jobs #398/#401/#404/#407/#410/#512/#513):
+// seven Spanish biographies ship (PR #562) — Spurgeon, Meyer, Gareth Evans,
+// Hannah Whitall Smith and Jeanne Guyon re-translated from the English expanded
+// in #387 (the old files were still the pre-expansion ones, down to 29% of the
+// current source for Gareth Evans), plus first-ever Spanish bios for R. A.
+// Torrey and Augustine of Hippo. Each /es/authors/<slug> re-crawls and bakes
+// the full bio with its prayer callouts.
 export const load: PageLoad = async ({ params }) => {
 	const author = await orNotFound(() => getAuthor(params.slug, getLang()));
 	// A mid-deploy API (before the sermon fields ship) may omit these; default
