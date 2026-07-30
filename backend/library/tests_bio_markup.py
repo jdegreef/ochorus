@@ -61,14 +61,7 @@ KNOWN_GAPS = {
     ("lg", "susanna-wesley"),  # 72/84 tags — job #571
     ("lg", "watchman-nee"),  # 72/88 tags, 57% of the English — job #574
     ("lg", "william-booth"),  # 76/84 tags — job #577
-    ("sw", "amy-carmichael"),  # 68/76 tags — job #569
-    ("sw", "charles-h-spurgeon"),  # 82/86 tags — job #399
-    ("sw", "frederick-brotherton-meyer"),  # 72/80 tags — job #402
-    ("sw", "gareth-evans"),  # 34/86 tags — worst in the library; job #405
-    ("sw", "hannah-whitall-smith"),  # 76/78 tags — job #408
-    ("sw", "jeanne-guyon"),  # 56/70 tags — job #411
     ("sw", "susanna-wesley"),  # 72/84 tags — job #572
-    ("sw", "watchman-nee"),  # 72/88 tags — job #575
     ("sw", "william-booth"),  # 76/84 tags — job #578
 }
 
