@@ -16,10 +16,12 @@ from library.admin_views import (
     AdminCoverageView,
     AdminEngagementView,
     AdminExportView,
+    AdminLanguageCreateView,
     AdminLanguageDeployCheckView,
     AdminLanguageDetailView,
     AdminLanguageGoLiveView,
     AdminLanguageReadinessView,
+    AdminLanguageSettingsView,
     AdminLanguageThresholdsView,
     AdminReviewQueueView,
     AdminSearchView,
@@ -74,10 +76,24 @@ urlpatterns = [
         AdminTranslationJobsView.as_view(),
         name="admin-translation-jobs",
     ),
+    # Creating a language is how a new one begins: the row is what the
+    # translate_* commands read, so it must exist before any work can be queued.
+    path(
+        "api/admin/languages/",
+        AdminLanguageCreateView.as_view(),
+        name="admin-language-create",
+    ),
     path(
         "api/admin/languages/<str:code>/",
         AdminLanguageDetailView.as_view(),
         name="admin-language-detail",
+    ),
+    # Identity (names, Bible, glossary) — refused for repo-defined languages,
+    # whose rows the deploy re-asserts.
+    path(
+        "api/admin/languages/<str:code>/settings/",
+        AdminLanguageSettingsView.as_view(),
+        name="admin-language-settings",
     ),
     # Readiness is its own route: it makes a live Bible-API call, so it must not
     # ride along on every load of the detail page.

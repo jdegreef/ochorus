@@ -32,13 +32,14 @@ from __future__ import annotations
 import anthropic
 from django.core.management.base import BaseCommand, CommandError
 
+from library.languages import config as language_config
 from library.models import Topic, TopicTranslation
 from library.translation import (
-    LANGUAGES,
     fetch_verse_text,
     translate_scripture_ref,
     translate_topic_meta,
     verify_bible_code,
+    verify_glossary,
 )
 
 
@@ -68,7 +69,7 @@ class Command(BaseCommand):
         parser.add_argument(
             "slugs", nargs="*", help="Topic slugs (default: every published topic)"
         )
-        parser.add_argument("--language", required=True, choices=sorted(LANGUAGES))
+        parser.add_argument("--language", required=True, help="Target language code (see the admin)")
         parser.add_argument(
             "--force", action="store_true", help="Re-translate existing fields"
         )
@@ -82,6 +83,13 @@ class Command(BaseCommand):
         )
 
     def handle(self, slugs, language, force, scripture, dry_run, **opts):
+        # The target's Bible and glossary come from the Language registry, so an
+        # unknown code is a clear error here rather than a KeyError later.
+        try:
+            cfg = language_config(language)
+        except ValueError as e:
+            raise CommandError(str(e)) from None
+
         topics = Topic.objects.filter(is_published=True)
         if slugs:
             topics = topics.filter(slug__in=slugs)
@@ -108,7 +116,7 @@ class Command(BaseCommand):
 
         self.stdout.write(
             f"{len(plan)}/{len(topics)} shelf/shelves to translate → "
-            f"{LANGUAGES[language]['name']}"
+            f"{cfg['name']}"
             f"{' (+ scripture)' if scripture else ''}"
         )
         if dry_run:
@@ -122,14 +130,15 @@ class Command(BaseCommand):
             return
 
         # Preflight: a bad Bible code silently omits scripture, so check before
-        # any paid model work (see verify_bible_code).
+        # any paid model work (see verify_bible_code / verify_glossary).
         try:
             verify_bible_code(language)
+            verify_glossary(language)
         except ValueError as e:
             raise CommandError(str(e)) from e
 
         client = anthropic.Anthropic()  # ANTHROPIC_API_KEY / ant auth profile
-        bible = LANGUAGES[language]["bible"]
+        bible = cfg["bible"]
         shipped: list[tuple[str, str, str]] = []
 
         for t in plan:

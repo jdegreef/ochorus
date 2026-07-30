@@ -700,7 +700,9 @@ class Language(models.Model):
     frontend's UI locale list, its ``ADVERTISED_LOCALES``, and a
     ``LANGUAGE_NAMES`` display map that had drifted far enough to be missing
     Arabic while carrying five languages with no content at all. This row is the
-    identity; the seed re-asserts it from the translator config each deploy.
+    identity; the seed re-asserts it from ``library/language_seed.py`` each
+    deploy. The translator's dict is gone — its Bible and glossary are fields
+    below, so the row an admin creates is the row a translation job reads.
 
     ``status`` is the switch. Only ``LIVE`` languages are advertised to readers
     and to search engines. Because the reader is a *prerendered static site* —
@@ -727,6 +729,13 @@ class Language(models.Model):
     # in this language. Blank for the source language.
     bible_code = models.CharField(max_length=32, blank=True)
     bible_label = models.CharField(max_length=120, blank=True)
+    # English term -> its rendering in this language, covering
+    # translation.GLOSSARY_TERMS. It lives on the row rather than in code
+    # because it is what makes a language added from the admin *translatable*:
+    # the translate_* commands read this, so creating a row is enough to start
+    # work. Repo-defined languages have theirs re-asserted from
+    # library/language_seed.py each deploy.
+    glossary = models.JSONField(default=dict, blank=True)
     # Right-to-left script (Arabic, Hebrew…). The reader's paged mode honours it.
     rtl = models.BooleanField(default=False)
     # The language content is authored in — English. Exempt from every readiness

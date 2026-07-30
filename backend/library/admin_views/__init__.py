@@ -7,10 +7,12 @@ Previously one 1,190-line module. The view classes are re-exported here so
 from .analytics import AdminEngagementView, AdminSearchView, AdminUsersView
 from .content import (
     AdminCoverageView,
+    AdminLanguageCreateView,
     AdminLanguageDeployCheckView,
     AdminLanguageDetailView,
     AdminLanguageGoLiveView,
     AdminLanguageReadinessView,
+    AdminLanguageSettingsView,
     AdminLanguageThresholdsView,
     AdminStatsView,
 )
@@ -25,10 +27,12 @@ __all__ = [
     "AdminEngagementView",
     "AdminSearchView",
     "AdminExportView",
+    "AdminLanguageCreateView",
     "AdminLanguageDeployCheckView",
     "AdminLanguageDetailView",
     "AdminLanguageGoLiveView",
     "AdminLanguageReadinessView",
+    "AdminLanguageSettingsView",
     "AdminLanguageThresholdsView",
     "AdminReviewQueueView",
     "AdminStatsView",

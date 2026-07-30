@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { auth } from '$lib/auth.svelte';
 	import { ApiError } from '$lib/api';
+	import LanguageSettingsCard from '$lib/components/LanguageSettingsCard.svelte';
 	import {
 		getAdminLanguageDetail,
 		getAdminTranslationJobs,
@@ -518,6 +519,19 @@
 					{/if}
 				{/if}
 			</section>
+
+			{#if d.settings}
+				<!-- What a translation job will actually use. Kept next to readiness
+				     because the Bible and glossary checks above are exactly the ones
+				     this section is how you fix. -->
+				<LanguageSettingsCard
+					settings={d.settings}
+					onsaved={() => {
+						load(data.code);
+						loadReadiness(data.code);
+					}}
+				/>
+			{/if}
 		{/if}
 
 		<div class="grid gap-6 md:grid-cols-2">

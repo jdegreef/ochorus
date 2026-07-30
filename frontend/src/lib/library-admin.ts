@@ -121,6 +121,8 @@ export interface AdminLangTodo {
 
 export interface AdminLanguageDetail {
 	language: Language;
+	/** Null for a code that has content but no registry row (e.g. en-modern). */
+	settings: LanguageSettings | null;
 	is_source: boolean;
 	english_counts: { books: number; sermons: number; plans: number; bios: number };
 	books: AdminLangBook[];
@@ -218,6 +220,71 @@ export const checkAdminLanguageDeploy = (code: string) =>
 
 export const getAdminLanguageDetail = (code: string) =>
 	apiFetch<AdminLanguageDetail>(`/api/admin/languages/${encodeURIComponent(code)}/`);
+
+// Adding a language. The row IS the language: the translate_* commands read
+// their Bible and glossary from it, so creating one here is what makes the
+// work queueable. Created as a draft — creating and launching are separate
+// decisions, and launching runs its own checks.
+
+export interface LanguageSettings {
+	code: string;
+	name: string;
+	native_name: string;
+	bible_code: string;
+	bible_label: string;
+	rtl: boolean;
+	glossary: Record<string, string>;
+	/** The terms a glossary must cover, in the order the form should show them. */
+	glossary_terms: string[];
+	missing_glossary_terms: string[];
+	/** Defined in backend/library/language_seed.py — the deploy re-asserts it,
+	 *  so the admin refuses to edit it rather than let a change be reverted. */
+	repo_managed: boolean;
+}
+
+export interface NewLanguage {
+	code: string;
+	name: string;
+	native_name: string;
+	bible_code: string;
+	bible_label: string;
+	rtl: boolean;
+	glossary: Record<string, string>;
+}
+
+export interface CreateLanguageResult {
+	language: Language;
+	/** False when the Bible API couldn't be reached — not a rejection. */
+	bible_verified: boolean;
+	bible_note: string;
+	next_steps: string[];
+}
+
+/** What the add-language form needs: the glossary contract and taken codes. */
+export const getAdminLanguageForm = () =>
+	apiFetch<{ glossary_terms: string[]; existing: string[] }>('/api/admin/languages/');
+
+export const createAdminLanguage = (payload: NewLanguage) =>
+	apiFetch<CreateLanguageResult>('/api/admin/languages/', {
+		method: 'POST',
+		body: JSON.stringify(payload)
+	});
+
+/** Edit identity. 409 for a repo-defined language; partial, send what changed. */
+export const updateAdminLanguageSettings = (
+	code: string,
+	patch: Partial<Omit<NewLanguage, 'code'>>
+) =>
+	apiFetch<{
+		code: string;
+		updated: string[];
+		bible_verified: boolean;
+		bible_note: string;
+		settings: LanguageSettings;
+	}>(`/api/admin/languages/${encodeURIComponent(code)}/settings/`, {
+		method: 'PATCH',
+		body: JSON.stringify(patch)
+	});
 
 // Translation job queue: the "Translate" buttons on the language page file
 // GitHub issues that a Claude Code worker session processes one at a time.

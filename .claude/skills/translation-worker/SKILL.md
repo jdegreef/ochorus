@@ -154,7 +154,7 @@ pinning full per-language coverage, so a partial block fails CI.
   the next deploy.
 - Keep the title short and scannable (it's a heading, not a sentence) and the
   description to the original's one or two sentences. Follow the language's
-  glossary in `library/translation.py` so the shelf reads consistently with the
+  glossary (the `Language` row — see its admin page) so the shelf reads consistently with the
   books on it.
 - **Scripture is not yours to write.** The shelf's verse lives in
   `TOPIC_SCRIPTURE_TR` and must come verbatim from that language's Bible via the
