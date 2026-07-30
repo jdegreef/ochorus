@@ -125,6 +125,13 @@ export const entries: EntryGenerator = async () => {
 // each translated tag-for-tag from the English bio_html with its two prayer
 // callouts intact. Each /es/authors/<slug> re-crawls and bakes the translated
 // bio.
+//
+// Prerender refresh 2026-07-30 (queue jobs #585/#586/#587/#588/#589/#590): six
+// first-ever Portuguese long-form author biographies ship — Augustine of Hippo,
+// Richard Baxter, Jonathan Edwards, Hudson Taylor, Catherine Booth and George
+// Müller — each translated tag-for-tag from the English bio_html with its
+// prayer callouts intact. Each /pt/authors/<slug> re-crawls and bakes the
+// translated bio.
 export const load: PageLoad = async ({ params }) => {
 	const author = await orNotFound(() => getAuthor(params.slug, getLang()));
 	// A mid-deploy API (before the sermon fields ship) may omit these; default
