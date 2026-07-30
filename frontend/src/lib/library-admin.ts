@@ -132,6 +132,90 @@ export interface AdminLanguageDetail {
 	todo: AdminLangTodo;
 }
 
+// Readiness: is a language ready to go live, and what's still missing? A
+// separate request from the detail payload because the Bible check makes a live
+// call to the Take Root API — it shouldn't ride along on every page load.
+//
+// `status` values: 'pass' | 'fail' | 'unknown' | 'skipped'.
+//   - `unknown` means the question couldn't be answered here (no network for the
+//     Bible check; the API container can't see the frontend's message
+//     catalogues). It does NOT block: interface completeness is enforced at
+//     build time, where a live locale with a missing key fails the build.
+//   - `skipped` means the threshold is 0, or the check doesn't apply (English).
+export interface ReadinessCheck {
+	key: string;
+	label: string;
+	status: 'pass' | 'fail' | 'unknown' | 'skipped';
+	detail: string;
+	current: number | null;
+	required: number | null;
+}
+
+export interface LanguageThresholds {
+	min_books: number;
+	min_sermons: number;
+	min_bios: number;
+	min_plans: number;
+	require_all_topics: boolean;
+	require_complete_ui: boolean;
+}
+
+export interface AdminLanguageReadiness {
+	code: string;
+	/** True when no check is failing — `unknown` doesn't count against it. */
+	ready: boolean;
+	/** Keys of the failing checks, for a one-line summary. */
+	blocking: string[];
+	status: string;
+	checks: ReadinessCheck[];
+	thresholds: LanguageThresholds;
+}
+
+export const getAdminLanguageReadiness = (code: string) =>
+	apiFetch<AdminLanguageReadiness>(
+		`/api/admin/languages/${encodeURIComponent(code)}/readiness/`
+	);
+
+/** Edit the bar. Partial: send only what changed. 0 disables a count check. */
+export const updateAdminLanguageThresholds = (
+	code: string,
+	patch: Partial<LanguageThresholds>
+) =>
+	apiFetch<{ code: string; updated: string[]; thresholds: LanguageThresholds }>(
+		`/api/admin/languages/${encodeURIComponent(code)}/thresholds/`,
+		{ method: 'PATCH', body: JSON.stringify(patch) }
+	);
+
+// Going live. Deliberately NOT a status write: the reader is a prerendered
+// static site, so the server re-runs the readiness checks, records the launch,
+// and triggers the reader's rebuild. `deploy.status` and `launched` are separate
+// facts — a language can be recorded live while the rebuild failed — and the UI
+// must not merge them into one green tick.
+export interface GoLiveResult {
+	launched: boolean;
+	/** Only on refusal: 'not_ready', with `readiness.blocking` explaining why. */
+	reason?: string;
+	already_live?: boolean;
+	/** True when launched despite failing checks. */
+	forced?: boolean;
+	went_live_at?: string | null;
+	deploy?: { status: 'triggered' | 'not_configured' | 'failed'; detail: string };
+	readiness?: AdminLanguageReadiness;
+}
+
+/** `force` launches despite failing checks; the result records that it was forced. */
+export const goLiveAdminLanguage = (code: string, force = false) =>
+	apiFetch<GoLiveResult>(`/api/admin/languages/${encodeURIComponent(code)}/go-live/`, {
+		method: 'POST',
+		body: JSON.stringify({ force })
+	});
+
+/** What actually SHIPPED, as opposed to what was decided — reads the live sitemap. */
+export const checkAdminLanguageDeploy = (code: string) =>
+	apiFetch<{ status: 'deployed' | 'pending' | 'unknown' | 'n/a'; detail: string }>(
+		`/api/admin/languages/${encodeURIComponent(code)}/deploy-check/`
+	);
+
 export const getAdminLanguageDetail = (code: string) =>
 	apiFetch<AdminLanguageDetail>(`/api/admin/languages/${encodeURIComponent(code)}/`);
 

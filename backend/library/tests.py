@@ -17,6 +17,7 @@ from .translation import (
 )
 from .models import (
     Author,
+    Language,
     AuthorTranslation,
     Book,
     Chapter,
@@ -29,6 +30,7 @@ from .models import (
     TopicSermon,
     TopicTranslation,
 )
+from . import readiness as readiness_module
 from .text import html_to_text
 
 
@@ -3819,3 +3821,574 @@ class TranslateTopicCommandTests(TestCase):
         self.assertEqual(
             TopicTranslation.objects.get(topic=self.topic, language="sw").title, "Mpya"
         )
+
+
+class LanguageRegistrySeedTests(TestCase):
+    """`seed_languages` — identity refreshes, the switch and the bar do not.
+
+    This is the trap backend/CLAUDE.md warns about and that has bitten this
+    codebase before: the seed re-runs on EVERY deploy, so any field a workflow
+    owns after creation must be create-only. For languages that means `status`
+    (an admin launched it), the thresholds (an admin tuned them), `went_live_at`
+    and `notes`. If those were in the update set, the first deploy after a launch
+    would silently put the language back to draft.
+    """
+
+    def test_seed_creates_every_configured_language(self):
+        Language.objects.all().delete()
+        call_command("seed_languages")
+        codes = set(Language.objects.values_list("code", flat=True))
+        # English (the source) plus every translation target.
+        self.assertEqual(codes, {"en", "es", "sw", "lg", "pt", "ar"})
+
+        en = Language.objects.get(code="en")
+        self.assertTrue(en.is_source)
+        self.assertEqual(en.bible_code, "")  # nothing to translate scripture into
+
+        ar = Language.objects.get(code="ar")
+        self.assertTrue(ar.rtl, "Arabic is right-to-left")
+        self.assertFalse(ar.is_source)
+        self.assertTrue(ar.bible_code, "a target language needs a Bible")
+
+    def test_seed_is_idempotent(self):
+        call_command("seed_languages")
+        before = Language.objects.count()
+        call_command("seed_languages")
+        self.assertEqual(Language.objects.count(), before)
+
+    def test_a_deploy_never_walks_back_a_launch_or_a_tuned_bar(self):
+        call_command("seed_languages")
+        ar = Language.objects.get(code="ar")
+        # An admin launches Arabic and tunes its bar down for a beachhead run.
+        ar.status = Language.Status.LIVE
+        ar.min_books = 1
+        ar.min_bios = 0
+        ar.notes = "beachhead launch"
+        ar.save()
+
+        call_command("seed_languages")  # i.e. the next deploy
+
+        ar.refresh_from_db()
+        self.assertEqual(ar.status, Language.Status.LIVE, "the deploy un-launched it")
+        self.assertEqual(ar.min_books, 1, "the deploy reset a tuned threshold")
+        self.assertEqual(ar.min_bios, 0)
+        self.assertEqual(ar.notes, "beachhead launch")
+
+    def test_a_deploy_does_refresh_identity(self):
+        # The other half: identity IS the repo's, so a correction ships.
+        call_command("seed_languages")
+        lg = Language.objects.get(code="lg")
+        lg.name = "Wrong Name"
+        lg.native_name = "Wrong"
+        lg.save()
+
+        call_command("seed_languages")
+
+        lg.refresh_from_db()
+        self.assertEqual(lg.name, "Luganda")
+        self.assertEqual(lg.native_name, "Luganda")
+
+
+class LanguageEntryTests(TestCase):
+    """`_language_entry` now reads the registry rather than a hardcoded map."""
+
+    def setUp(self):
+        from library import languages
+
+        languages.invalidate()
+
+    def test_names_come_from_the_registry(self):
+        from library.languages import entry
+
+        self.assertEqual(entry("sw")["name"], "Swahili")
+        self.assertEqual(entry("sw")["native_name"], "Kiswahili")
+
+    def test_arabic_is_no_longer_bare_codes(self):
+        # The old LANGUAGE_NAMES map had no Arabic, so an Arabic row rendered as
+        # "ar / ar". That was the concrete cost of a fourth source of truth.
+        from library.languages import entry
+
+        ar = entry("ar")
+        self.assertEqual(ar["name"], "Arabic")
+        self.assertNotEqual(ar["native_name"], "ar")
+        self.assertTrue(ar["rtl"])
+
+    def test_an_unknown_code_degrades_to_itself(self):
+        from library.languages import entry
+
+        self.assertEqual(entry("zz")["name"], "zz")
+
+    def test_editing_a_row_invalidates_the_cache(self):
+        from library.languages import entry
+
+        self.assertEqual(entry("lg")["name"], "Luganda")
+        lang = Language.objects.get(code="lg")
+        lang.name = "Ganda"
+        lang.save()
+        # The signal in library/languages.py drops the cache, so a rename shows
+        # up without a restart.
+        self.assertEqual(entry("lg")["name"], "Ganda")
+
+    def test_live_codes_reads_status_from_the_database(self):
+        from library.languages import live_codes
+
+        self.assertIn("es", live_codes())
+        self.assertNotIn("ar", live_codes())  # draft
+
+        ar = Language.objects.get(code="ar")
+        ar.status = Language.Status.LIVE
+        ar.save()
+        self.assertIn("ar", live_codes())
+
+
+class LanguageListEndpointTests(TestCase):
+    """`/api/library/languages/` — intent AND inventory, plus the build's view."""
+
+    def setUp(self):
+        self.client = APIClient()
+        from library import languages
+
+        languages.invalidate()
+        self.author = Author.objects.create(slug="a", name="A")
+        for lang in ("en", "es"):
+            Book.objects.create(
+                author=self.author, slug="b", language=lang, title="T", is_published=True
+            )
+
+    def test_reader_list_needs_both_live_status_and_books(self):
+        codes = [r["code"] for r in self.client.get("/api/library/languages/").data]
+        self.assertEqual(codes, ["en", "es"])
+
+        # Swahili is live in the registry but has no book here yet — the reader's
+        # picker must not offer a language with nothing to open.
+        self.assertNotIn("sw", codes)
+
+        # And a language with books but NOT live stays out: this is the guard the
+        # old books-only rule lacked, which is how pt got advertised while empty.
+        Book.objects.create(
+            author=self.author, slug="b", language="ar", title="T", is_published=True
+        )
+        codes = [r["code"] for r in self.client.get("/api/library/languages/").data]
+        self.assertNotIn("ar", codes)
+
+    def test_all_returns_every_live_language_for_the_build(self):
+        # The build asks for intent, not inventory: a live locale still filling
+        # up must be prerendered and advertised.
+        codes = [r["code"] for r in self.client.get("/api/library/languages/?all=1").data]
+        self.assertEqual(codes, ["en", "es", "sw", "lg", "pt"])
+        self.assertNotIn("ar", codes)  # draft
+
+    def test_going_live_changes_what_the_build_is_told(self):
+        ar = Language.objects.get(code="ar")
+        ar.status = Language.Status.LIVE
+        ar.save()
+        codes = [r["code"] for r in self.client.get("/api/library/languages/?all=1").data]
+        self.assertIn("ar", codes)
+
+    def test_entries_carry_the_flags_the_reader_needs(self):
+        ar = Language.objects.get(code="ar")
+        ar.status = Language.Status.LIVE
+        ar.save()
+        rows = {r["code"]: r for r in self.client.get("/api/library/languages/?all=1").data}
+        self.assertTrue(rows["ar"]["rtl"], "the reader needs to know to flip direction")
+        self.assertFalse(rows["es"]["rtl"])
+        self.assertTrue(rows["en"]["is_source"])
+
+
+class ReadinessReportTests(TestCase):
+    """`readiness.report` — the computed answer to "can this language go live?"."""
+
+    def setUp(self):
+        self.es = Language.objects.get(code="es")
+        self.en = Language.objects.get(code="en")
+        self.author = Author.objects.create(slug="a", name="A", bio="An English bio.")
+
+    def _report(self, lang, bible=None):
+        """A report with the Bible check stubbed out.
+
+        Two reasons, both learned the hard way. The Bible check makes a live call
+        to the Take Root API, so leaving it real would (a) make this suite depend
+        on a third party being up — a hidden network dependency in a unit test —
+        and (b) make results differ by environment: it passes in CI, which has
+        network, and reports `unknown` in a sandbox that doesn't. A test that
+        changes verdict with its surroundings isn't testing the code.
+        """
+        stub = bible or readiness_module.Check(
+            "bible", "Bible", readiness_module.PASS, "stubbed"
+        )
+        with mock.patch.object(readiness_module, "_bible_check", return_value=stub):
+            return readiness_module.report(lang)
+
+    def test_the_source_language_skips_translation_checks(self):
+        # Unstubbed on purpose: this asserts the real skip logic, and for the
+        # source language `_bible_check` returns early — before any network call
+        # — so it's safe to run for real here.
+        r = readiness_module.report(self.en)
+        by_key = {c.key: c for c in r.checks}
+        for key in ("bible", "glossary", "ui"):
+            self.assertEqual(by_key[key].status, "skipped", key)
+
+    def test_a_failing_count_blocks_and_says_what_is_missing(self):
+        self.es.min_books = 3
+        self.es.save()
+        books = {c.key: c for c in self._report(self.es).checks}["books"]
+        self.assertEqual(books.status, "fail")
+        self.assertEqual(books.current, 0)
+        self.assertEqual(books.required, 3)
+        self.assertIn("needs 3", books.detail)
+
+    def test_zero_disables_a_check_rather_than_failing_it(self):
+        self.es.min_books = 0
+        self.es.save()
+        books = {c.key: c for c in self._report(self.es).checks}["books"]
+        self.assertEqual(books.status, "skipped")
+        self.assertFalse(books.blocking)
+
+    def test_meeting_the_bar_passes(self):
+        self.es.min_books = 1
+        self.es.min_bios = 0
+        self.es.require_all_topics = False
+        self.es.save()
+        Book.objects.create(
+            author=self.author, slug="b", language="es", title="T", is_published=True
+        )
+        books = {c.key: c for c in self._report(self.es).checks}["books"]
+        self.assertEqual(books.status, "pass")
+
+    def test_unknown_does_not_block_readiness(self):
+        # Bible and interface strings can be unanswerable where they're asked —
+        # no network, or an API container that can't see the frontend. Treating
+        # that as failure would block a launch for an unrelated reason; the
+        # interface rule is enforced at build time instead.
+        #
+        # The unknown is INJECTED rather than induced by the environment: an
+        # earlier version of this test just asserted "some check is unknown",
+        # which held in a sandbox with no network and failed in CI, where the
+        # Bible check really does resolve.
+        self.es.min_books = 0
+        self.es.min_bios = 0
+        self.es.min_plans = 0
+        self.es.require_all_topics = False
+        self.es.save()
+        unreachable = readiness_module.Check(
+            "bible", "Bible", readiness_module.UNKNOWN, "Could not reach the Bible API."
+        )
+        r = self._report(self.es, bible=unreachable)
+        self.assertIn("unknown", {c.status for c in r.checks})
+        self.assertTrue(r.ready, "an unanswerable check must not block")
+
+    def test_a_genuinely_bad_bible_does_block(self):
+        # The counterpart: `unknown` is forgiving, `fail` is not.
+        self.es.min_books = 0
+        self.es.min_bios = 0
+        self.es.min_plans = 0
+        self.es.require_all_topics = False
+        self.es.save()
+        bad = readiness_module.Check(
+            "bible", "Bible", readiness_module.FAIL, "Bible code 'nope' returned no verses."
+        )
+        r = self._report(self.es, bible=bad)
+        self.assertFalse(r.ready)
+        self.assertEqual([c.key for c in r.blockers], ["bible"])
+
+    def test_untranslated_topics_block_when_required(self):
+        Topic.objects.create(slug="t", title="T", description="d", is_published=True)
+        self.es.require_all_topics = True
+        self.es.save()
+        topics = {c.key: c for c in self._report(self.es).checks}["topics"]
+        self.assertEqual(topics.status, "fail")
+        self.assertIn("hidden in this language", topics.detail)
+
+    def test_bios_count_either_short_or_long_form(self):
+        self.es.min_bios = 1
+        self.es.save()
+        AuthorTranslation.objects.create(author=self.author, language="es", bio_html="<p>x</p>")
+        bios = {c.key: c for c in self._report(self.es).checks}["bios"]
+        self.assertEqual(bios.status, "pass")
+
+
+class AdminLanguageReadinessEndpointTests(TestCase):
+    """The admin readiness report and the editable bar."""
+
+    def setUp(self):
+        self.client = APIClient()
+
+    def _patch_perm(self):
+        """Admin permission AND a stubbed Bible check.
+
+        The readiness endpoint calls the live Take Root API. Stubbing it here
+        keeps these tests hermetic — otherwise the suite fails whenever that
+        third party is unreachable, which has nothing to do with this endpoint.
+        """
+        from unittest.mock import patch
+
+        perm = patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True)
+        bible = mock.patch.object(
+            readiness_module,
+            "_bible_check",
+            return_value=readiness_module.Check(
+                "bible", "Bible", readiness_module.PASS, "stubbed"
+            ),
+        )
+
+        class _Both:
+            def __enter__(self):
+                perm.start()
+                bible.start()
+                return self
+
+            def __exit__(self, *exc):
+                bible.stop()
+                perm.stop()
+                return False
+
+        return _Both()
+
+    def test_report_lists_checks_and_current_thresholds(self):
+        with self._patch_perm():
+            res = self.client.get("/api/admin/languages/ar/readiness/")
+        self.assertEqual(res.status_code, 200)
+        self.assertIn("checks", res.data)
+        self.assertIn("min_books", res.data["thresholds"])
+        self.assertEqual(res.data["status"], "draft")
+
+    def test_unknown_language_is_404(self):
+        with self._patch_perm():
+            self.assertEqual(
+                self.client.get("/api/admin/languages/zz/readiness/").status_code, 404
+            )
+            self.assertEqual(
+                self.client.patch(
+                    "/api/admin/languages/zz/thresholds/", {"min_books": 1}, format="json"
+                ).status_code,
+                404,
+            )
+
+    def test_editing_the_bar_changes_the_verdict(self):
+        with self._patch_perm():
+            before = self.client.get("/api/admin/languages/ar/readiness/").data
+            self.assertIn("books", before["blocking"])
+
+            res = self.client.patch(
+                "/api/admin/languages/ar/thresholds/",
+                {"min_books": 0, "min_bios": 0, "require_all_topics": False},
+                format="json",
+            )
+            self.assertEqual(res.status_code, 200)
+            self.assertEqual(res.data["thresholds"]["min_books"], 0)
+
+            after = self.client.get("/api/admin/languages/ar/readiness/").data
+        self.assertEqual(after["blocking"], [], "lowering the bar should clear blockers")
+
+    def test_threshold_validation(self):
+        cases = [
+            ({"min_books": -1}, 400),
+            ({"min_books": "lots"}, 400),
+            ({}, 400),  # nothing to update
+            ({"min_books": 2}, 200),
+        ]
+        with self._patch_perm():
+            for body, expected in cases:
+                res = self.client.patch(
+                    "/api/admin/languages/es/thresholds/", body, format="json"
+                )
+                self.assertEqual(res.status_code, expected, body)
+
+    def test_status_cannot_be_changed_through_the_thresholds_endpoint(self):
+        # Launching is the go-live action's job — it re-runs the checks. A
+        # thresholds PATCH must never be a back door to going live.
+        with self._patch_perm():
+            res = self.client.patch(
+                "/api/admin/languages/ar/thresholds/",
+                {"status": "live", "min_books": 1},
+                format="json",
+            )
+        self.assertEqual(res.status_code, 200)
+        self.assertNotIn("status", res.data["updated"])
+        self.assertEqual(Language.objects.get(code="ar").status, "draft")
+
+    def test_readiness_requires_admin(self):
+        # Anonymous gets 401 (no credentials); a signed-in non-admin would get
+        # 403. Either way the endpoint is closed — these are admin surfaces that
+        # expose content counts and can change a launch bar.
+        self.assertIn(
+            self.client.get("/api/admin/languages/es/readiness/").status_code, (401, 403)
+        )
+        self.assertIn(
+            self.client.patch(
+                "/api/admin/languages/es/thresholds/", {"min_books": 1}, format="json"
+            ).status_code,
+            (401, 403),
+        )
+
+
+class GoLiveTests(TestCase):
+    """Taking a language live: re-check, record, trigger the rebuild.
+
+    The two halves are asserted separately throughout. "Recorded as live" and
+    "readers can see it" are different facts — the reader is a prerendered static
+    site — and a launch whose deploy failed is a real state that must stay
+    visible rather than collapsing into one success flag.
+    """
+
+    def setUp(self):
+        self.client = APIClient()
+        self.ar = Language.objects.get(code="ar")
+
+    def _perm_and_ready(self, ready=True):
+        """Admin permission, a stubbed Bible check, and a chosen readiness verdict."""
+        from unittest.mock import patch
+
+        perm = patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True)
+        checks = [] if ready else [
+            readiness_module.Check("books", "Books", readiness_module.FAIL, "0 books — needs 5.")
+        ]
+        # Patched on the readiness module itself, which is what golive imports —
+        # `from . import readiness` then `readiness.report(...)`, so the lookup
+        # happens at call time and this stub is what golive sees.
+        rep = mock.patch.object(
+            readiness_module, "report", return_value=readiness_module.Report("ar", checks)
+        )
+
+        class _Ctx:
+            def __enter__(self):
+                perm.start()
+                rep.start()
+                return self
+
+            def __exit__(self, *exc):
+                rep.stop()
+                perm.stop()
+                return False
+
+        return _Ctx()
+
+    def test_not_ready_is_refused_with_its_blockers(self):
+        with self._perm_and_ready(ready=False):
+            res = self.client.post("/api/admin/languages/ar/go-live/", {}, format="json")
+        self.assertEqual(res.status_code, 409)
+        self.assertFalse(res.data["launched"])
+        self.assertEqual(res.data["reason"], "not_ready")
+        self.assertEqual(res.data["readiness"]["blocking"], ["books"])
+        # And crucially it did NOT launch.
+        self.ar.refresh_from_db()
+        self.assertEqual(self.ar.status, "draft")
+
+    def test_force_launches_past_failing_checks_and_says_so(self):
+        with self._perm_and_ready(ready=False):
+            res = self.client.post(
+                "/api/admin/languages/ar/go-live/", {"force": True}, format="json"
+            )
+        self.assertEqual(res.status_code, 200)
+        self.assertTrue(res.data["launched"])
+        self.assertTrue(res.data["forced"], "an override must be recorded as one")
+        self.ar.refresh_from_db()
+        self.assertEqual(self.ar.status, "live")
+
+    def test_a_ready_language_launches_and_is_stamped(self):
+        with self._perm_and_ready(ready=True):
+            res = self.client.post("/api/admin/languages/ar/go-live/", {}, format="json")
+        self.assertEqual(res.status_code, 200)
+        self.ar.refresh_from_db()
+        self.assertEqual(self.ar.status, "live")
+        self.assertIsNotNone(self.ar.went_live_at)
+        self.assertFalse(res.data["forced"])
+
+    def test_relaunching_keeps_the_original_went_live_at(self):
+        # Re-running the action (e.g. to retrigger a deploy) must not rewrite when
+        # the language became public.
+        with self._perm_and_ready(ready=True):
+            self.client.post("/api/admin/languages/ar/go-live/", {}, format="json")
+            self.ar.refresh_from_db()
+            first = self.ar.went_live_at
+            res = self.client.post("/api/admin/languages/ar/go-live/", {}, format="json")
+        self.ar.refresh_from_db()
+        self.assertEqual(self.ar.went_live_at, first)
+        self.assertTrue(res.data["already_live"])
+
+    def test_an_unconfigured_deploy_hook_is_reported_not_hidden(self):
+        with self.settings(RENDER_WEB_DEPLOY_HOOK=""):
+            with self._perm_and_ready(ready=True):
+                res = self.client.post("/api/admin/languages/ar/go-live/", {}, format="json")
+        self.assertTrue(res.data["launched"])
+        self.assertEqual(res.data["deploy"]["status"], "not_configured")
+        self.assertIn("won't see it", res.data["deploy"]["detail"])
+
+    def test_a_failing_deploy_hook_does_not_undo_the_launch(self):
+        # The status flip already happened; losing it because the hook 500'd would
+        # be worse than a launch that needs a manual deploy.
+        with self.settings(RENDER_WEB_DEPLOY_HOOK="https://hook.example/deploy"):
+            with self._perm_and_ready(ready=True):
+                with mock.patch(
+                    "library.golive.requests.post",
+                    side_effect=__import__("requests").RequestException("boom"),
+                ):
+                    res = self.client.post(
+                        "/api/admin/languages/ar/go-live/", {}, format="json"
+                    )
+        self.assertTrue(res.data["launched"])
+        self.assertEqual(res.data["deploy"]["status"], "failed")
+        self.ar.refresh_from_db()
+        self.assertEqual(self.ar.status, "live")
+
+    def test_the_deploy_hook_is_fired_when_configured(self):
+        with self.settings(RENDER_WEB_DEPLOY_HOOK="https://hook.example/deploy"):
+            with self._perm_and_ready(ready=True):
+                with mock.patch("library.golive.requests.post") as post:
+                    post.return_value = mock.Mock(ok=True, status_code=200)
+                    res = self.client.post(
+                        "/api/admin/languages/ar/go-live/", {}, format="json"
+                    )
+                    post.assert_called_once_with("https://hook.example/deploy", timeout=20)
+        self.assertEqual(res.data["deploy"]["status"], "triggered")
+
+    def test_english_cannot_be_launched(self):
+        from unittest.mock import patch
+
+        with patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True):
+            res = self.client.post("/api/admin/languages/en/go-live/", {}, format="json")
+        self.assertEqual(res.status_code, 400)
+
+    def test_go_live_requires_admin(self):
+        self.assertIn(
+            self.client.post("/api/admin/languages/ar/go-live/", {}, format="json").status_code,
+            (401, 403),
+        )
+
+
+class DeployCheckTests(TestCase):
+    """"Did it ship?" — the question `status` cannot answer."""
+
+    def setUp(self):
+        self.client = APIClient()
+
+    def _perm(self):
+        from unittest.mock import patch
+
+        return patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True)
+
+    def test_unknown_without_a_site_url_rather_than_a_guess(self):
+        with self.settings(PUBLIC_SITE_URL=""):
+            with self._perm():
+                res = self.client.get("/api/admin/languages/ar/deploy-check/")
+        self.assertEqual(res.data["status"], "unknown")
+
+    def test_deployed_when_the_locale_is_in_the_live_sitemap(self):
+        with self.settings(PUBLIC_SITE_URL="https://ochorus.test"):
+            with self._perm():
+                with mock.patch("library.golive.requests.get") as get:
+                    get.return_value = mock.Mock(
+                        ok=True, text="<url><loc>https://ochorus.test/ar/books/</loc></url>"
+                    )
+                    res = self.client.get("/api/admin/languages/ar/deploy-check/")
+        self.assertEqual(res.data["status"], "deployed")
+
+    def test_pending_when_the_build_has_not_caught_up(self):
+        with self.settings(PUBLIC_SITE_URL="https://ochorus.test"):
+            with self._perm():
+                with mock.patch("library.golive.requests.get") as get:
+                    get.return_value = mock.Mock(
+                        ok=True, text="<url><loc>https://ochorus.test/es/books/</loc></url>"
+                    )
+                    res = self.client.get("/api/admin/languages/ar/deploy-check/")
+        self.assertEqual(res.data["status"], "pending")

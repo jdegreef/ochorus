@@ -18,7 +18,8 @@ from accounts.permissions import IsAdminEmail
 from . import upload_import
 from .models import Author
 from .serializers import AuthorSerializer
-from .views import LANGUAGE_NAMES, _language_entry
+from .languages import language_map
+from .views import _language_entry
 
 
 def _unique_author_slug(name: str) -> str:
@@ -67,7 +68,10 @@ class AdminImportLanguagesView(APIView):
     permission_classes = [IsAdminEmail]
 
     def get(self, request):
-        return Response([_language_entry(code) for code in LANGUAGE_NAMES])
+        # Every language the registry knows — the import form's target list.
+        # Includes drafts on purpose: you import content INTO a language in
+        # order to get it ready, so the picker can't be limited to live ones.
+        return Response([_language_entry(code) for code in language_map()])
 
 
 class AdminImportParseView(APIView):

@@ -690,3 +690,83 @@ class SearchQueryLog(models.Model):
 
     def __str__(self) -> str:
         return f"{self.query!r} [{self.language}] → {self.result_count}"
+
+
+class Language(models.Model):
+    """A content language the site knows about, and whether readers can see it.
+
+    Before this table, "what languages exist" was spread across FOUR places that
+    had to agree by hand: the translator's ``LANGUAGES`` (Bible + glossary), the
+    frontend's UI locale list, its ``ADVERTISED_LOCALES``, and a
+    ``LANGUAGE_NAMES`` display map that had drifted far enough to be missing
+    Arabic while carrying five languages with no content at all. This row is the
+    identity; the seed re-asserts it from the translator config each deploy.
+
+    ``status`` is the switch. Only ``LIVE`` languages are advertised to readers
+    and to search engines. Because the reader is a *prerendered static site* —
+    UI catalogues, pages, ``sitemap.xml`` and hreflang are all produced at build
+    time — flipping this field cannot by itself change what a reader sees: a
+    build has to run. The go-live action therefore changes status AND triggers a
+    deploy; nothing here should imply an instant switch.
+
+    There is deliberately no ``retired`` state and no review gate: taking a
+    language back down is a status change to ``DRAFT`` (the next build stops
+    advertising it), and translations go live wearing their "awaiting native
+    review" badge rather than waiting on an approval step.
+    """
+
+    class Status(models.TextChoices):
+        DRAFT = "draft", "Draft"  # known, not offered to readers
+        TRANSLATING = "translating", "Translating"  # work in progress
+        LIVE = "live", "Live"  # advertised: sitemap, hreflang, switcher
+
+    code = models.CharField(max_length=10, primary_key=True)
+    name = models.CharField(max_length=60, help_text="English name, e.g. Swahili")
+    native_name = models.CharField(max_length=60, help_text="e.g. Kiswahili")
+    # The Take Root translation code whose wording is authoritative for Scripture
+    # in this language. Blank for the source language.
+    bible_code = models.CharField(max_length=32, blank=True)
+    bible_label = models.CharField(max_length=120, blank=True)
+    # Right-to-left script (Arabic, Hebrew…). The reader's paged mode honours it.
+    rtl = models.BooleanField(default=False)
+    # The language content is authored in — English. Exempt from every readiness
+    # check, and never a translation target.
+    is_source = models.BooleanField(default=False)
+    status = models.CharField(
+        max_length=16, choices=Status.choices, default=Status.DRAFT
+    )
+    # --- Readiness thresholds -------------------------------------------------
+    # Per-language and admin-editable rather than one global constant: a language
+    # with a big catalogue behind it should clear a higher bar than a first
+    # beachhead language, and that judgement belongs to whoever is launching it.
+    # 0 disables a check.
+    min_books = models.PositiveIntegerField(default=5)
+    min_sermons = models.PositiveIntegerField(default=0)
+    min_bios = models.PositiveIntegerField(default=3)
+    # Defaults to 0, unlike books and bios: no non-English language has ever had
+    # a published reading plan, so requiring one to launch would block every
+    # language on a format that has never been part of a launch. Raise it per
+    # language when translated plans become part of the bar.
+    min_plans = models.PositiveIntegerField(default=0)
+    # Topic prose has no English fallback, so an untranslated shelf is hidden
+    # rather than English — requiring all of them keeps the shelf page whole.
+    require_all_topics = models.BooleanField(default=True)
+    # The UI catalogue must be complete: a missing message key renders in
+    # English, which is the least visible way English leaks into a locale.
+    require_complete_ui = models.BooleanField(default=True)
+    went_live_at = models.DateTimeField(null=True, blank=True)
+    notes = models.TextField(blank=True)
+    sort_order = models.IntegerField(default=0)
+
+    class Meta:
+        ordering = ["sort_order", "name"]
+
+    def __str__(self) -> str:
+        return f"{self.name} ({self.code}) — {self.status}"
+
+    @property
+    def is_live(self) -> bool:
+        return self.status == self.Status.LIVE
+
+    def natural_key(self):
+        return (self.code,)

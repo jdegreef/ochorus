@@ -16,7 +16,11 @@ from library.admin_views import (
     AdminCoverageView,
     AdminEngagementView,
     AdminExportView,
+    AdminLanguageDeployCheckView,
     AdminLanguageDetailView,
+    AdminLanguageGoLiveView,
+    AdminLanguageReadinessView,
+    AdminLanguageThresholdsView,
     AdminReviewQueueView,
     AdminSearchView,
     AdminStatsView,
@@ -74,6 +78,32 @@ urlpatterns = [
         "api/admin/languages/<str:code>/",
         AdminLanguageDetailView.as_view(),
         name="admin-language-detail",
+    ),
+    # Readiness is its own route: it makes a live Bible-API call, so it must not
+    # ride along on every load of the detail page.
+    path(
+        "api/admin/languages/<str:code>/readiness/",
+        AdminLanguageReadinessView.as_view(),
+        name="admin-language-readiness",
+    ),
+    path(
+        "api/admin/languages/<str:code>/thresholds/",
+        AdminLanguageThresholdsView.as_view(),
+        name="admin-language-thresholds",
+    ),
+    # The switch. POST re-runs the checks server-side, records the launch, and
+    # triggers the reader's rebuild — a prerendered site needs a build, so this
+    # is deliberately not a bare status write.
+    path(
+        "api/admin/languages/<str:code>/go-live/",
+        AdminLanguageGoLiveView.as_view(),
+        name="admin-language-go-live",
+    ),
+    # "status" is what was decided; this is what actually shipped.
+    path(
+        "api/admin/languages/<str:code>/deploy-check/",
+        AdminLanguageDeployCheckView.as_view(),
+        name="admin-language-deploy-check",
     ),
     path("api/library/", include("library.urls")),
     path("api/reading/", include("reading.urls")),

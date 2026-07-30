@@ -38,7 +38,8 @@ from ..models import (
     Topic,
     TopicTranslation,
 )
-from ..views import LANGUAGE_NAMES
+from ..languages import entry as language_entry
+from ..languages import known_codes
 
 # Env-overridable so local dev / tests can point at a mock GitHub.
 GITHUB_API = os.getenv("GITHUB_API_BASE", "https://api.github.com")
@@ -194,7 +195,9 @@ class AdminTranslationJobsView(APIView):
                 {"detail": f"type must be one of {', '.join(JOB_TYPES)}."},
                 status=status.HTTP_400_BAD_REQUEST,
             )
-        if language == "en" or language not in LANGUAGE_NAMES:
+        # Validated against the registry, so a language the site doesn't know
+        # can't be queued — and adding one is a row, not a code change.
+        if language == "en" or language not in known_codes():
             return Response(
                 {"detail": "language must be a known non-English code."},
                 status=status.HTTP_400_BAD_REQUEST,
@@ -224,7 +227,7 @@ class AdminTranslationJobsView(APIView):
             )
 
         title = _job_title(type_, slug, language)
-        lang_name = LANGUAGE_NAMES.get(language, (language, language))[0]
+        lang_name = language_entry(language)["name"]
         try:
             # Duplicate-press guard: one open issue per (type, slug, language).
             for job in _list_open_jobs():

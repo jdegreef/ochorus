@@ -9,7 +9,14 @@
 		type AdminLanguageDetail,
 		type AdminTranslationJob,
 		type SourceType,
-		type TranslationJobType
+		type TranslationJobType,
+		getAdminLanguageReadiness,
+		updateAdminLanguageThresholds,
+		type AdminLanguageReadiness,
+		type LanguageThresholds,
+		goLiveAdminLanguage,
+		checkAdminLanguageDeploy,
+		type GoLiveResult
 	} from '$lib/library';
 
 	let { data } = $props();
@@ -28,6 +35,112 @@
 	let queueing = $state<string | null>(null); // "type:slug" while POSTing
 	let queueError = $state<string | null>(null);
 
+	// Readiness: fetched separately from the detail payload because the Bible
+	// check makes a live API call. Failure is non-fatal — the page is still
+	// useful without the panel, so we surface the error and move on.
+	let readiness = $state<AdminLanguageReadiness | null>(null);
+	let readinessError = $state<string | null>(null);
+	let savingBar = $state(false);
+
+	async function loadReadiness(code: string) {
+		readiness = null;
+		readinessError = null;
+		try {
+			readiness = await getAdminLanguageReadiness(code);
+		} catch (e) {
+			readinessError = e instanceof Error ? e.message : 'Could not load readiness.';
+		}
+	}
+
+	async function saveThreshold(patch: Partial<LanguageThresholds>) {
+		if (!readiness) return;
+		savingBar = true;
+		readinessError = null;
+		try {
+			await updateAdminLanguageThresholds(readiness.code, patch);
+			// Re-fetch rather than patching locally: changing the bar changes the
+			// verdict, and the server is the one that decides it.
+			await loadReadiness(readiness.code);
+		} catch (e) {
+			readinessError = e instanceof Error ? e.message : 'Could not save.';
+		} finally {
+			savingBar = false;
+		}
+	}
+
+	// Shared tokens only (app.css): accent for cleared, gold for attention —
+	// matching how "unpublished" and queue errors already read on this page.
+	// There is no `success` token; inventing one renders as unstyled text.
+	const CHECK_TONE: Record<string, string> = {
+		pass: 'text-accent',
+		fail: 'text-gold',
+		unknown: 'text-muted',
+		skipped: 'text-muted'
+	};
+	const CHECK_MARK: Record<string, string> = {
+		pass: '✓',
+		fail: '✕',
+		unknown: '?',
+		skipped: '–'
+	};
+
+	// --- Going live -----------------------------------------------------------
+	// Two facts, kept apart on purpose: `launched` means the decision is recorded,
+	// `deploy` means the rebuild was triggered. A language can be live in the
+	// database while the deploy failed, and a single green tick would hide that.
+	let launching = $state(false);
+	let launchResult = $state<GoLiveResult | null>(null);
+	let launchError = $state<string | null>(null);
+	let deployState = $state<{ status: string; detail: string } | null>(null);
+
+	async function launch(force: boolean) {
+		if (!readiness) return;
+		const label = readiness.code.toUpperCase();
+		const warning = force
+			? `Take ${label} live DESPITE ${readiness.blocking.length} failing check(s)?\n\n`
+			: `Take ${label} live?\n\n`;
+		if (
+			!confirm(
+				warning +
+					'This records the launch and triggers a rebuild of the reader. Readers ' +
+					'see the language when that build finishes — not immediately.'
+			)
+		)
+			return;
+
+		launching = true;
+		launchError = null;
+		launchResult = null;
+		try {
+			launchResult = await goLiveAdminLanguage(readiness.code, force);
+			await loadReadiness(readiness.code);
+		} catch (e) {
+			launchError = e instanceof Error ? e.message : 'Could not take it live.';
+		} finally {
+			launching = false;
+		}
+	}
+
+	async function checkDeploy() {
+		if (!readiness) return;
+		deployState = { status: 'checking', detail: 'Reading the live sitemap…' };
+		try {
+			deployState = await checkAdminLanguageDeploy(readiness.code);
+		} catch (e) {
+			deployState = {
+				status: 'unknown',
+				detail: e instanceof Error ? e.message : 'Check failed.'
+			};
+		}
+	}
+
+	const BAR_FIELDS: { key: keyof LanguageThresholds; label: string }[] = [
+		{ key: 'min_books', label: 'Books' },
+		{ key: 'min_sermons', label: 'Sermons' },
+		{ key: 'min_bios', label: 'Biographies' },
+		{ key: 'min_plans', label: 'Plans' }
+	];
+
 	async function load(code: string) {
 		const id = ++seq;
 		loading = true;
@@ -37,7 +150,10 @@
 			const result = await getAdminLanguageDetail(code);
 			if (id !== seq) return;
 			detail = result;
-			if (!result.is_source) void loadJobs();
+			if (!result.is_source) {
+				void loadJobs();
+				void loadReadiness(code);
+			}
 		} catch (e) {
 			if (id !== seq) return;
 			if (e instanceof ApiError && (e.status === 401 || e.status === 403)) denied = true;
@@ -237,6 +353,172 @@
 				</div>
 			{/if}
 		</header>
+
+		{#if !d.is_source}
+			<!-- Readiness. Read-only about the verdict, editable about the BAR: the
+			     thresholds are a judgement (a language with a big catalogue behind it
+			     should clear a higher one than a first beachhead language), while
+			     whether they're met is a fact the server computes. Nothing here
+			     launches anything — the go-live action re-runs these same checks
+			     server-side rather than trusting what this page is holding. -->
+			<section class="mb-6 rounded-2xl border border-border bg-surface p-5">
+				<div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+					<h2 class="text-h3">Readiness</h2>
+					{#if readiness}
+						<span class="text-small font-semibold {readiness.ready ? 'text-accent' : 'text-gold'}">
+							{readiness.ready
+								? 'Every check clear'
+								: `${readiness.blocking.length} blocking: ${readiness.blocking.join(', ')}`}
+						</span>
+					{/if}
+				</div>
+
+				{#if readinessError}
+					<p class="mb-3 text-small text-gold">{readinessError}</p>
+				{/if}
+
+				{#if readiness}
+					<ul class="mb-4 space-y-1.5">
+						{#each readiness.checks as c (c.key)}
+							<li class="flex items-baseline gap-2.5 text-body">
+								<span class="w-3 flex-none font-semibold {CHECK_TONE[c.status]}" aria-hidden="true">
+									{CHECK_MARK[c.status]}
+								</span>
+								<span class="w-32 flex-none font-medium text-text">{c.label}</span>
+								<span class="min-w-0 text-muted">
+									{c.detail}
+									<span class="sr-only"> — {c.status}</span>
+								</span>
+							</li>
+						{/each}
+					</ul>
+
+					<div class="border-t border-border pt-3">
+						<p class="mb-1 text-small font-semibold uppercase tracking-wide text-muted">
+							The bar for this language
+						</p>
+						<p class="mb-3 text-small text-muted">
+							Set 0 to drop a requirement. Saving re-checks immediately.
+						</p>
+						<div class="flex flex-wrap items-end gap-4">
+							{#each BAR_FIELDS as f (f.key)}
+								<label class="text-small">
+									<span class="mb-1 block text-muted">{f.label}</span>
+									<input
+										type="number"
+										min="0"
+										class="w-20 rounded-lg border border-border bg-bg px-2 py-1 text-body"
+										value={readiness.thresholds[f.key]}
+										disabled={savingBar}
+										onchange={(e) =>
+											saveThreshold({
+												[f.key]: Number((e.currentTarget as HTMLInputElement).value)
+											} as Partial<LanguageThresholds>)}
+									/>
+								</label>
+							{/each}
+							<label class="flex items-center gap-2 text-small text-muted">
+								<input
+									type="checkbox"
+									checked={readiness.thresholds.require_all_topics}
+									disabled={savingBar}
+									onchange={(e) =>
+										saveThreshold({
+											require_all_topics: (e.currentTarget as HTMLInputElement).checked
+										})}
+								/>
+								All topic shelves translated
+							</label>
+							<label class="flex items-center gap-2 text-small text-muted">
+								<input
+									type="checkbox"
+									checked={readiness.thresholds.require_complete_ui}
+									disabled={savingBar}
+									onchange={(e) =>
+										saveThreshold({
+											require_complete_ui: (e.currentTarget as HTMLInputElement).checked
+										})}
+								/>
+								Interface fully translated
+							</label>
+						</div>
+					</div>
+				{:else if !readinessError}
+					<p class="text-body text-muted">Checking…</p>
+				{/if}
+
+				{#if readiness}
+					<!-- The switch. Enabled when the checks are clear; the override is a
+					     separate, plainer control so launching past a failing check is a
+					     deliberate act rather than the same click. -->
+					<div class="mt-4 flex flex-wrap items-center gap-3 border-t border-border pt-3">
+						{#if readiness.status === 'live'}
+							<span class="text-body font-semibold text-accent">Live</span>
+							<button
+								class="rounded-full border border-border px-3.5 py-1.5 text-small font-semibold text-muted hover:text-text"
+								onclick={checkDeploy}
+							>
+								Has it shipped?
+							</button>
+						{:else}
+							<button
+								class="rounded-full bg-accent px-4 py-1.5 text-small font-semibold text-accent-contrast disabled:opacity-50"
+								disabled={launching || !readiness.ready}
+								onclick={() => launch(false)}
+							>
+								{launching ? 'Taking live…' : 'Go live'}
+							</button>
+							{#if !readiness.ready}
+								<span class="text-small text-muted">
+									Clear the {readiness.blocking.length} failing check(s) first, or
+								</span>
+								<button
+									class="text-small font-semibold text-gold underline disabled:opacity-50"
+									disabled={launching}
+									onclick={() => launch(true)}
+								>
+									launch anyway
+								</button>
+							{/if}
+						{/if}
+						<span class="text-small text-muted">
+							Triggers a rebuild — readers see it when that finishes.
+						</span>
+					</div>
+
+					{#if launchError}
+						<p class="mt-2 text-small text-gold">{launchError}</p>
+					{/if}
+
+					{#if launchResult?.launched}
+						<!-- Recorded and deployed are reported separately: a launch whose
+						     rebuild failed is a real state, and one tick would hide it. -->
+						<div class="mt-2 space-y-1 text-small">
+							<p class="text-accent">
+								Recorded as live{launchResult.forced ? ' (forced past failing checks)' : ''}.
+							</p>
+							{#if launchResult.deploy}
+								<p class={launchResult.deploy.status === 'triggered' ? 'text-muted' : 'text-gold'}>
+									{launchResult.deploy.detail}
+								</p>
+							{/if}
+						</div>
+					{/if}
+
+					{#if deployState}
+						<p
+							class="mt-2 text-small {deployState.status === 'deployed'
+								? 'text-accent'
+								: deployState.status === 'pending'
+									? 'text-gold'
+									: 'text-muted'}"
+						>
+							{deployState.detail}
+						</p>
+					{/if}
+				{/if}
+			</section>
+		{/if}
 
 		<div class="grid gap-6 md:grid-cols-2">
 			<!-- Books -->
