@@ -144,6 +144,21 @@ PLAN_TRANSLATIONS = {
             "interior, e Hudson Taylor conclui no repouso da união e comunhão "
             "com o Amado.",
         ),
+        "grace-for-every-sinner": (
+            "O Caminho para Deus: Graça para Todo Pecador",
+            "Um mês sobre as boas-novas mais antigas que existem. O terno "
+            "chamado de Richard Baxter aos não convertidos, D. L. Moody sobre o "
+            "caminho para Deus, e o Tudo pela Graça de Charles Spurgeon — os "
+            "mais simples dos guias sobre como um pecador é salvo, e como "
+            "sabê-lo.",
+        ),
+        "power-from-on-high": (
+            "Poder do Alto: O Espírito Santo",
+            "Quatro semanas com R. A. Torrey sobre a vida cheia do Espírito: "
+            "primeiro o batismo com o Espírito Santo e o poder que ele traz "
+            "para o serviço, e depois o estudo mais pleno da Pessoa e da obra "
+            "do Espírito que habita em todo crente.",
+        ),
     },
     "es": {
         "power-from-on-high": (
