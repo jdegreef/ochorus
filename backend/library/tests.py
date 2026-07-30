@@ -4226,9 +4226,19 @@ class AdminLanguageReadinessEndpointTests(TestCase):
             before = self.client.get("/api/admin/languages/ar/readiness/").data
             self.assertIn("books", before["blocking"])
 
+            # Every countable bar, not just the ones that happen to block today:
+            # the point is that lowering the bar clears blockers, and pinning
+            # that to the current defaults makes the test fail whenever a
+            # default changes for unrelated reasons (min_plans just did).
             res = self.client.patch(
                 "/api/admin/languages/ar/thresholds/",
-                {"min_books": 0, "min_bios": 0, "require_all_topics": False},
+                {
+                    "min_books": 0,
+                    "min_bios": 0,
+                    "min_plans": 0,
+                    "min_sermons": 0,
+                    "require_all_topics": False,
+                },
                 format="json",
             )
             self.assertEqual(res.status_code, 200)
@@ -4783,3 +4793,70 @@ class UiCatalogueCheckTests(TestCase):
         for code in ("en", "ar", "es", "sw", "lg", "pt"):
             self.assertIn(code, data["locales"], code)
             self.assertIn("present", data["locales"][code])
+
+
+class PlanThresholdTests(TestCase):
+    """The reading-plan bar — the one threshold whose default was wrong.
+
+    `min_plans` shipped at 0 because of a claim that no non-English language had
+    a published plan. It came from a database with `seed_plans` unrun; every live
+    language has them. These pin both halves of the correction: what a new
+    language inherits, and what the check does with it.
+    """
+
+    def _report(self, lang):
+        # Bible stubbed for the same reason as ReadinessReportTests — a real call
+        # makes the verdict depend on whether the sandbox has network.
+        with mock.patch.object(
+            readiness_module,
+            "_bible_check",
+            return_value=readiness_module.Check(
+                "bible", "Bible", readiness_module.PASS, "stubbed"
+            ),
+        ):
+            return {c.key: c for c in readiness_module.report(lang).checks}
+
+    def test_a_new_language_must_have_a_translated_plan(self):
+        # The model default, which is what a language created from the admin gets.
+        fresh = Language.objects.create(code="hi", name="Hindi", native_name="हिन्दी")
+        self.assertEqual(fresh.min_plans, 1)
+
+    def test_the_migration_left_launched_languages_alone(self):
+        # A live language's bar is a record of what it cleared, not a decision
+        # still open, so the correction deliberately skipped those rows.
+        for code in ("es", "sw", "lg", "pt"):
+            self.assertEqual(Language.objects.get(code=code).min_plans, 0, code)
+
+    def test_the_migration_raised_the_unlaunched_one(self):
+        self.assertEqual(Language.objects.get(code="ar").min_plans, 1)
+
+    def test_no_plan_fails_the_check(self):
+        lang = Language.objects.get(code="es")
+        lang.min_plans = 1
+        lang.save(update_fields=["min_plans"])
+        check = self._report(lang)["plans"]
+        self.assertEqual(check.status, readiness_module.FAIL)
+        self.assertEqual((check.current, check.required), (0, 1))
+
+    def test_a_published_plan_clears_it(self):
+        lang = Language.objects.get(code="es")
+        lang.min_plans = 1
+        lang.save(update_fields=["min_plans"])
+        Plan.objects.create(
+            slug="p", language="es", title="Un plan", is_published=True
+        )
+        self.assertEqual(self._report(lang)["plans"].status, readiness_module.PASS)
+
+    def test_an_unpublished_plan_does_not_count(self):
+        # Readiness asks what a reader can reach, not what exists in a table.
+        lang = Language.objects.get(code="es")
+        lang.min_plans = 1
+        lang.save(update_fields=["min_plans"])
+        Plan.objects.create(slug="p", language="es", title="Un plan", is_published=False)
+        self.assertEqual(self._report(lang)["plans"].status, readiness_module.FAIL)
+
+    def test_zero_still_disables_the_check(self):
+        lang = Language.objects.get(code="es")
+        lang.min_plans = 0
+        lang.save(update_fields=["min_plans"])
+        self.assertEqual(self._report(lang)["plans"].status, readiness_module.SKIPPED)
