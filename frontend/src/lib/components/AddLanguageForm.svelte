@@ -18,6 +18,7 @@
 		getAdminLanguageForm,
 		type CreateLanguageResult
 	} from '$lib/library-admin';
+	import { buildGlossaryPrompt, parseGlossaryReply } from '$lib/glossaryDraft';
 
 	let { oncreated }: { oncreated?: (result: CreateLanguageResult) => void } = $props();
 
@@ -37,6 +38,51 @@
 	let saving = $state(false);
 	let error = $state('');
 	let created = $state<CreateLanguageResult | null>(null);
+
+	// --- Draft the glossary with Claude ---------------------------------------
+	let pasted = $state('');
+	let pasteNote = $state('');
+	let pasteError = $state(false);
+	let promptCopied = $state(false);
+
+	async function copyPrompt() {
+		const prompt = buildGlossaryPrompt({
+			name,
+			nativeName,
+			bibleLabel,
+			bibleCode,
+			terms
+		});
+		try {
+			await navigator.clipboard.writeText(prompt);
+			promptCopied = true;
+			setTimeout(() => (promptCopied = false), 2500);
+		} catch {
+			// Clipboard is permission-gated and blocked outright in some admin
+			// contexts; drop the prompt into the paste box so it can be copied by
+			// hand rather than silently doing nothing.
+			pasted = prompt;
+			pasteNote = 'Clipboard blocked — the prompt is in the box below; copy it from there.';
+			pasteError = false;
+		}
+	}
+
+	function applyPasted() {
+		const r = parseGlossaryReply(pasted, terms);
+		if (r.error) {
+			pasteError = true;
+			pasteNote = r.error;
+			return;
+		}
+		// Merge rather than replace: a term already typed by hand is not
+		// discarded by a reply that happens to omit it.
+		glossary = { ...glossary, ...r.values };
+		pasteError = r.filled.length === 0;
+		const bits = [`Filled ${r.filled.length} of ${terms.length}.`];
+		if (r.missing.length) bits.push(`Still empty: ${r.missing.join(', ')}.`);
+		if (r.unknown.length) bits.push(`Ignored unknown: ${r.unknown.join(', ')}.`);
+		pasteNote = bits.join(' ');
+	}
 
 	const normalized = $derived(code.trim().toLowerCase());
 	const taken = $derived(normalized !== '' && existing.includes(normalized));
@@ -223,6 +269,44 @@
 						glossary produces translations that drift term by term and look fine doing
 						it.
 					</p>
+					<!-- Draft with Claude. There is no API key on the API service, so the
+					     admin cannot call a model itself; rather than add a secret, a
+					     per-call cost and a new failure mode, this hands you the prompt
+					     and reads the answer back. The prompt names the Bible above,
+					     because that is the wording the engine quotes verbatim — a
+					     glossary that disagrees with its own Bible produces prose that
+					     contradicts the verses beside it. -->
+					<div class="mb-4 rounded-lg border border-border bg-surface-2 p-3">
+						<div class="flex flex-wrap items-center gap-2">
+							<button type="button" class="btn-soft text-small" onclick={copyPrompt} disabled={!name.trim()}>
+								{promptCopied ? 'Prompt copied' : 'Copy prompt for Claude'}
+							</button>
+							<span class="text-small text-muted">
+								{#if !name.trim()}
+									Fill in the language name first.
+								{:else}
+									Run it in Claude, then paste the reply below.
+								{/if}
+							</span>
+						</div>
+						<textarea
+							class="mt-2 w-full rounded-lg border border-border bg-bg px-2 py-1 font-mono text-small"
+							rows="3"
+							placeholder={'Paste Claude\'s reply here — the JSON object, fence and all'}
+							bind:value={pasted}
+						></textarea>
+						<div class="flex flex-wrap items-center gap-2">
+							<button type="button" class="btn-soft text-small" onclick={applyPasted} disabled={!pasted.trim()}>
+								Fill the glossary
+							</button>
+							{#if pasteNote}
+								<span class="text-small" class:text-accent={!pasteError} class:text-danger={pasteError}>
+									{pasteNote}
+								</span>
+							{/if}
+						</div>
+					</div>
+
 					<div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
 						{#each terms as term (term)}
 							<label class="text-small">
