@@ -8,7 +8,16 @@ from rest_framework.views import APIView
 
 from accounts.permissions import IsAdminEmail
 
-from ..models import Author, AuthorTranslation, Book, Chapter, Plan, Sermon
+from ..models import (
+    Author,
+    AuthorTranslation,
+    Book,
+    Chapter,
+    Plan,
+    Sermon,
+    Topic,
+    TopicTranslation,
+)
 from ..views import _language_entry
 
 
@@ -241,11 +250,13 @@ class AdminLanguageDetailView(APIView):
                 "sermons": self._sermons(code),
                 "plans": self._plans(code),
                 "bios": self._bios(code),
+                "topics": self._topics(code),
                 "todo": {
                     "books": self._books_todo(code),
                     "sermons": self._sermons_todo(code),
                     "plans": self._plans_todo(code),
                     "bios": self._bios_todo(code),
+                    "topics": self._topics_todo(code),
                 },
             }
         )
@@ -366,6 +377,47 @@ class AdminLanguageDetailView(APIView):
             {"slug": s.slug, "title": s.title, "author": s.author.name}
             for s in picked
         ]
+
+    def _topics(self, code) -> list[dict]:
+        """Shelves that exist in this language — i.e. that have a title here.
+
+        A shelf without a translated title is not "partly there": it is hidden
+        from the language entirely (``Topic.is_translated_into``), so presence is
+        exactly title-presence.
+        """
+        topics = Topic.objects.filter(is_published=True).order_by("sort_order", "title")
+        if code == "en":
+            return [{"slug": t.slug, "title": t.title} for t in topics]
+        by_slug = {
+            tr.topic_id: tr
+            for tr in TopicTranslation.objects.filter(language=code).exclude(title="")
+        }
+        return [
+            {"slug": t.slug, "title": by_slug[t.id].title}
+            for t in topics
+            if t.id in by_slug
+        ]
+
+    def _topics_todo(self, code) -> list[dict]:
+        """Shelves with no title in this language — each one an invisible shelf.
+
+        Not truncated to TODO_LIMIT like the others: there are only a handful of
+        topics, and the list is a completeness checklist rather than a ranked
+        queue — a language needs *all* of them or its shelf page is short.
+        """
+        if code == "en":
+            return []
+        have = set(
+            TopicTranslation.objects.filter(language=code)
+            .exclude(title="")
+            .values_list("topic__slug", flat=True)
+        )
+        qs = (
+            Topic.objects.filter(is_published=True)
+            .exclude(slug__in=have)
+            .order_by("sort_order", "title")
+        )
+        return [{"slug": t.slug, "title": t.title} for t in qs]
 
     def _plans_todo(self, code) -> list[dict]:
         if code == "en":

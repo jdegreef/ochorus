@@ -140,6 +140,39 @@ fixture model; translations ship as files, upserted (unreviewed) by
   `frontend/src/routes/authors/[slug]/+page.ts` so the localized static page
   rebuilds with the translated bio.
 
+**Topic** — a topical shelf's label. Small job, but the stakes differ from every
+other type: **topic prose has NO English fallback**, so an untranslated shelf is
+*hidden* from that language rather than shown in English
+(`Topic.is_translated_into`). Shipping one shelf makes it appear; missing one
+keeps it invisible. A language wants **all** of them — `seed_topics` has a test
+pinning full per-language coverage, so a partial block fails CI.
+- Source: `Topic.title` + `Topic.description` for `slug` (English row).
+- Delivery is the `TOPIC_TRANSLATIONS` dict in
+  `backend/library/management/commands/seed_topics.py`, upserted by the
+  `seed_topics` release step. Add the language's block (or the missing slug to
+  an existing block) — nothing else sticks; a hand-written DB row is reverted on
+  the next deploy.
+- Keep the title short and scannable (it's a heading, not a sentence) and the
+  description to the original's one or two sentences. Follow the language's
+  glossary in `library/translation.py` so the shelf reads consistently with the
+  books on it.
+- **Scripture is not yours to write.** The shelf's verse lives in
+  `TOPIC_SCRIPTURE_TR` and must come verbatim from that language's Bible via the
+  Take Root API (`fetch_verse_text`), with only the reference's book name
+  localized. If you cannot fetch it, ship the shelf **without** a verse — the
+  topic page renders no verse block, so the shelf is still complete. Never
+  paraphrase or recall a verse from memory.
+- `manage.py translate_topic --language <lang> [slug] [--scripture]` does all of
+  this with an API key and prints the paste-ready block; in a worker session
+  (no key) do the translation yourself and hand-write the block in the same shape.
+- Verify: `manage.py seed_topics` then
+  `/api/library/topics/?language=<lang>` lists the shelf with its translated
+  title, and `/api/library/topics/<slug>/?language=<lang>` returns 200 (it 404s
+  while untranslated).
+- Prerender refresh: topic pages are per-topic prerendered — touch
+  `frontend/src/routes/topics/[slug]/+page.ts` so the localized static page
+  rebuilds.
+
 ## Guardrails
 
 - **Never** run more than one job per session run, even if the queue is deep.
@@ -150,7 +183,8 @@ fixture model; translations ship as files, upserted (unreviewed) by
   on fresh `origin/main`: `content/books/<slug>.<lang>.json` (book) /
   `content/sermons/<slug>.<lang>.json` (sermon) / a `PLAN_TRANSLATIONS[<lang>]
   [<slug>]` entry in `seed_plans.py` (plan) / `author_bios_<lang>/<slug>.html`
-  (bio). CI's duplicate-identity / fixture checks are the backstop for
+  (bio) / a `TOPIC_TRANSLATIONS[<lang>][<slug>]` entry in `seed_topics.py`
+  (topic). CI's duplicate-identity / fixture checks are the backstop for
   file-shipped types.
 - Token budget sanity: a book is roughly 25–45k output tokens per chapter. If
   a job would obviously exhaust the session (e.g. a 50-chapter book late in a

@@ -115,8 +115,10 @@
 		bios: presentBios(detail?.bios ?? []),
 		todoBooks: suggested(detail?.todo.books ?? []),
 		todoSermons: suggested(detail?.todo.sermons ?? []),
+		topics: view === 'suggested' ? [] : (detail?.topics ?? []),
 		todoPlans: suggested(detail?.todo.plans ?? []),
-		todoBios: suggested(detail?.todo.bios ?? [])
+		todoBios: suggested(detail?.todo.bios ?? []),
+		todoTopics: suggested(detail?.todo.topics ?? [])
 	});
 	// Under "suggested" an empty translated list is the point, not a gap.
 	const emptyLabel = $derived(
@@ -384,6 +386,50 @@
 										<a href="/plans/{p.slug}" class="text-accent hover:underline">{p.title}</a>
 									</span>
 									{@render queueControl('plan', p.slug)}
+								</li>
+							{/each}
+						</ul>
+					</div>
+				{/if}
+			</section>
+
+			<!-- Topical shelves. Unlike the other types, an untranslated shelf is
+			     INVISIBLE in this language rather than shown in English (topic prose
+			     has no fallback), so the todo list is every missing shelf, not a
+			     ranked top-N — a language wants all of them. -->
+			<section class="rounded-2xl border border-border bg-surface p-5">
+				<h2 class="text-h3 mb-3">Topics <span class="text-muted">({fmt(shown.topics.length)})</span></h2>
+				{#if shown.topics.length}
+					<ul class="space-y-2">
+						{#each shown.topics as t (t.slug)}
+							<li class="flex items-start justify-between gap-3">
+								<a href="/topics/{t.slug}" class="min-w-0 font-medium text-text hover:text-accent">
+									<span class="block truncate">{t.title}</span>
+								</a>
+							</li>
+						{/each}
+					</ul>
+				{:else if emptyLabel}
+					<p class="text-body text-muted">{emptyLabel}</p>
+				{/if}
+				{#if shown.todoTopics.length}
+					<div class="mt-4 border-t border-border pt-3">
+						<p class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">
+							Hidden in this language ({fmt(shown.todoTopics.length)})
+						</p>
+						<p class="mb-2 text-small text-muted">
+							A shelf with no title here is left out of this language's topic page entirely.
+						</p>
+						{#if queueError}
+							<p class="mb-2 text-small text-gold">{queueError}</p>
+						{/if}
+						<ul class="space-y-1.5">
+							{#each shown.todoTopics as t (t.slug)}
+								<li class="flex items-center justify-between gap-3 text-body">
+									<span class="min-w-0 truncate">
+										<a href="/topics/{t.slug}" class="text-accent hover:underline">{t.title}</a>
+									</span>
+									{@render queueControl('topic', t.slug)}
 								</li>
 							{/each}
 						</ul>
