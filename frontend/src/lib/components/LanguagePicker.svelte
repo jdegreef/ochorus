@@ -52,7 +52,7 @@
 		{#if open}
 			<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 			<ul
-				class="absolute right-0 z-30 mt-2 max-h-72 w-44 overflow-auto rounded-card border border-border bg-surface py-1 shadow-lg"
+				class="absolute end-0 z-30 mt-2 max-h-72 w-44 overflow-auto rounded-card border border-border bg-surface py-1 shadow-lg"
 				role="listbox"
 				aria-label={t('nav.language')}
 				use:focusTrap={{ onEscape: () => (open = false) }}

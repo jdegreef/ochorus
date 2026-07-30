@@ -41,7 +41,7 @@
 		<h2 class="text-h2 !text-text mb-5">{t('about.scripturesHeading')}</h2>
 		<div class="space-y-4">
 			{#each [['about.scripture1', 'about.scripture1Ref'], ['about.scripture2', 'about.scripture2Ref'], ['about.scripture3', 'about.scripture3Ref']] as [text, ref] (ref)}
-				<figure class="rounded-card border-l-2 border-gold bg-surface-2 py-4 pl-5 pr-4">
+				<figure class="rounded-card border-s-2 border-gold bg-surface-2 py-4 pe-4 ps-5">
 					<blockquote class="text-body text-text" style="font-family: var(--font-display)">
 						“{t(text)}”
 					</blockquote>

@@ -376,7 +376,7 @@
 					     break across lines ("–" / "1499"). The longer era names make the
 					     heading wrap on narrow screens, so this is load-bearing here. -->
 					{#if g.era.range}<span class="whitespace-nowrap text-small font-normal text-muted">{g.era.range}</span>{/if}
-					<span class="ml-auto text-small font-normal text-muted">{g.authors.length}</span>
+					<span class="ms-auto text-small font-normal text-muted">{g.authors.length}</span>
 				</h2>
 				<div class="grid items-start gap-5 md:grid-cols-2">
 					{#each g.authors as author (author.slug)}

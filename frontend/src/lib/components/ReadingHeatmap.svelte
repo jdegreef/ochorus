@@ -48,7 +48,7 @@
 >
 	<div class="inline-block">
 		<!-- Month labels, aligned over their starting column. -->
-		<div class="flex" style="gap: var(--gap); padding-left: calc(var(--wd) + var(--gap))">
+		<div class="flex" style="gap: var(--gap); padding-inline-start: calc(var(--wd) + var(--gap))">
 			{#each grid.weeks as _, w (w)}
 				{@const m = grid.monthLabels.find((x) => x.col === w)}
 				<div class="text-[0.62rem] leading-none text-muted" style="width: var(--cell)">
@@ -95,7 +95,7 @@
 			></span>
 			<span>{t('settings.heatmapNone')}</span>
 			<span
-				class="ml-2 inline-block rounded-[2px] bg-gold"
+				class="ms-2 inline-block rounded-[2px] bg-gold"
 				style="width: 0.66rem; height: 0.66rem"
 			></span>
 			<span>{t('settings.heatmapRead')}</span>

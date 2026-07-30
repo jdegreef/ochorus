@@ -105,7 +105,7 @@
 			class="mx-auto mb-6 flex max-w-lg items-center gap-2 rounded-full border border-border bg-surface px-2 py-1.5 shadow-sm focus-within:border-accent"
 		>
 			<svg
-				class="ml-2 h-5 w-5 shrink-0 text-muted"
+				class="ms-2 h-5 w-5 shrink-0 text-muted"
 				viewBox="0 0 24 24"
 				fill="none"
 				stroke="currentColor"

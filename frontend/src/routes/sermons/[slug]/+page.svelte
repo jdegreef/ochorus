@@ -395,7 +395,7 @@
 
 {#if readerUi.focus}
 	<button
-		class="fixed right-4 top-4 z-30 rounded-full border border-border bg-surface/90 px-3 py-1.5 text-small text-muted shadow-md backdrop-blur hover:text-text"
+		class="fixed end-4 top-4 z-30 rounded-full border border-border bg-surface/90 px-3 py-1.5 text-small text-muted shadow-md backdrop-blur hover:text-text"
 		onclick={() => readerUi.exitFocus()}>✕ {t('reader.exitFocus')}</button
 	>
 {/if}
@@ -579,7 +579,7 @@
 			{#if sermon.next}
 				<a
 					href={localizeHref(`/sermons/${sermon.next.slug}`)}
-					class="group flex-1 rounded-card border border-border p-3 text-right hover:border-accent hover:no-underline"
+					class="group flex-1 rounded-card border border-border p-3 text-end hover:border-accent hover:no-underline"
 				>
 					<div class="text-[0.72rem] uppercase tracking-wide text-muted">{t('reader.next')} →</div>
 					<div class="mt-0.5 text-small font-semibold text-text group-hover:text-accent">{sermon.next.title}</div>

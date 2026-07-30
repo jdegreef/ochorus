@@ -573,7 +573,7 @@
 								{#if streak > 0}
 									<div class="text-text">
 										<span class="text-h1 font-semibold" style="font-family: var(--font-display)">{streak}</span>
-										<span class="ml-1 text-body">{t('settings.streakLabel')}</span>
+										<span class="ms-1 text-body">{t('settings.streakLabel')}</span>
 									</div>
 								{:else}
 									<div class="text-body text-text">{t('settings.streakNone')}</div>

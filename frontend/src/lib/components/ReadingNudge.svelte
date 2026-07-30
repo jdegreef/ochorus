@@ -50,7 +50,7 @@
 					{#if streak > 0}
 						<div>
 							<span class="text-h2 font-semibold" style="font-family: var(--font-display)">{streak}</span>
-							<span class="ml-1 text-body text-text">{t('settings.streakLabel')}</span>
+							<span class="ms-1 text-body text-text">{t('settings.streakLabel')}</span>
 						</div>
 					{:else}
 						<div class="text-body text-text">{t('settings.streakNone')}</div>
