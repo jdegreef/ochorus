@@ -186,6 +186,36 @@ export const updateAdminLanguageThresholds = (
 		{ method: 'PATCH', body: JSON.stringify(patch) }
 	);
 
+// Going live. Deliberately NOT a status write: the reader is a prerendered
+// static site, so the server re-runs the readiness checks, records the launch,
+// and triggers the reader's rebuild. `deploy.status` and `launched` are separate
+// facts — a language can be recorded live while the rebuild failed — and the UI
+// must not merge them into one green tick.
+export interface GoLiveResult {
+	launched: boolean;
+	/** Only on refusal: 'not_ready', with `readiness.blocking` explaining why. */
+	reason?: string;
+	already_live?: boolean;
+	/** True when launched despite failing checks. */
+	forced?: boolean;
+	went_live_at?: string | null;
+	deploy?: { status: 'triggered' | 'not_configured' | 'failed'; detail: string };
+	readiness?: AdminLanguageReadiness;
+}
+
+/** `force` launches despite failing checks; the result records that it was forced. */
+export const goLiveAdminLanguage = (code: string, force = false) =>
+	apiFetch<GoLiveResult>(`/api/admin/languages/${encodeURIComponent(code)}/go-live/`, {
+		method: 'POST',
+		body: JSON.stringify({ force })
+	});
+
+/** What actually SHIPPED, as opposed to what was decided — reads the live sitemap. */
+export const checkAdminLanguageDeploy = (code: string) =>
+	apiFetch<{ status: 'deployed' | 'pending' | 'unknown' | 'n/a'; detail: string }>(
+		`/api/admin/languages/${encodeURIComponent(code)}/deploy-check/`
+	);
+
 export const getAdminLanguageDetail = (code: string) =>
 	apiFetch<AdminLanguageDetail>(`/api/admin/languages/${encodeURIComponent(code)}/`);
 
