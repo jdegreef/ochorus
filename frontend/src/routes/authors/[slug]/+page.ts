@@ -132,6 +132,11 @@ export const entries: EntryGenerator = async () => {
 // Müller — each translated tag-for-tag from the English bio_html with its
 // prayer callouts intact. Each /pt/authors/<slug> re-crawls and bakes the
 // translated bio.
+//
+// Prerender refresh 2026-07-30 (queue job #561): the first-ever Swahili
+// long-form bio of Thomas à Kempis ships — translated tag-for-tag from the
+// English bio_html (126/126 tags) with its prayer callouts intact. The
+// /sw/authors/thomas-a-kempis page re-crawls and bakes the translated bio.
 export const load: PageLoad = async ({ params }) => {
 	const author = await orNotFound(() => getAuthor(params.slug, getLang()));
 	// A mid-deploy API (before the sermon fields ship) may omit these; default

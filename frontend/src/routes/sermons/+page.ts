@@ -57,6 +57,10 @@ import type { PageLoad } from './$types';
  * sermon translations ship — Moody's Os Oito "Eu Quero" de Cristo and Spurgeon's
  * A Primeira Oração de Paulo, O Clamor dos Corvos, and A Chave de Ouro da Oração
  * — so the /pt/sermons pages re-crawl and bake the new titles.
+ *
+ * Prerender refresh 2026-07-30 (queue job #606): the Swahili edition of Moody's
+ * Eight "I Wills" of Christ ships — Ahadi Nane za "Nitafanya" za Kristo — so the
+ * /sw/sermons pages re-crawl and bake the new title.
  */
 export const load: PageLoad = async () => {
 	// Tolerate a lagging/absent sermon endpoint at prerender time (see the
