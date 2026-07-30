@@ -107,6 +107,17 @@ export const entries: EntryGenerator = async () => {
 // KNOWN_GAPS backlog), clearing the sw bio queue. Worst was gareth-evans, whose
 // sw bio had held only a quarter of the English (34 of 86 tags). Each
 // /sw/authors/<slug> re-crawls and bakes the full bio with its prayer callouts.
+//
+// Prerender refresh 2026-07-30 (queue jobs #567/#568/#570/#571/#572/#573/#574/
+// #576/#577/#578): the entire remaining KNOWN_GAPS backlog clears — four
+// authors re-translated from the current English so their tag sequences match
+// it 1:1. Amy Carmichael (es/lg) and Watchman Nee (es/lg) regained dropped
+// paragraphs; Susanna Wesley (es/lg/sw) regained the whole "Letters to her
+// sons" section (and the sw bio also had "ten children" mistranslated as
+// "eight"); William Booth (es/lg/sw) regained the "empty stomach and cold
+// feet" blockquote and his one-word last message ("Others"). The bio-markup
+// CI gate now runs with an empty allowlist. Each affected /es|lg|sw/authors/
+// <slug> re-crawls and bakes the completed bio with its prayer callouts.
 export const load: PageLoad = async ({ params }) => {
 	const author = await orNotFound(() => getAuthor(params.slug, getLang()));
 	// A mid-deploy API (before the sermon fields ship) may omit these; default
