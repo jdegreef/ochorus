@@ -30,6 +30,7 @@ from .models import (
     TopicSermon,
     TopicTranslation,
 )
+from . import readiness as readiness_module
 from .text import html_to_text
 
 
@@ -3992,3 +3993,168 @@ class LanguageListEndpointTests(TestCase):
         self.assertTrue(rows["ar"]["rtl"], "the reader needs to know to flip direction")
         self.assertFalse(rows["es"]["rtl"])
         self.assertTrue(rows["en"]["is_source"])
+
+
+class ReadinessReportTests(TestCase):
+    """`readiness.report` — the computed answer to "can this language go live?"."""
+
+    def setUp(self):
+        self.es = Language.objects.get(code="es")
+        self.en = Language.objects.get(code="en")
+        self.author = Author.objects.create(slug="a", name="A", bio="An English bio.")
+
+    def _report(self, lang):
+        # Network and frontend files are absent under test, so those two checks
+        # report `unknown`; everything else is pure data.
+        return readiness_module.report(lang)
+
+    def test_the_source_language_skips_translation_checks(self):
+        r = self._report(self.en)
+        by_key = {c.key: c for c in r.checks}
+        for key in ("bible", "glossary", "ui"):
+            self.assertEqual(by_key[key].status, "skipped", key)
+
+    def test_a_failing_count_blocks_and_says_what_is_missing(self):
+        self.es.min_books = 3
+        self.es.save()
+        books = {c.key: c for c in self._report(self.es).checks}["books"]
+        self.assertEqual(books.status, "fail")
+        self.assertEqual(books.current, 0)
+        self.assertEqual(books.required, 3)
+        self.assertIn("needs 3", books.detail)
+
+    def test_zero_disables_a_check_rather_than_failing_it(self):
+        self.es.min_books = 0
+        self.es.save()
+        books = {c.key: c for c in self._report(self.es).checks}["books"]
+        self.assertEqual(books.status, "skipped")
+        self.assertFalse(books.blocking)
+
+    def test_meeting_the_bar_passes(self):
+        self.es.min_books = 1
+        self.es.min_bios = 0
+        self.es.require_all_topics = False
+        self.es.save()
+        Book.objects.create(
+            author=self.author, slug="b", language="es", title="T", is_published=True
+        )
+        books = {c.key: c for c in self._report(self.es).checks}["books"]
+        self.assertEqual(books.status, "pass")
+
+    def test_unknown_does_not_block_readiness(self):
+        # Bible and interface strings can be unanswerable where they're asked —
+        # no network, or an API container that can't see the frontend. Treating
+        # that as failure would block a launch for an unrelated reason; the
+        # interface rule is enforced at build time instead.
+        self.es.min_books = 0
+        self.es.min_bios = 0
+        self.es.min_plans = 0
+        self.es.require_all_topics = False
+        self.es.save()
+        r = self._report(self.es)
+        self.assertIn("unknown", {c.status for c in r.checks})
+        self.assertTrue(r.ready, "an unanswerable check must not block")
+
+    def test_untranslated_topics_block_when_required(self):
+        Topic.objects.create(slug="t", title="T", description="d", is_published=True)
+        self.es.require_all_topics = True
+        self.es.save()
+        topics = {c.key: c for c in self._report(self.es).checks}["topics"]
+        self.assertEqual(topics.status, "fail")
+        self.assertIn("hidden in this language", topics.detail)
+
+    def test_bios_count_either_short_or_long_form(self):
+        self.es.min_bios = 1
+        self.es.save()
+        AuthorTranslation.objects.create(author=self.author, language="es", bio_html="<p>x</p>")
+        bios = {c.key: c for c in self._report(self.es).checks}["bios"]
+        self.assertEqual(bios.status, "pass")
+
+
+class AdminLanguageReadinessEndpointTests(TestCase):
+    """The admin readiness report and the editable bar."""
+
+    def setUp(self):
+        self.client = APIClient()
+
+    def _patch_perm(self):
+        from unittest.mock import patch
+
+        return patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True)
+
+    def test_report_lists_checks_and_current_thresholds(self):
+        with self._patch_perm():
+            res = self.client.get("/api/admin/languages/ar/readiness/")
+        self.assertEqual(res.status_code, 200)
+        self.assertIn("checks", res.data)
+        self.assertIn("min_books", res.data["thresholds"])
+        self.assertEqual(res.data["status"], "draft")
+
+    def test_unknown_language_is_404(self):
+        with self._patch_perm():
+            self.assertEqual(
+                self.client.get("/api/admin/languages/zz/readiness/").status_code, 404
+            )
+            self.assertEqual(
+                self.client.patch(
+                    "/api/admin/languages/zz/thresholds/", {"min_books": 1}, format="json"
+                ).status_code,
+                404,
+            )
+
+    def test_editing_the_bar_changes_the_verdict(self):
+        with self._patch_perm():
+            before = self.client.get("/api/admin/languages/ar/readiness/").data
+            self.assertIn("books", before["blocking"])
+
+            res = self.client.patch(
+                "/api/admin/languages/ar/thresholds/",
+                {"min_books": 0, "min_bios": 0, "require_all_topics": False},
+                format="json",
+            )
+            self.assertEqual(res.status_code, 200)
+            self.assertEqual(res.data["thresholds"]["min_books"], 0)
+
+            after = self.client.get("/api/admin/languages/ar/readiness/").data
+        self.assertEqual(after["blocking"], [], "lowering the bar should clear blockers")
+
+    def test_threshold_validation(self):
+        cases = [
+            ({"min_books": -1}, 400),
+            ({"min_books": "lots"}, 400),
+            ({}, 400),  # nothing to update
+            ({"min_books": 2}, 200),
+        ]
+        with self._patch_perm():
+            for body, expected in cases:
+                res = self.client.patch(
+                    "/api/admin/languages/es/thresholds/", body, format="json"
+                )
+                self.assertEqual(res.status_code, expected, body)
+
+    def test_status_cannot_be_changed_through_the_thresholds_endpoint(self):
+        # Launching is the go-live action's job — it re-runs the checks. A
+        # thresholds PATCH must never be a back door to going live.
+        with self._patch_perm():
+            res = self.client.patch(
+                "/api/admin/languages/ar/thresholds/",
+                {"status": "live", "min_books": 1},
+                format="json",
+            )
+        self.assertEqual(res.status_code, 200)
+        self.assertNotIn("status", res.data["updated"])
+        self.assertEqual(Language.objects.get(code="ar").status, "draft")
+
+    def test_readiness_requires_admin(self):
+        # Anonymous gets 401 (no credentials); a signed-in non-admin would get
+        # 403. Either way the endpoint is closed — these are admin surfaces that
+        # expose content counts and can change a launch bar.
+        self.assertIn(
+            self.client.get("/api/admin/languages/es/readiness/").status_code, (401, 403)
+        )
+        self.assertIn(
+            self.client.patch(
+                "/api/admin/languages/es/thresholds/", {"min_books": 1}, format="json"
+            ).status_code,
+            (401, 403),
+        )

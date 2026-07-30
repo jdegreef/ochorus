@@ -17,6 +17,8 @@ from library.admin_views import (
     AdminEngagementView,
     AdminExportView,
     AdminLanguageDetailView,
+    AdminLanguageReadinessView,
+    AdminLanguageThresholdsView,
     AdminReviewQueueView,
     AdminSearchView,
     AdminStatsView,
@@ -74,6 +76,18 @@ urlpatterns = [
         "api/admin/languages/<str:code>/",
         AdminLanguageDetailView.as_view(),
         name="admin-language-detail",
+    ),
+    # Readiness is its own route: it makes a live Bible-API call, so it must not
+    # ride along on every load of the detail page.
+    path(
+        "api/admin/languages/<str:code>/readiness/",
+        AdminLanguageReadinessView.as_view(),
+        name="admin-language-readiness",
+    ),
+    path(
+        "api/admin/languages/<str:code>/thresholds/",
+        AdminLanguageThresholdsView.as_view(),
+        name="admin-language-thresholds",
     ),
     path("api/library/", include("library.urls")),
     path("api/reading/", include("reading.urls")),
