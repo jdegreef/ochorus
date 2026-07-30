@@ -146,6 +146,23 @@
 		}
 	});
 
+	// --- Paging ---------------------------------------------------------------
+	// One writer per row makes 35 a long scroll. Client-side only: the API
+	// already returns every writer (that is what the A–Z rail and the filters
+	// count against), so this is purely how many are PAINTED. The A–Z stays the
+	// fast path — jumping to a letter reveals whatever page holds it, below.
+	const PER_PAGE = 24;
+	let pageNum = $state(1);
+	const pageCount = $derived(Math.max(1, Math.ceil(sorted.length / PER_PAGE)));
+	const paged = $derived(sorted.slice(0, pageNum * PER_PAGE));
+	const remaining = $derived(sorted.length - paged.length);
+	// Narrowing the list must not strand you on page 3 of 1.
+	$effect(() => {
+		void queryText; void filter; void fullBioOnly; void sort;
+		pageNum = 1;
+	});
+
+
 	const FILTERS: { v: Filter; k: string }[] = [
 		{ v: 'all', k: 'bios.filterAll' },
 		{ v: 'library', k: 'bios.filterInLibrary' },
@@ -376,7 +393,12 @@
 		{/if}
 		{#each eraGroups as g (g.era.id)}
 			<section id="era-{g.era.id}" class="mb-12 scroll-mt-36">
-				<h2 class="mb-6 flex items-baseline gap-2 border-b border-border pb-2 text-h3 text-text">
+				<!-- Pinned under the controls bar: four centuries of writers scroll
+				     past, and without this you lose track of which era you are in.
+				     top-[125px] clears the bar; z-10 keeps it under the bar's z-20. -->
+				<h2
+					class="sticky top-[125px] z-10 mb-6 flex items-baseline gap-2 border-b border-border bg-bg pb-2 pt-2 text-h3 text-text"
+				>
 					<a
 						href={localizeHref(`/biographies/era/${g.era.id}`)}
 						class="!text-text hover:text-accent hover:no-underline">{t(g.era.k)}</a
@@ -396,9 +418,24 @@
 		{/each}
 	{:else}
 		<div class="space-y-4">
-			{#each sorted as author (author.slug)}
+			{#each paged as author (author.slug)}
 				<AuthorBioCard {author} shelf={booksByAuthor.get(author.slug) ?? []} />
 			{/each}
 		</div>
+		{#if remaining > 0}
+			<div class="mt-8 flex flex-col items-center gap-2">
+				<button
+					class="rounded-sm border border-border px-4 py-2 text-small font-semibold text-accent hover:border-accent"
+					onclick={() => (pageNum += 1)}
+				>
+					{t('bios.showMore').replace('%n%', String(Math.min(PER_PAGE, remaining)))}
+				</button>
+				<p class="text-small text-muted">
+					{t('bios.showing')
+						.replace('%shown%', String(paged.length))
+						.replace('%total%', String(sorted.length))}
+				</p>
+			</div>
+		{/if}
 	{/if}
 </div>
