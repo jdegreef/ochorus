@@ -52,18 +52,7 @@ from library.management.commands.seed_author_translations import (
 # (language, slug) pairs whose translation does NOT match its English source.
 # Each is a real, reader-visible gap awaiting re-translation, not an accepted
 # deviation. Remove the line when the repair ships — a stale entry fails below.
-KNOWN_GAPS = {
-    ("es", "amy-carmichael"),  # 68/76 tags — job #567 (re-translated 07-25, still short)
-    ("es", "susanna-wesley"),  # 72/84 tags — job #570
-    ("es", "watchman-nee"),  # 72/88 tags, 72% of the English — job #573
-    ("es", "william-booth"),  # 76/84 tags — job #576
-    ("lg", "amy-carmichael"),  # 68/76 tags — job #568
-    ("lg", "susanna-wesley"),  # 72/84 tags — job #571
-    ("lg", "watchman-nee"),  # 72/88 tags, 57% of the English — job #574
-    ("lg", "william-booth"),  # 76/84 tags — job #577
-    ("sw", "susanna-wesley"),  # 72/84 tags — job #572
-    ("sw", "william-booth"),  # 76/84 tags — job #578
-}
+KNOWN_GAPS: set[tuple[str, str]] = set()
 
 _TAG = re.compile(r"<[^>]+>")
 _WS = re.compile(r"\s+")
