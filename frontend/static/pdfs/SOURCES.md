@@ -16,6 +16,12 @@ picks it up.
 Only `soar-like-the-eagle.pdf` is present today, and it is the one book that keeps
 a live download link.
 
+The original URLs below are not dead ends: `render.yaml` 301s each one to its book
+page, so an inbound link or a search result lands on the work itself rather than on
+the app shell. Six are omitted there because their book is unpublished — a redirect
+into the not-found page would be worse than none — and are listed in a comment
+beside the rules, to be added when those books go live.
+
 | Target file (add here) | Original WordPress source |
 |---|---|
 | `baptism-with-the-holy-spirit.pdf` | https://ochorus.com/wp-content/uploads/2026/02/Baptism-with-the-Holy-Spirit-1.pdf |

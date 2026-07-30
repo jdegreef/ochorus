@@ -155,6 +155,10 @@ Let's Encrypt certificates, then check:
   `https://ochorus.com/ochorus-books/` → `/books` (see the redirect rules in
   `render.yaml`; **`render.yaml` route changes only take effect after a
   Blueprint → Sync** in the Render dashboard — a plain push won't apply them).
+- A retired WordPress media URL redirects rather than answering 200 with the app
+  shell: `https://ochorus.com/wp-content/uploads/2025/08/FEASTING-AT-THE-TABLE.pdf`
+  → `/books/feasting-at-the-table/`, and
+  `…/2025/08/Normal-Christian-Life.jpg` → `/covers/the-normal-christian-life.svg`.
 
 **Rollback:** restore the old `@`/`www` values at the registrar — the low TTL
 makes it quick.
