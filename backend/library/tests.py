@@ -17,6 +17,7 @@ from .translation import (
 )
 from .models import (
     Author,
+    Language,
     AuthorTranslation,
     Book,
     Chapter,
@@ -3819,3 +3820,175 @@ class TranslateTopicCommandTests(TestCase):
         self.assertEqual(
             TopicTranslation.objects.get(topic=self.topic, language="sw").title, "Mpya"
         )
+
+
+class LanguageRegistrySeedTests(TestCase):
+    """`seed_languages` — identity refreshes, the switch and the bar do not.
+
+    This is the trap backend/CLAUDE.md warns about and that has bitten this
+    codebase before: the seed re-runs on EVERY deploy, so any field a workflow
+    owns after creation must be create-only. For languages that means `status`
+    (an admin launched it), the thresholds (an admin tuned them), `went_live_at`
+    and `notes`. If those were in the update set, the first deploy after a launch
+    would silently put the language back to draft.
+    """
+
+    def test_seed_creates_every_configured_language(self):
+        Language.objects.all().delete()
+        call_command("seed_languages")
+        codes = set(Language.objects.values_list("code", flat=True))
+        # English (the source) plus every translation target.
+        self.assertEqual(codes, {"en", "es", "sw", "lg", "pt", "ar"})
+
+        en = Language.objects.get(code="en")
+        self.assertTrue(en.is_source)
+        self.assertEqual(en.bible_code, "")  # nothing to translate scripture into
+
+        ar = Language.objects.get(code="ar")
+        self.assertTrue(ar.rtl, "Arabic is right-to-left")
+        self.assertFalse(ar.is_source)
+        self.assertTrue(ar.bible_code, "a target language needs a Bible")
+
+    def test_seed_is_idempotent(self):
+        call_command("seed_languages")
+        before = Language.objects.count()
+        call_command("seed_languages")
+        self.assertEqual(Language.objects.count(), before)
+
+    def test_a_deploy_never_walks_back_a_launch_or_a_tuned_bar(self):
+        call_command("seed_languages")
+        ar = Language.objects.get(code="ar")
+        # An admin launches Arabic and tunes its bar down for a beachhead run.
+        ar.status = Language.Status.LIVE
+        ar.min_books = 1
+        ar.min_bios = 0
+        ar.notes = "beachhead launch"
+        ar.save()
+
+        call_command("seed_languages")  # i.e. the next deploy
+
+        ar.refresh_from_db()
+        self.assertEqual(ar.status, Language.Status.LIVE, "the deploy un-launched it")
+        self.assertEqual(ar.min_books, 1, "the deploy reset a tuned threshold")
+        self.assertEqual(ar.min_bios, 0)
+        self.assertEqual(ar.notes, "beachhead launch")
+
+    def test_a_deploy_does_refresh_identity(self):
+        # The other half: identity IS the repo's, so a correction ships.
+        call_command("seed_languages")
+        lg = Language.objects.get(code="lg")
+        lg.name = "Wrong Name"
+        lg.native_name = "Wrong"
+        lg.save()
+
+        call_command("seed_languages")
+
+        lg.refresh_from_db()
+        self.assertEqual(lg.name, "Luganda")
+        self.assertEqual(lg.native_name, "Luganda")
+
+
+class LanguageEntryTests(TestCase):
+    """`_language_entry` now reads the registry rather than a hardcoded map."""
+
+    def setUp(self):
+        from library import languages
+
+        languages.invalidate()
+
+    def test_names_come_from_the_registry(self):
+        from library.languages import entry
+
+        self.assertEqual(entry("sw")["name"], "Swahili")
+        self.assertEqual(entry("sw")["native_name"], "Kiswahili")
+
+    def test_arabic_is_no_longer_bare_codes(self):
+        # The old LANGUAGE_NAMES map had no Arabic, so an Arabic row rendered as
+        # "ar / ar". That was the concrete cost of a fourth source of truth.
+        from library.languages import entry
+
+        ar = entry("ar")
+        self.assertEqual(ar["name"], "Arabic")
+        self.assertNotEqual(ar["native_name"], "ar")
+        self.assertTrue(ar["rtl"])
+
+    def test_an_unknown_code_degrades_to_itself(self):
+        from library.languages import entry
+
+        self.assertEqual(entry("zz")["name"], "zz")
+
+    def test_editing_a_row_invalidates_the_cache(self):
+        from library.languages import entry
+
+        self.assertEqual(entry("lg")["name"], "Luganda")
+        lang = Language.objects.get(code="lg")
+        lang.name = "Ganda"
+        lang.save()
+        # The signal in library/languages.py drops the cache, so a rename shows
+        # up without a restart.
+        self.assertEqual(entry("lg")["name"], "Ganda")
+
+    def test_live_codes_reads_status_from_the_database(self):
+        from library.languages import live_codes
+
+        self.assertIn("es", live_codes())
+        self.assertNotIn("ar", live_codes())  # draft
+
+        ar = Language.objects.get(code="ar")
+        ar.status = Language.Status.LIVE
+        ar.save()
+        self.assertIn("ar", live_codes())
+
+
+class LanguageListEndpointTests(TestCase):
+    """`/api/library/languages/` — intent AND inventory, plus the build's view."""
+
+    def setUp(self):
+        self.client = APIClient()
+        from library import languages
+
+        languages.invalidate()
+        self.author = Author.objects.create(slug="a", name="A")
+        for lang in ("en", "es"):
+            Book.objects.create(
+                author=self.author, slug="b", language=lang, title="T", is_published=True
+            )
+
+    def test_reader_list_needs_both_live_status_and_books(self):
+        codes = [r["code"] for r in self.client.get("/api/library/languages/").data]
+        self.assertEqual(codes, ["en", "es"])
+
+        # Swahili is live in the registry but has no book here yet — the reader's
+        # picker must not offer a language with nothing to open.
+        self.assertNotIn("sw", codes)
+
+        # And a language with books but NOT live stays out: this is the guard the
+        # old books-only rule lacked, which is how pt got advertised while empty.
+        Book.objects.create(
+            author=self.author, slug="b", language="ar", title="T", is_published=True
+        )
+        codes = [r["code"] for r in self.client.get("/api/library/languages/").data]
+        self.assertNotIn("ar", codes)
+
+    def test_all_returns_every_live_language_for_the_build(self):
+        # The build asks for intent, not inventory: a live locale still filling
+        # up must be prerendered and advertised.
+        codes = [r["code"] for r in self.client.get("/api/library/languages/?all=1").data]
+        self.assertEqual(codes, ["en", "es", "sw", "lg", "pt"])
+        self.assertNotIn("ar", codes)  # draft
+
+    def test_going_live_changes_what_the_build_is_told(self):
+        ar = Language.objects.get(code="ar")
+        ar.status = Language.Status.LIVE
+        ar.save()
+        codes = [r["code"] for r in self.client.get("/api/library/languages/?all=1").data]
+        self.assertIn("ar", codes)
+
+    def test_entries_carry_the_flags_the_reader_needs(self):
+        ar = Language.objects.get(code="ar")
+        ar.status = Language.Status.LIVE
+        ar.save()
+        rows = {r["code"]: r for r in self.client.get("/api/library/languages/?all=1").data}
+        self.assertTrue(rows["ar"]["rtl"], "the reader needs to know to flip direction")
+        self.assertFalse(rows["es"]["rtl"])
+        self.assertTrue(rows["en"]["is_source"])

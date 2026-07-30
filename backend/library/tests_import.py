@@ -320,7 +320,13 @@ class EndpointTests(TestCase):
         self.assertEqual(r.status_code, 200)
         codes = {row["code"] for row in r.json()}
         self.assertIn("en", codes)
-        self.assertIn("fr", codes)  # a supported language with no content yet
+        # A genuinely supported language with no content yet. This asserted "fr"
+        # while the picker came from a hardcoded display map — but French had no
+        # Bible, no glossary, no UI locale and no content: it was aspirational
+        # text, not a supported target. Arabic is the real case — wired
+        # end-to-end (verified Bible, complete glossary, UI locale) and still a
+        # draft awaiting its first book, which is exactly what you'd import into.
+        self.assertIn("ar", codes)
 
     def test_publish_book_persists_metadata(self):
         r = self.client.post(

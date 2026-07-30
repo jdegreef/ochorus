@@ -13,6 +13,8 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from . import languages as languages_module
+from .languages import entry as language_entry
 from .localization import DEFAULT_LANGUAGE, language_from_request
 from .models import Author, Book, Chapter, Plan, SearchQueryLog, Sermon, Topic
 from .search import search_library, suggest
@@ -33,29 +35,19 @@ from .serializers import (
 logger = logging.getLogger(__name__)
 
 
-# Display names for the languages we expect to publish in. Anything not listed
-# falls back to its bare code so a new language still appears in the picker.
-LANGUAGE_NAMES = {
-    "en": ("English", "English"),
-    "sw": ("Swahili", "Kiswahili"),
-    "fr": ("French", "Français"),
-    "es": ("Spanish", "Español"),
-    "pt": ("Portuguese", "Português"),
-    "lg": ("Luganda", "Luganda"),
-    "sn": ("Shona", "chiShona"),
-    "ny": ("Chichewa", "Chichewa"),
-    "ln": ("Lingala", "Lingála"),
-    "zh": ("Chinese", "中文"),
-}
-
-
 def _language(request) -> str:
     return language_from_request(request)
 
 
 def _language_entry(code: str) -> dict:
-    name, native = LANGUAGE_NAMES.get(code, (code, code))
-    return {"code": code, "name": name, "native_name": native}
+    """Display entry for a language code, from the Language registry.
+
+    Was a hardcoded map here, which had drifted: it was missing Arabic (so an
+    Arabic row rendered as "ar / ar") while listing five languages — French,
+    Shona, Chichewa, Lingala, Chinese — that have never had a word of content.
+    The registry is now the single source, and `languages.entry` caches it.
+    """
+    return language_entry(code)
 
 
 # Snippet highlight markers. The API returns *plain text* snippets with matches
@@ -225,20 +217,30 @@ class SermonDetailView(generics.RetrieveAPIView):
 
 
 class LanguageListView(APIView):
-    """Distinct languages that have at least one published book.
+    """Languages a reader is offered — LIVE in the registry, with books to read.
 
-    Powers the content-language selector in the header. Returns the BCP-47-ish
-    code plus a human label/native name where we know one.
+    Powers the content-language selector, and (with ``?all=1``) the build, which
+    asks which locales to prerender and advertise.
+
+    Both conditions, deliberately. Status alone would offer a language an admin
+    launched before its content landed; published-books alone was the old rule,
+    and it offered whatever happened to exist — which is how Portuguese came to
+    be advertised with nothing behind it. The registry adds intent to presence.
     """
 
     def get(self, request):
-        codes = (
+        live = languages_module.live_codes()
+        if request.query_params.get("all"):
+            # The build's view: every live language in display order, whether or
+            # not books have landed yet. It needs the intent, not the inventory —
+            # a locale can be live and still be filling up.
+            return Response([_language_entry(c) for c in live])
+        with_books = set(
             Book.objects.filter(is_published=True)
             .values_list("language", flat=True)
             .distinct()
-            .order_by("language")
         )
-        return Response([_language_entry(c) for c in codes])
+        return Response([_language_entry(c) for c in live if c in with_books])
 
 
 class PlanListView(generics.ListAPIView):
