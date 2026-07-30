@@ -32,7 +32,7 @@ Why the ordered sequence and not a count or a length:
 ``KNOWN_GAPS`` is that backlog, pinned. The suite fails on anything NEW, and
 also fails when an entry is FIXED but left in the list — so the list can only
 shrink, and "known" cannot quietly become "forever". Delete the line when you
-ship the repair; a queue job exists for each.
+ship the repair; every entry carries its queue job (#399-#411, #567-#578).
 
 No DB, no network: reads the fixture and the data files. ~0.05s.
 """
@@ -53,23 +53,23 @@ from library.management.commands.seed_author_translations import (
 # Each is a real, reader-visible gap awaiting re-translation, not an accepted
 # deviation. Remove the line when the repair ships — a stale entry fails below.
 KNOWN_GAPS = {
-    ("es", "amy-carmichael"),  # 68/76 tags — re-translated 07-26, still short
-    ("es", "susanna-wesley"),  # 72/84 tags
-    ("es", "watchman-nee"),  # 72/88 tags, 72% of the English
-    ("es", "william-booth"),  # 76/84 tags
-    ("lg", "amy-carmichael"),  # 68/76 tags
-    ("lg", "susanna-wesley"),  # 72/84 tags
-    ("lg", "watchman-nee"),  # 72/88 tags, 57% of the English
-    ("lg", "william-booth"),  # 76/84 tags
-    ("sw", "amy-carmichael"),  # 68/76 tags
-    ("sw", "charles-h-spurgeon"),  # 82/86 tags — queue job #399
-    ("sw", "frederick-brotherton-meyer"),  # 72/80 tags — queue job #402
+    ("es", "amy-carmichael"),  # 68/76 tags — job #567 (re-translated 07-25, still short)
+    ("es", "susanna-wesley"),  # 72/84 tags — job #570
+    ("es", "watchman-nee"),  # 72/88 tags, 72% of the English — job #573
+    ("es", "william-booth"),  # 76/84 tags — job #576
+    ("lg", "amy-carmichael"),  # 68/76 tags — job #568
+    ("lg", "susanna-wesley"),  # 72/84 tags — job #571
+    ("lg", "watchman-nee"),  # 72/88 tags, 57% of the English — job #574
+    ("lg", "william-booth"),  # 76/84 tags — job #577
+    ("sw", "amy-carmichael"),  # 68/76 tags — job #569
+    ("sw", "charles-h-spurgeon"),  # 82/86 tags — job #399
+    ("sw", "frederick-brotherton-meyer"),  # 72/80 tags — job #402
     ("sw", "gareth-evans"),  # 34/86 tags — worst in the library; job #405
-    ("sw", "hannah-whitall-smith"),  # 76/78 tags — queue job #408
-    ("sw", "jeanne-guyon"),  # 56/70 tags — queue job #411
-    ("sw", "susanna-wesley"),  # 72/84 tags
-    ("sw", "watchman-nee"),  # 72/88 tags
-    ("sw", "william-booth"),  # 76/84 tags
+    ("sw", "hannah-whitall-smith"),  # 76/78 tags — job #408
+    ("sw", "jeanne-guyon"),  # 56/70 tags — job #411
+    ("sw", "susanna-wesley"),  # 72/84 tags — job #572
+    ("sw", "watchman-nee"),  # 72/88 tags — job #575
+    ("sw", "william-booth"),  # 76/84 tags — job #578
 }
 
 _TAG = re.compile(r"<[^>]+>")
