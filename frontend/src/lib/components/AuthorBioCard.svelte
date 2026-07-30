@@ -56,13 +56,13 @@
 				>
 				{#if author.birth_year}
 					<!-- nowrap: the dates were breaking after the en-dash ("1843–" / "1919"). -->
-					<span class="ml-2 whitespace-nowrap text-body font-normal text-muted"
+					<span class="ms-2 whitespace-nowrap text-body font-normal text-muted"
 						>{formatLifespan(author.birth_year, author.death_year, t('common.bornPrefix'))}</span
 					>
 				{/if}
 				{#if author.has_long_bio}
 					<span
-						class="ml-2 align-middle rounded-full bg-accent-soft px-2 py-0.5 text-[0.68rem] font-semibold uppercase tracking-wide text-accent"
+						class="ms-2 align-middle rounded-full bg-accent-soft px-2 py-0.5 text-[0.68rem] font-semibold uppercase tracking-wide text-accent"
 						title={t('bios.fullLifeHint')}
 					>
 						{t('bios.fullLife')}

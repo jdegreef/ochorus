@@ -262,7 +262,7 @@
 				</p>
 			{/if}
 		</div>
-		<div class="ml-auto flex shrink-0 items-center gap-2">
+		<div class="ms-auto flex shrink-0 items-center gap-2">
 			<FavoriteButton kind="author" slug={author.slug} showLabel />
 			{#if listen.supported && author.bio_html}
 				<button
@@ -299,7 +299,7 @@
 				</span>
 			{/if}
 			{#if totalWords}
-				<span class="text-muted sm:ml-auto">{t('author.allWorks')} · {readingTime(totalWords)}</span>
+				<span class="text-muted sm:ms-auto">{t('author.allWorks')} · {readingTime(totalWords)}</span>
 			{/if}
 		</div>
 	{/if}

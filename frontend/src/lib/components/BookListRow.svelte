@@ -40,7 +40,7 @@
 			<div class="truncate text-[0.8rem] italic text-muted">{book.subtitle}</div>
 		{/if}
 	</div>
-	<div class="shrink-0 text-right text-[0.78rem] text-muted">
+	<div class="shrink-0 text-end text-[0.78rem] text-muted">
 		<div>{chapters}</div>
 		{#if book.word_count}<div>{readingTime(book.word_count)}</div>{/if}
 	</div>

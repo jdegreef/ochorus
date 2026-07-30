@@ -137,7 +137,7 @@
 
 	{#if showLengthFilter}
 		<div class="mb-6 flex flex-wrap items-center gap-1.5" role="group" aria-label={t('plans.filterLength')}>
-			<span class="mr-1 text-small text-muted">{t('plans.filterLength')}</span>
+			<span class="me-1 text-small text-muted">{t('plans.filterLength')}</span>
 			{#each BUCKETS as b (b)}
 				{#if b === 'all' || counts[b] > 0}
 					<button

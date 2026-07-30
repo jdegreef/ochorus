@@ -33,6 +33,11 @@ API. Public content routes are prerendered for SEO (`prerender = true` + an
 
 - `{@html}` only for server-sanitized content (chapter / sermon body), with a
   comment saying so. Never for untrusted input.
+- Arabic is a routed locale, so reader-facing markup uses **logical** inline
+  spacing (`ms/me`, `ps/pe`, `text-start/end`, `border-s/e`, `start-/end-`),
+  never `ml-/mr-/pl-/pr-/text-left/right`. In LTR they render identically, so a
+  physical class is invisible until someone opens the site in Arabic —
+  `rtl.test.ts` fails the build instead. Admin is exempt (English-only, LTR).
 - Component styles stay scoped; colours, spacing and type live in the shared
   tokens (`app.css` / STYLE_GUIDE.md) — so a rebrand or a legibility fix is one
   edit, not a hunt.

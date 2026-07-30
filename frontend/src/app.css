@@ -142,7 +142,7 @@
 .skip-link {
 	position: fixed;
 	top: 0.5rem;
-	left: 0.5rem;
+	inset-inline-start: 0.5rem;
 	z-index: 100;
 	transform: translateY(-150%);
 	padding: 0.5rem 0.9rem;
@@ -476,8 +476,8 @@ nav.appnav .navtoggle:hover {
 	   rightward (left-aligned) to avoid clipping off the viewport edge. */
 	nav.appnav .account-menu,
 	nav.appnav .prefs-menu {
-		right: auto;
-		left: 0;
+		inset-inline-end: auto;
+		inset-inline-start: 0;
 	}
 }
 
@@ -501,7 +501,7 @@ nav.appnav .navtoggle:hover {
 }
 .account-menu {
 	position: absolute;
-	right: 0;
+	inset-inline-end: 0;
 	top: calc(100% + 0.5rem);
 	z-index: 50;
 	min-width: 13rem;
