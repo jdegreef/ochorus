@@ -253,6 +253,30 @@ def verify_bible_code(language: str) -> None:
         )
 
 
+def fetch_verse_text(bible: str, ref_text: str) -> str:
+    """The single verse a reference points at, in this language's Bible.
+
+    ``scripture_context`` hands a whole chapter to the model as context; a topic
+    shelf instead quotes one verse *verbatim*, so it needs the verse itself.
+
+    Returns ``""`` on any failure — an unresolvable reference, a chapter the API
+    doesn't have, a verse number outside it. Callers must treat that as absent
+    scripture and ship none: verse wording is never the model's to invent (see
+    the module docstring), so a blank here must not become a paraphrase.
+    """
+    m = _REF_RE.search(ref_text or "")
+    if not m:
+        return ""
+    book, chapter, verse = m.group(1).lower(), int(m.group(2)), int(m.group(3))
+    data = fetch_chapter(bible, Ref(BOOK_USFM[book], chapter))
+    if not data or not data.get("verses"):
+        return ""
+    for v in data["verses"]:
+        if int(v.get("number", 0)) == verse:
+            return str(v.get("text", "")).strip()
+    return ""
+
+
 def scripture_context(text: str, bible: str, max_refs: int = 12) -> str:
     """Build the authoritative-scripture prompt block for a chapter."""
     blocks: list[str] = []
@@ -355,6 +379,50 @@ BOOK_META_SCHEMA = {
     "required": ["title", "subtitle", "description"],
     "additionalProperties": False,
 }
+
+
+# --- Topics -------------------------------------------------------------------
+# A topical shelf is a curatorial label: a short title and a 1–2 sentence blurb.
+# Its own prose carries no Scripture quotation (the shelf's verse is a separate
+# field, fetched from the Bible rather than translated), so this is a plain
+# metadata call with no scripture context to assemble.
+
+TOPIC_META_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "title": {"type": "string"},
+        "description": {"type": "string"},
+    },
+    "required": ["title", "description"],
+    "additionalProperties": False,
+}
+
+
+def translate_topic_meta(client, language: str, title: str, description: str) -> dict:
+    """Translate a topical shelf's title and description (single call)."""
+    cfg = LANGUAGES[language]
+    response = client.messages.create(
+        model=MODEL,
+        max_tokens=1500,
+        thinking={"type": "adaptive"},
+        system=system_prompt(language),
+        output_config={"format": {"type": "json_schema", "schema": TOPIC_META_SCHEMA}},
+        messages=[
+            {
+                "role": "user",
+                "content": (
+                    "Translate this topical shelf's label for a library of classic "
+                    "Christian books. The title is a heading a reader scans, so keep "
+                    "it short and natural rather than literal; the description is one "
+                    "or two sentences of invitation. Return JSON with keys title and "
+                    f"description, in {cfg['name']}.\n\n"
+                    f"title: {title}\ndescription: {description}"
+                ),
+            }
+        ],
+    )
+    text = next(b.text for b in response.content if b.type == "text")
+    return json.loads(text)
 
 
 def translate_book_meta(

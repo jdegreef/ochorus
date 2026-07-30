@@ -29,7 +29,15 @@ from rest_framework.views import APIView
 
 from accounts.permissions import IsAdminEmail
 
-from ..models import Author, AuthorTranslation, Book, Plan, Sermon
+from ..models import (
+    Author,
+    AuthorTranslation,
+    Book,
+    Plan,
+    Sermon,
+    Topic,
+    TopicTranslation,
+)
 from ..views import LANGUAGE_NAMES
 
 # Env-overridable so local dev / tests can point at a mock GitHub.
@@ -39,12 +47,12 @@ IN_PROGRESS_LABEL = "in-progress"
 # Every content type the queue can enqueue. Each ships through its own delivery
 # vehicle once translated (see ``_JOB_GUIDANCE``); the worker skill picks the
 # right one from the job type.
-JOB_TYPES = ("book", "sermon", "plan", "bio")
+JOB_TYPES = ("book", "sermon", "plan", "bio", "topic")
 
 # Deterministic issue title — it is the job's identity (duplicate-press guard)
 # and what the worker parses, so both ends share this exact shape.
 _TITLE_RE = re.compile(
-    r"^\[translation\] (book|sermon|plan|bio):([a-z0-9-]+) -> ([a-z-]{2,10})$"
+    r"^\[translation\] (book|sermon|plan|bio|topic):([a-z0-9-]+) -> ([a-z-]{2,10})$"
 )
 
 # How each translated type is delivered — appended to the issue body so the
@@ -60,6 +68,13 @@ _JOB_GUIDANCE = {
         "Ships as an `ai_unreviewed` long-form biography under "
         "`library/migrations/data/author_bios_<language>/` (`short.json` + "
         "`<slug>.html`); the `seed_author_translations` release step upserts it."
+    ),
+    "topic": (
+        "Ships as a `TOPIC_TRANSLATIONS` entry in `seed_topics` (run "
+        "`manage.py translate_topic --language <language>`, which prints the block "
+        "ready to paste); the `seed_topics` release step upserts it. Topic prose "
+        "has NO English fallback — an untranslated shelf is hidden in that "
+        "language rather than shown in English — so every topic must be covered."
     ),
 }
 
@@ -100,6 +115,19 @@ def _resolve_source(type_: str, slug: str, language: str):
             .exists()
         )
         return f"the biography of {author.name}", author.name, exists
+    if type_ == "topic":
+        topic = Topic.objects.filter(slug=slug, is_published=True).first()
+        if topic is None:
+            return None
+        # A shelf counts as translated once it has a TITLE: that is what makes it
+        # visible in the language at all (Topic.is_translated_into), and the
+        # description is translated in the same call.
+        exists = (
+            TopicTranslation.objects.filter(topic__slug=slug, language=language)
+            .exclude(title="")
+            .exists()
+        )
+        return f"the {topic.title} shelf", None, exists
     return None
 
 

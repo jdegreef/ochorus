@@ -111,6 +111,12 @@ export interface AdminLangTodo {
 	plans: { slug: string; title: string }[];
 	/** Ranked by how much of the library the author carries — see _bios_todo. */
 	bios: { slug: string; name: string; book_count: number; sermon_count: number }[];
+	/**
+	 * Shelves with no title in this language. NOT truncated like the others: an
+	 * untranslated shelf is hidden from the language entirely (topic prose has no
+	 * English fallback), so this is a completeness checklist, not a ranked queue.
+	 */
+	topics: { slug: string; title: string }[];
 }
 
 export interface AdminLanguageDetail {
@@ -121,6 +127,8 @@ export interface AdminLanguageDetail {
 	sermons: AdminLangSermon[];
 	plans: AdminLangPlan[];
 	bios: AdminLangBio[];
+	/** Shelves that exist in this language — i.e. that have a title here. */
+	topics: { slug: string; title: string }[];
 	todo: AdminLangTodo;
 }
 
@@ -132,7 +140,7 @@ export const getAdminLanguageDetail = (code: string) =>
 // State is derived — queued = open issue, in_progress = claimed by a worker;
 // a finished job's item simply leaves the todo list once its translation ships.
 
-export type TranslationJobType = 'book' | 'sermon' | 'plan' | 'bio';
+export type TranslationJobType = 'book' | 'sermon' | 'plan' | 'bio' | 'topic';
 
 export interface AdminTranslationJob {
 	type: TranslationJobType;

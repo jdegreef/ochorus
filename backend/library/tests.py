@@ -2397,6 +2397,7 @@ class AdminTranslationJobsTests(TestCase):
             ({"type": "book", "slug": "the-inner-chamber", "language": "lg"}, 409),  # exists
             ({"type": "plan", "slug": "nope", "language": "lg"}, 404),  # no English plan
             ({"type": "bio", "slug": "nope", "language": "lg"}, 404),  # no author with a bio
+            ({"type": "topic", "slug": "nope", "language": "lg"}, 404),  # no such shelf
         ]
         with patch("library.admin_views.jobs.requests"):
             for body, expected in cases:
@@ -3555,3 +3556,266 @@ class NoSourceLanguageLeakTests(TestCase):
         body = res.content.decode()
         self.assertIn("Maombi", body)
         self.assertNotIn(self.TOPIC_TITLE, body)
+
+
+class TopicTranslationJobTests(TestCase):
+    """The `topic` job type: queueing a shelf for translation.
+
+    Topics were the one content type the queue couldn't express, which is why
+    the es/sw/pt shelves had to be written by hand. This covers the plumbing
+    that makes them queueable like everything else.
+    """
+
+    def setUp(self):
+        self.client = APIClient()
+        self.topic = Topic.objects.create(
+            slug="prayer",
+            title="On Prayer",
+            description="Learning to pray.",
+            scripture_ref="Jeremiah 33:3",
+            scripture_text="Call unto me, and I will answer thee.",
+            is_published=True,
+        )
+
+    def test_topic_is_an_accepted_job_type(self):
+        from library.admin_views.jobs import JOB_TYPES, _TITLE_RE
+
+        self.assertIn("topic", JOB_TYPES)
+        # The title is the job's identity and what the worker parses, so the
+        # regex has to accept the new type too — a JOB_TYPES-only change would
+        # file issues the queue then couldn't read back.
+        m = _TITLE_RE.match("[translation] topic:prayer -> sw")
+        self.assertIsNotNone(m)
+        self.assertEqual(m.groups(), ("topic", "prayer", "sw"))
+
+    def test_resolve_source_reports_untranslated_then_translated(self):
+        from library.admin_views.jobs import _resolve_source
+
+        title, byline, exists = _resolve_source("topic", "prayer", "sw")
+        self.assertIn("On Prayer", title)
+        self.assertIsNone(byline)
+        self.assertFalse(exists)
+
+        # A row with a blank title does NOT count: a shelf is visible in a
+        # language only once it has a title, so a titleless row is still a job.
+        tr = TopicTranslation.objects.create(topic=self.topic, language="sw", title="")
+        _, _, exists = _resolve_source("topic", "prayer", "sw")
+        self.assertFalse(exists)
+
+        tr.title = "Kuhusu Maombi"
+        tr.save()
+        _, _, exists = _resolve_source("topic", "prayer", "sw")
+        self.assertTrue(exists)
+
+    def test_resolve_source_ignores_unpublished_shelves(self):
+        from library.admin_views.jobs import _resolve_source
+
+        self.topic.is_published = False
+        self.topic.save()
+        self.assertIsNone(_resolve_source("topic", "prayer", "sw"))
+
+
+class AdminLanguageTopicsTests(TestCase):
+    """The admin language page's topic lists — present vs hidden."""
+
+    def setUp(self):
+        self.client = APIClient()
+        for i, (slug, title) in enumerate(
+            [("prayer", "On Prayer"), ("holy-spirit", "The Holy Spirit")]
+        ):
+            Topic.objects.create(
+                slug=slug, title=title, description="d", is_published=True, sort_order=i
+            )
+        TopicTranslation.objects.create(
+            topic=Topic.objects.get(slug="prayer"),
+            language="sw",
+            title="Kuhusu Maombi",
+            description="d",
+        )
+
+    def _get(self, code):
+        from unittest.mock import patch
+
+        with patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True):
+            return self.client.get(f"/api/admin/languages/{code}/")
+
+    def test_present_and_todo_split_by_translated_title(self):
+        res = self._get("sw")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual([t["slug"] for t in res.data["topics"]], ["prayer"])
+        # The translated title is shown, not the English one.
+        self.assertEqual(res.data["topics"][0]["title"], "Kuhusu Maombi")
+        self.assertEqual([t["slug"] for t in res.data["todo"]["topics"]], ["holy-spirit"])
+
+    def test_english_lists_every_shelf_and_has_no_todo(self):
+        res = self._get("en")
+        self.assertEqual(
+            [t["slug"] for t in res.data["topics"]], ["prayer", "holy-spirit"]
+        )
+        self.assertEqual(res.data["todo"]["topics"], [])
+
+
+class FetchVerseTextTests(SimpleTestCase):
+    """`fetch_verse_text` — the guard that keeps a shelf's verse authentic.
+
+    A topic quotes one verse verbatim, so the wording must come from that
+    language's Bible. Every failure path must return "" so the caller ships no
+    verse rather than a paraphrase (translate_topic warns and moves on).
+    """
+
+    def _chapter(self, verses):
+        return {"reference": "Jeremías 33", "verses": verses}
+
+    def test_returns_the_requested_verse(self):
+        from library import translation as m
+
+        with mock.patch.object(
+            m,
+            "fetch_chapter",
+            return_value=self._chapter(
+                [
+                    {"number": 2, "text": "Asi dice Jehová..."},
+                    {"number": 3, "text": "Clama a mí, y te responderé."},
+                ]
+            ),
+        ):
+            self.assertEqual(
+                m.fetch_verse_text("rv1858", "Jeremiah 33:3"),
+                "Clama a mí, y te responderé.",
+            )
+
+    def test_blank_when_the_verse_is_not_in_the_chapter(self):
+        from library import translation as m
+
+        with mock.patch.object(
+            m, "fetch_chapter", return_value=self._chapter([{"number": 1, "text": "x"}])
+        ):
+            self.assertEqual(m.fetch_verse_text("rv1858", "Jeremiah 33:3"), "")
+
+    def test_blank_on_an_unparseable_or_missing_reference(self):
+        from library import translation as m
+
+        with mock.patch.object(m, "fetch_chapter", return_value=None) as fetch:
+            self.assertEqual(m.fetch_verse_text("rv1858", "not a reference"), "")
+            fetch.assert_not_called()  # nothing to fetch
+            self.assertEqual(m.fetch_verse_text("rv1858", ""), "")
+
+    def test_blank_when_the_api_fails(self):
+        from library import translation as m
+
+        with mock.patch.object(m, "fetch_chapter", return_value=None):
+            self.assertEqual(m.fetch_verse_text("rv1858", "Jeremiah 33:3"), "")
+
+
+class TranslateTopicCommandTests(TestCase):
+    """`translate_topic` — the pipeline behind the queue's `topic` job."""
+
+    def setUp(self):
+        self.topic = Topic.objects.create(
+            slug="prayer",
+            title="On Prayer",
+            description="Learning to pray.",
+            scripture_ref="Jeremiah 33:3",
+            scripture_text="Call unto me, and I will answer thee.",
+            is_published=True,
+        )
+
+    def _run(self, *args, **kwargs):
+        out = StringIO()
+        call_command("translate_topic", *args, stdout=out, stderr=out, **kwargs)
+        return out.getvalue()
+
+    def test_dry_run_touches_nothing(self):
+        out = self._run("--language", "sw", "--dry-run")
+        self.assertIn("prayer", out)
+        self.assertFalse(TopicTranslation.objects.exists())
+
+    def test_translates_title_and_description_and_emits_the_seed_block(self):
+        meta = {"title": "Kuhusu Maombi", "description": "Kujifunza kuomba."}
+        with mock.patch("library.management.commands.translate_topic.verify_bible_code"), \
+             mock.patch("library.management.commands.translate_topic.anthropic"), \
+             mock.patch(
+                 "library.management.commands.translate_topic.translate_topic_meta",
+                 return_value=meta,
+             ):
+            out = self._run("--language", "sw")
+
+        tr = TopicTranslation.objects.get(topic=self.topic, language="sw")
+        self.assertEqual(tr.title, "Kuhusu Maombi")
+        self.assertEqual(tr.description, "Kujifunza kuomba.")
+        # Scripture is opt-in, so it stays empty on a prose-only run.
+        self.assertEqual(tr.scripture_text, "")
+        # The shelf is now visible in Swahili — the whole point.
+        self.assertTrue(self.topic.is_translated_into("sw"))
+        # And the paste-ready block names the seed, which is the delivery path.
+        self.assertIn('"sw": {', out)
+        self.assertIn("Kuhusu Maombi", out)
+        self.assertIn("seed_topics", out)
+
+    def test_scripture_uses_the_bible_and_never_the_model(self):
+        meta = {"title": "Kuhusu Maombi", "description": "d"}
+        with mock.patch("library.management.commands.translate_topic.verify_bible_code"), \
+             mock.patch("library.management.commands.translate_topic.anthropic"), \
+             mock.patch(
+                 "library.management.commands.translate_topic.translate_topic_meta",
+                 return_value=meta,
+             ), \
+             mock.patch(
+                 "library.management.commands.translate_topic.fetch_verse_text",
+                 return_value="Niite, nami nitakujibu.",
+             ), \
+             mock.patch(
+                 "library.management.commands.translate_topic.translate_scripture_ref",
+                 return_value="Yeremia 33:3",
+             ):
+            self._run("--language", "sw", "--scripture")
+
+        tr = TopicTranslation.objects.get(topic=self.topic, language="sw")
+        self.assertEqual(tr.scripture_text, "Niite, nami nitakujibu.")
+        self.assertEqual(tr.scripture_ref, "Yeremia 33:3")
+
+    def test_unfetchable_verse_ships_empty_rather_than_paraphrased(self):
+        meta = {"title": "Kuhusu Maombi", "description": "d"}
+        with mock.patch("library.management.commands.translate_topic.verify_bible_code"), \
+             mock.patch("library.management.commands.translate_topic.anthropic"), \
+             mock.patch(
+                 "library.management.commands.translate_topic.translate_topic_meta",
+                 return_value=meta,
+             ), \
+             mock.patch(
+                 "library.management.commands.translate_topic.fetch_verse_text",
+                 return_value="",
+             ) , \
+             mock.patch(
+                 "library.management.commands.translate_topic.translate_scripture_ref"
+             ) as ref:
+            out = self._run("--language", "sw", "--scripture")
+
+        tr = TopicTranslation.objects.get(topic=self.topic, language="sw")
+        self.assertEqual(tr.scripture_text, "")
+        # The reference isn't translated either — a citation with no text under
+        # it is worse than none, and the model is never asked to supply wording.
+        ref.assert_not_called()
+        self.assertIn("without a verse", out)
+
+    def test_already_translated_is_skipped_unless_forced(self):
+        TopicTranslation.objects.create(
+            topic=self.topic, language="sw", title="Kuhusu Maombi", description="d"
+        )
+        with mock.patch(
+            "library.management.commands.translate_topic.translate_topic_meta"
+        ) as meta:
+            self._run("--language", "sw")
+            meta.assert_not_called()
+
+        with mock.patch("library.management.commands.translate_topic.verify_bible_code"), \
+             mock.patch("library.management.commands.translate_topic.anthropic"), \
+             mock.patch(
+                 "library.management.commands.translate_topic.translate_topic_meta",
+                 return_value={"title": "Mpya", "description": "mpya"},
+             ) as meta:
+            self._run("--language", "sw", "--force")
+            meta.assert_called_once()
+        self.assertEqual(
+            TopicTranslation.objects.get(topic=self.topic, language="sw").title, "Mpya"
+        )
