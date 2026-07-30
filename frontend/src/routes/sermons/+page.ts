@@ -52,6 +52,11 @@ import type { PageLoad } from './$types';
  * Prerender refresh 2026-07-29 (queue job #477): the first Portuguese sermon —
  * A. B. Simpson's Himself (Ele Mesmo, PR #533) — went live, so the /pt/sermons
  * pages re-crawl and bake with the translated title.
+ *
+ * Prerender refresh 2026-07-30 (queue jobs #583/#584/#596/#555): four Portuguese
+ * sermon translations ship — Moody's Os Oito "Eu Quero" de Cristo and Spurgeon's
+ * A Primeira Oração de Paulo, O Clamor dos Corvos, and A Chave de Ouro da Oração
+ * — so the /pt/sermons pages re-crawl and bake the new titles.
  */
 export const load: PageLoad = async () => {
 	// Tolerate a lagging/absent sermon endpoint at prerender time (see the
