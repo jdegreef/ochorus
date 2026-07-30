@@ -101,6 +101,12 @@ export const entries: EntryGenerator = async () => {
 // 82%, both in band); only a full ordered TAG-SEQUENCE diff caught it (174 tags
 // vs the English 178). Supplied and verified, so /sw/authors/john-wesley and
 // /lg/authors/john-wesley re-bake complete.
+//
+// Prerender refresh 2026-07-30 (queue jobs #399/#402/#405/#408/#411/#569/#575):
+// seven Swahili biographies re-translated from the current English (the
+// KNOWN_GAPS backlog), clearing the sw bio queue. Worst was gareth-evans, whose
+// sw bio had held only a quarter of the English (34 of 86 tags). Each
+// /sw/authors/<slug> re-crawls and bakes the full bio with its prayer callouts.
 export const load: PageLoad = async ({ params }) => {
 	const author = await orNotFound(() => getAuthor(params.slug, getLang()));
 	// A mid-deploy API (before the sermon fields ship) may omit these; default
