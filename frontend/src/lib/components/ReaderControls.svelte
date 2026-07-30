@@ -55,7 +55,7 @@
 
 	{#if open}
 		<div
-			class="absolute right-0 z-30 mt-2 w-64 rounded-card border border-border bg-surface p-4 shadow-lg"
+			class="absolute end-0 z-30 mt-2 w-64 rounded-card border border-border bg-surface p-4 shadow-lg"
 			role="dialog"
 			aria-label={t('reader.textSettings')}
 		>

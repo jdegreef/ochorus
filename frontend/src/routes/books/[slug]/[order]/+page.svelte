@@ -827,7 +827,7 @@
 
 {#if readerUi.focus}
 	<button
-		class="fixed right-4 top-4 z-30 rounded-full border border-border bg-surface/90 px-3 py-1.5 text-small text-muted shadow-md backdrop-blur hover:text-text"
+		class="fixed end-4 top-4 z-30 rounded-full border border-border bg-surface/90 px-3 py-1.5 text-small text-muted shadow-md backdrop-blur hover:text-text"
 		onclick={() => readerUi.exitFocus()}>✕ {t('reader.exitFocus')}</button
 	>
 {/if}
@@ -886,7 +886,7 @@
 		<p class="mb-1 text-small uppercase tracking-wider text-muted">
 			{t('continue.chapter')} {chapter.order} · {readingTime(chapter.word_count)}
 			{#if chapter.is_modern_edition}
-				<span class="ml-1 text-accent">· {t('reader.modernEdition')}</span>
+				<span class="ms-1 text-accent">· {t('reader.modernEdition')}</span>
 			{/if}
 		</p>
 		<h1 bind:this={titleEl} class="text-h1 mb-8" dir="auto">{chapter.title}</h1>
@@ -899,7 +899,7 @@
 		{#if chapter.prev}
 			<a
 				href={chapterHref(chapter.prev.order)}
-				class="btn btn-ghost flex-1 !flex-col !items-start gap-0.5 text-left"
+				class="btn btn-ghost flex-1 !flex-col !items-start gap-0.5 text-start"
 			>
 				<span class="text-[0.7rem] uppercase tracking-wider text-muted">{t('reader.previous')}</span>
 				<span class="text-small">{chapter.prev.title}</span>
@@ -910,7 +910,7 @@
 		{#if chapter.next}
 			<a
 				href={chapterHref(chapter.next.order)}
-				class="btn btn-primary flex-1 !flex-col !items-end gap-0.5 text-right"
+				class="btn btn-primary flex-1 !flex-col !items-end gap-0.5 text-end"
 			>
 				<span class="text-[0.7rem] uppercase tracking-wider opacity-75">{t('reader.next')}</span>
 				<span class="text-small">{chapter.next.title}</span>

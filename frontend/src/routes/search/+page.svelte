@@ -464,7 +464,7 @@
 
 	{#if scriptureAnswer}
 		<!-- Instant scripture answer: the passage text for a reference query. -->
-		<div class="mt-6 rounded-card border-l-4 border-accent bg-accent-soft p-4">
+		<div class="mt-6 rounded-card border-s-4 border-accent bg-accent-soft p-4">
 			<p class="text-[0.66rem] font-bold uppercase tracking-[0.1em] text-accent">
 				{t('reader.scripture')}
 			</p>
@@ -587,7 +587,7 @@
 						{/each}
 					</div>
 				{/if}
-				<div class="flex flex-wrap items-center gap-x-3 gap-y-2 sm:ml-auto">
+				<div class="flex flex-wrap items-center gap-x-3 gap-y-2 sm:ms-auto">
 					{#if shownCount > 1}
 						<div class="flex items-center gap-1.5" role="group" aria-label={t('search.sortBy')}>
 							<span class="text-small text-muted">{t('search.sortBy')}</span>
@@ -599,7 +599,7 @@
 										class:bg-accent={sortMode === s}
 										class:text-accent-contrast={sortMode === s}
 										class:text-muted={sortMode !== s}
-										class:border-l={i > 0}
+										class:border-s={i > 0}
 										class:border-border={i > 0}
 										onclick={() => (sortMode = s)}
 										aria-pressed={sortMode === s}
@@ -638,7 +638,7 @@
 										>
 											{pb.title} <span class="font-normal text-muted">· {pb.author}</span>
 										</a>
-										<ul class="mt-1 divide-y divide-border border-l border-border pl-3">
+										<ul class="mt-1 divide-y divide-border border-s border-border ps-3">
 											{#each shown as ch (ch.key)}
 												<li class="py-2.5">
 													<a
@@ -662,7 +662,7 @@
 											<button
 												type="button"
 												onclick={() => toggleBook(pb.slug)}
-												class="mt-1.5 pl-3 text-small font-semibold text-accent"
+												class="mt-1.5 ps-3 text-small font-semibold text-accent"
 											>
 												{#if expanded}
 													{t('search.showLess')}
