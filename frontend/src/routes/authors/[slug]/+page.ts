@@ -118,6 +118,13 @@ export const entries: EntryGenerator = async () => {
 // feet" blockquote and his one-word last message ("Others"). The bio-markup
 // CI gate now runs with an empty allowlist. Each affected /es|lg|sw/authors/
 // <slug> re-crawls and bakes the completed bio with its prayer callouts.
+//
+// Prerender refresh 2026-07-30 (queue jobs #598/#599/#600/#601/#602/#603): six
+// first-ever Spanish long-form author biographies ship — John Bunyan, Richard
+// Baxter, Thomas Watson, David Brainerd, George Müller and Thomas à Kempis —
+// each translated tag-for-tag from the English bio_html with its two prayer
+// callouts intact. Each /es/authors/<slug> re-crawls and bakes the translated
+// bio.
 export const load: PageLoad = async ({ params }) => {
 	const author = await orNotFound(() => getAuthor(params.slug, getLang()));
 	// A mid-deploy API (before the sermon fields ship) may omit these; default
