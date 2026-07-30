@@ -88,6 +88,19 @@ export const entries: EntryGenerator = async () => {
 // current source for Gareth Evans), plus first-ever Spanish bios for R. A.
 // Torrey and Augustine of Hippo. Each /es/authors/<slug> re-crawls and bakes
 // the full bio with its prayer callouts.
+//
+// Prerender refresh 2026-07-30 (queue jobs #400/#403/#406/#409/#412/#413/#511):
+// five Luganda biographies re-translated from the English expanded in #387, plus
+// first-ever Spanish bios for John Wesley and Jonathan Edwards (PR #565). Each
+// /lg/authors/<slug> and /es/authors/<slug> re-crawls and bakes the full bio.
+//
+// Prerender refresh 2026-07-30 (queue jobs #414/#415): the Swahili and Luganda
+// John Wesley bios were each MISSING TWO PARAGRAPHS — the doctrine paragraph on
+// grace and Christian perfection, and the works-of-mercy paragraph on prisons,
+// schools and medical care for the poor. Word-count alone looked healthy (89% and
+// 82%, both in band); only a full ordered TAG-SEQUENCE diff caught it (174 tags
+// vs the English 178). Supplied and verified, so /sw/authors/john-wesley and
+// /lg/authors/john-wesley re-bake complete.
 export const load: PageLoad = async ({ params }) => {
 	const author = await orNotFound(() => getAuthor(params.slug, getLang()));
 	// A mid-deploy API (before the sermon fields ship) may omit these; default
