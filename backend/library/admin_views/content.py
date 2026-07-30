@@ -3,16 +3,19 @@
 from __future__ import annotations
 
 from django.db.models import Count, F, Q, Sum
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.permissions import IsAdminEmail
 
+from .. import readiness
 from ..models import (
     Author,
     AuthorTranslation,
     Book,
     Chapter,
+    Language,
     Plan,
     Sermon,
     Topic,
@@ -572,3 +575,94 @@ class AdminCoverageView(APIView):
         return self._rows(records, lambda r: "present", with_author=False)
 
 
+
+
+class AdminLanguageReadinessView(APIView):
+    """Is this language ready to go live, and what is still missing?
+
+    Separate from the language detail view on purpose: the Bible check makes a
+    live call to the Take Root API, and the detail page is loaded constantly —
+    paying a network round trip on every visit just to show counts would be a
+    poor trade. This is fetched when you actually ask the question.
+
+    Read-only. Nothing here launches anything; the go-live action re-runs these
+    same checks server-side rather than trusting a report a browser is holding.
+    """
+
+    permission_classes = [IsAdminEmail]
+
+    def get(self, request, code):
+        lang = Language.objects.filter(code=code.lower()).first()
+        if lang is None:
+            return Response({"detail": "Unknown language."}, status=status.HTTP_404_NOT_FOUND)
+        data = readiness.report(lang).as_dict()
+        data["status"] = lang.status
+        data["thresholds"] = {
+            "min_books": lang.min_books,
+            "min_sermons": lang.min_sermons,
+            "min_bios": lang.min_bios,
+            "min_plans": lang.min_plans,
+            "require_all_topics": lang.require_all_topics,
+            "require_complete_ui": lang.require_complete_ui,
+        }
+        return Response(data)
+
+
+class AdminLanguageThresholdsView(APIView):
+    """Edit a language's readiness bar.
+
+    The bar is per-language and yours to set: a language with a big catalogue
+    behind it should clear a higher one than a first beachhead language, and 0
+    disables a check. Only thresholds are writable here — ``status`` is changed
+    by the go-live action (which runs the checks) and identity belongs to the
+    repo's seed, which never touches these fields once the row exists.
+    """
+
+    permission_classes = [IsAdminEmail]
+
+    INT_FIELDS = ("min_books", "min_sermons", "min_bios", "min_plans")
+    BOOL_FIELDS = ("require_all_topics", "require_complete_ui")
+
+    def patch(self, request, code):
+        lang = Language.objects.filter(code=code.lower()).first()
+        if lang is None:
+            return Response({"detail": "Unknown language."}, status=status.HTTP_404_NOT_FOUND)
+
+        changed = []
+        for f in self.INT_FIELDS:
+            if f not in request.data:
+                continue
+            try:
+                value = int(request.data[f])
+            except (TypeError, ValueError):
+                return Response(
+                    {"detail": f"{f} must be a whole number."},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+            if value < 0:
+                return Response(
+                    {"detail": f"{f} cannot be negative (0 disables the check)."},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+            setattr(lang, f, value)
+            changed.append(f)
+
+        for f in self.BOOL_FIELDS:
+            if f in request.data:
+                setattr(lang, f, bool(request.data[f]))
+                changed.append(f)
+
+        if not changed:
+            return Response(
+                {"detail": "Nothing to update."}, status=status.HTTP_400_BAD_REQUEST
+            )
+        lang.save(update_fields=changed)
+        return Response(
+            {
+                "code": lang.code,
+                "updated": changed,
+                "thresholds": {
+                    f: getattr(lang, f) for f in self.INT_FIELDS + self.BOOL_FIELDS
+                },
+            }
+        )

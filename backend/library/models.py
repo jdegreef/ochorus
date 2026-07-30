@@ -743,7 +743,11 @@ class Language(models.Model):
     min_books = models.PositiveIntegerField(default=5)
     min_sermons = models.PositiveIntegerField(default=0)
     min_bios = models.PositiveIntegerField(default=3)
-    min_plans = models.PositiveIntegerField(default=1)
+    # Defaults to 0, unlike books and bios: no non-English language has ever had
+    # a published reading plan, so requiring one to launch would block every
+    # language on a format that has never been part of a launch. Raise it per
+    # language when translated plans become part of the bar.
+    min_plans = models.PositiveIntegerField(default=0)
     # Topic prose has no English fallback, so an untranslated shelf is hidden
     # rather than English — requiring all of them keeps the shelf page whole.
     require_all_topics = models.BooleanField(default=True)
