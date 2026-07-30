@@ -238,18 +238,26 @@
 	{@html crumbsLd}
 </svelte:head>
 
-<div class="mx-auto max-w-3xl px-5 py-10">
+<div class="mx-auto max-w-4xl px-5 py-8">
 	<Breadcrumb items={crumbs} />
-	<header class="mb-8">
-		<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">{t('bios.eyebrow')}</p>
-		<h1 class="text-display mb-3">{t('bios.title')}</h1>
+	<!-- No eyebrow: the breadcrumb directly above already reads "Biographies",
+	     and the pair cost a whole row of the first screen to say it twice. -->
+	<header class="mb-5">
+		<h1 class="text-display mb-2">{t('bios.title')}</h1>
 		<p class="text-body text-muted">
 			{t('bios.tagline')}
 		</p>
 	</header>
 
+	<!-- Controls + A–Z, pinned. With one writer per row the list is 35 screens
+	     long, so the filters and the letter jump have to come WITH you — the app
+	     nav is position:relative and scrolls away, so top-0 is free.
+	     -mx-5 px-5 lets the background span the container's padding. -->
+	<div
+		class="sticky top-0 z-20 -mx-5 mb-6 border-b border-border bg-bg px-5 pb-2.5 pt-3"
+	>
 	<!-- Controls: search · filter · sort -->
-	<div class="mb-3 flex flex-wrap items-center gap-2">
+	<div class="flex flex-wrap items-center gap-2">
 		<input
 			bind:value={queryText}
 			oninput={syncUrl}
@@ -296,7 +304,7 @@
 	</div>
 
 	<!-- Result count + a one-tap escape hatch when a filter is narrowing the list. -->
-	<div class="mb-6 flex items-center gap-2 text-small text-muted">
+	<div class="mt-1.5 flex items-center gap-2 text-small text-muted">
 		<span
 			>{t('bios.showing')
 				.replace('%shown%', String(sorted.length))
@@ -311,7 +319,7 @@
 
 	<!-- A–Z rail: jump to the first writer under each initial (name sort only). -->
 	{#if sort === 'name' && sorted.length > 1}
-		<nav class="mb-8 flex flex-wrap gap-x-1 gap-y-0.5 text-small" aria-label={t('bios.jumpAz')}>
+		<nav class="mt-1.5 hidden flex-wrap gap-x-1 gap-y-0.5 text-small sm:flex" aria-label={t('bios.jumpAz')}>
 			{#each AZ as letter (letter)}
 				{#if firstByLetter.has(letter)}
 					<a
@@ -325,6 +333,7 @@
 			{/each}
 		</nav>
 	{/if}
+	</div>
 
 	{#if sorted.length === 0}
 		<div class="py-16 text-center">
@@ -366,7 +375,7 @@
 			</nav>
 		{/if}
 		{#each eraGroups as g (g.era.id)}
-			<section id="era-{g.era.id}" class="mb-12 scroll-mt-24">
+			<section id="era-{g.era.id}" class="mb-12 scroll-mt-36">
 				<h2 class="mb-6 flex items-baseline gap-2 border-b border-border pb-2 text-h3 text-text">
 					<a
 						href={localizeHref(`/biographies/era/${g.era.id}`)}
@@ -378,7 +387,7 @@
 					{#if g.era.range}<span class="whitespace-nowrap text-small font-normal text-muted">{g.era.range}</span>{/if}
 					<span class="ms-auto text-small font-normal text-muted">{g.authors.length}</span>
 				</h2>
-				<div class="grid items-start gap-5 md:grid-cols-2">
+				<div class="space-y-4">
 					{#each g.authors as author (author.slug)}
 						<AuthorBioCard {author} shelf={booksByAuthor.get(author.slug) ?? []} />
 					{/each}
@@ -386,7 +395,7 @@
 			</section>
 		{/each}
 	{:else}
-		<div class="grid items-start gap-5 md:grid-cols-2">
+		<div class="space-y-4">
 			{#each sorted as author (author.slug)}
 				<AuthorBioCard {author} shelf={booksByAuthor.get(author.slug) ?? []} />
 			{/each}

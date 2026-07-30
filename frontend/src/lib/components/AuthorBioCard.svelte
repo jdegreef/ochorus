@@ -21,9 +21,13 @@
      hover so the click lands instantly. -->
 <article
 	id={author.slug}
-	class="group scroll-mt-24 rounded-card border border-border p-5 transition-colors hover:border-accent"
+	class="group scroll-mt-36 rounded-card border border-border p-5 transition-colors hover:border-accent"
 >
-	<div class="flex items-center gap-4">
+	<!-- Portrait beside the text, not above it. In the old two-up grid each row
+	     was as tall as its TALLER card, so a 171-character bio next to a
+	     640-character one left a hole; one writer per row makes every row
+	     independent and the hole cannot form. -->
+	<div class="flex gap-5">
 		<a
 			href={localizeHref(`/authors/${author.slug}`)}
 			data-sveltekit-preload-data="hover"
@@ -34,20 +38,20 @@
 					src={author.photo_url}
 					alt="{t('a11y.portraitOf')} {author.name}"
 					loading="lazy"
-					width="56"
-					height="56"
-					class="h-14 w-14 rounded-full border border-border object-cover grayscale transition-[filter] duration-300 group-hover:grayscale-0"
+					width="112"
+					height="112"
+					class="h-24 w-24 rounded-full border border-border object-cover grayscale transition-[filter] duration-300 group-hover:grayscale-0 sm:h-28 sm:w-28"
 				/>
 			{:else}
 				<span
-					class="flex h-14 w-14 items-center justify-center rounded-full bg-accent-soft text-h3 font-semibold text-accent"
+					class="flex h-24 w-24 items-center justify-center rounded-full bg-accent-soft text-display !text-3xl font-semibold text-accent sm:h-28 sm:w-28"
 					style="font-family: var(--font-display)"
 				>
 					{initials(author.name)}
 				</span>
 			{/if}
 		</a>
-		<div>
+		<div class="min-w-0 flex-1">
 			<h2 class="text-h2">
 				<a
 					href={localizeHref(`/authors/${author.slug}`)}
@@ -85,15 +89,16 @@
 					{t('bios.viewBiography')} →
 				{/if}
 			</a>
-		</div>
-	</div>
 	<!-- A short mini-bio (2–4 sentences) in the reader's language. Rendered in
 	     full — the summaries are authored to card length, so we show complete
 	     sentences rather than clamping mid-word. The `{#if}` matters: a bio with
 	     no translation in this language is ABSENT, not English, so in a
 	     partially-translated locale many cards legitimately show works only. -->
 	{#if author.bio}
-		<p class="mt-4 text-body leading-relaxed text-muted">{author.bio}</p>
+			<!-- line-clamp-3: mini-bios run 171-640 characters, so rendering them in
+			     full gave every row a different height. The full text is one click
+			     away on the author page, which the CTA below already points at. -->
+			<p class="mt-3 line-clamp-3 text-body leading-relaxed text-muted">{author.bio}</p>
 	{/if}
 	<!-- The "View biography →" CTA above already serves book-less authors;
 	     add the read-more only where the CTA is a book count AND there is
@@ -122,4 +127,6 @@
 			{/each}
 		</div>
 	{/if}
+		</div>
+	</div>
 </article>
