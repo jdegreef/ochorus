@@ -22,16 +22,13 @@ from dataclasses import dataclass, field
 
 import requests
 
-# --- Target languages --------------------------------------------------------
-# bible: the Take Root translation code whose wording is authoritative for
-# Scripture quotations. Every code below is verified against the live API
-# (GET /api/bible/<code>/JHN/1/ → 200 with verse text). The code is read ONLY at
-# translation time — seeds and tests never hit the API — so a wrong value can't
-# break the build, but it WILL garble a content job's scripture. Verify any new
-# one before running its first job.
-#
-# Prefer a PUBLIC-DOMAIN text: this is a public-domain library, and a CC-BY
-# Bible would put an attribution obligation on every quotation we render.
+from .languages import config as language_config
+
+# A target language's config — its Bible and its glossary — is read from the
+# Language REGISTRY (``language_config``), not from a dict in this file. That is
+# what makes "Add a language" in the admin produce a language you can actually
+# translate into: the row an admin creates is the same row these functions read.
+# ``library/language_seed.py`` holds the repo-owned rows the seed re-asserts.
 
 # Every language's glossary must cover exactly these terms — the shared
 # discipline that keeps theological vocabulary consistent across translations.
@@ -49,115 +46,6 @@ GLOSSARY_TERMS = (
     "intercession",
     "surrender",
 )
-
-LANGUAGES: dict[str, dict] = {
-    "es": {
-        "name": "Spanish",
-        "native": "Español",
-        "bible": "rv1858",
-        "bible_label": "Reina-Valera (1858/1862)",
-        "glossary": {
-            "justification": "justificación",
-            "sanctification": "santificación",
-            "atonement": "expiación",
-            "grace": "gracia",
-            "the flesh": "la carne",
-            "abide": "permanecer",
-            "the Holy Spirit": "el Espíritu Santo",
-            "the Lord": "el Señor",
-            "godliness": "piedad",
-            "intercession": "intercesión",
-            "surrender": "entrega / rendición",
-        },
-    },
-    "sw": {
-        "name": "Swahili",
-        "native": "Kiswahili",
-        "bible": "swhonen",
-        "bible_label": "Swahili Union-tradition (open)",
-        "glossary": {
-            "justification": "kuhesabiwa haki",
-            "sanctification": "utakaso",
-            "atonement": "upatanisho",
-            "grace": "neema",
-            "the flesh": "mwili",
-            "abide": "kukaa (ndani ya Kristo)",
-            "the Holy Spirit": "Roho Mtakatifu",
-            "the Lord": "Bwana",
-            "godliness": "utauwa",
-            "intercession": "maombezi",
-            "surrender": "kujisalimisha",
-        },
-    },
-    "lg": {
-        "name": "Luganda",
-        "native": "Luganda",
-        "bible": "lug",
-        "bible_label": "Luganda Bible (open)",
-        "glossary": {
-            "justification": "okuweebwa obutuukirivu",
-            "sanctification": "okutukuzibwa",
-            "atonement": "okutangirira",
-            "grace": "ekisa",
-            "the flesh": "omubiri",
-            "abide": "okubeera (mu Kristo)",
-            "the Holy Spirit": "Omwoyo Omutukuvu",
-            "the Lord": "Mukama",
-            "godliness": "okutya Katonda",
-            "intercession": "okwegayiririra abalala",
-            "surrender": "okwewaayo",
-        },
-    },
-    "pt": {
-        "name": "Portuguese",
-        "native": "Português",
-        # There is no standalone Almeida on Take Root; both Portuguese options
-        # are Bíblia Livre editions descended from it. Chose the PUBLIC-DOMAIN
-        # one — the alternative, porbr2018 ("Bíblia
-        # Livre", CC BY 4.0, © 2018 Diego Santos, Mario Sérgio & Marco Teles),
-        # would require carrying that attribution wherever we quote scripture.
-        # porbrbsl also keeps the Almeida-tradition wording ("No princípio era o
-        # Verbo" vs porbr2018's "a Palavra").
-        "bible": "porbrbsl",
-        "bible_label": "Bíblia Livre para o Mundo (public domain)",
-        "glossary": {
-            "justification": "justificação",
-            "sanctification": "santificação",
-            "atonement": "expiação",
-            "grace": "graça",
-            "the flesh": "a carne",
-            "abide": "permanecer",
-            "the Holy Spirit": "o Espírito Santo",
-            "the Lord": "o Senhor",
-            "godliness": "piedade",
-            "intercession": "intercessão",
-            "surrender": "entrega / rendição",
-        },
-    },
-    "ar": {
-        "name": "Arabic",
-        "native": "العربية",
-        # Smith–Van Dyck (1865): the standard Arabic Bible and the register
-        # Arabic Christian readers expect for devotional prose. Public domain —
-        # verified against Take Root's catalog (is_public_domain: true) and the
-        # live API.
-        "bible": "arb-vd",
-        "bible_label": "Van Dyck (1865)",
-        "glossary": {
-            "justification": "التبرير",
-            "sanctification": "التقديس",
-            "atonement": "الكفّارة",
-            "grace": "النعمة",
-            "the flesh": "الجسد",
-            "abide": "الثبات",
-            "the Holy Spirit": "الروح القدس",
-            "the Lord": "الرب",
-            "godliness": "التقوى",
-            "intercession": "الشفاعة",
-            "surrender": "التسليم",
-        },
-    },
-}
 
 # --- Bible reference detection ------------------------------------------------
 # English book name (as it appears in the source books) -> USFM code.
@@ -244,13 +132,41 @@ def verify_bible_code(language: str) -> None:
     Note the limit: this proves the code RESOLVES, not that it's the right
     language — pt→swhonen would pass. Only review catches that.
     """
-    cfg = LANGUAGES[language]
+    cfg = language_config(language)
     if not (fetch_chapter(cfg["bible"], Ref("JHN", 1)) or {}).get("verses"):
         raise ValueError(
             f"Bible code {cfg['bible']!r} for {language!r} returned no verses from "
             f"{TAKEROOT_API} — scripture would be silently omitted. "
-            "Fix LANGUAGES in library/translation.py before running this job."
+            "Fix the language's Bible code in the admin (or in "
+            "library/language_seed.py for a repo-defined language) before "
+            "running this job."
         )
+
+
+def verify_glossary(language: str) -> None:
+    """Fail fast if a language's theological glossary is incomplete.
+
+    Same shape of hazard as ``verify_bible_code``: ``system_prompt`` just
+    formats whatever terms are present, so a half-filled glossary produces a
+    translation that looks fine and renders "justification" however the model
+    felt that day — inconsistently, across every chapter, at full cost. Since a
+    language can now be created from the admin, the glossary is data, and data
+    gets checked before we spend money on it.
+    """
+    cfg = language_config(language)
+    missing = missing_glossary_terms(cfg["glossary"])
+    if missing:
+        raise ValueError(
+            f"Glossary for {language!r} is missing {len(missing)} term(s): "
+            f"{', '.join(missing)}. Fill them in on the language's admin page "
+            "before running this job."
+        )
+
+
+def missing_glossary_terms(glossary: dict | None) -> list[str]:
+    """Terms in ``GLOSSARY_TERMS`` this glossary has no non-empty value for."""
+    have = {k for k, v in (glossary or {}).items() if str(v).strip()}
+    return [t for t in GLOSSARY_TERMS if t not in have]
 
 
 def fetch_verse_text(bible: str, ref_text: str) -> str:
@@ -298,7 +214,7 @@ _BODY_RE = re.compile(r"<chapter_body>\s*(.*?)\s*</chapter_body>", re.S)
 
 
 def system_prompt(language: str) -> str:
-    cfg = LANGUAGES[language]
+    cfg = language_config(language)
     glossary = "\n".join(f"- {en} → {tr}" for en, tr in cfg["glossary"].items())
     return f"""You are an expert literary translator of classic Christian devotional literature \
 (Andrew Murray, Charles Spurgeon, Watchman Nee and their contemporaries) from English into \
@@ -342,7 +258,7 @@ def translate_chapter(
     sermon, say, wants its ``scripture_ref`` included); defaults to the title
     and body.
     """
-    cfg = LANGUAGES[language]
+    cfg = language_config(language)
     scripture = scripture_context(scripture_source or f"{title}\n{body_html}", cfg["bible"])
     user = ""
     if scripture:
@@ -400,7 +316,7 @@ TOPIC_META_SCHEMA = {
 
 def translate_topic_meta(client, language: str, title: str, description: str) -> dict:
     """Translate a topical shelf's title and description (single call)."""
-    cfg = LANGUAGES[language]
+    cfg = language_config(language)
     response = client.messages.create(
         model=MODEL,
         max_tokens=1500,
@@ -429,7 +345,6 @@ def translate_book_meta(
     client, language: str, title: str, subtitle: str, description: str
 ) -> dict:
     """Translate the book's title/subtitle/description (single structured call)."""
-    cfg = LANGUAGES[language]
     response = client.messages.create(
         model=MODEL,
         max_tokens=2000,
@@ -480,7 +395,7 @@ def translate_scripture_ref(client, language: str, ref: str) -> str:
     """Localize a sermon's reference (book name → target language; keep numbers)."""
     if not ref.strip():
         return ""
-    cfg = LANGUAGES[language]
+    cfg = language_config(language)
     response = client.messages.create(
         model=MODEL,
         max_tokens=200,

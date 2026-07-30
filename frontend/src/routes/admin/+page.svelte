@@ -2,6 +2,7 @@
 	import { auth } from '$lib/auth.svelte';
 	import { ApiError, apiFetchRaw } from '$lib/api';
 	import { getAdminStats, type AdminStats, type SourceType } from '$lib/library';
+	import AddLanguageForm from '$lib/components/AddLanguageForm.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
 
 	let exporting = $state<'csv' | 'json' | null>(null);
@@ -260,6 +261,9 @@
 					</tbody>
 				</table>
 			</div>
+			<!-- Starting a language begins here: the row is what the translate_*
+			     commands read, so it has to exist before any work can be queued. -->
+			<AddLanguageForm oncreated={() => load()} />
 		</section>
 
 		<div class="grid gap-6 md:grid-cols-2">

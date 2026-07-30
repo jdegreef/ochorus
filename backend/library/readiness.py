@@ -48,7 +48,7 @@ from .models import (
     Topic,
     TopicTranslation,
 )
-from .translation import GLOSSARY_TERMS, LANGUAGES
+from .translation import GLOSSARY_TERMS, missing_glossary_terms
 
 PASS = "pass"
 FAIL = "fail"
@@ -146,7 +146,7 @@ def _bible_check(lang: Language) -> Check:
         # network outage would otherwise read as a broken Bible and block a
         # launch for a reason that has nothing to do with the language. Probe
         # reachability to tell them apart.
-        if not _api_reachable():
+        if not api_reachable():
             return Check(
                 "bible",
                 "Bible",
@@ -160,7 +160,7 @@ def _bible_check(lang: Language) -> Check:
     return Check("bible", "Bible", PASS, f"{lang.bible_label or lang.bible_code} resolves.")
 
 
-def _api_reachable() -> bool:
+def api_reachable() -> bool:
     """Whether the Take Root API answered at all — not whether a code is valid."""
     import requests
 
@@ -178,23 +178,15 @@ def _glossary_check(lang: Language) -> Check:
         return Check(
             "glossary", "Glossary", SKIPPED, "English is the source language.", None, None
         )
-    cfg = LANGUAGES.get(lang.code)
-    if not cfg:
-        return Check(
-            "glossary",
-            "Glossary",
-            FAIL,
-            "No translator entry — this language has no glossary at all.",
-        )
-    have = set(cfg.get("glossary") or {})
-    missing = sorted(set(GLOSSARY_TERMS) - have)
+    missing = missing_glossary_terms(lang.glossary)
+    have = len(GLOSSARY_TERMS) - len(missing)
     if missing:
         return Check(
             "glossary",
             "Glossary",
             FAIL,
             f"{len(missing)} term(s) missing: {', '.join(missing)}.",
-            len(have),
+            have,
             len(GLOSSARY_TERMS),
         )
     return Check(
@@ -202,7 +194,7 @@ def _glossary_check(lang: Language) -> Check:
         "Glossary",
         PASS,
         f"All {len(GLOSSARY_TERMS)} theological terms defined.",
-        len(have),
+        have,
         len(GLOSSARY_TERMS),
     )
 

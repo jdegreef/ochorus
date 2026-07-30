@@ -1,8 +1,13 @@
-"""Seed the Language registry from the translator config (idempotent).
+"""Seed the Language registry from the repo's seed table (idempotent).
 
 Runs on every deploy (see release.py). The repo owns a language's *identity* —
-its names, its Bible, its script direction — so those are re-asserted each run
-and a fix in ``library/translation.py`` reaches production on the next deploy.
+its names, its Bible, its glossary, its script direction — so those are
+re-asserted each run and a fix in ``library/language_seed.py`` reaches
+production on the next deploy.
+
+Only languages listed in that file are touched. A language created from the
+admin ("Add a language") is absent from it, so the seed never overwrites what
+an admin typed — the database owns those rows outright.
 
 CREATE-ONLY, and this is the important part: ``status``, ``went_live_at``, the
 readiness thresholds and ``notes`` are written **only when the row is first
@@ -23,7 +28,7 @@ from __future__ import annotations
 from django.core.management.base import BaseCommand
 
 from library.models import Language
-from library.translation import LANGUAGES
+from library.language_seed import SEED_LANGUAGES
 
 # The source language: content is authored in English, so it is exempt from every
 # readiness check and is never a translation target.
@@ -33,6 +38,7 @@ SOURCE = {
     "native_name": "English",
     "bible_code": "",
     "bible_label": "",
+    "glossary": {},
     "rtl": False,
     "is_source": True,
 }
@@ -41,8 +47,9 @@ SOURCE = {
 # Only used for the FIRST insert of each row — afterwards status is the admin's.
 INITIALLY_LIVE = {"en", "es", "sw", "lg", "pt"}
 
-# Scripts that read right-to-left. Kept here rather than in LANGUAGES because it
-# is a property of the writing system, not of the translation pipeline.
+# Scripts that read right-to-left. Kept here rather than in the seed table
+# because it is a property of the writing system, not of the translation
+# pipeline.
 RTL_CODES = {"ar", "he", "fa", "ur"}
 
 # Display order: the source first, then by how established the language is.
@@ -51,7 +58,7 @@ ORDER = ["en", "es", "sw", "lg", "pt", "ar"]
 
 def _rows() -> list[dict]:
     rows = [dict(SOURCE)]
-    for code, cfg in LANGUAGES.items():
+    for code, cfg in SEED_LANGUAGES.items():
         rows.append(
             {
                 "code": code,
@@ -61,6 +68,7 @@ def _rows() -> list[dict]:
                 "bible_label": cfg["bible_label"],
                 "rtl": code in RTL_CODES,
                 "is_source": False,
+                "glossary": cfg["glossary"],
             }
         )
     return rows
@@ -79,6 +87,7 @@ class Command(BaseCommand):
                 "native_name": row["native_name"],
                 "bible_code": row["bible_code"],
                 "bible_label": row["bible_label"],
+                "glossary": row["glossary"],
                 "rtl": row["rtl"],
                 "is_source": row["is_source"],
                 "sort_order": ORDER.index(code) if code in ORDER else 99,
