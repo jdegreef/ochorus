@@ -35,6 +35,18 @@ services:
         sync: false
       - key: SENTRY_DSN # optional: paste a Sentry DSN to turn on API error monitoring
         sync: false
+      # Taking a language live triggers a rebuild of the READER: the site is
+      # prerendered, so a status change alone changes nothing a reader sees.
+      # Paste ochorus-web's Deploy Hook (that service → Settings → Deploy Hook).
+      # Optional: unset means the admin records the launch and tells you plainly
+      # that no deploy fired, rather than pretending it shipped.
+      - key: RENDER_WEB_DEPLOY_HOOK
+        sync: false
+      # The reader's public origin (e.g. https://ochorus.com) — lets the admin
+      # confirm after a deploy that a newly live locale is really in the built
+      # sitemap. Optional: without it that check reports "unknown".
+      - key: PUBLIC_SITE_URL
+        sync: false
 
   # --- SvelteKit reader (static SPA) ---------------------------------------
   - name: ochorus-web

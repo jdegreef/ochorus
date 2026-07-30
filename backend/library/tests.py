@@ -4220,3 +4220,175 @@ class AdminLanguageReadinessEndpointTests(TestCase):
             ).status_code,
             (401, 403),
         )
+
+
+class GoLiveTests(TestCase):
+    """Taking a language live: re-check, record, trigger the rebuild.
+
+    The two halves are asserted separately throughout. "Recorded as live" and
+    "readers can see it" are different facts — the reader is a prerendered static
+    site — and a launch whose deploy failed is a real state that must stay
+    visible rather than collapsing into one success flag.
+    """
+
+    def setUp(self):
+        self.client = APIClient()
+        self.ar = Language.objects.get(code="ar")
+
+    def _perm_and_ready(self, ready=True):
+        """Admin permission, a stubbed Bible check, and a chosen readiness verdict."""
+        from unittest.mock import patch
+
+        perm = patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True)
+        checks = [] if ready else [
+            readiness_module.Check("books", "Books", readiness_module.FAIL, "0 books — needs 5.")
+        ]
+        # Patched on the readiness module itself, which is what golive imports —
+        # `from . import readiness` then `readiness.report(...)`, so the lookup
+        # happens at call time and this stub is what golive sees.
+        rep = mock.patch.object(
+            readiness_module, "report", return_value=readiness_module.Report("ar", checks)
+        )
+
+        class _Ctx:
+            def __enter__(self):
+                perm.start()
+                rep.start()
+                return self
+
+            def __exit__(self, *exc):
+                rep.stop()
+                perm.stop()
+                return False
+
+        return _Ctx()
+
+    def test_not_ready_is_refused_with_its_blockers(self):
+        with self._perm_and_ready(ready=False):
+            res = self.client.post("/api/admin/languages/ar/go-live/", {}, format="json")
+        self.assertEqual(res.status_code, 409)
+        self.assertFalse(res.data["launched"])
+        self.assertEqual(res.data["reason"], "not_ready")
+        self.assertEqual(res.data["readiness"]["blocking"], ["books"])
+        # And crucially it did NOT launch.
+        self.ar.refresh_from_db()
+        self.assertEqual(self.ar.status, "draft")
+
+    def test_force_launches_past_failing_checks_and_says_so(self):
+        with self._perm_and_ready(ready=False):
+            res = self.client.post(
+                "/api/admin/languages/ar/go-live/", {"force": True}, format="json"
+            )
+        self.assertEqual(res.status_code, 200)
+        self.assertTrue(res.data["launched"])
+        self.assertTrue(res.data["forced"], "an override must be recorded as one")
+        self.ar.refresh_from_db()
+        self.assertEqual(self.ar.status, "live")
+
+    def test_a_ready_language_launches_and_is_stamped(self):
+        with self._perm_and_ready(ready=True):
+            res = self.client.post("/api/admin/languages/ar/go-live/", {}, format="json")
+        self.assertEqual(res.status_code, 200)
+        self.ar.refresh_from_db()
+        self.assertEqual(self.ar.status, "live")
+        self.assertIsNotNone(self.ar.went_live_at)
+        self.assertFalse(res.data["forced"])
+
+    def test_relaunching_keeps_the_original_went_live_at(self):
+        # Re-running the action (e.g. to retrigger a deploy) must not rewrite when
+        # the language became public.
+        with self._perm_and_ready(ready=True):
+            self.client.post("/api/admin/languages/ar/go-live/", {}, format="json")
+            self.ar.refresh_from_db()
+            first = self.ar.went_live_at
+            res = self.client.post("/api/admin/languages/ar/go-live/", {}, format="json")
+        self.ar.refresh_from_db()
+        self.assertEqual(self.ar.went_live_at, first)
+        self.assertTrue(res.data["already_live"])
+
+    def test_an_unconfigured_deploy_hook_is_reported_not_hidden(self):
+        with self.settings(RENDER_WEB_DEPLOY_HOOK=""):
+            with self._perm_and_ready(ready=True):
+                res = self.client.post("/api/admin/languages/ar/go-live/", {}, format="json")
+        self.assertTrue(res.data["launched"])
+        self.assertEqual(res.data["deploy"]["status"], "not_configured")
+        self.assertIn("won't see it", res.data["deploy"]["detail"])
+
+    def test_a_failing_deploy_hook_does_not_undo_the_launch(self):
+        # The status flip already happened; losing it because the hook 500'd would
+        # be worse than a launch that needs a manual deploy.
+        with self.settings(RENDER_WEB_DEPLOY_HOOK="https://hook.example/deploy"):
+            with self._perm_and_ready(ready=True):
+                with mock.patch(
+                    "library.golive.requests.post",
+                    side_effect=__import__("requests").RequestException("boom"),
+                ):
+                    res = self.client.post(
+                        "/api/admin/languages/ar/go-live/", {}, format="json"
+                    )
+        self.assertTrue(res.data["launched"])
+        self.assertEqual(res.data["deploy"]["status"], "failed")
+        self.ar.refresh_from_db()
+        self.assertEqual(self.ar.status, "live")
+
+    def test_the_deploy_hook_is_fired_when_configured(self):
+        with self.settings(RENDER_WEB_DEPLOY_HOOK="https://hook.example/deploy"):
+            with self._perm_and_ready(ready=True):
+                with mock.patch("library.golive.requests.post") as post:
+                    post.return_value = mock.Mock(ok=True, status_code=200)
+                    res = self.client.post(
+                        "/api/admin/languages/ar/go-live/", {}, format="json"
+                    )
+                    post.assert_called_once_with("https://hook.example/deploy", timeout=20)
+        self.assertEqual(res.data["deploy"]["status"], "triggered")
+
+    def test_english_cannot_be_launched(self):
+        from unittest.mock import patch
+
+        with patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True):
+            res = self.client.post("/api/admin/languages/en/go-live/", {}, format="json")
+        self.assertEqual(res.status_code, 400)
+
+    def test_go_live_requires_admin(self):
+        self.assertIn(
+            self.client.post("/api/admin/languages/ar/go-live/", {}, format="json").status_code,
+            (401, 403),
+        )
+
+
+class DeployCheckTests(TestCase):
+    """"Did it ship?" — the question `status` cannot answer."""
+
+    def setUp(self):
+        self.client = APIClient()
+
+    def _perm(self):
+        from unittest.mock import patch
+
+        return patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True)
+
+    def test_unknown_without_a_site_url_rather_than_a_guess(self):
+        with self.settings(PUBLIC_SITE_URL=""):
+            with self._perm():
+                res = self.client.get("/api/admin/languages/ar/deploy-check/")
+        self.assertEqual(res.data["status"], "unknown")
+
+    def test_deployed_when_the_locale_is_in_the_live_sitemap(self):
+        with self.settings(PUBLIC_SITE_URL="https://ochorus.test"):
+            with self._perm():
+                with mock.patch("library.golive.requests.get") as get:
+                    get.return_value = mock.Mock(
+                        ok=True, text="<url><loc>https://ochorus.test/ar/books/</loc></url>"
+                    )
+                    res = self.client.get("/api/admin/languages/ar/deploy-check/")
+        self.assertEqual(res.data["status"], "deployed")
+
+    def test_pending_when_the_build_has_not_caught_up(self):
+        with self.settings(PUBLIC_SITE_URL="https://ochorus.test"):
+            with self._perm():
+                with mock.patch("library.golive.requests.get") as get:
+                    get.return_value = mock.Mock(
+                        ok=True, text="<url><loc>https://ochorus.test/es/books/</loc></url>"
+                    )
+                    res = self.client.get("/api/admin/languages/ar/deploy-check/")
+        self.assertEqual(res.data["status"], "pending")

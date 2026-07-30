@@ -173,6 +173,21 @@ ADMIN_EMAILS = {
 # Deliberately NOT an Anthropic credential — prod never holds one; the queued
 # jobs are processed by Claude Code worker sessions off-server.
 GITHUB_TRANSLATION_TOKEN = os.getenv("GITHUB_TRANSLATION_TOKEN", "")
+
+# Render deploy hook for the WEB service (Render dashboard → ochorus-web →
+# Settings → Deploy Hook). Taking a language live has to trigger a rebuild: the
+# reader is a prerendered static site, so a status change in the database alone
+# changes nothing a reader can see.
+#
+# Opt-in, like SENTRY_DSN: unset means the go-live action still records the
+# launch and tells you plainly that no deploy was fired, rather than pretending
+# it shipped. A secret, so it lives in the environment and never in the repo.
+RENDER_WEB_DEPLOY_HOOK = os.getenv("RENDER_WEB_DEPLOY_HOOK", "").strip()
+
+# Public origin of the READER (e.g. https://ochorus.com), used to confirm after a
+# deploy that a newly live locale actually appears in the built sitemap. Optional:
+# without it the post-deploy check reports "unknown" instead of guessing.
+PUBLIC_SITE_URL = os.getenv("PUBLIC_SITE_URL", "").strip().rstrip("/")
 GITHUB_TRANSLATION_REPO = os.getenv("GITHUB_TRANSLATION_REPO", "jdegreef/ochorus")
 
 

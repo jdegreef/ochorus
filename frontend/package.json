@@ -12,7 +12,9 @@
 		"check": "npm run paraglide && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:slashes": "node scripts/check-slashes.mjs",
 		"test": "vitest run",
-		"test:watch": "vitest"
+		"test:watch": "vitest",
+		"locales": "node scripts/fetch-live-locales.mjs",
+		"prebuild": "npm run locales"
 	},
 	"devDependencies": {
 		"@inlang/paraglide-js": "^2.21.0",

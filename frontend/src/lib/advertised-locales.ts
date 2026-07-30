@@ -1,4 +1,5 @@
 import { locales } from '$lib/paraglide/runtime';
+import { LIVE_LOCALES } from '$lib/live-locales.generated';
 
 /**
  * The locales whose pages we ADVERTISE to search engines — in `sitemap.xml` and
@@ -15,13 +16,18 @@ import { locales } from '$lib/paraglide/runtime';
  * empty shell it would replace: a shell gets ignored, a thin page gets indexed
  * and counted against the site.
  *
+ * **No longer maintained by hand.** Which locales are advertised is a decision
+ * recorded in the `Language` registry — an admin presses "Go live" — and
+ * `scripts/fetch-live-locales.mjs` bakes that decision into
+ * `live-locales.generated.ts` before every build. The reader is a prerendered
+ * static site, so this has to be a build-time constant; that script is how a
+ * database decision becomes one. If the API can't be reached the build FAILS,
+ * rather than shipping a stale list that search engines would act on.
+ *
  * So: being a UI locale means a reader can use the app in that language. Being
- * ADVERTISED means there is something in it worth ranking. Add a locale here
- * once it has works — `sitemap.xml` asserts this list against the real
- * per-locale counts, so a locale that gains (or loses) content fails the build
- * rather than drifting silently.
+ * ADVERTISED means someone decided there is something in it worth ranking.
  */
-export const ADVERTISED_LOCALES = ['en', 'es', 'sw', 'lg', 'pt'] as const;
+export const ADVERTISED_LOCALES = LIVE_LOCALES;
 
 export type AdvertisedLocale = (typeof ADVERTISED_LOCALES)[number];
 

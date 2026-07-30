@@ -9,7 +9,7 @@ from rest_framework.views import APIView
 
 from accounts.permissions import IsAdminEmail
 
-from .. import readiness
+from .. import golive, readiness
 from ..models import (
     Author,
     AuthorTranslation,
@@ -666,3 +666,50 @@ class AdminLanguageThresholdsView(APIView):
                 },
             }
         )
+
+
+class AdminLanguageGoLiveView(APIView):
+    """Take a language live: re-check, record, and trigger the rebuild.
+
+    The checks run again HERE rather than trusting what the browser was holding —
+    that report could be minutes old and content can change underneath it. The
+    button is a request to launch, not permission to.
+
+    Returns 409 with the blockers when a language isn't ready. `force: true`
+    launches anyway, for the case where you disagree with the bar rather than as
+    a way around it; the response records that it was forced.
+    """
+
+    permission_classes = [IsAdminEmail]
+
+    def post(self, request, code):
+        lang = Language.objects.filter(code=code.lower()).first()
+        if lang is None:
+            return Response({"detail": "Unknown language."}, status=status.HTTP_404_NOT_FOUND)
+        if lang.is_source:
+            return Response(
+                {"detail": "English is the source language; it is always live."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        result = golive.go_live(lang, force=bool(request.data.get("force")))
+        if not result["launched"]:
+            return Response(result, status=status.HTTP_409_CONFLICT)
+        return Response(result)
+
+
+class AdminLanguageDeployCheckView(APIView):
+    """Did the launch actually reach readers?
+
+    `status` says what was decided; this says what shipped. They are different
+    facts — a prerendered site only reflects a decision after a build — and
+    reporting one as the other is how a dashboard starts lying.
+    """
+
+    permission_classes = [IsAdminEmail]
+
+    def get(self, request, code):
+        lang = Language.objects.filter(code=code.lower()).first()
+        if lang is None:
+            return Response({"detail": "Unknown language."}, status=status.HTTP_404_NOT_FOUND)
+        return Response(golive.verify_deployed(lang))

@@ -64,14 +64,20 @@ export async function GET() {
 	// "> 0 works" rule, nowhere near enough to advertise 46 pages of English
 	// prose behind a Portuguese hreflang. es/sw/lg carry 10/12/18 books.
 	const booksIn = (l: string) => perLocale.find((x) => x.locale === l)?.books.length ?? 0;
-	// Safe to throw on — a failed fetch degrades to an EMPTY slice, so it can
-	// never invent content and fail the build spuriously.
+	// Used to THROW here: an unadvertised locale with books meant someone had
+	// added content and forgotten to edit the hardcoded array. That is no longer
+	// a mistake — it is the normal pre-launch state. Translating books into a
+	// language while it sits in `draft` is exactly how you get it ready, and the
+	// registry decides when it goes live. Failing the build on it would break the
+	// very workflow the Language registry exists to support.
+	//
+	// So: report it, don't refuse. The nudge now points at the admin, which is
+	// where the decision lives.
 	const readyToPromote = UNADVERTISED_LOCALES.filter((l) => booksIn(l) > 0);
 	if (readyToPromote.length) {
-		throw new Error(
-			`sitemap: ${readyToPromote.join(', ')} now has books but is not advertised — ` +
-				'add it to ADVERTISED_LOCALES (src/lib/advertised-locales.ts) so the sitemap ' +
-				'and hreflang alternates include it.'
+		console.info(
+			`sitemap: ${readyToPromote.join(', ')} has books but is not live yet — ` +
+				'check readiness in Admin → Languages and press Go live when ready.'
 		);
 	}
 	// The reverse only WARNS: an advertised locale looking empty is more likely a
