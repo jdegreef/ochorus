@@ -2,6 +2,9 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { ADVERTISED_LOCALES } from './advertised-locales';
+// Imported rather than re-implemented: the gate and the generator must compute
+// completeness the same way, or one of them is lying.
+import { buildSummary } from '../../scripts/sync-ui-catalogues.mjs';
 
 /**
  * Interface-catalogue completeness.
@@ -70,6 +73,25 @@ describe('message catalogues', () => {
 				[]
 			);
 		}
+	});
+
+	it('the summary the API reads matches the catalogues', () => {
+		// The admin's readiness report says whether a language's interface is
+		// translated, and the deployed API cannot see these files — its image is
+		// built from backend/ alone. So the numbers are handed across as a
+		// committed JSON file, and this is what stops that file from drifting: a
+		// stale summary would report a language ready on the strength of a
+		// catalogue that has since grown, which is worse than reporting nothing.
+		const committed = readFileSync(
+			join(process.cwd(), '..', 'backend', 'library', 'data', 'ui_catalogues.json'),
+			'utf-8'
+		);
+		const expected = JSON.stringify(buildSummary(MESSAGES_DIR), null, '\t') + '\n';
+		expect(
+			committed,
+			'backend/library/data/ui_catalogues.json is out of date — run:\n' +
+				'  cd frontend && npm run sync:catalogues'
+		).toEqual(expected);
 	});
 
 	it('reports completeness for locales that are not yet advertised', () => {

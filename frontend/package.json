@@ -14,6 +14,7 @@
 		"test": "vitest run",
 		"test:watch": "vitest",
 		"locales": "node scripts/fetch-live-locales.mjs",
+		"sync:catalogues": "node scripts/sync-ui-catalogues.mjs",
 		"prebuild": "npm run locales"
 	},
 	"devDependencies": {
