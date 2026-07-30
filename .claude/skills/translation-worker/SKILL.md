@@ -209,3 +209,23 @@ pinning full per-language coverage, so a partial block fails CI.
   missing (typically the prerender refresh — check whether any frontend
   commit landed after the content merge), then close out normally citing the
   existing PR. Don't re-translate; the fixture guard would reject it anyway.
+- **Word count cannot verify a translation. Diff the ordered TAG SEQUENCE**
+  (jobs #414/#415, 2026-07-30): the sw and lg John Wesley bios had been
+  re-translated from the expanded English and their word ratios looked healthy
+  (89% / 82%, both in band), so they were nearly closed as done. Each was
+  missing English paragraphs #35 and #36 — Christian perfection, and the works
+  of mercy among prisoners and the sick poor — 174 tags against 178, 42
+  paragraphs against 44. Dropping ~340 words from a 3145-word source moves the
+  ratio by a tenth, i.e. nothing. Sweeping every bio this way found **17**
+  divergent files, four authors broken in all three languages, and one at 34
+  tags against 86 — several with jobs already closed as done. `library/
+  tests_bio_markup.py` now gates this in CI with a shrink-only `KNOWN_GAPS`
+  list; keep the same habit for books and sermons (per-chapter tag sequence,
+  not just `<p>` counts).
+- **Ratio bands are per language — measure, don't borrow.** A faithful bio runs
+  **es/pt 95-115%** of the English word count but **lg 82-91%** (mean ~85%) and
+  **sw 88-98%** (mean ~93%): Luganda and Swahili pack morphology into single
+  words, Luganda more so. Applying the Spanish band to Luganda means padding a
+  correct file; applying Luganda's to Swahili flags a correct one. To calibrate
+  a new language, measure its files re-translated from the CURRENT English
+  (`git log -1 --format=%ad -- <file>` to find them) and use that spread.
