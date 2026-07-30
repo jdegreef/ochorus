@@ -1,5 +1,12 @@
 import adapter from '@sveltejs/adapter-static';
 
+import { readFileSync } from 'node:fs';
+
+/** Non-English UI locales, read from the inlang project (the source of truth). */
+const LOCALES = JSON.parse(
+	readFileSync(new URL('./project.inlang/settings.json', import.meta.url), 'utf8')
+).locales.filter((l) => l !== 'en');
+
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	compilerOptions: {
@@ -26,7 +33,12 @@ const config = {
 			// English pages are covered by the default '*' crawl from '/'.
 			entries: [
 				'*',
-				...['es', 'sw', 'lg'].flatMap((l) => [
+				// Derived from the inlang project — the same file the Paraglide
+				// runtime compiles from — so a new locale is crawled the moment it is
+				// registered. Hardcoding this list is how /pt and /ar shipped with no
+				// prerendered pages at all: navigable, in the sitemap, serving the SPA
+				// shell to crawlers.
+				...LOCALES.flatMap((l) => [
 					`/${l}`,
 					`/${l}/books`,
 					`/${l}/biographies`,

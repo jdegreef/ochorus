@@ -200,6 +200,54 @@ services:
       - type: rewrite
         source: /lg/plans
         destination: /lg/plans.html
+      - type: rewrite
+        source: /pt
+        destination: /pt.html
+      - type: rewrite
+        source: /pt/books
+        destination: /pt/books.html
+      - type: rewrite
+        source: /pt/biographies
+        destination: /pt/biographies.html
+      - type: rewrite
+        source: /pt/about
+        destination: /pt/about.html
+      - type: rewrite
+        source: /pt/contact
+        destination: /pt/contact.html
+      - type: rewrite
+        source: /pt/legal
+        destination: /pt/legal.html
+      - type: rewrite
+        source: /pt/sermons
+        destination: /pt/sermons.html
+      - type: rewrite
+        source: /pt/plans
+        destination: /pt/plans.html
+      - type: rewrite
+        source: /ar
+        destination: /ar.html
+      - type: rewrite
+        source: /ar/books
+        destination: /ar/books.html
+      - type: rewrite
+        source: /ar/biographies
+        destination: /ar/biographies.html
+      - type: rewrite
+        source: /ar/about
+        destination: /ar/about.html
+      - type: rewrite
+        source: /ar/contact
+        destination: /ar/contact.html
+      - type: rewrite
+        source: /ar/legal
+        destination: /ar/legal.html
+      - type: rewrite
+        source: /ar/sermons
+        destination: /ar/sermons.html
+      - type: rewrite
+        source: /ar/plans
+        destination: /ar/plans.html
       # /topics had NO rewrite at any locale, so topics.html (23 KB, titled)
       # was never served — /topics and /topics/ both fell to the SPA shell in
       # all four locales while sitting in the sitemap — same class of bug as the
@@ -216,6 +264,12 @@ services:
       - type: rewrite
         source: /lg/topics
         destination: /lg/topics.html
+      - type: rewrite
+        source: /pt/topics
+        destination: /pt/topics.html
+      - type: rewrite
+        source: /ar/topics
+        destination: /ar/topics.html
       # NO no-slash -> slash 301 here, deliberately. Render's route matcher is
       # trailing-slash-INSENSITIVE: a rule with `source: /about` also serves
       # `/about/` (verified live — there is no build/about/ directory, only
