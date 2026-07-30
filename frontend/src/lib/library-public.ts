@@ -93,6 +93,12 @@ export interface Language {
 	code: string;
 	name: string;
 	native_name: string;
+	/** Right-to-left script — the reader flips direction for these. */
+	rtl?: boolean;
+	/** English: the language content is authored in. */
+	is_source?: boolean;
+	/** Registry lifecycle: 'draft' | 'translating' | 'live'. */
+	status?: string;
 }
 
 export interface ChapterHit {

@@ -17,6 +17,12 @@ class Command(BaseCommand):
     def handle(self, *args, **opts):
         self.stdout.write("→ migrate")
         call_command("migrate", interactive=False, verbosity=1)
+        # Before the content seeds: they and the readiness checks both read the
+        # registry, and it must exist on a fresh DB. Identity is re-asserted each
+        # run; a language's status and thresholds are create-only, so a deploy
+        # never walks back a launch (see seed_languages).
+        self.stdout.write("→ seed_languages")
+        call_command("seed_languages")
         self.stdout.write("→ seed_if_empty")
         call_command("seed_if_empty")
         # Fixture loads bypass Chapter.save(), so derive search text afterwards.
