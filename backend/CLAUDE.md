@@ -21,6 +21,12 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
   silently when a model is renamed.
 - Enforce invariants in the DB (`UniqueConstraint`, indexes, `on_delete`), not
   only in Python — the Supabase DB is also touched by the SQL editor and scripts.
+- Languages live in the `Language` registry, and it is the *runtime* source:
+  identity, Bible code, glossary, readiness thresholds and the live switch. The
+  `translate_*` commands read it, which is what lets an admin add a language
+  without a deploy. `library/language_seed.py` is the repo-owned seed for the
+  built-in six (identity re-asserted every deploy); a language added from the
+  admin is DB-owned and the seed never touches it.
 - Content HTML is sanitized to a tag allowlist **once on ingest**
   (`ingest.clean_fragment`); the reader trusts stored HTML. Never store
   un-sanitized HTML; never sanitize hopefully at render.

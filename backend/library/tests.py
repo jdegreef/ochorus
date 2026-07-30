@@ -8,12 +8,15 @@ from django.test import SimpleTestCase, TestCase, override_settings
 from rest_framework.test import APIClient
 
 from .ingest import clean_title
+from .language_seed import SEED_LANGUAGES
+from .languages import config as language_config
 from .translation import (
     GLOSSARY_TERMS,
-    LANGUAGES,
     Ref,
     fetch_chapter,
+    missing_glossary_terms,
     verify_bible_code,
+    verify_glossary,
 )
 from .models import (
     Author,
@@ -3355,17 +3358,17 @@ class DiscoveryQuickWinsTests(TestCase):
         self.assertEqual(res.data["queries"], [])
 
 
-class TranslationLanguageConfigTests(SimpleTestCase):
-    """Guards on LANGUAGES; see the note above the dict in translation.py."""
+class LanguageSeedTableTests(SimpleTestCase):
+    """Guards on the repo's seed table; see library/language_seed.py."""
 
     def test_every_language_is_fully_configured(self):
-        for code, cfg in LANGUAGES.items():
+        for code, cfg in SEED_LANGUAGES.items():
             with self.subTest(language=code):
                 for field in ("name", "native", "bible", "bible_label", "glossary"):
                     self.assertTrue(cfg.get(field), f"{code}: empty {field}")
 
     def test_glossaries_cover_the_shared_term_set(self):
-        for code, cfg in LANGUAGES.items():
+        for code, cfg in SEED_LANGUAGES.items():
             with self.subTest(language=code):
                 self.assertEqual(
                     set(cfg["glossary"]), set(GLOSSARY_TERMS),
@@ -3380,8 +3383,8 @@ class TranslationLanguageConfigTests(SimpleTestCase):
         # real job — so this proves the codes work for the path that uses them,
         # not for a URL the test built itself. Opt-in so CI stays hermetic:
         #   CHECK_BIBLE_CODES=1 uv run python manage.py test \
-        #     library.tests.TranslationLanguageConfigTests
-        for code, cfg in LANGUAGES.items():
+        #     library.tests.LanguageSeedTableTests
+        for code, cfg in SEED_LANGUAGES.items():
             with self.subTest(language=code, bible=cfg["bible"]):
                 data = fetch_chapter(cfg["bible"], Ref("JHN", 1))
                 self.assertTrue(
@@ -3389,10 +3392,19 @@ class TranslationLanguageConfigTests(SimpleTestCase):
                     f"{code}: {cfg['bible']} returned no verses",
                 )
 
+
+class TranslationPreflightTests(TestCase):
+    """The checks every translate_* command runs before spending money.
+
+    They read the REGISTRY now, not a dict in the tree — which is what lets a
+    language added from the admin be translated at all, and also means these
+    tests need a database.
+    """
+
     def test_verify_bible_code_raises_when_the_code_does_not_resolve(self):
-        # The preflight every translate_* command runs. Mocked so it stays
-        # hermetic — what matters is that a non-resolving code RAISES rather
-        # than letting the job proceed and quietly drop all scripture.
+        # Mocked so it stays hermetic — what matters is that a non-resolving
+        # code RAISES rather than letting the job proceed and quietly drop all
+        # scripture.
         with mock.patch("library.translation.fetch_chapter", return_value=None):
             with self.assertRaises(ValueError) as ctx:
                 verify_bible_code("pt")
@@ -3403,6 +3415,31 @@ class TranslationLanguageConfigTests(SimpleTestCase):
             "library.translation.fetch_chapter", return_value={"verses": [{"number": 1}]}
         ):
             verify_bible_code("pt")  # must not raise
+
+    def test_verify_glossary_raises_on_a_half_filled_glossary(self):
+        lang = Language.objects.get(code="pt")
+        lang.glossary = {"grace": "graça"}
+        lang.save(update_fields=["glossary"])
+        with self.assertRaises(ValueError) as ctx:
+            verify_glossary("pt")
+        self.assertIn("justification", str(ctx.exception))
+
+    def test_verify_glossary_passes_for_a_seeded_language(self):
+        verify_glossary("pt")  # must not raise
+
+    def test_an_unknown_language_is_a_clear_error_not_a_key_error(self):
+        with self.assertRaises(ValueError) as ctx:
+            language_config("xx")
+        self.assertIn("Unknown language", str(ctx.exception))
+
+    def test_the_source_language_is_not_a_translation_target(self):
+        with self.assertRaises(ValueError):
+            language_config("en")
+
+    def test_missing_glossary_terms_ignores_blank_values(self):
+        # A term present but empty is not a term — it would render as nothing in
+        # the prompt, which is the same failure as leaving it out.
+        self.assertIn("grace", missing_glossary_terms({"grace": "   "}))
 
 
 class NoSourceLanguageLeakTests(TestCase):
@@ -3849,6 +3886,9 @@ class LanguageRegistrySeedTests(TestCase):
         self.assertTrue(ar.rtl, "Arabic is right-to-left")
         self.assertFalse(ar.is_source)
         self.assertTrue(ar.bible_code, "a target language needs a Bible")
+        # The glossary rides on the row now — it is what a translate_* command
+        # reads, so a seeded language must arrive with a complete one.
+        self.assertEqual(missing_glossary_terms(ar.glossary), [])
 
     def test_seed_is_idempotent(self):
         call_command("seed_languages")
@@ -3887,6 +3927,20 @@ class LanguageRegistrySeedTests(TestCase):
         lg.refresh_from_db()
         self.assertEqual(lg.name, "Luganda")
         self.assertEqual(lg.native_name, "Luganda")
+
+    def test_a_deploy_repairs_a_repo_language_glossary(self):
+        # Identity includes the glossary, so a term corrected in the repo ships
+        # — and a row someone hand-edited in the database is put back.
+        call_command("seed_languages")
+        lg = Language.objects.get(code="lg")
+        lg.glossary = {"grace": "wrong"}
+        lg.save(update_fields=["glossary"])
+
+        call_command("seed_languages")
+
+        lg.refresh_from_db()
+        self.assertEqual(missing_glossary_terms(lg.glossary), [])
+        self.assertEqual(lg.glossary["grace"], SEED_LANGUAGES["lg"]["glossary"]["grace"])
 
 
 class LanguageEntryTests(TestCase):
@@ -4434,3 +4488,203 @@ class AdminDashboardLanguageListTests(TestCase):
             author=author, slug="b", language="en-modern", title="T", is_published=True
         )
         self.assertIn("en-modern", self._rows())
+
+
+HINDI = {
+    "code": "hi",
+    "name": "Hindi",
+    "native_name": "हिन्दी",
+    "bible_code": "hin-irv",
+    "bible_label": "Indian Revised Version",
+    "glossary": {t: f"hi-{t}" for t in GLOSSARY_TERMS},
+}
+
+
+class AdminAddLanguageTests(TestCase):
+    """"Add a language" — the endpoint that starts a new language.
+
+    The point of these tests is the thing that made the feature worth building:
+    a language created here must be *translatable*, not merely listed. So the
+    row is checked through `language_config` — the same accessor a translate_*
+    command reads — rather than only by field.
+    """
+
+    def setUp(self):
+        self.client = APIClient()
+
+    def _admin(self, verses=True, reachable=True):
+        """Admin permission plus a stubbed Bible API.
+
+        Both are stubbed because the endpoint deliberately makes a live call: a
+        wrong Bible code silently drops scripture from every translation, so it
+        is checked at creation rather than discovered during a paid job.
+        """
+        from unittest.mock import patch
+
+        perm = patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True)
+        fetch = patch(
+            "library.admin_views.content.fetch_chapter",
+            return_value={"verses": [{"number": 1, "text": "…"}]} if verses else None,
+        )
+        api = patch.object(readiness_module, "api_reachable", return_value=reachable)
+
+        class _All:
+            def __enter__(self):
+                for p in (perm, fetch, api):
+                    p.start()
+                return self
+
+            def __exit__(self, *exc):
+                for p in (api, fetch, perm):
+                    p.stop()
+                return False
+
+        return _All()
+
+    def _post(self, payload=None, **kw):
+        with self._admin(**kw):
+            return self.client.post("/api/admin/languages/", payload or HINDI, format="json")
+
+    def test_creating_a_language_makes_it_translatable(self):
+        from library import languages as languages_module
+
+        res = self._post()
+        self.assertEqual(res.status_code, 201, res.data)
+        languages_module.invalidate()
+
+        lang = Language.objects.get(code="hi")
+        self.assertEqual(lang.status, Language.Status.DRAFT, "creating is not launching")
+        self.assertFalse(lang.is_source)
+
+        # The real test: the translator can read its config off the new row.
+        cfg = language_config("hi")
+        self.assertEqual(cfg["bible"], "hin-irv")
+        self.assertEqual(set(cfg["glossary"]), set(GLOSSARY_TERMS))
+        verify_glossary("hi")  # must not raise
+
+    def test_a_new_language_is_immediately_reachable_in_the_admin(self):
+        from unittest.mock import patch
+
+        from library import languages as languages_module
+
+        self._post()
+        languages_module.invalidate()
+        with patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True):
+            rows = {r["code"] for r in self.client.get("/api/admin/stats/").data["languages"]}
+        self.assertIn("hi", rows)
+
+    def test_a_new_language_is_not_advertised_to_readers(self):
+        # Created as draft, so the build's live-locale list must not pick it up.
+        self._post()
+        res = self.client.get("/api/library/languages/")
+        self.assertNotIn("hi", [r["code"] for r in res.data])
+
+    def test_duplicate_code_is_rejected(self):
+        self.assertEqual(self._post(dict(HINDI, code="pt")).status_code, 409)
+
+    def test_a_malformed_code_is_rejected(self):
+        for bad in ("", "H", "english", "hi_IN", "../etc"):
+            with self.subTest(code=bad):
+                self.assertEqual(self._post(dict(HINDI, code=bad)).status_code, 400)
+
+    def test_the_code_is_normalised(self):
+        self.assertEqual(self._post(dict(HINDI, code=" HI ")).status_code, 201)
+        self.assertTrue(Language.objects.filter(code="hi").exists())
+
+    def test_a_partial_glossary_is_rejected(self):
+        payload = dict(HINDI, glossary={"grace": "अनुग्रह"})
+        res = self._post(payload)
+        self.assertEqual(res.status_code, 400)
+        self.assertIn("justification", res.data["detail"])
+        self.assertFalse(Language.objects.filter(code="hi").exists())
+
+    def test_an_unknown_glossary_term_is_rejected(self):
+        payload = dict(HINDI, glossary=dict(HINDI["glossary"], predestination="x"))
+        res = self._post(payload)
+        self.assertEqual(res.status_code, 400)
+        self.assertIn("predestination", res.data["detail"])
+
+    def test_names_are_required(self):
+        self.assertEqual(self._post(dict(HINDI, native_name="  ")).status_code, 400)
+        self.assertEqual(self._post(dict(HINDI, name="")).status_code, 400)
+
+    def test_a_bible_code_is_required(self):
+        self.assertEqual(self._post(dict(HINDI, bible_code="")).status_code, 400)
+
+    def test_a_bible_code_that_does_not_resolve_is_rejected(self):
+        res = self._post(verses=False)
+        self.assertEqual(res.status_code, 400)
+        self.assertIn("no verses", res.data["detail"])
+        self.assertFalse(Language.objects.filter(code="hi").exists())
+
+    def test_an_unreachable_bible_api_does_not_block_creation(self):
+        # "We couldn't ask" is not "the code is wrong" — the readiness check asks
+        # again later, and refusing here would make our egress a gate on adding
+        # a language.
+        res = self._post(verses=False, reachable=False)
+        self.assertEqual(res.status_code, 201, res.data)
+        self.assertFalse(res.data["bible_verified"])
+        self.assertIn("Could not reach", res.data["bible_note"])
+
+    def test_the_response_says_what_still_has_to_happen(self):
+        res = self._post()
+        joined = " ".join(res.data["next_steps"])
+        self.assertIn("messages/hi.json", joined, "the UI catalogue gap must be stated")
+        self.assertIn("Go live", joined)
+
+
+class AdminLanguageSettingsTests(TestCase):
+    """Editing a language's identity — and refusing to pretend for repo rows."""
+
+    def setUp(self):
+        self.client = APIClient()
+        self.helper = AdminAddLanguageTests()
+        self.helper.client = self.client
+
+    def _patch(self, code, payload, **kw):
+        with self.helper._admin(**kw):
+            return self.client.patch(
+                f"/api/admin/languages/{code}/settings/", payload, format="json"
+            )
+
+    def _create_hindi(self):
+        with self.helper._admin():
+            return self.client.post("/api/admin/languages/", HINDI, format="json")
+
+    def test_an_admin_created_language_can_be_edited(self):
+        self._create_hindi()
+        res = self._patch("hi", {"bible_label": "IRV (2019)", "rtl": False})
+        self.assertEqual(res.status_code, 200, res.data)
+        self.assertEqual(Language.objects.get(code="hi").bible_label, "IRV (2019)")
+
+    def test_a_repo_defined_language_is_refused_rather_than_silently_reverted(self):
+        res = self._patch("pt", {"name": "Portugues"})
+        self.assertEqual(res.status_code, 409)
+        self.assertIn("language_seed.py", res.data["detail"])
+        self.assertEqual(Language.objects.get(code="pt").name, "Portuguese")
+
+    def test_a_partial_glossary_cannot_be_saved_later_either(self):
+        self._create_hindi()
+        res = self._patch("hi", {"glossary": {"grace": "अनुग्रह"}})
+        self.assertEqual(res.status_code, 400)
+        self.assertEqual(
+            set(Language.objects.get(code="hi").glossary), set(GLOSSARY_TERMS)
+        )
+
+    def test_a_bible_code_change_is_verified_too(self):
+        self._create_hindi()
+        res = self._patch("hi", {"bible_code": "nope"}, verses=False)
+        self.assertEqual(res.status_code, 400)
+        self.assertEqual(Language.objects.get(code="hi").bible_code, "hin-irv")
+
+    def test_unknown_language_is_404(self):
+        self.assertEqual(self._patch("zz", {"name": "X"}).status_code, 404)
+
+    def test_the_deploy_leaves_an_admin_created_language_alone(self):
+        # The other half of the create-only rule: the seed re-asserts identity
+        # for languages IT defines. A language the admin invented isn't in the
+        # seed table, so nothing about it may be rewritten by a deploy.
+        self._create_hindi()
+        self._patch("hi", {"name": "Hindi (India)"})
+        call_command("seed_languages")
+        self.assertEqual(Language.objects.get(code="hi").name, "Hindi (India)")

@@ -24,8 +24,9 @@ from __future__ import annotations
 import anthropic
 from django.core.management.base import BaseCommand, CommandError
 
+from library.languages import config as language_config
 from library.models import Author, AuthorTranslation
-from library.translation import LANGUAGES, translate_chapter, verify_bible_code
+from library.translation import translate_chapter, verify_bible_code, verify_glossary
 
 
 class Command(BaseCommand):
@@ -33,13 +34,20 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument("slugs", nargs="*", help="Author slugs (default: all with a bio)")
-        parser.add_argument("--language", required=True, choices=sorted(LANGUAGES))
+        parser.add_argument("--language", required=True, help="Target language code (see the admin)")
         parser.add_argument("--long", action="store_true", help="Also translate the long bio_html")
         parser.add_argument("--force", action="store_true", help="Re-translate existing fields")
         parser.add_argument("--effort", default="high", choices=["low", "medium", "high", "xhigh"])
         parser.add_argument("--dry-run", action="store_true", help="Show the plan, translate nothing")
 
     def handle(self, slugs, language, long, force, effort, dry_run, **opts):
+        # The target's Bible and glossary come from the Language registry, so an
+        # unknown code is a clear error here rather than a KeyError later.
+        try:
+            cfg = language_config(language)
+        except ValueError as e:
+            raise CommandError(str(e)) from None
+
         authors = Author.objects.exclude(bio="")
         if slugs:
             authors = authors.filter(slug__in=slugs)
@@ -65,7 +73,7 @@ class Command(BaseCommand):
         ]
         self.stdout.write(
             f"{len(plan)}/{len(authors)} author(s) to translate → "
-            f"{LANGUAGES[language]['name']} (bio{' + bio_html' if long else ''}), effort={effort}"
+            f"{cfg['name']} (bio{' + bio_html' if long else ''}), effort={effort}"
         )
         if dry_run:
             for a in plan:
@@ -75,9 +83,10 @@ class Command(BaseCommand):
             return
 
         # Preflight: a bad Bible code omits scripture silently, so check
-        # BEFORE any paid model work (see verify_bible_code).
+        # BEFORE any paid model work (see verify_bible_code / verify_glossary).
         try:
             verify_bible_code(language)
+            verify_glossary(language)
         except ValueError as e:
             raise CommandError(str(e)) from e
 

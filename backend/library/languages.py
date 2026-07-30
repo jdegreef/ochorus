@@ -73,8 +73,51 @@ def entry(code: str) -> dict:
 
 
 def known_codes() -> set[str]:
-    """Codes the registry knows — the allowlist for "is this a real language?"."""
-    return set(language_map())
+    """Codes the registry knows — the allowlist for "is this a real language?".
+
+    Straight from the DB, not the display cache. The cache is per-process, so a
+    language just added from the admin would be missing from *other* workers'
+    copies until they happened to miss — and this is a gate, not a label: the
+    first thing you do after adding a language is queue work for it, and being
+    told it doesn't exist would be baffling.
+    """
+    return set(Language.objects.values_list("code", flat=True))
+
+
+def target_codes() -> list[str]:
+    """Codes a translation job can target — every known language but the source."""
+    return sorted(
+        Language.objects.filter(is_source=False).values_list("code", flat=True)
+    )
+
+
+def config(code: str) -> dict:
+    """Everything the translator needs to work in ``code``, from the registry.
+
+    Read straight from the row, not from the display cache: a translation job is
+    a long, paid operation started by hand, so one query is free, and using
+    stale glossary terms would be expensive to discover.
+
+    Raises ``ValueError`` for an unknown language or the source language — both
+    mean the caller asked for something that cannot be a translation target.
+    """
+    lang = Language.objects.filter(code=code).first()
+    if lang is None:
+        known = ", ".join(target_codes())
+        raise ValueError(
+            f"Unknown language {code!r}. Known translation targets: {known}. "
+            "Add a language from the admin (Dashboard → Languages) first."
+        )
+    if lang.is_source:
+        raise ValueError(f"{code!r} is the source language — it is not a translation target.")
+    return {
+        "code": lang.code,
+        "name": lang.name,
+        "native": lang.native_name,
+        "bible": lang.bible_code,
+        "bible_label": lang.bible_label,
+        "glossary": dict(lang.glossary or {}),
+    }
 
 
 def live_codes() -> list[str]:

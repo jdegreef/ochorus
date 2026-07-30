@@ -19,8 +19,14 @@ import re
 import anthropic
 from django.core.management.base import BaseCommand, CommandError
 
+from library.languages import config as language_config
 from library.models import Book, Chapter
-from library.translation import LANGUAGES, translate_book_meta, translate_chapter, verify_bible_code
+from library.translation import (
+    translate_book_meta,
+    translate_chapter,
+    verify_bible_code,
+    verify_glossary,
+)
 
 
 class Command(BaseCommand):
@@ -28,13 +34,20 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument("slug")
-        parser.add_argument("--language", required=True, choices=sorted(LANGUAGES))
+        parser.add_argument("--language", required=True, help="Target language code (see the admin)")
         parser.add_argument("--chapters", help="Comma-separated chapter orders (default: all)")
         parser.add_argument("--force", action="store_true", help="Re-translate existing chapters")
         parser.add_argument("--effort", default="high", choices=["low", "medium", "high", "xhigh"])
         parser.add_argument("--dry-run", action="store_true", help="Show the plan, translate nothing")
 
     def handle(self, slug, language, chapters, force, effort, dry_run, **opts):
+        # The target's Bible and glossary come from the Language registry, so an
+        # unknown code is a clear error here rather than a KeyError later.
+        try:
+            cfg = language_config(language)
+        except ValueError as e:
+            raise CommandError(str(e)) from None
+
         try:
             source = Book.objects.get(slug=slug, language="en")
         except Book.DoesNotExist:
@@ -51,7 +64,7 @@ class Command(BaseCommand):
         plan = [c for c in todo if force or c.order not in existing]
 
         self.stdout.write(
-            f"{source.title} → {LANGUAGES[language]['name']}: "
+            f"{source.title} → {cfg['name']}: "
             f"{len(plan)} chapter(s) to translate "
             f"({len(todo) - len(plan)} already done), effort={effort}"
         )
@@ -61,9 +74,10 @@ class Command(BaseCommand):
             return
 
         # Preflight: a bad Bible code omits scripture silently, so check
-        # BEFORE any paid model work (see verify_bible_code).
+        # BEFORE any paid model work (see verify_bible_code / verify_glossary).
         try:
             verify_bible_code(language)
+            verify_glossary(language)
         except ValueError as e:
             raise CommandError(str(e)) from e
 
