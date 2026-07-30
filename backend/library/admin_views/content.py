@@ -85,8 +85,18 @@ class AdminStatsView(APIView):
         }
 
     def _languages(self) -> list[dict]:
-        """Per-language content breakdown, one row per language code that has
-        any book, sermon or plan. Merged from four grouped queries."""
+        """Per-language content breakdown — every language in the REGISTRY, plus
+        any code that has content but no row.
+
+        This used to list only languages that already had a book, sermon or plan,
+        which made starting a language impossible: the Translate buttons live on
+        the per-language page, and a language with nothing in it never appeared
+        here, so there was no way to reach the page that would give it content.
+        Arabic sat fully wired — Bible, glossary, interface, RTL — and invisible.
+
+        So the registry seeds the rows and content fills them in. A language with
+        no content shows honest zeros, which is exactly the state you act on.
+        """
         rows: dict[str, dict] = {}
 
         def row(code: str) -> dict:
@@ -110,6 +120,11 @@ class AdminStatsView(APIView):
                 )
                 rows[code] = entry
             return rows[code]
+
+        # Seed from the registry first, so a language you haven't started yet is
+        # still reachable — that page is where you queue the work that fills it.
+        for lang in Language.objects.all():
+            row(lang.code)
 
         for r in (
             Book.objects.values("language", "source_type").annotate(n=Count("id"))

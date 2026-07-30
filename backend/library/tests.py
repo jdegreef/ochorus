@@ -4392,3 +4392,45 @@ class DeployCheckTests(TestCase):
                     )
                     res = self.client.get("/api/admin/languages/ar/deploy-check/")
         self.assertEqual(res.data["status"], "pending")
+
+
+class AdminDashboardLanguageListTests(TestCase):
+    """Every registry language is listed, whether or not it has content.
+
+    The chicken-and-egg this fixes: the Translate buttons live on the
+    per-language page, and the dashboard is how you reach it. Listing only
+    languages that already had content meant a language with nothing in it was
+    unreachable — so there was no way to queue the work that would give it
+    content. Arabic sat fully wired and invisible.
+    """
+
+    def setUp(self):
+        self.client = APIClient()
+
+    def _rows(self):
+        from unittest.mock import patch
+
+        with patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True):
+            return {r["code"]: r for r in self.client.get("/api/admin/stats/").data["languages"]}
+
+    def test_a_language_with_no_content_is_still_listed(self):
+        rows = self._rows()
+        self.assertIn("ar", rows, "a registry language must be reachable before it has content")
+        self.assertEqual(rows["ar"]["books"], 0)
+        self.assertEqual(rows["ar"]["sermons"], 0)
+        # And it carries its real name, not a bare code — the registry supplies it.
+        self.assertEqual(rows["ar"]["name"], "Arabic")
+
+    def test_every_registry_language_appears(self):
+        rows = self._rows()
+        for code in Language.objects.values_list("code", flat=True):
+            self.assertIn(code, rows, code)
+
+    def test_a_content_language_with_no_registry_row_still_appears(self):
+        # e.g. the "en-modern" pseudo-language: content exists under a code the
+        # registry doesn't model, and hiding it would lose it from the inventory.
+        author = Author.objects.create(slug="a", name="A")
+        Book.objects.create(
+            author=author, slug="b", language="en-modern", title="T", is_published=True
+        )
+        self.assertIn("en-modern", self._rows())
