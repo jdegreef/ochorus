@@ -150,6 +150,14 @@ import type { PageLoad } from './$types';
  * own, so the /ar books index and each /ar/books/<slug> with its chapter pages
  * render under the container's dir="auto" (see readerDirection.test.ts) and
  * re-crawl to bake the translated titles and text.
+ *
+ * Prerender refresh 2026-07-31 (queue jobs #670/#671): the FIRST UKRAINIAN
+ * BOOKS — Зодягнена в силу й гідність (Clothed with Strength and Dignity,
+ * 15 ch) and Andrew Murray's Сам Ісус (Jesus Himself, 2 ch), 17 chapters in
+ * all. Ukrainian is LTR, so no direction handling is needed; the /uk books
+ * index and each /uk/books/<slug> with its chapter pages re-crawl and bake the
+ * translations. Note uk seeds as status=draft, so these only reach readers once
+ * the language is launched from the admin.
  */
 export const load: PageLoad = async () => {
 	try {
