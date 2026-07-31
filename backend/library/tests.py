@@ -10,6 +10,7 @@ from django.db import connection
 from django.test import SimpleTestCase, TestCase, override_settings
 from rest_framework.test import APIClient
 
+from . import language_suggestions
 from .ingest import clean_title
 from .language_seed import SEED_LANGUAGES
 from .languages import config as language_config
@@ -4860,3 +4861,72 @@ class PlanThresholdTests(TestCase):
         lang.min_plans = 0
         lang.save(update_fields=["min_plans"])
         self.assertEqual(self._report(lang)["plans"].status, readiness_module.SKIPPED)
+
+
+class LanguageSuggestionTests(SimpleTestCase):
+    """The shortlist behind "Add a language".
+
+    Its value is entirely in what it rules out and how it orders — a suggestion
+    with no Bible would propose an untranslatable language, and an order that
+    ignores reach buries the languages worth doing first.
+    """
+
+    CATALOG = [
+        {"code": "cus", "name": "Chinese Union", "language_code": "zh-hans",
+         "language_name": "Chinese", "direction": "ltr", "is_public_domain": True,
+         "license": "Public Domain"},
+        {"code": "irvhin", "name": "Indian Revised Version", "language_code": "hi",
+         "language_name": "Hindi", "direction": "ltr", "is_public_domain": False,
+         "license": "CC BY 4.0"},
+        {"code": "arb-vd", "name": "Van Dyck", "language_code": "ar",
+         "language_name": "Arabic", "direction": "rtl", "is_public_domain": True,
+         "license": "Public Domain"},
+        {"code": "tischendorf", "name": "Tischendorf", "language_code": "grc",
+         "language_name": "Greek", "direction": "ltr", "is_public_domain": True,
+         "license": "Public Domain"},
+        {"code": "nostudy", "name": "Whatever", "language_code": "xx",
+         "language_name": "Unlisted", "direction": "ltr", "is_public_domain": True,
+         "license": "Public Domain"},
+    ]
+
+    def _suggest(self, **kw):
+        with mock.patch("library.language_suggestions._translations", return_value=self.CATALOG):
+            return language_suggestions.suggestions(**kw)
+
+    def test_orders_by_reach_not_licence(self):
+        # Hindi's Bible is CC-BY and Arabic's is public domain, but Hindi reaches
+        # far more people — an earlier cut sorted by licence and buried it.
+        codes = [s["code"] for s in self._suggest()]
+        self.assertEqual(codes[:3], ["zh-hans", "hi", "ar"])
+
+    def test_excludes_languages_already_added(self):
+        codes = [s["code"] for s in self._suggest(existing={"hi", "ar"})]
+        self.assertNotIn("hi", codes)
+        self.assertNotIn("ar", codes)
+
+    def test_excludes_ancient_and_liturgical_source_languages(self):
+        # Koine Greek is in the catalogue as a SOURCE text; nobody reads a
+        # devotional library in it.
+        self.assertNotIn("grc", [s["code"] for s in self._suggest()])
+
+    def test_excludes_languages_with_no_reference_entry(self):
+        # No native name and no reach figure means we cannot fill the form.
+        self.assertNotIn("xx", [s["code"] for s in self._suggest()])
+
+    def test_carries_everything_the_form_needs(self):
+        hi = next(s for s in self._suggest() if s["code"] == "hi")
+        self.assertEqual(hi["name"], "Hindi")
+        self.assertEqual(hi["native_name"], "हिन्दी")
+        self.assertEqual(hi["bible"], "irvhin")
+        self.assertTrue(hi["attribution_required"])
+        self.assertFalse(hi["rtl"])
+        self.assertTrue(next(s for s in self._suggest() if s["code"] == "ar")["rtl"])
+
+    def test_disambiguates_names_the_catalogue_gets_wrong(self):
+        zh = next(s for s in self._suggest() if s["code"] == "zh-hans")
+        self.assertEqual(zh["name"], "Chinese (Simplified)")
+
+    def test_degrades_to_empty_when_take_root_is_unreachable(self):
+        # The admin page must still load; a missing picker beats a 500.
+        with mock.patch("library.language_suggestions._translations", return_value=[]):
+            self.assertEqual(language_suggestions.suggestions(), [])
