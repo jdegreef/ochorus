@@ -187,6 +187,17 @@
 .reading mark.range-mark:hover {
 	background: color-mix(in srgb, var(--mark-hue) 42%, transparent);
 }
+/* A search hit: the same gold as the result snippet's <mark>, so arriving from
+   search feels continuous with the list you arrived from. Not clickable — it is
+   transient, unlike a highlight, and carries no note. */
+.reading mark.search-hit {
+	background: color-mix(in srgb, var(--gold) 30%, transparent);
+	color: inherit;
+	border-radius: 3px;
+	padding: 0 0.15em;
+	box-decoration-break: clone;
+	-webkit-box-decoration-break: clone;
+}
 /* A mark carrying a note gets a subtle underline cue in its own hue. */
 .reading mark.range-mark.has-note {
 	border-bottom: 2px solid var(--mark-hue);

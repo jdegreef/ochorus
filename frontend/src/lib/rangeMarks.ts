@@ -43,8 +43,14 @@ export function segmentsFromSelection(container: HTMLElement, sel: Selection): S
 	return out;
 }
 
-/** Walk text nodes and wrap [s, e) in <mark> elements. */
-function wrapRange(block: HTMLElement, s: number, e: number, mark: Mark) {
+/**
+ * Walk text nodes and wrap [s, e) in <mark> elements.
+ *
+ * `mark` is a persisted highlight when it has an id, and a transient search hit
+ * when it doesn't — the two are wrapped by the same code on purpose, so there
+ * is exactly one place in the app that edits chapter HTML.
+ */
+function wrapRange(block: HTMLElement, s: number, e: number, mark: Mark | Segment) {
 	const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
 	let pos = 0;
 	const targets: { node: Text; from: number; to: number }[] = [];
@@ -60,10 +66,13 @@ function wrapRange(block: HTMLElement, s: number, e: number, mark: Mark) {
 		const target = from > 0 ? node.splitText(from) : node;
 		if (to - from < target.data.length) target.splitText(to - from);
 		const el = document.createElement('mark');
-		el.className = 'range-mark';
-		el.dataset.markId = mark.id;
-		if (mark.color) el.dataset.color = mark.color;
-		if (mark.note) el.classList.add('has-note');
+		const persisted = 'id' in mark ? (mark as Mark) : null;
+		el.className = persisted ? 'range-mark' : 'search-hit';
+		if (persisted) {
+			el.dataset.markId = persisted.id;
+			if (persisted.color) el.dataset.color = persisted.color;
+			if (persisted.note) el.classList.add('has-note');
+		}
 		target.parentNode?.replaceChild(el, target);
 		el.appendChild(target);
 	}
@@ -77,7 +86,14 @@ function wrapRange(block: HTMLElement, s: number, e: number, mark: Mark) {
 export function renderMarks(
 	container: HTMLElement,
 	list: Mark[],
-	onMarkClick: (id: string, event: MouseEvent) => void
+	onMarkClick: (id: string, event: MouseEvent) => void,
+	/**
+	 * Transient search hits, wrapped as `mark.search-hit`. Passed through the
+	 * same render rather than applied separately: this function restores every
+	 * decorated block from `dataset.pristine` first, so a second pass would be
+	 * wiped the next time a highlight changed.
+	 */
+	hits: Segment[] = []
 ) {
 	const blocks = Array.from(container.children) as HTMLElement[];
 	// Restore pristine state everywhere we previously decorated.
@@ -86,8 +102,8 @@ export function renderMarks(
 			block.innerHTML = block.dataset.pristine;
 		}
 	}
-	const byParagraph = new Map<number, Mark[]>();
-	for (const m of list) {
+	const byParagraph = new Map<number, (Mark | Segment)[]>();
+	for (const m of [...list, ...hits]) {
 		if (m.p >= 0 && m.p < blocks.length) {
 			(byParagraph.get(m.p) ?? byParagraph.set(m.p, []).get(m.p))!.push(m);
 		}
