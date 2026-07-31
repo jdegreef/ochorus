@@ -141,6 +141,15 @@ import type { PageLoad } from './$types';
  * La oración que prevalece (Prevailing Prayer, 11 ch) ship, so the /es books
  * index and /es/books/all-of-grace and /es/books/prevailing-prayer with their
  * chapter pages re-crawl and bake the translations.
+ *
+ * Prerender refresh 2026-07-31 (queue jobs #625/#627/#628): the FIRST ARABIC
+ * BOOKS in the library — Torrey's المعمودية بالروح القدس (Baptism with the Holy
+ * Spirit, 5 ch), لابسة العزّ والبهاء (Clothed with Strength and Dignity, 15 ch)
+ * and Gareth Evans's المفتاح الذي في يدي (The Key in My Hand, 15 ch), 35
+ * chapters in all. Arabic is RTL: the chapter bodies carry no dir/lang of their
+ * own, so the /ar books index and each /ar/books/<slug> with its chapter pages
+ * render under the container's dir="auto" (see readerDirection.test.ts) and
+ * re-crawl to bake the translated titles and text.
  */
 export const load: PageLoad = async () => {
 	try {
