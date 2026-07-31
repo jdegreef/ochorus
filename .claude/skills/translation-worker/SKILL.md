@@ -255,6 +255,35 @@ pinning full per-language coverage, so a partial block fails CI.
   translations must NOT carry their own `dir`/`lang` attributes (a frontend
   test pins this), and the bio's prayer-callout `class` attributes must survive
   verbatim like anywhere else.
+- **Public-domain Bibles are on GitHub — verify against the text, don't guess.**
+  The egress policy blocks `api.takeroot.bible`, `ebible.org`, `bible.com` and
+  the rest, which makes verification look impossible. It is not:
+  `raw.githubusercontent.com` is reachable, and the ebible corpus is mirrored
+  there as USFM. For uk (Kulish 1905, ebible id `ukr1871`):
+  `https://raw.githubusercontent.com/gracious-tech/fetch_collection/master/bibles/ukr_pan/usfm/<book>.usfm`
+  — lowercase 3-letter USFM codes (`mat mrk luk jhn isa mal zec deu col 1ti`…),
+  `meta.json` carries the year and licence. Use plain `curl`: the GitHub MCP
+  tools are scoped to this repo and will refuse. Strip `\f …\f*` footnotes and
+  backslash markers from `\v` lines. One worker that found this route verified
+  **all 22** of its sermon's quotations; the workers that relied on search
+  snippets left 9 and 16 unverified in the same batch. Put the route in the
+  brief so nobody repeats the discovery — and note the same trick generalises
+  to any language whose Bible is a PD ebible text.
+- **Check BOOK NAMES against the edition too, not just verses.** The uk brief
+  guessed six and got three wrong: the Kulish text headers Matthew `Маттея`
+  (not `Матея`), Isaiah `Ісаїї` (not `Ісаї`), Malachi `Малахія` (nominative,
+  not `Малахії`). `scripture_ref` is only useful if the reader finds the
+  passage under that name in the Bible we quote, so take the `\toc2` running
+  head from the edition. Expect internal inconsistency — that same text has
+  Malachi nominative and Zechariah genitive; preserve it rather than tidying.
+- **A wrong verse is sometimes not a wording fix.** Spurgeon's conversion scene
+  hammers "Look unto me, and be ye saved" (Isa 45:22) and ends with him
+  looking — but **Kulish has no look-verb there**: it reads «Обернїтесь же до
+  мене», *turn*. You cannot quote Kulish and keep the motif. The fix was to
+  re-pivot the scene onto the verse's own verb so the preacher still hammers
+  the word the text actually uses. Budget for this: when a translation's key
+  verb differs, the surrounding narrative may need rebuilding, and that is an
+  editorial change worth flagging loudly, not a silent patch.
 - **An obscure Bible carries a verification cost — budget for it.** Choosing a
   public-domain text is right (a licensed one puts an attribution obligation on
   every verse the library renders), but the PD option is often an old, thinly
