@@ -3969,7 +3969,7 @@ class LanguageRegistrySeedTests(TestCase):
         call_command("seed_languages")
         codes = set(Language.objects.values_list("code", flat=True))
         # English (the source) plus every translation target.
-        self.assertEqual(codes, {"en", "es", "sw", "lg", "pt", "ar", "hi"})
+        self.assertEqual(codes, {"en", "es", "sw", "lg", "pt", "ar", "hi", "uk"})
 
         en = Language.objects.get(code="en")
         self.assertTrue(en.is_source)

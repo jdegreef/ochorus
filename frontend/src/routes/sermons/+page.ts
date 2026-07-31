@@ -70,6 +70,14 @@ import type { PageLoad } from './$types';
  * no dir/lang of their own, so /ar/sermons and each /ar/sermons/<slug> render
  * under the container's dir="auto" (see readerDirection.test.ts) and re-crawl
  * to bake the translated titles.
+ *
+ * Prerender refresh 2026-07-31 (queue jobs #672/#673/#674/#675): the FIRST
+ * UKRAINIAN SERMONS — Spurgeon's Незмінність Бога, Moody's Безмежне милосердя
+ * Христа and Христос — усе й у всьому, and A. B. Simpson's Він Сам. Ukrainian
+ * is LTR, so no direction handling is needed; /uk/sermons and each
+ * /uk/sermons/<slug> re-crawl and bake the translated titles. Note uk seeds as
+ * status=draft, so these only matter once the language is launched from the
+ * admin.
  */
 export const load: PageLoad = async () => {
 	// Tolerate a lagging/absent sermon endpoint at prerender time (see the

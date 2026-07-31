@@ -131,6 +131,47 @@ SEED_LANGUAGES: dict[str, dict] = {
             "surrender": "التسليم",
         },
     },
+    "uk": {
+        "name": "Ukrainian",
+        "native": "Українська",
+        # Kulish (1905) — the first complete Ukrainian Bible, and the only
+        # complete PUBLIC-DOMAIN Ukrainian text Take Root carries. The two
+        # alternatives both fail us: the Відкритий Новий Переклад is NT +
+        # Psalms only, so it cannot answer an arbitrary reference, and Ohienko
+        # — the text most Ukrainian churches actually read — is licensed.
+        #
+        # The tradeoff: Kulish predates the 1928 orthography, so it reads
+        # markedly archaic (сьвіт for світ, postposed ся, "глаголав"). That is
+        # a fair match for the 19th-century authors this library carries —
+        # Spurgeon and Moody quoting a contemporaneous Bible — but it will read
+        # old to a Ukrainian reader in a way Van Dyck does not to an Arabic one.
+        # Revisit if we ever take on a licensed text.
+        #
+        # NOTE: John 15 renders correctly under this code in the Take Root
+        # reader. Verify end-to-end before the first job with
+        #   CHECK_BIBLE_CODES=1 uv run python manage.py test \
+        #     library.tests.LanguageSeedTableTests
+        # from a network that can reach api.takeroot.bible.
+        "bible": "ukr-kul",
+        "bible_label": "Kulish (1905)",
+        # Prose vocabulary is modern standard Ukrainian; scripture quotations
+        # follow Kulish. The two diverge most at "abide" — Kulish's John 15
+        # reads пробувайте в мені, where modern usage is перебувати. Prose uses
+        # the modern form; quoted verses keep Kulish's wording.
+        "glossary": {
+            "justification": "виправдання",
+            "sanctification": "освячення",
+            "atonement": "спокута",
+            "grace": "благодать",
+            "the flesh": "тіло",
+            "abide": "перебувати",
+            "the Holy Spirit": "Святий Дух",
+            "the Lord": "Господь",
+            "godliness": "побожність",
+            "intercession": "заступництво",
+            "surrender": "віддання себе / повна віддача",
+        },
+    },
     "hi": {
         "name": "Hindi",
         "native": "हिन्दी",

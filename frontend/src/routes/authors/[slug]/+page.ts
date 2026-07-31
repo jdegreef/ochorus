@@ -152,6 +152,14 @@ export const entries: EntryGenerator = async () => {
 // two, and the Wesley bio carries the cross-link to Susanna Wesley, so both the
 // aside classes and that anchor's href/rel are copied byte-for-byte. Each
 // /ar/authors/<slug> re-crawls and bakes the translated bio.
+//
+// Prerender refresh 2026-07-31 (queue jobs #663/#664/#665/#667): the FIRST
+// UKRAINIAN CONTENT in the library — four long-form bios (Spurgeon, Andrew
+// Murray, Moody, Jonathan Edwards), each translated tag-for-tag from the
+// English bio_html with its prayer callouts intact. Ukrainian is LTR, so no
+// direction handling is needed; each /uk/authors/<slug> re-crawls and bakes
+// the translated bio. Note uk seeds as status=draft, so these pages only
+// matter once the language is launched from the admin.
 export const load: PageLoad = async ({ params }) => {
 	const author = await orNotFound(() => getAuthor(params.slug, getLang()));
 	// A mid-deploy API (before the sermon fields ship) may omit these; default
