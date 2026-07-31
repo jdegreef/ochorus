@@ -16,7 +16,8 @@
 	import {
 		createAdminLanguage,
 		getAdminLanguageForm,
-		type CreateLanguageResult
+		type CreateLanguageResult,
+		type LanguageSuggestion
 	} from '$lib/library-admin';
 	import { buildGlossaryPrompt, parseGlossaryReply } from '$lib/glossaryDraft';
 
@@ -25,6 +26,8 @@
 	let open = $state(false);
 	let terms = $state<string[]>([]);
 	let existing = $state<string[]>([]);
+	let suggested = $state<LanguageSuggestion[]>([]);
+	let showAll = $state(false);
 	let loadError = $state('');
 
 	let code = $state('');
@@ -84,6 +87,18 @@
 		pasteNote = bits.join(' ');
 	}
 
+	/** Fill the form from a suggestion. The glossary is still the admin's job —
+	    it is the one part no catalogue can supply. */
+	function pick(s: LanguageSuggestion) {
+		code = s.code;
+		name = s.name;
+		nativeName = s.native_name;
+		bibleCode = s.bible;
+		bibleLabel = s.bible_label;
+		rtl = s.rtl;
+	}
+
+	const shown = $derived(showAll ? suggested : suggested.slice(0, 8));
 	const normalized = $derived(code.trim().toLowerCase());
 	const taken = $derived(normalized !== '' && existing.includes(normalized));
 	const missing = $derived(terms.filter((t) => !(glossary[t] ?? '').trim()));
@@ -104,6 +119,7 @@
 			const form = await getAdminLanguageForm();
 			terms = form.glossary_terms;
 			existing = form.existing;
+			suggested = form.suggestions ?? [];
 		} catch (e) {
 			loadError = e instanceof Error ? e.message : String(e);
 		}
@@ -192,6 +208,53 @@
 					Creates a draft. Nothing is shown to readers until its checks pass and you
 					press Go live on the language's page.
 				</p>
+
+				{#if suggested.length}
+					<div class="rounded-lg border border-border bg-surface-2 p-3">
+						<p class="text-small text-muted">
+							<span class="font-medium text-text">Suggested next</span> — most spoken
+							first, and only languages Take Root has a Bible for. Picking one fills
+							everything below except the glossary.
+						</p>
+						<ul class="mt-2.5 grid gap-1.5 sm:grid-cols-2">
+							{#each shown as s (s.code)}
+								<li>
+									<button
+										type="button"
+										class="w-full rounded-lg border border-border bg-bg px-2.5 py-2 text-left hover:border-accent"
+										class:border-accent={normalized === s.code}
+										onclick={() => pick(s)}
+									>
+										<span class="flex items-baseline justify-between gap-2">
+											<span class="text-body text-text">{s.name}</span>
+											<span class="shrink-0 text-[0.72rem] text-muted tabular-nums">
+												{s.speakers_millions}M
+											</span>
+										</span>
+										<span class="mt-0.5 flex items-baseline justify-between gap-2 text-[0.72rem] text-muted">
+											<span dir="auto">{s.native_name}</span>
+											<span class="shrink-0">
+												{s.bible_label}{#if s.attribution_required}
+													<span title="CC-BY — wants an attribution line">
+														· attribution</span
+													>{/if}
+											</span>
+										</span>
+									</button>
+								</li>
+							{/each}
+						</ul>
+						{#if suggested.length > shown.length || showAll}
+							<button
+								type="button"
+								class="mt-2 text-small text-accent hover:underline"
+								onclick={() => (showAll = !showAll)}
+							>
+								{showAll ? 'Show fewer' : `Show all ${suggested.length}`}
+							</button>
+						{/if}
+					</div>
+				{/if}
 
 				<div class="flex flex-wrap gap-4">
 					<label class="text-small">

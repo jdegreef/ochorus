@@ -750,13 +750,17 @@ class Language(models.Model):
     # beachhead language, and that judgement belongs to whoever is launching it.
     # 0 disables a check.
     min_books = models.PositiveIntegerField(default=5)
+    # Stays 0 deliberately. A first launch stands on books and biographies; a
+    # language with those and no sermons is still a good place to read, so
+    # requiring them would block a launch on a format that isn't load-bearing.
     min_sermons = models.PositiveIntegerField(default=0)
     min_bios = models.PositiveIntegerField(default=3)
-    # Defaults to 0, unlike books and bios: no non-English language has ever had
-    # a published reading plan, so requiring one to launch would block every
-    # language on a format that has never been part of a launch. Raise it per
-    # language when translated plans become part of the bar.
-    min_plans = models.PositiveIntegerField(default=0)
+    # One translated plan. This defaulted to 0 on the stated grounds that "no
+    # non-English language has ever had a published reading plan" — which was
+    # simply wrong, read off a database that had not had `seed_plans` run.
+    # Every live language has translated plans (lg 5, sw 3, es 2, pt 1), so the
+    # premise for exempting them never held.
+    min_plans = models.PositiveIntegerField(default=1)
     # Topic prose has no English fallback, so an untranslated shelf is hidden
     # rather than English — requiring all of them keeps the shelf page whole.
     require_all_topics = models.BooleanField(default=True)

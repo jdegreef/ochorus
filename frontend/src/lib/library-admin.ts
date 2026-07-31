@@ -261,8 +261,27 @@ export interface CreateLanguageResult {
 }
 
 /** What the add-language form needs: the glossary contract and taken codes. */
+/** A language worth adding next: everything the form needs, pre-filled. */
+export interface LanguageSuggestion {
+	code: string;
+	name: string;
+	native_name: string;
+	rtl: boolean;
+	bible: string;
+	bible_label: string;
+	public_domain: boolean;
+	licence: string;
+	attribution_required: boolean;
+	speakers_millions: number;
+}
+
 export const getAdminLanguageForm = () =>
-	apiFetch<{ glossary_terms: string[]; existing: string[] }>('/api/admin/languages/');
+	apiFetch<{
+		glossary_terms: string[];
+		existing: string[];
+		/** Best-effort — empty if Take Root's catalogue is unreachable. */
+		suggestions: LanguageSuggestion[];
+	}>('/api/admin/languages/');
 
 export const createAdminLanguage = (payload: NewLanguage) =>
 	apiFetch<CreateLanguageResult>('/api/admin/languages/', {

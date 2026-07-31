@@ -10,6 +10,7 @@ from django.db import connection
 from django.test import SimpleTestCase, TestCase, override_settings
 from rest_framework.test import APIClient
 
+from . import language_suggestions
 from .ingest import clean_title
 from .language_seed import SEED_LANGUAGES
 from .languages import config as language_config
@@ -4226,9 +4227,19 @@ class AdminLanguageReadinessEndpointTests(TestCase):
             before = self.client.get("/api/admin/languages/ar/readiness/").data
             self.assertIn("books", before["blocking"])
 
+            # Every countable bar, not just the ones that happen to block today:
+            # the point is that lowering the bar clears blockers, and pinning
+            # that to the current defaults makes the test fail whenever a
+            # default changes for unrelated reasons (min_plans just did).
             res = self.client.patch(
                 "/api/admin/languages/ar/thresholds/",
-                {"min_books": 0, "min_bios": 0, "require_all_topics": False},
+                {
+                    "min_books": 0,
+                    "min_bios": 0,
+                    "min_plans": 0,
+                    "min_sermons": 0,
+                    "require_all_topics": False,
+                },
                 format="json",
             )
             self.assertEqual(res.status_code, 200)
@@ -4783,3 +4794,139 @@ class UiCatalogueCheckTests(TestCase):
         for code in ("en", "ar", "es", "sw", "lg", "pt"):
             self.assertIn(code, data["locales"], code)
             self.assertIn("present", data["locales"][code])
+
+
+class PlanThresholdTests(TestCase):
+    """The reading-plan bar — the one threshold whose default was wrong.
+
+    `min_plans` shipped at 0 because of a claim that no non-English language had
+    a published plan. It came from a database with `seed_plans` unrun; every live
+    language has them. These pin both halves of the correction: what a new
+    language inherits, and what the check does with it.
+    """
+
+    def _report(self, lang):
+        # Bible stubbed for the same reason as ReadinessReportTests — a real call
+        # makes the verdict depend on whether the sandbox has network.
+        with mock.patch.object(
+            readiness_module,
+            "_bible_check",
+            return_value=readiness_module.Check(
+                "bible", "Bible", readiness_module.PASS, "stubbed"
+            ),
+        ):
+            return {c.key: c for c in readiness_module.report(lang).checks}
+
+    def test_a_new_language_must_have_a_translated_plan(self):
+        # The model default, which is what a language created from the admin gets.
+        fresh = Language.objects.create(code="hi", name="Hindi", native_name="हिन्दी")
+        self.assertEqual(fresh.min_plans, 1)
+
+    def test_the_migration_left_launched_languages_alone(self):
+        # A live language's bar is a record of what it cleared, not a decision
+        # still open, so the correction deliberately skipped those rows.
+        for code in ("es", "sw", "lg", "pt"):
+            self.assertEqual(Language.objects.get(code=code).min_plans, 0, code)
+
+    def test_the_migration_raised_the_unlaunched_one(self):
+        self.assertEqual(Language.objects.get(code="ar").min_plans, 1)
+
+    def test_no_plan_fails_the_check(self):
+        lang = Language.objects.get(code="es")
+        lang.min_plans = 1
+        lang.save(update_fields=["min_plans"])
+        check = self._report(lang)["plans"]
+        self.assertEqual(check.status, readiness_module.FAIL)
+        self.assertEqual((check.current, check.required), (0, 1))
+
+    def test_a_published_plan_clears_it(self):
+        lang = Language.objects.get(code="es")
+        lang.min_plans = 1
+        lang.save(update_fields=["min_plans"])
+        Plan.objects.create(
+            slug="p", language="es", title="Un plan", is_published=True
+        )
+        self.assertEqual(self._report(lang)["plans"].status, readiness_module.PASS)
+
+    def test_an_unpublished_plan_does_not_count(self):
+        # Readiness asks what a reader can reach, not what exists in a table.
+        lang = Language.objects.get(code="es")
+        lang.min_plans = 1
+        lang.save(update_fields=["min_plans"])
+        Plan.objects.create(slug="p", language="es", title="Un plan", is_published=False)
+        self.assertEqual(self._report(lang)["plans"].status, readiness_module.FAIL)
+
+    def test_zero_still_disables_the_check(self):
+        lang = Language.objects.get(code="es")
+        lang.min_plans = 0
+        lang.save(update_fields=["min_plans"])
+        self.assertEqual(self._report(lang)["plans"].status, readiness_module.SKIPPED)
+
+
+class LanguageSuggestionTests(SimpleTestCase):
+    """The shortlist behind "Add a language".
+
+    Its value is entirely in what it rules out and how it orders — a suggestion
+    with no Bible would propose an untranslatable language, and an order that
+    ignores reach buries the languages worth doing first.
+    """
+
+    CATALOG = [
+        {"code": "cus", "name": "Chinese Union", "language_code": "zh-hans",
+         "language_name": "Chinese", "direction": "ltr", "is_public_domain": True,
+         "license": "Public Domain"},
+        {"code": "irvhin", "name": "Indian Revised Version", "language_code": "hi",
+         "language_name": "Hindi", "direction": "ltr", "is_public_domain": False,
+         "license": "CC BY 4.0"},
+        {"code": "arb-vd", "name": "Van Dyck", "language_code": "ar",
+         "language_name": "Arabic", "direction": "rtl", "is_public_domain": True,
+         "license": "Public Domain"},
+        {"code": "tischendorf", "name": "Tischendorf", "language_code": "grc",
+         "language_name": "Greek", "direction": "ltr", "is_public_domain": True,
+         "license": "Public Domain"},
+        {"code": "nostudy", "name": "Whatever", "language_code": "xx",
+         "language_name": "Unlisted", "direction": "ltr", "is_public_domain": True,
+         "license": "Public Domain"},
+    ]
+
+    def _suggest(self, **kw):
+        with mock.patch("library.language_suggestions._translations", return_value=self.CATALOG):
+            return language_suggestions.suggestions(**kw)
+
+    def test_orders_by_reach_not_licence(self):
+        # Hindi's Bible is CC-BY and Arabic's is public domain, but Hindi reaches
+        # far more people — an earlier cut sorted by licence and buried it.
+        codes = [s["code"] for s in self._suggest()]
+        self.assertEqual(codes[:3], ["zh-hans", "hi", "ar"])
+
+    def test_excludes_languages_already_added(self):
+        codes = [s["code"] for s in self._suggest(existing={"hi", "ar"})]
+        self.assertNotIn("hi", codes)
+        self.assertNotIn("ar", codes)
+
+    def test_excludes_ancient_and_liturgical_source_languages(self):
+        # Koine Greek is in the catalogue as a SOURCE text; nobody reads a
+        # devotional library in it.
+        self.assertNotIn("grc", [s["code"] for s in self._suggest()])
+
+    def test_excludes_languages_with_no_reference_entry(self):
+        # No native name and no reach figure means we cannot fill the form.
+        self.assertNotIn("xx", [s["code"] for s in self._suggest()])
+
+    def test_carries_everything_the_form_needs(self):
+        hi = next(s for s in self._suggest() if s["code"] == "hi")
+        self.assertEqual(hi["name"], "Hindi")
+        self.assertEqual(hi["native_name"], "हिन्दी")
+        self.assertEqual(hi["bible"], "irvhin")
+        self.assertTrue(hi["attribution_required"])
+        self.assertFalse(hi["rtl"])
+        self.assertTrue(next(s for s in self._suggest() if s["code"] == "ar")["rtl"])
+
+    def test_disambiguates_names_the_catalogue_gets_wrong(self):
+        zh = next(s for s in self._suggest() if s["code"] == "zh-hans")
+        self.assertEqual(zh["name"], "Chinese (Simplified)")
+
+    def test_degrades_to_empty_when_take_root_is_unreachable(self):
+        # The admin page must still load; a missing picker beats a 500.
+        with mock.patch("library.language_suggestions._translations", return_value=[]):
+            self.assertEqual(language_suggestions.suggestions(), [])

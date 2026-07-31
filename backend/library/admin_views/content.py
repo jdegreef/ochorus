@@ -13,6 +13,7 @@ from accounts.permissions import IsAdminEmail
 
 from .. import golive, readiness
 from ..language_seed import SEED_LANGUAGES
+from ..language_suggestions import suggestions
 from ..models import (
     Author,
     AuthorTranslation,
@@ -822,13 +823,21 @@ class AdminLanguageCreateView(APIView):
     permission_classes = [IsAdminEmail]
 
     def get(self, request):
-        """What the form needs to render: the glossary it must fill, and the
-        codes already taken. Served rather than hardcoded in the frontend so the
-        two can't drift — the term list is the backend's contract."""
+        """What the form needs to render: the glossary it must fill, the codes
+        already taken, and a ranked shortlist of what to add next. Served rather
+        than hardcoded in the frontend so the two can't drift — the term list is
+        the backend's contract.
+
+        Suggestions are best-effort: they come from Take Root's live Bible
+        catalogue, so if that call fails the list is empty and the form still
+        works by hand. A picker that is occasionally empty is a far smaller
+        problem than an admin page that will not load."""
+        existing = sorted(Language.objects.values_list("code", flat=True))
         return Response(
             {
                 "glossary_terms": list(GLOSSARY_TERMS),
-                "existing": sorted(Language.objects.values_list("code", flat=True)),
+                "existing": existing,
+                "suggestions": suggestions(existing=set(existing)),
             }
         )
 
