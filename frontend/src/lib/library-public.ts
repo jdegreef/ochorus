@@ -108,6 +108,9 @@ export interface ChapterHit {
 	author_name: string;
 	chapter_order: number;
 	chapter_title: string;
+	/** The book's cover, so a passage carries the same visual anchor as its book. */
+	cover_url: string;
+	cover_color: string;
 	snippet: string;
 	/** Publish date (YYYY-MM-DD) for the "newest" sort; "" if unknown. */
 	date: string;
@@ -128,6 +131,8 @@ export interface AuthorHit {
 	type: 'author';
 	author_slug: string;
 	author_name: string;
+	/** May be "" — the row reads fine without one, so no placeholder is drawn. */
+	photo_url: string;
 	snippet: string;
 	/** Publish date (YYYY-MM-DD) for the "newest" sort; "" if unknown. */
 	date: string;
@@ -138,6 +143,9 @@ export interface BookHit {
 	book_slug: string;
 	book_title: string;
 	author_name: string;
+	cover_url: string;
+	/** Dominant cover colour, filling the reserved box before/instead of the image. */
+	cover_color: string;
 	snippet: string;
 	/** Publish date (YYYY-MM-DD) for the "newest" sort; "" if unknown. */
 	date: string;
