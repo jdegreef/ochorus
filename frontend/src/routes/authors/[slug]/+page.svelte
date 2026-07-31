@@ -263,6 +263,13 @@
 			{/if}
 		</div>
 		<div class="ms-auto flex shrink-0 items-center gap-2">
+			<!-- Search this author's works. A reader who has read one Murray book
+			     and half-remembers a phrase from another is on this page, and
+			     until now their only option was the whole library. -->
+			<a
+				href={localizeHref(`/search?in=author:${author.slug}`)}
+				class="btn btn-ghost shrink-0 !px-2.5 !py-1">{t('search.inAuthor')}</a
+			>
 			<FavoriteButton kind="author" slug={author.slug} showLabel />
 			{#if listen.supported && author.bio_html}
 				<button

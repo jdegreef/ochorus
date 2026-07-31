@@ -34,6 +34,8 @@ from .models import (
     Plan,
     Sermon,
     Topic,
+    TopicBook,
+    TopicSermon,
     TopicTranslation,
 )
 from .scripture import reference_verse_ids
@@ -89,12 +91,92 @@ def fallback_snippet(text: str, query: str, radius: int = 90) -> str:
     return f"{prefix}{excerpt}{suffix}"
 
 
-def _base_querysets(language: str) -> dict:
+#: The places a search can be narrowed to. Each names a shelf the reader is
+#: already standing in — an author, a topic, or the book open in front of them.
+SCOPES = ("author", "topic", "book")
+
+
+def parse_scope(raw: str) -> tuple[str, str] | None:
+    """``"author:andrew-murray"`` → ``("author", "andrew-murray")``.
+
+    Returns None for anything malformed, which searches the whole library. A
+    scope naming a place that doesn't EXIST is a different matter and is left to
+    the filters: they find nothing, which is the honest answer.
+    """
+    kind, _, slug = (raw or "").strip().lower().partition(":")
+    if kind in SCOPES and slug:
+        return kind, slug
+    return None
+
+
+def scope_entry(scope: tuple[str, str], language: str) -> dict | None:
+    """The scope as the reader sees it — ``{kind, slug, label}`` — or None.
+
+    Resolved here so the page can name the shelf it is searching without a second
+    request, and so a scope naming something that doesn't exist *in this
+    language* comes back as None rather than as a chip labelling a place the
+    reader can't reach. (There is no English fallback: a topic with no title in
+    Swahili is not a Swahili shelf.)
+    """
+    kind, slug = scope
+    if kind == "author":
+        label = Author.objects.filter(slug=slug).values_list("name", flat=True).first()
+    elif kind == "topic":
+        topic = Topic.objects.filter(slug=slug, is_published=True).first()
+        label = topic.title_for(language) if topic else None
+    else:
+        label = (
+            Book.objects.filter(slug=slug, language=language, is_published=True)
+            .values_list("title", flat=True)
+            .first()
+        )
+    return {"kind": kind, "slug": slug, "label": label} if label else None
+
+
+def _scoped(qs: dict, scope: tuple[str, str]) -> dict:
+    """Narrow every type to what lives inside one author / topic / book.
+
+    Only the things that can be *inside* a place take part: works and their
+    passages. Authors, topics and plans are ways in to a scope rather than
+    contents of one — searching within Andrew Murray and being shown Andrew
+    Murray is noise — so they match nothing and their chips simply don't appear.
+    Same for the scoped book itself: you are already in it.
+    """
+    kind, slug = scope
+    empty = {k: v.none() for k, v in qs.items()}
+    if kind == "author":
+        return {
+            **empty,
+            "book": qs["book"].filter(author__slug=slug),
+            "chapter": qs["chapter"].filter(book__author__slug=slug),
+            "sermon": qs["sermon"].filter(author__slug=slug),
+        }
+    if kind == "topic":
+        # Topic membership is by slug (see TopicBook) so it holds across
+        # languages — the scope means the same shelf whatever you're reading in.
+        books = TopicBook.objects.filter(topic__slug=slug).values("book_slug")
+        sermons = TopicSermon.objects.filter(topic__slug=slug).values("sermon_slug")
+        return {
+            **empty,
+            "book": qs["book"].filter(slug__in=books),
+            "chapter": qs["chapter"].filter(book__slug__in=books),
+            "sermon": qs["sermon"].filter(slug__in=sermons),
+        }
+    if kind == "book":
+        return {**empty, "chapter": qs["chapter"].filter(book__slug=slug)}
+    # A kind in SCOPES with no branch here would otherwise fall through to
+    # whichever narrowing happened to be last — searching nothing is the safe
+    # failure, and parse_scope already rejects kinds this doesn't know.
+    return empty
+
+
+def _base_querysets(language: str, scope: tuple[str, str] | None = None) -> dict:
     """What is eligible to match, per type, in one place.
 
     Extracted because three things need it now — the merged search, the per-type
     counts and the per-type pages — and a count computed from a different filter
-    than the results is worse than no count at all.
+    than the results is worse than no count at all. ``scope`` narrows all three
+    together for the same reason.
     """
     chapters = Chapter.objects.filter(
         book__is_published=True, book__language=language
@@ -129,7 +211,7 @@ def _base_querysets(language: str) -> dict:
         .distinct()
         .prefetch_related("translations")
     )
-    return {
+    out = {
         "author": authors,
         "book": books,
         "topic": topics,
@@ -137,15 +219,17 @@ def _base_querysets(language: str) -> dict:
         "chapter": chapters,
         "sermon": sermons,
     }
+    return _scoped(out, scope) if scope else out
 
 
-def search_library(q: str, language: str) -> list[dict]:
+def search_library(q: str, language: str, scope=None) -> list[dict]:
     """Ranked search hits for ``q`` in ``language``.
 
     Entities (books, authors, topics, plans) plus passages (chapters, sermons),
-    merged and capped at ``MAX_RESULTS``.
+    merged and capped at ``MAX_RESULTS``. ``scope`` narrows the search to one
+    author / topic / book — see ``_scoped``.
     """
-    qs = _base_querysets(language)
+    qs = _base_querysets(language, scope)
     authors, books, topics = qs["author"], qs["book"], qs["topic"]
     plans, chapters, sermons = qs["plan"], qs["chapter"], qs["sermon"]
 
@@ -161,7 +245,7 @@ def search_library(q: str, language: str) -> list[dict]:
     # verse-id spans). Matched by verse id, so it works where plain text
     # search can't (abbreviations, chapter-only, a verse inside a range).
     extra = _scripture_sermon_hits(q, sermons, base)
-    cite_hits = _scripture_chapter_hits(q, language)
+    cite_hits = _scripture_chapter_hits(q, chapters)
     if cite_hits:
         # A chapter found by BOTH citation and plain text keeps its citation
         # hit (ranked by specificity, snippet centred on the reference) and
@@ -450,7 +534,7 @@ _ORDER = {
 SORTS = ("relevance", "title", "newest")
 
 
-def count_by_type(q: str, language: str) -> tuple[dict, dict]:
+def count_by_type(q: str, language: str, scope=None) -> tuple[dict, dict]:
     """(counts, capped) per type — how many matches actually exist.
 
     Counting stops at ``COUNT_CEILING`` and ``capped[kind]`` says when it did, so
@@ -461,7 +545,7 @@ def count_by_type(q: str, language: str) -> tuple[dict, dict]:
     ctx = _Ctx(q=q, language=language)
     counts: dict[str, int] = {}
     capped: dict[str, bool] = {}
-    for kind, qs in _base_querysets(language).items():
+    for kind, qs in _base_querysets(language, scope).items():
         n = _match(kind, ctx, qs).values("pk")[:COUNT_CEILING].count()
         if n:
             counts[kind] = n
@@ -490,6 +574,7 @@ def page_by_type(
     offset: int = 0,
     limit: int = PAGE_SIZE,
     sort: str = "relevance",
+    scope=None,
 ) -> list[dict]:
     """One type's matches, ordered and paged — the "show more" path.
 
@@ -501,7 +586,7 @@ def page_by_type(
     if kind not in CAPS:
         return []
     ctx = _Ctx(q=q, language=language)
-    qs = _match(kind, ctx, _base_querysets(language)[kind])
+    qs = _match(kind, ctx, _base_querysets(language, scope)[kind])
 
     if sort in ("title", "newest"):
         qs = qs.order_by(*_ORDER[kind][sort])
@@ -644,8 +729,13 @@ def _scripture_sermon_hits(q, sermons, base):
     return hits
 
 
-def _scripture_chapter_hits(q, language):
+def _scripture_chapter_hits(q, chapters):
     """Chapters whose body cites a reference overlapping the query's verses.
+
+    Takes the eligible ``chapters`` queryset rather than re-deriving it, so the
+    citation lead is published/language-filtered and SCOPED exactly like every
+    other kind of hit — searching inside one book must not surface a citation
+    from another.
 
     The verse-id range filter is only a PREFILTER: a multi-reference query
     ("John 3:16 and Romans 8:28") spans two books, and everything cited in
@@ -666,8 +756,7 @@ def _scripture_chapter_hits(q, language):
     rows = ChapterCitation.objects.filter(
         start_verse_id__lte=max(target),
         end_verse_id__gte=min(target),
-        chapter__book__is_published=True,
-        chapter__book__language=language,
+        chapter__in=chapters.values("pk"),
     ).values("chapter_id", "start_verse_id", "end_verse_id", "count", "ref_text")
     matches = [
         r

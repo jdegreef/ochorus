@@ -9,7 +9,7 @@ from rest_framework.views import APIView
 
 from accounts.permissions import IsAdminEmail
 
-from ..models import Book, Chapter
+from ..models import Book, Chapter, SearchClickLog
 from ..views import _language_entry
 
 
@@ -402,6 +402,32 @@ class AdminSearchView(APIView):
             if per_language[r["language"]]
         ]
 
+        # Queries that FOUND things and were never opened — the silent failure.
+        # A query returning forty near-misses is indistinguishable from a good
+        # one in every count above; both are "found something". Only the click
+        # log separates them, and the gap is often the better content signal,
+        # because nobody complains about a search that returned results.
+        #
+        # Two grouped queries and a dict lookup: the logs share no key but the
+        # query text, on purpose (see SearchClickLog), so they are joined here
+        # rather than in SQL.
+        clicked = {
+            r["q"]: r["n"]
+            for r in SearchClickLog.objects.filter(
+                created_at__gte=now - timedelta(days=30)
+            )
+            .annotate(q=Lower("query"))
+            .values("q")
+            .annotate(n=Count("id"))
+        }
+        unopened = [
+            {**row, "clicks": clicked.get(row["query"], 0)}
+            for row in top(window.filter(result_count__gt=0))
+        ]
+        unopened = sorted(
+            (r for r in unopened if not r["clicks"]), key=lambda r: -r["count"]
+        )[:10]
+
         return Response(
             {
                 "overview": {
@@ -409,7 +435,12 @@ class AdminSearchView(APIView):
                         window.filter(created_at__gte=now - timedelta(days=7))
                     ),
                     "30d": overview(window),
+                    # Whether search is answering at all, in one number. Rows,
+                    # not readers — the logs are anonymous — so read it as a
+                    # trend, not as "x% of people".
+                    "clicks_30d": sum(clicked.values()),
                 },
+                "unopened_queries": unopened,
                 "top_queries": top(window.filter(result_count__gt=0)),
                 "zero_result_queries": top(window.filter(result_count=0)),
                 "unanswered_by_language": unanswered,

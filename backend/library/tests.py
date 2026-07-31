@@ -31,6 +31,7 @@ from .models import (
     Chapter,
     Plan,
     PlanDay,
+    SearchClickLog,
     SearchQueryLog,
     Sermon,
     Topic,
@@ -3223,10 +3224,11 @@ class CitationIndexTests(TestCase):
         )
         call_command("index_citations")
 
-        from .search import _scripture_chapter_hits
+        from .search import _base_querysets, _scripture_chapter_hits
 
-        self.assertEqual(_scripture_chapter_hits("Matthew", "en"), [])
-        self.assertEqual(len(_scripture_chapter_hits("Matthew 5:3", "en")), 1)
+        eligible = _base_querysets("en")["chapter"]
+        self.assertEqual(_scripture_chapter_hits("Matthew", eligible), [])
+        self.assertEqual(len(_scripture_chapter_hits("Matthew 5:3", eligible)), 1)
 
 
 class LocalizedAuthorBioTests(TestCase):
@@ -5161,3 +5163,220 @@ class SearchTotalsAndPagingTests(TestCase):
     def test_a_junk_offset_does_not_500(self):
         res = self.client.get("/api/library/search/?q=prayer&type=chapter&offset=abc")
         self.assertEqual(res.status_code, 200)
+
+
+class SearchScopeTests(TestCase):
+    """Searching inside one author, topic or book.
+
+    A scope is a *place in the library*. The contract worth pinning is that it
+    narrows everything together — the list, the counts and the "show more"
+    pages — because a count computed against a wider filter than the results is
+    worse than no count at all.
+    """
+
+    def setUp(self):
+        self.client = APIClient()
+        murray = Author.objects.create(slug="andrew-murray", name="Andrew Murray")
+        spurgeon = Author.objects.create(slug="spurgeon", name="C. H. Spurgeon")
+
+        self.humility = Book.objects.create(
+            author=murray, slug="humility", language="en", title="Humility"
+        )
+        Chapter.objects.create(
+            book=self.humility, order=1, title="Dependence",
+            body_html="<p>Humility is the place of entire dependence on God.</p>",
+        )
+        abide = Book.objects.create(
+            author=murray, slug="abide", language="en", title="Abide in Christ"
+        )
+        Chapter.objects.create(
+            book=abide, order=1, title="The Vine",
+            body_html="<p>Humility is the root of abiding.</p>",
+        )
+        grace = Book.objects.create(
+            author=spurgeon, slug="all-of-grace", language="en", title="All of Grace"
+        )
+        Chapter.objects.create(
+            book=grace, order=1, title="To You",
+            body_html="<p>Humility before a holy God.</p>",
+        )
+        Sermon.objects.create(
+            author=spurgeon, slug="the-blood", language="en", title="The Blood",
+            body_html="<p>Humility at the cross.</p>",
+        )
+
+        topic = Topic.objects.create(slug="deeper-life", title="The Deeper Life")
+        TopicBook.objects.create(topic=topic, book_slug="humility")
+        TopicSermon.objects.create(topic=topic, sermon_slug="the-blood")
+
+    def search(self, scope=None, q="humility"):
+        url = f"/api/library/search/?q={q}"
+        if scope:
+            url += f"&in={scope}"
+        return self.client.get(url)
+
+    def slugs(self, res, kind="chapter"):
+        key = {"chapter": "book_slug", "book": "book_slug", "sermon": "sermon_slug"}[kind]
+        return {h[key] for h in res.data["results"] if h["type"] == kind}
+
+    def test_unscoped_search_sees_the_whole_library(self):
+        # The control: without this the scoped assertions prove nothing.
+        self.assertEqual(
+            self.slugs(self.search()), {"humility", "abide", "all-of-grace"}
+        )
+
+    def test_an_author_scope_keeps_only_that_author(self):
+        res = self.search("author:andrew-murray")
+        self.assertEqual(self.slugs(res), {"humility", "abide"})
+        self.assertEqual(res.data["scope"], {
+            "kind": "author", "slug": "andrew-murray", "label": "Andrew Murray",
+        })
+
+    def test_a_book_scope_keeps_only_that_book(self):
+        res = self.search("book:humility")
+        self.assertEqual(self.slugs(res), {"humility"})
+
+    def test_a_topic_scope_follows_the_shelf(self):
+        # Topic membership is by slug and spans books AND sermons.
+        res = self.search("topic:deeper-life")
+        self.assertEqual(self.slugs(res), {"humility"})
+        self.assertEqual(self.slugs(res, "sermon"), {"the-blood"})
+
+    def test_the_counts_are_scoped_too(self):
+        # The bug this guards: the results honour the scope and the counts don't,
+        # so the page offers to show three chapters when the scope holds one.
+        self.assertEqual(self.search().data["totals"]["chapter"], 3)
+        self.assertEqual(self.search("book:humility").data["totals"]["chapter"], 1)
+
+    def test_the_show_more_pages_are_scoped_too(self):
+        res = self.client.get(
+            "/api/library/search/?q=humility&type=chapter&in=book:humility"
+        )
+        self.assertEqual(self.slugs(res), {"humility"})
+
+    def test_navigational_types_drop_out_of_a_scope(self):
+        # Searching within Andrew Murray and being handed Andrew Murray back is
+        # noise — you are already there. Same for the book you are reading in.
+        res = self.search("author:andrew-murray")
+        self.assertNotIn("author", res.data["totals"])
+        self.assertNotIn("book", self.search("book:humility").data["totals"])
+
+    def test_a_scope_that_does_not_exist_is_reported_as_such(self):
+        # Not silently unscoped: the page must be able to say "no such shelf"
+        # rather than show the whole library under a confident label.
+        res = self.search("author:nobody")
+        self.assertIsNone(res.data["scope"])
+        self.assertEqual(res.data["results"], [])
+
+    def test_a_malformed_scope_searches_the_whole_library(self):
+        for junk in ("", "banana", "banana:x", ":x", "author:"):
+            res = self.search(junk)
+            self.assertNotIn("scope", res.data, junk)
+            self.assertEqual(self.slugs(res), {"humility", "abide", "all-of-grace"})
+
+    def test_a_scoped_search_is_not_logged(self):
+        # A scoped miss means "this author didn't write about that", not "the
+        # library lacks it" — logging it would put phantom gaps into the
+        # translation worklist the zero-result report exists to produce.
+        SearchQueryLog.objects.all().delete()
+        self.search()
+        self.search("author:andrew-murray")
+        self.search("author:andrew-murray", q="quantum")
+        self.assertEqual(SearchQueryLog.objects.count(), 1)
+
+    def test_no_did_you_mean_inside_a_scope(self):
+        # The suggester reads the whole library, so inside a scope it would
+        # propose a spelling this author never used — a second empty page.
+        wide = self.search(q="humilty")
+        self.assertIn("suggestion", wide.data)
+        scoped = self.search("author:spurgeon", q="humilty")
+        self.assertNotIn("suggestion", scoped.data)
+
+
+class SearchClickTests(TestCase):
+    """Whether search results actually get opened.
+
+    The half the query log can't see: a query returning forty near-misses and a
+    query returning the right answer are both "found something" there.
+    """
+
+    def setUp(self):
+        self.client = APIClient()
+
+    def click(self, **kw):
+        body = {"query": "humility", "type": "chapter", "position": 1, **kw}
+        return self.client.post("/api/library/search-click/", body, format="json")
+
+    def test_a_click_is_recorded_anonymously(self):
+        res = self.click()
+        self.assertEqual(res.status_code, 204)
+        row = SearchClickLog.objects.get()
+        self.assertEqual(row.query, "humility")
+        self.assertEqual(row.result_type, "chapter")
+        self.assertEqual(row.position, 1)
+        # No user column exists to leak — the guarantee is structural.
+        self.assertFalse(hasattr(row, "profile"))
+        self.assertFalse(hasattr(row, "user"))
+
+    def test_junk_is_dropped_without_telling_the_caller(self):
+        # An unauthenticated write, so it is bounded rather than trusted. 204
+        # either way: there is nothing to say, and nothing worth saying to a
+        # prober mapping the validation.
+        for bad in (
+            {"query": "h"},                      # shorter than a real query
+            {"query": "x" * 201},                # past the column
+            {"type": "password"},                # not a type search produces
+            {"position": 0},                     # ranks are 1-based
+            {"position": -3},
+            {"position": 99999},                 # past any page served
+            {"position": "; drop table"},
+        ):
+            self.assertEqual(self.click(**bad).status_code, 204, bad)
+        self.assertEqual(SearchClickLog.objects.count(), 0)
+
+    def test_a_broken_log_never_breaks_the_click(self):
+        from unittest.mock import patch
+
+        with patch.object(
+            SearchClickLog.objects, "create", side_effect=RuntimeError("db down")
+        ):
+            self.assertEqual(self.click().status_code, 204)
+
+    @override_settings(DEBUG=True)
+    def test_queries_that_found_things_but_led_nowhere_surface(self):
+        # The silent failure. "answered" returned results AND got opened;
+        # "ignored" returned results and never did — only the second is a gap,
+        # and nothing else on the report can tell them apart.
+        for _ in range(4):
+            SearchQueryLog.objects.create(query="ignored", language="en", result_count=9)
+            SearchQueryLog.objects.create(query="answered", language="en", result_count=9)
+        SearchClickLog.objects.create(
+            query="answered", language="en", result_type="book", position=1
+        )
+
+        res = self.client.get("/api/admin/search-stats/")
+        self.assertEqual(res.status_code, 200)
+        unopened = [r["query"] for r in res.data["unopened_queries"]]
+        self.assertIn("ignored", unopened)
+        self.assertNotIn("answered", unopened)
+        self.assertEqual(res.data["overview"]["clicks_30d"], 1)
+
+    def test_the_trim_step_prunes_both_logs_together(self):
+        # Clicks outliving their queries would compute click-through against a
+        # truncated denominator.
+        from datetime import timedelta
+
+        from django.core.management import call_command
+        from django.utils import timezone
+
+        old = SearchClickLog.objects.create(
+            query="ancient", language="en", result_type="book", position=1
+        )
+        SearchClickLog.objects.filter(pk=old.pk).update(
+            created_at=timezone.now() - timedelta(days=200)
+        )
+        self.click()  # fresh
+        call_command("trim_search_log", verbosity=0)
+        self.assertEqual(
+            list(SearchClickLog.objects.values_list("query", flat=True)), ["humility"]
+        )

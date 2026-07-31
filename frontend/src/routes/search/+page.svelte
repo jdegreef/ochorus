@@ -7,6 +7,7 @@
 		getPopularSearches,
 		type SearchHit,
 		type ChapterHit,
+		type SearchScope,
 		type SearchSort,
 		type SearchType,
 		type TopicSummary
@@ -130,6 +131,13 @@
 				};
 		}
 	}
+	// "Search inside this author / topic / book", carried as `kind:slug`. The
+	// label comes back with the results (`scopeInfo`) so the chip can name the
+	// shelf without a second request; null means the server found no such shelf
+	// in this language, and the page says so instead of showing an empty list.
+	let scope = $state('');
+	let scopeInfo = $state<SearchScope | null>(null);
+
 	let q = $state('');
 	let hits = $state<SearchHit[]>([]);
 	let loading = $state(false);
@@ -309,6 +317,10 @@
 		const keys: string[] = [];
 		const map = new Map<string, string>();
 		const labels = new Map<string, string>();
+		// Which type each key is. Built here rather than parsed off the key
+		// because this is the one place that already knows, and it doubles as the
+		// reading order the click log records a position against.
+		const types = new Map<string, SearchType>();
 		for (const g of shownGroups) {
 			if (g.type === 'chapter') {
 				for (const pb of passageBooks) {
@@ -319,6 +331,7 @@
 						keys.push(ch.key);
 						map.set(ch.key, `/books/${pb.slug}/${ch.order}`);
 						labels.set(ch.key, `${ch.title} — ${pb.title}`);
+						types.set(ch.key, 'chapter');
 					}
 				}
 			} else {
@@ -326,11 +339,32 @@
 					keys.push(row.key);
 					map.set(row.key, row.href);
 					labels.set(row.key, row.meta ? `${row.title} — ${row.meta}` : row.title);
+					types.set(row.key, g.type as SearchType);
 				}
 			}
 		}
-		return { keys, map, labels };
+		return { keys, map, labels, types };
 	});
+
+	/**
+	 * Tell the server a result was opened — anonymously, and never in the way.
+	 *
+	 * This is the only signal that separates "the search found forty things" from
+	 * "the search found the thing"; without it a query answered by near-misses
+	 * looks like a success in every report. Fire-and-forget on purpose: it must
+	 * not delay the navigation the reader just asked for, and if it fails,
+	 * nothing about their click changes.
+	 */
+	function recordClick(key: string) {
+		const type = nav.types.get(key);
+		const position = nav.keys.indexOf(key) + 1;
+		const query = ran || q.trim();
+		if (!type || position < 1 || query.length < 2) return;
+		void apiFetch('/api/library/search-click/', {
+			method: 'POST',
+			body: JSON.stringify({ query, type, position })
+		}).catch(() => {});
+	}
 	const activeKey = $derived(
 		activeIndex >= 0 && activeIndex < nav.keys.length ? nav.keys[activeIndex] : ''
 	);
@@ -369,7 +403,12 @@
 		} else if (e.key === 'Enter') {
 			const key = activeIndex >= 0 ? nav.keys[activeIndex] : nav.keys[0];
 			const href = nav.map.get(key);
-			if (href) goto(localizeHref(href));
+			// Recorded on the keyboard path too — measuring only mouse clicks
+			// would read as "keyboard users never find anything".
+			if (href) {
+				recordClick(key);
+				goto(localizeHref(href));
+			}
 		} else if (e.key === 'Escape') {
 			activeIndex = -1;
 		}
@@ -415,6 +454,17 @@
 			: []
 	);
 
+	/** Resolve a scope's display name with an empty query — see `applyTerm`. */
+	async function nameScope(forScope: string) {
+		scopeInfo = null;
+		try {
+			const res = await search('', getLang(), forScope);
+			if (forScope === scope) scopeInfo = res.scope ?? null;
+		} catch {
+			// A chip that can't name itself is not worth blocking the page for.
+		}
+	}
+
 	/** Jump to a section — not a facet switch, for the reason above. */
 	function jumpTo(type: string) {
 		document.getElementById(`group-${type}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -453,7 +503,8 @@
 		try {
 			const res = await searchPage(forQuery, getLang(), type, {
 				offset: append && typeRows ? typeRows.length : 0,
-				sort: sortMode
+				sort: sortMode,
+				scope
 			});
 			if (token !== typeSeq) return; // superseded
 			typeRows = append && typeRows ? [...typeRows, ...res.results] : res.results;
@@ -491,7 +542,7 @@
 		loading = true;
 		void maybeScripture(term, token); // in parallel; independent of the list
 		try {
-			const res = await search(term, getLang());
+			const res = await search(term, getLang(), scope);
 			if (token !== searchSeq) return;
 			hits = res.results;
 			ran = res.query;
@@ -499,6 +550,7 @@
 			totals = res.totals ?? {};
 			totalsCapped = res.totals_capped ?? {};
 			pageSize = res.page_size ?? pageSize;
+			scopeInfo = res.scope ?? null;
 		} finally {
 			if (token === searchSeq) loading = false;
 		}
@@ -511,7 +563,7 @@
 	 * the caret stays in the box mid-word.
 	 */
 	function syncUrl(term: string, type = typeFilter, sort: SearchSort = sortMode) {
-		const state = { q: term, type, sort };
+		const state = { q: term, type, sort, scope };
 		const next = searchStateKey(state);
 		if (next === urlState) return;
 		urlState = next;
@@ -529,15 +581,26 @@
 	 * path a shared `/search?q=…&type=chapter` link arrives on — resetting there
 	 * would drop the very thing the link was sent to show.
 	 */
-	function applyTerm(term: string, type = 'all', sort: SearchSort = 'relevance') {
+	function applyTerm(
+		term: string,
+		type = 'all',
+		sort: SearchSort = 'relevance',
+		nextScope = ''
+	) {
 		clearTimeout(timer);
 		activeIndex = -1;
 		typeFilter = type;
 		sortMode = sort;
+		scope = nextScope;
 		typeRows = null;
 		typeSeq++;
 		if (term.length < 2) {
 			clearResults();
+			// Arriving from "search inside this book" lands here with no query
+			// yet. The search itself is what usually carries the shelf's name
+			// back, so with nothing to search for, ask for the name alone.
+			if (nextScope) void nameScope(nextScope);
+			else scopeInfo = null;
 			return;
 		}
 		runSearch(term);
@@ -592,8 +655,27 @@
 		if (next === urlState) return;
 		urlState = next;
 		q = state.q;
-		applyTerm(state.q, state.type, state.sort);
+		applyTerm(state.q, state.type, state.sort, state.scope);
 	});
+
+	/**
+	 * Leave the shelf and search the whole library, keeping the query.
+	 *
+	 * The way out has to be one click and always present: a scope arrived at from
+	 * a book or an author page is easy to forget you're in, and "no results" then
+	 * reads as "the library doesn't have this" when it only means "not here".
+	 */
+	function clearScope() {
+		scope = '';
+		scopeInfo = null;
+		const term = ran || q.trim();
+		typeFilter = 'all';
+		sortMode = 'relevance';
+		typeRows = null;
+		typeSeq++;
+		syncUrl(term, 'all', 'relevance');
+		if (term.length >= 2) runSearch(term);
+	}
 
 	// Accept a "did you mean" suggestion: swap it in and search immediately.
 	function applySuggestion(term: string) {
@@ -653,18 +735,49 @@
 		recent = [];
 		writeJSON(RECENT_KEY, []);
 	}
+
+	/**
+	 * Forget ONE remembered query.
+	 *
+	 * "Clear" was all-or-nothing, so a single query you would rather not see
+	 * again — searched on a shared phone, or about something private — could only
+	 * be removed by wiping the whole list. Local to the device: recent searches
+	 * are localStorage and never leave it.
+	 */
+	function forgetRecent(term: string) {
+		recent = recent.filter((r) => r !== term);
+		writeJSON(RECENT_KEY, recent);
+	}
 </script>
 
 <!-- A clickable query chip — shared by the "recent" and "popular" rows, which
-     render identically (both re-run the search via applySuggestion). -->
-{#snippet queryChip(term: string)}
-	<button
-		type="button"
-		class="rounded-full border border-border px-3 py-1 text-small text-text hover:border-accent hover:text-accent"
-		onclick={() => applySuggestion(term)}
+     re-run the search via applySuggestion. Recent chips also carry a ✕; popular
+     ones don't, since there is nothing personal to remove. The ✕ is a sibling
+     button rather than nested (a button inside a button is invalid), with the
+     two drawn as one chip. -->
+{#snippet queryChip(term: string, onForget?: (t: string) => void)}
+	<span
+		class="inline-flex items-center overflow-hidden rounded-full border border-border text-small text-text focus-within:border-accent hover:border-accent"
 	>
-		{term}
-	</button>
+		<button
+			type="button"
+			class="px-3 py-1 hover:text-accent"
+			onclick={() => applySuggestion(term)}
+		>
+			{term}
+		</button>
+		{#if onForget}
+			<button
+				type="button"
+				class="self-stretch pe-2.5 ps-1 text-muted hover:text-accent"
+				aria-label="{t('search.forget')}: {term}"
+				title={t('search.forget')}
+				onclick={() => onForget(term)}
+			>
+				✕
+			</button>
+		{/if}
+	</span>
 {/snippet}
 
 <!-- A cover or a portrait: the visual anchor that makes a list of titles
@@ -710,7 +823,7 @@
 				</button>
 			</div>
 			<div class="flex flex-wrap gap-2">
-				{#each recent as term (term)}{@render queryChip(term)}{/each}
+				{#each recent as term (term)}{@render queryChip(term, forgetRecent)}{/each}
 			</div>
 		</section>
 	{/if}
@@ -772,6 +885,32 @@
 			class="w-full rounded-card border border-border bg-surface px-4 py-3 text-body text-text"
 		/>
 	</div>
+
+	<!-- The shelf being searched inside, and the one-click way out of it.
+	     Directly under the input on purpose: a scope you can't see is a scope
+	     that makes "no results" read as "the library doesn't have this" when it
+	     only means "not in here". -->
+	{#if scope}
+		<div class="mt-2 flex flex-wrap items-center gap-2">
+			{#if scopeInfo}
+				<span
+					class="inline-flex items-center gap-1.5 rounded-full border border-accent bg-accent-soft px-3 py-1 text-small text-text"
+				>
+					<span class="text-muted">{t('search.scopeIn')}</span>
+					<span class="font-semibold">{scopeInfo.label}</span>
+				</span>
+			{:else}
+				<span class="text-small text-muted">{t('search.scopeMissing')}</span>
+			{/if}
+			<button
+				type="button"
+				class="text-small font-semibold text-accent hover:underline"
+				onclick={clearScope}
+			>
+				{t('search.scopeClear')}
+			</button>
+		</div>
+	{/if}
 
 	<!-- Two live regions, deliberately separate. The first is the running result
 	     count; the second is what ↑/↓ landed on. Merged into one, each arrow key
@@ -994,6 +1133,7 @@
 														id="res-{ch.key}"
 														class="-mx-2 block rounded px-2 hover:no-underline"
 														class:bg-surface-2={ch.key === activeKey}
+														onclick={() => recordClick(ch.key)}
 													>
 														<div class="text-small font-medium text-text">{ch.title}</div>
 														{#if ch.snippet}
@@ -1031,6 +1171,7 @@
 											id="res-{row.key}"
 											class="-mx-2 flex gap-3 rounded px-2 hover:no-underline"
 											class:bg-surface-2={row.key === activeKey}
+											onclick={() => recordClick(row.key)}
 										>
 											{@render thumb(row)}
 											<div class="min-w-0 flex-1">

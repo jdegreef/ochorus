@@ -93,6 +93,15 @@
 					{topic.sermons.length === 1 ? t('common.sermonOne') : t('common.sermonMany')}
 				{/if}
 			</p>
+			<!-- A topic is a shelf, and a shelf you can't search is a list you have
+			     to read end to end. -->
+			{#if topic.books.length || topic.sermons.length}
+				<a
+					href={localizeHref(`/search?in=topic:${topic.slug}`)}
+					class="mt-3 inline-block text-small font-semibold text-accent hover:underline"
+					>{t('search.inTopic')} →</a
+				>
+			{/if}
 		</div>
 	</header>
 

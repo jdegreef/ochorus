@@ -171,6 +171,14 @@
 					<a href={readHref(1)} class="btn btn-primary">{t('book.beginReading')}</a>
 				{/if}
 				<FavoriteButton kind="book" slug={book.slug} />
+				<!-- Search inside this book. Goes to the real search scoped to the
+				     book rather than a second, weaker search over cached text: the
+				     reader gets the same ranking, snippets and paging they get
+				     everywhere else, and the scope is visible and reversible. -->
+				<a
+					href={localizeHref(`/search?in=book:${book.slug}`)}
+					class="btn btn-ghost">{t('search.inBook')}</a
+				>
 				<!-- Download for offline: precache every chapter so the whole book
 				     reads with no connection (see lib/offlineBooks). -->
 				{#if downloading}

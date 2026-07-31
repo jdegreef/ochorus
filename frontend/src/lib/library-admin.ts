@@ -534,7 +534,17 @@ export interface SearchTopQuery {
 export type SearchUnanswered = Language & { total: number; queries: SearchTopQuery[] };
 
 export interface AdminSearchStats {
-	overview: { '7d': SearchStatsWindow; '30d': SearchStatsWindow };
+	overview: {
+		'7d': SearchStatsWindow;
+		'30d': SearchStatsWindow;
+		/** Results opened in 30 days. Rows, not readers — read it as a trend. */
+		clicks_30d?: number;
+	};
+	/**
+	 * Queries that found plenty and were never opened — the silent failure the
+	 * zero-result list can't see, and often the better content signal.
+	 */
+	unopened_queries?: SearchTopQuery[];
 	top_queries: SearchTopQuery[];
 	zero_result_queries: SearchTopQuery[];
 	unanswered_by_language: SearchUnanswered[];

@@ -189,6 +189,20 @@ export interface SearchResponse {
 	totals_capped?: Partial<Record<SearchType, boolean>>;
 	/** Rows per "show more" page. */
 	page_size?: number;
+	/**
+	 * The shelf this search was narrowed to, resolved server-side so the page can
+	 * name it. Present only when `?in=` was sent; **null** when it named a place
+	 * that doesn't exist in this language — an empty list under a confident
+	 * label would be a lie, so the page says the shelf isn't there.
+	 */
+	scope?: SearchScope | null;
+}
+
+/** A place a search was narrowed to — see `library.search.scope_entry`. */
+export interface SearchScope {
+	kind: 'author' | 'topic' | 'book';
+	slug: string;
+	label: string;
 }
 
 /** One type's matches, ordered over ALL of them — the "show more" response. */
@@ -336,10 +350,11 @@ export const createAuthor = (name: string) =>
 export const getSermon = (slug: string, language = 'en') =>
 	localized<Sermon>((l) => `/api/library/sermons/${slug}/?language=${l}`, language);
 
-export const search = (q: string, language = 'en') =>
-	apiFetch<SearchResponse>(
-		`/api/library/search/?q=${encodeURIComponent(q)}&language=${language}`
-	);
+export const search = (q: string, language = 'en', scope = '') => {
+	const params = new URLSearchParams({ q, language });
+	if (scope) params.set('in', scope);
+	return apiFetch<SearchResponse>(`/api/library/search/?${params}`);
+};
 
 /**
  * More of ONE type, ordered over every match rather than over the page the
@@ -350,11 +365,13 @@ export const searchPage = (
 	q: string,
 	language: string,
 	type: SearchType,
-	opts: { offset?: number; sort?: SearchSort } = {}
+	opts: { offset?: number; sort?: SearchSort; scope?: string } = {}
 ) => {
 	const params = new URLSearchParams({ q, language, type });
 	if (opts.offset) params.set('offset', String(opts.offset));
 	if (opts.sort && opts.sort !== 'relevance') params.set('sort', opts.sort);
+	// Same scope the merged list used, or "show more" would page out of the shelf.
+	if (opts.scope) params.set('in', opts.scope);
 	return apiFetch<SearchPageResponse>(`/api/library/search/?${params}`);
 };
 
