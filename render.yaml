@@ -417,12 +417,21 @@ services:
       # already-indexed no-slash URLs need an explicit 301, it has to be done
       # where the no-slash form can be matched on its own — a Cloudflare rule
       # conditioned on "URI path does not end with /".
-      # Everything else — detail pages (served natively as <slug>/index.html),
-      # the reader, search, and any missing/unpublished slug — falls back to the
-      # SPA app shell, which renders the real page or the not-found page.
-      - type: rewrite
-        source: /*
-        destination: /200.html
+      # VERIFICATION SPIKE (#3 soft-404): the /* -> /200.html catch-all is
+      # REMOVED here on purpose. It made EVERY unmatched path answer 200 with the
+      # app shell, which a crawler reads as a soft-404 — the 1,976 "excluded by
+      # noindex" in Search Console. With no catch-all, an unmatched path falls to
+      # Render's native not-found handling; paired with fallback: '404.html' in
+      # svelte.config.js, this preview tests whether Render serves that root
+      # 404.html with a real 404 status (ideal) or its own bare 404.
+      #
+      # KNOWN-BROKEN on this branch, by design: the client-only routes (/search,
+      # /notebook, /settings, /login, /account, /reset-password, /admin/*, plus
+      # their /:lang/ variants) also relied on this catch-all and will 404 until
+      # they get explicit shell rewrites. That work is deferred until the preview
+      # confirms the 404-status behaviour is worth building the rules for. Detail
+      # pages, the reader and index pages are unaffected — they're real files.
+      # DO NOT MERGE as-is.
     envVars:
       - key: PUBLIC_API_BASE_URL # the ochorus-api URL, after first deploy
         sync: false

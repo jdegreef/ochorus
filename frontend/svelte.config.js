@@ -15,9 +15,14 @@ const config = {
 			filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 	},
 	kit: {
-		// Static SPA: serve the app shell for every route via the 200.html
-		// fallback. (SEO prerendering can be added later for the web target.)
-		adapter: adapter({ fallback: '200.html' }),
+		// Static SPA fallback. VERIFICATION SPIKE (#3 soft-404): renamed from
+		// 200.html to 404.html to test whether Render serves a root 404.html with
+		// an HTTP 404 status for unmatched paths (the file content is identical —
+		// the full app shell either way). If it does, unknown URLs stop being
+		// soft-404s. Paired with removing the /* -> /200.html catch-all in
+		// render.yaml. Do NOT merge until a preview confirms the behaviour and the
+		// client-only routes get explicit shell rewrites.
+		adapter: adapter({ fallback: '404.html' }),
 		paths: { relative: false },
 		// We register src/service-worker.ts ourselves (see lib/pwa.svelte.ts) so we
 		// can surface an "update available" prompt instead of updating silently.
