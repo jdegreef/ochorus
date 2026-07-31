@@ -537,6 +537,10 @@ def _author_hit(a, ctx):
         "type": "author",
         "author_slug": a.slug,
         "author_name": a.name,
+        # A face and a cover make a list of titles scannable. Both may be blank,
+        # and the client renders text-only when they are — no placeholder, which
+        # would only add noise to a row that reads fine without one.
+        "photo_url": a.photo_url,
         "snippet": fallback_snippet(a.bio_for(ctx.language), ctx.q),
         "date": _date(a.created_at),
     }
@@ -548,6 +552,12 @@ def _book_hit(b, ctx):
         "book_slug": b.slug,
         "book_title": b.title,
         "author_name": b.author.name,
+        "cover_url": b.cover_url,
+        # The cover's dominant colour, so the reserved box is filled with
+        # something of the book's own while the image loads — and stays filled
+        # if it never does. Reserving the space is what stops the list reflowing
+        # under the reader's cursor.
+        "cover_color": b.cover_color,
         "snippet": fallback_snippet(b.description, ctx.q),
         "date": _date(b.created_at),
     }
@@ -582,6 +592,8 @@ def _chapter_hit(c, snippet):
         "author_name": c.book.author.name,
         "chapter_order": c.order,
         "chapter_title": c.title,
+        "cover_url": c.book.cover_url,
+        "cover_color": c.book.cover_color,
         "snippet": snippet,
         "date": _date(c.book.created_at),
     }

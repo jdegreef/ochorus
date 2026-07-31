@@ -36,6 +36,12 @@
 		meta: string;
 		snippet: string;
 		date: string;
+		/** Cover or portrait. "" for rows that have neither — topics and plans. */
+		image: string;
+		/** Backing colour for the reserved box, so the list never reflows. */
+		color: string;
+		/** Portraits are round and small; covers keep a book's proportions. */
+		round: boolean;
 	};
 
 	function toRow(hit: SearchHit): Row {
@@ -48,7 +54,10 @@
 					title: hit.author_name,
 					meta: '',
 					snippet: hit.snippet,
-					date: hit.date
+					date: hit.date,
+					image: hit.photo_url,
+					color: '',
+					round: true
 				};
 			case 'book':
 				return {
@@ -58,7 +67,10 @@
 					title: hit.book_title,
 					meta: hit.author_name,
 					snippet: hit.snippet,
-					date: hit.date
+					date: hit.date,
+					image: hit.cover_url,
+					color: hit.cover_color,
+					round: false
 				};
 			case 'topic':
 				return {
@@ -68,7 +80,10 @@
 					title: hit.topic_title,
 					meta: '',
 					snippet: hit.snippet,
-					date: hit.date
+					date: hit.date,
+					image: '',
+					color: '',
+					round: false
 				};
 			case 'plan':
 				return {
@@ -78,7 +93,10 @@
 					title: hit.plan_title,
 					meta: '',
 					snippet: hit.snippet,
-					date: hit.date
+					date: hit.date,
+					image: '',
+					color: '',
+					round: false
 				};
 			case 'sermon':
 				return {
@@ -90,7 +108,10 @@
 						? `${hit.author_name} · ${hit.scripture_ref}`
 						: hit.author_name,
 					snippet: hit.snippet,
-					date: hit.date
+					date: hit.date,
+					image: '',
+					color: '',
+					round: false
 				};
 			default:
 				return {
@@ -100,7 +121,10 @@
 					title: hit.chapter_title || hit.book_title,
 					meta: `${hit.book_title} · ${hit.author_name}`,
 					snippet: hit.snippet,
-					date: hit.date
+					date: hit.date,
+					image: hit.cover_url,
+					color: hit.cover_color,
+					round: false
 				};
 		}
 	}
@@ -232,6 +256,8 @@
 		title: string;
 		author: string;
 		date: string;
+		cover: string;
+		color: string;
 		chapters: { key: string; order: number; title: string; snippet: string }[];
 	};
 	const passageBooks = $derived.by<PassageBook[]>(() => {
@@ -249,6 +275,8 @@
 					title: c.book_title,
 					author: c.author_name,
 					date: c.date,
+					cover: c.cover_url,
+					color: c.cover_color,
 					chapters: []
 				};
 				by.set(c.book_slug, g);
@@ -362,6 +390,33 @@
 	// non-reference simply returns nothing and the card stays hidden.
 	let scriptureAnswer = $state<ScriptureResult | null>(null);
 	const REF_RE = /^\s*(?:[123]\s*|I{1,3}\s+)?[A-Za-z][A-Za-z.]{1,}\s+\d{1,3}(?::\d{1,3}(?:[-–]\d{1,3})?)?\s*$/;
+
+	/**
+	 * What on this page engages the passage the card is showing.
+	 *
+	 * Counted from the hits actually rendered, NOT from `totals`. For a reference
+	 * query the two are different populations: the merged list leads with sermons
+	 * preached on an overlapping text and chapters that CITE it (matched by verse
+	 * id), while `totals` counts a plain text search for the reference string.
+	 * They can coincide and generally won't, so a link built on `totals` would
+	 * promise a number and then show a different set.
+	 */
+	const engagedCounts = $derived(
+		scriptureAnswer
+			? GROUP_ORDER.filter((g) => g.type === 'sermon' || g.type === 'chapter')
+					.map((g) => ({
+						type: g.type,
+						labelKey: g.labelKey,
+						count: rows.filter((r) => r.type === g.type).length
+					}))
+					.filter((e) => e.count > 0)
+			: []
+	);
+
+	/** Jump to a section — not a facet switch, for the reason above. */
+	function jumpTo(type: string) {
+		document.getElementById(`group-${type}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	}
 
 	async function maybeScripture(term: string, token: number) {
 		if (!REF_RE.test(term)) {
@@ -610,6 +665,32 @@
 	</button>
 {/snippet}
 
+<!-- A cover or a portrait: the visual anchor that makes a list of titles
+     scannable. The box is reserved and colour-filled whether or not an image
+     arrives, so the list never reflows under the reader's cursor — and rows
+     with neither (topics, plans) draw nothing rather than a placeholder. -->
+{#snippet thumb(row: {
+	image: string;
+	color: string;
+	round: boolean;
+	small?: boolean;
+})}
+	{#if row.image}
+		<img
+			src={row.image}
+			alt=""
+			loading="lazy"
+			decoding="async"
+			class="flex-none bg-surface-2 object-cover {row.round
+				? 'h-11 w-11 rounded-full'
+				: row.small
+					? 'h-8 w-6 rounded-sm'
+					: 'h-16 w-12 rounded'}"
+			style={row.color ? `background-color:${row.color}` : undefined}
+		/>
+	{/if}
+{/snippet}
+
 <!-- Somewhere to go: what this reader searched before, what other readers search,
      and the shelves. Rendered both on a blank page and after a query that found
      nothing — the second is where it matters more. `showRecent` is false in the
@@ -665,7 +746,11 @@
 
 <svelte:head><title>{t('search.title')} — Ochorus</title></svelte:head>
 
-<div class="mx-auto max-w-2xl px-5 py-10">
+<!-- Above lg the page uses the width it has: the facet chips leave the top bar
+     and become a rail, so results get the full column and the filters stop
+     wrapping onto three lines. Below lg nothing changes — the single column is
+     right on a phone, and this page is read on phones. -->
+<div class="mx-auto max-w-2xl px-5 py-10 lg:max-w-5xl">
 	<h1 class="text-h1 mb-8">{t('search.title')}</h1>
 
 	<!-- Sticky: a long result list used to scroll the query out of sight, so
@@ -709,6 +794,26 @@
 			<p class="mt-2 text-[0.66rem] uppercase tracking-[0.08em] text-muted">
 				{scriptureAnswer.version}
 			</p>
+
+			<!-- The card used to state the passage and stop. What engages this text is
+			     already on the page below — the backend matches sermons preached on an
+			     overlapping reference and chapters that cite it — so these jump to it
+			     rather than fetching anything new. (There is no Bible reader to link
+			     "read the chapter" to; if one is ever added, it belongs here.) -->
+			{#if engagedCounts.length}
+				<div class="mt-3 flex flex-wrap gap-x-4 gap-y-1 border-t border-accent/20 pt-2.5">
+					{#each engagedCounts as e (e.type)}
+						<button
+							type="button"
+							class="text-small font-semibold text-accent hover:underline"
+							onclick={() => jumpTo(e.type)}
+						>
+							{e.count}
+							{t(e.labelKey)} ↓
+						</button>
+					{/each}
+				</div>
+			{/if}
 		</div>
 	{/if}
 
@@ -747,10 +852,17 @@
 				{@render waysIn(false)}
 			</div>
 		{:else}
+			<div class="lg:grid lg:grid-cols-[12rem_1fr] lg:items-start lg:gap-8">
 			<!-- Type facet + result count -->
-			<div class="mb-5 flex flex-wrap items-center gap-2">
+			<div
+				class="mb-5 flex flex-wrap items-center gap-2 lg:sticky lg:top-24 lg:mb-0 lg:flex-col lg:items-stretch lg:self-start"
+			>
 				{#if groups.length > 1}
-					<div class="flex flex-wrap gap-1.5" role="group" aria-label={t('search.filterByType')}>
+					<div
+						class="flex flex-wrap gap-1.5 lg:flex-col"
+						role="group"
+						aria-label={t('search.filterByType')}
+					>
 						<button
 							type="button"
 							class="rounded-full border px-2.5 py-1 text-[0.78rem]"
@@ -785,7 +897,7 @@
 						{/each}
 					</div>
 				{/if}
-				<div class="flex flex-wrap items-center gap-x-3 gap-y-2 sm:ms-auto">
+				<div class="flex flex-wrap items-center gap-x-3 gap-y-2 sm:ms-auto lg:ms-0 lg:flex-col lg:items-start">
 					<!-- Sorting needs the whole match set, which only the per-type
 					     endpoint returns — so it appears once a type is chosen. In the
 					     mixed list the order is relevance, the only one that means
@@ -834,11 +946,11 @@
 					</p>
 				</div>
 			</div>
-			<div class="space-y-8">
+			<div class="space-y-8 lg:min-w-0">
 				{#each shownGroups as g (g.type)}
 					{@const total = totalFor(g.type, g.rows.length)}
 					{@const more = total - g.rows.length}
-					<section>
+					<section id="group-{g.type}" style="scroll-margin-top:5rem">
 						<h2
 							class="mb-2 flex items-baseline gap-2 text-small font-semibold uppercase tracking-wide text-muted"
 						>
@@ -858,9 +970,17 @@
 									<div>
 										<a
 											href={localizeHref(`/books/${pb.slug}`)}
-											class="text-small font-semibold text-text hover:text-accent hover:no-underline"
+											class="flex items-center gap-2.5 text-small font-semibold text-text hover:text-accent hover:no-underline"
 										>
-											{pb.title} <span class="font-normal text-muted">· {pb.author}</span>
+											{@render thumb({
+												image: pb.cover,
+												color: pb.color,
+												round: false,
+												small: true
+											})}
+											<span>
+												{pb.title} <span class="font-normal text-muted">· {pb.author}</span>
+											</span>
 										</a>
 										<ul class="mt-1 divide-y divide-border border-s border-border ps-3">
 											{#each shown as ch (ch.key)}
@@ -905,19 +1025,22 @@
 										<a
 											href={localizeHref(row.href)}
 											id="res-{row.key}"
-											class="-mx-2 block rounded px-2 hover:no-underline"
+											class="-mx-2 flex gap-3 rounded px-2 hover:no-underline"
 											class:bg-surface-2={row.key === activeKey}
 										>
-											{#if row.meta}
-												<div class="text-small text-muted">{row.meta}</div>
-											{/if}
-											<div class="text-body font-semibold text-text">{row.title}</div>
-											{#if row.snippet}
-												<p class="mt-1 text-small text-muted">
-													<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-													{@html mark(row.snippet)}
-												</p>
-											{/if}
+											{@render thumb(row)}
+											<div class="min-w-0 flex-1">
+												{#if row.meta}
+													<div class="text-small text-muted">{row.meta}</div>
+												{/if}
+												<div class="text-body font-semibold text-text">{row.title}</div>
+												{#if row.snippet}
+													<p class="mt-1 text-small text-muted">
+														<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+														{@html mark(row.snippet)}
+													</p>
+												{/if}
+											</div>
 										</a>
 									</li>
 								{/each}
@@ -953,6 +1076,7 @@
 						{/if}
 					</section>
 				{/each}
+			</div>
 			</div>
 		{/if}
 	</div>
