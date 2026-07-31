@@ -1,5 +1,5 @@
 import { apiFetch } from './api';
-import type { Language, SourceType } from './library-public';
+import type { Language, SearchType, SourceType } from './library-public';
 
 // --- Admin dashboard ---------------------------------------------------------
 // Aggregate content stats for the /admin page. Admin-only (see backend
@@ -530,12 +530,41 @@ export interface SearchTopQuery {
 	count: number;
 }
 
+/** Zero-result queries for one language — a translation/acquisition worklist. */
+export type SearchUnanswered = Language & { total: number; queries: SearchTopQuery[] };
+
 export interface AdminSearchStats {
-	overview: { '7d': SearchStatsWindow; '30d': SearchStatsWindow };
+	overview: {
+		'7d': SearchStatsWindow;
+		'30d': SearchStatsWindow;
+		/** Results opened in 30 days. Rows, not readers — read it as a trend. */
+		clicks_30d?: number;
+	};
+	/**
+	 * Queries that found plenty and were never opened — the silent failure the
+	 * zero-result list can't see, and often the better content signal.
+	 */
+	unopened_queries?: SearchTopQuery[];
 	top_queries: SearchTopQuery[];
 	zero_result_queries: SearchTopQuery[];
+	unanswered_by_language: SearchUnanswered[];
 	daily: { day: string; searches: number; zero: number }[];
 	by_language: (Language & { searches: number; zero: number })[];
 }
 
 export const getAdminSearchStats = () => apiFetch<AdminSearchStats>('/api/admin/search-stats/');
+
+/**
+ * Where an unanswered query DOES have matches — i.e. what there is to translate.
+ * Admin planning only; see `AdminSearchGapView` for why it is a separate call.
+ */
+export interface AdminSearchGap {
+	query: string;
+	language: string;
+	elsewhere: (Language & { matches: number; by_type: Partial<Record<SearchType, number>> })[];
+}
+
+export const getAdminSearchGap = (q: string, language: string) =>
+	apiFetch<AdminSearchGap>(
+		`/api/admin/search-gap/?q=${encodeURIComponent(q)}&language=${encodeURIComponent(language)}`
+	);

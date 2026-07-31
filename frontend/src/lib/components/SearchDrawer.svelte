@@ -4,6 +4,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { highlightAround } from '$lib/highlight';
 	import { localizeHref } from '$lib/href';
+	import { scopedSearchHref } from '$lib/searchState';
 
 	/**
 	 * In-book search: a slide-over that indexes every chapter of the current book
@@ -12,6 +13,13 @@
 	 * paragraph. Because the index is paragraph-granular, a result links straight
 	 * to the matching paragraph via ?p=, the same anchor bookmarks and highlights
 	 * use.
+	 *
+	 * It matches **literal substrings**, which is what makes it work offline and
+	 * land on the exact paragraph — but it means "praying" does not find
+	 * "prayer". So every state offers the way up to the server's search of the
+	 * same book (`/search?in=book:…`), which stems and ranks; from there one
+	 * click widens to the whole library. Device → book → library, and the reader
+	 * can always see which rung they are on.
 	 */
 	let {
 		slug,
@@ -167,6 +175,20 @@
 						</li>
 					{/each}
 				</ul>
+			{/if}
+
+			<!-- The way up. Shown alongside hits as well as instead of them: this
+			     search matches literal substrings, so a short list is not proof
+			     there is nothing more — "praying" simply doesn't find "prayer"
+			     here, and does one rung up. -->
+			{#if query.trim().length >= 2 && !indexing}
+				<a
+					href={localizeHref(scopedSearchHref('book', slug, query))}
+					class="block px-5 py-4 text-small font-semibold text-accent hover:underline"
+					onclick={close}
+				>
+					{t('search.wider')} →
+				</a>
 			{/if}
 		</div>
 	</div>

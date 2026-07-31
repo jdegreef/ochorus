@@ -17,6 +17,7 @@
 	import { buildOutline, type OutlineEntry } from '$lib/sermonOutline';
 	import { absUrl, jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
 
+	import { findQueryHits } from '$lib/searchHits';
 	import { renderMarks } from '$lib/rangeMarks';
 	import { HIGHLIGHT_COLORS, DEFAULT_HIGHLIGHT } from '$lib/reading-schema';
 	import { marks, type Segment } from '$lib/marks.svelte';
@@ -304,16 +305,49 @@
 	});
 
 	// Paint marks as <mark> spans; clicking one opens its note editor.
+	// Arriving from a search result: highlight what matched and scroll to it,
+	// rather than dropping the reader at the top to re-find their sentence.
+	// Offsets are computed from the rendered blocks and handed to the SAME
+	// renderer the highlights use — that function restores each block from
+	// `dataset.pristine`, so a separate pass would be wiped whenever a highlight
+	// changed, and the two would fight over the same HTML.
+	const searchQuery = $derived(($page.url.searchParams.get('q') ?? '').trim());
+	let searchHits = $state<Segment[]>([]);
+	let scrolledToHit = false;
+
 	$effect(() => {
 		const list = marks.list;
 		if (!body) return;
+		// Recomputed here, not once on mount: the marks render restores pristine
+		// HTML, so hit offsets have to be handed over on every pass.
+		const hits = searchQuery
+			? findQueryHits(
+					Array.from(body.children).map((el) => el.textContent ?? ''),
+					searchQuery
+				)
+			: [];
+		searchHits = hits;
 		renderMarks(body, list, (id) => {
 			noteId = id;
 			notePending = [];
 			noteDraft = marks.getNote(id);
 			noteColor = marks.getColor(id);
 			noteOpen = true;
-		});
+		}, hits);
+
+		// Once per arrival: bring the first match into view. Guarded, or every
+		// highlight edit would yank the reader back up the page.
+		if (hits.length && !scrolledToHit) {
+			scrolledToHit = true;
+			requestAnimationFrame(() =>
+				body
+					?.querySelector('mark.search-hit')
+					// Both axes: the paged reader lays chapters out in columns and
+					// scrolls horizontally, so `block` alone would never reach a hit
+					// on a later page.
+					?.scrollIntoView({ block: 'center', inline: 'center', behavior: 'smooth' })
+			);
+		}
 	});
 
 	/** Note on a fresh selection: highlight it first, then attach the note. */

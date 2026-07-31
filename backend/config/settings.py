@@ -142,6 +142,20 @@ REST_FRAMEWORK = {
         "rest_framework.renderers.BrowsableAPIRenderer",
     ],
     "EXCEPTION_HANDLER": "common.exception_handler.detail_exception_handler",
+    # Only the endpoints that opt in are throttled — a global anon rate would
+    # cap search-as-you-type, which is a legitimate burst. Generous enough that a
+    # reader opening several results per search never notices, low enough that
+    # the one unauthenticated WRITE endpoint can't be used to grow a table.
+    # Backed by the default local-memory cache, so the limit is per worker and
+    # approximate: a bound, not an access control.
+    "DEFAULT_THROTTLE_RATES": {
+        "search-click": "60/min",
+    },
+    # Exactly one proxy (Render's) sits in front of the app, so the client
+    # address is the LAST entry in X-Forwarded-For. Without this, DRF keys
+    # throttles on the whole header — which the client writes, so anyone could
+    # mint an unlimited supply of fresh buckets by varying it.
+    "NUM_PROXIES": 1,
 }
 
 

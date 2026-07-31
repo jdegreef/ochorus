@@ -34,11 +34,18 @@ from .models import (
     Plan,
     Sermon,
     Topic,
+    TopicBook,
+    TopicSermon,
     TopicTranslation,
 )
 from .scripture import reference_verse_ids
 
 MAX_RESULTS = 30
+
+# Shorter than this is a keystroke, not a query. Two rather than three because a
+# 2-character query is a real search in e.g. Chinese; every caller that asks the
+# engine for anything applies it, so it lives here rather than at each entry.
+MIN_QUERY_LEN = 2
 
 # Navigational (entity) matches lead over body-text matches: a book/author/topic
 # whose title *is* the query is almost always what the reader wants.
@@ -84,12 +91,100 @@ def fallback_snippet(text: str, query: str, radius: int = 90) -> str:
     return f"{prefix}{excerpt}{suffix}"
 
 
-def _base_querysets(language: str) -> dict:
+#: The places a search can be narrowed to. Each names a shelf the reader is
+#: already standing in — an author, a topic, or the book open in front of them.
+SCOPES = ("author", "topic", "book")
+
+
+def parse_scope(raw: str) -> tuple[str, str] | None:
+    """``"author:andrew-murray"`` → ``("author", "andrew-murray")``.
+
+    Returns None for anything malformed, which searches the whole library. A
+    scope naming a place that doesn't EXIST is a different matter and is left to
+    the filters: they find nothing, which is the honest answer.
+    """
+    kind, _, slug = (raw or "").strip().lower().partition(":")
+    if kind in SCOPES and slug:
+        return kind, slug
+    return None
+
+
+#: How each scope kind names itself, given its row.
+_SCOPE_LABEL = {
+    "author": lambda row, language: row.name,
+    "topic": lambda row, language: row.title_for(language),
+    "book": lambda row, language: row.title,
+}
+
+
+def scope_entry(scope: tuple[str, str], language: str) -> dict | None:
+    """The scope as the reader sees it — ``{kind, slug, label}`` — or None.
+
+    Resolved here so the page can name the shelf it is searching without a second
+    request, and so a scope naming something that doesn't exist *in this
+    language* comes back as None rather than as a chip labelling a place the
+    reader can't reach. (There is no English fallback: a topic with no title in
+    Swahili is not a Swahili shelf.)
+
+    "Exists in this language" is asked of ``_base_querysets`` rather than
+    restated, so the chip can never name a shelf the search then finds nothing
+    in — the two answers come from the same filter.
+    """
+    kind, slug = scope
+    row = _base_querysets(language)[kind].filter(slug=slug).first()
+    label = _SCOPE_LABEL[kind](row, language) if row else None
+    return {"kind": kind, "slug": slug, "label": label} if label else None
+
+
+def _scoped(qs: dict, scope: tuple[str, str]) -> dict:
+    """Narrow every type to what lives inside one author / topic / book.
+
+    Only the things that can be *inside* a place take part: works and their
+    passages. Authors, topics and plans are ways in to a scope rather than
+    contents of one — searching within Andrew Murray and being shown Andrew
+    Murray is noise — so they match nothing and their chips simply don't appear.
+    Same for the scoped book itself: you are already in it.
+    """
+    kind, slug = scope
+    empty = {k: v.none() for k, v in qs.items()}
+    if kind == "author":
+        return {
+            **empty,
+            "book": qs["book"].filter(author__slug=slug),
+            "chapter": qs["chapter"].filter(book__author__slug=slug),
+            "sermon": qs["sermon"].filter(author__slug=slug),
+        }
+    if kind == "topic":
+        # Topic membership is by slug (see TopicBook) so it holds across
+        # languages — the scope means the same shelf whatever you're reading in.
+        # is_published on the topic as well as the works: an unpublished shelf
+        # narrows to published books, so nothing unreleased is returned — but
+        # diffing a scoped result set against an unscoped one would still read
+        # off a draft shelf's curation.
+        members = {"topic__slug": slug, "topic__is_published": True}
+        books = TopicBook.objects.filter(**members).values("book_slug")
+        sermons = TopicSermon.objects.filter(**members).values("sermon_slug")
+        return {
+            **empty,
+            "book": qs["book"].filter(slug__in=books),
+            "chapter": qs["chapter"].filter(book__slug__in=books),
+            "sermon": qs["sermon"].filter(slug__in=sermons),
+        }
+    if kind == "book":
+        return {**empty, "chapter": qs["chapter"].filter(book__slug=slug)}
+    # A kind in SCOPES with no branch here would otherwise fall through to
+    # whichever narrowing happened to be last — searching nothing is the safe
+    # failure, and parse_scope already rejects kinds this doesn't know.
+    return empty
+
+
+def _base_querysets(language: str, scope: tuple[str, str] | None = None) -> dict:
     """What is eligible to match, per type, in one place.
 
     Extracted because three things need it now — the merged search, the per-type
     counts and the per-type pages — and a count computed from a different filter
-    than the results is worse than no count at all.
+    than the results is worse than no count at all. ``scope`` narrows all three
+    together for the same reason.
     """
     chapters = Chapter.objects.filter(
         book__is_published=True, book__language=language
@@ -124,7 +219,7 @@ def _base_querysets(language: str) -> dict:
         .distinct()
         .prefetch_related("translations")
     )
-    return {
+    out = {
         "author": authors,
         "book": books,
         "topic": topics,
@@ -132,15 +227,17 @@ def _base_querysets(language: str) -> dict:
         "chapter": chapters,
         "sermon": sermons,
     }
+    return _scoped(out, scope) if scope else out
 
 
-def search_library(q: str, language: str) -> list[dict]:
+def search_library(q: str, language: str, scope=None) -> list[dict]:
     """Ranked search hits for ``q`` in ``language``.
 
     Entities (books, authors, topics, plans) plus passages (chapters, sermons),
-    merged and capped at ``MAX_RESULTS``.
+    merged and capped at ``MAX_RESULTS``. ``scope`` narrows the search to one
+    author / topic / book — see ``_scoped``.
     """
-    qs = _base_querysets(language)
+    qs = _base_querysets(language, scope)
     authors, books, topics = qs["author"], qs["book"], qs["topic"]
     plans, chapters, sermons = qs["plan"], qs["chapter"], qs["sermon"]
 
@@ -156,7 +253,7 @@ def search_library(q: str, language: str) -> list[dict]:
     # verse-id spans). Matched by verse id, so it works where plain text
     # search can't (abbreviations, chapter-only, a verse inside a range).
     extra = _scripture_sermon_hits(q, sermons, base)
-    cite_hits = _scripture_chapter_hits(q, language)
+    cite_hits = _scripture_chapter_hits(q, chapters)
     if cite_hits:
         # A chapter found by BOTH citation and plain text keeps its citation
         # hit (ranked by specificity, snippet centred on the reference) and
@@ -445,7 +542,7 @@ _ORDER = {
 SORTS = ("relevance", "title", "newest")
 
 
-def count_by_type(q: str, language: str) -> tuple[dict, dict]:
+def count_by_type(q: str, language: str, scope=None) -> tuple[dict, dict]:
     """(counts, capped) per type — how many matches actually exist.
 
     Counting stops at ``COUNT_CEILING`` and ``capped[kind]`` says when it did, so
@@ -456,7 +553,7 @@ def count_by_type(q: str, language: str) -> tuple[dict, dict]:
     ctx = _Ctx(q=q, language=language)
     counts: dict[str, int] = {}
     capped: dict[str, bool] = {}
-    for kind, qs in _base_querysets(language).items():
+    for kind, qs in _base_querysets(language, scope).items():
         n = _match(kind, ctx, qs).values("pk")[:COUNT_CEILING].count()
         if n:
             counts[kind] = n
@@ -485,6 +582,7 @@ def page_by_type(
     offset: int = 0,
     limit: int = PAGE_SIZE,
     sort: str = "relevance",
+    scope=None,
 ) -> list[dict]:
     """One type's matches, ordered and paged — the "show more" path.
 
@@ -496,7 +594,7 @@ def page_by_type(
     if kind not in CAPS:
         return []
     ctx = _Ctx(q=q, language=language)
-    qs = _match(kind, ctx, _base_querysets(language)[kind])
+    qs = _match(kind, ctx, _base_querysets(language, scope)[kind])
 
     if sort in ("title", "newest"):
         qs = qs.order_by(*_ORDER[kind][sort])
@@ -537,6 +635,10 @@ def _author_hit(a, ctx):
         "type": "author",
         "author_slug": a.slug,
         "author_name": a.name,
+        # A face and a cover make a list of titles scannable. Both may be blank,
+        # and the client renders text-only when they are — no placeholder, which
+        # would only add noise to a row that reads fine without one.
+        "photo_url": a.photo_url,
         "snippet": fallback_snippet(a.bio_for(ctx.language), ctx.q),
         "date": _date(a.created_at),
     }
@@ -548,6 +650,12 @@ def _book_hit(b, ctx):
         "book_slug": b.slug,
         "book_title": b.title,
         "author_name": b.author.name,
+        "cover_url": b.cover_url,
+        # The cover's dominant colour, so the reserved box is filled with
+        # something of the book's own while the image loads — and stays filled
+        # if it never does. Reserving the space is what stops the list reflowing
+        # under the reader's cursor.
+        "cover_color": b.cover_color,
         "snippet": fallback_snippet(b.description, ctx.q),
         "date": _date(b.created_at),
     }
@@ -582,6 +690,8 @@ def _chapter_hit(c, snippet):
         "author_name": c.book.author.name,
         "chapter_order": c.order,
         "chapter_title": c.title,
+        "cover_url": c.book.cover_url,
+        "cover_color": c.book.cover_color,
         "snippet": snippet,
         "date": _date(c.book.created_at),
     }
@@ -627,8 +737,13 @@ def _scripture_sermon_hits(q, sermons, base):
     return hits
 
 
-def _scripture_chapter_hits(q, language):
+def _scripture_chapter_hits(q, chapters):
     """Chapters whose body cites a reference overlapping the query's verses.
+
+    Takes the eligible ``chapters`` queryset rather than re-deriving it, so the
+    citation lead is published/language-filtered and SCOPED exactly like every
+    other kind of hit — searching inside one book must not surface a citation
+    from another.
 
     The verse-id range filter is only a PREFILTER: a multi-reference query
     ("John 3:16 and Romans 8:28") spans two books, and everything cited in
@@ -649,8 +764,7 @@ def _scripture_chapter_hits(q, language):
     rows = ChapterCitation.objects.filter(
         start_verse_id__lte=max(target),
         end_verse_id__gte=min(target),
-        chapter__book__is_published=True,
-        chapter__book__language=language,
+        chapter__in=chapters.values("pk"),
     ).values("chapter_id", "start_verse_id", "end_verse_id", "count", "ref_text")
     matches = [
         r

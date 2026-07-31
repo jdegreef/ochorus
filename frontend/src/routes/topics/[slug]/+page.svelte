@@ -4,6 +4,7 @@
 	import { absUrl, jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import { scopedSearchHref } from '$lib/searchState';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import SermonCard from '$lib/components/SermonCard.svelte';
 	import Seo from '$lib/components/Seo.svelte';
@@ -93,6 +94,15 @@
 					{topic.sermons.length === 1 ? t('common.sermonOne') : t('common.sermonMany')}
 				{/if}
 			</p>
+			<!-- A topic is a shelf, and a shelf you can't search is a list you have
+			     to read end to end. -->
+			{#if topic.books.length || topic.sermons.length}
+				<a
+					href={localizeHref(scopedSearchHref('topic', topic.slug))}
+					class="mt-3 inline-block text-small font-semibold text-accent hover:underline"
+					>{t('search.inTopic')} →</a
+				>
+			{/if}
 		</div>
 	</header>
 
