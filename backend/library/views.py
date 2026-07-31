@@ -9,20 +9,34 @@ import logging
 from django.db.models import Count, Q, Sum
 from django.http import Http404
 from django.shortcuts import get_object_or_404
-from rest_framework import generics
+from rest_framework import generics, status
 from rest_framework.response import Response
+from rest_framework.parsers import JSONParser
+from rest_framework.throttling import UserRateThrottle
 from rest_framework.views import APIView
 
 from . import languages as languages_module
 from .languages import entry as language_entry
 from .localization import DEFAULT_LANGUAGE, language_from_request
-from .models import Author, Book, Chapter, Plan, SearchQueryLog, Sermon, Topic
+from .models import (
+    Author,
+    Book,
+    Chapter,
+    Plan,
+    SearchClickLog,
+    SearchQueryLog,
+    Sermon,
+    Topic,
+)
 from .search import (
+    CAPS,
     MIN_QUERY_LEN,
     PAGE_SIZE,
     SORTS,
     count_by_type,
     page_by_type,
+    parse_scope,
+    scope_entry,
     search_library,
     suggest,
 )
@@ -396,8 +410,21 @@ class SearchView(APIView):
     def get(self, request):
         q = (request.query_params.get("q") or "").strip()
         language = _language(request)
+
+        # "Search inside this author / topic / book". Narrows every type at once
+        # (library.search._scoped), so the counts and the "show more" pages agree
+        # with the list — a scope the results honoured but the counts didn't
+        # would be worse than no scope at all.
+        scope = parse_scope(request.query_params.get("in") or "")
+
         if len(q) < MIN_QUERY_LEN:
-            return Response({"query": q, "results": []})
+            # Resolved even with nothing to search for: a reader arrives here
+            # from "search inside this book" before typing anything, and the
+            # page has to be able to name the shelf they are standing in.
+            empty = {"query": q, "results": []}
+            if scope:
+                empty["scope"] = scope_entry(scope, language)
+            return Response(empty)
 
         # "Show more of this type", and the sort that goes with it. A separate
         # branch on purpose: it returns one type rather than the merged list, it
@@ -406,10 +433,10 @@ class SearchView(APIView):
         # as one would quietly inflate the popular-queries report.
         kind = (request.query_params.get("type") or "").strip().lower()
         if kind:
-            return Response(self._page(q, language, kind, request))
+            return Response(self._page(q, language, kind, request, scope))
 
-        results = search_library(q, language)
-        counts, capped = count_by_type(q, language)
+        results = search_library(q, language, scope)
+        counts, capped = count_by_type(q, language, scope)
         payload = {
             "query": q,
             "results": results,
@@ -420,9 +447,19 @@ class SearchView(APIView):
             "totals_capped": capped,
             "page_size": PAGE_SIZE,
         }
+        if scope:
+            # Resolved (or dropped) here so the page can name the shelf without a
+            # second request. None means the place doesn't exist in this
+            # language, and the page says so rather than showing an empty list
+            # under a confident label.
+            payload["scope"] = scope_entry(scope, language)
         # Only pay the fuzzy-match cost when nothing was found — the "did you
-        # mean" case. A hit means the spelling was close enough already.
-        if not results:
+        # mean" case. A hit means the spelling was close enough already. Not
+        # offered inside a scope: the suggester looks at the whole library, so
+        # it would propose a spelling this author never used and send the reader
+        # to a second empty page. Inside a scope, empty usually means "not
+        # here", and the way out is to widen the search, not to respell it.
+        if not results and not scope:
             hint = suggest(q, language)
             if hint:
                 payload["suggestion"] = hint
@@ -431,6 +468,13 @@ class SearchView(APIView):
         # level on purpose — an exception-level event would carry the request
         # URL (raw ?q= text) into Sentry and fire once per search during a
         # durable DB issue; server logs still record it.
+        #
+        # SCOPED searches are not logged. A scoped miss means "this author
+        # didn't write about that", not "the library lacks it" — recording it
+        # would put phantom gaps into the translation worklist that the
+        # zero-result report exists to produce.
+        if scope:
+            return Response(payload)
         try:
             SearchQueryLog.objects.create(
                 query=q[:200],
@@ -442,7 +486,7 @@ class SearchView(APIView):
             logger.warning("search query logging failed", exc_info=True)
         return Response(payload)
 
-    def _page(self, q, language, kind, request):
+    def _page(self, q, language, kind, request, scope=None):
         def _int(name, default, high):
             try:
                 return max(0, min(high, int(request.query_params.get(name, default))))
@@ -460,7 +504,7 @@ class SearchView(APIView):
             "sort": sort,
             "offset": offset,
             "results": page_by_type(
-                q, language, kind, offset=offset, limit=limit, sort=sort
+                q, language, kind, offset=offset, limit=limit, sort=sort, scope=scope
             ),
         }
 
@@ -502,6 +546,83 @@ class PopularSearchesView(APIView):
             .order_by("-count", "q")[: self.LIMIT]
         )
         return Response({"queries": [r["q"] for r in rows]})
+
+
+class _SearchClickThrottle(UserRateThrottle):
+    """Its own bucket, so the one write endpoint can't ride the reader's quota
+    (and vice versa). Rate in settings.REST_FRAMEWORK.DEFAULT_THROTTLE_RATES.
+
+    ``UserRateThrottle`` rather than ``AnonRateThrottle``: the latter exempts
+    authenticated requests by design, and ``apiFetch`` sends the reader's
+    Supabase token on every call — so the "anonymous" throttle would have
+    covered nobody who had signed up. This keys on the account when there is
+    one and the client address otherwise, which is the population that needs
+    bounding either way.
+    """
+
+    scope = "search-click"
+
+
+class SearchClickView(APIView):
+    """Record that a search result was opened. Anonymous, fire-and-forget.
+
+    The half of search analytics the query log can't see: it knows a query
+    returned forty matches, not whether any of them was the one. A query with
+    plenty of results and no opens is a *silent* failure — invisible in the
+    zero-result report, and often a better content signal than the loud one.
+
+    The one write endpoint on a read-only API, so it is bounded rather than
+    trusted: the query must be a string of sane length, the type must be one the
+    search actually produces, the position must be inside a page the reader
+    could have been shown, and it is throttled per account-or-address. Apart
+    from a throttle rejection it answers 204 whatever happens — there is nothing
+    to tell the browser, and nothing worth telling a prober.
+
+    **JSON only.** Not a formality: an ``APIView`` is CSRF-exempt and this API
+    authenticates by bearer token, so with the form parser enabled any page on
+    the internet could make its visitors write rows here with a plain
+    cross-origin ``<form>`` — no preflight, CORS irrelevant for a write nobody
+    reads back. Requiring ``application/json`` means the browser must preflight,
+    and the forged-form route closes.
+    """
+
+    parser_classes = [JSONParser]
+    throttle_classes = [_SearchClickThrottle]
+
+    #: A click can only come from a page the reader was served, and both the
+    #: merged list and a "show more" page are bounded well below this.
+    MAX_POSITION = SearchView.MAX_OFFSET + PAGE_SIZE
+
+    def post(self, request):
+        data = request.data if isinstance(request.data, dict) else {}
+        raw_q = data.get("query")
+        # A string, not str() of whatever arrived: a posted list would otherwise
+        # be stored as "['a', 'b']" — junk in the report rather than a rejection.
+        q = raw_q.strip() if isinstance(raw_q, str) else ""
+        raw_type = data.get("type")
+        result_type = raw_type.strip().lower() if isinstance(raw_type, str) else ""
+        try:
+            position = int(data.get("position"))
+        except (TypeError, ValueError):
+            position = 0
+
+        if (
+            MIN_QUERY_LEN <= len(q) <= 200
+            and result_type in CAPS
+            and 1 <= position <= self.MAX_POSITION
+        ):
+            # Fail-open like the query log: analytics must never be the reason a
+            # reader's click doesn't open what they clicked.
+            try:
+                SearchClickLog.objects.create(
+                    query=q,
+                    language=_language(request)[:10],
+                    result_type=result_type,
+                    position=position,
+                )
+            except Exception:
+                logger.warning("search click logging failed", exc_info=True)
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class ScriptureView(APIView):

@@ -692,6 +692,47 @@ class SearchQueryLog(models.Model):
         return f"{self.query!r} [{self.language}] → {self.result_count}"
 
 
+class SearchClickLog(models.Model):
+    """A search result a reader actually opened — anonymous, like the query log.
+
+    The question ``SearchQueryLog`` cannot answer. A query that returns forty
+    matches and a query that returns the RIGHT match are indistinguishable
+    there: both are "found something". The zero-result report therefore sees
+    only the loudest failure, while a query answered with forty near-misses
+    looks like a success. This is the other half — what got opened, from which
+    position, and of which kind.
+
+    Deliberately NOT a foreign key to a ``SearchQueryLog`` row. Handing the
+    browser a row id to post back would make an analytics table writable by
+    anything that can guess an integer; keying on the query text instead keeps
+    both tables independent and anonymous, and they still join in aggregate,
+    which is all the report needs.
+
+    Pruned by the same ``trim_search_log`` release step.
+    """
+
+    query = models.CharField(max_length=200)
+    language = models.CharField(max_length=10)
+    #: Which kind of hit was opened — one of library.search's types.
+    result_type = models.CharField(max_length=20)
+    #: How far down the rendered list the opened result sat, 1-based.
+    #:
+    #: Read it as "did they have to hunt", not as a relevance rank, and don't
+    #: average it across views. The merged list is ordered by TYPE first (books
+    #: before passages, see the frontend's GROUP_ORDER), so a sermon can't be
+    #: position 1 whenever a book matched; and with a type facet selected the
+    #: same column becomes the rank within that one type. The signal this table
+    #: exists for is whether a result was opened at all — that part is exact.
+    position = models.PositiveSmallIntegerField()
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+
+    def __str__(self) -> str:
+        return f"{self.query!r} [{self.language}] → {self.result_type} #{self.position}"
+
+
 class Language(models.Model):
     """A content language the site knows about, and whether readers can see it.
 

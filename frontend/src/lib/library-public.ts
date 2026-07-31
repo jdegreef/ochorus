@@ -189,6 +189,20 @@ export interface SearchResponse {
 	totals_capped?: Partial<Record<SearchType, boolean>>;
 	/** Rows per "show more" page. */
 	page_size?: number;
+	/**
+	 * The shelf this search was narrowed to, resolved server-side so the page can
+	 * name it. Present only when `?in=` was sent; **null** when it named a place
+	 * that doesn't exist in this language — an empty list under a confident
+	 * label would be a lie, so the page says the shelf isn't there.
+	 */
+	scope?: SearchScope | null;
+}
+
+/** A place a search was narrowed to — see `library.search.scope_entry`. */
+export interface SearchScope {
+	kind: 'author' | 'topic' | 'book';
+	slug: string;
+	label: string;
 }
 
 /** One type's matches, ordered over ALL of them — the "show more" response. */
@@ -336,10 +350,33 @@ export const createAuthor = (name: string) =>
 export const getSermon = (slug: string, language = 'en') =>
 	localized<Sermon>((l) => `/api/library/sermons/${slug}/?language=${l}`, language);
 
-export const search = (q: string, language = 'en') =>
-	apiFetch<SearchResponse>(
-		`/api/library/search/?q=${encodeURIComponent(q)}&language=${language}`
-	);
+export const search = (q: string, language = 'en', scope = '') => {
+	const params = new URLSearchParams({ q, language });
+	if (scope) params.set('in', scope);
+	return apiFetch<SearchResponse>(`/api/library/search/?${params}`);
+};
+
+/**
+ * Tell the server a search result was opened — anonymous, fire-and-forget.
+ *
+ * The only signal that separates "the search found forty things" from "the
+ * search found the thing". `position` is the 1-based rank in the list the
+ * reader was actually shown.
+ */
+export const recordSearchClick = (
+	query: string,
+	type: SearchType,
+	position: number,
+	language = 'en'
+) =>
+	// The language rides in the query string because that is the only place the
+	// server reads it from (`language_from_request`). Posting without it recorded
+	// every click as English, which would have made the first per-language
+	// click-through report read as "nobody but English readers finds anything".
+	apiFetch<void>(`/api/library/search-click/?language=${encodeURIComponent(language)}`, {
+		method: 'POST',
+		body: JSON.stringify({ query, type, position })
+	});
 
 /**
  * More of ONE type, ordered over every match rather than over the page the
@@ -350,11 +387,13 @@ export const searchPage = (
 	q: string,
 	language: string,
 	type: SearchType,
-	opts: { offset?: number; sort?: SearchSort } = {}
+	opts: { offset?: number; sort?: SearchSort; scope?: string } = {}
 ) => {
 	const params = new URLSearchParams({ q, language, type });
 	if (opts.offset) params.set('offset', String(opts.offset));
 	if (opts.sort && opts.sort !== 'relevance') params.set('sort', opts.sort);
+	// Same scope the merged list used, or "show more" would page out of the shelf.
+	if (opts.scope) params.set('in', opts.scope);
 	return apiFetch<SearchPageResponse>(`/api/library/search/?${params}`);
 };
 
