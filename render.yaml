@@ -2,6 +2,19 @@
 # In Render: New → Blueprint → connect this GitHub repo. You'll be prompted to
 # fill in the values marked `sync: false`. See DEPLOYMENT.md for the full walk-through.
 
+# Preview environments: MANUAL, not automatic. A preview spins up a copy of
+# BOTH services, and ochorus-api is a Docker web service on a paid plan — so
+# `automatic` would launch (and bill) a full API preview on every PR, and the
+# large majority of PRs here are content churn (bio translations, prerender
+# refreshes) that need no preview at all. `manual` means a preview is created
+# only when you ask for one — from the Render dashboard on a PR, or by
+# commenting on the PR — which is exactly the "verify an infra/render.yaml
+# change before it hits prod" case this exists for (e.g. the 404-status fix).
+# Previews auto-delete after a few idle days so stale ones don't accumulate.
+previews:
+  generation: manual
+  expireAfterDays: 3
+
 services:
   # --- Django API (Docker web service) -------------------------------------
   - name: ochorus-api
