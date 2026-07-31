@@ -308,7 +308,7 @@
 							<span class="mb-1 block text-muted">Take Root code</span>
 							<input
 								class="w-40 rounded-lg border border-border bg-bg px-2 py-1 text-body"
-								placeholder="hin-irv"
+								placeholder="irvhin"
 								bind:value={bibleCode}
 								required
 							/>

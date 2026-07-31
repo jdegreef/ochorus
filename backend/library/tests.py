@@ -3882,7 +3882,7 @@ class LanguageRegistrySeedTests(TestCase):
         call_command("seed_languages")
         codes = set(Language.objects.values_list("code", flat=True))
         # English (the source) plus every translation target.
-        self.assertEqual(codes, {"en", "es", "sw", "lg", "pt", "ar"})
+        self.assertEqual(codes, {"en", "es", "sw", "lg", "pt", "ar", "hi"})
 
         en = Language.objects.get(code="en")
         self.assertTrue(en.is_source)
@@ -4506,14 +4506,28 @@ class AdminDashboardLanguageListTests(TestCase):
         self.assertIn("en-modern", self._rows())
 
 
-HINDI = {
-    "code": "hi",
-    "name": "Hindi",
-    "native_name": "हिन्दी",
-    "bible_code": "hin-irv",
-    "bible_label": "Indian Revised Version",
-    "glossary": {t: f"hi-{t}" for t in GLOSSARY_TERMS},
+# A deliberately FICTIONAL language for the admin-created path. It used to be
+# Hindi, which collided the moment Hindi became a real seeded language: these
+# tests assert an admin-created row can be edited, and a repo-defined one is
+# correctly refused with 409. "zz" is unassigned in ISO 639 and will never be a
+# real target, so the fixture cannot be overtaken again. Pinned below.
+INVENTED = {
+    "code": "zz",
+    "name": "Testish",
+    "native_name": "Testish",
+    "bible_code": "irvhin",  # any code the verifier accepts; mocked in these tests
+    "bible_label": "Stand-in Version",
+    "glossary": {t: f"zz-{t}" for t in GLOSSARY_TERMS},
 }
+
+
+class InventedLanguageFixtureTests(SimpleTestCase):
+    def test_the_fixture_language_is_not_a_real_one(self):
+        """If this ever fails, the admin-created tests are silently asserting
+        against a repo-defined language and will start returning 409."""
+        from library.language_seed import SEED_LANGUAGES
+
+        self.assertNotIn(INVENTED["code"], SEED_LANGUAGES)
 
 
 class AdminAddLanguageTests(TestCase):
@@ -4559,7 +4573,7 @@ class AdminAddLanguageTests(TestCase):
 
     def _post(self, payload=None, **kw):
         with self._admin(**kw):
-            return self.client.post("/api/admin/languages/", payload or HINDI, format="json")
+            return self.client.post("/api/admin/languages/", payload or INVENTED, format="json")
 
     def test_creating_a_language_makes_it_translatable(self):
         from library import languages as languages_module
@@ -4568,15 +4582,15 @@ class AdminAddLanguageTests(TestCase):
         self.assertEqual(res.status_code, 201, res.data)
         languages_module.invalidate()
 
-        lang = Language.objects.get(code="hi")
+        lang = Language.objects.get(code="zz")
         self.assertEqual(lang.status, Language.Status.DRAFT, "creating is not launching")
         self.assertFalse(lang.is_source)
 
         # The real test: the translator can read its config off the new row.
-        cfg = language_config("hi")
-        self.assertEqual(cfg["bible"], "hin-irv")
+        cfg = language_config("zz")
+        self.assertEqual(cfg["bible"], INVENTED["bible_code"])
         self.assertEqual(set(cfg["glossary"]), set(GLOSSARY_TERMS))
-        verify_glossary("hi")  # must not raise
+        verify_glossary("zz")  # must not raise
 
     def test_a_new_language_is_immediately_reachable_in_the_admin(self):
         from unittest.mock import patch
@@ -4587,45 +4601,45 @@ class AdminAddLanguageTests(TestCase):
         languages_module.invalidate()
         with patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True):
             rows = {r["code"] for r in self.client.get("/api/admin/stats/").data["languages"]}
-        self.assertIn("hi", rows)
+        self.assertIn("zz", rows)
 
     def test_a_new_language_is_not_advertised_to_readers(self):
         # Created as draft, so the build's live-locale list must not pick it up.
         self._post()
         res = self.client.get("/api/library/languages/")
-        self.assertNotIn("hi", [r["code"] for r in res.data])
+        self.assertNotIn("zz", [r["code"] for r in res.data])
 
     def test_duplicate_code_is_rejected(self):
-        self.assertEqual(self._post(dict(HINDI, code="pt")).status_code, 409)
+        self.assertEqual(self._post(dict(INVENTED, code="pt")).status_code, 409)
 
     def test_a_malformed_code_is_rejected(self):
         for bad in ("", "H", "english", "hi_IN", "../etc"):
             with self.subTest(code=bad):
-                self.assertEqual(self._post(dict(HINDI, code=bad)).status_code, 400)
+                self.assertEqual(self._post(dict(INVENTED, code=bad)).status_code, 400)
 
     def test_the_code_is_normalised(self):
-        self.assertEqual(self._post(dict(HINDI, code=" HI ")).status_code, 201)
-        self.assertTrue(Language.objects.filter(code="hi").exists())
+        self.assertEqual(self._post(dict(INVENTED, code=" ZZ ")).status_code, 201)
+        self.assertTrue(Language.objects.filter(code="zz").exists())
 
     def test_a_partial_glossary_is_rejected(self):
-        payload = dict(HINDI, glossary={"grace": "अनुग्रह"})
+        payload = dict(INVENTED, glossary={"grace": "अनुग्रह"})
         res = self._post(payload)
         self.assertEqual(res.status_code, 400)
         self.assertIn("justification", res.data["detail"])
         self.assertFalse(Language.objects.filter(code="hi").exists())
 
     def test_an_unknown_glossary_term_is_rejected(self):
-        payload = dict(HINDI, glossary=dict(HINDI["glossary"], predestination="x"))
+        payload = dict(INVENTED, glossary=dict(INVENTED["glossary"], predestination="x"))
         res = self._post(payload)
         self.assertEqual(res.status_code, 400)
         self.assertIn("predestination", res.data["detail"])
 
     def test_names_are_required(self):
-        self.assertEqual(self._post(dict(HINDI, native_name="  ")).status_code, 400)
-        self.assertEqual(self._post(dict(HINDI, name="")).status_code, 400)
+        self.assertEqual(self._post(dict(INVENTED, native_name="  ")).status_code, 400)
+        self.assertEqual(self._post(dict(INVENTED, name="")).status_code, 400)
 
     def test_a_bible_code_is_required(self):
-        self.assertEqual(self._post(dict(HINDI, bible_code="")).status_code, 400)
+        self.assertEqual(self._post(dict(INVENTED, bible_code="")).status_code, 400)
 
     def test_a_bible_code_that_does_not_resolve_is_rejected(self):
         res = self._post(verses=False)
@@ -4645,7 +4659,7 @@ class AdminAddLanguageTests(TestCase):
     def test_the_response_says_what_still_has_to_happen(self):
         res = self._post()
         joined = " ".join(res.data["next_steps"])
-        self.assertIn("messages/hi.json", joined, "the UI catalogue gap must be stated")
+        self.assertIn("messages/zz.json", joined, "the UI catalogue gap must be stated")
         self.assertIn("Go live", joined)
 
 
@@ -4663,15 +4677,15 @@ class AdminLanguageSettingsTests(TestCase):
                 f"/api/admin/languages/{code}/settings/", payload, format="json"
             )
 
-    def _create_hindi(self):
+    def _create_invented(self):
         with self.helper._admin():
-            return self.client.post("/api/admin/languages/", HINDI, format="json")
+            return self.client.post("/api/admin/languages/", INVENTED, format="json")
 
     def test_an_admin_created_language_can_be_edited(self):
-        self._create_hindi()
-        res = self._patch("hi", {"bible_label": "IRV (2019)", "rtl": False})
+        self._create_invented()
+        res = self._patch("zz", {"bible_label": "IRV (2019)", "rtl": False})
         self.assertEqual(res.status_code, 200, res.data)
-        self.assertEqual(Language.objects.get(code="hi").bible_label, "IRV (2019)")
+        self.assertEqual(Language.objects.get(code="zz").bible_label, "IRV (2019)")
 
     def test_a_repo_defined_language_is_refused_rather_than_silently_reverted(self):
         res = self._patch("pt", {"name": "Portugues"})
@@ -4680,18 +4694,18 @@ class AdminLanguageSettingsTests(TestCase):
         self.assertEqual(Language.objects.get(code="pt").name, "Portuguese")
 
     def test_a_partial_glossary_cannot_be_saved_later_either(self):
-        self._create_hindi()
-        res = self._patch("hi", {"glossary": {"grace": "अनुग्रह"}})
+        self._create_invented()
+        res = self._patch("zz", {"glossary": {"grace": "अनुग्रह"}})
         self.assertEqual(res.status_code, 400)
         self.assertEqual(
-            set(Language.objects.get(code="hi").glossary), set(GLOSSARY_TERMS)
+            set(Language.objects.get(code="zz").glossary), set(GLOSSARY_TERMS)
         )
 
     def test_a_bible_code_change_is_verified_too(self):
-        self._create_hindi()
-        res = self._patch("hi", {"bible_code": "nope"}, verses=False)
+        self._create_invented()
+        res = self._patch("zz", {"bible_code": "nope"}, verses=False)
         self.assertEqual(res.status_code, 400)
-        self.assertEqual(Language.objects.get(code="hi").bible_code, "hin-irv")
+        self.assertEqual(Language.objects.get(code="zz").bible_code, INVENTED["bible_code"])
 
     def test_unknown_language_is_404(self):
         self.assertEqual(self._patch("zz", {"name": "X"}).status_code, 404)
@@ -4700,10 +4714,10 @@ class AdminLanguageSettingsTests(TestCase):
         # The other half of the create-only rule: the seed re-asserts identity
         # for languages IT defines. A language the admin invented isn't in the
         # seed table, so nothing about it may be rewritten by a deploy.
-        self._create_hindi()
-        self._patch("hi", {"name": "Hindi (India)"})
+        self._create_invented()
+        self._patch("zz", {"name": "Hindi (India)"})
         call_command("seed_languages")
-        self.assertEqual(Language.objects.get(code="hi").name, "Hindi (India)")
+        self.assertEqual(Language.objects.get(code="zz").name, "Hindi (India)")
 
 
 class UiCatalogueCheckTests(TestCase):
