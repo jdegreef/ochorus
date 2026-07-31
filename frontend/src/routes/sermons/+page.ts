@@ -61,6 +61,15 @@ import type { PageLoad } from './$types';
  * Prerender refresh 2026-07-30 (queue job #606): the Swahili edition of Moody's
  * Eight "I Wills" of Christ ships — Ahadi Nane za "Nitafanya" za Kristo — so the
  * /sw/sermons pages re-crawl and bake the new title.
+ *
+ * Prerender refresh 2026-07-31 (queue jobs #631/#632/#633/#634): the FIRST
+ * ARABIC SERMONS in the library — Spurgeon's عدم تغيّر الله (The Immutability of
+ * God), Moody's حنان المسيح الذي لا حدّ له (Christ's Boundless Compassion),
+ * Hudson Taylor's ينابيع لا تنضب (Unfailing Springs) and A. B. Simpson's
+ * إمكانات الإيمان (The Possibilities of Faith). Arabic is RTL: the bodies carry
+ * no dir/lang of their own, so /ar/sermons and each /ar/sermons/<slug> render
+ * under the container's dir="auto" (see readerDirection.test.ts) and re-crawl
+ * to bake the translated titles.
  */
 export const load: PageLoad = async () => {
 	// Tolerate a lagging/absent sermon endpoint at prerender time (see the
