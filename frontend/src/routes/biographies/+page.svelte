@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, tick } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { type AuthorBio, type BookSummary } from '$lib/library';
@@ -116,6 +116,18 @@
 
 	// Count summary + whether any narrowing is active (sort doesn't count).
 	const isFiltered = $derived(queryText.trim() !== '' || filter !== 'all' || fullBioOnly);
+
+	/** Reveal the page holding `slug`, then scroll to it once it has painted. */
+	function jumpTo(slug: string) {
+		const i = sorted.findIndex((a) => a.slug === slug);
+		if (i < 0) return;
+		const needed = Math.ceil((i + 1) / PER_PAGE);
+		if (needed > pageNum) pageNum = needed;
+		// The row may not exist yet this frame; wait for the render it triggered.
+		tick().then(() =>
+			document.getElementById(slug)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+		);
+	}
 
 	// A–Z jump targets for the name sort: first writer per initial letter. Each
 	// card already carries id={slug} + scroll-mt, so the rail links to #<slug>.
@@ -339,10 +351,14 @@
 		<nav class="mt-1.5 hidden flex-wrap gap-x-1 gap-y-0.5 text-small sm:flex" aria-label={t('bios.jumpAz')}>
 			{#each AZ as letter (letter)}
 				{#if firstByLetter.has(letter)}
-					<a
-						href="#{firstByLetter.get(letter)}"
-						class="rounded px-1.5 py-0.5 font-semibold text-accent hover:bg-accent-soft hover:no-underline"
-						>{letter}</a
+					<!-- A BUTTON, not an anchor. Paging paints 24 rows, so a writer under
+					     a late letter has no element to anchor to yet — the prerender
+					     crawler caught exactly that ("no element with id=r-a-torrey").
+					     Reveal first, then scroll; and with no href there is no dangling
+					     fragment in the static output. -->
+					<button
+						class="rounded px-1.5 py-0.5 font-semibold text-accent hover:bg-accent-soft"
+						onclick={() => jumpTo(firstByLetter.get(letter)!)}>{letter}</button
 					>
 				{:else}
 					<span class="px-1.5 py-0.5 text-muted opacity-40" aria-hidden="true">{letter}</span>
