@@ -131,4 +131,40 @@ SEED_LANGUAGES: dict[str, dict] = {
             "surrender": "التسليم",
         },
     },
+    "hi": {
+        "name": "Hindi",
+        "native": "हिन्दी",
+        # Indian Revised Version — a formal-equivalence revision in the classical
+        # register Hindi Christian readers expect, and the text most Hindi
+        # churches quote. Verified against the live API (hin-irv, the obvious
+        # guess and the form's old placeholder, 404s).
+        #
+        # CC BY-SA 4.0, © 2017-2019 Bridge Connectivity Solutions — the only
+        # Hindi Bibles on Take Root are licensed (the alternative, hincv, is
+        # Biblica's). Share-Alike binds derivatives of the Bible text itself, not
+        # the library that quotes it, but it does want the credit line carried
+        # wherever the verses are shown.
+        "bible": "irvhin",
+        "bible_label": "Indian Revised Version (IRV), Hindi",
+        # 8 of these 11 appear verbatim in the IRV itself (checked against
+        # Eph 2, Rom 3/8, John 14/15, 1 Thess 4, 1 Tim 4, Phil 2). The three that
+        # do not are where the IRV uses a verbal construction and devotional
+        # prose needs a noun: "justification" follows the IRV's own root
+        # (धर्मी ठहरे, Rom 5:1); "intercession" and "surrender" take the nouns
+        # Hindi Christian writing uses, where the IRV has निवेदन करता है
+        # (Rom 8:34) and चढ़ाओ (Rom 12:1).
+        "glossary": {
+            "justification": "धर्मी ठहराया जाना",
+            "sanctification": "पवित्रीकरण",
+            "atonement": "प्रायश्चित्त",
+            "grace": "अनुग्रह",
+            "the flesh": "शरीर",
+            "abide": "बने रहना",
+            "the Holy Spirit": "पवित्र आत्मा",
+            "the Lord": "प्रभु",
+            "godliness": "भक्ति",
+            "intercession": "मध्यस्थता",
+            "surrender": "समर्पण",
+        },
+    },
 }
