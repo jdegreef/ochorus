@@ -2,10 +2,13 @@
 	import { onMount } from 'svelte';
 	import {
 		search,
+		searchPage,
 		listTopics,
 		getPopularSearches,
 		type SearchHit,
 		type ChapterHit,
+		type SearchSort,
+		type SearchType,
 		type TopicSummary
 	} from '$lib/library';
 	import { getLang } from '$lib/lang.svelte';
@@ -114,20 +117,33 @@
 	// Monotonic token: only the newest in-flight search may write the results.
 	let searchSeq = 0;
 
+	// How many matches EXIST per type. The merged list above is capped per type
+	// (so no one kind crowds out the others), which used to be invisible: the
+	// page reported the number of rows it had been handed, and a search matching
+	// four hundred passages rendered "30 results". These are what let it say
+	// "20 of 400" instead.
+	let totals = $state<Partial<Record<SearchType, number>>>({});
+	let totalsCapped = $state<Partial<Record<SearchType, boolean>>>({});
+	let pageSize = $state(20);
+
+	// Selecting a type hands that section over to the server: it returns matches
+	// ordered across ALL of them, and "show more" pages through. `typeRows` is
+	// null while showing the merged list.
+	let typeRows = $state<SearchHit[] | null>(null);
+	let typeLoading = $state(false);
+	let typeSeq = 0;
+
+
 	type ResultRow = Row & { type: SearchHit['type'] };
 	const rows = $derived<ResultRow[]>(hits.map((h) => ({ ...toRow(h), type: h.type })));
 
-	// Sort order applied *within* each type section (grouping stays by type).
-	// 'relevance' keeps the server's ranking; the others reorder the fetched set
-	// locally — no round-trip. Array.sort is stable, so ties keep relevance order.
-	type SortMode = 'relevance' | 'title' | 'newest';
-	let sortMode = $state<SortMode>('relevance');
-	const SORTS: SortMode[] = ['relevance', 'title', 'newest'];
-	function sorted<T extends { title: string; date: string }>(arr: T[]): T[] {
-		if (sortMode === 'title') return [...arr].sort((a, b) => a.title.localeCompare(b.title));
-		if (sortMode === 'newest') return [...arr].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
-		return arr;
-	}
+	// Sort is the SERVER's job, and only offered once a type is selected. It used
+	// to reorder the fetched rows in the browser, which meant "newest" showed the
+	// newest of the thirty most relevant — a different question than the one the
+	// control asks. Ordering the full match set is the only way it can be true,
+	// and that needs the per-type endpoint.
+	let sortMode = $state<SearchSort>('relevance');
+	const SORTS: SearchSort[] = ['relevance', 'title', 'newest'];
 
 	// Cluster the flat result list into type sections in a fixed reading order —
 	// navigational entities first, passages last — keeping only sections present.
@@ -149,20 +165,55 @@
 		return GROUP_ORDER.filter((g) => by.has(g.type)).map((g) => ({
 			type: g.type,
 			labelKey: g.labelKey,
-			rows: sorted(by.get(g.type)!)
+			rows: by.get(g.type)!
 		}));
 	});
 
 	// Type facet: narrow the result set to one kind. Chips are built from the
-	// groups actually present (with counts); selecting one shows only that
-	// section. Reset to "all" on each new query.
+	// groups actually present, labelled with the REAL total rather than how many
+	// rows the merged list happened to carry. Reset to "all" on each new query.
 	let typeFilter = $state('all');
-	const shownGroups = $derived(
-		typeFilter === 'all' || !groups.some((g) => g.type === typeFilter)
-			? groups
-			: groups.filter((g) => g.type === typeFilter)
+
+	/** Rows for the selected type, from the server once its page has landed. */
+	const typeGroupRows = $derived<ResultRow[]>(
+		typeRows ? typeRows.map((h) => ({ ...toRow(h), type: h.type })) : []
 	);
+
+	const shownGroups = $derived.by(() => {
+		if (typeFilter === 'all') return groups;
+		const g = GROUP_ORDER.find((x) => x.type === typeFilter);
+		if (!g) return groups;
+		// Fall back to the merged subset until the type's own page arrives, so
+		// selecting a chip never blanks the list mid-flight.
+		const merged = groups.find((x) => x.type === typeFilter)?.rows ?? [];
+		return [{ type: g.type, labelKey: g.labelKey, rows: typeRows ? typeGroupRows : merged }];
+	});
 	const shownCount = $derived(shownGroups.reduce((n, g) => n + g.rows.length, 0));
+
+	/** How many matches of `type` exist — the server's count, else what we hold. */
+	function totalFor(type: SearchType, loaded: number): number {
+		return totals[type] ?? loaded;
+	}
+	/** True when the count stopped at the server's ceiling ("200+"). */
+	function isCapped(type: SearchType): boolean {
+		return totalsCapped[type] === true;
+	}
+	/**
+	 * Every match across every type. The mixed list is capped per type, so this is
+	 * usually far larger than what is on screen — and saying "30 results" when it
+	 * is 251 was the whole problem.
+	 */
+	const grandTotal = $derived(
+		groups.reduce((n, g) => n + totalFor(g.type, g.rows.length), 0)
+	);
+	const anyCapped = $derived(groups.some((g) => isCapped(g.type)));
+
+	/** Matches of the selected type not yet loaded. */
+	const remaining = $derived(
+		typeFilter === 'all' || !typeRows
+			? 0
+			: Math.max(0, (totals[typeFilter as SearchType] ?? 0) - typeRows.length)
+	);
 
 	// Within the Passages section, collapse a book's chapter matches under the
 	// book so "where does this theme live across the work" reads as a map, not a
@@ -178,8 +229,11 @@
 		chapters: { key: string; order: number; title: string; snippet: string }[];
 	};
 	const passageBooks = $derived.by<PassageBook[]>(() => {
+		// The selected type's own page when there is one, else the merged list —
+		// otherwise "show more" would load passages the map never rendered.
+		const source = typeFilter === 'chapter' && typeRows ? typeRows : hits;
 		const by = new Map<string, PassageBook>();
-		for (const h of hits) {
+		for (const h of source) {
 			if (h.type !== 'chapter') continue;
 			const c = h as ChapterHit;
 			let g = by.get(c.book_slug);
@@ -200,8 +254,8 @@
 				snippet: c.snippet
 			});
 		}
-		// The sort toggle reorders the books; chapters keep their in-book order.
-		return sorted([...by.values()]);
+		// Server order throughout: books in first-match order, chapters in book order.
+		return [...by.values()];
 	});
 
 	function toggleBook(slug: string) {
@@ -270,6 +324,9 @@
 		ran = '';
 		suggestion = '';
 		scriptureAnswer = null;
+		totals = {};
+		totalsCapped = {};
+		typeRows = null;
 	}
 
 	// --- Instant scripture answer ----------------------------------------------
@@ -296,6 +353,48 @@
 		}
 	}
 
+	/**
+	 * Load one type from the server: the whole match set, in the chosen order.
+	 * `append` continues from what we have ("show more"); otherwise it replaces
+	 * (a chip click, or a sort change).
+	 */
+	async function loadType(type: SearchType, { append = false } = {}) {
+		const token = ++typeSeq;
+		typeLoading = true;
+		try {
+			const res = await searchPage(ran || q.trim(), getLang(), type, {
+				offset: append && typeRows ? typeRows.length : 0,
+				sort: sortMode
+			});
+			if (token !== typeSeq) return; // superseded
+			typeRows = append && typeRows ? [...typeRows, ...res.results] : res.results;
+		} catch {
+			// Leave what's on screen; the merged rows are still a usable answer.
+			if (token === typeSeq && !append) typeRows = null;
+		} finally {
+			if (token === typeSeq) typeLoading = false;
+		}
+	}
+
+	/** Select a type (or return to the merged list). */
+	function selectType(type: string) {
+		typeFilter = type;
+		activeIndex = -1;
+		typeSeq++; // cancel anything in flight for the previous type
+		typeRows = null;
+		if (type === 'all') {
+			sortMode = 'relevance';
+			return;
+		}
+		void loadType(type as SearchType);
+	}
+
+	function setSort(next: SearchSort) {
+		if (next === sortMode) return;
+		sortMode = next;
+		if (typeFilter !== 'all') void loadType(typeFilter as SearchType);
+	}
+
 	async function runSearch(term: string) {
 		// Responses can land out of order (a cold body-text scan overtaken by a
 		// cached one), so only the newest request may write the list — otherwise
@@ -309,6 +408,9 @@
 			hits = res.results;
 			ran = res.query;
 			suggestion = res.suggestion ?? '';
+			totals = res.totals ?? {};
+			totalsCapped = res.totals_capped ?? {};
+			pageSize = res.page_size ?? pageSize;
 		} finally {
 			if (token === searchSeq) loading = false;
 		}
@@ -335,6 +437,8 @@
 		activeIndex = -1;
 		typeFilter = 'all';
 		sortMode = 'relevance';
+		typeRows = null;
+		typeSeq++;
 		if (term.length < 2) clearResults();
 		else runSearch(term);
 	}
@@ -354,6 +458,8 @@
 		activeIndex = -1;
 		typeFilter = 'all';
 		sortMode = 'relevance';
+		typeRows = null;
+		typeSeq++;
 		timer = setTimeout(() => {
 			syncUrl(term);
 			runSearch(term);
@@ -564,7 +670,7 @@
 							class:text-accent-contrast={typeFilter === 'all'}
 							class:border-border={typeFilter !== 'all'}
 							class:text-muted={typeFilter !== 'all'}
-							onclick={() => (typeFilter = 'all')}
+							onclick={() => selectType('all')}
 							aria-pressed={typeFilter === 'all'}
 						>
 							{t('search.filterAll')}
@@ -578,17 +684,24 @@
 								class:text-accent-contrast={typeFilter === g.type}
 								class:border-border={typeFilter !== g.type}
 								class:text-muted={typeFilter !== g.type}
-								onclick={() => (typeFilter = g.type)}
+								onclick={() => selectType(g.type)}
 								aria-pressed={typeFilter === g.type}
 							>
 								{t(g.labelKey)}
-								<span class="tabular-nums opacity-70">{g.rows.length}</span>
+								<!-- The real total, not the number of rows we were handed. -->
+								<span class="tabular-nums opacity-70"
+									>{totalFor(g.type, g.rows.length)}{isCapped(g.type) ? '+' : ''}</span
+								>
 							</button>
 						{/each}
 					</div>
 				{/if}
 				<div class="flex flex-wrap items-center gap-x-3 gap-y-2 sm:ms-auto">
-					{#if shownCount > 1}
+					<!-- Sorting needs the whole match set, which only the per-type
+					     endpoint returns — so it appears once a type is chosen. In the
+					     mixed list the order is relevance, the only one that means
+					     anything across books, people and passages. -->
+					{#if typeFilter !== 'all' && shownCount > 1}
 						<div class="flex items-center gap-1.5" role="group" aria-label={t('search.sortBy')}>
 							<span class="text-small text-muted">{t('search.sortBy')}</span>
 							<div class="flex overflow-hidden rounded-full border border-border">
@@ -601,7 +714,7 @@
 										class:text-muted={sortMode !== s}
 										class:border-s={i > 0}
 										class:border-border={i > 0}
-										onclick={() => (sortMode = s)}
+										onclick={() => setSort(s)}
 										aria-pressed={sortMode === s}
 									>
 										{t(`search.sort_${s}`)}
@@ -611,19 +724,41 @@
 						</div>
 					{/if}
 					<p class="text-small text-muted" aria-live="polite">
-						{shownCount}
-						{shownCount === 1 ? t('search.resultsOne') : t('search.resultsMany')}
+						{#if typeFilter !== 'all' && remaining > 0}
+							{shownCount}
+							{t('search.of')}
+							{totalFor(typeFilter as SearchType, shownCount)}{isCapped(
+								typeFilter as SearchType
+							)
+								? '+'
+								: ''}
+							{t('search.resultsMany')}
+						{:else if typeFilter === 'all' && grandTotal > shownCount}
+							{shownCount}
+							{t('search.of')}
+							{grandTotal}{anyCapped ? '+' : ''}
+							{t('search.resultsMany')}
+						{:else}
+							{shownCount}
+							{shownCount === 1 ? t('search.resultsOne') : t('search.resultsMany')}
+						{/if}
 					</p>
 				</div>
 			</div>
 			<div class="space-y-8">
 				{#each shownGroups as g (g.type)}
+					{@const total = totalFor(g.type, g.rows.length)}
+					{@const more = total - g.rows.length}
 					<section>
 						<h2
 							class="mb-2 flex items-baseline gap-2 text-small font-semibold uppercase tracking-wide text-muted"
 						>
 							{t(g.labelKey)}
-							<span class="text-[0.78rem] font-normal tabular-nums text-muted/70">{g.rows.length}</span>
+							<span class="text-[0.78rem] font-normal tabular-nums text-muted/70">
+								{#if more > 0}{g.rows.length} {t('search.of')} {total}{isCapped(g.type)
+										? '+'
+										: ''}{:else}{total}{/if}
+							</span>
 						</h2>
 						{#if g.type === 'chapter'}
 							<!-- Passages: matches collapsed under their book. -->
@@ -698,6 +833,34 @@
 									</li>
 								{/each}
 							</ul>
+						{/if}
+
+						<!-- The way past the cap. In the mixed list this hands the section
+						     over to the server (which can order and page it); once a type is
+						     selected it appends the next page. Before this the reader had no
+						     signal that anything had been left out at all. -->
+						{#if more > 0}
+							<div class="mt-3">
+								{#if typeFilter === 'all'}
+									<button
+										type="button"
+										class="text-small font-semibold text-accent hover:underline"
+										onclick={() => selectType(g.type)}
+									>
+										{t('search.showAll')}
+										{total}{isCapped(g.type) ? '+' : ''} →
+									</button>
+								{:else}
+									<button
+										type="button"
+										class="text-small font-semibold text-accent hover:underline disabled:opacity-50"
+										disabled={typeLoading}
+										onclick={() => loadType(g.type, { append: true })}
+									>
+										{typeLoading ? '…' : t('search.showMore')}
+									</button>
+								{/if}
+							</div>
 						{/if}
 					</section>
 				{/each}

@@ -12,6 +12,7 @@ from rest_framework.test import APIClient
 
 from . import language_suggestions
 from .ingest import clean_title
+from .search import search_library
 from .language_seed import SEED_LANGUAGES
 from .languages import config as language_config
 from .translation import (
@@ -38,6 +39,7 @@ from .models import (
     TopicTranslation,
 )
 from . import readiness as readiness_module
+from . import search as search_module
 from .text import html_to_text
 
 
@@ -4930,3 +4932,133 @@ class LanguageSuggestionTests(SimpleTestCase):
         # The admin page must still load; a missing picker beats a 500.
         with mock.patch("library.language_suggestions._translations", return_value=[]):
             self.assertEqual(language_suggestions.suggestions(), [])
+
+
+class SearchTotalsAndPagingTests(TestCase):
+    """What the merged list is a sample OF, and how to get the rest.
+
+    The page used to render "30 results" for a query matching hundreds of
+    passages, because MAX_RESULTS and the per-type CAPS truncated silently.
+    These cover the two halves of the fix: an honest count, and a way past the
+    cap — including that sorting now orders ALL matches rather than the handful
+    the client happened to hold.
+    """
+
+    LOTS = 25  # comfortably past CAPS["chapter"]=20 and PAGE_SIZE=20
+
+    def setUp(self):
+        self.client = APIClient()
+        self.author = Author.objects.create(slug="a", name="Andrew Murray")
+        self.book = Book.objects.create(
+            author=self.author, slug="b", language="en", title="Abiding"
+        )
+        # Titles run OPPOSITE to chapter order on purpose: the natural (relevance)
+        # order is by chapter order, so a title sort that only reordered the page
+        # it was given would still look right if the two agreed. They must not.
+        for i in range(1, self.LOTS + 1):
+            Chapter.objects.create(
+                book=self.book,
+                order=i,
+                title=f"Chapter {self.LOTS - i + 1:02d}",
+                body_html=f"<p>Abide in prayer, number {i}.</p>",
+            )
+
+    def test_the_merged_list_is_still_capped(self):
+        # Unchanged behaviour — the fix is to describe the cap, not remove it.
+        hits = search_library("prayer", "en")
+        chapters = [h for h in hits if h["type"] == "chapter"]
+        self.assertEqual(len(chapters), search_module.CAPS["chapter"])
+
+    def test_counts_exceed_what_the_page_returns(self):
+        counts, capped = search_module.count_by_type("prayer", "en")
+        self.assertEqual(counts["chapter"], self.LOTS)
+        self.assertGreater(counts["chapter"], search_module.CAPS["chapter"])
+        self.assertFalse(capped["chapter"])
+
+    def test_counts_stop_at_the_ceiling_and_say_so(self):
+        with mock.patch.object(search_module, "COUNT_CEILING", 5):
+            counts, capped = search_module.count_by_type("prayer", "en")
+        self.assertEqual(counts["chapter"], 5)
+        self.assertTrue(capped["chapter"], "a truncated count must be marked")
+
+    def test_a_type_with_no_matches_is_absent_rather_than_zero(self):
+        counts, _ = search_module.count_by_type("prayer", "en")
+        self.assertNotIn("plan", counts)
+
+    def test_counts_use_the_same_filter_as_the_results(self):
+        # An unpublished book must not inflate the count past what a reader can
+        # reach — the failure mode of computing counts from a second query.
+        hidden = Book.objects.create(
+            author=self.author, slug="h", language="en", title="H", is_published=False
+        )
+        Chapter.objects.create(book=hidden, order=1, title="X", body_html="<p>prayer</p>")
+        counts, _ = search_module.count_by_type("prayer", "en")
+        self.assertEqual(counts["chapter"], self.LOTS)
+
+    def test_paging_reaches_past_the_cap(self):
+        first = search_module.page_by_type("prayer", "en", "chapter", offset=0, limit=20)
+        second = search_module.page_by_type("prayer", "en", "chapter", offset=20, limit=20)
+        self.assertEqual(len(first), 20)
+        self.assertEqual(len(second), self.LOTS - 20)
+        keys = {(h["book_slug"], h["chapter_order"]) for h in first + second}
+        self.assertEqual(len(keys), self.LOTS, "pages must not overlap or skip")
+
+    def test_sorting_orders_every_match_not_just_the_page(self):
+        """The point of moving sort off the client.
+
+        "Chapter 01" is the LAST chapter in reading order, so it is nowhere near
+        the first page by relevance. Asking for the first five by title must
+        surface it — which is only possible if the sort ran over all 25 matches
+        in the database rather than over a page already chosen by rank.
+        """
+        page = search_module.page_by_type(
+            "prayer", "en", "chapter", offset=0, limit=5, sort="title"
+        )
+        self.assertEqual(
+            [h["chapter_title"] for h in page][:3],
+            ["Chapter 01", "Chapter 02", "Chapter 03"],
+        )
+        # And the relevance page really does start elsewhere, or the above proves
+        # nothing.
+        natural = search_module.page_by_type("prayer", "en", "chapter", limit=5)
+        self.assertEqual(natural[0]["chapter_title"], f"Chapter {self.LOTS:02d}")
+
+    def test_an_unknown_type_is_empty_not_an_error(self):
+        self.assertEqual(search_module.page_by_type("prayer", "en", "nope"), [])
+
+    # --- endpoint -------------------------------------------------------------
+
+    def test_the_response_carries_the_real_totals(self):
+        res = self.client.get("/api/library/search/?q=prayer")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["totals"]["chapter"], self.LOTS)
+        self.assertFalse(res.data["totals_capped"]["chapter"])
+        self.assertEqual(res.data["page_size"], search_module.PAGE_SIZE)
+
+    def test_type_param_returns_only_that_type(self):
+        res = self.client.get("/api/library/search/?q=prayer&type=chapter&offset=20")
+        self.assertEqual(res.data["type"], "chapter")
+        self.assertEqual(res.data["offset"], 20)
+        self.assertTrue(all(h["type"] == "chapter" for h in res.data["results"]))
+        self.assertEqual(len(res.data["results"]), self.LOTS - 20)
+
+    def test_paging_is_not_logged_as_a_search(self):
+        # Otherwise "show more" would inflate the popular-queries report, which
+        # is meant to count what readers ASKED, not how far they scrolled.
+        SearchQueryLog.objects.all().delete()
+        self.client.get("/api/library/search/?q=prayer")
+        self.client.get("/api/library/search/?q=prayer&type=chapter&offset=20")
+        self.assertEqual(SearchQueryLog.objects.count(), 1)
+
+    def test_a_hostile_offset_is_clamped(self):
+        res = self.client.get("/api/library/search/?q=prayer&type=chapter&offset=999999")
+        self.assertEqual(res.status_code, 200)
+        self.assertLessEqual(res.data["offset"], 500)
+
+    def test_a_junk_sort_falls_back_to_relevance(self):
+        res = self.client.get("/api/library/search/?q=prayer&type=chapter&sort=drop%20table")
+        self.assertEqual(res.data["sort"], "relevance")
+
+    def test_a_junk_offset_does_not_500(self):
+        res = self.client.get("/api/library/search/?q=prayer&type=chapter&offset=abc")
+        self.assertEqual(res.status_code, 200)
