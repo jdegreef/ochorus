@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, tick } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { type AuthorBio, type BookSummary } from '$lib/library';
@@ -117,6 +117,18 @@
 	// Count summary + whether any narrowing is active (sort doesn't count).
 	const isFiltered = $derived(queryText.trim() !== '' || filter !== 'all' || fullBioOnly);
 
+	/** Reveal the page holding `slug`, then scroll to it once it has painted. */
+	function jumpTo(slug: string) {
+		const i = sorted.findIndex((a) => a.slug === slug);
+		if (i < 0) return;
+		const needed = Math.ceil((i + 1) / PER_PAGE);
+		if (needed > pageNum) pageNum = needed;
+		// The row may not exist yet this frame; wait for the render it triggered.
+		tick().then(() =>
+			document.getElementById(slug)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+		);
+	}
+
 	// A–Z jump targets for the name sort: first writer per initial letter. Each
 	// card already carries id={slug} + scroll-mt, so the rail links to #<slug>.
 	const AZ = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
@@ -145,6 +157,23 @@
 				return arr.sort((a, b) => a.name.localeCompare(b.name));
 		}
 	});
+
+	// --- Paging ---------------------------------------------------------------
+	// One writer per row makes 35 a long scroll. Client-side only: the API
+	// already returns every writer (that is what the A–Z rail and the filters
+	// count against), so this is purely how many are PAINTED. The A–Z stays the
+	// fast path — jumping to a letter reveals whatever page holds it, below.
+	const PER_PAGE = 24;
+	let pageNum = $state(1);
+	const pageCount = $derived(Math.max(1, Math.ceil(sorted.length / PER_PAGE)));
+	const paged = $derived(sorted.slice(0, pageNum * PER_PAGE));
+	const remaining = $derived(sorted.length - paged.length);
+	// Narrowing the list must not strand you on page 3 of 1.
+	$effect(() => {
+		void queryText; void filter; void fullBioOnly; void sort;
+		pageNum = 1;
+	});
+
 
 	const FILTERS: { v: Filter; k: string }[] = [
 		{ v: 'all', k: 'bios.filterAll' },
@@ -238,18 +267,26 @@
 	{@html crumbsLd}
 </svelte:head>
 
-<div class="mx-auto max-w-3xl px-5 py-10">
+<div class="mx-auto max-w-4xl px-5 py-8">
 	<Breadcrumb items={crumbs} />
-	<header class="mb-8">
-		<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">{t('bios.eyebrow')}</p>
-		<h1 class="text-display mb-3">{t('bios.title')}</h1>
+	<!-- No eyebrow: the breadcrumb directly above already reads "Biographies",
+	     and the pair cost a whole row of the first screen to say it twice. -->
+	<header class="mb-5">
+		<h1 class="text-display mb-2">{t('bios.title')}</h1>
 		<p class="text-body text-muted">
 			{t('bios.tagline')}
 		</p>
 	</header>
 
+	<!-- Controls + A–Z, pinned. With one writer per row the list is 35 screens
+	     long, so the filters and the letter jump have to come WITH you — the app
+	     nav is position:relative and scrolls away, so top-0 is free.
+	     -mx-5 px-5 lets the background span the container's padding. -->
+	<div
+		class="sticky top-0 z-20 -mx-5 mb-6 border-b border-border bg-bg px-5 pb-2.5 pt-3"
+	>
 	<!-- Controls: search · filter · sort -->
-	<div class="mb-3 flex flex-wrap items-center gap-2">
+	<div class="flex flex-wrap items-center gap-2">
 		<input
 			bind:value={queryText}
 			oninput={syncUrl}
@@ -296,7 +333,7 @@
 	</div>
 
 	<!-- Result count + a one-tap escape hatch when a filter is narrowing the list. -->
-	<div class="mb-6 flex items-center gap-2 text-small text-muted">
+	<div class="mt-1.5 flex items-center gap-2 text-small text-muted">
 		<span
 			>{t('bios.showing')
 				.replace('%shown%', String(sorted.length))
@@ -311,13 +348,17 @@
 
 	<!-- A–Z rail: jump to the first writer under each initial (name sort only). -->
 	{#if sort === 'name' && sorted.length > 1}
-		<nav class="mb-8 flex flex-wrap gap-x-1 gap-y-0.5 text-small" aria-label={t('bios.jumpAz')}>
+		<nav class="mt-1.5 hidden flex-wrap gap-x-1 gap-y-0.5 text-small sm:flex" aria-label={t('bios.jumpAz')}>
 			{#each AZ as letter (letter)}
 				{#if firstByLetter.has(letter)}
-					<a
-						href="#{firstByLetter.get(letter)}"
-						class="rounded px-1.5 py-0.5 font-semibold text-accent hover:bg-accent-soft hover:no-underline"
-						>{letter}</a
+					<!-- A BUTTON, not an anchor. Paging paints 24 rows, so a writer under
+					     a late letter has no element to anchor to yet — the prerender
+					     crawler caught exactly that ("no element with id=r-a-torrey").
+					     Reveal first, then scroll; and with no href there is no dangling
+					     fragment in the static output. -->
+					<button
+						class="rounded px-1.5 py-0.5 font-semibold text-accent hover:bg-accent-soft"
+						onclick={() => jumpTo(firstByLetter.get(letter)!)}>{letter}</button
 					>
 				{:else}
 					<span class="px-1.5 py-0.5 text-muted opacity-40" aria-hidden="true">{letter}</span>
@@ -325,6 +366,7 @@
 			{/each}
 		</nav>
 	{/if}
+	</div>
 
 	{#if sorted.length === 0}
 		<div class="py-16 text-center">
@@ -366,8 +408,13 @@
 			</nav>
 		{/if}
 		{#each eraGroups as g (g.era.id)}
-			<section id="era-{g.era.id}" class="mb-12 scroll-mt-24">
-				<h2 class="mb-6 flex items-baseline gap-2 border-b border-border pb-2 text-h3 text-text">
+			<section id="era-{g.era.id}" class="mb-12 scroll-mt-36">
+				<!-- Pinned under the controls bar: four centuries of writers scroll
+				     past, and without this you lose track of which era you are in.
+				     top-[125px] clears the bar; z-10 keeps it under the bar's z-20. -->
+				<h2
+					class="sticky top-[125px] z-10 mb-6 flex items-baseline gap-2 border-b border-border bg-bg pb-2 pt-2 text-h3 text-text"
+				>
 					<a
 						href={localizeHref(`/biographies/era/${g.era.id}`)}
 						class="!text-text hover:text-accent hover:no-underline">{t(g.era.k)}</a
@@ -378,7 +425,7 @@
 					{#if g.era.range}<span class="whitespace-nowrap text-small font-normal text-muted">{g.era.range}</span>{/if}
 					<span class="ms-auto text-small font-normal text-muted">{g.authors.length}</span>
 				</h2>
-				<div class="grid items-start gap-5 md:grid-cols-2">
+				<div class="space-y-4">
 					{#each g.authors as author (author.slug)}
 						<AuthorBioCard {author} shelf={booksByAuthor.get(author.slug) ?? []} />
 					{/each}
@@ -386,10 +433,25 @@
 			</section>
 		{/each}
 	{:else}
-		<div class="grid items-start gap-5 md:grid-cols-2">
-			{#each sorted as author (author.slug)}
+		<div class="space-y-4">
+			{#each paged as author (author.slug)}
 				<AuthorBioCard {author} shelf={booksByAuthor.get(author.slug) ?? []} />
 			{/each}
 		</div>
+		{#if remaining > 0}
+			<div class="mt-8 flex flex-col items-center gap-2">
+				<button
+					class="rounded-sm border border-border px-4 py-2 text-small font-semibold text-accent hover:border-accent"
+					onclick={() => (pageNum += 1)}
+				>
+					{t('bios.showMore').replace('%n%', String(Math.min(PER_PAGE, remaining)))}
+				</button>
+				<p class="text-small text-muted">
+					{t('bios.showing')
+						.replace('%shown%', String(paged.length))
+						.replace('%total%', String(sorted.length))}
+				</p>
+			</div>
+		{/if}
 	{/if}
 </div>
