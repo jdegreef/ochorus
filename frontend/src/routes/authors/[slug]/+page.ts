@@ -145,6 +145,13 @@ export const entries: EntryGenerator = async () => {
 // intact. Arabic is RTL: the bio carries no dir/lang of its own, so each
 // /ar/authors/<slug> renders under the container's dir="auto" (see
 // readerDirection.test.ts) and re-crawls to bake the translated bio.
+//
+// Prerender refresh 2026-07-31 (queue jobs #620/#621/#622/#623): four more
+// Arabic bios — F. B. Meyer, John Bunyan, Jonathan Edwards and John Wesley —
+// taking ar to ten. Meyer carries three prayer callouts rather than the usual
+// two, and the Wesley bio carries the cross-link to Susanna Wesley, so both the
+// aside classes and that anchor's href/rel are copied byte-for-byte. Each
+// /ar/authors/<slug> re-crawls and bakes the translated bio.
 export const load: PageLoad = async ({ params }) => {
 	const author = await orNotFound(() => getAuthor(params.slug, getLang()));
 	// A mid-deploy API (before the sermon fields ship) may omit these; default
