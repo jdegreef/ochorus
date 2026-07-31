@@ -15,6 +15,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { apiFetch } from '$lib/api';
 	import { readJSON, writeJSON } from '$lib/persisted';
+	import { readSearchState, searchStateKey, writeSearchState } from '$lib/searchState';
 	import type { ScriptureResult } from '$lib/scripture.svelte';
 	import { markSnippet } from '$lib/highlight';
 	import { localizeHref } from '$lib/href';
@@ -109,11 +110,16 @@
 	let ran = $state('');
 	let suggestion = $state('');
 	let timer: ReturnType<typeof setTimeout> | undefined;
-	// The query currently reflected in the URL. Plain (non-reactive) — it exists
-	// only to tell "the reader navigated" apart from "we just wrote the URL".
-	// Set before the goto, which is safe because SvelteKit cancels a superseded
-	// navigation, so an earlier goto can never land after a later one.
-	let urlQuery = '';
+	// The view currently reflected in the URL — query, type facet and sort, as one
+	// string. Plain (non-reactive): it exists only to tell "the reader navigated"
+	// apart from "we just wrote the URL". Set before the goto, which is safe
+	// because SvelteKit cancels a superseded navigation, so an earlier goto can
+	// never land after a later one.
+	//
+	// The facet is in the URL because a filtered view is a real view: worth
+	// sharing, worth surviving a reload, and worth coming back to when the reader
+	// opens a passage and presses Back.
+	let urlState = '';
 	// Monotonic token: only the newest in-flight search may write the results.
 	let searchSeq = 0;
 
@@ -272,6 +278,7 @@
 	const nav = $derived.by(() => {
 		const keys: string[] = [];
 		const map = new Map<string, string>();
+		const labels = new Map<string, string>();
 		for (const g of shownGroups) {
 			if (g.type === 'chapter') {
 				for (const pb of passageBooks) {
@@ -281,16 +288,18 @@
 					for (const ch of shown) {
 						keys.push(ch.key);
 						map.set(ch.key, `/books/${pb.slug}/${ch.order}`);
+						labels.set(ch.key, `${ch.title} — ${pb.title}`);
 					}
 				}
 			} else {
 				for (const row of g.rows) {
 					keys.push(row.key);
 					map.set(row.key, row.href);
+					labels.set(row.key, row.meta ? `${row.title} — ${row.meta}` : row.title);
 				}
 			}
 		}
-		return { keys, map };
+		return { keys, map, labels };
 	});
 	const activeKey = $derived(
 		activeIndex >= 0 && activeIndex < nav.keys.length ? nav.keys[activeIndex] : ''
@@ -299,6 +308,23 @@
 	// Keep the highlighted result in view as it moves.
 	$effect(() => {
 		if (activeKey) document.getElementById(`res-${activeKey}`)?.scrollIntoView({ block: 'nearest' });
+	});
+
+	/**
+	 * What ↑/↓ just landed on, for screen readers.
+	 *
+	 * The highlight was purely visual: a keyboard user who can't see it got no
+	 * signal at all that anything had moved. Announcing it politely is the honest
+	 * fix here — the alternative, `aria-activedescendant`, needs the results to be
+	 * a listbox, and they are a document with headings, nested lists and buttons,
+	 * none of which is legal inside one.
+	 */
+	const activeAnnouncement = $derived.by(() => {
+		if (activeIndex < 0 || !activeKey) return '';
+		const el = nav.map.get(activeKey);
+		if (!el) return '';
+		const label = nav.labels.get(activeKey) ?? '';
+		return `${activeIndex + 1} ${t('search.of')} ${nav.keys.length}: ${label}`;
 	});
 
 	function onKeydown(e: KeyboardEvent) {
@@ -358,11 +384,17 @@
 	 * `append` continues from what we have ("show more"); otherwise it replaces
 	 * (a chip click, or a sort change).
 	 */
-	async function loadType(type: SearchType, { append = false } = {}) {
+	async function loadType(
+		type: SearchType,
+		{ append = false, term = '' }: { append?: boolean; term?: string } = {}
+	) {
+		// `term` is explicit for the arriving-from-a-URL path, where the merged
+		// search hasn't answered yet so `ran` is still empty.
+		const forQuery = term || ran || q.trim();
 		const token = ++typeSeq;
 		typeLoading = true;
 		try {
-			const res = await searchPage(ran || q.trim(), getLang(), type, {
+			const res = await searchPage(forQuery, getLang(), type, {
 				offset: append && typeRows ? typeRows.length : 0,
 				sort: sortMode
 			});
@@ -382,16 +414,15 @@
 		activeIndex = -1;
 		typeSeq++; // cancel anything in flight for the previous type
 		typeRows = null;
-		if (type === 'all') {
-			sortMode = 'relevance';
-			return;
-		}
-		void loadType(type as SearchType);
+		if (type === 'all') sortMode = 'relevance';
+		syncUrl(ran || q.trim(), type, type === 'all' ? 'relevance' : sortMode);
+		if (type !== 'all') void loadType(type as SearchType);
 	}
 
 	function setSort(next: SearchSort) {
 		if (next === sortMode) return;
 		sortMode = next;
+		syncUrl(ran || q.trim(), typeFilter, next);
 		if (typeFilter !== 'all') void loadType(typeFilter as SearchType);
 	}
 
@@ -422,25 +453,38 @@
 	 * replaceState (not push) so typing doesn't bury their history; keepFocus so
 	 * the caret stays in the box mid-word.
 	 */
-	function syncUrl(term: string) {
-		if (term === urlQuery) return;
-		urlQuery = term;
-		const url = new URL($page.url);
-		if (term) url.searchParams.set('q', term);
-		else url.searchParams.delete('q');
-		goto(url, { replaceState: true, keepFocus: true, noScroll: true });
+	function syncUrl(term: string, type = typeFilter, sort: SearchSort = sortMode) {
+		const state = { q: term, type, sort };
+		const next = searchStateKey(state);
+		if (next === urlState) return;
+		urlState = next;
+		goto(writeSearchState(new URL($page.url), state), {
+			replaceState: true,
+			keepFocus: true,
+			noScroll: true
+		});
 	}
 
-	/** Show `term`: reset the list state, then search it (or clear if too short). */
-	function applyTerm(term: string) {
+	/**
+	 * Show `term` under `type`/`sort`: reset the list state, then search.
+	 *
+	 * The facet is a parameter rather than always reset, because this is also the
+	 * path a shared `/search?q=…&type=chapter` link arrives on — resetting there
+	 * would drop the very thing the link was sent to show.
+	 */
+	function applyTerm(term: string, type = 'all', sort: SearchSort = 'relevance') {
 		clearTimeout(timer);
 		activeIndex = -1;
-		typeFilter = 'all';
-		sortMode = 'relevance';
+		typeFilter = type;
+		sortMode = sort;
 		typeRows = null;
 		typeSeq++;
-		if (term.length < 2) clearResults();
-		else runSearch(term);
+		if (term.length < 2) {
+			clearResults();
+			return;
+		}
+		runSearch(term);
+		if (type !== 'all') void loadType(type as SearchType, { term });
 	}
 
 	function onInput() {
@@ -481,16 +525,17 @@
 		}
 	});
 
-	// The URL is the source of truth for which search is showing: this covers the
-	// first load of a shared /search?q=… link and the Back/Forward buttons. The
-	// urlQuery guard is what stops a loop — syncUrl sets it before writing the
+	// The URL is the source of truth for which view is showing: this covers the
+	// first load of a shared /search?q=…&type=… link and the Back/Forward buttons.
+	// The urlState guard is what stops a loop — syncUrl sets it before writing the
 	// URL, so the effect our own write triggers falls straight through.
 	$effect(() => {
-		const term = ($page.url.searchParams.get('q') ?? '').trim();
-		if (term === urlQuery) return;
-		urlQuery = term;
-		q = term;
-		applyTerm(term);
+		const state = readSearchState($page.url.searchParams);
+		const next = searchStateKey(state);
+		if (next === urlState) return;
+		urlState = next;
+		q = state.q;
+		applyTerm(state.q, state.type, state.sort);
 	});
 
 	// Accept a "did you mean" suggestion: swap it in and search immediately.
@@ -514,7 +559,23 @@
 	// log is too sparse — the section simply doesn't render.
 	let popular = $state<string[]>([]);
 
+	/** The search box, so arriving on this page can put the caret in it. */
+	let input = $state<HTMLInputElement | null>(null);
+
 	onMount(() => {
+		// Focus only on a pointer device with a real keyboard. On a phone,
+		// autofocus throws up the on-screen keyboard over the results the reader
+		// came to read — and if they arrived from a shared ?q= link, the answer is
+		// already on screen and the box is the last thing they want.
+		//
+		// After a frame, not during mount: SvelteKit moves focus itself once
+		// navigation settles, and a focus() call in the same tick is simply undone.
+		if (window.matchMedia?.('(pointer: fine)').matches) {
+			requestAnimationFrame(() => {
+				if (!q.trim() && input && document.activeElement !== input) input.focus();
+			});
+		}
+
 		recent = readJSON<string[]>(RECENT_KEY, []).filter((s) => typeof s === 'string');
 		listTopics(getLang())
 			.then((all) => (topics = all.slice(0, 10)))
@@ -549,24 +610,89 @@
 	</button>
 {/snippet}
 
+<!-- Somewhere to go: what this reader searched before, what other readers search,
+     and the shelves. Rendered both on a blank page and after a query that found
+     nothing — the second is where it matters more. `showRecent` is false in the
+     no-results case, where re-running an earlier query is a stranger offer than
+     browsing. -->
+{#snippet waysIn(showRecent: boolean)}
+	{#if showRecent && recent.length}
+		<section class="mb-8">
+			<div class="mb-2 flex items-center justify-between">
+				<h2 class="text-small font-semibold uppercase tracking-wide text-muted">
+					{t('search.recent')}
+				</h2>
+				<button type="button" class="text-small text-accent hover:underline" onclick={clearRecent}>
+					{t('search.clearRecent')}
+				</button>
+			</div>
+			<div class="flex flex-wrap gap-2">
+				{#each recent as term (term)}{@render queryChip(term)}{/each}
+			</div>
+		</section>
+	{/if}
+	{#if popular.length}
+		<section class="mb-8">
+			<h2 class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">
+				{t('search.popular')}
+			</h2>
+			<div class="flex flex-wrap gap-2">
+				{#each popular as term (term)}{@render queryChip(term)}{/each}
+			</div>
+		</section>
+	{/if}
+	{#if topics.length}
+		<section>
+			<h2 class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">
+				{t('search.browseTopics')}
+			</h2>
+			<div class="flex flex-wrap gap-2">
+				{#each topics as tp (tp.slug)}
+					<a
+						href={localizeHref(`/topics/${tp.slug}`)}
+						class="rounded-full border border-border px-3 py-1 text-small text-text hover:border-accent hover:text-accent hover:no-underline"
+					>
+						{tp.title}
+					</a>
+				{/each}
+			</div>
+		</section>
+	{/if}
+	{#if showRecent && !recent.length && !topics.length && !popular.length}
+		<p class="text-small text-muted">{t('search.prompt')}</p>
+	{/if}
+{/snippet}
+
 <svelte:head><title>{t('search.title')} — Ochorus</title></svelte:head>
 
 <div class="mx-auto max-w-2xl px-5 py-10">
 	<h1 class="text-h1 mb-8">{t('search.title')}</h1>
 
-	<input
-		bind:value={q}
-		oninput={onInput}
-		onkeydown={onKeydown}
-		type="search"
-		autocomplete="off"
-		role="combobox"
-		aria-expanded={hits.length > 0}
-		aria-controls="search-results"
-		placeholder={t('search.placeholder')}
-		aria-label={t('search.title')}
-		class="w-full rounded-card border border-border bg-surface px-4 py-3 text-body text-text"
-	/>
+	<!-- Sticky: a long result list used to scroll the query out of sight, so
+	     refining meant scrolling back up to find the box. The bleed padding and
+	     background keep results from showing through as they pass under it. -->
+	<div class="sticky top-0 z-20 -mx-5 bg-bg px-5 pb-3 pt-2" role="search">
+		<input
+			bind:this={input}
+			bind:value={q}
+			oninput={onInput}
+			onkeydown={onKeydown}
+			type="search"
+			autocomplete="off"
+			placeholder={t('search.placeholder')}
+			aria-label={t('search.title')}
+			aria-describedby="search-help"
+			class="w-full rounded-card border border-border bg-surface px-4 py-3 text-body text-text"
+		/>
+	</div>
+
+	<!-- Two live regions, deliberately separate. The first is the running result
+	     count; the second is what ↑/↓ landed on. Merged into one, each arrow key
+	     would re-announce the count as well. -->
+	<p id="search-help" class="sr-only" aria-live="polite">
+		{ran ? `${shownCount} ${t('search.resultsMany')}` : ''}
+	</p>
+	<p class="sr-only" aria-live="polite">{activeAnnouncement}</p>
 
 	{#if scriptureAnswer}
 		<!-- Instant scripture answer: the passage text for a reference query. -->
@@ -586,7 +712,7 @@
 		</div>
 	{/if}
 
-	<div class="mt-6" id="search-results">
+	<div class="mt-6" id="search-results" aria-busy={loading}>
 		{#if loading}
 			<div class="space-y-6" aria-hidden="true">
 				{#each Array(4) as _, i (i)}
@@ -598,53 +724,13 @@
 				{/each}
 			</div>
 		{:else if q.trim().length < 2}
-			{#if recent.length}
-				<section class="mb-8">
-					<div class="mb-2 flex items-center justify-between">
-						<h2 class="text-small font-semibold uppercase tracking-wide text-muted">
-							{t('search.recent')}
-						</h2>
-						<button type="button" class="text-small text-accent hover:underline" onclick={clearRecent}>
-							{t('search.clearRecent')}
-						</button>
-					</div>
-					<div class="flex flex-wrap gap-2">
-						{#each recent as term (term)}{@render queryChip(term)}{/each}
-					</div>
-				</section>
-			{/if}
-			{#if popular.length}
-				<section class="mb-8">
-					<h2 class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">
-						{t('search.popular')}
-					</h2>
-					<div class="flex flex-wrap gap-2">
-						{#each popular as term (term)}{@render queryChip(term)}{/each}
-					</div>
-				</section>
-			{/if}
-			{#if topics.length}
-				<section>
-					<h2 class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">
-						{t('search.browseTopics')}
-					</h2>
-					<div class="flex flex-wrap gap-2">
-						{#each topics as tp (tp.slug)}
-							<a
-								href={localizeHref(`/topics/${tp.slug}`)}
-								class="rounded-full border border-border px-3 py-1 text-small text-text hover:border-accent hover:text-accent hover:no-underline"
-							>
-								{tp.title}
-							</a>
-						{/each}
-					</div>
-				</section>
-			{/if}
-			{#if !recent.length && !topics.length && !popular.length}
-				<p class="text-small text-muted">{t('search.prompt')}</p>
-			{/if}
+			{@render waysIn(true)}
 		{:else if ran && hits.length === 0}
-			<p class="text-small text-muted">{t('search.noResults')} “{ran}”.</p>
+			<!-- Nothing found. The old version stopped at one line and, if the fuzzy
+			     matcher had something, a "did you mean" — a dead end for every other
+			     query. The same routes out the blank page offers work here, and this
+			     is where a reader actually needs them. -->
+			<p class="text-body text-text">{t('search.noResults')} “{ran}”.</p>
 			{#if suggestion}
 				<p class="mt-2 text-small text-muted">
 					{t('search.didYouMean')}
@@ -657,6 +743,9 @@
 					</button>?
 				</p>
 			{/if}
+			<div class="mt-8">
+				{@render waysIn(false)}
+			</div>
 		{:else}
 			<!-- Type facet + result count -->
 			<div class="mb-5 flex flex-wrap items-center gap-2">
