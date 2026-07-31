@@ -24,6 +24,7 @@ from library.admin_views import (
     AdminLanguageSettingsView,
     AdminLanguageThresholdsView,
     AdminReviewQueueView,
+    AdminSearchGapView,
     AdminSearchView,
     AdminStatsView,
     AdminTranslationJobsView,
@@ -36,6 +37,7 @@ urlpatterns = [
     path("api/auth/me/", MeView.as_view(), name="me"),
     path("api/admin/stats/", AdminStatsView.as_view(), name="admin-stats"),
     path("api/admin/search-stats/", AdminSearchView.as_view(), name="admin-search-stats"),
+    path("api/admin/search-gap/", AdminSearchGapView.as_view(), name="admin-search-gap"),
     path("api/admin/coverage/", AdminCoverageView.as_view(), name="admin-coverage"),
     path("api/admin/audit/", AdminAuditView.as_view(), name="admin-audit"),
     path(

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from django.db.models import Count, Q
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -313,13 +314,13 @@ class AdminSearchView(APIView):
                 else 0.0,
             }
 
-        def top(qs):
+        def top(qs, limit=20):
             rows = (
                 qs.annotate(q=Lower("query"), qlen=Length("query"))
                 .filter(qlen__gte=3)
                 .values("q")
                 .annotate(count=Count("id"))
-                .order_by("-count", "q")[:20]
+                .order_by("-count", "q")[:limit]
             )
             return [{"query": r["q"], "count": r["count"]} for r in rows]
 
@@ -347,7 +348,7 @@ class AdminSearchView(APIView):
 
         # Capped: language comes from an unauthenticated query param, so junk
         # codes (≤10 chars) can create rows — don't let them flood the page.
-        by_language = (
+        by_language = list(
             window.values("language")
             .annotate(
                 searches=Count("id"),
@@ -355,6 +356,51 @@ class AdminSearchView(APIView):
             )
             .order_by("-searches")[:20]
         )
+
+        # The same zero-result signal, split BY LANGUAGE — which is the form that
+        # can be acted on. "Readers searched this 31 times and found nothing" is
+        # only a translation priority once you know which language they were
+        # reading in; the global list mixes a Swahili gap with an English one and
+        # neither can be queued from it.
+        #
+        # One grouped query for the queries, and the totals come from the
+        # ``by_language`` rows already computed above — so the two sections of
+        # the report can never disagree about how many searches a language
+        # missed. Whether the content exists ELSEWHERE to translate from is the
+        # expensive question, answered on demand by AdminSearchGapView rather
+        # than for every row of a report that mostly gets skimmed.
+        #
+        # ``total`` counts every unanswered search in the language; ``queries``
+        # lists the top ones at the report's usual 3-character floor, so the two
+        # differ where readers missed on short fragments.
+        worst = [
+            r for r in sorted(by_language, key=lambda row: -row["zero"])[:10] if r["zero"]
+        ]
+        # Scoped to those ten languages so the fetched rows stay bounded by the
+        # report rather than by how many distinct things readers have ever
+        # failed to find.
+        per_language: dict[str, list[dict]] = {r["language"]: [] for r in worst}
+        for r in (
+            window.filter(result_count=0, language__in=list(per_language))
+            .annotate(q=Lower("query"), qlen=Length("query"))
+            .filter(qlen__gte=3)
+            .values("language", "q")
+            .annotate(count=Count("id"))
+            .order_by("-count", "q")
+        ):
+            queries = per_language[r["language"]]
+            if len(queries) < 10:
+                queries.append({"query": r["q"], "count": r["count"]})
+
+        unanswered = [
+            {
+                **_language_entry(r["language"]),
+                "total": r["zero"],
+                "queries": per_language[r["language"]],
+            }
+            for r in worst
+            if per_language[r["language"]]
+        ]
 
         return Response(
             {
@@ -366,6 +412,7 @@ class AdminSearchView(APIView):
                 },
                 "top_queries": top(window.filter(result_count__gt=0)),
                 "zero_result_queries": top(window.filter(result_count=0)),
+                "unanswered_by_language": unanswered,
                 "daily": daily,
                 "by_language": [
                     {
@@ -377,3 +424,51 @@ class AdminSearchView(APIView):
                 ],
             }
         )
+
+
+class AdminSearchGapView(APIView):
+    """For one unanswered query: does the library have it in another language?
+
+    The follow-up question to the zero-result list, and the one that turns a gap
+    into a job — "nobody found `toba` in Swahili, and there are 40 English
+    matches" means the content exists and needs translating, while zero
+    everywhere means it does not exist at all and translation won't help.
+
+    Its own endpoint, and only ever called for a row an admin opened. It runs the
+    real search counters in every live language — and because it is asked only
+    about queries that found NOTHING, the counters' ceiling never short-circuits:
+    proving a language has no match means scanning it. Tens of queries per click,
+    which is fine once on demand and would not be fine on every report load.
+
+    This is an ADMIN planning signal, not a reader-facing fallback. Readers are
+    never offered another language's results — a language shows what it has, and
+    the answer to a thin language is to translate into it, which is exactly what
+    this is for.
+    """
+
+    permission_classes = [IsAdminEmail]
+
+    def get(self, request):
+        from ..languages import live_codes
+        from ..search import MIN_QUERY_LEN, count_by_type
+
+        q = (request.query_params.get("q") or "").strip()
+        language = (request.query_params.get("language") or "").strip().lower()
+        if len(q) < MIN_QUERY_LEN or not language:
+            return Response(
+                {"detail": f"q ({MIN_QUERY_LEN}+ chars) and language are required."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        elsewhere = []
+        for code in live_codes():
+            if code == language:
+                continue
+            counts, _ = count_by_type(q, code)
+            total = sum(counts.values())
+            if total:
+                elsewhere.append(
+                    {**_language_entry(code), "matches": total, "by_type": counts}
+                )
+        elsewhere.sort(key=lambda r: -r["matches"])
+        return Response({"query": q, "language": language, "elsewhere": elsewhere})
