@@ -34,7 +34,7 @@ def remove_portrait(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("library", "0061_language_glossary"),
+        ("library", "0062_min_plans_default_one"),
     ]
 
     operations = [
