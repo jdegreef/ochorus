@@ -18,6 +18,7 @@ from .languages import entry as language_entry
 from .localization import DEFAULT_LANGUAGE, language_from_request
 from .models import Author, Book, Chapter, Plan, SearchQueryLog, Sermon, Topic
 from .search import (
+    MIN_QUERY_LEN,
     PAGE_SIZE,
     SORTS,
     count_by_type,
@@ -395,7 +396,7 @@ class SearchView(APIView):
     def get(self, request):
         q = (request.query_params.get("q") or "").strip()
         language = _language(request)
-        if len(q) < 2:
+        if len(q) < MIN_QUERY_LEN:
             return Response({"query": q, "results": []})
 
         # "Show more of this type", and the sort that goes with it. A separate

@@ -40,6 +40,11 @@ from .scripture import reference_verse_ids
 
 MAX_RESULTS = 30
 
+# Shorter than this is a keystroke, not a query. Two rather than three because a
+# 2-character query is a real search in e.g. Chinese; every caller that asks the
+# engine for anything applies it, so it lives here rather than at each entry.
+MIN_QUERY_LEN = 2
+
 # Navigational (entity) matches lead over body-text matches: a book/author/topic
 # whose title *is* the query is almost always what the reader wants.
 ENTITY_BOOST = 1.6

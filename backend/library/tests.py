@@ -2986,10 +2986,95 @@ class SearchLogTests(TestCase):
         row = SearchQueryLog.objects.get()
         self.assertEqual(row.language, "en-Latn-US")
 
+    @override_settings(DEBUG=True)
+    def test_unanswered_queries_are_split_by_language(self):
+        # The global zero-result list mixes a Swahili gap with an English one,
+        # and neither can be queued from it — a translation job targets ONE
+        # language. So the report also carries the same misses per language.
+        for _ in range(3):
+            SearchQueryLog.objects.create(query="toba", language="sw", result_count=0)
+        SearchQueryLog.objects.create(query="grace", language="en", result_count=0)
+        SearchQueryLog.objects.create(query="humility", language="sw", result_count=7)
+
+        res = self.client.get("/api/admin/search-stats/")
+        self.assertEqual(res.status_code, 200)
+        rows = {r["code"]: r for r in res.data["unanswered_by_language"]}
+        self.assertEqual(rows["sw"]["name"], "Swahili")
+        self.assertEqual(rows["sw"]["total"], 3)
+        self.assertEqual(rows["sw"]["queries"], [{"query": "toba", "count": 3}])
+        # A language whose searches all found something never appears.
+        self.assertEqual([q["query"] for q in rows["en"]["queries"]], ["grace"])
+        # Both sections of the report count a language's misses the same way —
+        # they come from the same rows, so they cannot drift apart.
+        totals = {r["code"]: r["zero"] for r in res.data["by_language"]}
+        self.assertEqual({c: r["total"] for c, r in rows.items()},
+                         {c: totals[c] for c in rows})
+
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
     def test_admin_search_stats_requires_admin(self):
         res = self.client.get("/api/admin/search-stats/")
         self.assertIn(res.status_code, (401, 403))
+
+
+class SearchGapTests(TestCase):
+    """Nobody found this — does it exist somewhere to translate FROM?
+
+    The follow-up to the zero-result list, and what turns a gap into a job. It
+    is an ADMIN planning signal: readers are never offered another language's
+    results, because a language shows what it has.
+    """
+
+    def setUp(self):
+        self.client = APIClient()
+        author = Author.objects.create(slug="andrew-murray", name="Andrew Murray")
+        book = Book.objects.create(
+            author=author, slug="humility", language="en", title="Humility"
+        )
+        Chapter.objects.create(
+            book=book, order=1, title="The Glory of the Creature",
+            body_html="<p>Humility is the place of entire dependence on God.</p>",
+        )
+        # Only live languages are searched, and the fixture's statuses are not
+        # this test's subject — pin them. Saved rather than .update()d so the
+        # post_save receiver drops the language display cache.
+        for lang in Language.objects.filter(code__in=("en", "sw")):
+            lang.status = Language.Status.LIVE
+            lang.save(update_fields=["status"])
+
+    def gap(self, q, language):
+        return self.client.get(
+            f"/api/admin/search-gap/?q={q}&language={language}"
+        )
+
+    @override_settings(DEBUG=True)
+    def test_reports_where_the_content_already_exists(self):
+        res = self.gap("humility", "sw")
+        self.assertEqual(res.status_code, 200)
+        rows = {r["code"]: r for r in res.data["elsewhere"]}
+        self.assertIn("en", rows)
+        self.assertGreater(rows["en"]["matches"], 0)
+        # Broken down by type, so "one book" and "forty chapters" are different
+        # sizes of job.
+        self.assertIn("book", rows["en"]["by_type"])
+        # The language that was searched is never listed against itself.
+        self.assertNotIn("sw", rows)
+
+    @override_settings(DEBUG=True)
+    def test_nothing_anywhere_means_translation_will_not_help(self):
+        # The distinction the whole endpoint exists to draw: this is a work to
+        # acquire, not a work to translate.
+        res = self.gap("theosis", "sw")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["elsewhere"], [])
+
+    @override_settings(DEBUG=True)
+    def test_a_missing_or_trivial_query_is_rejected(self):
+        self.assertEqual(self.gap("humility", "").status_code, 400)
+        self.assertEqual(self.gap("h", "sw").status_code, 400)
+
+    @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
+    def test_requires_admin(self):
+        self.assertIn(self.gap("humility", "sw").status_code, (401, 403))
 
 
 class CitationIndexTests(TestCase):
