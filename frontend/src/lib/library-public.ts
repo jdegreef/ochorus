@@ -163,11 +163,33 @@ export interface PlanHit {
 
 export type SearchHit = ChapterHit | SermonHit | AuthorHit | BookHit | TopicHit | PlanHit;
 
+export type SearchType = SearchHit['type'];
+export type SearchSort = 'relevance' | 'title' | 'newest';
+
 export interface SearchResponse {
 	query: string;
 	results: SearchHit[];
 	/** A "did you mean" term when the query found nothing (fuzzy-matched). */
 	suggestion?: string;
+	/**
+	 * How many matches EXIST per type, which is not how many `results` holds:
+	 * the merged list is capped per type so no one kind crowds out the others.
+	 * Absent types have no matches at all.
+	 */
+	totals?: Partial<Record<SearchType, number>>;
+	/** True where counting stopped at the server's ceiling — show "N+". */
+	totals_capped?: Partial<Record<SearchType, boolean>>;
+	/** Rows per "show more" page. */
+	page_size?: number;
+}
+
+/** One type's matches, ordered over ALL of them — the "show more" response. */
+export interface SearchPageResponse {
+	query: string;
+	type: SearchType;
+	sort: SearchSort;
+	offset: number;
+	results: SearchHit[];
 }
 
 export interface SermonSummary {
@@ -310,6 +332,23 @@ export const search = (q: string, language = 'en') =>
 	apiFetch<SearchResponse>(
 		`/api/library/search/?q=${encodeURIComponent(q)}&language=${language}`
 	);
+
+/**
+ * More of ONE type, ordered over every match rather than over the page the
+ * merged search happened to return. Sorting is the server's job for exactly
+ * that reason — see library/search.py `page_by_type`.
+ */
+export const searchPage = (
+	q: string,
+	language: string,
+	type: SearchType,
+	opts: { offset?: number; sort?: SearchSort } = {}
+) => {
+	const params = new URLSearchParams({ q, language, type });
+	if (opts.offset) params.set('offset', String(opts.offset));
+	if (opts.sort && opts.sort !== 'relevance') params.set('sort', opts.sort);
+	return apiFetch<SearchPageResponse>(`/api/library/search/?${params}`);
+};
 
 export interface PlanSummary {
 	slug: string;

@@ -17,7 +17,14 @@ from . import languages as languages_module
 from .languages import entry as language_entry
 from .localization import DEFAULT_LANGUAGE, language_from_request
 from .models import Author, Book, Chapter, Plan, SearchQueryLog, Sermon, Topic
-from .search import search_library, suggest
+from .search import (
+    PAGE_SIZE,
+    SORTS,
+    count_by_type,
+    page_by_type,
+    search_library,
+    suggest,
+)
 from .serializers import (
     AuthorDetailSerializer,
     AuthorListSerializer,
@@ -381,13 +388,37 @@ class SearchView(APIView):
     client to render as ``<mark>``.
     """
 
+    #: Beyond this the reader is paging, not searching — a guard on the offset so
+    #: a crafted URL can't ask the database to skip a million rows.
+    MAX_OFFSET = 500
+
     def get(self, request):
         q = (request.query_params.get("q") or "").strip()
         language = _language(request)
         if len(q) < 2:
             return Response({"query": q, "results": []})
+
+        # "Show more of this type", and the sort that goes with it. A separate
+        # branch on purpose: it returns one type rather than the merged list, it
+        # is ordered over ALL matches rather than the page the reader was given,
+        # and it must not be logged — paging isn't a new search, and counting it
+        # as one would quietly inflate the popular-queries report.
+        kind = (request.query_params.get("type") or "").strip().lower()
+        if kind:
+            return Response(self._page(q, language, kind, request))
+
         results = search_library(q, language)
-        payload = {"query": q, "results": results}
+        counts, capped = count_by_type(q, language)
+        payload = {
+            "query": q,
+            "results": results,
+            # What the merged list is a sample OF. Without these the page could
+            # only report how many rows it had been handed, which reads as the
+            # size of the library rather than the size of the page.
+            "totals": counts,
+            "totals_capped": capped,
+            "page_size": PAGE_SIZE,
+        }
         # Only pay the fuzzy-match cost when nothing was found — the "did you
         # mean" case. A hit means the spelling was close enough already.
         if not results:
@@ -409,6 +440,28 @@ class SearchView(APIView):
         except Exception:
             logger.warning("search query logging failed", exc_info=True)
         return Response(payload)
+
+    def _page(self, q, language, kind, request):
+        def _int(name, default, high):
+            try:
+                return max(0, min(high, int(request.query_params.get(name, default))))
+            except (TypeError, ValueError):
+                return default
+
+        offset = _int("offset", 0, self.MAX_OFFSET)
+        limit = _int("limit", PAGE_SIZE, PAGE_SIZE)
+        sort = (request.query_params.get("sort") or "relevance").strip().lower()
+        if sort not in SORTS:
+            sort = "relevance"
+        return {
+            "query": q,
+            "type": kind,
+            "sort": sort,
+            "offset": offset,
+            "results": page_by_type(
+                q, language, kind, offset=offset, limit=limit, sort=sort
+            ),
+        }
 
 
 class PopularSearchesView(APIView):
