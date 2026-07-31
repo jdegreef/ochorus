@@ -26,7 +26,7 @@
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { i18n } from '$lib/i18n.svelte';
-	import { readingMinutes } from '$lib/reading';
+	import { readingMinutes, HEADER_OFFSET } from '$lib/reading';
 	import {
 		getScrollAnchor,
 		saveScrollAnchor,
@@ -47,15 +47,14 @@
 	import DefinePopover from '$lib/components/DefinePopover.svelte';
 	import SelectionBar from '$lib/components/SelectionBar.svelte';
 	import ListenBar from '$lib/components/ListenBar.svelte';
-	import Icon from '$lib/components/Icon.svelte';
 
 	interface Props {
 		/** Namespaces every stored key (position, anchors, marks). */
 		kind: WorkKind;
 		/** Identifies the work within its kind. For a bio, the author's slug. */
 		slug: string;
-		/** Single-document works pin this to 1; chapters pass their order. */
-		order: number;
+		/** Chapters pass their order; single-document kinds (sermon, bio) get 1. */
+		order?: number;
 		language: string;
 		/** Server-cleaned body HTML. Scripture refs arrive pre-wrapped. */
 		html: string;
@@ -67,9 +66,13 @@
 		listenTitle: string;
 		listenArtist: string;
 		/**
-		 * Suffix for the time-remaining pill. A prop rather than a fixed key
-		 * because the surfaces genuinely differ: a chapter says "min left in
-		 * chapter", a sermon just "min left".
+		 * Suffix for the time-remaining pill ("… min left").
+		 *
+		 * A prop only because the copy differs per surface and the bio's wording
+		 * isn't settled yet. It is the one translated string this component takes
+		 * rather than resolving itself, which also hides the key from the
+		 * i18n-parity check — fold it back into a `reader.minLeft_<kind>` lookup
+		 * once the third caller lands and the wording is known.
 		 */
 		minLeftLabel: string;
 		/** Top-bar link back to the containing collection. */
@@ -91,7 +94,7 @@
 	let {
 		kind,
 		slug,
-		order,
+		order = 1,
 		language,
 		html,
 		wordCount,
@@ -115,7 +118,6 @@
 	// Long prose needs orientation: a scroll-progress bar, an estimate of the time
 	// remaining, and a resume point. Anchored to the top-visible paragraph so it
 	// survives text-size / width changes.
-	const HEADER_OFFSET = 64;
 	let frac = $state(0);
 	let saveTimer: ReturnType<typeof setTimeout> | undefined;
 	const minutesLeft = $derived(Math.max(1, Math.ceil(readingMinutes(wordCount) * (1 - frac))));
@@ -216,15 +218,17 @@
 	}
 
 	// Follow-along: highlight the paragraph being spoken and keep it in view.
+	// Track the marked element rather than toggling the class over every block —
+	// a long chapter is 76+ blocks and this fires on every paragraph.
+	let spokenEl: Element | null = null;
 	$effect(() => {
 		const current = listen.current;
 		if (!body) return;
-		const kids = body.children;
-		for (let i = 0; i < kids.length; i++) {
-			kids[i].classList.toggle('tts-current', i === current);
-		}
-		if (current >= 0 && kids[current]) {
-			kids[current].scrollIntoView({ block: 'center', behavior: 'smooth' });
+		spokenEl?.classList.remove('tts-current');
+		spokenEl = body.children[current] ?? null;
+		if (spokenEl) {
+			spokenEl.classList.add('tts-current');
+			spokenEl.scrollIntoView({ block: 'center', behavior: 'smooth' });
 		}
 	});
 
@@ -256,7 +260,6 @@
 	// so a separate pass would be wiped whenever a highlight changed, and the two
 	// would fight over the same HTML.
 	const searchQuery = $derived(($page.url.searchParams.get('q') ?? '').trim());
-	let searchHits = $state<Segment[]>([]);
 	let scrolledToHit = false;
 
 	$effect(() => {
@@ -270,7 +273,6 @@
 					searchQuery
 				)
 			: [];
-		searchHits = hits;
 		renderMarks(
 			body,
 			list,

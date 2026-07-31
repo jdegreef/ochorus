@@ -1,12 +1,12 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { type Sermon, type SermonSummary, listSermons } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { i18n } from '$lib/i18n.svelte';
-	import { readingTime } from '$lib/reading';
-	import { SERMON_CHAPTER_ORDER } from '$lib/reading-schema';
+	import { readingTime, HEADER_OFFSET } from '$lib/reading';
 	import { getLang } from '$lib/lang.svelte';
-	import { scripture, type ScriptureResult } from '$lib/scripture.svelte';
+	import { type ScriptureResult } from '$lib/scripture.svelte';
 	import { apiFetch } from '$lib/api';
 	import { page } from '$app/stores';
 	import { buildOutline, type OutlineEntry } from '$lib/sermonOutline';
@@ -28,8 +28,6 @@
 	// prerendered; the list is small and cached by the browser).
 	let related = $state<SermonSummary[]>([]);
 
-	// Matches the reader's own sticky-bar offset, for heading-position maths.
-	const HEADER_OFFSET = 64;
 
 	// --- Jump-to-section outline ----------------------------------------------
 	// Built from the rendered body once it's in the page (headings + the classic
@@ -94,7 +92,12 @@
 	const refBook = (ref: string) => ref.match(/^(\d?\s?[A-Za-z]+)/)?.[1]?.trim() ?? '';
 	const book = $derived(refBook(sermon.scripture_ref || ''));
 
-	$effect(() => {
+	// onMount, not $effect: `listSermons` fetches the whole catalogue with no
+	// memo, and an effect keyed on `book` would re-issue it on every
+	// sermon→sermon navigation just to fill a footer list. (That also means the
+	// list doesn't refresh on client-side nav — pre-existing, and a fair thing
+	// to fix once `listSermons` is memoised.)
+	onMount(() => {
 		if (!book) return;
 		listSermons(getLang())
 			.then((all) => {
@@ -175,7 +178,6 @@
 <Reader
 	kind="sermon"
 	slug={sermon.slug}
-	order={SERMON_CHAPTER_ORDER}
 	language={sermon.language}
 	html={sermon.body_html}
 	wordCount={sermon.word_count}
