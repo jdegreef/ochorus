@@ -224,7 +224,8 @@ pinning full per-language coverage, so a partial block fails CI.
   not just `<p>` counts).
 - **Ratio bands are per language — measure, don't borrow.** A faithful bio runs
   **es/pt 95-115%** of the English word count but **lg 82-91%** (mean ~85%),
-  **sw 88-98%** (mean ~93%) and **ar 78-89%** (mean ~83%): Luganda and Swahili
+  **sw 88-98%** (mean ~93%), **ar 78-89%** (mean ~83%) and **uk 84-94%**
+  (mean ~88%): Luganda and Swahili
   pack morphology into single words, Luganda more so, and Arabic attaches the
   article and many prepositions to the word. Applying the Spanish band to
   Luganda means padding a correct file; applying Luganda's to Swahili flags a
@@ -234,7 +235,10 @@ pinning full per-language coverage, so a partial block fails CI.
 - **A brand-new language has NO band — don't invent one, and don't let its
   absence stop the job.** The ar band above came from the first six Arabic bios
   (77.9 / 81.0 / 81.4 / 82.6 / 86.4 / 88.5%); before that batch there was
-  nothing to measure against. The ordered TAG SEQUENCE is language-independent
+  nothing to measure against. The uk band likewise came from the first four
+  Ukrainian bios (84.9 / 87.7 / 89.1 / 91.0%) — Ukrainian drops articles and
+  the copula but has longer words, so it lands well above Arabic and just under
+  Swahili. The ordered TAG SEQUENCE is language-independent
   and is the real gate — enforce it strictly, treat the ratio as observational
   on a first batch, and write the observed spread back here. Telling a
   translator to hit a borrowed number is how you get a padded or compressed
@@ -251,3 +255,25 @@ pinning full per-language coverage, so a partial block fails CI.
   translations must NOT carry their own `dir`/`lang` attributes (a frontend
   test pins this), and the bio's prayer-callout `class` attributes must survive
   verbatim like anywhere else.
+- **An obscure Bible carries a verification cost — budget for it.** Choosing a
+  public-domain text is right (a licensed one puts an attribution obligation on
+  every verse the library renders), but the PD option is often an old, thinly
+  digitised translation a model does not know verbatim: uk's Kulish (1905)
+  predates the 1928 orthography, and the first four Ukrainian bios produced
+  **four verses whose exact wording could not be confirmed** (Luke 11:1,
+  Isa 45:22, 1 Tim 1:17, Deut 32:35). By contrast ar's Van Dyck is well known
+  and produced none. Two habits follow. Give translators a REAL SAMPLE of the
+  text as a register anchor — the Kulish John 15 in the uk brief is why those
+  files read `овощ`/`пробувати`/`глаголав` instead of modern Ukrainian — and
+  tell them to FLAG an unverified verse rather than invent one. Collect the
+  flags into the PR: an unverified quotation is a review task, not a defect,
+  but it is invisible in a diff. Note a wrong verse is not always a one-word
+  fix: Spurgeon's conversion turns on Isa 45:22's *look* verb echoing through
+  the scene, so a different Kulish verb means rewriting three sentences.
+- **Don't state a source's markup pattern in a brief unless you checked it.**
+  The uk brief asserted every bio has one `prayer` and one `prayer answered`
+  aside. False: Moody's has `prayer` twice, Murray's has `answered` first.
+  Across all bios it is 40 `prayer` to 34 `prayer answered`. The translator
+  followed the source over the brief and said so, which is the right
+  precedence — say explicitly that **the source wins over the brief's prose**,
+  and that classes and their order must be copied, not assumed.
