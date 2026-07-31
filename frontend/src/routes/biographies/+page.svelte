@@ -114,6 +114,16 @@
 		});
 	});
 
+	// The pinned bar was 177px on a 375px screen — 22% of the viewport, kept
+	// forever. On mobile the secondary controls now collapse behind a Filters
+	// toggle, leaving search (the thing you actually reach for) plus the toggle.
+	// `hidden` is conditional and `sm:` overrides it, so desktop is untouched
+	// and there is no duplicated markup.
+	let filtersOpen = $state(false);
+	const activeCount = $derived(
+		(queryText.trim() !== '' ? 1 : 0) + (filter !== 'all' ? 1 : 0) + (fullBioOnly ? 1 : 0)
+	);
+
 	// Count summary + whether any narrowing is active (sort doesn't count).
 	const isFiltered = $derived(queryText.trim() !== '' || filter !== 'all' || fullBioOnly);
 
@@ -296,7 +306,22 @@
 			aria-label={t('bios.filterPlaceholder')}
 		/>
 
-		<div class="flex overflow-hidden rounded-sm border border-border text-[0.78rem]">
+		<!-- Mobile only: reveals the rest. Carries a count so a collapsed panel
+		     can never hide the fact that the list is being narrowed. -->
+		<button
+			class="flex shrink-0 items-center gap-1 rounded-sm border border-border px-2.5 py-1.5 text-[0.78rem] text-muted sm:hidden"
+			onclick={() => (filtersOpen = !filtersOpen)}
+			aria-expanded={filtersOpen}
+		>
+			{t('bios.filters')}
+			{#if activeCount}
+				<span class="rounded-full bg-accent px-1.5 text-[0.68rem] font-semibold text-accent-contrast"
+					>{activeCount}</span
+				>
+			{/if}
+		</button>
+
+		<div class="overflow-hidden rounded-sm border border-border text-[0.78rem] sm:flex" class:hidden={!filtersOpen} class:flex={filtersOpen}>
 			{#each FILTERS as opt (opt.v)}
 				<button
 					class="px-2.5 py-1.5"
@@ -312,7 +337,8 @@
 		<!-- Orthogonal to the library/bio segments: narrows to writers with a
 		     full-length biography (the "Full life" badge). -->
 		<button
-			class="rounded-sm border border-border px-2.5 py-1.5 text-[0.78rem]"
+			class="rounded-sm border border-border px-2.5 py-1.5 text-[0.78rem] sm:block"
+			class:hidden={!filtersOpen}
 			class:bg-accent={fullBioOnly}
 			class:text-accent-contrast={fullBioOnly}
 			class:text-muted={!fullBioOnly}
@@ -323,7 +349,8 @@
 		<select
 			bind:value={sort}
 			onchange={syncUrl}
-			class="rounded-sm border border-border bg-surface px-2 py-1.5 text-small text-text"
+			class="rounded-sm border border-border bg-surface px-2 py-1.5 text-small text-text sm:block"
+			class:hidden={!filtersOpen}
 			aria-label={t('bios.sort')}
 		>
 			<option value="name">{t('bios.sortName')}</option>
@@ -333,7 +360,7 @@
 	</div>
 
 	<!-- Result count + a one-tap escape hatch when a filter is narrowing the list. -->
-	<div class="mt-1.5 flex items-center gap-2 text-small text-muted">
+	<div class="mt-1.5 items-center gap-2 text-small text-muted sm:flex" class:hidden={!filtersOpen} class:flex={filtersOpen}>
 		<span
 			>{t('bios.showing')
 				.replace('%shown%', String(sorted.length))
