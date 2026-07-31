@@ -137,6 +137,14 @@ export const entries: EntryGenerator = async () => {
 // long-form bio of Thomas à Kempis ships — translated tag-for-tag from the
 // English bio_html (126/126 tags) with its prayer callouts intact. The
 // /sw/authors/thomas-a-kempis page re-crawls and bakes the translated bio.
+//
+// Prerender refresh 2026-07-31 (queue jobs #614/#615/#616/#617/#618/#619): the
+// FIRST ARABIC CONTENT in the library — six long-form bios (Spurgeon, Moody,
+// Andrew Murray, A. B. Simpson, Gareth Evans, Hannah Whitall Smith), each
+// translated tag-for-tag from the English bio_html with its prayer callouts
+// intact. Arabic is RTL: the bio carries no dir/lang of its own, so each
+// /ar/authors/<slug> renders under the container's dir="auto" (see
+// readerDirection.test.ts) and re-crawls to bake the translated bio.
 export const load: PageLoad = async ({ params }) => {
 	const author = await orNotFound(() => getAuthor(params.slug, getLang()));
 	// A mid-deploy API (before the sermon fields ship) may omit these; default

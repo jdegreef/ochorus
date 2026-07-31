@@ -223,9 +223,31 @@ pinning full per-language coverage, so a partial block fails CI.
   list; keep the same habit for books and sermons (per-chapter tag sequence,
   not just `<p>` counts).
 - **Ratio bands are per language — measure, don't borrow.** A faithful bio runs
-  **es/pt 95-115%** of the English word count but **lg 82-91%** (mean ~85%) and
-  **sw 88-98%** (mean ~93%): Luganda and Swahili pack morphology into single
-  words, Luganda more so. Applying the Spanish band to Luganda means padding a
-  correct file; applying Luganda's to Swahili flags a correct one. To calibrate
-  a new language, measure its files re-translated from the CURRENT English
-  (`git log -1 --format=%ad -- <file>` to find them) and use that spread.
+  **es/pt 95-115%** of the English word count but **lg 82-91%** (mean ~85%),
+  **sw 88-98%** (mean ~93%) and **ar 78-89%** (mean ~83%): Luganda and Swahili
+  pack morphology into single words, Luganda more so, and Arabic attaches the
+  article and many prepositions to the word. Applying the Spanish band to
+  Luganda means padding a correct file; applying Luganda's to Swahili flags a
+  correct one. To calibrate a new language, measure its files re-translated
+  from the CURRENT English (`git log -1 --format=%ad -- <file>` to find them)
+  and use that spread.
+- **A brand-new language has NO band — don't invent one, and don't let its
+  absence stop the job.** The ar band above came from the first six Arabic bios
+  (77.9 / 81.0 / 81.4 / 82.6 / 86.4 / 88.5%); before that batch there was
+  nothing to measure against. The ordered TAG SEQUENCE is language-independent
+  and is the real gate — enforce it strictly, treat the ratio as observational
+  on a first batch, and write the observed spread back here. Telling a
+  translator to hit a borrowed number is how you get a padded or compressed
+  file that still passes.
+- **New-language preflight (before claiming its first job):** confirm the code
+  is in `library/language_seed.py` with a **Bible** code and a full
+  **glossary** — those are what keep scripture register and theology
+  consistent, and a language added from the admin lives only in the prod DB
+  where a worker session cannot read it (skip such jobs and say so). The
+  delivery paths need no setup: `seed_author_translations` globs
+  `author_bios_*`, so a new dir is picked up automatically — but it needs its
+  own `short.json`, which does not exist yet for a first batch. For an RTL
+  language (ar), the reader supplies `dir="auto"` on the content container:
+  translations must NOT carry their own `dir`/`lang` attributes (a frontend
+  test pins this), and the bio's prayer-callout `class` attributes must survive
+  verbatim like anywhere else.
