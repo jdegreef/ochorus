@@ -715,8 +715,14 @@ class SearchClickLog(models.Model):
     language = models.CharField(max_length=10)
     #: Which kind of hit was opened — one of library.search's types.
     result_type = models.CharField(max_length=20)
-    #: 1-based rank in the list the reader was shown. Position 1 means the
-    #: search answered them; position 18 means they had to hunt for it.
+    #: How far down the rendered list the opened result sat, 1-based.
+    #:
+    #: Read it as "did they have to hunt", not as a relevance rank, and don't
+    #: average it across views. The merged list is ordered by TYPE first (books
+    #: before passages, see the frontend's GROUP_ORDER), so a sermon can't be
+    #: position 1 whenever a book matched; and with a type facet selected the
+    #: same column becomes the rank within that one type. The signal this table
+    #: exists for is whether a result was opened at all — that part is exact.
     position = models.PositiveSmallIntegerField()
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
 

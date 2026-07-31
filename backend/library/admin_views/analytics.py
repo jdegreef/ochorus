@@ -420,13 +420,8 @@ class AdminSearchView(APIView):
             .values("q")
             .annotate(n=Count("id"))
         }
-        unopened = [
-            {**row, "clicks": clicked.get(row["query"], 0)}
-            for row in top(window.filter(result_count__gt=0))
-        ]
-        unopened = sorted(
-            (r for r in unopened if not r["clicks"]), key=lambda r: -r["count"]
-        )[:10]
+        answered = top(window.filter(result_count__gt=0))
+        unopened = [r for r in answered if not clicked.get(r["query"])][:10]
 
         return Response(
             {
@@ -441,7 +436,7 @@ class AdminSearchView(APIView):
                     "clicks_30d": sum(clicked.values()),
                 },
                 "unopened_queries": unopened,
-                "top_queries": top(window.filter(result_count__gt=0)),
+                "top_queries": answered,
                 "zero_result_queries": top(window.filter(result_count=0)),
                 "unanswered_by_language": unanswered,
                 "daily": daily,

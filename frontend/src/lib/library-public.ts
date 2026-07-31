@@ -357,6 +357,28 @@ export const search = (q: string, language = 'en', scope = '') => {
 };
 
 /**
+ * Tell the server a search result was opened — anonymous, fire-and-forget.
+ *
+ * The only signal that separates "the search found forty things" from "the
+ * search found the thing". `position` is the 1-based rank in the list the
+ * reader was actually shown.
+ */
+export const recordSearchClick = (
+	query: string,
+	type: SearchType,
+	position: number,
+	language = 'en'
+) =>
+	// The language rides in the query string because that is the only place the
+	// server reads it from (`language_from_request`). Posting without it recorded
+	// every click as English, which would have made the first per-language
+	// click-through report read as "nobody but English readers finds anything".
+	apiFetch<void>(`/api/library/search-click/?language=${encodeURIComponent(language)}`, {
+		method: 'POST',
+		body: JSON.stringify({ query, type, position })
+	});
+
+/**
  * More of ONE type, ordered over every match rather than over the page the
  * merged search happened to return. Sorting is the server's job for exactly
  * that reason — see library/search.py `page_by_type`.

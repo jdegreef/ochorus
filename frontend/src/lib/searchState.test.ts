@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
 	DEFAULT_SEARCH_STATE,
 	readSearchState,
+	scopedSearchHref,
 	searchStateKey,
 	writeSearchState
 } from './searchState';
@@ -110,5 +111,29 @@ describe('round trip', () => {
 		expect(searchStateKey(a)).not.toBe(searchStateKey({ ...a, type: 'chapter' }));
 		expect(searchStateKey(a)).not.toBe(searchStateKey({ ...a, sort: 'newest' }));
 		expect(searchStateKey(a)).not.toBe(searchStateKey({ ...a, scope: 'book:humility' }));
+	});
+});
+
+describe('linking into a scoped search', () => {
+	it('encodes exactly as the page writes it back', () => {
+		// A link that spelled the scope differently from writeSearchState made
+		// arriving from one immediately rewrite the URL.
+		const href = scopedSearchHref('book', 'humility');
+		expect(href).toBe('/search?in=book%3Ahumility');
+		expect(href).toBe(
+			'/search' + write({ ...DEFAULT_SEARCH_STATE, scope: 'book:humility' })
+		);
+	});
+
+	it('carries a query when there is one', () => {
+		expect(scopedSearchHref('author', 'andrew-murray', ' pride ')).toBe(
+			'/search?q=pride&in=author%3Aandrew-murray'
+		);
+	});
+
+	it('round-trips back to the same state', () => {
+		const back = read(scopedSearchHref('topic', 'prayer', 'grace').split('?')[1]);
+		expect(back.scope).toBe('topic:prayer');
+		expect(back.q).toBe('grace');
 	});
 });

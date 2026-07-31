@@ -151,6 +151,11 @@ REST_FRAMEWORK = {
     "DEFAULT_THROTTLE_RATES": {
         "search-click": "60/min",
     },
+    # Exactly one proxy (Render's) sits in front of the app, so the client
+    # address is the LAST entry in X-Forwarded-For. Without this, DRF keys
+    # throttles on the whole header — which the client writes, so anyone could
+    # mint an unlimited supply of fresh buckets by varying it.
+    "NUM_PROXIES": 1,
 }
 
 

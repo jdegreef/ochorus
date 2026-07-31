@@ -44,6 +44,27 @@ export const searchStateKey = (s: SearchState): string =>
 	`${s.q}|${s.type}|${s.sort}|${s.scope}`;
 
 /**
+ * A link into a scoped search — the one place that spells the `?in=` contract.
+ *
+ * Every entry point (author page, topic page, book page, the reader's in-book
+ * drawer) goes through here, so they encode identically to what the page itself
+ * writes back. Hand-built, they didn't: `?in=book:humility` from a link versus
+ * `?in=book%3Ahumility` from `writeSearchState` parse the same but differ as
+ * text, so arriving from a link immediately rewrote the URL to another spelling.
+ */
+export function scopedSearchHref(
+	kind: (typeof SEARCH_SCOPES)[number],
+	slug: string,
+	q = ''
+): string {
+	return `/search${writeSearchState(new URL('https://x/search'), {
+		...DEFAULT_SEARCH_STATE,
+		q: q.trim(),
+		scope: `${kind}:${slug}`
+	}).search}`;
+}
+
+/**
  * A `kind:slug` scope, or '' if it isn't one.
  *
  * Shape only — whether the shelf exists is the server's answer, and it comes

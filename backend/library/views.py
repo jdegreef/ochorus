@@ -11,7 +11,8 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status
 from rest_framework.response import Response
-from rest_framework.throttling import AnonRateThrottle
+from rest_framework.parsers import JSONParser
+from rest_framework.throttling import UserRateThrottle
 from rest_framework.views import APIView
 
 from . import languages as languages_module
@@ -547,9 +548,17 @@ class PopularSearchesView(APIView):
         return Response({"queries": [r["q"] for r in rows]})
 
 
-class _SearchClickThrottle(AnonRateThrottle):
-    """Its own bucket, so the one anonymous write can't ride the reader's quota
-    (and vice versa). Rate in settings.REST_FRAMEWORK.DEFAULT_THROTTLE_RATES."""
+class _SearchClickThrottle(UserRateThrottle):
+    """Its own bucket, so the one write endpoint can't ride the reader's quota
+    (and vice versa). Rate in settings.REST_FRAMEWORK.DEFAULT_THROTTLE_RATES.
+
+    ``UserRateThrottle`` rather than ``AnonRateThrottle``: the latter exempts
+    authenticated requests by design, and ``apiFetch`` sends the reader's
+    Supabase token on every call — so the "anonymous" throttle would have
+    covered nobody who had signed up. This keys on the account when there is
+    one and the client address otherwise, which is the population that needs
+    bounding either way.
+    """
 
     scope = "search-click"
 
@@ -562,13 +571,22 @@ class SearchClickView(APIView):
     plenty of results and no opens is a *silent* failure — invisible in the
     zero-result report, and often a better content signal than the loud one.
 
-    An unauthenticated write, so it is bounded rather than trusted: the query is
-    capped, the type must be one the search actually produces, the position must
-    be inside the page the reader could have been shown, and the endpoint is
-    throttled per client. It answers 204 whatever happens — there is nothing to
-    tell the browser, and nothing worth telling a prober.
+    The one write endpoint on a read-only API, so it is bounded rather than
+    trusted: the query must be a string of sane length, the type must be one the
+    search actually produces, the position must be inside a page the reader
+    could have been shown, and it is throttled per account-or-address. Apart
+    from a throttle rejection it answers 204 whatever happens — there is nothing
+    to tell the browser, and nothing worth telling a prober.
+
+    **JSON only.** Not a formality: an ``APIView`` is CSRF-exempt and this API
+    authenticates by bearer token, so with the form parser enabled any page on
+    the internet could make its visitors write rows here with a plain
+    cross-origin ``<form>`` — no preflight, CORS irrelevant for a write nobody
+    reads back. Requiring ``application/json`` means the browser must preflight,
+    and the forged-form route closes.
     """
 
+    parser_classes = [JSONParser]
     throttle_classes = [_SearchClickThrottle]
 
     #: A click can only come from a page the reader was served, and both the
@@ -577,8 +595,12 @@ class SearchClickView(APIView):
 
     def post(self, request):
         data = request.data if isinstance(request.data, dict) else {}
-        q = str(data.get("query") or "").strip()
-        result_type = str(data.get("type") or "").strip().lower()
+        raw_q = data.get("query")
+        # A string, not str() of whatever arrived: a posted list would otherwise
+        # be stored as "['a', 'b']" — junk in the report rather than a rejection.
+        q = raw_q.strip() if isinstance(raw_q, str) else ""
+        raw_type = data.get("type")
+        result_type = raw_type.strip().lower() if isinstance(raw_type, str) else ""
         try:
             position = int(data.get("position"))
         except (TypeError, ValueError):

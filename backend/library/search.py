@@ -109,6 +109,14 @@ def parse_scope(raw: str) -> tuple[str, str] | None:
     return None
 
 
+#: How each scope kind names itself, given its row.
+_SCOPE_LABEL = {
+    "author": lambda row, language: row.name,
+    "topic": lambda row, language: row.title_for(language),
+    "book": lambda row, language: row.title,
+}
+
+
 def scope_entry(scope: tuple[str, str], language: str) -> dict | None:
     """The scope as the reader sees it — ``{kind, slug, label}`` — or None.
 
@@ -117,19 +125,14 @@ def scope_entry(scope: tuple[str, str], language: str) -> dict | None:
     language* comes back as None rather than as a chip labelling a place the
     reader can't reach. (There is no English fallback: a topic with no title in
     Swahili is not a Swahili shelf.)
+
+    "Exists in this language" is asked of ``_base_querysets`` rather than
+    restated, so the chip can never name a shelf the search then finds nothing
+    in — the two answers come from the same filter.
     """
     kind, slug = scope
-    if kind == "author":
-        label = Author.objects.filter(slug=slug).values_list("name", flat=True).first()
-    elif kind == "topic":
-        topic = Topic.objects.filter(slug=slug, is_published=True).first()
-        label = topic.title_for(language) if topic else None
-    else:
-        label = (
-            Book.objects.filter(slug=slug, language=language, is_published=True)
-            .values_list("title", flat=True)
-            .first()
-        )
+    row = _base_querysets(language)[kind].filter(slug=slug).first()
+    label = _SCOPE_LABEL[kind](row, language) if row else None
     return {"kind": kind, "slug": slug, "label": label} if label else None
 
 
@@ -154,8 +157,13 @@ def _scoped(qs: dict, scope: tuple[str, str]) -> dict:
     if kind == "topic":
         # Topic membership is by slug (see TopicBook) so it holds across
         # languages — the scope means the same shelf whatever you're reading in.
-        books = TopicBook.objects.filter(topic__slug=slug).values("book_slug")
-        sermons = TopicSermon.objects.filter(topic__slug=slug).values("sermon_slug")
+        # is_published on the topic as well as the works: an unpublished shelf
+        # narrows to published books, so nothing unreleased is returned — but
+        # diffing a scoped result set against an unscoped one would still read
+        # off a draft shelf's curation.
+        members = {"topic__slug": slug, "topic__is_published": True}
+        books = TopicBook.objects.filter(**members).values("book_slug")
+        sermons = TopicSermon.objects.filter(**members).values("sermon_slug")
         return {
             **empty,
             "book": qs["book"].filter(slug__in=books),

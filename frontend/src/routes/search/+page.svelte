@@ -5,6 +5,7 @@
 		searchPage,
 		listTopics,
 		getPopularSearches,
+		recordSearchClick,
 		type SearchHit,
 		type ChapterHit,
 		type SearchScope,
@@ -354,16 +355,21 @@
 	 * looks like a success in every report. Fire-and-forget on purpose: it must
 	 * not delay the navigation the reader just asked for, and if it fails,
 	 * nothing about their click changes.
+	 *
+	 * **Not recorded inside a scope**, for the same reason a scoped search isn't
+	 * logged as a query. The report joins the two logs on query text, so a scoped
+	 * click would land against a denominator its own search never entered — one
+	 * reader opening a chapter from "search inside this book" would delete a real
+	 * library-wide gap from the unopened list. Same population in both logs, or
+	 * the join lies.
 	 */
 	function recordClick(key: string) {
+		if (scope) return;
 		const type = nav.types.get(key);
 		const position = nav.keys.indexOf(key) + 1;
 		const query = ran || q.trim();
 		if (!type || position < 1 || query.length < 2) return;
-		void apiFetch('/api/library/search-click/', {
-			method: 'POST',
-			body: JSON.stringify({ query, type, position })
-		}).catch(() => {});
+		void recordSearchClick(query, type, position, getLang()).catch(() => {});
 	}
 	const activeKey = $derived(
 		activeIndex >= 0 && activeIndex < nav.keys.length ? nav.keys[activeIndex] : ''
@@ -666,15 +672,11 @@
 	 * reads as "the library doesn't have this" when it only means "not here".
 	 */
 	function clearScope() {
-		scope = '';
-		scopeInfo = null;
 		const term = ran || q.trim();
-		typeFilter = 'all';
-		sortMode = 'relevance';
-		typeRows = null;
-		typeSeq++;
+		// Same reset every other entry into a view performs — going through
+		// applyTerm rather than repeating it is what keeps them from drifting.
+		applyTerm(term);
 		syncUrl(term, 'all', 'relevance');
-		if (term.length >= 2) runSearch(term);
 	}
 
 	// Accept a "did you mean" suggestion: swap it in and search immediately.

@@ -7,6 +7,7 @@
 	import { absUrl, jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import { scopedSearchHref } from '$lib/searchState';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
@@ -176,7 +177,7 @@
 				     reader gets the same ranking, snippets and paging they get
 				     everywhere else, and the scope is visible and reversible. -->
 				<a
-					href={localizeHref(`/search?in=book:${book.slug}`)}
+					href={localizeHref(scopedSearchHref('book', book.slug))}
 					class="btn btn-ghost">{t('search.inBook')}</a
 				>
 				<!-- Download for offline: precache every chapter so the whole book

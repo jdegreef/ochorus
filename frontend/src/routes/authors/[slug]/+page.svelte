@@ -5,6 +5,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingTime } from '$lib/reading';
 	import { localizeHref } from '$lib/href';
+	import { scopedSearchHref } from '$lib/searchState';
 	import { listen } from '$lib/listen.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { page } from '$app/stores';
@@ -267,7 +268,7 @@
 			     and half-remembers a phrase from another is on this page, and
 			     until now their only option was the whole library. -->
 			<a
-				href={localizeHref(`/search?in=author:${author.slug}`)}
+				href={localizeHref(scopedSearchHref('author', author.slug))}
 				class="btn btn-ghost shrink-0 !px-2.5 !py-1">{t('search.inAuthor')}</a
 			>
 			<FavoriteButton kind="author" slug={author.slug} showLabel />

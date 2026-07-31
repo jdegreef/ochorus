@@ -4,6 +4,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { highlightAround } from '$lib/highlight';
 	import { localizeHref } from '$lib/href';
+	import { scopedSearchHref } from '$lib/searchState';
 
 	/**
 	 * In-book search: a slide-over that indexes every chapter of the current book
@@ -182,9 +183,7 @@
 			     here, and does one rung up. -->
 			{#if query.trim().length >= 2 && !indexing}
 				<a
-					href={localizeHref(
-						`/search?q=${encodeURIComponent(query.trim())}&in=book:${slug}`
-					)}
+					href={localizeHref(scopedSearchHref('book', slug, query))}
 					class="block px-5 py-4 text-small font-semibold text-accent hover:underline"
 					onclick={close}
 				>

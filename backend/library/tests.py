@@ -5261,6 +5261,17 @@ class SearchScopeTests(TestCase):
         self.assertNotIn("author", res.data["totals"])
         self.assertNotIn("book", self.search("book:humility").data["totals"])
 
+    def test_a_shelf_with_nothing_in_this_language_is_not_named(self):
+        # The chip and the results must come from the same filter. When they
+        # didn't, an author with no Swahili work still got a confident "Searching
+        # in Andrew Murray" over an empty list — the reader is told the shelf is
+        # there and shown nothing on it.
+        res = self.client.get(
+            "/api/library/search/?q=humility&language=sw&in=author:andrew-murray"
+        )
+        self.assertIsNone(res.data["scope"])
+        self.assertEqual(res.data["results"], [])
+
     def test_a_scope_that_does_not_exist_is_reported_as_such(self):
         # Not silently unscoped: the page must be able to say "no such shelf"
         # rather than show the whole library under a confident label.
@@ -5318,6 +5329,32 @@ class SearchClickTests(TestCase):
         self.assertFalse(hasattr(row, "profile"))
         self.assertFalse(hasattr(row, "user"))
 
+    def test_the_language_the_reader_was_in_is_recorded(self):
+        # It came back "en" for everyone: language_from_request reads only the
+        # query string, and the beacon posted to a bare path. Harmless in the
+        # total, and wrong the moment click-through is split by language — the
+        # form the rest of this report is deliberately built in.
+        res = self.client.post(
+            "/api/library/search-click/?language=sw",
+            {"query": "sala", "type": "chapter", "position": 1},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 204)
+        self.assertEqual(SearchClickLog.objects.get().language, "sw")
+
+    def test_a_cross_origin_form_post_cannot_write(self):
+        # An APIView is CSRF-exempt and this API authenticates by bearer token,
+        # so with a form parser enabled any page on the internet could make its
+        # visitors write rows here — no preflight, CORS irrelevant for a write
+        # nobody reads back. JSON-only means the browser must preflight.
+        res = self.client.post(
+            "/api/library/search-click/",
+            {"query": "humility", "type": "chapter", "position": 1},
+            format="multipart",
+        )
+        self.assertEqual(res.status_code, 415)
+        self.assertEqual(SearchClickLog.objects.count(), 0)
+
     def test_junk_is_dropped_without_telling_the_caller(self):
         # An unauthenticated write, so it is bounded rather than trusted. 204
         # either way: there is nothing to say, and nothing worth saying to a
@@ -5330,6 +5367,8 @@ class SearchClickTests(TestCase):
             {"position": -3},
             {"position": 99999},                 # past any page served
             {"position": "; drop table"},
+            {"query": ["a", "b"]},               # would stringify to "['a', 'b']"
+            {"type": {"a": 1}},
         ):
             self.assertEqual(self.click(**bad).status_code, 204, bad)
         self.assertEqual(SearchClickLog.objects.count(), 0)
