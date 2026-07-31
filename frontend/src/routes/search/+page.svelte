@@ -102,7 +102,7 @@
 				return {
 					key: 'sermon:' + hit.sermon_slug,
 					label: t('search.typeSermon'),
-					href: `/sermons/${hit.sermon_slug}`,
+					href: `/sermons/${hit.sermon_slug}?q=${encodeURIComponent(ran || q.trim())}`,
 					title: hit.sermon_title,
 					meta: hit.scripture_ref
 						? `${hit.author_name} · ${hit.scripture_ref}`
@@ -117,7 +117,9 @@
 				return {
 					key: `chapter:${hit.book_slug}:${hit.chapter_order}`,
 					label: t('search.typeChapter'),
-					href: `/books/${hit.book_slug}/${hit.chapter_order}`,
+					// The query rides along so the reader lands on the match rather than
+					// at the top of the chapter.
+					href: `/books/${hit.book_slug}/${hit.chapter_order}?q=${encodeURIComponent(ran || q.trim())}`,
 					title: hit.chapter_title || hit.book_title,
 					meta: `${hit.book_title} · ${hit.author_name}`,
 					snippet: hit.snippet,
@@ -986,7 +988,9 @@
 											{#each shown as ch (ch.key)}
 												<li class="py-2.5">
 													<a
-														href={localizeHref(`/books/${pb.slug}/${ch.order}`)}
+														href={localizeHref(
+														`/books/${pb.slug}/${ch.order}?q=${encodeURIComponent(ran || q.trim())}`
+													)}
 														id="res-{ch.key}"
 														class="-mx-2 block rounded px-2 hover:no-underline"
 														class:bg-surface-2={ch.key === activeKey}
