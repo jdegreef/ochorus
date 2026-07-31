@@ -135,6 +135,12 @@ import type { PageLoad } from './$types';
  * lacked — ships (PR #558), so the /pt books index and
  * /pt/books/lord-teach-us-to-pray-2 with its chapter pages re-crawl and bake
  * the translation.
+ *
+ * Prerender refresh 2026-07-30 (queue jobs #604/#605): the first Spanish
+ * editions of Spurgeon's Todo por Gracia (All of Grace, 20 ch) and Moody's
+ * La oración que prevalece (Prevailing Prayer, 11 ch) ship, so the /es books
+ * index and /es/books/all-of-grace and /es/books/prevailing-prayer with their
+ * chapter pages re-crawl and bake the translations.
  */
 export const load: PageLoad = async () => {
 	try {
