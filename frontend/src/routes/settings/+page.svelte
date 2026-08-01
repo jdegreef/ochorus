@@ -262,7 +262,7 @@
 
 <div class="mx-auto max-w-5xl px-5 py-10">
 	<header class="mb-8">
-		<h1 class="text-display mb-2">{t('settings.title')}</h1>
+		<h1 class="text-h1 mb-2">{t('settings.title')}</h1>
 		<p class="text-body text-muted">{t('settings.subtitle')}</p>
 	</header>
 

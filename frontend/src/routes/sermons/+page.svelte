@@ -8,6 +8,7 @@
 	import { readingMinutes } from '$lib/reading';
 	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
 	import CatalogLanguageNudge from '$lib/components/CatalogLanguageNudge.svelte';
+	import PageHeader from '$lib/components/PageHeader.svelte';
 
 	const t = i18n.t;
 
@@ -89,13 +90,7 @@
 </svelte:head>
 
 <div class="page-col px-5 py-10">
-	<header class="mb-8">
-		<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">{t('nav.sermons')}</p>
-		<h1 class="text-display mb-3">{t('sermons.title')}</h1>
-		<p class="text-body text-muted">
-			{t('sermons.tagline')}
-		</p>
-	</header>
+	<PageHeader eyebrow={t('nav.sermons')} title={t('sermons.title')} tagline={t('sermons.tagline')} />
 
 	<CatalogLanguageNudge kind="sermons" localizedCount={sermons.length} />
 
@@ -108,20 +103,16 @@
 	{/if}
 
 	<!-- Filter bar: free text + which book of the Bible the sermon expounds. -->
-	<div class="mb-8 flex flex-wrap items-center gap-3">
+	<div class="filter-row mb-8">
 		<input
 			bind:value={queryText}
 			type="search"
 			autocomplete="off"
 			placeholder={t('sermons.filterPlaceholder')}
 			aria-label={t('sermons.filterPlaceholder')}
-			class="min-w-0 flex-1 rounded-card border border-border bg-surface px-4 py-2.5 text-body text-text"
+			class="filter-field grow"
 		/>
-		<select
-			bind:value={bibleBook}
-			aria-label={t('sermons.allBooks')}
-			class="rounded-card border border-border bg-surface px-3 py-2.5 text-small text-text"
-		>
+		<select bind:value={bibleBook} aria-label={t('sermons.allBooks')} class="filter-field">
 			<option value="">{t('sermons.allBooks')}</option>
 			{#each bookFacets as b (b.name)}
 				<option value={b.name}>{b.name} ({b.count})</option>

@@ -23,6 +23,7 @@
 	import { localizeHref } from '$lib/href';
 	import { beforeNavigate, goto } from '$app/navigation';
 	import { page } from '$app/stores';
+	import PageHeader from '$lib/components/PageHeader.svelte';
 
 	const t = i18n.t;
 
@@ -886,7 +887,7 @@
      wrapping onto three lines. Below lg nothing changes — the single column is
      right on a phone, and this page is read on phones. -->
 <div class="page-col px-5 py-10">
-	<h1 class="text-h1 mb-8">{t('search.title')}</h1>
+	<PageHeader title={t('search.title')} />
 
 	<!-- Sticky: a long result list used to scroll the query out of sight, so
 	     refining meant scrolling back up to find the box. The bleed padding and

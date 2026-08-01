@@ -12,6 +12,7 @@
 	import BookListRow from './BookListRow.svelte';
 	import BookCover from './BookCover.svelte';
 	import CatalogLanguageNudge from './CatalogLanguageNudge.svelte';
+	import PageHeader from './PageHeader.svelte';
 
 	let { books, loadError = false }: { books: BookSummary[]; loadError?: boolean } = $props();
 	const t = i18n.t;
@@ -150,18 +151,13 @@
 </svelte:head>
 
 <div class="page-col px-5 py-10">
-	<header class="mb-6">
-		<h1 class="text-display mb-2">{t('nav.books')}</h1>
-		<p class="text-body text-muted">{t('books.tagline')}</p>
-		{#if books.length}
-			<p class="mt-1 text-small text-muted">
-				{books.length}
-				{books.length === 1 ? t('common.bookOne') : t('common.bookMany')}
-				<span class="opacity-50">·</span>
-				{authorCount} {t('books.authorsWord')}
-			</p>
-		{/if}
-	</header>
+	<PageHeader title={t('nav.books')} tagline={t('books.tagline')} meta={books.length ? bookCounts : undefined} />
+	{#snippet bookCounts()}
+		{books.length}
+		{books.length === 1 ? t('common.bookOne') : t('common.bookMany')}
+		<span class="opacity-50">·</span>
+		{authorCount} {t('books.authorsWord')}
+	{/snippet}
 
 	<CatalogLanguageNudge kind="books" localizedCount={books.length} />
 
@@ -229,23 +225,20 @@
 		{/if}
 
 		<!-- Controls: search · source · sort · group · view -->
-		<div class="mb-6 flex flex-wrap items-center gap-2">
+		<div class="filter-row mb-6">
 			<input
 				bind:value={queryText}
 				type="search"
-				class="min-w-[10rem] flex-1 rounded-sm border border-border bg-surface px-3 py-1.5 text-small text-text"
+				class="filter-field grow"
 				placeholder={t('books.filterPlaceholder')}
 				aria-label={t('books.filterPlaceholder')}
 			/>
 
 			{#if showSourceFilter}
-				<div class="flex overflow-hidden rounded-sm border border-border text-[0.78rem]">
+				<div class="seg">
 					{#each [['all', t('books.sourceAll')], ['public_domain', t('books.sourcePublic')], ['translated', t('books.sourceTranslated')]] as opt (opt[0])}
 						<button
-							class="px-2.5 py-1.5"
-							class:bg-accent={source === opt[0]}
-							class:text-accent-contrast={source === opt[0]}
-							class:text-muted={source !== opt[0]}
+							class:active={source === opt[0]}
 							onclick={() => (source = opt[0] as Source)}
 							aria-pressed={source === opt[0]}>{opt[1]}</button
 						>
@@ -256,7 +249,7 @@
 			<select
 				value={sort}
 				onchange={onSort}
-				class="rounded-sm border border-border bg-surface px-2 py-1.5 text-small text-text"
+				class="filter-field"
 				aria-label={t('books.sort')}
 			>
 				<option value="shelf">{t('books.sortShelf')}</option>
@@ -265,40 +258,28 @@
 				<option value="shortest">{t('books.sortShortest')}</option>
 			</select>
 
-			<div class="flex overflow-hidden rounded-sm border border-border text-[0.78rem]">
+			<div class="seg">
 				<button
-					class="px-2.5 py-1.5"
-					class:bg-accent={group === 'author'}
-					class:text-accent-contrast={group === 'author'}
-					class:text-muted={group !== 'author'}
+					class:active={group === 'author'}
 					onclick={() => setGroup('author')}
 					aria-pressed={group === 'author'}>{t('books.groupAuthor')}</button
 				>
 				<button
-					class="px-2.5 py-1.5"
-					class:bg-accent={group === 'all'}
-					class:text-accent-contrast={group === 'all'}
-					class:text-muted={group !== 'all'}
+					class:active={group === 'all'}
 					onclick={() => setGroup('all')}
 					aria-pressed={group === 'all'}>{t('books.groupAll')}</button
 				>
 			</div>
 
-			<div class="flex overflow-hidden rounded-sm border border-border">
+			<div class="seg">
 				<button
-					class="px-2.5 py-1.5"
-					class:bg-accent={view === 'grid'}
-					class:text-accent-contrast={view === 'grid'}
-					class:text-muted={view !== 'grid'}
+					class:active={view === 'grid'}
 					onclick={() => setView('grid')}
 					aria-label={t('books.viewGrid')}
 					aria-pressed={view === 'grid'}>▦</button
 				>
 				<button
-					class="px-2.5 py-1.5"
-					class:bg-accent={view === 'list'}
-					class:text-accent-contrast={view === 'list'}
-					class:text-muted={view !== 'list'}
+					class:active={view === 'list'}
 					onclick={() => setView('list')}
 					aria-label={t('books.viewList')}
 					aria-pressed={view === 'list'}>☰</button
@@ -310,12 +291,8 @@
 		{#if allTopics.length > 1}
 			<div class="mb-6 flex flex-wrap gap-1.5" aria-label={t('books.filterTopic')} role="group">
 				<button
-					class="rounded-full border px-2.5 py-1 text-[0.75rem]"
-					class:border-accent={topic === ''}
-					class:bg-accent={topic === ''}
-					class:text-accent-contrast={topic === ''}
-					class:border-border={topic !== ''}
-					class:text-muted={topic !== ''}
+					class="chip"
+					class:active={topic === ''}
 					onclick={() => (topic = '')}
 					aria-pressed={topic === ''}
 				>
@@ -323,12 +300,8 @@
 				</button>
 				{#each allTopics as tc (tc.slug)}
 					<button
-						class="rounded-full border px-2.5 py-1 text-[0.75rem]"
-						class:border-accent={topic === tc.slug}
-						class:bg-accent={topic === tc.slug}
-						class:text-accent-contrast={topic === tc.slug}
-						class:border-border={topic !== tc.slug}
-						class:text-muted={topic !== tc.slug}
+						class="chip"
+						class:active={topic === tc.slug}
 						onclick={() => (topic = topic === tc.slug ? '' : tc.slug)}
 						aria-pressed={topic === tc.slug}
 					>
@@ -344,7 +317,7 @@
 				{#each groups as g (g.slug)}
 					<a
 						href="#author-{g.slug}"
-						class="rounded-full border border-border px-2.5 py-1 text-[0.75rem] text-muted hover:border-accent hover:text-accent hover:no-underline"
+						class="chip hover:no-underline"
 					>
 						{g.name}
 					</a>

@@ -615,6 +615,99 @@ nav.appnav .navtoggle:hover {
 	cursor: pointer;
 }
 
+/* ── Browse-page filter furniture ──────────────────────────────────────────
+   One control family for the filter rows on Books, Sermons, Biographies and
+   Plans. They had drifted badly: the same "filter by title" input was
+   `rounded-sm px-3 py-1.5 text-small` on Books and `rounded-card px-4 py-2.5
+   text-body` on Sermons, so the four pages had different control heights,
+   radii and text sizes for identical affordances. Books' segmented control
+   also used an arbitrary `text-[0.78rem]` and a solid accent fill — both
+   against STYLE_GUIDE §2/§5.
+
+   These are shells, not a one-size-fits-all control set: each page keeps its
+   own controls, they just share metrics. */
+
+/* The row that holds a page's filter controls. */
+.filter-row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+/* Any input/select sitting in a .filter-row. One height for all of them. */
+.filter-field {
+	min-width: 0;
+	border: 1px solid var(--border);
+	border-radius: var(--radius-sm);
+	background: var(--surface);
+	padding: 0.45rem 0.7rem;
+	font-size: var(--fs-small);
+	line-height: 1.5;
+	color: var(--text);
+}
+.filter-field::placeholder {
+	color: var(--muted);
+}
+/* The free-text filter is the primary control: it takes the leftover room. */
+.filter-field.grow {
+	flex: 1 1 12rem;
+}
+
+/* Segmented toggle — a joined row of options, one active. Soft accent for the
+   active option (STYLE_GUIDE §5: primary is tinted, never a solid block). */
+.seg {
+	display: flex;
+	overflow: hidden;
+	border: 1px solid var(--border);
+	border-radius: var(--radius-sm);
+}
+.seg button {
+	padding: 0.45rem 0.7rem;
+	font-size: var(--fs-small);
+	line-height: 1.5;
+	color: var(--muted);
+	background: none;
+	border: none;
+	cursor: pointer;
+	white-space: nowrap;
+}
+.seg button + button {
+	border-inline-start: 1px solid var(--border);
+}
+.seg button:hover:not(.active) {
+	background: var(--surface-2);
+	color: var(--text);
+}
+.seg button.active {
+	background: var(--accent-soft);
+	color: var(--accent);
+	font-weight: 600;
+}
+
+/* Filter chip — the pill rows (topics on Books, length on Plans). */
+.chip {
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	background: var(--surface);
+	padding: 0.3rem 0.75rem;
+	font-size: var(--fs-small);
+	line-height: 1.4;
+	color: var(--muted);
+	cursor: pointer;
+	white-space: nowrap;
+}
+.chip:hover:not(.active) {
+	background: var(--surface-2);
+	color: var(--text);
+}
+.chip.active {
+	background: var(--accent-soft);
+	border-color: var(--accent-soft-border);
+	color: var(--accent);
+	font-weight: 600;
+}
+
 /* Narrower / wider stepper (prefs menu), styled as a joined button pair. */
 .widthctl {
 	display: flex;

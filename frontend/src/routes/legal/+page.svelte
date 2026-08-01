@@ -21,7 +21,7 @@
 
 <div class="mx-auto max-w-2xl px-5 py-12">
 	<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">Ochorus</p>
-	<h1 class="text-display mb-6">{t('legal.title')}</h1>
+	<h1 class="text-h1 mb-6">{t('legal.title')}</h1>
 
 	<div class="reading-page space-y-5 text-body text-muted">
 		<p>{t('legal.intro')}</p>
