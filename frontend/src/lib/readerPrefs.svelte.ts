@@ -28,14 +28,10 @@ export const MEASURE: Record<Measure, string> = {
 	wide: '52rem'
 };
 
-// How the same width preference scales the browse-page shells (the mx-auto
-// max-w-* containers inside <main>): reading columns use MEASURE directly,
-// page shells multiply their natural width by this (see app.css).
-export const PAGE_SCALE: Record<Measure, number> = {
-	narrow: 0.85,
-	normal: 1,
-	wide: 1.18
-};
+// NOTE: browse-page width is no longer derived from the reading measure. The
+// page shell is driven by the independent `pageWidth` store (see
+// $lib/pageWidth.svelte) and the shared `.page-col` class; MEASURE below stays
+// purely the prose column inside a chapter.
 
 export const FONT_STACK: Record<ReaderFont, string> = {
 	serif: "'Fraunces Variable', Georgia, 'Times New Roman', serif",

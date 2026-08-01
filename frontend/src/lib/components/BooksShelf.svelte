@@ -149,7 +149,7 @@
 	{/if}
 </svelte:head>
 
-<div class="mx-auto max-w-6xl px-5 py-10">
+<div class="page-col px-5 py-10">
 	<header class="mb-6">
 		<h1 class="text-display mb-2">{t('nav.books')}</h1>
 		<p class="text-body text-muted">{t('books.tagline')}</p>

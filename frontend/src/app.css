@@ -646,30 +646,32 @@ nav.appnav .navtoggle:hover {
 	cursor: default;
 }
 
-/* Browse-page width follows the quick-settings Reading width control. The
-   reading column (book/sermon body) uses --reading-measure directly; the page
-   shells — the `mx-auto max-w-*` containers inside <main> — multiply their
-   natural Tailwind width by --page-scale (set on the app root from the same
-   preference). Scoped to main so the nav bar and footer hold still, and
-   limited to the large shells (3xl+): the xl/2xl forms (login, contact)
-   shouldn't stretch. */
-main .max-w-3xl {
-	max-width: calc(48rem * var(--page-scale, 1));
+/* The shared page column. Every main browse surface (Home, Books, Topics,
+   Plans, Sermons, Biographies, Search) uses this instead of its own
+   `mx-auto max-w-*`, so they all sit at ONE width and the quick-settings
+   "Page width" stepper moves all of them together. Ported from Take Root's
+   `.content-col`.
+
+   Replaces the old --page-scale approach, which multiplied each page's own
+   Tailwind max-width: that left six pages at six different base widths, so
+   a step meant something different on every page.
+
+   `--pw` is set per page from the pageWidth store; the min() keeps the column
+   inside the viewport on small screens, where it simply goes full-bleed. */
+.page-col {
+	width: min(var(--pw, 76rem), calc(100vw - 2.5rem));
+	/* Centre on the viewport even when wider than the parent. Direction-aware:
+	   under dir="rtl" (Arabic) the start edge is the RIGHT edge, so the pull
+	   back has to flip sign — a physical margin-left/translateX would shove
+	   every page sideways. */
+	margin-inline-start: 50%;
+	transform: translateX(-50%);
 }
-main .max-w-4xl {
-	max-width: calc(56rem * var(--page-scale, 1));
-}
-main .max-w-5xl {
-	max-width: calc(64rem * var(--page-scale, 1));
-}
-main .max-w-6xl {
-	max-width: calc(72rem * var(--page-scale, 1));
+[dir='rtl'] .page-col {
+	transform: translateX(50%);
 }
 @media (prefers-reduced-motion: no-preference) {
-	main .max-w-3xl,
-	main .max-w-4xl,
-	main .max-w-5xl,
-	main .max-w-6xl {
-		transition: max-width 0.25s ease;
+	.page-col {
+		transition: width 0.25s ease;
 	}
 }

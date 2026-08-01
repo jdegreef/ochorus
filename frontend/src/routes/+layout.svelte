@@ -16,7 +16,8 @@
 	import { localizeHref, getLocale, getTextDirection, locales } from '$lib/paraglide/runtime';
 	import AccountMenu from '$lib/components/AccountMenu.svelte';
 	import QuickSettings from '$lib/components/QuickSettings.svelte';
-	import { MEASURE, PAGE_SCALE } from '$lib/readerPrefs.svelte';
+	import { MEASURE } from '$lib/readerPrefs.svelte';
+	import { pageWidth } from '$lib/pageWidth.svelte';
 	import CommandPalette from '$lib/components/CommandPalette.svelte';
 	import PwaToasts from '$lib/components/PwaToasts.svelte';
 	import Icon from '$lib/components/Icon.svelte';
@@ -37,6 +38,7 @@
 	onMount(() => {
 		theme.init();
 		readerPrefs.init();
+		pageWidth.init();
 		auth.init();
 		pwa.init();
 	});
@@ -110,7 +112,7 @@
 
 <div
 	class="flex min-h-screen flex-col"
-	style="--reading-measure: {MEASURE[readerPrefs.measure]}; --page-scale: {PAGE_SCALE[readerPrefs.measure]}"
+	style="--reading-measure: {MEASURE[readerPrefs.measure]}; --pw: {pageWidth.rem}rem"
 >
 	<a href="#main" class="skip-link">{t('a11y.skipToContent')}</a>
 	{#if !readerUi.focus}

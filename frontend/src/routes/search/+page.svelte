@@ -885,7 +885,7 @@
      and become a rail, so results get the full column and the filters stop
      wrapping onto three lines. Below lg nothing changes — the single column is
      right on a phone, and this page is read on phones. -->
-<div class="mx-auto max-w-2xl px-5 py-10 lg:max-w-5xl">
+<div class="page-col px-5 py-10">
 	<h1 class="text-h1 mb-8">{t('search.title')}</h1>
 
 	<!-- Sticky: a long result list used to scroll the query out of sight, so
