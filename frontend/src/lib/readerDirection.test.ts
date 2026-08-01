@@ -49,9 +49,15 @@ const PROSE_OWNERS = [
 	'src/routes/books/[slug]/[order]/+page.svelte'
 ];
 
-/** Other surfaces rendering content inside localized chrome: [file, anchor]. */
+/**
+ * Other surfaces rendering content inside localized chrome: [file, anchor].
+ *
+ * The author page used to be pinned here on `bind:this={bioEl}`. Its biography
+ * now renders through <Reader>, which is covered by PROSE_OWNERS above — so the
+ * guarantee is inherited rather than restated, which is the point of the
+ * extraction. Re-adding it would pin a line that no longer carries the dir.
+ */
 const CONTENT_SURFACES: [path: string, needle: string][] = [
-	['src/routes/authors/[slug]/+page.svelte', 'bind:this={bioEl}'],
 	['src/routes/books/[slug]/+page.svelte', '{book.title}</h1>'],
 	['src/routes/books/[slug]/+page.svelte', '{ch.title}</span>']
 ];

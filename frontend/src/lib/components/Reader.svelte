@@ -68,6 +68,18 @@
 		 * bar or a time-remaining estimate in whatever chrome the page renders.
 		 */
 		frac?: number;
+		/**
+		 * Height of the page's own sticky chrome, in px — how far down the viewport
+		 * "the top" really is. Both halves of the resume cycle use it, so they must
+		 * agree: restoring parks a paragraph just below it, and the next save asks
+		 * which paragraph is first below it.
+		 *
+		 * Getting it wrong drifts the resume point BACKWARDS. A page with no sticky
+		 * bar that inherits 64 leaves the previous paragraph's last line above the
+		 * threshold, so the next scroll saves N-1, and every reopen walks back one
+		 * more. Defaults to the readers' bar height; surfaces without one pass 0.
+		 */
+		headerOffset?: number;
 	}
 
 	let {
@@ -81,7 +93,8 @@
 		listenArtist,
 		class: className = '',
 		body = $bindable(),
-		frac = $bindable(0)
+		frac = $bindable(0),
+		headerOffset = HEADER_OFFSET
 	}: Props = $props();
 
 	const t = i18n.t;
@@ -96,7 +109,7 @@
 		if (!body) return 0;
 		const kids = body.children;
 		for (let i = 0; i < kids.length; i++) {
-			if (kids[i].getBoundingClientRect().bottom > HEADER_OFFSET) return i;
+			if (kids[i].getBoundingClientRect().bottom > headerOffset) return i;
 		}
 		return Math.max(0, kids.length - 1);
 	}
@@ -148,7 +161,7 @@
 						0);
 			if (idx > 0 && body?.children[idx]) {
 				body.children[idx].scrollIntoView({ block: 'start' });
-				window.scrollBy(0, -HEADER_OFFSET);
+				window.scrollBy(0, -headerOffset);
 			}
 			updateFraction();
 		})();

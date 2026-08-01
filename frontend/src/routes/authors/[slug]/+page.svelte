@@ -3,100 +3,47 @@
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumb, hreflangAll } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
-	import { readingTime } from '$lib/reading';
+	import { readingTime, readingMinutes } from '$lib/reading';
 	import { localizeHref } from '$lib/href';
 	import { scopedSearchHref } from '$lib/searchState';
 	import { listen } from '$lib/listen.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { page } from '$app/stores';
-	import { renderMarks } from '$lib/rangeMarks';
-	import { marks, type Segment } from '$lib/marks.svelte';
-	import {
-		HIGHLIGHT_COLORS,
-		DEFAULT_HIGHLIGHT,
-		BIO_CHAPTER_ORDER
-	} from '$lib/reading-schema';
-	import { focusTrap } from '$lib/actions/focusTrap';
+	import { readerPrefs } from '$lib/readerPrefs.svelte';
+	import { readerUi } from '$lib/readerUi.svelte';
+	import { BIO_CHAPTER_ORDER } from '$lib/reading-schema';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
-	import ListenBar from '$lib/components/ListenBar.svelte';
 	import LifeTimeline from '$lib/components/LifeTimeline.svelte';
-	import SelectionBar from '$lib/components/SelectionBar.svelte';
-	import { onDestroy, onMount } from 'svelte';
+	import Reader from '$lib/components/Reader.svelte';
+	import ReaderControls from '$lib/components/ReaderControls.svelte';
+	import { onMount } from 'svelte';
 
 	const t = i18n.t;
 
 	let { data } = $props();
 	const author = $derived<AuthorDetail>(data.author);
 
-	// Read the long-form biography aloud (device Text-to-Speech), same engine as
-	// the chapter/sermon reader. Each top-level block is one utterance.
+	// The biography reads like any other long-form work here: <Reader> owns the
+	// prose and everything that has to know about it (resume point, highlights
+	// and notes, read-aloud, the dictionary and scripture popovers). This page
+	// keeps its own shell, because a bio's prose is one band inside a much wider
+	// page — the portrait, timeline, book grid and contemporaries must NOT
+	// inherit the reading column's width.
+	let reader = $state<Reader | undefined>();
 	let bioEl = $state<HTMLElement | undefined>();
-	function startListening() {
-		if (!bioEl) return;
-		const paragraphs = [...bioEl.children].map((el) => (el as HTMLElement).innerText);
-		listen.start(paragraphs, 0, getLang(), { title: author.name, artist: t('bios.eyebrow') });
-	}
-	onDestroy(() => listen.stop());
+	/** How far through the biography itself, 0–1 — not through the page. */
+	let frac = $state(0);
 
-	// --- Highlights & notes ----------------------------------------------------
-	// Device-local text-range marks over the biography (same range model as the
-	// book and sermon readers; kind 'bio', a single document at order 1). A note
-	// editor opens on tap of a marked span or via the selection bar's "Note".
-	let noteOpen = $state(false);
-	let noteId = $state<string | null>(null);
-	let notePending = $state<Segment[]>([]);
-	let noteDraft = $state('');
-	let noteColor = $state<string>(DEFAULT_HIGHLIGHT);
+	onMount(() => readerPrefs.init());
 
-	$effect(() => {
-		// Reload when navigating between authors.
-		marks.load(author.slug, BIO_CHAPTER_ORDER, getLang(), 'bio');
-	});
-
-	// Paint marks as <mark> spans; clicking one opens its note editor.
-	$effect(() => {
-		const list = marks.list;
-		if (!bioEl) return;
-		renderMarks(bioEl, list, (id) => {
-			noteId = id;
-			notePending = [];
-			noteDraft = marks.getNote(id);
-			noteColor = marks.getColor(id);
-			noteOpen = true;
-		});
-	});
-
-	// Marks can be replaced underneath us (sign-in merge / sign-out wipe).
-	onMount(() => {
-		const onSync = () => marks.refresh();
-		window.addEventListener('ochorus:sync', onSync);
-		return () => window.removeEventListener('ochorus:sync', onSync);
-	});
-
-	/** Note on a fresh selection: highlight it first, then attach the note. */
-	function openNoteForSelection(segments: Segment[]) {
-		const existing = marks.groupCovering(segments);
-		noteId = existing;
-		notePending = existing ? [] : segments;
-		noteDraft = existing ? marks.getNote(existing) : '';
-		noteColor = existing ? marks.getColor(existing) : DEFAULT_HIGHLIGHT;
-		noteOpen = true;
-	}
-	function saveNote() {
-		if (noteId) {
-			marks.setNote(noteId, noteDraft);
-			marks.setColor(noteId, noteColor);
-		} else if (notePending.length && noteDraft.trim()) {
-			marks.add(notePending, noteDraft, noteColor);
-		}
-		noteOpen = false;
-	}
-	function removeMark() {
-		if (noteId) marks.remove(noteId);
-		noteOpen = false;
-	}
+	// Counted from the rendered bio rather than a word_count field: the API does
+	// not expose one for biographies, and this is the only place that needs it.
+	const bioWords = $derived(
+		(author.bio_html || '').replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length
+	);
+	const minutesLeft = $derived(Math.max(1, Math.ceil(readingMinutes(bioWords) * (1 - frac))));
 
 	const cite = $derived({
 		author: author.name,
@@ -230,6 +177,11 @@
 />
 
 <div class="mx-auto max-w-3xl px-5 py-10">
+	<!-- Focus mode strips the page back to the life itself. Everything here is
+	     context around the biography — portrait, timeline, epigraph, shelves,
+	     contemporaries — and it is exactly what someone reading eleven minutes
+	     of prose wants out of the way. -->
+	{#if !readerUi.focus}
 	<!-- Breadcrumb -->
 	<nav class="mb-6 flex flex-wrap items-center gap-1.5 text-small text-muted" aria-label={t('a11y.breadcrumb')}>
 		<a href={localizeHref('/')} class="hover:text-text">{t('common.home')}</a>
@@ -239,7 +191,10 @@
 		<span class="text-text">{author.name}</span>
 	</nav>
 
-	<header class="flex items-center gap-5">
+	<!-- Wraps on a phone. The action row was already overflowing the viewport by
+	     ~99px with three buttons (it is `shrink-0` beside a name that can be two
+	     lines long); text settings and focus would have pushed it further. -->
+	<header class="flex flex-wrap items-center gap-x-5 gap-y-4">
 		{#if author.photo_url}
 			<img
 				src={author.photo_url}
@@ -263,7 +218,7 @@
 				</p>
 			{/if}
 		</div>
-		<div class="ms-auto flex shrink-0 items-center gap-2">
+		<div class="ms-auto flex flex-wrap items-center gap-2">
 			<!-- Search this author's works. A reader who has read one Murray book
 			     and half-remembers a phrase from another is on this page, and
 			     until now their only option was the whole library. -->
@@ -276,9 +231,20 @@
 				<button
 					class="btn btn-ghost shrink-0 !px-2.5 !py-1"
 					class:!text-accent={listen.status !== 'idle'}
-					onclick={() => (listen.status === 'idle' ? startListening() : listen.stop())}
+					onclick={() => (listen.status === 'idle' ? reader?.startListening() : listen.stop())}
 					aria-label={t('reader.listen')}
 					title={t('reader.listen')}>▶ {t('reader.listen')}</button
+				>
+			{/if}
+			<!-- Reader affordances, shown only when there is a long-form biography to
+			     read: text settings, and focus mode to strip the page back to prose. -->
+			{#if author.bio_html}
+				<ReaderControls />
+				<button
+					class="btn btn-ghost shrink-0 !px-2.5 !py-1"
+					onclick={() => readerUi.toggleFocus()}
+					aria-label={t('reader.focus')}
+					title={t('reader.focus')}>☾</button
 				>
 			{/if}
 		</div>
@@ -311,17 +277,39 @@
 			{/if}
 		</div>
 	{/if}
+	{/if}
 
-	<!-- Biography -->
+	<!-- Biography. The band — not the page — carries the reader's CSS variables,
+	     so the width/size/typeface controls govern the prose while the portrait,
+	     book grid and contemporaries keep the page's own layout. `bioLabels`
+	     rides along on the same element: custom properties inherit, so the
+	     prayer-callout ::before labels reach the injected HTML. -->
 	{#if author.bio_html}
-		<div class="bio mx-auto mt-8 max-w-[40rem]" style={bioLabels} bind:this={bioEl} dir="auto">
-			<!-- Long-form biography; cleaned HTML with pull-quotes + prayer callouts. -->
-			{@html author.bio_html}
+		<div
+			class="mx-auto mt-8"
+			style="{readerPrefs.style}; {bioLabels}; max-width: var(--reading-measure)"
+		>
+			<Reader
+				bind:this={reader}
+				kind="bio"
+				slug={author.slug}
+				order={BIO_CHAPTER_ORDER}
+				language={getLang()}
+				html={author.bio_html}
+				class="bio"
+				{cite}
+				listenTitle={author.name}
+				listenArtist={t('bios.eyebrow')}
+				bind:body={bioEl}
+				bind:frac
+				headerOffset={0}
+			/>
 		</div>
 	{:else if author.bio}
 		<p class="mt-6 text-body leading-relaxed text-muted">{author.bio}</p>
 	{/if}
 
+	{#if !readerUi.focus}
 	<!-- Topical shelves this author appears in: cross-navigation into browse. -->
 	{#if author.topics.length}
 		<div class="mx-auto mt-8 flex max-w-[40rem] flex-wrap items-center gap-2">
@@ -426,91 +414,25 @@
 			</div>
 		</section>
 	{/if}
+	{/if}
 </div>
 
-<ListenBar />
-
-<SelectionBar
-	container={bioEl}
-	{cite}
-	onHighlight={(segments, color) => {
-		const existing = marks.groupCovering(segments);
-		if (!existing) marks.add(segments, undefined, color);
-		else if (marks.getColor(existing) === color) marks.remove(existing);
-		else marks.setColor(existing, color);
-	}}
-	onNote={openNoteForSelection}
-	highlightColor={(segments) => {
-		const id = marks.groupCovering(segments);
-		return id ? marks.getColor(id) : null;
-	}}
-/>
-
-{#if noteOpen}
-	<div
-		class="note-overlay"
-		role="dialog"
-		aria-modal="true"
-		aria-label={t('reader.note')}
-		use:focusTrap={{ onEscape: () => (noteOpen = false) }}
+{#if readerUi.focus}
+	<button
+		class="fixed end-4 top-4 z-30 rounded-full border border-border bg-surface/90 px-3 py-1.5 text-small text-muted shadow-md backdrop-blur hover:text-text"
+		onclick={() => readerUi.exitFocus()}>✕ {t('reader.exitFocus')}</button
 	>
-		<div class="note-card">
-			<h2 class="mb-2 text-h3">{t('reader.note')}</h2>
-			<div class="mb-3 flex items-center gap-2.5" role="group" aria-label={t('reader.highlight')}>
-				{#each HIGHLIGHT_COLORS as color (color)}
-					<button
-						type="button"
-						class="hl-swatch"
-						data-color={color}
-						class:active={noteColor === color}
-						aria-pressed={noteColor === color}
-						aria-label="{t('reader.highlight')}: {t(`reader.hl_${color}`)}"
-						title={t(`reader.hl_${color}`)}
-						onclick={() => (noteColor = color)}
-					></button>
-				{/each}
-			</div>
-			<textarea
-				bind:value={noteDraft}
-				rows="5"
-				class="w-full rounded-sm border border-border bg-bg p-3 text-body text-text"
-				aria-label={t('reader.note')}
-				placeholder="…"
-			></textarea>
-			<div class="mt-3 flex items-center gap-2">
-				{#if noteId}
-					<button class="btn btn-ghost !text-red-700 dark:!text-red-400" onclick={removeMark}>
-						{t('reader.removeHighlight')}
-					</button>
-				{/if}
-				<span class="flex-1"></span>
-				<button class="btn btn-ghost" onclick={() => (noteOpen = false)}>{t('common.cancel')}</button>
-				<button class="btn btn-primary" onclick={saveNote}>{t('common.save')}</button>
-			</div>
-		</div>
-	</div>
+{/if}
+
+<!-- Time remaining in the biography. Gated on the prose actually being in
+     view: this is a page with a book grid and contemporaries below, so a pill
+     claiming "N min left" while scrolling those would be measuring the wrong
+     thing. <Reader> supplies `frac` for the prose alone. -->
+{#if !readerUi.focus && listen.status === 'idle' && frac > 0.01 && frac < 0.99}
+	<div class="min-left" aria-hidden="true">{minutesLeft} {t('sermon.minLeft')}</div>
 {/if}
 
 <style>
-	.note-overlay {
-		position: fixed;
-		inset: 0;
-		z-index: 50;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 1rem;
-		background: rgb(0 0 0 / 0.4);
-	}
-	.note-card {
-		width: 100%;
-		max-width: 32rem;
-		border-radius: var(--radius-card);
-		border: 1px solid var(--border);
-		background: var(--surface);
-		padding: 1.25rem;
-		box-shadow: 0 10px 40px rgb(0 0 0 / 0.35);
-	}
 	/* Featured header pull-quote — a hook above the biography. */
 	.author-quote {
 		font-family: var(--font-display);
@@ -529,13 +451,12 @@
 	}
 
 	/* Long-form biography styling. Targets the injected {@html} via :global.
-	   Prose in the reading serif; pull-quotes and prayer callouts stand out. */
-	:global(.bio) {
-		font-family: var(--font-display);
-		font-size: 1.12rem;
-		line-height: 1.8;
-		color: var(--text);
-	}
+	   Pull-quotes and prayer callouts stand out.
+
+	   Type is NOT set here any more: the element is `.reading.bio`, so size,
+	   leading, typeface and colour come from the reader's CSS variables and the
+	   text-settings control moves them. Re-declaring them here would silently
+	   win over the reader on this one surface. */
 	:global(.bio p) {
 		margin: 0 0 1.15em;
 	}
