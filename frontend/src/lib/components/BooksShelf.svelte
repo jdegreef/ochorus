@@ -250,12 +250,12 @@
 				value={sort}
 				onchange={onSort}
 				class="filter-field"
-				aria-label={t('books.sort')}
+				aria-label={t('common.sort')}
 			>
-				<option value="shelf">{t('books.sortShelf')}</option>
-				<option value="title">{t('books.sortTitle')}</option>
-				<option value="longest">{t('books.sortLongest')}</option>
-				<option value="shortest">{t('books.sortShortest')}</option>
+				<option value="shelf">{t('common.sortShelf')}</option>
+				<option value="title">{t('common.sortTitle')}</option>
+				<option value="longest">{t('common.sortLongest')}</option>
+				<option value="shortest">{t('common.sortShortest')}</option>
 			</select>
 
 			<div class="seg">

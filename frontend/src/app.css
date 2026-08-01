@@ -747,14 +747,21 @@ nav.appnav .navtoggle:hover {
 /* The fan of covers in the band. Overlapped and slightly rotated so a shelf
    reads as books rather than thumbnails. `margin-inline-start:auto` pushes it
    to the far end; under RTL that is the left, which is correct. */
-.cover-fan {
-	display: flex;
+/* The band's far end. Whatever follows the badge — a fan of covers, or whatever
+   a caller's `bandAside` renders — is pushed there by the BAND, so the slot's
+   contract holds without each occupant re-deriving the geometry (and a second
+   `bandAside` caller doesn't have to know a magic class to be positioned). */
+.shelf-card-band > :not(.shelf-card-badge) {
 	margin-inline-start: auto;
 	padding-inline-start: 0.5rem;
-	/* The fan used to run off the right edge at 375px (it was the one thing
+	/* Content used to run off the right edge at 375px (it was the one thing
 	   wrong with the Topics page on a phone). Clipping it to the band keeps the
 	   peek without the overflow. */
-	max-width: 60%;
+	max-width: 62%;
+}
+
+.cover-fan {
+	display: flex;
 	overflow: hidden;
 }
 .cover-fan .cover {
@@ -784,18 +791,14 @@ nav.appnav .navtoggle:hover {
 	object-fit: cover;
 }
 
-/* The sermon's passage, sitting at the far end of the band where a book shelf
-   fans its covers. A sermon has no cover art, so the text it expounds is its
-   face — and it is the one thing that differs card to card, which is what
-   stops a grid of 90 sermons reading as 90 identical tiles.
+/* Text in the band's far end (see .shelf-card-band > :not(.shelf-card-badge)
+   above for the placement) — the sermon shelf's scripture reference. A sermon
+   has no cover art, so the text it expounds is its face, and it is the one
+   thing that differs card to card.
 
-   The tint is deliberately shallow (35% hue into --text, not the 82% the icon
-   chip uses): this is prose, and it has to clear AA against the band in both
-   themes. */
+   Typography only; the tint is a shallow color-mix because this is prose and
+   has to clear AA on the band in both themes (STYLE_GUIDE §5). */
 .shelf-card-ref {
-	margin-inline-start: auto;
-	padding-inline-start: 0.5rem;
-	max-width: 62%;
 	text-align: end;
 	font-family: var(--font-display);
 	font-size: var(--fs-body);

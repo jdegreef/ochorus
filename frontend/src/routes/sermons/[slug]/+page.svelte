@@ -5,7 +5,7 @@
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { i18n } from '$lib/i18n.svelte';
-	import { readingTime, readingMinutes, HEADER_OFFSET } from '$lib/reading';
+	import { readingTime, readingMinutes, preachedYear, HEADER_OFFSET } from '$lib/reading';
 	import { getLang } from '$lib/lang.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import { type ScriptureResult } from '$lib/scripture.svelte';
@@ -124,7 +124,7 @@
 	const path = $derived(`/sermons/${sermon.slug}/`);
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
 	const hreflang = $derived(hreflangFor(path, sermon.available_languages));
-	const preachedYear = $derived(sermon.preached_on ? sermon.preached_on.slice(0, 4) : '');
+	const year = $derived(preachedYear(sermon.preached_on));
 
 	// --- SEO -------------------------------------------------------------------
 	// A real description from the opening prose (beats the generic template) and
@@ -298,7 +298,7 @@
 	</nav>
 
 	<p class="mb-1 text-small uppercase tracking-wider text-muted">
-		{t('search.typeSermon')} · {readingTime(sermon.word_count)}{#if preachedYear} · {preachedYear}{/if}{#if sermon.difficulty}&nbsp;·
+		{t('search.typeSermon')} · {readingTime(sermon.word_count)}{#if year} · {year}{/if}{#if sermon.difficulty}&nbsp;·
 			<span title={t('reader.difficulty')}>{t(`reader.difficulty_${sermon.difficulty}`)}</span>{/if}
 	</p>
 	<h1 class="text-h1 mb-3" dir="auto">{sermon.title}</h1>

@@ -6,7 +6,7 @@
 	import { localizeHref } from '$lib/href';
 	import { locales } from '$lib/paraglide/runtime';
 	import { i18n } from '$lib/i18n.svelte';
-	import { readingTime } from '$lib/reading';
+	import { readingTime, preachedYear } from '$lib/reading';
 	import { readJSON, writeJSON } from '$lib/persisted';
 	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
 	import CatalogLanguageNudge from '$lib/components/CatalogLanguageNudge.svelte';
@@ -31,6 +31,9 @@
 	let queryText = $state('');
 	let bibleBook = $state('');
 
+	/** Canonical position of a sermon's book; undated books sink to the end. */
+	const bookOrder = (s: SermonSummary) => s.scripture_book_order ?? 999;
+
 	// Books of the Bible present on this shelf, in canonical order, with counts.
 	const bookFacets = $derived.by(() => {
 		const m = new Map<string, { name: string; order: number; count: number }>();
@@ -38,7 +41,7 @@
 			if (!s.scripture_book) continue;
 			const e = m.get(s.scripture_book);
 			if (e) e.count++;
-			else m.set(s.scripture_book, { name: s.scripture_book, order: s.scripture_book_order ?? 999, count: 1 });
+			else m.set(s.scripture_book, { name: s.scripture_book, order: bookOrder(s), count: 1 });
 		}
 		return [...m.values()].sort((a, b) => a.order - b.order);
 	});
@@ -80,22 +83,19 @@
 	const setGroup = (g: Group) => ((group = g), save());
 
 	const sorted = $derived.by(() => {
+		// Shelf order is the API's own (author, then their sequence) — return the
+		// filter's array as-is rather than copying it only to not sort it.
+		if (sort === 'shelf') return filtered;
 		const arr = [...filtered];
 		switch (sort) {
 			case 'scripture':
 				// Canonical order, Genesis → Revelation; sermons on no stated book
 				// sink to the end. Ties fall back to the title so the order is stable.
-				return arr.sort(
-					(a, b) =>
-						(a.scripture_book_order ?? 999) - (b.scripture_book_order ?? 999) ||
-						a.title.localeCompare(b.title)
-				);
+				return arr.sort((a, b) => bookOrder(a) - bookOrder(b) || a.title.localeCompare(b.title));
 			case 'title':
 				return arr.sort((a, b) => a.title.localeCompare(b.title));
-			case 'shortest':
-				return arr.sort((a, b) => a.word_count - b.word_count);
 			default:
-				return arr; // the API's shelf order (author, then their own sequence)
+				return arr.sort((a, b) => a.word_count - b.word_count);
 		}
 	});
 
@@ -115,8 +115,8 @@
 		return [...map.values()];
 	});
 
-	/** Year a sermon was preached, for the card footer; '' when undated. */
-	const preachedYear = (s: SermonSummary) => s.preached_on?.slice(0, 4) ?? '';
+	// A card states its writer only when no heading above it does.
+	const showAuthor = $derived(groups === null);
 </script>
 
 <svelte:head>
@@ -171,11 +171,11 @@
 			{/each}
 		</select>
 
-		<select bind:value={sort} onchange={save} class="filter-field" aria-label={t('sermons.sort')}>
-			<option value="shelf">{t('sermons.sortShelf')}</option>
+		<select bind:value={sort} onchange={save} class="filter-field" aria-label={t('common.sort')}>
+			<option value="shelf">{t('common.sortShelf')}</option>
 			<option value="scripture">{t('sermons.sortScripture')}</option>
-			<option value="title">{t('sermons.sortTitle')}</option>
-			<option value="shortest">{t('sermons.sortShortest')}</option>
+			<option value="title">{t('common.sortTitle')}</option>
+			<option value="shortest">{t('common.sortShortest')}</option>
 		</select>
 
 		<div class="seg">
@@ -209,18 +209,12 @@
 		</p>
 	{/if}
 
-	<!-- One sermon, one card.
-	     The shelf used to be one card PER WRITER holding that writer's sermons as
-	     a list, which made the cards as uneven as the corpus: 1 sermon for Hudson
-	     Taylor against 13 for Spurgeon, so a 168px card sat beside a 1073px one
-	     and the grid bottomed out ragged. Sizing them to match was worse (700px
-	     of dead space under the short ones), so the ragged edge was the price of
-	     the grouping.
-	     A card per sermon removes the choice: every card holds ONE title, so
-	     items-stretch + .shelf-card{height:100%} + the mt-auto footer level the
-	     bottoms the same way Topics, Plans and Books do. The grouping survives as
-	     section headings above each grid (below), which level per section. -->
-	{#snippet sermonCard(sermon: SermonSummary, showAuthor: boolean)}
+	<!-- One sermon, one card — so the standard levelling rule applies and the grid
+	     stops ending ragged. Why not one card per writer holding that writer's
+	     sermons as a list (what this shelf did before): STYLE_GUIDE §5, "Equal
+	     heights — one item per card, or bound the variance". -->
+	{#snippet sermonTile(sermon: SermonSummary)}
+		{@const year = preachedYear(sermon.preached_on)}
 		<!-- `portrait` answers "whose sermon?" only when nothing else does: under a
 		     preacher heading it would be the same face thirteen times over, so the
 		     badge falls back to the mic and the heading carries the writer. The era
@@ -246,9 +240,17 @@
 			<p class="mt-auto pt-3 text-small text-muted">
 				{#if showAuthor}{sermon.author.name}<span class="opacity-50"> · </span>{/if}
 				{readingTime(sermon.word_count)}
-				{#if preachedYear(sermon)}<span class="opacity-50"> · </span>{preachedYear(sermon)}{/if}
+				{#if year}<span class="opacity-50"> · </span>{year}{/if}
 			</p>
 		</ShelfCard>
+	{/snippet}
+
+	{#snippet sermonGrid(items: SermonSummary[])}
+		<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
+			{#each items as sermon (sermon.slug)}
+				{@render sermonTile(sermon)}
+			{/each}
+		</div>
 	{/snippet}
 
 	{#if sorted.length === 0}
@@ -281,18 +283,10 @@
 					<a href={localizeHref(`/authors/${g.slug}`)} class="!text-text hover:underline">{g.name}</a>
 					<span class="text-small font-normal opacity-60">{g.items.length}</span>
 				</h2>
-				<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
-					{#each g.items as sermon (sermon.slug)}
-						{@render sermonCard(sermon, false)}
-					{/each}
-				</div>
+				{@render sermonGrid(g.items)}
 			</section>
 		{/each}
 	{:else}
-		<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
-			{#each sorted as sermon (sermon.slug)}
-				{@render sermonCard(sermon, true)}
-			{/each}
-		</div>
+		{@render sermonGrid(sorted)}
 	{/if}
 </div>

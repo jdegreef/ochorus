@@ -72,8 +72,9 @@
 					</div>
 				{/each}
 			</div>
+		{:else if bandAside}
+			{@render bandAside()}
 		{/if}
-		{#if bandAside}{@render bandAside()}{/if}
 	</div>
 	<div class="shelf-card-body">
 		<div class="flex items-baseline justify-between gap-3">

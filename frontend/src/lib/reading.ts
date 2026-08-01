@@ -38,6 +38,15 @@ export function readingTime(words: number): string {
 }
 
 /**
+ * The year a sermon was preached, for display — `''` when undated (about half
+ * the shelf). Shared so the sermon shelf and the sermon page agree on both the
+ * slice and the empty-string fallback; they had grown identical private copies.
+ */
+export function preachedYear(preachedOn: string | null): string {
+	return preachedOn?.slice(0, 4) ?? '';
+}
+
+/**
  * Height of the reader's sticky top bar, and so the line every "which
  * paragraph is at the top of the screen" question is measured against —
  * scroll anchors, read-aloud's starting paragraph, the sermon outline's
