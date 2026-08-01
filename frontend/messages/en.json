@@ -536,6 +536,13 @@
   "sermons_match_one": "sermon matches",
   "sermons_no_matches": "No sermons match — try clearing the filters.",
   "sermons_clear": "Clear",
+  "sermons_sort": "Sort",
+  "sermons_sort_shelf": "Featured",
+  "sermons_sort_scripture": "Bible order",
+  "sermons_sort_title": "Title A–Z",
+  "sermons_sort_shortest": "Shortest",
+  "sermons_group_preacher": "By preacher",
+  "sermons_group_all": "All sermons",
   "books_meta_description": "Browse the Ochorus library — classic Christian books by Andrew Murray, Charles Spurgeon, Watchman Nee, Hannah Whitall Smith and more. Free to read.",
   "sermons_meta_description": "Classic Christian sermons — free to read. The preached word from the writers whose books you can read on Ochorus.",
   "storage_save_failed": "Couldn't save to this device — your notes and reading place may not be kept (storage full or private browsing)."

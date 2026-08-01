@@ -21,6 +21,7 @@
 		icon,
 		portrait = '',
 		covers = [],
+		bandAside,
 		title,
 		aside,
 		children
@@ -34,6 +35,11 @@
 		portrait?: string;
 		/** Up to four covers to fan across the band. */
 		covers?: TopicCover[];
+		/**
+		 * Content for the far end of the band, where covers would otherwise fan.
+		 * A sermon has no cover art, so it hangs its scripture reference here.
+		 */
+		bandAside?: Snippet;
 		title: string;
 		/** Right-aligned meta beside the title (counts, day totals). */
 		aside?: Snippet;
@@ -67,6 +73,7 @@
 				{/each}
 			</div>
 		{/if}
+		{#if bandAside}{@render bandAside()}{/if}
 	</div>
 	<div class="shelf-card-body">
 		<div class="flex items-baseline justify-between gap-3">

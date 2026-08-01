@@ -536,6 +536,13 @@
   "sermons_match_one": "eky'okubuulira ekisangiddwa",
   "sermons_no_matches": "Tewali kubuulira kusangiddwa — gezaako okuggyako ensunsula.",
   "sermons_clear": "Ggyako",
+  "sermons_sort": "Tegeka",
+  "sermons_sort_shelf": "Ebyalondebwa",
+  "sermons_sort_scripture": "Entegeka ya Bayibuli",
+  "sermons_sort_title": "Omutwe A–Z",
+  "sermons_sort_shortest": "Ebisinga obumpi",
+  "sermons_group_preacher": "Okusinziira ku mubuulizi",
+  "sermons_group_all": "Okubuulira kwonna",
   "books_meta_description": "Lambula etterekero lya Ochorus — ebitabo eby'Ekikristaayo eby'edda ebya Andrew Murray, Charles Spurgeon, Watchman Nee, Hannah Whitall Smith n'abalala. Okusoma tewali kusasula.",
   "sermons_meta_description": "Okubuulira okw'Ekikristaayo okw'edda — okusoma tewali kusasula. Ekigambo ekyabuulirwa eky'abawandiisi b'ebitabo by'osobola okusoma ku Ochorus.",
   "storage_save_failed": "Tekisobodde kutereka ku kyuma kino — ebiwandiiko byo n'ekifo w'osoma biyinza obutakuumibwa (etterekero lijjudde oba ok(w)ozesa engeri ey'ekyama)."

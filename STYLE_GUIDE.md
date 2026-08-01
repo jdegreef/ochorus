@@ -202,19 +202,29 @@ contrast holds in both themes. Hues come from:
 | Plans | `accentForSlug(slug)` — stable pick from the same palette |
 | Sermons | `hueForBirthYear(author.birth_year)` — the writer's era |
 
-Use **`.shelf-card--static`** when the card is a container rather than a link
-(it holds its own links). It sizes to content instead of filling the grid row.
+The far end of the band takes a **fan of covers** (`covers`) or, for a surface
+with no cover art, whatever the `bandAside` snippet renders — sermons hang their
+scripture reference there via **`.shelf-card-ref`**, which is the one thing that
+differs card to card. That tint is a shallow `color-mix` (35% hue into `--text`,
+not the 82% the icon chip uses) because it is prose and has to clear AA on the
+band in both themes.
 
 **Book card** (`.book-card`) — the cover is the visual, so the chrome stays
 quiet: hairline, surface fill, no colour wash.
 
-**Equal heights.** For grids of *similar* cards (topics, plans, books) use
-`items-stretch` and let `.shelf-card`/`.book-card`'s `height:100%` plus an
-`mt-auto` footer level the bottoms; clamp descriptions with `.shelf-card-desc`.
-For grids whose cards hold **variable-length lists** (sermons), use
-`items-start` **and** `.shelf-card--static` — stretching those left 700px of
-dead space under the short ones. Note `items-start` alone is not enough: a
-percentage height still resolves against the grid row.
+**Equal heights — one card, one item.** Every card grid uses `items-stretch` and
+lets `.shelf-card`/`.book-card`'s `height:100%` plus an `mt-auto` footer level
+the bottoms; clamp descriptions with `.shelf-card-desc`.
+
+There is no variable-height variant, and adding one is the wrong fix. Sermons
+briefly had one — a card per *writer* holding that writer's sermons as a list,
+which made the cards as uneven as the corpus (1 sermon against 13, so a 168px
+card sat beside a 1073px one) and left the grid ragged along the bottom;
+stretching them instead left 700px of dead space under the short ones. The fix
+was to make the card hold **one item**, not to make the card stretchy. If a card
+wants a list inside it, that list is a section of the page, not a card: give it
+a heading and a grid of one-item cards beneath, the way Sermons and the grouped
+Books shelf do.
 
 ### Filter controls
 

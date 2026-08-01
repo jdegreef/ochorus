@@ -536,6 +536,13 @@
   "sermons_match_one": "عظة مطابقة",
   "sermons_no_matches": "لا توجد عظات مطابقة — جرّب مسح عوامل التصفية.",
   "sermons_clear": "مسح",
+  "sermons_sort": "ترتيب",
+  "sermons_sort_shelf": "مختارة",
+  "sermons_sort_scripture": "ترتيب الكتاب المقدس",
+  "sermons_sort_title": "العنوان أ–ي",
+  "sermons_sort_shortest": "الأقصر",
+  "sermons_group_preacher": "حسب الواعظ",
+  "sermons_group_all": "كل العظات",
   "books_meta_description": "تصفّح مكتبة Ochorus — كتب مسيحية كلاسيكية لأندرو موراي، وتشارلز سبرجن، ووتشمان ني، وهانا وايتال سميث وغيرهم. قراءة مجانية.",
   "sermons_meta_description": "عظات مسيحية كلاسيكية — قراءة مجانية. الكلمة المكروز بها من الكتّاب الذين تقرأ كتبهم على Ochorus.",
   "storage_save_failed": "تعذّر الحفظ على هذا الجهاز — قد لا تُحفظ ملاحظاتك وموضع قراءتك (التخزين ممتلئ أو التصفح الخاص)."
