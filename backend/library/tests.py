@@ -3429,24 +3429,44 @@ class DiscoveryQuickWinsTests(TestCase):
         self.assertEqual(row["book_count"], 2)
         self.assertEqual(row["sermon_count"], 1)
 
+    def _log(self, query, times, language="en", result_count=5):
+        for _ in range(times):
+            SearchQueryLog.objects.create(
+                query=query, language=language, result_count=result_count
+            )
+
     def test_popular_searches_is_aggregate_and_private(self):
-        # A query that recurs (>= MIN_COUNT) and found results surfaces.
-        for _ in range(3):
-            SearchQueryLog.objects.create(query="Prayer", language="en", result_count=5)
-        # A one-off never does — no single reader's query can leak.
+        # Enough DISTINCT recurring queries to clear MIN_DISTINCT, so the
+        # section is allowed to render at all.
+        self._log("Prayer", 6)
+        self._log("holiness", 5)
+        self._log("revival", 5)
+        self._log("faith", 5)
+        # A one-off never surfaces — no single reader's query can leak.
         SearchQueryLog.objects.create(query="my secret note", language="en", result_count=4)
+        # Neither does a query that recurs but stays under MIN_COUNT.
+        self._log("almost", 4)
         # A frequent ZERO-result query never does either (only useful queries).
-        for _ in range(5):
-            SearchQueryLog.objects.create(query="missing", language="en", result_count=0)
+        self._log("missing", 9, result_count=0)
         # Wrong language is scoped out.
-        for _ in range(3):
-            SearchQueryLog.objects.create(query="oracion", language="es", result_count=5)
+        self._log("oracion", 6, language="es")
 
         res = self.client.get("/api/library/popular-searches/?language=en")
         self.assertEqual(res.status_code, 200)
-        self.assertEqual(res.data["queries"], ["prayer"])  # case-folded, only the recurring hit
+        # Case-folded, most frequent first; the private, sub-threshold,
+        # zero-result and wrong-language rows are all absent.
+        self.assertEqual(res.data["queries"], ["prayer", "faith", "holiness", "revival"])
 
     def test_popular_searches_empty_when_sparse(self):
+        res = self.client.get("/api/library/popular-searches/?language=en")
+        self.assertEqual(res.data["queries"], [])
+
+    def test_popular_searches_hidden_until_enough_distinct_queries(self):
+        # Two heavily-repeated queries still aren't a "popular" list — this is
+        # the young-site case, where a couple of dev searches were surfacing as
+        # the whole section. Below MIN_DISTINCT the endpoint returns nothing.
+        self._log("gareth", 20)
+        self._log("john 3:16", 20)
         res = self.client.get("/api/library/popular-searches/?language=en")
         self.assertEqual(res.data["queries"], [])
 

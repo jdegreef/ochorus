@@ -82,7 +82,7 @@
 		<div class="space-y-4">
 			{#each groups as g (g.kind)}
 				<div class="flex flex-wrap items-baseline gap-2">
-					<span class="w-24 shrink-0 text-small font-semibold uppercase tracking-wide text-muted">
+					<span class="w-24 shrink-0 section-label">
 						{t(GROUP_LABEL[g.kind])}
 					</span>
 					{#each g.entries as e (e.slug)}

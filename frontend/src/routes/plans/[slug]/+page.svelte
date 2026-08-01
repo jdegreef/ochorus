@@ -153,7 +153,7 @@
 	     benefit most; a single-book plan is already summarised in the header. -->
 	{#if planBooks.length > 1}
 		<section class="mt-8">
-			<h2 class="mb-3 text-small font-semibold uppercase tracking-wide text-muted">
+			<h2 class="section-label">
 				{t('plans.inThisPlan')}
 			</h2>
 			<ol class="space-y-2.5">

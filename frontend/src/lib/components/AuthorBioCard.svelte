@@ -104,7 +104,11 @@
 					{author.sermon_count}
 					{author.sermon_count === 1 ? t('bios.sermonsOne') : t('bios.sermonsMany')} →
 				{:else}
-					{t('bios.viewBiography')} →
+					<!-- Same wording as the read-more below: both links go to the same
+					     author page, so they say the same thing. Adjacent cards used to
+					     read "Read full biography →" and "View biography →" for one
+					     action. -->
+					{t('bios.readMore')} →
 				{/if}
 			</a>
 	<!-- A short mini-bio (2–4 sentences) in the reader's language. Rendered in
