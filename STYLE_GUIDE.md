@@ -118,8 +118,27 @@ with `text-[1.02rem]`-style arbitrary values** — pick the nearest step.
   = **9px** (buttons, inputs), `999px` for pills.
 - **Spacing:** keep to a small rhythm — `4 / 8 / 12 / 16 / 24 / 40px`
   (Tailwind `1 / 2 / 3 / 4 / 6 / 10`). Avoid arbitrary `mb-[13px]`-style gaps.
-- **Container:** page content centers at a readable max-width (`max-w-2xl/3xl/5xl`
-  per surface); the reader column is driven by `--reading-measure`.
+- **Page column — one width, everywhere.** Every top-level browse surface wraps
+  its content in **`.page-col`**. Do **not** give a page its own `mx-auto
+  max-w-*`.
+
+  > This rule replaces the old "max-w-2xl/3xl/5xl per surface" guidance, which
+  > licensed exactly the drift it was meant to prevent: the six browse pages
+  > ended up at five different widths (Books `6xl`, Topics `5xl`, Biographies
+  > `4xl`, Plans/Sermons `3xl`, Home a mix), so the content edge jumped on every
+  > navigation.
+
+  `.page-col` reads `--pw` from the **`pageWidth`** store — five steps,
+  48/62/76/90/104rem, default 76rem — which the quick-settings **Page width**
+  stepper drives. It breaks out of its container and centres on the viewport,
+  direction-aware so RTL doesn't shift sideways.
+
+  The exceptions are genuine prose blocks, not page shells: the home hero's
+  centred text and empty-state copy keep their own narrower measure.
+- **Reading measure** is separate. `--reading-measure` (from
+  `readerPrefs.measure`) governs the prose column *inside* a chapter and is
+  capped near 52rem for readability. Don't conflate the two: page width is
+  chrome, reading measure is typography.
 - **Focus mode:** the reader's immersive toggle (`readerUi`) collapses the global
   header/footer and reader chrome to just the text, for a calm flow.
 
@@ -127,15 +146,16 @@ with `text-[1.02rem]`-style arbitrary values** — pick the nearest step.
 
 ## 4. Iconography
 
-Ochorus currently uses **lightweight inline text/Unicode glyphs** for its few
-affordances (`⌕` search, `☾`/`☀` theme, `›`/`‹` chapter nav, `▾` menus). Keep them
-minimal and always pair icon-only controls with an `aria-label`.
+Ochorus uses an **inline-SVG line-icon set**, served by `Icon.svelte`: 24-unit
+viewBox, no fill, `currentColor` stroke **1.8**, round caps/joins, inheriting
+text colour. Add new glyphs to that component's `IconName` union rather than
+importing an icon font, an image file, or a second library.
 
-When a richer set is needed, adopt **inline-SVG line icons** matching Take Root's
-weight — 24-unit viewBox, no fill, `currentColor` stroke **1.8**, round caps/joins,
-inheriting text color — rather than an icon font or image files. Do **not** import
-Take Root's garden/growth illustrations; that botanical imagery is Take Root's
-brand surface, not Ochorus's.
+Always pair an icon-only control with an `aria-label`.
+
+Do **not** import Take Root's garden/growth illustrations; that botanical
+imagery is Take Root's brand surface, not Ochorus's. Ochorus draws from the
+reading/library register (see the brand-metaphor note at the top).
 
 ---
 
@@ -158,10 +178,53 @@ weight 600, a 150ms transition).
 - Hover: default → `--surface` + accent-soft border; primary → border to `--accent`.
 - ❌ Don't invent bespoke button styles per page — extend the system.
 
+### Page header
+
+Every top-level browse page uses **`<PageHeader>`** — optional eyebrow, `<h1>`,
+optional tagline, optional counts line. Don't hand-roll a header; the six pages
+previously had six sets of margins and two different title sizes.
+
+The `<h1>` is **`.text-h1`**. `.text-display` is the **home hero only**.
+
 ### Cards
-Book cards and content cards: `--surface` fill, `--border`, `--radius-card` (12px).
-A cover with no artwork uses a gradient from the book's `cover_color`. Keep padding,
-radius, border, and hover identical across surfaces.
+
+Two families, both `--surface` fill, `--border`, `--radius-card` (12px).
+
+**Shelf card** (`<ShelfCard>` / `.shelf-card`) — the colour-washed card used by
+Topics, Plans and Sermons: a tinted band carrying an icon chip (or a portrait)
+and a fan of covers, over a typographic body. Each card sets `--shelf-hue`, used
+**only through `color-mix()`** for tints and the icon, never as body text, so
+contrast holds in both themes. Hues come from:
+
+| Surface | Hue source |
+|---|---|
+| Topics | `topicMeta(slug).accent` — curated per topic |
+| Plans | `accentForSlug(slug)` — stable pick from the same palette |
+| Sermons | `hueForBirthYear(author.birth_year)` — the writer's era |
+
+Use **`.shelf-card--static`** when the card is a container rather than a link
+(it holds its own links). It sizes to content instead of filling the grid row.
+
+**Book card** (`.book-card`) — the cover is the visual, so the chrome stays
+quiet: hairline, surface fill, no colour wash.
+
+**Equal heights.** For grids of *similar* cards (topics, plans, books) use
+`items-stretch` and let `.shelf-card`/`.book-card`'s `height:100%` plus an
+`mt-auto` footer level the bottoms; clamp descriptions with `.shelf-card-desc`.
+For grids whose cards hold **variable-length lists** (sermons), use
+`items-start` **and** `.shelf-card--static` — stretching those left 700px of
+dead space under the short ones. Note `items-start` alone is not enough: a
+percentage height still resolves against the grid row.
+
+### Filter controls
+
+One family for every browse page's filter row: **`.filter-row`** (the wrapper),
+**`.filter-field`** (inputs and selects; add `.grow` to the free-text one),
+**`.seg`** (segmented toggle, active option gets `.active`), **`.chip`** (filter
+pills, active gets `.active`).
+
+Active states are **soft** (`--accent-soft` fill, `--accent` text) — never a
+solid `bg-accent` block.
 
 ### Inputs
 `--surface` fill, `--border`, `--radius-sm`. Focus uses the global `:focus-visible`
@@ -237,9 +300,28 @@ Known gaps to close (tracked as follow-ups):
   (accent-soft fill, accent text, `--accent-soft-border`), matching §5 / Take Root.
 - ✅ **`prefers-reduced-motion`** — honoured by a global block that disables
   transitions/animations under it.
-- ⚠️ **Icons are ad-hoc Unicode glyphs** — fine for now; move to a small
-  `currentColor` stroke-1.8 line-icon set if the surface grows.
+- ✅ **Icons** — a real inline-SVG line set (`Icon.svelte`), stroke 1.8,
+  `currentColor`. The old Unicode-glyph note is retired.
+- ✅ **One page width** — every browse surface uses `.page-col`, driven by the
+  `pageWidth` store (#718).
+- ✅ **One page header + one title size** — `<PageHeader>` across the browse
+  pages; `.text-display` is the home hero only (#720).
+- ✅ **One filter-control family** — `.filter-row` / `.filter-field` / `.seg` /
+  `.chip`, soft active states (#720).
+- ✅ **One card language** — `.shelf-card` (Topics, Plans, Sermons) and
+  `.book-card`, with levelled heights.
 - ⚠️ **Class naming** differs slightly from Take Root (`.btn-primary`/`.btn-ghost`
   vs `.primary`/`.ghost`) — harmless, but worth converging if the systems merge.
+- ⚠️ **Detail pages still use `.text-display`** for their titles
+  (`topics/[slug]`, `biographies/era/[era]`), as does `/notebook` and the admin
+  surface. Deliberate for now — a different class of page — but they should get
+  a pass of their own.
+- ⚠️ **Cover art** — roughly half the library's covers are generated
+  typographic placeholders rather than artwork. A content problem, not a CSS
+  one, but it is the biggest thing holding the shelf back visually.
+- ❌ **No automated guard.** Nothing stops a new page hand-rolling its own
+  shell, header or filter row; the rules above are convention only. A CI check
+  asserting browse pages use `.page-col` + `<PageHeader>` is the obvious next
+  step.
 
-_Last reviewed: 2026-06. Update this section as gaps close._
+_Last reviewed: 2026-08-01. Update this section as gaps close._

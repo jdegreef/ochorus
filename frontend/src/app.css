@@ -615,6 +615,200 @@ nav.appnav .navtoggle:hover {
 	cursor: pointer;
 }
 
+/* ── Shelf cards ───────────────────────────────────────────────────────────
+   The Topics page's card — a colour-washed "shelf" band carrying an icon chip
+   and a fan of covers, over a plain typographic body — is the best-looking
+   surface in the app, and it was locked inside topics/+page.svelte as a
+   component-scoped <style>. Lifted here so Plans and Sermons can wear the same
+   clothes instead of each inventing their own card.
+
+   Every card sets its own `--shelf-hue`. Topics take it from topicMeta();
+   Plans derive it from their first cover's cover_color; Sermons from the
+   author's era. The hue is only ever used through color-mix() for tints and
+   for the icon, never as body text, so contrast holds in both themes. */
+.shelf-card {
+	display: flex;
+	flex-direction: column;
+	/* Equal heights across a grid row: the card fills its track, and the body
+	   grows, so a two-line description and a five-line one still bottom out
+	   level. Ragged card heights were the single most visible thing making the
+	   browse grids look unfinished. */
+	height: 100%;
+	border: 1px solid var(--border);
+	border-radius: var(--radius-card, 12px);
+	overflow: hidden;
+	background: var(--surface);
+	transition:
+		border-color 0.15s,
+		box-shadow 0.15s,
+		transform 0.15s;
+}
+.shelf-card:hover {
+	border-color: color-mix(in srgb, var(--shelf-hue) 55%, var(--border));
+	box-shadow: 0 6px 20px -12px color-mix(in srgb, var(--shelf-hue) 70%, transparent);
+	text-decoration: none;
+	transform: translateY(-2px);
+}
+/* A card that is a container rather than a link (the sermons shelf groups a
+   whole list of links under one author). Same chrome, no lift on hover, and
+   sized to its content.
+
+   height:auto matters: these hold lists of very different lengths (1 sermon
+   vs 13). Inheriting .shelf-card's height:100% made every card as tall as the
+   tallest in its grid row — 773px of dead space under a four-sermon card.
+   `items-start` on the grid alone does NOT fix that: a percentage height still
+   resolves against the grid area, which is the row's height. */
+.shelf-card--static {
+	height: auto;
+}
+.shelf-card--static:hover {
+	border-color: var(--border);
+	box-shadow: none;
+	transform: none;
+}
+
+/* The coloured header band. */
+.shelf-card-band {
+	position: relative;
+	display: flex;
+	align-items: flex-end;
+	gap: 0.6rem;
+	min-height: 5.75rem;
+	padding: 1rem 1.1rem 0.9rem;
+	background:
+		radial-gradient(
+			120% 140% at 0% 0%,
+			color-mix(in srgb, var(--shelf-hue) 22%, transparent),
+			transparent 60%
+		),
+		color-mix(in srgb, var(--shelf-hue) 9%, var(--surface-2));
+	border-bottom: 1px solid color-mix(in srgb, var(--shelf-hue) 22%, var(--border));
+}
+/* Round icon chip, tinted in the card's hue. */
+.shelf-card-badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.35rem;
+	height: 2.35rem;
+	border-radius: 999px;
+	color: color-mix(in srgb, var(--shelf-hue) 82%, var(--text));
+	background: color-mix(in srgb, var(--shelf-hue) 16%, var(--surface));
+	box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--shelf-hue) 35%, transparent);
+	flex-shrink: 0;
+	overflow: hidden;
+}
+/* A portrait can sit in the chip instead of an icon (the sermons shelf). */
+.shelf-card-badge img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.shelf-card-body {
+	display: flex;
+	flex-direction: column;
+	flex: 1; /* with .shelf-card{height:100%}, this is what levels the cards */
+	padding: 0.9rem 1.1rem 1.15rem;
+}
+.shelf-card-title {
+	font-family: var(--font-display);
+	font-size: var(--fs-h3);
+	font-weight: 600;
+	color: var(--text);
+	transition: color 0.15s;
+}
+.shelf-card:hover .shelf-card-title {
+	color: color-mix(in srgb, var(--shelf-hue) 78%, var(--text));
+}
+/* Descriptions are clamped so one long blurb can't set the height of a whole
+   grid row. Pair with .shelf-card-body{flex:1} for level bottoms. */
+.shelf-card-desc {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	line-clamp: 3;
+	overflow: hidden;
+}
+
+/* A book on the shelf. The cover is the visual, so the chrome stays quiet — a
+   hairline and a surface fill, no colour wash. Before this the grid was bare
+   covers with caption text floating under them: the only browse surface with
+   no card at all, and the reason the shelf read as unfinished next to Topics.
+   height:100% + the mt-auto footer keep a row of cards level whatever the
+   title wraps to. */
+.book-card {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	padding: 0.6rem;
+	border: 1px solid var(--border);
+	border-radius: var(--radius-card, 12px);
+	background: var(--surface);
+	transition:
+		border-color 0.15s,
+		box-shadow 0.15s,
+		transform 0.15s;
+}
+.book-card:hover {
+	border-color: var(--accent-soft-border);
+	box-shadow: 0 6px 20px -12px #0007;
+	text-decoration: none;
+	transform: translateY(-2px);
+}
+@media (prefers-reduced-motion: reduce) {
+	.book-card,
+	.book-card:hover {
+		transform: none;
+	}
+}
+
+/* The fan of covers in the band. Overlapped and slightly rotated so a shelf
+   reads as books rather than thumbnails. `margin-inline-start:auto` pushes it
+   to the far end; under RTL that is the left, which is correct. */
+.cover-fan {
+	display: flex;
+	margin-inline-start: auto;
+	padding-inline-start: 0.5rem;
+	/* The fan used to run off the right edge at 375px (it was the one thing
+	   wrong with the Topics page on a phone). Clipping it to the band keeps the
+	   peek without the overflow. */
+	max-width: 60%;
+	overflow: hidden;
+}
+.cover-fan .cover {
+	width: 2.5rem;
+	aspect-ratio: 3 / 4;
+	border-radius: 0.25rem;
+	overflow: hidden;
+	box-shadow: 0 2px 6px -2px #0006;
+	margin-inline-start: -0.7rem;
+	background: var(--surface);
+	transform: rotate(-3deg);
+	flex-shrink: 0;
+}
+.cover-fan .cover:nth-child(2) {
+	transform: rotate(1deg);
+}
+.cover-fan .cover:nth-child(3) {
+	transform: rotate(4deg);
+}
+.cover-fan .cover:nth-child(4) {
+	transform: rotate(7deg);
+}
+.cover-fan .cover img,
+.cover-fan .cover-fallback {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+@media (prefers-reduced-motion: reduce) {
+	.shelf-card,
+	.shelf-card:hover {
+		transform: none;
+		transition: border-color 0.15s;
+	}
+}
+
 /* ── Browse-page filter furniture ──────────────────────────────────────────
    One control family for the filter rows on Books, Sermons, Biographies and
    Plans. They had drifted badly: the same "filter by title" input was

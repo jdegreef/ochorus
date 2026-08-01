@@ -26,3 +26,25 @@ const META: Record<string, TopicMeta> = {
 const FALLBACK: TopicMeta = { accent: '#3b5bdb', icon: 'tag' };
 
 export const topicMeta = (slug: string): TopicMeta => META[slug] ?? FALLBACK;
+
+/**
+ * The curated accents, as a list — for surfaces that need a distinct colour per
+ * item but have no topic to look up (reading plans).
+ *
+ * Deriving a plan's hue from its first cover was the obvious move and looked
+ * wrong: most covers are dark navy or black, so every plan card came out the
+ * same muted blue and the shelf lost exactly the colour that makes the Topics
+ * page work. Cycling the curated palette by a stable hash of the slug keeps the
+ * cards vivid and distinct, and a given plan always gets the same colour.
+ */
+export const ACCENTS: string[] = Object.values(META).map((m) => m.accent);
+
+/** Stable per-slug pick from ACCENTS (FNV-1a, so it doesn't shift as slugs are added). */
+export function accentForSlug(slug: string): string {
+	let h = 0x811c9dc5;
+	for (let i = 0; i < slug.length; i++) {
+		h ^= slug.charCodeAt(i);
+		h = Math.imul(h, 0x01000193) >>> 0;
+	}
+	return ACCENTS[h % ACCENTS.length];
+}

@@ -16,15 +16,15 @@
 
 <a
 	href={localizeHref(`/books/${book.slug}`)}
-	class="group block hover:no-underline"
+	class="book-card group"
 	data-testid="book-card"
 	aria-label={showAuthor ? `${book.title} — ${book.author.name}` : book.title}
 >
-	<div class="relative transition-transform group-hover:-translate-y-1">
+	<div class="relative">
 		<BookCover {book} />
 		{#if translated}
 			<span
-				class="absolute start-2 top-2 rounded-full bg-black/55 px-2 py-0.5 text-[0.62rem] font-semibold uppercase tracking-wide text-white backdrop-blur"
+				class="absolute start-2 top-2 rounded-full bg-black/55 px-2 py-0.5 text-eyebrow font-semibold uppercase tracking-wide text-white backdrop-blur"
 			>
 				{t('books.badgeTranslated')}
 			</span>
@@ -36,12 +36,14 @@
 		</span>
 	</div>
 
-	<div class="mt-2 px-0.5">
+	<div class="mt-2 flex flex-1 flex-col px-0.5">
 		<div class="line-clamp-2 text-small font-medium leading-snug text-text">{book.title}</div>
 		{#if showAuthor}
-			<div class="truncate text-[0.8rem] text-muted">{book.author.name}</div>
+			<div class="truncate text-small text-muted">{book.author.name}</div>
 		{/if}
-		<div class="mt-0.5 text-[0.72rem] text-muted">
+		<!-- mt-auto pins the meta to the card's bottom, so a one-line title and a
+		     two-line title still bottom out level across a grid row. -->
+		<div class="mt-auto pt-0.5 text-eyebrow text-muted">
 			{chapters}{#if book.word_count}
 				<span class="opacity-50"> · </span>{readingTime(book.word_count)}{/if}
 		</div>

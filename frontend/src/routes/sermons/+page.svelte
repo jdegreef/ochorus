@@ -9,6 +9,8 @@
 	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
 	import CatalogLanguageNudge from '$lib/components/CatalogLanguageNudge.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
+	import Icon from '$lib/components/Icon.svelte';
+	import { hueForBirthYear } from '$lib/eras';
 
 	const t = i18n.t;
 
@@ -56,10 +58,20 @@
 
 	// Group sermons by author, preserving the API's author-ordered sequence.
 	const grouped = $derived.by(() => {
-		const map = new Map<string, { name: string; slug: string; items: SermonSummary[] }>();
+		const map = new Map<
+			string,
+			{ name: string; slug: string; photo_url: string; birth_year: number | null; items: SermonSummary[] }
+		>();
 		for (const s of filtered) {
 			const key = s.author.slug;
-			if (!map.has(key)) map.set(key, { name: s.author.name, slug: key, items: [] });
+			if (!map.has(key))
+				map.set(key, {
+					name: s.author.name,
+					slug: key,
+					photo_url: s.author.photo_url,
+					birth_year: s.author.birth_year,
+					items: []
+				});
 			map.get(key)!.items.push(s);
 		}
 		return [...map.values()];
@@ -137,30 +149,58 @@
 	{/if}
 
 	{#if grouped.length}
-		<div class="space-y-10">
+		<!-- items-start, NOT items-stretch: these cards hold lists of very different
+		     lengths (1 sermon vs 13), so stretching them to match left 700px of dead
+		     space under the short ones. Levelling heights is right for the topic and
+		     plan grids, where every card holds a title and a clamped blurb. -->
+		<div class="grid items-start gap-5 lg:grid-cols-2">
 			{#each grouped as group (group.slug)}
-				<section>
-					<h2 class="mb-3 text-h3">
-						<a href={localizeHref(`/authors/${group.slug}`)} class="!text-text hover:underline">{group.name}</a>
-					</h2>
-					<ul class="divide-y divide-border">
-						{#each group.items as sermon (sermon.slug)}
-							<li>
-								<a
-									href={localizeHref(`/sermons/${sermon.slug}`)}
-									class="flex items-baseline justify-between gap-3 py-3 hover:no-underline"
+				<!-- One card per writer: the portrait and the era-tinted band give the
+				     shelf the same visual anchor Topics and Plans have. The card is a
+				     container, not a link — each sermon inside is its own link. -->
+				<section class="shelf-card shelf-card--static" style="--shelf-hue: {hueForBirthYear(group.birth_year)}">
+					<div class="shelf-card-band">
+						<span class="shelf-card-badge">
+							{#if group.photo_url}
+								<img src={group.photo_url} alt="" loading="lazy" />
+							{:else}
+								<Icon name="mic" size={20} />
+							{/if}
+						</span>
+						<div class="min-w-0 flex-1">
+							<h2 class="shelf-card-title truncate">
+								<a href={localizeHref(`/authors/${group.slug}`)} class="!text-text hover:underline"
+									>{group.name}</a
 								>
-									<span class="flex-1">
-										<span class="block text-body font-medium text-text">{sermon.title}</span>
-										{#if sermon.scripture_ref}
-											<span class="text-small text-accent">{sermon.scripture_ref}</span>
-										{/if}
-									</span>
-									<span class="shrink-0 text-[0.8rem] text-muted">{readingMinutes(sermon.word_count)} {t('common.min')}</span>
-								</a>
-							</li>
-						{/each}
-					</ul>
+							</h2>
+							<p class="text-small text-muted">
+								{group.items.length}
+								{group.items.length === 1 ? t('common.sermonOne') : t('common.sermonMany')}
+							</p>
+						</div>
+					</div>
+					<div class="shelf-card-body !py-0">
+						<ul class="divide-y divide-border">
+							{#each group.items as sermon (sermon.slug)}
+								<li>
+									<a
+										href={localizeHref(`/sermons/${sermon.slug}`)}
+										class="flex items-baseline justify-between gap-3 py-3 hover:no-underline"
+									>
+										<span class="flex-1">
+											<span class="block text-body font-medium text-text">{sermon.title}</span>
+											{#if sermon.scripture_ref}
+												<span class="text-small text-accent">{sermon.scripture_ref}</span>
+											{/if}
+										</span>
+										<span class="shrink-0 text-small text-muted"
+											>{readingMinutes(sermon.word_count)} {t('common.min')}</span
+										>
+									</a>
+								</li>
+							{/each}
+						</ul>
+					</div>
 				</section>
 			{/each}
 		</div>
