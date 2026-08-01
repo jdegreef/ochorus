@@ -231,6 +231,18 @@
 	});
 	const shownCount = $derived(shownGroups.reduce((n, g) => n + g.rows.length, 0));
 
+	/** Whether there is more than one kind to choose between — see the rail. */
+	const hasFacets = $derived(groups.length > 1);
+	/** Sorting is only meaningful once one type owns the list, and only above one row. */
+	const showsSort = $derived(typeFilter !== 'all' && shownCount > 1);
+
+	// The rail's geometry, in one place each, because it is a set: the grid, the
+	// column that sits in it, and the input's matching indent all have to agree
+	// or the layout comes apart in a way no single class reveals.
+	const RAIL_GRID = 'lg:grid lg:grid-cols-[12rem_1fr] lg:items-start lg:gap-8';
+	const RAIL_COL =
+		'mb-5 flex flex-wrap items-center gap-2 lg:sticky lg:top-24 lg:mb-0 lg:flex-col lg:items-stretch lg:self-start';
+
 	/** How many matches of `type` exist — the server's count, else what we hold. */
 	function totalFor(type: SearchType, loaded: number): number {
 		return totals[type] ?? loaded;
@@ -436,6 +448,9 @@
 	// not just links to sermons about it. The backend is the real judge: a
 	// non-reference simply returns nothing and the card stays hidden.
 	let scriptureAnswer = $state<ScriptureResult | null>(null);
+	/** Verses shown before the card clamps — about four lines at the card's measure. */
+	const SCRIPTURE_PREVIEW = 4;
+	let scriptureOpen = $state(false);
 	const REF_RE = /^\s*(?:[123]\s*|I{1,3}\s+)?[A-Za-z][A-Za-z.]{1,}\s+\d{1,3}(?::\d{1,3}(?:[-–]\d{1,3})?)?\s*$/;
 
 	/**
@@ -477,6 +492,9 @@
 	}
 
 	async function maybeScripture(term: string, token: number) {
+		// A new passage arrives collapsed: expanding Romans 12 must not leave the
+		// next query's chapter already unfurled.
+		scriptureOpen = false;
 		if (!REF_RE.test(term)) {
 			scriptureAnswer = null;
 			return;
@@ -873,7 +891,14 @@
 	<!-- Sticky: a long result list used to scroll the query out of sight, so
 	     refining meant scrolling back up to find the box. The bleed padding and
 	     background keep results from showing through as they pass under it. -->
-	<div class="sticky top-0 z-20 -mx-5 bg-bg px-5 pb-3 pt-2" role="search">
+	<!-- The box lines up with the results, not with the page. It used to span the
+	     full width while the results began 12rem in behind the rail, so the eye
+	     had two left edges to track down a single column of content. -->
+	<div
+		class="sticky top-0 z-20 -mx-5 bg-bg px-5 pb-3 pt-2"
+		class:lg:ps-[15.25rem]={hasFacets}
+		role="search"
+	>
 		<input
 			bind:this={input}
 			bind:value={q}
@@ -884,7 +909,7 @@
 			placeholder={t('search.placeholder')}
 			aria-label={t('search.title')}
 			aria-describedby="search-help"
-			class="w-full rounded-card border border-border bg-surface px-4 py-3 text-body text-text"
+			class="w-full rounded-card border border-border bg-surface px-4 py-3 text-body text-text lg:max-w-3xl"
 		/>
 	</div>
 
@@ -924,16 +949,41 @@
 
 	{#if scriptureAnswer}
 		<!-- Instant scripture answer: the passage text for a reference query. -->
-		<div class="mt-6 rounded-card border-s-4 border-accent bg-accent-soft p-4">
+		{@const verses = scriptureAnswer.verses}
+		{@const clamped = !scriptureOpen && verses.length > SCRIPTURE_PREVIEW}
+		<!-- The card is sized to its text. Left at full width it drew a tinted
+		     panel two-thirds empty, because the verses inside are capped to a
+		     readable measure and the panel was not. -->
+		<div class="answer-measure mt-6 rounded-card border-s-4 border-accent bg-accent-soft p-4">
 			<p class="text-[0.66rem] font-bold uppercase tracking-[0.1em] text-accent">
 				{t('reader.scripture')}
 			</p>
 			<p class="scripture-answer-ref">{scriptureAnswer.reference}</p>
+			<!-- Clamped by LENGTH, not always. "John 3:16" is answered in place, which
+			     is the whole point of the card; a whole chapter printed in full pushed
+			     every search result below the fold — the reader asked a question and
+			     got a wall instead of an answer plus their results. -->
 			<p class="scripture-answer-body mt-2">
-				{#each scriptureAnswer.verses as v (v.number)}<sup class="scripture-answer-num"
-						>{v.number}</sup
-					>{v.text}{' '}{/each}
+				{#each clamped ? verses.slice(0, SCRIPTURE_PREVIEW) : verses as v (v.number)}<sup
+						class="scripture-answer-num">{v.number}</sup
+					>{v.text}{' '}{/each}{#if clamped}<span class="text-muted">…</span>{/if}
 			</p>
+			{#if verses.length > SCRIPTURE_PREVIEW}
+				<button
+					type="button"
+					class="mt-1.5 text-small font-semibold text-accent hover:underline"
+					onclick={() => (scriptureOpen = !scriptureOpen)}
+					aria-expanded={scriptureOpen}
+				>
+					<!-- One message with a placeholder, not three fragments glued in
+					     English word order: "Show all 21 verses" concatenated is
+					     ungrammatical in Arabic, where the numeral has to bind to the
+					     noun. Same %placeholder% convention as author.metaFallback. -->
+					{#if scriptureOpen}{t('search.showLess')}{:else}{t(
+							'search.showAllVerses'
+						).replace('%count%', String(verses.length))}{/if}
+				</button>
+			{/if}
 			<p class="mt-2 text-[0.66rem] uppercase tracking-[0.08em] text-muted">
 				{scriptureAnswer.version}
 			</p>
@@ -995,12 +1045,24 @@
 				{@render waysIn(false)}
 			</div>
 		{:else}
-			<div class="lg:grid lg:grid-cols-[12rem_1fr] lg:items-start lg:gap-8">
-			<!-- Type facet + result count -->
-			<div
-				class="mb-5 flex flex-wrap items-center gap-2 lg:sticky lg:top-24 lg:mb-0 lg:flex-col lg:items-stretch lg:self-start"
-			>
-				{#if groups.length > 1}
+			<!-- The rail earns its 12rem only when there are chips to put in it. A
+			     query that matched one kind (any scripture reference, for instance)
+			     was still paying for the column, which then held nothing but the word
+			     "Sort:" beside a wide, empty margin. -->
+			<div class={hasFacets ? RAIL_GRID : ''}>
+			<!-- Type facet + result count. Everything that positions this — the
+			     grid column, the column direction, and CRUCIALLY the stickiness —
+			     is one switch. Pinning survived the grid being dropped once, and a
+			     sticky *block* is a very different thing from a sticky grid cell:
+			     with no column to sit in it spans the full width above the results
+			     and they scroll straight through it, unbacked.
+
+			     Rendered only when it holds something. Collapsed and empty it was
+			     still an element with a bottom margin — 20px of nothing above the
+			     results on every single-type query. -->
+			{#if hasFacets || showsSort}
+			<div class={hasFacets ? RAIL_COL : 'mb-5 flex flex-wrap items-center gap-2'}>
+				{#if hasFacets}
 					<div
 						class="flex flex-wrap gap-1.5 lg:flex-col"
 						role="group"
@@ -1045,14 +1107,14 @@
 					     endpoint returns — so it appears once a type is chosen. In the
 					     mixed list the order is relevance, the only one that means
 					     anything across books, people and passages. -->
-					{#if typeFilter !== 'all' && shownCount > 1}
+					{#if showsSort}
 						<div class="flex items-center gap-1.5" role="group" aria-label={t('search.sortBy')}>
 							<span class="text-small text-muted">{t('search.sortBy')}</span>
 							<div class="flex overflow-hidden rounded-full border border-border">
 								{#each SORTS as s, i (s)}
 									<button
 										type="button"
-										class="px-2.5 py-1 text-[0.78rem]"
+										class="whitespace-nowrap px-2.5 py-1 text-[0.78rem]"
 										class:bg-accent={sortMode === s}
 										class:text-accent-contrast={sortMode === s}
 										class:text-muted={sortMode !== s}
@@ -1067,7 +1129,17 @@
 							</div>
 						</div>
 					{/if}
-					<p class="text-small text-muted" aria-live="polite">
+				<!-- The running total belongs in the rail. With no rail there is
+				     nothing to anchor it to, and it stacked above the section label as
+				     a second lonely line ("15 results" over "PASSAGES") — so the
+				     section heading carries its own count there instead.
+
+				     Removed rather than sr-only'd: the accessible running count is
+				     already its own live region up by the input, so hiding this one
+				     would leave two polite regions announcing the same number on every
+				     keystroke. Its aria-live goes with it for the same reason. -->
+				{#if hasFacets}
+					<p class="text-small text-muted">
 						{#if typeFilter !== 'all' && remaining > 0}
 							{shownCount}
 							{t('search.of')}
@@ -1086,9 +1158,11 @@
 							{shownCount}
 							{shownCount === 1 ? t('search.resultsOne') : t('search.resultsMany')}
 						{/if}
-					</p>
+						</p>
+					{/if}
 				</div>
 			</div>
+			{/if}
 			<div class="space-y-8 lg:min-w-0">
 				{#each shownGroups as g (g.type)}
 					{@const total = totalFor(g.type, g.rows.length)}
@@ -1098,11 +1172,23 @@
 							class="mb-2 flex items-baseline gap-2 text-small font-semibold uppercase tracking-wide text-muted"
 						>
 							{t(g.labelKey)}
-							<span class="text-[0.78rem] font-normal tabular-nums text-muted/70">
-								{#if more > 0}{g.rows.length} {t('search.of')} {total}{isCapped(g.type)
-										? '+'
-										: ''}{:else}{total}{/if}
-							</span>
+							<!-- The per-group number distinguishes one section from the next.
+							     With a single section AND the rail's running total already on
+							     screen there is nothing to distinguish and it repeats that
+							     total verbatim — which is what put "PASSAGES 20 OF 127" three
+							     inches from "20 of 127 results". With no rail it is the only
+							     count there is, so it stays.
+
+							     Dropped, not hidden: sr-only would leave it in the heading's
+							     accessible name, so a screen reader would still hear the
+							     duplicate this exists to remove. -->
+							{#if !(hasFacets && shownGroups.length === 1)}
+								<span class="text-[0.78rem] font-normal tabular-nums text-muted/70">
+									{#if more > 0}{g.rows.length} {t('search.of')} {total}{isCapped(g.type)
+											? '+'
+											: ''}{:else}{total}{/if}
+								</span>
+							{/if}
 						</h2>
 						{#if g.type === 'chapter'}
 							<!-- Passages: matches collapsed under their book. -->
@@ -1139,7 +1225,7 @@
 													>
 														<div class="text-small font-medium text-text">{ch.title}</div>
 														{#if ch.snippet}
-															<p class="mt-0.5 text-small text-muted">
+															<p class="snippet-measure mt-0.5 text-small text-muted">
 																<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 																{@html mark(ch.snippet)}
 															</p>
@@ -1182,7 +1268,7 @@
 												{/if}
 												<div class="text-body font-semibold text-text">{row.title}</div>
 												{#if row.snippet}
-													<p class="mt-1 text-small text-muted">
+													<p class="snippet-measure mt-1 text-small text-muted">
 														<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 														{@html mark(row.snippet)}
 													</p>
@@ -1248,11 +1334,20 @@
 		line-height: 1.6;
 		color: var(--text);
 	}
+	/* One measure per context, following the reader's Width control the way the
+	   page shells do — a hardcoded ch cap would have been the one thing on the
+	   page that ignored "Wide". */
+	.snippet-measure {
+		max-width: calc(68ch * var(--page-scale, 1));
+	}
+	.answer-measure {
+		max-width: calc(72ch * var(--page-scale, 1));
+	}
 	.scripture-answer-num {
 		font-size: 0.62em;
 		font-weight: 600;
 		color: var(--muted);
-		margin-right: 0.15em;
+		margin-inline-end: 0.15em;
 		vertical-align: super;
 		font-style: normal;
 	}
