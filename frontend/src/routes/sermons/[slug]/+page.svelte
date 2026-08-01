@@ -492,21 +492,8 @@
 		transition: transform 0.1s linear;
 		pointer-events: none;
 	}
-	.min-left {
-		position: fixed;
-		bottom: 1rem;
-		left: 50%;
-		transform: translateX(-50%);
-		z-index: 30;
-		border-radius: 9999px;
-		border: 1px solid var(--border);
-		background: color-mix(in srgb, var(--bg) 85%, transparent);
-		backdrop-filter: blur(6px);
-		padding: 0.25rem 0.8rem;
-		font-size: 0.72rem;
-		color: var(--muted);
-		pointer-events: none;
-	}
+	/* `.min-left` lives in app.css — the biography page shows the same pill, and
+	   a second copy here is how the two would drift apart. */
 
 	/* Preaching-text card: the sermon's reference + verse(s) as an epigraph. */
 	.text-card {

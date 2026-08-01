@@ -768,3 +768,22 @@ nav.appnav .navtoggle:hover {
 		transition: width 0.25s ease;
 	}
 }
+
+/* Time-remaining pill, floated over the foot of the viewport while reading.
+   Shared by every reading surface (sermon, biography), so it lives here rather
+   than in one route's <style> — the readers are meant to feel like one reader. */
+.min-left {
+	position: fixed;
+	bottom: 1rem;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 30;
+	border-radius: 9999px;
+	border: 1px solid var(--border);
+	background: color-mix(in srgb, var(--bg) 85%, transparent);
+	backdrop-filter: blur(6px);
+	padding: 0.25rem 0.8rem;
+	font-size: 0.72rem;
+	color: var(--muted);
+	pointer-events: none;
+}
