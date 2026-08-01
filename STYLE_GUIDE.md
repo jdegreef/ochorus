@@ -202,19 +202,41 @@ contrast holds in both themes. Hues come from:
 | Plans | `accentForSlug(slug)` — stable pick from the same palette |
 | Sermons | `hueForBirthYear(author.birth_year)` — the writer's era |
 
-Use **`.shelf-card--static`** when the card is a container rather than a link
-(it holds its own links). It sizes to content instead of filling the grid row.
+The far end of the band takes a **fan of covers** (`covers`) or — for a surface
+with no cover art — whatever the `bandAside` snippet renders; covers win if both
+are passed. The band itself does the positioning, so an occupant only styles
+itself. Sermons hang their scripture reference there via **`.shelf-card-ref`**,
+the one thing that differs card to card; its tint is a shallow `color-mix` (35%
+hue into `--text`, not the 82% the icon chip uses) because it is prose and has to
+clear AA on the band in both themes.
 
 **Book card** (`.book-card`) — the cover is the visual, so the chrome stays
 quiet: hairline, surface fill, no colour wash.
 
-**Equal heights.** For grids of *similar* cards (topics, plans, books) use
-`items-stretch` and let `.shelf-card`/`.book-card`'s `height:100%` plus an
-`mt-auto` footer level the bottoms; clamp descriptions with `.shelf-card-desc`.
-For grids whose cards hold **variable-length lists** (sermons), use
-`items-start` **and** `.shelf-card--static` — stretching those left 700px of
-dead space under the short ones. Note `items-start` alone is not enough: a
-percentage height still resolves against the grid row.
+**Equal heights — one item per card, or bound the variance.** A card grid must
+never set `items-start`; let `.shelf-card`/`.book-card`'s `height:100%` plus an
+`mt-auto` footer level the bottoms. (`items-stretch` states it, but grid items
+stretch by default, so the grids that omit it are fine as they are.)
+
+That levelling only helps if no one card can tower over its row, so a card does
+one of two things:
+
+1. **Holds one item** — one topic, one plan, one book, one sermon. Text still
+   varies, but by a line or two, and the `mt-auto` footer absorbs it. Clamp long
+   descriptions with `.shelf-card-desc`.
+2. **Bounds every variable dimension inside it** — what `AuthorBioCard` does: the
+   bio is `line-clamp`ed, the cover rail is capped at five with a "+N" tile, and
+   `BookCover` holds a fixed 3:4 box, so a writer with seven books is the same
+   height as one with none.
+
+What is **not** allowed is an unbounded list inside a card. Sermons briefly had
+one — a card per *writer* holding that writer's sermons — which made the cards as
+uneven as the corpus (1 sermon against 13, so a 168px card sat beside a 1073px
+one). Neither way out was good: levelling them left ~700px of dead space under
+the short ones, and sizing to content left the grid ragged along the bottom. If
+a card wants an unbounded list, that list is a **section of the page**, not a
+card — give it a heading and a grid of one-item cards beneath, the way Sermons
+and the grouped Books shelf do.
 
 ### Filter controls
 
