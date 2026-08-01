@@ -158,6 +158,11 @@ import type { PageLoad } from './$types';
  * index and each /uk/books/<slug> with its chapter pages re-crawl and bake the
  * translations. Note uk seeds as status=draft, so these only reach readers once
  * the language is launched from the admin.
+ *
+ * Prerender refresh 2026-08-01 (queue job #669): Andrew Murray's Внутрішня
+ * кімната (The Inner Chamber, 36 ch) completes the Ukrainian book queue —
+ * three uk books, 53 chapters in all. The /uk books index and
+ * /uk/books/the-inner-chamber with its chapter pages re-crawl and bake.
  */
 export const load: PageLoad = async () => {
 	try {
