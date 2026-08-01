@@ -36,3 +36,15 @@ export function readingTime(words: number): string {
 		? i18n.t('common.hrMinRead').replace('%h%', String(h)).replace('%m%', String(m))
 		: i18n.t('common.hrRead').replace('%h%', String(h));
 }
+
+/**
+ * Height of the reader's sticky top bar, and so the line every "which
+ * paragraph is at the top of the screen" question is measured against —
+ * scroll anchors, read-aloud's starting paragraph, the sermon outline's
+ * active section.
+ *
+ * Shared because it had already drifted: the reader and the sermon page each
+ * held 64 while the chapter reader held 72, so the same scroll produced two
+ * different answers about where the reader was.
+ */
+export const HEADER_OFFSET = 64;
