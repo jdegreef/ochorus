@@ -1,27 +1,19 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { theme } from '$lib/theme.svelte';
-	import { readerPrefs, type Measure } from '$lib/readerPrefs.svelte';
+	import { pageWidth } from '$lib/pageWidth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 
 	// Take Root's quick-settings popover: the gear opens a small menu with a
-	// theme toggle and a reading-width stepper — no navigation to the Settings
-	// page. Both controls write the same device-local prefs the Settings page and
-	// reader use (readerPrefs.measure drives --reading-measure everywhere), so a
-	// width change resizes the reading column live.
+	// theme toggle and a page-width stepper — no navigation to the Settings
+	// page. The stepper drives the shared pageWidth preference, so every browse
+	// surface (`.page-col`) resizes together and the choice persists.
 	const t = i18n.t;
 	let open = $state(false);
 	let root = $state<HTMLDivElement>();
 
-	onMount(() => readerPrefs.init());
-
-	const ORDER: Measure[] = ['narrow', 'normal', 'wide'];
-	const idx = $derived(ORDER.indexOf(readerPrefs.measure));
-	const step = (d: number) => {
-		const next = ORDER[idx + d];
-		if (next) readerPrefs.setMeasure(next);
-	};
+	onMount(() => pageWidth.init());
 
 	function onWindowClick(e: MouseEvent) {
 		if (open && root && !root.contains(e.target as Node)) open = false;
@@ -63,11 +55,11 @@
 				</button>
 			</div>
 			<div class="prefs-row">
-				<span class="prefs-label">{t('nav.readingWidth')}</span>
+				<span class="prefs-label">{t('nav.pageWidth')}</span>
 				<div class="widthctl">
 					<button
-						onclick={() => step(-1)}
-						disabled={idx <= 0}
+						onclick={() => pageWidth.step(-1)}
+						disabled={pageWidth.atMin}
 						aria-label={t('a11y.narrower')}
 						title={t('a11y.narrower')}
 					>
@@ -77,8 +69,8 @@
 						</svg>
 					</button>
 					<button
-						onclick={() => step(1)}
-						disabled={idx >= ORDER.length - 1}
+						onclick={() => pageWidth.step(1)}
+						disabled={pageWidth.atMax}
 						aria-label={t('a11y.wider')}
 						title={t('a11y.wider')}
 					>

@@ -90,7 +90,7 @@
 	{#if plans.length}{@html plansLd}{/if}
 </svelte:head>
 
-<div class="mx-auto max-w-3xl px-5 py-10">
+<div class="page-col px-5 py-10">
 	<h1 class="text-h1 mb-2">{t('plans.title')}</h1>
 	<p class="mb-8 max-w-xl text-body text-muted">{t('plans.tagline')}</p>
 

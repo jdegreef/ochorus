@@ -143,7 +143,7 @@
 <ReadingNudge />
 
 <!-- Discover Your Next Book — above the plan/sermon blocks -->
-<section class="mx-auto max-w-5xl px-5 pt-14">
+<section class="page-col px-5 pt-14">
 	<div class="mb-6 flex items-end justify-between">
 		<h2 class="text-h1">{t('home.discoverNext')}</h2>
 		<a href={localizeHref('/books')} class="text-small font-semibold text-accent">{t('home.allBooks')} →</a>
@@ -164,7 +164,7 @@
 
 <!-- Browse by topic -->
 {#if topics.length}
-	<section class="mx-auto max-w-5xl px-5 pt-14">
+	<section class="page-col px-5 pt-14">
 		<div class="mb-6 flex items-end justify-between">
 			<h2 class="text-h1">{t('home.browseTopic')}</h2>
 			<a href={localizeHref('/topics')} class="text-small font-semibold text-accent"
@@ -197,7 +197,7 @@
 </section>
 
 <!-- Christian Authors -->
-<section class="mx-auto max-w-5xl px-5 pt-14 pb-20">
+<section class="page-col px-5 pt-14 pb-20">
 	<div class="mb-6 flex items-end justify-between">
 		<h2 class="text-h1">{t('home.authorsTitle')}</h2>
 		<a href={localizeHref('/biographies')} class="text-small font-semibold text-accent">{t('home.allBiographies')} →</a>

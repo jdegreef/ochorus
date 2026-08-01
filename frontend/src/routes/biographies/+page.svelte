@@ -277,7 +277,7 @@
 	{@html crumbsLd}
 </svelte:head>
 
-<div class="mx-auto max-w-4xl px-5 py-8">
+<div class="page-col px-5 py-8">
 	<Breadcrumb items={crumbs} />
 	<!-- No eyebrow: the breadcrumb directly above already reads "Biographies",
 	     and the pair cost a whole row of the first screen to say it twice. -->

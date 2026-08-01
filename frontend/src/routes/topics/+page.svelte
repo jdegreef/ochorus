@@ -42,7 +42,7 @@
 	{#if topics.length}{@html topicsLd}{/if}
 </svelte:head>
 
-<div class="mx-auto max-w-5xl px-5 py-10">
+<div class="page-col px-5 py-10">
 	<header class="mb-8">
 		<h1 class="text-display mb-2">{t('topics.title')}</h1>
 		<p class="max-w-xl text-body text-muted">{t('topics.tagline')}</p>
