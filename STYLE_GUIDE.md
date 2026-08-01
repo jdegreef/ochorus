@@ -213,6 +213,19 @@ clear AA on the band in both themes.
 **Book card** (`.book-card`) — the cover is the visual, so the chrome stays
 quiet: hairline, surface fill, no colour wash.
 
+> ⚠️ **A Tailwind utility cannot override one of these classes.** The component
+> classes in `app.css` are **unlayered**; Tailwind's utilities live in
+> `@layer utilities`, and unlayered CSS wins over layered CSS **whatever the
+> specificity**. So `class="book-card flex-row"` silently keeps `column`.
+>
+> What makes this genuinely nasty is that `!important` utilities *do* win — so
+> on `class="book-card flex-row !p-4"` the padding applies and the direction
+> doesn't, and the element looks half-styled rather than obviously broken.
+>
+> Add a modifier next to the base class instead (`.book-card--row`,
+> `.shelf-card--static`). Reach for a utility only for properties the component
+> class doesn't set.
+
 **Equal heights — one item per card, or bound the variance.** A card grid must
 never set `items-start`; let `.shelf-card`/`.book-card`'s `height:100%` plus an
 `mt-auto` footer level the bottoms. (`items-stretch` states it, but grid items

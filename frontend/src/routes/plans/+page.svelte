@@ -111,7 +111,7 @@
 	     reader has an unfinished plan in progress. -->
 	{#if activePlans.length}
 		<section class="mb-8">
-			<h2 class="mb-3 text-small font-semibold uppercase tracking-wide text-muted">
+			<h2 class="section-label">
 				{t('plans.continueHeading')}
 			</h2>
 			<div class="space-y-3">

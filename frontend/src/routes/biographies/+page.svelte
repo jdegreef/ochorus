@@ -416,10 +416,10 @@
 							></span>
 						</span>
 						<span
-							class="whitespace-nowrap text-[0.72rem] font-semibold text-muted transition-colors group-hover:text-accent"
+							class="whitespace-nowrap text-eyebrow font-semibold text-muted transition-colors group-hover:text-accent"
 							>{t(g.era.k)}</span
 						>
-						{#if g.era.range}<span class="whitespace-nowrap text-[0.65rem] text-muted opacity-70"
+						{#if g.era.range}<span class="whitespace-nowrap text-eyebrow text-muted opacity-70"
 								>{g.era.range}</span
 							>{/if}
 					</a>

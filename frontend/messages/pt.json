@@ -59,6 +59,8 @@
   "align_justify": "Justificado",
   "search_placeholder": "Buscar livros, autores, texto…",
   "search_title": "Buscar",
+  "search_tagline": "Encontre um livro, um autor, um tema ou uma linha de texto em qualquer parte da biblioteca.",
+  "search_meta_description": "Pesquise na biblioteca do Ochorus — livros cristãos clássicos, sermões, autores e temas. Pesquise o texto completo de cada obra, gratuito para ler.",
   "search_no_results": "Nenhum resultado para",
   "search_prompt": "Digite ao menos dois caracteres para buscar.",
   "search_recent": "Buscas recentes",

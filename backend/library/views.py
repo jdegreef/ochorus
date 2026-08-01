@@ -520,10 +520,18 @@ class PopularSearchesView(APIView):
     noise filter — "this is a real recurring query, not a fluke" — not the
     privacy mechanism. Fragments under 3 chars (type-ahead prefixes) are
     dropped, and results are scoped to the reader's language.
+
+    MIN_DISTINCT is the young-site guard. On a site with barely any traffic a
+    handful of repeated development searches clear MIN_COUNT easily, and the
+    empty state then advertises two items — one of them a half-typed author
+    name — under the heading "Popular searches". A one- or two-chip row isn't
+    a signal, it's noise wearing a label, so the whole section stays hidden
+    until enough DISTINCT queries qualify for it to mean something.
     """
 
     WINDOW_DAYS = 30
-    MIN_COUNT = 3  # a query must recur to read as "popular", not a one-off blip
+    MIN_COUNT = 5  # a query must recur to read as "popular", not a one-off blip
+    MIN_DISTINCT = 4  # ...and there must be a real spread, or show nothing
     LIMIT = 8
 
     def get(self, request):
@@ -545,7 +553,10 @@ class PopularSearchesView(APIView):
             .filter(count__gte=self.MIN_COUNT)
             .order_by("-count", "q")[: self.LIMIT]
         )
-        return Response({"queries": [r["q"] for r in rows]})
+        queries = [r["q"] for r in rows]
+        if len(queries) < self.MIN_DISTINCT:
+            return Response({"queries": []})
+        return Response({"queries": queries})
 
 
 class _SearchClickThrottle(UserRateThrottle):

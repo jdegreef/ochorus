@@ -615,6 +615,25 @@ nav.appnav .navtoggle:hover {
 	cursor: pointer;
 }
 
+/* The label above a block of content within a page — "Continue reading",
+   "New to the library", "Popular searches". Distinct from the page EYEBROW
+   above an <h1>, which <PageHeader> owns.
+
+   These had drifted into three tracking values (wide/wider/widest) and three
+   colours across 41 hand-written copies. Muted, not accent: a section label is
+   not interactive, and in accent it reads as a link sitting above real links.
+   The eyebrow above a page title keeps accent — there it IS the page's
+   identity, and there is only one per page. */
+.section-label {
+	margin-bottom: 0.75rem;
+	font-size: var(--fs-small);
+	line-height: 1.5;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--muted);
+}
+
 /* ── Shelf cards ───────────────────────────────────────────────────────────
    The Topics page's card — a colour-washed "shelf" band carrying an icon chip
    and a fan of covers, over a plain typographic body — is the best-looking
@@ -736,6 +755,20 @@ nav.appnav .navtoggle:hover {
 	box-shadow: 0 6px 20px -12px #0007;
 	text-decoration: none;
 	transform: translateY(-2px);
+}
+/* Horizontal variant — cover beside the text, for the single "Continue
+   reading" resume card.
+
+   This has to be a modifier here rather than a `flex-row` utility on the
+   element: these component classes are UNLAYERED, Tailwind's utilities live in
+   `@layer utilities`, and unlayered CSS beats layered CSS whatever the
+   specificity. So `class="book-card flex-row"` silently keeps column. (An
+   `!important` utility like `!p-4` does win — which makes the failure worse,
+   because some of the overrides on the same element appear to work.) */
+.book-card--row {
+	flex-direction: row;
+	align-items: center;
+	gap: 1rem;
 }
 @media (prefers-reduced-motion: reduce) {
 	.book-card,
