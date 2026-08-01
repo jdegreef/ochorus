@@ -1,86 +1,47 @@
 <script lang="ts">
-	import { onMount, tick } from 'svelte';
-	import { listSermons, type Sermon, type SermonSummary } from '$lib/library';
+	import { onMount } from 'svelte';
+	import { type Sermon, type SermonSummary, listSermons } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { i18n } from '$lib/i18n.svelte';
-	import { readingTime, readingMinutes } from '$lib/reading';
-	import { getScrollAnchor, saveScrollAnchor, saveProgress, getProgressRecord } from '$lib/progress';
-	import { SERMON_CHAPTER_ORDER } from '$lib/reading-schema';
+	import { readingTime, readingMinutes, HEADER_OFFSET } from '$lib/reading';
 	import { getLang } from '$lib/lang.svelte';
 	import { listen } from '$lib/listen.svelte';
-	import { scripture, type ScriptureResult } from '$lib/scripture.svelte';
-	import { define } from '$lib/define.svelte';
+	import { type ScriptureResult } from '$lib/scripture.svelte';
 	import { apiFetch } from '$lib/api';
 	import { page } from '$app/stores';
 	import { buildOutline, type OutlineEntry } from '$lib/sermonOutline';
 	import { absUrl, jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
-
-	import { findQueryHits } from '$lib/searchHits';
-	import { renderMarks } from '$lib/rangeMarks';
-	import { HIGHLIGHT_COLORS, DEFAULT_HIGHLIGHT } from '$lib/reading-schema';
-	import { marks, type Segment } from '$lib/marks.svelte';
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { localizeHref } from '$lib/href';
+	import Reader from '$lib/components/Reader.svelte';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import Seo from '$lib/components/Seo.svelte';
-	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
-	import SelectionBar from '$lib/components/SelectionBar.svelte';
-	import DefinePopover from '$lib/components/DefinePopover.svelte';
 	import Icon from '$lib/components/Icon.svelte';
-	import ListenBar from '$lib/components/ListenBar.svelte';
 
 	let { data } = $props();
 	const sermon = $derived(data.sermon as Sermon);
 	const t = i18n.t;
 
+	// The reader owns the prose and everything that reads it; this page owns its
+	// own chrome. `body` comes back out for the outline, `frac` for the progress
+	// bar, and the instance for the Listen button.
+	let reader = $state<Reader | undefined>();
 	let body = $state<HTMLElement | undefined>();
-	// Other sermons on the same Bible book, fetched client-side (page is
-	// prerendered; the list is small and cached by the browser).
-	let related = $state<SermonSummary[]>([]);
-
-	// --- Reading progress ------------------------------------------------------
-	// Long sermons need orientation: a scroll-progress bar, an estimate of the
-	// time remaining, and a resume point. Anchored to the top-visible paragraph
-	// so it survives text-size / width changes (mirrors the chapter reader).
-	const HEADER_OFFSET = 64;
 	let frac = $state(0);
-	let saveTimer: ReturnType<typeof setTimeout> | undefined;
 	const minutesLeft = $derived(
 		Math.max(1, Math.ceil(readingMinutes(sermon.word_count) * (1 - frac)))
 	);
 
-	function topVisibleIndex(): number {
-		if (!body) return 0;
-		const kids = body.children;
-		for (let i = 0; i < kids.length; i++) {
-			if (kids[i].getBoundingClientRect().bottom > HEADER_OFFSET) return i;
-		}
-		return Math.max(0, kids.length - 1);
-	}
-
-	function updateFraction() {
-		if (!body) return;
-		const rect = body.getBoundingClientRect();
-		if (rect.height <= 0) return;
-		const seen = Math.min(Math.max(window.innerHeight - rect.top, 0), rect.height);
-		frac = Math.min(1, Math.max(0, seen / rect.height));
-	}
-
-	function onScroll() {
-		updateActiveSection(); // cheap; keep the outline rail responsive
-		clearTimeout(saveTimer);
-		saveTimer = setTimeout(() => {
-			updateFraction();
-			saveScrollAnchor(sermon.slug, SERMON_CHAPTER_ORDER, topVisibleIndex(), 'sermon');
-		}, 250);
-	}
+	// Other sermons on the same Bible book, fetched client-side (page is
+	// prerendered; the list is small and cached by the browser).
+	let related = $state<SermonSummary[]>([]);
 
 	// --- Jump-to-section outline ----------------------------------------------
 	// Built from the rendered body once it's in the page (headings + the classic
-	// "I. / II. / III." homiletic points). Shown only when there's real
-	// structure to navigate.
+	// "I. / II. / III." homiletic points). Shown only when there's real structure
+	// to navigate.
 	let outline = $state<OutlineEntry[]>([]);
 	let outlineOpen = $state(false);
 	// The section the reader is currently in — for the desktop rail's highlight.
@@ -114,56 +75,14 @@
 		outlineOpen = false;
 	}
 
-	// Record the visit (so the sermon lands in "Continue reading") and restore
-	// the saved spot — a `?p=` deep link (notebook highlights) wins over the
-	// device anchor. Effect, not onMount: client-side nav between sermons
-	// reuses this component.
-	let restoredFor = '';
-	$effect(() => {
-		const slug = sermon.slug;
-		if (!body || restoredFor === slug) return;
-		restoredFor = slug;
-		// A pending scroll-save from the PREVIOUS sermon must not fire against
-		// this one's body (it would record a bogus synced resume point).
-		clearTimeout(saveTimer);
-		// Seed a ?p= deep link into the anchor FIRST so the progress record
-		// (and the resume point that syncs to the account) starts at the
-		// jumped-to paragraph — the chapter reader's documented ordering.
-		const fromUrl = Number($page.url.searchParams.get('p'));
-		if (Number.isFinite(fromUrl) && fromUrl > 0) {
-			saveScrollAnchor(slug, SERMON_CHAPTER_ORDER, fromUrl, 'sermon');
-		}
-		saveProgress(slug, SERMON_CHAPTER_ORDER, sermon.language, 'sermon');
-		(async () => {
-			await tick();
-			// Deep link > device anchor > synced resume point (fresh device).
-			const idx =
-				Number.isFinite(fromUrl) && fromUrl > 0
-					? fromUrl
-					: (getScrollAnchor(slug, SERMON_CHAPTER_ORDER, 'sermon') ??
-						getProgressRecord(slug, 'sermon')?.paragraph_index ??
-						0);
-			if (idx > 0 && body?.children[idx]) {
-				body.children[idx].scrollIntoView({ block: 'start' });
-				window.scrollBy(0, -HEADER_OFFSET);
-			}
-			updateFraction();
-		})();
-	});
-
-	// Marks can be replaced underneath us (sign-in merge / sign-out wipe),
-	// and a scroll-save timer must not outlive the page.
-	onMount(() => {
-		const onSync = () => marks.refresh();
-		window.addEventListener('ochorus:sync', onSync);
-		return () => {
-			clearTimeout(saveTimer);
-			window.removeEventListener('ochorus:sync', onSync);
-		};
-	});
-
 	const initials = (name: string) =>
-		name.split(' ').filter(Boolean).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
+		name
+			.split(' ')
+			.filter(Boolean)
+			.map((w) => w[0])
+			.slice(0, 2)
+			.join('')
+			.toUpperCase();
 
 	// The sermon's preaching text — the verse(s) it's built on — for the header
 	// card. Fetched client-side (the page is prerendered); absent = card shows
@@ -182,56 +101,21 @@
 	const refBook = (ref: string) => ref.match(/^(\d?\s?[A-Za-z]+)/)?.[1]?.trim() ?? '';
 	const book = $derived(refBook(sermon.scripture_ref || ''));
 
+	// onMount, not $effect: `listSermons` fetches the whole catalogue with no
+	// memo, and an effect keyed on `book` would re-issue it on every
+	// sermon→sermon navigation just to fill a footer list. (That also means the
+	// list doesn't refresh on client-side nav — pre-existing, and a fair thing to
+	// fix once `listSermons` is memoised.)
 	onMount(() => {
 		readerPrefs.init();
-		listen.init();
-		if (book) {
-			listSermons(getLang())
-				.then((all) => {
-					related = all.filter(
-						(s) => s.slug !== sermon.slug && refBook(s.scripture_ref || '') === book
-					);
-				})
-				.catch(() => (related = []));
-		}
-	});
-
-	/** Tap a server-wrapped Bible reference → open the scripture popover. */
-	function onBodyClick(e: MouseEvent) {
-		const a = (e.target as HTMLElement).closest?.('a.scripture-ref') as HTMLElement | null;
-		if (!a?.dataset.ref) return;
-		e.preventDefault();
-		const r = a.getBoundingClientRect();
-		scripture.show(a.dataset.ref, r.bottom + window.scrollY, r.left + window.scrollX + r.width / 2);
-	}
-
-	/** Read the sermon aloud, starting from the paragraph you're reading. */
-	function startListening() {
-		if (!body) return;
-		const paragraphs = [...body.children].map((el) => (el as HTMLElement).innerText);
-		listen.start(paragraphs, topVisibleIndex(), getLang(), {
-			title: sermon.title,
-			artist: sermon.author_name
-		});
-	}
-
-	// Follow-along: highlight the paragraph being spoken and keep it in view.
-	$effect(() => {
-		const current = listen.current;
-		if (!body) return;
-		const kids = body.children;
-		for (let i = 0; i < kids.length; i++) {
-			kids[i].classList.toggle('tts-current', i === current);
-		}
-		if (current >= 0 && kids[current]) {
-			kids[current].scrollIntoView({ block: 'center', behavior: 'smooth' });
-		}
-	});
-
-	// Stop speech when navigating to another sermon or leaving the page.
-	$effect(() => {
-		void sermon.slug;
-		return () => listen.stop();
+		if (!book) return;
+		listSermons(getLang())
+			.then((all) => {
+				related = all.filter(
+					(s) => s.slug !== sermon.slug && refBook(s.scripture_ref || '') === book
+				);
+			})
+			.catch(() => (related = []));
 	});
 
 	// Self-referential canonical + hreflang — an English canonical here would
@@ -288,90 +172,6 @@
 		chapter: '',
 		url: $page.url.href
 	});
-
-	// --- Highlights & notes ----------------------------------------------------
-	// Device-local text-range marks over the sermon body (shared range model with
-	// the book reader; see marks.svelte.ts). A note editor opens on tap of a
-	// marked span or via the selection bar's "Note".
-	let noteOpen = $state(false);
-	let noteId = $state<string | null>(null);
-	let notePending = $state<Segment[]>([]);
-	let noteDraft = $state('');
-	let noteColor = $state<string>(DEFAULT_HIGHLIGHT);
-
-	$effect(() => {
-		// Reload when navigating between sermons.
-		marks.load(sermon.slug, SERMON_CHAPTER_ORDER, sermon.language, 'sermon');
-	});
-
-	// Paint marks as <mark> spans; clicking one opens its note editor.
-	// Arriving from a search result: highlight what matched and scroll to it,
-	// rather than dropping the reader at the top to re-find their sentence.
-	// Offsets are computed from the rendered blocks and handed to the SAME
-	// renderer the highlights use — that function restores each block from
-	// `dataset.pristine`, so a separate pass would be wiped whenever a highlight
-	// changed, and the two would fight over the same HTML.
-	const searchQuery = $derived(($page.url.searchParams.get('q') ?? '').trim());
-	let searchHits = $state<Segment[]>([]);
-	let scrolledToHit = false;
-
-	$effect(() => {
-		const list = marks.list;
-		if (!body) return;
-		// Recomputed here, not once on mount: the marks render restores pristine
-		// HTML, so hit offsets have to be handed over on every pass.
-		const hits = searchQuery
-			? findQueryHits(
-					Array.from(body.children).map((el) => el.textContent ?? ''),
-					searchQuery
-				)
-			: [];
-		searchHits = hits;
-		renderMarks(body, list, (id) => {
-			noteId = id;
-			notePending = [];
-			noteDraft = marks.getNote(id);
-			noteColor = marks.getColor(id);
-			noteOpen = true;
-		}, hits);
-
-		// Once per arrival: bring the first match into view. Guarded, or every
-		// highlight edit would yank the reader back up the page.
-		if (hits.length && !scrolledToHit) {
-			scrolledToHit = true;
-			requestAnimationFrame(() =>
-				body
-					?.querySelector('mark.search-hit')
-					// Both axes: the paged reader lays chapters out in columns and
-					// scrolls horizontally, so `block` alone would never reach a hit
-					// on a later page.
-					?.scrollIntoView({ block: 'center', inline: 'center', behavior: 'smooth' })
-			);
-		}
-	});
-
-	/** Note on a fresh selection: highlight it first, then attach the note. */
-	function openNoteForSelection(segments: Segment[]) {
-		const existing = marks.groupCovering(segments);
-		noteId = existing;
-		notePending = existing ? [] : segments;
-		noteDraft = existing ? marks.getNote(existing) : '';
-		noteColor = existing ? marks.getColor(existing) : DEFAULT_HIGHLIGHT;
-		noteOpen = true;
-	}
-	function saveNote() {
-		if (noteId) {
-			marks.setNote(noteId, noteDraft);
-			marks.setColor(noteId, noteColor);
-		} else if (notePending.length && noteDraft.trim()) {
-			marks.add(notePending, noteDraft, noteColor);
-		}
-		noteOpen = false;
-	}
-	function removeMark() {
-		if (noteId) marks.remove(noteId);
-		noteOpen = false;
-	}
 </script>
 
 <Seo
@@ -385,7 +185,7 @@
 	structuredData={[sermonLd, crumbsLd]}
 />
 
-<svelte:window onscroll={onScroll} />
+<svelte:window onscroll={updateActiveSection} />
 
 <!-- Scroll-progress bar, pinned to the very top of the viewport. -->
 <div class="read-progress" style="transform: scaleX({frac})" aria-hidden="true"></div>
@@ -394,7 +194,9 @@
 {#if !readerUi.focus}
 	<div class="sticky top-0 z-10 border-b border-border bg-bg/90 backdrop-blur">
 		<div class="mx-auto flex max-w-3xl items-center justify-between gap-3 px-5 py-2.5">
-			<a href={localizeHref('/sermons')} class="text-small text-muted hover:text-text">← {t('nav.sermons')}</a>
+			<a href={localizeHref('/sermons')} class="text-small text-muted hover:text-text"
+				>← {t('nav.sermons')}</a
+			>
 			<div class="flex shrink-0 items-center gap-1">
 				{#if outline.length >= 2}
 					<button
@@ -410,7 +212,7 @@
 					<button
 						class="btn btn-ghost !px-2.5 !py-1"
 						class:!text-accent={listen.status !== 'idle'}
-						onclick={() => (listen.status === 'idle' ? startListening() : listen.stop())}
+						onclick={() => (listen.status === 'idle' ? reader?.startListening() : listen.stop())}
 						aria-label={t('reader.listen')}
 						title={t('reader.listen')}>▶</button
 					>
@@ -447,7 +249,11 @@
 		<ul>
 			{#each outline as s (s.id)}
 				<li>
-					<button class="outline-item" class:point={s.kind === 'point'} onclick={() => scrollToSection(s.id)}>
+					<button
+						class="outline-item"
+						class:point={s.kind === 'point'}
+						onclick={() => scrollToSection(s.id)}
+					>
 						{s.label}
 					</button>
 				</li>
@@ -480,10 +286,15 @@
 
 <article class="mx-auto px-5 py-10" style="{readerPrefs.style}; max-width: var(--reading-measure)">
 	<!-- Breadcrumb -->
-	<nav class="mb-5 flex flex-wrap items-center gap-1.5 text-small text-muted" aria-label={t('a11y.breadcrumb')}>
+	<nav
+		class="mb-5 flex flex-wrap items-center gap-1.5 text-small text-muted"
+		aria-label={t('a11y.breadcrumb')}
+	>
 		<a href={localizeHref('/sermons')} class="hover:text-text">{t('nav.sermons')}</a>
 		<span>›</span>
-		<a href={localizeHref(`/authors/${sermon.author_slug}`)} class="hover:text-text">{sermon.author_name}</a>
+		<a href={localizeHref(`/authors/${sermon.author_slug}`)} class="hover:text-text"
+			>{sermon.author_name}</a
+		>
 	</nav>
 
 	<p class="mb-1 text-small uppercase tracking-wider text-muted">
@@ -556,10 +367,18 @@
 		</div>
 	{/if}
 
-	<!-- Body HTML is cleaned server-side to a safe tag subset on ingest;
-	     Bible references are wrapped as tappable spans (scripture popover). -->
-	<!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
-	<div class="reading" bind:this={body} onclick={onBodyClick} dir="auto">{@html sermon.body_html}</div>
+	<Reader
+		bind:this={reader}
+		kind="sermon"
+		slug={sermon.slug}
+		language={sermon.language}
+		html={sermon.body_html}
+		{cite}
+		listenTitle={sermon.title}
+		listenArtist={sermon.author_name}
+		bind:body
+		bind:frac
+	/>
 
 	<!-- Scripture index: the passages this sermon engages, each a jump into
 	     scripture search — so scripture is a navigation surface, not just text. -->
@@ -607,7 +426,9 @@
 					class="group flex-1 rounded-card border border-border p-3 hover:border-accent hover:no-underline"
 				>
 					<div class="text-[0.72rem] uppercase tracking-wide text-muted">← {t('reader.previous')}</div>
-					<div class="mt-0.5 text-small font-semibold text-text group-hover:text-accent">{sermon.prev.title}</div>
+					<div class="mt-0.5 text-small font-semibold text-text group-hover:text-accent">
+						{sermon.prev.title}
+					</div>
 				</a>
 			{/if}
 			{#if sermon.next}
@@ -616,7 +437,9 @@
 					class="group flex-1 rounded-card border border-border p-3 text-end hover:border-accent hover:no-underline"
 				>
 					<div class="text-[0.72rem] uppercase tracking-wide text-muted">{t('reader.next')} →</div>
-					<div class="mt-0.5 text-small font-semibold text-text group-hover:text-accent">{sermon.next.title}</div>
+					<div class="mt-0.5 text-small font-semibold text-text group-hover:text-accent">
+						{sermon.next.title}
+					</div>
 				</a>
 			{/if}
 		</nav>
@@ -644,79 +467,15 @@
 	{/if}
 
 	<nav class="mt-8">
-		<a href={localizeHref(`/authors/${sermon.author_slug}`)} class="btn btn-ghost">← {t('sermon.moreFrom')} {sermon.author_name}</a>
+		<a href={localizeHref(`/authors/${sermon.author_slug}`)} class="btn btn-ghost"
+			>← {t('sermon.moreFrom')} {sermon.author_name}</a
+		>
 	</nav>
 </article>
 
 <!-- Time-remaining pill; hidden in focus and while listening. -->
 {#if !readerUi.focus && listen.status === 'idle' && frac < 0.99}
 	<div class="min-left" aria-hidden="true">{minutesLeft} {t('sermon.minLeft')}</div>
-{/if}
-
-<SelectionBar
-	container={body}
-	{cite}
-	onHighlight={(segments, color) => {
-		const existing = marks.groupCovering(segments);
-		if (!existing) marks.add(segments, undefined, color);
-		else if (marks.getColor(existing) === color) marks.remove(existing);
-		else marks.setColor(existing, color);
-	}}
-	onNote={openNoteForSelection}
-	highlightColor={(segments) => {
-		const id = marks.groupCovering(segments);
-		return id ? marks.getColor(id) : null;
-	}}
-	onDefine={(word, top, left) => define.show(word, top, left)}
-/>
-
-<ScripturePopover />
-<DefinePopover />
-<ListenBar />
-
-{#if noteOpen}
-	<div
-		class="note-overlay"
-		role="dialog"
-		aria-modal="true"
-		aria-label={t('reader.note')}
-		use:focusTrap={{ onEscape: () => (noteOpen = false) }}
-	>
-		<div class="note-card">
-			<h2 class="mb-2 text-h3">{t('reader.note')}</h2>
-			<div class="mb-3 flex items-center gap-2.5" role="group" aria-label={t('reader.highlight')}>
-				{#each HIGHLIGHT_COLORS as color (color)}
-					<button
-						type="button"
-						class="hl-swatch"
-						data-color={color}
-						class:active={noteColor === color}
-						aria-pressed={noteColor === color}
-						aria-label="{t('reader.highlight')}: {t(`reader.hl_${color}`)}"
-						title={t(`reader.hl_${color}`)}
-						onclick={() => (noteColor = color)}
-					></button>
-				{/each}
-			</div>
-			<textarea
-				bind:value={noteDraft}
-				rows="5"
-				class="w-full rounded-sm border border-border bg-bg p-3 text-body text-text"
-				aria-label={t('reader.note')}
-				placeholder="…"
-			></textarea>
-			<div class="mt-3 flex items-center gap-2">
-				{#if noteId}
-					<button class="btn btn-ghost !text-red-700 dark:!text-red-400" onclick={removeMark}>
-						{t('reader.removeHighlight')}
-					</button>
-				{/if}
-				<span class="flex-1"></span>
-				<button class="btn btn-ghost" onclick={() => (noteOpen = false)}>{t('common.cancel')}</button>
-				<button class="btn btn-primary" onclick={saveNote}>{t('common.save')}</button>
-			</div>
-		</div>
-	</div>
 {/if}
 
 <style>
@@ -783,35 +542,6 @@
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
 		color: var(--muted);
-	}
-
-	/* Paragraph currently being read aloud in Listen mode. */
-	:global(.reading > .tts-current) {
-		background: color-mix(in srgb, var(--accent) 10%, transparent);
-		border-radius: 4px;
-		box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 10%, transparent);
-		transition: background 0.3s ease;
-	}
-
-	/* Text-range marks (<mark> spans) are styled globally in app.css. */
-	.note-overlay {
-		position: fixed;
-		inset: 0;
-		z-index: 50;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 1rem;
-		background: rgb(0 0 0 / 0.4);
-	}
-	.note-card {
-		width: 100%;
-		max-width: 32rem;
-		border-radius: var(--radius-card);
-		border: 1px solid var(--border);
-		background: var(--surface);
-		padding: 1.25rem;
-		box-shadow: 0 10px 40px rgb(0 0 0 / 0.35);
 	}
 
 	/* Jump-to-section outline: a light popover under the reader bar. */

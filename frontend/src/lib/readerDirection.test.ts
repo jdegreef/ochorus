@@ -30,10 +30,23 @@ const FRONTEND = [resolve(process.cwd()), resolve(process.cwd(), 'frontend')].fi
  * a NEW surface that renders content without `dir="auto"`. If a third reading
  * surface appears, add it here — or extract a component that owns `dir="auto"`
  * so it comes for free.
+ *
+ * That extraction has now happened for the prose: `Reader.svelte` owns the
+ * `.reading` element, so every surface built on it gets `dir="auto"` without
+ * being listed. The chapter reader still renders its body inline and is pinned
+ * separately below until it migrates. Each page keeps its own `<article>` and
+ * `<h1>`, so those assertions stay per-page.
  */
 const READERS = [
 	'src/routes/books/[slug]/[order]/+page.svelte',
 	'src/routes/sermons/[slug]/+page.svelte'
+];
+
+/** Files that render a `.reading` body themselves and must carry the dir. */
+const PROSE_OWNERS = [
+	'src/lib/components/Reader.svelte',
+	// Not yet migrated onto <Reader>; drop when it is.
+	'src/routes/books/[slug]/[order]/+page.svelte'
 ];
 
 /** Other surfaces rendering content inside localized chrome: [file, anchor]. */
@@ -59,13 +72,22 @@ describe('reader text direction', () => {
 			expect(article).not.toMatch(/\bdir=/);
 		});
 
-		it(`${path}: title and body carry dir="auto"`, () => {
-			const src = read(path);
+		it(`${path}: title carries dir="auto"`, () => {
 			// Assert on the whole source rather than capturing the tag: an inline
 			// arrow handler (onclick={() => f()}) contains '>' and would truncate a
 			// [^>]* capture — spurious failures, or worse a spurious pass.
-			expect(src, 'title dir="auto"').toMatch(/<h1[^>]*\sdir="auto"/);
-			expect(src, 'reading body dir="auto"').toMatch(/<div class="reading"[^>]*\sdir="auto"/);
+			expect(read(path), 'title dir="auto"').toMatch(/<h1[^>]*\sdir="auto"/);
+		});
+	}
+
+	for (const path of PROSE_OWNERS) {
+		it(`${path}: reading body carries dir="auto"`, () => {
+			// Match the class LIST, not a bare closing quote: Reader takes a `class`
+			// prop (for surfaces with their own band width), so `class="reading"`
+			// becomes `class="reading …"` and a stricter regex would fail this open.
+			expect(read(path), 'reading body dir="auto"').toMatch(
+				/<div class="reading[^"]*"[^>]*\sdir="auto"/
+			);
 		});
 	}
 
