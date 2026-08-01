@@ -21,7 +21,7 @@
 
 <div class="mx-auto max-w-2xl px-5 py-12">
 	<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">{t('nav.contact')}</p>
-	<h1 class="text-display mb-6">{t('contact.heading')}</h1>
+	<h1 class="text-h1 mb-6">{t('contact.heading')}</h1>
 
 	<p class="text-body text-muted">
 		{t('contact.intro')}

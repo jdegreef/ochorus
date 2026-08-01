@@ -7,6 +7,7 @@
 	import { locales } from '$lib/paraglide/runtime';
 	import Icon from '$lib/components/Icon.svelte';
 	import { topicMeta } from '$lib/topics';
+	import PageHeader from '$lib/components/PageHeader.svelte';
 
 	let { data } = $props();
 	const topics = $derived<TopicSummary[]>(data.topics);
@@ -43,10 +44,7 @@
 </svelte:head>
 
 <div class="page-col px-5 py-10">
-	<header class="mb-8">
-		<h1 class="text-display mb-2">{t('topics.title')}</h1>
-		<p class="max-w-xl text-body text-muted">{t('topics.tagline')}</p>
-	</header>
+	<PageHeader title={t('topics.title')} tagline={t('topics.tagline')} />
 
 	{#if topics.length === 0}
 		<p class="text-small text-muted">{t('topics.none')}</p>

@@ -21,7 +21,7 @@
 
 <div class="mx-auto max-w-2xl px-5 py-12">
 	<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">{t('nav.about')}</p>
-	<h1 class="text-display mb-8">{t('about.title')}</h1>
+	<h1 class="text-h1 mb-8">{t('about.title')}</h1>
 
 	<div class="reading-page space-y-5 text-body text-muted">
 		<h2 class="text-h2 !text-text">{t('about.heading')}</h2>

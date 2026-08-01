@@ -9,6 +9,7 @@
 	import { locales } from '$lib/paraglide/runtime';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import CatalogLanguageNudge from '$lib/components/CatalogLanguageNudge.svelte';
+	import PageHeader from '$lib/components/PageHeader.svelte';
 
 	let { data } = $props();
 	const plans = $derived<PlanSummary[]>(data.plans);
@@ -91,8 +92,7 @@
 </svelte:head>
 
 <div class="page-col px-5 py-10">
-	<h1 class="text-h1 mb-2">{t('plans.title')}</h1>
-	<p class="mb-8 max-w-xl text-body text-muted">{t('plans.tagline')}</p>
+	<PageHeader title={t('plans.title')} tagline={t('plans.tagline')} />
 
 	<CatalogLanguageNudge kind="plans" localizedCount={plans.length} />
 
@@ -136,18 +136,14 @@
 	{/if}
 
 	{#if showLengthFilter}
-		<div class="mb-6 flex flex-wrap items-center gap-1.5" role="group" aria-label={t('plans.filterLength')}>
+		<div class="filter-row mb-6" role="group" aria-label={t('plans.filterLength')}>
 			<span class="me-1 text-small text-muted">{t('plans.filterLength')}</span>
 			{#each BUCKETS as b (b)}
 				{#if b === 'all' || counts[b] > 0}
 					<button
 						type="button"
-						class="rounded-full border px-2.5 py-1 text-[0.78rem]"
-						class:border-accent={lengthFilter === b}
-						class:bg-accent={lengthFilter === b}
-						class:text-accent-contrast={lengthFilter === b}
-						class:border-border={lengthFilter !== b}
-						class:text-muted={lengthFilter !== b}
+						class="chip"
+						class:active={lengthFilter === b}
 						onclick={() => (lengthFilter = b)}
 						aria-pressed={lengthFilter === b}
 					>

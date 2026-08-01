@@ -10,7 +10,7 @@
 	import { locales } from '$lib/paraglide/runtime';
 	import { ERAS, eraOf, type EraId } from '$lib/eras';
 	import AuthorBioCard from '$lib/components/AuthorBioCard.svelte';
-	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
+	import PageHeader from '$lib/components/PageHeader.svelte';
 
 	const t = i18n.t;
 
@@ -206,8 +206,8 @@
 		return ERAS.filter((e) => byId.has(e.id)).map((e) => ({ era: e, authors: byId.get(e.id)! }));
 	});
 
-	// Breadcrumb trail (Home › Biographies) — the visible <Breadcrumb> below and
-	// this BreadcrumbList JSON-LD describe the same path, matching the rest of the
+	// BreadcrumbList JSON-LD (Home › Biographies). No visible trail on this
+	// top-level page (see the header below); the schema still describes the
 	// site's detail pages. The last item is the current page but stays in the
 	// structured list (Google expects the full trail including the leaf).
 	const crumbs = $derived([
@@ -278,15 +278,12 @@
 </svelte:head>
 
 <div class="page-col px-5 py-8">
-	<Breadcrumb items={crumbs} />
-	<!-- No eyebrow: the breadcrumb directly above already reads "Biographies",
-	     and the pair cost a whole row of the first screen to say it twice. -->
-	<header class="mb-5">
-		<h1 class="text-display mb-2">{t('bios.title')}</h1>
-		<p class="text-body text-muted">
-			{t('bios.tagline')}
-		</p>
-	</header>
+	<!-- No visible breadcrumb: this is a top-level destination already marked
+	     active in the nav, and it was the only one of the six browse pages
+	     carrying a trail. Detail pages (a book, an author) still get one, where
+	     the hierarchy is real. The BreadcrumbList JSON-LD stays — it describes
+	     the page's position for search results, which is still true. -->
+	<PageHeader eyebrow={t('bios.eyebrow')} title={t('bios.title')} tagline={t('bios.tagline')} />
 
 	<!-- Controls + A–Z, pinned. With one writer per row the list is 35 screens
 	     long, so the filters and the letter jump have to come WITH you — the app
@@ -296,12 +293,12 @@
 		class="sticky top-0 z-20 -mx-5 mb-6 border-b border-border bg-bg px-5 pb-2.5 pt-3"
 	>
 	<!-- Controls: search · filter · sort -->
-	<div class="flex flex-wrap items-center gap-2">
+	<div class="filter-row">
 		<input
 			bind:value={queryText}
 			oninput={syncUrl}
 			type="search"
-			class="min-w-[10rem] flex-1 rounded-sm border border-border bg-surface px-3 py-1.5 text-small text-text"
+			class="filter-field grow"
 			placeholder={t('bios.filterPlaceholder')}
 			aria-label={t('bios.filterPlaceholder')}
 		/>
@@ -309,25 +306,22 @@
 		<!-- Mobile only: reveals the rest. Carries a count so a collapsed panel
 		     can never hide the fact that the list is being narrowed. -->
 		<button
-			class="flex shrink-0 items-center gap-1 rounded-sm border border-border px-2.5 py-1.5 text-[0.78rem] text-muted sm:hidden"
+			class="chip flex shrink-0 items-center gap-1 sm:hidden"
 			onclick={() => (filtersOpen = !filtersOpen)}
 			aria-expanded={filtersOpen}
 		>
 			{t('bios.filters')}
 			{#if activeCount}
-				<span class="rounded-full bg-accent px-1.5 text-[0.68rem] font-semibold text-accent-contrast"
+				<span class="rounded-full bg-accent-soft px-1.5 text-eyebrow font-semibold text-accent"
 					>{activeCount}</span
 				>
 			{/if}
 		</button>
 
-		<div class="overflow-hidden rounded-sm border border-border text-[0.78rem] sm:flex" class:hidden={!filtersOpen} class:flex={filtersOpen}>
+		<div class="seg sm:flex" class:hidden={!filtersOpen} class:flex={filtersOpen}>
 			{#each FILTERS as opt (opt.v)}
 				<button
-					class="px-2.5 py-1.5"
-					class:bg-accent={filter === opt.v}
-					class:text-accent-contrast={filter === opt.v}
-					class:text-muted={filter !== opt.v}
+					class:active={filter === opt.v}
 					onclick={() => { filter = opt.v; syncUrl(); }}
 					aria-pressed={filter === opt.v}>{t(opt.k)}</button
 				>
@@ -337,11 +331,9 @@
 		<!-- Orthogonal to the library/bio segments: narrows to writers with a
 		     full-length biography (the "Full life" badge). -->
 		<button
-			class="rounded-sm border border-border px-2.5 py-1.5 text-[0.78rem] sm:block"
+			class="chip sm:block"
 			class:hidden={!filtersOpen}
-			class:bg-accent={fullBioOnly}
-			class:text-accent-contrast={fullBioOnly}
-			class:text-muted={!fullBioOnly}
+			class:active={fullBioOnly}
 			onclick={() => { fullBioOnly = !fullBioOnly; syncUrl(); }}
 			aria-pressed={fullBioOnly}>{t('bios.fullLife')}</button
 		>
