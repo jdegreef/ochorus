@@ -336,7 +336,7 @@
 						<span class="text-small font-normal opacity-60">{g.books.length}</span>
 					</h2>
 					{#if view === 'grid'}
-						<div class="grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+						<div class="grid grid-cols-3 items-stretch gap-x-4 gap-y-6 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
 							{#each g.books as book (book.slug)}
 								<BookCard {book} />
 							{/each}
@@ -351,7 +351,7 @@
 				</section>
 			{/each}
 		{:else if view === 'grid'}
-			<div class="grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+			<div class="grid grid-cols-3 items-stretch gap-x-4 gap-y-6 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
 				{#each sorted as book (book.slug)}
 					<BookCard {book} showAuthor />
 				{/each}

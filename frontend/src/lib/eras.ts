@@ -27,6 +27,27 @@ export const ERAS: Era[] = [
 	{ id: 'contemporary', k: 'bios.eraContemporary', until: null, range: '' }
 ];
 
+/**
+ * A hue per era, for the shelf cards (see .shelf-card in app.css).
+ *
+ * Era is the one visual grouping a writer already belongs to, so colouring by
+ * it means the same author carries the same colour everywhere rather than a
+ * hue invented per surface. Values sit in the same register as the topic
+ * palette in $lib/topics — used only through color-mix() for tints and icon
+ * colour, never as body text, so contrast holds in both themes.
+ */
+export const ERA_HUE: Record<EraId, string> = {
+	early: '#8a6bbf', // ancient — deep violet
+	puritans: '#3f6fb5', // sober blue
+	awakenings: '#d98324', // revival fire
+	missionary: '#149e93', // teal, for the voyages
+	modern: '#5257c9', // the brand indigo
+	contemporary: '#4f9a3e' // living and green
+};
+
+/** Shelf-card hue for a writer, from their birth year. */
+export const hueForBirthYear = (birth: number | null): string => ERA_HUE[eraOf(birth)];
+
 export const eraOf = (birth: number | null): EraId =>
 	birth == null ? 'contemporary' : ERAS.find((e) => e.until != null && birth < e.until)!.id;
 

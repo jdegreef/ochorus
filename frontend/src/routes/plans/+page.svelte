@@ -7,7 +7,8 @@
 	import { itemList } from '$lib/seo';
 	import { localizeHref } from '$lib/href';
 	import { locales } from '$lib/paraglide/runtime';
-	import CoverStrip from '$lib/components/CoverStrip.svelte';
+	import ShelfCard from '$lib/components/ShelfCard.svelte';
+	import { accentForSlug } from '$lib/topics';
 	import CatalogLanguageNudge from '$lib/components/CatalogLanguageNudge.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 
@@ -51,6 +52,12 @@
 		loc,
 		href: `${SITE_URL}${localizeHref('/plans', { locale: loc })}`
 	}));
+
+	// A plan has no topic, so it takes a stable pick from the curated topic
+	// palette. (Deriving the hue from the first cover was tried first and looked
+	// flat — most covers are dark navy, so every card came out the same muted
+	// blue and the shelf lost the colour that makes /topics work.)
+	const planHue = (plan: PlanSummary) => accentForSlug(plan.slug);
 
 	/** Rounded minutes of reading in an average day of a plan. */
 	const perDay = (plan: PlanSummary) =>
@@ -155,52 +162,45 @@
 		</div>
 	{/if}
 
-	<div class="space-y-4">
+	<div class="grid items-stretch gap-5 sm:grid-cols-2">
 		{#each shownPlans as plan (plan.slug)}
 			{@const done = planProgress.doneDays(plan.slug).length}
 			{@const started = planProgress.isStarted(plan.slug)}
-			<a
+			<ShelfCard
 				href={localizeHref(`/plans/${plan.slug}`)}
-				class="block rounded-card border border-border p-5 hover:bg-surface-2 hover:no-underline"
+				hue={planHue(plan)}
+				icon="calendar"
+				covers={plan.covers}
+				title={plan.title}
 			>
-				<div class="flex items-start justify-between gap-4">
-					<div class="min-w-0 flex-1">
-						<h2 class="text-h3 text-text">{plan.title}</h2>
-						<p class="mt-0.5 text-small text-muted">
-							{plan.day_count} {t('plans.days')}{#if plan.total_words}
-								<span class="opacity-60"> · </span>~{perDay(plan)} {t('plans.minPerDay')}{/if}
-						</p>
-						<p class="mt-2 text-small text-muted">{plan.description}</p>
-						{#if !started && plan.day_one}
-							<p class="mt-2 text-[0.78rem] text-muted">
-								<span class="font-medium text-text">{t('plans.day')} 1</span>
-								<span class="opacity-60"> · </span>{plan.day_one.book_title}
-								<span class="opacity-60"> — </span><span class="italic">{plan.day_one.chapter_title}</span>
-							</p>
-						{/if}
-					</div>
-					{#if plan.covers.length}
-						<div class="hidden shrink-0 pt-1 sm:block">
-							<CoverStrip covers={plan.covers} />
-						</div>
-					{/if}
-				</div>
-				{#if started}
-					<div class="mt-3">
+				{#snippet aside()}
+					{plan.day_count} {t('plans.days')}{#if plan.total_words}
+						<span class="opacity-60"> · </span>~{perDay(plan)} {t('plans.minPerDay')}{/if}
+				{/snippet}
+				<p class="shelf-card-desc mt-1.5 text-small text-muted">{plan.description}</p>
+				<!-- Pushed to the bottom of the body so every card's footer sits on the
+				     same line regardless of description length. -->
+				<div class="mt-auto pt-3">
+					{#if started}
 						<div class="h-1.5 overflow-hidden rounded-full bg-surface-2">
 							<div
 								class="h-full rounded-full bg-accent"
 								style="width: {Math.round((done / plan.day_count) * 100)}%"
 							></div>
 						</div>
-						<p class="mt-1.5 text-[0.78rem] text-muted">
+						<p class="mt-1.5 text-small text-muted">
 							{done === plan.day_count
 								? t('plans.finished')
 								: `${t('plans.day')} ${planProgress.nextDay(plan.slug, plan.day_count)} ${t('plans.of')} ${plan.day_count}`}
 						</p>
-					</div>
-				{/if}
-			</a>
+					{:else if plan.day_one}
+						<p class="text-small text-muted">
+							<span class="font-medium text-text">{t('plans.day')} 1</span>
+							<span class="opacity-60"> · </span>{plan.day_one.book_title}
+						</p>
+					{/if}
+				</div>
+			</ShelfCard>
 		{/each}
 	</div>
 </div>
