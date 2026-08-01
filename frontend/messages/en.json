@@ -81,7 +81,7 @@
   "search_more_passages": "more in this book",
   "search_show_less": "Show less",
   "search_show_all": "Show all",
-  "search_verses": "verses",
+  "search_show_all_verses": "Show all %count% verses",
   "search_show_more": "Show more",
   "search_of": "of",
   "search_results_one": "result",

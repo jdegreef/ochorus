@@ -81,7 +81,7 @@
   "search_more_passages": "zaidi katika kitabu hiki",
   "search_show_less": "Onyesha kidogo",
   "search_show_all": "Onyesha zote",
-  "search_verses": "mistari",
+  "search_show_all_verses": "Onyesha mistari yote %count%",
   "search_show_more": "Onyesha zaidi",
   "search_of": "kati ya",
   "search_results_one": "tokeo",
