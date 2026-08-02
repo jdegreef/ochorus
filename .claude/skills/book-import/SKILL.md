@@ -493,6 +493,24 @@ the transcribed chapters against the work's own TOC before choosing it.
      ones". Safe to run over the whole library.
    - `--dry-run` reports what would change. The drawing lives in
      `library/covers.py`, the file/row handling in the command.
+5. **Flagship titles get real artwork** (optional). Add the slug to
+   `library/curated_art.py` and run `python manage.py build_curated_covers
+   <slug>`: it pulls a public-domain image from the Met, crops it, and
+   composites the same house-style type over it, once per language. Two rules
+   that the manifest's docstring explains at length and that are easy to get
+   wrong:
+   - **Landscape, architecture, sky, water, path — no figurative devotional
+     painting.** The Met's religious holdings are overwhelmingly Catholic and
+     medieval; a saint or Madonna sits wrong on a Protestant evangelical
+     classic. The first pass returned Barocci's *Saint Francis* for a Moody
+     revival book.
+   - **Never a portrait standing in for a named person.** A portrait on a
+     cover reads as a portrait OF that person. Susanna Wesley is excluded for
+     exactly this reason, with a test asserting it.
+
+   Licence comes from the Met's `isPublicDomain` flag, re-checked at download
+   rather than trusted from the manifest — so use the Met (or another source
+   with a per-object licence flag), not a general image search.
 
 ## Two kinds of fix
 
