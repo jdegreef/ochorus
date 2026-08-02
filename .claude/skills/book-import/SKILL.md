@@ -482,8 +482,35 @@ the transcribed chapters against the work's own TOC before choosing it.
    `charles-h-spurgeon`) and delete the duplicate, so they group correctly on the
    shelf and share one bio.
 4. **Generate a cover** — CCEL/Gutenberg books have none:
-   `python manage.py generate_covers <slug> ...` writes an on-brand SVG to
-   `frontend/static/covers/<slug>.svg` and sets `cover_url`.
+   `python manage.py generate_covers <slug> ...` writes a house-style SVG and
+   sets `cover_url`. Three things to know:
+   - **Per language.** English writes `covers/<slug>.svg`; every other language
+     writes `covers/<lang>/<slug>.svg`, from THAT row's translated title. Run it
+     again after translating a book, or the new locale keeps rendering the
+     English cover under a translated card title.
+   - **It never overwrites artwork.** A row whose `cover_url` is `.jpg`/`.png`
+     is skipped even under `--force`; `--force` means "redraw the generated
+     ones". Safe to run over the whole library.
+   - `--dry-run` reports what would change. The drawing lives in
+     `library/covers.py`, the file/row handling in the command.
+5. **Flagship titles get real artwork** (optional). Add the slug to
+   `library/curated_art.py` and run `python manage.py build_curated_covers
+   <slug>`: it pulls a public-domain image from the Met, crops it, and
+   composites the same house-style type over it, once per language. Two rules
+   that the manifest's docstring explains at length and that are easy to get
+   wrong:
+   - **Landscape, architecture, sky, water, path — no figurative devotional
+     painting.** The Met's religious holdings are overwhelmingly Catholic and
+     medieval; a saint or Madonna sits wrong on a Protestant evangelical
+     classic. The first pass returned Barocci's *Saint Francis* for a Moody
+     revival book.
+   - **Never a portrait standing in for a named person.** A portrait on a
+     cover reads as a portrait OF that person. Susanna Wesley is excluded for
+     exactly this reason, with a test asserting it.
+
+   Licence comes from the Met's `isPublicDomain` flag, re-checked at download
+   rather than trusted from the manifest — so use the Met (or another source
+   with a per-object licence flag), not a general image search.
 
 ## Two kinds of fix
 

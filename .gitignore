@@ -15,3 +15,7 @@ node_modules/
 # Editor
 *.swp
 frontend/node_modules
+
+# Cached source artwork for build_curated_covers — re-downloadable from the Met,
+# and large. The committed output is frontend/static/covers/*.svg.
+.cache/
