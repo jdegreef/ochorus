@@ -178,3 +178,78 @@ def build_svg(
   <text x="{W / 2:.0f}" y="754" text-anchor="middle" fill="#ffffff" fill-opacity="0.7" font-family="{FONT_DEFAULT}" font-size="19" letter-spacing="6">OCHORUS</text>
 </svg>
 """
+
+
+# ── Curated art covers ─────────────────────────────────────────────────────
+# Same type treatment as the generated plate, over a photograph or painting
+# instead of a gradient. The art layer is language-neutral and the type is
+# drawn on top, so one image serves every locale with its own title.
+#
+# The image is embedded as a data URI because an SVG loaded through <img> runs
+# in secure static mode and cannot fetch an external file — a <image href> to a
+# sibling path renders blank. Costs ~33% over the raw JPEG; at 600x800/q72
+# that lands near the existing designed covers (godliness.jpg is 19 KB,
+# baptism.png 281 KB), so it is not the heavy option on this shelf.
+
+def build_art_svg(
+    title: str,
+    subtitle: str,
+    author: str,
+    jpeg_b64: str,
+    language: str = "en",
+    credit: str = "",
+) -> str:
+    """A cover whose background is real artwork. `jpeg_b64` is a bare base64
+    JPEG (no data: prefix), already cropped to 3:4."""
+    family = font_for(language)
+    dir_attr = ' direction="rtl"' if language in RTL else ""
+    scale = SCRIPT_SCALE.get(language, 1.0)
+
+    size, budget = _title_metrics(title)
+    size = round(size * scale)
+    line_h = size + 10
+    lines = _wrap(title, budget)
+    block_mid = 410
+    top = block_mid - (len(lines) - 1) * line_h / 2
+    tspans = "".join(
+        f'<tspan x="{W / 2:.0f}" y="{top + i * line_h:.0f}">{html.escape(ln)}</tspan>'
+        for i, ln in enumerate(lines)
+    )
+    rule_y = top + (len(lines) - 1) * line_h + 52
+
+    sub = ""
+    if subtitle:
+        sub = "".join(
+            f'<text x="{W / 2:.0f}" y="{rule_y + 42 + i * 30:.0f}" text-anchor="middle" '
+            f'fill="#ffffff" fill-opacity="0.86" font-family="{family}" font-style="italic" '
+            f'font-size="24"{dir_attr}>{html.escape(ln)}</text>'
+            for i, ln in enumerate(_wrap(subtitle, 34)[:2])
+        )
+
+    desc = f"<desc>{html.escape(credit)}</desc>" if credit else ""
+
+    # Two scrims, not one flat wash: a global darkener so white type holds
+    # anywhere, plus top/bottom gradients under the author line and the mark,
+    # which is where the art is most likely to be pale.
+    return f"""<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{html.escape(title)}">
+  {desc}
+  <defs>
+    <linearGradient id="scrim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#000000" stop-opacity="0.62"/>
+      <stop offset="0.30" stop-color="#000000" stop-opacity="0.34"/>
+      <stop offset="0.70" stop-color="#000000" stop-opacity="0.40"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.70"/>
+    </linearGradient>
+  </defs>
+  <image href="data:image/jpeg;base64,{jpeg_b64}" x="0" y="0" width="{W}" height="{H}" preserveAspectRatio="xMidYMid slice"/>
+  <rect width="{W}" height="{H}" fill="#1a1410" fill-opacity="0.26"/>
+  <rect width="{W}" height="{H}" fill="url(#scrim)"/>
+  <rect x="26" y="26" width="{W - 52}" height="{H - 52}" fill="none" stroke="#ffffff" stroke-opacity="0.30" stroke-width="1.5"/>
+  <text x="{W / 2:.0f}" y="112" text-anchor="middle" fill="#ffffff" fill-opacity="0.92" font-family="{family}" font-size="{round(23 * scale)}" letter-spacing="4"{dir_attr}>{html.escape(author.upper())}</text>
+  <text text-anchor="middle" fill="#ffffff" font-family="{family}" font-weight="600" font-size="{size}"{dir_attr}>{tspans}</text>
+  <line x1="{W / 2 - 38:.0f}" y1="{rule_y:.0f}" x2="{W / 2 + 38:.0f}" y2="{rule_y:.0f}" stroke="#ffffff" stroke-opacity="0.7" stroke-width="1.5"/>
+  {sub}
+{_MARK}
+  <text x="{W / 2:.0f}" y="754" text-anchor="middle" fill="#ffffff" fill-opacity="0.78" font-family="{FONT_DEFAULT}" font-size="19" letter-spacing="6">OCHORUS</text>
+</svg>
+"""

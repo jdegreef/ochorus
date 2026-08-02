@@ -5504,3 +5504,36 @@ class GeneratedCoverTests(TestCase):
         short = _title_metrics("Confessions")[0]
         long = _title_metrics("The Life and Diary of David Brainerd")[0]
         self.assertGreater(short, long)
+
+
+class CuratedArtTests(TestCase):
+    """Guards on the curated-artwork manifest (library/curated_art.py)."""
+
+    def test_susanna_wesley_has_no_artwork_on_purpose(self):
+        """Every candidate portrait was of a DIFFERENT real woman, and a
+        portrait on a cover reads as a portrait OF that person. Adding one
+        would imply an image is Susanna Wesley when it isn't. If someone adds
+        her here later, this should make them argue for it first."""
+        from library.curated_art import CURATED
+
+        self.assertNotIn("susanna-wesley-clarke", CURATED)
+
+    def test_every_entry_records_its_provenance_and_reason(self):
+        from library.curated_art import CURATED
+
+        for slug, art in CURATED.items():
+            with self.subTest(slug=slug):
+                self.assertGreater(art.met_id, 0, "needs a Met object id as the licence receipt")
+                self.assertTrue(art.artist.strip())
+                self.assertTrue(art.title.strip())
+                # `why` is not decoration: it's what stops the next person
+                # swapping in a prettier painting that means nothing.
+                self.assertTrue(art.why.strip())
+
+    def test_credit_names_the_artist_and_the_source(self):
+        from library.curated_art import credit
+
+        c = credit("confessions")
+        self.assertIn("Géricault", c)
+        self.assertIn("Metropolitan Museum", c)
+        self.assertIsNone(credit("a-book-with-no-curated-art"))
