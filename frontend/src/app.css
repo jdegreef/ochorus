@@ -884,12 +884,15 @@ nav.appnav .navtoggle:hover {
 .sermon-row:hover .sermon-row-title {
 	color: color-mix(in srgb, var(--row-hue) 70%, var(--text));
 }
-/* The brief. Held to a comfortable measure — the page column runs to 76rem and
-   prose set that wide is unreadable — but not so tight that it strands the row.
-   78ch lands a 300–400 character brief on three or four lines and keeps the
-   text block wide enough that the row doesn't read as half-empty. */
+/* The brief runs the full width of the row.
+
+   It was capped at a typographic measure first, which left a third of every row
+   empty on a wide screen and made the rows taller than they needed to be. Full
+   width spreads the same text over fewer lines, so the shelf is shorter and the
+   box is actually used. Long lines are the trade, and they are bounded in
+   practice: the brief is 300–400 characters, and the page-width stepper lets a
+   reader narrow the column if they want a tighter measure. */
 .sermon-row-brief {
-	max-width: 78ch;
 	color: var(--muted);
 }
 @media (prefers-reduced-motion: reduce) {
