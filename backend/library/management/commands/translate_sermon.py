@@ -25,6 +25,7 @@ from library.models import Book, Sermon
 from library.translation import (
     translate_scripture_ref,
     translate_sermon,
+    translate_summary,
     verify_bible_code,
     verify_glossary,
 )
@@ -81,6 +82,10 @@ class Command(BaseCommand):
             client, language, source.title, source.body_html, source.scripture_ref, effort=effort
         )
         ref = translate_scripture_ref(client, language, source.scripture_ref)
+        # The shelf prints the "In brief" under every sermon. Leaving it behind
+        # gave the translated shelves bare titles while the English one read
+        # properly — 38 rows across es/lg/sw/pt/ar/uk before this was fixed.
+        summary = translate_summary(client, language, source.summary)
 
         Sermon.objects.update_or_create(
             slug=slug,
@@ -89,6 +94,7 @@ class Command(BaseCommand):
                 "author": source.author,
                 "title": title[:300] or source.title,
                 "scripture_ref": ref[:160],
+                "summary": summary,
                 "preached_on": source.preached_on,
                 "body_html": body_html,
                 "word_count": len(re.sub(r"<[^>]+>", " ", body_html).split()),

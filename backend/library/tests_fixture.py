@@ -559,3 +559,125 @@ class CoverAssetTests(SimpleTestCase):
             and not (self.STATIC_DIR / "covers" / f"{f['slug']}.png").is_file()
         )
         self.assertEqual(missing, [], "generated SVG cover without its .png twin")
+
+
+class SermonBriefCoverageTests(SimpleTestCase):
+    """Every sermon on the shelf should carry its "In brief".
+
+    The sermons shelf lists one sermon per line and prints the brief under each
+    (STYLE_GUIDE §5, `.sermon-row`), so a sermon with an empty ``summary``
+    renders as a bare title — finished-looking, but useless for deciding whether
+    to read or listen, which is the job that page exists to do.
+
+    Two ways the gap opens, and this guard closes both:
+
+    * a NEW English sermon shipped without a brief;
+    * a TRANSLATION that drops the brief its English source has. This was a real
+      defect, not carelessness — ``translate_sermon`` built the translated row
+      without a ``summary`` field at all, so every AI translation silently got
+      "" and es/lg/sw ended up with none across the board.
+
+    The allow-lists below are the debt that already existed when the guard was
+    added; they are exact, so a new sermon cannot join them by accident — only
+    by deliberately editing this file. **They should only ever shrink.**
+    """
+
+    # 12 English sermons imported before briefs were written for the shelf.
+    EN_WITHOUT_BRIEF = {
+        "christ-precious-to-believers",
+        "christs-boundless-compassion",
+        "come-thou-into-the-ark",
+        "comfort-for-the-desponding",
+        "compel-them-to-come-in",
+        "consolation-in-the-furnace",
+        "rest",
+        "sweet-comfort-for-feeble-saints",
+        "the-dying-thief",
+        "the-new-birth",
+        "the-sweet-uses-of-adversity",
+        "the-way-of-salvation",
+    }
+
+    # 38 rows translated while translate_sermon was dropping the summary.
+    # Re-running `translate_sermon <slug> --language <lang> --force` now fills
+    # these in; each line removed here is one shelf that reads properly.
+    TRANSLATIONS_WITHOUT_BRIEF = {
+        "christ-all-in-all.es", "christ-all-in-all.lg", "christ-all-in-all.pt",
+        "christ-all-in-all.uk", "christ-crucified.es", "eight-i-wills-of-christ.es",
+        "eight-i-wills-of-christ.lg", "eight-i-wills-of-christ.pt",
+        "eight-i-wills-of-christ.sw", "free-grace.es", "free-grace.lg", "himself.es",
+        "himself.lg", "himself.sw", "order-and-argument-in-prayer.es",
+        "order-and-argument-in-prayer.lg", "pauls-first-prayer.es",
+        "pauls-first-prayer.pt", "the-golden-key-of-prayer.es",
+        "the-golden-key-of-prayer.lg", "the-immutability-of-god.es",
+        "the-immutability-of-god.lg", "the-immutability-of-god.sw",
+        "the-joy-of-the-lord.es", "the-joy-of-the-lord.lg",
+        "the-possibilities-of-faith.es", "the-possibilities-of-faith.lg",
+        "the-power-of-stillness.es", "the-power-of-stillness.lg",
+        "the-power-of-stillness.pt", "the-power-of-stillness.sw",
+        "the-ravens-cry.es", "the-ravens-cry.pt", "unfailing-springs.ar",
+        "unfailing-springs.es", "unfailing-springs.lg", "unfailing-springs.pt",
+        "unfailing-springs.sw",
+    }
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.sermons = [
+            r["fields"] for r in all_rows() if r["model"] == "library.sermon"
+        ]
+        cls.brief = {
+            (f["slug"], f.get("language", "en")): bool((f.get("summary") or "").strip())
+            for f in cls.sermons
+        }
+
+    def test_english_sermons_have_a_brief(self):
+        missing = sorted(
+            slug
+            for (slug, lang), has in self.brief.items()
+            if lang == "en" and not has and slug not in self.EN_WITHOUT_BRIEF
+        )
+        self.assertEqual(
+            missing, [],
+            "English sermon with no 'summary' — the shelf will show a bare title. "
+            "Write the brief (300-410 chars, one paragraph, in the voice of the "
+            "existing ones) into the sermon's fixture file.",
+        )
+
+    def test_translations_keep_the_brief(self):
+        missing = sorted(
+            f"{slug}.{lang}"
+            for (slug, lang), has in self.brief.items()
+            if lang != "en"
+            and not has
+            and self.brief.get((slug, "en"))  # nothing to carry over if EN has none
+            and f"{slug}.{lang}" not in self.TRANSLATIONS_WITHOUT_BRIEF
+        )
+        self.assertEqual(
+            missing, [],
+            "translated sermon dropped the brief its English source has. "
+            "translate_sermon translates 'summary' — re-run it with --force, or "
+            "write the brief by hand if the row was made another way.",
+        )
+
+    def test_allow_lists_have_no_stale_entries(self):
+        """A brief that has since been written must leave the list.
+
+        Without this the lists would quietly stop shrinking: an entry whose gap
+        was filled would sit there forever, still licensing a future regression
+        on that exact slug.
+        """
+        stale_en = sorted(
+            s for s in self.EN_WITHOUT_BRIEF if self.brief.get((s, "en"))
+        )
+        self.assertEqual(
+            stale_en, [], "EN_WITHOUT_BRIEF lists a sermon that now HAS a brief — remove it"
+        )
+        stale_tr = sorted(
+            k for k in self.TRANSLATIONS_WITHOUT_BRIEF
+            if self.brief.get((k.rsplit(".", 1)[0], k.rsplit(".", 1)[1]))
+        )
+        self.assertEqual(
+            stale_tr, [],
+            "TRANSLATIONS_WITHOUT_BRIEF lists a row that now HAS a brief — remove it",
+        )

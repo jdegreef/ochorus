@@ -383,6 +383,49 @@ def translate_sermon(
     )
 
 
+SUMMARY_SCHEMA = {
+    "type": "object",
+    "properties": {"summary": {"type": "string"}},
+    "required": ["summary"],
+    "additionalProperties": False,
+}
+
+
+def translate_summary(client, language: str, summary: str) -> str:
+    """Translate a sermon's "In brief" TL;DR. "" in → "" out.
+
+    The shelf shows the brief under every sermon, so a translated sermon that
+    keeps an empty summary renders as a bare title in that language while the
+    English shelf reads properly. It is a separate call rather than part of the
+    body translation because it is ~350 characters of editorial prose *about*
+    the sermon, not a passage of it — folding it into the body would invite the
+    model to blend the two.
+    """
+    if not summary.strip():
+        return ""
+    response = client.messages.create(
+        model=MODEL,
+        max_tokens=1000,
+        thinking={"type": "adaptive"},
+        system=system_prompt(language),
+        messages=[
+            {
+                "role": "user",
+                "content": (
+                    "Translate this short editorial summary of a sermon. Keep it one "
+                    "paragraph and close to the source length; it is displayed in a "
+                    "fixed slot on a list page. Preserve the quoted scripture wording "
+                    "as scripture. Return JSON with a single key 'summary'.\n\n"
+                    f"{summary}"
+                ),
+            }
+        ],
+        output_config={"format": {"type": "json_schema", "schema": SUMMARY_SCHEMA}},
+    )
+    text = next(b.text for b in response.content if b.type == "text")
+    return json.loads(text)["summary"]
+
+
 SCRIPTURE_REF_SCHEMA = {
     "type": "object",
     "properties": {"reference": {"type": "string"}},
