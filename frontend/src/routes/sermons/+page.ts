@@ -78,6 +78,15 @@ import type { PageLoad } from './$types';
  * /uk/sermons/<slug> re-crawl and bake the translated titles. Note uk seeds as
  * status=draft, so these only matter once the language is launched from the
  * admin.
+ *
+ * Prerender refresh 2026-08-02 (PR #741): six sermons gained an "In brief" —
+ * Spurgeon's Order and Argument in Prayer, The Ravens' Cry and Paul's First
+ * Prayer, Moody's Christ All in All and Eight "I Wills" of Christ, and Hudson
+ * Taylor's Unfailing Springs. #741 was backend-only (fixture rows plus the
+ * translate_sermon fix), so Render SKIPPED the web build and the shelf kept
+ * serving the old eight briefs while the api served fourteen — the brief is
+ * baked into this prerendered page, so it needs a build that touches
+ * `frontend/`. That is the whole job of this comment.
  */
 export const load: PageLoad = async () => {
 	// Tolerate a lagging/absent sermon endpoint at prerender time (see the
