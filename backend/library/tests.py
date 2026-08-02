@@ -5439,3 +5439,68 @@ class SearchClickTests(TestCase):
         self.assertEqual(
             list(SearchClickLog.objects.values_list("query", flat=True)), ["humility"]
         )
+
+
+class GeneratedCoverTests(TestCase):
+    """The two invariants of the cover generator.
+
+    Both of these were real defects, not hypotheticals: covers were written to
+    one path per SLUG while the loop ran over every language row, so the last
+    language processed overwrote the rest and every locale served the same
+    (English) cover under a translated title.
+    """
+
+    def setUp(self):
+        self.author = Author.objects.create(slug="am", name="Andrew Murray")
+
+    def _book(self, language, title, cover_url=""):
+        return Book.objects.create(
+            slug="waiting-on-god",
+            language=language,
+            title=title,
+            author=self.author,
+            cover_url=cover_url,
+            cover_color="#2f6f6b",
+        )
+
+    def test_each_language_gets_its_own_cover_path(self):
+        from library.management.commands.generate_covers import cover_path
+
+        # English keeps the historic path so the covers already live don't 404.
+        self.assertEqual(cover_path("waiting-on-god", "en")[0], "/covers/waiting-on-god.svg")
+        self.assertEqual(cover_path("waiting-on-god", "es")[0], "/covers/es/waiting-on-god.svg")
+        self.assertEqual(cover_path("waiting-on-god", "ar")[0], "/covers/ar/waiting-on-god.svg")
+
+    def test_artwork_is_never_overwritten_even_with_force(self):
+        """--force means "redraw the generated ones", never "replace the art"."""
+        from library.management.commands.generate_covers import is_generated
+
+        self.assertFalse(is_generated("/covers/godliness.jpg"))
+        self.assertFalse(is_generated("/covers/baptism.png"))
+        self.assertTrue(is_generated("/covers/all-of-grace.svg"))
+        self.assertTrue(is_generated(""))
+
+    def test_cover_renders_the_rows_own_title(self):
+        """The Spanish row's cover must say the Spanish title, not the English."""
+        from library.covers import build_svg
+
+        es = build_svg("La oración que prevalece", "", "Dwight L. Moody", "#8a4b1f", "es")
+        self.assertIn("prevalece", es)
+        self.assertNotIn("Prevailing", es)
+
+    def test_rtl_and_script_font_are_declared_for_arabic(self):
+        from library.covers import build_svg, font_for
+
+        svg = build_svg("الغرفة الداخلية", "", "أندرو موراي", "#4a3b6b", "ar")
+        self.assertIn('direction="rtl"', svg)
+        self.assertIn("Amiri", svg)
+        # Latin must NOT get the RTL attribute.
+        self.assertNotIn('direction="rtl"', build_svg("Waiting on God", "", "A M", "#111", "en"))
+        self.assertNotEqual(font_for("ar"), font_for("en"))
+
+    def test_long_titles_step_down_rather_than_overflow(self):
+        from library.covers import _title_metrics
+
+        short = _title_metrics("Confessions")[0]
+        long = _title_metrics("The Life and Diary of David Brainerd")[0]
+        self.assertGreater(short, long)
