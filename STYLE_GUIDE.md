@@ -141,6 +141,18 @@ with `text-[1.02rem]`-style arbitrary values** — pick the nearest step.
   chrome, reading measure is typography.
 - **Focus mode:** the reader's immersive toggle (`readerUi`) collapses the global
   header/footer and reader chrome to just the text, for a calm flow.
+- **Direction-aware by default — Arabic is a shipped locale.** Reach for the
+  **logical** property, never the physical one: `padding-inline-start` not
+  `padding-left`, `border-inline-start` not `border-left`, `inset-inline-start`
+  not `left`, `margin-inline-start: auto` not `margin-left: auto`, and Tailwind's
+  `ms-*`/`me-*`/`ps-*`/`pe-*` rather than `ml-*`/`mr-*`/`pl-*`/`pr-*`.
+
+  A physical property doesn't *break* under `dir="rtl"` — it quietly puts the
+  thing on the wrong side, which is why these survive review. The topic page's
+  scripture epigraph carried its accent bar on `border-left` and so drew it on
+  the far side of the Arabic text instead of the reading edge; the sermon row's
+  era rail uses `inset-inline-start` and mirrors correctly. Check any new
+  decorative edge, icon gap or auto-margin at `/ar/…` before shipping.
 
 ---
 
