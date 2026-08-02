@@ -176,6 +176,11 @@ class SermonListSerializer(serializers.ModelSerializer):
             "scripture_ref",
             "scripture_book",
             "scripture_book_order",
+            # The "In brief" TL;DR. The shelf lists one sermon per line and
+            # shows it there, so a reader decides whether to read or listen
+            # without opening the sermon first. Blank on sermons whose brief
+            # hasn't been written yet — the row renders without it.
+            "summary",
             "preached_on",
             "word_count",
             "author",

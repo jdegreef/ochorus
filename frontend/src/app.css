@@ -780,10 +780,8 @@ nav.appnav .navtoggle:hover {
 /* The fan of covers in the band. Overlapped and slightly rotated so a shelf
    reads as books rather than thumbnails. `margin-inline-start:auto` pushes it
    to the far end; under RTL that is the left, which is correct. */
-/* The band's far end. Whatever follows the badge — a fan of covers, or whatever
-   a caller's `bandAside` renders — is pushed there by the BAND, so the slot's
-   contract holds without each occupant re-deriving the geometry (and a second
-   `bandAside` caller doesn't have to know a magic class to be positioned). */
+/* The band's far end. The band does the pushing, so an occupant only styles
+   itself. */
 .shelf-card-band > :not(.shelf-card-badge) {
 	margin-inline-start: auto;
 	padding-inline-start: 0.5rem;
@@ -824,21 +822,75 @@ nav.appnav .navtoggle:hover {
 	object-fit: cover;
 }
 
-/* Text in the band's far end (see .shelf-card-band > :not(.shelf-card-badge)
-   above for the placement) — the sermon shelf's scripture reference. A sermon
-   has no cover art, so the text it expounds is its face, and it is the one
-   thing that differs card to card.
+/* A sermon on the shelf — one per line, under its preacher.
 
-   Typography only; the tint is a shallow color-mix because this is prose and
-   has to clear AA on the band in both themes (STYLE_GUIDE §5). */
-.shelf-card-ref {
-	text-align: end;
-	font-family: var(--font-display);
-	font-size: var(--fs-body);
+   Not a card in a grid: a sermon's "In brief" is 300–400 characters, and a
+   tile that holds it is mostly text with a title on top. One per line gives
+   that prose the full measure to breathe, and lets a reader scan title →
+   passage → brief down a single column and decide whether to read or listen
+   without opening anything. Row height varies with the brief, which costs
+   nothing here — rows stack, so there is no bottom edge to level.
+
+   `--row-hue` is the writer's era (same source as .shelf-card), used only
+   through color-mix so it stays a tint and never becomes text colour. */
+.sermon-row {
+	position: relative;
+	display: block;
+	padding: 1.1rem 1.25rem 1.15rem 1.5rem;
+	border: 1px solid var(--border);
+	border-radius: var(--radius-card, 12px);
+	background: var(--surface);
+	transition:
+		border-color 0.15s,
+		background 0.15s;
+}
+/* The era rail down the leading edge. Inside the border radius, so it reads as
+   part of the row rather than a stripe stuck to it. */
+.sermon-row::before {
+	content: '';
+	position: absolute;
+	inset-block: -1px;
+	inset-inline-start: -1px;
+	width: 3px;
+	border-start-start-radius: var(--radius-card, 12px);
+	border-end-start-radius: var(--radius-card, 12px);
+	background: color-mix(in srgb, var(--row-hue) 55%, transparent);
+	transition: background 0.15s;
+}
+.sermon-row:hover {
+	border-color: color-mix(in srgb, var(--row-hue) 45%, var(--border));
+	background: color-mix(in srgb, var(--row-hue) 4%, var(--surface));
+	text-decoration: none;
+}
+.sermon-row:hover::before {
+	background: var(--row-hue);
+}
+/* The passage the sermon expounds — an eyebrow, in the era tint. */
+.sermon-row-ref {
+	font-size: var(--fs-eyebrow);
 	font-weight: 600;
-	line-height: 1.25;
-	text-wrap: balance;
-	color: color-mix(in srgb, var(--shelf-hue) 35%, var(--text));
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: color-mix(in srgb, var(--row-hue) 42%, var(--text));
+}
+.sermon-row-title {
+	font-family: var(--font-display);
+	font-size: var(--fs-h3);
+	font-weight: 600;
+	line-height: 1.3;
+	color: var(--text);
+	transition: color 0.15s;
+}
+.sermon-row:hover .sermon-row-title {
+	color: color-mix(in srgb, var(--row-hue) 70%, var(--text));
+}
+/* The brief. Held to a comfortable measure — the page column runs to 76rem and
+   prose set that wide is unreadable — but not so tight that it strands the row.
+   78ch lands a 300–400 character brief on three or four lines and keeps the
+   text block wide enough that the row doesn't read as half-empty. */
+.sermon-row-brief {
+	max-width: 78ch;
+	color: var(--muted);
 }
 @media (prefers-reduced-motion: reduce) {
 	.shelf-card,

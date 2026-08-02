@@ -221,6 +221,8 @@ export interface SermonSummary {
 	scripture_ref: string;
 	scripture_book: string | null;
 	scripture_book_order: number | null;
+	/** "In brief" TL;DR (plain text); "" when none has been written yet. */
+	summary: string;
 	preached_on: string | null;
 	word_count: number;
 	author: Author;
@@ -246,8 +248,6 @@ export interface Sermon extends SermonSummary {
 	next: SermonNeighbour | null;
 	/** Distinct passages the sermon engages (its text + body citations). */
 	scripture_refs: string[];
-	/** "In brief" TL;DR (plain text); "" when none has been written yet. */
-	summary: string;
 	difficulty: Difficulty;
 	/** Topical shelves this sermon belongs to (localized), for cross-links. */
 	topics: TopicChip[];
