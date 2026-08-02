@@ -11,7 +11,6 @@
 	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
 	import CatalogLanguageNudge from '$lib/components/CatalogLanguageNudge.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
-	import ShelfCard from '$lib/components/ShelfCard.svelte';
 	import { hueForBirthYear } from '$lib/eras';
 
 	const t = i18n.t;
@@ -62,9 +61,8 @@
 	const filtering = $derived(queryText.trim() !== '' || bibleBook !== '');
 
 	// --- Arrangement (persisted per device, mirroring the Books shelf) ----------
-	// One card per sermon means the grid can be arranged rather than only
-	// grouped: "By preacher" keeps the author sections the shelf was built
-	// around, "All sermons" drops them for one continuous grid.
+	// "By preacher" keeps the author sections the shelf was built around; "All
+	// sermons" drops them for one continuous list.
 	type Group = 'preacher' | 'all';
 	type Sort = 'shelf' | 'scripture' | 'title' | 'shortest';
 	const PREFS_KEY = 'ochorus:sermons-view';
@@ -99,7 +97,7 @@
 		}
 	});
 
-	// Sermons by author, in the order `sorted` produced. null = one flat grid.
+	// Sermons by author, in the order `sorted` produced. null = one flat list.
 	const groups = $derived.by(() => {
 		if (group === 'all') return null;
 		const map = new Map<
@@ -115,7 +113,7 @@
 		return [...map.values()];
 	});
 
-	// A card states its writer only when no heading above it does.
+	// A row states its writer only when no heading above it does.
 	const showAuthor = $derived(groups === null);
 </script>
 
@@ -209,46 +207,53 @@
 		</p>
 	{/if}
 
-	<!-- One sermon, one card — so the standard levelling rule applies and the grid
-	     stops ending ragged. Why not one card per writer holding that writer's
-	     sermons as a list (what this shelf did before): STYLE_GUIDE §5, "Equal
-	     heights — one item per card, or bound the variance". -->
-	{#snippet sermonTile(sermon: SermonSummary)}
+	<!-- One sermon per line: title, the passage it expounds, the "In brief", and
+	     how long it runs — enough to decide whether to read or listen without
+	     opening it. A tile can't carry a 300–400 character brief without becoming
+	     mostly text, and prose set across a 76rem page is unreadable, so the row
+	     gives the brief a real measure and the meta a column of its own. -->
+	{#snippet sermonRow(sermon: SermonSummary)}
 		{@const year = preachedYear(sermon.preached_on)}
-		<!-- `portrait` answers "whose sermon?" only when nothing else does: under a
-		     preacher heading it would be the same face thirteen times over, so the
-		     badge falls back to the mic and the heading carries the writer. The era
-		     hue stays either way, so one writer's sermons still read as a set. -->
-		<ShelfCard
+		<a
+			class="sermon-row group"
+			style="--row-hue: {hueForBirthYear(sermon.author.birth_year)}"
 			href={localizeHref(`/sermons/${sermon.slug}`)}
-			hue={hueForBirthYear(sermon.author.birth_year)}
-			icon="mic"
-			portrait={showAuthor ? sermon.author.photo_url : ''}
-			title={sermon.title}
 		>
-			{#snippet bandAside()}
-				{#if sermon.scripture_ref}
-					<span class="shelf-card-ref">{sermon.scripture_ref}</span>
-				{/if}
-			{/snippet}
-			<!-- All the meta on one muted line at the foot, rather than hanging the
-			     reading time beside the title the way Topics and Plans do: those
-			     titles are two or three words, sermon titles run to forty characters
-			     and a shrink-0 aside squeezed them into three lines on a phone.
-			     mt-auto puts the line on the card's floor whether the title runs to
-			     one line or three, so a row of cards agrees on its baseline. -->
-			<p class="mt-auto pt-3 text-small text-muted">
-				{#if showAuthor}{sermon.author.name}<span class="opacity-50"> · </span>{/if}
-				{readingTime(sermon.word_count)}
-				{#if year}<span class="opacity-50"> · </span>{year}{/if}
-			</p>
-		</ShelfCard>
+			<div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-0.5">
+				<!-- Eyebrow above the title, as everywhere else in the system: whose
+				     sermon (only when no heading above says so) and the passage. -->
+				<p class="sermon-row-ref min-w-0">
+					{#if showAuthor}{sermon.author.name}<span class="opacity-40"> · </span>{/if}
+					{sermon.scripture_ref}
+				</p>
+				<!-- How long it runs is half the decision this page exists to serve, so
+				     it holds the far end of the same line rather than trailing the
+				     brief, and stays on that line down to 375px. -->
+				<p class="shrink-0 text-small text-muted">
+					{readingTime(sermon.word_count)}
+					{#if year}<span class="opacity-50"> · </span>{year}{/if}
+				</p>
+			</div>
+			<h3 class="sermon-row-title mt-1">{sermon.title}</h3>
+			<!-- Not every sermon has a brief written yet, so the row has to read as
+			     finished without one — hence the brief hanging below a complete
+			     title/passage/length line rather than sitting between them. -->
+			{#if sermon.summary}
+				<!-- Clamped on a phone only: a 400-character brief runs to eleven lines
+				     at 375px, and twenty-six of those is a very long shelf. The full
+				     text is one tap away, and it fits in three or four lines from sm up
+				     where the measure is wider. Same rule AuthorBioCard uses. -->
+				<p class="sermon-row-brief mt-2.5 line-clamp-5 text-body sm:line-clamp-none">
+					{sermon.summary}
+				</p>
+			{/if}
+		</a>
 	{/snippet}
 
-	{#snippet sermonGrid(items: SermonSummary[])}
-		<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
+	{#snippet sermonList(items: SermonSummary[])}
+		<div class="flex flex-col gap-3">
 			{#each items as sermon (sermon.slug)}
-				{@render sermonTile(sermon)}
+				{@render sermonRow(sermon)}
 			{/each}
 		</div>
 	{/snippet}
@@ -258,8 +263,9 @@
 			{filtering ? t('sermons.noMatches') : t('sermons.empty')}
 		</p>
 	{:else if groups}
-		<!-- Jump to a writer — the shelf runs to ~90 sermons, so the sections need
-		     a way in that isn't scrolling. Same rail the Books shelf uses. -->
+		<!-- Jump to a writer — with a brief under every sermon the sections are
+		     long, so they need a way in that isn't scrolling. Same rail the Books
+		     shelf uses. -->
 		{#if groups.length > 1}
 			<nav class="mb-8 flex flex-wrap gap-1.5" aria-label={t('sermons.groupPreacher')}>
 				{#each groups as g (g.slug)}
@@ -283,10 +289,10 @@
 					<a href={localizeHref(`/authors/${g.slug}`)} class="!text-text hover:underline">{g.name}</a>
 					<span class="text-small font-normal opacity-60">{g.items.length}</span>
 				</h2>
-				{@render sermonGrid(g.items)}
+				{@render sermonList(g.items)}
 			</section>
 		{/each}
 	{:else}
-		{@render sermonGrid(sorted)}
+		{@render sermonList(sorted)}
 	{/if}
 </div>

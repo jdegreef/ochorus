@@ -191,27 +191,32 @@ The `<h1>` is **`.text-h1`**. `.text-display` is the **home hero only**.
 Two families, both `--surface` fill, `--border`, `--radius-card` (12px).
 
 **Shelf card** (`<ShelfCard>` / `.shelf-card`) — the colour-washed card used by
-Topics, Plans and Sermons: a tinted band carrying an icon chip (or a portrait)
-and a fan of covers, over a typographic body. Each card sets `--shelf-hue`, used
-**only through `color-mix()`** for tints and the icon, never as body text, so
-contrast holds in both themes. Hues come from:
+Topics and Plans: a tinted band carrying an icon chip (or a portrait) and a fan
+of covers, over a typographic body. Each card sets `--shelf-hue`, used **only
+through `color-mix()`** for tints and the icon, never as body text, so contrast
+holds in both themes. Hues come from:
 
 | Surface | Hue source |
 |---|---|
 | Topics | `topicMeta(slug).accent` — curated per topic |
 | Plans | `accentForSlug(slug)` — stable pick from the same palette |
-| Sermons | `hueForBirthYear(author.birth_year)` — the writer's era |
 
-The far end of the band takes a **fan of covers** (`covers`) or — for a surface
-with no cover art — whatever the `bandAside` snippet renders; covers win if both
-are passed. The band itself does the positioning, so an occupant only styles
-itself. Sermons hang their scripture reference there via **`.shelf-card-ref`**,
-the one thing that differs card to card; its tint is a shallow `color-mix` (35%
-hue into `--text`, not the 82% the icon chip uses) because it is prose and has to
-clear AA on the band in both themes.
+The band's far end takes a **fan of covers** (`covers`); the band does the
+positioning, so an occupant only styles itself.
 
 **Book card** (`.book-card`) — the cover is the visual, so the chrome stays
 quiet: hairline, surface fill, no colour wash.
+
+**Sermon row** (`.sermon-row`) — the sermons shelf is a **list, not a grid**:
+one sermon per line, under its preacher, carrying the title, the passage it
+expounds, the "In brief" and how long it runs. That is a deliberate exception to
+the card families above, and the reason is the brief: it runs 300–400 characters,
+a tile holding it is mostly body text with a title on top, and prose set across
+the full page column is unreadable. A row gives the brief a real measure
+(`max-width: 78ch`), gives the reading time its own column, and lets a reader
+scan straight down one axis to decide whether to read or listen. Row heights vary
+freely — rows stack, so there is no bottom edge to level. `--row-hue` is the
+writer's era (same source as a shelf card), used only through `color-mix()`.
 
 > ⚠️ **A Tailwind utility cannot override one of these classes.** The component
 > classes in `app.css` are **unlayered**; Tailwind's utilities live in
@@ -222,9 +227,10 @@ quiet: hairline, surface fill, no colour wash.
 > on `class="book-card flex-row !p-4"` the padding applies and the direction
 > doesn't, and the element looks half-styled rather than obviously broken.
 >
-> Add a modifier next to the base class instead (`.book-card--row`,
-> `.shelf-card--static`). Reach for a utility only for properties the component
-> class doesn't set.
+> Add a modifier next to the base class instead (`.book-card--row`). Reach for a
+> utility only for properties the component class doesn't set — which is why
+> `.sermon-row-brief` can take `line-clamp-5` (it sets no clamp of its own) but
+> would ignore a `max-w-*` utility.
 
 **Equal heights — one item per card, or bound the variance.** A card grid must
 never set `items-start`; let `.shelf-card`/`.book-card`'s `height:100%` plus an
@@ -234,9 +240,9 @@ stretch by default, so the grids that omit it are fine as they are.)
 That levelling only helps if no one card can tower over its row, so a card does
 one of two things:
 
-1. **Holds one item** — one topic, one plan, one book, one sermon. Text still
-   varies, but by a line or two, and the `mt-auto` footer absorbs it. Clamp long
-   descriptions with `.shelf-card-desc`.
+1. **Holds one item** — one topic, one plan, one book. Text still varies, but by
+   a line or two, and the `mt-auto` footer absorbs it. Clamp long descriptions
+   with `.shelf-card-desc`.
 2. **Bounds every variable dimension inside it** — what `AuthorBioCard` does: the
    bio is `line-clamp`ed, the cover rail is capped at five with a "+N" tile, and
    `BookCover` holds a fixed 3:4 box, so a writer with seven books is the same
@@ -248,8 +254,13 @@ uneven as the corpus (1 sermon against 13, so a 168px card sat beside a 1073px
 one). Neither way out was good: levelling them left ~700px of dead space under
 the short ones, and sizing to content left the grid ragged along the bottom. If
 a card wants an unbounded list, that list is a **section of the page**, not a
-card — give it a heading and a grid of one-item cards beneath, the way Sermons
-and the grouped Books shelf do.
+card — give it a heading and one-item cards beneath, the way the grouped Books
+shelf and the sermon shelf's preacher sections do.
+
+**And if the item's own content is long-form, don't reach for a card at all** —
+`.sermon-row` is the worked example. A grid buys you scannable equal-height
+tiles; it costs you measure. When the thing worth showing is a paragraph, the
+list wins.
 
 ### Filter controls
 
