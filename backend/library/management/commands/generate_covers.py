@@ -21,10 +21,17 @@ This is the fix for a real bug: the previous version looped over every Book row
 processed won and every locale showed the same language. Regenerating now gives
 each row a cover in its own language.
 
-NEVER OVERWRITES ARTWORK. A row whose cover_url is a raster (.jpg/.png) is left
-alone even under --force: those are designed covers, on-brand or inherited, and
-they are the one thing this command must not clobber. --force means "redraw the
-generated ones", not "replace the art".
+NEVER OVERWRITES ARTWORK, of either kind:
+
+  * a raster cover_url (.jpg/.png) — the designed covers, on-brand or inherited;
+  * a slug in the CURATED manifest — the composited public-domain artwork.
+
+The second guard exists because curated covers are ALSO .svg, so the raster
+check alone doesn't catch them: a `--force` run happily redrew all ten as plain
+typographic plates. On Render that was harmless (throwaway container, unchanged
+cover_url), but the same command on a developer's machine overwrites the
+committed artwork and the loss can be committed without anyone noticing.
+--force means "redraw the generated ones", never "replace the art".
 """
 
 from __future__ import annotations
@@ -33,6 +40,7 @@ from django.conf import settings
 from django.core.management.base import BaseCommand
 
 from library.covers import build_svg
+from library.curated_art import CURATED
 from library.models import Book
 
 COVERS_DIR = settings.BASE_DIR.parent / "frontend" / "static" / "covers"
@@ -75,10 +83,15 @@ class Command(BaseCommand):
         if opts["language"]:
             qs = qs.filter(language=opts["language"])
 
-        wrote = skipped_art = skipped_have = 0
+        wrote = skipped_art = skipped_have = skipped_curated = 0
         for book in qs:
             if book.cover_url and not is_generated(book.cover_url):
                 skipped_art += 1
+                continue
+            # Curated covers are .svg too, so is_generated() can't tell them
+            # apart. Rebuild those with `build_curated_covers`, not this.
+            if book.slug in CURATED:
+                skipped_curated += 1
                 continue
             # Without --force, only fill the gaps.
             if book.cover_url and not opts["force"] and not opts["slugs"]:
@@ -106,6 +119,7 @@ class Command(BaseCommand):
         verb = "would write" if opts["dry_run"] else "wrote"
         self.stdout.write(
             self.style.SUCCESS(
-                f"{verb} {wrote} · kept {skipped_art} artwork · left {skipped_have} existing generated"
+                f"{verb} {wrote} · kept {skipped_art} artwork"
+                f" · kept {skipped_curated} curated · left {skipped_have} existing generated"
             )
         )
