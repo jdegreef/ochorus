@@ -482,8 +482,17 @@ the transcribed chapters against the work's own TOC before choosing it.
    `charles-h-spurgeon`) and delete the duplicate, so they group correctly on the
    shelf and share one bio.
 4. **Generate a cover** — CCEL/Gutenberg books have none:
-   `python manage.py generate_covers <slug> ...` writes an on-brand SVG to
-   `frontend/static/covers/<slug>.svg` and sets `cover_url`.
+   `python manage.py generate_covers <slug> ...` writes a house-style SVG and
+   sets `cover_url`. Three things to know:
+   - **Per language.** English writes `covers/<slug>.svg`; every other language
+     writes `covers/<lang>/<slug>.svg`, from THAT row's translated title. Run it
+     again after translating a book, or the new locale keeps rendering the
+     English cover under a translated card title.
+   - **It never overwrites artwork.** A row whose `cover_url` is `.jpg`/`.png`
+     is skipped even under `--force`; `--force` means "redraw the generated
+     ones". Safe to run over the whole library.
+   - `--dry-run` reports what would change. The drawing lives in
+     `library/covers.py`, the file/row handling in the command.
 
 ## Two kinds of fix
 
