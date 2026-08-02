@@ -213,8 +213,8 @@ expounds, the "In brief" and how long it runs. That is a deliberate exception to
 the card families above, and the reason is the brief: it runs 300–400 characters,
 a tile holding it is mostly body text with a title on top, and prose set across
 the full page column is unreadable. A row lets the brief run the full
-width of the box — spreading it over fewer lines keeps the shelf short — and
-puts the reading length beside the title, against the thing being decided. Row heights vary
+width of the box — spreading it over fewer lines keeps the shelf short — with
+the reading length at the top right, opposite the passage. Row heights vary
 freely — rows stack, so there is no bottom edge to level. `--row-hue` is the
 writer's era (same source as a shelf card), used only through `color-mix()`.
 
