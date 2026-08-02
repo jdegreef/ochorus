@@ -5537,3 +5537,54 @@ class CuratedArtTests(TestCase):
         self.assertIn("Géricault", c)
         self.assertIn("Metropolitan Museum", c)
         self.assertIsNone(credit("a-book-with-no-curated-art"))
+
+
+class CuratedCoversSurviveForceTests(TestCase):
+    """`generate_covers --force` must not redraw the curated artwork.
+
+    This is a real regression, observed in production on 2026-08-02: a --force
+    run listed pilgrims-progress, the-reformed-pastor, waiting-on-god and the
+    rest and rewrote them as plain typographic plates. It did no harm THERE
+    (throwaway container, and cover_url was unchanged) — but the same command
+    on a developer's machine overwrites the committed artwork, and the loss is
+    committable without anyone noticing, because the file still exists and the
+    page still renders.
+
+    is_generated() cannot catch this on its own: curated covers are .svg too.
+    """
+
+    def setUp(self):
+        self.author = Author.objects.create(slug="jb", name="John Bunyan")
+
+    def test_a_curated_slug_is_skipped_even_with_force(self):
+        from io import StringIO
+
+        from django.core.management import call_command
+
+        from library.curated_art import CURATED
+
+        slug = "pilgrims-progress"
+        self.assertIn(slug, CURATED, "fixture assumes this slug is curated")
+        Book.objects.create(
+            slug=slug, language="en", title="The Pilgrim's Progress",
+            author=self.author, cover_url=f"/covers/{slug}.svg", cover_color="#6b4b2a",
+        )
+        out = StringIO()
+        call_command("generate_covers", "--force", "--dry-run", stdout=out)
+        report = out.getvalue()
+        self.assertNotIn(f"{slug}.svg", report, "curated cover was redrawn by --force")
+        self.assertIn("kept 1 curated", report)
+
+    def test_an_uncurated_slug_is_still_redrawn(self):
+        """The guard must not turn --force into a no-op for everything else."""
+        from io import StringIO
+
+        from django.core.management import call_command
+
+        Book.objects.create(
+            slug="till-he-come", language="en", title="Till He Come",
+            author=self.author, cover_url="/covers/till-he-come.svg", cover_color="#333",
+        )
+        out = StringIO()
+        call_command("generate_covers", "--force", "--dry-run", stdout=out)
+        self.assertIn("till-he-come.svg", out.getvalue())
