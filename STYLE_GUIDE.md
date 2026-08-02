@@ -212,9 +212,9 @@ one sermon per line, under its preacher, carrying the title, the passage it
 expounds, the "In brief" and how long it runs. That is a deliberate exception to
 the card families above, and the reason is the brief: it runs 300–400 characters,
 a tile holding it is mostly body text with a title on top, and prose set across
-the full page column is unreadable. A row gives the brief a real measure
-(`max-width: 78ch`), gives the reading time its own column, and lets a reader
-scan straight down one axis to decide whether to read or listen. Row heights vary
+the full page column is unreadable. A row lets the brief run the full
+width of the box — spreading it over fewer lines keeps the shelf short — and
+puts the reading length beside the title, against the thing being decided. Row heights vary
 freely — rows stack, so there is no bottom edge to level. `--row-hue` is the
 writer's era (same source as a shelf card), used only through `color-mix()`.
 
@@ -229,8 +229,7 @@ writer's era (same source as a shelf card), used only through `color-mix()`.
 >
 > Add a modifier next to the base class instead (`.book-card--row`). Reach for a
 > utility only for properties the component class doesn't set — which is why
-> `.sermon-row-brief` can take `line-clamp-5` (it sets no clamp of its own) but
-> would ignore a `max-w-*` utility.
+> `.sermon-row-brief` can take `line-clamp-5`: it sets no clamp of its own.
 
 **Equal heights — one item per card, or bound the variance.** A card grid must
 never set `items-start`; let `.shelf-card`/`.book-card`'s `height:100%` plus an

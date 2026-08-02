@@ -219,22 +219,25 @@
 			style="--row-hue: {hueForBirthYear(sermon.author.birth_year)}"
 			href={localizeHref(`/sermons/${sermon.slug}`)}
 		>
-			<div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-0.5">
-				<!-- Eyebrow above the title, as everywhere else in the system: whose
-				     sermon (only when no heading above says so) and the passage. -->
-				<p class="sermon-row-ref min-w-0">
-					{#if showAuthor}{sermon.author.name}<span class="opacity-40"> · </span>{/if}
-					{sermon.scripture_ref}
-				</p>
-				<!-- How long it runs is half the decision this page exists to serve, so
-				     it holds the far end of the same line rather than trailing the
-				     brief, and stays on that line down to 375px. -->
-				<p class="shrink-0 text-small text-muted">
+			<!-- Eyebrow above the title, as everywhere else in the system: whose
+			     sermon (only when no heading above says so) and the passage. -->
+			<p class="sermon-row-ref">
+				{#if showAuthor}{sermon.author.name}<span class="opacity-40"> · </span>{/if}
+				{sermon.scripture_ref}
+			</p>
+			<!-- Length sits beside the TITLE, not up on the eyebrow line: it is half
+			     the decision this page serves, so it belongs against the thing being
+			     decided. Wraps to its own line only when the title leaves no room. -->
+			<div class="mt-1 flex flex-wrap items-baseline justify-between gap-x-4">
+				<h3 class="sermon-row-title min-w-0">{sermon.title}</h3>
+				<!-- ms-auto, not just justify-between: when a long title pushes this to
+				     its own line, justify-between leaves it stranded at the start of
+				     that line. The auto margin keeps it flush to the end either way. -->
+				<p class="ms-auto shrink-0 text-small text-muted">
 					{readingTime(sermon.word_count)}
 					{#if year}<span class="opacity-50"> · </span>{year}{/if}
 				</p>
 			</div>
-			<h3 class="sermon-row-title mt-1">{sermon.title}</h3>
 			<!-- Not every sermon has a brief written yet, so the row has to read as
 			     finished without one — hence the brief hanging below a complete
 			     title/passage/length line rather than sitting between them. -->
