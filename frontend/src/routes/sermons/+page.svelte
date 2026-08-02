@@ -1,15 +1,17 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { SermonSummary } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
 	import { itemList } from '$lib/seo';
 	import { localizeHref } from '$lib/href';
 	import { locales } from '$lib/paraglide/runtime';
 	import { i18n } from '$lib/i18n.svelte';
-	import { readingMinutes } from '$lib/reading';
+	import { readingTime, preachedYear } from '$lib/reading';
+	import { readJSON, writeJSON } from '$lib/persisted';
 	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
 	import CatalogLanguageNudge from '$lib/components/CatalogLanguageNudge.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
-	import Icon from '$lib/components/Icon.svelte';
+	import ShelfCard from '$lib/components/ShelfCard.svelte';
 	import { hueForBirthYear } from '$lib/eras';
 
 	const t = i18n.t;
@@ -29,6 +31,9 @@
 	let queryText = $state('');
 	let bibleBook = $state('');
 
+	/** Canonical position of a sermon's book; undated books sink to the end. */
+	const bookOrder = (s: SermonSummary) => s.scripture_book_order ?? 999;
+
 	// Books of the Bible present on this shelf, in canonical order, with counts.
 	const bookFacets = $derived.by(() => {
 		const m = new Map<string, { name: string; order: number; count: number }>();
@@ -36,7 +41,7 @@
 			if (!s.scripture_book) continue;
 			const e = m.get(s.scripture_book);
 			if (e) e.count++;
-			else m.set(s.scripture_book, { name: s.scripture_book, order: s.scripture_book_order ?? 999, count: 1 });
+			else m.set(s.scripture_book, { name: s.scripture_book, order: bookOrder(s), count: 1 });
 		}
 		return [...m.values()].sort((a, b) => a.order - b.order);
 	});
@@ -56,27 +61,62 @@
 
 	const filtering = $derived(queryText.trim() !== '' || bibleBook !== '');
 
-	// Group sermons by author, preserving the API's author-ordered sequence.
-	const grouped = $derived.by(() => {
+	// --- Arrangement (persisted per device, mirroring the Books shelf) ----------
+	// One card per sermon means the grid can be arranged rather than only
+	// grouped: "By preacher" keeps the author sections the shelf was built
+	// around, "All sermons" drops them for one continuous grid.
+	type Group = 'preacher' | 'all';
+	type Sort = 'shelf' | 'scripture' | 'title' | 'shortest';
+	const PREFS_KEY = 'ochorus:sermons-view';
+
+	let group = $state<Group>('preacher');
+	let sort = $state<Sort>('shelf');
+
+	// Hydrated after mount, not during load: the page is prerendered, so reading
+	// localStorage while rendering would desync the static HTML from the client.
+	onMount(() => {
+		const p = readJSON<{ group?: Group; sort?: Sort }>(PREFS_KEY, {});
+		if (p.group) group = p.group;
+		if (p.sort) sort = p.sort;
+	});
+	const save = () => writeJSON(PREFS_KEY, { group, sort });
+	const setGroup = (g: Group) => ((group = g), save());
+
+	const sorted = $derived.by(() => {
+		// Shelf order is the API's own (author, then their sequence) — return the
+		// filter's array as-is rather than copying it only to not sort it.
+		if (sort === 'shelf') return filtered;
+		const arr = [...filtered];
+		switch (sort) {
+			case 'scripture':
+				// Canonical order, Genesis → Revelation; sermons on no stated book
+				// sink to the end. Ties fall back to the title so the order is stable.
+				return arr.sort((a, b) => bookOrder(a) - bookOrder(b) || a.title.localeCompare(b.title));
+			case 'title':
+				return arr.sort((a, b) => a.title.localeCompare(b.title));
+			default:
+				return arr.sort((a, b) => a.word_count - b.word_count);
+		}
+	});
+
+	// Sermons by author, in the order `sorted` produced. null = one flat grid.
+	const groups = $derived.by(() => {
+		if (group === 'all') return null;
 		const map = new Map<
 			string,
-			{ name: string; slug: string; photo_url: string; birth_year: number | null; items: SermonSummary[] }
+			{ name: string; slug: string; photo_url: string; items: SermonSummary[] }
 		>();
-		for (const s of filtered) {
+		for (const s of sorted) {
 			const key = s.author.slug;
 			if (!map.has(key))
-				map.set(key, {
-					name: s.author.name,
-					slug: key,
-					photo_url: s.author.photo_url,
-					birth_year: s.author.birth_year,
-					items: []
-				});
+				map.set(key, { name: s.author.name, slug: key, photo_url: s.author.photo_url, items: [] });
 			map.get(key)!.items.push(s);
 		}
 		return [...map.values()];
 	});
 
+	// A card states its writer only when no heading above it does.
+	const showAuthor = $derived(groups === null);
 </script>
 
 <svelte:head>
@@ -130,6 +170,27 @@
 				<option value={b.name}>{b.name} ({b.count})</option>
 			{/each}
 		</select>
+
+		<select bind:value={sort} onchange={save} class="filter-field" aria-label={t('common.sort')}>
+			<option value="shelf">{t('common.sortShelf')}</option>
+			<option value="scripture">{t('sermons.sortScripture')}</option>
+			<option value="title">{t('common.sortTitle')}</option>
+			<option value="shortest">{t('common.sortShortest')}</option>
+		</select>
+
+		<div class="seg">
+			<button
+				class:active={group === 'preacher'}
+				onclick={() => setGroup('preacher')}
+				aria-pressed={group === 'preacher'}>{t('sermons.groupPreacher')}</button
+			>
+			<button
+				class:active={group === 'all'}
+				onclick={() => setGroup('all')}
+				aria-pressed={group === 'all'}>{t('sermons.groupAll')}</button
+			>
+		</div>
+
 		{#if filtering}
 			<button
 				class="btn btn-ghost !py-2"
@@ -148,65 +209,84 @@
 		</p>
 	{/if}
 
-	{#if grouped.length}
-		<!-- items-start, NOT items-stretch: these cards hold lists of very different
-		     lengths (1 sermon vs 13), so stretching them to match left 700px of dead
-		     space under the short ones. Levelling heights is right for the topic and
-		     plan grids, where every card holds a title and a clamped blurb. -->
-		<div class="grid items-start gap-5 lg:grid-cols-2">
-			{#each grouped as group (group.slug)}
-				<!-- One card per writer: the portrait and the era-tinted band give the
-				     shelf the same visual anchor Topics and Plans have. The card is a
-				     container, not a link — each sermon inside is its own link. -->
-				<section class="shelf-card shelf-card--static" style="--shelf-hue: {hueForBirthYear(group.birth_year)}">
-					<div class="shelf-card-band">
-						<span class="shelf-card-badge">
-							{#if group.photo_url}
-								<img src={group.photo_url} alt="" loading="lazy" />
-							{:else}
-								<Icon name="mic" size={20} />
-							{/if}
-						</span>
-						<div class="min-w-0 flex-1">
-							<h2 class="shelf-card-title truncate">
-								<a href={localizeHref(`/authors/${group.slug}`)} class="!text-text hover:underline"
-									>{group.name}</a
-								>
-							</h2>
-							<p class="text-small text-muted">
-								{group.items.length}
-								{group.items.length === 1 ? t('common.sermonOne') : t('common.sermonMany')}
-							</p>
-						</div>
-					</div>
-					<div class="shelf-card-body !py-0">
-						<ul class="divide-y divide-border">
-							{#each group.items as sermon (sermon.slug)}
-								<li>
-									<a
-										href={localizeHref(`/sermons/${sermon.slug}`)}
-										class="flex items-baseline justify-between gap-3 py-3 hover:no-underline"
-									>
-										<span class="flex-1">
-											<span class="block text-body font-medium text-text">{sermon.title}</span>
-											{#if sermon.scripture_ref}
-												<span class="text-small text-accent">{sermon.scripture_ref}</span>
-											{/if}
-										</span>
-										<span class="shrink-0 text-small text-muted"
-											>{readingMinutes(sermon.word_count)} {t('common.min')}</span
-										>
-									</a>
-								</li>
-							{/each}
-						</ul>
-					</div>
-				</section>
+	<!-- One sermon, one card — so the standard levelling rule applies and the grid
+	     stops ending ragged. Why not one card per writer holding that writer's
+	     sermons as a list (what this shelf did before): STYLE_GUIDE §5, "Equal
+	     heights — one item per card, or bound the variance". -->
+	{#snippet sermonTile(sermon: SermonSummary)}
+		{@const year = preachedYear(sermon.preached_on)}
+		<!-- `portrait` answers "whose sermon?" only when nothing else does: under a
+		     preacher heading it would be the same face thirteen times over, so the
+		     badge falls back to the mic and the heading carries the writer. The era
+		     hue stays either way, so one writer's sermons still read as a set. -->
+		<ShelfCard
+			href={localizeHref(`/sermons/${sermon.slug}`)}
+			hue={hueForBirthYear(sermon.author.birth_year)}
+			icon="mic"
+			portrait={showAuthor ? sermon.author.photo_url : ''}
+			title={sermon.title}
+		>
+			{#snippet bandAside()}
+				{#if sermon.scripture_ref}
+					<span class="shelf-card-ref">{sermon.scripture_ref}</span>
+				{/if}
+			{/snippet}
+			<!-- All the meta on one muted line at the foot, rather than hanging the
+			     reading time beside the title the way Topics and Plans do: those
+			     titles are two or three words, sermon titles run to forty characters
+			     and a shrink-0 aside squeezed them into three lines on a phone.
+			     mt-auto puts the line on the card's floor whether the title runs to
+			     one line or three, so a row of cards agrees on its baseline. -->
+			<p class="mt-auto pt-3 text-small text-muted">
+				{#if showAuthor}{sermon.author.name}<span class="opacity-50"> · </span>{/if}
+				{readingTime(sermon.word_count)}
+				{#if year}<span class="opacity-50"> · </span>{year}{/if}
+			</p>
+		</ShelfCard>
+	{/snippet}
+
+	{#snippet sermonGrid(items: SermonSummary[])}
+		<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
+			{#each items as sermon (sermon.slug)}
+				{@render sermonTile(sermon)}
 			{/each}
 		</div>
-	{:else}
+	{/snippet}
+
+	{#if sorted.length === 0}
 		<p class="text-body text-muted">
 			{filtering ? t('sermons.noMatches') : t('sermons.empty')}
 		</p>
+	{:else if groups}
+		<!-- Jump to a writer — the shelf runs to ~90 sermons, so the sections need
+		     a way in that isn't scrolling. Same rail the Books shelf uses. -->
+		{#if groups.length > 1}
+			<nav class="mb-8 flex flex-wrap gap-1.5" aria-label={t('sermons.groupPreacher')}>
+				{#each groups as g (g.slug)}
+					<a href="#preacher-{g.slug}" class="chip hover:no-underline">{g.name}</a>
+				{/each}
+			</nav>
+		{/if}
+		{#each groups as g (g.slug)}
+			<section id="preacher-{g.slug}" class="mb-10 scroll-mt-20">
+				<h2 class="mb-4 flex items-center gap-2.5 text-h3 text-muted">
+					{#if g.photo_url}
+						<img
+							src={g.photo_url}
+							alt=""
+							loading="lazy"
+							width="32"
+							height="32"
+							class="h-8 w-8 shrink-0 rounded-full border border-border object-cover"
+						/>
+					{/if}
+					<a href={localizeHref(`/authors/${g.slug}`)} class="!text-text hover:underline">{g.name}</a>
+					<span class="text-small font-normal opacity-60">{g.items.length}</span>
+				</h2>
+				{@render sermonGrid(g.items)}
+			</section>
+		{/each}
+	{:else}
+		{@render sermonGrid(sorted)}
 	{/if}
 </div>

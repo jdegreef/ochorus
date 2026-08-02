@@ -21,6 +21,9 @@
 	import type { ScriptureResult } from '$lib/scripture.svelte';
 	import { markSnippet } from '$lib/highlight';
 	import { localizeHref } from '$lib/href';
+	import { SITE_URL } from '$lib/config';
+	import { hreflangAll } from '$lib/seo';
+	import Seo from '$lib/components/Seo.svelte';
 	import { beforeNavigate, goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import PageHeader from '$lib/components/PageHeader.svelte';
@@ -836,7 +839,7 @@
 	{#if showRecent && recent.length}
 		<section class="mb-8">
 			<div class="mb-2 flex items-center justify-between">
-				<h2 class="text-small font-semibold uppercase tracking-wide text-muted">
+				<h2 class="section-label">
 					{t('search.recent')}
 				</h2>
 				<button type="button" class="text-small text-accent hover:underline" onclick={clearRecent}>
@@ -850,7 +853,7 @@
 	{/if}
 	{#if popular.length}
 		<section class="mb-8">
-			<h2 class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">
+			<h2 class="section-label">
 				{t('search.popular')}
 			</h2>
 			<div class="flex flex-wrap gap-2">
@@ -860,7 +863,7 @@
 	{/if}
 	{#if topics.length}
 		<section>
-			<h2 class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">
+			<h2 class="section-label">
 				{t('search.browseTopics')}
 			</h2>
 			<div class="flex flex-wrap gap-2">
@@ -880,14 +883,19 @@
 	{/if}
 {/snippet}
 
-<svelte:head><title>{t('search.title')} — Ochorus</title></svelte:head>
+<Seo
+	title="{t('search.title')} — Ochorus"
+	description={t('search.metaDescription')}
+	canonical="{SITE_URL}{localizeHref('/search')}"
+	hreflang={hreflangAll('/search')}
+/>
 
 <!-- Above lg the page uses the width it has: the facet chips leave the top bar
      and become a rail, so results get the full column and the filters stop
      wrapping onto three lines. Below lg nothing changes — the single column is
      right on a phone, and this page is read on phones. -->
 <div class="page-col px-5 py-10">
-	<PageHeader title={t('search.title')} />
+	<PageHeader title={t('search.title')} tagline={t('search.tagline')} />
 
 	<!-- Sticky: a long result list used to scroll the query out of sight, so
 	     refining meant scrolling back up to find the box. The bleed padding and
@@ -956,7 +964,7 @@
 		     panel two-thirds empty, because the verses inside are capped to a
 		     readable measure and the panel was not. -->
 		<div class="answer-measure mt-6 rounded-card border-s-4 border-accent bg-accent-soft p-4">
-			<p class="text-[0.66rem] font-bold uppercase tracking-[0.1em] text-accent">
+			<p class="text-eyebrow font-bold uppercase tracking-[0.1em] text-accent">
 				{t('reader.scripture')}
 			</p>
 			<p class="scripture-answer-ref">{scriptureAnswer.reference}</p>
@@ -985,7 +993,7 @@
 						).replace('%count%', String(verses.length))}{/if}
 				</button>
 			{/if}
-			<p class="mt-2 text-[0.66rem] uppercase tracking-[0.08em] text-muted">
+			<p class="mt-2 text-eyebrow uppercase tracking-[0.08em] text-muted">
 				{scriptureAnswer.version}
 			</p>
 
@@ -1071,7 +1079,7 @@
 					>
 						<button
 							type="button"
-							class="rounded-full border px-2.5 py-1 text-[0.78rem]"
+							class="rounded-full border px-2.5 py-1 text-small"
 							class:border-accent={typeFilter === 'all'}
 							class:bg-accent={typeFilter === 'all'}
 							class:text-accent-contrast={typeFilter === 'all'}
@@ -1085,7 +1093,7 @@
 						{#each groups as g (g.type)}
 							<button
 								type="button"
-								class="rounded-full border px-2.5 py-1 text-[0.78rem]"
+								class="rounded-full border px-2.5 py-1 text-small"
 								class:border-accent={typeFilter === g.type}
 								class:bg-accent={typeFilter === g.type}
 								class:text-accent-contrast={typeFilter === g.type}
@@ -1115,7 +1123,7 @@
 								{#each SORTS as s, i (s)}
 									<button
 										type="button"
-										class="whitespace-nowrap px-2.5 py-1 text-[0.78rem]"
+										class="whitespace-nowrap px-2.5 py-1 text-small"
 										class:bg-accent={sortMode === s}
 										class:text-accent-contrast={sortMode === s}
 										class:text-muted={sortMode !== s}
@@ -1170,7 +1178,7 @@
 					{@const more = total - g.rows.length}
 					<section id="group-{g.type}" style="scroll-margin-top:5rem">
 						<h2
-							class="mb-2 flex items-baseline gap-2 text-small font-semibold uppercase tracking-wide text-muted"
+							class="mb-2 flex items-baseline gap-2 section-label"
 						>
 							{t(g.labelKey)}
 							<!-- The per-group number distinguishes one section from the next.
@@ -1184,7 +1192,7 @@
 							     accessible name, so a screen reader would still hear the
 							     duplicate this exists to remove. -->
 							{#if !(hasFacets && shownGroups.length === 1)}
-								<span class="text-[0.78rem] font-normal tabular-nums text-muted/70">
+								<span class="text-small font-normal tabular-nums text-muted/70">
 									{#if more > 0}{g.rows.length} {t('search.of')} {total}{isCapped(g.type)
 											? '+'
 											: ''}{:else}{total}{/if}

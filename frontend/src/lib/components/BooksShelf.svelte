@@ -181,30 +181,51 @@
 		<!-- Continue reading -->
 		{#if continueBooks.length && !searching}
 			<section class="mb-8">
-				<h2 class="mb-3 text-small font-semibold uppercase tracking-wide text-accent">
+				<h2 class="section-label">
 					{t('books.continue')}
 				</h2>
-				<div class="flex gap-4 overflow-x-auto pb-1">
-					{#each continueBooks as c (c.book.slug)}
-						<a
-							href={localizeHref(`/books/${c.book.slug}/${c.order}`)}
-							class="w-20 shrink-0 hover:no-underline sm:w-24"
-						>
-							<BookCover book={c.book} />
-							<div class="mt-1.5 line-clamp-2 text-[0.72rem] font-medium text-text">
-								{c.book.title}
+				{#if continueBooks.length === 1}
+					<!-- One book reads as a broken row when rendered as a scroll strip:
+					     a single 80px cover marooned in the full page width. On its own
+					     it becomes a proper resume card instead. -->
+					{@const c = continueBooks[0]}
+					<a
+						href={localizeHref(`/books/${c.book.slug}/${c.order}`)}
+						class="book-card book-card--row group !p-4 sm:max-w-md"
+					>
+						<div class="w-16 shrink-0 sm:w-20"><BookCover book={c.book} /></div>
+						<div class="min-w-0 flex-1">
+							<div class="line-clamp-2 text-body font-medium text-text">{c.book.title}</div>
+							<div class="text-small text-muted">{c.book.author.name}</div>
+							<div class="mt-1 text-small font-semibold text-accent">
+								{t('continue.chapter')}
+								{c.order} →
 							</div>
-							<div class="text-[0.68rem] text-muted">{t('continue.chapter')} {c.order}</div>
-						</a>
-					{/each}
-				</div>
+						</div>
+					</a>
+				{:else}
+					<div class="flex gap-4 overflow-x-auto pb-1">
+						{#each continueBooks as c (c.book.slug)}
+							<a
+								href={localizeHref(`/books/${c.book.slug}/${c.order}`)}
+								class="w-20 shrink-0 hover:no-underline sm:w-24"
+							>
+								<BookCover book={c.book} />
+								<div class="mt-1.5 line-clamp-2 text-eyebrow font-medium text-text">
+									{c.book.title}
+								</div>
+								<div class="text-eyebrow text-muted">{t('continue.chapter')} {c.order}</div>
+							</a>
+						{/each}
+					</div>
+				{/if}
 			</section>
 		{/if}
 
 		<!-- New to the library -->
 		{#if books.length > 8 && !searching}
 			<section class="mb-8">
-				<h2 class="mb-3 text-small font-semibold uppercase tracking-wide text-accent">
+				<h2 class="section-label">
 					{t('books.newTitle')}
 				</h2>
 				<div class="flex gap-4 overflow-x-auto pb-1">
@@ -214,10 +235,10 @@
 							class="w-20 shrink-0 hover:no-underline sm:w-24"
 						>
 							<BookCover {book} />
-							<div class="mt-1.5 line-clamp-2 text-[0.72rem] font-medium text-text">
+							<div class="mt-1.5 line-clamp-2 text-eyebrow font-medium text-text">
 								{book.title}
 							</div>
-							<div class="truncate text-[0.68rem] text-muted">{book.author.name}</div>
+							<div class="truncate text-eyebrow text-muted">{book.author.name}</div>
 						</a>
 					{/each}
 				</div>
@@ -250,12 +271,12 @@
 				value={sort}
 				onchange={onSort}
 				class="filter-field"
-				aria-label={t('books.sort')}
+				aria-label={t('common.sort')}
 			>
-				<option value="shelf">{t('books.sortShelf')}</option>
-				<option value="title">{t('books.sortTitle')}</option>
-				<option value="longest">{t('books.sortLongest')}</option>
-				<option value="shortest">{t('books.sortShortest')}</option>
+				<option value="shelf">{t('common.sortShelf')}</option>
+				<option value="title">{t('common.sortTitle')}</option>
+				<option value="longest">{t('common.sortLongest')}</option>
+				<option value="shortest">{t('common.sortShortest')}</option>
 			</select>
 
 			<div class="seg">

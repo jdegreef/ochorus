@@ -28,12 +28,33 @@ const LOCALES: string[] = JSON.parse(
 ).locales.filter((l: string) => l !== 'en');
 
 /** Prerendered index pages that need an explicit rewrite per locale. */
-const INDEX_PAGES = ['books', 'biographies', 'about', 'contact', 'legal', 'sermons', 'plans', 'topics'];
+const INDEX_PAGES = [
+	'books',
+	'biographies',
+	'about',
+	'contact',
+	'legal',
+	'sermons',
+	'plans',
+	'topics',
+	// Added after /search prerendered but had no rewrite at all — not for the
+	// locales and not for the base path either, so the built search.html was
+	// unreachable and the page served the 4 KB shell (#725, fixed in #726).
+	'search'
+];
 
 describe('render.yaml locale routes', () => {
 	it('covers every configured locale', () => {
 		const missing = LOCALES.filter((l) => !RENDER_YAML.includes(`source: /${l}\n`));
 		expect(missing, 'locales with no landing-page rewrite').toEqual([]);
+	});
+
+	// The base (unprefixed) path needs its own rewrite too. This was the hole
+	// /search fell through: the per-locale loop below would have caught a missing
+	// /es/search, but nothing asserted /search itself — and both were absent.
+	it('covers the base path for every index page', () => {
+		const missing = INDEX_PAGES.filter((p) => !RENDER_YAML.includes(`source: /${p}\n`));
+		expect(missing, 'index pages with no base-path rewrite').toEqual([]);
 	});
 
 	for (const page of INDEX_PAGES) {
