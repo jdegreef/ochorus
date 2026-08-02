@@ -76,7 +76,10 @@
 		<div class="min-w-0">
 			<h1 class="text-display mb-2">{topic.title}</h1>
 			{#if topic.description}
-				<p class="max-w-xl text-body text-muted">{topic.description}</p>
+				<!-- No measure cap: the hero is already bounded by the page column, and
+				     capping the text at 36rem inside a 64rem card left the whole header
+				     bunched against the left edge with half the card empty. -->
+				<p class="text-body text-muted">{topic.description}</p>
 			{/if}
 			{#if topic.scripture_text}
 				<figure class="verse">
@@ -165,12 +168,17 @@
 		color: var(--color-muted);
 		margin-bottom: 0.9rem;
 	}
-	/* A themed Scripture epigraph, set off by an accent rule. */
+	/* A themed Scripture epigraph, set off by an accent rule.
+
+	   No max-width: the 34rem cap stopped the epigraph a third of the way across
+	   the card, which — with the description capped too — left the whole hero
+	   hugging the left edge. The page column already bounds the measure.
+	   padding-inline-start, not padding-left, so the rule stays on the reading
+	   edge under RTL (Arabic). */
 	.verse {
 		margin: 0.9rem 0 0;
-		padding-left: 0.9rem;
-		border-left: 2px solid color-mix(in srgb, var(--topic) 55%, var(--color-border));
-		max-width: 34rem;
+		padding-inline-start: 0.9rem;
+		border-inline-start: 2px solid color-mix(in srgb, var(--topic) 55%, var(--color-border));
 	}
 	.verse blockquote {
 		margin: 0;
