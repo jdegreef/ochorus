@@ -163,6 +163,13 @@ import type { PageLoad } from './$types';
  * кімната (The Inner Chamber, 36 ch) completes the Ukrainian book queue —
  * three uk books, 53 chapters in all. The /uk books index and
  * /uk/books/the-inner-chamber with its chapter pages re-crawl and bake.
+ *
+ * Prerender refresh 2026-08-01 (queue job #629): the Arabic edition of Andrew
+ * Murray's المخدع (The Inner Chamber, 36 ch) — Arabic's fourth book. Arabic is
+ * RTL: the chapter bodies carry no dir/lang of their own, so the /ar books
+ * index and /ar/books/the-inner-chamber render under the container's
+ * dir="auto" (see readerDirection.test.ts) and re-crawl to bake the
+ * translation.
  */
 export const load: PageLoad = async () => {
 	try {
