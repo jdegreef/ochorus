@@ -13,6 +13,23 @@ export function GET() {
 		'Disallow: /account',
 		'Disallow: /notebook',
 		'Disallow: /reset-password',
+		// NO blank line before the next block: a blank line TERMINATES a record
+		// in robots.txt, so anything after one belongs to no user-agent. The
+		// rules below have to stay inside the `User-agent: *` group above.
+		//
+		// The domain ran a WordPress site before this app, and Googlebot is
+		// still working through its corpse: /wp-content/ PDFs, /wp-includes/
+		// scripts and ?p= post ids make up nearly all of "Crawled - currently
+		// not indexed". None of it exists any more, every one of them answers
+		// 200 with the SPA shell (the /* -> /200.html catch-all), and each
+		// fetch is crawl budget NOT spent on the 1,890 chapter pages that are
+		// the actual reason this site should rank.
+		'Disallow: /wp-content/',
+		'Disallow: /wp-includes/',
+		'Disallow: /wp-admin/',
+		'Disallow: /wp-json/',
+		'Disallow: /*?p=',
+		'Disallow: /*/feed/',
 		'',
 		`Sitemap: ${SITE_URL}/sitemap.xml`,
 		`Feed: ${SITE_URL}/feed.xml`,

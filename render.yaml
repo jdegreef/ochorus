@@ -99,6 +99,42 @@ services:
       - type: redirect
         source: /ochorus-books/
         destination: /books
+      # Two more of the old site's pages, found in Search Console on
+      # 2026-08-02: /about-us/ and /home are still RANKING — 10 and 6
+      # impressions in the first ten days, against 12 for the homepage — and
+      # both answer 200 with the 4 KB shell, so every one of those was a
+      # searcher landing on a blank page. /about-us/ also carries 179 of the
+      # internal links Google has on file for this domain.
+      - type: redirect
+        source: /about-us
+        destination: /about
+      - type: redirect
+        source: /about-us/
+        destination: /about
+      - type: redirect
+        source: /home
+        destination: /
+      - type: redirect
+        source: /home/
+        destination: /
+      # Books that no longer exist. Both are indexed and one is still being
+      # served in results (/books/a-king-in-a-manger-2/, 5 impressions), and
+      # like everything else with no file behind it they answer 200 with the
+      # shell. Neither title is in the library or the sitemap, so there is no
+      # equivalent page to send them to — /books is the honest destination: a
+      # reader who searched the title lands on the shelf rather than nothing.
+      - type: redirect
+        source: /books/a-king-in-a-manger-2
+        destination: /books
+      - type: redirect
+        source: /books/a-king-in-a-manger-2/
+        destination: /books
+      - type: redirect
+        source: /books/grace-for-grace-2
+        destination: /books
+      - type: redirect
+        source: /books/grace-for-grace-2/
+        destination: /books
       # --- Retired WordPress media -------------------------------------
       # The old site hotlinked book PDFs and covers from /wp-content/uploads/.
       # Those files are gone, but the URLs are still in search results and in

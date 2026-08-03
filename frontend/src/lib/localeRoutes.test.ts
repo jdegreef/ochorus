@@ -73,3 +73,36 @@ describe('render.yaml locale routes', () => {
 		}
 	});
 });
+
+/**
+ * Legacy URLs from the domain's WordPress era that are STILL RANKING.
+ *
+ * Found in Search Console on 2026-08-02: 33 of the site's first 47 impressions
+ * went to old-site URLs rather than to Ochorus, and the ones without a
+ * redirect answered 200 with the 4 KB SPA shell — a searcher clicking through
+ * landed on a blank page. `/ochorus-books/` alone out-impressed the homepage.
+ *
+ * These rules are easy to drop in a render.yaml edit and impossible to notice
+ * afterwards, because the symptom is a 200 rather than an error.
+ */
+describe('render.yaml legacy redirects', () => {
+	const LEGACY: [string, string][] = [
+		['/author-biographies', '/biographies'],
+		['/ochorus-books', '/books'],
+		['/about-us', '/about'],
+		['/home', '/'],
+		['/books/a-king-in-a-manger-2', '/books'],
+		['/books/grace-for-grace-2', '/books']
+	];
+
+	for (const [from, to] of LEGACY) {
+		it(`301s ${from} -> ${to}`, () => {
+			// Both slash forms are listed in render.yaml; assert the rule exists
+			// and points where we intend.
+			const rule = new RegExp(
+				`source: ${from.replace(/\//g, '\\/')}\\/?\\n\\s*destination: ${to.replace(/\//g, '\\/')}\\n`
+			);
+			expect(rule.test(RENDER_YAML), `no redirect from ${from}`).toBe(true);
+		});
+	}
+});
