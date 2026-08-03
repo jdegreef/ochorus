@@ -848,7 +848,9 @@
 						title={t('reader.listen')}><Icon name="headphones" size={18} /></button
 					>
 				{/if}
-				<ReaderControls />
+				<!-- `layout`: the chapter reader is the one surface that implements
+				     paged mode, so it is the one that offers the switch. -->
+				<ReaderControls layout />
 				<button
 					class="btn btn-ghost !px-2 !py-1.5"
 					onclick={() => readerUi.toggleFocus()}
