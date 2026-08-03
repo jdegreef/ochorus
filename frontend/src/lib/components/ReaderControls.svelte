@@ -8,6 +8,25 @@
 	} from '$lib/readerPrefs.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 
+	let {
+		/**
+		 * Show the scroll-vs-page layout switch.
+		 *
+		 * Only the chapter reader implements paged mode — it needs a fixed
+		 * viewport, page measuring, turning and a scrubber, none of which lives
+		 * in <Reader> (which deliberately owns the prose, not the container).
+		 * Sermons and biographies mount these same controls, so before this prop
+		 * they showed a Scroll/Page switch that did NOTHING on their page and,
+		 * because readerPrefs.paged is persisted, silently changed how the
+		 * reader's next CHAPTER behaved.
+		 *
+		 * Defaults to false so the failure mode is safe: a new reading surface
+		 * hides a control it can't honour rather than lying about one. When
+		 * paged mode is shared (design review items 2-3), pass it everywhere.
+		 */
+		layout = false
+	}: { layout?: boolean } = $props();
+
 	let open = $state(false);
 	let wrap = $state<HTMLDivElement>();
 	const t = i18n.t;
@@ -153,7 +172,9 @@
 
 			<!-- Layout: continuous scroll vs. paged (page-turn) reading. Below the
 			     type controls — it's a mode switch, changed far less often than size
-			     or spacing. Listening (voice + speed) lives in Settings → Reading. -->
+			     or spacing. Listening (voice + speed) lives in Settings → Reading.
+			     Only rendered where the surface actually implements paged mode. -->
+			{#if layout}
 			<div class="mt-3 border-t border-border pt-3">
 				<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.layout')}</span>
 				<div class="grid grid-cols-2 gap-1">
@@ -177,6 +198,7 @@
 					>
 				</div>
 			</div>
+			{/if}
 		</div>
 	{/if}
 </div>
