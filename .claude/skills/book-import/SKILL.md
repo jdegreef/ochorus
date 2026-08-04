@@ -460,6 +460,20 @@ Brier* (1930s–40s) are very likely still under US copyright. Pick an early
 edition; when a "restored/complete" modern reprint exists (e.g. Finney's
 *Memoirs*), use the original pre-1929 scan, not the copyrighted reprint.
 
+**Decide Book vs Sermon by STRUCTURE, not by the word "addresses".** Many
+preachers' PD corpus is collections of addresses, and the two shapes import
+differently. Hudson Taylor is the worked example: *Separation and Service* (1898,
+PG 26384) is described as addresses but is one continuous ~57k-word exposition of
+Numbers 6–7 across 30 short sections — that is a **book**, and importing its
+sections as sermons would file a book's chapters on the sermon shelf. *A Ribband
+of Blue* (1899, PG 23438) is eight self-contained studies of 2–8k words, each on
+its own passage — those are **sermons**. The test: does the piece stand alone with
+its own text and argument, or does it depend on the previous section? Sermon-shelf
+entries also want a real `scripture_ref`; a section titled "The Burnt-Offering"
+that continues the last one has no standalone reference to give. Check the length
+distribution too — existing sermons run ~1,000–8,300 words, so a 57k-word "set of
+addresses" is a book by size alone. *(Taylor sermon sourcing, 2026-08)*
+
 When the catalogue lacks a wanted title (e.g. more Spurgeon), source it from
 elsewhere. Preference order — cleaner text first: **CCEL** (`source="ccel"`,
 `<author>/<work>` path) → **Project Gutenberg** (`source="gutenberg"`, ebook id)
