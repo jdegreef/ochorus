@@ -582,21 +582,9 @@ class SermonBriefCoverageTests(SimpleTestCase):
     by deliberately editing this file. **They should only ever shrink.**
     """
 
-    # 12 English sermons imported before briefs were written for the shelf.
-    EN_WITHOUT_BRIEF = {
-        "christ-precious-to-believers",
-        "christs-boundless-compassion",
-        "come-thou-into-the-ark",
-        "comfort-for-the-desponding",
-        "compel-them-to-come-in",
-        "consolation-in-the-furnace",
-        "rest",
-        "sweet-comfort-for-feeble-saints",
-        "the-dying-thief",
-        "the-new-birth",
-        "the-sweet-uses-of-adversity",
-        "the-way-of-salvation",
-    }
+    # Empty: every English sermon now has a brief. Keep it that way — a new
+    # English sermon without one fails the guard rather than joining a list.
+    EN_WITHOUT_BRIEF: set[str] = set()
 
     # 38 rows translated while translate_sermon was dropping the summary.
     # Re-running `translate_sermon <slug> --language <lang> --force` now fills
