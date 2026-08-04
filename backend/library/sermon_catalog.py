@@ -25,9 +25,9 @@ class SermonEntry:
     slug: str
     title: str
     author_slug: str  # canonical DB author slug (see AuthorListView / fixture)
-    source: str  # "ccel" (one page per sermon) | "gutenberg" (h1 section of an ebook)
+    source: str  # "ccel" (one page per sermon) | "gutenberg" (heading section of an ebook)
     source_ref: str  # ccel: full URL of the sermon page; gutenberg: ebook id
-    section: str = ""  # gutenberg: the h1 heading text of the sermon
+    section: str = ""  # gutenberg: the heading text of the sermon, at any level
     scripture_ref: str = ""  # override; parsed from the page when empty
     preached_on: str = ""  # ISO date override; parsed from the page when empty
     body_starts: str = ""  # web: literal text the sermon's first paragraph starts with
@@ -266,7 +266,7 @@ SERMONS: list[SermonEntry] = [
     # studies — each its own text and argument, which is what makes them
     # sermons rather than chapters. (Taylor's "Separation and Service" is the
     # opposite case: one continuous 57k-word exposition, so it belongs in the
-    # book catalog.) The studies are <h3> in this edition, not <h1>.
+    # book catalog.)
     SermonEntry(
         "blessed-adversity",
         "Blessed Adversity",
