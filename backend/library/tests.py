@@ -2678,6 +2678,49 @@ class ContemporizeCarefulTests(TestCase):
 class ContentQAFixesTests(TestCase):
     """The 2026-07 QA body corrections (also enforced on every re-import)."""
 
+    def test_blessed_adversity_transcription_slips(self):
+        """The sermon corrections survive the small-caps unwrap they depend on.
+
+        In Gutenberg #23438 the typo is markup, not text: the source reads
+        ``S<small>HEPERD</small>``, so the literal string "SHEPERD" appears
+        nowhere in the raw HTML. The replacement only matches because
+        ``clean_fragment`` unwraps <small> first. Pin that dependency — if the
+        sanitizer stops unwrapping, or PG re-transcribes with <span
+        class="smcap">, the pair would no-op silently and the typo would come
+        back on the next re-import with no error.
+        """
+        from library.corrections import apply_body_corrections
+        from library.ingest import clean_fragment
+
+        raw = (
+            "<p>The believer who has taken the L<small>ORD</small> as his "
+            "S<small>HEPERD</small>, can assuredly say that days of prosperity "
+            "aso are full of blessing.</p>"
+        )
+        h = apply_body_corrections("blessed-adversity", 1, clean_fragment(raw))
+        self.assertIn("as his SHEPHERD", h)
+        self.assertNotIn("SHEPERD,", h)
+        self.assertIn("days of prosperity also", h)
+
+    def test_sermon_slug_never_takes_a_book_dropcap(self):
+        """A sermon must not inherit a book's drop-cap letter by slug collision.
+
+        Sermons pass ``order=None`` precisely so the drop-cap lookup misses:
+        Book.slug and Sermon.slug are independently unique, so the two
+        namespaces could collide, and a stray capital injected at the head of a
+        sermon would be silent.
+        """
+        from library.corrections import BODY_CORRECTIONS, apply_body_corrections
+
+        slug = next(
+            (k for k, v in BODY_CORRECTIONS.items() if v.get("dropcap_letters")),
+            None,
+        )
+        if slug is None:
+            self.skipTest("no drop-cap entries to test against")
+        body = "<p>alone at the beginning of a sermon.</p>"
+        self.assertEqual(apply_body_corrections(slug, None, body), body)
+
     def test_inner_chamber_dashes_and_full_stop(self):
         from library.corrections import apply_body_corrections
 

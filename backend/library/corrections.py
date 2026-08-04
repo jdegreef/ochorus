@@ -211,14 +211,29 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("salvatio n,", "salvation,"),
         ],
     },
+    "blessed-adversity": {
+        # Two transcription slips in Gutenberg #23438 ("A Ribband of Blue"),
+        # both in the opening paragraph and both plainly errors rather than
+        # period spelling: the Psalm 23 allusion names the SHEPHERD, and the
+        # sentence reads "days of prosperity also".
+        "replacements": [
+            ("SHEPERD", "SHEPHERD"),
+            ("days of prosperity aso", "days of prosperity also"),
+        ],
+    },
 }
 
 # First lowercase letter opening the first paragraph of a body.
 _FIRST_LOWER = _re.compile(r"<p[^>]*>\s*([a-z])")
 
 
-def apply_body_corrections(slug: str, order: int, body_html: str) -> str:
-    """Apply this book's body corrections to one chapter's HTML. Idempotent."""
+def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
+    """Apply a work's body corrections to one chapter's HTML. Idempotent.
+
+    ``order`` selects a drop-cap letter and is chapter-only; pass ``None`` for a
+    work that has no chapters (sermons), so a slug that happens to collide with
+    a book's can never inject a stray capital.
+    """
     entry = BODY_CORRECTIONS.get(slug)
     if not entry:
         return body_html

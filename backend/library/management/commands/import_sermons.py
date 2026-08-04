@@ -23,11 +23,14 @@ from __future__ import annotations
 import datetime
 import re
 import time
+from functools import lru_cache
 
 import requests
 from django.core.management.base import BaseCommand, CommandError
 
+from library.corrections import apply_body_corrections
 from library.ingest import clean_fragment, soup, word_count
+from library.management.commands.import_gutenberg import content_root
 from library.management.commands.import_web import extract_page as extract_web_page
 from library.management.commands.import_web import fetch as fetch_web
 from library.models import Author, Sermon
@@ -46,7 +49,17 @@ _DATE = re.compile(
 # spacer <p>s push the quote as far down as index ~14. Scan generously.
 _HEAD_WINDOW = 20
 
+# Sermon headings appear at whatever level the edition chose; see
+# extract_gutenberg_section.
+_HEADINGS = ["h1", "h2", "h3", "h4"]
 
+
+# Cached by URL: one Gutenberg ebook can back many sermons (33520 carries six,
+# and this book has eight studies), and without this each one re-downloads the
+# whole ebook and re-parses it. CCEL pages have a unique URL each, so they are
+# unaffected. The politeness sleep stays in the caller — `fetch_web` is a
+# separate function and would lose its delay if it moved in here.
+@lru_cache(maxsize=16)
 def fetch(url: str) -> str:
     resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=30)
     resp.raise_for_status()
@@ -62,27 +75,33 @@ def _norm_heading(text: str) -> str:
 
 
 def extract_gutenberg_section(html: str, section: str) -> str:
-    """Return the body of one h1-delimited sermon from a Gutenberg HTML edition.
+    """Return the body of one heading-delimited sermon from a Gutenberg edition.
 
-    Collects paragraph-level elements between the matching <h1> and the next
-    <h1>. A leading quotation paragraph (the scripture epigraph) becomes a
-    blockquote, mirroring the CCEL shape.
+    Collects paragraph-level elements between the matching heading and the next
+    heading AT THE SAME LEVEL. A leading quotation paragraph (the scripture
+    epigraph) becomes a blockquote, mirroring the CCEL shape.
+
+    Two editions fix the rule between them. A single-sermon ebook titles its
+    sermon <h1> (Taylor's *Unfailing Springs*, PG 57109) but puts an
+    <h2>J. Hudson Taylor</h2> byline straight after it — so delimiting on "same
+    or higher" would stop at the byline and return nothing. A collection gives
+    the volume the <h1> and each study an <h3> (Taylor's *A Ribband of Blue*,
+    PG 23438) — so searching h1 only found nothing at all. Hence: match any
+    level, delimit on the same tag.
     """
-    s = soup(html)
-    for el in s.select("[class*=pg-boilerplate], [class*=pgheader]"):
-        el.decompose()
+    s = content_root(html)
 
     wanted = _norm_heading(section)
     start = next(
-        (h for h in s.find_all("h1") if _norm_heading(h.get_text(" ")) == wanted),
+        (h for h in s.find_all(_HEADINGS) if _norm_heading(h.get_text(" ")) == wanted),
         None,
     )
     if start is None:
         return ""
 
     parts: list[str] = []
-    for el in start.find_all_next(["h1", "h2", "h3", "h4", "p", "blockquote"]):
-        if el.name == "h1":
+    for el in start.find_all_next([*_HEADINGS, "p", "blockquote"]):
+        if el.name == start.name:
             break
         if el.find_parent("blockquote") is not None:
             continue  # already inside a collected blockquote
@@ -91,7 +110,7 @@ def extract_gutenberg_section(html: str, section: str) -> str:
     # The first paragraph is usually the scripture epigraph in quotes.
     if parts:
         first_text = re.sub(r"<[^>]+>", "", parts[0]).strip()
-        if first_text.startswith(("“", '"', "‘", "'")):
+        if first_text.startswith(("\u201c", '"', "\u2018", "'")):
             inner = re.sub(r"^<p[^>]*>|</p>$", "", parts[0].strip())
             parts[0] = f"<blockquote>{inner}</blockquote>"
     return clean_fragment("".join(parts))
@@ -254,6 +273,12 @@ class Command(BaseCommand):
                 self.style.ERROR(f"  extracted only {word_count(body)} words — skipped")
             )
             return
+
+        # Source defects, the same way books fix theirs: BODY_CORRECTIONS is
+        # keyed by slug and sermons have slugs, so this reuses the book table
+        # rather than inventing a second one. Re-applied on every import, so a
+        # hand-edited fixture can't drift from what the importer produces.
+        body = apply_body_corrections(entry.slug, order=None, body_html=body)
 
         if entry.scripture_ref:
             scripture_ref = entry.scripture_ref
