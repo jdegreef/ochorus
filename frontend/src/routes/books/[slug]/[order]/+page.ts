@@ -9,6 +9,12 @@ import type { EntryGenerator, PageLoad } from './$types';
 // and link previews. The reader's interactivity (marks, listen, progress) is
 // all client-side on top of the static text. Trailing slash so each chapter
 // lands as <order>/index.html, which the static host serves reliably.
+// Prerender refresh 2026-08-04: 244 chapter rows across 8 books and 7
+// languages lost a leading paragraph — the editorial chapter summaries the
+// ochorus.com import prefixed to the author's own prose. The chapter text is
+// baked into these prerendered pages, so the api serving the corrected body is
+// not enough on its own; the site has to rebuild or readers keep seeing the
+// summary. That is the whole job of this comment.
 export const prerender = true;
 export const trailingSlash = 'always';
 
