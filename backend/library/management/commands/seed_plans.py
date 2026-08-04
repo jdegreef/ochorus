@@ -118,6 +118,18 @@ CURATED_PLANS = [
 # AI-drafted, pending native review.
 #   {language: {slug: (title, description)}}
 PLAN_TRANSLATIONS = {
+    # Arabic currently has one plan whose source book is translated —
+    # the-inner-chamber-month. The rest are listed nowhere until their books
+    # land, because seed_plans only creates a plan in a language where EVERY
+    # source book is present; an entry here for a plan that cannot render is
+    # dead weight that reads like a bug.
+    "ar": {
+        "the-inner-chamber-month": (
+            "شهر في المخدع",
+            "ابنِ عادةً يوميّة في الصلاة وكلمة الله: ستّة وثلاثون صباحًا مع "
+            "أندرو موراي، فصلٌ واحد كلّ يوم.",
+        ),
+    },
     "pt": {
         "humility-12-days": (
             "Humildade em 12 Dias",
