@@ -2721,6 +2721,35 @@ class ContentQAFixesTests(TestCase):
         body = "<p>alone at the beginning of a sermon.</p>"
         self.assertEqual(apply_body_corrections(slug, None, body), body)
 
+    def test_corrections_have_no_duplicate_slugs(self):
+        """A repeated slug key silently discards the first entry.
+
+        Python keeps the last value for a duplicated key in a dict literal, so
+        adding a second block for a book that already has one drops every
+        correction in the original — with no error, and nothing to see in a
+        diff that only shows the added lines. That happened while adding the
+        drop-cap repairs; this is the guard.
+        """
+        import ast
+
+        source = (Path(__file__).resolve().parent / "corrections.py").read_text()
+        for node in ast.walk(ast.parse(source)):
+            if isinstance(node, ast.AnnAssign) and isinstance(node.value, ast.Dict):
+                target, value = node.target, node.value
+            elif isinstance(node, ast.Assign) and isinstance(node.value, ast.Dict):
+                target, value = node.targets[0], node.value
+            else:
+                continue
+            if not isinstance(target, ast.Name):
+                continue
+            keys = [k.value for k in value.keys if isinstance(k, ast.Constant)]
+            self.assertEqual(
+                sorted(keys),
+                sorted(set(keys)),
+                f"{target.id} has a duplicated key, which silently drops the "
+                f"earlier entry: {sorted(k for k in set(keys) if keys.count(k) > 1)}",
+            )
+
     def test_inner_chamber_dashes_and_full_stop(self):
         from library.corrections import apply_body_corrections
 

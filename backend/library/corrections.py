@@ -157,6 +157,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("evangelical s,", "evangelicals,"),
             # ch22 ended without its closing full stop.
             ("filled me with joy</p>", "filled me with joy.</p>"),
+            # ch2/ch19/ch23: drop cap fused to the word after it.
+            ("<p>Iwas", "<p>I was"),
+            ("<p>Ihave", "<p>I have"),
         ],
     },
     "the-inner-chamber": {
@@ -168,6 +171,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("makes perfect- set yourself", "makes perfect — set yourself"),
             ("apply the needed first lessons</p>", "apply the needed first lessons.</p>"),
             ("seat of His light and Holy Spirit</p>", "seat of His light and Holy Spirit.</p>"),
+            # ch8/ch16: drop cap fused to the word after it (see the dropcap note).
+            ("<p>Ithink", "<p>I think"),
+            ("<p>Ithank", "<p>I thank"),
         ],
     },
     "the-body-of-christ-teens": {
@@ -180,10 +186,21 @@ BODY_CORRECTIONS: dict[str, dict] = {
         ],
     },
     "feasting-at-the-table": {
-        "replacements": [("repea t:", "repeat:"), ("wif e!", "wife!")],
+        # ch7: drop cap fused to the word after it.
+        "replacements": [
+            ("repea t:", "repeat:"), ("wif e!", "wife!"),
+            ("<p>Itrust", "<p>I trust"),
+        ],
     },
     "the-christians-secret-of-a-happy-life-4": {
-        "replacements": [("sel f,", "self,")],
+        # ch4/8/14/16: drop cap fused to the word after it.
+        "replacements": [
+            ("sel f,", "self,"),
+            ("<p>Ihave", "<p>I have"),
+            ("<p>Ionce", "<p>I once"),
+            ("<p>Amajor", "<p>A major"),
+            ("<p>Agreat", "<p>A great"),
+        ],
     },
     "men-of-prayer-2": {
         "replacements": [("conversatio n.", "conversation.")],
@@ -220,6 +237,31 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("SHEPERD", "SHEPHERD"),
             ("days of prosperity aso", "days of prosperity also"),
         ],
+    },
+    # --- Drop caps that lost the space after them -----------------------------
+    # An oversized first letter is a separate text run in the PDF, and where the
+    # space between it and the rest of the line was lost the two words fused:
+    # "Ithink" for "I think". Always the first word of a paragraph, which is why
+    # each pattern is anchored to <p> — unanchored, "Iwas" would also match
+    # inside a word. Distinct from `dropcap_letters` below, which handles the
+    # other failure: the letter dropped out altogether.
+    "soar-like-the-eagle-3": {
+        "replacements": [("<p>Iwas", "<p>I was"), ("<p>Iwell", "<p>I well")],
+    },
+    "how-to-manage-a-library": {
+        "replacements": [("<p>Alibrary", "<p>A library"), ("<p>Agood", "<p>A good")],
+    },
+    "if": {
+        # Unpublished (copyright audit), but the row is in the fixture and would
+        # ship wrong if it were ever republished.
+        "replacements": [("<p>Ihave", "<p>I have")],
+    },
+    "humility-2": {
+        # The other failure mode, mid-chapter so `dropcap_letters` (first
+        # paragraph only) can't reach it: the H is simply gone. The paragraph
+        # above it opens "Humility is the path to death", which is what settles
+        # the missing letter.
+        "replacements": [("<p>umility is the blossom", "<p>Humility is the blossom")],
     },
 }
 
