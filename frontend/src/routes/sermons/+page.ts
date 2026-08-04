@@ -87,6 +87,15 @@ import type { PageLoad } from './$types';
  * serving the old eight briefs while the api served fourteen — the brief is
  * baked into this prerendered page, so it needs a build that touches
  * `frontend/`. That is the whole job of this comment.
+ *
+ * Prerender refresh 2026-08-04 (PR #753): the LAST twelve English sermons
+ * gained an "In brief", plus the eighteen translations that filling the
+ * English side exposed. Same backend-only shape as #741, with one extra
+ * wrinkle worth recording: a web build DID run just before this merge (for
+ * #751/#752), so the entry-chunk hash changed and the deploy looked complete
+ * — but that build raced ahead of this api release and baked the EMPTY
+ * summaries. A changed chunk hash is therefore not evidence the shelf is
+ * current; check for the brief TEXT in the served HTML instead.
  */
 export const load: PageLoad = async () => {
 	// Tolerate a lagging/absent sermon endpoint at prerender time (see the
