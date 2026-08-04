@@ -177,6 +177,13 @@ import type { PageLoad } from './$types';
  * bodies carry no dir/lang of their own, so /ar/books and
  * /ar/books/he-holds-my-tomorrows render under the container's dir="auto"
  * (see readerDirection.test.ts) and re-crawl to bake the translation.
+ *
+ * Prerender refresh 2026-08-04 (the plan #650 unblock): R. A. Torrey's أقنوم
+ * الروح القدس وعمله (The Person and Work of the Holy Spirit, 22 ch) — Arabic's
+ * sixth book and its longest yet. Same RTL handling. This one also makes the
+ * reading plan power-from-on-high render in Arabic, so /ar/plans changes too:
+ * seed_plans creates a plan only in a language where EVERY source book exists,
+ * and its other source (المعمودية بالروح القدس) has been Arabic since #625.
  */
 export const load: PageLoad = async () => {
 	try {
