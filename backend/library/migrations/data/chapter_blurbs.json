@@ -1,0 +1,414 @@
+{
+ "baptism-with-the-holy-spirit": {
+  "1": {
+   "drop": 2,
+   "expect": 35
+  },
+  "2": {
+   "drop": 1,
+   "expect": 28
+  },
+  "3": {
+   "drop": 1,
+   "expect": 63
+  },
+  "4": {
+   "drop": 2,
+   "expect": 9
+  },
+  "5": {
+   "drop": 1,
+   "expect": 39
+  }
+ },
+ "humility-2": {
+  "1": {
+   "drop": 2,
+   "expect": 19
+  },
+  "10": {
+   "drop": 1,
+   "expect": 27
+  },
+  "11": {
+   "drop": 1,
+   "expect": 22
+  },
+  "12": {
+   "drop": 2,
+   "expect": 28
+  },
+  "2": {
+   "drop": 2,
+   "expect": 21
+  },
+  "3": {
+   "drop": 1,
+   "expect": 24
+  },
+  "4": {
+   "drop": 1,
+   "expect": 22
+  },
+  "5": {
+   "drop": 1,
+   "expect": 17
+  },
+  "6": {
+   "drop": 1,
+   "expect": 24
+  },
+  "7": {
+   "drop": 1,
+   "expect": 17
+  },
+  "8": {
+   "drop": 1,
+   "expect": 18
+  },
+  "9": {
+   "drop": 1,
+   "expect": 15
+  }
+ },
+ "jesus-himself-2": {
+  "1": {
+   "drop": 1,
+   "expect": 49
+  },
+  "2": {
+   "drop": 1,
+   "expect": 50
+  }
+ },
+ "talks-to-the-farmer": {
+  "1": {
+   "drop": 1,
+   "expect": 67
+  },
+  "10": {
+   "drop": 1,
+   "expect": 51
+  },
+  "11": {
+   "drop": 1,
+   "expect": 44
+  },
+  "12": {
+   "drop": 1,
+   "expect": 42
+  },
+  "13": {
+   "drop": 1,
+   "expect": 48
+  },
+  "14": {
+   "drop": 1,
+   "expect": 43
+  },
+  "15": {
+   "drop": 1,
+   "expect": 79
+  },
+  "16": {
+   "drop": 1,
+   "expect": 51
+  },
+  "17": {
+   "drop": 1,
+   "expect": 45
+  },
+  "18": {
+   "drop": 1,
+   "expect": 45
+  },
+  "2": {
+   "drop": 1,
+   "expect": 61
+  },
+  "3": {
+   "drop": 1,
+   "expect": 65
+  },
+  "4": {
+   "drop": 1,
+   "expect": 39
+  },
+  "5": {
+   "drop": 1,
+   "expect": 72
+  },
+  "6": {
+   "drop": 1,
+   "expect": 57
+  },
+  "7": {
+   "drop": 1,
+   "expect": 56
+  },
+  "8": {
+   "drop": 1,
+   "expect": 48
+  },
+  "9": {
+   "drop": 1,
+   "expect": 45
+  }
+ },
+ "the-christians-secret-of-a-happy-life-4": {
+  "1": {
+   "drop": 1,
+   "expect": 42
+  },
+  "10": {
+   "drop": 1,
+   "expect": 51
+  },
+  "11": {
+   "drop": 1,
+   "expect": 64
+  },
+  "12": {
+   "drop": 1,
+   "expect": 41
+  },
+  "13": {
+   "drop": 1,
+   "expect": 49
+  },
+  "14": {
+   "drop": 1,
+   "expect": 40
+  },
+  "15": {
+   "drop": 2,
+   "expect": 37
+  },
+  "16": {
+   "drop": 1,
+   "expect": 32
+  },
+  "17": {
+   "drop": 1,
+   "expect": 44
+  },
+  "18": {
+   "drop": 1,
+   "expect": 36
+  },
+  "19": {
+   "drop": 1,
+   "expect": 65
+  },
+  "2": {
+   "drop": 2,
+   "expect": 46
+  },
+  "20": {
+   "drop": 1,
+   "expect": 52
+  },
+  "21": {
+   "drop": 2,
+   "expect": 49
+  },
+  "22": {
+   "drop": 1,
+   "expect": 65
+  },
+  "3": {
+   "drop": 1,
+   "expect": 35
+  },
+  "4": {
+   "drop": 1,
+   "expect": 42
+  },
+  "5": {
+   "drop": 2,
+   "expect": 47
+  },
+  "6": {
+   "drop": 2,
+   "expect": 47
+  },
+  "7": {
+   "drop": 1,
+   "expect": 42
+  },
+  "8": {
+   "drop": 1,
+   "expect": 42
+  },
+  "9": {
+   "drop": 2,
+   "expect": 57
+  }
+ },
+ "the-masters-indwelling": {
+  "1": {
+   "drop": 1,
+   "expect": 51
+  },
+  "10": {
+   "drop": 1,
+   "expect": 31
+  },
+  "11": {
+   "drop": 1,
+   "expect": 26
+  },
+  "12": {
+   "drop": 1,
+   "expect": 22
+  },
+  "13": {
+   "drop": 1,
+   "expect": 27
+  },
+  "2": {
+   "drop": 1,
+   "expect": 35
+  },
+  "3": {
+   "drop": 1,
+   "expect": 25
+  },
+  "4": {
+   "drop": 1,
+   "expect": 31
+  },
+  "5": {
+   "drop": 1,
+   "expect": 31
+  },
+  "6": {
+   "drop": 1,
+   "expect": 34
+  },
+  "7": {
+   "drop": 1,
+   "expect": 27
+  },
+  "8": {
+   "drop": 2,
+   "expect": 33
+  },
+  "9": {
+   "drop": 1,
+   "expect": 39
+  }
+ },
+ "the-person-and-work-of-the-holy-spirit": {
+  "1": {
+   "drop": 1,
+   "expect": 49
+  },
+  "10": {
+   "drop": 1,
+   "expect": 17
+  },
+  "11": {
+   "drop": 2,
+   "expect": 16
+  },
+  "12": {
+   "drop": 1,
+   "expect": 11
+  },
+  "13": {
+   "drop": 2,
+   "expect": 10
+  },
+  "14": {
+   "drop": 1,
+   "expect": 13
+  },
+  "15": {
+   "drop": 1,
+   "expect": 11
+  },
+  "16": {
+   "drop": 1,
+   "expect": 31
+  },
+  "17": {
+   "drop": 1,
+   "expect": 12
+  },
+  "18": {
+   "drop": 1,
+   "expect": 28
+  },
+  "19": {
+   "drop": 1,
+   "expect": 5
+  },
+  "2": {
+   "drop": 1,
+   "expect": 22
+  },
+  "22": {
+   "drop": 1,
+   "expect": 17
+  },
+  "3": {
+   "drop": 1,
+   "expect": 6
+  },
+  "4": {
+   "drop": 1,
+   "expect": 7
+  },
+  "5": {
+   "drop": 1,
+   "expect": 91
+  },
+  "6": {
+   "drop": 2,
+   "expect": 13
+  },
+  "7": {
+   "drop": 1,
+   "expect": 33
+  },
+  "8": {
+   "drop": 1,
+   "expect": 18
+  },
+  "9": {
+   "drop": 2,
+   "expect": 22
+  }
+ },
+ "the-secret-of-guidance": {
+  "1": {
+   "drop": 2,
+   "expect": 39
+  },
+  "2": {
+   "drop": 1,
+   "expect": 43
+  },
+  "3": {
+   "drop": 1,
+   "expect": 46
+  },
+  "4": {
+   "drop": 1,
+   "expect": 61
+  },
+  "5": {
+   "drop": 1,
+   "expect": 40
+  },
+  "6": {
+   "drop": 1,
+   "expect": 38
+  },
+  "7": {
+   "drop": 1,
+   "expect": 37
+  }
+ }
+}
