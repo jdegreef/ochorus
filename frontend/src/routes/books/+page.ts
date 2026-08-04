@@ -170,6 +170,13 @@ import type { PageLoad } from './$types';
  * index and /ar/books/the-inner-chamber render under the container's
  * dir="auto" (see readerDirection.test.ts) and re-crawl to bake the
  * translation.
+ *
+ * Prerender refresh 2026-08-04 (queue job #626): Gareth Evans's غَدي في يديه
+ * (He Holds My Tomorrows, 18 ch) — Arabic's fifth book, and its first modern
+ * devotional rather than a classic. Same RTL handling as #629: the chapter
+ * bodies carry no dir/lang of their own, so /ar/books and
+ * /ar/books/he-holds-my-tomorrows render under the container's dir="auto"
+ * (see readerDirection.test.ts) and re-crawl to bake the translation.
  */
 export const load: PageLoad = async () => {
 	try {
