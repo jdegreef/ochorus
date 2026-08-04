@@ -102,6 +102,16 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 import re as _re
 
 BODY_CORRECTIONS: dict[str, dict] = {
+    "blessed-adversity": {
+        # Two transcription slips in Gutenberg #23438 ("A Ribband of Blue"),
+        # both in the opening paragraph and both plainly errors rather than
+        # period spelling: the Psalm 23 allusion names the SHEPHERD, and the
+        # sentence reads "days of prosperity also".
+        "replacements": [
+            ("SHEPERD", "SHEPHERD"),
+            ("days of prosperity aso", "days of prosperity also"),
+        ],
+    },
     "baptism-with-the-holy-spirit": {
         # Source defects (OCR) in the English text, found while translating the
         # book to Portuguese. Both are scripture references only — the prose is

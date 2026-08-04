@@ -27,6 +27,7 @@ import time
 import requests
 from django.core.management.base import BaseCommand, CommandError
 
+from library.corrections import apply_body_corrections
 from library.ingest import clean_fragment, soup, word_count
 from library.management.commands.import_web import extract_page as extract_web_page
 from library.management.commands.import_web import fetch as fetch_web
@@ -62,11 +63,22 @@ def _norm_heading(text: str) -> str:
 
 
 def extract_gutenberg_section(html: str, section: str) -> str:
-    """Return the body of one h1-delimited sermon from a Gutenberg HTML edition.
+    """Return the body of one heading-delimited sermon from a Gutenberg edition.
 
-    Collects paragraph-level elements between the matching <h1> and the next
-    <h1>. A leading quotation paragraph (the scripture epigraph) becomes a
-    blockquote, mirroring the CCEL shape.
+    Collects paragraph-level elements between the matching heading and the next
+    heading AT THE SAME LEVEL. A leading quotation paragraph (the scripture
+    epigraph) becomes a blockquote, mirroring the CCEL shape.
+
+    The level is whatever the edition used, not always h1. A single-sermon
+    ebook titles it <h1> (Taylor's *Unfailing Springs*, PG 57109), but a
+    collection gives the volume the <h1> and each study an <h3> (Taylor's *A
+    Ribband of Blue*, PG 23438, eight studies) — those were invisible to an
+    h1-only search, so the import returned an empty body.
+
+    Delimiting by the SAME TAG rather than "same or higher" is load-bearing.
+    PG 57109 runs <h1>Unfailing Springs</h1> then an <h2>J. Hudson Taylor</h2>
+    byline before the text, so breaking on any higher-or-equal heading would
+    stop at the byline and yield an empty sermon.
     """
     s = soup(html)
     for el in s.select("[class*=pg-boilerplate], [class*=pgheader]"):
@@ -74,15 +86,20 @@ def extract_gutenberg_section(html: str, section: str) -> str:
 
     wanted = _norm_heading(section)
     start = next(
-        (h for h in s.find_all("h1") if _norm_heading(h.get_text(" ")) == wanted),
+        (
+            h
+            for h in s.find_all(["h1", "h2", "h3", "h4"])
+            if _norm_heading(h.get_text(" ")) == wanted
+        ),
         None,
     )
     if start is None:
         return ""
 
+    level = start.name
     parts: list[str] = []
     for el in start.find_all_next(["h1", "h2", "h3", "h4", "p", "blockquote"]):
-        if el.name == "h1":
+        if el.name == level:
             break
         if el.find_parent("blockquote") is not None:
             continue  # already inside a collected blockquote
@@ -254,6 +271,13 @@ class Command(BaseCommand):
                 self.style.ERROR(f"  extracted only {word_count(body)} words — skipped")
             )
             return
+
+        # Source defects, the same way books fix theirs — BODY_CORRECTIONS is
+        # keyed by slug and sermons have slugs, so this reuses the book
+        # mechanism rather than inventing a second one. Idempotent, and it
+        # re-applies on every import, so a fixture edit can't drift from it.
+        # (`order` only selects drop-cap letters, which sermons never have.)
+        body = apply_body_corrections(entry.slug, 1, body)
 
         if entry.scripture_ref:
             scripture_ref = entry.scripture_ref

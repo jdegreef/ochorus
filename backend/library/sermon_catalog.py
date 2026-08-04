@@ -262,4 +262,18 @@ SERMONS: list[SermonEntry] = [
         section="Unfailing Springs",
         scripture_ref="John 4:14",
     ),
+    # From "A Ribband of Blue" (1899), a collection of eight self-contained
+    # studies — each its own text and argument, which is what makes them
+    # sermons rather than chapters. (Taylor's "Separation and Service" is the
+    # opposite case: one continuous 57k-word exposition, so it belongs in the
+    # book catalog.) The studies are <h3> in this edition, not <h1>.
+    SermonEntry(
+        "blessed-adversity",
+        "Blessed Adversity",
+        "hudson-taylor",
+        "gutenberg",
+        "23438",
+        section="Blessed Adversity",
+        scripture_ref="Psalm 23:6",
+    ),
 ]
