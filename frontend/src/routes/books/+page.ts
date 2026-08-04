@@ -171,13 +171,12 @@ import type { PageLoad } from './$types';
  * dir="auto" (see readerDirection.test.ts) and re-crawl to bake the
  * translation.
  *
- * Prerender refresh 2026-08-04 (queue job #626 + the plan #650 unblock): two
- * more Arabic books — R. A. Torrey's أقنوم الروح القدس وعمله (The Person and
- * Work of the Holy Spirit, 22 ch) and Gareth Evans's غَدي في يديه (He Holds My
- * Tomorrows, 18 ch), 40 chapters in all. Same RTL handling as #629. The Torrey
- * book is what lets the reading plan power-from-on-high render in Arabic:
- * seed_plans only creates a plan in a language where EVERY source book exists,
- * and its other source (المعمودية بالروح القدس) has been Arabic since #625.
+ * Prerender refresh 2026-08-04 (queue job #626): Gareth Evans's غَدي في يديه
+ * (He Holds My Tomorrows, 18 ch) — Arabic's fifth book, and its first modern
+ * devotional rather than a classic. Same RTL handling as #629: the chapter
+ * bodies carry no dir/lang of their own, so /ar/books and
+ * /ar/books/he-holds-my-tomorrows render under the container's dir="auto"
+ * (see readerDirection.test.ts) and re-crawl to bake the translation.
  */
 export const load: PageLoad = async () => {
 	try {
