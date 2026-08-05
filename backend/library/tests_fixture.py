@@ -586,27 +586,10 @@ class SermonBriefCoverageTests(SimpleTestCase):
     # English sermon without one fails the guard rather than joining a list.
     EN_WITHOUT_BRIEF: set[str] = set()
 
-    # 38 rows translated while translate_sermon was dropping the summary.
-    # Re-running `translate_sermon <slug> --language <lang> --force` now fills
-    # these in; each line removed here is one shelf that reads properly.
-    TRANSLATIONS_WITHOUT_BRIEF = {
-        "christ-all-in-all.es", "christ-all-in-all.lg", "christ-all-in-all.pt",
-        "christ-all-in-all.uk", "christ-crucified.es", "eight-i-wills-of-christ.es",
-        "eight-i-wills-of-christ.lg", "eight-i-wills-of-christ.pt",
-        "eight-i-wills-of-christ.sw", "free-grace.es", "free-grace.lg", "himself.es",
-        "himself.lg", "himself.sw", "order-and-argument-in-prayer.es",
-        "order-and-argument-in-prayer.lg", "pauls-first-prayer.es",
-        "pauls-first-prayer.pt", "the-golden-key-of-prayer.es",
-        "the-golden-key-of-prayer.lg", "the-immutability-of-god.es",
-        "the-immutability-of-god.lg", "the-immutability-of-god.sw",
-        "the-joy-of-the-lord.es", "the-joy-of-the-lord.lg",
-        "the-possibilities-of-faith.es", "the-possibilities-of-faith.lg",
-        "the-power-of-stillness.es", "the-power-of-stillness.lg",
-        "the-power-of-stillness.pt", "the-power-of-stillness.sw",
-        "the-ravens-cry.es", "the-ravens-cry.pt", "unfailing-springs.ar",
-        "unfailing-springs.es", "unfailing-springs.lg", "unfailing-springs.pt",
-        "unfailing-springs.sw",
-    }
+    # Empty: every translated sermon now carries the brief its English source
+    # has. Keep it that way — a translation that drops the summary fails the
+    # guard rather than joining a list.
+    TRANSLATIONS_WITHOUT_BRIEF: set[str] = set()
 
     @classmethod
     def setUpClass(cls):
