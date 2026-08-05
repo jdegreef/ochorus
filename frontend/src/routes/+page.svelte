@@ -6,6 +6,7 @@
 	import { localizeHref } from '$lib/href';
 	import { locales } from '$lib/paraglide/runtime';
 	import { i18n } from '$lib/i18n.svelte';
+	import { portraitPosition } from '$lib/portraits';
 	import ContinueReading from '$lib/components/ContinueReading.svelte';
 	import ReadingNudge from '$lib/components/ReadingNudge.svelte';
 	import TodaysReading from '$lib/components/TodaysReading.svelte';
@@ -214,7 +215,7 @@
 						alt="{t('a11y.portraitOf')} {author.name}"
 						loading="lazy"
 						class="h-11 w-11 shrink-0 rounded-full border border-border object-cover"
-						style="filter: grayscale(1)"
+						style="filter: grayscale(1); object-position: {portraitPosition(author.slug)}"
 					/>
 				{:else}
 					<span

@@ -6,6 +6,7 @@
 	import { readingTime, readingMinutes } from '$lib/reading';
 	import { localizeHref } from '$lib/href';
 	import { scopedSearchHref } from '$lib/searchState';
+	import { portraitPosition } from '$lib/portraits';
 	import { listen } from '$lib/listen.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { page } from '$app/stores';
@@ -200,7 +201,7 @@
 				src={author.photo_url}
 				alt="{t('a11y.portraitOf')} {author.name}"
 				class="h-24 w-24 shrink-0 rounded-full border border-border object-cover shadow-sm"
-				style="filter: grayscale(1)"
+				style="filter: grayscale(1); object-position: {portraitPosition(author.slug)}"
 			/>
 		{:else}
 			<span
@@ -392,7 +393,7 @@
 								alt="{t('a11y.portraitOf')} {c.name}"
 								loading="lazy"
 								class="h-11 w-11 shrink-0 rounded-full border border-border object-cover"
-								style="filter: grayscale(1)"
+								style="filter: grayscale(1); object-position: {portraitPosition(c.slug)}"
 							/>
 						{:else}
 							<span

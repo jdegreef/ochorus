@@ -12,6 +12,7 @@
 	import CatalogLanguageNudge from '$lib/components/CatalogLanguageNudge.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import { hueForBirthYear } from '$lib/eras';
+	import { portraitPosition } from '$lib/portraits';
 
 	const t = i18n.t;
 
@@ -284,6 +285,7 @@
 							width="32"
 							height="32"
 							class="h-8 w-8 shrink-0 rounded-full border border-border object-cover"
+							style="object-position: {portraitPosition(g.slug)}"
 						/>
 					{/if}
 					<a href={localizeHref(`/authors/${g.slug}`)} class="!text-text hover:underline">{g.name}</a>

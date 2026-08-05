@@ -15,6 +15,7 @@
 	import { absUrl, jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { localizeHref } from '$lib/href';
+	import { portraitPosition } from '$lib/portraits';
 	import Reader from '$lib/components/Reader.svelte';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import Seo from '$lib/components/Seo.svelte';
@@ -313,7 +314,7 @@
 				src={sermon.author_photo}
 				alt="{t('a11y.portraitOf')} {sermon.author_name}"
 				class="h-9 w-9 shrink-0 rounded-full border border-border object-cover"
-				style="filter: grayscale(1)"
+				style="filter: grayscale(1); object-position: {portraitPosition(sermon.author_slug)}"
 				loading="lazy"
 			/>
 		{:else}
