@@ -15,6 +15,10 @@ import type { EntryGenerator, PageLoad } from './$types';
 // baked into these prerendered pages, so the api serving the corrected body is
 // not enough on its own; the site has to rebuild or readers keep seeing the
 // summary. That is the whole job of this comment.
+// Prerender refresh 2026-08-04 (headings): 175 chapter rows across 11 books
+// gained <h2> section headings the PDF import had fused into the prose or left
+// as stubby paragraphs. This changes the shape of the page, not just a word, so
+// the static build has to run for readers to see it.
 export const prerender = true;
 export const trailingSlash = 'always';
 

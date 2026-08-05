@@ -1,0 +1,5063 @@
+{
+ "feasting-at-the-table": {
+  "3": {
+   "expect": 17,
+   "headings": [
+    {
+     "heading": {
+      "en": "Sealed in Him with the Holy Spirit of Promise."
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    }
+   ]
+  },
+  "4": {
+   "expect": 20,
+   "headings": [
+    {
+     "heading": {
+      "en": "The Body of Christ :"
+     },
+     "kind": "fused",
+     "paragraph": 3,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "The building – a holy temple – a dwelling place of God"
+     },
+     "kind": "fused",
+     "paragraph": 12,
+     "position": "prefix"
+    }
+   ]
+  },
+  "5": {
+   "expect": 42,
+   "headings": [
+    {
+     "heading": {
+      "en": "Ephesians 2:11-22"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    }
+   ]
+  },
+  "6": {
+   "expect": 25,
+   "headings": [
+    {
+     "heading": {
+      "en": "Ephesians Chapter 3:1-13"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A personal story:"
+     },
+     "kind": "fused",
+     "paragraph": 13,
+     "position": "prefix"
+    }
+   ]
+  },
+  "7": {
+   "expect": 36,
+   "headings": [
+    {
+     "heading": {
+      "en": "4:1: WALK in a manner worthy of your calling :"
+     },
+     "kind": "fused",
+     "paragraph": 4,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "4:17-24: Walk, no longer as the Gentiles walk."
+     },
+     "kind": "fused",
+     "paragraph": 16,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "5: 1-6: Walk in love just as Chris t also loved you…"
+     },
+     "kind": "fused",
+     "paragraph": 23,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "5:8-14: Walk as children of light."
+     },
+     "kind": "fused",
+     "paragraph": 29,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "5:15-21: Walk as wise men, not as unwise."
+     },
+     "kind": "fused",
+     "paragraph": 31,
+     "position": "prefix"
+    }
+   ]
+  },
+  "8": {
+   "expect": 32,
+   "headings": [
+    {
+     "heading": {
+      "en": "Chapter 5:22-33 :"
+     },
+     "kind": "fused",
+     "paragraph": 3,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 5:32 : A great mystery ."
+     },
+     "kind": "fused",
+     "paragraph": 10,
+     "position": "prefix"
+    }
+   ]
+  }
+ },
+ "how-to-manage-a-library": {
+  "1": {
+   "expect": 17,
+   "headings": [
+    {
+     "heading": {
+      "en": "What a library is and what it does"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Different Types of Libraries"
+     },
+     "kind": "fused",
+     "paragraph": 7,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Public Libraries"
+     },
+     "kind": "fused",
+     "paragraph": 8,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Academic Libraries"
+     },
+     "kind": "fused",
+     "paragraph": 10,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "School Libraries"
+     },
+     "kind": "fused",
+     "paragraph": 11,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Special Libraries"
+     },
+     "kind": "fused",
+     "paragraph": 12,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Core Principles That Guide All Good Libraries"
+     },
+     "kind": "fused",
+     "paragraph": 13,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Access"
+     },
+     "kind": "fused",
+     "paragraph": 14,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Service"
+     },
+     "kind": "fused",
+     "paragraph": 15,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Fairness and Inclusion"
+     },
+     "kind": "fused",
+     "paragraph": 16,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Knowledge Sharing"
+     },
+     "kind": "fused",
+     "paragraph": 17,
+     "position": "prefix"
+    }
+   ]
+  },
+  "2": {
+   "expect": 34,
+   "headings": [
+    {
+     "heading": {
+      "en": "How to Lead, Organise, and Guide Your Library Successfully"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "1. The Role of a Librarian: What You Are Responsible For"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Example"
+     },
+     "kind": "fused",
+     "paragraph": 10,
+     "position": "prefix"
+    },
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 12,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "3. Policies and Procedures: The Rules That Keep the Library Running"
+     },
+     "kind": "fused",
+     "paragraph": 16,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Policies (The Rules)"
+     },
+     "kind": "fused",
+     "paragraph": 18,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Procedures (The Steps)"
+     },
+     "kind": "fused",
+     "paragraph": 19,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "4. Staff and Volunteer Roles: How Everyone Contributes"
+     },
+     "kind": "fused",
+     "paragraph": 20,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Librarian or Library Manager"
+     },
+     "kind": "fused",
+     "paragraph": 21,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Library Assistant"
+     },
+     "kind": "fused",
+     "paragraph": 22,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Volunteers"
+     },
+     "kind": "fused",
+     "paragraph": 23,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "ICT/Technology Support"
+     },
+     "kind": "fused",
+     "paragraph": 24,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Security or Custodial Support"
+     },
+     "kind": "fused",
+     "paragraph": 25,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "5. Planning, Goal Setting, and Measuring Progress"
+     },
+     "kind": "fused",
+     "paragraph": 27,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "6. Professional Ethics and Standards: How Library Workers Should Behave"
+     },
+     "kind": "fused",
+     "paragraph": 31,
+     "position": "prefix"
+    }
+   ]
+  },
+  "3": {
+   "expect": 29,
+   "headings": [
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Choosing and Acquiring Books"
+     },
+     "kind": "fused",
+     "paragraph": 4,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Cataloguing and Classification: Giving Each Book a Home"
+     },
+     "kind": "fused",
+     "paragraph": 8,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Processing New Books: Preparing Them for Use"
+     },
+     "kind": "fused",
+     "paragraph": 11,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Arranging Books on the Shelves"
+     },
+     "kind": "fused",
+     "paragraph": 14,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Preserving Books: Helping Them Last Longer"
+     },
+     "kind": "fused",
+     "paragraph": 18,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Weeding: Removing What No Longer Serves the Library"
+     },
+     "kind": "fused",
+     "paragraph": 21,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Keeping Inventory: Knowing What You Own"
+     },
+     "kind": "fused",
+     "paragraph": 25,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Bringing It All Together"
+     },
+     "kind": "fused",
+     "paragraph": 28,
+     "position": "prefix"
+    }
+   ]
+  },
+  "4": {
+   "expect": 29,
+   "headings": [
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Creating a Welcoming Environment"
+     },
+     "kind": "fused",
+     "paragraph": 4,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Circulation Services: Borrowing and Returning Books"
+     },
+     "kind": "fused",
+     "paragraph": 6,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Reference and Information Services"
+     },
+     "kind": "fused",
+     "paragraph": 9,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Reader Advisory and Encouraging Reading"
+     },
+     "kind": "fused",
+     "paragraph": 12,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Literacy Programs and Learning Activities"
+     },
+     "kind": "fused",
+     "paragraph": 15,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Supporting Special Groups"
+     },
+     "kind": "fused",
+     "paragraph": 17,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Digital Access and Technology Support"
+     },
+     "kind": "fused",
+     "paragraph": 20,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Community Engagement and Partnerships"
+     },
+     "kind": "fused",
+     "paragraph": 23,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Overall User Experience"
+     },
+     "kind": "fused",
+     "paragraph": 26,
+     "position": "prefix"
+    }
+   ]
+  },
+  "5": {
+   "expect": 38,
+   "headings": [
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "1. The Core Engine: The Library Management System (LMS/ILS)"
+     },
+     "kind": "fused",
+     "paragraph": 4,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Principle: Centralised Order"
+     },
+     "kind": "fused",
+     "paragraph": 5,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Application: Choosing Your System"
+     },
+     "kind": "fused",
+     "paragraph": 9,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "2. The Doorway to Discovery: Digital Catalogues"
+     },
+     "kind": "fused",
+     "paragraph": 10,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Principle: Empowered Search"
+     },
+     "kind": "fused",
+     "paragraph": 11,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Action: Catalogue Your Collection with Discipline"
+     },
+     "kind": "fused",
+     "paragraph": 15,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "3. Tools for Daily Operations: Computers and Basic Software"
+     },
+     "kind": "fused",
+     "paragraph": 16,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Principle: Efficiency and Communication"
+     },
+     "kind": "fused",
+     "paragraph": 17,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "4. Expanding the Horizon: Online Resources and E-Content"
+     },
+     "kind": "fused",
+     "paragraph": 21,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Principle: Infinite Shelf Space"
+     },
+     "kind": "fused",
+     "paragraph": 22,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "5. Small Steps to the Future: Low-Resource Automation"
+     },
+     "kind": "fused",
+     "paragraph": 27,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Principle: Freeing Up Staff for Service"
+     },
+     "kind": "fused",
+     "paragraph": 28,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "6. Upholding Trust: Data Protection and Backup"
+     },
+     "kind": "fused",
+     "paragraph": 32,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Principle: Trust and Preservation"
+     },
+     "kind": "fused",
+     "paragraph": 33,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Final Challenge for the Manager"
+     },
+     "kind": "fused",
+     "paragraph": 38,
+     "position": "prefix"
+    }
+   ]
+  },
+  "6": {
+   "expect": 46,
+   "headings": [
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "1. The Daily Rhythm: Opening and Closing Procedures"
+     },
+     "kind": "fused",
+     "paragraph": 6,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Principle: Preparation and Security"
+     },
+     "kind": "fused",
+     "paragraph": 7,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "2. Managing the Human Element: User Relations and Conflict"
+     },
+     "kind": "fused",
+     "paragraph": 17,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Principle: Courtesy and Clarity"
+     },
+     "kind": "fused",
+     "paragraph": 18,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "3. The Physical Environment: Safety, Cleanliness, and Organisation"
+     },
+     "kind": "fused",
+     "paragraph": 23,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Principle: Order and Accessibility"
+     },
+     "kind": "fused",
+     "paragraph": 24,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "4. Designing the Experience: Space Planning and Arrangement"
+     },
+     "kind": "fused",
+     "paragraph": 29,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Principle: Function and Flexibility"
+     },
+     "kind": "fused",
+     "paragraph": 30,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "5. Sustaining the Vision: Basic Financial and Budgeting Practices"
+     },
+     "kind": "fused",
+     "paragraph": 33,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Principle: Transparency and Stewardship"
+     },
+     "kind": "fused",
+     "paragraph": 34,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "6. Proving the Impact: Statistics and Reporting"
+     },
+     "kind": "fused",
+     "paragraph": 39,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Principle: Evidence and Advocacy"
+     },
+     "kind": "fused",
+     "paragraph": 40,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Final Challenge for the Manager"
+     },
+     "kind": "fused",
+     "paragraph": 46,
+     "position": "prefix"
+    }
+   ]
+  },
+  "7": {
+   "expect": 51,
+   "headings": [
+    {
+     "heading": {
+      "en": "Starting a New Library Laying a Strong Foundation"
+     },
+     "kind": "fused",
+     "paragraph": 3,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Understanding Your Mission"
+     },
+     "kind": "fused",
+     "paragraph": 4,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Preparing the Space"
+     },
+     "kind": "fused",
+     "paragraph": 6,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Finding Resources"
+     },
+     "kind": "fused",
+     "paragraph": 8,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Setting Simple Policies"
+     },
+     "kind": "fused",
+     "paragraph": 10,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Organising and Launching"
+     },
+     "kind": "fused",
+     "paragraph": 12,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Reviving a Failing Library Restoring Order, Purpose, and Life"
+     },
+     "kind": "fused",
+     "paragraph": 14,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Step 1: Understanding What Went Wrong"
+     },
+     "kind": "fused",
+     "paragraph": 16,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Step 2: Clearing, Cleaning, and Rebuilding"
+     },
+     "kind": "fused",
+     "paragraph": 23,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Step 3: Reintroducing the Library to the Community"
+     },
+     "kind": "fused",
+     "paragraph": 28,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Common Mistakes and How to Avoid Them"
+     },
+     "kind": "fused",
+     "paragraph": 30,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Buying Books Nobody Needs"
+     },
+     "kind": "fused",
+     "paragraph": 31,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Weak or Inconsistent Organisation"
+     },
+     "kind": "fused",
+     "paragraph": 32,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Too Many Rules"
+     },
+     "kind": "fused",
+     "paragraph": 33,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Waiting Instead of Reaching Out"
+     },
+     "kind": "fused",
+     "paragraph": 34,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Ignoring Backup and Safety"
+     },
+     "kind": "fused",
+     "paragraph": 35,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Growing the Library Over Time"
+     },
+     "kind": "fused",
+     "paragraph": 37,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Conclusion Your Work is a Gift to the Future"
+     },
+     "kind": "fused",
+     "paragraph": 44,
+     "position": "prefix"
+    },
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 51,
+     "position": "prefix"
+    }
+   ]
+  }
+ },
+ "men-and-women-who-gave-everything-2": {
+  "10": {
+   "expect": 10,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Vision for Missional and Sacrificial Ministry"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 9,
+     "position": "prefix"
+    }
+   ]
+  },
+  "11": {
+   "expect": 10,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who She Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Her Vision for Missional and Sacrificial Ministry"
+     },
+     "kind": "fused",
+     "paragraph": 3,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 10,
+     "position": "prefix"
+    }
+   ]
+  },
+  "13": {
+   "expect": 54,
+   "headings": [
+    {
+     "heading": {
+      "en": "Introduction"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 1 — William Carey"
+     },
+     "kind": "fused",
+     "paragraph": 6,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 2 — David Livingstone"
+     },
+     "kind": "fused",
+     "paragraph": 11,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 3 — Catherine Booth"
+     },
+     "kind": "fused",
+     "paragraph": 16,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 4 — D.L. Moody"
+     },
+     "kind": "fused",
+     "paragraph": 21,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 5 — Pandita Ramabai"
+     },
+     "kind": "fused",
+     "paragraph": 26,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 6 — C.T. Studd"
+     },
+     "kind": "fused",
+     "paragraph": 31,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 7 — John Stott"
+     },
+     "kind": "fused",
+     "paragraph": 35,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 8 — Helen Roseveare"
+     },
+     "kind": "fused",
+     "paragraph": 40,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 9 — Jim Elliot"
+     },
+     "kind": "fused",
+     "paragraph": 44,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 10 — Elisabeth Elliot"
+     },
+     "kind": "fused",
+     "paragraph": 47,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Conclusion"
+     },
+     "kind": "fused",
+     "paragraph": 51,
+     "position": "prefix"
+    }
+   ]
+  },
+  "2": {
+   "expect": 12,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Vision for Missional and Sacrificial Ministry"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 10,
+     "position": "prefix"
+    }
+   ]
+  },
+  "3": {
+   "expect": 13,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Vision for Missional and Sacrificial Ministry"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 12,
+     "position": "prefix"
+    }
+   ]
+  },
+  "4": {
+   "expect": 10,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who She Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Her Vision for Missional and Sacrificial Ministry"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 10,
+     "position": "prefix"
+    }
+   ]
+  },
+  "5": {
+   "expect": 12,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Vision for Missional and Sacrificial Ministry"
+     },
+     "kind": "fused",
+     "paragraph": 3,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 11,
+     "position": "prefix"
+    }
+   ]
+  },
+  "6": {
+   "expect": 8,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who She Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Her Vision for Missional and Sacrificial Ministry"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 8,
+     "position": "prefix"
+    }
+   ]
+  },
+  "7": {
+   "expect": 9,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Vision for Missional and Sacrificial Ministry"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 8,
+     "position": "prefix"
+    }
+   ]
+  },
+  "8": {
+   "expect": 10,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Vision for Missional and Sacrificial Ministry"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 10,
+     "position": "prefix"
+    }
+   ]
+  },
+  "9": {
+   "expect": 10,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who She Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Her Vision for Missional and Sacrificial Ministry"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 10,
+     "position": "prefix"
+    }
+   ]
+  }
+ },
+ "men-of-prayer-2": {
+  "1": {
+   "expect": 11,
+   "headings": [
+    {
+     "heading": {
+      "en": "A Fire That Must Not Die"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Why This Book is for Ugandan Pastors"
+     },
+     "kind": "fused",
+     "paragraph": 3,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "About These Fifteen Men"
+     },
+     "kind": "fused",
+     "paragraph": 7,
+     "position": "prefix"
+    }
+   ]
+  },
+  "10": {
+   "expect": 26,
+   "headings": [
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Great Answer to Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 7,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Key Scriptures"
+     },
+     "kind": "fused",
+     "paragraph": 13,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Words on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 16,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Word of God"
+     },
+     "kind": "fused",
+     "paragraph": 22,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Holy Spirit"
+     },
+     "kind": "fused",
+     "paragraph": 24,
+     "position": "prefix"
+    }
+   ]
+  },
+  "11": {
+   "expect": 24,
+   "headings": [
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Great Answer to Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 6,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Key Scriptures"
+     },
+     "kind": "fused",
+     "paragraph": 9,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Words on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 13,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Word of God"
+     },
+     "kind": "fused",
+     "paragraph": 18,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Holy Spirit"
+     },
+     "kind": "fused",
+     "paragraph": 22,
+     "position": "prefix"
+    }
+   ]
+  },
+  "12": {
+   "expect": 22,
+   "headings": [
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Great Answer to Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 6,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Key Scriptures"
+     },
+     "kind": "fused",
+     "paragraph": 9,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Words on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 13,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Word of God"
+     },
+     "kind": "fused",
+     "paragraph": 18,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Holy Spirit"
+     },
+     "kind": "fused",
+     "paragraph": 20,
+     "position": "prefix"
+    }
+   ]
+  },
+  "13": {
+   "expect": 22,
+   "headings": [
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Great Answer to Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 6,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Key Scriptures"
+     },
+     "kind": "fused",
+     "paragraph": 10,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Words on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 13,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Word of God"
+     },
+     "kind": "fused",
+     "paragraph": 18,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Holy Spirit"
+     },
+     "kind": "fused",
+     "paragraph": 20,
+     "position": "prefix"
+    }
+   ]
+  },
+  "14": {
+   "expect": 21,
+   "headings": [
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Great Answer to Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 6,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Key Scriptures"
+     },
+     "kind": "fused",
+     "paragraph": 9,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Words on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 12,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Word of God"
+     },
+     "kind": "fused",
+     "paragraph": 17,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Holy Spirit"
+     },
+     "kind": "fused",
+     "paragraph": 19,
+     "position": "prefix"
+    }
+   ]
+  },
+  "15": {
+   "expect": 21,
+   "headings": [
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Great Answer to Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 6,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Key Scriptures"
+     },
+     "kind": "fused",
+     "paragraph": 9,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Words on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 12,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Word of God"
+     },
+     "kind": "fused",
+     "paragraph": 17,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Holy Spirit"
+     },
+     "kind": "fused",
+     "paragraph": 19,
+     "position": "prefix"
+    }
+   ]
+  },
+  "16": {
+   "expect": 22,
+   "headings": [
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Great Answer to Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 7,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Key Scriptures"
+     },
+     "kind": "fused",
+     "paragraph": 10,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Words on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 13,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Word of God"
+     },
+     "kind": "fused",
+     "paragraph": 18,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Holy Spirit"
+     },
+     "kind": "fused",
+     "paragraph": 20,
+     "position": "prefix"
+    }
+   ]
+  },
+  "17": {
+   "expect": 35,
+   "headings": [
+    {
+     "heading": {
+      "en": "What These Men Leave to Us"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "The Common Thread"
+     },
+     "kind": "fused",
+     "paragraph": 5,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Word to Ugandan Pastors"
+     },
+     "kind": "fused",
+     "paragraph": 13,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "CALL TO ACTION A Charge to the Pastors and Teachers of Uganda"
+     },
+     "kind": "fused",
+     "paragraph": 17,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "1. Establish a Daily Prayer Appointment"
+     },
+     "kind": "fused",
+     "paragraph": 18,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "2. Ground Your Prayers in Scripture"
+     },
+     "kind": "fused",
+     "paragraph": 20,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "3. Pray for the Filling of the Holy Spirit"
+     },
+     "kind": "fused",
+     "paragraph": 22,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "4. Pray for Your Congregation by Name"
+     },
+     "kind": "fused",
+     "paragraph": 23,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "5. Build a Culture of Prayer in Your Church"
+     },
+     "kind": "fused",
+     "paragraph": 24,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "6. Find or Become a Prayer Partner"
+     },
+     "kind": "fused",
+     "paragraph": 25,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "7. Intercede for Uganda and the Nations"
+     },
+     "kind": "fused",
+     "paragraph": 26,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Final Word"
+     },
+     "kind": "fused",
+     "paragraph": 28,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Matthew 21:22"
+     },
+     "kind": "epigraph",
+     "paragraph": 35,
+     "position": "prefix"
+    }
+   ]
+  },
+  "2": {
+   "expect": 25,
+   "headings": [
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Great Answer to Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 6,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Key Scriptures"
+     },
+     "kind": "fused",
+     "paragraph": 12,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Words on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 16,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Word of God"
+     },
+     "kind": "fused",
+     "paragraph": 21,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Holy Spirit"
+     },
+     "kind": "fused",
+     "paragraph": 23,
+     "position": "prefix"
+    }
+   ]
+  },
+  "3": {
+   "expect": 22,
+   "headings": [
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Great Answer to Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 6,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Key Scriptures"
+     },
+     "kind": "fused",
+     "paragraph": 10,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Words on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 13,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Word of God"
+     },
+     "kind": "fused",
+     "paragraph": 18,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Holy Spirit"
+     },
+     "kind": "fused",
+     "paragraph": 20,
+     "position": "prefix"
+    }
+   ]
+  },
+  "4": {
+   "expect": 21,
+   "headings": [
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Great Answer to Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 6,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Key Scriptures"
+     },
+     "kind": "fused",
+     "paragraph": 9,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Words on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 12,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Holy Spirit"
+     },
+     "kind": "fused",
+     "paragraph": 19,
+     "position": "prefix"
+    }
+   ]
+  },
+  "5": {
+   "expect": 22,
+   "headings": [
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Great Answer to Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 6,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Key Scriptures"
+     },
+     "kind": "fused",
+     "paragraph": 9,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Words on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 12,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Word of God"
+     },
+     "kind": "fused",
+     "paragraph": 18,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Holy Spirit"
+     },
+     "kind": "fused",
+     "paragraph": 20,
+     "position": "prefix"
+    }
+   ]
+  },
+  "6": {
+   "expect": 21,
+   "headings": [
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Great Answer to Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 6,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Key Scriptures"
+     },
+     "kind": "fused",
+     "paragraph": 9,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Words on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 12,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Word of God"
+     },
+     "kind": "fused",
+     "paragraph": 17,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Holy Spirit"
+     },
+     "kind": "fused",
+     "paragraph": 19,
+     "position": "prefix"
+    }
+   ]
+  },
+  "7": {
+   "expect": 22,
+   "headings": [
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Great Answer to Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 6,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Key Scriptures"
+     },
+     "kind": "fused",
+     "paragraph": 9,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Words on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 12,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Word of God"
+     },
+     "kind": "fused",
+     "paragraph": 17,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Holy Spirit"
+     },
+     "kind": "fused",
+     "paragraph": 20,
+     "position": "prefix"
+    }
+   ]
+  },
+  "8": {
+   "expect": 23,
+   "headings": [
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Great Answer to Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 7,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Key Scriptures"
+     },
+     "kind": "fused",
+     "paragraph": 11,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Words on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 14,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Word of God"
+     },
+     "kind": "fused",
+     "paragraph": 19,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Holy Spirit"
+     },
+     "kind": "fused",
+     "paragraph": 21,
+     "position": "prefix"
+    }
+   ]
+  },
+  "9": {
+   "expect": 21,
+   "headings": [
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Great Answer to Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 6,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Key Scriptures"
+     },
+     "kind": "fused",
+     "paragraph": 9,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Words on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 12,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Word of God"
+     },
+     "kind": "fused",
+     "paragraph": 17,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Prayer and the Holy Spirit"
+     },
+     "kind": "fused",
+     "paragraph": 19,
+     "position": "prefix"
+    }
+   ]
+  }
+ },
+ "men-who-moved-heaven": {
+  "10": {
+   "expect": 11,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Core Teaching on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 11,
+     "position": "prefix"
+    }
+   ]
+  },
+  "11": {
+   "expect": 10,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Core Teaching on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 10,
+     "position": "prefix"
+    }
+   ]
+  },
+  "13": {
+   "expect": 54,
+   "headings": [
+    {
+     "heading": {
+      "en": "Introduction"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 1 — Charles Spurgeon"
+     },
+     "kind": "fused",
+     "paragraph": 9,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 2 — Andrew Murray"
+     },
+     "kind": "fused",
+     "paragraph": 14,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 3 — Rees Howells"
+     },
+     "kind": "fused",
+     "paragraph": 19,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 4 — Hudson Taylor"
+     },
+     "kind": "fused",
+     "paragraph": 24,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 5 — E. M. Bounds"
+     },
+     "kind": "fused",
+     "paragraph": 28,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 6 — George Müller"
+     },
+     "kind": "fused",
+     "paragraph": 33,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 7 — John “Praying” Hyde"
+     },
+     "kind": "fused",
+     "paragraph": 38,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 8 — David Brainerd"
+     },
+     "kind": "fused",
+     "paragraph": 43,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 9 — Martin Luther"
+     },
+     "kind": "fused",
+     "paragraph": 46,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 10 — John Wesley"
+     },
+     "kind": "fused",
+     "paragraph": 49,
+     "position": "prefix"
+    }
+   ]
+  },
+  "2": {
+   "expect": 13,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Core Teaching on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 13,
+     "position": "prefix"
+    }
+   ]
+  },
+  "3": {
+   "expect": 11,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Core Teaching on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 3,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 11,
+     "position": "prefix"
+    }
+   ]
+  },
+  "4": {
+   "expect": 11,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Core Teaching on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 11,
+     "position": "prefix"
+    }
+   ]
+  },
+  "5": {
+   "expect": 9,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Core Teaching on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 9,
+     "position": "prefix"
+    }
+   ]
+  },
+  "6": {
+   "expect": 9,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Core Teaching on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 9,
+     "position": "prefix"
+    }
+   ]
+  },
+  "7": {
+   "expect": 9,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Core Teaching on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 9,
+     "position": "prefix"
+    }
+   ]
+  },
+  "8": {
+   "expect": 10,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Core Teaching on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 3,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 10,
+     "position": "prefix"
+    }
+   ]
+  },
+  "9": {
+   "expect": 13,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Core Teaching on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 3,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 13,
+     "position": "prefix"
+    }
+   ]
+  }
+ },
+ "men-who-tended-the-flock-2": {
+  "10": {
+   "expect": 9,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Vision for the Pastoral Calling"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 9,
+     "position": "prefix"
+    }
+   ]
+  },
+  "11": {
+   "expect": 10,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Vision for the Pastoral Calling"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 10,
+     "position": "prefix"
+    }
+   ]
+  },
+  "13": {
+   "expect": 60,
+   "headings": [
+    {
+     "heading": {
+      "en": "Introduction"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 1 — John Chrysostom"
+     },
+     "kind": "fused",
+     "paragraph": 6,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 2 — Gregory the Great"
+     },
+     "kind": "fused",
+     "paragraph": 12,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 3 — George Herbert"
+     },
+     "kind": "fused",
+     "paragraph": 17,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 4 — Richard Baxter"
+     },
+     "kind": "fused",
+     "paragraph": 22,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 5 — Jonathan Edwards"
+     },
+     "kind": "fused",
+     "paragraph": 27,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 6 — John Newton"
+     },
+     "kind": "fused",
+     "paragraph": 32,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 7 — Robert Murray M’Cheyne"
+     },
+     "kind": "fused",
+     "paragraph": 37,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 8 — A.W. Tozer"
+     },
+     "kind": "fused",
+     "paragraph": 42,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 9 — Dietrich Bonhoeffer"
+     },
+     "kind": "fused",
+     "paragraph": 47,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 10 — Martyn Lloyd-Jones"
+     },
+     "kind": "fused",
+     "paragraph": 52,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Conclusion"
+     },
+     "kind": "fused",
+     "paragraph": 57,
+     "position": "prefix"
+    }
+   ]
+  },
+  "2": {
+   "expect": 13,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Vision for the Pastoral Calling"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 12,
+     "position": "prefix"
+    }
+   ]
+  },
+  "3": {
+   "expect": 8,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Vision for the Pastoral Calling"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 8,
+     "position": "prefix"
+    }
+   ]
+  },
+  "4": {
+   "expect": 11,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Vision for the Pastoral Calling"
+     },
+     "kind": "fused",
+     "paragraph": 3,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 11,
+     "position": "prefix"
+    }
+   ]
+  },
+  "5": {
+   "expect": 11,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Vision for the Pastoral Calling"
+     },
+     "kind": "fused",
+     "paragraph": 3,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 11,
+     "position": "prefix"
+    }
+   ]
+  },
+  "6": {
+   "expect": 10,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Vision for the Pastoral Calling"
+     },
+     "kind": "fused",
+     "paragraph": 3,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 10,
+     "position": "prefix"
+    }
+   ]
+  },
+  "7": {
+   "expect": 11,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Vision for the Pastoral Calling"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 11,
+     "position": "prefix"
+    }
+   ]
+  },
+  "8": {
+   "expect": 13,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Vision for the Pastoral Calling"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 13,
+     "position": "prefix"
+    }
+   ]
+  },
+  "9": {
+   "expect": 11,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who He Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "His Vision for the Pastoral Calling"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 11,
+     "position": "prefix"
+    }
+   ]
+  }
+ },
+ "rise-up-men-of-god-2": {
+  "1": {
+   "expect": 23,
+   "headings": [
+    {
+     "heading": {
+      "en": "The Biblical Foundation of Male Spiritual Leadership"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "— Genesis 2:15–17"
+     },
+     "kind": "epigraph",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 21,
+     "position": "prefix"
+    }
+   ]
+  },
+  "10": {
+   "expect": 24,
+   "headings": [
+    {
+     "heading": {
+      "en": "Eldership and Service"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "— 1 Peter 5:1–2"
+     },
+     "kind": "epigraph",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 23,
+     "position": "prefix"
+    }
+   ]
+  },
+  "11": {
+   "expect": 24,
+   "headings": [
+    {
+     "heading": {
+      "en": "Family Worship and Discipleship"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "— Deuteronomy 6:6–7"
+     },
+     "kind": "epigraph",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 24,
+     "position": "prefix"
+    }
+   ]
+  },
+  "12": {
+   "expect": 31,
+   "headings": [
+    {
+     "heading": {
+      "en": "Fighting Sin and Walking in Purity"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "— 1 Corinthians 6:18"
+     },
+     "kind": "epigraph",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 31,
+     "position": "prefix"
+    }
+   ]
+  },
+  "13": {
+   "expect": 30,
+   "headings": [
+    {
+     "heading": {
+      "en": "Setting Godly Goals"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "— Habakkuk 2:2"
+     },
+     "kind": "epigraph",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 28,
+     "position": "prefix"
+    }
+   ]
+  },
+  "14": {
+   "expect": 63,
+   "headings": [
+    {
+     "heading": {
+      "en": "Leaving a Godly Heritage"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "— Proverbs 13:22"
+     },
+     "kind": "epigraph",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 29,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "CONCLUSION Rise Up, Men of God A Call to Action and Closing Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 31,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Closing Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 59,
+     "position": "prefix"
+    },
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 63,
+     "position": "prefix"
+    }
+   ]
+  },
+  "2": {
+   "expect": 19,
+   "headings": [
+    {
+     "heading": {
+      "en": "Character Before Charisma"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "— 1 Samuel 16:7"
+     },
+     "kind": "epigraph",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 19,
+     "position": "prefix"
+    }
+   ]
+  },
+  "3": {
+   "expect": 19,
+   "headings": [
+    {
+     "heading": {
+      "en": "Power on His Knees"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "— 1 Timothy 2:8"
+     },
+     "kind": "epigraph",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 18,
+     "position": "prefix"
+    }
+   ]
+  },
+  "4": {
+   "expect": 21,
+   "headings": [
+    {
+     "heading": {
+      "en": "The Husband&#x27;s Calling"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "— Ephesians 5:25–26"
+     },
+     "kind": "epigraph",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 20,
+     "position": "prefix"
+    }
+   ]
+  },
+  "5": {
+   "expect": 22,
+   "headings": [
+    {
+     "heading": {
+      "en": "The Father&#x27;s Sacred Duty"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "— Psalm 127:3–5"
+     },
+     "kind": "epigraph",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 21,
+     "position": "prefix"
+    }
+   ]
+  },
+  "6": {
+   "expect": 28,
+   "headings": [
+    {
+     "heading": {
+      "en": "Gentleness as a Mark of True Manhood"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "— Matthew 11:28–29"
+     },
+     "kind": "epigraph",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 26,
+     "position": "prefix"
+    }
+   ]
+  },
+  "7": {
+   "expect": 23,
+   "headings": [
+    {
+     "heading": {
+      "en": "Working Hard and Providing Well"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "— 1 Timothy 5:8"
+     },
+     "kind": "epigraph",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 22,
+     "position": "prefix"
+    }
+   ]
+  },
+  "8": {
+   "expect": 24,
+   "headings": [
+    {
+     "heading": {
+      "en": "Protecting Your Home"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "— Nehemiah 4:14"
+     },
+     "kind": "epigraph",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 23,
+     "position": "prefix"
+    }
+   ]
+  },
+  "9": {
+   "expect": 24,
+   "headings": [
+    {
+     "heading": {
+      "en": "No Man Stands Alone"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "— Proverbs 27:17"
+     },
+     "kind": "epigraph",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 23,
+     "position": "prefix"
+    }
+   ]
+  }
+ },
+ "soar-like-the-eagle-3": {
+  "1": {
+   "expect": 43,
+   "headings": [
+    {
+     "heading": {
+      "en": "Some Reasons Many Fail to Fly"
+     },
+     "kind": "fused",
+     "paragraph": 9,
+     "position": "prefix"
+    },
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 16,
+     "position": "prefix"
+    },
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 24,
+     "position": "prefix"
+    },
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 31,
+     "position": "prefix"
+    }
+   ]
+  },
+  "10": {
+   "expect": 56,
+   "headings": [
+    {
+     "heading": {
+      "en": "Jackie Pullinger."
+     },
+     "kind": "fused",
+     "paragraph": 3,
+     "position": "suffix"
+    },
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 10,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Dr Martin Lloyd Jones"
+     },
+     "kind": "fused",
+     "paragraph": 15,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Y. R."
+     },
+     "kind": "fused",
+     "paragraph": 15,
+     "position": "suffix"
+    },
+    {
+     "heading": {
+      "en": "A.J."
+     },
+     "kind": "fused",
+     "paragraph": 18,
+     "position": "suffix"
+    },
+    {
+     "heading": {
+      "en": "H. W."
+     },
+     "kind": "fused",
+     "paragraph": 20,
+     "position": "suffix"
+    },
+    {
+     "heading": {
+      "en": "C.Mc."
+     },
+     "kind": "fused",
+     "paragraph": 21,
+     "position": "suffix"
+    },
+    {
+     "heading": {
+      "en": "C.N."
+     },
+     "kind": "fused",
+     "paragraph": 25,
+     "position": "suffix"
+    },
+    {
+     "heading": {
+      "en": "A.A."
+     },
+     "kind": "fused",
+     "paragraph": 30,
+     "position": "suffix"
+    },
+    {
+     "heading": {
+      "en": "I &amp; A"
+     },
+     "kind": "fused",
+     "paragraph": 34,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "M.M."
+     },
+     "kind": "fused",
+     "paragraph": 37,
+     "position": "suffix"
+    },
+    {
+     "heading": {
+      "en": "S.B."
+     },
+     "kind": "fused",
+     "paragraph": 46,
+     "position": "suffix"
+    }
+   ]
+  },
+  "11": {
+   "expect": 30,
+   "headings": [
+    {
+     "heading": {
+      "en": "Listen"
+     },
+     "kind": "fused",
+     "paragraph": 12,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Affirm their giftings"
+     },
+     "kind": "fused",
+     "paragraph": 13,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Begin the release"
+     },
+     "kind": "fused",
+     "paragraph": 15,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "The Ministry Covenant"
+     },
+     "kind": "fused",
+     "paragraph": 16,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Ministry Covenant - Susan Smith"
+     },
+     "kind": "fused",
+     "paragraph": 21,
+     "position": "prefix"
+    }
+   ]
+  },
+  "12": {
+   "expect": 94,
+   "headings": [
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 29,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Appendix - 1A ACCOUNTABILITY, AUTHORITY &amp; RESPONSIBILITY"
+     },
+     "kind": "fused",
+     "paragraph": 30,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Appendix 1B - PRINCIPLES FOR EFFECTIVE DELEGATION"
+     },
+     "kind": "fused",
+     "paragraph": 37,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "B. WHAT YOU SHOULD DELEGATE"
+     },
+     "kind": "fused",
+     "paragraph": 38,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "C. PITFALLS TO DELEGATION"
+     },
+     "kind": "fused",
+     "paragraph": 41,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "D. LEVELS OF DELEGATION"
+     },
+     "kind": "fused",
+     "paragraph": 46,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "E. COMMON REASONS FOR FAILING TO DELEGATE"
+     },
+     "kind": "fused",
+     "paragraph": 53,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Appendix 2 - MINISTRY COVENANT SAMPLES FOR ELDERS"
+     },
+     "kind": "fused",
+     "paragraph": 58,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Relationship with the Congregation"
+     },
+     "kind": "fused",
+     "paragraph": 74,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Relationship with other Elders"
+     },
+     "kind": "fused",
+     "paragraph": 76,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Appendix 3 - MINISTRY COVENANT SAMPLES FOR YOUTH LEADERS"
+     },
+     "kind": "fused",
+     "paragraph": 79,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Authority:"
+     },
+     "kind": "fused",
+     "paragraph": 80,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Responsibility:"
+     },
+     "kind": "fused",
+     "paragraph": 85,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Accountability:"
+     },
+     "kind": "fused",
+     "paragraph": 91,
+     "position": "prefix"
+    }
+   ]
+  },
+  "2": {
+   "expect": 29,
+   "headings": [
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 3,
+     "position": "prefix"
+    }
+   ]
+  },
+  "5": {
+   "expect": 71,
+   "headings": [
+    {
+     "heading": {
+      "en": "The inward look"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "The Outward Look"
+     },
+     "kind": "fused",
+     "paragraph": 38,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "The Upward Look"
+     },
+     "kind": "fused",
+     "paragraph": 58,
+     "position": "prefix"
+    }
+   ]
+  },
+  "6": {
+   "expect": 45,
+   "headings": [
+    {
+     "heading": {
+      "en": "Your Burden"
+     },
+     "kind": "fused",
+     "paragraph": 40,
+     "position": "prefix"
+    }
+   ]
+  },
+  "7": {
+   "expect": 59,
+   "headings": [
+    {
+     "heading": {
+      "en": "Your gifting"
+     },
+     "kind": "fused",
+     "paragraph": 55,
+     "position": "prefix"
+    }
+   ]
+  }
+ },
+ "the-christians-secret-of-a-happy-life-4": {
+  "21": {
+   "expect": 47,
+   "headings": [
+    {
+     "heading": {
+      "en": "About The Life Of Divine Union In its practical Aspects."
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    }
+   ]
+  }
+ },
+ "the-key-in-my-hand": {
+  "10": {
+   "expect": 43,
+   "headings": [
+    {
+     "heading": {
+      "ar": "خليقة جديدة",
+      "en": "A New Creation",
+      "es": "Una Nueva Criatura",
+      "lg": "Ekitonde Ekiggya",
+      "pt": "Uma nova criação",
+      "sw": "Kiumbe Kipya"
+     },
+     "kind": "fused",
+     "paragraph": 5,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "رضوض النفس",
+      "en": "Bruises of the Soul",
+      "es": "Moretones del Alma",
+      "lg": "Ebisago by’Emmeeme",
+      "pt": "Hematomas da alma",
+      "sw": "Michubuko ya Nafsi"
+     },
+     "kind": "fused",
+     "paragraph": 10,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "جراح الطعن",
+      "en": "Stab Wounds",
+      "es": "Heridas de Puñal",
+      "lg": "Ebiwundu by’Okufumitibwa",
+      "pt": "Facadas",
+      "sw": "Majeraha ya Kuchomwa"
+     },
+     "kind": "fused",
+     "paragraph": 14,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "الخدوش",
+      "en": "Grazes",
+      "es": "Raspones",
+      "lg": "Okwakulwa",
+      "pt": "Escoriações",
+      "sw": "Michirizi"
+     },
+     "kind": "fused",
+     "paragraph": 21,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "الكسور",
+      "en": "Fractures",
+      "es": "Fracturas",
+      "lg": "Okumenyeka",
+      "pt": "Fraturas",
+      "sw": "Mivunjiko"
+     },
+     "kind": "fused",
+     "paragraph": 24,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "«يردّ نفسي»",
+      "en": "“He Restores My Soul”",
+      "es": "“Él Restaura Mi Alma”",
+      "lg": "“Akomyawo Emmeeme Yange”",
+      "pt": "“Ele restaura a minha alma”",
+      "sw": "“Huniburudisha Nafsi Yangu”"
+     },
+     "kind": "fused",
+     "paragraph": 26,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "الصيّاد بالصنّارة",
+      "en": "The Angler",
+      "es": "El Pescador",
+      "lg": "Omuvubi",
+      "pt": "O pescador",
+      "sw": "Mvuvi"
+     },
+     "kind": "fused",
+     "paragraph": 32,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "قصّة شخصيّة",
+      "en": "A Personal Story",
+      "es": "Una Historia Personal",
+      "lg": "Olugero Lwange",
+      "pt": "Uma história pessoal",
+      "sw": "Hadithi ya Binafsi"
+     },
+     "kind": "fused",
+     "paragraph": 33,
+     "position": "prefix"
+    }
+   ]
+  },
+  "11": {
+   "expect": 25,
+   "headings": [
+    {
+     "heading": {
+      "ar": "جراح الاختلال",
+      "en": "Dysfunctional Wounds",
+      "es": "Heridas disfuncionales",
+      "lg": "Ebiwundu Ebireeta Obulemu",
+      "pt": "Feridas disfuncionais",
+      "sw": "Majeraha Yanayovuruga Maisha"
+     },
+     "kind": "fused",
+     "paragraph": 10,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "خدمة المصالحة",
+      "en": "The Ministry of Reconciliation",
+      "es": "El ministerio de la reconciliación",
+      "lg": "Obuweereza obw’Okutabaganya",
+      "pt": "O ministério da reconciliação",
+      "sw": "Huduma ya Upatanisho"
+     },
+     "kind": "fused",
+     "paragraph": 15,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "الخروف المتعثّر",
+      "en": "The Offended Sheep",
+      "es": "La oveja ofendida",
+      "lg": "Endiga Eyeesittadde",
+      "pt": "A ovelha ofendida",
+      "sw": "Kondoo Aliyekwazwa"
+     },
+     "kind": "fused",
+     "paragraph": 18,
+     "position": "prefix"
+    }
+   ]
+  },
+  "12": {
+   "expect": 43,
+   "headings": [
+    {
+     "heading": {
+      "ar": "مفاتيح الملكوت → متّى 16: 19",
+      "en": "The Keys to the Kingdom → Matthew 16:19",
+      "es": "Las llaves del reino → Mateo 16:19",
+      "lg": "Ebisumuluzo by’Obwakabaka → Matayo 16:19",
+      "pt": "As chaves do Reino → Mateus 16:19",
+      "sw": "Funguo za Ufalme &rarr; Mathayo 16:19"
+     },
+     "kind": "fused",
+     "paragraph": 7,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "يوحنّا 20: 23",
+      "en": "John 20:23",
+      "es": "Juan 20:23",
+      "lg": "Yokaana 20:23",
+      "pt": "João 20:23",
+      "sw": "Yohana 20:23"
+     },
+     "kind": "fused",
+     "paragraph": 24,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "إزالة حاجز الخطيّة",
+      "en": "Removing the Barrier of Sin",
+      "es": "Quitando la barrera del pecado",
+      "lg": "Okuggyawo Ekiziyiza eky’Ekibi",
+      "pt": "Removendo a barreira do pecado",
+      "sw": "Kuondoa Kizuizi cha Dhambi"
+     },
+     "kind": "fused",
+     "paragraph": 29,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "يسوع في الوسط",
+      "en": "Jesus in the Midst",
+      "es": "Jesús en medio",
+      "lg": "Yesu Wakati mu Bo",
+      "pt": "Jesus no meio deles",
+      "sw": "Yesu Katikati"
+     },
+     "kind": "fused",
+     "paragraph": 41,
+     "position": "prefix"
+    }
+   ]
+  },
+  "13": {
+   "expect": 44,
+   "headings": [
+    {
+     "heading": {
+      "ar": "ماري",
+      "en": "Marie",
+      "es": "Marie",
+      "lg": "Marie",
+      "pt": "Marie",
+      "sw": "Marie"
+     },
+     "kind": "fused",
+     "paragraph": 4,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "أنجيلا",
+      "en": "Angela",
+      "es": "Angela",
+      "lg": "Angela",
+      "pt": "Angela",
+      "sw": "Angela"
+     },
+     "kind": "fused",
+     "paragraph": 24,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "توني",
+      "en": "Tony",
+      "es": "Tony",
+      "lg": "Tony",
+      "pt": "Tony",
+      "sw": "Tony"
+     },
+     "kind": "fused",
+     "paragraph": 37,
+     "position": "prefix"
+    }
+   ]
+  },
+  "14": {
+   "expect": 23,
+   "headings": [
+    {
+     "heading": {
+      "ar": "خطايا الأجيال",
+      "en": "Generational Sins",
+      "es": "Pecados generacionales",
+      "lg": "Ebibi Eby'emirembe",
+      "pt": "Pecados geracionais",
+      "sw": "Dhambi za Vizazi"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "الذكريات المخفيّة",
+      "en": "Hidden Memories",
+      "es": "Recuerdos ocultos",
+      "lg": "Ebijjukizo Ebikwese",
+      "pt": "Memórias escondidas",
+      "sw": "Kumbukumbu Zilizofichika"
+     },
+     "kind": "fused",
+     "paragraph": 5,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "هو هو أمسًا واليوم وإلى الأبد",
+      "en": "The Same Yesterday, Today and Forever",
+      "es": "El mismo ayer, hoy y por los siglos",
+      "lg": "Nga Bwe Yali Jjo, Ne Leero, Era Emirembe n'Emirembe",
+      "pt": "O mesmo ontem, hoje e para sempre",
+      "sw": "Yeye Yeye Jana, Leo na Hata Milele"
+     },
+     "kind": "fused",
+     "paragraph": 12,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "الرسالة",
+      "en": "The Letter",
+      "es": "La carta",
+      "lg": "Ebbaluwa",
+      "pt": "A carta",
+      "sw": "Barua"
+     },
+     "kind": "fused",
+     "paragraph": 14,
+     "position": "prefix"
+    }
+   ]
+  },
+  "15": {
+   "expect": 39,
+   "headings": [
+    {
+     "heading": {
+      "ar": "اطلب إلى الرب أن يوجّه أفكارك",
+      "en": "Ask the Lord to Direct Your Thoughts",
+      "es": "Pídele al Señor que dirija tus pensamientos.",
+      "lg": "Saba Mukama Aluŋŋamye Ebirowoozo Byo",
+      "pt": "Peça ao Senhor que dirija os seus pensamentos",
+      "sw": "Mwombe Bwana Aongoze Mawazo Yako"
+     },
+     "kind": "fused",
+     "paragraph": 7,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "لا تستعجل",
+      "en": "Take Your Time",
+      "es": "Tómate tu tiempo.",
+      "lg": "Twala Ekiseera Kyo",
+      "pt": "Não tenha pressa",
+      "sw": "Usiwe na Haraka"
+     },
+     "kind": "fused",
+     "paragraph": 8,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "تحدّث عن ماضيك",
+      "en": "Talk About Your Past",
+      "es": "Habla acerca de tu pasado.",
+      "lg": "Yogera ku Byayita",
+      "pt": "Fale sobre o seu passado",
+      "sw": "Zungumza Kuhusu Maisha Yako Yaliyopita"
+     },
+     "kind": "fused",
+     "paragraph": 10,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "دوّن كل ما تشعر أنه ذو صلة",
+      "en": "Write Down Anything You Feel Is Relevant",
+      "es": "Escribe cualquier cosa que sientas que es relevante.",
+      "lg": "Wandiika Buli Ky'olowooza nti Kikulu",
+      "pt": "Anote tudo o que lhe parecer relevante",
+      "sw": "Andika Chochote Unachohisi Kina Umuhimu"
+     },
+     "kind": "fused",
+     "paragraph": 12,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "تبيّن إن كنتَ قد جُرحتَ بخطية إنسان آخر",
+      "en": "Recognize if You Have Been Wounded by Another’s Sin",
+      "es": "Reconoce si has sido herido por el pecado de otro.",
+      "lg": "Tegeera Obanga Walumizibwa Ekibi ky'Omulala",
+      "pt": "Reconheça se você foi ferido pelo pecado de outra pessoa",
+      "sw": "Tambua Kama Umejeruhiwa na Dhambi ya Mtu Mwingine"
+     },
+     "kind": "fused",
+     "paragraph": 13,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "اكتب رسالة، وكن محدَّدًا في ذكر جراحك",
+      "en": "Write a Letter, Being Specific About Your Hurts",
+      "es": "Escribe una carta, siendo específico acerca de tus heridas.",
+      "lg": "Wandiika Ebbaluwa, Ng'oyogera Butereevu ku Bulumi Bwo",
+      "pt": "Escreva uma carta, sendo específico sobre as suas mágoas",
+      "sw": "Andika Barua, Ukieleza Waziwazi Maumivu Yako"
+     },
+     "kind": "fused",
+     "paragraph": 20,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "اختر أن تغفر",
+      "en": "Choose to Forgive",
+      "es": "Elige perdonar.",
+      "lg": "Salawo Okusonyiwa",
+      "pt": "Escolha perdoar",
+      "sw": "Chagua Kusamehe"
+     },
+     "kind": "fused",
+     "paragraph": 24,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "اختر أن تُطلق",
+      "en": "Choose to Release",
+      "es": "Elige soltar.",
+      "lg": "Salawo Okusumulula",
+      "pt": "Escolha soltar",
+      "sw": "Chagua Kufungua"
+     },
+     "kind": "fused",
+     "paragraph": 26,
+     "position": "prefix"
+    },
+    {
+     "heading": null,
+     "kind": "orphan",
+     "paragraph": 28,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "صلِّ من أجل الذي جرحك",
+      "en": "Pray for the One Who Wounded You",
+      "es": "Ora por quien te hirió.",
+      "lg": "Sabira Oyo Eyakulumya",
+      "pt": "Ore por quem o feriu",
+      "sw": "Mwombee Yule Aliyekujeruhi"
+     },
+     "kind": "fused",
+     "paragraph": 31,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "كن منفتحًا على المصالحة",
+      "en": "Be Open to Reconciliation",
+      "es": "Está abierto a la reconciliación.",
+      "lg": "Beera Mwetegefu Okutabagana",
+      "pt": "Esteja aberto à reconciliação",
+      "sw": "Uwe Tayari kwa Upatanisho"
+     },
+     "kind": "fused",
+     "paragraph": 34,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "اسلك في شفائك",
+      "en": "Walk Out Your Healing",
+      "es": "Camina hacia tu sanidad.",
+      "lg": "Tambula mu Kkubo ery'Okuwona Kwo",
+      "pt": "Caminhe na sua cura",
+      "sw": "Tembea Katika Uponyaji Wako"
+     },
+     "kind": "fused",
+     "paragraph": 36,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "سلّم كل جرح للطبيب الأعظم",
+      "en": "Give Each Wound to the Great Physician",
+      "es": "Entrega cada herida al Gran Médico.",
+      "lg": "Waayo Buli Kiwundu eri Omusawo Omukulu",
+      "pt": "Entregue cada ferida ao Grande Médico",
+      "sw": "Mkabidhi Tabibu Mkuu Kila Kidonda"
+     },
+     "kind": "fused",
+     "paragraph": 37,
+     "position": "prefix"
+    }
+   ]
+  },
+  "3": {
+   "expect": 51,
+   "headings": [
+    {
+     "heading": {
+      "ar": "وليمة العهد",
+      "en": "The Covenant Feast",
+      "es": "La Fiesta del Pacto",
+      "lg": "Embaga y’Endagaano",
+      "pt": "A Festa da Aliança",
+      "sw": "Karamu ya Agano"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "مطالبه",
+      "en": "His Requirements",
+      "es": "Sus Requisitos",
+      "lg": "Bye Yeetaaga",
+      "pt": "Suas exigências",
+      "sw": "Matakwa Yake"
+     },
+     "kind": "fused",
+     "paragraph": 14,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "مواعيده",
+      "en": "His Promises",
+      "es": "Sus Promesas",
+      "lg": "Ebisuubizo Bye",
+      "pt": "Suas promessas",
+      "sw": "Ahadi Zake"
+     },
+     "kind": "fused",
+     "paragraph": 44,
+     "position": "prefix"
+    }
+   ]
+  },
+  "4": {
+   "expect": 26,
+   "headings": [
+    {
+     "heading": {
+      "ar": "وليمة المحبّة",
+      "en": "The Agape Feast",
+      "es": "La fiesta del ágape",
+      "lg": "Ekijjulo ky’Okwagala",
+      "pt": "A Festa do Ágape",
+      "sw": "The Agape Feast “Karamu ya Agape"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "(كورنثوس الأولى 11:23-24).",
+      "en": "(1 Corinthians 11:23-24).",
+      "es": "(1 Corintios 11:23-24).",
+      "lg": "(1 Abakkolinso 11:23-24).",
+      "pt": "(1 Coríntios 11:23-24).",
+      "sw": "(1 Wakorintho 11:23-24)."
+     },
+     "kind": "epigraph",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "بطريقة غير مستحقّة",
+      "en": "An Unworthy Manner",
+      "es": "De manera indigna",
+      "lg": "Mu Ngeri Etasaanidde",
+      "pt": "De maneira indigna",
+      "sw": "Kwa Namna Isiyostahili"
+     },
+     "kind": "fused",
+     "paragraph": 13,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "الصلاة لأجل المرضى",
+      "en": "Praying for the Sick",
+      "es": "Orando por los enfermos",
+      "lg": "Okusabira Abalwadde",
+      "pt": "Orando pelos enfermos",
+      "sw": "Kuwaombea Wagonjwa"
+     },
+     "kind": "fused",
+     "paragraph": 15,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "صلاة الرب",
+      "en": "The Lord’s Prayer",
+      "es": "La oración del Señor",
+      "lg": "Okusaba kwa Mukama waffe",
+      "pt": "A oração do Senhor",
+      "sw": "Maombi ya Bwana"
+     },
+     "kind": "fused",
+     "paragraph": 18,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "نشرة الله الكرازية",
+      "en": "God’s Gospel Tract",
+      "es": "El folleto evangelístico de Dios",
+      "lg": "Akatabo ka Katonda ak’Enjiri",
+      "pt": "O folheto evangelístico de Deus",
+      "sw": "Kijitabu cha Injili cha Mungu"
+     },
+     "kind": "fused",
+     "paragraph": 23,
+     "position": "prefix"
+    }
+   ]
+  },
+  "5": {
+   "expect": 25,
+   "headings": [
+    {
+     "heading": {
+      "ar": "جسد واحد",
+      "en": "One Body",
+      "es": "Un solo cuerpo",
+      "lg": "Omubiri Gumu",
+      "pt": "Um só corpo",
+      "sw": "Mwili Mmoja"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "ملء الروح",
+      "en": "Fullness of the Spirit",
+      "es": "La plenitud del Espíritu",
+      "lg": "Okujjula kw’Omwoyo",
+      "pt": "A plenitude do Espírito",
+      "sw": "Utimilifu wa Roho"
+     },
+     "kind": "fused",
+     "paragraph": 7,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "الكنيسة المحلّية",
+      "en": "The Local Church",
+      "es": "La iglesia local",
+      "lg": "Ekkanisa ey’Ekitundu",
+      "pt": "A igreja local",
+      "sw": "Kanisa la Mahali"
+     },
+     "kind": "fused",
+     "paragraph": 14,
+     "position": "prefix"
+    }
+   ]
+  },
+  "6": {
+   "expect": 32,
+   "headings": [
+    {
+     "heading": {
+      "ar": "الزواج المسيحيّ → أفسس 5:22-33",
+      "en": "Christian Marriage → Ephesians 5:22-33",
+      "es": "El matrimonio cristiano → Efesios 5:22-33",
+      "lg": "Obufumbo bw’Ekikristaayo → Abaefeso 5:22-33",
+      "pt": "O casamento cristão → Efésios 5:22-33",
+      "sw": "Ndoa ya Kikristo → Waefeso 5:22-33"
+     },
+     "kind": "fused",
+     "paragraph": 3,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "البيت المسيحيّ → أفسس 6:1-4",
+      "en": "The Christian Home → Ephesians 6:1-4",
+      "es": "El hogar cristiano → Efesios 6:1-4",
+      "lg": "Amaka ag’Ekikristaayo → Abaefeso 6:1-4",
+      "pt": "O lar cristão → Efésios 6:1-4",
+      "sw": "Nyumba ya Kikristo → Waefeso 6:1-4"
+     },
+     "kind": "fused",
+     "paragraph": 7,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "مكان العمل → أفسس 6:5-9",
+      "en": "The Workplace → Ephesians 6:5-9",
+      "es": "El lugar de trabajo → Efesios 6:5-9",
+      "lg": "Ekifo ky’Emirimu → Abaefeso 6:5-9",
+      "pt": "O ambiente de trabalho → Efésios 6:5-9",
+      "sw": "Mahali pa Kazi → Waefeso 6:5-9"
+     },
+     "kind": "fused",
+     "paragraph": 12,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "تسرُّب العاملين",
+      "en": "Worker Attrition",
+      "es": "Deserción de obreros",
+      "lg": "Okuva kw’Abakozi mu Mulimu",
+      "pt": "A desistência dos obreiros",
+      "sw": "Kupungua kwa Wafanyakazi"
+     },
+     "kind": "fused",
+     "paragraph": 19,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "المخاصمات في الكنيسة",
+      "en": "Church Fights",
+      "es": "Peleas en la iglesia",
+      "lg": "Entalo mu Kkanisa",
+      "pt": "Brigas de igreja",
+      "sw": "Migogoro Kanisani"
+     },
+     "kind": "fused",
+     "paragraph": 22,
+     "position": "prefix"
+    }
+   ]
+  },
+  "7": {
+   "expect": 61,
+   "headings": [
+    {
+     "heading": {
+      "ar": "فرصة إبليس",
+      "en": "The Devil’s Opportunity",
+      "es": "La oportunidad del diablo",
+      "lg": "Ebbanga lya Setaani",
+      "pt": "A oportunidade do diabo",
+      "sw": "Nafasi ya Ibilisi"
+     },
+     "kind": "fused",
+     "paragraph": 3,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "الأسد الزائر",
+      "en": "The Roaring Lion",
+      "es": "El león rugiente",
+      "lg": "Empologoma Ewuluguma",
+      "pt": "O leão que ruge",
+      "sw": "Simba Angurumaye"
+     },
+     "kind": "fused",
+     "paragraph": 10,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "الرامي بالسهام",
+      "en": "The Archer",
+      "es": "El arquero",
+      "lg": "Omulasi w’Obusaale",
+      "pt": "O arqueiro",
+      "sw": "Mpiga Mishale"
+     },
+     "kind": "fused",
+     "paragraph": 25,
+     "position": "prefix"
+    }
+   ]
+  },
+  "8": {
+   "expect": 41,
+   "headings": [
+    {
+     "heading": {
+      "ar": "الزارع والزرع → متى 13:18-21",
+      "en": "The Sower and the Seed → Matthew 13:18-21",
+      "es": "El sembrador y la semilla → Mateo 13:18-21.",
+      "lg": "Omusizi n’Ensigo → Matayo 13:18-21",
+      "pt": "O semeador e a semente → Mateus 13:18-21",
+      "sw": "Mpanzi na Mbegu → Mathayo 13:18-21"
+     },
+     "kind": "fused",
+     "paragraph": 20,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "نبيٌّ بلا كرامة → متى 13:54-57",
+      "en": "A Prophet Without Honour → Matthew 13:54-57",
+      "es": "Un profeta sin honra → Mateo 13:54-57.",
+      "lg": "Nnabbi Atalina Kitiibwa → Matayo 13:54-57",
+      "pt": "Um profeta sem honra → Mateus 13:54-57",
+      "sw": "Nabii Asiyekuwa na Heshima → Mathayo 13:54-57"
+     },
+     "kind": "fused",
+     "paragraph": 24,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "الذي أسلمه → متى 26:6-14",
+      "en": "The Betrayer → Matthew 26:6-14",
+      "es": "El traidor → Mateo 26:6-14.",
+      "lg": "Omulyi w’Olukwe → Matayo 26:6-14",
+      "pt": "O traidor → Mateus 26:6-14",
+      "sw": "Msaliti → Mathayo 26:6-14"
+     },
+     "kind": "fused",
+     "paragraph": 27,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "إنكار بطرس → متى 26:31-35، 69-75",
+      "en": "Peter’s Denial → Matthew 26:31-35, 69-75",
+      "es": "La negación de Pedro → Mateo 26:31-35, 69-75.",
+      "lg": "Peetero Okwegaana Mukama we → Matayo 26:31-35, 69-75",
+      "pt": "A negação de Pedro → Mateus 26:31-35, 69-75",
+      "sw": "Kukana kwa Petro → Mathayo 26:31-35, 69-75"
+     },
+     "kind": "fused",
+     "paragraph": 34,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "كثيرون يرجعون إلى الوراء → يوحنا 6:53-61",
+      "en": "Many Turn Away → John 6:53-61",
+      "es": "Muchos se apartan → Juan 6:53-61.",
+      "lg": "Bangi Bamuvaako → Yokaana 6:53-61",
+      "pt": "Muitos se afastam → João 6:53-61",
+      "sw": "Wengi Wageuka Kumwacha → Yohana 6:53-61"
+     },
+     "kind": "fused",
+     "paragraph": 38,
+     "position": "prefix"
+    }
+   ]
+  },
+  "9": {
+   "expect": 42,
+   "headings": [
+    {
+     "heading": {
+      "ar": "يوحنا المعمدان — ابن خالة يسوع",
+      "en": "John the Baptist - Jesus’ Cousin",
+      "es": "Juan el Bautista - El primo de Jesús",
+      "lg": "Yokaana Omubatiza — Ow’oluganda lwa Yesu.",
+      "pt": "João Batista — o primo de Jesus",
+      "sw": "Yohana Mbatizaji – Binamu wa Yesu"
+     },
+     "kind": "fused",
+     "paragraph": 4,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "مريم، صديقة يسوع العزيزة",
+      "en": "Jesus’ Dear Friend Mary",
+      "es": "La querida amiga de Jesús, María",
+      "lg": "Maliyamu, Mukwano gwa Yesu Omwagalwa.",
+      "pt": "Maria, a querida amiga de Jesus",
+      "sw": "Mariamu, Rafiki Mpendwa wa Yesu"
+     },
+     "kind": "fused",
+     "paragraph": 19,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "لماذا تأتي العثرات",
+      "en": "Why Offenses Come",
+      "es": "Por qué vienen las ofensas",
+      "lg": "Lwaki Okwesittala Kujja.",
+      "pt": "Por que as ofensas vêm",
+      "sw": "Kwa Nini Vikwazo Huja"
+     },
+     "kind": "fused",
+     "paragraph": 30,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "ar": "ماذا تفعل بالعثرات",
+      "en": "What to Do With Offenses",
+      "es": "Qué hacer con las ofensas",
+      "lg": "Ky’Olina Okukola ku Kwesittala.",
+      "pt": "O que fazer com as ofensas",
+      "sw": "Jinsi ya Kukabiliana na Vikwazo"
+     },
+     "kind": "fused",
+     "paragraph": 34,
+     "position": "prefix"
+    }
+   ]
+  }
+ },
+ "women-who-moved-heaven-2": {
+  "10": {
+   "expect": 9,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who She Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Her Core Teaching on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 9,
+     "position": "prefix"
+    }
+   ]
+  },
+  "11": {
+   "expect": 14,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who She Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Her Core Teaching on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 3,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 12,
+     "position": "prefix"
+    }
+   ]
+  },
+  "13": {
+   "expect": 55,
+   "headings": [
+    {
+     "heading": {
+      "en": "Introduction"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 1 — Monica of Hippo"
+     },
+     "kind": "fused",
+     "paragraph": 6,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 2 — Teresa of Ávila"
+     },
+     "kind": "fused",
+     "paragraph": 10,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 3 — Susanna Wesley"
+     },
+     "kind": "fused",
+     "paragraph": 14,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 4 — Madame Guyon"
+     },
+     "kind": "fused",
+     "paragraph": 19,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 5 — Amy Carmichael"
+     },
+     "kind": "fused",
+     "paragraph": 24,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 6 — Corrie ten Boom"
+     },
+     "kind": "fused",
+     "paragraph": 29,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 7 — Lottie Moon"
+     },
+     "kind": "fused",
+     "paragraph": 34,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 8 — Mary Slessor"
+     },
+     "kind": "fused",
+     "paragraph": 39,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 9 — Gladys Aylward"
+     },
+     "kind": "fused",
+     "paragraph": 44,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Chapter 10 — Evelyn Christenson"
+     },
+     "kind": "fused",
+     "paragraph": 49,
+     "position": "prefix"
+    }
+   ]
+  },
+  "2": {
+   "expect": 10,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who She Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Her Core Teaching on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 3,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 10,
+     "position": "prefix"
+    }
+   ]
+  },
+  "3": {
+   "expect": 11,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who She Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Her Core Teaching on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 11,
+     "position": "prefix"
+    }
+   ]
+  },
+  "4": {
+   "expect": 9,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who She Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Her Core Teaching on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 8,
+     "position": "prefix"
+    }
+   ]
+  },
+  "5": {
+   "expect": 9,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who She Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Her Core Teaching on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 9,
+     "position": "prefix"
+    }
+   ]
+  },
+  "6": {
+   "expect": 11,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who She Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Her Core Teaching on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 11,
+     "position": "prefix"
+    }
+   ]
+  },
+  "7": {
+   "expect": 11,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who She Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Her Core Teaching on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 11,
+     "position": "prefix"
+    }
+   ]
+  },
+  "8": {
+   "expect": 9,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who She Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Her Core Teaching on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 2,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 9,
+     "position": "prefix"
+    }
+   ]
+  },
+  "9": {
+   "expect": 9,
+   "headings": [
+    {
+     "heading": {
+      "en": "Who She Was"
+     },
+     "kind": "fused",
+     "paragraph": 1,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "Her Core Teaching on Prayer"
+     },
+     "kind": "fused",
+     "paragraph": 3,
+     "position": "prefix"
+    },
+    {
+     "heading": {
+      "en": "A Prayer:"
+     },
+     "kind": "fused",
+     "paragraph": 9,
+     "position": "prefix"
+    }
+   ]
+  }
+ }
+}
