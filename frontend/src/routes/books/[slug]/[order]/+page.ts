@@ -23,6 +23,10 @@ import type { EntryGenerator, PageLoad } from './$types';
 // the Syrophenician mother accepting "the name of God" where the author wrote
 // "dog" — the illustration argued its own opposite. Same reason as above: the
 // corrected body has to be re-baked, not just served.
+// Prerender refresh 2026-08-05 (humility-2 ar): a WHOLE new edition, so these
+// pages do not exist yet rather than being stale — the entry generators ask the
+// api for the book list at build time, which means the web build has to run
+// AFTER the api has seeded the Arabic rows, not alongside it.
 // Prerender refresh 2026-08-05 (queue jobs #754, #755, #729): the three source
 // books of the reading plan A School of Prayer land in Arabic together — يا ربّ،
 // علّمنا أن نصلّي (4 ch), الصلاة الغالبة (11 ch) and الصلاة — نبض الحياة (12 ch),

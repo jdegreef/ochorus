@@ -75,14 +75,16 @@ def fix_wrong_verse(body_html: str) -> str:
 # against another edition of Humility before changing (worldinvisible.com's
 # text of ch09 and BibleStudyTools' — both read "the name of dog").
 #
-# Each edition gets its own pair: the Luganda translator reproduced the defect
+# Each edition gets its own pair: both translators reproduced the defect
 # faithfully, which is correct of a translator and is what makes it fixable
-# here rather than silently papered over. The Arabic edition, still in
-# translation when this shipped, reproduced it too and needs its pair added
-# when it lands.
+# here rather than silently papered over. The Arabic pair was added with that
+# edition (below); only its final word differs from the text as translated, and
+# the verse it quotes two clauses later already reads "and the dogs eat of the
+# crumbs", so the correction is anchored by the translation's own wording.
 NAME_OF_DOG = [
     ("accepted the name of God, and said", "accepted the name of dog, and said"),
     ("teyakkiriza erinnya lya Katonda", "teyakkiriza erinnya ly'embwa"),
+    ("قبِلت اسم الله", "قبِلت اسم الكلب"),
 ]
 
 
