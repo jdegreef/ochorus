@@ -192,6 +192,12 @@ import type { PageLoad } from './$types';
  * on purpose: they are the three sources of the reading plan A School of Prayer
  * (#630), and by the same EVERY-source-book rule as #650 the plan cannot
  * render in Arabic until the last of them lands, so /ar/plans changes too.
+ *
+ * Prerender refresh 2026-08-05 (queue job #417): Gareth Evans's Mawe ya
+ * Kukanyagia (Stepping Stones, 39 ch) — Swahili's thirteenth book and its
+ * longest, and the third of this author's in Swahili alongside Anazishika
+ * Kesho Zangu and Ufunguo Ulio Mkononi Mwangu. The /sw books index and
+ * /sw/books/stepping-stones-2 with its chapter pages re-crawl and bake.
  */
 export const load: PageLoad = async () => {
 	try {
