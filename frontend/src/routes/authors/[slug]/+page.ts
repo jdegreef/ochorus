@@ -17,6 +17,14 @@ export const entries: EntryGenerator = async () => {
 	return [...slugs].map((slug) => ({ slug }));
 };
 
+// Prerender refresh 2026-08-05 (queue jobs #730-#734, #761-#763): eight more
+// Arabic author biographies — Baxter, Augustine, Torrey, Hudson Taylor, Müller,
+// Brainerd, Watson and Amy Carmichael — taking Arabic from 10 to 18. Arabic is
+// RTL: the bios carry no dir/lang of their own, so /ar/authors/<slug> renders
+// under the container's dir="auto" (see readerDirection.test.ts). Both the long
+// bio and the short one are baked into these pages, so the api alone is not
+// enough — the site has to rebuild.
+
 // This page is prerendered per locale, baking the author's bio/bio_html in
 // getLang() at build time — so author-bio *content* translations must be live
 // on the API before the web build runs, else the localized page bakes English
