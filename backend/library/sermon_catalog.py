@@ -49,6 +49,7 @@ SERMON_AUTHORS: dict[str, AuthorEntry] = {
 }
 
 _CCEL = "https://ccel.org/ccel/spurgeon/"
+_WESLEY = "https://ccel.org/ccel/wesley/sermons/"
 
 SERMONS: list[SermonEntry] = [
     # --- Assurance & the character of God -----------------------------------
@@ -290,5 +291,24 @@ SERMONS: list[SermonEntry] = [
         "https://www.gospeltruth.net/booth/cath_booth/agressive_christianity/cbooth_1_agressive.htm",
         scripture_ref="Mark 16:15",
         body_starts="I WAS thinking, while I was reading the lesson",
+    ),
+    # John Wesley — the first pre-19th-century sermon in the library, and the
+    # opening of the largest untapped seam here: the 44 Standard Sermons are
+    # his primary corpus, all public domain on CCEL.
+    #
+    # NOTE his masthead differs from Spurgeon's: the preaching note lives in a
+    # <span class="mnote"> inside an <h2>, and the reference in an <h3> — which
+    # is why extract() reads the leading BLOCKS, not just <p>. Scanning <p>
+    # only found Luke 4:34 (a reference inside the sermon), took the whole
+    # opening section as masthead, and dropped 517 words silently.
+    SermonEntry(
+        "salvation-by-faith",
+        "Salvation by Faith",
+        "john-wesley",
+        "ccel",
+        _WESLEY + "sermons.v.i.html",
+        # CCEL renders it "Eph. 2:8"; every other sermon on the shelf stores a
+        # full book name, and this string is what the reader displays.
+        scripture_ref="Ephesians 2:8",
     ),
 ]

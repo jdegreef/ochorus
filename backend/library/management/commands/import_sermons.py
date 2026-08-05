@@ -147,21 +147,45 @@ def extract(html: str) -> tuple[str, str, datetime.date | None]:
         h1.decompose()
 
     paragraphs = root.find_all("p")
-    masthead_text = " ".join(
-        p.get_text(" ", strip=True) for p in paragraphs[:_HEAD_WINDOW]
-    )
+    # The masthead is not always paragraphs. Spurgeon's is; Wesley's puts the
+    # preaching note in a <span class="mnote"> inside an <h2> and the reference
+    # in an <h3>, so a <p>-only scan finds neither. Read the date from the
+    # leading BLOCKS (headings included) or "Preached at St. Mary's, Oxford,
+    # on June 18, 1738" is invisible.
+    blocks = root.find_all(["p", "h2", "h3", "h4"])
+    masthead_text = " ".join(b.get_text(" ", strip=True) for b in blocks[:_HEAD_WINDOW])
     preached_on = parse_preached_on(masthead_text)
 
     scripture_ref = ""
     quote_html = ""
-    boundary = None  # index of the scripture paragraph
-    for i, p in enumerate(paragraphs[:_HEAD_WINDOW]):
-        ref = p.find("a", class_="scripRef")
-        if ref is not None:
-            scripture_ref = ref.get_text(" ", strip=True).rstrip(" .")
-            quote_html = f"<blockquote>{p.decode_contents()}</blockquote>"
-            boundary = i
-            break
+    boundary = None  # index into `paragraphs`: the last masthead paragraph
+    # Find the reference in any leading block. Looking only at <p> made Wesley's
+    # <h3>Eph. 2:8</h3> invisible, so the scan ran on into the sermon and matched
+    # the first in-body reference (Luke 4:34) — taking the whole opening section
+    # as masthead and silently dropping it, with the wrong ref attached.
+    ref_block = next(
+        (b for b in blocks[:_HEAD_WINDOW] if b.find("a", class_="scripRef") is not None),
+        None,
+    )
+    if ref_block is not None:
+        ref = ref_block.find("a", class_="scripRef")
+        scripture_ref = ref.get_text(" ", strip=True).rstrip(" .")
+        if ref_block.name == "p":
+            # Spurgeon: quotation and reference share one paragraph.
+            quote_html = f"<blockquote>{ref_block.decode_contents()}</blockquote>"
+            boundary = paragraphs.index(ref_block)
+        else:
+            # Wesley: the quotation is the paragraph just above the heading, so
+            # the body starts at the first paragraph after it. find_all_previous
+            # walks backwards in document order, so [0] is that paragraph.
+            preceding = ref_block.find_all_previous("p")
+            if preceding:
+                last = preceding[0]
+                if last.get_text(" ", strip=True).startswith(("“", '"', "‘", "'")):
+                    quote_html = f"<blockquote>{last.decode_contents()}</blockquote>"
+                boundary = paragraphs.index(last)
+            else:
+                boundary = -1
 
     if boundary is None:
         # No scripture line — drop obvious masthead lines and keep the rest.
