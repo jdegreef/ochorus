@@ -40,9 +40,22 @@ def fetch(url: str) -> str:
     return resp.text
 
 
+# What a navigation phrase points AT: a section word or a bare site/domain name.
+# Shared with the sermon importer, which strips the same furniture in wrapped
+# form (see import_sermons.extract_web_sermon).
+NAV_TARGET = r"(?:index|page|top|home|menu|contents|[\w-]+\.(?:com|org|net|edu))"
+
+# A trailing navigation paragraph. Four of these phrases name themselves, but
+# "back to" and "return to" are ordinary English, and this runs over devotional
+# prose — so those two must ALSO name a navigation target. Unguarded, the rule
+# deleted any closing paragraph that opened with them, including scripture:
+# "Return to the Lord thy God" (Joel 2:13) and "Return to me, saith the Lord of
+# hosts" (Zechariah 1:3) both matched. Silent loss of a work's last line.
 _NAV_TAIL = re.compile(
-    r"<p>[^<]{0,80}(back to|return to|table of contents|home page|next chapter|"
-    r"previous chapter)[^<]{0,80}</p>\s*$",
+    r"<p>[^<]{0,80}(?:"
+    r"table of contents|home page|next chapter|previous chapter"
+    rf"|(?:back|return) to[^<]{{0,60}}?{NAV_TARGET}"
+    r")[^<]{0,80}</p>\s*$",
     re.I,
 )
 

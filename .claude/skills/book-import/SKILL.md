@@ -612,6 +612,25 @@ cheaper, sharper checks:
 Ship only the new book's fixture file. A one-line `updated_at` churn in an
 otherwise identical fixture is noise — `git checkout` it.
 
+**A word-count GAIN against the fixture is a failure signal, not good news.**
+The instinct is to read "recovered content" as a win, but for a
+furniture-stripping change it usually means the rule stopped matching real
+furniture. Tightening the trailing-nav guard made Simpson's *Himself* come back
+three words heavier; the three words were `Back to Biblebelievers.com`. Diff
+what appeared before congratulating yourself — the byte comparison catches
+loosening as readily as breakage, in both directions.
+
+**Furniture regexes over-match devotional prose, because the phrases are
+ordinary English.** The trailing-nav rule matched any closing paragraph
+containing "back to" or "return to", which silently deleted `Return to the LORD
+thy God` (Joel 2:13), `Return to me, saith the LORD of hosts` (Zechariah 1:3),
+and any preacher's `Back to our text, then…`. No error, just a missing last
+line. Before shipping a furniture pattern, run it against a handful of real
+sentences that *legitimately* contain the phrase — scripture first. The fix
+shape: require the phrase to also name what it points at (`import_web.NAV_TARGET`
+— a section word or a bare domain), and leave self-identifying phrases like
+"table of contents" unguarded.
+
 ## Text & grammar quality
 
 These are mostly the user's own edited public-domain texts, so the bar is a

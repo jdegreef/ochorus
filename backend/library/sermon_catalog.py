@@ -276,4 +276,19 @@ SERMONS: list[SermonEntry] = [
         section="Blessed Adversity",
         scripture_ref="Psalm 23:6",
     ),
+    # Catherine Booth — the first woman on the sermon shelf. "Papers on
+    # Aggressive Christianity" (1880) is subtitled "practical sermons" and this
+    # page is headed "A Sermon of Catherine Booth", so the ten chapters are
+    # sermons proper. Her better-known "Female Ministry" is from "Practical
+    # Religion", a collection of PAPERS — an essay, and a book-shelf candidate
+    # rather than a sermon.
+    SermonEntry(
+        "aggressive-christianity",
+        "Aggressive Christianity",
+        "catherine-booth",
+        "web",
+        "https://www.gospeltruth.net/booth/cath_booth/agressive_christianity/cbooth_1_agressive.htm",
+        scripture_ref="Mark 16:15",
+        body_starts="I WAS thinking, while I was reading the lesson",
+    ),
 ]

@@ -2678,6 +2678,34 @@ class ContemporizeCarefulTests(TestCase):
 class ContentQAFixesTests(TestCase):
     """The 2026-07 QA body corrections (also enforced on every re-import)."""
 
+    def test_nav_strip_spares_prose_and_scripture(self):
+        """The trailing-nav strip must not eat "back to" / "return to" prose.
+
+        Both phrases are ordinary English and this runs over sermons, so the
+        pattern requires a navigation target AND last-element position. An
+        earlier, looser version stripped all three of the negative cases below
+        — two of which are scripture (Joel 2:13, Zechariah 1:3). Silent content
+        loss: no error, just a missing line.
+        """
+        from library.management.commands.import_sermons import extract_web_sermon
+
+        def body(fragment):
+            html = f"<html><body><div>{fragment}</div></body></html>"
+            return extract_web_sermon(html, "A Sermon")
+
+        # Navigation goes.
+        self.assertNotIn(
+            "BOOTH INDEX",
+            body("<p>...they SHALL.</p><b>Back to BOOTH INDEX Page</b>"),
+        )
+        # Prose and scripture stay.
+        for keep in (
+            "<p>Back to our text, then, and see what the Apostle means.</p>",
+            "<p>Return to the Lord thy God, for he is gracious and merciful.</p>",
+            "<p>Return to me, saith the Lord of hosts.</p>",
+        ):
+            self.assertIn(keep.split(">")[1][:24], body(keep))
+
     def test_blessed_adversity_transcription_slips(self):
         """The sermon corrections survive the small-caps unwrap they depend on.
 
