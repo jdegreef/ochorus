@@ -19,6 +19,10 @@ import type { EntryGenerator, PageLoad } from './$types';
 // gained <h2> section headings the PDF import had fused into the prose or left
 // as stubby paragraphs. This changes the shape of the page, not just a word, so
 // the static build has to run for readers to see it.
+// Prerender refresh 2026-08-04 (humility-2 ch09, en + lg): a source defect had
+// the Syrophenician mother accepting "the name of God" where the author wrote
+// "dog" — the illustration argued its own opposite. Same reason as above: the
+// corrected body has to be re-baked, not just served.
 export const prerender = true;
 export const trailingSlash = 'always';
 

@@ -1440,6 +1440,48 @@ class SermonScriptureRefsTests(TestCase):
         self.assertEqual(len(refs), 3)
 
 
+class FixtureSourceDefectTests(SimpleTestCase):
+    """Guard the fixture itself: a repaired source defect must stay repaired.
+
+    A re-import or a fixture regen can quietly reinstate the original text, and
+    these defects read as ordinary prose — nothing about "the name of God"
+    looks broken unless you know the verse it is standing on. Written against
+    the whole of `SOURCE_FIXES` rather than one book, so a repair registered
+    later is guarded the day it ships: shipped text must be a fixed point of
+    its own repair, in every language and in both stored fields.
+    """
+
+    def test_every_registered_source_fix_is_already_applied_to_the_fixture(self):
+        from library.content_fixtures import load_all_rows
+        from library.source_fixes import SOURCE_FIXES, apply_source_fixes
+
+        chapters = [
+            r["fields"] for r in load_all_rows() if r.get("model") == "library.chapter"
+        ]
+        checked = 0
+        for (slug, order), _ in SOURCE_FIXES.items():
+            editions = [
+                c for c in chapters if c["book"][0] == slug and c["order"] == order
+            ]
+            self.assertTrue(
+                editions,
+                f"{slug} ch{order:02d} has no shipped chapter — did the numbering move?",
+            )
+            for chapter in editions:
+                language = chapter["book"][1]
+                for field in ("body_html", "body_text"):
+                    # assertTrue, not assertEqual: these bodies run to tens of
+                    # thousands of characters, and the useful thing on failure
+                    # is which edition regressed, not a diff nobody can read.
+                    self.assertTrue(
+                        apply_source_fixes(slug, order, chapter[field]) == chapter[field],
+                        f"{language} {slug} ch{order:02d} {field} ships with the "
+                        f"uncorrected source text — the repair would still change it",
+                    )
+                checked += 1
+        self.assertTrue(checked, "no source fixes registered — the guard is guarding nothing")
+
+
 class FixtureSermonLabelTests(TestCase):
     """Guard the fixture itself: a shipped translation must carry its badge."""
 
