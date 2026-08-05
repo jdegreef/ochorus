@@ -11,7 +11,7 @@ import path from 'node:path';
  *     apart from a small allowlist of borrowed / proper-noun terms.
  */
 
-const LOCALES = ['en', 'es', 'sw', 'lg', 'pt', 'ar', 'hi'] as const;
+const LOCALES = ['en', 'es', 'sw', 'lg', 'pt', 'ar', 'hi', 'uk'] as const;
 const BASE = 'en';
 const MSG_DIR = path.resolve('messages');
 
@@ -91,7 +91,7 @@ describe('i18n messages', () => {
 	});
 
 	it('non-English strings are actually translated (or allowlisted)', () => {
-		for (const l of ['es', 'sw', 'lg', 'pt', 'ar', 'hi']) {
+		for (const l of ['es', 'sw', 'lg', 'pt', 'ar', 'hi', 'uk']) {
 			const untranslated = keysOf(BASE).filter(
 				(k) => !SAME_AS_ENGLISH_OK.has(k) && data[l][k] === data[BASE][k]
 			);

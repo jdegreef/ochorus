@@ -30,6 +30,10 @@
 		"sw": {
 			"present": 544,
 			"missing": []
+		},
+		"uk": {
+			"present": 544,
+			"missing": []
 		}
 	}
 }

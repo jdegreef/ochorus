@@ -47,7 +47,7 @@ describe('jsonLd', () => {
 });
 
 describe('hreflangFor', () => {
-	// Locale order follows the canonical set (en, es, sw, lg, pt, ar, hi); en is
+	// Locale order follows the canonical set (en, es, sw, lg, pt, ar, hi, uk); en is
 	// unprefixed, other locales carry a /<loc> prefix (localizeHref's behaviour).
 	it('emits an alternate only for the locales the work exists in', () => {
 		const { alternates } = hreflangFor('/books/humility/', ['en', 'sw']);
