@@ -96,6 +96,15 @@ import type { PageLoad } from './$types';
  * — but that build raced ahead of this api release and baked the EMPTY
  * summaries. A changed chunk hash is therefore not evidence the shelf is
  * current; check for the brief TEXT in the served HTML instead.
+ *
+ * Prerender refresh 2026-08-05 (PR #777): the last 38 TRANSLATED briefs — the
+ * es/lg/pt/sw/uk/ar rows the old translate_sermon bug had emptied — so every
+ * sermon fixture in the library now carries one. Backend-only again, and the
+ * chunk-hash warning above proved itself: the hash had already moved (other
+ * merges) while all five localized shelves still served bare titles. The
+ * localized pages are the whole point of this rebuild — `/es/sermons/` and
+ * friends bake their brief at build time, so without it the translations exist
+ * only in the api.
  */
 export const load: PageLoad = async () => {
 	// Tolerate a lagging/absent sermon endpoint at prerender time (see the
