@@ -36,6 +36,14 @@ import type { PageLoad } from './$types';
  * gained its Portuguese prose (Um Mês na Câmara Interior, PR #533). The pt plan
  * row was auto-created when The Inner Chamber shipped in pt and had been
  * falling back to the English title, so /pt/plans re-crawls and bakes it.
+ *
+ * Prerender refresh 2026-08-05 (queue job #630): A School of Prayer becomes
+ * Arabic — مدرسة الصلاة, 27 days. Its three source books (#754, #755, #729)
+ * shipped in Arabic in the same change, which is what lets seed_plans create
+ * the plan at all: it only creates one in a language where EVERY source book
+ * exists. So /ar/plans re-crawls to bake the new card. Portuguese is the
+ * counter-example still pending — it has the PLAN_TRANSLATIONS prose but not
+ * all three books, so no pt row is created and /pt/plans is unchanged.
  */
 export const load: PageLoad = async () => {
 	// Tolerate a lagging/absent plans endpoint at prerender time (api + web can
