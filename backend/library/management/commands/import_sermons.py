@@ -31,6 +31,7 @@ from django.core.management.base import BaseCommand, CommandError
 from library.corrections import apply_body_corrections
 from library.ingest import clean_fragment, soup, word_count
 from library.management.commands.import_gutenberg import content_root
+from library.management.commands.import_web import NAV_TARGET
 from library.management.commands.import_web import extract_page as extract_web_page
 from library.management.commands.import_web import fetch as fetch_web
 from library.models import Author, Sermon
@@ -209,20 +210,34 @@ def extract_web_sermon(html: str, title: str, body_starts: str = "") -> str:
         if m:
             body = body[m.start():]
 
-    # Site navigation ("Back to X Index Page"). Two shapes, because the phrase
-    # is not always a trailing bare paragraph: gospeltruth.net bolds it and
-    # leaves it INSIDE the body's wrapping <blockquote>, so an end-anchored,
-    # paragraph-shaped pattern walked straight past it and the sermon ended
-    # "...they SHALL. Back to BOOTH INDEX Page". Strip the wrapped form
-    # wherever it sits, then the bare trailing form.
+    # Site navigation ("Back to X Index Page"). The phrase is not always a
+    # trailing bare paragraph: gospeltruth.net bolds it and leaves it INSIDE
+    # the body's wrapping <blockquote>, so the end-anchored, paragraph-shaped
+    # rule below walked past it and the sermon ended "...they SHALL. Back to
+    # BOOTH INDEX Page".
+    #
+    # Two guards, because "back to"/"return to" is ordinary English and this
+    # runs over sermons. It must ALSO name a navigation target (index, page,
+    # top…) and be the last content element — only closing tags may follow.
+    # Without both, this eats prose: "Back to our text, then" is a preacher's
+    # transition, and "Return to the Lord thy God" (Joel 2:13) and "Return to
+    # me, saith the Lord of hosts" (Zechariah 1:3) are scripture. All three
+    # matched an earlier, looser version of this pattern.
     body = re.sub(
-        r"<(p|b|i|em|strong)[^>]*>\s*(?:back|return)\s+to\b[^<]{0,80}</\1>\s*",
+        r"<(p|b|i|em|strong)[^>]*>\s*(?:back|return)\s+to\b[^<]{0,80}?"
+        rf"{NAV_TARGET}[^<]{{0,20}}</\1>\s*"
+        r"(?=(?:</[a-z]+>\s*)*$)",
         "",
         body,
         flags=re.I,
     )
+    # The bare trailing form, with the same navigation-target guard. Without it
+    # this rule — which predates the wrapped one above — strips any final
+    # paragraph opening "back to" or "return to", so a sermon closing on Joel
+    # 2:13 ("Return to the Lord thy God") would lose its last line silently.
     body = re.sub(
-        r"(?:<hr/>|\s)*(?:<p>)?\s*(?:back to|return to)[^<]{0,100}(?:</p>)?\s*$",
+        r"(?:<hr/>|\s)*(?:<p>)?\s*(?:back to|return to)[^<]{0,100}?"
+        rf"{NAV_TARGET}[^<]{{0,20}}(?:</p>)?\s*$",
         "",
         body,
         flags=re.I,
