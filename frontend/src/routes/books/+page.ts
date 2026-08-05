@@ -198,6 +198,13 @@ import type { PageLoad } from './$types';
  * longest, and the third of this author's in Swahili alongside Anazishika
  * Kesho Zangu and Ufunguo Ulio Mkononi Mwangu. The /sw books index and
  * /sw/books/stepping-stones-2 with its chapter pages re-crawl and bake.
+ *
+ * Prerender refresh 2026-08-05 (queue job #418): Andrew Murray's Unyenyekevu
+ * (Humility, 12 ch) — Swahili's fourteenth book and Murray's fourth in the
+ * language, beside Chumba cha Ndani, Bwana Tufundishe Kuomba and Yesu Mwenyewe.
+ * This one also makes the reading plan humility-12-days render in Swahili, its
+ * only source book being this one, so /sw/plans changes too — same
+ * EVERY-source-book rule as #650 and #630.
  */
 export const load: PageLoad = async () => {
 	try {
