@@ -118,11 +118,10 @@ CURATED_PLANS = [
 # AI-drafted, pending native review.
 #   {language: {slug: (title, description)}}
 PLAN_TRANSLATIONS = {
-    # Arabic currently has one plan whose source book is translated —
-    # the-inner-chamber-month. The rest are listed nowhere until their books
-    # land, because seed_plans only creates a plan in a language where EVERY
-    # source book is present; an entry here for a plan that cannot render is
-    # dead weight that reads like a bug.
+    # A plan is listed in a language only once all of its source books are
+    # translated, because seed_plans creates a plan only where EVERY source book
+    # is present; an entry here for a plan that cannot render is dead weight
+    # that reads like a bug. So each new entry below arrives with its books.
     "ar": {
         "the-inner-chamber-month": (
             "شهر في المخدع",
@@ -134,6 +133,14 @@ PLAN_TRANSLATIONS = {
             "أربعة أسابيع مع ر. أ. توري في الحياة المملوءة بالروح: أوّلًا "
             "المعمودية بالروح القدس والقوّة التي تمنحها للخدمة، ثمّ الدرس "
             "الأوفى في أقنوم الروح الساكن في كلّ مؤمنٍ وعمله.",
+        ),
+        # The three guides are named with the exact Arabic titles their books
+        # ship under, so the plan and the library agree.
+        "school-of-prayer": (
+            "مدرسة الصلاة",
+            "أربعة أسابيع في مدرسة الصلاة مع ثلاثة معلّمين: أندرو موراي في كيف "
+            "يعلّمنا الربّ نفسه أن نصلّي، ود. ل. مودي في الصلاة الغالبة، وحنّة "
+            "بوينزا في الصلاة بوصفها نبض الحياة المسيحيّة اليوميّ.",
         ),
     },
     "pt": {

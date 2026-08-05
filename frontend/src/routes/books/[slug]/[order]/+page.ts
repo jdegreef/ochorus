@@ -23,6 +23,12 @@ import type { EntryGenerator, PageLoad } from './$types';
 // the Syrophenician mother accepting "the name of God" where the author wrote
 // "dog" — the illustration argued its own opposite. Same reason as above: the
 // corrected body has to be re-baked, not just served.
+// Prerender refresh 2026-08-05 (queue jobs #754, #755, #729): the three source
+// books of the reading plan A School of Prayer land in Arabic together — يا ربّ،
+// علّمنا أن نصلّي (4 ch), الصلاة الغالبة (11 ch) and الصلاة — نبض الحياة (12 ch),
+// 27 chapters in all. Arabic is RTL: the chapter bodies carry no dir/lang of
+// their own, so each /ar/books/<slug>/<order> renders under the container's
+// dir="auto" (see readerDirection.test.ts) and re-crawls to bake the text.
 export const prerender = true;
 export const trailingSlash = 'always';
 

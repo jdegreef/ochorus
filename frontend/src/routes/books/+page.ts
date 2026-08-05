@@ -184,6 +184,14 @@ import type { PageLoad } from './$types';
  * reading plan power-from-on-high render in Arabic, so /ar/plans changes too:
  * seed_plans creates a plan only in a language where EVERY source book exists,
  * and its other source (المعمودية بالروح القدس) has been Arabic since #625.
+ *
+ * Prerender refresh 2026-08-05 (queue jobs #754, #755, #729): three books at
+ * once — Andrew Murray's يا ربّ، علّمنا أن نصلّي (4 ch), D. L. Moody's الصلاة
+ * الغالبة (11 ch) and Hannah Buyinza's الصلاة — نبض الحياة (12 ch) — taking
+ * Arabic from six books to nine. Same RTL handling as #629. They ship together
+ * on purpose: they are the three sources of the reading plan A School of Prayer
+ * (#630), and by the same EVERY-source-book rule as #650 the plan cannot
+ * render in Arabic until the last of them lands, so /ar/plans changes too.
  */
 export const load: PageLoad = async () => {
 	try {
