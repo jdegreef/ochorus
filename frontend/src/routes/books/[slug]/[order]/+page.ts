@@ -36,6 +36,8 @@ import type { EntryGenerator, PageLoad } from './$types';
 // Prerender refresh 2026-08-05 (queue job #417): Mawe ya Kukanyagia (Stepping
 // Stones, 39 ch) is the longest book Swahili has, so each
 // /sw/books/stepping-stones-2/<order> is a new page the crawler has to bake.
+// Prerender refresh 2026-08-05 (queue job #418): Unyenyekevu (Humility, 12 ch)
+// adds twelve more /sw chapter pages that do not exist yet.
 export const prerender = true;
 export const trailingSlash = 'always';
 

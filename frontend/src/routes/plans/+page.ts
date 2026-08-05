@@ -52,6 +52,12 @@ import type { PageLoad } from './$types';
  * exists. So /ar/plans re-crawls to bake the new card. Portuguese is the
  * counter-example still pending — it has the PLAN_TRANSLATIONS prose but not
  * all three books, so no pt row is created and /pt/plans is unchanged.
+ *
+ * Prerender refresh 2026-08-05 (queue job #418, the plan side-effect): Andrew
+ * Murray's Humility shipped in Swahili, and it is the sole source book of
+ * humility-12-days — so seed_plans now creates that plan in sw and /sw/plans
+ * re-crawls to bake the new card. The plan's own prose was already in
+ * PLAN_TRANSLATIONS; only the book was missing.
  */
 export const load: PageLoad = async () => {
 	// Tolerate a lagging/absent plans endpoint at prerender time (api + web can
