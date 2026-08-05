@@ -209,7 +209,18 @@ def extract_web_sermon(html: str, title: str, body_starts: str = "") -> str:
         if m:
             body = body[m.start():]
 
-    # Trailing site-navigation text, inside or outside a paragraph.
+    # Site navigation ("Back to X Index Page"). Two shapes, because the phrase
+    # is not always a trailing bare paragraph: gospeltruth.net bolds it and
+    # leaves it INSIDE the body's wrapping <blockquote>, so an end-anchored,
+    # paragraph-shaped pattern walked straight past it and the sermon ended
+    # "...they SHALL. Back to BOOTH INDEX Page". Strip the wrapped form
+    # wherever it sits, then the bare trailing form.
+    body = re.sub(
+        r"<(p|b|i|em|strong)[^>]*>\s*(?:back|return)\s+to\b[^<]{0,80}</\1>\s*",
+        "",
+        body,
+        flags=re.I,
+    )
     body = re.sub(
         r"(?:<hr/>|\s)*(?:<p>)?\s*(?:back to|return to)[^<]{0,100}(?:</p>)?\s*$",
         "",
