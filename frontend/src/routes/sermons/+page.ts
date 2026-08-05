@@ -105,6 +105,14 @@ import type { PageLoad } from './$types';
  * localized pages are the whole point of this rebuild — `/es/sermons/` and
  * friends bake their brief at build time, so without it the translations exist
  * only in the api.
+ *
+ * Prerender refresh 2026-08-05 (queue jobs #635/#636/#637/#653/#654/#655/#766/
+ * #767): eight more Arabic sermons take that language from four to twelve —
+ * Spurgeon's المسيح كريم عند المؤمنين and النعمة المجّانيّة, Moody's المسيح
+ * الكلّ في الكلّ, مواعيد المسيح الثمانية: «أُريد» and اللصّ المحتضر, Hudson
+ * Taylor's الشدّة المباركة, A. B. Simpson's هو نفسه, and قوّة السكون. Each
+ * carries a translated "In brief", and per the note above the brief TEXT is
+ * what to check in the served HTML — not the chunk hash.
  */
 export const load: PageLoad = async () => {
 	// Tolerate a lagging/absent sermon endpoint at prerender time (see the
