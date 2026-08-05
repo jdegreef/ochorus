@@ -18,6 +18,7 @@
 	import { apiFetch } from '$lib/api';
 	import { readJSON, writeJSON } from '$lib/persisted';
 	import { readSearchState, searchStateKey, writeSearchState } from '$lib/searchState';
+	import { portraitPosition } from '$lib/portraits';
 	import type { ScriptureResult } from '$lib/scripture.svelte';
 	import { markSnippet } from '$lib/highlight';
 	import { localizeHref } from '$lib/href';
@@ -48,6 +49,8 @@
 		color: string;
 		/** Portraits are round and small; covers keep a book's proportions. */
 		round: boolean;
+		/** Where the face sits in a portrait; unset for covers, which crop nothing. */
+		focus?: string;
 	};
 
 	function toRow(hit: SearchHit): Row {
@@ -63,7 +66,8 @@
 					date: hit.date,
 					image: hit.photo_url,
 					color: '',
-					round: true
+					round: true,
+					focus: portraitPosition(hit.author_slug)
 				};
 			case 'book':
 				return {
@@ -813,8 +817,13 @@
 	color: string;
 	round: boolean;
 	small?: boolean;
+	focus?: string;
 })}
 	{#if row.image}
+		{@const boxStyle = [
+			row.color ? `background-color:${row.color}` : '',
+			row.focus ? `object-position:${row.focus}` : ''
+		].filter(Boolean).join(';')}
 		<img
 			src={row.image}
 			alt=""
@@ -825,7 +834,7 @@
 				: row.small
 					? 'h-8 w-6 rounded-sm'
 					: 'h-16 w-12 rounded'}"
-			style={row.color ? `background-color:${row.color}` : undefined}
+			style={boxStyle || undefined}
 		/>
 	{/if}
 {/snippet}

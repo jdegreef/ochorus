@@ -2,6 +2,7 @@
 	import { type AuthorBio, type BookSummary, formatLifespan } from '$lib/library';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import { portraitPosition } from '$lib/portraits';
 	import BookCover from '$lib/components/BookCover.svelte';
 
 	// One writer's card: portrait, name + lifespan, the "Full life" badge, a
@@ -45,6 +46,7 @@
 					width="112"
 					height="112"
 					class="h-24 w-24 rounded-full border border-border object-cover grayscale transition-[filter] duration-300 group-hover:grayscale-0 sm:h-28 sm:w-28"
+					style="object-position: {portraitPosition(author.slug)}"
 				/>
 			{:else}
 				<span
