@@ -3,6 +3,14 @@ import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
 
 /**
+ * Prerender refresh 2026-08-05 (queue job #652, follow-up to PR #834): the
+ * Arabic prose for "Humility in 12 Days" (التواضع في اثني عشر يومًا) landed.
+ * The row itself already existed — PR #819 published the Arabic Humility, and
+ * seed_plans creates a Plan per published language of a LAUNCH_PLANS source
+ * book, falling back to the ENGLISH tuple when PLAN_TRANSLATIONS has no entry.
+ * So /ar/plans has been serving an English-titled card; this touch re-crawls it
+ * so the static page bakes the Arabic title and description.
+ *
  * Prerender refresh 2026-07-22 (queue jobs #272/#286): the Swahili prose for
  * "A School of Prayer" (Shule ya Maombi) landed, and the Luganda prose
  * (Essomero ery'Okusaba) is already in place. seed_plans only materializes the
