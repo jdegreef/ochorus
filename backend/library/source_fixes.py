@@ -65,6 +65,33 @@ def fix_wrong_verse(body_html: str) -> str:
     return body_html
 
 
+# "Humility and Faith" ch09 asks whether the Syrophenician mother, told "O
+# woman, great is thy faith!", had not "accepted the name of God" — but the
+# name she accepted was *dog*, the one Jesus had just used, and she pressed her
+# plea from underneath it: "yet even the dogs eat the crumbs" (Matthew 15:27),
+# which the very next clause of our own text still quotes. Read as printed, the
+# illustration argues the opposite of the chapter: Murray's point is that her
+# faith was great BECAUSE her humility would take the humiliating name. Checked
+# against another edition of Humility before changing (worldinvisible.com's
+# text of ch09 and BibleStudyTools' — both read "the name of dog").
+#
+# Each edition gets its own pair: the Luganda translator reproduced the defect
+# faithfully, which is correct of a translator and is what makes it fixable
+# here rather than silently papered over. The Arabic edition, still in
+# translation when this shipped, reproduced it too and needs its pair added
+# when it lands.
+NAME_OF_DOG = [
+    ("accepted the name of God, and said", "accepted the name of dog, and said"),
+    ("teyakkiriza erinnya lya Katonda", "teyakkiriza erinnya ly'embwa"),
+]
+
+
+def fix_name_of_dog(body_html: str) -> str:
+    for bad, good in NAME_OF_DOG:
+        body_html = body_html.replace(bad, good)
+    return body_html
+
+
 def fix_duplicated_block(body_html: str) -> str:
     """Collapse ch08's duplicated paragraphs 10-12 back into one.
 
@@ -99,6 +126,7 @@ def fix_duplicated_block(body_html: str) -> str:
 
 # (slug, chapter order) -> repairs, applied in order.
 SOURCE_FIXES = {
+    ("humility-2", 9): [fix_name_of_dog],
     ("the-person-and-work-of-the-holy-spirit", 1): [fix_wrong_verse],
     ("the-person-and-work-of-the-holy-spirit", 8): [
         fix_duplicated_block,
