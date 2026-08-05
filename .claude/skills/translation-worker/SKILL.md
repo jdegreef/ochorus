@@ -209,6 +209,37 @@ pinning full per-language coverage, so a partial block fails CI.
   missing (typically the prerender refresh — check whether any frontend
   commit landed after the content merge), then close out normally citing the
   existing PR. Don't re-translate; the fixture guard would reject it anyway.
+- **A job can be shipped by another session WHILE you are running it, and a
+  rebase will absorb it silently** (job #728, 2026-08-05). The double-ship guard
+  above is a check on *fresh `origin/main` before starting*; it does not survive
+  a long run. Between claiming #728 and opening the PR, main gained PR #819 —
+  the same book, same language — plus #757 and #817 fixing the two English
+  defects this run's translators had reported. `git rebase` then replaced the
+  worktree copy with theirs and `git status` went quiet, because the file was
+  suddenly *tracked and unmodified*; the only signal was `git stash pop` saying
+  it kept the stash. Nearly reported as "my work". What settles it is
+  **checksums, not diffstat**: `md5 <worktree>` vs `git show HEAD:<path> | md5`
+  vs the stash copy (`git show 'stash@{0}^3:<path>'` — `^3` is the untracked
+  commit that `stash -u` makes). Practical rules: re-check `origin/main` right
+  before the PR **and** after any rebase; if the target file arrives from
+  elsewhere, diff the two editions field by field rather than assuming yours is
+  better — theirs incorporated an English correction mine had deliberately
+  preserved, so theirs was the better file; and salvage the delta that is still
+  genuinely missing instead of pushing a duplicate.
+- **Shipping a book silently creates that language's PLAN row — with ENGLISH
+  prose** (found while working #728; the miss is live on main). `seed_plans`
+  iterates `Book.objects.filter(slug=…, is_published=True)` across *every*
+  language and creates a Plan per language it finds, taking prose from
+  `PLAN_TRANSLATIONS[lang][slug]` and **falling back to the English tuple** when
+  the entry is absent. So a book PR that adds `<slug>.<lang>.json` for any book
+  backing a `LAUNCH_PLANS` entry publishes an English-titled plan on that
+  language's plans page. PR #819 shipped Arabic *Humility* without adding
+  `PLAN_TRANSLATIONS["ar"]["humility-12-days"]`, so the ar plans page reads
+  "Humility in 12 Days". Nothing fails — no test, no CI gate, and the plan job
+  (#652 here) sits in the queue as if unrelated. **Before shipping a book,
+  check whether its slug appears in `LAUNCH_PLANS` or `CURATED_PLANS`, and if it
+  does, add the plan prose in the SAME PR.** Verify by running `seed_plans` on a
+  clean DB twice — once with your entry and once without — and reading the row.
 - **Word count cannot verify a translation. Diff the ordered TAG SEQUENCE**
   (jobs #414/#415, 2026-07-30): the sw and lg John Wesley bios had been
   re-translated from the expanded English and their word ratios looked healthy
@@ -239,15 +270,28 @@ pinning full per-language coverage, so a partial block fails CI.
   77.3-87.2% — against the 88-98% / mean 93% the bio line records for the same
   language. Brief a 39-chapter book at 93% and you commission 40,000 words of
   padding that passes every structural gate. Re-measure for the type you are
-  actually shipping, not just the language.
-- **The floor is absolute; the ceiling is not.** Running short always means
-  content was lost, so 78% is a hard floor. But proper nouns and numerals pass
-  through untranslated at 100% and cannot compress, so a chapter dense in them
-  rides high with nothing padded. In Stepping Stones the chapters at >=88%
-  averaged an **18.6%** proper-noun/numeral share against **7.5%** for those
-  under 86%; its 219-word biographical profile is 27% names and dates and lands
-  at 99%. Scale the ceiling with that share (or exempt short front matter)
+  actually shipping, not just the language. Arabic books sit lower again:
+  Murray's *Humility* (job #728, 12 chapters) ran **71.5-79.4%, mean ~74%**
+  against the 78-89% ar *bio* band — ten of twelve chapters outside it, with all
+  twelve tag sequences exact, element for element.
+- **The ceiling is not absolute — and neither is the floor.** Proper nouns and
+  numerals pass through untranslated at 100% and cannot compress, so a chapter
+  dense in them rides high with nothing padded. In Stepping Stones the chapters
+  at >=88% averaged an **18.6%** proper-noun/numeral share against **7.5%** for
+  those under 86%; its 219-word biographical profile is 27% names and dates and
+  lands at 99%. Scale the ceiling with that share (or exempt short front matter)
   rather than sending a correct chapter back to be cut.
+  **On the floor these two jobs disagree, so do not treat 78% as universal.**
+  The Swahili sweep proposed it as a hard floor on the reasoning that running
+  short always means content was lost; the Arabic *Humility* job then produced a
+  whole book below it — mean 74%, low 71.5% — that was verifiably complete, and
+  it shipped. Victorian devotional prose compresses harder than biographical
+  prose, and Arabic compresses harder than Swahili, so the two effects stack.
+  A floor is a per-(language x type) observation like every other number here,
+  never a gate on its own: when a ratio looks low, settle it with the **ordered
+  tag sequence**, which is language-independent and does not move. Twelve
+  independent translators landing inside an 8-point spread with exact tag parity
+  is evidence of consistency; the distance from a borrowed number is not.
 - **A brand-new language has NO band — don't invent one, and don't let its
   absence stop the job.** The ar band above came from the first six Arabic bios
   (77.9 / 81.0 / 81.4 / 82.6 / 86.4 / 88.5%); before that batch there was
@@ -271,6 +315,43 @@ pinning full per-language coverage, so a partial block fails CI.
   translations must NOT carry their own `dir`/`lang` attributes (a frontend
   test pins this), and the bio's prayer-callout `class` attributes must survive
   verbatim like anywhere else.
+- **Quotation marks are per-LANGUAGE house style, and nothing in CI catches
+  them** (job #728, 2026-08-04). The English fixtures quote with `&quot;`
+  entities. All six already-shipped Arabic books use Arabic guillemets « »
+  **exclusively — zero `&quot;`** (`the-inner-chamber.en` has 95 `&quot;`; its
+  `.ar` has none), so converting is part of the pipeline, not a preference. Left
+  alone, translators split: on *Humility* ten chapters kept the entities, two
+  converted, and two mixed both **inside one chapter**. The tag-sequence gate
+  does not see this (entities aren't tags) and no test pins it, so it ships
+  looking fine and reads as a different book every third chapter. Check
+  `body_html.count('&quot;')` against the language's shipped books before
+  building the fixture, and say the convention in the translator brief.
+  Converting afterwards is decided **contextually** (does the mark hug the start
+  of a word, or follow one?), never by an alternating toggle: the English source
+  leaves quotations unbalanced — *Humility* ch01 closes one that was never
+  opened — and a toggle renders that lone mark as an opening guillemet.
+- **Egress depends on WHERE the session runs — test it, don't inherit the
+  claim.** This file says elsewhere that `api.takeroot.bible` is blocked and
+  that rendering scripture conservatively is "the current default". That is true
+  of the sandboxed cloud sessions it was written from; it is **false on James's
+  local Mac**, where the API answers normally. Job #728 was filed by a session
+  that correctly reported it could not run the translation, and a local session
+  ran it the same day with authoritative Van Dyck for all 54 detected
+  references. One `curl` settles it — do that before accepting a caveat that
+  costs the job its scripture fidelity.
+- **`find_references` misses most quotations, so "supplied scripture" is not
+  coverage** (job #728). It only catches explicit `Book C:V` citations, and
+  Murray quotes constantly without citing. Across *Humility*'s 12 chapters the
+  detector supplied 54 passages while the translators flagged **~45 further
+  references** rendered from memory — including the epigraphs of ch01 (Rev 4:11)
+  and ch03 (Luke 22:27), the most prominent line on each page. Budget a second
+  pass: collect every flagged reference, fetch them, and re-run the chapters.
+  What it caught was not cosmetic — a wrong verb in Gal 5:26 (*pursuing* for
+  *provoking*), a fused pseudo-verse presented as Matt 18:4 (its real ending
+  welded to Matt 23:12's), Luke 18:14 substituted with Luke 14:11 on the
+  assumption they match, and repeated shadda/vowel-order drift that is the
+  fingerprint of a retyped-from-memory verse. Tell the repair pass explicitly
+  that "no edits needed" is a valid outcome, or it will manufacture changes.
 - **Public-domain Bibles are on GitHub — verify against the text, don't guess.**
   The egress policy blocks `api.takeroot.bible`, `ebible.org`, `bible.com` and
   the rest, which makes verification look impossible. It is not:
