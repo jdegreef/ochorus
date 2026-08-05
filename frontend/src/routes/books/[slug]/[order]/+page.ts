@@ -33,6 +33,9 @@ import type { EntryGenerator, PageLoad } from './$types';
 // 27 chapters in all. Arabic is RTL: the chapter bodies carry no dir/lang of
 // their own, so each /ar/books/<slug>/<order> renders under the container's
 // dir="auto" (see readerDirection.test.ts) and re-crawls to bake the text.
+// Prerender refresh 2026-08-05 (queue job #417): Mawe ya Kukanyagia (Stepping
+// Stones, 39 ch) is the longest book Swahili has, so each
+// /sw/books/stepping-stones-2/<order> is a new page the crawler has to bake.
 export const prerender = true;
 export const trailingSlash = 'always';
 

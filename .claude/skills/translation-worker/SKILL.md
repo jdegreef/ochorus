@@ -232,6 +232,22 @@ pinning full per-language coverage, so a partial block fails CI.
   correct one. To calibrate a new language, measure its files re-translated
   from the CURRENT English (`git log -1 --format=%ad -- <file>` to find them)
   and use that spread.
+- **The band is per CONTENT TYPE as well as per language — the numbers above
+  are BIOS.** Book chapters run lower, and the gap is big enough to wreck a
+  job. Measured across all 188 shipped Swahili book chapters (job #417):
+  **77-91%** (p05-p95), **mean 83.7%**, median 83.6%, per-book totals
+  77.3-87.2% — against the 88-98% / mean 93% the bio line records for the same
+  language. Brief a 39-chapter book at 93% and you commission 40,000 words of
+  padding that passes every structural gate. Re-measure for the type you are
+  actually shipping, not just the language.
+- **The floor is absolute; the ceiling is not.** Running short always means
+  content was lost, so 78% is a hard floor. But proper nouns and numerals pass
+  through untranslated at 100% and cannot compress, so a chapter dense in them
+  rides high with nothing padded. In Stepping Stones the chapters at >=88%
+  averaged an **18.6%** proper-noun/numeral share against **7.5%** for those
+  under 86%; its 219-word biographical profile is 27% names and dates and lands
+  at 99%. Scale the ceiling with that share (or exempt short front matter)
+  rather than sending a correct chapter back to be cut.
 - **A brand-new language has NO band — don't invent one, and don't let its
   absence stop the job.** The ar band above came from the first six Arabic bios
   (77.9 / 81.0 / 81.4 / 82.6 / 86.4 / 88.5%); before that batch there was
@@ -269,6 +285,25 @@ pinning full per-language coverage, so a partial block fails CI.
   snippets left 9 and 16 unverified in the same batch. Put the route in the
   brief so nobody repeats the discovery — and note the same trick generalises
   to any language whose Bible is a PD ebible text.
+- **…but check the mirror's LICENCE and its TEXT before using it. For Swahili,
+  don't.** The only Swahili Bible in that collection is `swh_ulb` (Unlocked
+  Literal Bible, 2019) and it fails on both counts: it is **CC BY-SA 4.0, not
+  public domain** — which would put an attribution obligation on every verse
+  the library renders — and it is a different translation from the one our
+  188 shipped Swahili chapters already quote. Eph 2:8 is ULB «Kwa neema
+  mmeokolewa kwa njia ya imani. Na hii haikutoka kwetu» against our shipped
+  «Kwa maana mmeokolewa kwa neema, kwa njia ya imani; ambayo hiyo haikutokana
+  na nafsi zenu, ni kipawa cha Mungu». Our corpus follows the PD **Swahili
+  Union tradition**, which `language_seed.py` records as `swhonen`; ebible.org
+  is egress-blocked and no PD Union text is mirrored.
+  **Mine our own corpus instead** — align shipped `*.en.json`/`*.sw.json`
+  block pairs (equal block counts, same index) and pull the Swahili for verses
+  the new book quotes. For job #417 that recovered exact wording for 12 of 21
+  verses, several from the SAME author's shipped edition. Hand the translator
+  that file plus a book-name list, and require every self-rendered verse to be
+  **flagged unverified** so it reaches the PR as a review queue instead of
+  disappearing into the diff. The same applies to any language whose only
+  mirrored Bible is licensed or off-tradition — check before briefing.
 - **Check BOOK NAMES against the edition too, not just verses.** The uk brief
   guessed six and got three wrong: the Kulish text headers Matthew `Маттея`
   (not `Матея`), Isaiah `Ісаїї` (not `Ісаї`), Malachi `Малахія` (nominative,
