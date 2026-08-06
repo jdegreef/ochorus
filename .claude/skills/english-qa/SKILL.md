@@ -33,6 +33,13 @@ one:
 | `source_fixes.py` | what the **source itself** got wrong, keyed `(slug, order)` | Applies in **any** language — use when the defect already propagated |
 | `contemporize-book` skill | modernizing period style | A separate, **labelled** Modern English edition. Never in place. |
 
+`apply_body_corrections` also carries one RULE rather than a list — the
+line-break hyphen rejoin — and it runs for every work, not just the 22 with a
+declared entry. **Declared pairs run first**, so a hand-written repair always
+beats the rule: `the-inner-chamber` declares "scales- only" → "scales — only",
+where the trailing hyphen is a flattened dash, and with the rule first that em
+dash was lost.
+
 `apply_body_corrections` calls `.save()`, so the FTS hooks fire and search
 vectors stay in step. A fix applied with `queryset.update()` instead would
 leave `search_vector` **stale, not NULL** — the release backfill only repairs
@@ -48,6 +55,10 @@ DJANGO_DEBUG=true uv run python manage.py audit_english                 # whole 
 DJANGO_DEBUG=true uv run python manage.py audit_english --class anachronism
 DJANGO_DEBUG=true uv run python manage.py audit_english --json /tmp/findings.json
 DJANGO_DEBUG=true uv run python manage.py audit_english --update-baseline
+
+# after adding a rule-based repair, bring the committed fixture in line:
+DJANGO_DEBUG=true uv run python manage.py normalize_english_fixture          # dry run
+DJANGO_DEBUG=true uv run python manage.py normalize_english_fixture --write
 ```
 
 The corpus scan covers **books, sermons and author biographies** — bios come
@@ -75,7 +86,8 @@ rewriting a public-domain author.
 | `orphan-close-quote` | Read the passage | A close with nothing open usually means an attribution broke mid-sentence — the surrounding text is the real defect |
 | `run-together` | Fix — a missing space after a full stop | Mechanical, but confirm it isn't an ellipsis or an abbreviation |
 | `title-case-vs-body` | Pick the reading the body supports | Fires only on a lone letter after a hyphen ("Type-a" vs "Type-A") |
-| `hyphen-space`, `space-before-punct` | **Report only. Do not write string pairs** | ~630 instances corpus-wide. These want one normalization pass in `ingest.clean_fragment`, not hundreds of hand-written pairs. `english_audit.MECHANICAL` marks them |
+| `hyphen-space` | **Already normalized — read the survivors** | `corrections.rejoin_linebreak_hyphens` closes "self- righteous" on every import and every deploy, which took 434 to 26. What is left is what the rule refuses to guess: a resumption with a CAPITAL (either a flattened dash, "thus- Moses", or a real compound, "non- Israelite" — not separable mechanically), a suspended compound ("two- and twenty"), or a hyphen at a `</p>` boundary, which is a verse line |
+| `space-before-punct` | **Report only. Do not write string pairs** | 197 instances. Deliberately NOT normalized: the space is often the visible edge of a deeper defect — a fused page marker ("everlasting xxivthings ?"), a broken sentence — and closing it up conceals the symptom. It is also bimodal (777/647/586 in the 17c texts, where it is the era's typography), so a global sweep would sand the period off Baxter. `english_audit.MECHANICAL` marks it |
 
 ## Procedure
 

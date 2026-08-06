@@ -23,6 +23,7 @@ from functools import lru_cache
 from django.test import SimpleTestCase
 
 from library import english_audit
+from library.corrections import rejoin_linebreak_hyphens as rejoin
 from library.english_audit import Record, audit_records, counts
 
 
@@ -213,6 +214,85 @@ class BiographyAuditTests(SimpleTestCase):
         bios = list(_bio_records())
         self.assertGreater(len(bios), 20, "authors.json should yield most authors' bios")
         self.assertTrue(all(r.body_html for r in bios))
+
+
+class LineBreakHyphenTests(SimpleTestCase):
+    """The one rule-based repair, and the four things it must never do.
+
+    A word broken across a line in the source PDF arrives as "self-" + a line
+    break, and the paragraph merge rejoins it with a space. 429 of these were
+    stored across 39 works. The repair closes the space and NOTHING else — it
+    never removes the hyphen, and that restraint is what makes it safe to run
+    unattended on a public-domain author.
+    """
+
+    def test_closes_the_space(self):
+        self.assertEqual(rejoin("self- righteous"), "self-righteous")
+        self.assertEqual(rejoin("Fountain- head"), "Fountain-head")
+
+    def test_never_removes_the_hyphen(self):
+        """Dropping it would modernise the author — the one forbidden edit.
+
+        "to-day" is Wesley's spelling and "over-much" is Whitefield's. The
+        unhyphenated form is attested elsewhere in those same works, so a rule
+        keyed on attestation would have "corrected" both.
+        """
+        for period_spelling in ("to- day", "over- much", "four- fold", "whole- hearted"):
+            got = rejoin(period_spelling)
+            self.assertEqual(got, period_spelling.replace("- ", "-"))
+            self.assertIn("-", got, "the author's hyphen must survive")
+
+    def test_leaves_a_capitalised_resumption_alone(self):
+        """A broken word never resumes with a capital, so these are unprovable.
+
+        They are either a flattened dash — "thus- Moses, the man of God", "I
+        ask- What does this mean?" — or a genuine proper-noun compound —
+        "non- Israelite", "Golden- Mouthed" — and nothing mechanical separates
+        the two. 21 cases; leaving ~7 real compounds unjoined is much cheaper
+        than welding a clause boundary shut.
+        """
+        for unprovable in ("thus- Moses", "I ask- What", "non- Israelite", "Golden- Mouthed"):
+            self.assertEqual(rejoin(unprovable), unprovable)
+
+    def test_leaves_suspended_compounds_alone(self):
+        """"two- and three-fold" — here the space is correct English."""
+        for suspended in ("two- and twenty", "day- to day", "pre- or post-"):
+            self.assertEqual(rejoin(suspended), suspended)
+
+    def test_never_joins_across_a_paragraph_boundary(self):
+        """A hyphen at the end of a <p> is a verse line, not a broken word.
+
+        the-possibilities-of-faith quotes "Glory begin below-</p><p>Celestial
+        fruits" — joining that would run two lines of a poem together.
+        """
+        verse = "<p>Glory begin below-</p><p>Celestial fruits</p>"
+        self.assertEqual(rejoin(verse), verse)
+
+    def test_is_idempotent(self):
+        once = rejoin("self- righteous")
+        self.assertEqual(rejoin(once), once)
+
+    def test_the_fixture_is_clean(self):
+        """The committed English fixture must carry no repairable hyphen.
+
+        `apply_body_corrections` heals the database on every deploy, but the
+        fixture is a file — nothing rewrites it, and it is what a fresh build
+        loads and what the ratchet measures.
+        """
+        from library.content_fixtures import BOOKS_DIR, SERMONS_DIR
+
+        import json
+
+        dirty = []
+        for path in sorted(BOOKS_DIR.glob("*.en.json")) + sorted(SERMONS_DIR.glob("*.en.json")):
+            for row in json.loads(path.read_text(encoding="utf-8")):
+                body = row.get("fields", {}).get("body_html") or ""
+                if rejoin(body) != body:
+                    dirty.append(path.name)
+                    break
+        self.assertEqual(
+            dirty, [], "run `manage.py normalize_english_fixture --write`"
+        )
 
 
 class CorrectionsHygieneTests(SimpleTestCase):
