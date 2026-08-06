@@ -78,6 +78,13 @@ CORRECTIONS: dict[str, dict] = {
         # headings — leaves the "VI." in place. Give the clean title directly.
         "chapter_titles": {7: "Perfect through sufferings"},
     },
+    "stepping-stones-2": {
+        # Ch.30's title misspells Millennium; the chapter body spells it
+        # correctly. Found by the English audit. This lives here rather than in
+        # BODY_CORRECTIONS because that only rewrites body_html, so a defect in
+        # a title is out of its reach entirely.
+        "chapter_titles": {30: "Into A New Millennium"},
+    },
 }
 
 
@@ -194,12 +201,15 @@ BODY_CORRECTIONS: dict[str, dict] = {
     },
     "the-christians-secret-of-a-happy-life-4": {
         # ch4/8/14/16: drop cap fused to the word after it.
+        # ch13: small caps split, so GOD reads "G OD" (see the audit note on
+        # he-holds-my-tomorrows for why the rejoin test is what makes this safe).
         "replacements": [
             ("sel f,", "self,"),
             ("<p>Ihave", "<p>I have"),
             ("<p>Ionce", "<p>I once"),
             ("<p>Amajor", "<p>A major"),
             ("<p>Agreat", "<p>A great"),
+            ("Lord G OD", "Lord GOD"),
         ],
     },
     "men-of-prayer-2": {
@@ -261,7 +271,113 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # paragraph only) can't reach it: the H is simply gone. The paragraph
         # above it opens "Humility is the path to death", which is what settles
         # the missing letter.
-        "replacements": [("<p>umility is the blossom", "<p>Humility is the blossom")],
+        #
+        # ch04: the import put words in Murray's mouth. Where he wrote "The
+        # poor, who have nothing in themselves, to them the kingdom comes; the
+        # meek, who seek nothing in themselves, theirs the earth shall be", the
+        # imported text substitutes a fabricated objection and answer about
+        # Christians "owning land, cars, and lots of businesses" — cars, in an
+        # 1895 devotional. Same class as the machine-written chapter summaries
+        # and the "name of God"/"name of dog" inversion: an ochorus.com import
+        # artifact, and the worst kind, because a public-domain library's whole
+        # claim is that the words are the author's.
+        #
+        # The repair is written for all four editions. Corrections are keyed by
+        # slug and every language shares it, so each pair matches only its own
+        # edition; the translations reproduced the interpolation faithfully,
+        # which is what a translator should do, and they have to be repaired
+        # with the English or they translate text that no longer exists.
+        # Paragraph boundaries are preserved so the editions stay parallel.
+        "replacements": [
+            ("<p>umility is the blossom", "<p>Humility is the blossom"),
+            # -- en
+            ("The poor, who have given up everything for the sake of Christ, to"
+             " them the kingdom comes. One might say: “But some Christians"
+             " are really wealthy, owning land, cars, and lots of businesses."
+             "”",
+             "The poor, who have nothing in themselves, to them the kingdom"
+             " comes."),
+            ("Yes, that can be very possible, especially as children of the Most"
+             " High, but if they consider it vanity, they can easily give it"
+             " away for the gospel; they are poor in the Spirit. The meek,",
+             "The meek,"),
+            # -- lg
+            ("Abaavu, abaawaayo buli kimu ku lwa Kristo, be bajjirwa obwakabaka."
+             " Omuntu ayinza okugamba nti: &ldquo;Naye Abakristaayo abamu bagagga"
+             " nnyo, nga balina ettaka, emmotoka, n'obusuubuzi bungi.&rdquo;",
+             "Abaavu, abatalina kantu mu bo bennyini, be bajjirwa obwakabaka."),
+            ("Yee, ekyo kiyinza okubaawo, naddala nga bwe bali abaana b'Oyo Ali"
+             " Waggulu Ennyo; naye bwe bakitwala nga butaliimu, bayinza mangu"
+             " okukiwaayo ku lw'enjiri; abo baavu mu Mwoyo. Abawombeefu,",
+             "Abawombeefu,"),
+            # -- ar
+            ("المساكين، الذين تركوا كل شيء من أجل المسيح، إليهم يأتي الملكوت. وقد"
+             " يقول قائل: “ولكنّ بعض المسيحيين أغنياء حقًّا، يملكون الأراضي"
+             " والسيارات وأعمالًا كثيرة.”",
+             "المساكين، الذين لا يملكون في أنفسهم شيئًا، إليهم يأتي الملكوت."),
+            ("نعم، هذا ممكن جدًّا، ولا سيما لأولاد العلي؛ ولكنهم إن حسبوا ذلك"
+             " باطلًا، سهُل عليهم أن يبذلوه في سبيل الإنجيل؛ فهم مساكين بالروح."
+             " والودعاء،",
+             "والودعاء،"),
+            # -- sw
+            ("Maskini, ambao wameacha kila kitu kwa ajili ya Kristo, kwao ufalme"
+             " huja. Mtu aweza kusema: “Lakini baadhi ya Wakristo ni"
+             " matajiri kweli, wana ardhi, magari, na biashara nyingi.”",
+             "Maskini, wasio na kitu ndani yao wenyewe, kwao ufalme huja."),
+            ("Naam, laweza kuwezekana kabisa, hasa wakiwa watoto wa Aliye Juu"
+             " Sana; lakini wakiihesabu kuwa ubatili, waweza kwa urahisi kuitoa"
+             " kwa ajili ya injili; wao ni maskini wa Roho. Wenye upole,",
+             "Wenye upole,"),
+            # OCR run-together, ch09/ch10.
+            ("selfexaltation", "self-exaltation"),
+            ("allpervading", "all-pervading"),
+        ],
+    },
+    # --- found by the English audit (scan of all 65 books + 28 sermons) -------
+    # Small caps split by the PDF extractor, so LORD reads "L ORD". The test
+    # that finds these without drowning in false positives is that the pieces
+    # REJOIN into a real word: "L"+"ORD" is LORD, where "A"+"SHORT" is not a
+    # word and is just a small-caps opening.
+    "he-holds-my-tomorrows": {
+        "replacements": [("L ORD", "LORD")],
+    },
+    "stepping-stones-2": {
+        "replacements": [
+            ("L ORD", "LORD"),
+            # Real people and places, misspelled by the import. Left as printed
+            # in the translations until now, per the leave-his-reference rule,
+            # but these are transcription errors rather than the author's own.
+            ("Bob Beamer", "Bob Beamon"),
+            ("Nicki Cruz", "Nicky Cruz"),
+            # The same family is "Wiebe" in ch13 and ch14.
+            ("Eileen Weibe", "Eileen Wiebe"),
+            ("Cuidad Victoria", "Ciudad Victoria"),
+            # Qualified with "city of" because the bare string also occurs
+            # inside "Brazilian" five times, which is correct and must not move.
+            ("city of Brazilia", "city of Brasília"),
+            ("Stocklholm", "Stockholm"),
+            ("Guatamalan", "Guatemalan"),
+            ("Malasia", "Malaysia"),
+            ("Chapultapek", "Chapultepec"),
+            ("Deja Vue", "Déjà vu"),
+        ],
+    },
+    "prevailing-prayer": {
+        # The three Roman brothers are the Horatii (Livy I.24-25); Moody's
+        # printed text spells them correctly two sentences earlier.
+        "replacements": [("Heratii", "Horatii")],
+    },
+    # OCR read "ears" as "cars" — the c/e confusion that also gave "L ORD" its
+    # split. In Wesley it wrecks a scripture quotation outright: "he that hath
+    # cars to hear, let him hear" (Matthew 11:15).
+    "sermons-on-several-occasions": {
+        "replacements": [("cars to hear", "ears to hear")],
+    },
+    "ten-commandments": {
+        "replacements": [
+            ("hands, and eyes, and cars", "hands, and eyes, and ears"),
+            ("carries the devil in his car", "carries the devil in his ear"),
+        ],
     },
 }
 
