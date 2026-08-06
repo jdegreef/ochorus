@@ -18,10 +18,24 @@ Two jobs:
 
 from __future__ import annotations
 
+from functools import lru_cache
+
 from django.test import SimpleTestCase
 
 from library import english_audit
 from library.english_audit import Record, audit_records, counts
+
+
+@lru_cache(maxsize=1)
+def _corpus() -> dict[str, dict[str, int]]:
+    """One corpus scan shared by every test that needs it.
+
+    Scanning 94 fixture files costs ~5s. Three tests want the same immutable
+    artefact, and they live in two different TestCase classes, so `setUpClass`
+    would still leave two scans — hence a module-level cache. Measured: 14.0s to
+    4.7s for the file.
+    """
+    return english_audit.counts_by_work(english_audit.audit_fixtures())
 
 
 def _findings(body_html: str, *, is_pd: bool = True, title: str = "") -> dict[str, int]:
@@ -29,40 +43,24 @@ def _findings(body_html: str, *, is_pd: bool = True, title: str = "") -> dict[st
 
 
 class EnglishAuditRatchetTests(SimpleTestCase):
-    def test_no_class_grows_past_its_baseline(self):
-        baseline = english_audit.read_baseline()
-        current = counts(english_audit.audit_fixtures())
-        grew = {
-            label: (n, baseline.get(label, 0))
-            for label, n in current.items()
-            if n > baseline.get(label, 0)
-        }
-        self.assertEqual(
-            grew,
-            {},
-            "English defect classes grew (class: now vs baseline). Fix them, or "
-            "if the growth is legitimate re-pin with `manage.py audit_english "
-            "--update-baseline` and say why in the commit message.",
-        )
+    def test_findings_match_the_baseline_work_for_work(self):
+        """No work's defect count may drift from its pin, in either direction.
 
-    def test_baseline_is_not_stale(self):
-        """A class that has shrunk must be re-pinned, or the ratchet slips back.
+        Growth is the regression this exists to catch: a new import that drags
+        in forty hyphen-space artifacts fails here rather than surfacing
+        eighteen months later, in a translation, in five languages.
 
-        Without this the baseline silently re-permits every defect someone has
-        already fixed.
+        Shrinkage has to fail too, or the baseline silently re-permits every
+        defect someone has already fixed — the pin would sit above the real
+        number and a later regression back up to it would pass.
         """
-        baseline = english_audit.read_baseline()
-        current = counts(english_audit.audit_fixtures())
-        shrunk = {
-            label: (current.get(label, 0), n)
-            for label, n in baseline.items()
-            if current.get(label, 0) < n
-        }
         self.assertEqual(
-            shrunk,
-            {},
-            "Defect classes have shrunk (class: now vs baseline) — good. "
-            "Re-pin with `manage.py audit_english --update-baseline`.",
+            _corpus(),
+            english_audit.read_baseline(),
+            "The English audit no longer matches its baseline. A work that GREW "
+            "has a new defect — fix it. A work that SHRANK has had one fixed — "
+            "re-pin with `manage.py audit_english --update-baseline` and say in "
+            "the commit message what you fixed.",
         )
 
 
@@ -118,6 +116,22 @@ class EnglishAuditPrecisionTests(SimpleTestCase):
             for i in range(english_audit.SPB_CONVENTION_MIN)
         ]
         self.assertNotIn("space-before-punct", counts(audit_records(wholesale)))
+
+    def test_misspelling_needs_word_boundaries(self):
+        """The trap the corrections table already warned about.
+
+        Matching "Brazilia" as a bare substring fired on every correct
+        "Brazilian" — 6 of 23 findings were false, and the BODY_CORRECTIONS
+        entry for it carries a comment saying the bare string "also occurs
+        inside 'Brazilian' five times, which is correct and must not move".
+        """
+        self.assertEqual(_findings("<p>the city of Brazilia</p>").get("misspelling"), 1)
+        for correct in ("Brazilian", "Brazilians"):
+            self.assertNotIn(
+                "misspelling",
+                _findings(f"<p>a {correct} missionary</p>"),
+                f"{correct} is spelled correctly",
+            )
 
     def test_title_case_disagreeing_with_body(self):
         """A hyphenated single-letter suffix cased one way in the title and the
@@ -177,9 +191,5 @@ class EnglishAuditContractTests(SimpleTestCase):
                 "title-case-vs-body",
             }
         )
-        emitted = set(counts(english_audit.audit_fixtures()))
+        emitted = {label for classes in _corpus().values() for label in classes}
         self.assertEqual(emitted - known, set(), "unclassified finding class(es)")
-
-    def test_content_path_resolves_without_a_hardcoded_root(self):
-        """The predecessor script hardcoded /home/user/... and ran nowhere else."""
-        self.assertTrue((english_audit.CONTENT / "authors.json").exists())

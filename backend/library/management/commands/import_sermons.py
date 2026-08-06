@@ -28,6 +28,7 @@ from functools import lru_cache
 import requests
 from django.core.management.base import BaseCommand, CommandError
 
+from library import english_audit
 from library.corrections import apply_body_corrections
 from library.ingest import clean_fragment, soup, word_count
 from library.management.commands.import_gutenberg import content_root
@@ -361,3 +362,4 @@ class Command(BaseCommand):
                 f" · {preached_on or 'no date'}"
             )
         )
+        english_audit.report(self, english_audit.audit_sermon(sermon), sermon.slug)

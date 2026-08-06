@@ -39,13 +39,16 @@ from __future__ import annotations
 import html
 import json
 import re
-from collections import defaultdict
+from collections import Counter, defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, Iterator
 
-CONTENT = Path(__file__).resolve().parent / "fixtures" / "content"
+from library.content_fixtures import BOOKS_DIR, CONTENT_DIR, SERMONS_DIR, authors_by_slug
 
+# NOT `library.text.html_to_text`, which collapses runs of whitespace. Two of
+# the checks here are ABOUT whitespace — `space-before-punct` and `hyphen-space`
+# — so normalising it away would delete the signal they exist to find.
 TAG = re.compile(r"<[^>]+>")
 BLOCK = re.compile(r"<(p|h2|h3|h4|blockquote|li)>(.*?)</\1>", re.S)
 
@@ -60,13 +63,13 @@ class Record:
     """One piece of English prose to check.
 
     `where` is a human label that lands in the report ("humility-2 ch04");
-    `group` is what per-work aggregation keys on, i.e. the work's slug — the
-    space-before-punct check needs a whole work's counts before it can tell an
+    `work` is the slug, and is what both the ratchet and the space-before-punct
+    check key on — the latter needs a whole work's counts before it can tell an
     artifact from a house style (see `_sporadic_only`).
     """
 
     where: str
-    group: str
+    work: str
     title: str
     body_html: str
     is_pd: bool
@@ -76,16 +79,20 @@ class Record:
 class Finding:
     label: str
     where: str
+    work: str
     block: int
     excerpt: str
 
 
 # --- checks ---------------------------------------------------------------
 
+# Matched against a lowercased copy rather than with re.I: a 14-branch
+# alternation under re.I was 32% of a whole-corpus scan (1.56s of 4.9s), and
+# `str.lower()` is a C loop (0.68s). Offsets survive because no block in the
+# corpus changes length when lowercased, and `excerpt` reads the original text.
 ANACHRONISM = re.compile(
     r"\b(cars?|automobiles?|internet|online|websites?|e-?mails?|smartphones?|"
-    r"computers?|television|TV|social media|podcasts?|credit cards?|CEOs?)\b",
-    re.I,
+    r"computers?|television|tv|social media|podcasts?|credit cards?|ceos?)\b"
 )
 
 # The test that makes this precise: the split letters must REJOIN into a real
@@ -112,6 +119,11 @@ HYPHEN_SPACE = re.compile(r"\b\w+-\s+\w+\b")
 RUN_TOGETHER = re.compile(r"\b[a-z]{3,}\.[A-Z][a-z]{2,}\b")
 SPACE_BEFORE_PUNCT = re.compile(r"\S\s+[,.;:!?](?:\s|$)")
 
+# Overlaps `corrections.BODY_CORRECTIONS` by design: that table REPAIRS these in
+# the books they were found in, this one DETECTS them anywhere, including a book
+# imported tomorrow. Matched on word boundaries — a bare substring search made
+# "Brazilia" fire on every correct "Brazilian" (6 of 23 findings were false), the
+# exact trap the BODY_CORRECTIONS entry for it warns about.
 MISSPELLINGS = {
     "Millenium": "Millennium", "capitol city": "capital city",
     "Stocklholm": "Stockholm", "Guatamalan": "Guatemalan",
@@ -122,6 +134,9 @@ MISSPELLINGS = {
     "selfexaltation": "self-exaltation", "allpervading": "all-pervading",
     "Weibe": "Wiebe (spelled Wiebe elsewhere in the same book)",
 }
+MISSPELLED = re.compile(
+    r"\b(?:%s)\b" % "|".join(re.escape(k) for k in sorted(MISSPELLINGS, key=len, reverse=True))
+)
 
 # Findings a machine may apply unattended, because the defect and its repair are
 # both unambiguous: the split letters rejoin into exactly one real word. Every
@@ -148,7 +163,7 @@ def excerpt(t: str, i: int, w: int = 65) -> str:
 
 def _check_block(t: str, is_pd: bool) -> Iterator[tuple[str, str]]:
     if is_pd:
-        for m in ANACHRONISM.finditer(t):
+        for m in ANACHRONISM.finditer(t.lower()):
             yield "anachronism", excerpt(t, m.start())
     for m in BROKEN_SMALLCAPS.finditer(t):
         if m.group(1) + m.group(2) in SMALLCAP_WORDS:
@@ -160,10 +175,8 @@ def _check_block(t: str, is_pd: bool) -> Iterator[tuple[str, str]]:
         yield "hyphen-space", excerpt(t, m.start())
     for m in RUN_TOGETHER.finditer(t):
         yield "run-together", excerpt(t, m.start())
-    for bad in MISSPELLINGS:
-        i = t.find(bad)
-        if i >= 0:
-            yield "misspelling", excerpt(t, i)
+    for m in MISSPELLED.finditer(t):
+        yield "misspelling", excerpt(t, m.start())
 
 
 def _orphan_quotes(blocks: list[str]) -> Iterator[tuple[str, int, str]]:
@@ -189,8 +202,8 @@ def _orphan_quotes(blocks: list[str]) -> Iterator[tuple[str, int, str]]:
 SPB_CONVENTION_MIN = 16
 
 
-def _sporadic_only(per_group: dict[str, list[Finding]]) -> Iterator[Finding]:
-    for rows in per_group.values():
+def _sporadic_only(per_work: dict[str, list[Finding]]) -> Iterator[Finding]:
+    for rows in per_work.values():
         if len(rows) < SPB_CONVENTION_MIN:
             yield from rows
 
@@ -204,19 +217,19 @@ def audit_records(records: Iterable[Record]) -> list[Finding]:
         blocks = [text(b) for _, b in BLOCK.findall(rec.body_html or "")]
         for i, t in enumerate(blocks):
             for label, ex in _check_block(t, rec.is_pd):
-                found.append(Finding(label, rec.where, i, ex))
+                found.append(Finding(label, rec.where, rec.work, i, ex))
             for m in SPACE_BEFORE_PUNCT.finditer(t):
-                spb[rec.group].append(
-                    Finding("space-before-punct", rec.where, i, excerpt(t, m.start()))
+                spb[rec.work].append(
+                    Finding("space-before-punct", rec.where, rec.work, i, excerpt(t, m.start()))
                 )
         for label, i, ex in _orphan_quotes(blocks):
-            found.append(Finding(label, rec.where, i, ex))
+            found.append(Finding(label, rec.where, rec.work, i, ex))
         # A title that hyphenates a word the body capitalises after the hyphen
         # ("Self-denial" vs "Self-Denial") — one of them was retyped.
-        body = text(rec.body_html or "")
+        body = " ".join(blocks)
         for m in re.finditer(r"\b([A-Za-z]+)-([a-z])\b", rec.title or ""):
             if f"{m.group(1)}-{m.group(2).upper()}" in body:
-                found.append(Finding("title-case-vs-body", rec.where, -1, rec.title))
+                found.append(Finding("title-case-vs-body", rec.where, rec.work, -1, rec.title))
 
     found.extend(_sporadic_only(spb))
     return found
@@ -225,19 +238,14 @@ def audit_records(records: Iterable[Record]) -> list[Finding]:
 # --- adapters -------------------------------------------------------------
 
 
-def _author_death_years() -> dict[str, int | None]:
-    rows = json.loads((CONTENT / "authors.json").read_text(encoding="utf-8"))
-    return {r["fields"]["slug"]: r["fields"].get("death_year") for r in rows}
-
-
 def _is_pd(death_year: int | None) -> bool:
     return bool(death_year) and death_year < PD_CUTOFF
 
 
-def fixture_records(slug: str | None = None) -> Iterator[Record]:
+def _fixture_records(slug: str | None = None) -> Iterator[Record]:
     """English books and sermons as they stand in the committed fixture."""
-    deaths = _author_death_years()
-    paths = sorted(CONTENT.glob("books/*.en.json")) + sorted(CONTENT.glob("sermons/*.en.json"))
+    authors = authors_by_slug()
+    paths = sorted(BOOKS_DIR.glob("*.en.json")) + sorted(SERMONS_DIR.glob("*.en.json"))
     for p in paths:
         work = p.name[: -len(".en.json")]
         if slug and slug != work:
@@ -246,7 +254,8 @@ def fixture_records(slug: str | None = None) -> Iterator[Record]:
         meta = next(
             (r["fields"] for r in recs if r["model"] in ("library.book", "library.sermon")), {}
         )
-        is_pd = _is_pd(deaths.get((meta.get("author") or [None])[0]))
+        author = authors.get((meta.get("author") or [None])[0]) or {}
+        is_pd = _is_pd(author.get("death_year"))
         for rec in recs:
             f = rec["fields"]
             if rec["model"] == "library.chapter":
@@ -259,7 +268,7 @@ def fixture_records(slug: str | None = None) -> Iterator[Record]:
 
 
 def audit_fixtures(slug: str | None = None) -> list[Finding]:
-    return audit_records(fixture_records(slug))
+    return audit_records(_fixture_records(slug))
 
 
 def audit_book(book) -> list[Finding]:
@@ -272,7 +281,7 @@ def audit_book(book) -> list[Finding]:
     is_pd = _is_pd(getattr(book.author, "death_year", None))
     return audit_records(
         Record(f"{book.slug} ch{c.order:02d}", book.slug, c.title or "", c.body_html or "", is_pd)
-        for c in book.chapters.all()
+        for c in book.chapters.all().only("order", "title", "body_html")
     )
 
 
@@ -295,34 +304,46 @@ def audit_sermon(sermon) -> list[Finding]:
 
 
 def counts(findings: Iterable[Finding]) -> dict[str, int]:
-    out: dict[str, int] = defaultdict(int)
+    return dict(Counter(f.label for f in findings))
+
+
+def counts_by_work(findings: Iterable[Finding]) -> dict[str, dict[str, int]]:
+    """Per-work class counts — the shape the ratchet is keyed on."""
+    per: dict[str, Counter] = defaultdict(Counter)
     for f in findings:
-        out[f.label] += 1
-    return dict(out)
+        per[f.work][f.label] += 1
+    return {work: dict(sorted(c.items())) for work, c in sorted(per.items())}
 
 
-# The CI ratchet. Per-class counts as of the last time someone looked; the test
-# in `tests_english_audit.py` fails when a class grows past its number, so an
-# import that drags in forty new hyphen-space artifacts is caught at the PR
-# rather than eighteen months later by a translator. Counts may fall freely —
-# that is what fixing looks like — and `--update-baseline` re-pins them.
+# The CI ratchet, keyed PER WORK. `tests_english_audit.py` fails when any work's
+# class grows, so an import that drags in forty new hyphen-space artifacts is
+# caught at the PR rather than eighteen months later by a translator.
+#
+# Per work rather than one set of corpus-wide counters, for the same reason the
+# content fixture is one file per work: a shared tail makes parallel sessions
+# collide. With flat counts, adding any ordinary English book (~12 findings)
+# pushes a class past its pin and red-lights a PR that has nothing to do with
+# English QA, re-pinning touches lines every other in-flight PR also touches,
+# and a regression in one book cancels against a fix in another so the ratchet
+# reads clean. Keyed per work, new works add their own line, git auto-merges
+# disjoint ones, and nothing cancels.
 BASELINE_PATH = Path(__file__).resolve().parent / "data" / "english_audit_baseline.json"
 
 
-def read_baseline() -> dict[str, int]:
-    return json.loads(BASELINE_PATH.read_text(encoding="utf-8"))["classes"]
+def read_baseline() -> dict[str, dict[str, int]]:
+    return json.loads(BASELINE_PATH.read_text(encoding="utf-8"))["works"]
 
 
-def write_baseline(class_counts: dict[str, int]) -> None:
+def write_baseline(per_work: dict[str, dict[str, int]]) -> None:
     BASELINE_PATH.write_text(
         json.dumps(
             {
                 "_comment": (
-                    "Ratchet for library/tests_english_audit.py — a class may shrink "
-                    "but never grow. Regenerate with `manage.py audit_english "
+                    "Ratchet for library/tests_english_audit.py — a work's class may "
+                    "shrink but never grow. Regenerate with `manage.py audit_english "
                     "--update-baseline` and say in the commit message what you fixed."
                 ),
-                "classes": dict(sorted(class_counts.items())),
+                "works": per_work,
             },
             indent=1,
         )
@@ -333,14 +354,14 @@ def write_baseline(class_counts: dict[str, int]) -> None:
 
 def format_report(findings: list[Finding], limit: int = 8, klass: str | None = None) -> str:
     """The human summary. Ordered by class size — the long tail is the noise."""
+    if klass:
+        findings = [f for f in findings if f.label == klass]
     by_label: dict[str, list[Finding]] = defaultdict(list)
     for f in findings:
         by_label[f.label].append(f)
 
     lines = [f"{len(findings)} findings across {len(by_label)} classes"]
     for label in sorted(by_label, key=lambda k: -len(by_label[k])):
-        if klass and klass != label:
-            continue
         rows = by_label[label]
         note = ""
         if label in AUTO_FIXABLE:
@@ -353,3 +374,21 @@ def format_report(findings: list[Finding], limit: int = 8, klass: str | None = N
         if limit and len(rows) > limit:
             lines.append(f"   … {len(rows) - limit} more")
     return "\n".join(lines)
+
+
+def report(cmd, findings: list[Finding], slug: str) -> None:
+    """Print a per-class summary to a management command's stdout.
+
+    Lives here rather than in each importer because there are seven writers of
+    English text — `import_ochorus`, the five that go through
+    `ingest.upsert_book`, and `import_sermons` — and a gate with six holes in it
+    is not a gate. Reports; never rewrites (see `AUTO_FIXABLE`).
+    """
+    if not findings:
+        cmd.stdout.write("  clean — no English defects found")
+        return
+    by_class = counts(findings)
+    cmd.stdout.write(cmd.style.WARNING(f"  ⚠ {len(findings)} English defect(s) to review:"))
+    for label in sorted(by_class, key=lambda k: -by_class[k]):
+        cmd.stdout.write(f"      {by_class[label]:4d}  {label}")
+    cmd.stdout.write(f"      → manage.py audit_english {slug} --examples 0")

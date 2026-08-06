@@ -43,16 +43,18 @@ NULLs, so search would silently keep matching the old text.
 ```bash
 cd backend
 # what the importer prints automatically, on demand:
-DJANGO_DEBUG=true uv run python manage.py audit_english --slug <slug> --limit 0
+DJANGO_DEBUG=true uv run python manage.py audit_english <slug> --examples 0
 DJANGO_DEBUG=true uv run python manage.py audit_english                 # whole corpus
 DJANGO_DEBUG=true uv run python manage.py audit_english --class anachronism
 DJANGO_DEBUG=true uv run python manage.py audit_english --json /tmp/findings.json
 DJANGO_DEBUG=true uv run python manage.py audit_english --update-baseline
 ```
 
-The checks live in `library/english_audit.py`. `import_ochorus` runs them on
-what it has just written (DB rows, not the fixture — at that moment the fixture
-still describes the *previous* import).
+The checks live in `library/english_audit.py`. **All seven English ingest paths**
+run them on what they have just written — `import_ochorus`, the five that go
+through `ingest.upsert_book` (`import_ccel`, `import_gutenberg`, `import_web`,
+`import_archive`, `import_pdf`), and `import_sermons`. They audit DB rows, not
+the fixture: at that moment the fixture still describes the *previous* import.
 
 ## Triage — what to do with each class
 
@@ -74,7 +76,7 @@ rewriting a public-domain author.
 ## Procedure
 
 1. **Run the audit** on the slug. The importer already printed the summary; get
-   the detail with `--limit 0`.
+   the detail with `--examples 0`.
 2. **Read every non-mechanical finding in context** — open the chapter, not just
    the excerpt. The excerpt is 130 characters and will not tell you whether an
    anachronism is invented text or a quotation.
@@ -120,9 +122,11 @@ Reported, not fixed
 ## Failure modes seen so far
 
 - **Fixing the fixture and thinking production is fixed.** `seed_books` never
-  rewrites an existing book's chapter bodies — it reports the drift and moves
-  on. Body text reaches production through `BODY_CORRECTIONS`; metadata needs a
-  migration.
+  rewrites an existing book's chapter bodies — it runs `corrections.chapter_drift`
+  and *reports* the disagreement, deliberately, because the same create-only rule
+  that protects an approver's review state is what stops the seed overwriting
+  bodies. So watch the seed output for drift, and remember: body text reaches
+  production through `BODY_CORRECTIONS`; metadata needs a migration.
 - **Widening the auto-fix set** because a class "looks mechanical". `hyphen-space`
   looks mechanical and is 434 instances of a job that belongs in the ingest
   pipeline.

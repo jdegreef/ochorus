@@ -1,13 +1,304 @@
 {
- "_comment": "Ratchet for library/tests_english_audit.py \u2014 a class may shrink but never grow. Regenerate with `manage.py audit_english --update-baseline` and say in the commit message what you fixed.",
- "classes": {
-  "anachronism": 15,
-  "broken-smallcaps": 8,
-  "hyphen-space": 434,
-  "misspelling": 23,
-  "orphan-close-quote": 201,
-  "run-together": 11,
-  "space-before-punct": 258,
-  "title-case-vs-body": 1
+ "_comment": "Ratchet for library/tests_english_audit.py \u2014 a work's class may shrink but never grow. Regenerate with `manage.py audit_english --update-baseline` and say in the commit message what you fixed.",
+ "works": {
+  "a-call-to-the-unconverted": {
+   "orphan-close-quote": 3
+  },
+  "all-of-grace": {
+   "hyphen-space": 8
+  },
+  "all-things-for-good": {
+   "orphan-close-quote": 3,
+   "space-before-punct": 6
+  },
+  "baptism-with-the-holy-spirit": {
+   "hyphen-space": 1,
+   "orphan-close-quote": 6,
+   "space-before-punct": 5
+  },
+  "blessed-adversity": {
+   "space-before-punct": 3
+  },
+  "cheque-book": {
+   "space-before-punct": 1
+  },
+  "christ-all-in-all": {
+   "space-before-punct": 7
+  },
+  "christ-crucified": {
+   "space-before-punct": 1
+  },
+  "christ-precious-to-believers": {
+   "space-before-punct": 1
+  },
+  "clothed-with-strength-and-dignity": {
+   "hyphen-space": 2
+  },
+  "come-thou-into-the-ark": {
+   "space-before-punct": 2
+  },
+  "compel-them-to-come-in": {
+   "orphan-close-quote": 1,
+   "space-before-punct": 5
+  },
+  "days-of-heaven-upon-earth": {
+   "anachronism": 2,
+   "space-before-punct": 7
+  },
+  "divine-healing": {
+   "hyphen-space": 1,
+   "orphan-close-quote": 4,
+   "space-before-punct": 11
+  },
+  "eight-i-wills-of-christ": {
+   "space-before-punct": 3
+  },
+  "feasting-at-the-table": {
+   "hyphen-space": 7,
+   "orphan-close-quote": 2
+  },
+  "free-grace": {
+   "orphan-close-quote": 1
+  },
+  "freedom-of-the-will": {
+   "orphan-close-quote": 6,
+   "space-before-punct": 6
+  },
+  "godliness": {
+   "hyphen-space": 4,
+   "space-before-punct": 9
+  },
+  "grace-abounding": {
+   "space-before-punct": 11
+  },
+  "grace-for-grace-2": {
+   "hyphen-space": 10,
+   "space-before-punct": 6
+  },
+  "he-holds-my-tomorrows": {
+   "broken-smallcaps": 4,
+   "hyphen-space": 12
+  },
+  "himself": {
+   "space-before-punct": 1
+  },
+  "how-to-manage-a-library": {
+   "space-before-punct": 5
+  },
+  "humility-2": {
+   "hyphen-space": 2,
+   "misspelling": 2,
+   "orphan-close-quote": 1,
+   "run-together": 1,
+   "space-before-punct": 8
+  },
+  "if": {
+   "space-before-punct": 5
+  },
+  "jesus-himself-2": {
+   "hyphen-space": 3,
+   "orphan-close-quote": 1,
+   "space-before-punct": 2
+  },
+  "let-us-pray-2": {
+   "hyphen-space": 3,
+   "orphan-close-quote": 1,
+   "space-before-punct": 2
+  },
+  "lord-teach-us-to-pray-2": {
+   "hyphen-space": 3,
+   "orphan-close-quote": 1
+  },
+  "men-and-women-who-gave-everything-2": {
+   "hyphen-space": 4
+  },
+  "men-of-prayer-2": {
+   "hyphen-space": 8,
+   "space-before-punct": 2
+  },
+  "men-who-moved-heaven": {
+   "hyphen-space": 5
+  },
+  "men-who-tended-the-flock-2": {
+   "hyphen-space": 5,
+   "space-before-punct": 4
+  },
+  "pauls-first-prayer": {
+   "orphan-close-quote": 1,
+   "space-before-punct": 2
+  },
+  "pilgrims-progress": {
+   "run-together": 1,
+   "space-before-punct": 8
+  },
+  "plain-account-christian-perfection": {
+   "hyphen-space": 2,
+   "orphan-close-quote": 1,
+   "space-before-punct": 5
+  },
+  "prayer-the-pulse-of-life": {
+   "hyphen-space": 2,
+   "space-before-punct": 4
+  },
+  "prevailing-prayer": {
+   "misspelling": 1,
+   "space-before-punct": 5
+  },
+  "purity-of-heart": {
+   "run-together": 1
+  },
+  "religious-affections": {
+   "orphan-close-quote": 1
+  },
+  "rest": {
+   "space-before-punct": 3
+  },
+  "revival-lectures": {
+   "anachronism": 1,
+   "orphan-close-quote": 1
+  },
+  "rise-up-men-of-god-2": {
+   "hyphen-space": 3
+  },
+  "salvation-by-faith": {
+   "space-before-punct": 5
+  },
+  "selected-sermons-whitefield": {
+   "hyphen-space": 76,
+   "orphan-close-quote": 15
+  },
+  "sermons-on-several-occasions": {
+   "anachronism": 1,
+   "hyphen-space": 11,
+   "orphan-close-quote": 47,
+   "run-together": 2
+  },
+  "soar-like-the-eagle-3": {
+   "hyphen-space": 10,
+   "orphan-close-quote": 2
+  },
+  "stepping-stones-2": {
+   "broken-smallcaps": 2,
+   "hyphen-space": 17,
+   "misspelling": 14,
+   "orphan-close-quote": 5,
+   "run-together": 1,
+   "space-before-punct": 10,
+   "title-case-vs-body": 1
+  },
+  "susanna-wesley-clarke": {
+   "hyphen-space": 1
+  },
+  "talks-to-the-farmer": {
+   "hyphen-space": 14
+  },
+  "ten-commandments": {
+   "anachronism": 2,
+   "orphan-close-quote": 1,
+   "space-before-punct": 9
+  },
+  "the-body-of-christ-a-reality": {
+   "hyphen-space": 3,
+   "run-together": 1,
+   "space-before-punct": 2
+  },
+  "the-christians-secret-of-a-happy-life-4": {
+   "anachronism": 2,
+   "broken-smallcaps": 2,
+   "hyphen-space": 34,
+   "orphan-close-quote": 36
+  },
+  "the-dying-thief": {
+   "space-before-punct": 1
+  },
+  "the-fourfold-gospel": {
+   "hyphen-space": 1,
+   "space-before-punct": 2
+  },
+  "the-god-of-all-comfort": {
+   "hyphen-space": 18,
+   "space-before-punct": 2
+  },
+  "the-golden-key-of-prayer": {
+   "hyphen-space": 1
+  },
+  "the-gospel-of-healing": {
+   "hyphen-space": 8,
+   "space-before-punct": 13
+  },
+  "the-imitation-of-christ": {
+   "orphan-close-quote": 4,
+   "space-before-punct": 9
+  },
+  "the-immutability-of-god": {
+   "orphan-close-quote": 1
+  },
+  "the-inner-chamber": {
+   "hyphen-space": 48,
+   "orphan-close-quote": 23,
+   "run-together": 4,
+   "space-before-punct": 1
+  },
+  "the-joy-of-the-lord": {
+   "space-before-punct": 1
+  },
+  "the-key-in-my-hand": {
+   "hyphen-space": 12
+  },
+  "the-masters-indwelling": {
+   "hyphen-space": 2,
+   "orphan-close-quote": 7,
+   "space-before-punct": 11
+  },
+  "the-normal-christian-life": {
+   "hyphen-space": 4,
+   "orphan-close-quote": 5
+  },
+  "the-person-and-work-of-the-holy-spirit": {
+   "anachronism": 1,
+   "hyphen-space": 61,
+   "orphan-close-quote": 5
+  },
+  "the-possibilities-of-faith": {
+   "hyphen-space": 1
+  },
+  "the-power-of-stillness": {
+   "space-before-punct": 1
+  },
+  "the-reformed-pastor": {
+   "space-before-punct": 15
+  },
+  "the-secret-of-guidance": {
+   "hyphen-space": 5,
+   "orphan-close-quote": 11,
+   "space-before-punct": 5
+  },
+  "the-unselfishness-of-god": {
+   "anachronism": 2,
+   "hyphen-space": 16
+  },
+  "the-way-of-salvation": {
+   "space-before-punct": 5
+  },
+  "till-he-come": {
+   "orphan-close-quote": 4,
+   "space-before-punct": 8
+  },
+  "unfailing-springs": {
+   "space-before-punct": 3
+  },
+  "union-and-communion": {
+   "anachronism": 2,
+   "orphan-close-quote": 1,
+   "space-before-punct": 14
+  },
+  "way-into-holiest": {
+   "anachronism": 2,
+   "hyphen-space": 4
+  },
+  "women-who-moved-heaven-2": {
+   "hyphen-space": 2,
+   "space-before-punct": 1
+  }
  }
 }
