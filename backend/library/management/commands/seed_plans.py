@@ -234,6 +234,14 @@ PLAN_TRANSLATIONS = {
         ),
     },
     "sw": {
+        # "the root of every virtue" is «mzizi wa kila wema» verbatim from the
+        # Swahili edition of the book itself, so the plan card and the book it
+        # sends readers to use the same phrase.
+        "humility-12-days": (
+            "Unyenyekevu kwa Siku 12",
+            "Kitabu mashuhuri cha Andrew Murray kuhusu mzizi wa kila wema — "
+            "sura moja fupi kila siku kwa muda wa siku kumi na mbili.",
+        ),
         "power-from-on-high": (
             "Nguvu kutoka Juu: Roho Mtakatifu",
             "Wiki nne pamoja na R. A. Torrey kuhusu maisha yaliyojaa Roho: kwanza "

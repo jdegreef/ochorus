@@ -56,8 +56,13 @@ import type { PageLoad } from './$types';
  * Prerender refresh 2026-08-05 (queue job #418, the plan side-effect): Andrew
  * Murray's Humility shipped in Swahili, and it is the sole source book of
  * humility-12-days — so seed_plans now creates that plan in sw and /sw/plans
- * re-crawls to bake the new card. The plan's own prose was already in
- * PLAN_TRANSLATIONS; only the book was missing.
+ * re-crawls to bake the new card. It was created with the English title, since
+ * a row falls back to the English tuple when PLAN_TRANSLATIONS has no entry.
+ *
+ * Prerender refresh 2026-08-05 (queue job #421): and now that row's Swahili
+ * prose — Unyenyekevu kwa Siku 12. "The root of every virtue" is «mzizi wa kila
+ * wema», taken verbatim from the Swahili edition of the book the plan sends
+ * readers to, so the card and the book agree. /sw/plans re-crawls again.
  */
 export const load: PageLoad = async () => {
 	// Tolerate a lagging/absent plans endpoint at prerender time (api + web can
