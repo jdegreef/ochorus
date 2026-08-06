@@ -17,6 +17,7 @@ from urllib.parse import urljoin
 import requests
 from django.core.management.base import BaseCommand, CommandError
 
+from library import english_audit
 from library.catalog import BOOKS, BookEntry
 from library.ingest import clean_html, clean_title, is_front_matter, soup, upsert_book
 
@@ -325,6 +326,7 @@ class Command(BaseCommand):
                 self.stdout.write(f"    {part_title}: {len(pieces)} sections")
 
         book = upsert_book(entry, chapters)
+        english_audit.report(self, english_audit.audit_book(book), book.slug)
         self.stdout.write(self.style.SUCCESS(f"  ✓ {book.chapter_count} chapters"))
 
     def _section_body(self, url: str, title: str) -> str:

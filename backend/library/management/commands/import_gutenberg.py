@@ -16,6 +16,7 @@ import re
 import requests
 from django.core.management.base import BaseCommand, CommandError
 
+from library import english_audit
 from library.catalog import BOOKS, BookEntry
 from library.ingest import (
     clean_fragment,
@@ -265,4 +266,5 @@ class Command(BaseCommand):
             return
         chapters = extract_chapters(html)
         book = upsert_book(entry, chapters)
+        english_audit.report(self, english_audit.audit_book(book), book.slug)
         self.stdout.write(self.style.SUCCESS(f"  ✓ {book.chapter_count} chapters"))
