@@ -68,8 +68,14 @@
 							aria-selected={l.code === lang.current}
 							onclick={() => choose(l.code)}
 						>
+							<!-- Native name only. `name` and `native_name` are the SAME string
+							     (lang.svelte.ts builds both from LOCALE_NAMES), so rendering both
+							     printed every language twice — invisible while this component was
+							     unmounted. -->
 							<span>{l.native_name}</span>
-							<span class="text-muted">{l.name}</span>
+							{#if l.code === lang.current}
+								<span class="text-accent" aria-hidden="true">✓</span>
+							{/if}
 						</button>
 					</li>
 				{/each}

@@ -15,6 +15,7 @@
 	import { pwa } from '$lib/pwa.svelte';
 	import { localizeHref, getLocale, getTextDirection, locales } from '$lib/paraglide/runtime';
 	import AccountMenu from '$lib/components/AccountMenu.svelte';
+	import LanguagePicker from '$lib/components/LanguagePicker.svelte';
 	import QuickSettings from '$lib/components/QuickSettings.svelte';
 	import { MEASURE } from '$lib/readerPrefs.svelte';
 	import { pageWidth } from '$lib/pageWidth.svelte';
@@ -67,7 +68,7 @@
 	// App destinations only — About Us and Contact live in the footer (matching
 	// Take Root, whose app nav carries five primary destinations).
 	const NAV = $derived<{ href: string; label: string; icon: IconName }[]>([
-		{ href: '/', label: t('nav.dashboard'), icon: 'grid' },
+		{ href: '/', label: t('nav.home'), icon: 'grid' },
 		{ href: '/books', label: t('nav.books'), icon: 'book' },
 		{ href: '/topics', label: t('nav.topics'), icon: 'tag' },
 		{ href: '/plans', label: t('nav.plans'), icon: 'calendar' },
@@ -146,6 +147,13 @@
 					{/each}
 				</div>
 				<div class="navctl">
+					<!-- The header picker offers EVERY UI locale, unlike the footer strip
+					     below, which advertises only locales with something to read. That
+					     split is deliberate (see advertised-locales.ts) and this component
+					     is the half that makes it honest: without it, ar and hi were
+					     switchable nowhere, despite being fully wired interfaces. It was
+					     written for this slot and then never mounted. -->
+					<LanguagePicker />
 					<!-- Quick settings: gear opens a theme + reading-width popover (the
 					     full Settings page is still linked from the account menu). -->
 					<QuickSettings />
