@@ -1,7 +1,7 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "nav_about": "Sobre nós",
-  "nav_dashboard": "Início",
+  "nav_home": "Início",
   "nav_books": "Livros",
   "nav_sermons": "Sermões",
   "nav_biographies": "Biografias",

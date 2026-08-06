@@ -1,7 +1,7 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "nav_about": "Kutuhusu",
-  "nav_dashboard": "Dashibodi",
+  "nav_home": "Nyumbani",
   "nav_books": "Vitabu",
   "nav_sermons": "Mahubiri",
   "nav_biographies": "Wasifu",

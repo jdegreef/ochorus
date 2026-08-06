@@ -18,7 +18,7 @@
 
 	// Quick-nav destinations — the app's primary pages, jumpable by name.
 	const COMMANDS = $derived([
-		{ href: '/', label: t('nav.dashboard') },
+		{ href: '/', label: t('nav.home') },
 		{ href: '/books', label: t('nav.books') },
 		{ href: '/topics', label: t('nav.topics') },
 		{ href: '/plans', label: t('nav.plans') },

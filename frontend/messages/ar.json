@@ -1,7 +1,7 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "nav_about": "من نحن",
-  "nav_dashboard": "لوحة القيادة",
+  "nav_home": "الرئيسية",
   "nav_books": "الكتب",
   "nav_sermons": "العظات",
   "nav_biographies": "السِّيَر",

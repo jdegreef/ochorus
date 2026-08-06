@@ -1,7 +1,7 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "nav_about": "Ebitukwatako",
-  "nav_dashboard": "Dashibodi",
+  "nav_home": "Awaka",
   "nav_books": "Ebitabo",
   "nav_sermons": "Okubuulira",
   "nav_biographies": "Ebyafaayo",

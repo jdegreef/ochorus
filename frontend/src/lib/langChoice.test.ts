@@ -95,6 +95,26 @@ describe('every reader-facing switcher goes through choose()', () => {
 		).not.toMatch(/lang\.set\(/);
 	});
 
+	// The check above reads a file's CONTENTS. That is not the same as the
+	// component being on screen: LanguagePicker.svelte sat in this list, passed
+	// every assertion, and was imported by nothing at all — so the header had no
+	// language control and ar/hi were reachable only by digging into Settings.
+	it.each(SWITCHERS.filter((f) => f.includes('/components/')))(
+		'%s is actually mounted somewhere',
+		(file) => {
+			const name = file.split('/').pop()!.replace('.svelte', '');
+			const importers = sourceFiles()
+				.filter((f) => !f.endsWith(`${name}.svelte`))
+				.filter((f) => new RegExp(`import\\s+${name}\\s+from`).test(readFileSync(f, 'utf-8')));
+
+			expect(
+				importers,
+				`${file} is a reader-facing switcher that nothing imports — it cannot be ` +
+					'used. Mount it, or drop it from SWITCHERS.'
+			).not.toEqual([]);
+		}
+	);
+
 	it('no other module calls lang.set() except the profile-adoption branch', () => {
 		const offenders = sourceFiles()
 			.filter((f) => /lang\.set\(/.test(readFileSync(f, 'utf-8')))
