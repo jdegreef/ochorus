@@ -50,6 +50,10 @@ DJANGO_DEBUG=true uv run python manage.py audit_english --json /tmp/findings.jso
 DJANGO_DEBUG=true uv run python manage.py audit_english --update-baseline
 ```
 
+The corpus scan covers **books, sermons and author biographies** — bios come
+out of `authors.json`, and are exempt from the anachronism check because we
+write them, in modern English, about people who died a century ago.
+
 The checks live in `library/english_audit.py`. **All seven English ingest paths**
 run them on what they have just written — `import_ochorus`, the five that go
 through `ingest.upsert_book` (`import_ccel`, `import_gutenberg`, `import_web`,
@@ -71,7 +75,7 @@ rewriting a public-domain author.
 | `orphan-close-quote` | Read the passage | A close with nothing open usually means an attribution broke mid-sentence — the surrounding text is the real defect |
 | `run-together` | Fix — a missing space after a full stop | Mechanical, but confirm it isn't an ellipsis or an abbreviation |
 | `title-case-vs-body` | Pick the reading the body supports | Fires only on a lone letter after a hyphen ("Type-a" vs "Type-A") |
-| `hyphen-space`, `space-before-punct` | **Report only. Do not write string pairs** | ~690 instances corpus-wide. These want one normalization pass in `ingest.clean_fragment`, not hundreds of hand-written pairs. `english_audit.MECHANICAL` marks them |
+| `hyphen-space`, `space-before-punct` | **Report only. Do not write string pairs** | ~630 instances corpus-wide. These want one normalization pass in `ingest.clean_fragment`, not hundreds of hand-written pairs. `english_audit.MECHANICAL` marks them |
 
 ## Procedure
 

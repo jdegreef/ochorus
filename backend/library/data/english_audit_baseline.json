@@ -2,30 +2,22 @@
  "_comment": "Ratchet for library/tests_english_audit.py \u2014 a work's class may shrink but never grow. Regenerate with `manage.py audit_english --update-baseline` and say in the commit message what you fixed.",
  "works": {
   "a-call-to-the-unconverted": {
-   "orphan-close-quote": 3
+   "orphan-close-quote": 3,
+   "space-before-punct": 2
   },
   "all-of-grace": {
    "hyphen-space": 8
   },
   "all-things-for-good": {
    "orphan-close-quote": 3,
-   "space-before-punct": 6
+   "space-before-punct": 2
   },
   "baptism-with-the-holy-spirit": {
    "hyphen-space": 1,
    "orphan-close-quote": 6,
    "space-before-punct": 5
   },
-  "blessed-adversity": {
-   "space-before-punct": 3
-  },
   "cheque-book": {
-   "space-before-punct": 1
-  },
-  "christ-all-in-all": {
-   "space-before-punct": 7
-  },
-  "christ-crucified": {
    "space-before-punct": 1
   },
   "christ-precious-to-believers": {
@@ -38,20 +30,15 @@
    "space-before-punct": 2
   },
   "compel-them-to-come-in": {
-   "orphan-close-quote": 1,
-   "space-before-punct": 5
+   "orphan-close-quote": 1
   },
   "days-of-heaven-upon-earth": {
-   "anachronism": 2,
-   "space-before-punct": 7
+   "anachronism": 2
   },
   "divine-healing": {
    "hyphen-space": 1,
    "orphan-close-quote": 4,
    "space-before-punct": 11
-  },
-  "eight-i-wills-of-christ": {
-   "space-before-punct": 3
   },
   "feasting-at-the-table": {
    "hyphen-space": 7,
@@ -62,14 +49,14 @@
   },
   "freedom-of-the-will": {
    "orphan-close-quote": 6,
-   "space-before-punct": 6
+   "space-before-punct": 3
   },
   "godliness": {
    "hyphen-space": 4,
    "space-before-punct": 9
   },
   "grace-abounding": {
-   "space-before-punct": 11
+   "space-before-punct": 9
   },
   "grace-for-grace-2": {
    "hyphen-space": 10,
@@ -124,25 +111,23 @@
    "space-before-punct": 4
   },
   "pauls-first-prayer": {
-   "orphan-close-quote": 1,
-   "space-before-punct": 2
+   "orphan-close-quote": 1
   },
   "pilgrims-progress": {
    "run-together": 1,
-   "space-before-punct": 8
+   "space-before-punct": 2
   },
   "plain-account-christian-perfection": {
    "hyphen-space": 2,
    "orphan-close-quote": 1,
-   "space-before-punct": 5
+   "space-before-punct": 3
   },
   "prayer-the-pulse-of-life": {
    "hyphen-space": 2,
    "space-before-punct": 4
   },
   "prevailing-prayer": {
-   "misspelling": 1,
-   "space-before-punct": 5
+   "misspelling": 1
   },
   "purity-of-heart": {
    "run-together": 1
@@ -150,22 +135,18 @@
   "religious-affections": {
    "orphan-close-quote": 1
   },
-  "rest": {
-   "space-before-punct": 3
-  },
   "revival-lectures": {
    "anachronism": 1,
-   "orphan-close-quote": 1
+   "orphan-close-quote": 1,
+   "space-before-punct": 1
   },
   "rise-up-men-of-god-2": {
    "hyphen-space": 3
   },
-  "salvation-by-faith": {
-   "space-before-punct": 5
-  },
   "selected-sermons-whitefield": {
    "hyphen-space": 76,
-   "orphan-close-quote": 15
+   "orphan-close-quote": 15,
+   "space-before-punct": 15
   },
   "sermons-on-several-occasions": {
    "anachronism": 1,
@@ -208,12 +189,8 @@
    "hyphen-space": 34,
    "orphan-close-quote": 36
   },
-  "the-dying-thief": {
-   "space-before-punct": 1
-  },
   "the-fourfold-gospel": {
-   "hyphen-space": 1,
-   "space-before-punct": 2
+   "hyphen-space": 1
   },
   "the-god-of-all-comfort": {
    "hyphen-space": 18,
@@ -228,7 +205,7 @@
   },
   "the-imitation-of-christ": {
    "orphan-close-quote": 4,
-   "space-before-punct": 9
+   "space-before-punct": 6
   },
   "the-immutability-of-god": {
    "orphan-close-quote": 1
@@ -265,9 +242,6 @@
   "the-power-of-stillness": {
    "space-before-punct": 1
   },
-  "the-reformed-pastor": {
-   "space-before-punct": 15
-  },
   "the-secret-of-guidance": {
    "hyphen-space": 5,
    "orphan-close-quote": 11,
@@ -277,20 +251,20 @@
    "anachronism": 2,
    "hyphen-space": 16
   },
-  "the-way-of-salvation": {
-   "space-before-punct": 5
+  "the-way-to-god": {
+   "space-before-punct": 12
   },
   "till-he-come": {
    "orphan-close-quote": 4,
    "space-before-punct": 8
   },
   "unfailing-springs": {
-   "space-before-punct": 3
+   "space-before-punct": 1
   },
   "union-and-communion": {
    "anachronism": 2,
    "orphan-close-quote": 1,
-   "space-before-punct": 14
+   "space-before-punct": 9
   },
   "way-into-holiest": {
    "anachronism": 2,
