@@ -8,13 +8,18 @@ Covers chapters AND sermons. Sermons joined BODY_CORRECTIONS when the sermon
 importer started using it; until this ran over them too, a sermon entry in the
 table was inert in production — the corrected text only ever reached prod if
 someone happened to regenerate the fixture in the same session.
+
+Every work is visited, not only those with a declared entry, because
+`apply_body_corrections` now also carries the line-break hyphen rejoin — a rule
+rather than a list. That is what lets 429 stored defects across 39 works repair
+themselves on the next deploy instead of needing a migration.
 """
 
 from __future__ import annotations
 
 from django.core.management.base import BaseCommand
 
-from library.corrections import BODY_CORRECTIONS, apply_body_corrections
+from library.corrections import apply_body_corrections
 from library.ingest import strip_trailing_pagenum
 from library.models import Chapter, Sermon
 
@@ -27,17 +32,19 @@ class Command(BaseCommand):
         for chapter in Chapter.objects.select_related("book").iterator(chunk_size=100):
             slug = chapter.book.slug
             new = strip_trailing_pagenum(chapter.body_html)
-            if slug in BODY_CORRECTIONS:
-                new = apply_body_corrections(slug, chapter.order, new)
+            # Unconditional: `apply_body_corrections` now carries the line-break
+            # hyphen rejoin, which is a RULE and applies to every work, not only
+            # the 22 with a hand-written entry. For a slug with no entry the rest
+            # of the call is a no-op.
+            new = apply_body_corrections(slug, chapter.order, new)
             if new != chapter.body_html:
                 chapter.body_html = new
                 chapter.save()
                 fixed += 1
                 self.stdout.write(f"  fixed {slug}/{chapter.order}")
         sermons_fixed = 0
-        for sermon in Sermon.objects.filter(slug__in=BODY_CORRECTIONS).iterator(
-            chunk_size=100
-        ):
+        # Every sermon, not just those with an entry — same reason as above.
+        for sermon in Sermon.objects.iterator(chunk_size=100):
             # order=None: sermons have no chapters, so no drop-cap may apply.
             new_html = apply_body_corrections(sermon.slug, None, sermon.body_html)
             if new_html != sermon.body_html:
