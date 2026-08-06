@@ -17,17 +17,19 @@ each check below is narrowed by a test that distinguishes the defect from the
 convention, and the comment says what that test is. Do not add a check without
 one.
 
-## Two entry points, because there are two moments worth checking
+## Entry points, because there are two moments worth checking
 
-`audit_records` is the core and takes whatever you can give it. The two
-adapters differ only in where the text comes from:
+`audit_records` is the core and takes whatever you can give it. The adapters
+differ only in where the text comes from:
 
-* `audit_fixtures` — the whole English corpus, off `fixtures/content/*.en.json`.
-  This is the standing corpus scan and what the CI ratchet measures.
+* `audit_fixtures` — the whole English corpus: books and sermons off
+  `fixtures/content/*.en.json`, plus every author biography out of
+  `authors.json`. This is the standing corpus scan and what the CI ratchet
+  measures.
 * `audit_book` / `audit_sermon` — a single work's **database rows**. The
-  importer needs this: at the moment `import_ochorus` finishes, the book exists
-  only in the DB, and the fixture will not be regenerated until later. Checking
-  the fixture at import time would check the previous import.
+  importers need this: at the moment an import finishes, the work exists only
+  in the DB, and the fixture will not be regenerated until later. Checking the
+  fixture at import time would check the previous import.
 
 Nothing here writes. Repairs go through `corrections.BODY_CORRECTIONS` (which
 the release chain re-applies on every deploy) or `source_fixes` — see the
@@ -40,6 +42,7 @@ import html
 import json
 import re
 from collections import Counter, defaultdict
+from itertools import chain
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, Iterator
@@ -49,6 +52,17 @@ from library.content_fixtures import BOOKS_DIR, CONTENT_DIR, SERMONS_DIR, author
 # NOT `library.text.html_to_text`, which collapses runs of whitespace. Two of
 # the checks here are ABOUT whitespace — `space-before-punct` and `hyphen-space`
 # — so normalising it away would delete the signal they exist to find.
+#
+# Inline tags are removed rather than spaced, because spacing them MANUFACTURES
+# the defect: `<em>The True Vine</em>, dedicating` became "Vine , dedicating"
+# and every italicised title followed by a comma read as an italics-strip
+# artifact. That was 2,457 of 4,178 raw space-before-punct hits — 59% — and it
+# is worst in the biographies, where citing works in italics is the house style.
+# Only INLINE tags are dropped. Everything else — a nested <p> inside a
+# blockquote, a <br> — still becomes a space, or sentences fuse across it and
+# `run-together` starts firing on the seam (11 findings became 30 when this was
+# applied to every tag indiscriminately).
+INLINE_TAG = re.compile(r"</?(?:em|i|b|strong|cite|a|span|sup|sub|small|u|code)\b[^>]*>", re.I)
 TAG = re.compile(r"<[^>]+>")
 BLOCK = re.compile(r"<(p|h2|h3|h4|blockquote|li)>(.*?)</\1>", re.S)
 
@@ -154,7 +168,7 @@ MECHANICAL = frozenset({"hyphen-space", "space-before-punct"})
 
 
 def text(fragment: str) -> str:
-    return html.unescape(TAG.sub(" ", fragment))
+    return html.unescape(TAG.sub(" ", INLINE_TAG.sub("", fragment)))
 
 
 def excerpt(t: str, i: int, w: int = 65) -> str:
@@ -267,8 +281,28 @@ def _fixture_records(slug: str | None = None) -> Iterator[Record]:
             yield Record(where, work, f.get("title", ""), f.get("body_html", ""), is_pd)
 
 
+def _bio_records(slug: str | None = None) -> Iterator[Record]:
+    """Author biographies, from `authors.json`.
+
+    These were the one English content type nothing checked, and they have a
+    different provenance from everything else: we *write* them, in modern
+    English, rather than importing a public-domain scan. So `is_pd=False` — a
+    biographer may mention television and the author may not — and what the
+    checks earn here is the typography and transcription damage that afflicts
+    any prose. Invented detail, the failure mode a written bio actually has, is
+    not something a regex can see; that stays a human-review job (see the
+    `write-biography` skill).
+    """
+    for author_slug, fields in authors_by_slug().items():
+        if slug and slug != author_slug:
+            continue
+        body = fields.get("bio_html") or ""
+        if body:
+            yield Record(f"{author_slug} (bio)", author_slug, fields.get("name", ""), body, False)
+
+
 def audit_fixtures(slug: str | None = None) -> list[Finding]:
-    return audit_records(_fixture_records(slug))
+    return audit_records(chain(_fixture_records(slug), _bio_records(slug)))
 
 
 def audit_book(book) -> list[Finding]:

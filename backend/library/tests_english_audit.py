@@ -117,6 +117,34 @@ class EnglishAuditPrecisionTests(SimpleTestCase):
         ]
         self.assertNotIn("space-before-punct", counts(audit_records(wholesale)))
 
+    def test_inline_markup_does_not_manufacture_a_space_before_punctuation(self):
+        """Stripping `</em>` to a space invented the defect it was looking for.
+
+        `<em>The True Vine</em>, dedicating` read as "Vine , dedicating" — an
+        italics-strip artifact, said the check, about our own italics. That was
+        59% of all raw space-before-punct hits and 100% of the biographies',
+        where citing works in italics is the house style.
+        """
+        self.assertNotIn(
+            "space-before-punct",
+            _findings("<p>he wrote <em>The True Vine</em>, dedicating it to them</p>"),
+        )
+        # The genuine article — a space in the text itself — still fires.
+        self.assertEqual(
+            _findings("<p>a sentence ended oddly .</p>").get("space-before-punct"), 1
+        )
+
+    def test_block_tags_inside_a_block_still_separate_sentences(self):
+        """Only INLINE tags may vanish.
+
+        Dropping every tag instead fused "one.</p><p>Two" into "one.Two" and
+        `run-together` went from 11 findings to 30, all of them seams.
+        """
+        self.assertNotIn(
+            "run-together",
+            _findings("<blockquote><p>ends here.</p><p>Starts there.</p></blockquote>"),
+        )
+
     def test_misspelling_needs_word_boundaries(self):
         """The trap the corrections table already warned about.
 
@@ -159,6 +187,63 @@ class EnglishAuditPrecisionTests(SimpleTestCase):
         self.assertEqual(
             _findings("<p>He that hath ears to hear, let him hear.</p>", title="Hearing"), {}
         )
+
+
+class BiographyAuditTests(SimpleTestCase):
+    """Biographies were the one English content type nothing checked."""
+
+    def _bio(self, body_html: str) -> dict[str, int]:
+        return counts(audit_records([Record("x (bio)", "x", "Name", body_html, False)]))
+
+    def test_a_bio_is_audited_for_transcription_damage(self):
+        self.assertEqual(self._bio("<p>the L ORD is good</p>").get("broken-smallcaps"), 1)
+
+    def test_a_bio_is_not_judged_for_anachronism(self):
+        """We write these, in modern English, about people who died in 1917.
+
+        The anachronism check exists to catch invented text in a
+        public-domain author's mouth. A biographer saying a life was later
+        dramatised on television is writing normally, not inventing.
+        """
+        self.assertNotIn("anachronism", self._bio("<p>later shown on television</p>"))
+
+    def test_every_bio_with_prose_is_reachable(self):
+        from library.english_audit import _bio_records
+
+        bios = list(_bio_records())
+        self.assertGreater(len(bios), 20, "authors.json should yield most authors' bios")
+        self.assertTrue(all(r.body_html for r in bios))
+
+
+class CorrectionsHygieneTests(SimpleTestCase):
+    def test_no_replacement_pair_is_dead(self):
+        """Every repair must still refer to text that exists somewhere.
+
+        A pair whose `old` has been applied and whose `new` is nowhere to be
+        found is repairing a book that no longer contains either string — a
+        typo in the entry, or a work that has since been dropped. It sits in
+        the table looking like protection and provides none.
+
+        Checked in both directions because a correction's lifecycle has two
+        valid states: not yet applied to the fixture (`old` present) and
+        applied (`new` present).
+        """
+        import json
+
+        from library.content_fixtures import BOOKS_DIR, SERMONS_DIR
+        from library.corrections import BODY_CORRECTIONS
+
+        corpus = "\n".join(
+            json.dumps(json.loads(p.read_text(encoding="utf-8")), ensure_ascii=False)
+            for p in list(BOOKS_DIR.glob("*.json")) + list(SERMONS_DIR.glob("*.json"))
+        )
+        dead = [
+            (slug, old)
+            for slug, entry in BODY_CORRECTIONS.items()
+            for old, new in entry.get("replacements", ())
+            if old not in corpus and new not in corpus
+        ]
+        self.assertEqual(dead, [], "BODY_CORRECTIONS entries matching nothing in the fixture")
 
 
 class EnglishAuditContractTests(SimpleTestCase):
