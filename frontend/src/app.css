@@ -178,6 +178,40 @@
 	transform: translateY(0);
 }
 
+/* Footer column headings and link lists.
+   The headings are <h2>, not <h3>: heading level is the document outline, not a
+   size, and the footer sat at h3 under a page whose sections are h2 — a skipped
+   level for anyone navigating by heading. The size never came from the tag
+   anyway (the base rule is overridden here), so moving the level costs nothing
+   visually.
+   Kept as component classes rather than a repeated utility string so the three
+   columns can't drift apart, per STYLE_GUIDE. */
+.footer-heading {
+	margin-bottom: 0.75rem;
+	font-family: var(--font-sans);
+	font-size: var(--fs-small);
+	line-height: 1.5;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--text);
+}
+.footer-links {
+	font-size: var(--fs-small);
+	line-height: 1.5;
+}
+.footer-links a {
+	/* inline-block + vertical padding grows the tap target without moving the
+	   text: at 14px with a 0.5rem gap the rows were well under the 44px
+	   guideline, and these stack tightest on the phones that need them most. */
+	display: inline-block;
+	padding-block: 0.3rem;
+	color: var(--muted);
+}
+.footer-links a:hover {
+	color: var(--text);
+}
+
 /* Highlight palette — the four colours a reader can mark text in. Keys live on
    the mark (data-color); gold is the default (no key). Each mark sets its hue
    as --mark-hue so background, hover and the has-note underline all follow it. */
