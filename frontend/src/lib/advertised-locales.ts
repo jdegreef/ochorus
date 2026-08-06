@@ -16,6 +16,13 @@ import { LIVE_LOCALES } from '$lib/live-locales.generated';
  * empty shell it would replace: a shell gets ignored, a thin page gets indexed
  * and counted against the site.
  *
+ * Both of those have since filled up — pt is at 7 books / 12 sermons / 6 plans,
+ * ar at 10 / 12 / 4 — so they are named here as the cases that taught us the
+ * rule, not as a current list of empty locales. **Hindi is today's example:** a
+ * wired UI locale with zero books, zero sermons and zero bios. Do not read the
+ * paragraph above as saying pt and ar are still empty; read it as why the gate
+ * exists at all.
+ *
  * **No longer maintained by hand.** Which locales are advertised is a decision
  * recorded in the `Language` registry — an admin presses "Go live" — and
  * `scripts/fetch-live-locales.mjs` bakes that decision into

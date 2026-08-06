@@ -88,10 +88,12 @@
 	// Footer language strip: the ADVERTISED locales, named in their own language,
 	// linking to that locale's home. Advertised — not every UI locale — because
 	// this strip is a promise: "Ochorus is available in your language." A locale
-	// with no books (pt and ar today) delivers a fully translated interface
-	// wrapped around an empty library, which is a worse first impression than not
-	// offering it. Same rule the sitemap and hreflang use, so the site makes one
-	// consistent claim about which languages it serves.
+	// with nothing to read delivers a fully translated interface wrapped around
+	// an empty library, which is a worse first impression than not offering it.
+	// (pt and ar were the cases that taught us this and have since filled up;
+	// hi is today's example, wired with zero books. See advertised-locales.ts.)
+	// Same rule the sitemap and hreflang use, so the site makes one consistent
+	// claim about which languages it serves.
 	//
 	// Those locales stay switchable in the header picker, so a reader who wants
 	// the translated UI can still have it — this only stops us advertising it.
@@ -238,6 +240,15 @@
 								href={localizeHref('/', { locale: l.code as (typeof locales)[number] })}
 								class="whitespace-nowrap text-muted hover:text-text"
 								onclick={(e) => {
+									// Hand modified and non-primary clicks back to the browser.
+									// The href is already the correct locale home, so cmd/ctrl-click
+									// opens it in a new tab exactly right — but an unconditional
+									// preventDefault swallows that, and "open in a new tab" silently
+									// doing nothing is the kind of break nobody reports.
+									// The new tab resolves its locale from the URL prefix on load, so
+									// it needs no choice recorded; only the in-place switch below does.
+									if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0)
+										return;
 									e.preventDefault();
 									lang.choose(l.code);
 								}}>{l.native_name}</a
