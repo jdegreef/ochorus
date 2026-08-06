@@ -1,0 +1,13 @@
+{
+ "_comment": "Ratchet for library/tests_english_audit.py \u2014 a class may shrink but never grow. Regenerate with `manage.py audit_english --update-baseline` and say in the commit message what you fixed.",
+ "classes": {
+  "anachronism": 15,
+  "broken-smallcaps": 8,
+  "hyphen-space": 434,
+  "misspelling": 23,
+  "orphan-close-quote": 201,
+  "run-together": 11,
+  "space-before-punct": 258,
+  "title-case-vs-body": 1
+ }
+}

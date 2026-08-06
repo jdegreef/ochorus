@@ -29,6 +29,7 @@ from library.corrections import (
     apply_body_corrections,
     chapter_title_overrides,
 )
+from library import english_audit
 from library.ingest import clean_title, is_front_matter, strip_trailing_pagenum
 from library.models import Author, Book, Chapter
 
@@ -608,3 +609,30 @@ class Command(BaseCommand):
             self.stdout.write(self.style.SUCCESS(f"  ✓ {book.chapter_count} chapters"))
         else:
             self.stderr.write(self.style.WARNING("  ⚠ no chapters detected (saved unpublished)"))
+        self._audit(book)
+
+    def _audit(self, book) -> None:
+        """Report English defects in what we have just written.
+
+        Here, and not on the fixture, because at this moment the fixture still
+        describes the previous import. And now, and not "later", because the
+        whole reason this exists is that we kept finding these defects during
+        translation — the most expensive possible moment, when the defect has
+        already been reproduced faithfully into three to six language editions.
+
+        Reports; never rewrites. Deciding what the text *should* say needs the
+        source in front of a person (see the `english-qa` skill).
+        """
+        findings = english_audit.audit_book(book)
+        if not findings:
+            self.stdout.write("  clean — no English defects found")
+            return
+        by_class = english_audit.counts(findings)
+        self.stdout.write(
+            self.style.WARNING(f"  ⚠ {len(findings)} English defect(s) to review:")
+        )
+        for label in sorted(by_class, key=lambda k: -by_class[k]):
+            self.stdout.write(f"      {by_class[label]:4d}  {label}")
+        self.stdout.write(
+            f"      → manage.py audit_english --slug {book.slug} --limit 0"
+        )

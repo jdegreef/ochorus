@@ -72,6 +72,13 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
 - Content-quality heuristics live once in `library/qa.py` (`chapter_flags` +
   thresholds), shared by the admin content audit and the import preview. Don't
   re-implement them — a second copy drifts (it already did once).
+- English *source* defects (extraction artifacts, OCR slips, invented text) live
+  in `library/english_audit.py`, shared by `import_ochorus` (which audits each
+  book it writes) and `manage.py audit_english`. Every check carries a precision
+  test in `tests_english_audit.py` — the first version of this scanner reported
+  8,917 findings, nearly all false, and a report nobody trusts gets skimmed.
+  `tests_english_audit.py` also ratchets the per-class counts, so an import
+  can't quietly add defects. See the `english-qa` skill for the repair channels.
 
 ## Dev
 
