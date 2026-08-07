@@ -23,6 +23,7 @@ from functools import lru_cache
 from django.test import SimpleTestCase
 
 from library import english_audit
+from library.corrections import rejoin_linebreak_hyphens as rejoin
 from library.english_audit import Record, audit_records, counts
 
 
@@ -117,6 +118,34 @@ class EnglishAuditPrecisionTests(SimpleTestCase):
         ]
         self.assertNotIn("space-before-punct", counts(audit_records(wholesale)))
 
+    def test_inline_markup_does_not_manufacture_a_space_before_punctuation(self):
+        """Stripping `</em>` to a space invented the defect it was looking for.
+
+        `<em>The True Vine</em>, dedicating` read as "Vine , dedicating" — an
+        italics-strip artifact, said the check, about our own italics. That was
+        59% of all raw space-before-punct hits and 100% of the biographies',
+        where citing works in italics is the house style.
+        """
+        self.assertNotIn(
+            "space-before-punct",
+            _findings("<p>he wrote <em>The True Vine</em>, dedicating it to them</p>"),
+        )
+        # The genuine article — a space in the text itself — still fires.
+        self.assertEqual(
+            _findings("<p>a sentence ended oddly .</p>").get("space-before-punct"), 1
+        )
+
+    def test_block_tags_inside_a_block_still_separate_sentences(self):
+        """Only INLINE tags may vanish.
+
+        Dropping every tag instead fused "one.</p><p>Two" into "one.Two" and
+        `run-together` went from 11 findings to 30, all of them seams.
+        """
+        self.assertNotIn(
+            "run-together",
+            _findings("<blockquote><p>ends here.</p><p>Starts there.</p></blockquote>"),
+        )
+
     def test_misspelling_needs_word_boundaries(self):
         """The trap the corrections table already warned about.
 
@@ -159,6 +188,142 @@ class EnglishAuditPrecisionTests(SimpleTestCase):
         self.assertEqual(
             _findings("<p>He that hath ears to hear, let him hear.</p>", title="Hearing"), {}
         )
+
+
+class BiographyAuditTests(SimpleTestCase):
+    """Biographies were the one English content type nothing checked."""
+
+    def _bio(self, body_html: str) -> dict[str, int]:
+        return counts(audit_records([Record("x (bio)", "x", "Name", body_html, False)]))
+
+    def test_a_bio_is_audited_for_transcription_damage(self):
+        self.assertEqual(self._bio("<p>the L ORD is good</p>").get("broken-smallcaps"), 1)
+
+    def test_a_bio_is_not_judged_for_anachronism(self):
+        """We write these, in modern English, about people who died in 1917.
+
+        The anachronism check exists to catch invented text in a
+        public-domain author's mouth. A biographer saying a life was later
+        dramatised on television is writing normally, not inventing.
+        """
+        self.assertNotIn("anachronism", self._bio("<p>later shown on television</p>"))
+
+    def test_every_bio_with_prose_is_reachable(self):
+        from library.english_audit import _bio_records
+
+        bios = list(_bio_records())
+        self.assertGreater(len(bios), 20, "authors.json should yield most authors' bios")
+        self.assertTrue(all(r.body_html for r in bios))
+
+
+class LineBreakHyphenTests(SimpleTestCase):
+    """The one rule-based repair, and the four things it must never do.
+
+    A word broken across a line in the source PDF arrives as "self-" + a line
+    break, and the paragraph merge rejoins it with a space. 429 of these were
+    stored across 39 works. The repair closes the space and NOTHING else — it
+    never removes the hyphen, and that restraint is what makes it safe to run
+    unattended on a public-domain author.
+    """
+
+    def test_closes_the_space(self):
+        self.assertEqual(rejoin("self- righteous"), "self-righteous")
+        self.assertEqual(rejoin("Fountain- head"), "Fountain-head")
+
+    def test_never_removes_the_hyphen(self):
+        """Dropping it would modernise the author — the one forbidden edit.
+
+        "to-day" is Wesley's spelling and "over-much" is Whitefield's. The
+        unhyphenated form is attested elsewhere in those same works, so a rule
+        keyed on attestation would have "corrected" both.
+        """
+        for period_spelling in ("to- day", "over- much", "four- fold", "whole- hearted"):
+            got = rejoin(period_spelling)
+            self.assertEqual(got, period_spelling.replace("- ", "-"))
+            self.assertIn("-", got, "the author's hyphen must survive")
+
+    def test_leaves_a_capitalised_resumption_alone(self):
+        """A broken word never resumes with a capital, so these are unprovable.
+
+        They are either a flattened dash — "thus- Moses, the man of God", "I
+        ask- What does this mean?" — or a genuine proper-noun compound —
+        "non- Israelite", "Golden- Mouthed" — and nothing mechanical separates
+        the two. 21 cases; leaving ~7 real compounds unjoined is much cheaper
+        than welding a clause boundary shut.
+        """
+        for unprovable in ("thus- Moses", "I ask- What", "non- Israelite", "Golden- Mouthed"):
+            self.assertEqual(rejoin(unprovable), unprovable)
+
+    def test_leaves_suspended_compounds_alone(self):
+        """"two- and three-fold" — here the space is correct English."""
+        for suspended in ("two- and twenty", "day- to day", "pre- or post-"):
+            self.assertEqual(rejoin(suspended), suspended)
+
+    def test_never_joins_across_a_paragraph_boundary(self):
+        """A hyphen at the end of a <p> is a verse line, not a broken word.
+
+        the-possibilities-of-faith quotes "Glory begin below-</p><p>Celestial
+        fruits" — joining that would run two lines of a poem together.
+        """
+        verse = "<p>Glory begin below-</p><p>Celestial fruits</p>"
+        self.assertEqual(rejoin(verse), verse)
+
+    def test_is_idempotent(self):
+        once = rejoin("self- righteous")
+        self.assertEqual(rejoin(once), once)
+
+    def test_the_fixture_is_clean(self):
+        """The committed English fixture must carry no repairable hyphen.
+
+        `apply_body_corrections` heals the database on every deploy, but the
+        fixture is a file — nothing rewrites it, and it is what a fresh build
+        loads and what the ratchet measures.
+        """
+        from library.content_fixtures import BOOKS_DIR, SERMONS_DIR
+
+        import json
+
+        dirty = []
+        for path in sorted(BOOKS_DIR.glob("*.en.json")) + sorted(SERMONS_DIR.glob("*.en.json")):
+            for row in json.loads(path.read_text(encoding="utf-8")):
+                body = row.get("fields", {}).get("body_html") or ""
+                if rejoin(body) != body:
+                    dirty.append(path.name)
+                    break
+        self.assertEqual(
+            dirty, [], "run `manage.py normalize_english_fixture --write`"
+        )
+
+
+class CorrectionsHygieneTests(SimpleTestCase):
+    def test_no_replacement_pair_is_dead(self):
+        """Every repair must still refer to text that exists somewhere.
+
+        A pair whose `old` has been applied and whose `new` is nowhere to be
+        found is repairing a book that no longer contains either string — a
+        typo in the entry, or a work that has since been dropped. It sits in
+        the table looking like protection and provides none.
+
+        Checked in both directions because a correction's lifecycle has two
+        valid states: not yet applied to the fixture (`old` present) and
+        applied (`new` present).
+        """
+        import json
+
+        from library.content_fixtures import BOOKS_DIR, SERMONS_DIR
+        from library.corrections import BODY_CORRECTIONS
+
+        corpus = "\n".join(
+            json.dumps(json.loads(p.read_text(encoding="utf-8")), ensure_ascii=False)
+            for p in list(BOOKS_DIR.glob("*.json")) + list(SERMONS_DIR.glob("*.json"))
+        )
+        dead = [
+            (slug, old)
+            for slug, entry in BODY_CORRECTIONS.items()
+            for old, new in entry.get("replacements", ())
+            if old not in corpus and new not in corpus
+        ]
+        self.assertEqual(dead, [], "BODY_CORRECTIONS entries matching nothing in the fixture")
 
 
 class EnglishAuditContractTests(SimpleTestCase):
