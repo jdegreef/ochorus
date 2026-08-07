@@ -501,6 +501,15 @@ nav.appnav .navtoggle:hover {
 		position: static;
 		transform: none;
 	}
+	/* The language picker is a full-width-bar control. Once the links stop
+	   being centred they flow beside the controls, and a fourth control makes
+	   the bar the tightest row on the site; in the phone drawer below 760px a
+	   language list is also the least likely reason anyone opened it. Settings
+	   keeps a language select over the same `lang.available` list, so every
+	   locale stays reachable — this only takes it out of the header. */
+	nav.appnav .navlang {
+		display: none;
+	}
 }
 /* Phones: collapse links + controls behind a hamburger drawer. */
 @media (max-width: 760px) {
