@@ -122,7 +122,7 @@ class KnownLimitationTests(SimpleTestCase):
     only at 26:14.
 
     This is why the sweep is a triage list and not a ratchet gate: at the
-    thresholds here it flags ~3.5% of quote-citation pairs across the corpus,
+    thresholds here it flags 101 of the corpus's ~4,400 quote-citation pairs,
     and a meaningful minority of those are this.
     """
 
