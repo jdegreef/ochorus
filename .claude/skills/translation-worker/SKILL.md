@@ -173,6 +173,38 @@ pinning full per-language coverage, so a partial block fails CI.
   `frontend/src/routes/topics/[slug]/+page.ts` so the localized static page
   rebuilds.
 
+## When the ENGLISH is wrong — report it, always
+
+Translating is how we find defects in the source, because it is the one process
+that reads every sentence with attention. Every `BODY_CORRECTIONS` entry we
+have was written by a translator who hit one: `baptism-with-the-holy-spirit`
+(an OCR'd "Acts 4:8:13"), `the-key-in-my-hand` ("18:19-10" for Matt 18:20),
+`the-way-to-god` (a lost opening paren). That channel works. It is just
+informal, and a defect nobody writes down gets found again by the next
+translator, in the next language.
+
+So when the English does not say what it should:
+
+1. **Do not silently fix it in your translation.** Render what is there. A
+   translation that quietly corrects the source leaves the English wrong and
+   the editions disagreeing.
+2. **Add the repair to `corrections.BODY_CORRECTIONS`** for that slug. It is in
+   the release chain (`apply_body_corrections`), so it reaches production on
+   the next deploy without a migration.
+3. **Check whether it already propagated.** The defect is probably in the other
+   language editions too, faithfully reproduced:
+   ```bash
+   grep -l "<the wrong text>" backend/library/fixtures/content/books/<slug>.*.json
+   ```
+   Where the defect is numeric or a proper name, write the replacement so it
+   matches in **any** language (the `the-key-in-my-hand` entry does this); where
+   the surrounding prose is localized, use `source_fixes.py` instead.
+4. **Say so in the PR**, under a "Found, not fixed here" heading if you are not
+   repairing it in this job.
+
+The `english-qa` skill has the full triage table and the rule that matters most:
+archaic spelling and period punctuation are the text, not defects in it.
+
 ## Guardrails
 
 - **Never** run more than one job per session run, even if the queue is deep.

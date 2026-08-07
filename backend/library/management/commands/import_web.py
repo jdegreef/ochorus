@@ -23,6 +23,7 @@ import time
 import requests
 from django.core.management.base import BaseCommand, CommandError
 
+from library import english_audit
 from library.catalog import BOOKS, WEB_CHAPTERS, BookEntry
 from library.ingest import clean_fragment, soup, upsert_book, word_count
 
@@ -143,4 +144,5 @@ class Command(BaseCommand):
                 return
             chapters.append((title, body))
         book = upsert_book(entry, chapters)
+        english_audit.report(self, english_audit.audit_book(book), book.slug)
         self.stdout.write(self.style.SUCCESS(f"  ✓ {book.chapter_count} chapters"))

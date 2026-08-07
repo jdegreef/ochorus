@@ -29,6 +29,7 @@ from library.corrections import (
     apply_body_corrections,
     chapter_title_overrides,
 )
+from library import english_audit
 from library.ingest import clean_title, is_front_matter, strip_trailing_pagenum
 from library.models import Author, Book, Chapter
 
@@ -608,3 +609,4 @@ class Command(BaseCommand):
             self.stdout.write(self.style.SUCCESS(f"  ✓ {book.chapter_count} chapters"))
         else:
             self.stderr.write(self.style.WARNING("  ⚠ no chapters detected (saved unpublished)"))
+        english_audit.report(self, english_audit.audit_book(book), book.slug)

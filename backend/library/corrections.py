@@ -385,18 +385,76 @@ BODY_CORRECTIONS: dict[str, dict] = {
 _FIRST_LOWER = _re.compile(r"<p[^>]*>\s*([a-z])")
 
 
+# A word broken across a line in the source PDF arrives as "self-" + a line
+# break + "righteous", and the importer's paragraph merge rejoins the pieces
+# with a space: "self- righteous". 434 of these are stored across 41 works, and
+# a reader sees exactly that on the page — in *All of Grace*, four sentences
+# away from "self-righteous" spelled correctly.
+#
+# This closes the space and NOTHING ELSE. It never removes the hyphen, and that
+# restraint is the whole reason the rule is safe to run unattended:
+#
+#   self- righteous  -> self-righteous     the common case
+#   to- day          -> to-day             Wesley's spelling, PRESERVED.
+#                                          "today" would edit the author.
+#   whole- hearted   -> whole-hearted      likewise; not "wholehearted"
+#   Acts 1- 8        -> Acts 1-8           a verse range closes up correctly
+#   perdi- tion      -> perdi-tion         still wrong, but no stray space;
+#                                          "perdition" needs the source read
+#
+# Dropping the hyphen instead would be the modernisation `contemporize-book`
+# exists to keep out of the original text: of the 24 cases where the unhyphenated
+# form is attested elsewhere in the same work, several are period spellings
+# ("to-day", "over-much", "four-fold") where the author's hyphen is the point.
+#
+# Two exclusions, both because the rule cannot prove the join:
+#
+# * a SUSPENDED compound — "two- and three-fold", "day- to day" — where the
+#   space is correct English. Four cases corpus-wide.
+# * anything resuming with a CAPITAL. A broken word never resumes capitalised,
+#   so these are either a flattened dash or a proper-noun compound, and the two
+#   are not separable without reading them:
+#       "thus- Moses, the man of God"      a dash; joining welds a clause shut
+#       "I ask- What does this mean?"      a dash
+#       "non- Israelite king"              a real compound; joining is right
+#       "Golden- Mouthed"                  a real compound
+#   21 cases. Leaving ~7 genuine compounds unjoined is the cheaper mistake.
+#
+# Digits stay joinable, so a verse range closes up: "Acts 1- 8" -> "Acts 1-8".
+_HYPHEN_LINEBREAK = _re.compile(r"(\w)-[ \t]+(?!(?:and|or|nor|to)\b)(?=[a-z0-9])")
+
+
+def rejoin_linebreak_hyphens(body_html: str) -> str:
+    """Close "self- righteous" to "self-righteous". Idempotent."""
+    return _HYPHEN_LINEBREAK.sub(r"\1-", body_html)
+
+
 def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
     """Apply a work's body corrections to one chapter's HTML. Idempotent.
 
     ``order`` selects a drop-cap letter and is chapter-only; pass ``None`` for a
     work that has no chapters (sermons), so a slug that happens to collide with
     a book's can never inject a stray capital.
+
+    The line-break hyphen rejoin runs for EVERY work, not just those with a
+    declared entry: it is a rule, not a list, which is the point — 434 instances
+    across 41 works was never going to be hand-written string pairs.
+
+    ORDER MATTERS. The declared replacements run FIRST, so a hand-written repair
+    always beats the rule. `the-inner-chamber` is the case that proves it: it
+    declares "the scales- only practice" -> "the scales — only practice", where
+    the trailing hyphen is a DASH the extractor flattened, not a broken word.
+    With the rule first, it closed to "scales-only", the declared pair no longer
+    matched, and the em dash was lost. A regression test has guarded that string
+    since long before this rule existed, and it caught this.
     """
     entry = BODY_CORRECTIONS.get(slug)
+    if entry:
+        for old, new in entry.get("replacements", []):
+            body_html = body_html.replace(old, new)
+    body_html = rejoin_linebreak_hyphens(body_html)
     if not entry:
         return body_html
-    for old, new in entry.get("replacements", []):
-        body_html = body_html.replace(old, new)
     letter = entry.get("dropcap_letters", {}).get(order)
     if letter:
         # Only when the first paragraph still starts lowercase (not yet fixed).

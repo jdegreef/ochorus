@@ -15,6 +15,7 @@ from __future__ import annotations
 import requests
 from django.core.management.base import BaseCommand, CommandError
 
+from library import english_audit
 from library.catalog import BOOKS, BookEntry
 from library.ingest import clean_title, upsert_book, word_count
 from library.management.commands.import_ochorus import UA, chapterize, pdf_blocks
@@ -61,4 +62,5 @@ class Command(BaseCommand):
             self.stderr.write(self.style.ERROR("  no chapters detected — aborted"))
             return
         book = upsert_book(entry, chapters)
+        english_audit.report(self, english_audit.audit_book(book), book.slug)
         self.stdout.write(self.style.SUCCESS(f"  ✓ {book.chapter_count} chapters"))
