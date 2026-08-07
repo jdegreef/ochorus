@@ -9,7 +9,7 @@
  *  - returns focus to whatever was focused before it opened, on destroy.
  *
  * This is the pattern TocDrawer implemented inline; extracting it keeps every
- * overlay (CommandPalette, LanguagePicker, the reader note editor) consistent
+ * overlay (CommandPalette, ScripturePopover, the reader note editor) consistent
  * instead of each re-solving keyboard access — or, as several did, not at all.
  */
 const FOCUSABLE =

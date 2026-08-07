@@ -76,10 +76,16 @@ const sourceFiles = (dir = SRC, out: string[] = []): string[] => {
 /** Where a bare `lang.set()` is the correct call: adopting the saved profile. */
 const SET_ALLOWED = new Set(['lib/auth.svelte.ts']);
 
-/** Every surface a reader can switch language from. */
+/**
+ * Every surface a reader can switch language from.
+ *
+ * Two, deliberately. A third — a header dropdown — was removed because it had
+ * to list every UI locale to justify its slot, which made the chrome contradict
+ * itself: hi showed in the header while the footer strip, sitemap and hreflang
+ * all omit it. The footer strip advertises; Settings is the full list.
+ */
 const SWITCHERS = [
 	'src/routes/+layout.svelte', // footer language strip
-	'src/lib/components/LanguagePicker.svelte', // header picker
 	'src/routes/settings/+page.svelte' // Settings -> Language
 ];
 
@@ -98,10 +104,15 @@ describe('every reader-facing switcher goes through choose()', () => {
 	// The check above reads a file's CONTENTS. That is not the same as the
 	// component being on screen: LanguagePicker.svelte sat in this list, passed
 	// every assertion, and was imported by nothing at all — so the header had no
-	// language control and ar/hi were reachable only by digging into Settings.
-	it.each(SWITCHERS.filter((f) => f.includes('/components/')))(
-		'%s is actually mounted somewhere',
-		(file) => {
+	// language control at all for a while.
+	//
+	// Both switchers are routes today, and a route is mounted by definition, so
+	// this loop has no subjects. A plain `for` rather than `it.each`, which
+	// throws on an empty list — and it stays because the bug it caught costs
+	// nothing to guard against and reappears the moment a component is added
+	// back to SWITCHERS.
+	for (const file of SWITCHERS.filter((f) => f.includes('/components/'))) {
+		it(`${file} is actually mounted somewhere`, () => {
 			const name = file.split('/').pop()!.replace('.svelte', '');
 			const importers = sourceFiles()
 				.filter((f) => !f.endsWith(`${name}.svelte`))
@@ -112,8 +123,8 @@ describe('every reader-facing switcher goes through choose()', () => {
 				`${file} is a reader-facing switcher that nothing imports — it cannot be ` +
 					'used. Mount it, or drop it from SWITCHERS.'
 			).not.toEqual([]);
-		}
-	);
+		});
+	}
 
 	it('no other module calls lang.set() except the profile-adoption branch', () => {
 		const offenders = sourceFiles()

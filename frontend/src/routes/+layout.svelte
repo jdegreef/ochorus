@@ -15,7 +15,6 @@
 	import { pwa } from '$lib/pwa.svelte';
 	import { localizeHref, getLocale, getTextDirection, locales } from '$lib/paraglide/runtime';
 	import AccountMenu from '$lib/components/AccountMenu.svelte';
-	import LanguagePicker from '$lib/components/LanguagePicker.svelte';
 	import QuickSettings from '$lib/components/QuickSettings.svelte';
 	import { MEASURE } from '$lib/readerPrefs.svelte';
 	import { pageWidth } from '$lib/pageWidth.svelte';
@@ -95,8 +94,8 @@
 	// Same rule the sitemap and hreflang use, so the site makes one consistent
 	// claim about which languages it serves.
 	//
-	// Those locales stay switchable in the header picker, so a reader who wants
-	// the translated UI can still have it — this only stops us advertising it.
+	// Those locales stay switchable in Settings, so a reader who wants the
+	// translated UI can still have it — this only stops us advertising it.
 	//
 	// ...with one exception, which is why the rule lives in footerLocales.ts
 	// (and is tested there): the locale the reader is ACTUALLY IN is always
@@ -153,20 +152,19 @@
 					{/each}
 				</div>
 				<div class="navctl">
-					<!-- The header picker offers EVERY UI locale, unlike the footer strip
-					     below, which advertises only locales with something to read. That
-					     split is deliberate (see advertised-locales.ts) and this component
-					     is the half that makes it honest: without it, ar and hi were
-					     switchable nowhere, despite being fully wired interfaces. It was
-					     written for this slot and then never mounted.
+					<!-- No language control here, deliberately. Switching locale lives in
+					     two places instead: the footer strip below, and Settings.
 
-					     Full-width bars only. Below 960px the links stop being centred
-					     and flow inline, and a fourth control crowds them; below 760px
-					     the whole menu is a drawer, where a language list is the least
-					     likely thing someone opened it for. Nobody is stranded: Settings
-					     carries a language select over the same `lang.available` list,
-					     so every locale — ar and hi included — stays reachable. -->
-					<div class="navlang"><LanguagePicker /></div>
+					     A header dropdown had to list EVERY UI locale to be worth its
+					     slot, and that made the chrome contradict itself — hi appeared in
+					     the header while the footer strip, the sitemap and hreflang all
+					     omit it, because hi has nothing to read yet. Two controls a
+					     screen apart offering different language lists reads as a bug
+					     whichever one you notice first. The footer strip is the promise
+					     ("Ochorus is available in your language") and Settings is the
+					     escape hatch that still carries the full `lang.available` list,
+					     so a reader who wants a wired-but-empty locale can have it
+					     without us advertising it. -->
 					<!-- Quick settings: gear opens a theme + reading-width popover (the
 					     full Settings page is still linked from the account menu). -->
 					<QuickSettings />
