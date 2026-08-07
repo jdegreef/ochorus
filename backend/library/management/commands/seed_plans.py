@@ -123,6 +123,12 @@ PLAN_TRANSLATIONS = {
     # is present; an entry here for a plan that cannot render is dead weight
     # that reads like a bug. So each new entry below arrives with its books.
     "ar": {
+        "faith-in-the-fire": (
+            "إله كل تعزية: إيمانٌ في الأتون",
+            "للأيّام التي يصعب أن نصلّي فيها. هانا ويتال سميث عن إله كلّ "
+            "تعزية، وغاريث إيفانز عن الثقة بمن يمسك غدنا — رحلة خمسة أسابيع "
+            "إلى سلامٍ راسخ حين تكون الحياة غير مؤكّدة.",
+        ),
         "humility-12-days": (
             "التواضع في اثني عشر يومًا",
             "كتاب أندرو موراي الكلاسيكيّ عن أصل كلّ فضيلة: فصلٌ قصيرٌ واحد "

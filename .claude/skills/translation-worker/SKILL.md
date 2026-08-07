@@ -272,6 +272,11 @@ archaic spelling and period punctuation are the text, not defects in it.
   check whether its slug appears in `LAUNCH_PLANS` or `CURATED_PLANS`, and if it
   does, add the plan prose in the SAME PR.** Verify by running `seed_plans` on a
   clean DB twice — once with your entry and once without — and reading the row.
+  Such a book job then needs **two** prerender refreshes, not the usual one:
+  `books/+page.ts` for the book shelf *and* `plans/+page.ts`, because the plans
+  pages are prerendered per locale and will otherwise keep serving the card they
+  were built with. Shipping the prose without the second touch fixes the DB and
+  leaves the live page unchanged, which reads as the fix not working.
 - **Word count cannot verify a translation. Diff the ordered TAG SEQUENCE**
   (jobs #414/#415, 2026-07-30): the sw and lg John Wesley bios had been
   re-translated from the expanded English and their word ratios looked healthy
@@ -362,6 +367,40 @@ archaic spelling and period punctuation are the text, not defects in it.
   of a word, or follow one?), never by an alternating toggle: the English source
   leaves quotations unbalanced — *Humility* ch01 closes one that was never
   opened — and a toggle renders that lone mark as an opening guillemet.
+  **It is not only quote marks — settle every typographic convention by
+  MEASURING the shipped books.** Stating the guillemet rule in #756's brief
+  worked perfectly (17 chapters, zero `&quot;`, zero curly quotes, no conversion
+  pass at all), and the drift simply moved to the convention nobody had
+  specified: citation numerals. Ten chapters wrote `(مزمور ١٤٥: ٧)` in
+  Arabic-Indic digits, five wrote `(مزمور 145: 7)` in Western — a clean
+  per-chapter split, i.e. seventeen translators each deciding locally. The
+  shipped Arabic books settle it 673 Western to 3, so it is a fact to look up,
+  not a preference to argue: `grep -o '([^)]*[0-9٠-٩]\+ *: *[0-9٠-٩]\+[^)]*)'`
+  over `*.<lang>.json` and count. Before converting digits wholesale, confirm
+  none is a prose quantity rather than a reference — refuse the rewrite if a
+  digit sits glued to an Arabic letter. Nested quotes have a precedent too:
+  `prevailing-prayer.ar.json` uses ‹ › 106 times, so a chapter that nests that
+  way is RIGHT and should not be "fixed" toward the majority.
+- **Fan-out guarantees cross-chapter divergence, so budget a RECONCILIATION
+  pass** (#756). One-subagent-per-chapter means no translator ever sees another
+  chapter, and per-chapter validation is blind to it by construction: every one
+  of #756's 17 chapters passed its own gate while the book as a whole was
+  inconsistent. The worst case was **Job 13:15, quoted in two chapters with
+  opposite meanings under the same citation** — ch17 used Van Dyck verbatim
+  («لَا أَنْتَظِرُ شَيْئًا», the Ketiv, "I wait for nothing"), ch12 rejected it
+  for Smith's KJV/Qere sense («وَلَكِنِّي عَلَيْهِ أَتَوَكَّلُ", "yet will I
+  trust him") because the Van Dyck reading guts her argument mid-paragraph. Both
+  reasoned correctly in isolation, citing different rules of this skill. Run a
+  whole-book pass before building the fixture and check at minimum: the same
+  verse rendered the same way everywhere, citation numerals, nested-quote
+  convention, glossary terms, and chapter titles (one of #756's added guillemets
+  the English title lacks). Cheap to script — load all chapters, group by
+  normalised verse text, and print any reference with more than one rendering.
+  The four conventions that actually drifted on #756, all settled by counting
+  the shipped books: digit system (Western 673:3), **citation separator —
+  `(مزمور 145:7)`, no space, 1128:155**, nested-quote marks (‹ › has
+  precedent), and chapter-title punctuation (0 of 150 shipped ar titles carry
+  guillemets; one chapter had added them).
 - **Egress depends on WHERE the session runs — test it, don't inherit the
   claim.** This file says elsewhere that `api.takeroot.bible` is blocked and
   that rendering scripture conservatively is "the current default". That is true
@@ -384,6 +423,65 @@ archaic spelling and period punctuation are the text, not defects in it.
   assumption they match, and repeated shadda/vowel-order drift that is the
   fingerprint of a retyped-from-memory verse. Tell the repair pass explicitly
   that "no edits needed" is a valid outcome, or it will manufacture changes.
+  **Fix EVERY occurrence, not the first.** Devotional authors hammer a phrase:
+  #756's ch07 needed 29 sites across 15 references, several refrains reused 3-5
+  times ("spread a table", "forgotten to be gracious", "why hast thou made me
+  thus"). Repair one and the chapter contradicts itself a paragraph later, which
+  is worse than leaving all of them wrong. Say "fix every site and report the
+  count per reference" in the brief, and have the agent grep rather than
+  eyeball.
+  **In Arabic, vocalisation is a SEMANTIC signal — a memory-rendered quote that
+  is vocalised masquerades as scripture.** These books use the convention
+  vocalised-inside-guillemets = verbatim Van Dyck, bare = the author's own
+  phrase. So when Van Dyck genuinely cannot be used (#756 ch16 kept Smith's
+  "righteousness" over Van Dyck's *alms* at Matt 6:1, because البرّ carries four
+  paragraphs of her argument), the fix is often **not** the wording — it is
+  stripping the vocalisation, so the phrase stops claiming an authority it does
+  not have. Check for the inverse too: an unmarked allusion rendered in full
+  vocalised verse text is over-application, not fidelity.
+  **Make the first pass emit the repair pass's input**: require each translator
+  to report its unverified quotations as `Book C:V` plus the paragraph index,
+  not as prose descriptions. On #728 they came back as narrative ("the centurion
+  saying…") and had to be reverse-engineered into references before anything
+  could be fetched; asked for explicitly on #756, ch07 returned 16 usable
+  references and ch01 twelve, ready to batch-fetch. Same for the quotation
+  convention — state it in the brief and the post-hoc conversion disappears
+  entirely (#728 needed one and it mis-set the direction on an unbalanced
+  source; #756's chapters arrive with correct « » and zero `&quot;`).
+- **Citations can be silently MANGLED BY BIDI, and there is an invariant that
+  catches it** (#756 ch02). A citation printed `(مزمور 7:20-8)` came from the
+  English's `Psalm 20:7-8` — the digit groups transposed when Western numerals
+  were embedded in RTL text. The quoted verse was right; only the reference was
+  wrong, so no scripture check would ever see it, and it reads as plausible.
+  The invariant: **a verse range must ascend**, so any `(book C:V1-V2)` with
+  `V2 <= V1` is malformed. Scan the whole book for it before shipping — it is
+  five lines and it is the only automatic handle on this class:
+  `re.finditer(r'\(([^)]*?)(\d+):(\d+)\s*[-–]\s*(\d+)', html)`, flag where
+  `int(v2) <= int(v1)`. Also flag a chapter number above the book's real
+  chapter count. Neither catches a transposed single-verse reference, so a
+  reviewer still has to read the citations against the English.
+- **The Van Dyck text from the API has its own typos, and the no-retyping rule
+  pastes them straight in** (#756: `ياقَلِيلِي` for `يا قَلِيلِي` in Matt 6:30,
+  `ٱلبَيْتَ،بَيْتَ` in 2 Chr 5:13, `يَايَهُوذَا` in 2 Chr 20:20 — three in one
+  book). Byte-for-byte extraction is still right; it is what prevents diacritic
+  drift. But budget a **source-artifact scan** afterwards for missing spaces and
+  comma-glue, fix them as pure typography (no wording change), and report them
+  upstream to Take Root — every language quoting those verses inherits the
+  defect. Do NOT let a translator "tidy" the source text on its own initiative;
+  the fix belongs in one deliberate pass you can describe in the PR.
+- **The target Bible may follow a different TEXTUAL TRADITION, not just
+  different wording — and it can invert the verse** (#756, ch17). Smith quotes
+  Job 13:15 as "Though he slay me, yet will I trust in him", the Qere reading,
+  and builds a paragraph on it as the summit of trust. Van Dyck follows the
+  Ketiv and reads roughly "He slays me; I wait for nothing" — the opposite
+  sense. This is the same hazard as Kulish's *turn*-for-*look* in Isa 45:22
+  (above) but a different cause: not a translator's word choice, a different
+  underlying text. The translator did the right thing — used Van Dyck verbatim
+  and flagged it loudly — because silently substituting the English's sense
+  would put words in the Bible's mouth. Treat it as an editorial decision for
+  review, not a defect to patch: the options are a footnote, or rebuilding the
+  author's sentence around what the target text actually says. Watch for it in
+  Job, 1-2 Samuel and the Psalms, where Qere/Ketiv divergence clusters.
 - **Public-domain Bibles are on GitHub — verify against the text, don't guess.**
   The egress policy blocks `api.takeroot.bible`, `ebible.org`, `bible.com` and
   the rest, which makes verification look impossible. It is not:
