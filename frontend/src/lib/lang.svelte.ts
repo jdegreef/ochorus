@@ -25,7 +25,8 @@ export const LOCALE_NAMES: Record<string, string> = {
 	lg: 'Luganda',
 	pt: 'Português',
 	ar: 'العربية',
-	hi: 'हिन्दी'
+	hi: 'हिन्दी',
+	uk: 'Українська'
 };
 
 export function getLang(): string {

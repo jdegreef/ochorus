@@ -8,7 +8,8 @@
     "lg",
     "pt",
     "ar",
-    "hi"
+    "hi",
+    "uk"
   ],
   "modules": [
     "./local-plugins/plugin-message-format.js"
