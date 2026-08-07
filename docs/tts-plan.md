@@ -1,5 +1,11 @@
 # Ochorus TTS — implementation plan & spike checklist
 
+> **See also `tts-strategy.pdf`** — a wider strategy note covering Take Root and
+> Every Tongue as well. It keeps this plan intact and adds the one case this one
+> sets aside: Luganda and Swahili, where no neural voice exists to run in the
+> browser and pre-rendered audio (Phase 2's optional item here) is the only
+> mechanism that works.
+
 Goal: the best **free** listening experience for all Ochorus content (chapters,
 sermons, long author bios), with a **user-selectable voice** stored in personal
 settings and synced across devices.
