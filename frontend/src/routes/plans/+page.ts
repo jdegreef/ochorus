@@ -3,6 +3,13 @@ import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
 
 /**
+ * Prerender refresh 2026-08-06 (queue job #756, follow-up to PR #855): the
+ * Arabic "The God of All Comfort" landed, which was the last source book
+ * `faith-in-the-fire` needed in ar — `he-holds-my-tomorrows` was already there.
+ * So seed_plans now materializes the (faith-in-the-fire, ar) row, 35 days across
+ * the two books, with the Arabic prose #855 added alongside the book. This touch
+ * re-crawls /ar/plans so the new card appears with its translated title.
+ *
  * Prerender refresh 2026-08-05 (queue job #652, follow-up to PR #834): the
  * Arabic prose for "Humility in 12 Days" (التواضع في اثني عشر يومًا) landed.
  * The row itself already existed — PR #819 published the Arabic Humility, and
