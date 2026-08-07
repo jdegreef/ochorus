@@ -48,6 +48,26 @@ const SAME_AS_ENGLISH_OK = new Set([
 	'a11y_menu'
 ]);
 
+/**
+ * Strings a locale has NOT translated yet — declared, rather than hidden.
+ *
+ * Different in kind from SAME_AS_ENGLISH_OK above, which is "identical to
+ * English forever, and correctly so". This is debt, with a reason and a way out.
+ *
+ * Asserted EXACTLY, in both directions: a fifth untranslated string fails, and
+ * so does fixing one of these four without deleting it from here. A pending
+ * list that only ever grows is how "temporary" becomes permanent — same
+ * two-way ratchet the English-audit baseline uses, for the same reason.
+ */
+const PENDING_TRANSLATION: Record<string, readonly string[]> = {
+	// All four are Scripture (Isa 55:11, Matt 25:36, Col 3:16, John 1:5).
+	// Ochorus quotes Scripture from the trusted Bible text for the locale — for
+	// uk that is Kulish, via Take Root — never from a translator's paraphrase or
+	// anyone's memory. So these are blocked on fetching that text, not on
+	// translation effort, and they carry English until it lands. See #815.
+	uk: ['about_scripture1', 'about_scripture2', 'about_scripture3', 'settings_font_sample']
+};
+
 const toSnake = (key: string) =>
 	key
 		.replace(/([a-z0-9])([A-Z])/g, '$1_$2')
@@ -90,12 +110,23 @@ describe('i18n messages', () => {
 		expect(missing).toEqual([]);
 	});
 
-	it('non-English strings are actually translated (or allowlisted)', () => {
-		for (const l of ['es', 'sw', 'lg', 'pt', 'ar', 'hi', 'uk']) {
-			const untranslated = keysOf(BASE).filter(
-				(k) => !SAME_AS_ENGLISH_OK.has(k) && data[l][k] === data[BASE][k]
-			);
-			expect({ locale: l, untranslated }).toEqual({ locale: l, untranslated: [] });
+	it('non-English strings are actually translated (or declared pending)', () => {
+		// DERIVED from LOCALES, not a second hardcoded list. This check used to
+		// carry its own copy of the locale array, which meant every new locale had
+		// to be remembered in two places to be covered — and href.test.ts already
+		// records what that costs: its locale list was literal, pt was wired in,
+		// and the guard silently stopped covering /pt/. One list, one place.
+		for (const l of LOCALES.filter((x) => x !== BASE)) {
+			const untranslated = keysOf(BASE)
+				.filter((k) => !SAME_AS_ENGLISH_OK.has(k) && data[l][k] === data[BASE][k])
+				.sort();
+			expect(
+				{ locale: l, untranslated },
+				`${l} has untranslated strings that are not declared in PENDING_TRANSLATION. ` +
+					'Translate them, or — if they are blocked on something (a Bible text, a ' +
+					'reviewer) — add them there with the reason. If a listed key is now ' +
+					'translated, delete it from PENDING_TRANSLATION.'
+			).toEqual({ locale: l, untranslated: [...(PENDING_TRANSLATION[l] ?? [])].sort() });
 		}
 	});
 });
