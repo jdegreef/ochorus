@@ -1,22 +1,4 @@
-<svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Way to God">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="0.35" y2="1">
-      <stop offset="0" stop-color="#9a3412"/>
-      <stop offset="1" stop-color="#541c09"/>
-    </linearGradient>
-    <radialGradient id="vig" cx="0.5" cy="0.42" r="0.78">
-      <stop offset="0.55" stop-color="#000000" stop-opacity="0"/>
-      <stop offset="1" stop-color="#000000" stop-opacity="0.34"/>
-    </radialGradient>
-  </defs>
-  <rect width="600" height="800" fill="url(#bg)"/>
-  <rect width="600" height="800" fill="url(#vig)"/>
-  <rect x="26" y="26" width="548" height="748" fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="1.5"/>
-  <text x="300" y="112" text-anchor="middle" fill="#ffffff" fill-opacity="0.86" font-family="Georgia, 'Times New Roman', serif" font-size="23" letter-spacing="4">DWIGHT L. MOODY</text>
-  <text text-anchor="middle" fill="#ffffff" font-family="Georgia, 'Times New Roman', serif" font-weight="600" font-size="60"><tspan x="300" y="375">The Way to</tspan><tspan x="300" y="445">God</tspan></text>
-  <line x1="262" y1="497" x2="338" y2="497" stroke="#ffffff" stroke-opacity="0.55" stroke-width="1.5"/>
-  <text x="300" y="539" text-anchor="middle" fill="#ffffff" fill-opacity="0.82" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="24">And How to Find It</text>
-<g transform="translate(232 676) scale(0.13325) translate(-220.4 -101.0)" fill="#ffffff" fill-opacity="0.82"><g transform="translate(0.000000,784.000000) scale(0.100000,-0.100000)"><path d="M7795 6800 c-27 -4 -77 -19 -110 -33 -33 -14 -97 -31 -143 -37 -58
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="220.4 101.0 1020.6 616.3" fill="currentColor"><g transform="translate(0.000000,784.000000) scale(0.100000,-0.100000)"><path d="M7795 6800 c-27 -4 -77 -19 -110 -33 -33 -14 -97 -31 -143 -37 -58
 -9 -94 -20 -125 -40 -23 -15 -69 -35 -102 -45 -33 -9 -73 -27 -90 -39 -16 -13
 -55 -35 -85 -49 -93 -45 -268 -184 -410 -326 -148 -148 -299 -334 -329 -404
 -11 -24 -32 -59 -49 -78 -16 -19 -34 -50 -41 -70 -6 -20 -25 -51 -41 -69 -16
@@ -171,5 +153,4 @@ m230 -115 c33 -11 78 -24 100 -29 86 -22 223 -152 252 -238 9 -26 24 -57 35
 -2 22 -9 28 -34 30 -26 3 -37 -5 -83 -58z"/><path d="M11768 2468 c-13 -25 -17 -138 -6 -179 10 -33 46 -49 109 -49 95 0
 119 38 45 70 -51 21 -61 36 -70 104 -3 27 -11 55 -17 62 -17 21 -47 17 -61 -8z"/><path d="M6346 1581 c-9 -13 3 -39 20 -45 16 -6 54 10 54 22 0 26 -61 44 -74
 23z"/><path d="M6150 1500 c-27 -17 2 -45 49 -48 31 -2 43 1 48 14 13 33 -59 59 -97
-34z"/></g></g>
-</svg>
+34z"/></g></svg>

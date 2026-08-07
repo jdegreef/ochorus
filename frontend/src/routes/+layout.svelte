@@ -124,7 +124,8 @@
 	{#if !readerUi.focus}
 		<nav class="appnav" aria-label={t('a11y.mainNav')}>
 			<div class="appnav-inner">
-			<a class="brand" href={localizeHref('/')}><BrandMark size={24} /><span>Ochorus</span></a>
+			<!-- No separate wordmark: the logo carries "Ochorus" in the artwork. -->
+			<a class="brand" href={localizeHref('/')}><BrandMark height={36} /></a>
 			<button
 				class="navtoggle"
 				aria-label={t('a11y.menu')}
@@ -199,8 +200,8 @@
 				class="mx-auto grid max-w-5xl grid-cols-2 gap-x-8 gap-y-10 px-5 py-10 sm:py-12 lg:grid-cols-4"
 			>
 				<div class="col-span-2 lg:col-span-1">
-					<div class="flex items-center gap-2 text-display !text-xl !text-text">
-						<BrandMark size={22} /><span>Ochorus</span>
+					<div class="flex items-center text-text">
+						<BrandMark height={34} />
 					</div>
 					<p class="mt-2 max-w-xs text-small text-muted">
 						{t('footer.tagline')}

@@ -31,6 +31,8 @@ the bytes for a fallback surface.
 from __future__ import annotations
 
 import html
+import re
+from pathlib import Path
 
 # The canvas. 3:4, matching BookCover's reserved box so nothing shifts.
 W, H = 600, 800
@@ -97,19 +99,46 @@ def _title_metrics(title: str) -> tuple[int, int]:
     return 34, 22
 
 
-# The Ochorus mark — the same open-book-and-quill as BrandMark.svelte, inlined
-# because an <img>-loaded SVG cannot reference another file.
-_MARK = (
-    '<g transform="translate(263 690) scale(1.6)" fill="none" stroke="#ffffff" '
-    'stroke-opacity="0.75" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">'
-    '<path d="M12.4 13.6C11 8.9 8.2 5.5 4 3.4c4.7-.5 8.2 1.3 10.4 5.6"/>'
-    '<path d="M12.4 13.6l-.4 2.6"/>'
-    '<path d="M3 19.6c3-.8 6-.6 9 .8 3-1.4 6-1.6 9-.8"/>'
-    '<path d="M3 19.6v-5c2-.5 4-.5 6-.1"/>'
-    '<path d="M21 19.6v-5c-2-.5-4-.5-6 0"/>'
-    '<path d="M12 16.2v4.2"/>'
-    "</g>"
-)
+# The Ochorus logo at the foot, read from the real artwork rather than redrawn.
+#
+# This used to be a hand-drawn open-book-and-quill copied from BrandMark.svelte
+# — and it had the quill pointing the wrong way. Two hand-copies of a logo in
+# two languages is how that happens, so both now come from these files. This is
+# the canonical location: the api's Docker image has rootDir `backend/`, so
+# covers.py cannot read anything under `frontend/`; the frontend mirrors it and
+# `brandAssets.test.ts` fails if the copies drift.
+#
+# Inlined (not <img href>) because an <img>-loaded SVG cannot reference another
+# file. The lockup already contains the "Ochorus" wordmark, which is why the
+# letter-spaced OCHORUS that used to sit under the mark is gone — the printed
+# ministry covers carry the lockup alone.
+_BRAND_DIR = Path(__file__).resolve().parent / "data" / "brand"
+
+
+def _logo(width: int, x: int, y: int, opacity: float) -> str:
+    """The lockup as a positioned group, scaled to `width` px."""
+    src = (_BRAND_DIR / "ochorus-lockup.svg").read_text()
+    vb = re.search(r'viewBox="([-\d.]+) ([-\d.]+) ([-\d.]+) ([-\d.]+)"', src)
+    vx, vy, vw, vh = (float(g) for g in vb.groups())
+    inner = re.search(r"<svg[^>]*>(.*)</svg>", src, re.S).group(1)
+    k = width / vw
+    # Translate the viewBox origin out, then scale — the artwork's own coords
+    # start well away from 0,0.
+    return (
+        f'<g transform="translate({x} {y}) scale({k:.5f}) translate({-vx} {-vy})" '
+        f'fill="#ffffff" fill-opacity="{opacity}">{inner}</g>'
+    )
+
+
+# Centred at the foot, matching where the printed covers put it. Positioned off
+# the FRAME rather than the canvas: the hairline sits at y=26..H-26, and a logo
+# placed by canvas coordinates crossed it. `_LOGO_BOTTOM` keeps a clear gap.
+_LOGO_ASPECT = 1020.6 / 616.3  # from the lockup's viewBox
+_LOGO_W = 136
+_LOGO_H = _LOGO_W / _LOGO_ASPECT
+_FRAME_INSET = 26
+_LOGO_BOTTOM = H - _FRAME_INSET - 16
+_MARK = _logo(_LOGO_W, (W - _LOGO_W) // 2, round(_LOGO_BOTTOM - _LOGO_H), 0.82)
 
 
 def palette_from_artwork(path) -> str:
@@ -222,7 +251,6 @@ def build_svg(
   <line x1="{W / 2 - 38:.0f}" y1="{rule_y:.0f}" x2="{W / 2 + 38:.0f}" y2="{rule_y:.0f}" stroke="#ffffff" stroke-opacity="0.55" stroke-width="1.5"/>
   {sub}
 {_MARK}
-  <text x="{W / 2:.0f}" y="754" text-anchor="middle" fill="#ffffff" fill-opacity="0.7" font-family="{FONT_DEFAULT}" font-size="19" letter-spacing="6">OCHORUS</text>
 </svg>
 """
 
@@ -297,6 +325,5 @@ def build_art_svg(
   <line x1="{W / 2 - 38:.0f}" y1="{rule_y:.0f}" x2="{W / 2 + 38:.0f}" y2="{rule_y:.0f}" stroke="#ffffff" stroke-opacity="0.7" stroke-width="1.5"/>
   {sub}
 {_MARK}
-  <text x="{W / 2:.0f}" y="754" text-anchor="middle" fill="#ffffff" fill-opacity="0.78" font-family="{FONT_DEFAULT}" font-size="19" letter-spacing="6">OCHORUS</text>
 </svg>
 """

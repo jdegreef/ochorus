@@ -458,15 +458,14 @@ nav.appnav .navlinks a.active {
 	background: var(--accent-soft);
 	font-weight: 600;
 }
+/* The logo supplies its own wordmark, so this is a frame for artwork, not a
+   text style — the display font / size / gap that used to set "Ochorus"
+   alongside the mark are gone with it. `color` still matters: the SVG is
+   fill="currentColor". */
 nav.appnav .brand {
-	font-family: var(--font-display);
-	font-weight: 600;
-	font-size: 1.15rem;
 	color: var(--text);
 	display: inline-flex;
 	align-items: center;
-	gap: 0.4rem;
-	white-space: nowrap;
 	margin-inline-end: 0.4rem;
 }
 nav.appnav .brand:hover {
