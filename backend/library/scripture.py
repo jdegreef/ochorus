@@ -329,6 +329,20 @@ def misattributed(quote: str, ref_text: str) -> str | None:
         return None
     if not cited_ids:
         return None
+    # A comma list is the third way these citations name more than one verse
+    # ("Matt. 7:13,14", "Rom. iii. 10, 23", "Psa. 126:5,6") and pythonbible
+    # keeps only the first, so a quotation of the second verse read as a
+    # misprint. Same fault as the en-dash above; found the same way, by reading
+    # the corpus sweep against the actual fixture text.
+    extra = []
+    for part in ref_text.split(",")[1:]:
+        part = part.strip().rstrip(".")
+        if part.isdigit():
+            try:
+                extra.append(bible.get_verse_id(ref.book, ref.start_chapter, int(part)))
+            except Exception:
+                continue
+    cited_ids = tuple(cited_ids) + tuple(extra)
 
     q = _tokens(quote)
     # Too short to judge: "Fear not" carries two content words and appears in

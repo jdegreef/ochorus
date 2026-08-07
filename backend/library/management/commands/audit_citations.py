@@ -41,7 +41,12 @@ from library.english_audit import _fixture_records
 PAIR = re.compile(
     r"[“\"]([^”\"]{12,700})[”\"][\s,.—-]*\(?\s*"
     r"((?:[1-3]\s+)?[A-Z][A-Za-z]{1,11}\.?\s+[ivxlcIVXLC\d]+[.:]\s*\d+"
-    r"(?:\s*[-–]\s*\d+)?)\s*\.?\)?"
+    # Ranges AND comma lists — "Matt. 7:13,14", "Rom. iii. 10, 23". Truncating
+    # at the first verse hands `misattributed` a citation narrower than the one
+    # the book printed, and a quotation of the second verse then reads as a
+    # misprint. This regex was the reason the comma fix in scripture.py changed
+    # nothing on its own.
+    r"(?:\s*[-–—,]\s*\d+)*)\s*\.?\)?"
 )
 TAG = re.compile(r"<[^>]+>")
 
