@@ -69,7 +69,7 @@ describe('withTrailingSlash', () => {
  * Skipped when there is no build/ — `npm run test` is run without one locally.
  */
 import { locales } from '$lib/paraglide/runtime';
-import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 
 // Resolve from the working directory (vitest runs with cwd = frontend/, as CI
@@ -86,11 +86,18 @@ const BARE_DETAIL = new RegExp(
 	'g'
 );
 
+// `withFileTypes` rather than a `statSync` per entry: the directory read
+// already knows what each entry is, and asking again costs a syscall per file.
+// Over the built site (~2,450 HTML files, climbing with the library) the walk
+// measured 1,000ms against 35ms — a 29x difference, and a fifth of the old 5s
+// budget burned before a single file was read. Not the whole flake story on its
+// own (see the timeout note below), but there is no reason to pay it. Same
+// pattern as langChoice.test.ts.
 function htmlFiles(dir: string, out: string[] = []): string[] {
-	for (const e of readdirSync(dir)) {
-		const p = join(dir, e);
-		if (statSync(p).isDirectory()) htmlFiles(p, out);
-		else if (e.endsWith('.html')) out.push(p);
+	for (const e of readdirSync(dir, { withFileTypes: true })) {
+		const p = join(dir, e.name);
+		if (e.isDirectory()) htmlFiles(p, out);
+		else if (e.name.endsWith('.html')) out.push(p);
 	}
 	return out;
 }
@@ -100,7 +107,17 @@ describe.skipIf(!BUILD)('built output', () => {
 	// from the API, so a hand-written link in a biography is caught here exactly
 	// like one in a template. That is how the Swahili and Luganda copies of the
 	// John Wesley cross-link were found (ochorus#466).
-	it('contains no bare (non-slash) detail-route links', () => {
+	// The load-bearing half of the flake fix. Reading and matching the built
+	// HTML — ~87MB across ~2,450 files — costs about 0.4s against a warm page
+	// cache and about 8s against a cold one, so the default 5s was a cliff the
+	// faster walk above does NOT clear on its own: the first run on a fresh
+	// checkout or a CI runner is the cold case, every time.
+	//
+	// Unlike every other test here this one's cost scales with the LIBRARY (one
+	// page per work per locale), so it also gets slower as the project succeeds,
+	// while competing for disk with 40 other test files in parallel. 30s is well
+	// clear of the cold measurement and still fails loudly on a genuine hang.
+	it('contains no bare (non-slash) detail-route links', { timeout: 30_000 }, () => {
 		const offenders: string[] = [];
 		for (const f of htmlFiles(BUILD)) {
 			const hits = readFileSync(f, 'utf8').match(BARE_DETAIL);
