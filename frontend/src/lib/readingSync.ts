@@ -9,6 +9,7 @@ import {
 	PLANS_KEY,
 	LAST_SYNC_KEY,
 	READING_DATA_KEYS,
+	SIGN_OUT_DATA_KEYS,
 	migrateLegacySermonState,
 	workKey,
 	workSlugKey,
@@ -289,30 +290,37 @@ class ReadingSync {
 
 	/**
 	 * Sign-out teardown. Cancels any in-flight debounced pushes (they'd fire as
-	 * unauthenticated 401s) and wipes the reader's own data from localStorage —
-	 * on a shared device, anything left behind would be merged into the next
-	 * account that signs in (`mergeOnSignIn`). Device preferences (theme, font,
+	 * unauthenticated 401s) and wipes the reader's *server-backed* data from
+	 * localStorage — on a shared device, anything left behind would be merged
+	 * into the next account that signs in (`mergeOnSignIn`).
+	 *
+	 * Uses SIGN_OUT_DATA_KEYS, NOT the full set: a store with no server copy
+	 * (bookmarks) must not be destroyed by a routine sign-out/expiry, or the
+	 * reader loses it for good. Those are cleared only by the explicit "clear
+	 * reading data" control (`clearDeviceData`). Device preferences (theme, font,
 	 * language) deliberately survive; they aren't identity data.
 	 */
 	clearOnSignOut() {
-		this.clearDeviceData();
+		this.#wipe(SIGN_OUT_DATA_KEYS);
 	}
 
 	/**
-	 * Wipe the reader's own data (positions, highlights, notes, bookmarks,
-	 * favorites, sync timestamp) from this device — shared by the sign-out
-	 * teardown and the settings "clear reading data" control. Cancels in-flight
-	 * debounced pushes first (they'd fire as unauthenticated 401s), then removes
-	 * every reading-data key. Device preferences (theme, font, language)
-	 * deliberately survive; they aren't identity data. Note: for a signed-in
-	 * reader this clears the local cache only — the next sync restores from the
-	 * account (the settings copy says so).
+	 * Wipe ALL of the reader's own data from this device — the settings "clear
+	 * reading data" control. Unlike the sign-out teardown this also clears stores
+	 * with no server backup (bookmarks), because the reader asked to erase
+	 * everything. Device preferences (theme, font, language) survive.
 	 */
 	clearDeviceData() {
+		this.#wipe(READING_DATA_KEYS);
+	}
+
+	/** Cancel in-flight debounced pushes (they'd 401 after sign-out), remove the
+	 * given keys, and tell open views the cache was emptied underneath them. */
+	#wipe(keys: readonly string[]) {
 		if (!browser) return;
 		for (const timer of this.#timers.values()) clearTimeout(timer);
 		this.#timers.clear();
-		for (const key of READING_DATA_KEYS) localStorage.removeItem(key);
+		for (const key of keys) localStorage.removeItem(key);
 		// Let open views (reader marks, continue-reading cards, plan pages) know
 		// the cache was emptied underneath them.
 		window.dispatchEvent(new CustomEvent('ochorus:sync'));

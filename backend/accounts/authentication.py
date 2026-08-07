@@ -24,6 +24,28 @@ User = get_user_model()
 logger = logging.getLogger(__name__)
 
 
+def _claim_true(value) -> bool:
+    """A JWT boolean claim, tolerant of the string form some providers emit."""
+    return value is True or (isinstance(value, str) and value.strip().lower() == "true")
+
+
+def token_email_is_verified(payload) -> bool:
+    """True only if the Supabase token positively asserts the email is verified.
+
+    Supabase carries this in ``user_metadata.email_verified`` (and, on newer
+    projects, a top-level ``email_verified``). Absent or false → not verified, so
+    the address must NOT be trusted for authorization: with email confirmation
+    disabled anyone could sign up claiming the admin's address, and the admin
+    allowlist keys on the address alone (see ``accounts.permissions``).
+    """
+    if not isinstance(payload, dict):
+        return False
+    if _claim_true(payload.get("email_verified")):
+        return True
+    meta = payload.get("user_metadata")
+    return isinstance(meta, dict) and _claim_true(meta.get("email_verified"))
+
+
 class SupabaseJWTAuthentication(authentication.BaseAuthentication):
     keyword = "Bearer"
     _jwks_client: jwt.PyJWKClient | None = None

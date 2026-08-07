@@ -62,6 +62,7 @@
   "search_tagline": "Tafuta kitabu, mwandishi, mada, au mstari wa maandishi popote katika maktaba.",
   "search_meta_description": "Tafuta katika maktaba ya Ochorus — vitabu vya Kikristo vya kale, mahubiri, waandishi na mada. Tafuta maandishi kamili ya kila kazi, bila malipo.",
   "search_no_results": "Hakuna matokeo ya",
+  "search_load_error": "Hatukuweza kufanya utafutaji huo kwa sasa.",
   "search_prompt": "Andika angalau herufi mbili ili kutafuta.",
   "search_recent": "Utafutaji wa hivi karibuni",
   "search_clear_recent": "Futa",

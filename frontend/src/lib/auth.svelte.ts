@@ -69,6 +69,16 @@ class Auth {
 			if (session && !wasSignedIn) {
 				this.#pullProfile();
 				readingSync.mergeOnSignIn();
+			} else if (!session && wasSignedIn) {
+				// The session ended for ANY reason — token expiry/revocation, a
+				// sign-out in another tab, a password change — not only the explicit
+				// signOut() button. Wipe this reader's data from the device so it
+				// isn't merged into the next account on a shared browser. Idempotent,
+				// so signOut() calling clearOnSignOut() too is harmless.
+				clearTimeout(this.#pushTimer);
+				this.displayName = '';
+				this.isAdmin = false;
+				readingSync.clearOnSignOut();
 			}
 		});
 	}

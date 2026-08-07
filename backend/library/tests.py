@@ -2660,6 +2660,37 @@ class ContemporizeCommandTests(TestCase):
         mb = Book.objects.get(slug="humility", language="en-modern")
         self.assertEqual(mb.source_type, "ai_reviewed")
 
+    def test_new_chapters_regate_an_approved_edition(self):
+        # Approve the modern edition, then add a chapter to the English source
+        # and re-run: the new chapter is unreviewed AI text, so the edition must
+        # drop back to ai_unreviewed rather than silently staying "approved".
+        from django.core.management import call_command
+
+        self._run()
+        call_command("approve_translation", "humility", language="en-modern")
+        Chapter.objects.create(
+            book=self.book,
+            order=2,
+            title="A Second Call",
+            body_html="<p>Thou shalt walk humbly still.</p>",
+        )
+
+        self._run()  # no --force; only the new chapter 2 is contemporized
+
+        mb = Book.objects.get(slug="humility", language="en-modern")
+        self.assertEqual(mb.source_type, "ai_unreviewed")
+        self.assertEqual(mb.chapters.count(), 2)
+
+    def test_no_regate_when_nothing_new_is_translated(self):
+        # Re-running with no new chapters must NOT walk back an approval.
+        from django.core.management import call_command
+
+        self._run()
+        call_command("approve_translation", "humility", language="en-modern")
+        self._run()  # nothing to do — chapter 1 already exists
+        mb = Book.objects.get(slug="humility", language="en-modern")
+        self.assertEqual(mb.source_type, "ai_reviewed")
+
     def test_api_exposes_modern_edition_flags(self):
         # Before an edition exists, the English book advertises none.
         res = self.client.get("/api/library/books/humility/?language=en")

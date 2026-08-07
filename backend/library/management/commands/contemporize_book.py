@@ -126,6 +126,19 @@ class Command(BaseCommand):
             )
             self.stdout.write(self.style.SUCCESS(f"  ✓ {title[:60]}"))
 
+        # New/updated chapters in an already-approved edition mean it again holds
+        # unreviewed AI text — re-gate it so the "awaiting native review" badge
+        # returns. (The metadata branch only sets source_type on create/--force.)
+        if plan and target.source_type == Book.SourceType.AI_REVIEWED:
+            target.source_type = Book.SourceType.AI_UNREVIEWED
+            target.save(update_fields=["source_type"])
+            self.stdout.write(
+                self.style.WARNING(
+                    "  ⚠ chapters changed in an approved edition — reset to "
+                    "ai_unreviewed; re-review required"
+                )
+            )
+
         tail = (
             f" ({total_in} input / {total_out} output tokens)" if mode == "careful" else ""
         )

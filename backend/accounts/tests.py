@@ -108,10 +108,15 @@ class OriginUrlTests(TestCase):
         self.assertEqual(origin_url("  "), "")
 
 
-def _request(remote_addr: str):
+def _request(remote_addr: str, *, verified: bool | None = None):
     from django.test import RequestFactory
 
-    return RequestFactory().get("/api/admin/stats/", REMOTE_ADDR=remote_addr)
+    req = RequestFactory().get("/api/admin/stats/", REMOTE_ADDR=remote_addr)
+    if verified is not None:
+        # DRF puts the decoded JWT on request.auth; mimic a token that does (or
+        # does not) assert the email is verified.
+        req.auth = {"email_verified": verified}
+    return req
 
 
 class IsAdminUserTests(TestCase):
@@ -129,7 +134,9 @@ class IsAdminUserTests(TestCase):
             is_admin_user(User(email="someone@example.com"), _request("203.0.113.9"))
         )
         self.assertTrue(
-            is_admin_user(User(email="admin@example.com"), _request("203.0.113.9"))
+            is_admin_user(
+                User(email="admin@example.com"), _request("203.0.113.9", verified=True)
+            )
         )
 
     @override_settings(DEBUG=True, ADMIN_EMAILS=set())
@@ -137,16 +144,47 @@ class IsAdminUserTests(TestCase):
         self.assertFalse(is_admin_user(User(email="")))
 
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
-    def test_allowlisted_email_allowed(self):
-        self.assertTrue(is_admin_user(User(email="admin@example.com")))
+    def test_allowlisted_verified_email_allowed(self):
+        self.assertTrue(
+            is_admin_user(
+                User(email="admin@example.com"), _request("203.0.113.9", verified=True)
+            )
+        )
 
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
     def test_case_insensitive(self):
-        self.assertTrue(is_admin_user(User(email="Admin@Example.com")))
+        self.assertTrue(
+            is_admin_user(
+                User(email="Admin@Example.com"), _request("203.0.113.9", verified=True)
+            )
+        )
+
+    @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
+    def test_allowlisted_but_unverified_email_denied(self):
+        # The core fix: an allowlisted address whose token does NOT assert the
+        # email is verified must not be treated as admin (email-confirmation-off
+        # takeover). Verify=False models exactly that token.
+        self.assertFalse(
+            is_admin_user(
+                User(email="admin@example.com"), _request("203.0.113.9", verified=False)
+            )
+        )
+
+    @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
+    def test_allowlisted_without_a_token_denied(self):
+        # No request/token at all (e.g. an internal call) never counts as admin.
+        self.assertFalse(is_admin_user(User(email="admin@example.com")))
+        self.assertFalse(
+            is_admin_user(User(email="admin@example.com"), _request("203.0.113.9"))
+        )
 
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
     def test_other_email_denied(self):
-        self.assertFalse(is_admin_user(User(email="someone@example.com")))
+        self.assertFalse(
+            is_admin_user(
+                User(email="someone@example.com"), _request("203.0.113.9", verified=True)
+            )
+        )
 
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
     def test_blank_email_denied(self):
