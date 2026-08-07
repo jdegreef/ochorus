@@ -158,8 +158,15 @@
 					     split is deliberate (see advertised-locales.ts) and this component
 					     is the half that makes it honest: without it, ar and hi were
 					     switchable nowhere, despite being fully wired interfaces. It was
-					     written for this slot and then never mounted. -->
-					<LanguagePicker />
+					     written for this slot and then never mounted.
+
+					     Full-width bars only. Below 960px the links stop being centred
+					     and flow inline, and a fourth control crowds them; below 760px
+					     the whole menu is a drawer, where a language list is the least
+					     likely thing someone opened it for. Nobody is stranded: Settings
+					     carries a language select over the same `lang.available` list,
+					     so every locale — ar and hi included — stays reachable. -->
+					<div class="navlang"><LanguagePicker /></div>
 					<!-- Quick settings: gear opens a theme + reading-width popover (the
 					     full Settings page is still linked from the account menu). -->
 					<QuickSettings />
