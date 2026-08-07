@@ -112,6 +112,53 @@ _MARK = (
 )
 
 
+def palette_from_artwork(path) -> str:
+    """The plate colour for a translated edition, taken from the ENGLISH
+    edition's artwork.
+
+    A book whose designed cover is a dark magnolia photograph should not have
+    its Swahili edition come out in the default indigo — the two are the same
+    book, and the shelf should say so. This picks one colour out of the artwork
+    and hands it to ``build_svg``.
+
+    Quantised, not averaged: the mean of a sunset and a silhouette is mud. Of
+    the eight quantised buckets it prefers one that is both common and actually
+    coloured, ignoring near-black and near-white, which carry no hue to inherit.
+
+    The clamps are not cosmetic. ``build_svg`` darkens the colour to 55% down a
+    diagonal gradient AND lays a vignette over that, so a colour sampled at the
+    artwork's own lightness lands as near-black on the finished plate — the
+    first pass returned five visibly different hex values that all rendered as
+    the same dark slab. The floors are what let the hue survive the treatment.
+
+    Pillow is a dev-group dependency: this runs on a developer's machine as a
+    curation step, and the committed SVGs are what production serves. Imported
+    inside the function so the API image, which has no Pillow, can still import
+    this module for ``build_svg``.
+    """
+    import colorsys
+
+    from PIL import Image
+
+    im = Image.open(path).convert("RGB").resize((80, 107), Image.LANCZOS)
+    quantised = im.quantize(colors=8, method=Image.MEDIANCUT)
+    palette = quantised.getpalette()
+    best, best_score = (59, 91, 219), -1.0
+    for count, index in sorted(quantised.getcolors(), reverse=True):
+        rgb = tuple(palette[index * 3 : index * 3 + 3])
+        _, lightness, saturation = colorsys.rgb_to_hls(*[c / 255 for c in rgb])
+        usable = 0.12 < lightness < 0.62
+        score = count * (0.35 + saturation) * (1.0 if usable else 0.35)
+        if score > best_score:
+            best, best_score = rgb, score
+
+    hue, lightness, saturation = colorsys.rgb_to_hls(*[c / 255 for c in best])
+    lightness = min(max(lightness, 0.30), 0.46)
+    saturation = min(max(saturation, 0.30), 0.72)
+    r, g, b = colorsys.hls_to_rgb(hue, lightness, saturation)
+    return "#%02x%02x%02x" % (round(r * 255), round(g * 255), round(b * 255))
+
+
 def build_svg(
     title: str,
     subtitle: str,
