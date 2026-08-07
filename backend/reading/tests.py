@@ -570,29 +570,45 @@ class MalformedPayloadTests(TestCase):
         res = self.client.post("/api/reading/merge/", [1, 2, 3], format="json")
         self.assertEqual(res.status_code, 200)
 
-    def test_put_endpoints_tolerate_a_non_dict_body(self):
-        # A bare array/scalar body must not AttributeError -> 500.
-        self.assertEqual(
-            self.client.put(
-                "/api/reading/progress/humility/", [1, 2, 3], format="json"
-            ).status_code,
-            200,
+    def test_put_endpoints_reject_a_non_dict_body_without_losing_data(self):
+        # A bare array/scalar body must be a clean 400 — NOT a 500, and crucially
+        # NOT coerced to {} (which for marks means "delete" and for progress means
+        # "reset to chapter 1"). Existing data must survive the malformed request.
+        ReadingProgress.objects.create(
+            profile=self.profile, kind="book", book_slug="humility",
+            language="en", chapter_order=15, paragraph_index=4,
         )
-        self.assertEqual(
-            self.client.put(
-                "/api/reading/marks/humility/1/", [1, 2, 3], format="json"
-            ).status_code,
-            200,
+        ChapterMarks.objects.create(
+            profile=self.profile, kind="book", book_slug="humility",
+            chapter_order=1, marks=[mark(0, 1, 5)],
         )
-        self.assertEqual(
-            self.client.put(
-                "/api/reading/plan/school-of-prayer/", [1, 2, 3], format="json"
-            ).status_code,
-            200,
+        ChapterMarks.objects.create(
+            profile=self.profile, kind="sermon", book_slug="a-sermon",
+            chapter_order=1, marks=[mark(0, 2, 6)],
         )
-        self.assertEqual(
-            self.client.put(
-                "/api/reading/sermon-marks/a-sermon/", [1, 2, 3], format="json"
-            ).status_code,
-            200,
+
+        for url in (
+            "/api/reading/progress/humility/",
+            "/api/reading/marks/humility/1/",
+            "/api/reading/plan/school-of-prayer/",
+            "/api/reading/sermon-marks/a-sermon/",
+        ):
+            self.assertEqual(
+                self.client.put(url, [1, 2, 3], format="json").status_code,
+                400,
+                msg=url,
+            )
+
+        # Nothing was deleted or reset by the malformed requests.
+        prog = ReadingProgress.objects.get(profile=self.profile, book_slug="humility")
+        self.assertEqual(prog.chapter_order, 15)
+        self.assertTrue(
+            ChapterMarks.objects.filter(
+                profile=self.profile, kind="book", book_slug="humility", chapter_order=1
+            ).exists()
+        )
+        self.assertTrue(
+            ChapterMarks.objects.filter(
+                profile=self.profile, kind="sermon", book_slug="a-sermon"
+            ).exists()
         )

@@ -12,6 +12,7 @@ from __future__ import annotations
 
 from datetime import date, datetime, timezone
 
+from rest_framework.exceptions import ValidationError
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -68,8 +69,22 @@ def _clamp_int(value, default=0, low=0) -> int:
 
 def _as_dict(data) -> dict:
     """A request body coerced to a dict — a JSON array/scalar body (a stale or
-    buggy client shape) becomes ``{}`` instead of 500ing on ``.get``."""
+    buggy client shape) becomes ``{}`` instead of 500ing on ``.get``. Only safe
+    where an empty body is a harmless no-op (the merge, whose sections then
+    default to ``[]``); see ``_dict_body`` for the mutating single-resource PUTs.
+    """
     return data if isinstance(data, dict) else {}
+
+
+def _dict_body(request) -> dict:
+    """The PUT body as a dict, or a 400. A malformed (array/scalar) body must be
+    *rejected*, not coerced to ``{}``: for marks an empty body means "delete this
+    chapter's marks" and for progress it means "write default position", so
+    coercing would turn a garbage request into silent data loss (a wiped
+    highlight, a reset reading position) instead of a clean error."""
+    if isinstance(request.data, dict):
+        return request.data
+    raise ValidationError("Expected a JSON object.")
 
 
 # Generous upper bound on a plan's day number — well beyond any real plan
@@ -165,7 +180,7 @@ class ProgressView(APIView):
 
     def put(self, request, slug):
         profile = _profile(request)
-        data = _as_dict(request.data)
+        data = _dict_body(request)
         kind = _kind_or_none(request.query_params.get("kind") or data.get("kind"))
         if kind is None:
             return Response({"detail": "Unknown kind."}, status=400)
@@ -189,7 +204,7 @@ class MarksView(APIView):
 
     def put(self, request, slug, order):
         profile = _profile(request)
-        data = _as_dict(request.data)
+        data = _dict_body(request)
         kind = _kind_or_none(request.query_params.get("kind") or data.get("kind"))
         if kind is None:
             return Response({"detail": "Unknown kind."}, status=400)
@@ -229,7 +244,7 @@ class SermonMarksView(APIView):
 
     def put(self, request, slug):
         profile = _profile(request)
-        data = _as_dict(request.data)
+        data = _dict_body(request)
         marks = _marks_from_payload(data)
 
         if not marks:
@@ -289,7 +304,7 @@ class PlanProgressView(APIView):
 
     def put(self, request, slug):
         profile = _profile(request)
-        data = _as_dict(request.data)
+        data = _dict_body(request)
         started = _ms_to_dt(data.get("started_at")) or datetime.now(timezone.utc)
         obj = _upsert_plan_progress(
             profile, slug, _clean_done(data.get("done")), started
