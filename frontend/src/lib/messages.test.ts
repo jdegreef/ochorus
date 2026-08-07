@@ -45,7 +45,27 @@ const SAME_AS_ENGLISH_OK = new Set([
 	'settings_theme_sepia',
 	// "Menu" is the natural UI term in Portuguese too (Spanish keeps its accent,
 	// "Menú", so this only exempts the pt collision).
-	'a11y_menu'
+	'a11y_menu',
+	// TEMPORARY — these four are scripture, and Ukrainian is the only locale
+	// still carrying the English. They are Isaiah 55:11, Matthew 25:36,
+	// Colossians 3:16 and John 1:5, and the Ukrainian edition Ochorus uses is
+	// Kulish, which is served from api.takeroot.bible — unreachable from CI and
+	// from the environments these sessions run in. That is the same blocker
+	// holding PR #815 (Ukrainian as the eighth UI locale).
+	//
+	// Allowlisted rather than machine-translated on purpose: inventing scripture
+	// to satisfy a test is the one repair this project must not make. Until the
+	// Kulish text is sourced, a Ukrainian reader sees these four verses in
+	// English — visible and honest, where a fabricated rendering would not be.
+	//
+	// Delete these four the moment the text lands. The allowlist is keyed by
+	// message name and not by locale, so while they sit here NO locale is
+	// checked for them — the exemption is wider than the problem, which is
+	// another reason not to leave it long.
+	'about_scripture1',
+	'about_scripture2',
+	'about_scripture3',
+	'settings_font_sample'
 ]);
 
 const toSnake = (key: string) =>
