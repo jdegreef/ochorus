@@ -62,6 +62,7 @@
   "search_tagline": "Zuula ekitabo, omuwandiisi, omulamwa, oba olunyiriri lw'ebiwandiike mu tterekero lyonna.",
   "search_meta_description": "Noonya mu tterekero lya Ochorus — ebitabo by'Ekikristaayo eby'edda, okubuulira, abawandiisi n'emilamwa. Noonya ebiwandiike byonna awatali kusasula.",
   "search_no_results": "Tewali bizuuliddwa ku",
+  "search_load_error": "Tetusobodde kunoonya kati.",
   "search_prompt": "Wandiika waakiri ennukuta bbiri okunoonya.",
   "search_recent": "Ebinoonyezebbwa gy'oyita",
   "search_clear_recent": "Sangula",

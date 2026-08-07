@@ -21,6 +21,8 @@ from __future__ import annotations
 from django.conf import settings
 from rest_framework import permissions
 
+from .authentication import token_email_is_verified
+
 #: Client addresses that count as "the developer's own machine".
 _LOOPBACK_ADDRS = frozenset({"127.0.0.1", "::1"})
 
@@ -37,12 +39,20 @@ def is_admin_user(user, request=None) -> bool:
 
     Under ``DEBUG`` the allowlist is skipped for loopback requests only (the
     local-dev convenience). Everywhere else — including any remote request on a
-    DEBUG server — the user's email must be in ``settings.ADMIN_EMAILS``.
+    DEBUG server — the user's email must be in ``settings.ADMIN_EMAILS`` *and*
+    the token must assert that email is verified (so a disabled email-confirmation
+    setting can't let anyone claim the admin's address).
     """
     if settings.DEBUG and _is_loopback(request):
         return True
     email = (getattr(user, "email", "") or "").strip().lower()
-    return bool(email) and email in settings.ADMIN_EMAILS
+    if not (email and email in settings.ADMIN_EMAILS):
+        return False
+    # An allowlisted address only grants admin when the token proves the address
+    # is *verified*. Otherwise — e.g. if Supabase email confirmation is disabled —
+    # anyone could register claiming the admin's email and inherit admin. DRF puts
+    # the decoded JWT on ``request.auth``; absent (no token) → not verified.
+    return token_email_is_verified(getattr(request, "auth", None))
 
 
 class IsAdminEmail(permissions.BasePermission):

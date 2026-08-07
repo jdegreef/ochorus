@@ -66,6 +66,12 @@ def _clamp_int(value, default=0, low=0) -> int:
         return default
 
 
+def _as_dict(data) -> dict:
+    """A request body coerced to a dict — a JSON array/scalar body (a stale or
+    buggy client shape) becomes ``{}`` instead of 500ing on ``.get``."""
+    return data if isinstance(data, dict) else {}
+
+
 # Generous upper bound on a plan's day number — well beyond any real plan
 # (the longest today is ~36 days), so it never drops a legitimate completion,
 # while still bounding the accepted set so a malformed payload can't store an
@@ -159,7 +165,7 @@ class ProgressView(APIView):
 
     def put(self, request, slug):
         profile = _profile(request)
-        data = request.data
+        data = _as_dict(request.data)
         kind = _kind_or_none(request.query_params.get("kind") or data.get("kind"))
         if kind is None:
             return Response({"detail": "Unknown kind."}, status=400)
@@ -183,7 +189,7 @@ class MarksView(APIView):
 
     def put(self, request, slug, order):
         profile = _profile(request)
-        data = request.data
+        data = _as_dict(request.data)
         kind = _kind_or_none(request.query_params.get("kind") or data.get("kind"))
         if kind is None:
             return Response({"detail": "Unknown kind."}, status=400)
@@ -223,7 +229,7 @@ class SermonMarksView(APIView):
 
     def put(self, request, slug):
         profile = _profile(request)
-        data = request.data
+        data = _as_dict(request.data)
         marks = _marks_from_payload(data)
 
         if not marks:
@@ -283,7 +289,7 @@ class PlanProgressView(APIView):
 
     def put(self, request, slug):
         profile = _profile(request)
-        data = request.data
+        data = _as_dict(request.data)
         started = _ms_to_dt(data.get("started_at")) or datetime.now(timezone.utc)
         obj = _upsert_plan_progress(
             profile, slug, _clean_done(data.get("done")), started
@@ -318,12 +324,15 @@ class MergeView(APIView):
 
     def post(self, request):
         profile = _profile(request)
-        self._merge_progress(profile, request.data.get("progress") or [])
-        self._merge_marks(profile, request.data.get("marks") or [])
-        self._merge_sermon_marks(profile, request.data.get("sermon_marks") or [])
-        self._merge_favorites(profile, request.data.get("favorites") or [])
-        self._merge_activity(profile, request.data.get("activity") or [])
-        self._merge_plan_progress(profile, request.data.get("plan_progress") or [])
+        # A JSON array/scalar body (a stale client shape) must not 500 the whole
+        # sign-in reconciliation; each helper also guards its own section.
+        data = _as_dict(request.data)
+        self._merge_progress(profile, data.get("progress") or [])
+        self._merge_marks(profile, data.get("marks") or [])
+        self._merge_sermon_marks(profile, data.get("sermon_marks") or [])
+        self._merge_favorites(profile, data.get("favorites") or [])
+        self._merge_activity(profile, data.get("activity") or [])
+        self._merge_plan_progress(profile, data.get("plan_progress") or [])
         return Response(_serialize_state(profile))
 
     def _merge_plan_progress(self, profile, incoming):
@@ -356,8 +365,14 @@ class MergeView(APIView):
 
     def _merge_favorites(self, profile, incoming):
         """Union: a heart set on either side survives (like marks, nothing a
-        reader saved offline is ever dropped). Unknown kinds are skipped."""
+        reader saved offline is ever dropped). Unknown kinds are skipped; a
+        non-list is ignored and non-dict rows skipped, so a malformed bundle
+        can't 500 the sign-in reconciliation."""
+        if not isinstance(incoming, list):
+            return
         for row in incoming:
+            if not isinstance(row, dict):
+                continue
             kind = row.get("kind")
             slug = row.get("slug")
             if not slug or kind not in FavoriteKind.values:
@@ -365,8 +380,12 @@ class MergeView(APIView):
             Favorite.objects.get_or_create(profile=profile, kind=kind, slug=slug)
 
     def _merge_progress(self, profile, incoming):
+        if not isinstance(incoming, list):
+            return
         existing = {(p.kind, p.book_slug): p for p in profile.progress.all()}
         for row in incoming:
+            if not isinstance(row, dict):
+                continue
             slug = row.get("book_slug")
             kind = _kind_or_none(row.get("kind"))
             if not slug or kind is None:
@@ -388,10 +407,14 @@ class MergeView(APIView):
             )
 
     def _merge_marks(self, profile, incoming):
+        if not isinstance(incoming, list):
+            return
         existing = {
             (m.kind, m.book_slug, m.chapter_order): m for m in profile.marks.all()
         }
         for row in incoming:
+            if not isinstance(row, dict):
+                continue
             slug = row.get("book_slug")
             kind = _kind_or_none(row.get("kind"))
             order = _clamp_int(row.get("chapter_order"), default=-1, low=0)
@@ -422,8 +445,13 @@ class MergeView(APIView):
 
     def _merge_sermon_marks(self, profile, incoming):
         """COMPAT: old bundles send sermon marks in their own payload field —
-        fold them into ChapterMarks(kind="sermon") so nothing is dropped."""
+        fold them into ChapterMarks(kind="sermon") so nothing is dropped. A
+        non-list is ignored and non-dict rows skipped."""
+        if not isinstance(incoming, list):
+            return
         for row in incoming:
+            if not isinstance(row, dict):
+                continue
             slug = row.get("sermon_slug")
             if not slug:
                 continue

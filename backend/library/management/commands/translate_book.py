@@ -129,6 +129,20 @@ class Command(BaseCommand):
                 )
             )
 
+        # If new/updated chapters landed in a book a native reviewer had already
+        # approved, that book now contains unreviewed AI text — re-gate it so the
+        # "awaiting native review" badge returns. (The metadata branch above only
+        # sets source_type when the book is first created or --force'd.)
+        if plan and target.source_type == Book.SourceType.AI_REVIEWED:
+            target.source_type = Book.SourceType.AI_UNREVIEWED
+            target.save(update_fields=["source_type"])
+            self.stdout.write(
+                self.style.WARNING(
+                    "  ⚠ chapters changed in an approved book — reset to "
+                    "ai_unreviewed; re-review required"
+                )
+            )
+
         # update_or_create goes through save(), so body_text derives; but make
         # sure any bulk path stays covered on future edits.
         self.stdout.write(
