@@ -1,14 +1,18 @@
 <script lang="ts">
 	import type { BookSummary } from '$lib/library';
 	import { i18n } from '$lib/i18n.svelte';
+	import lockup from '$lib/brand/ochorus-lockup.svg?raw';
+
+	// Just the paths — the <svg> wrapper can't nest inside this component's own.
+	const lockupInner = lockup.replace(/^[\s\S]*?<svg[^>]*>/, '').replace(/<\/svg>\s*$/, '');
 
 	const t = i18n.t;
 
 	/**
 	 * A book's cover: the real cover image when there is one, otherwise a
 	 * generated typographic cover. The fallback mirrors the server-side
-	 * `generate_covers` SVG (framed, OCHORUS eyebrow, centred title, divider,
-	 * author) so a book without an image looks the same as one that has a
+	 * `generate_covers` SVG (framed, author eyebrow, centred title, divider,
+	 * Ochorus lockup at the foot) so a book without an image looks the same as one that has a
 	 * generated cover — and it scales cleanly at any size. The box keeps a fixed
 	 * 3:4 aspect so nothing shifts while a lazy image loads.
 	 */
@@ -99,13 +103,13 @@
 			/>
 			<text
 				x="300"
-				y="96"
+				y="112"
 				text-anchor="middle"
 				fill="#ffffff"
-				fill-opacity="0.7"
+				fill-opacity="0.86"
 				font-family="Georgia, serif"
-				font-size="19"
-				letter-spacing="7">OCHORUS</text
+				font-size="23"
+				letter-spacing="4">{author}</text
 			>
 			<text
 				text-anchor="middle"
@@ -139,16 +143,13 @@
 					font-size="22">{book.subtitle}</text
 				>
 			{/if}
-			<text
-				x="300"
-				y="724"
-				text-anchor="middle"
-				fill="#ffffff"
-				fill-opacity="0.82"
-				font-family="Georgia, serif"
-				font-size="22"
-				letter-spacing="3">{author}</text
-			>
+			<!-- Same lockup, same geometry as covers.py's `_MARK`: 136 wide, centred,
+			     bottom 16px clear of the frame. Kept in step deliberately — this
+			     fallback and the generated file sit side by side on a shelf. -->
+			<g transform="translate(232 676) scale(0.13325)" fill="#ffffff" fill-opacity="0.82">
+				<!-- eslint-disable-next-line svelte/no-at-html-tags -- our own build-time asset -->
+				{@html lockupInner}
+			</g>
 		</svg>
 	{/if}
 </div>

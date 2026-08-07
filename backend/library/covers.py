@@ -102,11 +102,11 @@ def _title_metrics(title: str) -> tuple[int, int]:
 # The Ochorus logo at the foot, read from the real artwork rather than redrawn.
 #
 # This used to be a hand-drawn open-book-and-quill copied from BrandMark.svelte
-# — and it had the quill pointing the wrong way. Two hand-copies of a logo in
-# two languages is how that happens, so both now come from these files. This is
-# the canonical location: the api's Docker image has rootDir `backend/`, so
-# covers.py cannot read anything under `frontend/`; the frontend mirrors it and
-# `brandAssets.test.ts` fails if the copies drift.
+# — and it had the quill pointing the wrong way. Three independent hand-copies
+# of a logo is how that happens, so every one of them now reads these files.
+# This is the canonical location: the api's Docker image has rootDir `backend/`,
+# so covers.py cannot read anything under `frontend/`; the frontend mirrors it
+# and `brandAssets.test.ts` fails if the copies drift.
 #
 # Inlined (not <img href>) because an <img>-loaded SVG cannot reference another
 # file. The lockup already contains the "Ochorus" wordmark, which is why the
@@ -115,30 +115,33 @@ def _title_metrics(title: str) -> tuple[int, int]:
 _BRAND_DIR = Path(__file__).resolve().parent / "data" / "brand"
 
 
-def _logo(width: int, x: int, y: int, opacity: float) -> str:
-    """The lockup as a positioned group, scaled to `width` px."""
-    src = (_BRAND_DIR / "ochorus-lockup.svg").read_text()
-    vb = re.search(r'viewBox="([-\d.]+) ([-\d.]+) ([-\d.]+) ([-\d.]+)"', src)
-    vx, vy, vw, vh = (float(g) for g in vb.groups())
-    inner = re.search(r"<svg[^>]*>(.*)</svg>", src, re.S).group(1)
-    k = width / vw
-    # Translate the viewBox origin out, then scale — the artwork's own coords
-    # start well away from 0,0.
-    return (
-        f'<g transform="translate({x} {y}) scale({k:.5f}) translate({-vx} {-vy})" '
-        f'fill="#ffffff" fill-opacity="{opacity}">{inner}</g>'
-    )
+def _read_lockup() -> tuple[str, float, float]:
+    """The lockup's inner markup and its viewBox size.
 
+    The committed artwork is normalised to a `0 0 w h` viewBox with the
+    transform baked into the path data, so placing it needs nothing but a
+    translate and a uniform scale — and the aspect ratio is read from the file
+    rather than hard-coded beside it, which is what keeps a re-trace from
+    silently mis-placing the logo.
+    """
+    src = (_BRAND_DIR / "ochorus-lockup.svg").read_text()
+    vw, vh = (float(v) for v in re.search(r'viewBox="0 0 ([\d.]+) ([\d.]+)"', src).groups())
+    return re.search(r"<svg[^>]*>(.*)</svg>", src, re.S).group(1), vw, vh
+
+
+_LOCKUP, _LOCKUP_VW, _LOCKUP_VH = _read_lockup()
 
 # Centred at the foot, matching where the printed covers put it. Positioned off
-# the FRAME rather than the canvas: the hairline sits at y=26..H-26, and a logo
-# placed by canvas coordinates crossed it. `_LOGO_BOTTOM` keeps a clear gap.
-_LOGO_ASPECT = 1020.6 / 616.3  # from the lockup's viewBox
-_LOGO_W = 136
-_LOGO_H = _LOGO_W / _LOGO_ASPECT
+# the FRAME, not the canvas: placed by canvas coordinates the logo crossed the
+# hairline.
 _FRAME_INSET = 26
-_LOGO_BOTTOM = H - _FRAME_INSET - 16
-_MARK = _logo(_LOGO_W, (W - _LOGO_W) // 2, round(_LOGO_BOTTOM - _LOGO_H), 0.82)
+_LOGO_W = 136
+_LOGO_H = _LOGO_W * _LOCKUP_VH / _LOCKUP_VW
+_MARK = (
+    f'<g transform="translate({(W - _LOGO_W) // 2} '
+    f'{round(H - _FRAME_INSET - 16 - _LOGO_H)}) scale({_LOGO_W / _LOCKUP_VW:.5f})" '
+    f'fill="#ffffff" fill-opacity="0.82">{_LOCKUP}</g>'
+)
 
 
 def palette_from_artwork(path) -> str:
@@ -245,7 +248,7 @@ def build_svg(
   </defs>
   <rect width="{W}" height="{H}" fill="url(#bg)"/>
   <rect width="{W}" height="{H}" fill="url(#vig)"/>
-  <rect x="26" y="26" width="{W - 52}" height="{H - 52}" fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="1.5"/>
+  <rect x="{_FRAME_INSET}" y="{_FRAME_INSET}" width="{W - 2 * _FRAME_INSET}" height="{H - 2 * _FRAME_INSET}" fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="1.5"/>
   <text x="{W / 2:.0f}" y="112" text-anchor="middle" fill="#ffffff" fill-opacity="0.86" font-family="{family}" font-size="{round(23 * scale)}" letter-spacing="4"{dir_attr}>{author_txt}</text>
   <text text-anchor="middle" fill="#ffffff" font-family="{family}" font-weight="600" font-size="{size}"{dir_attr}>{tspans}</text>
   <line x1="{W / 2 - 38:.0f}" y1="{rule_y:.0f}" x2="{W / 2 + 38:.0f}" y2="{rule_y:.0f}" stroke="#ffffff" stroke-opacity="0.55" stroke-width="1.5"/>
@@ -319,7 +322,7 @@ def build_art_svg(
   <image href="data:image/jpeg;base64,{jpeg_b64}" x="0" y="0" width="{W}" height="{H}" preserveAspectRatio="xMidYMid slice"/>
   <rect width="{W}" height="{H}" fill="#1a1410" fill-opacity="0.26"/>
   <rect width="{W}" height="{H}" fill="url(#scrim)"/>
-  <rect x="26" y="26" width="{W - 52}" height="{H - 52}" fill="none" stroke="#ffffff" stroke-opacity="0.30" stroke-width="1.5"/>
+  <rect x="{_FRAME_INSET}" y="{_FRAME_INSET}" width="{W - 2 * _FRAME_INSET}" height="{H - 2 * _FRAME_INSET}" fill="none" stroke="#ffffff" stroke-opacity="0.30" stroke-width="1.5"/>
   <text x="{W / 2:.0f}" y="112" text-anchor="middle" fill="#ffffff" fill-opacity="0.92" font-family="{family}" font-size="{round(23 * scale)}" letter-spacing="4"{dir_attr}>{html.escape(author.upper())}</text>
   <text text-anchor="middle" fill="#ffffff" font-family="{family}" font-weight="600" font-size="{size}"{dir_attr}>{tspans}</text>
   <line x1="{W / 2 - 38:.0f}" y1="{rule_y:.0f}" x2="{W / 2 + 38:.0f}" y2="{rule_y:.0f}" stroke="#ffffff" stroke-opacity="0.7" stroke-width="1.5"/>

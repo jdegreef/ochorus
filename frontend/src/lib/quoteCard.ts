@@ -4,6 +4,8 @@
 // "paper" look, fixed regardless of the viewer's theme so a shared image reads
 // the same everywhere.
 
+import markSvg from '$lib/brand/ochorus-mark.svg?raw';
+
 export interface QuoteCardOptions {
 	quote: string;
 	author: string;
@@ -65,25 +67,38 @@ function fitQuote(
 	return { lines: wrapLines(ctx, text, maxWidth), fontSize: 30, lineHeight: 30 * 1.34 };
 }
 
-// The Ochorus mark (open book + quill), from BrandMark.svelte's 24×24 paths.
-const MARK_PATHS = [
-	'M12.4 13.6C11 8.9 8.2 5.5 4 3.4c4.7-.5 8.2 1.3 10.4 5.6',
-	'M12.4 13.6l-.4 2.6',
-	'M3 19.6c3-.8 6-.6 9 .8 3-1.4 6-1.6 9-.8',
-	'M3 19.6v-5c2-.5 4-.5 6-.1',
-	'M21 19.6v-5c-2-.5-4-.5-6 0',
-	'M12 16.2v4.2'
-];
+/**
+ * The Ochorus mark, from the real artwork.
+ *
+ * This was the THIRD hand-drawn copy of the logo — 24×24 stroke paths captioned
+ * "from BrandMark.svelte", carrying the same wrong-way quill as the other two,
+ * and left behind when those were replaced. Quote cards are shared publicly, so
+ * it was the retired mark that went out on them.
+ *
+ * The artwork is fills, not strokes, so this fills; and its viewBox is
+ * normalised to `0 0 w h`, so fitting it into a box is one uniform scale.
+ */
+const markPath = (() => {
+	let cached: { path: Path2D; vw: number; vh: number } | null = null;
+	return (size: number) => {
+		if (!cached) {
+			const [, vw, vh] = /viewBox="0 0 ([\d.]+) ([\d.]+)"/.exec(markSvg)!.map(Number);
+			const path = new Path2D();
+			for (const [, d] of markSvg.matchAll(/ d="([^"]+)"/g)) path.addPath(new Path2D(d));
+			cached = { path, vw, vh };
+		}
+		const k = size / Math.max(cached.vw, cached.vh);
+		const fitted = new Path2D();
+		fitted.addPath(cached.path, new DOMMatrix().scale(k));
+		return fitted;
+	};
+})();
 
 function drawMark(ctx: CanvasRenderingContext2D, x: number, y: number, size: number, color: string) {
 	ctx.save();
 	ctx.translate(x, y);
-	ctx.scale(size / 24, size / 24);
-	ctx.strokeStyle = color;
-	ctx.lineWidth = 1.6;
-	ctx.lineCap = 'round';
-	ctx.lineJoin = 'round';
-	for (const d of MARK_PATHS) ctx.stroke(new Path2D(d));
+	ctx.fillStyle = color;
+	ctx.fill(markPath(size));
 	ctx.restore();
 }
 

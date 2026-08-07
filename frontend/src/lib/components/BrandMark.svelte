@@ -17,18 +17,19 @@
 	// Height in px; the lockup is ~1.66:1 so width follows. 36 is the header
 	// default: at the old 24px mark size the built-in wordmark is too small to
 	// read.
-	let { height = 36, title = 'Ochorus' }: { height?: number; title?: string } = $props();
+	let { height = 36 }: { height?: number } = $props();
 </script>
 
-<span class="brandmark" style="--h: {height}px" role="img" aria-label={title}>
+<span class="brandmark" style="--h: {height}px" role="img" aria-label="Ochorus">
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -- our own build-time asset -->
 	{@html lockup}
 </span>
 
 <style>
 	.brandmark {
-		display: inline-flex;
-		align-items: center;
+		/* Just a host for the inlined <svg> — the anchor around it already
+		   handles alignment. */
+		display: inline-block;
 	}
 	.brandmark :global(svg) {
 		height: var(--h);

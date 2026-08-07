@@ -200,7 +200,7 @@
 				class="mx-auto grid max-w-5xl grid-cols-2 gap-x-8 gap-y-10 px-5 py-10 sm:py-12 lg:grid-cols-4"
 			>
 				<div class="col-span-2 lg:col-span-1">
-					<div class="flex items-center text-text">
+					<div class="text-text">
 						<BrandMark height={34} />
 					</div>
 					<p class="mt-2 max-w-xs text-small text-muted">

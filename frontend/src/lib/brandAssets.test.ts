@@ -1,5 +1,5 @@
-import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { readdirSync, readFileSync } from 'node:fs';
+import { join, relative } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 /**
@@ -21,21 +21,35 @@ import { describe, expect, it } from 'vitest';
 const CANONICAL = join(process.cwd(), '..', 'backend', 'library', 'data', 'brand');
 const MIRROR = join(process.cwd(), 'src', 'lib', 'brand');
 
+/** Every .svelte/.ts source file, so a stray copy anywhere is caught. */
+const sourceFiles = (dir = join(process.cwd(), 'src'), out: string[] = []): string[] => {
+	for (const e of readdirSync(dir, { withFileTypes: true })) {
+		const full = join(dir, e.name);
+		if (e.isDirectory()) {
+			if (e.name !== 'paraglide') sourceFiles(full, out);
+		} else if (/\.(svelte|ts)$/.test(e.name)) out.push(full);
+	}
+	return out;
+};
+
+/** Every file the frontend mirrors from the backend's canonical brand dir. */
+const MIRRORED = ['ochorus-lockup.svg', 'ochorus-mark.svg'];
+
 describe('brand assets stay in sync', () => {
-	it('the frontend lockup is byte-identical to the backend canonical copy', () => {
-		const backend = readFileSync(join(CANONICAL, 'ochorus-lockup.svg'), 'utf-8');
-		const frontend = readFileSync(join(MIRROR, 'ochorus-lockup.svg'), 'utf-8');
+	it.each(MIRRORED)('%s is byte-identical to the backend canonical copy', (file) => {
+		const backend = readFileSync(join(CANONICAL, file), 'utf-8');
+		const frontend = readFileSync(join(MIRROR, file), 'utf-8');
 
 		expect(
 			frontend,
-			'frontend/src/lib/brand/ochorus-lockup.svg has drifted from ' +
-				'backend/library/data/brand/ochorus-lockup.svg (the canonical copy). ' +
+			`frontend/src/lib/brand/${file} has drifted from ` +
+				`backend/library/data/brand/${file} (the canonical copy). ` +
 				'Copy the backend file over the frontend one.'
 		).toBe(backend);
 	});
 
-	it('the lockup is themeable — it must not hard-code a fill colour', () => {
-		const svg = readFileSync(join(MIRROR, 'ochorus-lockup.svg'), 'utf-8');
+	it.each(MIRRORED)('%s is themeable — it must not hard-code a fill colour', (file) => {
+		const svg = readFileSync(join(MIRROR, file), 'utf-8');
 
 		// The header renders it on paper AND on the dark theme from one file, so
 		// the artwork has to inherit the surrounding text colour.
@@ -43,5 +57,18 @@ describe('brand assets stay in sync', () => {
 		expect(svg, 'a literal black fill would be invisible on the dark theme').not.toMatch(
 			/fill="#(000|000000)"/
 		);
+	});
+
+	it('the retired hand-drawn mark is gone from every source file', () => {
+		// The old approximation's first path, which appeared verbatim in
+		// BrandMark.svelte, covers.py AND quoteCard.ts. Three copies, all wrong
+		// the same way. If this string comes back, so has the bug.
+		const RETIRED = 'M12.4 13.6C11 8.9';
+		const offenders = sourceFiles()
+			.filter((f) => !f.endsWith('brandAssets.test.ts')) // this file names the needle
+			.filter((f) => readFileSync(f, 'utf-8').includes(RETIRED))
+			.map((f) => relative(join(process.cwd(), 'src'), f));
+
+		expect(offenders, 'the retired hand-drawn logo is back in these files').toEqual([]);
 	});
 });
