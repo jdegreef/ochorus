@@ -315,7 +315,12 @@ def misattributed(quote: str, ref_text: str) -> str | None:
     scanning all 66 books per candidate would trade the precision this check
     exists for against recall it does not need.
     """
-    ref = _first_reference(ref_text)
+    # pythonbible reads a range only across an ASCII hyphen: given
+    # "Acts 4:31-35" it returns five verses, given the en-dash these books
+    # actually typeset it silently returns one. That difference is not cosmetic
+    # — it turns every passage citation into a reported misprint, which is most
+    # of what the first corpus sweep found in Wesley.
+    ref = _first_reference(ref_text.replace("–", "-").replace("—", "-"))
     if ref is None or ref.start_chapter is None:
         return None
     try:
@@ -333,13 +338,24 @@ def misattributed(quote: str, ref_text: str) -> str | None:
     if len(q) < 4:
         return None
 
-    cited = frozenset()
-    for vid in cited_ids[:_MAX_VERSES]:
+    # Best-fitting verse WITHIN the citation, not the union of them. A union
+    # was the first attempt and it is wrong for a range: "Acts 4:31-35" unions
+    # five verses, a quotation of one of them covers a fifth of that, and the
+    # check reports a passage citation as a misprint. Wesley alone produced
+    # dozens of those. Scoring each verse and keeping the best asks the question
+    # that matters — is what they quoted anywhere in what they cited.
+    cited_best = 0.0
+    seen = False
+    for vid in cited_ids:
         try:
-            cited |= _tokens(bible.get_verse_text(vid, version=VERSION) or "")
+            toks = _tokens(bible.get_verse_text(vid, version=VERSION) or "")
         except Exception:
             continue
-    if not cited or _overlap(cited, q) > CITED_MAX:
+        if not toks:
+            continue
+        seen = True
+        cited_best = max(cited_best, _overlap(toks, q))
+    if not seen or cited_best > CITED_MAX:
         return None
 
     best_id, best = None, 0.0
@@ -349,6 +365,6 @@ def misattributed(quote: str, ref_text: str) -> str | None:
         score = _overlap(toks, q)
         if score > best:
             best_id, best = vid, score
-    if best_id is None or best < RIVAL_MIN or best - _overlap(cited, q) < RIVAL_MARGIN:
+    if best_id is None or best < RIVAL_MIN or best - cited_best < RIVAL_MARGIN:
         return None
     return f"{ref.book.title} {best_id // 1000 % 1000}:{best_id % 1000}"
