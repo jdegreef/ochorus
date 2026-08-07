@@ -380,7 +380,18 @@ archaic spelling and period punctuation are the text, not defects in it.
   none is a prose quantity rather than a reference — refuse the rewrite if a
   digit sits glued to an Arabic letter. Nested quotes have a precedent too:
   `prevailing-prayer.ar.json` uses ‹ › 106 times, so a chapter that nests that
-  way is RIGHT and should not be "fixed" toward the majority.
+  way is RIGHT and should not be "fixed" toward the majority. When you do
+  normalise nesting, **track quote depth GLOBALLY, not per paragraph.** The
+  obvious implementation resets depth at each `<p>`, which is wrong the moment a
+  quotation spans a paragraph break — a continuation paragraph opens at depth 1,
+  so its inner marks get classified as outer ones. That produced 7 wrong marks
+  across 3 chapters on #756, in files whose totals still balanced, so a
+  count-based check passed them. Verify by walking every mark in document order
+  and asserting depth 0 marks are `«»` and deeper ones `‹›`. Assert too that
+  letters, digits and the tag sequence are byte-identical afterwards: this
+  transform is punctuation-only, and that assertion is what makes it safe to run
+  over scripture, whose WORDING the byte-for-byte rule protects — quotation
+  marks are typography the API supplies, not the text.
 - **Fan-out guarantees cross-chapter divergence, so budget a RECONCILIATION
   pass** (#756). One-subagent-per-chapter means no translator ever sees another
   chapter, and per-chapter validation is blind to it by construction: every one
