@@ -9,7 +9,7 @@
 	import { listen } from '$lib/listen.svelte';
 	import { browser } from '$app/environment';
 	import { lang } from '$lib/lang.svelte';
-	import { isAdvertised } from '$lib/advertised-locales';
+	import { footerLocales } from '$lib/footerLocales';
 	import { i18n } from '$lib/i18n.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { pwa } from '$lib/pwa.svelte';
@@ -97,7 +97,11 @@
 	//
 	// Those locales stay switchable in the header picker, so a reader who wants
 	// the translated UI can still have it — this only stops us advertising it.
-	const footerLangs = $derived(lang.available.filter((l) => isAdvertised(l.code)));
+	//
+	// ...with one exception, which is why the rule lives in footerLocales.ts
+	// (and is tested there): the locale the reader is ACTUALLY IN is always
+	// listed, advertised or not.
+	const footerLangs = $derived(footerLocales(lang.available, lang.current));
 </script>
 
 <svelte:head>
@@ -172,8 +176,24 @@
 
 	{#if !readerUi.focus}
 		<footer class="border-t border-border bg-surface-2">
-			<div class="mx-auto grid max-w-5xl gap-8 px-5 py-12 sm:grid-cols-3">
-				<div>
+			<!-- Four columns on wide screens; below that the two LINK columns stay
+			     side by side and only the prose blocks span the full width.
+			     It was three columns with every link in the middle one: an eight-item
+			     list against a two-line brand and a three-line mission, so the middle
+			     column ran about three times the height of its neighbours and the
+			     block ended on a ragged edge. Splitting the links by INTENT — where
+			     to read vs. who we are — balances that as a side effect of fixing the
+			     harder problem, which was that a reader scanning for "About Us" had
+			     to read past five content links to reach it.
+			     Keeping the two link columns paired on a phone matters more than it
+			     looks: stacked, the footer ran past 800px on a 390px screen, and it
+			     sits under EVERY page. Prose can't halve like that (the mission
+			     statement at ~180px wide is a column of two-word lines), so those
+			     span instead. -->
+			<div
+				class="mx-auto grid max-w-5xl grid-cols-2 gap-x-8 gap-y-10 px-5 py-10 sm:py-12 lg:grid-cols-4"
+			>
+				<div class="col-span-2 lg:col-span-1">
 					<div class="flex items-center gap-2 text-display !text-xl !text-text">
 						<BrandMark size={22} /><span>Ochorus</span>
 					</div>
@@ -181,28 +201,40 @@
 						{t('footer.tagline')}
 					</p>
 				</div>
-				<div>
-					<h3 class="mb-3 text-small font-semibold uppercase tracking-wider text-text">{t('footer.explore')}</h3>
-					<ul class="space-y-2 text-small text-muted">
-						<li><a href={localizeHref('/books')} class="hover:text-text">{t('nav.books')}</a></li>
-						<li><a href={localizeHref('/topics')} class="hover:text-text">{t('nav.topics')}</a></li>
-						<li><a href={localizeHref('/plans')} class="hover:text-text">{t('nav.plans')}</a></li>
-						<li><a href={localizeHref('/sermons')} class="hover:text-text">{t('nav.sermons')}</a></li>
-						<li><a href={localizeHref('/biographies')} class="hover:text-text">{t('nav.biographies')}</a></li>
-						<li><a href={localizeHref('/notebook')} class="hover:text-text">{t('notebook.title')}</a></li>
-						<li><a href={localizeHref('/about')} class="hover:text-text">{t('nav.about')}</a></li>
-						<li><a href={localizeHref('/contact')} class="hover:text-text">{t('nav.contact')}</a></li>
+				<!-- Labelled by their own headings rather than a duplicated aria-label
+				     string: the visible heading IS the accessible name, so the two
+				     can't drift apart in a translation. Landmarks (not bare <div>s)
+				     because that is how a screen-reader user reaches the footer links
+				     without arrowing through the whole page — the language strip below
+				     was already a labelled <nav>; these two were not. -->
+				<nav aria-labelledby="footer-explore-heading">
+					<h2 id="footer-explore-heading" class="footer-heading">{t('footer.explore')}</h2>
+					<ul class="footer-links">
+						<li><a href={localizeHref('/books')}>{t('nav.books')}</a></li>
+						<li><a href={localizeHref('/topics')}>{t('nav.topics')}</a></li>
+						<li><a href={localizeHref('/plans')}>{t('nav.plans')}</a></li>
+						<li><a href={localizeHref('/sermons')}>{t('nav.sermons')}</a></li>
+						<li><a href={localizeHref('/biographies')}>{t('nav.biographies')}</a></li>
 					</ul>
-				</div>
-				<div>
-					<h3 class="mb-3 text-small font-semibold uppercase tracking-wider text-text">{t('footer.ministryHeading')}</h3>
+				</nav>
+				<!-- Notebook is deliberately absent. It is per-account state, and a
+				     signed-out visitor who clicks it from a footer that promised
+				     content lands on an empty shell. It lives in the account menu,
+				     which is where a signed-in reader already looks for it. -->
+				<nav aria-labelledby="footer-about-heading">
+					<h2 id="footer-about-heading" class="footer-heading">{t('footer.aboutHeading')}</h2>
+					<ul class="footer-links">
+						<li><a href={localizeHref('/about')}>{t('nav.about')}</a></li>
+						<li><a href={localizeHref('/contact')}>{t('nav.contact')}</a></li>
+						<li><a href={localizeHref('/legal')}>{t('footer.legal')}</a></li>
+					</ul>
+				</nav>
+				<div class="col-span-2 lg:col-span-1">
+					<h2 class="footer-heading">{t('footer.ministryHeading')}</h2>
 					<p class="text-small text-muted">
 						{t('footer.mission')}
 					</p>
-					<p class="mt-3 text-small">
-						<a href={localizeHref('/legal')} class="text-accent hover:text-text">{t('footer.legal')}</a>
-					</p>
-					<p class="mt-4 text-[0.78rem] text-muted">
+					<p class="mt-4 text-small text-muted">
 						{t('footer.ministry')}
 					</p>
 				</div>
@@ -225,20 +257,32 @@
 				aria-label={t('footer.languages')}
 			>
 				<div
-					class="mx-auto flex max-w-5xl flex-wrap items-baseline gap-x-4 gap-y-2 px-5 py-5 text-[0.78rem]"
+					class="mx-auto flex max-w-5xl flex-wrap items-baseline gap-x-5 gap-y-1 px-5 py-4 text-small"
 				>
-					<span class="font-semibold uppercase tracking-wider text-text">{t('footer.languages')}</span>
+					<span class="py-1 font-semibold uppercase tracking-wider text-text"
+						>{t('footer.languages')}</span
+					>
 					{#each footerLangs as l (l.code)}
 						<!-- nowrap per item: a language name breaking mid-word ("Kiswa- hili")
-						     is worse than the row wrapping between names. -->
+						     is worse than the row wrapping between names.
+						     lang={l.code} on each name so a screen reader pronounces the
+						     autonym with that language's voice — an English synthesiser
+						     reading "Kiswahili" or "العربية" out of an English page is
+						     exactly the reader this strip exists for.
+						     py-1 on both branches: these wrap to several rows on a phone,
+						     and a mis-tap here doesn't scroll something, it switches the
+						     whole site's language and records the choice. -->
 						{#if l.code === lang.current}
-							<span class="whitespace-nowrap font-semibold text-text" aria-current="true"
-								>{l.native_name}</span
+							<span
+								class="whitespace-nowrap py-1 font-semibold text-text"
+								lang={l.code}
+								aria-current="true">{l.native_name}</span
 							>
 						{:else}
 							<a
 								href={localizeHref('/', { locale: l.code as (typeof locales)[number] })}
-								class="whitespace-nowrap text-muted hover:text-text"
+								class="whitespace-nowrap py-1 text-muted hover:text-text"
+								lang={l.code}
 								onclick={(e) => {
 									// Hand modified and non-primary clicks back to the browser.
 									// The href is already the correct locale home, so cmd/ctrl-click
