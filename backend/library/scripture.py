@@ -213,3 +213,142 @@ def extract_citations(text: str) -> list[dict]:
                 "count": 1,
             }
     return sorted(found.values(), key=lambda e: e["offset"])
+
+
+# ── Citation accuracy ──────────────────────────────────────────────────────
+# Does the text a book QUOTES actually say what the reference it CITES says?
+#
+# This is the defect class translators kept finding by hand and no scanner
+# caught: `the-way-to-god` alone cites Luke xvii. 10 for Luke 18:10, John xiv. 5
+# for 14:6, Exod. xx. 2 for 20:3 and Matt. xxvi. 23 for 26:33. Unlike a spacing
+# artifact it survives translation intact — worse, the translation-worker
+# convention is to reproduce the printed reference verbatim, so one wrong
+# citation becomes six.
+#
+# Compared against the ASV, which is not the KJV these books quote. So the
+# measure is deliberately not "are these the same string".
+
+_WORD = re.compile(r"[a-z]+")
+
+# Function words carry no evidence about WHICH verse this is: every verse has
+# them, so counting them drags every score toward the middle and flattens the
+# gap the check depends on.
+_STOP = frozenset(
+    """the and of to in that he for his it with is was be as not but they them
+    him her their this these those a an i you ye thou thee thy thine we us our
+    my me shall will unto upon into out up down by from at on all any are were
+    have hath had do did doth done which who whom what when where then than so
+    if or nor yet also there here now O""".lower().split()
+)
+
+
+def _tokens(text: str) -> frozenset[str]:
+    return frozenset(w for w in _WORD.findall(text.lower()) if len(w) > 2 and w not in _STOP)
+
+
+@lru_cache(maxsize=256)
+def _book_verses(book, chapter_hint: int) -> tuple[tuple[int, frozenset[str]], ...]:
+    """Every verse of a book as (verse_id, content tokens).
+
+    Keyed with a chapter hint only so callers in different chapters share the
+    cache entry; the book is what actually determines the result.
+    """
+    out = []
+    try:
+        chapters = bible.get_number_of_chapters(book)
+    except Exception:
+        return ()
+    for ch in range(1, chapters + 1):
+        try:
+            n = bible.get_number_of_verses(book, ch)
+        except Exception:
+            continue
+        for v in range(1, n + 1):
+            vid = bible.get_verse_id(book, ch, v)
+            try:
+                text = bible.get_verse_text(vid, version=VERSION)
+            except Exception:
+                continue
+            if text:
+                out.append((vid, _tokens(text)))
+    return tuple(out)
+
+
+def _overlap(verse: frozenset[str], quote: frozenset[str]) -> float:
+    """Containment, whichever way round fits — never symmetric similarity.
+
+    Both asymmetries occur and each breaks one direction:
+
+    * a quotation runs PAST the verse it cites (two verses quoted, the first
+      cited), so the quote is the larger set — verse-in-quote holds;
+    * a quotation takes only the speech and leaves the narrative frame behind
+      ("Though all shall be offended…" against a verse that opens "But Peter
+      answered and said unto him"), so the verse is the larger set —
+      quote-in-verse holds.
+
+    Symmetric overlap/union halves the score in both, which is what a wrong
+    citation looks like. Taking the better direction keeps the two apart.
+    """
+    if not verse or not quote:
+        return 0.0
+    hit = len(verse & quote)
+    return max(hit / len(verse), hit / len(quote))
+
+
+# A citation is only reported when the quote barely covers the verse it cites
+# AND some other verse in the same book covers far better. The second half is
+# what keeps this precise: an author's loose paraphrase also scores low, but it
+# does not match a different verse — so it stays silent. Tuned against the
+# seven known misprints in `the-way-to-god` and a full-corpus false-positive
+# sweep; see tests_english_audit.
+CITED_MAX = 0.34
+RIVAL_MIN = 0.60
+RIVAL_MARGIN = 0.30
+
+
+def misattributed(quote: str, ref_text: str) -> str | None:
+    """The reference this quote actually matches, if the cited one is wrong.
+
+    Returns a formatted reference ("Luke 18:10") when the quoted text plainly
+    belongs to a different verse of the same book, else None. Same-book only:
+    it is the misprint shape that occurs (a digit or a numeral mis-set), and
+    scanning all 66 books per candidate would trade the precision this check
+    exists for against recall it does not need.
+    """
+    ref = _first_reference(ref_text)
+    if ref is None or ref.start_chapter is None:
+        return None
+    try:
+        cited_ids = bible.convert_reference_to_verse_ids(ref)
+    except Exception:
+        return None
+    if not cited_ids:
+        return None
+
+    q = _tokens(quote)
+    # Too short to judge: "Fear not" carries two content words and appears in
+    # scores of verses. Four is low, but the commandments and the confessions
+    # are short — "Thou shalt have no other gods before me" is four — and the
+    # rival margin below is what actually discriminates, not length.
+    if len(q) < 4:
+        return None
+
+    cited = frozenset()
+    for vid in cited_ids[:_MAX_VERSES]:
+        try:
+            cited |= _tokens(bible.get_verse_text(vid, version=VERSION) or "")
+        except Exception:
+            continue
+    if not cited or _overlap(cited, q) > CITED_MAX:
+        return None
+
+    best_id, best = None, 0.0
+    for vid, toks in _book_verses(ref.book, ref.start_chapter):
+        if vid in cited_ids:
+            continue
+        score = _overlap(toks, q)
+        if score > best:
+            best_id, best = vid, score
+    if best_id is None or best < RIVAL_MIN or best - _overlap(cited, q) < RIVAL_MARGIN:
+        return None
+    return f"{ref.book.title} {best_id // 1000 % 1000}:{best_id % 1000}"
