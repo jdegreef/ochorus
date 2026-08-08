@@ -423,6 +423,85 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("carries the devil in his car", "carries the devil in his ear"),
         ],
     },
+    "talks-to-the-farmer": {
+        # Six misattributed citations, every one naming the wrong BOOK rather
+        # than a slipped digit. Five were found by the Swahili translators of
+        # job #420 and confirmed against the ASV; the sixth (ch15) was reported
+        # by that chapter's translator and independently confirmed by
+        # `audit_citations` once its rival search could look outside the cited
+        # book. Only the reference moves — Spurgeon's wording is untouched.
+        #
+        # ch03's is the one that settles the class: the SAME chapter cites this
+        # clause correctly as Psalm 147 in its opening paragraph and quotes it
+        # six more times, then miscites it here.
+        "replacements": [
+            # "Who can stand before his cold?" — Job 37:22 is the golden splendour.
+            ("(Job 37:22, ESV)", "(Psalm 147:17, ESV)"),
+            # "eat, O friends; drink, yea, drink abundantly, O beloved" —
+            # Isaiah 55:1 is "Ho, every one that thirsteth".
+            ("(Isaiah 55:1)", "(Song of Solomon 5:1)"),
+            # "He takes up the isles like a very little thing" — Psalm 136:16
+            # is the leading through the wilderness.
+            ("(Psalm 136:16)", "(Isaiah 40:15)"),
+            # "Hear, O heavens, and give ear, O earth" — Jeremiah 7:28 is
+            # "this is the nation that hath not hearkened".
+            ("(Jeremiah 7:28)", "(Isaiah 1:2)"),
+            # "a sharp threshing instrument with teeth" — Jeremiah 51:20 is the
+            # battle-axe.
+            ("(Jeremiah 51:20)", "(Isaiah 41:15)"),
+            # "under the rod of the covenant" — Psalm 89:32 visits transgression
+            # with the rod, which is a different rod.
+            ("(Psalm 89:32)", "(Ezekiel 20:37)"),
+            # --- the same six, as they reached the shipped translations ------
+            # A wrong reference is the one English defect that survives
+            # translation intact: a careful translator reproduces what is
+            # printed, so each of these became one defect per language. Book
+            # names taken from the shipped corpora, not guessed — lg "Zabbuli"
+            # (128 uses), "Isaaya" (60), "Oluyimba lwa Sulemaani" (6);
+            # sw "Zaburi" (77), "Isaya" (66), "Ezekieli" (7),
+            # "Wimbo Ulio Bora" (7).
+            ("(Yobu 37:22)", "(Zabbuli 147:17)"),
+            ("(Isaaya 55:1)", "(Oluyimba lwa Sulemaani 5:1)"),
+            ("(Zabbuli 136:16)", "(Isaaya 40:15)"),
+            ("(Yeremiya 7:28)", "(Isaaya 1:2)"),
+            ("(Yeremiya 51:20)", "(Isaaya 41:15)"),
+            # lg's Psalm 89:32 -> Ezekiel 20:37 is deliberately NOT repaired:
+            # the whole Luganda corpus contains one Ezekiel reference and it is
+            # an untranslated English abbreviation, "(Ezek. xviii. 32)", so
+            # there is no attested Luganda form to correct it to. Guessing a
+            # Bible book name in a language I cannot check is how a repair
+            # becomes a new defect. Left for a Luganda reviewer.
+            ("(Ayubu 37:22)", "(Zaburi 147:17)"),
+            ("(Isaya 55:1)", "(Wimbo Ulio Bora 5:1)"),
+            ("(Zaburi 136:16)", "(Isaya 40:15)"),
+            ("(Yeremia 7:28)", "(Isaya 1:2)"),
+            ("(Yeremia 51:20)", "(Isaya 41:15)"),
+            ("(Zaburi 89:32)", "(Ezekieli 20:37)"),
+        ],
+    },
+    "christ-all-in-all": {
+        # "I am the way, the truth, and the life" is John 14:6; John 10 is the
+        # sheepfold. Almost certainly a dropped "xiv." — the house style here is
+        # roman chapters, so the repair keeps that and supplies the verse the
+        # printed reference omits.
+        #
+        # Worth recording WHY this belongs on the English rather than in each
+        # edition: the three existing translations already handle it three
+        # different ways — es silently corrects it to "(Juan 14)", pt reproduces
+        # it AND leaves the roman numeral untranslated as "(João x.)", and ar
+        # reproduces it as "(يوحنّا 10)". Fixing the source is what stops a
+        # fourth reading appearing with the next language.
+        # The Swahili edition (job #424) reproduced it faithfully as
+        # "(Yohana 10)", so it is repaired here too, in that edition's own
+        # house style — Western digits, tight C:V. es already reads "(Juan 14)"
+        # and needs nothing; pt and ar are left for their reviewers, since
+        # "(João x.)" also carries an untranslated roman numeral and that is a
+        # second decision, not this one.
+        "replacements": [
+            ("(John x.)", "(John xiv. 6.)"),
+            ("(Yohana 10)", "(Yohana 14:6)"),
+        ],
+    },
 }
 
 # First lowercase letter opening the first paragraph of a body.
