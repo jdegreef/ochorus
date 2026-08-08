@@ -3,6 +3,21 @@ import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
 
 /**
+ * Prerender refresh 2026-08-08 (queue job #422, follow-up to PR #878): the
+ * Swahili prose for "A Month in the Inner Chamber" (Mwezi katika Chumba cha
+ * Ndani) landed. Same shape as the Arabic Humility entry below — the sw row
+ * already existed, because `the-inner-chamber` is published in Swahili and
+ * seed_plans creates a Plan per published language of a LAUNCH_PLANS source
+ * book, falling back to the ENGLISH tuple when PLAN_TRANSLATIONS has none. So
+ * /sw/plans has been serving an English-titled card; this touch re-crawls it so
+ * the static page bakes the Swahili title and description.
+ *
+ * The same job's other entry, `deeper-life-in-christ`, needs no refresh yet:
+ * two of its three source books are still English-only, so seed_plans does not
+ * materialize the sw row at all. That card arrives with whichever of
+ * `the-masters-indwelling` / `union-and-communion` lands second, and THAT is
+ * the commit which needs the touch.
+ *
  * Prerender refresh 2026-08-06 (queue job #756, follow-up to PR #855): the
  * Arabic "The God of All Comfort" landed, which was the last source book
  * `faith-in-the-fire` needed in ar — `he-holds-my-tomorrows` was already there.
