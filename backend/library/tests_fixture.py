@@ -652,3 +652,61 @@ class SermonBriefCoverageTests(SimpleTestCase):
             stale_tr, [],
             "TRANSLATIONS_WITHOUT_BRIEF lists a row that now HAS a brief — remove it",
         )
+
+
+class PlanTranslationCoverageTests(SimpleTestCase):
+    """Every plan row a deploy will CREATE must have prose in its language.
+
+    `seed_plans` creates a Plan per language in which the source books are
+    published, and takes its title/description from
+    `PLAN_TRANSLATIONS[language][slug]` — **falling back to the English tuple**
+    when that entry is absent. Nothing fails when it does: the row is valid, the
+    page renders, and it reads "A Month in the Inner Chamber" to a Swahili
+    reader. It stays invisible until somebody opens that locale.
+
+    The trigger is a BOOK, not a plan. Shipping `the-inner-chamber` in Swahili
+    published a Swahili plan nobody had written prose for, and the plan job for
+    it sat in the queue looking unrelated. So this cannot be a habit; it has to
+    be a check. Three locales had drifted by the time anyone looked (es, sw, uk
+    — all on the same plan).
+
+    Fixture-only, so it runs without a database: which books exist per language
+    is exactly what the committed content files say.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.published: dict[str, set[str]] = {}
+        for row in all_rows():
+            if row["model"] != "library.book":
+                continue
+            f = row["fields"]
+            if f.get("is_published", True):
+                cls.published.setdefault(f.get("language", "en"), set()).add(f["slug"])
+
+    def test_every_creatable_plan_row_has_its_own_prose(self):
+        from library.management.commands.seed_plans import (
+            CURATED_PLANS,
+            LAUNCH_PLANS,
+            PLAN_TRANSLATIONS,
+        )
+
+        # (plan slug, the books it needs) for both plan kinds.
+        needs = [(p[0], [p[1]]) for p in LAUNCH_PLANS]
+        needs += [(p[0], list(p[3])) for p in CURATED_PLANS]
+
+        missing = sorted(
+            f"{language}/{slug}"
+            for slug, books in needs
+            for language, have in self.published.items()
+            if language != "en"
+            and all(b in have for b in books)
+            and slug not in PLAN_TRANSLATIONS.get(language, {})
+        )
+        self.assertEqual(
+            missing,
+            [],
+            "seed_plans will create these plan rows and fall back to the ENGLISH "
+            "title/description — add the prose to PLAN_TRANSLATIONS[language]",
+        )
