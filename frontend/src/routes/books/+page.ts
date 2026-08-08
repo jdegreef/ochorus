@@ -7,6 +7,19 @@ import type { PageLoad } from './$types';
  * folding a fetch failure into `{ loadError: true }` so a client-side navigation
  * to a down API shows a retry panel instead of the error route.
  *
+ * Prerender refresh 2026-08-08 (queue jobs #420 + #423, PR #897): two Swahili
+ * editions landed together — Spurgeon's "Talks to the Farmer" (Mazungumzo na
+ * Mkulima), 18 chapters, and Simpson's sermon "The Possibilities of Faith"
+ * (Uwezekano wa Imani). Rebuild so /sw/books re-crawls and the 18 new
+ * /sw/books/talks-to-the-farmer/<n> chapter pages are baked; the sermon rides
+ * the same rebuild via /sw/sermons.
+ *
+ * No plans touch is needed this time, unlike #879/#896: `talks-to-the-farmer`
+ * appears in neither LAUNCH_PLANS nor CURATED_PLANS, so shipping it cannot
+ * create an English-titled Swahili plan row. That check is the point — the
+ * coupling is invisible from the book's own slug, and CURATED_PLANS is the
+ * easier half to miss because it only fires on whichever book completes the set.
+ *
  * Prerender refresh 2026-08-06 (queue job #756, PR #855): the Arabic edition of
  * Hannah Whitall Smith's "The God of All Comfort" (إله كل تعزية) went live — 17
  * chapters. Rebuild so /ar/books re-crawls and the 17 /ar/books/<slug> chapter
