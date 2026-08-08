@@ -39,7 +39,7 @@
    "orphan-close-quote": 1
   },
   "freedom-of-the-will": {
-   "orphan-close-quote": 6,
+   "orphan-close-quote": 5,
    "space-before-punct": 3
   },
   "godliness": {
@@ -58,7 +58,7 @@
    "space-before-punct": 5
   },
   "humility-2": {
-   "orphan-close-quote": 1,
+   "orphan-close-quote": 2,
    "run-together": 1,
    "space-before-punct": 8
   },
@@ -66,7 +66,6 @@
    "space-before-punct": 5
   },
   "jesus-himself-2": {
-   "orphan-close-quote": 1,
    "space-before-punct": 2
   },
   "let-us-pray-2": {
@@ -102,10 +101,11 @@
    "misspelling": 1
   },
   "purity-of-heart": {
+   "orphan-close-quote": 1,
    "run-together": 1
   },
   "religious-affections": {
-   "orphan-close-quote": 1
+   "orphan-close-quote": 6
   },
   "revival-lectures": {
    "anachronism": 1,
@@ -114,7 +114,7 @@
   },
   "selected-sermons-whitefield": {
    "hyphen-space": 3,
-   "orphan-close-quote": 15,
+   "orphan-close-quote": 17,
    "space-before-punct": 15
   },
   "sermons-on-several-occasions": {
@@ -127,7 +127,7 @@
   "stepping-stones-2": {
    "hyphen-space": 2,
    "misspelling": 4,
-   "orphan-close-quote": 5,
+   "orphan-close-quote": 4,
    "run-together": 1,
    "space-before-punct": 10,
    "title-case-vs-body": 1
@@ -147,7 +147,7 @@
   "the-christians-secret-of-a-happy-life-4": {
    "anachronism": 2,
    "broken-smallcaps": 1,
-   "orphan-close-quote": 36
+   "orphan-close-quote": 23
   },
   "the-fourfold-gospel": {
    "hyphen-space": 1
@@ -167,7 +167,7 @@
   },
   "the-inner-chamber": {
    "hyphen-space": 15,
-   "orphan-close-quote": 23,
+   "orphan-close-quote": 29,
    "run-together": 4,
    "space-before-punct": 1
   },
@@ -175,15 +175,15 @@
    "space-before-punct": 1
   },
   "the-masters-indwelling": {
-   "orphan-close-quote": 7,
+   "orphan-close-quote": 2,
    "space-before-punct": 11
   },
   "the-normal-christian-life": {
-   "orphan-close-quote": 5
+   "orphan-close-quote": 2
   },
   "the-person-and-work-of-the-holy-spirit": {
    "anachronism": 1,
-   "orphan-close-quote": 5
+   "orphan-close-quote": 4
   },
   "the-possibilities-of-faith": {
    "hyphen-space": 1
@@ -192,7 +192,7 @@
    "space-before-punct": 1
   },
   "the-secret-of-guidance": {
-   "orphan-close-quote": 11,
+   "orphan-close-quote": 8,
    "space-before-punct": 5
   },
   "the-unselfishness-of-god": {
