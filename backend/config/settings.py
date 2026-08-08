@@ -150,6 +150,12 @@ REST_FRAMEWORK = {
     # approximate: a bound, not an access control.
     "DEFAULT_THROTTLE_RATES": {
         "search-click": "60/min",
+        # Per-account cap on reading-state writes (progress, marks, favorites,
+        # activity, plan progress, and the sign-in merge). Generous — a reader
+        # highlighting or scrolling fast never approaches it — but finite, so a
+        # scripted account can't amplify sync into unbounded writes. A bound, not
+        # access control: per-worker local-memory cache, keyed by user id.
+        "reading": "240/min",
     },
     # Exactly one proxy (Render's) sits in front of the app, so the client
     # address is the LAST entry in X-Forwarded-For. Without this, DRF keys

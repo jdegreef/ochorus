@@ -251,6 +251,30 @@ class MarkHelpersTests(TestCase):
         self.assertEqual(len(merged), 3)
         self.assertEqual(merged[1]["note"], "longer note")
 
+    def test_clean_caps_count_and_lengths(self):
+        from .marks import MAX_ID_LEN, MAX_MARKS_PER_CHAPTER, MAX_NOTE_LEN
+
+        # One chapter can't store an unbounded number of marks…
+        raw = [{"id": f"m{i}", "p": i, "s": 0, "e": 1} for i in range(MAX_MARKS_PER_CHAPTER + 50)]
+        cleaned = clean_mark_list(raw)
+        self.assertEqual(len(cleaned), MAX_MARKS_PER_CHAPTER)
+        # …nor a giant note or id.
+        big = clean_mark_list([{"id": "x" * 200, "p": 0, "s": 0, "e": 1, "note": "n" * 9000}])
+        self.assertEqual(len(big), 1)
+        self.assertLessEqual(len(big[0]["id"]), MAX_ID_LEN)
+        self.assertEqual(len(big[0]["note"]), MAX_NOTE_LEN)
+
+    def test_merge_holds_the_per_chapter_cap(self):
+        from .marks import MAX_MARKS_PER_CHAPTER
+
+        # Two full lists (disjoint ranges) union to 2× the cap; the result is held
+        # at the cap so a merge can't grow past the bound.
+        a = clean_mark_list([{"id": f"a{i}", "p": i, "s": 0, "e": 1} for i in range(MAX_MARKS_PER_CHAPTER)])
+        b = clean_mark_list(
+            [{"id": f"b{i}", "p": i, "s": 0, "e": 1} for i in range(10_000, 10_000 + MAX_MARKS_PER_CHAPTER)]
+        )
+        self.assertEqual(len(merge_mark_lists(a, b)), MAX_MARKS_PER_CHAPTER)
+
 
 class WorkKindTests(TestCase):
     """Sermons in the reading layer (kind discriminator, roadmap #10)."""
@@ -612,3 +636,110 @@ class MalformedPayloadTests(TestCase):
                 profile=self.profile, kind="sermon", book_slug="a-sermon"
             ).exists()
         )
+
+
+class MergeHardeningTests(TestCase):
+    """Wave 2: caps, atomicity, and input validation on the sync endpoints."""
+
+    def setUp(self):
+        self.user = User.objects.create(username="00000000-0000-0000-0000-0000000000aa")
+        self.profile = UserProfile.objects.create(
+            user=self.user, supabase_uid=self.user.username, email="h@example.com"
+        )
+        self.client = APIClient()
+        self.client.force_authenticate(self.user)
+
+    def test_merge_caps_each_section(self):
+        from .views import MAX_MERGE_ROWS
+
+        favorites = [
+            {"kind": "book", "slug": f"b{i}"} for i in range(MAX_MERGE_ROWS + 25)
+        ]
+        res = self.client.post(
+            "/api/reading/merge/", {"favorites": favorites}, format="json"
+        )
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(
+            Favorite.objects.filter(profile=self.profile).count(), MAX_MERGE_ROWS
+        )
+
+    def test_merge_is_atomic_on_a_mid_phase_failure(self):
+        from unittest.mock import patch
+
+        from .views import MergeView
+
+        # Favorites merge before activity; force activity to blow up and assert the
+        # already-written favorites are rolled back (no half-merged account). The
+        # client is configured to turn the unhandled error into a 500 response
+        # rather than re-raise it into the test.
+        client = APIClient(raise_request_exception=False)
+        client.force_authenticate(self.user)
+        payload = {"favorites": [{"kind": "book", "slug": "humility"}], "activity": []}
+        with patch.object(
+            MergeView, "_merge_activity", side_effect=RuntimeError("boom")
+        ):
+            res = client.post("/api/reading/merge/", payload, format="json")
+        self.assertEqual(res.status_code, 500)
+        self.assertEqual(Favorite.objects.filter(profile=self.profile).count(), 0)
+
+    def test_merge_skips_negative_and_zero_chapter_orders(self):
+        payload = {
+            "marks": [
+                {"book_slug": "humility", "chapter_order": -5, "marks": [{"p": 0, "s": 0, "e": 1}]},
+                {"book_slug": "humility", "chapter_order": 0, "marks": [{"p": 0, "s": 0, "e": 1}]},
+                {"book_slug": "humility", "chapter_order": 2, "marks": [{"p": 0, "s": 0, "e": 1}]},
+            ]
+        }
+        self.client.post("/api/reading/merge/", payload, format="json")
+        orders = list(
+            ChapterMarks.objects.filter(profile=self.profile).values_list(
+                "chapter_order", flat=True
+            )
+        )
+        self.assertEqual(orders, [2])  # -5 and 0 dropped, no junk chapter-0 row
+
+    def test_merge_skips_over_long_slugs(self):
+        payload = {"favorites": [{"kind": "book", "slug": "x" * 300}]}
+        res = self.client.post("/api/reading/merge/", payload, format="json")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(Favorite.objects.filter(profile=self.profile).count(), 0)
+
+    def test_put_rejects_over_long_slug_and_out_of_range_order(self):
+        # A 300-char slug is a 400, not a Postgres DataError 500.
+        self.assertEqual(
+            self.client.put(
+                f"/api/reading/progress/{'x' * 300}/",
+                {"chapter_order": 1},
+                format="json",
+            ).status_code,
+            400,
+        )
+        # An order past the ceiling is a 400, not a 500.
+        self.assertEqual(
+            self.client.put(
+                "/api/reading/marks/humility/999999/",
+                {"marks": [{"p": 0, "s": 0, "e": 1}]},
+                format="json",
+            ).status_code,
+            400,
+        )
+
+    def test_reading_writes_are_throttled_per_account(self):
+        from unittest.mock import patch
+
+        from django.core.cache import cache
+
+        from .views import _ReadingWriteThrottle
+
+        cache.clear()
+        # Squeeze the rate to 2/min for this test; the 3rd write in the window 429s.
+        with patch.object(_ReadingWriteThrottle, "get_rate", return_value="2/min"):
+            codes = [
+                self.client.put(
+                    "/api/reading/favorites/book/humility/", format="json"
+                ).status_code
+                for _ in range(3)
+            ]
+        self.assertEqual(codes[:2], [200, 200])
+        self.assertEqual(codes[2], 429)
+        cache.clear()
