@@ -255,6 +255,27 @@ PLAN_TRANSLATIONS = {
         ),
     },
     "sw": {
+        # Same rule as humility-12-days below: the title opens with "Njia ya
+        # Kumwendea Mungu", which is the shipped Swahili edition's title verbatim
+        # (books/the-way-to-god.sw.json), so the plan card names the book the way
+        # the book names itself.
+        #
+        # Two of the three source books — a-call-to-the-unconverted and
+        # all-of-grace — have no Swahili edition yet, so seed_plans will not
+        # create this row today; it skips a plan whose books are not all present.
+        # The prose ships anyway, and deliberately: the moment either book lands
+        # in Swahili the row IS created, and without an entry here it would take
+        # the ENGLISH tuple and publish "The Way to God: Grace for Every Sinner"
+        # on the Swahili plans page. That is the #819 defect, and this is the
+        # cheap half of preventing it.
+        "grace-for-every-sinner": (
+            "Njia ya Kumwendea Mungu: Neema kwa Kila Mwenye Dhambi",
+            "Mwezi mmoja juu ya habari njema iliyo kongwe kuliko zote. Wito wa "
+            "upole wa Richard Baxter kwa wasioongoka, D. L. Moody juu ya njia ya "
+            "kumwendea Mungu, na Yote ni kwa Neema ya Charles Spurgeon — "
+            "miongozo iliyo wazi kuliko yote juu ya jinsi mwenye dhambi "
+            "anavyookolewa, na jinsi ya kulijua hilo.",
+        ),
         # "the root of every virtue" is «mzizi wa kila wema» verbatim from the
         # Swahili edition of the book itself, so the plan card and the book it
         # sends readers to use the same phrase.
