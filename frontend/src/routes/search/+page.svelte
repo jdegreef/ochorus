@@ -150,6 +150,7 @@
 	let q = $state('');
 	let hits = $state<SearchHit[]>([]);
 	let loading = $state(false);
+	let searchError = $state(false);
 	let ran = $state('');
 	let suggestion = $state('');
 	let timer: ReturnType<typeof setTimeout> | undefined;
@@ -448,6 +449,7 @@
 		totals = {};
 		totalsCapped = {};
 		typeRows = null;
+		searchError = false;
 	}
 
 	// --- Instant scripture answer ----------------------------------------------
@@ -572,6 +574,7 @@
 		// an older reply repaints stale hits over the term the reader can see.
 		const token = ++searchSeq;
 		loading = true;
+		searchError = false;
 		void maybeScripture(term, token); // in parallel; independent of the list
 		try {
 			const res = await search(term, getLang(), scope);
@@ -583,9 +586,25 @@
 			totalsCapped = res.totals_capped ?? {};
 			pageSize = res.page_size ?? pageSize;
 			scopeInfo = res.scope ?? null;
+		} catch {
+			// Never leave the previous query's hits on screen under the new term —
+			// that reads as a (wrong) answer. Clear and surface a retry instead.
+			if (token !== searchSeq) return;
+			hits = [];
+			ran = '';
+			suggestion = '';
+			totals = {};
+			totalsCapped = {};
+			searchError = true;
 		} finally {
 			if (token === searchSeq) loading = false;
 		}
+	}
+
+	/** Re-run the current query after an error (the retry button). */
+	function retrySearch() {
+		const term = q.trim();
+		if (term.length >= 2) runSearch(term);
 	}
 
 	/**
@@ -1038,6 +1057,13 @@
 						<div class="h-3 w-full rounded bg-surface-2"></div>
 					</div>
 				{/each}
+			</div>
+		{:else if searchError}
+			<div class="rounded-card border border-border bg-surface p-8 text-center">
+				<p class="text-body text-text">{t('search.loadError')}</p>
+				<button type="button" class="btn btn-primary mt-4" onclick={retrySearch}>
+					{t('error.tryAgain')}
+				</button>
 			</div>
 		{:else if q.trim().length < 2}
 			{@render waysIn(true)}

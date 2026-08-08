@@ -62,6 +62,7 @@
   "search_tagline": "Find a book, a writer, a topic, or a line of text anywhere in the library.",
   "search_meta_description": "Search the Ochorus library — classic Christian books, sermons, writers and topics. Search the full text of every work, free to read.",
   "search_no_results": "No results for",
+  "search_load_error": "We couldn't run that search just now.",
   "search_prompt": "Type at least two characters to search.",
   "search_recent": "Recent searches",
   "search_clear_recent": "Clear",

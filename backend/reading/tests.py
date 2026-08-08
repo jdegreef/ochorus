@@ -520,3 +520,95 @@ class PlanProgressSyncTests(TestCase):
             anon.put("/api/reading/plan/x/", {"done": [1]}, format="json").status_code,
             (401, 403),
         )
+
+
+class MalformedPayloadTests(TestCase):
+    """A stale or buggy client can send a wrong-shaped body (a JSON array where
+    a dict is expected, non-dict rows in a merge list). None of it may 500: the
+    endpoints skip the junk and return normally, so a single bad field never
+    aborts a reader's sign-in reconciliation."""
+
+    def setUp(self):
+        self.user = User.objects.create(username="00000000-0000-0000-0000-0000000000ff")
+        self.profile = UserProfile.objects.create(
+            user=self.user, supabase_uid=self.user.username, email="m@example.com"
+        )
+        self.client = APIClient()
+        self.client.force_authenticate(self.user)
+
+    def test_merge_ignores_non_list_sections(self):
+        res = self.client.post(
+            "/api/reading/merge/",
+            {
+                "progress": "oops",
+                "marks": "nope",
+                "favorites": {"not": "a list"},
+                "sermon_marks": 42,
+            },
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+
+    def test_merge_skips_non_dict_rows(self):
+        res = self.client.post(
+            "/api/reading/merge/",
+            {
+                "progress": [42, "x", None],
+                "marks": [7],
+                "favorites": [1, 2, 3],
+                "sermon_marks": ["nope"],
+            },
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        # Nothing junk was written.
+        self.assertEqual(ReadingProgress.objects.filter(profile=self.profile).count(), 0)
+        self.assertEqual(ChapterMarks.objects.filter(profile=self.profile).count(), 0)
+        self.assertEqual(Favorite.objects.filter(profile=self.profile).count(), 0)
+
+    def test_merge_with_a_json_array_body_does_not_500(self):
+        res = self.client.post("/api/reading/merge/", [1, 2, 3], format="json")
+        self.assertEqual(res.status_code, 200)
+
+    def test_put_endpoints_reject_a_non_dict_body_without_losing_data(self):
+        # A bare array/scalar body must be a clean 400 — NOT a 500, and crucially
+        # NOT coerced to {} (which for marks means "delete" and for progress means
+        # "reset to chapter 1"). Existing data must survive the malformed request.
+        ReadingProgress.objects.create(
+            profile=self.profile, kind="book", book_slug="humility",
+            language="en", chapter_order=15, paragraph_index=4,
+        )
+        ChapterMarks.objects.create(
+            profile=self.profile, kind="book", book_slug="humility",
+            chapter_order=1, marks=[mark(0, 1, 5)],
+        )
+        ChapterMarks.objects.create(
+            profile=self.profile, kind="sermon", book_slug="a-sermon",
+            chapter_order=1, marks=[mark(0, 2, 6)],
+        )
+
+        for url in (
+            "/api/reading/progress/humility/",
+            "/api/reading/marks/humility/1/",
+            "/api/reading/plan/school-of-prayer/",
+            "/api/reading/sermon-marks/a-sermon/",
+        ):
+            self.assertEqual(
+                self.client.put(url, [1, 2, 3], format="json").status_code,
+                400,
+                msg=url,
+            )
+
+        # Nothing was deleted or reset by the malformed requests.
+        prog = ReadingProgress.objects.get(profile=self.profile, book_slug="humility")
+        self.assertEqual(prog.chapter_order, 15)
+        self.assertTrue(
+            ChapterMarks.objects.filter(
+                profile=self.profile, kind="book", book_slug="humility", chapter_order=1
+            ).exists()
+        )
+        self.assertTrue(
+            ChapterMarks.objects.filter(
+                profile=self.profile, kind="sermon", book_slug="a-sermon"
+            ).exists()
+        )

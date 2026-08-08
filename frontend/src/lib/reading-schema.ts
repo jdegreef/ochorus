@@ -49,6 +49,24 @@ export const READING_DATA_KEYS = [
 	LEGACY_SERMON_ANCHOR_KEY
 ] as const;
 
+/**
+ * The keys wiped when a SESSION ENDS (sign-out button, token expiry, sign-out in
+ * another tab). This is READING_DATA_KEYS *minus* any store that has no server
+ * copy: wiping an un-synced store on a routine sign-out would be silent,
+ * unrecoverable data loss, not a privacy win.
+ *
+ * BOOKMARKS_KEY is excluded because bookmarks are not yet synced to the account
+ * (unlike marks/progress/favorites, they have no push and aren't in the merge
+ * payload) — so a sign-out is the reader's ONLY copy. They stay device-local
+ * until an explicit "clear reading data" (which still uses READING_DATA_KEYS).
+ * The shared-device tradeoff: a signed-out reader's bookmarks remain visible on
+ * that browser; acceptable versus guaranteed loss, and they are never merged
+ * into the next account. TODO(review #36): sync bookmarks, then fold this back.
+ */
+export const SIGN_OUT_DATA_KEYS = READING_DATA_KEYS.filter(
+	(k) => k !== BOOKMARKS_KEY
+);
+
 // --- Work kind ----------------------------------------------------------------
 /**
  * What a slug names: a chaptered book, a sermon, or an author biography (the

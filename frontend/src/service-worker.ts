@@ -97,6 +97,12 @@ sw.addEventListener('fetch', (event) => {
 		event.respondWith(offlineThenImage(request));
 		return;
 	}
+	// Never cache non-library API responses. When the API is same-origin (see
+	// config.ts), the catch-all below would cache-first per-user, authenticated
+	// endpoints like /api/auth/me/ and /api/reading/* — and the cache key ignores
+	// the Authorization header, so a shared browser could serve one reader the
+	// previous reader's profile/reading data. Let them go straight to the network.
+	if (url.origin === sw.location.origin && url.pathname.includes('/api/')) return;
 	if (isPrecached(url) || url.origin === sw.location.origin) {
 		event.respondWith(cacheFirst(request));
 	}

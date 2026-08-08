@@ -1,6 +1,13 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { readingSync } from './readingSync';
-import { READING_DATA_KEYS, PROGRESS_KEY, MARKS_KEY, LAST_SYNC_KEY } from './reading-schema';
+import {
+	READING_DATA_KEYS,
+	SIGN_OUT_DATA_KEYS,
+	BOOKMARKS_KEY,
+	PROGRESS_KEY,
+	MARKS_KEY,
+	LAST_SYNC_KEY
+} from './reading-schema';
 
 beforeEach(() => localStorage.clear());
 
@@ -26,17 +33,28 @@ describe('readingSync last-synced', () => {
 });
 
 describe('readingSync.clearOnSignOut', () => {
-	it('removes every reading-data key but leaves device preferences alone', () => {
+	it('removes server-backed reading data but keeps bookmarks and device prefs', () => {
 		for (const key of READING_DATA_KEYS) localStorage.setItem(key, '{"some":"data"}');
 		localStorage.setItem('ochorus:reader-prefs', '{"scale":1.2}');
 		localStorage.setItem('ochorus:lang', 'lg');
 
 		readingSync.clearOnSignOut();
 
-		for (const key of READING_DATA_KEYS) expect(localStorage.getItem(key)).toBeNull();
+		for (const key of SIGN_OUT_DATA_KEYS) expect(localStorage.getItem(key)).toBeNull();
+		// Bookmarks have no server copy yet, so a sign-out must NOT destroy them
+		// (see review #36) — they'd be unrecoverable.
+		expect(localStorage.getItem(BOOKMARKS_KEY)).toBe('{"some":"data"}');
 		// Theme/font/language are device preferences, not identity data.
 		expect(localStorage.getItem('ochorus:reader-prefs')).toBe('{"scale":1.2}');
 		expect(localStorage.getItem('ochorus:lang')).toBe('lg');
+	});
+
+	it('clearDeviceData (explicit "clear reading data") also removes bookmarks', () => {
+		for (const key of READING_DATA_KEYS) localStorage.setItem(key, '{"some":"data"}');
+
+		readingSync.clearDeviceData();
+
+		for (const key of READING_DATA_KEYS) expect(localStorage.getItem(key)).toBeNull();
 	});
 
 	it('notifies open views that the cache was emptied', () => {
