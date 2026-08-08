@@ -12,12 +12,18 @@ rest on different manuscripts a KJV clause is simply absent from the ASV at the
 cited verse and this reports a mismatch that isn't one. Acts 9:5 is the
 standing example.
 
-At the default thresholds it flags 101 of the corpus's ~4,400 quote-citation
+At the default thresholds it flags 247 of the corpus's ~4,400 quote-citation
 pairs. A meaningful minority of those are the ASV/KJV artifact above, and a few
 more are the regex pairing a quotation with a reference that belongs to the
 sentence after it. So the output is a worklist for a human, and folding it into
 the ratchet would assert a precision it has not earned — see
 `tests_citations.KnownLimitationTests`.
+
+The count was 101 while the rival search looked only inside the cited book.
+Widening it across the canon added 146, concentrated in `religious-affections`
+(57) and the modern compiled `-2` works, where whole chapters carry scrambled
+references. A hand-checked sample of ten was ten real defects, and no earlier
+finding was lost — so the jump is recall this check never had, not noise.
 
 Worth running before a work goes into the translation queue. This is the one
 English defect class that survives translation intact: a translator reproduces
