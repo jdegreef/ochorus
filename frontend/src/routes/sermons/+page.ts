@@ -3,6 +3,11 @@ import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
 
 /**
+ * Prerender refresh 2026-08-08 (queue job #424, PR #901): Moody's "Christ All
+ * in All" landed in Swahili as Kristo Yote katika Yote. Re-crawl /sw/sermons so
+ * the card and its /sw/sermons/christ-all-in-all page bake the translated title
+ * and the "In brief" summary.
+ *
  * Prerender refresh 2026-07-17 (queue job #180): force an ochorus-web rebuild
  * after the api went live with the Luganda sermon Enteekateeka n'Ensonga mu
  * Kusaba (PR #186), so the /lg/sermons pages re-crawl and bake the new title.

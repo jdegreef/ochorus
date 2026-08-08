@@ -650,3 +650,49 @@ archaic spelling and period punctuation are the text, not defects in it.
   added no migration). Then follow the failure protocol: comment where you
   stopped, remove `in-progress`, leave the issue open. A PR that is finished and
   honestly labelled is worth more than a merge you could not verify.
+- **To enumerate a work's references, use `pythonbible.get_references`, NOT our
+  own `extract_citations` / `cited_references`** (job #424, 2026-08-08). The
+  coverage check for a 6,539-word Moody sermon reported **one** reference, which
+  is not a credible number and is the only reason the cause got found:
+  `library/scripture._CANDIDATE` requires Arabic digits for the chapter, and
+  Victorian devotional prose writes Roman — `Colossians iii. 11`, `Luke ii. 10`,
+  `Isaiah xlix. 24`. `pythonbible` parses those natively; our pre-filter regex,
+  which exists to locate the span in the HTML before pythonbible validates it,
+  does not. Corpus-wide it is **690 Roman-numeral citations across 23 English
+  works** that use Roman almost exclusively, so in `the-way-to-god` (128),
+  `all-things-for-good` (159) and `a-call-to-the-unconverted` (68) the reader's
+  tappable references are not degraded but **entirely absent**, and
+  `audit_citations` is blind there too. Filed as #900. Until it is fixed, build
+  your crib and your coverage check on `bible.get_references(text)` and expect
+  some prose false positives to filter ("Wisdom of Solomon", bare "Joshua").
+  **Convert Roman to Western digits in the translation** — every shipped
+  non-English file uses Western digits with tight `C:V`.
+- **A defect the English shares with its translations will have been handled
+  DIFFERENTLY by each of them — check before deciding what to do** (job #424).
+  `christ-all-in-all.en` miscites John 14:6 as `(John x.)`. The three shipped
+  translations disagree three ways: **es silently corrects it** to `(Juan 14)`,
+  **pt reproduces it and leaves the Roman numeral untranslated** (`(João x.)`,
+  which is neither English nor Portuguese convention — a second artifact), and
+  **ar reproduces it faithfully** as `(يوحنّا 10)`. That spread is the argument
+  for repairing the **English source** via `BODY_CORRECTIONS` rather than
+  per-edition, and it is worth a one-line grep before you write your own
+  rendering: `grep -o '([^)]*<book>[^)]*)' content/<kind>/<slug>.*.json`. Render
+  the defect as printed in your edition and report it; do not join the es camp
+  and silently fix it, or the editions keep diverging.
+- **The sw SERMON band is now n=7, mean 83.4%** (73.6 / 77.8 / 80.1 / 83.1 /
+  84.7 / 86.9 / 93.6%). #423 recorded mean 82.7% at n=6; adding #423's own
+  shipped file and #424 moves it. Re-derive rather than copy — it is a dict
+  comprehension over `word_count` on both sides, and every job that ships adds a
+  point.
+- **A shared session branch silently merges two jobs into one PR** (jobs #420 +
+  #423, 2026-08-08). Two sessions were both told to develop on
+  `claude/ochorus-dev-261l92`, so when the second pushed, its book landed on the
+  branch of the first session's open sermon PR and the two shipped together under
+  a sermon-shaped title. Nothing is lost if you handle it right: **rebase onto
+  the other session's commits, never force-push over them**, and settle whether
+  your file survived the rebase with **checksums, not `git status`** — `md5` the
+  worktree copy against `git show HEAD:<path>`, because a rebase that replaces
+  your file with theirs leaves the tree *clean*. Then retitle the PR to name both
+  jobs, comment your own report separately, and tell the user, because
+  one-PR-per-feature is not achievable from inside the session and the choice
+  about how to split is theirs.
