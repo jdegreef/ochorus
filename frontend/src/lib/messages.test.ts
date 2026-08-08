@@ -60,12 +60,12 @@ const SAME_AS_ENGLISH_OK = new Set([
  * two-way ratchet the English-audit baseline uses, for the same reason.
  */
 const PENDING_TRANSLATION: Record<string, readonly string[]> = {
-	// All four are Scripture (Isa 55:11, Matt 25:36, Col 3:16, John 1:5).
-	// Ochorus quotes Scripture from the trusted Bible text for the locale — for
-	// uk that is Kulish, via Take Root — never from a translator's paraphrase or
-	// anyone's memory. So these are blocked on fetching that text, not on
-	// translation effort, and they carry English until it lands. See #815.
-	uk: ['about_scripture1', 'about_scripture2', 'about_scripture3', 'settings_font_sample']
+	// Empty, and worth keeping that way. uk's four Scripture strings lived here
+	// until the Kulish text could be sourced; it now can be, from the ebible
+	// USFM mirror on raw.githubusercontent.com, which is reachable where
+	// api.takeroot.bible is not. The mechanism stays because the next locale
+	// will hit the same wall — the point is that a blocked string is declared
+	// and ratcheted rather than quietly allowlisted forever.
 };
 
 const toSnake = (key: string) =>
