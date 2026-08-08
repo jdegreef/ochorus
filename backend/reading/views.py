@@ -12,9 +12,11 @@ from __future__ import annotations
 
 from datetime import date, datetime, timezone
 
+from django.db import transaction
 from rest_framework.exceptions import ValidationError
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.throttling import UserRateThrottle
 from rest_framework.views import APIView
 
 from accounts.models import UserProfile
@@ -49,6 +51,47 @@ def _profile(request) -> UserProfile:
 # decade of daily reading) but finite, so an oversized bundle can't fan out.
 MAX_ACTIVITY_MERGE = 6000
 
+# Per-list cap on any other merge section (progress, marks, favorites, sermon
+# marks, plan progress). Generous — no honest reader has 2,000 books, favorites,
+# or annotated chapters — but finite, so even after the per-row guards a single
+# oversized bundle can't fan the merge out into an unbounded number of writes.
+MAX_MERGE_ROWS = 2000
+
+# Slugs come from the URL (<slug:…>, unbounded) and from JSON payloads; the DB
+# columns are SlugField(max_length=160). An over-long slug is a Postgres
+# DataError (a 500) on write — reject/skip it. Chapter orders are 1-based; the
+# ceiling stops an out-of-range int from becoming a PositiveInteger DataError.
+SLUG_MAX = 160
+MAX_CHAPTER_ORDER = 100_000
+
+
+class _ReadingWriteThrottle(UserRateThrottle):
+    """Bounds how fast one signed-in account can mutate its reading state.
+
+    These endpoints are ``IsAuthenticated``, so this caps a single account
+    (keyed by user id); combined with the per-list merge caps it stops a scripted
+    or compromised account from amplifying sync into unbounded DB writes.
+    Generous enough that real highlight/scroll bursts never hit it — a bound, not
+    access control (per-worker local-memory cache, like the search-click one)."""
+
+    scope = "reading"
+
+
+def _valid_slug(slug) -> bool:
+    """A non-empty slug that fits the SlugField columns (varchar(160))."""
+    return isinstance(slug, str) and 0 < len(slug) <= SLUG_MAX
+
+
+def _valid_order(value) -> int | None:
+    """A parsed 1-based chapter order within bounds, or None. Chapters are
+    1-based, so 0/negative is junk, and the ceiling keeps an out-of-range int
+    from reaching the DB as a DataError."""
+    try:
+        order = int(value)
+    except (TypeError, ValueError):
+        return None
+    return order if 1 <= order <= MAX_CHAPTER_ORDER else None
+
 
 def _parse_day(value) -> date | None:
     """A 'YYYY-MM-DD' string → a date, or None if malformed."""
@@ -60,11 +103,19 @@ def _parse_day(value) -> date | None:
         return None
 
 
-def _clamp_int(value, default=0, low=0) -> int:
+def _clamp_int(value, default=0, low=0, high=None) -> int:
     try:
-        return max(low, int(value))
+        n = max(low, int(value))
     except (TypeError, ValueError):
         return default
+    return min(high, n) if high is not None else n
+
+
+def _lang(value) -> str:
+    """A language code coerced to a short string. A truthy non-string value (a
+    number or list from a buggy client) would crash ``(x or "en")[:10]`` with a
+    TypeError → 500, so anything but a non-empty string falls back to ``"en"``."""
+    return value[:10] if isinstance(value, str) and value else "en"
 
 
 def _as_dict(data) -> dict:
@@ -118,16 +169,28 @@ def _upsert_plan_progress(profile, slug, done, started):
     lost. (The tradeoff: un-marking a day is therefore device-local and may not
     propagate — deliberately, since silently losing a day a reader completed is
     far worse than an un-check that doesn't sync.)
+
+    The read-union-write runs inside a transaction with the existing row locked
+    (``select_for_update``): without it, two devices PUTting at once can both read
+    the same old ``done`` and the second write clobbers the first's union — losing
+    a completed day, the exact thing this function promises never happens. On
+    SQLite the lock is a no-op (single-writer already); on Postgres it serializes
+    the two writers. Nested inside MergeView's atomic block it's just a savepoint.
     """
-    existing = PlanProgress.objects.filter(profile=profile, plan_slug=slug).first()
-    if existing:
-        done = set(done) | set(existing.done)
-        started = min(started, existing.started_at)
-    obj, _ = PlanProgress.objects.update_or_create(
-        profile=profile,
-        plan_slug=slug,
-        defaults={"started_at": started, "done": sorted(done)},
-    )
+    with transaction.atomic():
+        existing = (
+            PlanProgress.objects.select_for_update()
+            .filter(profile=profile, plan_slug=slug)
+            .first()
+        )
+        if existing:
+            done = set(done) | set(existing.done)
+            started = min(started, existing.started_at)
+        obj, _ = PlanProgress.objects.update_or_create(
+            profile=profile,
+            plan_slug=slug,
+            defaults={"started_at": started, "done": sorted(done)},
+        )
     return obj
 
 
@@ -177,10 +240,13 @@ class ProgressView(APIView):
     """Upsert the reader's position in one book."""
 
     permission_classes = [IsAuthenticated]
+    throttle_classes = [_ReadingWriteThrottle]
 
     def put(self, request, slug):
         profile = _profile(request)
         data = _dict_body(request)
+        if not _valid_slug(slug):
+            return Response({"detail": "Invalid slug."}, status=400)
         kind = _kind_or_none(request.query_params.get("kind") or data.get("kind"))
         if kind is None:
             return Response({"detail": "Unknown kind."}, status=400)
@@ -189,9 +255,9 @@ class ProgressView(APIView):
             kind=kind,
             book_slug=slug,
             defaults={
-                "language": (data.get("language") or "en")[:10],
-                "chapter_order": _clamp_int(data.get("chapter_order"), default=1, low=1),
-                "paragraph_index": _clamp_int(data.get("paragraph_index"), default=0),
+                "language": _lang(data.get("language")),
+                "chapter_order": _clamp_int(data.get("chapter_order"), default=1, low=1, high=MAX_CHAPTER_ORDER),
+                "paragraph_index": _clamp_int(data.get("paragraph_index"), default=0, high=MAX_CHAPTER_ORDER),
             },
         )
         return Response(ReadingProgressSerializer(obj).data)
@@ -201,10 +267,15 @@ class MarksView(APIView):
     """Replace the reader's marks for one chapter (empty payload deletes them)."""
 
     permission_classes = [IsAuthenticated]
+    throttle_classes = [_ReadingWriteThrottle]
 
     def put(self, request, slug, order):
         profile = _profile(request)
         data = _dict_body(request)
+        if not _valid_slug(slug):
+            return Response({"detail": "Invalid slug."}, status=400)
+        if _valid_order(order) is None:
+            return Response({"detail": "Invalid chapter order."}, status=400)
         kind = _kind_or_none(request.query_params.get("kind") or data.get("kind"))
         if kind is None:
             return Response({"detail": "Unknown kind."}, status=400)
@@ -222,7 +293,7 @@ class MarksView(APIView):
             book_slug=slug,
             chapter_order=order,
             defaults={
-                "language": (data.get("language") or "en")[:10],
+                "language": _lang(data.get("language")),
                 "marks": marks,
                 "highlights": [],
                 "notes": {},
@@ -241,10 +312,13 @@ class SermonMarksView(APIView):
     """
 
     permission_classes = [IsAuthenticated]
+    throttle_classes = [_ReadingWriteThrottle]
 
     def put(self, request, slug):
         profile = _profile(request)
         data = _dict_body(request)
+        if not _valid_slug(slug):
+            return Response({"detail": "Invalid slug."}, status=400)
         marks = _marks_from_payload(data)
 
         if not marks:
@@ -259,7 +333,7 @@ class SermonMarksView(APIView):
             book_slug=slug,
             chapter_order=1,
             defaults={
-                "language": (data.get("language") or "en")[:10],
+                "language": _lang(data.get("language")),
                 "marks": marks,
                 "highlights": [],
                 "notes": {},
@@ -272,10 +346,13 @@ class FavoriteView(APIView):
     """Save / unsave one favorite (an author, book, plan or sermon)."""
 
     permission_classes = [IsAuthenticated]
+    throttle_classes = [_ReadingWriteThrottle]
 
     def put(self, request, kind, slug):
         if kind not in FavoriteKind.values:
             return Response({"detail": "Unknown kind."}, status=400)
+        if not _valid_slug(slug):
+            return Response({"detail": "Invalid slug."}, status=400)
         profile = _profile(request)
         obj, _ = Favorite.objects.get_or_create(
             profile=profile, kind=kind, slug=slug
@@ -285,6 +362,8 @@ class FavoriteView(APIView):
     def delete(self, request, kind, slug):
         if kind not in FavoriteKind.values:
             return Response({"detail": "Unknown kind."}, status=400)
+        if not _valid_slug(slug):
+            return Response({"detail": "Invalid slug."}, status=400)
         profile = _profile(request)
         Favorite.objects.filter(profile=profile, kind=kind, slug=slug).delete()
         return Response(status=204)
@@ -301,10 +380,13 @@ class PlanProgressView(APIView):
     """
 
     permission_classes = [IsAuthenticated]
+    throttle_classes = [_ReadingWriteThrottle]
 
     def put(self, request, slug):
         profile = _profile(request)
         data = _dict_body(request)
+        if not _valid_slug(slug):
+            return Response({"detail": "Invalid slug."}, status=400)
         started = _ms_to_dt(data.get("started_at")) or datetime.now(timezone.utc)
         obj = _upsert_plan_progress(
             profile, slug, _clean_done(data.get("done")), started
@@ -316,6 +398,7 @@ class ActivityView(APIView):
     """Record one day the reader read (the streak's activity log)."""
 
     permission_classes = [IsAuthenticated]
+    throttle_classes = [_ReadingWriteThrottle]
 
     def put(self, request, day):
         parsed = _parse_day(day)
@@ -330,24 +413,31 @@ class MergeView(APIView):
     """First-sign-in reconciliation of local (offline) state with the server.
 
     Progress conflicts resolve by recency (the client sends `updated_at` in epoch
-    ms); marks are *unioned* so no highlight or note is ever dropped — on a note
-    collision the longer text wins. Returns the merged whole for the client to
-    write back over its localStorage cache.
+    ms); marks are *unioned* — on a note collision the longer text wins — so no
+    highlight or note a real reader made is dropped (the union is bounded only by
+    a large per-chapter anti-abuse cap; see marks.MAX_MARKS_PER_CHAPTER). Returns
+    the merged whole for the client to write back over its localStorage cache.
     """
 
     permission_classes = [IsAuthenticated]
+    throttle_classes = [_ReadingWriteThrottle]
 
     def post(self, request):
         profile = _profile(request)
         # A JSON array/scalar body (a stale client shape) must not 500 the whole
         # sign-in reconciliation; each helper also guards its own section.
         data = _as_dict(request.data)
-        self._merge_progress(profile, data.get("progress") or [])
-        self._merge_marks(profile, data.get("marks") or [])
-        self._merge_sermon_marks(profile, data.get("sermon_marks") or [])
-        self._merge_favorites(profile, data.get("favorites") or [])
-        self._merge_activity(profile, data.get("activity") or [])
-        self._merge_plan_progress(profile, data.get("plan_progress") or [])
+        # All six phases are one transaction: a failure in a later phase (or a
+        # DB error mid-write) must not leave the account half-reconciled — the
+        # client writes the returned state back over localStorage, so a partial
+        # merge would silently diverge local and server.
+        with transaction.atomic():
+            self._merge_progress(profile, data.get("progress") or [])
+            self._merge_marks(profile, data.get("marks") or [])
+            self._merge_sermon_marks(profile, data.get("sermon_marks") or [])
+            self._merge_favorites(profile, data.get("favorites") or [])
+            self._merge_activity(profile, data.get("activity") or [])
+            self._merge_plan_progress(profile, data.get("plan_progress") or [])
         return Response(_serialize_state(profile))
 
     def _merge_plan_progress(self, profile, incoming):
@@ -356,11 +446,11 @@ class MergeView(APIView):
         merge, so a malformed bundle can't 500 the whole sign-in reconciliation."""
         if not isinstance(incoming, list):
             return
-        for row in incoming:
+        for row in incoming[:MAX_MERGE_ROWS]:
             if not isinstance(row, dict):
                 continue
             slug = row.get("plan_slug")
-            if not slug:
+            if not _valid_slug(slug):
                 continue
             started = _ms_to_dt(row.get("started_at")) or datetime.now(timezone.utc)
             _upsert_plan_progress(profile, slug, _clean_done(row.get("done")), started)
@@ -373,10 +463,17 @@ class MergeView(APIView):
         (MAX_ACTIVITY_MERGE ≈ years of daily reading — no honest client hits it)."""
         if not isinstance(incoming, list):
             return
-        for value in incoming[:MAX_ACTIVITY_MERGE]:
-            parsed = _parse_day(value)
-            if parsed is not None:
-                ReadingDay.objects.get_or_create(profile=profile, day=parsed)
+        days = {
+            parsed
+            for value in incoming[:MAX_ACTIVITY_MERGE]
+            if (parsed := _parse_day(value)) is not None
+        }
+        # One INSERT ... ON CONFLICT DO NOTHING instead of a get_or_create per
+        # day: the unique (profile, day) constraint skips days already recorded.
+        ReadingDay.objects.bulk_create(
+            [ReadingDay(profile=profile, day=d) for d in days],
+            ignore_conflicts=True,
+        )
 
     def _merge_favorites(self, profile, incoming):
         """Union: a heart set on either side survives (like marks, nothing a
@@ -385,25 +482,29 @@ class MergeView(APIView):
         can't 500 the sign-in reconciliation."""
         if not isinstance(incoming, list):
             return
-        for row in incoming:
+        favorites = {}
+        for row in incoming[:MAX_MERGE_ROWS]:
             if not isinstance(row, dict):
                 continue
             kind = row.get("kind")
             slug = row.get("slug")
-            if not slug or kind not in FavoriteKind.values:
+            if not _valid_slug(slug) or kind not in FavoriteKind.values:
                 continue
-            Favorite.objects.get_or_create(profile=profile, kind=kind, slug=slug)
+            favorites[(kind, slug)] = Favorite(profile=profile, kind=kind, slug=slug)
+        # One INSERT ... ON CONFLICT DO NOTHING: the unique (profile, kind, slug)
+        # constraint skips hearts already saved.
+        Favorite.objects.bulk_create(list(favorites.values()), ignore_conflicts=True)
 
     def _merge_progress(self, profile, incoming):
         if not isinstance(incoming, list):
             return
         existing = {(p.kind, p.book_slug): p for p in profile.progress.all()}
-        for row in incoming:
+        for row in incoming[:MAX_MERGE_ROWS]:
             if not isinstance(row, dict):
                 continue
             slug = row.get("book_slug")
             kind = _kind_or_none(row.get("kind"))
-            if not slug or kind is None:
+            if not _valid_slug(slug) or kind is None:
                 continue
             local_dt = _ms_to_dt(row.get("updated_at"))
             server = existing.get((kind, slug))
@@ -415,9 +516,9 @@ class MergeView(APIView):
                 kind=kind,
                 book_slug=slug,
                 defaults={
-                    "language": (row.get("language") or "en")[:10],
-                    "chapter_order": _clamp_int(row.get("chapter_order"), default=1, low=1),
-                    "paragraph_index": _clamp_int(row.get("paragraph_index"), default=0),
+                    "language": _lang(row.get("language")),
+                    "chapter_order": _clamp_int(row.get("chapter_order"), default=1, low=1, high=MAX_CHAPTER_ORDER),
+                    "paragraph_index": _clamp_int(row.get("paragraph_index"), default=0, high=MAX_CHAPTER_ORDER),
                 },
             )
 
@@ -427,13 +528,15 @@ class MergeView(APIView):
         existing = {
             (m.kind, m.book_slug, m.chapter_order): m for m in profile.marks.all()
         }
-        for row in incoming:
+        for row in incoming[:MAX_MERGE_ROWS]:
             if not isinstance(row, dict):
                 continue
             slug = row.get("book_slug")
             kind = _kind_or_none(row.get("kind"))
-            order = _clamp_int(row.get("chapter_order"), default=-1, low=0)
-            if not slug or kind is None or order < 0:
+            order = _valid_order(row.get("chapter_order"))
+            # A parseable negative (e.g. -5) used to clamp to 0 and get stored as
+            # a junk chapter-0 row; require a real 1-based order instead.
+            if not _valid_slug(slug) or kind is None or order is None:
                 continue
             marks = _marks_from_payload(row)
             server = existing.get((kind, slug, order))
@@ -451,7 +554,7 @@ class MergeView(APIView):
                 book_slug=slug,
                 chapter_order=order,
                 defaults={
-                    "language": (row.get("language") or "en")[:10],
+                    "language": _lang(row.get("language")),
                     "marks": marks,
                     "highlights": [],
                     "notes": {},
@@ -464,11 +567,11 @@ class MergeView(APIView):
         non-list is ignored and non-dict rows skipped."""
         if not isinstance(incoming, list):
             return
-        for row in incoming:
+        for row in incoming[:MAX_MERGE_ROWS]:
             if not isinstance(row, dict):
                 continue
             slug = row.get("sermon_slug")
-            if not slug:
+            if not _valid_slug(slug):
                 continue
             marks = _marks_from_payload(row)
             server = ChapterMarks.objects.filter(
@@ -484,7 +587,7 @@ class MergeView(APIView):
                 book_slug=slug,
                 chapter_order=1,
                 defaults={
-                    "language": (row.get("language") or "en")[:10],
+                    "language": _lang(row.get("language")),
                     "marks": marks,
                     "highlights": [],
                     "notes": {},

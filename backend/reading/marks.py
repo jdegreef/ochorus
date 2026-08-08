@@ -24,6 +24,14 @@ from __future__ import annotations
 # here if a client sends it. Anything outside this set is dropped.
 _HL_COLORS = {"gold", "blue", "green", "rose"}
 
+# Bounds on one chapter's stored marks. A ChapterMarks row's `marks` JSON is
+# returned in full on every /state and /merge, so an unbounded list (or a
+# multi-megabyte note) would balloon every sync for that account. Generous — no
+# honest reader annotates one chapter 500 times or writes a 5,000-char note.
+MAX_MARKS_PER_CHAPTER = 500
+MAX_NOTE_LEN = 5000
+MAX_ID_LEN = 64
+
 
 def _int(value, default=-1) -> int:
     try:
@@ -39,6 +47,8 @@ def clean_mark_list(raw) -> list[dict]:
     out: list[dict] = []
     seen: set[tuple] = set()
     for m in raw:
+        if len(out) >= MAX_MARKS_PER_CHAPTER:
+            break  # bound the accepted list (and the work) on an oversized payload
         if not isinstance(m, dict):
             continue
         p = _int(m.get("p"))
@@ -51,14 +61,14 @@ def clean_mark_list(raw) -> list[dict]:
             continue
         seen.add(key)
         mark = {
-            "id": str(m.get("id") or f"{p}:{s}:{e}"),
+            "id": str(m.get("id") or f"{p}:{s}:{e}")[:MAX_ID_LEN],
             "p": p,
             "s": s,
             "e": e,
         }
         note = m.get("note")
         if isinstance(note, str) and note.strip():
-            mark["note"] = note.strip()
+            mark["note"] = note.strip()[:MAX_NOTE_LEN]
         color = m.get("color")
         if isinstance(color, str) and color in _HL_COLORS:
             mark["color"] = color
@@ -97,4 +107,9 @@ def merge_mark_lists(server: list[dict], incoming: list[dict]) -> list[dict]:
         if len(note_new) > len(existing.get("note", "")):
             existing["note"] = note_new
     merged = sorted(by_range.values(), key=lambda m: (m["p"], m["s"]))
-    return merged
+    # The union of two already-capped lists can reach 2× the cap. Hold the line at
+    # the per-chapter bound: the union is lossless for any realistic chapter (no
+    # reader makes 500 distinct highlights in one chapter), and only in
+    # abuse territory — beyond the cap — are the trailing ranges dropped. That
+    # anti-abuse ceiling is deliberately preferred over an unbounded stored blob.
+    return merged[:MAX_MARKS_PER_CHAPTER]
