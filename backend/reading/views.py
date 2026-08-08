@@ -103,11 +103,19 @@ def _parse_day(value) -> date | None:
         return None
 
 
-def _clamp_int(value, default=0, low=0) -> int:
+def _clamp_int(value, default=0, low=0, high=None) -> int:
     try:
-        return max(low, int(value))
+        n = max(low, int(value))
     except (TypeError, ValueError):
         return default
+    return min(high, n) if high is not None else n
+
+
+def _lang(value) -> str:
+    """A language code coerced to a short string. A truthy non-string value (a
+    number or list from a buggy client) would crash ``(x or "en")[:10]`` with a
+    TypeError → 500, so anything but a non-empty string falls back to ``"en"``."""
+    return value[:10] if isinstance(value, str) and value else "en"
 
 
 def _as_dict(data) -> dict:
@@ -247,9 +255,9 @@ class ProgressView(APIView):
             kind=kind,
             book_slug=slug,
             defaults={
-                "language": (data.get("language") or "en")[:10],
-                "chapter_order": _clamp_int(data.get("chapter_order"), default=1, low=1),
-                "paragraph_index": _clamp_int(data.get("paragraph_index"), default=0),
+                "language": _lang(data.get("language")),
+                "chapter_order": _clamp_int(data.get("chapter_order"), default=1, low=1, high=MAX_CHAPTER_ORDER),
+                "paragraph_index": _clamp_int(data.get("paragraph_index"), default=0, high=MAX_CHAPTER_ORDER),
             },
         )
         return Response(ReadingProgressSerializer(obj).data)
@@ -285,7 +293,7 @@ class MarksView(APIView):
             book_slug=slug,
             chapter_order=order,
             defaults={
-                "language": (data.get("language") or "en")[:10],
+                "language": _lang(data.get("language")),
                 "marks": marks,
                 "highlights": [],
                 "notes": {},
@@ -325,7 +333,7 @@ class SermonMarksView(APIView):
             book_slug=slug,
             chapter_order=1,
             defaults={
-                "language": (data.get("language") or "en")[:10],
+                "language": _lang(data.get("language")),
                 "marks": marks,
                 "highlights": [],
                 "notes": {},
@@ -405,9 +413,10 @@ class MergeView(APIView):
     """First-sign-in reconciliation of local (offline) state with the server.
 
     Progress conflicts resolve by recency (the client sends `updated_at` in epoch
-    ms); marks are *unioned* so no highlight or note is ever dropped — on a note
-    collision the longer text wins. Returns the merged whole for the client to
-    write back over its localStorage cache.
+    ms); marks are *unioned* — on a note collision the longer text wins — so no
+    highlight or note a real reader made is dropped (the union is bounded only by
+    a large per-chapter anti-abuse cap; see marks.MAX_MARKS_PER_CHAPTER). Returns
+    the merged whole for the client to write back over its localStorage cache.
     """
 
     permission_classes = [IsAuthenticated]
@@ -507,9 +516,9 @@ class MergeView(APIView):
                 kind=kind,
                 book_slug=slug,
                 defaults={
-                    "language": (row.get("language") or "en")[:10],
-                    "chapter_order": _clamp_int(row.get("chapter_order"), default=1, low=1),
-                    "paragraph_index": _clamp_int(row.get("paragraph_index"), default=0),
+                    "language": _lang(row.get("language")),
+                    "chapter_order": _clamp_int(row.get("chapter_order"), default=1, low=1, high=MAX_CHAPTER_ORDER),
+                    "paragraph_index": _clamp_int(row.get("paragraph_index"), default=0, high=MAX_CHAPTER_ORDER),
                 },
             )
 
@@ -545,7 +554,7 @@ class MergeView(APIView):
                 book_slug=slug,
                 chapter_order=order,
                 defaults={
-                    "language": (row.get("language") or "en")[:10],
+                    "language": _lang(row.get("language")),
                     "marks": marks,
                     "highlights": [],
                     "notes": {},
@@ -578,7 +587,7 @@ class MergeView(APIView):
                 book_slug=slug,
                 chapter_order=1,
                 defaults={
-                    "language": (row.get("language") or "en")[:10],
+                    "language": _lang(row.get("language")),
                     "marks": marks,
                     "highlights": [],
                     "notes": {},

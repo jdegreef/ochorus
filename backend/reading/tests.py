@@ -724,6 +724,42 @@ class MergeHardeningTests(TestCase):
             400,
         )
 
+    def test_oversized_chapter_order_is_clamped_not_a_500(self):
+        # A value past int4 max would DataError-500 on Postgres; it's clamped.
+        from .views import MAX_CHAPTER_ORDER
+
+        res = self.client.put(
+            "/api/reading/progress/humility/",
+            {"chapter_order": 3_000_000_000, "paragraph_index": 9_000_000_000},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        self.assertLessEqual(res.data["chapter_order"], MAX_CHAPTER_ORDER)
+        # Same value inside a merge row must not 500 the reconciliation either.
+        merged = self.client.post(
+            "/api/reading/merge/",
+            {"progress": [{"book_slug": "abide", "chapter_order": 3_000_000_000}]},
+            format="json",
+        )
+        self.assertEqual(merged.status_code, 200)
+
+    def test_non_string_language_is_not_a_500(self):
+        # `(x or "en")[:10]` on a truthy non-string (5, []) would TypeError-500.
+        res = self.client.put(
+            "/api/reading/progress/humility/",
+            {"chapter_order": 1, "language": 5},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["language"], "en")
+        merged = self.client.post(
+            "/api/reading/merge/",
+            {"marks": [{"book_slug": "x", "chapter_order": 1, "language": [1],
+                        "marks": [{"p": 0, "s": 0, "e": 1}]}]},
+            format="json",
+        )
+        self.assertEqual(merged.status_code, 200)
+
     def test_reading_writes_are_throttled_per_account(self):
         from unittest.mock import patch
 

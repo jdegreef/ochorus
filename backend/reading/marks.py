@@ -107,6 +107,9 @@ def merge_mark_lists(server: list[dict], incoming: list[dict]) -> list[dict]:
         if len(note_new) > len(existing.get("note", "")):
             existing["note"] = note_new
     merged = sorted(by_range.values(), key=lambda m: (m["p"], m["s"]))
-    # The union of two already-capped lists can reach 2× the cap; hold the line
-    # so a merge can't grow a chapter's marks past the per-chapter bound.
+    # The union of two already-capped lists can reach 2× the cap. Hold the line at
+    # the per-chapter bound: the union is lossless for any realistic chapter (no
+    # reader makes 500 distinct highlights in one chapter), and only in
+    # abuse territory — beyond the cap — are the trailing ranges dropped. That
+    # anti-abuse ceiling is deliberately preferred over an unbounded stored blob.
     return merged[:MAX_MARKS_PER_CHAPTER]
