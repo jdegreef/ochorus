@@ -262,6 +262,40 @@ PLAN_TRANSLATIONS = {
             "Moody kuhusu maombi yenye kushinda, na Hannah Buyinza kuhusu maombi "
             "kama mapigo ya kila siku ya maisha ya Mkristo.",
         ),
+        # Every phrase here is taken from the shipped Swahili corpus rather than
+        # rendered fresh: «Kristo ndani yenu» is Colossians 1:27 as the sw books
+        # quote it, «maisha ya ndani zaidi» and «muungano» / «ushirika» are their
+        # settled terms, and «anayekaa ndani» is the wording the power-from-on-high
+        # card above already uses for indwelling. «Yesu Mwenyewe» is deliberate —
+        # it is the sw title of `jesus-himself-2`, the first book this plan sends
+        # a reader to, so the card and the book agree.
+        #
+        # NOTE this row cannot appear yet: seed_plans only creates a plan in a
+        # language where EVERY source book is published in it, and two of the
+        # three (`the-masters-indwelling`, `union-and-communion`) are still
+        # English-only. The prose is correct and waiting; the card goes live with
+        # whichever of those books lands second.
+        # Found while shipping the row below, and live: `the-inner-chamber` is
+        # published in Swahili, so seed_plans had already created the sw plan —
+        # taking the ENGLISH tuple, because no sw entry existed. The sw plans
+        # page has been reading "A Month in the Inner Chamber". Nothing failed;
+        # this is the documented fallback, and it is silent. «Chumba cha Ndani»
+        # is the sw title of the book itself, so card and book agree.
+        # es and uk have the same row and the same gap — reported, not fixed
+        # here, because this job is Swahili.
+        "the-inner-chamber-month": (
+            "Mwezi katika Chumba cha Ndani",
+            "Jenga tabia ya kila siku ya maombi na Neno: asubuhi thelathini na "
+            "sita pamoja na Andrew Murray, sura moja kila siku.",
+        ),
+        "deeper-life-in-christ": (
+            "Maisha ya Ndani Zaidi: Kristo Ndani Yenu",
+            "Si juhudi zaidi, bali Mtu: siri ya maisha ya ndani zaidi ni Kristo "
+            "mwenyewe anayeishi ndani yetu. Andrew Murray anaanza kwa ajabu ya "
+            "Yesu Mwenyewe, kisha anafunua maisha ya Kristo anayekaa ndani, na "
+            "Hudson Taylor anahitimisha katika pumziko la muungano na ushirika "
+            "pamoja na Mpendwa.",
+        ),
     },
 }
 
