@@ -315,7 +315,12 @@ archaic spelling and period punctuation are the text, not defects in it.
   backing a `LAUNCH_PLANS` entry publishes an English-titled plan on that
   language's plans page. PR #819 shipped Arabic *Humility* without adding
   `PLAN_TRANSLATIONS["ar"]["humility-12-days"]`, so the ar plans page reads
-  "Humility in 12 Days". Nothing fails — no test, no CI gate, and the plan job
+  "Humility in 12 Days". **This is now gated** —
+  `tests_fixture.PlanTranslationCoverageTests` fails any book that would create
+  a plan row with no prose in its language (fixture-only, so it needs no DB; it
+  found three drifted locales when it was written). Trust the test, don't
+  hand-check. The paragraph stays because the COUPLING is still the thing to
+  understand: at the time it was found nothing failed — no test, no CI gate, and the plan job
   (#652 here) sits in the queue as if unrelated. **Before shipping a book,
   check whether its slug appears in `LAUNCH_PLANS` or `CURATED_PLANS`, and if it
   does, add the plan prose in the SAME PR.** Verify by running `seed_plans` on a
