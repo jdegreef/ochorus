@@ -348,8 +348,11 @@ RIVAL_MARGIN = 0.30
 # ~31,000 verses instead of one book's few hundred, so a spurious high scorer is
 # far likelier. It therefore has to clear a higher bar. Set above RIVAL_MIN and
 # checked against a full-corpus sweep for a false-positive wave; see
-# tests_citations.
-CROSS_BOOK_RIVAL_MIN = 0.75
+# tests_citations. Set at 0.65 rather than higher because 0.75 rejected a
+# CONFIRMED misattribution — "He takes up the isles like a very little thing"
+# scores 0.67 against Isaiah 40:15, the verse it plainly is. The rival margin
+# and the content floor are what hold precision, not this number alone.
+CROSS_BOOK_RIVAL_MIN = 0.65
 
 # Scores this close count as a dead heat and go to the phrase-order tiebreak.
 _TIE = 1e-9
@@ -361,8 +364,11 @@ _TIE = 1e-9
 # stopwords, and it beat the real answer for a quote containing the word
 # "against". Harmless inside one book — a few hundred verses, and the thresholds
 # were tuned with it present — but across ~31,000 verses a degenerate match is a
-# certainty, so the cross-book pass alone requires real content. Deliberately
-# the same floor the quote itself must clear above.
+# certainty. Applied to BOTH passes: `talks-to-the-farmer` ch12 quotes Pilate's
+# "how many charges they bring against you" and the same-book search answered
+# "Mark 9:40" on the strength of the single word "against". A verse this thin
+# cannot be a right answer in either direction. Deliberately the same floor the
+# quote itself must clear above.
 _MIN_RIVAL_TOKENS = 4
 
 
@@ -434,7 +440,7 @@ def misattributed(quote: str, ref_text: str) -> str | None:
 
     best_book, best_id, best = ref.book, None, 0.0
     for vid, toks in _book_verses(ref.book, ref.start_chapter):
-        if vid in cited_ids:
+        if vid in cited_ids or len(toks) < _MIN_RIVAL_TOKENS:
             continue
         score = _overlap(toks, q)
         if score > best:
