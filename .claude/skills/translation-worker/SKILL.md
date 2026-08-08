@@ -732,11 +732,39 @@ archaic spelling and period punctuation are the text, not defects in it.
   rendering: `grep -o '([^)]*<book>[^)]*)' content/<kind>/<slug>.*.json`. Render
   the defect as printed in your edition and report it; do not join the es camp
   and silently fix it, or the editions keep diverging.
-- **The sw SERMON band is now n=7, mean 83.4%** (73.6 / 77.8 / 80.1 / 83.1 /
-  84.7 / 86.9 / 93.6%). #423 recorded mean 82.7% at n=6; adding #423's own
-  shipped file and #424 moves it. Re-derive rather than copy — it is a dict
-  comprehension over `word_count` on both sides, and every job that ships adds a
-  point.
+- **The sw SERMON band is now n=8, mean 83.3%** (73.6 / 77.4 / 80.1 / 83.0 /
+  84.7 / 86.7 / 87.2 / 93.5%), median 83.9%. #423 recorded mean 82.7% at n=6 and
+  #424 83.4% at n=7; each shipped file moves it. Re-derive rather than copy — it
+  is a dict comprehension over `word_count` on both sides, and every job that
+  ships adds a point. Job #426 shipped at **82.0%**.
+- **A job brief can assert the OPPOSITE of what this file records, and it will
+  sound measured** (job #426, 2026-08-08). #426's prep arrived with three
+  confident "all measured — do not re-derive" claims, and two were false against
+  the corpus at the time it ran:
+  - *"There is no sw sermon band; treat the ratio as observational."* The band
+    was already on disk and already written down here — n=8, 73.6-93.5%. This is
+    the exact error the #423 entry above was added to prevent, restated as a
+    finding. **The entry did not stop it, because the brief told the run not to
+    re-derive.**
+  - *"Quote convention: curly. The English source uses `\"` throughout, so
+    converting is part of the pipeline."* The aggregate count was stale: PR #908
+    had normalised `christ-precious-to-believers.en` hours earlier, so its source
+    was already **77 curly open / 77 close, zero straight**. Mirroring it needed
+    no conversion pass at all — and skipping that pass also skipped the
+    unbalanced-source hazard the ar notes document at length.
+
+  The lesson is not "briefs lie". It is that **a measurement has a timestamp**,
+  and on a repo where main moves this fast a number measured before the last
+  merge is a hypothesis, not a fact. Re-run the one-line measurement even when
+  told it is settled; it costs seconds, and both of #426's re-derivations changed
+  what the job did. Where a brief and this file disagree, the corpus decides.
+- **Quote style now has a CI guard, so "mirror the source" has a backstop**
+  (PR #908). `tests_fixture.QuoteStyleTests` fails any single file that shows
+  both straight and curly marks. It is a CONSISTENCY gate, not a curly mandate —
+  a wholly straight-quoted work still passes. Practical effect on a translation
+  job: count the marks in *your own* English source (not the language column),
+  mirror that style, and check your output has zero of the other kind before
+  building the fixture.
 - **A shared session branch silently merges two jobs into one PR** (jobs #420 +
   #423, 2026-08-08). Two sessions were both told to develop on
   `claude/ochorus-dev-261l92`, so when the second pushed, its book landed on the
