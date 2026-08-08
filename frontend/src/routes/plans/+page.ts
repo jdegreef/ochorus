@@ -3,6 +3,13 @@ import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
 
 /**
+ * Prerender refresh 2026-08-08 (follow-up to PR #881): the es and uk prose for
+ * "A Month in the Inner Chamber" landed — «Un mes en el aposento interior» and
+ * «Місяць у внутрішній кімнаті». Same defect and same shape as the sw entry
+ * below, which was the one noticed first; a sweep of every plan x language pair
+ * then found these two were the only others, and #881 added the test that stops
+ * the class recurring.
+ *
  * Prerender refresh 2026-08-08 (queue job #422, follow-up to PR #878): the
  * Swahili prose for "A Month in the Inner Chamber" (Mwezi katika Chumba cha
  * Ndani) landed. Same shape as the Arabic Humility entry below — the sw row
