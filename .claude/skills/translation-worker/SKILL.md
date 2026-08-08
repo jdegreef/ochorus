@@ -277,6 +277,31 @@ archaic spelling and period punctuation are the text, not defects in it.
   pages are prerendered per locale and will otherwise keep serving the card they
   were built with. Shipping the prose without the second touch fixes the DB and
   leaves the live page unchanged, which reads as the fix not working.
+  **`CURATED_PLANS` is the easier half to miss.** A launch plan has one source
+  book, so the coupling is visible from the slug. A curated plan needs *every*
+  source book in that language, so it stays invisible until the book that
+  completes the set — and that book's own slug tells you nothing. #756 was
+  exactly this: Arabic *The God of All Comfort* was the second of
+  `faith-in-the-fire`'s two books, `he-holds-my-tomorrows` having been Arabic
+  already, so shipping it flipped a 35-day plan live. Check the whole
+  `book_slugs` list of any curated plan your slug appears in, and see which of
+  the others already have a `<slug>.<lang>.json`.
+- **A missing completion report does not mean missing work — check the file, not
+  the notification** (#756). At the end of that run the harness reported three
+  fan-out agents with no completion record, one of them a scripture repair whose
+  report had never arrived. The tempting readings are both wrong: "it never
+  reported, so assume it didn't run" costs a re-run of finished work, and
+  "everything else was fine, so it's fine" ships an unrepaired chapter. Settle it
+  from artifacts. Compare the chapter file's mtime against the fixture build's,
+  then grep the file for the distinctive wording the repair was supposed to
+  introduce — in #756 the file was written 56 minutes before the build and
+  contained Van Dyck's `لطمك` / `خدك` / `فحول` where the original had a
+  paraphrase, so the work had landed and only the notification was lost. Finish
+  by diffing every chapter in the built fixture against its final file; that one
+  check subsumes the whole question. **Grep Arabic diacritic-insensitively** —
+  `"خد" in text` is False against `خَدّ`, so a naive search reports a repair
+  missing when it is present. Strip combining marks
+  (`unicodedata.combining`) on both sides first.
 - **Word count cannot verify a translation. Diff the ordered TAG SEQUENCE**
   (jobs #414/#415, 2026-07-30): the sw and lg John Wesley bios had been
   re-translated from the expanded English and their word ratios looked healthy

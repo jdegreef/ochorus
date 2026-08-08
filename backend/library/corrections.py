@@ -135,8 +135,52 @@ BODY_CORRECTIONS: dict[str, dict] = {
     "the-way-to-god": {
         # Source defect (Gutenberg #30449, ch. 8): the epigraph line lost its
         # quotation and opening paren — only "Colossians iii. 11.)" remains.
+        #
+        # The rest are misprinted chapter/verse numbers, found by
+        # `audit_citations` and by the translators of job #419. Only the numeral
+        # moves; Moody's wording, and the house Roman-numeral style, are left
+        # exactly as printed. This class is worth repairing before a work is
+        # translated: a translator reproduces a printed reference faithfully —
+        # as they should — so one wrong citation becomes one per language.
         "replacements": [
             ("<p>Colossians iii. 11.)</p>", "<p>(Colossians iii. 11.)</p>"),
+            # "Two men went up into the temple to pray" is Luke 18:10; 17:10 is
+            # the unprofitable servants.
+            ("Luke xvii. 10.", "Luke xviii. 10."),
+            # "The heart is deceitful above all things" is Jeremiah 17:9.
+            ("(Jer. xxii. 9)", "(Jer. xvii. 9)"),
+            # Peter's confession is Matthew 16:16 — the second 6 was dropped.
+            ("(Matthew xvi. 1;", "(Matthew xvi. 16;"),
+            # 20:2 is "I am Jehovah thy God"; the first commandment is 20:3.
+            ("(Exod. xx. 2)", "(Exod. xx. 3)"),
+            # "I am the truth" is John 14:6; 14:5 is Thomas asking the way.
+            ("(John xiv. 5.)", "(John xiv. 6.)"),
+            # Peter's "yet will I never be offended" is Matthew 26:33; 26:23 is
+            # the sop.
+            ("(Matt. xxvi. 23.)", "(Matt. xxvi. 33.)"),
+        ],
+    },
+    "a-call-to-the-unconverted": {
+        # Misprinted references, from `audit_citations`. Baxter's own wording is
+        # untouched — each of these moves a numeral only.
+        "replacements": [
+            # "O that there were such a heart in this people" is Deut 5:29;
+            # 5:20 is the ninth commandment.
+            ("Deut. v. 20.", "Deut. v. 29."),
+            # "O that they were wise" is Deut 32:29, in the Song of Moses;
+            # 33:29 is "Happy art thou, O Israel".
+            ("Deut. xxxiii. 29.", "Deut. xxxii. 29."),
+            # "Do you thus requite the Lord" is Deut 32:6; 22:6 is the bird's
+            # nest. An x dropped from xxxii.
+            ("Deut. xxii. 6.", "Deut. xxxii. 6."),
+        ],
+    },
+    "all-things-for-good": {
+        "replacements": [
+            # "My servant Job shall pray for you" is Job 42:8 — xlii misread as
+            # xiii. The "lob" in the same sentence is a separate OCR slip in the
+            # quoted text and is left for the English pass, which owns wording.
+            ("(Job xiii. 8)", "(Job xlii. 8)"),
         ],
     },
     "around-the-wicket-gate": {

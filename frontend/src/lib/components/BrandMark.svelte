@@ -1,27 +1,39 @@
 <script lang="ts">
-	// The Ochorus mark — an open book with a quill rising from its pages, echoing
-	// the ochorus.com logo in the app's line-icon style (currentColor stroke, so
-	// it works in both themes). Decorative: always paired with the wordmark.
-	let { size = 24 }: { size?: number } = $props();
+	// The real Ochorus logo — the open book with a quill, and the "Ochorus"
+	// wordmark built into the artwork, exactly as it appears on the ministry's
+	// printed books.
+	//
+	// This replaces a hand-drawn approximation that had the quill pointing the
+	// WRONG WAY (up-left, symmetric book) and existed as two divergent copies:
+	// one here and one inlined in backend/library/covers.py. The canonical file
+	// now lives in the backend (its Docker image ships `backend/` only, so
+	// covers.py cannot read anything under frontend/) and is mirrored here;
+	// `brandAssets.test.ts` fails if the two drift apart.
+	//
+	// Inlined via `?raw` rather than <img src> so `fill="currentColor"` resolves
+	// against the surrounding text colour — one file serves both themes.
+	import lockup from '$lib/brand/ochorus-lockup.svg?raw';
+
+	// Height in px; the lockup is ~1.66:1 so width follows. 36 is the header
+	// default: at the old 24px mark size the built-in wordmark is too small to
+	// read.
+	let { height = 36 }: { height?: number } = $props();
 </script>
 
-<svg
-	width={size}
-	height={size}
-	viewBox="0 0 24 24"
-	fill="none"
-	stroke="currentColor"
-	stroke-width="1.6"
-	stroke-linecap="round"
-	stroke-linejoin="round"
-	aria-hidden="true"
->
-	<!-- quill: a feather rising from the page, tip to the upper-left -->
-	<path d="M12.4 13.6C11 8.9 8.2 5.5 4 3.4c4.7-.5 8.2 1.3 10.4 5.6" />
-	<path d="M12.4 13.6l-.4 2.6" />
-	<!-- open book -->
-	<path d="M3 19.6c3-.8 6-.6 9 .8 3-1.4 6-1.6 9-.8" />
-	<path d="M3 19.6v-5c2-.5 4-.5 6-.1" />
-	<path d="M21 19.6v-5c-2-.5-4-.5-6 0" />
-	<path d="M12 16.2v4.2" />
-</svg>
+<span class="brandmark" style="--h: {height}px" role="img" aria-label="Ochorus">
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -- our own build-time asset -->
+	{@html lockup}
+</span>
+
+<style>
+	.brandmark {
+		/* Just a host for the inlined <svg> — the anchor around it already
+		   handles alignment. */
+		display: inline-block;
+	}
+	.brandmark :global(svg) {
+		height: var(--h);
+		width: auto;
+		display: block;
+	}
+</style>
