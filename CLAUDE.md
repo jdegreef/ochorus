@@ -50,6 +50,15 @@ See also `backend/CLAUDE.md` and `frontend/CLAUDE.md`.
 - Each task gets its own branch off `origin/main` — a local git **worktree**, or
   the session's `claude/ochorus-dev-*` branch. Never the shared checkout, never
   a Dropbox path. One PR per feature.
+- **One job per branch: suffix the session branch, `claude/ochorus-dev-<id>-<job>`.**
+  Two sessions were once given the same `claude/ochorus-dev-*` name, so the
+  second one's book landed on the branch of the first one's open sermon PR and
+  the two shipped together under a sermon-shaped title — one-PR-per-feature is
+  not achievable from inside a session when the branch is shared. If you do land
+  on someone else's branch: **rebase onto their commits, never force-push over
+  them**, and settle whether your own file survived with `md5` against
+  `git show HEAD:<path>` — a rebase that replaces your file with theirs leaves
+  the tree *clean*, so `git status` will tell you nothing is wrong.
 - `main` moves fast (many parallel sessions). Fetch and reconcile right before
   merging; expect fixture / migration conflicts. Squash-merge when CI is green
   ("merge when CI passes" is a standing instruction; where the user is steering,

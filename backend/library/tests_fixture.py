@@ -29,6 +29,8 @@ catches loudly:
 
 from __future__ import annotations
 
+import json
+import re
 from collections import Counter
 from functools import lru_cache
 
@@ -42,6 +44,7 @@ from library.content_fixtures import (
     PLANS_FILE,
     SERMONS_DIR,
     load_all_rows,
+    ordered_fixture_paths,
     rows_by_file,
     unexpected_files,
     work_filename,
@@ -709,4 +712,43 @@ class PlanTranslationCoverageTests(SimpleTestCase):
             [],
             "seed_plans will create these plan rows and fall back to the ENGLISH "
             "title/description — add the prose to PLAN_TRANSLATIONS[language]",
+        )
+
+
+class QuoteStyleTests(SimpleTestCase):
+    """No single work may mix straight and curly quotation marks.
+
+    Quote style in the corpus is per-FILE: a work mirrors whichever style its
+    own source used, and translations mirror their English. That rule is right,
+    but it had no answer for the 23 of 94 English files that were internally
+    MIXED — `talks-to-the-farmer` alone showed the reader 264 straight marks and
+    1,132 curly ones, in the same book. Those 44 files (English and translated)
+    were normalised to curly, which is 76% of the corpus already.
+
+    This guard is deliberately about CONSISTENCY, not about curly. A work that
+    is wholly straight-quoted reads fine and is left alone; what a reader must
+    never meet is both styles inside one book.
+    """
+
+    def test_no_work_mixes_straight_and_curly_quotes(self):
+        offenders = []
+        for path in ordered_fixture_paths():
+            if path.name in {"authors.json", "plans.json"}:
+                continue
+            rows = json.loads(path.read_text())
+            text = re.sub(r"<[^>]+>", " ", "".join(
+                r["fields"].get("body_html", "") or "" for r in rows
+            ))
+            straight = text.count("&quot;") + text.count('"')
+            curly = text.count("“") + text.count("”")
+            if straight and curly:
+                offenders.append(f"{path.name}: {straight} straight, {curly} curly")
+        self.assertEqual(
+            offenders,
+            [],
+            "These works show the reader both quote styles. Run "
+            "`uv run python scripts/normalize_quotes.py` to convert the straight "
+            "marks, then re-read the diff: the opening/closing decision is made "
+            "from context, and a source that sets a space inside its marks or "
+            "leaves a quotation open across a paragraph can still fool it.",
         )
