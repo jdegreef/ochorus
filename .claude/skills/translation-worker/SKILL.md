@@ -749,3 +749,43 @@ archaic spelling and period punctuation are the text, not defects in it.
   jobs, comment your own report separately, and tell the user, because
   one-PR-per-feature is not achievable from inside the session and the choice
   about how to split is theirs.
+- **A job brief can carry a premise that a merged PR invalidated HOURS earlier —
+  re-measure even what the brief calls "measured, do not re-derive"** (job #425,
+  2026-08-08). #425's brief stated two Swahili facts as settled measurements.
+  Both were wrong by the time the session ran, and the corpus refuted each in
+  one loop:
+  - *"The English source uses `"` throughout, so converting to curly is part of
+    the pipeline."* It was true that morning. **PR #908 merged four hours before
+    this job started and normalised `free-grace.en` itself to curly** (95 marks,
+    zero straight), while restating the per-FILE mirroring rule the entry above
+    already records. So the correct pipeline had **no conversion pass at all**,
+    and running the briefed one would have been actively harmful: this source is
+    **unbalanced, 47 opening marks against 48 closing**, so a toggle inverts
+    everything after the orphan and the "hugs a word start?" heuristic
+    mis-classifies the epigraph exactly as #423 documents. Mirroring reproduced
+    47/48 including the stray close, and needed no decision per mark.
+  - *"There is no sw sermon band; treat the ratio as observational."* The band
+    was already in this file **twice** (the #423 entry and its n=7 update). The
+    brief was reproducing #423's own retracted conclusion.
+  The lesson is not "brief was wrong" — it is that a brief is a **snapshot of a
+  moving repo**, and the two things most likely to have moved are the ones a
+  parallel session just touched. Before trusting any stated convention, run
+  `git log -1 --format='%h %ad %s' -- <the file you are translating>` and read
+  what landed. A one-line check would have flagged both.
+- **The sw SERMON band at n=9, mean 83.2%** — re-derived from `word_count` on
+  both sides of every shipped pair (n=8: 73.6 / 77.4 / 80.1 / 83.0 / 84.7 /
+  86.7 / 87.2 / 93.5%), plus #425's own **82.2%**. Note the n=6 and n=7 entries
+  above disagree with this in the decimals (77.8 vs 77.4, 86.9 vs 86.7); the
+  spread is what matters, not the last digit, so **re-derive from the fixture
+  field rather than copying any of these three lists.**
+- **A tag-sequence gate is only as good as WHERE you split, and `<i>` inside a
+  quotation is the case that bites** (job #425). Spurgeon italicises the single
+  word `I` in his text's refrain — `“Not for your sakes do <i>I</i> this”` — so
+  the structural split puts a 1-character text slot between two tags. Swahili
+  carries that emphasis on a pronoun (`mimi`) that sits in a *different position
+  in the clause*, so the naive rendering silently reorders the refrain at that
+  one site while all 132 tags still match. Fix it by choosing the refrain's
+  wording so the emphatic pronoun lands in the italic slot at every site
+  (`Si kwa ajili yenu <i>mimi</i> nafanya haya`), then assert the refrain is
+  byte-identical across all of them — 9 sites here, and the gate that catches a
+  drifted one is a `count()`, not the tag diff.
