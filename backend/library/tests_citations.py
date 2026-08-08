@@ -17,7 +17,7 @@ from __future__ import annotations
 
 from django.test import SimpleTestCase
 
-from library.scripture import misattributed
+from library.scripture import annotate_references, cited_references, misattributed
 
 
 class CitationAccuracyTests(SimpleTestCase):
@@ -122,8 +122,14 @@ class KnownLimitationTests(SimpleTestCase):
     only at 26:14.
 
     This is why the sweep is a triage list and not a ratchet gate: at the
-    thresholds here it flags 101 of the corpus's ~4,400 quote-citation pairs,
+    thresholds here it flags 247 of the corpus's ~4,400 quote-citation pairs,
     and a meaningful minority of those are this.
+
+    That count was 101 until the rival search was widened across books. The
+    extra 146 are not noise: a ten-case sample was checked by hand and all ten
+    were real, six of them citing a verse that shares no content word at all
+    with the quotation. No previously-reported finding was lost — 21 changed
+    their answer to a better one, and none disappeared.
     """
 
     def test_kjv_only_clause_is_a_known_false_positive(self):
@@ -135,3 +141,104 @@ class KnownLimitationTests(SimpleTestCase):
             ),
             "Acts 26:14",
         )
+
+
+class CrossBookTests(SimpleTestCase):
+    """The cited reference names the wrong BOOK, not just the wrong number.
+
+    Every case here is confirmed, found by a translator working through
+    `talks-to-the-farmer` into Swahili. They matter because the first version of
+    this check searched for a rival only inside the cited book, so a cross-book
+    misprint was structurally invisible — and worse, the rival search still
+    returned the best in-book near-miss, answering confidently and wrongly on
+    three of the five. Silence would have been better than that; the right
+    answer is better still.
+    """
+
+    def test_wrong_book_with_no_in_book_rival(self):
+        # Nothing in Jeremiah is close, so the old same-book search returned None.
+        self.assertEqual(
+            misattributed(
+                "a sharp threshing instrument having teeth", "Jeremiah 51:20"
+            ),
+            "Isaiah 41:15",
+        )
+
+    def test_wrong_book_beats_a_confident_in_book_rival(self):
+        # The case a fail-only widening cannot reach: Job 41:10 ("Who then is he
+        # that can stand before me?") clears RIVAL_MIN inside the cited book, so
+        # the search never widened and the answer was "Job 41:10".
+        self.assertEqual(
+            misattributed("Who can stand before his cold?", "Job 37:22"),
+            "Psalms 147:17",
+        )
+
+    def test_tie_is_broken_by_word_order_not_canon_order(self):
+        # Deuteronomy 32:1 ("Give ear, ye heavens … let the earth hear") holds
+        # every content word of this quote, so it ties Isaiah 1:2 at 1.00 on a
+        # token set and wins on canon order alone. Only word ORDER separates them.
+        self.assertEqual(
+            misattributed(
+                "Hear, O heavens, and give ear, O earth", "Jeremiah 7:28"
+            ),
+            "Isaiah 1:2",
+        )
+
+    def test_degenerate_short_verse_cannot_win_across_books(self):
+        # `_overlap` takes containment whichever way round fits, so Mark 9:40
+        # ("he that is not against us is for us") reduces to {against} and scores
+        # 1.00 against anything containing that word. Harmless in one book, a
+        # certainty across 31,000 verses — this is the pinned ASV/KJV case, whose
+        # answer must stay in Acts.
+        self.assertEqual(
+            misattributed(
+                "It is hard for thee to kick against the pricks.", "Acts ix. 5"
+            ),
+            "Acts 26:14",
+        )
+
+    def test_correct_citation_stays_silent_across_the_canon(self):
+        # The widened search must not manufacture a rival for a sound citation.
+        for quote, ref in (
+            ("For God so loved the world, that he gave his only begotten Son", "John 3:16"),
+            ("The Lord is my shepherd; I shall not want", "Psalm 23:1"),
+            ("In the beginning God created the heavens and the earth", "Genesis 1:1"),
+            ("Be still, and know that I am God", "Psalm 46:10"),
+        ):
+            with self.subTest(ref=ref):
+                self.assertIsNone(misattributed(quote, ref))
+
+
+class RomanNumeralCandidateTests(SimpleTestCase):
+    """Chapters set in roman numerals are references too.
+
+    Victorian devotional prose writes "Luke ii. 10", and 690 such citations sit
+    across 23 of our English works — most of which use no other form. Reading
+    only Arabic digits left those readers with no tappable reference at all and
+    hid the same citations from `audit_citations`. pythonbible parses them; only
+    our own pre-filter regex did not.
+    """
+
+    def test_roman_chapter_is_annotated(self):
+        out = annotate_references("<p>If we turn to Luke ii. 10, we find it.</p>")
+        self.assertIn('data-ref="Luke ii. 10"', out)
+
+    def test_roman_and_arabic_together(self):
+        self.assertEqual(
+            cited_references(
+                "<p>Colossians iii. 11 and Isaiah 49:24 and Job xxxiii. 24.</p>"
+            ),
+            ["Colossians 3:11", "Isaiah 49:24", "Job 33:24"],
+        )
+
+    def test_prose_that_merely_looks_roman_is_left_alone(self):
+        # The regex is loose and pythonbible is the gate, but every junk
+        # candidate is a permanent entry in an unbounded cache — so the roman
+        # group is a real numeral, not `[ivxlc]+`, which also matches "civil".
+        for text in (
+            "<p>See Section iv. 2 of the report.</p>",
+            "<p>His conduct was civil. 5 men agreed.</p>",
+            "<p>Chapter ii. 3 explains it.</p>",
+        ):
+            with self.subTest(text=text):
+                self.assertNotIn("scripture-ref", annotate_references(text))
