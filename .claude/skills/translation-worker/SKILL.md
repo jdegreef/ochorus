@@ -588,3 +588,65 @@ archaic spelling and period punctuation are the text, not defects in it.
   followed the source over the brief and said so, which is the right
   precedence — say explicitly that **the source wins over the brief's prose**,
   and that classes and their order must be copied, not assumed.
+- **The sw SERMON band exists — derive it from the shipped pairs before
+  declaring "no band"** (job #423, 2026-08-08). That job's prep concluded no
+  Swahili *sermon* band was on record and told the run to treat the ratio as
+  purely observational. But six sw sermons were already shipped, and each has
+  its English counterpart in the same fixture dir, so the band was one loop
+  away: **73.6 / 77.4 / 80.1 / 84.7 / 86.7 / 93.5%** — **mean 82.7%**, median
+  82.4%. That sits between the sw *bio* band (88-98%) and the sw *book chapter*
+  band (77-91%), so neither substitutes for it. #423 shipped at **87.2%**.
+  Before recording "no band exists" for a (language x type), check whether the
+  pairs are already on disk: `word_count` is a fixture field on both sides, so
+  the measurement is a dict comprehension, not a project.
+- **Quotation style is per-FILE mirroring of its own English source, NOT a
+  per-language house style — and an aggregate count will tell you the opposite**
+  (job #423). The prep measured the sw sermon corpus in aggregate, found *240
+  curly, zero `&quot;`, zero guillemets*, and concluded the house style was
+  curly and that converting the straight-quoted source was "part of the
+  pipeline". The count was right and the conclusion was wrong: the same corpus
+  also holds **73 straight quotes**, which the aggregate hid. Pair each sw file
+  with its own en source and the rule is unambiguous — **6 of 6 sw sermons
+  mirror their source's mark style** (4 curly-source -> curly, 2 straight-source
+  -> straight: `himself`, `unfailing-springs`), **none converts, none mixes.**
+  Across sw books, every book whose English is unambiguous mirrors it as well;
+  there is no counter-example in the corpus. So the question to ask is never
+  "what does this language use?" but **"what does THIS file's English use?"**
+  Aggregate counts answer the wrong question whenever the corpus's sources are
+  themselves mixed — which they are, because the English fixtures were digitised
+  from different originals. Measure the **pairs**, not the column.
+  A practical bonus: mirroring deletes the conversion pass entirely, and with it
+  the unbalanced-source hazard the ar notes above document at length. #423's
+  epigraph ends `believeth. "-Mark ix: 23.` — a closing mark that *hugs the
+  start* of `-Mark`, so the "does it hug a word start?" heuristic classifies it
+  as an opener and gets it backwards. No conversion, no misclassification.
+- **Mine scripture by ALIGNING BLOCK PAIRS, and verify the alignment holds
+  before trusting a hit** (job #423). Splitting both editions on block-level
+  tags and pairing by index recovered **19** of the sermon's references from our
+  own corpus (the prep had found 6 by hand), including two from the *same
+  author's* shipped Swahili — Mark 9:23 from `jesus-himself-2.sw.json` and
+  Gal 2:20 from `himself.sw.json`, which are the sermon's text and its closing
+  argument. Two habits make this reliable. **Check for alignment loss**: print
+  en-units vs sw-units vs successfully-aligned-units per slug — #423 got 21/21
+  slugs and 6,784 pairs with zero loss, which is what makes "not found" mean
+  "genuinely not in the corpus" rather than "my splitter dropped it". And
+  **don't trust a length-ratio sanity check to catch a bad pairing** — it
+  passes an off-by-N shift. When a hit looks wrong, print the whole block: #423
+  nearly discarded `himself` as misaligned because a 2,153-character block was
+  being truncated in the display, not misaligned.
+- **A worker session may be unable to SEE CI, which is not the same as CI being
+  red** (job #423). The session's GitHub token was a scoped app installation
+  token: fine for contents, issues and pulls, but **403 on check-runs, commit
+  statuses, Actions runs and branch protection**. A naive poll loop reads those
+  403 bodies as "no checks yet" and waits forever — #423 burned ten minutes that
+  way before checking the HTTP code. Check the status code, not just the parsed
+  body. When you genuinely cannot observe the gate, **do not merge**: "on green"
+  is a condition you must be able to evaluate, and `main` autoDeploys to
+  production. Replicate the workflow locally instead (it is all in `ci.yml`) and
+  hand over with the evidence — for #423 that was 600 backend tests, the
+  migration check, svelte-check at 0 errors, 295 frontend unit tests, the
+  prerendering build, and the post-build href guard, all green locally, with
+  only the Postgres-variant backend run unavailable (no local server; the change
+  added no migration). Then follow the failure protocol: comment where you
+  stopped, remove `in-progress`, leave the issue open. A PR that is finished and
+  honestly labelled is worth more than a merge you could not verify.
