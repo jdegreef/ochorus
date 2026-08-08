@@ -17,6 +17,7 @@ from __future__ import annotations
 
 from django.test import SimpleTestCase
 
+from library.management.commands.audit_citations import LEAD
 from library.scripture import annotate_references, cited_references, misattributed
 
 
@@ -122,14 +123,13 @@ class KnownLimitationTests(SimpleTestCase):
     only at 26:14.
 
     This is why the sweep is a triage list and not a ratchet gate: at the
-    thresholds here it flags 247 of the corpus's ~4,400 quote-citation pairs,
+    thresholds here it flags 123 of the corpus's ~5,100 quote-citation pairs,
     and a meaningful minority of those are this.
 
-    That count was 101 until the rival search was widened across books. The
-    extra 146 are not noise: a ten-case sample was checked by hand and all ten
-    were real, six of them citing a verse that shares no content word at all
-    with the quotation. No previously-reported finding was lost — 21 changed
-    their answer to a better one, and none disappeared.
+    A worse version of the same artifact affects the Ochorus Originals, which
+    declare "All quotations are from the New International Version" — the NIV
+    diverges from the ASV much further than the KJV does, so what this reports
+    in those works should be treated as unreliable rather than merely noisy.
     """
 
     def test_kjv_only_clause_is_a_known_false_positive(self):
@@ -242,3 +242,44 @@ class RomanNumeralCandidateTests(SimpleTestCase):
         ):
             with self.subTest(text=text):
                 self.assertNotIn("scripture-ref", annotate_references(text))
+
+
+class ReferenceFirstPairingTests(SimpleTestCase):
+    """Which reference does a quotation belong to?
+
+    `PAIR` reads "quote" … reference. Both of the corpus's heaviest citers write
+    it the other way round — the Ochorus Originals' Scripture Appendices with a
+    dash, Edwards with a comma — and reading those with `PAIR` alone pairs every
+    quotation with the NEXT entry's reference. That off-by-one was ~120 of the
+    sweep's findings, every one of them a quotation the book had cited correctly.
+    """
+
+    def test_dash_layout_pairs_with_the_preceding_reference(self):
+        text = (
+            'Joel 2:28–29 — “Your sons and daughters will prophesy.” '
+            'Acts 16:13 — “Where we expected to find a place of prayer.”'
+        )
+        self.assertEqual(
+            [(m.group(1), m.group(2)) for m in LEAD.finditer(text)],
+            [
+                ("Joel 2:28–29", "Your sons and daughters will prophesy."),
+                ("Acts 16:13", "Where we expected to find a place of prayer."),
+            ],
+        )
+
+    def test_comma_layout_pairs_with_the_preceding_reference(self):
+        # Exactly how Edwards writes, and he stacks several a sentence.
+        text = (
+            'Rom. 12:11, "Be ye fervent in spirit, serving the Lord." '
+            'Deut. 10:12, "And now, Israel, what doth the Lord thy God require."'
+        )
+        self.assertEqual(
+            [m.group(1) for m in LEAD.finditer(text)], ["Rom. 12:11", "Deut. 10:12"]
+        )
+
+    def test_a_full_stop_does_not_make_a_reference_first_pair(self):
+        # "…quote” (John 3:16). “Next quote…" is the ORDINARY layout; treating
+        # the full stop as a separator would re-create the same off-by-one from
+        # the other direction.
+        text = '“For God so loved the world” (John 3:16). “Be still, and know.”'
+        self.assertEqual([m.group(1) for m in LEAD.finditer(text)], [])
