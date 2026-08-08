@@ -204,6 +204,21 @@ PLAN_TRANSLATIONS = {
             "el servicio, y luego el estudio más pleno de la Persona y la obra "
             "del Espíritu que mora en todo creyente.",
         ),
+        # «El aposento interior» is the es title of the book itself, so the card
+        # and the book a reader lands on say the same thing.
+        "the-inner-chamber-month": (
+            "Un mes en el aposento interior",
+            "Forma un hábito diario de oración y Palabra: treinta y seis mañanas "
+            "con Andrew Murray, un capítulo cada día.",
+        ),
+    },
+    "uk": {
+        # «Внутрішня кімната» is the uk title of the book itself.
+        "the-inner-chamber-month": (
+            "Місяць у внутрішній кімнаті",
+            "Виробіть щоденну звичку молитви та Слова: тридцять шість ранків з "
+            "Ендрю Мюрреєм, по одному розділу щодня.",
+        ),
     },
     "lg": {
         "power-from-on-high": (
