@@ -118,6 +118,15 @@ import type { PageLoad } from './$types';
  * Taylor's الشدّة المباركة, A. B. Simpson's هو نفسه, and قوّة السكون. Each
  * carries a translated "In brief", and per the note above the brief TEXT is
  * what to check in the served HTML — not the chunk hash.
+ *
+ * Prerender refresh 2026-08-09 (queue job #425, PR #917): Spurgeon's "Free
+ * Grace" landed in Swahili as Neema ya Bure. Re-crawl /sw/sermons so the card
+ * and its /sw/sermons/free-grace page bake the translated title and the "In
+ * brief" summary. #917 was backend-only (one fixture file), so per the #741
+ * note above Render would otherwise SKIP the web build and the sw shelf would
+ * keep serving the English title while the api served the Swahili one. Note
+ * /lg/sermons already carries a Free Grace (job #249, Ekisa eky'Obwereere) —
+ * this is the Swahili edition, a different file entirely.
  */
 export const load: PageLoad = async () => {
 	// Tolerate a lagging/absent sermon endpoint at prerender time (see the
