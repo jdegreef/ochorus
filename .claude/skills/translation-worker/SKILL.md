@@ -256,6 +256,33 @@ archaic spelling and period punctuation are the text, not defects in it.
   (Batched PRs have shipped before and worked: #778 carried eight Arabic
   sermons, #709 ten jobs. They are still the wrong default, because the
   per-job reconciliation pass is what a batch quietly drops.)
+- **Spawning workers: give them the merge tools, or they finish and stall.**
+  A session started with `create_session` inherits a permission mode that stops
+  short of merging, so it translates, validates, opens a green PR — and then
+  sits idle needing a human for two clicks. Three sessions did exactly that on
+  jobs #425/#426/#429: all three reported "ready to merge; blocked by session
+  policy" and the queue jammed behind the one step a machine could have done.
+  Pass the two tools explicitly rather than widening the mode:
+
+      extra_allowed_tools: [
+        "mcp__github__merge_pull_request",
+        "mcp__github__update_pull_request",   # undrafting is a separate call
+      ]
+
+  Scoped like that it unblocks precisely the step that stalls and changes
+  nothing else. A child never gets a grant its parent lacks, so the spawning
+  session must hold these too. What makes this safe is not the permission — it
+  is that **CI tests the merge commit**, which caught every collision we had;
+  a worker merging its own green PR is merging something already checked
+  against the tree it is landing on.
+  Also give each spawned session an **explicit issue number**. The
+  `in-progress` label is a courtesy signal, not a lock: two sessions can both
+  read "nothing claimed" in the same instant and take the same job.
+  And when you write the brief, read the "a job brief can carry a premise that
+  a merged PR invalidated HOURS earlier" entry below first — it was written
+  about briefs from this workflow, and both of its examples were confident
+  statements of fact that a PR had falsified the same day. Tell the worker to
+  re-measure the conventions you hand it, especially the ones you are surest of.
 - **Never** auto-promote: everything ships `ai_unreviewed`; only the user runs
   `approve_translation`.
 - The double-ship guard is now structural: the target already existing means
