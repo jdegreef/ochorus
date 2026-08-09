@@ -844,3 +844,40 @@ archaic spelling and period punctuation are the text, not defects in it.
   (`Si kwa ajili yenu <i>mimi</i> nafanya haya`), then assert the refrain is
   byte-identical across all of them — 9 sites here, and the gate that catches a
   drifted one is a `count()`, not the tag diff.
+- **If the work has a TABLE OF CONTENTS, it lives in a chapter — and it will
+  drift from the titles it names** (job #514, `waiting-on-god` → es). The
+  Introduction of this book prints the full 31-entry contents list, so it was
+  translated by whichever agent got chapter 1, in isolation from the 33 agents
+  translating the chapters those entries name. **Nine of the 31 disagreed** with
+  the chapter title the reader actually lands on — "Para la Provisión" pointing
+  at a chapter headed "Para los Suministros", "Pacientemente" at "Con
+  Paciencia". Per-chapter validation cannot see this: every file was internally
+  consistent and every tag sequence matched. Add it to the reconciliation pass —
+  extract `(\d+)\.\s+([^.—]+?)\.?—` from the contents chapter and diff each entry
+  against that chapter's translated `title`. **Then check the ENGLISH before
+  "fixing" anything**: three of this book's English entries differ from their own
+  chapter titles ("And His Light in the Heart" vs "For His Light in the Heart"),
+  so two of the nine Spanish differences were faithful mirroring and had to stay.
+- **Naming a fixed rendering WITHOUT its punctuation produces drift, not
+  consistency** (job #514). The brief said to reuse the book's motto verse
+  "byte-identically" and quoted it without the source's exclamation mark. Five
+  chapters followed the brief literally and dropped the `!`; the other thirty
+  mirrored the source and kept it — so the instruction meant to prevent drift
+  caused it, in the one phrase that recurs 35 times. Quote a fixed rendering
+  **with the terminal punctuation the source uses**, or say explicitly "mirror
+  the source's terminal punctuation at each site".
+- **`audit_citations` cannot see a book that quotes with straight SINGLE quotes**
+  (job #514). `PAIR` and `LEAD` both require `“ ”` or `"`, so a work using the
+  British `'…'` convention reads as **zero quote+citation pairs** — the sweep is
+  silent, which looks identical to "clean". Measured across the English corpus,
+  `waiting-on-god` is the only work in that class, so widening the regex to
+  `'…'` is not worth it (every apostrophe becomes a candidate boundary). Instead,
+  before queueing such a book, convert a copy **in memory** and run the same
+  logic over it. Doing that here read 37 pairs and found a real misattribution:
+  ch34 cites the book's own motto verse as `Isa. 62:5,6` when it is Psalm 62:5-6,
+  and ch01 cites it correctly. Two more turned up in translation (`Ps. 114:14,15`
+  for `Ps. 145:14,15`, and `ver. 19` for `ver. 17`).
+- **The es BOOK-CHAPTER band, n=201: p05 94.7%, p95 105.3%, mean 99.4%, median
+  99.5%.** Spanish runs about 1:1 with English — unlike Swahili, which compresses
+  to the low 80s. Job #514 landed at 100.2% over 35 chapters. Re-derive from
+  `word_count` on both sides rather than copying this line.
