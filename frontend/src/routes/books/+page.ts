@@ -7,6 +7,16 @@ import type { PageLoad } from './$types';
  * folding a fetch failure into `{ loadError: true }` so a client-side navigation
  * to a down API shows a retry panel instead of the error route.
  *
+ * Prerender refresh 2026-08-09 (queue job #514, PR #920): the Spanish edition of
+ * Andrew Murray's "Waiting on God" (Esperando en Dios) went live — 35 chapters,
+ * the largest single es addition since the launch four. Rebuild so /es/books
+ * re-crawls and the 35 /es/books/waiting-on-god/<n> chapter pages bake with
+ * their translated titles.
+ *
+ * No plans touch, and the check is the same one #897 records: `waiting-on-god`
+ * appears in neither LAUNCH_PLANS nor CURATED_PLANS, so it cannot create an
+ * English-titled Spanish plan row.
+ *
  * Prerender refresh 2026-08-08 (queue jobs #420 + #423, PR #897): two Swahili
  * editions landed together — Spurgeon's "Talks to the Farmer" (Mazungumzo na
  * Mkulima), 18 chapters, and Simpson's sermon "The Possibilities of Faith"
