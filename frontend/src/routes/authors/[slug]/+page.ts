@@ -17,6 +17,15 @@ export const entries: EntryGenerator = async () => {
 	return [...slugs].map((slug) => ({ slug }));
 };
 
+// Prerender refresh 2026-08-08 (queue job #429, PR #911): the Swahili R. A.
+// Torrey biography — the long-form bio_html translated tag-for-tag from the
+// English (86 tags, the three prayer callouts in the source's own order), plus
+// a SHORT bio that was replaced rather than added: the sw entry already on disk
+// translated a superseded English summary. /sw/authors/r-a-torrey is
+// prerendered per locale, so it keeps serving the page it was built with —
+// which currently shows no long-form bio at all and the stale summary — until
+// this re-crawls it.
+//
 // Prerender refresh 2026-08-05 (queue jobs #730-#734, #761-#763): eight more
 // Arabic author biographies — Baxter, Augustine, Torrey, Hudson Taylor, Müller,
 // Brainerd, Watson and Amy Carmichael — taking Arabic from 10 to 18. Arabic is
