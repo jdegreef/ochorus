@@ -255,6 +255,36 @@ PLAN_TRANSLATIONS = {
         ),
     },
     "sw": {
+        # PROVISIONAL TITLE — read this before shipping the-god-of-all-comfort.sw.
+        #
+        # Every other entry here opens with the shipped edition's title verbatim
+        # (ar does the same: its plan reads «إله كل تعزية: إيمانٌ في الأتون»
+        # against a book titled «إله كل تعزية»). This plan's title book —
+        # the-god-of-all-comfort — has NO Swahili edition yet, so there is no
+        # shipped title to copy and "Mungu wa Faraja Yote" is this entry's own
+        # choice. Two things follow:
+        #   1. Whoever translates the book should adopt this title, or change
+        #      this tuple in the same PR. A plan card naming a book differently
+        #      from the book is the drift the humility-12-days note guards.
+        #   2. The phrase renders 2 Cor 1:3, which is NOT in the Swahili corpus
+        #      today, so it could not be mined and is not claimed as verbatim
+        #      Union wording. Confirm it against the Bible when the book lands.
+        #
+        # "azishikaye kesho zetu" deliberately echoes the shipped sw title of the
+        # other source book, "Anazishika Kesho Zangu".
+        #
+        # seed_plans will not create this row yet — the-god-of-all-comfort is
+        # missing in sw and a curated plan needs ALL its books. The prose ships
+        # first on purpose: that book completing the set is exactly how #756 flipped
+        # this same plan live in Arabic, and without an entry here the row would
+        # take the ENGLISH tuple.
+        "faith-in-the-fire": (
+            "Mungu wa Faraja Yote: Imani Motoni",
+            "Kwa siku zile ambazo ni vigumu kuziombea. Hannah Whitall Smith juu "
+            "ya Mungu wa faraja yote, na Gareth Evans juu ya kumtumaini Yule "
+            "azishikaye kesho zetu — safari ya majuma matano kuelekea amani "
+            "thabiti wakati maisha hayana uhakika.",
+        ),
         # Same rule as humility-12-days below: the title opens with "Njia ya
         # Kumwendea Mungu", which is the shipped Swahili edition's title verbatim
         # (books/the-way-to-god.sw.json), so the plan card names the book the way
