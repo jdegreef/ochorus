@@ -502,6 +502,73 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("(Yohana 10)", "(Yohana 14:6)"),
         ],
     },
+    "waiting-on-god": {
+        # Found by the Spanish translators of job #514, and by running
+        # `audit_citations` over an in-memory copy of the book — the sweep is
+        # blind to it as it stands, because this is the corpus's only work that
+        # sets its quotations in straight SINGLE quotes and both PAIR and LEAD
+        # require `“ ”` or `"`. Converted, it reads 37 pairs and flags the first
+        # entry below.
+        #
+        # THREE MISCITED REFERENCES, which is the class worth the entry: a
+        # translator reproduces a printed reference faithfully, so each one
+        # becomes a defect per language.
+        "replacements": [
+            # The book's own motto verse. "My soul, wait thou only upon God; for
+            # my expectation is from Him. He only is my rock and my salvation" is
+            # Psalm 62:5-6 — and ch01 of this same book cites it correctly as
+            # "Ps. 62:5". The Spanish edition already reads "Sal. 62:5,6", so it
+            # needs nothing here.
+            ("—Isa. 62:5,6.", "—Ps. 62:5,6."),
+            # Contents entry 4. Psalm 114 has eight verses, so 114:14-15 cannot
+            # exist; ch06 prints the same epigraph correctly as "Ps. 145:14, 15".
+            ("Ps. 114:14, 15", "Ps. 145:14, 15"),
+            ("Sal. 114:14, 15", "Sal. 145:14, 15"),
+            # ch25 walks through Isaiah 63 verse by verse. "Why hast Thou
+            # hardened my heart from Thy fear? Return for Thy servants' sake" is
+            # 63:17; 63:19 is "We are become as they over whom thou never barest
+            # rule". The adjacent "(ver. 15.)" in the same paragraph is right,
+            # which is what makes this a slipped digit rather than a different
+            # verse numbering.
+            ("(ver. 19.)", "(ver. 17.)"),
+            ("(v. 19)", "(v. 17)"),
+            # --- lost word spaces, all extraction artifacts -------------------
+            # A general check for these would need a dictionary the audit does
+            # not carry: splitting on "both halves are corpus words" yields 746
+            # candidates corpus-wide, nearly all real compounds ("waterfall") or
+            # archaic verb forms ("delightest").
+            ("God Himselfmust work", "God Himself must work"),
+            ("life andhappiness", "life and happiness"),
+            ("afresh forboldness", "afresh for boldness"),
+            ("freshfulfilment", "fresh fulfilment"),
+            ("in that day,Lo", "in that day, Lo"),
+            ("our God;we have waited", "our God; we have waited"),
+            ("only</i>upon Him", "only</i> upon Him"),
+            # --- word slips, each decidable from the sentence itself ----------
+            # Verbless as printed; "Just bow … before His great glory, and be
+            # still" restores it.
+            ("Just how in emptiness", "Just bow in emptiness"),
+            # Luke 2:38, "all them that looked for redemption".
+            ("to all then that looked", "to all them that looked"),
+            # The hymn's line is "in woe or in weal"; the stanza rhymes
+            # feel/heal/weal/still.
+            ("in woo or in weal", "in woe or in weal"),
+            ("Thirtieth-First Day", "Thirty-First Day"),
+            # The chapter's own title reads "Its Certainty of Blessing".
+            ("It Certainty of Blessing", "Its Certainty of Blessing"),
+            # Contents entry 26; the chapter title reads "In Holy Expectancy".
+            ("In Holy Expectency", "In Holy Expectancy"),
+            ("With Additonal Extracts", "With Additional Extracts"),
+            ("to work us in by His Son", "to work in us by His Son"),
+            # Subject is "He", so "shall"; Psalm 37:34.
+            ("And He shalt exalt thee", "And He shall exalt thee"),
+            # Psalm 104:27-28, "that thou mayest give them their meat". The <i>
+            # sits inside the phrase, so the pair has to carry it.
+            ("that thou may <i>give</i>", "that thou mayest <i>give</i>"),
+            # The same quotation is set with a capital at its four other sites.
+            ("'Rest in the lord, and wait", "'Rest in the Lord, and wait"),
+        ],
+    },
 }
 
 # First lowercase letter opening the first paragraph of a body.
