@@ -76,6 +76,7 @@ TOPICS = [
             "the-unselfishness-of-god",
             "he-holds-my-tomorrows",
             "the-way-to-god",
+            "all-things-for-good",
         ],
     ),
     (
@@ -90,6 +91,7 @@ TOPICS = [
             "men-and-women-who-gave-everything-2",
             "women-who-moved-heaven-2",
             "union-and-communion",
+            "men-who-moved-heaven",
         ],
     ),
     (
@@ -102,6 +104,60 @@ TOPICS = [
             "days-of-heaven-upon-earth",
             "the-fourfold-gospel",
             "soar-like-the-eagle-3",
+            "waiting-on-god",
+        ],
+    ),
+    (
+        "the-gospel-call",
+        "The Gospel Call",
+        "The oldest invitation there is \u2014 come, repent, believe. Preachers "
+        "pleading with the unconverted, and the testimony of grace found by the "
+        "chief of sinners.",
+        [
+            "a-call-to-the-unconverted",
+            "around-the-wicket-gate",
+            "grace-abounding",
+        ],
+    ),
+    (
+        "enduring-classics",
+        "The Enduring Classics",
+        "The books that have walked with pilgrims for centuries \u2014 "
+        "Augustine's confession, Bunyan's dream, the counsel of \u00e0 Kempis "
+        "\u2014 the old paths, still good.",
+        [
+            "confessions",
+            "pilgrims-progress",
+            "the-imitation-of-christ",
+            "freedom-of-the-will",
+        ],
+    ),
+    (
+        "the-way-of-holiness",
+        "The Way of Holiness",
+        "Set apart for God \u2014 the commandments searched, perfection "
+        "honestly pursued, and the affections of the heart tried and found "
+        "true.",
+        [
+            "plain-account-christian-perfection",
+            "godliness",
+            "religious-affections",
+            "ten-commandments",
+        ],
+    ),
+    (
+        "the-preached-word",
+        "The Preached Word",
+        "Great preaching on the page \u2014 Whitefield and Wesley in full "
+        "voice, Spurgeon among his farmers \u2014 and Baxter's charge to every "
+        "shepherd of souls.",
+        [
+            "selected-sermons-whitefield",
+            "sermons-on-several-occasions",
+            "talks-to-the-farmer",
+            "till-he-come",
+            "the-reformed-pastor",
+            "men-who-tended-the-flock-2",
         ],
     ),
 ]
@@ -130,6 +186,15 @@ TOPIC_SERMONS = {
         "christs-boundless-compassion",
     ],
     "faith-and-guidance": ["the-possibilities-of-faith", "unfailing-springs"],
+    "the-gospel-call": [
+        "christ-crucified",
+        "the-new-birth",
+        "salvation-by-faith",
+        "come-thou-into-the-ark",
+        "the-dying-thief",
+        "the-ravens-cry",
+    ],
+    "the-way-of-holiness": ["aggressive-christianity"],
 }
 
 
@@ -162,6 +227,25 @@ TOPIC_SCRIPTURE = {
     "faith-and-guidance": (
         "Proverbs 3:6",
         "In all thy ways acknowledge him, and he shall direct thy paths.",
+    ),
+    "the-gospel-call": (
+        "2 Corinthians 5:20",
+        "We pray you in Christ\u2019s stead, be ye reconciled to God.",
+    ),
+    "enduring-classics": (
+        "Jeremiah 6:16",
+        "Stand ye in the ways, and see, and ask for the old paths, where is "
+        "the good way, and walk therein, and ye shall find rest for your "
+        "souls.",
+    ),
+    "the-way-of-holiness": (
+        "Hebrews 12:14",
+        "Follow peace with all men, and holiness, without which no man shall "
+        "see the Lord.",
+    ),
+    "the-preached-word": (
+        "Romans 10:14",
+        "How shall they hear without a preacher?",
     ),
 }
 
@@ -247,6 +331,30 @@ TOPIC_TRANSLATIONS = {
             "Okwesiga Katonda olw'emmere eya buli lunaku, obulagirizi, na buli "
             "kisuubizo — okutambula mu kukkiriza, so si mu kulaba.",
         ),
+        "the-gospel-call": (
+            "Okuyita kw'Enjiri",
+            "Okuyitibwa okusinga obukadde — jjangu, weenenye, kkiriza. "
+            "Ababuulizi nga beegayirira abatannaba kulokoka, n'obujulirwa "
+            "bw'ekisa ekyalabwa omwonoonyi asinga bonna.",
+        ),
+        "enduring-classics": (
+            "Ebitabo eby'Edda Ebisigalawo",
+            "Ebitabo ebitambulidde n'abatambuze okumala ebyasa — okwatula kwa "
+            "Awugusitino, ekirooto kya Bunyan, amagezi ga Kempis — amakubo "
+            "ag'edda, era nga makyali malungi.",
+        ),
+        "the-way-of-holiness": (
+            "Ekkubo ery'Obutukuvu",
+            "Okwawulibwa ku lwa Katonda — amateeka nga gakebejjebwa, "
+            "obutuukirivu nga bunoonyezebwa n'obwesimbu, n'okwagala kw'omutima "
+            "nga kugezesebwa ne kulabika nga kwa mazima.",
+        ),
+        "the-preached-word": (
+            "Ekigambo Ekibuulirwa",
+            "Okubuulira okw'amaanyi ku lupapula — Whitefield ne Wesley mu "
+            "ddoboozi eryonna, Spurgeon mu balimi be — n'ekiragiro kya Baxter "
+            "eri buli musumba w'emyoyo.",
+        ),
     },
     "es": {
         "prayer": (
@@ -279,6 +387,30 @@ TOPIC_TRANSLATIONS = {
             "Fe y dirección",
             "Confiar en Dios para el pan de cada día, la dirección y toda promesa "
             "— andar por fe, no por vista.",
+        ),
+        "the-gospel-call": (
+            "El llamado del evangelio",
+            "La invitación más antigua que existe — ven, arrepiéntete, "
+            "cree. Predicadores rogando a los no convertidos, y el testimonio de "
+            "la gracia hallada por el primero de los pecadores.",
+        ),
+        "enduring-classics": (
+            "Los clásicos perdurables",
+            "Los libros que han acompañado a los peregrinos por siglos — la "
+            "confesión de Agustín, el sueño de Bunyan, el consejo de Kempis — "
+            "las sendas antiguas, todavía buenas.",
+        ),
+        "the-way-of-holiness": (
+            "El camino de la santidad",
+            "Apartados para Dios — los mandamientos examinados, la perfección "
+            "buscada con honestidad, y los afectos del corazón probados y "
+            "hallados verdaderos.",
+        ),
+        "the-preached-word": (
+            "La palabra predicada",
+            "La gran predicación en la página — Whitefield y Wesley a plena "
+            "voz, Spurgeon entre sus labradores — y el encargo de Baxter a todo "
+            "pastor de almas.",
         ),
     },
     "sw": {
@@ -313,6 +445,30 @@ TOPIC_TRANSLATIONS = {
             "Kumtumaini Mungu kwa riziki ya kila siku, mwelekeo, na kila ahadi — "
             "kuenenda kwa imani, si kwa kuona.",
         ),
+        "the-gospel-call": (
+            "Wito wa Injili",
+            "Mwaliko wa kale kuliko yote — njoo, tubu, amini. Wahubiri "
+            "wakiwasihi wasioongoka, na ushuhuda wa neema aliyoipata mkuu wa "
+            "wenye dhambi.",
+        ),
+        "enduring-classics": (
+            "Vitabu vya Kale Vidumuvyo",
+            "Vitabu vilivyofuatana na wasafiri kwa karne nyingi — ungamo la "
+            "Agustino, ndoto ya Bunyan, shauri la Kempis — njia za zamani, "
+            "ambazo bado ni njema.",
+        ),
+        "the-way-of-holiness": (
+            "Njia ya Utakatifu",
+            "Kutengwa kwa ajili ya Mungu — amri zikichunguzwa, ukamilifu "
+            "ukifuatwa kwa unyofu, na shauku za moyo zikijaribiwa na kuonekana "
+            "kweli.",
+        ),
+        "the-preached-word": (
+            "Neno Lihubiriwalo",
+            "Mahubiri makuu katika kurasa — Whitefield na Wesley kwa sauti "
+            "kamili, Spurgeon kati ya wakulima wake — na agizo la Baxter kwa "
+            "kila mchungaji wa roho.",
+        ),
     },
     "pt": {
         "prayer": (
@@ -345,6 +501,30 @@ TOPIC_TRANSLATIONS = {
             "Confiar em Deus para o pão de cada dia, a direção e toda promessa — "
             "andar por fé, e não por vista.",
         ),
+        "the-gospel-call": (
+            "O Chamado do Evangelho",
+            "O convite mais antigo que existe — vem, arrepende-te, crê. "
+            "Pregadores rogando aos não convertidos, e o testemunho da graça "
+            "encontrada pelo principal dos pecadores.",
+        ),
+        "enduring-classics": (
+            "Os Clássicos Duradouros",
+            "Os livros que têm acompanhado os peregrinos por séculos — a "
+            "confissão de Agostinho, o sonho de Bunyan, o conselho de Kempis — "
+            "as veredas antigas, ainda boas.",
+        ),
+        "the-way-of-holiness": (
+            "O Caminho da Santidade",
+            "Separados para Deus — os mandamentos examinados, a perfeição "
+            "buscada com honestidade, e os afetos do coração provados e achados "
+            "verdadeiros.",
+        ),
+        "the-preached-word": (
+            "A Palavra Pregada",
+            "A grande pregação na página — Whitefield e Wesley em plena voz, "
+            "Spurgeon entre os seus lavradores — e o encargo de Baxter a todo "
+            "pastor de almas.",
+        ),
     },
     # Arabic reads right-to-left; the shelf page follows the document direction,
     # so nothing here needs to encode that. Vocabulary follows the ar glossary
@@ -376,6 +556,29 @@ TOPIC_TRANSLATIONS = {
             "الإيمان والإرشاد",
             "الاتّكال على الله في خبز كل يوم وفي الإرشاد وفي كل وعد — أن نسلك "
             "بالإيمان لا بالعيان.",
+        ),
+        "the-gospel-call": (
+            "دعوة الإنجيل",
+            "أقدم دعوة على الإطلاق — تعالَ، تُبْ، آمِنْ. "
+            "وعّاظ يتوسّلون إلى غير المهتدين، وشهادة نعمةٍ "
+            "نالها أول الخطاة.",
+        ),
+        "enduring-classics": (
+            "الكلاسيكيات الخالدة",
+            "الكتب التي رافقت الحجّاج عبر القرون — اعترافات "
+            "أوغسطينوس، وحلم بنيان، ومشورة كمبيس — السبل "
+            "القديمة، وما زالت صالحة.",
+        ),
+        "the-way-of-holiness": (
+            "طريق القداسة",
+            "مفرَزون لله — الوصايا مفحوصة، والكمال مطلوب "
+            "بأمانة، وعواطف القلب ممتحَنة فوُجدت صادقة.",
+        ),
+        "the-preached-word": (
+            "الكلمة المكروز بها",
+            "الوعظ العظيم على الصفحة — وايتفيلد وويسلي بملء "
+            "الصوت، وسبرجن بين فلّاحيه — ووصيّة باكستر "
+            "لكلّ راعي نفوس.",
         ),
     },
 }
