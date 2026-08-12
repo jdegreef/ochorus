@@ -3,6 +3,12 @@ import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
 
 /**
+ * Prerender refresh 2026-08-10 (queue jobs #527/#528/#529, PR #931): three
+ * Swahili sermons landed at once — Furaha ya Bwana (Simpson), Ufunguo wa
+ * Dhahabu wa Maombi and Utaratibu na Hoja katika Maombi (Spurgeon). Re-crawl
+ * /sw/sermons so the cards and detail pages bake the translated titles,
+ * localized scripture_refs and "In brief" summaries.
+ *
  * Prerender refresh 2026-08-08 (queue job #424, PR #901): Moody's "Christ All
  * in All" landed in Swahili as Kristo Yote katika Yote. Re-crawl /sw/sermons so
  * the card and its /sw/sermons/christ-all-in-all page bake the translated title
