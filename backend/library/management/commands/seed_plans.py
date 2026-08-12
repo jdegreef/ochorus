@@ -197,6 +197,23 @@ PLAN_TRANSLATIONS = {
         ),
     },
     "es": {
+        # Queue job #518. "Jesús Mismo" is the shipped Spanish edition's title
+        # verbatim, so the plan card and that book agree. The OTHER two source
+        # books have no Spanish edition yet — the-masters-indwelling and
+        # union-and-communion — so seed_plans will not create this row today,
+        # and the phrases "la vida que mora en nosotros" and "la unión y
+        # comunión con el Amado" are this entry's own renderings of their
+        # motifs, not quotations. Whoever translates either book should
+        # harmonise its title with this card, or adjust this tuple in the same
+        # PR (the #819 defect is what this entry pre-empts).
+        "deeper-life-in-christ": (
+            "La vida más profunda: Cristo en vosotros",
+            "No más esfuerzo, sino una Persona: el secreto de la vida más "
+            "profunda es Cristo mismo viviendo en nosotros. Andrew Murray "
+            "comienza con la maravilla de Jesús Mismo, luego despliega la vida "
+            "que mora en nosotros, y Hudson Taylor concluye en el reposo de la "
+            "unión y comunión con el Amado.",
+        ),
         # Queue job #517. The description names the three source books the way
         # their shipped Spanish editions name themselves: "La oración que
         # prevalece" and "el pulso de la vida" (from "Oración – El Pulso de la
