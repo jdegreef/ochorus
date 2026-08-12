@@ -7,6 +7,20 @@ import type { PageLoad } from './$types';
  * folding a fetch failure into `{ loadError: true }` so a client-side navigation
  * to a down API shows a retry panel instead of the error route.
  *
+ * Prerender refresh 2026-08-10 (queue job #515, PR #930): the Spanish edition of
+ * D. L. Moody's "The Way to God" (El Camino a Dios) went live — 9 chapters,
+ * 41k words. Rebuild so /es/books re-crawls and the 9
+ * /es/books/the-way-to-god/<n> chapter pages bake with their translated titles.
+ *
+ * No plans touch, and this one needed checking rather than assuming: unlike
+ * #514's slug, `the-way-to-god` DOES back a curated plan
+ * (`grace-for-every-sinner`). It still cannot create an English-titled Spanish
+ * plan row, because the plan needs all three of its source books and
+ * `a-call-to-the-unconverted` has no es edition — verified by running
+ * seed_plans on a fresh DB. When that book is translated, whoever ships it owes
+ * `PLAN_TRANSLATIONS["es"]["grace-for-every-sinner"]` in the same PR, plus a
+ * plans/+page.ts touch.
+ *
  * Prerender refresh 2026-08-09 (queue job #514, PR #920): the Spanish edition of
  * Andrew Murray's "Waiting on God" (Esperando en Dios) went live — 35 chapters,
  * the largest single es addition since the launch four. Rebuild so /es/books
