@@ -197,6 +197,22 @@ PLAN_TRANSLATIONS = {
         ),
     },
     "es": {
+        # Queue job #517. The description names the three source books the way
+        # their shipped Spanish editions name themselves: "La oración que
+        # prevalece" and "el pulso de la vida" (from "Oración – El Pulso de la
+        # Vida") are the fixture titles verbatim, so the plan card and the books
+        # it opens agree. lord-teach-us-to-pray-2 has NO Spanish edition yet, so
+        # seed_plans will not create this row today — the prose ships ahead so
+        # that book's arrival cannot publish an English-titled plan (the #819
+        # defect). Whoever translates it should keep this card's phrasing for
+        # the school-of-prayer motif or adjust this tuple in the same PR.
+        "school-of-prayer": (
+            "Una escuela de oración",
+            "Cuatro semanas en la escuela de la oración con tres guías: Andrew "
+            "Murray sobre cómo el Señor mismo nos enseña a orar, D. L. Moody "
+            "sobre la oración que prevalece, y Hannah Buyinza sobre la oración "
+            "como el pulso diario de la vida cristiana.",
+        ),
         "power-from-on-high": (
             "Poder de lo alto: El Espíritu Santo",
             "Cuatro semanas con R. A. Torrey sobre la vida llena del Espíritu: "
