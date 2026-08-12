@@ -881,3 +881,70 @@ archaic spelling and period punctuation are the text, not defects in it.
   99.5%.** Spanish runs about 1:1 with English — unlike Swahili, which compresses
   to the low 80s. Job #514 landed at 100.2% over 35 chapters. Re-derive from
   `word_count` on both sides rather than copying this line.
+- **A quotation crib built per BLOCK is wrong wherever a block holds two
+  quotations** (job #515, caught by a translator, not by me). Mining scripture by
+  aligning en/es blocks works — but block-level alignment does NOT give you
+  quotation-level alignment. The first build keyed *every* English quotation in a
+  block to *one* Spanish quotation from it, so any multi-quote block produced
+  mappings that were fluent, confident and wrong: "believe on the Lord Jesus
+  Christ and thou shalt be saved" returned Isaiah 1:18's Spanish, "I am the
+  resurrection and the life" returned Psalm 23:4's. 370 of ~2,700 blocks hold
+  mismatched quotation counts, so the contaminated share was large, and the file
+  had already been handed to nine translators as an authority. **Index only
+  blocks whose English and Spanish quotation counts are EQUAL, and pair them
+  positionally** — drop the rest rather than guessing. What saved it was the
+  brief telling translators to verify a crib hit rather than trust it; one
+  refused four and reported them. Keep that line in every brief.
+- **The word band is not flat — QUOTATION DENSITY predicts it** (job #515). This
+  book came in at 95.2% against an es band whose mean is 99.8%, and every chapter
+  read low. Nothing was missing: splitting each chapter into quoted and unquoted
+  text put the author's prose at **96.3%** and quoted scripture at **92.9%**, and
+  across the es corpus a book's English quoted share predicts its ratio at
+  **r = −0.78 (n=11)** — `jesus-himself-2` 21.7% quoted / 93.5%, versus
+  `the-inner-chamber` 7.6% / 102.3%. `the-way-to-god` is the most quotation-dense
+  book we ship (25.3%). Reina-Valera is simply tighter than the KJV. So **read
+  the band against the work's quoted share**, the way this file already scales
+  the ceiling for proper-noun density; a flat p05 will keep flagging correct
+  quotation-heavy books, and "fixing" one means commissioning padding.
+- **Never gate on BALANCED quotation marks — gate on the SOURCE's imbalance**
+  (job #515). A multi-paragraph quotation opens at every paragraph and closes
+  only at the last, in Spanish as in English, so a faithful mirror is imbalanced
+  by exactly that much: measured per chapter, this book is +3 in ch06, +5 in
+  ch07 and 0 in the other seven. A validator demanding zero pushed one translator
+  into inventing three closers — they flagged the deviation, which is how it was
+  caught. Compare `es « minus »` against `en “ minus ”` for that chapter. The
+  corpus backs the mirror: 77 paragraphs across 11 shipped es books leave a `«`
+  unclosed. (Same job: I told that translator a second passage was affected; it
+  checked the source, found both its paragraphs closed, and pushed back. It was
+  right — verify before you direct a fix.)
+- **The es quote convention is per (language × CONTENT TYPE)** (job #515,
+  measured per file). All 13 shipped es **books** use `« »` as the outer mark
+  whatever their English source uses — `all-of-grace` converts from a
+  straight-quoted English (499 `"` → 245 `«`), the rest from curly, and `“ ”`
+  appears only as the nested mark. es **sermons** are the opposite: five mirror a
+  straight-quoted source almost mark for mark (`the-ravens-cry` 161→161,
+  `the-golden-key-of-prayer` 204→205), ten use `“ ”`, six use `« »`. So #423's
+  per-file mirroring rule is real but not universal — settle it for your
+  (language, type) pair before briefing, and note that three es books mix `« »`
+  with straight `"` invisibly to `QuoteStyleTests`, which compares straight
+  against `“` and those files carry no `“`.
+- **If the work has BODY_CORRECTIONS entries, translate the CORRECTED text**
+  (job #515). `the-way-to-god.en` carries six repaired citations. The fixture
+  keeps the originals — `apply_body_corrections` repairs the DB rows on deploy —
+  so prepping chapter inputs straight from the fixture hands translators defects
+  we already fixed, and they faithfully reproduce them into a new language.
+  Run each chapter through `apply_body_corrections(slug, order, html)` when
+  building the inputs, and tell the translators the references are already
+  corrected so they do not re-report them.
+- **The cross-work verse ratchet will flag works that quote DIFFERENT CLAUSES of
+  one verse** (job #515). `tests_verse_consistency` keys on the reference, and
+  `_diverges` excludes containment — but not renderings that do not overlap at
+  all. Three of this job's four flags were that: one work needs
+  `los «nacidos de la carne»` as a plural noun phrase, another adapts 1 John 1:9
+  to the first person singular inside its own sentence, and John 6:68 is quoted
+  from one half in one book and the other half in another. Matching them would
+  degrade an accurate quotation to a paraphrase. **Fix the ones that are real
+  first** — the fourth was `godliness.es` quoting Acts 16:31 as "Cree en el Señor
+  Jesús" where the Reina-Valera reads "Jesucristo", repaired in the same PR — and
+  only then grow the pin, naming each addition and why in the commit message.
+  Growing a shrink-only ratchet is a loosening; say so out loud.
