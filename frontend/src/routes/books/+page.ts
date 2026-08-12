@@ -7,6 +7,12 @@ import type { PageLoad } from './$types';
  * folding a fetch failure into `{ loadError: true }` so a client-side navigation
  * to a down API shows a retry panel instead of the error route.
  *
+ * Prerender refresh 2026-08-10 (queue job #532, PR #931): William Booth's
+ * "Purity of Heart" went live in Swahili as Usafi wa Moyo (10 chapters).
+ * Rebuild so /sw/books re-crawls and the /sw/books/purity-of-heart chapter
+ * pages bake the translated titles. Same #897 check: purity-of-heart appears
+ * in neither LAUNCH_PLANS nor CURATED_PLANS, so no plans touch is needed.
+ *
  * Prerender refresh 2026-08-10 (queue job #515, PR #930): the Spanish edition of
  * D. L. Moody's "The Way to God" (El Camino a Dios) went live — 9 chapters,
  * 41k words. Rebuild so /es/books re-crawls and the 9

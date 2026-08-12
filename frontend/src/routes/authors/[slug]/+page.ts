@@ -17,6 +17,14 @@ export const entries: EntryGenerator = async () => {
 	return [...slugs].map((slug) => ({ slug }));
 };
 
+// Prerender refresh 2026-08-10 (queue jobs #530, #542, #735-#737, #768, PR
+// #931): six author biographies at once — Augustine of Hippo in Swahili (three
+// prayer callouts, the second one answered), and Bunyan, Whitefield, Susanna
+// Wesley, Brainerd and Thomas Watson in Portuguese (Watson's has two plain
+// prayer callouts and no answered one — the source's own shape). Re-crawl
+// /sw/authors/augustine-of-hippo and the five /pt/authors/<slug> pages so the
+// long-form bios and updated short bios bake in.
+//
 // Prerender refresh 2026-08-08 (queue job #429, PR #911): the Swahili R. A.
 // Torrey biography — the long-form bio_html translated tag-for-tag from the
 // English (86 tags, the three prayer callouts in the source's own order), plus
