@@ -718,20 +718,32 @@ nav.appnav .navtoggle:hover {
 		color-mix(in srgb, var(--shelf-hue) 9%, var(--surface-2));
 	border-bottom: 1px solid color-mix(in srgb, var(--shelf-hue) 22%, var(--border));
 }
-/* Round badge chip, tinted in the card's hue. Sized for the illustrated
-   multicolour emblems ($lib/emblems.ts), which need more room than a line
-   glyph to stay legible. */
-.shelf-card-badge {
+/* ── Emblem chips ──────────────────────────────────────────────────────────
+   The round tinted chip carrying an illustrated emblem ($lib/emblems.ts) —
+   one recipe for every surface (shelf cards, sermon rows and cards, topic
+   heroes). A call site decides only how big and which hue, via --chip-size
+   and --chip-hue; the art scales with the chip, so "give the emblems more
+   air" is one edit here, not a hunt across components. */
+.emblem-chip {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: 3.5rem;
-	height: 3.5rem;
-	border-radius: 999px;
-	background: color-mix(in srgb, var(--shelf-hue) 14%, var(--surface));
-	box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--shelf-hue) 35%, transparent);
+	width: var(--chip-size, 3.25rem);
+	height: var(--chip-size, 3.25rem);
 	flex-shrink: 0;
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--chip-hue) 14%, var(--surface));
+	box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--chip-hue) 33%, transparent);
 	overflow: hidden;
+}
+.emblem-chip > svg {
+	width: 66%;
+	height: 66%;
+}
+/* The shelf card's badge: an emblem chip in the card's hue. */
+.shelf-card-badge {
+	--chip-size: 3.5rem;
+	--chip-hue: var(--shelf-hue);
 }
 /* A portrait can sit in the chip instead of an icon (the sermons shelf). */
 .shelf-card-badge img {
@@ -880,19 +892,11 @@ nav.appnav .navtoggle:hover {
 		border-color 0.15s,
 		background 0.15s;
 }
-/* The sermon's illustrated emblem ($lib/emblems.ts) — a round chip in the
-   writer's era tint carrying the multicolour art, so each row opens with its
-   own mark rather than a wall of prose. */
+/* The sermon's emblem chip, in the writer's era tint, so each row opens with
+   its own mark rather than a wall of prose. */
 .sermon-row-emblem {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	width: 3.25rem;
-	height: 3.25rem;
-	flex-shrink: 0;
-	border-radius: 999px;
-	background: color-mix(in srgb, var(--row-hue) 11%, var(--surface-2));
-	box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--row-hue) 30%, transparent);
+	--chip-size: 3.25rem;
+	--chip-hue: var(--row-hue);
 }
 /* The era rail down the leading edge. Inside the border radius, so it reads as
    part of the row rather than a stripe stuck to it. */

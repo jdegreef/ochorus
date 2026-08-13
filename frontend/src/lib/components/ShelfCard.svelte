@@ -5,8 +5,8 @@
 	import type { EmblemName } from '$lib/emblems';
 
 	/**
-	 * The shared browse-page card: a colour-washed band carrying an icon (or a
-	 * portrait) and a fan of covers, over a typographic body.
+	 * The shared browse-page card: a colour-washed band carrying an illustrated
+	 * emblem (or a portrait) and a fan of covers, over a typographic body.
 	 *
 	 * This is the Topics card, generalised. It was the best-looking surface in
 	 * the app and the only page using it — Plans rendered plain bordered rows
@@ -45,11 +45,11 @@
 
 <a class="shelf-card" style="--shelf-hue: {hue}" {href}>
 	<div class="shelf-card-band">
-		<span class="shelf-card-badge">
+		<span class="shelf-card-badge emblem-chip">
 			{#if portrait}
 				<img src={portrait} alt="" loading="lazy" />
 			{:else if emblem}
-				<Emblem name={emblem} size={38} />
+				<Emblem name={emblem} />
 			{/if}
 		</span>
 		{#if covers.length}

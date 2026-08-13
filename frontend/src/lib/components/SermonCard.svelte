@@ -12,7 +12,7 @@
 </script>
 
 <a class="sermon-card" href={localizeHref(`/sermons/${sermon.slug}`)}>
-	<span class="emblem"><Emblem name={emblemForSermon(sermon.slug)} size={30} /></span>
+	<span class="emblem emblem-chip"><Emblem name={emblemForSermon(sermon.slug)} /></span>
 	<span class="min-w-0 flex-1">
 		<span class="chip">{t('sermons.label')}</span>
 		<span class="title">{sermon.title}</span>
@@ -42,17 +42,10 @@
 		background: var(--color-surface-2);
 		text-decoration: none;
 	}
-	/* The sermon's illustrated emblem (see $lib/emblems.ts) — sized so the art
-	   stays legible, on a soft tint so it pops in both themes. */
+	/* The sermon's emblem chip (recipe in app.css) — only size and hue here. */
 	.emblem {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: 2.75rem;
-		height: 2.75rem;
-		flex-shrink: 0;
-		border-radius: 999px;
-		background: var(--color-accent-soft);
+		--chip-size: 2.75rem;
+		--chip-hue: var(--color-accent);
 	}
 	.chip {
 		display: inline-block;

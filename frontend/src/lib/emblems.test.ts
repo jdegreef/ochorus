@@ -1,15 +1,16 @@
 import { describe, expect, it } from 'vitest';
 import {
 	EMBLEM_ART,
-	TOPIC_EMBLEMS,
+	TOPIC_META,
 	PLAN_META,
 	SERMON_EMBLEMS,
+	FALLBACK_POOL,
 	fallbackEmblem,
 	emblemForSermon,
 	planMeta,
+	topicMeta,
 	type EmblemName
 } from './emblems';
-import { topicMeta } from './topics';
 
 const names = Object.keys(EMBLEM_ART) as EmblemName[];
 
@@ -32,7 +33,7 @@ describe('emblem artwork', () => {
 
 describe('curated assignments', () => {
 	const curated: Array<[string, EmblemName]> = [
-		...Object.entries(TOPIC_EMBLEMS),
+		...Object.entries(TOPIC_META).map(([slug, m]) => [slug, m.emblem] as [string, EmblemName]),
 		...Object.entries(PLAN_META).map(([slug, m]) => [slug, m.emblem] as [string, EmblemName]),
 		...Object.entries(SERMON_EMBLEMS)
 	];
@@ -43,9 +44,8 @@ describe('curated assignments', () => {
 	});
 
 	it('never hands a curated slug a fallback emblem', () => {
-		const pool: EmblemName[] = ['oil-lamp', 'wheat-sheaf', 'morning-star', 'watchmans-bell'];
 		for (const [slug, emblem] of curated) {
-			expect(pool, `${slug} wears a generic fallback`).not.toContain(emblem);
+			expect(FALLBACK_POOL, `${slug} wears a generic fallback`).not.toContain(emblem);
 		}
 	});
 });

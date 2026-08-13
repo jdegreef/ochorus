@@ -225,8 +225,8 @@
 			<!-- Every sermon wears its own illustrated emblem, themed to the text
 			     it expounds — the raven with bread, the bruised reed, the golden
 			     key — so a shelf of prose rows gets a scannable visual anchor. -->
-			<div class="sermon-row-emblem">
-				<Emblem name={emblemForSermon(sermon.slug)} size={34} />
+			<div class="sermon-row-emblem emblem-chip">
+				<Emblem name={emblemForSermon(sermon.slug)} />
 			</div>
 			<div class="min-w-0 flex-1">
 				<!-- Eyebrow line: whose sermon (only when no heading above says so) and

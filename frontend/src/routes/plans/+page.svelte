@@ -53,10 +53,7 @@
 		href: `${SITE_URL}${localizeHref('/plans', { locale: loc })}`
 	}));
 
-	// Each plan wears a curated accent + emblem (planMeta), the same identity
-	// treatment topics get. (Deriving the hue from the first cover was tried
-	// first and looked flat — most covers are dark navy, so every card came out
-	// the same muted blue and the shelf lost the colour that makes /topics work.)
+	// Each plan wears a curated accent + emblem — see planMeta in $lib/emblems.
 
 	/** Rounded minutes of reading in an average day of a plan. */
 	const perDay = (plan: PlanSummary) =>

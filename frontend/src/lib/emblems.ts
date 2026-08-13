@@ -6,11 +6,14 @@
  * is themed to its subject: the prayer topic gets folded hands under morning
  * light, "The Ravens' Cry" gets Elijah's raven with bread, and so on.
  *
- * Kept on the client (not the API) for the same reason as topic accents:
- * presentation, not content, and the catalogues are small and stable. A slug
- * that has no curated emblem falls back to a stable hash-pick from a small
- * generic pool, so new content ships looking finished and a given slug always
- * wears the same art.
+ * Kept on the client (not the API) because this is presentation, not content,
+ * and the catalogues are small and stable. A slug that has no curated emblem
+ * falls back to a stable hash-pick from a small generic pool, so new content
+ * ships looking finished and a given slug always wears the same art.
+ *
+ * This module is the ONE home for catalogue visual identity: art, curated
+ * slug→emblem maps and accent hues all live here, read through topicMeta /
+ * planMeta / emblemForSermon.
  *
  * The art strings are static, author-controlled markup rendered by
  * Emblem.svelte — never user input.
@@ -494,20 +497,25 @@ export type EmblemName = keyof typeof EMBLEM_ART;
 // One emblem per slug, unique across all three catalogues (a test enforces
 // this). Slugs match the backend seeds (seed_topics / seed_plans / fixtures).
 
-export const TOPIC_EMBLEMS: Record<string, EmblemName> = {
-	prayer: 'praying-hands', // the secret place
-	'holy-spirit': 'dove-descending', // the dove and the tongues of fire
-	'deeper-life': 'mountain-dawn', // going further in
-	'grace-and-comfort': 'overflowing-cup', // my cup runneth over
-	'revival-and-missions': 'torch-globe', // a light to the nations
-	'faith-and-guidance': 'compass-rose', // walking by faith
-	'the-gospel-call': 'herald-trumpet', // the oldest invitation there is
-	'enduring-classics': 'laurel-tome', // the old paths, still good
-	'the-way-of-holiness': 'narrow-gate', // strait is the gate
-	'the-preached-word': 'open-word' // great preaching on the page
+/**
+ * Per-topic visual identity: accent hue + emblem, so each shelf reads as its
+ * own thing rather than one more identical card. The accent is used for tints
+ * (via color-mix), never as body text, so it stays legible in both themes.
+ */
+export const TOPIC_META: Record<string, { accent: string; emblem: EmblemName }> = {
+	prayer: { accent: '#5257c9', emblem: 'praying-hands' }, // the secret place
+	'holy-spirit': { accent: '#d98324', emblem: 'dove-descending' }, // the dove, the rushing wind (Acts 2)
+	'deeper-life': { accent: '#149e93', emblem: 'mountain-dawn' }, // going further in
+	'grace-and-comfort': { accent: '#d1567b', emblem: 'overflowing-cup' }, // my cup runneth over
+	'revival-and-missions': { accent: '#df552f', emblem: 'torch-globe' }, // a light to the nations
+	'faith-and-guidance': { accent: '#4f9a3e', emblem: 'compass-rose' }, // walking by faith
+	'the-gospel-call': { accent: '#b8912f', emblem: 'herald-trumpet' }, // the oldest invitation there is
+	'enduring-classics': { accent: '#8a5bbf', emblem: 'laurel-tome' }, // the old paths, still good
+	'the-way-of-holiness': { accent: '#3e7cb8', emblem: 'narrow-gate' }, // strait is the gate
+	'the-preached-word': { accent: '#946b4a', emblem: 'open-word' } // great preaching on the page
 };
 
-/** Per-plan visual identity: accent hue + emblem (mirrors topicMeta's shape). */
+/** Per-plan visual identity: accent hue + emblem (same shape as TOPIC_META). */
 export const PLAN_META: Record<string, { accent: string; emblem: EmblemName }> = {
 	'school-of-prayer': { accent: '#6a5ecf', emblem: 'rising-incense' }, // prayer as incense
 	'humility-12-days': { accent: '#2f8f85', emblem: 'basin-towel' }, // the servant's basin
@@ -555,7 +563,12 @@ export const SERMON_EMBLEMS: Record<string, EmblemName> = {
 // New content lands before anyone curates art for it; a stable hash-pick from
 // a small generic pool keeps it looking finished until someone does.
 
-const FALLBACK_POOL: EmblemName[] = ['oil-lamp', 'wheat-sheaf', 'morning-star', 'watchmans-bell'];
+export const FALLBACK_POOL: EmblemName[] = [
+	'oil-lamp',
+	'wheat-sheaf',
+	'morning-star',
+	'watchmans-bell'
+];
 
 /** FNV-1a — stable across sessions, so a slug always wears the same art. */
 const fnv = (s: string): number => {
@@ -572,6 +585,9 @@ export const fallbackEmblem = (slug: string): EmblemName =>
 
 export const emblemForSermon = (slug: string): EmblemName =>
 	SERMON_EMBLEMS[slug] ?? fallbackEmblem(slug);
+
+export const topicMeta = (slug: string): { accent: string; emblem: EmblemName } =>
+	TOPIC_META[slug] ?? { accent: '#3b5bdb', emblem: fallbackEmblem(slug) };
 
 /**
  * The curated plan accents, cycled by slug hash for plans that ship without

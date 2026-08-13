@@ -6,7 +6,7 @@
 	import { localizeHref } from '$lib/href';
 	import { locales } from '$lib/paraglide/runtime';
 	import ShelfCard from '$lib/components/ShelfCard.svelte';
-	import { topicMeta } from '$lib/topics';
+	import { topicMeta } from '$lib/emblems';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 
 	let { data } = $props();
