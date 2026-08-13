@@ -666,3 +666,46 @@ class UpsertBookAuthorBioTests(TestCase):
         self.assertEqual(book.author_id, real.pk)
         real.refresh_from_db()
         self.assertEqual(real.photo_url, "/spurgeon.png")  # portrait not lost
+
+
+class ReimportCreateOnlyTests(TestCase):
+    """A re-import refreshes content but must NOT walk back workflow-owned state
+    (review #26): a copyright pull (is_published=False), a review decision
+    (source_type), and the assigned sort_order all survive a later re-import."""
+
+    def _meta(self, **over):
+        base = {
+            "author": "Andrew Murray",
+            "title": "Humility",
+            "description": "d",
+            "source_url": "http://example.test/humility",
+            "cover_url": "",
+            "pdf_url": "",
+            "slug": "humility",
+        }
+        base.update(over)
+        return base
+
+    def test_reimport_keeps_pulled_publish_state_and_source_type(self):
+        from library.management.commands.import_ochorus import upsert
+
+        book = upsert(self._meta(), [("Ch1", "<p>a</p>")], sort_order=3)
+        self.assertTrue(book.is_published)
+        self.assertEqual(book.source_type, Book.SourceType.PUBLIC_DOMAIN)
+
+        # Simulate what prod does after the first import: a copyright pull and a
+        # review/sort decision the seed/import must not overwrite.
+        book.is_published = False
+        book.source_type = Book.SourceType.AI_REVIEWED
+        book.sort_order = 99
+        book.save(update_fields=["is_published", "source_type", "sort_order"])
+
+        again = upsert(
+            self._meta(title="Humility (revised)"), [("Ch1", "<p>b</p>")], sort_order=3
+        )
+        self.assertEqual(again.pk, book.pk)
+        self.assertFalse(again.is_published)  # not republished
+        self.assertEqual(again.source_type, Book.SourceType.AI_REVIEWED)  # not re-typed
+        self.assertEqual(again.sort_order, 99)  # not reshuffled
+        self.assertEqual(again.title, "Humility (revised)")  # content DID refresh
+        self.assertEqual(again.chapters.count(), 1)
