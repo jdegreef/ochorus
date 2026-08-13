@@ -27,8 +27,8 @@ from __future__ import annotations
 
 from django.core.management.base import BaseCommand
 
-from library.models import Language
 from library.language_seed import SEED_LANGUAGES
+from library.models import Language
 
 # The source language: content is authored in English, so it is exempt from every
 # readiness check and is never a translation target.

@@ -309,6 +309,7 @@
 <!-- Body HTML is cleaned server-side to a safe tag subset on ingest; Bible
      references are wrapped as tappable spans (scripture popover). -->
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
+<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 <div class="reading {className}" bind:this={body} onclick={onBodyClick} dir="auto">{@html html}</div>
 
 <SelectionBar

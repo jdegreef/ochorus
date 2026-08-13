@@ -60,9 +60,9 @@ def _convert(html: str) -> tuple[str, int]:
             i = j
             continue
         if html.startswith(ENTITY, i):
-            mark, width = ENTITY, len(ENTITY)
+            _, width = ENTITY, len(ENTITY)
         elif html[i] == STRAIGHT:
-            mark, width = STRAIGHT, 1
+            _, width = STRAIGHT, 1
         else:
             out.append(html[i])
             i += 1

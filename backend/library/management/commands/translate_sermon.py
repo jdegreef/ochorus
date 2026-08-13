@@ -52,7 +52,7 @@ class Command(BaseCommand):
         try:
             source = Sermon.objects.select_related("author").get(slug=slug, language="en")
         except Sermon.DoesNotExist:
-            raise CommandError(f"no English sermon with slug {slug!r}")
+            raise CommandError(f"no English sermon with slug {slug!r}") from None
 
         existing = Sermon.objects.filter(slug=slug, language=language).first()
         if existing and not force:

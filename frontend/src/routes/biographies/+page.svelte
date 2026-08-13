@@ -175,7 +175,6 @@
 	// fast path — jumping to a letter reveals whatever page holds it, below.
 	const PER_PAGE = 24;
 	let pageNum = $state(1);
-	const pageCount = $derived(Math.max(1, Math.ceil(sorted.length / PER_PAGE)));
 	const paged = $derived(sorted.slice(0, pageNum * PER_PAGE));
 	const remaining = $derived(sorted.length - paged.length);
 	// Narrowing the list must not strand you on page 3 of 1.
@@ -273,7 +272,9 @@
 	<meta property="og:url" content="{SITE_URL}{localizeHref('/biographies')}" />
 	<meta property="og:image" content="{SITE_URL}/og/biographies.png" />
 	<meta name="twitter:card" content="summary_large_image" />
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html peopleLd}
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html crumbsLd}
 </svelte:head>
 

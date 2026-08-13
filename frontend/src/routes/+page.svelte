@@ -83,6 +83,7 @@
 	<meta property="og:description" content={t('home.metaDescription')} />
 	<meta property="og:url" content="{SITE_URL}{localizeHref('/')}" />
 	<meta name="twitter:card" content="summary" />
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html siteLd}
 </svelte:head>
 

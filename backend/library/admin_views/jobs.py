@@ -29,6 +29,8 @@ from rest_framework.views import APIView
 
 from accounts.permissions import IsAdminEmail
 
+from ..languages import entry as language_entry
+from ..languages import known_codes
 from ..models import (
     Author,
     AuthorTranslation,
@@ -38,8 +40,6 @@ from ..models import (
     Topic,
     TopicTranslation,
 )
-from ..languages import entry as language_entry
-from ..languages import known_codes
 
 # Env-overridable so local dev / tests can point at a mock GitHub.
 GITHUB_API = os.getenv("GITHUB_API_BASE", "https://api.github.com")

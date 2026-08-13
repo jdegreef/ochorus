@@ -16,6 +16,8 @@ Shape:
 
 from __future__ import annotations
 
+import re as _re
+
 # Catalogue slugs to skip on a full import (e.g. duplicate/teen editions we don't
 # want in the library). An explicit `import_ochorus <slug>` still imports them.
 EXCLUDED_SLUGS: set[str] = {
@@ -105,8 +107,6 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 #
 # Applied on every import AND backfillable over stored rows (management command
 # `apply_body_corrections`, plus a data migration for prod).
-
-import re as _re
 
 BODY_CORRECTIONS: dict[str, dict] = {
     "baptism-with-the-holy-spirit": {

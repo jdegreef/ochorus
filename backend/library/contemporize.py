@@ -27,7 +27,7 @@ from __future__ import annotations
 
 import re
 
-from .translation import MODEL, _BODY_RE, _TITLE_RE
+from .translation import _BODY_RE, _TITLE_RE, MODEL
 
 # Content-language code for a modern-English edition. NOT a UI locale (Paraglide
 # still ships only en/es/sw/lg); it discriminates the Book row and is requested

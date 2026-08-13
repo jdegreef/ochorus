@@ -9,8 +9,8 @@ from rest_framework.views import APIView
 from accounts.permissions import IsAdminEmail
 
 from ..models import Author, Book, Plan, Sermon
+from ..qa import chapter_flags
 from ..views import _language_entry
-from .quality import chapter_flags
 
 
 class AdminBookDetailView(APIView):

@@ -16,7 +16,7 @@ asymmetric path but needs no network/JWKS or ``cryptography`` keypair.
 
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 import jwt
 from django.contrib.auth import get_user_model
@@ -38,7 +38,7 @@ SUB = "11111111-1111-1111-1111-111111111111"
 
 
 def _token(secret=SECRET, *, exp_delta=timedelta(hours=1), **claims) -> str:
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     payload = {
         "sub": SUB,
         "aud": AUD,
@@ -108,8 +108,8 @@ class SupabaseJWTAuthenticationTests(TestCase):
             {
                 "sub": SUB,
                 "aud": "some-other-audience",
-                "iat": datetime.now(timezone.utc),
-                "exp": datetime.now(timezone.utc) + timedelta(hours=1),
+                "iat": datetime.now(UTC),
+                "exp": datetime.now(UTC) + timedelta(hours=1),
             },
             SECRET,
             algorithm="HS256",
@@ -117,7 +117,7 @@ class SupabaseJWTAuthenticationTests(TestCase):
         self.assertIsNone(self.auth.authenticate(_request(token)))
 
     def test_missing_sub_is_anonymous(self):
-        now = datetime.now(timezone.utc)
+        now = datetime.now(UTC)
         token = jwt.encode(
             {"aud": AUD, "iat": now, "exp": now + timedelta(hours=1)},
             SECRET,

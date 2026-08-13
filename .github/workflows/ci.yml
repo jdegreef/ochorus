@@ -47,6 +47,10 @@ jobs:
         working-directory: backend
         run: uv sync --frozen
 
+      - name: Backend — lint (ruff)
+        working-directory: backend
+        run: uv run ruff check .
+
       - name: Backend — check for missing migrations
         working-directory: backend
         run: uv run python manage.py makemigrations --check --dry-run
@@ -93,6 +97,10 @@ jobs:
         # be compiled before svelte-check, which would otherwise fail on the
         # $lib/paraglide/* imports. The build step regenerates it via the Vite plugin.
         run: npx @inlang/paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide
+
+      - name: Frontend — lint (eslint)
+        working-directory: frontend
+        run: npx eslint .
 
       - name: Frontend — type-check
         working-directory: frontend

@@ -43,13 +43,6 @@
 		{ key: 'tiny_chapters', label: 'Tiny chapters', desc: 'Under 150 words' },
 		{ key: 'giant_chapters', label: 'Giant chapters', desc: 'Over 8,000 words — a split may be missed' }
 	];
-	const INTEGRITY: { key: keyof AdminAudit['integrity']; label: string; desc: string }[] = [
-		{ key: 'broken_plan_days', label: 'Broken plan days', desc: 'A plan day points at a missing chapter' },
-		{ key: 'empty_books', label: 'Books with no chapters', desc: '' },
-		{ key: 'empty_chapters', label: 'Empty chapters', desc: 'No body text' },
-		{ key: 'order_gaps', label: 'Chapter-order gaps', desc: 'Missing chapter numbers' }
-	];
-
 	const totalFindings = $derived(
 		audit
 			? [...Object.values(audit.quality), ...Object.values(audit.integrity)].reduce(

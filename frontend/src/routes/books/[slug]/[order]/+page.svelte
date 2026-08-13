@@ -17,7 +17,6 @@
 	import { HIGHLIGHT_COLORS, DEFAULT_HIGHLIGHT } from '$lib/reading-schema';
 	import { bookmarks } from '$lib/bookmarks.svelte';
 	import { findQueryHits } from '$lib/searchHits';
-	import type { Segment } from '$lib/marks.svelte';
 	import { renderMarks } from '$lib/rangeMarks';
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
@@ -683,7 +682,6 @@
 	// `dataset.pristine`, so a separate pass would be wiped whenever a highlight
 	// changed, and the two would fight over the same HTML.
 	const searchQuery = $derived(($page.url.searchParams.get('q') ?? '').trim());
-	let searchHits = $state<Segment[]>([]);
 	let scrolledToHit = false;
 
 	$effect(() => {
@@ -697,7 +695,6 @@
 					searchQuery
 				)
 			: [];
-		searchHits = hits;
 		renderMarks(body, list, (id) => {
 			noteId = id;
 			notePending = [];
@@ -929,6 +926,7 @@
 		<h1 bind:this={titleEl} class="text-h1 mb-8" dir="auto">{chapter.title}</h1>
 
 		<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. -->
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		<div class="reading" bind:this={body} dir="auto">{@html chapter.body_html}</div>
 	</div>
 

@@ -279,9 +279,9 @@ class LineBreakHyphenTests(SimpleTestCase):
         fixture is a file — nothing rewrites it, and it is what a fresh build
         loads and what the ratchet measures.
         """
-        from library.content_fixtures import BOOKS_DIR, SERMONS_DIR
-
         import json
+
+        from library.content_fixtures import BOOKS_DIR, SERMONS_DIR
 
         dirty = []
         for path in sorted(BOOKS_DIR.glob("*.en.json")) + sorted(SERMONS_DIR.glob("*.en.json")):

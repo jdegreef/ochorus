@@ -167,7 +167,7 @@ def split_by_heading(root, tag) -> list[tuple[str, str]]:
                                 d.get_text(" ", strip=True)
                                 for d in st.find_all("div", recursive=False)
                             ] or [st.get_text(" ", strip=True)]
-                            stanzas.append("<br/>".join(l for l in lines if l))
+                            stanzas.append("<br/>".join(line for line in lines if line))
                         parts.append(
                             "<blockquote>"
                             + "<br/><br/>".join(s for s in stanzas if s)

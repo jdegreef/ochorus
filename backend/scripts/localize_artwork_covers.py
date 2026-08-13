@@ -149,7 +149,7 @@ def patch(path: Path, cover_url: str, cover_color: str) -> None:
     text = path.read_text(encoding="utf-8")
     for key, value in (("cover_url", cover_url), ("cover_color", cover_color)):
         pattern = rf'("{key}"\s*:\s*)"(?:[^"\\]|\\.)*"'
-        text, n = re.subn(pattern, lambda m: m.group(1) + json.dumps(value), text)
+        text, n = re.subn(pattern, lambda m, value=value: m.group(1) + json.dumps(value), text)
         if n != 1:
             raise SystemExit(f"{path.name}: expected 1 {key}, found {n}")
     path.write_text(text, encoding="utf-8")

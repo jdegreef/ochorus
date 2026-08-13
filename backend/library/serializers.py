@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from .contemporize import MODERN_LANGUAGE
-from .localization import DEFAULT_LANGUAGE, language_from_request
+from .localization import language_from_request
 from .models import Author, Book, Chapter, Plan, PlanDay, Sermon, Topic, TopicBook
 from .scripture import book_of
 

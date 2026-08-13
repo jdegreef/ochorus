@@ -24,12 +24,12 @@ from django.core.management.base import BaseCommand
 from django.db import transaction
 from django.utils.text import slugify
 
+from library import english_audit
 from library.corrections import (
     EXCLUDED_SLUGS,
     apply_body_corrections,
     chapter_title_overrides,
 )
-from library import english_audit
 from library.ingest import clean_title, is_front_matter, strip_trailing_pagenum
 from library.models import Author, Book, Chapter
 
@@ -434,7 +434,7 @@ def _chapter_int(label: str) -> int | None:
         return _WORD_NUMS[label]
     if label and all(c in _ROMAN for c in label):
         total = 0
-        for a, b in zip(label, label[1:] + " "):
+        for a, b in zip(label, label[1:] + " ", strict=True):
             v = _ROMAN[a]
             total += -v if _ROMAN.get(b, 0) > v else v
         return total

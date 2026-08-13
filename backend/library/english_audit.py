@@ -42,12 +42,16 @@ import html
 import json
 import re
 from collections import Counter, defaultdict
-from itertools import chain
+from collections.abc import Iterable, Iterator
 from dataclasses import dataclass
+from itertools import chain
 from pathlib import Path
-from typing import Iterable, Iterator
 
-from library.content_fixtures import BOOKS_DIR, CONTENT_DIR, SERMONS_DIR, authors_by_slug
+from library.content_fixtures import (
+    BOOKS_DIR,
+    SERMONS_DIR,
+    authors_by_slug,
+)
 
 # NOT `library.text.html_to_text`, which collapses runs of whitespace. Two of
 # the checks here are ABOUT whitespace — `space-before-punct` and `hyphen-space`
@@ -149,7 +153,7 @@ MISSPELLINGS = {
     "Weibe": "Wiebe (spelled Wiebe elsewhere in the same book)",
 }
 MISSPELLED = re.compile(
-    r"\b(?:%s)\b" % "|".join(re.escape(k) for k in sorted(MISSPELLINGS, key=len, reverse=True))
+    r"\b(?:{})\b".format("|".join(re.escape(k) for k in sorted(MISSPELLINGS, key=len, reverse=True)))
 )
 
 # Findings a machine may apply unattended, because the defect and its repair are

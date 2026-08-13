@@ -99,7 +99,7 @@ def _reflow(lines: list[str]) -> str:
 def chapterize(text: str) -> list[tuple[str, str]]:
     """Split the OCR text into (title, body_html) at each CHAPTER marker."""
     lines = text.split("\n")
-    starts = [i for i, l in enumerate(lines) if _CHAPTER.match(l)]
+    starts = [i for i, line in enumerate(lines) if _CHAPTER.match(line)]
     sections: list[tuple[str, str]] = []
     for n, start in enumerate(starts):
         end = starts[n + 1] if n + 1 < len(starts) else len(lines)
@@ -107,9 +107,9 @@ def chapterize(text: str) -> list[tuple[str, str]]:
         # The first non-furniture line after the marker is the chapter title.
         title = ""
         body_start = 0
-        for j, l in enumerate(block):
-            if l.strip() and not _BARE_NUM.match(l.strip()):
-                title = clean_title(l.strip())
+        for j, line in enumerate(block):
+            if line.strip() and not _BARE_NUM.match(line.strip()):
+                title = clean_title(line.strip())
                 body_start = j + 1
                 break
         body = _reflow(block[body_start:])

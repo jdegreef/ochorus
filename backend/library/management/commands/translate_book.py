@@ -51,7 +51,7 @@ class Command(BaseCommand):
         try:
             source = Book.objects.get(slug=slug, language="en")
         except Book.DoesNotExist:
-            raise CommandError(f"no English book with slug {slug!r}")
+            raise CommandError(f"no English book with slug {slug!r}") from None
 
         wanted = {int(c) for c in chapters.split(",")} if chapters else None
         todo = [

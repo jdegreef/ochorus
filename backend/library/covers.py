@@ -188,7 +188,7 @@ def palette_from_artwork(path) -> str:
     lightness = min(max(lightness, 0.30), 0.46)
     saturation = min(max(saturation, 0.30), 0.72)
     r, g, b = colorsys.hls_to_rgb(hue, lightness, saturation)
-    return "#%02x%02x%02x" % (round(r * 255), round(g * 255), round(b * 255))
+    return f"#{round(r * 255):02x}{round(g * 255):02x}{round(b * 255):02x}"
 
 
 def build_svg(

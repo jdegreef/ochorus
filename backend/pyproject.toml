@@ -27,4 +27,18 @@ dependencies = [
 [dependency-groups]
 dev = [
     "pillow>=12.3.0",
+    "ruff>=0.15",
 ]
+
+[tool.ruff]
+target-version = "py312"
+# Auto-generated / immutable migrations aren't ours to lint.
+extend-exclude = ["**/migrations/**"]
+
+[tool.ruff.lint]
+# Line length (E5xx) is intentionally NOT enforced: the codebase has many
+# long-form prose comments and no single target width, so E501 would be pure
+# churn — a formatter's concern, not this gate's. SIM117 (combine nested `with`)
+# is omitted too; the nested form is often the clearer one here.
+select = ["E4", "E7", "E9", "F", "I", "B", "UP", "C4", "SIM"]
+ignore = ["SIM117"]

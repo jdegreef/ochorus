@@ -122,7 +122,9 @@ def sync_author(author, fields: dict) -> tuple[list[str], list[str]]:
 
     fixture_bio = (fields.get("bio") or "").strip()
     live_bio = (author.bio or "").strip()
-    if fixture_bio and fixture_bio != live_bio:
+    # Kept nested (not one combined `and`): the outer test is "a new bio exists",
+    # the inner is "the live bio is ours to replace" — two distinct concerns.
+    if fixture_bio and fixture_bio != live_bio:  # noqa: SIM102
         # Empty, or still the placeholder an import planted — ours to replace.
         if not live_bio or live_bio in catalog_stubs():
             author.bio = fixture_bio
