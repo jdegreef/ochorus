@@ -13,6 +13,8 @@
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import { hueForBirthYear } from '$lib/eras';
 	import { portraitPosition } from '$lib/portraits';
+	import Emblem from '$lib/components/Emblem.svelte';
+	import { emblemForSermon } from '$lib/emblems';
 
 	const t = i18n.t;
 
@@ -220,34 +222,42 @@
 			style="--row-hue: {hueForBirthYear(sermon.author.birth_year)}"
 			href={localizeHref(`/sermons/${sermon.slug}`)}
 		>
-			<!-- Eyebrow line: whose sermon (only when no heading above says so) and
-			     the passage at the start, the length at the top right of the row. -->
-			<div class="flex flex-wrap items-baseline justify-between gap-x-4">
-				<p class="sermon-row-ref min-w-0">
-					{#if showAuthor}{sermon.author.name}<span class="opacity-40"> · </span>{/if}
-					{sermon.scripture_ref}
-				</p>
-				<!-- ms-auto, not just justify-between: when a long passage pushes this
-				     to its own line, justify-between leaves it stranded at the start of
-				     that line. The auto margin keeps it flush to the end either way. -->
-				<p class="ms-auto shrink-0 text-small text-muted">
-					{readingTime(sermon.word_count)}
-					{#if year}<span class="opacity-50"> · </span>{year}{/if}
-				</p>
+			<!-- Every sermon wears its own illustrated emblem, themed to the text
+			     it expounds — the raven with bread, the bruised reed, the golden
+			     key — so a shelf of prose rows gets a scannable visual anchor. -->
+			<div class="sermon-row-emblem emblem-chip">
+				<Emblem name={emblemForSermon(sermon.slug)} />
 			</div>
-			<h3 class="sermon-row-title mt-1">{sermon.title}</h3>
-			<!-- Not every sermon has a brief written yet, so the row has to read as
-			     finished without one — hence the brief hanging below a complete
-			     title/passage/length line rather than sitting between them. -->
-			{#if sermon.summary}
-				<!-- Clamped on a phone only: a 400-character brief runs to eleven lines
-				     at 375px, and twenty-six of those is a very long shelf. The full
-				     text is one tap away, and it fits in three or four lines from sm up
-				     where the measure is wider. Same rule AuthorBioCard uses. -->
-				<p class="sermon-row-brief mt-2.5 line-clamp-5 text-body sm:line-clamp-none">
-					{sermon.summary}
-				</p>
-			{/if}
+			<div class="min-w-0 flex-1">
+				<!-- Eyebrow line: whose sermon (only when no heading above says so) and
+				     the passage at the start, the length at the top right of the row. -->
+				<div class="flex flex-wrap items-baseline justify-between gap-x-4">
+					<p class="sermon-row-ref min-w-0">
+						{#if showAuthor}{sermon.author.name}<span class="opacity-40"> · </span>{/if}
+						{sermon.scripture_ref}
+					</p>
+					<!-- ms-auto, not just justify-between: when a long passage pushes this
+					     to its own line, justify-between leaves it stranded at the start of
+					     that line. The auto margin keeps it flush to the end either way. -->
+					<p class="ms-auto shrink-0 text-small text-muted">
+						{readingTime(sermon.word_count)}
+						{#if year}<span class="opacity-50"> · </span>{year}{/if}
+					</p>
+				</div>
+				<h3 class="sermon-row-title mt-1">{sermon.title}</h3>
+				<!-- Not every sermon has a brief written yet, so the row has to read as
+				     finished without one — hence the brief hanging below a complete
+				     title/passage/length line rather than sitting between them. -->
+				{#if sermon.summary}
+					<!-- Clamped on a phone only: a 400-character brief runs to eleven lines
+					     at 375px, and twenty-six of those is a very long shelf. The full
+					     text is one tap away, and it fits in three or four lines from sm up
+					     where the measure is wider. Same rule AuthorBioCard uses. -->
+					<p class="sermon-row-brief mt-2.5 line-clamp-5 text-body sm:line-clamp-none">
+						{sermon.summary}
+					</p>
+				{/if}
+			</div>
 		</a>
 	{/snippet}
 

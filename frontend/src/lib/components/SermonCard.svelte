@@ -3,7 +3,8 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { readingTime } from '$lib/reading';
-	import Icon from '$lib/components/Icon.svelte';
+	import Emblem from '$lib/components/Emblem.svelte';
+	import { emblemForSermon } from '$lib/emblems';
 
 	let { sermon, showAuthor = false }: { sermon: SermonSummary; showAuthor?: boolean } =
 		$props();
@@ -11,7 +12,7 @@
 </script>
 
 <a class="sermon-card" href={localizeHref(`/sermons/${sermon.slug}`)}>
-	<span class="mic"><Icon name="mic" size={18} /></span>
+	<span class="emblem emblem-chip"><Emblem name={emblemForSermon(sermon.slug)} /></span>
 	<span class="min-w-0 flex-1">
 		<span class="chip">{t('sermons.label')}</span>
 		<span class="title">{sermon.title}</span>
@@ -41,16 +42,10 @@
 		background: var(--color-surface-2);
 		text-decoration: none;
 	}
-	.mic {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: 2.1rem;
-		height: 2.1rem;
-		flex-shrink: 0;
-		border-radius: 999px;
-		color: var(--color-accent);
-		background: var(--color-accent-soft);
+	/* The sermon's emblem chip (recipe in app.css) — only size and hue here. */
+	.emblem {
+		--chip-size: 2.75rem;
+		--chip-hue: var(--color-accent);
 	}
 	.chip {
 		display: inline-block;

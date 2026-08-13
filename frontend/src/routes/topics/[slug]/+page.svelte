@@ -9,8 +9,8 @@
 	import SermonCard from '$lib/components/SermonCard.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
-	import Icon from '$lib/components/Icon.svelte';
-	import { topicMeta } from '$lib/topics';
+	import Emblem from '$lib/components/Emblem.svelte';
+	import { topicMeta } from '$lib/emblems';
 
 	let { data } = $props();
 	const t = i18n.t;
@@ -72,7 +72,7 @@
 	<Breadcrumb items={crumbs} />
 
 	<header class="hero mb-8 mt-4">
-		<span class="badge"><Icon name={meta.icon} size={26} /></span>
+		<span class="badge emblem-chip"><Emblem name={meta.emblem} /></span>
 		<div class="min-w-0">
 			<h1 class="text-display mb-2">{topic.title}</h1>
 			{#if topic.description}
@@ -148,17 +148,10 @@
 			radial-gradient(90% 130% at 0% 0%, color-mix(in srgb, var(--topic) 16%, transparent), transparent 55%),
 			color-mix(in srgb, var(--topic) 7%, var(--color-surface));
 	}
+	/* The hero's emblem chip (recipe in app.css) — only size and hue here. */
 	.badge {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: 3.1rem;
-		height: 3.1rem;
-		flex-shrink: 0;
-		border-radius: 999px;
-		color: color-mix(in srgb, var(--topic) 82%, var(--color-text));
-		background: color-mix(in srgb, var(--topic) 16%, var(--color-surface));
-		box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--topic) 35%, transparent);
+		--chip-size: 3.9rem;
+		--chip-hue: var(--topic);
 	}
 	.section-label {
 		font-size: 0.72rem;

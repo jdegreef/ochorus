@@ -33,7 +33,7 @@ export const ERAS: Era[] = [
  * Era is the one visual grouping a writer already belongs to, so colouring by
  * it means the same author carries the same colour everywhere rather than a
  * hue invented per surface. Values sit in the same register as the topic
- * palette in $lib/topics — used only through color-mix() for tints and icon
+ * palette in $lib/emblems — used only through color-mix() for tints and icon
  * colour, never as body text, so contrast holds in both themes.
  */
 export const ERA_HUE: Record<EraId, string> = {

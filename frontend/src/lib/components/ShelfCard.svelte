@@ -1,11 +1,12 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { TopicCover } from '$lib/library';
-	import Icon, { type IconName } from '$lib/components/Icon.svelte';
+	import Emblem from '$lib/components/Emblem.svelte';
+	import type { EmblemName } from '$lib/emblems';
 
 	/**
-	 * The shared browse-page card: a colour-washed band carrying an icon (or a
-	 * portrait) and a fan of covers, over a typographic body.
+	 * The shared browse-page card: a colour-washed band carrying an illustrated
+	 * emblem (or a portrait) and a fan of covers, over a typographic body.
 	 *
 	 * This is the Topics card, generalised. It was the best-looking surface in
 	 * the app and the only page using it — Plans rendered plain bordered rows
@@ -18,7 +19,7 @@
 	let {
 		href,
 		hue,
-		icon,
+		emblem,
 		portrait = '',
 		covers = [],
 		title,
@@ -28,8 +29,8 @@
 		href: string;
 		/** The card's accent, any CSS colour. Used only through color-mix(). */
 		hue: string;
-		/** Line icon for the badge. Ignored when `portrait` is set. */
-		icon?: IconName;
+		/** Illustrated emblem for the badge. Ignored when `portrait` is set. */
+		emblem?: EmblemName;
 		/** Portrait URL to fill the badge instead of an icon (sermons). */
 		portrait?: string;
 		/** Up to four covers to fan across the band. */
@@ -44,11 +45,11 @@
 
 <a class="shelf-card" style="--shelf-hue: {hue}" {href}>
 	<div class="shelf-card-band">
-		<span class="shelf-card-badge">
+		<span class="shelf-card-badge emblem-chip">
 			{#if portrait}
 				<img src={portrait} alt="" loading="lazy" />
-			{:else if icon}
-				<Icon name={icon} size={20} />
+			{:else if emblem}
+				<Emblem name={emblem} />
 			{/if}
 		</span>
 		{#if covers.length}
