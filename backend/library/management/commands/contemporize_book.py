@@ -53,7 +53,7 @@ class Command(BaseCommand):
         try:
             source = Book.objects.get(slug=slug, language="en")
         except Book.DoesNotExist:
-            raise CommandError(f"no English book with slug {slug!r}")
+            raise CommandError(f"no English book with slug {slug!r}") from None
         if source.source_type != Book.SourceType.PUBLIC_DOMAIN:
             raise CommandError(
                 f"{slug!r} (en) is {source.source_type}, not a public-domain original; "

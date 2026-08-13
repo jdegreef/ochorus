@@ -1,6 +1,5 @@
 import { SITE_URL } from './config';
 import { localizeHref, withTrailingSlash } from '$lib/href';
-import { locales } from '$lib/paraglide/runtime';
 import { ADVERTISED_LOCALES } from '$lib/advertised-locales';
 
 export interface Hreflang {

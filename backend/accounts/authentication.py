@@ -91,7 +91,7 @@ class SupabaseJWTAuthentication(authentication.BaseAuthentication):
         try:
             alg = jwt.get_unverified_header(token).get("alg", "")
         except jwt.PyJWTError as exc:
-            raise exceptions.AuthenticationFailed(f"Malformed token: {exc}")
+            raise exceptions.AuthenticationFailed(f"Malformed token: {exc}") from exc
 
         audience = settings.SUPABASE_JWT_AUDIENCE or None
         try:
@@ -107,9 +107,9 @@ class SupabaseJWTAuthentication(authentication.BaseAuthentication):
         except exceptions.AuthenticationFailed:
             raise
         except jwt.ExpiredSignatureError:
-            raise exceptions.AuthenticationFailed("Token has expired")
+            raise exceptions.AuthenticationFailed("Token has expired") from None
         except jwt.PyJWTError as exc:
-            raise exceptions.AuthenticationFailed(f"Invalid token: {exc}")
+            raise exceptions.AuthenticationFailed(f"Invalid token: {exc}") from exc
 
     def _jwks(self) -> jwt.PyJWKClient:
         if not settings.SUPABASE_URL:

@@ -39,10 +39,10 @@ from django.test import SimpleTestCase
 
 from library.content_fixtures import (
     AUTHORS_FILE,
-    authors_by_slug,
     BOOKS_DIR,
     PLANS_FILE,
     SERMONS_DIR,
+    authors_by_slug,
     load_all_rows,
     ordered_fixture_paths,
     rows_by_file,
@@ -313,7 +313,7 @@ class SeedFieldCoverageTests(SimpleTestCase):
             (seed_sermons, seed_sermons.SERMON_FIELDS),
         ):
             with self.subTest(command=mod.__name__):
-                self.assertTrue(mod.CREATE_ONLY_FIELDS <= set(fields))
+                self.assertTrue(set(fields) >= mod.CREATE_ONLY_FIELDS)
 
     def test_fill_only_fields_are_real_author_fields(self):
         # Same silent-failure shape as CREATE_ONLY_FIELDS above: author_sync

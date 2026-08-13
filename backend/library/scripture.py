@@ -17,7 +17,7 @@ English (ASV) only for now; a target-language edition can layer on later.
 from __future__ import annotations
 
 import re
-from functools import lru_cache
+from functools import cache, lru_cache
 
 import pythonbible as bible
 from pythonbible.versions import Version
@@ -55,7 +55,7 @@ _HAS_DIGIT = re.compile(r"\d")
 _MAX_VERSES = 25
 
 
-@lru_cache(maxsize=None)  # ~8k distinct candidates corpus-wide; 4096 thrashed (23% hits)
+@cache  # ~8k distinct candidates corpus-wide; 4096 thrashed (23% hits)
 def _first_reference(text: str):
     """The first valid Bible reference in ``text``, or None."""
     try:
@@ -301,7 +301,7 @@ def _bigrams(text: str) -> frozenset[tuple[str, str]]:
     order. "give ear" vs "ear give" is the whole distinction here.
     """
     words = _WORD.findall(text.lower())
-    return frozenset(zip(words, words[1:]))
+    return frozenset(zip(words, words[1:], strict=False))
 
 
 def _phrase_fit(verse_text: str, quote: str) -> float:

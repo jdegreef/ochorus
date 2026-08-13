@@ -10,7 +10,7 @@ returns the merged whole.
 
 from __future__ import annotations
 
-from datetime import date, datetime, timezone
+from datetime import UTC, date, datetime
 
 from django.db import transaction
 from rest_framework.exceptions import ValidationError
@@ -197,7 +197,7 @@ def _upsert_plan_progress(profile, slug, done, started):
 def _ms_to_dt(ms) -> datetime | None:
     """Interpret a client `updated_at` (epoch milliseconds) as an aware datetime."""
     try:
-        return datetime.fromtimestamp(float(ms) / 1000.0, tz=timezone.utc)
+        return datetime.fromtimestamp(float(ms) / 1000.0, tz=UTC)
     except (TypeError, ValueError, OverflowError, OSError):
         return None
 
@@ -387,7 +387,7 @@ class PlanProgressView(APIView):
         data = _dict_body(request)
         if not _valid_slug(slug):
             return Response({"detail": "Invalid slug."}, status=400)
-        started = _ms_to_dt(data.get("started_at")) or datetime.now(timezone.utc)
+        started = _ms_to_dt(data.get("started_at")) or datetime.now(UTC)
         obj = _upsert_plan_progress(
             profile, slug, _clean_done(data.get("done")), started
         )
@@ -452,7 +452,7 @@ class MergeView(APIView):
             slug = row.get("plan_slug")
             if not _valid_slug(slug):
                 continue
-            started = _ms_to_dt(row.get("started_at")) or datetime.now(timezone.utc)
+            started = _ms_to_dt(row.get("started_at")) or datetime.now(UTC)
             _upsert_plan_progress(profile, slug, _clean_done(row.get("done")), started)
 
     def _merge_activity(self, profile, incoming):

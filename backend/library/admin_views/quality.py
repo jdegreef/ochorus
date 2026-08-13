@@ -17,7 +17,6 @@ from ..qa import (
     GIANT_MIN,
     TERMINAL_PUNCT,
     TINY_MAX,
-    chapter_flags,
 )
 
 
@@ -177,7 +176,7 @@ class AdminAuditView(APIView):
             titles.setdefault(slug, []).append(title)
             orders.setdefault(slug, []).append(order)
 
-            def finding(**extra):
+            def finding(slug=slug, lang=lang, order=order, title=title, **extra):
                 return {"book": slug, "language": lang, "order": order, "title": title, **extra}
 
             if not title or GENERIC_TITLE.match(title):

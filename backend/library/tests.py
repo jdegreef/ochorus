@@ -11,24 +11,17 @@ from django.test import SimpleTestCase, TestCase, override_settings
 from rest_framework.test import APIClient
 
 from . import language_suggestions
+from . import readiness as readiness_module
+from . import search as search_module
 from .ingest import clean_title
-from .search import search_library
 from .language_seed import SEED_LANGUAGES
 from .languages import config as language_config
-from .translation import (
-    GLOSSARY_TERMS,
-    Ref,
-    fetch_chapter,
-    missing_glossary_terms,
-    verify_bible_code,
-    verify_glossary,
-)
 from .models import (
     Author,
-    Language,
     AuthorTranslation,
     Book,
     Chapter,
+    Language,
     Plan,
     PlanDay,
     SearchClickLog,
@@ -39,9 +32,16 @@ from .models import (
     TopicSermon,
     TopicTranslation,
 )
-from . import readiness as readiness_module
-from . import search as search_module
+from .search import search_library
 from .text import html_to_text
+from .translation import (
+    GLOSSARY_TERMS,
+    Ref,
+    fetch_chapter,
+    missing_glossary_terms,
+    verify_bible_code,
+    verify_glossary,
+)
 
 
 class CleanTitleTests(TestCase):
@@ -724,12 +724,12 @@ class SeedBooksChapterDriftTests(TestCase):
                 chapters_by_book.setdefault(
                     tuple(r["fields"]["book"]), []
                 ).append(r["fields"])
-        drifted = dict(
-            (b.slug, reason)
+        drifted = {
+            b.slug: reason
             for b, reason in chapter_drift(
                 Book.objects.prefetch_related("chapters"), chapters_by_book
             )
-        )
+        }
         return drifted
 
     def test_faithful_seed_reports_no_drift(self):
@@ -1856,7 +1856,7 @@ class AdminCoverageTests(TestCase):
         self.assertEqual(res.status_code, 200)
 
         # Columns are the union of all content languages, English first.
-        codes = [l["code"] for l in res.data["languages"]]
+        codes = [lang["code"] for lang in res.data["languages"]]
         self.assertEqual(codes[0], "en")
         self.assertEqual(set(codes), {"en", "sw", "es"})
 
@@ -2132,7 +2132,7 @@ class AdminBookDetailTests(TestCase):
         self.assertEqual(res.data["title"], "Humility")
         self.assertEqual(res.data["author"]["slug"], "am")
 
-        langs = {l["code"]: l for l in res.data["languages"]}
+        langs = {lang["code"]: lang for lang in res.data["languages"]}
         self.assertEqual(res.data["languages"][0]["code"], "en")  # English first
         self.assertEqual(langs["en"]["word_count"], 500)
         chapters = {c["order"]: c for c in langs["en"]["chapters"]}
@@ -2379,8 +2379,8 @@ class SermonTranslationTests(TestCase):
         )
 
     def test_unknown_slug_errors(self, _fetch):
-        from django.core.management.base import CommandError
         from django.core.management import call_command
+        from django.core.management.base import CommandError
 
         with self.assertRaises(CommandError):
             call_command("translate_sermon", "nope", language="es")
@@ -2394,8 +2394,8 @@ class SermonTranslationTests(TestCase):
         self.assertEqual(s.source_type, "ai_reviewed")
 
     def test_approve_rejects_public_domain_original(self, _fetch):
-        from django.core.management.base import CommandError
         from django.core.management import call_command
+        from django.core.management.base import CommandError
 
         with self.assertRaises(CommandError):
             call_command("approve_sermon_translation", "the-new-birth", language="en", no_fixture=True)
@@ -3925,7 +3925,7 @@ class TopicTranslationJobTests(TestCase):
         )
 
     def test_topic_is_an_accepted_job_type(self):
-        from library.admin_views.jobs import JOB_TYPES, _TITLE_RE
+        from library.admin_views.jobs import _TITLE_RE, JOB_TYPES
 
         self.assertIn("topic", JOB_TYPES)
         # The title is the job's identity and what the worker parses, so the

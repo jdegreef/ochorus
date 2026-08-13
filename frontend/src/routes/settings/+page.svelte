@@ -124,14 +124,12 @@
 
 	// "Your reading" — stats + recent history, loaded when the section is first
 	// opened (it fetches the catalogs to resolve titles) and refreshed on sync.
-	let activityLoaded = $state(false);
 	let stats = $state<ReadingStats | null>(null);
 	let history = $state<HistoryItem[]>([]);
 	async function loadActivity() {
 		const { stats: s, history: h } = await collectReadingActivity(lang.current);
 		stats = s;
 		history = h;
-		activityLoaded = true;
 	}
 	$effect(() => {
 		syncTick; // reload after a sync/merge changes the local cache

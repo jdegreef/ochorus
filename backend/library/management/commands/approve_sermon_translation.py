@@ -30,7 +30,7 @@ class Command(BaseCommand):
         try:
             sermon = Sermon.objects.get(slug=slug, language=language)
         except Sermon.DoesNotExist:
-            raise CommandError(f"no sermon {slug!r} in language {language!r}")
+            raise CommandError(f"no sermon {slug!r} in language {language!r}") from None
         if sermon.source_type == Book.SourceType.PUBLIC_DOMAIN:
             raise CommandError("that sermon is a public-domain original, not a translation")
         sermon.source_type = Book.SourceType.AI_REVIEWED

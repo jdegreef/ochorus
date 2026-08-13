@@ -145,7 +145,7 @@
 
 <svelte:head>
 	{#if books.length}
-		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+		<!-- eslint-disable-next-line svelte/no-at-html-tags, no-useless-escape -->
 		{@html `<script type="application/ld+json">${jsonLd}<\/script>`}
 	{/if}
 </svelte:head>

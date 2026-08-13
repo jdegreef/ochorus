@@ -4,9 +4,7 @@
 	import {
 		getReviewQueue,
 		approveReview,
-		type ReviewQueue,
-		type ReviewQueueBook,
-		type ReviewQueueBio
+		type ReviewQueue
 	} from '$lib/library';
 
 	let queue = $state<ReviewQueue | null>(null);

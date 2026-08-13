@@ -512,9 +512,9 @@ class PlanProgressSyncTests(TestCase):
         self.assertEqual(res.status_code, 200)
 
     def test_merge_unions_done_and_takes_earliest_start(self):
-        from reading.models import PlanProgress
-
         from django.utils import timezone
+
+        from reading.models import PlanProgress
 
         # server already has some progress (started "now")
         PlanProgress.objects.create(

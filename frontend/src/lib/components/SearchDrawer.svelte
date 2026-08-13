@@ -170,6 +170,8 @@
 								<span class="block text-[0.72rem] uppercase tracking-wide text-muted">
 									{hit.order}. {hit.title}
 								</span>
+								<!-- snippet is HTML-escaped by highlightAround ($lib/highlight); only <mark> is added -->
+								<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 								<span class="mt-0.5 block text-small text-text">{@html hit.snippet}</span>
 							</a>
 						</li>

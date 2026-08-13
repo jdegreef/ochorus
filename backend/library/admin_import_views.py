@@ -16,9 +16,9 @@ from rest_framework.views import APIView
 from accounts.permissions import IsAdminEmail
 
 from . import upload_import
+from .languages import language_map
 from .models import Author
 from .serializers import AuthorSerializer
-from .languages import language_map
 from .views import _language_entry
 
 

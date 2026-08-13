@@ -29,7 +29,7 @@ class Command(BaseCommand):
         try:
             book = Book.objects.get(slug=slug, language=language)
         except Book.DoesNotExist:
-            raise CommandError(f"no book {slug!r} in language {language!r}")
+            raise CommandError(f"no book {slug!r} in language {language!r}") from None
         if book.source_type == Book.SourceType.PUBLIC_DOMAIN:
             raise CommandError("that book is a public-domain original, not a translation")
         book.source_type = Book.SourceType.AI_REVIEWED
