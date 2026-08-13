@@ -5919,3 +5919,28 @@ class ApprovalDurabilityTests(TestCase):
             Book.objects.get(slug="humility", language="sw").source_type,
             Book.SourceType.AI_REVIEWED,
         )
+
+    def test_approve_translation_survives_a_fixture_write_failure(self):
+        # The DB flip is the primary action; a fixture write error (here a
+        # read-only-FS style OSError) must warn, not raise — an automated caller
+        # would otherwise read the traceback as "approval failed" and retry.
+        from django.core.management import call_command
+
+        author = Author.objects.create(slug="am", name="Andrew Murray")
+        Book.objects.create(
+            author=author, slug="humility", language="sw", title="Unyenyekevu",
+            source_type=Book.SourceType.AI_UNREVIEWED,
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            p = self._fixture(tmp)
+            with mock.patch(
+                "library.content_fixtures.book_fixture_path", return_value=p
+            ), mock.patch(
+                "library.content_fixtures.persist_source_type",
+                side_effect=OSError("read-only file system"),
+            ):
+                call_command("approve_translation", "humility", language="sw")  # must not raise
+        self.assertEqual(
+            Book.objects.get(slug="humility", language="sw").source_type,
+            Book.SourceType.AI_REVIEWED,
+        )

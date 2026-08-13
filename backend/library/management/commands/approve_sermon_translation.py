@@ -43,13 +43,25 @@ class Command(BaseCommand):
         # rebuild would silently re-gate it to unreviewed (source_type is
         # create-only in the seed, so the live flip alone never round-trips).
         path = cf.sermon_fixture_path(slug, language)
-        if path.exists():
-            if cf.persist_source_type(path, Book.SourceType.AI_REVIEWED):
-                self.stdout.write(f"  ↳ updated fixture {path.name} — commit it")
-        else:
+        if not path.exists():
             self.stdout.write(
                 self.style.WARNING(
                     f"  ⚠ no fixture {path.name}: approval is DB-only and would be "
                     "lost on a rebuild. Serialize this sermon to a fixture and commit it."
+                )
+            )
+            return
+        # The DB flip is the primary action and has already succeeded; a fixture
+        # write failure (unexpected match count, read-only filesystem) must warn,
+        # not raise — a traceback here would read to an automated caller as "the
+        # approval failed" and trigger a retry.
+        try:
+            if cf.persist_source_type(path, Book.SourceType.AI_REVIEWED):
+                self.stdout.write(f"  ↳ updated fixture {path.name} — commit it")
+        except (ValueError, OSError) as exc:
+            self.stdout.write(
+                self.style.WARNING(
+                    f"  ⚠ DB approved, but couldn't update fixture {path.name}: {exc}. "
+                    "Set source_type to ai_reviewed there by hand and commit it."
                 )
             )
