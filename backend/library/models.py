@@ -824,3 +824,98 @@ class Language(models.Model):
 
     def natural_key(self):
         return (self.code,)
+
+
+class ReviewOutcome(models.Model):
+    """A reviewer's decision about one AI translation, and who made it.
+
+    Deliberately a side-table rather than new values on ``Book.source_type`` /
+    ``AuthorTranslation.reviewed``. Those two fields are load-bearing elsewhere:
+    ``source_type`` drives the reader's "awaiting native review" badge and is
+    create-only in ``seed_books`` / ``seed_sermons`` (so a deploy cannot walk an
+    approval backwards), and ``reviewed`` tells ``seed_author_translations`` that
+    an approver owns the wording. Neither can express "a human read this and it
+    needs work" without breaking what already depends on them.
+
+    So the approve path still flips the original field — nothing downstream
+    changes — and this table records the decision *around* it: the outcome, the
+    reason, the reviewer, the timestamp. That is what makes an approval
+    undoable and auditable, and what gives a rejection somewhere to live
+    instead of looking identical to "nobody has opened it yet".
+    """
+
+    class Kind(models.TextChoices):
+        BOOK = "book", "Book"
+        SERMON = "sermon", "Sermon"
+        BIO = "bio", "Author bio"
+
+    class Outcome(models.TextChoices):
+        APPROVED = "approved", "Approved"
+        NEEDS_WORK = "needs_work", "Needs work"
+
+    kind = models.CharField(max_length=10, choices=Kind.choices)
+    # Natural key of the reviewed row, matching the fixture convention: a book
+    # and a sermon may legitimately share a slug, which is why `kind` is part of
+    # the uniqueness constraint rather than the slug alone.
+    slug = models.SlugField(max_length=200)
+    language = models.CharField(max_length=10)
+    outcome = models.CharField(max_length=12, choices=Outcome.choices)
+    note = models.TextField(blank=True)
+    reviewer = models.EmailField(blank=True)
+    decided_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-decided_at"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["kind", "slug", "language"], name="uniq_review_outcome"
+            ),
+        ]
+        indexes = [models.Index(fields=["outcome", "language"])]
+
+    def __str__(self) -> str:
+        return f"{self.kind}:{self.slug} [{self.language}] {self.outcome}"
+
+
+class TranslationNote(models.Model):
+    """One scripture reference in one translation, and where its wording came from.
+
+    The translation pipeline already works this out and writes it into a pull
+    request body, where it is invisible to the person who has to act on it. A
+    verse recovered verbatim from our own shipped corpus needs no review; a verse
+    the translator had to render itself is the actual review task, and there is
+    currently no field anywhere that says which is which.
+
+    Not a fixture model, and deliberately not part of the content file: content
+    ships as one file per work so parallel translation jobs cannot collide, and
+    threading review metadata into those files would reintroduce exactly that
+    conflict. Upserted by the pipeline instead, like ``AuthorTranslation``.
+    """
+
+    class Status(models.TextChoices):
+        MINED = "mined", "Mined verbatim from our corpus"
+        SELF_RENDERED = "self_rendered", "Rendered by the translator — unverified"
+
+    kind = models.CharField(max_length=10, choices=ReviewOutcome.Kind.choices)
+    slug = models.SlugField(max_length=200)
+    language = models.CharField(max_length=10)
+    reference = models.CharField(max_length=64)
+    status = models.CharField(max_length=16, choices=Status.choices)
+    # Which shipped file the wording was taken from, for a mined verse. Free of
+    # a FK on purpose: the source may be a book in another language's fixture,
+    # and a dangling reference must never block a translation from shipping.
+    source_file = models.CharField(max_length=200, blank=True)
+    # Where in the body it appears, so the reviewer can be taken straight there.
+    block_index = models.PositiveIntegerField(null=True, blank=True)
+    # Provenance for the whole translation, repeated per row so a single query
+    # answers "which job produced this, and how".
+    job_issue = models.PositiveIntegerField(null=True, blank=True)
+    pull_request = models.PositiveIntegerField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["kind", "slug", "language", "block_index", "reference"]
+        indexes = [models.Index(fields=["kind", "slug", "language"])]
+
+    def __str__(self) -> str:
+        return f"{self.reference} [{self.language}] {self.status}"

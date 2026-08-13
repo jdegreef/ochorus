@@ -359,36 +359,130 @@ export interface AdminCoverage {
 
 export const getAdminCoverage = () => apiFetch<AdminCoverage>('/api/admin/coverage/');
 
-// AI-translation review queue: unreviewed books + author bios, with approve.
+// AI-translation review queue: books, sermons and author bios awaiting a
+// native-speaker check — filtered, faceted and paged, with mechanical checks
+// attached to the visible page.
 
-export interface ReviewQueueBook {
+export interface ReviewFlags {
+	tags_match: boolean;
+	tag_counts: [number, number];
+	ratio: number | null;
+	band: [number, number] | null;
+	ratio_in_band: boolean | null;
+	quote_style: string;
+	quote_style_consistent: boolean;
+}
+
+export interface ReviewNoteRef {
+	reference: string;
+	block_index: number | null;
+	status: string;
+}
+
+export interface ReviewOutcome {
+	outcome: 'approved' | 'needs_work';
+	note: string;
+	reviewer: string;
+	decided_at: string;
+}
+
+export type ReviewKind = 'book' | 'sermon' | 'bio';
+
+export interface ReviewItem {
+	kind: ReviewKind;
 	slug: string;
 	language: string;
 	title: string;
 	author: string;
-	chapters: number;
-}
-
-export interface ReviewQueueBio {
-	slug: string;
-	language: string;
-	name: string;
-	has_short: boolean;
-	has_long: boolean;
+	chapters: number | null;
+	words: number | null;
+	scripture_ref: string;
+	has_short?: boolean;
+	has_long?: boolean;
+	created_at: string;
+	flagged: boolean;
+	notes: { mined: number; self_rendered: number; references: ReviewNoteRef[] };
+	provenance: { job_issue: number | null; pull_request: number | null } | null;
+	outcome: ReviewOutcome | null;
+	flags?: ReviewFlags | null;
 }
 
 export interface ReviewQueue {
-	books: ReviewQueueBook[];
-	bios: ReviewQueueBio[];
+	results: ReviewItem[];
+	total: number;
+	filtered: number;
+	flagged_total: number;
+	needs_work_total: number;
+	page: number;
+	pages: number;
+	page_size: number;
+	facets: { language: Record<string, number>; kind: Record<string, number> };
 }
 
-export const getReviewQueue = () => apiFetch<ReviewQueue>('/api/admin/review-queue/');
+export interface ReviewQueueParams {
+	kind?: string;
+	language?: string;
+	flagged?: boolean;
+	outcome?: string;
+	sort?: string;
+	page?: number;
+}
 
-export const approveReview = (body: { kind: 'book' | 'bio'; slug: string; language: string }) =>
-	apiFetch<{ ok: boolean }>('/api/admin/review-queue/', {
-		method: 'POST',
-		body: JSON.stringify(body)
-	});
+export const getReviewQueue = (p: ReviewQueueParams = {}) => {
+	const q = new URLSearchParams();
+	if (p.kind) q.set('kind', p.kind);
+	if (p.language) q.set('language', p.language);
+	if (p.flagged) q.set('flagged', '1');
+	if (p.outcome) q.set('outcome', p.outcome);
+	if (p.sort) q.set('sort', p.sort);
+	if (p.page && p.page > 1) q.set('page', String(p.page));
+	const qs = q.toString();
+	return apiFetch<ReviewQueue>(`/api/admin/review-queue/${qs ? `?${qs}` : ''}`);
+};
+
+export interface ReviewTarget {
+	kind: ReviewKind;
+	slug: string;
+	language: string;
+}
+
+/** Record a decision for one item or a batch. 207 = some rows were held back. */
+export const decideReview = (body: {
+	items: ReviewTarget[];
+	outcome: 'approved' | 'needs_work';
+	note?: string;
+}) =>
+	apiFetch<{
+		ok: boolean;
+		decided: ReviewTarget[];
+		skipped: (ReviewTarget & { reason: string })[];
+	}>('/api/admin/review-queue/', { method: 'POST', body: JSON.stringify(body) });
+
+/** Undo a decision, returning the item to the queue. */
+export const undoReview = (t: ReviewTarget) => {
+	const q = new URLSearchParams({ kind: t.kind, slug: t.slug, language: t.language });
+	return apiFetch<{ ok: boolean }>(`/api/admin/review-queue/?${q}`, { method: 'DELETE' });
+};
+
+export interface ReviewDetail {
+	kind: ReviewKind;
+	slug: string;
+	language: string;
+	chapter: number | null;
+	chapters: { order: number; title: string }[];
+	source: { language: string; blocks: string[] };
+	target: { language: string; blocks: string[] };
+	aligned: boolean;
+	block_counts: [number, number];
+	notes: { reference: string; status: string; block_index: number | null; source_file: string }[];
+}
+
+export const getReviewDetail = (t: ReviewTarget & { chapter?: number }) => {
+	const q = new URLSearchParams({ kind: t.kind, slug: t.slug, language: t.language });
+	if (t.chapter) q.set('chapter', String(t.chapter));
+	return apiFetch<ReviewDetail>(`/api/admin/review-queue/detail/?${q}`);
+};
+
 
 // Content audit: quality (book-qa heuristics) + integrity findings. Each check
 // is a capped list with a total.
