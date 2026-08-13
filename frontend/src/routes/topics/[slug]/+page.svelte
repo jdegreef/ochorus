@@ -9,7 +9,7 @@
 	import SermonCard from '$lib/components/SermonCard.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
-	import Icon from '$lib/components/Icon.svelte';
+	import Emblem from '$lib/components/Emblem.svelte';
 	import { topicMeta } from '$lib/topics';
 
 	let { data } = $props();
@@ -72,7 +72,7 @@
 	<Breadcrumb items={crumbs} />
 
 	<header class="hero mb-8 mt-4">
-		<span class="badge"><Icon name={meta.icon} size={26} /></span>
+		<span class="badge"><Emblem name={meta.emblem} size={42} /></span>
 		<div class="min-w-0">
 			<h1 class="text-display mb-2">{topic.title}</h1>
 			{#if topic.description}
@@ -152,8 +152,8 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 3.1rem;
-		height: 3.1rem;
+		width: 3.9rem;
+		height: 3.9rem;
 		flex-shrink: 0;
 		border-radius: 999px;
 		color: color-mix(in srgb, var(--topic) 82%, var(--color-text));

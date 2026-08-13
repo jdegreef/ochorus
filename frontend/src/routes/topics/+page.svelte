@@ -53,7 +53,7 @@
 				<ShelfCard
 					href={localizeHref(`/topics/${topic.slug}`)}
 					hue={meta.accent}
-					icon={meta.icon}
+					emblem={meta.emblem}
 					covers={topic.covers}
 					title={topic.title}
 				>

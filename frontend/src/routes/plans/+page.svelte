@@ -8,7 +8,7 @@
 	import { localizeHref } from '$lib/href';
 	import { locales } from '$lib/paraglide/runtime';
 	import ShelfCard from '$lib/components/ShelfCard.svelte';
-	import { accentForSlug } from '$lib/topics';
+	import { planMeta } from '$lib/emblems';
 	import CatalogLanguageNudge from '$lib/components/CatalogLanguageNudge.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 
@@ -53,11 +53,10 @@
 		href: `${SITE_URL}${localizeHref('/plans', { locale: loc })}`
 	}));
 
-	// A plan has no topic, so it takes a stable pick from the curated topic
-	// palette. (Deriving the hue from the first cover was tried first and looked
-	// flat — most covers are dark navy, so every card came out the same muted
-	// blue and the shelf lost the colour that makes /topics work.)
-	const planHue = (plan: PlanSummary) => accentForSlug(plan.slug);
+	// Each plan wears a curated accent + emblem (planMeta), the same identity
+	// treatment topics get. (Deriving the hue from the first cover was tried
+	// first and looked flat — most covers are dark navy, so every card came out
+	// the same muted blue and the shelf lost the colour that makes /topics work.)
 
 	/** Rounded minutes of reading in an average day of a plan. */
 	const perDay = (plan: PlanSummary) =>
@@ -166,10 +165,11 @@
 		{#each shownPlans as plan (plan.slug)}
 			{@const done = planProgress.doneDays(plan.slug).length}
 			{@const started = planProgress.isStarted(plan.slug)}
+			{@const meta = planMeta(plan.slug)}
 			<ShelfCard
 				href={localizeHref(`/plans/${plan.slug}`)}
-				hue={planHue(plan)}
-				icon="calendar"
+				hue={meta.accent}
+				emblem={meta.emblem}
 				covers={plan.covers}
 				title={plan.title}
 			>

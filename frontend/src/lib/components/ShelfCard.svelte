@@ -1,7 +1,8 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { TopicCover } from '$lib/library';
-	import Icon, { type IconName } from '$lib/components/Icon.svelte';
+	import Emblem from '$lib/components/Emblem.svelte';
+	import type { EmblemName } from '$lib/emblems';
 
 	/**
 	 * The shared browse-page card: a colour-washed band carrying an icon (or a
@@ -18,7 +19,7 @@
 	let {
 		href,
 		hue,
-		icon,
+		emblem,
 		portrait = '',
 		covers = [],
 		title,
@@ -28,8 +29,8 @@
 		href: string;
 		/** The card's accent, any CSS colour. Used only through color-mix(). */
 		hue: string;
-		/** Line icon for the badge. Ignored when `portrait` is set. */
-		icon?: IconName;
+		/** Illustrated emblem for the badge. Ignored when `portrait` is set. */
+		emblem?: EmblemName;
 		/** Portrait URL to fill the badge instead of an icon (sermons). */
 		portrait?: string;
 		/** Up to four covers to fan across the band. */
@@ -47,8 +48,8 @@
 		<span class="shelf-card-badge">
 			{#if portrait}
 				<img src={portrait} alt="" loading="lazy" />
-			{:else if icon}
-				<Icon name={icon} size={20} />
+			{:else if emblem}
+				<Emblem name={emblem} size={38} />
 			{/if}
 		</span>
 		{#if covers.length}

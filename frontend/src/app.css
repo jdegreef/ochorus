@@ -718,16 +718,17 @@ nav.appnav .navtoggle:hover {
 		color-mix(in srgb, var(--shelf-hue) 9%, var(--surface-2));
 	border-bottom: 1px solid color-mix(in srgb, var(--shelf-hue) 22%, var(--border));
 }
-/* Round icon chip, tinted in the card's hue. */
+/* Round badge chip, tinted in the card's hue. Sized for the illustrated
+   multicolour emblems ($lib/emblems.ts), which need more room than a line
+   glyph to stay legible. */
 .shelf-card-badge {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: 2.35rem;
-	height: 2.35rem;
+	width: 3.5rem;
+	height: 3.5rem;
 	border-radius: 999px;
-	color: color-mix(in srgb, var(--shelf-hue) 82%, var(--text));
-	background: color-mix(in srgb, var(--shelf-hue) 16%, var(--surface));
+	background: color-mix(in srgb, var(--shelf-hue) 14%, var(--surface));
 	box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--shelf-hue) 35%, transparent);
 	flex-shrink: 0;
 	overflow: hidden;
@@ -868,7 +869,9 @@ nav.appnav .navtoggle:hover {
    through color-mix so it stays a tint and never becomes text colour. */
 .sermon-row {
 	position: relative;
-	display: block;
+	display: flex;
+	align-items: flex-start;
+	gap: 1rem;
 	padding: 1.1rem 1.25rem 1.15rem 1.5rem;
 	border: 1px solid var(--border);
 	border-radius: var(--radius-card, 12px);
@@ -876,6 +879,20 @@ nav.appnav .navtoggle:hover {
 	transition:
 		border-color 0.15s,
 		background 0.15s;
+}
+/* The sermon's illustrated emblem ($lib/emblems.ts) — a round chip in the
+   writer's era tint carrying the multicolour art, so each row opens with its
+   own mark rather than a wall of prose. */
+.sermon-row-emblem {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 3.25rem;
+	height: 3.25rem;
+	flex-shrink: 0;
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--row-hue) 11%, var(--surface-2));
+	box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--row-hue) 30%, transparent);
 }
 /* The era rail down the leading edge. Inside the border radius, so it reads as
    part of the row rather than a stripe stuck to it. */
