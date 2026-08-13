@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import json
 import re
+import time
 from dataclasses import dataclass, field
 
 import requests
@@ -103,20 +104,65 @@ def find_references(text: str) -> list[Ref]:
 TAKEROOT_API = "https://api.takeroot.bible"
 _verse_cache: dict[tuple[str, str, int], dict | None] = {}
 
+# Retry policy for the scripture fetch. A TRANSIENT failure (timeout, connection
+# error, 5xx) must never be cached as a permanent miss: that is exactly how one
+# dropped request silently strips authoritative scripture from every later
+# chapter citing the same passage — the module docstring's worst case, and it
+# only takes a single blip mid-job. So only a *definitive* answer is cached (the
+# verses, or a 404 "no such chapter"); a transient failure is retried, and if it
+# persists the fetch RAISES rather than returning None, so the resumable job
+# stops instead of shipping model-invented scripture at full cost.
+_FETCH_ATTEMPTS = 3
+_FETCH_BACKOFF = (2, 5)  # seconds slept before the 2nd and 3rd attempts
+
+
+class ScriptureUnavailable(RuntimeError):
+    """The Bible API could not be reached for a passage after retries. Raised
+    (not returned as None) so a translation job stops rather than silently
+    shipping a chapter with no authoritative scripture. Re-run to resume."""
+
 
 def fetch_chapter(bible: str, ref: Ref) -> dict | None:
-    """Fetch one Bible chapter in the target language; None on any failure."""
+    """One Bible chapter in the target language.
+
+    Returns the chapter data, or ``None`` if it *definitively* does not exist
+    (HTTP 404). A transient failure (timeout, connection error, 5xx, unparseable
+    body) is retried up to ``_FETCH_ATTEMPTS`` and, if it persists, raises
+    :class:`ScriptureUnavailable` — it is never cached, so a later reference to
+    the same passage isn't poisoned by one bad request.
+    """
     key = (bible, ref.usfm, ref.chapter)
-    if key not in _verse_cache:
+    if key in _verse_cache:
+        return _verse_cache[key]
+    url = f"{TAKEROOT_API}/api/bible/{bible}/{ref.usfm}/{ref.chapter}/"
+    last_reason = "unknown error"
+    for attempt in range(_FETCH_ATTEMPTS):
         try:
-            r = requests.get(
-                f"{TAKEROOT_API}/api/bible/{bible}/{ref.usfm}/{ref.chapter}/",
-                timeout=20,
-            )
-            _verse_cache[key] = r.json() if r.ok else None
-        except requests.RequestException:
-            _verse_cache[key] = None
-    return _verse_cache[key]
+            r = requests.get(url, timeout=20)
+        except requests.RequestException as exc:
+            last_reason = str(exc) or exc.__class__.__name__
+        else:
+            if r.status_code == 404:
+                _verse_cache[key] = None  # definitive: no such chapter — cache it
+                return None
+            if r.ok:
+                try:
+                    data = r.json()
+                except ValueError:
+                    last_reason = "unparseable JSON body"  # transient — retry
+                else:
+                    _verse_cache[key] = data
+                    return data
+            else:
+                last_reason = f"HTTP {r.status_code}"  # 5xx/429 etc — transient
+        if attempt < _FETCH_ATTEMPTS - 1:
+            time.sleep(_FETCH_BACKOFF[attempt])
+    raise ScriptureUnavailable(
+        f"{TAKEROOT_API} unreachable for {bible}/{ref.usfm}/{ref.chapter} after "
+        f"{_FETCH_ATTEMPTS} attempts ({last_reason}). Scripture would be omitted, "
+        "so the job is stopping rather than shipping the chapter without it — "
+        "re-run once the API is reachable to resume where it left off."
+    )
 
 
 def verify_bible_code(language: str) -> None:
@@ -175,10 +221,13 @@ def fetch_verse_text(bible: str, ref_text: str) -> str:
     ``scripture_context`` hands a whole chapter to the model as context; a topic
     shelf instead quotes one verse *verbatim*, so it needs the verse itself.
 
-    Returns ``""`` on any failure — an unresolvable reference, a chapter the API
-    doesn't have, a verse number outside it. Callers must treat that as absent
-    scripture and ship none: verse wording is never the model's to invent (see
-    the module docstring), so a blank here must not become a paraphrase.
+    Returns ``""`` when the passage is *definitively* absent — an unresolvable
+    reference, a chapter the Bible doesn't have, a verse number outside it.
+    Callers must treat that as absent scripture and ship none: verse wording is
+    never the model's to invent (see the module docstring), so a blank here must
+    not become a paraphrase. A persistent API outage instead raises
+    ``ScriptureUnavailable`` (via ``fetch_chapter``) rather than silently
+    returning ``""`` — a transient blip must not read as "no such verse".
     """
     m = _REF_RE.search(ref_text or "")
     if not m:
@@ -194,7 +243,12 @@ def fetch_verse_text(bible: str, ref_text: str) -> str:
 
 
 def scripture_context(text: str, bible: str, max_refs: int = 12) -> str:
-    """Build the authoritative-scripture prompt block for a chapter."""
+    """Build the authoritative-scripture prompt block for a chapter.
+
+    A passage that definitively doesn't exist is skipped; a persistent API
+    outage raises ``ScriptureUnavailable`` (via ``fetch_chapter``) so the chapter
+    is never translated with silently-missing scripture.
+    """
     blocks: list[str] = []
     for ref in find_references(text)[:max_refs]:
         data = fetch_chapter(bible, ref)

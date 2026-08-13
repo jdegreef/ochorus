@@ -8,6 +8,7 @@ deploy (release command) after the library is seeded.
 from __future__ import annotations
 
 from django.core.management.base import BaseCommand
+from django.db import transaction
 
 from library.models import Book, Plan, PlanDay
 
@@ -414,6 +415,15 @@ class Command(BaseCommand):
         plan = Plan.objects.filter(slug=slug, language=lang).first()
         if not plan:
             return False
+        # A plan with no days is broken: a previous run created the Plan row but
+        # died (or was interrupted) before its PlanDays landed. Treat it as absent
+        # — delete it and let the caller rebuild it with days — because this method
+        # otherwise reports every existing (slug, lang) row as "done", so a
+        # day-less plan would stay permanently empty across all future deploys.
+        if not plan.days.exists():
+            plan.delete()
+            self.stdout.write(f"Rebuilding day-less plan {slug} ({lang}).")
+            return False
         if (plan.title, plan.description) != (title, description):
             plan.title = title
             plan.description = description
@@ -433,24 +443,28 @@ class Command(BaseCommand):
                 )
                 if not orders:
                     continue
-                plan = Plan.objects.create(
-                    slug=slug,
-                    language=book.language,
-                    title=t,
-                    description=d,
-                    sort_order=created,
-                )
-                PlanDay.objects.bulk_create(
-                    [
-                        PlanDay(
-                            plan=plan,
-                            day=i + 1,
-                            book_slug=book_slug,
-                            chapter_order=order,
-                        )
-                        for i, order in enumerate(orders)
-                    ]
-                )
+                # Create the plan and its days as one unit: a crash between the
+                # two would otherwise leave a permanently-empty plan (see
+                # _reconcile_existing).
+                with transaction.atomic():
+                    plan = Plan.objects.create(
+                        slug=slug,
+                        language=book.language,
+                        title=t,
+                        description=d,
+                        sort_order=created,
+                    )
+                    PlanDay.objects.bulk_create(
+                        [
+                            PlanDay(
+                                plan=plan,
+                                day=i + 1,
+                                book_slug=book_slug,
+                                chapter_order=order,
+                            )
+                            for i, order in enumerate(orders)
+                        ]
+                    )
                 created += 1
                 self.stdout.write(
                     self.style.SUCCESS(
@@ -493,24 +507,25 @@ class Command(BaseCommand):
                 ]
                 if not days:
                     continue
-                plan = Plan.objects.create(
-                    slug=slug,
-                    language=lang,
-                    title=t,
-                    description=d,
-                    sort_order=sort_base + created,
-                )
-                PlanDay.objects.bulk_create(
-                    [
-                        PlanDay(
-                            plan=plan,
-                            day=i + 1,
-                            book_slug=bslug,
-                            chapter_order=order,
-                        )
-                        for i, (bslug, order) in enumerate(days)
-                    ]
-                )
+                with transaction.atomic():
+                    plan = Plan.objects.create(
+                        slug=slug,
+                        language=lang,
+                        title=t,
+                        description=d,
+                        sort_order=sort_base + created,
+                    )
+                    PlanDay.objects.bulk_create(
+                        [
+                            PlanDay(
+                                plan=plan,
+                                day=i + 1,
+                                book_slug=bslug,
+                                chapter_order=order,
+                            )
+                            for i, (bslug, order) in enumerate(days)
+                        ]
+                    )
                 created += 1
                 self.stdout.write(
                     self.style.SUCCESS(

@@ -422,7 +422,7 @@ class SeedBooksUpsertTests(TestCase):
         ).first()
         self.assertIsNotNone(translated, "fixture has no AI-translated book")
         call_command(
-            "approve_translation", translated.slug, language=translated.language
+            "approve_translation", translated.slug, language=translated.language, no_fixture=True
         )
 
         call_command("seed_books", verbosity=0)  # the next deploy
@@ -825,7 +825,7 @@ class SeedSermonsTests(TestCase):
         from django.core.management import call_command
 
         call_command("seed_sermons", verbosity=0)
-        call_command("approve_sermon_translation", "the-immutability-of-god", language="lg")
+        call_command("approve_sermon_translation", "the-immutability-of-god", language="lg", no_fixture=True)
         call_command("seed_sermons", verbosity=0)  # the next deploy
         lg = Sermon.objects.get(slug="the-immutability-of-god", language="lg")
         self.assertEqual(lg.source_type, Book.SourceType.AI_REVIEWED)
@@ -1031,6 +1031,25 @@ class PlanTests(TestCase):
         call_command("seed_plans")
         self.assertEqual(Plan.objects.filter(slug="humility-12-days").count(), 1)
 
+    def test_seed_plans_rebuilds_a_day_less_plan(self):
+        # Simulate a previous run that created the Plan row but died before its
+        # PlanDays landed (or an interrupted seed). The reconcile used to report
+        # any existing row as "done", leaving it permanently empty; now it's
+        # rebuilt with its days.
+        from django.core.management import call_command
+
+        plan = Plan.objects.get(slug="humility-12-days", language="en")
+        plan.days.all().delete()
+        self.assertEqual(plan.days.count(), 0)
+
+        call_command("seed_plans")
+
+        self.assertEqual(
+            Plan.objects.filter(slug="humility-12-days", language="en").count(), 1
+        )
+        rebuilt = Plan.objects.get(slug="humility-12-days", language="en")
+        self.assertEqual(rebuilt.days.count(), 2)
+
     def test_seed_plans_localizes_lg_prose_and_leaves_en(self):
         from django.core.management import call_command
 
@@ -1060,6 +1079,9 @@ class PlanTests(TestCase):
         stale = Plan.objects.create(
             slug="humility-12-days", language="lg", title="Humility in 12 Days", description="old"
         )
+        # A real stale row (from an earlier seed run) has its days; give it one so
+        # the prose-refresh path runs, not the day-less rebuild.
+        PlanDay.objects.create(plan=stale, day=1, book_slug="humility-2", chapter_order=1)
         call_command("seed_plans")
         stale.refresh_from_db()
         self.assertEqual(stale.title, "Obwetoowaze mu Nnaku 12")
@@ -2367,7 +2389,7 @@ class SermonTranslationTests(TestCase):
         from django.core.management import call_command
 
         self._translate("es")
-        call_command("approve_sermon_translation", "the-new-birth", language="es")
+        call_command("approve_sermon_translation", "the-new-birth", language="es", no_fixture=True)
         s = Sermon.objects.get(slug="the-new-birth", language="es")
         self.assertEqual(s.source_type, "ai_reviewed")
 
@@ -2376,7 +2398,7 @@ class SermonTranslationTests(TestCase):
         from django.core.management import call_command
 
         with self.assertRaises(CommandError):
-            call_command("approve_sermon_translation", "the-new-birth", language="en")
+            call_command("approve_sermon_translation", "the-new-birth", language="en", no_fixture=True)
 
 
 class AdminTranslationJobsTests(TestCase):
@@ -2656,7 +2678,7 @@ class ContemporizeCommandTests(TestCase):
         from django.core.management import call_command
 
         self._run()
-        call_command("approve_translation", "humility", language="en-modern")
+        call_command("approve_translation", "humility", language="en-modern", no_fixture=True)
         mb = Book.objects.get(slug="humility", language="en-modern")
         self.assertEqual(mb.source_type, "ai_reviewed")
 
@@ -2667,7 +2689,7 @@ class ContemporizeCommandTests(TestCase):
         from django.core.management import call_command
 
         self._run()
-        call_command("approve_translation", "humility", language="en-modern")
+        call_command("approve_translation", "humility", language="en-modern", no_fixture=True)
         Chapter.objects.create(
             book=self.book,
             order=2,
@@ -2686,7 +2708,7 @@ class ContemporizeCommandTests(TestCase):
         from django.core.management import call_command
 
         self._run()
-        call_command("approve_translation", "humility", language="en-modern")
+        call_command("approve_translation", "humility", language="en-modern", no_fixture=True)
         self._run()  # nothing to do — chapter 1 already exists
         mb = Book.objects.get(slug="humility", language="en-modern")
         self.assertEqual(mb.source_type, "ai_reviewed")
@@ -5761,3 +5783,139 @@ class CuratedCoversSurviveForceTests(TestCase):
         out = StringIO()
         call_command("generate_covers", "--force", "--dry-run", stdout=out)
         self.assertIn("till-he-come.svg", out.getvalue())
+
+
+class ScriptureFetchTests(TestCase):
+    """fetch_chapter must never cache a TRANSIENT failure as a permanent miss —
+    that is how one dropped request silently strips scripture from every later
+    chapter citing the same passage (review #28). Only a definitive answer (the
+    verses, or a 404) is cached; a persistent transient failure raises."""
+
+    def setUp(self):
+        from library import translation
+
+        translation._verse_cache.clear()
+        self.addCleanup(translation._verse_cache.clear)
+
+    def _resp(self, status=200, payload=None):
+        r = mock.Mock()
+        r.status_code = status
+        r.ok = 200 <= status < 300
+        r.json.return_value = {} if payload is None else payload
+        return r
+
+    def test_404_is_a_definitive_miss_and_is_cached(self):
+        with mock.patch(
+            "library.translation.requests.get", return_value=self._resp(404)
+        ) as get:
+            self.assertIsNone(fetch_chapter("rv1858", Ref("JHN", 3)))
+            self.assertIsNone(fetch_chapter("rv1858", Ref("JHN", 3)))  # served from cache
+        self.assertEqual(get.call_count, 1)
+
+    def test_success_returns_and_caches(self):
+        payload = {"reference": "John 3", "verses": [{"number": 16, "text": "For God…"}]}
+        with mock.patch(
+            "library.translation.requests.get", return_value=self._resp(200, payload)
+        ) as get:
+            self.assertEqual(fetch_chapter("rv1858", Ref("JHN", 3)), payload)
+            fetch_chapter("rv1858", Ref("JHN", 3))
+        self.assertEqual(get.call_count, 1)
+
+    def test_transient_failure_retries_then_raises_and_is_not_cached(self):
+        import requests
+
+        from library.translation import _FETCH_ATTEMPTS, ScriptureUnavailable
+
+        with mock.patch("library.translation.time.sleep"), mock.patch(
+            "library.translation.requests.get",
+            side_effect=requests.RequestException("timeout"),
+        ) as get:
+            with self.assertRaises(ScriptureUnavailable):
+                fetch_chapter("rv1858", Ref("ROM", 8))
+        self.assertEqual(get.call_count, _FETCH_ATTEMPTS)
+
+        # NOT cached: once the API recovers, the same passage fetches cleanly.
+        good = self._resp(200, {"verses": [{"number": 1, "text": "x"}]})
+        with mock.patch("library.translation.requests.get", return_value=good):
+            self.assertTrue(fetch_chapter("rv1858", Ref("ROM", 8)).get("verses"))
+
+    def test_transient_then_success_is_retried(self):
+        import requests
+
+        good = self._resp(200, {"verses": [{"number": 1, "text": "x"}]})
+        with mock.patch("library.translation.time.sleep"), mock.patch(
+            "library.translation.requests.get",
+            side_effect=[requests.RequestException("blip"), good],
+        ) as get:
+            self.assertTrue(fetch_chapter("rv1858", Ref("PSA", 23)).get("verses"))
+        self.assertEqual(get.call_count, 2)
+
+    def test_5xx_is_treated_as_transient(self):
+        from library.translation import _FETCH_ATTEMPTS, ScriptureUnavailable
+
+        with mock.patch("library.translation.time.sleep"), mock.patch(
+            "library.translation.requests.get", return_value=self._resp(503)
+        ) as get:
+            with self.assertRaises(ScriptureUnavailable):
+                fetch_chapter("rv1858", Ref("ISA", 55))
+        self.assertEqual(get.call_count, _FETCH_ATTEMPTS)
+
+
+class ApprovalDurabilityTests(TestCase):
+    """An approval must be written into the committed fixture, or a fresh-DB
+    rebuild (seed_if_empty loaddata) re-gates it to unreviewed (review #27)."""
+
+    def _fixture(self, tmp, source_type="ai_unreviewed"):
+        rows = [
+            {
+                "model": "library.book",
+                "fields": {
+                    "slug": "humility",
+                    "language": "sw",
+                    "source_type": source_type,
+                    "title": "Unyenyekevu",
+                },
+            }
+        ]
+        p = Path(tmp) / "humility.sw.json"
+        p.write_text(json.dumps(rows, indent=1), encoding="utf-8")
+        return p
+
+    def test_persist_source_type_flips_and_is_idempotent(self):
+        from library import content_fixtures as cf
+
+        with tempfile.TemporaryDirectory() as tmp:
+            p = self._fixture(tmp)
+            self.assertTrue(cf.persist_source_type(p, "ai_reviewed"))
+            self.assertIn('"source_type": "ai_reviewed"', p.read_text())
+            self.assertNotIn("ai_unreviewed", p.read_text())
+            self.assertFalse(cf.persist_source_type(p, "ai_reviewed"))  # no-op second time
+
+    def test_persist_source_type_requires_exactly_one_match(self):
+        from library import content_fixtures as cf
+
+        with tempfile.TemporaryDirectory() as tmp:
+            p = Path(tmp) / "x.json"
+            p.write_text('[{"model": "library.book", "fields": {"slug": "x"}}]', "utf-8")
+            with self.assertRaises(ValueError):
+                cf.persist_source_type(p, "ai_reviewed")
+
+    def test_approve_translation_updates_db_and_fixture(self):
+        from django.core.management import call_command
+
+        author = Author.objects.create(slug="am", name="Andrew Murray")
+        Book.objects.create(
+            author=author, slug="humility", language="sw", title="Unyenyekevu",
+            source_type=Book.SourceType.AI_UNREVIEWED,
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            p = self._fixture(tmp)
+            with mock.patch(
+                "library.content_fixtures.book_fixture_path", return_value=p
+            ):
+                call_command("approve_translation", "humility", language="sw")
+            self.assertIn('"source_type": "ai_reviewed"', p.read_text())
+        self.assertEqual(
+            Book.objects.get(slug="humility", language="sw").source_type,
+            Book.SourceType.AI_REVIEWED,
+        )

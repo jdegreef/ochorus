@@ -237,18 +237,25 @@ def upsert_book(entry: BookEntry, sections: list[tuple[str, str]], language: str
         },
     )
     sort_order = next(i for i, b in enumerate(BOOKS) if b.slug == entry.slug)
+    # Content fields refresh on every (re-)import; the workflow-owned fields are
+    # CREATE-ONLY (backend/CLAUDE.md) so a re-import can't silently republish a
+    # copyright-pulled book, re-type a reviewed one, or reshuffle sort_order.
+    fields = {
+        "author": author,
+        "title": entry.title,
+        "subtitle": entry.subtitle,
+        "source_url": entry.source_ref if entry.source_ref.startswith("http") else "",
+        "cover_color": entry.cover_color,
+    }
     book, _ = Book.objects.update_or_create(
         slug=entry.slug,
         language=language,
-        defaults={
-            "author": author,
-            "title": entry.title,
-            "subtitle": entry.subtitle,
+        defaults=fields,
+        create_defaults={
+            **fields,
             "source_type": Book.SourceType.PUBLIC_DOMAIN,
-            "source_url": entry.source_ref if entry.source_ref.startswith("http") else "",
-            "cover_color": entry.cover_color,
-            "sort_order": sort_order,
             "is_published": True,
+            "sort_order": sort_order,
         },
     )
     book.chapters.all().delete()

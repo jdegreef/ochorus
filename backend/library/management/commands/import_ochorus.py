@@ -532,21 +532,29 @@ def upsert(meta: dict, chapters: list[tuple[str, str]], sort_order: int) -> Book
         slug=slugify(meta["author"])[:120] or "ochorus",
         defaults={"name": meta["author"]},
     )
+    # Content fields — safe to refresh on every (re-)import.
     fields = {
         "author": author,
         "title": meta["title"],
         "description": meta["description"],
-        "source_type": Book.SourceType.PUBLIC_DOMAIN,
         "source_url": meta["source_url"],
         "cover_url": meta["cover_url"],
         "pdf_url": meta["pdf_url"],
+    }
+    # Workflow-owned once the book exists, so CREATE-ONLY (backend/CLAUDE.md): a
+    # copyright pull sets is_published=False in prod, and review owns source_type
+    # — a re-import must not walk either back and silently republish a pulled or
+    # re-type a reviewed book. sort_order is likewise assigned once.
+    create_only = {
+        "source_type": Book.SourceType.PUBLIC_DOMAIN,
         "is_published": bool(chapters),
+        "sort_order": sort_order,
     }
     book, _ = Book.objects.update_or_create(
         slug=meta["slug"],
         language="en",
-        defaults=fields,  # on update: keep existing sort_order
-        create_defaults={**fields, "sort_order": sort_order},  # only on first import
+        defaults=fields,
+        create_defaults={**fields, **create_only},
     )
     book.chapters.all().delete()
     overrides = chapter_title_overrides(meta["slug"])
