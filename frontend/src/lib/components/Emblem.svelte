@@ -4,6 +4,9 @@
 	// each topic / plan / sermon wears art of its own. Decorative by default
 	// (aria-hidden); pass `label` for an accessible name when the emblem has no
 	// adjacent text.
+	//
+	// Inside an .emblem-chip the chip sizes the art (its `> svg` rule wins over
+	// the width/height attributes), so `size` matters only for bare emblems.
 	import { EMBLEM_ART, type EmblemName } from '$lib/emblems';
 
 	let {
