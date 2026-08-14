@@ -7,6 +7,13 @@ import type { PageLoad } from './$types';
  * folding a fetch failure into `{ loadError: true }` so a client-side navigation
  * to a down API shows a retry panel instead of the error route.
  *
+ * Prerender refresh 2026-08-14 (queue jobs #516/#520/#593, PR #942): three
+ * books at once — Booth's Pureza de Corazón and Murray's Humildad in Spanish,
+ * and Buyinza's Oração – O Pulso da Vida in Portuguese. /es/books and
+ * /pt/books re-crawl with 34 new chapter pages between them. Humildad backs
+ * the humility-12-days LAUNCH plan, whose es prose ships in the same PR —
+ * hence the plans/+page.ts touch alongside this one.
+ *
  * Prerender refresh 2026-08-10 (queue job #532, PR #931): William Booth's
  * "Purity of Heart" went live in Swahili as Usafi wa Moyo (10 chapters).
  * Rebuild so /sw/books re-crawls and the /sw/books/purity-of-heart chapter

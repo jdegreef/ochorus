@@ -3,6 +3,11 @@ import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
 
 /**
+ * Prerender refresh 2026-08-14 (queue jobs #553/#771-#774, PR #942): five
+ * Portuguese sermons — As Possibilidades da Fé, Ordem e Argumento na Oração,
+ * Descanso, Bendita Adversidade, O Novo Nascimento. /pt/sermons re-crawls the
+ * cards and detail pages with localized scripture_refs and summaries.
+ *
  * Prerender refresh 2026-08-10 (queue jobs #527/#528/#529, PR #931): three
  * Swahili sermons landed at once — Furaha ya Bwana (Simpson), Ufunguo wa
  * Dhahabu wa Maombi and Utaratibu na Hoja katika Maombi (Spurgeon). Re-crawl

@@ -3,6 +3,11 @@ import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
 
 /**
+ * Prerender refresh 2026-08-14 (queue jobs #519/#520, PR #942): the Spanish
+ * Humility ships with its plan prose, so seed_plans creates "Humildad en 12
+ * Días" and /es/plans must re-crawl to show the translated card instead of
+ * nothing (the plan did not exist in es before this deploy).
+ *
  * Prerender refresh 2026-08-08 (follow-up to PR #881): the es and uk prose for
  * "A Month in the Inner Chamber" landed — «Un mes en el aposento interior» and
  * «Місяць у внутрішній кімнаті». Same defect and same shape as the sw entry
