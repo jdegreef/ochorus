@@ -1,0 +1,201 @@
+{
+ "kind": "sermon",
+ "slug": "the-possibilities-of-faith",
+ "language": "sw",
+ "job_issue": 423,
+ "pull_request": 897,
+ "references": [
+  {
+   "reference": "Mark 9:23",
+   "status": "mined",
+   "source_file": "jesus-himself-2.sw.json",
+   "block_index": 0
+  },
+  {
+   "reference": "Mark 9:24",
+   "status": "mined",
+   "source_file": "the-way-to-god.sw.json",
+   "block_index": 35
+  },
+  {
+   "reference": "Mark 10:27",
+   "status": "mined",
+   "source_file": "prevailing-prayer.sw.json",
+   "block_index": 0
+  },
+  {
+   "reference": "Mark 11:22",
+   "status": "mined",
+   "source_file": "prayer-the-pulse-of-life.sw.json",
+   "block_index": 34
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "godliness.sw.json",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 9:29",
+   "status": "mined",
+   "source_file": "godliness.sw.json",
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 15:28a",
+   "status": "mined",
+   "source_file": "prevailing-prayer.sw.json",
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 21:22",
+   "status": "mined",
+   "source_file": "prevailing-prayer.sw.json",
+   "block_index": 7
+  },
+  {
+   "reference": "John 3:36",
+   "status": "mined",
+   "source_file": "the-way-to-god.sw.json",
+   "block_index": 2
+  },
+  {
+   "reference": "John 5:44",
+   "status": "mined",
+   "source_file": "godliness.sw.json",
+   "block_index": 25
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "mined",
+   "source_file": "the-way-to-god.sw.json",
+   "block_index": 2
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "source_file": "himself.sw.json",
+   "block_index": 34
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "source_file": "prevailing-prayer.sw.json",
+   "block_index": 21
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.sw.json",
+   "block_index": 31
+  },
+  {
+   "reference": "Isaiah 26:3",
+   "status": "mined",
+   "source_file": "the-way-to-god.sw.json",
+   "block_index": 8
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "mined",
+   "source_file": "the-way-to-god.sw.json",
+   "block_index": 2
+  },
+  {
+   "reference": "Mark 16:16b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 15:28b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 3:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 26:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 15:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 22:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 5:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 1:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 6:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 11:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 4:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zechariah 4:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 1:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 15:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 25:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 19:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 3:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 3:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Habakkuk 2:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Chronicles 14:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 11:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 19:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 1:4",
+   "status": "self_rendered"
+  }
+ ]
+}
