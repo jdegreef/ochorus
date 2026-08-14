@@ -217,6 +217,59 @@ pinning full per-language coverage, so a partial block fails CI.
   `frontend/src/routes/topics/[slug]/+page.ts` so the localized static page
   rebuilds.
 
+## Emit the review notes — every job, no exceptions
+
+A translation's scripture provenance is worked out while you translate and is
+worthless the moment the run ends, unless you write it down somewhere the
+reviewer will look. Putting it in the PR body is not that place: job #423's PR
+listed 23 self-rendered verses and not one of them reached the person who has to
+check them.
+
+So **every job ships a notes file alongside its content file**:
+
+```
+backend/library/fixtures/translation_notes/<kind>/<slug>.<language>.json
+```
+
+```json
+{
+  "kind": "sermon", "slug": "the-possibilities-of-faith", "language": "sw",
+  "job_issue": 423, "pull_request": 897,
+  "references": [
+    {"reference": "Mark 9:23", "status": "mined",
+     "source_file": "jesus-himself-2.sw.json", "block_index": 8},
+    {"reference": "Acts 26:18", "status": "self_rendered"}
+  ]
+}
+```
+
+`seed_translation_notes` upserts it on every deploy, and the admin review queue
+renders it as the row's "N verses unverified" chip and its provenance line. Rules
+that matter:
+
+- **`mined` means the wording came verbatim out of a shipped `*.<lang>.json`, and
+  `source_file` says which.** If you cannot name the file, it is not mined.
+  A mined verse with no citation is the one thing the tests reject.
+- **Record the reference you actually QUOTED, not the one you looked up.** #423
+  mined Mark 16:16a and Matt 15:28a but the sermon quotes the *second* halves, so
+  those ship as `16:16b` / `15:28b`, `self_rendered`. It also mined James 1:6 and
+  then quoted 1:7 — an unused mined verse overstates coverage and was dropped.
+  Use the `a`/`b` suffix when a verse splits.
+- **`block_index` is the block the verse appears in**, using the same
+  `</p>|</li>|</blockquote>|</h1-6>` split the admin detail view uses, so the
+  reviewer can be taken straight there. Optional, but cheap: find the rendered
+  Swahili in your own body and take the index. Match case-insensitively — a verse
+  that starts a sentence is capitalised in the body and lower-case in your notes.
+- **Replace, don't merge.** The seed drops every row for a (kind, slug, language)
+  and rewrites from the file, so removing a corrected reference actually removes
+  it. Ship the complete list every time.
+- One file per translation, like the content fixture — parallel jobs never
+  collide, and a note can be corrected without touching the text.
+
+Write it as you go rather than reconstructing it at the end: the moment you
+decide a verse cannot be mined is the moment you know it, and it is exactly the
+fact the reviewer needs.
+
 ## When the ENGLISH is wrong — report it, always
 
 Translating is how we find defects in the source, because it is the one process
