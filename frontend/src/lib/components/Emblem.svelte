@@ -32,7 +32,6 @@
 	aria-label={label}
 	aria-hidden={label ? undefined : 'true'}
 >
-	<!-- eslint-disable-next-line svelte/no-at-html-tags -- static author-controlled
-	     artwork strings from $lib/emblems.ts, never user input -->
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -- static author-controlled artwork strings from $lib/emblems.ts, never user input -->
 	{@html EMBLEM_ART[name]}
 </svg>

@@ -198,6 +198,15 @@ PLAN_TRANSLATIONS = {
         ),
     },
     "es": {
+        # Queue jobs #519 + #520 (one PR): the Spanish Humility ships as
+        # "Humildad", and this LAUNCH plan goes live with it — the prose must
+        # land in the same PR or the es plans page publishes the English card
+        # (the #819 defect). Title opens with the book's shipped es title.
+        "humility-12-days": (
+            "Humildad en 12 Días",
+            "El clásico de Andrew Murray sobre la raíz de toda virtud: un "
+            "capítulo breve al día, durante doce días.",
+        ),
         # Queue job #518. "Jesús Mismo" is the shipped Spanish edition's title
         # verbatim, so the plan card and that book agree. The OTHER two source
         # books have no Spanish edition yet — the-masters-indwelling and
