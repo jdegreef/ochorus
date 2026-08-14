@@ -1903,12 +1903,18 @@ class AdminReviewQueueTests(TestCase):
 
     @override_settings(DEBUG=True)
     def test_lists_only_unreviewed(self):
+        # The payload is a single filtered/paged `results` list across all three
+        # content types, not per-type arrays — sermons were invisible while the
+        # shape was {books, bios}. See tests_review_queue for the full contract.
         res = self.client.get("/api/admin/review-queue/")
         self.assertEqual(res.status_code, 200)
-        self.assertEqual([b["slug"] for b in res.data["books"]], ["humility"])
-        self.assertEqual(res.data["books"][0]["language"], "sw")
-        self.assertEqual([b["language"] for b in res.data["bios"]], ["sw"])
-        self.assertTrue(res.data["bios"][0]["has_long"])
+        rows = res.data["results"]
+        books = [r for r in rows if r["kind"] == "book"]
+        bios = [r for r in rows if r["kind"] == "bio"]
+        self.assertEqual([b["slug"] for b in books], ["humility"])
+        self.assertEqual(books[0]["language"], "sw")
+        self.assertEqual([b["language"] for b in bios], ["sw"])
+        self.assertTrue(bios[0]["has_long"])
 
     @override_settings(DEBUG=True)
     def test_approve_book_flips_source_type(self):
@@ -1922,7 +1928,7 @@ class AdminReviewQueueTests(TestCase):
         self.assertEqual(self.book.source_type, Book.SourceType.AI_REVIEWED)
         # It drops out of the queue afterwards.
         follow = self.client.get("/api/admin/review-queue/")
-        self.assertEqual(follow.data["books"], [])
+        self.assertEqual([r for r in follow.data["results"] if r["kind"] == "book"], [])
 
     @override_settings(DEBUG=True)
     def test_approve_bio_marks_reviewed(self):

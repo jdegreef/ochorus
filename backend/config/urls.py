@@ -23,6 +23,7 @@ from library.admin_views import (
     AdminLanguageReadinessView,
     AdminLanguageSettingsView,
     AdminLanguageThresholdsView,
+    AdminReviewDetailView,
     AdminReviewQueueView,
     AdminSearchGapView,
     AdminSearchView,
@@ -72,6 +73,11 @@ urlpatterns = [
         "api/admin/review-queue/",
         AdminReviewQueueView.as_view(),
         name="admin-review-queue",
+    ),
+    path(
+        "api/admin/review-queue/detail/",
+        AdminReviewDetailView.as_view(),
+        name="admin-review-detail",
     ),
     path(
         "api/admin/translation-jobs/",

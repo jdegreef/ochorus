@@ -2,13 +2,25 @@
 
 from __future__ import annotations
 
+import re
+from html import unescape
+
 from django.db.models import Count, Max
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.permissions import IsAdminEmail
 
-from ..models import AuthorTranslation, Book, Chapter, PlanDay
+from ..models import (
+    Author,
+    AuthorTranslation,
+    Book,
+    Chapter,
+    PlanDay,
+    ReviewOutcome,
+    Sermon,
+    TranslationNote,
+)
 from ..qa import (
     FRAG_MAX_AVG,
     FRAG_MIN_PARAS,
@@ -17,98 +29,463 @@ from ..qa import (
     GIANT_MIN,
     TERMINAL_PUNCT,
     TINY_MAX,
+    translation_flags,
 )
 
 
 class AdminReviewQueueView(APIView):
-    """The AI-translation review queue, with one-click approve.
+    """The AI-translation review queue.
 
-    GET lists unreviewed AI translations — books (``source_type`` ai_unreviewed)
-    and author bios (``AuthorTranslation.reviewed`` False). POST approves one,
-    mirroring the approve_translation / approve_author_translation commands:
-    a book flips ai_unreviewed → ai_reviewed (removing the "awaiting review"
-    badge in the reader); a bio flips reviewed → True. The change is written to
-    the live database immediately.
+    GET lists everything awaiting a native-speaker check — books and sermons
+    (``source_type`` ai_unreviewed) and author bios (``AuthorTranslation``
+    ``reviewed`` False) — filtered, faceted and paged. POST records a decision
+    for one item or a batch; DELETE undoes one.
+
+    Sermons were absent from this queue until now while 74 of them shipped
+    unreviewed, more than the books that *were* listed: the reader showed an
+    "awaiting native review" badge that this screen gave no way to act on, and
+    clearing the queue implied a backlog that was empty when it was not.
+
+    Approving still flips the original field (``source_type`` →  ai_reviewed, or
+    ``reviewed`` → True) exactly as the approve_* management commands do, so
+    nothing downstream changes. The decision itself is additionally recorded in
+    ``ReviewOutcome``, which is what makes it undoable, attributable, and able to
+    express "needs work" — a state the original booleans cannot hold.
     """
 
     permission_classes = [IsAdminEmail]
 
-    def get(self, request):
-        return Response({"books": self._books(), "bios": self._bios()})
+    KINDS = ("book", "sermon", "bio")
+    PAGE_SIZE = 25
 
-    def _books(self) -> list[dict]:
-        qs = (
+    # ---- read ---------------------------------------------------------------
+
+    def get(self, request):
+        q = request.query_params
+        kind = q.get("kind") or ""
+        language = q.get("language") or ""
+        outcome = q.get("outcome") or ""
+        flagged_only = q.get("flagged") in ("1", "true", "yes")
+        sort = q.get("sort") or "oldest"
+
+        rows = self._rows()
+        decided = self._outcomes()
+        notes = self._note_summary()
+
+        # A row is "flagged" when the pipeline recorded a verse it had to render
+        # itself. That list is the actual review task, and it is the one thing a
+        # reviewer cannot discover by reading the translation fluently.
+        for r in rows:
+            k = (r["kind"], r["slug"], r["language"])
+            r["outcome"] = decided.get(k)
+            r["notes"] = notes.get(k, {"mined": 0, "self_rendered": 0, "references": []})
+            r["provenance"] = self._provenance(notes.get(k))
+            r["flagged"] = r["notes"]["self_rendered"] > 0
+
+        # Facets are computed over everything still awaiting a decision, so the
+        # counts a reviewer navigates by never shift when a filter is applied.
+        undecided = [r for r in rows if not r["outcome"]]
+        facets = {
+            "language": _tally(undecided, "language"),
+            "kind": _tally(undecided, "kind"),
+        }
+
+        if outcome == "needs_work":
+            sel = [r for r in rows if r["outcome"] and r["outcome"]["outcome"] == "needs_work"]
+        else:
+            sel = undecided
+        if kind in self.KINDS:
+            sel = [r for r in sel if r["kind"] == kind]
+        if language:
+            sel = [r for r in sel if r["language"] == language]
+        if flagged_only:
+            sel = [r for r in sel if r["flagged"]]
+
+        if sort == "flagged":
+            sel.sort(key=lambda r: (-r["notes"]["self_rendered"], r["language"], r["title"]))
+        elif sort == "largest":
+            sel.sort(key=lambda r: -(r.get("words") or 0))
+        else:  # oldest — the fairest proxy for neglect
+            sel.sort(key=lambda r: (r.get("created_at") or "", r["language"], r["title"]))
+
+        try:
+            page = max(1, int(q.get("page", 1)))
+        except (TypeError, ValueError):
+            page = 1
+        pages = max(1, (len(sel) + self.PAGE_SIZE - 1) // self.PAGE_SIZE)
+        page = min(page, pages)
+        start = (page - 1) * self.PAGE_SIZE
+        window = sel[start : start + self.PAGE_SIZE]
+
+        # Mechanical checks are computed for the PAGE only. They need both
+        # editions' bodies, so doing it for the whole library on every request
+        # would read hundreds of rows to render twenty-five.
+        self._attach_flags(window)
+
+        return Response(
+            {
+                "results": window,
+                "total": len(undecided),
+                "filtered": len(sel),
+                "flagged_total": sum(1 for r in undecided if r["flagged"]),
+                "needs_work_total": sum(
+                    1 for r in rows if r["outcome"] and r["outcome"]["outcome"] == "needs_work"
+                ),
+                "page": page,
+                "pages": pages,
+                "page_size": self.PAGE_SIZE,
+                "facets": facets,
+            }
+        )
+
+    def _rows(self) -> list[dict]:
+        out: list[dict] = []
+        books = (
             Book.objects.filter(source_type=Book.SourceType.AI_UNREVIEWED)
             .select_related("author")
             .annotate(num_chapters=Count("chapters"))
             .order_by("language", "sort_order", "title")
         )
-        return [
-            {
-                "slug": b.slug,
-                "language": b.language,
-                "title": b.title,
-                "author": b.author.name,
-                "chapters": b.num_chapters,
-            }
-            for b in qs
-        ]
-
-    def _bios(self) -> list[dict]:
-        qs = (
+        for b in books:
+            out.append(
+                {
+                    "kind": "book",
+                    "slug": b.slug,
+                    "language": b.language,
+                    "title": b.title,
+                    "author": b.author.name,
+                    "chapters": b.num_chapters,
+                    "words": None,
+                    "scripture_ref": "",
+                    "created_at": b.created_at.isoformat() if b.created_at else "",
+                }
+            )
+        sermons = (
+            Sermon.objects.filter(source_type=Book.SourceType.AI_UNREVIEWED)
+            .select_related("author")
+            .order_by("language", "sort_order", "title")
+        )
+        for s in sermons:
+            out.append(
+                {
+                    "kind": "sermon",
+                    "slug": s.slug,
+                    "language": s.language,
+                    "title": s.title,
+                    "author": s.author.name,
+                    "chapters": None,
+                    "words": s.word_count,
+                    "scripture_ref": s.scripture_ref,
+                    "created_at": s.created_at.isoformat() if s.created_at else "",
+                }
+            )
+        bios = (
             AuthorTranslation.objects.filter(reviewed=False)
             .exclude(bio="", bio_html="")
             .select_related("author")
             .order_by("language", "author__name")
         )
-        return [
-            {
-                "slug": t.author.slug,
-                "language": t.language,
-                "name": t.author.name,
-                "has_short": bool(t.bio),
-                "has_long": bool(t.bio_html),
+        for t in bios:
+            out.append(
+                {
+                    "kind": "bio",
+                    "slug": t.author.slug,
+                    "language": t.language,
+                    "title": t.author.name,
+                    "author": t.author.name,
+                    "chapters": None,
+                    "words": len((t.bio_html or t.bio or "").split()),
+                    "scripture_ref": "",
+                    "has_short": bool(t.bio),
+                    "has_long": bool(t.bio_html),
+                    "created_at": t.created_at.isoformat() if t.created_at else "",
+                }
+            )
+        return out
+
+    def _outcomes(self) -> dict:
+        return {
+            (o.kind, o.slug, o.language): {
+                "outcome": o.outcome,
+                "note": o.note,
+                "reviewer": o.reviewer,
+                "decided_at": o.decided_at.isoformat(),
             }
-            for t in qs
-        ]
+            for o in ReviewOutcome.objects.all()
+        }
+
+    def _note_summary(self) -> dict:
+        out: dict = {}
+        for n in TranslationNote.objects.all():
+            k = (n.kind, n.slug, n.language)
+            e = out.setdefault(
+                k,
+                {"mined": 0, "self_rendered": 0, "references": [], "job": None, "pr": None},
+            )
+            if n.status == TranslationNote.Status.SELF_RENDERED:
+                e["self_rendered"] += 1
+                e["references"].append(
+                    {
+                        "reference": n.reference,
+                        "block_index": n.block_index,
+                        "status": n.status,
+                    }
+                )
+            else:
+                e["mined"] += 1
+            e["job"] = e["job"] or n.job_issue
+            e["pr"] = e["pr"] or n.pull_request
+        return out
+
+    @staticmethod
+    def _provenance(note: dict | None) -> dict | None:
+        if not note or not (note.get("job") or note.get("pr")):
+            return None
+        return {"job_issue": note.get("job"), "pull_request": note.get("pr")}
+
+    def _attach_flags(self, rows: list[dict]) -> None:
+        """Mechanical source-vs-translation checks for the visible page."""
+        for r in rows:
+            source, target = self._bodies(r)
+            if source is None or target is None:
+                r["flags"] = None
+                continue
+            r["flags"] = translation_flags(
+                source, target, language=r["language"], kind=r["kind"]
+            )
+
+    @staticmethod
+    def _bodies(row: dict) -> tuple[str | None, str | None]:
+        """The English source body and the translated body, or (None, None)."""
+        kind, slug, lang = row["kind"], row["slug"], row["language"]
+        if kind == "book":
+            # A book's text lives in its chapters; concatenate in order so the
+            # tag sequence covers the whole edition.
+            def joined(language):
+                qs = Chapter.objects.filter(book__slug=slug, book__language=language)
+                parts = list(qs.order_by("order").values_list("body_html", flat=True))
+                return "".join(parts) if parts else None
+
+            return joined("en"), joined(lang)
+        if kind == "sermon":
+            src = Sermon.objects.filter(slug=slug, language="en").values_list(
+                "body_html", flat=True
+            ).first()
+            tgt = Sermon.objects.filter(slug=slug, language=lang).values_list(
+                "body_html", flat=True
+            ).first()
+            return src, tgt
+        author = Author.objects.filter(slug=slug).values_list("bio_html", flat=True).first()
+        tr = AuthorTranslation.objects.filter(
+            author__slug=slug, language=lang
+        ).values_list("bio_html", flat=True).first()
+        return author, tr
+
+    # ---- decisions ----------------------------------------------------------
 
     def post(self, request):
-        kind = request.data.get("kind")
-        slug = request.data.get("slug")
-        language = request.data.get("language")
-        if kind not in ("book", "bio") or not slug or not language:
+        data = request.data
+        items = data.get("items")
+        if items is None:
+            items = [{k: data.get(k) for k in ("kind", "slug", "language")}]
+        if not isinstance(items, list) or not items:
+            return Response({"detail": "items must be a non-empty list."}, status=400)
+        outcome = data.get("outcome") or ReviewOutcome.Outcome.APPROVED
+        if outcome not in ReviewOutcome.Outcome.values:
             return Response(
-                {"detail": "kind ('book'|'bio'), slug and language are required."},
-                status=400,
+                {"detail": "outcome must be 'approved' or 'needs_work'."}, status=400
             )
-        if kind == "book":
-            return self._approve_book(slug, language)
-        return self._approve_bio(slug, language)
+        note = (data.get("note") or "").strip()
+        reviewer = getattr(request.user, "email", "") or ""
 
-    def _approve_book(self, slug, language):
-        try:
-            book = Book.objects.get(slug=slug, language=language)
-        except Book.DoesNotExist:
-            return Response({"detail": "No such book translation."}, status=404)
-        if book.source_type == Book.SourceType.PUBLIC_DOMAIN:
-            return Response(
-                {"detail": "That book is a public-domain original, not a translation."},
-                status=400,
+        # Bulk approval is the one action here that can launder unreviewed
+        # content at scale, so eligibility is re-asserted server-side rather
+        # than trusted from the client's selection.
+        enforce_gate = outcome == ReviewOutcome.Outcome.APPROVED and len(items) > 1
+        flagged = self._flagged_keys() if enforce_gate else set()
+
+        done, skipped = [], []
+        for raw in items:
+            kind, slug, language = raw.get("kind"), raw.get("slug"), raw.get("language")
+            if kind not in self.KINDS or not slug or not language:
+                skipped.append({**raw, "reason": "kind, slug and language are required."})
+                continue
+            key = (kind, slug, language)
+            if key in flagged:
+                skipped.append(
+                    {
+                        "kind": kind,
+                        "slug": slug,
+                        "language": language,
+                        "reason": "has unverified verses — review individually.",
+                    }
+                )
+                continue
+            err = self._apply(kind, slug, language, outcome)
+            if err:
+                skipped.append({"kind": kind, "slug": slug, "language": language, "reason": err})
+                continue
+            ReviewOutcome.objects.update_or_create(
+                kind=kind,
+                slug=slug,
+                language=language,
+                defaults={"outcome": outcome, "note": note, "reviewer": reviewer},
             )
-        book.source_type = Book.SourceType.AI_REVIEWED
-        book.save(update_fields=["source_type"])
-        return Response({"ok": True, "kind": "book", "slug": slug, "language": language})
+            done.append({"kind": kind, "slug": slug, "language": language})
 
-    def _approve_bio(self, slug, language):
-        try:
-            tr = AuthorTranslation.objects.get(author__slug=slug, language=language)
-        except AuthorTranslation.DoesNotExist:
-            return Response({"detail": "No such author-bio translation."}, status=404)
+        # 207: a batch where some rows were held back is a normal result, not a
+        # failure — one ineligible row must not reject the other twenty-four.
+        status = 200 if not skipped else (400 if not done else 207)
+        return Response({"ok": not skipped, "decided": done, "skipped": skipped}, status=status)
+
+    def _flagged_keys(self) -> set:
+        return {
+            (n.kind, n.slug, n.language)
+            for n in TranslationNote.objects.filter(
+                status=TranslationNote.Status.SELF_RENDERED
+            ).only("kind", "slug", "language")
+        }
+
+    def _apply(self, kind, slug, language, outcome) -> str | None:
+        """Flip the underlying field. Returns an error string, or None on success."""
+        approving = outcome == ReviewOutcome.Outcome.APPROVED
+        if kind in ("book", "sermon"):
+            model = Book if kind == "book" else Sermon
+            obj = model.objects.filter(slug=slug, language=language).first()
+            if obj is None:
+                return f"No such {kind} translation."
+            # Sermon shares Book's SourceType vocabulary rather than declaring
+            # its own, so the enum is read off Book for both.
+            if obj.source_type == Book.SourceType.PUBLIC_DOMAIN:
+                return f"That {kind} is a public-domain original, not a translation."
+            obj.source_type = (
+                Book.SourceType.AI_REVIEWED if approving else Book.SourceType.AI_UNREVIEWED
+            )
+            # Scoped save: source_type is not an indexed field, so this skips the
+            # search-vector rebuild that a full save() would trigger.
+            obj.save(update_fields=["source_type"])
+            return None
+        tr = AuthorTranslation.objects.filter(author__slug=slug, language=language).first()
+        if tr is None:
+            return "No such author-bio translation."
+        tr.reviewed = approving
         # Same as approve_author_translation: approval answers staleness.
-        tr.reviewed = True
-        tr.source_stale = False
+        if approving:
+            tr.source_stale = False
         tr.save(update_fields=["reviewed", "source_stale"])
-        return Response({"ok": True, "kind": "bio", "slug": slug, "language": language})
+        return None
+
+    def delete(self, request):
+        """Undo a decision, returning the item to the queue."""
+        q = request.query_params
+        kind, slug, language = q.get("kind"), q.get("slug"), q.get("language")
+        if kind not in self.KINDS or not slug or not language:
+            return Response(
+                {"detail": "kind, slug and language are required."}, status=400
+            )
+        # Reversing is lossless: ai_reviewed → ai_unreviewed restores exactly the
+        # state the fixture ships, and seed_* treats these fields as create-only
+        # so the next deploy will not overwrite the correction.
+        err = self._apply(kind, slug, language, ReviewOutcome.Outcome.NEEDS_WORK)
+        if err:
+            return Response({"detail": err}, status=404)
+        ReviewOutcome.objects.filter(kind=kind, slug=slug, language=language).delete()
+        return Response({"ok": True, "kind": kind, "slug": slug, "language": language})
+
+
+def _tally(rows: list[dict], field: str) -> dict:
+    out: dict = {}
+    for r in rows:
+        out[r[field]] = out.get(r[field], 0) + 1
+    return dict(sorted(out.items(), key=lambda kv: (-kv[1], kv[0])))
+
+
+class AdminReviewDetailView(APIView):
+    """Source and translation, split into aligned blocks, for in-place review.
+
+    Bodies are fetched here rather than inlined into the queue payload: a
+    36-chapter book is megabytes of HTML, and the queue would carry all of it to
+    render a list of titles.
+
+    Blocks are produced with the same split the translation pipeline uses —
+    ``re.split(r'(<[^>]+>)', body_html)``, keeping the text runs — so the admin
+    view and the translator agree on what a block is. When the two editions
+    disagree on block count the response says so plainly instead of pairing by
+    index anyway; a silently shifted diff is worse than no diff.
+    """
+
+    permission_classes = [IsAdminEmail]
+
+    def get(self, request):
+        q = request.query_params
+        kind, slug, language = q.get("kind"), q.get("slug"), q.get("language")
+        if kind not in AdminReviewQueueView.KINDS or not slug or not language:
+            return Response({"detail": "kind, slug and language are required."}, status=400)
+
+        if kind == "book":
+            try:
+                number = int(q.get("chapter") or 1)
+            except (TypeError, ValueError):
+                number = 1
+            # Chapter's positional field is `order`, not `number`.
+            src = self._chapter(slug, "en", number)
+            tgt = self._chapter(slug, language, number)
+            chapters = list(
+                Chapter.objects.filter(book__slug=slug, book__language=language)
+                .order_by("order")
+                .values("order", "title")
+            )
+        else:
+            chapters = []
+            number = None
+            src, tgt = AdminReviewQueueView._bodies(
+                {"kind": kind, "slug": slug, "language": language}
+            )
+        if src is None and tgt is None:
+            return Response({"detail": "Nothing to review for that item."}, status=404)
+
+        s_blocks, t_blocks = _blocks(src or ""), _blocks(tgt or "")
+        notes = list(
+            TranslationNote.objects.filter(kind=kind, slug=slug, language=language).values(
+                "reference", "status", "block_index", "source_file"
+            )
+        )
+        return Response(
+            {
+                "kind": kind,
+                "slug": slug,
+                "language": language,
+                "chapter": number,
+                "chapters": chapters,
+                "source": {"language": "en", "blocks": s_blocks},
+                "target": {"language": language, "blocks": t_blocks},
+                "aligned": len(s_blocks) == len(t_blocks),
+                "block_counts": [len(s_blocks), len(t_blocks)],
+                "notes": notes,
+            }
+        )
+
+    @staticmethod
+    def _chapter(slug, language, number):
+        return (
+            Chapter.objects.filter(book__slug=slug, book__language=language, order=number)
+            .values_list("body_html", flat=True)
+            .first()
+        )
+
+
+_BLOCK_SPLIT = re.compile(r"</(?:p|li|blockquote|h[1-6])>", re.I)
+
+
+def _blocks(html: str) -> list[str]:
+    """Rendered text of each block, in document order."""
+    out = []
+    for chunk in _BLOCK_SPLIT.split(html or ""):
+        text = unescape(re.sub(r"<[^>]+>", "", chunk))
+        text = re.sub(r"\s+", " ", text).strip()
+        if text:
+            out.append(text)
+    return out
 
 
 # --- Content audit (quality + integrity) -------------------------------------

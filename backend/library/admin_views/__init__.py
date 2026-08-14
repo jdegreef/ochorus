@@ -23,7 +23,7 @@ from .content import (
 )
 from .detail import AdminBookDetailView, AdminExportView
 from .jobs import AdminTranslationJobsView
-from .quality import AdminAuditView, AdminReviewQueueView
+from .quality import AdminAuditView, AdminReviewDetailView, AdminReviewQueueView
 
 __all__ = [
     "AdminAuditView",
@@ -40,6 +40,7 @@ __all__ = [
     "AdminLanguageReadinessView",
     "AdminLanguageSettingsView",
     "AdminLanguageThresholdsView",
+    "AdminReviewDetailView",
     "AdminReviewQueueView",
     "AdminStatsView",
     "AdminTranslationJobsView",

@@ -169,3 +169,79 @@ def qa_report(chapters: list[dict]) -> list[dict]:
         )
     )
     return warnings
+
+
+# --- Translation-pair checks -------------------------------------------------
+# Mechanical comparisons between an English source and one translation of it.
+# Kept here beside chapter_flags for the same reason: the review queue, CI and
+# any future import path must apply identical rules or they drift apart.
+#
+# These are CHECKS, not quality. A file can pass every one of them and still be
+# missing two paragraphs of argument — a bio sweep found exactly that, seventeen
+# divergent files whose word ratios all looked healthy. Present them as "the
+# machine found nothing", never as "this reads well".
+
+_TAG = re.compile(r"<[^>]+>")
+
+# Observed word-count ratios (translation / English), as (low, high) percentages.
+# Per LANGUAGE and per CONTENT TYPE — the two differ enough that borrowing one
+# for the other flags correct files and passes padded ones. Measured from
+# already-shipped pairs; extend as languages and types are measured, and treat a
+# missing entry as "no band yet" rather than substituting a neighbour's.
+RATIO_BANDS: dict[tuple[str, str], tuple[float, float]] = {
+    ("sw", "sermon"): (73.6, 93.5),
+    ("sw", "book"): (77.0, 91.0),
+    ("sw", "bio"): (88.0, 98.0),
+    ("lg", "bio"): (82.0, 91.0),
+    ("ar", "bio"): (78.0, 89.0),
+    ("ar", "book"): (71.5, 79.4),
+    ("uk", "bio"): (84.0, 94.0),
+    ("es", "bio"): (95.0, 115.0),
+    ("pt", "bio"): (95.0, 115.0),
+}
+
+
+def tag_sequence(html: str) -> list[str]:
+    """The ordered tag sequence — the language-independent structural gate."""
+    return _TAG.findall(html or "")
+
+
+def quote_style(html: str) -> str:
+    """Which quotation convention a body uses: curly, straight, entity, mixed…
+
+    Style is a per-FILE property — a translation mirrors whatever its own
+    English source used — so this reports what a file does rather than judging
+    it against a house style. What IS a defect is a single file using more than
+    one convention, because the reader then meets both in one chapter.
+    """
+    curly = (html or "").count("“") + (html or "").count("”")
+    straight = (html or "").count('"')
+    entity = (html or "").count("&quot;")
+    used = [n for n in (("curly", curly), ("straight", straight), ("entity", entity)) if n[1]]
+    if not used:
+        return "none"
+    return used[0][0] if len(used) == 1 else "mixed"
+
+
+def translation_flags(source_html: str, target_html: str, *, language: str, kind: str) -> dict:
+    """Compare a translation against its English source. Pure analysis."""
+    src, tgt = tag_sequence(source_html), tag_sequence(target_html)
+    src_words = len(_TAG.sub(" ", source_html or "").split())
+    tgt_words = len(_TAG.sub(" ", target_html or "").split())
+    ratio = round(tgt_words / src_words * 100, 1) if src_words else None
+    band = RATIO_BANDS.get((language, kind))
+    style = quote_style(target_html)
+    return {
+        # The real gate: identical ORDERED sequence, not equal counts. A file can
+        # match on totals while having a <p> where the source has an <li>.
+        "tags_match": src == tgt,
+        "tag_counts": [len(src), len(tgt)],
+        "ratio": ratio,
+        "band": list(band) if band else None,
+        # Reported, never enforced. Both a floor and a ceiling have been
+        # exceeded by files that were verifiably complete, so an out-of-band
+        # ratio is a prompt to look, not a failure.
+        "ratio_in_band": None if not (band and ratio) else band[0] <= ratio <= band[1],
+        "quote_style": style,
+        "quote_style_consistent": style != "mixed",
+    }
