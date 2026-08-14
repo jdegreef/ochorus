@@ -17,7 +17,7 @@ English (ASV) only for now; a target-language edition can layer on later.
 from __future__ import annotations
 
 import re
-from functools import cache, lru_cache
+from functools import lru_cache
 
 import pythonbible as bible
 from pythonbible.versions import Version
@@ -55,7 +55,11 @@ _HAS_DIGIT = re.compile(r"\d")
 _MAX_VERSES = 25
 
 
-@cache  # ~8k distinct candidates corpus-wide; 4096 thrashed (23% hits)
+# ~8k distinct candidates corpus-wide; 4096 thrashed (23% hits), so this needs
+# to be big enough to hold the corpus — but not unbounded, which let junk
+# candidates ratchet worker RSS for the process's lifetime (one of the
+# allocations behind the 2026-08-14 OOM).
+@lru_cache(maxsize=8192)
 def _first_reference(text: str):
     """The first valid Bible reference in ``text``, or None."""
     try:

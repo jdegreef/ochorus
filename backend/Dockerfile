@@ -27,4 +27,10 @@ EXPOSE 8000
 
 # Migrations run once per deploy via Render's preDeployCommand (see render.yaml),
 # not on container start. The host provides $PORT.
-CMD ["sh", "-c", "uv run gunicorn config.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 3 --timeout 120"]
+#
+# --max-requests recycles each worker after ~500 requests (jitter so the three
+# workers never restart together). CPython retains freed memory pages, so
+# occasional large allocations ratchet worker RSS toward the 512MB plan limit
+# over a process's lifetime (OOM restart, 2026-08-14); recycling resets the
+# ratchet with a clean handover instead of an OOM kill.
+CMD ["sh", "-c", "uv run gunicorn config.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 3 --timeout 120 --max-requests 500 --max-requests-jitter 100"]
