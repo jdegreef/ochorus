@@ -57,6 +57,14 @@ const config = {
 					`/${l}`,
 					`/${l}/books`,
 					`/${l}/biographies`,
+					// The CRAWL ANCHOR, and it has to be seeded explicitly because
+					// nothing links to it. /biographies paginates client-side (24 of 35
+					// writers reached the built HTML) and its era links live behind a
+					// client-side sort state (so no built page in any locale carried
+					// one), which left 49 sitemap URLs served as the SPA shell and
+					// reported by Search Console as "Excluded by 'noindex'".
+					// /authors carries the full link set; see its +page.svelte.
+					`/${l}/authors`,
 					`/${l}/sermons`,
 					`/${l}/plans`,
 					`/${l}/topics`,
