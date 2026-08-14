@@ -23,6 +23,21 @@ const config = {
 		// can surface an "update available" prompt instead of updating silently.
 		serviceWorker: { register: false },
 		prerender: {
+			// A prerendered page that errors still fails the build — never ship a
+			// half-broken page — but the default message buries the diagnosis. Say
+			// what died and where, and point at the build-time retry layer: apiFetch
+			// already retries 5xx/network blips during prerender (see $lib/api.ts),
+			// so an error surviving to here is persistent, not a flaky deploy.
+			handleHttpError: ({ status, path, referrer, message }) => {
+				throw new Error(
+					`Prerender got ${status} on ${path}` +
+						(referrer ? ` (linked from ${referrer})` : '') +
+						`: ${message}\n` +
+						'apiFetch already retried transient API failures during the build, ' +
+						'so this page is persistently broken — check the API response for ' +
+						'its data before re-deploying.'
+				);
+			},
 			// The crawler only follows links from the live index pages, so
 			// unpublished books/authors are dropped from the prerendered set on the
 			// next build (a backend-only unpublish doesn't rebuild the web service —

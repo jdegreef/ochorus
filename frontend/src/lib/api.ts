@@ -1,3 +1,4 @@
+import { building } from '$app/environment';
 import { API_BASE_URL } from './config';
 
 export class ApiError extends Error {
@@ -21,6 +22,42 @@ export function setAuthTokenProvider(fn: () => string | null) {
 }
 
 /**
+ * During prerender, one flaky API response fails the whole deploy: the build
+ * crawls every public page, a single 5xx bubbles up as a page error, and
+ * SvelteKit (rightly) refuses to ship the half-broken page. The API restarting
+ * mid-build has already cost a deploy this way (2026-08-13, a 500 on one
+ * Spanish sermon page), so at build time idempotent requests retry transient
+ * failures — network errors and 5xx — with a short backoff before giving up.
+ * The last delay is long enough to ride out a Render API restart. Persistent
+ * errors still fail the build: never ship a page that is genuinely broken.
+ * At runtime nothing changes — retrying in the browser would only delay the
+ * error UI.
+ */
+const BUILD_RETRY_DELAYS_MS = [1000, 4000, 10000];
+
+const isIdempotent = (init: RequestInit) =>
+	!init.method || ['GET', 'HEAD'].includes(init.method.toUpperCase());
+
+async function robustFetch(url: string, init: RequestInit): Promise<Response> {
+	if (!building || !isIdempotent(init)) return fetch(url, init);
+	for (let attempt = 0; ; attempt++) {
+		const outOfRetries = attempt >= BUILD_RETRY_DELAYS_MS.length;
+		let failure: string;
+		try {
+			const res = await fetch(url, init);
+			if (res.status < 500 || outOfRetries) return res;
+			failure = `${res.status}`;
+		} catch (err) {
+			if (outOfRetries) throw err;
+			failure = String(err);
+		}
+		const delay = BUILD_RETRY_DELAYS_MS[attempt];
+		console.warn(`[api] ${failure} from ${url} during prerender — retrying in ${delay}ms`);
+		await new Promise((resolve) => setTimeout(resolve, delay));
+	}
+}
+
+/**
  * Fetch wrapper for the Django API. The library is public (AllowAny), but when a
  * user is signed in we attach their Supabase Bearer token so authenticated
  * endpoints (e.g. /api/auth/me) work.
@@ -35,7 +72,7 @@ export async function apiFetch<T = unknown>(path: string, init: RequestInit = {}
 		headers.set('Authorization', `Bearer ${token}`);
 	}
 
-	const res = await fetch(`${API_BASE_URL}${path}`, { ...init, headers });
+	const res = await robustFetch(`${API_BASE_URL}${path}`, { ...init, headers });
 	if (!res.ok) {
 		let body: unknown = null;
 		try {
@@ -60,7 +97,7 @@ export async function apiFetchRaw(path: string, init: RequestInit = {}): Promise
 	if (token && !headers.has('Authorization')) {
 		headers.set('Authorization', `Bearer ${token}`);
 	}
-	const res = await fetch(`${API_BASE_URL}${path}`, { ...init, headers });
+	const res = await robustFetch(`${API_BASE_URL}${path}`, { ...init, headers });
 	if (!res.ok) {
 		// Parse the error body as JSON when possible (DRF errors are JSON) so
 		// callers can read `.detail`, matching apiFetch; fall back to raw text.
