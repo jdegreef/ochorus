@@ -260,6 +260,11 @@ import type { PageLoad } from './$types';
  * This one also makes the reading plan humility-12-days render in Swahili, its
  * only source book being this one, so /sw/plans changes too — same
  * EVERY-source-book rule as #650 and #630.
+ *
+ * Prerender refresh 2026-08-16 (queue job #531, PR #953): Andrew Murray's
+ * Kumngojea Mungu (Waiting on God, 35 ch) — shipped by another session's PR
+ * which stopped short of this follow-up; backs no reading plan, so the books
+ * shelf is the only page that needs re-baking.
  */
 export const load: PageLoad = async () => {
 	try {
