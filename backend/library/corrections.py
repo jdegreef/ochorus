@@ -532,6 +532,17 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # verse numbering.
             ("(ver. 19.)", "(ver. 17.)"),
             ("(v. 19)", "(v. 17)"),
+            # Contents entry 15. "They soon forgot His works: they waited not
+            # for His counsel" is Ps. 106:13, and chapter 15's own epigraph
+            # cites it so; Ps. 56:12 ("Thy vows are upon me, O God") has
+            # nothing to do with counsel. Found by the Swahili run of job #531.
+            ("For His Counsel.—Ps. 56:12.", "For His Counsel.—Ps. 106:13."),
+            ("Por Su Consejo.—Sal. 56:12.", "Por Su Consejo.—Sal. 106:13."),
+            # Contents entry 16. "I wait for the Lord, my soul doth wait" is
+            # Ps. 130:5-6, and chapter 16's epigraph cites it so; Ps. 80:5-6 is
+            # the bread of tears. Same find, same run.
+            ("Heart.—Ps. 80:5, 6.", "Heart.—Ps. 130:5, 6."),
+            ("Corazón.—Sal. 80:5, 6.", "Corazón.—Sal. 130:5, 6."),
             # --- lost word spaces, all extraction artifacts -------------------
             # A general check for these would need a dictionary the audit does
             # not carry: splitting on "both halves are corpus words" yields 746
