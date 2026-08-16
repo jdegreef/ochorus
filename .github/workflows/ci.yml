@@ -118,12 +118,18 @@ jobs:
           PUBLIC_API_BASE_URL: http://localhost:8000
         run: npm run build
 
-      # The trailing-slash guard asserts on BUILT html, so it has to run after the
-      # build — the "Frontend — unit tests" step above runs before build/ exists
-      # and skips it. A guard that silently skips is worse than no guard.
-      - name: Frontend — no bare detail links in built output
+      # These guards assert on BUILT html, so they have to run after the build —
+      # the "Frontend — unit tests" step above runs before build/ exists and
+      # skips them. A guard that silently skips is worse than no guard.
+      #
+      # prerenderCoverage is the one that catches a page the sitemap advertises
+      # and the build never produced: the static adapter serves the noindex
+      # 200.html shell for those, so they are promised to Google and then
+      # refused. It has happened twice (all of /pt and /ar; then 49 localized
+      # author and era pages) and both times Search Console found it, not CI.
+      - name: Frontend — built-output guards
         working-directory: frontend
-        run: npx vitest run src/lib/href.test.ts
+        run: npx vitest run src/lib/href.test.ts src/lib/prerenderCoverage.test.ts
 
       # Stop the background API before the job's post-steps run — a lingering
       # `uv run … runserver` process makes setup-uv's cache-prune fail (exit 2).
