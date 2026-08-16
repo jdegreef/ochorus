@@ -114,3 +114,15 @@ class ShippedNotesTests(TestCase):
         # the whole reason a reviewer can skip it.
         for r in rows.filter(status="mined"):
             self.assertTrue(r.source_file, f"{r.reference} is mined but cites no source")
+
+    def test_purity_of_heart_es_notes_seed(self):
+        # A malformed file is skipped, not fatal — so without this pin the book's
+        # 38-site review queue could silently seed zero rows.
+        call_command("seed_translation_notes", verbosity=0)
+        rows = TranslationNote.objects.filter(
+            kind="book", slug="purity-of-heart", language="es"
+        )
+        self.assertEqual(rows.count(), 38)
+        self.assertEqual(rows.filter(status="self_rendered").count(), 38)
+        self.assertEqual(set(rows.values_list("job_issue", flat=True)), {516})
+        self.assertEqual(set(rows.values_list("pull_request", flat=True)), {942})
