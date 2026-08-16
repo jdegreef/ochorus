@@ -17,6 +17,10 @@ export const entries: EntryGenerator = async () => {
 	return [...slugs].map((slug) => ({ slug }));
 };
 
+// Prerender refresh 2026-08-14 (queue job #769, PR #942): the William Booth
+// biography in Portuguese — /pt/authors/william-booth re-crawls and bakes the
+// long-form bio with its prayer callouts.
+//
 // Prerender refresh 2026-08-10 (queue jobs #530, #542, #735-#737, #768, PR
 // #931): six author biographies at once — Augustine of Hippo in Swahili (three
 // prayer callouts, the second one answered), and Bunyan, Whitefield, Susanna
