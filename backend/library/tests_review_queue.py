@@ -189,6 +189,12 @@ class ReviewQueueTests(TestCase):
             kind="sermon", slug="possibilities", language="sw",
             reference="Ezekiel 36:32", status=TranslationNote.Status.SELF_RENDERED,
         )
+        # The bio is examined-and-clean, so only the flagged sermon is held back.
+        TranslationNote.objects.create(
+            kind="bio", slug="a-b-simpson", language="sw",
+            reference="John 3:16", status=TranslationNote.Status.MINED,
+            source_file="the-way-to-god.sw.json",
+        )
         res = self.client.post(
             self.url,
             {"items": [
@@ -206,6 +212,65 @@ class ReviewQueueTests(TestCase):
             Sermon.objects.get(slug="possibilities", language="sw").source_type,
             Book.SourceType.AI_UNREVIEWED,
         )
+
+    def test_bulk_approve_fails_closed_when_nothing_is_recorded(self):
+        """No notes must mean NOT eligible, never 'nothing found'.
+
+        The gate shipped permissive: an item the pipeline had never examined
+        carried no TranslationNote rows, was therefore not "flagged", and sailed
+        through a bulk approve. With 148 of 149 items un-noted that inverted the
+        gate's purpose — it waved through everything it existed to hold back.
+        """
+        res = self.client.post(
+            self.url,
+            {"items": [
+                {"kind": "sermon", "slug": "possibilities", "language": "sw"},
+                {"kind": "bio", "slug": "a-b-simpson", "language": "sw"},
+            ], "outcome": "approved"},
+            content_type="application/json",
+        )
+        self.assertEqual(res.status_code, 400)
+        body = res.json()
+        self.assertEqual(body["decided"], [])
+        self.assertEqual(len(body["skipped"]), 2)
+        self.assertTrue(all("no scripture notes" in s["reason"] for s in body["skipped"]))
+        self.assertEqual(
+            Sermon.objects.get(slug="possibilities", language="sw").source_type,
+            Book.SourceType.AI_UNREVIEWED,
+        )
+
+    def test_bulk_approve_allows_an_examined_and_clean_row(self):
+        """Recorded notes with nothing self-rendered IS eligible."""
+        TranslationNote.objects.create(
+            kind="sermon", slug="possibilities", language="sw",
+            reference="Mark 9:23", status=TranslationNote.Status.MINED,
+            source_file="jesus-himself-2.sw.json",
+        )
+        TranslationNote.objects.create(
+            kind="bio", slug="a-b-simpson", language="sw",
+            reference="John 3:16", status=TranslationNote.Status.MINED,
+            source_file="the-way-to-god.sw.json",
+        )
+        res = self.client.post(
+            self.url,
+            {"items": [
+                {"kind": "sermon", "slug": "possibilities", "language": "sw"},
+                {"kind": "bio", "slug": "a-b-simpson", "language": "sw"},
+            ], "outcome": "approved"},
+            content_type="application/json",
+        )
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(len(res.json()["decided"]), 2)
+
+    def test_notes_recorded_is_exposed_so_the_ui_can_say_so(self):
+        row = next(r for r in self._get()["results"] if r["kind"] == "sermon")
+        self.assertFalse(row["notes_recorded"])
+        TranslationNote.objects.create(
+            kind="sermon", slug="possibilities", language="sw",
+            reference="Mark 9:23", status=TranslationNote.Status.MINED,
+        )
+        row = next(r for r in self._get()["results"] if r["kind"] == "sermon")
+        self.assertTrue(row["notes_recorded"])
 
     def test_single_approve_of_a_flagged_row_is_allowed(self):
         """Gating is about BULK; an individual reviewer may still approve."""

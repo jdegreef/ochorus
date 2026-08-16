@@ -401,6 +401,8 @@ export interface ReviewItem {
 	has_long?: boolean;
 	created_at: string;
 	flagged: boolean;
+	/** Whether the pipeline recorded ANY scripture notes. Absence is not safety. */
+	notes_recorded: boolean;
 	notes: { mined: number; self_rendered: number; references: ReviewNoteRef[] };
 	provenance: { job_issue: number | null; pull_request: number | null } | null;
 	outcome: ReviewOutcome | null;

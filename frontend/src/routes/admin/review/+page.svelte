@@ -188,11 +188,15 @@
 		}
 	}
 
-	// Only rows the server would accept in a batch are selectable: nothing
-	// flagged, nothing failing a mechanical check. The API re-asserts this — the
-	// checkbox just shouldn't offer what will be refused.
+	// Only rows the server would accept in a batch are selectable. The API
+	// re-asserts all of this — the checkbox just shouldn't offer what will be
+	// refused. Note `notes_recorded`: an item the pipeline never examined is NOT
+	// eligible, because "no flags" must never be able to mean "no data".
 	const bulkEligible = (i: ReviewItem) =>
-		!i.flagged && !settled[key(i.kind, i.slug, i.language)] && i.flags?.tags_match !== false;
+		i.notes_recorded &&
+		!i.flagged &&
+		!settled[key(i.kind, i.slug, i.language)] &&
+		i.flags?.tags_match !== false;
 
 	const visible = $derived(queue?.results ?? []);
 	const selectedItems = $derived(
@@ -325,7 +329,7 @@
 				{#if excludedCount}
 					<span class="text-small text-muted">
 						{excludedCount} row{excludedCount === 1 ? '' : 's'} on this page can't be bulk-approved —
-						flagged, or failing a check.
+						flagged, unexamined, or failing a check.
 					</span>
 				{/if}
 				<button
@@ -406,6 +410,10 @@
 													{i.notes.self_rendered} verse{i.notes.self_rendered === 1 ? '' : 's'}
 													unverified
 												</span>
+											{:else if !i.notes_recorded}
+												<span class="text-small text-muted">no scripture notes recorded</span>
+											{:else}
+												<span class="text-small text-muted">{i.notes.mined} verses checked</span>
 											{/if}
 										</div>
 										<div class="text-small text-muted">

@@ -71,6 +71,7 @@ class AdminReviewQueueView(APIView):
         rows = self._rows()
         decided = self._outcomes()
         notes = self._note_summary()
+        noted = set(notes)
 
         # A row is "flagged" when the pipeline recorded a verse it had to render
         # itself. That list is the actual review task, and it is the one thing a
@@ -81,6 +82,9 @@ class AdminReviewQueueView(APIView):
             r["notes"] = notes.get(k, {"mined": 0, "self_rendered": 0, "references": []})
             r["provenance"] = self._provenance(notes.get(k))
             r["flagged"] = r["notes"]["self_rendered"] > 0
+            # Distinguish "examined and clean" from "never examined" — the UI
+            # must not render an absence of notes as an absence of problems.
+            r["notes_recorded"] = k in noted
 
         # Facets are computed over everything still awaiting a decision, so the
         # counts a reviewer navigates by never shift when a filter is applied.
@@ -302,7 +306,9 @@ class AdminReviewQueueView(APIView):
         # content at scale, so eligibility is re-asserted server-side rather
         # than trusted from the client's selection.
         enforce_gate = outcome == ReviewOutcome.Outcome.APPROVED and len(items) > 1
-        flagged = self._flagged_keys() if enforce_gate else set()
+        flagged, has_notes = (
+            (self._flagged_keys(), self._noted_keys()) if enforce_gate else (set(), set())
+        )
 
         done, skipped = [], []
         for raw in items:
@@ -311,6 +317,21 @@ class AdminReviewQueueView(APIView):
                 skipped.append({**raw, "reason": "kind, slug and language are required."})
                 continue
             key = (kind, slug, language)
+            if enforce_gate and key not in has_notes:
+                # FAIL CLOSED. An item with no TranslationNote rows has not been
+                # cleared — it has never been examined, which is the opposite of
+                # safe. Treating "no data" as "no problems" would let a bulk
+                # approve wave through the entire un-noted backlog, which is
+                # precisely what this gate exists to prevent.
+                skipped.append(
+                    {
+                        "kind": kind,
+                        "slug": slug,
+                        "language": language,
+                        "reason": "no scripture notes recorded — review individually.",
+                    }
+                )
+                continue
             if key in flagged:
                 skipped.append(
                     {
@@ -337,6 +358,13 @@ class AdminReviewQueueView(APIView):
         # failure — one ineligible row must not reject the other twenty-four.
         status = 200 if not skipped else (400 if not done else 207)
         return Response({"ok": not skipped, "decided": done, "skipped": skipped}, status=status)
+
+    def _noted_keys(self) -> set:
+        """Items the pipeline has recorded scripture provenance for at all."""
+        return {
+            (n.kind, n.slug, n.language)
+            for n in TranslationNote.objects.only("kind", "slug", "language")
+        }
 
     def _flagged_keys(self) -> set:
         return {
