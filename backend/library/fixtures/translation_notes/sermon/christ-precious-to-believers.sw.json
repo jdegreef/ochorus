@@ -1,0 +1,25 @@
+{
+ "kind": "sermon",
+ "slug": "christ-precious-to-believers",
+ "language": "sw",
+ "job_issue": 426,
+ "pull_request": 910,
+ "references": [
+  {"reference": "1 Peter 2:7", "status": "self_rendered", "block_index": 0},
+  {"reference": "Numbers 23:23", "status": "self_rendered", "block_index": 1},
+  {"reference": "Matthew 10:37-38", "status": "self_rendered", "block_index": 8},
+  {"reference": "Hebrews 11:36", "status": "self_rendered", "block_index": 9},
+  {"reference": "Hebrews 12:4", "status": "self_rendered", "block_index": 9},
+  {"reference": "John 20:13", "status": "mined", "source_file": "the-way-to-god.sw.json", "block_index": 11},
+  {"reference": "Acts 26:29", "status": "self_rendered", "block_index": 15},
+  {"reference": "Job 2:4", "status": "self_rendered", "block_index": 15},
+  {"reference": "Luke 7:47", "status": "self_rendered", "block_index": 22},
+  {"reference": "Psalm 41:3", "status": "self_rendered", "block_index": 22},
+  {"reference": "Romans 8:28", "status": "self_rendered", "block_index": 22},
+  {"reference": "John 11:25", "status": "self_rendered", "block_index": 22},
+  {"reference": "Isaiah 46:4", "status": "self_rendered", "block_index": 22},
+  {"reference": "Psalm 23:4", "status": "self_rendered", "block_index": 22},
+  {"reference": "John 21:16-17", "status": "self_rendered", "block_index": 25},
+  {"reference": "1 John 4:19", "status": "self_rendered", "block_index": 25}
+ ]
+}
