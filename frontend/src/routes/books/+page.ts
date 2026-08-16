@@ -7,6 +7,13 @@ import type { PageLoad } from './$types';
  * folding a fetch failure into `{ loadError: true }` so a client-side navigation
  * to a down API shows a retry panel instead of the error route.
  *
+ * Prerender refresh 2026-08-16 (queue job #545, PR #961): Andrew Murray's
+ * Waiting on God went live in Portuguese as Esperando em Deus (35 chapters —
+ * the 31 daily readings plus Introduction, Preface, the Moment by Moment hymn
+ * and the closing Note). Rebuild so /pt/books re-crawls and the
+ * /pt/books/waiting-on-god chapter pages bake the translated titles. The slug
+ * backs no LAUNCH/CURATED plan, so no plans/+page.ts touch is needed.
+ *
  * Prerender refresh 2026-08-14 (queue jobs #516/#520/#593, PR #942): three
  * books at once — Booth's Pureza de Corazón and Murray's Humildad in Spanish,
  * and Buyinza's Oração – O Pulso da Vida in Portuguese. /es/books and
