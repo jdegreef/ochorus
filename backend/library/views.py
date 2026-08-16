@@ -6,7 +6,7 @@ Books are addressed by their canonical ``slug`` plus a ``language`` query param
 
 import logging
 
-from django.db.models import Count, Q, Sum
+from django.db.models import Count, Prefetch, Q, Sum
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status
@@ -189,7 +189,21 @@ class BookDetailView(generics.RetrieveAPIView):
                 num_chapters=Count("chapters"),
                 total_words=Sum("chapters__word_count"),
             )
-            .prefetch_related("chapters", "author__translations"),
+            .prefetch_related(
+                # TOC fields only. An unrestricted prefetch loaded every
+                # chapter's body_text AND body_html — the whole book, twice —
+                # per detail request, just to render a chapter list; the
+                # prerender crawl requesting every book back-to-back ratcheted
+                # the workers into the 2026-08-14 OOM. The difficulty badge
+                # samples its text separately (see BookDetailSerializer).
+                Prefetch(
+                    "chapters",
+                    queryset=Chapter.objects.only(
+                        "order", "title", "word_count", "book_id"
+                    ),
+                ),
+                "author__translations",
+            ),
             slug=self.kwargs["slug"],
             language=_language(self.request),
         )

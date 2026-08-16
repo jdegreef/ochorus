@@ -437,11 +437,17 @@ class BookDetailSerializer(BookListSerializer):
         return _available_languages(Book, obj.slug)
 
     def get_difficulty(self, obj):
-        """A relative reading-difficulty badge, from the prefetched chapters'
-        text (the readability sampler caps how much it reads)."""
+        """A relative reading-difficulty badge, sampled from the opening
+        chapters. Fetched as its own tiny query rather than from the chapters
+        prefetch: the prefetch deliberately carries TOC fields only (see
+        BookDetailView), so reading body_text off those rows would issue one
+        deferred-field query per chapter — and prefetching bodies for all
+        chapters is exactly the whole-book-in-memory allocation this replaced."""
         from .readability import difficulty
 
-        text = " ".join(c.body_text for c in obj.chapters.all()[:5])
+        text = " ".join(
+            obj.chapters.order_by("order").values_list("body_text", flat=True)[:5]
+        )
         return difficulty(text)
 
     def get_is_modern_edition(self, obj):
