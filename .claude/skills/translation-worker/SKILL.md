@@ -1083,3 +1083,30 @@ archaic spelling and period punctuation are the text, not defects in it.
   Jesús" where the Reina-Valera reads "Jesucristo", repaired in the same PR — and
   only then grow the pin, naming each addition and why in the commit message.
   Growing a shrink-only ratchet is a loosening; say so out loud.
+- **A job can ship, close, and leave NO translation notes — and nothing catches
+  it** (job #520, 2026-08-16). The "Emit the review notes" section above says
+  every job ships a notes file. Batch PR #942 shipped ten jobs and shipped none:
+  12 files, 8 of them content, zero under `translation_notes/`. For *Humildad*
+  (#520) everything else was right — 12 chapters tag-exact, the
+  `PLAN_TRANSLATIONS` couple in the same PR, both prerender refreshes, #519/#520
+  closed — and its 106-site unverified queue existed only in the PR body, which
+  is the one place that section exists to stop using. The miss is invisible from
+  every angle a reviewer checks: the issue reads done, the PR is merged, the
+  fixture passes every gate. **No test looks for it** — `ShippedNotesTests` pins
+  individual translations by hand (two, at the time of writing), so a
+  translation with no file at all is never examined. Measured at `ca01526`:
+  **5 of 163 shipped book+sermon translations carry notes** (missing: es 40,
+  lg 30, sw 28, pt 27, ar 23, uk 7, hi 3).
+  Two things make it worth more than a shrug. It is **not backfillable** — the
+  entry above measured that dead end at 3.4% corroboration and zero clean
+  translations — so a file not written at ship time can only be reconstructed by
+  hand from the translators' own flags. And those flags are **perishable**: both
+  2026-08-16 repairs (#516 in `5a93512`, #520 in `5cc96fe`, by two sessions,
+  neither of them the batch's) were possible only because #942's body still
+  listed its queue per chapter. A batch that summarises instead of listing takes
+  its review queue to the grave.
+  So **treat the notes file as a delivery target, not a write-up**: add it to
+  the double-ship guard's list, confirm it exists before closing an issue, and
+  when validating an already-shipped job (the #170 path above) count a missing
+  notes file among "whatever follow-ups are missing" — on current evidence it is
+  likelier to be the gap than the prerender refresh is.
