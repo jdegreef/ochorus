@@ -103,6 +103,30 @@ def _translations(timeout: int = 20) -> list[dict]:
         return []
 
 
+def licence_for(bible_code: str, timeout: int = 20) -> tuple[str, bool]:
+    """``(licence, known)`` for a Take Root Bible code, straight from the catalogue.
+
+    The admin's Bible box is free text — the picker fills it in, but a code can
+    also be typed, and typing ``irvhin`` by hand is not a hypothetical: it is the
+    placeholder in that very field. So the licence must be looked up from the
+    code that was actually submitted rather than taken from whatever the form
+    remembered, or the attribution gate is one keystroke wide.
+
+    ``known`` is False when the catalogue could not be reached or does not list
+    the code. Callers must not read that as "public domain" — it is "we could not
+    ask", and it is the one case where the client's own answer is worth keeping.
+    """
+    for t in _translations(timeout=timeout):
+        if t.get("code") != bible_code:
+            continue
+        if t.get("is_public_domain"):
+            return "", True
+        # A licensed row with a blank `license` string still owes attribution;
+        # saying so in words beats recording nothing and skipping the check.
+        return t.get("license", "").strip() or "licensed (terms unstated)", True
+    return "", False
+
+
 def suggestions(existing: set[str] | None = None, limit: int = 30) -> list[dict]:
     """Languages worth adding next, best Bible first, then by reach.
 

@@ -232,6 +232,12 @@ export interface LanguageSettings {
 	native_name: string;
 	bible_code: string;
 	bible_label: string;
+	/** Blank for a public-domain Bible, which is most of them. Non-blank means
+	 *  the language cannot go live until `bible_attribution` is filled in — see
+	 *  the attribution check in backend/library/readiness.py. */
+	bible_licence: string;
+	/** The credit line readers see in the footer of that locale. */
+	bible_attribution: string;
 	rtl: boolean;
 	glossary: Record<string, string>;
 	/** The terms a glossary must cover, in the order the form should show them. */
@@ -248,6 +254,14 @@ export interface NewLanguage {
 	native_name: string;
 	bible_code: string;
 	bible_label: string;
+	/** Carried from the suggestion's licence so the obligation is recorded at
+	 *  the moment the Bible is chosen, not remembered later. Optional because
+	 *  the usual answer is "public domain, nothing owed". */
+	bible_licence?: string;
+	/** Not collected at create time — the credit line is written on the
+	 *  language's settings page, which is also where the readiness failure
+	 *  points. Present here because settings PATCHes share this shape. */
+	bible_attribution?: string;
 	rtl: boolean;
 	glossary: Record<string, string>;
 }
