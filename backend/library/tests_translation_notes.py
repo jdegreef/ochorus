@@ -126,3 +126,17 @@ class ShippedNotesTests(TestCase):
         self.assertEqual(rows.filter(status="self_rendered").count(), 38)
         self.assertEqual(set(rows.values_list("job_issue", flat=True)), {516})
         self.assertEqual(set(rows.values_list("pull_request", flat=True)), {942})
+
+    def test_humility_2_es_notes_seed(self):
+        # The other half of #942's es couple, pinned for the same reason.
+        call_command("seed_translation_notes", verbosity=0)
+        rows = TranslationNote.objects.filter(
+            kind="book", slug="humility-2", language="es"
+        )
+        self.assertEqual(rows.count(), 77)
+        self.assertEqual(rows.filter(status="self_rendered").count(), 76)
+        self.assertEqual(set(rows.values_list("job_issue", flat=True)), {520})
+        self.assertEqual(set(rows.values_list("pull_request", flat=True)), {942})
+        mined = rows.get(status="mined")
+        self.assertEqual(mined.reference, "Matthew 11:29")
+        self.assertTrue(mined.source_file, "mined but cites no source")
