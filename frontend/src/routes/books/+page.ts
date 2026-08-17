@@ -7,6 +7,14 @@ import type { PageLoad } from './$types';
  * folding a fetch failure into `{ loadError: true }` so a client-side navigation
  * to a down API shows a retry panel instead of the error route.
  *
+ * Prerender refresh 2026-08-17 (queue job #594, PR #964): Murray's Humility
+ * went live in Portuguese as Humildade (12 chapters), so /pt/books re-crawls
+ * with its chapter pages. This one DOES back a plan — humility-12-days — and
+ * pt already had the plan prose, so shipping the book ACTIVATES the row
+ * ("Humildade em 12 Dias"); the plans/+page.ts touch in this PR is what makes
+ * the card appear. The #819 coupling running in reverse: prose waiting on a
+ * book rather than a book outrunning its prose.
+ *
  * Prerender refresh 2026-08-16 (queue job #545, PR #961): Andrew Murray's
  * Waiting on God went live in Portuguese as Esperando em Deus (35 chapters —
  * the 31 daily readings plus Introduction, Preface, the Moment by Moment hymn

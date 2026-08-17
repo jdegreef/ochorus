@@ -17,6 +17,13 @@ export const entries: EntryGenerator = async () => {
 	return [...slugs].map((slug) => ({ slug }));
 };
 
+// Prerender refresh 2026-08-17 (queue jobs #685-#689, PR #964): the first five
+// Hindi author biographies — Spurgeon, Andrew Murray, A. B. Simpson, Moody and
+// Gareth Evans — in a new author_bios_hi/ dir that seed_author_translations
+// globs automatically. Hindi is LTR, so no direction handling is needed. hi is
+// status=draft, so these /hi/authors/<slug> pages bake now and go live with the
+// language.
+//
 // Prerender refresh 2026-08-14 (queue job #769, PR #942): the William Booth
 // biography in Portuguese — /pt/authors/william-booth re-crawls and bakes the
 // long-form bio with its prayer callouts.

@@ -3,6 +3,11 @@ import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
 
 /**
+ * Prerender refresh 2026-08-17 (queue job #594, PR #964): the Portuguese
+ * Humildade ships, and seed_plans creates "Humildade em 12 Dias" from prose
+ * that was already in PLAN_TRANSLATIONS — the plan did not exist in pt before
+ * this deploy, so /pt/plans must re-crawl to list it.
+ *
  * Prerender refresh 2026-08-14 (queue jobs #519/#520, PR #942): the Spanish
  * Humility ships with its plan prose, so seed_plans creates "Humildad en 12
  * Días" and /es/plans must re-crawl to show the translated card instead of
