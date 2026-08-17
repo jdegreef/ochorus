@@ -708,6 +708,18 @@ archaic spelling and period punctuation are the text, not defects in it.
   snippets left 9 and 16 unverified in the same batch. Put the route in the
   brief so nobody repeats the discovery — and note the same trick generalises
   to any language whose Bible is a PD ebible text.
+  **The FORMAT is per-collection, though, so probe before concluding a text is
+  absent** (jobs #685-#689/#697-#699). Hindi's IRV is in the same mirror but as
+  **USX, not USFM**: `bibles/hin_irv/usx/<book>.usx` serves 200 while the
+  `usfm/<book>.usfm` path above 404s, as do `usx3/`, `html/`, `txt/` and
+  `usfm.zip` (`source.zip` exists). A session that tries only the documented
+  USFM URL concludes the IRV is unavailable and falls back to conservative
+  renderings — which is exactly the wrong answer, because the whole Bible is
+  right there. Probe `meta.json` first (it answers licence and year), then try
+  `usx/` before giving up. USX parsing is a ten-line regex walk over
+  `<chapter number>` / `<verse number>` with `<note>…</note>` stripped, and the
+  book's own display name is the `<para style="toc2">` — take `scripture_ref`
+  names from that, never from a guess.
 - **…but check the mirror's LICENCE and its TEXT before using it. For Swahili,
   don't.** The only Swahili Bible in that collection is `swh_ulb` (Unlocked
   Literal Bible, 2019) and it fails on both counts: it is **CC BY-SA 4.0, not
@@ -1110,3 +1122,127 @@ archaic spelling and period punctuation are the text, not defects in it.
   when validating an already-shipped job (the #170 path above) count a missing
   notes file among "whatever follow-ups are missing" — on current evidence it is
   likelier to be the gap than the prerender refresh is.
+- **A LICENSED Bible can still be the right choice — the licence binds the text,
+  not the library, and a verifiable licensed text beats an unverifiable PD one**
+  (the first hi batch). The skill's standing preference for public-domain texts
+  is about not carrying an attribution obligation, and it is right — but hi's
+  only options are licensed, `language_seed.py` already chose IRV (CC BY-SA,
+  Bridge Connectivity Solutions) and recorded why, and that decision is what let
+  this batch quote **verbatim** instead of flagging. Contrast Swahili, where the
+  licensed `swh_ulb` was rejected on a SECOND ground — it is off-tradition from
+  our shipped Union text — and the fallback was corpus mining. The test is not
+  "is it PD" alone; it is licence AND tradition AND reachability, weighed
+  together. Carry the credit line where the verses are shown.
+- **On a new language, the crib can be COMPLETE — build it before briefing, and
+  budget a repair pass for what the detector missed** (the first hi batch).
+  `pythonbible.get_references` found only 11 references across eight works,
+  which for Victorian devotional prose means it missed most of them. So: fetch
+  the detected books up front, brief the translators to render anything else
+  conservatively AND flag it as `Book C:V @ block N`, then **fetch the books
+  those flags name and run a second pass**. That took 56 flagged references to
+  **50 verbatim** (34 substituted, 16 already exact). Tell the repair pass
+  explicitly that "no edits needed" is a valid outcome — 16 of them were — and
+  that it must fix EVERY occurrence: one sermon had Mark 16:16 at nine sites.
+  Constrain it hard: tag sequence byte-identical, quote and dash counts
+  unchanged, only text nodes may move.
+- **The 6 that survive a repair pass are the interesting ones, and they are
+  editorial, not defects** (first hi batch). Four kinds showed up, all worth
+  surfacing rather than patching: a **critical-text divergence** (KJV's "kick
+  against the pricks" is absent from IRV Acts 9:5; its parallel is 26:14, and
+  the words quoted at 9:6 sit at 22:10 — substituting a different verse's
+  wording puts words in the Bible's mouth); **the author quoting words the
+  version does not contain** (Spurgeon's Zeph 2:4 and Jer 49:17, where only the
+  proper nouns are attestable and his attribution is itself uncertain); a
+  **grammatical-agreement clash** (IRV Luke 7:50 is feminine, agreeing with the
+  woman addressed, while Moody applies it to a generic hearer); and an
+  **allusion split across a heading boundary**, where verbatim substitution
+  would require rewriting the `<h2>`.
+- **The look/turn hazard reads DIFFERENTLY in a biography than in a sermon**
+  (job #685). IRV Isaiah 45:22 reads फिरो, *turn*, exactly as Kulish does — and
+  Spurgeon's conversion scene turns on the preacher crying "Look! Look! Look!"
+  In the uk SERMON the fix was to re-pivot the preacher's rhetoric onto the
+  verb the version actually uses. **Do not do that in a biography**: there the
+  cry is a reported historical utterance, and re-pivoting it would falsify a
+  quotation rather than adapt an argument. Render the verse verbatim, render
+  the cry accurately, and let the disconnect stand — it is in the history, not
+  the translation. Flag it for an editorial ruling.
+- **A crib entry that is TRUNCATED is worse than one that is absent** (batch 2).
+  Capping each crib excerpt at 500 characters cut the confirmed Ephesians
+  3:16-19 rendering off before verse 17, so two chapters that had a verbatim
+  corpus rendering available flagged it as unverified instead — and said so,
+  which is the only reason it was caught. Related but distinct from the
+  per-BLOCK crib bug above: there the block held the wrong quotation, here it
+  held the right one with the needed half missing. Emit whole blocks, and have
+  the crib builder assert that the verse's own words survive the excerpt.
+- **Confirm a crib hit by VERSE TEXT, not by citation proximity** (batches 1-2).
+  Matching "this block cites a reference overlapping mine" labelled ten of ten
+  refs in one book as corpus-confirmed; the translators found the snippets
+  quoted *adjacent* passages and correctly followed the crib file's own text
+  over the label. Score every candidate by shingle overlap against the verse
+  and only mark it confirmed above a threshold — and say in the brief that the
+  crib FILE governs when it disagrees with the prompt. Translators obeyed that
+  precedence four separate times across these batches and were right each time.
+- **Before harmonising a verse across works, check whether the AUTHOR'S OWN
+  ENGLISH differs** (batch 2). A whole-book pass flagged 2 Corinthians 12:9 as
+  rendered two ways across Murray's chapters — but his English differs too
+  ("Most gladly do I glory in weakness" in one, "will I glory in my weakness
+  that the strength of Christ may rest upon me" in another). Harmonising would
+  have degraded two accurate renderings into one inaccurate one. Same pass
+  found Luke 22:26 and Romans 5:20 genuinely divergent from IDENTICAL English,
+  and those were harmonised to the majority wording. The check is cheap and it
+  is the difference between reconciliation and vandalism.
+- **Chapter TITLES drift across fan-out agents in casing and articles, not just
+  punctuation** — a fifth convention for the #756 list. Six agents on one pt
+  book produced "A Humildade e a Felicidade" beside "Humildade e Fé" and
+  lowercase "A humildade na vida de Jesus". Settle it the same way as every
+  other convention: count the shipped corpus (pt runs **73 title-case to 16
+  sentence-case**) and normalise the outliers toward it, noting the change in
+  each file. A book whose own chapter list reads three ways is visible on the
+  shelf in a way a verse variant is not.
+- **The plan coupling runs in REVERSE too: prose waiting on a book** (job #594).
+  The documented hazard is a book outrunning its `PLAN_TRANSLATIONS` prose and
+  publishing an English-titled card (#819). The mirror image also exists and is
+  easy to miss because nothing is broken while you wait: `PLAN_TRANSLATIONS`
+  already held pt prose for `humility-12-days`, and the missing half was the
+  BOOK. Shipping it ACTIVATES the plan — `seed_plans` creates the row on that
+  deploy — so the book PR owes a `plans/+page.ts` touch exactly as if it had
+  written the prose itself. Before shipping any book, check both directions:
+  does its slug back a plan, and does that plan already have prose in this
+  language?
+- **A prerender touch is worth making for a DRAFT language too.** hi seeds
+  `status=draft`, so its pages are built but not advertised (zero `/hi/` URLs in
+  the sitemap against 1,339 `/pt/`). Touching the loaders anyway means launching
+  the language from the admin is a switch, rather than a switch plus a deploy
+  nobody remembers is needed. Verify the draft state deliberately — build the
+  pages, confirm they render, confirm the sitemap does NOT carry them.
+- **`prerenderCoverage.test.ts` fails against a STALE `build/`, and it looks
+  like your bug.** Running the frontend suite after a previous batch's build
+  reports ~49 missing author URLs. It reproduces with your changes stashed and
+  passes on a fresh `npm run build` — so stash-test before you debug, and
+  rebuild before you trust a red. Costly precisely because the failure names
+  author pages, which a bio batch has every reason to believe it broke.
+- **An `eslint-disable-next-line` comment WRAPPED across two lines is inert**
+  (batch 2). Wave 3 added a lint gate and the icons PR added an `{@html}` with
+  the correct justification — but written as a two-line comment, which
+  invalidates the directive. No git conflict, both PRs green in isolation, main
+  red afterwards on a file neither batch touched: the same semantic-collision
+  shape the #420/#423 note describes, in a new place. Keep the directive on one
+  line however long the justification runs.
+- **A batch of ten has now shipped three times, and the thing that makes it work
+  is running reconciliation PER WORK.** #931, #942 and #964 each carried ten
+  jobs. The guardrail above still stands — one job per session is the right
+  DEFAULT, and the reason is that a batch quietly drops the per-work
+  reconciliation pass. If an admin asks for a batch anyway, make that pass
+  explicit: validate every body's tag sequence independently of the
+  translator's own report, run the whole-work verse pass, and reconcile
+  conventions across the fan-out before building any fixture. What a batch
+  genuinely saves is the SETUP — one corpus alignment, one crib, one brief, one
+  CI replication — not the checking.
+- **Measured bands, batches 1-3** (all from shipped `word_count` pairs, so
+  re-derive rather than trust these): **pt BOOK CHAPTERS 93.4-103.7%, mean
+  98.1** (n=93); **pt SERMONS 92.7-99.9%, mean 95.6** (n=12); and the first
+  **hi** numbers, which have no prior art — **hi BIOS 113.9-120.9%** and **hi
+  SERMONS 108.3-115.0%**. Hindi runs far ABOVE its English, unlike every other
+  language on this list, because postpositions are separate words; a session
+  borrowing any existing band for hi would compress a correct file. Treat the
+  hi figures as observational until a second batch confirms them.
