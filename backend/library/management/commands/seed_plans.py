@@ -124,6 +124,19 @@ PLAN_TRANSLATIONS = {
     # is present; an entry here for a plan that cannot render is dead weight
     # that reads like a bug. So each new entry below arrives with its books.
     "ar": {
+        # Queue job #649. NONE of this curated plan's three source books
+        # (jesus-himself-2, the-masters-indwelling, union-and-communion) has an
+        # Arabic edition yet, so seed_plans will not create the row today —
+        # this prose lands dormant and the plan appears the moment the third
+        # book ships. The title renders the motif, not a shipped book title;
+        # whoever translates the books should harmonise titles with this card.
+        "deeper-life-in-christ": (
+            "الحياة الأعمق: المسيح فيكم",
+            "لا مزيدًا من الجهد، بل شخصٌ: سرُّ الحياة الأعمق هو المسيح نفسه "
+            "حيًّا في الداخل. يفتتح أندرو موراي بعجب يسوع نفسه، ثم يبسط حياة "
+            "السكنى الداخلية، ويختم هدسون تايلور في راحة الاتحاد والشركة مع "
+            "الحبيب.",
+        ),
         "faith-in-the-fire": (
             "إله كل تعزية: إيمانٌ في الأتون",
             "للأيّام التي يصعب أن نصلّي فيها. هانا ويتال سميث عن إله كلّ "
