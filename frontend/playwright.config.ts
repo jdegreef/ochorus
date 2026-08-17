@@ -15,6 +15,9 @@ import { defineConfig, devices } from '@playwright/test';
  * API and builds the frontend — reuses both instead of starting its own.
  */
 const API = process.env.PUBLIC_API_BASE_URL || 'http://localhost:8000';
+// 4173 is not arbitrary: it's in the API's dev CORS allowlist (see
+// config/settings.py). Overriding it means adding that origin there too, or every
+// client fetch is blocked by preflight and surfaces as an opaque poll timeout.
 const PORT = Number(process.env.E2E_PORT || 4173);
 
 export default defineConfig({
@@ -28,13 +31,23 @@ export default defineConfig({
 	reporter: process.env.CI ? [['list'], ['html', { open: 'never' }]] : 'list',
 	use: {
 		baseURL: `http://localhost:${PORT}`,
-		trace: 'on-first-retry'
+		trace: 'on-first-retry',
+		// Block service workers. On a fresh profile the PWA registers, takes
+		// control and reloads the page (lib/pwa.svelte.ts), which lands as a second
+		// document load in the middle of a test and makes any "did this navigate on
+		// the client?" assertion flaky. These tests are about routing and API data;
+		// offline/PWA behaviour deserves its own dedicated test rather than noise
+		// inside every one of these.
+		serviceWorkers: 'block'
 	},
 	projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
 	webServer: [
 		{
-			// Serves the adapter-static output, including the 200.html SPA fallback.
-			command: `npm run preview -- --port ${PORT} --strictPort`,
+			// Serves `build/` the way the static host does — NOT `vite preview`,
+			// which serves SvelteKit's own output and SSRs anything not prerendered,
+			// so build/200.html never gets served and a missing page renders through
+			// a server path production doesn't have. See scripts/serve-build.mjs.
+			command: `node scripts/serve-build.mjs build ${PORT}`,
 			url: `http://localhost:${PORT}/`,
 			reuseExistingServer: !process.env.CI,
 			timeout: 60_000
