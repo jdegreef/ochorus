@@ -217,9 +217,15 @@ CORS_ALLOWED_ORIGINS = [
     o.strip()
     for o in os.getenv(
         "CORS_ALLOWED_ORIGINS",
-        # Local dev: both Vite's default (5173) and the launch.json port (5180).
+        # Local dev: Vite's dev default (5173), the launch.json port (5180), and
+        # Vite's PREVIEW default (4173) — the port `npm run preview` and the
+        # Playwright smoke suite serve the built site on. Without 4173 a locally
+        # previewed build silently can't reach the API (every fetch is blocked by
+        # CORS, so shelves and search come up empty). Production overrides this
+        # whole list via the env var, so these are dev/CI only.
         "http://localhost:5173,http://127.0.0.1:5173,"
-        "http://localhost:5180,http://127.0.0.1:5180",
+        "http://localhost:5180,http://127.0.0.1:5180,"
+        "http://localhost:4173,http://127.0.0.1:4173",
     ).split(",")
     if o.strip()
 ]

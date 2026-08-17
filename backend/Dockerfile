@@ -9,14 +9,29 @@ ENV PYTHONUNBUFFERED=1 \
     UV_COMPILE_BYTECODE=1 \
     UV_LINK_MODE=copy
 
+# Run as a non-root user. Neither gunicorn nor the preDeploy `manage.py release`
+# needs root, and dropping it narrows what any Django/dependency RCE can reach.
+#
+# Three things make the unprivileged user actually work here:
+#   * HOME is set explicitly — Docker does NOT adjust HOME on a USER switch, and
+#     `uv run` (used by CMD and by Render's preDeployCommand) wants a writable
+#     cache dir under it;
+#   * /app is owned by the user, so `uv sync` can create .venv and collectstatic
+#     can write staticfiles/;
+#   * COPY uses --chown so the copied tree is owned by the user rather than root.
+ENV HOME=/home/app
+RUN useradd --create-home --home-dir /home/app --uid 10001 app \
+    && mkdir -p /app \
+    && chown app:app /app
 WORKDIR /app
+USER app
 
 # Install dependencies first (cached unless the lockfile changes).
-COPY pyproject.toml uv.lock ./
+COPY --chown=app:app pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-dev --no-install-project
 
 # Copy the application code and finish the install.
-COPY . .
+COPY --chown=app:app . .
 RUN uv sync --frozen --no-dev
 
 # Collect static files at build time (no database needed).

@@ -12,6 +12,11 @@ node_modules/
 /frontend/.svelte-kit/
 .DS_Store
 
+# Playwright smoke-test output (traces, reports, screenshots).
+/frontend/test-results/
+/frontend/playwright-report/
+/frontend/blob-report/
+
 # Editor
 *.swp
 frontend/node_modules
