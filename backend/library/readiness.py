@@ -174,6 +174,15 @@ def _attribution_check(lang: Language) -> Check:
     It is deliberately NOT a network call and NOT a judgement about whether the
     licence really requires credit — that decision belongs to whoever chose the
     Bible, and it is recorded in ``language_seed.py`` beside the code itself.
+
+    **What this check cannot see**, said plainly because it is a real limit: the
+    line readers get is rendered from ``frontend/src/lib/bibleCredit.ts``, and
+    the API image is built from ``backend/`` alone, so a passing check means
+    "a credit is configured", not "a credit is on screen". For repo-defined
+    languages the two are pinned together by ``tests_bible_credit``. For an
+    admin-created one the detail below is the only prompt, which is why it names
+    the file. The static map is still the right home: a licence notice fetched
+    at run time is a licence notice that is missing whenever the fetch fails.
     """
     if lang.is_source or not lang.bible_licence:
         return Check(
@@ -199,7 +208,10 @@ def _attribution_check(lang: Language) -> Check:
         "attribution",
         "Bible attribution",
         PASS,
-        f"{lang.bible_licence} credit line configured.",
+        (
+            f"{lang.bible_licence} credit line configured. Confirm the same text "
+            "is in frontend/src/lib/bibleCredit.ts — that is what renders it."
+        ),
     )
 
 

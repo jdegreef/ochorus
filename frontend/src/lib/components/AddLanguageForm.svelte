@@ -35,10 +35,12 @@
 	let nativeName = $state('');
 	let bibleCode = $state('');
 	let bibleLabel = $state('');
-	// Recorded when the Bible is CHOSEN, not remembered afterwards. The picker
-	// already knows which suggestions are licensed (it shows "· attribution");
-	// dropping that on the floor at create time is what left Hindi's CC-BY-SA
-	// obligation living in a code comment instead of in the readiness check.
+	// A FALLBACK, not the answer. The server looks the licence up from the Bible
+	// code actually submitted, because this form's Bible box is free text — its
+	// own placeholder is `irvhin`, the CC BY-SA Hindi IRV — so a licence carried
+	// from a suggestion goes stale the moment someone edits the code. What is
+	// sent here is used only when the catalogue cannot be reached, which is the
+	// one case where the picker knows something the server cannot re-check.
 	let bibleLicence = $state('');
 	let rtl = $state(false);
 	let glossary = $state<Record<string, string>>({});

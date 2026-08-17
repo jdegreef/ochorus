@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { BIBLE_CREDIT, bibleCredit } from './bibleCredit';
+import { BIBLE_CREDIT, bibleCredit, creditParts } from './bibleCredit';
 import { locales } from '$lib/paraglide/runtime';
 
 describe('bibleCredit', () => {
@@ -28,6 +28,28 @@ describe('bibleCredit', () => {
 			(l) => !(locales as readonly string[]).includes(l)
 		);
 		expect(unknown).toEqual([]);
+	});
+
+	it('every credit links its licence, which CC BY-SA actually asks for', () => {
+		// §3(a)(1)(A)(iii): supply the URI "if practicable". It is always
+		// practicable in an HTML footer, so a credit without one is a bug here.
+		for (const [l, credit] of Object.entries(BIBLE_CREDIT)) {
+			expect(creditParts(credit).some((p) => p.href), `${l} links no licence`).toBe(true);
+		}
+	});
+
+	it('splits a credit into text and link runs without losing a character', () => {
+		const credit = bibleCredit('hi');
+		const parts = creditParts(credit);
+		expect(parts.map((p) => p.text).join('')).toBe(credit);
+		expect(parts.filter((p) => p.href).map((p) => p.href)).toEqual([
+			'https://creativecommons.org/licenses/by-sa/4.0/'
+		]);
+	});
+
+	it('leaves a credit with no URL as a single run', () => {
+		expect(creditParts('Public domain, no link.')).toEqual([{ text: 'Public domain, no link.' }]);
+		expect(creditParts('')).toEqual([]);
 	});
 
 	it('every credit names a licence — a line that credits nothing is not a credit', () => {

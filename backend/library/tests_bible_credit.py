@@ -149,17 +149,27 @@ class AdminCreatedLanguageTests(TestCase):
     it, because the only thing that knew was a comment in a Python file about a
     DIFFERENT language.
 
-    `_verify_bible` is patched throughout: it calls api.takeroot.bible, which is
-    not reachable from CI, and none of this is about whether the code resolves.
+    Both catalogue calls are stubbed. ``_verify_bible`` and ``licence_for`` reach
+    api.takeroot.bible, which CI cannot; and stubbing ``licence_for`` explicitly
+    is the point rather than a convenience — left live it returns
+    ``("", False)`` offline, so every case below would pass through the
+    could-not-ask fallback and the derivation these tests exist to check would
+    never run.
     """
 
     def setUp(self):
         self.client = APIClient()
-        self.patch = mock.patch.object(
-            content, "_verify_bible", return_value=(True, "stubbed")
-        )
-        self.patch.start()
-        self.addCleanup(self.patch.stop)
+        for target, value in (
+            ("_verify_bible", (True, "stubbed")),
+            ("licence_for", ("", False)),
+        ):
+            patcher = mock.patch.object(content, target, return_value=value)
+            patcher.start()
+            self.addCleanup(patcher.stop)
+
+    def _catalogue(self, licence: str, known: bool = True):
+        """What Take Root says about the submitted Bible code."""
+        return mock.patch.object(content, "licence_for", return_value=(licence, known))
 
     def _create(self, **extra):
         payload = {
@@ -173,27 +183,52 @@ class AdminCreatedLanguageTests(TestCase):
         }
         return self.client.post("/api/admin/languages/", payload, format="json")
 
-    def test_create_records_the_licence(self):
-        res = self._create(bible_licence="CC BY 4.0")
-        self.assertEqual(res.status_code, 201, res.data)
-        row = Language.objects.get(code="zu")
-        self.assertEqual(row.bible_licence, "CC BY 4.0")
-        self.assertEqual(row.bible_attribution, "")
+    def test_the_licence_comes_from_the_submitted_code_not_the_form(self):
+        """The keystroke that used to defeat the whole gate.
+
+        The Bible box is free text and its placeholder is `irvhin` — the CC BY-SA
+        Hindi IRV. Typing a licensed code by hand sends no licence at all, and
+        trusting the form would have stored a blank one, skipped the attribution
+        check as "public domain", and cleared the language for launch.
+        """
+        with self._catalogue("CC BY-SA 4.0"):
+            self.assertEqual(self._create().status_code, 201)
+        self.assertEqual(Language.objects.get(code="zu").bible_licence, "CC BY-SA 4.0")
+
+    def test_the_catalogue_also_overrides_a_licence_that_is_not_owed(self):
+        """The other direction, so this is a lookup and not a one-way ratchet."""
+        with self._catalogue(""):
+            self._create(bible_licence="CC BY 4.0")
+        self.assertEqual(Language.objects.get(code="zu").bible_licence, "")
+
+    def test_the_form_is_believed_only_when_the_catalogue_cannot_be_asked(self):
+        """"We could not check" must not become "public domain" — but it is also
+        the one moment the picker knows something the server cannot re-derive."""
+        with self._catalogue("", known=False):
+            self._create(bible_licence="CC BY 4.0")
+        self.assertEqual(Language.objects.get(code="zu").bible_licence, "CC BY 4.0")
+
+    def test_an_over_long_licence_is_truncated_rather_than_crashing(self):
+        with self._catalogue("x" * 500):
+            self.assertEqual(self._create().status_code, 201)
+        self.assertEqual(len(Language.objects.get(code="zu").bible_licence), 60)
 
     def test_a_licensed_language_is_told_what_it_owes(self):
-        res = self._create(bible_licence="CC BY 4.0")
+        with self._catalogue("CC BY 4.0"):
+            res = self._create()
         steps = " ".join(res.data["next_steps"])
         self.assertIn("CC BY 4.0", steps)
         self.assertIn("bibleCredit.ts", steps)
 
     def test_a_public_domain_language_is_not_nagged(self):
-        res = self._create()
+        with self._catalogue(""):
+            res = self._create()
         self.assertNotIn("bibleCredit.ts", " ".join(res.data["next_steps"]))
 
     def test_it_cannot_go_live_until_the_credit_is_written(self):
-        self._create(bible_licence="CC BY 4.0")
-        lang = Language.objects.get(code="zu")
-        self.assertEqual(_attribution_check(lang).status, FAIL)
+        with self._catalogue("CC BY 4.0"):
+            self._create()
+        self.assertEqual(_attribution_check(Language.objects.get(code="zu")).status, FAIL)
 
         res = self.client.patch(
             "/api/admin/languages/zu/settings/",
@@ -203,13 +238,45 @@ class AdminCreatedLanguageTests(TestCase):
         self.assertEqual(res.status_code, 200, res.data)
         self.assertEqual(_attribution_check(Language.objects.get(code="zu")).status, PASS)
 
+    def test_changing_the_bible_re_derives_the_licence(self):
+        """A licence is a fact about the Bible, not about the row. Swapping a
+        public-domain text for a licensed one and keeping the old blank licence
+        would retire the gate exactly when it starts to matter."""
+        with self._catalogue(""):
+            self._create()
+        with self._catalogue("CC BY-SA 4.0"):
+            res = self.client.patch(
+                "/api/admin/languages/zu/settings/",
+                {"bible_code": "zul-licensed"},
+                format="json",
+            )
+        self.assertEqual(res.status_code, 200, res.data)
+        row = Language.objects.get(code="zu")
+        self.assertEqual(row.bible_licence, "CC BY-SA 4.0")
+        self.assertEqual(_attribution_check(row).status, FAIL)
+
+    def test_an_over_long_credit_line_is_a_400_not_a_500(self):
+        """The column is 300 chars. Postgres raises DataError on overflow and
+        SQLite silently does not, so an unvalidated field is a 500 that local
+        tests would never show."""
+        with self._catalogue("CC BY 4.0"):
+            self._create()
+        res = self.client.patch(
+            "/api/admin/languages/zu/settings/",
+            {"bible_attribution": "x" * 400},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 400, res.data)
+        self.assertIn("300", res.data["detail"])
+
     def test_the_settings_payload_carries_both_fields(self):
         """The admin card reads them off the language page; absent means the
         credit box never appears and the licence row never warns."""
-        self._create(bible_licence="CC BY 4.0")
-        settings_payload = self.client.get("/api/admin/languages/zu/").data["settings"]
-        self.assertEqual(settings_payload["bible_licence"], "CC BY 4.0")
-        self.assertEqual(settings_payload["bible_attribution"], "")
+        with self._catalogue("CC BY 4.0"):
+            self._create()
+        payload = self.client.get("/api/admin/languages/zu/").data["settings"]
+        self.assertEqual(payload["bible_licence"], "CC BY 4.0")
+        self.assertEqual(payload["bible_attribution"], "")
 
 
 class FooterRendersItTests(TestCase):
@@ -225,19 +292,47 @@ class FooterRendersItTests(TestCase):
         flat = re.sub(r"['\"]\s*\+\s*['\"]", "", source)
         flat = re.sub(r"\s+", " ", flat)
         for code, credit in _seed_attributions().items():
-            self.assertIn(f"{code}:", flat, f"{code} missing from bibleCredit.ts")
+            self.assertRegex(flat, rf"['\"]?{re.escape(code)}['\"]?\s*:", f"{code} missing")
             self.assertIn(
                 re.sub(r"\s+", " ", credit),
                 flat,
                 f"{code}: bibleCredit.ts does not carry the seeded credit verbatim",
             )
 
-    def test_frontend_credits_nothing_the_seed_does_not_declare(self):
-        """The direction that catches a stale credit left behind after a Bible
-        changes — the site would keep crediting a text it no longer quotes."""
+    def test_frontend_credits_carry_a_licence_uri(self):
+        """CC BY-SA 4.0 §3(a)(1)(A)(iii) wants the licence linked where that is
+        practicable, and in an HTML footer it always is. Asserted on the seed
+        rather than the TS because the seed is the copy a human edits first."""
+        for code, credit in _seed_attributions().items():
+            self.assertIn("https://", credit, f"{code}: credit links no licence")
+
+    def test_the_frontend_may_credit_a_language_the_seed_has_never_heard_of(self):
+        """Deliberately NOT an equality check, and the reason is worth keeping.
+
+        An admin-created language is owned by the database, never by
+        ``language_seed.py`` — ``AdminLanguageSettingsView`` returns 409 for a
+        repo-defined one precisely so those two sets stay disjoint. So the
+        create response tells an admin to put their credit in bibleCredit.ts,
+        and an equality check here would fail CI for doing exactly that, while
+        the only alternative (adding it to the seed) would make the settings
+        page refuse the edit that produced it. Equality was that contradiction
+        written down.
+
+        What still has to hold is the direction that protects readers: every
+        credit the repo declares must be one the site actually renders. Extra
+        keys are checked on the frontend side instead — bibleCredit.test.ts
+        fails any key that is not a routable locale.
+        """
         if not CREDIT_TS.exists():
             self.skipTest("frontend/ not present in this checkout")
-        source = CREDIT_TS.read_text(encoding="utf-8")
-        body = source.split("BIBLE_CREDIT", 1)[1].split("};", 1)[0]
-        keyed = set(re.findall(r"^\t(\w+):", body, re.M))
-        self.assertEqual(keyed, set(_seed_attributions()))
+        body = CREDIT_TS.read_text(encoding="utf-8").split("BIBLE_CREDIT", 1)[1]
+        body = body.split("};", 1)[0]
+        # Quoted keys included: a locale like `zh-hans` cannot be a bare
+        # identifier, and a guard that quietly stops seeing hyphenated locales
+        # is the same bug href.test.ts already caught once.
+        keyed = set(re.findall(r"^\t['\"]?([\w-]+)['\"]?\s*:", body, re.M))
+        self.assertLessEqual(
+            set(_seed_attributions()),
+            keyed,
+            "bibleCredit.ts is missing a credit the seed declares",
+        )

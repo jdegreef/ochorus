@@ -204,10 +204,14 @@ SEED_LANGUAGES: dict[str, dict] = {
         # want to localize the framing around them later — that is an editorial
         # improvement, not a compliance gap.
         "bible_licence": "CC BY-SA 4.0",
+        # The URI is not decoration: CC BY-SA 4.0 §3(a)(1)(A)(iii) asks for a
+        # link to the licence "if supplied", and where the notice is already
+        # HTML in a footer there is no reading of "reasonably practicable" that
+        # excuses leaving it out.
         "bible_attribution": (
             "Scripture quotations are from the Indian Revised Version (IRV), "
-            "© 2017–2019 Bridge Connectivity Solutions, "
-            "licensed under CC BY-SA 4.0."
+            "© 2017–2019 Bridge Connectivity Solutions, licensed under "
+            "CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)."
         ),
         # 8 of these 11 appear verbatim in the IRV itself (checked against
         # Eph 2, Rom 3/8, John 14/15, 1 Thess 4, 1 Tim 4, Phil 2). The three that

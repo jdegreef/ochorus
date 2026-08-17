@@ -22,8 +22,37 @@
 export const BIBLE_CREDIT: Readonly<Record<string, string>> = {
 	hi:
 		'Scripture quotations are from the Indian Revised Version (IRV), ' +
-		'© 2017–2019 Bridge Connectivity Solutions, licensed under CC BY-SA 4.0.'
+		'© 2017–2019 Bridge Connectivity Solutions, licensed under ' +
+		'CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/).'
 };
 
 /** The credit line for a locale, or '' when its Bible is public domain. */
 export const bibleCredit = (locale: string): string => BIBLE_CREDIT[locale] ?? '';
+
+export interface CreditPart {
+	text: string;
+	/** Set when this run of text is a URL and should render as a link. */
+	href?: string;
+}
+
+/**
+ * Split a credit into text and link runs.
+ *
+ * The URL lives inside the sentence rather than in a separate field so the
+ * string stays byte-identical to `Language.bible_attribution` and the two can be
+ * compared directly. Linkifying at render time costs one regex and gets the
+ * licence URI CC BY-SA 4.0 §3(a)(1)(A)(iii) asks for — a bare URL printed as
+ * text is arguably compliant and definitely worse for the reader.
+ */
+export function creditParts(credit: string): CreditPart[] {
+	const parts: CreditPart[] = [];
+	let last = 0;
+	for (const m of credit.matchAll(/https?:\/\/[^\s)]+/g)) {
+		const at = m.index ?? 0;
+		if (at > last) parts.push({ text: credit.slice(last, at) });
+		parts.push({ text: m[0], href: m[0] });
+		last = at + m[0].length;
+	}
+	if (last < credit.length) parts.push({ text: credit.slice(last) });
+	return parts;
+}

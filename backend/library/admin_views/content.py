@@ -13,7 +13,7 @@ from accounts.permissions import IsAdminEmail
 
 from .. import golive, readiness
 from ..language_seed import SEED_LANGUAGES
-from ..language_suggestions import suggestions
+from ..language_suggestions import licence_for, suggestions
 from ..models import (
     Author,
     AuthorTranslation,
@@ -752,6 +752,20 @@ class AdminLanguageDeployCheckView(APIView):
 LANGUAGE_CODE_RE = re.compile(r"^[a-z]{2,3}(-[a-z0-9]{2,8})?$")
 
 
+def _licence_for(bible_code: str, data) -> str:
+    """The licence to store for ``bible_code`` — the catalogue's answer, not the form's.
+
+    Falls back to whatever the client sent only when the catalogue could not be
+    reached or does not list the code, because "we could not ask" must not
+    silently become "public domain". Trimmed to the column width: a licence name
+    long enough to overflow is a mistake, and a 500 is a worse way to say so.
+    """
+    licence, known = licence_for(bible_code)
+    if not known:
+        licence = str(data.get("bible_licence", "")).strip()
+    return licence[: Language._meta.get_field("bible_licence").max_length]
+
+
 def _verify_bible(code: str) -> tuple[bool, str]:
     """(ok, message) for a Bible code, told apart from a network outage.
 
@@ -893,10 +907,13 @@ class AdminLanguageCreateView(APIView):
             native_name=native_name,
             bible_code=bible_code,
             bible_label=str(data.get("bible_label", "")).strip(),
-            # The suggestion list already knows whether a Bible is public domain;
-            # taking the licence here is what lets the readiness check refuse to
-            # launch the language until someone writes the credit line.
-            bible_licence=str(data.get("bible_licence", "")).strip(),
+            # Looked up from the code that was SUBMITTED, not taken from the
+            # form. The picker knows which Bibles are licensed, but its Bible
+            # box is free text — and its placeholder is `irvhin`, the CC BY-SA
+            # Hindi IRV — so trusting the client here would make the attribution
+            # gate one keystroke wide. The client's value survives only when the
+            # catalogue could not be asked.
+            bible_licence=_licence_for(bible_code, data),
             bible_attribution=str(data.get("bible_attribution", "")).strip(),
             rtl=bool(data.get("rtl")),
             glossary=glossary,
@@ -973,12 +990,22 @@ class AdminLanguageSettingsView(APIView):
         changed: list[str] = []
         bible_ok, bible_note = True, ""
 
-        for f in ("name", "native_name", "bible_label", "bible_licence", "bible_attribution"):
+        # bible_licence is absent here on purpose: it is derived from the Bible
+        # code below rather than accepted from the client. Everything else is
+        # free text, so it is length-checked against the column — an over-long
+        # value is a 400 with the limit in it, never a DataError 500.
+        for f in ("name", "native_name", "bible_label", "bible_attribution"):
             if f in data:
                 value = str(data[f]).strip()
-                if not value and f not in ("bible_label", "bible_licence", "bible_attribution"):
+                if not value and f in ("name", "native_name"):
                     return Response(
                         {"detail": f"{f} cannot be empty."},
+                        status=status.HTTP_400_BAD_REQUEST,
+                    )
+                limit = Language._meta.get_field(f).max_length
+                if len(value) > limit:
+                    return Response(
+                        {"detail": f"{f} is limited to {limit} characters."},
                         status=status.HTTP_400_BAD_REQUEST,
                     )
                 setattr(lang, f, value)
@@ -999,6 +1026,12 @@ class AdminLanguageSettingsView(APIView):
                 bible_ok, bible_note = _verify_bible(bible_code)
                 lang.bible_code = bible_code
                 changed.append("bible_code")
+                # Re-derived, because the licence is a fact about the Bible and
+                # not about the row. Swapping a public-domain text for a licensed
+                # one and leaving the old blank licence behind would retire the
+                # attribution gate at exactly the moment it starts to matter.
+                lang.bible_licence = _licence_for(bible_code, data)
+                changed.append("bible_licence")
         except ValueError as e:
             return Response({"detail": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 

@@ -10,7 +10,7 @@
 	import { browser } from '$app/environment';
 	import { lang } from '$lib/lang.svelte';
 	import { footerLocales } from '$lib/footerLocales';
-	import { bibleCredit } from '$lib/bibleCredit';
+	import { bibleCredit, creditParts } from '$lib/bibleCredit';
 	import { i18n } from '$lib/i18n.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { pwa } from '$lib/pwa.svelte';
@@ -257,7 +257,11 @@
 			     same string. -->
 			{#if bibleCredit(lang.current)}
 				<p class="mx-auto max-w-5xl border-t border-border px-5 py-4 text-small text-muted" lang="en">
-					{bibleCredit(lang.current)}
+					{#each creditParts(bibleCredit(lang.current)) as part}{#if part.href}<a
+								class="underline"
+								href={part.href}
+								rel="license noreferrer">{part.text}</a
+							>{:else}{part.text}{/if}{/each}
 				</p>
 			{/if}
 			<!-- Language strip. Each locale is named in its OWN language (Español, not
