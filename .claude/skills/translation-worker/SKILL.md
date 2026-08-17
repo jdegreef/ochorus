@@ -336,25 +336,41 @@ archaic spelling and period punctuation are the text, not defects in it.
   (Batched PRs have shipped before and worked: #778 carried eight Arabic
   sermons, #709 ten jobs. They are still the wrong default, because the
   per-job reconciliation pass is what a batch quietly drops.)
-- **Spawning workers: give them the merge tools, or they finish and stall.**
-  A session started with `create_session` inherits a permission mode that stops
-  short of merging, so it translates, validates, opens a green PR — and then
-  sits idle needing a human for two clicks. Three sessions did exactly that on
-  jobs #425/#426/#429: all three reported "ready to merge; blocked by session
-  policy" and the queue jammed behind the one step a machine could have done.
-  Pass the two tools explicitly rather than widening the mode:
+- **Spawned workers cannot merge. Shape the job around that, don't try to grant
+  around it.** A worker translates, validates, opens a green PR — and then sits
+  idle needing a human. Three sessions did exactly that on jobs #425/#426/#429,
+  and the queue jammed behind the one step that looked automatable.
 
-      extra_allowed_tools: [
-        "mcp__github__merge_pull_request",
-        "mcp__github__update_pull_request",   # undrafting is a separate call
-      ]
+  It is not automatable. This skill used to say the fix was passing
+  `extra_allowed_tools: ["mcp__github__merge_pull_request", …]` at
+  `create_session`. That advice was written from the shape of the API, never
+  from a spawned session that had actually merged, and it is **wrong**: the
+  restriction is enforced server-side, on the session *type*, not by the
+  permission list. Four sessions spawned with exactly that grant were refused —
 
-  Scoped like that it unblocks precisely the step that stalls and changes
-  nothing else. A child never gets a grant its parent lacks, so the spawning
-  session must hold these too. What makes this safe is not the permission — it
-  is that **CI tests the merge commit**, which caught every collision we had;
-  a worker merging its own green PR is merging something already checked
-  against the tree it is landing on.
+      Merging into a protected base branch is not permitted for this session type
+
+  — and `update_pull_request` is refused the same way, so a worker cannot even
+  undraft its own PR. The `/actions` and `/check-runs` endpoints return **403**
+  to a worker as well, which is its own trap: 403 reads like "no checks
+  configured" if you don't check the status code, and a worker that believes CI
+  is absent will report a red PR as ready.
+
+  What actually works, and is what the later workers converged on unprompted:
+
+  1. **Open the PR non-draft.** Undrafting is the call that fails; not drafting
+     costs nothing.
+  2. **Read CI from `mergeable_state`** (`clean` = green, `unstable` = a
+     non-required check failed, `blocked`/`dirty` = stop), because it is the one
+     CI signal a worker can actually see.
+  3. **Hand the merge off explicitly** in the close-out comment — PR number,
+     `mergeable_state`, and a plain "ready to merge; this session type cannot".
+     A worker that says only "done" gets read as merged.
+
+  The reason to leave the merge with a human is no longer just policy: **CI
+  tests the merge commit**, and that is what caught every collision we have had.
+  Someone reconciling the queue sees all of the open PRs at once; a worker sees
+  only its own.
   Also give each spawned session an **explicit issue number**. The
   `in-progress` label is a courtesy signal, not a lock: two sessions can both
   read "nothing claimed" in the same instant and take the same job.
