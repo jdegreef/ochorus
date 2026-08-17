@@ -3,6 +3,13 @@ import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
 
 /**
+ * Prerender refresh 2026-08-17 (queue jobs #697-#699, PR #964): the library's
+ * first Hindi sermons — परमेश्वर की अपरिवर्तनीयता, मसीह की असीम करुणा and
+ * कभी न सूखनेवाले सोते. hi seeds status=draft, so /hi/sermons is built but not
+ * advertised (no hi URLs in the sitemap); this touch means the pages are
+ * already baked when the admin launches the language, rather than needing a
+ * deploy after the switch.
+ *
  * Prerender refresh 2026-08-14 (queue jobs #553/#771-#774, PR #942): five
  * Portuguese sermons — As Possibilidades da Fé, Ordem e Argumento na Oração,
  * Descanso, Bendita Adversidade, O Novo Nascimento. /pt/sermons re-crawls the
