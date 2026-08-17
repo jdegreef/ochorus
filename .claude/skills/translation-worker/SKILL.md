@@ -886,9 +886,15 @@ archaic spelling and period punctuation are the text, not defects in it.
   about how to split is theirs.
 - **A job brief can carry a premise that a merged PR invalidated HOURS earlier —
   re-measure even what the brief calls "measured, do not re-derive"** (job #425,
-  2026-08-08). #425's brief stated two Swahili facts as settled measurements.
-  Both were wrong by the time the session ran, and the corpus refuted each in
-  one loop:
+  2026-08-08). **#423's** brief stated two Swahili facts as settled
+  measurements. Both were wrong by the time #425 ran, and the corpus refuted
+  each in one loop. (Attribution corrected: this entry first read "#425's
+  brief". The two quotes below are #423's, and #425's own prep comment on the
+  issue explicitly overturned both — it measured `free-grace.en` at 95 curly /
+  0 straight and briefed **mirroring, not conversion**, warning in as many
+  words that #423's straight quotes were "not a house style", and it stated the
+  sw sermon band rather than denying one. Getting this backwards teaches a
+  careful prep to distrust itself, which is the opposite of the lesson.)
   - *"The English source uses `"` throughout, so converting to curly is part of
     the pipeline."* It was true that morning. **PR #908 merged four hours before
     this job started and normalised `free-grace.en` itself to curly** (95 marks,
@@ -900,13 +906,46 @@ archaic spelling and period punctuation are the text, not defects in it.
     mis-classifies the epigraph exactly as #423 documents. Mirroring reproduced
     47/48 including the stray close, and needed no decision per mark.
   - *"There is no sw sermon band; treat the ratio as observational."* The band
-    was already in this file **twice** (the #423 entry and its n=7 update). The
-    brief was reproducing #423's own retracted conclusion.
+    was already in this file **twice** (the #423 entry and its n=7 update), and
+    is derivable in one loop from `word_count` on both sides of the shipped
+    pairs — which is how #425's prep quoted it as 73.6–93.5%, mean 82.7%.
   The lesson is not "brief was wrong" — it is that a brief is a **snapshot of a
   moving repo**, and the two things most likely to have moved are the ones a
   parallel session just touched. Before trusting any stated convention, run
   `git log -1 --format='%h %ad %s' -- <the file you are translating>` and read
   what landed. A one-line check would have flagged both.
+- **Translation notes cannot be back-derived from the shipped corpus — measured,
+  don't re-attempt** (2026-08-14). Once the review queue's bulk gate started
+  failing closed on "no notes recorded", the obvious move was to auto-derive
+  notes for the ~148 translations that shipped before the pipeline emitted any.
+  It was built and measured over the whole corpus, and it does not work. The
+  numbers, so nobody spends the day again:
+  - Method: align en/translated blocks, take `Book C:V` citations from the
+    ENGLISH block (English book names are uniform, which sidesteps knowing that
+    Ezekiel is `Ezekieli`/`Ezequiel`), pull the quoted spans from the paired
+    translated block, and call a span `mined` when the same span appears
+    verbatim in a DIFFERENT shipped file of the same language.
+  - Result: **5,235 candidate references across 104 translations — 179
+    corroborated (3.4%), 5,056 not — and ZERO translations came out clean.**
+    Not one would have become bulk-approvable, while 5,056 mostly-artifact
+    "unverified" chips would have flooded the queue.
+  - Two independent reasons it fails, both already documented above. **The
+    detector misses the sermons entirely**: run against
+    `the-possibilities-of-faith`, whose 40 real references were hand-mined, it
+    found **0 citations**, because Simpson quotes constantly without citing and
+    the one citation he gives is a roman numeral (`-Mark ix: 23`). And
+    **cross-file verse agreement is genuinely low** — each job rendered its
+    quotations independently, which is the same divergence the reconciliation
+    entry describes at book scale.
+  - The trap worth naming: writing only the 179 corroborated rows and stopping
+    looks tempting and is **worse than doing nothing**. A translation carrying
+    mined rows and no self-rendered rows reads to the gate as examined-and-clean,
+    so a partial backfill manufactures exactly the false clean bill of health
+    that failing closed was introduced to prevent.
+  What this leaves: notes are **forward-only**. Legacy translations stay
+  individual-review, which is the honest state, and the queue says so on the row
+  ("no scripture notes recorded"). If that backlog ever needs unblocking, the fix
+  is a distinct third state — *shipped before notes existed* — not a derived one.
 - **The sw SERMON band at n=9, mean 83.2%** — re-derived from `word_count` on
   both sides of every shipped pair (n=8: 73.6 / 77.4 / 80.1 / 83.0 / 84.7 /
   86.7 / 87.2 / 93.5%), plus #425's own **82.2%**. Note the n=6 and n=7 entries
