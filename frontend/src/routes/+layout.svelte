@@ -10,6 +10,7 @@
 	import { browser } from '$app/environment';
 	import { lang } from '$lib/lang.svelte';
 	import { footerLocales } from '$lib/footerLocales';
+	import { bibleCredit } from '$lib/bibleCredit';
 	import { i18n } from '$lib/i18n.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { pwa } from '$lib/pwa.svelte';
@@ -245,6 +246,20 @@
 					</p>
 				</div>
 			</div>
+			<!-- Bible credit. Renders only for a locale whose Bible is licensed rather
+			     than public domain — today that is Hindi alone (IRV, CC BY-SA 4.0).
+			     It sits in the footer because the verses it credits are quoted inside
+			     ordinary sermon and biography prose, so there is no one page to put
+			     it on; the footer is on all of them. lang="en" because the notice is
+			     carried in the publisher's own wording, and an English sentence
+			     announced by a Hindi synthesiser is worse than no announcement.
+			     See bibleCredit.ts, and library/language_seed.py which owns the
+			     same string. -->
+			{#if bibleCredit(lang.current)}
+				<p class="mx-auto max-w-5xl border-t border-border px-5 py-4 text-small text-muted" lang="en">
+					{bibleCredit(lang.current)}
+				</p>
+			{/if}
 			<!-- Language strip. Each locale is named in its OWN language (Español, not
 			     "Spanish") — a reader scanning for their language recognises the
 			     autonym, not the English exonym. Real <a href>s so crawlers can reach

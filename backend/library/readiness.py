@@ -162,6 +162,47 @@ def _bible_check(lang: Language) -> Check:
     return Check("bible", "Bible", PASS, f"{lang.bible_label or lang.bible_code} resolves.")
 
 
+def _attribution_check(lang: Language) -> Check:
+    """A licensed Bible must be credited before the language is advertised.
+
+    Every Bible in the library was public domain until Hindi, so this check
+    passes vacuously for most languages and that is the point: it exists for the
+    one case where going live incurs an obligation. `bible_licence` non-blank is
+    the declaration that quoting this text costs something; `bible_attribution`
+    is what we pay. Failing when the second is missing is the whole check.
+
+    It is deliberately NOT a network call and NOT a judgement about whether the
+    licence really requires credit — that decision belongs to whoever chose the
+    Bible, and it is recorded in ``language_seed.py`` beside the code itself.
+    """
+    if lang.is_source or not lang.bible_licence:
+        return Check(
+            "attribution",
+            "Bible attribution",
+            SKIPPED,
+            "Public-domain Bible — nothing to credit."
+            if not lang.is_source
+            else "English is the source language.",
+        )
+    if not lang.bible_attribution.strip():
+        return Check(
+            "attribution",
+            "Bible attribution",
+            FAIL,
+            (
+                f"{lang.bible_label or lang.bible_code} is licensed "
+                f"({lang.bible_licence}) but no credit line is configured. "
+                "Readers would see its wording with nothing crediting it."
+            ),
+        )
+    return Check(
+        "attribution",
+        "Bible attribution",
+        PASS,
+        f"{lang.bible_licence} credit line configured.",
+    )
+
+
 def api_reachable() -> bool:
     """Whether the Take Root API answered at all — not whether a code is valid."""
     import requests
@@ -338,6 +379,7 @@ def report(lang: Language) -> Report:
     code = lang.code
     checks = [
         _bible_check(lang),
+        _attribution_check(lang),
         _glossary_check(lang),
         _ui_check(lang),
         _count_check(

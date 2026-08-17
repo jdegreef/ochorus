@@ -35,6 +35,11 @@
 	let nativeName = $state('');
 	let bibleCode = $state('');
 	let bibleLabel = $state('');
+	// Recorded when the Bible is CHOSEN, not remembered afterwards. The picker
+	// already knows which suggestions are licensed (it shows "· attribution");
+	// dropping that on the floor at create time is what left Hindi's CC-BY-SA
+	// obligation living in a code comment instead of in the readiness check.
+	let bibleLicence = $state('');
 	let rtl = $state(false);
 	let glossary = $state<Record<string, string>>({});
 
@@ -95,6 +100,7 @@
 		nativeName = s.native_name;
 		bibleCode = s.bible;
 		bibleLabel = s.bible_label;
+		bibleLicence = s.attribution_required ? s.licence : '';
 		rtl = s.rtl;
 	}
 
@@ -137,6 +143,7 @@
 				native_name: nativeName.trim(),
 				bible_code: bibleCode.trim(),
 				bible_label: bibleLabel.trim(),
+				bible_licence: bibleLicence.trim(),
 				rtl,
 				glossary
 			});
@@ -157,6 +164,7 @@
 		nativeName = '';
 		bibleCode = '';
 		bibleLabel = '';
+		bibleLicence = '';
 		rtl = false;
 		glossary = {};
 	}

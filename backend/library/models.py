@@ -770,6 +770,19 @@ class Language(models.Model):
     # in this language. Blank for the source language.
     bible_code = models.CharField(max_length=32, blank=True)
     bible_label = models.CharField(max_length=120, blank=True)
+    # What that Bible is published under, and the credit its licence obliges us
+    # to show. Blank means public domain — the norm here, and what every Bible in
+    # the library was until Hindi. The IRV is CC BY-SA 4.0: Share-Alike binds
+    # derivatives of the Bible text, not a library that quotes it, but BY still
+    # wants the credit carried wherever the verses appear. Recording it as data
+    # rather than a comment is what lets the readiness check refuse to launch a
+    # language whose obligation nothing is discharging.
+    bible_licence = models.CharField(
+        max_length=60, blank=True, help_text="Blank for a public-domain text."
+    )
+    bible_attribution = models.CharField(
+        max_length=300, blank=True, help_text="Credit line shown to readers."
+    )
     # English term -> its rendering in this language, covering
     # translation.GLOSSARY_TERMS. It lives on the row rather than in code
     # because it is what makes a language added from the admin *translatable*:

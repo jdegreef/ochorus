@@ -25,6 +25,8 @@
 	// init: a save reloads the page's data, and stale buffers would win.
 	let bibleCode = $state('');
 	let bibleLabel = $state('');
+	let bibleLicence = $state('');
+	let bibleAttribution = $state('');
 	let glossary = $state<Record<string, string>>({});
 
 	const missing = $derived(settings.glossary_terms.filter((t) => !(glossary[t] ?? '').trim()));
@@ -32,6 +34,8 @@
 	function startEditing() {
 		bibleCode = settings.bible_code;
 		bibleLabel = settings.bible_label;
+		bibleLicence = settings.bible_licence;
+		bibleAttribution = settings.bible_attribution;
 		glossary = { ...settings.glossary };
 		error = '';
 		note = '';
@@ -45,6 +49,8 @@
 			const res = await updateAdminLanguageSettings(settings.code, {
 				bible_code: bibleCode.trim(),
 				bible_label: bibleLabel.trim(),
+				bible_licence: bibleLicence.trim(),
+				bible_attribution: bibleAttribution.trim(),
 				glossary
 			});
 			note = res.bible_verified ? '' : res.bible_note;
@@ -76,6 +82,23 @@
 				<dt class="w-32 flex-none text-muted">Bible</dt>
 				<dd>{settings.bible_label || settings.bible_code || '—'} <span class="text-small text-muted">({settings.bible_code || 'none'})</span></dd>
 			</div>
+			{#if settings.bible_licence}
+				<!-- Shown only when the licence asks for something. A "Licence: public
+				     domain" row on every other language would be noise, and the whole
+				     point of this row is that it stands out on the one language where
+				     going live incurs an obligation. -->
+				<div class="flex gap-2">
+					<dt class="w-32 flex-none text-muted">Licence</dt>
+					<dd class={settings.bible_attribution.trim() ? '' : 'text-gold'}>
+						{settings.bible_licence} —
+						{#if settings.bible_attribution.trim()}
+							credited
+						{:else}
+							no credit line, so this language cannot go live
+						{/if}
+					</dd>
+				</div>
+			{/if}
 			<div class="flex gap-2">
 				<dt class="w-32 flex-none text-muted">Glossary</dt>
 				<dd class={settings.missing_glossary_terms.length ? 'text-gold' : ''}>
@@ -119,7 +142,35 @@
 						bind:value={bibleLabel}
 					/>
 				</label>
+				<label class="text-small">
+					<span class="mb-1 block text-muted">Licence (blank = public domain)</span>
+					<input
+						class="w-48 rounded-lg border border-border bg-bg px-2 py-1 text-body"
+						bind:value={bibleLicence}
+						placeholder="CC BY-SA 4.0"
+					/>
+				</label>
 			</div>
+
+			{#if bibleLicence.trim()}
+				<!-- Appears the moment a licence is typed, because that is the moment
+				     the obligation exists. Naming bibleCredit.ts here is deliberate:
+				     the reader is a prerendered static site, so a credit that lives
+				     only in this row is a credit no reader will ever see. -->
+				<label class="block text-small">
+					<span class="mb-1 block text-muted">Credit line shown to readers</span>
+					<input
+						class="w-full rounded-lg border border-border bg-bg px-2 py-1 text-body"
+						bind:value={bibleAttribution}
+						placeholder="Scripture quotations are from ..."
+					/>
+					<span class="mt-1 block text-muted">
+						Add the same text to <code>frontend/src/lib/bibleCredit.ts</code> — that is
+						what renders it in the footer. Readiness blocks the launch while this is
+						empty.
+					</span>
+				</label>
+			{/if}
 
 			<div class="border-t border-border pt-4">
 				<p class="mb-3 text-small text-muted">

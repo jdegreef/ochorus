@@ -22,7 +22,11 @@ from __future__ import annotations
 # one before running its first job.
 #
 # Prefer a PUBLIC-DOMAIN text: this is a public-domain library, and a CC-BY
-# Bible would put an attribution obligation on every quotation we render.
+# Bible puts an attribution obligation on every quotation we render. Where that
+# is unavoidable — Hindi, so far, the only licensed option — declare
+# `bible_licence` and `bible_attribution` on the entry. They are not
+# documentation: the readiness check reads them and refuses to launch a language
+# whose licence asks for a credit that nothing is showing.
 
 SEED_LANGUAGES: dict[str, dict] = {
     "es": {
@@ -187,6 +191,24 @@ SEED_LANGUAGES: dict[str, dict] = {
         # wherever the verses are shown.
         "bible": "irvhin",
         "bible_label": "Indian Revised Version (IRV), Hindi",
+        # The FIRST non-public-domain Bible in the library, and so the first
+        # licence that asks for something back. `bible_licence` being non-blank
+        # is what makes the readiness check demand a credit line before this
+        # language can go live; `bible_attribution` is that line, and
+        # frontend/src/lib/bibleCredit.ts must carry the same text (a test
+        # below pins the two together).
+        #
+        # Left in the publisher's own wording rather than rendered into Hindi:
+        # the edition name, the copyright holder and the licence are proper
+        # nouns that a translation would only obscure. A native reviewer may
+        # want to localize the framing around them later — that is an editorial
+        # improvement, not a compliance gap.
+        "bible_licence": "CC BY-SA 4.0",
+        "bible_attribution": (
+            "Scripture quotations are from the Indian Revised Version (IRV), "
+            "© 2017–2019 Bridge Connectivity Solutions, "
+            "licensed under CC BY-SA 4.0."
+        ),
         # 8 of these 11 appear verbatim in the IRV itself (checked against
         # Eph 2, Rom 3/8, John 14/15, 1 Thess 4, 1 Tim 4, Phil 2). The three that
         # do not are where the IRV uses a verbal construction and devotional

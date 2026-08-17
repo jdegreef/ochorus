@@ -893,6 +893,11 @@ class AdminLanguageCreateView(APIView):
             native_name=native_name,
             bible_code=bible_code,
             bible_label=str(data.get("bible_label", "")).strip(),
+            # The suggestion list already knows whether a Bible is public domain;
+            # taking the licence here is what lets the readiness check refuse to
+            # launch the language until someone writes the credit line.
+            bible_licence=str(data.get("bible_licence", "")).strip(),
+            bible_attribution=str(data.get("bible_attribution", "")).strip(),
             rtl=bool(data.get("rtl")),
             glossary=glossary,
             is_source=False,
@@ -907,11 +912,28 @@ class AdminLanguageCreateView(APIView):
                 # Said plainly because the gap between "the row exists" and
                 # "readers can see it" is where a launch goes wrong.
                 "next_steps": [
-                    f"Queue translations for {lang.name} from its language page.",
-                    f"Add '{lang.code}' to the interface locales and translate "
-                    f"frontend/messages/{lang.code}.json — a live language with no "
-                    "UI catalogue fails the build.",
-                    "Then press Go live when the readiness checks are clear.",
+                    step
+                    for step in [
+                        f"Queue translations for {lang.name} from its language page.",
+                        # Only when the licence asks for something. Naming the
+                        # file matters: the credit is rendered by the prerendered
+                        # site, so a row in the database alone shows nobody
+                        # anything.
+                        (
+                            f"{lang.bible_label or lang.bible_code} is licensed "
+                            f"({lang.bible_licence}) — write its credit line in "
+                            "the language's settings and add the same text to "
+                            "frontend/src/lib/bibleCredit.ts. Readiness blocks "
+                            "the launch until you do."
+                        )
+                        if lang.bible_licence
+                        else "",
+                        f"Add '{lang.code}' to the interface locales and translate "
+                        f"frontend/messages/{lang.code}.json — a live language with no "
+                        "UI catalogue fails the build.",
+                        "Then press Go live when the readiness checks are clear.",
+                    ]
+                    if step
                 ],
             },
             status=status.HTTP_201_CREATED,
@@ -951,10 +973,10 @@ class AdminLanguageSettingsView(APIView):
         changed: list[str] = []
         bible_ok, bible_note = True, ""
 
-        for f in ("name", "native_name", "bible_label"):
+        for f in ("name", "native_name", "bible_label", "bible_licence", "bible_attribution"):
             if f in data:
                 value = str(data[f]).strip()
-                if not value and f != "bible_label":
+                if not value and f not in ("bible_label", "bible_licence", "bible_attribution"):
                     return Response(
                         {"detail": f"{f} cannot be empty."},
                         status=status.HTTP_400_BAD_REQUEST,
@@ -1004,6 +1026,12 @@ def _language_settings(lang: Language) -> dict:
         "native_name": lang.native_name,
         "bible_code": lang.bible_code,
         "bible_label": lang.bible_label,
+        # Carried through so an admin-created language is gated the same way a
+        # repo-seeded one is: the picker already knows a suggestion is CC-BY, and
+        # dropping that on the floor at create time is what left Hindi's
+        # obligation living in a code comment.
+        "bible_licence": lang.bible_licence,
+        "bible_attribution": lang.bible_attribution,
         "rtl": lang.rtl,
         "glossary": dict(lang.glossary or {}),
         "glossary_terms": list(GLOSSARY_TERMS),
