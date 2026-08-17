@@ -257,7 +257,9 @@
 			     same string. -->
 			{#if bibleCredit(lang.current)}
 				<p class="mx-auto max-w-5xl border-t border-border px-5 py-4 text-small text-muted" lang="en">
-					{#each creditParts(bibleCredit(lang.current)) as part}{#if part.href}<a
+					<!-- Keyed by index: these are positional runs of one sentence, so
+					     position IS the identity — there is no stabler key to offer. -->
+					{#each creditParts(bibleCredit(lang.current)) as part, i (i)}{#if part.href}<a
 								class="underline"
 								href={part.href}
 								rel="license noreferrer">{part.text}</a
