@@ -27,10 +27,10 @@ from rest_framework.test import APIClient
 
 from . import readiness
 from .admin_views import content
-from .translation import GLOSSARY_TERMS
 from .language_seed import SEED_LANGUAGES
 from .models import Language
 from .readiness import FAIL, PASS, SKIPPED, Check, _attribution_check
+from .translation import GLOSSARY_TERMS
 
 CREDIT_TS = (
     Path(settings.BASE_DIR).resolve().parent / "frontend" / "src" / "lib" / "bibleCredit.ts"
@@ -178,7 +178,7 @@ class AdminCreatedLanguageTests(TestCase):
             "native_name": "isiZulu",
             "bible_code": "zul-x",
             "bible_label": "Some Licensed Zulu Bible",
-            "glossary": {t: "x" for t in GLOSSARY_TERMS},
+            "glossary": dict.fromkeys(GLOSSARY_TERMS, "x"),
             **extra,
         }
         return self.client.post("/api/admin/languages/", payload, format="json")
