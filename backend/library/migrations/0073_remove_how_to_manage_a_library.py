@@ -52,6 +52,9 @@ def remove(apps, schema_editor):
 class Migration(migrations.Migration):
     dependencies = [("library", "0072_language_bible_licence")]
 
-    # Deliberately irreversible: the content it removes is gone from the fixture
-    # in the same commit, so there is nothing for a reverse to restore from.
+    # Reverse is a no-op, not a restore: the content is gone from the fixture in
+    # the same commit, so there is nothing to put back. Migrating backwards past
+    # this point therefore succeeds and leaves the work removed — deliberate, so
+    # an unrelated rollback isn't blocked by content that cannot be recovered
+    # here anyway (a rebuild reseeds from the fixture, which no longer has it).
     operations = [migrations.RunPython(remove, migrations.RunPython.noop)]

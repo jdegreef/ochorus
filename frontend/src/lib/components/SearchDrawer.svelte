@@ -35,9 +35,7 @@
 	type Para = { order: number; title: string; p: number; text: string };
 	type Hit = { order: number; title: string; p: number; snippet: string };
 
-	let panel = $state<HTMLElement>();
 	let input = $state<HTMLInputElement>();
-	let opener: Element | null = null;
 
 	// The flattened paragraph index for the loaded book, and which book it's for.
 	let indexed = $state<Para[]>([]);
@@ -104,12 +102,10 @@
 
 	$effect(() => {
 		if (!open) return;
-		opener = document.activeElement;
 		buildIndex();
+		// Focus the query field; focusTrap on the panel owns keeping Tab inside it
+		// and returning focus to the opener on close.
 		queueMicrotask(() => input?.focus());
-		return () => {
-			(opener as HTMLElement | null)?.focus?.();
-		};
 	});
 
 	function close() {
@@ -138,7 +134,6 @@
 	     propagation) whenever focus is inside the panel, and the window listener
 	     still catches it if focus has fallen elsewhere, e.g. after a scrim click. -->
 	<div
-		bind:this={panel}
 		class="search-panel"
 		role="dialog"
 		aria-modal="true"
