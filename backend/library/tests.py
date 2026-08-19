@@ -1,5 +1,6 @@
 import json
 import os
+import shutil
 import tempfile
 from io import StringIO
 from pathlib import Path
@@ -1286,20 +1287,19 @@ class TopicTests(TestCase):
         )
 
     def test_every_translated_language_covers_every_topic(self):
-        """A language in TOPIC_TRANSLATIONS must cover ALL topics, not some.
+        """A translated language must cover ALL topics, not some.
 
-        There is no English fallback: a topic missing from a language's block is
+        There is no English fallback: a topic missing from a language's file is
         omitted from that language's shelf list entirely. So a partial language
         silently ships a partial set of shelves — the same discipline as the
-        per-language glossaries, which are pinned the same way.
+        per-language glossaries, which are pinned the same way. Reads
+        ``data/topic_translations/<lang>.json`` through the loader.
         """
-        from library.management.commands.seed_topics import (
-            TOPIC_TRANSLATIONS,
-            TOPICS,
-        )
+        from library.management.commands.seed_topics import TOPICS
+        from library.topic_translations import topic_translations
 
         slugs = {t[0] for t in TOPICS}
-        for lang, per_topic in TOPIC_TRANSLATIONS.items():
+        for lang, per_topic in topic_translations().items():
             with self.subTest(language=lang):
                 self.assertEqual(
                     set(per_topic),
@@ -4167,8 +4167,15 @@ class TranslateTopicCommandTests(TestCase):
         )
 
     def _run(self, *args, **kwargs):
+        # The command WRITES data/topic_translations/<lang>.json (that file is
+        # the delivery path), so every run is pointed at a throwaway dir — a
+        # test that touched the real repo data would pollute the working tree.
         out = StringIO()
-        call_command("translate_topic", *args, stdout=out, stderr=out, **kwargs)
+        tmp = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, tmp, ignore_errors=True)
+        self.written_dir = tmp
+        with mock.patch("library.topic_translations.DATA_DIR", tmp):
+            call_command("translate_topic", *args, stdout=out, stderr=out, **kwargs)
         return out.getvalue()
 
     def test_dry_run_touches_nothing(self):
@@ -4176,7 +4183,7 @@ class TranslateTopicCommandTests(TestCase):
         self.assertIn("prayer", out)
         self.assertFalse(TopicTranslation.objects.exists())
 
-    def test_translates_title_and_description_and_emits_the_seed_block(self):
+    def test_translates_title_and_description_and_writes_the_language_file(self):
         meta = {"title": "Kuhusu Maombi", "description": "Kujifunza kuomba."}
         with mock.patch("library.management.commands.translate_topic.verify_bible_code"), \
              mock.patch("library.management.commands.translate_topic.anthropic"), \
@@ -4193,10 +4200,13 @@ class TranslateTopicCommandTests(TestCase):
         self.assertEqual(tr.scripture_text, "")
         # The shelf is now visible in Swahili — the whole point.
         self.assertTrue(self.topic.is_translated_into("sw"))
-        # And the paste-ready block names the seed, which is the delivery path.
-        self.assertIn('"sw": {', out)
-        self.assertIn("Kuhusu Maombi", out)
-        self.assertIn("seed_topics", out)
+        # And the delivery file was written — it, not the DB row, is what
+        # survives a deploy — with the translated prose in it.
+        written = json.loads((self.written_dir / "sw.json").read_text(encoding="utf-8"))
+        self.assertEqual(written["prayer"]["title"], "Kuhusu Maombi")
+        self.assertEqual(written["prayer"]["description"], "Kujifunza kuomba.")
+        self.assertNotIn("scripture", written["prayer"])  # prose-only run
+        self.assertIn("sw.json", out)
 
     def test_scripture_uses_the_bible_and_never_the_model(self):
         meta = {"title": "Kuhusu Maombi", "description": "d"}

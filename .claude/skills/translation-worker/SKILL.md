@@ -46,7 +46,7 @@ three of them gives none of them one.
    | `book` | the same slug AND language — **plus a `plan` job in your language** if your slug backs a plan (see below) |
    | `bio` | any `bio` in the **same language** — they share `author_bios_<lang>/short.json` |
    | `plan` | any `plan` job in the **same language** — one shared `data/plan_translations/<lang>.json` — **and a `book` job in that language whose slug backs a plan** |
-   | `topic` | any `topic` job, any language — one shared `seed_topics.py` dict |
+   | `topic` | any `topic` job in the **same language** — one shared `data/topic_translations/<lang>.json` |
 
    The book↔plan row is the non-obvious one, and it follows from a rule further
    down: a book that appears in `LAUNCH_PLANS` or `CURATED_PLANS` must add its
@@ -70,13 +70,10 @@ three of them gives none of them one.
    natural-key fixture was designed for exactly this, and the repo CLAUDE.md
    says so: "parallel sessions cannot collide". The types that still serialise
    are the ones whose delivery vehicle is a shared file, and they are marked
-   above. Plans have now been split this way and their row narrowed accordingly.
-   The same is still available to the others: split `TOPIC_TRANSLATIONS` into
-   `<lang>.json` files and the short bio into its own per-slug file, and narrow
-   their rows too — the gate should track the files, not the calendar. (The bio
-   split has a catch: migration `0024` reads `short.json` unguarded, so the file
-   must keep existing for a fresh DB to migrate; only its role as the source of
-   truth can move.)
+   above. Plans and topics have now been split this way and their rows narrowed
+   accordingly. The bio split remains, with a catch: migration `0024` reads
+   `short.json` unguarded, so the file must keep existing (parseable) for a
+   fresh DB to migrate; only its role as the source of truth can move.
 
    **One thing still conflicts across every book/sermon job: the prerender
    refresh.** Two concurrent sermon jobs both touch
@@ -221,24 +218,26 @@ other type: **topic prose has NO English fallback**, so an untranslated shelf is
 keeps it invisible. A language wants **all** of them — `seed_topics` has a test
 pinning full per-language coverage, so a partial block fails CI.
 - Source: `Topic.title` + `Topic.description` for `slug` (English row).
-- Delivery is the `TOPIC_TRANSLATIONS` dict in
-  `backend/library/management/commands/seed_topics.py`, upserted by the
-  `seed_topics` release step. Add the language's block (or the missing slug to
-  an existing block) — nothing else sticks; a hand-written DB row is reverted on
-  the next deploy.
+- Delivery is `backend/library/data/topic_translations/<lang>.json`, upserted
+  by the `seed_topics` release step: `{"<slug>": {"title": …, "description": …,
+  "scripture": {"reference": …, "text": …}?}}`, with optional per-entry `note`
+  and language-level `_note` lists. Nothing else sticks; a hand-written DB row
+  is reverted on the next deploy. CI pins the file BOTH ways — every slug must
+  name a real topic, and every topic must be present (no English fallback: a
+  missing entry is a shelf hidden from that language).
 - Keep the title short and scannable (it's a heading, not a sentence) and the
   description to the original's one or two sentences. Follow the language's
   glossary (the `Language` row — see its admin page) so the shelf reads consistently with the
   books on it.
-- **Scripture is not yours to write.** The shelf's verse lives in
-  `TOPIC_SCRIPTURE_TR` and must come verbatim from that language's Bible via the
+- **Scripture is not yours to write.** The shelf's verse lives in the entry's
+  `scripture` object and must come verbatim from that language's Bible via the
   Take Root API (`fetch_verse_text`), with only the reference's book name
   localized. If you cannot fetch it, ship the shelf **without** a verse — the
   topic page renders no verse block, so the shelf is still complete. Never
   paraphrase or recall a verse from memory.
 - `manage.py translate_topic --language <lang> [slug] [--scripture]` does all of
-  this with an API key and prints the paste-ready block; in a worker session
-  (no key) do the translation yourself and hand-write the block in the same shape.
+  this with an API key and writes the language file itself; in a worker session
+  (no key) do the translation yourself and hand-write the JSON in the same shape.
 - Verify: `manage.py seed_topics` then
   `/api/library/topics/?language=<lang>` lists the shelf with its translated
   title, and `/api/library/topics/<slug>/?language=<lang>` returns 200 (it 404s
@@ -414,8 +413,8 @@ archaic spelling and period punctuation are the text, not defects in it.
   on fresh `origin/main`: `content/books/<slug>.<lang>.json` (book) /
   `content/sermons/<slug>.<lang>.json` (sermon) / a `<slug>` key in
   `data/plan_translations/<lang>.json` (plan) / `author_bios_<lang>/<slug>.html`
-  (bio) / a `TOPIC_TRANSLATIONS[<lang>][<slug>]` entry in `seed_topics.py`
-  (topic). CI's duplicate-identity / fixture checks are the backstop for
+  (bio) / a `<slug>` key in
+  `data/topic_translations/<lang>.json` (topic). CI's duplicate-identity / fixture checks are the backstop for
   file-shipped types.
 - Token budget sanity: a book is roughly 25–45k output tokens per chapter. If
   a job would obviously exhaust the session (e.g. a 50-chapter book late in a

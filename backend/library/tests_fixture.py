@@ -771,6 +771,10 @@ _RANGE = re.compile(
     r"(?:[:.]([0-9٠-٩]{1,3}))?"
 )
 _TAG = re.compile(r"<[^>]+>")
+# A filename that plausibly names a language ("es", "en-modern") — shared by the
+# per-language data-file gates; a shape check, deliberately not a registry lookup
+# (the registry is DB-owned so an admin can add a language without a deploy).
+_LANG_CODE = re.compile(r"^[a-z]{2,3}(-[a-z0-9]{2,8})?$")
 
 
 def _digits(group: str | None) -> int | None:
@@ -1001,11 +1005,116 @@ class PlanTranslationFileTests(SimpleTestCase):
         the case the registry exists to allow. What is always wrong is a name
         that is not a language code at all (`spanish.json`, `es-.json`).
         """
-        pattern = re.compile(r"^[a-z]{2,3}(-[a-z0-9]{2,8})?$")
-        bad = sorted(lang for lang in self.raw if not pattern.fullmatch(lang))
+        bad = sorted(lang for lang in self.raw if not _LANG_CODE.fullmatch(lang))
         self.assertEqual(
             bad,
             [],
             f"Not language codes: {bad}. seed_plans looks these up by the "
             "content language of a Book row, so a file it cannot match is dead.",
+        )
+
+
+class TopicTranslationFileTests(SimpleTestCase):
+    """The per-language topic files are well-formed and describe real shelves.
+
+    Same reasoning as ``PlanTranslationFileTests`` above — JSON does not fail
+    the way a dict literal does — with two additions the stakes demand. Topic
+    prose has NO English fallback, so a lost entry is a shelf HIDDEN from that
+    language (and its page 404s there); and a shelf's ``scripture`` must be the
+    trusted Bible's wording fetched via Take Root, so its shape is pinned here
+    while its wording stays a review-time question.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        from library.topic_translations import raw_topic_translations
+
+        cls.raw = {
+            lang: {slug: e for slug, e in payload.items() if not slug.startswith("_")}
+            for lang, payload in raw_topic_translations().items()
+        }
+        cls.meta = {
+            lang: {slug: e for slug, e in payload.items() if slug.startswith("_")}
+            for lang, payload in raw_topic_translations().items()
+        }
+
+    def test_every_entry_is_well_formed(self):
+        allowed = {"title", "description", "scripture", "note"}
+        bad = []
+        for lang, entries in self.raw.items():
+            for slug, e in entries.items():
+                where = f"{lang}.json:{slug}"
+                for field in ("title", "description"):
+                    if not (e.get(field) or "").strip():
+                        bad.append(f"{where} missing {field}")
+                if set(e) - allowed:
+                    bad.append(f"{where} unknown field(s) {sorted(set(e) - allowed)}")
+                sc = e.get("scripture")
+                if sc is not None and (
+                    not isinstance(sc, dict)
+                    or not (sc.get("reference") or "").strip()
+                    or not (sc.get("text") or "").strip()
+                    or set(sc) - {"reference", "text"}
+                ):
+                    bad.append(f"{where} malformed scripture (want reference + text)")
+                note = e.get("note")
+                if note is not None and not (
+                    isinstance(note, list)
+                    and all(isinstance(x, str) and x.strip() for x in note)
+                ):
+                    bad.append(f"{where} note must be a list of non-empty strings")
+        self.assertEqual(bad, [], "\n".join(bad))
+
+    def test_language_level_keys_are_only_note(self):
+        bad = [
+            f"{lang}.json: {sorted(set(meta) - {'_note'})}"
+            for lang, meta in self.meta.items()
+            if set(meta) - {"_note"}
+        ]
+        self.assertEqual(bad, [], f"Unknown language-level keys: {bad}")
+
+    def test_every_slug_names_a_real_topic_and_covers_all_of_them(self):
+        """Both directions: no dead prose, and no hidden shelf.
+
+        A slug naming no topic is prose nothing reads (the seed iterates the
+        TOPICS definitions and looks entries up by their slugs). A topic
+        missing from a language's file is a shelf HIDDEN from that language —
+        no English fallback — which is why ``seed_topics`` carries a
+        full-coverage test too; this one runs without a database and points at
+        the file.
+        """
+        from library.management.commands.seed_topics import TOPICS
+
+        known = {t[0] for t in TOPICS}
+        dead = sorted(
+            f"{lang}.json:{slug}"
+            for lang, entries in self.raw.items()
+            for slug in entries
+            if slug not in known
+        )
+        hidden = sorted(
+            f"{lang}.json missing {slug}"
+            for lang, entries in self.raw.items()
+            for slug in known - set(entries)
+        )
+        self.assertEqual(dead, [], f"Prose for no topic: {dead}")
+        self.assertEqual(
+            hidden,
+            [],
+            "Topic prose has no English fallback — these shelves would be "
+            f"HIDDEN from their language: {hidden}",
+        )
+
+    def test_no_english_file_and_codes_look_like_languages(self):
+        bad = sorted(
+            lang
+            for lang in self.raw
+            if lang == "en" or lang.startswith("en-") or not _LANG_CODE.fullmatch(lang)
+        )
+        self.assertEqual(
+            bad,
+            [],
+            f"{bad}: English shelf prose lives on the Topic row itself, and a "
+            "file that is not a language code is prose the seed can never match.",
         )

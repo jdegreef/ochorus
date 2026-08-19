@@ -1,11 +1,12 @@
 """Translate topical-shelf labels (title + description) into a target language.
 
 Runs locally (needs ANTHROPIC_API_KEY); the result is ``TopicTranslation`` rows
-(unreviewed). To SHIP them, paste the emitted block into ``TOPIC_TRANSLATIONS``
-in ``seed_topics`` — that dict is the delivery path (like the author-bio data
-files): it survives a fresh-DB rebuild and is re-upserted on every deploy, so
-rows written any other way don't stick. The command prints the block ready to
-paste, so shipping is a copy, not a retype.
+(unreviewed). To SHIP them the command also writes
+``library/data/topic_translations/<language>.json`` — that file is the delivery
+path (like the plan-prose and author-bio data files): it survives a fresh-DB
+rebuild and is re-upserted on every deploy, so rows written any other way don't
+stick. Review the git diff and commit the file; shipping is a commit, not a
+retype.
 
 **Why a shelf's translation is not optional.** Topic prose has no English
 fallback: a shelf with no title in a language is omitted from that language's
@@ -29,6 +30,9 @@ Usage:
 
 from __future__ import annotations
 
+import json
+from pathlib import Path
+
 import anthropic
 from django.core.management.base import BaseCommand, CommandError
 
@@ -43,23 +47,34 @@ from library.translation import (
 )
 
 
-def _seed_block(language: str, rows: list[tuple[str, str, str]]) -> str:
-    """The TOPIC_TRANSLATIONS entry for this language, ready to paste.
+def _write_language_file(language: str, rows: list[dict]) -> Path:
+    """Merge the translated shelves into ``data/topic_translations/<lang>.json``.
 
-    Emitted rather than written into the file: seed_topics.py is source, and a
-    command that rewrites source in place is a worse failure mode than one that
-    asks for a paste (a botched edit is silent; a missing paste is obvious).
+    This used to emit a Python block to paste into ``seed_topics.py``, on the
+    reasoning that a command must not rewrite source. The delivery target is
+    now a DATA file with its own CI gates (``TopicTranslationFileTests``), so
+    writing directly is safe in the way editing source was not: a botched
+    write fails loudly in CI and shows plainly in ``git diff`` before commit.
+    Merge semantics — existing entries not in ``rows`` are left alone, and an
+    entry's ``note`` survives a re-translation of its prose.
     """
-    lines = [f'    "{language}": {{']
-    for slug, title, description in rows:
-        lines.append(f'        "{slug}": (')
-        lines.append(f'            "{title}",')
-        # Keep the description on one logical string; the repo's formatter will
-        # wrap it. Escape only what would break the literal.
-        lines.append(f'            "{description}",')
-        lines.append("        ),")
-    lines.append("    },")
-    return "\n".join(lines)
+    from library.topic_translations import DATA_DIR
+
+    path = DATA_DIR / f"{language}.json"
+    data = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+    for row in rows:
+        entry = data.setdefault(row["slug"], {})
+        entry["title"] = row["title"]
+        entry["description"] = row["description"]
+        if row.get("scripture_ref") and row.get("scripture_text"):
+            entry["scripture"] = {
+                "reference": row["scripture_ref"],
+                "text": row["scripture_text"],
+            }
+    path.write_text(
+        json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    return path
 
 
 class Command(BaseCommand):
@@ -139,7 +154,7 @@ class Command(BaseCommand):
 
         client = anthropic.Anthropic()  # ANTHROPIC_API_KEY / ant auth profile
         bible = cfg["bible"]
-        shipped: list[tuple[str, str, str]] = []
+        shipped: list[dict] = []
 
         for t in plan:
             tr = existing.get(t.id)
@@ -179,16 +194,18 @@ class Command(BaseCommand):
                     "scripture_text": text_out,
                 },
             )
-            shipped.append((t.slug, title_out, desc_out))
+            shipped.append({
+                "slug": t.slug,
+                "title": title_out,
+                "description": desc_out,
+                "scripture_ref": ref_out,
+                "scripture_text": text_out,
+            })
 
         self.stdout.write(self.style.SUCCESS(f"\n{len(shipped)} shelf/shelves translated."))
+        path = _write_language_file(language, shipped)
         self.stdout.write(
-            "\nPaste into TOPIC_TRANSLATIONS in "
-            "library/management/commands/seed_topics.py — the seed is the delivery "
-            "path, so a row that isn't in that dict is reverted on the next deploy:\n"
+            f"\nWrote {path} — the seed is the delivery path, so review the "
+            "git diff and commit that file; a row not in it is reverted on the "
+            "next deploy. Scripture (when fetched) is embedded per entry."
         )
-        self.stdout.write(_seed_block(language, shipped))
-        if scripture:
-            self.stdout.write(
-                "\n(Scripture goes in TOPIC_SCRIPTURE_TR, keyed the same way.)"
-            )

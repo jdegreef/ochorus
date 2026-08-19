@@ -71,7 +71,7 @@ _JOB_GUIDANCE = {
         "`<slug>.html`); the `seed_author_translations` release step upserts it."
     ),
     "topic": (
-        "Ships as a `TOPIC_TRANSLATIONS` entry in `seed_topics` (run "
+        "Ships as an entry in `library/data/topic_translations/<language>.json` (run "
         "`manage.py translate_topic --language <language>`, which prints the block "
         "ready to paste); the `seed_topics` release step upserts it. Topic prose "
         "has NO English fallback — an untranslated shelf is hidden in that "
