@@ -22,10 +22,28 @@ export const LEADING: Record<Leading, number> = {
 	relaxed: 2.2
 };
 
+/**
+ * Column width, as a multiple of the reader's own text size.
+ *
+ * These were plain `rem`, i.e. independent of `--reading-scale` — so "normal"
+ * held ~75 characters per line at 1x but only ~47 at the maximum 1.6x. The
+ * comfortable 65-75 band held at exactly one setting, and the readers most
+ * likely to enlarge the text got the most cramped, most ragged column.
+ *
+ * Scaling the width with the text keeps the character count roughly constant
+ * instead. The measure is applied to the <article>, whose own font-size is the
+ * root's, so this cannot be expressed in `em` — hence the explicit calc.
+ */
+const MEASURE_REM: Record<Measure, number> = {
+	narrow: 34,
+	normal: 42,
+	wide: 52
+};
+
 export const MEASURE: Record<Measure, string> = {
-	narrow: '34rem',
-	normal: '42rem',
-	wide: '52rem'
+	narrow: `calc(${MEASURE_REM.narrow}rem * var(--reading-scale, 1))`,
+	normal: `calc(${MEASURE_REM.normal}rem * var(--reading-scale, 1))`,
+	wide: `calc(${MEASURE_REM.wide}rem * var(--reading-scale, 1))`
 };
 
 // NOTE: browse-page width is no longer derived from the reading measure. The

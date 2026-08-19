@@ -20,7 +20,7 @@
 	import { renderMarks } from '$lib/rangeMarks';
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
-	import { readingTime, readingMinutes } from '$lib/reading';
+	import { contentLang, readingTime, readingMinutes } from '$lib/reading';
 	import { pageOfOffset } from '$lib/pageMath';
 	import { listen } from '$lib/listen.svelte';
 	import { define } from '$lib/define.svelte';
@@ -42,6 +42,7 @@
 	let { data } = $props();
 	const chapter = $derived(data.chapter as Chapter);
 	const slug = $derived(data.slug as string);
+	const language = $derived(data.language as string);
 	// 'modern' when reading the Modern English edition, else null. Carried in the
 	// URL and preserved across every in-reader chapter link.
 	const edition = $derived((data.edition as 'modern' | null) ?? null);
@@ -923,11 +924,11 @@
 				<span class="ms-1 text-accent">· {t('reader.modernEdition')}</span>
 			{/if}
 		</p>
-		<h1 bind:this={titleEl} class="text-h1 mb-8" dir="auto">{chapter.title}</h1>
+		<h1 bind:this={titleEl} class="text-h1 mb-8" dir="auto" lang={contentLang(language)}>{chapter.title}</h1>
 
 		<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. -->
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-		<div class="reading" bind:this={body} dir="auto">{@html chapter.body_html}</div>
+		<div class="reading" bind:this={body} dir="auto" lang={contentLang(language)}>{@html chapter.body_html}</div>
 	</div>
 
 	<nav class="mt-14 flex items-stretch justify-between gap-3 border-t border-border pt-6">

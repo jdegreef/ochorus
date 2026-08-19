@@ -28,7 +28,7 @@
 	import { onMount, tick } from 'svelte';
 	import { page } from '$app/stores';
 	import { i18n } from '$lib/i18n.svelte';
-	import { HEADER_OFFSET } from '$lib/reading';
+	import { contentLang, HEADER_OFFSET } from '$lib/reading';
 	import { getScrollAnchor, saveScrollAnchor, saveProgress, getProgressRecord } from '$lib/progress';
 	import { HIGHLIGHT_COLORS, DEFAULT_HIGHLIGHT, type WorkKind } from '$lib/reading-schema';
 	import { marks, type Segment } from '$lib/marks.svelte';
@@ -310,7 +310,13 @@
      references are wrapped as tappable spans (scripture popover). -->
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
 <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-<div class="reading {className}" bind:this={body} onclick={onBodyClick} dir="auto">{@html html}</div>
+<div
+	class="reading {className}"
+	bind:this={body}
+	onclick={onBodyClick}
+	dir="auto"
+	lang={contentLang(language)}
+>{@html html}</div>
 
 <SelectionBar
 	container={body}

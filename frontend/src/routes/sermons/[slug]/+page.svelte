@@ -5,7 +5,13 @@
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { i18n } from '$lib/i18n.svelte';
-	import { readingTime, readingMinutes, preachedYear, HEADER_OFFSET } from '$lib/reading';
+	import {
+		contentLang,
+		readingTime,
+		readingMinutes,
+		preachedYear,
+		HEADER_OFFSET
+	} from '$lib/reading';
 	import { getLang } from '$lib/lang.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import { type ScriptureResult } from '$lib/scripture.svelte';
@@ -304,7 +310,7 @@
 		{t('search.typeSermon')} · {readingTime(sermon.word_count)}{#if year} · {year}{/if}{#if sermon.difficulty}&nbsp;·
 			<span title={t('reader.difficulty')}>{t(`reader.difficulty_${sermon.difficulty}`)}</span>{/if}
 	</p>
-	<h1 class="text-h1 mb-3" dir="auto">{sermon.title}</h1>
+	<h1 class="text-h1 mb-3" dir="auto" lang={contentLang(sermon.language)}>{sermon.title}</h1>
 
 	<!-- Author row: portrait + name -->
 	<a

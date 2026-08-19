@@ -444,7 +444,37 @@
 	font-size: calc(1.18rem * var(--reading-scale, 1));
 	line-height: var(--reading-leading, 1.85);
 	color: var(--text);
+	/* Type inside the prose is sized in `em`, i.e. relative to this. Set here
+	   rather than on each rule so the whole block scales as one. */
+	--prose-h2: 1.42em;
+	--prose-h3: 1.18em;
 }
+/* The opening initial.
+   STYLE_GUIDE §2 asks for prose "set like a printed devotional page", and the
+   opening letter is the one piece of that still missing. It is safe to render
+   because of work already done upstream: the importer reattaches decorative
+   initials that the PDF extraction stripped out of reading order, and the admin
+   audit flags any chapter whose body still starts lower-case — so the first
+   character is reliably a capital rather than the tail of a broken word.
+
+   Deliberately narrow:
+   - `float: inline-start`, so it sits on the reading edge in either direction.
+   - Not in paged mode: a float cannot span CSS columns, and the initial would
+     be clipped at the column boundary.
+   - Not for Arabic, where a floated initial is not a convention of the script.
+   - `:first-of-type`, so a chapter opening with a heading still caps its first
+     real paragraph, and no later paragraph gets one. */
+article:not(.paged) .reading > p:first-of-type:not(:lang(ar))::first-letter {
+	float: inline-start;
+	font-family: var(--font-display);
+	font-size: 3.1em;
+	line-height: 0.86;
+	font-weight: 600;
+	margin-inline-end: 0.08em;
+	padding-top: 0.06em;
+	color: var(--text);
+}
+
 /* Server-wrapped Bible cross-references inside the reading text. Subtle by
    default — a dotted underline in the accent tint — tappable to open the
    scripture popover (see ScripturePopover.svelte). */
@@ -465,12 +495,23 @@
 	   the ragged spacing stays tight (uses the element's inherited lang). */
 	text-align: var(--reading-align, start);
 	hyphens: var(--reading-hyphens, manual);
+	/* A devotional page shouldn't end a paragraph on a lone word. `pretty` also
+	   evens the last few lines' rag where the browser supports it. */
+	text-wrap: pretty;
+	orphans: 2;
+	widows: 2;
 }
 .reading h2,
 .reading h3 {
 	font-family: var(--font-display);
 	margin: 1.8em 0 0.7em;
 	line-height: 1.25;
+}
+.reading h2 {
+	font-size: var(--prose-h2);
+}
+.reading h3 {
+	font-size: var(--prose-h3);
 }
 .reading blockquote {
 	margin: 1.4em 0;

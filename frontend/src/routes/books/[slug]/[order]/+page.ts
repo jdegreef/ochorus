@@ -61,8 +61,12 @@ export const load: PageLoad = async ({ params, url }) => {
 	// the standard edition; a direct visit with ?edition=modern is reconciled
 	// client-side by the page (it re-runs this load, where `building` is false).
 	const modern = !building && url.searchParams.get('edition') === 'modern';
-	const chapter = await orNotFound(() =>
-		getChapter(params.slug, Number(params.order), modern ? MODERN_EDITION : getLang())
-	);
-	return { chapter, slug: params.slug, edition: modern ? 'modern' : null };
+	// The language the body is actually IN — the locale copy, or the Modern
+	// English edition when that was asked for. The Chapter payload carries no
+	// language of its own, and the page needs this for the prose's `lang`
+	// attribute: without it the browser hyphenates justified text against the UI
+	// locale, which is routinely not the language on the page.
+	const language = modern ? MODERN_EDITION : getLang();
+	const chapter = await orNotFound(() => getChapter(params.slug, Number(params.order), language));
+	return { chapter, slug: params.slug, language, edition: modern ? 'modern' : null };
 };

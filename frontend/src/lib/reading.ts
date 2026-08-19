@@ -57,3 +57,20 @@ export function preachedYear(preachedOn: string | null): string {
  * different answers about where the reader was.
  */
 export const HEADER_OFFSET = 64;
+
+/**
+ * A content-language code as a `lang` attribute value.
+ *
+ * Reading surfaces never set `lang` on the prose, so the browser fell back to
+ * the document's language — which is the UI LOCALE, not the content's. Those
+ * routinely differ: an English book read under `/ar`, a Swahili sermon opened
+ * from an English browse page. That is invisible until a reader justifies the
+ * text, at which point `hyphens: auto` consults the wrong dictionary (or none)
+ * and the prose fills with rivers.
+ *
+ * `en-modern` is our own edition marker, not a real subtag, so it is reduced to
+ * its base language — a Modern English edition hyphenates as English.
+ */
+export function contentLang(language: string): string {
+	return language === 'en-modern' ? 'en' : language;
+}

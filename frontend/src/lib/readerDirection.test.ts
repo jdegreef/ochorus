@@ -91,8 +91,14 @@ describe('reader text direction', () => {
 			// Match the class LIST, not a bare closing quote: Reader takes a `class`
 			// prop (for surfaces with their own band width), so `class="reading"`
 			// becomes `class="reading …"` and a stricter regex would fail this open.
+			//
+			// `\s[^>]*` rather than a literal space before `class`: the tag is
+			// formatted across several lines once it carries enough attributes, and
+			// requiring `<div class=` on one line failed a body that did have the
+			// dir. `[^>]` cannot cross the tag's own `>`, so this still can't drift
+			// onto a later element.
 			expect(read(path), 'reading body dir="auto"').toMatch(
-				/<div class="reading[^"]*"[^>]*\sdir="auto"/
+				/<div\s[^>]*class="reading[^"]*"[^>]*\sdir="auto"/
 			);
 		});
 	}
