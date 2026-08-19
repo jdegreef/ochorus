@@ -39,7 +39,7 @@
 		<div class="account" bind:this={root}>
 			<button
 				class="account-btn"
-				aria-haspopup="menu"
+				aria-haspopup="true"
 				aria-expanded={open}
 				aria-label={t('account.title')}
 				onclick={(e) => {
@@ -50,7 +50,7 @@
 				{initials}
 			</button>
 			{#if open}
-				<div class="account-menu" role="menu">
+				<div class="account-menu">
 					<div class="truncate px-3 py-1.5">
 						{#if auth.displayName}
 							<div class="text-small font-semibold text-text">{auth.displayName}</div>
@@ -59,19 +59,18 @@
 					</div>
 					<div class="my-1 border-t border-border"></div>
 					{#if auth.isAdmin}
-						<a class="account-item" role="menuitem" href={localizeHref('/admin')} onclick={() => (open = false)}
+						<a class="account-item" href={localizeHref('/admin')} onclick={() => (open = false)}
 							>Admin</a
 						>
 					{/if}
-					<a class="account-item" role="menuitem" href={localizeHref('/notebook')} onclick={() => (open = false)}
+					<a class="account-item" href={localizeHref('/notebook')} onclick={() => (open = false)}
 						>{t('notebook.title')}</a
 					>
-					<a class="account-item" role="menuitem" href={localizeHref('/settings')} onclick={() => (open = false)}
+					<a class="account-item" href={localizeHref('/settings')} onclick={() => (open = false)}
 						>{t('settings.title')}</a
 					>
 					<button
 						class="account-item"
-						role="menuitem"
 						onclick={() => {
 							open = false;
 							auth.signOut();

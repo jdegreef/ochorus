@@ -627,8 +627,19 @@ article:not(.paged) .reading > p:first-of-type:not(:lang(ar))::first-letter {
    the bar, and the controls (preferences gear, account avatar) at the right.
    Same spacing, radii and tokens as Take Root's app.css. */
 nav.appnav {
+	position: sticky;
+	top: 0;
+	/* Above page content and any page's own sticky sub-bar (those sit at z-20),
+	   below the overlays (drawers 45+, note dialog 50). */
+	z-index: 40;
 	border-bottom: 1px solid var(--border);
 	background: var(--surface-2);
+}
+/* The reading routes opt out: their own bar pins to the top and carries
+   back/contents/settings, so a second sticky bar would take ~56px of reading
+   height for the whole chapter and stack two bars over the text. */
+nav.appnav.appnav-static {
+	position: static;
 }
 /* The bar's content sits in a centred container (like Take Root's live nav),
    so the brand and controls are inset from the viewport edges and align with
@@ -658,6 +669,10 @@ nav.appnav .navctl {
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
+	/* Outside .navmenu now, so it survives the mobile collapse — the sign-in
+	   control used to disappear with the drawer, which made
+	   `account.signedOutNote` ("Sign in, top right") false on every phone. */
+	margin-inline-start: auto;
 }
 nav.appnav .navlinks a {
 	display: inline-flex;
@@ -704,7 +719,6 @@ nav.appnav .navmenu {
 /* Hamburger toggle — hidden until the mobile breakpoint. */
 nav.appnav .navtoggle {
 	display: none;
-	margin-inline-start: auto;
 	padding: 0.3rem;
 	background: none;
 	border: none;
@@ -732,8 +746,20 @@ nav.appnav .navtoggle:hover {
 		display: inline-flex;
 		align-items: center;
 	}
+	/* Visual order only — tab order follows the DOM, which is deliberately
+	   brand -> toggle -> links -> controls so opening the drawer lands the
+	   keyboard on the links. Visually the controls and toggle hold the bar and
+	   the links wrap beneath: a 100% basis breaks the line, so the menu has to
+	   come last here or the controls are pushed onto a third row. */
+	nav.appnav .navctl {
+		order: 1;
+	}
+	nav.appnav .navtoggle {
+		order: 2;
+	}
 	nav.appnav .navmenu {
 		display: none;
+		order: 3;
 		flex-basis: 100%;
 		flex-direction: column;
 		align-items: stretch;
@@ -757,18 +783,39 @@ nav.appnav .navtoggle:hover {
 		font-size: var(--fs-body);
 		border-radius: var(--radius-sm);
 	}
-	nav.appnav .navctl {
-		flex-wrap: wrap;
-		margin-top: 0.5rem;
-		padding-top: 0.65rem;
-		border-top: 1px solid var(--border);
+	/* The controls stay in the bar on a phone — only the links collapse — so
+	   their dropdowns still open from the bar's end and need no re-anchoring. */
+	nav.appnav .navtoggle {
+		margin-inline-start: 0.25rem;
 	}
-	/* In the drawer the gear/avatar sit at the left, so open their menus
-	   rightward (left-aligned) to avoid clipping off the viewport edge. */
-	nav.appnav .account-menu,
-	nav.appnav .prefs-menu {
-		inset-inline-end: auto;
-		inset-inline-start: 0;
+}
+
+/* The command palette's trigger. The hint is desktop-only — it is the one place
+   the shortcut is advertised, and it is meaningless without a keyboard. */
+nav.appnav .navsearch {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.3rem 0.6rem;
+	border: 1px solid var(--border-strong);
+	border-radius: 999px;
+	background: var(--surface);
+	color: var(--muted);
+	cursor: pointer;
+}
+nav.appnav .navsearch:hover {
+	color: var(--text);
+	border-color: var(--accent);
+}
+.navsearch-kbd {
+	display: none;
+	font-family: var(--font-sans);
+	font-size: var(--fs-micro);
+	letter-spacing: 0.02em;
+}
+@media (min-width: 768px) {
+	.navsearch-kbd {
+		display: inline;
 	}
 }
 

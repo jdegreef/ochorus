@@ -291,7 +291,7 @@
 	     nav is position:relative and scrolls away, so top-0 is free.
 	     -mx-5 px-5 lets the background span the container's padding. -->
 	<div
-		class="sticky top-0 z-20 -mx-5 mb-6 border-b border-border bg-bg px-5 pb-2.5 pt-3"
+		class="sticky z-20 -mx-5 mb-6 border-b border-border bg-bg px-5 pb-2.5 pt-3" style="top: var(--appnav-h, 0px)"
 	>
 	<!-- Controls: search · filter · sort -->
 	<div class="filter-row">
