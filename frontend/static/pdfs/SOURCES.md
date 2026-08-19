@@ -30,7 +30,6 @@ beside the rules, to be added when those books go live.
 | `godliness.pdf` | https://ochorus.com/wp-content/uploads/2026/07/GODLINESS-MRS.-CATHERINE-BOOTH.pdf |
 | `grace-for-grace-2.pdf` | https://ochorus.com/wp-content/uploads/2025/08/Grace-For-Grace-By-Watchman-Nee-1.pdf |
 | `he-holds-my-tomorrows.pdf` | https://ochorus.com/wp-content/uploads/2025/08/He-Holds-me-Tomorrows-Gareth-Evans-1.pdf |
-| `how-to-manage-a-library.pdf` | https://ochorus.com/wp-content/uploads/2025/12/A-Guide-on-How-to-Manage-a-Library-final.-1.pdf |
 | `humility-2.pdf` | https://ochorus.com/wp-content/uploads/2025/08/Humility-Andrew-Murray-2.pdf |
 | `if.pdf` | https://ochorus.com/wp-content/uploads/2026/02/IF-Amy-Carmichael.pdf |
 | `jesus-himself-2.pdf` | https://ochorus.com/wp-content/uploads/2025/08/Jesus-Himself-Andrew-Murray-2.pdf |

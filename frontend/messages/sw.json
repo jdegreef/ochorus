@@ -339,6 +339,8 @@
   "author_themes": "Mada",
   "author_empty": "Bado hakuna vitabu wala mahubiri katika maktaba kwa mwandishi huyu.",
   "author_meta_fallback": "%name% kwenye Ochorus — vitabu vya Kikristo vya kale bila malipo.",
+  "book_meta_fallback": "%title% na %name% — soma bure kwenye Ochorus.",
+  "sermon_meta_fallback": "%title% — mahubiri ya %name%.",
   "error_not_found_title": "Ukurasa haukupatikana",
   "error_generic_title": "Kuna hitilafu",
   "error_not_found_message": "Hatukuweza kupata ukurasa huo. Huenda umehamishwa, au kiungo kimepitwa na wakati.",
