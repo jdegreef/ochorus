@@ -865,10 +865,6 @@ class CitationRangeTests(SimpleTestCase):
         ("the-person-and-work-of-the-holy-spirit.en.json", "1:2-2"),
         # "John 16:12-1" — a truncated second verse.
         ("the-person-and-work-of-the-holy-spirit.en.json", "16:12-1"),
-        # "Romans 4:19—2 1" and "Acts 4:29—3 1" — a space injected into the
-        # second verse (21 and 31).
-        ("divine-healing.en.json", "4:19—2"),
-        ("divine-healing.en.json", "4:29—3"),
         # "Mark 8:32-25", in the list "Matthew 10:34-39; Mark 8:32-25; Luke
         # 17:32-34". Plainly wrong and NOT plainly repairable — 8:32-35 and
         # 8:34-35 are both plausible — so it needs the English source, not a

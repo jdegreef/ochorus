@@ -80,6 +80,17 @@ CORRECTIONS: dict[str, dict] = {
         # headings — leaves the "VI." in place. Give the clean title directly.
         "chapter_titles": {7: "Perfect through sufferings"},
     },
+    "the-unselfishness-of-god": {
+        # Ch.12's title lost the possessive apostrophe and its title-casing
+        # ("Friends testimonies"), and ch.13's second word was left lowercase.
+        # Both are title-caser misses, not the author: the bodies speak of
+        # "Friends' testimonies" and "Quaker scruples" in ordinary prose, and
+        # the house style for chapter titles is Title Case throughout.
+        "chapter_titles": {
+            12: "Friends' Testimonies Against Fiction, Music, And Art",
+            13: "Quaker Scruples",
+        },
+    },
     "stepping-stones-2": {
         # Ch.30's title misspells Millennium; the chapter body spells it
         # correctly. Found by the English audit. This lives here rather than in
@@ -199,6 +210,54 @@ BODY_CORRECTIONS: dict[str, dict] = {
             11: "F",  # F(riends, if now you have begun…)
         },
     },
+    "divine-healing": {
+        # OCR damage in the English, found by the pt translator, who rendered
+        # the intended word correctly throughout — so these close a gap between
+        # the editions rather than opening one. The digit ZERO standing in for
+        # a capital O is this book's signature defect.
+        "replacements": [
+            ("Bless the Lord, 0 my soul", "Bless the Lord, O my soul"),
+            ("0 arm of the Lord", "O arm of the Lord"),
+            ("cry unto Hun day", "cry unto Him day"),
+            ("Let us. try to understand", "Let us try to understand"),
+            ("to ask he Lord", "to ask the Lord"),
+            ("signs and w6nders", "signs and wonders"),
+            ("we may torn part of them", "we may form part of them"),
+            ("extends it~ powerful", "extends its powerful"),
+            ("Un-confessed sin", "Unconfessed sin"),
+            # Numerals the extractor split, and one colon it moved. Left as a
+            # literal each time rather than a rule: a space inside a reference
+            # is period typography in the 17c texts and an artifact here, and
+            # nothing mechanical separates the two.
+            ("Mark 5 :25", "Mark 5:25"),
+            ("Acts 4:29\u20143 1", "Acts 4:29\u201431"),
+            ("Romans 4:19\u20142 1", "Romans 4:19\u201421"),
+            # A closing curly quote the text layer rendered as a tilde pair,
+            # and a quotation that opens single and closes double with no
+            # terminal stop. Both inside quotations of Matthew 17.
+            ("impossible to you~~", "impossible to you\u201d"),
+            (
+                "us: \u2018Because of your unbelief\u201d The",
+                "us: \u201cBecause of your unbelief.\u201d The",
+            ),
+        ],
+    },
+    "the-gospel-of-healing": {
+        # The same digit-zero defect as divine-healing, in the same quotation
+        # of Psalm 103. Found while fixing that book; the two were extracted
+        # from the same kind of scan.
+        "replacements": [("Bless the Lord, 0 my soul", "Bless the Lord, O my soul")],
+    },
+    "godliness": {
+        # ch01: "may be styled an Antinomian faith" — the sentence needs the
+        # verb, not the adverb.
+        "replacements": [("maybe styled an Antinomian", "may be styled an Antinomian")],
+    },
+    "jesus-himself-2": {
+        # ch01: a verse RANGE whose hyphen the extractor dropped, welding the
+        # two numbers together. The passage quoted is Luke 22:28-29.
+        "replacements": [("Luke 22: 2829", "Luke 22:28-29")],
+    },
     "the-unselfishness-of-god": {
         "replacements": [
             ("blesse d!", "blessed!"),
@@ -211,6 +270,36 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # ch2/ch19/ch23: drop cap fused to the word after it.
             ("<p>Iwas", "<p>I was"),
             ("<p>Ihave", "<p>I have"),
+            # The PDF layer splits words mid-token — a different artifact from
+            # the line-break hyphen, because there is no hyphen to rejoin on
+            # and so no rule can find them. Found by the pt translator, who
+            # rendered the intended word correctly in every case; these close
+            # the gap between the editions rather than opening one.
+            #
+            # The leading SPACE in " th e" is what makes the first pair safe:
+            # it fires only where "th" stands alone as a word, so the 19 "with
+            # e…" sequences in this book are untouched while all ten real ones
+            # ("far th e best", " th erefore", " th eir") are repaired.
+            (" th e", " the"),
+            ("unselfishne ss", "unselfishness"),
+            ("pray er of our Lord", "prayer of our Lord"),
+            ("He does the wo rks", "He does the works"),
+            ("of her te rror", "of her terror"),
+            ("my life have p assed", "my life have passed"),
+            ("clapping of h ands", "clapping of hands"),
+            ("there, bu t nothing", "there, but nothing"),
+            ("home again last nig ht", "home again last night"),
+            ("succeed beau tifully", "succeed beautifully"),
+            ("an accent of p ity", "an accent of pity"),
+            ("as wel l as she could", "as well as she could"),
+            ("my s ister says", "my sister says"),
+            ("better men and wom en", "better men and women"),
+            ("in ce rtain circles", "in certain circles"),
+            # Spaced hyphens the rejoin rule cannot reach: it anchors on a word
+            # character immediately before the hyphen, and here the space is on
+            # both sides.
+            ("\u201cgrown - ups", "\u201cgrown-ups"),
+            ("the best - loved man", "the best-loved man"),
         ],
     },
     "the-inner-chamber": {
@@ -225,6 +314,38 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # ch8/ch16: drop cap fused to the word after it (see the dropcap note).
             ("<p>Ithink", "<p>I think"),
             ("<p>Ithank", "<p>I thank"),
+            # OCR slips found by the hi translator, each settled by the sentence
+            # it sits in rather than by taste. Every pair carries enough context
+            # to be unique, so none can fire on a word the author meant.
+            ("this editorial consciousness", "this mediatorial consciousness"),
+            ("our personnel need", "our personal need"),
+            # "accumulation of Scripture knowledge only darkness and hardens":
+            # the sentence needs two verbs, and it already has the second.
+            ("only darkness and hardens", "only darkens and hardens"),
+            # ch15 is the chapter ON meditation and spells it correctly nine
+            # times; these four are the misses.
+            ("element of true mediation", "element of true meditation"),
+            ("J oshua. 1: 8", "Joshua. 1: 8"),
+            ("all too littell the case", "all too little the case"),
+            ("every promise implicity", "every promise implicitly"),
+            # Matthew 5:3, in a list that runs poor / meek / hungry — the
+            # beatitude order is what fixes which word was lost.
+            ("the poor in heart, the meek", "the poor in spirit, the meek"),
+            ("prejudices and prepositions", "prejudices and presuppositions"),
+            # ch21 argues from a SECOND inadequacy, not from a boast: "My
+            # importance is still greater" reverses the paragraph.
+            ("My importance is still greater", "My impotence is still greater"),
+            # ch22's epigraph carries an explicit Matthew 6:10 citation, so the
+            # crib governed every translation and all five print "Thy/Your
+            # kingdom come". The English is the only edition that is wrong.
+            (
+                "Our kingdom come, Your will be done",
+                "Your kingdom come, Your will be done",
+            ),
+            # ch31 says "fullness of God" correctly three other times.
+            ("all the fitness of God", "all the fullness of God"),
+            # ch01, quoting Isaiah 27:3: "I will water it every moment".
+            ("I will wter it every mom", "I will water it every moment"),
         ],
     },
     "the-body-of-christ-teens": {
@@ -380,7 +501,12 @@ BODY_CORRECTIONS: dict[str, dict] = {
     # REJOIN into a real word: "L"+"ORD" is LORD, where "A"+"SHORT" is not a
     # word and is just a small-caps opening.
     "he-holds-my-tomorrows": {
-        "replacements": [("L ORD", "LORD")],
+        "replacements": [
+            ("L ORD", "LORD"),
+            # A name, so it is fixed rather than left as printed (english-qa's
+            # misspelling rule). The book spells it correctly elsewhere.
+            ("To Nicodemas He said", "To Nicodemus He said"),
+        ],
     },
     "stepping-stones-2": {
         "replacements": [
