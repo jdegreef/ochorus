@@ -342,17 +342,33 @@ class ScriptureSearchTests(TestCase):
         self.assertEqual(len(results), 1)
 
     def test_ranked_order_is_the_scan_order_not_the_databases(self):
-        # The winners are fetched with one pk__in query, which returns rows in
-        # whatever order the database likes — they have to be put back into the
-        # (sort_order, title) order the scan chose. A whole-chapter query is the
-        # case that returns more than one.
+        """Winners are fetched with one ``pk__in`` query, which returns rows in
+        whatever order the database likes — they have to be put back into the
+        (sort_order, title) order the scan chose.
+
+        Asserted on the function rather than through ``search_library``: end to
+        end, "John 15" also matches both sermons' ``scripture_ref`` by full text,
+        so on Postgres they arrive via the text path and the scripture path never
+        ranks them at all. (SQLite's icontains fallback behaves differently,
+        which is exactly the kind of difference an end-to-end order assertion
+        would be pinning by accident.)
+        """
+        cs = Author.objects.get(slug="cs")
         Sermon.objects.create(
-            author=Author.objects.get(slug="cs"), slug="fruit", language="en",
-            title="A Sermon On Fruit", scripture_ref="John 15:5", sort_order=0,
-            body_html="<p>Much fruit.</p>",
+            author=cs, slug="fruit", language="en", title="A Sermon On Fruit",
+            scripture_ref="John 15:5", sort_order=0, body_html="<p>Much fruit.</p>",
         )
-        slugs = [r["sermon_slug"] for r in self.search("John 15") if r["type"] == "sermon"]
-        self.assertEqual(slugs, ["fruit", "the-vine"])
+        Sermon.objects.filter(slug="the-vine").update(sort_order=1)
+
+        eligible = Sermon.objects.filter(is_published=True, language="en")
+        hits = search_module._scripture_sermon_hits("John 15", eligible, [])
+        self.assertEqual([h["sermon_slug"] for h in hits], ["fruit", "the-vine"])
+
+        # And the scan's order wins over the database's, not the reverse: flip
+        # sort_order and the same two rows come back the other way round.
+        Sermon.objects.filter(slug="fruit").update(sort_order=2)
+        hits = search_module._scripture_sermon_hits("John 15", eligible, [])
+        self.assertEqual([h["sermon_slug"] for h in hits], ["the-vine", "fruit"])
 
     def test_reference_scan_does_not_load_every_sermon_body(self):
         # The reference test needs one short field per sermon, and only the
