@@ -1,0 +1,62 @@
+{
+ "kind": "book",
+ "slug": "the-unselfishness-of-god",
+ "language": "pt",
+ "job_issue": 591,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "1 John 5:14",
+   "status": "mined",
+   "source_file": "baptism-with-the-holy-spirit.pt.json"
+  },
+  {
+   "reference": "1 John 2:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 5:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 15:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 20:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 3:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 10:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 19:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 3:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 3:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 3:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 6:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 7:14",
+   "status": "self_rendered"
+  }
+ ]
+}

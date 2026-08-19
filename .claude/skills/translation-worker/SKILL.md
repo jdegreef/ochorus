@@ -1262,3 +1262,91 @@ archaic spelling and period punctuation are the text, not defects in it.
   language on this list, because postpositions are separate words; a session
   borrowing any existing band for hi would compress a correct file. Treat the
   hi figures as observational until a second batch confirms them.
+- **The hi BOOK-CHAPTER band now exists: n=106, p05 1.101, p95 1.210, mean 1.155**
+  (the ten-book batch of 2026-08-19, jobs #591/#592/#595/#624/#656/#690-#694 —
+  the first Hindi books the library has carried). Per book: the-inner-chamber
+  1.091-1.206 (n=36), waiting-on-god 1.101-1.210 (n=35), he-holds-my-tomorrows
+  1.113-1.181 (n=18), clothed-with-strength 1.111-1.252 (n=15), jesus-himself-2
+  1.137 (n=2). That sits ABOVE the hi *sermon* figures (1.084-1.150) recorded
+  earlier, so the two are not interchangeable. Same batch: **ar books ran
+  0.661-0.796, mean 0.723 over 51 chapters** — below the ar corpus band's 0.732
+  floor, on two books whose completeness was verified block-by-block, which is
+  more evidence that the floor is a per-(language x work) observation and never
+  a gate. **pt ran 0.913-1.030, mean 0.976 (n=103)**, pulled down by
+  `divine-healing` at 0.906-0.975: the most quotation-dense book in the batch,
+  exactly as the quotation-density predictor says.
+- **A batch of TEN BOOKS is a different animal from a batch of ten jobs, and the
+  thing that scales badly is CONVENTION DRIFT, not translation** (2026-08-19,
+  260 chapters, ~115 translator agents). Per-chapter validation caught one
+  structural failure in 260 (a nested `<i><i></i></i>` where the source had
+  siblings). What actually needed managing was that 32 chapters of one book,
+  translated by ten agents who cannot see each other, must agree on a hundred
+  small decisions. What worked: **a per-book CONVENTIONS FILE in the scratchpad
+  that every later agent reads and appends to.** The first two or three chapters
+  fix the vocabulary; the file pins it; agents 4..N follow it instead of
+  re-deciding. Sessions then began correcting each other through it — one caught
+  a settled rule mid-run and re-ran three finished chapters to conform, another
+  refuted a sibling's analogy with evidence from the fixture directory. Write the
+  file after the first batch of any book over ~10 chapters, and tell every later
+  prompt to read it. It is cheaper than reconciling 90 chapters of drift.
+- **Ask the translators to WRITE THEIR REPORT TO A FILE, not just return it.**
+  With 115 agents the returned messages do not survive the orchestrator's
+  context, and the unverified-quotation list is the one artifact the reviewer
+  needs. `$S/reports/<slug>.<lang>/chNN.md`, one per chapter. This is also what
+  makes the next entry possible.
+- **Three translators independently reporting the same odd symptom is how you
+  find a bug in YOUR OWN pipeline.** Two reported a stray space before the danda
+  in IRV verses and preserved it byte-for-byte on the copy-don't-improve rule; a
+  third closed it; a fourth flagged the disagreement. It was not the IRV: the
+  crib builder substituted stripped `<note>` elements with a SPACE, injecting
+  whitespace into **52 of 658** verses. Two more of my own bugs surfaced the same
+  way — verse text run past `<verse eid=…/>` swallowed the IRV's own SECTION
+  HEADINGS into 39 verses, and `<char style="bdit"/"xt">` cross-reference
+  apparatus rode along on 98 more. Strip notes with `''` not `' '`; stop at the
+  eid marker; drop the xt/bdit spans. When several agents report the same strange
+  thing about the source, suspect the tooling before the source.
+- **Fetch the WHOLE Bible up front, not the books your detector found.** The
+  45-book subset the citation detector implied left Job, 2 Timothy, 2 Kings and
+  Amos missing, which forced four verses — including one chapter's central proof
+  text — to be composed rather than quoted. All 66 USX files are a single
+  `xargs -P8 curl` and about 13 MB. There is no reason to fetch a subset.
+- **Tell the translators the full Bible is on disk and they will use it.** The
+  per-chapter crib only covers explicit `Book C:V` citations, so devotional
+  authors' constant uncited quoting leaves it thin or empty. Once the brief said
+  "look it up in `$S/crib/<lang>_verses.json` / `$S/usx_hi/` and paste it
+  byte-for-byte", agents resolved dozens of uncribbed quotations verbatim per
+  chapter. Measured over the finished corpus: ar 89/108 of godliness's references
+  and hi 79/92 of the-inner-chamber's are verbatim Bible text. That is the single
+  highest-leverage line in the brief.
+- **Derive the translation notes by MEASUREMENT, not by parsing the reports.**
+  Sixty agents write sixty prose styles; a parser over them is guesswork. Instead
+  ask a mechanical question per reference — *does the translated body actually
+  contain this verse's wording?* — comparing against the Bible on disk (ar/hi,
+  diacritic-insensitive) or the mined corpus blocks (pt). It is reproducible,
+  it is honest about its own threshold, and it agreed with the translators'
+  own crib citations where they overlapped. 1,410 rows across ten books.
+  Note the two-value `TranslationNote.Status` has no state for "verbatim from
+  the language's Bible": recorded as `mined` with `source_file` naming the
+  edition ("Van Dyck (arb-vd) Bible text"), which cannot be mistaken for a
+  corpus file. A third status would be more honest if this recurs.
+- **The verse-consistency ratchet's false positives have a SHAPE: different
+  clauses of one verse.** Of 12 references it flagged, 11 were "born of the
+  flesh" vs "born of the Spirit" (John 3:6), "Who art thou, Lord?" vs "I am
+  Jesus whom thou persecutest" (Acts 9:5), a quotation with vs without the
+  author's bracketed gloss, and so on — matching them would degrade an accurate
+  quotation into a paraphrase. Exactly ONE was real: `divine-healing.pt` ch07
+  quoted only "bare our sickness" and used the word ch19 needs for *infirmities*
+  in the same verse. Fix the real one, pin the rest, and say which is which in
+  the commit — and note the ch19 translator had already identified it and named
+  ch07 as the file to change, which is what the reports are for.
+- **Do not normalise a running head before checking the ENGLISH.** `waiting-on-god`
+  has THREE head variants across its 35 chapters — "WAITING ON GOD" (29),
+  "WAITING FOR GOD" (ch12 only), "WAITING ON THE LORD" (ch27 only). Both the ar
+  and hi editions distinguished all three independently, with no instruction to.
+  I twice flagged the variation as drift to be normalised; normalising would have
+  BROKEN correct work. Same for the contents list: of the entries that disagreed
+  with the chapter they name, three disagree **in the English too** (day 16 "And
+  His Light" vs "For His Light", day 23's hyphen, day 31 "Only" vs "Moment by
+  Moment") and must be mirrored, while the rest were genuine drift and were
+  aligned. Diff the English pairs FIRST; it is the difference between
+  reconciliation and vandalism.
