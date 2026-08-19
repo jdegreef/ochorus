@@ -992,7 +992,7 @@
 		     panel two-thirds empty, because the verses inside are capped to a
 		     readable measure and the panel was not. -->
 		<div class="answer-measure mt-6 rounded-card border-s-4 border-accent bg-accent-soft p-4">
-			<p class="text-eyebrow font-bold uppercase tracking-[0.1em] text-accent">
+			<p class="eyebrow text-accent">
 				{t('reader.scripture')}
 			</p>
 			<p class="scripture-answer-ref">{scriptureAnswer.reference}</p>
@@ -1021,7 +1021,7 @@
 						).replace('%count%', String(verses.length))}{/if}
 				</button>
 			{/if}
-			<p class="mt-2 text-eyebrow uppercase tracking-[0.08em] text-muted">
+			<p class="eyebrow mt-2 text-muted">
 				{scriptureAnswer.version}
 			</p>
 

@@ -748,19 +748,25 @@ nav.appnav .navtoggle:hover {
 	color: var(--muted);
 }
 
+/* The EYEBROW — the kicker above a page title, a card title, a popover heading.
+   Distinct from .section-label above, which labels a block of content within a
+   page and is a step larger.
+
+   This existed as 61 hand-written copies across 36 files, at four sizes, two
+   weights and ~11 letter-spacings (0.02em to 0.2em) — the app's most repeated
+   micro-pattern, and no two of them matched. STYLE_GUIDE §2 fixes the recipe at
+   0.75rem / 0.08em / 600; this is that, once.
+
+   Colour is deliberately NOT set here. These component classes are unlayered,
+   so a `text-accent` beside the class would silently lose — and an eyebrow is
+   accent above a page title (there it is the page's identity), muted in a
+   popover, and white on a cover scrim. Every call site states its own colour. */
 .eyebrow {
 	font-size: var(--fs-eyebrow);
 	line-height: 1.4;
 	font-weight: 600;
 	text-transform: uppercase;
 	letter-spacing: 0.08em;
-	color: var(--muted);
-}
-.eyebrow.is-accent {
-	color: var(--accent);
-}
-.eyebrow.is-hue {
-	color: var(--eyebrow-hue, var(--muted));
 }
 
 /* ── Shelf cards ───────────────────────────────────────────────────────────

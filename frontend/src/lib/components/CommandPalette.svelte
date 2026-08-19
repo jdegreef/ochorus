@@ -185,7 +185,7 @@
 									class:bg-surface-2={it.key === activeKey}
 								>
 									<span
-										class="w-16 shrink-0 text-micro font-semibold uppercase tracking-wide text-muted"
+										class="eyebrow w-16 shrink-0 text-muted"
 									>
 										{it.kind === 'cmd' ? t('search.palettePages') : it.label}
 									</span>

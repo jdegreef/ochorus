@@ -248,7 +248,7 @@
 		aria-label={t('sermon.outline')}
 		use:focusTrap={{ onEscape: () => (outlineOpen = false) }}
 	>
-		<p class="outline-title">{t('sermon.outline')}</p>
+		<p class="outline-title eyebrow">{t('sermon.outline')}</p>
 		<ul>
 			{#each outline as s (s.id)}
 				<li>
@@ -269,7 +269,7 @@
      the section you're reading. The top-bar toggle takes over below 1200px. -->
 {#if outline.length >= 2 && !readerUi.focus}
 	<nav class="outline-rail" aria-label={t('sermon.outline')}>
-		<p class="outline-rail-title">{t('sermon.outline')}</p>
+		<p class="outline-rail-title eyebrow">{t('sermon.outline')}</p>
 		<ul>
 			{#each outline as s (s.id)}
 				<li>
@@ -300,7 +300,7 @@
 		>
 	</nav>
 
-	<p class="mb-1 text-small uppercase tracking-wider text-muted">
+	<p class="eyebrow mb-1 text-muted">
 		{t('search.typeSermon')} · {readingTime(sermon.word_count)}{#if year} · {year}{/if}{#if sermon.difficulty}&nbsp;·
 			<span title={t('reader.difficulty')}>{t(`reader.difficulty_${sermon.difficulty}`)}</span>{/if}
 	</p>
@@ -332,13 +332,13 @@
 	<!-- Preaching text: the reference, and its verse(s) when available -->
 	{#if sermon.scripture_ref}
 		<div class="text-card">
-			<p class="text-card-eyebrow">{t('sermon.text')}</p>
+			<p class="text-card-eyebrow eyebrow">{t('sermon.text')}</p>
 			<p class="text-card-ref">{sermon.scripture_ref}</p>
 			{#if preachingText?.verses?.length}
 				<p class="text-card-verse">
 					{#each preachingText.verses as v (v.number)}{v.text}{' '}{/each}
 				</p>
-				<p class="text-card-version">{preachingText.version}</p>
+				<p class="text-card-version eyebrow">{preachingText.version}</p>
 			{/if}
 		</div>
 	{/if}
@@ -363,7 +363,7 @@
 	     whether this sermon is the one they need right now. -->
 	{#if sermon.summary}
 		<div class="mb-8 rounded-card border border-border bg-surface p-4">
-			<p class="mb-1.5 text-micro font-bold uppercase tracking-[0.1em] text-accent">
+			<p class="eyebrow mb-1.5 text-accent">
 				{t('sermon.inBrief')}
 			</p>
 			<p class="text-small leading-relaxed text-muted">{sermon.summary}</p>
@@ -387,7 +387,7 @@
 	     scripture search — so scripture is a navigation surface, not just text. -->
 	{#if sermon.scripture_refs?.length}
 		<div class="mt-10 flex flex-wrap items-center gap-2 border-t border-border pt-5">
-			<span class="text-small font-semibold uppercase tracking-wide text-muted">
+			<span class="eyebrow text-muted">
 				{t('sermon.scriptureIndex')}
 			</span>
 			{#each sermon.scripture_refs as ref (ref)}
@@ -405,7 +405,7 @@
 	     and topic pages surface; a reader moved by it can find kindred works. -->
 	{#if sermon.topics?.length}
 		<div class="mt-4 flex flex-wrap items-center gap-2">
-			<span class="text-small font-semibold uppercase tracking-wide text-muted">
+			<span class="eyebrow text-muted">
 				{t('sermon.topics')}
 			</span>
 			{#each sermon.topics as topic (topic.slug)}
@@ -428,7 +428,7 @@
 					href={localizeHref(`/sermons/${sermon.prev.slug}`)}
 					class="group flex-1 rounded-card border border-border p-3 hover:border-accent hover:no-underline"
 				>
-					<div class="text-micro uppercase tracking-wide text-muted">← {t('reader.previous')}</div>
+					<div class="eyebrow text-muted">← {t('reader.previous')}</div>
 					<div class="mt-0.5 text-small font-semibold text-text group-hover:text-accent">
 						{sermon.prev.title}
 					</div>
@@ -439,7 +439,7 @@
 					href={localizeHref(`/sermons/${sermon.next.slug}`)}
 					class="group flex-1 rounded-card border border-border p-3 text-end hover:border-accent hover:no-underline"
 				>
-					<div class="text-micro uppercase tracking-wide text-muted">{t('reader.next')} →</div>
+					<div class="eyebrow text-muted">{t('reader.next')} →</div>
 					<div class="mt-0.5 text-small font-semibold text-text group-hover:text-accent">
 						{sermon.next.title}
 					</div>
@@ -514,9 +514,6 @@
 	}
 	.text-card-eyebrow {
 		font-size: var(--fs-micro);
-		font-weight: 700;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
 		color: var(--accent);
 	}
 	.text-card-ref {
@@ -535,8 +532,6 @@
 	.text-card-version {
 		margin-top: 0.45rem;
 		font-size: var(--fs-micro);
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
 		color: var(--muted);
 	}
 
@@ -563,9 +558,6 @@
 	.outline-title {
 		padding: 0.35rem 0.6rem;
 		font-size: var(--fs-micro);
-		font-weight: 700;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
 		color: var(--muted);
 	}
 	.outline-item {
@@ -613,9 +605,6 @@
 	.outline-rail-title {
 		padding: 0 0.6rem 0.4rem;
 		font-size: var(--fs-micro);
-		font-weight: 700;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
 		color: var(--muted);
 	}
 	.outline-rail-item {

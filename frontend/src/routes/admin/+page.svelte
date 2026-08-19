@@ -133,7 +133,7 @@
 <div class="mx-auto max-w-6xl px-5 py-10">
 	<header class="mb-10 flex flex-wrap items-end justify-between gap-4">
 		<div>
-			<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">Admin</p>
+			<p class="eyebrow mb-2 text-accent">Admin</p>
 			<h1 class="text-display">Content dashboard</h1>
 			<p class="mt-2 text-body text-muted">A snapshot of the library — quantities, languages and health.</p>
 		</div>
@@ -222,7 +222,7 @@
 			<div class="overflow-x-auto rounded-2xl border border-border bg-surface">
 				<table class="w-full min-w-[44rem] border-collapse text-body">
 					<thead>
-						<tr class="border-b border-border text-small uppercase tracking-wide text-muted">
+						<tr class="eyebrow border-b border-border text-muted">
 							<th class="px-4 py-3 text-left font-semibold">Language</th>
 							<th class="px-4 py-3 text-right font-semibold">Books</th>
 							<th class="px-4 py-3 text-right font-semibold">Chapters</th>

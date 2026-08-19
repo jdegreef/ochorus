@@ -153,14 +153,6 @@
 		--chip-size: 3.9rem;
 		--chip-hue: var(--topic);
 	}
-	.section-label {
-		font-size: var(--fs-micro);
-		font-weight: 600;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
-		color: var(--color-muted);
-		margin-bottom: 0.9rem;
-	}
 	/* A themed Scripture epigraph, set off by an accent rule.
 
 	   No max-width: the 34rem cap stopped the epigraph a third of the way across

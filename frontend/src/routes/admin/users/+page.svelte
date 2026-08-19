@@ -60,7 +60,7 @@
 <div class="mx-auto max-w-5xl px-5 py-10">
 	<header class="mb-6 flex flex-wrap items-end justify-between gap-3">
 		<div>
-			<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">Admin</p>
+			<p class="eyebrow mb-2 text-accent">Admin</p>
 			<h1 class="text-display">Users</h1>
 			<p class="mt-2 text-body text-muted">Account growth and make-up. Aggregate counts only — no personal data.</p>
 		</div>

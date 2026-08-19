@@ -310,7 +310,7 @@
 			{/if}
 		{/snippet}
 		<header class="mb-8 mt-3">
-			<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">Admin · Language</p>
+			<p class="eyebrow mb-2 text-accent">Admin · Language</p>
 			<h1 class="text-display">
 				{d.language.native_name}
 				{#if d.language.native_name !== d.language.name}<span class="text-muted">· {d.language.name}</span>{/if}
@@ -395,7 +395,7 @@
 					</ul>
 
 					<div class="border-t border-border pt-3">
-						<p class="mb-1 text-small font-semibold uppercase tracking-wide text-muted">
+						<p class="section-label">
 							The bar for this language
 						</p>
 						<p class="mb-3 text-small text-muted">
@@ -555,7 +555,7 @@
 				{/if}
 				{#if shown.todoBooks.length}
 					<div class="mt-4 border-t border-border pt-3">
-						<p class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">Next to work on</p>
+						<p class="section-label">Next to work on</p>
 						{#if queueError}
 							<p class="mb-2 text-small text-warning">{queueError}</p>
 						{/if}
@@ -591,7 +591,7 @@
 				{/if}
 				{#if shown.todoBios.length}
 					<div class="mt-4 border-t border-border pt-3">
-						<p class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">
+						<p class="section-label">
 							Next to work on <span class="font-normal normal-case tracking-normal">· most-published authors first</span>
 						</p>
 						{#if queueError}
@@ -633,7 +633,7 @@
 				{/if}
 				{#if shown.todoSermons.length}
 					<div class="mt-4 border-t border-border pt-3">
-						<p class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">Next to work on</p>
+						<p class="section-label">Next to work on</p>
 						{#if queueError}
 							<p class="mb-2 text-small text-warning">{queueError}</p>
 						{/if}
@@ -671,7 +671,7 @@
 				{/if}
 				{#if shown.todoPlans.length}
 					<div class="mt-4 border-t border-border pt-3">
-						<p class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">Next to work on</p>
+						<p class="section-label">Next to work on</p>
 						{#if queueError}
 							<p class="mb-2 text-small text-warning">{queueError}</p>
 						{/if}
@@ -710,7 +710,7 @@
 				{/if}
 				{#if shown.todoTopics.length}
 					<div class="mt-4 border-t border-border pt-3">
-						<p class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">
+						<p class="section-label">
 							Hidden in this language ({fmt(shown.todoTopics.length)})
 						</p>
 						<p class="mb-2 text-small text-muted">

@@ -171,7 +171,7 @@
 								class="search-item"
 								onclick={close}
 							>
-								<span class="block text-micro uppercase tracking-wide text-muted">
+								<span class="eyebrow block text-muted">
 									{hit.order}. {hit.title}
 								</span>
 								<!-- snippet is HTML-escaped by highlightAround ($lib/highlight); only <mark> is added -->

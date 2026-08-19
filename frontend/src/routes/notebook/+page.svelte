@@ -249,7 +249,7 @@
 
 <div class="mx-auto max-w-2xl px-5 py-10">
 	<header class="mb-8">
-		<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">Ochorus</p>
+		<p class="eyebrow mb-2 text-accent">Ochorus</p>
 		<h1 class="text-display">{t('notebook.title')}</h1>
 		<p class="mt-2 text-body text-muted">{t('notebook.subtitle')}</p>
 	</header>
@@ -309,7 +309,7 @@
 				{#if bk.author}<p class="mb-3 text-small text-muted">{bk.author}</p>{/if}
 
 				{#if bk.bookmarks.length}
-					<h3 class="mb-2 mt-4 text-small font-semibold uppercase tracking-wide text-muted">
+					<h3 class="section-label mt-4">
 						🔖 {t('reader.bookmarks')}
 					</h3>
 					<ul class="space-y-2">
@@ -355,7 +355,7 @@
 
 		{#each filteredSermons as sm (sm.slug)}
 			<section class="mb-10">
-				<p class="mb-1 text-small font-semibold uppercase tracking-widest text-accent">
+				<p class="eyebrow mb-1 text-accent">
 					{t('search.typeSermon')}
 				</p>
 				<h2 class="text-h2">
@@ -385,7 +385,7 @@
 
 		{#each filteredBios as b (b.slug)}
 			<section class="mb-10">
-				<p class="mb-1 text-small font-semibold uppercase tracking-widest text-accent">
+				<p class="eyebrow mb-1 text-accent">
 					{t('bios.eyebrow')}
 				</p>
 				<h2 class="text-h2">

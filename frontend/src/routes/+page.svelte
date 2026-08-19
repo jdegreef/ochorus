@@ -90,7 +90,7 @@
 <!-- Hero -->
 <section class="border-b border-border bg-surface-2">
 	<div class="mx-auto max-w-4xl px-5 py-20 text-center">
-		<p class="mb-4 text-small font-semibold uppercase tracking-widest text-accent">
+		<p class="eyebrow mb-4 text-accent">
 			{t('home.heroEyebrow')}
 		</p>
 		<h1 class="text-display mx-auto mb-5 max-w-3xl">

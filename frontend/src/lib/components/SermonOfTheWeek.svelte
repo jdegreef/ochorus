@@ -50,7 +50,7 @@
 			href={localizeHref(`/sermons/${pick.slug}`)}
 			class="block rounded-card border border-border bg-surface-2 px-6 py-6 transition-colors hover:bg-surface hover:no-underline sm:px-8"
 		>
-			<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">
+			<p class="eyebrow mb-2 text-accent">
 				{t('home.sermonOfWeek')}
 			</p>
 			<h2 class="text-h2 mb-1">{pick.title}</h2>

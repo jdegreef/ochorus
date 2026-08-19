@@ -917,7 +917,7 @@
 	     mode it is display:contents (no effect); in page mode it becomes the
 	     translated CSS-column content and the surrounding chrome is hidden. -->
 	<div class="pager" bind:this={pager} style="--page-w:{pageW}px; --page-idx:{pageIndex}; --cols:{cols};">
-		<p class="mb-1 text-small uppercase tracking-wider text-muted">
+		<p class="eyebrow mb-1 text-muted">
 			{t('continue.chapter')} {chapter.order} · {readingTime(chapter.word_count)}
 			{#if chapter.is_modern_edition}
 				<span class="ms-1 text-accent">· {t('reader.modernEdition')}</span>
@@ -936,7 +936,7 @@
 				href={chapterHref(chapter.prev.order)}
 				class="btn btn-ghost flex-1 !flex-col !items-start gap-0.5 text-start"
 			>
-				<span class="text-micro uppercase tracking-wider text-muted">{t('reader.previous')}</span>
+				<span class="eyebrow text-muted">{t('reader.previous')}</span>
 				<span class="text-small">{chapter.prev.title}</span>
 			</a>
 		{:else}
@@ -947,7 +947,7 @@
 				href={chapterHref(chapter.next.order)}
 				class="btn btn-primary flex-1 !flex-col !items-end gap-0.5 text-end"
 			>
-				<span class="text-micro uppercase tracking-wider opacity-75">{t('reader.next')}</span>
+				<span class="eyebrow opacity-75">{t('reader.next')}</span>
 				<span class="text-small">{chapter.next.title}</span>
 			</a>
 		{:else}

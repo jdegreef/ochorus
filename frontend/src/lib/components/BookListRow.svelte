@@ -27,7 +27,7 @@
 			<span class="truncate text-body font-medium text-text">{book.title}</span>
 			{#if translated}
 				<span
-					class="shrink-0 rounded-full border border-border px-1.5 py-0.5 text-micro font-semibold uppercase tracking-wide text-muted"
+					class="eyebrow shrink-0 rounded-full border border-border px-1.5 py-0.5 text-muted"
 				>
 					{t('books.badgeTranslated')}
 				</span>

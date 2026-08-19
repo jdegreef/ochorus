@@ -78,7 +78,7 @@
 	{:else if book}
 		{@const b = book}
 		<header class="mb-6 mt-3">
-			<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">Admin · Work</p>
+			<p class="eyebrow mb-2 text-accent">Admin · Work</p>
 			<h1 class="text-display">{b.title}</h1>
 			<p class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-body text-muted">
 				<span>by <a href="/authors/{b.author.slug}" class="text-accent hover:underline">{b.author.name}</a></span>

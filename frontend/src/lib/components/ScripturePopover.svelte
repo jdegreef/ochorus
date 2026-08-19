@@ -37,7 +37,7 @@
 				{#each scripture.result.verses as v (v.number)}<sup class="scripture-num">{v.number}</sup
 					>{v.text}{' '}{/each}
 			</p>
-			<p class="mt-2 text-micro uppercase tracking-wider text-muted">{scripture.result.version}</p>
+			<p class="eyebrow mt-2 text-muted">{scripture.result.version}</p>
 		{:else}
 			<p class="mt-2 text-small text-muted">{t('reader.scriptureUnavailable')}</p>
 		{/if}

@@ -111,7 +111,7 @@
 		<nav class="toc-list" aria-label={t('reader.contents')}>
 			{#if bookmarks.list.length}
 				<div class="bm-section">
-					<p class="bm-heading">🔖 {t('reader.bookmarks')}</p>
+					<p class="bm-heading eyebrow">🔖 {t('reader.bookmarks')}</p>
 					<ul>
 						{#each bookmarks.list as bm (bm.id)}
 							<li class="bm-row">
@@ -234,9 +234,6 @@
 	.bm-heading {
 		padding: 0.75rem 1.25rem 0.25rem;
 		font-size: var(--fs-micro);
-		font-weight: 600;
-		text-transform: uppercase;
-		letter-spacing: 0.06em;
 		color: var(--muted);
 	}
 	.bm-row {

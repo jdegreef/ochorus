@@ -307,7 +307,7 @@
 		<!-- Step 2: review & publish -->
 		<div class="mt-6 rounded-card border border-border bg-surface p-6">
 			<div class="mb-4 flex items-center justify-between">
-				<span class="text-small font-semibold uppercase tracking-wider text-accent">
+				<span class="eyebrow text-accent">
 					Review {preview.kind}
 				</span>
 				<span class="text-small text-muted">

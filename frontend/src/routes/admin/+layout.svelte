@@ -35,7 +35,7 @@
 	>
 		<div class="px-5 pt-5">
 			<a href="/admin" class="inline-block hover:no-underline">
-				<span class="block text-small font-semibold uppercase tracking-widest text-accent">Ochorus</span>
+				<span class="eyebrow block text-accent">Ochorus</span>
 				<span class="block text-h3 leading-tight text-text">Admin</span>
 			</a>
 		</div>

@@ -82,7 +82,7 @@
 		<!-- "Fresh picks daily" divider -->
 		<div class="mx-auto my-12 flex max-w-md items-center gap-4 text-muted">
 			<span class="h-px flex-1 bg-gold/30"></span>
-			<span class="text-small font-semibold whitespace-nowrap uppercase tracking-[0.2em]">
+			<span class="eyebrow whitespace-nowrap">
 				{t('error.picksLabel')}
 			</span>
 			<span class="h-px flex-1 bg-gold/30"></span>
@@ -111,7 +111,7 @@
 									class="flex aspect-[3/4] flex-col justify-between rounded-card p-3 shadow-sm transition-transform group-hover:-translate-y-1 sm:p-4"
 									style="background: {cover(book.cover_color || '#3b5bdb')}"
 								>
-									<span class="text-micro font-semibold uppercase tracking-wider text-white/70">
+									<span class="eyebrow text-white/70">
 										{book.author.name.split(' ').slice(-1)}
 									</span>
 									<span

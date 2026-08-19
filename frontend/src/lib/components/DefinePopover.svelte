@@ -42,7 +42,7 @@
 					{entry.text}
 				</p>
 			{/each}
-			<p class="mt-2 text-micro uppercase tracking-wider text-muted">
+			<p class="eyebrow mt-2 text-muted">
 				{define.result.source === 'glossary' ? t('reader.glossarySource') : t('reader.dictionarySource')}
 			</p>
 		{:else}

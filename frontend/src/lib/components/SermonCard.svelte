@@ -14,7 +14,7 @@
 <a class="sermon-card" href={localizeHref(`/sermons/${sermon.slug}`)}>
 	<span class="emblem emblem-chip"><Emblem name={emblemForSermon(sermon.slug)} /></span>
 	<span class="min-w-0 flex-1">
-		<span class="chip">{t('sermons.label')}</span>
+		<span class="eyebrow sermon-label">{t('sermons.label')}</span>
 		<span class="title">{sermon.title}</span>
 		{#if showAuthor}
 			<span class="author">{sermon.author.name}</span>
@@ -47,12 +47,9 @@
 		--chip-size: 2.75rem;
 		--chip-hue: var(--color-accent);
 	}
-	.chip {
+	.sermon-label {
 		display: inline-block;
 		font-size: var(--fs-micro);
-		font-weight: 600;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
 		color: var(--color-accent);
 	}
 	.title {

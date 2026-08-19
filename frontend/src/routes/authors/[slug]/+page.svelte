@@ -318,7 +318,7 @@
 	<!-- Topical shelves this author appears in: cross-navigation into browse. -->
 	{#if author.topics.length}
 		<div class="mx-auto mt-8 flex max-w-[40rem] flex-wrap items-center gap-2">
-			<span class="text-small font-semibold uppercase tracking-wide text-muted">
+			<span class="eyebrow text-muted">
 				{t('author.themes')}
 			</span>
 			{#each author.topics as topic (topic.slug)}
@@ -517,8 +517,8 @@
 		margin-bottom: 0.5rem;
 		font-family: var(--font-sans);
 		font-size: var(--fs-micro);
-		font-weight: 700;
-		letter-spacing: 0.09em;
+		font-weight: 600;
+		letter-spacing: 0.08em;
 		text-transform: uppercase;
 		color: var(--gold);
 	}
