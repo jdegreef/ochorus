@@ -12,7 +12,16 @@ on:
 
 concurrency:
   group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  # Superseding a PR push is the point of this — the older run tests code nobody
+  # will merge. On MAIN it is the opposite: cancelling means the merge that was
+  # just pushed gets no verdict at all, and main auto-deploys to production.
+  # That is not hypothetical. #973 merged on 2026-08-17 and its main run was
+  # CANCELLED by #967's and then #974's merging seconds later; the migration
+  # drift and the unkeyed {#each} it carried went unreported, and every branch
+  # cut from main failed `makemigrations --check` and `eslint` for two days.
+  # The failure was eventually visible on #974's run — nothing had reported on
+  # #973's own.
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
   test-and-build:
@@ -167,6 +176,34 @@ jobs:
       # blind to hydration, client-side routing and live API fetches, so a broken
       # frontend/backend contract could pass all of it (the review's drift
       # finding). Serves the build just produced and reuses the API already up.
+      # The browser download is the single most expensive thing in this workflow
+      # and it was repeated every run. Measured on 2026-08-19: 3m21s on one run
+      # and 26m55s on another — 27 of that run's 37 minutes, to enable an
+      # 8-second test suite. It is a ~150MB fetch whose speed depends entirely
+      # on the CDN that morning, which is why the range is so wide.
+      #
+      # Slow CI is not just a cost, it is a correctness problem here: #976 was
+      # merged four minutes BEFORE its own run finished. A gate people outrun is
+      # not a gate.
+      #
+      # Keyed on the lockfile, so a Playwright version bump re-downloads.
+      # restore-keys lets a near-miss reuse the previous browser directory —
+      # `playwright install` then fetches only what is actually missing rather
+      # than starting from empty.
+      - name: Frontend — cache Playwright browser
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('frontend/package-lock.json') }}
+          restore-keys: |
+            playwright-${{ runner.os }}-
+
+      # `--with-deps` is kept unconditionally: it installs OS packages via apt,
+      # which the cache above does not cover, and `playwright install` skips the
+      # download itself when the cached browser is already present. Dropping it
+      # on a cache hit would save ~30s and risk a missing shared library, which
+      # is a bad trade for a gate whose whole job is to catch what the other
+      # steps cannot see.
       - name: Frontend — install Playwright browser
         working-directory: frontend
         run: npx playwright install --with-deps chromium
