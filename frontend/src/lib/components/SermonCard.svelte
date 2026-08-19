@@ -14,7 +14,7 @@
 <a class="sermon-card" href={localizeHref(`/sermons/${sermon.slug}`)}>
 	<span class="emblem emblem-chip"><Emblem name={emblemForSermon(sermon.slug)} /></span>
 	<span class="min-w-0 flex-1">
-		<span class="chip">{t('sermons.label')}</span>
+		<span class="eyebrow sermon-label">{t('sermons.label')}</span>
 		<span class="title">{sermon.title}</span>
 		{#if showAuthor}
 			<span class="author">{sermon.author.name}</span>
@@ -33,9 +33,9 @@
 		gap: 0.75rem;
 		padding: 0.85rem 1rem;
 		border: 1px solid var(--color-border);
-		border-radius: var(--radius-card, 0.9rem);
+		border-radius: var(--radius-card);
 		background: var(--color-surface);
-		transition: border-color 0.15s, background 0.15s;
+		transition: border-color var(--duration-fast), background var(--duration-fast);
 	}
 	.sermon-card:hover {
 		border-color: var(--color-accent);
@@ -47,12 +47,9 @@
 		--chip-size: 2.75rem;
 		--chip-hue: var(--color-accent);
 	}
-	.chip {
+	.sermon-label {
 		display: inline-block;
-		font-size: 0.62rem;
-		font-weight: 600;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
+		font-size: var(--fs-micro);
 		color: var(--color-accent);
 	}
 	.title {
@@ -63,7 +60,7 @@
 	}
 	.author {
 		display: block;
-		font-size: 0.85rem;
+		font-size: var(--fs-small);
 		color: var(--color-muted);
 		margin-top: 0.1rem;
 	}
@@ -72,7 +69,7 @@
 		flex-wrap: wrap;
 		gap: 0.25rem 0.6rem;
 		margin-top: 0.35rem;
-		font-size: 0.78rem;
+		font-size: var(--fs-small);
 		color: var(--color-muted);
 	}
 	.ref {

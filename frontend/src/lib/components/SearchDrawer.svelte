@@ -143,13 +143,13 @@
 		<header class="border-b border-border px-5 py-4">
 			<div class="flex items-center justify-between gap-3">
 				<h2 class="text-h3 text-text">{t('reader.search')}</h2>
-				<button class="btn btn-ghost !px-2.5 !py-1" onclick={close} aria-label={t('a11y.close')}>✕</button>
+				<button class="btn btn-icon btn-ghost" onclick={close} aria-label={t('a11y.close')}>✕</button>
 			</div>
 			<input
 				bind:this={input}
 				bind:value={query}
 				type="search"
-				class="mt-3 w-full rounded-sm border border-border-strong bg-bg px-3 py-2 text-body text-text"
+				class="field mt-3 w-full"
 				placeholder={t('reader.searchPlaceholder')}
 				aria-label={t('reader.searchPlaceholder')}
 			/>
@@ -171,7 +171,7 @@
 								class="search-item"
 								onclick={close}
 							>
-								<span class="block text-[0.72rem] uppercase tracking-wide text-muted">
+								<span class="eyebrow block text-muted">
 									{hit.order}. {hit.title}
 								</span>
 								<!-- snippet is HTML-escaped by highlightAround ($lib/highlight); only <mark> is added -->
@@ -221,9 +221,9 @@
 		flex-direction: column;
 		background: var(--surface);
 		border-inline-start: 1px solid var(--border);
-		box-shadow: -12px 0 40px rgb(0 0 0 / 0.25);
+		box-shadow: var(--shadow-drawer);
 		--search-slide-from: 1.5rem;
-		animation: search-in 0.18s ease-out;
+		animation: search-in var(--duration-fast) ease-out;
 	}
 	:global([dir='rtl']) .search-panel {
 		box-shadow: 12px 0 40px rgb(0 0 0 / 0.25);

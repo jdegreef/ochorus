@@ -300,14 +300,14 @@
 						<div class="flex flex-wrap items-center gap-2">
 							<input
 								id="displayName"
-								class="settings-select !max-w-xs flex-1"
+								class="field max-w-48 flex-1"
 								bind:value={nameInput}
 								oninput={() => (nameDirty = true)}
 								placeholder={t('settings.displayNamePlaceholder')}
 								maxlength="120"
 								autocomplete="name"
 							/>
-							<button class="btn btn-ghost !py-1.5" disabled={nameSaving || !nameChanged} onclick={saveName}>
+							<button class="btn btn-ghost py-1.5" disabled={nameSaving || !nameChanged} onclick={saveName}>
 								{nameSaving ? t('settings.saving') : t('settings.save')}
 							</button>
 						</div>
@@ -318,7 +318,7 @@
 						<span class="text-small text-muted">
 							{t('settings.lastSynced')}: <span class="text-text">{relSynced}</span>
 						</span>
-						<button class="btn btn-ghost !py-1.5" disabled={syncing} onclick={syncNow}>
+						<button class="btn btn-ghost py-1.5" disabled={syncing} onclick={syncNow}>
 							{syncing ? t('settings.syncing') : t('settings.syncNow')}
 						</button>
 					</div>
@@ -351,7 +351,7 @@
 					<div class="setting-sub mb-3">
 						{t('settings.clearDeviceSub')}{#if auth.user}{' '}{t('settings.clearDeviceSyncNote')}{/if}
 					</div>
-					<button class="btn btn-ghost" class:!text-danger={clearConfirm} onclick={clearDevice}>
+					<button class="btn btn-ghost" class:text-danger={clearConfirm} onclick={clearDevice}>
 						{clearConfirm ? t('settings.resetConfirm') : t('settings.clearDeviceButton')}
 					</button>
 
@@ -382,7 +382,7 @@
 							<div class="setting-sub">{t('settings.languageSub')}</div>
 						</div>
 						<select
-							class="settings-select"
+							class="field max-w-48"
 							aria-label={t('nav.language')}
 							value={lang.current}
 							onchange={(e) => lang.choose((e.currentTarget as HTMLSelectElement).value)}
@@ -417,13 +417,13 @@
 					</div>
 					<div class="flex items-center gap-1">
 						<button
-							class="btn btn-ghost !px-2.5 !py-1"
+							class="btn btn-sm btn-ghost"
 							onclick={() => readerPrefs.bumpScale(-0.1)}
 							aria-label={t('a11y.smallerText')}>A−</button
 						>
 						<span class="w-12 text-center text-small text-muted">{Math.round(readerPrefs.scale * 100)}%</span>
 						<button
-							class="btn btn-ghost !px-2.5 !py-1 !text-base"
+							class="btn btn-sm btn-ghost text-base"
 							onclick={() => readerPrefs.bumpScale(0.1)}
 							aria-label={t('a11y.largerText')}>A+</button
 						>
@@ -439,11 +439,11 @@
 					<div class="flex items-center gap-2">
 						<input
 							type="time"
-							class="settings-select"
+							class="field max-w-48"
 							bind:value={reminderTime}
 							aria-label={t('settings.reminder')}
 						/>
-						<button class="btn btn-ghost !py-1.5 whitespace-nowrap" onclick={addReminder}>
+						<button class="btn btn-ghost py-1.5 whitespace-nowrap" onclick={addReminder}>
 							{t('settings.reminderAdd')}
 						</button>
 					</div>
@@ -476,7 +476,7 @@
 					{:else if voices.length}
 						<div class="flex items-center gap-2">
 							<select
-								class="settings-select"
+								class="field max-w-48"
 								aria-label={t('settings.voice')}
 								value={voiceValue}
 								onchange={(e) => listen.setVoice((e.currentTarget as HTMLSelectElement).value)}
@@ -486,7 +486,7 @@
 								{/each}
 							</select>
 							<button
-								class="btn btn-ghost !px-3 !py-1.5"
+								class="btn btn-ghost px-3 py-1.5"
 								aria-label={t('settings.preview')}
 								title={t('settings.preview')}
 								onclick={() => listen.preview(t('settings.voiceSample'), voiceValue)}
@@ -536,7 +536,7 @@
 						<div class="setting-sub">{t('settings.fontSub')}</div>
 					</div>
 					<select
-						class="settings-select"
+						class="field max-w-48"
 						aria-label={t('settings.font')}
 						value={readerPrefs.font}
 						onchange={(e) => readerPrefs.setFont((e.currentTarget as HTMLSelectElement).value as ReaderFont)}
@@ -554,7 +554,7 @@
 				<div class="mt-8 border-t border-border pt-6">
 					<div class="setting-label">{t('settings.resetPrefs')}</div>
 					<div class="setting-sub mb-4">{t('settings.resetPrefsSub')}</div>
-					<button class="btn btn-ghost" class:!text-danger={resetConfirm} onclick={resetPrefs}>
+					<button class="btn btn-ghost" class:text-danger={resetConfirm} onclick={resetPrefs}>
 						{resetConfirm ? t('settings.resetConfirm') : t('settings.resetPrefsButton')}
 					</button>
 				</div>
@@ -570,7 +570,7 @@
 							<div>
 								{#if streak > 0}
 									<div class="text-text">
-										<span class="text-h1 font-semibold" style="font-family: var(--font-display)">{streak}</span>
+										<span class="font-display text-h1 font-semibold">{streak}</span>
 										<span class="ms-1 text-body">{t('settings.streakLabel')}</span>
 									</div>
 								{:else}
@@ -598,7 +598,7 @@
 								<label class="flex items-center gap-2 text-small text-muted">
 									{t('settings.goalPerWeek')}
 									<select
-										class="rounded-md border border-border bg-surface px-2 py-1 text-text"
+										class="field max-w-48"
 										value={goal}
 										onchange={(e) => readingGoal.set(+e.currentTarget.value)}
 									>
@@ -625,14 +625,14 @@
 					<div class="grid grid-cols-3 gap-3 sm:grid-cols-6">
 						{#each statTiles as tile (tile.label)}
 							<div class="rounded-card border border-border bg-surface-2 px-3 py-4 text-center">
-								<div class="text-h2 font-semibold text-text" style="font-family: var(--font-display)">{tile.value}</div>
-								<div class="mt-0.5 text-[0.75rem] text-muted">{tile.label}</div>
+								<div class="font-display text-h2 font-semibold text-text">{tile.value}</div>
+								<div class="mt-0.5 text-eyebrow text-muted">{tile.label}</div>
 							</div>
 						{/each}
 					</div>
 
 					<!-- Recently reading -->
-					<h3 class="text-h3 mb-3 mt-9">{t('settings.recentReading')}</h3>
+					<h3 class="text-h3 mb-3 mt-8">{t('settings.recentReading')}</h3>
 					{#if history.length}
 						<ol class="divide-y divide-border">
 							{#each history as h (h.kind + ':' + h.slug)}
@@ -640,11 +640,11 @@
 									<a href={historyHref(h)} class="flex items-baseline gap-3 py-2.5 hover:no-underline">
 										<span class="flex-1 min-w-0">
 											<span class="block truncate text-body text-text">{h.title}</span>
-											<span class="block truncate text-[0.8rem] text-muted">
+											<span class="block truncate text-small text-muted">
 												{#if h.author}{h.author}{/if}{#if h.kind === 'book'} · {t('settings.chapterN')} {h.order}{/if}{#if h.finished} · {t('settings.statFinished')}{/if}
 											</span>
 										</span>
-										<span class="shrink-0 text-[0.8rem] text-muted">{relativeTime(h.at, lang.current, t('settings.syncJustNow'))}</span>
+										<span class="shrink-0 text-small text-muted">{relativeTime(h.at, lang.current, t('settings.syncJustNow'))}</span>
 									</a>
 								</li>
 							{/each}
@@ -657,13 +657,13 @@
 				{/if}
 
 				{#if offlineList.length}
-					<h3 class="text-h3 mb-3 mt-9">{t('settings.downloadsTitle')}</h3>
+					<h3 class="text-h3 mb-3 mt-8">{t('settings.downloadsTitle')}</h3>
 					<ol class="divide-y divide-border">
 						{#each offlineList as b (b.slug)}
 							<li class="flex items-baseline gap-3 py-2.5">
 								<a href={localizeHref(`/books/${b.slug}`)} class="min-w-0 flex-1 hover:no-underline">
 									<span class="block truncate text-body text-text">{b.title}</span>
-									<span class="block truncate text-[0.8rem] text-muted">
+									<span class="block truncate text-small text-muted">
 										{#if b.author}{b.author} · {/if}{b.chapterCount} {t('settings.downloadsChapters')}
 									</span>
 								</a>
@@ -704,18 +704,9 @@
 		color: var(--color-text);
 	}
 	.setting-sub {
-		font-size: 0.8rem;
+		font-size: var(--fs-small);
 		color: var(--color-muted);
 		margin-top: 0.1rem;
-	}
-	.settings-select {
-		border: 1px solid var(--color-border);
-		background: var(--color-surface-2);
-		color: var(--color-text);
-		border-radius: 0.6rem;
-		padding: 0.4rem 0.6rem;
-		font-size: 0.9rem;
-		max-width: 12rem;
 	}
 	.seg {
 		display: inline-flex;
@@ -730,7 +721,7 @@
 	.seg button {
 		border-radius: 999px;
 		padding: 0.3rem 0.75rem;
-		font-size: 0.85rem;
+		font-size: var(--fs-small);
 		color: var(--color-muted);
 		white-space: nowrap;
 	}

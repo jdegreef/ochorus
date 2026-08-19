@@ -342,7 +342,7 @@
 		<select
 			bind:value={sort}
 			onchange={syncUrl}
-			class="rounded-sm border border-border bg-surface px-2 py-1.5 text-small text-text sm:block"
+			class="field sm:block"
 			class:hidden={!filtersOpen}
 			aria-label={t('bios.sort')}
 		>
@@ -377,7 +377,7 @@
 					     Reveal first, then scroll; and with no href there is no dangling
 					     fragment in the static output. -->
 					<button
-						class="rounded px-1.5 py-0.5 font-semibold text-accent hover:bg-accent-soft"
+						class="rounded-sm px-1.5 py-0.5 font-semibold text-accent hover:bg-accent-soft"
 						onclick={() => jumpTo(firstByLetter.get(letter)!)}>{letter}</button
 					>
 				{:else}
@@ -437,7 +437,7 @@
 				>
 					<a
 						href={localizeHref(`/biographies/era/${g.era.id}`)}
-						class="!text-text hover:text-accent hover:no-underline">{t(g.era.k)}</a
+						class="text-text hover:text-accent hover:no-underline">{t(g.era.k)}</a
 					>
 					<!-- Same nowrap rule as the per-writer dates: a year range must never
 					     break across lines ("–" / "1499"). The longer era names make the

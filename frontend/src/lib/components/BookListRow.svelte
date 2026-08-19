@@ -20,14 +20,14 @@
 	data-testid="book-row"
 >
 	<div class="w-12 shrink-0 sm:w-14">
-		<BookCover {book} rounded="rounded-md" />
+		<BookCover {book} rounded="rounded-sm" />
 	</div>
 	<div class="min-w-0 flex-1">
 		<div class="flex items-center gap-2">
 			<span class="truncate text-body font-medium text-text">{book.title}</span>
 			{#if translated}
 				<span
-					class="shrink-0 rounded-full border border-border px-1.5 py-0.5 text-[0.6rem] font-semibold uppercase tracking-wide text-muted"
+					class="eyebrow shrink-0 rounded-full border border-border px-1.5 py-0.5 text-muted"
 				>
 					{t('books.badgeTranslated')}
 				</span>
@@ -37,10 +37,10 @@
 			<div class="truncate text-small text-muted">{book.author.name}</div>
 		{/if}
 		{#if book.subtitle}
-			<div class="truncate text-[0.8rem] italic text-muted">{book.subtitle}</div>
+			<div class="truncate text-small italic text-muted">{book.subtitle}</div>
 		{/if}
 	</div>
-	<div class="shrink-0 text-end text-[0.78rem] text-muted">
+	<div class="shrink-0 text-end text-small text-muted">
 		<div>{chapters}</div>
 		{#if book.word_count}<div>{readingTime(book.word_count)}</div>{/if}
 	</div>

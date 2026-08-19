@@ -253,7 +253,7 @@
 						autofocus
 						disabled={busy}
 						onkeydown={(e) => e.key === 'Enter' && addAuthor()}
-						class="min-w-0 flex-1 rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+						class="field min-w-0 flex-1"
 					/>
 					<button
 						class="btn btn-primary shrink-0"
@@ -265,7 +265,7 @@
 				<select
 					id="author"
 					bind:value={authorSlug}
-					class="mb-4 w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+					class="field mb-4 w-full"
 				>
 					<option value="" disabled>Choose the author…</option>
 					{#each authors as a (a.slug)}
@@ -278,7 +278,7 @@
 			<select
 				id="lang"
 				bind:value={language}
-				class="mb-4 w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+				class="field mb-4 w-full"
 			>
 				{#each languages as l (l.code)}
 					<option value={l.code}>{l.name}</option>
@@ -299,7 +299,7 @@
 			<button class="btn btn-primary" onclick={parse} disabled={busy || !file || !authorSlug}>
 				{busy ? 'Reading…' : 'Read document'}
 			</button>
-			<p class="mt-3 text-[0.78rem] text-muted">
+			<p class="mt-3 text-small text-muted">
 				Scanned image PDFs aren't supported yet — use a text PDF or Word document.
 			</p>
 		</div>
@@ -307,7 +307,7 @@
 		<!-- Step 2: review & publish -->
 		<div class="mt-6 rounded-card border border-border bg-surface p-6">
 			<div class="mb-4 flex items-center justify-between">
-				<span class="text-small font-semibold uppercase tracking-wider text-accent">
+				<span class="eyebrow text-accent">
 					Review {preview.kind}
 				</span>
 				<span class="text-small text-muted">
@@ -337,7 +337,7 @@
 							</li>
 						{/each}
 					</ul>
-					<p class="mt-2 text-[0.72rem] text-muted">
+					<p class="mt-2 text-micro text-muted">
 						Fix the titles below, or publish as-is.
 					</p>
 				</div>
@@ -348,7 +348,7 @@
 				id="title"
 				bind:value={title}
 				placeholder="Title"
-				class="mb-4 w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+				class="field mb-4 w-full"
 			/>
 
 			{#if preview.kind === 'sermon'}
@@ -359,7 +359,7 @@
 					id="ref"
 					bind:value={scriptureRef}
 					placeholder="e.g. John 3:16"
-					class="mb-4 w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+					class="field mb-4 w-full"
 				/>
 				<p class="rounded-sm border border-border bg-bg p-3 text-small text-muted">
 					{plainText(preview.chapters[0]?.html ?? '').slice(0, 400)}…
@@ -373,9 +373,9 @@
 							<input
 								bind:value={ch.title}
 								placeholder="Chapter title"
-								class="min-w-0 flex-1 rounded-sm border border-border bg-surface px-2 py-1 text-small text-text"
+								class="field min-w-0 flex-1"
 							/>
-							<span class="shrink-0 text-[0.78rem] text-muted">{ch.words}w</span>
+							<span class="shrink-0 text-small text-muted">{ch.words}w</span>
 							<button
 								class="shrink-0 rounded-sm px-2 py-1 text-small text-muted hover:text-danger"
 								onclick={() => removeChapter(i)}
@@ -386,7 +386,7 @@
 					{/each}
 				</ol>
 				{#if preview.chapters.length === 1}
-					<p class="mt-2 text-[0.78rem] text-muted">
+					<p class="mt-2 text-small text-muted">
 						Only one chapter detected — if this book has more, its source may not mark chapter
 						breaks in a way the parser recognises.
 					</p>
@@ -398,7 +398,7 @@
 						<label class="mb-1 block text-small font-semibold text-text" for="subtitle">
 							Subtitle <span class="font-normal text-muted">(optional)</span>
 						</label>
-						<input id="subtitle" bind:value={subtitle} placeholder="Subtitle" class="w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text" />
+						<input id="subtitle" bind:value={subtitle} placeholder="Subtitle" class="field w-full" />
 					</div>
 					<div>
 						<label class="mb-1 block text-small font-semibold text-text" for="pubyear">
@@ -411,7 +411,7 @@
 							max="2100"
 							bind:value={publicationYear}
 							placeholder="e.g. 1885"
-							class="w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+							class="field w-full"
 						/>
 					</div>
 					<div>
@@ -429,7 +429,7 @@
 							<input
 							bind:value={coverColor}
 							placeholder="#3b5bdb"
-							class="min-w-0 flex-1 rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+							class="field min-w-0 flex-1"
 						/>
 						</div>
 					</div>
@@ -437,7 +437,7 @@
 						<label class="mb-1 block text-small font-semibold text-text" for="coverurl">
 							Cover image URL <span class="font-normal text-muted">(optional)</span>
 						</label>
-						<input id="coverurl" bind:value={coverUrl} placeholder="https://…" class="w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text" />
+						<input id="coverurl" bind:value={coverUrl} placeholder="https://…" class="field w-full" />
 					</div>
 				</div>
 				<label class="mb-1 mt-3 block text-small font-semibold text-text" for="attr">
@@ -448,7 +448,7 @@
 					bind:value={attribution}
 					rows="2"
 					placeholder="e.g. Public domain — scanned by CCEL"
-					class="w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+					class="field w-full"
 				></textarea>
 			{/if}
 
@@ -459,7 +459,7 @@
 				id="src"
 				bind:value={sourceUrl}
 				placeholder="https://…"
-				class="mb-4 w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+				class="field mb-4 w-full"
 			/>
 
 			{#if error}<p class="mb-3 text-small text-danger">{error}</p>{/if}
@@ -484,7 +484,7 @@
 		border-radius: var(--radius-sm);
 		border: 1px solid var(--border);
 		padding: 0.4rem 1rem;
-		font-size: 0.9rem;
+		font-size: var(--fs-small);
 		font-weight: 600;
 		color: var(--muted);
 	}
@@ -500,7 +500,7 @@
 		align-items: center;
 		justify-content: center;
 		border-radius: 999px;
-		font-size: 1.4rem;
+		font-size: var(--fs-h3);
 		color: var(--accent);
 		background: color-mix(in srgb, var(--accent) 15%, transparent);
 	}

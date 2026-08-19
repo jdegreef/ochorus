@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { COVER_FALLBACK, shade } from '$lib/coverArt';
 	import type { BookSummary } from '$lib/library';
 	import { i18n } from '$lib/i18n.svelte';
 	import lockup from '$lib/brand/ochorus-lockup.svg?raw';
@@ -21,18 +22,6 @@
 	let loaded = $state(false);
 	let failed = $state(false);
 
-	// Darken a hex colour for the gradient foot (matches generate_covers' 0.55).
-	function darken(hex: string, factor = 0.55): string {
-		const n = (hex || '#3b5bdb').replace('#', '');
-		if (n.length !== 6) return '#1e2a52';
-		const c = [0, 2, 4].map((i) =>
-			Math.max(0, Math.round(parseInt(n.slice(i, i + 2), 16) * factor))
-				.toString(16)
-				.padStart(2, '0')
-		);
-		return `#${c.join('')}`;
-	}
-
 	// Greedy word-wrap to a character budget (mirrors the generator).
 	function wrap(title: string, maxChars: number): string[] {
 		const lines: string[] = [];
@@ -49,7 +38,7 @@
 		return lines;
 	}
 
-	const color = $derived(book.cover_color || '#3b5bdb');
+	const color = $derived(book.cover_color || COVER_FALLBACK);
 	// Smaller type for longer titles so they always fit.
 	const fontSize = $derived(book.title.length <= 22 ? 58 : 46);
 	const maxChars = $derived(book.title.length <= 22 ? 12 : 16);
@@ -72,7 +61,7 @@
 			loading="lazy"
 			onload={() => (loaded = true)}
 			onerror={() => (failed = true)}
-			class="absolute inset-0 h-full w-full object-cover transition-opacity duration-300"
+			class="absolute inset-0 h-full w-full object-cover transition-opacity duration-[var(--duration-base)]"
 			class:opacity-0={!loaded}
 			class:opacity-100={loaded}
 		/>
@@ -87,7 +76,7 @@
 			<defs>
 				<linearGradient id={gradId} x1="0" y1="0" x2="0.3" y2="1">
 					<stop offset="0" stop-color={color} />
-					<stop offset="1" stop-color={darken(color)} />
+					<stop offset="1" stop-color={shade(color, 0.55)} />
 				</linearGradient>
 			</defs>
 			<rect width="600" height="800" fill="url(#{gradId})" />

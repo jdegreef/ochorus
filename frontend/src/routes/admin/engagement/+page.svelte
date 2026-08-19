@@ -59,7 +59,7 @@
 <div class="mx-auto max-w-5xl px-5 py-10">
 	<header class="mb-6 flex flex-wrap items-end justify-between gap-3">
 		<div>
-			<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">Admin</p>
+			<p class="eyebrow mb-2 text-accent">Admin</p>
 			<h1 class="text-display">Engagement</h1>
 			<p class="mt-2 text-body text-muted">What readers are reading. Aggregate counts only — no personal data.</p>
 		</div>
@@ -71,12 +71,12 @@
 	{#if loading && !data}
 		<p class="text-body text-muted">Loading…</p>
 	{:else if denied}
-		<div class="rounded-2xl border border-border bg-surface p-8">
+		<div class="rounded-card border border-border bg-surface p-8">
 			<h2 class="text-h3 mb-2">Not authorised</h2>
 			<p class="text-body text-muted">You don't have access to the admin dashboard.</p>
 		</div>
 	{:else if error}
-		<div class="rounded-2xl border border-border bg-surface p-8">
+		<div class="rounded-card border border-border bg-surface p-8">
 			<h2 class="text-h3 mb-2">Couldn't load engagement</h2>
 			<p class="mb-5 text-body text-muted">{error}</p>
 			<button class="btn btn-ghost" onclick={load}>Try again</button>
@@ -84,7 +84,7 @@
 	{:else if data}
 		{@const d = data}
 		{#if d.overview.readers === 0}
-			<div class="rounded-2xl border border-border bg-surface p-8 text-center">
+			<div class="rounded-card border border-border bg-surface p-8 text-center">
 				<p class="text-h3">No reading activity yet</p>
 				<p class="mt-1 text-body text-muted">Once signed-in readers start reading, their (anonymous, aggregate) activity shows up here.</p>
 			</div>
@@ -92,8 +92,8 @@
 			<!-- Overview -->
 			<section class="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
 				{#each cards as c (c.label)}
-					<div class="rounded-2xl border border-border bg-surface p-4">
-						<div class="text-display !text-3xl !leading-none text-text">{fmt(c.value)}</div>
+					<div class="rounded-card border border-border bg-surface p-4">
+						<div class="stat-number">{fmt(c.value)}</div>
 						<div class="mt-2 text-small font-semibold text-text">{c.label}</div>
 						<div class="text-small text-muted">{c.sub}</div>
 					</div>
@@ -101,17 +101,17 @@
 			</section>
 
 			<!-- Weekly active -->
-			<section class="mb-8 rounded-2xl border border-border bg-surface p-5">
+			<section class="mb-8 rounded-card border border-border bg-surface p-5">
 				<h2 class="text-h3 mb-4">Weekly active readers</h2>
 				<div class="flex items-end gap-2" style="height: 8rem">
 					{#each d.weekly_active as w (w.week)}
 						<div class="flex flex-1 flex-col items-center gap-1">
 							<div class="text-small tabular-nums text-muted">{w.readers || ''}</div>
 							<div
-								class="w-full rounded-t bg-accent-soft"
+								class="w-full rounded-t-sm bg-accent-soft"
 								style="height: {(w.readers / weekMax) * 100}%; min-height: {w.readers ? '3px' : '0'}"
 							></div>
-							<div class="text-[0.7rem] text-muted">{weekLabel(w.week)}</div>
+							<div class="text-micro text-muted">{weekLabel(w.week)}</div>
 						</div>
 					{/each}
 				</div>
@@ -119,7 +119,7 @@
 
 			<div class="grid gap-6 lg:grid-cols-2">
 				<!-- Most read -->
-				<section class="rounded-2xl border border-border bg-surface p-5">
+				<section class="rounded-card border border-border bg-surface p-5">
 					<h2 class="text-h3 mb-3">Most read</h2>
 					{#if d.most_read.length}
 						<ul class="space-y-2">
@@ -140,7 +140,7 @@
 				</section>
 
 				<!-- Most marked -->
-				<section class="rounded-2xl border border-border bg-surface p-5">
+				<section class="rounded-card border border-border bg-surface p-5">
 					<h2 class="text-h3 mb-3">Most highlighted</h2>
 					{#if d.most_marked.length}
 						<ul class="space-y-2">
@@ -162,7 +162,7 @@
 			</div>
 
 			<!-- By language -->
-			<section class="mt-6 rounded-2xl border border-border bg-surface p-5">
+			<section class="mt-6 rounded-card border border-border bg-surface p-5">
 				<h2 class="text-h3 mb-3">Readers by language</h2>
 				<ul class="space-y-2">
 					{#each d.by_language as l (l.code)}

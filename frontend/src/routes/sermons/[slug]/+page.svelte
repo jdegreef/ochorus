@@ -5,7 +5,13 @@
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { i18n } from '$lib/i18n.svelte';
-	import { readingTime, readingMinutes, preachedYear, HEADER_OFFSET } from '$lib/reading';
+	import {
+		contentLang,
+		readingTime,
+		minutesLeft as minutesLeftOf,
+		preachedYear,
+		HEADER_OFFSET
+	} from '$lib/reading';
 	import { getLang } from '$lib/lang.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import { type ScriptureResult } from '$lib/scripture.svelte';
@@ -25,15 +31,26 @@
 	const sermon = $derived(data.sermon as Sermon);
 	const t = i18n.t;
 
+	/**
+	 * Escape leaves focus (immersive) mode. readerUi.exitFocus() existed and
+	 * nothing on this page called it, so the only way out was finding the
+	 * floating "Exit focus" pill. The outline drawer runs its own focus trap
+	 * with an onEscape, so it keeps handling its own key.
+	 */
+	function onKeydown(e: KeyboardEvent) {
+		if (e.key !== 'Escape' || e.metaKey || e.ctrlKey || e.altKey) return;
+		if (outlineOpen || !readerUi.focus) return;
+		e.preventDefault();
+		readerUi.exitFocus();
+	}
+
 	// The reader owns the prose and everything that reads it; this page owns its
 	// own chrome. `body` comes back out for the outline, `frac` for the progress
 	// bar, and the instance for the Listen button.
 	let reader = $state<Reader | undefined>();
 	let body = $state<HTMLElement | undefined>();
 	let frac = $state(0);
-	const minutesLeft = $derived(
-		Math.max(1, Math.ceil(readingMinutes(sermon.word_count) * (1 - frac)))
-	);
+	const minsLeft = $derived(minutesLeftOf(sermon.word_count, frac));
 
 	// Other sermons on the same Bible book, fetched client-side (page is
 	// prerendered; the list is small and cached by the browser).
@@ -188,14 +205,14 @@
 	structuredData={[sermonLd, crumbsLd]}
 />
 
-<svelte:window onscroll={updateActiveSection} />
+<svelte:window onscroll={updateActiveSection} onkeydown={onKeydown} />
 
 <!-- Scroll-progress bar, pinned to the very top of the viewport. -->
 <div class="read-progress" style="transform: scaleX({frac})" aria-hidden="true"></div>
 
 <!-- Reader top bar -->
 {#if !readerUi.focus}
-	<div class="sticky top-0 z-10 border-b border-border bg-bg/90 backdrop-blur">
+	<div class="reader-chrome sticky top-0 z-10 border-b border-border bg-bg/90 backdrop-blur">
 		<div class="mx-auto flex max-w-3xl items-center justify-between gap-3 px-5 py-2.5">
 			<a href={localizeHref('/sermons')} class="text-small text-muted hover:text-text"
 				>← {t('nav.sermons')}</a
@@ -203,8 +220,8 @@
 			<div class="flex shrink-0 items-center gap-1">
 				{#if outline.length >= 2}
 					<button
-						class="outline-toggle-btn btn btn-ghost !px-2 !py-1.5"
-						class:!text-accent={outlineOpen}
+						class="outline-toggle-btn btn btn-icon btn-ghost"
+						class:text-accent={outlineOpen}
 						onclick={() => (outlineOpen = !outlineOpen)}
 						aria-label={t('sermon.outline')}
 						title={t('sermon.outline')}
@@ -213,19 +230,19 @@
 				{/if}
 				{#if listen.supported}
 					<button
-						class="btn btn-ghost !px-2.5 !py-1"
-						class:!text-accent={listen.status !== 'idle'}
+						class="btn btn-icon btn-ghost"
+						class:text-accent={listen.status !== 'idle'}
 						onclick={() => (listen.status === 'idle' ? reader?.startListening() : listen.stop())}
 						aria-label={t('reader.listen')}
-						title={t('reader.listen')}>▶</button
+						title={t('reader.listen')}><Icon name="headphones" size={18} /></button
 					>
 				{/if}
 				<ReaderControls />
 				<button
-					class="btn btn-ghost !px-3 !py-1"
+					class="btn btn-icon btn-ghost"
 					onclick={() => readerUi.toggleFocus()}
 					aria-label={t('reader.focus')}
-					title={t('reader.focus')}>☾</button
+					title={t('reader.focus')}><Icon name="maximize" size={18} /></button
 				>
 			</div>
 		</div>
@@ -235,7 +252,9 @@
 {#if readerUi.focus}
 	<button
 		class="fixed end-4 top-4 z-30 rounded-full border border-border bg-surface/90 px-3 py-1.5 text-small text-muted shadow-md backdrop-blur hover:text-text"
-		onclick={() => readerUi.exitFocus()}>✕ {t('reader.exitFocus')}</button
+		onclick={() => readerUi.exitFocus()}>
+		<Icon name="close" size={14} />
+		{t('reader.exitFocus')}</button
 	>
 {/if}
 
@@ -248,7 +267,7 @@
 		aria-label={t('sermon.outline')}
 		use:focusTrap={{ onEscape: () => (outlineOpen = false) }}
 	>
-		<p class="outline-title">{t('sermon.outline')}</p>
+		<p class="outline-title eyebrow">{t('sermon.outline')}</p>
 		<ul>
 			{#each outline as s (s.id)}
 				<li>
@@ -269,7 +288,7 @@
      the section you're reading. The top-bar toggle takes over below 1200px. -->
 {#if outline.length >= 2 && !readerUi.focus}
 	<nav class="outline-rail" aria-label={t('sermon.outline')}>
-		<p class="outline-rail-title">{t('sermon.outline')}</p>
+		<p class="outline-rail-title eyebrow">{t('sermon.outline')}</p>
 		<ul>
 			{#each outline as s (s.id)}
 				<li>
@@ -300,11 +319,11 @@
 		>
 	</nav>
 
-	<p class="mb-1 text-small uppercase tracking-wider text-muted">
+	<p class="eyebrow mb-1 text-muted">
 		{t('search.typeSermon')} · {readingTime(sermon.word_count)}{#if year} · {year}{/if}{#if sermon.difficulty}&nbsp;·
 			<span title={t('reader.difficulty')}>{t(`reader.difficulty_${sermon.difficulty}`)}</span>{/if}
 	</p>
-	<h1 class="text-h1 mb-3" dir="auto">{sermon.title}</h1>
+	<h1 class="text-h1 mb-3" dir="auto" lang={contentLang(sermon.language)}>{sermon.title}</h1>
 
 	<!-- Author row: portrait + name -->
 	<a
@@ -332,13 +351,13 @@
 	<!-- Preaching text: the reference, and its verse(s) when available -->
 	{#if sermon.scripture_ref}
 		<div class="text-card">
-			<p class="text-card-eyebrow">{t('sermon.text')}</p>
+			<p class="text-card-eyebrow eyebrow">{t('sermon.text')}</p>
 			<p class="text-card-ref">{sermon.scripture_ref}</p>
 			{#if preachingText?.verses?.length}
 				<p class="text-card-verse">
 					{#each preachingText.verses as v (v.number)}{v.text}{' '}{/each}
 				</p>
-				<p class="text-card-version">{preachingText.version}</p>
+				<p class="text-card-version eyebrow">{preachingText.version}</p>
 			{/if}
 		</div>
 	{/if}
@@ -363,7 +382,7 @@
 	     whether this sermon is the one they need right now. -->
 	{#if sermon.summary}
 		<div class="mb-8 rounded-card border border-border bg-surface p-4">
-			<p class="mb-1.5 text-[0.66rem] font-bold uppercase tracking-[0.1em] text-accent">
+			<p class="eyebrow mb-1.5 text-accent">
 				{t('sermon.inBrief')}
 			</p>
 			<p class="text-small leading-relaxed text-muted">{sermon.summary}</p>
@@ -387,7 +406,7 @@
 	     scripture search — so scripture is a navigation surface, not just text. -->
 	{#if sermon.scripture_refs?.length}
 		<div class="mt-10 flex flex-wrap items-center gap-2 border-t border-border pt-5">
-			<span class="text-small font-semibold uppercase tracking-wide text-muted">
+			<span class="eyebrow text-muted">
 				{t('sermon.scriptureIndex')}
 			</span>
 			{#each sermon.scripture_refs as ref (ref)}
@@ -405,7 +424,7 @@
 	     and topic pages surface; a reader moved by it can find kindred works. -->
 	{#if sermon.topics?.length}
 		<div class="mt-4 flex flex-wrap items-center gap-2">
-			<span class="text-small font-semibold uppercase tracking-wide text-muted">
+			<span class="eyebrow text-muted">
 				{t('sermon.topics')}
 			</span>
 			{#each sermon.topics as topic (topic.slug)}
@@ -428,7 +447,7 @@
 					href={localizeHref(`/sermons/${sermon.prev.slug}`)}
 					class="group flex-1 rounded-card border border-border p-3 hover:border-accent hover:no-underline"
 				>
-					<div class="text-[0.72rem] uppercase tracking-wide text-muted">← {t('reader.previous')}</div>
+					<div class="eyebrow text-muted">← {t('reader.previous')}</div>
 					<div class="mt-0.5 text-small font-semibold text-text group-hover:text-accent">
 						{sermon.prev.title}
 					</div>
@@ -439,7 +458,7 @@
 					href={localizeHref(`/sermons/${sermon.next.slug}`)}
 					class="group flex-1 rounded-card border border-border p-3 text-end hover:border-accent hover:no-underline"
 				>
-					<div class="text-[0.72rem] uppercase tracking-wide text-muted">{t('reader.next')} →</div>
+					<div class="eyebrow text-muted">{t('reader.next')} →</div>
 					<div class="mt-0.5 text-small font-semibold text-text group-hover:text-accent">
 						{sermon.next.title}
 					</div>
@@ -463,7 +482,7 @@
 	{/if}
 
 	{#if sermon.source_url}
-		<p class="mt-12 border-t border-border pt-5 text-[0.8rem] text-muted">
+		<p class="mt-12 border-t border-border pt-5 text-small text-muted">
 			{t('book.publicDomain')}
 			<a href={sermon.source_url} target="_blank" rel="noreferrer">{t('book.originalEdition')}</a>.
 		</p>
@@ -478,28 +497,11 @@
 
 <!-- Time-remaining pill; hidden in focus and while listening. -->
 {#if !readerUi.focus && listen.status === 'idle' && frac < 0.99}
-	<div class="min-left" aria-hidden="true">{minutesLeft} {t('sermon.minLeft')}</div>
+	<div class="min-left" aria-hidden="true">{minsLeft} {t('sermon.minLeft')}</div>
 {/if}
 
 <style>
 	/* Scroll-progress bar: a thin accent line scaled by reading fraction. */
-	.read-progress {
-		position: fixed;
-		top: 0;
-		inset-inline: 0;
-		height: 2px;
-		z-index: 40;
-		background: var(--accent);
-		/* Grows from where reading STARTS — the right edge under dir="rtl".
-		   transform-origin takes physical keywords only, so RTL is flipped
-		   explicitly just below. */
-		transform-origin: left center;
-		transition: transform 0.1s linear;
-		pointer-events: none;
-	}
-	:global([dir='rtl']) .read-progress {
-		transform-origin: right center;
-	}
 	/* `.min-left` lives in app.css — the biography page shows the same pill, and
 	   a second copy here is how the two would drift apart. */
 
@@ -513,10 +515,7 @@
 		background: var(--accent-soft);
 	}
 	.text-card-eyebrow {
-		font-size: 0.66rem;
-		font-weight: 700;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
+		font-size: var(--fs-micro);
 		color: var(--accent);
 	}
 	.text-card-ref {
@@ -534,9 +533,7 @@
 	}
 	.text-card-version {
 		margin-top: 0.45rem;
-		font-size: 0.66rem;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
+		font-size: var(--fs-micro);
 		color: var(--muted);
 	}
 
@@ -557,15 +554,12 @@
 		border: 1px solid var(--border);
 		border-radius: var(--radius-card);
 		background: var(--surface);
-		box-shadow: 0 10px 40px rgb(0 0 0 / 0.25);
+		box-shadow: var(--shadow-popover);
 		padding: 0.5rem;
 	}
 	.outline-title {
 		padding: 0.35rem 0.6rem;
-		font-size: 0.7rem;
-		font-weight: 700;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
+		font-size: var(--fs-micro);
 		color: var(--muted);
 	}
 	.outline-item {
@@ -573,8 +567,8 @@
 		width: 100%;
 		text-align: start;
 		padding: 0.45rem 0.6rem;
-		border-radius: var(--radius-sm, 6px);
-		font-size: 0.9rem;
+		border-radius: var(--radius-sm);
+		font-size: var(--fs-small);
 		color: var(--text);
 		line-height: 1.35;
 	}
@@ -594,7 +588,7 @@
 	.outline-rail {
 		display: none;
 	}
-	@media (min-width: 1200px) {
+	@media (min-width: 1280px) {
 		.outline-rail {
 			display: block;
 			position: fixed;
@@ -612,10 +606,7 @@
 	}
 	.outline-rail-title {
 		padding: 0 0.6rem 0.4rem;
-		font-size: 0.68rem;
-		font-weight: 700;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
+		font-size: var(--fs-micro);
 		color: var(--muted);
 	}
 	.outline-rail-item {
@@ -624,10 +615,10 @@
 		text-align: start;
 		padding: 0.3rem 0.6rem;
 		border-inline-start: 2px solid transparent;
-		font-size: 0.85rem;
+		font-size: var(--fs-small);
 		line-height: 1.35;
 		color: var(--muted);
-		transition: color 0.15s ease;
+		transition: color var(--duration-fast) ease;
 	}
 	.outline-rail-item:hover {
 		color: var(--accent);

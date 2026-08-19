@@ -1,4 +1,5 @@
 <script lang="ts">
+	import NoteDialog from '$lib/components/NoteDialog.svelte';
 	import { onMount, tick, untrack } from 'svelte';
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
@@ -14,20 +15,24 @@
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { marks } from '$lib/marks.svelte';
-	import { HIGHLIGHT_COLORS, DEFAULT_HIGHLIGHT } from '$lib/reading-schema';
+	import { DEFAULT_HIGHLIGHT } from '$lib/reading-schema';
 	import { bookmarks } from '$lib/bookmarks.svelte';
 	import { findQueryHits } from '$lib/searchHits';
 	import { renderMarks } from '$lib/rangeMarks';
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
-	import { readingTime, readingMinutes } from '$lib/reading';
+	import {
+		contentLang,
+		readingTime,
+		minutesLeft as minutesLeftOf,
+		HEADER_OFFSET
+	} from '$lib/reading';
 	import { pageOfOffset } from '$lib/pageMath';
 	import { listen } from '$lib/listen.svelte';
 	import { define } from '$lib/define.svelte';
 	import { scripture } from '$lib/scripture.svelte';
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
 	import { jsonLd, hreflangFor } from '$lib/seo';
-	import { focusTrap } from '$lib/actions/focusTrap';
 	import { localizeHref } from '$lib/href';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import Seo from '$lib/components/Seo.svelte';
@@ -42,6 +47,7 @@
 	let { data } = $props();
 	const chapter = $derived(data.chapter as Chapter);
 	const slug = $derived(data.slug as string);
+	const language = $derived(data.language as string);
 	// 'modern' when reading the Modern English edition, else null. Carried in the
 	// URL and preserved across every in-reader chapter link.
 	const edition = $derived((data.edition as 'modern' | null) ?? null);
@@ -108,7 +114,6 @@
 	let noteDraft = $state('');
 	let noteColor = $state<string>(DEFAULT_HIGHLIGHT);
 
-	const HEADER_OFFSET = 72;
 	let tocOpen = $state(false);
 	let searchOpen = $state(false);
 
@@ -174,9 +179,7 @@
 		topIndex = p;
 	}
 
-	const minutesLeft = $derived(
-		Math.ceil(readingMinutes(chapter.word_count) * (1 - chapterFrac))
-	);
+	const minsLeft = $derived(minutesLeftOf(chapter.word_count, chapterFrac));
 	const bookPercent = $derived.by(() => {
 		const b = bookForProgress;
 		if (!b || b.slug !== slug || !b.chapters.length) return null;
@@ -233,12 +236,19 @@
 		articleEl.style.setProperty('--pgbot', `${bot}px`);
 	}
 
-	// A Kindle-style page count. In page-turn mode it's the real column count; in
-	// scroll mode it's estimated from word count and the current scroll position.
-	const WORDS_PER_PAGE = 280;
-	const pageCount = $derived(
-		paged ? pageTotal : Math.max(1, Math.ceil(chapter.word_count / WORDS_PER_PAGE))
-	);
+	/**
+	 * A Kindle-style page count. In page-turn mode it's the real column count.
+	 *
+	 * In scroll mode it used to be word_count / 280 — a fixed guess that ignored
+	 * text size, measure and viewport, so the SAME chapter reported a different
+	 * number of pages depending on the layout toggle, and "page 4 of 9" meant two
+	 * unrelated things. A page is now one screenful of this chapter at the
+	 * reader's current settings in either mode, which is what a paged column is
+	 * too — so the figure survives the toggle and responds to the text-size and
+	 * width controls the way the reader expects.
+	 */
+	let scrollPages = $state(1);
+	const pageCount = $derived(paged ? pageTotal : scrollPages);
 	const currentPage = $derived(
 		paged
 			? pageIndex + 1
@@ -309,6 +319,13 @@
 		// needed for a two-column spread whose last page may hold a single column.
 		pageTotal = w > 0 ? Math.max(1, Math.ceil(pager.scrollWidth / w - 0.02)) : 1;
 		if (pageIndex > pageTotal - 1) pageIndex = pageTotal - 1;
+	}
+
+	/** Screenfuls of prose in scroll mode — the same unit paged mode counts. */
+	function measureScrollPages() {
+		if (!body) return;
+		const usable = window.innerHeight - (chromeEl?.offsetHeight ?? 0) - (footEl?.offsetHeight ?? 0);
+		scrollPages = usable > 0 ? Math.max(1, Math.ceil(body.scrollHeight / usable)) : 1;
 	}
 
 	/** Turn to page p, persisting the paragraph now at the top of the page. */
@@ -394,6 +411,22 @@
 	// honest. Initial positioning is owned by the per-chapter effect above; this
 	// only re-counts and clamps, so it never fights that effect.
 	$effect(() => {
+		if (paged) return;
+		void chapter.order;
+		void readerPrefs.scale;
+		void readerPrefs.leading;
+		void readerPrefs.measure;
+		void readerPrefs.font;
+		void readerUi.focus;
+		untrack(() => {
+			(async () => {
+				await tick();
+				measureScrollPages();
+			})();
+		});
+	});
+
+	$effect(() => {
 		if (!paged) return;
 		void readerPrefs.scale;
 		void readerPrefs.leading;
@@ -416,7 +449,7 @@
 		if (!browser) return;
 		const onResize = () => {
 			viewportW = window.innerWidth;
-			if (paged) untrack(() => measurePages());
+			untrack(() => (paged ? measurePages() : measureScrollPages()));
 		};
 		window.addEventListener('resize', onResize);
 		return () => window.removeEventListener('resize', onResize);
@@ -488,9 +521,22 @@
 			el?.closest?.('input, textarea, select, [contenteditable="true"]') ||
 			noteOpen ||
 			define.open ||
+			// These two were missing, so a page turned underneath an open scripture
+			// popover or text-settings panel while the reader was using it.
+			scripture.open ||
+			readerUi.panelOpen ||
 			tocOpen ||
 			searchOpen
 		) {
+			// Escape still has to work from inside a panel — it is how you leave.
+			if (e.key === 'Escape' && readerUi.focus && !noteOpen) readerUi.exitFocus();
+			return;
+		}
+		// Focus mode had no keyboard exit at all: exitFocus() existed and nothing
+		// called it, so the only way out was finding the floating pill.
+		if (e.key === 'Escape' && readerUi.focus) {
+			e.preventDefault();
+			readerUi.exitFocus();
 			return;
 		}
 		if (e.key === 'ArrowRight') {
@@ -525,20 +571,28 @@
 		return true;
 	}
 
-	/** Edge tap zones: outer 15% turns the page (paged) or chapter (scroll, touch). */
+	/**
+	 * Edge tap zones: in PAGED mode the outer 15% turns the page, which is the
+	 * Kindle convention and what a paginated view is for.
+	 *
+	 * It used to turn the CHAPTER in scroll mode too, on any coarse pointer. On a
+	 * 360px phone that is a 54px strip down each side against the article's own
+	 * 20px padding — so roughly 34px of live body text on each edge silently
+	 * threw the reader into the previous or next chapter, with no affordance
+	 * marking the zone and no way back except the browser's own Back. Scrolling
+	 * is how you move through a scrolling view; nothing about tapping the text
+	 * should change which chapter you are in.
+	 */
 	function onArticleClick(e: MouseEvent) {
 		if (tryScriptureClick(e)) return;
-		if (!paged && !window.matchMedia('(pointer: coarse)').matches) return;
+		if (!paged) return;
 		const el = e.target as HTMLElement;
 		if (el.closest('a, button, mark, input, textarea, select, .selbar, .define-pop, .scripture-pop')) return;
 		if (window.getSelection()?.toString()) return;
 		const x = e.clientX / window.innerWidth;
-		if (paged) {
-			// Edge taps are physical; the page they turn to is logical.
-			if (x < 0.15) turnPage(contentRtl ? 1 : -1);
-			else if (x > 0.85) turnPage(contentRtl ? -1 : 1);
-		} else if (x < 0.15) gotoChapter(chapter.prev);
-		else if (x > 0.85) gotoChapter(chapter.next);
+		// Edge taps are physical; the page they turn to is logical.
+		if (x < 0.15) turnPage(contentRtl ? 1 : -1);
+		else if (x > 0.85) turnPage(contentRtl ? -1 : 1);
 	}
 
 	// Prefetch the next chapter when the browser is idle: the plain GET flows
@@ -768,12 +822,20 @@
 	     paged columns (a paint bug), which `fixed` avoids. -->
 	<div
 		bind:this={chromeEl}
-		class="top-0 inset-x-0 z-10 border-b border-border bg-bg/90 backdrop-blur"
+		class="reader-chrome top-0 inset-x-0 z-10 border-b border-border bg-bg/90 backdrop-blur"
 		class:fixed={paged}
 		class:sticky={!paged}
 	>
 		<div class="mx-auto flex max-w-3xl items-center justify-between gap-3 px-5 py-2.5">
-			<div class="min-w-0 flex-1">
+			<!--
+				Hidden below `sm`. The controls alone need ~303px of a 360px phone, so
+				with this block in the row the bar wrapped to THREE rows — 141px of an
+				780px viewport — and squeezed this text to five pixels wide, which is
+				not a label, just a thing pushing everything else out of line. The
+				article's own breadcrumb sits directly beneath and says the same, so
+				nothing is lost by standing this down where there is no room for it.
+			-->
+			<div class="hidden min-w-0 flex-1 sm:block">
 				{#if titleVisible}
 					<a href={localizeHref(`/books/${slug}`)} class="text-small text-muted hover:text-text">
 						← {chapter.book_title}
@@ -789,7 +851,7 @@
 				{#if chapter.prev}
 					<a
 						href={chapterHref(chapter.prev.order)}
-						class="btn btn-ghost !px-2 !py-1.5"
+						class="btn btn-icon btn-ghost"
 						aria-label={t('reader.previous')}
 						title={t('reader.previous')}><Icon name="chevron-left" size={18} /></a
 					>
@@ -797,7 +859,7 @@
 				{#if chapter.next}
 					<a
 						href={chapterHref(chapter.next.order)}
-						class="btn btn-ghost !px-2 !py-1.5"
+						class="btn btn-icon btn-ghost"
 						aria-label={t('reader.next')}
 						title={t('reader.next')}><Icon name="chevron-right" size={18} /></a
 					>
@@ -807,8 +869,8 @@
 					<a
 						href={editionToggleHref()}
 						data-sveltekit-noscroll
-						class="btn btn-ghost !px-2 !py-1.5 text-small"
-						class:!text-accent={edition === 'modern'}
+						class="btn btn-sm btn-ghost px-2"
+						class:text-accent={edition === 'modern'}
 						title={edition === 'modern' ? t('reader.readOriginal') : t('reader.readModern')}
 						aria-label={edition === 'modern' ? t('reader.readOriginal') : t('reader.readModern')}
 					>
@@ -817,29 +879,29 @@
 				{/if}
 				<span class="mx-1 h-5 w-px bg-border" aria-hidden="true"></span>
 				<button
-					class="btn btn-ghost !px-2 !py-1.5"
-					class:!text-accent={currentBookmarked}
+					class="btn btn-icon btn-ghost"
+					class:text-accent={currentBookmarked}
 					onclick={toggleBookmark}
 					aria-label={t('reader.bookmark')}
 					title={t('reader.bookmark')}
 					aria-pressed={currentBookmarked}><Icon name="bookmark" size={18} /></button
 				>
 				<button
-					class="btn btn-ghost !px-2 !py-1.5"
+					class="btn btn-icon btn-ghost"
 					onclick={() => (tocOpen = true)}
 					aria-label={t('reader.contents')}
 					title={t('reader.contents')}><Icon name="list" size={18} /></button
 				>
 				<button
-					class="btn btn-ghost !px-2 !py-1.5"
+					class="btn btn-icon btn-ghost"
 					onclick={() => (searchOpen = true)}
 					aria-label={t('reader.search')}
 					title={t('reader.search')}><Icon name="search" size={18} /></button
 				>
 				{#if listen.supported}
 					<button
-						class="btn btn-ghost !px-2 !py-1.5"
-						class:!text-accent={listen.status !== 'idle'}
+						class="btn btn-icon btn-ghost"
+						class:text-accent={listen.status !== 'idle'}
 						onclick={() => (listen.status === 'idle' ? startListening() : listen.stop())}
 						aria-label={t('reader.listen')}
 						title={t('reader.listen')}><Icon name="headphones" size={18} /></button
@@ -849,7 +911,7 @@
 				     paged mode, so it is the one that offers the switch. -->
 				<ReaderControls layout />
 				<button
-					class="btn btn-ghost !px-2 !py-1.5"
+					class="btn btn-icon btn-ghost"
 					onclick={() => readerUi.toggleFocus()}
 					aria-label={t('reader.focus')}
 					title={t('reader.focus')}><Icon name="maximize" size={18} /></button
@@ -862,7 +924,9 @@
 {#if readerUi.focus}
 	<button
 		class="fixed end-4 top-4 z-30 rounded-full border border-border bg-surface/90 px-3 py-1.5 text-small text-muted shadow-md backdrop-blur hover:text-text"
-		onclick={() => readerUi.exitFocus()}>✕ {t('reader.exitFocus')}</button
+		onclick={() => readerUi.exitFocus()}>
+		<Icon name="close" size={14} />
+		{t('reader.exitFocus')}</button
 	>
 {/if}
 
@@ -875,7 +939,7 @@
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events -->
 <article
 	bind:this={articleEl}
-	class="mx-auto px-5 py-10"
+	class="mx-auto reading-article px-5 py-10"
 	class:paged
 	class:focus={readerUi.focus}
 	class:twocol={cols === 2}
@@ -906,7 +970,7 @@
 			{#if planProgress.isDone(plan.slug, planDay)}
 				<span class="text-small font-semibold text-accent">✓ {t('plans.dayDone')}</span>
 			{:else}
-				<button class="btn btn-primary !py-1.5 text-small" onclick={completePlanDay}>
+				<button class="btn btn-sm btn-primary" onclick={completePlanDay}>
 					{t('plans.markDone')}
 				</button>
 			{/if}
@@ -917,26 +981,26 @@
 	     mode it is display:contents (no effect); in page mode it becomes the
 	     translated CSS-column content and the surrounding chrome is hidden. -->
 	<div class="pager" bind:this={pager} style="--page-w:{pageW}px; --page-idx:{pageIndex}; --cols:{cols};">
-		<p class="mb-1 text-small uppercase tracking-wider text-muted">
+		<p class="eyebrow mb-1 text-muted">
 			{t('continue.chapter')} {chapter.order} · {readingTime(chapter.word_count)}
 			{#if chapter.is_modern_edition}
 				<span class="ms-1 text-accent">· {t('reader.modernEdition')}</span>
 			{/if}
 		</p>
-		<h1 bind:this={titleEl} class="text-h1 mb-8" dir="auto">{chapter.title}</h1>
+		<h1 bind:this={titleEl} class="text-h1 mb-8" dir="auto" lang={contentLang(language)}>{chapter.title}</h1>
 
 		<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. -->
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-		<div class="reading" bind:this={body} dir="auto">{@html chapter.body_html}</div>
+		<div class="reading" bind:this={body} dir="auto" lang={contentLang(language)}>{@html chapter.body_html}</div>
 	</div>
 
 	<nav class="mt-14 flex items-stretch justify-between gap-3 border-t border-border pt-6">
 		{#if chapter.prev}
 			<a
 				href={chapterHref(chapter.prev.order)}
-				class="btn btn-ghost flex-1 !flex-col !items-start gap-0.5 text-start"
+				class="btn btn-ghost flex-1 flex-col items-start gap-0.5 text-start"
 			>
-				<span class="text-[0.7rem] uppercase tracking-wider text-muted">{t('reader.previous')}</span>
+				<span class="eyebrow text-muted">{t('reader.previous')}</span>
 				<span class="text-small">{chapter.prev.title}</span>
 			</a>
 		{:else}
@@ -945,9 +1009,9 @@
 		{#if chapter.next}
 			<a
 				href={chapterHref(chapter.next.order)}
-				class="btn btn-primary flex-1 !flex-col !items-end gap-0.5 text-end"
+				class="btn btn-primary flex-1 flex-col items-end gap-0.5 text-end"
 			>
-				<span class="text-[0.7rem] uppercase tracking-wider opacity-75">{t('reader.next')}</span>
+				<span class="eyebrow opacity-75">{t('reader.next')}</span>
 				<span class="text-small">{chapter.next.title}</span>
 			</a>
 		{:else}
@@ -978,6 +1042,12 @@
 	</button>
 {/if}
 
+<!-- In focus mode the scrubber is hidden, so this hairline stands in for it:
+     immersive should mean calm, not lost. Same indicator the sermon page uses. -->
+{#if readerUi.focus}
+	<div class="read-progress" style="transform: scaleX({chapterFrac})" aria-hidden="true"></div>
+{/if}
+
 <!-- Reading-progress footer: a draggable scrubber + location, fixed, hidden in
      focus/Listen modes. -->
 {#if !readerUi.focus && listen.status === 'idle'}
@@ -1000,7 +1070,7 @@
 		<div class="progress-meta">
 			<span>{t('progress.page')} {currentPage} / {pageCount}</span>
 			<span class="mx-1.5 opacity-50">·</span>
-			<span>{minutesLeft} {t('progress.minLeft')}</span>
+			<span>{minsLeft} {t('progress.minLeft')}</span>
 			{#if bookPercent !== null}
 				<span class="mx-1.5 opacity-50">·</span>
 				<span>{bookPercent}% {t('progress.through')}</span>
@@ -1036,48 +1106,14 @@
 <ListenBar />
 
 {#if noteOpen}
-	<div
-		class="note-overlay"
-		role="dialog"
-		aria-modal="true"
-		aria-label={t('reader.note')}
-		use:focusTrap={{ onEscape: () => (noteOpen = false) }}
-	>
-		<div class="note-card">
-			<h2 class="mb-2 text-h3">{t('reader.note')}</h2>
-			<div class="mb-3 flex items-center gap-2.5" role="group" aria-label={t('reader.highlight')}>
-				{#each HIGHLIGHT_COLORS as color (color)}
-					<button
-						type="button"
-						class="hl-swatch"
-						data-color={color}
-						class:active={noteColor === color}
-						aria-pressed={noteColor === color}
-						aria-label="{t('reader.highlight')}: {t(`reader.hl_${color}`)}"
-						title={t(`reader.hl_${color}`)}
-						onclick={() => (noteColor = color)}
-					></button>
-				{/each}
-			</div>
-			<textarea
-				bind:value={noteDraft}
-				rows="5"
-				class="w-full rounded-sm border border-border-strong bg-bg p-3 text-body text-text"
-				aria-label={t('reader.note')}
-				placeholder="…"
-			></textarea>
-			<div class="mt-3 flex items-center gap-2">
-				{#if noteId}
-					<button class="btn btn-ghost !text-danger" onclick={removeMark}>
-						{t('reader.removeHighlight')}
-					</button>
-				{/if}
-				<span class="flex-1"></span>
-				<button class="btn btn-ghost" onclick={() => (noteOpen = false)}>{t('common.cancel')}</button>
-				<button class="btn btn-primary" onclick={saveNote}>{t('common.save')}</button>
-			</div>
-		</div>
-	</div>
+	<NoteDialog
+		bind:text={noteDraft}
+		bind:color={noteColor}
+		canRemove={!!noteId}
+		onSave={saveNote}
+		onRemove={removeMark}
+		onClose={() => (noteOpen = false)}
+	/>
 {/if}
 
 <style>
@@ -1114,9 +1150,13 @@
 		background: var(--bg);
 	}
 	/* Hide the surrounding chrome (breadcrumb, plan strip, chapter nav) in page
-	   mode — only the pager's content is paginated. */
-	article.paged > :not(.pager) {
-		display: none;
+	   mode — only the pager's content is paginated. Screen only: on paper the
+	   title and breadcrumb are the first thing you want, not the first thing to
+	   blank. */
+	@media screen {
+		article.paged > :not(.pager) {
+			display: none;
+		}
 	}
 	.paged .pager {
 		--pgpad: 1.25rem;
@@ -1136,7 +1176,7 @@
 		column-fill: auto;
 		/* --page-dir is 1 (LTR) or -1 (RTL): RTL pages advance rightwards. */
 		transform: translateX(calc(var(--page-dir, 1) * -1 * var(--page-idx) * var(--page-w)));
-		transition: transform 0.28s ease;
+		transition: transform var(--duration-base) ease;
 	}
 	/* A touch more breathing room around a two-column spread. */
 	.paged.twocol .pager {
@@ -1145,6 +1185,30 @@
 	@media (prefers-reduced-motion: reduce) {
 		.paged .pager {
 			transition: none;
+		}
+	}
+
+	/* Paged mode is a fixed, column-swept viewport with the page offset applied
+	   as a translate on .pager — so printing it produced whichever single
+	   screenful was showing, shifted off the sheet by however many pages the
+	   reader had turned. Unwind the whole mechanism back to normal flow. */
+	@media print {
+		article.paged {
+			position: static !important;
+			inset: auto !important;
+			overflow: visible !important;
+			background: none !important;
+			z-index: auto !important;
+		}
+		.paged .pager {
+			display: block !important;
+			height: auto !important;
+			padding: 0 !important;
+			column-width: auto !important;
+			column-gap: normal !important;
+			columns: auto !important;
+			transform: none !important;
+			transition: none !important;
 		}
 	}
 
@@ -1194,14 +1258,22 @@
 		}
 	}
 
+	/* Room for the fixed progress bar (and the home-indicator strip beneath it),
+	   so the chapter's last line and its "Next chapter" CTA are not underneath
+	   the scrubber. */
+	.reading-article {
+		padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
+	}
 	.progress-foot {
 		position: fixed;
 		inset-inline: 0;
 		bottom: 0;
 		z-index: 30;
-		padding: 0.25rem 1rem 0.4rem;
+		/* The extra bottom padding clears the iPhone home-indicator strip, which
+		   this bar sat inside. env() is 0 everywhere it doesn't apply. */
+		padding: 0.25rem 1rem calc(0.4rem + env(safe-area-inset-bottom));
 		text-align: center;
-		font-size: 0.72rem;
+		font-size: var(--fs-micro);
 		color: var(--muted);
 		background: color-mix(in srgb, var(--bg) 82%, transparent);
 		backdrop-filter: blur(6px);
@@ -1226,25 +1298,6 @@
 		background: color-mix(in srgb, var(--accent) 10%, transparent);
 		border-radius: 4px;
 		box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 10%, transparent);
-		transition: background 0.3s ease;
-	}
-	.note-overlay {
-		position: fixed;
-		inset: 0;
-		z-index: 50;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 1rem;
-		background: rgb(0 0 0 / 0.4);
-	}
-	.note-card {
-		width: 100%;
-		max-width: 32rem;
-		border-radius: var(--radius-card);
-		border: 1px solid var(--border);
-		background: var(--surface);
-		padding: 1.25rem;
-		box-shadow: 0 10px 40px rgb(0 0 0 / 0.35);
+		transition: background var(--duration-base) ease;
 	}
 </style>

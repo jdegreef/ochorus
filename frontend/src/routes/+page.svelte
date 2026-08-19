@@ -90,13 +90,13 @@
 <!-- Hero -->
 <section class="border-b border-border bg-surface-2">
 	<div class="mx-auto max-w-4xl px-5 py-20 text-center">
-		<p class="mb-4 text-small font-semibold uppercase tracking-widest text-accent">
+		<p class="eyebrow mb-4 text-accent">
 			{t('home.heroEyebrow')}
 		</p>
 		<h1 class="text-display mx-auto mb-5 max-w-3xl">
 			{t('home.heroTitle')}
 		</h1>
-		<p class="mx-auto mb-7 max-w-xl text-body text-muted">
+		<p class="mx-auto mb-6 max-w-xl text-body text-muted">
 			{t('home.heroTagline')}
 		</p>
 		<form
@@ -127,7 +127,7 @@
 				aria-label={t('nav.search')}
 				class="min-w-0 flex-1 bg-transparent py-1 text-body text-text placeholder:text-muted focus-visible:-outline-offset-2"
 			/>
-			<button type="submit" class="btn btn-primary shrink-0 !rounded-full">{t('nav.search')}</button>
+			<button type="submit" class="btn btn-primary shrink-0 rounded-full">{t('nav.search')}</button>
 		</form>
 		<div class="flex flex-wrap justify-center gap-3">
 			<a href={localizeHref('/books')} class="btn btn-primary">{t('home.browseLibrary')}</a>
@@ -186,7 +186,7 @@
 					class="inline-flex items-baseline gap-1.5 rounded-full border border-border bg-surface px-4 py-2 text-small font-medium text-text hover:border-accent hover:text-accent hover:no-underline"
 				>
 					{topic.title}
-					<span class="text-[0.75rem] font-normal text-muted">{topic.book_count}</span>
+					<span class="text-eyebrow font-normal text-muted">{topic.book_count}</span>
 				</a>
 			{/each}
 		</div>
@@ -228,15 +228,14 @@
 						/>
 					{:else}
 						<span
-							class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-soft text-small font-semibold text-accent"
-							style="font-family: var(--font-display)"
+							class="font-display flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-soft text-small font-semibold text-accent"
 						>
 							{initials(author.name)}
 						</span>
 					{/if}
 					<span>
 						<span class="block text-small font-semibold text-text">{author.name}</span>
-						<span class="block text-[0.8rem] text-muted">
+						<span class="block text-small text-muted">
 							{author.book_count}
 							{author.book_count === 1 ? t('common.bookOne') : t('common.bookMany')}
 						</span>

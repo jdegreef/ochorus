@@ -249,7 +249,7 @@
 
 <div class="mx-auto max-w-2xl px-5 py-10">
 	<header class="mb-8">
-		<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">Ochorus</p>
+		<p class="eyebrow mb-2 text-accent">Ochorus</p>
 		<h1 class="text-display">{t('notebook.title')}</h1>
 		<p class="mt-2 text-body text-muted">{t('notebook.subtitle')}</p>
 	</header>
@@ -257,7 +257,7 @@
 	{#if loading}
 		<p class="text-body text-muted">…</p>
 	{:else if isEmpty}
-		<div class="rounded-2xl border border-border bg-surface p-8 text-center">
+		<div class="rounded-card border border-border bg-surface p-8 text-center">
 			<p class="text-body text-muted">{t('notebook.empty')}</p>
 		</div>
 	{:else}
@@ -267,7 +267,7 @@
 				bind:value={query}
 				placeholder={t('notebook.search')}
 				aria-label={t('notebook.search')}
-				class="min-w-[12rem] flex-1 rounded-xl border border-border-strong bg-surface px-4 py-2.5 text-body text-text placeholder:text-muted focus:border-accent"
+				class="field grow"
 			/>
 			<div class="flex items-center gap-2" role="group" aria-label={t('notebook.filterColor')}>
 				<button
@@ -296,7 +296,7 @@
 		</div>
 
 		{#if noMatches}
-			<div class="rounded-2xl border border-border bg-surface p-8 text-center">
+			<div class="rounded-card border border-border bg-surface p-8 text-center">
 				<p class="text-body text-muted">{t('notebook.no_matches')}</p>
 			</div>
 		{/if}
@@ -309,7 +309,7 @@
 				{#if bk.author}<p class="mb-3 text-small text-muted">{bk.author}</p>{/if}
 
 				{#if bk.bookmarks.length}
-					<h3 class="mb-2 mt-4 text-small font-semibold uppercase tracking-wide text-muted">
+					<h3 class="section-label mt-4">
 						🔖 {t('reader.bookmarks')}
 					</h3>
 					<ul class="space-y-2">
@@ -317,7 +317,7 @@
 							<li>
 								<a
 									href={localizeHref(`/books/${bk.slug}/${bm.order}?p=${bm.p}`)}
-									class="block rounded-lg border border-border bg-surface px-4 py-2.5 hover:border-accent hover:no-underline"
+									class="block rounded-sm border border-border bg-surface px-4 py-2.5 hover:border-accent hover:no-underline"
 								>
 									<span class="block text-body text-text">{bm.snippet}</span>
 									<span class="block text-small text-muted">{bm.title}</span>
@@ -335,7 +335,7 @@
 								<li>
 									<a
 										href={localizeHref(`/books/${bk.slug}/${ch.order}?p=${hl.p}`)}
-										class="block rounded-lg border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
+										class="block rounded-sm border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
 										style="border-inline-start-color: var(--hl-{hl.color})"
 									>
 										{#if hl.text}
@@ -355,7 +355,7 @@
 
 		{#each filteredSermons as sm (sm.slug)}
 			<section class="mb-10">
-				<p class="mb-1 text-small font-semibold uppercase tracking-widest text-accent">
+				<p class="eyebrow mb-1 text-accent">
 					{t('search.typeSermon')}
 				</p>
 				<h2 class="text-h2">
@@ -367,7 +367,7 @@
 						<li>
 							<a
 								href={localizeHref(`/sermons/${sm.slug}?p=${hl.p}`)}
-								class="block rounded-lg border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
+								class="block rounded-sm border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
 								style="border-inline-start-color: var(--hl-{hl.color})"
 							>
 								{#if hl.text}
@@ -385,7 +385,7 @@
 
 		{#each filteredBios as b (b.slug)}
 			<section class="mb-10">
-				<p class="mb-1 text-small font-semibold uppercase tracking-widest text-accent">
+				<p class="eyebrow mb-1 text-accent">
 					{t('bios.eyebrow')}
 				</p>
 				<h2 class="text-h2">
@@ -400,7 +400,7 @@
 							     one kind that dropped the reader at the top of the page. -->
 							<a
 								href={localizeHref(`/authors/${b.slug}?p=${hl.p}`)}
-								class="block rounded-lg border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
+								class="block rounded-sm border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
 								style="border-inline-start-color: var(--hl-{hl.color})"
 							>
 								{#if hl.text}

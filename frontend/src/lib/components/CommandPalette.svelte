@@ -162,7 +162,7 @@
 				spellcheck="false"
 				placeholder={t('search.palettePlaceholder')}
 				aria-label={t('search.palettePlaceholder')}
-				class="w-full border-b border-border bg-transparent px-4 py-3.5 text-body text-text focus-visible:-outline-offset-2"
+				class="w-full border-b border-border bg-transparent px-4 py-4 text-body text-text focus-visible:-outline-offset-2"
 			/>
 
 			<div class="max-h-[52vh] overflow-y-auto py-2">
@@ -185,7 +185,7 @@
 									class:bg-surface-2={it.key === activeKey}
 								>
 									<span
-										class="w-16 shrink-0 text-[0.66rem] font-semibold uppercase tracking-wide text-muted"
+										class="eyebrow w-16 shrink-0 text-muted"
 									>
 										{it.kind === 'cmd' ? t('search.palettePages') : it.label}
 									</span>
@@ -200,7 +200,7 @@
 				{/if}
 			</div>
 
-			<div class="flex items-center gap-3 border-t border-border px-4 py-2 text-[0.7rem] text-muted">
+			<div class="flex items-center gap-3 border-t border-border px-4 py-2 text-micro text-muted">
 				<span>↑↓ {t('search.paletteNavigate')}</span>
 				<span>↵ {t('search.paletteOpen')}</span>
 				<span>esc {t('search.paletteClose')}</span>

@@ -59,9 +59,9 @@
 		border: 1px solid var(--border);
 		background: var(--surface);
 		padding: 0.5rem 0.9rem;
-		font-size: 0.85rem;
+		font-size: var(--fs-small);
 		color: var(--text);
-		box-shadow: 0 8px 30px rgb(0 0 0 / 0.18);
+		box-shadow: var(--shadow-popover);
 	}
 	.pwa-toast {
 		border-radius: var(--radius-card);
@@ -78,7 +78,7 @@
 	.pwa-link {
 		color: var(--muted);
 		text-decoration: underline;
-		font-size: 0.8rem;
+		font-size: var(--fs-small);
 	}
 	.pwa-cta {
 		border-radius: 999px;
@@ -88,7 +88,7 @@
 		color: var(--accent-contrast);
 		padding: 0.25rem 0.75rem;
 		font-weight: 600;
-		font-size: 0.8rem;
+		font-size: var(--fs-small);
 	}
 	.pwa-cta:hover {
 		filter: brightness(1.05);

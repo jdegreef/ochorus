@@ -20,20 +20,20 @@
 />
 
 <div class="mx-auto max-w-2xl px-5 py-12">
-	<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">Ochorus</p>
+	<p class="eyebrow mb-2 text-accent">Ochorus</p>
 	<h1 class="text-h1 mb-6">{t('legal.title')}</h1>
 
 	<div class="reading-page space-y-5 text-body text-muted">
 		<p>{t('legal.intro')}</p>
 
-		<h2 class="text-h2 !text-text pt-2">{t('legal.privacyHeading')}</h2>
+		<h2 class="text-h2 text-text pt-2">{t('legal.privacyHeading')}</h2>
 		<p>{t('legal.privacyP1')}</p>
 		<p>{t('legal.privacyP2')}</p>
 		<p>{t('legal.privacyP3')}</p>
 		<p>{t('legal.privacyP4')}</p>
 		<p>{t('legal.privacyP5')}</p>
 
-		<h2 class="text-h2 !text-text pt-2">{t('legal.termsHeading')}</h2>
+		<h2 class="text-h2 text-text pt-2">{t('legal.termsHeading')}</h2>
 		<p>{t('legal.termsP1')}</p>
 		<p>{t('legal.termsP2')}</p>
 		<p>{t('legal.termsP3')}</p>

@@ -17,6 +17,12 @@
  *    the site in Arabic and finds a badge on the wrong side of a heading. The
  *    admin is exempt: it is deliberately English-only and always renders LTR.
  *
+ * 3. Scoped <style> blocks use LOGICAL CSS. The utility check above only sees
+ *    class names, so for a long time every physical declaration written in real
+ *    CSS shipped unchecked — which is how both slide-in drawers came to open
+ *    from the wrong edge in Arabic, and how the current-chapter marker and both
+ *    reading-page accent rails ended up on the wrong side.
+ *
  * This is a source-text check, like readerDirection.test.ts beside it — the
  * mistake it catches is one of authoring, and it costs nothing to run.
  */
@@ -137,4 +143,5 @@ describe('right-to-left support', () => {
 		}
 		expect(offenders, offenders.join('\n')).toEqual([]);
 	});
+
 });

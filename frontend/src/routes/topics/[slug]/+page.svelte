@@ -142,7 +142,7 @@
 		align-items: flex-start;
 		gap: 1rem;
 		padding: 1.4rem 1.5rem;
-		border-radius: var(--radius-card, 0.9rem);
+		border-radius: var(--radius-card);
 		border: 1px solid color-mix(in srgb, var(--topic) 22%, var(--color-border));
 		background:
 			radial-gradient(90% 130% at 0% 0%, color-mix(in srgb, var(--topic) 16%, transparent), transparent 55%),
@@ -152,14 +152,6 @@
 	.badge {
 		--chip-size: 3.9rem;
 		--chip-hue: var(--topic);
-	}
-	.section-label {
-		font-size: 0.72rem;
-		font-weight: 600;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
-		color: var(--color-muted);
-		margin-bottom: 0.9rem;
 	}
 	/* A themed Scripture epigraph, set off by an accent rule.
 
@@ -177,13 +169,13 @@
 		margin: 0;
 		font-family: var(--font-display, Georgia, serif);
 		font-style: italic;
-		font-size: 1.05rem;
+		font-size: var(--fs-body);
 		line-height: 1.5;
 		color: var(--color-text);
 	}
 	.verse figcaption {
 		margin-top: 0.3rem;
-		font-size: 0.8rem;
+		font-size: var(--fs-small);
 		letter-spacing: 0.02em;
 		color: color-mix(in srgb, var(--topic) 70%, var(--color-muted));
 	}

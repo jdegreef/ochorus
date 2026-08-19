@@ -85,7 +85,7 @@
 		top: 1.1rem;
 		left: 50%; /* rtl-ok: paired with the inline left:%% positions above */
 		transform: translateX(-50%);
-		font-size: 0.7rem;
+		font-size: var(--fs-micro);
 		color: var(--muted);
 		white-space: nowrap;
 	}
@@ -116,7 +116,7 @@
 		position: absolute;
 		top: 0;
 		font-family: var(--font-display);
-		font-size: 0.85rem;
+		font-size: var(--fs-small);
 		font-weight: 600;
 		color: var(--text);
 	}

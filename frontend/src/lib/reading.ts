@@ -6,6 +6,19 @@ export function readingMinutes(words: number): number {
 }
 
 /**
+ * Whole minutes of reading left, from a word count and how far through the
+ * reader is (0-1).
+ *
+ * Floored at 1: the chapter reader used a bare Math.ceil, so the foot of a
+ * chapter read "0 min left" — which is not a reading time, and disagreed with
+ * the sermon page, which floored at 1 in its own private copy. Shared so the two
+ * surfaces cannot drift again.
+ */
+export function minutesLeft(words: number, frac: number): number {
+	return Math.max(1, Math.ceil(readingMinutes(words) * (1 - Math.min(1, Math.max(0, frac)))));
+}
+
+/**
  * Book-progress percent for the "Continue reading" card, from the chapter
  * currently open (`order`, 1-based) and the book's chapter count.
  *
@@ -57,3 +70,42 @@ export function preachedYear(preachedOn: string | null): string {
  * different answers about where the reader was.
  */
 export const HEADER_OFFSET = 64;
+
+/**
+ * A content-language code as a `lang` attribute value.
+ *
+ * Reading surfaces never set `lang` on the prose, so the browser fell back to
+ * the document's language — which is the UI LOCALE, not the content's. Those
+ * routinely differ: an English book read under `/ar`, a Swahili sermon opened
+ * from an English browse page. That is invisible until a reader justifies the
+ * text, at which point `hyphens: auto` consults the wrong dictionary (or none)
+ * and the prose fills with rivers.
+ *
+ * `en-modern` is our own edition marker, not a real subtag, so it is reduced to
+ * its base language — a Modern English edition hyphenates as English.
+ */
+export function contentLang(language: string): string {
+	return language === 'en-modern' ? 'en' : language;
+}
+
+
+/**
+ * Keep a centred popover inside the viewport.
+ *
+ * The scripture and definition popovers are positioned at the tapped word and
+ * centred on it with `translate(-50%)`, at a fixed width — so a reference near
+ * either margin rendered half off-screen, which on a phone is most of them.
+ * Callers pass the word's centre in PAGE coordinates; the clamp is done in
+ * VIEWPORT coordinates and converted back, since the viewport is what the
+ * popover has to fit inside.
+ */
+export function clampPopoverLeft(pageLeft: number, width: number, gutter = 12): number {
+	if (typeof window === 'undefined') return pageLeft;
+	const half = Math.min(width, window.innerWidth - gutter * 2) / 2;
+	const viewportLeft = pageLeft - window.scrollX;
+	const clamped = Math.min(
+		Math.max(viewportLeft, half + gutter),
+		window.innerWidth - half - gutter
+	);
+	return clamped + window.scrollX;
+}

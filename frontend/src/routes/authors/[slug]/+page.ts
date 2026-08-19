@@ -1,4 +1,4 @@
-import { getAuthor, listAuthors, listBooks } from '$lib/library';
+import { getAuthorWithLang, listAuthors, listBooks } from '$lib/library';
 import { getLang } from '$lib/lang.svelte';
 import { orNotFound } from '$lib/loadHelpers';
 import type { EntryGenerator, PageLoad } from './$types';
@@ -197,8 +197,15 @@ export const entries: EntryGenerator = async () => {
 // the translated bio. Note uk seeds as status=draft, so these pages only
 // matter once the language is launched from the admin.
 export const load: PageLoad = async ({ params }) => {
-	const author = await orNotFound(() => getAuthor(params.slug, getLang()));
+	// The RESOLVED language, not the requested one: getAuthor falls back to
+	// English on a 404, and the reader labels the bio's prose with this.
+	const { data: author, language } = await orNotFound(() =>
+		getAuthorWithLang(params.slug, getLang())
+	);
 	// A mid-deploy API (before the sermon fields ship) may omit these; default
 	// them so the page renders instead of throwing during prerender.
-	return { author: { ...author, sermons: author.sermons ?? [], bio_html: author.bio_html ?? '' } };
+	return {
+		author: { ...author, sermons: author.sermons ?? [], bio_html: author.bio_html ?? '' },
+		language
+	};
 };

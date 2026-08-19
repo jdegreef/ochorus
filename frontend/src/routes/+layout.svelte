@@ -119,7 +119,9 @@
 
 <div
 	class="flex min-h-screen flex-col"
-	style="--reading-measure: {MEASURE[readerPrefs.measure]}; --pw: {pageWidth.rem}rem"
+	style="--reading-scale: {readerPrefs.scale}; --reading-measure: {MEASURE[
+		readerPrefs.measure
+	]}; --pw: {pageWidth.rem}rem"
 >
 	<a href="#main" class="skip-link">{t('a11y.skipToContent')}</a>
 	{#if !readerUi.focus}
@@ -284,7 +286,7 @@
 				<div
 					class="mx-auto flex max-w-5xl flex-wrap items-baseline gap-x-5 gap-y-1 px-5 py-4 text-small"
 				>
-					<span class="py-1 font-semibold uppercase tracking-wider text-text"
+					<span class="eyebrow py-1 text-text"
 						>{t('footer.languages')}</span
 					>
 					{#each footerLangs as l (l.code)}

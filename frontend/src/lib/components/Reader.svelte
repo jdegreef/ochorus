@@ -1,4 +1,5 @@
 <script lang="ts">
+	import NoteDialog from '$lib/components/NoteDialog.svelte';
 	/**
 	 * The reading machinery every long-form work shares — the prose itself, and
 	 * everything that has to know about it.
@@ -27,10 +28,9 @@
 	 */
 	import { onMount, tick } from 'svelte';
 	import { page } from '$app/stores';
-	import { i18n } from '$lib/i18n.svelte';
-	import { HEADER_OFFSET } from '$lib/reading';
+	import { contentLang, HEADER_OFFSET } from '$lib/reading';
 	import { getScrollAnchor, saveScrollAnchor, saveProgress, getProgressRecord } from '$lib/progress';
-	import { HIGHLIGHT_COLORS, DEFAULT_HIGHLIGHT, type WorkKind } from '$lib/reading-schema';
+	import { DEFAULT_HIGHLIGHT, type WorkKind } from '$lib/reading-schema';
 	import { marks, type Segment } from '$lib/marks.svelte';
 	import { renderMarks } from '$lib/rangeMarks';
 	import { findQueryHits } from '$lib/searchHits';
@@ -38,7 +38,6 @@
 	import { define } from '$lib/define.svelte';
 	import { scripture } from '$lib/scripture.svelte';
 	import { getLang } from '$lib/lang.svelte';
-	import { focusTrap } from '$lib/actions/focusTrap';
 	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
 	import DefinePopover from '$lib/components/DefinePopover.svelte';
 	import SelectionBar from '$lib/components/SelectionBar.svelte';
@@ -97,7 +96,6 @@
 		headerOffset = HEADER_OFFSET
 	}: Props = $props();
 
-	const t = i18n.t;
 
 	// --- Position --------------------------------------------------------------
 	// Anchored to the top-visible paragraph, not a pixel offset, so a saved spot
@@ -310,7 +308,7 @@
      references are wrapped as tappable spans (scripture popover). -->
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
 <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-<div class="reading {className}" bind:this={body} onclick={onBodyClick} dir="auto">{@html html}</div>
+<div class="reading {className}" bind:this={body} onclick={onBodyClick} dir="auto" lang={contentLang(language)}>{@html html}</div>
 
 <SelectionBar
 	container={body}
@@ -334,48 +332,14 @@
 <ListenBar />
 
 {#if noteOpen}
-	<div
-		class="note-overlay"
-		role="dialog"
-		aria-modal="true"
-		aria-label={t('reader.note')}
-		use:focusTrap={{ onEscape: () => (noteOpen = false) }}
-	>
-		<div class="note-card">
-			<h2 class="mb-2 text-h3">{t('reader.note')}</h2>
-			<div class="mb-3 flex items-center gap-2.5" role="group" aria-label={t('reader.highlight')}>
-				{#each HIGHLIGHT_COLORS as color (color)}
-					<button
-						type="button"
-						class="hl-swatch"
-						data-color={color}
-						class:active={noteColor === color}
-						aria-pressed={noteColor === color}
-						aria-label="{t('reader.highlight')}: {t(`reader.hl_${color}`)}"
-						title={t(`reader.hl_${color}`)}
-						onclick={() => (noteColor = color)}
-					></button>
-				{/each}
-			</div>
-			<textarea
-				bind:value={noteDraft}
-				rows="5"
-				class="w-full rounded-sm border border-border-strong bg-bg p-3 text-body text-text"
-				aria-label={t('reader.note')}
-				placeholder="…"
-			></textarea>
-			<div class="mt-3 flex items-center gap-2">
-				{#if noteId}
-					<button class="btn btn-ghost !text-danger" onclick={removeMark}>
-						{t('reader.removeHighlight')}
-					</button>
-				{/if}
-				<span class="flex-1"></span>
-				<button class="btn btn-ghost" onclick={() => (noteOpen = false)}>{t('common.cancel')}</button>
-				<button class="btn btn-primary" onclick={saveNote}>{t('common.save')}</button>
-			</div>
-		</div>
-	</div>
+	<NoteDialog
+		bind:text={noteDraft}
+		bind:color={noteColor}
+		canRemove={!!noteId}
+		onSave={saveNote}
+		onRemove={removeMark}
+		onClose={() => (noteOpen = false)}
+	/>
 {/if}
 
 <style>
@@ -384,27 +348,8 @@
 		background: color-mix(in srgb, var(--accent) 10%, transparent);
 		border-radius: 4px;
 		box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 10%, transparent);
-		transition: background 0.3s ease;
+		transition: background var(--duration-base) ease;
 	}
 
 	/* Text-range marks (<mark> spans) are styled globally in app.css. */
-	.note-overlay {
-		position: fixed;
-		inset: 0;
-		z-index: 50;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 1rem;
-		background: rgb(0 0 0 / 0.4);
-	}
-	.note-card {
-		width: 100%;
-		max-width: 32rem;
-		border-radius: var(--radius-card);
-		border: 1px solid var(--border);
-		background: var(--surface);
-		padding: 1.25rem;
-		box-shadow: 0 10px 40px rgb(0 0 0 / 0.35);
-	}
 </style>

@@ -34,7 +34,7 @@
 
 <header class="mb-8">
 	{#if eyebrow}
-		<p class="mb-2 text-eyebrow font-semibold uppercase tracking-widest text-accent">{eyebrow}</p>
+		<p class="eyebrow mb-2 text-accent">{eyebrow}</p>
 	{/if}
 	<h1 class="text-h1 mb-2">{title}</h1>
 	{#if tagline}

@@ -35,7 +35,7 @@
 	>
 		<div class="px-5 pt-5">
 			<a href="/admin" class="inline-block hover:no-underline">
-				<span class="block text-small font-semibold uppercase tracking-widest text-accent">Ochorus</span>
+				<span class="eyebrow block text-accent">Ochorus</span>
 				<span class="block text-h3 leading-tight text-text">Admin</span>
 			</a>
 		</div>
@@ -49,7 +49,7 @@
 				<a
 					href={s.href}
 					aria-current={active ? 'page' : undefined}
-					class="shrink-0 whitespace-nowrap rounded-lg px-3 py-2 text-small font-semibold transition-colors hover:no-underline {active
+					class="shrink-0 whitespace-nowrap rounded-sm px-3 py-2 text-small font-semibold transition-colors hover:no-underline {active
 						? 'bg-accent-soft text-accent'
 						: 'text-muted hover:bg-surface-2 hover:text-text'}"
 				>
@@ -61,7 +61,7 @@
 		<div class="hidden px-3 pb-4 md:block">
 			<a
 				href="/"
-				class="inline-block rounded-lg px-3 py-2 text-small text-muted transition-colors hover:text-accent"
+				class="inline-block rounded-sm px-3 py-2 text-small text-muted transition-colors hover:text-accent"
 				>← View site</a
 			>
 		</div>

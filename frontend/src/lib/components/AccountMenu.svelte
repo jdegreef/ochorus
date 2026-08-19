@@ -81,7 +81,7 @@
 			{/if}
 		</div>
 	{:else}
-		<a href={localizeHref(loginHref)} class="btn btn-primary !px-3.5 !py-1.5 !text-small hover:no-underline">
+		<a href={localizeHref(loginHref)} class="btn btn-sm btn-primary hover:no-underline">
 			{t('account.signIn')}
 		</a>
 	{/if}

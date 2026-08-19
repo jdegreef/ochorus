@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { coverGradient } from '$lib/coverArt';
 	import type { TopicCover } from '$lib/library';
 
 	/**
@@ -16,7 +17,7 @@
 				{#if cover.cover_url}
 					<img src={cover.cover_url} alt="" loading="lazy" />
 				{:else}
-					<div class="cover-fallback" style="background: {cover.cover_color || '#3b5bdb'}"></div>
+					<div class="cover-fallback" style="background: {coverGradient(cover.cover_color)}"></div>
 				{/if}
 			</div>
 		{/each}
@@ -32,7 +33,7 @@
 		aspect-ratio: 3 / 4;
 		border-radius: 0.25rem;
 		overflow: hidden;
-		box-shadow: 0 2px 6px -2px #0006;
+		box-shadow: var(--shadow-card);
 		margin-inline-start: -0.7rem;
 		background: var(--surface);
 		transform: rotate(-3deg);

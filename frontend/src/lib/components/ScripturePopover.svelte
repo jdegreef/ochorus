@@ -37,7 +37,7 @@
 				{#each scripture.result.verses as v (v.number)}<sup class="scripture-num">{v.number}</sup
 					>{v.text}{' '}{/each}
 			</p>
-			<p class="mt-2 text-[0.7rem] uppercase tracking-wider text-muted">{scripture.result.version}</p>
+			<p class="eyebrow mt-2 text-muted">{scripture.result.version}</p>
 		{:else}
 			<p class="mt-2 text-small text-muted">{t('reader.scriptureUnavailable')}</p>
 		{/if}
@@ -54,16 +54,16 @@
 		border-radius: var(--radius-card);
 		border: 1px solid var(--border);
 		background: var(--surface);
-		box-shadow: 0 10px 34px rgb(0 0 0 / 0.25);
+		box-shadow: var(--shadow-popover);
 	}
 	.scripture-ref-title {
 		font-family: var(--font-display);
-		font-size: 1.05rem;
+		font-size: var(--fs-body);
 		font-weight: 600;
 		color: var(--accent);
 	}
 	.scripture-body {
-		font-size: 0.95rem;
+		font-size: var(--fs-body);
 		line-height: 1.6;
 		color: var(--text);
 	}
