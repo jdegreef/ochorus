@@ -1086,6 +1086,52 @@ class PlanTests(TestCase):
         stale.refresh_from_db()
         self.assertEqual(stale.title, "Obwetoowaze mu Nnaku 12")
 
+    def test_seed_plans_skips_a_language_with_no_prose(self):
+        """A book shipping in a new language must NOT publish an English plan.
+
+        This is the #819 defect at its source. `seed_plans` creates a plan row
+        per language the source book is published in, so shipping a BOOK is what
+        creates the plan — and the prose used to fall back to English, putting
+        "Humility in 12 Days" on the Arabic plans page. Hindi has no
+        PLAN_TRANSLATIONS entry, so no Hindi plan may appear.
+        """
+        from django.core.management import call_command
+
+        hi_book = Book.objects.create(
+            author=Author.objects.get(slug="am"),
+            slug="humility-2",
+            language="hi",
+            title="विनम्रता",
+        )
+        Chapter.objects.create(book=hi_book, order=1, title="एक", body_html="<p>x</p>")
+        call_command("seed_plans", verbosity=0)
+
+        self.assertFalse(
+            Plan.objects.filter(slug="humility-12-days", language="hi").exists(),
+            "seed_plans created a Hindi plan with no Hindi prose — it would "
+            "render the English title to a Hindi reader.",
+        )
+        # The languages that DO have prose are unaffected.
+        self.assertTrue(Plan.objects.filter(slug="humility-12-days", language="en").exists())
+
+    def test_seed_plans_leaves_an_existing_untranslated_row_alone(self):
+        """A row created before this guard keeps its prose; deleting a published
+        plan is a bigger decision than a seed step makes on its own."""
+        from django.core.management import call_command
+
+        hi_book = Book.objects.create(
+            author=Author.objects.get(slug="am"), slug="humility-2", language="hi", title="विनम्रता"
+        )
+        Chapter.objects.create(book=hi_book, order=1, title="एक", body_html="<p>x</p>")
+        legacy = Plan.objects.create(
+            slug="humility-12-days", language="hi", title="Humility in 12 Days", description="old"
+        )
+        PlanDay.objects.create(plan=legacy, day=1, book_slug="humility-2", chapter_order=1)
+        call_command("seed_plans", verbosity=0)
+
+        legacy.refresh_from_db()
+        self.assertEqual(legacy.title, "Humility in 12 Days")
+
 
 class TopicTests(TestCase):
     def setUp(self):
