@@ -310,6 +310,24 @@ PLAN_TRANSLATIONS = {
             "okwa buli lunaku mu bulamu obw'Ekikristaayo.",
         ),
     },
+    "hi": {
+        # Hindi's FIRST plan prose, shipping with the first Hindi books
+        # (queue jobs #690-#694). the-inner-chamber.hi is in this same PR, and
+        # it is the sole source book of this launch plan, so seed_plans creates
+        # the row on the next deploy — without an entry here the language would
+        # get no plan at all, which `PlanTranslationCoverageTests` fails on.
+        # This is the content of queue job #843.
+        #
+        # The title opens with the shipped edition's own title verbatim
+        # ("भीतरी कोठरी"), as every other block here does, so the plan card and
+        # the book on the shelf agree. "प्रातःकालीन प्रहर" is the rendering the
+        # 36 shipped Hindi chapters settled on for the morning watch.
+        "the-inner-chamber-month": (
+            "भीतरी कोठरी में एक महीना",
+            "प्रार्थना और वचन की एक दैनिक आदत बनाइए: एंड्रयू मरे के साथ छत्तीस "
+            "भोर, हर दिन एक अध्याय।",
+        ),
+    },
     "sw": {
         # PROVISIONAL TITLE — read this before shipping the-god-of-all-comfort.sw.
         #

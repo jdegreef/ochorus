@@ -3,6 +3,13 @@ import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
 
 /**
+ * Prerender refresh 2026-08-19 (queue jobs #690 + #843): the-inner-chamber
+ * ships in Hindi, and it is the sole source book of the-inner-chamber-month, so
+ * seed_plans creates that plan row in hi on this deploy. Without this touch the
+ * DB would carry the plan and /hi/plans would keep serving the page it was
+ * built with — the fix landing invisibly, which reads as the fix not working.
+ * The plan prose (PLAN_TRANSLATIONS["hi"]) is in the same commit.
+ *
  * Prerender refresh 2026-08-17 (queue job #594, PR #964): the Portuguese
  * Humildade ships, and seed_plans creates "Humildade em 12 Dias" from prose
  * that was already in PLAN_TRANSLATIONS — the plan did not exist in pt before

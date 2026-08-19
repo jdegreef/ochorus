@@ -1,0 +1,401 @@
+{
+ "kind": "book",
+ "slug": "divine-healing",
+ "language": "pt",
+ "job_issue": 592,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Acts 10:38",
+   "status": "mined",
+   "source_file": "baptism-with-the-holy-spirit.pt.json"
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "mined",
+   "source_file": "waiting-on-god.pt.json"
+  },
+  {
+   "reference": "Isaiah 53:4",
+   "status": "mined",
+   "source_file": "the-key-in-my-hand.pt.json"
+  },
+  {
+   "reference": "James 5:14",
+   "status": "mined",
+   "source_file": "the-key-in-my-hand.pt.json"
+  },
+  {
+   "reference": "James 5:15",
+   "status": "mined",
+   "source_file": "the-key-in-my-hand.pt.json"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "source_file": "the-inner-chamber.pt.json"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "baptism-with-the-holy-spirit.pt.json"
+  },
+  {
+   "reference": "Titus 2:14",
+   "status": "mined",
+   "source_file": "godliness.pt.json"
+  },
+  {
+   "reference": "Acts 19:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 3:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 3:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 3:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 4:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 4:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 4:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 4:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 4:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 2:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Daniel 10:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Deuteronomy 7:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Deuteronomy 9:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 4:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 6:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 10:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 2:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 6:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 33:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 51:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 53:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 61:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 1:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 4:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 4:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 5:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 5:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 2:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 2:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 11:40",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 2:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 3:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 3:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 3:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 5:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 7:39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 9:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Joshua 7:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lamentations 3:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Leviticus 26:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 10:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 13:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 15:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 18:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 16:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 5:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 6:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 9:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 10:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 11:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 15:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 17:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 21:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 4:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 4:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 6:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 8:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 8:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 8:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 9:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 9:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 103:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 103:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 112:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 115:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 18:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 25:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 27:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 30:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 44:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 77:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 78:41",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 91:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 92:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 4:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 4:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 6:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "self_rendered"
+  }
+ ]
+}

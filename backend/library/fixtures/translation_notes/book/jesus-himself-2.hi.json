@@ -1,0 +1,97 @@
+{
+ "kind": "book",
+ "slug": "jesus-himself-2",
+ "language": "hi",
+ "job_issue": 693,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "Ephesians 4:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 35
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 31
+  },
+  {
+   "reference": "Hebrews 2:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "John 6:38",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Judges 6:34",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Luke 24:23",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 24:25",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Luke 24:31",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 24:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 19
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 2
+  },
+  {
+   "reference": "Philippians 2:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 16
+  },
+  {
+   "reference": "Romans 13:14",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Luke 24:26",
+   "status": "self_rendered"
+  }
+ ]
+}

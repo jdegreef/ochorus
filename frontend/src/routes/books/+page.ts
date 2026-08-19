@@ -7,6 +7,25 @@ import type { PageLoad } from './$types';
  * folding a fetch failure into `{ loadError: true }` so a client-side navigation
  * to a down API shows a retry panel instead of the error route.
  *
+ * Prerender refresh 2026-08-19 (queue jobs #591/#592/#595/#624/#656/#690/#691/
+ * #692/#693/#694): ten books across three languages, so /pt, /ar and /hi all
+ * re-crawl with their new shelves and chapter pages. pt gains The Unselfishness
+ * of God, Divine Healing and Stepping Stones; ar gains Godliness and Waiting on
+ * God; hi gains The Inner Chamber, Clothed with Strength and Dignity, He Holds
+ * My Tomorrows, Jesus Himself and Waiting on God.
+ *
+ * These are the FIRST Hindi books in the library — hi shipped three sermons and
+ * zero books before this. hi seeds `status=draft`, so the pages build but are
+ * not advertised in the sitemap; the touch is still worth making, so that
+ * launching the language from the admin is a switch rather than a switch plus a
+ * deploy nobody remembers is needed.
+ *
+ * One plan activates: the-inner-chamber is the sole source book of the
+ * the-inner-chamber-month launch plan, so shipping it in hi CREATES that row —
+ * the plans/+page.ts touch in this PR is what makes the card appear. Its prose
+ * (queue job #843) ships in the same commit, which is what keeps
+ * PlanTranslationCoverageTests green.
+ *
  * Prerender refresh 2026-08-17 (queue job #594, PR #964): Murray's Humility
  * went live in Portuguese as Humildade (12 chapters), so /pt/books re-crawls
  * with its chapter pages. This one DOES back a plan — humility-12-days — and
