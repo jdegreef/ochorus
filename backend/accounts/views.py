@@ -10,18 +10,27 @@ from rest_framework.views import APIView
 def health(request):
     """Liveness probe used by Render's health check.
 
-    Also publishes the commit this instance is serving. The reader is a static
-    site prerendered against this API, and a content commit deploys both at
-    once — so the web build needs a way to tell "the API is already serving my
-    release" from "the API is still serving the previous one", rather than
-    prerendering the old content into pages meant to show the new. Empty when
-    unset (local, CI), which the build treats as "nothing to compare".
+    Also publishes what this instance is serving, for the web build's benefit.
+    The reader is a static site prerendered against this API, and a content
+    commit deploys both services at once — so the build needs a way to tell "the
+    API already has my content" from "the API is still on the previous release",
+    rather than baking the old content into pages meant to show the new.
+
+    ``content_version`` is the field that question is answered with; ``commit``
+    is informational (which release is live, for a human looking at the
+    endpoint). It deliberately isn't the comparison: only the API's rootDir is
+    backend/, so a frontend-only commit deploys the web service alone and this
+    instance legitimately keeps reporting an older SHA — a build waiting on THAT
+    would wait for a deploy that is never coming.
     """
+    from library.content_fixtures import content_digest
+
     return Response(
         {
             "status": "ok",
             "service": "ochorus",
             "commit": settings.RELEASE_COMMIT,
+            "content_version": content_digest(),
         }
     )
 

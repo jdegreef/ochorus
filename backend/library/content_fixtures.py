@@ -23,8 +23,10 @@ Plan precedes its PlanDays.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
+from functools import lru_cache
 from pathlib import Path
 
 CONTENT_DIR = Path(__file__).resolve().parent / "fixtures" / "content"
@@ -33,6 +35,37 @@ AUTHORS_FILE = CONTENT_DIR / "authors.json"
 BOOKS_DIR = CONTENT_DIR / "books"
 SERMONS_DIR = CONTENT_DIR / "sermons"
 PLANS_FILE = CONTENT_DIR / "plans.json"
+
+
+@lru_cache(maxsize=1)
+def content_digest() -> str:
+    """A fingerprint of the content fixtures this build shipped with.
+
+    Published on ``/api/health/`` so the web build can tell whether the API is
+    already serving the content it is about to prerender against
+    (``frontend/scripts/await-api-release.mjs``).
+
+    Why content and not the git commit: only the API's ``rootDir`` is
+    ``backend/``, so Render skips its build when a commit touches nothing there.
+    A frontend-only commit therefore deploys the web service ALONE, and the API
+    legitimately keeps reporting an older SHA — a build that waited for the SHA
+    to match would wait for a deploy that is never coming. The narrower question
+    "does the API hold the content I am about to bake into static pages?" always
+    has an answer, and for a frontend-only commit the answer is yes, instantly.
+
+    Every ``*.json`` under ``content/``, by sorted relative path — deliberately
+    a simpler rule than ``ordered_fixture_paths()``, because the reader of this
+    digest is a JavaScript file that has to reproduce it exactly. ``tests_fixture``
+    already rejects any file under ``content/`` that the layout does not load, so
+    the two sets cannot drift apart.
+    """
+    h = hashlib.sha256()
+    for path in sorted(CONTENT_DIR.rglob("*.json"), key=lambda p: p.relative_to(CONTENT_DIR).as_posix()):
+        h.update(path.relative_to(CONTENT_DIR).as_posix().encode())
+        h.update(b"\0")
+        h.update(hashlib.sha256(path.read_bytes()).hexdigest().encode())
+        h.update(b"\0")
+    return h.hexdigest()[:16]
 
 
 def work_filename(slug: str, language: str) -> str:

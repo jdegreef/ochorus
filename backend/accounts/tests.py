@@ -192,7 +192,7 @@ class IsAdminUserTests(TestCase):
 
 
 class HealthEndpointTests(TestCase):
-    """/api/health/ is Render's liveness probe AND the release fingerprint the
+    """/api/health/ is Render's liveness probe AND the content fingerprint the
     static web build waits on before prerendering (see
     frontend/scripts/await-api-release.mjs)."""
 
@@ -205,10 +205,35 @@ class HealthEndpointTests(TestCase):
 
     @override_settings(RELEASE_COMMIT="")
     def test_commit_is_present_but_empty_when_unset(self):
-        # The key must always exist: the build distinguishes "no commit to
-        # compare" (skip) from "an API too old to publish one" (also skip, but
-        # worth saying differently), and a missing key would collapse the two.
         res = APIClient().get("/api/health/")
         self.assertEqual(res.status_code, 200)
         self.assertIn("commit", res.data)
         self.assertEqual(res.data["commit"], "")
+
+    def test_publishes_the_content_digest_the_web_build_compares(self):
+        from library.content_fixtures import content_digest
+
+        res = APIClient().get("/api/health/")
+        self.assertEqual(res.data["content_version"], content_digest())
+
+    def test_the_digest_matches_what_the_web_build_computes(self):
+        """The gate is a Python digest compared against a JavaScript one, and if
+        the two rules ever drift the build either hangs for its whole timeout or
+        stops checking anything. Recomputed here by the documented rule — every
+        *.json under content/ by sorted relative path — independently of the
+        implementation, so a change to either side has to be deliberate."""
+        import hashlib
+
+        from library.content_fixtures import CONTENT_DIR, content_digest
+
+        h = hashlib.sha256()
+        rels = sorted(
+            p.relative_to(CONTENT_DIR).as_posix() for p in CONTENT_DIR.rglob("*.json")
+        )
+        self.assertTrue(rels, "no content fixtures to digest")
+        for rel in rels:
+            h.update(rel.encode())
+            h.update(b"\0")
+            h.update(hashlib.sha256((CONTENT_DIR / rel).read_bytes()).hexdigest().encode())
+            h.update(b"\0")
+        self.assertEqual(content_digest(), h.hexdigest()[:16])

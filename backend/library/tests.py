@@ -6121,21 +6121,17 @@ class SearchThrottleTests(TestCase):
 
     def setUp(self):
         self.client = APIClient()
-        from django.core.cache import cache
-
-        # The bucket lives in the default cache, and it is per-process — so it
-        # leaks between tests unless each one starts clean.
-        cache.clear()
-        self.addCleanup(cache.clear)
 
     def test_anonymous_callers_are_bounded(self):
-        from rest_framework.throttling import SimpleRateThrottle
+        from common.testing import enforcing_throttle
 
-        # Patched on THROTTLE_RATES rather than through override_settings:
-        # DRF binds that dict to the class at import, so a settings override
-        # alone never reaches the throttle. patch.dict restores it, which
-        # matters — the same dict carries the search-click and reading rates.
-        with mock.patch.dict(SimpleRateThrottle.THROTTLE_RATES, {"search": "3/min"}):
+        from .views import _SearchThrottle
+
+        # Throttles are inert under `manage.py test` (see common.throttling —
+        # every request comes from 127.0.0.1, so a live throttle would put the
+        # whole suite's searches in one bucket). This hands the class a real,
+        # private cache and a squeezed rate for the duration.
+        with enforcing_throttle(_SearchThrottle, "3/min"):
             codes = [
                 self.client.get("/api/library/search/", {"q": f"grace{n}"}).status_code
                 for n in range(4)
@@ -6144,13 +6140,19 @@ class SearchThrottleTests(TestCase):
         # And the writes stopped with the requests — the point of the bound.
         self.assertEqual(SearchQueryLog.objects.count(), 3)
 
-    def test_unthrottled_at_the_real_rate(self):
-        # The guard above proves the throttle is wired; this proves the shipped
-        # rate doesn't fire on ordinary use.
-        codes = [
-            self.client.get("/api/library/search/", {"q": f"mercy{n}"}).status_code
-            for n in range(20)
-        ]
+    def test_the_shipped_rate_does_not_fire_on_ordinary_use(self):
+        # The guard above proves the throttle is wired; this proves the rate we
+        # actually ship is above a reader, at the real rate against a real cache.
+        from common.testing import enforcing_throttle
+
+        from .views import _SearchThrottle
+
+        rate = settings.REST_FRAMEWORK["DEFAULT_THROTTLE_RATES"]["search"]
+        with enforcing_throttle(_SearchThrottle, rate):
+            codes = [
+                self.client.get("/api/library/search/", {"q": f"mercy{n}"}).status_code
+                for n in range(40)
+            ]
         self.assertEqual(set(codes), {200})
 
     def test_the_rate_is_far_above_a_reader(self):

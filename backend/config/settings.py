@@ -153,12 +153,13 @@ REST_FRAMEWORK = {
     # If a shelf ever does outgrow one response, page it there and update the
     # frontend's helper — don't switch the default on, which would change the
     # shape of every list at once from a bare array to {count, results}.
+    #
     # Only the endpoints that opt in are throttled — a global anon rate would
     # cap search-as-you-type, which is a legitimate burst. Generous enough that a
     # reader opening several results per search never notices, low enough that
     # the one unauthenticated WRITE endpoint can't be used to grow a table.
-    # Backed by the default local-memory cache, so the limit is per worker and
-    # approximate: a bound, not an access control.
+    # Backed by the "throttle" local-memory cache (see CACHES), so the limit is
+    # per worker and approximate: a bound, not an access control.
     "DEFAULT_THROTTLE_RATES": {
         "search-click": "60/min",
         # Search is a read that writes: every unscoped query logs a row, and a
@@ -284,6 +285,32 @@ STORAGES = {
     "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
+# Throttle counters live in their own cache, separate from anything else that
+# caches. Two reasons, and the second is why it is not just tidiness:
+#
+#  * A throttle bucket is not application data — flushing one must never mean
+#    flushing the other, in either direction.
+#  * Under `manage.py test` this alias is a DUMMY cache, so throttle state
+#    cannot leak between tests. It otherwise does: the anonymous search throttle
+#    keys on the client address, every test request comes from 127.0.0.1, and
+#    DRF's history is process-global — so the suite's ~90 search requests all
+#    land in ONE 60-second bucket and unrelated tests start 429ing as soon as
+#    someone adds a few more. The two tests that assert enforcement patch a real
+#    cache back in, so the behaviour is still proven, just not ambient.
+_TESTING = len(sys.argv) > 1 and sys.argv[1] == "test"
+
+CACHES = {
+    "default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache"},
+    "throttle": {
+        "BACKEND": (
+            "django.core.cache.backends.dummy.DummyCache"
+            if _TESTING
+            else "django.core.cache.backends.locmem.LocMemCache"
+        ),
+        "LOCATION": "throttle",
     },
 }
 

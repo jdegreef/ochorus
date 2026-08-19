@@ -7,7 +7,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { HIGHLIGHT_COLORS, DEFAULT_HIGHLIGHT, type Bookmark, type Mark } from '$lib/reading-schema';
-	import { mapLimit, NOTEBOOK_CONCURRENCY } from '$lib/mapLimit';
+	import { createLimiter, NOTEBOOK_CONCURRENCY } from '$lib/limiter';
 
 	const t = i18n.t;
 
@@ -155,30 +155,39 @@
 		// sermon, then every biography. A reader with highlights across ten
 		// books waited out fifty sequential round-trips staring at an ellipsis,
 		// and the wait grew with exactly the history the page exists to show.
-		// Now the three sections load together, bounded so a long history asks
-		// the API for a burst it can serve rather than one per highlight.
+		// Now the three sections load together under ONE ceiling for the page.
+		// The gate wraps each FETCH, never the per-book work that awaits one:
+		// a task holding a slot while it waits for a slot deadlocks, and the
+		// books lane is exactly that shape (a book, then its chapters). Bounding
+		// each lane separately instead would bound every call correctly and the
+		// page not at all — three lanes of six, one of them fanning out six
+		// chapters apiece, is forty-eight requests in flight.
+		const gate = createLimiter(NOTEBOOK_CONCURRENCY);
+
 		const loadBook = async (slug: string): Promise<BookBlock> => {
 			let book: BookDetail | null = null;
 			try {
-				book = await getBook(slug, lang);
+				book = await gate(() => getBook(slug, lang));
 			} catch {
 				/* offline — fall back to slug/order labels */
 			}
 			const titleFor = (order: number) =>
 				book?.chapters.find((c) => c.order === order)?.title || `${order}`;
 
-			const chapters = await mapLimit(
-				mks.filter((m) => m.slug === slug).sort((a, b) => a.order - b.order),
-				NOTEBOOK_CONCURRENCY,
-				async ({ order, marks: ms }): Promise<ChapterBlock> => {
-					let paras: string[] = [];
-					try {
-						paras = paragraphs((await getChapter(slug, order, lang)).body_html);
-					} catch {
-						/* offline — the highlight still links through, just without its text */
-					}
-					return { order, title: titleFor(order), highlights: groupMarks(paras, ms) };
-				}
+			const chapters = await Promise.all(
+				mks
+					.filter((m) => m.slug === slug)
+					.sort((a, b) => a.order - b.order)
+					.map(async ({ order, marks: ms }): Promise<ChapterBlock> => {
+						let paras: string[] = [];
+						try {
+							const chapter = await gate(() => getChapter(slug, order, lang));
+							paras = paragraphs(chapter.body_html);
+						} catch {
+							/* offline — the highlight still links through, just without its text */
+						}
+						return { order, title: titleFor(order), highlights: groupMarks(paras, ms) };
+					})
 			);
 
 			return {
@@ -198,7 +207,7 @@
 			let title = slug;
 			let author = '';
 			try {
-				const sermon = await getSermon(slug, lang);
+				const sermon = await gate(() => getSermon(slug, lang));
 				paras = paragraphs(sermon.body_html);
 				title = sermon.title;
 				author = sermon.author_name;
@@ -213,7 +222,7 @@
 			let paras: string[] = [];
 			let name = slug;
 			try {
-				const a = await getAuthor(slug, lang);
+				const a = await gate(() => getAuthor(slug, lang));
 				paras = paragraphs(a.bio_html);
 				name = a.name;
 			} catch {
@@ -223,9 +232,9 @@
 		};
 
 		const [bookBlocks, sermonBlocks, bioBlocks] = await Promise.all([
-			mapLimit(slugs, NOTEBOOK_CONCURRENCY, loadBook),
-			mapLimit(allMarks.filter((m) => m.kind === 'sermon'), NOTEBOOK_CONCURRENCY, loadSermon),
-			mapLimit(allMarks.filter((m) => m.kind === 'bio'), NOTEBOOK_CONCURRENCY, loadBio)
+			Promise.all(slugs.map(loadBook)),
+			Promise.all(allMarks.filter((m) => m.kind === 'sermon').map(loadSermon)),
+			Promise.all(allMarks.filter((m) => m.kind === 'bio').map(loadBio))
 		]);
 
 		books = bookBlocks.sort((a, b) => a.title.localeCompare(b.title));

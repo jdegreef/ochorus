@@ -12,8 +12,9 @@ from django.shortcuts import get_object_or_404
 from rest_framework import generics, status
 from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
-from rest_framework.throttling import UserRateThrottle
 from rest_framework.views import APIView
+
+from common.throttling import ScopedCacheThrottle
 
 from . import languages as languages_module
 from .languages import entry as language_entry
@@ -389,7 +390,7 @@ class TopicDetailView(generics.RetrieveAPIView):
         return topic
 
 
-class _SearchThrottle(UserRateThrottle):
+class _SearchThrottle(ScopedCacheThrottle):
     """Bounds search, which is a read that writes: every unscoped query appends
     a ``SearchQueryLog`` row, and a query with no hits additionally runs the
     full-vocabulary difflib scan behind "did you mean". Unbounded, that let
@@ -572,7 +573,7 @@ class PopularSearchesView(APIView):
         return Response({"queries": queries})
 
 
-class _SearchClickThrottle(UserRateThrottle):
+class _SearchClickThrottle(ScopedCacheThrottle):
     """Its own bucket, so the one write endpoint can't ride the reader's quota
     (and vice versa). Rate in settings.REST_FRAMEWORK.DEFAULT_THROTTLE_RATES.
 

@@ -28,10 +28,13 @@
 />
 
 <div class="prefs" bind:this={root}>
+	<!-- aria-controls only while the panel exists: it is rendered by {#if open},
+	     and an IDREF pointing at nothing is worse than none. aria-expanded stays
+	     on both states — that IS the closed state's information. -->
 	<button
 		class="prefs-btn"
 		aria-expanded={open}
-		aria-controls="quick-settings"
+		aria-controls={open ? 'quick-settings' : undefined}
 		aria-label={t('settings.title')}
 		title={t('settings.title')}
 		onclick={(e) => {
