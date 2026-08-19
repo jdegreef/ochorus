@@ -300,7 +300,7 @@
 						<div class="flex flex-wrap items-center gap-2">
 							<input
 								id="displayName"
-								class="settings-select max-w-xs flex-1"
+								class="field max-w-xs flex-1"
 								bind:value={nameInput}
 								oninput={() => (nameDirty = true)}
 								placeholder={t('settings.displayNamePlaceholder')}
@@ -382,7 +382,7 @@
 							<div class="setting-sub">{t('settings.languageSub')}</div>
 						</div>
 						<select
-							class="settings-select"
+							class="field"
 							aria-label={t('nav.language')}
 							value={lang.current}
 							onchange={(e) => lang.choose((e.currentTarget as HTMLSelectElement).value)}
@@ -439,7 +439,7 @@
 					<div class="flex items-center gap-2">
 						<input
 							type="time"
-							class="settings-select"
+							class="field"
 							bind:value={reminderTime}
 							aria-label={t('settings.reminder')}
 						/>
@@ -476,7 +476,7 @@
 					{:else if voices.length}
 						<div class="flex items-center gap-2">
 							<select
-								class="settings-select"
+								class="field"
 								aria-label={t('settings.voice')}
 								value={voiceValue}
 								onchange={(e) => listen.setVoice((e.currentTarget as HTMLSelectElement).value)}
@@ -536,7 +536,7 @@
 						<div class="setting-sub">{t('settings.fontSub')}</div>
 					</div>
 					<select
-						class="settings-select"
+						class="field"
 						aria-label={t('settings.font')}
 						value={readerPrefs.font}
 						onchange={(e) => readerPrefs.setFont((e.currentTarget as HTMLSelectElement).value as ReaderFont)}
@@ -598,7 +598,7 @@
 								<label class="flex items-center gap-2 text-small text-muted">
 									{t('settings.goalPerWeek')}
 									<select
-										class="rounded-md border border-border bg-surface px-2 py-1 text-text"
+										class="field"
 										value={goal}
 										onchange={(e) => readingGoal.set(+e.currentTarget.value)}
 									>
@@ -707,15 +707,6 @@
 		font-size: var(--fs-small);
 		color: var(--color-muted);
 		margin-top: 0.1rem;
-	}
-	.settings-select {
-		border: 1px solid var(--color-border);
-		background: var(--color-surface-2);
-		color: var(--color-text);
-		border-radius: 0.6rem;
-		padding: 0.4rem 0.6rem;
-		font-size: var(--fs-small);
-		max-width: 12rem;
 	}
 	.seg {
 		display: inline-flex;

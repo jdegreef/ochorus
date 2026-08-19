@@ -131,21 +131,21 @@
 				<label class="text-small">
 					<span class="mb-1 block text-muted">Take Root code</span>
 					<input
-						class="w-40 rounded-lg border border-border bg-bg px-2 py-1 text-body"
+						class="field w-40"
 						bind:value={bibleCode}
 					/>
 				</label>
 				<label class="text-small">
 					<span class="mb-1 block text-muted">Bible label</span>
 					<input
-						class="w-64 rounded-lg border border-border bg-bg px-2 py-1 text-body"
+						class="field w-64"
 						bind:value={bibleLabel}
 					/>
 				</label>
 				<label class="text-small">
 					<span class="mb-1 block text-muted">Licence (blank = public domain)</span>
 					<input
-						class="w-48 rounded-lg border border-border bg-bg px-2 py-1 text-body"
+						class="field w-48"
 						bind:value={bibleLicence}
 						placeholder="CC BY-SA 4.0"
 					/>
@@ -160,7 +160,7 @@
 				<label class="block text-small">
 					<span class="mb-1 block text-muted">Credit line shown to readers</span>
 					<input
-						class="w-full rounded-lg border border-border bg-bg px-2 py-1 text-body"
+						class="field w-full"
 						bind:value={bibleAttribution}
 						placeholder="Scripture quotations are from ..."
 					/>
@@ -182,7 +182,7 @@
 						<label class="text-small">
 							<span class="mb-1 block text-muted">{term}</span>
 							<input
-								class="w-full rounded-lg border border-border bg-bg px-2 py-1 text-body"
+								class="field w-full"
 								bind:value={glossary[term]}
 							/>
 						</label>

@@ -146,7 +146,7 @@
 				placeholder="you@example.com"
 				aria-invalid={error ? 'true' : undefined}
 				aria-describedby={error ? 'auth-error' : undefined}
-				class="mb-3 w-full rounded-sm border border-border-strong bg-bg px-3 py-2 text-body text-text"
+				class="field mb-3 w-full"
 			/>
 
 			{#if mode !== 'reset'}
@@ -161,7 +161,7 @@
 					placeholder="••••••••"
 					aria-invalid={error ? 'true' : undefined}
 					aria-describedby={error ? 'auth-error' : undefined}
-					class="mb-3 w-full rounded-sm border border-border-strong bg-bg px-3 py-2 text-body text-text"
+					class="field mb-3 w-full"
 				/>
 			{/if}
 

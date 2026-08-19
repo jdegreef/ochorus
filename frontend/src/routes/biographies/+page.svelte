@@ -342,7 +342,7 @@
 		<select
 			bind:value={sort}
 			onchange={syncUrl}
-			class="rounded-sm border border-border bg-surface px-2 py-1.5 text-small text-text sm:block"
+			class="field sm:block"
 			class:hidden={!filtersOpen}
 			aria-label={t('bios.sort')}
 		>

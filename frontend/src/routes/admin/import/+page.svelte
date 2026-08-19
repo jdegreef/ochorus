@@ -253,7 +253,7 @@
 						autofocus
 						disabled={busy}
 						onkeydown={(e) => e.key === 'Enter' && addAuthor()}
-						class="min-w-0 flex-1 rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+						class="field min-w-0 flex-1"
 					/>
 					<button
 						class="btn btn-primary shrink-0"
@@ -265,7 +265,7 @@
 				<select
 					id="author"
 					bind:value={authorSlug}
-					class="mb-4 w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+					class="field mb-4 w-full"
 				>
 					<option value="" disabled>Choose the author…</option>
 					{#each authors as a (a.slug)}
@@ -278,7 +278,7 @@
 			<select
 				id="lang"
 				bind:value={language}
-				class="mb-4 w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+				class="field mb-4 w-full"
 			>
 				{#each languages as l (l.code)}
 					<option value={l.code}>{l.name}</option>
@@ -348,7 +348,7 @@
 				id="title"
 				bind:value={title}
 				placeholder="Title"
-				class="mb-4 w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+				class="field mb-4 w-full"
 			/>
 
 			{#if preview.kind === 'sermon'}
@@ -359,7 +359,7 @@
 					id="ref"
 					bind:value={scriptureRef}
 					placeholder="e.g. John 3:16"
-					class="mb-4 w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+					class="field mb-4 w-full"
 				/>
 				<p class="rounded-sm border border-border bg-bg p-3 text-small text-muted">
 					{plainText(preview.chapters[0]?.html ?? '').slice(0, 400)}…
@@ -373,7 +373,7 @@
 							<input
 								bind:value={ch.title}
 								placeholder="Chapter title"
-								class="min-w-0 flex-1 rounded-sm border border-border bg-surface px-2 py-1 text-small text-text"
+								class="field min-w-0 flex-1"
 							/>
 							<span class="shrink-0 text-small text-muted">{ch.words}w</span>
 							<button
@@ -398,7 +398,7 @@
 						<label class="mb-1 block text-small font-semibold text-text" for="subtitle">
 							Subtitle <span class="font-normal text-muted">(optional)</span>
 						</label>
-						<input id="subtitle" bind:value={subtitle} placeholder="Subtitle" class="w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text" />
+						<input id="subtitle" bind:value={subtitle} placeholder="Subtitle" class="field w-full" />
 					</div>
 					<div>
 						<label class="mb-1 block text-small font-semibold text-text" for="pubyear">
@@ -411,7 +411,7 @@
 							max="2100"
 							bind:value={publicationYear}
 							placeholder="e.g. 1885"
-							class="w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+							class="field w-full"
 						/>
 					</div>
 					<div>
@@ -429,7 +429,7 @@
 							<input
 							bind:value={coverColor}
 							placeholder="#3b5bdb"
-							class="min-w-0 flex-1 rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+							class="field min-w-0 flex-1"
 						/>
 						</div>
 					</div>
@@ -437,7 +437,7 @@
 						<label class="mb-1 block text-small font-semibold text-text" for="coverurl">
 							Cover image URL <span class="font-normal text-muted">(optional)</span>
 						</label>
-						<input id="coverurl" bind:value={coverUrl} placeholder="https://…" class="w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text" />
+						<input id="coverurl" bind:value={coverUrl} placeholder="https://…" class="field w-full" />
 					</div>
 				</div>
 				<label class="mb-1 mt-3 block text-small font-semibold text-text" for="attr">
@@ -448,7 +448,7 @@
 					bind:value={attribution}
 					rows="2"
 					placeholder="e.g. Public domain — scanned by CCEL"
-					class="w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+					class="field w-full"
 				></textarea>
 			{/if}
 
@@ -459,7 +459,7 @@
 				id="src"
 				bind:value={sourceUrl}
 				placeholder="https://…"
-				class="mb-4 w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+				class="field mb-4 w-full"
 			/>
 
 			{#if error}<p class="mb-3 text-small text-danger">{error}</p>{/if}

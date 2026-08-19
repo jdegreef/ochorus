@@ -45,7 +45,7 @@
 			<!-- Voice is chosen in Settings → Reading → Listen. -->
 
 			<select
-				class="rounded-sm border bg-surface px-1 py-1 text-small tabular-nums"
+				class="field tabular-nums"
 				class:border-accent={listen.sleepMinutes > 0}
 				class:text-accent={listen.sleepMinutes > 0}
 				class:border-border={listen.sleepMinutes === 0}

@@ -266,7 +266,7 @@
 			<label class="text-small flex flex-col gap-1">
 				<span class="text-muted">Language</span>
 				<select
-					class="rounded-lg border border-border bg-bg px-2 py-1.5"
+					class="field"
 					bind:value={fLanguage}
 					onchange={applyFilters}
 				>
@@ -279,7 +279,7 @@
 			<label class="text-small flex flex-col gap-1">
 				<span class="text-muted">Type</span>
 				<select
-					class="rounded-lg border border-border bg-bg px-2 py-1.5"
+					class="field"
 					bind:value={fKind}
 					onchange={applyFilters}
 				>
@@ -292,7 +292,7 @@
 			<label class="text-small flex flex-col gap-1">
 				<span class="text-muted">Sort</span>
 				<select
-					class="rounded-lg border border-border bg-bg px-2 py-1.5"
+					class="field"
 					bind:value={fSort}
 					onchange={applyFilters}
 				>
@@ -543,7 +543,7 @@
 													</label>
 													<textarea
 														id="note-{k}"
-														class="w-full rounded-lg border border-border bg-bg p-2"
+														class="field w-full"
 														rows="2"
 														bind:value={noteText}
 														placeholder="e.g. Ezekiel 36:32 doesn't match the Union wording"

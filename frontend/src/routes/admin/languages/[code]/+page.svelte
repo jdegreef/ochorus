@@ -408,7 +408,7 @@
 									<input
 										type="number"
 										min="0"
-										class="w-20 rounded-lg border border-border bg-bg px-2 py-1 text-body"
+										class="field w-20"
 										value={readiness.thresholds[f.key]}
 										disabled={savingBar}
 										onchange={(e) =>
