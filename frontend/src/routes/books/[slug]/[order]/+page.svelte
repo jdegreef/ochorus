@@ -1150,9 +1150,13 @@
 		background: var(--bg);
 	}
 	/* Hide the surrounding chrome (breadcrumb, plan strip, chapter nav) in page
-	   mode — only the pager's content is paginated. */
-	article.paged > :not(.pager) {
-		display: none;
+	   mode — only the pager's content is paginated. Screen only: on paper the
+	   title and breadcrumb are the first thing you want, not the first thing to
+	   blank. */
+	@media screen {
+		article.paged > :not(.pager) {
+			display: none;
+		}
 	}
 	.paged .pager {
 		--pgpad: 1.25rem;
@@ -1181,6 +1185,30 @@
 	@media (prefers-reduced-motion: reduce) {
 		.paged .pager {
 			transition: none;
+		}
+	}
+
+	/* Paged mode is a fixed, column-swept viewport with the page offset applied
+	   as a translate on .pager — so printing it produced whichever single
+	   screenful was showing, shifted off the sheet by however many pages the
+	   reader had turned. Unwind the whole mechanism back to normal flow. */
+	@media print {
+		article.paged {
+			position: static !important;
+			inset: auto !important;
+			overflow: visible !important;
+			background: none !important;
+			z-index: auto !important;
+		}
+		.paged .pager {
+			display: block !important;
+			height: auto !important;
+			padding: 0 !important;
+			column-width: auto !important;
+			column-gap: normal !important;
+			columns: auto !important;
+			transform: none !important;
+			transition: none !important;
 		}
 	}
 

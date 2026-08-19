@@ -300,7 +300,7 @@
 				kind="bio"
 				slug={author.slug}
 				order={BIO_CHAPTER_ORDER}
-				language={getLang()}
+				language={data.language as string}
 				html={author.bio_html}
 				class="bio"
 				{cite}

@@ -3,7 +3,7 @@
 	import { segmentsFromSelection } from '$lib/rangeMarks';
 	import { HIGHLIGHT_COLORS } from '$lib/reading-schema';
 	import { shareQuoteCard } from '$lib/quoteCard';
-	import { HEADER_OFFSET } from '$lib/reading';
+	import { clampPopoverLeft, HEADER_OFFSET } from '$lib/reading';
 	import type { Segment } from '$lib/marks.svelte';
 
 	/** Widest the bar gets (matches its max-width), for the viewport clamp. */
@@ -97,11 +97,7 @@
 		// a selection near either margin ran half off-screen.
 		below = rect.top < HEADER_OFFSET + BAR_CLEARANCE;
 		top = below ? rect.bottom + window.scrollY + 8 : rect.top + window.scrollY - 8;
-		const half = BAR_MAX_WIDTH / 2;
-		const centre = rect.left + rect.width / 2;
-		left =
-			Math.min(Math.max(centre, half + GUTTER), window.innerWidth - half - GUTTER) +
-			window.scrollX;
+		left = clampPopoverLeft(rect.left + rect.width / 2 + window.scrollX, BAR_MAX_WIDTH, GUTTER);
 		copied = false;
 		visible = true;
 	}

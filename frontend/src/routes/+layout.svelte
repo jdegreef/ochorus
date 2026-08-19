@@ -119,7 +119,9 @@
 
 <div
 	class="flex min-h-screen flex-col"
-	style="--reading-measure: {MEASURE[readerPrefs.measure]}; --pw: {pageWidth.rem}rem"
+	style="--reading-scale: {readerPrefs.scale}; --reading-measure: {MEASURE[
+		readerPrefs.measure
+	]}; --pw: {pageWidth.rem}rem"
 >
 	<a href="#main" class="skip-link">{t('a11y.skipToContent')}</a>
 	{#if !readerUi.focus}

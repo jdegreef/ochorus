@@ -153,6 +153,15 @@
 }
 
 @layer base {
+	/* viewport-fit=cover (see app.html) lets the page paint under a notch, which
+	   is what makes env(safe-area-inset-bottom) meaningful for the reader's fixed
+	   bars — but it applies to the sides too. In landscape on a notched phone the
+	   nav and the first characters of every prose line would sit under the sensor
+	   housing without this. Both insets are 0 in portrait and on devices with no
+	   cutout, so this costs nothing elsewhere. */
+	body {
+		padding-inline: env(safe-area-inset-left) env(safe-area-inset-right);
+	}
 	/* Tell the browser which way each theme leans, so native UI it paints for
 	   us — select dropdowns, scrollbars, autofill, spin buttons — matches the
 	   page instead of rendering light chrome over a near-black surface.
@@ -556,33 +565,29 @@ article:not(.paged) .reading > p:first-of-type:not(:lang(ar))::first-letter {
 	.pwa-stack,
 	.reader-chrome,
 	.read-progress,
+	.paged-backdrop,
 	.scripture-pop,
 	.define-pop {
 		display: none !important;
 	}
 
-	/* Paged mode is a fixed, column-swept viewport: on paper it prints one
-	   screenful and drops the rest of the chapter. Unwind it back to flow. */
-	article.paged,
-	article.paged .reading {
-		position: static !important;
-		height: auto !important;
-		max-height: none !important;
-		overflow: visible !important;
-		columns: auto !important;
-		column-width: auto !important;
-	}
-
-	/* The reader's own colours are for a lit screen; paper is white. */
-	:root {
+	/* The reader's own colours are for a lit screen; paper is white.
+	   `:root[data-theme]` as well as `:root`: the theme block is ALWAYS present
+	   and its attribute selector outranks a bare :root, so without this the
+	   lamplight palette printed — cream text on white paper. */
+	:root,
+	:root[data-theme] {
 		--bg: #ffffff;
 		--surface: #ffffff;
 		--text: #000000;
 		--muted: #333333;
 		--border: #999999;
+		--border-strong: #666666;
+		--accent: #000000;
 	}
 	body {
 		background: #ffffff;
+		color: #000000;
 	}
 
 	.reading {

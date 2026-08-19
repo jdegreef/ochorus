@@ -6,6 +6,7 @@
 		type Measure,
 		type ReaderFont
 	} from '$lib/readerPrefs.svelte';
+	import { onDestroy } from 'svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { theme } from '$lib/theme.svelte';
@@ -41,6 +42,12 @@
 	};
 	let wrap = $state<HTMLDivElement>();
 	const t = i18n.t;
+
+	// The flag lives on a module singleton so the reader's key handler can see
+	// it; that outlives this component, so it has to be cleared on the way out.
+	// Otherwise a back-swipe with the panel open leaves the next chapter mounting
+	// with it "open" and the arrow keys swallowed.
+	onDestroy(() => (readerUi.panelOpen = false));
 
 	/** Paper / Sepia / Lamplight, in that order — lightest to darkest. */
 	const THEMES: { v: 'light' | 'sepia' | 'dark'; k: string }[] = [
