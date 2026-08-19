@@ -102,6 +102,10 @@ export async function GET() {
 		'/topics',
 		'/plans',
 		'/biographies',
+		// The search page prerenders a real empty state (title, tagline, ways
+		// in) precisely so it can be advertised — search/+page.ts says as much.
+		// It just was never actually listed here.
+		'/search',
 		'/about',
 		'/contact',
 		'/legal'

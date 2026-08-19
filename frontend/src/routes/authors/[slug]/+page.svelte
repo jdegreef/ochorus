@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { type AuthorDetail, type AuthorBio, listAuthors, formatLifespan } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
+	import { cssString } from '$lib/cssString';
 	import { absUrl, jsonLd, breadcrumb, hreflangAll } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingTime, readingMinutes } from '$lib/reading';
@@ -139,8 +140,12 @@
 	);
 	// Prayer-callout labels are rendered by CSS ::before content; pass the
 	// localized strings in as custom properties so they follow the locale.
+	// Quoted through cssString: an apostrophe in any translation would close the
+	// CSS string early and take the rest of the declaration with it, silently
+	// and only in that locale.
 	const bioLabels = $derived(
-		`--label-in-prayer: '${t('bios.inPrayer')}'; --label-answered: '${t('bios.answerToPrayer')}'`
+		`--label-in-prayer: ${cssString(t('bios.inPrayer'))}; ` +
+			`--label-answered: ${cssString(t('bios.answerToPrayer'))}`
 	);
 
 	// Where to start + how much there is to read: the first book (the API's
@@ -441,8 +446,9 @@
 		font-size: 1.5rem;
 		line-height: 1.4;
 		color: var(--text);
-		border-left: 3px solid var(--gold);
-		padding: 0.1em 0 0.1em 1.25rem;
+		border-inline-start: 3px solid var(--gold);
+		padding-block: 0.1em;
+		padding-inline: 1.25rem 0;
 	}
 	.author-quote::before {
 		content: '“';
@@ -475,8 +481,9 @@
 	/* Pull-quote: a called-out saying, visually distinct. */
 	:global(.bio blockquote) {
 		margin: 1.7em 0;
-		padding: 0.1em 0 0.1em 1.25rem;
-		border-left: 3px solid var(--gold);
+		padding-block: 0.1em;
+		padding-inline: 1.25rem 0;
+		border-inline-start: 3px solid var(--gold);
 		font-size: 1.45rem;
 		line-height: 1.45;
 		font-style: italic;

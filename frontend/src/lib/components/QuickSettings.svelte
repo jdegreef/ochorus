@@ -28,10 +28,13 @@
 />
 
 <div class="prefs" bind:this={root}>
+	<!-- aria-controls only while the panel exists: it is rendered by {#if open},
+	     and an IDREF pointing at nothing is worse than none. aria-expanded stays
+	     on both states — that IS the closed state's information. -->
 	<button
 		class="prefs-btn"
-		aria-haspopup="menu"
 		aria-expanded={open}
+		aria-controls={open ? 'quick-settings' : undefined}
 		aria-label={t('settings.title')}
 		title={t('settings.title')}
 		onclick={(e) => {
@@ -42,7 +45,13 @@
 		<Icon name="gear" size={19} />
 	</button>
 	{#if open}
-		<div class="account-menu prefs-menu" role="menu">
+		<!-- A labelled GROUP of controls, not a menu. role="menu" promises
+		     menuitem children and arrow-key navigation between them; this popover
+		     holds a theme toggle and a width stepper with their labels, and under
+		     that role a screen reader hides the labels as foreign content and
+		     announces a menu whose items don't respond to the keys it just
+		     promised. It borrows the account menu's LOOK, not its semantics. -->
+		<div id="quick-settings" class="account-menu prefs-menu" role="group" aria-label={t('settings.title')}>
 			<div class="prefs-row">
 				<span class="prefs-label">{t('nav.theme')}</span>
 				<button

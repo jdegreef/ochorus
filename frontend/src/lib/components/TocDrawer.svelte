@@ -184,20 +184,30 @@
 	.toc-panel {
 		position: fixed;
 		top: 0;
-		right: 0;
 		bottom: 0;
+		/* The drawer belongs at the END of the reading direction, which under
+		   dir="rtl" (Arabic) is the LEFT edge — so it is anchored, bordered and
+		   slid logically. Box-shadow offsets and translateX have no logical
+		   form, so those two are flipped explicitly below; everything else
+		   follows the inline axis on its own. */
+		inset-inline-end: 0;
 		z-index: 49;
 		width: min(22rem, 88vw);
 		display: flex;
 		flex-direction: column;
 		background: var(--surface);
-		border-left: 1px solid var(--border);
+		border-inline-start: 1px solid var(--border);
 		box-shadow: -12px 0 40px rgb(0 0 0 / 0.25);
+		--toc-slide-from: 1.5rem;
 		animation: toc-in 0.18s ease-out;
+	}
+	:global([dir='rtl']) .toc-panel {
+		box-shadow: 12px 0 40px rgb(0 0 0 / 0.25);
+		--toc-slide-from: -1.5rem;
 	}
 	@keyframes toc-in {
 		from {
-			transform: translateX(1.5rem);
+			transform: translateX(var(--toc-slide-from, 1.5rem));
 			opacity: 0;
 		}
 	}
@@ -246,7 +256,7 @@
 	}
 	.toc-item.current {
 		background: color-mix(in srgb, var(--accent) 8%, transparent);
-		border-right: 3px solid var(--accent);
+		border-inline-end: 3px solid var(--accent);
 	}
 	.toc-dot {
 		width: 0.45rem;

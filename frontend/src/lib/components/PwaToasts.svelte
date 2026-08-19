@@ -40,7 +40,7 @@
 <style>
 	.pwa-stack {
 		position: fixed;
-		right: 1rem;
+		inset-inline-end: 1rem;
 		bottom: 1rem;
 		z-index: 60;
 		display: flex;

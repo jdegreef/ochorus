@@ -721,20 +721,45 @@ def _scripture_sermon_hits(q, sermons, base):
 
     Returns [] when ``q`` isn't a scripture reference. Deduped against sermons
     already present in ``base`` so a sermon found by text search isn't repeated.
+
+    Two-phase, like ``_scripture_chapter_hits``: the reference test only needs
+    ``scripture_ref``, so the scan runs over row values and only the winners are
+    fetched as instances. Iterating instances pulled every published sermon's
+    ``body_html``, ``body_text`` and tsvector into memory to read one short
+    field off each — for every query containing a verse number, i.e. per
+    keystroke once the reader types a digit.
     """
     target = reference_verse_ids(q)
     if not target:
         return []
     already = {h["sermon_slug"] for h in base if h["type"] == "sermon"}
-    hits = []
-    for s in sermons.exclude(scripture_ref="").order_by("sort_order", "title"):
-        if s.slug in already:
+    winners = []
+    for row in (
+        sermons.exclude(scripture_ref="")
+        .order_by("sort_order", "title")
+        .values("pk", "slug", "scripture_ref")
+    ):
+        if row["slug"] in already:
             continue
-        if reference_verse_ids(s.scripture_ref) & target:
-            hits.append(_sermon_hit(s, snippet=_lead(s.body_text)))
-            if len(hits) >= CAPS["sermon"]:
+        if reference_verse_ids(row["scripture_ref"]) & target:
+            winners.append(row["pk"])
+            if len(winners) >= CAPS["sermon"]:
                 break
-    return hits
+    if not winners:
+        return []
+    # Fetched in one query, then put back into the order the scan chose — an
+    # `pk__in` fetch returns rows in whatever order the database likes.
+    by_pk = {
+        s.pk: s
+        for s in Sermon.objects.filter(pk__in=winners)
+        .select_related("author")
+        .defer("body_html", "search_vector")
+    }
+    return [
+        _sermon_hit(by_pk[pk], snippet=_lead(by_pk[pk].body_text))
+        for pk in winners
+        if pk in by_pk
+    ]
 
 
 def _scripture_chapter_hits(q, chapters):

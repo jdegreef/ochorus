@@ -71,11 +71,11 @@
 		font-size: 0.62em;
 		font-weight: 600;
 		color: var(--muted);
-		margin-right: 0.15em;
+		margin-inline-end: 0.15em;
 		vertical-align: super;
 	}
 	.scripture-close {
-		margin-left: auto;
+		margin-inline-start: auto;
 		padding: 0 0.25rem;
 		color: var(--muted);
 		cursor: pointer;

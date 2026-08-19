@@ -61,8 +61,7 @@
 	.track::before {
 		content: '';
 		position: absolute;
-		left: 0;
-		right: 0;
+		inset-inline: 0;
 		top: 1.6rem;
 		height: 2px;
 		background: var(--border);
@@ -76,10 +75,15 @@
 		background: var(--border);
 		transform: translateX(-0.5px);
 	}
+	/* The chart is chronological, and every position in it is a percentage of
+	   elapsed time written as an inline `left:` by the markup above — so these
+	   rules are physical to MATCH those, and a logical property here would put
+	   the tick labels and end dots somewhere the spans aren't. Earlier-is-left
+	   is a property of the chart, not of the prose around it. */
 	.tick-label {
 		position: absolute;
 		top: 1.1rem;
-		left: 50%;
+		left: 50%; /* rtl-ok: paired with the inline left:%% positions above */
 		transform: translateX(-50%);
 		font-size: 0.7rem;
 		color: var(--muted);
@@ -103,10 +107,10 @@
 		transform: translate(-50%, -50%);
 	}
 	.dot.start {
-		left: 0;
+		left: 0; /* rtl-ok: chart coordinate, see .tick-label */
 	}
 	.dot.end {
-		left: 100%;
+		left: 100%; /* rtl-ok: chart coordinate, see .tick-label */
 	}
 	.year {
 		position: absolute;

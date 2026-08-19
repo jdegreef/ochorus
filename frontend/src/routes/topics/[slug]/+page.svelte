@@ -46,13 +46,13 @@
 					'@type': 'Book',
 					name: b.title,
 					author: { '@type': 'Person', name: b.author.name },
-					url: `${SITE_URL}/books/${b.slug}`
+					url: `${SITE_URL}${localizeHref(`/books/${b.slug}`)}`
 				})),
 				...topic.sermons.slice(0, 60).map((s) => ({
 					'@type': 'CreativeWork',
 					name: s.title,
 					author: { '@type': 'Person', name: s.author.name },
-					url: `${SITE_URL}/sermons/${s.slug}`
+					url: `${SITE_URL}${localizeHref(`/sermons/${s.slug}`)}`
 				}))
 			]
 		})

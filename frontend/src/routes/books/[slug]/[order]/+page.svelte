@@ -1094,8 +1094,7 @@
 		position: fixed;
 		top: var(--pgtop, 3.4rem);
 		bottom: var(--pgbot, 3.1rem);
-		left: 0;
-		right: 0;
+		inset-inline: 0;
 		z-index: 5;
 		margin-inline: auto;
 		padding: 0 !important;
@@ -1179,11 +1178,14 @@
 	/* Park each arrow just outside the (centred) reading column. The offset keys
 	   off the normal-measure spread width; max() keeps it on-screen when the
 	   column runs wide, and touch screens hide the arrows entirely (below). */
+	/* Physical on purpose: these two are a mirrored PAIR of screen-edge arrows,
+	   and which one means "next" already flips on `contentRtl` in the markup.
+	   Making the positions logical would move both to the same edge. */
 	.pageturn.left {
-		left: max(0.5rem, calc((100vw - 88rem) / 2 - 3.75rem));
+		left: max(0.5rem, calc((100vw - 88rem) / 2 - 3.75rem)); /* rtl-ok: mirrored pair, direction handled in markup */
 	}
 	.pageturn.right {
-		right: max(0.5rem, calc((100vw - 88rem) / 2 - 3.75rem));
+		right: max(0.5rem, calc((100vw - 88rem) / 2 - 3.75rem)); /* rtl-ok: mirrored pair, direction handled in markup */
 	}
 	/* On touch screens the tap zones suffice; keep the edges clean. */
 	@media (pointer: coarse) {

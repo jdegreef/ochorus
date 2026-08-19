@@ -5,6 +5,7 @@ from io import StringIO
 from pathlib import Path
 from unittest import mock, skipUnless
 
+from django.conf import settings
 from django.core.management import call_command
 from django.db import connection
 from django.test import SimpleTestCase, TestCase, override_settings
@@ -339,6 +340,52 @@ class ScriptureSearchTests(TestCase):
         # A sermon found by both text and verse overlap appears once.
         results = [r for r in self.search("John 15:1") if r.get("sermon_slug") == "the-vine"]
         self.assertEqual(len(results), 1)
+
+    def test_ranked_order_is_the_scan_order_not_the_databases(self):
+        """Winners are fetched with one ``pk__in`` query, which returns rows in
+        whatever order the database likes — they have to be put back into the
+        (sort_order, title) order the scan chose.
+
+        Asserted on the function rather than through ``search_library``: end to
+        end, "John 15" also matches both sermons' ``scripture_ref`` by full text,
+        so on Postgres they arrive via the text path and the scripture path never
+        ranks them at all. (SQLite's icontains fallback behaves differently,
+        which is exactly the kind of difference an end-to-end order assertion
+        would be pinning by accident.)
+        """
+        cs = Author.objects.get(slug="cs")
+        Sermon.objects.create(
+            author=cs, slug="fruit", language="en", title="A Sermon On Fruit",
+            scripture_ref="John 15:5", sort_order=0, body_html="<p>Much fruit.</p>",
+        )
+        Sermon.objects.filter(slug="the-vine").update(sort_order=1)
+
+        eligible = Sermon.objects.filter(is_published=True, language="en")
+        hits = search_module._scripture_sermon_hits("John 15", eligible, [])
+        self.assertEqual([h["sermon_slug"] for h in hits], ["fruit", "the-vine"])
+
+        # And the scan's order wins over the database's, not the reverse: flip
+        # sort_order and the same two rows come back the other way round.
+        Sermon.objects.filter(slug="fruit").update(sort_order=2)
+        hits = search_module._scripture_sermon_hits("John 15", eligible, [])
+        self.assertEqual([h["sermon_slug"] for h in hits], ["the-vine", "fruit"])
+
+    def test_reference_scan_does_not_load_every_sermon_body(self):
+        # The reference test needs one short field per sermon, and only the
+        # winners' text is ever shown. Iterating full instances dragged every
+        # published sermon's body_html and tsvector into memory to read
+        # scripture_ref off each — per keystroke, once the reader typed a digit.
+        from django.test.utils import CaptureQueriesContext
+
+        eligible = Sermon.objects.filter(is_published=True, language="en")
+        with CaptureQueriesContext(connection) as captured:
+            hits = search_module._scripture_sermon_hits("John 3:16", eligible, [])
+        self.assertEqual([h["sermon_slug"] for h in hits], ["new-birth"])
+        self.assertEqual(
+            [q["sql"] for q in captured.captured_queries if "body_html" in q["sql"]],
+            [],
+            "the scripture scan still pulls sermon bodies out of the database",
+        )
 
 
 class SermonBodyTextTests(TestCase):
@@ -5996,3 +6043,139 @@ class ApprovalDurabilityTests(TestCase):
             Book.objects.get(slug="humility", language="sw").source_type,
             Book.SourceType.AI_REVIEWED,
         )
+
+
+class BookCardPayloadTests(TestCase):
+    """Book cards must have the same SHAPE wherever they are served from.
+
+    ``BookListSerializer`` renders the shelf, the author page, topic pages and
+    "more like this". Two of its fields depended on the caller: ``word_count``
+    on an annotation the author page didn't apply (DRF drops a source-less
+    field silently, so the key simply vanished), and ``topics`` on a context map
+    only ``BookListView`` built (so chips were permanently ``[]`` everywhere
+    else). Both are invisible from the serializer's side — only a cross-endpoint
+    comparison catches them.
+    """
+
+    def setUp(self):
+        self.client = APIClient()
+        self.author = Author.objects.create(slug="murray", name="Andrew Murray")
+        self.book = Book.objects.create(
+            author=self.author, slug="humility", language="en", title="Humility"
+        )
+        Chapter.objects.create(book=self.book, order=1, title="One", body_html="<p>a</p>",
+                               body_text="a", word_count=120)
+        Chapter.objects.create(book=self.book, order=2, title="Two", body_html="<p>b</p>",
+                               body_text="b", word_count=80)
+        topic = Topic.objects.create(slug="prayer", title="On Prayer")
+        TopicBook.objects.create(topic=topic, book_slug="humility", sort_order=0)
+
+    def _card(self, url):
+        res = self.client.get(url)
+        self.assertEqual(res.status_code, 200)
+        payload = res.data
+        books = payload if isinstance(payload, list) else payload["books"]
+        return next(b for b in books if b["slug"] == "humility")
+
+    def test_word_count_is_present_on_every_path(self):
+        for url in ("/api/library/books/?language=en",
+                    "/api/library/authors/murray/?language=en",
+                    "/api/library/topics/prayer/?language=en"):
+            with self.subTest(url=url):
+                card = self._card(url)
+                self.assertEqual(card["word_count"], 200, url)
+
+    def test_topic_chips_are_present_on_every_path(self):
+        for url in ("/api/library/books/?language=en",
+                    "/api/library/authors/murray/?language=en",
+                    "/api/library/topics/prayer/?language=en"):
+            with self.subTest(url=url):
+                card = self._card(url)
+                self.assertEqual([t["slug"] for t in card["topics"]], ["prayer"], url)
+
+    def test_card_keys_are_identical_across_paths(self):
+        shelf = set(self._card("/api/library/books/?language=en"))
+        page = set(self._card("/api/library/authors/murray/?language=en"))
+        self.assertEqual(shelf, page)
+
+    def test_untranslated_topic_yields_no_chip_on_the_author_page(self):
+        # The shelf "On Prayer" has no Luganda title, so there is nothing to
+        # render — the fallback must honour that rather than printing an English
+        # chip onto a Luganda page (same rule the shelf already followed).
+        lg = Book.objects.create(
+            author=self.author, slug="humility", language="lg", title="Obuwombeefu"
+        )
+        Chapter.objects.create(book=lg, order=1, title="Emu", body_html="<p>a</p>",
+                               body_text="a", word_count=200)
+        card = self._card("/api/library/authors/murray/?language=lg")
+        self.assertEqual(card["topics"], [])
+        # …and the same book still carries the chip in English.
+        self.assertEqual(
+            [t["slug"] for t in self._card("/api/library/authors/murray/?language=en")["topics"]],
+            ["prayer"],
+        )
+
+    def test_author_detail_does_not_repeat_its_book_and_sermon_queries(self):
+        Sermon.objects.create(
+            author=self.author, slug="abide", language="en", title="Abide",
+            body_html="<p>x</p>", body_text="x",
+        )
+        # Books, sermons and the topic walk are each wanted by more than one
+        # field, and each field used to re-run its own query — on a page the
+        # prerender walks once per author per locale. This was 15; the number
+        # is pinned rather than bounded so a reintroduced repeat shows up as a
+        # failure with the query list attached.
+        with self.assertNumQueries(10):
+            self.client.get("/api/library/authors/murray/?language=en")
+
+
+class SearchThrottleTests(TestCase):
+    """Search is a read that WRITES: every unscoped query appends a
+    SearchQueryLog row, and a miss additionally runs the full-vocabulary
+    difflib scan behind "did you mean". Unbounded, that let anyone grow the
+    table and skew the popular-searches report that steers translation work."""
+
+    def setUp(self):
+        self.client = APIClient()
+
+    def test_anonymous_callers_are_bounded(self):
+        from common.testing import enforcing_throttle
+
+        from .views import _SearchThrottle
+
+        # Throttles are inert under `manage.py test` (see common.throttling —
+        # every request comes from 127.0.0.1, so a live throttle would put the
+        # whole suite's searches in one bucket). This hands the class a real,
+        # private cache and a squeezed rate for the duration.
+        with enforcing_throttle(_SearchThrottle, "3/min"):
+            codes = [
+                self.client.get("/api/library/search/", {"q": f"grace{n}"}).status_code
+                for n in range(4)
+            ]
+        self.assertEqual(codes, [200, 200, 200, 429])
+        # And the writes stopped with the requests — the point of the bound.
+        self.assertEqual(SearchQueryLog.objects.count(), 3)
+
+    def test_the_shipped_rate_does_not_fire_on_ordinary_use(self):
+        # The guard above proves the throttle is wired; this proves the rate we
+        # actually ship is above a reader, at the real rate against a real cache.
+        from common.testing import enforcing_throttle
+
+        from .views import _SearchThrottle
+
+        rate = settings.REST_FRAMEWORK["DEFAULT_THROTTLE_RATES"]["search"]
+        with enforcing_throttle(_SearchThrottle, rate):
+            codes = [
+                self.client.get("/api/library/search/", {"q": f"mercy{n}"}).status_code
+                for n in range(40)
+            ]
+        self.assertEqual(set(codes), {200})
+
+    def test_the_rate_is_far_above_a_reader(self):
+        # The search page debounces at 250ms, so even continuous typing settles
+        # well under this. A limit that caught search-as-you-type would be a
+        # worse bug than the abuse it prevents.
+        rate = settings.REST_FRAMEWORK["DEFAULT_THROTTLE_RATES"]["search"]
+        count, _, period = rate.partition("/")
+        self.assertEqual(period, "min")
+        self.assertGreaterEqual(int(count), 120)

@@ -142,14 +142,31 @@ REST_FRAMEWORK = {
         "rest_framework.renderers.BrowsableAPIRenderer",
     ],
     "EXCEPTION_HANDLER": "common.exception_handler.detail_exception_handler",
+    # No DEFAULT_PAGINATION_CLASS, deliberately. The shelves are a WHOLE-SET
+    # contract, not a convenience: the reader filters, facets and sorts them
+    # client-side, and the static build prerenders from them — so a page-1
+    # response wouldn't shorten a list, it would silently drop books from the
+    # shelf and pages from the sitemap. The sets are also small and bounded by
+    # editorial effort (one row per work per language), not by user input.
+    # Search, the one endpoint whose result set ISN'T bounded that way, pages
+    # explicitly via ?type=&offset= (library.views.SearchView).
+    # If a shelf ever does outgrow one response, page it there and update the
+    # frontend's helper — don't switch the default on, which would change the
+    # shape of every list at once from a bare array to {count, results}.
+    #
     # Only the endpoints that opt in are throttled — a global anon rate would
     # cap search-as-you-type, which is a legitimate burst. Generous enough that a
     # reader opening several results per search never notices, low enough that
     # the one unauthenticated WRITE endpoint can't be used to grow a table.
-    # Backed by the default local-memory cache, so the limit is per worker and
-    # approximate: a bound, not an access control.
+    # Backed by the "throttle" local-memory cache (see CACHES), so the limit is
+    # per worker and approximate: a bound, not an access control.
     "DEFAULT_THROTTLE_RATES": {
         "search-click": "60/min",
+        # Search is a read that writes: every unscoped query logs a row, and a
+        # miss runs the fuzzy-suggestion scan. Sized far above a reader (the
+        # page debounces at 250ms, so even continuous typing settles well below
+        # this) and far below a script that wants to grow the query log.
+        "search": "120/min",
         # Per-account cap on reading-state writes (progress, marks, favorites,
         # activity, plan progress, and the sign-in merge). Generous — a reader
         # highlighting or scrolling fast never approaches it — but finite, so a
@@ -204,6 +221,20 @@ GITHUB_TRANSLATION_TOKEN = os.getenv("GITHUB_TRANSLATION_TOKEN", "")
 # it shipped. A secret, so it lives in the environment and never in the repo.
 RENDER_WEB_DEPLOY_HOOK = os.getenv("RENDER_WEB_DEPLOY_HOOK", "").strip()
 
+# The commit this API instance is serving, surfaced on /api/health/.
+#
+# The reader is a STATIC site prerendered against this API, and a content commit
+# deploys both services at once — so the web build can start while the API is
+# still serving the previous release and bake the old content into pages whose
+# whole purpose was to show the new content. Publishing the commit here is what
+# lets the web build wait for the API to catch up before it prerenders
+# (frontend/scripts/await-api-release.mjs).
+#
+# Render sets RENDER_GIT_COMMIT in every service; unset (local, CI) simply means
+# the check has nothing to compare and skips, which is the right default for
+# environments where the two aren't deploying together.
+RELEASE_COMMIT = os.getenv("RENDER_GIT_COMMIT", "").strip()
+
 # Public origin of the READER (e.g. https://ochorus.com), used to confirm after a
 # deploy that a newly live locale actually appears in the built sitemap. Optional:
 # without it the post-deploy check reports "unknown" instead of guessing.
@@ -254,6 +285,32 @@ STORAGES = {
     "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
+# Throttle counters live in their own cache, separate from anything else that
+# caches. Two reasons, and the second is why it is not just tidiness:
+#
+#  * A throttle bucket is not application data — flushing one must never mean
+#    flushing the other, in either direction.
+#  * Under `manage.py test` this alias is a DUMMY cache, so throttle state
+#    cannot leak between tests. It otherwise does: the anonymous search throttle
+#    keys on the client address, every test request comes from 127.0.0.1, and
+#    DRF's history is process-global — so the suite's ~90 search requests all
+#    land in ONE 60-second bucket and unrelated tests start 429ing as soon as
+#    someone adds a few more. The two tests that assert enforcement patch a real
+#    cache back in, so the behaviour is still proven, just not ambient.
+_TESTING = len(sys.argv) > 1 and sys.argv[1] == "test"
+
+CACHES = {
+    "default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache"},
+    "throttle": {
+        "BACKEND": (
+            "django.core.cache.backends.dummy.DummyCache"
+            if _TESTING
+            else "django.core.cache.backends.locmem.LocMemCache"
+        ),
+        "LOCATION": "throttle",
     },
 }
 
