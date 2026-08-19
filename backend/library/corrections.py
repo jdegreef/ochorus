@@ -164,6 +164,15 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("the promise of the Holy Ghost. &#x27;&#x27; It would seem", "the promise of the Holy Ghost.” It would seem"),
             ("baptism with the Holy Spirit,&#x27;&#x27; and you have", "baptism with the Holy Spirit,” and you have"),
             ("with the Holy Spirit.”&#x27;&#x27; They were not", "with the Holy Spirit.” They were not"),
+            # Moses striking the rock: the hyphen dropped out of the verse
+            # range, welding 10 and 12 into "1012" -- the one citation in the
+            # book a reader cannot act on. All five translations print
+            # "20:10-12", so the intended range is not in doubt, and the
+            # numerals are unlocalized, so the pair is written WITHOUT the book
+            # name and repairs every edition -- the uk translation reproduced
+            # the defect faithfully, and this reaches it on the next deploy.
+            # "20:1012" occurs exactly twice corpus-wide, both at this site.
+            ("20:1012", "20:10-12"),
             # ch01's worst site: "say positively, “yes, “or” no, ' ' to the
             # question" — two marks transposed and an apostrophe pair left
             # stranded. Every other edition prints a clean "yes" or "no" here
