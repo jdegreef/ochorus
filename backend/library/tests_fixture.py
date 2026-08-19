@@ -662,7 +662,7 @@ class PlanTranslationCoverageTests(SimpleTestCase):
 
     `seed_plans` creates a Plan per language in which the source books are
     published, and takes its title/description from
-    `PLAN_TRANSLATIONS[language][slug]`. That lookup used to fall back to the
+    `data/plan_translations/<language>.json`. That lookup used to fall back to the
     English tuple, and nothing failed when it did: the row was valid, the page
     rendered, and it read "A Month in the Inner Chamber" to a Swahili reader,
     invisible until somebody opened that locale. `seed_plans` now refuses
@@ -695,8 +695,8 @@ class PlanTranslationCoverageTests(SimpleTestCase):
         from library.management.commands.seed_plans import (
             CURATED_PLANS,
             LAUNCH_PLANS,
-            PLAN_TRANSLATIONS,
         )
+        from library.plan_translations import plan_translations
 
         # (plan slug, the books it needs) for both plan kinds.
         needs = [(p[0], [p[1]]) for p in LAUNCH_PLANS]
@@ -708,15 +708,16 @@ class PlanTranslationCoverageTests(SimpleTestCase):
             for language, have in self.published.items()
             if language != "en"
             and all(b in have for b in books)
-            and slug not in PLAN_TRANSLATIONS.get(language, {})
+            and slug not in plan_translations().get(language, {})
         )
         self.assertEqual(
             missing,
             [],
             "Every source book of these plans is published in these languages, "
-            "so the plan belongs there — but PLAN_TRANSLATIONS has no entry, so "
+            "so the plan belongs there — but data/plan_translations/<language>.json "
+            "has no entry, so "
             "seed_plans will skip it and the language gets no plan at all. Add "
-            "the prose to PLAN_TRANSLATIONS[language]",
+            "the prose to that file",
         )
 
 
@@ -902,4 +903,113 @@ class CitationRangeTests(SimpleTestCase):
             stale,
             "These entries no longer match anything — delete them from "
             f"KNOWN_CITATIONS so the list can only shrink: {stale}",
+        )
+
+
+class PlanTranslationFileTests(SimpleTestCase):
+    """The per-language plan prose files are well-formed and describe real plans.
+
+    Splitting ``PLAN_TRANSLATIONS`` into ``data/plan_translations/<lang>.json``
+    removed the conflict between plan jobs in different languages, but it also
+    removed Python's own checking: a typo in a dict literal is a syntax error,
+    while a typo in JSON is a file that loads fine and quietly ships nothing.
+    These are the checks the language of the file no longer performs for us.
+
+    The slug check is the one that matters most. A plan slug that matches no
+    definition is prose nobody will ever see — ``_prose`` looks entries up BY
+    the slugs in LAUNCH_PLANS/CURATED_PLANS, so a misspelt key is not an error,
+    it is silence, and the language then falls back to no plan at all.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        from library.plan_translations import raw_plan_translations
+
+        cls.raw = raw_plan_translations()
+
+    def test_every_entry_has_title_and_description(self):
+        bad = [
+            f"{lang}.json:{slug} missing {field}"
+            for lang, entries in self.raw.items()
+            for slug, entry in entries.items()
+            for field in ("title", "description")
+            if not (entry.get(field) or "").strip()
+        ]
+        self.assertEqual(bad, [], "\n".join(bad))
+
+    def test_notes_are_lists_of_paragraphs(self):
+        bad = [
+            f"{lang}.json:{slug} note is {type(entry['note']).__name__}, want a list of strings"
+            for lang, entries in self.raw.items()
+            for slug, entry in entries.items()
+            if "note" in entry
+            and not (
+                isinstance(entry["note"], list)
+                and all(isinstance(p, str) and p.strip() for p in entry["note"])
+            )
+        ]
+        self.assertEqual(bad, [], "\n".join(bad))
+
+    def test_no_unknown_fields(self):
+        allowed = {"title", "description", "note"}
+        bad = [
+            f"{lang}.json:{slug} has unknown field(s) {sorted(set(entry) - allowed)}"
+            for lang, entries in self.raw.items()
+            for slug, entry in entries.items()
+            if set(entry) - allowed
+        ]
+        self.assertEqual(bad, [], "\n".join(bad))
+
+    def test_every_slug_names_a_real_plan(self):
+        from library.management.commands.seed_plans import CURATED_PLANS, LAUNCH_PLANS
+
+        known = {p[0] for p in LAUNCH_PLANS} | {p[0] for p in CURATED_PLANS}
+        bad = [
+            f"{lang}.json:{slug}"
+            for lang, entries in self.raw.items()
+            for slug in entries
+            if slug not in known
+        ]
+        self.assertEqual(
+            bad,
+            [],
+            "These entries name no plan in LAUNCH_PLANS or CURATED_PLANS, so "
+            "seed_plans will never look them up and the prose is dead:\n  "
+            + "\n  ".join(bad),
+        )
+
+    def test_no_english_file(self):
+        """English prose lives in the plan definitions, not here.
+
+        ``_prose`` returns the LAUNCH_PLANS/CURATED_PLANS tuple for "en" and any
+        ``en-`` variant before it ever reads these files, so an ``en.json`` would
+        be read by nothing and edited by someone expecting it to work — the same
+        silent no-op the slug check above exists to prevent, one level up.
+        """
+        bad = sorted(lang for lang in self.raw if lang == "en" or lang.startswith("en-"))
+        self.assertEqual(
+            bad,
+            [],
+            f"{bad}: English prose belongs in LAUNCH_PLANS/CURATED_PLANS in "
+            "seed_plans.py. _prose never reads these files for English.",
+        )
+
+    def test_language_files_are_named_like_language_codes(self):
+        """A filename typo is prose that can never be found.
+
+        Deliberately a SHAPE check, not a registry lookup. The Language registry
+        lives in the DB precisely so an admin can add a language without a
+        deploy, so a file may legitimately name a language this checkout has
+        never heard of — validating against `language_seed` would reject exactly
+        the case the registry exists to allow. What is always wrong is a name
+        that is not a language code at all (`spanish.json`, `es-.json`).
+        """
+        pattern = re.compile(r"^[a-z]{2,3}(-[a-z0-9]{2,8})?$")
+        bad = sorted(lang for lang in self.raw if not pattern.fullmatch(lang))
+        self.assertEqual(
+            bad,
+            [],
+            f"Not language codes: {bad}. seed_plans looks these up by the "
+            "content language of a Book row, so a file it cannot match is dead.",
         )

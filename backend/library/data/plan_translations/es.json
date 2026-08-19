@@ -1,0 +1,36 @@
+{
+  "deeper-life-in-christ": {
+    "title": "La vida más profunda: Cristo en vosotros",
+    "description": "No más esfuerzo, sino una Persona: el secreto de la vida más profunda es Cristo mismo viviendo en nosotros. Andrew Murray comienza con la maravilla de Jesús Mismo, luego despliega la vida que mora en nosotros, y Hudson Taylor concluye en el reposo de la unión y comunión con el Amado.",
+    "note": [
+      "Queue job #518. «Jesús Mismo» is the shipped Spanish edition's title verbatim, so the plan card and that book agree.",
+      "The OTHER two source books have no Spanish edition yet — the-masters-indwelling and union-and-communion — so seed_plans will not create this row today, and the phrases «la vida que mora en nosotros» and «la unión y comunión con el Amado» are this entry's own renderings of their motifs, not quotations. Whoever translates either book should harmonise its title with this card, or adjust this entry in the same PR (the #819 defect is what this entry pre-empts)."
+    ]
+  },
+  "humility-12-days": {
+    "title": "Humildad en 12 Días",
+    "description": "El clásico de Andrew Murray sobre la raíz de toda virtud: un capítulo breve al día, durante doce días.",
+    "note": [
+      "Queue jobs #519 + #520 (one PR): the Spanish Humility ships as «Humildad», and this LAUNCH plan goes live with it — the prose must land in the same PR or the es plans page publishes the English card (the #819 defect). Title opens with the book's shipped es title."
+    ]
+  },
+  "power-from-on-high": {
+    "title": "Poder de lo alto: El Espíritu Santo",
+    "description": "Cuatro semanas con R. A. Torrey sobre la vida llena del Espíritu: primero el bautismo con el Espíritu Santo y el poder que trae para el servicio, y luego el estudio más pleno de la Persona y la obra del Espíritu que mora en todo creyente."
+  },
+  "school-of-prayer": {
+    "title": "Una escuela de oración",
+    "description": "Cuatro semanas en la escuela de la oración con tres guías: Andrew Murray sobre cómo el Señor mismo nos enseña a orar, D. L. Moody sobre la oración que prevalece, y Hannah Buyinza sobre la oración como el pulso diario de la vida cristiana.",
+    "note": [
+      "Queue job #517. The description names the three source books the way their shipped Spanish editions name themselves: «La oración que prevalece» and «el pulso de la vida» (from «Oración – El Pulso de la Vida») are the fixture titles verbatim, so the plan card and the books it opens agree.",
+      "lord-teach-us-to-pray-2 has NO Spanish edition yet, so seed_plans will not create this row today — the prose ships ahead so that book's arrival cannot publish an English-titled plan (the #819 defect). Whoever translates it should keep this card's phrasing for the school-of-prayer motif or adjust this entry in the same PR."
+    ]
+  },
+  "the-inner-chamber-month": {
+    "title": "Un mes en el aposento interior",
+    "description": "Forma un hábito diario de oración y Palabra: treinta y seis mañanas con Andrew Murray, un capítulo cada día.",
+    "note": [
+      "«El aposento interior» is the es title of the book itself, so the card and the book a reader lands on say the same thing."
+    ]
+  }
+}
