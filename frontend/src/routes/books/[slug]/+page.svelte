@@ -188,7 +188,7 @@
 				<!-- Download for offline: precache every chapter so the whole book
 				     reads with no connection (see lib/offlineBooks). -->
 				{#if downloading}
-					<span class="btn btn-ghost !cursor-default">
+					<span class="btn btn-ghost cursor-default">
 						{t('offline.downloading')} {Math.round((downloading.done / downloading.total) * 100)}%
 					</span>
 				{:else if savedOffline}

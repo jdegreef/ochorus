@@ -300,14 +300,14 @@
 						<div class="flex flex-wrap items-center gap-2">
 							<input
 								id="displayName"
-								class="settings-select !max-w-xs flex-1"
+								class="settings-select max-w-xs flex-1"
 								bind:value={nameInput}
 								oninput={() => (nameDirty = true)}
 								placeholder={t('settings.displayNamePlaceholder')}
 								maxlength="120"
 								autocomplete="name"
 							/>
-							<button class="btn btn-ghost !py-1.5" disabled={nameSaving || !nameChanged} onclick={saveName}>
+							<button class="btn btn-ghost py-1.5" disabled={nameSaving || !nameChanged} onclick={saveName}>
 								{nameSaving ? t('settings.saving') : t('settings.save')}
 							</button>
 						</div>
@@ -318,7 +318,7 @@
 						<span class="text-small text-muted">
 							{t('settings.lastSynced')}: <span class="text-text">{relSynced}</span>
 						</span>
-						<button class="btn btn-ghost !py-1.5" disabled={syncing} onclick={syncNow}>
+						<button class="btn btn-ghost py-1.5" disabled={syncing} onclick={syncNow}>
 							{syncing ? t('settings.syncing') : t('settings.syncNow')}
 						</button>
 					</div>
@@ -417,13 +417,13 @@
 					</div>
 					<div class="flex items-center gap-1">
 						<button
-							class="btn btn-ghost !px-2.5 !py-1"
+							class="btn btn-sm btn-ghost"
 							onclick={() => readerPrefs.bumpScale(-0.1)}
 							aria-label={t('a11y.smallerText')}>A−</button
 						>
 						<span class="w-12 text-center text-small text-muted">{Math.round(readerPrefs.scale * 100)}%</span>
 						<button
-							class="btn btn-ghost !px-2.5 !py-1 !text-base"
+							class="btn btn-sm btn-ghost text-base"
 							onclick={() => readerPrefs.bumpScale(0.1)}
 							aria-label={t('a11y.largerText')}>A+</button
 						>
@@ -443,7 +443,7 @@
 							bind:value={reminderTime}
 							aria-label={t('settings.reminder')}
 						/>
-						<button class="btn btn-ghost !py-1.5 whitespace-nowrap" onclick={addReminder}>
+						<button class="btn btn-ghost py-1.5 whitespace-nowrap" onclick={addReminder}>
 							{t('settings.reminderAdd')}
 						</button>
 					</div>
@@ -486,7 +486,7 @@
 								{/each}
 							</select>
 							<button
-								class="btn btn-ghost !px-3 !py-1.5"
+								class="btn btn-ghost px-3 py-1.5"
 								aria-label={t('settings.preview')}
 								title={t('settings.preview')}
 								onclick={() => listen.preview(t('settings.voiceSample'), voiceValue)}

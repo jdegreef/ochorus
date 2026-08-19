@@ -203,7 +203,7 @@
 			<div class="flex shrink-0 items-center gap-1">
 				{#if outline.length >= 2}
 					<button
-						class="outline-toggle-btn btn btn-ghost !px-2 !py-1.5"
+						class="outline-toggle-btn btn btn-icon btn-ghost"
 						class:!text-accent={outlineOpen}
 						onclick={() => (outlineOpen = !outlineOpen)}
 						aria-label={t('sermon.outline')}
@@ -213,7 +213,7 @@
 				{/if}
 				{#if listen.supported}
 					<button
-						class="btn btn-ghost !px-2.5 !py-1"
+						class="btn btn-icon btn-ghost"
 						class:!text-accent={listen.status !== 'idle'}
 						onclick={() => (listen.status === 'idle' ? reader?.startListening() : listen.stop())}
 						aria-label={t('reader.listen')}
@@ -222,7 +222,7 @@
 				{/if}
 				<ReaderControls />
 				<button
-					class="btn btn-ghost !px-3 !py-1"
+					class="btn btn-icon btn-ghost"
 					onclick={() => readerUi.toggleFocus()}
 					aria-label={t('reader.focus')}
 					title={t('reader.focus')}>☾</button

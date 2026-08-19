@@ -298,7 +298,7 @@
 				</a>
 			{:else}
 				<button
-					class="btn btn-ghost shrink-0 !px-2.5 !py-0.5 !text-small"
+					class="btn btn-sm btn-ghost shrink-0"
 					disabled={jobsConfigured === false || queueing !== null}
 					title={jobsConfigured === false
 						? 'Set GITHUB_TRANSLATION_TOKEN on the API to enable the queue'

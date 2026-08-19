@@ -394,6 +394,16 @@
 		padding: 0.4rem;
 		line-height: 1;
 	}
+	/* A dashboard stat's number. Display face, one step above the page title,
+	   set solid so a row of tiles aligns on the digits. */
+	.stat-number {
+		font-family: var(--font-display);
+		font-size: var(--fs-display);
+		font-weight: 600;
+		line-height: 1;
+		font-variant-numeric: tabular-nums;
+		color: var(--text);
+	}
 	.btn-ghost {
 		background: transparent;
 		color: var(--text);

@@ -93,7 +93,7 @@
 			<section class="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
 				{#each cards as c (c.label)}
 					<div class="rounded-2xl border border-border bg-surface p-4">
-						<div class="text-display !text-3xl !leading-none text-text">{fmt(c.value)}</div>
+						<div class="stat-number">{fmt(c.value)}</div>
 						<div class="mt-2 text-small font-semibold text-text">{c.label}</div>
 						<div class="text-small text-muted">{c.sub}</div>
 					</div>

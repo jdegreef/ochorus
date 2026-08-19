@@ -105,7 +105,7 @@
 					<p class="text-small text-muted">{book.author.name}</p>
 				{/if}
 			</div>
-			<button class="btn btn-ghost !px-2.5 !py-1" onclick={close} aria-label={t('a11y.close')}>✕</button>
+			<button class="btn btn-icon btn-ghost" onclick={close} aria-label={t('a11y.close')}>✕</button>
 		</header>
 
 		<nav class="toc-list" aria-label={t('reader.contents')}>

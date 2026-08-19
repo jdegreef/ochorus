@@ -789,7 +789,7 @@
 				{#if chapter.prev}
 					<a
 						href={chapterHref(chapter.prev.order)}
-						class="btn btn-ghost !px-2 !py-1.5"
+						class="btn btn-icon btn-ghost"
 						aria-label={t('reader.previous')}
 						title={t('reader.previous')}><Icon name="chevron-left" size={18} /></a
 					>
@@ -797,7 +797,7 @@
 				{#if chapter.next}
 					<a
 						href={chapterHref(chapter.next.order)}
-						class="btn btn-ghost !px-2 !py-1.5"
+						class="btn btn-icon btn-ghost"
 						aria-label={t('reader.next')}
 						title={t('reader.next')}><Icon name="chevron-right" size={18} /></a
 					>
@@ -807,7 +807,7 @@
 					<a
 						href={editionToggleHref()}
 						data-sveltekit-noscroll
-						class="btn btn-ghost !px-2 !py-1.5 text-small"
+						class="btn btn-sm btn-ghost px-2"
 						class:!text-accent={edition === 'modern'}
 						title={edition === 'modern' ? t('reader.readOriginal') : t('reader.readModern')}
 						aria-label={edition === 'modern' ? t('reader.readOriginal') : t('reader.readModern')}
@@ -817,7 +817,7 @@
 				{/if}
 				<span class="mx-1 h-5 w-px bg-border" aria-hidden="true"></span>
 				<button
-					class="btn btn-ghost !px-2 !py-1.5"
+					class="btn btn-icon btn-ghost"
 					class:!text-accent={currentBookmarked}
 					onclick={toggleBookmark}
 					aria-label={t('reader.bookmark')}
@@ -825,20 +825,20 @@
 					aria-pressed={currentBookmarked}><Icon name="bookmark" size={18} /></button
 				>
 				<button
-					class="btn btn-ghost !px-2 !py-1.5"
+					class="btn btn-icon btn-ghost"
 					onclick={() => (tocOpen = true)}
 					aria-label={t('reader.contents')}
 					title={t('reader.contents')}><Icon name="list" size={18} /></button
 				>
 				<button
-					class="btn btn-ghost !px-2 !py-1.5"
+					class="btn btn-icon btn-ghost"
 					onclick={() => (searchOpen = true)}
 					aria-label={t('reader.search')}
 					title={t('reader.search')}><Icon name="search" size={18} /></button
 				>
 				{#if listen.supported}
 					<button
-						class="btn btn-ghost !px-2 !py-1.5"
+						class="btn btn-icon btn-ghost"
 						class:!text-accent={listen.status !== 'idle'}
 						onclick={() => (listen.status === 'idle' ? startListening() : listen.stop())}
 						aria-label={t('reader.listen')}
@@ -849,7 +849,7 @@
 				     paged mode, so it is the one that offers the switch. -->
 				<ReaderControls layout />
 				<button
-					class="btn btn-ghost !px-2 !py-1.5"
+					class="btn btn-icon btn-ghost"
 					onclick={() => readerUi.toggleFocus()}
 					aria-label={t('reader.focus')}
 					title={t('reader.focus')}><Icon name="maximize" size={18} /></button
@@ -906,7 +906,7 @@
 			{#if planProgress.isDone(plan.slug, planDay)}
 				<span class="text-small font-semibold text-accent">✓ {t('plans.dayDone')}</span>
 			{:else}
-				<button class="btn btn-primary !py-1.5 text-small" onclick={completePlanDay}>
+				<button class="btn btn-sm btn-primary" onclick={completePlanDay}>
 					{t('plans.markDone')}
 				</button>
 			{/if}
@@ -934,7 +934,7 @@
 		{#if chapter.prev}
 			<a
 				href={chapterHref(chapter.prev.order)}
-				class="btn btn-ghost flex-1 !flex-col !items-start gap-0.5 text-start"
+				class="btn btn-ghost flex-1 flex-col items-start gap-0.5 text-start"
 			>
 				<span class="eyebrow text-muted">{t('reader.previous')}</span>
 				<span class="text-small">{chapter.prev.title}</span>
@@ -945,7 +945,7 @@
 		{#if chapter.next}
 			<a
 				href={chapterHref(chapter.next.order)}
-				class="btn btn-primary flex-1 !flex-col !items-end gap-0.5 text-end"
+				class="btn btn-primary flex-1 flex-col items-end gap-0.5 text-end"
 			>
 				<span class="eyebrow opacity-75">{t('reader.next')}</span>
 				<span class="text-small">{chapter.next.title}</span>
@@ -1068,7 +1068,7 @@
 			></textarea>
 			<div class="mt-3 flex items-center gap-2">
 				{#if noteId}
-					<button class="btn btn-ghost !text-danger" onclick={removeMark}>
+					<button class="btn btn-ghost text-danger" onclick={removeMark}>
 						{t('reader.removeHighlight')}
 					</button>
 				{/if}

@@ -63,7 +63,7 @@
 
 <div class="relative" bind:this={wrap}>
 	<button
-		class="btn btn-ghost !px-3 !py-1"
+		class="btn btn-sm btn-ghost"
 		onclick={() => (open = !open)}
 		aria-haspopup="dialog"
 		aria-expanded={open}
@@ -83,7 +83,7 @@
 				<span class="text-small font-semibold text-text">{t('reader.size')}</span>
 				<div class="flex items-center gap-1">
 					<button
-						class="btn btn-ghost !px-2.5 !py-1"
+						class="btn btn-sm btn-ghost"
 						onclick={() => readerPrefs.bumpScale(-0.1)}
 						aria-label={t('a11y.smallerText')}>A−</button
 					>
@@ -91,7 +91,7 @@
 						>{Math.round(readerPrefs.scale * 100)}%</span
 					>
 					<button
-						class="btn btn-ghost !px-2.5 !py-1 !text-base"
+						class="btn btn-sm btn-ghost text-base"
 						onclick={() => readerPrefs.bumpScale(0.1)}
 						aria-label={t('a11y.largerText')}>A+</button
 					>

@@ -139,10 +139,10 @@
 		</div>
 		{#if stats}
 			<div class="flex flex-wrap items-center gap-2">
-				<button class="btn btn-ghost !py-1.5 !text-small" onclick={() => exportInventory('csv')} disabled={!!exporting}>
+				<button class="btn btn-sm btn-ghost" onclick={() => exportInventory('csv')} disabled={!!exporting}>
 					{exporting === 'csv' ? 'Exporting…' : 'Export CSV'}
 				</button>
-				<button class="btn btn-ghost !py-1.5 !text-small" onclick={() => exportInventory('json')} disabled={!!exporting}>
+				<button class="btn btn-sm btn-ghost" onclick={() => exportInventory('json')} disabled={!!exporting}>
 					{exporting === 'json' ? 'Exporting…' : 'Export JSON'}
 				</button>
 				<button class="btn btn-ghost" onclick={load} disabled={loading}>
@@ -205,7 +205,7 @@
 		<section class="mb-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
 			{#each cards as c (c.label)}
 				<div class="rounded-2xl border border-border bg-surface p-5">
-					<div class="text-display !text-3xl !leading-none text-text">{fmt(c.value)}</div>
+					<div class="stat-number">{fmt(c.value)}</div>
 					<div class="mt-2 text-small font-semibold text-text">{c.label}</div>
 					<div class="text-small text-muted">{c.sub}</div>
 				</div>

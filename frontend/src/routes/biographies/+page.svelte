@@ -437,7 +437,7 @@
 				>
 					<a
 						href={localizeHref(`/biographies/era/${g.era.id}`)}
-						class="!text-text hover:text-accent hover:no-underline">{t(g.era.k)}</a
+						class="text-text hover:text-accent hover:no-underline">{t(g.era.k)}</a
 					>
 					<!-- Same nowrap rule as the per-writer dates: a year range must never
 					     break across lines ("–" / "1499"). The longer era names make the

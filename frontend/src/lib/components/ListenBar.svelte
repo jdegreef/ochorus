@@ -15,17 +15,17 @@
 	<div class="listen-bar" role="region" aria-label={t('reader.listen')}>
 		<div class="mx-auto flex max-w-3xl items-center gap-2 px-4 py-2.5">
 			<button
-				class="btn btn-primary !rounded-full !px-3.5 !py-1.5"
+				class="btn btn-sm btn-primary rounded-full"
 				onclick={() => listen.toggle()}
 				aria-label={listen.status === 'playing' ? t('reader.pause') : t('reader.resume')}
 			>
 				{listen.status === 'playing' ? '❚❚' : '▶'}
 			</button>
 
-			<button class="btn btn-ghost !px-2 !py-1" onclick={() => listen.skip(-1)} aria-label={t('reader.previous')}>
+			<button class="btn btn-icon btn-ghost" onclick={() => listen.skip(-1)} aria-label={t('reader.previous')}>
 				⏮
 			</button>
-			<button class="btn btn-ghost !px-2 !py-1" onclick={() => listen.skip(1)} aria-label={t('reader.next')}>
+			<button class="btn btn-icon btn-ghost" onclick={() => listen.skip(1)} aria-label={t('reader.next')}>
 				⏭
 			</button>
 
@@ -34,7 +34,7 @@
 			</span>
 
 			<button
-				class="btn btn-ghost !px-2.5 !py-1 text-small tabular-nums"
+				class="btn btn-sm btn-ghost tabular-nums"
 				onclick={cycleRate}
 				aria-label={t('reader.speed')}
 				title={t('reader.speed')}
@@ -62,7 +62,7 @@
 				<option value={60}>60m</option>
 			</select>
 
-			<button class="btn btn-ghost !px-2.5 !py-1" onclick={() => listen.stop()} aria-label={t('reader.stopListening')}>
+			<button class="btn btn-icon btn-ghost" onclick={() => listen.stop()} aria-label={t('reader.stopListening')}>
 				✕
 			</button>
 		</div>

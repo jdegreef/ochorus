@@ -143,7 +143,7 @@
 		<header class="border-b border-border px-5 py-4">
 			<div class="flex items-center justify-between gap-3">
 				<h2 class="text-h3 text-text">{t('reader.search')}</h2>
-				<button class="btn btn-ghost !px-2.5 !py-1" onclick={close} aria-label={t('a11y.close')}>✕</button>
+				<button class="btn btn-icon btn-ghost" onclick={close} aria-label={t('a11y.close')}>✕</button>
 			</div>
 			<input
 				bind:this={input}

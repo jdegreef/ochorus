@@ -229,12 +229,12 @@
 			     until now their only option was the whole library. -->
 			<a
 				href={localizeHref(scopedSearchHref('author', author.slug))}
-				class="btn btn-ghost shrink-0 !px-2.5 !py-1">{t('search.inAuthor')}</a
+				class="btn btn-sm btn-ghost shrink-0">{t('search.inAuthor')}</a
 			>
 			<FavoriteButton kind="author" slug={author.slug} showLabel />
 			{#if listen.supported && author.bio_html}
 				<button
-					class="btn btn-ghost shrink-0 !px-2.5 !py-1"
+					class="btn btn-icon btn-ghost shrink-0"
 					class:!text-accent={listen.status !== 'idle'}
 					onclick={() => (listen.status === 'idle' ? reader?.startListening() : listen.stop())}
 					aria-label={t('reader.listen')}
@@ -246,7 +246,7 @@
 			{#if author.bio_html}
 				<ReaderControls />
 				<button
-					class="btn btn-ghost shrink-0 !px-2.5 !py-1"
+					class="btn btn-icon btn-ghost shrink-0"
 					onclick={() => readerUi.toggleFocus()}
 					aria-label={t('reader.focus')}
 					title={t('reader.focus')}>☾</button

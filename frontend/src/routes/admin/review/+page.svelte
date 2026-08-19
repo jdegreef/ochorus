@@ -333,12 +333,12 @@
 					</span>
 				{/if}
 				<button
-					class="btn btn-primary !text-small ml-auto !py-1.5"
+					class="btn btn-sm btn-primary ml-auto"
 					onclick={() => decide(selectedItems, 'approved')}
 				>
 					Approve {selectedItems.length} selected
 				</button>
-				<button class="btn btn-ghost !text-small !py-1.5" onclick={() => (selected = {})}>
+				<button class="btn btn-sm btn-ghost" onclick={() => (selected = {})}>
 					Clear
 				</button>
 			</div>
@@ -362,7 +362,7 @@
 						{languageName(lang)}
 						<span class="text-muted">({items.length})</span>
 					</h2>
-					<button class="btn btn-ghost !text-small !py-1" onclick={() => toggleGroup(lang)}>
+					<button class="btn btn-sm btn-ghost" onclick={() => toggleGroup(lang)}>
 						Select eligible
 					</button>
 				</div>
@@ -378,7 +378,7 @@
 									</span>
 									<span class="text-small truncate text-muted">{settled[k].title}</span>
 									<button
-										class="btn btn-ghost !text-small ml-auto !py-1"
+										class="btn btn-sm btn-ghost ml-auto"
 										disabled={busy[k]}
 										onclick={() => undo(i)}
 									>
@@ -454,7 +454,7 @@
 									</div>
 
 									<button
-										class="btn btn-ghost !text-small shrink-0 !py-1.5"
+										class="btn btn-sm btn-ghost shrink-0"
 										onclick={() => openDetail(i)}
 										aria-expanded={openKey === k}
 									>
@@ -473,7 +473,7 @@
 												<div class="mb-3 flex flex-wrap gap-1">
 													{#each detail.chapters as c (c.order)}
 														<button
-															class="btn btn-ghost !text-small !px-2 !py-0.5"
+															class="btn btn-sm btn-ghost"
 															onclick={() => openDetail(i, c.order)}
 														>
 															{c.order}
@@ -550,13 +550,13 @@
 													></textarea>
 													<div class="mt-2 flex gap-2">
 														<button
-															class="btn btn-primary !text-small !py-1.5"
+															class="btn btn-sm btn-primary"
 															onclick={() => decide([i], 'needs_work', noteText)}
 														>
 															Save
 														</button>
 														<button
-															class="btn btn-ghost !text-small !py-1.5"
+															class="btn btn-sm btn-ghost"
 															onclick={() => {
 																notingKey = null;
 																noteText = '';
@@ -569,14 +569,14 @@
 											{:else}
 												<div class="mt-3 flex flex-wrap items-center gap-2">
 													<button
-														class="btn btn-primary !text-small !py-1.5"
+														class="btn btn-sm btn-primary"
 														disabled={busy[k] || !scrolledEnough}
 														onclick={() => decide([i], 'approved')}
 													>
 														{busy[k] ? 'Saving…' : 'Approve'}
 													</button>
 													<button
-														class="btn btn-ghost !text-small !py-1.5"
+														class="btn btn-sm btn-ghost"
 														onclick={() => {
 															notingKey = k;
 															noteText = '';
@@ -604,7 +604,7 @@
 		{#if queue.pages > 1}
 			<nav class="flex items-center gap-3" aria-label="Pagination">
 				<button
-					class="btn btn-ghost !text-small !py-1.5"
+					class="btn btn-sm btn-ghost"
 					disabled={curPage <= 1}
 					onclick={() => goPage(curPage - 1)}
 				>
@@ -612,7 +612,7 @@
 				</button>
 				<span class="text-small text-muted">Page {curPage} of {totalPages}</span>
 				<button
-					class="btn btn-ghost !text-small !py-1.5"
+					class="btn btn-sm btn-ghost"
 					disabled={curPage >= totalPages}
 					onclick={() => goPage(curPage + 1)}
 				>

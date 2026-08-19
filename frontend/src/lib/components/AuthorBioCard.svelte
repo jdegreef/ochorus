@@ -50,7 +50,7 @@
 				/>
 			{:else}
 				<span
-					class="font-display flex h-24 w-24 items-center justify-center rounded-full bg-accent-soft text-display !text-3xl font-semibold text-accent sm:h-28 sm:w-28"
+					class="font-display text-h1 flex h-24 w-24 items-center justify-center rounded-full bg-accent-soft font-semibold text-accent sm:h-28 sm:w-28"
 				>
 					{initials(author.name)}
 				</span>
@@ -64,7 +64,7 @@
 				<a
 					href={localizeHref(`/authors/${author.slug}`)}
 					data-sveltekit-preload-data="hover"
-					class="!text-text after:absolute after:inset-0 after:content-[''] hover:underline"
+					class="text-text after:absolute after:inset-0 after:content-[''] hover:underline"
 					>{author.name}</a
 				>
 				<!-- Below sm the name wraps to two lines on its own, and trailing the
