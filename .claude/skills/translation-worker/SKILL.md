@@ -1364,3 +1364,73 @@ archaic spelling and period punctuation are the text, not defects in it.
   Moment") and must be mirrored, while the rest were genuine drift and were
   aligned. Diff the English pairs FIRST; it is the difference between
   reconciliation and vandalism.
+- **The uk BOOK band, now n=74** (the 53 shipped chapters plus jobs #786/#787's
+  21): p05 0.863, p95 0.917, mean 0.891 for the earlier three books; the two new
+  ones ran **godliness 0.827-0.911 mean 0.866** and **baptism-with-the-holy-spirit
+  0.789-0.834 mean 0.808**. The second sits below the corpus floor and is
+  verifiably complete, which is one more data point that a floor is a
+  per-(language x work) observation and never a gate. What settled it was
+  measuring **quoted and unquoted text separately** (the #515 method): its
+  scripture ran 0.765 and the author's own prose 0.818, against godliness's
+  0.840/0.867 — *both* halves compress, so nothing was missing. Do that split
+  before you send a low chapter back; it takes one loop and it is the difference
+  between diagnosing and guessing.
+- **The uk QUOTE convention is per-(language x content type), and it is CONVERT,
+  not mirror.** All three shipped uk books use `« »` exclusively **whatever their
+  English source uses** — 104 straight -> 57 «, 112 curly -> 113 «, 190 curly ->
+  227 «. So the per-FILE mirroring rule that the sw sermon entries above
+  establish does **not** generalise: settle it for your (language, type) pair by
+  measuring the pairs, exactly as #515 found for es. uk nests with **„ … “**
+  inside `« … »` (precedent: `jesus-himself-2.uk`), a set no other language here
+  uses. Stating this in the brief meant 21 chapters arrived with zero straight
+  quotes, zero curly, and zero conversion pass.
+- **Eating the whitespace after a CLOSING USFM/USX marker welds two sentences,
+  and a translator will report it as a defect in the Bible.** A character
+  marker's opening form carries a syntactic space that belongs to the marker
+  (`\wj Text`); its closing form does not (`Text.\wj* Next`). One regex with a
+  trailing `\s?` handled both and glued **110 of 31,082 Kulish verses** into
+  `звершується.Найлюбіще`. This is the same class as the hi batch's
+  `NOTE.sub(' ', x)` bug, arriving through a different door — so the standing
+  lesson holds: **when a translator reports something strange about the source,
+  suspect the tooling first.** Scan the built crib for `[.,;:!?]` immediately
+  followed by a capital before handing it to anybody; it is a five-line check
+  and it caught this in one run.
+- **Verse NUMBERING can differ between the target Bible and the author's, and it
+  is a distinct trap from Qere/Ketiv.** Kulish's Numbers 23 runs **one ahead of
+  the AV** — his 23:19 is the AV's 23:18, and "God is not man, that he should
+  lie" is his 23:20. A crib entry can therefore be the wrong verse while being
+  perfectly well-formed. The brief's "verify a crib hit before using it" rule is
+  what caught it; keep that line in every brief. Same shape found in Jonah
+  (Kulish 2:3 = AV 2:2).
+- **`pythonbible` clips a BARE CHAPTER reference to verse 1**, so `Acts 10.` or
+  `1 Corinthians 13.` yields a crib entry ending `:1` holding a verse the author
+  never quotes. Six such entries appeared across two books; a translator refused
+  one explicitly and the rest went unused. Two cheap habits: grep your built crib
+  for keys ending `:1` and check each against how the English actually cites, and
+  **only record a reference in the notes if the English block actually QUOTES**
+  rather than merely pointing — otherwise the unverified count fills with rows
+  that have no wording to check, which is the same over-statement the backfill
+  entry above warns about from the other side.
+- **When the editions AGREE, repair the English source; when they DISAGREE, you
+  cannot.** Both halves of this ran in one job. The `''`-for-`"` scan damage
+  (20 sites) was repaired because **all five** shipped translations already
+  carried zero of them, and the garbled `"yes, "or" no, ' '` was settled by pt,
+  es and ar independently printing a clean *"yes" or "no"*. But ch05's
+  `"He got used to God."` — almost certainly OCR of *"He was used of God."*,
+  since it sits between the anointing and Delilah and as printed says close to
+  the opposite — was **left alone**, because pt repaired it while es, ar and sw
+  each reproduced the literal sense. Where the editions disagree, fixing means
+  guessing the author's words, and that is the line `english-qa` draws. Say
+  which side of it each finding falls on, in the PR.
+- **A conventions file will surface a DIRECT CONTRADICTION between two chapters,
+  and the later one is not automatically right.** ch03 pinned Paul as `Павло`
+  and ch10 pinned `Павел`, each with reasoning. The corpus settled it in one
+  grep — Kulish's nominative is `Павел` **90 times against `Павло` once** — and
+  ch10 was right. Same for "Master": 6 `Владика` against 5 `Учитель` for one
+  English word, resolved not by majority but by noticing that Kulish's Gal 3:24
+  reads «закон був нам **учителем**», so `учитель` is a reserved scriptural term
+  *in that very book*. **Resolve a conventions conflict against the Bible or the
+  shipped corpus, never by seniority or by counting chapters.** And when you
+  normalise an inflected language, decline the replacement per case
+  (`Учителеві`->`Владиці`, `Учителем`->`Владикою`) and assert the tag sequence is
+  unchanged afterwards.
