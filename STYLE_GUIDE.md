@@ -118,15 +118,27 @@ with `text-[1.02rem]`-style arbitrary values** — pick the nearest step.
 | `.text-h2` / `--fs-h2` | `1.563rem` | 1.2 | Section (`<h2>`) |
 | `.text-h3` / `--fs-h3` | `1.25rem` | 1.3 | Sub-section (`<h3>`) |
 | `.text-body` / `--fs-body` | `1rem` | 1.6 | Body |
-| `.text-small` / `--fs-small` | `0.875rem` | 1.5 | Captions, helper, eyebrows |
-| `--fs-eyebrow` | `0.75rem` | — | Eyebrows / kickers |
+| `.text-small` / `--fs-small` | `0.875rem` | 1.5 | Captions, helper text, meta |
+| `.text-eyebrow` / `--fs-eyebrow` | `0.75rem` | 1.4 | Eyebrows / kickers |
+| `.text-micro` / `--fs-micro` | `0.6875rem` | 1.4 | Dense micro-labels only |
+
+`--fs-micro` is the floor, added for the one cluster that genuinely needed a
+step below the eyebrow — heatmap day labels, cover badges, dense meta rows,
+several of them width-constrained, where 0.75rem overflows. Reach for it only
+when `--fs-eyebrow` has been tried and does not fit.
 
 - **Reading prose** uses `.reading`: the serif at `1.18rem × --reading-scale`,
   leaded generously. Typeface, size, leading, and measure are reader-controllable
   (see `readerPrefs`) via `--reading-font / --reading-scale / --reading-leading /
   --reading-measure` — components read those custom properties, never hardcode.
-- **Eyebrows/kickers** (e.g. "CHAPTER 1 · 7 MIN READ") are `0.75rem`, uppercase,
-  `letter-spacing ~0.08em`, muted.
+- **Eyebrows/kickers** (e.g. "CHAPTER 1 · 7 MIN READ") use **`.eyebrow`**:
+  `0.75rem`, 600, uppercase, `letter-spacing 0.08em`. The class does not set a
+  colour — an eyebrow is accent above a page title, muted in a popover, white on
+  a cover scrim — so every call site states its own. Don't hand-roll the recipe;
+  it had drifted to 61 copies with ~11 letter-spacings before it had a class.
+- **`.section-label`** is the neighbouring pattern and a step larger
+  (`--fs-small`, muted, with its own bottom margin): the label above a *block of
+  content* ("Continue reading"), not the kicker above a title.
 - Constrain the reading column to a comfortable measure — the reader's **Width**
   control (narrow / normal / wide) maps to `--reading-measure`; `normal` is `42rem`.
 
@@ -134,10 +146,35 @@ with `text-[1.02rem]`-style arbitrary values** — pick the nearest step.
 
 ## 3. Spacing, radius & layout
 
-- **Radius:** `--radius` = **12px** (`--radius-card`, cards/banners), `--radius-sm`
-  = **9px** (buttons, inputs), `999px` for pills.
-- **Spacing:** keep to a small rhythm — `4 / 8 / 12 / 16 / 24 / 40px`
-  (Tailwind `1 / 2 / 3 / 4 / 6 / 10`). Avoid arbitrary `mb-[13px]`-style gaps.
+- **Radius:** four values, no more. `rounded-card` / `--radius-card` = **12px**
+  (cards, banners, panels), `rounded-sm` / `--radius-sm` = **9px** (buttons,
+  inputs, chips-with-corners), `rounded-full` for pills, and `rounded-[2px]` on
+  the heatmap's 11px cells, where 9px would round them into circles.
+
+  > Both tokens live in `@theme`, which is how Tailwind's own `--radius-*`
+  > namespace is meant to be replaced. Don't re-declare them in `:root`: that
+  > shadows Tailwind's value by source order rather than replacing it, which is
+  > what `--radius-sm` used to do, and a minor version bump could have flipped
+  > every `rounded-sm` in the app at once. Don't write
+  > `var(--radius-card, 12px)` either — the fallbacks that existed disagreed
+  > with the real values and would have been wrong the moment they fired.
+- **Spacing:** Tailwind's own steps, in two bands. Avoid arbitrary
+  `mb-[13px]`-style gaps, and don't invent half-steps outside this list.
+
+  | Band | Steps (Tailwind) | Pixels | Use |
+  |---|---|---|---|
+  | Component | `0.5 1 1.5 2 2.5 3 4 5 6` | 2–24px | Padding, gaps, label-to-field |
+  | Page | `8 10 12 14 16 20` | 32–80px | Section rhythm, page top/bottom |
+
+  > This replaces a six-step list (`1 / 2 / 3 / 4 / 6 / 10`) that the code had
+  > never matched: roughly 360 uses of `5`, `1.5`, `8`, `2.5` and `0.5` sat
+  > outside it, so neither a reviewer nor a codemod could tell deliberate
+  > spacing from drift. The list above is what the app actually uses, with the
+  > handful of true one-offs (`3.5`, `7`, `9`) folded into their neighbours. A
+  > scale nobody follows is not a standard.
+
+  `scroll-mt-*` is not spacing — it offsets an anchor jump for the sticky bar,
+  and should track that bar's height rather than this rhythm.
 - **Page column — one width, everywhere.** Every top-level browse surface wraps
   its content in **`.page-col`**. Do **not** give a page its own `mx-auto
   max-w-*`.
@@ -155,6 +192,10 @@ with `text-[1.02rem]`-style arbitrary values** — pick the nearest step.
 
   The exceptions are genuine prose blocks, not page shells: the home hero's
   centred text and empty-state copy keep their own narrower measure.
+- **Breakpoints:** use Tailwind's (`sm` 640, `md` 768, `lg` 1024, `xl` 1280),
+  including in hand-written media queries — `max-width: 767.98px` rather than a
+  bespoke 760px. The nav used to collapse at 760px while the markup above it
+  reflowed at 768px, leaving a sliver where the two disagreed.
 - **Reading measure** is separate. `--reading-measure` (from
   `readerPrefs.measure`) governs the prose column *inside* a chapter and is
   capped near 52rem for readability. Don't conflate the two: page width is
@@ -204,6 +245,9 @@ weight 600, a 150ms transition).
 | **Default** | `.btn` | `--surface-2` | `--text` | `--border` | Secondary actions |
 | **Ghost** | `.btn .btn-ghost` | transparent | `--muted`/`--text` | transparent | Low-emphasis (dismiss, back) |
 
+- **Sizes:** `.btn` is the default; add **`.btn-sm`** for a compact button and
+  **`.btn-icon`** for a square icon-only one. Don't hand-roll padding — five
+  different compact sizes existed before these did.
 - **Primary is soft, not bold** — a brand-tinted button (accent-soft fill, accent
   text, `--accent-soft-border`), never a solid filled indigo block. It reads as
   "the main thing" without shouting.
@@ -304,9 +348,14 @@ Active states are **soft** (`--accent-soft` fill, `--accent` text) — never a
 solid `bg-accent` block.
 
 ### Inputs
-`--surface` fill, `--border`, `--radius-sm`. Focus uses the global `:focus-visible`
-ring (2px accent outline). Labels/placeholders are muted. The search box and the
-note editor follow this.
+Every text input, select and textarea uses **`.field`** (`.filter-field` is the
+same class under its original name, for the browse pages' filter rows):
+`--surface` fill, `--border-strong` edge, `--radius-sm`, one height. Focus uses
+the global `:focus-visible` ring (2px accent outline); placeholders are muted.
+
+`.field` is unlayered, so a `px-3` or `rounded-lg` beside it silently loses —
+if a control needs different metrics, that is a modifier here, not a utility at
+the call site. Width and margin utilities are fine: the class doesn't set them.
 
 ### Navigation
 Sticky top bar: `--bg/90` with backdrop blur and a hairline bottom border. Wordmark
@@ -359,8 +408,14 @@ group, and contact. Hidden in focus mode.
 
 ## 7. Motion
 
-Quiet and quick: 120–240ms ease for hover/reveal. Nothing bouncy. All motion
-should be disabled under `prefers-reduced-motion`.
+Quiet and quick. Three steps, as tokens — `--duration-fast` (150ms, hover and
+reveal), `--duration-base` (250ms, panels and layout), `--duration-slow` (400ms,
+a bar filling). Nothing bouncy. All motion is disabled under
+`prefers-reduced-motion` by a global block.
+
+Don't write a literal duration: eight of them had accumulated, including a
+`0.28s` and a `0.3s` that nobody chose between, and two drawers that opened at a
+different speed from the panels beside them.
 
 ---
 
@@ -376,7 +431,16 @@ Before any UI change ships, it must:
 5. **Work in both themes** with AA contrast and a visible focus state.
 6. **Match icon weight** (currentColor, stroke 1.8) and the spacing rhythm.
 7. **Keep shared tokens (§1–§3) identical to Take Root** — change both repos together.
-8. **Verify** on the relevant page(s) in light + dark before merge.
+8. **Verify** on the relevant page(s) in all three themes before merge.
+
+Four of these are now enforced in CI rather than left to review:
+
+| Guard | Catches |
+|---|---|
+| `typeScaleGuard.test.ts` | arbitrary `text-[…]`, literal `font-size` in markup, scoped CSS or app.css |
+| `rtl.test.ts` | physical utilities **and** physical CSS in `<style>` blocks |
+| `messageCatalogues.test.ts` | a locale's UI catalogue drifting from `messages/*.json` |
+| `readerDirection.test.ts` | reader surfaces losing their direction handling |
 
 ---
 
@@ -410,6 +474,21 @@ Known gaps to close (tracked as follow-ups):
 - ✅ **Touch targets, `color-scheme`, focus rings, form-error announcement** —
   see §6. The three `outline-none` declarations that stripped the global focus
   ring are gone.
+- ✅ **Type scale** — 52 arbitrary `text-[…rem]` utilities and 36 literal
+  `font-size` declarations are back on the `--fs-*` steps, with `--fs-micro`
+  added for the dense-label cluster. Guarded by `typeScaleGuard.test.ts`.
+- ✅ **One eyebrow** — `.eyebrow` replaces 61 hand-written copies that carried
+  ~11 letter-spacings between them.
+- ✅ **One control family** — `.field` covers all 45 remaining inputs, selects
+  and textareas; `.settings-select` and eight other bespoke shells are gone.
+- ✅ **Button sizes** — `.btn-sm` / `.btn-icon` / `.stat-number` replace five
+  hand-rolled compact paddings, and the 123 `!important` utilities that existed
+  to work around a specificity problem buttons never had (`.btn` is layered) are
+  down to one genuinely load-bearing case on `.book-card`.
+- ✅ **Tokens for shadows, durations and the cover fallback**; radii down from
+  twelve values to four; breakpoints on Tailwind's scale.
+- ⚠️ **Admin still diverges** in places the tokens can't reach — `.text-display`
+  page titles and its own table/tile layouts. Worth a pass of its own.
 - ⚠️ **Owed to Take Root.** §1 tokens are meant to stay identical across both
   repos. The sepia `--muted` retune and the two new tokens have **not** been
   mirrored into Take Root yet — do that before the sets drift.
@@ -422,9 +501,9 @@ Known gaps to close (tracked as follow-ups):
 - ⚠️ **Cover art** — roughly half the library's covers are generated
   typographic placeholders rather than artwork. A content problem, not a CSS
   one, but it is the biggest thing holding the shelf back visually.
-- ❌ **No automated guard.** Nothing stops a new page hand-rolling its own
-  shell, header or filter row; the rules above are convention only. A CI check
-  asserting browse pages use `.page-col` + `<PageHeader>` is the obvious next
-  step.
+- ⚠️ **Partial automated guard.** Type sizes and RTL are now enforced in CI (see
+  §8). Nothing yet stops a new page hand-rolling its own shell or header: a
+  check asserting browse pages use `.page-col` + `<PageHeader>` is the next
+  one to write, and `<PageHeader>` still covers only 5 of 26 pages.
 
 _Last reviewed: 2026-08-19. Update this section as gaps close._

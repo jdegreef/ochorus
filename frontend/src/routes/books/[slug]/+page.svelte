@@ -249,7 +249,7 @@
 	</header>
 
 	{#if book.author.bio}
-		<p class="mt-7 max-w-xl text-body text-muted" dir="auto">{book.author.bio}</p>
+		<p class="mt-6 max-w-xl text-body text-muted" dir="auto">{book.author.bio}</p>
 	{/if}
 
 	{#if book.topics?.length}
@@ -266,7 +266,7 @@
 		</nav>
 	{/if}
 
-	<section class="mt-9">
+	<section class="mt-8">
 		<h2 class="mb-3 text-h3">{t('reader.contents')}</h2>
 		<ol class="divide-y divide-border">
 			{#each book.chapters as ch (ch.order)}

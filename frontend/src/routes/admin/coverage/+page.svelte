@@ -97,7 +97,7 @@
 		<div class="mb-4 flex flex-wrap items-center gap-2">
 			{#each TABS as t (t.key)}
 				<button
-					class="rounded-full border px-3.5 py-1.5 text-small font-semibold {tab === t.key
+					class="rounded-full border px-4 py-1.5 text-small font-semibold {tab === t.key
 						? 'border-accent-soft-border bg-accent-soft text-accent'
 						: 'border-border text-muted hover:text-text'}"
 					onclick={() => (tab = t.key)}

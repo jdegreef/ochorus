@@ -58,7 +58,7 @@
 	<section class="mx-auto flex max-w-xl flex-col items-center pt-20 pb-4 text-center">
 		<p class="mb-2 font-display text-6xl leading-none text-muted/60">{status || 500}</p>
 		<h1 class="text-h1 mb-3">{title}</h1>
-		<p class="mb-7 text-body text-muted">{message}</p>
+		<p class="mb-6 text-body text-muted">{message}</p>
 		<div class="flex flex-wrap items-center justify-center gap-3">
 			{#if !isNotFound}
 				<button class="btn btn-primary" onclick={() => location.reload()}>{t('error.tryAgain')}</button

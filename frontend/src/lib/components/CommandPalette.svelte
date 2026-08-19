@@ -162,7 +162,7 @@
 				spellcheck="false"
 				placeholder={t('search.palettePlaceholder')}
 				aria-label={t('search.palettePlaceholder')}
-				class="w-full border-b border-border bg-transparent px-4 py-3.5 text-body text-text focus-visible:-outline-offset-2"
+				class="w-full border-b border-border bg-transparent px-4 py-4 text-body text-text focus-visible:-outline-offset-2"
 			/>
 
 			<div class="max-h-[52vh] overflow-y-auto py-2">

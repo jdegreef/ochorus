@@ -177,7 +177,7 @@
 			{@const done = doneSet.has(d.day)}
 			{@const isNext = d.day === next}
 			<li
-				class="flex items-center gap-4 py-3.5 transition-opacity hover:opacity-100"
+				class="flex items-center gap-4 py-4 transition-opacity hover:opacity-100"
 				class:opacity-55={done && !isNext}
 			>
 				<button

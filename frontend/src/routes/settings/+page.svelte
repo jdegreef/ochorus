@@ -632,7 +632,7 @@
 					</div>
 
 					<!-- Recently reading -->
-					<h3 class="text-h3 mb-3 mt-9">{t('settings.recentReading')}</h3>
+					<h3 class="text-h3 mb-3 mt-8">{t('settings.recentReading')}</h3>
 					{#if history.length}
 						<ol class="divide-y divide-border">
 							{#each history as h (h.kind + ':' + h.slug)}
@@ -657,7 +657,7 @@
 				{/if}
 
 				{#if offlineList.length}
-					<h3 class="text-h3 mb-3 mt-9">{t('settings.downloadsTitle')}</h3>
+					<h3 class="text-h3 mb-3 mt-8">{t('settings.downloadsTitle')}</h3>
 					<ol class="divide-y divide-border">
 						{#each offlineList as b (b.slug)}
 							<li class="flex items-baseline gap-3 py-2.5">

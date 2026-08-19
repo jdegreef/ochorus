@@ -96,7 +96,7 @@
 		<h1 class="text-display mx-auto mb-5 max-w-3xl">
 			{t('home.heroTitle')}
 		</h1>
-		<p class="mx-auto mb-7 max-w-xl text-body text-muted">
+		<p class="mx-auto mb-6 max-w-xl text-body text-muted">
 			{t('home.heroTagline')}
 		</p>
 		<form

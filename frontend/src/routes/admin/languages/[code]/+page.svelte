@@ -333,7 +333,7 @@
 				<div class="mt-4 flex flex-wrap items-center gap-2" role="group" aria-label="Filter what each section shows">
 					{#each VIEWS as v (v.id)}
 						<button
-							class="rounded-full border px-3.5 py-1.5 text-small font-semibold {view === v.id
+							class="rounded-full border px-4 py-1.5 text-small font-semibold {view === v.id
 								? 'border-accent-soft-border bg-accent-soft text-accent'
 								: 'border-border text-muted hover:text-text'}"
 							aria-pressed={view === v.id}
@@ -456,7 +456,7 @@
 						{#if readiness.status === 'live'}
 							<span class="text-body font-semibold text-accent">Live</span>
 							<button
-								class="rounded-full border border-border px-3.5 py-1.5 text-small font-semibold text-muted hover:text-text"
+								class="rounded-full border border-border px-4 py-1.5 text-small font-semibold text-muted hover:text-text"
 								onclick={checkDeploy}
 							>
 								Has it shipped?
