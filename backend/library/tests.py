@@ -942,7 +942,7 @@ class SeedAuthorTranslationsTests(TestCase):
     def test_upserts_corrections_to_unreviewed_rows(self):
         # The repo data files are the source of truth while a row is
         # unreviewed (same contract as seed_sermons): a corrected bio committed
-        # to short.json/<slug>.html must reach prod on the next deploy.
+        # to <slug>.short.txt/<slug>.html must reach prod on the next deploy.
         from django.core.management import call_command
 
         self._create_authors()

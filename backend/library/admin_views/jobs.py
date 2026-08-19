@@ -67,7 +67,7 @@ _JOB_GUIDANCE = {
     ),
     "bio": (
         "Ships as an `ai_unreviewed` long-form biography under "
-        "`library/migrations/data/author_bios_<language>/` (`short.json` + "
+        "`library/migrations/data/author_bios_<language>/` (`<slug>.short.txt` + "
         "`<slug>.html`); the `seed_author_translations` release step upserts it."
     ),
     "topic": (

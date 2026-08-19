@@ -2,7 +2,7 @@
 
 Runs locally (needs ANTHROPIC_API_KEY); the result is AuthorTranslation rows
 (reviewed=False). To SHIP them, export the text to
-``migrations/data/author_bios_<lang>/`` (``short.json`` + ``<slug>.html``) —
+``migrations/data/author_bios_<lang>/`` (``<slug>.short.txt`` + ``<slug>.html``) —
 the ``seed_author_translations`` deploy step is the delivery path, survives a
 fresh-DB rebuild, and re-asserts those files over unreviewed DB rows on every
 deploy, so rows shipped any other way don't stick. The short ``bio`` is
