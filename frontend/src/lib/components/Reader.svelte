@@ -1,4 +1,5 @@
 <script lang="ts">
+	import NoteDialog from '$lib/components/NoteDialog.svelte';
 	/**
 	 * The reading machinery every long-form work shares — the prose itself, and
 	 * everything that has to know about it.
@@ -27,10 +28,9 @@
 	 */
 	import { onMount, tick } from 'svelte';
 	import { page } from '$app/stores';
-	import { i18n } from '$lib/i18n.svelte';
 	import { contentLang, HEADER_OFFSET } from '$lib/reading';
 	import { getScrollAnchor, saveScrollAnchor, saveProgress, getProgressRecord } from '$lib/progress';
-	import { HIGHLIGHT_COLORS, DEFAULT_HIGHLIGHT, type WorkKind } from '$lib/reading-schema';
+	import { DEFAULT_HIGHLIGHT, type WorkKind } from '$lib/reading-schema';
 	import { marks, type Segment } from '$lib/marks.svelte';
 	import { renderMarks } from '$lib/rangeMarks';
 	import { findQueryHits } from '$lib/searchHits';
@@ -38,7 +38,6 @@
 	import { define } from '$lib/define.svelte';
 	import { scripture } from '$lib/scripture.svelte';
 	import { getLang } from '$lib/lang.svelte';
-	import { focusTrap } from '$lib/actions/focusTrap';
 	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
 	import DefinePopover from '$lib/components/DefinePopover.svelte';
 	import SelectionBar from '$lib/components/SelectionBar.svelte';
@@ -97,7 +96,6 @@
 		headerOffset = HEADER_OFFSET
 	}: Props = $props();
 
-	const t = i18n.t;
 
 	// --- Position --------------------------------------------------------------
 	// Anchored to the top-visible paragraph, not a pixel offset, so a saved spot
@@ -334,48 +332,14 @@
 <ListenBar />
 
 {#if noteOpen}
-	<div
-		class="note-overlay"
-		role="dialog"
-		aria-modal="true"
-		aria-label={t('reader.note')}
-		use:focusTrap={{ onEscape: () => (noteOpen = false) }}
-	>
-		<div class="note-card">
-			<h2 class="mb-2 text-h3">{t('reader.note')}</h2>
-			<div class="mb-3 flex items-center gap-2.5" role="group" aria-label={t('reader.highlight')}>
-				{#each HIGHLIGHT_COLORS as color (color)}
-					<button
-						type="button"
-						class="hl-swatch"
-						data-color={color}
-						class:active={noteColor === color}
-						aria-pressed={noteColor === color}
-						aria-label="{t('reader.highlight')}: {t(`reader.hl_${color}`)}"
-						title={t(`reader.hl_${color}`)}
-						onclick={() => (noteColor = color)}
-					></button>
-				{/each}
-			</div>
-			<textarea
-				bind:value={noteDraft}
-				rows="5"
-				class="field w-full"
-				aria-label={t('reader.note')}
-				placeholder="…"
-			></textarea>
-			<div class="mt-3 flex items-center gap-2">
-				{#if noteId}
-					<button class="btn btn-ghost text-danger" onclick={removeMark}>
-						{t('reader.removeHighlight')}
-					</button>
-				{/if}
-				<span class="flex-1"></span>
-				<button class="btn btn-ghost" onclick={() => (noteOpen = false)}>{t('common.cancel')}</button>
-				<button class="btn btn-primary" onclick={saveNote}>{t('common.save')}</button>
-			</div>
-		</div>
-	</div>
+	<NoteDialog
+		bind:text={noteDraft}
+		bind:color={noteColor}
+		canRemove={!!noteId}
+		onSave={saveNote}
+		onRemove={removeMark}
+		onClose={() => (noteOpen = false)}
+	/>
 {/if}
 
 <style>
@@ -388,23 +352,4 @@
 	}
 
 	/* Text-range marks (<mark> spans) are styled globally in app.css. */
-	.note-overlay {
-		position: fixed;
-		inset: 0;
-		z-index: 50;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 1rem;
-		background: rgb(0 0 0 / 0.4);
-	}
-	.note-card {
-		width: 100%;
-		max-width: 32rem;
-		border-radius: var(--radius-card);
-		border: 1px solid var(--border);
-		background: var(--surface);
-		padding: 1.25rem;
-		box-shadow: var(--shadow-popover);
-	}
 </style>

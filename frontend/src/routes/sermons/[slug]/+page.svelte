@@ -8,7 +8,6 @@
 	import {
 		contentLang,
 		readingTime,
-		readingMinutes,
 		minutesLeft as minutesLeftOf,
 		preachedYear,
 		HEADER_OFFSET

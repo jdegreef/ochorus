@@ -1,4 +1,5 @@
 <script lang="ts">
+	import NoteDialog from '$lib/components/NoteDialog.svelte';
 	import { onMount, tick, untrack } from 'svelte';
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
@@ -14,7 +15,7 @@
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { marks } from '$lib/marks.svelte';
-	import { HIGHLIGHT_COLORS, DEFAULT_HIGHLIGHT } from '$lib/reading-schema';
+	import { DEFAULT_HIGHLIGHT } from '$lib/reading-schema';
 	import { bookmarks } from '$lib/bookmarks.svelte';
 	import { findQueryHits } from '$lib/searchHits';
 	import { renderMarks } from '$lib/rangeMarks';
@@ -23,7 +24,6 @@
 	import {
 		contentLang,
 		readingTime,
-		readingMinutes,
 		minutesLeft as minutesLeftOf,
 		HEADER_OFFSET
 	} from '$lib/reading';
@@ -33,7 +33,6 @@
 	import { scripture } from '$lib/scripture.svelte';
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
 	import { jsonLd, hreflangFor } from '$lib/seo';
-	import { focusTrap } from '$lib/actions/focusTrap';
 	import { localizeHref } from '$lib/href';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import Seo from '$lib/components/Seo.svelte';
@@ -1107,48 +1106,14 @@
 <ListenBar />
 
 {#if noteOpen}
-	<div
-		class="note-overlay"
-		role="dialog"
-		aria-modal="true"
-		aria-label={t('reader.note')}
-		use:focusTrap={{ onEscape: () => (noteOpen = false) }}
-	>
-		<div class="note-card">
-			<h2 class="mb-2 text-h3">{t('reader.note')}</h2>
-			<div class="mb-3 flex items-center gap-2.5" role="group" aria-label={t('reader.highlight')}>
-				{#each HIGHLIGHT_COLORS as color (color)}
-					<button
-						type="button"
-						class="hl-swatch"
-						data-color={color}
-						class:active={noteColor === color}
-						aria-pressed={noteColor === color}
-						aria-label="{t('reader.highlight')}: {t(`reader.hl_${color}`)}"
-						title={t(`reader.hl_${color}`)}
-						onclick={() => (noteColor = color)}
-					></button>
-				{/each}
-			</div>
-			<textarea
-				bind:value={noteDraft}
-				rows="5"
-				class="field w-full"
-				aria-label={t('reader.note')}
-				placeholder="…"
-			></textarea>
-			<div class="mt-3 flex items-center gap-2">
-				{#if noteId}
-					<button class="btn btn-ghost text-danger" onclick={removeMark}>
-						{t('reader.removeHighlight')}
-					</button>
-				{/if}
-				<span class="flex-1"></span>
-				<button class="btn btn-ghost" onclick={() => (noteOpen = false)}>{t('common.cancel')}</button>
-				<button class="btn btn-primary" onclick={saveNote}>{t('common.save')}</button>
-			</div>
-		</div>
-	</div>
+	<NoteDialog
+		bind:text={noteDraft}
+		bind:color={noteColor}
+		canRemove={!!noteId}
+		onSave={saveNote}
+		onRemove={removeMark}
+		onClose={() => (noteOpen = false)}
+	/>
 {/if}
 
 <style>
@@ -1306,24 +1271,5 @@
 		border-radius: 4px;
 		box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 10%, transparent);
 		transition: background var(--duration-base) ease;
-	}
-	.note-overlay {
-		position: fixed;
-		inset: 0;
-		z-index: 50;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 1rem;
-		background: rgb(0 0 0 / 0.4);
-	}
-	.note-card {
-		width: 100%;
-		max-width: 32rem;
-		border-radius: var(--radius-card);
-		border: 1px solid var(--border);
-		background: var(--surface);
-		padding: 1.25rem;
-		box-shadow: var(--shadow-popover);
 	}
 </style>
