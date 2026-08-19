@@ -20,7 +20,13 @@
 	import { renderMarks } from '$lib/rangeMarks';
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
-	import { contentLang, readingTime, readingMinutes } from '$lib/reading';
+	import {
+		contentLang,
+		readingTime,
+		readingMinutes,
+		minutesLeft as minutesLeftOf,
+		HEADER_OFFSET
+	} from '$lib/reading';
 	import { pageOfOffset } from '$lib/pageMath';
 	import { listen } from '$lib/listen.svelte';
 	import { define } from '$lib/define.svelte';
@@ -109,7 +115,6 @@
 	let noteDraft = $state('');
 	let noteColor = $state<string>(DEFAULT_HIGHLIGHT);
 
-	const HEADER_OFFSET = 72;
 	let tocOpen = $state(false);
 	let searchOpen = $state(false);
 
@@ -175,9 +180,7 @@
 		topIndex = p;
 	}
 
-	const minutesLeft = $derived(
-		Math.ceil(readingMinutes(chapter.word_count) * (1 - chapterFrac))
-	);
+	const minsLeft = $derived(minutesLeftOf(chapter.word_count, chapterFrac));
 	const bookPercent = $derived.by(() => {
 		const b = bookForProgress;
 		if (!b || b.slug !== slug || !b.chapters.length) return null;
@@ -234,12 +237,19 @@
 		articleEl.style.setProperty('--pgbot', `${bot}px`);
 	}
 
-	// A Kindle-style page count. In page-turn mode it's the real column count; in
-	// scroll mode it's estimated from word count and the current scroll position.
-	const WORDS_PER_PAGE = 280;
-	const pageCount = $derived(
-		paged ? pageTotal : Math.max(1, Math.ceil(chapter.word_count / WORDS_PER_PAGE))
-	);
+	/**
+	 * A Kindle-style page count. In page-turn mode it's the real column count.
+	 *
+	 * In scroll mode it used to be word_count / 280 — a fixed guess that ignored
+	 * text size, measure and viewport, so the SAME chapter reported a different
+	 * number of pages depending on the layout toggle, and "page 4 of 9" meant two
+	 * unrelated things. A page is now one screenful of this chapter at the
+	 * reader's current settings in either mode, which is what a paged column is
+	 * too — so the figure survives the toggle and responds to the text-size and
+	 * width controls the way the reader expects.
+	 */
+	let scrollPages = $state(1);
+	const pageCount = $derived(paged ? pageTotal : scrollPages);
 	const currentPage = $derived(
 		paged
 			? pageIndex + 1
@@ -310,6 +320,13 @@
 		// needed for a two-column spread whose last page may hold a single column.
 		pageTotal = w > 0 ? Math.max(1, Math.ceil(pager.scrollWidth / w - 0.02)) : 1;
 		if (pageIndex > pageTotal - 1) pageIndex = pageTotal - 1;
+	}
+
+	/** Screenfuls of prose in scroll mode — the same unit paged mode counts. */
+	function measureScrollPages() {
+		if (!body) return;
+		const usable = window.innerHeight - (chromeEl?.offsetHeight ?? 0) - (footEl?.offsetHeight ?? 0);
+		scrollPages = usable > 0 ? Math.max(1, Math.ceil(body.scrollHeight / usable)) : 1;
 	}
 
 	/** Turn to page p, persisting the paragraph now at the top of the page. */
@@ -395,6 +412,22 @@
 	// honest. Initial positioning is owned by the per-chapter effect above; this
 	// only re-counts and clamps, so it never fights that effect.
 	$effect(() => {
+		if (paged) return;
+		void chapter.order;
+		void readerPrefs.scale;
+		void readerPrefs.leading;
+		void readerPrefs.measure;
+		void readerPrefs.font;
+		void readerUi.focus;
+		untrack(() => {
+			(async () => {
+				await tick();
+				measureScrollPages();
+			})();
+		});
+	});
+
+	$effect(() => {
 		if (!paged) return;
 		void readerPrefs.scale;
 		void readerPrefs.leading;
@@ -417,7 +450,7 @@
 		if (!browser) return;
 		const onResize = () => {
 			viewportW = window.innerWidth;
-			if (paged) untrack(() => measurePages());
+			untrack(() => (paged ? measurePages() : measureScrollPages()));
 		};
 		window.addEventListener('resize', onResize);
 		return () => window.removeEventListener('resize', onResize);
@@ -884,7 +917,9 @@
 {#if readerUi.focus}
 	<button
 		class="fixed end-4 top-4 z-30 rounded-full border border-border bg-surface/90 px-3 py-1.5 text-small text-muted shadow-md backdrop-blur hover:text-text"
-		onclick={() => readerUi.exitFocus()}>✕ {t('reader.exitFocus')}</button
+		onclick={() => readerUi.exitFocus()}>
+		<Icon name="close" size={14} />
+		{t('reader.exitFocus')}</button
 	>
 {/if}
 
@@ -1028,7 +1063,7 @@
 		<div class="progress-meta">
 			<span>{t('progress.page')} {currentPage} / {pageCount}</span>
 			<span class="mx-1.5 opacity-50">·</span>
-			<span>{minutesLeft} {t('progress.minLeft')}</span>
+			<span>{minsLeft} {t('progress.minLeft')}</span>
 			{#if bookPercent !== null}
 				<span class="mx-1.5 opacity-50">·</span>
 				<span>{bookPercent}% {t('progress.through')}</span>

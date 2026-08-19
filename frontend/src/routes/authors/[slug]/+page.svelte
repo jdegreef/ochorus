@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Icon from '$lib/components/Icon.svelte';
 	import { type AuthorDetail, type AuthorBio, listAuthors, formatLifespan } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
 	import { cssString } from '$lib/cssString';
@@ -238,7 +239,7 @@
 					class:text-accent={listen.status !== 'idle'}
 					onclick={() => (listen.status === 'idle' ? reader?.startListening() : listen.stop())}
 					aria-label={t('reader.listen')}
-					title={t('reader.listen')}>▶ {t('reader.listen')}</button
+					title={t('reader.listen')}><Icon name="headphones" size={16} /> {t('reader.listen')}</button
 				>
 			{/if}
 			<!-- Reader affordances, shown only when there is a long-form biography to
@@ -249,7 +250,7 @@
 					class="btn btn-icon btn-ghost shrink-0"
 					onclick={() => readerUi.toggleFocus()}
 					aria-label={t('reader.focus')}
-					title={t('reader.focus')}>☾</button
+					title={t('reader.focus')}><Icon name="maximize" size={18} /></button
 				>
 			{/if}
 		</div>
@@ -425,7 +426,9 @@
 {#if readerUi.focus}
 	<button
 		class="fixed end-4 top-4 z-30 rounded-full border border-border bg-surface/90 px-3 py-1.5 text-small text-muted shadow-md backdrop-blur hover:text-text"
-		onclick={() => readerUi.exitFocus()}>✕ {t('reader.exitFocus')}</button
+		onclick={() => readerUi.exitFocus()}>
+		<Icon name="close" size={14} />
+		{t('reader.exitFocus')}</button
 	>
 {/if}
 

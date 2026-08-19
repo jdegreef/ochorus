@@ -23,6 +23,10 @@
 		| 'chevron-left'
 		| 'chevron-right'
 		| 'play'
+		| 'pause'
+		| 'skip-back'
+		| 'skip-forward'
+		| 'close'
 		| 'sparkle'
 		| 'wind'
 		| 'mountain'
@@ -120,6 +124,14 @@
 		<path d="M9 6l6 6-6 6" />
 	{:else if name === 'play'}
 		<path d="M8 5.5v13l11-6.5z" fill="currentColor" stroke="none" />
+	{:else if name === 'pause'}
+		<path d="M9 5v14M15 5v14" />
+	{:else if name === 'skip-back'}
+		<path d="M18 6.5v11L9.5 12zM6 5.5v13" />
+	{:else if name === 'skip-forward'}
+		<path d="M6 6.5v11L14.5 12zM18 5.5v13" />
+	{:else if name === 'close'}
+		<path d="M6 6l12 12M18 6L6 18" />
 	{:else if name === 'sparkle'}
 		<path d="M12 3l1.7 5.6c.2.6.6 1 1.2 1.2L20.5 11.5l-5.6 1.7c-.6.2-1 .6-1.2 1.2L12 20l-1.7-5.6c-.2-.6-.6-1-1.2-1.2L3.5 11.5l5.6-1.7c.6-.2 1-.6 1.2-1.2z" />
 	{:else if name === 'wind'}

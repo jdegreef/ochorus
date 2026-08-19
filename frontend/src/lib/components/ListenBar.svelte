@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Icon from '$lib/components/Icon.svelte';
 	import { listen, RATES } from '$lib/listen.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 
@@ -19,14 +20,14 @@
 				onclick={() => listen.toggle()}
 				aria-label={listen.status === 'playing' ? t('reader.pause') : t('reader.resume')}
 			>
-				{listen.status === 'playing' ? '❚❚' : '▶'}
+				<Icon name={listen.status === 'playing' ? 'pause' : 'play'} size={16} />
 			</button>
 
 			<button class="btn btn-icon btn-ghost" onclick={() => listen.skip(-1)} aria-label={t('reader.previous')}>
-				⏮
+				<Icon name="skip-back" size={18} />
 			</button>
 			<button class="btn btn-icon btn-ghost" onclick={() => listen.skip(1)} aria-label={t('reader.next')}>
-				⏭
+				<Icon name="skip-forward" size={18} />
 			</button>
 
 			<span class="min-w-0 flex-1 truncate text-small text-muted">
@@ -60,7 +61,7 @@
 			</select>
 
 			<button class="btn btn-icon btn-ghost" onclick={() => listen.stop()} aria-label={t('reader.stopListening')}>
-				✕
+				<Icon name="close" size={18} />
 			</button>
 		</div>
 	</div>

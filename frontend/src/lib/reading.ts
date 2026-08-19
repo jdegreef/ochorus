@@ -6,6 +6,19 @@ export function readingMinutes(words: number): number {
 }
 
 /**
+ * Whole minutes of reading left, from a word count and how far through the
+ * reader is (0-1).
+ *
+ * Floored at 1: the chapter reader used a bare Math.ceil, so the foot of a
+ * chapter read "0 min left" — which is not a reading time, and disagreed with
+ * the sermon page, which floored at 1 in its own private copy. Shared so the two
+ * surfaces cannot drift again.
+ */
+export function minutesLeft(words: number, frac: number): number {
+	return Math.max(1, Math.ceil(readingMinutes(words) * (1 - Math.min(1, Math.max(0, frac)))));
+}
+
+/**
  * Book-progress percent for the "Continue reading" card, from the chapter
  * currently open (`order`, 1-based) and the book's chapter count.
  *

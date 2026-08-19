@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Icon from '$lib/components/Icon.svelte';
 	import { getBook, type BookDetail } from '$lib/library';
 	import { getLang } from '$lib/lang.svelte';
 	import { getScrollAnchor } from '$lib/progress';
@@ -130,7 +131,7 @@
 								<button
 									class="bm-remove"
 									onclick={() => bookmarks.remove(bm.id)}
-									aria-label={t('reader.bookmark')}>✕</button
+									aria-label={t('reader.bookmark')}><Icon name="close" size={14} /></button
 								>
 							</li>
 						{/each}

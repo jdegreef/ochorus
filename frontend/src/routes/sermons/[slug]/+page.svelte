@@ -9,6 +9,7 @@
 		contentLang,
 		readingTime,
 		readingMinutes,
+		minutesLeft as minutesLeftOf,
 		preachedYear,
 		HEADER_OFFSET
 	} from '$lib/reading';
@@ -50,9 +51,7 @@
 	let reader = $state<Reader | undefined>();
 	let body = $state<HTMLElement | undefined>();
 	let frac = $state(0);
-	const minutesLeft = $derived(
-		Math.max(1, Math.ceil(readingMinutes(sermon.word_count) * (1 - frac)))
-	);
+	const minsLeft = $derived(minutesLeftOf(sermon.word_count, frac));
 
 	// Other sermons on the same Bible book, fetched client-side (page is
 	// prerendered; the list is small and cached by the browser).
@@ -236,7 +235,7 @@
 						class:text-accent={listen.status !== 'idle'}
 						onclick={() => (listen.status === 'idle' ? reader?.startListening() : listen.stop())}
 						aria-label={t('reader.listen')}
-						title={t('reader.listen')}>▶</button
+						title={t('reader.listen')}><Icon name="headphones" size={18} /></button
 					>
 				{/if}
 				<ReaderControls />
@@ -244,7 +243,7 @@
 					class="btn btn-icon btn-ghost"
 					onclick={() => readerUi.toggleFocus()}
 					aria-label={t('reader.focus')}
-					title={t('reader.focus')}>☾</button
+					title={t('reader.focus')}><Icon name="maximize" size={18} /></button
 				>
 			</div>
 		</div>
@@ -254,7 +253,9 @@
 {#if readerUi.focus}
 	<button
 		class="fixed end-4 top-4 z-30 rounded-full border border-border bg-surface/90 px-3 py-1.5 text-small text-muted shadow-md backdrop-blur hover:text-text"
-		onclick={() => readerUi.exitFocus()}>✕ {t('reader.exitFocus')}</button
+		onclick={() => readerUi.exitFocus()}>
+		<Icon name="close" size={14} />
+		{t('reader.exitFocus')}</button
 	>
 {/if}
 
@@ -497,7 +498,7 @@
 
 <!-- Time-remaining pill; hidden in focus and while listening. -->
 {#if !readerUi.focus && listen.status === 'idle' && frac < 0.99}
-	<div class="min-left" aria-hidden="true">{minutesLeft} {t('sermon.minLeft')}</div>
+	<div class="min-left" aria-hidden="true">{minsLeft} {t('sermon.minLeft')}</div>
 {/if}
 
 <style>
