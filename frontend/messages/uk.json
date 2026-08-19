@@ -339,6 +339,8 @@
   "author_themes": "Теми",
   "author_empty": "У бібліотеці ще немає книг чи проповідей цього письменника.",
   "author_meta_fallback": "%name% на Ochorus — безкоштовні класичні християнські книги.",
+  "book_meta_fallback": "%title% — %name%. Читайте безкоштовно на Ochorus.",
+  "sermon_meta_fallback": "%title% — проповідь %name%.",
   "error_not_found_title": "Сторінку не знайдено",
   "error_generic_title": "Щось пішло не так",
   "error_not_found_message": "Ми не змогли знайти цю сторінку. Можливо, вона переїхала або посилання застаріло.",

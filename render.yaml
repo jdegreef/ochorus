@@ -161,9 +161,6 @@ services:
         source: /wp-content/uploads/2025/08/He-Holds-me-Tomorrows-Gareth-Evans-1.pdf
         destination: /books/he-holds-my-tomorrows/
       - type: redirect
-        source: /wp-content/uploads/2025/12/A-Guide-on-How-to-Manage-a-Library-final.-1.pdf
-        destination: /books/how-to-manage-a-library/
-      - type: redirect
         source: /wp-content/uploads/2025/08/Humility-Andrew-Murray-2.pdf
         destination: /books/humility-2/
       - type: redirect

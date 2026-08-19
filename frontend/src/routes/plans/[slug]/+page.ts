@@ -1,4 +1,5 @@
 import { getPlan, listPlans } from '$lib/library';
+import { orNotFound } from '$lib/loadHelpers';
 import { getLang } from '$lib/lang.svelte';
 import type { EntryGenerator, PageLoad } from './$types';
 
@@ -20,5 +21,7 @@ export const entries: EntryGenerator = async () => {
 };
 
 export const load: PageLoad = async ({ params }) => {
-	return { plan: await getPlan(params.slug, getLang()) };
+	// See the note in topics/[slug]: an unknown slug must reach the not-found
+	// page, not the generic retry shell.
+	return { plan: await orNotFound(() => getPlan(params.slug, getLang())) };
 };

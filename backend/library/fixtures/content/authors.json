@@ -137,21 +137,6 @@
   {
     "model": "library.author",
     "fields": {
-      "slug": "charlotte-akankwasa",
-      "name": "Charlotte Akankwasa",
-      "bio": "Charlotte Akankwasa is a contemporary contributor to the Ochorus library. She is the author of How to Manage a Library, a practical guide for building and caring for a collection of good books.",
-      "bio_html": "",
-      "photo_url": "",
-      "birth_year": null,
-      "death_year": null,
-      "original_language": "en",
-      "is_imprint": false,
-      "created_at": "2026-06-28T15:50:31.004Z"
-    }
-  },
-  {
-    "model": "library.author",
-    "fields": {
       "slug": "amy-carmichael",
       "name": "Amy Carmichael",
       "bio": "Amy Beatrice Carmichael, born in 1867 in Millisle, Ireland, was a Protestant missionary in India. She served for 55 years without furlough, founding the Dohnavur Fellowship to rescue children from temple prostitution. Known for her deep devotion and writings on prayer, she authored 35 books and remained in India until her death in 1951. Her work continues through the ongoing ministry she established. Carmichael's life demonstrated radical obedience to Christ's call and cultural adaptation.",

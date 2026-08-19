@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { focusTrap } from '$lib/actions/focusTrap';
 	import { getBook, getChapter } from '$lib/library';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
@@ -129,12 +130,20 @@
 {#if open}
 	<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
 	<div class="search-scrim" onclick={close}></div>
+	<!-- focusTrap keeps Tab inside the panel. Without it this dialog declared
+	     aria-modal="true" — telling assistive tech the rest of the page is inert
+	     — while Tab actually walked straight out into the content behind the
+	     scrim. autoFocus is off because the effect above focuses the input
+	     itself. Escape has two paths on purpose: the trap handles it (and stops
+	     propagation) whenever focus is inside the panel, and the window listener
+	     still catches it if focus has fallen elsewhere, e.g. after a scrim click. -->
 	<div
 		bind:this={panel}
 		class="search-panel"
 		role="dialog"
 		aria-modal="true"
 		aria-label={t('reader.search')}
+		use:focusTrap={{ onEscape: close, autoFocus: false }}
 	>
 		<header class="border-b border-border px-5 py-4">
 			<div class="flex items-center justify-between gap-3">
