@@ -210,20 +210,28 @@
 	.search-panel {
 		position: fixed;
 		top: 0;
-		right: 0;
 		bottom: 0;
+		/* Anchored to the end of the reading direction — the left edge under
+		   dir="rtl". See the matching note in TocDrawer: box-shadow and
+		   translateX have no logical form, so they are flipped explicitly. */
+		inset-inline-end: 0;
 		z-index: 49;
 		width: min(24rem, 92vw);
 		display: flex;
 		flex-direction: column;
 		background: var(--surface);
-		border-left: 1px solid var(--border);
+		border-inline-start: 1px solid var(--border);
 		box-shadow: -12px 0 40px rgb(0 0 0 / 0.25);
+		--search-slide-from: 1.5rem;
 		animation: search-in 0.18s ease-out;
+	}
+	:global([dir='rtl']) .search-panel {
+		box-shadow: 12px 0 40px rgb(0 0 0 / 0.25);
+		--search-slide-from: -1.5rem;
 	}
 	@keyframes search-in {
 		from {
-			transform: translateX(1.5rem);
+			transform: translateX(var(--search-slide-from, 1.5rem));
 			opacity: 0;
 		}
 	}

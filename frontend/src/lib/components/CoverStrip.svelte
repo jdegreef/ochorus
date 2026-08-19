@@ -33,12 +33,12 @@
 		border-radius: 0.25rem;
 		overflow: hidden;
 		box-shadow: 0 2px 6px -2px #0006;
-		margin-left: -0.7rem;
+		margin-inline-start: -0.7rem;
 		background: var(--surface);
 		transform: rotate(-3deg);
 	}
 	.cover:first-child {
-		margin-left: 0;
+		margin-inline-start: 0;
 	}
 	.cover:nth-child(2) {
 		transform: rotate(1deg);

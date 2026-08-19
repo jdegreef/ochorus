@@ -441,8 +441,9 @@
 		font-size: 1.5rem;
 		line-height: 1.4;
 		color: var(--text);
-		border-left: 3px solid var(--gold);
-		padding: 0.1em 0 0.1em 1.25rem;
+		border-inline-start: 3px solid var(--gold);
+		padding-block: 0.1em;
+		padding-inline: 1.25rem 0;
 	}
 	.author-quote::before {
 		content: '“';
@@ -475,8 +476,9 @@
 	/* Pull-quote: a called-out saying, visually distinct. */
 	:global(.bio blockquote) {
 		margin: 1.7em 0;
-		padding: 0.1em 0 0.1em 1.25rem;
-		border-left: 3px solid var(--gold);
+		padding-block: 0.1em;
+		padding-inline: 1.25rem 0;
+		border-inline-start: 3px solid var(--gold);
 		font-size: 1.45rem;
 		line-height: 1.45;
 		font-style: italic;

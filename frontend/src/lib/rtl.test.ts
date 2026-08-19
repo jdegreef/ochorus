@@ -49,6 +49,36 @@ const ADMIN_ONLY = [
 const isAdmin = (path: string) => ADMIN_ONLY.some((frag) => path.includes(frag));
 
 /**
+ * The same mistake, one layer down: a scoped `<style>` block. The class scan
+ * above never looked inside `<style>`, so physical CSS slipped past it — a
+ * pull-quote rule drawn down the left of Arabic prose, an outline rail pinned
+ * to the wrong margin, `text-align: left` on a sermon's outline.
+ *
+ * Positioning is deliberately included (`left:`/`right:` as properties), since
+ * a fixed panel anchored `right: 0` sits at the READING end in English and the
+ * wrong end in Arabic. Some properties genuinely have no logical form —
+ * `box-shadow` offsets, `translateX`, `transform-origin: left` — and those are
+ * flipped under an explicit `[dir='rtl']` rule instead; a file may opt a line
+ * out with a trailing `/* rtl-ok: why *\/` comment when the physical value is
+ * the correct one (a symmetric `left: 0; right: 0` pair, a mirror-image arrow).
+ */
+const PHYSICAL_CSS: [RegExp, string][] = [
+	[/\bborder-(left|right)(-[a-z]+)?\s*:/g, 'border-inline-start/end'],
+	[/\bpadding-(left|right)\s*:/g, 'padding-inline-start/end'],
+	[/\bmargin-(left|right)\s*:/g, 'margin-inline-start/end'],
+	[/\btext-align\s*:\s*(left|right)\b/g, 'text-align: start/end'],
+	[/^\s*(left|right)\s*:/gm, 'inset-inline-start/end']
+];
+
+/** The `<style>` blocks of a component, concatenated. */
+function styleBlocks(src: string): string {
+	return (src.match(/<style[^>]*>[\s\S]*?<\/style>/g) ?? []).join('\n');
+}
+
+/** Lines a file has deliberately excused, by line content. */
+const RTL_OK = /\/\*\s*rtl-ok:/;
+
+/**
  * Physical inline-axis utilities and their logical replacements. Only the
  * inline axis: `mt-`/`mb-`/`top-`/`bottom-` are direction-independent, and
  * pixel-positioned popovers (measured from a selection rect) are physical by
@@ -75,6 +105,23 @@ describe('right-to-left support', () => {
 		const hook = readFileSync(join(SRC, 'hooks.server.ts'), 'utf-8');
 		expect(hook).toContain('%paraglide.dir%');
 		expect(hook).toContain('getTextDirection(locale)');
+	});
+
+	it('reader-facing scoped styles use logical, not physical, properties', () => {
+		const offenders: string[] = [];
+		for (const file of svelteFiles(SRC)) {
+			if (isAdmin(file)) continue;
+			const css = styleBlocks(readFileSync(file, 'utf-8'));
+			for (const line of css.split('\n')) {
+				if (RTL_OK.test(line)) continue;
+				for (const [pattern, replacement] of PHYSICAL_CSS) {
+					for (const hit of line.match(pattern) ?? []) {
+						offenders.push(`${file.replace(SRC, 'src')}: ${hit.trim()} → use ${replacement}`);
+					}
+				}
+			}
+		}
+		expect(offenders, offenders.join('\n')).toEqual([]);
 	});
 
 	it('reader-facing markup uses logical, not physical, inline spacing', () => {

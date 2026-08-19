@@ -70,7 +70,7 @@
 		color: var(--text);
 	}
 	.define-close {
-		margin-left: auto;
+		margin-inline-start: auto;
 		padding: 0 0.25rem;
 		color: var(--muted);
 		cursor: pointer;

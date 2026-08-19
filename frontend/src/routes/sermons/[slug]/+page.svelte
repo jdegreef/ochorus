@@ -486,14 +486,19 @@
 	.read-progress {
 		position: fixed;
 		top: 0;
-		left: 0;
-		right: 0;
+		inset-inline: 0;
 		height: 2px;
 		z-index: 40;
 		background: var(--accent);
+		/* Grows from where reading STARTS — the right edge under dir="rtl".
+		   transform-origin takes physical keywords only, so RTL is flipped
+		   explicitly just below. */
 		transform-origin: left center;
 		transition: transform 0.1s linear;
 		pointer-events: none;
+	}
+	:global([dir='rtl']) .read-progress {
+		transform-origin: right center;
 	}
 	/* `.min-left` lives in app.css — the biography page shows the same pill, and
 	   a second copy here is how the two would drift apart. */
@@ -502,8 +507,9 @@
 	.text-card {
 		margin: 0 0 2rem;
 		padding: 0.85rem 1.1rem;
-		border-left: 3px solid var(--accent);
-		border-radius: 0 var(--radius-card) var(--radius-card) 0;
+		border-inline-start: 3px solid var(--accent);
+		border-start-end-radius: var(--radius-card);
+		border-end-end-radius: var(--radius-card);
 		background: var(--accent-soft);
 	}
 	.text-card-eyebrow {
@@ -543,7 +549,7 @@
 	.outline-panel {
 		position: fixed;
 		top: 3.4rem;
-		right: max(0.75rem, calc((100vw - 48rem) / 2));
+		inset-inline-end: max(0.75rem, calc((100vw - 48rem) / 2));
 		z-index: 21;
 		width: min(20rem, calc(100vw - 1.5rem));
 		max-height: 70vh;
@@ -565,7 +571,7 @@
 	.outline-item {
 		display: block;
 		width: 100%;
-		text-align: left;
+		text-align: start;
 		padding: 0.45rem 0.6rem;
 		border-radius: var(--radius-sm, 6px);
 		font-size: 0.9rem;
@@ -593,7 +599,7 @@
 			display: block;
 			position: fixed;
 			top: 5rem;
-			right: max(1rem, calc((100vw - var(--reading-measure, 46rem)) / 2 - 15rem));
+			inset-inline-end: max(1rem, calc((100vw - var(--reading-measure, 46rem)) / 2 - 15rem));
 			width: 14rem;
 			max-height: calc(100vh - 7rem);
 			overflow-y: auto;
@@ -615,9 +621,9 @@
 	.outline-rail-item {
 		display: block;
 		width: 100%;
-		text-align: left;
+		text-align: start;
 		padding: 0.3rem 0.6rem;
-		border-left: 2px solid transparent;
+		border-inline-start: 2px solid transparent;
 		font-size: 0.85rem;
 		line-height: 1.35;
 		color: var(--muted);
@@ -627,11 +633,11 @@
 		color: var(--accent);
 	}
 	.outline-rail-item.point {
-		padding-left: 1.1rem;
+		padding-inline-start: 1.1rem;
 	}
 	.outline-rail-item.active {
 		color: var(--accent);
-		border-left-color: var(--accent);
+		border-inline-start-color: var(--accent);
 		font-weight: 600;
 	}
 </style>
