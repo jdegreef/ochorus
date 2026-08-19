@@ -99,7 +99,7 @@
 							<div class="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-small text-muted">
 								<span>{SOURCE_LABEL[l.source_type]}</span>
 								<span>· {fmt(l.chapters.length)} ch · {fmt(l.word_count)} words</span>
-								{#if !l.is_published}<span class="text-gold">· unpublished</span>{/if}
+								{#if !l.is_published}<span class="text-warning">· unpublished</span>{/if}
 							</div>
 						</div>
 						<div class="flex shrink-0 flex-col items-end gap-1 text-small">
@@ -118,7 +118,7 @@
 									</a>
 									<span class="flex shrink-0 items-center gap-2">
 										{#each c.flags as f (f)}
-											<span class="rounded-full border border-gold/40 px-2 py-0.5 text-[0.7rem] text-gold">{FLAG_LABEL[f] ?? f}</span>
+											<span class="rounded-full border border-warning/40 px-2 py-0.5 text-[0.7rem] text-warning">{FLAG_LABEL[f] ?? f}</span>
 										{/each}
 										<span class="text-small tabular-nums text-muted">{fmt(c.word_count)}</span>
 									</span>
@@ -126,7 +126,7 @@
 							{/each}
 						</ul>
 					{:else}
-						<p class="text-body text-gold">No chapters.</p>
+						<p class="text-body text-warning">No chapters.</p>
 					{/if}
 				</section>
 			{/each}

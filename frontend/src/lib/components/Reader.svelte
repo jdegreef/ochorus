@@ -360,13 +360,13 @@
 			<textarea
 				bind:value={noteDraft}
 				rows="5"
-				class="w-full rounded-sm border border-border bg-bg p-3 text-body text-text"
+				class="w-full rounded-sm border border-border-strong bg-bg p-3 text-body text-text"
 				aria-label={t('reader.note')}
 				placeholder="…"
 			></textarea>
 			<div class="mt-3 flex items-center gap-2">
 				{#if noteId}
-					<button class="btn btn-ghost !text-red-700 dark:!text-red-400" onclick={removeMark}>
+					<button class="btn btn-ghost !text-danger" onclick={removeMark}>
 						{t('reader.removeHighlight')}
 					</button>
 				{/if}

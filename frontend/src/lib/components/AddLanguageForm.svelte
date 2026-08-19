@@ -183,7 +183,7 @@
 
 	{#if open}
 		{#if loadError}
-			<p class="mt-3 text-body text-gold">Couldn't load the form: {loadError}</p>
+			<p class="mt-3 text-body text-warning">Couldn't load the form: {loadError}</p>
 		{:else if created}
 			<div class="mt-4 space-y-3">
 				<p class="text-body">
@@ -193,7 +193,7 @@
 				{#if !created.bible_verified}
 					<!-- Not a rejection: we couldn't ask, which is a different fact from
 					     "the code is wrong", and the readiness check asks again later. -->
-					<p class="text-small text-gold">{created.bible_note}</p>
+					<p class="text-small text-warning">{created.bible_note}</p>
 				{/if}
 				<ol class="list-decimal space-y-1 pl-5 text-small text-muted">
 					{#each created.next_steps as step (step)}
@@ -300,7 +300,7 @@
 					</label>
 				</div>
 				{#if taken}
-					<p class="text-small text-gold">{normalized} is already in the registry.</p>
+					<p class="text-small text-warning">{normalized} is already in the registry.</p>
 				{/if}
 
 				<div class="border-t border-border pt-4">
@@ -399,7 +399,7 @@
 				</div>
 
 				{#if error}
-					<p class="text-body text-gold">{error}</p>
+					<p class="text-body text-warning">{error}</p>
 				{/if}
 
 				<button

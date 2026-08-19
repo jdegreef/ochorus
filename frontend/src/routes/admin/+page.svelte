@@ -184,14 +184,14 @@
 					{#if f.href}
 						<a
 							href={f.href}
-							class="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-small text-gold hover:bg-gold/20 hover:no-underline"
+							class="inline-flex items-center gap-1.5 rounded-full border border-warning/40 bg-warning/10 px-3 py-1 text-small text-warning hover:bg-warning/20 hover:no-underline"
 						>
 							<strong class="font-semibold">{fmt(f.n)}</strong>
 							{f.label} →
 						</a>
 					{:else}
 						<span
-							class="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-small text-gold"
+							class="inline-flex items-center gap-1.5 rounded-full border border-warning/40 bg-warning/10 px-3 py-1 text-small text-warning"
 						>
 							<strong class="font-semibold">{fmt(f.n)}</strong>
 							{f.label}
@@ -254,7 +254,7 @@
 								<td class="px-4 py-3 text-small text-muted">
 									{#if l.source_types.public_domain}<span title="Public domain">PD {l.source_types.public_domain}</span>{/if}
 									{#if l.source_types.ai_reviewed}<span class="ml-2" title="AI reviewed">AI✓ {l.source_types.ai_reviewed}</span>{/if}
-									{#if l.source_types.ai_unreviewed}<span class="ml-2 text-gold" title="AI unreviewed">AI· {l.source_types.ai_unreviewed}</span>{/if}
+									{#if l.source_types.ai_unreviewed}<span class="ml-2 text-warning" title="AI unreviewed">AI· {l.source_types.ai_unreviewed}</span>{/if}
 								</td>
 							</tr>
 						{/each}
@@ -306,7 +306,7 @@
 									>
 									<div class="text-small text-muted">
 										{b.author} · {b.language}
-										{#if !b.is_published}· <span class="text-gold">unpublished</span>{/if}
+										{#if !b.is_published}· <span class="text-warning">unpublished</span>{/if}
 									</div>
 								</div>
 								<span class="shrink-0 text-small text-muted">{dateFmt(b.created_at)}</span>

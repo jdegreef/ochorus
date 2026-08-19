@@ -155,7 +155,7 @@
 
 			{#if book.source_type === 'ai_unreviewed'}
 				<p
-					class="mt-3 inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-small text-gold"
+					class="mt-3 inline-flex items-center gap-1.5 rounded-full border border-warning/40 bg-warning/10 px-3 py-1 text-small text-warning"
 				>
 					{t('book.aiUnreviewed')}
 				</p>

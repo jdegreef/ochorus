@@ -104,10 +104,10 @@
 				<div class="grid grid-cols-3 gap-1">
 					{#each LEADINGS as o (o.v)}
 						<button
-							class="rounded-sm border px-2 py-1.5 text-[0.8rem]"
+							class="rc-opt rounded-sm border px-2 py-1.5 text-[0.8rem]"
 							class:border-accent={readerPrefs.leading === o.v}
 							class:text-accent={readerPrefs.leading === o.v}
-							class:border-border={readerPrefs.leading !== o.v}
+							class:border-border-strong={readerPrefs.leading !== o.v}
 							class:text-muted={readerPrefs.leading !== o.v}
 							onclick={() => readerPrefs.setLeading(o.v)}
 							aria-pressed={readerPrefs.leading === o.v}>{t(o.k)}</button
@@ -122,10 +122,10 @@
 				<div class="grid grid-cols-3 gap-1">
 					{#each MEASURES as o (o.v)}
 						<button
-							class="rounded-sm border px-2 py-1.5 text-[0.8rem]"
+							class="rc-opt rounded-sm border px-2 py-1.5 text-[0.8rem]"
 							class:border-accent={readerPrefs.measure === o.v}
 							class:text-accent={readerPrefs.measure === o.v}
-							class:border-border={readerPrefs.measure !== o.v}
+							class:border-border-strong={readerPrefs.measure !== o.v}
 							class:text-muted={readerPrefs.measure !== o.v}
 							onclick={() => readerPrefs.setMeasure(o.v)}
 							aria-pressed={readerPrefs.measure === o.v}>{t(o.k)}</button
@@ -140,10 +140,10 @@
 				<div class="grid grid-cols-3 gap-1">
 					{#each FONTS as o (o.v)}
 						<button
-							class="rounded-sm border px-2 py-1.5 text-[0.8rem]"
+							class="rc-opt rounded-sm border px-2 py-1.5 text-[0.8rem]"
 							class:border-accent={readerPrefs.font === o.v}
 							class:text-accent={readerPrefs.font === o.v}
-							class:border-border={readerPrefs.font !== o.v}
+							class:border-border-strong={readerPrefs.font !== o.v}
 							class:text-muted={readerPrefs.font !== o.v}
 							onclick={() => readerPrefs.setFont(o.v)}
 							aria-pressed={readerPrefs.font === o.v}>{t(o.k)}</button
@@ -158,10 +158,10 @@
 				<div class="grid grid-cols-2 gap-1">
 					{#each ALIGNMENTS as o (o.v)}
 						<button
-							class="rounded-sm border px-2 py-1.5 text-[0.8rem]"
+							class="rc-opt rounded-sm border px-2 py-1.5 text-[0.8rem]"
 							class:border-accent={readerPrefs.align === o.v}
 							class:text-accent={readerPrefs.align === o.v}
-							class:border-border={readerPrefs.align !== o.v}
+							class:border-border-strong={readerPrefs.align !== o.v}
 							class:text-muted={readerPrefs.align !== o.v}
 							onclick={() => readerPrefs.setAlign(o.v)}
 							aria-pressed={readerPrefs.align === o.v}>{t(o.k)}</button
@@ -179,19 +179,19 @@
 				<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.layout')}</span>
 				<div class="grid grid-cols-2 gap-1">
 					<button
-						class="rounded-sm border px-2 py-1.5 text-[0.8rem]"
+						class="rc-opt rounded-sm border px-2 py-1.5 text-[0.8rem]"
 						class:border-accent={!readerPrefs.paged}
 						class:text-accent={!readerPrefs.paged}
-						class:border-border={readerPrefs.paged}
+						class:border-border-strong={readerPrefs.paged}
 						class:text-muted={readerPrefs.paged}
 						onclick={() => readerPrefs.setPaged(false)}
 						aria-pressed={!readerPrefs.paged}>{t('reader.layoutScroll')}</button
 					>
 					<button
-						class="rounded-sm border px-2 py-1.5 text-[0.8rem]"
+						class="rc-opt rounded-sm border px-2 py-1.5 text-[0.8rem]"
 						class:border-accent={readerPrefs.paged}
 						class:text-accent={readerPrefs.paged}
-						class:border-border={!readerPrefs.paged}
+						class:border-border-strong={!readerPrefs.paged}
 						class:text-muted={!readerPrefs.paged}
 						onclick={() => readerPrefs.setPaged(true)}
 						aria-pressed={readerPrefs.paged}>{t('reader.layoutPage')}</button

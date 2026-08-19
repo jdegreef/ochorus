@@ -406,7 +406,7 @@
 												{KIND_LABEL[i.kind]}
 											</span>
 											{#if i.flagged}
-												<span class="text-small font-semibold text-gold">
+												<span class="text-small font-semibold text-warning">
 													{i.notes.self_rendered} verse{i.notes.self_rendered === 1 ? '' : 's'}
 													unverified
 												</span>
@@ -425,14 +425,14 @@
 
 										{#if i.flags}
 											<div class="text-small mt-1 text-muted">
-												<span class={i.flags.tags_match ? '' : 'font-semibold text-gold'}>
+												<span class={i.flags.tags_match ? '' : 'font-semibold text-warning'}>
 													tags {i.flags.tag_counts[1]}/{i.flags.tag_counts[0]}{i.flags.tags_match
 														? ''
 														: ' — sequence differs'}
 												</span>
 												{#if ratioLabel(i)}<span> · {ratioLabel(i)}</span>{/if}
 												{#if !i.flags.quote_style_consistent}
-													<span class="font-semibold text-gold"> · mixed quote styles</span>
+													<span class="font-semibold text-warning"> · mixed quote styles</span>
 												{/if}
 											</div>
 										{/if}
@@ -446,11 +446,11 @@
 										{/if}
 
 										{#if i.outcome?.outcome === 'needs_work'}
-											<p class="text-small mt-1 text-gold">
+											<p class="text-small mt-1 text-warning">
 												Needs work{i.outcome.note ? `: ${i.outcome.note}` : ''}
 											</p>
 										{/if}
-										{#if rowError[k]}<p class="text-small mt-2 text-gold">{rowError[k]}</p>{/if}
+										{#if rowError[k]}<p class="text-small mt-2 text-warning">{rowError[k]}</p>{/if}
 									</div>
 
 									<button
@@ -467,7 +467,7 @@
 										{#if detailLoading}
 											<p class="text-body text-muted">Loading the text…</p>
 										{:else if detailError}
-											<p class="text-body text-gold">{detailError}</p>
+											<p class="text-body text-warning">{detailError}</p>
 										{:else if detail}
 											{#if detail.chapters.length}
 												<div class="mb-3 flex flex-wrap gap-1">
@@ -483,7 +483,7 @@
 											{/if}
 
 											{#if !detail.aligned}
-												<p class="text-small mb-3 font-semibold text-gold">
+												<p class="text-small mb-3 font-semibold text-warning">
 													Blocks don't line up — {detail.block_counts[0]} in English, {detail
 														.block_counts[1]} in {languageName(detail.language)}. Shown unpaired;
 													read them side by side rather than trusting the rows to correspond.
@@ -496,7 +496,7 @@
 													<ul class="text-small space-y-0.5 text-muted">
 														{#each detail.notes as n (n.reference + n.status)}
 															<li>
-																<span class={n.status === 'self_rendered' ? 'text-gold' : ''}>
+																<span class={n.status === 'self_rendered' ? 'text-warning' : ''}>
 																	{n.reference}
 																</span>
 																{#if n.status === 'mined'}
