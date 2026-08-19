@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { coverGradient } from '$lib/coverArt';
 	import { type BookDetail, formatLifespan } from '$lib/library';
 	import { getProgress } from '$lib/progress';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
@@ -133,9 +134,9 @@
 		{:else}
 			<div
 				class="flex aspect-[3/4] w-32 shrink-0 items-end rounded-card p-3 shadow-md"
-				style="background: linear-gradient(150deg, {book.cover_color || '#3b5bdb'}, #0008)"
+				style="background: {coverGradient(book.cover_color)}"
 			>
-				<span style="font-family: var(--font-display)" class="text-base font-semibold text-white">
+				<span class="font-display text-base font-semibold text-white">
 					{book.title}
 				</span>
 			</div>
@@ -188,7 +189,7 @@
 				<!-- Download for offline: precache every chapter so the whole book
 				     reads with no connection (see lib/offlineBooks). -->
 				{#if downloading}
-					<span class="btn btn-ghost !cursor-default">
+					<span class="btn btn-ghost cursor-default">
 						{t('offline.downloading')} {Math.round((downloading.done / downloading.total) * 100)}%
 					</span>
 				{:else if savedOffline}
@@ -248,7 +249,7 @@
 	</header>
 
 	{#if book.author.bio}
-		<p class="mt-7 max-w-xl text-body text-muted" dir="auto">{book.author.bio}</p>
+		<p class="mt-6 max-w-xl text-body text-muted" dir="auto">{book.author.bio}</p>
 	{/if}
 
 	{#if book.topics?.length}
@@ -265,7 +266,7 @@
 		</nav>
 	{/if}
 
-	<section class="mt-9">
+	<section class="mt-8">
 		<h2 class="mb-3 text-h3">{t('reader.contents')}</h2>
 		<ol class="divide-y divide-border">
 			{#each book.chapters as ch (ch.order)}
@@ -276,7 +277,7 @@
 					>
 						<span class="w-6 shrink-0 text-small text-muted">{ch.order}</span>
 						<span class="flex-1 text-body text-text" dir="auto">{ch.title}</span>
-						<span class="text-[0.8rem] text-muted">{readingMinutes(ch.word_count)} {t('common.min')}</span>
+						<span class="text-small text-muted">{readingMinutes(ch.word_count)} {t('common.min')}</span>
 					</a>
 				</li>
 			{/each}
@@ -295,12 +296,12 @@
 	{/if}
 
 	{#if book.source_url && book.source_type === 'public_domain'}
-		<p class="mt-8 text-[0.8rem] text-muted">
+		<p class="mt-8 text-small text-muted">
 			{t('book.publicDomain')}
 			<a href={book.source_url} target="_blank" rel="noreferrer">{t('book.originalEdition')}</a>.
 		</p>
 	{:else if book.source_url}
-		<p class="mt-8 text-[0.8rem] text-muted">
+		<p class="mt-8 text-small text-muted">
 			{t('book.translationOf')}
 			<a href={book.source_url} target="_blank" rel="noreferrer">{t('book.originalEdition')}</a>.
 		</p>

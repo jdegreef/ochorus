@@ -146,7 +146,7 @@
 				placeholder="you@example.com"
 				aria-invalid={error ? 'true' : undefined}
 				aria-describedby={error ? 'auth-error' : undefined}
-				class="mb-3 w-full rounded-sm border border-border-strong bg-bg px-3 py-2 text-body text-text"
+				class="field mb-3 w-full"
 			/>
 
 			{#if mode !== 'reset'}
@@ -161,10 +161,14 @@
 					placeholder="••••••••"
 					aria-invalid={error ? 'true' : undefined}
 					aria-describedby={error ? 'auth-error' : undefined}
-					class="mb-3 w-full rounded-sm border border-border-strong bg-bg px-3 py-2 text-body text-text"
+					class="field mb-3 w-full"
 				/>
 			{/if}
 
+			<!-- Rendered unconditionally, empty and zero-height when there is nothing
+			     to say: a live region is only announced if it was already in the DOM
+			     when its text arrived, so inserting the <p> together with the message
+			     is the classic way to ship an error no screen reader ever reads out. -->
 			<p id="auth-error" role="alert" class="text-small text-danger {error ? 'mb-3' : ''}">
 				{error ?? ''}
 			</p>
@@ -250,7 +254,7 @@
 		justify-content: center;
 		border-radius: 999px;
 		font-family: var(--font-display);
-		font-size: 1.5rem;
+		font-size: var(--fs-h2);
 		color: var(--accent);
 		background: color-mix(in srgb, var(--accent) 14%, transparent);
 	}
@@ -284,9 +288,9 @@
 		color: var(--text);
 		font-family: var(--font-sans);
 		font-weight: 600;
-		font-size: 0.95rem;
+		font-size: var(--fs-body);
 		cursor: pointer;
-		transition: background 0.15s ease, border-color 0.15s ease;
+		transition: background var(--duration-fast) ease, border-color var(--duration-fast) ease;
 	}
 	.google-btn:hover:not(:disabled) {
 		background: var(--surface);

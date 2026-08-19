@@ -1,4 +1,5 @@
 import { browser } from '$app/environment';
+import { clampPopoverLeft } from './reading';
 import glossaryData from './glossary.json';
 
 /**
@@ -66,11 +67,14 @@ class Define {
 
 	async show(rawWord: string, top: number, left: number) {
 		if (!browser) return;
-		const word = rawWord.toLowerCase().replace(/^[^a-z’']+|[^a-z’']+$/g, '');
+		// \p{L}, not [a-z]: the old class treated an accented letter as
+		// punctuation, so "él" was trimmed to "l" before the lookup ran.
+		const word = rawWord.toLowerCase().replace(/^[^\p{L}’']+|[^\p{L}’']+$/gu, '');
 		if (!word || word.length < 2) return;
 		this.word = word;
 		this.top = top;
-		this.left = left;
+		// 20rem is .define-pop's width — see clampPopoverLeft.
+		this.left = clampPopoverLeft(left, 20 * 16);
 		this.open = true;
 
 		const cached = cache.get(word);

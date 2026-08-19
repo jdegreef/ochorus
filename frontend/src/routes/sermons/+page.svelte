@@ -194,7 +194,7 @@
 
 		{#if filtering}
 			<button
-				class="btn btn-ghost !py-2"
+				class="btn btn-ghost py-2"
 				onclick={() => {
 					queryText = '';
 					bibleBook = '';
@@ -298,7 +298,7 @@
 							style="object-position: {portraitPosition(g.slug)}"
 						/>
 					{/if}
-					<a href={localizeHref(`/authors/${g.slug}`)} class="!text-text hover:underline">{g.name}</a>
+					<a href={localizeHref(`/authors/${g.slug}`)} class="text-text hover:underline">{g.name}</a>
 					<span class="text-small font-normal opacity-60">{g.items.length}</span>
 				</h2>
 				{@render sermonList(g.items)}

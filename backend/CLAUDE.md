@@ -54,7 +54,9 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
 - For models with no fixture (AuthorTranslation), the fact lives in an
   idempotent seed step instead: translated author bios ship (and get
   corrected) as files under `library/migrations/data/author_bios_<lang>/`
-  (short.json + `<slug>.html`); `seed_author_translations` upserts unreviewed
+  (`<slug>.short.txt` + `<slug>.html`, one file per author per field — the two
+  surviving `short.json` are empty migration-0024 inputs, never written);
+  `seed_author_translations` upserts unreviewed
   rows from them. Reviewed rows keep the approver's wording — only a
   still-empty field lands there, re-gating review. No new migration per batch,
   and don't hand-edit prod rows: the files win on the next deploy.

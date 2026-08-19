@@ -24,7 +24,7 @@
 		<BookCover {book} />
 		{#if translated}
 			<span
-				class="absolute start-2 top-2 rounded-full bg-black/55 px-2 py-0.5 text-eyebrow font-semibold uppercase tracking-wide text-white backdrop-blur"
+				class="eyebrow absolute start-2 top-2 rounded-full bg-black/55 px-2 py-0.5 text-white backdrop-blur"
 			>
 				{t('books.badgeTranslated')}
 			</span>

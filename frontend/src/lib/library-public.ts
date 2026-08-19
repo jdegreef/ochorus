@@ -300,11 +300,29 @@ export interface AuthorDetail extends AuthorBio {
  * 500 on the page load instead of readable text.
  */
 async function localized<T>(path: (lang: string) => string, language: string): Promise<T> {
+	return (await localizedWithLang<T>(path, language)).data;
+}
+
+/**
+ * As `localized`, but reports which language actually answered.
+ *
+ * The fallback above is deliberately silent, which is right for rendering the
+ * text but wrong for describing it: a caller that assumes it got the language it
+ * asked for will label English prose as Arabic. That is worse than saying
+ * nothing — `lang` drives hyphenation and how a screen reader pronounces the
+ * words, so a wrong value actively misleads where a missing one merely
+ * abstains. Payloads that carry their own `language` (sermons) should use that;
+ * this is for the ones that do not (chapters, biographies).
+ */
+export async function localizedWithLang<T>(
+	path: (lang: string) => string,
+	language: string
+): Promise<{ data: T; language: string }> {
 	try {
-		return await apiFetch<T>(path(language));
+		return { data: await apiFetch<T>(path(language)), language };
 	} catch (e) {
 		if (language !== 'en' && e instanceof ApiError && e.status === 404) {
-			return apiFetch<T>(path('en'));
+			return { data: await apiFetch<T>(path('en')), language: 'en' };
 		}
 		throw e;
 	}
@@ -319,11 +337,26 @@ export const listAuthors = (language = 'en') =>
 export const getAuthor = (slug: string, language = 'en') =>
 	localized<AuthorDetail>((l) => `/api/library/authors/${slug}/?language=${l}`, language);
 
+/** An author plus the language their biography is actually in — see getChapterWithLang. */
+export const getAuthorWithLang = (slug: string, language = 'en') =>
+	localizedWithLang<AuthorDetail>((l) => `/api/library/authors/${slug}/?language=${l}`, language);
+
 export const getBook = (slug: string, language = 'en') =>
 	localized<BookDetail>((l) => `/api/library/books/${slug}/?language=${l}`, language);
 
 export const getChapter = (slug: string, order: number, language = 'en') =>
 	localized<Chapter>((l) => `/api/library/books/${slug}/chapters/${order}/?language=${l}`, language);
+
+/**
+ * A chapter plus the language its body is actually in. The Chapter payload
+ * carries no language of its own, and the reader needs the real one for the
+ * prose's `lang` attribute — see localizedWithLang.
+ */
+export const getChapterWithLang = (slug: string, order: number, language = 'en') =>
+	localizedWithLang<Chapter>(
+		(l) => `/api/library/books/${slug}/chapters/${order}/?language=${l}`,
+		language
+	);
 
 /** The queries readers search most (aggregate, public). Empty when the log is
  * too sparse — the caller falls back to browse-topic chips. */

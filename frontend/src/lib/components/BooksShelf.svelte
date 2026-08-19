@@ -123,6 +123,10 @@
 	});
 
 	// --- SEO: ItemList structured data ------------------------------------------
+	// Item URLs are LOCALIZED. This shelf prerenders once per locale, and a bare
+	// /books/<slug> here pointed the Swahili page's structured data at the
+	// English book — telling a crawler that the /sw shelf lists /en works, and
+	// contradicting the hreflang set the same page emits.
 	const jsonLd = $derived(
 		JSON.stringify({
 			'@context': 'https://schema.org',
@@ -132,7 +136,7 @@
 			itemListElement: books.slice(0, 60).map((b, i) => ({
 				'@type': 'ListItem',
 				position: i + 1,
-				url: `${SITE_URL}/books/${b.slug}`,
+				url: `${SITE_URL}${localizeHref(`/books/${b.slug}`)}`,
 				item: {
 					'@type': 'Book',
 					name: b.title,

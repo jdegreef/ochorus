@@ -6,14 +6,15 @@ Books are addressed by their canonical ``slug`` plus a ``language`` query param
 
 import logging
 
-from django.db.models import Count, Prefetch, Q, Sum
+from django.db.models import Count, Prefetch, Q
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status
 from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
-from rest_framework.throttling import UserRateThrottle
 from rest_framework.views import APIView
+
+from common.throttling import ScopedCacheThrottle
 
 from . import languages as languages_module
 from .languages import entry as language_entry
@@ -41,6 +42,7 @@ from .search import (
     suggest,
 )
 from .serializers import (
+    BOOK_CARD_ANNOTATIONS,
     AuthorDetailSerializer,
     AuthorListSerializer,
     BookDetailSerializer,
@@ -52,6 +54,7 @@ from .serializers import (
     SermonListSerializer,
     TopicDetailSerializer,
     TopicListSerializer,
+    book_topic_map,
 )
 
 logger = logging.getLogger(__name__)
@@ -149,10 +152,7 @@ class BookListView(generics.ListAPIView):
             Book.objects.filter(is_published=True, language=_language(self.request))
             .select_related("author")
             .prefetch_related("author__translations")
-            .annotate(
-                num_chapters=Count("chapters"),
-                total_words=Sum("chapters__word_count"),
-            )
+            .annotate(**BOOK_CARD_ANNOTATIONS)
             .order_by("sort_order", "title")
         )
 
@@ -160,21 +160,7 @@ class BookListView(generics.ListAPIView):
         """Attach a ``book_slug -> [topic chip]`` map so each book's topics
         cost the shelf a fixed handful of queries, not one per book."""
         ctx = super().get_serializer_context()
-        lang = _language(self.request)
-        book_topics: dict[str, list[dict]] = {}
-        topics = Topic.objects.filter(is_published=True).prefetch_related(
-            "translations", "entries"
-        )
-        for topic in topics:
-            # Skip shelves with no title in this language — see _topic_chips.
-            if not topic.is_translated_into(lang):
-                continue
-            chip = {"slug": topic.slug, "title": topic.title_for(lang)}
-            for entry in topic.entries.all():
-                book_topics.setdefault(entry.book_slug, []).append(chip)
-        for chips in book_topics.values():
-            chips.sort(key=lambda c: c["title"])
-        ctx["book_topics"] = book_topics
+        ctx["book_topics"] = book_topic_map(_language(self.request))
         return ctx
 
 
@@ -185,10 +171,7 @@ class BookDetailView(generics.RetrieveAPIView):
         return get_object_or_404(
             Book.objects.filter(is_published=True)
             .select_related("author")
-            .annotate(
-                num_chapters=Count("chapters"),
-                total_words=Sum("chapters__word_count"),
-            )
+            .annotate(**BOOK_CARD_ANNOTATIONS)
             .prefetch_related(
                 # TOC fields only. An unrestricted prefetch loaded every
                 # chapter's body_text AND body_html — the whole book, twice —
@@ -311,14 +294,13 @@ def _attach_books(topics, language):
     ``language``) to each topic in ``topics``, using two queries total rather
     than per-topic — then callers can filter out topics that are empty in the
     language. Returns the same list for convenience."""
-    from django.db.models import Count, Sum
 
     wanted = {e.book_slug for t in topics for e in t.entries.all()}
     books = (
         Book.objects.filter(slug__in=wanted, language=language, is_published=True)
         .select_related("author")
         .prefetch_related("author__translations")
-        .annotate(num_chapters=Count("chapters"), total_words=Sum("chapters__word_count"))
+        .annotate(**BOOK_CARD_ANNOTATIONS)
     )
     by_slug = {b.slug: b for b in books}
     for t in topics:
@@ -354,7 +336,6 @@ class TopicListView(generics.ListAPIView):
     shelf). Localized titles/descriptions, with a few sample covers each."""
 
     serializer_class = TopicListSerializer
-    pagination_class = None
 
     def get_serializer_context(self):
         ctx = super().get_serializer_context()
@@ -409,6 +390,23 @@ class TopicDetailView(generics.RetrieveAPIView):
         return topic
 
 
+class _SearchThrottle(ScopedCacheThrottle):
+    """Bounds search, which is a read that writes: every unscoped query appends
+    a ``SearchQueryLog`` row, and a query with no hits additionally runs the
+    full-vocabulary difflib scan behind "did you mean". Unbounded, that let
+    anyone grow the table and skew the popular-searches report that steers
+    translation work — for free, one row per request.
+
+    Its own bucket, and deliberately far above a reader: the page debounces at
+    250ms, so even continuous typing settles well under this, and a rate that
+    caught search-as-you-type would be worse than the abuse. ``UserRateThrottle``
+    for the same reason as ``_SearchClickThrottle`` — ``apiFetch`` sends a token
+    when there is one, which ``AnonRateThrottle`` would then exempt.
+    """
+
+    scope = "search"
+
+
 class SearchView(APIView):
     """Ranked full-text search across published chapters and sermons.
 
@@ -416,6 +414,8 @@ class SearchView(APIView):
     vs SQLite behaviour). Snippets come back with matches marker-wrapped for the
     client to render as ``<mark>``.
     """
+
+    throttle_classes = [_SearchThrottle]
 
     #: Beyond this the reader is paging, not searching — a guard on the offset so
     #: a crafted URL can't ask the database to skip a million rows.
@@ -573,7 +573,7 @@ class PopularSearchesView(APIView):
         return Response({"queries": queries})
 
 
-class _SearchClickThrottle(UserRateThrottle):
+class _SearchClickThrottle(ScopedCacheThrottle):
     """Its own bucket, so the one write endpoint can't ride the reader's quota
     (and vice versa). Rate in settings.REST_FRAMEWORK.DEFAULT_THROTTLE_RATES.
 

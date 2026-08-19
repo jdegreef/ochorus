@@ -143,13 +143,13 @@
 		<header class="border-b border-border px-5 py-4">
 			<div class="flex items-center justify-between gap-3">
 				<h2 class="text-h3 text-text">{t('reader.search')}</h2>
-				<button class="btn btn-ghost !px-2.5 !py-1" onclick={close} aria-label={t('a11y.close')}>✕</button>
+				<button class="btn btn-icon btn-ghost" onclick={close} aria-label={t('a11y.close')}>✕</button>
 			</div>
 			<input
 				bind:this={input}
 				bind:value={query}
 				type="search"
-				class="mt-3 w-full rounded-sm border border-border-strong bg-bg px-3 py-2 text-body text-text"
+				class="field mt-3 w-full"
 				placeholder={t('reader.searchPlaceholder')}
 				aria-label={t('reader.searchPlaceholder')}
 			/>
@@ -171,7 +171,7 @@
 								class="search-item"
 								onclick={close}
 							>
-								<span class="block text-[0.72rem] uppercase tracking-wide text-muted">
+								<span class="eyebrow block text-muted">
 									{hit.order}. {hit.title}
 								</span>
 								<!-- snippet is HTML-escaped by highlightAround ($lib/highlight); only <mark> is added -->
@@ -210,20 +210,28 @@
 	.search-panel {
 		position: fixed;
 		top: 0;
-		right: 0;
 		bottom: 0;
+		/* Anchored to the end of the reading direction — the left edge under
+		   dir="rtl". See the matching note in TocDrawer: box-shadow and
+		   translateX have no logical form, so they are flipped explicitly. */
+		inset-inline-end: 0;
 		z-index: 49;
 		width: min(24rem, 92vw);
 		display: flex;
 		flex-direction: column;
 		background: var(--surface);
-		border-left: 1px solid var(--border);
-		box-shadow: -12px 0 40px rgb(0 0 0 / 0.25);
-		animation: search-in 0.18s ease-out;
+		border-inline-start: 1px solid var(--border);
+		box-shadow: var(--shadow-drawer);
+		--search-slide-from: 1.5rem;
+		animation: search-in var(--duration-fast) ease-out;
+	}
+	:global([dir='rtl']) .search-panel {
+		box-shadow: 12px 0 40px rgb(0 0 0 / 0.25);
+		--search-slide-from: -1.5rem;
 	}
 	@keyframes search-in {
 		from {
-			transform: translateX(1.5rem);
+			transform: translateX(var(--search-slide-from, 1.5rem));
 			opacity: 0;
 		}
 	}

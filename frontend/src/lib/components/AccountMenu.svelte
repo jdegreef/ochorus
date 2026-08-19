@@ -39,8 +39,8 @@
 		<div class="account" bind:this={root}>
 			<button
 				class="account-btn"
-				aria-haspopup="menu"
 				aria-expanded={open}
+				aria-controls={open ? 'account-menu' : undefined}
 				aria-label={t('account.title')}
 				onclick={(e) => {
 					e.stopPropagation();
@@ -50,7 +50,12 @@
 				{initials}
 			</button>
 			{#if open}
-				<div class="account-menu" role="menu">
+				<!-- A labelled group of links, not a menu: role="menu" promises
+				     arrow-key navigation between menuitem children, and this has
+				     neither. Same treatment QuickSettings uses next to it in the bar.
+				     aria-controls only while the panel exists — an IDREF pointing at
+				     nothing is worse than none. -->
+				<div id="account-menu" class="account-menu" role="group" aria-label={t('account.title')}>
 					<div class="truncate px-3 py-1.5">
 						{#if auth.displayName}
 							<div class="text-small font-semibold text-text">{auth.displayName}</div>
@@ -59,19 +64,18 @@
 					</div>
 					<div class="my-1 border-t border-border"></div>
 					{#if auth.isAdmin}
-						<a class="account-item" role="menuitem" href={localizeHref('/admin')} onclick={() => (open = false)}
+						<a class="account-item" href={localizeHref('/admin')} onclick={() => (open = false)}
 							>Admin</a
 						>
 					{/if}
-					<a class="account-item" role="menuitem" href={localizeHref('/notebook')} onclick={() => (open = false)}
+					<a class="account-item" href={localizeHref('/notebook')} onclick={() => (open = false)}
 						>{t('notebook.title')}</a
 					>
-					<a class="account-item" role="menuitem" href={localizeHref('/settings')} onclick={() => (open = false)}
+					<a class="account-item" href={localizeHref('/settings')} onclick={() => (open = false)}
 						>{t('settings.title')}</a
 					>
 					<button
 						class="account-item"
-						role="menuitem"
 						onclick={() => {
 							open = false;
 							auth.signOut();
@@ -81,7 +85,7 @@
 			{/if}
 		</div>
 	{:else}
-		<a href={localizeHref(loginHref)} class="btn btn-primary !px-3.5 !py-1.5 !text-small hover:no-underline">
+		<a href={localizeHref(loginHref)} class="btn btn-sm btn-primary hover:no-underline">
 			{t('account.signIn')}
 		</a>
 	{/if}

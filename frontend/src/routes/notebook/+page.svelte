@@ -7,6 +7,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { HIGHLIGHT_COLORS, DEFAULT_HIGHLIGHT, type Bookmark, type Mark } from '$lib/reading-schema';
+	import { createLimiter, NOTEBOOK_CONCURRENCY } from '$lib/limiter';
 
 	const t = i18n.t;
 
@@ -136,38 +137,60 @@
 		});
 	}
 
+	// Every fetch below is wrapped in its own try/catch and every failure is the
+	// same one: the reader is offline. A highlight still links through to where
+	// it was made, it just can't show its own text — so one unreachable chapter
+	// degrades that card, never the page. That per-item tolerance is also what
+	// makes the concurrency below safe: nothing here rejects.
 	onMount(async () => {
 		const lang = getLang();
 		const bms = bookmarks.all();
 		const allMarks = marks.all();
+		type MarkEntry = (typeof allMarks)[number];
 		const mks = allMarks.filter((m) => m.kind === 'book');
 		const slugs = [...new Set([...bms.map((b) => b.slug), ...mks.map((m) => m.slug)])];
 
-		const out: BookBlock[] = [];
-		for (const slug of slugs) {
+		// The whole page used to load one request at a time, nested two deep:
+		// every book, then every highlighted chapter within it, then every
+		// sermon, then every biography. A reader with highlights across ten
+		// books waited out fifty sequential round-trips staring at an ellipsis,
+		// and the wait grew with exactly the history the page exists to show.
+		// Now the three sections load together under ONE ceiling for the page.
+		// The gate wraps each FETCH, never the per-book work that awaits one:
+		// a task holding a slot while it waits for a slot deadlocks, and the
+		// books lane is exactly that shape (a book, then its chapters). Bounding
+		// each lane separately instead would bound every call correctly and the
+		// page not at all — three lanes of six, one of them fanning out six
+		// chapters apiece, is forty-eight requests in flight.
+		const gate = createLimiter(NOTEBOOK_CONCURRENCY);
+
+		const loadBook = async (slug: string): Promise<BookBlock> => {
 			let book: BookDetail | null = null;
 			try {
-				book = await getBook(slug, lang);
+				book = await gate(() => getBook(slug, lang));
 			} catch {
 				/* offline — fall back to slug/order labels */
 			}
 			const titleFor = (order: number) =>
 				book?.chapters.find((c) => c.order === order)?.title || `${order}`;
 
-			const chapters: ChapterBlock[] = [];
-			for (const { order, marks: ms } of mks
-				.filter((m) => m.slug === slug)
-				.sort((a, b) => a.order - b.order)) {
-				let paras: string[] = [];
-				try {
-					paras = paragraphs((await getChapter(slug, order, lang)).body_html);
-				} catch {
-					/* offline — the highlight still links through, just without its text */
-				}
-				chapters.push({ order, title: titleFor(order), highlights: groupMarks(paras, ms) });
-			}
+			const chapters = await Promise.all(
+				mks
+					.filter((m) => m.slug === slug)
+					.sort((a, b) => a.order - b.order)
+					.map(async ({ order, marks: ms }): Promise<ChapterBlock> => {
+						let paras: string[] = [];
+						try {
+							const chapter = await gate(() => getChapter(slug, order, lang));
+							paras = paragraphs(chapter.body_html);
+						} catch {
+							/* offline — the highlight still links through, just without its text */
+						}
+						return { order, title: titleFor(order), highlights: groupMarks(paras, ms) };
+					})
+			);
 
-			out.push({
+			return {
 				slug,
 				title: book?.title || slug,
 				author: book?.author.name || '',
@@ -175,43 +198,48 @@
 					.filter((b) => b.slug === slug)
 					.sort((a, b) => a.order - b.order || a.p - b.p),
 				chapters
-			});
-		}
-		books = out.sort((a, b) => a.title.localeCompare(b.title));
+			};
+		};
 
 		// Sermon highlights (device-local, keyed by sermon slug — no chapters).
-		const sOut: SermonBlock[] = [];
-		for (const { slug, marks: ms } of allMarks.filter((m) => m.kind === 'sermon')) {
+		const loadSermon = async ({ slug, marks: ms }: MarkEntry): Promise<SermonBlock> => {
 			let paras: string[] = [];
 			let title = slug;
 			let author = '';
 			try {
-				const sermon = await getSermon(slug, lang);
+				const sermon = await gate(() => getSermon(slug, lang));
 				paras = paragraphs(sermon.body_html);
 				title = sermon.title;
 				author = sermon.author_name;
 			} catch {
 				/* offline — the highlight still links through, just without its text */
 			}
-			sOut.push({ slug, title, author, highlights: groupMarks(paras, ms) });
-		}
-		sermons = sOut.sort((a, b) => a.title.localeCompare(b.title));
+			return { slug, title, author, highlights: groupMarks(paras, ms) };
+		};
 
 		// Biography highlights (kind 'bio'; the slug names the author).
-		const bOut: BioBlock[] = [];
-		for (const { slug, marks: ms } of allMarks.filter((m) => m.kind === 'bio')) {
+		const loadBio = async ({ slug, marks: ms }: MarkEntry): Promise<BioBlock> => {
 			let paras: string[] = [];
 			let name = slug;
 			try {
-				const a = await getAuthor(slug, lang);
+				const a = await gate(() => getAuthor(slug, lang));
 				paras = paragraphs(a.bio_html);
 				name = a.name;
 			} catch {
 				/* offline — the highlight still links through, just without its text */
 			}
-			bOut.push({ slug, name, highlights: groupMarks(paras, ms) });
-		}
-		bios = bOut.sort((a, b) => a.name.localeCompare(b.name));
+			return { slug, name, highlights: groupMarks(paras, ms) };
+		};
+
+		const [bookBlocks, sermonBlocks, bioBlocks] = await Promise.all([
+			Promise.all(slugs.map(loadBook)),
+			Promise.all(allMarks.filter((m) => m.kind === 'sermon').map(loadSermon)),
+			Promise.all(allMarks.filter((m) => m.kind === 'bio').map(loadBio))
+		]);
+
+		books = bookBlocks.sort((a, b) => a.title.localeCompare(b.title));
+		sermons = sermonBlocks.sort((a, b) => a.title.localeCompare(b.title));
+		bios = bioBlocks.sort((a, b) => a.name.localeCompare(b.name));
 
 		loading = false;
 	});
@@ -221,7 +249,7 @@
 
 <div class="mx-auto max-w-2xl px-5 py-10">
 	<header class="mb-8">
-		<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">Ochorus</p>
+		<p class="eyebrow mb-2 text-accent">Ochorus</p>
 		<h1 class="text-display">{t('notebook.title')}</h1>
 		<p class="mt-2 text-body text-muted">{t('notebook.subtitle')}</p>
 	</header>
@@ -229,7 +257,7 @@
 	{#if loading}
 		<p class="text-body text-muted">…</p>
 	{:else if isEmpty}
-		<div class="rounded-2xl border border-border bg-surface p-8 text-center">
+		<div class="rounded-card border border-border bg-surface p-8 text-center">
 			<p class="text-body text-muted">{t('notebook.empty')}</p>
 		</div>
 	{:else}
@@ -239,7 +267,7 @@
 				bind:value={query}
 				placeholder={t('notebook.search')}
 				aria-label={t('notebook.search')}
-				class="min-w-[12rem] flex-1 rounded-xl border border-border-strong bg-surface px-4 py-2.5 text-body text-text placeholder:text-muted focus:border-accent"
+				class="field grow"
 			/>
 			<div class="flex items-center gap-2" role="group" aria-label={t('notebook.filterColor')}>
 				<button
@@ -268,7 +296,7 @@
 		</div>
 
 		{#if noMatches}
-			<div class="rounded-2xl border border-border bg-surface p-8 text-center">
+			<div class="rounded-card border border-border bg-surface p-8 text-center">
 				<p class="text-body text-muted">{t('notebook.no_matches')}</p>
 			</div>
 		{/if}
@@ -281,7 +309,7 @@
 				{#if bk.author}<p class="mb-3 text-small text-muted">{bk.author}</p>{/if}
 
 				{#if bk.bookmarks.length}
-					<h3 class="mb-2 mt-4 text-small font-semibold uppercase tracking-wide text-muted">
+					<h3 class="section-label mt-4">
 						🔖 {t('reader.bookmarks')}
 					</h3>
 					<ul class="space-y-2">
@@ -289,7 +317,7 @@
 							<li>
 								<a
 									href={localizeHref(`/books/${bk.slug}/${bm.order}?p=${bm.p}`)}
-									class="block rounded-lg border border-border bg-surface px-4 py-2.5 hover:border-accent hover:no-underline"
+									class="block rounded-sm border border-border bg-surface px-4 py-2.5 hover:border-accent hover:no-underline"
 								>
 									<span class="block text-body text-text">{bm.snippet}</span>
 									<span class="block text-small text-muted">{bm.title}</span>
@@ -307,7 +335,7 @@
 								<li>
 									<a
 										href={localizeHref(`/books/${bk.slug}/${ch.order}?p=${hl.p}`)}
-										class="block rounded-lg border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
+										class="block rounded-sm border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
 										style="border-inline-start-color: var(--hl-{hl.color})"
 									>
 										{#if hl.text}
@@ -327,7 +355,7 @@
 
 		{#each filteredSermons as sm (sm.slug)}
 			<section class="mb-10">
-				<p class="mb-1 text-small font-semibold uppercase tracking-widest text-accent">
+				<p class="eyebrow mb-1 text-accent">
 					{t('search.typeSermon')}
 				</p>
 				<h2 class="text-h2">
@@ -339,7 +367,7 @@
 						<li>
 							<a
 								href={localizeHref(`/sermons/${sm.slug}?p=${hl.p}`)}
-								class="block rounded-lg border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
+								class="block rounded-sm border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
 								style="border-inline-start-color: var(--hl-{hl.color})"
 							>
 								{#if hl.text}
@@ -357,7 +385,7 @@
 
 		{#each filteredBios as b (b.slug)}
 			<section class="mb-10">
-				<p class="mb-1 text-small font-semibold uppercase tracking-widest text-accent">
+				<p class="eyebrow mb-1 text-accent">
 					{t('bios.eyebrow')}
 				</p>
 				<h2 class="text-h2">
@@ -366,9 +394,13 @@
 				<ul class="mt-3 space-y-2">
 					{#each b.highlights as hl (hl.id)}
 						<li>
+							<!-- ?p= like the book and sermon highlights above: the biography
+							     renders through the same Reader, which already jumps to the
+							     paragraph on arrival. Without it a biography highlight was the
+							     one kind that dropped the reader at the top of the page. -->
 							<a
-								href={localizeHref(`/authors/${b.slug}`)}
-								class="block rounded-lg border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
+								href={localizeHref(`/authors/${b.slug}?p=${hl.p}`)}
+								class="block rounded-sm border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
 								style="border-inline-start-color: var(--hl-{hl.color})"
 							>
 								{#if hl.text}

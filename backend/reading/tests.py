@@ -761,15 +761,14 @@ class MergeHardeningTests(TestCase):
         self.assertEqual(merged.status_code, 200)
 
     def test_reading_writes_are_throttled_per_account(self):
-        from unittest.mock import patch
-
-        from django.core.cache import cache
+        from common.testing import enforcing_throttle
 
         from .views import _ReadingWriteThrottle
 
-        cache.clear()
-        # Squeeze the rate to 2/min for this test; the 3rd write in the window 429s.
-        with patch.object(_ReadingWriteThrottle, "get_rate", return_value="2/min"):
+        # Squeezed to 2/min for this test; the 3rd write in the window 429s.
+        # Throttles are inert under `manage.py test` — see common.throttling —
+        # so this hands the class a real, private cache for the duration.
+        with enforcing_throttle(_ReadingWriteThrottle, "2/min"):
             codes = [
                 self.client.put(
                     "/api/reading/favorites/book/humility/", format="json"
@@ -778,4 +777,3 @@ class MergeHardeningTests(TestCase):
             ]
         self.assertEqual(codes[:2], [200, 200])
         self.assertEqual(codes[2], 429)
-        cache.clear()

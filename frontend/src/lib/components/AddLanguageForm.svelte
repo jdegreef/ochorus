@@ -172,7 +172,7 @@
 	}
 </script>
 
-<div class="mt-4 rounded-2xl border border-border bg-surface p-5">
+<div class="mt-4 rounded-card border border-border bg-surface p-5">
 	<button
 		class="text-body font-semibold text-accent hover:underline"
 		aria-expanded={open}
@@ -220,7 +220,7 @@
 				</p>
 
 				{#if suggested.length}
-					<div class="rounded-lg border border-border bg-surface-2 p-3">
+					<div class="rounded-sm border border-border bg-surface-2 p-3">
 						<p class="text-small text-muted">
 							<span class="font-medium text-text">Suggested next</span> — most spoken
 							first, and only languages Take Root has a Bible for. Picking one fills
@@ -231,17 +231,17 @@
 								<li>
 									<button
 										type="button"
-										class="w-full rounded-lg border border-border bg-bg px-2.5 py-2 text-left hover:border-accent"
+										class="w-full rounded-sm border border-border bg-bg px-2.5 py-2 text-left hover:border-accent"
 										class:border-accent={normalized === s.code}
 										onclick={() => pick(s)}
 									>
 										<span class="flex items-baseline justify-between gap-2">
 											<span class="text-body text-text">{s.name}</span>
-											<span class="shrink-0 text-[0.72rem] text-muted tabular-nums">
+											<span class="shrink-0 text-micro text-muted tabular-nums">
 												{s.speakers_millions}M
 											</span>
 										</span>
-										<span class="mt-0.5 flex items-baseline justify-between gap-2 text-[0.72rem] text-muted">
+										<span class="mt-0.5 flex items-baseline justify-between gap-2 text-micro text-muted">
 											<span dir="auto">{s.native_name}</span>
 											<span class="shrink-0">
 												{s.bible_label}{#if s.attribution_required}
@@ -270,7 +270,7 @@
 					<label class="text-small">
 						<span class="mb-1 block text-muted">Code</span>
 						<input
-							class="w-24 rounded-lg border border-border bg-bg px-2 py-1 text-body"
+							class="field w-24"
 							placeholder="hi"
 							bind:value={code}
 							required
@@ -279,7 +279,7 @@
 					<label class="text-small">
 						<span class="mb-1 block text-muted">English name</span>
 						<input
-							class="w-44 rounded-lg border border-border bg-bg px-2 py-1 text-body"
+							class="field w-44"
 							placeholder="Hindi"
 							bind:value={name}
 							required
@@ -288,7 +288,7 @@
 					<label class="text-small">
 						<span class="mb-1 block text-muted">Native name</span>
 						<input
-							class="w-44 rounded-lg border border-border bg-bg px-2 py-1 text-body"
+							class="field w-44"
 							placeholder="हिन्दी"
 							bind:value={nativeName}
 							required
@@ -317,7 +317,7 @@
 						<label class="text-small">
 							<span class="mb-1 block text-muted">Take Root code</span>
 							<input
-								class="w-40 rounded-lg border border-border bg-bg px-2 py-1 text-body"
+								class="field w-40"
 								placeholder="irvhin"
 								bind:value={bibleCode}
 								required
@@ -326,7 +326,7 @@
 						<label class="text-small">
 							<span class="mb-1 block text-muted">Label (shown in reports)</span>
 							<input
-								class="w-64 rounded-lg border border-border bg-bg px-2 py-1 text-body"
+								class="field w-64"
 								placeholder="Indian Revised Version"
 								bind:value={bibleLabel}
 							/>
@@ -349,7 +349,7 @@
 					     because that is the wording the engine quotes verbatim — a
 					     glossary that disagrees with its own Bible produces prose that
 					     contradicts the verses beside it. -->
-					<div class="mb-4 rounded-lg border border-border bg-surface-2 p-3">
+					<div class="mb-4 rounded-sm border border-border bg-surface-2 p-3">
 						<div class="flex flex-wrap items-center gap-2">
 							<button type="button" class="btn-soft text-small" onclick={copyPrompt} disabled={!name.trim()}>
 								{promptCopied ? 'Prompt copied' : 'Copy prompt for Claude'}
@@ -363,7 +363,7 @@
 							</span>
 						</div>
 						<textarea
-							class="mt-2 w-full rounded-lg border border-border bg-bg px-2 py-1 font-mono text-small"
+							class="field mt-2 w-full font-mono"
 							rows="3"
 							placeholder={'Paste Claude\'s reply here — the JSON object, fence and all'}
 							bind:value={pasted}
@@ -385,7 +385,7 @@
 							<label class="text-small">
 								<span class="mb-1 block text-muted">{term}</span>
 								<input
-									class="w-full rounded-lg border border-border bg-bg px-2 py-1 text-body"
+									class="w-full rounded-sm border border-border bg-bg px-2 py-1 text-body"
 									bind:value={glossary[term]}
 								/>
 							</label>

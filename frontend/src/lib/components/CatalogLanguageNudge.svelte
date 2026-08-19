@@ -44,7 +44,7 @@
 		class="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-card border border-accent-soft-border bg-accent-soft px-4 py-3"
 	>
 		<span class="text-small text-text">{t('catalog.moreInEnglish')}</span>
-		<button class="btn btn-ghost !py-1.5 whitespace-nowrap" onclick={() => lang.choose('en')}>
+		<button class="btn btn-ghost py-1.5 whitespace-nowrap" onclick={() => lang.choose('en')}>
 			{t('catalog.browseEnglish')}
 		</button>
 	</div>

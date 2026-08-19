@@ -47,8 +47,12 @@
 				placeholder="••••••••"
 				aria-invalid={error ? 'true' : undefined}
 				aria-describedby={error ? 'auth-error' : undefined}
-				class="mb-3 w-full rounded-sm border border-border-strong bg-bg px-3 py-2 text-body text-text"
+				class="field mb-3 w-full"
 			/>
+			<!-- Rendered unconditionally, empty and zero-height when there is nothing
+			     to say: a live region is only announced if it was already in the DOM
+			     when its text arrived, so inserting the <p> together with the message
+			     is the classic way to ship an error no screen reader ever reads out. -->
 			<p id="auth-error" role="alert" class="text-small text-danger {error ? 'mb-3' : ''}">
 				{error ?? ''}
 			</p>

@@ -18,6 +18,7 @@ from __future__ import annotations
 from django.core.management.base import BaseCommand
 
 from library.models import Topic, TopicBook, TopicSermon, TopicTranslation
+from library.topic_translations import topic_scripture, topic_translations
 
 # (slug, title, description, [ordered member book slugs]). A book may appear in
 # several topics — topics are overlapping shelves, not exclusive categories.
@@ -249,346 +250,13 @@ TOPIC_SCRIPTURE = {
     ),
 }
 
-# Localized epigraphs (reference localized to the target-language Bible book
-# name; verse in that language's reverent register). AI-drafted, pending native
-# review. {language: {slug: (reference, verse text)}}
-TOPIC_SCRIPTURE_TR = {
-    "lg": {
-        "prayer": (
-            "Yeremiya 33:3",
-            "Munkoowoole, nange ndikuyitaba, ne nkulaga ebintu ebikulu era "
-            "eby'ekitalo, by'otomanyi.",
-        ),
-        "holy-spirit": (
-            "Zekkaliya 4:6",
-            "Si na maanyi, so si na buyinza, wabula na Mwoyo gwange, bw'ayogera "
-            "Mukama ow'eggye.",
-        ),
-        "deeper-life": (
-            "Abakkolosaayi 3:3",
-            "Kubanga mwafa, n'obulamu bwammwe bukwekeddwa mu Kristo mu Katonda.",
-        ),
-        "grace-and-comfort": (
-            "2 Abakkolinso 12:9",
-            "Ekisa kyange kikumala: kubanga amaanyi gange gatuukirizibwa mu "
-            "bunafu.",
-        ),
-        "revival-and-missions": (
-            "Kaabakuuku 3:2",
-            "Ai Mukama, zzaamu obulamu omulimu gwo wakati mu myaka, wakati mu "
-            "myaka gumanyise.",
-        ),
-        "faith-and-guidance": (
-            "Engero 3:6",
-            "Mu makubo go gonna mumumanye, naye alitereeza amakubo go.",
-        ),
-    },
-}
-
-
-# Per-language topic prose, upserted into TopicTranslation each run. A language
-# missing here has NO shelf for that topic — it is omitted rather than shown in
-# English, so adding a language here is what makes its shelves exist.
-# AI-drafted, pending native review (the same review flow as book translations).
-# Theological vocabulary follows the per-language glossaries in
-# library/translation.py, so a shelf reads consistently with the books on it.
-#
-# Scripture (TOPIC_SCRIPTURE_TR) is deliberately NOT drafted here: verse wording
-# comes from the trusted Bible for that language via the Take Root API, never
-# from a model's memory (see library/translation.py). The topic page renders no
-# verse block when it's absent, so a shelf is complete without one.
-#   {language: {slug: (title, description)}}
-TOPIC_TRANSLATIONS = {
-    "lg": {
-        "prayer": (
-            "Ku Kusaba",
-            "Okuyiga okusaba — era n'okunyiikira okusaba obutakoowa. Ebitabo "
-            "eby'edda ebyogera ku bulamu obw'omunda obw'okusaba, okuva mu kifo "
-            "eky'ekyama okutuuka ku kwegayiririra abalala okw'amaanyi.",
-        ),
-        "holy-spirit": (
-            "Omwoyo Omutukuvu",
-            "Okubatizibwa kw'Omwoyo, okutuula kwe mu ffe, n'omulimu gwe — amaanyi "
-            "agaasuubizibwa ag'obulamu obw'Ekikristaayo.",
-        ),
-        "deeper-life": (
-            "Obulamu Obw'obuziba",
-            "Obutukuvu, okwewaayo, n'obulamu obw'ekyengera obukwekeddwa mu Kristo "
-            "— ebitabo eby'okugenda mu maaso ennyo mu by'omwoyo.",
-        ),
-        "grace-and-comfort": (
-            "Ekisa n'Okubudaabuda",
-            "Ekisa kya Katonda ekitaggwaawo n'okubudaabuda kwe mu kugezesebwa "
-            "kwonna — amawulire amalungi eri abakooye.",
-        ),
-        "revival-and-missions": (
-            "Okuzuukusibwa n'Obuweereza bw'Enjiri",
-            "Obulamu obwawaayo olw'enjiri, n'ebiseera eby'okuzuukusibwa — "
-            "eky'okwongera omuliro mu mutima ogwaka.",
-        ),
-        "faith-and-guidance": (
-            "Okukkiriza n'Obulagirizi",
-            "Okwesiga Katonda olw'emmere eya buli lunaku, obulagirizi, na buli "
-            "kisuubizo — okutambula mu kukkiriza, so si mu kulaba.",
-        ),
-        "the-gospel-call": (
-            "Okuyita kw'Enjiri",
-            "Okuyitibwa okusinga obukadde — jjangu, weenenye, kkiriza. "
-            "Ababuulizi nga beegayirira abatannaba kulokoka, n'obujulirwa "
-            "bw'ekisa ekyalabwa omwonoonyi asinga bonna.",
-        ),
-        "enduring-classics": (
-            "Ebitabo eby'Edda Ebisigalawo",
-            "Ebitabo ebitambulidde n'abatambuze okumala ebyasa — okwatula kwa "
-            "Awugusitino, ekirooto kya Bunyan, amagezi ga Kempis — amakubo "
-            "ag'edda, era nga makyali malungi.",
-        ),
-        "the-way-of-holiness": (
-            "Ekkubo ery'Obutukuvu",
-            "Okwawulibwa ku lwa Katonda — amateeka nga gakebejjebwa, "
-            "obutuukirivu nga bunoonyezebwa n'obwesimbu, n'okwagala kw'omutima "
-            "nga kugezesebwa ne kulabika nga kwa mazima.",
-        ),
-        "the-preached-word": (
-            "Ekigambo Ekibuulirwa",
-            "Okubuulira okw'amaanyi ku lupapula — Whitefield ne Wesley mu "
-            "ddoboozi eryonna, Spurgeon mu balimi be — n'ekiragiro kya Baxter "
-            "eri buli musumba w'emyoyo.",
-        ),
-    },
-    "es": {
-        "prayer": (
-            "Sobre la oración",
-            "Aprender a orar — y a seguir orando. Los clásicos sobre la vida "
-            "interior de la oración, desde el lugar secreto hasta la intercesión "
-            "perseverante.",
-        ),
-        "holy-spirit": (
-            "El Espíritu Santo",
-            "El bautismo del Espíritu, su morada en nosotros y su obra — el poder "
-            "prometido para la vida cristiana.",
-        ),
-        "deeper-life": (
-            "La vida más profunda",
-            "Santidad, entrega y la vida abundante escondida con Cristo — libros "
-            "para ir más adentro.",
-        ),
-        "grace-and-comfort": (
-            "Gracia y consuelo",
-            "La gracia inagotable de Dios y su consuelo en toda prueba — buenas "
-            "nuevas para el cansado.",
-        ),
-        "revival-and-missions": (
-            "Avivamiento y misiones",
-            "Vidas derramadas por el evangelio, y tiempos de despertar — "
-            "combustible para un corazón ardiente.",
-        ),
-        "faith-and-guidance": (
-            "Fe y dirección",
-            "Confiar en Dios para el pan de cada día, la dirección y toda promesa "
-            "— andar por fe, no por vista.",
-        ),
-        "the-gospel-call": (
-            "El llamado del evangelio",
-            "La invitación más antigua que existe — ven, arrepiéntete, "
-            "cree. Predicadores rogando a los no convertidos, y el testimonio de "
-            "la gracia hallada por el primero de los pecadores.",
-        ),
-        "enduring-classics": (
-            "Los clásicos perdurables",
-            "Los libros que han acompañado a los peregrinos por siglos — la "
-            "confesión de Agustín, el sueño de Bunyan, el consejo de Kempis — "
-            "las sendas antiguas, todavía buenas.",
-        ),
-        "the-way-of-holiness": (
-            "El camino de la santidad",
-            "Apartados para Dios — los mandamientos examinados, la perfección "
-            "buscada con honestidad, y los afectos del corazón probados y "
-            "hallados verdaderos.",
-        ),
-        "the-preached-word": (
-            "La palabra predicada",
-            "La gran predicación en la página — Whitefield y Wesley a plena "
-            "voz, Spurgeon entre sus labradores — y el encargo de Baxter a todo "
-            "pastor de almas.",
-        ),
-    },
-    "sw": {
-        "prayer": (
-            "Kuhusu Maombi",
-            "Kujifunza kuomba — na kuendelea kuomba. Vitabu vya kale kuhusu "
-            "maisha ya ndani ya maombi, kutoka mahali pa faragha hadi maombezi "
-            "yenye kudumu.",
-        ),
-        "holy-spirit": (
-            "Roho Mtakatifu",
-            "Ubatizo wa Roho, kukaa kwake ndani yetu, na kazi yake — nguvu "
-            "iliyoahidiwa kwa maisha ya Kikristo.",
-        ),
-        "deeper-life": (
-            "Maisha ya Ndani Zaidi",
-            "Utakatifu, kujisalimisha, na maisha tele yaliyofichwa pamoja na "
-            "Kristo — vitabu vya kwenda ndani zaidi.",
-        ),
-        "grace-and-comfort": (
-            "Neema na Faraja",
-            "Neema ya Mungu isiyokoma na faraja yake katika kila jaribu — habari "
-            "njema kwa waliochoka.",
-        ),
-        "revival-and-missions": (
-            "Uamsho na Umisheni",
-            "Maisha yaliyomwagwa kwa ajili ya injili, na majira ya uamsho — kuni "
-            "kwa moyo unaowaka.",
-        ),
-        "faith-and-guidance": (
-            "Imani na Uongozi",
-            "Kumtumaini Mungu kwa riziki ya kila siku, mwelekeo, na kila ahadi — "
-            "kuenenda kwa imani, si kwa kuona.",
-        ),
-        "the-gospel-call": (
-            "Wito wa Injili",
-            "Mwaliko wa kale kuliko yote — njoo, tubu, amini. Wahubiri "
-            "wakiwasihi wasioongoka, na ushuhuda wa neema aliyoipata mkuu wa "
-            "wenye dhambi.",
-        ),
-        "enduring-classics": (
-            "Vitabu vya Kale Vidumuvyo",
-            "Vitabu vilivyofuatana na wasafiri kwa karne nyingi — ungamo la "
-            "Agustino, ndoto ya Bunyan, shauri la Kempis — njia za zamani, "
-            "ambazo bado ni njema.",
-        ),
-        "the-way-of-holiness": (
-            "Njia ya Utakatifu",
-            "Kutengwa kwa ajili ya Mungu — amri zikichunguzwa, ukamilifu "
-            "ukifuatwa kwa unyofu, na shauku za moyo zikijaribiwa na kuonekana "
-            "kweli.",
-        ),
-        "the-preached-word": (
-            "Neno Lihubiriwalo",
-            "Mahubiri makuu katika kurasa — Whitefield na Wesley kwa sauti "
-            "kamili, Spurgeon kati ya wakulima wake — na agizo la Baxter kwa "
-            "kila mchungaji wa roho.",
-        ),
-    },
-    "pt": {
-        "prayer": (
-            "Sobre a Oração",
-            "Aprender a orar — e a continuar orando. Os clássicos sobre a vida "
-            "interior da oração, do lugar secreto à intercessão perseverante.",
-        ),
-        "holy-spirit": (
-            "O Espírito Santo",
-            "O batismo do Espírito, a sua habitação em nós e a sua obra — o poder "
-            "prometido para a vida cristã.",
-        ),
-        "deeper-life": (
-            "A Vida Mais Profunda",
-            "Santidade, entrega e a vida abundante escondida com Cristo — livros "
-            "para ir mais fundo.",
-        ),
-        "grace-and-comfort": (
-            "Graça e Consolo",
-            "A graça inesgotável de Deus e o seu consolo em toda provação — boas "
-            "novas para o cansado.",
-        ),
-        "revival-and-missions": (
-            "Avivamento e Missões",
-            "Vidas derramadas pelo evangelho, e tempos de despertamento — "
-            "combustível para um coração ardente.",
-        ),
-        "faith-and-guidance": (
-            "Fé e Direção",
-            "Confiar em Deus para o pão de cada dia, a direção e toda promessa — "
-            "andar por fé, e não por vista.",
-        ),
-        "the-gospel-call": (
-            "O Chamado do Evangelho",
-            "O convite mais antigo que existe — vem, arrepende-te, crê. "
-            "Pregadores rogando aos não convertidos, e o testemunho da graça "
-            "encontrada pelo principal dos pecadores.",
-        ),
-        "enduring-classics": (
-            "Os Clássicos Duradouros",
-            "Os livros que têm acompanhado os peregrinos por séculos — a "
-            "confissão de Agostinho, o sonho de Bunyan, o conselho de Kempis — "
-            "as veredas antigas, ainda boas.",
-        ),
-        "the-way-of-holiness": (
-            "O Caminho da Santidade",
-            "Separados para Deus — os mandamentos examinados, a perfeição "
-            "buscada com honestidade, e os afetos do coração provados e achados "
-            "verdadeiros.",
-        ),
-        "the-preached-word": (
-            "A Palavra Pregada",
-            "A grande pregação na página — Whitefield e Wesley em plena voz, "
-            "Spurgeon entre os seus lavradores — e o encargo de Baxter a todo "
-            "pastor de almas.",
-        ),
-    },
-    # Arabic reads right-to-left; the shelf page follows the document direction,
-    # so nothing here needs to encode that. Vocabulary follows the ar glossary
-    # (النعمة, التسليم, الشفاعة, الروح القدس).
-    "ar": {
-        "prayer": (
-            "في الصلاة",
-            "أن نتعلّم الصلاة — وأن نُداوم عليها. كتب كلاسيكية عن حياة الصلاة "
-            "الداخلية، من المخدع الخفيّ إلى الشفاعة المُلحّة.",
-        ),
-        "holy-spirit": (
-            "الروح القدس",
-            "معمودية الروح وسكناه فينا وعمله — القوة الموعودة للحياة المسيحية.",
-        ),
-        "deeper-life": (
-            "الحياة الأعمق",
-            "القداسة والتسليم والحياة الفائضة المستترة مع المسيح — كتب لمن يريد "
-            "أن يمضي إلى العمق.",
-        ),
-        "grace-and-comfort": (
-            "النعمة والتعزية",
-            "نعمة الله التي لا تخيب وتعزيته في كل تجربة — بشارة للمُتعَبين.",
-        ),
-        "revival-and-missions": (
-            "النهضة والإرساليات",
-            "حياةٌ سُكبت لأجل الإنجيل، وأزمنة يقظة روحية — وقودٌ لقلبٍ مُتّقد.",
-        ),
-        "faith-and-guidance": (
-            "الإيمان والإرشاد",
-            "الاتّكال على الله في خبز كل يوم وفي الإرشاد وفي كل وعد — أن نسلك "
-            "بالإيمان لا بالعيان.",
-        ),
-        "the-gospel-call": (
-            "دعوة الإنجيل",
-            "أقدم دعوة على الإطلاق — تعالَ، تُبْ، آمِنْ. "
-            "وعّاظ يتوسّلون إلى غير المهتدين، وشهادة نعمةٍ "
-            "نالها أول الخطاة.",
-        ),
-        "enduring-classics": (
-            "الكلاسيكيات الخالدة",
-            "الكتب التي رافقت الحجّاج عبر القرون — اعترافات "
-            "أوغسطينوس، وحلم بنيان، ومشورة كمبيس — السبل "
-            "القديمة، وما زالت صالحة.",
-        ),
-        "the-way-of-holiness": (
-            "طريق القداسة",
-            "مفرَزون لله — الوصايا مفحوصة، والكمال مطلوب "
-            "بأمانة، وعواطف القلب ممتحَنة فوُجدت صادقة.",
-        ),
-        "the-preached-word": (
-            "الكلمة المكروز بها",
-            "الوعظ العظيم على الصفحة — وايتفيلد وويسلي بملء "
-            "الصوت، وسبرجن بين فلّاحيه — ووصيّة باكستر "
-            "لكلّ راعي نفوس.",
-        ),
-    },
-}
-
 
 class Command(BaseCommand):
     help = "Seed the curated topical shelves and their membership (idempotent)."
 
     def handle(self, *args, **opts):
         created = 0
+        prose, scripture = topic_translations(), topic_scripture()
         for order, (slug, title, description, book_slugs) in enumerate(TOPICS):
             ref, verse = TOPIC_SCRIPTURE.get(slug, ("", ""))
             topic, was_created = Topic.objects.get_or_create(
@@ -629,19 +297,24 @@ class Command(BaseCommand):
                     added += 1
             # Upsert per-language prose each run so an edited/added translation
             # reaches an already-seeded topic on the next deploy.
-            langs = set(TOPIC_TRANSLATIONS) | set(TOPIC_SCRIPTURE_TR)
-            for lang in langs:
-                tr = TOPIC_TRANSLATIONS.get(lang, {}).get(slug)
-                sc = TOPIC_SCRIPTURE_TR.get(lang, {}).get(slug)
-                if not tr and not sc:
+            for lang in set(prose) | set(scripture):
+                tr = prose.get(lang, {}).get(slug)
+                if not tr:
                     continue
-                defaults = {}
-                if tr:
-                    defaults["title"], defaults["description"] = tr
-                if sc:
-                    defaults["scripture_ref"], defaults["scripture_text"] = sc
+                # The file is authoritative in BOTH directions: a scripture
+                # object deleted from the entry (a reviewer rejecting a verse)
+                # must blank the stored one on the next deploy, not leave it
+                # rendering forever. So absent scripture writes "", never skips.
+                ref, verse_tr = scripture.get(lang, {}).get(slug, ("", ""))
                 TopicTranslation.objects.update_or_create(
-                    topic=topic, language=lang, defaults=defaults
+                    topic=topic,
+                    language=lang,
+                    defaults={
+                        "title": tr[0],
+                        "description": tr[1],
+                        "scripture_ref": ref,
+                        "scripture_text": verse_tr,
+                    },
                 )
             if was_created:
                 self.stdout.write(

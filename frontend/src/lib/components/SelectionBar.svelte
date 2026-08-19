@@ -3,7 +3,15 @@
 	import { segmentsFromSelection } from '$lib/rangeMarks';
 	import { HIGHLIGHT_COLORS } from '$lib/reading-schema';
 	import { shareQuoteCard } from '$lib/quoteCard';
+	import { clampPopoverLeft, HEADER_OFFSET } from '$lib/reading';
 	import type { Segment } from '$lib/marks.svelte';
+
+	/** Widest the bar gets (matches its max-width), for the viewport clamp. */
+	const BAR_MAX_WIDTH = 352;
+	/** Room the bar needs above a selection before it has to flip below it. */
+	const BAR_CLEARANCE = 52;
+	/** Keep this much clear of either viewport edge. */
+	const GUTTER = 12;
 
 	interface Cite {
 		author: string;
@@ -34,6 +42,8 @@
 	let visible = $state(false);
 	let top = $state(0);
 	let left = $state(0);
+	/** Bar sits below the selection when there is no room above it. */
+	let below = $state(false);
 	let selectedText = $state('');
 	let segments = $state<Segment[]>([]);
 	let copied = $state(false);
@@ -55,23 +65,39 @@
 			container.contains(sel.focusNode);
 
 		// A single selected word (double-click / mobile long-press) opens the
-		// definition popover instead of the action bar.
-		if (inContainer && onDefine && /^[A-Za-z’'-]{2,}$/.test(text)) {
+		// definition popover instead of the action bar — but only where a
+		// definition can actually exist. The glossary and the dictionary behind
+		// it are English, so this stays Latin-script on purpose; \p{Script=Latin}
+		// rather than [A-Za-z] so accented Spanish and Swahili words qualify.
+		//
+		// Anything else — an Arabic word, say — deliberately FALLS THROUGH to the
+		// action bar below, which is the part that must work in every language.
+		// Routing it here instead would strip it to nothing and show neither.
+		if (inContainer && onDefine && /^[\p{Script=Latin}\p{M}’'-]{2,}$/u.test(text)) {
 			const rect = sel.getRangeAt(0).getBoundingClientRect();
 			onDefine(text, rect.bottom + window.scrollY, rect.left + window.scrollX + rect.width / 2);
 			visible = false;
 			return;
 		}
 
-		if (!inContainer || text.length < 4) {
+		// Two characters, not four: the old floor silently refused to highlight or
+		// share a short quote, and "God", "Amen" and most Arabic words are under
+		// it.
+		if (!inContainer || text.length < 2) {
 			visible = false;
 			return;
 		}
 		selectedText = text;
 		segments = segmentsFromSelection(container, sel);
 		const rect = sel.getRangeAt(0).getBoundingClientRect();
-		top = rect.top + window.scrollY - 8;
-		left = rect.left + window.scrollX + rect.width / 2;
+
+		// Selecting the first line of a chapter used to put the bar above the top
+		// of the page (and behind the sticky chrome). Flip it under the selection
+		// when there isn't room, and keep it inside the viewport horizontally —
+		// a selection near either margin ran half off-screen.
+		below = rect.top < HEADER_OFFSET + BAR_CLEARANCE;
+		top = below ? rect.bottom + window.scrollY + 8 : rect.top + window.scrollY - 8;
+		left = clampPopoverLeft(rect.left + rect.width / 2 + window.scrollX, BAR_MAX_WIDTH, GUTTER);
 		copied = false;
 		visible = true;
 	}
@@ -125,6 +151,7 @@
 {#if visible}
 	<div
 		class="selbar"
+		class:below
 		style="top: {top}px; left: {left}px"
 		role="toolbar"
 		aria-label={t('a11y.selectionActions')}
@@ -180,17 +207,22 @@
 		align-items: center;
 		gap: 0.25rem;
 		transform: translate(-50%, -100%);
+		max-width: min(22rem, calc(100vw - 1.5rem));
 		padding: 0.25rem;
 		border-radius: var(--radius-sm);
 		background: var(--surface);
 		border: 1px solid var(--border);
-		box-shadow: 0 6px 20px rgb(0 0 0 / 0.25);
+		box-shadow: var(--shadow-popover);
 		white-space: nowrap;
+	}
+	/* Flipped under the selection — see `below` in update(). */
+	.selbar.below {
+		transform: translate(-50%, 0);
 	}
 	.selbar-btn {
 		padding: 0.35rem 0.6rem;
 		border-radius: 6px;
-		font-size: 0.85rem;
+		font-size: var(--fs-small);
 		font-weight: 600;
 		color: var(--text);
 		cursor: pointer;

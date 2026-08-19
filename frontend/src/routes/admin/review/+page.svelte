@@ -239,7 +239,7 @@
 
 <div class="mx-auto max-w-6xl px-5 py-10">
 	<header class="mb-6">
-		<p class="text-small mb-2 font-semibold uppercase tracking-widest text-accent">Admin</p>
+		<p class="eyebrow mb-2 text-accent">Admin</p>
 		<h1 class="text-display">Review queue</h1>
 		<p class="text-body mt-2 text-muted">
 			AI translations awaiting a native-speaker check. Approving clears the “awaiting review” badge in
@@ -251,22 +251,22 @@
 	{#if loading && !queue}
 		<p class="text-body text-muted">Loading…</p>
 	{:else if denied}
-		<div class="rounded-2xl border border-border bg-surface p-8">
+		<div class="rounded-card border border-border bg-surface p-8">
 			<h2 class="text-h3 mb-2">Not authorised</h2>
 			<p class="text-body text-muted">You don't have access to the admin dashboard.</p>
 		</div>
 	{:else if error}
-		<div class="rounded-2xl border border-border bg-surface p-8">
+		<div class="rounded-card border border-border bg-surface p-8">
 			<h2 class="text-h3 mb-2">Couldn't load the queue</h2>
 			<p class="text-body mb-5 text-muted">{error}</p>
 			<button class="btn btn-ghost" onclick={load}>Try again</button>
 		</div>
 	{:else if queue}
-		<div class="mb-5 flex flex-wrap items-end gap-3 rounded-xl border border-border bg-surface p-4">
+		<div class="mb-5 flex flex-wrap items-end gap-3 rounded-card border border-border bg-surface p-4">
 			<label class="text-small flex flex-col gap-1">
 				<span class="text-muted">Language</span>
 				<select
-					class="rounded-lg border border-border bg-bg px-2 py-1.5"
+					class="field"
 					bind:value={fLanguage}
 					onchange={applyFilters}
 				>
@@ -279,7 +279,7 @@
 			<label class="text-small flex flex-col gap-1">
 				<span class="text-muted">Type</span>
 				<select
-					class="rounded-lg border border-border bg-bg px-2 py-1.5"
+					class="field"
 					bind:value={fKind}
 					onchange={applyFilters}
 				>
@@ -292,7 +292,7 @@
 			<label class="text-small flex flex-col gap-1">
 				<span class="text-muted">Sort</span>
 				<select
-					class="rounded-lg border border-border bg-bg px-2 py-1.5"
+					class="field"
 					bind:value={fSort}
 					onchange={applyFilters}
 				>
@@ -323,7 +323,7 @@
 
 		{#if selectedItems.length}
 			<div
-				class="mb-4 flex flex-wrap items-center gap-3 rounded-xl border border-accent-soft-border bg-accent-soft p-3"
+				class="mb-4 flex flex-wrap items-center gap-3 rounded-card border border-accent-soft-border bg-accent-soft p-3"
 			>
 				<span class="text-small font-semibold">{selectedItems.length} selected</span>
 				{#if excludedCount}
@@ -333,24 +333,24 @@
 					</span>
 				{/if}
 				<button
-					class="btn btn-primary !text-small ml-auto !py-1.5"
+					class="btn btn-sm btn-primary ml-auto"
 					onclick={() => decide(selectedItems, 'approved')}
 				>
 					Approve {selectedItems.length} selected
 				</button>
-				<button class="btn btn-ghost !text-small !py-1.5" onclick={() => (selected = {})}>
+				<button class="btn btn-sm btn-ghost" onclick={() => (selected = {})}>
 					Clear
 				</button>
 			</div>
 		{/if}
 
 		{#if queue.total === 0 && queue.filtered === 0}
-			<div class="rounded-2xl border border-border bg-surface p-8 text-center">
+			<div class="rounded-card border border-border bg-surface p-8 text-center">
 				<p class="text-h3">All clear 🎉</p>
 				<p class="text-body mt-1 text-muted">Nothing is awaiting review.</p>
 			</div>
 		{:else if !visible.length}
-			<div class="rounded-2xl border border-border bg-surface p-8 text-center">
+			<div class="rounded-card border border-border bg-surface p-8 text-center">
 				<p class="text-body text-muted">Nothing matches those filters.</p>
 			</div>
 		{/if}
@@ -362,7 +362,7 @@
 						{languageName(lang)}
 						<span class="text-muted">({items.length})</span>
 					</h2>
-					<button class="btn btn-ghost !text-small !py-1" onclick={() => toggleGroup(lang)}>
+					<button class="btn btn-sm btn-ghost" onclick={() => toggleGroup(lang)}>
 						Select eligible
 					</button>
 				</div>
@@ -370,7 +370,7 @@
 				<ul class="space-y-2">
 					{#each items as i (key(i.kind, i.slug, i.language))}
 						{@const k = key(i.kind, i.slug, i.language)}
-						<li class="rounded-xl border border-border bg-surface">
+						<li class="rounded-card border border-border bg-surface">
 							{#if settled[k]}
 								<div class="flex items-center gap-3 p-4">
 									<span class="text-small font-semibold">
@@ -378,7 +378,7 @@
 									</span>
 									<span class="text-small truncate text-muted">{settled[k].title}</span>
 									<button
-										class="btn btn-ghost !text-small ml-auto !py-1"
+										class="btn btn-sm btn-ghost ml-auto"
 										disabled={busy[k]}
 										onclick={() => undo(i)}
 									>
@@ -402,7 +402,7 @@
 									<div class="min-w-0 flex-1">
 										<div class="flex flex-wrap items-baseline gap-x-2">
 											<span class="truncate font-semibold text-text">{i.title}</span>
-											<span class="text-small rounded border border-border px-1.5 text-muted">
+											<span class="text-small rounded-sm border border-border px-1.5 text-muted">
 												{KIND_LABEL[i.kind]}
 											</span>
 											{#if i.flagged}
@@ -454,7 +454,7 @@
 									</div>
 
 									<button
-										class="btn btn-ghost !text-small shrink-0 !py-1.5"
+										class="btn btn-sm btn-ghost shrink-0"
 										onclick={() => openDetail(i)}
 										aria-expanded={openKey === k}
 									>
@@ -473,7 +473,7 @@
 												<div class="mb-3 flex flex-wrap gap-1">
 													{#each detail.chapters as c (c.order)}
 														<button
-															class="btn btn-ghost !text-small !px-2 !py-0.5"
+															class="btn btn-sm btn-ghost"
 															onclick={() => openDetail(i, c.order)}
 														>
 															{c.order}
@@ -491,7 +491,7 @@
 											{/if}
 
 											{#if detail.notes.length}
-												<div class="mb-3 rounded-lg border border-border bg-bg p-3">
+												<div class="mb-3 rounded-sm border border-border bg-bg p-3">
 													<p class="text-small mb-1 font-semibold">Verses to check</p>
 													<ul class="text-small space-y-0.5 text-muted">
 														{#each detail.notes as n (n.reference + n.status)}
@@ -511,7 +511,7 @@
 											{/if}
 
 											<div
-												class="max-h-[28rem] overflow-y-auto rounded-lg border border-border"
+												class="max-h-[28rem] overflow-y-auto rounded-sm border border-border"
 												onscroll={onPanelScroll}
 											>
 												<table class="w-full table-fixed border-collapse">
@@ -543,20 +543,20 @@
 													</label>
 													<textarea
 														id="note-{k}"
-														class="w-full rounded-lg border border-border bg-bg p-2"
+														class="field w-full"
 														rows="2"
 														bind:value={noteText}
 														placeholder="e.g. Ezekiel 36:32 doesn't match the Union wording"
 													></textarea>
 													<div class="mt-2 flex gap-2">
 														<button
-															class="btn btn-primary !text-small !py-1.5"
+															class="btn btn-sm btn-primary"
 															onclick={() => decide([i], 'needs_work', noteText)}
 														>
 															Save
 														</button>
 														<button
-															class="btn btn-ghost !text-small !py-1.5"
+															class="btn btn-sm btn-ghost"
 															onclick={() => {
 																notingKey = null;
 																noteText = '';
@@ -569,14 +569,14 @@
 											{:else}
 												<div class="mt-3 flex flex-wrap items-center gap-2">
 													<button
-														class="btn btn-primary !text-small !py-1.5"
+														class="btn btn-sm btn-primary"
 														disabled={busy[k] || !scrolledEnough}
 														onclick={() => decide([i], 'approved')}
 													>
 														{busy[k] ? 'Saving…' : 'Approve'}
 													</button>
 													<button
-														class="btn btn-ghost !text-small !py-1.5"
+														class="btn btn-sm btn-ghost"
 														onclick={() => {
 															notingKey = k;
 															noteText = '';
@@ -604,7 +604,7 @@
 		{#if queue.pages > 1}
 			<nav class="flex items-center gap-3" aria-label="Pagination">
 				<button
-					class="btn btn-ghost !text-small !py-1.5"
+					class="btn btn-sm btn-ghost"
 					disabled={curPage <= 1}
 					onclick={() => goPage(curPage - 1)}
 				>
@@ -612,7 +612,7 @@
 				</button>
 				<span class="text-small text-muted">Page {curPage} of {totalPages}</span>
 				<button
-					class="btn btn-ghost !text-small !py-1.5"
+					class="btn btn-sm btn-ghost"
 					disabled={curPage >= totalPages}
 					onclick={() => goPage(curPage + 1)}
 				>

@@ -133,16 +133,16 @@
 <div class="mx-auto max-w-6xl px-5 py-10">
 	<header class="mb-10 flex flex-wrap items-end justify-between gap-4">
 		<div>
-			<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">Admin</p>
+			<p class="eyebrow mb-2 text-accent">Admin</p>
 			<h1 class="text-display">Content dashboard</h1>
 			<p class="mt-2 text-body text-muted">A snapshot of the library — quantities, languages and health.</p>
 		</div>
 		{#if stats}
 			<div class="flex flex-wrap items-center gap-2">
-				<button class="btn btn-ghost !py-1.5 !text-small" onclick={() => exportInventory('csv')} disabled={!!exporting}>
+				<button class="btn btn-sm btn-ghost" onclick={() => exportInventory('csv')} disabled={!!exporting}>
 					{exporting === 'csv' ? 'Exporting…' : 'Export CSV'}
 				</button>
-				<button class="btn btn-ghost !py-1.5 !text-small" onclick={() => exportInventory('json')} disabled={!!exporting}>
+				<button class="btn btn-sm btn-ghost" onclick={() => exportInventory('json')} disabled={!!exporting}>
 					{exporting === 'json' ? 'Exporting…' : 'Export JSON'}
 				</button>
 				<button class="btn btn-ghost" onclick={load} disabled={loading}>
@@ -155,7 +155,7 @@
 	{#if loading && !stats}
 		<p class="text-body text-muted">Loading…</p>
 	{:else if denied}
-		<div class="rounded-2xl border border-border bg-surface p-8">
+		<div class="rounded-card border border-border bg-surface p-8">
 			{#if auth.enabled && !auth.user}
 				<h2 class="text-h3 mb-2">Sign in required</h2>
 				<p class="mb-5 text-body text-muted">
@@ -171,7 +171,7 @@
 			{/if}
 		</div>
 	{:else if error}
-		<div class="rounded-2xl border border-border bg-surface p-8">
+		<div class="rounded-card border border-border bg-surface p-8">
 			<h2 class="text-h3 mb-2">Couldn't load the dashboard</h2>
 			<p class="mb-5 text-body text-muted">{error}</p>
 			<button class="btn btn-ghost" onclick={load}>Try again</button>
@@ -204,8 +204,8 @@
 		<!-- Headline totals -->
 		<section class="mb-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
 			{#each cards as c (c.label)}
-				<div class="rounded-2xl border border-border bg-surface p-5">
-					<div class="text-display !text-3xl !leading-none text-text">{fmt(c.value)}</div>
+				<div class="rounded-card border border-border bg-surface p-5">
+					<div class="stat-number">{fmt(c.value)}</div>
 					<div class="mt-2 text-small font-semibold text-text">{c.label}</div>
 					<div class="text-small text-muted">{c.sub}</div>
 				</div>
@@ -219,10 +219,10 @@
 				<a href="/admin/coverage" class="text-small font-semibold text-accent hover:underline">Coverage matrix →</a>
 			</div>
 			<p class="mb-3 text-small text-muted">Select a language to see what's translated and what to work on next.</p>
-			<div class="overflow-x-auto rounded-2xl border border-border bg-surface">
+			<div class="overflow-x-auto rounded-card border border-border bg-surface">
 				<table class="w-full min-w-[44rem] border-collapse text-body">
 					<thead>
-						<tr class="border-b border-border text-small uppercase tracking-wide text-muted">
+						<tr class="eyebrow border-b border-border text-muted">
 							<th class="px-4 py-3 text-left font-semibold">Language</th>
 							<th class="px-4 py-3 text-right font-semibold">Books</th>
 							<th class="px-4 py-3 text-right font-semibold">Chapters</th>
@@ -268,7 +268,7 @@
 
 		<div class="grid gap-6 md:grid-cols-2">
 			<!-- Books by source type -->
-			<section class="rounded-2xl border border-border bg-surface p-5">
+			<section class="rounded-card border border-border bg-surface p-5">
 				<h2 class="text-h3 mb-3">Books by source</h2>
 				<ul class="space-y-2 text-body">
 					{#each Object.entries(SOURCE_LABELS) as [key, label] (key)}
@@ -292,7 +292,7 @@
 			</section>
 
 			<!-- Recently added -->
-			<section class="rounded-2xl border border-border bg-surface p-5">
+			<section class="rounded-card border border-border bg-surface p-5">
 				<h2 class="text-h3 mb-3">Recently added books</h2>
 				{#if stats.recent_books.length}
 					<ul class="space-y-3">

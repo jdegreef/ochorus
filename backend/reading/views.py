@@ -16,10 +16,10 @@ from django.db import transaction
 from rest_framework.exceptions import ValidationError
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.throttling import UserRateThrottle
 from rest_framework.views import APIView
 
 from accounts.models import UserProfile
+from common.throttling import ScopedCacheThrottle
 
 from .marks import clean_mark_list, from_legacy, merge_mark_lists
 from .models import (
@@ -65,7 +65,7 @@ SLUG_MAX = 160
 MAX_CHAPTER_ORDER = 100_000
 
 
-class _ReadingWriteThrottle(UserRateThrottle):
+class _ReadingWriteThrottle(ScopedCacheThrottle):
     """Bounds how fast one signed-in account can mutate its reading state.
 
     These endpoints are ``IsAuthenticated``, so this caps a single account

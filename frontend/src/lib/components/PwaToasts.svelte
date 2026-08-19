@@ -15,6 +15,8 @@
 		</div>
 	{/if}
 
+	<!-- Auto-dismissed after a beat: purely informational, unlike the update and
+	     storage toasts below, which ask the reader to do something. -->
 	{#if pwa.offlineReady}
 		<div class="pwa-toast">
 			<span>{t('pwa.ready')}</span>
@@ -40,8 +42,11 @@
 <style>
 	.pwa-stack {
 		position: fixed;
-		right: 1rem;
-		bottom: 1rem;
+		inset-inline-end: 1rem;
+		/* Clear the audio player when one is up (it publishes --listenbar-h) and
+		   the home-indicator strip below it. Listening offline used to put the
+		   "reading from your device" pill straight over the transport controls. */
+		bottom: calc(1rem + env(safe-area-inset-bottom) + var(--listenbar-h, 0px));
 		z-index: 60;
 		display: flex;
 		flex-direction: column;
@@ -59,9 +64,9 @@
 		border: 1px solid var(--border);
 		background: var(--surface);
 		padding: 0.5rem 0.9rem;
-		font-size: 0.85rem;
+		font-size: var(--fs-small);
 		color: var(--text);
-		box-shadow: 0 8px 30px rgb(0 0 0 / 0.18);
+		box-shadow: var(--shadow-popover);
 	}
 	.pwa-toast {
 		border-radius: var(--radius-card);
@@ -78,7 +83,7 @@
 	.pwa-link {
 		color: var(--muted);
 		text-decoration: underline;
-		font-size: 0.8rem;
+		font-size: var(--fs-small);
 	}
 	.pwa-cta {
 		border-radius: 999px;
@@ -88,7 +93,7 @@
 		color: var(--accent-contrast);
 		padding: 0.25rem 0.75rem;
 		font-weight: 600;
-		font-size: 0.8rem;
+		font-size: var(--fs-small);
 	}
 	.pwa-cta:hover {
 		filter: brightness(1.05);

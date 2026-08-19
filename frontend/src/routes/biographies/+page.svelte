@@ -291,7 +291,7 @@
 	     nav is position:relative and scrolls away, so top-0 is free.
 	     -mx-5 px-5 lets the background span the container's padding. -->
 	<div
-		class="sticky top-0 z-20 -mx-5 mb-6 border-b border-border bg-bg px-5 pb-2.5 pt-3"
+		class="sticky z-20 -mx-5 mb-6 border-b border-border bg-bg px-5 pb-2.5 pt-3" style="top: var(--appnav-h, 0px)"
 	>
 	<!-- Controls: search · filter · sort -->
 	<div class="filter-row">
@@ -342,7 +342,7 @@
 		<select
 			bind:value={sort}
 			onchange={syncUrl}
-			class="rounded-sm border border-border bg-surface px-2 py-1.5 text-small text-text sm:block"
+			class="field sm:block"
 			class:hidden={!filtersOpen}
 			aria-label={t('bios.sort')}
 		>
@@ -377,7 +377,7 @@
 					     Reveal first, then scroll; and with no href there is no dangling
 					     fragment in the static output. -->
 					<button
-						class="rounded px-1.5 py-0.5 font-semibold text-accent hover:bg-accent-soft"
+						class="rounded-sm px-1.5 py-0.5 font-semibold text-accent hover:bg-accent-soft"
 						onclick={() => jumpTo(firstByLetter.get(letter)!)}>{letter}</button
 					>
 				{:else}
@@ -437,7 +437,7 @@
 				>
 					<a
 						href={localizeHref(`/biographies/era/${g.era.id}`)}
-						class="!text-text hover:text-accent hover:no-underline">{t(g.era.k)}</a
+						class="text-text hover:text-accent hover:no-underline">{t(g.era.k)}</a
 					>
 					<!-- Same nowrap rule as the per-writer dates: a year range must never
 					     break across lines ("–" / "1499"). The longer era names make the

@@ -1,0 +1,66 @@
+{
+  "deeper-life": {
+    "title": "Obulamu Obw'obuziba",
+    "description": "Obutukuvu, okwewaayo, n'obulamu obw'ekyengera obukwekeddwa mu Kristo — ebitabo eby'okugenda mu maaso ennyo mu by'omwoyo.",
+    "scripture": {
+      "reference": "Abakkolosaayi 3:3",
+      "text": "Kubanga mwafa, n'obulamu bwammwe bukwekeddwa mu Kristo mu Katonda."
+    }
+  },
+  "enduring-classics": {
+    "title": "Ebitabo eby'Edda Ebisigalawo",
+    "description": "Ebitabo ebitambulidde n'abatambuze okumala ebyasa — okwatula kwa Awugusitino, ekirooto kya Bunyan, amagezi ga Kempis — amakubo ag'edda, era nga makyali malungi."
+  },
+  "faith-and-guidance": {
+    "title": "Okukkiriza n'Obulagirizi",
+    "description": "Okwesiga Katonda olw'emmere eya buli lunaku, obulagirizi, na buli kisuubizo — okutambula mu kukkiriza, so si mu kulaba.",
+    "scripture": {
+      "reference": "Engero 3:6",
+      "text": "Mu makubo go gonna mumumanye, naye alitereeza amakubo go."
+    }
+  },
+  "grace-and-comfort": {
+    "title": "Ekisa n'Okubudaabuda",
+    "description": "Ekisa kya Katonda ekitaggwaawo n'okubudaabuda kwe mu kugezesebwa kwonna — amawulire amalungi eri abakooye.",
+    "scripture": {
+      "reference": "2 Abakkolinso 12:9",
+      "text": "Ekisa kyange kikumala: kubanga amaanyi gange gatuukirizibwa mu bunafu."
+    }
+  },
+  "holy-spirit": {
+    "title": "Omwoyo Omutukuvu",
+    "description": "Okubatizibwa kw'Omwoyo, okutuula kwe mu ffe, n'omulimu gwe — amaanyi agaasuubizibwa ag'obulamu obw'Ekikristaayo.",
+    "scripture": {
+      "reference": "Zekkaliya 4:6",
+      "text": "Si na maanyi, so si na buyinza, wabula na Mwoyo gwange, bw'ayogera Mukama ow'eggye."
+    }
+  },
+  "prayer": {
+    "title": "Ku Kusaba",
+    "description": "Okuyiga okusaba — era n'okunyiikira okusaba obutakoowa. Ebitabo eby'edda ebyogera ku bulamu obw'omunda obw'okusaba, okuva mu kifo eky'ekyama okutuuka ku kwegayiririra abalala okw'amaanyi.",
+    "scripture": {
+      "reference": "Yeremiya 33:3",
+      "text": "Munkoowoole, nange ndikuyitaba, ne nkulaga ebintu ebikulu era eby'ekitalo, by'otomanyi."
+    }
+  },
+  "revival-and-missions": {
+    "title": "Okuzuukusibwa n'Obuweereza bw'Enjiri",
+    "description": "Obulamu obwawaayo olw'enjiri, n'ebiseera eby'okuzuukusibwa — eky'okwongera omuliro mu mutima ogwaka.",
+    "scripture": {
+      "reference": "Kaabakuuku 3:2",
+      "text": "Ai Mukama, zzaamu obulamu omulimu gwo wakati mu myaka, wakati mu myaka gumanyise."
+    }
+  },
+  "the-gospel-call": {
+    "title": "Okuyita kw'Enjiri",
+    "description": "Okuyitibwa okusinga obukadde — jjangu, weenenye, kkiriza. Ababuulizi nga beegayirira abatannaba kulokoka, n'obujulirwa bw'ekisa ekyalabwa omwonoonyi asinga bonna."
+  },
+  "the-preached-word": {
+    "title": "Ekigambo Ekibuulirwa",
+    "description": "Okubuulira okw'amaanyi ku lupapula — Whitefield ne Wesley mu ddoboozi eryonna, Spurgeon mu balimi be — n'ekiragiro kya Baxter eri buli musumba w'emyoyo."
+  },
+  "the-way-of-holiness": {
+    "title": "Ekkubo ery'Obutukuvu",
+    "description": "Okwawulibwa ku lwa Katonda — amateeka nga gakebejjebwa, obutuukirivu nga bunoonyezebwa n'obwesimbu, n'okwagala kw'omutima nga kugezesebwa ne kulabika nga kwa mazima."
+  }
+}

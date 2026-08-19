@@ -2,7 +2,10 @@
 <html lang="%paraglide.lang%" dir="%paraglide.dir%">
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- viewport-fit=cover so env(safe-area-inset-*) resolves to the real inset on
+		     notched devices; without it the reader's fixed bottom bars sit in the
+		     home-indicator strip. -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 		<!-- Two media-scoped values so the browser chrome is right before any JS
 		     runs. A single static value could only match one theme, and it was
 		     the light one while the CSS default (bare :root) is lamplight — so a

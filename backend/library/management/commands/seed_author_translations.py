@@ -18,20 +18,20 @@ updated on the next deploy — while a row an approver has flipped to
 rewritten, and only a still-EMPTY field may land (e.g. a long-form bio_html
 batch arriving after the short bio was approved), which re-gates the row to
 ``reviewed=False`` exactly as migrations 0023/0024 did. Fields are only ever
-written, never blanked: a missing short.json entry or .html file leaves the
+written, never blanked: a missing .short.txt or .html file leaves the
 stored value alone.
 
-Future bio translations (or corrections) ship by editing ``short.json`` and/or
-``<slug>.html`` under a ``data/author_bios_<lang>/`` directory — no new
-migration per batch. NOTE: migration 0021 embeds the es short bios in code;
-``author_bios_es/short.json`` supersedes that immutable copy — edit only the
-data files. Corrections must land here, not in the prod DB: this seed re-asserts
-the files over hand-edited unreviewed rows on the next deploy.
+Future bio translations (or corrections) ship by writing ``<slug>.short.txt``
+and/or ``<slug>.html`` under a ``data/author_bios_<lang>/`` directory — one
+file per author per field, no shared file, no new migration per batch. NOTE:
+migrations 0021/0024 embed or read immutable copies of the old short bios;
+the per-slug files supersede them — edit only the data files. Corrections must
+land here, not in the prod DB: this seed re-asserts the files over hand-edited
+unreviewed rows on the next deploy.
 """
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
 
 from django.core.management.base import BaseCommand
@@ -52,13 +52,21 @@ def language_dirs() -> list[tuple[str, Path]]:
 
 
 def read_bios(d: Path) -> dict[str, dict[str, str]]:
-    """slug -> {bio, bio_html} for one language dir (absent fields omitted)."""
+    """slug -> {bio, bio_html} for one language dir (absent fields omitted).
+
+    Short bios are per-slug files (``<slug>.short.txt``), like the long-form
+    ``<slug>.html`` always was — so two bio jobs in the same language no longer
+    write a shared file. ``short.json`` is NOT read any more: migration 0024
+    still opens ``author_bios_sw``/``author_bios_lg``'s copies unguarded and
+    migrations are immutable, so those two files exist, empty, for its sake
+    alone (see this directory's README).
+    """
     bios: dict[str, dict[str, str]] = {}
-    short_path = d / "short.json"
-    if short_path.exists():
-        for slug, bio in json.loads(short_path.read_text(encoding="utf-8")).items():
-            if bio:
-                bios.setdefault(slug, {})["bio"] = bio
+    for path in d.glob("*.short.txt"):
+        bio = path.read_text(encoding="utf-8").strip()
+        if bio:
+            slug = path.name.removesuffix(".short.txt")
+            bios.setdefault(slug, {})["bio"] = bio
     for path in d.glob("*.html"):
         html = path.read_text(encoding="utf-8").strip()
         if html:

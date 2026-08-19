@@ -1,6 +1,8 @@
 <script lang="ts">
+	import Icon from '$lib/components/Icon.svelte';
 	import { type AuthorDetail, type AuthorBio, listAuthors, formatLifespan } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
+	import { cssString } from '$lib/cssString';
 	import { absUrl, jsonLd, breadcrumb, hreflangAll } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingTime, readingMinutes } from '$lib/reading';
@@ -139,8 +141,12 @@
 	);
 	// Prayer-callout labels are rendered by CSS ::before content; pass the
 	// localized strings in as custom properties so they follow the locale.
+	// Quoted through cssString: an apostrophe in any translation would close the
+	// CSS string early and take the rest of the declaration with it, silently
+	// and only in that locale.
 	const bioLabels = $derived(
-		`--label-in-prayer: '${t('bios.inPrayer')}'; --label-answered: '${t('bios.answerToPrayer')}'`
+		`--label-in-prayer: ${cssString(t('bios.inPrayer'))}; ` +
+			`--label-answered: ${cssString(t('bios.answerToPrayer'))}`
 	);
 
 	// Where to start + how much there is to read: the first book (the API's
@@ -205,8 +211,7 @@
 			/>
 		{:else}
 			<span
-				class="flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-accent-soft text-h1 font-semibold text-accent"
-				style="font-family: var(--font-display)"
+				class="font-display flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-accent-soft text-h1 font-semibold text-accent"
 			>
 				{initials(author.name)}
 			</span>
@@ -225,16 +230,16 @@
 			     until now their only option was the whole library. -->
 			<a
 				href={localizeHref(scopedSearchHref('author', author.slug))}
-				class="btn btn-ghost shrink-0 !px-2.5 !py-1">{t('search.inAuthor')}</a
+				class="btn btn-sm btn-ghost shrink-0">{t('search.inAuthor')}</a
 			>
 			<FavoriteButton kind="author" slug={author.slug} showLabel />
 			{#if listen.supported && author.bio_html}
 				<button
-					class="btn btn-ghost shrink-0 !px-2.5 !py-1"
-					class:!text-accent={listen.status !== 'idle'}
+					class="btn btn-icon btn-ghost shrink-0"
+					class:text-accent={listen.status !== 'idle'}
 					onclick={() => (listen.status === 'idle' ? reader?.startListening() : listen.stop())}
 					aria-label={t('reader.listen')}
-					title={t('reader.listen')}>▶ {t('reader.listen')}</button
+					title={t('reader.listen')}><Icon name="headphones" size={16} /> {t('reader.listen')}</button
 				>
 			{/if}
 			<!-- Reader affordances, shown only when there is a long-form biography to
@@ -242,10 +247,10 @@
 			{#if author.bio_html}
 				<ReaderControls />
 				<button
-					class="btn btn-ghost shrink-0 !px-2.5 !py-1"
+					class="btn btn-icon btn-ghost shrink-0"
 					onclick={() => readerUi.toggleFocus()}
 					aria-label={t('reader.focus')}
-					title={t('reader.focus')}>☾</button
+					title={t('reader.focus')}><Icon name="maximize" size={18} /></button
 				>
 			{/if}
 		</div>
@@ -295,7 +300,7 @@
 				kind="bio"
 				slug={author.slug}
 				order={BIO_CHAPTER_ORDER}
-				language={getLang()}
+				language={data.language as string}
 				html={author.bio_html}
 				class="bio"
 				{cite}
@@ -314,7 +319,7 @@
 	<!-- Topical shelves this author appears in: cross-navigation into browse. -->
 	{#if author.topics.length}
 		<div class="mx-auto mt-8 flex max-w-[40rem] flex-wrap items-center gap-2">
-			<span class="text-small font-semibold uppercase tracking-wide text-muted">
+			<span class="eyebrow text-muted">
 				{t('author.themes')}
 			</span>
 			{#each author.topics as topic (topic.slug)}
@@ -363,7 +368,7 @@
 									<span class="text-small text-accent">{sermon.scripture_ref}</span>
 								{/if}
 							</span>
-							<span class="shrink-0 text-[0.8rem] text-muted">
+							<span class="shrink-0 text-small text-muted">
 								{Math.max(1, Math.round(sermon.word_count / 200))} {t('common.min')}
 							</span>
 						</a>
@@ -421,7 +426,9 @@
 {#if readerUi.focus}
 	<button
 		class="fixed end-4 top-4 z-30 rounded-full border border-border bg-surface/90 px-3 py-1.5 text-small text-muted shadow-md backdrop-blur hover:text-text"
-		onclick={() => readerUi.exitFocus()}>✕ {t('reader.exitFocus')}</button
+		onclick={() => readerUi.exitFocus()}>
+		<Icon name="close" size={14} />
+		{t('reader.exitFocus')}</button
 	>
 {/if}
 
@@ -438,11 +445,12 @@
 	.author-quote {
 		font-family: var(--font-display);
 		font-style: italic;
-		font-size: 1.5rem;
+		font-size: var(--fs-h2);
 		line-height: 1.4;
 		color: var(--text);
-		border-left: 3px solid var(--gold);
-		padding: 0.1em 0 0.1em 1.25rem;
+		border-inline-start: 3px solid var(--gold);
+		padding-block: 0.1em;
+		padding-inline: 1.25rem 0;
 	}
 	.author-quote::before {
 		content: '“';
@@ -475,9 +483,10 @@
 	/* Pull-quote: a called-out saying, visually distinct. */
 	:global(.bio blockquote) {
 		margin: 1.7em 0;
-		padding: 0.1em 0 0.1em 1.25rem;
-		border-left: 3px solid var(--gold);
-		font-size: 1.45rem;
+		padding-block: 0.1em;
+		padding-inline: 1.25rem 0;
+		border-inline-start: 3px solid var(--gold);
+		font-size: var(--fs-h2);
 		line-height: 1.45;
 		font-style: italic;
 		color: var(--text);
@@ -488,7 +497,7 @@
 	:global(.bio blockquote cite) {
 		display: block;
 		margin-top: 0.55em;
-		font-size: 0.9rem;
+		font-size: var(--fs-small);
 		font-style: normal;
 		color: var(--muted);
 	}
@@ -510,9 +519,9 @@
 		display: block;
 		margin-bottom: 0.5rem;
 		font-family: var(--font-sans);
-		font-size: 0.72rem;
-		font-weight: 700;
-		letter-spacing: 0.09em;
+		font-size: var(--fs-micro);
+		font-weight: 600;
+		letter-spacing: 0.08em;
 		text-transform: uppercase;
 		color: var(--gold);
 	}

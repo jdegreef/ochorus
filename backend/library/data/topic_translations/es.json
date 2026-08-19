@@ -1,0 +1,42 @@
+{
+  "deeper-life": {
+    "title": "La vida más profunda",
+    "description": "Santidad, entrega y la vida abundante escondida con Cristo — libros para ir más adentro."
+  },
+  "enduring-classics": {
+    "title": "Los clásicos perdurables",
+    "description": "Los libros que han acompañado a los peregrinos por siglos — la confesión de Agustín, el sueño de Bunyan, el consejo de Kempis — las sendas antiguas, todavía buenas."
+  },
+  "faith-and-guidance": {
+    "title": "Fe y dirección",
+    "description": "Confiar en Dios para el pan de cada día, la dirección y toda promesa — andar por fe, no por vista."
+  },
+  "grace-and-comfort": {
+    "title": "Gracia y consuelo",
+    "description": "La gracia inagotable de Dios y su consuelo en toda prueba — buenas nuevas para el cansado."
+  },
+  "holy-spirit": {
+    "title": "El Espíritu Santo",
+    "description": "El bautismo del Espíritu, su morada en nosotros y su obra — el poder prometido para la vida cristiana."
+  },
+  "prayer": {
+    "title": "Sobre la oración",
+    "description": "Aprender a orar — y a seguir orando. Los clásicos sobre la vida interior de la oración, desde el lugar secreto hasta la intercesión perseverante."
+  },
+  "revival-and-missions": {
+    "title": "Avivamiento y misiones",
+    "description": "Vidas derramadas por el evangelio, y tiempos de despertar — combustible para un corazón ardiente."
+  },
+  "the-gospel-call": {
+    "title": "El llamado del evangelio",
+    "description": "La invitación más antigua que existe — ven, arrepiéntete, cree. Predicadores rogando a los no convertidos, y el testimonio de la gracia hallada por el primero de los pecadores."
+  },
+  "the-preached-word": {
+    "title": "La palabra predicada",
+    "description": "La gran predicación en la página — Whitefield y Wesley a plena voz, Spurgeon entre sus labradores — y el encargo de Baxter a todo pastor de almas."
+  },
+  "the-way-of-holiness": {
+    "title": "El camino de la santidad",
+    "description": "Apartados para Dios — los mandamientos examinados, la perfección buscada con honestidad, y los afectos del corazón probados y hallados verdaderos."
+  }
+}

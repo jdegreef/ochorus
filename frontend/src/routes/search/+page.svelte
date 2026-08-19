@@ -852,7 +852,7 @@
 				? 'h-11 w-11 rounded-full'
 				: row.small
 					? 'h-8 w-6 rounded-sm'
-					: 'h-16 w-12 rounded'}"
+					: 'h-16 w-12 rounded-sm'}"
 			style={boxStyle || undefined}
 		/>
 	{/if}
@@ -932,7 +932,7 @@
 	     full width while the results began 12rem in behind the rail, so the eye
 	     had two left edges to track down a single column of content. -->
 	<div
-		class="sticky top-0 z-20 -mx-5 bg-bg px-5 pb-3 pt-2"
+		class="sticky z-20 -mx-5 bg-bg px-5 pb-3 pt-2" style="top: var(--appnav-h, 0px)"
 		class:lg:ps-[15.25rem]={hasFacets}
 		role="search"
 	>
@@ -946,7 +946,7 @@
 			placeholder={t('search.placeholder')}
 			aria-label={t('search.title')}
 			aria-describedby="search-help"
-			class="w-full rounded-card border border-border-strong bg-surface px-4 py-3 text-body text-text lg:max-w-3xl"
+			class="field w-full lg:max-w-3xl"
 		/>
 	</div>
 
@@ -992,7 +992,7 @@
 		     panel two-thirds empty, because the verses inside are capped to a
 		     readable measure and the panel was not. -->
 		<div class="answer-measure mt-6 rounded-card border-s-4 border-accent bg-accent-soft p-4">
-			<p class="text-eyebrow font-bold uppercase tracking-[0.1em] text-accent">
+			<p class="eyebrow text-accent">
 				{t('reader.scripture')}
 			</p>
 			<p class="scripture-answer-ref">{scriptureAnswer.reference}</p>
@@ -1021,7 +1021,7 @@
 						).replace('%count%', String(verses.length))}{/if}
 				</button>
 			{/if}
-			<p class="mt-2 text-eyebrow uppercase tracking-[0.08em] text-muted">
+			<p class="eyebrow mt-2 text-muted">
 				{scriptureAnswer.version}
 			</p>
 
@@ -1052,9 +1052,9 @@
 			<div class="space-y-6" aria-hidden="true">
 				{#each Array(4) as _, i (i)}
 					<div class="animate-pulse space-y-2">
-						<div class="h-3 w-1/4 rounded bg-surface-2"></div>
-						<div class="h-4 w-2/3 rounded bg-surface-2"></div>
-						<div class="h-3 w-full rounded bg-surface-2"></div>
+						<div class="h-3 w-1/4 rounded-sm bg-surface-2"></div>
+						<div class="h-4 w-2/3 rounded-sm bg-surface-2"></div>
+						<div class="h-3 w-full rounded-sm bg-surface-2"></div>
 					</div>
 				{/each}
 			</div>
@@ -1263,7 +1263,7 @@
 														`/books/${pb.slug}/${ch.order}?q=${encodeURIComponent(ran || q.trim())}`
 													)}
 														id="res-{ch.key}"
-														class="-mx-2 block rounded px-2 hover:no-underline"
+														class="-mx-2 block rounded-sm px-2 hover:no-underline"
 														class:bg-surface-2={ch.key === activeKey}
 														onclick={() => recordClick(ch.key)}
 													>
@@ -1301,7 +1301,7 @@
 										<a
 											href={localizeHref(row.href)}
 											id="res-{row.key}"
-											class="-mx-2 flex gap-3 rounded px-2 hover:no-underline"
+											class="-mx-2 flex gap-3 rounded-sm px-2 hover:no-underline"
 											class:bg-surface-2={row.key === activeKey}
 											onclick={() => recordClick(row.key)}
 										>

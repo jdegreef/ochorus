@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Icon from '$lib/components/Icon.svelte';
 	import { getBook, type BookDetail } from '$lib/library';
 	import { getLang } from '$lib/lang.svelte';
 	import { getScrollAnchor } from '$lib/progress';
@@ -105,13 +106,13 @@
 					<p class="text-small text-muted">{book.author.name}</p>
 				{/if}
 			</div>
-			<button class="btn btn-ghost !px-2.5 !py-1" onclick={close} aria-label={t('a11y.close')}>✕</button>
+			<button class="btn btn-icon btn-ghost" onclick={close} aria-label={t('a11y.close')}>✕</button>
 		</header>
 
 		<nav class="toc-list" aria-label={t('reader.contents')}>
 			{#if bookmarks.list.length}
 				<div class="bm-section">
-					<p class="bm-heading">🔖 {t('reader.bookmarks')}</p>
+					<p class="bm-heading eyebrow">🔖 {t('reader.bookmarks')}</p>
 					<ul>
 						{#each bookmarks.list as bm (bm.id)}
 							<li class="bm-row">
@@ -124,13 +125,13 @@
 								>
 									<span class="min-w-0 flex-1">
 										<span class="block truncate text-small text-text">{bm.snippet || bm.title}</span>
-										<span class="block text-[0.72rem] text-muted">{bm.order}. {bm.title}</span>
+										<span class="block text-micro text-muted">{bm.order}. {bm.title}</span>
 									</span>
 								</a>
 								<button
 									class="bm-remove"
 									onclick={() => bookmarks.remove(bm.id)}
-									aria-label={t('reader.bookmark')}>✕</button
+									aria-label={t('reader.bookmark')}><Icon name="close" size={14} /></button
 								>
 							</li>
 						{/each}
@@ -160,7 +161,7 @@
 									<span class="block truncate text-small text-text">
 										{ch.order}. {ch.title || `${t('plans.day')} ${ch.order}`}
 									</span>
-									<span class="block text-[0.72rem] text-muted">
+									<span class="block text-micro text-muted">
 										{readingTime(ch.word_count)}{#if markCount > 0}
 											· {markCount} {markCount === 1 ? t('reader.markOne') : t('reader.markMany')}{/if}
 									</span>
@@ -184,20 +185,30 @@
 	.toc-panel {
 		position: fixed;
 		top: 0;
-		right: 0;
 		bottom: 0;
+		/* The drawer belongs at the END of the reading direction, which under
+		   dir="rtl" (Arabic) is the LEFT edge — so it is anchored, bordered and
+		   slid logically. Box-shadow offsets and translateX have no logical
+		   form, so those two are flipped explicitly below; everything else
+		   follows the inline axis on its own. */
+		inset-inline-end: 0;
 		z-index: 49;
 		width: min(22rem, 88vw);
 		display: flex;
 		flex-direction: column;
 		background: var(--surface);
-		border-left: 1px solid var(--border);
-		box-shadow: -12px 0 40px rgb(0 0 0 / 0.25);
-		animation: toc-in 0.18s ease-out;
+		border-inline-start: 1px solid var(--border);
+		box-shadow: var(--shadow-drawer);
+		--toc-slide-from: 1.5rem;
+		animation: toc-in var(--duration-fast) ease-out;
+	}
+	:global([dir='rtl']) .toc-panel {
+		box-shadow: 12px 0 40px rgb(0 0 0 / 0.25);
+		--toc-slide-from: -1.5rem;
 	}
 	@keyframes toc-in {
 		from {
-			transform: translateX(1.5rem);
+			transform: translateX(var(--toc-slide-from, 1.5rem));
 			opacity: 0;
 		}
 	}
@@ -223,10 +234,7 @@
 	}
 	.bm-heading {
 		padding: 0.75rem 1.25rem 0.25rem;
-		font-size: 0.72rem;
-		font-weight: 600;
-		text-transform: uppercase;
-		letter-spacing: 0.06em;
+		font-size: var(--fs-micro);
 		color: var(--muted);
 	}
 	.bm-row {
@@ -246,7 +254,7 @@
 	}
 	.toc-item.current {
 		background: color-mix(in srgb, var(--accent) 8%, transparent);
-		border-right: 3px solid var(--accent);
+		border-inline-end: 3px solid var(--accent);
 	}
 	.toc-dot {
 		width: 0.45rem;

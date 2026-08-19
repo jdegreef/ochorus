@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { bookProgressPercent, readingMinutes, readingTime } from './reading';
+import { bookProgressPercent, contentLang, minutesLeft, readingMinutes, readingTime } from './reading';
 
 describe('readingMinutes', () => {
 	it('never returns less than one minute', () => {
@@ -47,5 +47,40 @@ describe('readingTime', () => {
 	it('labels hours and minutes together', () => {
 		expect(readingTime(200 * 65)).toBe('1 hr 5 min read');
 		expect(readingTime(200 * 130)).toBe('2 hr 10 min read');
+	});
+});
+
+
+describe('minutesLeft', () => {
+	it('counts down as the reader moves through the text', () => {
+		expect(minutesLeft(2000, 0)).toBe(10);
+		expect(minutesLeft(2000, 0.5)).toBe(5);
+	});
+
+	it('never reads "0 min left" at the foot of the text', () => {
+		// The chapter reader used a bare Math.ceil here, so the end of a chapter
+		// announced "0 min left" — not a reading time, and it disagreed with the
+		// sermon page, which floored at 1 in its own copy.
+		expect(minutesLeft(2000, 1)).toBe(1);
+		expect(minutesLeft(2000, 0.999)).toBe(1);
+	});
+
+	it('clamps a fraction outside 0-1', () => {
+		// The scroll fraction is measured from rects and can overshoot slightly.
+		expect(minutesLeft(2000, 1.2)).toBe(1);
+		expect(minutesLeft(2000, -0.3)).toBe(10);
+	});
+});
+
+describe('contentLang', () => {
+	it('passes a real language code through', () => {
+		expect(contentLang('ar')).toBe('ar');
+		expect(contentLang('sw')).toBe('sw');
+	});
+
+	it('reduces the Modern English edition marker to its base language', () => {
+		// en-modern is our own edition marker, not a subtag a browser can
+		// hyphenate against; a Modern English edition hyphenates as English.
+		expect(contentLang('en-modern')).toBe('en');
 	});
 });

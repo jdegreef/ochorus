@@ -42,7 +42,7 @@
 					{entry.text}
 				</p>
 			{/each}
-			<p class="mt-2 text-[0.7rem] uppercase tracking-wider text-muted">
+			<p class="eyebrow mt-2 text-muted">
 				{define.result.source === 'glossary' ? t('reader.glossarySource') : t('reader.dictionarySource')}
 			</p>
 		{:else}
@@ -61,16 +61,16 @@
 		border-radius: var(--radius-card);
 		border: 1px solid var(--border);
 		background: var(--surface);
-		box-shadow: 0 10px 34px rgb(0 0 0 / 0.25);
+		box-shadow: var(--shadow-popover);
 	}
 	.define-word {
 		font-family: var(--font-display);
-		font-size: 1.15rem;
+		font-size: var(--fs-h3);
 		font-weight: 600;
 		color: var(--text);
 	}
 	.define-close {
-		margin-left: auto;
+		margin-inline-start: auto;
 		padding: 0 0.25rem;
 		color: var(--muted);
 		cursor: pointer;

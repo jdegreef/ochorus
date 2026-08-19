@@ -66,7 +66,7 @@
 <div class="mx-auto max-w-4xl px-5 py-10">
 	<header class="mb-6 flex flex-wrap items-end justify-between gap-3">
 		<div>
-			<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">Admin</p>
+			<p class="eyebrow mb-2 text-accent">Admin</p>
 			<h1 class="text-display">Content audit</h1>
 			<p class="mt-2 text-body text-muted">Quality and integrity checks across the library. Heuristics are advisory — read the chapter before fixing.</p>
 		</div>
@@ -78,12 +78,12 @@
 	{#if loading && !audit}
 		<p class="text-body text-muted">Running audit…</p>
 	{:else if denied}
-		<div class="rounded-2xl border border-border bg-surface p-8">
+		<div class="rounded-card border border-border bg-surface p-8">
 			<h2 class="text-h3 mb-2">Not authorised</h2>
 			<p class="text-body text-muted">You don't have access to the admin dashboard.</p>
 		</div>
 	{:else if error}
-		<div class="rounded-2xl border border-border bg-surface p-8">
+		<div class="rounded-card border border-border bg-surface p-8">
 			<h2 class="text-h3 mb-2">Couldn't run the audit</h2>
 			<p class="mb-5 text-body text-muted">{error}</p>
 			<button class="btn btn-ghost" onclick={load}>Try again</button>

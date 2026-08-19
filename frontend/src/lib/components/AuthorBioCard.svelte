@@ -45,13 +45,12 @@
 					loading="lazy"
 					width="112"
 					height="112"
-					class="h-24 w-24 rounded-full border border-border object-cover grayscale transition-[filter] duration-300 group-hover:grayscale-0 sm:h-28 sm:w-28"
+					class="h-24 w-24 rounded-full border border-border object-cover grayscale transition-[filter] duration-[var(--duration-base)] group-hover:grayscale-0 sm:h-28 sm:w-28"
 					style="object-position: {portraitPosition(author.slug)}"
 				/>
 			{:else}
 				<span
-					class="flex h-24 w-24 items-center justify-center rounded-full bg-accent-soft text-display !text-3xl font-semibold text-accent sm:h-28 sm:w-28"
-					style="font-family: var(--font-display)"
+					class="font-display text-h1 flex h-24 w-24 items-center justify-center rounded-full bg-accent-soft font-semibold text-accent sm:h-28 sm:w-28"
 				>
 					{initials(author.name)}
 				</span>
@@ -65,7 +64,7 @@
 				<a
 					href={localizeHref(`/authors/${author.slug}`)}
 					data-sveltekit-preload-data="hover"
-					class="!text-text after:absolute after:inset-0 after:content-[''] hover:underline"
+					class="text-text after:absolute after:inset-0 after:content-[''] hover:underline"
 					>{author.name}</a
 				>
 				<!-- Below sm the name wraps to two lines on its own, and trailing the
@@ -84,7 +83,7 @@
 							<!-- Same nowrap rule as the dates: the badge was splitting into
 							     "FULL" / "LIFE" across two lines on a phone. -->
 							<span
-								class="whitespace-nowrap align-middle rounded-full bg-accent-soft px-2 py-0.5 text-[0.68rem] font-semibold uppercase tracking-wide text-accent sm:ms-2"
+								class="eyebrow whitespace-nowrap align-middle rounded-full bg-accent-soft px-2 py-0.5 text-accent sm:ms-2"
 								title={t('bios.fullLifeHint')}
 							>
 								{t('bios.fullLife')}

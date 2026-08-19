@@ -5,6 +5,7 @@
 	import { afterNavigate } from '$app/navigation';
 	import { theme } from '$lib/theme.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
+	import { paletteUi } from '$lib/paletteUi.svelte';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import { browser } from '$app/environment';
@@ -73,8 +74,7 @@
 		{ href: '/topics', label: t('nav.topics'), icon: 'tag' },
 		{ href: '/plans', label: t('nav.plans'), icon: 'calendar' },
 		{ href: '/sermons', label: t('nav.sermons'), icon: 'mic' },
-		{ href: '/biographies', label: t('nav.biographies'), icon: 'users' },
-		{ href: '/search', label: t('nav.search'), icon: 'search' }
+		{ href: '/biographies', label: t('nav.biographies'), icon: 'users' }
 	]);
 
 	// The reroute hook strips the locale prefix before routing, so page.route.id
@@ -84,6 +84,28 @@
 
 	// Mobile nav drawer (collapsed behind a hamburger on small screens).
 	let navOpen = $state(false);
+	let navEl = $state<HTMLElement>();
+
+	/** Reading surfaces pin their OWN bar to the top; see .appnav-static. */
+	const inReader = $derived(
+		$page.route.id === '/books/[slug]/[order]' || $page.route.id === '/sermons/[slug]'
+	);
+
+	// Publish the bar's height so the handful of pages with their own sticky
+	// sub-bar (search filters, the biographies index) can sit below it rather
+	// than under it. Measured rather than assumed: the bar wraps when the mobile
+	// drawer opens, and its height changes with the type scale.
+	let navH = $state(0);
+	$effect(() => {
+		if (!navEl) return;
+		const ro = new ResizeObserver(([entry]) => {
+			navH = Math.round(entry.target.getBoundingClientRect().height);
+		});
+		ro.observe(navEl);
+		return () => ro.disconnect();
+	});
+
+	const copyrightYear = new Date().getFullYear();
 
 	// Footer language strip: the ADVERTISED locales, named in their own language,
 	// linking to that locale's home. Advertised — not every UI locale — because
@@ -115,15 +137,27 @@
 	onkeydown={(e) => {
 		if (e.key === 'Escape') navOpen = false;
 	}}
+	onclick={(e) => {
+		// Same dismissal the account and settings menus in this bar already use.
+		// The toggle stops propagation, so opening never immediately re-closes.
+		if (navOpen && navEl && !navEl.contains(e.target as Node)) navOpen = false;
+	}}
 />
 
 <div
 	class="flex min-h-screen flex-col"
-	style="--reading-measure: {MEASURE[readerPrefs.measure]}; --pw: {pageWidth.rem}rem"
+	style="--reading-scale: {readerPrefs.scale}; --reading-measure: {MEASURE[
+		readerPrefs.measure
+	]}; --pw: {pageWidth.rem}rem; --appnav-h: {inReader ? 0 : navH}px"
 >
 	<a href="#main" class="skip-link">{t('a11y.skipToContent')}</a>
 	{#if !readerUi.focus}
-		<nav class="appnav" aria-label={t('a11y.mainNav')}>
+		<nav
+			class="appnav"
+			class:appnav-static={inReader}
+			aria-label={t('a11y.mainNav')}
+			bind:this={navEl}
+		>
 			<div class="appnav-inner">
 			<!-- No separate wordmark: the logo carries "Ochorus" in the artwork. -->
 			<a class="brand" href={localizeHref('/')}><BrandMark height={36} /></a>
@@ -142,6 +176,10 @@
 					<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
 				{/if}
 			</button>
+			<!-- No focus trap: this is a disclosure, not a modal. It pushes the page
+			     down rather than covering it, Escape and an outside click both close
+			     it, and focusTrap is built for overlays that MOUNT on open — applied
+			     to an always-rendered element it would seize focus on page load. -->
 			<div class="navmenu" class:open={navOpen}>
 				<div class="navlinks">
 					{#each NAV as item (item.href)}
@@ -153,7 +191,17 @@
 						>
 					{/each}
 				</div>
-				<div class="navctl">
+			</div>
+			<div class="navctl">
+					<button
+						class="navsearch"
+						onclick={() => paletteUi.openPalette()}
+						aria-label={t('nav.search')}
+						title={t('nav.search')}
+					>
+						<Icon name="search" size={18} />
+						<kbd class="navsearch-kbd" aria-hidden="true">⌘K</kbd>
+					</button>
 					<!-- No language control here, deliberately. Switching locale lives in
 					     two places instead: the footer strip below, and Settings.
 
@@ -171,7 +219,6 @@
 					     full Settings page is still linked from the account menu). -->
 					<QuickSettings />
 					<AccountMenu />
-				</div>
 			</div>
 			</div>
 		</nav>
@@ -201,9 +248,9 @@
 				class="mx-auto grid max-w-5xl grid-cols-2 gap-x-8 gap-y-10 px-5 py-10 sm:py-12 lg:grid-cols-4"
 			>
 				<div class="col-span-2 lg:col-span-1">
-					<div class="text-text">
+					<a class="inline-block text-text" href={localizeHref('/')} aria-label={t('common.home')}>
 						<BrandMark height={34} />
-					</div>
+					</a>
 					<p class="mt-2 max-w-xs text-small text-muted">
 						{t('footer.tagline')}
 					</p>
@@ -222,6 +269,7 @@
 						<li><a href={localizeHref('/plans')}>{t('nav.plans')}</a></li>
 						<li><a href={localizeHref('/sermons')}>{t('nav.sermons')}</a></li>
 						<li><a href={localizeHref('/biographies')}>{t('nav.biographies')}</a></li>
+						<li><a href="/feed.xml">RSS</a></li>
 					</ul>
 				</nav>
 				<!-- Notebook is deliberately absent. It is per-account state, and a
@@ -233,7 +281,7 @@
 					<ul class="footer-links">
 						<li><a href={localizeHref('/about')}>{t('nav.about')}</a></li>
 						<li><a href={localizeHref('/contact')}>{t('nav.contact')}</a></li>
-						<li><a href={localizeHref('/legal')}>{t('footer.legal')}</a></li>
+						<li><a href="{localizeHref('/legal')}#privacy">{t('footer.legal')}</a></li>
 					</ul>
 				</nav>
 				<div class="col-span-2 lg:col-span-1">
@@ -284,7 +332,7 @@
 				<div
 					class="mx-auto flex max-w-5xl flex-wrap items-baseline gap-x-5 gap-y-1 px-5 py-4 text-small"
 				>
-					<span class="py-1 font-semibold uppercase tracking-wider text-text"
+					<span class="eyebrow py-1 text-text"
 						>{t('footer.languages')}</span
 					>
 					{#each footerLangs as l (l.code)}
@@ -326,6 +374,15 @@
 					{/each}
 				</div>
 			</nav>
+
+			<!-- A copyright line, which a site publishing Terms is normally expected
+			     to carry. Symbol, year and the product's own name: nothing here needs
+			     translating, so it costs no catalogue keys. -->
+			<div class="border-t border-border">
+				<p class="mx-auto max-w-5xl px-5 py-3 text-small text-muted">
+					© {copyrightYear} Ochorus
+				</p>
+			</div>
 		</footer>
 	{/if}
 </div>

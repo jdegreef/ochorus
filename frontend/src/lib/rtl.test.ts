@@ -17,6 +17,12 @@
  *    the site in Arabic and finds a badge on the wrong side of a heading. The
  *    admin is exempt: it is deliberately English-only and always renders LTR.
  *
+ * 3. Scoped <style> blocks use LOGICAL CSS. The utility check above only sees
+ *    class names, so for a long time every physical declaration written in real
+ *    CSS shipped unchecked — which is how both slide-in drawers came to open
+ *    from the wrong edge in Arabic, and how the current-chapter marker and both
+ *    reading-page accent rails ended up on the wrong side.
+ *
  * This is a source-text check, like readerDirection.test.ts beside it — the
  * mistake it catches is one of authoring, and it costs nothing to run.
  */
@@ -49,6 +55,36 @@ const ADMIN_ONLY = [
 const isAdmin = (path: string) => ADMIN_ONLY.some((frag) => path.includes(frag));
 
 /**
+ * The same mistake, one layer down: a scoped `<style>` block. The class scan
+ * above never looked inside `<style>`, so physical CSS slipped past it — a
+ * pull-quote rule drawn down the left of Arabic prose, an outline rail pinned
+ * to the wrong margin, `text-align: left` on a sermon's outline.
+ *
+ * Positioning is deliberately included (`left:`/`right:` as properties), since
+ * a fixed panel anchored `right: 0` sits at the READING end in English and the
+ * wrong end in Arabic. Some properties genuinely have no logical form —
+ * `box-shadow` offsets, `translateX`, `transform-origin: left` — and those are
+ * flipped under an explicit `[dir='rtl']` rule instead; a file may opt a line
+ * out with a trailing `/* rtl-ok: why *\/` comment when the physical value is
+ * the correct one (a symmetric `left: 0; right: 0` pair, a mirror-image arrow).
+ */
+const PHYSICAL_CSS: [RegExp, string][] = [
+	[/\bborder-(left|right)(-[a-z]+)?\s*:/g, 'border-inline-start/end'],
+	[/\bpadding-(left|right)\s*:/g, 'padding-inline-start/end'],
+	[/\bmargin-(left|right)\s*:/g, 'margin-inline-start/end'],
+	[/\btext-align\s*:\s*(left|right)\b/g, 'text-align: start/end'],
+	[/^\s*(left|right)\s*:/gm, 'inset-inline-start/end']
+];
+
+/** The `<style>` blocks of a component, concatenated. */
+function styleBlocks(src: string): string {
+	return (src.match(/<style[^>]*>[\s\S]*?<\/style>/g) ?? []).join('\n');
+}
+
+/** Lines a file has deliberately excused, by line content. */
+const RTL_OK = /\/\*\s*rtl-ok:/;
+
+/**
  * Physical inline-axis utilities and their logical replacements. Only the
  * inline axis: `mt-`/`mb-`/`top-`/`bottom-` are direction-independent, and
  * pixel-positioned popovers (measured from a selection rect) are physical by
@@ -77,6 +113,23 @@ describe('right-to-left support', () => {
 		expect(hook).toContain('getTextDirection(locale)');
 	});
 
+	it('reader-facing scoped styles use logical, not physical, properties', () => {
+		const offenders: string[] = [];
+		for (const file of svelteFiles(SRC)) {
+			if (isAdmin(file)) continue;
+			const css = styleBlocks(readFileSync(file, 'utf-8'));
+			for (const line of css.split('\n')) {
+				if (RTL_OK.test(line)) continue;
+				for (const [pattern, replacement] of PHYSICAL_CSS) {
+					for (const hit of line.match(pattern) ?? []) {
+						offenders.push(`${file.replace(SRC, 'src')}: ${hit.trim()} → use ${replacement}`);
+					}
+				}
+			}
+		}
+		expect(offenders, offenders.join('\n')).toEqual([]);
+	});
+
 	it('reader-facing markup uses logical, not physical, inline spacing', () => {
 		const offenders: string[] = [];
 		for (const file of svelteFiles(SRC)) {
@@ -90,4 +143,5 @@ describe('right-to-left support', () => {
 		}
 		expect(offenders, offenders.join('\n')).toEqual([]);
 	});
+
 });

@@ -66,19 +66,19 @@
 	{#if loading && !book}
 		<p class="mt-6 text-body text-muted">Loading…</p>
 	{:else if denied}
-		<div class="mt-6 rounded-2xl border border-border bg-surface p-8">
+		<div class="mt-6 rounded-card border border-border bg-surface p-8">
 			<h2 class="text-h3 mb-2">Not authorised</h2>
 			<p class="text-body text-muted">You don't have access to the admin dashboard.</p>
 		</div>
 	{:else if error}
-		<div class="mt-6 rounded-2xl border border-border bg-surface p-8">
+		<div class="mt-6 rounded-card border border-border bg-surface p-8">
 			<h2 class="text-h3 mb-2">{error}</h2>
 			<button class="btn btn-ghost mt-3" onclick={() => load(data.slug)}>Try again</button>
 		</div>
 	{:else if book}
 		{@const b = book}
 		<header class="mb-6 mt-3">
-			<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">Admin · Work</p>
+			<p class="eyebrow mb-2 text-accent">Admin · Work</p>
 			<h1 class="text-display">{b.title}</h1>
 			<p class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-body text-muted">
 				<span>by <a href="/authors/{b.author.slug}" class="text-accent hover:underline">{b.author.name}</a></span>
@@ -91,7 +91,7 @@
 
 		<div class="space-y-5">
 			{#each b.languages as l (l.code)}
-				<section class="rounded-2xl border border-border bg-surface p-5">
+				<section class="rounded-card border border-border bg-surface p-5">
 					<div class="mb-3 flex flex-wrap items-start justify-between gap-3">
 						<div>
 							<h2 class="text-h3">{l.native_name} <span class="text-muted">· {l.name} ({l.code})</span></h2>
@@ -110,7 +110,7 @@
 					</div>
 
 					{#if l.chapters.length}
-						<ul class="divide-y divide-border rounded-xl border border-border">
+						<ul class="divide-y divide-border rounded-card border border-border">
 							{#each l.chapters as c (c.order)}
 								<li class="flex items-baseline justify-between gap-3 px-3 py-2">
 									<a href="/books/{b.slug}/{c.order}" class="min-w-0 truncate text-body text-text hover:text-accent">
@@ -118,7 +118,7 @@
 									</a>
 									<span class="flex shrink-0 items-center gap-2">
 										{#each c.flags as f (f)}
-											<span class="rounded-full border border-warning/40 px-2 py-0.5 text-[0.7rem] text-warning">{FLAG_LABEL[f] ?? f}</span>
+											<span class="rounded-full border border-warning/40 px-2 py-0.5 text-micro text-warning">{FLAG_LABEL[f] ?? f}</span>
 										{/each}
 										<span class="text-small tabular-nums text-muted">{fmt(c.word_count)}</span>
 									</span>

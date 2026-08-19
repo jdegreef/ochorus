@@ -61,7 +61,7 @@
 			class="flex flex-wrap items-center justify-between gap-4 rounded-card border border-border bg-surface p-6"
 		>
 			<div class="min-w-0">
-				<p class="mb-1 text-small font-semibold uppercase tracking-widest text-accent">
+				<p class="eyebrow mb-1 text-accent">
 					{t('plans.todaysReading')}
 				</p>
 				<h2 class="text-h3 truncate text-text">

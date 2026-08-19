@@ -74,7 +74,7 @@
 
 <div class="mx-auto max-w-6xl px-5 py-10">
 	<header class="mb-6">
-		<p class="mb-2 text-small font-semibold uppercase tracking-widest text-accent">Admin</p>
+		<p class="eyebrow mb-2 text-accent">Admin</p>
 		<h1 class="text-display">Coverage matrix</h1>
 		<p class="mt-2 text-body text-muted">Every work × language — where each is translated, and where the gaps are.</p>
 	</header>
@@ -82,12 +82,12 @@
 	{#if loading && !cov}
 		<p class="text-body text-muted">Loading…</p>
 	{:else if denied}
-		<div class="rounded-2xl border border-border bg-surface p-8">
+		<div class="rounded-card border border-border bg-surface p-8">
 			<h2 class="text-h3 mb-2">Not authorised</h2>
 			<p class="text-body text-muted">You don't have access to the admin dashboard.</p>
 		</div>
 	{:else if error}
-		<div class="rounded-2xl border border-border bg-surface p-8">
+		<div class="rounded-card border border-border bg-surface p-8">
 			<h2 class="text-h3 mb-2">Couldn't load coverage</h2>
 			<p class="mb-5 text-body text-muted">{error}</p>
 			<button class="btn btn-ghost" onclick={load}>Try again</button>
@@ -97,7 +97,7 @@
 		<div class="mb-4 flex flex-wrap items-center gap-2">
 			{#each TABS as t (t.key)}
 				<button
-					class="rounded-full border px-3.5 py-1.5 text-small font-semibold {tab === t.key
+					class="rounded-full border px-4 py-1.5 text-small font-semibold {tab === t.key
 						? 'border-accent-soft-border bg-accent-soft text-accent'
 						: 'border-border text-muted hover:text-text'}"
 					onclick={() => (tab = t.key)}
@@ -119,7 +119,7 @@
 			<span><span class="text-muted">·</span> missing</span>
 		</div>
 
-		<div class="overflow-x-auto rounded-2xl border border-border bg-surface">
+		<div class="overflow-x-auto rounded-card border border-border bg-surface">
 			<table class="w-full border-collapse text-body">
 				<thead>
 					<tr class="border-b border-border text-small text-muted">

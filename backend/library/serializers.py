@@ -1,9 +1,19 @@
+from django.db.models import Count, Sum
 from rest_framework import serializers
 
 from .contemporize import MODERN_LANGUAGE
 from .localization import language_from_request
 from .models import Author, Book, Chapter, Plan, PlanDay, Sermon, Topic, TopicBook
 from .scripture import book_of
+
+#: The annotations every book card needs. ``BookListSerializer`` reads
+#: ``num_chapters`` and ``total_words`` off the instance; a queryset missing
+#: either ships a card with that key absent rather than failing, so apply these
+#: as a pair wherever books are serialized: ``.annotate(**BOOK_CARD_ANNOTATIONS)``.
+BOOK_CARD_ANNOTATIONS = {
+    "num_chapters": Count("chapters"),
+    "total_words": Sum("chapters__word_count"),
+}
 
 
 def _modern_edition_available(slug: str) -> bool:
@@ -29,6 +39,31 @@ def _available_languages(model, slug: str) -> list[str]:
         .values_list("language", flat=True)
         .distinct()
     )
+
+
+def book_topic_map(language: str) -> dict[str, list[dict]]:
+    """``book_slug -> [topic chip]`` for every published topic, in one pass.
+
+    Built whole rather than per book on purpose: a shelf of forty books would
+    otherwise cost forty topic queries. Views that serialize a known set of
+    books hand this to the serializer through the ``book_topics`` context key;
+    ``BookListSerializer`` builds it on demand when a view hasn't, so the chips
+    are never silently empty just because a caller forgot.
+    """
+    mapping: dict[str, list[dict]] = {}
+    topics = Topic.objects.filter(is_published=True).prefetch_related(
+        "translations", "entries"
+    )
+    for topic in topics:
+        # Skip shelves with no title in this language — see _topic_chips.
+        if not topic.is_translated_into(language):
+            continue
+        chip = {"slug": topic.slug, "title": topic.title_for(language)}
+        for entry in topic.entries.all():
+            mapping.setdefault(entry.book_slug, []).append(chip)
+    for chips in mapping.values():
+        chips.sort(key=lambda c: c["title"])
+    return mapping
 
 
 def _topic_chips(language: str, **membership) -> list[dict]:
@@ -115,8 +150,15 @@ class AuthorListSerializer(LocalizedMixin, serializers.ModelSerializer):
         return obj.bio_for(self._language())
 
 
-class BookListSerializer(serializers.ModelSerializer):
-    """Shelf view — enough to render a cover card, no chapter bodies."""
+class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
+    """Shelf view — enough to render a cover card, no chapter bodies.
+
+    Every queryset serialized through this must carry BOTH the ``num_chapters``
+    and ``total_words`` annotations (see ``BOOK_CARD_ANNOTATIONS``). DRF drops a
+    source-less field silently, so a missing annotation doesn't raise — it just
+    ships a card without ``word_count``, and the same serializer then emits two
+    different shapes depending on which view rendered it.
+    """
 
     author = AuthorSerializer(read_only=True)
     chapter_count = serializers.IntegerField(source="num_chapters", read_only=True)
@@ -142,10 +184,24 @@ class BookListSerializer(serializers.ModelSerializer):
 
     def get_topics(self, obj):
         """Published topics this book belongs to, for the shelf's topic filter.
-        Served from a slug→chips map the view builds once (see
-        ``BookListView.get_serializer_context``) so the shelf stays one query
-        for topics regardless of how many books are on it."""
-        return self.context.get("book_topics", {}).get(obj.slug, [])
+
+        Served from a slug→chips map built once per shelf rather than per book,
+        so topics cost a fixed handful of queries however many books are on it.
+        A view that already knows its book set passes the map in as
+        ``book_topics`` context (``BookListView``); otherwise it's built here on
+        first use and cached on the serializer, which for ``many=True`` is one
+        shared instance — so the author, topic and "more like this" cards get
+        real chips instead of the empty list they used to always return.
+        """
+        supplied = self.context.get("book_topics")
+        if supplied is not None:
+            return supplied.get(obj.slug, [])
+        language = self._language()
+        cached_for, cached = getattr(self, "_topic_map", (None, None))
+        if cached_for != language:
+            cached = book_topic_map(language)
+            self._topic_map = (language, cached)
+        return cached.get(obj.slug, [])
 
 
 class SermonListSerializer(serializers.ModelSerializer):
@@ -337,64 +393,121 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
     def get_has_long_bio(self, obj):
         return bool(obj.bio_html_for(self._language()).strip())
 
+    def _cached(self, key, obj, build):
+        """Run ``build`` once per (field, author, language) and reuse the list.
+
+        Several of this serializer's fields want the same result sets, and each
+        used to re-run its own query — books three ways (the list, ``.count()``,
+        ``.values_list()``), sermons twice, and the topic walk once per chip
+        field. The author page is walked once per author per locale on every
+        prerender, so those repeats were paid on every build. Measured on a
+        one-book/one-sermon/one-topic author: 15 queries down to 10, and the
+        book cards now carry topic chips they previously never got.
+        """
+        cache = getattr(self, "_result_cache", None)
+        if cache is None:
+            cache = self._result_cache = {}
+        ck = (key, obj.pk, self._language())
+        if ck not in cache:
+            cache[ck] = build()
+        return cache[ck]
+
     def _sermons(self, obj):
-        return list(
-            obj.sermons.filter(is_published=True, language=self._language())
-            .select_related("author")
-            .prefetch_related("author__translations")
-            .order_by("sort_order", "title")
+        return self._cached(
+            "sermons",
+            obj,
+            lambda: list(
+                obj.sermons.filter(is_published=True, language=self._language())
+                .select_related("author")
+                .prefetch_related("author__translations")
+                .order_by("sort_order", "title")
+            ),
         )
 
     def _books(self, obj):
-        from django.db.models import Count
-
-        return (
-            obj.books.filter(is_published=True, language=self._language())
-            .select_related("author")
-            .prefetch_related("author__translations")
-            .annotate(num_chapters=Count("chapters"))
-            .order_by("sort_order", "title")
+        return self._cached(
+            "books",
+            obj,
+            lambda: list(
+                obj.books.filter(is_published=True, language=self._language())
+                .select_related("author")
+                .prefetch_related("author__translations")
+                # total_words too, not just the chapter count: without it these
+                # cards shipped without word_count while every other path had
+                # it, so reading-time estimates vanished on author pages alone.
+                .annotate(**BOOK_CARD_ANNOTATIONS)
+                .order_by("sort_order", "title")
+            ),
         )
 
     def get_books(self, obj):
-        return BookListSerializer(self._books(obj), many=True, context=self.context).data
+        # The book cards' own topic chips come from the same pass this page
+        # already makes over published topics — without threading it through,
+        # BookListSerializer would fetch the whole topic set a second time.
+        ctx = {**self.context, "book_topics": self._topic_pass(obj)[1]}
+        return BookListSerializer(self._books(obj), many=True, context=ctx).data
 
     def get_book_count(self, obj):
-        return self._books(obj).count()
+        return len(self._books(obj))
 
     def get_sermons(self, obj):
         return SermonListSerializer(
             self._sermons(obj), many=True, context=self.context
         ).data
 
+    def _topic_pass(self, obj):
+        """One walk over published topics, serving both chip fields.
+
+        Returns ``(author chips, book_slug -> chips)``: the shelves this author
+        appears in, and the per-book map the nested cards need. Two fields want
+        the same topic rows, so they share one fetch — otherwise the author page
+        would pull the whole topic set (plus its translations and both
+        membership tables) twice.
+        """
+        return self._cached("topic_pass", obj, lambda: self._build_topic_pass(obj))
+
+    def _build_topic_pass(self, obj):
+        from .models import Topic
+
+        lang = self._language()
+        # Derived from the memoized lists the other fields already fetched —
+        # the slugs are right there, and re-querying for them cost two more
+        # round-trips per author page.
+        book_slugs = {b.slug for b in self._books(obj)}
+        sermon_slugs = {s.slug for s in self._sermons(obj)}
+        if not book_slugs and not sermon_slugs:
+            return [], {}
+        topics = Topic.objects.filter(is_published=True).prefetch_related(
+            "translations", "entries", "sermon_entries"
+        )
+        chips = []
+        by_book: dict[str, list[dict]] = {}
+        for topic in topics:
+            # Untranslated shelves are skipped rather than shown in English —
+            # a chip with no title in this language has nothing to render.
+            if not topic.is_translated_into(lang):
+                continue
+            chip = {"slug": topic.slug, "title": topic.title_for(lang)}
+            entries = [e.book_slug for e in topic.entries.all()]
+            for slug in entries:
+                if slug in book_slugs:
+                    by_book.setdefault(slug, []).append(chip)
+            in_topic = any(s in book_slugs for s in entries) or any(
+                e.sermon_slug in sermon_slugs for e in topic.sermon_entries.all()
+            )
+            if in_topic:
+                chips.append(chip)
+        chips.sort(key=lambda c: c["title"])
+        for book_chips in by_book.values():
+            book_chips.sort(key=lambda c: c["title"])
+        return chips, by_book
+
     def get_topics(self, obj):
         """The published topical shelves this author appears in — any topic
         that includes one of their published books or sermons in this language.
         Chips link back to the topic pages, so a reader can jump from an author
         to the themes their work sits under (cross-navigation into browse)."""
-        from .models import Topic
-
-        lang = self._language()
-        book_slugs = set(self._books(obj).values_list("slug", flat=True))
-        sermon_slugs = set(
-            obj.sermons.filter(is_published=True, language=lang).values_list(
-                "slug", flat=True
-            )
-        )
-        if not book_slugs and not sermon_slugs:
-            return []
-        topics = Topic.objects.filter(is_published=True).prefetch_related(
-            "translations", "entries", "sermon_entries"
-        )
-        chips = []
-        for topic in topics:
-            in_topic = any(
-                e.book_slug in book_slugs for e in topic.entries.all()
-            ) or any(e.sermon_slug in sermon_slugs for e in topic.sermon_entries.all())
-            if in_topic and topic.is_translated_into(lang):
-                chips.append({"slug": topic.slug, "title": topic.title_for(lang)})
-        chips.sort(key=lambda c: c["title"])
-        return chips
+        return self._topic_pass(obj)[0]
 
 
 class ChapterTocSerializer(serializers.ModelSerializer):

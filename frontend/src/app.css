@@ -23,6 +23,7 @@
 	--color-danger: var(--danger);
 	--color-warning: var(--warning);
 	--radius-card: 12px;
+	--radius-sm: 9px;
 	--font-display: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
 	--font-sans: 'Hanken Grotesk Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
 
@@ -35,6 +36,8 @@
 	   (`<h2 class="text-small uppercase">`) rendered as a 25px Fraunces heading.
 	   Tailwind v4 builds font-size utilities from the --text-* namespace, and
 	   pairs each with --text-*--line-height. */
+	--text-micro: var(--fs-micro);
+	--text-micro--line-height: 1.4;
 	--text-eyebrow: var(--fs-eyebrow);
 	--text-eyebrow--line-height: 1.4;
 	--text-small: var(--fs-small);
@@ -51,6 +54,7 @@
 
 /* Type scale — modular ratio 1.25, anchored at 1rem body. (Shared with Take Root.) */
 :root {
+	--fs-micro: 0.6875rem;
 	--fs-eyebrow: 0.75rem;
 	--fs-small: 0.875rem;
 	--fs-body: 1rem;
@@ -87,11 +91,18 @@
 	   enough to clear 4.5:1 against a `bg-warning/10` wash as well as a flat
 	   surface — that badge is where the token is most often used. */
 	--warning: #e0b45c;
+	--shadow-card: 0 6px 20px -12px rgb(0 0 0 / 0.55);
+	--shadow-popover: 0 10px 30px rgb(0 0 0 / 0.4);
+	--shadow-drawer: -12px 0 40px rgb(0 0 0 / 0.45);
 	--font-display: 'Fraunces Variable', Georgia, serif;
 	--font-sans: 'Hanken Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
-	--radius: 12px;
-	--radius-sm: 9px;
 	--reading-scale: 1;
+	/* Motion, per STYLE_GUIDE §7 (quiet and quick, 120-240ms). Eight distinct
+	   durations had accumulated across the app, including a 0.28s and a 0.3s
+	   that nobody chose between. Three steps, used through var(). */
+	--duration-fast: 150ms;
+	--duration-base: 250ms;
+	--duration-slow: 400ms;
 }
 
 :root[data-theme='light'] {
@@ -109,6 +120,9 @@
 	--border-strong: #968462;
 	--danger: #b23a48;
 	--warning: #7d5815;
+	--shadow-card: 0 6px 20px -12px rgb(90 70 40 / 0.35);
+	--shadow-popover: 0 10px 30px rgb(90 70 40 / 0.18);
+	--shadow-drawer: -12px 0 40px rgb(90 70 40 / 0.2);
 }
 
 /* "Sepia" = a warm parchment reading tone: like paper but softer on the eyes
@@ -133,9 +147,21 @@
 	--border-strong: #8d7b57;
 	--danger: #b23a48;
 	--warning: #775413;
+	--shadow-card: 0 6px 20px -12px rgb(80 60 30 / 0.4);
+	--shadow-popover: 0 10px 30px rgb(80 60 30 / 0.22);
+	--shadow-drawer: -12px 0 40px rgb(80 60 30 / 0.24);
 }
 
 @layer base {
+	/* viewport-fit=cover (see app.html) lets the page paint under a notch, which
+	   is what makes env(safe-area-inset-bottom) meaningful for the reader's fixed
+	   bars — but it applies to the sides too. In landscape on a notched phone the
+	   nav and the first characters of every prose line would sit under the sensor
+	   housing without this. Both insets are 0 in portrait and on devices with no
+	   cutout, so this costs nothing elsewhere. */
+	body {
+		padding-inline: env(safe-area-inset-left) env(safe-area-inset-right);
+	}
 	/* Tell the browser which way each theme leans, so native UI it paints for
 	   us — select dropdowns, scrollbars, autofill, spin buttons — matches the
 	   page instead of rendering light chrome over a near-black surface.
@@ -201,11 +227,11 @@
 	z-index: 100;
 	transform: translateY(-150%);
 	padding: 0.5rem 0.9rem;
-	border-radius: var(--radius-sm, 6px);
+	border-radius: var(--radius-sm);
 	background: var(--accent);
 	color: var(--accent-contrast, #fff);
 	font-weight: 600;
-	transition: transform 0.15s ease;
+	transition: transform var(--duration-fast) ease;
 }
 .skip-link:focus {
 	transform: translateY(0);
@@ -350,10 +376,10 @@
 		border-radius: var(--radius-sm);
 		font-family: var(--font-sans);
 		font-weight: 600;
-		font-size: 0.95rem;
+		font-size: var(--fs-body);
 		border: 1px solid transparent;
 		cursor: pointer;
-		transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+		transition: background var(--duration-fast) ease, border-color var(--duration-fast) ease, color var(--duration-fast) ease;
 	}
 	/* Primary is soft, not bold: a brand-tinted button, never a solid indigo
 	   block (see STYLE_GUIDE §5). Matches Take Root. */
@@ -365,6 +391,27 @@
 	.btn-primary:hover {
 		text-decoration: none;
 		border-color: var(--accent);
+	}
+	/* Compact button — the size that 47 of the `!py-1 !px-2.5 !text-small`
+	   overrides were reaching for. */
+	.btn-sm {
+		padding: 0.35rem 0.65rem;
+		font-size: var(--fs-small);
+	}
+	/* Square icon button: an icon, no label, equal sides. */
+	.btn-icon {
+		padding: 0.4rem;
+		line-height: 1;
+	}
+	/* A dashboard stat's number. Display face, one step above the page title,
+	   set solid so a row of tiles aligns on the digits. */
+	.stat-number {
+		font-family: var(--font-display);
+		font-size: var(--fs-h1);
+		font-weight: 600;
+		line-height: 1;
+		font-variant-numeric: tabular-nums;
+		color: var(--text);
 	}
 	.btn-ghost {
 		background: transparent;
@@ -406,7 +453,37 @@
 	font-size: calc(1.18rem * var(--reading-scale, 1));
 	line-height: var(--reading-leading, 1.85);
 	color: var(--text);
+	/* Type inside the prose is sized in `em`, i.e. relative to this. Set here
+	   rather than on each rule so the whole block scales as one. */
+	--prose-h2: 1.42em;
+	--prose-h3: 1.18em;
 }
+/* The opening initial.
+   STYLE_GUIDE §2 asks for prose "set like a printed devotional page", and the
+   opening letter is the one piece of that still missing. It is safe to render
+   because of work already done upstream: the importer reattaches decorative
+   initials that the PDF extraction stripped out of reading order, and the admin
+   audit flags any chapter whose body still starts lower-case — so the first
+   character is reliably a capital rather than the tail of a broken word.
+
+   Deliberately narrow:
+   - `float: inline-start`, so it sits on the reading edge in either direction.
+   - Not in paged mode: a float cannot span CSS columns, and the initial would
+     be clipped at the column boundary.
+   - Not for Arabic, where a floated initial is not a convention of the script.
+   - `:first-of-type`, so a chapter opening with a heading still caps its first
+     real paragraph, and no later paragraph gets one. */
+article:not(.paged) .reading > p:first-of-type:not(:lang(ar))::first-letter {
+	float: inline-start;
+	font-family: var(--font-display);
+	font-size: 3.1em;
+	line-height: 0.86;
+	font-weight: 600;
+	margin-inline-end: 0.08em;
+	padding-top: 0.06em;
+	color: var(--text);
+}
+
 /* Server-wrapped Bible cross-references inside the reading text. Subtle by
    default — a dotted underline in the accent tint — tappable to open the
    scripture popover (see ScripturePopover.svelte). */
@@ -427,12 +504,23 @@
 	   the ragged spacing stays tight (uses the element's inherited lang). */
 	text-align: var(--reading-align, start);
 	hyphens: var(--reading-hyphens, manual);
+	/* A devotional page shouldn't end a paragraph on a lone word. `pretty` also
+	   evens the last few lines' rag where the browser supports it. */
+	text-wrap: pretty;
+	orphans: 2;
+	widows: 2;
 }
 .reading h2,
 .reading h3 {
 	font-family: var(--font-display);
 	margin: 1.8em 0 0.7em;
 	line-height: 1.25;
+}
+.reading h2 {
+	font-size: var(--prose-h2);
+}
+.reading h3 {
+	font-size: var(--prose-h3);
 }
 .reading blockquote {
 	margin: 1.4em 0;
@@ -454,13 +542,104 @@
 	width: 40%;
 }
 
+/* ── Print ──────────────────────────────────────────────────────────────────
+   There was no print stylesheet at all, so printing or PDF-ing a chapter
+   carried the sticky reader bar, the fixed progress scrubber, the page-turn
+   arrows and the listen bar onto the paper — and paged mode printed a single
+   screen of a multi-column layout.
+
+   What should reach paper is the title and the prose. Everything that exists to
+   navigate a screen is chrome and comes off. */
+@media print {
+	nav.appnav,
+	footer,
+	.skip-link,
+	.progress-foot,
+	.listen-bar,
+	.pageturn,
+	.selbar,
+	.toc-panel,
+	.outline-panel,
+	.outline-rail,
+	.min-left,
+	.pwa-stack,
+	.reader-chrome,
+	.read-progress,
+	.paged-backdrop,
+	.scripture-pop,
+	.define-pop {
+		display: none !important;
+	}
+
+	/* The reader's own colours are for a lit screen; paper is white.
+	   `:root[data-theme]` as well as `:root`: the theme block is ALWAYS present
+	   and its attribute selector outranks a bare :root, so without this the
+	   lamplight palette printed — cream text on white paper. */
+	:root,
+	:root[data-theme] {
+		--bg: #ffffff;
+		--surface: #ffffff;
+		--text: #000000;
+		--muted: #333333;
+		--border: #999999;
+		--border-strong: #666666;
+		--accent: #000000;
+	}
+	body {
+		background: #ffffff;
+		color: #000000;
+	}
+
+	.reading {
+		/* Reader preferences are a screen comfort setting; paper has its own
+		   ergonomics, and a 1.6x scale would waste most of the page. */
+		font-size: 11pt;
+		line-height: 1.5;
+		color: #000000;
+	}
+	.reading p {
+		orphans: 3;
+		widows: 3;
+	}
+	/* Don't strand a heading at the foot of a page. */
+	.reading h2,
+	.reading h3 {
+		break-after: avoid;
+	}
+	/* A highlight is a screen affordance; on paper it prints as a grey box. */
+	.reading mark.range-mark,
+	.reading mark.search-hit {
+		background: none !important;
+		border-bottom: 1px solid #666666;
+	}
+	/* Spell out where a scripture reference pointed, since it can't be tapped. */
+	.reading .scripture-ref {
+		text-decoration: none;
+	}
+	a {
+		color: #000000;
+		text-decoration: none;
+	}
+}
+
 /* ── App nav ─────────────────────────────────────────────────────────────────
    Mirrors Take Root's menu bar: brand at the left, icon+label links centred in
    the bar, and the controls (preferences gear, account avatar) at the right.
    Same spacing, radii and tokens as Take Root's app.css. */
 nav.appnav {
+	position: sticky;
+	top: 0;
+	/* Above page content and any page's own sticky sub-bar (those sit at z-20),
+	   below the overlays (drawers 45+, note dialog 50). */
+	z-index: 40;
 	border-bottom: 1px solid var(--border);
 	background: var(--surface-2);
+}
+/* The reading routes opt out: their own bar pins to the top and carries
+   back/contents/settings, so a second sticky bar would take ~56px of reading
+   height for the whole chapter and stack two bars over the text. */
+nav.appnav.appnav-static {
+	position: static;
 }
 /* The bar's content sits in a centred container (like Take Root's live nav),
    so the brand and controls are inset from the viewport edges and align with
@@ -490,13 +669,17 @@ nav.appnav .navctl {
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
+	/* Outside .navmenu now, so it survives the mobile collapse — the sign-in
+	   control used to disappear with the drawer, which made
+	   `account.signedOutNote` ("Sign in, top right") false on every phone. */
+	margin-inline-start: auto;
 }
 nav.appnav .navlinks a {
 	display: inline-flex;
 	align-items: center;
 	gap: 0.4rem;
 	color: var(--muted);
-	font-size: 0.95rem;
+	font-size: var(--fs-body);
 	padding: 0.35rem 0.75rem;
 	border-radius: 999px;
 	white-space: nowrap;
@@ -536,7 +719,6 @@ nav.appnav .navmenu {
 /* Hamburger toggle — hidden until the mobile breakpoint. */
 nav.appnav .navtoggle {
 	display: none;
-	margin-inline-start: auto;
 	padding: 0.3rem;
 	background: none;
 	border: none;
@@ -547,21 +729,37 @@ nav.appnav .navtoggle:hover {
 	color: var(--accent);
 }
 /* Below this the absolute centring would collide with the brand/controls:
-   let the links flow in the bar instead. */
-@media (max-width: 960px) {
+   let the links flow in the bar instead. One below Tailwind's `lg` (1024px):
+   these queries used to sit at 960px and 760px, eight pixels off the `lg` and
+   `md` the markup reflows at, so there was a sliver at each where the nav and
+   the content it sits above disagreed about the layout. */
+@media (max-width: 1023.98px) {
 	nav.appnav .navlinks {
 		position: static;
 		transform: none;
 	}
 }
-/* Phones: collapse links + controls behind a hamburger drawer. */
-@media (max-width: 760px) {
+/* Phones: collapse links + controls behind a hamburger drawer. One below
+   Tailwind's `md` (768px). */
+@media (max-width: 767.98px) {
 	nav.appnav .navtoggle {
 		display: inline-flex;
 		align-items: center;
 	}
+	/* Visual order only — tab order follows the DOM, which is deliberately
+	   brand -> toggle -> links -> controls so opening the drawer lands the
+	   keyboard on the links. Visually the controls and toggle hold the bar and
+	   the links wrap beneath: a 100% basis breaks the line, so the menu has to
+	   come last here or the controls are pushed onto a third row. */
+	nav.appnav .navctl {
+		order: 1;
+	}
+	nav.appnav .navtoggle {
+		order: 2;
+	}
 	nav.appnav .navmenu {
 		display: none;
+		order: 3;
 		flex-basis: 100%;
 		flex-direction: column;
 		align-items: stretch;
@@ -582,21 +780,42 @@ nav.appnav .navtoggle:hover {
 	}
 	nav.appnav .navlinks a {
 		padding: 0.65rem 0.7rem;
-		font-size: 1rem;
+		font-size: var(--fs-body);
 		border-radius: var(--radius-sm);
 	}
-	nav.appnav .navctl {
-		flex-wrap: wrap;
-		margin-top: 0.5rem;
-		padding-top: 0.65rem;
-		border-top: 1px solid var(--border);
+	/* The controls stay in the bar on a phone — only the links collapse — so
+	   their dropdowns still open from the bar's end and need no re-anchoring. */
+	nav.appnav .navtoggle {
+		margin-inline-start: 0.25rem;
 	}
-	/* In the drawer the gear/avatar sit at the left, so open their menus
-	   rightward (left-aligned) to avoid clipping off the viewport edge. */
-	nav.appnav .account-menu,
-	nav.appnav .prefs-menu {
-		inset-inline-end: auto;
-		inset-inline-start: 0;
+}
+
+/* The command palette's trigger. The hint is desktop-only — it is the one place
+   the shortcut is advertised, and it is meaningless without a keyboard. */
+nav.appnav .navsearch {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.3rem 0.6rem;
+	border: 1px solid var(--border-strong);
+	border-radius: 999px;
+	background: var(--surface);
+	color: var(--muted);
+	cursor: pointer;
+}
+nav.appnav .navsearch:hover {
+	color: var(--text);
+	border-color: var(--accent);
+}
+.navsearch-kbd {
+	display: none;
+	font-family: var(--font-sans);
+	font-size: var(--fs-micro);
+	letter-spacing: 0.02em;
+}
+@media (min-width: 768px) {
+	.navsearch-kbd {
+		display: inline;
 	}
 }
 
@@ -626,8 +845,8 @@ nav.appnav .navtoggle:hover {
 	min-width: 13rem;
 	background: var(--surface);
 	border: 1px solid var(--border);
-	border-radius: var(--radius);
-	box-shadow: 0 10px 30px rgb(0 0 0 / 0.18);
+	border-radius: var(--radius-card);
+	box-shadow: var(--shadow-popover);
 	padding: 0.35rem;
 	overflow: hidden;
 }
@@ -640,7 +859,7 @@ nav.appnav .navtoggle:hover {
 	background: transparent;
 	border-radius: var(--radius-sm);
 	color: var(--text);
-	font-size: 0.92rem;
+	font-size: var(--fs-small);
 	cursor: pointer;
 }
 .account-item:hover {
@@ -688,7 +907,7 @@ nav.appnav .navtoggle:hover {
 }
 .prefs-label {
 	color: var(--muted);
-	font-size: 0.9rem;
+	font-size: var(--fs-small);
 	white-space: nowrap;
 }
 .prefs-toggle {
@@ -720,6 +939,27 @@ nav.appnav .navtoggle:hover {
 	color: var(--muted);
 }
 
+/* The EYEBROW — the kicker above a page title, a card title, a popover heading.
+   Distinct from .section-label above, which labels a block of content within a
+   page and is a step larger.
+
+   This existed as 61 hand-written copies across 36 files, at four sizes, two
+   weights and ~11 letter-spacings (0.02em to 0.2em) — the app's most repeated
+   micro-pattern, and no two of them matched. STYLE_GUIDE §2 fixes the recipe at
+   0.75rem / 0.08em / 600; this is that, once.
+
+   Colour is deliberately NOT set here. These component classes are unlayered,
+   so a `text-accent` beside the class would silently lose — and an eyebrow is
+   accent above a page title (there it is the page's identity), muted in a
+   popover, and white on a cover scrim. Every call site states its own colour. */
+.eyebrow {
+	font-size: var(--fs-eyebrow);
+	line-height: 1.4;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+}
+
 /* ── Shelf cards ───────────────────────────────────────────────────────────
    The Topics page's card — a colour-washed "shelf" band carrying an icon chip
    and a fan of covers, over a plain typographic body — is the best-looking
@@ -740,13 +980,13 @@ nav.appnav .navtoggle:hover {
 	   browse grids look unfinished. */
 	height: 100%;
 	border: 1px solid var(--border);
-	border-radius: var(--radius-card, 12px);
+	border-radius: var(--radius-card);
 	overflow: hidden;
 	background: var(--surface);
 	transition:
-		border-color 0.15s,
-		box-shadow 0.15s,
-		transform 0.15s;
+		border-color var(--duration-fast),
+		box-shadow var(--duration-fast),
+		transform var(--duration-fast);
 }
 .shelf-card:hover {
 	border-color: color-mix(in srgb, var(--shelf-hue) 55%, var(--border));
@@ -815,7 +1055,7 @@ nav.appnav .navtoggle:hover {
 	font-size: var(--fs-h3);
 	font-weight: 600;
 	color: var(--text);
-	transition: color 0.15s;
+	transition: color var(--duration-fast);
 }
 .shelf-card:hover .shelf-card-title {
 	color: color-mix(in srgb, var(--shelf-hue) 78%, var(--text));
@@ -842,16 +1082,16 @@ nav.appnav .navtoggle:hover {
 	height: 100%;
 	padding: 0.6rem;
 	border: 1px solid var(--border);
-	border-radius: var(--radius-card, 12px);
+	border-radius: var(--radius-card);
 	background: var(--surface);
 	transition:
-		border-color 0.15s,
-		box-shadow 0.15s,
-		transform 0.15s;
+		border-color var(--duration-fast),
+		box-shadow var(--duration-fast),
+		transform var(--duration-fast);
 }
 .book-card:hover {
 	border-color: var(--accent-soft-border);
-	box-shadow: 0 6px 20px -12px #0007;
+	box-shadow: var(--shadow-card);
 	text-decoration: none;
 	transform: translateY(-2px);
 }
@@ -859,11 +1099,20 @@ nav.appnav .navtoggle:hover {
    reading" resume card.
 
    This has to be a modifier here rather than a `flex-row` utility on the
-   element: these component classes are UNLAYERED, Tailwind's utilities live in
+   element: `.book-card` is UNLAYERED, Tailwind's utilities live in
    `@layer utilities`, and unlayered CSS beats layered CSS whatever the
    specificity. So `class="book-card flex-row"` silently keeps column. (An
    `!important` utility like `!p-4` does win — which makes the failure worse,
-   because some of the overrides on the same element appear to work.) */
+   because some of the overrides on the same element appear to work.)
+
+   WHICH classes are unlayered matters, and the split is not obvious:
+     - UNLAYERED (a utility loses, so use a modifier): .book-card, .shelf-card,
+       .sermon-row, .filter-field, .field, .seg, .chip, .section-label,
+       .eyebrow, .reading, .widthctl, nav.appnav, .account-*, .prefs-*.
+     - IN `@layer components` (a utility WINS, no `!` needed): .btn and its
+       variants, .text-display.
+   The button family being layered is why the `!` on `!py-1` / `!text-small`
+   was never doing anything a plain `py-1` wouldn't. */
 .book-card--row {
 	flex-direction: row;
 	align-items: center;
@@ -899,7 +1148,7 @@ nav.appnav .navtoggle:hover {
 	aspect-ratio: 3 / 4;
 	border-radius: 0.25rem;
 	overflow: hidden;
-	box-shadow: 0 2px 6px -2px #0006;
+	box-shadow: var(--shadow-card);
 	margin-inline-start: -0.7rem;
 	background: var(--surface);
 	transform: rotate(-3deg);
@@ -939,11 +1188,11 @@ nav.appnav .navtoggle:hover {
 	gap: 1rem;
 	padding: 1.1rem 1.25rem 1.15rem 1.5rem;
 	border: 1px solid var(--border);
-	border-radius: var(--radius-card, 12px);
+	border-radius: var(--radius-card);
 	background: var(--surface);
 	transition:
-		border-color 0.15s,
-		background 0.15s;
+		border-color var(--duration-fast),
+		background var(--duration-fast);
 }
 /* The sermon's emblem chip, in the writer's era tint, so each row opens with
    its own mark rather than a wall of prose. */
@@ -959,10 +1208,10 @@ nav.appnav .navtoggle:hover {
 	inset-block: -1px;
 	inset-inline-start: -1px;
 	width: 3px;
-	border-start-start-radius: var(--radius-card, 12px);
-	border-end-start-radius: var(--radius-card, 12px);
+	border-start-start-radius: var(--radius-card);
+	border-end-start-radius: var(--radius-card);
 	background: color-mix(in srgb, var(--row-hue) 55%, transparent);
-	transition: background 0.15s;
+	transition: background var(--duration-fast);
 }
 .sermon-row:hover {
 	border-color: color-mix(in srgb, var(--row-hue) 45%, var(--border));
@@ -986,7 +1235,7 @@ nav.appnav .navtoggle:hover {
 	font-weight: 600;
 	line-height: 1.3;
 	color: var(--text);
-	transition: color 0.15s;
+	transition: color var(--duration-fast);
 }
 .sermon-row:hover .sermon-row-title {
 	color: color-mix(in srgb, var(--row-hue) 70%, var(--text));
@@ -1006,7 +1255,7 @@ nav.appnav .navtoggle:hover {
 	.shelf-card,
 	.shelf-card:hover {
 		transform: none;
-		transition: border-color 0.15s;
+		transition: border-color var(--duration-fast);
 	}
 }
 
@@ -1030,7 +1279,10 @@ nav.appnav .navtoggle:hover {
 	gap: 0.5rem;
 }
 
-/* Any input/select sitting in a .filter-row. One height for all of them. */
+/* Any input, select or textarea in the app. One height, one radius, one edge.
+   `.filter-field` is the same thing under its original name — the filter rows
+   on the browse pages read better with it, and both names resolve here. */
+.field,
 .filter-field {
 	min-width: 0;
 	border: 1px solid var(--border-strong);
@@ -1041,10 +1293,19 @@ nav.appnav .navtoggle:hover {
 	line-height: 1.5;
 	color: var(--text);
 }
+/* A control in an "on" state (an armed sleep timer, an active filter). Needed
+   as a modifier because .field is unlayered: a border-accent utility beside it
+   would lose, so the state would simply not show. */
+.field.is-active {
+	border-color: var(--accent);
+	color: var(--accent);
+}
+.field::placeholder,
 .filter-field::placeholder {
 	color: var(--muted);
 }
 /* The free-text filter is the primary control: it takes the leftover room. */
+.field.grow,
 .filter-field.grow {
 	flex: 1 1 12rem;
 }
@@ -1144,45 +1405,58 @@ nav.appnav .navtoggle:hover {
    Gated on `pointer: coarse`, so the desktop's compact chrome is untouched and
    only finger-driven sessions pay the height. Padding is left alone: the
    height is met with min-height, so no label moves and nothing reflows. */
+@layer components {
+	@media (pointer: coarse) {
+		.btn,
+		.chip,
+		.seg button,
+		.field,
+		.filter-field,
+		.widthctl button,
+		.account-item,
+		.rc-opt,
+		.google-btn {
+			min-height: 2.75rem;
+		}
+		/* Buttons whose label would otherwise sit at the top of the taller box.
+		   (.btn and .widthctl button are already inline-flex + centred.) */
+		.chip,
+		.seg button {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.account-item {
+			display: flex;
+			align-items: center;
+		}
+		/* The avatar and gear keep their 32px disc — enlarging them would reflow a
+		   nav bar that is already tight on a phone. Instead each grows an
+		   invisible, centred 44px hit area, which is what the finger needs. */
+		.account-btn,
+		.prefs-btn {
+			position: relative;
+		}
+		.account-btn::after,
+		.prefs-btn::after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 2.75rem;
+			height: 2.75rem;
+			transform: translate(-50%, -50%);
+		}
+	}
+}
+
+/* iOS Safari zooms the viewport when a focused control is under 16px, and the
+   touch UI wants the larger text anyway. Deliberately NOT inside the @layer
+   above: the base .field rule is unlayered, so a layered override loses to it. */
 @media (pointer: coarse) {
-	.btn,
-	.chip,
-	.seg button,
-	.filter-field,
-	.widthctl button,
-	.account-item,
-	.rc-opt,
-	.google-btn {
-		min-height: 2.75rem;
-	}
-	/* Buttons whose label would otherwise sit at the top of the taller box.
-	   (.btn and .widthctl button are already inline-flex + centred.) */
-	.chip,
-	.seg button {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-	}
-	.account-item {
-		display: flex;
-		align-items: center;
-	}
-	/* The avatar and gear keep their 32px disc — enlarging them would reflow a
-	   nav bar that is already tight on a phone. Instead each grows an
-	   invisible, centred 44px hit area, which is what the finger needs. */
-	.account-btn,
-	.prefs-btn {
-		position: relative;
-	}
-	.account-btn::after,
-	.prefs-btn::after {
-		content: '';
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		width: 2.75rem;
-		height: 2.75rem;
-		transform: translate(-50%, -50%);
+	.field,
+	.filter-field {
+		font-size: var(--fs-body);
 	}
 }
 
@@ -1212,8 +1486,31 @@ nav.appnav .navtoggle:hover {
 }
 @media (prefers-reduced-motion: no-preference) {
 	.page-col {
-		transition: width 0.25s ease;
+		transition: width var(--duration-base) ease;
 	}
+}
+
+/* Scroll-progress hairline, pinned to the top of the viewport. Shared: the
+   sermon page shows it throughout, and the chapter reader shows it in focus
+   mode, where the scrubber is hidden and there would otherwise be no sense of
+   position at all. It lived in the sermon page's scoped styles, which would not
+   have reached the chapter reader's copy. */
+.read-progress {
+	position: fixed;
+	top: 0;
+	inset-inline: 0;
+	height: 2px;
+	z-index: 40;
+	background: var(--accent);
+	/* transform-origin takes no logical keyword, so RTL is flipped explicitly
+	   below — otherwise the bar fills from the left while the text runs
+	   right-to-left. */
+	transform-origin: left center;
+	transition: transform var(--duration-fast) linear;
+	pointer-events: none;
+}
+[dir='rtl'] .read-progress {
+	transform-origin: right center;
 }
 
 /* Time-remaining pill, floated over the foot of the viewport while reading.
@@ -1230,7 +1527,7 @@ nav.appnav .navtoggle:hover {
 	background: color-mix(in srgb, var(--bg) 85%, transparent);
 	backdrop-filter: blur(6px);
 	padding: 0.25rem 0.8rem;
-	font-size: 0.72rem;
+	font-size: var(--fs-micro);
 	color: var(--muted);
 	pointer-events: none;
 }

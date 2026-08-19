@@ -1,5 +1,5 @@
 import { building } from '$app/environment';
-import { getChapter, listBooks, MODERN_EDITION } from '$lib/library';
+import { getChapterWithLang, listBooks, MODERN_EDITION } from '$lib/library';
 import { getLang } from '$lib/lang.svelte';
 import { orNotFound } from '$lib/loadHelpers';
 import type { EntryGenerator, PageLoad } from './$types';
@@ -61,8 +61,18 @@ export const load: PageLoad = async ({ params, url }) => {
 	// the standard edition; a direct visit with ?edition=modern is reconciled
 	// client-side by the page (it re-runs this load, where `building` is false).
 	const modern = !building && url.searchParams.get('edition') === 'modern';
-	const chapter = await orNotFound(() =>
-		getChapter(params.slug, Number(params.order), modern ? MODERN_EDITION : getLang())
+	// The language the body is actually IN — needed for the prose's `lang`
+	// attribute, since the Chapter payload carries none of its own and without it
+	// the browser hyphenates (and a screen reader pronounces) against the UI
+	// locale, which is routinely not the language on the page.
+	//
+	// It must be the RESOLVED language, not the requested one: getChapter falls
+	// back to English on a 404, so a book with no Arabic copy read under /ar
+	// returns English prose. Labelling that `lang="ar"` is worse than saying
+	// nothing — a wrong value actively misleads where a missing one abstains.
+	const requested = modern ? MODERN_EDITION : getLang();
+	const { data: chapter, language } = await orNotFound(() =>
+		getChapterWithLang(params.slug, Number(params.order), requested)
 	);
-	return { chapter, slug: params.slug, edition: modern ? 'modern' : null };
+	return { chapter, slug: params.slug, language, edition: modern ? 'modern' : null };
 };
