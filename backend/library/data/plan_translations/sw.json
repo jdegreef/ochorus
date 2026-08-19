@@ -1,0 +1,53 @@
+{
+  "deeper-life-in-christ": {
+    "title": "Maisha ya Ndani Zaidi: Kristo Ndani Yenu",
+    "description": "Si juhudi zaidi, bali Mtu: siri ya maisha ya ndani zaidi ni Kristo mwenyewe anayeishi ndani yetu. Andrew Murray anaanza kwa ajabu ya Yesu Mwenyewe, kisha anafunua maisha ya Kristo anayekaa ndani, na Hudson Taylor anahitimisha katika pumziko la muungano na ushirika pamoja na Mpendwa.",
+    "note": [
+      "Every phrase here is taken from the shipped Swahili corpus rather than rendered fresh: «Kristo ndani yenu» is Colossians 1:27 as the sw books quote it, «maisha ya ndani zaidi» and «muungano» / «ushirika» are their settled terms, and «anayekaa ndani» is the wording the power-from-on-high card already uses for indwelling. «Yesu Mwenyewe» is deliberate — it is the sw title of jesus-himself-2, the first book this plan sends a reader to, so the card and the book agree.",
+      "NOTE this row cannot appear yet: seed_plans only creates a plan in a language where EVERY source book is published in it, and two of the three (the-masters-indwelling, union-and-communion) are still English-only. The prose is correct and waiting; the card goes live with whichever of those books lands second."
+    ]
+  },
+  "faith-in-the-fire": {
+    "title": "Mungu wa Faraja Yote: Imani Motoni",
+    "description": "Kwa siku zile ambazo ni vigumu kuziombea. Hannah Whitall Smith juu ya Mungu wa faraja yote, na Gareth Evans juu ya kumtumaini Yule azishikaye kesho zetu — safari ya majuma matano kuelekea amani thabiti wakati maisha hayana uhakika.",
+    "note": [
+      "PROVISIONAL TITLE — read this before shipping the-god-of-all-comfort.sw.",
+      "Every other entry here opens with the shipped edition's title verbatim (ar does the same: its plan reads «إله كل تعزية: إيمانٌ في الأتون» against a book titled «إله كل تعزية»). This plan's title book — the-god-of-all-comfort — has NO Swahili edition yet, so there is no shipped title to copy and «Mungu wa Faraja Yote» is this entry's own choice.",
+      "1. Whoever translates the book should adopt this title, or change this entry in the same PR. A plan card naming a book differently from the book is the drift the humility-12-days note guards.",
+      "2. The phrase renders 2 Cor 1:3, which is NOT in the Swahili corpus today, so it could not be mined and is not claimed as verbatim Union wording. Confirm it against the Bible when the book lands.",
+      "«azishikaye kesho zetu» deliberately echoes the shipped sw title of the other source book, «Anazishika Kesho Zangu».",
+      "seed_plans will not create this row yet — the-god-of-all-comfort is missing in sw and a curated plan needs ALL its books. The prose ships first on purpose: that book completing the set is exactly how #756 flipped this same plan live in Arabic, and without an entry here the row would take the ENGLISH tuple."
+    ]
+  },
+  "grace-for-every-sinner": {
+    "title": "Njia ya Kumwendea Mungu: Neema kwa Kila Mwenye Dhambi",
+    "description": "Mwezi mmoja juu ya habari njema iliyo kongwe kuliko zote. Wito wa upole wa Richard Baxter kwa wasioongoka, D. L. Moody juu ya njia ya kumwendea Mungu, na Yote ni kwa Neema ya Charles Spurgeon — miongozo iliyo wazi kuliko yote juu ya jinsi mwenye dhambi anavyookolewa, na jinsi ya kulijua hilo.",
+    "note": [
+      "Same rule as humility-12-days: the title opens with «Njia ya Kumwendea Mungu», which is the shipped Swahili edition's title verbatim (books/the-way-to-god.sw.json), so the plan card names the book the way the book names itself.",
+      "Two of the three source books — a-call-to-the-unconverted and all-of-grace — have no Swahili edition yet, so seed_plans will not create this row today; it skips a plan whose books are not all present. The prose ships anyway, and deliberately: the moment either book lands in Swahili the row IS created, and without an entry here it would take the ENGLISH tuple and publish «The Way to God: Grace for Every Sinner» on the Swahili plans page. That is the #819 defect, and this is the cheap half of preventing it."
+    ]
+  },
+  "humility-12-days": {
+    "title": "Unyenyekevu kwa Siku 12",
+    "description": "Kitabu mashuhuri cha Andrew Murray kuhusu mzizi wa kila wema — sura moja fupi kila siku kwa muda wa siku kumi na mbili.",
+    "note": [
+      "«the root of every virtue» is «mzizi wa kila wema» verbatim from the Swahili edition of the book itself, so the plan card and the book it sends readers to use the same phrase."
+    ]
+  },
+  "power-from-on-high": {
+    "title": "Nguvu kutoka Juu: Roho Mtakatifu",
+    "description": "Wiki nne pamoja na R. A. Torrey kuhusu maisha yaliyojaa Roho: kwanza ubatizo wa Roho Mtakatifu na nguvu unazoleta kwa ajili ya huduma, kisha uchunguzi kamili zaidi wa Nafsi na kazi ya Roho anayekaa ndani ya kila mwamini."
+  },
+  "school-of-prayer": {
+    "title": "Shule ya Maombi",
+    "description": "Wiki nne katika shule ya maombi pamoja na waelekezi watatu: Andrew Murray kuhusu jinsi Bwana mwenyewe anavyotufundisha kuomba, D. L. Moody kuhusu maombi yenye kushinda, na Hannah Buyinza kuhusu maombi kama mapigo ya kila siku ya maisha ya Mkristo."
+  },
+  "the-inner-chamber-month": {
+    "title": "Mwezi katika Chumba cha Ndani",
+    "description": "Jenga tabia ya kila siku ya maombi na Neno: asubuhi thelathini na sita pamoja na Andrew Murray, sura moja kila siku.",
+    "note": [
+      "Found while shipping the deeper-life-in-christ row, and live: the-inner-chamber is published in Swahili, so seed_plans had already created the sw plan — taking the ENGLISH tuple, because no sw entry existed. The sw plans page had been reading «A Month in the Inner Chamber». Nothing failed; that was the documented fallback, and it was silent. «Chumba cha Ndani» is the sw title of the book itself, so card and book agree.",
+      "es and uk had the same row and the same gap — reported, not fixed in that job, because it was Swahili."
+    ]
+  }
+}

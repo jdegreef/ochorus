@@ -43,18 +43,26 @@ three of them gives none of them one.
    | Your job | Blocked by a live claim on |
    | --- | --- |
    | `sermon` | the **same slug AND language** (i.e. the same job) |
-   | `book` | the same slug AND language — **plus any `plan` job** if your slug backs a plan (see below) |
+   | `book` | the same slug AND language — **plus a `plan` job in your language** if your slug backs a plan (see below) |
    | `bio` | any `bio` in the **same language** — they share `author_bios_<lang>/short.json` |
-   | `plan` | any `plan` job, any language — one shared `seed_plans.py` dict — **and any `book` job whose slug backs a plan** |
+   | `plan` | any `plan` job in the **same language** — one shared `data/plan_translations/<lang>.json` — **and a `book` job in that language whose slug backs a plan** |
    | `topic` | any `topic` job, any language — one shared `seed_topics.py` dict |
 
    The book↔plan row is the non-obvious one, and it follows from a rule further
    down: a book that appears in `LAUNCH_PLANS` or `CURATED_PLANS` must add its
-   `PLAN_TRANSLATIONS` prose **in the same PR**, or the deploy publishes an
-   English-titled plan in that language. That makes such a book job a writer of
-   `seed_plans.py`, so it serialises against plan jobs like any other. Check
-   your slug against both dicts during this gate, not at ship time — by then
-   you may have raced someone.
+   plan prose **in the same PR**, or the deploy publishes an English-titled plan
+   in that language. That makes such a book job a writer of
+   `library/data/plan_translations/<lang>.json`, so it serialises against plan
+   jobs — but only those in the SAME language. Check your slug against both
+   dicts during this gate, not at ship time — by then you may have raced someone.
+
+   **Plan prose was a single dict until it was split per language.** It used to
+   be `PLAN_TRANSLATIONS` in `seed_plans.py`, which made every plan job in every
+   language a writer of one file and dragged book jobs in with them — the
+   widest row in this table and the one that had actually bitten. Now each
+   language owns `data/plan_translations/<lang>.json`, so an Arabic plan job and
+   a Swahili one cannot collide at all. What remains is genuine: two jobs
+   writing the same language's file.
 
    This is a gate on the DELIVERY TARGET, not on the queue. Books and sermons
    each ship **one new file** (`content/books/<slug>.<lang>.json`,
@@ -62,9 +70,13 @@ three of them gives none of them one.
    natural-key fixture was designed for exactly this, and the repo CLAUDE.md
    says so: "parallel sessions cannot collide". The types that still serialise
    are the ones whose delivery vehicle is a shared file, and they are marked
-   above. If those get split per-language (the plan/topic dicts into
-   `<lang>.json` files, the short bio into its own per-slug file), delete their
-   rows here — the gate should track the files, not the calendar.
+   above. Plans have now been split this way and their row narrowed accordingly.
+   The same is still available to the others: split `TOPIC_TRANSLATIONS` into
+   `<lang>.json` files and the short bio into its own per-slug file, and narrow
+   their rows too — the gate should track the files, not the calendar. (The bio
+   split has a catch: migration `0024` reads `short.json` unguarded, so the file
+   must keep existing for a fresh DB to migrate; only its role as the source of
+   truth can move.)
 
    **One thing still conflicts across every book/sermon job: the prerender
    refresh.** Two concurrent sermon jobs both touch
@@ -159,11 +171,14 @@ its days reference **books by slug** and resolve to that language's book rows
 at read time, so a plan translation is **prose only — you do NOT translate or
 duplicate the days**.
 - Source: the English `Plan` (`slug`, language `en`) — `title`, `description`.
-- Delivery is **not** a fixture file. Edit the `PLAN_TRANSLATIONS` dict in
-  `backend/library/management/commands/seed_plans.py`: add
-  `PLAN_TRANSLATIONS["<lang>"]["<slug>"] = ("<translated title>", "<translated
-  description>")`. `seed_plans` reconciles the row's title/description on every
-  deploy to match the tuple.
+- Delivery is **not** a fixture file. Add your entry to
+  `backend/library/data/plan_translations/<lang>.json` — creating that file if
+  the language has none yet:
+  `{"<slug>": {"title": "…", "description": "…", "note": ["why this wording"]}}`.
+  `seed_plans` reconciles the row's title/description on every deploy to match.
+  Write the `note`: it is where you record which shipped book title the card is
+  quoting and which job wrote it, and it is what stops the next translator
+  breaking the agreement between a plan card and the book it opens.
 - **Dependency:** `seed_plans` only *creates* a plan row in a language where
   **every** source book of the plan is present and published in that language
   (a partial set is skipped, not shipped half-empty). If the plan's books
@@ -384,8 +399,8 @@ archaic spelling and period punctuation are the text, not defects in it.
 - The double-ship guard is now structural: the target already existing means
   the job already shipped — before starting, check the type's delivery target
   on fresh `origin/main`: `content/books/<slug>.<lang>.json` (book) /
-  `content/sermons/<slug>.<lang>.json` (sermon) / a `PLAN_TRANSLATIONS[<lang>]
-  [<slug>]` entry in `seed_plans.py` (plan) / `author_bios_<lang>/<slug>.html`
+  `content/sermons/<slug>.<lang>.json` (sermon) / a `<slug>` key in
+  `data/plan_translations/<lang>.json` (plan) / `author_bios_<lang>/<slug>.html`
   (bio) / a `TOPIC_TRANSLATIONS[<lang>][<slug>]` entry in `seed_topics.py`
   (topic). CI's duplicate-identity / fixture checks are the backstop for
   file-shipped types.
@@ -433,11 +448,12 @@ archaic spelling and period punctuation are the text, not defects in it.
   prose** (found while working #728; the miss is live on main). `seed_plans`
   iterates `Book.objects.filter(slug=…, is_published=True)` across *every*
   language and creates a Plan per language it finds, taking prose from
-  `PLAN_TRANSLATIONS[lang][slug]` and **falling back to the English tuple** when
+  `data/plan_translations/<lang>.json` and (until it was gated) **falling back
+  to the English tuple** when
   the entry is absent. So a book PR that adds `<slug>.<lang>.json` for any book
   backing a `LAUNCH_PLANS` entry publishes an English-titled plan on that
   language's plans page. PR #819 shipped Arabic *Humility* without adding
-  `PLAN_TRANSLATIONS["ar"]["humility-12-days"]`, so the ar plans page reads
+  an `ar` entry for `humility-12-days`, so the ar plans page read
   "Humility in 12 Days". **This is now gated** —
   `tests_fixture.PlanTranslationCoverageTests` fails any book that would create
   a plan row with no prose in its language (fixture-only, so it needs no DB; it
@@ -1100,7 +1116,7 @@ archaic spelling and period punctuation are the text, not defects in it.
   every job ships a notes file. Batch PR #942 shipped ten jobs and shipped none:
   12 files, 8 of them content, zero under `translation_notes/`. For *Humildad*
   (#520) everything else was right — 12 chapters tag-exact, the
-  `PLAN_TRANSLATIONS` couple in the same PR, both prerender refreshes, #519/#520
+  plan-prose couple in the same PR, both prerender refreshes, #519/#520
   closed — and its 106-site unverified queue existed only in the PR body, which
   is the one place that section exists to stop using. The miss is invisible from
   every angle a reviewer checks: the issue reads done, the PR is merged, the
@@ -1200,9 +1216,9 @@ archaic spelling and period punctuation are the text, not defects in it.
   each file. A book whose own chapter list reads three ways is visible on the
   shelf in a way a verse variant is not.
 - **The plan coupling runs in REVERSE too: prose waiting on a book** (job #594).
-  The documented hazard is a book outrunning its `PLAN_TRANSLATIONS` prose and
+  The documented hazard is a book outrunning its plan prose and
   publishing an English-titled card (#819). The mirror image also exists and is
-  easy to miss because nothing is broken while you wait: `PLAN_TRANSLATIONS`
+  easy to miss because nothing is broken while you wait: the plan prose
   already held pt prose for `humility-12-days`, and the missing half was the
   BOOK. Shipping it ACTIVATES the plan — `seed_plans` creates the row on that
   deploy — so the book PR owes a `plans/+page.ts` touch exactly as if it had
