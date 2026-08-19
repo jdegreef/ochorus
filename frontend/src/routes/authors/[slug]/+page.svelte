@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { type AuthorDetail, type AuthorBio, listAuthors, formatLifespan } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
+	import { cssString } from '$lib/cssString';
 	import { absUrl, jsonLd, breadcrumb, hreflangAll } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingTime, readingMinutes } from '$lib/reading';
@@ -139,8 +140,12 @@
 	);
 	// Prayer-callout labels are rendered by CSS ::before content; pass the
 	// localized strings in as custom properties so they follow the locale.
+	// Quoted through cssString: an apostrophe in any translation would close the
+	// CSS string early and take the rest of the declaration with it, silently
+	// and only in that locale.
 	const bioLabels = $derived(
-		`--label-in-prayer: '${t('bios.inPrayer')}'; --label-answered: '${t('bios.answerToPrayer')}'`
+		`--label-in-prayer: ${cssString(t('bios.inPrayer'))}; ` +
+			`--label-answered: ${cssString(t('bios.answerToPrayer'))}`
 	);
 
 	// Where to start + how much there is to read: the first book (the API's

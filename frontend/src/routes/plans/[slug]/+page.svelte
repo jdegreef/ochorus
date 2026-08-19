@@ -56,7 +56,7 @@
 				'@type': 'ListItem',
 				position: i + 1,
 				name: b.title,
-				url: `${SITE_URL}/books/${b.slug}`
+				url: `${SITE_URL}${localizeHref(`/books/${b.slug}`)}`
 			}))
 		})
 	);

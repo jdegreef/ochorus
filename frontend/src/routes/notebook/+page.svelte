@@ -7,6 +7,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { HIGHLIGHT_COLORS, DEFAULT_HIGHLIGHT, type Bookmark, type Mark } from '$lib/reading-schema';
+	import { mapLimit, NOTEBOOK_CONCURRENCY } from '$lib/mapLimit';
 
 	const t = i18n.t;
 
@@ -136,15 +137,27 @@
 		});
 	}
 
+	// Every fetch below is wrapped in its own try/catch and every failure is the
+	// same one: the reader is offline. A highlight still links through to where
+	// it was made, it just can't show its own text — so one unreachable chapter
+	// degrades that card, never the page. That per-item tolerance is also what
+	// makes the concurrency below safe: nothing here rejects.
 	onMount(async () => {
 		const lang = getLang();
 		const bms = bookmarks.all();
 		const allMarks = marks.all();
+		type MarkEntry = (typeof allMarks)[number];
 		const mks = allMarks.filter((m) => m.kind === 'book');
 		const slugs = [...new Set([...bms.map((b) => b.slug), ...mks.map((m) => m.slug)])];
 
-		const out: BookBlock[] = [];
-		for (const slug of slugs) {
+		// The whole page used to load one request at a time, nested two deep:
+		// every book, then every highlighted chapter within it, then every
+		// sermon, then every biography. A reader with highlights across ten
+		// books waited out fifty sequential round-trips staring at an ellipsis,
+		// and the wait grew with exactly the history the page exists to show.
+		// Now the three sections load together, bounded so a long history asks
+		// the API for a burst it can serve rather than one per highlight.
+		const loadBook = async (slug: string): Promise<BookBlock> => {
 			let book: BookDetail | null = null;
 			try {
 				book = await getBook(slug, lang);
@@ -154,20 +167,21 @@
 			const titleFor = (order: number) =>
 				book?.chapters.find((c) => c.order === order)?.title || `${order}`;
 
-			const chapters: ChapterBlock[] = [];
-			for (const { order, marks: ms } of mks
-				.filter((m) => m.slug === slug)
-				.sort((a, b) => a.order - b.order)) {
-				let paras: string[] = [];
-				try {
-					paras = paragraphs((await getChapter(slug, order, lang)).body_html);
-				} catch {
-					/* offline — the highlight still links through, just without its text */
+			const chapters = await mapLimit(
+				mks.filter((m) => m.slug === slug).sort((a, b) => a.order - b.order),
+				NOTEBOOK_CONCURRENCY,
+				async ({ order, marks: ms }): Promise<ChapterBlock> => {
+					let paras: string[] = [];
+					try {
+						paras = paragraphs((await getChapter(slug, order, lang)).body_html);
+					} catch {
+						/* offline — the highlight still links through, just without its text */
+					}
+					return { order, title: titleFor(order), highlights: groupMarks(paras, ms) };
 				}
-				chapters.push({ order, title: titleFor(order), highlights: groupMarks(paras, ms) });
-			}
+			);
 
-			out.push({
+			return {
 				slug,
 				title: book?.title || slug,
 				author: book?.author.name || '',
@@ -175,13 +189,11 @@
 					.filter((b) => b.slug === slug)
 					.sort((a, b) => a.order - b.order || a.p - b.p),
 				chapters
-			});
-		}
-		books = out.sort((a, b) => a.title.localeCompare(b.title));
+			};
+		};
 
 		// Sermon highlights (device-local, keyed by sermon slug — no chapters).
-		const sOut: SermonBlock[] = [];
-		for (const { slug, marks: ms } of allMarks.filter((m) => m.kind === 'sermon')) {
+		const loadSermon = async ({ slug, marks: ms }: MarkEntry): Promise<SermonBlock> => {
 			let paras: string[] = [];
 			let title = slug;
 			let author = '';
@@ -193,13 +205,11 @@
 			} catch {
 				/* offline — the highlight still links through, just without its text */
 			}
-			sOut.push({ slug, title, author, highlights: groupMarks(paras, ms) });
-		}
-		sermons = sOut.sort((a, b) => a.title.localeCompare(b.title));
+			return { slug, title, author, highlights: groupMarks(paras, ms) };
+		};
 
 		// Biography highlights (kind 'bio'; the slug names the author).
-		const bOut: BioBlock[] = [];
-		for (const { slug, marks: ms } of allMarks.filter((m) => m.kind === 'bio')) {
+		const loadBio = async ({ slug, marks: ms }: MarkEntry): Promise<BioBlock> => {
 			let paras: string[] = [];
 			let name = slug;
 			try {
@@ -209,9 +219,18 @@
 			} catch {
 				/* offline — the highlight still links through, just without its text */
 			}
-			bOut.push({ slug, name, highlights: groupMarks(paras, ms) });
-		}
-		bios = bOut.sort((a, b) => a.name.localeCompare(b.name));
+			return { slug, name, highlights: groupMarks(paras, ms) };
+		};
+
+		const [bookBlocks, sermonBlocks, bioBlocks] = await Promise.all([
+			mapLimit(slugs, NOTEBOOK_CONCURRENCY, loadBook),
+			mapLimit(allMarks.filter((m) => m.kind === 'sermon'), NOTEBOOK_CONCURRENCY, loadSermon),
+			mapLimit(allMarks.filter((m) => m.kind === 'bio'), NOTEBOOK_CONCURRENCY, loadBio)
+		]);
+
+		books = bookBlocks.sort((a, b) => a.title.localeCompare(b.title));
+		sermons = sermonBlocks.sort((a, b) => a.title.localeCompare(b.title));
+		bios = bioBlocks.sort((a, b) => a.name.localeCompare(b.name));
 
 		loading = false;
 	});
@@ -366,8 +385,12 @@
 				<ul class="mt-3 space-y-2">
 					{#each b.highlights as hl (hl.id)}
 						<li>
+							<!-- ?p= like the book and sermon highlights above: the biography
+							     renders through the same Reader, which already jumps to the
+							     paragraph on arrival. Without it a biography highlight was the
+							     one kind that dropped the reader at the top of the page. -->
 							<a
-								href={localizeHref(`/authors/${b.slug}`)}
+								href={localizeHref(`/authors/${b.slug}?p=${hl.p}`)}
 								class="block rounded-lg border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
 								style="border-inline-start-color: var(--hl-{hl.color})"
 							>

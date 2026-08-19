@@ -144,18 +144,24 @@
      there's reading activity. Client-side only. -->
 <ReadingNudge />
 
-<!-- Discover Your Next Book — above the plan/sermon blocks -->
-<section class="page-col px-5 pt-14">
-	<div class="mb-6 flex items-end justify-between">
-		<h2 class="text-h1">{t('home.discoverNext')}</h2>
-		<a href={localizeHref('/books')} class="text-small font-semibold text-accent">{t('home.allBooks')} →</a>
-	</div>
-	<div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-6">
-		{#each featured as book (book.slug)}
-			<BookCard {book} showAuthor />
-		{/each}
-	</div>
-</section>
+<!-- Discover Your Next Book — above the plan/sermon blocks.
+     Hidden when empty, like the topics row below it: if the shelf failed to
+     load (see the note in +page.ts) a bare heading over an empty grid reads as
+     "Ochorus has no books", where showing nothing simply reads as a shorter
+     page around the personal blocks that still work. -->
+{#if featured.length}
+	<section class="page-col px-5 pt-14">
+		<div class="mb-6 flex items-end justify-between">
+			<h2 class="text-h1">{t('home.discoverNext')}</h2>
+			<a href={localizeHref('/books')} class="text-small font-semibold text-accent">{t('home.allBooks')} →</a>
+		</div>
+		<div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-6">
+			{#each featured as book (book.slug)}
+				<BookCard {book} showAuthor />
+			{/each}
+		</div>
+	</section>
+{/if}
 
 <!-- Personal plan / sermon blocks — client-side only (this page is prerendered) -->
 <TodaysReading />
@@ -198,42 +204,45 @@
 	</div>
 </section>
 
-<!-- Christian Authors -->
-<section class="page-col px-5 pt-14 pb-20">
-	<div class="mb-6 flex items-end justify-between">
-		<h2 class="text-h1">{t('home.authorsTitle')}</h2>
-		<a href={localizeHref('/biographies')} class="text-small font-semibold text-accent">{t('home.allBiographies')} →</a>
-	</div>
-	<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-		{#each authors as author (author.slug)}
-			<a
-				href={localizeHref(`/authors/${author.slug}`)}
-				class="flex items-center gap-3 rounded-card border border-border p-4 hover:no-underline hover:bg-surface-2"
-			>
-				{#if author.photo_url}
-					<img
-						src={author.photo_url}
-						alt="{t('a11y.portraitOf')} {author.name}"
-						loading="lazy"
-						class="h-11 w-11 shrink-0 rounded-full border border-border object-cover"
-						style="filter: grayscale(1); object-position: {portraitPosition(author.slug)}"
-					/>
-				{:else}
-					<span
-						class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-soft text-small font-semibold text-accent"
-						style="font-family: var(--font-display)"
-					>
-						{initials(author.name)}
+<!-- Christian Authors — hidden when the shelf is empty, same reason as
+     "Discover your next book" above. -->
+{#if authors.length}
+	<section class="page-col px-5 pt-14 pb-20">
+		<div class="mb-6 flex items-end justify-between">
+			<h2 class="text-h1">{t('home.authorsTitle')}</h2>
+			<a href={localizeHref('/biographies')} class="text-small font-semibold text-accent">{t('home.allBiographies')} →</a>
+		</div>
+		<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+			{#each authors as author (author.slug)}
+				<a
+					href={localizeHref(`/authors/${author.slug}`)}
+					class="flex items-center gap-3 rounded-card border border-border p-4 hover:no-underline hover:bg-surface-2"
+				>
+					{#if author.photo_url}
+						<img
+							src={author.photo_url}
+							alt="{t('a11y.portraitOf')} {author.name}"
+							loading="lazy"
+							class="h-11 w-11 shrink-0 rounded-full border border-border object-cover"
+							style="filter: grayscale(1); object-position: {portraitPosition(author.slug)}"
+						/>
+					{:else}
+						<span
+							class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-soft text-small font-semibold text-accent"
+							style="font-family: var(--font-display)"
+						>
+							{initials(author.name)}
+						</span>
+					{/if}
+					<span>
+						<span class="block text-small font-semibold text-text">{author.name}</span>
+						<span class="block text-[0.8rem] text-muted">
+							{author.book_count}
+							{author.book_count === 1 ? t('common.bookOne') : t('common.bookMany')}
+						</span>
 					</span>
-				{/if}
-				<span>
-					<span class="block text-small font-semibold text-text">{author.name}</span>
-					<span class="block text-[0.8rem] text-muted">
-						{author.book_count}
-						{author.book_count === 1 ? t('common.bookOne') : t('common.bookMany')}
-					</span>
-				</span>
-			</a>
-		{/each}
-	</div>
-</section>
+				</a>
+			{/each}
+		</div>
+	</section>
+{/if}
