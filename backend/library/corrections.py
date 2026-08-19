@@ -130,6 +130,46 @@ BODY_CORRECTIONS: dict[str, dict] = {
         "replacements": [
             ("Acts 4:8:13", "Acts 4:8-13"),
             ("(11 Samuel 11:6)", "(1 Samuel 11:6)"),
+            # The scan rendered 20 quote marks as a PAIR OF APOSTROPHES. Found
+            # while translating the book to Ukrainian, and the reason it is
+            # worth fixing at the source rather than per edition: all five
+            # existing translations (ar/es/lg/pt/sw) already carry zero of them,
+            # each having silently resolved the same damage its own way. The
+            # English is the only edition still showing it.
+            #
+            # There is no blanket rule to apply. 15 of the 20 are OPENING
+            # marks, 3 are CLOSING, one is a spurious SECOND closer sitting
+            # right after a real one, and one is a wholly garbled passage. An
+            # alternating toggle would invert everything after the first
+            # mis-classification, which is the documented way this repair goes
+            # wrong, so each site carries enough context to be unique.
+            # Openers:
+            ("Jesus said, &#x27;&#x27;", "Jesus said, “"),
+            ("we read &#x27;&#x27;All of them", "we read “All of them"),
+            ("spoken of as &#x27;&#x27;the promise", "spoken of as “the promise"),
+            ("Holy Ghost: &#x27;&#x27;Well, my brother", "Holy Ghost: “Well, my brother"),
+            ("“yes” or &#x27;&#x27;no.”", "“yes” or “no.”"),
+            ("Spirit does &#x27;&#x27;mortify", "Spirit does “mortify"),
+            ("Acts 1:8. &#x27;&#x27;But you will receive", "Acts 1:8. “But you will receive"),
+            ("her children &#x27;&#x27;in the nurture", "her children “in the nurture"),
+            ("that Jesus &#x27;&#x27;charged them", "that Jesus “charged them"),
+            ("which, &#x27;&#x27;For John baptized", "which, “For John baptized"),
+            ("Then, &#x27;&#x27;Full of the Holy Ghost", "Then, “Full of the Holy Ghost"),
+            ("proclaims Himself &#x27;&#x27;anointed to preach", "proclaims Himself “anointed to preach"),
+            ("next generation, &#x27;&#x27;And to your children", "next generation, “And to your children"),
+            ("blessing came. &#x27;&#x27;everything that does not", "blessing came. “everything that does not"),
+            ("Holy Spirit?” &#x27;&#x27;I don", "Holy Spirit?” “I don"),
+            # Closers:
+            ("the promise of the Father,&#x27;&#x27; and in Luke", "the promise of the Father,” and in Luke"),
+            ("the promise of the Holy Ghost. &#x27;&#x27; It would seem", "the promise of the Holy Ghost.” It would seem"),
+            ("baptism with the Holy Spirit,&#x27;&#x27; and you have", "baptism with the Holy Spirit,” and you have"),
+            ("with the Holy Spirit.”&#x27;&#x27; They were not", "with the Holy Spirit.” They were not"),
+            # ch01's worst site: "say positively, “yes, “or” no, ' ' to the
+            # question" — two marks transposed and an apostrophe pair left
+            # stranded. Every other edition prints a clean "yes" or "no" here
+            # (pt “sim”/“não”, es «si»/«no», ar «نعم»/«لا»), which is what
+            # settles the intended reading.
+            ("positively, “yes, “or” no, &#x27; &#x27; to the question", "positively, “yes” or “no” to the question"),
         ],
     },
     "the-key-in-my-hand": {
