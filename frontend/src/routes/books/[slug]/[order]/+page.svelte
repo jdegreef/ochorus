@@ -828,7 +828,15 @@
 		class:sticky={!paged}
 	>
 		<div class="mx-auto flex max-w-3xl items-center justify-between gap-3 px-5 py-2.5">
-			<div class="min-w-0 flex-1">
+			<!--
+				Hidden below `sm`. The controls alone need ~303px of a 360px phone, so
+				with this block in the row the bar wrapped to THREE rows — 141px of an
+				780px viewport — and squeezed this text to five pixels wide, which is
+				not a label, just a thing pushing everything else out of line. The
+				article's own breadcrumb sits directly beneath and says the same, so
+				nothing is lost by standing this down where there is no room for it.
+			-->
+			<div class="hidden min-w-0 flex-1 sm:block">
 				{#if titleVisible}
 					<a href={localizeHref(`/books/${slug}`)} class="text-small text-muted hover:text-text">
 						← {chapter.book_title}
