@@ -573,7 +573,7 @@
 		width: 100%;
 		text-align: start;
 		padding: 0.45rem 0.6rem;
-		border-radius: var(--radius-sm, 6px);
+		border-radius: var(--radius-sm);
 		font-size: 0.9rem;
 		color: var(--text);
 		line-height: 1.35;

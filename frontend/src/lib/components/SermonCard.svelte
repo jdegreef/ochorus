@@ -33,7 +33,7 @@
 		gap: 0.75rem;
 		padding: 0.85rem 1rem;
 		border: 1px solid var(--color-border);
-		border-radius: var(--radius-card, 0.9rem);
+		border-radius: var(--radius-card);
 		background: var(--color-surface);
 		transition: border-color 0.15s, background 0.15s;
 	}

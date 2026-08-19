@@ -142,7 +142,7 @@
 		align-items: flex-start;
 		gap: 1rem;
 		padding: 1.4rem 1.5rem;
-		border-radius: var(--radius-card, 0.9rem);
+		border-radius: var(--radius-card);
 		border: 1px solid color-mix(in srgb, var(--topic) 22%, var(--color-border));
 		background:
 			radial-gradient(90% 130% at 0% 0%, color-mix(in srgb, var(--topic) 16%, transparent), transparent 55%),

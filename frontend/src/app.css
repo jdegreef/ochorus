@@ -23,6 +23,7 @@
 	--color-danger: var(--danger);
 	--color-warning: var(--warning);
 	--radius-card: 12px;
+	--radius-sm: 9px;
 	--font-display: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
 	--font-sans: 'Hanken Grotesk Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
 
@@ -87,11 +88,18 @@
 	   enough to clear 4.5:1 against a `bg-warning/10` wash as well as a flat
 	   surface — that badge is where the token is most often used. */
 	--warning: #e0b45c;
+	--shadow-card: 0 6px 20px -12px rgb(0 0 0 / 0.55);
+	--shadow-popover: 0 10px 30px rgb(0 0 0 / 0.4);
+	--shadow-drawer: -12px 0 40px rgb(0 0 0 / 0.45);
 	--font-display: 'Fraunces Variable', Georgia, serif;
 	--font-sans: 'Hanken Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
-	--radius: 12px;
-	--radius-sm: 9px;
 	--reading-scale: 1;
+	/* Motion, per STYLE_GUIDE §7 (quiet and quick, 120-240ms). Eight distinct
+	   durations had accumulated across the app, including a 0.28s and a 0.3s
+	   that nobody chose between. Three steps, used through var(). */
+	--duration-fast: 150ms;
+	--duration-base: 250ms;
+	--duration-slow: 400ms;
 }
 
 :root[data-theme='light'] {
@@ -109,6 +117,9 @@
 	--border-strong: #968462;
 	--danger: #b23a48;
 	--warning: #7d5815;
+	--shadow-card: 0 6px 20px -12px rgb(90 70 40 / 0.35);
+	--shadow-popover: 0 10px 30px rgb(90 70 40 / 0.18);
+	--shadow-drawer: -12px 0 40px rgb(90 70 40 / 0.2);
 }
 
 /* "Sepia" = a warm parchment reading tone: like paper but softer on the eyes
@@ -133,6 +144,9 @@
 	--border-strong: #8d7b57;
 	--danger: #b23a48;
 	--warning: #775413;
+	--shadow-card: 0 6px 20px -12px rgb(80 60 30 / 0.4);
+	--shadow-popover: 0 10px 30px rgb(80 60 30 / 0.22);
+	--shadow-drawer: -12px 0 40px rgb(80 60 30 / 0.24);
 }
 
 @layer base {
@@ -201,7 +215,7 @@
 	z-index: 100;
 	transform: translateY(-150%);
 	padding: 0.5rem 0.9rem;
-	border-radius: var(--radius-sm, 6px);
+	border-radius: var(--radius-sm);
 	background: var(--accent);
 	color: var(--accent-contrast, #fff);
 	font-weight: 600;
@@ -365,6 +379,17 @@
 	.btn-primary:hover {
 		text-decoration: none;
 		border-color: var(--accent);
+	}
+	/* Compact button — the size that 47 of the `!py-1 !px-2.5 !text-small`
+	   overrides were reaching for. */
+	.btn-sm {
+		padding: 0.35rem 0.65rem;
+		font-size: var(--fs-small);
+	}
+	/* Square icon button: an icon, no label, equal sides. */
+	.btn-icon {
+		padding: 0.4rem;
+		line-height: 1;
 	}
 	.btn-ghost {
 		background: transparent;
@@ -626,7 +651,7 @@ nav.appnav .navtoggle:hover {
 	min-width: 13rem;
 	background: var(--surface);
 	border: 1px solid var(--border);
-	border-radius: var(--radius);
+	border-radius: var(--radius-card);
 	box-shadow: 0 10px 30px rgb(0 0 0 / 0.18);
 	padding: 0.35rem;
 	overflow: hidden;
@@ -720,6 +745,21 @@ nav.appnav .navtoggle:hover {
 	color: var(--muted);
 }
 
+.eyebrow {
+	font-size: var(--fs-eyebrow);
+	line-height: 1.4;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--muted);
+}
+.eyebrow.is-accent {
+	color: var(--accent);
+}
+.eyebrow.is-hue {
+	color: var(--eyebrow-hue, var(--muted));
+}
+
 /* ── Shelf cards ───────────────────────────────────────────────────────────
    The Topics page's card — a colour-washed "shelf" band carrying an icon chip
    and a fan of covers, over a plain typographic body — is the best-looking
@@ -740,7 +780,7 @@ nav.appnav .navtoggle:hover {
 	   browse grids look unfinished. */
 	height: 100%;
 	border: 1px solid var(--border);
-	border-radius: var(--radius-card, 12px);
+	border-radius: var(--radius-card);
 	overflow: hidden;
 	background: var(--surface);
 	transition:
@@ -842,7 +882,7 @@ nav.appnav .navtoggle:hover {
 	height: 100%;
 	padding: 0.6rem;
 	border: 1px solid var(--border);
-	border-radius: var(--radius-card, 12px);
+	border-radius: var(--radius-card);
 	background: var(--surface);
 	transition:
 		border-color 0.15s,
@@ -859,11 +899,20 @@ nav.appnav .navtoggle:hover {
    reading" resume card.
 
    This has to be a modifier here rather than a `flex-row` utility on the
-   element: these component classes are UNLAYERED, Tailwind's utilities live in
+   element: `.book-card` is UNLAYERED, Tailwind's utilities live in
    `@layer utilities`, and unlayered CSS beats layered CSS whatever the
    specificity. So `class="book-card flex-row"` silently keeps column. (An
    `!important` utility like `!p-4` does win — which makes the failure worse,
-   because some of the overrides on the same element appear to work.) */
+   because some of the overrides on the same element appear to work.)
+
+   WHICH classes are unlayered matters, and the split is not obvious:
+     - UNLAYERED (a utility loses, so use a modifier): .book-card, .shelf-card,
+       .sermon-row, .filter-field, .field, .seg, .chip, .section-label,
+       .eyebrow, .reading, .widthctl, nav.appnav, .account-*, .prefs-*.
+     - IN `@layer components` (a utility WINS, no `!` needed): .btn and its
+       variants, .text-display.
+   The button family being layered is why the `!` on `!py-1` / `!text-small`
+   was never doing anything a plain `py-1` wouldn't. */
 .book-card--row {
 	flex-direction: row;
 	align-items: center;
@@ -939,7 +988,7 @@ nav.appnav .navtoggle:hover {
 	gap: 1rem;
 	padding: 1.1rem 1.25rem 1.15rem 1.5rem;
 	border: 1px solid var(--border);
-	border-radius: var(--radius-card, 12px);
+	border-radius: var(--radius-card);
 	background: var(--surface);
 	transition:
 		border-color 0.15s,
@@ -959,8 +1008,8 @@ nav.appnav .navtoggle:hover {
 	inset-block: -1px;
 	inset-inline-start: -1px;
 	width: 3px;
-	border-start-start-radius: var(--radius-card, 12px);
-	border-end-start-radius: var(--radius-card, 12px);
+	border-start-start-radius: var(--radius-card);
+	border-end-start-radius: var(--radius-card);
 	background: color-mix(in srgb, var(--row-hue) 55%, transparent);
 	transition: background 0.15s;
 }
@@ -1030,7 +1079,10 @@ nav.appnav .navtoggle:hover {
 	gap: 0.5rem;
 }
 
-/* Any input/select sitting in a .filter-row. One height for all of them. */
+/* Any input, select or textarea in the app. One height, one radius, one edge.
+   `.filter-field` is the same thing under its original name — the filter rows
+   on the browse pages read better with it, and both names resolve here. */
+.field,
 .filter-field {
 	min-width: 0;
 	border: 1px solid var(--border-strong);
@@ -1041,10 +1093,12 @@ nav.appnav .navtoggle:hover {
 	line-height: 1.5;
 	color: var(--text);
 }
+.field::placeholder,
 .filter-field::placeholder {
 	color: var(--muted);
 }
 /* The free-text filter is the primary control: it takes the leftover room. */
+.field.grow,
 .filter-field.grow {
 	flex: 1 1 12rem;
 }
@@ -1148,6 +1202,7 @@ nav.appnav .navtoggle:hover {
 	.btn,
 	.chip,
 	.seg button,
+	.field,
 	.filter-field,
 	.widthctl button,
 	.account-item,
