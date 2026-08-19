@@ -398,7 +398,7 @@
 	   set solid so a row of tiles aligns on the digits. */
 	.stat-number {
 		font-family: var(--font-display);
-		font-size: var(--fs-display);
+		font-size: var(--fs-h1);
 		font-weight: 600;
 		line-height: 1;
 		font-variant-numeric: tabular-nums;
@@ -1116,6 +1116,13 @@ nav.appnav .navtoggle:hover {
 	line-height: 1.5;
 	color: var(--text);
 }
+/* A control in an "on" state (an armed sleep timer, an active filter). Needed
+   as a modifier because .field is unlayered: a border-accent utility beside it
+   would lose, so the state would simply not show. */
+.field.is-active {
+	border-color: var(--accent);
+	color: var(--accent);
+}
 .field::placeholder,
 .filter-field::placeholder {
 	color: var(--muted);
@@ -1221,46 +1228,58 @@ nav.appnav .navtoggle:hover {
    Gated on `pointer: coarse`, so the desktop's compact chrome is untouched and
    only finger-driven sessions pay the height. Padding is left alone: the
    height is met with min-height, so no label moves and nothing reflows. */
+@layer components {
+	@media (pointer: coarse) {
+		.btn,
+		.chip,
+		.seg button,
+		.field,
+		.filter-field,
+		.widthctl button,
+		.account-item,
+		.rc-opt,
+		.google-btn {
+			min-height: 2.75rem;
+		}
+		/* Buttons whose label would otherwise sit at the top of the taller box.
+		   (.btn and .widthctl button are already inline-flex + centred.) */
+		.chip,
+		.seg button {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.account-item {
+			display: flex;
+			align-items: center;
+		}
+		/* The avatar and gear keep their 32px disc — enlarging them would reflow a
+		   nav bar that is already tight on a phone. Instead each grows an
+		   invisible, centred 44px hit area, which is what the finger needs. */
+		.account-btn,
+		.prefs-btn {
+			position: relative;
+		}
+		.account-btn::after,
+		.prefs-btn::after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 2.75rem;
+			height: 2.75rem;
+			transform: translate(-50%, -50%);
+		}
+	}
+}
+
+/* iOS Safari zooms the viewport when a focused control is under 16px, and the
+   touch UI wants the larger text anyway. Deliberately NOT inside the @layer
+   above: the base .field rule is unlayered, so a layered override loses to it. */
 @media (pointer: coarse) {
-	.btn,
-	.chip,
-	.seg button,
 	.field,
-	.filter-field,
-	.widthctl button,
-	.account-item,
-	.rc-opt,
-	.google-btn {
-		min-height: 2.75rem;
-	}
-	/* Buttons whose label would otherwise sit at the top of the taller box.
-	   (.btn and .widthctl button are already inline-flex + centred.) */
-	.chip,
-	.seg button {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-	}
-	.account-item {
-		display: flex;
-		align-items: center;
-	}
-	/* The avatar and gear keep their 32px disc — enlarging them would reflow a
-	   nav bar that is already tight on a phone. Instead each grows an
-	   invisible, centred 44px hit area, which is what the finger needs. */
-	.account-btn,
-	.prefs-btn {
-		position: relative;
-	}
-	.account-btn::after,
-	.prefs-btn::after {
-		content: '';
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		width: 2.75rem;
-		height: 2.75rem;
-		transform: translate(-50%, -50%);
+	.filter-field {
+		font-size: var(--fs-body);
 	}
 }
 

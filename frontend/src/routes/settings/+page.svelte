@@ -300,7 +300,7 @@
 						<div class="flex flex-wrap items-center gap-2">
 							<input
 								id="displayName"
-								class="field max-w-xs flex-1"
+								class="field max-w-48 flex-1"
 								bind:value={nameInput}
 								oninput={() => (nameDirty = true)}
 								placeholder={t('settings.displayNamePlaceholder')}
@@ -351,7 +351,7 @@
 					<div class="setting-sub mb-3">
 						{t('settings.clearDeviceSub')}{#if auth.user}{' '}{t('settings.clearDeviceSyncNote')}{/if}
 					</div>
-					<button class="btn btn-ghost" class:!text-danger={clearConfirm} onclick={clearDevice}>
+					<button class="btn btn-ghost" class:text-danger={clearConfirm} onclick={clearDevice}>
 						{clearConfirm ? t('settings.resetConfirm') : t('settings.clearDeviceButton')}
 					</button>
 
@@ -382,7 +382,7 @@
 							<div class="setting-sub">{t('settings.languageSub')}</div>
 						</div>
 						<select
-							class="field"
+							class="field max-w-48"
 							aria-label={t('nav.language')}
 							value={lang.current}
 							onchange={(e) => lang.choose((e.currentTarget as HTMLSelectElement).value)}
@@ -439,7 +439,7 @@
 					<div class="flex items-center gap-2">
 						<input
 							type="time"
-							class="field"
+							class="field max-w-48"
 							bind:value={reminderTime}
 							aria-label={t('settings.reminder')}
 						/>
@@ -476,7 +476,7 @@
 					{:else if voices.length}
 						<div class="flex items-center gap-2">
 							<select
-								class="field"
+								class="field max-w-48"
 								aria-label={t('settings.voice')}
 								value={voiceValue}
 								onchange={(e) => listen.setVoice((e.currentTarget as HTMLSelectElement).value)}
@@ -536,7 +536,7 @@
 						<div class="setting-sub">{t('settings.fontSub')}</div>
 					</div>
 					<select
-						class="field"
+						class="field max-w-48"
 						aria-label={t('settings.font')}
 						value={readerPrefs.font}
 						onchange={(e) => readerPrefs.setFont((e.currentTarget as HTMLSelectElement).value as ReaderFont)}
@@ -554,7 +554,7 @@
 				<div class="mt-8 border-t border-border pt-6">
 					<div class="setting-label">{t('settings.resetPrefs')}</div>
 					<div class="setting-sub mb-4">{t('settings.resetPrefsSub')}</div>
-					<button class="btn btn-ghost" class:!text-danger={resetConfirm} onclick={resetPrefs}>
+					<button class="btn btn-ghost" class:text-danger={resetConfirm} onclick={resetPrefs}>
 						{resetConfirm ? t('settings.resetConfirm') : t('settings.resetPrefsButton')}
 					</button>
 				</div>
@@ -598,7 +598,7 @@
 								<label class="flex items-center gap-2 text-small text-muted">
 									{t('settings.goalPerWeek')}
 									<select
-										class="field"
+										class="field max-w-48"
 										value={goal}
 										onchange={(e) => readingGoal.set(+e.currentTarget.value)}
 									>

@@ -204,7 +204,7 @@
 				{#if outline.length >= 2}
 					<button
 						class="outline-toggle-btn btn btn-icon btn-ghost"
-						class:!text-accent={outlineOpen}
+						class:text-accent={outlineOpen}
 						onclick={() => (outlineOpen = !outlineOpen)}
 						aria-label={t('sermon.outline')}
 						title={t('sermon.outline')}
@@ -214,7 +214,7 @@
 				{#if listen.supported}
 					<button
 						class="btn btn-icon btn-ghost"
-						class:!text-accent={listen.status !== 'idle'}
+						class:text-accent={listen.status !== 'idle'}
 						onclick={() => (listen.status === 'idle' ? reader?.startListening() : listen.stop())}
 						aria-label={t('reader.listen')}
 						title={t('reader.listen')}>▶</button

@@ -267,7 +267,7 @@
 				bind:value={query}
 				placeholder={t('notebook.search')}
 				aria-label={t('notebook.search')}
-				class="field min-w-[12rem] flex-1"
+				class="field grow"
 			/>
 			<div class="flex items-center gap-2" role="group" aria-label={t('notebook.filterColor')}>
 				<button

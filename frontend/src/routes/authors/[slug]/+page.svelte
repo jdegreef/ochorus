@@ -235,7 +235,7 @@
 			{#if listen.supported && author.bio_html}
 				<button
 					class="btn btn-icon btn-ghost shrink-0"
-					class:!text-accent={listen.status !== 'idle'}
+					class:text-accent={listen.status !== 'idle'}
 					onclick={() => (listen.status === 'idle' ? reader?.startListening() : listen.stop())}
 					aria-label={t('reader.listen')}
 					title={t('reader.listen')}>▶ {t('reader.listen')}</button

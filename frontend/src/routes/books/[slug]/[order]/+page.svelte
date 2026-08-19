@@ -808,7 +808,7 @@
 						href={editionToggleHref()}
 						data-sveltekit-noscroll
 						class="btn btn-sm btn-ghost px-2"
-						class:!text-accent={edition === 'modern'}
+						class:text-accent={edition === 'modern'}
 						title={edition === 'modern' ? t('reader.readOriginal') : t('reader.readModern')}
 						aria-label={edition === 'modern' ? t('reader.readOriginal') : t('reader.readModern')}
 					>
@@ -818,7 +818,7 @@
 				<span class="mx-1 h-5 w-px bg-border" aria-hidden="true"></span>
 				<button
 					class="btn btn-icon btn-ghost"
-					class:!text-accent={currentBookmarked}
+					class:text-accent={currentBookmarked}
 					onclick={toggleBookmark}
 					aria-label={t('reader.bookmark')}
 					title={t('reader.bookmark')}
@@ -839,7 +839,7 @@
 				{#if listen.supported}
 					<button
 						class="btn btn-icon btn-ghost"
-						class:!text-accent={listen.status !== 'idle'}
+						class:text-accent={listen.status !== 'idle'}
 						onclick={() => (listen.status === 'idle' ? startListening() : listen.stop())}
 						aria-label={t('reader.listen')}
 						title={t('reader.listen')}><Icon name="headphones" size={18} /></button

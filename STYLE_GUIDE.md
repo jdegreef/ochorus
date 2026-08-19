@@ -484,7 +484,7 @@ Known gaps to close (tracked as follow-ups):
 - ✅ **Button sizes** — `.btn-sm` / `.btn-icon` / `.stat-number` replace five
   hand-rolled compact paddings, and the 123 `!important` utilities that existed
   to work around a specificity problem buttons never had (`.btn` is layered) are
-  down to one genuinely load-bearing case on `.book-card`.
+  down to one genuinely load-bearing case, on the unlayered `.book-card`.
 - ✅ **Tokens for shadows, durations and the cover fallback**; radii down from
   twelve values to four; breakpoints on Tailwind's scale.
 - ⚠️ **Admin still diverges** in places the tokens can't reach — `.text-display`

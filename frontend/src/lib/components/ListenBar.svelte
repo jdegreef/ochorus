@@ -46,10 +46,7 @@
 
 			<select
 				class="field tabular-nums"
-				class:border-accent={listen.sleepMinutes > 0}
-				class:text-accent={listen.sleepMinutes > 0}
-				class:border-border={listen.sleepMinutes === 0}
-				class:text-muted={listen.sleepMinutes === 0}
+				class:is-active={listen.sleepMinutes > 0}
 				value={listen.sleepMinutes}
 				onchange={(e) => listen.setSleep(Number(e.currentTarget.value))}
 				aria-label={t('reader.sleepTimer')}
