@@ -409,7 +409,7 @@ class AuthorBioDataIntegrityTests(SimpleTestCase):
     """The translated author bios (migrations/data/author_bios_<lang>/) are
     delivered by the seed_author_translations deploy step, which soft-skips a
     slug with no matching Author — deliberately deploy-safe, which means a
-    typo'd short.json key or misnamed <slug>.html would silently never ship.
+    misnamed <slug>.short.txt or <slug>.html would silently never ship.
     This suite makes that loud at CI time instead (the same strict-check role
     FixtureIntegrityTests plays for the fixture's own references)."""
 
@@ -435,6 +435,45 @@ class AuthorBioDataIntegrityTests(SimpleTestCase):
                 dangling, [],
                 f"{d.name}: bios for slugs missing from authors.json — the "
                 "seed would soft-skip these forever",
+            )
+
+    def test_short_json_files_stay_frozen_migration_inputs(self):
+        """The two surviving short.json files are empty, and no new ones appear.
+
+        Short bios ship as per-slug ``<slug>.short.txt`` files; nothing reads a
+        ``short.json`` any more. The sw/lg copies exist EMPTY only because
+        migration ``0024`` opens them unguarded and migrations are immutable
+        (see migrations/data/README.md). An entry added to one — the natural
+        habit for anyone who shipped a bio before the split — is a bio that
+        silently never ships, and a new short.json anywhere is the shared-file
+        conflict this split deleted, growing back.
+        """
+        from library.management.commands.seed_author_translations import (
+            DATA_DIR,
+            language_dirs,
+        )
+
+        allowed = {"author_bios_sw", "author_bios_lg"}
+        found = {p.parent.name: p for p in DATA_DIR.glob("author_bios_*/short.json")}
+        self.assertEqual(
+            sorted(set(found) - allowed),
+            [],
+            "New short.json files — short bios are per-slug <slug>.short.txt now",
+        )
+        for name in sorted(allowed):
+            path = found.get(name)
+            self.assertIsNotNone(path, f"{name}/short.json is migration 0024's "
+                                 "input and must exist (empty) or migrate crashes")
+            self.assertEqual(
+                json.loads(path.read_text(encoding="utf-8")),
+                {},
+                f"{name}/short.json must stay EMPTY — an entry here never ships",
+            )
+        # And every language now has per-slug shorts where it has bios at all.
+        for _lang, d in language_dirs():
+            self.assertTrue(
+                list(d.glob("*.short.txt")) or list(d.glob("*.html")),
+                f"{d.name}: no bio files at all — an empty dir seeds nothing",
             )
 
     # Roughly two sentences. A tripwire for "someone pasted the real biography

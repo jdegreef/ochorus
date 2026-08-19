@@ -44,7 +44,7 @@ three of them gives none of them one.
    | --- | --- |
    | `sermon` | the **same slug AND language** (i.e. the same job) |
    | `book` | the same slug AND language — **plus a `plan` job in your language** if your slug backs a plan (see below) |
-   | `bio` | any `bio` in the **same language** — they share `author_bios_<lang>/short.json` |
+   | `bio` | the **same slug AND language** (i.e. the same job) — short bios are per-slug `<slug>.short.txt` files now |
    | `plan` | any `plan` job in the **same language** — one shared `data/plan_translations/<lang>.json` — **and a `book` job in that language whose slug backs a plan** |
    | `topic` | any `topic` job in the **same language** — one shared `data/topic_translations/<lang>.json` |
 
@@ -70,10 +70,11 @@ three of them gives none of them one.
    natural-key fixture was designed for exactly this, and the repo CLAUDE.md
    says so: "parallel sessions cannot collide". The types that still serialise
    are the ones whose delivery vehicle is a shared file, and they are marked
-   above. Plans and topics have now been split this way and their rows narrowed
-   accordingly. The bio split remains, with a catch: migration `0024` reads
-   `short.json` unguarded, so the file must keep existing (parseable) for a
-   fresh DB to migrate; only its role as the source of truth can move.
+   above. All three splits have now shipped and every row tracks its files.
+   The bio split's catch is handled, not gone: migration `0024` reads the
+   sw/lg `short.json` unguarded and is immutable, so those two files exist
+   EMPTY (`{}`) purely as its input — nothing reads them, nothing may be
+   added to them (see `migrations/data/README.md`).
 
    **One thing still conflicts across every book/sermon job: the prerender
    refresh.** Two concurrent sermon jobs both touch
@@ -198,9 +199,10 @@ fixture model; translations ship as files, upserted (unreviewed) by
   dropping the classes loses the styling; keep the `<aside>` element too, to
   match the `write-biography` markup and the shipped en/es/lg/sw bios).
 - Deliver two files under `backend/library/migrations/data/author_bios_<lang>/`:
-  write the translated long-form HTML to `<slug>.html`, and add/replace the
-  `"<slug>": "<translated short bio>"` entry in that dir's `short.json`
-  (`ensure_ascii=False`). No new migration, no fixture.
+  write the translated long-form HTML to `<slug>.html` and the translated short
+  bio (plain text, one paragraph) to `<slug>.short.txt`. One file per author
+  per field — parallel bio jobs cannot collide. No new migration, no fixture.
+  (Never touch a `short.json`: the two that remain are empty migration inputs.)
 - `seed_author_translations` creates/updates an `AuthorTranslation`
   (`reviewed=False`). It never overwrites a `reviewed=True` row's wording, and
   only ever writes fields (a missing file/entry leaves the existing value) — so
@@ -575,8 +577,8 @@ archaic spelling and period punctuation are the text, not defects in it.
   consistent, and a language added from the admin lives only in the prod DB
   where a worker session cannot read it (skip such jobs and say so). The
   delivery paths need no setup: `seed_author_translations` globs
-  `author_bios_*`, so a new dir is picked up automatically — but it needs its
-  own `short.json`, which does not exist yet for a first batch. For an RTL
+  `author_bios_*`, so a new dir is picked up automatically, and short bios are
+  per-slug `<slug>.short.txt` files — nothing shared to create first. For an RTL
   language (ar), the reader supplies `dir="auto"` on the content container:
   translations must NOT carry their own `dir`/`lang` attributes (a frontend
   test pins this), and the bio's prayer-callout `class` attributes must survive
