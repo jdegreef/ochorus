@@ -149,7 +149,7 @@
 				bind:this={input}
 				bind:value={query}
 				type="search"
-				class="mt-3 w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+				class="mt-3 w-full rounded-sm border border-border-strong bg-bg px-3 py-2 text-body text-text"
 				placeholder={t('reader.searchPlaceholder')}
 				aria-label={t('reader.searchPlaceholder')}
 			/>

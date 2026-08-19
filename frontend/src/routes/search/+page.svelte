@@ -946,7 +946,7 @@
 			placeholder={t('search.placeholder')}
 			aria-label={t('search.title')}
 			aria-describedby="search-help"
-			class="w-full rounded-card border border-border bg-surface px-4 py-3 text-body text-text lg:max-w-3xl"
+			class="w-full rounded-card border border-border-strong bg-surface px-4 py-3 text-body text-text lg:max-w-3xl"
 		/>
 	</div>
 

@@ -60,7 +60,7 @@ values are identical to Take Root's.
 | `--border` | Hairlines, dividers | `#2d261d` | `#e8dfcf` |
 | `--border-strong` | Interactive control edges | `#7c7060` | `#968462` |
 | `--danger` | Errors, destructive | `#e8857a` | `#b23a48` |
-| `--warning` | Caution / needs attention | `#e0b45c` | `#8c641b` |
+| `--warning` | Caution / needs attention | `#e0b45c` | `#7d5815` |
 
 **Indigo + gold** is the signature pairing: indigo for interaction/primary, gold
 for accents, eyebrows, and reading marks (highlights). Use gold sparingly — it's a
@@ -71,7 +71,9 @@ and sepia themes, i.e. under AA, so anything that *says something* — a warning
 status, "awaiting native review" — takes `--warning`, not `--gold`. Gold stays on
 graphics and decoration: reading marks, the heatmap, the streak flame, the prefs
 gear, hairline rules, the pull-quote bar. In lamplight `--warning` coincides with
-gold, which already clears AA there; paper and sepia darken it until it does.
+gold, which already clears AA there; paper and sepia darken it until it does —
+far enough to clear 4.5:1 against a `bg-warning/10` wash as well as a flat
+surface, since the "awaiting native review" badge sets the ink on its own tint.
 
 **`--border` is a hairline; `--border-strong` is an edge.** `--border` sits at
 1.1–1.4:1 against its surfaces, which is right for a divider and far below the

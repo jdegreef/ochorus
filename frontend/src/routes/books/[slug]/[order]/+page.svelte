@@ -1062,7 +1062,7 @@
 			<textarea
 				bind:value={noteDraft}
 				rows="5"
-				class="w-full rounded-sm border border-border bg-bg p-3 text-body text-text"
+				class="w-full rounded-sm border border-border-strong bg-bg p-3 text-body text-text"
 				aria-label={t('reader.note')}
 				placeholder="…"
 			></textarea>

@@ -17,6 +17,7 @@
 	// Which confirmation card to show after an email is dispatched.
 	let sent = $state<null | 'magic' | 'signup' | 'reset'>(null);
 	let resentMsg = $state<string | null>(null);
+	let resentErr = $state<string | null>(null);
 	let routed = false;
 
 	// The redirect param is captured from the (already locale-prefixed) URL, so
@@ -89,9 +90,11 @@
 
 	async function resend() {
 		resentMsg = null;
+		resentErr = null;
 		const err =
 			sent === 'reset' ? await auth.sendPasswordReset(email) : await auth.signInWithMagicLink(email);
-		resentMsg = err ?? t('login.sentAgain');
+		if (err) resentErr = err;
+		else resentMsg = t('login.sentAgain');
 	}
 
 	const sentBody = $derived(
@@ -117,6 +120,7 @@
 				<p class="mb-2 text-small text-muted">{t('login.didntGet')}</p>
 				<button class="btn btn-ghost" onclick={resend}>{t('login.resend')}</button>
 				{#if resentMsg}<p role="status" class="mt-2 text-small text-muted">{resentMsg}</p>{/if}
+				{#if resentErr}<p role="alert" class="mt-2 text-small text-danger">{resentErr}</p>{/if}
 			</div>
 		</div>
 		<p class="mt-4 text-center text-small">
@@ -161,7 +165,7 @@
 				/>
 			{/if}
 
-			<p id="auth-error" role="alert" class="text-small text-danger empty:hidden {error ? 'mb-3' : ''}">
+			<p id="auth-error" role="alert" class="text-small text-danger {error ? 'mb-3' : ''}">
 				{error ?? ''}
 			</p>
 

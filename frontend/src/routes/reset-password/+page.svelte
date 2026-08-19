@@ -49,7 +49,7 @@
 				aria-describedby={error ? 'auth-error' : undefined}
 				class="mb-3 w-full rounded-sm border border-border-strong bg-bg px-3 py-2 text-body text-text"
 			/>
-			<p id="auth-error" role="alert" class="text-small text-danger empty:hidden {error ? 'mb-3' : ''}">
+			<p id="auth-error" role="alert" class="text-small text-danger {error ? 'mb-3' : ''}">
 				{error ?? ''}
 			</p>
 			<button

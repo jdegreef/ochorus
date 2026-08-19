@@ -83,7 +83,9 @@
 	/* Gold is the reading-mark/ornament colour and fails 4.5:1 as text in the
 	   light and sepia themes, so it cannot double as "warning". This is the
 	   semantic warning ink; in lamplight it coincides with gold, which already
-	   clears AA against every surface here. */
+	   clears AA against every surface here. The paper/sepia values are dark
+	   enough to clear 4.5:1 against a `bg-warning/10` wash as well as a flat
+	   surface — that badge is where the token is most often used. */
 	--warning: #e0b45c;
 	--font-display: 'Fraunces Variable', Georgia, serif;
 	--font-sans: 'Hanken Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
@@ -106,7 +108,7 @@
 	--border: #e8dfcf;
 	--border-strong: #968462;
 	--danger: #b23a48;
-	--warning: #8c641b;
+	--warning: #7d5815;
 }
 
 /* "Sepia" = a warm parchment reading tone: like paper but softer on the eyes
@@ -130,7 +132,7 @@
 	--border: #ddcfb1;
 	--border-strong: #8d7b57;
 	--danger: #b23a48;
-	--warning: #825c19;
+	--warning: #775413;
 }
 
 @layer base {
@@ -1148,7 +1150,9 @@ nav.appnav .navtoggle:hover {
 	.seg button,
 	.filter-field,
 	.widthctl button,
-	.account-item {
+	.account-item,
+	.rc-opt,
+	.google-btn {
 		min-height: 2.75rem;
 	}
 	/* Buttons whose label would otherwise sit at the top of the taller box.
