@@ -204,6 +204,20 @@ GITHUB_TRANSLATION_TOKEN = os.getenv("GITHUB_TRANSLATION_TOKEN", "")
 # it shipped. A secret, so it lives in the environment and never in the repo.
 RENDER_WEB_DEPLOY_HOOK = os.getenv("RENDER_WEB_DEPLOY_HOOK", "").strip()
 
+# The commit this API instance is serving, surfaced on /api/health/.
+#
+# The reader is a STATIC site prerendered against this API, and a content commit
+# deploys both services at once — so the web build can start while the API is
+# still serving the previous release and bake the old content into pages whose
+# whole purpose was to show the new content. Publishing the commit here is what
+# lets the web build wait for the API to catch up before it prerenders
+# (frontend/scripts/await-api-release.mjs).
+#
+# Render sets RENDER_GIT_COMMIT in every service; unset (local, CI) simply means
+# the check has nothing to compare and skips, which is the right default for
+# environments where the two aren't deploying together.
+RELEASE_COMMIT = os.getenv("RENDER_GIT_COMMIT", "").strip()
+
 # Public origin of the READER (e.g. https://ochorus.com), used to confirm after a
 # deploy that a newly live locale actually appears in the built sitemap. Optional:
 # without it the post-deploy check reports "unknown" instead of guessing.

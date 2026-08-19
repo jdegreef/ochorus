@@ -189,3 +189,26 @@ class IsAdminUserTests(TestCase):
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
     def test_blank_email_denied(self):
         self.assertFalse(is_admin_user(User(email="")))
+
+
+class HealthEndpointTests(TestCase):
+    """/api/health/ is Render's liveness probe AND the release fingerprint the
+    static web build waits on before prerendering (see
+    frontend/scripts/await-api-release.mjs)."""
+
+    @override_settings(RELEASE_COMMIT="abc123def456")
+    def test_reports_the_commit_it_is_serving(self):
+        res = APIClient().get("/api/health/")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["status"], "ok")
+        self.assertEqual(res.data["commit"], "abc123def456")
+
+    @override_settings(RELEASE_COMMIT="")
+    def test_commit_is_present_but_empty_when_unset(self):
+        # The key must always exist: the build distinguishes "no commit to
+        # compare" (skip) from "an API too old to publish one" (also skip, but
+        # worth saying differently), and a missing key would collapse the two.
+        res = APIClient().get("/api/health/")
+        self.assertEqual(res.status_code, 200)
+        self.assertIn("commit", res.data)
+        self.assertEqual(res.data["commit"], "")

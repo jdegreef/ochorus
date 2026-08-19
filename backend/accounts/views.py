@@ -1,3 +1,4 @@
+from django.conf import settings
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
@@ -7,8 +8,22 @@ from rest_framework.views import APIView
 @api_view(["GET"])
 @permission_classes([AllowAny])
 def health(request):
-    """Liveness probe used by Render's health check."""
-    return Response({"status": "ok", "service": "ochorus"})
+    """Liveness probe used by Render's health check.
+
+    Also publishes the commit this instance is serving. The reader is a static
+    site prerendered against this API, and a content commit deploys both at
+    once — so the web build needs a way to tell "the API is already serving my
+    release" from "the API is still serving the previous one", rather than
+    prerendering the old content into pages meant to show the new. Empty when
+    unset (local, CI), which the build treats as "nothing to compare".
+    """
+    return Response(
+        {
+            "status": "ok",
+            "service": "ochorus",
+            "commit": settings.RELEASE_COMMIT,
+        }
+    )
 
 
 class MeView(APIView):
