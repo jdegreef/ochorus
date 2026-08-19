@@ -308,7 +308,7 @@
 									<a
 										href={localizeHref(`/books/${bk.slug}/${ch.order}?p=${hl.p}`)}
 										class="block rounded-lg border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
-										style="border-left-color: var(--hl-{hl.color})"
+										style="border-inline-start-color: var(--hl-{hl.color})"
 									>
 										{#if hl.text}
 											<span class="block text-body italic text-text">“{hl.text}”</span>
@@ -340,7 +340,7 @@
 							<a
 								href={localizeHref(`/sermons/${sm.slug}?p=${hl.p}`)}
 								class="block rounded-lg border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
-								style="border-left-color: var(--hl-{hl.color})"
+								style="border-inline-start-color: var(--hl-{hl.color})"
 							>
 								{#if hl.text}
 									<span class="block text-body italic text-text">“{hl.text}”</span>
@@ -369,7 +369,7 @@
 							<a
 								href={localizeHref(`/authors/${b.slug}`)}
 								class="block rounded-lg border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
-								style="border-left-color: var(--hl-{hl.color})"
+								style="border-inline-start-color: var(--hl-{hl.color})"
 							>
 								{#if hl.text}
 									<span class="block text-body italic text-text">“{hl.text}”</span>

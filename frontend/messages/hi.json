@@ -339,6 +339,8 @@
   "author_themes": "विषय",
   "author_empty": "इस लेखक की कोई पुस्तक या उपदेश अभी पुस्तकालय में नहीं है।",
   "author_meta_fallback": "Ochorus पर %name% — मुफ़्त क्लासिक मसीही पुस्तकें।",
+  "book_meta_fallback": "%title% — %name% द्वारा, Ochorus पर निःशुल्क पढ़ें।",
+  "sermon_meta_fallback": "%title% — %name% का एक उपदेश।",
   "error_not_found_title": "पेज नहीं मिला",
   "error_generic_title": "कुछ गड़बड़ हो गई",
   "error_not_found_message": "हमें वह पेज नहीं मिला। हो सकता है वह हट गया हो, या लिंक पुराना हो गया हो।",

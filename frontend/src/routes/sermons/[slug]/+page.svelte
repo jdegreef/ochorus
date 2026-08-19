@@ -133,7 +133,9 @@
 	// plus a breadcrumb. og:image is the author portrait when present (raster).
 	const metaDescription = $derived(
 		(sermon.body_html || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 155) ||
-			`${sermon.title} — a sermon by ${sermon.author_name}.`
+			t('sermon.metaFallback')
+				.replace('%title%', sermon.title)
+				.replace('%name%', sermon.author_name)
 	);
 	const ogImage = $derived(sermon.author_photo ? absUrl(sermon.author_photo) : '');
 	const sermonLd = $derived(

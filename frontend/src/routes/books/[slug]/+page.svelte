@@ -53,11 +53,16 @@
 	const path = $derived(`/books/${book.slug}/`);
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
 	const hreflang = $derived(hreflangFor(path, book.available_languages));
+	// Localized fallback, not an English literal: this page prerenders per locale,
+	// so a work without a description was shipping an English <meta description>
+	// and og:description at its /sw, /ar, … URL. Mirrors author.metaFallback.
 	const description = $derived(
-		(book.description || `${book.title} by ${book.author.name} — free to read on Ochorus.`).slice(
-			0,
-			300
-		)
+		(
+			book.description ||
+			t('book.metaFallback')
+				.replace('%title%', book.title)
+				.replace('%name%', book.author.name)
+		).slice(0, 300)
 	);
 	// og:image must be raster — WhatsApp/Facebook/Twitter refuse SVG preview
 	// images. Books without a raster cover fall back to the pre-rasterized PNG

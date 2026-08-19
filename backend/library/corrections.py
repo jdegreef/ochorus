@@ -302,9 +302,6 @@ BODY_CORRECTIONS: dict[str, dict] = {
     "soar-like-the-eagle-3": {
         "replacements": [("<p>Iwas", "<p>I was"), ("<p>Iwell", "<p>I well")],
     },
-    "how-to-manage-a-library": {
-        "replacements": [("<p>Alibrary", "<p>A library"), ("<p>Agood", "<p>A good")],
-    },
     "if": {
         # Unpublished (copyright audit), but the row is in the fixture and would
         # ship wrong if it were ever republished.

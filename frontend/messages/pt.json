@@ -339,6 +339,8 @@
   "author_themes": "Temas",
   "author_empty": "Ainda não há livros ou sermões na biblioteca para este escritor.",
   "author_meta_fallback": "%name% no Ochorus — livros cristãos clássicos gratuitos.",
+  "book_meta_fallback": "%title% de %name% — leitura gratuita no Ochorus.",
+  "sermon_meta_fallback": "%title% — um sermão de %name%.",
   "error_not_found_title": "Página não encontrada",
   "error_generic_title": "Algo deu errado",
   "error_not_found_message": "Não encontramos essa página. Ela pode ter sido movida, ou o link pode estar desatualizado.",

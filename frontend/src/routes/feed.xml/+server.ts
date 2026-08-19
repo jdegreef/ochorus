@@ -1,4 +1,5 @@
 import { SITE_URL } from '$lib/config';
+import { FEED_EPOCH, isoOrEpoch } from '$lib/feedDate';
 import { listBooks, listSermons } from '$lib/library';
 
 export const prerender = true;
@@ -35,7 +36,7 @@ interface FeedItem {
 }
 
 function entryXml(it: FeedItem): string {
-	const updated = new Date(it.date).toISOString();
+	const updated = isoOrEpoch(it.date);
 	return [
 		'  <entry>',
 		`    <title>${xml(it.title)}</title>`,
@@ -82,7 +83,7 @@ export async function GET() {
 
 	// Feed <updated> is the newest entry's timestamp — stable across rebuilds
 	// (no wall-clock), so the feed only changes when the content does.
-	const updated = items.length ? new Date(items[0].date).toISOString() : '1970-01-01T00:00:00Z';
+	const updated = items.length ? isoOrEpoch(items[0].date) : FEED_EPOCH;
 
 	const body = [
 		'<?xml version="1.0" encoding="utf-8"?>',
