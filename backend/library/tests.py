@@ -1,3 +1,4 @@
+import copy
 import json
 import os
 import shutil
@@ -1312,6 +1313,34 @@ class TopicTests(TestCase):
                     self.assertTrue(
                         description.strip(), f"{lang}/{slug}: empty description"
                     )
+
+    def test_seed_topics_reverts_a_deleted_scripture_entry(self):
+        """Removing an entry's scripture object un-ships the verse on redeploy.
+
+        The files are authoritative in BOTH directions. The additive version of
+        this upsert only wrote scripture when present, so a reviewer deleting a
+        wrong verse from the language file would find it still rendering after
+        every future deploy — while translate_topic's own success message
+        promised the opposite.
+        """
+        from django.core.management import call_command
+
+        call_command("seed_topics", verbosity=0)
+        lg = TopicTranslation.objects.get(topic__slug="prayer", language="lg")
+        self.assertTrue(lg.scripture_text)  # lg ships a verse for prayer
+
+        from library import topic_translations as tt
+
+        edited = copy.deepcopy(tt.raw_topic_translations())
+        edited["lg"]["prayer"].pop("scripture")
+        with mock.patch(
+            "library.topic_translations.raw_topic_translations", return_value=edited
+        ):
+            call_command("seed_topics", verbosity=0)
+
+        lg.refresh_from_db()
+        self.assertEqual((lg.scripture_ref, lg.scripture_text), ("", ""))
+        self.assertTrue(lg.title)  # the prose survives; only the verse reverts
 
     def test_seed_topics_translates_every_advertised_language(self):
         """es, sw, lg and pt all get real shelves — not English ones, and not none.

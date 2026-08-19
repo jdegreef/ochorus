@@ -299,16 +299,22 @@ class Command(BaseCommand):
             # reaches an already-seeded topic on the next deploy.
             for lang in set(prose) | set(scripture):
                 tr = prose.get(lang, {}).get(slug)
-                sc = scripture.get(lang, {}).get(slug)
-                if not tr and not sc:
+                if not tr:
                     continue
-                defaults = {}
-                if tr:
-                    defaults["title"], defaults["description"] = tr
-                if sc:
-                    defaults["scripture_ref"], defaults["scripture_text"] = sc
+                # The file is authoritative in BOTH directions: a scripture
+                # object deleted from the entry (a reviewer rejecting a verse)
+                # must blank the stored one on the next deploy, not leave it
+                # rendering forever. So absent scripture writes "", never skips.
+                ref, verse_tr = scripture.get(lang, {}).get(slug, ("", ""))
                 TopicTranslation.objects.update_or_create(
-                    topic=topic, language=lang, defaults=defaults
+                    topic=topic,
+                    language=lang,
+                    defaults={
+                        "title": tr[0],
+                        "description": tr[1],
+                        "scripture_ref": ref,
+                        "scripture_text": verse_tr,
+                    },
                 )
             if was_created:
                 self.stdout.write(

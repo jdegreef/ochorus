@@ -1072,7 +1072,16 @@ class TopicTranslationFileTests(SimpleTestCase):
             for lang, meta in self.meta.items()
             if set(meta) - {"_note"}
         ]
-        self.assertEqual(bad, [], f"Unknown language-level keys: {bad}")
+        bad += [
+            f"{lang}.json: _note must be a list of non-empty strings"
+            for lang, meta in self.meta.items()
+            if "_note" in meta
+            and not (
+                isinstance(meta["_note"], list)
+                and all(isinstance(x, str) and x.strip() for x in meta["_note"])
+            )
+        ]
+        self.assertEqual(bad, [], "\n".join(bad))
 
     def test_every_slug_names_a_real_topic_and_covers_all_of_them(self):
         """Both directions: no dead prose, and no hidden shelf.

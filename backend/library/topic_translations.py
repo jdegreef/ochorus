@@ -32,18 +32,20 @@ File format, ``data/topic_translations/<language>.json``::
 from __future__ import annotations
 
 import json
-from functools import lru_cache
 from pathlib import Path
 
 DATA_DIR = Path(__file__).resolve().parent / "data" / "topic_translations"
 
 
-@lru_cache(maxsize=1)
 def raw_topic_translations() -> dict[str, dict[str, dict]]:
     """``{language: {slug: entry}}`` as written, ``_note`` keys included.
 
     A new language is picked up by dropping in its file; the CI gate over
     these files reads them through this rather than globbing a second time.
+    Deliberately UNCACHED, unlike the plan loader: ``translate_topic`` WRITES
+    these files in the same process that may later seed them, and a cache
+    would serve the pre-write snapshot — five small files cost microseconds,
+    a stale seed costs a hidden shelf.
     """
     return {
         path.stem: json.loads(path.read_text(encoding="utf-8"))
@@ -59,9 +61,11 @@ def topic_translations() -> dict[str, dict[str, tuple[str, str]]]:
     """``{language: {slug: (title, description)}}`` — what ``seed_topics`` upserts."""
     return {
         lang: {
+            # Both fields unconditionally: the CI gate requires both, and a
+            # file that reaches a deploy without one should fail the release
+            # LOUDLY here rather than seed a half-translated shelf silently.
             slug: (e["title"], e["description"])
             for slug, e in _entries(payload).items()
-            if "title" in e
         }
         for lang, payload in raw_topic_translations().items()
     }
