@@ -1093,7 +1093,7 @@ class PlanTests(TestCase):
         per language the source book is published in, so shipping a BOOK is what
         creates the plan — and the prose used to fall back to English, putting
         "Humility in 12 Days" on the Arabic plans page. Hindi has no
-        PLAN_TRANSLATIONS entry, so no Hindi plan may appear.
+        data/plan_translations/hi.json, so no Hindi plan may appear.
         """
         from django.core.management import call_command
 
