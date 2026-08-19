@@ -752,3 +752,126 @@ class QuoteStyleTests(SimpleTestCase):
             "from context, and a source that sets a space inside its marks or "
             "leaves a quotation open across a paragraph can still fool it.",
         )
+
+
+class CitationRangeTests(SimpleTestCase):
+    """A verse range must ascend — the one automatic handle on mangled citations.
+
+    Bidirectional text reorders digit groups silently. A citation that entered
+    as ``Psalm 20:7-8`` can be stored as ``(مزمور 7:20-8)``: the chapter and the
+    first verse have swapped, the QUOTED VERSE beside it is still correct, and
+    the reference reads as perfectly plausible Arabic. No scripture check sees
+    it, because scripture checks compare wording — and the wording is right.
+
+    What is left is an arithmetic invariant that holds in every language and
+    every script: a range runs forwards. ``C:V1-V2`` needs ``V2 > V1``, and the
+    cross-chapter form ``C1:V1-C2:V2`` needs ``C2 > C1``. Transposition breaks
+    it about half the time, which is the entire detection budget available for
+    this class of defect — a transposed SINGLE-verse reference stays invisible
+    and still needs a reviewer reading citations against the English.
+
+    Arabic-Indic digits are normalised before comparing, because the corpus is
+    not uniform: the shipped Arabic books settle Western-to-Arabic-Indic 673 to
+    3, and a check that only understood Western digits would skip the language
+    the defect actually appears in.
+
+    ``KNOWN_CITATIONS`` pins the cases that are NOT defects of this kind, each
+    with its reason. It fails when an entry stops matching, so it can only
+    shrink. Fixture-only, no DB.
+    """
+
+    # (fixture file, the citation text as stored) that this invariant flags but
+    # which are not transpositions. Keep the reason on every line.
+    KNOWN_CITATIONS: set[tuple[str, str]] = {
+        # Period convention, not a defect: the tens digit is elided, so
+        # "12:22-4" is Hebrews 12:22-24. english-qa's governing rule is that
+        # period style is the text rather than an error in it. Whoever first
+        # translates `grace-abounding` will render these and will need entries
+        # for that file too — that is the check working, not a nuisance.
+        # Two in the same book, one per separator style ("12:22-4" and
+        # "15.21-8" = Matt. 15:21-28); Bunyan's printer used both.
+        ("grace-abounding.en.json", "12:22-4"),
+        ("grace-abounding.en.json", "15.21-8"),
+        # A REAL defect, reported not repaired (see this PR's description).
+        # The source reads "(1 Peter 1:2-2, 1 Thessalonians 2:13)" beside the
+        # quoted phrase "sanctification of the Spirit", which is verbatim
+        # 1 Peter 1:2 and 2 Thessalonians 2:13 — 1 Thessalonians 2:13 is about
+        # receiving the word of God and does not contain the phrase. So the
+        # extractor appears to have welded the "2" of "2 Thessalonians" onto
+        # the previous reference. It has NOT propagated: the ar/es/lg/sw
+        # editions of this book do not carry it. Belongs in a BODY_CORRECTIONS
+        # entry via the english-qa channel, not in a test-only PR.
+        ("the-person-and-work-of-the-holy-spirit.en.json", "1:2-2"),
+    }
+
+    _DIGITS = str.maketrans("٠١٢٣٤٥٦٧٨٩", "0123456789")
+    # A parenthesised group, bounded so a stray "(" cannot swallow a paragraph.
+    _PAREN = re.compile(r"\(([^)]{0,160})\)")
+    # C:V1-V2, optionally followed by ":V2b" for the cross-chapter form.
+    _RANGE = re.compile(
+        r"([0-9٠-٩]{1,3})\s*[:.]\s*([0-9٠-٩]{1,3})"
+        r"\s*[-‐‑‒–—]\s*([0-9٠-٩]{1,3})"
+        r"(?:\s*[:.]\s*([0-9٠-٩]{1,3}))?"
+    )
+    _TAG = re.compile(r"<[^>]+>")
+
+    @classmethod
+    def _n(cls, group: str | None) -> int | None:
+        return None if group is None else int(group.translate(cls._DIGITS))
+
+    @classmethod
+    def descending(cls) -> list[tuple[str, str, str]]:
+        """(file, citation, whole parenthesised group) for every backwards range."""
+        out: list[tuple[str, str, str]] = []
+        for path in ordered_fixture_paths():
+            if path.name in {"authors.json", "plans.json"}:
+                continue
+            for row in json.loads(path.read_text()):
+                html = row["fields"].get("body_html") or ""
+                if not html:
+                    continue
+                text = cls._TAG.sub(" ", html)
+                for paren in cls._PAREN.finditer(text):
+                    inner = paren.group(1)
+                    for m in cls._RANGE.finditer(inner):
+                        chapter, first, second, across = (
+                            cls._n(m.group(1)),
+                            cls._n(m.group(2)),
+                            cls._n(m.group(3)),
+                            cls._n(m.group(4)),
+                        )
+                        # Cross-chapter (C1:V1-C2:V2): the CHAPTER must ascend,
+                        # and the verse legitimately restarts lower (2:11-3:1).
+                        ok = second > chapter if across is not None else second > first
+                        if not ok:
+                            out.append((path.name, m.group(0), inner.strip()))
+        return out
+
+    def test_every_verse_range_ascends(self):
+        new = [
+            (f, cite, ctx)
+            for f, cite, ctx in self.descending()
+            if (f, cite) not in self.KNOWN_CITATIONS
+        ]
+        detail = "\n".join(f"  {f} — ({ctx})" for f, _, ctx in sorted(new))
+        self.assertFalse(
+            new,
+            "These verse ranges run backwards:\n"
+            f"{detail}\n\n"
+            "In a right-to-left language this is usually a TRANSPOSITION — the "
+            "chapter and first verse swapped when Western numerals were embedded "
+            "in RTL text — and the verse quoted beside it is typically correct, "
+            "so only the reference needs repairing. Check it against the English "
+            "edition. If the range is right and the source simply writes it this "
+            "way, add it to KNOWN_CITATIONS with the reason.",
+        )
+
+    def test_known_citations_contains_no_stale_entries(self):
+        stale = sorted(
+            self.KNOWN_CITATIONS - {(f, cite) for f, cite, _ in self.descending()}
+        )
+        self.assertFalse(
+            stale,
+            "These entries no longer match anything — delete them from "
+            f"KNOWN_CITATIONS so the list can only shrink: {stale}",
+        )
