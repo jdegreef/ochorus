@@ -7,8 +7,9 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 from django.core.management import call_command
-from django.test import TestCase
+from django.test import SimpleTestCase, TestCase
 
+from .management.commands.seed_translation_notes import notes_path
 from .models import TranslationNote
 
 
@@ -140,3 +141,129 @@ class ShippedNotesTests(TestCase):
         mined = rows.get(status="mined")
         self.assertEqual(mined.reference, "Matthew 11:29")
         self.assertTrue(mined.source_file, "mined but cites no source")
+
+
+# --- Coverage: does every translation carry its review notes? ----------------
+
+BACKLOG_PATH = Path(__file__).resolve().parent / "data" / "translation_notes_backlog.json"
+
+
+def translated_works() -> list[tuple[str, str, str]]:
+    """``(kind, slug, language)`` for every shipped translation, sorted.
+
+    A translation is any book or sermon content file whose language is not
+    ``en``. ``en-modern`` counts: a contemporized edition comes off the same
+    translate-then-review pipeline and its careful pass can reword a quotation,
+    so its provenance is worth the same record.
+    """
+    from library.content_fixtures import BOOKS_DIR, SERMONS_DIR
+
+    works = [
+        (kind, slug, language)
+        for kind, directory in (("book", BOOKS_DIR), ("sermon", SERMONS_DIR))
+        for path in directory.glob("*.json")
+        for slug, _, language in [path.name[: -len(".json")].rpartition(".")]
+        if slug and language != "en"
+    ]
+    return sorted(works)
+
+
+def works_missing_notes() -> set[str]:
+    """``<kind>/<slug>.<language>`` for every translation with no notes file."""
+    return {
+        f"{kind}/{slug}.{language}"
+        for kind, slug, language in translated_works()
+        if not notes_path(kind, slug, language).exists()
+    }
+
+
+def read_backlog() -> set[str]:
+    return set(json.loads(BACKLOG_PATH.read_text(encoding="utf-8"))["uncovered"])
+
+
+class NotesCoverageTests(SimpleTestCase):
+    """Every NEW translation ships its review notes; the backlog only shrinks.
+
+    A translation's scripture provenance — which verses were recovered verbatim
+    from our own shipped corpus, and which the translator rendered itself — is
+    worked out while the job runs and is unrecoverable afterwards. It cannot be
+    backfilled in bulk: nothing in the shipped file records where its wording
+    came from. So it is captured at ship time or not at all.
+
+    It was mostly not at all. When this gate was written, **5 of 163** shipped
+    book and sermon translations carried a notes file, and every other signal on
+    the remaining 158 read done — issues closed, fixtures valid, CI green. One
+    batch PR shipped ten jobs and zero notes. ``ShippedNotesTests`` above pins
+    individual translations by hand, so a translation with no file at all was
+    never examined by anything.
+
+    The backlog is committed as data (``data/translation_notes_backlog.json``)
+    rather than as a literal here, because there are 158 of them and because it
+    is a work list somebody will want to sort and count. There is deliberately
+    no ``--update-backlog`` command: an entry leaves the list when its notes
+    ship, one line at a time, and the second test below fails if a stale entry
+    is left behind. Fixture-only, no DB.
+    """
+
+    def test_every_new_translation_ships_its_notes(self):
+        missing = sorted(works_missing_notes() - read_backlog())
+        self.assertEqual(
+            missing,
+            [],
+            "These translations ship no review notes:\n  "
+            + "\n  ".join(missing)
+            + "\n\nWrite fixtures/translation_notes/<kind>/<slug>.<language>.json "
+            "listing every scripture reference the translation quotes, each "
+            "`mined` (wording taken verbatim from a shipped *.<lang>.json, which "
+            "`source_file` must name) or `self_rendered`. The review queue turns "
+            "it into the row's 'N verses unverified' chip — without it a reviewer "
+            "cannot tell which verses still need checking, and the provenance is "
+            "gone once the run ends.",
+        )
+
+    def test_backlog_contains_no_covered_or_unknown_entries(self):
+        backlog = read_backlog()
+        fixed = sorted(backlog - works_missing_notes())
+        self.assertEqual(
+            fixed,
+            [],
+            "These entries no longer belong in the backlog — their notes have "
+            "shipped, or the translation was renamed or removed. Delete them "
+            f"from {BACKLOG_PATH.name} so the list can only shrink: {fixed}",
+        )
+
+    def test_every_notes_file_matches_its_filename(self):
+        """A notes file's identity fields must agree with its path.
+
+        The coverage test above is satisfied by a file EXISTING at the right
+        path, but ``seed_translation_notes`` keys its rows on the fields inside
+        (``kind``/``slug``/``language``), taking only ``kind`` from the
+        directory. A file copied from another translation and renamed — the
+        obvious way to start one — therefore passes coverage while seeding its
+        rows against whatever translation it was copied from, silently replacing
+        that one's notes (the seed deletes and rewrites per identity) and
+        leaving the renamed translation at zero. Both would read as covered.
+        """
+        from library.management.commands.seed_translation_notes import NOTES_DIR
+
+        wrong = []
+        for path in sorted(NOTES_DIR.glob("*/*.json")):
+            data = json.loads(path.read_text(encoding="utf-8"))
+            slug, _, language = path.name[: -len(".json")].rpartition(".")
+            want = (path.parent.name, slug, language)
+            got = (data.get("kind"), data.get("slug"), data.get("language"))
+            if got != want:
+                wrong.append(f"{path.parent.name}/{path.name}: says {got}, path says {want}")
+            elif not isinstance(data.get("references"), list):
+                wrong.append(f"{path.parent.name}/{path.name}: no 'references' list")
+        self.assertEqual(
+            wrong,
+            [],
+            "These notes files disagree with their own filenames:\n  "
+            + "\n  ".join(wrong)
+            + "\n\nseed_translation_notes keys on the fields, not the path, so "
+            "the rows would land against the wrong translation. An empty "
+            "'references' list is allowed — it says the translation was read "
+            "and quotes no scripture — but the key must be there, so that "
+            "'none found' cannot be confused with 'never looked'.",
+        )
