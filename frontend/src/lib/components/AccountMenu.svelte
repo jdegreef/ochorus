@@ -39,8 +39,8 @@
 		<div class="account" bind:this={root}>
 			<button
 				class="account-btn"
-				aria-haspopup="true"
 				aria-expanded={open}
+				aria-controls={open ? 'account-menu' : undefined}
 				aria-label={t('account.title')}
 				onclick={(e) => {
 					e.stopPropagation();
@@ -50,7 +50,12 @@
 				{initials}
 			</button>
 			{#if open}
-				<div class="account-menu">
+				<!-- A labelled group of links, not a menu: role="menu" promises
+				     arrow-key navigation between menuitem children, and this has
+				     neither. Same treatment QuickSettings uses next to it in the bar.
+				     aria-controls only while the panel exists — an IDREF pointing at
+				     nothing is worse than none. -->
+				<div id="account-menu" class="account-menu" role="group" aria-label={t('account.title')}>
 					<div class="truncate px-3 py-1.5">
 						{#if auth.displayName}
 							<div class="text-small font-semibold text-text">{auth.displayName}</div>
