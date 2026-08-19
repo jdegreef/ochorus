@@ -15,6 +15,8 @@
 		</div>
 	{/if}
 
+	<!-- Auto-dismissed after a beat: purely informational, unlike the update and
+	     storage toasts below, which ask the reader to do something. -->
 	{#if pwa.offlineReady}
 		<div class="pwa-toast">
 			<span>{t('pwa.ready')}</span>
@@ -41,7 +43,10 @@
 	.pwa-stack {
 		position: fixed;
 		inset-inline-end: 1rem;
-		bottom: 1rem;
+		/* Clear the audio player when one is up (it publishes --listenbar-h) and
+		   the home-indicator strip below it. Listening offline used to put the
+		   "reading from your device" pill straight over the transport controls. */
+		bottom: calc(1rem + env(safe-area-inset-bottom) + var(--listenbar-h, 0px));
 		z-index: 60;
 		display: flex;
 		flex-direction: column;

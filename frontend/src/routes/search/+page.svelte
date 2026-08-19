@@ -932,7 +932,7 @@
 	     full width while the results began 12rem in behind the rail, so the eye
 	     had two left edges to track down a single column of content. -->
 	<div
-		class="sticky top-0 z-20 -mx-5 bg-bg px-5 pb-3 pt-2"
+		class="sticky z-20 -mx-5 bg-bg px-5 pb-3 pt-2" style="top: var(--appnav-h, 0px)"
 		class:lg:ps-[15.25rem]={hasFacets}
 		role="search"
 	>

@@ -5,10 +5,18 @@
 	import { localizeHref } from '$lib/href';
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { goto } from '$app/navigation';
+	import { paletteUi } from '$lib/paletteUi.svelte';
 
 	const t = i18n.t;
 
-	let open = $state(false);
+	const open = {
+		get value() {
+			return paletteUi.open;
+		},
+		set value(v: boolean) {
+			paletteUi.open = v;
+		}
+	};
 	let q = $state('');
 	let hits = $state<SearchHit[]>([]);
 	let loading = $state(false);
@@ -55,7 +63,33 @@
 		return list.map((c) => ({ key: 'cmd:' + c.href, kind: 'cmd', label: t('search.palettePages'), title: c.label, meta: '', href: c.href }));
 	});
 	const hitItems = $derived<Item[]>(hits.map(hitItem));
-	const items = $derived<Item[]>([...cmdItems, ...hitItems]);
+
+	/**
+	 * A last row that always hands the query to the full search page.
+	 *
+	 * The palette searches as you type but only shows a handful of instant hits,
+	 * and its command list has no /search entry — so a query it missed ended at
+	 * "No results" with nowhere to go, even though the real search page stems,
+	 * filters and sorts. This is that way out, and it is present whether or not
+	 * there were hits: "not in the first five" and "not in the library" look
+	 * identical from here.
+	 */
+	const searchItem = $derived.by<Item[]>(() => {
+		const term = q.trim();
+		if (!term) return [];
+		return [
+			{
+				key: 'search:all',
+				kind: 'cmd',
+				label: t('nav.search'),
+				title: t('search.showAll'),
+				meta: term,
+				href: `/search?q=${encodeURIComponent(term)}`
+			}
+		];
+	});
+
+	const items = $derived<Item[]>([...cmdItems, ...hitItems, ...searchItem]);
 	const activeKey = $derived(items[activeIndex]?.key ?? '');
 
 	// Keep the selection valid as the list changes; keep the active row in view.
@@ -93,13 +127,13 @@
 	}
 
 	function openPalette() {
-		open = true;
+		open.value = true;
 		q = '';
 		hits = [];
 		activeIndex = 0;
 	}
 	function close() {
-		open = false;
+		open.value = false;
 	}
 	function go(href: string) {
 		goto(localizeHref(href));
@@ -109,8 +143,8 @@
 	function onWindowKeydown(e: KeyboardEvent) {
 		if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
 			e.preventDefault();
-			open ? close() : openPalette();
-		} else if (e.key === 'Escape' && open) {
+			open.value ? close() : openPalette();
+		} else if (e.key === 'Escape' && open.value) {
 			close();
 		}
 	}
@@ -133,7 +167,7 @@
 
 <svelte:window onkeydown={onWindowKeydown} />
 
-{#if open}
+{#if open.value}
 	<!-- Backdrop. Click closes; keyboard dismissal is the global Escape handler. -->
 	<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
 	<div
@@ -187,7 +221,7 @@
 									<span
 										class="eyebrow w-16 shrink-0 text-muted"
 									>
-										{it.kind === 'cmd' ? t('search.palettePages') : it.label}
+										{it.label}
 									</span>
 									<span class="min-w-0 flex-1">
 										<span class="block truncate text-body text-text">{it.title}</span>

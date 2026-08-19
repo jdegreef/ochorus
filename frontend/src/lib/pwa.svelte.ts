@@ -31,6 +31,9 @@ const READER_ROUTES = new Set(['/books/[slug]/[order]', '/sermons/[slug]']);
 const AUTO_APPLIED_AT_KEY = 'ochorus:pwa-auto-applied-at';
 const LOOP_WINDOW_MS = 30_000;
 
+/** How long the informational "ready to read offline" toast stays up. */
+const OFFLINE_READY_MS = 8000;
+
 class Pwa {
 	/** True once the app shell + assets are cached (first successful install). */
 	offlineReady = $state(false);
@@ -80,7 +83,12 @@ class Pwa {
 					if (navigator.serviceWorker.controller) {
 						this.#setWaiting(installing); // update to an already-running app
 					} else {
-						this.offlineReady = true; // first ever install → now cached
+						// First ever install → now cached. Informational, with nothing to
+						// act on once read, so it clears itself; the update and storage
+						// toasts ask the reader to DO something and correctly persist
+						// until dismissed.
+						this.offlineReady = true;
+						setTimeout(() => (this.offlineReady = false), OFFLINE_READY_MS);
 					}
 				});
 			});
