@@ -299,6 +299,17 @@ import type { PageLoad } from './$types';
  * Kumngojea Mungu (Waiting on God, 35 ch) — shipped by another session's PR
  * which stopped short of this follow-up; backs no reading plan, so the books
  * shelf is the only page that needs re-baking.
+ *
+ * Prerender refresh 2026-08-19 (queue jobs #786, #787, PR #989): Catherine
+ * Booth's Побожність (Godliness, 16 ch) and R. A. Torrey's Хрещення Святим
+ * Духом (Baptism with the Holy Spirit, 5 ch) — the fourth and fifth Ukrainian
+ * books. ONLY this loader, deliberately: Torrey's book does appear in the
+ * curated power-from-on-high plan, but that plan needs
+ * the-person-and-work-of-the-holy-spirit too, which has no uk edition, so
+ * seed_plans creates no uk row and plans/+page.ts has nothing new to bake.
+ * Verified by running seed_plans on a clean database — it built the plan for
+ * ar/en/es/lg and skipped uk. Whoever ships that second book DOES owe the
+ * plans touch, because it completes the set.
  */
 export const load: PageLoad = async () => {
 	try {
