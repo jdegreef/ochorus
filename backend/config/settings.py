@@ -142,6 +142,17 @@ REST_FRAMEWORK = {
         "rest_framework.renderers.BrowsableAPIRenderer",
     ],
     "EXCEPTION_HANDLER": "common.exception_handler.detail_exception_handler",
+    # No DEFAULT_PAGINATION_CLASS, deliberately. The shelves are a WHOLE-SET
+    # contract, not a convenience: the reader filters, facets and sorts them
+    # client-side, and the static build prerenders from them — so a page-1
+    # response wouldn't shorten a list, it would silently drop books from the
+    # shelf and pages from the sitemap. The sets are also small and bounded by
+    # editorial effort (one row per work per language), not by user input.
+    # Search, the one endpoint whose result set ISN'T bounded that way, pages
+    # explicitly via ?type=&offset= (library.views.SearchView).
+    # If a shelf ever does outgrow one response, page it there and update the
+    # frontend's helper — don't switch the default on, which would change the
+    # shape of every list at once from a bare array to {count, results}.
     # Only the endpoints that opt in are throttled — a global anon rate would
     # cap search-as-you-type, which is a legitimate burst. Generous enough that a
     # reader opening several results per search never notices, low enough that
@@ -150,6 +161,11 @@ REST_FRAMEWORK = {
     # approximate: a bound, not an access control.
     "DEFAULT_THROTTLE_RATES": {
         "search-click": "60/min",
+        # Search is a read that writes: every unscoped query logs a row, and a
+        # miss runs the fuzzy-suggestion scan. Sized far above a reader (the
+        # page debounces at 250ms, so even continuous typing settles well below
+        # this) and far below a script that wants to grow the query log.
+        "search": "120/min",
         # Per-account cap on reading-state writes (progress, marks, favorites,
         # activity, plan progress, and the sign-in merge). Generous — a reader
         # highlighting or scrolling fast never approaches it — but finite, so a
