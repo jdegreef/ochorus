@@ -186,7 +186,7 @@
 					class="inline-flex items-baseline gap-1.5 rounded-full border border-border bg-surface px-4 py-2 text-small font-medium text-text hover:border-accent hover:text-accent hover:no-underline"
 				>
 					{topic.title}
-					<span class="text-[0.75rem] font-normal text-muted">{topic.book_count}</span>
+					<span class="text-eyebrow font-normal text-muted">{topic.book_count}</span>
 				</a>
 			{/each}
 		</div>
@@ -235,7 +235,7 @@
 					{/if}
 					<span>
 						<span class="block text-small font-semibold text-text">{author.name}</span>
-						<span class="block text-[0.8rem] text-muted">
+						<span class="block text-small text-muted">
 							{author.book_count}
 							{author.book_count === 1 ? t('common.bookOne') : t('common.bookMany')}
 						</span>

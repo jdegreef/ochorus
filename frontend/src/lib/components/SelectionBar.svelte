@@ -190,7 +190,7 @@
 	.selbar-btn {
 		padding: 0.35rem 0.6rem;
 		border-radius: 6px;
-		font-size: 0.85rem;
+		font-size: var(--fs-small);
 		font-weight: 600;
 		color: var(--text);
 		cursor: pointer;

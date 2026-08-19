@@ -111,7 +111,7 @@
 								class="w-full rounded-t bg-accent-soft"
 								style="height: {(w.readers / weekMax) * 100}%; min-height: {w.readers ? '3px' : '0'}"
 							></div>
-							<div class="text-[0.7rem] text-muted">{weekLabel(w.week)}</div>
+							<div class="text-micro text-muted">{weekLabel(w.week)}</div>
 						</div>
 					{/each}
 				</div>

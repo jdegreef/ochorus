@@ -124,7 +124,7 @@
 								>
 									<span class="min-w-0 flex-1">
 										<span class="block truncate text-small text-text">{bm.snippet || bm.title}</span>
-										<span class="block text-[0.72rem] text-muted">{bm.order}. {bm.title}</span>
+										<span class="block text-micro text-muted">{bm.order}. {bm.title}</span>
 									</span>
 								</a>
 								<button
@@ -160,7 +160,7 @@
 									<span class="block truncate text-small text-text">
 										{ch.order}. {ch.title || `${t('plans.day')} ${ch.order}`}
 									</span>
-									<span class="block text-[0.72rem] text-muted">
+									<span class="block text-micro text-muted">
 										{readingTime(ch.word_count)}{#if markCount > 0}
 											· {markCount} {markCount === 1 ? t('reader.markOne') : t('reader.markMany')}{/if}
 									</span>
@@ -233,7 +233,7 @@
 	}
 	.bm-heading {
 		padding: 0.75rem 1.25rem 0.25rem;
-		font-size: 0.72rem;
+		font-size: var(--fs-micro);
 		font-weight: 600;
 		text-transform: uppercase;
 		letter-spacing: 0.06em;

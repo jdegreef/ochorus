@@ -118,7 +118,7 @@
 									</a>
 									<span class="flex shrink-0 items-center gap-2">
 										{#each c.flags as f (f)}
-											<span class="rounded-full border border-warning/40 px-2 py-0.5 text-[0.7rem] text-warning">{FLAG_LABEL[f] ?? f}</span>
+											<span class="rounded-full border border-warning/40 px-2 py-0.5 text-micro text-warning">{FLAG_LABEL[f] ?? f}</span>
 										{/each}
 										<span class="text-small tabular-nums text-muted">{fmt(c.word_count)}</span>
 									</span>

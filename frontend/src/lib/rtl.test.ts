@@ -17,6 +17,12 @@
  *    the site in Arabic and finds a badge on the wrong side of a heading. The
  *    admin is exempt: it is deliberately English-only and always renders LTR.
  *
+ * 3. Scoped <style> blocks use LOGICAL CSS. The utility check above only sees
+ *    class names, so for a long time every physical declaration written in real
+ *    CSS shipped unchecked — which is how both slide-in drawers came to open
+ *    from the wrong edge in Arabic, and how the current-chapter marker and both
+ *    reading-page accent rails ended up on the wrong side.
+ *
  * This is a source-text check, like readerDirection.test.ts beside it — the
  * mistake it catches is one of authoring, and it costs nothing to run.
  */
@@ -95,6 +101,40 @@ const PHYSICAL: [RegExp, string][] = [
 	[/\bborder-r(-[\w.[\]/-]+)?\b/g, 'border-e*']
 ];
 
+/**
+ * Physical CSS declarations and their logical replacements, for scoped <style>
+ * blocks. Only the inline axis, and only where a single edge is addressed:
+ * `left: 0; right: 0` pins BOTH edges and is direction-independent, as is
+ * `left: 50%` paired with a centring translate.
+ */
+const PHYSICAL_CSS: [RegExp, string][] = [
+	[/border-left(-color|-width|-style)?\s*:/g, 'border-inline-start*'],
+	[/border-right(-color|-width|-style)?\s*:/g, 'border-inline-end*'],
+	[/margin-left\s*:/g, 'margin-inline-start'],
+	[/margin-right\s*:/g, 'margin-inline-end'],
+	[/padding-left\s*:/g, 'padding-inline-start'],
+	[/padding-right\s*:/g, 'padding-inline-end'],
+	[/text-align\s*:\s*(left|right)\b/g, 'text-align: start|end']
+];
+
+/**
+ * Deliberate physical CSS, with the reason. Each entry is a file fragment; the
+ * scan skips it entirely, so keep them narrow.
+ *
+ * - LifeTimeline positions every mark with an inline `style="left: {pct}%"`
+ *   computed from years, so its CSS and its markup have to agree on an axis.
+ *   Mirroring it for RTL is a real change to the component, not a property
+ *   swap, and doing half of it would be worse than neither.
+ * - The chapter reader's .pageturn arrows are physical ON PURPOSE: the markup
+ *   already swaps which chapter each PHYSICAL side turns to (`contentRtl`), and
+ *   the arrow glyphs point the way they sit. Making the CSS logical too would
+ *   mirror it twice and put both arrows back where they started.
+ */
+const PHYSICAL_CSS_EXEMPT = [
+	join('components', 'LifeTimeline.svelte'),
+	join('[order]', '+page.svelte')
+];
+
 describe('right-to-left support', () => {
 	it('app.html carries the direction placeholder', () => {
 		const html = readFileSync(join(SRC, 'app.html'), 'utf-8');
@@ -131,6 +171,22 @@ describe('right-to-left support', () => {
 			const src = readFileSync(file, 'utf-8');
 			for (const [pattern, replacement] of PHYSICAL) {
 				for (const hit of src.match(pattern) ?? []) {
+					offenders.push(`${file.replace(SRC, 'src')}: ${hit} → use ${replacement}`);
+				}
+			}
+		}
+		expect(offenders, offenders.join('\n')).toEqual([]);
+	});
+
+	it('scoped <style> blocks use logical, not physical, inline properties', () => {
+		const offenders: string[] = [];
+		for (const file of svelteFiles(SRC)) {
+			if (isAdmin(file)) continue;
+			if (PHYSICAL_CSS_EXEMPT.some((frag) => file.includes(frag))) continue;
+			const style = /<style>([\s\S]*?)<\/style>/.exec(readFileSync(file, 'utf-8'))?.[1];
+			if (!style) continue;
+			for (const [pattern, replacement] of PHYSICAL_CSS) {
+				for (const hit of style.match(pattern) ?? []) {
 					offenders.push(`${file.replace(SRC, 'src')}: ${hit} → use ${replacement}`);
 				}
 			}

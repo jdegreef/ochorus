@@ -363,7 +363,7 @@
 	     whether this sermon is the one they need right now. -->
 	{#if sermon.summary}
 		<div class="mb-8 rounded-card border border-border bg-surface p-4">
-			<p class="mb-1.5 text-[0.66rem] font-bold uppercase tracking-[0.1em] text-accent">
+			<p class="mb-1.5 text-micro font-bold uppercase tracking-[0.1em] text-accent">
 				{t('sermon.inBrief')}
 			</p>
 			<p class="text-small leading-relaxed text-muted">{sermon.summary}</p>
@@ -428,7 +428,7 @@
 					href={localizeHref(`/sermons/${sermon.prev.slug}`)}
 					class="group flex-1 rounded-card border border-border p-3 hover:border-accent hover:no-underline"
 				>
-					<div class="text-[0.72rem] uppercase tracking-wide text-muted">← {t('reader.previous')}</div>
+					<div class="text-micro uppercase tracking-wide text-muted">← {t('reader.previous')}</div>
 					<div class="mt-0.5 text-small font-semibold text-text group-hover:text-accent">
 						{sermon.prev.title}
 					</div>
@@ -439,7 +439,7 @@
 					href={localizeHref(`/sermons/${sermon.next.slug}`)}
 					class="group flex-1 rounded-card border border-border p-3 text-end hover:border-accent hover:no-underline"
 				>
-					<div class="text-[0.72rem] uppercase tracking-wide text-muted">{t('reader.next')} →</div>
+					<div class="text-micro uppercase tracking-wide text-muted">{t('reader.next')} →</div>
 					<div class="mt-0.5 text-small font-semibold text-text group-hover:text-accent">
 						{sermon.next.title}
 					</div>
@@ -463,7 +463,7 @@
 	{/if}
 
 	{#if sermon.source_url}
-		<p class="mt-12 border-t border-border pt-5 text-[0.8rem] text-muted">
+		<p class="mt-12 border-t border-border pt-5 text-small text-muted">
 			{t('book.publicDomain')}
 			<a href={sermon.source_url} target="_blank" rel="noreferrer">{t('book.originalEdition')}</a>.
 		</p>
@@ -513,7 +513,7 @@
 		background: var(--accent-soft);
 	}
 	.text-card-eyebrow {
-		font-size: 0.66rem;
+		font-size: var(--fs-micro);
 		font-weight: 700;
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
@@ -534,7 +534,7 @@
 	}
 	.text-card-version {
 		margin-top: 0.45rem;
-		font-size: 0.66rem;
+		font-size: var(--fs-micro);
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
 		color: var(--muted);
@@ -562,7 +562,7 @@
 	}
 	.outline-title {
 		padding: 0.35rem 0.6rem;
-		font-size: 0.7rem;
+		font-size: var(--fs-micro);
 		font-weight: 700;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
@@ -574,7 +574,7 @@
 		text-align: start;
 		padding: 0.45rem 0.6rem;
 		border-radius: var(--radius-sm);
-		font-size: 0.9rem;
+		font-size: var(--fs-small);
 		color: var(--text);
 		line-height: 1.35;
 	}
@@ -612,7 +612,7 @@
 	}
 	.outline-rail-title {
 		padding: 0 0.6rem 0.4rem;
-		font-size: 0.68rem;
+		font-size: var(--fs-micro);
 		font-weight: 700;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
@@ -624,7 +624,7 @@
 		text-align: start;
 		padding: 0.3rem 0.6rem;
 		border-inline-start: 2px solid transparent;
-		font-size: 0.85rem;
+		font-size: var(--fs-small);
 		line-height: 1.35;
 		color: var(--muted);
 		transition: color var(--duration-fast) ease;

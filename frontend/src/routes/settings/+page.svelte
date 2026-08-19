@@ -626,7 +626,7 @@
 						{#each statTiles as tile (tile.label)}
 							<div class="rounded-card border border-border bg-surface-2 px-3 py-4 text-center">
 								<div class="font-display text-h2 font-semibold text-text">{tile.value}</div>
-								<div class="mt-0.5 text-[0.75rem] text-muted">{tile.label}</div>
+								<div class="mt-0.5 text-eyebrow text-muted">{tile.label}</div>
 							</div>
 						{/each}
 					</div>
@@ -640,11 +640,11 @@
 									<a href={historyHref(h)} class="flex items-baseline gap-3 py-2.5 hover:no-underline">
 										<span class="flex-1 min-w-0">
 											<span class="block truncate text-body text-text">{h.title}</span>
-											<span class="block truncate text-[0.8rem] text-muted">
+											<span class="block truncate text-small text-muted">
 												{#if h.author}{h.author}{/if}{#if h.kind === 'book'} · {t('settings.chapterN')} {h.order}{/if}{#if h.finished} · {t('settings.statFinished')}{/if}
 											</span>
 										</span>
-										<span class="shrink-0 text-[0.8rem] text-muted">{relativeTime(h.at, lang.current, t('settings.syncJustNow'))}</span>
+										<span class="shrink-0 text-small text-muted">{relativeTime(h.at, lang.current, t('settings.syncJustNow'))}</span>
 									</a>
 								</li>
 							{/each}
@@ -663,7 +663,7 @@
 							<li class="flex items-baseline gap-3 py-2.5">
 								<a href={localizeHref(`/books/${b.slug}`)} class="min-w-0 flex-1 hover:no-underline">
 									<span class="block truncate text-body text-text">{b.title}</span>
-									<span class="block truncate text-[0.8rem] text-muted">
+									<span class="block truncate text-small text-muted">
 										{#if b.author}{b.author} · {/if}{b.chapterCount} {t('settings.downloadsChapters')}
 									</span>
 								</a>
@@ -704,7 +704,7 @@
 		color: var(--color-text);
 	}
 	.setting-sub {
-		font-size: 0.8rem;
+		font-size: var(--fs-small);
 		color: var(--color-muted);
 		margin-top: 0.1rem;
 	}
@@ -714,7 +714,7 @@
 		color: var(--color-text);
 		border-radius: 0.6rem;
 		padding: 0.4rem 0.6rem;
-		font-size: 0.9rem;
+		font-size: var(--fs-small);
 		max-width: 12rem;
 	}
 	.seg {
@@ -730,7 +730,7 @@
 	.seg button {
 		border-radius: 999px;
 		padding: 0.3rem 0.75rem;
-		font-size: 0.85rem;
+		font-size: var(--fs-small);
 		color: var(--color-muted);
 		white-space: nowrap;
 	}

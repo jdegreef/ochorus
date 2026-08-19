@@ -299,7 +299,7 @@
 			<button class="btn btn-primary" onclick={parse} disabled={busy || !file || !authorSlug}>
 				{busy ? 'Reading…' : 'Read document'}
 			</button>
-			<p class="mt-3 text-[0.78rem] text-muted">
+			<p class="mt-3 text-small text-muted">
 				Scanned image PDFs aren't supported yet — use a text PDF or Word document.
 			</p>
 		</div>
@@ -337,7 +337,7 @@
 							</li>
 						{/each}
 					</ul>
-					<p class="mt-2 text-[0.72rem] text-muted">
+					<p class="mt-2 text-micro text-muted">
 						Fix the titles below, or publish as-is.
 					</p>
 				</div>
@@ -375,7 +375,7 @@
 								placeholder="Chapter title"
 								class="min-w-0 flex-1 rounded-sm border border-border bg-surface px-2 py-1 text-small text-text"
 							/>
-							<span class="shrink-0 text-[0.78rem] text-muted">{ch.words}w</span>
+							<span class="shrink-0 text-small text-muted">{ch.words}w</span>
 							<button
 								class="shrink-0 rounded-sm px-2 py-1 text-small text-muted hover:text-danger"
 								onclick={() => removeChapter(i)}
@@ -386,7 +386,7 @@
 					{/each}
 				</ol>
 				{#if preview.chapters.length === 1}
-					<p class="mt-2 text-[0.78rem] text-muted">
+					<p class="mt-2 text-small text-muted">
 						Only one chapter detected — if this book has more, its source may not mark chapter
 						breaks in a way the parser recognises.
 					</p>
@@ -484,7 +484,7 @@
 		border-radius: var(--radius-sm);
 		border: 1px solid var(--border);
 		padding: 0.4rem 1rem;
-		font-size: 0.9rem;
+		font-size: var(--fs-small);
 		font-weight: 600;
 		color: var(--muted);
 	}
@@ -500,7 +500,7 @@
 		align-items: center;
 		justify-content: center;
 		border-radius: 999px;
-		font-size: 1.4rem;
+		font-size: var(--fs-h3);
 		color: var(--accent);
 		background: color-mix(in srgb, var(--accent) 15%, transparent);
 	}

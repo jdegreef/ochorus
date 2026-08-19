@@ -276,7 +276,7 @@
 					>
 						<span class="w-6 shrink-0 text-small text-muted">{ch.order}</span>
 						<span class="flex-1 text-body text-text" dir="auto">{ch.title}</span>
-						<span class="text-[0.8rem] text-muted">{readingMinutes(ch.word_count)} {t('common.min')}</span>
+						<span class="text-small text-muted">{readingMinutes(ch.word_count)} {t('common.min')}</span>
 					</a>
 				</li>
 			{/each}
@@ -295,12 +295,12 @@
 	{/if}
 
 	{#if book.source_url && book.source_type === 'public_domain'}
-		<p class="mt-8 text-[0.8rem] text-muted">
+		<p class="mt-8 text-small text-muted">
 			{t('book.publicDomain')}
 			<a href={book.source_url} target="_blank" rel="noreferrer">{t('book.originalEdition')}</a>.
 		</p>
 	{:else if book.source_url}
-		<p class="mt-8 text-[0.8rem] text-muted">
+		<p class="mt-8 text-small text-muted">
 			{t('book.translationOf')}
 			<a href={book.source_url} target="_blank" rel="noreferrer">{t('book.originalEdition')}</a>.
 		</p>

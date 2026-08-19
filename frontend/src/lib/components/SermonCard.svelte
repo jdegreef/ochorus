@@ -49,7 +49,7 @@
 	}
 	.chip {
 		display: inline-block;
-		font-size: 0.62rem;
+		font-size: var(--fs-micro);
 		font-weight: 600;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
@@ -63,7 +63,7 @@
 	}
 	.author {
 		display: block;
-		font-size: 0.85rem;
+		font-size: var(--fs-small);
 		color: var(--color-muted);
 		margin-top: 0.1rem;
 	}
@@ -72,7 +72,7 @@
 		flex-wrap: wrap;
 		gap: 0.25rem 0.6rem;
 		margin-top: 0.35rem;
-		font-size: 0.78rem;
+		font-size: var(--fs-small);
 		color: var(--color-muted);
 	}
 	.ref {

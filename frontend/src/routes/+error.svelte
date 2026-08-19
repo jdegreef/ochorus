@@ -111,11 +111,11 @@
 									class="flex aspect-[3/4] flex-col justify-between rounded-card p-3 shadow-sm transition-transform group-hover:-translate-y-1 sm:p-4"
 									style="background: {cover(book.cover_color || '#3b5bdb')}"
 								>
-									<span class="text-[0.65rem] font-semibold uppercase tracking-wider text-white/70">
+									<span class="text-micro font-semibold uppercase tracking-wider text-white/70">
 										{book.author.name.split(' ').slice(-1)}
 									</span>
 									<span
-										class="font-display text-[0.95rem] font-semibold leading-tight text-white sm:text-[1.15rem]"
+										class="font-display text-body font-semibold leading-tight text-white sm:text-h3"
 									>
 										{book.title}
 									</span>
@@ -123,7 +123,7 @@
 							{/if}
 							<div class="mt-2">
 								<div class="text-small font-medium text-text">{book.title}</div>
-								<div class="text-[0.8rem] text-muted">{book.author.name}</div>
+								<div class="text-small text-muted">{book.author.name}</div>
 							</div>
 						</a>
 					{/each}

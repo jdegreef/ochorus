@@ -185,7 +185,7 @@
 									class:bg-surface-2={it.key === activeKey}
 								>
 									<span
-										class="w-16 shrink-0 text-[0.66rem] font-semibold uppercase tracking-wide text-muted"
+										class="w-16 shrink-0 text-micro font-semibold uppercase tracking-wide text-muted"
 									>
 										{it.kind === 'cmd' ? t('search.palettePages') : it.label}
 									</span>
@@ -200,7 +200,7 @@
 				{/if}
 			</div>
 
-			<div class="flex items-center gap-3 border-t border-border px-4 py-2 text-[0.7rem] text-muted">
+			<div class="flex items-center gap-3 border-t border-border px-4 py-2 text-micro text-muted">
 				<span>↑↓ {t('search.paletteNavigate')}</span>
 				<span>↵ {t('search.paletteOpen')}</span>
 				<span>esc {t('search.paletteClose')}</span>

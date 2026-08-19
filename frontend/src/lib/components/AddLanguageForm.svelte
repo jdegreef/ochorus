@@ -237,11 +237,11 @@
 									>
 										<span class="flex items-baseline justify-between gap-2">
 											<span class="text-body text-text">{s.name}</span>
-											<span class="shrink-0 text-[0.72rem] text-muted tabular-nums">
+											<span class="shrink-0 text-micro text-muted tabular-nums">
 												{s.speakers_millions}M
 											</span>
 										</span>
-										<span class="mt-0.5 flex items-baseline justify-between gap-2 text-[0.72rem] text-muted">
+										<span class="mt-0.5 flex items-baseline justify-between gap-2 text-micro text-muted">
 											<span dir="auto">{s.native_name}</span>
 											<span class="shrink-0">
 												{s.bible_label}{#if s.attribution_required}

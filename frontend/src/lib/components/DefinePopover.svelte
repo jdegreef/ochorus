@@ -42,7 +42,7 @@
 					{entry.text}
 				</p>
 			{/each}
-			<p class="mt-2 text-[0.7rem] uppercase tracking-wider text-muted">
+			<p class="mt-2 text-micro uppercase tracking-wider text-muted">
 				{define.result.source === 'glossary' ? t('reader.glossarySource') : t('reader.dictionarySource')}
 			</p>
 		{:else}
@@ -65,7 +65,7 @@
 	}
 	.define-word {
 		font-family: var(--font-display);
-		font-size: 1.15rem;
+		font-size: var(--fs-h3);
 		font-weight: 600;
 		color: var(--text);
 	}

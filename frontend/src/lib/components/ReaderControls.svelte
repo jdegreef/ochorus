@@ -104,7 +104,7 @@
 				<div class="grid grid-cols-3 gap-1">
 					{#each LEADINGS as o (o.v)}
 						<button
-							class="rc-opt rounded-sm border px-2 py-1.5 text-[0.8rem]"
+							class="rc-opt rounded-sm border px-2 py-1.5 text-small"
 							class:border-accent={readerPrefs.leading === o.v}
 							class:text-accent={readerPrefs.leading === o.v}
 							class:border-border-strong={readerPrefs.leading !== o.v}
@@ -122,7 +122,7 @@
 				<div class="grid grid-cols-3 gap-1">
 					{#each MEASURES as o (o.v)}
 						<button
-							class="rc-opt rounded-sm border px-2 py-1.5 text-[0.8rem]"
+							class="rc-opt rounded-sm border px-2 py-1.5 text-small"
 							class:border-accent={readerPrefs.measure === o.v}
 							class:text-accent={readerPrefs.measure === o.v}
 							class:border-border-strong={readerPrefs.measure !== o.v}
@@ -140,7 +140,7 @@
 				<div class="grid grid-cols-3 gap-1">
 					{#each FONTS as o (o.v)}
 						<button
-							class="rc-opt rounded-sm border px-2 py-1.5 text-[0.8rem]"
+							class="rc-opt rounded-sm border px-2 py-1.5 text-small"
 							class:border-accent={readerPrefs.font === o.v}
 							class:text-accent={readerPrefs.font === o.v}
 							class:border-border-strong={readerPrefs.font !== o.v}
@@ -158,7 +158,7 @@
 				<div class="grid grid-cols-2 gap-1">
 					{#each ALIGNMENTS as o (o.v)}
 						<button
-							class="rc-opt rounded-sm border px-2 py-1.5 text-[0.8rem]"
+							class="rc-opt rounded-sm border px-2 py-1.5 text-small"
 							class:border-accent={readerPrefs.align === o.v}
 							class:text-accent={readerPrefs.align === o.v}
 							class:border-border-strong={readerPrefs.align !== o.v}
@@ -179,7 +179,7 @@
 				<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.layout')}</span>
 				<div class="grid grid-cols-2 gap-1">
 					<button
-						class="rc-opt rounded-sm border px-2 py-1.5 text-[0.8rem]"
+						class="rc-opt rounded-sm border px-2 py-1.5 text-small"
 						class:border-accent={!readerPrefs.paged}
 						class:text-accent={!readerPrefs.paged}
 						class:border-border-strong={readerPrefs.paged}
@@ -188,7 +188,7 @@
 						aria-pressed={!readerPrefs.paged}>{t('reader.layoutScroll')}</button
 					>
 					<button
-						class="rc-opt rounded-sm border px-2 py-1.5 text-[0.8rem]"
+						class="rc-opt rounded-sm border px-2 py-1.5 text-small"
 						class:border-accent={readerPrefs.paged}
 						class:text-accent={readerPrefs.paged}
 						class:border-border-strong={!readerPrefs.paged}

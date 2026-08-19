@@ -936,7 +936,7 @@
 				href={chapterHref(chapter.prev.order)}
 				class="btn btn-ghost flex-1 !flex-col !items-start gap-0.5 text-start"
 			>
-				<span class="text-[0.7rem] uppercase tracking-wider text-muted">{t('reader.previous')}</span>
+				<span class="text-micro uppercase tracking-wider text-muted">{t('reader.previous')}</span>
 				<span class="text-small">{chapter.prev.title}</span>
 			</a>
 		{:else}
@@ -947,7 +947,7 @@
 				href={chapterHref(chapter.next.order)}
 				class="btn btn-primary flex-1 !flex-col !items-end gap-0.5 text-end"
 			>
-				<span class="text-[0.7rem] uppercase tracking-wider opacity-75">{t('reader.next')}</span>
+				<span class="text-micro uppercase tracking-wider opacity-75">{t('reader.next')}</span>
 				<span class="text-small">{chapter.next.title}</span>
 			</a>
 		{:else}
@@ -1201,7 +1201,7 @@
 		z-index: 30;
 		padding: 0.25rem 1rem 0.4rem;
 		text-align: center;
-		font-size: 0.72rem;
+		font-size: var(--fs-micro);
 		color: var(--muted);
 		background: color-mix(in srgb, var(--bg) 82%, transparent);
 		backdrop-filter: blur(6px);

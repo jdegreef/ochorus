@@ -136,13 +136,13 @@
 					{/if}
 					<div class="min-w-0 flex-1 self-center">
 						<div class="truncate text-small font-semibold text-text">{item.title}</div>
-						<div class="mt-0.5 truncate text-[0.78rem] text-muted">{item.author}</div>
+						<div class="mt-0.5 truncate text-small text-muted">{item.author}</div>
 						{#if item.pct !== null}
 							<div class="mt-2 h-1.5 overflow-hidden rounded-full bg-surface-2">
 								<div class="h-full rounded-full bg-accent" style="width: {item.pct}%"></div>
 							</div>
 						{/if}
-						<div class="mt-1 text-[0.72rem] text-muted">{item.meta}</div>
+						<div class="mt-1 text-micro text-muted">{item.meta}</div>
 					</div>
 				</a>
 			{/each}

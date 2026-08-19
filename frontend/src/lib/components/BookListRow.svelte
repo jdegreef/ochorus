@@ -27,7 +27,7 @@
 			<span class="truncate text-body font-medium text-text">{book.title}</span>
 			{#if translated}
 				<span
-					class="shrink-0 rounded-full border border-border px-1.5 py-0.5 text-[0.6rem] font-semibold uppercase tracking-wide text-muted"
+					class="shrink-0 rounded-full border border-border px-1.5 py-0.5 text-micro font-semibold uppercase tracking-wide text-muted"
 				>
 					{t('books.badgeTranslated')}
 				</span>
@@ -37,10 +37,10 @@
 			<div class="truncate text-small text-muted">{book.author.name}</div>
 		{/if}
 		{#if book.subtitle}
-			<div class="truncate text-[0.8rem] italic text-muted">{book.subtitle}</div>
+			<div class="truncate text-small italic text-muted">{book.subtitle}</div>
 		{/if}
 	</div>
-	<div class="shrink-0 text-end text-[0.78rem] text-muted">
+	<div class="shrink-0 text-end text-small text-muted">
 		<div>{chapters}</div>
 		{#if book.word_count}<div>{readingTime(book.word_count)}</div>{/if}
 	</div>

@@ -154,7 +154,7 @@
 		--chip-hue: var(--topic);
 	}
 	.section-label {
-		font-size: 0.72rem;
+		font-size: var(--fs-micro);
 		font-weight: 600;
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
@@ -177,13 +177,13 @@
 		margin: 0;
 		font-family: var(--font-display, Georgia, serif);
 		font-style: italic;
-		font-size: 1.05rem;
+		font-size: var(--fs-body);
 		line-height: 1.5;
 		color: var(--color-text);
 	}
 	.verse figcaption {
 		margin-top: 0.3rem;
-		font-size: 0.8rem;
+		font-size: var(--fs-small);
 		letter-spacing: 0.02em;
 		color: color-mix(in srgb, var(--topic) 70%, var(--color-muted));
 	}

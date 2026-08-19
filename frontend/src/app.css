@@ -36,6 +36,8 @@
 	   (`<h2 class="text-small uppercase">`) rendered as a 25px Fraunces heading.
 	   Tailwind v4 builds font-size utilities from the --text-* namespace, and
 	   pairs each with --text-*--line-height. */
+	--text-micro: var(--fs-micro);
+	--text-micro--line-height: 1.4;
 	--text-eyebrow: var(--fs-eyebrow);
 	--text-eyebrow--line-height: 1.4;
 	--text-small: var(--fs-small);
@@ -52,6 +54,7 @@
 
 /* Type scale — modular ratio 1.25, anchored at 1rem body. (Shared with Take Root.) */
 :root {
+	--fs-micro: 0.6875rem;
 	--fs-eyebrow: 0.75rem;
 	--fs-small: 0.875rem;
 	--fs-body: 1rem;
@@ -364,7 +367,7 @@
 		border-radius: var(--radius-sm);
 		font-family: var(--font-sans);
 		font-weight: 600;
-		font-size: 0.95rem;
+		font-size: var(--fs-body);
 		border: 1px solid transparent;
 		cursor: pointer;
 		transition: background var(--duration-fast) ease, border-color var(--duration-fast) ease, color var(--duration-fast) ease;
@@ -521,7 +524,7 @@ nav.appnav .navlinks a {
 	align-items: center;
 	gap: 0.4rem;
 	color: var(--muted);
-	font-size: 0.95rem;
+	font-size: var(--fs-body);
 	padding: 0.35rem 0.75rem;
 	border-radius: 999px;
 	white-space: nowrap;
@@ -607,7 +610,7 @@ nav.appnav .navtoggle:hover {
 	}
 	nav.appnav .navlinks a {
 		padding: 0.65rem 0.7rem;
-		font-size: 1rem;
+		font-size: var(--fs-body);
 		border-radius: var(--radius-sm);
 	}
 	nav.appnav .navctl {
@@ -665,7 +668,7 @@ nav.appnav .navtoggle:hover {
 	background: transparent;
 	border-radius: var(--radius-sm);
 	color: var(--text);
-	font-size: 0.92rem;
+	font-size: var(--fs-small);
 	cursor: pointer;
 }
 .account-item:hover {
@@ -713,7 +716,7 @@ nav.appnav .navtoggle:hover {
 }
 .prefs-label {
 	color: var(--muted);
-	font-size: 0.9rem;
+	font-size: var(--fs-small);
 	white-space: nowrap;
 }
 .prefs-toggle {
@@ -1285,7 +1288,7 @@ nav.appnav .navtoggle:hover {
 	background: color-mix(in srgb, var(--bg) 85%, transparent);
 	backdrop-filter: blur(6px);
 	padding: 0.25rem 0.8rem;
-	font-size: 0.72rem;
+	font-size: var(--fs-micro);
 	color: var(--muted);
 	pointer-events: none;
 }

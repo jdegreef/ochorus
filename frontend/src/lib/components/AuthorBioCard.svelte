@@ -83,7 +83,7 @@
 							<!-- Same nowrap rule as the dates: the badge was splitting into
 							     "FULL" / "LIFE" across two lines on a phone. -->
 							<span
-								class="whitespace-nowrap align-middle rounded-full bg-accent-soft px-2 py-0.5 text-[0.68rem] font-semibold uppercase tracking-wide text-accent sm:ms-2"
+								class="whitespace-nowrap align-middle rounded-full bg-accent-soft px-2 py-0.5 text-micro font-semibold uppercase tracking-wide text-accent sm:ms-2"
 								title={t('bios.fullLifeHint')}
 							>
 								{t('bios.fullLife')}

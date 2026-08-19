@@ -112,7 +112,7 @@
 								class="w-full rounded-t bg-accent-soft"
 								style="height: {(w.count / signupMax) * 100}%; min-height: {w.count ? '3px' : '0'}"
 							></div>
-							<div class="text-[0.7rem] text-muted">{weekLabel(w.week)}</div>
+							<div class="text-micro text-muted">{weekLabel(w.week)}</div>
 						</div>
 					{/each}
 				</div>

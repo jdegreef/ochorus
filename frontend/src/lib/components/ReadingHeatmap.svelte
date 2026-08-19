@@ -51,7 +51,7 @@
 		<div class="flex" style="gap: var(--gap); padding-inline-start: calc(var(--wd) + var(--gap))">
 			{#each grid.weeks as _, w (w)}
 				{@const m = grid.monthLabels.find((x) => x.col === w)}
-				<div class="text-[0.62rem] leading-none text-muted" style="width: var(--cell)">
+				<div class="text-micro leading-none text-muted" style="width: var(--cell)">
 					{m ? m.label : ''}
 				</div>
 			{/each}
@@ -63,7 +63,7 @@
 				{#each Array(7) as _, r (r)}
 					{@const rl = rowLabels.find((x) => x.r === r)}
 					<div
-						class="text-[0.62rem] leading-none text-muted"
+						class="text-micro leading-none text-muted"
 						style="height: var(--cell); line-height: var(--cell)"
 					>
 						{rl ? rl.label : ''}
@@ -90,7 +90,7 @@
 		</div>
 
 		<!-- Legend -->
-		<div class="mt-2 flex items-center gap-1.5 text-[0.68rem] text-muted">
+		<div class="mt-2 flex items-center gap-1.5 text-micro text-muted">
 			<span class="inline-block rounded-[2px] bg-surface-2" style="width: 0.66rem; height: 0.66rem"
 			></span>
 			<span>{t('settings.heatmapNone')}</span>

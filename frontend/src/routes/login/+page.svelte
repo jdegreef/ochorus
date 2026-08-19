@@ -254,7 +254,7 @@
 		justify-content: center;
 		border-radius: 999px;
 		font-family: var(--font-display);
-		font-size: 1.5rem;
+		font-size: var(--fs-h2);
 		color: var(--accent);
 		background: color-mix(in srgb, var(--accent) 14%, transparent);
 	}
@@ -288,7 +288,7 @@
 		color: var(--text);
 		font-family: var(--font-sans);
 		font-weight: 600;
-		font-size: 0.95rem;
+		font-size: var(--fs-body);
 		cursor: pointer;
 		transition: background var(--duration-fast) ease, border-color var(--duration-fast) ease;
 	}

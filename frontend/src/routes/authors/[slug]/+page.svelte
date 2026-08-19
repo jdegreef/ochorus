@@ -367,7 +367,7 @@
 									<span class="text-small text-accent">{sermon.scripture_ref}</span>
 								{/if}
 							</span>
-							<span class="shrink-0 text-[0.8rem] text-muted">
+							<span class="shrink-0 text-small text-muted">
 								{Math.max(1, Math.round(sermon.word_count / 200))} {t('common.min')}
 							</span>
 						</a>
@@ -442,7 +442,7 @@
 	.author-quote {
 		font-family: var(--font-display);
 		font-style: italic;
-		font-size: 1.5rem;
+		font-size: var(--fs-h2);
 		line-height: 1.4;
 		color: var(--text);
 		border-inline-start: 3px solid var(--gold);
@@ -483,7 +483,7 @@
 		padding-block: 0.1em;
 		padding-inline: 1.25rem 0;
 		border-inline-start: 3px solid var(--gold);
-		font-size: 1.45rem;
+		font-size: var(--fs-h2);
 		line-height: 1.45;
 		font-style: italic;
 		color: var(--text);
@@ -494,7 +494,7 @@
 	:global(.bio blockquote cite) {
 		display: block;
 		margin-top: 0.55em;
-		font-size: 0.9rem;
+		font-size: var(--fs-small);
 		font-style: normal;
 		color: var(--muted);
 	}
@@ -516,7 +516,7 @@
 		display: block;
 		margin-bottom: 0.5rem;
 		font-family: var(--font-sans);
-		font-size: 0.72rem;
+		font-size: var(--fs-micro);
 		font-weight: 700;
 		letter-spacing: 0.09em;
 		text-transform: uppercase;
