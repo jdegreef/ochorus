@@ -1,0 +1,34 @@
+# Keep the build context (and the image layers) free of local-only files.
+#
+# Without this, `COPY . .` ingests a developer's virtualenv, byte-code caches and
+# — the reason this file matters — any local .env, baking secrets into the image.
+# It also busts the layer cache on files that don't affect the app at all.
+#
+# Deliberately NOT excluded: library/fixtures/** and library/*/data/**. The seeds
+# load content from files present in the image (`manage.py release` →
+# seed_if_empty/seed_books), so excluding them would ship an empty library.
+
+# Local virtualenv (the image builds its own via `uv sync`).
+.venv/
+venv/
+
+# Byte-code and tool caches.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Local secrets — must never reach an image layer.
+.env
+.env.*
+!.env.example
+
+# Local database and collectstatic output (regenerated at build time).
+*.sqlite3
+db.sqlite3
+staticfiles/
+
+# Editor / OS noise.
+.DS_Store
+*.swp

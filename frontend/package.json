@@ -14,6 +14,7 @@
 		"check:slashes": "node scripts/check-slashes.mjs",
 		"test": "vitest run",
 		"test:watch": "vitest",
+		"test:e2e": "playwright test",
 		"locales": "node scripts/fetch-live-locales.mjs",
 		"sync:catalogues": "node scripts/sync-ui-catalogues.mjs",
 		"prebuild": "npm run locales"
@@ -21,6 +22,7 @@
 	"devDependencies": {
 		"@eslint/js": "^9.39.5",
 		"@inlang/paraglide-js": "^2.21.0",
+		"@playwright/test": "^1.56.1",
 		"@sveltejs/adapter-static": "^3.0.10",
 		"@sveltejs/kit": "^2.63.0",
 		"@sveltejs/vite-plugin-svelte": "^7.1.2",

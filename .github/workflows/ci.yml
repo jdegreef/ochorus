@@ -65,6 +65,38 @@ jobs:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
         run: uv run python manage.py test --verbosity 1
 
+      # The production image was previously unbuilt by CI, so a Dockerfile mistake
+      # passed every check and only failed at deploy time (where it takes the API
+      # down). Building it proves collectstatic works as the non-root user, but a
+      # build alone would not catch the failure that actually matters — the image
+      # not SERVING — so this also boots it with the real CMD (gunicorn, as `app`)
+      # against the CI Postgres and requires a healthy response.
+      - name: Backend — production image builds, runs unprivileged, and serves
+        run: |
+          docker build -t ochorus-api:ci backend
+          user="$(docker run --rm ochorus-api:ci id -un)"
+          echo "image runs as: $user"
+          test "$user" = "app"
+          # Port 8010, not 8000: the prerender API starts on 8000 further down.
+          docker run -d --name api-image-smoke --network host \
+            -e PORT=8010 \
+            -e DJANGO_DEBUG=false \
+            -e DJANGO_SECRET_KEY=ci-image-smoke-not-a-real-secret \
+            -e DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1 \
+            -e DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres \
+            -e SUPABASE_URL=https://example.supabase.co \
+            ochorus-api:ci
+          for i in $(seq 1 30); do
+            curl -sf http://localhost:8010/api/health/ >/dev/null && break
+            sleep 2
+          done
+          curl -sf http://localhost:8010/api/health/ \
+            || { echo "::error::the production image did not serve"; docker logs api-image-smoke; exit 1; }
+
+      - name: Stop image smoke container
+        if: always()
+        run: docker rm -f api-image-smoke 2>/dev/null || true
+
       # The frontend build prerenders pages by fetching the API, so bring a
       # seeded API up locally (mirrors the real Render web build against the API).
       - name: Backend — seed + start API for prerender
@@ -130,6 +162,28 @@ jobs:
       - name: Frontend — built-output guards
         working-directory: frontend
         run: npx vitest run src/lib/href.test.ts src/lib/prerenderCoverage.test.ts
+
+      # Browser smoke tests: the only gate that RUNS the app. Everything above is
+      # blind to hydration, client-side routing and live API fetches, so a broken
+      # frontend/backend contract could pass all of it (the review's drift
+      # finding). Serves the build just produced and reuses the API already up.
+      - name: Frontend — install Playwright browser
+        working-directory: frontend
+        run: npx playwright install --with-deps chromium
+
+      - name: Frontend — smoke tests (real browser, real API)
+        working-directory: frontend
+        env:
+          PUBLIC_API_BASE_URL: http://localhost:8000
+        run: npm run test:e2e
+
+      - name: Upload smoke-test report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: frontend/playwright-report/
+          retention-days: 7
 
       # Stop the background API before the job's post-steps run — a lingering
       # `uv run … runserver` process makes setup-uv's cache-prune fail (exit 2).
