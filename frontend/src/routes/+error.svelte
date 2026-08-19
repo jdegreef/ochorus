@@ -115,8 +115,7 @@
 										{book.author.name.split(' ').slice(-1)}
 									</span>
 									<span
-										style="font-family: var(--font-display)"
-										class="text-[0.95rem] font-semibold leading-tight text-white sm:text-[1.15rem]"
+										class="font-display text-[0.95rem] font-semibold leading-tight text-white sm:text-[1.15rem]"
 									>
 										{book.title}
 									</span>

@@ -290,7 +290,7 @@
 		font-weight: 600;
 		font-size: 0.95rem;
 		cursor: pointer;
-		transition: background 0.15s ease, border-color 0.15s ease;
+		transition: background var(--duration-fast) ease, border-color var(--duration-fast) ease;
 	}
 	.google-btn:hover:not(:disabled) {
 		background: var(--surface);

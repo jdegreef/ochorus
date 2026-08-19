@@ -184,7 +184,7 @@
 		border-radius: var(--radius-sm);
 		background: var(--surface);
 		border: 1px solid var(--border);
-		box-shadow: 0 6px 20px rgb(0 0 0 / 0.25);
+		box-shadow: var(--shadow-popover);
 		white-space: nowrap;
 	}
 	.selbar-btn {

@@ -494,7 +494,7 @@
 		   transform-origin takes physical keywords only, so RTL is flipped
 		   explicitly just below. */
 		transform-origin: left center;
-		transition: transform 0.1s linear;
+		transition: transform var(--duration-fast) linear;
 		pointer-events: none;
 	}
 	:global([dir='rtl']) .read-progress {
@@ -557,7 +557,7 @@
 		border: 1px solid var(--border);
 		border-radius: var(--radius-card);
 		background: var(--surface);
-		box-shadow: 0 10px 40px rgb(0 0 0 / 0.25);
+		box-shadow: var(--shadow-popover);
 		padding: 0.5rem;
 	}
 	.outline-title {
@@ -627,7 +627,7 @@
 		font-size: 0.85rem;
 		line-height: 1.35;
 		color: var(--muted);
-		transition: color 0.15s ease;
+		transition: color var(--duration-fast) ease;
 	}
 	.outline-rail-item:hover {
 		color: var(--accent);

@@ -384,7 +384,7 @@
 		background: color-mix(in srgb, var(--accent) 10%, transparent);
 		border-radius: 4px;
 		box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 10%, transparent);
-		transition: background 0.3s ease;
+		transition: background var(--duration-base) ease;
 	}
 
 	/* Text-range marks (<mark> spans) are styled globally in app.css. */
@@ -405,6 +405,6 @@
 		border: 1px solid var(--border);
 		background: var(--surface);
 		padding: 1.25rem;
-		box-shadow: 0 10px 40px rgb(0 0 0 / 0.35);
+		box-shadow: var(--shadow-popover);
 	}
 </style>

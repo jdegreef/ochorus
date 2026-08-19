@@ -219,7 +219,7 @@
 	background: var(--accent);
 	color: var(--accent-contrast, #fff);
 	font-weight: 600;
-	transition: transform 0.15s ease;
+	transition: transform var(--duration-fast) ease;
 }
 .skip-link:focus {
 	transform: translateY(0);
@@ -367,7 +367,7 @@
 		font-size: 0.95rem;
 		border: 1px solid transparent;
 		cursor: pointer;
-		transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+		transition: background var(--duration-fast) ease, border-color var(--duration-fast) ease, color var(--duration-fast) ease;
 	}
 	/* Primary is soft, not bold: a brand-tinted button, never a solid indigo
 	   block (see STYLE_GUIDE §5). Matches Take Root. */
@@ -652,7 +652,7 @@ nav.appnav .navtoggle:hover {
 	background: var(--surface);
 	border: 1px solid var(--border);
 	border-radius: var(--radius-card);
-	box-shadow: 0 10px 30px rgb(0 0 0 / 0.18);
+	box-shadow: var(--shadow-popover);
 	padding: 0.35rem;
 	overflow: hidden;
 }
@@ -784,9 +784,9 @@ nav.appnav .navtoggle:hover {
 	overflow: hidden;
 	background: var(--surface);
 	transition:
-		border-color 0.15s,
-		box-shadow 0.15s,
-		transform 0.15s;
+		border-color var(--duration-fast),
+		box-shadow var(--duration-fast),
+		transform var(--duration-fast);
 }
 .shelf-card:hover {
 	border-color: color-mix(in srgb, var(--shelf-hue) 55%, var(--border));
@@ -855,7 +855,7 @@ nav.appnav .navtoggle:hover {
 	font-size: var(--fs-h3);
 	font-weight: 600;
 	color: var(--text);
-	transition: color 0.15s;
+	transition: color var(--duration-fast);
 }
 .shelf-card:hover .shelf-card-title {
 	color: color-mix(in srgb, var(--shelf-hue) 78%, var(--text));
@@ -885,13 +885,13 @@ nav.appnav .navtoggle:hover {
 	border-radius: var(--radius-card);
 	background: var(--surface);
 	transition:
-		border-color 0.15s,
-		box-shadow 0.15s,
-		transform 0.15s;
+		border-color var(--duration-fast),
+		box-shadow var(--duration-fast),
+		transform var(--duration-fast);
 }
 .book-card:hover {
 	border-color: var(--accent-soft-border);
-	box-shadow: 0 6px 20px -12px #0007;
+	box-shadow: var(--shadow-card);
 	text-decoration: none;
 	transform: translateY(-2px);
 }
@@ -948,7 +948,7 @@ nav.appnav .navtoggle:hover {
 	aspect-ratio: 3 / 4;
 	border-radius: 0.25rem;
 	overflow: hidden;
-	box-shadow: 0 2px 6px -2px #0006;
+	box-shadow: var(--shadow-card);
 	margin-inline-start: -0.7rem;
 	background: var(--surface);
 	transform: rotate(-3deg);
@@ -991,8 +991,8 @@ nav.appnav .navtoggle:hover {
 	border-radius: var(--radius-card);
 	background: var(--surface);
 	transition:
-		border-color 0.15s,
-		background 0.15s;
+		border-color var(--duration-fast),
+		background var(--duration-fast);
 }
 /* The sermon's emblem chip, in the writer's era tint, so each row opens with
    its own mark rather than a wall of prose. */
@@ -1011,7 +1011,7 @@ nav.appnav .navtoggle:hover {
 	border-start-start-radius: var(--radius-card);
 	border-end-start-radius: var(--radius-card);
 	background: color-mix(in srgb, var(--row-hue) 55%, transparent);
-	transition: background 0.15s;
+	transition: background var(--duration-fast);
 }
 .sermon-row:hover {
 	border-color: color-mix(in srgb, var(--row-hue) 45%, var(--border));
@@ -1035,7 +1035,7 @@ nav.appnav .navtoggle:hover {
 	font-weight: 600;
 	line-height: 1.3;
 	color: var(--text);
-	transition: color 0.15s;
+	transition: color var(--duration-fast);
 }
 .sermon-row:hover .sermon-row-title {
 	color: color-mix(in srgb, var(--row-hue) 70%, var(--text));
@@ -1055,7 +1055,7 @@ nav.appnav .navtoggle:hover {
 	.shelf-card,
 	.shelf-card:hover {
 		transform: none;
-		transition: border-color 0.15s;
+		transition: border-color var(--duration-fast);
 	}
 }
 
@@ -1267,7 +1267,7 @@ nav.appnav .navtoggle:hover {
 }
 @media (prefers-reduced-motion: no-preference) {
 	.page-col {
-		transition: width 0.25s ease;
+		transition: width var(--duration-base) ease;
 	}
 }
 

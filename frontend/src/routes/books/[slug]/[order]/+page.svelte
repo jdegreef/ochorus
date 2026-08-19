@@ -1136,7 +1136,7 @@
 		column-fill: auto;
 		/* --page-dir is 1 (LTR) or -1 (RTL): RTL pages advance rightwards. */
 		transform: translateX(calc(var(--page-dir, 1) * -1 * var(--page-idx) * var(--page-w)));
-		transition: transform 0.28s ease;
+		transition: transform var(--duration-base) ease;
 	}
 	/* A touch more breathing room around a two-column spread. */
 	.paged.twocol .pager {
@@ -1226,7 +1226,7 @@
 		background: color-mix(in srgb, var(--accent) 10%, transparent);
 		border-radius: 4px;
 		box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 10%, transparent);
-		transition: background 0.3s ease;
+		transition: background var(--duration-base) ease;
 	}
 	.note-overlay {
 		position: fixed;
@@ -1245,6 +1245,6 @@
 		border: 1px solid var(--border);
 		background: var(--surface);
 		padding: 1.25rem;
-		box-shadow: 0 10px 40px rgb(0 0 0 / 0.35);
+		box-shadow: var(--shadow-popover);
 	}
 </style>

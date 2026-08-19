@@ -69,7 +69,7 @@
 		aria-expanded={open}
 		aria-label={t('reader.textSettings')}
 	>
-		<span style="font-family: var(--font-display)">A</span><span class="text-small">a</span>
+		<span class="font-display">A</span><span class="text-small">a</span>
 	</button>
 
 	{#if open}

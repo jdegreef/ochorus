@@ -49,7 +49,7 @@
 				<div class="leading-tight">
 					{#if streak > 0}
 						<div>
-							<span class="text-h2 font-semibold" style="font-family: var(--font-display)">{streak}</span>
+							<span class="font-display text-h2 font-semibold">{streak}</span>
 							<span class="ms-1 text-body text-text">{t('settings.streakLabel')}</span>
 						</div>
 					{:else}

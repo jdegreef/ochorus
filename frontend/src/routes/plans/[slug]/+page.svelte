@@ -141,7 +141,7 @@
 			</div>
 			<div class="h-2 overflow-hidden rounded-full bg-surface-2">
 				<div
-					class="h-full rounded-full bg-accent transition-[width] duration-500"
+					class="h-full rounded-full bg-accent transition-[width] duration-[var(--duration-slow)]"
 					style="width: {pct}%"
 				></div>
 			</div>

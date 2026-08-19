@@ -61,7 +61,7 @@
 		padding: 0.5rem 0.9rem;
 		font-size: 0.85rem;
 		color: var(--text);
-		box-shadow: 0 8px 30px rgb(0 0 0 / 0.18);
+		box-shadow: var(--shadow-popover);
 	}
 	.pwa-toast {
 		border-radius: var(--radius-card);

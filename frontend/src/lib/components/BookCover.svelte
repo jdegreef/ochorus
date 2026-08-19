@@ -72,7 +72,7 @@
 			loading="lazy"
 			onload={() => (loaded = true)}
 			onerror={() => (failed = true)}
-			class="absolute inset-0 h-full w-full object-cover transition-opacity duration-300"
+			class="absolute inset-0 h-full w-full object-cover transition-opacity duration-[var(--duration-base)]"
 			class:opacity-0={!loaded}
 			class:opacity-100={loaded}
 		/>

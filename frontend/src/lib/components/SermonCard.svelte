@@ -35,7 +35,7 @@
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius-card);
 		background: var(--color-surface);
-		transition: border-color 0.15s, background 0.15s;
+		transition: border-color var(--duration-fast), background var(--duration-fast);
 	}
 	.sermon-card:hover {
 		border-color: var(--color-accent);

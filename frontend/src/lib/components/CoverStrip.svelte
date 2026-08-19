@@ -32,7 +32,7 @@
 		aspect-ratio: 3 / 4;
 		border-radius: 0.25rem;
 		overflow: hidden;
-		box-shadow: 0 2px 6px -2px #0006;
+		box-shadow: var(--shadow-card);
 		margin-inline-start: -0.7rem;
 		background: var(--surface);
 		transform: rotate(-3deg);

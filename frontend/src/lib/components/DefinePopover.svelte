@@ -61,7 +61,7 @@
 		border-radius: var(--radius-card);
 		border: 1px solid var(--border);
 		background: var(--surface);
-		box-shadow: 0 10px 34px rgb(0 0 0 / 0.25);
+		box-shadow: var(--shadow-popover);
 	}
 	.define-word {
 		font-family: var(--font-display);

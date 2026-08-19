@@ -135,7 +135,7 @@
 				class="flex aspect-[3/4] w-32 shrink-0 items-end rounded-card p-3 shadow-md"
 				style="background: linear-gradient(150deg, {book.cover_color || '#3b5bdb'}, #0008)"
 			>
-				<span style="font-family: var(--font-display)" class="text-base font-semibold text-white">
+				<span class="font-display text-base font-semibold text-white">
 					{book.title}
 				</span>
 			</div>

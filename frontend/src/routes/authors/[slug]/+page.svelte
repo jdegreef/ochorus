@@ -210,8 +210,7 @@
 			/>
 		{:else}
 			<span
-				class="flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-accent-soft text-h1 font-semibold text-accent"
-				style="font-family: var(--font-display)"
+				class="font-display flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-accent-soft text-h1 font-semibold text-accent"
 			>
 				{initials(author.name)}
 			</span>

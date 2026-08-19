@@ -45,13 +45,12 @@
 					loading="lazy"
 					width="112"
 					height="112"
-					class="h-24 w-24 rounded-full border border-border object-cover grayscale transition-[filter] duration-300 group-hover:grayscale-0 sm:h-28 sm:w-28"
+					class="h-24 w-24 rounded-full border border-border object-cover grayscale transition-[filter] duration-[var(--duration-base)] group-hover:grayscale-0 sm:h-28 sm:w-28"
 					style="object-position: {portraitPosition(author.slug)}"
 				/>
 			{:else}
 				<span
-					class="flex h-24 w-24 items-center justify-center rounded-full bg-accent-soft text-display !text-3xl font-semibold text-accent sm:h-28 sm:w-28"
-					style="font-family: var(--font-display)"
+					class="font-display flex h-24 w-24 items-center justify-center rounded-full bg-accent-soft text-display !text-3xl font-semibold text-accent sm:h-28 sm:w-28"
 				>
 					{initials(author.name)}
 				</span>

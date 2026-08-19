@@ -197,9 +197,9 @@
 		flex-direction: column;
 		background: var(--surface);
 		border-inline-start: 1px solid var(--border);
-		box-shadow: -12px 0 40px rgb(0 0 0 / 0.25);
+		box-shadow: var(--shadow-drawer);
 		--toc-slide-from: 1.5rem;
-		animation: toc-in 0.18s ease-out;
+		animation: toc-in var(--duration-fast) ease-out;
 	}
 	:global([dir='rtl']) .toc-panel {
 		box-shadow: 12px 0 40px rgb(0 0 0 / 0.25);

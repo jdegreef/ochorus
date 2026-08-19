@@ -570,7 +570,7 @@
 							<div>
 								{#if streak > 0}
 									<div class="text-text">
-										<span class="text-h1 font-semibold" style="font-family: var(--font-display)">{streak}</span>
+										<span class="font-display text-h1 font-semibold">{streak}</span>
 										<span class="ms-1 text-body">{t('settings.streakLabel')}</span>
 									</div>
 								{:else}
@@ -625,7 +625,7 @@
 					<div class="grid grid-cols-3 gap-3 sm:grid-cols-6">
 						{#each statTiles as tile (tile.label)}
 							<div class="rounded-card border border-border bg-surface-2 px-3 py-4 text-center">
-								<div class="text-h2 font-semibold text-text" style="font-family: var(--font-display)">{tile.value}</div>
+								<div class="font-display text-h2 font-semibold text-text">{tile.value}</div>
 								<div class="mt-0.5 text-[0.75rem] text-muted">{tile.label}</div>
 							</div>
 						{/each}
