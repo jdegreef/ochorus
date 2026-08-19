@@ -489,9 +489,22 @@
 			el?.closest?.('input, textarea, select, [contenteditable="true"]') ||
 			noteOpen ||
 			define.open ||
+			// These two were missing, so a page turned underneath an open scripture
+			// popover or text-settings panel while the reader was using it.
+			scripture.open ||
+			readerUi.panelOpen ||
 			tocOpen ||
 			searchOpen
 		) {
+			// Escape still has to work from inside a panel — it is how you leave.
+			if (e.key === 'Escape' && readerUi.focus && !noteOpen) readerUi.exitFocus();
+			return;
+		}
+		// Focus mode had no keyboard exit at all: exitFocus() existed and nothing
+		// called it, so the only way out was finding the floating pill.
+		if (e.key === 'Escape' && readerUi.focus) {
+			e.preventDefault();
+			readerUi.exitFocus();
 			return;
 		}
 		if (e.key === 'ArrowRight') {
@@ -526,20 +539,28 @@
 		return true;
 	}
 
-	/** Edge tap zones: outer 15% turns the page (paged) or chapter (scroll, touch). */
+	/**
+	 * Edge tap zones: in PAGED mode the outer 15% turns the page, which is the
+	 * Kindle convention and what a paginated view is for.
+	 *
+	 * It used to turn the CHAPTER in scroll mode too, on any coarse pointer. On a
+	 * 360px phone that is a 54px strip down each side against the article's own
+	 * 20px padding — so roughly 34px of live body text on each edge silently
+	 * threw the reader into the previous or next chapter, with no affordance
+	 * marking the zone and no way back except the browser's own Back. Scrolling
+	 * is how you move through a scrolling view; nothing about tapping the text
+	 * should change which chapter you are in.
+	 */
 	function onArticleClick(e: MouseEvent) {
 		if (tryScriptureClick(e)) return;
-		if (!paged && !window.matchMedia('(pointer: coarse)').matches) return;
+		if (!paged) return;
 		const el = e.target as HTMLElement;
 		if (el.closest('a, button, mark, input, textarea, select, .selbar, .define-pop, .scripture-pop')) return;
 		if (window.getSelection()?.toString()) return;
 		const x = e.clientX / window.innerWidth;
-		if (paged) {
-			// Edge taps are physical; the page they turn to is logical.
-			if (x < 0.15) turnPage(contentRtl ? 1 : -1);
-			else if (x > 0.85) turnPage(contentRtl ? -1 : 1);
-		} else if (x < 0.15) gotoChapter(chapter.prev);
-		else if (x > 0.85) gotoChapter(chapter.next);
+		// Edge taps are physical; the page they turn to is logical.
+		if (x < 0.15) turnPage(contentRtl ? 1 : -1);
+		else if (x > 0.85) turnPage(contentRtl ? -1 : 1);
 	}
 
 	// Prefetch the next chapter when the browser is idle: the plain GET flows
@@ -977,6 +998,12 @@
 	>
 		<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
 	</button>
+{/if}
+
+<!-- In focus mode the scrubber is hidden, so this hairline stands in for it:
+     immersive should mean calm, not lost. Same indicator the sermon page uses. -->
+{#if readerUi.focus}
+	<div class="read-progress" style="transform: scaleX({chapterFrac})" aria-hidden="true"></div>
 {/if}
 
 <!-- Reading-progress footer: a draggable scrubber + location, fixed, hidden in

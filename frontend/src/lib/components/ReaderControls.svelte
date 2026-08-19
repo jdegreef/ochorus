@@ -7,6 +7,8 @@
 		type ReaderFont
 	} from '$lib/readerPrefs.svelte';
 	import { i18n } from '$lib/i18n.svelte';
+	import { readerUi } from '$lib/readerUi.svelte';
+	import { theme } from '$lib/theme.svelte';
 
 	let {
 		/**
@@ -27,10 +29,25 @@
 		layout = false
 	}: { layout?: boolean } = $props();
 
-	let open = $state(false);
+	// Shared, not local: the reader's keyboard handler has to know a panel is
+	// open so it stops turning pages under it (see readerUi.panelOpen).
+	const open = {
+		get value() {
+			return readerUi.panelOpen;
+		},
+		set value(v: boolean) {
+			readerUi.panelOpen = v;
+		}
+	};
 	let wrap = $state<HTMLDivElement>();
 	const t = i18n.t;
 
+	/** Paper / Sepia / Lamplight, in that order — lightest to darkest. */
+	const THEMES: { v: 'light' | 'sepia' | 'dark'; k: string }[] = [
+		{ v: 'light', k: 'settings.themeLight' },
+		{ v: 'sepia', k: 'settings.themeSepia' },
+		{ v: 'dark', k: 'settings.themeDark' }
+	];
 	const LEADINGS: { v: Leading; k: string }[] = [
 		{ v: 'compact', k: 'spacing.compact' },
 		{ v: 'normal', k: 'spacing.normal' },
@@ -52,10 +69,10 @@
 	];
 
 	function onWindowClick(e: MouseEvent) {
-		if (open && wrap && !wrap.contains(e.target as Node)) open = false;
+		if (open.value && wrap && !wrap.contains(e.target as Node)) open.value = false;
 	}
 	function onKey(e: KeyboardEvent) {
-		if (e.key === 'Escape') open = false;
+		if (e.key === 'Escape') open.value = false;
 	}
 </script>
 
@@ -64,15 +81,15 @@
 <div class="relative" bind:this={wrap}>
 	<button
 		class="btn btn-sm btn-ghost"
-		onclick={() => (open = !open)}
+		onclick={() => (open.value = !open.value)}
 		aria-haspopup="dialog"
-		aria-expanded={open}
+		aria-expanded={open.value}
 		aria-label={t('reader.textSettings')}
 	>
 		<span class="font-display">A</span><span class="text-small">a</span>
 	</button>
 
-	{#if open}
+	{#if open.value}
 		<div
 			class="absolute end-0 z-30 mt-2 w-64 rounded-card border border-border bg-surface p-4 shadow-lg"
 			role="dialog"
@@ -95,6 +112,24 @@
 						onclick={() => readerPrefs.bumpScale(0.1)}
 						aria-label={t('a11y.largerText')}>A+</button
 					>
+				</div>
+			</div>
+
+			<!-- Theme -->
+			<div class="mb-3">
+				<span class="mb-1.5 block text-small font-semibold text-text">{t('nav.theme')}</span>
+				<div class="grid grid-cols-3 gap-1">
+					{#each THEMES as o (o.v)}
+						<button
+							class="rc-opt rounded-sm border px-2 py-1.5 text-small"
+							class:border-accent={theme.current === o.v}
+							class:text-accent={theme.current === o.v}
+							class:border-border-strong={theme.current !== o.v}
+							class:text-muted={theme.current !== o.v}
+							onclick={() => theme.set(o.v)}
+							aria-pressed={theme.current === o.v}>{t(o.k)}</button
+						>
+					{/each}
 				</div>
 			</div>
 

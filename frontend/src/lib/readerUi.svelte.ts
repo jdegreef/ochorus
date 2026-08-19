@@ -7,6 +7,14 @@
 class ReaderUi {
 	focus = $state(false);
 
+	/**
+	 * A reader panel currently owns the keyboard — today the text-settings
+	 * popover. This lived inside ReaderControls, where the chapter reader's key
+	 * handler could not see it, so ←/→/Space kept turning the page underneath an
+	 * open panel while the reader was trying to use it.
+	 */
+	panelOpen = $state(false);
+
 	toggleFocus() {
 		this.focus = !this.focus;
 	}

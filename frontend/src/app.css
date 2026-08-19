@@ -1438,6 +1438,29 @@ nav.appnav .navtoggle:hover {
 	}
 }
 
+/* Scroll-progress hairline, pinned to the top of the viewport. Shared: the
+   sermon page shows it throughout, and the chapter reader shows it in focus
+   mode, where the scrubber is hidden and there would otherwise be no sense of
+   position at all. It lived in the sermon page's scoped styles, which would not
+   have reached the chapter reader's copy. */
+.read-progress {
+	position: fixed;
+	top: 0;
+	inset-inline: 0;
+	height: 2px;
+	z-index: 40;
+	background: var(--accent);
+	/* transform-origin takes no logical keyword, so RTL is flipped explicitly
+	   below — otherwise the bar fills from the left while the text runs
+	   right-to-left. */
+	transform-origin: left center;
+	transition: transform var(--duration-fast) linear;
+	pointer-events: none;
+}
+[dir='rtl'] .read-progress {
+	transform-origin: right center;
+}
+
 /* Time-remaining pill, floated over the foot of the viewport while reading.
    Shared by every reading surface (sermon, biography), so it lives here rather
    than in one route's <style> — the readers are meant to feel like one reader. */

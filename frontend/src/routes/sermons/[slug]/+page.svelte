@@ -31,6 +31,19 @@
 	const sermon = $derived(data.sermon as Sermon);
 	const t = i18n.t;
 
+	/**
+	 * Escape leaves focus (immersive) mode. readerUi.exitFocus() existed and
+	 * nothing on this page called it, so the only way out was finding the
+	 * floating "Exit focus" pill. The outline drawer runs its own focus trap
+	 * with an onEscape, so it keeps handling its own key.
+	 */
+	function onKeydown(e: KeyboardEvent) {
+		if (e.key !== 'Escape' || e.metaKey || e.ctrlKey || e.altKey) return;
+		if (outlineOpen || !readerUi.focus) return;
+		e.preventDefault();
+		readerUi.exitFocus();
+	}
+
 	// The reader owns the prose and everything that reads it; this page owns its
 	// own chrome. `body` comes back out for the outline, `frac` for the progress
 	// bar, and the instance for the Listen button.
@@ -194,7 +207,7 @@
 	structuredData={[sermonLd, crumbsLd]}
 />
 
-<svelte:window onscroll={updateActiveSection} />
+<svelte:window onscroll={updateActiveSection} onkeydown={onKeydown} />
 
 <!-- Scroll-progress bar, pinned to the very top of the viewport. -->
 <div class="read-progress" style="transform: scaleX({frac})" aria-hidden="true"></div>
@@ -489,23 +502,6 @@
 
 <style>
 	/* Scroll-progress bar: a thin accent line scaled by reading fraction. */
-	.read-progress {
-		position: fixed;
-		top: 0;
-		inset-inline: 0;
-		height: 2px;
-		z-index: 40;
-		background: var(--accent);
-		/* Grows from where reading STARTS — the right edge under dir="rtl".
-		   transform-origin takes physical keywords only, so RTL is flipped
-		   explicitly just below. */
-		transform-origin: left center;
-		transition: transform var(--duration-fast) linear;
-		pointer-events: none;
-	}
-	:global([dir='rtl']) .read-progress {
-		transform-origin: right center;
-	}
 	/* `.min-left` lives in app.css — the biography page shows the same pill, and
 	   a second copy here is how the two would drift apart. */
 
