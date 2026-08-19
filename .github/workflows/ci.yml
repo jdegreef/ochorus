@@ -26,6 +26,15 @@ concurrency:
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
+    # Hard ceiling. Main runs are deliberately uncancellable (see concurrency
+    # above), which traded "merge loses its verdict" for "a wedged job blocks
+    # every main merge behind it until GitHub's 6-hour default" — and that is
+    # not hypothetical: on 2026-08-19 `playwright install --with-deps` wedged
+    # (GitHub later reaped it as an orphan process) and squatted for 95 minutes
+    # until someone cancelled it by hand. Observed legitimate maximum for this
+    # job is ~37 minutes uncached, ~12 cached; 45 caps a hang without ever
+    # cutting a slow-but-real run.
+    timeout-minutes: 45
     env:
       DJANGO_DEBUG: 'true' # local SQLite, no external services
     # Throwaway Postgres so the production search path (stored tsvectors,
@@ -198,15 +207,21 @@ jobs:
           restore-keys: |
             playwright-${{ runner.os }}-
 
-      # `--with-deps` is kept unconditionally: it installs OS packages via apt,
-      # which the cache above does not cover, and `playwright install` skips the
-      # download itself when the cached browser is already present. Dropping it
-      # on a cache hit would save ~30s and risk a missing shared library, which
-      # is a bad trade for a gate whose whole job is to catch what the other
-      # steps cannot see.
+      # No `--with-deps`, deliberately. Three facts settled it (2026-08-19):
+      #   1. It cannot be made conditional on the cache: runners are ephemeral,
+      #      so apt state never persists — OS packages are per-run or never.
+      #   2. Per-run it cost 1.5-3 minutes of apt on every cache-hit run, and it
+      #      is the step that WEDGED for 95 minutes (GitHub reaped the orphaned
+      #      `npm exec playwright install --with-deps` at cancel).
+      #   3. "Never" is safe to try because ubuntu-latest ships Google Chrome,
+      #      so Chromium's shared libraries are already on the image — and the
+      #      smoke test two steps down launches the real browser, so a missing
+      #      library fails THIS gate loudly, not production. If a runner-image
+      #      update ever removes those libs, the fix is restoring --with-deps
+      #      on this line, not debugging the smoke test.
       - name: Frontend — install Playwright browser
         working-directory: frontend
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install chromium
 
       - name: Frontend — smoke tests (real browser, real API)
         working-directory: frontend

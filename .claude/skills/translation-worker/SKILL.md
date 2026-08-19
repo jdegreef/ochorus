@@ -351,12 +351,24 @@ archaic spelling and period punctuation are the text, not defects in it.
   (Batched PRs have shipped before and worked: #778 carried eight Arabic
   sermons, #709 ten jobs. They are still the wrong default, because the
   per-job reconciliation pass is what a batch quietly drops.)
-- **Spawned workers cannot merge. Shape the job around that, don't try to grant
-  around it.** A worker translates, validates, opens a green PR — and then sits
-  idle needing a human. Three sessions did exactly that on jobs #425/#426/#429,
-  and the queue jammed behind the one step that looked automatable.
+- **SPAWNED workers cannot merge — but that is a fact about spawned sessions,
+  not about worker sessions in general. Know which kind you are before
+  believing this section.** The refusals below were all measured from sessions
+  created via `create_session`; an INTERACTIVE remote session measured the
+  opposite on 2026-08-19 — it undrafted three of its own PRs
+  (`update_pull_request`), squash-merged #982 into protected main
+  (`merge_pull_request`), read check runs normally, and cancelled a workflow
+  run. Same repo, same day, same tools. The restriction is per session type,
+  exactly as the error message says, and the cheap way to learn your type is
+  to TRY the call once and read the answer — this file previously stated the
+  refusal unscoped, and an interactive session repeated "I cannot merge" for
+  half a day of round trips before testing it. For a spawned worker,
+  everything below stands. A worker translates, validates, opens a green PR —
+  and then sits idle needing a human. Three sessions did exactly that on jobs
+  #425/#426/#429, and the queue jammed behind the one step that looked
+  automatable.
 
-  It is not automatable. This skill used to say the fix was passing
+  For a spawned session it is not automatable. This skill used to say the fix was passing
   `extra_allowed_tools: ["mcp__github__merge_pull_request", …]` at
   `create_session`. That advice was written from the shape of the API, never
   from a spawned session that had actually merged, and it is **wrong**: the
@@ -373,7 +385,8 @@ archaic spelling and period punctuation are the text, not defects in it.
 
   What actually works, and is what the later workers converged on unprompted:
 
-  1. **Open the PR non-draft.** Undrafting is the call that fails; not drafting
+  1. **Open the PR non-draft** (spawned sessions). Undrafting is the call that
+     fails there; not drafting
      costs nothing.
   2. **Read CI from `mergeable_state`** (`clean` = green, `unstable` = a
      non-required check failed, `blocked`/`dirty` = stop), because it is the one
