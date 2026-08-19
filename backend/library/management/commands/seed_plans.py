@@ -441,7 +441,11 @@ def _prose(slug, lang, en_title, en_description):
     stance ``_seed_curated`` already takes when a source book is missing, where
     a partial set is skipped rather than shipped half-empty.
     """
-    if lang == "en":
+    # "en" and any English variant ("en-modern", the contemporize pipeline's
+    # edition language) own the English tuple: it is their prose, not a
+    # fallback. Without this an en-modern book would publish no plan at all,
+    # and every plan would need a duplicated PLAN_TRANSLATIONS["en-modern"].
+    if lang == "en" or lang.startswith("en-"):
         return (en_title, en_description)
     return PLAN_TRANSLATIONS.get(lang, {}).get(slug)
 
@@ -555,20 +559,26 @@ class Command(BaseCommand):
                 .values_list("language", flat=True)
             )
             for lang in sorted(langs):
-                prose = _prose(slug, lang, title, description)
-                if prose is None:
-                    self._report_untranslated(slug, lang)
-                    continue
-                t, d = prose
-                if self._reconcile_existing(slug, lang, t, d):
-                    continue
                 by_slug = {
                     b.slug: b
                     for b in Book.objects.filter(
                         slug__in=book_slugs, language=lang, is_published=True
                     )
                 }
-                if set(by_slug) != wanted:
+                # Whether this language could have this plan at all. A curated
+                # plan needs EVERY source book, so most languages here can never
+                # get most plans — and telling someone to write prose for a plan
+                # that cannot exist is noise that trains them to skim the log.
+                complete = set(by_slug) == wanted
+                prose = _prose(slug, lang, title, description)
+                if prose is None:
+                    if complete:
+                        self._report_untranslated(slug, lang)
+                    continue
+                t, d = prose
+                if self._reconcile_existing(slug, lang, t, d):
+                    continue
+                if not complete:
                     continue  # not every source book exists (published) in this language
                 days = [
                     (bslug, order)

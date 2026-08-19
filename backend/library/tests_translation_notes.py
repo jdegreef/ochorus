@@ -231,3 +231,39 @@ class NotesCoverageTests(SimpleTestCase):
             "shipped, or the translation was renamed or removed. Delete them "
             f"from {BACKLOG_PATH.name} so the list can only shrink: {fixed}",
         )
+
+    def test_every_notes_file_matches_its_filename(self):
+        """A notes file's identity fields must agree with its path.
+
+        The coverage test above is satisfied by a file EXISTING at the right
+        path, but ``seed_translation_notes`` keys its rows on the fields inside
+        (``kind``/``slug``/``language``), taking only ``kind`` from the
+        directory. A file copied from another translation and renamed — the
+        obvious way to start one — therefore passes coverage while seeding its
+        rows against whatever translation it was copied from, silently replacing
+        that one's notes (the seed deletes and rewrites per identity) and
+        leaving the renamed translation at zero. Both would read as covered.
+        """
+        from library.management.commands.seed_translation_notes import NOTES_DIR
+
+        wrong = []
+        for path in sorted(NOTES_DIR.glob("*/*.json")):
+            data = json.loads(path.read_text(encoding="utf-8"))
+            slug, _, language = path.name[: -len(".json")].rpartition(".")
+            want = (path.parent.name, slug, language)
+            got = (data.get("kind"), data.get("slug"), data.get("language"))
+            if got != want:
+                wrong.append(f"{path.parent.name}/{path.name}: says {got}, path says {want}")
+            elif not isinstance(data.get("references"), list):
+                wrong.append(f"{path.parent.name}/{path.name}: no 'references' list")
+        self.assertEqual(
+            wrong,
+            [],
+            "These notes files disagree with their own filenames:\n  "
+            + "\n  ".join(wrong)
+            + "\n\nseed_translation_notes keys on the fields, not the path, so "
+            "the rows would land against the wrong translation. An empty "
+            "'references' list is allowed — it says the translation was read "
+            "and quotes no scripture — but the key must be there, so that "
+            "'none found' cannot be confused with 'never looked'.",
+        )

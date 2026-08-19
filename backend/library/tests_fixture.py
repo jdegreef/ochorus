@@ -658,14 +658,17 @@ class SermonBriefCoverageTests(SimpleTestCase):
 
 
 class PlanTranslationCoverageTests(SimpleTestCase):
-    """Every plan row a deploy will CREATE must have prose in its language.
+    """Every plan row a deploy could CREATE must have prose in its language.
 
     `seed_plans` creates a Plan per language in which the source books are
     published, and takes its title/description from
-    `PLAN_TRANSLATIONS[language][slug]` — **falling back to the English tuple**
-    when that entry is absent. Nothing fails when it does: the row is valid, the
-    page renders, and it reads "A Month in the Inner Chamber" to a Swahili
-    reader. It stays invisible until somebody opens that locale.
+    `PLAN_TRANSLATIONS[language][slug]`. That lookup used to fall back to the
+    English tuple, and nothing failed when it did: the row was valid, the page
+    rendered, and it read "A Month in the Inner Chamber" to a Swahili reader,
+    invisible until somebody opened that locale. `seed_plans` now refuses
+    instead, so the failure has moved rather than gone — the plan is simply
+    ABSENT from that language, which is quieter but still not what anyone
+    wanted. This test is what makes it neither.
 
     The trigger is a BOOK, not a plan. Shipping `the-inner-chamber` in Swahili
     published a Swahili plan nobody had written prose for, and the plan job for
@@ -710,8 +713,10 @@ class PlanTranslationCoverageTests(SimpleTestCase):
         self.assertEqual(
             missing,
             [],
-            "seed_plans will create these plan rows and fall back to the ENGLISH "
-            "title/description — add the prose to PLAN_TRANSLATIONS[language]",
+            "Every source book of these plans is published in these languages, "
+            "so the plan belongs there — but PLAN_TRANSLATIONS has no entry, so "
+            "seed_plans will skip it and the language gets no plan at all. Add "
+            "the prose to PLAN_TRANSLATIONS[language]",
         )
 
 
@@ -755,13 +760,14 @@ class QuoteStyleTests(SimpleTestCase):
 
 
 _ARABIC_INDIC = str.maketrans("٠١٢٣٤٥٦٧٨٩", "0123456789")
-# A parenthesised group, bounded so a stray "(" cannot swallow a paragraph.
-_PAREN = re.compile(r"\(([^)]{0,160})\)")
-# C:V1-V2, optionally followed by ":V2b" for the cross-chapter form.
+# C:V1-V2, optionally followed by ":V2b" for the cross-chapter form. The
+# cross-chapter separator takes NO surrounding whitespace: with it, a citation
+# list like "(Romans 8:1-4. 1 Corinthians 2:14)" reads as chapter 8 to chapter 4
+# and a correct reference fails the gate.
 _RANGE = re.compile(
     r"([0-9٠-٩]{1,3})\s*[:.]\s*([0-9٠-٩]{1,3})"
     r"\s*[-‐‑‒–—]\s*([0-9٠-٩]{1,3})"
-    r"(?:\s*[:.]\s*([0-9٠-٩]{1,3}))?"
+    r"(?:[:.]([0-9٠-٩]{1,3}))?"
 )
 _TAG = re.compile(r"<[^>]+>")
 
@@ -772,7 +778,15 @@ def _digits(group: str | None) -> int | None:
 
 @lru_cache(maxsize=1)
 def descending() -> tuple[tuple[str, str, str], ...]:
-    """(file, citation, parenthesised group) for every verse range that runs back.
+    """(file, citation, surrounding text) for every verse range that runs back.
+
+    Scans the whole body rather than parenthesised citations only. An earlier
+    draft looked inside parentheses, on the theory that a citation is
+    parenthesised — but 37% of the Arabic ranges in this corpus are not, and
+    four real English defects sat in the unscanned remainder
+    ("John 16:12-1", "Romans 4:19—2 1"). Across the whole corpus the wider scan
+    finds seven ranges and none of them is a false positive: "C:V" is a
+    distinctive enough shape in devotional prose that it needs no fence.
 
     Cached: both tests in ``CitationRangeTests`` want the same answer, and
     re-deriving it re-scans every body in the corpus. Same reasoning as
@@ -786,15 +800,15 @@ def descending() -> tuple[tuple[str, str, str], ...]:
             html = row["fields"].get("body_html") or ""
             if not html:
                 continue
-            for paren in _PAREN.finditer(_TAG.sub(" ", html)):
-                inner = paren.group(1)
-                for m in _RANGE.finditer(inner):
-                    chapter, first, second, across = (_digits(g) for g in m.groups())
-                    # Cross-chapter (C1:V1-C2:V2): the CHAPTER must ascend, and
-                    # the verse legitimately restarts lower (2:11-3:1).
-                    ok = second > chapter if across is not None else second > first
-                    if not ok:
-                        out.append((path.name, m.group(0), inner.strip()))
+            text = _TAG.sub(" ", html)
+            for m in _RANGE.finditer(text):
+                chapter, first, second, across = (_digits(g) for g in m.groups())
+                # Cross-chapter (C1:V1-C2:V2): the CHAPTER must ascend, and the
+                # verse legitimately restarts lower (2:11-3:1).
+                ok = second > chapter if across is not None else second > first
+                if not ok:
+                    context = " ".join(text[max(0, m.start() - 45):m.end() + 15].split())
+                    out.append((path.name, m.group(0), context))
     return tuple(out)
 
 
@@ -824,28 +838,41 @@ class CitationRangeTests(SimpleTestCase):
     shrink. Fixture-only, no DB.
     """
 
-    # (fixture file, the citation text as stored) that this invariant flags but
-    # which are not transpositions. Keep the reason on every line.
+    # (fixture file, the citation text as stored) that this invariant flags and
+    # that this PR does not repair. Keep the reason on every entry.
+    #
+    # Two are period convention rather than defects: Bunyan's printer elides the
+    # tens digit, so "12:22-4" is Hebrews 12:22-24 and "15.21-8" is Matt.
+    # 15:21-28 in the dot style he also used. english-qa's governing rule is
+    # that period style is the text, not an error in it. Whoever first
+    # translates `grace-abounding` will render these and will need entries for
+    # that file too — that is the check working, not a nuisance.
     KNOWN_CITATIONS: set[tuple[str, str]] = {
-        # Period convention, not a defect: the tens digit is elided, so
-        # "12:22-4" is Hebrews 12:22-24. english-qa's governing rule is that
-        # period style is the text rather than an error in it. Whoever first
-        # translates `grace-abounding` will render these and will need entries
-        # for that file too — that is the check working, not a nuisance.
-        # Two in the same book, one per separator style ("12:22-4" and
-        # "15.21-8" = Matt. 15:21-28); Bunyan's printer used both.
         ("grace-abounding.en.json", "12:22-4"),
         ("grace-abounding.en.json", "15.21-8"),
-        # A REAL defect, reported not repaired (see this PR's description).
-        # The source reads "(1 Peter 1:2-2, 1 Thessalonians 2:13)" beside the
-        # quoted phrase "sanctification of the Spirit", which is verbatim
-        # 1 Peter 1:2 and 2 Thessalonians 2:13 — 1 Thessalonians 2:13 is about
-        # receiving the word of God and does not contain the phrase. So the
-        # extractor appears to have welded the "2" of "2 Thessalonians" onto
-        # the previous reference. It has NOT propagated: the ar/es/lg/sw
-        # editions of this book do not carry it. Belongs in a BODY_CORRECTIONS
-        # entry via the english-qa channel, not in a test-only PR.
+        # The remaining five are REAL extraction defects in the English source,
+        # reported and not repaired here: a body repair belongs in
+        # corrections.BODY_CORRECTIONS via the english-qa channel, which reaches
+        # production on the next deploy and wants its own review. None has
+        # propagated — every one is English-only. See this PR's description.
+        #
+        # "(1 Peter 1:2-2, 1 Thessalonians 2:13)" beside the quoted phrase
+        # "sanctification of the Spirit", which is verbatim 1 Peter 1:2 and
+        # 2 Thessalonians 2:13; 1 Thessalonians 2:13 is about receiving the word
+        # of God and does not contain the phrase. The extractor appears to have
+        # welded the "2" of "2 Thessalonians" onto the previous reference.
         ("the-person-and-work-of-the-holy-spirit.en.json", "1:2-2"),
+        # "John 16:12-1" — a truncated second verse.
+        ("the-person-and-work-of-the-holy-spirit.en.json", "16:12-1"),
+        # "Romans 4:19—2 1" and "Acts 4:29—3 1" — a space injected into the
+        # second verse (21 and 31).
+        ("divine-healing.en.json", "4:19—2"),
+        ("divine-healing.en.json", "4:29—3"),
+        # "Mark 8:32-25", in the list "Matthew 10:34-39; Mark 8:32-25; Luke
+        # 17:32-34". Plainly wrong and NOT plainly repairable — 8:32-35 and
+        # 8:34-35 are both plausible — so it needs the English source, not a
+        # guess. english-qa: repair only what is unambiguous.
+        ("the-normal-christian-life.en.json", "8:32-25"),
     }
 
     def test_every_verse_range_ascends(self):
@@ -854,7 +881,7 @@ class CitationRangeTests(SimpleTestCase):
             for f, cite, ctx in descending()
             if (f, cite) not in self.KNOWN_CITATIONS
         ]
-        detail = "\n".join(f"  {f} — ({ctx})" for f, _, ctx in sorted(new))
+        detail = "\n".join(f"  {f} — …{ctx}…" for f, _, ctx in sorted(new))
         self.assertFalse(
             new,
             "These verse ranges run backwards:\n"
