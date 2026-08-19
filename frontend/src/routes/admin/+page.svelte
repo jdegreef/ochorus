@@ -155,7 +155,7 @@
 	{#if loading && !stats}
 		<p class="text-body text-muted">Loading…</p>
 	{:else if denied}
-		<div class="rounded-2xl border border-border bg-surface p-8">
+		<div class="rounded-card border border-border bg-surface p-8">
 			{#if auth.enabled && !auth.user}
 				<h2 class="text-h3 mb-2">Sign in required</h2>
 				<p class="mb-5 text-body text-muted">
@@ -171,7 +171,7 @@
 			{/if}
 		</div>
 	{:else if error}
-		<div class="rounded-2xl border border-border bg-surface p-8">
+		<div class="rounded-card border border-border bg-surface p-8">
 			<h2 class="text-h3 mb-2">Couldn't load the dashboard</h2>
 			<p class="mb-5 text-body text-muted">{error}</p>
 			<button class="btn btn-ghost" onclick={load}>Try again</button>
@@ -204,7 +204,7 @@
 		<!-- Headline totals -->
 		<section class="mb-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
 			{#each cards as c (c.label)}
-				<div class="rounded-2xl border border-border bg-surface p-5">
+				<div class="rounded-card border border-border bg-surface p-5">
 					<div class="stat-number">{fmt(c.value)}</div>
 					<div class="mt-2 text-small font-semibold text-text">{c.label}</div>
 					<div class="text-small text-muted">{c.sub}</div>
@@ -219,7 +219,7 @@
 				<a href="/admin/coverage" class="text-small font-semibold text-accent hover:underline">Coverage matrix →</a>
 			</div>
 			<p class="mb-3 text-small text-muted">Select a language to see what's translated and what to work on next.</p>
-			<div class="overflow-x-auto rounded-2xl border border-border bg-surface">
+			<div class="overflow-x-auto rounded-card border border-border bg-surface">
 				<table class="w-full min-w-[44rem] border-collapse text-body">
 					<thead>
 						<tr class="eyebrow border-b border-border text-muted">
@@ -268,7 +268,7 @@
 
 		<div class="grid gap-6 md:grid-cols-2">
 			<!-- Books by source type -->
-			<section class="rounded-2xl border border-border bg-surface p-5">
+			<section class="rounded-card border border-border bg-surface p-5">
 				<h2 class="text-h3 mb-3">Books by source</h2>
 				<ul class="space-y-2 text-body">
 					{#each Object.entries(SOURCE_LABELS) as [key, label] (key)}
@@ -292,7 +292,7 @@
 			</section>
 
 			<!-- Recently added -->
-			<section class="rounded-2xl border border-border bg-surface p-5">
+			<section class="rounded-card border border-border bg-surface p-5">
 				<h2 class="text-h3 mb-3">Recently added books</h2>
 				{#if stats.recent_books.length}
 					<ul class="space-y-3">

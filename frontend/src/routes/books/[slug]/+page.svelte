@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { coverGradient } from '$lib/coverArt';
 	import { type BookDetail, formatLifespan } from '$lib/library';
 	import { getProgress } from '$lib/progress';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
@@ -133,7 +134,7 @@
 		{:else}
 			<div
 				class="flex aspect-[3/4] w-32 shrink-0 items-end rounded-card p-3 shadow-md"
-				style="background: linear-gradient(150deg, {book.cover_color || '#3b5bdb'}, #0008)"
+				style="background: {coverGradient(book.cover_color)}"
 			>
 				<span class="font-display text-base font-semibold text-white">
 					{book.title}

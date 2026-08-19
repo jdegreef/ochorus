@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { coverGradient } from '$lib/coverArt';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { i18n } from '$lib/i18n.svelte';
@@ -42,17 +43,6 @@
 		if (s.status === 'fulfilled') sermons = s.value;
 	});
 
-	// Cover fallback gradient (mirrors the books shelf) for books without an SVG.
-	const cover = (hex: string) => `linear-gradient(150deg, ${hex} 0%, ${shade(hex, -28)} 100%)`;
-	function shade(hex: string, amt: number): string {
-		const n = hex.replace('#', '');
-		if (n.length !== 6) return hex;
-		const c = [0, 2, 4].map((i) => {
-			const v = Math.round(parseInt(n.slice(i, i + 2), 16) * (1 + amt / 100));
-			return Math.max(0, Math.min(255, v)).toString(16).padStart(2, '0');
-		});
-		return `#${c.join('')}`;
-	}
 </script>
 
 <svelte:head>
@@ -109,7 +99,7 @@
 							{:else}
 								<div
 									class="flex aspect-[3/4] flex-col justify-between rounded-card p-3 shadow-sm transition-transform group-hover:-translate-y-1 sm:p-4"
-									style="background: {cover(book.cover_color || '#3b5bdb')}"
+									style="background: {coverGradient(book.cover_color)}"
 								>
 									<span class="eyebrow text-white/70">
 										{book.author.name.split(' ').slice(-1)}

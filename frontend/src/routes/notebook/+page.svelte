@@ -257,7 +257,7 @@
 	{#if loading}
 		<p class="text-body text-muted">…</p>
 	{:else if isEmpty}
-		<div class="rounded-2xl border border-border bg-surface p-8 text-center">
+		<div class="rounded-card border border-border bg-surface p-8 text-center">
 			<p class="text-body text-muted">{t('notebook.empty')}</p>
 		</div>
 	{:else}
@@ -296,7 +296,7 @@
 		</div>
 
 		{#if noMatches}
-			<div class="rounded-2xl border border-border bg-surface p-8 text-center">
+			<div class="rounded-card border border-border bg-surface p-8 text-center">
 				<p class="text-body text-muted">{t('notebook.no_matches')}</p>
 			</div>
 		{/if}
@@ -317,7 +317,7 @@
 							<li>
 								<a
 									href={localizeHref(`/books/${bk.slug}/${bm.order}?p=${bm.p}`)}
-									class="block rounded-lg border border-border bg-surface px-4 py-2.5 hover:border-accent hover:no-underline"
+									class="block rounded-sm border border-border bg-surface px-4 py-2.5 hover:border-accent hover:no-underline"
 								>
 									<span class="block text-body text-text">{bm.snippet}</span>
 									<span class="block text-small text-muted">{bm.title}</span>
@@ -335,7 +335,7 @@
 								<li>
 									<a
 										href={localizeHref(`/books/${bk.slug}/${ch.order}?p=${hl.p}`)}
-										class="block rounded-lg border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
+										class="block rounded-sm border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
 										style="border-inline-start-color: var(--hl-{hl.color})"
 									>
 										{#if hl.text}
@@ -367,7 +367,7 @@
 						<li>
 							<a
 								href={localizeHref(`/sermons/${sm.slug}?p=${hl.p}`)}
-								class="block rounded-lg border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
+								class="block rounded-sm border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
 								style="border-inline-start-color: var(--hl-{hl.color})"
 							>
 								{#if hl.text}
@@ -400,7 +400,7 @@
 							     one kind that dropped the reader at the top of the page. -->
 							<a
 								href={localizeHref(`/authors/${b.slug}?p=${hl.p}`)}
-								class="block rounded-lg border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
+								class="block rounded-sm border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
 								style="border-inline-start-color: var(--hl-{hl.color})"
 							>
 								{#if hl.text}

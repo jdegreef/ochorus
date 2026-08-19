@@ -852,7 +852,7 @@
 				? 'h-11 w-11 rounded-full'
 				: row.small
 					? 'h-8 w-6 rounded-sm'
-					: 'h-16 w-12 rounded'}"
+					: 'h-16 w-12 rounded-sm'}"
 			style={boxStyle || undefined}
 		/>
 	{/if}
@@ -1052,9 +1052,9 @@
 			<div class="space-y-6" aria-hidden="true">
 				{#each Array(4) as _, i (i)}
 					<div class="animate-pulse space-y-2">
-						<div class="h-3 w-1/4 rounded bg-surface-2"></div>
-						<div class="h-4 w-2/3 rounded bg-surface-2"></div>
-						<div class="h-3 w-full rounded bg-surface-2"></div>
+						<div class="h-3 w-1/4 rounded-sm bg-surface-2"></div>
+						<div class="h-4 w-2/3 rounded-sm bg-surface-2"></div>
+						<div class="h-3 w-full rounded-sm bg-surface-2"></div>
 					</div>
 				{/each}
 			</div>
@@ -1263,7 +1263,7 @@
 														`/books/${pb.slug}/${ch.order}?q=${encodeURIComponent(ran || q.trim())}`
 													)}
 														id="res-{ch.key}"
-														class="-mx-2 block rounded px-2 hover:no-underline"
+														class="-mx-2 block rounded-sm px-2 hover:no-underline"
 														class:bg-surface-2={ch.key === activeKey}
 														onclick={() => recordClick(ch.key)}
 													>
@@ -1301,7 +1301,7 @@
 										<a
 											href={localizeHref(row.href)}
 											id="res-{row.key}"
-											class="-mx-2 flex gap-3 rounded px-2 hover:no-underline"
+											class="-mx-2 flex gap-3 rounded-sm px-2 hover:no-underline"
 											class:bg-surface-2={row.key === activeKey}
 											onclick={() => recordClick(row.key)}
 										>

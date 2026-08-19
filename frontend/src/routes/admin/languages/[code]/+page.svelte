@@ -269,12 +269,12 @@
 	{#if loading && !detail}
 		<p class="mt-6 text-body text-muted">Loading…</p>
 	{:else if denied}
-		<div class="mt-6 rounded-2xl border border-border bg-surface p-8">
+		<div class="mt-6 rounded-card border border-border bg-surface p-8">
 			<h2 class="text-h3 mb-2">Not authorised</h2>
 			<p class="text-body text-muted">You don't have access to the admin dashboard.</p>
 		</div>
 	{:else if error}
-		<div class="mt-6 rounded-2xl border border-border bg-surface p-8">
+		<div class="mt-6 rounded-card border border-border bg-surface p-8">
 			<h2 class="text-h3 mb-2">Couldn't load this language</h2>
 			<p class="mb-5 text-body text-muted">{error}</p>
 			<button class="btn btn-ghost" onclick={() => load(data.code)}>Try again</button>
@@ -362,7 +362,7 @@
 			     whether they're met is a fact the server computes. Nothing here
 			     launches anything — the go-live action re-runs these same checks
 			     server-side rather than trusting what this page is holding. -->
-			<section class="mb-6 rounded-2xl border border-border bg-surface p-5">
+			<section class="mb-6 rounded-card border border-border bg-surface p-5">
 				<div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
 					<h2 class="text-h3">Readiness</h2>
 					{#if readiness}
@@ -536,7 +536,7 @@
 
 		<div class="grid gap-6 md:grid-cols-2">
 			<!-- Books -->
-			<section class="rounded-2xl border border-border bg-surface p-5">
+			<section class="rounded-card border border-border bg-surface p-5">
 				<h2 class="text-h3 mb-3">Books <span class="text-muted">({fmt(shown.books.length)})</span></h2>
 				{#if shown.books.length}
 					<ul class="space-y-2">
@@ -575,7 +575,7 @@
 			</section>
 
 			<!-- Long-form bios -->
-			<section class="rounded-2xl border border-border bg-surface p-5">
+			<section class="rounded-card border border-border bg-surface p-5">
 				<h2 class="text-h3 mb-3">Long-form bios <span class="text-muted">({fmt(shown.bios.length)})</span></h2>
 				{#if shown.bios.length}
 					<ul class="space-y-2">
@@ -615,7 +615,7 @@
 			</section>
 
 			<!-- Sermons -->
-			<section class="rounded-2xl border border-border bg-surface p-5">
+			<section class="rounded-card border border-border bg-surface p-5">
 				<h2 class="text-h3 mb-3">Sermons <span class="text-muted">({fmt(shown.sermons.length)})</span></h2>
 				{#if shown.sermons.length}
 					<ul class="space-y-2">
@@ -653,7 +653,7 @@
 			</section>
 
 			<!-- Plans -->
-			<section class="rounded-2xl border border-border bg-surface p-5">
+			<section class="rounded-card border border-border bg-surface p-5">
 				<h2 class="text-h3 mb-3">Plans <span class="text-muted">({fmt(shown.plans.length)})</span></h2>
 				{#if shown.plans.length}
 					<ul class="space-y-2">
@@ -693,7 +693,7 @@
 			     INVISIBLE in this language rather than shown in English (topic prose
 			     has no fallback), so the todo list is every missing shelf, not a
 			     ranked top-N — a language wants all of them. -->
-			<section class="rounded-2xl border border-border bg-surface p-5">
+			<section class="rounded-card border border-border bg-surface p-5">
 				<h2 class="text-h3 mb-3">Topics <span class="text-muted">({fmt(shown.topics.length)})</span></h2>
 				{#if shown.topics.length}
 					<ul class="space-y-2">

@@ -82,12 +82,12 @@
 	{#if loading && !cov}
 		<p class="text-body text-muted">Loading…</p>
 	{:else if denied}
-		<div class="rounded-2xl border border-border bg-surface p-8">
+		<div class="rounded-card border border-border bg-surface p-8">
 			<h2 class="text-h3 mb-2">Not authorised</h2>
 			<p class="text-body text-muted">You don't have access to the admin dashboard.</p>
 		</div>
 	{:else if error}
-		<div class="rounded-2xl border border-border bg-surface p-8">
+		<div class="rounded-card border border-border bg-surface p-8">
 			<h2 class="text-h3 mb-2">Couldn't load coverage</h2>
 			<p class="mb-5 text-body text-muted">{error}</p>
 			<button class="btn btn-ghost" onclick={load}>Try again</button>
@@ -119,7 +119,7 @@
 			<span><span class="text-muted">·</span> missing</span>
 		</div>
 
-		<div class="overflow-x-auto rounded-2xl border border-border bg-surface">
+		<div class="overflow-x-auto rounded-card border border-border bg-surface">
 			<table class="w-full border-collapse text-body">
 				<thead>
 					<tr class="border-b border-border text-small text-muted">

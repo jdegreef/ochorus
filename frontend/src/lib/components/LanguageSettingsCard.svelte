@@ -64,7 +64,7 @@
 	}
 </script>
 
-<section class="mb-6 rounded-2xl border border-border bg-surface p-5">
+<section class="mb-6 rounded-card border border-border bg-surface p-5">
 	<div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
 		<h2 class="text-h3">Translation settings</h2>
 		{#if settings.repo_managed}

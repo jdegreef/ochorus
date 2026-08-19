@@ -586,7 +586,7 @@
 	.outline-rail {
 		display: none;
 	}
-	@media (min-width: 1200px) {
+	@media (min-width: 1280px) {
 		.outline-rail {
 			display: block;
 			position: fixed;

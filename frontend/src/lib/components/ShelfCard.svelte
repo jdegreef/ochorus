@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { coverGradient } from '$lib/coverArt';
 	import type { Snippet } from 'svelte';
 	import type { TopicCover } from '$lib/library';
 	import Emblem from '$lib/components/Emblem.svelte';
@@ -61,7 +62,7 @@
 						{:else}
 							<div
 								class="cover-fallback"
-								style="background: linear-gradient(150deg, {cover.cover_color || hue} 0%, #0008 100%)"
+								style="background: {coverGradient(cover.cover_color || hue)}"
 							></div>
 						{/if}
 					</div>

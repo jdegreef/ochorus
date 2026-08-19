@@ -585,15 +585,19 @@ nav.appnav .navtoggle:hover {
 	color: var(--accent);
 }
 /* Below this the absolute centring would collide with the brand/controls:
-   let the links flow in the bar instead. */
-@media (max-width: 960px) {
+   let the links flow in the bar instead. One below Tailwind's `lg` (1024px):
+   these queries used to sit at 960px and 760px, eight pixels off the `lg` and
+   `md` the markup reflows at, so there was a sliver at each where the nav and
+   the content it sits above disagreed about the layout. */
+@media (max-width: 1023.98px) {
 	nav.appnav .navlinks {
 		position: static;
 		transform: none;
 	}
 }
-/* Phones: collapse links + controls behind a hamburger drawer. */
-@media (max-width: 760px) {
+/* Phones: collapse links + controls behind a hamburger drawer. One below
+   Tailwind's `md` (768px). */
+@media (max-width: 767.98px) {
 	nav.appnav .navtoggle {
 		display: inline-flex;
 		align-items: center;

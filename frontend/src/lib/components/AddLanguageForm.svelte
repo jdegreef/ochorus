@@ -172,7 +172,7 @@
 	}
 </script>
 
-<div class="mt-4 rounded-2xl border border-border bg-surface p-5">
+<div class="mt-4 rounded-card border border-border bg-surface p-5">
 	<button
 		class="text-body font-semibold text-accent hover:underline"
 		aria-expanded={open}
@@ -220,7 +220,7 @@
 				</p>
 
 				{#if suggested.length}
-					<div class="rounded-lg border border-border bg-surface-2 p-3">
+					<div class="rounded-sm border border-border bg-surface-2 p-3">
 						<p class="text-small text-muted">
 							<span class="font-medium text-text">Suggested next</span> — most spoken
 							first, and only languages Take Root has a Bible for. Picking one fills
@@ -231,7 +231,7 @@
 								<li>
 									<button
 										type="button"
-										class="w-full rounded-lg border border-border bg-bg px-2.5 py-2 text-left hover:border-accent"
+										class="w-full rounded-sm border border-border bg-bg px-2.5 py-2 text-left hover:border-accent"
 										class:border-accent={normalized === s.code}
 										onclick={() => pick(s)}
 									>
@@ -349,7 +349,7 @@
 					     because that is the wording the engine quotes verbatim — a
 					     glossary that disagrees with its own Bible produces prose that
 					     contradicts the verses beside it. -->
-					<div class="mb-4 rounded-lg border border-border bg-surface-2 p-3">
+					<div class="mb-4 rounded-sm border border-border bg-surface-2 p-3">
 						<div class="flex flex-wrap items-center gap-2">
 							<button type="button" class="btn-soft text-small" onclick={copyPrompt} disabled={!name.trim()}>
 								{promptCopied ? 'Prompt copied' : 'Copy prompt for Claude'}
@@ -385,7 +385,7 @@
 							<label class="text-small">
 								<span class="mb-1 block text-muted">{term}</span>
 								<input
-									class="w-full rounded-lg border border-border bg-bg px-2 py-1 text-body"
+									class="w-full rounded-sm border border-border bg-bg px-2 py-1 text-body"
 									bind:value={glossary[term]}
 								/>
 							</label>

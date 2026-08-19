@@ -20,7 +20,7 @@
 	data-testid="book-row"
 >
 	<div class="w-12 shrink-0 sm:w-14">
-		<BookCover {book} rounded="rounded-md" />
+		<BookCover {book} rounded="rounded-sm" />
 	</div>
 	<div class="min-w-0 flex-1">
 		<div class="flex items-center gap-2">

@@ -251,18 +251,18 @@
 	{#if loading && !queue}
 		<p class="text-body text-muted">Loading…</p>
 	{:else if denied}
-		<div class="rounded-2xl border border-border bg-surface p-8">
+		<div class="rounded-card border border-border bg-surface p-8">
 			<h2 class="text-h3 mb-2">Not authorised</h2>
 			<p class="text-body text-muted">You don't have access to the admin dashboard.</p>
 		</div>
 	{:else if error}
-		<div class="rounded-2xl border border-border bg-surface p-8">
+		<div class="rounded-card border border-border bg-surface p-8">
 			<h2 class="text-h3 mb-2">Couldn't load the queue</h2>
 			<p class="text-body mb-5 text-muted">{error}</p>
 			<button class="btn btn-ghost" onclick={load}>Try again</button>
 		</div>
 	{:else if queue}
-		<div class="mb-5 flex flex-wrap items-end gap-3 rounded-xl border border-border bg-surface p-4">
+		<div class="mb-5 flex flex-wrap items-end gap-3 rounded-card border border-border bg-surface p-4">
 			<label class="text-small flex flex-col gap-1">
 				<span class="text-muted">Language</span>
 				<select
@@ -323,7 +323,7 @@
 
 		{#if selectedItems.length}
 			<div
-				class="mb-4 flex flex-wrap items-center gap-3 rounded-xl border border-accent-soft-border bg-accent-soft p-3"
+				class="mb-4 flex flex-wrap items-center gap-3 rounded-card border border-accent-soft-border bg-accent-soft p-3"
 			>
 				<span class="text-small font-semibold">{selectedItems.length} selected</span>
 				{#if excludedCount}
@@ -345,12 +345,12 @@
 		{/if}
 
 		{#if queue.total === 0 && queue.filtered === 0}
-			<div class="rounded-2xl border border-border bg-surface p-8 text-center">
+			<div class="rounded-card border border-border bg-surface p-8 text-center">
 				<p class="text-h3">All clear 🎉</p>
 				<p class="text-body mt-1 text-muted">Nothing is awaiting review.</p>
 			</div>
 		{:else if !visible.length}
-			<div class="rounded-2xl border border-border bg-surface p-8 text-center">
+			<div class="rounded-card border border-border bg-surface p-8 text-center">
 				<p class="text-body text-muted">Nothing matches those filters.</p>
 			</div>
 		{/if}
@@ -370,7 +370,7 @@
 				<ul class="space-y-2">
 					{#each items as i (key(i.kind, i.slug, i.language))}
 						{@const k = key(i.kind, i.slug, i.language)}
-						<li class="rounded-xl border border-border bg-surface">
+						<li class="rounded-card border border-border bg-surface">
 							{#if settled[k]}
 								<div class="flex items-center gap-3 p-4">
 									<span class="text-small font-semibold">
@@ -402,7 +402,7 @@
 									<div class="min-w-0 flex-1">
 										<div class="flex flex-wrap items-baseline gap-x-2">
 											<span class="truncate font-semibold text-text">{i.title}</span>
-											<span class="text-small rounded border border-border px-1.5 text-muted">
+											<span class="text-small rounded-sm border border-border px-1.5 text-muted">
 												{KIND_LABEL[i.kind]}
 											</span>
 											{#if i.flagged}
@@ -491,7 +491,7 @@
 											{/if}
 
 											{#if detail.notes.length}
-												<div class="mb-3 rounded-lg border border-border bg-bg p-3">
+												<div class="mb-3 rounded-sm border border-border bg-bg p-3">
 													<p class="text-small mb-1 font-semibold">Verses to check</p>
 													<ul class="text-small space-y-0.5 text-muted">
 														{#each detail.notes as n (n.reference + n.status)}
@@ -511,7 +511,7 @@
 											{/if}
 
 											<div
-												class="max-h-[28rem] overflow-y-auto rounded-lg border border-border"
+												class="max-h-[28rem] overflow-y-auto rounded-sm border border-border"
 												onscroll={onPanelScroll}
 											>
 												<table class="w-full table-fixed border-collapse">

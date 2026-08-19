@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { coverGradient } from '$lib/coverArt';
 	import type { TopicCover } from '$lib/library';
 
 	/**
@@ -16,7 +17,7 @@
 				{#if cover.cover_url}
 					<img src={cover.cover_url} alt="" loading="lazy" />
 				{:else}
-					<div class="cover-fallback" style="background: {cover.cover_color || '#3b5bdb'}"></div>
+					<div class="cover-fallback" style="background: {coverGradient(cover.cover_color)}"></div>
 				{/if}
 			</div>
 		{/each}
