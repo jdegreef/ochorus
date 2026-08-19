@@ -1,4 +1,5 @@
 import { browser } from '$app/environment';
+import { clampPopoverLeft } from './reading';
 import { apiFetch, ApiError } from './api';
 
 /**
@@ -32,7 +33,9 @@ class Scripture {
 		if (!browser || !ref) return;
 		this.ref = ref;
 		this.top = top;
-		this.left = left;
+		// 22rem is .scripture-pop's width; a reference near either margin used to
+		// render half off-screen.
+		this.left = clampPopoverLeft(left, 22 * 16);
 		this.open = true;
 		this.notFound = false;
 		const token = ++this.#token;

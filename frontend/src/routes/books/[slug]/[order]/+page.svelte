@@ -769,7 +769,7 @@
 	     paged columns (a paint bug), which `fixed` avoids. -->
 	<div
 		bind:this={chromeEl}
-		class="top-0 inset-x-0 z-10 border-b border-border bg-bg/90 backdrop-blur"
+		class="reader-chrome top-0 inset-x-0 z-10 border-b border-border bg-bg/90 backdrop-blur"
 		class:fixed={paged}
 		class:sticky={!paged}
 	>
@@ -876,7 +876,7 @@
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events -->
 <article
 	bind:this={articleEl}
-	class="mx-auto px-5 py-10"
+	class="mx-auto reading-article px-5 py-10"
 	class:paged
 	class:focus={readerUi.focus}
 	class:twocol={cols === 2}
@@ -1195,12 +1195,20 @@
 		}
 	}
 
+	/* Room for the fixed progress bar (and the home-indicator strip beneath it),
+	   so the chapter's last line and its "Next chapter" CTA are not underneath
+	   the scrubber. */
+	.reading-article {
+		padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
+	}
 	.progress-foot {
 		position: fixed;
 		inset-inline: 0;
 		bottom: 0;
 		z-index: 30;
-		padding: 0.25rem 1rem 0.4rem;
+		/* The extra bottom padding clears the iPhone home-indicator strip, which
+		   this bar sat inside. env() is 0 everywhere it doesn't apply. */
+		padding: 0.25rem 1rem calc(0.4rem + env(safe-area-inset-bottom));
 		text-align: center;
 		font-size: var(--fs-micro);
 		color: var(--muted);

@@ -72,6 +72,7 @@
 		inset-inline: 0;
 		bottom: 0;
 		z-index: 40;
+		padding-bottom: env(safe-area-inset-bottom);
 		border-top: 1px solid var(--border);
 		background: color-mix(in srgb, var(--surface) 92%, transparent);
 		backdrop-filter: blur(8px);

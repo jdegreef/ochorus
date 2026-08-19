@@ -74,3 +74,25 @@ export const HEADER_OFFSET = 64;
 export function contentLang(language: string): string {
 	return language === 'en-modern' ? 'en' : language;
 }
+
+
+/**
+ * Keep a centred popover inside the viewport.
+ *
+ * The scripture and definition popovers are positioned at the tapped word and
+ * centred on it with `translate(-50%)`, at a fixed width — so a reference near
+ * either margin rendered half off-screen, which on a phone is most of them.
+ * Callers pass the word's centre in PAGE coordinates; the clamp is done in
+ * VIEWPORT coordinates and converted back, since the viewport is what the
+ * popover has to fit inside.
+ */
+export function clampPopoverLeft(pageLeft: number, width: number, gutter = 12): number {
+	if (typeof window === 'undefined') return pageLeft;
+	const half = Math.min(width, window.innerWidth - gutter * 2) / 2;
+	const viewportLeft = pageLeft - window.scrollX;
+	const clamped = Math.min(
+		Math.max(viewportLeft, half + gutter),
+		window.innerWidth - half - gutter
+	);
+	return clamped + window.scrollX;
+}

@@ -533,6 +533,90 @@ article:not(.paged) .reading > p:first-of-type:not(:lang(ar))::first-letter {
 	width: 40%;
 }
 
+/* ── Print ──────────────────────────────────────────────────────────────────
+   There was no print stylesheet at all, so printing or PDF-ing a chapter
+   carried the sticky reader bar, the fixed progress scrubber, the page-turn
+   arrows and the listen bar onto the paper — and paged mode printed a single
+   screen of a multi-column layout.
+
+   What should reach paper is the title and the prose. Everything that exists to
+   navigate a screen is chrome and comes off. */
+@media print {
+	nav.appnav,
+	footer,
+	.skip-link,
+	.progress-foot,
+	.listen-bar,
+	.pageturn,
+	.selbar,
+	.toc-panel,
+	.outline-panel,
+	.outline-rail,
+	.min-left,
+	.pwa-stack,
+	.reader-chrome,
+	.read-progress,
+	.scripture-pop,
+	.define-pop {
+		display: none !important;
+	}
+
+	/* Paged mode is a fixed, column-swept viewport: on paper it prints one
+	   screenful and drops the rest of the chapter. Unwind it back to flow. */
+	article.paged,
+	article.paged .reading {
+		position: static !important;
+		height: auto !important;
+		max-height: none !important;
+		overflow: visible !important;
+		columns: auto !important;
+		column-width: auto !important;
+	}
+
+	/* The reader's own colours are for a lit screen; paper is white. */
+	:root {
+		--bg: #ffffff;
+		--surface: #ffffff;
+		--text: #000000;
+		--muted: #333333;
+		--border: #999999;
+	}
+	body {
+		background: #ffffff;
+	}
+
+	.reading {
+		/* Reader preferences are a screen comfort setting; paper has its own
+		   ergonomics, and a 1.6x scale would waste most of the page. */
+		font-size: 11pt;
+		line-height: 1.5;
+		color: #000000;
+	}
+	.reading p {
+		orphans: 3;
+		widows: 3;
+	}
+	/* Don't strand a heading at the foot of a page. */
+	.reading h2,
+	.reading h3 {
+		break-after: avoid;
+	}
+	/* A highlight is a screen affordance; on paper it prints as a grey box. */
+	.reading mark.range-mark,
+	.reading mark.search-hit {
+		background: none !important;
+		border-bottom: 1px solid #666666;
+	}
+	/* Spell out where a scripture reference pointed, since it can't be tapped. */
+	.reading .scripture-ref {
+		text-decoration: none;
+	}
+	a {
+		color: #000000;
+		text-decoration: none;
+	}
+}
+
 /* ── App nav ─────────────────────────────────────────────────────────────────
    Mirrors Take Root's menu bar: brand at the left, icon+label links centred in
    the bar, and the controls (preferences gear, account avatar) at the right.

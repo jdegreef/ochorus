@@ -201,7 +201,7 @@
 
 <!-- Reader top bar -->
 {#if !readerUi.focus}
-	<div class="sticky top-0 z-10 border-b border-border bg-bg/90 backdrop-blur">
+	<div class="reader-chrome sticky top-0 z-10 border-b border-border bg-bg/90 backdrop-blur">
 		<div class="mx-auto flex max-w-3xl items-center justify-between gap-3 px-5 py-2.5">
 			<a href={localizeHref('/sermons')} class="text-small text-muted hover:text-text"
 				>← {t('nav.sermons')}</a
