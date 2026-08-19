@@ -89,7 +89,7 @@
 				     going live incurs an obligation. -->
 				<div class="flex gap-2">
 					<dt class="w-32 flex-none text-muted">Licence</dt>
-					<dd class={settings.bible_attribution.trim() ? '' : 'text-gold'}>
+					<dd class={settings.bible_attribution.trim() ? '' : 'text-warning'}>
 						{settings.bible_licence} —
 						{#if settings.bible_attribution.trim()}
 							credited
@@ -101,7 +101,7 @@
 			{/if}
 			<div class="flex gap-2">
 				<dt class="w-32 flex-none text-muted">Glossary</dt>
-				<dd class={settings.missing_glossary_terms.length ? 'text-gold' : ''}>
+				<dd class={settings.missing_glossary_terms.length ? 'text-warning' : ''}>
 					{#if settings.missing_glossary_terms.length}
 						{settings.missing_glossary_terms.length} of {settings.glossary_terms.length} terms
 						missing: {settings.missing_glossary_terms.join(', ')}
@@ -123,7 +123,7 @@
 			</p>
 		{/if}
 		{#if note}
-			<p class="mt-3 text-small text-gold">{note}</p>
+			<p class="mt-3 text-small text-warning">{note}</p>
 		{/if}
 	{:else}
 		<div class="space-y-4">
@@ -191,7 +191,7 @@
 			</div>
 
 			{#if error}
-				<p class="text-small text-gold">{error}</p>
+				<p class="text-small text-warning">{error}</p>
 			{/if}
 
 			<div class="flex items-center gap-3">

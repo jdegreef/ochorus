@@ -366,7 +366,7 @@
 			></textarea>
 			<div class="mt-3 flex items-center gap-2">
 				{#if noteId}
-					<button class="btn btn-ghost !text-red-700 dark:!text-red-400" onclick={removeMark}>
+					<button class="btn btn-ghost !text-danger" onclick={removeMark}>
 						{t('reader.removeHighlight')}
 					</button>
 				{/if}

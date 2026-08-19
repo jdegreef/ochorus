@@ -45,11 +45,21 @@
 				required
 				minlength="6"
 				placeholder="••••••••"
-				class="mb-3 w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+				aria-invalid={error ? 'true' : undefined}
+				aria-describedby={error ? 'auth-error' : undefined}
+				class="mb-3 w-full rounded-sm border border-border-strong bg-bg px-3 py-2 text-body text-text"
 			/>
-			{#if error}<p class="mb-3 text-small text-danger">{error}</p>{/if}
-			<button class="btn btn-primary w-full" type="submit" disabled={busy}>
-				{busy ? '…' : t('reset.updateBtn')}
+			<p id="auth-error" role="alert" class="text-small text-danger empty:hidden {error ? 'mb-3' : ''}">
+				{error ?? ''}
+			</p>
+			<button
+				class="btn btn-primary w-full"
+				type="submit"
+				disabled={busy}
+				aria-busy={busy ? 'true' : undefined}
+			>
+				{#if busy}<span class="btn-spinner" aria-hidden="true"></span>{/if}
+				{t('reset.updateBtn')}
 			</button>
 		</form>
 	{:else}

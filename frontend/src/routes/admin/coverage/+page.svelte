@@ -61,7 +61,7 @@
 			case 'ai_reviewed':
 				return { label: 'AI✓', cls: 'border border-accent-soft-border bg-accent-soft text-accent' };
 			case 'ai_unreviewed':
-				return { label: 'AI·', cls: 'border border-gold/40 text-gold' };
+				return { label: 'AI·', cls: 'border border-warning/40 text-warning' };
 			case 'present':
 				return { label: '●', cls: 'text-accent' };
 			default:
@@ -112,7 +112,7 @@
 			{#if tab === 'books'}
 				<span><span class="text-text">PD</span> public domain</span>
 				<span><span class="text-accent">AI✓</span> reviewed</span>
-				<span><span class="text-gold">AI·</span> unreviewed</span>
+				<span><span class="text-warning">AI·</span> unreviewed</span>
 			{:else}
 				<span><span class="text-accent">●</span> present</span>
 			{/if}

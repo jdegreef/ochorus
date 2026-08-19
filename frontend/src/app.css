@@ -19,7 +19,9 @@
 	--color-accent-soft-border: var(--accent-soft-border);
 	--color-gold: var(--gold);
 	--color-border: var(--border);
+	--color-border-strong: var(--border-strong);
 	--color-danger: var(--danger);
+	--color-warning: var(--warning);
 	--radius-card: 12px;
 	--font-display: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
 	--font-sans: 'Hanken Grotesk Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
@@ -72,7 +74,17 @@
 	--accent-soft-border: #36324f;
 	--gold: #e0b45c;
 	--border: #2d261d;
+	/* A control's edge must clear 3:1 to be a visible boundary (WCAG 1.4.11);
+	   --border is a decorative hairline at ~1.2:1 and cannot carry that job.
+	   Interactive controls (inputs, selects, segmented toggles, chips) take
+	   --border-strong instead; dividers and card outlines keep --border. */
+	--border-strong: #7c7060;
 	--danger: #e8857a;
+	/* Gold is the reading-mark/ornament colour and fails 4.5:1 as text in the
+	   light and sepia themes, so it cannot double as "warning". This is the
+	   semantic warning ink; in lamplight it coincides with gold, which already
+	   clears AA against every surface here. */
+	--warning: #e0b45c;
 	--font-display: 'Fraunces Variable', Georgia, serif;
 	--font-sans: 'Hanken Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
 	--radius: 12px;
@@ -92,7 +104,9 @@
 	--accent-soft-border: #d9d7f0;
 	--gold: #b07d22;
 	--border: #e8dfcf;
+	--border-strong: #968462;
 	--danger: #b23a48;
+	--warning: #8c641b;
 }
 
 /* "Sepia" = a warm parchment reading tone: like paper but softer on the eyes
@@ -103,17 +117,34 @@
 	--surface: #fbf5e6;
 	--surface-2: #ece0c8;
 	--text: #40331f;
-	--muted: #7c6a4f;
+	/* Was #7c6a4f — 4.42:1 on --bg and 3.98:1 on --surface-2, i.e. under AA in
+	   the one theme built for long reading sessions. #716048 clears 4.5:1 on
+	   all three sepia surfaces (5.14 / 5.57 / 4.63). Lamplight and paper were
+	   measured too and already pass, so they are unchanged. */
+	--muted: #716048;
 	--accent: #3f3d9a;
 	--accent-contrast: #ffffff;
 	--accent-soft: #e9e5f3;
 	--accent-soft-border: #d7d2ec;
 	--gold: #9c6f1e;
 	--border: #ddcfb1;
+	--border-strong: #8d7b57;
 	--danger: #b23a48;
+	--warning: #825c19;
 }
 
 @layer base {
+	/* Tell the browser which way each theme leans, so native UI it paints for
+	   us — select dropdowns, scrollbars, autofill, spin buttons — matches the
+	   page instead of rendering light chrome over a near-black surface.
+	   Lamplight is the bare-:root default, hence dark here and light below. */
+	:root {
+		color-scheme: dark;
+	}
+	:root[data-theme='light'],
+	:root[data-theme='sepia'] {
+		color-scheme: light;
+	}
 	html {
 		font-family: var(--font-sans);
 		font-optical-sizing: auto;
@@ -341,6 +372,26 @@
 	.btn-ghost:hover {
 		background: var(--surface-2);
 		text-decoration: none;
+	}
+}
+
+/* A button that is working. The label STAYS — replacing it with '…' left the
+   control announcing as "…, dimmed, button", with no accessible name at all —
+   so the spinner sits beside the label instead, and aria-busy carries the
+   state to assistive tech. Under reduced motion the global block freezes the
+   animation, so the ring reads as a static mark rather than a spinner. */
+.btn-spinner {
+	width: 0.9em;
+	height: 0.9em;
+	flex-shrink: 0;
+	border-radius: 999px;
+	border: 2px solid currentColor;
+	border-top-color: transparent;
+	animation: btn-spin 0.7s linear infinite;
+}
+@keyframes btn-spin {
+	to {
+		transform: rotate(360deg);
 	}
 }
 
@@ -980,7 +1031,7 @@ nav.appnav .navtoggle:hover {
 /* Any input/select sitting in a .filter-row. One height for all of them. */
 .filter-field {
 	min-width: 0;
-	border: 1px solid var(--border);
+	border: 1px solid var(--border-strong);
 	border-radius: var(--radius-sm);
 	background: var(--surface);
 	padding: 0.45rem 0.7rem;
@@ -1001,7 +1052,7 @@ nav.appnav .navtoggle:hover {
 .seg {
 	display: flex;
 	overflow: hidden;
-	border: 1px solid var(--border);
+	border: 1px solid var(--border-strong);
 	border-radius: var(--radius-sm);
 }
 .seg button {
@@ -1015,7 +1066,7 @@ nav.appnav .navtoggle:hover {
 	white-space: nowrap;
 }
 .seg button + button {
-	border-inline-start: 1px solid var(--border);
+	border-inline-start: 1px solid var(--border-strong);
 }
 .seg button:hover:not(.active) {
 	background: var(--surface-2);
@@ -1029,7 +1080,7 @@ nav.appnav .navtoggle:hover {
 
 /* Filter chip — the pill rows (topics on Books, length on Plans). */
 .chip {
-	border: 1px solid var(--border);
+	border: 1px solid var(--border-strong);
 	border-radius: 999px;
 	background: var(--surface);
 	padding: 0.3rem 0.75rem;
@@ -1060,7 +1111,7 @@ nav.appnav .navtoggle:hover {
 	align-items: center;
 	padding: 0.3rem 0.75rem;
 	background: transparent;
-	border: 1px solid var(--border);
+	border: 1px solid var(--border-strong);
 	color: var(--text);
 	cursor: pointer;
 }
@@ -1079,6 +1130,56 @@ nav.appnav .navtoggle:hover {
 .widthctl button:disabled {
 	opacity: 0.4;
 	cursor: default;
+}
+
+/* ── Touch targets ─────────────────────────────────────────────────────────
+   On a touch screen every control needs a ~44px hit area (the guideline the
+   footer links already cite at .footer-links a). Measured before this block:
+   chips 29px, reader-bar buttons 30px, the avatar and prefs gear 32px, filter
+   fields and segmented options ~35px — i.e. the most-tapped controls in a
+   reading app were the smallest.
+
+   Gated on `pointer: coarse`, so the desktop's compact chrome is untouched and
+   only finger-driven sessions pay the height. Padding is left alone: the
+   height is met with min-height, so no label moves and nothing reflows. */
+@media (pointer: coarse) {
+	.btn,
+	.chip,
+	.seg button,
+	.filter-field,
+	.widthctl button,
+	.account-item {
+		min-height: 2.75rem;
+	}
+	/* Buttons whose label would otherwise sit at the top of the taller box.
+	   (.btn and .widthctl button are already inline-flex + centred.) */
+	.chip,
+	.seg button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.account-item {
+		display: flex;
+		align-items: center;
+	}
+	/* The avatar and gear keep their 32px disc — enlarging them would reflow a
+	   nav bar that is already tight on a phone. Instead each grows an
+	   invisible, centred 44px hit area, which is what the finger needs. */
+	.account-btn,
+	.prefs-btn {
+		position: relative;
+	}
+	.account-btn::after,
+	.prefs-btn::after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 2.75rem;
+		height: 2.75rem;
+		transform: translate(-50%, -50%);
+	}
 }
 
 /* The shared page column. Every main browse surface (Home, Books, Topics,

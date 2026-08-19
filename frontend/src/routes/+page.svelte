@@ -125,7 +125,7 @@
 				enterkeyhint="search"
 				placeholder={t('search.placeholder')}
 				aria-label={t('nav.search')}
-				class="min-w-0 flex-1 bg-transparent py-1 text-body text-text outline-none placeholder:text-muted"
+				class="min-w-0 flex-1 bg-transparent py-1 text-body text-text placeholder:text-muted focus-visible:-outline-offset-2"
 			/>
 			<button type="submit" class="btn btn-primary shrink-0 !rounded-full">{t('nav.search')}</button>
 		</form>

@@ -74,7 +74,7 @@
 	// There is no `success` token; inventing one renders as unstyled text.
 	const CHECK_TONE: Record<string, string> = {
 		pass: 'text-accent',
-		fail: 'text-gold',
+		fail: 'text-warning',
 		unknown: 'text-muted',
 		skipped: 'text-muted'
 	};
@@ -290,7 +290,7 @@
 					rel="noopener"
 					class="shrink-0 rounded-full border px-2.5 py-0.5 text-small hover:no-underline {job.state ===
 					'in_progress'
-						? 'border-border bg-surface-2 text-gold'
+						? 'border-border bg-surface-2 text-warning'
 						: 'border-accent-soft-border bg-accent-soft text-accent'}"
 					title="Open the job issue on GitHub"
 				>
@@ -366,7 +366,7 @@
 				<div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
 					<h2 class="text-h3">Readiness</h2>
 					{#if readiness}
-						<span class="text-small font-semibold {readiness.ready ? 'text-accent' : 'text-gold'}">
+						<span class="text-small font-semibold {readiness.ready ? 'text-accent' : 'text-warning'}">
 							{readiness.ready
 								? 'Every check clear'
 								: `${readiness.blocking.length} blocking: ${readiness.blocking.join(', ')}`}
@@ -375,7 +375,7 @@
 				</div>
 
 				{#if readinessError}
-					<p class="mb-3 text-small text-gold">{readinessError}</p>
+					<p class="mb-3 text-small text-warning">{readinessError}</p>
 				{/if}
 
 				{#if readiness}
@@ -474,7 +474,7 @@
 									Clear the {readiness.blocking.length} failing check(s) first, or
 								</span>
 								<button
-									class="text-small font-semibold text-gold underline disabled:opacity-50"
+									class="text-small font-semibold text-warning underline disabled:opacity-50"
 									disabled={launching}
 									onclick={() => launch(true)}
 								>
@@ -488,7 +488,7 @@
 					</div>
 
 					{#if launchError}
-						<p class="mt-2 text-small text-gold">{launchError}</p>
+						<p class="mt-2 text-small text-warning">{launchError}</p>
 					{/if}
 
 					{#if launchResult?.launched}
@@ -499,7 +499,7 @@
 								Recorded as live{launchResult.forced ? ' (forced past failing checks)' : ''}.
 							</p>
 							{#if launchResult.deploy}
-								<p class={launchResult.deploy.status === 'triggered' ? 'text-muted' : 'text-gold'}>
+								<p class={launchResult.deploy.status === 'triggered' ? 'text-muted' : 'text-warning'}>
 									{launchResult.deploy.detail}
 								</p>
 							{/if}
@@ -511,7 +511,7 @@
 							class="mt-2 text-small {deployState.status === 'deployed'
 								? 'text-accent'
 								: deployState.status === 'pending'
-									? 'text-gold'
+									? 'text-warning'
 									: 'text-muted'}"
 						>
 							{deployState.detail}
@@ -544,7 +544,7 @@
 							<li class="flex items-start justify-between gap-3">
 								<a href="/books/{b.slug}" class="min-w-0 font-medium text-text hover:text-accent">
 									<span class="block truncate">{b.title}</span>
-									<span class="text-small text-muted">{b.author} · {fmt(b.chapters)} ch{#if !b.is_published} · <span class="text-gold">unpublished</span>{/if}</span>
+									<span class="text-small text-muted">{b.author} · {fmt(b.chapters)} ch{#if !b.is_published} · <span class="text-warning">unpublished</span>{/if}</span>
 								</a>
 								<span class="shrink-0 text-small text-muted" title={b.source_type}>{SOURCE_BADGE[b.source_type]}</span>
 							</li>
@@ -557,7 +557,7 @@
 					<div class="mt-4 border-t border-border pt-3">
 						<p class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">Next to work on</p>
 						{#if queueError}
-							<p class="mb-2 text-small text-gold">{queueError}</p>
+							<p class="mb-2 text-small text-warning">{queueError}</p>
 						{/if}
 						<ul class="space-y-1.5">
 							{#each shown.todoBooks as b (b.slug)}
@@ -582,7 +582,7 @@
 						{#each shown.bios as a (a.slug)}
 							<li class="flex items-center justify-between gap-3">
 								<a href="/authors/{a.slug}" class="min-w-0 truncate font-medium text-text hover:text-accent">{a.name}</a>
-								{#if !a.reviewed}<span class="shrink-0 text-small text-gold" title="AI translation, unreviewed">unreviewed</span>{/if}
+								{#if !a.reviewed}<span class="shrink-0 text-small text-warning" title="AI translation, unreviewed">unreviewed</span>{/if}
 							</li>
 						{/each}
 					</ul>
@@ -595,7 +595,7 @@
 							Next to work on <span class="font-normal normal-case tracking-normal">· most-published authors first</span>
 						</p>
 						{#if queueError}
-							<p class="mb-2 text-small text-gold">{queueError}</p>
+							<p class="mb-2 text-small text-warning">{queueError}</p>
 						{/if}
 						<ul class="space-y-1.5">
 							{#each shown.todoBios as a (a.slug)}
@@ -623,7 +623,7 @@
 							<li class="flex items-start justify-between gap-3">
 								<a href="/sermons/{s.slug}" class="min-w-0 font-medium text-text hover:text-accent">
 									<span class="block truncate">{s.title}</span>
-									<span class="text-small text-muted">{s.author}{#if !s.is_published} · <span class="text-gold">unpublished</span>{/if}</span>
+									<span class="text-small text-muted">{s.author}{#if !s.is_published} · <span class="text-warning">unpublished</span>{/if}</span>
 								</a>
 							</li>
 						{/each}
@@ -635,7 +635,7 @@
 					<div class="mt-4 border-t border-border pt-3">
 						<p class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">Next to work on</p>
 						{#if queueError}
-							<p class="mb-2 text-small text-gold">{queueError}</p>
+							<p class="mb-2 text-small text-warning">{queueError}</p>
 						{/if}
 						<ul class="space-y-1.5">
 							{#each shown.todoSermons as s (s.slug)}
@@ -661,7 +661,7 @@
 							<li class="flex items-start justify-between gap-3">
 								<a href="/plans/{p.slug}" class="min-w-0 font-medium text-text hover:text-accent">
 									<span class="block truncate">{p.title}</span>
-									<span class="text-small text-muted">{fmt(p.days)} days{#if !p.is_published} · <span class="text-gold">unpublished</span>{/if}</span>
+									<span class="text-small text-muted">{fmt(p.days)} days{#if !p.is_published} · <span class="text-warning">unpublished</span>{/if}</span>
 								</a>
 							</li>
 						{/each}
@@ -673,7 +673,7 @@
 					<div class="mt-4 border-t border-border pt-3">
 						<p class="mb-2 text-small font-semibold uppercase tracking-wide text-muted">Next to work on</p>
 						{#if queueError}
-							<p class="mb-2 text-small text-gold">{queueError}</p>
+							<p class="mb-2 text-small text-warning">{queueError}</p>
 						{/if}
 						<ul class="space-y-1.5">
 							{#each shown.todoPlans as p (p.slug)}
@@ -717,7 +717,7 @@
 							A shelf with no title here is left out of this language's topic page entirely.
 						</p>
 						{#if queueError}
-							<p class="mb-2 text-small text-gold">{queueError}</p>
+							<p class="mb-2 text-small text-warning">{queueError}</p>
 						{/if}
 						<ul class="space-y-1.5">
 							{#each shown.todoTopics as t (t.slug)}

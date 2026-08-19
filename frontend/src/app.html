@@ -3,7 +3,13 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="theme-color" content="#faf6ef" />
+		<!-- Two media-scoped values so the browser chrome is right before any JS
+		     runs. A single static value could only match one theme, and it was
+		     the light one while the CSS default (bare :root) is lamplight — so a
+		     dark-theme first paint got a cream address bar. The boot script below
+		     collapses these to whatever theme actually applies. -->
+		<meta name="theme-color" media="(prefers-color-scheme: light)" content="#faf6ef" />
+		<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#16130f" />
 		<link rel="manifest" href="/manifest.json" />
 		<!-- Tab icon is the wordmark's own capital O, not the book-and-quill mark.
 		     The mark is hairline artwork: at 16px it collapses into an unreadable
@@ -30,8 +36,14 @@
 				document.documentElement.setAttribute('data-theme', applied);
 				// Match the browser UI (address bar / status bar) to the active theme.
 				var colors = { light: '#faf6ef', dark: '#16130f', sepia: '#f4ecd8' };
-				var tc = document.querySelector('meta[name="theme-color"]');
-				if (tc) tc.setAttribute('content', colors[applied] || '#faf6ef');
+				// Drop the media scoping: an explicit theme choice must beat the OS
+				// (sepia on an OS-light device, say), and a media-scoped tag that
+				// doesn't match would otherwise keep applying.
+				var tcs = document.querySelectorAll('meta[name="theme-color"]');
+				for (var i = 0; i < tcs.length; i++) {
+					tcs[i].removeAttribute('media');
+					tcs[i].setAttribute('content', colors[applied] || '#faf6ef');
+				}
 			} catch (e) {}
 		</script>
 		%sveltekit.head%

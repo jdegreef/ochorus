@@ -78,8 +78,13 @@ class Theme {
 	#apply() {
 		if (!browser) return;
 		document.documentElement.setAttribute('data-theme', this.current);
-		const tc = document.querySelector('meta[name="theme-color"]');
-		if (tc) tc.setAttribute('content', THEME_COLOR[this.current]);
+		// All of them, media attribute removed: app.html ships a media-scoped
+		// pair for the pre-hydration paint, and an explicit choice has to win
+		// over the OS preference those tags key on.
+		for (const tc of document.querySelectorAll('meta[name="theme-color"]')) {
+			tc.removeAttribute('media');
+			tc.setAttribute('content', THEME_COLOR[this.current]);
+		}
 	}
 }
 

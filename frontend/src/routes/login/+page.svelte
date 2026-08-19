@@ -116,7 +116,7 @@
 			<div class="border-t border-border pt-4">
 				<p class="mb-2 text-small text-muted">{t('login.didntGet')}</p>
 				<button class="btn btn-ghost" onclick={resend}>{t('login.resend')}</button>
-				{#if resentMsg}<p class="mt-2 text-small text-muted">{resentMsg}</p>{/if}
+				{#if resentMsg}<p role="status" class="mt-2 text-small text-muted">{resentMsg}</p>{/if}
 			</div>
 		</div>
 		<p class="mt-4 text-center text-small">
@@ -140,7 +140,9 @@
 				autocomplete="email"
 				required
 				placeholder="you@example.com"
-				class="mb-3 w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+				aria-invalid={error ? 'true' : undefined}
+				aria-describedby={error ? 'auth-error' : undefined}
+				class="mb-3 w-full rounded-sm border border-border-strong bg-bg px-3 py-2 text-body text-text"
 			/>
 
 			{#if mode !== 'reset'}
@@ -153,20 +155,28 @@
 					required
 					minlength="6"
 					placeholder="••••••••"
-					class="mb-3 w-full rounded-sm border border-border bg-bg px-3 py-2 text-body text-text"
+					aria-invalid={error ? 'true' : undefined}
+					aria-describedby={error ? 'auth-error' : undefined}
+					class="mb-3 w-full rounded-sm border border-border-strong bg-bg px-3 py-2 text-body text-text"
 				/>
 			{/if}
 
-			{#if error}<p class="mb-3 text-small text-danger">{error}</p>{/if}
+			<p id="auth-error" role="alert" class="text-small text-danger empty:hidden {error ? 'mb-3' : ''}">
+				{error ?? ''}
+			</p>
 
-			<button class="btn btn-primary w-full" type="submit" disabled={busy || !auth.enabled}>
-				{busy
-					? '…'
-					: mode === 'signin'
-						? t('account.signIn')
-						: mode === 'signup'
-							? t('login.createAccountBtn')
-							: t('login.sendReset')}
+			<button
+				class="btn btn-primary w-full"
+				type="submit"
+				disabled={busy || !auth.enabled}
+				aria-busy={busy ? 'true' : undefined}
+			>
+				{#if busy}<span class="btn-spinner" aria-hidden="true"></span>{/if}
+				{mode === 'signin'
+					? t('account.signIn')
+					: mode === 'signup'
+						? t('login.createAccountBtn')
+						: t('login.sendReset')}
 			</button>
 
 			{#if mode !== 'reset'}

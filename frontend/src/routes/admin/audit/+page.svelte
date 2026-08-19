@@ -90,7 +90,7 @@
 		</div>
 	{:else if audit}
 		{@const a = audit}
-		<p class="mb-6 text-body {totalFindings ? 'text-gold' : 'text-muted'}">
+		<p class="mb-6 text-body {totalFindings ? 'text-warning' : 'text-muted'}">
 			{#if totalFindings}<strong>{totalFindings}</strong> finding{totalFindings === 1 ? '' : 's'} across all checks.{:else}No findings — the library looks clean. 🎉{/if}
 		</p>
 
@@ -106,7 +106,7 @@
 		{#snippet section(label: string, desc: string, total: number, hasItems: boolean)}
 			<div class="flex items-baseline justify-between gap-3 border-b border-border pb-1">
 				<h3 class="text-body font-semibold text-text">{label}</h3>
-				<span class="shrink-0 text-small {total ? 'text-gold' : 'text-muted'}">{total || 'none'}</span>
+				<span class="shrink-0 text-small {total ? 'text-warning' : 'text-muted'}">{total || 'none'}</span>
 			</div>
 			{#if desc}<p class="mt-1 text-small text-muted">{desc}</p>{/if}
 			{#if !hasItems && total}<p class="mt-1 text-small text-muted">Showing first items…</p>{/if}

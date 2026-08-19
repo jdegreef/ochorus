@@ -58,14 +58,32 @@ values are identical to Take Root's.
 | `--accent-soft-border` | Soft indigo border | `#36324f` | `#d9d7f0` |
 | `--gold` | Secondary accent (eyebrows, marks) | `#e0b45c` | `#b07d22` |
 | `--border` | Hairlines, dividers | `#2d261d` | `#e8dfcf` |
+| `--border-strong` | Interactive control edges | `#7c7060` | `#968462` |
 | `--danger` | Errors, destructive | `#e8857a` | `#b23a48` |
+| `--warning` | Caution / needs attention | `#e0b45c` | `#8c641b` |
 
 **Indigo + gold** is the signature pairing: indigo for interaction/primary, gold
 for accents, eyebrows, and reading marks (highlights). Use gold sparingly — it's a
 spice, not a base.
 
+**Gold is ornament, never a message.** It measures 3.4–3.6:1 as text in the paper
+and sepia themes, i.e. under AA, so anything that *says something* — a warning, a
+status, "awaiting native review" — takes `--warning`, not `--gold`. Gold stays on
+graphics and decoration: reading marks, the heatmap, the streak flame, the prefs
+gear, hairline rules, the pull-quote bar. In lamplight `--warning` coincides with
+gold, which already clears AA there; paper and sepia darken it until it does.
+
+**`--border` is a hairline; `--border-strong` is an edge.** `--border` sits at
+1.1–1.4:1 against its surfaces, which is right for a divider and far below the
+3:1 that WCAG 1.4.11 asks of a control's boundary. Any control whose *only*
+affordance is its outline — text inputs, selects, `.filter-field`, `.seg`,
+`.chip`, `.widthctl` — uses `--border-strong`. Buttons keep `--border`: they are
+identified by fill and label, and a strong edge on `.btn-ghost` makes the
+low-emphasis button compete with the primary one beside it.
+
 ### Rules
-- ✅ Use a token for every color. ✅ Both themes must be checked.
+- ✅ Use a token for every color. ✅ All **three** themes must be checked —
+  lamplight, paper *and* sepia. Sepia is the one that has actually failed.
 - ✅ External brand colors (e.g. a vendor sign-in button) are the only allowed raw
   hex, and only on that vendor's control.
 - ✅ A generated book cover with no artwork may use its per-book `cover_color` —
@@ -312,14 +330,28 @@ group, and contact. Hidden in focus mode.
 
 ## 6. Accessibility
 
-- **Contrast:** target WCAG **AA** (4.5:1 text) in **both** themes. Verify
+- **Contrast:** target WCAG **AA** (4.5:1 text) in **all three** themes, and
+  check a pairing against `--surface-2` as well as `--bg` — surface-2 is the
+  tightest of the three grounds and is where `--muted` failed in sepia. Verify
   muted-on-bg and accent-on-surface pairings when adding them.
+- **Touch targets:** ~44px minimum under `@media (pointer: coarse)` (see the
+  block in `app.css`). Desktop chrome stays compact; only touch pays the height.
+  Round controls keep their disc and grow an invisible centred hit area rather
+  than reflowing a tight nav bar.
+- **Native chrome:** `color-scheme` is declared per theme, so select dropdowns,
+  scrollbars and autofill follow the page instead of rendering light-on-dark.
 - **Focus:** every interactive element has a visible focus ring
   (`:focus-visible` → 2px accent outline, 2px offset). Don't remove it.
 - **Names:** icon-only controls get an `aria-label`; nav/footer link groups are
   labelled; async results (search) should be discoverable.
 - **Motion:** respect `prefers-reduced-motion` (a global block disables
   transitions/animations under it).
+- **Busy states:** never replace a control's label with `…` — that leaves it
+  announcing as "…, dimmed, button" with no accessible name. Keep the label, add
+  `.btn-spinner` beside it and `aria-busy`.
+- **Form errors:** render into an always-present `role="alert"` region and point
+  the offending fields at it with `aria-describedby` + `aria-invalid`, so a
+  failure is announced rather than silently repainted.
 
 ---
 
@@ -367,6 +399,18 @@ Known gaps to close (tracked as follow-ups):
   `.chip`, soft active states (#720).
 - ✅ **One card language** — `.shelf-card` (Topics, Plans, Sermons) and
   `.book-card`, with levelled heights.
+- ✅ **Contrast** — sepia's `--muted` was under AA (4.42:1 on `--bg`, 3.98:1 on
+  `--surface-2`) and is now `#716048` (5.14 / 5.57 / 4.63). Lamplight and paper
+  were measured at the same time and already passed, so they are unchanged.
+  `--warning` and `--border-strong` were added (see §1) and the OS-theme `dark:`
+  utilities — which keyed on `prefers-color-scheme`, not `[data-theme]`, and put
+  the reader's "remove highlight" at 2.64:1 — now use `--danger`.
+- ✅ **Touch targets, `color-scheme`, focus rings, form-error announcement** —
+  see §6. The three `outline-none` declarations that stripped the global focus
+  ring are gone.
+- ⚠️ **Owed to Take Root.** §1 tokens are meant to stay identical across both
+  repos. The sepia `--muted` retune and the two new tokens have **not** been
+  mirrored into Take Root yet — do that before the sets drift.
 - ⚠️ **Class naming** differs slightly from Take Root (`.btn-primary`/`.btn-ghost`
   vs `.primary`/`.ghost`) — harmless, but worth converging if the systems merge.
 - ⚠️ **Detail pages still use `.text-display`** for their titles
@@ -381,4 +425,4 @@ Known gaps to close (tracked as follow-ups):
   asserting browse pages use `.page-col` + `<PageHeader>` is the obvious next
   step.
 
-_Last reviewed: 2026-08-01. Update this section as gaps close._
+_Last reviewed: 2026-08-19. Update this section as gaps close._

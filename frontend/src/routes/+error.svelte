@@ -80,7 +80,7 @@
 
 	{#if isNotFound && hasPicks}
 		<!-- "Fresh picks daily" divider -->
-		<div class="mx-auto my-12 flex max-w-md items-center gap-4 text-gold">
+		<div class="mx-auto my-12 flex max-w-md items-center gap-4 text-muted">
 			<span class="h-px flex-1 bg-gold/30"></span>
 			<span class="text-small font-semibold whitespace-nowrap uppercase tracking-[0.2em]">
 				{t('error.picksLabel')}
