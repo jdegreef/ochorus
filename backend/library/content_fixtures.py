@@ -58,6 +58,15 @@ def content_digest() -> str:
     digest is a JavaScript file that has to reproduce it exactly. ``tests_fixture``
     already rejects any file under ``content/`` that the layout does not load, so
     the two sets cannot drift apart.
+
+    SCOPE: ``content/`` only, matching render.yaml's ``buildFilter``
+    (``backend/library/fixtures/**``) — the gate covers exactly what
+    auto-triggers a web build. Other seed data that reaches prerendered pages
+    (``library/data/plan_translations/``, ``library/migrations/data/author_bios_*``)
+    is outside BOTH, so a commit touching only those doesn't rebuild the reader
+    at all and its pages stay on the previous prose until some later build. That
+    is the pre-existing gap DEPLOYMENT.md describes for backend-only changes —
+    widening this digest would not close it, since nothing would be watching.
     """
     h = hashlib.sha256()
     for path in sorted(CONTENT_DIR.rglob("*.json"), key=lambda p: p.relative_to(CONTENT_DIR).as_posix()):

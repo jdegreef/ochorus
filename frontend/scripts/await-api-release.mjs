@@ -40,7 +40,12 @@ const API = (process.env.PUBLIC_API_BASE_URL || '').replace(/\/+$/, '');
 const ON_RENDER = Boolean((process.env.RENDER_GIT_COMMIT || '').trim());
 const ENDPOINT = `${API}/api/health/`;
 
-/** Must stay in step with library/content_fixtures.py: content_digest(). */
+/**
+ * Must stay in step with library/content_fixtures.py: content_digest() — every
+ * *.json here, by sorted relative path. Scoped to content/ to match the
+ * buildFilter that triggers this build; see that docstring for what falls
+ * outside both.
+ */
 const CONTENT_DIR = fileURLToPath(new URL('../../backend/library/fixtures/content', import.meta.url));
 
 /** How long to wait for the API's deploy to land before giving up. */
