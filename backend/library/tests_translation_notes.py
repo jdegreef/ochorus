@@ -9,6 +9,7 @@ from tempfile import TemporaryDirectory
 from django.core.management import call_command
 from django.test import SimpleTestCase, TestCase
 
+from .management.commands.seed_translation_notes import notes_path
 from .models import TranslationNote
 
 
@@ -147,33 +148,32 @@ class ShippedNotesTests(TestCase):
 BACKLOG_PATH = Path(__file__).resolve().parent / "data" / "translation_notes_backlog.json"
 
 
-def translated_works() -> set[str]:
-    """``<kind>/<slug>.<language>`` for every shipped translation.
+def translated_works() -> list[tuple[str, str, str]]:
+    """``(kind, slug, language)`` for every shipped translation, sorted.
 
     A translation is any book or sermon content file whose language is not
-    ``en``. ``en-modern`` counts: a contemporized edition is produced by the
-    same translate-then-review pipeline and its careful pass can reword a
-    quotation, so its provenance is worth the same record.
+    ``en``. ``en-modern`` counts: a contemporized edition comes off the same
+    translate-then-review pipeline and its careful pass can reword a quotation,
+    so its provenance is worth the same record.
     """
     from library.content_fixtures import BOOKS_DIR, SERMONS_DIR
 
-    out: set[str] = set()
-    for kind, directory in (("book", BOOKS_DIR), ("sermon", SERMONS_DIR)):
-        for path in directory.glob("*.json"):
-            slug, _, language = path.name[: -len(".json")].rpartition(".")
-            if slug and language != "en":
-                out.add(f"{kind}/{slug}.{language}")
-    return out
+    works = [
+        (kind, slug, language)
+        for kind, directory in (("book", BOOKS_DIR), ("sermon", SERMONS_DIR))
+        for path in directory.glob("*.json")
+        for slug, _, language in [path.name[: -len(".json")].rpartition(".")]
+        if slug and language != "en"
+    ]
+    return sorted(works)
 
 
 def works_missing_notes() -> set[str]:
-    from library.management.commands.seed_translation_notes import NOTES_DIR
-
+    """``<kind>/<slug>.<language>`` for every translation with no notes file."""
     return {
-        work
-        for work in translated_works()
-        if not (NOTES_DIR / f"{work.split('/', 1)[0]}" /
-                f"{work.split('/', 1)[1]}.json").exists()
+        f"{kind}/{slug}.{language}"
+        for kind, slug, language in translated_works()
+        if not notes_path(kind, slug, language).exists()
     }
 
 

@@ -754,6 +754,50 @@ class QuoteStyleTests(SimpleTestCase):
         )
 
 
+_ARABIC_INDIC = str.maketrans("٠١٢٣٤٥٦٧٨٩", "0123456789")
+# A parenthesised group, bounded so a stray "(" cannot swallow a paragraph.
+_PAREN = re.compile(r"\(([^)]{0,160})\)")
+# C:V1-V2, optionally followed by ":V2b" for the cross-chapter form.
+_RANGE = re.compile(
+    r"([0-9٠-٩]{1,3})\s*[:.]\s*([0-9٠-٩]{1,3})"
+    r"\s*[-‐‑‒–—]\s*([0-9٠-٩]{1,3})"
+    r"(?:\s*[:.]\s*([0-9٠-٩]{1,3}))?"
+)
+_TAG = re.compile(r"<[^>]+>")
+
+
+def _digits(group: str | None) -> int | None:
+    return None if group is None else int(group.translate(_ARABIC_INDIC))
+
+
+@lru_cache(maxsize=1)
+def descending() -> tuple[tuple[str, str, str], ...]:
+    """(file, citation, parenthesised group) for every verse range that runs back.
+
+    Cached: both tests in ``CitationRangeTests`` want the same answer, and
+    re-deriving it re-scans every body in the corpus. Same reasoning as
+    ``all_rows`` above.
+    """
+    out: list[tuple[str, str, str]] = []
+    for path, rows in rows_by_file().items():
+        if path.name in {"authors.json", "plans.json"}:
+            continue
+        for row in rows:
+            html = row["fields"].get("body_html") or ""
+            if not html:
+                continue
+            for paren in _PAREN.finditer(_TAG.sub(" ", html)):
+                inner = paren.group(1)
+                for m in _RANGE.finditer(inner):
+                    chapter, first, second, across = (_digits(g) for g in m.groups())
+                    # Cross-chapter (C1:V1-C2:V2): the CHAPTER must ascend, and
+                    # the verse legitimately restarts lower (2:11-3:1).
+                    ok = second > chapter if across is not None else second > first
+                    if not ok:
+                        out.append((path.name, m.group(0), inner.strip()))
+    return tuple(out)
+
+
 class CitationRangeTests(SimpleTestCase):
     """A verse range must ascend — the one automatic handle on mangled citations.
 
@@ -804,53 +848,10 @@ class CitationRangeTests(SimpleTestCase):
         ("the-person-and-work-of-the-holy-spirit.en.json", "1:2-2"),
     }
 
-    _DIGITS = str.maketrans("٠١٢٣٤٥٦٧٨٩", "0123456789")
-    # A parenthesised group, bounded so a stray "(" cannot swallow a paragraph.
-    _PAREN = re.compile(r"\(([^)]{0,160})\)")
-    # C:V1-V2, optionally followed by ":V2b" for the cross-chapter form.
-    _RANGE = re.compile(
-        r"([0-9٠-٩]{1,3})\s*[:.]\s*([0-9٠-٩]{1,3})"
-        r"\s*[-‐‑‒–—]\s*([0-9٠-٩]{1,3})"
-        r"(?:\s*[:.]\s*([0-9٠-٩]{1,3}))?"
-    )
-    _TAG = re.compile(r"<[^>]+>")
-
-    @classmethod
-    def _n(cls, group: str | None) -> int | None:
-        return None if group is None else int(group.translate(cls._DIGITS))
-
-    @classmethod
-    def descending(cls) -> list[tuple[str, str, str]]:
-        """(file, citation, whole parenthesised group) for every backwards range."""
-        out: list[tuple[str, str, str]] = []
-        for path in ordered_fixture_paths():
-            if path.name in {"authors.json", "plans.json"}:
-                continue
-            for row in json.loads(path.read_text()):
-                html = row["fields"].get("body_html") or ""
-                if not html:
-                    continue
-                text = cls._TAG.sub(" ", html)
-                for paren in cls._PAREN.finditer(text):
-                    inner = paren.group(1)
-                    for m in cls._RANGE.finditer(inner):
-                        chapter, first, second, across = (
-                            cls._n(m.group(1)),
-                            cls._n(m.group(2)),
-                            cls._n(m.group(3)),
-                            cls._n(m.group(4)),
-                        )
-                        # Cross-chapter (C1:V1-C2:V2): the CHAPTER must ascend,
-                        # and the verse legitimately restarts lower (2:11-3:1).
-                        ok = second > chapter if across is not None else second > first
-                        if not ok:
-                            out.append((path.name, m.group(0), inner.strip()))
-        return out
-
     def test_every_verse_range_ascends(self):
         new = [
             (f, cite, ctx)
-            for f, cite, ctx in self.descending()
+            for f, cite, ctx in descending()
             if (f, cite) not in self.KNOWN_CITATIONS
         ]
         detail = "\n".join(f"  {f} — ({ctx})" for f, _, ctx in sorted(new))
@@ -868,7 +869,7 @@ class CitationRangeTests(SimpleTestCase):
 
     def test_known_citations_contains_no_stale_entries(self):
         stale = sorted(
-            self.KNOWN_CITATIONS - {(f, cite) for f, cite, _ in self.descending()}
+            self.KNOWN_CITATIONS - {(f, cite) for f, cite, _ in descending()}
         )
         self.assertFalse(
             stale,

@@ -50,6 +50,17 @@ from library.models import ReviewOutcome, TranslationNote
 
 NOTES_DIR = Path(__file__).resolve().parents[2] / "fixtures" / "translation_notes"
 
+def notes_path(kind: str, slug: str, language: str) -> Path:
+    """Where one translation's notes live. The canonical layout, stated once.
+
+    ``handle`` globs rather than calling this, but the coverage gate in
+    ``library.tests_translation_notes`` has to go the other way — from a shipped
+    translation to the file it should have — and re-deriving the layout there
+    would leave two places to change if it ever moves.
+    """
+    return NOTES_DIR / kind / f"{slug}.{language}.json"
+
+
 VALID_KINDS = set(ReviewOutcome.Kind.values)
 VALID_STATUS = set(TranslationNote.Status.values)
 
