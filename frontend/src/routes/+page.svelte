@@ -87,62 +87,71 @@
 	{@html siteLd}
 </svelte:head>
 
-<!-- Hero -->
-<section class="border-b border-border bg-surface-2">
-	<div class="mx-auto max-w-4xl px-5 py-20 text-center">
-		<p class="eyebrow mb-4 text-accent">
-			{t('home.heroEyebrow')}
-		</p>
-		<h1 class="text-display mx-auto mb-5 max-w-3xl">
-			{t('home.heroTitle')}
-		</h1>
-		<p class="mx-auto mb-6 max-w-xl text-body text-muted">
-			{t('home.heroTagline')}
-		</p>
-		<form
-			onsubmit={submitSearch}
-			method="GET"
-			action={localizeHref('/search')}
-			role="search"
-			class="mx-auto mb-6 flex max-w-lg items-center gap-2 rounded-full border border-border bg-surface px-2 py-1.5 shadow-sm focus-within:border-accent"
-		>
-			<svg
-				class="ms-2 h-5 w-5 shrink-0 text-muted"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				aria-hidden="true"
+<!-- Continue reading + streak render ABOVE the acquisition hero: a returning
+     reader came back to resume, not to be sold the site again, and leaving
+     these under a full-height hero meant scrolling past a pitch they had
+     already accepted. Both render nothing until there is reading activity, so
+     a first-time visitor still lands on the hero and sees no change.
+
+     The reordering is `order`, not DOM order, so the page's only <h1> still
+     comes before every <h2> in the source — a document that opens on an <h2>
+     is a worse outline for anyone navigating by heading. Client-side only
+     (this page is prerendered), so the blocks appear at hydration rather than
+     in the baked HTML. -->
+<div class="flex flex-col">
+	<!-- Hero -->
+	<section class="order-2 border-b border-border bg-surface-2">
+		<div class="mx-auto max-w-4xl px-5 py-14 text-center sm:py-20">
+			<p class="eyebrow mb-4 text-accent">
+				{t('home.heroEyebrow')}
+			</p>
+			<h1 class="text-display mx-auto mb-5 max-w-3xl">
+				{t('home.heroTitle')}
+			</h1>
+			<p class="mx-auto mb-6 max-w-xl text-body text-muted">
+				{t('home.heroTagline')}
+			</p>
+			<form
+				onsubmit={submitSearch}
+				method="GET"
+				action={localizeHref('/search')}
+				role="search"
+				class="mx-auto mb-6 flex max-w-lg items-center gap-2 rounded-full border border-border bg-surface px-2 py-1.5 shadow-sm focus-within:border-accent"
 			>
-				<circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
-			</svg>
-			<input
-				bind:value={query}
-				name="q"
-				type="search"
-				enterkeyhint="search"
-				placeholder={t('search.placeholder')}
-				aria-label={t('nav.search')}
-				class="min-w-0 flex-1 bg-transparent py-1 text-body text-text placeholder:text-muted focus-visible:-outline-offset-2"
-			/>
-			<button type="submit" class="btn btn-primary shrink-0 rounded-full">{t('nav.search')}</button>
-		</form>
-		<div class="flex flex-wrap justify-center gap-3">
-			<a href={localizeHref('/books')} class="btn btn-primary">{t('home.browseLibrary')}</a>
-			<a href={localizeHref('/about')} class="btn btn-ghost">{t('home.aboutOchorus')}</a>
+				<svg
+					class="ms-2 h-5 w-5 shrink-0 text-muted"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					aria-hidden="true"
+				>
+					<circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
+				</svg>
+				<input
+					bind:value={query}
+					name="q"
+					type="search"
+					enterkeyhint="search"
+					placeholder={t('search.placeholder')}
+					aria-label={t('nav.search')}
+					class="min-w-0 flex-1 bg-transparent py-1 text-body text-text placeholder:text-muted focus-visible:-outline-offset-2"
+				/>
+				<button type="submit" class="btn btn-primary shrink-0 rounded-full">{t('nav.search')}</button>
+			</form>
+			<!-- One primary per view: the search submit above. These two are the
+			     alternative routes into the same library, not competing calls to
+			     action, so they read as secondary. -->
+			<div class="flex flex-wrap justify-center gap-3">
+				<a href={localizeHref('/books')} class="btn btn-ghost">{t('home.browseLibrary')}</a>
+				<a href={localizeHref('/about')} class="btn btn-ghost">{t('home.aboutOchorus')}</a>
+			</div>
 		</div>
-	</div>
-</section>
-
-<!-- Continue reading (resume) stays first for returning readers; empty for
-     new visitors, so browsing books leads for them. Client-side only. -->
-<ContinueReading books={data.books} />
-
-<!-- Streak + weekly-goal nudge for returning readers; renders nothing until
-     there's reading activity. Client-side only. -->
-<ReadingNudge />
+	</section>
+	<div class="personal order-1"><ContinueReading books={data.books} /><ReadingNudge /></div>
+</div>
 
 <!-- Discover Your Next Book — above the plan/sermon blocks.
      Hidden when empty, like the topics row below it: if the shelf failed to
@@ -245,3 +254,17 @@
 		</div>
 	</section>
 {/if}
+
+<style>
+	/*
+	 * The strip only exists for a returning reader: both blocks inside render
+	 * nothing when there is no reading activity, leaving a wrapper whose only
+	 * children are Svelte's anchor comments — which is `:empty` per the spec.
+	 * So the closing rule and the space above the hero come and go with the
+	 * content, and a first visit is exactly the page it was before.
+	 */
+	.personal:not(:empty) {
+		padding-bottom: 3.5rem;
+		border-bottom: 1px solid var(--border);
+	}
+</style>

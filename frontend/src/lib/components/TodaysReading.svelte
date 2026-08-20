@@ -56,7 +56,7 @@
 </script>
 
 {#if today}
-	<section class="mx-auto max-w-5xl px-5 pt-14">
+	<section class="page-col px-5 pt-14">
 		<div
 			class="flex flex-wrap items-center justify-between gap-4 rounded-card border border-border bg-surface p-6"
 		>

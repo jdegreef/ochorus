@@ -77,8 +77,8 @@
 </script>
 
 {#if loaded && groups.length}
-	<section class="mx-auto max-w-5xl px-5 pt-14">
-		<h2 class="text-h2 mb-4">{t('fav.yourFavorites')}</h2>
+	<section class="page-col px-5 pt-14">
+		<h2 class="text-h1 mb-4">{t('fav.yourFavorites')}</h2>
 		<div class="space-y-4">
 			{#each groups as g (g.kind)}
 				<div class="flex flex-wrap items-baseline gap-2">

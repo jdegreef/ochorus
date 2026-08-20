@@ -39,7 +39,7 @@
 </script>
 
 {#if days.length}
-	<section class="mx-auto max-w-5xl px-5 pt-14">
+	<section class="page-col px-5 pt-14">
 		<div
 			class="flex flex-col gap-4 rounded-card border border-border bg-surface-2 px-5 py-4 sm:flex-row sm:items-center sm:gap-6"
 		>
