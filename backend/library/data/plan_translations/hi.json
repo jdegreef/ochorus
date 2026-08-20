@@ -1,10 +1,19 @@
 {
-  "the-inner-chamber-month": {
-    "title": "भीतरी कोठरी में एक महीना",
-    "description": "प्रार्थना और वचन की एक दैनिक आदत बनाइए: एंड्रयू मरे के साथ छत्तीस भोर, हर दिन एक अध्याय।",
-    "note": [
-      "Hindi's FIRST plan prose, shipping with the first Hindi books (queue jobs #690-#694). the-inner-chamber.hi is in this same PR, and it is the sole source book of this launch plan, so seed_plans creates the row on the next deploy — without an entry here the language would get no plan at all, which PlanTranslationCoverageTests fails on. This is the content of queue job #843.",
-      "The title opens with the shipped edition's own title verbatim (भीतरी कोठरी), as every other language's entry does, so the plan card and the book on the shelf agree."
-    ]
-  }
+ "the-inner-chamber-month": {
+  "title": "भीतरी कोठरी में एक महीना",
+  "description": "प्रार्थना और वचन की एक दैनिक आदत बनाइए: एंड्रयू मरे के साथ छत्तीस भोर, हर दिन एक अध्याय।",
+  "note": [
+   "Hindi's FIRST plan prose, shipping with the first Hindi books (queue jobs #690-#694). the-inner-chamber.hi is in this same PR, and it is the sole source book of this launch plan, so seed_plans creates the row on the next deploy — without an entry here the language would get no plan at all, which PlanTranslationCoverageTests fails on. This is the content of queue job #843.",
+   "The title opens with the shipped edition's own title verbatim (भीतरी कोठरी), as every other language's entry does, so the plan card and the book on the shelf agree."
+  ]
+ },
+ "school-of-prayer": {
+  "title": "प्रार्थना की पाठशाला",
+  "description": "प्रार्थना की पाठशाला में चार सप्ताह, तीन मार्गदर्शकों के साथ: एंड्रयू मरे — प्रभु स्वयं हमें प्रार्थना करना कैसे सिखाते हैं; डी. एल. मूडी — प्रबल प्रार्थना; और हन्ना बुयिंज़ा — प्रार्थना, मसीही जीवन की दैनिक धड़कन।",
+  "note": [
+   "Queue job #695. NONE of this curated plan's three source books (lord-teach-us-to-pray-2, prevailing-prayer, prayer-the-pulse-of-life) has a Hindi edition, so seed_plans creates no row today — this prose lands DORMANT on purpose. It exists so that whichever book lands last cannot publish an English-titled card in Hindi (the #819 defect). Same reasoning as the Spanish entry for this plan, job #517.",
+   "Names are transliterated, as all shipped Hindi content does: एंड्रयू मरे and डी. एल. मूडी follow the shipped Hindi corpus (12 and 3 occurrences). हन्ना बुयिंज़ा has NO Hindi precedent — this is the first Hindi content to name her, so a later prayer-the-pulse-of-life edition or bio should match this form rather than diverge. Note es/pt/sw/lg keep her name in Latin script; Hindi cannot, so it is transliterated here.",
+   "The three guides are named by AUTHOR, not by book title, because none of the three books ships in Hindi yet — there is no shipped title to quote. When they arrive, whoever translates them should either harmonise their titles with this card or adjust this entry in the same PR, exactly as the Arabic and Spanish notes ask."
+  ]
+ }
 }
