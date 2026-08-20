@@ -76,9 +76,9 @@
 </script>
 
 {#if picks.length}
-	<section class="mx-auto max-w-5xl px-5 pt-14">
+	<section class="page-col px-5 pt-14">
 		<div class="mb-6 flex items-end justify-between">
-			<h2 class="text-h2">{t('home.recommendedNext')}</h2>
+			<h2 class="text-h1">{t('home.recommendedNext')}</h2>
 			<a href={localizeHref('/books')} class="text-small font-semibold text-accent"
 				>{t('home.allBooks')} →</a
 			>

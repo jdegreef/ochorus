@@ -119,6 +119,8 @@
 	// toggle, leaving search (the thing you actually reach for) plus the toggle.
 	// `hidden` is conditional and `sm:` overrides it, so desktop is untouched
 	// and there is no duplicated markup.
+	/** Measured height of the pinned controls bar — the era headings pin below it. */
+	let controlsH = $state(0);
 	let filtersOpen = $state(false);
 	const activeCount = $derived(
 		(queryText.trim() !== '' ? 1 : 0) + (filter !== 'all' ? 1 : 0) + (fullBioOnly ? 1 : 0)
@@ -278,7 +280,13 @@
 	{@html crumbsLd}
 </svelte:head>
 
-<div class="page-col px-5 py-8">
+<!--
+	`--pinned-offset` is how far down the page the first unobstructed pixel is:
+	the sticky app nav plus this page's own pinned controls bar. Everything that
+	pins or scrolls into view below reads it, so there is one number to be right
+	rather than four hard-coded ones drifting apart.
+-->
+<div class="page-col px-5 py-8" style="--pinned-offset: calc(var(--appnav-h, 0px) + {controlsH}px)">
 	<!-- No visible breadcrumb: this is a top-level destination already marked
 	     active in the nav, and it was the only one of the six browse pages
 	     carrying a trail. Detail pages (a book, an author) still get one, where
@@ -286,11 +294,15 @@
 	     the page's position for search results, which is still true. -->
 	<PageHeader eyebrow={t('bios.eyebrow')} title={t('bios.title')} tagline={t('bios.tagline')} />
 
-	<!-- Controls + A–Z, pinned. With one writer per row the list is 35 screens
-	     long, so the filters and the letter jump have to come WITH you — the app
-	     nav is position:relative and scrolls away, so top-0 is free.
-	     -mx-5 px-5 lets the background span the container's padding. -->
+	<!-- Controls + A–Z, pinned under the app nav (which is itself sticky, hence
+	     the --appnav-h offset). With one writer per row the list is 35 screens
+	     long, so the filters and the letter jump have to come WITH you.
+	     -mx-5 px-5 lets the background span the container's padding.
+	     Its height is measured rather than assumed: the filter row and the A–Z
+	     strip both wrap, so the bar is anywhere from ~70px to ~160px tall and
+	     the era headings below have to pin under whatever it currently is. -->
 	<div
+		bind:clientHeight={controlsH}
 		class="sticky z-20 -mx-5 mb-6 border-b border-border bg-bg px-5 pb-2.5 pt-3" style="top: var(--appnav-h, 0px)"
 	>
 	<!-- Controls: search · filter · sort -->
@@ -428,12 +440,20 @@
 			</nav>
 		{/if}
 		{#each eraGroups as g (g.era.id)}
-			<section id="era-{g.era.id}" class="mb-12 scroll-mt-36">
+			<section
+				id="era-{g.era.id}"
+				class="mb-12"
+				style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"
+			>
 				<!-- Pinned under the controls bar: four centuries of writers scroll
 				     past, and without this you lose track of which era you are in.
-				     top-[125px] clears the bar; z-10 keeps it under the bar's z-20. -->
+				     The offset is the nav plus the MEASURED bar — a hard-coded 125px
+				     was calibrated against one particular bar height and parked the
+				     heading inside it (z-10 under the bar's z-20, both opaque), so it
+				     simply disappeared on scroll. -->
 				<h2
-					class="sticky top-[125px] z-10 mb-6 flex items-baseline gap-2 border-b border-border bg-bg pb-2 pt-2 text-h3 text-text"
+					style="top: var(--pinned-offset, 0px)"
+					class="sticky z-10 mb-6 flex items-baseline gap-2 border-b border-border bg-bg pb-2 pt-2 text-h3 text-text"
 				>
 					<a
 						href={localizeHref(`/biographies/era/${g.era.id}`)}

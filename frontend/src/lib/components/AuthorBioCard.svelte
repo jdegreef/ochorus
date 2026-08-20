@@ -24,9 +24,13 @@
      tappable unit: hovering it warms the whole thing — border → accent and the
      portrait from grayscale to full colour. The author links carry preload-on-
      hover so the click lands instantly. -->
+<!-- `id` is the deep-link target for /biographies#slug, so the card has to
+     clear whatever is pinned above it. The host page publishes `--pinned-offset`
+     (sticky nav + its own pinned bar); the fallback clears the nav alone. -->
 <article
 	id={author.slug}
-	class="group relative scroll-mt-36 rounded-card border border-border p-5 transition-colors hover:border-accent"
+	style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"
+	class="group relative rounded-card border border-border p-5 transition-colors hover:border-accent"
 >
 	<!-- Portrait beside the text, not above it. In the old two-up grid each row
 	     was as tall as its TALLER card, so a 171-character bio next to a

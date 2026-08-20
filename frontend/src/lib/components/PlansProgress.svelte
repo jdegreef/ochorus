@@ -62,9 +62,9 @@
 </script>
 
 {#if rows.length >= 2}
-	<section class="mx-auto max-w-5xl px-5 pt-14">
+	<section class="page-col px-5 pt-14">
 		<div class="mb-4 flex items-end justify-between">
-			<h2 class="text-h2">{t('home.yourPlans')}</h2>
+			<h2 class="text-h1">{t('home.yourPlans')}</h2>
 			<a href={localizeHref('/plans')} class="text-small font-semibold text-accent"
 				>{t('plans.all')} →</a
 			>
