@@ -6,20 +6,20 @@
 	import { localizeHref } from '$lib/href';
 	import { locales } from '$lib/paraglide/runtime';
 	import { i18n } from '$lib/i18n.svelte';
-	import { readingTime, preachedYear } from '$lib/reading';
 	import { readJSON, writeJSON } from '$lib/persisted';
 	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
+	import SermonCard from '$lib/components/SermonCard.svelte';
 	import CatalogLanguageNudge from '$lib/components/CatalogLanguageNudge.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
-	import { hueForBirthYear } from '$lib/eras';
+	import EmptyState from '$lib/components/EmptyState.svelte';
+	import FilterSummary from '$lib/components/FilterSummary.svelte';
 	import { portraitPosition } from '$lib/portraits';
-	import Emblem from '$lib/components/Emblem.svelte';
-	import { emblemForSermon } from '$lib/emblems';
 
 	const t = i18n.t;
 
 	let { data } = $props();
 	const sermons = $derived<SermonSummary[]>(data.sermons);
+	const loadError = $derived<boolean>(data.loadError);
 
 	// schema.org ItemList of the sermon shelf — an ordered roster for crawlers.
 	const sermonsLd = $derived(
@@ -62,6 +62,12 @@
 	});
 
 	const filtering = $derived(queryText.trim() !== '' || bibleBook !== '');
+	// Clears what narrows the shelf, not how it is arranged — the grouping and
+	// sort are the reader's own preference and survive.
+	function clearFilters() {
+		queryText = '';
+		bibleBook = '';
+	}
 
 	// --- Arrangement (persisted per device, mirroring the Books shelf) ----------
 	// "By preacher" keeps the author sections the shelf was built around; "All
@@ -193,21 +199,19 @@
 		</div>
 
 		{#if filtering}
-			<button
-				class="btn btn-ghost py-2"
-				onclick={() => {
-					queryText = '';
-					bibleBook = '';
-				}}>{t('sermons.clear')}</button
-			>
+			<button class="btn btn-ghost py-2" onclick={clearFilters}>{t('sermons.clear')}</button>
 		{/if}
 	</div>
 
+	<!-- No onClear here: this shelf's controls bar already carries a Clear,
+	     right above. Two of them side by side is one too many. -->
 	{#if filtering}
-		<p class="mb-6 text-small text-muted" aria-live="polite">
-			{filtered.length}
-			{filtered.length === 1 ? t('sermons.matchOne') : t('sermons.matches')}
-		</p>
+		<FilterSummary
+			shown={filtered.length}
+			total={sermons.length}
+			template={t('sermons.showing')}
+			class="mb-6"
+		/>
 	{/if}
 
 	<!-- One sermon per line: title, the passage it expounds, the "In brief", and
@@ -215,64 +219,18 @@
 	     opening it. A tile can't carry a 300–400 character brief without becoming
 	     mostly text, and prose set across a 76rem page is unreadable, so the row
 	     gives the brief a real measure and the meta a column of its own. -->
-	{#snippet sermonRow(sermon: SermonSummary)}
-		{@const year = preachedYear(sermon.preached_on)}
-		<a
-			class="sermon-row group"
-			style="--row-hue: {hueForBirthYear(sermon.author.birth_year)}"
-			href={localizeHref(`/sermons/${sermon.slug}`)}
-		>
-			<!-- Every sermon wears its own illustrated emblem, themed to the text
-			     it expounds — the raven with bread, the bruised reed, the golden
-			     key — so a shelf of prose rows gets a scannable visual anchor. -->
-			<div class="sermon-row-emblem emblem-chip">
-				<Emblem name={emblemForSermon(sermon.slug)} />
-			</div>
-			<div class="min-w-0 flex-1">
-				<!-- Eyebrow line: whose sermon (only when no heading above says so) and
-				     the passage at the start, the length at the top right of the row. -->
-				<div class="flex flex-wrap items-baseline justify-between gap-x-4">
-					<p class="sermon-row-ref min-w-0">
-						{#if showAuthor}{sermon.author.name}<span class="opacity-40"> · </span>{/if}
-						{sermon.scripture_ref}
-					</p>
-					<!-- ms-auto, not just justify-between: when a long passage pushes this
-					     to its own line, justify-between leaves it stranded at the start of
-					     that line. The auto margin keeps it flush to the end either way. -->
-					<p class="ms-auto shrink-0 text-small text-muted">
-						{readingTime(sermon.word_count)}
-						{#if year}<span class="opacity-50"> · </span>{year}{/if}
-					</p>
-				</div>
-				<h3 class="sermon-row-title mt-1">{sermon.title}</h3>
-				<!-- Not every sermon has a brief written yet, so the row has to read as
-				     finished without one — hence the brief hanging below a complete
-				     title/passage/length line rather than sitting between them. -->
-				{#if sermon.summary}
-					<!-- Clamped on a phone only: a 400-character brief runs to eleven lines
-					     at 375px, and twenty-six of those is a very long shelf. The full
-					     text is one tap away, and it fits in three or four lines from sm up
-					     where the measure is wider. Same rule AuthorBioCard uses. -->
-					<p class="sermon-row-brief mt-2.5 line-clamp-5 text-body sm:line-clamp-none">
-						{sermon.summary}
-					</p>
-				{/if}
-			</div>
-		</a>
-	{/snippet}
-
 	{#snippet sermonList(items: SermonSummary[])}
 		<div class="flex flex-col gap-3">
 			{#each items as sermon (sermon.slug)}
-				{@render sermonRow(sermon)}
+				<SermonCard {sermon} {showAuthor} variant="row" />
 			{/each}
 		</div>
 	{/snippet}
 
-	{#if sorted.length === 0}
-		<p class="text-body text-muted">
-			{filtering ? t('sermons.noMatches') : t('sermons.empty')}
-		</p>
+	{#if loadError}
+		<EmptyState message={t('common.loadError')} onRetry />
+	{:else if sorted.length === 0}
+		<EmptyState message={filtering ? t('sermons.noMatches') : t('sermons.empty')} />
 	{:else if groups}
 		<!-- Jump to a writer — with a brief under every sermon the sections are
 		     long, so they need a way in that isn't scrolling. Same rail the Books

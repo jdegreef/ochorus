@@ -67,6 +67,25 @@ describe('type scale', () => {
 		expect(offenders, offenders.join('\n')).toEqual([]);
 	});
 
+	it('reserves .text-display for the home hero', () => {
+		// STYLE_GUIDE §2: display is the one step above a page title, and a page
+		// that uses it for its own <h1> makes every other page's title look like a
+		// subheading. Three public pages had drifted there (a topic, a
+		// biographies era, the notebook) alongside the admin surface, which is
+		// English-only, has its own header language, and is exempt.
+		const offenders: string[] = [];
+		for (const file of svelteFiles(SRC)) {
+			const rel = file.replace(SRC, 'src');
+			if (rel.includes('/admin/') || rel.endsWith('src/routes/+page.svelte')) continue;
+			const src = readFileSync(file, 'utf-8');
+			// Only markup — PageHeader's doc comment names the class on purpose.
+			for (const line of src.split('\n')) {
+				if (/class=[^>]*\btext-display\b/.test(line)) offenders.push(`${rel}: ${line.trim()}`);
+			}
+		}
+		expect(offenders, offenders.join('\n')).toEqual([]);
+	});
+
 	it('app.css itself sizes text from the scale', () => {
 		const css = readFileSync(join(SRC, 'app.css'), 'utf-8');
 		const offenders = (css.match(/font-size:\s*[0-9.]+(rem|px)\s*;/g) ?? []).map(

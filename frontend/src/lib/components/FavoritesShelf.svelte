@@ -14,6 +14,7 @@
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import SectionHeader from '$lib/components/SectionHeader.svelte';
 
 	/**
 	 * "Your favorites" — the authors, books, plans and sermons the reader has
@@ -78,7 +79,7 @@
 
 {#if loaded && groups.length}
 	<section class="page-col px-5 pt-14">
-		<h2 class="text-h1 mb-4">{t('fav.yourFavorites')}</h2>
+		<SectionHeader title={t('fav.yourFavorites')} />
 		<div class="space-y-4">
 			{#each groups as g (g.kind)}
 				<div class="flex flex-wrap items-baseline gap-2">

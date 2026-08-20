@@ -1,4 +1,5 @@
 import { listTopics } from '$lib/library';
+import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
 
@@ -12,12 +13,6 @@ import type { PageLoad } from './$types';
 // before seed_topics runs, so this trailing touch forces the rebuild that
 // actually sees them.
 export const load: PageLoad = async () => {
-	// Tolerate a lagging/absent topics endpoint at prerender time (api + web can
-	// build together on a deploy) — render an empty list rather than fail the
-	// build; a later rebuild picks the topics up.
-	try {
-		return { topics: await listTopics(getLang()) };
-	} catch {
-		return { topics: [] };
-	}
+	const { items, loadError } = await loadShelf(listTopics(getLang()));
+	return { topics: items, loadError };
 };

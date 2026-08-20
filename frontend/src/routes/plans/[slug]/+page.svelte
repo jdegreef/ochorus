@@ -10,6 +10,7 @@
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
+	import ProgressBar from '$lib/components/ProgressBar.svelte';
 
 	let { data } = $props();
 	const plan = $derived<PlanDetail>(data.plan);
@@ -139,12 +140,11 @@
 						)}{/if}
 				</span>
 			</div>
-			<div class="h-2 overflow-hidden rounded-full bg-surface-2">
-				<div
-					class="h-full rounded-full bg-accent transition-[width] duration-[var(--duration-slow)]"
-					style="width: {pct}%"
-				></div>
-			</div>
+			<ProgressBar
+				percent={pct}
+				size="md"
+				label="{plan.title}: {doneCount} {t('plans.of')} {plan.day_count} {t('plans.days')}"
+			/>
 		</div>
 	{/if}
 

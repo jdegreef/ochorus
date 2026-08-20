@@ -13,6 +13,7 @@
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
+	import SourceBadge from '$lib/components/SourceBadge.svelte';
 	import { offlineBooks } from '$lib/offlineBooks.svelte';
 	import { pwa } from '$lib/pwa.svelte';
 
@@ -154,19 +155,7 @@
 				>{#if years}<span class="text-muted">{` · ${years}`}</span>{/if}
 			</p>
 
-			{#if book.source_type === 'ai_unreviewed'}
-				<p
-					class="mt-3 inline-flex items-center gap-1.5 rounded-full border border-warning/40 bg-warning/10 px-3 py-1 text-small text-warning"
-				>
-					{t('book.aiUnreviewed')}
-				</p>
-			{:else if book.source_type === 'ai_reviewed'}
-				<p
-					class="mt-3 inline-flex items-center gap-1.5 rounded-full border border-border bg-surface-2 px-3 py-1 text-small text-muted"
-				>
-					{t('book.aiReviewed')}
-				</p>
-			{/if}
+			<SourceBadge sourceType={book.source_type} class="mt-3" />
 
 			<div class="mt-5 flex flex-wrap items-center gap-3">
 				{#if resumeOrder && resumeOrder > 1}
@@ -287,7 +276,7 @@
 	{#if book.related?.length}
 		<section class="mt-12">
 			<h2 class="mb-4 text-h3">{t('book.related')}</h2>
-			<div class="grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4 md:grid-cols-6">
+			<div class="book-grid">
 				{#each book.related as rel (rel.slug)}
 					<BookCard book={rel} showAuthor />
 				{/each}

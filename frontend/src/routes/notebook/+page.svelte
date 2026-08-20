@@ -8,6 +8,7 @@
 	import { localizeHref } from '$lib/href';
 	import { HIGHLIGHT_COLORS, DEFAULT_HIGHLIGHT, type Bookmark, type Mark } from '$lib/reading-schema';
 	import { createLimiter, NOTEBOOK_CONCURRENCY } from '$lib/limiter';
+	import EmptyState from '$lib/components/EmptyState.svelte';
 
 	const t = i18n.t;
 
@@ -250,16 +251,14 @@
 <div class="mx-auto max-w-2xl px-5 py-10">
 	<header class="mb-8">
 		<p class="eyebrow mb-2 text-accent">Ochorus</p>
-		<h1 class="text-display">{t('notebook.title')}</h1>
+		<h1 class="text-h1">{t('notebook.title')}</h1>
 		<p class="mt-2 text-body text-muted">{t('notebook.subtitle')}</p>
 	</header>
 
 	{#if loading}
 		<p class="text-body text-muted">…</p>
 	{:else if isEmpty}
-		<div class="rounded-card border border-border bg-surface p-8 text-center">
-			<p class="text-body text-muted">{t('notebook.empty')}</p>
-		</div>
+		<EmptyState message={t('notebook.empty')} />
 	{:else}
 		<div class="mb-6 flex flex-wrap items-center gap-3">
 			<input
@@ -296,9 +295,7 @@
 		</div>
 
 		{#if noMatches}
-			<div class="rounded-card border border-border bg-surface p-8 text-center">
-				<p class="text-body text-muted">{t('notebook.no_matches')}</p>
-			</div>
+			<EmptyState message={t('notebook.no_matches')} />
 		{/if}
 
 		{#each filtered as bk (bk.slug)}

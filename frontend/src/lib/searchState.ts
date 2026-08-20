@@ -1,4 +1,5 @@
 import type { SearchSort } from './library-public';
+import { readFilters, writeFilters } from './urlFilters';
 
 /**
  * The search view as a URL, and back again.
@@ -9,13 +10,19 @@ import type { SearchSort } from './library-public';
  * two directions live here as pure functions rather than inline in the
  * component, where neither could be tested.
  *
- * Two rules do the work:
+ * Two rules do the work, and they are not this page's alone — `urlFilters`
+ * holds them for every filterable shelf, and this builds on it:
  *
  * - **Defaults never appear.** `?q=prayer` and `?q=prayer&type=all&sort=relevance`
  *   are the same view; emitting the second would give the common case an ugly
  *   link and make an unchanged view look like a changed one.
  * - **What comes back in is not trusted.** A URL is user input; an unknown sort
  *   degrades to relevance rather than reaching the API.
+ *
+ * What is genuinely search's own, and stays here, is the COUPLING between the
+ * fields: a facet means nothing without a query, and `?in=` is a `kind:slug`
+ * pair rather than a flat value. Both are normalisation either side of the
+ * generic encode/decode.
  */
 
 export const SEARCH_SORTS: readonly SearchSort[] = ['relevance', 'title', 'newest'];
@@ -76,36 +83,35 @@ function readScope(raw: string): string {
 	return (SEARCH_SCOPES as readonly string[]).includes(kind) && slug ? `${kind}:${slug}` : '';
 }
 
+/** The query string's shape, before search's own coupling rules apply. */
+const WIRE_DEFAULTS = { q: '', type: 'all', sort: 'relevance', in: '' };
+const WIRE_ALLOWED = { sort: SEARCH_SORTS } as const;
+
 /** Read a view out of a query string, degrading anything unrecognised. */
 export function readSearchState(params: URLSearchParams): SearchState {
-	const q = (params.get('q') ?? '').trim();
-	const rawSort = params.get('sort') ?? '';
-	const sort = (SEARCH_SORTS as readonly string[]).includes(rawSort)
-		? (rawSort as SearchSort)
-		: 'relevance';
+	const wire = readFilters(params, WIRE_DEFAULTS, WIRE_ALLOWED);
+	const q = wire.q.trim();
 	// A facet without a query describes nothing, so it is dropped rather than
 	// left to filter an empty list. A scope is the exception: it survives an
 	// empty query, because arriving from "search inside this book" means
 	// standing in the scope before typing anything.
-	const type = q ? (params.get('type') || 'all') : 'all';
 	return {
 		q,
-		type,
-		sort: q ? sort : 'relevance',
-		scope: readScope(params.get('in') ?? '')
+		type: q ? wire.type : 'all',
+		sort: q ? (wire.sort as SearchSort) : 'relevance',
+		scope: readScope(wire.in)
 	};
 }
 
-/** Write a view into `url`'s query string, in place, and return it. */
+/** Write a view into a copy of `url`'s query string and return it. */
 export function writeSearchState(url: URL, state: SearchState): URL {
 	const { q, type, sort, scope } = state;
-	if (q) url.searchParams.set('q', q);
-	else url.searchParams.delete('q');
-	if (q && type !== 'all') url.searchParams.set('type', type);
-	else url.searchParams.delete('type');
-	if (q && sort !== 'relevance') url.searchParams.set('sort', sort);
-	else url.searchParams.delete('sort');
-	if (scope) url.searchParams.set('in', scope);
-	else url.searchParams.delete('in');
-	return url;
+	// The coupling, applied before the generic write: with no query there is no
+	// facet and no sort to speak of, so they go back to their defaults and are
+	// dropped for us.
+	return writeFilters(
+		url,
+		{ q, type: q ? type : 'all', sort: q ? sort : 'relevance', in: scope },
+		WIRE_DEFAULTS
+	);
 }

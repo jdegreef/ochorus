@@ -1,18 +1,21 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { BookSummary } from '$lib/library';
+	import { isTranslated, type BookSummary } from '$lib/library';
 	import { SITE_URL } from '$lib/config';
 	import { getLang } from '$lib/lang.svelte';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readJSON, writeJSON } from '$lib/persisted';
 	import { allProgress } from '$lib/progress';
-	import { invalidateAll } from '$app/navigation';
+	import { page } from '$app/stores';
+	import { urlFilters } from '$lib/urlFilters.svelte';
 	import BookCard from './BookCard.svelte';
 	import BookListRow from './BookListRow.svelte';
 	import BookCover from './BookCover.svelte';
 	import CatalogLanguageNudge from './CatalogLanguageNudge.svelte';
 	import PageHeader from './PageHeader.svelte';
+	import EmptyState from './EmptyState.svelte';
+	import FilterSummary from './FilterSummary.svelte';
 
 	let { books, loadError = false }: { books: BookSummary[]; loadError?: boolean } = $props();
 	const t = i18n.t;
@@ -27,9 +30,16 @@
 	let view = $state<View>('grid');
 	let sort = $state<Sort>('shelf');
 	let group = $state<Group>('all');
-	let source = $state<Source>('all');
-	let topic = $state(''); // selected topic slug; '' = all topics
-	let queryText = $state('');
+	// --- Filters (in the URL) --------------------------------------------------
+	// A filtered shelf is a place: it survives a reload, comes back with Back,
+	// and can be sent to someone. View preferences above deliberately stay in
+	// localStorage — they describe the reader, not the shelf.
+	const filters = urlFilters({
+		defaults: { q: '', source: 'all' as Source, topic: '' },
+		allowed: { source: ['all', 'public_domain', 'translated'] },
+		url: () => $page.url
+	});
+	const clearFilters = () => filters.reset();
 
 	function save() {
 		writeJSON(PREFS_KEY, { view, sort, group });
@@ -63,7 +73,7 @@
 	});
 
 	// --- Derived --------------------------------------------------------------
-	const searching = $derived(queryText.trim().length > 0 || source !== 'all' || topic !== '');
+	const searching = $derived(filters.active);
 	const sourceTypes = $derived(new Set(books.map((b) => b.source_type)));
 	const showSourceFilter = $derived(sourceTypes.size > 1);
 
@@ -83,10 +93,11 @@
 	);
 
 	const filtered = $derived.by(() => {
-		const q = queryText.trim().toLowerCase();
+		const q = filters.values.q.trim().toLowerCase();
 		return books.filter((b) => {
-			if (source === 'public_domain' && b.source_type !== 'public_domain') return false;
-			if (source === 'translated' && b.source_type === 'public_domain') return false;
+			if (filters.values.source === 'public_domain' && isTranslated(b.source_type)) return false;
+			if (filters.values.source === 'translated' && !isTranslated(b.source_type)) return false;
+			const topic = filters.values.topic;
 			if (topic && !(b.topics ?? []).some((tc) => tc.slug === topic)) return false;
 			if (!q) return true;
 			return (
@@ -154,6 +165,12 @@
 	{/if}
 </svelte:head>
 
+<!-- The way out of an empty localized shelf: the English library, which always
+     has something in it. -->
+{#snippet readEnglish()}
+	<a href="/books" class="btn btn-primary inline-block">{t('books.readEnglish')}</a>
+{/snippet}
+
 <div class="page-col px-5 py-10">
 	<PageHeader title={t('nav.books')} tagline={t('books.tagline')} meta={books.length ? bookCounts : undefined} />
 	{#snippet bookCounts()}
@@ -166,21 +183,13 @@
 	<CatalogLanguageNudge kind="books" localizedCount={books.length} />
 
 	{#if loadError}
-		<!-- The API couldn't be reached (client-side navigation). -->
-		<div class="rounded-card border border-border bg-surface p-8 text-center">
-			<p class="text-body text-text">{t('books.loadError')}</p>
-			<button class="btn btn-primary mt-4" onclick={() => invalidateAll()}>
-				{t('error.tryAgain')}
-			</button>
-		</div>
+		<!-- The API couldn't be reached. -->
+		<EmptyState message={t('common.loadError')} onRetry />
 	{:else if books.length === 0}
-		<!-- The library is empty in this language. -->
-		<div class="rounded-card border border-border bg-surface p-8 text-center">
-			<p class="text-body text-text">{t('books.noneInLanguage')}</p>
-			{#if !isEnglish}
-				<a href="/books" class="btn btn-primary mt-4 inline-block">{t('books.readEnglish')}</a>
-			{/if}
-		</div>
+		<!-- The library is empty in this language. The way out only exists when
+		     there IS one: on /books itself, "read the English library" is where
+		     the reader already is. -->
+		<EmptyState message={t('books.noneInLanguage')} action={isEnglish ? undefined : readEnglish} />
 	{:else}
 		<!-- Continue reading -->
 		{#if continueBooks.length && !searching}
@@ -252,7 +261,7 @@
 		<!-- Controls: search · source · sort · group · view -->
 		<div class="filter-row mb-6">
 			<input
-				bind:value={queryText}
+				bind:value={filters.values.q}
 				type="search"
 				class="filter-field grow"
 				placeholder={t('books.filterPlaceholder')}
@@ -263,9 +272,9 @@
 				<div class="seg">
 					{#each [['all', t('books.sourceAll')], ['public_domain', t('books.sourcePublic')], ['translated', t('books.sourceTranslated')]] as opt (opt[0])}
 						<button
-							class:active={source === opt[0]}
-							onclick={() => (source = opt[0] as Source)}
-							aria-pressed={source === opt[0]}>{opt[1]}</button
+							class:active={filters.values.source === opt[0]}
+							onclick={() => (filters.values.source = opt[0] as Source)}
+							aria-pressed={filters.values.source === opt[0]}>{opt[1]}</button
 						>
 					{/each}
 				</div>
@@ -317,23 +326,37 @@
 			<div class="mb-6 flex flex-wrap gap-1.5" aria-label={t('books.filterTopic')} role="group">
 				<button
 					class="chip"
-					class:active={topic === ''}
-					onclick={() => (topic = '')}
-					aria-pressed={topic === ''}
+					class:active={filters.values.topic === ''}
+					onclick={() => (filters.values.topic = '')}
+					aria-pressed={filters.values.topic === ''}
 				>
 					{t('books.topicAll')}
 				</button>
 				{#each allTopics as tc (tc.slug)}
 					<button
 						class="chip"
-						class:active={topic === tc.slug}
-						onclick={() => (topic = topic === tc.slug ? '' : tc.slug)}
-						aria-pressed={topic === tc.slug}
+						class:active={filters.values.topic === tc.slug}
+						onclick={() =>
+							(filters.values.topic = filters.values.topic === tc.slug ? '' : tc.slug)}
+						aria-pressed={filters.values.topic === tc.slug}
 					>
 						{tc.title}
 					</button>
 				{/each}
 			</div>
+		{/if}
+
+		<!-- What the filters have left. The shelf showed nothing here at all, so a
+		     query matching nine of fifty-nine books looked exactly like a library
+		     of nine. -->
+		{#if searching}
+			<FilterSummary
+				shown={filtered.length}
+				total={books.length}
+				template={t('books.showing')}
+				onClear={clearFilters}
+				class="mb-6"
+			/>
 		{/if}
 
 		<!-- Author quick-nav -->
@@ -361,7 +384,7 @@
 						<span class="text-small font-normal opacity-60">{g.books.length}</span>
 					</h2>
 					{#if view === 'grid'}
-						<div class="grid grid-cols-3 items-stretch gap-x-4 gap-y-6 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+						<div class="book-grid">
 							{#each g.books as book (book.slug)}
 								<BookCard {book} />
 							{/each}
@@ -376,7 +399,7 @@
 				</section>
 			{/each}
 		{:else if view === 'grid'}
-			<div class="grid grid-cols-3 items-stretch gap-x-4 gap-y-6 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+			<div class="book-grid">
 				{#each sorted as book (book.slug)}
 					<BookCard {book} showAuthor />
 				{/each}

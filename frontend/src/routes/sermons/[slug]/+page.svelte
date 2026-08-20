@@ -26,6 +26,7 @@
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Icon from '$lib/components/Icon.svelte';
+	import SourceBadge from '$lib/components/SourceBadge.svelte';
 
 	let { data } = $props();
 	const sermon = $derived(data.sermon as Sermon);
@@ -362,21 +363,10 @@
 		</div>
 	{/if}
 
-	{#if sermon.source_type === 'ai_unreviewed'}
-		<p
-			class="mb-8 inline-flex items-center gap-1.5 rounded-full border border-warning/40 bg-warning/10 px-3 py-1 text-small text-warning"
-		>
-			{t('book.aiUnreviewed')}
-		</p>
-	{:else if sermon.source_type === 'ai_reviewed'}
-		<p
-			class="mb-8 inline-flex items-center gap-1.5 rounded-full border border-border bg-surface-2 px-3 py-1 text-small text-muted"
-		>
-			{t('book.aiReviewed')}
-		</p>
-	{:else}
-		<div class="mb-8"></div>
-	{/if}
+	<!-- The gap is the stack's, not the badge's: SourceBadge renders nothing for a
+	     public-domain sermon, and asking the caller to re-test that just to supply
+	     a margin put the rule in two places. -->
+	<div class="mb-8"><SourceBadge sourceType={sermon.source_type} /></div>
 
 	<!-- "In brief": an AI-drafted TL;DR so a reader knows in ten seconds
 	     whether this sermon is the one they need right now. -->

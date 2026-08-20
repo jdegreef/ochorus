@@ -1,4 +1,5 @@
 import { listSermons } from '$lib/library';
+import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
 
@@ -147,11 +148,6 @@ import type { PageLoad } from './$types';
  * this is the Swahili edition, a different file entirely.
  */
 export const load: PageLoad = async () => {
-	// Tolerate a lagging/absent sermon endpoint at prerender time (see the
-	// [slug] entries generator) — render an empty list rather than fail the build.
-	try {
-		return { sermons: await listSermons(getLang()) };
-	} catch {
-		return { sermons: [] };
-	}
+	const { items, loadError } = await loadShelf(listSermons(getLang()));
+	return { sermons: items, loadError };
 };

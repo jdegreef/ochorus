@@ -1,14 +1,14 @@
 <script lang="ts">
-	import type { BookSummary } from '$lib/library';
+	import { isTranslated, type BookSummary } from '$lib/library';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { readingTime } from '$lib/reading';
 	import BookCover from './BookCover.svelte';
+	import SourceBadge from './SourceBadge.svelte';
 
 	let { book, showAuthor = true }: { book: BookSummary; showAuthor?: boolean } = $props();
 	const t = i18n.t;
 
-	const translated = $derived(book.source_type !== 'public_domain');
 	const chapters = $derived(
 		`${book.chapter_count} ${book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}`
 	);
@@ -25,12 +25,8 @@
 	<div class="min-w-0 flex-1">
 		<div class="flex items-center gap-2">
 			<span class="truncate text-body font-medium text-text">{book.title}</span>
-			{#if translated}
-				<span
-					class="eyebrow shrink-0 rounded-full border border-border px-1.5 py-0.5 text-muted"
-				>
-					{t('books.badgeTranslated')}
-				</span>
+			{#if isTranslated(book.source_type)}
+				<SourceBadge sourceType={book.source_type} variant="inline" />
 			{/if}
 		</div>
 		{#if showAuthor}

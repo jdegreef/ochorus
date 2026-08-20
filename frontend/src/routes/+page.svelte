@@ -15,6 +15,7 @@
 	import RecommendedNext from '$lib/components/RecommendedNext.svelte';
 	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
+	import SectionHeader from '$lib/components/SectionHeader.svelte';
 
 	let { data } = $props();
 	const featured = $derived<BookSummary[]>(data.featured);
@@ -160,11 +161,16 @@
      page around the personal blocks that still work. -->
 {#if featured.length}
 	<section class="page-col px-5 pt-14">
-		<div class="mb-6 flex items-end justify-between">
-			<h2 class="text-h1">{t('home.discoverNext')}</h2>
-			<a href={localizeHref('/books')} class="text-small font-semibold text-accent">{t('home.allBooks')} →</a>
-		</div>
-		<div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-6">
+		<SectionHeader
+			title={t('home.discoverNext')}
+			href={localizeHref('/books')}
+			linkText={t('home.allBooks')}
+		/>
+		<!-- Its own ramp rather than .book-grid: this strip is exactly six books,
+		     and .book-grid's open-shelf ramp passes through five columns, which
+		     would leave a lone sixth card on a second row. 2 / 3 / 6 all divide
+		     six. -->
+		<div class="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 lg:grid-cols-6">
 			{#each featured as book (book.slug)}
 				<BookCard {book} showAuthor />
 			{/each}
@@ -182,12 +188,11 @@
 <!-- Browse by topic -->
 {#if topics.length}
 	<section class="page-col px-5 pt-14">
-		<div class="mb-6 flex items-end justify-between">
-			<h2 class="text-h1">{t('home.browseTopic')}</h2>
-			<a href={localizeHref('/topics')} class="text-small font-semibold text-accent"
-				>{t('home.allTopics')} →</a
-			>
-		</div>
+		<SectionHeader
+			title={t('home.browseTopic')}
+			href={localizeHref('/topics')}
+			linkText={t('home.allTopics')}
+		/>
 		<div class="flex flex-wrap gap-2.5">
 			{#each topics as topic (topic.slug)}
 				<a
@@ -217,10 +222,11 @@
      "Discover your next book" above. -->
 {#if authors.length}
 	<section class="page-col px-5 pt-14 pb-20">
-		<div class="mb-6 flex items-end justify-between">
-			<h2 class="text-h1">{t('home.authorsTitle')}</h2>
-			<a href={localizeHref('/biographies')} class="text-small font-semibold text-accent">{t('home.allBiographies')} →</a>
-		</div>
+		<SectionHeader
+			title={t('home.authorsTitle')}
+			href={localizeHref('/biographies')}
+			linkText={t('home.allBiographies')}
+		/>
 		<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
 			{#each authors as author (author.slug)}
 				<a

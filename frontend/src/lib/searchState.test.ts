@@ -86,11 +86,16 @@ describe('writing a search view into the URL', () => {
 		expect(write({ q: 'grace', type: 'all', sort: 'relevance', scope: '' })).toBe('?q=grace');
 	});
 
-	it('leaves unrelated parameters alone', () => {
+	it('leaves unrelated parameters alone, and the caller\'s URL untouched', () => {
 		const url = new URL('https://ochorus.com/search?utm_source=x&type=book');
-		writeSearchState(url, { q: 'grace', type: 'all', sort: 'relevance', scope: '' });
-		expect(url.searchParams.get('utm_source')).toBe('x');
-		expect(url.searchParams.has('type')).toBe(false);
+		const out = writeSearchState(url, { q: 'grace', type: 'all', sort: 'relevance', scope: '' });
+		// A campaign tag is not ours to drop; a stale facet is.
+		expect(out.searchParams.get('utm_source')).toBe('x');
+		expect(out.searchParams.has('type')).toBe(false);
+		// The result is a copy: writing a view must not mutate a URL the caller
+		// still holds (this used to edit it in place, which only worked because
+		// every caller happened to pass `new URL(...)`).
+		expect(url.searchParams.get('type')).toBe('book');
 	});
 });
 

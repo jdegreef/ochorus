@@ -5,6 +5,8 @@
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import SectionHeader from '$lib/components/SectionHeader.svelte';
+	import ProgressBar from '$lib/components/ProgressBar.svelte';
 
 	/**
 	 * Cross-plan progress overview: every plan the reader has started, each with
@@ -63,12 +65,11 @@
 
 {#if rows.length >= 2}
 	<section class="page-col px-5 pt-14">
-		<div class="mb-4 flex items-end justify-between">
-			<h2 class="text-h1">{t('home.yourPlans')}</h2>
-			<a href={localizeHref('/plans')} class="text-small font-semibold text-accent"
-				>{t('plans.all')} →</a
-			>
-		</div>
+		<SectionHeader
+			title={t('home.yourPlans')}
+			href={localizeHref('/plans')}
+			linkText={t('plans.all')}
+		/>
 		<ul class="grid gap-3 sm:grid-cols-2">
 			{#each rows as r (r.slug)}
 				<li>
@@ -86,8 +87,11 @@
 								{/if}
 							</span>
 						</div>
-						<div class="mt-2.5 h-1.5 overflow-hidden rounded-full bg-surface-2">
-							<div class="h-full rounded-full bg-accent" style="width: {r.pct}%"></div>
+						<div class="mt-2.5">
+							<ProgressBar
+								percent={r.pct}
+								label="{r.title}: {r.done} {t('plans.of')} {r.total} {t('plans.days')}"
+							/>
 						</div>
 						<p class="mt-1.5 text-small text-muted">
 							{r.done} {t('plans.of')} {r.total} {t('plans.days')}
