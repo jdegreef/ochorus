@@ -150,6 +150,9 @@
 	let q = $state('');
 	let hits = $state<SearchHit[]>([]);
 	let loading = $state(false);
+	/** Measured height of the pinned search box — the rail and the group
+	    anchors below both clear it via `--pinned-offset`. */
+	let searchBarH = $state(0);
 	let searchError = $state(false);
 	let ran = $state('');
 	let suggestion = $state('');
@@ -249,8 +252,12 @@
 	// column that sits in it, and the input's matching indent all have to agree
 	// or the layout comes apart in a way no single class reveals.
 	const RAIL_GRID = 'lg:grid lg:grid-cols-[12rem_1fr] lg:items-start lg:gap-8';
+	// `lg:top-[var(--pinned-offset,6rem)]` rather than a fixed `lg:top-24`: the
+	// search box above is itself pinned under the sticky app nav, and its height
+	// changes with the locale and the viewport, so a constant put the rail's
+	// first chips underneath it.
 	const RAIL_COL =
-		'mb-5 flex flex-wrap items-center gap-2 lg:sticky lg:top-24 lg:mb-0 lg:flex-col lg:items-stretch lg:self-start';
+		'mb-5 flex flex-wrap items-center gap-2 lg:sticky lg:top-[var(--pinned-offset,6rem)] lg:mb-0 lg:flex-col lg:items-stretch lg:self-start';
 
 	/** How many matches of `type` exist — the server's count, else what we hold. */
 	function totalFor(type: SearchType, loaded: number): number {
@@ -922,7 +929,10 @@
      and become a rail, so results get the full column and the filters stop
      wrapping onto three lines. Below lg nothing changes — the single column is
      right on a phone, and this page is read on phones. -->
-<div class="page-col px-5 py-10">
+<!-- `--pinned-offset`: the sticky app nav plus this page's own pinned search
+     box — the first pixel below everything that floats. The facet rail pins to
+     it and the per-type anchors scroll to it. -->
+<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {searchBarH}px)">
 	<PageHeader title={t('search.title')} tagline={t('search.tagline')} />
 
 	<!-- Sticky: a long result list used to scroll the query out of sight, so
@@ -932,6 +942,7 @@
 	     full width while the results began 12rem in behind the rail, so the eye
 	     had two left edges to track down a single column of content. -->
 	<div
+		bind:clientHeight={searchBarH}
 		class="sticky z-20 -mx-5 bg-bg px-5 pb-3 pt-2" style="top: var(--appnav-h, 0px)"
 		class:lg:ps-[15.25rem]={hasFacets}
 		role="search"
@@ -1211,7 +1222,10 @@
 				{#each shownGroups as g (g.type)}
 					{@const total = totalFor(g.type, g.rows.length)}
 					{@const more = total - g.rows.length}
-					<section id="group-{g.type}" style="scroll-margin-top:5rem">
+					<section
+						id="group-{g.type}"
+						style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"
+					>
 						<h2
 							class="mb-2 flex items-baseline gap-2 section-label"
 						>

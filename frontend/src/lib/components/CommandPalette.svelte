@@ -9,14 +9,6 @@
 
 	const t = i18n.t;
 
-	const open = {
-		get value() {
-			return paletteUi.open;
-		},
-		set value(v: boolean) {
-			paletteUi.open = v;
-		}
-	};
 	let q = $state('');
 	let hits = $state<SearchHit[]>([]);
 	let loading = $state(false);
@@ -97,10 +89,11 @@
 		if (activeIndex >= items.length) activeIndex = 0;
 	});
 	$effect(() => {
-		if (open && activeKey) document.getElementById(`cmd-${activeKey}`)?.scrollIntoView({ block: 'nearest' });
+		if (paletteUi.open && activeKey)
+			document.getElementById(`cmd-${activeKey}`)?.scrollIntoView({ block: 'nearest' });
 	});
 	$effect(() => {
-		if (open) inputEl?.focus();
+		if (paletteUi.open) inputEl?.focus();
 	});
 
 	function runSearch() {
@@ -126,14 +119,23 @@
 		runSearch();
 	}
 
-	function openPalette() {
-		open.value = true;
-		q = '';
-		hits = [];
-		activeIndex = 0;
-	}
+	// The reset reacts to the palette OPENING rather than living in one caller's
+	// handler: the flag is shared state now, so ⌘K is no longer the only way in
+	// — the nav's search button flips it too, and reopening from there used to
+	// show the previous query and its (possibly other-locale) hits.
+	$effect(() => {
+		if (paletteUi.open) {
+			// An in-flight debounce from the previous session would land on the
+			// fresh palette and repopulate it with the old query's hits.
+			clearTimeout(timer);
+			q = '';
+			hits = [];
+			activeIndex = 0;
+		}
+	});
+
 	function close() {
-		open.value = false;
+		paletteUi.close();
 	}
 	function go(href: string) {
 		goto(localizeHref(href));
@@ -143,8 +145,8 @@
 	function onWindowKeydown(e: KeyboardEvent) {
 		if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
 			e.preventDefault();
-			open.value ? close() : openPalette();
-		} else if (e.key === 'Escape' && open.value) {
+			paletteUi.toggle();
+		} else if (e.key === 'Escape' && paletteUi.open) {
 			close();
 		}
 	}
@@ -167,7 +169,7 @@
 
 <svelte:window onkeydown={onWindowKeydown} />
 
-{#if open.value}
+{#if paletteUi.open}
 	<!-- Backdrop. Click closes; keyboard dismissal is the global Escape handler. -->
 	<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
 	<div
