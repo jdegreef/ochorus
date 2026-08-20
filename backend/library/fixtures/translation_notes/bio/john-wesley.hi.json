@@ -1,0 +1,25 @@
+{
+  "kind": "bio",
+  "slug": "john-wesley",
+  "language": "hi",
+  "job_issue": 705,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Zechariah 3:2b",
+      "status": "mined",
+      "source_file": "IRV (irvhin) Bible text",
+      "block_index": 4
+    },
+    {
+      "reference": "Romans 8:31b",
+      "status": "self_rendered",
+      "block_index": 52
+    },
+    {
+      "reference": "2 Samuel 6:22a",
+      "status": "self_rendered",
+      "block_index": 29
+    }
+  ]
+}
