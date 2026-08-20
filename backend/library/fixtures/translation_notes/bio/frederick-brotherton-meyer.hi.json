@@ -1,0 +1,13 @@
+{
+ "kind": "bio",
+ "slug": "frederick-brotherton-meyer",
+ "language": "hi",
+ "job_issue": 706,
+ "pull_request": 1002,
+ "references": [],
+ "note": [
+  "The English bio quotes no scripture verbatim and carries no Book C:V citations; every quotation in it is Meyer's own words (his prayers, sayings, and his final note), so there is nothing to mine or verify against the IRV.",
+  "One scriptural allusion: Meyer's aphorism 'the manna falls only where the cloud rests' (Exodus 16 / Numbers 9:17). Rendered with the IRV's terms (मन्ना, बादल) as the author's own phrase, unvocalised, not as a quotation.",
+  "Take Root API egress-blocked from this session (proxy 403); the GitHub IRV USX mirror was reachable and was the terminology reference. No verses were fetched because none are quoted."
+ ]
+}
