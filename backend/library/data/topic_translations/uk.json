@@ -1,0 +1,99 @@
+{
+ "_note": [
+  "Ukrainian shelf prose. Scripture is Kulish (1905), the edition language_seed.py names for uk, taken verbatim from the ebible mirror — never recalled. Where an excerpt is shorter than the whole verse it is a CONTIGUOUS span, asserted as a substring of the full Kulish verse at build time.",
+  "Six shelves carry a verse, matching the six that lg carries and the same references; ar/es/pt/sw carry none, so a verse is optional and its absence is not a gap.",
+  "Names follow the shipped uk bios: Вайтфілд, Веслі, Сперджен, Бакстер, Буньян. Shelf wording echoes the uk book titles it stands over — «внутрішня кімната» is the title the-inner-chamber.uk ships under."
+ ],
+ "prayer": {
+  "title": "Про молитву",
+  "description": "Навчитися молитися — і не переставати. Класичні книги про внутрішнє життя молитви, від внутрішньої кімнати до звитяжного заступництва.",
+  "scripture": {
+   "reference": "Еремії 33:3",
+   "text": "Покликни до мене, й я обізвуся, та й обявлю тобі велике й неописане, чого досї не знав єси."
+  },
+  "note": [
+   "«внутрішня кімната» deliberately echoes the uk title of the-inner-chamber, the first book on this shelf. «заступництво» is the glossary's word for intercession."
+  ]
+ },
+ "holy-spirit": {
+  "title": "Святий Дух",
+  "description": "Хрещення Духом, Його вселення й дія — обіцяна сила для християнського життя.",
+  "scripture": {
+   "reference": "Захарії 4:6",
+   "text": "Нї військом, нї силою вашою, тілько моїм духом, говорить Господь сил небесних."
+  },
+  "note": [
+   "Kulish's Zech 4:6 opens with a long preamble naming Zerubbabel; the excerpt is the contiguous tail, which is the clause the shelf is quoting."
+  ]
+ },
+ "deeper-life": {
+  "title": "Глибше життя",
+  "description": "Святість, віддання себе й повне життя, сховане з Христом — книги для тих, хто хоче йти глибше.",
+  "scripture": {
+   "reference": "Колосян 3:3",
+   "text": "Умерли бо ви, і життє ваше поховане з Христом у Бозї."
+  },
+  "note": [
+   "«віддання себе» is the glossary's word for surrender. The description says «сховане» (modern prose) while Kulish's own Col 3:3 reads «поховане» — the verse keeps its wording, the prose keeps modern orthography, which is the split this language uses throughout."
+  ]
+ },
+ "grace-and-comfort": {
+  "title": "Благодать і втіха",
+  "description": "Невичерпна Божа благодать і Його втіха в кожному випробуванні — добра звістка для втомлених.",
+  "scripture": {
+   "reference": "2 Коринтян 12:9",
+   "text": "Доволї з тебе благодати моєї, сила бо моя в немощі звершується."
+  }
+ },
+ "revival-and-missions": {
+  "title": "Пробудження і місії",
+  "description": "Життя, віддані за Євангеліє, і часи пробудження — пожива для палкого серця.",
+  "scripture": {
+   "reference": "Аввакума 3:2",
+   "text": "Господи! доверши твоє дїло посеред лїт (нашої недолї), посеред лїт обяви його, спогадай в гнїві про милосердє."
+  },
+  "note": [
+   "EDITORIAL: Kulish's Habakkuk 3:2 reads «доверши твоє дїло» — *complete* thy work, not *revive* it, which is the sense the English shelf name leans on. The verse ships as Kulish has it and the divergence is recorded here rather than patched; the shelf title carries the revival sense in the prose."
+  ]
+ },
+ "faith-and-guidance": {
+  "title": "Віра і провід",
+  "description": "Довіряти Богові в щоденному хлібі, у провідництві та в кожній обітниці — ходити вірою, а не видінням.",
+  "scripture": {
+   "reference": "Приповісток 3:6",
+   "text": "У всїх стежках твоїх думай про його, а він простувати ме шляхи твої."
+  },
+  "note": [
+   "«вірою, а не видінням» echoes Kulish's 2 Cor 5:7 («вірою, а не видїннєм») in modern prose orthography."
+  ]
+ },
+ "the-gospel-call": {
+  "title": "Поклик Євангелія",
+  "description": "Найдавніше запрошення з усіх — прийди, покайся, увіруй. Проповідники, що благають ненавернених, і свідчення благодаті, знайденої першим із грішників.",
+  "note": [
+   "«першим із грішників» echoes Kulish's 1 Tim 1:15 («між котрими я первий»), which is what Bunyan's Grace Abounding is titled after."
+  ]
+ },
+ "enduring-classics": {
+  "title": "Неперехідна класика",
+  "description": "Книги, що століттями йшли поруч із подорожніми — сповідь Августина, сон Буньяна, поради Томи Кемпійського — давні дороги, і досі добрі.",
+  "note": [
+   "«давні дороги» echoes Kulish's Jer 6:16. Буньян follows the spelling in the shipped uk bios; Августин and Тома Кемпійський are the standard Ukrainian forms (neither author has a uk bio yet).",
+   "No book on this shelf has a Ukrainian edition yet, so the shelf will render empty until one ships. That is why the entry still has to exist: without it the shelf is HIDDEN rather than empty, and the coverage test fails."
+  ]
+ },
+ "the-way-of-holiness": {
+  "title": "Дорога святості",
+  "description": "Відділені для Бога — досліджені заповіді, чесно шукана досконалість і випробувані сердечні почуття, що виявились правдивими.",
+  "note": [
+   "godliness.uk («Побожність») sits on this shelf; the description avoids «побожність» so the shelf name and the book name stay distinguishable."
+  ]
+ },
+ "the-preached-word": {
+  "title": "Проповідане слово",
+  "description": "Велика проповідь на сторінці — Вайтфілд і Веслі на повний голос, Сперджен серед своїх хліборобів — і настанова Бакстера кожному пастирю душ.",
+  "note": [
+   "All four names are spelled as the shipped uk bios spell them (Вайтфілд 9, Веслі 36, Сперджен 18, Бакстер 1)."
+  ]
+ }
+}
