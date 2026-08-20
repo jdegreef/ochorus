@@ -1,3 +1,4 @@
+// prerender refresh 2026-08-20: hi bios: jonathan-edwards, john-wesley, frederick-brotherton-meyer (jobs #704/#705/#706, PRs #1005/#1003/#1002)
 import { getAuthorWithLang, listAuthors, listBooks } from '$lib/library';
 import { getLang } from '$lib/lang.svelte';
 import { orNotFound } from '$lib/loadHelpers';

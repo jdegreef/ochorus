@@ -1,3 +1,4 @@
+// prerender refresh 2026-08-20: himself.hi (job #700, PR #1004)
 import { listSermons } from '$lib/library';
 import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
