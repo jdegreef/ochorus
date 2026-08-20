@@ -12,6 +12,15 @@ import type { EntryGenerator, PageLoad } from './$types';
 // actually sees them.
 export const trailingSlash = 'always';
 
+// Prerender refresh 2026-08-19 (queue jobs #799 #800 #801 #802 #847 #848 #894
+// #895 #945 #946 #947 #948, PR #993): the Ukrainian shelf prose — all ten
+// topics at once, because topic prose has no English fallback and a partial
+// file leaves shelves HIDDEN rather than untranslated. Before this, every
+// /uk/topics/<slug> page 404'd; they now render, so the built pages have to be
+// re-baked. uk seeds status=draft, so they stay out of the sitemap until the
+// language is switched live — which is the point of touching this now rather
+// than at launch.
+//
 // Prerender one page per topic — the slug list comes from the API at build
 // time. The topics endpoint may lag on a fresh deploy (api + web build
 // together), so degrade to no topic pages rather than fail the whole build;
