@@ -45,7 +45,7 @@
 </script>
 
 {#if pick}
-	<section class={embedded ? '' : 'mx-auto max-w-5xl px-5 pt-14'}>
+	<section class={embedded ? '' : 'page-col px-5 pt-14'}>
 		<a
 			href={localizeHref(`/sermons/${pick.slug}`)}
 			class="block rounded-card border border-border bg-surface-2 px-6 py-6 transition-colors hover:bg-surface hover:no-underline sm:px-8"

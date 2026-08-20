@@ -107,7 +107,7 @@
 </script>
 
 {#if items.length}
-	<section class="mx-auto max-w-5xl px-5 pt-14">
+	<section class="page-col px-5 pt-14">
 		<h2 class="text-h1 mb-6">{t('continue.title')}</h2>
 		<div class="grid gap-4 sm:grid-cols-2" class:lg:grid-cols-4={limit >= 4}>
 			{#each items as item (item.key)}
