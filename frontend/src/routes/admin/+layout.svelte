@@ -30,8 +30,12 @@
 <div class="md:flex md:items-start">
 	<!-- Persistent admin navigation: a left rail on desktop, a scrollable pill row
 	     on mobile. Sits inside the site chrome (same as the admin pages already do). -->
+	<!-- Pinned below the app nav, not at viewport 0: the nav became sticky at
+	     z-40, so `top-0` slid the rail's "Admin" header and first link behind it
+	     — and `max-h-screen` with its own scroll meant no amount of scrolling
+	     brought them back. -->
 	<aside
-		class="border-b border-border bg-surface md:sticky md:top-0 md:max-h-screen md:w-56 md:shrink-0 md:self-start md:overflow-y-auto md:border-b-0 md:border-r"
+		class="border-b border-border bg-surface md:sticky md:top-[var(--appnav-h,0px)] md:max-h-[calc(100vh_-_var(--appnav-h,0px))] md:w-56 md:shrink-0 md:self-start md:overflow-y-auto md:border-b-0 md:border-r"
 	>
 		<div class="px-5 pt-5">
 			<a href="/admin" class="inline-block hover:no-underline">
