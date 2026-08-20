@@ -10,6 +10,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import Emblem from '$lib/components/Emblem.svelte';
+	import EmptyState from '$lib/components/EmptyState.svelte';
 	import { topicMeta } from '$lib/emblems';
 
 	let { data } = $props();
@@ -74,7 +75,7 @@
 	<header class="hero mb-8 mt-4">
 		<span class="badge emblem-chip"><Emblem name={meta.emblem} /></span>
 		<div class="min-w-0">
-			<h1 class="text-display mb-2">{topic.title}</h1>
+			<h1 class="text-h1 mb-2">{topic.title}</h1>
 			{#if topic.description}
 				<!-- No measure cap: the hero is already bounded by the page column, and
 				     capping the text at 36rem inside a 64rem card left the whole header
@@ -110,13 +111,13 @@
 	</header>
 
 	{#if topic.books.length === 0 && topic.sermons.length === 0}
-		<p class="text-small text-muted">{t('topics.empty')}</p>
+		<EmptyState message={t('topics.empty')} />
 	{/if}
 
 	{#if topic.books.length}
 		<section class="mb-10">
 			<h2 class="section-label">{t('topics.books')}</h2>
-			<div class="grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+			<div class="book-grid">
 				{#each topic.books as book (book.slug)}
 					<BookCard {book} showAuthor />
 				{/each}

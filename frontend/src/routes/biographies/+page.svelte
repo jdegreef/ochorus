@@ -11,6 +11,9 @@
 	import { ERAS, eraOf, type EraId } from '$lib/eras';
 	import AuthorBioCard from '$lib/components/AuthorBioCard.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
+	import { urlFilters } from '$lib/urlFilters.svelte';
+	import EmptyState from '$lib/components/EmptyState.svelte';
+	import FilterSummary from '$lib/components/FilterSummary.svelte';
 
 	const t = i18n.t;
 
@@ -36,67 +39,24 @@
 	const SORT_VALUES = ['name', 'era', 'books'] as const;
 	type Filter = (typeof FILTER_VALUES)[number];
 	type Sort = (typeof SORT_VALUES)[number];
-	const coerce = <T extends string>(v: string | null, allowed: readonly T[], dflt: T): T =>
-		allowed.includes((v ?? '') as T) ? ((v ?? '') as T) : dflt;
-
 	// The controls are URL-addressable (?q=&filter=&sort=&full=1) so a filtered
 	// view is shareable, survives a reload, and comes back with the Back button.
-	// State starts at defaults and is hydrated from the URL on mount by the
-	// reader $effect below (client-only), then written on change (syncUrl).
-	// We must NOT read $page.url.searchParams here: SvelteKit forbids query-param
-	// access while prerendering this page, and the prerendered HTML must not
-	// depend on the query string anyway (it's served for the bare /biographies).
-	// `urlState` is the loop guard shared by writer and reader — same pattern as
-	// /search.
-	let queryText = $state('');
-	let filter = $state<Filter>('all');
-	let sort = $state<Sort>('name');
-	let fullBioOnly = $state(false);
-
-	const snapshot = (q: string, f: Filter, s: Sort, full: boolean) =>
-		`${q.trim()}|${f}|${s}|${full ? '1' : '0'}`;
-	let urlState = snapshot('', 'all', 'name', false);
-
-	function syncUrl() {
-		const key = snapshot(queryText, filter, sort, fullBioOnly);
-		if (key === urlState) return;
-		urlState = key;
-		const url = new URL($page.url);
-		// Omit defaults so a pristine view stays a clean /biographies URL.
-		const put = (k: string, v: string) =>
-			v ? url.searchParams.set(k, v) : url.searchParams.delete(k);
-		put('q', queryText.trim());
-		put('filter', filter === 'all' ? '' : filter);
-		put('sort', sort === 'name' ? '' : sort);
-		put('full', fullBioOnly ? '1' : '');
-		goto(url, { replaceState: true, keepFocus: true, noScroll: true });
-	}
-
-	// URL → state, for shared links and Back/Forward. The urlState guard makes
-	// our own syncUrl writes fall straight through (no writer/reader loop).
-	$effect(() => {
-		const p = $page.url.searchParams;
-		const next = {
-			q: p.get('q') ?? '',
-			f: coerce(p.get('filter'), FILTER_VALUES, 'all'),
-			s: coerce(p.get('sort'), SORT_VALUES, 'name'),
-			full: p.get('full') === '1'
-		};
-		const key = snapshot(next.q, next.f, next.s, next.full);
-		if (key === urlState) return;
-		urlState = key;
-		queryText = next.q;
-		filter = next.f;
-		sort = next.s;
-		fullBioOnly = next.full;
+	// Encoding, loop guard, debounce and prerender safety all live in
+	// $lib/urlFilters — shared with the Books shelf, which had a hand-written
+	// copy of every one of them.
+	//
+	// `full` is a string because the URL is: '1' or ''. Keeping the flag in that
+	// shape rather than laundering a boolean in and out is one fewer conversion
+	// to get backwards.
+	const filters = urlFilters({
+		defaults: { q: '', filter: 'all' as Filter, sort: 'name' as Sort, full: '' },
+		allowed: { filter: FILTER_VALUES, sort: SORT_VALUES, full: ['1'] },
+		url: () => $page.url
 	});
 
 	function clearFilters() {
 		// Clears the search + filters but keeps the chosen sort order.
-		queryText = '';
-		filter = 'all';
-		fullBioOnly = false;
-		syncUrl();
+		filters.reset({ sort: filters.values.sort });
 	}
 
 	// "In the library" means "has something to read here" — including writers
@@ -104,11 +64,11 @@
 	const worksCount = (a: AuthorBio) => a.book_count + a.sermon_count;
 
 	const filtered = $derived.by(() => {
-		const q = queryText.trim().toLowerCase();
+		const q = filters.values.q.trim().toLowerCase();
 		return authors.filter((a) => {
-			if (filter === 'library' && worksCount(a) === 0) return false;
-			if (filter === 'bio' && worksCount(a) > 0) return false;
-			if (fullBioOnly && !a.has_long_bio) return false;
+			if (filters.values.filter === 'library' && worksCount(a) === 0) return false;
+			if (filters.values.filter === 'bio' && worksCount(a) > 0) return false;
+			if (filters.values.full === '1' && !a.has_long_bio) return false;
 			if (!q) return true;
 			return a.name.toLowerCase().includes(q) || (a.bio ?? '').toLowerCase().includes(q);
 		});
@@ -123,11 +83,13 @@
 	let controlsH = $state(0);
 	let filtersOpen = $state(false);
 	const activeCount = $derived(
-		(queryText.trim() !== '' ? 1 : 0) + (filter !== 'all' ? 1 : 0) + (fullBioOnly ? 1 : 0)
+		(filters.values.q.trim() !== '' ? 1 : 0) +
+		(filters.values.filter !== 'all' ? 1 : 0) +
+		(filters.values.full ? 1 : 0)
 	);
 
 	// Count summary + whether any narrowing is active (sort doesn't count).
-	const isFiltered = $derived(queryText.trim() !== '' || filter !== 'all' || fullBioOnly);
+	const isFiltered = $derived(filters.active);
 
 	/** Reveal the page holding `slug`, then scroll to it once it has painted. */
 	function jumpTo(slug: string) {
@@ -146,7 +108,7 @@
 	const AZ = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 	const firstByLetter = $derived.by(() => {
 		const m = new Map<string, string>();
-		if (sort !== 'name') return m;
+		if (filters.values.sort !== 'name') return m;
 		for (const a of sorted) {
 			const c = a.name.trim()[0]?.toUpperCase() ?? '';
 			if (c >= 'A' && c <= 'Z' && !m.has(c)) m.set(c, a.slug);
@@ -156,7 +118,7 @@
 
 	const sorted = $derived.by(() => {
 		const arr = [...filtered];
-		switch (sort) {
+		switch (filters.values.sort) {
 			case 'era':
 				// Earliest-born first; unknown birth years sink to the end.
 				return arr.sort(
@@ -181,7 +143,10 @@
 	const remaining = $derived(sorted.length - paged.length);
 	// Narrowing the list must not strand you on page 3 of 1.
 	$effect(() => {
-		void queryText; void filter; void fullBioOnly; void sort;
+		void filters.values.q;
+		void filters.values.filter;
+		void filters.values.full;
+		void filters.values.sort;
 		pageNum = 1;
 	});
 
@@ -286,6 +251,10 @@
 	pins or scrolls into view below reads it, so there is one number to be right
 	rather than four hard-coded ones drifting apart.
 -->
+{#snippet clearFiltersAction()}
+	<button class="btn btn-ghost" onclick={clearFilters}>{t('common.clearFilters')}</button>
+{/snippet}
+
 <div class="page-col px-5 py-8" style="--pinned-offset: calc(var(--appnav-h, 0px) + {controlsH}px)">
 	<!-- No visible breadcrumb: this is a top-level destination already marked
 	     active in the nav, and it was the only one of the six browse pages
@@ -308,8 +277,7 @@
 	<!-- Controls: search · filter · sort -->
 	<div class="filter-row">
 		<input
-			bind:value={queryText}
-			oninput={syncUrl}
+			bind:value={filters.values.q}
 			type="search"
 			class="filter-field grow"
 			placeholder={t('bios.filterPlaceholder')}
@@ -334,9 +302,9 @@
 		<div class="seg sm:flex" class:hidden={!filtersOpen} class:flex={filtersOpen}>
 			{#each FILTERS as opt (opt.v)}
 				<button
-					class:active={filter === opt.v}
-					onclick={() => { filter = opt.v; syncUrl(); }}
-					aria-pressed={filter === opt.v}>{t(opt.k)}</button
+					class:active={filters.values.filter === opt.v}
+					onclick={() => (filters.values.filter = opt.v)}
+					aria-pressed={filters.values.filter === opt.v}>{t(opt.k)}</button
 				>
 			{/each}
 		</div>
@@ -346,14 +314,13 @@
 		<button
 			class="chip sm:block"
 			class:hidden={!filtersOpen}
-			class:active={fullBioOnly}
-			onclick={() => { fullBioOnly = !fullBioOnly; syncUrl(); }}
-			aria-pressed={fullBioOnly}>{t('bios.fullLife')}</button
+			class:active={filters.values.full === '1'}
+			onclick={() => (filters.values.full = filters.values.full ? '' : '1')}
+			aria-pressed={filters.values.full === '1'}>{t('bios.fullLife')}</button
 		>
 
 		<select
-			bind:value={sort}
-			onchange={syncUrl}
+			bind:value={filters.values.sort}
 			class="field sm:block"
 			class:hidden={!filtersOpen}
 			aria-label={t('bios.sort')}
@@ -364,22 +331,20 @@
 		</select>
 	</div>
 
-	<!-- Result count + a one-tap escape hatch when a filter is narrowing the list. -->
-	<div class="mt-1.5 items-center gap-2 text-small text-muted sm:flex" class:hidden={!filtersOpen} class:flex={filtersOpen}>
-		<span
-			>{t('bios.showing')
-				.replace('%shown%', String(sorted.length))
-				.replace('%total%', String(authors.length))}</span
-		>
-		{#if isFiltered}
-			<button onclick={clearFilters} class="font-semibold text-accent hover:underline"
-				>{t('bios.clearFilters')}</button
-			>
-		{/if}
-	</div>
+	<!-- Result count + a one-tap escape hatch when a filter is narrowing the list.
+	     Positioned by this bar rather than by the component's own default: it
+	     lives INSIDE the pinned controls, and follows them open and shut on a
+	     phone. -->
+	<FilterSummary
+		shown={sorted.length}
+		total={authors.length}
+		template={t('bios.showing')}
+		onClear={isFiltered ? clearFilters : undefined}
+		class="mt-1.5 {filtersOpen ? 'flex' : 'hidden'} sm:flex"
+	/>
 
 	<!-- A–Z rail: jump to the first writer under each initial (name sort only). -->
-	{#if sort === 'name' && sorted.length > 1}
+	{#if filters.values.sort === 'name' && sorted.length > 1}
 		<nav class="mt-1.5 hidden flex-wrap gap-x-1 gap-y-0.5 text-small sm:flex" aria-label={t('bios.jumpAz')}>
 			{#each AZ as letter (letter)}
 				{#if firstByLetter.has(letter)}
@@ -401,17 +366,8 @@
 	</div>
 
 	{#if sorted.length === 0}
-		<div class="py-16 text-center">
-			<p class="text-body text-muted">{t('bios.noResults')}</p>
-			{#if isFiltered}
-				<button
-					onclick={clearFilters}
-					class="mt-3 text-small font-semibold text-accent hover:underline"
-					>{t('bios.clearFilters')}</button
-				>
-			{/if}
-		</div>
-	{:else if sort === 'era'}
+		<EmptyState message={t('bios.noResults')} action={isFiltered ? clearFiltersAction : undefined} />
+	{:else if filters.values.sort === 'era'}
 		{#if eraGroups.length > 1}
 			<!-- A slim timeline: each era is a node on a baseline, its name + year
 			     range below, jumping to that section. Scrolls horizontally when the
@@ -480,10 +436,7 @@
 		</div>
 		{#if remaining > 0}
 			<div class="mt-8 flex flex-col items-center gap-2">
-				<button
-					class="rounded-sm border border-border px-4 py-2 text-small font-semibold text-accent hover:border-accent"
-					onclick={() => (pageNum += 1)}
-				>
+				<button class="btn btn-ghost" onclick={() => (pageNum += 1)}>
 					{t('bios.showMore').replace('%n%', String(Math.min(PER_PAGE, remaining)))}
 				</button>
 				<p class="text-small text-muted">

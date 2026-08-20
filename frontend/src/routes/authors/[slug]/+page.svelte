@@ -21,6 +21,8 @@
 	import LifeTimeline from '$lib/components/LifeTimeline.svelte';
 	import Reader from '$lib/components/Reader.svelte';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
+	import SermonCard from '$lib/components/SermonCard.svelte';
+	import EmptyState from '$lib/components/EmptyState.svelte';
 	import { onMount } from 'svelte';
 
 	const t = i18n.t;
@@ -340,6 +342,8 @@
 				{t('author.booksBy')} {author.name}
 				<span class="text-small font-normal text-muted">({author.books.length})</span>
 			</h2>
+			<!-- Wider cards than .book-grid: one writer's shelf is a handful of
+			     books, and six-across would set them as thumbnails. -->
 			<div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
 				{#each author.books as book (book.slug)}
 					<BookCard {book} />
@@ -355,31 +359,19 @@
 				{t('author.sermonsBy')} {author.name}
 				<span class="text-small font-normal text-muted">({author.sermons.length})</span>
 			</h2>
-			<ul class="divide-y divide-border">
+			<!-- The shared card, not a hand-rolled list: this one used to compute
+			     its own length with Math.round(word_count / 200), which could
+			     disagree with the figure on the sermon's own page. -->
+			<div class="grid gap-3 sm:grid-cols-2">
 				{#each author.sermons as sermon (sermon.slug)}
-					<li>
-						<a
-							href={localizeHref(`/sermons/${sermon.slug}`)}
-							class="flex items-baseline justify-between gap-3 py-3 hover:no-underline"
-						>
-							<span class="flex-1">
-								<span class="block text-body font-medium text-text">{sermon.title}</span>
-								{#if sermon.scripture_ref}
-									<span class="text-small text-accent">{sermon.scripture_ref}</span>
-								{/if}
-							</span>
-							<span class="shrink-0 text-small text-muted">
-								{Math.max(1, Math.round(sermon.word_count / 200))} {t('common.min')}
-							</span>
-						</a>
-					</li>
+					<SermonCard {sermon} />
 				{/each}
-			</ul>
+			</div>
 		</section>
 	{/if}
 
 	{#if !author.books.length && !author.sermons.length}
-		<p class="mt-10 text-body text-muted">{t('author.empty')}</p>
+		<div class="mt-10"><EmptyState message={t('author.empty')} /></div>
 	{/if}
 
 	<!-- More lives to explore: nearest contemporaries by era. -->

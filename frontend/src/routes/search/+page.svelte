@@ -1125,12 +1125,8 @@
 					>
 						<button
 							type="button"
-							class="rounded-full border px-2.5 py-1 text-small"
-							class:border-accent={typeFilter === 'all'}
-							class:bg-accent={typeFilter === 'all'}
-							class:text-accent-contrast={typeFilter === 'all'}
-							class:border-border={typeFilter !== 'all'}
-							class:text-muted={typeFilter !== 'all'}
+							class="chip"
+							class:active={typeFilter === 'all'}
 							onclick={() => selectType('all')}
 							aria-pressed={typeFilter === 'all'}
 						>
@@ -1139,12 +1135,8 @@
 						{#each groups as g (g.type)}
 							<button
 								type="button"
-								class="rounded-full border px-2.5 py-1 text-small"
-								class:border-accent={typeFilter === g.type}
-								class:bg-accent={typeFilter === g.type}
-								class:text-accent-contrast={typeFilter === g.type}
-								class:border-border={typeFilter !== g.type}
-								class:text-muted={typeFilter !== g.type}
+								class="chip"
+								class:active={typeFilter === g.type}
 								onclick={() => selectType(g.type)}
 								aria-pressed={typeFilter === g.type}
 							>
@@ -1165,16 +1157,11 @@
 					{#if showsSort}
 						<div class="flex items-center gap-1.5" role="group" aria-label={t('search.sortBy')}>
 							<span class="text-small text-muted">{t('search.sortBy')}</span>
-							<div class="flex overflow-hidden rounded-full border border-border">
-								{#each SORTS as s, i (s)}
+							<div class="seg">
+								{#each SORTS as s (s)}
 									<button
 										type="button"
-										class="whitespace-nowrap px-2.5 py-1 text-small"
-										class:bg-accent={sortMode === s}
-										class:text-accent-contrast={sortMode === s}
-										class:text-muted={sortMode !== s}
-										class:border-s={i > 0}
-										class:border-border={i > 0}
+										class:active={sortMode === s}
 										onclick={() => setSort(s)}
 										aria-pressed={sortMode === s}
 									>
@@ -1354,9 +1341,12 @@
 										{total}{isCapped(g.type) ? '+' : ''} →
 									</button>
 								{:else}
+									<!-- Same affordance as the Biographies shelf's Show more: a
+									     load-more is a button you press, and a bare accent link
+									     read as navigation to somewhere else. -->
 									<button
 										type="button"
-										class="text-small font-semibold text-accent hover:underline disabled:opacity-50"
+										class="btn btn-ghost btn-sm"
 										disabled={typeLoading}
 										onclick={() => loadType(g.type, { append: true })}
 									>

@@ -8,9 +8,11 @@
 	import ShelfCard from '$lib/components/ShelfCard.svelte';
 	import { topicMeta } from '$lib/emblems';
 	import PageHeader from '$lib/components/PageHeader.svelte';
+	import EmptyState from '$lib/components/EmptyState.svelte';
 
 	let { data } = $props();
 	const topics = $derived<TopicSummary[]>(data.topics);
+	const loadError = $derived<boolean>(data.loadError);
 	const t = i18n.t;
 
 	// schema.org ItemList of the topical shelves — an ordered roster for crawlers.
@@ -44,10 +46,12 @@
 <div class="page-col px-5 py-10">
 	<PageHeader title={t('topics.title')} tagline={t('topics.tagline')} />
 
-	{#if topics.length === 0}
-		<p class="text-small text-muted">{t('topics.none')}</p>
+	{#if loadError}
+		<EmptyState message={t('common.loadError')} onRetry />
+	{:else if topics.length === 0}
+		<EmptyState message={t('topics.none')} />
 	{:else}
-		<div class="grid items-stretch gap-5 sm:grid-cols-2">
+		<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
 			{#each topics as topic (topic.slug)}
 				{@const meta = topicMeta(topic.slug)}
 				<ShelfCard

@@ -1,4 +1,5 @@
-import { listBooks, type BookSummary } from '$lib/library';
+import { listBooks } from '$lib/library';
+import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
 
@@ -312,9 +313,6 @@ import type { PageLoad } from './$types';
  * plans touch, because it completes the set.
  */
 export const load: PageLoad = async () => {
-	try {
-		return { books: await listBooks(getLang()), loadError: false };
-	} catch {
-		return { books: [] as BookSummary[], loadError: true };
-	}
+	const { items, loadError } = await loadShelf(listBooks(getLang()));
+	return { books: items, loadError };
 };

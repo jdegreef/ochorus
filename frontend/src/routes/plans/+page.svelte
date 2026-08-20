@@ -11,10 +11,21 @@
 	import { planMeta } from '$lib/emblems';
 	import CatalogLanguageNudge from '$lib/components/CatalogLanguageNudge.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
+	import EmptyState from '$lib/components/EmptyState.svelte';
+	import ProgressBar from '$lib/components/ProgressBar.svelte';
 
 	let { data } = $props();
 	const plans = $derived<PlanSummary[]>(data.plans);
+	const loadError = $derived<boolean>(data.loadError);
 	const t = i18n.t;
+
+	// Hoisted: these two ran per plan card, twice (the visible line and the bar's
+	// label), and i18n.t is an uncached lookup.
+	const OF = t('plans.of');
+	const DAYS = t('plans.days');
+	/** The progress bar's accessible name — the visible caption, in words. */
+	const dayLabel = (plan: PlanSummary, done: number) =>
+		`${plan.title}: ${done} ${OF} ${plan.day_count} ${DAYS}`;
 
 	// Length filter: help a reader pick a plan that fits the time they have, and
 	// keep the list scannable as it grows. Buckets are derived from the day count
@@ -99,8 +110,10 @@
 
 	<CatalogLanguageNudge kind="plans" localizedCount={plans.length} />
 
-	{#if plans.length === 0}
-		<p class="text-small text-muted">{t('plans.none')}</p>
+	{#if loadError}
+		<EmptyState message={t('common.loadError')} onRetry />
+	{:else if plans.length === 0}
+		<EmptyState message={t('plans.none')} />
 	{/if}
 
 	<!-- Continue your plans: pick up where you left off. Only shown when the
@@ -126,11 +139,8 @@
 								{plan.day_count} →
 							</span>
 						</div>
-						<div class="mt-2 h-1.5 overflow-hidden rounded-full bg-surface">
-							<div
-								class="h-full rounded-full bg-accent"
-								style="width: {Math.round((done / plan.day_count) * 100)}%"
-							></div>
+						<div class="mt-2">
+							<ProgressBar percent={(done / plan.day_count) * 100} label={dayLabel(plan, done)} />
 						</div>
 					</a>
 				{/each}
@@ -158,7 +168,7 @@
 		</div>
 	{/if}
 
-	<div class="grid items-stretch gap-5 sm:grid-cols-2">
+	<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
 		{#each shownPlans as plan (plan.slug)}
 			{@const done = planProgress.doneDays(plan.slug).length}
 			{@const started = planProgress.isStarted(plan.slug)}
@@ -179,12 +189,7 @@
 				     same line regardless of description length. -->
 				<div class="mt-auto pt-3">
 					{#if started}
-						<div class="h-1.5 overflow-hidden rounded-full bg-surface-2">
-							<div
-								class="h-full rounded-full bg-accent"
-								style="width: {Math.round((done / plan.day_count) * 100)}%"
-							></div>
-						</div>
+						<ProgressBar percent={(done / plan.day_count) * 100} label={dayLabel(plan, done)} />
 						<p class="mt-1.5 text-small text-muted">
 							{done === plan.day_count
 								? t('plans.finished')

@@ -7,6 +7,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import BookCard from './BookCard.svelte';
+	import SectionHeader from '$lib/components/SectionHeader.svelte';
 
 	/**
 	 * "Recommended for you" — unread books matching the topics and authors of
@@ -77,13 +78,14 @@
 
 {#if picks.length}
 	<section class="page-col px-5 pt-14">
-		<div class="mb-6 flex items-end justify-between">
-			<h2 class="text-h1">{t('home.recommendedNext')}</h2>
-			<a href={localizeHref('/books')} class="text-small font-semibold text-accent"
-				>{t('home.allBooks')} →</a
-			>
-		</div>
-		<div class="grid grid-cols-2 gap-5 sm:grid-cols-4">
+		<SectionHeader
+			title={t('home.recommendedNext')}
+			href={localizeHref('/books')}
+			linkText={t('home.allBooks')}
+		/>
+		<!-- Its own ramp rather than .book-grid, same reason as the home strip:
+		     this is exactly four picks, and 2 / 4 both divide four. -->
+		<div class="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-4">
 			{#each picks as book (book.slug)}
 				<BookCard {book} showAuthor />
 			{/each}

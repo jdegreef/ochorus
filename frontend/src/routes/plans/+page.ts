@@ -1,4 +1,5 @@
 import { listPlans } from '$lib/library';
+import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
 
@@ -111,12 +112,6 @@ import type { PageLoad } from './$types';
  * readers to, so the card and the book agree. /sw/plans re-crawls again.
  */
 export const load: PageLoad = async () => {
-	// Tolerate a lagging/absent plans endpoint at prerender time (api + web can
-	// build together on a deploy) — render an empty list rather than fail the
-	// build; a later rebuild picks the plans up.
-	try {
-		return { plans: await listPlans(getLang()) };
-	} catch {
-		return { plans: [] };
-	}
+	const { items, loadError } = await loadShelf(listPlans(getLang()));
+	return { plans: items, loadError };
 };

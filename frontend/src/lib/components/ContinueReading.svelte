@@ -8,6 +8,8 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import Icon from '$lib/components/Icon.svelte';
+	import ProgressBar from '$lib/components/ProgressBar.svelte';
+	import SectionHeader from '$lib/components/SectionHeader.svelte';
 
 	/**
 	 * In-progress works (books and sermons) with a resume link. Progress comes
@@ -108,7 +110,7 @@
 
 {#if items.length}
 	<section class="page-col px-5 pt-14">
-		<h2 class="text-h1 mb-6">{t('continue.title')}</h2>
+		<SectionHeader title={t('continue.title')} />
 		<div class="grid gap-4 sm:grid-cols-2" class:lg:grid-cols-4={limit >= 4}>
 			{#each items as item (item.key)}
 				<a
@@ -138,8 +140,8 @@
 						<div class="truncate text-small font-semibold text-text">{item.title}</div>
 						<div class="mt-0.5 truncate text-small text-muted">{item.author}</div>
 						{#if item.pct !== null}
-							<div class="mt-2 h-1.5 overflow-hidden rounded-full bg-surface-2">
-								<div class="h-full rounded-full bg-accent" style="width: {item.pct}%"></div>
+							<div class="mt-2">
+								<ProgressBar percent={item.pct} label="{item.title}: {item.meta}" />
 							</div>
 						{/if}
 						<div class="mt-1 text-micro text-muted">{item.meta}</div>

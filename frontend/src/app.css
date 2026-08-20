@@ -1106,9 +1106,10 @@ nav.appnav .navsearch:hover {
    because some of the overrides on the same element appear to work.)
 
    WHICH classes are unlayered matters, and the split is not obvious:
-     - UNLAYERED (a utility loses, so use a modifier): .book-card, .shelf-card,
-       .sermon-row, .filter-field, .field, .seg, .chip, .section-label,
-       .eyebrow, .reading, .widthctl, nav.appnav, .account-*, .prefs-*.
+     - UNLAYERED (a utility loses, so use a modifier): .book-card, .book-grid,
+       .shelf-card, .sermon-row, .filter-field, .field, .seg, .chip,
+       .section-label, .eyebrow, .reading, .widthctl, nav.appnav, .account-*,
+       .prefs-*.
      - IN `@layer components` (a utility WINS, no `!` needed): .btn and its
        variants, .text-display.
    The button family being layered is why the `!` on `!py-1` / `!text-small`
@@ -1122,6 +1123,55 @@ nav.appnav .navsearch:hover {
 	.book-card,
 	.book-card:hover {
 		transform: none;
+	}
+}
+
+/* The shelf grid the book cards sit in.
+
+   The same six-across ramp was written out twice inside BooksShelf (the
+   grouped shelf and the flat one) and nowhere else could reuse it, so any
+   page that wanted a shelf of books invented its own column count. One rule
+   now, and one place to change the ramp.
+
+   For OPEN-ENDED shelves — the library, a topic, an author's related books —
+   where the count is whatever the API returned and a part-filled last row is
+   normal. A strip showing a FIXED small number (the home page's six, the four
+   Recommended picks) wants a ramp whose columns divide that number, or it ends
+   on an orphan: six books at five-across is 5 + 1. Those keep their own ramp,
+   and say so where they do it.
+
+   Column counts rather than `auto-fill minmax()`: a book cover has a fixed
+   aspect ratio, and `auto-fill` at a wide viewport gives a seventh column of
+   postage stamps rather than six readable spines. */
+.book-grid {
+	display: grid;
+	align-items: stretch;
+	/* Two on a phone, not three. The shelf was three-across at every width, which
+	   on a 390px screen is a 97px card: the title clamps to "A Treatise on
+	   Holy…" and the meta line breaks into three ("12 / chapters · 3 / hr 30 min
+	   read"). Two gives 154px, a readable title and a two-line meta. */
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	column-gap: 1rem;
+	row-gap: 1.5rem;
+}
+@media (min-width: 30rem) {
+	.book-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+@media (min-width: 40rem) {
+	.book-grid {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}
+@media (min-width: 48rem) {
+	.book-grid {
+		grid-template-columns: repeat(5, minmax(0, 1fr));
+	}
+}
+@media (min-width: 64rem) {
+	.book-grid {
+		grid-template-columns: repeat(6, minmax(0, 1fr));
 	}
 }
 
