@@ -1,0 +1,103 @@
+{
+ "_note": [
+  "Hindi shelf prose. Scripture is the Indian Revised Version (irvhin), the edition language_seed.py names for hi, parsed verbatim from the USX on disk — never recalled. Where an excerpt is shorter than the whole verse it is a CONTIGUOUS span, asserted as a substring of the full IRV verse at build time.",
+  "Six shelves carry a verse, matching the six lg and uk carry and the same references; ar/es/pt/sw carry none, so a verse is optional and its absence is not a gap.",
+  "Names follow the shipped hi content where one exists: स्पर्जन (21), ऑगस्टीन (8), बन्यन (1), बैक्सटर (1), मरे (116). Whitefield and Wesley appear nowhere in shipped Hindi yet, so व्हाइटफ़ील्ड and वेस्ली are the standard forms and the first Hindi content to name them — a later bio should match these, not diverge.",
+  "Shelf wording echoes the hi book titles it stands over: «भीतरी कोठरी» is the title the-inner-chamber.hi ships under."
+ ],
+ "prayer": {
+  "title": "प्रार्थना के विषय में",
+  "description": "प्रार्थना करना सीखना — और करते रहना। प्रार्थना के भीतरी जीवन पर उत्कृष्ट पुस्तकें, भीतरी कोठरी से लेकर प्रबल मध्यस्थता तक।",
+  "scripture": {
+   "reference": "यिर्मयाह 33:3",
+   "text": "मुझसे प्रार्थना कर और मैं तेरी सुनकर तुझे बड़ी-बड़ी और कठिन बातें बताऊँगा जिन्हें तू अभी नहीं समझता।"
+  },
+  "note": [
+   "«भीतरी कोठरी» deliberately echoes the hi title of the-inner-chamber, the first book on this shelf. «मध्यस्थता» is the glossary's word for intercession."
+  ]
+ },
+ "holy-spirit": {
+  "title": "पवित्र आत्मा",
+  "description": "आत्मा का बपतिस्मा, उसका भीतर वास और उसका कार्य — मसीही जीवन के लिये प्रतिज्ञा की हुई सामर्थ्य।",
+  "scripture": {
+   "reference": "जकर्याह 4:6",
+   "text": "न तो बल से, और न शक्ति से, परन्तु मेरे आत्मा के द्वारा होगा, मुझ सेनाओं के यहोवा का यही वचन है।"
+  },
+  "note": [
+   "«पवित्र आत्मा» is the glossary's term. The IRV's Zech 4:6 opens by naming Zerubbabel; the excerpt is the contiguous clause the shelf quotes."
+  ]
+ },
+ "deeper-life": {
+  "title": "गहरा जीवन",
+  "description": "पवित्रता, समर्पण और मसीह के साथ छिपा हुआ भरपूर जीवन — और भीतर तक जाने के लिये पुस्तकें।",
+  "scripture": {
+   "reference": "कुलुस्सियों 3:3",
+   "text": "क्योंकि तुम तो मर गए, और तुम्हारा जीवन मसीह के साथ परमेश्वर में छिपा हुआ है।"
+  },
+  "note": [
+   "«समर्पण» is the glossary's word for surrender. «छिपा हुआ» is the IRV's own word at Col 3:3, the verse this shelf carries, so the description and its verse agree."
+  ]
+ },
+ "grace-and-comfort": {
+  "title": "अनुग्रह और शान्ति",
+  "description": "परमेश्वर का कभी न चूकनेवाला अनुग्रह और हर परीक्षा में उसकी शान्ति — थके हुओं के लिये सुसमाचार।",
+  "scripture": {
+   "reference": "2 कुरिन्थियों 12:9",
+   "text": "मेरा अनुग्रह तेरे लिये बहुत है; क्योंकि मेरी सामर्थ्य निर्बलता में सिद्ध होती है।"
+  },
+  "note": [
+   "«अनुग्रह» is the glossary's word for grace, and it is the IRV's own word at 2 Cor 12:9 — the verse this shelf carries."
+  ]
+ },
+ "revival-and-missions": {
+  "title": "जागृति और मिशन",
+  "description": "सुसमाचार के लिये उंडेले गए जीवन, और जागृति के समय — जलते हुए हृदय के लिये ईंधन।",
+  "scripture": {
+   "reference": "हबक्कूक 3:2",
+   "text": "हे यहोवा, वर्तमान युग में अपने काम को पूरा कर; इसी युग में तू उसको प्रगट कर; क्रोध करते हुए भी दया करना स्मरण कर।"
+  },
+  "note": [
+   "EDITORIAL: the IRV's Habakkuk 3:2 reads «अपने काम को पूरा कर» — *complete* thy work, not *revive* it, which is the sense the English shelf name leans on. Kulish has the SAME divergence at the same verse (uk.json records it independently), so this is a property of the verse rather than of either edition. The verse ships as the IRV has it; the revival sense lives in the shelf's own prose («जागृति के समय»)."
+  ]
+ },
+ "faith-and-guidance": {
+  "title": "विश्वास और अगुवाई",
+  "description": "प्रतिदिन की रोटी, दिशा और हर प्रतिज्ञा के लिये परमेश्वर पर भरोसा रखना — विश्वास से चलना, दिखाई देने से नहीं।",
+  "scripture": {
+   "reference": "नीतिवचन 3:6",
+   "text": "उसी को स्मरण करके सब काम करना, तब वह तेरे लिये सीधा मार्ग निकालेगा।"
+  },
+  "note": [
+   "«विश्वास से चलना, दिखाई देने से नहीं» echoes the IRV's 2 Cor 5:7."
+  ]
+ },
+ "the-gospel-call": {
+  "title": "सुसमाचार का बुलावा",
+  "description": "सबसे पुराना निमंत्रण जो है — आ, मन फिरा, विश्वास कर। प्रचारक जो अपरिवर्तित लोगों से विनती करते हैं, और उस अनुग्रह की गवाही जो पापियों में सबसे बड़े को मिला।",
+  "note": [
+   "«पापियों में सबसे बड़े» echoes the IRV's 1 Tim 1:15, which is what Bunyan's Grace Abounding to the Chief of Sinners is titled after — that book sits on this shelf."
+  ]
+ },
+ "enduring-classics": {
+  "title": "चिरस्थायी क्लासिक",
+  "description": "वे पुस्तकें जो सदियों से यात्रियों के संग चली हैं — ऑगस्टीन का अंगीकार, बन्यन का स्वप्न, थॉमस ए केम्पिस की सीख — पुराने मार्ग, आज भी अच्छे।",
+  "note": [
+   "«पुराने मार्ग» echoes the IRV's Jer 6:16. ऑगस्टीन and बन्यन follow the spelling in shipped hi content (8 and 1 occurrences); थॉमस ए केम्पिस is the standard form and has no shipped Hindi precedent.",
+   "No book on this shelf has a Hindi edition yet, so it renders EMPTY until one ships. The entry is still required: without it the shelf is HIDDEN rather than empty, and the coverage test fails the whole file."
+  ]
+ },
+ "the-way-of-holiness": {
+  "title": "पवित्रता का मार्ग",
+  "description": "परमेश्वर के लिये अलग किए गए — जाँची गई आज्ञाएँ, ईमानदारी से खोजी गई सिद्धता, और परखे जाकर सच्चे पाए गए हृदय के अनुराग।",
+  "note": [
+   "The description avoids «भक्ति», the glossary's word for godliness, because godliness has no hi edition yet but is queued (#707 is divine-healing; godliness would land under that title) — keeping the shelf name and a future book title distinguishable, as uk.json does for «Побожність»."
+  ]
+ },
+ "the-preached-word": {
+  "title": "प्रचार किया गया वचन",
+  "description": "पन्नों पर महान प्रचार — व्हाइटफ़ील्ड और वेस्ली पूरे स्वर में, स्पर्जन अपने किसानों के बीच — और हर प्राण-रखवाले को बैक्सटर की चेतावनी।",
+  "note": [
+   "स्पर्जन and बैक्सटर follow the shipped hi bios. व्हाइटफ़ील्ड and वेस्ली have NO shipped Hindi precedent — this is the first Hindi content to name them, so a later Whitefield or Wesley bio should match these forms rather than diverge."
+  ]
+ }
+}

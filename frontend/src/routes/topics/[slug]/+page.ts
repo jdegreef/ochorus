@@ -21,6 +21,14 @@ export const trailingSlash = 'always';
 // language is switched live — which is the point of touching this now rather
 // than at launch.
 //
+// Prerender refresh 2026-08-19 (queue jobs #701 #702 #703 #844 #845 #846 #994
+// #995 #996 #997, PR #998): the Hindi shelf prose, all ten topics, same
+// all-or-nothing reason as the Ukrainian set above. Four of the ten had never
+// been filed, so the set was unshippable until this run queued them. Every
+// /hi/topics/<slug> page 404'd before this and now renders. hi seeds
+// status=draft like uk, so they stay out of the sitemap until the language is
+// switched live.
+//
 // Prerender one page per topic — the slug list comes from the API at build
 // time. The topics endpoint may lag on a fresh deploy (api + web build
 // together), so degrade to no topic pages rather than fail the whole build;
