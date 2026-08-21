@@ -1,7 +1,10 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { mount, unmount } from 'svelte';
 import { afterEach, describe, expect, it } from 'vitest';
 
 import BookCover from './BookCover.svelte';
+import type { BookSummary } from '$lib/library';
 
 /**
  * The plate is a PLACEHOLDER, and this is the rule that keeps it one.
@@ -16,7 +19,8 @@ import BookCover from './BookCover.svelte';
  * title is real text the browser can shape and wrap, and no second copy of the
  * generator's metrics decides how it is set.
  */
-const book = (over: Record<string, unknown> = {}) => ({
+const book = (over: Partial<BookSummary> = {}): BookSummary =>
+	({
 	slug: 'waiting-on-god',
 	title: 'Waiting on God',
 	subtitle: '',
@@ -26,14 +30,14 @@ const book = (over: Record<string, unknown> = {}) => ({
 	chapter_count: 31,
 	word_count: 20000,
 	language: 'en',
-	source_type: 'public_domain',
-	...over
-});
+		source_type: 'public_domain',
+		...over
+	}) as BookSummary;
 
 let target: HTMLElement;
 let component: Record<string, unknown> | undefined;
 
-const render = (props: Record<string, unknown>): HTMLElement => {
+const render = (props: { book: BookSummary; priority?: boolean }): HTMLElement => {
 	target = document.createElement('div');
 	document.body.appendChild(target);
 	component = mount(BookCover, { target, props }) as Record<string, unknown>;
@@ -53,11 +57,10 @@ describe('BookCover falls back to a plate', () => {
 		// A <tspan> would mean someone reintroduced the generator's wrap budget —
 		// which cannot know where a Devanagari or Arabic line should break.
 		expect(el.querySelector('tspan')).toBeNull();
-	});
-
-	it('keeps a non-Latin title intact for the browser to shape', () => {
-		const el = render({ book: book({ title: 'الانتظار أمام الله' }) });
-		expect(el.querySelector('.title')?.textContent).toBe('الانتظار أمام الله');
+		// Same path for a non-Latin title: handed to the browser whole, for it to
+		// shape and break, rather than pre-split at a character count.
+		const arabic = render({ book: book({ title: 'الانتظار أمام الله' }) });
+		expect(arabic.querySelector('.title')?.textContent).toBe('الانتظار أمام الله');
 	});
 
 	it("paints the book's own colour, falling to a darker tone of itself", () => {
@@ -80,5 +83,33 @@ describe('BookCover falls back to a plate', () => {
 		const el = render({ book: book({ cover_url: '/covers/waiting-on-god.svg' }) });
 		expect(el.querySelector('img')?.getAttribute('src')).toBe('/covers/waiting-on-god.svg');
 		expect(el.querySelector('.plate')).toBeNull();
+	});
+});
+
+describe('the plate holds no copy of the generator', () => {
+	/**
+	 * STYLE_GUIDE §5: "Proportions may echo `covers.py`; algorithms may not."
+	 *
+	 * The `tspan` assertion above catches someone re-pasting SVG. It does not
+	 * catch what actually drifted last time — a JS type ramp
+	 * (`book.title.length <= 22 ? 58 : 46`) and a `wrap()` budget, which produce
+	 * no SVG at all. Those are what this reads the source for, in the same idiom
+	 * as `colorTokens.test.ts` and `rtl.test.ts`: a rule nobody can enforce by
+	 * memory is a rule that comes back.
+	 *
+	 * If a future plate genuinely needs to measure a title, say so on the line —
+	 * `metrics-ok:` with a reason — and this steps aside.
+	 */
+	const source = readFileSync(join(process.cwd(), 'src/lib/components/BookCover.svelte'), 'utf-8');
+
+	it.each([
+		['title.length', /\btitle\.length\b/],
+		['subtitle.length', /\bsubtitle\.length\b/],
+		['a local wrap()', /function wrap\b|const wrap\s*=/]
+	])('does not re-derive the generator with %s', (_what, pattern) => {
+		const offending = source
+			.split('\n')
+			.filter((line) => pattern.test(line) && !line.includes('metrics-ok:'));
+		expect(offending).toEqual([]);
 	});
 });

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { coverGradient } from '$lib/coverArt';
 	import { onMount } from 'svelte';
 	import { listSermons, type BookSummary, type SermonSummary } from '$lib/library';
 	import { allProgress } from '$lib/progress';
@@ -133,7 +134,9 @@
 					{:else}
 						<div
 							class="h-20 w-14 shrink-0 rounded-sm shadow-sm"
-							style="background: {item.cover_color || 'var(--color-accent-soft)'}"
+							style="background: {item.cover_color
+								? coverGradient(item.cover_color)
+								: 'var(--color-accent-soft)'}"
 						></div>
 					{/if}
 					<div class="min-w-0 flex-1 self-center">

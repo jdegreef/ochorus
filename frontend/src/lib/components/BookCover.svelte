@@ -2,7 +2,7 @@
 	import { coverGradient } from '$lib/coverArt';
 	import type { BookSummary } from '$lib/library';
 	import { i18n } from '$lib/i18n.svelte';
-	import lockup from '$lib/brand/ochorus-lockup.svg?raw';
+	import BrandMark from './BrandMark.svelte';
 
 	const t = i18n.t;
 
@@ -44,7 +44,18 @@
 	 * is minted (`covers.ink_safe`), so what reaches this component already
 	 * carries white type at AA.
 	 */
-	let { book, rounded = 'rounded-card' }: { book: BookSummary; rounded?: string } = $props();
+	let {
+		book,
+		rounded = 'rounded-card',
+		priority = false
+	}: {
+		book: BookSummary;
+		rounded?: string;
+		/** The page's main image (a book's own page): load it eagerly, declare its
+		 * intrinsic size so space is reserved before app.css lands, and skip the
+		 * skeleton — an LCP image should not wait for a lazy queue or fade in. */
+		priority?: boolean;
+	} = $props();
 
 	let loaded = $state(false);
 	let failed = $state(false);
@@ -52,18 +63,21 @@
 
 <div class="relative aspect-[3/4] w-full overflow-hidden {rounded} shadow-sm">
 	{#if book.cover_url && !failed}
-		{#if !loaded}
+		{#if !loaded && !priority}
 			<div class="absolute inset-0 animate-pulse bg-surface-2"></div>
 		{/if}
 		<img
 			src={book.cover_url}
 			alt="{t('a11y.coverOf')} {book.title}"
-			loading="lazy"
+			loading={priority ? 'eager' : 'lazy'}
+			fetchpriority={priority ? 'high' : undefined}
+			width={priority ? 300 : undefined}
+			height={priority ? 400 : undefined}
 			onload={() => (loaded = true)}
 			onerror={() => (failed = true)}
 			class="absolute inset-0 h-full w-full object-cover transition-opacity duration-[var(--duration-base)]"
-			class:opacity-0={!loaded}
-			class:opacity-100={loaded}
+			class:opacity-0={!loaded && !priority}
+			class:opacity-100={loaded || priority}
 		/>
 	{:else}
 		<div
@@ -73,7 +87,7 @@
 			aria-label="{t('a11y.coverOf')} {book.title}"
 		>
 			<div class="type">
-				<div class="eyebrow">{book.author.name}</div>
+				<div class="byline truncate">{book.author.name}</div>
 				<!-- Title, rule and subtitle move as one block so the auto margins
 				     centre THEM between the byline and the mark. Left as three
 				     siblings, the leftover space split three ways and the title rode
@@ -81,30 +95,31 @@
 				<div class="middle">
 					<div class="title">{book.title}</div>
 					<div class="rule"></div>
-					{#if book.subtitle}<div class="subtitle">{book.subtitle}</div>{/if}
+					{#if book.subtitle}<div class="subtitle line-clamp-2">{book.subtitle}</div>{/if}
 				</div>
-				<div class="mark">
-					<!-- eslint-disable-next-line svelte/no-at-html-tags -- our own build-time asset -->
-					{@html lockup}
-				</div>
+				<!-- The shared mark, not a second copy of the inline-the-lockup
+				     recipe: it sizes off the plate's container, hence a cq height. -->
+				<BrandMark height="13.7cqw" />
 			</div>
 		</div>
 	{/if}
 </div>
 
 <style>
-	/* Every length is in container units, so one rule serves the 40px fan on a
-	   topic card and the 300px plate on a book page — the scaling the SVG was
-	   kept for, without the SVG. */
+	/* Every length is in container units, so one rule serves the plate at any
+	   width a card gives it — 64px in an author's rail, 128px beside a book's
+	   details, a grid cell on the shelf — which is the scaling the SVG was kept
+	   for, without the SVG.
+	   The `cq` sizes are deliberately outside the `--fs-*` ramp that
+	   `typeScaleGuard` polices: this is artwork sized off its own container, not
+	   interface text, and pinning it to the UI scale would stop it scaling. */
 	/* The plate is the query container; every length below is on a DESCENDANT of
 	   it. An element cannot query itself — cq units in `.plate`'s own padding
 	   would silently fall back to the viewport, which at a 300px plate on a
 	   1240px window meant 111px of padding and a cover with nothing on it. */
 	.plate {
 		container-type: inline-size;
-		position: relative;
 		height: 100%;
-		width: 100%;
 	}
 	.type {
 		display: flex;
@@ -123,18 +138,18 @@
 		inset: 4.3cqw;
 		border: 1px solid rgb(255 255 255 / 0.22);
 	}
-	.eyebrow {
+	/* NOT `.eyebrow`: that class exists in app.css, is unlayered and would match
+	   this element too, so two rules would own it and half its type would arrive
+	   from somewhere the plate never mentions. The tracking here is the cover's
+	   own (0.28em against the chrome's 0.08em), which is why it doesn't just use
+	   the shared recipe. Truncation is Tailwind's `truncate` in the markup: a
+	   long byline has nowhere to wrap to at this tracking, and clipping it beats
+	   pushing the title down the plate. */
+	.byline {
 		font-size: 3.9cqw;
 		letter-spacing: 0.28em;
 		text-transform: uppercase;
 		opacity: 0.86;
-		/* The eyebrow is the one line that can overrun: a long byline has nowhere
-		   to wrap to at this letter-spacing, so it is clipped rather than allowed
-		   to push the title down the plate. */
-		max-width: 100%;
-		overflow: hidden;
-		white-space: nowrap;
-		text-overflow: ellipsis;
 	}
 	/* Optical centre of the space between the byline and the mark, which is
 	   where covers.py puts the title — as a layout rule, not a coordinate. */
@@ -142,7 +157,7 @@
 		margin: auto 0;
 	}
 	.title {
-		font-family: var(--font-display, Georgia, 'Times New Roman', serif);
+		font-family: var(--font-display);
 		font-weight: 600;
 		font-size: 9.5cqw;
 		line-height: 1.15;
@@ -157,28 +172,18 @@
 	}
 	.subtitle {
 		margin-top: 3cqw;
-		font-family: var(--font-display, Georgia, serif);
+		font-family: var(--font-display);
 		font-style: italic;
 		font-size: 3.7cqw;
 		opacity: 0.85;
-		/* Two lines, like the generator's subtitle budget; beyond that the plate
-		   is a thumbnail and the words are unreadable anyway. */
-		display: -webkit-box;
-		-webkit-box-orient: vertical;
-		-webkit-line-clamp: 2;
-		line-clamp: 2;
-		overflow: hidden;
+		/* `line-clamp-2` in the markup holds it to two lines, the generator's own
+		   subtitle budget; past that the plate is a thumbnail and the words are
+		   unreadable anyway. */
 	}
-	.mark {
+	/* The mark paints with `currentColor`, which the plate has already set to
+	   white — one colour decision serves the whole plate. */
+	.type :global(.brandmark) {
 		margin-inline: auto;
-		width: 22.7cqw;
 		opacity: 0.82;
-	}
-	/* The lockup paints with `currentColor`, which the plate has already set to
-	   white — no fill override, so one colour decision serves the whole plate. */
-	.mark :global(svg) {
-		width: 100%;
-		height: auto;
-		display: block;
 	}
 </style>

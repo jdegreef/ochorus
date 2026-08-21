@@ -1,13 +1,14 @@
 /**
  * The generated-cover fallback, in one place.
  *
- * Roughly half the library ships without artwork, so what a cover-less book
- * looks like is a real surface, not an edge case — and it was drawn four
- * different ways: a flat fill on the plans strip, a `…, #0008` gradient on the
- * book page, a local `cover()`/`shade()` pair on the 404, and a `darken(0.55)`
- * inside BookCover. The same book therefore looked different on the shelf, on
- * its own page and on the error page, and the brand blue was hardcoded in five
- * files.
+ * Every published book now carries a committed cover (two fixture gates keep it
+ * that way), so a cover-less book is the admin import before its file is drawn,
+ * the unpublished draft, and the broken image. It was once half the library,
+ * and it was drawn four different ways: a flat fill on the plans strip, a
+ * `…, #0008` gradient on the book page, a local `cover()`/`shade()` pair on the
+ * 404, and a `darken(0.55)` inside BookCover. The same book therefore looked
+ * different on the shelf, on its own page and on the error page, and the brand
+ * blue was hardcoded in five files.
  *
  * A book's own `cover_color` is data, not a UI colour (STYLE_GUIDE §1), which
  * is why it is a raw hex rather than a token. Only the DEFAULT belongs here.
@@ -18,10 +19,10 @@
  */
 
 /** The generator's default cover colour, for books with no `cover_color`. */
-export const COVER_FALLBACK = '#3b5bdb';
+const COVER_FALLBACK = '#3b5bdb';
 
 /** Scale a hex colour's channels by `factor` (0–1 darkens, >1 lightens). */
-export function shade(hex: string, factor: number): string {
+function shade(hex: string, factor: number): string {
 	const n = (hex || COVER_FALLBACK).replace('#', '');
 	if (n.length !== 6) return COVER_FALLBACK;
 	const channels = [0, 2, 4].map((i) =>
@@ -34,6 +35,13 @@ export function shade(hex: string, factor: number): string {
 
 /**
  * The cover gradient: the book's colour, falling to a darker tone of itself.
+ *
+ * This is the WHOLE treatment for the small decorative fans — `CoverStrip`,
+ * `ShelfCard`, `ContinueReading`. They render at 2.5rem, where the plate's type
+ * would be sub-pixel, and they hold a `TopicCover` (title, url, colour) rather
+ * than a book, so routing them through `BookCover` would mean widening that
+ * type at every call site to draw something nobody can read. Deliberate, not an
+ * oversight.
  * `0.55` is the same factor `generate_covers` bakes into the real artwork, so a
  * generated cover and this fallback sit at the same value.
  */

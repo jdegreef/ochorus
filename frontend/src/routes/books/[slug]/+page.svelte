@@ -122,25 +122,14 @@
 	<Breadcrumb items={crumbs} />
 
 	<header class="mt-5 flex flex-col gap-5 sm:flex-row sm:items-start">
-		{#if book.cover_url}
-			<!-- Intrinsic 3:4 (matches the aspect class) so space is reserved even
-			     before app.css applies — the main content image on the page. -->
-			<img
-				src={book.cover_url}
-				alt="{t('a11y.coverOf')} {book.title}"
-				width="300"
-				height="400"
-				class="aspect-[3/4] w-32 shrink-0 rounded-card object-cover shadow-md"
-			/>
-		{:else}
-			<!-- The plate, drawn once in BookCover rather than a third time here:
-			     this page used to paint its own gradient box with the title in the
-			     bottom corner, so the same cover-less book looked one way on a shelf
-			     and another on its own page. -->
-			<div class="w-32 shrink-0">
-				<BookCover {book} />
-			</div>
-		{/if}
+		<!-- One component decides what a cover is. This page used to branch on
+		     cover_url itself and paint its own gradient box in the else, so the
+		     same cover-less book looked one way on a shelf and another here — and
+		     a cover file that 404s showed a broken image here while every shelf
+		     fell back to the plate. `priority` marks it as the page's LCP image. -->
+		<div class="w-32 shrink-0">
+			<BookCover {book} priority />
+		</div>
 
 		<div class="flex-1">
 			<h1 class="text-h1" dir="auto">{book.title}</h1>
