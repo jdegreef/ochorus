@@ -19,6 +19,7 @@ import re
 import anthropic
 from django.core.management.base import BaseCommand, CommandError
 
+from library.covers import cover_path
 from library.languages import config as language_config
 from library.models import Book, Chapter
 from library.translation import (
@@ -97,7 +98,14 @@ class Command(BaseCommand):
                     "subtitle": meta["subtitle"][:300],
                     "description": meta["description"],
                     "source_type": Book.SourceType.AI_UNREVIEWED,
-                    "cover_url": source.cover_url,
+                    # NOT source.cover_url: that is the English plate, and it
+                    # carries the English title over a translated card. Point at
+                    # this language's own path — `scripts/localize_covers.py`
+                    # (or `generate_covers <slug>`) draws the file there — and
+                    # inherit the work's colour so the fallback plate is the
+                    # right hue in the meantime.
+                    "cover_url": cover_path(slug, language)[0],
+                    "cover_color": source.cover_color,
                     # pdf_url deliberately left empty: the PDF is the English
                     # edition and would mislead on a translated book page.
                     "sort_order": source.sort_order,

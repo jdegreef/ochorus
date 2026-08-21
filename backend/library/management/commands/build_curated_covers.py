@@ -31,7 +31,7 @@ from pathlib import Path
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 
-from library.covers import build_art_svg
+from library.covers import build_art_svg, cover_path
 from library.curated_art import CURATED, credit
 from library.models import Book
 
@@ -118,8 +118,7 @@ class Command(BaseCommand):
             b64 = base64.b64encode(jpeg.read_bytes()).decode("ascii")
 
             for book in rows:
-                rel = f"{slug}.svg" if book.language == "en" else f"{book.language}/{slug}.svg"
-                url = f"/covers/{rel}"
+                url, rel = cover_path(slug, book.language)
                 svg = build_art_svg(
                     title=book.title,
                     subtitle=book.subtitle,
