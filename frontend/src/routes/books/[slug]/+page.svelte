@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { coverGradient } from '$lib/coverArt';
 	import { type BookDetail, formatLifespan } from '$lib/library';
 	import { getProgress } from '$lib/progress';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
@@ -10,6 +9,7 @@
 	import { localizeHref } from '$lib/href';
 	import { scopedSearchHref } from '$lib/searchState';
 	import BookCard from '$lib/components/BookCard.svelte';
+	import BookCover from '$lib/components/BookCover.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
@@ -133,13 +133,12 @@
 				class="aspect-[3/4] w-32 shrink-0 rounded-card object-cover shadow-md"
 			/>
 		{:else}
-			<div
-				class="flex aspect-[3/4] w-32 shrink-0 items-end rounded-card p-3 shadow-md"
-				style="background: {coverGradient(book.cover_color)}"
-			>
-				<span class="font-display text-base font-semibold text-white">
-					{book.title}
-				</span>
+			<!-- The plate, drawn once in BookCover rather than a third time here:
+			     this page used to paint its own gradient box with the title in the
+			     bottom corner, so the same cover-less book looked one way on a shelf
+			     and another on its own page. -->
+			<div class="w-32 shrink-0">
+				<BookCover {book} />
 			</div>
 		{/if}
 

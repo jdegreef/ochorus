@@ -13,6 +13,11 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
 	plugins: [svelte({ compilerOptions: { runes: true } })],
 	resolve: {
+		// The plugin compiles components for the CLIENT, so `svelte` itself has to
+		// resolve to its browser entry too — without this, `mount()` comes from
+		// index-server.js and a component test dies inside Svelte's internals
+		// rather than in the assertion you wrote.
+		conditions: ['browser'],
 		alias: [
 			{
 				find: '$app/environment',
