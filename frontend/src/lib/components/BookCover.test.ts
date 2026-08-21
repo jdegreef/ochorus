@@ -38,17 +38,20 @@ let target: HTMLElement;
 let component: Record<string, unknown> | undefined;
 
 const render = (props: { book: BookSummary; priority?: boolean }): HTMLElement => {
+	teardown(); // a test that renders twice must not leave the first in the body
 	target = document.createElement('div');
 	document.body.appendChild(target);
 	component = mount(BookCover, { target, props }) as Record<string, unknown>;
 	return target;
 };
 
-afterEach(() => {
+const teardown = () => {
 	if (component) unmount(component);
 	target?.remove();
 	component = undefined;
-});
+};
+
+afterEach(teardown);
 
 describe('BookCover falls back to a plate', () => {
 	it('sets the title as text, not as pre-wrapped SVG lines', () => {
@@ -65,10 +68,11 @@ describe('BookCover falls back to a plate', () => {
 
 	it("paints the book's own colour, falling to a darker tone of itself", () => {
 		const el = render({ book: book({ cover_color: '#0b7285' }) });
-		// jsdom normalises hex to rgb() in the style attribute.
+		// The gradient goes in as a custom property, which the browser stores
+		// verbatim (a plain `background` would come back normalised to rgb()).
 		const style = el.querySelector('.plate')?.getAttribute('style') ?? '';
-		expect(style).toContain('rgb(11, 114, 133)'); // #0b7285, the book's own
-		expect(style).toContain('rgb(6, 63, 73)'); // shaded to 0.55, as the file is
+		expect(style).toContain('#0b7285'); // the book's own colour
+		expect(style).toContain('#063f49'); // shaded to 0.55, as the file's stop is
 	});
 
 	it('names the cover once for a screen reader, and hides the decorative type', () => {

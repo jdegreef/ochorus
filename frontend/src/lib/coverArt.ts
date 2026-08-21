@@ -46,6 +46,22 @@ function shade(hex: string, factor: number): string {
  * generated cover and this fallback sit at the same value.
  */
 export function coverGradient(color: string | null | undefined): string {
-	const base = color || COVER_FALLBACK;
-	return `linear-gradient(150deg, ${base} 0%, ${shade(base, 0.55)} 100%)`;
+	// Both stops go through `shade`, which returns the fallback for anything that
+	// isn't a six-digit hex. `cover_color` is a free-text CharField the admin
+	// import can set, and this string lands in a `style` attribute — an unchecked
+	// value could carry a `;` and a second declaration into it.
+	const base = shade(color ?? '', 1);
+	// `165deg … 89%` is covers.py's gradient written in CSS, not an eyeball
+	// match. The file runs its gradient from (0, 0) to (0.35, 1) in bounding-box
+	// units — on a 600x800 plate a vector of (210, 800), atan(210/800) off
+	// vertical, i.e. 165deg — and SVG PADS past its end point while CSS stretches
+	// its gradient line corner to corner. Projecting the file's end point onto
+	// that line puts it at 89.3% along, so the dark stop goes there; left at 100%
+	// the whole plate sits lighter than the artwork it stands in for.
+	//
+	// Not only cosmetic. `covers.ink_safe` floors a plate colour against the tone
+	// under the byline in the FILE'S geometry, so a lighter gradient here quietly
+	// spends that margin: at the old `150deg … 100%` the byline measured 4.37:1
+	// against a 4.5 bar.
+	return `linear-gradient(165deg, ${base} 0%, ${shade(base, 0.55)} 89%)`;
 }

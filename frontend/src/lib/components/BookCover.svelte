@@ -57,8 +57,15 @@
 		priority?: boolean;
 	} = $props();
 
-	let loaded = $state(false);
-	let failed = $state(false);
+	// Keyed by the URL they describe, not free-floating: the book page renders
+	// ONE BookCover and SvelteKit reuses it across /books/a → /books/b, so a
+	// plain `failed = true` from a broken cover on A would leave B showing the
+	// plate for the rest of the session. Derived rather than reset in an effect —
+	// an $effect that writes state is a $derived in disguise (frontend/CLAUDE.md).
+	let loadedUrl = $state('');
+	let failedUrl = $state('');
+	const loaded = $derived(loadedUrl === book.cover_url);
+	const failed = $derived(failedUrl === book.cover_url);
 </script>
 
 <div class="relative aspect-[3/4] w-full overflow-hidden {rounded} shadow-sm">
@@ -73,8 +80,8 @@
 			fetchpriority={priority ? 'high' : undefined}
 			width={priority ? 300 : undefined}
 			height={priority ? 400 : undefined}
-			onload={() => (loaded = true)}
-			onerror={() => (failed = true)}
+			onload={() => (loadedUrl = book.cover_url)}
+			onerror={() => (failedUrl = book.cover_url)}
 			class="absolute inset-0 h-full w-full object-cover transition-opacity duration-[var(--duration-base)]"
 			class:opacity-0={!loaded && !priority}
 			class:opacity-100={loaded || priority}
@@ -82,20 +89,20 @@
 	{:else}
 		<div
 			class="plate"
-			style="background: {coverGradient(book.cover_color)}"
+			style="--plate: {coverGradient(book.cover_color)}"
 			role="img"
 			aria-label="{t('a11y.coverOf')} {book.title}"
 		>
 			<div class="type">
-				<div class="byline truncate">{book.author.name}</div>
+				<div class="byline truncate" dir="auto">{book.author.name}</div>
 				<!-- Title, rule and subtitle move as one block so the auto margins
 				     centre THEM between the byline and the mark. Left as three
 				     siblings, the leftover space split three ways and the title rode
 				     up the plate. -->
 				<div class="middle">
-					<div class="title">{book.title}</div>
+					<div class="title" dir="auto">{book.title}</div>
 					<div class="rule"></div>
-					{#if book.subtitle}<div class="subtitle line-clamp-2">{book.subtitle}</div>{/if}
+					{#if book.subtitle}<div class="subtitle line-clamp-2" dir="auto">{book.subtitle}</div>{/if}
 				</div>
 				<!-- The shared mark, not a second copy of the inline-the-lockup
 				     recipe: it sizes off the plate's container, hence a cq height. -->
@@ -120,6 +127,15 @@
 	.plate {
 		container-type: inline-size;
 		height: 100%;
+		/* Two layers, as the file has: the book's gradient, and over it the same
+		   vignette covers.py paints — radial, transparent to 55% and black 0.34
+		   at the edge, centred at (50%, 42%). Not decoration: the generated
+		   file's byline measures 4.87:1 with it and the plate measured 4.41:1
+		   without, against a 4.5 bar. The vignette carries most of the margin
+		   `ink_safe` floors the colour to earn. */
+		background:
+			radial-gradient(78% 78% at 50% 42%, transparent 55%, rgb(0 0 0 / 0.34) 100%),
+			var(--plate);
 	}
 	.type {
 		display: flex;
@@ -128,7 +144,12 @@
 		   max-content width, so a long title overflows the plate instead of
 		   wrapping inside it. The children stretch and centre their text. */
 		height: 100%;
-		padding: 9cqw 7cqw;
+		/* 112/600 of the plate's width down, which is where covers.py's y=112
+		   baseline falls. Not a cosmetic match: `ink_safe` floors a plate colour
+		   for the contrast AT that height, so a byline sitting higher up the
+		   gradient than the generator's would sit on a lighter tone than the
+		   floor was computed against. */
+		padding: 17cqw 7cqw 9cqw;
 		color: #fff;
 		text-align: center;
 	}
