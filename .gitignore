@@ -24,3 +24,6 @@ frontend/node_modules
 # Cached source artwork for build_curated_covers — re-downloadable from the Met,
 # and large. The committed output is frontend/static/covers/*.svg.
 .cache/
+
+# Baked by the image build (backend/manage.py content_version --write).
+backend/.content-version

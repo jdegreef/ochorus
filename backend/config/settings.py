@@ -321,7 +321,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Applied only in real deployments (DEBUG off). Skipped for commands that
 # legitimately run without the production runtime config.
 
-_NO_CONFIG_COMMANDS = {"test", "collectstatic", "makemigrations"}
+# content_version is here for the same reason collectstatic is: the image build
+# runs it (Dockerfile) to bake the content digest, long before DATABASE_URL or
+# SUPABASE_URL exist. It reads files and touches neither.
+_NO_CONFIG_COMMANDS = {"test", "collectstatic", "makemigrations", "content_version"}
 _skip_config_checks = len(sys.argv) > 1 and sys.argv[1] in _NO_CONFIG_COMMANDS
 
 if not DEBUG and not _skip_config_checks:

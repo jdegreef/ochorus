@@ -197,11 +197,34 @@ uv run python scripts/regen_fixture.py   # pinned 6-model natural-key regen; NEV
      re-asserts them. Changing one on prod still needs a migration (or the
      `approve_translation` command).
 
-2. **A backend-only change does NOT refresh the prerendered pages.** The public
+2. **Only *declared* content paths refresh the prerendered pages.** The public
    `/books/<slug>` and `/authors/<slug>` pages are static HTML baked at *frontend
-   build* time. Render skips the `ochorus-web` build when a commit touches
-   nothing under `frontend/`, so after a data/migration-only change the API and
-   the (client-side) reader update immediately, but the prerendered book/author
-   pages stay frozen on the old content. **Fix: manually redeploy the frontend** —
-   Render → `ochorus-web` → **Manual Deploy → "Clear cache & deploy latest
-   commit"** — to re-prerender against the fresh API.
+   build* time, and Render skips the `ochorus-web` build when a commit touches
+   nothing the service's `buildFilter` names. That filter lists every root in
+   `backend/library/content_sources.json` — the fixtures, plan and topic prose,
+   and the author-bio data — so a commit to any of them rebuilds the reader.
+
+   A backend change *outside* those roots (a view, a migration, a settings
+   tweak) deliberately does **not** rebuild: the API and the client-side reader
+   update immediately and the prerendered pages are unaffected because their
+   content didn't change. If one of those changes *does* alter reader content —
+   a data migration that edits chapter text, say — the prerendered pages stay
+   frozen until a build runs. **Fix: manually redeploy the frontend** — Render →
+   `ochorus-web` → **Manual Deploy → "Clear cache & deploy latest commit"**.
+
+   To tell which case you are in, compare what the API is serving with what the
+   repo holds:
+
+   ```
+   curl -s https://<api-host>/api/health/ | jq -r .content_version
+   cd backend && uv run python manage.py content_version
+   ```
+
+   Equal means the reader's content is current. Different means a build is
+   pending (or needed) — and the web build itself waits for the API to reach the
+   repo's value before prerendering, so it can never bake the previous release's
+   content (`frontend/scripts/await-api-release.mjs`).
+
+   Adding a new kind of seed data? Add its directory to `content_sources.json`
+   *and* to the `buildFilter`; `tests_fixture` fails if the two disagree, because
+   the failure is otherwise silent — content ships and its pages never rebuild.

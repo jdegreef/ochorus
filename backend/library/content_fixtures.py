@@ -37,9 +37,35 @@ SERMONS_DIR = CONTENT_DIR / "sermons"
 PLANS_FILE = CONTENT_DIR / "plans.json"
 
 
+APP_DIR = Path(__file__).resolve().parent
+CONTENT_SOURCES_FILE = APP_DIR / "content_sources.json"
+
+
+def content_roots() -> list[tuple[str, Path]]:
+    """Directories holding content that reaches prerendered reader pages.
+
+    ``(declared name, absolute path)`` pairs. The name is carried rather than
+    recomputed from the path because it is what the digest keys on, and the two
+    consumers must agree on it exactly — recomputing it made the digest depend
+    on where the root happened to live.
+
+    Declared in ``content_sources.json`` rather than here because the web
+    build's prebuild gate and render.yaml's buildFilter need the same list, and
+    a list that lives in three places drifts. See that file's note.
+    """
+    roots = json.loads(CONTENT_SOURCES_FILE.read_text())["roots"]
+    return [(r, APP_DIR.parent / r) for r in roots]
+
+
+#: Where the image build stashes the digest so serving it is a file read, not
+#: an 88 MB one. Written by ``manage.py content_version --write`` in the
+#: Dockerfile; absent outside a built image, where computing it is fine.
+BAKED_DIGEST_FILE = APP_DIR.parent / ".content-version"
+
+
 @lru_cache(maxsize=1)
 def content_digest() -> str:
-    """A fingerprint of the content fixtures this build shipped with.
+    """A fingerprint of the reader-visible content this build shipped with.
 
     Published on ``/api/health/`` so the web build can tell whether the API is
     already serving the content it is about to prerender against
@@ -53,27 +79,44 @@ def content_digest() -> str:
     "does the API hold the content I am about to bake into static pages?" always
     has an answer, and for a frontend-only commit the answer is yes, instantly.
 
-    Every ``*.json`` under ``content/``, by sorted relative path — deliberately
-    a simpler rule than ``ordered_fixture_paths()``, because the reader of this
-    digest is a JavaScript file that has to reproduce it exactly. ``tests_fixture``
-    already rejects any file under ``content/`` that the layout does not load, so
-    the two sets cannot drift apart.
+    EVERY file under every root in ``content_sources.json``, by sorted relative
+    path — deliberately a blunter rule than ``ordered_fixture_paths()``, because
+    a JavaScript file has to reproduce it byte for byte. Blunt also means safe:
+    a new kind of seed data dropped into one of those roots is covered without
+    anyone remembering to widen this.
 
-    SCOPE: ``content/`` only, matching render.yaml's ``buildFilter``
-    (``backend/library/fixtures/**``) — the gate covers exactly what
-    auto-triggers a web build. Other seed data that reaches prerendered pages
-    (``library/data/plan_translations/``, ``library/migrations/data/author_bios_*``)
-    is outside BOTH, so a commit touching only those doesn't rebuild the reader
-    at all and its pages stay on the previous prose until some later build. That
-    is the pre-existing gap DEPLOYMENT.md describes for backend-only changes —
-    widening this digest would not close it, since nothing would be watching.
+    The roots are the scope, and they are the same scope render.yaml's
+    buildFilter triggers on (pinned by ``tests_fixture``) — so "the gate says
+    the API has my content" and "a change here rebuilds the reader" cannot
+    disagree.
     """
+    # Prefer the value baked at image-build time. /api/health/ is Render's
+    # LIVENESS probe, and computing this cold means reading ~90 MB off disk on
+    # the first request a fresh container serves — measured at 8s cold against
+    # 0.1s warm. A probe that slow is a failed deploy, not a slow endpoint. The
+    # baked value cannot go stale: the image's content is immutable, and the
+    # file is written from that same content during the build.
+    if BAKED_DIGEST_FILE.is_file():
+        baked = BAKED_DIGEST_FILE.read_text().strip()
+        if baked:
+            return baked
+    return compute_content_digest()
+
+
+def compute_content_digest() -> str:
+    """The digest, computed from the files on disk. See ``content_digest``."""
     h = hashlib.sha256()
-    for path in sorted(CONTENT_DIR.rglob("*.json"), key=lambda p: p.relative_to(CONTENT_DIR).as_posix()):
-        h.update(path.relative_to(CONTENT_DIR).as_posix().encode())
-        h.update(b"\0")
-        h.update(hashlib.sha256(path.read_bytes()).hexdigest().encode())
-        h.update(b"\0")
+    for label, root in sorted(content_roots()):
+        if not root.exists():
+            continue
+        for path in sorted(
+            (p for p in root.rglob("*") if p.is_file()),
+            key=lambda p: p.relative_to(root).as_posix(),
+        ):
+            h.update(f"{label}/{path.relative_to(root).as_posix()}".encode())
+            h.update(b"\0")
+            h.update(hashlib.sha256(path.read_bytes()).hexdigest().encode())
+            h.update(b"\0")
     return h.hexdigest()[:16]
 
 
