@@ -1,3 +1,4 @@
+// prerender refresh 2026-08-21: the-joy-of-the-lord.pt (job #775, PR #1008)
 // prerender refresh 2026-08-20: himself.hi (job #700, PR #1004)
 import { listSermons } from '$lib/library';
 import { loadShelf } from '$lib/loadShelf';
