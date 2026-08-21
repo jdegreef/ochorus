@@ -708,6 +708,42 @@ class CoverAssetTests(SimpleTestCase):
         self.assertEqual(missing, [], "generated SVG cover without its .png twin")
 
 
+class SermonShareCardTests(SimpleTestCase):
+    """Every sermon must have its Open Graph share card committed.
+
+    A sermon page points ``og:image`` unconditionally at
+    ``/og/sermons/<slug>.png`` — the card drawn by
+    ``frontend/scripts/generate-sermon-og.mjs`` from these very fixtures. That
+    is deliberate (the book page does the same with its ``.png`` cover twin):
+    the page cannot know whether a file exists, so the guarantee has to live
+    here instead. Without it, adding a sermon and forgetting to run the script
+    ships a page whose share preview 404s, which is invisible until someone
+    forwards the link and it arrives as a bare grey rectangle.
+
+    English only, one card per slug. Social scrapers rarely read localized
+    cards, and rasterising per language would turn 29 files into 118 for a
+    preview image; a translated sermon shares the English card, exactly as
+    every translated book already shares the English cover.
+    """
+
+    STATIC_DIR = settings.BASE_DIR.parent / "frontend" / "static"
+
+    def test_every_sermon_has_a_share_card(self):
+        missing = sorted(
+            r["fields"]["slug"]
+            for r in all_rows()
+            if r["model"] == "library.sermon"
+            and r["fields"].get("language", "en") == "en"
+            and not (self.STATIC_DIR / "og" / "sermons" / f"{r['fields']['slug']}.png").is_file()
+        )
+        self.assertEqual(
+            missing, [],
+            "sermon with no og:image share card — run "
+            "`cd frontend && node scripts/generate-sermon-og.mjs` and commit "
+            "frontend/static/og/sermons/<slug>.png",
+        )
+
+
 class SermonBriefCoverageTests(SimpleTestCase):
     """Every sermon on the shelf should carry its "In brief".
 

@@ -590,6 +590,98 @@ export const fallbackEmblem = (slug: string): EmblemName =>
 export const emblemForSermon = (slug: string): EmblemName =>
 	SERMON_EMBLEMS[slug] ?? fallbackEmblem(slug);
 
+/**
+ * The dominant ink of an emblem — its own accent, read back off the drawing.
+ *
+ * Topics and plans carry a hand-tuned `accent` in their META tables because
+ * there are ten and eight of them. Sermons are a growing catalogue with a new
+ * one every import, and a hue nobody remembers to set is a hue that ends up
+ * wrong; deriving it means a sermon's card is coloured the moment its emblem
+ * is chosen, with nothing else to author.
+ *
+ * Scored `count × (0.35 + saturation)`, discounting inks outside a usable
+ * lightness band, then floored to a minimum saturation — the same two moves
+ * `covers.py:palette_from_artwork` makes to pull a cover colour out of a
+ * book's artwork, and for the same reasons. Counting alone hands the accent to
+ * whichever neutral the drawing happens to shade with: the raven emblem came
+ * out slate grey, which is honestly its most-used ink and a thoroughly drab
+ * thing to letter a share card in. Scoring by saturation separates "the colour
+ * this drawing IS" from "the colour it is shaded with"; the floor then keeps
+ * an emblem that really is drawn in slate (the raven, the rock) from lettering
+ * its card in something indistinguishable from muted body text. Ties go to
+ * first appearance, which keeps the result stable when the art is edited
+ * elsewhere in the string.
+ *
+ * The cream/white papers are excluded outright rather than left to the score:
+ * they highlight nearly every emblem, and the lightness discount alone still
+ * let warm white carry the shepherd's-crook. A card lettered in #fdfaf3 has no
+ * accent at all, only two shades of white.
+ *
+ * The LIGHTNESS is left alone: what a hue needs in order to carry type depends
+ * on the surface it lands on, and this module does not know that. Callers
+ * floor it themselves — `scripts/og-card.mjs:liftToContrast` for the near-black
+ * share card, `color-mix` tints for the app's chips.
+ */
+const MIN_ACCENT_SATURATION = 0.3;
+const PAPER_INKS: ReadonlySet<string> = new Set([CR, CRD, W]);
+const usableLightness = (l: number): number => (l > 0.12 && l < 0.62 ? 1 : 0.35);
+
+/** A #rrggbb colour as [hue, saturation, lightness]. */
+const toHsl = (hex: string): [number, number, number] => {
+	const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255);
+	const max = Math.max(r, g, b);
+	const min = Math.min(r, g, b);
+	const lightness = (max + min) / 2;
+	if (max === min) return [0, 0, lightness];
+	const d = max - min;
+	const hue =
+		max === r ? ((g - b) / d + (g < b ? 6 : 0)) : max === g ? (b - r) / d + 2 : (r - g) / d + 4;
+	return [hue / 6, lightness > 0.5 ? d / (2 - max - min) : d / (max + min), lightness];
+};
+
+/** The inverse of `toHsl`. */
+const fromHsl = ([h, s, l]: [number, number, number]): string => {
+	const c = (1 - Math.abs(2 * l - 1)) * s;
+	const x = c * (1 - Math.abs(((h * 6) % 2) - 1));
+	const m = l - c / 2;
+	const sector = Math.floor(h * 6) % 6;
+	const [r, g, b] = [
+		[c, x, 0],
+		[x, c, 0],
+		[0, c, x],
+		[0, x, c],
+		[x, 0, c],
+		[c, 0, x]
+	][sector];
+	return `#${[r, g, b]
+		.map((v) => Math.round((v + m) * 255).toString(16).padStart(2, '0'))
+		.join('')}`;
+};
+
+export const emblemHue = (name: EmblemName): string => {
+	const counts = new Map<string, number>();
+	for (const ink of EMBLEM_ART[name].match(/#[0-9a-f]{6}/gi) ?? []) {
+		const hex = ink.toLowerCase();
+		if (PAPER_INKS.has(hex)) continue;
+		counts.set(hex, (counts.get(hex) ?? 0) + 1);
+	}
+	let best = '';
+	let bestScore = 0;
+	for (const [hex, count] of counts) {
+		const [, saturation, lightness] = toHsl(hex);
+		const score = count * (0.35 + saturation) * usableLightness(lightness);
+		if (score > bestScore) [best, bestScore] = [hex, score];
+	}
+	// Every emblem is at least three colours (a test enforces it), so there is
+	// always a winner — but a hue is not optional for the caller, so fall back
+	// to the brand accent rather than to ''.
+	if (!best) return TOPIC_META.prayer.accent;
+	const [hue, saturation, lightness] = toHsl(best);
+	return saturation >= MIN_ACCENT_SATURATION
+		? best
+		: fromHsl([hue, MIN_ACCENT_SATURATION, lightness]);
+};
+
 export const topicMeta = (slug: string): { accent: string; emblem: EmblemName } =>
 	TOPIC_META[slug] ?? { accent: '#3b5bdb', emblem: fallbackEmblem(slug) };
 

@@ -148,14 +148,22 @@
 	// --- SEO -------------------------------------------------------------------
 	// A real description from the opening prose (beats the generic template) and
 	// structured data: an Article for the sermon (its preaching text as `about`)
-	// plus a breadcrumb. og:image is the author portrait when present (raster).
+	// plus a breadcrumb.
 	const metaDescription = $derived(
 		(sermon.body_html || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 155) ||
 			t('sermon.metaFallback')
 				.replace('%title%', sermon.title)
 				.replace('%name%', sermon.author_name)
 	);
-	const ogImage = $derived(sermon.author_photo ? absUrl(sermon.author_photo) : '');
+	// The sermon's own share card — its emblem, passage and title on the house
+	// ground (frontend/scripts/generate-sermon-og.mjs). This used to be the
+	// AUTHOR PORTRAIT, so every Spurgeon sermon forwarded into a chat as the
+	// same photograph of Spurgeon, and a sermon by an author with no portrait
+	// forwarded as a bare link. Unconditional, like the book page's cover
+	// fallback: `SermonCardTests` fails the build if a sermon has no card, so
+	// the file is there before the page can ship. English only — one card per
+	// slug serves every locale, the same trade the book covers make.
+	const ogImage = $derived(absUrl(`/og/sermons/${sermon.slug}.png`));
 	const sermonLd = $derived(
 		jsonLd({
 			'@context': 'https://schema.org',
