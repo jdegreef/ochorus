@@ -289,6 +289,30 @@ BODY_CORRECTIONS: dict[str, dict] = {
                 "us: \u2018Because of your unbelief\u201d The",
                 "us: \u201cBecause of your unbelief.\u201d The",
             ),
+            # Found by the ar translators (job #764), who read every sentence of
+            # all 32 chapters. Only defects with ONE possible intended reading
+            # are repaired here; the ambiguous ones are named in that PR and
+            # deliberately left alone (ch26's "an ultimate communion with God"
+            # for "intimate", and ch19's your-sicknesses/my-sins voice shift,
+            # where fixing means guessing the author's words).
+            ("dine healing", "divine healing"),
+            ("the healing of their sick-ness", "the healing of their sickness"),
+            ("Thus is becomes those", "Thus it becomes those"),
+            ("ignorant of his Y devices", "ignorant of his devices"),
+            ("if ever miracles Were superfluous", "if ever miracles were superfluous"),
+            ("must needs be Visible in the body", "must needs be visible in the body"),
+            ("awaken Some special conviction", "awaken some special conviction"),
+            ("and later on she become a zealous", "and later on she became a zealous"),
+            # Typographic damage: a tilde for a semicolon, a tilde for nothing,
+            # a bracket that opens round and closes square, a doubled stop, and
+            # a period welded to a book name.
+            ("unique in the creation~ it makes man", "unique in the creation; it makes man"),
+            ("(or nature]", "(or nature)"),
+            ("them\u201d~ (Mark 11:24", "them\u201d (Mark 11:24"),
+            ("in your heart,. and count", "in your heart, and count"),
+            (".James 5:15", "James 5:15"),
+            # "Jdb" for "Job" - the quoted words verify against Job 42:6.
+            ("(Jdb 42:6)", "(Job 42:6)"),
         ],
     },
     "the-gospel-of-healing": {
