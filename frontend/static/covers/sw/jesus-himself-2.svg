@@ -1,8 +1,8 @@
 <svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Yesu Mwenyewe">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0.35" y2="1">
-      <stop offset="0" stop-color="#3f828c"/>
-      <stop offset="1" stop-color="#22474d"/>
+      <stop offset="0" stop-color="#3b7a84"/>
+      <stop offset="1" stop-color="#204348"/>
     </linearGradient>
     <radialGradient id="vig" cx="0.5" cy="0.42" r="0.78">
       <stop offset="0.55" stop-color="#000000" stop-opacity="0"/>

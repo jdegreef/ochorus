@@ -5779,8 +5779,8 @@ class InkSafePlateTests(SimpleTestCase):
 
     White type on a coloured plate is the house style across both cover tiers,
     so when a plate colour is too pale the colour has to yield, not the ink. The
-    numbers below are the library's real ones: 16 committed covers failed AA on
-    the 23px author line, worst at 3.16:1.
+    numbers below are the library's real ones: 8 of 45 plate colours failed AA
+    on the 23px author line, worst at 2.81:1.
     """
 
     PALE = ["#ca8d21", "#4996a2", "#2f9e44", "#987952", "#987652", "#ffffff"]
@@ -5799,7 +5799,7 @@ class InkSafePlateTests(SimpleTestCase):
     def test_legible_plates_are_returned_untouched(self):
         from library.covers import ink_safe
 
-        # The floor must be a no-op on 41 of the library's 46 plate colours, or
+        # The floor must be a no-op on 37 of the library's 45 plate colours, or
         # it would rewrite artwork it has no business rewriting.
         for color in self.ALREADY_LEGIBLE:
             with self.subTest(color=color):
@@ -5829,7 +5829,7 @@ class InkSafePlateTests(SimpleTestCase):
 
         # The floor is only worth anything if build_svg actually applies it.
         svg = build_svg("Title", "", "Author", "#ca8d21", "en")
-        self.assertIn('stop-color="#a1701a"', svg)
+        self.assertIn('stop-color="#956818"', svg)
         self.assertNotIn('stop-color="#ca8d21"', svg)
 
 

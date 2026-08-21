@@ -212,13 +212,24 @@ def _plate_hex(value) -> str:
 
     An admin picks this colour in a `<input type="color">` with nothing to tell
     them a pale one leaves the byline under 4.5:1, and an imported row never
-    passes through the fixture gate that would catch it. Empty stays empty — the
-    drawer supplies the house blue — and a short or alpha form is left alone,
-    since `ink_safe` speaks #rrggbb and mapping #abc to the default would
-    replace the admin's pick rather than darken it.
+    passes through the fixture gate that would catch it.
+
+    Short and alpha forms are normalised to #rrggbb first. Passing them through
+    untouched looked safer — the floor speaks #rrggbb, so `#fc3` would come back
+    unchanged — but everything downstream reads them the same way `ink_safe`
+    does: the plate would be drawn in the house blue while the row claimed
+    `#fc3`, which is exactly the data-disagrees-with-artwork drift this floor
+    exists to end. Empty stays empty; the drawer supplies the default.
     """
-    cleaned = _clean_hex(value)
-    return ink_safe(cleaned) if re.fullmatch(r"#[0-9a-fA-F]{6}", cleaned) else cleaned
+    cleaned = _clean_hex(value).lstrip("#")
+    if len(cleaned) in (3, 4):  # #rgb / #rgba — expand so the floor can read it
+        cleaned = "".join(c * 2 for c in cleaned)
+    if len(cleaned) not in (6, 8):
+        return ""
+    # Alpha is dropped rather than carried: the value is painted as a gradient
+    # stop on an opaque plate, and a half-transparent stop is not a colour the
+    # cover can honour.
+    return ink_safe(f"#{cleaned[:6]}")
 
 
 def _clean_year(value) -> int | None:

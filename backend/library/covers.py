@@ -37,6 +37,11 @@ from pathlib import Path
 # The canvas. 3:4, matching BookCover's reserved box so nothing shifts.
 W, H = 600, 800
 
+# The hairline frame's inset, and the baseline the author line sits on. Both are
+# drawn from here, and both are read by the contrast model below.
+_FRAME_INSET = 26
+_AUTHOR_Y = 112
+
 # Per-script serif stacks. Georgia leads the Latin one because it is the
 # nearest ubiquitous face to the brand serif; the others name the common
 # system serifs for their script so Arabic and Hindi covers aren't rendered in
@@ -84,16 +89,40 @@ def cover_path(slug: str, language: str) -> tuple[str, str]:
 AUTHOR_INK_OPACITY = 0.86
 AUTHOR_MIN_CONTRAST = 4.5
 
-# The plate gradient's far stop, as a fraction of the base colour, and how far
-# along that gradient the author line sits. `build_svg` draws from these same
-# constants, so the contrast model cannot drift from the artwork it measures.
+# The plate gradient's far stop, as a fraction of the base colour. `build_svg`
+# paints from this same constant, so the contrast model cannot drift from the
+# artwork it measures.
 _GRADIENT_END = 0.55
-_AUTHOR_GRADIENT_T = 0.28
+
+# The gradient runs to (0.35, 1) in object-bounding-box units, so a point's
+# colour depends on how far it projects along that vector.
+_GRADIENT_VECTOR = (0.35, 1.0)
+
+
+def _gradient_t(x: float, y: float) -> float:
+    """How far along the plate gradient the point (x, y) sits, 0-1."""
+    vx, vy = _GRADIENT_VECTOR
+    return (vx * (x / W) + vy * (y / H)) / (vx * vx + vy * vy)
+
+
+# Measured at the LEFTMOST point the byline can reach, not at its centre. The
+# line is centred and letter-spaced and runs 250-400px wide, and the gradient
+# darkens toward the right — so its left end sits on a lighter plate than its
+# middle, and a floor set from the middle leaves the first few words below AA
+# (measured: a plate floored to 4.53:1 at x=300 gives 4.05:1 at the frame).
+# How wide the line actually is depends on the author's name and on a font the
+# device supplies, neither known here, so the bound is the frame: type cannot
+# start left of it.
+_AUTHOR_GRADIENT_T = _gradient_t(_FRAME_INSET, _AUTHOR_Y)
 
 
 def _channels(hex_color: str) -> tuple[int, int, int]:
-    h = (hex_color or "#3b5bdb").lstrip("#")
-    if len(h) != 6:
+    # Validated, not just measured: `cover_color` is an unvalidated CharField and
+    # the fixtures are hand-edited, so a 6-character value that isn't hex
+    # ("orange") is reachable — and `int(h[i:i+2], 16)` raises on it, which would
+    # replace a named assertion failure with a stack trace.
+    h = (hex_color or "").lstrip("#")
+    if not re.fullmatch(r"[0-9a-fA-F]{6}", h):
         h = "3b5bdb"
     return tuple(int(h[i : i + 2], 16) for i in (0, 2, 4))  # type: ignore[return-value]
 
@@ -148,12 +177,12 @@ def ink_safe(hex_color: str) -> str:
     flip to dark ink would break the one thing the generated and designed tiers
     have in common. So the colour yields, not the ink.
 
-    16 committed covers failed AA on the author line — `the-unselfishness-of-god`
-    worst at 3.16:1 — because a plate colour is DATA (a hand-picked hex, or one
-    sampled from the English artwork) and nothing between the two ever asked
-    whether white could sit on it. Colours that already pass are returned
-    untouched, so this darkened 6 of the library's 45 plate colours and left the
-    rest byte-identical.
+    8 of the library's 45 plate colours could not carry it, across 25 book rows
+    — `the-unselfishness-of-god` worst at 2.81:1 — because a plate colour is DATA
+    (a hand-picked hex, or one sampled from the English artwork) and nothing
+    between choosing it and drawing on it ever asked whether white could sit on
+    it. Colours that already pass are returned untouched, so the other 37 and
+    every cover drawn from them are left byte-identical.
 
     Applied where a colour is MINTED — `palette_from_artwork`, the admin import,
     and the hand-picked hexes in `catalog.py`, all of which land in the fixture
@@ -256,7 +285,6 @@ _LOCKUP, _LOCKUP_VW, _LOCKUP_VH = _read_lockup()
 # Centred at the foot, matching where the printed covers put it. Positioned off
 # the FRAME, not the canvas: placed by canvas coordinates the logo crossed the
 # hairline.
-_FRAME_INSET = 26
 _LOGO_W = 136
 _LOGO_H = _LOGO_W * _LOCKUP_VH / _LOCKUP_VW
 _MARK = (
@@ -379,7 +407,7 @@ def build_svg(
   <rect width="{W}" height="{H}" fill="url(#bg)"/>
   <rect width="{W}" height="{H}" fill="url(#vig)"/>
   <rect x="{_FRAME_INSET}" y="{_FRAME_INSET}" width="{W - 2 * _FRAME_INSET}" height="{H - 2 * _FRAME_INSET}" fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="1.5"/>
-  <text x="{W / 2:.0f}" y="112" text-anchor="middle" fill="#ffffff" fill-opacity="{AUTHOR_INK_OPACITY}" font-family="{family}" font-size="{round(23 * scale)}" letter-spacing="4"{dir_attr}>{author_txt}</text>
+  <text x="{W / 2:.0f}" y="{_AUTHOR_Y}" text-anchor="middle" fill="#ffffff" fill-opacity="{AUTHOR_INK_OPACITY}" font-family="{family}" font-size="{round(23 * scale)}" letter-spacing="4"{dir_attr}>{author_txt}</text>
   <text text-anchor="middle" fill="#ffffff" font-family="{family}" font-weight="600" font-size="{size}"{dir_attr}>{tspans}</text>
   <line x1="{W / 2 - 38:.0f}" y1="{rule_y:.0f}" x2="{W / 2 + 38:.0f}" y2="{rule_y:.0f}" stroke="#ffffff" stroke-opacity="0.55" stroke-width="1.5"/>
   {sub}
