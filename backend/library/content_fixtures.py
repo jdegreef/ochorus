@@ -41,15 +41,20 @@ APP_DIR = Path(__file__).resolve().parent
 CONTENT_SOURCES_FILE = APP_DIR / "content_sources.json"
 
 
-def content_roots() -> list[Path]:
+def content_roots() -> list[tuple[str, Path]]:
     """Directories holding content that reaches prerendered reader pages.
+
+    ``(declared name, absolute path)`` pairs. The name is carried rather than
+    recomputed from the path because it is what the digest keys on, and the two
+    consumers must agree on it exactly — recomputing it made the digest depend
+    on where the root happened to live.
 
     Declared in ``content_sources.json`` rather than here because the web
     build's prebuild gate and render.yaml's buildFilter need the same list, and
     a list that lives in three places drifts. See that file's note.
     """
     roots = json.loads(CONTENT_SOURCES_FILE.read_text())["roots"]
-    return [APP_DIR.parent / r for r in roots]
+    return [(r, APP_DIR.parent / r) for r in roots]
 
 
 #: Where the image build stashes the digest so serving it is a file read, not
@@ -101,10 +106,9 @@ def content_digest() -> str:
 def compute_content_digest() -> str:
     """The digest, computed from the files on disk. See ``content_digest``."""
     h = hashlib.sha256()
-    for root in sorted(content_roots(), key=lambda p: p.as_posix()):
+    for label, root in sorted(content_roots()):
         if not root.exists():
             continue
-        label = root.relative_to(APP_DIR.parent).as_posix()
         for path in sorted(
             (p for p in root.rglob("*") if p.is_file()),
             key=lambda p: p.relative_to(root).as_posix(),

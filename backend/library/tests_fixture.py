@@ -1215,6 +1215,28 @@ class ContentSourceCoverageTests(SimpleTestCase):
                     "and leaves the prerendered pages on the previous prose.",
                 )
 
+    def test_the_build_filter_names_no_undeclared_backend_path(self):
+        """The other direction, which matters as much.
+
+        A buildFilter path that is NOT a digest root rebuilds the reader on
+        commits the gate knows nothing about — so the build starts, finds the
+        API's content_version already matching, and prerenders immediately
+        against an API that is still mid-deploy. That is the stale-prerender
+        race the gate exists to prevent, reintroduced silently. render.yaml,
+        backend/CLAUDE.md and DEPLOYMENT.md all promise these agree; this is the
+        half that makes the promise true in both directions.
+        """
+        in_filter = re.findall(r"^\s*- (backend/\S+)/\*\*$", self.render_yaml, re.M)
+        self.assertTrue(in_filter, "no backend paths found in render.yaml's buildFilter")
+        declared = {f"backend/{r}" for r in self.roots}
+        self.assertEqual(
+            sorted(set(in_filter) - declared),
+            [],
+            "render.yaml's buildFilter rebuilds the reader for paths that are not "
+            "content roots, so the prebuild gate cannot tell whether the API has "
+            "caught up — add them to content_sources.json or drop them.",
+        )
+
     def test_the_recurring_seeds_read_only_from_declared_roots(self):
         """Every directory the release's content seeds read must be declared.
 
@@ -1244,17 +1266,37 @@ class ContentSourceCoverageTests(SimpleTestCase):
         )
 
     def test_digest_changes_when_any_root_changes(self):
-        """The whole mechanism rests on this: touch content, digest moves."""
+        """The whole mechanism rests on this: touch content, digest moves.
+
+        Exercised against a temporary root rather than by dropping a probe file
+        into the real fixture tree — ``unexpected_files()`` treats a stray file
+        there as a fixture-layout error, so the probe would fail a sibling test
+        while it existed and survive any interrupted run.
+        """
+        import tempfile
+        from pathlib import Path
+        from unittest import mock
+
         from library.content_fixtures import compute_content_digest
 
-        before = compute_content_digest()
-        probe = self.repo_root / "backend" / self.roots[0] / ".digest-probe"
-        probe.write_text("x")
-        try:
-            self.assertNotEqual(before, compute_content_digest())
-        finally:
-            probe.unlink()
-        self.assertEqual(before, compute_content_digest())
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "content"
+            (root / "books").mkdir(parents=True)
+            work = root / "books" / "a-book.en.json"
+            work.write_text('[{"model": "library.book"}]')
+
+            with mock.patch(
+                "library.content_fixtures.content_roots",
+                return_value=[("library/fixtures/content", root)],
+            ):
+                before = compute_content_digest()
+                work.write_text('[{"model": "library.book", "fields": {}}]')
+                after = compute_content_digest()
+                self.assertNotEqual(before, after, "editing content left the digest still")
+
+                # A NEW file counts too — that is how a new translation ships.
+                (root / "books" / "a-book.sw.json").write_text("[]")
+                self.assertNotEqual(after, compute_content_digest())
 
 
 class ContentProseTests(SimpleTestCase):

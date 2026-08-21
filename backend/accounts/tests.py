@@ -232,17 +232,15 @@ class HealthEndpointTests(TestCase):
         import hashlib
 
         from library.content_fixtures import (
-            APP_DIR,
             compute_content_digest,
             content_roots,
         )
 
         h = hashlib.sha256()
         seen = 0
-        for root in sorted(content_roots(), key=lambda p: p.as_posix()):
+        for label, root in sorted(content_roots()):
             if not root.exists():
                 continue
-            label = root.relative_to(APP_DIR.parent).as_posix()
             rels = sorted(
                 p.relative_to(root).as_posix() for p in root.rglob("*") if p.is_file()
             )

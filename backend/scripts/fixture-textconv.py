@@ -19,9 +19,16 @@ from library.content_prose import render_file  # noqa: E402
 
 if __name__ == "__main__":
     path = Path(sys.argv[1])
-    # Never fail: git prints textconv output AS the file, so an exception here
-    # would make every fixture look empty in every diff.
+    # Never fail, for ANY reason: git prints textconv output AS the file, so an
+    # exception here makes the file look empty and the diff look like a
+    # deletion. A bare `except Exception` is the right shape for that contract —
+    # a non-UTF-8 byte, a JSON array of non-objects, a field type nobody
+    # anticipated. Falling back to the raw bytes is always safe: worst case the
+    # reviewer sees the JSON they would have seen anyway.
     try:
         sys.stdout.write(render_file(path.read_text(encoding="utf-8")))
-    except OSError as exc:
-        sys.stdout.write(f"<unreadable: {exc}>\n")
+    except Exception as exc:  # noqa: BLE001 — see above
+        try:
+            sys.stdout.write(path.read_text(encoding="utf-8", errors="replace"))
+        except Exception:  # noqa: BLE001
+            sys.stdout.write(f"<unreadable: {exc}>\n")

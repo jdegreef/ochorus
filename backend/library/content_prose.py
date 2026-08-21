@@ -61,24 +61,44 @@ def paragraphs(body_html: str) -> list[str]:
     return out
 
 
-def _field_lines(kind: str, fields: dict, keys: tuple[str, ...]) -> list[str]:
-    """Short metadata fields, one per line, blanks skipped."""
+def _scalar(value) -> str:
+    """A field value on one line, so a change to it is one changed line."""
+    if isinstance(value, list):
+        return ", ".join(str(v) for v in value)
+    return str(value)
+
+
+#: Fields whose value is prose to be rendered, not printed raw.
+_BODY_FIELDS = ("body_html",)
+
+#: Fields a reviewer should not have to scroll past. NOT a whitelist of what is
+#: shown — everything else is shown — just of what is dropped, and only where
+#: the value is derived from something already on screen. `body_text` and
+#: `word_count` both follow from `body_html`; timestamps are not content.
+_DERIVED_FIELDS = frozenset(
+    {"body_text", "word_count", "search_vector", "created_at", "updated_at",
+     "citations_indexed_at"}
+)
+
+
+def _field_lines(kind: str, fields: dict) -> list[str]:
+    """Every field except the derived ones, one per line, in a stable order.
+
+    Deliberately not a whitelist. An earlier version listed the fields worth
+    showing, which meant a change to any unlisted one — reassigning a book's
+    author, flipping is_published — rendered as NO diff at all, and
+    ``content_diff`` then called it "formatting only". A review tool that says
+    "nothing changed" about a real change is worse than no review tool.
+    """
     lines = []
-    for key in keys:
+    for key in sorted(fields):
+        if key in _DERIVED_FIELDS or key in _BODY_FIELDS:
+            continue
         value = fields.get(key)
         if value in (None, "", []):
             continue
-        lines.append(f"{kind}.{key}: {value}")
+        lines.append(f"{kind}.{key}: {_scalar(value)}")
     return lines
-
-
-#: Metadata worth showing above the prose. Not every column — a diff of
-#: `updated_at` or a cover URL tells a reviewer nothing about the translation.
-_BOOK_FIELDS = ("slug", "language", "title", "subtitle", "description", "source_type",
-                "publication_year", "attribution", "is_published")
-_SERMON_FIELDS = ("slug", "language", "title", "scripture_ref", "summary",
-                  "source_type", "preached_on", "is_published")
-_AUTHOR_FIELDS = ("slug", "name", "bio", "birth_year", "death_year", "is_imprint")
 
 
 def render(rows: list[dict]) -> str:
@@ -86,32 +106,38 @@ def render(rows: list[dict]) -> str:
 
     Numbers every paragraph, so a hunk header names the chapter and the line
     says which paragraph of it moved — the two things a reviewer needs and the
-    raw JSON cannot show.
+    raw JSON cannot show. Every non-derived field is printed, so no change can
+    render as an empty diff.
     """
     lines: list[str] = []
     for row in rows:
-        model = row.get("model", "")
-        fields = row.get("fields", {})
-        if model == "library.book":
-            lines += ["", f"=== BOOK {fields.get('slug')} [{fields.get('language')}]"]
-            lines += _field_lines("book", fields, _BOOK_FIELDS)
-        elif model == "library.author":
-            lines += ["", f"=== AUTHOR {fields.get('slug')}"]
-            lines += _field_lines("author", fields, _AUTHOR_FIELDS)
-        elif model == "library.sermon":
-            lines += ["", f"=== SERMON {fields.get('slug')} [{fields.get('language')}]"]
-            lines += _field_lines("sermon", fields, _SERMON_FIELDS)
-            for n, para in enumerate(paragraphs(fields.get("body_html", "")), 1):
-                lines.append(f"[{n:>3}] {para}")
-        elif model == "library.chapter":
+        if not isinstance(row, dict):
+            lines += ["", json.dumps(row, ensure_ascii=False)]
+            continue
+        model = str(row.get("model", "?"))
+        fields = row.get("fields") or {}
+        if not isinstance(fields, dict):
+            lines += ["", f"=== {model}", json.dumps(fields, ensure_ascii=False)]
+            continue
+        kind = model.split(".")[-1]
+
+        if kind == "chapter":
             order = fields.get("order")
             lines += ["", f"--- CHAPTER {order}: {fields.get('title', '')}".rstrip()]
-            for n, para in enumerate(paragraphs(fields.get("body_html", "")), 1):
-                lines.append(f"[{order}.{n}] {para}")
         else:
-            # Plans, topic members and anything added later: short rows whose
-            # JSON is already readable, so show it rather than drop it.
-            lines += ["", f"=== {model}", json.dumps(fields, ensure_ascii=False, indent=1)]
+            ident = fields.get("slug") or fields.get("name") or ""
+            language = fields.get("language")
+            suffix = f" [{language}]" if language else ""
+            lines += ["", f"=== {kind.upper()} {ident}{suffix}".rstrip()]
+
+        lines += _field_lines(kind, fields)
+        for field in _BODY_FIELDS:
+            body = fields.get(field)
+            if not body:
+                continue
+            prefix = f"{fields.get('order')}." if kind == "chapter" else ""
+            for n, para in enumerate(paragraphs(str(body)), 1):
+                lines.append(f"[{prefix}{n}] {para}")
     return "\n".join(lines).strip() + "\n"
 
 
