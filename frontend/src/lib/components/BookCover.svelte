@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { inkSafe, shade } from '$lib/coverArt';
+	import { COVER_FALLBACK, shade } from '$lib/coverArt';
 	import type { BookSummary } from '$lib/library';
 	import { i18n } from '$lib/i18n.svelte';
 	import lockup from '$lib/brand/ochorus-lockup.svg?raw';
@@ -43,10 +43,7 @@
 		return lines;
 	}
 
-	// Floored for legibility, exactly as the server-drawn file is: this fallback
-	// carries the same white byline, and on the paler plates white at 0.86 does
-	// not clear AA on the book's raw colour (see inkSafe).
-	const color = $derived(inkSafe(book.cover_color));
+	const color = $derived(book.cover_color || COVER_FALLBACK);
 	// Smaller type for longer titles so they always fit.
 	const fontSize = $derived(book.title.length <= 22 ? 58 : 46);
 	const maxChars = $derived(book.title.length <= 22 ? 12 : 16);

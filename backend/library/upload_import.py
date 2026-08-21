@@ -23,6 +23,7 @@ from django.db import transaction
 from django.utils.text import slugify
 
 from . import qa
+from .covers import ink_safe
 from .ingest import (
     clean_fragment,
     clean_title,
@@ -206,6 +207,20 @@ def _clean_hex(value) -> str:
     return v if re.fullmatch(r"#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})", v) else ""
 
 
+def _plate_hex(value) -> str:
+    """A validated accent, floored so white type can sit on it.
+
+    An admin picks this colour in a `<input type="color">` with nothing to tell
+    them a pale one leaves the byline under 4.5:1, and an imported row never
+    passes through the fixture gate that would catch it. Empty stays empty — the
+    drawer supplies the house blue — and a short or alpha form is left alone,
+    since `ink_safe` speaks #rrggbb and mapping #abc to the default would
+    replace the admin's pick rather than darken it.
+    """
+    cleaned = _clean_hex(value)
+    return ink_safe(cleaned) if re.fullmatch(r"#[0-9a-fA-F]{6}", cleaned) else cleaned
+
+
 def _clean_year(value) -> int | None:
     """A plausible publication year (1..2100), else None."""
     try:
@@ -252,7 +267,7 @@ def create_book(
         source_type=Book.SourceType.PUBLIC_DOMAIN,
         source_url=_http_url(source_url),
         cover_url=_http_url(cover_url),
-        cover_color=_clean_hex(cover_color),
+        cover_color=_plate_hex(cover_color),
         publication_year=_clean_year(publication_year),
         attribution=str(attribution or "").strip(),
         sort_order=last + 1,

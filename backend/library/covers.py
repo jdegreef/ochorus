@@ -85,9 +85,8 @@ AUTHOR_INK_OPACITY = 0.86
 AUTHOR_MIN_CONTRAST = 4.5
 
 # The plate gradient's far stop, as a fraction of the base colour, and how far
-# along that gradient the author line sits. Both are read back by
-# `author_plate_color`; keep them in step with the `<linearGradient id="bg">`
-# and the y=112 byline in `build_svg`.
+# along that gradient the author line sits. `build_svg` draws from these same
+# constants, so the contrast model cannot drift from the artwork it measures.
 _GRADIENT_END = 0.55
 _AUTHOR_GRADIENT_T = 0.28
 
@@ -99,7 +98,11 @@ def _channels(hex_color: str) -> tuple[int, int, int]:
     return tuple(int(h[i : i + 2], 16) for i in (0, 2, 4))  # type: ignore[return-value]
 
 
-def relative_luminance(hex_color: str) -> float:
+def _hex(channels) -> str:
+    return "#" + "".join(f"{c:02x}" for c in channels)
+
+
+def _relative_luminance(hex_color: str) -> float:
     """WCAG 2.x relative luminance of a colour."""
     channels = []
     for value in _channels(hex_color):
@@ -109,7 +112,7 @@ def relative_luminance(hex_color: str) -> float:
     return 0.2126 * r + 0.7152 * g + 0.0722 * b
 
 
-def author_plate_color(hex_color: str) -> str:
+def _author_plate_color(hex_color: str) -> str:
     """The colour actually under the author line, not the plate's top stop.
 
     The byline sits at y=112 on a 600x800 plate painted with a gradient running
@@ -130,12 +133,10 @@ def author_ink_contrast(hex_color: str) -> float:
     composited over the plate, not white — a third of a ratio point, and the
     difference between passing and failing on the paler plates.
     """
-    behind = author_plate_color(hex_color)
+    behind = _author_plate_color(hex_color)
     plate = _channels(behind)
-    ink = "#" + "".join(
-        f"{round(AUTHOR_INK_OPACITY * 255 + (1 - AUTHOR_INK_OPACITY) * c):02x}" for c in plate
-    )
-    light, dark = relative_luminance(ink), relative_luminance(behind)
+    ink = _hex(round(AUTHOR_INK_OPACITY * 255 + (1 - AUTHOR_INK_OPACITY) * c) for c in plate)
+    light, dark = _relative_luminance(ink), _relative_luminance(behind)
     return (light + 0.05) / (dark + 0.05)
 
 
@@ -151,8 +152,17 @@ def ink_safe(hex_color: str) -> str:
     worst at 3.16:1 — because a plate colour is DATA (a hand-picked hex, or one
     sampled from the English artwork) and nothing between the two ever asked
     whether white could sit on it. Colours that already pass are returned
-    untouched, so this darkens 5 of the library's 46 plate colours and leaves the
-    committed artwork of the rest byte-identical.
+    untouched, so this darkened 6 of the library's 45 plate colours and left the
+    rest byte-identical.
+
+    Applied where a colour is MINTED — `palette_from_artwork`, the admin import,
+    and the hand-picked hexes in `catalog.py`, all of which land in the fixture
+    already floored — rather than only where one is drawn. A floor at the drawer
+    has to be copied into every other drawer (the client fallback was a second
+    copy of this arithmetic, and two surfaces that paint the raw colour were
+    still missed), and it leaves the stored data permanently disagreeing with
+    the artwork that ships. `build_svg` still calls this, but on floored data it
+    is a no-op standing guard over a row that reached the DB some other way.
 
     Scaling channels rather than moving through HLS keeps the hue and the
     saturation exactly where the curator put them: a green plate comes back a
@@ -160,12 +170,16 @@ def ink_safe(hex_color: str) -> str:
     """
     # Normalised first, so a blank or malformed value comes back as the default
     # rather than as itself with a "#" bolted on.
-    hex_color = "#" + "".join(f"{c:02x}" for c in _channels(hex_color))
+    hex_color = _hex(_channels(hex_color))
     if author_ink_contrast(hex_color) >= AUTHOR_MIN_CONTRAST:
         return hex_color
-    # Integer steps, not a float accumulator: the TypeScript mirror walks the
-    # same ladder, and two languages drifting a step apart would hand one book
-    # two plates.
+    # A search, not a formula: sRGB gamma is applied per channel AFTER the
+    # truncation in `_darken`, and the ink is composited over the plate, so both
+    # sides of the ratio move with the factor. Integer steps rather than a float
+    # accumulator, and linear rather than binary, because that truncation makes
+    # the predicate very slightly non-monotone — a bisection agreed on every
+    # colour sampled, but "agreed on the sample" is not a guarantee, and the walk
+    # costs microseconds in an offline command.
     for step in range(99, 0, -1):
         candidate = _darken(hex_color, step / 100)
         if author_ink_contrast(candidate) >= AUTHOR_MIN_CONTRAST:
@@ -174,11 +188,7 @@ def ink_safe(hex_color: str) -> str:
 
 
 def _darken(hex_color: str, factor: float = 0.55) -> str:
-    h = (hex_color or "#3b5bdb").lstrip("#")
-    if len(h) != 6:
-        h = "3b5bdb"
-    r, g, b = (int(h[i : i + 2], 16) for i in (0, 2, 4))
-    return "#" + "".join(f"{max(0, int(c * factor)):02x}" for c in (r, g, b))
+    return _hex(max(0, int(c * factor)) for c in _channels(hex_color))
 
 
 def _wrap(text: str, max_chars: int) -> list[str]:
@@ -300,7 +310,13 @@ def palette_from_artwork(path) -> str:
     lightness = min(max(lightness, 0.30), 0.46)
     saturation = min(max(saturation, 0.30), 0.72)
     r, g, b = colorsys.hls_to_rgb(hue, lightness, saturation)
-    return f"#{round(r * 255):02x}{round(g * 255):02x}{round(b * 255):02x}"
+    # Floored on the way out, not left for the drawer. The lightness ceiling
+    # above cannot do this job: what a plate needs to carry white type depends on
+    # its HUE — a yellow has to sit at L<=0.29 to clear 4.5:1 where a blue clears
+    # it at 0.66 — so a single ceiling tight enough for the yellows would crush
+    # every blue far darker than it needs. Four of the six colours that failed AA
+    # in the library were minted right here.
+    return ink_safe(_hex(round(c * 255) for c in (r, g, b)))
 
 
 def build_svg(
@@ -353,7 +369,7 @@ def build_svg(
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0.35" y2="1">
       <stop offset="0" stop-color="{color}"/>
-      <stop offset="1" stop-color="{_darken(color)}"/>
+      <stop offset="1" stop-color="{_darken(color, _GRADIENT_END)}"/>
     </linearGradient>
     <radialGradient id="vig" cx="0.5" cy="0.42" r="0.78">
       <stop offset="0.55" stop-color="#000000" stop-opacity="0"/>
@@ -363,7 +379,7 @@ def build_svg(
   <rect width="{W}" height="{H}" fill="url(#bg)"/>
   <rect width="{W}" height="{H}" fill="url(#vig)"/>
   <rect x="{_FRAME_INSET}" y="{_FRAME_INSET}" width="{W - 2 * _FRAME_INSET}" height="{H - 2 * _FRAME_INSET}" fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="1.5"/>
-  <text x="{W / 2:.0f}" y="112" text-anchor="middle" fill="#ffffff" fill-opacity="0.86" font-family="{family}" font-size="{round(23 * scale)}" letter-spacing="4"{dir_attr}>{author_txt}</text>
+  <text x="{W / 2:.0f}" y="112" text-anchor="middle" fill="#ffffff" fill-opacity="{AUTHOR_INK_OPACITY}" font-family="{family}" font-size="{round(23 * scale)}" letter-spacing="4"{dir_attr}>{author_txt}</text>
   <text text-anchor="middle" fill="#ffffff" font-family="{family}" font-weight="600" font-size="{size}"{dir_attr}>{tspans}</text>
   <line x1="{W / 2 - 38:.0f}" y1="{rule_y:.0f}" x2="{W / 2 + 38:.0f}" y2="{rule_y:.0f}" stroke="#ffffff" stroke-opacity="0.55" stroke-width="1.5"/>
   {sub}

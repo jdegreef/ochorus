@@ -83,6 +83,11 @@ def _cover(fields: dict) -> str:
     return fields.get("cover_url") or ""
 
 
+def _cover_color(fields: dict) -> str:
+    """A book row's cover_color, absent-or-null normalised to ''."""
+    return fields.get("cover_color") or ""
+
+
 class FixtureIntegrityTests(SimpleTestCase):
     """File-level invariants every content append must preserve."""
 
@@ -626,6 +631,30 @@ class CoverAssetTests(SimpleTestCase):
             "translated edition wearing another edition's cover — expected "
             "/covers/<lang>/<slug>.<ext> (see library.covers.cover_path); run "
             "`uv run python scripts/localize_covers.py` to draw and repoint it",
+        )
+
+    def test_plate_colours_can_carry_white_type(self):
+        """Every stored `cover_color` must be dark enough for the white byline.
+
+        The type on a cover is always white, so a plate colour is only legible
+        if white can sit on it — and 6 of the library's 45 colours could not,
+        down to 3.16:1 against the 4.5:1 AA asks of a 23px line.
+
+        This gates the DATA, where the mistake is made: a hex typed into
+        `catalog.py` or minted by `palette_from_artwork`. `covers.ink_safe`
+        floors both on the way in, so a failure here means a colour that reached
+        the fixture some other way — hand-edited, or imported before the floor
+        existed. Run it through `ink_safe` and commit the result.
+        """
+        pale = sorted(
+            (f["slug"], f["language"], _cover_color(f), f"{author_ink_contrast(_cover_color(f)):.2f}:1")
+            for f in self.books
+            if _cover_color(f) and author_ink_contrast(_cover_color(f)) < AUTHOR_MIN_CONTRAST
+        )
+        self.assertEqual(
+            pale, [],
+            "cover_color too pale to carry the white author line at WCAG AA — "
+            "floor it with covers.ink_safe",
         )
 
     def test_generated_plates_carry_white_type_at_aa(self):
