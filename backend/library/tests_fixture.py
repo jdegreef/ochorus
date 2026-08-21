@@ -50,6 +50,8 @@ from library.content_fixtures import (
     unexpected_files,
     work_filename,
 )
+from library.covers import AUTHOR_MIN_CONTRAST, author_ink_contrast
+from library.curated_art import CURATED
 
 EXPECTED_MODELS = {
     "library.author",
@@ -80,6 +82,11 @@ def all_rows() -> list:
 def _cover(fields: dict) -> str:
     """A book row's cover_url, absent-or-null normalised to ''."""
     return fields.get("cover_url") or ""
+
+
+def _cover_color(fields: dict) -> str:
+    """A book row's cover_color, absent-or-null normalised to ''."""
+    return fields.get("cover_color") or ""
 
 
 class FixtureIntegrityTests(SimpleTestCase):
@@ -625,6 +632,68 @@ class CoverAssetTests(SimpleTestCase):
             "translated edition wearing another edition's cover — expected "
             "/covers/<lang>/<slug>.<ext> (see library.covers.cover_path); run "
             "`uv run python scripts/localize_covers.py` to draw and repoint it",
+        )
+
+    def test_plate_colours_can_carry_white_type(self):
+        """Every stored `cover_color` must be dark enough for the white byline.
+
+        The type on a cover is always white, so a plate colour is only legible
+        if white can sit on it — and 6 of the library's 45 colours could not,
+        down to 3.16:1 against the 4.5:1 AA asks of a 23px line.
+
+        This gates the DATA, where the mistake is made: a hex typed into
+        `catalog.py` or minted by `palette_from_artwork`. `covers.ink_safe`
+        floors both on the way in, so a failure here means a colour that reached
+        the fixture some other way — hand-edited, or imported before the floor
+        existed. Run it through `ink_safe` and commit the result.
+        """
+        pale = sorted(
+            (f["slug"], f["language"], _cover_color(f), f"{author_ink_contrast(_cover_color(f)):.2f}:1")
+            for f in self.books
+            if _cover_color(f) and author_ink_contrast(_cover_color(f)) < AUTHOR_MIN_CONTRAST
+        )
+        self.assertEqual(
+            pale, [],
+            "cover_color too pale to carry the white author line at WCAG AA — "
+            "floor it with covers.ink_safe",
+        )
+
+    def test_generated_plates_carry_white_type_at_aa(self):
+        """Every committed plate must be dark enough for the white byline.
+
+        The author line is 23px — not "large text" under WCAG 1.4.3 — so AA asks
+        4.5:1 of it, and 16 committed covers gave less, down to 3.16:1 on
+        `the-unselfishness-of-god`. A plate colour is DATA (hand-picked, or
+        sampled from the English artwork) and nothing between the two ever asked
+        whether white could sit on it; `covers.ink_safe` now floors it as it
+        draws, and this fails any committed file drawn before that or by hand.
+
+        Reads the artwork rather than the fixture on purpose: the fixture holds
+        the book's chosen colour, which stays its own, while the file holds what
+        a reader actually sees. Curated covers are skipped — their type sits on a
+        painting under a scrim, which this arithmetic can't speak for — and they
+        are recognised by the CURATED manifest, the same key `generate_covers`
+        uses, rather than by sniffing the embedded image: `build_curated_covers`
+        is one `sips` flag away from emitting something other than JPEG, and a
+        sniff would then fail every curated cover instead of skipping it.
+        """
+        failures = []
+        for svg in sorted((self.STATIC_DIR / "covers").rglob("*.svg")):
+            if svg.stem in CURATED:
+                continue
+            source = svg.read_text(encoding="utf-8")
+            stop = re.search(r'<stop offset="0" stop-color="(#[0-9a-f]{6})"', source)
+            if not stop:
+                failures.append((str(svg.relative_to(self.STATIC_DIR)), "no plate gradient"))
+                continue
+            ratio = author_ink_contrast(stop.group(1))
+            if ratio < AUTHOR_MIN_CONTRAST:
+                failures.append((str(svg.relative_to(self.STATIC_DIR)), f"{ratio:.2f}:1"))
+        self.assertEqual(
+            failures, [],
+            "generated cover whose author line fails WCAG AA (4.5:1) — redraw it "
+            "with `generate_covers --force` / `scripts/localize_covers.py --force`, "
+            "which floors the plate through covers.ink_safe",
         )
 
     def test_svg_covers_have_a_raster_twin_for_og_image(self):

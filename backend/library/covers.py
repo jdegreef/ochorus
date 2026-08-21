@@ -37,6 +37,11 @@ from pathlib import Path
 # The canvas. 3:4, matching BookCover's reserved box so nothing shifts.
 W, H = 600, 800
 
+# The hairline frame's inset, and the baseline the author line sits on. Both are
+# drawn from here, and both are read by the contrast model below.
+_FRAME_INSET = 26
+_AUTHOR_Y = 112
+
 # Per-script serif stacks. Georgia leads the Latin one because it is the
 # nearest ubiquitous face to the brand serif; the others name the common
 # system serifs for their script so Arabic and Hindi covers aren't rendered in
@@ -76,12 +81,143 @@ def cover_path(slug: str, language: str) -> tuple[str, str]:
     return f"/covers/{language}/{slug}.svg", f"{language}/{slug}.svg"
 
 
-def _darken(hex_color: str, factor: float = 0.55) -> str:
-    h = (hex_color or "#3b5bdb").lstrip("#")
-    if len(h) != 6:
+# The ink is white at these opacities (see build_svg). The author line is set at
+# 23px, which is NOT "large text" under WCAG 1.4.3, so AA asks 4.5:1 of it; the
+# title runs 34-60px and asks 3:1, which every colour that satisfies the author
+# line clears with room to spare (the worst measured is 5.08 against a 3.0 bar).
+# So the author line is the binding constraint, and the only one checked.
+AUTHOR_INK_OPACITY = 0.86
+AUTHOR_MIN_CONTRAST = 4.5
+
+# The plate gradient's far stop, as a fraction of the base colour. `build_svg`
+# paints from this same constant, so the contrast model cannot drift from the
+# artwork it measures.
+_GRADIENT_END = 0.55
+
+# The gradient runs to (0.35, 1) in object-bounding-box units, so a point's
+# colour depends on how far it projects along that vector.
+_GRADIENT_VECTOR = (0.35, 1.0)
+
+
+def _gradient_t(x: float, y: float) -> float:
+    """How far along the plate gradient the point (x, y) sits, 0-1."""
+    vx, vy = _GRADIENT_VECTOR
+    return (vx * (x / W) + vy * (y / H)) / (vx * vx + vy * vy)
+
+
+# Measured at the LEFTMOST point the byline can reach, not at its centre. The
+# line is centred and letter-spaced and runs 250-400px wide, and the gradient
+# darkens toward the right — so its left end sits on a lighter plate than its
+# middle, and a floor set from the middle leaves the first few words below AA
+# (measured: a plate floored to 4.53:1 at x=300 gives 4.05:1 at the frame).
+# How wide the line actually is depends on the author's name and on a font the
+# device supplies, neither known here, so the bound is the frame: type cannot
+# start left of it.
+_AUTHOR_GRADIENT_T = _gradient_t(_FRAME_INSET, _AUTHOR_Y)
+
+
+def _channels(hex_color: str) -> tuple[int, int, int]:
+    # Validated, not just measured: `cover_color` is an unvalidated CharField and
+    # the fixtures are hand-edited, so a 6-character value that isn't hex
+    # ("orange") is reachable — and `int(h[i:i+2], 16)` raises on it, which would
+    # replace a named assertion failure with a stack trace.
+    h = (hex_color or "").lstrip("#")
+    if not re.fullmatch(r"[0-9a-fA-F]{6}", h):
         h = "3b5bdb"
-    r, g, b = (int(h[i : i + 2], 16) for i in (0, 2, 4))
-    return "#" + "".join(f"{max(0, int(c * factor)):02x}" for c in (r, g, b))
+    return tuple(int(h[i : i + 2], 16) for i in (0, 2, 4))  # type: ignore[return-value]
+
+
+def _hex(channels) -> str:
+    return "#" + "".join(f"{c:02x}" for c in channels)
+
+
+def _relative_luminance(hex_color: str) -> float:
+    """WCAG 2.x relative luminance of a colour."""
+    channels = []
+    for value in _channels(hex_color):
+        c = value / 255
+        channels.append(c / 12.92 if c <= 0.03928 else ((c + 0.055) / 1.055) ** 2.4)
+    r, g, b = channels
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b
+
+
+def _author_plate_color(hex_color: str) -> str:
+    """The colour actually under the author line, not the plate's top stop.
+
+    The byline sits at y=112 on a 600x800 plate painted with a gradient running
+    to ``(0.35, 1)``, so the point projects 28% of the way along it and the
+    colour there is already a little darker than the stop. The vignette is fully
+    transparent that high (it starts at 0.55 of a 0.78 radius centred at 0.42),
+    so the gradient is the whole story. Modelling it matters: taking the top stop
+    instead reads ~0.6 of a ratio point low, which would darken plates that are
+    in fact legible.
+    """
+    return _darken(hex_color, 1 - (1 - _GRADIENT_END) * _AUTHOR_GRADIENT_T)
+
+
+def author_ink_contrast(hex_color: str) -> float:
+    """Contrast of the author line against the plate it sits on.
+
+    The ink is white at ``AUTHOR_INK_OPACITY``, so what the reader sees is white
+    composited over the plate, not white — a third of a ratio point, and the
+    difference between passing and failing on the paler plates.
+    """
+    behind = _author_plate_color(hex_color)
+    plate = _channels(behind)
+    ink = _hex(round(AUTHOR_INK_OPACITY * 255 + (1 - AUTHOR_INK_OPACITY) * c) for c in plate)
+    light, dark = _relative_luminance(ink), _relative_luminance(behind)
+    return (light + 0.05) / (dark + 0.05)
+
+
+def ink_safe(hex_color: str) -> str:
+    """The plate colour, darkened just enough to carry white ink at AA.
+
+    Ochorus' covers are white type on a coloured plate, always — the frame, the
+    rules, the byline and the lockup are all white, and a per-cover decision to
+    flip to dark ink would break the one thing the generated and designed tiers
+    have in common. So the colour yields, not the ink.
+
+    8 of the library's 45 plate colours could not carry it, across 25 book rows
+    — `the-unselfishness-of-god` worst at 2.81:1 — because a plate colour is DATA
+    (a hand-picked hex, or one sampled from the English artwork) and nothing
+    between choosing it and drawing on it ever asked whether white could sit on
+    it. Colours that already pass are returned untouched, so the other 37 and
+    every cover drawn from them are left byte-identical.
+
+    Applied where a colour is MINTED — `palette_from_artwork`, the admin import,
+    and the hand-picked hexes in `catalog.py`, all of which land in the fixture
+    already floored — rather than only where one is drawn. A floor at the drawer
+    has to be copied into every other drawer (the client fallback was a second
+    copy of this arithmetic, and two surfaces that paint the raw colour were
+    still missed), and it leaves the stored data permanently disagreeing with
+    the artwork that ships. `build_svg` still calls this, but on floored data it
+    is a no-op standing guard over a row that reached the DB some other way.
+
+    Scaling channels rather than moving through HLS keeps the hue and the
+    saturation exactly where the curator put them: a green plate comes back a
+    deeper green, never a grey or a different green.
+    """
+    # Normalised first, so a blank or malformed value comes back as the default
+    # rather than as itself with a "#" bolted on.
+    hex_color = _hex(_channels(hex_color))
+    if author_ink_contrast(hex_color) >= AUTHOR_MIN_CONTRAST:
+        return hex_color
+    # A search, not a formula: sRGB gamma is applied per channel AFTER the
+    # truncation in `_darken`, and the ink is composited over the plate, so both
+    # sides of the ratio move with the factor. Integer steps rather than a float
+    # accumulator, and linear rather than binary, because that truncation makes
+    # the predicate very slightly non-monotone — a bisection agreed on every
+    # colour sampled, but "agreed on the sample" is not a guarantee, and the walk
+    # costs microseconds in an offline command.
+    for step in range(99, 0, -1):
+        candidate = _darken(hex_color, step / 100)
+        if author_ink_contrast(candidate) >= AUTHOR_MIN_CONTRAST:
+            return candidate
+    return "#000000"  # unreachable: black passes at 21:1
+
+
+def _darken(hex_color: str, factor: float = 0.55) -> str:
+    return _hex(max(0, int(c * factor)) for c in _channels(hex_color))
 
 
 def _wrap(text: str, max_chars: int) -> list[str]:
@@ -149,7 +285,6 @@ _LOCKUP, _LOCKUP_VW, _LOCKUP_VH = _read_lockup()
 # Centred at the foot, matching where the printed covers put it. Positioned off
 # the FRAME, not the canvas: placed by canvas coordinates the logo crossed the
 # hairline.
-_FRAME_INSET = 26
 _LOGO_W = 136
 _LOGO_H = _LOGO_W * _LOCKUP_VH / _LOCKUP_VW
 _MARK = (
@@ -203,7 +338,13 @@ def palette_from_artwork(path) -> str:
     lightness = min(max(lightness, 0.30), 0.46)
     saturation = min(max(saturation, 0.30), 0.72)
     r, g, b = colorsys.hls_to_rgb(hue, lightness, saturation)
-    return f"#{round(r * 255):02x}{round(g * 255):02x}{round(b * 255):02x}"
+    # Floored on the way out, not left for the drawer. The lightness ceiling
+    # above cannot do this job: what a plate needs to carry white type depends on
+    # its HUE — a yellow has to sit at L<=0.29 to clear 4.5:1 where a blue clears
+    # it at 0.66 — so a single ceiling tight enough for the yellows would crush
+    # every blue far darker than it needs. Four of the six colours that failed AA
+    # in the library were minted right here.
+    return ink_safe(_hex(round(c * 255) for c in (r, g, b)))
 
 
 def build_svg(
@@ -214,7 +355,9 @@ def build_svg(
     language: str = "en",
 ) -> str:
     """The cover for one (book, language). Returns SVG source."""
-    color = color or "#3b5bdb"
+    # The plate yields to the ink, not the other way round: `ink_safe` returns
+    # the book's own colour untouched unless white type could not sit on it.
+    color = ink_safe(color)
     family = font_for(language)
     dir_attr = ' direction="rtl"' if language in RTL else ""
 
@@ -254,7 +397,7 @@ def build_svg(
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0.35" y2="1">
       <stop offset="0" stop-color="{color}"/>
-      <stop offset="1" stop-color="{_darken(color)}"/>
+      <stop offset="1" stop-color="{_darken(color, _GRADIENT_END)}"/>
     </linearGradient>
     <radialGradient id="vig" cx="0.5" cy="0.42" r="0.78">
       <stop offset="0.55" stop-color="#000000" stop-opacity="0"/>
@@ -264,7 +407,7 @@ def build_svg(
   <rect width="{W}" height="{H}" fill="url(#bg)"/>
   <rect width="{W}" height="{H}" fill="url(#vig)"/>
   <rect x="{_FRAME_INSET}" y="{_FRAME_INSET}" width="{W - 2 * _FRAME_INSET}" height="{H - 2 * _FRAME_INSET}" fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="1.5"/>
-  <text x="{W / 2:.0f}" y="112" text-anchor="middle" fill="#ffffff" fill-opacity="0.86" font-family="{family}" font-size="{round(23 * scale)}" letter-spacing="4"{dir_attr}>{author_txt}</text>
+  <text x="{W / 2:.0f}" y="{_AUTHOR_Y}" text-anchor="middle" fill="#ffffff" fill-opacity="{AUTHOR_INK_OPACITY}" font-family="{family}" font-size="{round(23 * scale)}" letter-spacing="4"{dir_attr}>{author_txt}</text>
   <text text-anchor="middle" fill="#ffffff" font-family="{family}" font-weight="600" font-size="{size}"{dir_attr}>{tspans}</text>
   <line x1="{W / 2 - 38:.0f}" y1="{rule_y:.0f}" x2="{W / 2 + 38:.0f}" y2="{rule_y:.0f}" stroke="#ffffff" stroke-opacity="0.55" stroke-width="1.5"/>
   {sub}

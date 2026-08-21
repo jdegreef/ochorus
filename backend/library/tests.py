@@ -5774,6 +5774,65 @@ class SearchClickTests(TestCase):
         )
 
 
+class InkSafePlateTests(SimpleTestCase):
+    """The legibility floor under every generated plate.
+
+    White type on a coloured plate is the house style across both cover tiers,
+    so when a plate colour is too pale the colour has to yield, not the ink. The
+    numbers below are the library's real ones: 8 of 45 plate colours failed AA
+    on the 23px author line, worst at 2.81:1.
+    """
+
+    PALE = ["#ca8d21", "#4996a2", "#2f9e44", "#987952", "#987652", "#ffffff"]
+    ALREADY_LEGIBLE = ["#3b5bdb", "#1864ab", "#7a5c48", "#14532d", "#000000"]
+
+    def test_pale_plates_are_darkened_until_the_byline_passes(self):
+        from library.covers import AUTHOR_MIN_CONTRAST, author_ink_contrast, ink_safe
+
+        for color in self.PALE:
+            with self.subTest(color=color):
+                self.assertLess(author_ink_contrast(color), AUTHOR_MIN_CONTRAST)
+                self.assertGreaterEqual(
+                    author_ink_contrast(ink_safe(color)), AUTHOR_MIN_CONTRAST
+                )
+
+    def test_legible_plates_are_returned_untouched(self):
+        from library.covers import ink_safe
+
+        # The floor must be a no-op on 37 of the library's 45 plate colours, or
+        # it would rewrite artwork it has no business rewriting.
+        for color in self.ALREADY_LEGIBLE:
+            with self.subTest(color=color):
+                self.assertEqual(ink_safe(color), color)
+
+    def test_hue_survives_the_floor(self):
+        from library.covers import ink_safe
+
+        # Scaling channels, not moving through HLS: a green plate comes back a
+        # deeper green. Ratios between channels are what carry the hue.
+        darkened = ink_safe("#2f9e44")
+        original = (0x2F, 0x9E, 0x44)
+        got = tuple(int(darkened[i : i + 2], 16) for i in (1, 3, 5))
+        self.assertLess(got[0], original[0])
+        self.assertAlmostEqual(got[1] / got[0], original[1] / original[0], delta=0.08)
+        self.assertAlmostEqual(got[2] / got[0], original[2] / original[0], delta=0.08)
+
+    def test_blank_and_malformed_colours_fall_back_to_the_house_blue(self):
+        from library.covers import ink_safe
+
+        for value in ["", None, "#zzz", "not-a-colour"]:
+            with self.subTest(value=value):
+                self.assertEqual(ink_safe(value), "#3b5bdb")
+
+    def test_the_drawn_plate_uses_the_floored_colour(self):
+        from library.covers import build_svg
+
+        # The floor is only worth anything if build_svg actually applies it.
+        svg = build_svg("Title", "", "Author", "#ca8d21", "en")
+        self.assertIn('stop-color="#956818"', svg)
+        self.assertNotIn('stop-color="#ca8d21"', svg)
+
+
 class GeneratedCoverTests(TestCase):
     """The two invariants of the cover generator.
 

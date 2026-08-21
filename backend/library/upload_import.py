@@ -23,6 +23,7 @@ from django.db import transaction
 from django.utils.text import slugify
 
 from . import qa
+from .covers import ink_safe
 from .ingest import (
     clean_fragment,
     clean_title,
@@ -206,6 +207,31 @@ def _clean_hex(value) -> str:
     return v if re.fullmatch(r"#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})", v) else ""
 
 
+def _plate_hex(value) -> str:
+    """A validated accent, floored so white type can sit on it.
+
+    An admin picks this colour in a `<input type="color">` with nothing to tell
+    them a pale one leaves the byline under 4.5:1, and an imported row never
+    passes through the fixture gate that would catch it.
+
+    Short and alpha forms are normalised to #rrggbb first. Passing them through
+    untouched looked safer — the floor speaks #rrggbb, so `#fc3` would come back
+    unchanged — but everything downstream reads them the same way `ink_safe`
+    does: the plate would be drawn in the house blue while the row claimed
+    `#fc3`, which is exactly the data-disagrees-with-artwork drift this floor
+    exists to end. Empty stays empty; the drawer supplies the default.
+    """
+    cleaned = _clean_hex(value).lstrip("#")
+    if len(cleaned) in (3, 4):  # #rgb / #rgba — expand so the floor can read it
+        cleaned = "".join(c * 2 for c in cleaned)
+    if len(cleaned) not in (6, 8):
+        return ""
+    # Alpha is dropped rather than carried: the value is painted as a gradient
+    # stop on an opaque plate, and a half-transparent stop is not a colour the
+    # cover can honour.
+    return ink_safe(f"#{cleaned[:6]}")
+
+
 def _clean_year(value) -> int | None:
     """A plausible publication year (1..2100), else None."""
     try:
@@ -252,7 +278,7 @@ def create_book(
         source_type=Book.SourceType.PUBLIC_DOMAIN,
         source_url=_http_url(source_url),
         cover_url=_http_url(cover_url),
-        cover_color=_clean_hex(cover_color),
+        cover_color=_plate_hex(cover_color),
         publication_year=_clean_year(publication_year),
         attribution=str(attribution or "").strip(),
         sort_order=last + 1,
