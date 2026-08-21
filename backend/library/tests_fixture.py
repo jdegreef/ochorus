@@ -607,16 +607,22 @@ class CoverAssetTests(SimpleTestCase):
         in PR #355's follow-up and 21 had drifted back within the month, which is
         why the rule is now a test rather than a paragraph.
         """
+        # Pinned as "under this language's directory, named for this slug"
+        # rather than equality with cover_path(): the extension is left open so
+        # a translated edition can carry designed artwork of its own the day one
+        # is drawn, which equality would forbid. Directory and identity are the
+        # parts that were actually wrong.
         wrong = sorted(
             (f["slug"], f["language"], _cover(f))
             for f in self.books
             if f["language"] != "en"
             and _cover(f).startswith("/covers/")
-            and not _cover(f).startswith(f"/covers/{f['language']}/")
+            and not _cover(f).startswith(f"/covers/{f['language']}/{f['slug']}.")
         )
         self.assertEqual(
             wrong, [],
-            "translated edition wearing another language's cover — run "
+            "translated edition wearing another edition's cover — expected "
+            "/covers/<lang>/<slug>.<ext> (see library.covers.cover_path); run "
             "`uv run python scripts/localize_covers.py` to draw and repoint it",
         )
 

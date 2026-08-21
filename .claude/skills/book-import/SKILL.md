@@ -499,9 +499,16 @@ the transcribed chapters against the work's own TOC before choosing it.
    `python manage.py generate_covers <slug> ...` writes a house-style SVG and
    sets `cover_url`. Three things to know:
    - **Per language.** English writes `covers/<slug>.svg`; every other language
-     writes `covers/<lang>/<slug>.svg`, from THAT row's translated title. Run it
-     again after translating a book, or the new locale keeps rendering the
-     English cover under a translated card title.
+     writes `covers/<lang>/<slug>.svg`, from THAT row's translated title.
+   - **It only sets `cover_url` in the DB**, which is enough here because the
+     fixture is dumped from that row a few steps later (§Ship). It is NOT enough
+     for a book that already shipped: `seed_books` re-asserts `cover_url` from
+     the committed fixture every deploy, so for an existing work — a new
+     translation, or a locale still wearing the English cover — run
+     `uv run python scripts/localize_covers.py <slug>` instead. That draws the
+     cover in each language (including recompositing a curated painting under
+     the translated title) and repoints the fixture rows, which is the half
+     `generate_covers` cannot reach.
    - **It never overwrites artwork.** A row whose `cover_url` is `.jpg`/`.png`
      is skipped even under `--force`; `--force` means "redraw the generated
      ones". Safe to run over the whole library.

@@ -61,6 +61,21 @@ def font_for(language: str) -> str:
     return FONTS.get(language, FONT_DEFAULT)
 
 
+def cover_path(slug: str, language: str) -> tuple[str, str]:
+    """(url, path under the covers dir) for one edition's generated cover.
+
+    English keeps the historic root path so the covers already live don't 404;
+    every other language sits under its own directory. Lives here rather than in
+    ``generate_covers`` because four callers assert this layout — the command,
+    ``build_curated_covers``, ``scripts/localize_covers.py`` and the fixture gate
+    that fails a row wearing another language's cover — and a rule spelled out
+    four times is a rule that will be changed in three places.
+    """
+    if language == "en":
+        return f"/covers/{slug}.svg", f"{slug}.svg"
+    return f"/covers/{language}/{slug}.svg", f"{language}/{slug}.svg"
+
+
 def _darken(hex_color: str, factor: float = 0.55) -> str:
     h = (hex_color or "#3b5bdb").lstrip("#")
     if len(h) != 6:

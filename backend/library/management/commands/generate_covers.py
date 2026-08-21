@@ -39,7 +39,7 @@ from __future__ import annotations
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
-from library.covers import build_svg
+from library.covers import build_svg, cover_path
 from library.curated_art import CURATED
 from library.models import Book
 
@@ -48,12 +48,10 @@ COVERS_DIR = settings.BASE_DIR.parent / "frontend" / "static" / "covers"
 # Anything not in this set is treated as artwork and never touched.
 GENERATED_SUFFIX = ".svg"
 
-
-def cover_path(slug: str, language: str) -> tuple[str, str]:
-    """(relative url, path under COVERS_DIR) for a generated cover."""
-    if language == "en":
-        return f"/covers/{slug}.svg", f"{slug}.svg"
-    return f"/covers/{language}/{slug}.svg", f"{language}/{slug}.svg"
+# Re-exported: `cover_path` moved to library.covers when the fixture gate and
+# scripts/localize_covers.py needed it too (both are Django-free), and callers
+# importing it from here keep working.
+__all__ = ["Command", "cover_path", "is_generated"]
 
 
 def is_generated(cover_url: str) -> bool:

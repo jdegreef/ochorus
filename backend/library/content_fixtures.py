@@ -92,33 +92,40 @@ def sermon_fixture_path(slug: str, language: str) -> Path:
     return SERMONS_DIR / work_filename(slug, language)
 
 
-def persist_source_type(path: Path, source_type: str) -> bool:
-    """Rewrite the single ``source_type`` value in a work fixture file in place,
+def persist_field(path: Path, key: str, value: str) -> bool:
+    """Rewrite one string field of a work fixture's Book/Sermon row in place,
     returning True if the file changed.
+
+    Textual, not load-modify-dump: the committed files aren't uniformly formatted
+    (``regen_fixture`` uses records at column 0 / indent=1; a few are indent=2),
+    and re-serialising would rewrite a whole file whose real change is one field,
+    making a review-state flip read as a content edit.
+
+    Safe as a whole-file substitution only for keys the row alone carries —
+    ``source_type``, ``cover_url``, ``cover_color``; chapters have none of them —
+    so exactly one match is asserted rather than assumed.
+    """
+    text = path.read_text(encoding="utf-8")
+    pattern = rf'("{key}"\s*:\s*)"(?:[^"\\]|\\.)*"'
+    new, n = re.subn(pattern, lambda m: m.group(1) + json.dumps(value), text)
+    if n != 1:
+        raise ValueError(f"{path.name}: expected exactly one {key}, found {n}")
+    if new == text:
+        return False
+    path.write_text(new, encoding="utf-8")
+    return True
+
+
+def persist_source_type(path: Path, source_type: str) -> bool:
+    """Flip a work fixture's ``source_type`` in place; True if it changed.
 
     This is what makes an approval DURABLE. ``seed_books`` keeps ``source_type``
     create-only, so on an existing DB a live approval survives deploys — but a
     fresh-DB rebuild (``seed_if_empty`` loaddata) loads the fixture verbatim, so
     without writing the flip here the committed file would silently re-gate the
     translation back to unreviewed.
-
-    Textual, not load-modify-dump: the committed files aren't uniformly formatted
-    (``regen_fixture`` uses records at column 0 / indent=1; a few are indent=2),
-    and re-serialising would rewrite a whole file whose real change is one field,
-    making a review-state flip read as a content edit (see
-    ``scripts/localize_covers.patch`` for the same reasoning). Only the
-    one Book/Sermon row per file carries ``source_type`` — chapters don't — so a
-    whole-file substitution is safe; exactly one match is asserted.
     """
-    text = path.read_text(encoding="utf-8")
-    pattern = r'("source_type"\s*:\s*)"(?:[^"\\]|\\.)*"'
-    new, n = re.subn(pattern, lambda m: m.group(1) + json.dumps(source_type), text)
-    if n != 1:
-        raise ValueError(f"{path.name}: expected exactly one source_type, found {n}")
-    if new == text:
-        return False
-    path.write_text(new, encoding="utf-8")
-    return True
+    return persist_field(path, "source_type", source_type)
 
 
 def ordered_fixture_paths() -> list[Path]:

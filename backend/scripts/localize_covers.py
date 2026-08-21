@@ -83,6 +83,7 @@ like ``build_curated_covers``. Pillow is a dev-group dependency.
 from __future__ import annotations
 
 import argparse
+import functools
 import json
 import re
 import sys
@@ -91,14 +92,23 @@ from pathlib import Path
 BACKEND = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BACKEND))
 
-from library.covers import build_art_svg, build_svg, palette_from_artwork  # noqa: E402
+# Both modules are deliberately Django-free, so this runs as a plain script.
+from library.content_fixtures import (  # noqa: E402
+    BOOKS_DIR,
+    authors_by_slug,
+    persist_field,
+)
+from library.covers import (  # noqa: E402
+    build_art_svg,
+    build_svg,
+    cover_path,
+    palette_from_artwork,
+)
 from library.curated_art import CURATED, credit  # noqa: E402
 
 ROOT = BACKEND.parent
-BOOKS = BACKEND / "library" / "fixtures" / "content" / "books"
 STATIC = ROOT / "frontend" / "static"
 COVERS = STATIC / "covers"
-AUTHORS = BACKEND / "library" / "fixtures" / "content" / "authors.json"
 RASTER = (".jpg", ".jpeg", ".png")
 
 
@@ -143,14 +153,16 @@ def ensure_og_twin(slug: str, artwork: Path) -> bool:
     return True
 
 
+@functools.cache
 def art_layer(slug: str) -> str:
     """The bare base64 JPEG behind a curated cover, read from the English SVG.
 
     ``build_curated_covers`` embeds the cropped artwork as a data URI, so the
     shipped English cover already holds the exact bytes a translated edition
     needs — no Met fetch, no ``sips``, and no chance of a re-crop drifting from
-    the locale that shipped first."""
-    src = (COVERS / f"{slug}.svg").read_text(encoding="utf-8")
+    the locale that shipped first. Cached per work, like ``palettes`` below:
+    these SVGs run 100-150 KB and a work has up to five translated editions."""
+    src = (COVERS / cover_path(slug, "en")[1]).read_text(encoding="utf-8")
     match = re.search(r'data:image/jpeg;base64,([A-Za-z0-9+/=]+)"', src)
     if not match:
         raise SystemExit(f"{slug}: curated cover has no embedded artwork to reuse")
@@ -165,36 +177,17 @@ def book_row(path: Path) -> dict | None:
 
 
 def author_names() -> dict[str, str]:
-    rows = json.loads(AUTHORS.read_text(encoding="utf-8"))
-    return {r["fields"]["slug"]: r["fields"].get("name", "") for r in rows}
+    return {slug: fields.get("name", "") for slug, fields in authors_by_slug().items()}
 
 
 def patch(path: Path, cover_url: str, cover_color: str | None = None) -> None:
-    """Replace the given values in place, touching nothing else.
+    """Point one edition's fixture row at its own cover.
 
     ``cover_color`` is only rewritten for the artwork tier, where the colour is
-    derived here; the other tiers keep whatever the edition already carries.
-
-    Deliberately textual rather than load-modify-dump. The committed files are
-    NOT uniformly formatted — most match regen_fixture (records at column 0,
-    indent=1) but a handful, the-inner-chamber.pt among them, are indent=2 with
-    the records indented. Re-serialising normalises those, which rewrites all
-    526 lines of a file whose actual change is two, and makes a cover edit look
-    like a content edit in review. Reformatting the fixture may be worth doing;
-    it is not this change's business.
-
-    Safe as a whole-file substitution: only ``library.book`` rows carry these
-    keys, and a fixture file holds exactly one book row. Both are asserted."""
-    text = path.read_text(encoding="utf-8")
-    fields = [("cover_url", cover_url)]
+    derived here; the other tiers keep whatever the edition already carries."""
+    persist_field(path, "cover_url", cover_url)
     if cover_color is not None:
-        fields.append(("cover_color", cover_color))
-    for key, value in fields:
-        pattern = rf'("{key}"\s*:\s*)"(?:[^"\\]|\\.)*"'
-        text, n = re.subn(pattern, lambda m, value=value: m.group(1) + json.dumps(value), text)
-        if n != 1:
-            raise SystemExit(f"{path.name}: expected 1 {key}, found {n}")
-    path.write_text(text, encoding="utf-8")
+        persist_field(path, "cover_color", cover_color)
 
 
 def main() -> int:
@@ -211,7 +204,12 @@ def main() -> int:
     names = author_names()
     english: dict[str, dict] = {}
     editions: list[tuple[Path, str, str, dict]] = []
-    for path in sorted(BOOKS.glob("*.json")):
+    # Narrowed by slug rather than filtered after the fact: a book fixture
+    # carries its whole text, so parsing all 153 to keep three costs 74 MB and
+    # most of the runtime — and the SKILL now puts a single-slug run on every
+    # translation job's path.
+    globs = [f"{slug}.*.json" for slug in args.slugs] or ["*.json"]
+    for path in sorted(p for g in globs for p in BOOKS_DIR.glob(g)):
         slug, language = path.stem.rsplit(".", 1)
         fields = book_row(path)
         if fields is None:
@@ -260,17 +258,17 @@ def main() -> int:
             svg = build_svg(title, subtitle, author, fields.get("cover_color") or "", language)
             tier = "generated"
 
-        rel = f"{language}/{slug}.svg"
-        url = f"/covers/{rel}"
+        url, rel = cover_path(slug, language)
         dest = COVERS / rel
         # The author's name is the ENGLISH one by design: these are names, not
         # prose, and the shipped author rows carry a single canonical spelling.
         on_disk = dest.read_text(encoding="utf-8") if dest.exists() else None
-        needs_draw = on_disk is None or (args.force and on_disk != svg)
+        hand_drawn = on_disk is not None and on_disk != svg  # exists, but not ours
+        needs_draw = on_disk is None or (hand_drawn and args.force)
         needs_patch = fields.get("cover_url") != url or (
             color is not None and fields.get("cover_color") != color
         )
-        if on_disk is not None and on_disk != svg and not args.force:
+        if hand_drawn and not args.force:
             diverged.append(rel)
         if not (needs_draw or needs_patch):
             unchanged += 1
@@ -285,8 +283,8 @@ def main() -> int:
             patched += 1
             if not args.dry_run:
                 patch(path, url, color)
-        marks = ("draw" if needs_draw else "") + ("+row" if needs_draw and needs_patch else "")
-        print(f"  ✓ {rel:52} {tier:9} {marks or 'row':8} {color or '':8} {title}")
+        marks = "+".join(m for m, on in (("draw", needs_draw), ("row", needs_patch)) if on)
+        print(f"  ✓ {rel:52} {tier:9} {marks:9} {color or '':8} {title}")
 
     verb = "would write" if args.dry_run else "wrote"
     print(
