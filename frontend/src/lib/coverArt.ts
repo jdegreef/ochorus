@@ -11,6 +11,10 @@
  *
  * A book's own `cover_color` is data, not a UI colour (STYLE_GUIDE §1), which
  * is why it is a raw hex rather than a token. Only the DEFAULT belongs here.
+ *
+ * hex-ok-file: the constant below IS that default — the colour a book wears
+ * when the data has none. It is a stand-in for a data value, not a surface, so
+ * it must not follow the reader's theme.
  */
 
 /** The generator's default cover colour, for books with no `cover_color`. */

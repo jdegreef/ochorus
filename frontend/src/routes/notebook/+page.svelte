@@ -248,6 +248,10 @@
 
 <svelte:head><title>{t('notebook.title')} — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
 
+{#snippet browseLibrary()}
+	<a class="btn btn-primary inline-block" href={localizeHref('/books')}>{t('notebook.browse')}</a>
+{/snippet}
+
 <div class="mx-auto max-w-2xl px-5 py-10">
 	<header class="mb-8">
 		<p class="eyebrow mb-2 text-accent">Ochorus</p>
@@ -258,7 +262,9 @@
 	{#if loading}
 		<p class="text-body text-muted">…</p>
 	{:else if isEmpty}
-		<EmptyState message={t('notebook.empty')} />
+		<!-- The empty Notebook is the one place a reader has nothing to act on, so
+		     it is the one place that most needs a way back to the books. -->
+		<EmptyState message={t('notebook.empty')} action={browseLibrary} />
 	{:else}
 		<div class="mb-6 flex flex-wrap items-center gap-3">
 			<input

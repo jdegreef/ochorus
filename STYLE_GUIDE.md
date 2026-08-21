@@ -433,14 +433,22 @@ Before any UI change ships, it must:
 7. **Keep shared tokens (§1–§3) identical to Take Root** — change both repos together.
 8. **Verify** on the relevant page(s) in all three themes before merge.
 
-Four of these are now enforced in CI rather than left to review:
+Most of these are now enforced in CI rather than left to review. A convention
+without a gate loses to the next person in a hurry — and, on this repo, to the
+next parallel session:
 
 | Guard | Catches |
 |---|---|
-| `typeScaleGuard.test.ts` | arbitrary `text-[…]`, literal `font-size` in markup, scoped CSS or app.css |
+| `colorTokens.test.ts` | raw hex outside `app.css`/admin, unless a comment says why (`hex-ok:` / `hex-ok-file:`) |
+| `typeScaleGuard.test.ts` | arbitrary `text-[…]`, literal `font-size` in markup, scoped CSS or app.css; `.text-display` outside the home hero |
+| `pageShell.test.ts` | a browse page dropping `.page-col` or `<PageHeader>` |
 | `rtl.test.ts` | physical utilities **and** physical CSS in `<style>` blocks |
 | `messageCatalogues.test.ts` | a locale's UI catalogue drifting from `messages/*.json` |
 | `readerDirection.test.ts` | reader surfaces losing their direction handling |
+
+Rules 4 (soft primaries), 5 (contrast + focus), 6 (icon weight, spacing), 7
+(Take Root parity) and 8 (verify in all three themes) remain review-time checks:
+they need a pair of eyes, not a regex.
 
 ---
 

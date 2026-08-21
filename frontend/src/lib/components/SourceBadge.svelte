@@ -93,6 +93,8 @@
 		   width to live in, and tracking is the cheapest 9px to give back. */
 		letter-spacing: 0.04em;
 		background: rgb(0 0 0 / 0.55);
+		/* hex-ok: this pill carries its own dark ground on top of cover
+		   artwork, so its ink is fixed white rather than a theme token. */
 		color: #fff;
 		backdrop-filter: blur(4px);
 		/* The label is translated, so its width is not ours to know — Swahili's is

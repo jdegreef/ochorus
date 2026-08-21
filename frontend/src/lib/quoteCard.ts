@@ -3,6 +3,10 @@
 // organic reach. Pure canvas (no external libs); the palette is a deliberate
 // "paper" look, fixed regardless of the viewer's theme so a shared image reads
 // the same everywhere.
+//
+// hex-ok-file: that fixed palette is the whole point. This renders a PNG that
+// leaves the site — it has no theme to follow, and a card shared from lamplight
+// must look identical to one shared from paper.
 
 import markSvg from '$lib/brand/ochorus-mark.svg?raw';
 

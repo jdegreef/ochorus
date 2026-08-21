@@ -2,6 +2,7 @@
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
+	import { authErrorKey } from '$lib/authErrors';
 
 	const t = i18n.t;
 
@@ -9,6 +10,9 @@
 	let error = $state<string | null>(null);
 	let busy = $state(false);
 	let done = $state(false);
+	let showPassword = $state(false);
+	/** Measured — see the note on /login. */
+	let revealW = $state(0);
 
 	async function submit(e: SubmitEvent) {
 		e.preventDefault();
@@ -16,12 +20,17 @@
 		error = null;
 		const err = await auth.updatePassword(password);
 		busy = false;
-		if (err) error = err;
+		if (err) error = t(authErrorKey(err));
 		else done = true;
 	}
 </script>
 
-<svelte:head><title>{t('reset.title')} — Ochorus</title></svelte:head>
+<svelte:head>
+	<title>{t('reset.title')} — Ochorus</title>
+	<!-- Same as /login: robots.txt Disallows this path, and this is the backstop
+	     for a crawler that ignores it. -->
+	<meta name="robots" content="noindex" />
+</svelte:head>
 
 <div class="mx-auto max-w-[26rem] px-5 py-12">
 	{#if done}
@@ -37,18 +46,30 @@
 		</div>
 		<form class="rounded-card border border-border bg-surface p-6" onsubmit={submit}>
 			<label class="mb-1 block text-small font-medium text-muted" for="password">{t('reset.newPassword')}</label>
-			<input
-				id="password"
-				type="password"
-				bind:value={password}
-				autocomplete="new-password"
-				required
-				minlength="6"
-				placeholder="••••••••"
-				aria-invalid={error ? 'true' : undefined}
-				aria-describedby={error ? 'auth-error' : undefined}
-				class="field mb-3 w-full"
-			/>
+			<div class="pw-wrap mb-1" style="--reveal-w: {revealW}px">
+				<input
+					id="password"
+					type={showPassword ? 'text' : 'password'}
+					bind:value={password}
+					autocomplete="new-password"
+					required
+					minlength="6"
+					placeholder="••••••••"
+					aria-invalid={error ? 'true' : undefined}
+					aria-describedby="{error ? 'auth-error ' : ''}password-rule"
+					class="field w-full"
+				/>
+				<button
+					bind:clientWidth={revealW}
+					type="button"
+					class="pw-toggle"
+					onclick={() => (showPassword = !showPassword)}
+					aria-pressed={showPassword}
+				>
+					{showPassword ? t('login.hidePassword') : t('login.showPassword')}
+				</button>
+			</div>
+			<p id="password-rule" class="mb-3 text-micro text-muted">{t('login.passwordRule')}</p>
 			<!-- Rendered unconditionally, empty and zero-height when there is nothing
 			     to say: a live region is only announced if it was already in the DOM
 			     when its text arrived, so inserting the <p> together with the message
@@ -74,3 +95,25 @@
 		</div>
 	{/if}
 </div>
+
+<style>
+	/* Mirrors /login's reveal — the same control on the same kind of field. */
+	.pw-wrap {
+		position: relative;
+	}
+	.pw-wrap .field {
+		padding-inline-end: calc(var(--reveal-w, 3rem) + 1.1rem);
+	}
+	.pw-toggle {
+		position: absolute;
+		inset-inline-end: 0.6rem;
+		top: 50%;
+		transform: translateY(-50%);
+		font-size: var(--fs-small);
+		font-weight: 600;
+		color: var(--accent);
+		background: none;
+		border: 0;
+		cursor: pointer;
+	}
+</style>

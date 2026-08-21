@@ -4,12 +4,24 @@
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
+	import { authErrorKey } from '$lib/authErrors';
+	import BrandMark from '$lib/components/BrandMark.svelte';
+	import GoogleMark from '$lib/components/GoogleMark.svelte';
 
 	const t = i18n.t;
 
 	type Mode = 'signin' | 'signup' | 'reset';
 
-	let mode = $state<Mode>('signin');
+	// Mode lives in the URL (?mode=signup / reset), so each form is a real place:
+	// linkable, bookmarkable, and Back steps between them instead of leaving the
+	// page entirely. It was component state, which also meant the tab title said
+	// "Sign in" over a "Create your account" heading.
+	const MODES: Mode[] = ['signin', 'signup', 'reset'];
+	const mode = $derived<Mode>(
+		(MODES as string[]).includes($page.url.searchParams.get('mode') ?? '')
+			? ($page.url.searchParams.get('mode') as Mode)
+			: 'signin'
+	);
 	let email = $state('');
 	let password = $state('');
 	let error = $state<string | null>(null);
@@ -18,6 +30,11 @@
 	let sent = $state<null | 'magic' | 'signup' | 'reset'>(null);
 	let resentMsg = $state<string | null>(null);
 	let resentErr = $state<string | null>(null);
+	/** Seconds until Resend is allowed again — the button had no throttle at all. */
+	let resendIn = $state(0);
+	let showPassword = $state(false);
+	/** Measured, because the label is translated — "Показати" is twice "Show". */
+	let revealW = $state(0);
 	let routed = false;
 
 	// The redirect param is captured from the (already locale-prefixed) URL, so
@@ -39,9 +56,22 @@
 		reset: t('login.resetTitle')
 	});
 
+	// Clearing on the MODE, not in the click handler: mode now comes from the
+	// URL, so Back and Forward change the form without any handler running. A
+	// "that email and password don't match" from the sign-in form would
+	// otherwise still be sitting (with aria-invalid) over the reset form.
+	let lastMode: Mode | null = null;
+	$effect(() => {
+		if (lastMode !== null && mode !== lastMode) error = null;
+		lastMode = mode;
+	});
+
 	function switchMode(m: Mode) {
-		mode = m;
-		error = null;
+		const url = new URL($page.url);
+		if (m === 'signin') url.searchParams.delete('mode');
+		else url.searchParams.set('mode', m);
+		// pushState, not replace: switching form IS a navigation the reader can undo.
+		goto(url, { keepFocus: true, noScroll: true });
 	}
 
 	async function submit(e: SubmitEvent) {
@@ -60,7 +90,7 @@
 			// success routes via the $effect above
 		}
 		busy = false;
-		if (err) error = err;
+		if (err) error = t(authErrorKey(err));
 		else password = '';
 	}
 
@@ -73,7 +103,7 @@
 		error = null;
 		const err = await auth.signInWithMagicLink(email);
 		busy = false;
-		if (err) error = err;
+		if (err) error = t(authErrorKey(err));
 		else sent = 'magic';
 	}
 
@@ -83,17 +113,29 @@
 		const err = await auth.signInWithGoogle();
 		// On success the browser navigates to Google; only reachable on error.
 		if (err) {
-			error = err;
+			error = t(authErrorKey(err));
 			busy = false;
 		}
 	}
 
+	// 30s between sends. Without this the button was tappable as fast as a finger
+	// moves, and the only thing stopping a reader from hammering their own inbox
+	// (and tripping Supabase's rate limit, which then blocks the send that would
+	// have worked) was politeness.
+	const RESEND_WAIT = 30;
+
 	async function resend() {
+		if (resendIn > 0) return;
 		resentMsg = null;
 		resentErr = null;
+		resendIn = RESEND_WAIT;
+		const tick = setInterval(() => {
+			resendIn -= 1;
+			if (resendIn <= 0) clearInterval(tick);
+		}, 1000);
 		const err =
 			sent === 'reset' ? await auth.sendPasswordReset(email) : await auth.signInWithMagicLink(email);
-		if (err) resentErr = err;
+		if (err) resentErr = t(authErrorKey(err));
 		else resentMsg = t('login.sentAgain');
 	}
 
@@ -107,7 +149,15 @@
 	);
 </script>
 
-<svelte:head><title>{t('account.signIn')} — Ochorus</title></svelte:head>
+<svelte:head>
+	<title>{titles[mode]} — Ochorus</title>
+	<!-- Belt and braces. robots.txt already Disallows /login, which is what
+	     actually keeps crawlers off it — and note the two do not compose: a
+	     disallowed page is never fetched, so this tag is never READ. It is here
+	     for the case where the Disallow is relaxed (to spend crawl budget
+	     elsewhere) and for crawlers that ignore robots.txt entirely. -->
+	<meta name="robots" content="noindex" />
+</svelte:head>
 
 <div class="mx-auto max-w-[26rem] px-5 py-12">
 	{#if sent}
@@ -118,7 +168,9 @@
 			<p class="mb-4 text-body text-muted">{sentBody}</p>
 			<div class="border-t border-border pt-4">
 				<p class="mb-2 text-small text-muted">{t('login.didntGet')}</p>
-				<button class="btn btn-ghost" onclick={resend}>{t('login.resend')}</button>
+				<button class="btn btn-ghost" onclick={resend} disabled={resendIn > 0}>
+					{resendIn > 0 ? t('login.resendIn').replace('%n%', String(resendIn)) : t('login.resend')}
+				</button>
 				{#if resentMsg}<p role="status" class="mt-2 text-small text-muted">{resentMsg}</p>{/if}
 				{#if resentErr}<p role="alert" class="mt-2 text-small text-danger">{resentErr}</p>{/if}
 			</div>
@@ -128,7 +180,9 @@
 		</p>
 	{:else}
 		<div class="mb-6 text-center">
-			<div class="brand-mark mx-auto mb-3">❦</div>
+			<!-- The lockup every other surface uses. A ❦ here made the one screen
+			     asking for a password the one screen not wearing the brand. -->
+			<div class="mx-auto mb-3 flex justify-center text-accent"><BrandMark height={40} /></div>
 			<h1 class="text-h1">{titles[mode]}</h1>
 			<p class="mt-1 text-small text-muted">
 				{t('login.syncNote')}
@@ -151,18 +205,33 @@
 
 			{#if mode !== 'reset'}
 				<label class="mb-1 block text-small font-medium text-muted" for="password">{t('login.password')}</label>
-				<input
-					id="password"
-					type="password"
-					bind:value={password}
-					autocomplete={mode === 'signin' ? 'current-password' : 'new-password'}
-					required
-					minlength="6"
-					placeholder="••••••••"
-					aria-invalid={error ? 'true' : undefined}
-					aria-describedby={error ? 'auth-error' : undefined}
-					class="field mb-3 w-full"
-				/>
+				<div class="pw-wrap mb-1" style="--reveal-w: {revealW}px">
+					<input
+						id="password"
+						type={showPassword ? 'text' : 'password'}
+						bind:value={password}
+						autocomplete={mode === 'signin' ? 'current-password' : 'new-password'}
+						required
+						minlength="6"
+						placeholder="••••••••"
+						aria-invalid={error ? 'true' : undefined}
+						aria-describedby="{error ? 'auth-error ' : ''}password-rule"
+						class="field w-full"
+					/>
+					<!-- A reveal, because the alternative on a phone keyboard is typing a
+					     password you cannot see and finding out only after it fails. -->
+					<button
+						bind:clientWidth={revealW}
+						type="button"
+						class="pw-toggle"
+						onclick={() => (showPassword = !showPassword)}
+						aria-pressed={showPassword}
+					>
+						{showPassword ? t('login.hidePassword') : t('login.showPassword')}
+					</button>
+				</div>
+				<!-- Stated up front, not discovered when the browser rejects the form. -->
+				<p id="password-rule" class="mb-3 text-micro text-muted">{t('login.passwordRule')}</p>
 			{/if}
 
 			<!-- Rendered unconditionally, empty and zero-height when there is nothing
@@ -205,12 +274,7 @@
 					onclick={google}
 					disabled={busy || !auth.enabled}
 				>
-					<svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
-						<path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
-						<path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
-						<path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
-						<path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
-					</svg>
+					<GoogleMark />
 					{t('login.google')}
 				</button>
 			{/if}
@@ -245,7 +309,6 @@
 </div>
 
 <style>
-	.brand-mark,
 	.mail-badge {
 		display: flex;
 		height: 3.25rem;
@@ -299,5 +362,28 @@
 	.google-btn:disabled {
 		opacity: 0.5;
 		cursor: default;
+	}
+
+	/* The reveal sits inside the field's box rather than beside it, so the input
+	   keeps the full row width the other fields have. */
+	.pw-wrap {
+		position: relative;
+	}
+	.pw-wrap .field {
+		/* Measured rather than a fixed 4.5rem: the label is translated, and the
+		   Ukrainian and Swahili words are wide enough to sit on top of the dots. */
+		padding-inline-end: calc(var(--reveal-w, 3rem) + 1.1rem);
+	}
+	.pw-toggle {
+		position: absolute;
+		inset-inline-end: 0.6rem;
+		top: 50%;
+		transform: translateY(-50%);
+		font-size: var(--fs-small);
+		font-weight: 600;
+		color: var(--accent);
+		background: none;
+		border: 0;
+		cursor: pointer;
 	}
 </style>

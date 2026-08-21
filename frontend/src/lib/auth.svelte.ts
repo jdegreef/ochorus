@@ -1,4 +1,5 @@
 import { browser } from '$app/environment';
+import { AUTH_NOT_CONFIGURED } from './authErrors';
 import { apiFetch, setAuthTokenProvider } from './api';
 import { authEnabled, supabase } from './supabase';
 import { readerPrefs } from './readerPrefs.svelte';
@@ -18,7 +19,8 @@ export interface Profile {
 	is_admin?: boolean;
 }
 
-const NOT_CONFIGURED = 'Sign-in is not configured yet.';
+// A CODE, not a sentence: the page localizes it (see $lib/authErrors).
+const NOT_CONFIGURED = AUTH_NOT_CONFIGURED;
 
 /** Absolute app origin for redirect URLs (magic link / OAuth land back here). */
 const origin = () => (browser ? window.location.origin : undefined);
@@ -90,14 +92,22 @@ class Auth {
 		readingSync.setSignedIn(!!session);
 	}
 
-	// Auth actions. Each returns an error message on failure, or null on success
+	// Auth actions. Each returns an error CODE on failure, or null on success
 	// (Google redirects away, so it never resolves to null on success).
+	//
+	// A code, not `error.message`: the message is Supabase's own English prose,
+	// and handing it to the page put untranslated (sometimes LTR-in-RTL) text on
+	// the one screen asking for a password. `authErrorKey()` turns the code into
+	// a catalogue key.
 
 	async signIn(email: string, password: string): Promise<string | null> {
 		const sb = supabase();
 		if (!sb) return NOT_CONFIGURED;
 		const { error } = await sb.auth.signInWithPassword({ email, password });
-		return error?.message ?? null;
+		// `||`, not `??`: an AuthError with an empty-string code would otherwise
+		// return '' — which every caller's `if (err)` reads as SUCCESS, silently
+		// clearing the password field and showing nothing.
+		return error ? error.code || 'unexpected_failure' : null;
 	}
 
 	async signUp(email: string, password: string): Promise<string | null> {
@@ -108,7 +118,10 @@ class Auth {
 			password,
 			options: { emailRedirectTo: origin() }
 		});
-		return error?.message ?? null;
+		// `||`, not `??`: an AuthError with an empty-string code would otherwise
+		// return '' — which every caller's `if (err)` reads as SUCCESS, silently
+		// clearing the password field and showing nothing.
+		return error ? error.code || 'unexpected_failure' : null;
 	}
 
 	/** Passwordless: email the user a one-time sign-in link. */
@@ -119,7 +132,10 @@ class Auth {
 			email,
 			options: { emailRedirectTo: origin() }
 		});
-		return error?.message ?? null;
+		// `||`, not `??`: an AuthError with an empty-string code would otherwise
+		// return '' — which every caller's `if (err)` reads as SUCCESS, silently
+		// clearing the password field and showing nothing.
+		return error ? error.code || 'unexpected_failure' : null;
 	}
 
 	/** OAuth via Google. On success the browser navigates away to Google. */
@@ -130,7 +146,10 @@ class Auth {
 			provider: 'google',
 			options: { redirectTo: origin() }
 		});
-		return error?.message ?? null;
+		// `||`, not `??`: an AuthError with an empty-string code would otherwise
+		// return '' — which every caller's `if (err)` reads as SUCCESS, silently
+		// clearing the password field and showing nothing.
+		return error ? error.code || 'unexpected_failure' : null;
 	}
 
 	/** Email a password-reset link that lands on /reset-password. */
@@ -139,7 +158,10 @@ class Auth {
 		if (!sb) return NOT_CONFIGURED;
 		const redirectTo = browser ? `${window.location.origin}/reset-password` : undefined;
 		const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo });
-		return error?.message ?? null;
+		// `||`, not `??`: an AuthError with an empty-string code would otherwise
+		// return '' — which every caller's `if (err)` reads as SUCCESS, silently
+		// clearing the password field and showing nothing.
+		return error ? error.code || 'unexpected_failure' : null;
 	}
 
 	/** Set a new password during a recovery session (from the reset link). */
@@ -147,7 +169,10 @@ class Auth {
 		const sb = supabase();
 		if (!sb) return NOT_CONFIGURED;
 		const { error } = await sb.auth.updateUser({ password });
-		return error?.message ?? null;
+		// `||`, not `??`: an AuthError with an empty-string code would otherwise
+		// return '' — which every caller's `if (err)` reads as SUCCESS, silently
+		// clearing the password field and showing nothing.
+		return error ? error.code || 'unexpected_failure' : null;
 	}
 
 	async signOut() {

@@ -8,7 +8,12 @@
 	import { hueForBirthYear } from '$lib/eras';
 
 	/**
-	 * A sermon on a shelf — the only place a sermon listing is drawn.
+	 * A sermon on a SHELF — the one card for "here is a sermon, go read it".
+	 *
+	 * Not every mention of a sermon: the resume tile in Continue reading is a
+	 * progress row, Sermon of the week is a feature panel, and prev/next on a
+	 * sermon page is navigation. Those are different jobs. This is the one that
+	 * lists sermons to choose between.
 	 *
 	 * There were three: this card (topics), a `sermonRow` snippet living inside
 	 * the sermons index, and a hand-rolled list on the author page that computed

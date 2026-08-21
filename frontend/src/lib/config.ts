@@ -13,3 +13,9 @@ export const SITE_URL = (env.PUBLIC_SITE_URL || 'https://ochorus-web.onrender.co
 	/\/+$/,
 	''
 );
+
+// Where readers can reach the ministry. An existing mailbox, not a new one:
+// DEPLOYMENT.md §5 warns against touching the MX/TXT records because they carry
+// mail for this address. Overridable per deployment so a future forwarding
+// address is a config change, not a code change.
+export const CONTACT_EMAIL = env.PUBLIC_CONTACT_EMAIL || 'support@ochorus.com';

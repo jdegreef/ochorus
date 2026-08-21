@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { SITE_URL } from '$lib/config';
+	import { CONTACT_EMAIL, SITE_URL } from '$lib/config';
 	import { hreflangAll } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
@@ -27,7 +27,17 @@
 		{t('contact.intro')}
 	</p>
 
+	<!-- The page said "a direct contact option is coming soon" while About and the
+	     footer both sent people here to get in touch — so the one page named
+	     Contact was the one page you could not contact anyone from. The address
+	     is the ministry's existing support mailbox (see DEPLOYMENT.md §5). -->
 	<div class="mt-8 rounded-card border border-border bg-surface-2 p-6">
+		<h2 class="text-h3 mb-1">{t('contact.emailLabel')}</h2>
+		<p class="mb-4 text-small text-muted">{t('contact.emailSub')}</p>
+		<a class="btn btn-primary" href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a>
+	</div>
+
+	<div class="mt-4 rounded-card border border-border p-6">
 		<h2 class="text-h3 mb-1">{t('contact.title')}</h2>
 		<p class="text-small text-muted">
 			{t('contact.messageSub')}
