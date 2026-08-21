@@ -27,6 +27,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import SourceBadge from '$lib/components/SourceBadge.svelte';
+	import SermonPlate from '$lib/components/SermonPlate.svelte';
 
 	let { data } = $props();
 	const sermon = $derived(data.sermon as Sermon);
@@ -327,34 +328,50 @@
 		>
 	</nav>
 
-	<p class="eyebrow mb-1 text-muted">
-		{t('search.typeSermon')} · {readingTime(sermon.word_count)}{#if year} · {year}{/if}{#if sermon.difficulty}&nbsp;·
-			<span title={t('reader.difficulty')}>{t(`reader.difficulty_${sermon.difficulty}`)}</span>{/if}
-	</p>
-	<h1 class="text-h1 mb-3" dir="auto" lang={contentLang(sermon.language)}>{sermon.title}</h1>
+	<!-- The sermon's head, in its own plate: the words in a wash of the emblem's
+	     hue, the emblem anchoring the far end — the composition its share card
+	     uses, so a reader arriving from a forwarded link recognises the page.
+	     Dropped in focus mode, which strips everything but the prose. -->
+	{#snippet head()}
+		<p class="eyebrow mb-1 text-muted">
+			{t('search.typeSermon')} · {readingTime(sermon.word_count)}{#if year} · {year}{/if}{#if sermon.difficulty}&nbsp;·
+				<span title={t('reader.difficulty')}>{t(`reader.difficulty_${sermon.difficulty}`)}</span>{/if}
+		</p>
+		<h1 class="text-h1 mb-3" dir="auto" lang={contentLang(sermon.language)}>{sermon.title}</h1>
 
-	<!-- Author row: portrait + name -->
-	<a
-		href={localizeHref(`/authors/${sermon.author_slug}`)}
-		class="group mb-5 inline-flex items-center gap-2.5 hover:no-underline"
-	>
-		{#if sermon.author_photo}
-			<img
-				src={sermon.author_photo}
-				alt="{t('a11y.portraitOf')} {sermon.author_name}"
-				class="h-9 w-9 shrink-0 rounded-full border border-border object-cover"
-				style="filter: grayscale(1); object-position: {portraitPosition(sermon.author_slug)}"
-				loading="lazy"
-			/>
-		{:else}
-			<span
-				class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent-soft text-small font-semibold text-accent"
+		<!-- Author row: portrait + name -->
+		<a
+			href={localizeHref(`/authors/${sermon.author_slug}`)}
+			class="group inline-flex items-center gap-2.5 hover:no-underline"
+		>
+			{#if sermon.author_photo}
+				<img
+					src={sermon.author_photo}
+					alt="{t('a11y.portraitOf')} {sermon.author_name}"
+					class="h-9 w-9 shrink-0 rounded-full border border-border object-cover"
+					style="filter: grayscale(1); object-position: {portraitPosition(sermon.author_slug)}"
+					loading="lazy"
+				/>
+			{:else}
+				<span
+					class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent-soft text-small font-semibold text-accent"
+				>
+					{initials(sermon.author_name)}
+				</span>
+			{/if}
+			<span class="text-body font-medium text-text group-hover:text-accent"
+				>{sermon.author_name}</span
 			>
-				{initials(sermon.author_name)}
-			</span>
-		{/if}
-		<span class="text-body font-medium text-text group-hover:text-accent">{sermon.author_name}</span>
-	</a>
+		</a>
+	{/snippet}
+
+	{#if readerUi.focus}
+		{@render head()}
+	{:else}
+		<div class="mb-5">
+			<SermonPlate slug={sermon.slug}>{@render head()}</SermonPlate>
+		</div>
+	{/if}
 
 	<!-- Preaching text: the reference, and its verse(s) when available -->
 	{#if sermon.scripture_ref}

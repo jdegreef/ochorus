@@ -287,6 +287,18 @@ positioning, so an occupant only styles itself.
 **Book card** (`.book-card`) — the cover is the visual, so the chrome stays
 quiet: hairline, surface fill, no colour wash.
 
+**Sermon plate** (`<SermonPlate>`) — a sermon's head, on its own page and in
+Sermon of the week: the eyebrow/title/byline in a hue wash with the sermon's
+emblem anchoring the far end, the same composition as its share card. Sermons
+are **not** given 3:4 covers: that silhouette says *volume*, and differing
+silhouettes are what tell a book from a sermon at a glance on a mixed shelf.
+Its hue is `tintable(emblemHue(...))` — derived from the emblem's own art, so a
+new sermon is coloured the moment its emblem is picked, then floored into a
+lightness band, because a wash is only as visible as the hue is light.
+
+Both banded surfaces share **`.hue-band`**, driven by `--band-hue`: the wash
+recipe is one rule, not one per surface.
+
 **Sermon row** (`.sermon-row`) — the sermons shelf is a **list, not a grid**:
 one sermon per line, under its preacher, carrying the title, the passage it
 expounds, the "In brief" and how long it runs. That is a deliberate exception to

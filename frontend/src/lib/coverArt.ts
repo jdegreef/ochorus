@@ -64,3 +64,42 @@ export function coverGradient(color: string | null | undefined): string {
 	const base = color || COVER_FALLBACK;
 	return `linear-gradient(150deg, ${base} 0%, ${shade(base, 0.55)} 100%)`;
 }
+
+/**
+ * The same colour, moved into a lightness band that actually tints.
+ *
+ * A hue used through `color-mix` at single-digit percentages contributes
+ * almost nothing when it is very dark: the raven emblem's slate (#273748,
+ * lightness 0.22) mixed at 9% left its sermon plate looking untinted in dark
+ * mode while every other sermon wore a visible wash — one sermon looking like
+ * the feature was broken.
+ *
+ * `emblemHue` deliberately does NOT do this, because how light a hue needs to
+ * be depends on the surface it lands on, which the catalogue cannot know. This
+ * is the app-side half of that split (the share card's half is
+ * `scripts/og-card.mjs:liftToContrast`, which solves the opposite problem —
+ * type ON the hue rather than a wash OF it).
+ *
+ * The band is `covers.py:palette_from_artwork`'s, which floors a colour sampled
+ * off artwork for the same reason: a hue picked from a drawing arrives at
+ * whatever lightness the drawing used, and the treatment downstream assumes a
+ * usable one. Hue and saturation are untouched, so a lifted slate is still that
+ * emblem's slate.
+ */
+export function tintable(hex: string, min = 0.34, max = 0.52): string {
+	const [r, g, b] = channels(hex).map((c) => c / 255);
+	const hi = Math.max(r, g, b);
+	const lo = Math.min(r, g, b);
+	const lightness = (hi + lo) / 2;
+	const target = Math.min(Math.max(lightness, min), max);
+	if (target === lightness || hi === lo) return toHex(channels(hex));
+	// Scaled about the ends rather than about the midpoint: pushing toward white
+	// above 0.5 and toward black below keeps the saturation the eye reads, where
+	// a flat multiply washes a light colour out as it climbs.
+	const scale = target > lightness ? (1 - target) / (1 - lightness) : target / lightness;
+	return toHex(
+		channels(hex).map((c) =>
+			target > lightness ? 255 - (255 - c) * scale : c * scale
+		)
+	);
+}

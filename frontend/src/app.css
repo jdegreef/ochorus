@@ -994,22 +994,34 @@ nav.appnav .navsearch:hover {
 	text-decoration: none;
 	transform: translateY(-2px);
 }
+/* ── Hue bands ─────────────────────────────────────────────────────────────
+   The colour-washed ground an item's own hue is allowed to tint: a wash from
+   the top-inline-start corner over a barely-tinted surface, with a hairline at
+   the foot. Two surfaces wear it — the browse cards' header band and the
+   sermon plate — and the whole point of a house wash is that they match, so it
+   is one recipe driven by --band-hue rather than two that drift.
+
+   The hue reaches the pixel ONLY through color-mix (STYLE_GUIDE §Cards), which
+   is what keeps a saturated accent legible in both themes. */
+.hue-band {
+	background:
+		radial-gradient(
+			120% 140% at 0% 0%,
+			color-mix(in srgb, var(--band-hue) 22%, transparent),
+			transparent 60%
+		),
+		color-mix(in srgb, var(--band-hue) 9%, var(--surface-2));
+	border-bottom: 1px solid color-mix(in srgb, var(--band-hue) 22%, var(--border));
+}
 /* The coloured header band. */
 .shelf-card-band {
+	--band-hue: var(--shelf-hue);
 	position: relative;
 	display: flex;
 	align-items: flex-end;
 	gap: 0.6rem;
 	min-height: 5.75rem;
 	padding: 1rem 1.1rem 0.9rem;
-	background:
-		radial-gradient(
-			120% 140% at 0% 0%,
-			color-mix(in srgb, var(--shelf-hue) 22%, transparent),
-			transparent 60%
-		),
-		color-mix(in srgb, var(--shelf-hue) 9%, var(--surface-2));
-	border-bottom: 1px solid color-mix(in srgb, var(--shelf-hue) 22%, var(--border));
 }
 /* ── Emblem chips ──────────────────────────────────────────────────────────
    The round tinted chip carrying an illustrated emblem ($lib/emblems.ts) —

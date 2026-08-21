@@ -5,6 +5,7 @@
 	import { readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import SermonPlate from '$lib/components/SermonPlate.svelte';
 
 	const t = i18n.t;
 
@@ -48,19 +49,21 @@
 	<section class={embedded ? '' : 'page-col px-5 pt-14'}>
 		<a
 			href={localizeHref(`/sermons/${pick.slug}`)}
-			class="block rounded-card border border-border bg-surface-2 px-6 py-6 transition-colors hover:bg-surface hover:no-underline sm:px-8"
+			class="block transition-transform hover:no-underline"
 		>
-			<p class="eyebrow mb-2 text-accent">
-				{t('home.sermonOfWeek')}
-			</p>
-			<h2 class="text-h2 mb-1">{pick.title}</h2>
-			<p class="text-small text-muted">
-				<!-- The separators are expressions: text at an {#if} block boundary gets
-				     its leading whitespace trimmed by the compiler, which rendered
-				     "A. B. Simpson· 1 Kings" with the space missing. -->
-				{pick.author.name}{#if pick.scripture_ref}{` · ${pick.scripture_ref}`}{/if}
-				· {readingTime(pick.word_count)} — {t('home.sermonReadOrListen')} ▶
-			</p>
+			<SermonPlate slug={pick.slug} chip="3.5rem">
+				<p class="eyebrow mb-2 text-accent">
+					{t('home.sermonOfWeek')}
+				</p>
+				<h2 class="text-h2 mb-1">{pick.title}</h2>
+				<p class="text-small text-muted">
+					<!-- The separators are expressions: text at an {#if} block boundary gets
+					     its leading whitespace trimmed by the compiler, which rendered
+					     "A. B. Simpson· 1 Kings" with the space missing. -->
+					{pick.author.name}{#if pick.scripture_ref}{` · ${pick.scripture_ref}`}{/if}
+					· {readingTime(pick.word_count)} — {t('home.sermonReadOrListen')} ▶
+				</p>
+			</SermonPlate>
 		</a>
 	</section>
 {/if}
