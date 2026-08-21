@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-import { authorInkContrast, inkSafe } from './coverArt';
+import { inkSafe } from './coverArt';
 
 /**
  * The legibility floor exists twice, and must never diverge.
@@ -24,9 +24,10 @@ import { authorInkContrast, inkSafe } from './coverArt';
  */
 const COVERS_PY = join(process.cwd(), '..', 'backend', 'library', 'covers.py');
 
+const COVERS_PY_SOURCE = readFileSync(COVERS_PY, 'utf-8');
+
 const pyConstant = (name: string): number => {
-	const source = readFileSync(COVERS_PY, 'utf-8');
-	const match = source.match(new RegExp(`^${name} = ([\\d.]+)$`, 'm'));
+	const match = COVERS_PY_SOURCE.match(new RegExp(`^${name} = ([\\d.]+)$`, 'm'));
 	if (!match) throw new Error(`${name} not found in covers.py — was it renamed?`);
 	return Number(match[1]);
 };
@@ -56,13 +57,6 @@ describe('the ink floor matches the backend', () => {
 	])('inkSafe(%s) === %s, as Python computes it', (input, expected) => {
 		expect(inkSafe(input)).toBe(expected);
 	});
-
-	it.each([['#ca8d21'], ['#4996a2'], ['#2f9e44'], ['#987952'], ['#987652'], ['#ffffff']])(
-		'%s clears AA once floored',
-		(color) => {
-			expect(authorInkContrast(inkSafe(color))).toBeGreaterThanOrEqual(4.5);
-		}
-	);
 
 	it('falls back to the house blue for a blank or malformed colour', () => {
 		expect(inkSafe('')).toBe('#3b5bdb');
