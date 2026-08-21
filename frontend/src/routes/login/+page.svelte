@@ -16,12 +16,15 @@
 	// linkable, bookmarkable, and Back steps between them instead of leaving the
 	// page entirely. It was component state, which also meant the tab title said
 	// "Sign in" over a "Create your account" heading.
+	//
+	// Read in an $effect, NOT a $derived: this page is prerendered, and SvelteKit
+	// throws on `url.searchParams` during prerender. Effects don't run then, so
+	// the baked HTML is the bare /login (mode 'signin') and the query string is
+	// applied on the client. Same rule the Books and Biographies shelves follow —
+	// and the prerendered HTML must not depend on a query string anyway, since
+	// it is what gets served for every ?mode=.
 	const MODES: Mode[] = ['signin', 'signup', 'reset'];
-	const mode = $derived<Mode>(
-		(MODES as string[]).includes($page.url.searchParams.get('mode') ?? '')
-			? ($page.url.searchParams.get('mode') as Mode)
-			: 'signin'
-	);
+	let mode = $state<Mode>('signin');
 	let email = $state('');
 	let password = $state('');
 	let error = $state<string | null>(null);
@@ -56,14 +59,17 @@
 		reset: t('login.resetTitle')
 	});
 
-	// Clearing on the MODE, not in the click handler: mode now comes from the
-	// URL, so Back and Forward change the form without any handler running. A
-	// "that email and password don't match" from the sign-in form would
-	// otherwise still be sitting (with aria-invalid) over the reset form.
+	// URL → mode, and clear a stale error when it changes. Clearing here rather
+	// than in the click handler because Back and Forward change the form without
+	// any handler running: a "that email and password don't match" from the
+	// sign-in form would otherwise sit (with aria-invalid) over the reset form.
 	let lastMode: Mode | null = null;
 	$effect(() => {
-		if (lastMode !== null && mode !== lastMode) error = null;
-		lastMode = mode;
+		const raw = $page.url.searchParams.get('mode') ?? '';
+		const next = (MODES as string[]).includes(raw) ? (raw as Mode) : 'signin';
+		if (lastMode !== null && next !== lastMode) error = null;
+		lastMode = next;
+		mode = next;
 	});
 
 	function switchMode(m: Mode) {
