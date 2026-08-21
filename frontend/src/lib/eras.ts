@@ -5,6 +5,9 @@
 // generalisation honest. Undated writers (Ochorus' contemporary contributors)
 // fall to a trailing "Contemporary" bucket.
 
+// hex-ok-file: illustration hues, one per era, used as `--row-hue` on the
+// sermon rails and biography rails. They are the palette OF a drawing — the
+// same kind of colour a book cover carries — not chrome that follows the theme.
 export type EraId = 'early' | 'puritans' | 'awakenings' | 'missionary' | 'modern' | 'contemporary';
 
 export type Era = { id: EraId; k: string; until: number | null; range: string };

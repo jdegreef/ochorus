@@ -21,6 +21,10 @@
 
 // ── Shared palette ──────────────────────────────────────────────────────────
 // Mid-tone hues that hold up on the tinted badge chips in both themes.
+//
+// hex-ok-file: illustration ink. These are the colours OF the drawings (the
+// raven, the reed, the key), the way a book cover has colours — not chrome that
+// should restyle with the theme.
 const G = '#d9a441'; // gold
 const GD = '#a97a24'; // deep gold
 const T = '#2f8f85'; // teal

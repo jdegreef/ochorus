@@ -11,6 +11,9 @@ import { browser } from '$app/environment';
  * the two in step.
  */
 
+// hex-ok-file: these are the literal values shipped in <meta name="theme-color">,
+// which paints the browser's own chrome. A var() is not resolvable there — the
+// value has to be a real colour, and it has to equal each theme's --bg.
 export type ThemePref = 'system' | 'light' | 'dark' | 'sepia';
 export type ThemeApplied = 'light' | 'dark' | 'sepia';
 

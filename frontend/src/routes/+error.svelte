@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { coverGradient } from '$lib/coverArt';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { getLang } from '$lib/lang.svelte';
 	import { listBooks, listSermons, type BookSummary, type SermonSummary } from '$lib/library';
-	import { readingTime } from '$lib/reading';
 	import { dayNumber, pickByDay } from '$lib/dailyPicks';
+	import BookCover from '$lib/components/BookCover.svelte';
+	import SermonCard from '$lib/components/SermonCard.svelte';
 
 	const t = i18n.t;
 
@@ -15,6 +15,20 @@
 	const isNotFound = $derived(status === 404);
 	const title = $derived(isNotFound ? t('error.notFoundTitle') : t('error.genericTitle'));
 	const message = $derived(isNotFound ? t('error.notFoundMessage') : t('error.genericMessage'));
+
+	// The path someone mistyped is the best guess at what they wanted, so it
+	// seeds a search rather than being thrown away: "/books/the-imitaton" →
+	// "the imitaton". Hyphens and slashes out, extension and locale prefix off.
+	const searchSeed = $derived(
+		$page.url.pathname
+			.replace(/^\/[a-z]{2}(-[a-z]+)?(?=\/|$)/, '')
+			.replace(/\.[a-z0-9]{1,5}$/i, '')
+			.split('/')
+			.filter(Boolean)
+			.pop()
+			?.replace(/[-_]+/g, ' ')
+			.trim() ?? ''
+	);
 
 	let books = $state<BookSummary[]>([]);
 	let sermons = $state<SermonSummary[]>([]);
@@ -59,12 +73,35 @@
 		<p class="mb-2 font-display text-6xl leading-none text-muted/60">{status || 500}</p>
 		<h1 class="text-h1 mb-3">{title}</h1>
 		<p class="mb-6 text-body text-muted">{message}</p>
+		{#if isNotFound}
+			<!-- A search box, not just a way home: the page already knows what was
+			     asked for, and the library it would be searched in is already
+			     loaded below. -->
+			<form
+				method="GET"
+				action={localizeHref('/search')}
+				role="search"
+				class="mb-4 flex w-full max-w-sm items-center gap-2"
+			>
+				<input
+					name="q"
+					type="search"
+					value={searchSeed}
+					enterkeyhint="search"
+					placeholder={t('search.placeholder')}
+					aria-label={t('nav.search')}
+					class="field grow"
+				/>
+				<button type="submit" class="btn btn-primary shrink-0">{t('nav.search')}</button>
+			</form>
+		{/if}
+		<!-- One primary per view (STYLE_GUIDE §5). The generic state offered two
+		     solid buttons side by side, so neither read as the thing to do. -->
 		<div class="flex flex-wrap items-center justify-center gap-3">
 			{#if !isNotFound}
-				<button class="btn btn-primary" onclick={() => location.reload()}>{t('error.tryAgain')}</button
-				>
+				<button class="btn btn-primary" onclick={() => location.reload()}>{t('error.tryAgain')}</button>
 			{/if}
-			<a class="btn btn-primary" href={localizeHref('/')}>{t('error.goToLibrary')}</a>
+			<a class="btn btn-ghost" href={localizeHref('/')}>{t('error.goToLibrary')}</a>
 		</div>
 	</section>
 
@@ -89,28 +126,13 @@
 							class="group block hover:no-underline"
 							data-testid="notfound-book"
 						>
-							{#if book.cover_url}
-								<img
-									src={book.cover_url}
-									alt="{t('a11y.coverOf')} {book.title}"
-									loading="lazy"
-									class="aspect-[3/4] w-full rounded-card object-cover shadow-sm transition-transform group-hover:-translate-y-1"
-								/>
-							{:else}
-								<div
-									class="flex aspect-[3/4] flex-col justify-between rounded-card p-3 shadow-sm transition-transform group-hover:-translate-y-1 sm:p-4"
-									style="background: {coverGradient(book.cover_color)}"
-								>
-									<span class="eyebrow text-white/70">
-										{book.author.name.split(' ').slice(-1)}
-									</span>
-									<span
-										class="font-display text-body font-semibold leading-tight text-white sm:text-h3"
-									>
-										{book.title}
-									</span>
-								</div>
-							{/if}
+							<!-- The shared cover: real artwork when there is any, the same
+							     generated typographic cover as the shelf otherwise. This page
+							     used to draw its own gradient fallback, so a cover-less book
+							     looked different here than everywhere else. -->
+							<div class="transition-transform group-hover:-translate-y-1">
+								<BookCover {book} />
+							</div>
 							<div class="mt-2">
 								<div class="text-small font-medium text-text">{book.title}</div>
 								<div class="text-small text-muted">{book.author.name}</div>
@@ -127,20 +149,7 @@
 				<p class="mb-6 text-small text-muted">{t('error.picksSermonsSub')}</p>
 				<div class="grid gap-4 sm:grid-cols-2">
 					{#each sermonPicks as sermon (sermon.slug)}
-						<a
-							href={localizeHref(`/sermons/${sermon.slug}`)}
-							class="group flex flex-col rounded-card border border-border bg-surface-2 px-5 py-4 transition-colors hover:bg-surface hover:no-underline"
-							data-testid="notfound-sermon"
-						>
-							<h3 class="text-h3 leading-snug transition-colors group-hover:text-accent">
-								{sermon.title}
-							</h3>
-							<p class="mt-2 text-small text-muted">
-								{sermon.author.name}{#if sermon.scripture_ref}
-									· {sermon.scripture_ref}{/if}
-								· {readingTime(sermon.word_count)}
-							</p>
-						</a>
+						<div data-testid="notfound-sermon"><SermonCard {sermon} showAuthor /></div>
 					{/each}
 				</div>
 			</section>

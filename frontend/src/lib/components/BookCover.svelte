@@ -13,9 +13,14 @@
 	 * A book's cover: the real cover image when there is one, otherwise a
 	 * generated typographic cover. The fallback mirrors the server-side
 	 * `generate_covers` SVG (framed, author eyebrow, centred title, divider,
-	 * Ochorus lockup at the foot) so a book without an image looks the same as one that has a
-	 * generated cover — and it scales cleanly at any size. The box keeps a fixed
-	 * 3:4 aspect so nothing shifts while a lazy image loads.
+	 * Ochorus lockup at the foot) so a book without an image looks the same as
+	 * one that has a generated cover — and it scales cleanly at any size. The box
+	 * keeps a fixed 3:4 aspect so nothing shifts while a lazy image loads.
+	 *
+	 * hex-ok-file: every colour below is ink drawn ON the book's own
+	 * `cover_color` — the frame, the rules, the title, the lockup. That colour is
+	 * DATA (STYLE_GUIDE §1), not a theme surface, so its ink is fixed white
+	 * rather than a token that would follow the reader's theme and disappear.
 	 */
 	let { book, rounded = 'rounded-card' }: { book: BookSummary; rounded?: string } = $props();
 
