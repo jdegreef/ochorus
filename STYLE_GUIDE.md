@@ -89,7 +89,10 @@ low-emphasis button compete with the primary one beside it.
 - ✅ External brand colors (e.g. a vendor sign-in button) are the only allowed raw
   hex, and only on that vendor's control.
 - ✅ A generated book cover with no artwork may use its per-book `cover_color` —
-  that's data, not a UI color.
+  that's data, not a UI color. It is still **floored for contrast** before it is
+  drawn (`covers.ink_safe` / `coverArt.inkSafe`): the type on a plate is always
+  white, so a colour too pale to carry a 23px byline at 4.5:1 is darkened until
+  it can. Data chooses the hue; the floor keeps it legible.
 - ❌ No raw hex in routes/components for UI color. ❌ No new ad-hoc greys/indigos —
   extend the token set instead (and mirror it into Take Root).
 

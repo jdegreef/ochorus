@@ -49,6 +49,7 @@ from library.content_fixtures import (
     unexpected_files,
     work_filename,
 )
+from library.covers import AUTHOR_MIN_CONTRAST, author_ink_contrast
 
 EXPECTED_MODELS = {
     "library.author",
@@ -624,6 +625,40 @@ class CoverAssetTests(SimpleTestCase):
             "translated edition wearing another edition's cover — expected "
             "/covers/<lang>/<slug>.<ext> (see library.covers.cover_path); run "
             "`uv run python scripts/localize_covers.py` to draw and repoint it",
+        )
+
+    def test_generated_plates_carry_white_type_at_aa(self):
+        """Every committed plate must be dark enough for the white byline.
+
+        The author line is 23px — not "large text" under WCAG 1.4.3 — so AA asks
+        4.5:1 of it, and 16 committed covers gave less, down to 3.16:1 on
+        `the-unselfishness-of-god`. A plate colour is DATA (hand-picked, or
+        sampled from the English artwork) and nothing between the two ever asked
+        whether white could sit on it; `covers.ink_safe` now floors it as it
+        draws, and this fails any committed file drawn before that or by hand.
+
+        Reads the artwork rather than the fixture on purpose: the fixture holds
+        the book's chosen colour, which stays its own, while the file holds what
+        a reader actually sees. Curated covers are skipped — their type sits on a
+        painting under a scrim, which this arithmetic can't speak for.
+        """
+        failures = []
+        for svg in sorted((self.STATIC_DIR / "covers").rglob("*.svg")):
+            source = svg.read_text(encoding="utf-8")
+            if "data:image/jpeg" in source:
+                continue
+            stop = re.search(r'<stop offset="0" stop-color="(#[0-9a-f]{6})"', source)
+            if not stop:
+                failures.append((str(svg.relative_to(self.STATIC_DIR)), "no plate gradient"))
+                continue
+            ratio = author_ink_contrast(stop.group(1))
+            if ratio < AUTHOR_MIN_CONTRAST:
+                failures.append((str(svg.relative_to(self.STATIC_DIR)), f"{ratio:.2f}:1"))
+        self.assertEqual(
+            failures, [],
+            "generated cover whose author line fails WCAG AA (4.5:1) — redraw it "
+            "with `generate_covers --force` / `scripts/localize_covers.py --force`, "
+            "which floors the plate through covers.ink_safe",
         )
 
     def test_svg_covers_have_a_raster_twin_for_og_image(self):
