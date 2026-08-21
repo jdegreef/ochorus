@@ -106,7 +106,7 @@ def persist_source_type(path: Path, source_type: str) -> bool:
     (``regen_fixture`` uses records at column 0 / indent=1; a few are indent=2),
     and re-serialising would rewrite a whole file whose real change is one field,
     making a review-state flip read as a content edit (see
-    ``scripts/localize_artwork_covers.patch`` for the same reasoning). Only the
+    ``scripts/localize_covers.patch`` for the same reasoning). Only the
     one Book/Sermon row per file carries ``source_type`` — chapters don't — so a
     whole-file substitution is safe; exactly one match is asserted.
     """

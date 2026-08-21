@@ -591,6 +591,35 @@ class CoverAssetTests(SimpleTestCase):
             "doesn't route through BookCover (CoverStrip, ContinueReading, /topics)",
         )
 
+    def test_translated_editions_wear_their_own_cover(self):
+        """A translated row may not point at another language's cover file.
+
+        Covers are per ``(slug, language)`` and live at ``/covers/<lang>/<slug>``
+        (English at the root). A translated row carrying the English path shows
+        the English title over a translated card — "All of Grace" above "Todo por
+        Gracia" — which for this library is the wrong thing to show.
+
+        It keeps coming back because it is the *easy* mistake: a new translation
+        is written by copying the English fixture row, ``cover_url`` included,
+        and nothing downstream complains. ``generate_covers`` and
+        ``scripts/localize_covers.py`` both write the right file; only this
+        catches a row that never got repointed at it. 58 rows were fixed by hand
+        in PR #355's follow-up and 21 had drifted back within the month, which is
+        why the rule is now a test rather than a paragraph.
+        """
+        wrong = sorted(
+            (f["slug"], f["language"], _cover(f))
+            for f in self.books
+            if f["language"] != "en"
+            and _cover(f).startswith("/covers/")
+            and not _cover(f).startswith(f"/covers/{f['language']}/")
+        )
+        self.assertEqual(
+            wrong, [],
+            "translated edition wearing another language's cover — run "
+            "`uv run python scripts/localize_covers.py` to draw and repoint it",
+        )
+
     def test_svg_covers_have_a_raster_twin_for_og_image(self):
         # og:image falls back to /covers/<slug>.png when the cover is an SVG —
         # social platforms refuse SVG previews (books/[slug]/+page.svelte).

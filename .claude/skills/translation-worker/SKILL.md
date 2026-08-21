@@ -146,9 +146,15 @@ worker specifics that shipped ~11 editions:
   chapter's `"book"` is `["<slug>", "<lang>"]`). Serialize with Django
   (`django.core.serializers.serialize("json", objs,
   use_natural_primary_keys=True, use_natural_foreign_keys=True)`) — never
-  hand-write pks, never `json.dumps`. Copy source_url/cover_url/sort_order from
-  the English file; `source_type=ai_unreviewed`; `pdf_url` empty; `body_text`
-  via `library.text.html_to_text`. No other file is touched — parallel jobs
+  hand-write pks, never `json.dumps`. Copy source_url/sort_order from the
+  English file; `source_type=ai_unreviewed`; `pdf_url` empty; `body_text`
+  via `library.text.html_to_text`. **Never copy `cover_url`** — it is
+  per-language (`/covers/<lang>/<slug>.svg`), and copying the English one puts
+  the English title on a translated card. Run `uv run python
+  scripts/localize_covers.py <slug>` after writing the file: it draws the cover
+  in this language (typographic plate, or the curated painting under the new
+  title) and repoints the row. The `CoverAssetTests` guard on per-language
+  covers fails the PR if you skip it. No other file is touched — parallel jobs
   cannot conflict. Full regens only via `backend/scripts/regen_fixture.py`.
   Verify `seed_books` recreates the rows locally; run `manage.py test library`
   (which includes the fixture + file-coherence gates).
