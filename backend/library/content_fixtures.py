@@ -92,8 +92,8 @@ def sermon_fixture_path(slug: str, language: str) -> Path:
     return SERMONS_DIR / work_filename(slug, language)
 
 
-def persist_field(path: Path, key: str, value: str) -> bool:
-    """Rewrite one string field of a work fixture's Book/Sermon row in place,
+def persist_fields(path: Path, values: dict[str, str]) -> bool:
+    """Rewrite string fields of a work fixture's Book/Sermon row in place,
     returning True if the file changed.
 
     Textual, not load-modify-dump: the committed files aren't uniformly formatted
@@ -103,17 +103,28 @@ def persist_field(path: Path, key: str, value: str) -> bool:
 
     Safe as a whole-file substitution only for keys the row alone carries —
     ``source_type``, ``cover_url``, ``cover_color``; chapters have none of them —
-    so exactly one match is asserted rather than assumed.
+    so exactly one match per key is asserted rather than assumed.
+
+    All substitutions happen in memory and the file is written once, so a key
+    that isn't there raises before anything lands: patching cover_url and
+    cover_color as two writes could leave a file holding the first and not the
+    second.
     """
-    text = path.read_text(encoding="utf-8")
-    pattern = rf'("{key}"\s*:\s*)"(?:[^"\\]|\\.)*"'
-    new, n = re.subn(pattern, lambda m: m.group(1) + json.dumps(value), text)
-    if n != 1:
-        raise ValueError(f"{path.name}: expected exactly one {key}, found {n}")
-    if new == text:
+    original = text = path.read_text(encoding="utf-8")
+    for key, value in values.items():
+        pattern = rf'("{key}"\s*:\s*)"(?:[^"\\]|\\.)*"'
+        text, n = re.subn(pattern, lambda m, v=value: m.group(1) + json.dumps(v), text)
+        if n != 1:
+            raise ValueError(f"{path.name}: expected exactly one {key}, found {n}")
+    if text == original:
         return False
-    path.write_text(new, encoding="utf-8")
+    path.write_text(text, encoding="utf-8")
     return True
+
+
+def persist_field(path: Path, key: str, value: str) -> bool:
+    """One field of ``persist_fields``; True if the file changed."""
+    return persist_fields(path, {key: value})
 
 
 def persist_source_type(path: Path, source_type: str) -> bool:

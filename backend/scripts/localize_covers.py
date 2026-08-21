@@ -96,7 +96,7 @@ sys.path.insert(0, str(BACKEND))
 from library.content_fixtures import (  # noqa: E402
     BOOKS_DIR,
     authors_by_slug,
-    persist_field,
+    persist_fields,
 )
 from library.covers import (  # noqa: E402
     build_art_svg,
@@ -181,13 +181,14 @@ def author_names() -> dict[str, str]:
 
 
 def patch(path: Path, cover_url: str, cover_color: str | None = None) -> None:
-    """Point one edition's fixture row at its own cover.
+    """Point one edition's fixture row at its own cover, in one write.
 
-    ``cover_color`` is only rewritten for the artwork tier, where the colour is
-    derived here; the other tiers keep whatever the edition already carries."""
-    persist_field(path, "cover_url", cover_url)
+    ``cover_color`` is passed for the tiers that derive one here; the curated
+    tier draws on a painting and leaves whatever the edition carries."""
+    values = {"cover_url": cover_url}
     if cover_color is not None:
-        persist_field(path, "cover_color", cover_color)
+        values["cover_color"] = cover_color
+    persist_fields(path, values)
 
 
 def main() -> int:
@@ -228,6 +229,14 @@ def main() -> int:
             continue
         source = english.get(slug) or {}
         source_cover = source.get("cover_url") or ""
+        own_cover = fields.get("cover_url") or ""
+        if own_cover.startswith(f"/covers/{language}/") and own_cover.endswith(RASTER):
+            # This edition has designed artwork of its OWN — the one case where a
+            # generated plate is a downgrade, and the same line generate_covers
+            # draws with is_generated. Nothing in the library is here yet; the
+            # fixture gate permits it, so the drawing tool must too.
+            unchanged += 1
+            continue
         author = names.get(fields["author"][0], fields["author"][0])
         title = fields["title"]
         subtitle = fields.get("subtitle") or ""
@@ -254,8 +263,12 @@ def main() -> int:
             )
             tier = "curated"
         else:
-            # The house plate, from this edition's own colour.
-            svg = build_svg(title, subtitle, author, fields.get("cover_color") or "", language)
+            # The house plate. A freshly translated row often carries no colour
+            # of its own, and letting that fall to the default indigo would put
+            # one edition of a work in a colour its siblings don't share — so
+            # the work's English colour is inherited, and recorded.
+            color = fields.get("cover_color") or source.get("cover_color") or ""
+            svg = build_svg(title, subtitle, author, color, language)
             tier = "generated"
 
         url, rel = cover_path(slug, language)
