@@ -5,12 +5,18 @@
  * served as a static asset, like the pre-rasterized book covers. NOT part of
  * the build or CI; run it by hand after adding or retitling a sermon:
  *
- *     cd frontend && npm run og:sermons              # fill the gaps
- *     cd frontend && npm run og:sermons -- --force   # redraw everything
+ *     cd frontend && npm run og:sermons
  *
- * Gap-filling by default, like `generate_covers`: a run that redrew all 29
- * every time turned "I added one sermon" into a 29-file binary diff, and any
- * difference in installed fonts between two laptops into another one.
+ * Always draws every card and writes only the ones whose BYTES changed. The
+ * first version skipped any slug that already had a file, which kept the diff
+ * clean but meant retitling a sermon silently shipped its old card — and the
+ * fixture gate only checks that a card exists, so that would have sailed past
+ * green CI. Rendering is deterministic (same fixtures and fonts in, same PNG
+ * out, verified across two full runs), so comparing bytes gets the clean diff
+ * without the staleness: adding one sermon still touches exactly one file.
+ *
+ * It is still only as current as its last run. Edit a sermon's title, passage
+ * or emblem and you must run this; nothing fails if you don't.
  *
  * Needs a Node that strips TypeScript types unprompted (>= 22.18), because it
  * reads the emblem catalogue straight out of `src/lib/emblems.ts`.
@@ -30,9 +36,11 @@
  * the emblem it already wears everywhere else in the app.
  *
  * ENGLISH ONLY, ONE PER SLUG
- * The policy and the reasoning live in ./og-card.mjs, shared with the
- * browse-page cards. A translated sermon page shares the English card, which
- * is already true of every book.
+ * The policy and its reasoning are `generate-og.mjs`'s, inherited rather than
+ * invented here: scrapers rarely read localized cards. A translated sermon
+ * page therefore shares the English card — which is what every translated BOOK
+ * page already does too, since all 89 of them carry a generated `.svg` cover
+ * and that routes their og:image to the English `/covers/<slug>.png`.
  *
  * SOURCE OF TRUTH
  * The committed English sermon fixtures, not the API — this runs on a laptop
@@ -40,7 +48,7 @@
  * anyway. `backend/library/tests_fixture.py` fails the build if a sermon in
  * those fixtures has no card here.
  */
-import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
@@ -53,12 +61,13 @@ import {
 	MUTED,
 	PAPER,
 	WIDTH,
-	liftToContrast,
-	renderCard
+	drawCard,
+	liftToContrast
 } from './og-card.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const OUT_DIR = resolve(HERE, '../static/og/sermons');
+mkdirSync(OUT_DIR, { recursive: true });
 const CONTENT = resolve(HERE, '../../backend/library/fixtures/content');
 
 // ── The content ─────────────────────────────────────────────────────────────
@@ -185,21 +194,21 @@ function card({ title, scripture, author, year, emblem, accent }) {
 
 // ── Run ─────────────────────────────────────────────────────────────────────
 
-const force = process.argv.includes('--force');
 const rows = sermons();
 let wrote = 0;
 for (const sermon of rows) {
 	const out = resolve(OUT_DIR, `${sermon.slug}.png`);
-	if (!force && existsSync(out)) continue;
 	const emblem = emblemForSermon(sermon.slug);
 	// Emblem hues are chosen for the app's light surfaces; on this near-black
 	// ground the darker ones need brightening before they carry type at all.
 	const accent = liftToContrast(emblemHue(emblem));
-	await renderCard(card({ ...sermon, emblem, accent }), out);
+	const png = await drawCard(card({ ...sermon, emblem, accent }));
+	if (existsSync(out) && readFileSync(out).equals(png)) continue;
+	writeFileSync(out, png);
 	wrote += 1;
 	console.log(`  ✓ og/sermons/${sermon.slug}.png  (${emblem}, ${accent})`);
 }
 console.log(
-	`Wrote ${wrote} of ${rows.length} sermon cards to ${OUT_DIR}` +
-		(force ? '' : ` · ${rows.length - wrote} already drawn (--force to redraw)`)
+	`${rows.length} sermon cards drawn · ${wrote} written to ${OUT_DIR}` +
+		(wrote ? '' : ' · all already current')
 );

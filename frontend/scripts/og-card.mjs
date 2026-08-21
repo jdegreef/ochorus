@@ -15,10 +15,11 @@
  * NOT part of the build or CI. Both callers are hand-run when the card set or
  * the branding changes, and their output is committed:
  *
- *     cd frontend
- *     npm i -D satori @resvg/resvg-js        # build-only, not app deps
- *     node scripts/generate-og.mjs
- *     node scripts/generate-sermon-og.mjs
+ *     cd frontend && npm run og:pages
+ *     cd frontend && npm run og:sermons
+ *
+ * `satori` and `@resvg/resvg-js` are declared devDependencies, so a plain
+ * `npm install` is all either needs.
  *
  * satori needs a real TTF/OTF (it can't read the app's woff2 variable fonts),
  * so this uses the Liberation faces shipped with most Linux distros — a clean
@@ -61,10 +62,15 @@ const loadFonts = () =>
 		{ name: 'sans', data: readFileSync(FONT_SANS), weight: 400, style: 'normal' }
 	]);
 
-/** Lay out one satori node and write it as a PNG, creating the directory. */
-export async function renderCard(node, outPath) {
+/** Lay out one satori node and rasterize it. Returns the PNG bytes. */
+export async function drawCard(node) {
 	const svg = await satori(node, { width: WIDTH, height: HEIGHT, fonts: loadFonts() });
-	const png = new Resvg(svg, { fitTo: { mode: 'width', value: WIDTH } }).render().asPng();
+	return new Resvg(svg, { fitTo: { mode: 'width', value: WIDTH } }).render().asPng();
+}
+
+/** Draw one card and write it, creating the directory. */
+export async function renderCard(node, outPath) {
+	const png = await drawCard(node);
 	mkdirSync(dirname(outPath), { recursive: true });
 	writeFileSync(outPath, png);
 }
