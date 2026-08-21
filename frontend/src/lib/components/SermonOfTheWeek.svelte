@@ -47,11 +47,12 @@
 
 {#if pick}
 	<section class={embedded ? '' : 'page-col px-5 pt-14'}>
-		<a
-			href={localizeHref(`/sermons/${pick.slug}`)}
-			class="block transition-transform hover:no-underline"
-		>
-			<SermonPlate slug={pick.slug} chip="3.5rem">
+		<!-- The plate IS this panel's card, so the hover affordance the old
+		     bordered box had has to live here — the plate itself heads a page
+		     more often than it is a link, and shouldn't assume it is one. Same
+		     moves as .shelf-card:hover, mixed off the plate's own hue. -->
+		<a href={localizeHref(`/sermons/${pick.slug}`)} class="plate-link block hover:no-underline">
+			<SermonPlate slug={pick.slug} compact>
 				<p class="eyebrow mb-2 text-accent">
 					{t('home.sermonOfWeek')}
 				</p>
@@ -67,3 +68,18 @@
 		</a>
 	</section>
 {/if}
+
+<style>
+	.plate-link > :global(.sermon-plate) {
+		transition:
+			border-color var(--duration-fast),
+			box-shadow var(--duration-fast),
+			transform var(--duration-fast);
+	}
+	.plate-link:hover > :global(.sermon-plate),
+	.plate-link:focus-visible > :global(.sermon-plate) {
+		border-color: color-mix(in srgb, var(--band-hue) 55%, var(--border));
+		box-shadow: 0 6px 20px -12px color-mix(in srgb, var(--band-hue) 70%, transparent);
+		transform: translateY(-2px);
+	}
+</style>

@@ -12,6 +12,7 @@
 		"check": "npm run paraglide && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"lint": "npm run paraglide && eslint .",
 		"check:slashes": "node scripts/check-slashes.mjs",
+		"emblem:hues": "node scripts/generate-emblem-hues.mjs",
 		"og:pages": "node scripts/generate-og.mjs",
 		"og:sermons": "node scripts/generate-sermon-og.mjs",
 		"test": "vitest run",

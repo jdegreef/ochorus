@@ -268,7 +268,16 @@ The `<h1>` is **`.text-h1`**. `.text-display` is the **home hero only**.
 
 ### Cards
 
-Two families, both `--surface` fill, `--border`, `--radius-card` (12px).
+Four surfaces, all `--border` and `--radius-card` (12px). Three are a
+`--surface` fill; the sermon plate's ground is its own hue wash.
+
+**Which hue a surface wears** is not per-surface taste, it follows one rule:
+**in a list, the hue tracks what the list is sorted or grouped by; standing
+alone, an item wears the hue of its own art.** So the sermons index tints by
+the preacher's era (that shelf reads as a timeline) while the same sermon's own
+page and its Sermon-of-the-week panel tint from its emblem. That is why one
+emblem can appear in two tints a click apart — it is the shelf's colour there
+and its own colour here.
 
 **Shelf card** (`<ShelfCard>` / `.shelf-card`) — the colour-washed card used by
 Topics and Plans: a tinted band carrying an icon chip (or a portrait) and a fan
@@ -280,6 +289,8 @@ holds in both themes. Hues come from:
 |---|---|
 | Topics | `topicMeta(slug).accent` — curated per topic |
 | Plans | `accentForSlug(slug)` — stable pick from the same palette |
+| Sermon plate | `tintable(emblemHue(...))` — derived from the emblem's own art |
+| Sermons index row | `hueForBirthYear(...)` — the preacher's era |
 
 The band's far end takes a **fan of covers** (`covers`); the band does the
 positioning, so an occupant only styles itself.
@@ -296,8 +307,9 @@ Its hue is `tintable(emblemHue(...))` — derived from the emblem's own art, so 
 new sermon is coloured the moment its emblem is picked, then floored into a
 lightness band, because a wash is only as visible as the hue is light.
 
-Both banded surfaces share **`.hue-band`**, driven by `--band-hue`: the wash
-recipe is one rule, not one per surface.
+The shelf card's band and the sermon plate share **`.hue-band`**, driven by
+`--band-hue`: one wash rule, not one per surface. The topic hero still carries
+its own, slightly weaker copy — see the note on `.hue-band` in `app.css`.
 
 **Sermon row** (`.sermon-row`) — the sermons shelf is a **list, not a grid**:
 one sermon per line, under its preacher, carrying the title, the passage it

@@ -34,8 +34,16 @@ export const ERAS: Era[] = [
  * A hue per era, for the shelf cards (see .shelf-card in app.css).
  *
  * Era is the one visual grouping a writer already belongs to, so colouring by
- * it means the same author carries the same colour everywhere rather than a
- * hue invented per surface. Values sit in the same register as the topic
+ * it means an author carries the same colour across every LIST they appear in,
+ * rather than a hue invented per surface.
+ *
+ * Not across every surface, though — see STYLE_GUIDE §Cards. A shelf tints by
+ * what the shelf is sorted by; an item standing on its own wears the hue of its
+ * own art (a sermon's page and its Sermon-of-the-week panel tint from its
+ * emblem, via `emblemHue`). So one sermon really does show two tints a click
+ * apart, and that is the rule rather than a slip.
+ *
+ * Values sit in the same register as the topic
  * palette in $lib/emblems — used only through color-mix() for tints and icon
  * colour, never as body text, so contrast holds in both themes.
  */

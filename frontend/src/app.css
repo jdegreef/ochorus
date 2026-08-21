@@ -1001,9 +1001,19 @@ nav.appnav .navsearch:hover {
    sermon plate — and the whole point of a house wash is that they match, so it
    is one recipe driven by --band-hue rather than two that drift.
 
+   A THIRD wash exists and is NOT on this recipe: the topic hero
+   (routes/topics/[slug]/+page.svelte). It has already drifted — 16%/7% over
+   --surface where this is 22%/9% over --surface-2 — so folding it in is a
+   visible redesign of that page (tinted white becomes a warmer, greyer band),
+   not a refactor. Worth doing deliberately; it was left alone here rather than
+   smuggled into a sermon change.
+
    The hue reaches the pixel ONLY through color-mix (STYLE_GUIDE §Cards), which
    is what keeps a saturated accent legible in both themes. */
 .hue-band {
+	/* The wash's edge, exposed so a band that closes its box (the sermon plate)
+	   draws the same line on all four sides without restating the mix. */
+	--band-line: color-mix(in srgb, var(--band-hue) 22%, var(--border));
 	background:
 		radial-gradient(
 			120% 140% at 0% 0%,
@@ -1011,9 +1021,9 @@ nav.appnav .navsearch:hover {
 			transparent 60%
 		),
 		color-mix(in srgb, var(--band-hue) 9%, var(--surface-2));
-	border-bottom: 1px solid color-mix(in srgb, var(--band-hue) 22%, var(--border));
+	border-bottom: 1px solid var(--band-line);
 }
-/* The coloured header band. */
+/* The coloured header band. Pair with .hue-band, which carries the wash. */
 .shelf-card-band {
 	--band-hue: var(--shelf-hue);
 	position: relative;

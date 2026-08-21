@@ -74,7 +74,11 @@ describe('tintable', () => {
 		}
 	});
 
-	it('leaves a grey grey — there is no hue to restore', () => {
-		expect(tintable('#1a1a1a')).toBe('#1a1a1a');
+	it('lifts a near-black grey too — it is the invisible-wash case, not an exception', () => {
+		// An earlier version skipped greys "because there is no hue to restore",
+		// which returned the one colour the function exists to fix: at lightness
+		// 0.10 a 9% wash of it shows nothing at all. Lightness is all this moves,
+		// and a grey has lightness like anything else.
+		expect(lightness(tintable('#1a1a1a'))).toBeCloseTo(0.34, 2);
 	});
 });

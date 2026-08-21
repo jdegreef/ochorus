@@ -1,82 +1,110 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import Emblem from '$lib/components/Emblem.svelte';
-	import { emblemForSermon, emblemHue } from '$lib/emblems';
+	import { emblemForSermon } from '$lib/emblemNames';
+	import { EMBLEM_HUES } from '$lib/emblemHues';
 	import { tintable } from '$lib/coverArt';
 
 	/**
 	 * A sermon's plate: the hue-washed band it wears at the head of its own page
 	 * and in the Sermon of the week panel. The sermon's words sit in the band and
-	 * its emblem anchors the far end — the same composition as its share card, so
-	 * a reader who arrived from a forwarded link recognises where they landed.
+	 * its emblem anchors the far end — the same composition as its share card
+	 * (`scripts/generate-sermon-og.mjs`), so a reader arriving from a forwarded
+	 * link recognises where they landed.
 	 *
-	 * WHY A BAND AND NOT A COVER
-	 * Sermons had art everywhere except where it counted — a 48px chip on the
-	 * shelves, nothing at all on the sermon page, which opened as a wall of type.
-	 * The obvious fix, "give sermons covers like books have", is the wrong one: a
-	 * 3:4 portrait plate says *volume*, and a sermon is a twenty-minute read. On
-	 * a mixed shelf the differing silhouette is the one instant cue telling a
-	 * reader which is which, and matching it throws that away.
+	 * The design rules it follows — why a sermon gets a landscape band and not a
+	 * 3:4 cover, and why a shelf tints by the shelf's sort while an item standing
+	 * alone tints from its own art — are STYLE_GUIDE §Cards'.
 	 *
-	 * An earlier draft put a decorative band ABOVE the title with the emblem
-	 * centred in it. It read as an empty box: a wide wash with one small chip
-	 * adrift in it and the real content still below. Wrapping the header instead
-	 * gives the wash something to hold.
+	 * Two things worth knowing at the call site:
 	 *
-	 * THE HUE IS THE EMBLEM'S OWN
-	 * Derived from the art (`emblemHue`), not authored: a new sermon is coloured
-	 * the moment its emblem is picked. It reaches the pixel only through
-	 * color-mix (STYLE_GUIDE §Cards), so a saturated accent stays legible in both
-	 * themes and never sets type.
-	 *
-	 * `tintable` first, because a wash is only as visible as the hue is light:
-	 * the raven emblem's slate is dark enough that 9% of it over a dark surface
-	 * showed nothing at all, leaving one sermon in the library looking as though
-	 * the plate had failed to load.
-	 *
-	 * Not used on the sermons index: those rows tint from the PREACHER'S ERA
-	 * (`--row-hue`), a deliberate documented choice that makes a shelf sorted by
-	 * era read as a timeline. This is a different job — one sermon at a time.
+	 *   - The hue is derived from the art, never authored, so a new sermon is
+	 *     coloured the moment its emblem is picked; `tintable` then lifts it into
+	 *     a range a 9% wash can actually show. It comes from the precomputed
+	 *     `EMBLEM_HUES` rather than from `emblemHue()`, and the DRAWING is
+	 *     imported dynamically — between them that keeps 51 emblems' worth of
+	 *     SVG (10.6 KB gzip, measured) off the critical path of the home page
+	 *     and every sermon page, which is what a static `Emblem` import cost.
+	 *     The band paints from the map immediately; the art arrives after
+	 *     hydration, and it is decorative, so nobody waits on it.
+	 *   - It renders a band, not a link. One of its two callers wraps it in an
+	 *     anchor and owns the hover state, since heading a page is the commoner
+	 *     job and a plate should not assume it is clickable.
 	 */
 	let {
 		slug,
-		chip = '4.5rem',
+		compact = false,
 		children
 	}: {
 		slug: string;
-		/** Diameter of the emblem chip. The panel wants a smaller one. */
-		chip?: string;
+		/**
+		 * Smaller chip and tighter band, for the Sermon of the week panel — it
+		 * sits inside a page column rather than heading one.
+		 *
+		 * A variant, not a CSS length: the size has to come from the stylesheet
+		 * so the phone rule below can reach it. Handed in as an inline
+		 * `--chip-size` (as it was at first) it beats every rule in the sheet
+		 * whatever the media query says, and the phone rule silently does
+		 * nothing — measured, not assumed.
+		 */
+		compact?: boolean;
 		/** The sermon's own header — eyebrow, title, byline. */
 		children: Snippet;
 	} = $props();
 
 	const emblem = $derived(emblemForSermon(slug));
-	const hue = $derived(tintable(emblemHue(emblem)));
+	const hue = $derived(tintable(EMBLEM_HUES[emblem]));
 </script>
 
-<div class="sermon-plate hue-band" style="--band-hue: {hue}; --chip-size: {chip}; --chip-hue: {hue}">
+<div
+	class="sermon-plate hue-band"
+	class:compact
+	style="--band-hue: {hue}; --chip-hue: {hue}"
+>
 	<div class="min-w-0 flex-1">{@render children()}</div>
 	<!-- Decorative: every caller names the sermon in the band beside it, so
-	     labelling the emblem would have a screen reader say it twice. -->
-	<span class="emblem-chip" aria-hidden="true"><Emblem name={emblem} /></span>
+	     labelling the emblem would have a screen reader say it twice. Emblem
+	     hides itself when given no `label`, as at every other chip call site.
+	     The chip keeps its size and tint while the art loads, so nothing
+	     reflows when it arrives. -->
+	<span class="emblem-chip">
+		{#await import('$lib/components/Emblem.svelte') then Loaded}
+			<Loaded.default name={emblem} />
+		{/await}
+	</span>
 </div>
 
 <style>
 	.sermon-plate {
+		--chip-size: 4.5rem;
 		display: flex;
 		align-items: center;
 		gap: 1.25rem;
 		padding: 1.15rem 1.35rem;
 		border-radius: var(--radius-card);
 		/* `.hue-band` ends in a hairline at its foot, which is what a card's band
-		   needs above a body. A plate is free-standing, so it closes the box. */
-		border: 1px solid color-mix(in srgb, var(--band-hue) 22%, var(--border));
+		   needs above a body. A plate is free-standing, so it closes the box —
+		   with the band's own line, not a second copy of the mix. */
+		border: 1px solid var(--band-line);
 	}
-	/* Narrow phones: the chip costs a third of the measure, and the title is
-	   what the reader came for. */
-	@media (max-width: 24rem) {
-		.sermon-plate > :global(.emblem-chip) {
-			display: none;
+	.sermon-plate.compact {
+		--chip-size: 3.5rem;
+		gap: 1rem;
+		padding: 1rem 1.15rem;
+	}
+	/* Phones. At full size the chip eats a third of a 390px measure and pushed
+	   the longest title to four lines, so it shrinks — but it does NOT go away:
+	   a sermon wearing its art on a phone is the whole point of the plate, and
+	   the phone is where most of this library is read.
+
+	   `.compact` is listed too: it is the more specific selector, so a bare
+	   `.sermon-plate` here would lose to it and the panel would keep its
+	   full-size chip on a phone. */
+	@media (max-width: 30rem) {
+		.sermon-plate,
+		.sermon-plate.compact {
+			--chip-size: 3rem;
+			gap: 0.9rem;
+			padding: 1rem 1.05rem;
 		}
 	}
 </style>

@@ -15,6 +15,11 @@
  * hex-ok-file: the constant below IS that default — the colour a book wears
  * when the data has none. It is a stand-in for a data value, not a surface, so
  * it must not follow the reader's theme.
+ *
+ * It has since become the app's home for colour ARITHMETIC generally — parsing,
+ * scaling, and moving a hue into a usable range — for the same reason it was
+ * written: that maths had been spelled four different ways in four files. A new
+ * helper of that kind belongs here rather than in the component that needs it.
  */
 
 /** The generator's default cover colour, for books with no `cover_color`. */
@@ -80,26 +85,28 @@ export function coverGradient(color: string | null | undefined): string {
  * `scripts/og-card.mjs:liftToContrast`, which solves the opposite problem —
  * type ON the hue rather than a wash OF it).
  *
- * The band is `covers.py:palette_from_artwork`'s, which floors a colour sampled
- * off artwork for the same reason: a hue picked from a drawing arrives at
- * whatever lightness the drawing used, and the treatment downstream assumes a
- * usable one. Hue and saturation are untouched, so a lifted slate is still that
- * emblem's slate.
+ * `covers.py:palette_from_artwork` floors a colour sampled off artwork for the
+ * same REASON — a hue picked from a drawing arrives at whatever lightness the
+ * drawing used, and everything downstream assumes a usable one — though not to
+ * the same numbers: its 0.30-0.46 is tuned for type on a plate, this for a wash
+ * under one. Hue and saturation are untouched, so a lifted slate still reads as
+ * that emblem's slate.
+ *
+ * The band is fixed rather than measured against the surface, unlike its
+ * counterpart on the share card. A plate has to work in light AND dark from one
+ * value, so this is the mid-tone intersection that survives both grounds — not
+ * a theme-aware calculation, and it should not be mistaken for one.
  */
 export function tintable(hex: string, min = 0.34, max = 0.52): string {
-	const [r, g, b] = channels(hex).map((c) => c / 255);
-	const hi = Math.max(r, g, b);
-	const lo = Math.min(r, g, b);
-	const lightness = (hi + lo) / 2;
+	const rgb = channels(hex);
+	const lightness = (Math.max(...rgb) + Math.min(...rgb)) / 510;
 	const target = Math.min(Math.max(lightness, min), max);
-	if (target === lightness || hi === lo) return toHex(channels(hex));
-	// Scaled about the ends rather than about the midpoint: pushing toward white
-	// above 0.5 and toward black below keeps the saturation the eye reads, where
-	// a flat multiply washes a light colour out as it climbs.
-	const scale = target > lightness ? (1 - target) / (1 - lightness) : target / lightness;
-	return toHex(
-		channels(hex).map((c) =>
-			target > lightness ? 255 - (255 - c) * scale : c * scale
-		)
-	);
+	if (target === lightness) return toHex(rgb);
+	// Scaled about the end it is heading for rather than about zero: pushing
+	// toward white going up and toward black going down keeps the saturation the
+	// eye reads, where a flat multiply washes a light colour out as it climbs.
+	// (Going down that IS a flat multiply, which is exactly `shade`.)
+	if (target < lightness) return shade(toHex(rgb), target / lightness);
+	const scale = (1 - target) / (1 - lightness);
+	return toHex(rgb.map((c) => 255 - (255 - c) * scale));
 }

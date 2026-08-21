@@ -328,10 +328,8 @@
 		>
 	</nav>
 
-	<!-- The sermon's head, in its own plate: the words in a wash of the emblem's
-	     hue, the emblem anchoring the far end — the composition its share card
-	     uses, so a reader arriving from a forwarded link recognises the page.
-	     Dropped in focus mode, which strips everything but the prose. -->
+	<!-- The head sits in its plate (see SermonPlate), except in focus mode,
+	     which strips the page to the prose. -->
 	{#snippet head()}
 		<p class="eyebrow mb-1 text-muted">
 			{t('search.typeSermon')} · {readingTime(sermon.word_count)}{#if year} · {year}{/if}{#if sermon.difficulty}&nbsp;·
@@ -342,7 +340,7 @@
 		<!-- Author row: portrait + name -->
 		<a
 			href={localizeHref(`/authors/${sermon.author_slug}`)}
-			class="group inline-flex items-center gap-2.5 hover:no-underline"
+			class="group mb-1 inline-flex items-center gap-2.5 hover:no-underline"
 		>
 			{#if sermon.author_photo}
 				<img
@@ -365,13 +363,15 @@
 		</a>
 	{/snippet}
 
-	{#if readerUi.focus}
-		{@render head()}
-	{:else}
-		<div class="mb-5">
+	<!-- The margin is the wrapper's, not one branch's: hung off the plate alone
+	     it vanished in focus mode and the head sat flush against the card below. -->
+	<div class="mb-5">
+		{#if readerUi.focus}
+			{@render head()}
+		{:else}
 			<SermonPlate slug={sermon.slug}>{@render head()}</SermonPlate>
-		</div>
-	{/if}
+		{/if}
+	</div>
 
 	<!-- Preaching text: the reference, and its verse(s) when available -->
 	{#if sermon.scripture_ref}
