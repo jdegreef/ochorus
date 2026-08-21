@@ -4,7 +4,7 @@
 	import { localizeHref } from '$lib/href';
 	import { readingTime, preachedYear } from '$lib/reading';
 	import Emblem from '$lib/components/Emblem.svelte';
-	import { emblemForSermon } from '$lib/emblems';
+	import { emblemForSermon } from '$lib/emblemNames';
 	import { hueForBirthYear } from '$lib/eras';
 
 	/**

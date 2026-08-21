@@ -18,14 +18,19 @@
  * The art strings are static, author-controlled markup rendered by
  * Emblem.svelte — never user input.
  *
- * DELIBERATELY IMPORT-FREE. `scripts/generate-sermon-og.mjs` loads this module
- * directly under Node's type stripping to draw the sermon share cards, and
- * bare Node resolves neither the `$lib` alias nor an extensionless `./coverArt`
- * — so an import here breaks the generator, and adding the extension instead
- * fails `svelte-check` (`allowImportingTsExtensions`). The few lines of colour
- * arithmetic below are duplicated from `coverArt.ts` for that reason; the
- * scripts, which are plain `.mjs` and can name the extension, import it
- * properly rather than copying it again.
+ * DELIBERATELY IMPORT-FREE, and that includes re-exports. Two build scripts
+ * (`generate-sermon-og.mjs`, `generate-emblem-hues.mjs`) load this module
+ * directly under Node's type stripping, and bare Node resolves neither the
+ * `$lib` alias nor an extensionless `./emblemNames`, while naming the
+ * extension instead fails `svelte-check` (`allowImportingTsExtensions`). A
+ * convenience `export … from './emblemNames'` here therefore does not
+ * inconvenience anyone — it stops both generators dead. `nodeLoadable.test.ts`
+ * now fails instead of leaving that to be discovered by hand.
+ *
+ * So the catalogue has two doors, by necessity: this module for the ART, and
+ * `./emblemNames` for WHICH emblem a slug wears. The few lines of colour
+ * arithmetic below are duplicated from `coverArt.ts` for the same reason; the
+ * scripts, being plain `.mjs`, can name the extension and import it properly.
  */
 
 // ── Shared palette ──────────────────────────────────────────────────────────
@@ -505,20 +510,6 @@ export const EMBLEM_ART = {
 } as const;
 
 export type EmblemName = keyof typeof EMBLEM_ART;
-
-// ── Curated assignments ─────────────────────────────────────────────────────
-// These live in ./emblemNames, which holds no art — see that module for why —
-// and are re-exported here so this stays the one front door to the catalogue.
-export {
-	FALLBACK_POOL,
-	PLAN_META,
-	SERMON_EMBLEMS,
-	TOPIC_META,
-	emblemForSermon,
-	fallbackEmblem,
-	planMeta,
-	topicMeta
-} from './emblemNames';
 
 /**
  * The dominant ink of an emblem — its own accent, read back off the drawing.

@@ -8,7 +8,7 @@
 	import { localizeHref } from '$lib/href';
 	import { locales } from '$lib/paraglide/runtime';
 	import ShelfCard from '$lib/components/ShelfCard.svelte';
-	import { planMeta } from '$lib/emblems';
+	import { planMeta } from '$lib/emblemNames';
 	import CatalogLanguageNudge from '$lib/components/CatalogLanguageNudge.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';

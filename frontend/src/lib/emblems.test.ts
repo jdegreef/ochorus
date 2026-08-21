@@ -1,18 +1,15 @@
 import { describe, expect, it } from 'vitest';
+import { EMBLEM_ART, emblemHue, MIN_ACCENT_SATURATION, type EmblemName } from './emblems';
 import {
-	EMBLEM_ART,
 	TOPIC_META,
 	PLAN_META,
 	SERMON_EMBLEMS,
 	FALLBACK_POOL,
 	fallbackEmblem,
 	emblemForSermon,
-	emblemHue,
-	MIN_ACCENT_SATURATION,
 	planMeta,
-	topicMeta,
-	type EmblemName
-} from './emblems';
+	topicMeta
+} from './emblemNames';
 
 const names = Object.keys(EMBLEM_ART) as EmblemName[];
 

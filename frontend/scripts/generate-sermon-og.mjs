@@ -53,7 +53,10 @@ import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
 import { channels } from '../src/lib/coverArt.ts';
-import { EMBLEM_ART, emblemForSermon, emblemHue } from '../src/lib/emblems.ts';
+// Two doors, and the split is load-bearing rather than cosmetic — see the
+// header of emblems.ts. The art here, the slug->emblem assignment there.
+import { emblemForSermon } from '../src/lib/emblemNames.ts';
+import { EMBLEM_ART, emblemHue } from '../src/lib/emblems.ts';
 import {
 	BACKGROUND,
 	GOLD,
