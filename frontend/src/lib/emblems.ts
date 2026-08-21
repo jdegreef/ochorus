@@ -17,6 +17,15 @@
  *
  * The art strings are static, author-controlled markup rendered by
  * Emblem.svelte — never user input.
+ *
+ * DELIBERATELY IMPORT-FREE. `scripts/generate-sermon-og.mjs` loads this module
+ * directly under Node's type stripping to draw the sermon share cards, and
+ * bare Node resolves neither the `$lib` alias nor an extensionless `./coverArt`
+ * — so an import here breaks the generator, and adding the extension instead
+ * fails `svelte-check` (`allowImportingTsExtensions`). The few lines of colour
+ * arithmetic below are duplicated from `coverArt.ts` for that reason; the
+ * scripts, which are plain `.mjs` and can name the extension, import it
+ * properly rather than copying it again.
  */
 
 // ── Shared palette ──────────────────────────────────────────────────────────
@@ -608,9 +617,7 @@ export const emblemForSermon = (slug: string): EmblemName =>
  * thing to letter a share card in. Scoring by saturation separates "the colour
  * this drawing IS" from "the colour it is shaded with"; the floor then keeps
  * an emblem that really is drawn in slate (the raven, the rock) from lettering
- * its card in something indistinguishable from muted body text. Ties go to
- * first appearance, which keeps the result stable when the art is edited
- * elsewhere in the string.
+ * its card in something indistinguishable from muted body text.
  *
  * The cream/white papers are excluded outright rather than left to the score:
  * they highlight nearly every emblem, and the lightness discount alone still
@@ -622,64 +629,56 @@ export const emblemForSermon = (slug: string): EmblemName =>
  * floor it themselves — `scripts/og-card.mjs:liftToContrast` for the near-black
  * share card, `color-mix` tints for the app's chips.
  */
-const MIN_ACCENT_SATURATION = 0.3;
+export const MIN_ACCENT_SATURATION = 0.3;
 const PAPER_INKS: ReadonlySet<string> = new Set([CR, CRD, W]);
-const usableLightness = (l: number): number => (l > 0.12 && l < 0.62 ? 1 : 0.35);
 
-/** A #rrggbb colour as [hue, saturation, lightness]. */
-const toHsl = (hex: string): [number, number, number] => {
+/** HSL saturation and lightness of a #rrggbb colour. Hue is never needed. */
+const satLightness = (hex: string): [number, number] => {
 	const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255);
 	const max = Math.max(r, g, b);
 	const min = Math.min(r, g, b);
 	const lightness = (max + min) / 2;
-	if (max === min) return [0, 0, lightness];
+	if (max === min) return [0, lightness];
 	const d = max - min;
-	const hue =
-		max === r ? ((g - b) / d + (g < b ? 6 : 0)) : max === g ? (b - r) / d + 2 : (r - g) / d + 4;
-	return [hue / 6, lightness > 0.5 ? d / (2 - max - min) : d / (max + min), lightness];
-};
-
-/** The inverse of `toHsl`. */
-const fromHsl = ([h, s, l]: [number, number, number]): string => {
-	const c = (1 - Math.abs(2 * l - 1)) * s;
-	const x = c * (1 - Math.abs(((h * 6) % 2) - 1));
-	const m = l - c / 2;
-	const sector = Math.floor(h * 6) % 6;
-	const [r, g, b] = [
-		[c, x, 0],
-		[x, c, 0],
-		[0, c, x],
-		[0, x, c],
-		[x, 0, c],
-		[c, 0, x]
-	][sector];
-	return `#${[r, g, b]
-		.map((v) => Math.round((v + m) * 255).toString(16).padStart(2, '0'))
-		.join('')}`;
+	return [lightness > 0.5 ? d / (2 - max - min) : d / (max + min), lightness];
 };
 
 export const emblemHue = (name: EmblemName): string => {
+	const inks = (EMBLEM_ART[name].match(/#[0-9a-f]{6}/gi) ?? []).map((ink) => ink.toLowerCase());
+	// An emblem drawn ENTIRELY in the papers has no other ink to prefer, so it
+	// gets its most-used one rather than a brand default standing in for art.
+	const usable = inks.filter((hex) => !PAPER_INKS.has(hex));
 	const counts = new Map<string, number>();
-	for (const ink of EMBLEM_ART[name].match(/#[0-9a-f]{6}/gi) ?? []) {
-		const hex = ink.toLowerCase();
-		if (PAPER_INKS.has(hex)) continue;
+	for (const hex of usable.length ? usable : inks) {
 		counts.set(hex, (counts.get(hex) ?? 0) + 1);
 	}
 	let best = '';
+	let winner: [number, number] = [0, 0];
 	let bestScore = 0;
 	for (const [hex, count] of counts) {
-		const [, saturation, lightness] = toHsl(hex);
-		const score = count * (0.35 + saturation) * usableLightness(lightness);
-		if (score > bestScore) [best, bestScore] = [hex, score];
+		const [saturation, lightness] = satLightness(hex);
+		const usable = lightness > 0.12 && lightness < 0.62 ? 1 : 0.35;
+		const score = count * (0.35 + saturation) * usable;
+		if (score > bestScore) [best, winner, bestScore] = [hex, [saturation, lightness], score];
 	}
-	// Every emblem is at least three colours (a test enforces it), so there is
-	// always a winner — but a hue is not optional for the caller, so fall back
-	// to the brand accent rather than to ''.
-	if (!best) return TOPIC_META.prayer.accent;
-	const [hue, saturation, lightness] = toHsl(best);
-	return saturation >= MIN_ACCENT_SATURATION
-		? best
-		: fromHsl([hue, MIN_ACCENT_SATURATION, lightness]);
+	const [saturation, lightness] = winner;
+	if (saturation >= MIN_ACCENT_SATURATION) return best;
+	// Saturating at fixed hue and lightness is just a spread of the channels away
+	// from their midpoint — HSL is affine in saturation once h and l are pinned,
+	// so a round trip through it would be thirty lines to reach the same bytes
+	// (checked against all 51 emblems). It is also better behaved at the edge: a
+	// pure grey has no hue to restore, and this leaves it grey where fromHsl
+	// would have read its hue as 0 and handed back a red.
+	const mid = lightness * 255;
+	const spread = saturation === 0 ? 0 : MIN_ACCENT_SATURATION / saturation;
+	return `#${[1, 3, 5]
+		.map((i) => {
+			const c = mid + (parseInt(best.slice(i, i + 2), 16) - mid) * spread;
+			return Math.max(0, Math.min(255, Math.round(c)))
+				.toString(16)
+				.padStart(2, '0');
+		})
+		.join('')}`;
 };
 
 export const topicMeta = (slug: string): { accent: string; emblem: EmblemName } =>

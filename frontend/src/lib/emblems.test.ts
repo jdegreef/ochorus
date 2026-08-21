@@ -8,6 +8,7 @@ import {
 	fallbackEmblem,
 	emblemForSermon,
 	emblemHue,
+	MIN_ACCENT_SATURATION,
 	planMeta,
 	topicMeta,
 	type EmblemName
@@ -69,6 +70,15 @@ describe('fallbacks for future content', () => {
 });
 
 describe('derived emblem hues', () => {
+	/** HSL saturation of a #rrggbb colour. */
+	const saturation = (hex: string): number => {
+		const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255);
+		const [max, min] = [Math.max(r, g, b), Math.min(r, g, b)];
+		const lightness = (max + min) / 2;
+		if (max === min) return 0;
+		return lightness > 0.5 ? (max - min) / (2 - max - min) : (max - min) / (max + min);
+	};
+
 	it('gives every emblem a hex accent', () => {
 		for (const name of names) {
 			expect(emblemHue(name), name).toMatch(/^#[0-9a-f]{6}$/i);
@@ -76,8 +86,8 @@ describe('derived emblem hues', () => {
 	});
 
 	it('never returns one of the paper tints', () => {
-		// Cream and warm white are used as highlights on nearly every emblem, so
-		// a naive most-used-ink pick hands them the accent everywhere — and a card
+		// Cream and warm white highlight nearly every emblem, so a naive
+		// most-used-ink pick hands them the accent everywhere — and a card
 		// lettered in #fdfaf3 has no accent at all, just two shades of white.
 		const paper = ['#f3e2c4', '#e0c69a', '#fdfaf3'];
 		for (const name of names) {
@@ -85,21 +95,29 @@ describe('derived emblem hues', () => {
 		}
 	});
 
-	it('is saturated enough to read as a colour, not as grey', () => {
-		// The raven and the rock really are drawn mostly in slate; without the
-		// floor their share cards set the passage reference in something you
-		// cannot tell from the muted byline under it.
+	it('clears the saturation floor, so an accent reads as a colour not as grey', () => {
+		// Asserted against the exported constant, so raising the floor tightens
+		// the test instead of quietly leaving it behind.
 		for (const name of names) {
-			const [r, g, b] = [1, 3, 5].map((i) => parseInt(emblemHue(name).slice(i, i + 2), 16) / 255);
-			const [max, min] = [Math.max(r, g, b), Math.min(r, g, b)];
-			const lightness = (max + min) / 2;
-			const saturation =
-				max === min ? 0 : lightness > 0.5 ? (max - min) / (2 - max - min) : (max - min) / (max + min);
-			expect(saturation, `${name} is ${emblemHue(name)}`).toBeGreaterThanOrEqual(0.29);
+			expect(saturation(emblemHue(name)), `${name} is ${emblemHue(name)}`).toBeGreaterThanOrEqual(
+				MIN_ACCENT_SATURATION - 0.005
+			);
 		}
 	});
 
-	it('is stable — the same emblem always yields the same hue', () => {
-		expect(emblemHue('ravens-bread')).toBe(emblemHue('ravens-bread'));
+	it('picks the colour the drawing is actually made of', () => {
+		// A fixed expectation per emblem, rather than re-deriving the formula the
+		// function uses: these are the hues the committed share cards are drawn
+		// in, so a change to the scoring has to be looked at, not just absorbed.
+		const expected: Array<[string, string]> = [
+			['ravens-bread', '#273748'], // the raven — slate, saturated up off the floor
+			['golden-key', '#d9a441'], // gold key on a night ground
+			['still-waters', '#2f8f85'], // teal water
+			['bruised-reed', '#3d7434'], // the green reed, not its cream highlight
+			['cross-sunrise', '#d9a441'] // the rising sun behind the cross
+		];
+		for (const [emblem, hue] of expected) {
+			expect(emblemHue(emblem as EmblemName), emblem).toBe(hue);
+		}
 	});
 });

@@ -160,9 +160,8 @@
 	// AUTHOR PORTRAIT, so every Spurgeon sermon forwarded into a chat as the
 	// same photograph of Spurgeon, and a sermon by an author with no portrait
 	// forwarded as a bare link. Unconditional, like the book page's cover
-	// fallback: `SermonCardTests` fails the build if a sermon has no card, so
-	// the file is there before the page can ship. English only — one card per
-	// slug serves every locale, the same trade the book covers make.
+	// fallback: a prerendered page cannot test for a file, so
+	// `SermonShareCardTests` guarantees it instead.
 	const ogImage = $derived(absUrl(`/og/sermons/${sermon.slug}.png`));
 	const sermonLd = $derived(
 		jsonLd({
@@ -178,7 +177,7 @@
 			url: canonical,
 			isAccessibleForFree: true,
 			datePublished: sermon.preached_on || undefined,
-			image: ogImage || undefined,
+			image: ogImage,
 			about: sermon.scripture_ref ? { '@type': 'Thing', name: sermon.scripture_ref } : undefined,
 			publisher: { '@type': 'Organization', name: 'Ochorus' }
 		})

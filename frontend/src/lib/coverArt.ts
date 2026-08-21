@@ -20,16 +20,39 @@
 /** The generator's default cover colour, for books with no `cover_color`. */
 export const COVER_FALLBACK = '#3b5bdb';
 
+/**
+ * The [r, g, b] of a `#rrggbb` colour, 0–255.
+ *
+ * Exported because the one-line parse was being retyped wherever a colour had
+ * to be taken apart — `shade` below, the emblem accent derivation, the share
+ * card's contrast floor — and only this copy ever had the malformed-input
+ * guard, so the others quietly returned NaN channels on a bad hex.
+ */
+export function channels(hex: string): [number, number, number] {
+	const n = (hex || COVER_FALLBACK).replace('#', '');
+	const src = n.length === 6 ? n : COVER_FALLBACK.slice(1);
+	return [0, 2, 4].map((i) => parseInt(src.slice(i, i + 2), 16)) as [number, number, number];
+}
+
+/** The inverse of `channels` — rounds and clamps, so callers can pass floats. */
+export function toHex(rgb: number[]): string {
+	return `#${rgb
+		.map((c) =>
+			Math.max(0, Math.min(255, Math.round(c)))
+				.toString(16)
+				.padStart(2, '0')
+		)
+		.join('')}`;
+}
+
 /** Scale a hex colour's channels by `factor` (0–1 darkens, >1 lightens). */
 export function shade(hex: string, factor: number): string {
+	// A malformed `cover_color` (it is an unvalidated CharField) returns the
+	// fallback UNSCALED, as it always has — darkening it instead would change
+	// what a broken row looks like, which is not this refactor's business.
 	const n = (hex || COVER_FALLBACK).replace('#', '');
 	if (n.length !== 6) return COVER_FALLBACK;
-	const channels = [0, 2, 4].map((i) =>
-		Math.max(0, Math.min(255, Math.round(parseInt(n.slice(i, i + 2), 16) * factor)))
-			.toString(16)
-			.padStart(2, '0')
-	);
-	return `#${channels.join('')}`;
+	return toHex(channels(hex).map((c) => c * factor));
 }
 
 /**

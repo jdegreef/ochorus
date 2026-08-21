@@ -6,9 +6,7 @@
  * static assets (like the pre-rasterized book covers). This script is NOT part
  * of the build or CI; run it by hand when the card set or branding changes:
  *
- *     cd frontend
- *     npm i -D satori @resvg/resvg-js        # build-only, not app deps
- *     node scripts/generate-og.mjs
+ *     cd frontend && npm run og:pages
  *
  * The ground, palette and faces come from ./og-card.mjs, shared with
  * generate-sermon-og.mjs so every Ochorus share card reads as the same family.
@@ -19,7 +17,7 @@
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
-import { BACKGROUND, GOLD, MUTED, PAPER, renderCard } from './og-card.mjs';
+import { BACKGROUND, GOLD, HEIGHT, MUTED, PAPER, WIDTH, renderCard } from './og-card.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const OUT_DIR = resolve(HERE, '../static/og');
@@ -30,8 +28,8 @@ function card(title, subtitle) {
 		type: 'div',
 		props: {
 			style: {
-				width: '1200px',
-				height: '630px',
+				width: `${WIDTH}px`,
+				height: `${HEIGHT}px`,
 				display: 'flex',
 				flexDirection: 'column',
 				justifyContent: 'space-between',
