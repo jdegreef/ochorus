@@ -50,6 +50,7 @@ from library.content_fixtures import (
     work_filename,
 )
 from library.covers import AUTHOR_MIN_CONTRAST, author_ink_contrast
+from library.curated_art import CURATED
 
 EXPECTED_MODELS = {
     "library.author",
@@ -640,13 +641,17 @@ class CoverAssetTests(SimpleTestCase):
         Reads the artwork rather than the fixture on purpose: the fixture holds
         the book's chosen colour, which stays its own, while the file holds what
         a reader actually sees. Curated covers are skipped — their type sits on a
-        painting under a scrim, which this arithmetic can't speak for.
+        painting under a scrim, which this arithmetic can't speak for — and they
+        are recognised by the CURATED manifest, the same key `generate_covers`
+        uses, rather than by sniffing the embedded image: `build_curated_covers`
+        is one `sips` flag away from emitting something other than JPEG, and a
+        sniff would then fail every curated cover instead of skipping it.
         """
         failures = []
         for svg in sorted((self.STATIC_DIR / "covers").rglob("*.svg")):
-            source = svg.read_text(encoding="utf-8")
-            if "data:image/jpeg" in source:
+            if svg.stem in CURATED:
                 continue
+            source = svg.read_text(encoding="utf-8")
             stop = re.search(r'<stop offset="0" stop-color="(#[0-9a-f]{6})"', source)
             if not stop:
                 failures.append((str(svg.relative_to(self.STATIC_DIR)), "no plate gradient"))
