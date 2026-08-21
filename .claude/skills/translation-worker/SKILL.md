@@ -1434,3 +1434,122 @@ archaic spelling and period punctuation are the text, not defects in it.
   normalise an inflected language, decline the replacement per case
   (`Учителеві`->`Владиці`, `Учителем`->`Владикою`) and assert the tag sequence is
   unchanged afterwards.
+- **The ebible mirror's Arabic Van Dyck is `arb_vdv`, in `usfm/` — and the whole
+  Bible is 7.6 MB, so there is no reason to work from a crib alone** (job #764).
+  The documented probe order (`meta.json`, then `usfm/`, then `usx/`) is right,
+  but the COLLECTION ID is not guessable: `arb_vd` — the ebible id that
+  `language_seed.py` records and the obvious first try — **404s**, as do
+  `arb_svd`, `arb_vdyck` and `arb_nav`. The directory is `bibles/arb_vdv/`
+  (`meta.json` confirms `ids.ebible: arb-vd`, 1865, `license: public`). List the
+  collection instead of guessing: a blobless clone
+  (`git clone --filter=blob:none --no-checkout`) then `git ls-tree HEAD bibles/`
+  enumerates every id in seconds, which also settles Arabic's other four
+  candidates (`arb_bib`, `arb_tma`, `are_bsa`, …). The GitHub *API* is scoped to
+  the session's own repos and 403s on `contents/`, so use git, not `curl` against
+  `api.github.com`.
+  This Van Dyck USFM is unusually clean: one verse per line, and the marker
+  inventory across all 66 files is only `\v \p \s1 \c \cl \d \toc \mt1 \qa \nb` —
+  **zero `\f` footnotes and zero character markers**, so the note-stripping and
+  eid-boundary bugs the hi and uk batches document cannot arise. Parsing is a
+  ten-line regex walk.
+- **Arabic quotations are stored NON-NFC, and retyping one silently normalises it
+  — the text renders identically, so nothing downstream catches it** (job #764).
+  Van Dyck stores shadda BEFORE the vowel (`0651 064E`); Python string literals
+  typed by a model come out NFC-ordered (`064E 0651`). A translator that types a
+  verse rather than splicing the file's bytes produces a chapter that looks
+  perfect, passes the tag gate, passes a diacritic-insensitive grep, and is not
+  verbatim scripture. One chapter of 32 did exactly this (8 spans) and it was
+  found only because the byte-substring check was run as a book-wide scan.
+  Two habits: tell translators in the brief to **copy the bytes with a script,
+  never type them** (say why — they get it immediately), and scan the finished
+  book with `span in vd_text` on RAW bytes. Repair is mechanical: NFC preserves
+  LENGTH for Arabic vowel+shadda, so find the span's NFC form in an NFC-normalised
+  corpus and lift the raw bytes at the same offsets. Apply replacements
+  **longest-first**, or a short refrain that is a prefix of a longer quotation
+  eats its parent and leaves one span unfixed.
+- **`vocalisation ratio` is the mechanical form of "is this claiming to be
+  scripture?"** (job #764). The convention these books use — vocalised inside
+  guillemets = verbatim Van Dyck, bare = the author's own words — is checkable:
+  count combining marks over Arabic letters in each guillemet span. Above ~0.35
+  the span is claiming Van Dyck authority and MUST byte-match; below it, it is
+  prose and must not. Scanning a whole book this way took 32 spans from
+  "unexplained" to three benign classes (an unvocalised connective inside the
+  span, a bracketed editorial gloss the English itself carries, and quotations
+  running across a verse boundary — join the chapter's verses with a single space
+  before testing, or every multi-verse quote reads as a miss).
+- **A dead agent's OUTPUT usually survives; only its report dies — and a report
+  can be reconstructed by AUDIT, which is worth more than a re-translation**
+  (job #764). Three translators were killed by session limits mid-run. Two had
+  already written complete, valid chapter files; only the final chat message was
+  lost, and the "check the file, not the notification" rule settled both in one
+  `ls`. For the one whose report died, a fresh agent was pointed at the finished
+  translation with instructions to audit it against the English and the Bible and
+  WRITE the missing report — explicitly not to re-translate, and not to edit the
+  file. That audit found two real defects the translator's own report would very
+  likely have concealed (it was the translator's own typing that caused them),
+  and its one speculative claim — that a second chapter shared the cause — was
+  checked against the corpus and REFUTED. Prefer audit-by-a-different-agent for a
+  lost report: it costs a fraction of a re-translation and it is adversarial in
+  the way a self-report cannot be. Tell it to report defects rather than fix them,
+  so one agent's judgment call cannot silently overwrite another's.
+  For a long chapter, tell the translator to **write its output file
+  incrementally** (rewriting the whole file every few paragraphs). The 3,390-word
+  chapter here died twice with nothing on disk; instructed to save early, the
+  third attempt survived a container restart with a complete body.
+- **`mergeable_state: clean` can be reported SECONDS after a push, before CI has
+  run — and a worker that reads it as green ships a red PR** (job #764). The
+  skill's advice to read CI from `mergeable_state` is a fallback for sessions that
+  are 403'd on the checks endpoints; it is not a CI signal in its own right, and
+  where a required check has merely not been REGISTERED yet the state is `clean`
+  rather than `blocked`. So test your visibility first and check the STATUS CODE:
+  this session got **HTTP 200** on `/commits/<sha>/check-runs`, `/status` and
+  `/actions/runs` — full CI visibility, unlike every session the entries above
+  were written from. When you can see check runs, poll `status`/`conclusion` and
+  ignore `mergeable_state` entirely; only fall back to it on a 403. Two minutes of
+  checking which kind of session you are beats inheriting either claim.
+- **The ar BOOK-CHAPTER band, and one more book below the corpus floor** (job
+  #764, `divine-healing`, 32 chapters): **0.619-0.762, mean 0.698, book total
+  0.702**, measured from the fixture's own `word_count` on both sides. The shipped
+  ar corpus at the time ran p05 0.687 / p95 0.849 / mean 0.789 over 218 chapters,
+  so this whole book sits below the corpus p05 and its floor is 0.068 under it —
+  verifiably complete, every chapter tag-exact. Cause is the one the density
+  predictor names: this is the most quotation-dense book in the library, and
+  Van Dyck compresses harder than Murray's Victorian English. The Portuguese
+  edition of the SAME book was already the lowest of its ten-book batch
+  (0.906-0.975) for the same reason. Two lessons, both already on this list and
+  both re-confirmed: a floor is a per-(language x work) observation and never a
+  gate, and **word counts must be compared like with like** — counting on raw
+  `body_html` includes HTML tag names as words and inflated these figures by
+  ~0.02 before they were recomputed the corpus's way.
+- **Repairing the English is safe only where YOUR OWN translation already renders
+  the corrected reading** (job #764, 14 repairs). The skill's rule is "when the
+  editions AGREE, repair; when they DISAGREE, you cannot" — but there is a
+  sharper test available while you are the one translating: a defect qualifies
+  when it has exactly one possible intended reading AND your translators, told to
+  render what is there, independently produced that reading anyway (`dine
+  healing` -> الشفاء الإلهي, `(Jdb 42:6)` -> أيوب 42:6). Then the correction closes
+  a gap between the editions instead of opening one. Everything else is reported
+  and left: `an ultimate communion with God` is almost certainly OCR of
+  *intimate*, and "almost certainly" is not the standard for editing a source.
+  Two SYSTEMATIC classes are better left to a dedicated pass than to dozens of
+  literals — spaced citation separators (`Ps. 103: 3`, ~25 sites) and two-dot
+  pseudo-ellipses (`.., `) — both cosmetic in English and normalised anyway by
+  the target language's own citation style.
+  Note the conflict this creates: a **parallel worker on the SAME book in another
+  language reads the same defective English**, so both jobs will find the same
+  defects and both will edit that slug's `BODY_CORRECTIONS` block. Say so in the
+  PR. It is additive on both sides and resolves by keeping both sets, but a
+  reviewer who does not expect it reads it as a mistake.
+- **A validator that demands BALANCED quotation marks will fail correct work —
+  gate on the ENGLISH's own mark shape instead** (job #764). Mapping each
+  edition's outer marks to a bracket string (`“`/`«` -> `(`, `”`/`»` -> `)`) and
+  diffing the two strings turns "is this balanced?" into "does this mirror its
+  source?", which is the question that actually has a right answer. Of six
+  chapters flagged, all six were correct: two split one verse into sibling `« »`
+  segments around an authorial parenthetical (the conventions-sanctioned
+  alternative to nesting), and four mirrored English OCR damage where the source's
+  opening mark is typed `‘‘`, or a closing mark is typed `“`, or `”` is used as an
+  OPENER (four times in one chapter). Treat a shape difference as a WARN to
+  adjudicate against the source, never a FAIL — and note the corollary for the
+  nesting walk: a `«` re-opening at the start of a block while one is already open
+  is a paragraph-continuation mark, not a depth-2 error.
