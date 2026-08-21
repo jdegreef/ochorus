@@ -1,0 +1,23 @@
+{
+  "_note": [
+    "Directories under backend/ holding content that reaches PRERENDERED reader",
+    "pages. Three things read this list, and they must agree or the reader ships",
+    "stale pages:",
+    "  1. library/content_fixtures.py: content_digest() — the fingerprint the API",
+    "     publishes on /api/health/.",
+    "  2. frontend/scripts/await-api-release.mjs — the prebuild gate that waits",
+    "     for the API to hold this build's content before prerendering.",
+    "  3. render.yaml's ochorus-web buildFilter — which commits rebuild the",
+    "     reader at all. tests_fixture pins that it covers every root here.",
+    "A source of reader content that is NOT listed here never rebuilds the",
+    "reader: its pages keep the previous prose until some unrelated commit",
+    "happens to trigger a build. That is exactly how plan and topic prose went",
+    "stale after they moved out of seed_plans.py into data/."
+  ],
+  "roots": [
+    "library/fixtures/content",
+    "library/data/plan_translations",
+    "library/data/topic_translations",
+    "library/migrations/data"
+  ]
+}

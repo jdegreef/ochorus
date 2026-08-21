@@ -1,8 +1,9 @@
 # The content fixture: what it costs, and what to do about it
 
-**Status:** design note, August 2026. Written to close finding #50 of the
-August 2026 code review, which asked for a projection and an evaluation of
-three options before anyone starts moving 79 MB of JSON around.
+**Status:** design note, August 2026; §4 updated after the two real problems it
+identified were acted on. Written to close finding #50 of the August 2026 code
+review, which asked for a projection and an evaluation of three options before
+anyone starts moving 79 MB of JSON around.
 
 **Conclusion up front: do not restructure the fixture.** The review's stated
 mechanism — "grows with whole-file rewrites per edit" — does not hold, and the
@@ -105,29 +106,56 @@ doubling both the locale count and the catalogue beyond what is planned.
 
 Neither is size, and neither needs the fixture restructured.
 
-**(a) The diffs are unreviewable.** A chapter's `body_html` is one line, up to
-190,000 characters. Any change to it renders as that entire line removed and
-re-added. A reviewer cannot see what changed, so in practice nobody reviews
-content diffs — which is exactly the wrong outcome for a pipeline whose whole
-premise is that a human approves AI translations before they ship
-(`source_type=ai_unreviewed` until someone runs `approve_translation`).
+**(a) The diffs are unreviewable.** — *fixed, August 2026.* A chapter's
+`body_html` is one line, up to 190,000 characters, so any change to it rendered
+as that entire line removed and re-added. Measured on `humility-2.en.json`: a
+one-word fix printed **36 KB** of escaped HTML with the change buried in it
+(`--word-diff` only got it to 24 KB). Nobody reviews that, which is the wrong
+outcome for a pipeline whose whole premise is that a human approves AI
+translations before they ship (`source_type=ai_unreviewed` until someone runs
+`approve_translation`).
 
-*Cheaper fix than splitting files:* a `.gitattributes` word-diff hint plus a
-review helper that renders a chapter's before/after as prose. The signal we want
-is "what words changed in this chapter", and that is a diff-rendering problem,
-not a storage-layout one.
+Fixed by rendering fixtures as prose rather than by moving them:
+`library/content_prose.py` emits one numbered line per paragraph. The same
+one-word fix is now **1.3 KB** and reads:
 
-**(b) Every fixture commit rebuilds the whole site.** `render.yaml`'s
-`buildFilter` includes `backend/library/fixtures/**`, so correcting one typo
-re-prerenders all ~2,700 content pages. That is the actual recurring cost of a
-content commit — minutes of CI and a full deploy of both services — and it is
-unrelated to how the JSON is arranged on disk.
+```
+@@ -245,3 +245,3 @@ book.is_published: True
+ [12.1] “He who humbles himself will be exalted.” Luke 14:11, 18:14.
+-[12.2] “Humble yourselves before the Lord, and he will exalt you.” James. 4:10.
++[12.2] “Humble yourselves before teh Lord, and he will exalt you.” James. 4:10.
+ [12.3] “Humble yourselves, therefore, under the mighty hand of God…” 1 Peter 5:6.
+```
 
-*Cheaper fix than splitting files:* incremental prerendering, or dropping the
-fixture path from `buildFilter` and calling the web deploy hook at the end of
-`manage.py release` only when content actually changed. Both are worth costing
-out before either is attempted; the deploy-race guard added in #49 already
-depends on the two services deploying together, so this needs care.
+Two ways in: `manage.py content_diff`, which needs no configuration (CI, PR
+review, fresh clones), and `git diff` itself via `.gitattributes` — that one
+needs a one-time `manage.py content_diff --install`, because git refuses to let
+a repository install a textconv command (it would be code execution on clone).
+A bonus that turned out to matter: a reformat-only change now reports
+"formatting only", so a 193-line churn that ships no content edit says so.
+
+**(b) Which commits rebuild the reader** — *the correctness half fixed, the cost
+half not.* Two separate problems were tangled here.
+
+*The correctness half, now fixed:* `buildFilter` named only
+`backend/library/fixtures/**`, so plan prose, topic prose and translated author
+bios — all of which reach prerendered pages — rebuilt **nothing** when they
+changed. Their pages kept the previous prose until an unrelated commit happened
+to trigger a build. The roots now live in `library/content_sources.json`, which
+the filter, the `/api/health/` content digest and the web build's prebuild gate
+all derive from, and `tests_fixture` fails if they disagree.
+
+*The cost half, not fixed:* correcting one typo still re-prerenders all ~2,700
+content pages, because that is what prerendering means — the pages that render
+that content have to be rebuilt. Trigger changes cannot help; only incremental
+prerendering can, and `adapter-static` has no such mode. Doing it would mean
+diffing the content digest against the previous build, computing which routes
+the changed works appear on (a book page, its chapters, its author, its topics,
+the shelves, the feed, the sitemap), and prerendering only those — with a
+correctness risk that is exactly the one this repo keeps hitting: a page that
+should have rebuilt and didn't. **Not recommended until build time is actually
+hurting.** If it is, the first cheap step is measuring which of the ~2,700 pages
+dominate, not building the machinery.
 
 ---
 

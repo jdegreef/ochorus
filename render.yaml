@@ -71,15 +71,26 @@ services:
     autoDeploy: true
     # By default Render rebuilds this static service only when files under its
     # rootDir (frontend/) change — so a backend-only content commit (new authors,
-    # book/title edits) leaves the prerendered /books|authors|sermons pages stale
-    # until a MANUAL redeploy (deploy skill, gotcha #2). The library fixture is the
-    # single source of truth for that content and is refreshed on every content
-    # change (ship-content-fix), so trigger a rebuild when it changes too. NOTE:
-    # render.yaml changes need a manual Blueprint → Sync to take effect (gotcha #3).
+    # book/title edits) would leave the prerendered /books|authors|sermons pages
+    # stale until a MANUAL redeploy (deploy skill, gotcha #2). The paths below
+    # are where the reader's content actually lives, so a change to any of them
+    # triggers the rebuild that makes it visible.
+    #
+    # They are exactly the roots in backend/library/content_sources.json, and
+    # tests_fixture fails if one is missing here. That matters because the
+    # failure is silent: content this filter does not name ships to the API and
+    # its pages keep the PREVIOUS prose until some unrelated commit happens to
+    # trigger a build. Plan and topic prose spent time in that state after they
+    # moved out of seed_plans.py into data/ and nothing was watching them.
+    #
+    # NOTE: render.yaml changes need a manual Blueprint → Sync (gotcha #3).
     buildFilter:
       paths:
         - frontend/**
-        - backend/library/fixtures/**
+        - backend/library/fixtures/content/**
+        - backend/library/data/plan_translations/**
+        - backend/library/data/topic_translations/**
+        - backend/library/migrations/data/**
     routes:
       # Legacy WordPress URLs (ochorus.com was a WordPress site before this app
       # took the domain). Book pages already share the app's /books/<slug>/ shape,

@@ -38,6 +38,12 @@ RUN uv sync --frozen --no-dev
 ENV DJANGO_DEBUG=false
 RUN DJANGO_SECRET_KEY=build-time-only uv run python manage.py collectstatic --noinput
 
+# Bake the reader-content digest so /api/health/ can serve it as a file read.
+# Computing it walks ~90 MB of fixtures and seed data — 8s cold, and the first
+# request a fresh container serves IS Render's liveness probe. Done here, from
+# the same immutable content the image ships, it cannot be stale.
+RUN DJANGO_SECRET_KEY=build-time-only uv run python manage.py content_version --write
+
 EXPOSE 8000
 
 # Migrations run once per deploy via Render's preDeployCommand (see render.yaml),

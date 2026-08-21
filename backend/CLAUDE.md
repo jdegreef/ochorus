@@ -33,6 +33,19 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
 
 ## Migrations & seeds
 
+- **New seed data needs a home in `library/content_sources.json`.** The reader is
+  prerendered, so content only goes live when something notices it changed. That
+  file lists the roots holding reader-visible content; render.yaml's
+  `buildFilter`, the `/api/health/` content digest and the web build's prebuild
+  gate all derive from it, and `tests_fixture` fails if they disagree. Data
+  outside those roots ships to the API and its pages **never rebuild** — which is
+  what happened to plan and topic prose when they moved into `data/`.
+  `manage.py content_version` prints the digest; compare it with
+  `/api/health/`'s to tell "the reader is stale" from "something else is wrong".
+- **Reviewing a content diff: `manage.py content_diff`.** Raw, a one-word fix in
+  a chapter is a 36 KB diff of escaped HTML (the body is a single JSON line); as
+  prose it is one line that names the chapter and paragraph. `--install` wires
+  the same rendering into `git diff` for this clone.
 - Migrations are immutable once deployed — never edit one that ran against prod.
   Parallel sessions cause divergent leaves; resolve with a merge migration,
   don't renumber.

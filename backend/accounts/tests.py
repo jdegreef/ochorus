@@ -219,21 +219,60 @@ class HealthEndpointTests(TestCase):
     def test_the_digest_matches_what_the_web_build_computes(self):
         """The gate is a Python digest compared against a JavaScript one, and if
         the two rules ever drift the build either hangs for its whole timeout or
-        stops checking anything. Recomputed here by the documented rule — every
-        *.json under content/ by sorted relative path — independently of the
-        implementation, so a change to either side has to be deliberate."""
+        stops checking anything.
+
+        Recomputed here by the DOCUMENTED rule — every file under every root in
+        content_sources.json, keyed by "<root>/<path within root>", roots sorted
+        and paths sorted within a root — written out independently of the
+        implementation. That is what makes it a contract test rather than a
+        restatement: changing how content_digest() works has to be a deliberate
+        change here too, and this is the only place that notices the JavaScript
+        side has been left behind.
+        """
         import hashlib
 
-        from library.content_fixtures import CONTENT_DIR, content_digest
+        from library.content_fixtures import (
+            APP_DIR,
+            compute_content_digest,
+            content_roots,
+        )
 
         h = hashlib.sha256()
-        rels = sorted(
-            p.relative_to(CONTENT_DIR).as_posix() for p in CONTENT_DIR.rglob("*.json")
-        )
-        self.assertTrue(rels, "no content fixtures to digest")
-        for rel in rels:
-            h.update(rel.encode())
-            h.update(b"\0")
-            h.update(hashlib.sha256((CONTENT_DIR / rel).read_bytes()).hexdigest().encode())
-            h.update(b"\0")
-        self.assertEqual(content_digest(), h.hexdigest()[:16])
+        seen = 0
+        for root in sorted(content_roots(), key=lambda p: p.as_posix()):
+            if not root.exists():
+                continue
+            label = root.relative_to(APP_DIR.parent).as_posix()
+            rels = sorted(
+                p.relative_to(root).as_posix() for p in root.rglob("*") if p.is_file()
+            )
+            for rel in rels:
+                seen += 1
+                h.update(f"{label}/{rel}".encode())
+                h.update(b"\0")
+                h.update(hashlib.sha256((root / rel).read_bytes()).hexdigest().encode())
+                h.update(b"\0")
+        self.assertTrue(seen, "no reader content to digest")
+        # compute_content_digest, not content_digest: the latter prefers the
+        # value baked into the image, which is the right thing at runtime and
+        # would make this test assert nothing.
+        self.assertEqual(compute_content_digest(), h.hexdigest()[:16])
+
+    def test_a_baked_digest_is_served_in_preference_to_walking_the_disk(self):
+        """/api/health/ is Render's LIVENESS probe. Computing the digest reads
+        ~90 MB — 8s cold — so the image build bakes it and the endpoint serves
+        that file. If this ever stopped being preferred, the first request a
+        fresh container answered would be the slow one."""
+        import tempfile
+        from pathlib import Path
+        from unittest import mock
+
+        from library.content_fixtures import content_digest
+
+        with tempfile.TemporaryDirectory() as tmp:
+            baked = Path(tmp) / ".content-version"
+            baked.write_text("deadbeefdeadbeef\n")
+            with mock.patch("library.content_fixtures.BAKED_DIGEST_FILE", baked):
+                content_digest.cache_clear()
+                self.assertEqual(content_digest(), "deadbeefdeadbeef")
+        content_digest.cache_clear()

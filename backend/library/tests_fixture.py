@@ -33,6 +33,7 @@ import json
 import re
 from collections import Counter
 from functools import lru_cache
+from pathlib import Path
 
 from django.conf import settings
 from django.test import SimpleTestCase
@@ -1165,4 +1166,187 @@ class TopicTranslationFileTests(SimpleTestCase):
             [],
             f"{bad}: English shelf prose lives on the Topic row itself, and a "
             "file that is not a language code is prose the seed can never match.",
+        )
+
+
+class ContentSourceCoverageTests(SimpleTestCase):
+    """The reader is a PRERENDERED site, so a source of its content is only as
+    live as the thing that notices the source changed.
+
+    Three lists have to agree, and they live in three languages: the roots in
+    ``content_sources.json``, the digest built from them (served on
+    ``/api/health/`` and recomputed by the web build's prebuild gate), and
+    render.yaml's ``buildFilter``, which decides whether a commit rebuilds the
+    reader at all. A root missing from the filter means content ships to the API
+    and the pages that render it never rebuild — silently, until some unrelated
+    commit triggers a build. That is exactly what happened when plan and topic
+    prose moved out of ``seed_plans.py`` into ``data/``.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.repo_root = Path(__file__).resolve().parents[2]
+        cls.render_yaml = (cls.repo_root / "render.yaml").read_text()
+        cls.roots = json.loads(
+            (Path(__file__).resolve().parent / "content_sources.json").read_text()
+        )["roots"]
+
+    def test_every_declared_root_exists(self):
+        for root in self.roots:
+            with self.subTest(root=root):
+                self.assertTrue(
+                    (self.repo_root / "backend" / root).is_dir(),
+                    f"content_sources.json names {root}, which is not a directory. "
+                    "A root that doesn't exist digests to nothing, so the gate "
+                    "silently stops covering whatever used to live there.",
+                )
+
+    def test_build_filter_covers_every_root(self):
+        # The filter is what makes a content commit rebuild the reader at all.
+        for root in self.roots:
+            with self.subTest(root=root):
+                # assertTrue, not assertIn: assertIn would print the whole of
+                # render.yaml (30 KB) into the failure.
+                self.assertTrue(
+                    f"- backend/{root}/**" in self.render_yaml,
+                    f"backend/{root} holds reader content but render.yaml's "
+                    "buildFilter doesn't name it, so changing it deploys the API "
+                    "and leaves the prerendered pages on the previous prose.",
+                )
+
+    def test_the_recurring_seeds_read_only_from_declared_roots(self):
+        """Every directory the release's content seeds read must be declared.
+
+        Pins the actual failure: a seed gains a new data directory, nothing
+        watches it, and its prose goes stale on the reader while looking correct
+        in the database and in the repo.
+        """
+        seeds = Path(__file__).resolve().parent
+        read_dirs = {
+            "library/data/plan_translations": seeds / "plan_translations.py",
+            "library/data/topic_translations": seeds / "topic_translations.py",
+        }
+        for root, module in read_dirs.items():
+            with self.subTest(root=root):
+                self.assertTrue(module.is_file(), f"{module} moved; update this test")
+                self.assertIn(
+                    root,
+                    self.roots,
+                    f"{module.name} seeds the reader from {root}, which is not a "
+                    "declared content root — so editing it rebuilds nothing.",
+                )
+        # Author bios have no fixture and ship as files under migrations/data.
+        self.assertTrue(
+            any(r == "library/migrations/data" for r in self.roots),
+            "seed_author_translations reads migrations/data/author_bios_<lang>/; "
+            "that tree must be a declared content root.",
+        )
+
+    def test_digest_changes_when_any_root_changes(self):
+        """The whole mechanism rests on this: touch content, digest moves."""
+        from library.content_fixtures import compute_content_digest
+
+        before = compute_content_digest()
+        probe = self.repo_root / "backend" / self.roots[0] / ".digest-probe"
+        probe.write_text("x")
+        try:
+            self.assertNotEqual(before, compute_content_digest())
+        finally:
+            probe.unlink()
+        self.assertEqual(before, compute_content_digest())
+
+
+class ContentProseTests(SimpleTestCase):
+    """Rendering a fixture as prose — the thing that makes a translation
+    reviewable in a diff. See library/content_prose.py for why it exists."""
+
+    def test_paragraphs_split_on_block_tags_and_strip_inline_ones(self):
+        from library.content_prose import paragraphs
+
+        html = (
+            "<p>First <em>emphasised</em> line.</p>"
+            "<p>Second with a <a href='#'>link</a>.</p>"
+            "<blockquote>A quotation.</blockquote>"
+        )
+        self.assertEqual(
+            paragraphs(html),
+            ["First emphasised line.", "Second with a link.", "A quotation."],
+        )
+
+    def test_entities_become_the_characters_a_reviewer_reads(self):
+        from library.content_prose import paragraphs
+
+        self.assertEqual(
+            paragraphs("<p>Ben &amp; Sons &mdash; &quot;quoted&quot;</p>"),
+            ['Ben & Sons — "quoted"'],
+        )
+
+    def test_paragraphs_are_numbered_by_chapter(self):
+        """The numbering is the point: a hunk has to say WHERE in the book."""
+        from library.content_prose import render
+
+        out = render([
+            {"model": "library.chapter",
+             "fields": {"order": 7, "title": "Seven", "body_html": "<p>One.</p><p>Two.</p>"}},
+        ])
+        self.assertIn("--- CHAPTER 7: Seven", out)
+        self.assertIn("[7.1] One.", out)
+        self.assertIn("[7.2] Two.", out)
+
+    def test_a_one_word_edit_renders_as_a_one_line_change(self):
+        """The measurement the whole thing rests on. Raw, this fixture's
+        one-word edit is a 36 KB diff because the chapter body is a single
+        12 KB JSON line; as prose it is one short line."""
+        import difflib
+
+        from library.content_fixtures import book_fixture_path
+        from library.content_prose import render_file
+
+        raw = book_fixture_path("humility-2", "en").read_text()
+        edited = raw.replace(" the Lord, and he will exalt you", " teh Lord, and he will exalt you", 1)
+        self.assertNotEqual(raw, edited, "fixture text moved; pick another phrase")
+
+        changed_json = [
+            line for line in difflib.unified_diff(
+                raw.splitlines(), edited.splitlines(), n=0, lineterm=""
+            ) if line[:1] in "+-" and not line.startswith(("+++", "---"))
+        ]
+        changed_prose = [
+            line for line in difflib.unified_diff(
+                render_file(raw).splitlines(), render_file(edited).splitlines(),
+                n=0, lineterm="",
+            ) if line[:1] in "+-" and not line.startswith(("+++", "---"))
+        ]
+        self.assertEqual(len(changed_prose), 2, "one line removed, one added")
+        # The raw pair is the whole chapter body twice; the prose pair is a
+        # sentence. Two orders of magnitude is the difference between a diff a
+        # reviewer reads and one they skip.
+        self.assertLess(
+            sum(len(line) for line in changed_prose) * 10,
+            sum(len(line) for line in changed_json),
+        )
+        self.assertIn("teh Lord", "\n".join(changed_prose))
+        # It also says where, which the raw diff never does.
+        self.assertTrue(any(line.startswith("+[12.") for line in changed_prose))
+        # Sanity: the JSON really is one enormous line, so this isn't a
+        # comparison against a strawman.
+        self.assertGreater(max(len(line) for line in changed_json), 10_000)
+
+    def test_render_file_passes_through_anything_that_is_not_a_fixture(self):
+        # A textconv must never fail or return nothing: git shows its output AS
+        # the file, so a raise here would make every fixture look empty.
+        from library.content_prose import render_file
+
+        self.assertEqual(render_file("not json at all"), "not json at all")
+        self.assertEqual(render_file('{"a": 1}'), '{"a": 1}')
+
+    def test_gitattributes_points_at_the_shipped_textconv(self):
+        repo_root = Path(__file__).resolve().parents[2]
+        attrs = (repo_root / ".gitattributes").read_text()
+        self.assertIn("diff=ochorus-content", attrs)
+        self.assertTrue(
+            (repo_root / "backend" / "scripts" / "fixture-textconv.py").is_file(),
+            ".gitattributes names a diff driver whose script is missing, so a "
+            "clone that opts in gets empty diffs for every fixture.",
         )

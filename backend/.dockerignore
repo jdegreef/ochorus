@@ -28,6 +28,9 @@ __pycache__/
 *.sqlite3
 db.sqlite3
 staticfiles/
+# Baked during the build (manage.py content_version --write); a stale local
+# copy must not be shipped instead.
+.content-version
 
 # Editor / OS noise.
 .DS_Store

@@ -1,0 +1,17 @@
+# Content fixtures diff as PROSE, not as escaped JSON.
+#
+# A chapter's body_html is one JSON line — 12 KB in a small book, 190 KB in the
+# largest — so `git diff` prints tens of kilobytes for a one-word fix and the
+# change is invisible inside it. That matters more here than tidiness: this
+# pipeline's promise is that a human reviews an AI translation before it ships,
+# and an unreadable diff is how that promise quietly stops being kept.
+#
+# The attribute alone is INERT. Git will not let a repository install a
+# textconv command (it would be arbitrary code execution on clone), so each
+# clone opts in once:
+#
+#     cd backend && uv run python manage.py content_diff --install
+#
+# `manage.py content_diff` renders the same prose with no git config at all,
+# which is what CI and PR review use.
+backend/library/fixtures/content/**/*.json diff=ochorus-content
