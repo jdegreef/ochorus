@@ -44,6 +44,14 @@
 	 * is minted (`covers.ink_safe`), so what reaches this component already
 	 * carries white type at AA.
 	 */
+	/**
+	 * The widths a cover is painted at, and the variants `build_cover_assets.py`
+	 * writes for each raster. Committed beside the original, so a `srcset` here
+	 * is a promise the fixture gate keeps.
+	 */
+	const VARIANT_WIDTHS = [320, 640];
+	const RASTER = /\.(jpe?g|png)$/;
+
 	let {
 		book,
 		rounded = 'rounded-card',
@@ -66,7 +74,44 @@
 	let failedUrl = $state('');
 	const loaded = $derived(loadedUrl === book.cover_url);
 	const failed = $derived(failedUrl === book.cover_url);
+
+	/**
+	 * A cover under `covers/art/` is a PAINTING, not a finished cover: one file
+	 * per work, shared by every language, with the type drawn over it here. It
+	 * used to be baked into a per-language SVG — six copies of one painting for
+	 * `waiting-on-god` — which cost 430 KB, re-downloaded on every locale switch,
+	 * and could only set its title in a font the device already had.
+	 */
+	const isArt = $derived((book.cover_url ?? '').startsWith('/covers/art/'));
+
+	/** The webp variants beside a raster cover; empty when there are none. */
+	const srcset = $derived(
+		RASTER.test(book.cover_url ?? '')
+			? VARIANT_WIDTHS.map(
+					(w) => `${book.cover_url.replace(RASTER, '')}-${w}.webp ${w}w`
+				).join(', ')
+			: ''
+	);
 </script>
+
+<!-- The cover's type. Identical over a painting and over a plain plate — the
+     only difference is what is behind it, which is what `.plate` decides. -->
+{#snippet plateType()}
+	<div class="type">
+		<div class="byline truncate" dir="auto">{book.author.name}</div>
+		<!-- Title, rule and subtitle move as one block so the auto margins centre
+		     THEM between the byline and the mark. Left as three siblings, the
+		     leftover space split three ways and the title rode up the plate. -->
+		<div class="middle">
+			<div class="title" dir="auto">{book.title}</div>
+			<div class="rule"></div>
+			{#if book.subtitle}<div class="subtitle line-clamp-2" dir="auto">{book.subtitle}</div>{/if}
+		</div>
+		<!-- The shared mark, not a second copy of the inline-the-lockup recipe:
+		     it sizes off the plate's container, hence a cq height. -->
+		<BrandMark height="13.7cqw" />
+	</div>
+{/snippet}
 
 <div class="relative aspect-[3/4] w-full overflow-hidden {rounded} shadow-sm">
 	{#if book.cover_url && !failed}
@@ -75,7 +120,9 @@
 		{/if}
 		<img
 			src={book.cover_url}
-			alt="{t('a11y.coverOf')} {book.title}"
+			srcset={srcset || undefined}
+			sizes={srcset ? (priority ? '128px' : '200px') : undefined}
+			alt={isArt ? '' : `${t('a11y.coverOf')} ${book.title}`}
 			loading={priority ? 'eager' : 'lazy'}
 			fetchpriority={priority ? 'high' : undefined}
 			width={priority ? 300 : undefined}
@@ -86,6 +133,13 @@
 			class:opacity-0={!loaded && !priority}
 			class:opacity-100={loaded || priority}
 		/>
+		{#if isArt}
+			<!-- The painting carries no words, so the cover's type is drawn here —
+			     one shared image, a title per language. -->
+			<div class="plate over-art" role="img" aria-label="{t('a11y.coverOf')} {book.title}">
+				{@render plateType()}
+			</div>
+		{/if}
 	{:else}
 		<div
 			class="plate"
@@ -93,21 +147,7 @@
 			role="img"
 			aria-label="{t('a11y.coverOf')} {book.title}"
 		>
-			<div class="type">
-				<div class="byline truncate" dir="auto">{book.author.name}</div>
-				<!-- Title, rule and subtitle move as one block so the auto margins
-				     centre THEM between the byline and the mark. Left as three
-				     siblings, the leftover space split three ways and the title rode
-				     up the plate. -->
-				<div class="middle">
-					<div class="title" dir="auto">{book.title}</div>
-					<div class="rule"></div>
-					{#if book.subtitle}<div class="subtitle line-clamp-2" dir="auto">{book.subtitle}</div>{/if}
-				</div>
-				<!-- The shared mark, not a second copy of the inline-the-lockup
-				     recipe: it sizes off the plate's container, hence a cq height. -->
-				<BrandMark height="13.7cqw" />
-			</div>
+			{@render plateType()}
 		</div>
 	{/if}
 </div>
@@ -136,6 +176,26 @@
 		background:
 			radial-gradient(78% 78% at 50% 42%, transparent 55%, rgb(0 0 0 / 0.34) 100%),
 			var(--plate);
+	}
+	/* Over a painting the plate paints no colour of its own — just the scrim the
+	   composited SVG used to carry: a global darkener so white type holds
+	   anywhere, and heavier bands top and bottom, under the byline and the mark,
+	   which is where art is most likely to be pale. */
+	.plate.over-art {
+		position: absolute;
+		inset: 0;
+		background:
+			linear-gradient(
+				180deg,
+				rgb(0 0 0 / 0.62) 0%,
+				rgb(0 0 0 / 0.34) 30%,
+				rgb(0 0 0 / 0.4) 70%,
+				rgb(0 0 0 / 0.7) 100%
+			),
+			rgb(26 20 16 / 0.26);
+	}
+	.plate.over-art .type::before {
+		border-color: rgb(255 255 255 / 0.3);
 	}
 	.type {
 		display: flex;

@@ -83,6 +83,31 @@ describe('BookCover falls back to a plate', () => {
 		expect(plate?.getAttribute('aria-label')).toContain('Waiting on God');
 	});
 
+	it('draws the type over a shared painting, and asks for its webp variants', () => {
+		// `covers/art/` is a painting with no words in it — one file for every
+		// language, with this edition's title drawn over it here. The <img> is
+		// then decorative: the plate carries the accessible name.
+		const el = render({ book: book({ cover_url: '/covers/art/waiting-on-god.jpg' }) });
+		const img = el.querySelector('img');
+		expect(img?.getAttribute('alt')).toBe('');
+		expect(img?.getAttribute('srcset')).toBe(
+			'/covers/art/waiting-on-god-320.webp 320w, /covers/art/waiting-on-god-640.webp 640w'
+		);
+		expect(el.querySelector('.plate.over-art')).not.toBeNull();
+		expect(el.querySelector('.title')?.textContent).toBe('Waiting on God');
+	});
+
+	it('asks for variants of a designed cover, and none of an svg', () => {
+		const raster = render({ book: book({ cover_url: '/covers/humility-2.jpg' }) });
+		expect(raster.querySelector('img')?.getAttribute('srcset')).toContain(
+			'/covers/humility-2-320.webp 320w'
+		);
+		// A generated plate is already a few KB of vector — there is nothing to
+		// resize, and a srcset would point at files nobody builds.
+		const svg = render({ book: book({ cover_url: '/covers/all-of-grace.svg' }) });
+		expect(svg.querySelector('img')?.hasAttribute('srcset')).toBe(false);
+	});
+
 	it('shows the artwork instead when the book has some', () => {
 		const el = render({ book: book({ cover_url: '/covers/waiting-on-god.svg' }) });
 		expect(el.querySelector('img')?.getAttribute('src')).toBe('/covers/waiting-on-god.svg');

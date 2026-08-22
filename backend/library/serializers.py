@@ -549,6 +549,21 @@ class BookDetailSerializer(BookListSerializer):
     def get_available_languages(self, obj):
         return _available_languages(Book, obj.slug)
 
+    def get_artwork_credit(self, obj) -> str | None:
+        """Who painted the cover art, for the books that wear a real painting.
+
+        The credit used to sit in the composited SVG's ``<desc>``, where no
+        reader saw it and no screen reader announced it. The painting is now a
+        plain image with the type drawn over it in HTML, so the credit needs
+        somewhere real to live — and it should be somewhere real regardless:
+        these are Met Open Access works, CC0 and not requiring attribution, but
+        crediting the painter is right, and it lets a reader check the
+        provenance ``curated_art`` records.
+        """
+        from library.curated_art import credit
+
+        return credit(obj.slug)
+
     def get_difficulty(self, obj):
         """A relative reading-difficulty badge, sampled from the opening
         chapters. Fetched as its own tiny query rather than from the chapters

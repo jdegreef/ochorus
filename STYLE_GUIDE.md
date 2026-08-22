@@ -285,8 +285,12 @@ The band's far end takes a **fan of covers** (`covers`); the band does the
 positioning, so an occupant only styles itself.
 
 **Book card** (`.book-card`) — the cover is the visual, so the chrome stays
-quiet: hairline, surface fill, no colour wash. A book with no artwork gets
-`BookCover`'s **plate**: the book's colour, its title set as real text, the
+quiet: hairline, surface fill, no colour wash. Covers come in three tiers and
+`BookCover` draws all of them: a **designed cover** (an image, with `srcset`
+variants built by `scripts/build_cover_assets.py`), a **painting** under
+`covers/art/` with the type drawn over it (one file per work, shared by every
+language — a painting has no words, so it needs no translation), and the
+**plate** for a book with no artwork: the book's colour, its title set as real text, the
 lockup at the foot. It is a placeholder in the house style, *not* a copy of the
 generated cover — the copy it replaced drifted in every metric it duplicated and
 never learned RTL or the non-Latin font stacks. Proportions may echo

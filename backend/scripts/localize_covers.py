@@ -39,13 +39,12 @@ gets the same treatment:
   translated editions lose the photograph, and keep the one thing a cover must
   get right.
 
-* **Curated art** (``curated_art.CURATED``) → the real thing:
-  ``build_art_svg``, the same painting under the edition's own title. The art
-  layer is read back out of the ENGLISH SVG rather than re-fetched from the
-  Met, which makes this reproducible offline and on any OS —
-  ``build_curated_covers`` needs the network and macOS ``sips``. The bytes are
-  the same cropped JPEG either way, so the output is identical to what a full
-  rebuild would write (asserted for three shipped covers when this was added).
+* **Curated art** (``curated_art.CURATED``) → nothing to do here. A painting
+  has no language: it is one shared file under ``covers/art/`` and BookCover
+  draws each edition's title over it, so there is no per-language artefact to
+  localize. ``build_cover_assets.py`` owns that tier. (It was composited per
+  language once, which meant six copies of one painting for ``waiting-on-god``
+  and a fresh download on every locale switch.)
 
 * **Generated plate** (everything else) → ``build_svg`` from the edition's own
   title and ``cover_color``, i.e. what ``generate_covers`` writes, but recorded
@@ -83,9 +82,7 @@ like ``build_curated_covers``. Pillow is a dev-group dependency.
 from __future__ import annotations
 
 import argparse
-import functools
 import json
-import re
 import sys
 from pathlib import Path
 
@@ -99,12 +96,11 @@ from library.content_fixtures import (  # noqa: E402
     persist_fields,
 )
 from library.covers import (  # noqa: E402
-    build_art_svg,
     build_svg,
     cover_path,
     palette_from_artwork,
 )
-from library.curated_art import CURATED, credit  # noqa: E402
+from library.curated_art import CURATED  # noqa: E402
 
 ROOT = BACKEND.parent
 STATIC = ROOT / "frontend" / "static"
@@ -151,22 +147,6 @@ def ensure_og_twin(slug: str, artwork: Path) -> bool:
         dest, "PNG", optimize=True
     )
     return True
-
-
-@functools.cache
-def art_layer(slug: str) -> str:
-    """The bare base64 JPEG behind a curated cover, read from the English SVG.
-
-    ``build_curated_covers`` embeds the cropped artwork as a data URI, so the
-    shipped English cover already holds the exact bytes a translated edition
-    needs — no Met fetch, no ``sips``, and no chance of a re-crop drifting from
-    the locale that shipped first. Cached per work, like ``palettes`` below:
-    these SVGs run 100-150 KB and a work has up to five translated editions."""
-    src = (COVERS / cover_path(slug, "en")[1]).read_text(encoding="utf-8")
-    match = re.search(r'data:image/jpeg;base64,([A-Za-z0-9+/=]+)"', src)
-    if not match:
-        raise SystemExit(f"{slug}: curated cover has no embedded artwork to reuse")
-    return match.group(1)
 
 
 def book_row(path: Path) -> dict | None:
@@ -242,6 +222,15 @@ def main() -> int:
         subtitle = fields.get("subtitle") or ""
         color: str | None = None
 
+        if slug in CURATED:
+            # A painting has no language. It is one shared file under
+            # `covers/art/`, and BookCover draws this edition's title over it —
+            # so there is nothing here to localize. Tested BEFORE the raster
+            # branch, not after: the shared painting IS a .jpg, so extension
+            # alone would file it as designed artwork and draw a plate over a
+            # book that already has a cover.
+            unchanged += 1
+            continue
         if source_cover.endswith(RASTER):
             # Designed artwork: a plate in this language, in the artwork's hue.
             if slug not in palettes:
@@ -256,12 +245,6 @@ def main() -> int:
             color = palettes[slug]
             svg = build_svg(title, subtitle, author, color, language)
             tier = "artwork"
-        elif slug in CURATED:
-            # The real painting, under this language's title.
-            svg = build_art_svg(
-                title, subtitle, author, art_layer(slug), language, credit(slug) or ""
-            )
-            tier = "curated"
         else:
             # The house plate. A freshly translated row often carries no colour
             # of its own, and letting that fall to the default indigo would put
