@@ -41,7 +41,7 @@
 		emblem?: EmblemName;
 		/** Portrait URL to fill the badge instead of an icon (sermons). */
 		portrait?: string;
-		/** Up to four covers to fan across the band. */
+		
 		covers?: TopicCover[];
 		title: string;
 		/** Right-aligned meta beside the title (counts, day totals). */

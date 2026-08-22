@@ -18,7 +18,7 @@
 
 {#if covers.length}
 	<div class="covers" aria-hidden="true">
-		{#each covers.slice(0, max) as cover (cover.title)}
+		{#each covers.slice(0, max) as cover (cover.slug ?? cover.title)}
 			<div class="cover">
 				{#if cover.cover_url}
 					<img src={cover.cover_url} alt="" loading="lazy" />

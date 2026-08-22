@@ -490,13 +490,16 @@ export const getPlan = (slug: string, language = 'en') =>
 /**
  * A book in one of the small fanned strips — a plan's, or a topic's.
  *
- * `kind` is optional only so a payload predating the sermon tile still types;
- * both endpoints emit it now (`serializers._book_cover`). It is what makes
- * `TopicCover` a discriminated union rather than a bag of maybe-fields.
+ * `kind` is what makes `TopicCover` a discriminated union rather than a bag of
+ * maybe-fields. Both strips emit it, from the one builder
+ * (`serializers._book_cover`), so it is required here: a type that hedged would
+ * only be describing a payload neither endpoint sends. Wire data is unchecked
+ * either way — a tile arriving without `kind` still falls to the book branch,
+ * because `isSermonTile` asks for `'sermon'` rather than assuming.
  */
 export interface BookTile {
-	kind?: 'book';
-	slug?: string;
+	kind: 'book';
+	slug: string;
 	cover_url: string;
 	cover_color: string;
 	title: string;
