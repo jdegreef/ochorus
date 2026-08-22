@@ -9,6 +9,9 @@
     "     for the API to hold this build's content before prerendering.",
     "  3. render.yaml's ochorus-web buildFilter — which commits rebuild the",
     "     reader at all. tests_fixture pins that it covers every root here.",
+    "An entry is a directory, or a single FILE where a directory would sweep",
+    "in build artifacts — the two seed modules are Python, and a directory of",
+    "Python grows a __pycache__ the moment anything imports it.",
     "A source of reader content that is NOT listed here never rebuilds the",
     "reader: its pages keep the previous prose until some unrelated commit",
     "happens to trigger a build. That is exactly how plan and topic prose went",
@@ -18,6 +21,8 @@
     "library/fixtures/content",
     "library/data/plan_translations",
     "library/data/topic_translations",
-    "library/migrations/data"
+    "library/migrations/data",
+    "library/topic_seed.py",
+    "library/plan_seed.py"
   ]
 }

@@ -81,6 +81,22 @@ function localDigest() {
 	let seen = 0;
 	for (const root of [...roots].sort()) {
 		const dir = join(BACKEND, root);
+		// A root may be a single FILE (topic_seed.py, plan_seed.py) — keyed by its
+		// own name, with no relative part. Python does the same; see
+		// compute_content_digest's note on why those are named rather than
+		// covered by a directory.
+		try {
+			if (statSync(dir).isFile()) {
+				seen += 1;
+				h.update(root);
+				h.update('\0');
+				h.update(createHash('sha256').update(readFileSync(dir)).digest('hex'));
+				h.update('\0');
+				continue;
+			}
+		} catch {
+			continue; // a root that doesn't exist yet is skipped, as Python does
+		}
 		let files;
 		try {
 			files = filesUnder(dir);

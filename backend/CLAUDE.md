@@ -42,6 +42,9 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
   what happened to plan and topic prose when they moved into `data/`.
   `manage.py content_version` prints the digest; compare it with
   `/api/health/`'s to tell "the reader is stale" from "something else is wrong".
+  A root is normally a directory; a single file is allowed and is how the seed
+  DATA modules (`topic_seed.py`, `plan_seed.py`) are covered — keep reader-visible
+  seed literals in those, not in the `seed_*` commands, which nothing watches.
 - **Reviewing a content diff: `manage.py content_diff`.** Raw, a one-word fix in
   a chapter is a 36 KB diff of escaped HTML (the body is a single JSON line); as
   prose it is one line that names the chapter and paragraph. `--install` wires

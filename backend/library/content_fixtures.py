@@ -42,7 +42,7 @@ CONTENT_SOURCES_FILE = APP_DIR / "content_sources.json"
 
 
 def content_roots() -> list[tuple[str, Path]]:
-    """Directories holding content that reaches prerendered reader pages.
+    """Files and directories holding content that reaches prerendered pages.
 
     ``(declared name, absolute path)`` pairs. The name is carried rather than
     recomputed from the path because it is what the digest keys on, and the two
@@ -108,6 +108,17 @@ def compute_content_digest() -> str:
     h = hashlib.sha256()
     for label, root in sorted(content_roots()):
         if not root.exists():
+            continue
+        # A root may be a single FILE — `topic_seed.py`, `plan_seed.py`. Those
+        # are Python, and a directory of Python is not hashable reproducibly:
+        # `__pycache__` appears the moment something imports it, so the API
+        # image and the web build would compute different digests for identical
+        # content. Naming the file keeps the rule blunt without that trap.
+        if root.is_file():
+            h.update(label.encode())
+            h.update(b"\0")
+            h.update(hashlib.sha256(root.read_bytes()).hexdigest().encode())
+            h.update(b"\0")
             continue
         for path in sorted(
             (p for p in root.rglob("*") if p.is_file()),

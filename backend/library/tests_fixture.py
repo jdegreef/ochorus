@@ -29,6 +29,7 @@ catches loudly:
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 from collections import Counter
@@ -765,6 +766,65 @@ class CoverAssetTests(SimpleTestCase):
         )
         self.assertEqual(absent, [], "curated work with no committed painting")
 
+    def test_every_twin_was_made_from_the_cover_it_stands_in_for(self):
+        """Existence was never the hard part — staleness was.
+
+        The twin check above passes on a file from any era, and for months every
+        one of them was a design generation out of date: "OCHORUS" at the top and
+        the author at the foot, the layout `covers.py` abandoned. Nothing noticed,
+        because a share card is only ever seen by someone who is not us.
+
+        `npm run og:covers` records what each twin was drawn from; this recomputes
+        those digests. Redraw a plate or retitle a curated book and the build fails
+        until the twins are re-run. It cannot see a change to the SCRIPT's own
+        composition — only re-running that can — so this is a floor, not a proof.
+        """
+        manifest_file = STATIC_DIR / "covers" / "og-manifest.json"
+        self.assertTrue(
+            manifest_file.is_file(),
+            "frontend/static/covers/og-manifest.json is missing — run "
+            "`cd frontend && npm run og:covers`",
+        )
+        recorded = json.loads(manifest_file.read_text())["twins"]
+
+        english = {
+            f["slug"]: f for f in self.books if f.get("language") == "en"
+        }
+        stale, unrecorded = [], []
+        for slug, fields in sorted(english.items()):
+            cover = _cover(fields)
+            art = cover.startswith("/covers/art/")
+            if not (art or cover.endswith(".svg")):
+                continue  # a designed raster; its twin is ensure_og_twin's
+            if slug not in recorded:
+                unrecorded.append(slug)
+                continue
+            source = STATIC_DIR / (
+                cover.lstrip("/") if art else f"covers/{slug}.svg"
+            )
+            if not source.is_file():
+                continue  # the twin gate above owns "the file isn't there"
+            blob = source.read_bytes()
+            if art:
+                # The type is drawn over the painting at render time, so the
+                # strings are part of what the card was made from.
+                names = authors_by_slug()
+                author = names.get(fields["author"][0], {}).get("name", fields["author"][0])
+                blob += "\0{}\0{}\0{}".format(
+                    fields["title"], fields.get("subtitle") or "", author
+                ).encode()
+            if hashlib.sha256(blob).hexdigest() != recorded[slug]:
+                stale.append(slug)
+
+        self.assertEqual(
+            unrecorded, [], "cover with no entry in og-manifest.json — run `npm run og:covers`"
+        )
+        self.assertEqual(
+            stale, [],
+            "the cover changed but its og:image twin did not — a shared link "
+            "would show the previous design. Run `cd frontend && npm run og:covers`",
+        )
+
     def test_covers_that_cannot_be_shared_have_a_raster_twin(self):
         """og:image falls back to /covers/<slug>.png — that file must exist.
 
@@ -1410,11 +1470,15 @@ class ContentSourceCoverageTests(SimpleTestCase):
         )["roots"]
 
     def test_every_declared_root_exists(self):
+        # A directory OR a single file: the two seed modules are named
+        # individually, because a `/**` over a Python package sweeps in
+        # __pycache__ and the API image and the web build would then digest the
+        # same content differently.
         for root in self.roots:
             with self.subTest(root=root):
                 self.assertTrue(
-                    (self.repo_root / "backend" / root).is_dir(),
-                    f"content_sources.json names {root}, which is not a directory. "
+                    (self.repo_root / "backend" / root).exists(),
+                    f"content_sources.json names {root}, which is not there. "
                     "A root that doesn't exist digests to nothing, so the gate "
                     "silently stops covering whatever used to live there.",
                 )
@@ -1425,8 +1489,9 @@ class ContentSourceCoverageTests(SimpleTestCase):
             with self.subTest(root=root):
                 # assertTrue, not assertIn: assertIn would print the whole of
                 # render.yaml (30 KB) into the failure.
+                named = f"- backend/{root}/**" if not root.endswith(".py") else f"- backend/{root}"
                 self.assertTrue(
-                    f"- backend/{root}/**" in self.render_yaml,
+                    named in self.render_yaml,
                     f"backend/{root} holds reader content but render.yaml's "
                     "buildFilter doesn't name it, so changing it deploys the API "
                     "and leaves the prerendered pages on the previous prose.",
@@ -1443,7 +1508,7 @@ class ContentSourceCoverageTests(SimpleTestCase):
         backend/CLAUDE.md and DEPLOYMENT.md all promise these agree; this is the
         half that makes the promise true in both directions.
         """
-        in_filter = re.findall(r"^\s*- (backend/\S+)/\*\*$", self.render_yaml, re.M)
+        in_filter = re.findall(r"^\s*- (backend/\S+?)(?:/\*\*)?$", self.render_yaml, re.M)
         self.assertTrue(in_filter, "no backend paths found in render.yaml's buildFilter")
         declared = {f"backend/{r}" for r in self.roots}
         self.assertEqual(
@@ -1453,6 +1518,71 @@ class ContentSourceCoverageTests(SimpleTestCase):
             "content roots, so the prebuild gate cannot tell whether the API has "
             "caught up — add them to content_sources.json or drop them.",
         )
+
+    def test_a_file_root_moves_the_digest_when_its_contents_change(self):
+        """The whole point of naming the seed modules, in one assertion.
+
+        Editing a topic's book list, a plan's description or a topic's epigraph
+        has to rebuild the reader — those strings are prerendered onto
+        /topics/<slug>/ and /plans/<slug>/. While they lived inside the seed
+        COMMANDS nothing noticed: the API redeployed and the pages kept the
+        previous prose until an unrelated commit happened to trigger a build.
+        """
+        import tempfile
+        from unittest import mock
+
+        from library.content_fixtures import compute_content_digest
+
+        with tempfile.TemporaryDirectory() as tmp:
+            seed = Path(tmp) / "topic_seed.py"
+            seed.write_text('TOPICS = [("prayer", "On Prayer", "", [])]\n')
+            with mock.patch(
+                "library.content_fixtures.content_roots",
+                return_value=[("library/topic_seed.py", seed)],
+            ):
+                before = compute_content_digest()
+                seed.write_text('TOPICS = [("prayer", "On Prayer", "", ["humility-2"])]\n')
+                self.assertNotEqual(
+                    before, compute_content_digest(),
+                    "adding a book to a topic left the digest still, so the shelf "
+                    "page it appears on would never rebuild",
+                )
+
+    def test_the_seed_data_modules_hold_no_imports_of_django(self):
+        """A declared root must stay readable without a Django environment.
+
+        `content_digest` runs in the web build's prebuild gate and in curation
+        scripts, neither of which calls `django.setup()`. These modules are data
+        with a `from __future__` line; the day one grows a `models` import is
+        the day the gate starts raising instead of reporting.
+        """
+        import ast
+
+        for name in ("topic_seed.py", "plan_seed.py"):
+            with self.subTest(module=name):
+                tree = ast.parse((Path(__file__).resolve().parent / name).read_text())
+                # The import STATEMENTS, not the text: both modules name
+                # `django.core.management` in their docstrings, explaining why
+                # they exist, and a substring check reads that as an import.
+                imported = {
+                    node.module or ""
+                    for node in ast.walk(tree)
+                    if isinstance(node, ast.ImportFrom)
+                } | {
+                    alias.name
+                    for node in ast.walk(tree)
+                    if isinstance(node, ast.Import)
+                    for alias in node.names
+                }
+                heavy = sorted(
+                    m for m in imported
+                    if m.split(".")[0] == "django" or m.startswith("library.models")
+                )
+                self.assertEqual(
+                    heavy, [],
+                    f"{name} is a declared content root, read by the prebuild gate "
+                    "and by curation scripts that never call django.setup()",
+                )
 
     def test_the_recurring_seeds_read_only_from_declared_roots(self):
         """Every directory the release's content seeds read must be declared.
@@ -1465,6 +1595,10 @@ class ContentSourceCoverageTests(SimpleTestCase):
         read_dirs = {
             "library/data/plan_translations": seeds / "plan_translations.py",
             "library/data/topic_translations": seeds / "topic_translations.py",
+            # The English definitions, split out of the seed commands so a root
+            # could name them: the shelves and plans themselves, not the prose.
+            "library/topic_seed.py": seeds / "topic_seed.py",
+            "library/plan_seed.py": seeds / "plan_seed.py",
         }
         for root, module in read_dirs.items():
             with self.subTest(root=root):
