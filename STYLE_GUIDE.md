@@ -301,8 +301,14 @@ quiet: hairline, surface fill, no colour wash. Covers come in three tiers and
 variants built by `scripts/build_cover_assets.py`), a **painting** under
 `covers/art/` with the type drawn over it (one file per work, shared by every
 language — a painting has no words, so it needs no translation), and the
-**plate** for a book with no artwork: the book's colour, its title set as real text, the
-lockup at the foot. It is a placeholder in the house style, *not* a copy of the
+**plate** for a book with no artwork: the book's colour, its title set as real
+text, the emblem of its topic, and the lockup at the foot. The emblem is the
+plate's SECOND variable — the colour already varies per book but the
+composition didn't, so a grid of plates read as coloured slabs. It is the
+drawing the book's topic already wears on the topics shelf, fitted to whatever
+room the type leaves and omitted when there is none. (On a topic's own shelf
+every book shares it, which is honest rather than useless: they do share the
+topic, and that shelf is tinted for it anyway.) It is a placeholder in the house style, *not* a copy of the
 generated cover — the copy it replaced drifted in every metric it duplicated and
 never learned RTL or the non-Latin font stacks. Proportions may echo
 `covers.py`; algorithms may not.

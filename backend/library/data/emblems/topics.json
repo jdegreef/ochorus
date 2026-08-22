@@ -1,0 +1,15 @@
+{
+	"_comment": "GENERATED from frontend/src/lib/emblemNames.ts by npm run emblem:art. Topic slug -> emblem name, so covers.py can draw the emblem a book’s topic wears.",
+	"topics": {
+		"deeper-life": "mountain-dawn",
+		"enduring-classics": "laurel-tome",
+		"faith-and-guidance": "compass-rose",
+		"grace-and-comfort": "overflowing-cup",
+		"holy-spirit": "dove-descending",
+		"prayer": "praying-hands",
+		"revival-and-missions": "torch-globe",
+		"the-gospel-call": "herald-trumpet",
+		"the-preached-word": "open-word",
+		"the-way-of-holiness": "narrow-gate"
+	}
+}

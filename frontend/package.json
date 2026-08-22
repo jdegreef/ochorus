@@ -13,6 +13,7 @@
 		"lint": "npm run paraglide && eslint .",
 		"check:slashes": "node scripts/check-slashes.mjs",
 		"emblem:hues": "node scripts/generate-emblem-hues.mjs",
+		"emblem:art": "node scripts/generate-emblem-art.mjs",
 		"og:pages": "node scripts/generate-og.mjs",
 		"og:sermons": "node scripts/generate-sermon-og.mjs",
 		"test": "vitest run",

@@ -5833,6 +5833,84 @@ class InkSafePlateTests(SimpleTestCase):
         self.assertNotIn('stop-color="#ca8d21"', svg)
 
 
+class CoverEmblemTests(SimpleTestCase):
+    """The device that stops a shelf of generated plates reading as wallpaper.
+
+    105 of the library's 153 editions wear a generated plate. The colour varies
+    per book but the COMPOSITION doesn't, so a grid of them is twelve coloured
+    slabs with nothing to tell one from another at a glance. The emblem is a
+    second variable, and it is the book's own — the drawing its topic already
+    wears on the topics shelf.
+    """
+
+    def test_a_book_wears_its_topics_emblem(self):
+        from library.covers import emblem_for_book
+
+        self.assertEqual(emblem_for_book("prevailing-prayer"), "praying-hands")
+        self.assertEqual(emblem_for_book("confessions"), "laurel-tome")
+        self.assertIsNone(emblem_for_book("a-book-in-no-topic"))
+
+    def test_the_topic_seed_stays_the_source_of_which_books_a_topic_holds(self):
+        """`_topic_books` reads the seed with `ast` rather than importing it.
+
+        `covers.py` is deliberately Django-free — the curation scripts import it
+        as a plain module — and `seed_topics` pulls in
+        `django.core.management`. Parsing keeps the seed the single source of
+        truth rather than copying its book lists into a data file that can
+        drift, so this asserts the parse still finds them.
+        """
+        from library.covers import _topic_books
+
+        topics = dict(_topic_books())
+        self.assertIn("prayer", topics)
+        self.assertIn("prevailing-prayer", topics["prayer"])
+
+    def test_the_emblem_is_fitted_to_the_room_that_is_left(self):
+        """A constant offset put it through the subtitle and into the lockup.
+
+        A plate's type runs to a different depth on every book — a four-line
+        title pushes the rule 52 units lower than a one-line one, and a two-line
+        subtitle another 30 below that. The emblem is fitted to the band between
+        the last line of type and the mark, and omitted when that band is too
+        small to be worth taking.
+        """
+        from library.covers import _MARK_TOP, build_svg
+
+        def emblem_box(svg):
+            import re
+
+            found = re.search(
+                r'<g transform="translate\((\d+) (\d+)\) scale\(([\d.]+)\)"(?! fill)', svg
+            )
+            return (int(found.group(2)), float(found.group(3)) * 48) if found else None
+
+        roomy = build_svg("Humility", "", "Andrew Murray", "#0b7285", "en", "praying-hands")
+        top, size = emblem_box(roomy)
+        self.assertLessEqual(top + size, _MARK_TOP, "emblem runs into the lockup")
+
+        # Long title AND a two-line subtitle leaves nothing worth drawing in.
+        crowded = build_svg(
+            "A Plain Account of Christian Perfection",
+            "Wherein the whole doctrine is fully explained for the plain reader",
+            "John Wesley", "#0b7285", "en", "praying-hands",
+        )
+        self.assertIsNone(emblem_box(crowded), "emblem drawn with no room for it")
+
+    def test_a_plate_without_an_emblem_is_unchanged(self):
+        """Most of the library predates this, and a book in no topic gets none —
+        neither should differ by so much as a byte from the plate it had."""
+        from library.covers import build_svg
+
+        self.assertEqual(
+            build_svg("Humility", "", "Andrew Murray", "#0b7285", "en"),
+            build_svg("Humility", "", "Andrew Murray", "#0b7285", "en", emblem=None),
+        )
+        self.assertEqual(
+            build_svg("Humility", "", "Andrew Murray", "#0b7285", "en"),
+            build_svg("Humility", "", "Andrew Murray", "#0b7285", "en", emblem="not-an-emblem"),
+        )
+
+
 class GeneratedCoverTests(TestCase):
     """The two invariants of the cover generator.
 

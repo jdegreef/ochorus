@@ -30,8 +30,11 @@ the bytes for a fallback surface.
 
 from __future__ import annotations
 
+import ast
 import html
+import json
 import re
+from functools import lru_cache
 from pathlib import Path
 
 # The canvas. 3:4, matching BookCover's reserved box so nothing shifts.
@@ -286,6 +289,81 @@ def _title_metrics(title: str) -> tuple[int, int]:
 # letter-spaced OCHORUS that used to sit under the mark is gone — the printed
 # ministry covers carry the lockup alone.
 _BRAND_DIR = Path(__file__).resolve().parent / "data" / "brand"
+_EMBLEM_DIR = Path(__file__).resolve().parent / "data" / "emblems"
+
+#: The emblem sits in the band between the last line of type and the mark, at
+#: most 20% of the plate's width. Checked at 300px and at thumbnail size, which
+#: is where covers are mostly seen: smaller and it is a smudge, larger and it
+#: crowds the lockup into looking like a second device.
+#:
+#: FITTED, not placed at a fixed offset. A plate's type runs to a different
+#: depth on every book — a four-line title pushes the rule 52 units lower than a
+#: one-line title, and a two-line subtitle another 30 below that — so a constant
+#: offset put the emblem 16px into the lockup on the long titles and straight
+#: through the subtitle on `a-plain-account-christian-perfection`. Below
+#: `_EMBLEM_MIN` there is no room worth taking, and the plate goes without.
+_EMBLEM_W = 120
+_EMBLEM_MIN = 64
+_EMBLEM_GAP = 22
+
+
+@lru_cache(maxsize=1)
+def _topic_books() -> tuple[tuple[str, tuple[str, ...]], ...]:
+    """(topic slug, its book slugs) from the topic seed, in seed order.
+
+    Parsed rather than imported: this module is deliberately Django-free — the
+    curation scripts import it as a plain module, and `seed_topics` pulls in
+    `django.core.management`. `TOPICS` is a literal, so reading it with `ast` is
+    exact, and it stays the single source of truth for which books a topic
+    holds rather than that list being copied into a data file that can drift.
+    """
+    source = (
+        Path(__file__).resolve().parent / "management" / "commands" / "seed_topics.py"
+    ).read_text()
+    for node in ast.walk(ast.parse(source)):
+        if isinstance(node, ast.Assign) and any(
+            getattr(target, "id", "") == "TOPICS" for target in node.targets
+        ):
+            topics = ast.literal_eval(node.value)
+            return tuple((entry[0], tuple(entry[3])) for entry in topics)
+    raise RuntimeError("seed_topics.TOPICS not found — has the seed changed shape?")
+
+
+def emblem_for_book(slug: str) -> str | None:
+    """The emblem a book wears, through the topic it belongs to.
+
+    Read from the topic seed rather than the database, so a cover can be drawn
+    without one — the covers are committed files built by hand, and requiring a
+    seeded DB to know a book's topic would make the artwork depend on the state
+    of whatever machine ran the command.
+
+    A book in more than one topic takes the first that has an emblem, in seed
+    order: the shelves are ordered by how central the topic is, so the first is
+    the one a reader is likeliest to have met the book under.
+    """
+    assignments = json.loads((_EMBLEM_DIR / "topics.json").read_text())["topics"]
+    for topic_slug, book_slugs in _topic_books():
+        if slug in book_slugs and topic_slug in assignments:
+            return assignments[topic_slug]
+    return None
+
+
+def emblem_art(name: str) -> tuple[str, float, float] | None:
+    """One emblem's markup and its viewBox size, or None if we don't have it.
+
+    Generated from `frontend/src/lib/emblems.ts` by `npm run emblem:art` — the
+    drawings are curated there, and the API image cannot read anything under
+    `frontend/`. `emblemArt.test.ts` fails if the committed copies drift.
+    """
+    path = _EMBLEM_DIR / f"{name}.svg"
+    if not path.is_file():
+        return None
+    src = path.read_text()
+    box = re.search(r'viewBox="0 0 ([\d.]+) ([\d.]+)"', src)
+    inner = re.search(r"<svg[^>]*>(.*)</svg>", src, re.S)
+    if not box or not inner:
+        return None
+    return inner.group(1), float(box.group(1)), float(box.group(2))
 
 
 def _read_lockup() -> tuple[str, float, float]:
@@ -313,6 +391,9 @@ _LOCKUP, _LOCKUP_VW, _LOCKUP_VH = _read_lockup()
 # (STYLE_GUIDE §5), so moving one of these is a look-there-too, not a break.
 _LOGO_W = 136
 _LOGO_H = _LOGO_W * _LOCKUP_VH / _LOCKUP_VW
+#: The top edge of the lockup — where the plate's type has to stop.
+_MARK_TOP = H - _FRAME_INSET - 16 - _LOGO_H
+
 _MARK = (
     f'<g transform="translate({(W - _LOGO_W) // 2} '
     f'{round(H - _FRAME_INSET - 16 - _LOGO_H)}) scale({_LOGO_W / _LOCKUP_VW:.5f})" '
@@ -379,6 +460,7 @@ def build_svg(
     author: str,
     color: str,
     language: str = "en",
+    emblem: str | None = None,
 ) -> str:
     """The cover for one (book, language). Returns SVG source."""
     # The plate yields to the ink, not the other way round: `ink_safe` returns
@@ -406,6 +488,7 @@ def build_svg(
     rule_y = top + (len(lines) - 1) * line_h + 52
 
     sub = ""
+    sub_lines: list[str] = []
     if subtitle:
         sub_lines = _wrap(subtitle, 34)[:2]
         sub = "".join(
@@ -418,6 +501,32 @@ def build_svg(
     # Author sits at the TOP, letterspaced caps — the house style. Long bylines
     # ("Ochorus Originals") stay on one line at this size.
     author_txt = html.escape(author.upper())
+
+    # The emblem of the topic this book belongs to, between the rule and the
+    # mark. 105 of the library's 153 editions wear a generated plate, and with
+    # nothing on it but a title a grid of them reads as coloured slabs — the
+    # colour varies per book but the COMPOSITION doesn't, so nothing tells one
+    # from another at a glance. The emblem is a second variable, and it is the
+    # book's own: the drawing its topic already wears on the topics shelf.
+    mark = ""
+    art = emblem_art(emblem) if emblem else None
+    if art:
+        inner, vw, vh = art
+        # The band between the last thing the type says and the top of the mark.
+        content_bottom = rule_y + 42 + (len(sub_lines) - 1) * 30 if subtitle else rule_y
+        band = _MARK_TOP - content_bottom - 2 * _EMBLEM_GAP
+        # NOT `size`: that is the title's font size, three lines up. Shadowing it
+        # here set every regenerated title to the emblem's width in points —
+        # 97.87px on `a-call-to-the-unconverted` — and the geometry checks all
+        # passed, because the emblem itself was placed correctly.
+        emblem_w = min(_EMBLEM_W, band * vw / vh)
+        if emblem_w >= _EMBLEM_MIN:
+            emblem_h = emblem_w * vh / vw
+            y = content_bottom + _EMBLEM_GAP + (band - emblem_h) / 2
+            mark = (
+                f'<g transform="translate({(W - emblem_w) / 2:.0f} {y:.0f}) '
+                f'scale({emblem_w / vw:.5f})">{inner}</g>'
+            )
 
     return f"""<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{html.escape(title)}">
   <defs>
@@ -437,6 +546,7 @@ def build_svg(
   <text text-anchor="middle" fill="#ffffff" font-family="{family}" font-weight="600" font-size="{size}"{dir_attr}>{tspans}</text>
   <line x1="{W / 2 - 38:.0f}" y1="{rule_y:.0f}" x2="{W / 2 + 38:.0f}" y2="{rule_y:.0f}" stroke="#ffffff" stroke-opacity="0.55" stroke-width="1.5"/>
   {sub}
+  {mark}
 {_MARK}
 </svg>
 """

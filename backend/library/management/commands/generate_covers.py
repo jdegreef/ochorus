@@ -39,7 +39,7 @@ from __future__ import annotations
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
-from library.covers import build_svg, cover_path
+from library.covers import build_svg, cover_path, emblem_for_book
 from library.curated_art import CURATED
 from library.models import Book
 
@@ -103,6 +103,7 @@ class Command(BaseCommand):
                 author=book.author.name,
                 color=book.cover_color,
                 language=book.language,
+                emblem=emblem_for_book(book.slug),
             )
             if not opts["dry_run"]:
                 dest = COVERS_DIR / rel
