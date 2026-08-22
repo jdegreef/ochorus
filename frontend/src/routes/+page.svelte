@@ -200,7 +200,11 @@
 					class="inline-flex items-baseline gap-1.5 rounded-full border border-border bg-surface px-4 py-2 text-small font-medium text-text hover:border-accent hover:text-accent hover:no-underline"
 				>
 					{topic.title}
-					<span class="text-eyebrow font-normal text-muted">{topic.book_count}</span>
+					<!-- Members, not books: a shelf carried by its sermons showed a bare
+					     "0" here, which reads as an empty shelf rather than a full one. -->
+					<span class="text-eyebrow font-normal text-muted"
+						>{topic.book_count + topic.sermon_count}</span
+					>
 				</a>
 			{/each}
 		</div>

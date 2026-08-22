@@ -1,8 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import { emblemForSermon } from '$lib/emblemNames';
-	import { EMBLEM_HUES } from '$lib/emblemHues';
-	import { tintable } from '$lib/coverArt';
+	import { sermonArt } from '$lib/sermonArt';
 
 	/**
 	 * A sermon's plate: the hue-washed band it wears at the head of its own page
@@ -17,15 +15,13 @@
 	 *
 	 * Two things worth knowing at the call site:
 	 *
-	 *   - The hue is derived from the art, never authored, so a new sermon is
-	 *     coloured the moment its emblem is picked; `tintable` then lifts it into
-	 *     a range a 9% wash can actually show. It comes from the precomputed
-	 *     `EMBLEM_HUES` rather than from `emblemHue()`, and the DRAWING is
-	 *     imported dynamically — between them that keeps 51 emblems' worth of
-	 *     SVG (10.6 KB gzip, measured) off the critical path of the home page
-	 *     and every sermon page, which is what a static `Emblem` import cost.
-	 *     The band paints from the map immediately; the art arrives after
-	 *     hydration, and it is decorative, so nobody waits on it.
+	 *   - The emblem and hue come from `sermonArt`, shared with the topic fan.
+	 *     The DRAWING is imported dynamically: between the precomputed hue map
+	 *     and the lazy import, 51 emblems' worth of SVG (10.6 KB gzip, measured)
+	 *     stays off the critical path of the home page and every sermon page,
+	 *     which is what a static `Emblem` import cost. The band paints from the
+	 *     map immediately; the art arrives after hydration, and it is
+	 *     decorative, so nobody waits on it.
 	 *   - It renders a band, not a link. One of its two callers wraps it in an
 	 *     anchor and owns the hover state, since heading a page is the commoner
 	 *     job and a plate should not assume it is clickable.
@@ -51,14 +47,13 @@
 		children: Snippet;
 	} = $props();
 
-	const emblem = $derived(emblemForSermon(slug));
-	const hue = $derived(tintable(EMBLEM_HUES[emblem]));
+	const art = $derived(sermonArt(slug));
 </script>
 
 <div
 	class="sermon-plate hue-band"
 	class:compact
-	style="--band-hue: {hue}; --chip-hue: {hue}"
+	style="--band-hue: {art.hue}; --chip-hue: {art.hue}"
 >
 	<div class="min-w-0 flex-1">{@render children()}</div>
 	<!-- Decorative: every caller names the sermon in the band beside it, so
@@ -68,7 +63,7 @@
 	     reflows when it arrives. -->
 	<span class="emblem-chip">
 		{#await import('$lib/components/Emblem.svelte') then Loaded}
-			<Loaded.default name={emblem} />
+			<Loaded.default name={art.emblem} />
 		{/await}
 	</span>
 </div>

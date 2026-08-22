@@ -289,11 +289,22 @@ holds in both themes. Hues come from:
 |---|---|
 | Topics | `topicMeta(slug).accent` — curated per topic |
 | Plans | `accentForSlug(slug)` — stable pick from the same palette |
-| Sermon plate | `tintable(emblemHue(...))` — derived from the emblem's own art |
+| Sermon plate | `sermonArt(slug).hue` — derived from the emblem's own art |
 | Sermons index row | `hueForBirthYear(...)` — the preacher's era |
+| Sermon tile in a fan | `sermonArt(slug).hue` — its own art, even inside a band |
 
-The band's far end takes a **fan of covers** (`covers`); the band does the
-positioning, so an occupant only styles itself.
+The band's far end takes a **fan of member tiles** (`covers`); the band does the
+positioning, so an occupant only styles itself. A topic's fan holds books first
+and then **sermon tiles** — its members in the reader's language, and in most
+languages there are more sermons than books. A plan's holds books only, and its
+type says so (`BookTile[]`).
+
+A sermon tile is the round **emblem chip**, not a 3:4 cover. That is the rule
+above made visible: the same fan carries a book wearing its cover and a sermon
+wearing its own art, and the differing silhouette is what tells them apart. It
+is also the one place a sermon's own hue sits inside another surface's
+`--shelf-hue` band — the item's art wins over the shelf's, because the books
+beside it are already showing theirs.
 
 **Book card** (`.book-card`) — the cover is the visual, so the chrome stays
 quiet: hairline, surface fill, no colour wash. A book with no artwork gets
@@ -308,9 +319,11 @@ Sermon of the week: the eyebrow/title/byline in a hue wash with the sermon's
 emblem anchoring the far end, the same composition as its share card. Sermons
 are **not** given 3:4 covers: that silhouette says *volume*, and differing
 silhouettes are what tell a book from a sermon at a glance on a mixed shelf.
-Its hue is `tintable(emblemHue(...))` — derived from the emblem's own art, so a
-new sermon is coloured the moment its emblem is picked, then floored into a
-lightness band, because a wash is only as visible as the hue is light.
+Its hue is `sermonArt(slug).hue` — derived from the emblem's own art, so a new
+sermon is coloured the moment its emblem is picked, then floored into a
+lightness band, because a wash is only as visible as the hue is light. Go
+through `sermonArt`, never `emblemHue`: that one reads the drawings, and
+importing it pulls all 51 onto the route's critical path.
 
 The shelf card's band and the sermon plate share **`.hue-band`**, driven by
 `--band-hue`: one wash rule, not one per surface. The topic hero still carries

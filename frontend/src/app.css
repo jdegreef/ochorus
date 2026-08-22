@@ -1215,16 +1215,41 @@ nav.appnav .navsearch:hover {
 	display: flex;
 	overflow: hidden;
 }
+/* The fan's geometry, shared by both tile kinds: the overlap that makes it read
+   as one fanned object, and the lift off the band. */
+.cover-fan > * {
+	margin-inline-start: -0.7rem;
+	box-shadow: var(--shadow-card);
+	flex-shrink: 0;
+}
 .cover-fan .cover {
 	width: 2.5rem;
 	aspect-ratio: 3 / 4;
 	border-radius: 0.25rem;
 	overflow: hidden;
-	box-shadow: var(--shadow-card);
-	margin-inline-start: -0.7rem;
 	background: var(--surface);
 	transform: rotate(-3deg);
-	flex-shrink: 0;
+}
+/* A sermon in the fan: the emblem chip, sized to the tile height. Round rather
+   than 3:4 on purpose — see ShelfCard.
+
+   The shadow re-states the chip's inset ring alongside the fan's drop shadow.
+   `box-shadow` replaces rather than merges, so setting only the drop shadow
+   here stripped the hairline every other emblem chip in the app wears.
+
+   And it does NOT take the leading tile's clip. `.cover-fan` hides overflow, so
+   a first tile carrying the -0.7rem pull loses its leading 28% — unnoticeable
+   on a rectangle, which is why covers have always done it, and plainly broken
+   on a circle. A fan that starts with a sermon starts flush instead. */
+.cover-fan .sermon-tile {
+	--chip-size: 2.9rem;
+	align-self: center;
+	box-shadow:
+		var(--shadow-card),
+		inset 0 0 0 1px color-mix(in srgb, var(--chip-hue) 33%, transparent);
+}
+.cover-fan .sermon-tile:first-child {
+	margin-inline-start: 0;
 }
 .cover-fan .cover:nth-child(2) {
 	transform: rotate(1deg);

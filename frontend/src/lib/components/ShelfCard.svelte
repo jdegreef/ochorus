@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { coverGradient } from '$lib/coverArt';
 	import type { Snippet } from 'svelte';
-	import type { TopicCover } from '$lib/library';
+	import { isSermonTile, type TopicCover } from '$lib/library';
 	import Emblem from '$lib/components/Emblem.svelte';
+	import { sermonArt } from '$lib/sermonArt';
 	import type { EmblemName } from '$lib/emblems';
 
 	/**
@@ -40,7 +41,7 @@
 		emblem?: EmblemName;
 		/** Portrait URL to fill the badge instead of an icon (sermons). */
 		portrait?: string;
-		/** Up to four covers to fan across the band. */
+		
 		covers?: TopicCover[];
 		title: string;
 		/** Right-aligned meta beside the title (counts, day totals). */
@@ -61,17 +62,27 @@
 		</span>
 		{#if covers.length}
 			<div class="cover-fan" aria-hidden="true">
-				{#each covers.slice(0, 4) as cover (cover.title)}
-					<div class="cover">
-						{#if cover.cover_url}
-							<img src={cover.cover_url} alt="" loading="lazy" />
-						{:else}
-							<div
-								class="cover-fallback"
-								style="background: {coverGradient(cover.cover_color || hue)}"
-							></div>
-						{/if}
-					</div>
+				{#each covers.slice(0, 4) as cover (`${cover.kind ?? 'book'}:${cover.slug ?? cover.title}`)}
+					{#if isSermonTile(cover)}
+						<!-- Round, not a 3:4 tile: the shape is what says "sermon, not a
+						     volume" at a glance, which is the whole reason sermons were
+						     never given covers. -->
+						{@const art = sermonArt(cover.slug)}
+						<span class="sermon-tile emblem-chip" style="--chip-hue: {art.hue}">
+							<Emblem name={art.emblem} />
+						</span>
+					{:else}
+						<div class="cover">
+							{#if cover.cover_url}
+								<img src={cover.cover_url} alt="" loading="lazy" />
+							{:else}
+								<div
+									class="cover-fallback"
+									style="background: {coverGradient(cover.cover_color || hue)}"
+								></div>
+							{/if}
+						</div>
+					{/if}
 				{/each}
 			</div>
 		{/if}

@@ -753,6 +753,19 @@ def _plan_day_one(plan, language):
     return {"book_title": chapter["book__title"], "chapter_title": chapter["title"]}
 
 
+def _book_cover(book):
+    """A book as a strip tile. Shared by the plan strip and the topic fan so the
+    two payloads cannot drift — `kind`/`slug` were once on the topic side only,
+    which is what forced the frontend type to make them optional."""
+    return {
+        "kind": "book",
+        "slug": book.slug,
+        "cover_url": book.cover_url,
+        "cover_color": book.cover_color,
+        "title": book.title,
+    }
+
+
 def _plan_covers(plan, language, limit=5):
     """The distinct books a plan draws from (first-appearance order), as small
     cover descriptors — mirrors a topic's covers strip. One query for books."""
@@ -770,9 +783,7 @@ def _plan_covers(plan, language, limit=5):
     for slug in order:
         b = books.get(slug)
         if b:
-            covers.append(
-                {"cover_url": b.cover_url, "cover_color": b.cover_color, "title": b.title}
-            )
+            covers.append(_book_cover(b))
         if len(covers) >= limit:
             break
     return covers
@@ -847,10 +858,25 @@ class TopicListSerializer(LocalizedMixin, serializers.ModelSerializer):
         return len(self._sermons(obj))
 
     def get_covers(self, obj):
-        return [
-            {"cover_url": b.cover_url, "cover_color": b.cover_color, "title": b.title}
-            for b in self._books(obj)[:4]
+        """Up to four member tiles for the card's fan — books first, then sermons.
+
+        Sermons are here because the shelf is LISTED when it has books or
+        sermons (`TopicListView.get_queryset`) while this drew only books, so a
+        shelf whose members in this language are sermons was published with an
+        empty band. Books first, so a shelf that can fill the fan with covers
+        still looks exactly as it did.
+
+        A sermon tile is not a cover — `ShelfCard` draws it as the round emblem
+        chip a sermon wears elsewhere. It carries the SLUG and nothing about the
+        art: which emblem, and the hue derived from it, live in the frontend
+        catalogue the API cannot see.
+        """
+        tiles = [_book_cover(b) for b in self._books(obj)] + [
+            {"kind": "sermon", "slug": s.slug, "title": s.title}
+            for s in self._sermons(obj)
         ]
+        # Four is what `.cover-fan` lays out before it overflows its band.
+        return tiles[:4]
 
     def _books(self, obj):
         """Member books present in the requested language, in the topic's curated
