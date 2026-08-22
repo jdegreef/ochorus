@@ -455,8 +455,12 @@ export interface PlanSummary {
 	day_count: number;
 	/** Total words across all the plan's days (for a reading-time estimate). */
 	total_words: number;
-	/** Distinct book covers the plan draws from (first-appearance order). */
-	covers: TopicCover[];
+	/**
+	 * Distinct book covers the plan draws from (first-appearance order).
+	 * Books only, and the type says so: a plan's days reference `book_slug`
+	 * (`PlanDay`), so no sermon can reach this strip.
+	 */
+	covers: BookTile[];
 	/** Where the plan starts, for a "begin here" teaser. Null if day 1's
 	 * chapter can't be resolved (e.g. an untranslated book in this locale). */
 	day_one: { book_title: string; chapter_title: string } | null;
@@ -488,11 +492,47 @@ export const listPlans = (language = 'en') =>
 export const getPlan = (slug: string, language = 'en') =>
 	localized<PlanDetail>((l) => `/api/library/plans/${slug}/?language=${l}`, language);
 
-export interface TopicCover {
+/**
+ * A book in one of the small fanned strips — a plan's, or a topic's.
+ *
+ * `kind` is what makes `TopicCover` a discriminated union rather than a bag of
+ * maybe-fields. Both strips emit it, from the one builder
+ * (`serializers._book_cover`), so it is required here: a type that hedged would
+ * only be describing a payload neither endpoint sends. Wire data is unchecked
+ * either way — a tile arriving without `kind` still falls to the book branch,
+ * because `isSermonTile` asks for `'sermon'` rather than assuming.
+ */
+export interface BookTile {
+	kind: 'book';
+	slug: string;
 	cover_url: string;
 	cover_color: string;
 	title: string;
 }
+
+/**
+ * A sermon in a topic's strip. It carries no cover fields because it is not
+ * drawn as one: `ShelfCard` renders the round emblem chip a sermon wears
+ * everywhere else, resolved from the slug through the frontend art catalogue.
+ */
+export interface SermonTile {
+	kind: 'sermon';
+	slug: string;
+	title: string;
+}
+
+/** A tile in a strip. Topics hold both kinds; plans hold only `BookTile`. */
+export type TopicCover = BookTile | SermonTile;
+
+/**
+ * Narrows a tile to a sermon.
+ *
+ * A type predicate rather than a boolean, so the sermon branch gets a `slug`
+ * TypeScript knows is there. Without it the call site needs a `?? ''` fallback,
+ * which would quietly draw a hash-picked emblem instead of failing.
+ */
+export const isSermonTile = (cover: TopicCover): cover is SermonTile =>
+	cover.kind === 'sermon';
 
 export interface TopicSummary {
 	slug: string;

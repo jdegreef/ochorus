@@ -331,9 +331,9 @@ def _attach_sermons(topics, language):
 
 
 class TopicListView(generics.ListAPIView):
-    """Published topical shelves that have at least one member book in the
-    requested language (so a partially-translated library never shows an empty
-    shelf). Localized titles/descriptions, with a few sample covers each."""
+    """Published topical shelves that have at least one member — book OR sermon —
+    in the requested language, so a partially-translated library never shows an
+    empty shelf. Localized titles/descriptions, with a few sample tiles each."""
 
     serializer_class = TopicListSerializer
 

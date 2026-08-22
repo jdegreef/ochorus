@@ -62,10 +62,17 @@
 					title={topic.title}
 				>
 					{#snippet aside()}
-						{topic.book_count}
-						{topic.book_count === 1 ? t('common.bookOne') : t('common.bookMany')}
+						<!-- The book count is dropped when it is zero rather than printed as
+						     "0 books · 5 sermons". A shelf listed on the strength of its
+						     sermons is most shelves in most languages (see
+						     TopicListSerializer.get_covers), and announcing what it does
+						     NOT have first is how this card came to contradict itself. -->
+						{#if topic.book_count}
+							{topic.book_count}
+							{topic.book_count === 1 ? t('common.bookOne') : t('common.bookMany')}
+						{/if}
 						{#if topic.sermon_count}
-							· {topic.sermon_count}
+							{#if topic.book_count}· {/if}{topic.sermon_count}
 							{topic.sermon_count === 1 ? t('common.sermonOne') : t('common.sermonMany')}
 						{/if}
 					{/snippet}

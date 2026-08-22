@@ -1,18 +1,24 @@
 <script lang="ts">
 	import { coverGradient, coverSrcset } from '$lib/coverArt';
-	import type { TopicCover } from '$lib/library';
+	import type { BookTile } from '$lib/library';
 
 	/**
-	 * A small fanned "shelf peek" of book covers — the visual signature shared by
-	 * topic and plan cards. Decorative (aria-hidden); falls back to the book's
-	 * cover colour when there's no image.
+	 * A small fanned "shelf peek" of book covers — the plan page's strip.
+	 * Decorative (aria-hidden); falls back to the book's cover colour when
+	 * there's no image.
+	 *
+	 * BOOKS ONLY, by type. A topic's fan can also hold sermon tiles, which are
+	 * drawn as emblem chips rather than covers (`ShelfCard`); this one cannot
+	 * receive them, because a plan's days reference `book_slug` and no sermon
+	 * can appear. Taking `BookTile[]` makes that a compiler error rather than a
+	 * silently blank rectangle.
 	 */
-	let { covers, max = 4 }: { covers: TopicCover[]; max?: number } = $props();
+	let { covers, max = 4 }: { covers: BookTile[]; max?: number } = $props();
 </script>
 
 {#if covers.length}
 	<div class="covers" aria-hidden="true">
-		{#each covers.slice(0, max) as cover (cover.title)}
+		{#each covers.slice(0, max) as cover (cover.slug ?? cover.title)}
 			<div class="cover">
 				{#if cover.cover_url}
 					<img
