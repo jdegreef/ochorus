@@ -560,14 +560,19 @@ seeding a scratch DB from every fixture EXCEPT the new one, then running
 
 - **`description`** — every other book has one; without it the book page falls
   back to the author bio. Write it from the book's own preface, not memory.
-- **`cover_url`** — run `manage.py generate_covers <slug>`, then **rasterize a
-  600×800 PNG twin**: `library.tests_fixture` fails with "generated SVG cover
-  without its .png twin" (social scrapers reject SVG og:images). No committed
-  script; from `frontend/`:
+- **`cover_url`** — run `manage.py generate_covers <slug>`, then **regenerate
+  the og:image twin**: `library.tests_fixture` fails for a cover that cannot be
+  its own share card (social scrapers reject SVG, and a `covers/art/` painting
+  carries no words). From `frontend/`:
   ```bash
-  npm i -D --no-save @resvg/resvg-js   # --no-save: not an app dep
-  node -e "const{Resvg}=require('@resvg/resvg-js'),f=require('fs');for(const s of ['SLUG']){f.writeFileSync('static/covers/'+s+'.png',new Resvg(f.readFileSync('static/covers/'+s+'.svg','utf8'),{fitTo:{mode:'width',value:600},font:{loadSystemFonts:true}}).render().asPng())}"
+  npm run og:covers          # writes only the twins whose bytes changed
   ```
+  This replaces an ad-hoc resvg one-liner that used to live here, and the
+  one-liner is why the committed twins went a design generation stale: it
+  rendered with `loadSystemFonts`, so the type came out in whatever serif the
+  machine had, and nothing re-ran it when the cover design changed. The gate can
+  only see that a twin EXISTS, never that it is current — so run this whenever a
+  cover, title or subtitle changes, not only when adding a book.
 
 **`regen_fixture.py` will NOT pick your new book up — write its fixture file
 yourself.** The script is a fixture→fixture round-trip (fresh scratch DB →

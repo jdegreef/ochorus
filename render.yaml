@@ -91,6 +91,10 @@ services:
         - backend/library/data/plan_translations/**
         - backend/library/data/topic_translations/**
         - backend/library/migrations/data/**
+        # Single files, not trees: these two are Python seed modules, and a
+        # `/**` over a Python package would sweep in __pycache__.
+        - backend/library/topic_seed.py
+        - backend/library/plan_seed.py
     routes:
       # Legacy WordPress URLs (ochorus.com was a WordPress site before this app
       # took the domain). Book pages already share the app's /books/<slug>/ shape,

@@ -241,6 +241,17 @@ class HealthEndpointTests(TestCase):
         for label, root in sorted(content_roots()):
             if not root.exists():
                 continue
+            if root.is_file():
+                # A file root is keyed by its own name, with no relative part —
+                # the seed modules, named individually because a `/**` over a
+                # Python package would sweep in __pycache__ and the API image
+                # and the web build would digest the same content differently.
+                seen += 1
+                h.update(label.encode())
+                h.update(b"\0")
+                h.update(hashlib.sha256(root.read_bytes()).hexdigest().encode())
+                h.update(b"\0")
+                continue
             rels = sorted(
                 p.relative_to(root).as_posix() for p in root.rglob("*") if p.is_file()
             )

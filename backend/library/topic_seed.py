@@ -1,5 +1,10 @@
 """Repo-owned seed data for the curated topical shelves.
 
+The shelves themselves (``TOPICS``), which sermons each holds
+(``TOPIC_SERMONS``) and the Scripture epigraph on each topic page
+(``TOPIC_SCRIPTURE``) — every part of a topic that reaches a reader, in one
+file, so one declared content root covers all of it.
+
 The literal that ``manage.py seed_topics`` plants in the ``Topic`` /
 ``TopicBook`` tables, kept in a module of its own for the same reason
 ``language_seed.py`` and ``topic_translations.py`` are: the seed command pulls
@@ -161,3 +166,89 @@ TOPICS = [
         ],
     ),
 ]
+
+# Sermon members per topic, by canonical sermon slug (language-agnostic, like
+# the book members). A sermon shows on a topic's shelf in each language it
+# exists in. {topic slug: [ordered sermon slugs]}
+TOPIC_SERMONS = {
+    "prayer": [
+        "the-golden-key-of-prayer",
+        "order-and-argument-in-prayer",
+        "pauls-first-prayer",
+    ],
+    "deeper-life": ["himself", "christ-all-in-all"],
+    "grace-and-comfort": [
+        "free-grace",
+        "the-immutability-of-god",
+        "sweet-comfort-for-feeble-saints",
+        "comfort-for-the-desponding",
+        "consolation-in-the-furnace",
+    ],
+    "revival-and-missions": [
+        "compel-them-to-come-in",
+        "the-way-of-salvation",
+        "christs-boundless-compassion",
+    ],
+    "faith-and-guidance": ["the-possibilities-of-faith", "unfailing-springs"],
+    "the-gospel-call": [
+        "christ-crucified",
+        "the-new-birth",
+        "salvation-by-faith",
+        "come-thou-into-the-ark",
+        "the-dying-thief",
+        "the-ravens-cry",
+    ],
+    "the-way-of-holiness": ["aggressive-christianity"],
+}
+
+
+# A themed Scripture epigraph per topic (KJV — public domain), shown on the
+# topic page. {slug: (reference, verse text)}
+TOPIC_SCRIPTURE = {
+    "prayer": (
+        "Jeremiah 33:3",
+        "Call unto me, and I will answer thee, and shew thee great and mighty "
+        "things, which thou knowest not.",
+    ),
+    "holy-spirit": (
+        "Zechariah 4:6",
+        "Not by might, nor by power, but by my spirit, saith the Lord of hosts.",
+    ),
+    "deeper-life": (
+        "Colossians 3:3",
+        "For ye are dead, and your life is hid with Christ in God.",
+    ),
+    "grace-and-comfort": (
+        "2 Corinthians 12:9",
+        "My grace is sufficient for thee: for my strength is made perfect in "
+        "weakness.",
+    ),
+    "revival-and-missions": (
+        "Habakkuk 3:2",
+        "O Lord, revive thy work in the midst of the years, in the midst of the "
+        "years make known.",
+    ),
+    "faith-and-guidance": (
+        "Proverbs 3:6",
+        "In all thy ways acknowledge him, and he shall direct thy paths.",
+    ),
+    "the-gospel-call": (
+        "2 Corinthians 5:20",
+        "We pray you in Christ\u2019s stead, be ye reconciled to God.",
+    ),
+    "enduring-classics": (
+        "Jeremiah 6:16",
+        "Stand ye in the ways, and see, and ask for the old paths, where is "
+        "the good way, and walk therein, and ye shall find rest for your "
+        "souls.",
+    ),
+    "the-way-of-holiness": (
+        "Hebrews 12:14",
+        "Follow peace with all men, and holiness, without which no man shall "
+        "see the Lord.",
+    ),
+    "the-preached-word": (
+        "Romans 10:14",
+        "How shall they hear without a preacher?",
+    ),
+}

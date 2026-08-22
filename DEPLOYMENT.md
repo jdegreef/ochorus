@@ -228,3 +228,7 @@ uv run python scripts/regen_fixture.py   # pinned 6-model natural-key regen; NEV
    Adding a new kind of seed data? Add its directory to `content_sources.json`
    *and* to the `buildFilter`; `tests_fixture` fails if the two disagree, because
    the failure is otherwise silent — content ships and its pages never rebuild.
+   A root may also be a single **file**, which is how `library/topic_seed.py`
+   and `library/plan_seed.py` are named: they are Python, and a `/**` over a
+   Python package sweeps in `__pycache__`, so the API image and the web build
+   would digest identical content differently and the gate would never pass.
