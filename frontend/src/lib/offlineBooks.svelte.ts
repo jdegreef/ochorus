@@ -1,5 +1,6 @@
 import { browser } from '$app/environment';
 import { API_BASE_URL } from './config';
+import { coverVariants } from './coverArt';
 import { readJSON, writeJSON } from './persisted';
 
 /**
@@ -90,10 +91,17 @@ class OfflineBooks {
 				this.active = { slug: book.slug, done: (this.active?.done ?? 0) + 1, total: urls.length };
 			}
 			// Cover (often cross-origin): best-effort, opaque is fine for <img>.
-			if (book.cover_url) {
+			//
+			// The VARIANTS too, not just `cover_url`. `BookCover` asks for
+			// `<cover>-320.webp` through srcset and never requests the original, so
+			// caching that alone downloaded a file nothing then fetched: the variant
+			// landed in the versioned cache instead, which `activate` drops on the
+			// next deploy, and a downloaded book quietly lost its cover.
+			const covers = [book.cover_url, ...coverVariants(book.cover_url)].filter(Boolean);
+			for (const url of covers) {
 				try {
-					const res = await fetch(book.cover_url, { mode: 'no-cors' });
-					await cache.put(book.cover_url, res.clone());
+					const res = await fetch(url, { mode: 'no-cors' });
+					await cache.put(url, res.clone());
 				} catch {
 					/* cover unavailable — text still reads offline */
 				}

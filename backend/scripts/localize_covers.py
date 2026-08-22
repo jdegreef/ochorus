@@ -95,6 +95,8 @@ from library.content_fixtures import (  # noqa: E402
     persist_fields,
 )
 from library.covers import (  # noqa: E402
+    RASTER_SUFFIXES,
+    art_url,
     build_svg,
     cover_path,
     emblem_for_book,
@@ -105,7 +107,6 @@ from library.curated_art import CURATED  # noqa: E402
 ROOT = BACKEND.parent
 STATIC = ROOT / "frontend" / "static"
 COVERS = STATIC / "covers"
-RASTER = (".jpg", ".jpeg", ".png")
 
 
 def ensure_og_twin(slug: str, artwork: Path) -> bool:
@@ -116,7 +117,7 @@ def ensure_og_twin(slug: str, artwork: Path) -> bool:
     ``/covers/<slug>.png`` whenever cover_url ends in .svg. Handing a row a
     localized SVG therefore silently arms that fallback, and these 15 works had
     a .jpg twin, not a .png: 49 rows would have shipped pointing og:image at a
-    404. ``CoverAssetTests.test_svg_covers_have_a_raster_twin_for_og_image``
+    404. ``CoverAssetTests.test_covers_that_cannot_be_shared_have_a_raster_twin``
     catches it, which is how this was found.
 
     One twin per WORK, not per language: the fallback path is keyed by slug
@@ -201,7 +202,7 @@ def main() -> int:
         source = english.get(slug) or {}
         source_cover = source.get("cover_url") or ""
         own_cover = fields.get("cover_url") or ""
-        if own_cover.startswith(f"/covers/{language}/") and own_cover.endswith(RASTER):
+        if own_cover.startswith(f"/covers/{language}/") and own_cover.endswith(RASTER_SUFFIXES):
             # This edition has designed artwork of its OWN — the one case where a
             # generated plate is a downgrade, and the same line generate_covers
             # draws with is_generated. Nothing in the library is here yet; the
@@ -216,13 +217,27 @@ def main() -> int:
         if slug in CURATED:
             # A painting has no language. It is one shared file under
             # `covers/art/`, and BookCover draws this edition's title over it —
-            # so there is nothing here to localize. Tested BEFORE the raster
-            # branch, not after: the shared painting IS a .jpg, so extension
-            # alone would file it as designed artwork and draw a plate over a
-            # book that already has a cover.
-            unchanged += 1
+            # so there is nothing to DRAW here. Tested BEFORE the raster branch,
+            # not after: the shared painting IS a .jpg, so extension alone would
+            # file it as designed artwork and draw a plate over a book that
+            # already has a cover.
+            #
+            # The ROW still gets pointed at the painting. `translate_book` writes
+            # `/covers/<lang>/<slug>.svg` for a new translation and those
+            # per-language files no longer exist, so a freshly translated curated
+            # edition arrives with a dangling cover_url — and reporting it
+            # "unchanged" is how it would stay that way until `tests_fixture`
+            # went red. Same URL `build_cover_assets.py` writes.
+            url, _rel = art_url(slug)
+            if fields.get("cover_url") != url:
+                patched += 1
+                if not args.dry_run:
+                    patch(path, url)
+                print(f"  ✓ {url:52} {'curated':9} {'row':9} {'':8} {title}")
+            else:
+                unchanged += 1
             continue
-        if source_cover.endswith(RASTER):
+        if source_cover.endswith(RASTER_SUFFIXES):
             # Designed artwork: a plate in this language, in the artwork's hue.
             if slug not in palettes:
                 art = STATIC / source_cover.lstrip("/")

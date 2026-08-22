@@ -26,12 +26,15 @@ NEVER OVERWRITES ARTWORK, of either kind:
   * a raster cover_url (.jpg/.png) — the designed covers, on-brand or inherited;
   * a slug in the CURATED manifest — the composited public-domain artwork.
 
-The second guard exists because curated covers are ALSO .svg, so the raster
-check alone doesn't catch them: a `--force` run happily redrew all ten as plain
-typographic plates. On Render that was harmless (throwaway container, unchanged
-cover_url), but the same command on a developer's machine overwrites the
-committed artwork and the loss can be committed without anyone noticing.
---force means "redraw the generated ones", never "replace the art".
+The second guard was added when curated covers were ALSO .svg and the raster
+check could not tell them apart — a `--force` run redrew all ten as plain
+typographic plates, and on a developer's machine that overwrites committed
+artwork and can be committed without anyone noticing. They are `.jpg` paintings
+now, so the raster check catches the ones that carry a cover_url; the manifest
+guard still earns its place for a curated work whose row has none yet, where
+`is_generated("")` is True and the plate would be drawn over a book that
+already has a painting. --force means "redraw the generated ones", never
+"replace the art".
 """
 
 from __future__ import annotations
@@ -86,8 +89,9 @@ class Command(BaseCommand):
             if book.cover_url and not is_generated(book.cover_url):
                 skipped_art += 1
                 continue
-            # Curated covers are .svg too, so is_generated() can't tell them
-            # apart. Rebuild those with `build_curated_covers`, not this.
+            # A curated work with no cover_url yet reaches here: the raster
+            # check above passes over it, and `is_generated("")` is True. Its
+            # painting comes from `build_curated_covers`, not from this.
             if book.slug in CURATED:
                 skipped_curated += 1
                 continue

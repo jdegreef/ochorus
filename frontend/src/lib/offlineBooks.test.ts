@@ -1,4 +1,5 @@
 import { beforeEach, describe, it, expect } from 'vitest';
+import { coverVariants } from './coverArt';
 import { offlineBooks } from './offlineBooks.svelte';
 
 const KEY = 'ochorus:offline-books';
@@ -35,5 +36,19 @@ describe('offlineBooks tracking', () => {
 		});
 		expect(ok).toBe(false);
 		expect(offlineBooks.has('godliness')).toBe(false);
+	});
+
+	it('downloads the cover files the browser will actually ask for', () => {
+		// `BookCover` requests a variant through srcset and never the original, so
+		// a download that cached `cover_url` alone put nothing in the durable cache
+		// that a render would hit — the variant landed in the versioned cache
+		// instead, which the service worker drops on the next deploy, and the book
+		// lost its cover offline. jsdom has no Cache API, so this pins the URL set
+		// the download derives rather than the fetches.
+		expect(coverVariants('/covers/godliness.jpg')).toEqual([
+			'/covers/godliness-320.webp',
+			'/covers/godliness-640.webp'
+		]);
+		expect(coverVariants('/covers/all-of-grace.svg')).toEqual([]);
 	});
 });

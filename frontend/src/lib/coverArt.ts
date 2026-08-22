@@ -84,9 +84,31 @@ export function isArtCover(url: string | null | undefined): boolean {
 }
 
 /**
- * The webp variants beside a raster cover, as a `srcset`; '' when there are
- * none to offer. A generated plate is a few KB of vector with nothing to
- * resize, so it gets no variants and must not claim any.
+ * The webp variant files beside a raster cover; empty when there are none.
+ *
+ * A generated plate is a few KB of vector with nothing to resize, so it gets no
+ * variants and must not claim any — and the same goes for anything outside
+ * `/covers/`. That scope is load-bearing rather than tidiness: a srcset
+ * candidate that 404s renders a BROKEN image (with an explicit `1x` the browser
+ * never falls back to `src`), `build_cover_assets.py` walks book editions
+ * alone, and search paints author portraits (`/portraits/<slug>.jpg`) through
+ * this same helper while an admin may paste an external cover URL. Neither has
+ * variants, and neither has BookCover's onerror plate to catch it. Promise only
+ * what the builder actually writes.
+ *
+ * Two callers, which is why this returns the files rather than the markup:
+ * `coverSrcset` renders them, and the offline download precaches them (the
+ * browser asks for a variant, never the original, so caching `cover_url` alone
+ * left a downloaded book coverless after the next deploy).
+ */
+export function coverVariants(url: string | null | undefined): string[] {
+	if (!url?.startsWith('/covers/') || !RASTER.test(url)) return [];
+	const base = url.replace(RASTER, '');
+	return COVER_WIDTHS.map((w) => `${base}-${w}.webp`);
+}
+
+/**
+ * Those variants as a `srcset`; '' when there are none to offer.
  *
  * Lives here rather than in BookCover because the small fans — CoverStrip,
  * ShelfCard, ContinueReading — draw covers at 2.5rem WITHOUT that component,
@@ -101,9 +123,9 @@ export function isArtCover(url: string | null | undefined): boolean {
  * keep in step with the CSS, and nothing claimed that isn't true.
  */
 export function coverSrcset(url: string | null | undefined): string {
-	if (!url || !RASTER.test(url)) return '';
-	const base = url.replace(RASTER, '');
-	return COVER_WIDTHS.map((w, i) => `${base}-${w}.webp ${i + 1}x`).join(', ');
+	return coverVariants(url)
+		.map((file, i) => `${file} ${i + 1}x`)
+		.join(', ');
 }
 
 /**
