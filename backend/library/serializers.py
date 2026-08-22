@@ -846,11 +846,54 @@ class TopicListSerializer(LocalizedMixin, serializers.ModelSerializer):
     def get_sermon_count(self, obj):
         return len(self._sermons(obj))
 
+    # How many tiles the card's fan holds. Four is what `.cover-fan` lays out
+    # before it starts overflowing its band.
+    FAN = 4
+
     def get_covers(self, obj):
-        return [
-            {"cover_url": b.cover_url, "cover_color": b.cover_color, "title": b.title}
-            for b in self._books(obj)[:4]
+        """Up to four member tiles for the card's fan — books first, then sermons.
+
+        Sermons are here because the shelf is listed when it has books OR
+        sermons (``TopicListView.get_queryset``), while this only ever drew
+        books. In English that never showed: every topic has at least three
+        books. In every OTHER language it showed constantly, because sermon
+        translation has outrun book translation — Spanish and Portuguese now
+        carry more sermons than books. The result was a card reading
+        "0 books · 5 sermons" over an empty band: the shelf saying there is
+        nothing here, on a shelf that has five things.
+
+        Books first, so a shelf that can fill the fan with covers still looks
+        exactly as it did; sermons take what is left. A sermon tile is NOT a
+        cover — see `ShelfCard`, where it is drawn as the round emblem chip it
+        wears everywhere else, because a 3:4 tile is the one thing this whole
+        feature has been avoiding calling a sermon.
+
+        The tile carries the sermon's SLUG and nothing about its art: which
+        emblem a sermon wears, and the hue derived from it, live in the
+        frontend catalogue (`emblemNames.ts` / `emblemHues.ts`), which the API
+        cannot see and should not duplicate.
+        """
+        covers = [
+            {
+                "kind": "book",
+                "slug": b.slug,
+                "cover_url": b.cover_url,
+                "cover_color": b.cover_color,
+                "title": b.title,
+            }
+            for b in self._books(obj)[: self.FAN]
         ]
+        for s in self._sermons(obj)[: self.FAN - len(covers)]:
+            covers.append(
+                {
+                    "kind": "sermon",
+                    "slug": s.slug,
+                    "cover_url": "",
+                    "cover_color": "",
+                    "title": s.title,
+                }
+            )
+        return covers
 
     def _books(self, obj):
         """Member books present in the requested language, in the topic's curated

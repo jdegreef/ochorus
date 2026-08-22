@@ -1,8 +1,10 @@
 <script lang="ts">
-	import { coverGradient } from '$lib/coverArt';
+	import { coverGradient, tintable } from '$lib/coverArt';
 	import type { Snippet } from 'svelte';
-	import type { TopicCover } from '$lib/library';
+	import { isSermonTile, type TopicCover } from '$lib/library';
 	import Emblem from '$lib/components/Emblem.svelte';
+	import { emblemForSermon } from '$lib/emblemNames';
+	import { EMBLEM_HUES } from '$lib/emblemHues';
 	import type { EmblemName } from '$lib/emblems';
 
 	/**
@@ -61,17 +63,31 @@
 		</span>
 		{#if covers.length}
 			<div class="cover-fan" aria-hidden="true">
-				{#each covers.slice(0, 4) as cover (cover.title)}
-					<div class="cover">
-						{#if cover.cover_url}
-							<img src={cover.cover_url} alt="" loading="lazy" />
-						{:else}
-							<div
-								class="cover-fallback"
-								style="background: {coverGradient(cover.cover_color || hue)}"
-							></div>
-						{/if}
-					</div>
+				{#each covers.slice(0, 4) as cover (`${cover.kind ?? 'book'}:${cover.slug ?? cover.title}`)}
+					{#if isSermonTile(cover)}
+						<!-- Round, not a 3:4 tile: the shape is what says "sermon, not a
+						     volume" at a glance, which is the whole reason sermons were
+						     never given covers. Sized to the fan's height so the row still
+						     reads as one object. -->
+						{@const emblem = emblemForSermon(cover.slug ?? '')}
+						<span
+							class="sermon-tile emblem-chip"
+							style="--chip-hue: {tintable(EMBLEM_HUES[emblem])}"
+						>
+							<Emblem name={emblem} />
+						</span>
+					{:else}
+						<div class="cover">
+							{#if cover.cover_url}
+								<img src={cover.cover_url} alt="" loading="lazy" />
+							{:else}
+								<div
+									class="cover-fallback"
+									style="background: {coverGradient(cover.cover_color || hue)}"
+								></div>
+							{/if}
+						</div>
+					{/if}
 				{/each}
 			</div>
 		{/if}

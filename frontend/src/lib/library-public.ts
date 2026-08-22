@@ -484,10 +484,26 @@ export const getPlan = (slug: string, language = 'en') =>
 	localized<PlanDetail>((l) => `/api/library/plans/${slug}/?language=${l}`, language);
 
 export interface TopicCover {
+	/**
+	 * What the tile stands for. A book is drawn as its cover; a sermon as the
+	 * round emblem chip it wears everywhere else, because a 3:4 tile is exactly
+	 * the shape this catalogue does NOT use for sermons.
+	 *
+	 * Optional because a client can be newer than the API it is talking to
+	 * (static SPA, separately deployed): a payload from before sermons joined
+	 * the fan has no `kind`, and every tile in it is a book. Read it through
+	 * `isSermonTile` rather than comparing directly.
+	 */
+	kind?: 'book' | 'sermon';
+	/** Canonical slug. On a sermon tile it resolves the emblem and its hue. */
+	slug?: string;
 	cover_url: string;
 	cover_color: string;
 	title: string;
 }
+
+/** True for a sermon tile. An older payload has no `kind`; those are books. */
+export const isSermonTile = (cover: TopicCover): boolean => cover.kind === 'sermon';
 
 export interface TopicSummary {
 	slug: string;

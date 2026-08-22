@@ -1221,6 +1221,59 @@ class TopicTests(TestCase):
         # ...but only humility-2 exists in Swahili, so the shelf shows one book.
         self.assertEqual(res.data[0]["book_count"], 1)
 
+    def test_covers_carry_sermons_when_a_language_has_no_books(self):
+        """A shelf whose members in this language are sermons still has art.
+
+        `TopicListView` lists a topic that has books OR sermons, but `covers`
+        only ever drew books — so a Spanish reader met a card reading
+        "0 books · 5 sermons" above an empty band. It never showed in English,
+        where every topic has at least three books; it showed in every other
+        language, because sermon translation has outrun book translation.
+        """
+        author = Author.objects.get(slug="am")
+        shelf = Topic.objects.create(slug="the-call", title="The Call", sort_order=3)
+        TopicBook.objects.create(topic=shelf, book_slug="prayer")  # English only
+        for i, slug in enumerate(("come-in", "free-grace")):
+            Sermon.objects.create(
+                author=author, slug=slug, language="sw", title=slug, body_html="<p>x</p>"
+            )
+            TopicSermon.objects.create(topic=shelf, sermon_slug=slug, sort_order=i)
+        TopicTranslation.objects.create(topic=shelf, language="sw", title="Mwito")
+
+        res = self.client.get("/api/library/topics/?language=sw")
+        card = next(t for t in res.data if t["slug"] == "the-call")
+        self.assertEqual(card["book_count"], 0)
+        self.assertEqual(card["sermon_count"], 2)
+        self.assertEqual(
+            [(c["kind"], c["slug"]) for c in card["covers"]],
+            [("sermon", "come-in"), ("sermon", "free-grace")],
+            "a shelf with only sermons in this language must still carry tiles",
+        )
+
+    def test_covers_put_books_first_and_cap_the_fan(self):
+        """Books fill the fan, sermons take what is left, four tiles at most.
+
+        Books first so a shelf that can fill the band with covers looks exactly
+        as it did before sermons joined; the fan holds four because that is what
+        `.cover-fan` lays out before it overflows.
+        """
+        author = Author.objects.get(slug="am")
+        for i in range(3):
+            Sermon.objects.create(
+                author=author, slug=f"s{i}", language="en", title=f"S{i}", body_html="<p>x</p>"
+            )
+            TopicSermon.objects.create(topic=self.topic, sermon_slug=f"s{i}", sort_order=i)
+
+        res = self.client.get("/api/library/topics/?language=en")
+        covers = next(t for t in res.data if t["slug"] == "prayer")["covers"]
+        self.assertEqual(len(covers), 4)
+        # The two English books, in curated order, then sermons.
+        self.assertEqual([c["kind"] for c in covers], ["book", "book", "sermon", "sermon"])
+        self.assertEqual([c["slug"] for c in covers[:2]], ["prayer", "humility-2"])
+        # A book tile still carries what BookCover needs to draw it.
+        self.assertIn("cover_url", covers[0])
+        self.assertIn("cover_color", covers[0])
+
     def test_detail_returns_members_in_curated_order(self):
         res = self.client.get("/api/library/topics/prayer/?language=en")
         self.assertEqual(res.status_code, 200)
@@ -1286,6 +1339,41 @@ class TopicTests(TestCase):
                 topic__slug="prayer", book_slug="the-inner-chamber"
             ).exists()
         )
+
+    def test_every_listed_shelf_has_something_to_draw(self):
+        """The listing rule and the drawing rule must agree.
+
+        That disagreement WAS the bug: `TopicListView` lists a shelf that has
+        books OR sermons in the language, while `covers` drew books only, so a
+        sermon-only shelf was published with an empty band. The two rules live
+        in different files and neither mentions the other, which is exactly the
+        pair that drifts. Asserted per language rather than once, because in
+        English the mismatch is invisible — every topic there has books.
+        """
+        author = Author.objects.create(slug="js", name="J. S.")
+        shelf = Topic.objects.create(slug="mixed", title="Mixed", sort_order=9)
+        # English gets a book; Swahili gets only a sermon.
+        b = Book.objects.create(author=author, slug="only-en", language="en", title="Only EN")
+        Chapter.objects.create(book=b, order=1, title="One", body_html="<p>hi there</p>")
+        TopicBook.objects.create(topic=shelf, book_slug="only-en")
+        Sermon.objects.create(
+            author=author, slug="only-sw", language="sw", title="Only SW", body_html="<p>x</p>"
+        )
+        TopicSermon.objects.create(topic=shelf, sermon_slug="only-sw")
+        TopicTranslation.objects.create(topic=shelf, language="sw", title="Mchanganyiko")
+
+        for language in ("en", "sw"):
+            with self.subTest(language=language):
+                res = self.client.get(f"/api/library/topics/?language={language}")
+                self.assertEqual(res.status_code, 200)
+                self.assertTrue(res.data, f"{language}: no shelves listed at all")
+                for card in res.data:
+                    self.assertTrue(
+                        card["covers"],
+                        f"{language}/{card['slug']}: listed with "
+                        f"{card['book_count']} books and {card['sermon_count']} "
+                        "sermons, but nothing to draw",
+                    )
 
     def test_every_translated_language_covers_every_topic(self):
         """A translated language must cover ALL topics, not some.

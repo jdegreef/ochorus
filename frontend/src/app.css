@@ -1226,6 +1226,23 @@ nav.appnav .navsearch:hover {
 	transform: rotate(-3deg);
 	flex-shrink: 0;
 }
+/* A sermon in the fan: the emblem chip, sized to the tile height and pulled
+   into the same overlap so the row reads as one fanned object. Round rather
+   than 3:4 on purpose — see ShelfCard.
+
+   It does NOT inherit the leading tile's clip. `.cover-fan` hides overflow, so
+   a first tile carrying the -0.7rem pull loses its leading 28% — unnoticeable
+   on a rectangle, which is why covers have always done it, and plainly broken
+   on a circle. A fan that starts with a sermon starts flush instead. */
+.cover-fan .sermon-tile {
+	--chip-size: 2.9rem;
+	margin-inline-start: -0.7rem;
+	align-self: center;
+	box-shadow: var(--shadow-card);
+}
+.cover-fan .sermon-tile:first-child {
+	margin-inline-start: 0;
+}
 .cover-fan .cover:nth-child(2) {
 	transform: rotate(1deg);
 }
