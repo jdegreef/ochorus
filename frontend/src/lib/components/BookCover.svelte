@@ -101,7 +101,6 @@
 		<img
 			src={book.cover_url}
 			srcset={srcset || undefined}
-			sizes={srcset ? (priority ? '128px' : '200px') : undefined}
 			alt={isArt ? '' : label}
 			loading={priority ? 'eager' : 'lazy'}
 			fetchpriority={priority ? 'high' : undefined}

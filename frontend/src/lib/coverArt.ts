@@ -59,11 +59,19 @@ export function isArtCover(url: string | null | undefined): boolean {
  * Lives here rather than in BookCover because the small fans — CoverStrip,
  * ShelfCard, ContinueReading — draw covers at 2.5rem WITHOUT that component,
  * and were fetching 397 KB PNGs to paint 40 pixels.
+ *
+ * DENSITY descriptors (`1x`/`2x`), not width descriptors. A `w` descriptor is a
+ * claim about the file's real pixel width, and the builder never upscales — so
+ * `godliness-640.webp` is actually 424px wide and `640w` would be a lie the
+ * browser makes selection decisions on. Every cover is painted in a box whose
+ * CSS size the layout already fixes (40px in a fan, 128px beside a book's
+ * details), which is exactly the case `x` descriptors describe: no `sizes` to
+ * keep in step with the CSS, and nothing claimed that isn't true.
  */
 export function coverSrcset(url: string | null | undefined): string {
 	if (!url || !RASTER.test(url)) return '';
 	const base = url.replace(RASTER, '');
-	return COVER_WIDTHS.map((w) => `${base}-${w}.webp ${w}w`).join(', ');
+	return COVER_WIDTHS.map((w, i) => `${base}-${w}.webp ${i + 1}x`).join(', ');
 }
 
 /**

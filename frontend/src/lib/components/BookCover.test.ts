@@ -90,9 +90,9 @@ describe('BookCover falls back to a plate', () => {
 		const el = render({ book: book({ cover_url: '/covers/art/waiting-on-god.jpg' }) });
 		const img = el.querySelector('img');
 		expect(img?.getAttribute('alt')).toBe('');
-		expect(img?.getAttribute('srcset')).toBe(
-			'/covers/art/waiting-on-god-320.webp 320w, /covers/art/waiting-on-god-640.webp 640w'
-		);
+		// The descriptor format is pinned in coverArt.test.ts; here we only care
+		// that the component asks for the variants at all.
+		expect(img?.getAttribute('srcset')).toContain('/covers/art/waiting-on-god-320.webp');
 		expect(el.querySelector('.plate.over-art')).not.toBeNull();
 		expect(el.querySelector('.title')?.textContent).toBe('Waiting on God');
 	});
@@ -100,7 +100,7 @@ describe('BookCover falls back to a plate', () => {
 	it('asks for variants of a designed cover, and none of an svg', () => {
 		const raster = render({ book: book({ cover_url: '/covers/humility-2.jpg' }) });
 		expect(raster.querySelector('img')?.getAttribute('srcset')).toContain(
-			'/covers/humility-2-320.webp 320w'
+			'/covers/humility-2-320.webp'
 		);
 		// A generated plate is already a few KB of vector — there is nothing to
 		// resize, and a srcset would point at files nobody builds.

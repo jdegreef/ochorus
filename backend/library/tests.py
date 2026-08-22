@@ -5945,13 +5945,26 @@ class CuratedArtTests(TestCase):
         self.assertIn("artwork_credit", BookDetailSerializer.Meta.fields)
         author = Author.objects.create(slug="augustine", name="Augustine of Hippo")
         painted = Book.objects.create(
-            slug="confessions", language="en", title="Confessions", author=author
-        )
-        plain = Book.objects.create(
-            slug="a-book-with-no-curated-art", language="en", title="Plain", author=author
+            slug="confessions", language="en", title="Confessions", author=author,
+            cover_url="/covers/art/confessions.jpg",
         )
         self.assertIn("Géricault", BookDetailSerializer(painted).data["artwork_credit"])
+
+        plain = Book.objects.create(
+            slug="a-book-with-no-curated-art", language="en", title="Plain", author=author,
+            cover_url="/covers/plain.jpg",
+        )
         self.assertIsNone(BookDetailSerializer(plain).data["artwork_credit"])
+
+        # The manifest lists the WORK, but an edition may carry designed artwork
+        # of its own — the per-language gate deliberately allows it. Crediting a
+        # painter for a cover this reader isn't looking at is worse than saying
+        # nothing.
+        own_cover = Book.objects.create(
+            slug="confessions", language="es", title="Confesiones", author=author,
+            cover_url="/covers/es/confessions.jpg",
+        )
+        self.assertIsNone(BookDetailSerializer(own_cover).data["artwork_credit"])
 
 
 class CuratedCoversSurviveForceTests(TestCase):

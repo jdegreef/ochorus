@@ -562,6 +562,12 @@ class BookDetailSerializer(BookListSerializer):
         crediting the painter is right, and it lets a reader check the
         provenance ``curated_art`` records.
         """
+        # Keyed on the cover this edition actually wears, not on the manifest:
+        # the fixture gate deliberately allows an edition to carry designed
+        # artwork of its own, and crediting a painter for a cover nobody is
+        # looking at is worse than saying nothing.
+        if not (obj.cover_url or "").startswith("/covers/art/"):
+            return None
         return credit(obj.slug)
 
     def get_difficulty(self, obj):

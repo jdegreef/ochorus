@@ -177,10 +177,10 @@ def main() -> int:
     names = author_names()
     english: dict[str, dict] = {}
     editions: list[tuple[Path, str, str, dict]] = []
-    # Narrowed by slug rather than filtered after the fact: a book fixture
-    # carries its whole text, so parsing all 153 to keep three costs 74 MB and
-    # most of the runtime — and the SKILL now puts a single-slug run on every
-    # translation job's path.
+    # A slug filter, applied after the read. `book_editions()` parses every work
+    # file (0.34s, 74 MB transient) whichever slugs are asked for — the shared
+    # reader is worth more than the narrowing was, and a curation script run by
+    # hand can afford it.
     wanted = set(args.slugs)
     for path, slug, language, fields in book_editions():
         if wanted and slug not in wanted:

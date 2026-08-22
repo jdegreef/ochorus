@@ -764,16 +764,32 @@ class CoverAssetTests(SimpleTestCase):
         )
         self.assertEqual(absent, [], "curated work with no committed painting")
 
-    def test_svg_covers_have_a_raster_twin_for_og_image(self):
-        # og:image falls back to /covers/<slug>.png when the cover is an SVG —
-        # social platforms refuse SVG previews (books/[slug]/+page.svelte).
+    def test_covers_that_cannot_be_shared_have_a_raster_twin(self):
+        """og:image falls back to /covers/<slug>.png — that file must exist.
+
+        Two covers can't stand in for themselves on a social card: a generated
+        `.svg`, which every platform refuses, and a `covers/art/` painting,
+        which carries no words because the title is drawn over it in the
+        browser. Both fall back to the twin (books/[slug]/+page.svelte).
+
+        The art tier is the newer half of this rule and the reason it is worth
+        stating: nothing writes a twin for a curated work — `localize_covers`'
+        `ensure_og_twin` only fires for the artwork tier — so the ten that pass
+        today do so on leftovers from when curated covers were SVGs. Without
+        this, the eleventh curated work would ship a 404 og:image with every
+        gate green.
+        """
         missing = sorted(
             f["slug"]
             for f in self.books
-            if _cover(f).endswith(".svg")
+            if (_cover(f).endswith(".svg") or _cover(f).startswith("/covers/art/"))
             and not (self.STATIC_DIR / "covers" / f"{f['slug']}.png").is_file()
         )
-        self.assertEqual(missing, [], "generated SVG cover without its .png twin")
+        self.assertEqual(
+            missing, [],
+            "cover that can't be its own og:image, with no .png twin beside it — "
+            "rasterize one (600x800, with the title on it)",
+        )
 
 
 class SermonBriefCoverageTests(SimpleTestCase):

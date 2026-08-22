@@ -69,7 +69,12 @@ def write_variants(source: Path, dry_run: bool) -> list[str]:
     from PIL import Image
 
     written = []
-    im = Image.open(source).convert("RGB")
+    # RGBA, not RGB: `baptism-with-the-holy-spirit.png` is 85-91% opaque on every
+    # pixel and `prayer-the-pulse-of-life.png` carries fully transparent ones, so
+    # flattening makes the variant the browser picks look darker than the `src`
+    # it stands in for. webp carries alpha.
+    im = Image.open(source)
+    im = im.convert("RGBA" if im.mode in ("RGBA", "LA", "P") else "RGB")
     for width in COVER_WIDTHS:
         # NEVER upscale. Every committed cover is 600px wide or less, so a
         # literal 640 would invent pixels — measured at 18% more bytes and a
@@ -108,8 +113,13 @@ def main() -> int:
                 if not args.dry_run:
                     persist_field(path, "cover_url", url)
                 repointed += 1
-            if (COVERS / rel).exists():
-                sources.add(COVERS / rel)
+            painting = COVERS / rel
+            if not painting.exists():
+                raise SystemExit(
+                    f"{slug} is curated but has no painting at {rel} — "
+                    "run `manage.py build_curated_covers` first"
+                )
+            sources.add(painting)
             continue
         cover = fields.get("cover_url") or ""
         if cover.endswith(RASTER_SUFFIXES):

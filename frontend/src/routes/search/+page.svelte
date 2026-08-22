@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { coverSrcset } from '$lib/coverArt';
 	import { onMount } from 'svelte';
 	import {
 		search,
@@ -852,6 +853,7 @@
 		].filter(Boolean).join(';')}
 		<img
 			src={row.image}
+			srcset={coverSrcset(row.image) || undefined}
 			alt=""
 			loading="lazy"
 			decoding="async"

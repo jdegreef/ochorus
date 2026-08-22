@@ -122,7 +122,6 @@
 						<img
 							src={item.cover_url}
 							srcset={coverSrcset(item.cover_url) || undefined}
-							sizes={coverSrcset(item.cover_url) ? '56px' : undefined}
 							alt=""
 							loading="lazy"
 							class="h-20 w-14 shrink-0 rounded-sm object-cover shadow-sm"

@@ -18,7 +18,6 @@
 					<img
 						src={cover.cover_url}
 						srcset={coverSrcset(cover.cover_url) || undefined}
-						sizes={coverSrcset(cover.cover_url) ? '40px' : undefined}
 						alt=""
 						loading="lazy"
 					/>
