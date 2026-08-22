@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { coverGradient } from '$lib/coverArt';
+	import { coverGradient, coverSrcset } from '$lib/coverArt';
 	import type { TopicCover } from '$lib/library';
 
 	/**
@@ -15,7 +15,13 @@
 		{#each covers.slice(0, max) as cover (cover.title)}
 			<div class="cover">
 				{#if cover.cover_url}
-					<img src={cover.cover_url} alt="" loading="lazy" />
+					<img
+						src={cover.cover_url}
+						srcset={coverSrcset(cover.cover_url) || undefined}
+						sizes={coverSrcset(cover.cover_url) ? '40px' : undefined}
+						alt=""
+						loading="lazy"
+					/>
 				{:else}
 					<div class="cover-fallback" style="background: {coverGradient(cover.cover_color)}"></div>
 				{/if}

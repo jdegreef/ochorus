@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { coverGradient } from '$lib/coverArt';
+	import { coverGradient, coverSrcset, isArtCover } from '$lib/coverArt';
 	import type { BookSummary } from '$lib/library';
 	import { i18n } from '$lib/i18n.svelte';
 	import BrandMark from './BrandMark.svelte';
@@ -44,14 +44,6 @@
 	 * is minted (`covers.ink_safe`), so what reaches this component already
 	 * carries white type at AA.
 	 */
-	/**
-	 * The widths a cover is painted at, and the variants `build_cover_assets.py`
-	 * writes for each raster. Committed beside the original, so a `srcset` here
-	 * is a promise the fixture gate keeps.
-	 */
-	const VARIANT_WIDTHS = [320, 640];
-	const RASTER = /\.(jpe?g|png)$/;
-
 	let {
 		book,
 		rounded = 'rounded-card',
@@ -75,23 +67,11 @@
 	const loaded = $derived(loadedUrl === book.cover_url);
 	const failed = $derived(failedUrl === book.cover_url);
 
-	/**
-	 * A cover under `covers/art/` is a PAINTING, not a finished cover: one file
-	 * per work, shared by every language, with the type drawn over it here. It
-	 * used to be baked into a per-language SVG — six copies of one painting for
-	 * `waiting-on-god` — which cost 430 KB, re-downloaded on every locale switch,
-	 * and could only set its title in a font the device already had.
-	 */
-	const isArt = $derived((book.cover_url ?? '').startsWith('/covers/art/'));
-
-	/** The webp variants beside a raster cover; empty when there are none. */
-	const srcset = $derived(
-		RASTER.test(book.cover_url ?? '')
-			? VARIANT_WIDTHS.map(
-					(w) => `${book.cover_url.replace(RASTER, '')}-${w}.webp ${w}w`
-				).join(', ')
-			: ''
-	);
+	// A painting gets the cover's type drawn over it here — it carries none of
+	// its own, which is what lets every language share one file.
+	const isArt = $derived(isArtCover(book.cover_url));
+	const srcset = $derived(coverSrcset(book.cover_url));
+	const label = $derived(`${t('a11y.coverOf')} ${book.title}`);
 </script>
 
 <!-- The cover's type. Identical over a painting and over a plain plate — the
@@ -122,7 +102,7 @@
 			src={book.cover_url}
 			srcset={srcset || undefined}
 			sizes={srcset ? (priority ? '128px' : '200px') : undefined}
-			alt={isArt ? '' : `${t('a11y.coverOf')} ${book.title}`}
+			alt={isArt ? '' : label}
 			loading={priority ? 'eager' : 'lazy'}
 			fetchpriority={priority ? 'high' : undefined}
 			width={priority ? 300 : undefined}
@@ -136,16 +116,14 @@
 		{#if isArt}
 			<!-- The painting carries no words, so the cover's type is drawn here —
 			     one shared image, a title per language. -->
-			<div class="plate over-art" role="img" aria-label="{t('a11y.coverOf')} {book.title}">
-				{@render plateType()}
-			</div>
+			<div class="plate over-art" role="img" aria-label={label}>{@render plateType()}</div>
 		{/if}
 	{:else}
 		<div
 			class="plate"
 			style="--plate: {coverGradient(book.cover_color)}"
 			role="img"
-			aria-label="{t('a11y.coverOf')} {book.title}"
+			aria-label={label}
 		>
 			{@render plateType()}
 		</div>

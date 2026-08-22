@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { isArtCover } from '$lib/coverArt';
 	import { type BookDetail, formatLifespan } from '$lib/library';
 	import { getProgress } from '$lib/progress';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
@@ -73,9 +74,7 @@
 	// browser draws the type over and so has no words in the pixels. Both fall
 	// back to the pre-rasterized PNG (static/covers/<slug>.png).
 	const ogImage = $derived(
-		book.cover_url &&
-			!book.cover_url.endsWith('.svg') &&
-			!book.cover_url.startsWith('/covers/art/')
+		book.cover_url && !book.cover_url.endsWith('.svg') && !isArtCover(book.cover_url)
 			? absUrl(book.cover_url)
 			: absUrl(`/covers/${book.slug}.png`)
 	);

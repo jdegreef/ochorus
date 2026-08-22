@@ -135,6 +135,24 @@ def sermon_fixture_path(slug: str, language: str) -> Path:
     return SERMONS_DIR / work_filename(slug, language)
 
 
+def book_editions() -> list[tuple[Path, str, str, dict]]:
+    """Every committed book edition as ``(path, slug, language, fields)``.
+
+    "Open the work files and pick the ``library.book`` row out of each" was
+    written once per curation script, along with its own way of decoding
+    ``<slug>.<language>.json`` — the same drift ``authors_by_slug`` exists to
+    stop. The scripts that edit ``cover_url`` all start here.
+    """
+    editions = []
+    for path in sorted(BOOKS_DIR.glob("*.json")):
+        slug, language = path.stem.rsplit(".", 1)
+        for row in json.loads(path.read_text(encoding="utf-8")):
+            if row["model"] == "library.book":
+                editions.append((path, slug, language, row["fields"]))
+                break
+    return editions
+
+
 def persist_fields(path: Path, values: dict[str, str]) -> bool:
     """Rewrite string fields of a work fixture's Book/Sermon row in place,
     returning True if the file changed.

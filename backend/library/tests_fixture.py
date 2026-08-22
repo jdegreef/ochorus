@@ -50,7 +50,14 @@ from library.content_fixtures import (
     unexpected_files,
     work_filename,
 )
-from library.covers import AUTHOR_MIN_CONTRAST, author_ink_contrast
+from library.covers import (
+    AUTHOR_MIN_CONTRAST,
+    COVER_WIDTHS,
+    RASTER_SUFFIXES,
+    art_url,
+    author_ink_contrast,
+    variant_url,
+)
 from library.curated_art import CURATED
 
 EXPECTED_MODELS = {
@@ -718,10 +725,10 @@ class CoverAssetTests(SimpleTestCase):
         missing = []
         for f in self.books:
             cover = _cover(f)
-            if not cover.endswith((".jpg", ".jpeg", ".png")):
+            if not cover.endswith(RASTER_SUFFIXES):
                 continue
-            for width in (320, 640):
-                variant = f"{cover.rsplit('.', 1)[0]}-{width}.webp"
+            for width in COVER_WIDTHS:
+                variant = variant_url(cover, width)
                 if not (self.STATIC_DIR / variant.lstrip("/")).is_file():
                     missing.append(variant)
         self.assertEqual(
@@ -743,7 +750,7 @@ class CoverAssetTests(SimpleTestCase):
         wrong = sorted(
             (f["slug"], f["language"], _cover(f))
             for f in self.books
-            if f["slug"] in CURATED and _cover(f) != f"/covers/art/{f['slug']}.jpg"
+            if f["slug"] in CURATED and _cover(f) != art_url(f["slug"])[0]
         )
         self.assertEqual(
             wrong, [],
@@ -753,7 +760,7 @@ class CoverAssetTests(SimpleTestCase):
         absent = sorted(
             slug for slug in CURATED
             if any(f["slug"] == slug for f in self.books)
-            and not (self.STATIC_DIR / "covers" / "art" / f"{slug}.jpg").is_file()
+            and not (self.STATIC_DIR / "covers" / art_url(slug)[1]).is_file()
         )
         self.assertEqual(absent, [], "curated work with no committed painting")
 

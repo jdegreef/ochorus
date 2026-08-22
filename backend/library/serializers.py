@@ -2,6 +2,7 @@ from django.db.models import Count, Sum
 from rest_framework import serializers
 
 from .contemporize import MODERN_LANGUAGE
+from .curated_art import credit
 from .localization import language_from_request
 from .models import Author, Book, Chapter, Plan, PlanDay, Sermon, Topic, TopicBook
 from .scripture import book_of
@@ -531,6 +532,7 @@ class BookDetailSerializer(BookListSerializer):
     is_modern_edition = serializers.SerializerMethodField()
     has_modern_edition = serializers.SerializerMethodField()
     available_languages = serializers.SerializerMethodField()
+    artwork_credit = serializers.SerializerMethodField()
 
     # How many related books to surface, and how much a shared topic counts
     # relative to sharing the author (a shared topic is the stronger signal).
@@ -543,7 +545,7 @@ class BookDetailSerializer(BookListSerializer):
             "description", "source_url", "pdf_url", "chapters",
             "publication_year", "attribution", "topics", "related",
             "difficulty", "is_modern_edition", "has_modern_edition",
-            "available_languages",
+            "available_languages", "artwork_credit",
         ]
 
     def get_available_languages(self, obj):
@@ -560,8 +562,6 @@ class BookDetailSerializer(BookListSerializer):
         crediting the painter is right, and it lets a reader check the
         provenance ``curated_art`` records.
         """
-        from library.curated_art import credit
-
         return credit(obj.slug)
 
     def get_difficulty(self, obj):

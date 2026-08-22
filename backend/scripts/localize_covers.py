@@ -82,7 +82,6 @@ like ``build_curated_covers``. Pillow is a dev-group dependency.
 from __future__ import annotations
 
 import argparse
-import json
 import sys
 from pathlib import Path
 
@@ -91,8 +90,8 @@ sys.path.insert(0, str(BACKEND))
 
 # Both modules are deliberately Django-free, so this runs as a plain script.
 from library.content_fixtures import (  # noqa: E402
-    BOOKS_DIR,
     authors_by_slug,
+    book_editions,
     persist_fields,
 )
 from library.covers import (  # noqa: E402
@@ -149,13 +148,6 @@ def ensure_og_twin(slug: str, artwork: Path) -> bool:
     return True
 
 
-def book_row(path: Path) -> dict | None:
-    for row in json.loads(path.read_text(encoding="utf-8")):
-        if row["model"] == "library.book":
-            return row["fields"]
-    return None
-
-
 def author_names() -> dict[str, str]:
     return {slug: fields.get("name", "") for slug, fields in authors_by_slug().items()}
 
@@ -189,11 +181,9 @@ def main() -> int:
     # carries its whole text, so parsing all 153 to keep three costs 74 MB and
     # most of the runtime — and the SKILL now puts a single-slug run on every
     # translation job's path.
-    globs = [f"{slug}.*.json" for slug in args.slugs] or ["*.json"]
-    for path in sorted(p for g in globs for p in BOOKS_DIR.glob(g)):
-        slug, language = path.stem.rsplit(".", 1)
-        fields = book_row(path)
-        if fields is None:
+    wanted = set(args.slugs)
+    for path, slug, language, fields in book_editions():
+        if wanted and slug not in wanted:
             continue
         if language == "en":
             english[slug] = fields

@@ -34,6 +34,39 @@ function shade(hex: string, factor: number): string {
 }
 
 /**
+ * The widths every raster cover is built at, and how a variant is named.
+ * `backend/scripts/build_cover_assets.py` writes them and a fixture gate proves
+ * they exist, so `srcset` here is a promise something keeps.
+ */
+export const COVER_WIDTHS = [320, 640];
+const RASTER = /\.(jpe?g|png)$/;
+
+/**
+ * A cover under `covers/art/` is a PAINTING, not a finished cover: one file per
+ * work, shared by every language, with the title drawn over it. It carries no
+ * words, which is why it needs no translation — and why it cannot stand in as
+ * an og:image, where a preview card is often all a reader sees.
+ */
+export function isArtCover(url: string | null | undefined): boolean {
+	return (url ?? '').startsWith('/covers/art/');
+}
+
+/**
+ * The webp variants beside a raster cover, as a `srcset`; '' when there are
+ * none to offer. A generated plate is a few KB of vector with nothing to
+ * resize, so it gets no variants and must not claim any.
+ *
+ * Lives here rather than in BookCover because the small fans — CoverStrip,
+ * ShelfCard, ContinueReading — draw covers at 2.5rem WITHOUT that component,
+ * and were fetching 397 KB PNGs to paint 40 pixels.
+ */
+export function coverSrcset(url: string | null | undefined): string {
+	if (!url || !RASTER.test(url)) return '';
+	const base = url.replace(RASTER, '');
+	return COVER_WIDTHS.map((w) => `${base}-${w}.webp ${w}w`).join(', ');
+}
+
+/**
  * The cover gradient: the book's colour, falling to a darker tone of itself.
  *
  * This is the WHOLE treatment for the small decorative fans — `CoverStrip`,

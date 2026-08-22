@@ -1,21 +1,28 @@
-"""Composite the curated public-domain artwork covers (tier 3).
+"""Fetch the curated public-domain artwork (cover tier 3).
 
     python manage.py build_curated_covers            # every curated slug
     python manage.py build_curated_covers confessions
     python manage.py build_curated_covers --dry-run
 
 For each slug in library/curated_art.py this downloads the Met's open-access
-image, crops it to the cover's 3:4 box, and composites the house-style type
-over it — once per language the book is published in, so the art is shared and
-only the type changes.
+image, crops it to the cover's 3:4 box, and writes ONE painting per work to
+``covers/art/<slug>.jpg``. Every language points at that file and ``BookCover``
+draws the edition's title over it in HTML.
 
-Run rarely: the output SVGs are committed, and the artwork doesn't change. The
-downloads are cached under .cache/curated-art/ so a re-run doesn't re-fetch.
+It used to composite the type into an SVG, once per (slug, language), because
+an SVG served through <img> cannot fetch a sibling file — so the painting had to
+be embedded in each one and `waiting-on-god` shipped six copies of it. Drawing
+the type in HTML also means the title is set in the brand serif and shaped for
+its own script, neither of which an <img>-served SVG can do.
+
+Run rarely: the output is committed and the artwork doesn't change. Downloads
+are cached under .cache/curated-art/ so a re-run doesn't re-fetch. Afterwards
+run ``scripts/build_cover_assets.py`` to give the new painting its webp
+variants — the fixture gate will tell you if you forget.
 
 Cropping uses `sips`, which ships with macOS. This is a curation step run by
-hand on a developer's machine, not something the deploy does — the committed
-SVGs are what production serves — so a macOS-only dependency is acceptable
-here. If it ever needs to run in CI, swap in Pillow.
+hand on a developer's machine, not something the deploy does. If it ever needs
+to run in CI, swap in Pillow.
 """
 
 from __future__ import annotations
@@ -30,6 +37,7 @@ from pathlib import Path
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 
+from library.covers import art_url
 from library.curated_art import CURATED
 from library.models import Book
 
@@ -113,8 +121,7 @@ class Command(BaseCommand):
                 continue
 
             jpeg = _crop_3x4(_met_image(art.met_id), art.met_id)
-            url = f"/covers/art/{slug}.jpg"
-            rel = f"art/{slug}.jpg"
+            url, rel = art_url(slug)
 
             # ONE painting per work, with no type in it. Every language points at
             # this file and BookCover draws the title over it, so the reader

@@ -66,6 +66,28 @@ def font_for(language: str) -> str:
     return FONTS.get(language, FONT_DEFAULT)
 
 
+#: Cover files a reader downloads as pixels, and the widths they are built at.
+#: `scripts/build_cover_assets.py` writes the variants, `BookCover` asks for
+#: them by name, and a fixture gate proves they exist — three readers of one
+#: rule, so the rule lives here.
+RASTER_SUFFIXES = (".jpg", ".jpeg", ".png")
+COVER_WIDTHS = (320, 640)
+
+
+def art_url(slug: str) -> tuple[str, str]:
+    """(url, path under the covers dir) for a work's shared painting.
+
+    One file per work, not per edition: a painting carries no words, so every
+    language points at it and ``BookCover`` draws that edition's title over it.
+    """
+    return f"/covers/art/{slug}.jpg", f"art/{slug}.jpg"
+
+
+def variant_url(cover_url: str, width: int) -> str:
+    """The webp variant of a raster cover at `width`."""
+    return f"{cover_url.rsplit('.', 1)[0]}-{width}.webp"
+
+
 def cover_path(slug: str, language: str) -> tuple[str, str]:
     """(url, path under the covers dir) for one edition's generated cover.
 

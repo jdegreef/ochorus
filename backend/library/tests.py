@@ -5930,6 +5930,29 @@ class CuratedArtTests(TestCase):
         self.assertIn("Metropolitan Museum", c)
         self.assertIsNone(credit("a-book-with-no-curated-art"))
 
+    def test_the_credit_reaches_the_reader(self):
+        """The book detail API must actually SERVE the credit.
+
+        It used to live in the composited SVG's `<desc>`, where nothing
+        surfaced it; the painting is now a plain image with the type drawn over
+        it in HTML, so the API is the only route left. A `get_artwork_credit`
+        method with no field declared beside it computes a value DRF never
+        emits — which is exactly what shipped for a moment here, and no test
+        would have noticed.
+        """
+        from library.serializers import BookDetailSerializer
+
+        self.assertIn("artwork_credit", BookDetailSerializer.Meta.fields)
+        author = Author.objects.create(slug="augustine", name="Augustine of Hippo")
+        painted = Book.objects.create(
+            slug="confessions", language="en", title="Confessions", author=author
+        )
+        plain = Book.objects.create(
+            slug="a-book-with-no-curated-art", language="en", title="Plain", author=author
+        )
+        self.assertIn("Géricault", BookDetailSerializer(painted).data["artwork_credit"])
+        self.assertIsNone(BookDetailSerializer(plain).data["artwork_credit"])
+
 
 class CuratedCoversSurviveForceTests(TestCase):
     """`generate_covers --force` must not redraw the curated artwork.
