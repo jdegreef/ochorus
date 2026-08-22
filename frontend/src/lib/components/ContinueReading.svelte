@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { coverGradient } from '$lib/coverArt';
+	import { coverGradient, coverSrcset } from '$lib/coverArt';
 	import { onMount } from 'svelte';
 	import { listSermons, type BookSummary, type SermonSummary } from '$lib/library';
 	import { allProgress } from '$lib/progress';
@@ -121,6 +121,7 @@
 					{#if item.cover_url}
 						<img
 							src={item.cover_url}
+							srcset={coverSrcset(item.cover_url) || undefined}
 							alt=""
 							loading="lazy"
 							class="h-20 w-14 shrink-0 rounded-sm object-cover shadow-sm"

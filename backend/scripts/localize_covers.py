@@ -39,13 +39,12 @@ gets the same treatment:
   translated editions lose the photograph, and keep the one thing a cover must
   get right.
 
-* **Curated art** (``curated_art.CURATED``) → the real thing:
-  ``build_art_svg``, the same painting under the edition's own title. The art
-  layer is read back out of the ENGLISH SVG rather than re-fetched from the
-  Met, which makes this reproducible offline and on any OS —
-  ``build_curated_covers`` needs the network and macOS ``sips``. The bytes are
-  the same cropped JPEG either way, so the output is identical to what a full
-  rebuild would write (asserted for three shipped covers when this was added).
+* **Curated art** (``curated_art.CURATED``) → nothing to do here. A painting
+  has no language: it is one shared file under ``covers/art/`` and BookCover
+  draws each edition's title over it, so there is no per-language artefact to
+  localize. ``build_cover_assets.py`` owns that tier. (It was composited per
+  language once, which meant six copies of one painting for ``waiting-on-god``
+  and a fresh download on every locale switch.)
 
 * **Generated plate** (everything else) → ``build_svg`` from the edition's own
   title and ``cover_color``, i.e. what ``generate_covers`` writes, but recorded
@@ -83,9 +82,6 @@ like ``build_curated_covers``. Pillow is a dev-group dependency.
 from __future__ import annotations
 
 import argparse
-import functools
-import json
-import re
 import sys
 from pathlib import Path
 
@@ -94,22 +90,23 @@ sys.path.insert(0, str(BACKEND))
 
 # Both modules are deliberately Django-free, so this runs as a plain script.
 from library.content_fixtures import (  # noqa: E402
-    BOOKS_DIR,
     authors_by_slug,
+    book_editions,
     persist_fields,
 )
 from library.covers import (  # noqa: E402
-    build_art_svg,
+    RASTER_SUFFIXES,
+    art_url,
     build_svg,
     cover_path,
+    emblem_for_book,
     palette_from_artwork,
 )
-from library.curated_art import CURATED, credit  # noqa: E402
+from library.curated_art import CURATED  # noqa: E402
 
 ROOT = BACKEND.parent
 STATIC = ROOT / "frontend" / "static"
 COVERS = STATIC / "covers"
-RASTER = (".jpg", ".jpeg", ".png")
 
 
 def ensure_og_twin(slug: str, artwork: Path) -> bool:
@@ -120,7 +117,7 @@ def ensure_og_twin(slug: str, artwork: Path) -> bool:
     ``/covers/<slug>.png`` whenever cover_url ends in .svg. Handing a row a
     localized SVG therefore silently arms that fallback, and these 15 works had
     a .jpg twin, not a .png: 49 rows would have shipped pointing og:image at a
-    404. ``CoverAssetTests.test_svg_covers_have_a_raster_twin_for_og_image``
+    404. ``CoverAssetTests.test_covers_that_cannot_be_shared_have_a_raster_twin``
     catches it, which is how this was found.
 
     One twin per WORK, not per language: the fallback path is keyed by slug
@@ -153,29 +150,6 @@ def ensure_og_twin(slug: str, artwork: Path) -> bool:
     return True
 
 
-@functools.cache
-def art_layer(slug: str) -> str:
-    """The bare base64 JPEG behind a curated cover, read from the English SVG.
-
-    ``build_curated_covers`` embeds the cropped artwork as a data URI, so the
-    shipped English cover already holds the exact bytes a translated edition
-    needs — no Met fetch, no ``sips``, and no chance of a re-crop drifting from
-    the locale that shipped first. Cached per work, like ``palettes`` below:
-    these SVGs run 100-150 KB and a work has up to five translated editions."""
-    src = (COVERS / cover_path(slug, "en")[1]).read_text(encoding="utf-8")
-    match = re.search(r'data:image/jpeg;base64,([A-Za-z0-9+/=]+)"', src)
-    if not match:
-        raise SystemExit(f"{slug}: curated cover has no embedded artwork to reuse")
-    return match.group(1)
-
-
-def book_row(path: Path) -> dict | None:
-    for row in json.loads(path.read_text(encoding="utf-8")):
-        if row["model"] == "library.book":
-            return row["fields"]
-    return None
-
-
 def author_names() -> dict[str, str]:
     return {slug: fields.get("name", "") for slug, fields in authors_by_slug().items()}
 
@@ -205,15 +179,13 @@ def main() -> int:
     names = author_names()
     english: dict[str, dict] = {}
     editions: list[tuple[Path, str, str, dict]] = []
-    # Narrowed by slug rather than filtered after the fact: a book fixture
-    # carries its whole text, so parsing all 153 to keep three costs 74 MB and
-    # most of the runtime — and the SKILL now puts a single-slug run on every
-    # translation job's path.
-    globs = [f"{slug}.*.json" for slug in args.slugs] or ["*.json"]
-    for path in sorted(p for g in globs for p in BOOKS_DIR.glob(g)):
-        slug, language = path.stem.rsplit(".", 1)
-        fields = book_row(path)
-        if fields is None:
+    # A slug filter, applied after the read. `book_editions()` parses every work
+    # file (0.34s, 74 MB transient) whichever slugs are asked for — the shared
+    # reader is worth more than the narrowing was, and a curation script run by
+    # hand can afford it.
+    wanted = set(args.slugs)
+    for path, slug, language, fields in book_editions():
+        if wanted and slug not in wanted:
             continue
         if language == "en":
             english[slug] = fields
@@ -230,7 +202,7 @@ def main() -> int:
         source = english.get(slug) or {}
         source_cover = source.get("cover_url") or ""
         own_cover = fields.get("cover_url") or ""
-        if own_cover.startswith(f"/covers/{language}/") and own_cover.endswith(RASTER):
+        if own_cover.startswith(f"/covers/{language}/") and own_cover.endswith(RASTER_SUFFIXES):
             # This edition has designed artwork of its OWN — the one case where a
             # generated plate is a downgrade, and the same line generate_covers
             # draws with is_generated. Nothing in the library is here yet; the
@@ -242,7 +214,30 @@ def main() -> int:
         subtitle = fields.get("subtitle") or ""
         color: str | None = None
 
-        if source_cover.endswith(RASTER):
+        if slug in CURATED:
+            # A painting has no language. It is one shared file under
+            # `covers/art/`, and BookCover draws this edition's title over it —
+            # so there is nothing to DRAW here. Tested BEFORE the raster branch,
+            # not after: the shared painting IS a .jpg, so extension alone would
+            # file it as designed artwork and draw a plate over a book that
+            # already has a cover.
+            #
+            # The ROW still gets pointed at the painting. `translate_book` writes
+            # `/covers/<lang>/<slug>.svg` for a new translation and those
+            # per-language files no longer exist, so a freshly translated curated
+            # edition arrives with a dangling cover_url — and reporting it
+            # "unchanged" is how it would stay that way until `tests_fixture`
+            # went red. Same URL `build_cover_assets.py` writes.
+            url, _rel = art_url(slug)
+            if fields.get("cover_url") != url:
+                patched += 1
+                if not args.dry_run:
+                    patch(path, url)
+                print(f"  ✓ {url:52} {'curated':9} {'row':9} {'':8} {title}")
+            else:
+                unchanged += 1
+            continue
+        if source_cover.endswith(RASTER_SUFFIXES):
             # Designed artwork: a plate in this language, in the artwork's hue.
             if slug not in palettes:
                 art = STATIC / source_cover.lstrip("/")
@@ -254,21 +249,15 @@ def main() -> int:
                 if not args.dry_run and ensure_og_twin(slug, art):
                     twins.append(slug)
             color = palettes[slug]
-            svg = build_svg(title, subtitle, author, color, language)
+            svg = build_svg(title, subtitle, author, color, language, emblem=emblem_for_book(slug))
             tier = "artwork"
-        elif slug in CURATED:
-            # The real painting, under this language's title.
-            svg = build_art_svg(
-                title, subtitle, author, art_layer(slug), language, credit(slug) or ""
-            )
-            tier = "curated"
         else:
             # The house plate. A freshly translated row often carries no colour
             # of its own, and letting that fall to the default indigo would put
             # one edition of a work in a colour its siblings don't share — so
             # the work's English colour is inherited, and recorded.
             color = fields.get("cover_color") or source.get("cover_color") or ""
-            svg = build_svg(title, subtitle, author, color, language)
+            svg = build_svg(title, subtitle, author, color, language, emblem=emblem_for_book(slug))
             tier = "generated"
 
         url, rel = cover_path(slug, language)

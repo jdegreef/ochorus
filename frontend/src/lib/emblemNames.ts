@@ -118,6 +118,24 @@ export const topicMeta = (slug: string): { accent: string; emblem: EmblemName } 
 	TOPIC_META[slug] ?? { accent: '#3b5bdb', emblem: fallbackEmblem(slug) };
 
 /**
+ * topic slug → emblem name, sorted, for the COVER GENERATOR.
+ *
+ * `covers.py` draws the emblem a book's topic wears, and cannot read anything
+ * under `frontend/` (the API image has rootDir `backend/`), so
+ * `npm run emblem:art` exports this map beside the drawings and
+ * `emblemArt.test.ts` fails if the committed copy has drifted. It lives here,
+ * beside TOPIC_META, so that the exporter and its gate call ONE function: a
+ * gate that re-derives what it is checking is a second opinion, not a drift
+ * test — the two agree right up until the day one of them changes.
+ */
+export const topicEmblems = (): Record<string, EmblemName> =>
+	Object.fromEntries(
+		Object.entries(TOPIC_META)
+			.map(([slug, meta]) => [slug, meta.emblem])
+			.sort(([a], [b]) => a.localeCompare(b))
+	);
+
+/**
  * The curated plan accents, cycled by slug hash for plans that ship without
  * curated art yet — same reasoning as the topic-accent fallback: covers are
  * mostly dark navy, so deriving a hue from them made every card the same

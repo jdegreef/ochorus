@@ -5893,6 +5893,80 @@ class InkSafePlateTests(SimpleTestCase):
         self.assertNotIn('stop-color="#ca8d21"', svg)
 
 
+class CoverEmblemTests(SimpleTestCase):
+    """The device that stops a shelf of generated plates reading as wallpaper.
+
+    105 of the library's 153 editions wear a generated plate. The colour varies
+    per book but the COMPOSITION doesn't, so a grid of them is twelve coloured
+    slabs with nothing to tell one from another at a glance. The emblem is a
+    second variable, and it is the book's own — the drawing its topic already
+    wears on the topics shelf.
+    """
+
+    def test_a_book_wears_its_topics_emblem(self):
+        from library.covers import emblem_for_book
+
+        self.assertEqual(emblem_for_book("prevailing-prayer"), "praying-hands")
+        self.assertEqual(emblem_for_book("confessions"), "laurel-tome")
+        self.assertIsNone(emblem_for_book("a-book-in-no-topic"))
+
+    def test_the_topic_seed_stays_the_source_of_which_books_a_topic_holds(self):
+        """One list of shelf members, read by the seed AND by the generator.
+
+        `covers.py` is deliberately Django-free — the curation scripts import it
+        as a plain module — so it cannot import `seed_topics`, which pulls in
+        `django.core.management`. The membership therefore lives in
+        `library/topic_seed.py`, which both import. This fails if a copy is
+        introduced: an emblem drawn from a second list would be right until the
+        day someone edits only one of them.
+        """
+        from library.management.commands import seed_topics
+        from library.topic_seed import TOPICS
+
+        self.assertIs(seed_topics.TOPICS, TOPICS)
+
+    def test_the_emblem_is_fitted_to_the_room_that_is_left(self):
+        """A constant offset put it through the subtitle and into the lockup.
+
+        A plate's type runs to a different depth on every book — a four-line
+        title pushes the rule 52 units lower than a one-line one, and a two-line
+        subtitle another 30 below that. The emblem is fitted to the band between
+        the last line of type and the mark, and omitted when that band is too
+        small to be worth taking.
+        """
+        from library.covers import _MARK_TOP, build_svg
+
+        def emblem_box(svg):
+            import re
+
+            found = re.search(
+                r'<g transform="translate\((\d+) (\d+)\) scale\(([\d.]+)\)"(?! fill)', svg
+            )
+            return (int(found.group(2)), float(found.group(3)) * 48) if found else None
+
+        roomy = build_svg("Humility", "", "Andrew Murray", "#0b7285", "en", "praying-hands")
+        top, size = emblem_box(roomy)
+        self.assertLessEqual(top + size, _MARK_TOP, "emblem runs into the lockup")
+
+        # Long title AND a two-line subtitle leaves nothing worth drawing in.
+        crowded = build_svg(
+            "A Plain Account of Christian Perfection",
+            "Wherein the whole doctrine is fully explained for the plain reader",
+            "John Wesley", "#0b7285", "en", "praying-hands",
+        )
+        self.assertIsNone(emblem_box(crowded), "emblem drawn with no room for it")
+
+    def test_a_plate_without_an_emblem_is_unchanged(self):
+        """A book in no topic, or one whose emblem the API image is missing,
+        gets the plate it had — not a broken one, and not a shifted one."""
+        from library.covers import build_svg
+
+        self.assertEqual(
+            build_svg("Humility", "", "Andrew Murray", "#0b7285", "en"),
+            build_svg("Humility", "", "Andrew Murray", "#0b7285", "en", emblem="not-an-emblem"),
+        )
+
+
 class GeneratedCoverTests(TestCase):
     """The two invariants of the cover generator.
 
@@ -5989,6 +6063,42 @@ class CuratedArtTests(TestCase):
         self.assertIn("Géricault", c)
         self.assertIn("Metropolitan Museum", c)
         self.assertIsNone(credit("a-book-with-no-curated-art"))
+
+    def test_the_credit_reaches_the_reader(self):
+        """The book detail API must actually SERVE the credit.
+
+        It used to live in the composited SVG's `<desc>`, where nothing
+        surfaced it; the painting is now a plain image with the type drawn over
+        it in HTML, so the API is the only route left. A `get_artwork_credit`
+        method with no field declared beside it computes a value DRF never
+        emits — which is exactly what shipped for a moment here, and no test
+        would have noticed.
+        """
+        from library.serializers import BookDetailSerializer
+
+        self.assertIn("artwork_credit", BookDetailSerializer.Meta.fields)
+        author = Author.objects.create(slug="augustine", name="Augustine of Hippo")
+        painted = Book.objects.create(
+            slug="confessions", language="en", title="Confessions", author=author,
+            cover_url="/covers/art/confessions.jpg",
+        )
+        self.assertIn("Géricault", BookDetailSerializer(painted).data["artwork_credit"])
+
+        plain = Book.objects.create(
+            slug="a-book-with-no-curated-art", language="en", title="Plain", author=author,
+            cover_url="/covers/plain.jpg",
+        )
+        self.assertIsNone(BookDetailSerializer(plain).data["artwork_credit"])
+
+        # The manifest lists the WORK, but an edition may carry designed artwork
+        # of its own — the per-language gate deliberately allows it. Crediting a
+        # painter for a cover this reader isn't looking at is worse than saying
+        # nothing.
+        own_cover = Book.objects.create(
+            slug="confessions", language="es", title="Confesiones", author=author,
+            cover_url="/covers/es/confessions.jpg",
+        )
+        self.assertIsNone(BookDetailSerializer(own_cover).data["artwork_credit"])
 
 
 class CuratedCoversSurviveForceTests(TestCase):

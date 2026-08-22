@@ -307,12 +307,28 @@ is also the one place a sermon's own hue sits inside another surface's
 beside it are already showing theirs.
 
 **Book card** (`.book-card`) — the cover is the visual, so the chrome stays
-quiet: hairline, surface fill, no colour wash. A book with no artwork gets
-`BookCover`'s **plate**: the book's colour, its title set as real text, the
-lockup at the foot. It is a placeholder in the house style, *not* a copy of the
-generated cover — the copy it replaced drifted in every metric it duplicated and
-never learned RTL or the non-Latin font stacks. Proportions may echo
-`covers.py`; algorithms may not.
+quiet: hairline, surface fill, no colour wash. Covers come in three tiers and
+`BookCover` draws all of them: a **designed cover** (an image, with `srcset`
+variants built by `scripts/build_cover_assets.py`), a **painting** under
+`covers/art/` with the type drawn over it (one file per work, shared by every
+language — a painting has no words, so it needs no translation), and the
+**plate** for a book with no artwork at all: the book's colour, its title set
+as real text, the lockup at the foot. It is a placeholder in the house style,
+*not* a copy of the generated cover — the copy it replaced drifted in every
+metric it duplicated and never learned RTL or the non-Latin font stacks.
+Proportions may echo `covers.py`; algorithms may not, and that includes the
+emblem below: this plate does not draw one.
+
+The **generated cover** (`covers.py`, a committed SVG, which reaches the reader
+through the designed-cover path above) is where most of the library actually
+lives — 105 of 153 editions — and it carries one thing the CSS plate does not:
+the emblem of the book's topic, between the type and the lockup. It is that
+cover's second variable. The colour already varied per book but the composition
+didn't, so a grid of them read as coloured slabs; the emblem is the drawing the
+book's topic already wears on the topics shelf, fitted to whatever room the type
+leaves and omitted when there is none. (On a topic's own shelf every book shares
+it, which is honest rather than useless: they do share the topic, and that shelf
+is tinted for it anyway.)
 
 **Sermon plate** (`<SermonPlate>`) — a sermon's head, on its own page and in
 Sermon of the week: the eyebrow/title/byline in a hue wash with the sermon's

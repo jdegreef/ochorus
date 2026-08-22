@@ -50,7 +50,14 @@ from library.content_fixtures import (
     unexpected_files,
     work_filename,
 )
-from library.covers import AUTHOR_MIN_CONTRAST, author_ink_contrast
+from library.covers import (
+    AUTHOR_MIN_CONTRAST,
+    COVER_WIDTHS,
+    RASTER_SUFFIXES,
+    art_url,
+    author_ink_contrast,
+    variant_url,
+)
 from library.curated_art import CURATED
 
 EXPECTED_MODELS = {
@@ -621,11 +628,19 @@ class CoverAssetTests(SimpleTestCase):
         # a translated edition can carry designed artwork of its own the day one
         # is drawn, which equality would forbid. Directory and identity are the
         # parts that were actually wrong.
+        #
+        # `covers/art/` is exempt, and the exemption is the whole point of that
+        # tier: a painting carries NO WORDS, so it is language-neutral and every
+        # edition shares one file — the type is drawn over it, per language, by
+        # BookCover. This rule exists because a cover with English words baked in
+        # was appearing over a Swahili card; a cover with no words in it cannot
+        # commit that mistake.
         wrong = sorted(
             (f["slug"], f["language"], _cover(f))
             for f in self.books
             if f["language"] != "en"
             and _cover(f).startswith("/covers/")
+            and not _cover(f).startswith("/covers/art/")
             and not _cover(f).startswith(f"/covers/{f['language']}/{f['slug']}.")
         )
         self.assertEqual(
@@ -697,16 +712,85 @@ class CoverAssetTests(SimpleTestCase):
             "which floors the plate through covers.ink_safe",
         )
 
-    def test_svg_covers_have_a_raster_twin_for_og_image(self):
-        # og:image falls back to /covers/<slug>.png when the cover is an SVG —
-        # social platforms refuse SVG previews (books/[slug]/+page.svelte).
+    def test_raster_covers_ship_their_responsive_variants(self):
+        """Every raster cover must have the webp variants `srcset` promises.
+
+        `BookCover` derives `<slug>-320.webp` / `-640.webp` by convention rather
+        than from a manifest, so a missing variant is a broken image on the
+        shelf, not a graceful fallback. The 27 raster covers a reader can fetch
+        weighed 1.5 MB at full size and 346 KB at the width they are painted;
+        this is what keeps that true as covers are added.
+
+        Run `uv run python scripts/build_cover_assets.py` to fill the gaps.
+        """
+        missing = []
+        for f in self.books:
+            cover = _cover(f)
+            if not cover.endswith(RASTER_SUFFIXES):
+                continue
+            for width in COVER_WIDTHS:
+                variant = variant_url(cover, width)
+                if not (STATIC_DIR / variant.lstrip("/")).is_file():
+                    missing.append(variant)
+        self.assertEqual(
+            sorted(set(missing)), [],
+            "raster cover without its webp variants — run "
+            "`uv run python scripts/build_cover_assets.py`",
+        )
+
+    def test_curated_editions_share_one_painting(self):
+        """A curated work ships ONE painting, and every language points at it.
+
+        The artwork used to be embedded in a per-language SVG, because an SVG
+        served through <img> cannot fetch a sibling file — so `waiting-on-god`
+        carried six copies of one painting (430 KB), and a reader who switched
+        locale downloaded it again under a new URL. The type moved to HTML, so
+        the painting is now a plain image: one file, one cache entry, one
+        download, whatever language you read in.
+        """
+        wrong = sorted(
+            (f["slug"], f["language"], _cover(f))
+            for f in self.books
+            if f["slug"] in CURATED and _cover(f) != art_url(f["slug"])[0]
+        )
+        self.assertEqual(
+            wrong, [],
+            "curated edition not pointing at the shared painting "
+            "(/covers/art/<slug>.jpg) — run scripts/build_cover_assets.py",
+        )
+        absent = sorted(
+            slug for slug in CURATED
+            if any(f["slug"] == slug for f in self.books)
+            and not (STATIC_DIR / "covers" / art_url(slug)[1]).is_file()
+        )
+        self.assertEqual(absent, [], "curated work with no committed painting")
+
+    def test_covers_that_cannot_be_shared_have_a_raster_twin(self):
+        """og:image falls back to /covers/<slug>.png — that file must exist.
+
+        Two covers can't stand in for themselves on a social card: a generated
+        `.svg`, which every platform refuses, and a `covers/art/` painting,
+        which carries no words because the title is drawn over it in the
+        browser. Both fall back to the twin (books/[slug]/+page.svelte).
+
+        The art tier is the newer half of this rule and the reason it is worth
+        stating: nothing writes a twin for a curated work — `localize_covers`'
+        `ensure_og_twin` only fires for the artwork tier — so the ten that pass
+        today do so on leftovers from when curated covers were SVGs. Without
+        this, the eleventh curated work would ship a 404 og:image with every
+        gate green.
+        """
         missing = sorted(
             f["slug"]
             for f in self.books
-            if _cover(f).endswith(".svg")
+            if (_cover(f).endswith(".svg") or _cover(f).startswith("/covers/art/"))
             and not (STATIC_DIR / "covers" / f"{f['slug']}.png").is_file()
         )
-        self.assertEqual(missing, [], "generated SVG cover without its .png twin")
+        self.assertEqual(
+            missing, [],
+            "cover that can't be its own og:image, with no .png twin beside it — "
+            "rasterize one (600x800, with the title on it)",
+        )
 
 
 class SermonShareCardTests(SimpleTestCase):

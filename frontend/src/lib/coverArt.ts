@@ -66,6 +66,69 @@ function shade(hex: string, factor: number): string {
 }
 
 /**
+ * The widths every raster cover is built at, and how a variant is named.
+ * `backend/scripts/build_cover_assets.py` writes them and a fixture gate proves
+ * they exist, so `srcset` here is a promise something keeps.
+ */
+export const COVER_WIDTHS = [320, 640];
+const RASTER = /\.(jpe?g|png)$/;
+
+/**
+ * A cover under `covers/art/` is a PAINTING, not a finished cover: one file per
+ * work, shared by every language, with the title drawn over it. It carries no
+ * words, which is why it needs no translation — and why it cannot stand in as
+ * an og:image, where a preview card is often all a reader sees.
+ */
+export function isArtCover(url: string | null | undefined): boolean {
+	return (url ?? '').startsWith('/covers/art/');
+}
+
+/**
+ * The webp variant files beside a raster cover; empty when there are none.
+ *
+ * A generated plate is a few KB of vector with nothing to resize, so it gets no
+ * variants and must not claim any — and the same goes for anything outside
+ * `/covers/`. That scope is load-bearing rather than tidiness: a srcset
+ * candidate that 404s renders a BROKEN image (with an explicit `1x` the browser
+ * never falls back to `src`), `build_cover_assets.py` walks book editions
+ * alone, and search paints author portraits (`/portraits/<slug>.jpg`) through
+ * this same helper while an admin may paste an external cover URL. Neither has
+ * variants, and neither has BookCover's onerror plate to catch it. Promise only
+ * what the builder actually writes.
+ *
+ * Two callers, which is why this returns the files rather than the markup:
+ * `coverSrcset` renders them, and the offline download precaches them (the
+ * browser asks for a variant, never the original, so caching `cover_url` alone
+ * left a downloaded book coverless after the next deploy).
+ */
+export function coverVariants(url: string | null | undefined): string[] {
+	if (!url?.startsWith('/covers/') || !RASTER.test(url)) return [];
+	const base = url.replace(RASTER, '');
+	return COVER_WIDTHS.map((w) => `${base}-${w}.webp`);
+}
+
+/**
+ * Those variants as a `srcset`; '' when there are none to offer.
+ *
+ * Lives here rather than in BookCover because the small fans — CoverStrip,
+ * ShelfCard, ContinueReading — draw covers at 2.5rem WITHOUT that component,
+ * and were fetching 397 KB PNGs to paint 40 pixels.
+ *
+ * DENSITY descriptors (`1x`/`2x`), not width descriptors. A `w` descriptor is a
+ * claim about the file's real pixel width, and the builder never upscales — so
+ * `godliness-640.webp` is actually 424px wide and `640w` would be a lie the
+ * browser makes selection decisions on. Every cover is painted in a box whose
+ * CSS size the layout already fixes (40px in a fan, 128px beside a book's
+ * details), which is exactly the case `x` descriptors describe: no `sizes` to
+ * keep in step with the CSS, and nothing claimed that isn't true.
+ */
+export function coverSrcset(url: string | null | undefined): string {
+	return coverVariants(url)
+		.map((file, i) => `${file} ${i + 1}x`)
+		.join(', ');
+}
+
+/**
  * The cover gradient: the book's colour, falling to a darker tone of itself.
  *
  * This is the WHOLE treatment for the small decorative fans — `CoverStrip`,

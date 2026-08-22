@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { coverGradient } from '$lib/coverArt';
+	import { coverGradient, coverSrcset } from '$lib/coverArt';
 	import type { Snippet } from 'svelte';
 	import { isSermonTile, type TopicCover } from '$lib/library';
 	import Emblem from '$lib/components/Emblem.svelte';
@@ -74,7 +74,12 @@
 					{:else}
 						<div class="cover">
 							{#if cover.cover_url}
-								<img src={cover.cover_url} alt="" loading="lazy" />
+								<img
+									src={cover.cover_url}
+									srcset={coverSrcset(cover.cover_url) || undefined}
+									alt=""
+									loading="lazy"
+								/>
 							{:else}
 								<div
 									class="cover-fallback"

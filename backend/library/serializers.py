@@ -2,6 +2,7 @@ from django.db.models import Count, Sum
 from rest_framework import serializers
 
 from .contemporize import MODERN_LANGUAGE
+from .curated_art import credit
 from .localization import language_from_request
 from .models import Author, Book, Chapter, Plan, PlanDay, Sermon, Topic, TopicBook
 from .scripture import book_of
@@ -531,6 +532,7 @@ class BookDetailSerializer(BookListSerializer):
     is_modern_edition = serializers.SerializerMethodField()
     has_modern_edition = serializers.SerializerMethodField()
     available_languages = serializers.SerializerMethodField()
+    artwork_credit = serializers.SerializerMethodField()
 
     # How many related books to surface, and how much a shared topic counts
     # relative to sharing the author (a shared topic is the stronger signal).
@@ -543,11 +545,30 @@ class BookDetailSerializer(BookListSerializer):
             "description", "source_url", "pdf_url", "chapters",
             "publication_year", "attribution", "topics", "related",
             "difficulty", "is_modern_edition", "has_modern_edition",
-            "available_languages",
+            "available_languages", "artwork_credit",
         ]
 
     def get_available_languages(self, obj):
         return _available_languages(Book, obj.slug)
+
+    def get_artwork_credit(self, obj) -> str | None:
+        """Who painted the cover art, for the books that wear a real painting.
+
+        The credit used to sit in the composited SVG's ``<desc>``, where no
+        reader saw it and no screen reader announced it. The painting is now a
+        plain image with the type drawn over it in HTML, so the credit needs
+        somewhere real to live — and it should be somewhere real regardless:
+        these are Met Open Access works, CC0 and not requiring attribution, but
+        crediting the painter is right, and it lets a reader check the
+        provenance ``curated_art`` records.
+        """
+        # Keyed on the cover this edition actually wears, not on the manifest:
+        # the fixture gate deliberately allows an edition to carry designed
+        # artwork of its own, and crediting a painter for a cover nobody is
+        # looking at is worse than saying nothing.
+        if not (obj.cover_url or "").startswith("/covers/art/"):
+            return None
+        return credit(obj.slug)
 
     def get_difficulty(self, obj):
         """A relative reading-difficulty badge, sampled from the opening

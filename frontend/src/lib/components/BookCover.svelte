@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { coverGradient } from '$lib/coverArt';
+	import { coverGradient, coverSrcset, isArtCover } from '$lib/coverArt';
 	import type { BookSummary } from '$lib/library';
 	import { i18n } from '$lib/i18n.svelte';
 	import BrandMark from './BrandMark.svelte';
@@ -66,7 +66,32 @@
 	let failedUrl = $state('');
 	const loaded = $derived(loadedUrl === book.cover_url);
 	const failed = $derived(failedUrl === book.cover_url);
+
+	// A painting gets the cover's type drawn over it here — it carries none of
+	// its own, which is what lets every language share one file.
+	const isArt = $derived(isArtCover(book.cover_url));
+	const srcset = $derived(coverSrcset(book.cover_url));
+	const label = $derived(`${t('a11y.coverOf')} ${book.title}`);
 </script>
+
+<!-- The cover's type. Identical over a painting and over a plain plate — the
+     only difference is what is behind it, which is what `.plate` decides. -->
+{#snippet plateType()}
+	<div class="type">
+		<div class="byline truncate" dir="auto">{book.author.name}</div>
+		<!-- Title, rule and subtitle move as one block so the auto margins centre
+		     THEM between the byline and the mark. Left as three siblings, the
+		     leftover space split three ways and the title rode up the plate. -->
+		<div class="middle">
+			<div class="title" dir="auto">{book.title}</div>
+			<div class="rule"></div>
+			{#if book.subtitle}<div class="subtitle line-clamp-2" dir="auto">{book.subtitle}</div>{/if}
+		</div>
+		<!-- The shared mark, not a second copy of the inline-the-lockup recipe:
+		     it sizes off the plate's container, hence a cq height. -->
+		<BrandMark height="13.7cqw" />
+	</div>
+{/snippet}
 
 <div class="relative aspect-[3/4] w-full overflow-hidden {rounded} shadow-sm">
 	{#if book.cover_url && !failed}
@@ -75,7 +100,8 @@
 		{/if}
 		<img
 			src={book.cover_url}
-			alt="{t('a11y.coverOf')} {book.title}"
+			srcset={srcset || undefined}
+			alt={isArt ? '' : label}
 			loading={priority ? 'eager' : 'lazy'}
 			fetchpriority={priority ? 'high' : undefined}
 			width={priority ? 300 : undefined}
@@ -86,28 +112,19 @@
 			class:opacity-0={!loaded && !priority}
 			class:opacity-100={loaded || priority}
 		/>
+		{#if isArt}
+			<!-- The painting carries no words, so the cover's type is drawn here —
+			     one shared image, a title per language. -->
+			<div class="plate over-art" role="img" aria-label={label}>{@render plateType()}</div>
+		{/if}
 	{:else}
 		<div
 			class="plate"
 			style="--plate: {coverGradient(book.cover_color)}"
 			role="img"
-			aria-label="{t('a11y.coverOf')} {book.title}"
+			aria-label={label}
 		>
-			<div class="type">
-				<div class="byline truncate" dir="auto">{book.author.name}</div>
-				<!-- Title, rule and subtitle move as one block so the auto margins
-				     centre THEM between the byline and the mark. Left as three
-				     siblings, the leftover space split three ways and the title rode
-				     up the plate. -->
-				<div class="middle">
-					<div class="title" dir="auto">{book.title}</div>
-					<div class="rule"></div>
-					{#if book.subtitle}<div class="subtitle line-clamp-2" dir="auto">{book.subtitle}</div>{/if}
-				</div>
-				<!-- The shared mark, not a second copy of the inline-the-lockup
-				     recipe: it sizes off the plate's container, hence a cq height. -->
-				<BrandMark height="13.7cqw" />
-			</div>
+			{@render plateType()}
 		</div>
 	{/if}
 </div>
@@ -136,6 +153,26 @@
 		background:
 			radial-gradient(78% 78% at 50% 42%, transparent 55%, rgb(0 0 0 / 0.34) 100%),
 			var(--plate);
+	}
+	/* Over a painting the plate paints no colour of its own — just the scrim the
+	   composited SVG used to carry: a global darkener so white type holds
+	   anywhere, and heavier bands top and bottom, under the byline and the mark,
+	   which is where art is most likely to be pale. */
+	.plate.over-art {
+		position: absolute;
+		inset: 0;
+		background:
+			linear-gradient(
+				180deg,
+				rgb(0 0 0 / 0.62) 0%,
+				rgb(0 0 0 / 0.34) 30%,
+				rgb(0 0 0 / 0.4) 70%,
+				rgb(0 0 0 / 0.7) 100%
+			),
+			rgb(26 20 16 / 0.26);
+	}
+	.plate.over-art .type::before {
+		border-color: rgb(255 255 255 / 0.3);
 	}
 	.type {
 		display: flex;

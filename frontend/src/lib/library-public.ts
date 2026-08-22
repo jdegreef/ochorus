@@ -74,6 +74,11 @@ export interface BookDetail extends BookSummary {
 	 * excluded) — the only locales an hreflang alternate should point at, since
 	 * books are per-language rows with no English fallback. */
 	available_languages: string[];
+	/** Painter, title and year of the cover artwork, for the books that wear a
+	 * real painting; null for every other cover. The art is Met Open Access
+	 * (CC0), so this is courtesy rather than obligation — and provenance a
+	 * reader can check. */
+	artwork_credit: string | null;
 }
 
 export interface ChapterNav {

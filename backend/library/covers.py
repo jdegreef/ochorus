@@ -31,8 +31,13 @@ the bytes for a fallback surface.
 from __future__ import annotations
 
 import html
+import json
 import re
+from functools import lru_cache
 from pathlib import Path
+
+# A plain module, imported for exactly that reason — see its docstring.
+from library.topic_seed import TOPICS
 
 # The canvas. 3:4, matching BookCover's reserved box so nothing shifts.
 W, H = 600, 800
@@ -64,6 +69,28 @@ SCRIPT_SCALE: dict[str, float] = {"ar": 1.12, "hi": 1.10}
 
 def font_for(language: str) -> str:
     return FONTS.get(language, FONT_DEFAULT)
+
+
+#: Cover files a reader downloads as pixels, and the widths they are built at.
+#: `scripts/build_cover_assets.py` writes the variants, `BookCover` asks for
+#: them by name, and a fixture gate proves they exist — three readers of one
+#: rule, so the rule lives here.
+RASTER_SUFFIXES = (".jpg", ".jpeg", ".png")
+COVER_WIDTHS = (320, 640)
+
+
+def art_url(slug: str) -> tuple[str, str]:
+    """(url, path under the covers dir) for a work's shared painting.
+
+    One file per work, not per edition: a painting carries no words, so every
+    language points at it and ``BookCover`` draws that edition's title over it.
+    """
+    return f"/covers/art/{slug}.jpg", f"art/{slug}.jpg"
+
+
+def variant_url(cover_url: str, width: int) -> str:
+    """The webp variant of a raster cover at `width`."""
+    return f"{cover_url.rsplit('.', 1)[0]}-{width}.webp"
 
 
 def cover_path(slug: str, language: str) -> tuple[str, str]:
@@ -264,20 +291,97 @@ def _title_metrics(title: str) -> tuple[int, int]:
 # letter-spaced OCHORUS that used to sit under the mark is gone — the printed
 # ministry covers carry the lockup alone.
 _BRAND_DIR = Path(__file__).resolve().parent / "data" / "brand"
+_EMBLEM_DIR = Path(__file__).resolve().parent / "data" / "emblems"
+
+#: The emblem sits in the band between the last line of type and the mark, at
+#: most 20% of the plate's width. Checked at 300px and at thumbnail size, which
+#: is where covers are mostly seen: smaller and it is a smudge, larger and it
+#: crowds the lockup into looking like a second device.
+#:
+#: FITTED, not placed at a fixed offset. A plate's type runs to a different
+#: depth on every book — a four-line title pushes the rule 52 units lower than a
+#: one-line title, and a two-line subtitle another 30 below that — so a constant
+#: offset put the emblem 16px into the lockup on the long titles and straight
+#: through the subtitle on `a-plain-account-christian-perfection`. Below
+#: `_EMBLEM_MIN` there is no room worth taking, and the plate goes without.
+_EMBLEM_W = 120
+_EMBLEM_MIN = 64
+_EMBLEM_GAP = 22
+
+
+@lru_cache(maxsize=1)
+def _book_emblems() -> dict[str, str]:
+    """Book slug → the emblem it wears, through the topic it belongs to.
+
+    Built from the topic seed rather than the database, so a cover can be drawn
+    without one — the covers are committed files built by hand, and requiring a
+    seeded DB to know a book's topic would make the artwork depend on the state
+    of whatever machine ran the command. `topic_seed` is a plain module for
+    exactly this reason: `seed_topics` pulls in `django.core.management`, and
+    this one is imported by scripts that never call `django.setup()`.
+
+    A book in more than one topic takes the first that has an emblem, in seed
+    order: the shelves are ordered by how central the topic is, so the first is
+    the one a reader is likeliest to have met the book under.
+    """
+    assignments = json.loads((_EMBLEM_DIR / "topics.json").read_text())["topics"]
+    emblems: dict[str, str] = {}
+    for topic_slug, _title, _description, book_slugs in TOPICS:
+        if topic_slug not in assignments:
+            continue
+        for slug in book_slugs:
+            emblems.setdefault(slug, assignments[topic_slug])
+    return emblems
+
+
+def emblem_for_book(slug: str) -> str | None:
+    """The emblem a book wears, or None if no topic holds it."""
+    return _book_emblems().get(slug)
+
+
+@lru_cache(maxsize=16)
+def _read_art(path: Path) -> tuple[str, float, float] | None:
+    """A committed SVG's inner markup and its viewBox size, or None if unusable.
+
+    The artwork on both sides of this module — the brand lockup and the topic
+    emblems — is normalised to a `0 0 w h` viewBox with any transform baked into
+    the path data, so placing it needs nothing but a translate and a uniform
+    scale. The aspect ratio is read from the file rather than hard-coded beside
+    it, which is what keeps a re-trace from silently mis-placing the drawing.
+    """
+    if not path.is_file():
+        return None
+    src = path.read_text()
+    box = re.search(r'viewBox="0 0 ([\d.]+) ([\d.]+)"', src)
+    inner = re.search(r"<svg[^>]*>(.*)</svg>", src, re.S)
+    if not box or not inner:
+        return None
+    return inner.group(1), float(box.group(1)), float(box.group(2))
+
+
+def emblem_art(name: str) -> tuple[str, float, float] | None:
+    """One emblem's markup and viewBox size, or None if we don't have it.
+
+    Generated from `frontend/src/lib/emblems.ts` by `npm run emblem:art` — the
+    drawings are curated there, and the API image cannot read anything under
+    `frontend/`. `emblemArt.test.ts` fails if the committed copies drift.
+
+    Missing is not fatal here, unlike the lockup below: a plate without its
+    emblem is the plate we shipped until now.
+    """
+    return _read_art(_EMBLEM_DIR / f"{name}.svg")
 
 
 def _read_lockup() -> tuple[str, float, float]:
     """The lockup's inner markup and its viewBox size.
 
-    The committed artwork is normalised to a `0 0 w h` viewBox with the
-    transform baked into the path data, so placing it needs nothing but a
-    translate and a uniform scale — and the aspect ratio is read from the file
-    rather than hard-coded beside it, which is what keeps a re-trace from
-    silently mis-placing the logo.
+    Loud where `emblem_art` is quiet: the mark is on every generated cover, so a
+    lockup this module cannot read is a broken build, not a cover without one.
     """
-    src = (_BRAND_DIR / "ochorus-lockup.svg").read_text()
-    vw, vh = (float(v) for v in re.search(r'viewBox="0 0 ([\d.]+) ([\d.]+)"', src).groups())
-    return re.search(r"<svg[^>]*>(.*)</svg>", src, re.S).group(1), vw, vh
+    art = _read_art(_BRAND_DIR / "ochorus-lockup.svg")
+    if art is None:
+        raise RuntimeError("the brand lockup is missing or not a 0 0 w h viewBox SVG")
+    return art
 
 
 _LOCKUP, _LOCKUP_VW, _LOCKUP_VH = _read_lockup()
@@ -291,9 +395,11 @@ _LOCKUP, _LOCKUP_VW, _LOCKUP_VH = _read_lockup()
 # (STYLE_GUIDE §5), so moving one of these is a look-there-too, not a break.
 _LOGO_W = 136
 _LOGO_H = _LOGO_W * _LOCKUP_VH / _LOCKUP_VW
+#: The top edge of the lockup — where the plate's type has to stop.
+_MARK_TOP = H - _FRAME_INSET - 16 - _LOGO_H
+
 _MARK = (
-    f'<g transform="translate({(W - _LOGO_W) // 2} '
-    f'{round(H - _FRAME_INSET - 16 - _LOGO_H)}) scale({_LOGO_W / _LOCKUP_VW:.5f})" '
+    f'<g transform="translate({(W - _LOGO_W) // 2} {round(_MARK_TOP)}) scale({_LOGO_W / _LOCKUP_VW:.5f})" '
     f'fill="#ffffff" fill-opacity="0.82">{_LOCKUP}</g>'
 )
 
@@ -351,12 +457,40 @@ def palette_from_artwork(path) -> str:
     return ink_safe(_hex(round(c * 255) for c in (r, g, b)))
 
 
+def _emblem_mark(emblem: str | None, content_bottom: float) -> str:
+    """The emblem, fitted into the band between the type and the lockup.
+
+    Centred in that band, and only as large as the band leaves room for. The
+    gap is a margin on the SIZE, not on the position: it keeps the drawing off
+    the last line of type and off the mark, and what is left over is shared
+    equally above and below.
+    """
+    art = emblem_art(emblem) if emblem else None
+    if art is None:
+        return ""
+    inner, vw, vh = art
+    # NOT `size`: that is the title's font size in the caller. Shadowing it
+    # there set every regenerated title to the emblem's width in points —
+    # 97.87px on `a-call-to-the-unconverted` — and the geometry checks all
+    # passed, because the emblem itself was placed correctly.
+    band = _MARK_TOP - content_bottom - 2 * _EMBLEM_GAP
+    emblem_w = min(_EMBLEM_W, band * vw / vh)
+    if emblem_w < _EMBLEM_MIN:
+        return ""
+    y = (content_bottom + _MARK_TOP - emblem_w * vh / vw) / 2
+    return (
+        f'<g transform="translate({(W - emblem_w) / 2:.0f} {y:.0f}) '
+        f'scale({emblem_w / vw:.5f})">{inner}</g>'
+    )
+
+
 def build_svg(
     title: str,
     subtitle: str,
     author: str,
     color: str,
     language: str = "en",
+    emblem: str | None = None,
 ) -> str:
     """The cover for one (book, language). Returns SVG source."""
     # The plate yields to the ink, not the other way round: `ink_safe` returns
@@ -384,8 +518,11 @@ def build_svg(
     rule_y = top + (len(lines) - 1) * line_h + 52
 
     sub = ""
+    # Where the type stops — the rule, or the last line of subtitle under it.
+    content_bottom = rule_y
     if subtitle:
         sub_lines = _wrap(subtitle, 34)[:2]
+        content_bottom = rule_y + 42 + (len(sub_lines) - 1) * 30
         sub = "".join(
             f'<text x="{W / 2:.0f}" y="{rule_y + 42 + i * 30:.0f}" text-anchor="middle" '
             f'fill="#ffffff" fill-opacity="0.82" font-family="{family}" font-style="italic" '
@@ -396,6 +533,14 @@ def build_svg(
     # Author sits at the TOP, letterspaced caps — the house style. Long bylines
     # ("Ochorus Originals") stay on one line at this size.
     author_txt = html.escape(author.upper())
+
+    # The emblem of the topic this book belongs to, between the rule and the
+    # mark. 105 of the library's 153 editions wear a generated plate, and with
+    # nothing on it but a title a grid of them reads as coloured slabs — the
+    # colour varies per book but the COMPOSITION doesn't, so nothing tells one
+    # from another at a glance. The emblem is a second variable, and it is the
+    # book's own: the drawing its topic already wears on the topics shelf.
+    emblem_mark = _emblem_mark(emblem, content_bottom)
 
     return f"""<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{html.escape(title)}">
   <defs>
@@ -415,80 +560,21 @@ def build_svg(
   <text text-anchor="middle" fill="#ffffff" font-family="{family}" font-weight="600" font-size="{size}"{dir_attr}>{tspans}</text>
   <line x1="{W / 2 - 38:.0f}" y1="{rule_y:.0f}" x2="{W / 2 + 38:.0f}" y2="{rule_y:.0f}" stroke="#ffffff" stroke-opacity="0.55" stroke-width="1.5"/>
   {sub}
+  {emblem_mark}
 {_MARK}
 </svg>
 """
 
 
 # ── Curated art covers ─────────────────────────────────────────────────────
-# Same type treatment as the generated plate, over a photograph or painting
-# instead of a gradient. The art layer is language-neutral and the type is
-# drawn on top, so one image serves every locale with its own title.
+# There is no builder here any more. A curated cover used to be this module's
+# `build_art_svg`: the painting as a base64 background, the house scrim over it,
+# and the type composited on top — one SVG per (work, language), because an SVG
+# served through <img> cannot fetch a sibling file, so the artwork had to be
+# embedded in every one. `waiting-on-god` shipped six copies of one painting.
 #
-# The image is embedded as a data URI because an SVG loaded through <img> runs
-# in secure static mode and cannot fetch an external file — a <image href> to a
-# sibling path renders blank. Costs ~33% over the raw JPEG; at 600x800/q72
-# that lands near the existing designed covers (godliness.jpg is 19 KB,
-# baptism.png 281 KB), so it is not the heavy option on this shelf.
-
-def build_art_svg(
-    title: str,
-    subtitle: str,
-    author: str,
-    jpeg_b64: str,
-    language: str = "en",
-    credit: str = "",
-) -> str:
-    """A cover whose background is real artwork. `jpeg_b64` is a bare base64
-    JPEG (no data: prefix), already cropped to 3:4."""
-    family = font_for(language)
-    dir_attr = ' direction="rtl"' if language in RTL else ""
-    scale = SCRIPT_SCALE.get(language, 1.0)
-
-    size, budget = _title_metrics(title)
-    size = round(size * scale)
-    line_h = size + 10
-    lines = _wrap(title, budget)
-    block_mid = 410
-    top = block_mid - (len(lines) - 1) * line_h / 2
-    tspans = "".join(
-        f'<tspan x="{W / 2:.0f}" y="{top + i * line_h:.0f}">{html.escape(ln)}</tspan>'
-        for i, ln in enumerate(lines)
-    )
-    rule_y = top + (len(lines) - 1) * line_h + 52
-
-    sub = ""
-    if subtitle:
-        sub = "".join(
-            f'<text x="{W / 2:.0f}" y="{rule_y + 42 + i * 30:.0f}" text-anchor="middle" '
-            f'fill="#ffffff" fill-opacity="0.86" font-family="{family}" font-style="italic" '
-            f'font-size="24"{dir_attr}>{html.escape(ln)}</text>'
-            for i, ln in enumerate(_wrap(subtitle, 34)[:2])
-        )
-
-    desc = f"<desc>{html.escape(credit)}</desc>" if credit else ""
-
-    # Two scrims, not one flat wash: a global darkener so white type holds
-    # anywhere, plus top/bottom gradients under the author line and the mark,
-    # which is where the art is most likely to be pale.
-    return f"""<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{html.escape(title)}">
-  {desc}
-  <defs>
-    <linearGradient id="scrim" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#000000" stop-opacity="0.62"/>
-      <stop offset="0.30" stop-color="#000000" stop-opacity="0.34"/>
-      <stop offset="0.70" stop-color="#000000" stop-opacity="0.40"/>
-      <stop offset="1" stop-color="#000000" stop-opacity="0.70"/>
-    </linearGradient>
-  </defs>
-  <image href="data:image/jpeg;base64,{jpeg_b64}" x="0" y="0" width="{W}" height="{H}" preserveAspectRatio="xMidYMid slice"/>
-  <rect width="{W}" height="{H}" fill="#1a1410" fill-opacity="0.26"/>
-  <rect width="{W}" height="{H}" fill="url(#scrim)"/>
-  <rect x="{_FRAME_INSET}" y="{_FRAME_INSET}" width="{W - 2 * _FRAME_INSET}" height="{H - 2 * _FRAME_INSET}" fill="none" stroke="#ffffff" stroke-opacity="0.30" stroke-width="1.5"/>
-  <text x="{W / 2:.0f}" y="112" text-anchor="middle" fill="#ffffff" fill-opacity="0.92" font-family="{family}" font-size="{round(23 * scale)}" letter-spacing="4"{dir_attr}>{html.escape(author.upper())}</text>
-  <text text-anchor="middle" fill="#ffffff" font-family="{family}" font-weight="600" font-size="{size}"{dir_attr}>{tspans}</text>
-  <line x1="{W / 2 - 38:.0f}" y1="{rule_y:.0f}" x2="{W / 2 + 38:.0f}" y2="{rule_y:.0f}" stroke="#ffffff" stroke-opacity="0.7" stroke-width="1.5"/>
-  {sub}
-{_MARK}
-</svg>
-"""
+# The painting is now a plain image (`covers/art/<slug>.jpg`, built by
+# `scripts/build_cover_assets.py`) and `BookCover` draws the type over it in
+# HTML — which also means the title is set in the brand serif and shaped for its
+# own script, neither of which an <img>-served SVG can do. One file, one
+# download, every language.

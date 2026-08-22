@@ -1,26 +1,32 @@
-"""Composite the curated public-domain artwork covers (tier 3).
+"""Fetch the curated public-domain artwork (cover tier 3).
 
     python manage.py build_curated_covers            # every curated slug
     python manage.py build_curated_covers confessions
     python manage.py build_curated_covers --dry-run
 
 For each slug in library/curated_art.py this downloads the Met's open-access
-image, crops it to the cover's 3:4 box, and composites the house-style type
-over it — once per language the book is published in, so the art is shared and
-only the type changes.
+image, crops it to the cover's 3:4 box, and writes ONE painting per work to
+``covers/art/<slug>.jpg``. Every language points at that file and ``BookCover``
+draws the edition's title over it in HTML.
 
-Run rarely: the output SVGs are committed, and the artwork doesn't change. The
-downloads are cached under .cache/curated-art/ so a re-run doesn't re-fetch.
+It used to composite the type into an SVG, once per (slug, language), because
+an SVG served through <img> cannot fetch a sibling file — so the painting had to
+be embedded in each one and `waiting-on-god` shipped six copies of it. Drawing
+the type in HTML also means the title is set in the brand serif and shaped for
+its own script, neither of which an <img>-served SVG can do.
+
+Run rarely: the output is committed and the artwork doesn't change. Downloads
+are cached under .cache/curated-art/ so a re-run doesn't re-fetch. Afterwards
+run ``scripts/build_cover_assets.py`` to give the new painting its webp
+variants — the fixture gate will tell you if you forget.
 
 Cropping uses `sips`, which ships with macOS. This is a curation step run by
-hand on a developer's machine, not something the deploy does — the committed
-SVGs are what production serves — so a macOS-only dependency is acceptable
-here. If it ever needs to run in CI, swap in Pillow.
+hand on a developer's machine, not something the deploy does. If it ever needs
+to run in CI, swap in Pillow.
 """
 
 from __future__ import annotations
 
-import base64
 import json
 import shutil
 import subprocess
@@ -31,8 +37,8 @@ from pathlib import Path
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 
-from library.covers import build_art_svg, cover_path
-from library.curated_art import CURATED, credit
+from library.covers import art_url
+from library.curated_art import CURATED
 from library.models import Book
 
 COVERS_DIR = settings.BASE_DIR.parent / "frontend" / "static" / "covers"
@@ -115,28 +121,28 @@ class Command(BaseCommand):
                 continue
 
             jpeg = _crop_3x4(_met_image(art.met_id), art.met_id)
-            b64 = base64.b64encode(jpeg.read_bytes()).decode("ascii")
+            url, rel = art_url(slug)
 
-            for book in rows:
-                url, rel = cover_path(slug, book.language)
-                svg = build_art_svg(
-                    title=book.title,
-                    subtitle=book.subtitle,
-                    author=book.author.name,
-                    jpeg_b64=b64,
-                    language=book.language,
-                    credit=credit(slug) or "",
-                )
-                if not opts["dry_run"]:
-                    dest = COVERS_DIR / rel
-                    dest.parent.mkdir(parents=True, exist_ok=True)
-                    dest.write_text(svg, encoding="utf-8")
+            # ONE painting per work, with no type in it. Every language points at
+            # this file and BookCover draws the title over it, so the reader
+            # downloads the artwork once however many locales they read in — and
+            # the title is set by the browser, in the brand serif, shaped for its
+            # own script. It used to be composited per language into an SVG data
+            # URI: six copies of one painting for `waiting-on-god`, each 72 KB,
+            # each a separate download.
+            if not opts["dry_run"]:
+                dest = COVERS_DIR / rel
+                dest.parent.mkdir(parents=True, exist_ok=True)
+                dest.write_bytes(jpeg.read_bytes())
+                for book in rows:
                     if book.cover_url != url:
                         book.cover_url = url
                         book.save(update_fields=["cover_url"])
-                wrote += 1
-                kb = len(svg) // 1024
-                self.stdout.write(f"  ✓ {rel:34s} {kb:4d} KB  {art.artist}")
+            wrote += 1
+            kb = jpeg.stat().st_size // 1024
+            self.stdout.write(
+                f"  ✓ {rel:34s} {kb:4d} KB  {art.artist} · {len(rows)} editions share it"
+            )
 
         verb = "would write" if opts["dry_run"] else "wrote"
         self.stdout.write(self.style.SUCCESS(f"{verb} {wrote} curated covers"))

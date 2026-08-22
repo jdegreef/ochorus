@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { isArtCover } from '$lib/coverArt';
 	import { type BookDetail, formatLifespan } from '$lib/library';
 	import { getProgress } from '$lib/progress';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
@@ -67,11 +68,13 @@
 		).slice(0, 300)
 	);
 	// og:image must be raster — WhatsApp/Facebook/Twitter refuse SVG preview
-	// images. Books without a raster cover fall back to the pre-rasterized PNG
-	// of their generated typographic cover (static/covers/<slug>.png; regenerate
-	// alongside the SVGs when new coverless books ship).
+	// images — and it must carry the book's TITLE, since a preview card is often
+	// all a reader sees. Two covers can't stand in for themselves: a generated
+	// `.svg`, and a `covers/art/` painting, which is a background the reader's
+	// browser draws the type over and so has no words in the pixels. Both fall
+	// back to the pre-rasterized PNG (static/covers/<slug>.png).
 	const ogImage = $derived(
-		book.cover_url && !book.cover_url.endsWith('.svg')
+		book.cover_url && !book.cover_url.endsWith('.svg') && !isArtCover(book.cover_url)
 			? absUrl(book.cover_url)
 			: absUrl(`/covers/${book.slug}.png`)
 	);
@@ -282,5 +285,14 @@
 			{t('book.translationOf')}
 			<a href={book.source_url} target="_blank" rel="noreferrer">{t('book.originalEdition')}</a>.
 		</p>
+	{/if}
+
+	{#if book.artwork_credit}
+		<!-- The painter, for the covers that wear a real painting. This used to sit
+		     in the composited SVG's <desc>, where nothing surfaced it. The art is
+		     Met Open Access (CC0) so the credit isn't owed — it is simply right,
+		     and it is the provenance a reader would otherwise have to take on
+		     trust. Not translated: it is a name, a title and a year. -->
+		<p class="mt-2 text-eyebrow text-muted">{book.artwork_credit}</p>
 	{/if}
 </div>
