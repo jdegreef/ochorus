@@ -252,7 +252,16 @@
 	// The rail's geometry, in one place each, because it is a set: the grid, the
 	// column that sits in it, and the input's matching indent all have to agree
 	// or the layout comes apart in a way no single class reveals.
-	const RAIL_GRID = 'lg:grid lg:grid-cols-[12rem_1fr] lg:items-start lg:gap-8';
+	// `minmax(12rem, auto)`, not a flat `12rem`: a fixed track cannot be smaller
+	// than what sits in it, it just lets the contents hang out over the results —
+	// which is what happened. The sort control ("Sort:" beside a three-button
+	// segment) has a 244px min-content, so with `Books` chosen the chips and the
+	// segment both overhung the 192px track and painted across the first result's
+	// heading and cover. `auto` lets the column take the width its widest child
+	// actually needs, and 12rem stays the floor so the rail keeps its proportions
+	// when the contents are narrow. A locale with longer words widens the rail
+	// instead of spilling into the results.
+	const RAIL_GRID = 'lg:grid lg:grid-cols-[minmax(12rem,auto)_1fr] lg:items-start lg:gap-8';
 	// `lg:top-[var(--pinned-offset,6rem)]` rather than a fixed `lg:top-24`: the
 	// search box above is itself pinned under the sticky app nav, and its height
 	// changes with the locale and the viewport, so a constant put the rail's
@@ -1157,7 +1166,14 @@
 					     mixed list the order is relevance, the only one that means
 					     anything across books, people and passages. -->
 					{#if showsSort}
-						<div class="flex items-center gap-1.5" role="group" aria-label={t('search.sortBy')}>
+						<!-- Side by side in the bar above the results; stacked once it is
+						     in the rail, where a label BESIDE the segment is what made the
+						     control 244px wide in a 12rem column. -->
+						<div
+							class="flex items-center gap-1.5 lg:flex-col lg:items-start lg:gap-1"
+							role="group"
+							aria-label={t('search.sortBy')}
+						>
 							<span class="text-small text-muted">{t('search.sortBy')}</span>
 							<div class="seg">
 								{#each SORTS as s (s)}
