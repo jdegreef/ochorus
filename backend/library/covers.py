@@ -145,12 +145,12 @@ def _author_plate_color(hex_color: str) -> str:
     """The colour actually under the author line, not the plate's top stop.
 
     The byline sits at y=112 on a 600x800 plate painted with a gradient running
-    to ``(0.35, 1)``, so the point projects 28% of the way along it and the
-    colour there is already a little darker than the stop. The vignette is fully
-    transparent that high (it starts at 0.55 of a 0.78 radius centred at 0.42),
-    so the gradient is the whole story. Modelling it matters: taking the top stop
-    instead reads ~0.6 of a ratio point low, which would darken plates that are
-    in fact legible.
+    to ``(0.35, 1)``, so its colour is already a little darker than the top stop
+    — by how much depends on where along the line you stand, which is what
+    ``_AUTHOR_GRADIENT_T`` above settles. The vignette is fully transparent that
+    high (it starts at 0.55 of a 0.78 radius centred at 0.42), so the gradient is
+    the whole story. Modelling it matters: taking the top stop instead reads ~0.6
+    of a ratio point low, which would darken plates that are in fact legible.
     """
     return _darken(hex_color, 1 - (1 - _GRADIENT_END) * _AUTHOR_GRADIENT_T)
 
@@ -285,6 +285,10 @@ _LOCKUP, _LOCKUP_VW, _LOCKUP_VH = _read_lockup()
 # Centred at the foot, matching where the printed covers put it. Positioned off
 # the FRAME, not the canvas: placed by canvas coordinates the logo crossed the
 # hairline.
+# Also echoed, as proportions, by the client-side plate in BookCover.svelte —
+# the frame inset, this width and the divider, over W. That is the whole of the
+# coupling: the plate copies proportions deliberately and algorithms never
+# (STYLE_GUIDE §5), so moving one of these is a look-there-too, not a break.
 _LOGO_W = 136
 _LOGO_H = _LOGO_W * _LOCKUP_VH / _LOCKUP_VW
 _MARK = (

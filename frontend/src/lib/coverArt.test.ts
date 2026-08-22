@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { COVER_FALLBACK, channels, shade, toHex, tintable } from './coverArt';
+import { channels, coverGradient, toHex, tintable } from './coverArt';
 
 /** HSL lightness of a #rrggbb colour. */
 const lightness = (hex: string): number => {
@@ -24,8 +24,11 @@ describe('channels / toHex', () => {
 
 	it('falls back rather than returning NaN channels on a malformed hex', () => {
 		// `cover_color` is an unvalidated CharField, so a bad value does reach here.
-		expect(channels('#abc')).toEqual(channels(COVER_FALLBACK));
-		expect(channels('')).toEqual(channels(COVER_FALLBACK));
+		// The fallback is module-private, so this asserts the shape, not the hex.
+		for (const bad of ['#abc', '', 'rgb(1,2,3)']) {
+			expect(channels(bad).every(Number.isInteger), bad).toBe(true);
+		}
+		expect(channels('#abc')).toEqual(channels(''));
 	});
 
 	it('clamps and rounds, so callers can hand it floats', () => {
@@ -33,16 +36,14 @@ describe('channels / toHex', () => {
 	});
 });
 
-describe('shade', () => {
-	it('darkens and lightens about zero', () => {
-		expect(shade('#808080', 0.5)).toBe('#404040');
-		expect(shade('#404040', 2)).toBe('#808080');
-	});
-
-	it('returns the fallback UNSCALED for a malformed hex', () => {
-		// Long-standing behaviour: a broken row shows the plain fallback, not a
-		// darkened one. Guarded because `shade` was rewritten onto channels/toHex.
-		expect(shade('#abc', 0.55)).toBe(COVER_FALLBACK);
+describe('coverGradient', () => {
+	it('cannot carry a stray declaration out of a malformed cover_color', () => {
+		// The result lands in a `style` attribute and `cover_color` is free text,
+		// so both stops go through the hex guard. Tested here rather than against
+		// `shade`, which is module-private.
+		const out = coverGradient('#3b5bdb; background: url(x)');
+		expect(out).not.toContain('url(');
+		expect(out).toMatch(/^linear-gradient\(165deg, #[0-9a-f]{6} 0%, #[0-9a-f]{6} 89%\)$/);
 	});
 });
 

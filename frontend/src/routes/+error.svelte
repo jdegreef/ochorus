@@ -126,10 +126,10 @@
 							class="group block hover:no-underline"
 							data-testid="notfound-book"
 						>
-							<!-- The shared cover: real artwork when there is any, the same
-							     generated typographic cover as the shelf otherwise. This page
-							     used to draw its own gradient fallback, so a cover-less book
-							     looked different here than everywhere else. -->
+	<!-- The shared cover: real artwork when there is any, the house
+							     plate otherwise. This page used to draw its own gradient
+							     fallback, so a cover-less book looked different here than
+							     everywhere else. -->
 							<div class="transition-transform group-hover:-translate-y-1">
 								<BookCover {book} />
 							</div>

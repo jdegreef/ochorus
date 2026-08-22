@@ -296,7 +296,12 @@ The band's far end takes a **fan of covers** (`covers`); the band does the
 positioning, so an occupant only styles itself.
 
 **Book card** (`.book-card`) — the cover is the visual, so the chrome stays
-quiet: hairline, surface fill, no colour wash.
+quiet: hairline, surface fill, no colour wash. A book with no artwork gets
+`BookCover`'s **plate**: the book's colour, its title set as real text, the
+lockup at the foot. It is a placeholder in the house style, *not* a copy of the
+generated cover — the copy it replaced drifted in every metric it duplicated and
+never learned RTL or the non-Latin font stacks. Proportions may echo
+`covers.py`; algorithms may not.
 
 **Sermon plate** (`<SermonPlate>`) — a sermon's head, on its own page and in
 Sermon of the week: the eyebrow/title/byline in a hue wash with the sermon's
