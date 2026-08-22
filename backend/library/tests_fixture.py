@@ -537,6 +537,12 @@ class AuthorBioDataIntegrityTests(SimpleTestCase):
         )
 
 
+# Anchored on settings, like generate_covers' COVERS_DIR — walking up from the
+# fixture dir would encode the content layout's depth into a fact about the
+# frontend tree. Read by the cover and share-card gates below.
+STATIC_DIR = settings.BASE_DIR.parent / "frontend" / "static"
+
+
 class CoverAssetTests(SimpleTestCase):
     """Covers must be served by Ochorus and must actually exist.
 
@@ -553,11 +559,6 @@ class CoverAssetTests(SimpleTestCase):
     catch fixture-correct-but-prod-stale drift — that needs ``seed_books`` to
     upsert the way ``seed_sermons`` already does.
     """
-
-    # Anchored on settings, like generate_covers' COVERS_DIR — walking up from
-    # the fixture dir would encode the content layout's depth into a fact about
-    # the frontend tree.
-    STATIC_DIR = settings.BASE_DIR.parent / "frontend" / "static"
 
     @classmethod
     def setUpClass(cls):
@@ -583,7 +584,7 @@ class CoverAssetTests(SimpleTestCase):
             (f["slug"], f["language"], _cover(f))
             for f in self.books
             if _cover(f).startswith("/")
-            and not (self.STATIC_DIR / _cover(f).lstrip("/")).is_file()
+            and not (STATIC_DIR / _cover(f).lstrip("/")).is_file()
         )
         self.assertEqual(missing, [], "cover_url points at a file that isn't committed")
 
@@ -678,17 +679,17 @@ class CoverAssetTests(SimpleTestCase):
         sniff would then fail every curated cover instead of skipping it.
         """
         failures = []
-        for svg in sorted((self.STATIC_DIR / "covers").rglob("*.svg")):
+        for svg in sorted((STATIC_DIR / "covers").rglob("*.svg")):
             if svg.stem in CURATED:
                 continue
             source = svg.read_text(encoding="utf-8")
             stop = re.search(r'<stop offset="0" stop-color="(#[0-9a-f]{6})"', source)
             if not stop:
-                failures.append((str(svg.relative_to(self.STATIC_DIR)), "no plate gradient"))
+                failures.append((str(svg.relative_to(STATIC_DIR)), "no plate gradient"))
                 continue
             ratio = author_ink_contrast(stop.group(1))
             if ratio < AUTHOR_MIN_CONTRAST:
-                failures.append((str(svg.relative_to(self.STATIC_DIR)), f"{ratio:.2f}:1"))
+                failures.append((str(svg.relative_to(STATIC_DIR)), f"{ratio:.2f}:1"))
         self.assertEqual(
             failures, [],
             "generated cover whose author line fails WCAG AA (4.5:1) — redraw it "
@@ -703,9 +704,37 @@ class CoverAssetTests(SimpleTestCase):
             f["slug"]
             for f in self.books
             if _cover(f).endswith(".svg")
-            and not (self.STATIC_DIR / "covers" / f"{f['slug']}.png").is_file()
+            and not (STATIC_DIR / "covers" / f"{f['slug']}.png").is_file()
         )
         self.assertEqual(missing, [], "generated SVG cover without its .png twin")
+
+
+class SermonShareCardTests(SimpleTestCase):
+    """Every sermon must have its Open Graph share card committed.
+
+    Same shape as ``CoverAssetTests``'s raster-twin check, and for the same
+    reason: the sermon page points ``og:image`` unconditionally at
+    ``/og/sermons/<slug>.png`` because a prerendered page cannot test for a
+    file, so the guarantee has to live here. Without it, adding a sermon and
+    forgetting to run the generator ships a share preview that 404s — invisible
+    until someone forwards the link.
+
+    English only, one card per slug: see ``frontend/scripts/og-card.mjs``.
+    """
+
+    def test_every_sermon_has_a_share_card(self):
+        missing = sorted(
+            r["fields"]["slug"]
+            for r in all_rows()
+            if r["model"] == "library.sermon"
+            and r["fields"].get("language", "en") == "en"
+            and not (STATIC_DIR / "og" / "sermons" / f"{r['fields']['slug']}.png").is_file()
+        )
+        self.assertEqual(
+            missing, [],
+            "sermon with no og:image share card — run `cd frontend && "
+            "npm run og:sermons` and commit frontend/static/og/sermons/<slug>.png",
+        )
 
 
 class SermonBriefCoverageTests(SimpleTestCase):

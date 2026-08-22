@@ -11,7 +11,7 @@
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import Emblem from '$lib/components/Emblem.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
-	import { topicMeta } from '$lib/emblems';
+	import { topicMeta } from '$lib/emblemNames';
 
 	let { data } = $props();
 	const t = i18n.t;

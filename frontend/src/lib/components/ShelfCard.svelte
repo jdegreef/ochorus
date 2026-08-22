@@ -51,7 +51,7 @@
 </script>
 
 <a class="shelf-card" style="--shelf-hue: {hue}" {href}>
-	<div class="shelf-card-band">
+	<div class="shelf-card-band hue-band">
 		<span class="shelf-card-badge emblem-chip">
 			{#if portrait}
 				<img src={portrait} alt="" loading="lazy" />

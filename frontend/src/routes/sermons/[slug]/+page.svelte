@@ -27,6 +27,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import SourceBadge from '$lib/components/SourceBadge.svelte';
+	import SermonPlate from '$lib/components/SermonPlate.svelte';
 
 	let { data } = $props();
 	const sermon = $derived(data.sermon as Sermon);
@@ -148,14 +149,21 @@
 	// --- SEO -------------------------------------------------------------------
 	// A real description from the opening prose (beats the generic template) and
 	// structured data: an Article for the sermon (its preaching text as `about`)
-	// plus a breadcrumb. og:image is the author portrait when present (raster).
+	// plus a breadcrumb.
 	const metaDescription = $derived(
 		(sermon.body_html || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 155) ||
 			t('sermon.metaFallback')
 				.replace('%title%', sermon.title)
 				.replace('%name%', sermon.author_name)
 	);
-	const ogImage = $derived(sermon.author_photo ? absUrl(sermon.author_photo) : '');
+	// The sermon's own share card — its emblem, passage and title on the house
+	// ground (frontend/scripts/generate-sermon-og.mjs). This used to be the
+	// AUTHOR PORTRAIT, so every Spurgeon sermon forwarded into a chat as the
+	// same photograph of Spurgeon, and a sermon by an author with no portrait
+	// forwarded as a bare link. Unconditional, like the book page's cover
+	// fallback: a prerendered page cannot test for a file, so
+	// `SermonShareCardTests` guarantees it instead.
+	const ogImage = $derived(absUrl(`/og/sermons/${sermon.slug}.png`));
 	const sermonLd = $derived(
 		jsonLd({
 			'@context': 'https://schema.org',
@@ -170,7 +178,7 @@
 			url: canonical,
 			isAccessibleForFree: true,
 			datePublished: sermon.preached_on || undefined,
-			image: ogImage || undefined,
+			image: ogImage,
 			about: sermon.scripture_ref ? { '@type': 'Thing', name: sermon.scripture_ref } : undefined,
 			publisher: { '@type': 'Organization', name: 'Ochorus' }
 		})
@@ -320,34 +328,50 @@
 		>
 	</nav>
 
-	<p class="eyebrow mb-1 text-muted">
-		{t('search.typeSermon')} · {readingTime(sermon.word_count)}{#if year} · {year}{/if}{#if sermon.difficulty}&nbsp;·
-			<span title={t('reader.difficulty')}>{t(`reader.difficulty_${sermon.difficulty}`)}</span>{/if}
-	</p>
-	<h1 class="text-h1 mb-3" dir="auto" lang={contentLang(sermon.language)}>{sermon.title}</h1>
+	<!-- The head sits in its plate (see SermonPlate), except in focus mode,
+	     which strips the page to the prose. -->
+	{#snippet head()}
+		<p class="eyebrow mb-1 text-muted">
+			{t('search.typeSermon')} · {readingTime(sermon.word_count)}{#if year} · {year}{/if}{#if sermon.difficulty}&nbsp;·
+				<span title={t('reader.difficulty')}>{t(`reader.difficulty_${sermon.difficulty}`)}</span>{/if}
+		</p>
+		<h1 class="text-h1 mb-3" dir="auto" lang={contentLang(sermon.language)}>{sermon.title}</h1>
 
-	<!-- Author row: portrait + name -->
-	<a
-		href={localizeHref(`/authors/${sermon.author_slug}`)}
-		class="group mb-5 inline-flex items-center gap-2.5 hover:no-underline"
-	>
-		{#if sermon.author_photo}
-			<img
-				src={sermon.author_photo}
-				alt="{t('a11y.portraitOf')} {sermon.author_name}"
-				class="h-9 w-9 shrink-0 rounded-full border border-border object-cover"
-				style="filter: grayscale(1); object-position: {portraitPosition(sermon.author_slug)}"
-				loading="lazy"
-			/>
-		{:else}
-			<span
-				class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent-soft text-small font-semibold text-accent"
+		<!-- Author row: portrait + name -->
+		<a
+			href={localizeHref(`/authors/${sermon.author_slug}`)}
+			class="group mb-1 inline-flex items-center gap-2.5 hover:no-underline"
+		>
+			{#if sermon.author_photo}
+				<img
+					src={sermon.author_photo}
+					alt="{t('a11y.portraitOf')} {sermon.author_name}"
+					class="h-9 w-9 shrink-0 rounded-full border border-border object-cover"
+					style="filter: grayscale(1); object-position: {portraitPosition(sermon.author_slug)}"
+					loading="lazy"
+				/>
+			{:else}
+				<span
+					class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent-soft text-small font-semibold text-accent"
+				>
+					{initials(sermon.author_name)}
+				</span>
+			{/if}
+			<span class="text-body font-medium text-text group-hover:text-accent"
+				>{sermon.author_name}</span
 			>
-				{initials(sermon.author_name)}
-			</span>
+		</a>
+	{/snippet}
+
+	<!-- The margin is the wrapper's, not one branch's: hung off the plate alone
+	     it vanished in focus mode and the head sat flush against the card below. -->
+	<div class="mb-5">
+		{#if readerUi.focus}
+			{@render head()}
+		{:else}
+			<SermonPlate slug={sermon.slug}>{@render head()}</SermonPlate>
 		{/if}
-		<span class="text-body font-medium text-text group-hover:text-accent">{sermon.author_name}</span>
-	</a>
+	</div>
 
 	<!-- Preaching text: the reference, and its verse(s) when available -->
 	{#if sermon.scripture_ref}
