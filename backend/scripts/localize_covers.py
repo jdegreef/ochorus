@@ -234,7 +234,7 @@ def main() -> int:
                 if not args.dry_run and ensure_og_twin(slug, art):
                     twins.append(slug)
             color = palettes[slug]
-            svg = build_svg(title, subtitle, author, color, language, emblem_for_book(slug))
+            svg = build_svg(title, subtitle, author, color, language, emblem=emblem_for_book(slug))
             tier = "artwork"
         else:
             # The house plate. A freshly translated row often carries no colour
@@ -242,7 +242,7 @@ def main() -> int:
             # one edition of a work in a colour its siblings don't share — so
             # the work's English colour is inherited, and recorded.
             color = fields.get("cover_color") or source.get("cover_color") or ""
-            svg = build_svg(title, subtitle, author, color, language, emblem_for_book(slug))
+            svg = build_svg(title, subtitle, author, color, language, emblem=emblem_for_book(slug))
             tier = "generated"
 
         url, rel = cover_path(slug, language)

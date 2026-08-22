@@ -30,12 +30,14 @@ the bytes for a fallback surface.
 
 from __future__ import annotations
 
-import ast
 import html
 import json
 import re
 from functools import lru_cache
 from pathlib import Path
+
+# A plain module, imported for exactly that reason — see its docstring.
+from library.topic_seed import TOPICS
 
 # The canvas. 3:4, matching BookCover's reserved box so nothing shifts.
 W, H = 600, 800
@@ -308,54 +310,45 @@ _EMBLEM_GAP = 22
 
 
 @lru_cache(maxsize=1)
-def _topic_books() -> tuple[tuple[str, tuple[str, ...]], ...]:
-    """(topic slug, its book slugs) from the topic seed, in seed order.
+def _book_emblems() -> dict[str, str]:
+    """Book slug → the emblem it wears, through the topic it belongs to.
 
-    Parsed rather than imported: this module is deliberately Django-free — the
-    curation scripts import it as a plain module, and `seed_topics` pulls in
-    `django.core.management`. `TOPICS` is a literal, so reading it with `ast` is
-    exact, and it stays the single source of truth for which books a topic
-    holds rather than that list being copied into a data file that can drift.
-    """
-    source = (
-        Path(__file__).resolve().parent / "management" / "commands" / "seed_topics.py"
-    ).read_text()
-    for node in ast.walk(ast.parse(source)):
-        if isinstance(node, ast.Assign) and any(
-            getattr(target, "id", "") == "TOPICS" for target in node.targets
-        ):
-            topics = ast.literal_eval(node.value)
-            return tuple((entry[0], tuple(entry[3])) for entry in topics)
-    raise RuntimeError("seed_topics.TOPICS not found — has the seed changed shape?")
-
-
-def emblem_for_book(slug: str) -> str | None:
-    """The emblem a book wears, through the topic it belongs to.
-
-    Read from the topic seed rather than the database, so a cover can be drawn
+    Built from the topic seed rather than the database, so a cover can be drawn
     without one — the covers are committed files built by hand, and requiring a
     seeded DB to know a book's topic would make the artwork depend on the state
-    of whatever machine ran the command.
+    of whatever machine ran the command. `topic_seed` is a plain module for
+    exactly this reason: `seed_topics` pulls in `django.core.management`, and
+    this one is imported by scripts that never call `django.setup()`.
 
     A book in more than one topic takes the first that has an emblem, in seed
     order: the shelves are ordered by how central the topic is, so the first is
     the one a reader is likeliest to have met the book under.
     """
     assignments = json.loads((_EMBLEM_DIR / "topics.json").read_text())["topics"]
-    for topic_slug, book_slugs in _topic_books():
-        if slug in book_slugs and topic_slug in assignments:
-            return assignments[topic_slug]
-    return None
+    emblems: dict[str, str] = {}
+    for topic_slug, _title, _description, book_slugs in TOPICS:
+        if topic_slug not in assignments:
+            continue
+        for slug in book_slugs:
+            emblems.setdefault(slug, assignments[topic_slug])
+    return emblems
 
 
-def emblem_art(name: str) -> tuple[str, float, float] | None:
-    """One emblem's markup and its viewBox size, or None if we don't have it.
+def emblem_for_book(slug: str) -> str | None:
+    """The emblem a book wears, or None if no topic holds it."""
+    return _book_emblems().get(slug)
 
-    Generated from `frontend/src/lib/emblems.ts` by `npm run emblem:art` — the
-    drawings are curated there, and the API image cannot read anything under
-    `frontend/`. `emblemArt.test.ts` fails if the committed copies drift.
+
+@lru_cache(maxsize=16)
+def _read_art(path: Path) -> tuple[str, float, float] | None:
+    """A committed SVG's inner markup and its viewBox size, or None if unusable.
+
+    The artwork on both sides of this module — the brand lockup and the topic
+    emblems — is normalised to a `0 0 w h` viewBox with any transform baked into
+    the path data, so placing it needs nothing but a translate and a uniform
+    scale. The aspect ratio is read from the file rather than hard-coded beside
+    it, which is what keeps a re-trace from silently mis-placing the drawing.
     """
-    path = _EMBLEM_DIR / f"{name}.svg"
     if not path.is_file():
         return None
     src = path.read_text()
@@ -366,18 +359,29 @@ def emblem_art(name: str) -> tuple[str, float, float] | None:
     return inner.group(1), float(box.group(1)), float(box.group(2))
 
 
+def emblem_art(name: str) -> tuple[str, float, float] | None:
+    """One emblem's markup and viewBox size, or None if we don't have it.
+
+    Generated from `frontend/src/lib/emblems.ts` by `npm run emblem:art` — the
+    drawings are curated there, and the API image cannot read anything under
+    `frontend/`. `emblemArt.test.ts` fails if the committed copies drift.
+
+    Missing is not fatal here, unlike the lockup below: a plate without its
+    emblem is the plate we shipped until now.
+    """
+    return _read_art(_EMBLEM_DIR / f"{name}.svg")
+
+
 def _read_lockup() -> tuple[str, float, float]:
     """The lockup's inner markup and its viewBox size.
 
-    The committed artwork is normalised to a `0 0 w h` viewBox with the
-    transform baked into the path data, so placing it needs nothing but a
-    translate and a uniform scale — and the aspect ratio is read from the file
-    rather than hard-coded beside it, which is what keeps a re-trace from
-    silently mis-placing the logo.
+    Loud where `emblem_art` is quiet: the mark is on every generated cover, so a
+    lockup this module cannot read is a broken build, not a cover without one.
     """
-    src = (_BRAND_DIR / "ochorus-lockup.svg").read_text()
-    vw, vh = (float(v) for v in re.search(r'viewBox="0 0 ([\d.]+) ([\d.]+)"', src).groups())
-    return re.search(r"<svg[^>]*>(.*)</svg>", src, re.S).group(1), vw, vh
+    art = _read_art(_BRAND_DIR / "ochorus-lockup.svg")
+    if art is None:
+        raise RuntimeError("the brand lockup is missing or not a 0 0 w h viewBox SVG")
+    return art
 
 
 _LOCKUP, _LOCKUP_VW, _LOCKUP_VH = _read_lockup()
@@ -395,8 +399,7 @@ _LOGO_H = _LOGO_W * _LOCKUP_VH / _LOCKUP_VW
 _MARK_TOP = H - _FRAME_INSET - 16 - _LOGO_H
 
 _MARK = (
-    f'<g transform="translate({(W - _LOGO_W) // 2} '
-    f'{round(H - _FRAME_INSET - 16 - _LOGO_H)}) scale({_LOGO_W / _LOCKUP_VW:.5f})" '
+    f'<g transform="translate({(W - _LOGO_W) // 2} {round(_MARK_TOP)}) scale({_LOGO_W / _LOCKUP_VW:.5f})" '
     f'fill="#ffffff" fill-opacity="0.82">{_LOCKUP}</g>'
 )
 
@@ -454,6 +457,33 @@ def palette_from_artwork(path) -> str:
     return ink_safe(_hex(round(c * 255) for c in (r, g, b)))
 
 
+def _emblem_mark(emblem: str | None, content_bottom: float) -> str:
+    """The emblem, fitted into the band between the type and the lockup.
+
+    Centred in that band, and only as large as the band leaves room for. The
+    gap is a margin on the SIZE, not on the position: it keeps the drawing off
+    the last line of type and off the mark, and what is left over is shared
+    equally above and below.
+    """
+    art = emblem_art(emblem) if emblem else None
+    if art is None:
+        return ""
+    inner, vw, vh = art
+    # NOT `size`: that is the title's font size in the caller. Shadowing it
+    # there set every regenerated title to the emblem's width in points —
+    # 97.87px on `a-call-to-the-unconverted` — and the geometry checks all
+    # passed, because the emblem itself was placed correctly.
+    band = _MARK_TOP - content_bottom - 2 * _EMBLEM_GAP
+    emblem_w = min(_EMBLEM_W, band * vw / vh)
+    if emblem_w < _EMBLEM_MIN:
+        return ""
+    y = (content_bottom + _MARK_TOP - emblem_w * vh / vw) / 2
+    return (
+        f'<g transform="translate({(W - emblem_w) / 2:.0f} {y:.0f}) '
+        f'scale({emblem_w / vw:.5f})">{inner}</g>'
+    )
+
+
 def build_svg(
     title: str,
     subtitle: str,
@@ -488,9 +518,11 @@ def build_svg(
     rule_y = top + (len(lines) - 1) * line_h + 52
 
     sub = ""
-    sub_lines: list[str] = []
+    # Where the type stops — the rule, or the last line of subtitle under it.
+    content_bottom = rule_y
     if subtitle:
         sub_lines = _wrap(subtitle, 34)[:2]
+        content_bottom = rule_y + 42 + (len(sub_lines) - 1) * 30
         sub = "".join(
             f'<text x="{W / 2:.0f}" y="{rule_y + 42 + i * 30:.0f}" text-anchor="middle" '
             f'fill="#ffffff" fill-opacity="0.82" font-family="{family}" font-style="italic" '
@@ -508,25 +540,7 @@ def build_svg(
     # colour varies per book but the COMPOSITION doesn't, so nothing tells one
     # from another at a glance. The emblem is a second variable, and it is the
     # book's own: the drawing its topic already wears on the topics shelf.
-    mark = ""
-    art = emblem_art(emblem) if emblem else None
-    if art:
-        inner, vw, vh = art
-        # The band between the last thing the type says and the top of the mark.
-        content_bottom = rule_y + 42 + (len(sub_lines) - 1) * 30 if subtitle else rule_y
-        band = _MARK_TOP - content_bottom - 2 * _EMBLEM_GAP
-        # NOT `size`: that is the title's font size, three lines up. Shadowing it
-        # here set every regenerated title to the emblem's width in points —
-        # 97.87px on `a-call-to-the-unconverted` — and the geometry checks all
-        # passed, because the emblem itself was placed correctly.
-        emblem_w = min(_EMBLEM_W, band * vw / vh)
-        if emblem_w >= _EMBLEM_MIN:
-            emblem_h = emblem_w * vh / vw
-            y = content_bottom + _EMBLEM_GAP + (band - emblem_h) / 2
-            mark = (
-                f'<g transform="translate({(W - emblem_w) / 2:.0f} {y:.0f}) '
-                f'scale({emblem_w / vw:.5f})">{inner}</g>'
-            )
+    emblem_mark = _emblem_mark(emblem, content_bottom)
 
     return f"""<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{html.escape(title)}">
   <defs>
@@ -546,7 +560,7 @@ def build_svg(
   <text text-anchor="middle" fill="#ffffff" font-family="{family}" font-weight="600" font-size="{size}"{dir_attr}>{tspans}</text>
   <line x1="{W / 2 - 38:.0f}" y1="{rule_y:.0f}" x2="{W / 2 + 38:.0f}" y2="{rule_y:.0f}" stroke="#ffffff" stroke-opacity="0.55" stroke-width="1.5"/>
   {sub}
-  {mark}
+  {emblem_mark}
 {_MARK}
 </svg>
 """

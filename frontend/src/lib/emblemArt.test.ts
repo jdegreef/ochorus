@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 import { EMBLEM_ART } from './emblems';
-import { TOPIC_META } from './emblemNames';
+import { TOPIC_META, topicEmblems } from './emblemNames';
 
 /**
  * The topic emblems exist twice on purpose, and must never diverge.
@@ -20,15 +20,12 @@ import { TOPIC_META } from './emblemNames';
  * `emblems.ts` is the source; nothing hand-edits the backend copies.
  *
  * If this fails, run `cd frontend && npm run emblem:art` and commit the result.
+ *
+ * The mapping itself is `topicEmblems()` — the SAME function the exporter
+ * calls, not a copy of its derivation. A gate that reimplements what it checks
+ * agrees with the generator right up until the day one of them changes.
  */
 const BACKEND_EMBLEMS = join(process.cwd(), '..', 'backend', 'library', 'data', 'emblems');
-
-const exported = () =>
-	Object.fromEntries(
-		Object.entries(TOPIC_META)
-			.map(([slug, meta]) => [slug, meta.emblem])
-			.sort(([a], [b]) => a.localeCompare(b))
-	);
 
 describe('the cover generator has the emblems it draws', () => {
 	it('ships exactly the topic emblems — no more, no fewer', () => {
@@ -38,7 +35,7 @@ describe('the cover generator has the emblems it draws', () => {
 			.sort();
 		// Exactly: a stale extra is dead weight in the API image AND a file the
 		// drift check below would keep passing because nothing names it.
-		expect(onDisk).toEqual([...new Set(Object.values(exported()))].sort());
+		expect(onDisk).toEqual([...new Set(Object.values(topicEmblems()))].sort());
 	});
 
 	it.each(Object.entries(TOPIC_META))('%s: art matches emblems.ts', (_slug, meta) => {
@@ -50,6 +47,6 @@ describe('the cover generator has the emblems it draws', () => {
 
 	it('records which emblem each topic wears', () => {
 		const committed = JSON.parse(readFileSync(join(BACKEND_EMBLEMS, 'topics.json'), 'utf-8'));
-		expect(committed.topics).toEqual(exported());
+		expect(committed.topics).toEqual(topicEmblems());
 	});
 });

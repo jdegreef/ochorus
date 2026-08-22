@@ -5851,19 +5851,19 @@ class CoverEmblemTests(SimpleTestCase):
         self.assertIsNone(emblem_for_book("a-book-in-no-topic"))
 
     def test_the_topic_seed_stays_the_source_of_which_books_a_topic_holds(self):
-        """`_topic_books` reads the seed with `ast` rather than importing it.
+        """One list of shelf members, read by the seed AND by the generator.
 
         `covers.py` is deliberately Django-free — the curation scripts import it
-        as a plain module — and `seed_topics` pulls in
-        `django.core.management`. Parsing keeps the seed the single source of
-        truth rather than copying its book lists into a data file that can
-        drift, so this asserts the parse still finds them.
+        as a plain module — so it cannot import `seed_topics`, which pulls in
+        `django.core.management`. The membership therefore lives in
+        `library/topic_seed.py`, which both import. This fails if a copy is
+        introduced: an emblem drawn from a second list would be right until the
+        day someone edits only one of them.
         """
-        from library.covers import _topic_books
+        from library.management.commands import seed_topics
+        from library.topic_seed import TOPICS
 
-        topics = dict(_topic_books())
-        self.assertIn("prayer", topics)
-        self.assertIn("prevailing-prayer", topics["prayer"])
+        self.assertIs(seed_topics.TOPICS, TOPICS)
 
     def test_the_emblem_is_fitted_to_the_room_that_is_left(self):
         """A constant offset put it through the subtitle and into the lockup.
@@ -5897,14 +5897,10 @@ class CoverEmblemTests(SimpleTestCase):
         self.assertIsNone(emblem_box(crowded), "emblem drawn with no room for it")
 
     def test_a_plate_without_an_emblem_is_unchanged(self):
-        """Most of the library predates this, and a book in no topic gets none —
-        neither should differ by so much as a byte from the plate it had."""
+        """A book in no topic, or one whose emblem the API image is missing,
+        gets the plate it had — not a broken one, and not a shifted one."""
         from library.covers import build_svg
 
-        self.assertEqual(
-            build_svg("Humility", "", "Andrew Murray", "#0b7285", "en"),
-            build_svg("Humility", "", "Andrew Murray", "#0b7285", "en", emblem=None),
-        )
         self.assertEqual(
             build_svg("Humility", "", "Andrew Murray", "#0b7285", "en"),
             build_svg("Humility", "", "Andrew Murray", "#0b7285", "en", emblem="not-an-emblem"),

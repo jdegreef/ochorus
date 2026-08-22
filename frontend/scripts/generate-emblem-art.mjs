@@ -25,18 +25,15 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { EMBLEM_ART } from '../src/lib/emblems.ts';
-import { TOPIC_META } from '../src/lib/emblemNames.ts';
+import { topicEmblems } from '../src/lib/emblemNames.ts';
 
 const OUT = resolve(dirname(fileURLToPath(import.meta.url)), '../../backend/library/data/emblems');
+
+// The map itself is `topicEmblems()` in `emblemNames.ts`, NOT derived here:
+// `emblemArt.test.ts` checks the committed files against that same function, and
+// a gate that re-derives what it checks is a second opinion, not a drift test.
 mkdirSync(OUT, { recursive: true });
-
-/** topic slug → emblem name, so the generator can ask "what does this book wear?" */
-const topics = Object.fromEntries(
-	Object.entries(TOPIC_META)
-		.map(([slug, meta]) => [slug, meta.emblem])
-		.sort(([a], [b]) => a.localeCompare(b))
-);
-
+const topics = topicEmblems();
 const wanted = new Set(Object.values(topics));
 
 // Prune first: an emblem that stops being a topic's is dead weight in the image,
@@ -71,4 +68,6 @@ writeFileSync(
 	) + '\n'
 );
 
-console.log(`wrote ${wanted.size} emblems and ${Object.keys(topics).length} topic assignments to ${OUT}`);
+console.log(
+	`wrote ${wanted.size} emblems and ${Object.keys(topics).length} topic assignments to ${OUT}`
+);
