@@ -14,13 +14,16 @@
 	// against the surrounding text colour — one file serves both themes.
 	import lockup from '$lib/brand/ochorus-lockup.svg?raw';
 
-	// Height in px; the lockup is ~1.66:1 so width follows. 36 is the header
-	// default: at the old 24px mark size the built-in wordmark is too small to
-	// read.
-	let { height = 36 }: { height?: number } = $props();
+	// Height; the lockup is ~1.66:1 so width follows. A bare number means px, and
+	// 36 is the header default — at the old 24px mark size the built-in wordmark
+	// is too small to read. A string is any CSS length, which is how the book
+	// cover plate asks for a height in container units so the mark scales with
+	// the card.
+	let { height = 36 }: { height?: number | string } = $props();
+	const size = $derived(typeof height === 'number' ? `${height}px` : height);
 </script>
 
-<span class="brandmark" style="--h: {height}px" role="img" aria-label="Ochorus">
+<span class="brandmark" style="--h: {size}" role="img" aria-label="Ochorus">
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -- our own build-time asset -->
 	{@html lockup}
 </span>

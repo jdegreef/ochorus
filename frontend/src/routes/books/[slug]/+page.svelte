@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { coverGradient } from '$lib/coverArt';
 	import { type BookDetail, formatLifespan } from '$lib/library';
 	import { getProgress } from '$lib/progress';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
@@ -10,6 +9,7 @@
 	import { localizeHref } from '$lib/href';
 	import { scopedSearchHref } from '$lib/searchState';
 	import BookCard from '$lib/components/BookCard.svelte';
+	import BookCover from '$lib/components/BookCover.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
@@ -122,26 +122,14 @@
 	<Breadcrumb items={crumbs} />
 
 	<header class="mt-5 flex flex-col gap-5 sm:flex-row sm:items-start">
-		{#if book.cover_url}
-			<!-- Intrinsic 3:4 (matches the aspect class) so space is reserved even
-			     before app.css applies — the main content image on the page. -->
-			<img
-				src={book.cover_url}
-				alt="{t('a11y.coverOf')} {book.title}"
-				width="300"
-				height="400"
-				class="aspect-[3/4] w-32 shrink-0 rounded-card object-cover shadow-md"
-			/>
-		{:else}
-			<div
-				class="flex aspect-[3/4] w-32 shrink-0 items-end rounded-card p-3 shadow-md"
-				style="background: {coverGradient(book.cover_color)}"
-			>
-				<span class="font-display text-base font-semibold text-white">
-					{book.title}
-				</span>
-			</div>
-		{/if}
+		<!-- One component decides what a cover is. This page used to branch on
+		     cover_url itself and paint its own gradient box in the else, so the
+		     same cover-less book looked one way on a shelf and another here — and
+		     a cover file that 404s showed a broken image here while every shelf
+		     fell back to the plate. `priority` marks it as the page's LCP image. -->
+		<div class="w-32 shrink-0">
+			<BookCover {book} priority />
+		</div>
 
 		<div class="flex-1">
 			<h1 class="text-h1" dir="auto">{book.title}</h1>

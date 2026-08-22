@@ -1,13 +1,14 @@
 /**
  * The generated-cover fallback, in one place.
  *
- * Roughly half the library ships without artwork, so what a cover-less book
- * looks like is a real surface, not an edge case — and it was drawn four
- * different ways: a flat fill on the plans strip, a `…, #0008` gradient on the
- * book page, a local `cover()`/`shade()` pair on the 404, and a `darken(0.55)`
- * inside BookCover. The same book therefore looked different on the shelf, on
- * its own page and on the error page, and the brand blue was hardcoded in five
- * files.
+ * Every published book now carries a committed cover (two fixture gates keep it
+ * that way), so a cover-less book is the admin import before its file is drawn,
+ * the unpublished draft, and the broken image. It was once half the library,
+ * and it was drawn four different ways: a flat fill on the plans strip, a
+ * `…, #0008` gradient on the book page, a local `cover()`/`shade()` pair on the
+ * 404, and a `darken(0.55)` inside BookCover. The same book therefore looked
+ * different on the shelf, on its own page and on the error page, and the brand
+ * blue was hardcoded in five files.
  *
  * A book's own `cover_color` is data, not a UI colour (STYLE_GUIDE §1), which
  * is why it is a raw hex rather than a token. Only the DEFAULT belongs here.
@@ -18,10 +19,10 @@
  */
 
 /** The generator's default cover colour, for books with no `cover_color`. */
-export const COVER_FALLBACK = '#3b5bdb';
+const COVER_FALLBACK = '#3b5bdb';
 
 /** Scale a hex colour's channels by `factor` (0–1 darkens, >1 lightens). */
-export function shade(hex: string, factor: number): string {
+function shade(hex: string, factor: number): string {
 	const n = (hex || COVER_FALLBACK).replace('#', '');
 	if (n.length !== 6) return COVER_FALLBACK;
 	const channels = [0, 2, 4].map((i) =>
@@ -34,10 +35,33 @@ export function shade(hex: string, factor: number): string {
 
 /**
  * The cover gradient: the book's colour, falling to a darker tone of itself.
+ *
+ * This is the WHOLE treatment for the small decorative fans — `CoverStrip`,
+ * `ShelfCard`, `ContinueReading`. They render at 2.5rem, where the plate's type
+ * would be sub-pixel, and they hold a `TopicCover` (title, url, colour) rather
+ * than a book, so routing them through `BookCover` would mean widening that
+ * type at every call site to draw something nobody can read. Deliberate, not an
+ * oversight.
  * `0.55` is the same factor `generate_covers` bakes into the real artwork, so a
  * generated cover and this fallback sit at the same value.
  */
 export function coverGradient(color: string | null | undefined): string {
-	const base = color || COVER_FALLBACK;
-	return `linear-gradient(150deg, ${base} 0%, ${shade(base, 0.55)} 100%)`;
+	// Both stops go through `shade`, which returns the fallback for anything that
+	// isn't a six-digit hex. `cover_color` is a free-text CharField the admin
+	// import can set, and this string lands in a `style` attribute — an unchecked
+	// value could carry a `;` and a second declaration into it.
+	const base = shade(color ?? '', 1);
+	// `165deg … 89%` is covers.py's gradient written in CSS, not an eyeball
+	// match. The file runs its gradient from (0, 0) to (0.35, 1) in bounding-box
+	// units — on a 600x800 plate a vector of (210, 800), atan(210/800) off
+	// vertical, i.e. 165deg — and SVG PADS past its end point while CSS stretches
+	// its gradient line corner to corner. Projecting the file's end point onto
+	// that line puts it at 89.3% along, so the dark stop goes there; left at 100%
+	// the whole plate sits lighter than the artwork it stands in for.
+	//
+	// Not only cosmetic. `covers.ink_safe` floors a plate colour against the tone
+	// under the byline in the FILE'S geometry, so a lighter gradient here quietly
+	// spends that margin: at the old `150deg … 100%` the byline measured 4.37:1
+	// against a 4.5 bar.
+	return `linear-gradient(165deg, ${base} 0%, ${shade(base, 0.55)} 89%)`;
 }
