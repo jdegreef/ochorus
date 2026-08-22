@@ -57,7 +57,7 @@
 	const hitItems = $derived<Item[]>(hits.map(hitItem));
 
 	/**
-	 * A last row that always hands the query to the full search page.
+	 * The FIRST row, which always hands the query to the full search page.
 	 *
 	 * The palette searches as you type but only shows a handful of instant hits,
 	 * and its command list has no /search entry — so a query it missed ended at
@@ -65,6 +65,12 @@
 	 * filters and sorts. This is that way out, and it is present whether or not
 	 * there were hits: "not in the first five" and "not in the library" look
 	 * identical from here.
+	 *
+	 * It leads rather than trails. Last, it sat under however many instant hits
+	 * the query drew — nine passages from one book, in the reported case — so the
+	 * one row that reaches the whole library was the one you had to scroll to
+	 * find. First, it is also what Enter runs by default, which is the right
+	 * default for a query with no obvious single answer.
 	 */
 	const searchItem = $derived.by<Item[]>(() => {
 		const term = q.trim();
@@ -81,7 +87,7 @@
 		];
 	});
 
-	const items = $derived<Item[]>([...cmdItems, ...hitItems, ...searchItem]);
+	const items = $derived<Item[]>([...searchItem, ...cmdItems, ...hitItems]);
 	const activeKey = $derived(items[activeIndex]?.key ?? '');
 
 	// Keep the selection valid as the list changes; keep the active row in view.
