@@ -64,6 +64,37 @@
 		formatLifespan(author.birth_year, author.death_year, t('common.bornPrefix'))
 	);
 
+	// The H1 and the <title> both name what the page actually holds — "<Name>
+	// Biography, Books, and Sermons" — rather than the bare name: that is how
+	// people search for a writer, and it tells a crawler what the page is. They
+	// share one derived string so the two can never drift apart.
+	//
+	// Each combination is its own message rather than assembled from fragments,
+	// because these languages put the name in different places ("Biografía de
+	// X", "X की जीवनी") and join lists their own way — concatenation cannot
+	// express that. Keys are spelled out rather than built from the parts: a key
+	// that does not exist renders as its own name (see i18n.svelte.ts), and
+	// nothing in CI catches that, so they are kept greppable.
+	//
+	// The bio counts only when THIS locale has one — an untranslated bio is
+	// absent, and the heading must not promise a life story the page lacks.
+	const headingKey = $derived.by(() => {
+		const bio = !!(author.bio_html || author.bio);
+		const books = author.books.length > 0;
+		const sermons = author.sermons.length > 0;
+		if (bio && books && sermons) return 'author.headingBioBooksSermons';
+		if (bio && books) return 'author.headingBioBooks';
+		if (bio && sermons) return 'author.headingBioSermons';
+		if (bio) return 'author.headingBio';
+		if (books && sermons) return 'author.headingBooksSermons';
+		if (books) return 'author.headingBooks';
+		if (sermons) return 'author.headingSermons';
+		return '';
+	});
+	const heading = $derived(
+		headingKey ? t(headingKey).replace('%name%', author.name) : author.name
+	);
+
 	// A one-line "what's here" summary under the name: era + work counts.
 	const summaryBits = $derived(
 		[
@@ -176,7 +207,7 @@
 </script>
 
 <Seo
-	title="{author.name} — Ochorus"
+	title="{heading} — Ochorus"
 	{description}
 	{canonical}
 	{hreflang}
@@ -218,8 +249,13 @@
 				{initials(author.name)}
 			</span>
 		{/if}
-		<div class="min-w-0">
-			<h1 class="text-h1" dir="auto">{author.name}</h1>
+		<!-- basis-64 + flex-1: the heading is now a sentence, not a name, and at its
+		     natural width it no longer fits beside the portrait — the wrapping
+		     header would drop the portrait onto its own line. Letting this column
+		     shrink keeps them side by side, while the 16rem basis still wraps on a
+		     phone. -->
+		<div class="min-w-0 flex-1 basis-64">
+			<h1 class="text-h1" dir="auto">{heading}</h1>
 			{#if summaryBits.length}
 				<p class="mt-1 text-body text-muted">
 					{#each summaryBits as bit, i (i)}{#if i > 0}<span class="opacity-50"> · </span>{/if}{bit}{/each}
