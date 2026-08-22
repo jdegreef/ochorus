@@ -17,6 +17,20 @@
  *
  * The art strings are static, author-controlled markup rendered by
  * Emblem.svelte — never user input.
+ *
+ * DELIBERATELY IMPORT-FREE, and that includes re-exports. Two build scripts
+ * (`generate-sermon-og.mjs`, `generate-emblem-hues.mjs`) load this module
+ * directly under Node's type stripping, and bare Node resolves neither the
+ * `$lib` alias nor an extensionless `./emblemNames`, while naming the
+ * extension instead fails `svelte-check` (`allowImportingTsExtensions`). A
+ * convenience `export … from './emblemNames'` here therefore does not
+ * inconvenience anyone — it stops both generators dead. `nodeLoadable.test.ts`
+ * now fails instead of leaving that to be discovered by hand.
+ *
+ * So the catalogue has two doors, by necessity: this module for the ART, and
+ * `./emblemNames` for WHICH emblem a slug wears. The few lines of colour
+ * arithmetic below are duplicated from `coverArt.ts` for the same reason; the
+ * scripts, being plain `.mjs`, can name the extension and import it properly.
  */
 
 // ── Shared palette ──────────────────────────────────────────────────────────
@@ -497,112 +511,84 @@ export const EMBLEM_ART = {
 
 export type EmblemName = keyof typeof EMBLEM_ART;
 
-// ── Curated assignments ─────────────────────────────────────────────────────
-// One emblem per slug, unique across all three catalogues (a test enforces
-// this). Slugs match the backend seeds (seed_topics / seed_plans / fixtures).
-
 /**
- * Per-topic visual identity: accent hue + emblem, so each shelf reads as its
- * own thing rather than one more identical card. The accent is used for tints
- * (via color-mix), never as body text, so it stays legible in both themes.
+ * The dominant ink of an emblem — its own accent, read back off the drawing.
+ *
+ * Topics and plans carry a hand-tuned `accent` in their META tables because
+ * there are ten and eight of them. Sermons are a growing catalogue with a new
+ * one every import, and a hue nobody remembers to set is a hue that ends up
+ * wrong; deriving it means a sermon's card is coloured the moment its emblem
+ * is chosen, with nothing else to author.
+ *
+ * Scored `count × (0.35 + saturation)`, discounting inks outside a usable
+ * lightness band, then floored to a minimum saturation — the same two moves
+ * `covers.py:palette_from_artwork` makes to pull a cover colour out of a
+ * book's artwork, and for the same reasons. Counting alone hands the accent to
+ * whichever neutral the drawing happens to shade with: the raven emblem came
+ * out slate grey, which is honestly its most-used ink and a thoroughly drab
+ * thing to letter a share card in. Scoring by saturation separates "the colour
+ * this drawing IS" from "the colour it is shaded with"; the floor then keeps
+ * an emblem that really is drawn in slate (the raven, the rock) from lettering
+ * its card in something indistinguishable from muted body text.
+ *
+ * The cream/white papers are excluded outright rather than left to the score:
+ * they highlight nearly every emblem, and the lightness discount alone still
+ * let warm white carry the shepherd's-crook. A card lettered in #fdfaf3 has no
+ * accent at all, only two shades of white.
+ *
+ * The LIGHTNESS is left alone: what a hue needs in order to carry type depends
+ * on the surface it lands on, and this module does not know that. Callers
+ * floor it themselves — `scripts/og-card.mjs:liftToContrast` for the near-black
+ * share card, `color-mix` tints for the app's chips.
  */
-export const TOPIC_META: Record<string, { accent: string; emblem: EmblemName }> = {
-	prayer: { accent: '#5257c9', emblem: 'praying-hands' }, // the secret place
-	'holy-spirit': { accent: '#d98324', emblem: 'dove-descending' }, // the dove, the rushing wind (Acts 2)
-	'deeper-life': { accent: '#149e93', emblem: 'mountain-dawn' }, // going further in
-	'grace-and-comfort': { accent: '#d1567b', emblem: 'overflowing-cup' }, // my cup runneth over
-	'revival-and-missions': { accent: '#df552f', emblem: 'torch-globe' }, // a light to the nations
-	'faith-and-guidance': { accent: '#4f9a3e', emblem: 'compass-rose' }, // walking by faith
-	'the-gospel-call': { accent: '#b8912f', emblem: 'herald-trumpet' }, // the oldest invitation there is
-	'enduring-classics': { accent: '#8a5bbf', emblem: 'laurel-tome' }, // the old paths, still good
-	'the-way-of-holiness': { accent: '#3e7cb8', emblem: 'narrow-gate' }, // strait is the gate
-	'the-preached-word': { accent: '#946b4a', emblem: 'open-word' } // great preaching on the page
+export const MIN_ACCENT_SATURATION = 0.3;
+const PAPER_INKS: ReadonlySet<string> = new Set([CR, CRD, W]);
+
+/** HSL saturation and lightness of a #rrggbb colour. Hue is never needed. */
+const satLightness = (hex: string): [number, number] => {
+	const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255);
+	const max = Math.max(r, g, b);
+	const min = Math.min(r, g, b);
+	const lightness = (max + min) / 2;
+	if (max === min) return [0, lightness];
+	const d = max - min;
+	return [lightness > 0.5 ? d / (2 - max - min) : d / (max + min), lightness];
 };
 
-/** Per-plan visual identity: accent hue + emblem (same shape as TOPIC_META). */
-export const PLAN_META: Record<string, { accent: string; emblem: EmblemName }> = {
-	'school-of-prayer': { accent: '#6a5ecf', emblem: 'rising-incense' }, // prayer as incense
-	'humility-12-days': { accent: '#2f8f85', emblem: 'basin-towel' }, // the servant's basin
-	'the-inner-chamber-month': { accent: '#b8912f', emblem: 'door-ajar' }, // shut thy door
-	'deeper-life-in-christ': { accent: '#5a9e4d', emblem: 'true-vine' }, // abide in me
-	'grace-for-every-sinner': { accent: '#d1567b', emblem: 'shepherd-crook' }, // the seeking shepherd
-	'faith-in-the-fire': { accent: '#b3474f', emblem: 'refiners-crucible' }, // tried as gold
-	'power-from-on-high': { accent: '#d98324', emblem: 'pentecost-fire' }, // tongues as of fire
-	'everything-for-christ': { accent: '#8a5bbf', emblem: 'poured-out' } // a life poured out
-};
-
-export const SERMON_EMBLEMS: Record<string, EmblemName> = {
-	himself: 'chi-rho', // now it is the Lord
-	'the-power-of-stillness': 'still-waters', // a still small voice
-	'the-possibilities-of-faith': 'mustard-tree', // faith as a grain of mustard seed
-	'the-joy-of-the-lord': 'joyful-harp', // the joy of the Lord is your strength
-	'aggressive-christianity': 'gospel-banner', // a banner for the truth
-	'blessed-adversity': 'olive-press', // oil comes from pressing
-	'christ-all-in-all': 'alpha-omega', // the beginning and the end
-	'christ-crucified': 'cross-sunrise', // we preach Christ crucified
-	'christ-precious-to-believers': 'pearl-of-price', // the pearl of great price
-	'christs-boundless-compassion': 'sheltering-wings', // as a hen gathers her brood
-	'come-thou-into-the-ark': 'ark-rainbow', // the door was shut, the bow was set
-	'comfort-for-the-desponding': 'jar-of-balm', // balm in Gilead
-	'compel-them-to-come-in': 'feast-table', // that my house may be filled
-	'consolation-in-the-furnace': 'fourth-in-fire', // the fourth is like the Son of God
-	'eight-i-wills-of-christ': 'sealed-scroll', // promises signed and sealed
-	'free-grace': 'grace-fountain', // whosoever will, freely
-	'order-and-argument-in-prayer': 'heavens-ladder', // ordering our cause before Him
-	'pauls-first-prayer': 'kneeling-light', // behold, he prayeth
-	rest: 'easy-yoke', // my yoke is easy
-	'salvation-by-faith': 'shield-of-faith', // above all, taking the shield of faith
-	'sweet-comfort-for-feeble-saints': 'bruised-reed', // a bruised reed he will not break
-	'the-dying-thief': 'paradise-palms', // today, in paradise
-	'the-golden-key-of-prayer': 'golden-key', // call unto me, and I will answer
-	'the-immutability-of-god': 'rock-unmoved', // I am the Lord, I change not
-	'the-new-birth': 'new-sprout', // ye must be born again
-	'the-ravens-cry': 'ravens-bread', // he feedeth the young ravens
-	'the-sweet-uses-of-adversity': 'rose-among-thorns', // sweet are the uses of adversity
-	'the-way-of-salvation': 'pilgrim-road', // the road home
-	'unfailing-springs': 'desert-spring' // springs in the desert
-};
-
-// ── Fallbacks ───────────────────────────────────────────────────────────────
-// New content lands before anyone curates art for it; a stable hash-pick from
-// a small generic pool keeps it looking finished until someone does.
-
-export const FALLBACK_POOL: EmblemName[] = [
-	'oil-lamp',
-	'wheat-sheaf',
-	'morning-star',
-	'watchmans-bell'
-];
-
-/** FNV-1a — stable across sessions, so a slug always wears the same art. */
-const fnv = (s: string): number => {
-	let h = 0x811c9dc5;
-	for (let i = 0; i < s.length; i++) {
-		h ^= s.charCodeAt(i);
-		h = Math.imul(h, 0x01000193) >>> 0;
+export const emblemHue = (name: EmblemName): string => {
+	const inks = (EMBLEM_ART[name].match(/#[0-9a-f]{6}/gi) ?? []).map((ink) => ink.toLowerCase());
+	// An emblem drawn ENTIRELY in the papers has no other ink to prefer, so it
+	// gets its most-used one rather than a brand default standing in for art.
+	const usable = inks.filter((hex) => !PAPER_INKS.has(hex));
+	const counts = new Map<string, number>();
+	for (const hex of usable.length ? usable : inks) {
+		counts.set(hex, (counts.get(hex) ?? 0) + 1);
 	}
-	return h;
+	let best = '';
+	let winner: [number, number] = [0, 0];
+	let bestScore = 0;
+	for (const [hex, count] of counts) {
+		const [saturation, lightness] = satLightness(hex);
+		const usable = lightness > 0.12 && lightness < 0.62 ? 1 : 0.35;
+		const score = count * (0.35 + saturation) * usable;
+		if (score > bestScore) [best, winner, bestScore] = [hex, [saturation, lightness], score];
+	}
+	const [saturation, lightness] = winner;
+	if (saturation >= MIN_ACCENT_SATURATION) return best;
+	// Saturating at fixed hue and lightness is just a spread of the channels away
+	// from their midpoint — HSL is affine in saturation once h and l are pinned,
+	// so a round trip through it would be thirty lines to reach the same bytes
+	// (checked against all 51 emblems). It is also better behaved at the edge: a
+	// pure grey has no hue to restore, and this leaves it grey where fromHsl
+	// would have read its hue as 0 and handed back a red.
+	const mid = lightness * 255;
+	const spread = saturation === 0 ? 0 : MIN_ACCENT_SATURATION / saturation;
+	return `#${[1, 3, 5]
+		.map((i) => {
+			const c = mid + (parseInt(best.slice(i, i + 2), 16) - mid) * spread;
+			return Math.max(0, Math.min(255, Math.round(c)))
+				.toString(16)
+				.padStart(2, '0');
+		})
+		.join('')}`;
 };
-
-export const fallbackEmblem = (slug: string): EmblemName =>
-	FALLBACK_POOL[fnv(slug) % FALLBACK_POOL.length];
-
-export const emblemForSermon = (slug: string): EmblemName =>
-	SERMON_EMBLEMS[slug] ?? fallbackEmblem(slug);
-
-export const topicMeta = (slug: string): { accent: string; emblem: EmblemName } =>
-	TOPIC_META[slug] ?? { accent: '#3b5bdb', emblem: fallbackEmblem(slug) };
-
-/**
- * The curated plan accents, cycled by slug hash for plans that ship without
- * curated art yet — same reasoning as the topic-accent fallback: covers are
- * mostly dark navy, so deriving a hue from them made every card the same
- * muted blue.
- */
-const PLAN_ACCENTS = Object.values(PLAN_META).map((m) => m.accent);
-
-export const planMeta = (slug: string): { accent: string; emblem: EmblemName } =>
-	PLAN_META[slug] ?? {
-		accent: PLAN_ACCENTS[fnv(slug) % PLAN_ACCENTS.length],
-		emblem: fallbackEmblem(slug)
-	};
