@@ -753,6 +753,19 @@ def _plan_day_one(plan, language):
     return {"book_title": chapter["book__title"], "chapter_title": chapter["title"]}
 
 
+def _book_cover(book):
+    """A book as a strip tile. Shared by the plan strip and the topic fan so the
+    two payloads cannot drift — `kind`/`slug` were once on the topic side only,
+    which is what forced the frontend type to make them optional."""
+    return {
+        "kind": "book",
+        "slug": book.slug,
+        "cover_url": book.cover_url,
+        "cover_color": book.cover_color,
+        "title": book.title,
+    }
+
+
 def _plan_covers(plan, language, limit=5):
     """The distinct books a plan draws from (first-appearance order), as small
     cover descriptors — mirrors a topic's covers strip. One query for books."""
@@ -770,9 +783,7 @@ def _plan_covers(plan, language, limit=5):
     for slug in order:
         b = books.get(slug)
         if b:
-            covers.append(
-                {"cover_url": b.cover_url, "cover_color": b.cover_color, "title": b.title}
-            )
+            covers.append(_book_cover(b))
         if len(covers) >= limit:
             break
     return covers
@@ -846,54 +857,26 @@ class TopicListSerializer(LocalizedMixin, serializers.ModelSerializer):
     def get_sermon_count(self, obj):
         return len(self._sermons(obj))
 
-    # How many tiles the card's fan holds. Four is what `.cover-fan` lays out
-    # before it starts overflowing its band.
-    FAN = 4
-
     def get_covers(self, obj):
         """Up to four member tiles for the card's fan — books first, then sermons.
 
-        Sermons are here because the shelf is listed when it has books OR
-        sermons (``TopicListView.get_queryset``), while this only ever drew
-        books. In English that never showed: every topic has at least three
-        books. In every OTHER language it showed constantly, because sermon
-        translation has outrun book translation — Spanish and Portuguese now
-        carry more sermons than books. The result was a card reading
-        "0 books · 5 sermons" over an empty band: the shelf saying there is
-        nothing here, on a shelf that has five things.
+        Sermons are here because the shelf is LISTED when it has books or
+        sermons (`TopicListView.get_queryset`) while this drew only books, so a
+        shelf whose members in this language are sermons was published with an
+        empty band. Books first, so a shelf that can fill the fan with covers
+        still looks exactly as it did.
 
-        Books first, so a shelf that can fill the fan with covers still looks
-        exactly as it did; sermons take what is left. A sermon tile is NOT a
-        cover — see `ShelfCard`, where it is drawn as the round emblem chip it
-        wears everywhere else, because a 3:4 tile is the one thing this whole
-        feature has been avoiding calling a sermon.
-
-        The tile carries the sermon's SLUG and nothing about its art: which
-        emblem a sermon wears, and the hue derived from it, live in the
-        frontend catalogue (`emblemNames.ts` / `emblemHues.ts`), which the API
-        cannot see and should not duplicate.
+        A sermon tile is not a cover — `ShelfCard` draws it as the round emblem
+        chip a sermon wears elsewhere. It carries the SLUG and nothing about the
+        art: which emblem, and the hue derived from it, live in the frontend
+        catalogue the API cannot see.
         """
-        covers = [
-            {
-                "kind": "book",
-                "slug": b.slug,
-                "cover_url": b.cover_url,
-                "cover_color": b.cover_color,
-                "title": b.title,
-            }
-            for b in self._books(obj)[: self.FAN]
+        tiles = [_book_cover(b) for b in self._books(obj)] + [
+            {"kind": "sermon", "slug": s.slug, "title": s.title}
+            for s in self._sermons(obj)
         ]
-        for s in self._sermons(obj)[: self.FAN - len(covers)]:
-            covers.append(
-                {
-                    "kind": "sermon",
-                    "slug": s.slug,
-                    "cover_url": "",
-                    "cover_color": "",
-                    "title": s.title,
-                }
-            )
-        return covers
+        # Four is what `.cover-fan` lays out before it overflows its band.
+        return tiles[:4]
 
     def _books(self, obj):
         """Member books present in the requested language, in the topic's curated

@@ -1,10 +1,9 @@
 <script lang="ts">
-	import { coverGradient, tintable } from '$lib/coverArt';
+	import { coverGradient } from '$lib/coverArt';
 	import type { Snippet } from 'svelte';
 	import { isSermonTile, type TopicCover } from '$lib/library';
 	import Emblem from '$lib/components/Emblem.svelte';
-	import { emblemForSermon } from '$lib/emblemNames';
-	import { EMBLEM_HUES } from '$lib/emblemHues';
+	import { sermonArt } from '$lib/sermonArt';
 	import type { EmblemName } from '$lib/emblems';
 
 	/**
@@ -67,14 +66,10 @@
 					{#if isSermonTile(cover)}
 						<!-- Round, not a 3:4 tile: the shape is what says "sermon, not a
 						     volume" at a glance, which is the whole reason sermons were
-						     never given covers. Sized to the fan's height so the row still
-						     reads as one object. -->
-						{@const emblem = emblemForSermon(cover.slug ?? '')}
-						<span
-							class="sermon-tile emblem-chip"
-							style="--chip-hue: {tintable(EMBLEM_HUES[emblem])}"
-						>
-							<Emblem name={emblem} />
+						     never given covers. -->
+						{@const art = sermonArt(cover.slug)}
+						<span class="sermon-tile emblem-chip" style="--chip-hue: {art.hue}">
+							<Emblem name={art.emblem} />
 						</span>
 					{:else}
 						<div class="cover">

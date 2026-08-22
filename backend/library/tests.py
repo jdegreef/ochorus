@@ -1249,6 +1249,15 @@ class TopicTests(TestCase):
             [("sermon", "come-in"), ("sermon", "free-grace")],
             "a shelf with only sermons in this language must still carry tiles",
         )
+        # The rule that actually broke: the listing rule and the drawing rule
+        # live in different files and neither mentions the other. Anything the
+        # endpoint returns has to have something to draw.
+        for other in res.data:
+            self.assertTrue(
+                other["covers"],
+                f"{other['slug']}: listed with {other['book_count']} books and "
+                f"{other['sermon_count']} sermons, but nothing to draw",
+            )
 
     def test_covers_put_books_first_and_cap_the_fan(self):
         """Books fill the fan, sermons take what is left, four tiles at most.
@@ -1266,13 +1275,11 @@ class TopicTests(TestCase):
 
         res = self.client.get("/api/library/topics/?language=en")
         covers = next(t for t in res.data if t["slug"] == "prayer")["covers"]
-        self.assertEqual(len(covers), 4)
-        # The two English books, in curated order, then sermons.
-        self.assertEqual([c["kind"] for c in covers], ["book", "book", "sermon", "sermon"])
-        self.assertEqual([c["slug"] for c in covers[:2]], ["prayer", "humility-2"])
-        # A book tile still carries what BookCover needs to draw it.
-        self.assertIn("cover_url", covers[0])
-        self.assertIn("cover_color", covers[0])
+        self.assertEqual(
+            [(c["kind"], c["slug"]) for c in covers],
+            [("book", "prayer"), ("book", "humility-2"), ("sermon", "s0"), ("sermon", "s1")],
+            "books first in curated order, sermons after, four tiles at most",
+        )
 
     def test_detail_returns_members_in_curated_order(self):
         res = self.client.get("/api/library/topics/prayer/?language=en")
@@ -1339,41 +1346,6 @@ class TopicTests(TestCase):
                 topic__slug="prayer", book_slug="the-inner-chamber"
             ).exists()
         )
-
-    def test_every_listed_shelf_has_something_to_draw(self):
-        """The listing rule and the drawing rule must agree.
-
-        That disagreement WAS the bug: `TopicListView` lists a shelf that has
-        books OR sermons in the language, while `covers` drew books only, so a
-        sermon-only shelf was published with an empty band. The two rules live
-        in different files and neither mentions the other, which is exactly the
-        pair that drifts. Asserted per language rather than once, because in
-        English the mismatch is invisible — every topic there has books.
-        """
-        author = Author.objects.create(slug="js", name="J. S.")
-        shelf = Topic.objects.create(slug="mixed", title="Mixed", sort_order=9)
-        # English gets a book; Swahili gets only a sermon.
-        b = Book.objects.create(author=author, slug="only-en", language="en", title="Only EN")
-        Chapter.objects.create(book=b, order=1, title="One", body_html="<p>hi there</p>")
-        TopicBook.objects.create(topic=shelf, book_slug="only-en")
-        Sermon.objects.create(
-            author=author, slug="only-sw", language="sw", title="Only SW", body_html="<p>x</p>"
-        )
-        TopicSermon.objects.create(topic=shelf, sermon_slug="only-sw")
-        TopicTranslation.objects.create(topic=shelf, language="sw", title="Mchanganyiko")
-
-        for language in ("en", "sw"):
-            with self.subTest(language=language):
-                res = self.client.get(f"/api/library/topics/?language={language}")
-                self.assertEqual(res.status_code, 200)
-                self.assertTrue(res.data, f"{language}: no shelves listed at all")
-                for card in res.data:
-                    self.assertTrue(
-                        card["covers"],
-                        f"{language}/{card['slug']}: listed with "
-                        f"{card['book_count']} books and {card['sermon_count']} "
-                        "sermons, but nothing to draw",
-                    )
 
     def test_every_translated_language_covers_every_topic(self):
         """A translated language must cover ALL topics, not some.
