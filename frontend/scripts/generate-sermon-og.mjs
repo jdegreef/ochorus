@@ -13,10 +13,32 @@
  * fixture gate only checks that a card exists, so that would have sailed past
  * green CI. Rendering is deterministic (same fixtures and fonts in, same PNG
  * out, verified across two full runs), so comparing bytes gets the clean diff
- * without the staleness: adding one sermon still touches exactly one file.
+ * without the staleness: adding one sermon redraws one PNG. It does also
+ * rewrite the shared manifest below, so two branches adding a sermon at once
+ * touch one file in common — sorted keys keep that to a line each.
  *
- * It is still only as current as its last run. Edit a sermon's title, passage
- * or emblem and you must run this; nothing fails if you don't.
+ * It also writes `og-manifest.json`: digests of the INPUTS each card was drawn
+ * from, so a gate can tell a stale card from a fresh one. Existence was never
+ * the hard part — the book twins sat a design generation out of date for months
+ * precisely because their gate could only see that a file was there, and a share
+ * card is only ever seen by someone who is not us.
+ *
+ * THREE digests, split by who can recompute them.
+ *
+ *   - `content` — the strings off the fixture: title, passage, preacher, year.
+ *     Recomputed by `SermonShareCardTests` in Python.
+ *   - `art` — what the catalogue says this slug wears: the emblem, its drawing,
+ *     and the hue derived from them. Recomputed by `sermonCards.test.ts`, the
+ *     side that can read a TypeScript catalogue. The hue is in because the rule
+ *     that produces it (`MIN_ACCENT_SATURATION`) lives in the catalogue: moving
+ *     it repaints the passage line on cards whose art never changed.
+ *   - `composition` — the bytes of this script and `og-card.mjs`. The book
+ *     twins' gate stops short of this and says so; theirs is the very failure
+ *     it declines to catch. Editing `GOLD` while working on `og:pages` restyles
+ *     all 29 sermon cards, and without this every gate stays green.
+ *
+ * The line is INPUTS, not output: nothing here re-derives the PNG, so a change
+ * in satori or resvg is still invisible. A floor, not a proof.
  *
  * Needs a Node that strips TypeScript types unprompted (>= 22.18), because it
  * reads the emblem catalogue straight out of `src/lib/emblems.ts`.
@@ -49,6 +71,7 @@
  * those fixtures has no card here.
  */
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
@@ -128,6 +151,33 @@ function titleSize(title) {
 /** A satori div. Most of this card is layout, so `box` rather than `text`. */
 const box = (style, children) => ({ type: 'div', props: { style, children } });
 
+const digest = (s) => createHash('sha256').update(s).digest('hex');
+
+/**
+ * The drawing code, as bytes. Any edit to either file — including a comment —
+ * stales the manifest, which costs one idempotent re-run and buys the one class
+ * of staleness that actually bit this repo.
+ */
+const compositionDigest = () =>
+	digest(
+		[resolve(HERE, 'generate-sermon-og.mjs'), resolve(HERE, 'og-card.mjs')]
+			.map((f) => readFileSync(f, 'utf8'))
+			.join('\0')
+	);
+
+/** The strings off the fixture. Python recomputes this one. */
+const contentDigest = (s) =>
+	digest([s.title, s.scripture, s.author, s.year].join('\0'));
+
+/**
+ * What the catalogue says this slug wears. Vitest recomputes this one.
+ *
+ * `emblemHue` and not the final accent: the hue is the catalogue's answer, so a
+ * change to its saturation floor belongs here, while `liftToContrast` is this
+ * card's treatment and belongs in `composition` with the rest of the drawing.
+ */
+const artDigest = (emblem) => digest([emblem, EMBLEM_ART[emblem], emblemHue(emblem)].join('\0'));
+
 function card({ title, scripture, author, year, emblem, accent }) {
 	const byline = year ? `${author} · ${year}` : author;
 	return {
@@ -198,6 +248,7 @@ function card({ title, scripture, author, year, emblem, accent }) {
 // ── Run ─────────────────────────────────────────────────────────────────────
 
 const rows = sermons();
+const manifest = {};
 let wrote = 0;
 for (const sermon of rows) {
 	const out = resolve(OUT_DIR, `${sermon.slug}.png`);
@@ -205,12 +256,34 @@ for (const sermon of rows) {
 	// Emblem hues are chosen for the app's light surfaces; on this near-black
 	// ground the darker ones need brightening before they carry type at all.
 	const accent = liftToContrast(emblemHue(emblem));
+	manifest[sermon.slug] = { content: contentDigest(sermon), art: artDigest(emblem) };
 	const png = await drawCard(card({ ...sermon, emblem, accent }));
 	if (existsSync(out) && readFileSync(out).equals(png)) continue;
 	writeFileSync(out, png);
 	wrote += 1;
 	console.log(`  ✓ og/sermons/${sermon.slug}.png  (${emblem}, ${accent})`);
 }
+// Written every run, not only when a card changes: the digests must describe
+// the cards that are on disk now, or the gate would pass on a manifest that
+// agrees with nothing.
+writeFileSync(
+	resolve(OUT_DIR, 'og-manifest.json'),
+	JSON.stringify(
+		{
+			_comment:
+				'GENERATED by npm run og:sermons. slug -> digests of what each card was ' +
+				'drawn from, so the gates can tell a stale card from a fresh one.',
+			composition: compositionDigest(),
+			cards: Object.fromEntries(
+				Object.entries(manifest).sort(([a], [b]) => a.localeCompare(b))
+			)
+		},
+		null,
+		'\t'
+	) + '\n',
+	'utf8'
+);
+
 console.log(
 	`${rows.length} sermon cards drawn · ${wrote} written to ${OUT_DIR}` +
 		(wrote ? '' : ' · all already current')
