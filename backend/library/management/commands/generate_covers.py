@@ -1,9 +1,11 @@
-"""Generate house-style SVG covers for books that have no artwork.
+"""Generate house-style SVG plate grounds for books that have no artwork.
 
 Public-domain titles sourced from CCEL/Gutenberg arrive with no cover (unlike
-the ochorus.com PDFs, which have designed ones). This makes a typographic cover
-from the book's own title, author and accent colour — see library/covers.py for
-the design and why it looks the way it does.
+the ochorus.com PDFs, which have designed ones). This makes a plate from the
+book's own accent colour and its topic's emblem — a GROUND, with no words on
+it: `BookCover.svelte` sets the edition's title over it in the browser, in the
+face its author's century is set in. See library/covers.py for why the type
+lives there and not here.
 
     python manage.py generate_covers                   # every row missing a cover
     python manage.py generate_covers all-of-grace      # one work, all languages
@@ -13,13 +15,14 @@ the design and why it looks the way it does.
 
 PER-LANGUAGE OUTPUT
 English writes ``/covers/<slug>.svg``; every other language writes
-``/covers/<lang>/<slug>.svg``. Keeping English at the old path means the 31
+``/covers/<lang>/<slug>.svg``. Keeping English at the old path means the
 existing generated covers keep their URLs and nothing 404s mid-deploy.
 
-This is the fix for a real bug: the previous version looped over every Book row
-(one per language) and wrote them ALL to ``<slug>.svg``, so the last row
-processed won and every locale showed the same language. Regenerating now gives
-each row a cover in its own language.
+That layout was the fix for a real bug — one file per slug while the loop ran
+over every language row meant the last row won and every locale showed the same
+language. It costs nothing to keep and is no longer load-bearing: a ground has
+no words, so these files are now identical across a work's languages. Pointing
+every edition at one of them is a fixture change and its own PR.
 
 NEVER OVERWRITES ARTWORK, of either kind:
 
@@ -42,7 +45,7 @@ from __future__ import annotations
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
-from library.covers import build_svg, cover_path, emblem_for_book
+from library.covers import build_ground, cover_path, emblem_for_book
 from library.curated_art import CURATED
 from library.models import Book
 
@@ -101,14 +104,7 @@ class Command(BaseCommand):
                 continue
 
             url, rel = cover_path(book.slug, book.language)
-            svg = build_svg(
-                title=book.title,
-                subtitle=book.subtitle,
-                author=book.author.name,
-                color=book.cover_color,
-                language=book.language,
-                emblem=emblem_for_book(book.slug),
-            )
+            svg = build_ground(book.cover_color, emblem=emblem_for_book(book.slug))
             if not opts["dry_run"]:
                 dest = COVERS_DIR / rel
                 dest.parent.mkdir(parents=True, exist_ok=True)

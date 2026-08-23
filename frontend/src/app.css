@@ -5,6 +5,22 @@
 @import '@fontsource/opendyslexic/400.css';
 @import '@fontsource/opendyslexic/700.css';
 
+/* The book-cover faces (see $lib/coverStyles.ts). Upright weights only: a
+   cover's title takes the style, its byline and subtitle stay in the house
+   serif, so no italic of these is ever asked for.
+
+   Declaring an @font-face costs nothing until a glyph needs it — the browser
+   fetches a file only when something on the page is actually set in it — so
+   these sit here with the house faces rather than behind a route-level import
+   that would have to know which authors a page happens to show. Each package
+   ships one @font-face per subset, unicode-range-gated, so an English shelf
+   pulls the latin file and nothing else. */
+@import '@fontsource-variable/cinzel/wght.css';
+@import '@fontsource-variable/eb-garamond/wght.css';
+@import '@fontsource-variable/playfair-display/wght.css';
+@import '@fontsource/im-fell-english/400.css';
+@import '@fontsource/libre-baskerville/400.css';
+
 /* Map semantic theme tokens onto Tailwind color utilities so `bg-surface
    text-text border-border` respond to the runtime [data-theme] switch. */
 @theme inline {
@@ -62,6 +78,25 @@
 	--fs-h2: 1.563rem;
 	--fs-h1: 1.953rem;
 	--fs-display: clamp(2rem, 5vw, 2.75rem);
+}
+
+/* The cover faces, named once — beside the @import that loads them, so adding
+   or dropping a face is one file rather than a hunt. `coverStyles.ts` names
+   these tokens and never a family, the same way a component names --accent and
+   never a hex.
+
+   NOT part of the type SCALE above and not interchangeable with --font-display:
+   this is the type a book's cover is set in — artwork, chosen by who wrote the
+   book — where --font-display is the app's own voice. Every stack ends at it,
+   so a face that fails to load, or a script none of them covers, lands back in
+   the house serif. */
+:root {
+	--cover-face-inscriptional: 'Cinzel Variable', var(--font-display);
+	--cover-face-devotional: 'EB Garamond Variable', var(--font-display);
+	--cover-face-press: 'IM Fell English', var(--font-display);
+	--cover-face-enlightenment: 'Libre Baskerville', var(--font-display);
+	--cover-face-revival: 'Playfair Display Variable', var(--font-display);
+	--cover-face-house: var(--font-display);
 }
 
 /* Runtime theme variables. Default = "lamplight" (dark); [data-theme='light']

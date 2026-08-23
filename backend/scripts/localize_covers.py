@@ -46,19 +46,23 @@ gets the same treatment:
   language once, which meant six copies of one painting for ``waiting-on-god``
   and a fresh download on every locale switch.)
 
-* **Generated plate** (everything else) → ``build_svg`` from the edition's own
-  title and ``cover_color``, i.e. what ``generate_covers`` writes, but recorded
-  in the fixture where the deploy will read it.
+* **Generated plate** (everything else) → ``build_ground`` from the edition's
+  ``cover_color``, i.e. what ``generate_covers`` writes, but recorded in the
+  fixture where the deploy will read it. A ground has no words in it, so what
+  this draws no longer varies by language at all — the per-language FILE is
+  what the fixture rows still point at, and consolidating that is its own PR
+  (see ``library/covers.py``).
 
 FILLS GAPS; ``--force`` REDRAWS
 A cover file that already exists is left alone (its fixture row is still
-corrected), because the drawing is not always the generator's: ``uk/baptism-
-with-the-holy-spirit.svg`` carries a hand-balanced line break — "Хрещення /
-Святим Духом" where the greedy wrap gives "Хрещення Святим / Духом" — and a
-reconciler that rewrote every file would silently revert that kind of work. The
-summary counts the divergent ones so they stay visible, and ``--force`` redraws
-them, the same split ``generate_covers`` draws between filling gaps and
-redrawing.
+corrected), because the drawing has not always been the generator's: a
+hand-balanced line break used to be a thing a translator could put in one of
+these files, and a reconciler that rewrote every file would silently revert
+that kind of work. There are no line breaks left to balance — the words are
+drawn by the browser now — but a hand-adjusted GROUND is the same kind of
+work, so the split stands. The summary counts the divergent ones so they stay
+visible, and ``--force`` redraws them, the same split ``generate_covers`` draws
+between filling gaps and redrawing.
 
 WHY IT EDITS THE FIXTURE
 ``seed_books`` lists ``cover_url`` and ``cover_color`` in UPDATE_FIELDS, so both
@@ -89,15 +93,11 @@ BACKEND = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BACKEND))
 
 # Both modules are deliberately Django-free, so this runs as a plain script.
-from library.content_fixtures import (  # noqa: E402
-    authors_by_slug,
-    book_editions,
-    persist_fields,
-)
+from library.content_fixtures import book_editions, persist_fields  # noqa: E402
 from library.covers import (  # noqa: E402
     RASTER_SUFFIXES,
     art_url,
-    build_svg,
+    build_ground,
     cover_path,
     emblem_for_book,
     palette_from_artwork,
@@ -150,10 +150,6 @@ def ensure_og_twin(slug: str, artwork: Path) -> bool:
     return True
 
 
-def author_names() -> dict[str, str]:
-    return {slug: fields.get("name", "") for slug, fields in authors_by_slug().items()}
-
-
 def patch(path: Path, cover_url: str, cover_color: str | None = None) -> None:
     """Point one edition's fixture row at its own cover, in one write.
 
@@ -176,7 +172,6 @@ def main() -> int:
     )
     args = ap.parse_args()
 
-    names = author_names()
     english: dict[str, dict] = {}
     editions: list[tuple[Path, str, str, dict]] = []
     # A slug filter, applied after the read. `book_editions()` parses every work
@@ -209,9 +204,7 @@ def main() -> int:
             # fixture gate permits it, so the drawing tool must too.
             unchanged += 1
             continue
-        author = names.get(fields["author"][0], fields["author"][0])
         title = fields["title"]
-        subtitle = fields.get("subtitle") or ""
         color: str | None = None
 
         if slug in CURATED:
@@ -249,7 +242,6 @@ def main() -> int:
                 if not args.dry_run and ensure_og_twin(slug, art):
                     twins.append(slug)
             color = palettes[slug]
-            svg = build_svg(title, subtitle, author, color, language, emblem=emblem_for_book(slug))
             tier = "artwork"
         else:
             # The house plate. A freshly translated row often carries no colour
@@ -257,13 +249,14 @@ def main() -> int:
             # one edition of a work in a colour its siblings don't share — so
             # the work's English colour is inherited, and recorded.
             color = fields.get("cover_color") or source.get("cover_color") or ""
-            svg = build_svg(title, subtitle, author, color, language, emblem=emblem_for_book(slug))
             tier = "generated"
+
+        # One call for both tiers: they differ in where `color` comes from, not
+        # in what is drawn from it.
+        svg = build_ground(color, emblem=emblem_for_book(slug))
 
         url, rel = cover_path(slug, language)
         dest = COVERS / rel
-        # The author's name is the ENGLISH one by design: these are names, not
-        # prose, and the shipped author rows carry a single canonical spelling.
         on_disk = dest.read_text(encoding="utf-8") if dest.exists() else None
         hand_drawn = on_disk is not None and on_disk != svg  # exists, but not ours
         needs_draw = on_disk is None or (hand_drawn and args.force)

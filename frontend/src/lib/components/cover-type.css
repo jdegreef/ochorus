@@ -1,0 +1,315 @@
+/**
+ * The cover's type — the one drawing of it, for everything that draws one.
+ *
+ * WHY THIS IS A FILE AND NOT A SCOPED `<style>`
+ * Two things render a book cover: `BookCover.svelte` in the app, and
+ * `scripts/generate-cover-og.mjs`, which photographs a cover into the og:image
+ * twin a shared link shows. The script cannot mount a Svelte component, so for
+ * as long as these rules lived in the component the script kept a hand-copy of
+ * them — and the copy drifted immediately: the twins shipped set in Times,
+ * because the copy interpolated `var(--cover-face-*)` without ever declaring
+ * the tokens, and a share card is only ever seen by someone who is not us.
+ *
+ * So the rules live here, the component imports this file and the script
+ * inlines it. One drawing, two renderers, nothing to keep in step. It is global
+ * rather than scoped for the same reason `app.css` carries `.book-card` and
+ * `.shelf-card`: a component class the design system owns, namespaced under
+ * `.cover-plate` / `.cover-type` so it cannot collide.
+ *
+ * WHAT IS NOT HERE: the ground. The painting, or the plate's gradient, vignette
+ * and topic emblem, are a committed file (`covers.py`), and the CSS plate below
+ * is only the case where that file is missing.
+ *
+ * EVERY LENGTH IS A CONTAINER UNIT, so one rule serves a cover at any width a
+ * card gives it — 48px in a list row, 64px in an author's rail, 128px beside a
+ * book's details, 300px on its own page. `.cover-plate` is the query container;
+ * every `cq` below is therefore on a DESCENDANT of it, because an element
+ * cannot query itself (cq units in `.cover-plate`'s own padding silently fall
+ * back to the viewport, which at a 300px plate on a 1240px window meant 111px
+ * of padding and a cover with nothing on it).
+ *
+ * The `cq` sizes are deliberately outside the `--fs-*` ramp that
+ * `typeScaleGuard` polices: this is artwork sized off its own container, not
+ * interface text, and pinning it to the UI scale would stop it scaling.
+ *
+ * hex-ok-file: the ink is white ON the book's own `cover_color` — data, not a
+ * theme surface (STYLE_GUIDE §1), so it must not follow the reader's theme.
+ * White is safe because a plate colour is floored for contrast where it is
+ * minted (`covers.ink_safe`).
+ */
+
+.cover-plate {
+	container-type: inline-size;
+	height: 100%;
+	/* Two layers, as the committed file has: the book's gradient, and over it
+	   the same vignette covers.py paints — radial, transparent to 55% and black
+	   0.34 at the edge, centred at (50%, 42%). Not decoration: the generated
+	   file's byline measures 4.87:1 with it and 4.41:1 without, against a 4.5
+	   bar. The vignette carries most of the margin `ink_safe` floors the colour
+	   to earn. */
+	background:
+		radial-gradient(78% 78% at 50% 42%, transparent 55%, rgb(0 0 0 / 0.34) 100%),
+		var(--plate);
+}
+
+/* Over a committed ground, this layer paints no colour of its own — the file
+   underneath is the artwork. */
+.cover-plate.over-file {
+	position: absolute;
+	inset: 0;
+	background: none;
+}
+
+/* Except over a PAINTING, which gets the scrim the composited SVG used to
+   carry: a global darkener so white type holds anywhere, and heavier bands top
+   and bottom, under the byline and the mark, which is where art is most likely
+   to be pale. A plate needs none — its colour is a floored flat tone, not a
+   photograph. */
+.cover-plate.over-art {
+	background:
+		linear-gradient(
+			180deg,
+			rgb(0 0 0 / 0.62) 0%,
+			rgb(0 0 0 / 0.34) 30%,
+			rgb(0 0 0 / 0.4) 70%,
+			rgb(0 0 0 / 0.7) 100%
+		),
+		rgb(26 20 16 / 0.26);
+}
+
+.cover-type {
+	display: flex;
+	flex-direction: column;
+	/* Deliberately NOT `align-items: center`: that sizes each line to its own
+	   max-content width, so a long title overflows the plate instead of
+	   wrapping inside it. The children stretch and centre their text. */
+	height: 100%;
+	/* 112/600 of the plate's width down, which is where covers.py's y=112
+	   baseline falls. Not a cosmetic match: `ink_safe` floors a plate colour for
+	   the contrast AT that height, so a byline sitting higher up the gradient
+	   than the generator's would sit on a lighter tone than the floor was
+	   computed against. */
+	padding: 17cqw 7cqw 9cqw;
+	color: #fff;
+	text-align: center;
+}
+.cover-plate.over-file .cover-type {
+	position: absolute;
+	inset: 0;
+}
+
+/* The hairline frame. */
+.cover-type::before {
+	content: '';
+	position: absolute;
+	inset: 4.3cqw;
+	border: 1px solid rgb(255 255 255 / 0.22);
+}
+.cover-plate.over-art .cover-type::before {
+	border-color: rgb(255 255 255 / 0.3);
+}
+
+/* NOT `.eyebrow`: that class exists in app.css, is unlayered and would match
+   this element too, so two rules would own it and half its type would arrive
+   from somewhere the plate never mentions. The tracking here is the cover's own
+   (0.28em against the chrome's 0.08em).
+   In the HOUSE serif on every cover, whatever the title is set in: the author's
+   face is the title's, and a byline that changed with it would make the shelf's
+   one constant line the loudest thing on the grid. Clipped rather than wrapped
+   — a long byline has nowhere to wrap to at this tracking, and clipping beats
+   pushing the title down the plate. The clipping is HERE rather than Tailwind's
+   `truncate` in the markup: the og script inlines this file and knows nothing of
+   Tailwind, so a utility class would leave the two renderers disagreeing. */
+.cover-type .byline {
+	font-family: var(--font-display);
+	font-size: 3.9cqw;
+	letter-spacing: 0.28em;
+	text-transform: uppercase;
+	opacity: 0.86;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* Title, rule and subtitle move as one block so the auto margins centre THEM
+   between the byline and the mark — the optical centre covers.py puts the title
+   at, as a layout rule rather than a coordinate. Left as three siblings, the
+   leftover space split three ways and the title rode up the plate. */
+.cover-type .middle {
+	margin: auto 0;
+}
+
+/* The one element the author's house style owns. The recipes are the
+   `.style-*` blocks at the foot of this file; this is everything they share. */
+.cover-type .title {
+	font-family: var(--font-display);
+	font-weight: 600;
+	font-size: 9.5cqw;
+	line-height: 1.15;
+	text-wrap: balance;
+}
+
+/* The rule under the title, in three treatments — the style's ornament. Drawn
+   as backgrounds rather than borders so a variant can put two lines, or a gap,
+   where the plain one puts one line, without changing the box. */
+.cover-type .rule {
+	width: 12.7cqw;
+	/* The generated cover drops the rule 52 units below the title's last
+	   baseline on an 800-unit plate; this is that gap, proportionally. */
+	margin: 5cqw auto 0;
+	height: 1px;
+	background: rgb(255 255 255 / 0.55);
+}
+/* The ornaments key off the STYLE, not off a class of their own: the rule is a
+   sibling of the title rather than a property of it, and routing "which
+   ornament" back through the markup would put half of one recipe in TypeScript.
+   Deliberately outside the container gate below — a fleuron costs no bytes and
+   is drawn to read at 40px, so a thumbnail keeps its ornament even though it
+   does not get its face. */
+
+/* A double rule, the way a 17th-century title page breaks a page: the second
+   line lighter, so it reads as an echo rather than as a box. */
+.cover-type.style-press .rule {
+	width: 16cqw;
+	height: 0.9cqw;
+	background:
+		linear-gradient(rgb(255 255 255 / 0.55) 0 0) top / 100% 1px no-repeat,
+		linear-gradient(rgb(255 255 255 / 0.4) 0 0) bottom / 100% 1px no-repeat;
+}
+/* A lozenge between two short rules — the printer's fleuron, reduced to the one
+   shape that still reads at 40px. */
+.cover-type.style-devotional .rule {
+	position: relative;
+	width: 18cqw;
+	height: 1.6cqw;
+	background:
+		linear-gradient(rgb(255 255 255 / 0.55) 0 0) left center / 6cqw 1px no-repeat,
+		linear-gradient(rgb(255 255 255 / 0.55) 0 0) right center / 6cqw 1px no-repeat;
+}
+.cover-type.style-devotional .rule::before {
+	content: '';
+	position: absolute;
+	inset: 50% auto auto 50%;
+	width: 1.1cqw;
+	height: 1.1cqw;
+	translate: -50% -50%;
+	rotate: 45deg;
+	border: 1px solid rgb(255 255 255 / 0.62);
+}
+
+/* Two lines at most — the generator's own subtitle budget; past that the plate
+   is a thumbnail and the words are unreadable anyway. */
+.cover-type .subtitle {
+	margin-top: 3cqw;
+	font-family: var(--font-display);
+	font-style: italic;
+	font-size: 3.7cqw;
+	opacity: 0.85;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	overflow: hidden;
+}
+
+/* The emblem's room, not the emblem: 120 units of drawing and a 24-unit gap on
+   a 600-wide plate, which is where `covers.py` places it. Reserved rather than
+   drawn, because which emblem a book wears is decided from its TOPICS, and
+   `emblemNames.ts` was split out of `emblems.ts` precisely so a shelf need not
+   pull all 51 drawings onto the critical path to answer that. So the file keeps
+   the drawing and this keeps the type off it; the auto margins above centre the
+   title in what is left. `coverBand.test.ts` checks these against covers.py. */
+.cover-type .emblem-band {
+	height: 20cqw;
+	margin-bottom: 4cqw;
+}
+
+/* The mark paints with `currentColor`, which the plate has already set to
+   white — one colour decision serves the whole plate. */
+.cover-type .brandmark {
+	margin-inline: auto;
+	opacity: 0.82;
+}
+
+/* ── The house styles ──────────────────────────────────────────────────────
+ * One block per recipe in `$lib/coverStyles.ts`, which decides WHICH of these
+ * an author wears and nothing about how it looks. The numbers live here, in the
+ * only language that renders them, rather than being carried through
+ * TypeScript into an inline `style` attribute — six classes against 60-odd
+ * unique attribute strings on a shelf, and one place to change a face.
+ *
+ * `--cover-face-*` are declared in `app.css` beside the `@import` that fetches
+ * each file. Every one of them ends at `--font-display`, so a face that fails
+ * to load — or a script none of these five covers, like Arabic or Devanagari —
+ * lands back in the house serif, per glyph.
+ *
+ * WEIGHTS ARE THE ONES THE FACE ACTUALLY HAS. Two of the five ship a single
+ * static weight, and asking those for a bolder one gets a synthesised bold —
+ * smeared stems, filled counters — which is the most visible way to make a good
+ * face look cheap. `coverStyles.test.ts` fails if one is asked for a weight it
+ * has not got.
+ *
+ * SIZES ARE EVENED OUT BY EYE. Faces of one nominal size are not of one
+ * APPARENT size: Cinzel is all-caps and runs to cap height everywhere, EB
+ * Garamond has a small x-height and reads a step down, Libre Baskerville a
+ * large one and reads a step up. Set flat, a shelf's titles visibly disagree
+ * about how big a title is. Checked at 128px — the size beside a book's
+ * details, and the largest a cover is seen at outside its own page.
+ *
+ * ONLY ABOVE 140px. A cover is drawn at 48px in a list row and 64px in an
+ * author's rail, where the title sets at ~4.5px and no face is distinguishable
+ * from any other. A font file is fetched only when a glyph actually renders in
+ * that family, so gating the recipes on the container means a thumbnail-only
+ * page — `/biographies` renders nothing else — downloads none of the five
+ * (~184 KB), and the shelf pays only for the covers it draws large. */
+@container (min-width: 140px) {
+	/* Roman inscriptional capitals — the lettering of the world Augustine wrote
+	   in. Caps only, so tracked, and set a step down: at 1.0 the cap height
+	   alone overran the plate that mixed-case titles fit inside. */
+	.cover-type.style-inscriptional .title {
+		font-family: var(--cover-face-inscriptional);
+		font-weight: 600;
+		font-size: 7.6cqw;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+	/* A humanist old-style — the hand of the devotional manual, from à Kempis'
+	   monastery to Murray's study. Quiet, and the largest of the five, because
+	   Garamond's x-height is the smallest. */
+	.cover-type.style-devotional .title {
+		font-family: var(--cover-face-devotional);
+		font-weight: 500;
+		font-size: 10.45cqw;
+		letter-spacing: 0.005em;
+	}
+	/* The Fell types, cut in the 1670s and used by the Oxford press — the metal
+	   Bunyan and Baxter were actually printed in. Deliberately irregular; that
+	   is the face, not a rendering fault. */
+	.cover-type.style-press .title {
+		font-family: var(--cover-face-press);
+		font-weight: 400;
+	}
+	/* Baskerville, cut in the 1750s — the transitional face of the Wesleys'
+	   century, and of the sermons printed in it. */
+	.cover-type.style-enlightenment .title {
+		font-family: var(--cover-face-enlightenment);
+		font-weight: 400;
+		font-size: 8.36cqw;
+		letter-spacing: 0.01em;
+	}
+	/* A high-contrast Victorian display face for the revival and missionary
+	   century — the register of a Spurgeon title page. Weight 600 rather than
+	   700: a didone's hairlines drop out first. */
+	.cover-type.style-revival .title {
+		font-family: var(--cover-face-revival);
+		font-weight: 600;
+	}
+	/* The house voice, for writers of our own century and for Ochorus' own
+	   titles — Fraunces, what the rest of the site is set in, so a contemporary
+	   book looks like the app that published it. Declared for completeness: it
+	   is what `.title` above already says. */
+	.cover-type.style-house .title {
+		font-family: var(--cover-face-house);
+		font-weight: 600;
+	}
+}

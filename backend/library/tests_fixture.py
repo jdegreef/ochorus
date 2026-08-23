@@ -713,6 +713,33 @@ class CoverAssetTests(SimpleTestCase):
             "which floors the plate through covers.ink_safe",
         )
 
+    def test_committed_plates_carry_no_words(self):
+        """A plate on disk is a GROUND: colour, vignette, emblem, no type.
+
+        The words moved to `BookCover.svelte` so a cover could be set in a real
+        webfont — an SVG served through `<img>` renders in a document that
+        cannot reach the page's fonts, so every generated cover in the library
+        used to come out in Georgia. A file that still has a `<text>` node in it
+        is one drawn before that (or by hand) and would show a second title
+        under the one the browser sets — in English, over a translated card, on
+        seven locales out of eight.
+
+        Reads the artwork rather than the generator, like the AA gate above it:
+        `build_ground` cannot emit type any more, so what this can still catch
+        is a STALE committed file. Run `generate_covers --force` and
+        `scripts/localize_covers.py --force` to redraw them.
+        """
+        wordy = sorted(
+            str(svg.relative_to(STATIC_DIR))
+            for svg in (STATIC_DIR / "covers").rglob("*.svg")
+            if "<text" in svg.read_text(encoding="utf-8")
+        )
+        self.assertEqual(
+            wordy, [],
+            "committed plate with type baked into it — redraw it with "
+            "`generate_covers --force` / `scripts/localize_covers.py --force`",
+        )
+
     def test_raster_covers_ship_their_responsive_variants(self):
         """Every raster cover must have the webp variants `srcset` promises.
 
@@ -775,9 +802,20 @@ class CoverAssetTests(SimpleTestCase):
         because a share card is only ever seen by someone who is not us.
 
         `npm run og:covers` records what each twin was drawn from; this recomputes
-        those digests. Redraw a plate or retitle a curated book and the build fails
-        until the twins are re-run. It cannot see a change to the SCRIPT's own
+        those digests. Redraw a plate or retitle a book and the build fails until
+        the twins are re-run. It cannot see a change to the SCRIPT's own
         composition — only re-running that can — so this is a floor, not a proof.
+
+        HALF THE SUBJECT, ON PURPOSE. A card is made from its ground, its
+        strings, and the house style its author's century is set in. The first
+        two are here; the style is decided by a TypeScript table
+        (`coverStyles.ts`) and applied by a CSS class, and parsing either from
+        Python to fold into this digest would be a worse copy than the one it
+        replaced — it is not that this test cannot reach `frontend/` (it reads
+        `STATIC_DIR` throughout), it is that it cannot evaluate that table. So
+        the manifest records the style beside the digest and
+        `coverOgManifest.test.ts` checks it from the side that owns it. Each
+        half is checked where it can actually be derived.
         """
         manifest_file = STATIC_DIR / "covers" / "og-manifest.json"
         self.assertTrue(
@@ -790,12 +828,21 @@ class CoverAssetTests(SimpleTestCase):
         english = {
             f["slug"]: f for f in self.books if f.get("language") == "en"
         }
+        # Hoisted: `authors_by_slug` re-reads and re-parses authors.json on every
+        # call, and this loop runs over every English row.
+        names = authors_by_slug()
         stale, unrecorded = [], []
         for slug, fields in sorted(english.items()):
             cover = _cover(fields)
             art = cover.startswith("/covers/art/")
-            if not (art or cover.endswith(".svg")):
-                continue  # a designed raster; its twin is ensure_og_twin's
+            # Under `/covers/` on BOTH arms, which is what `needTwins` in the
+            # generator tests (`isArtCover` / `isPlateCover`). Without the prefix
+            # this demanded a twin for a `.svg` hosted anywhere — an unpublished
+            # row can carry one, since the self-hosting gate only checks
+            # published books — and the generator, which reads the ground off
+            # disk, can never produce it. That is a red build no re-run fixes.
+            if not cover.startswith("/covers/") or not (art or cover.endswith(".svg")):
+                continue  # a designed raster, or not ours; twins are ensure_og_twin's
             if slug not in recorded:
                 unrecorded.append(slug)
                 continue
@@ -804,16 +851,14 @@ class CoverAssetTests(SimpleTestCase):
             )
             if not source.is_file():
                 continue  # the twin gate above owns "the file isn't there"
-            blob = source.read_bytes()
-            if art:
-                # The type is drawn over the painting at render time, so the
-                # strings are part of what the card was made from.
-                names = authors_by_slug()
-                author = names.get(fields["author"][0], {}).get("name", fields["author"][0])
-                blob += "\0{}\0{}\0{}".format(
-                    fields["title"], fields.get("subtitle") or "", author
-                ).encode()
-            if hashlib.sha256(blob).hexdigest() != recorded[slug]:
+            # The type is drawn over the ground at render time — for BOTH tiers
+            # now, since a plate carries no words either — so the strings are
+            # part of what the card was made from.
+            author = names.get(fields["author"][0], {}).get("name", fields["author"][0])
+            blob = source.read_bytes() + "\0{}\0{}\0{}".format(
+                fields["title"], fields.get("subtitle") or "", author
+            ).encode()
+            if hashlib.sha256(blob).hexdigest() != recorded[slug].get("ground"):
                 stale.append(slug)
 
         self.assertEqual(

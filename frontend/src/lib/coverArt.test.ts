@@ -8,6 +8,7 @@ import {
 	coverGradient,
 	coverSrcset,
 	isArtCover,
+	isPlateCover,
 	toHex,
 	tintable
 } from './coverArt';
@@ -148,5 +149,18 @@ describe('cover variants', () => {
 		expect(isArtCover('/covers/art/waiting-on-god.jpg')).toBe(true);
 		expect(isArtCover('/covers/humility-2.jpg')).toBe(false);
 		expect(isArtCover(null)).toBe(false);
+	});
+
+	it('knows a plate ground from a finished cover', () => {
+		// The two wordless tiers get type drawn over them; a designed raster
+		// already has its own, and a second set would be a mess.
+		expect(isPlateCover('/covers/all-of-grace.svg')).toBe(true);
+		expect(isPlateCover('/covers/es/all-of-grace.svg')).toBe(true);
+		expect(isPlateCover('/covers/humility-2.jpg')).toBe(false);
+		expect(isPlateCover('/covers/art/waiting-on-god.jpg')).toBe(false);
+		// An admin can paste a cover hosted anywhere; whatever is in it, it is
+		// not one of ours to draw on.
+		expect(isPlateCover('https://example.org/some-cover.svg')).toBe(false);
+		expect(isPlateCover(null)).toBe(false);
 	});
 });

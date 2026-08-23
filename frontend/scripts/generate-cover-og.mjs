@@ -44,21 +44,23 @@
  *
  * WHY CHROMIUM AND NOT SATORI
  * The sermon cards are satori because they are laid out here, in JSX-ish
- * objects. These are not: the plate is a committed SVG that `covers.py` already
- * drew, and re-describing its layout in a second engine is the drift this repo
- * keeps paying for (STYLE_GUIDE section 5). Chromium renders the committed file
- * itself — the artwork stays the one in `static/covers/`, and this only
- * photographs it.
+ * objects. These are laid out here too, now — but in CSS, and in the same
+ * lengths `BookCover.svelte` uses, which satori's partial flexbox could not
+ * carry (container units, `text-wrap: balance`, a rule drawn from gradients).
+ * Chromium runs the real thing.
  *
- * WHY THE TYPE COMES OUT IN FRAUNCES, NOT GEORGIA
- * The plate names Georgia because an SVG served through `<img>` cannot fetch a
- * webfont, so it may only name fonts the device already has. A PNG has no such
- * limit — the type is baked in — so it is set in the brand serif the site uses
- * everywhere else, which is what the SVG's stack is standing in for. The twin
- * is therefore closer to the design than the file it is made from, not further
- * from it. `Georgia` is mapped to Fraunces below rather than the SVG being
- * edited, so the committed artwork stays untouched and unconditional: the same
- * face renders on any machine, whether or not it has Georgia installed.
+ * WHY THE TYPE IS DRAWN HERE AT ALL
+ * It did not used to be, for the plates: the committed SVG had the words in it
+ * and this script inlined the file and photographed it. That is what changed —
+ * a plate is a wordless GROUND now, so a screenshot of one is a coloured
+ * rectangle with an emblem on it. Both tiers therefore go through one
+ * composition, which is also the first time the art twins get the brand mark
+ * the site draws over them.
+ *
+ * The old note here explained that Georgia was remapped to Fraunces, because
+ * the SVG could only name a face a device already has. There is nothing left to
+ * remap: the type asks for the real families, and the same six woff2 files the
+ * app loads are inlined below.
  *
  * PALETTISED to 256 colours, which is `ensure_og_twin`'s reasoning applied to
  * the other two tiers: at the size a share card is ever seen the difference is
@@ -72,18 +74,28 @@
  * this whole script exists to repair.
  */
 import { createHash } from 'node:crypto';
-import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
 import { chromium } from 'playwright';
 import sharp from 'sharp';
 
+// Named with their extension because this is a plain .mjs script: Node resolves
+// it, and nothing type-checks this file. Both modules are import-free at
+// runtime for exactly this reason — see `coverStyles.ts`'s header and
+// `nodeLoadable.test.ts`.
+import { isArtCover, isPlateCover } from '../src/lib/coverArt.ts';
+import { coverStyleFor } from '../src/lib/coverStyles.ts';
+import { eraOf } from '../src/lib/eras.ts';
+
 const HERE = dirname(fileURLToPath(import.meta.url));
 const STATIC = resolve(HERE, '../static');
 const COVERS = resolve(STATIC, 'covers');
 const CONTENT = resolve(HERE, '../../backend/library/fixtures/content');
-const FRAUNCES = resolve(HERE, '../node_modules/@fontsource-variable/fraunces/files');
+const MODULES = resolve(HERE, '../node_modules');
+const APP_CSS = readFileSync(resolve(HERE, '../src/app.css'), 'utf8');
+const COVER_CSS = readFileSync(resolve(HERE, '../src/lib/components/cover-type.css'), 'utf8');
 
 /** The cover's own canvas — `covers.py`'s W, H. A twin is the same picture. */
 const WIDTH = 600;
@@ -91,10 +103,15 @@ const HEIGHT = 800;
 
 // ── The content ─────────────────────────────────────────────────────────────
 
-/** Author slug → display name, from the shared authors fixture. */
-function authorNames() {
+/** Author slug → the fields a cover needs of them, from the shared fixture. */
+function authors() {
 	const rows = JSON.parse(readFileSync(resolve(CONTENT, 'authors.json'), 'utf8'));
-	return new Map(rows.map((r) => [r.fields.slug, r.fields.name]));
+	return new Map(
+		rows.map((r) => [
+			r.fields.slug,
+			{ slug: r.fields.slug, name: r.fields.name, birth_year: r.fields.birth_year ?? null }
+		])
+	);
 }
 
 /**
@@ -106,116 +123,235 @@ function authorNames() {
  * with it.
  */
 function needTwins() {
-	const names = authorNames();
+	const people = authors();
 	return readdirSync(resolve(CONTENT, 'books'))
 		.filter((f) => f.endsWith('.en.json'))
 		.sort()
 		.flatMap((file) => JSON.parse(readFileSync(resolve(CONTENT, 'books', file), 'utf8')))
 		.filter((row) => row.model === 'library.book')
-		.map(({ fields }) => ({
-			slug: fields.slug,
-			title: fields.title,
-			subtitle: fields.subtitle || '',
-			author: names.get(fields.author[0]) ?? fields.author[0],
-			color: fields.cover_color || '#3b5bdb',
-			cover: fields.cover_url || ''
-		}))
-		.filter((b) => b.cover.endsWith('.svg') || b.cover.startsWith('/covers/art/'));
+		.map(({ fields }) => {
+			const author = people.get(fields.author[0]) ?? {
+				slug: fields.author[0],
+				name: fields.author[0],
+				birth_year: null
+			};
+			const cover = fields.cover_url || '';
+			return {
+				slug: fields.slug,
+				title: fields.title,
+				subtitle: fields.subtitle || '',
+				author: author.name,
+				// The card is set in the style the cover is set in — one table, read
+				// from the app's own module rather than restated here.
+				style: coverStyleFor(eraOf(author.birth_year), author.slug),
+				cover,
+				// Which tier, through the app's own predicates rather than a fourth
+				// hand-written copy of "what is a painting".
+				art: isArtCover(cover)
+			};
+		})
+		.filter((b) => b.art || isPlateCover(b.cover));
 }
 
 // ── The page ────────────────────────────────────────────────────────────────
 
-const dataUri = (file, mime) =>
-	`data:${mime};base64,${readFileSync(file).toString('base64')}`;
+const dataUri = (file, mime) => `data:${mime};base64,${readFileSync(file).toString('base64')}`;
 
 /**
- * Fraunces, under the name the artwork asks for.
+ * The app's font wiring, read out of `app.css` rather than restated.
  *
- * Both faces are the variable `wght` files the app itself loads, so the twin
- * and the site are set in the same metal. Latin only: these are English cards.
+ * Every face the covers use is fetched by an `@import '@fontsource…'` there and
+ * named by a `--cover-face-*` token beside it. This takes both: it walks the
+ * imports, pulls each package's own `@font-face` for the latin subset, inlines
+ * the woff2 as a data URI (Chromium here has no node_modules to resolve a
+ * relative `url()` against), and re-emits the token block verbatim.
+ *
+ * DERIVED, NOT COPIED, because the copy is what went wrong. This script used to
+ * hand-map the faces AND declare only `--font-display` — so `.title`'s
+ * `font-family: var(--cover-face-revival)` resolved to nothing and all 37
+ * committed twins shipped set in Times, silently, while both test suites stayed
+ * green. Adding a sixth cover face is now one edit in `app.css`, not four.
+ *
+ * Latin AND latin-ext: a twin is an English card, but an English card's title
+ * can still carry a name the latin subset does not cover, and the two files
+ * together are ~11 rather than ~6. Italic and every other subset are dropped —
+ * only the title takes a cover face, and it is never italic.
  */
-const fontFaces = () =>
-	['normal', 'italic']
-		.map(
-			(style) => `@font-face{font-family:Georgia;font-style:${style};font-weight:100 900;` +
-				`src:url(${dataUri(resolve(FRAUNCES, `fraunces-latin-wght-${style}.woff2`), 'font/woff2')})` +
-				` format('woff2-variations')}`
-		)
-		.join('');
+function buildFontCss() {
+	// The token block first: it is also the list of families a cover can ask
+	// for, which is how the reader's OpenDyslexic and the UI's Hanken are left
+	// out without naming either of them here.
+	const tokens = [...APP_CSS.matchAll(/^\s*(--(?:cover-face-[a-z]+|font-display):[^;]+);/gm)].map(
+		([, decl]) => decl.trim()
+	);
+	// The families a cover can ask for: the FIRST quoted name in each token, which
+	// is the webfont — the rest of a stack is Georgia and the generic, which have
+	// no @font-face to find and would make the completeness check below a lie.
+	const wanted = new Set(
+		tokens.map((decl) => /'([^']+)'/.exec(decl)?.[1]).filter((f) => f !== undefined)
+	);
+
+	const faces = [...APP_CSS.matchAll(/@import '(@fontsource[^']+)'/g)].flatMap(([, spec]) => {
+		// A bare package specifier ('@fontsource-variable/fraunces') is its
+		// index.css through package exports; `resolve` only gives the directory.
+		let file = resolve(MODULES, spec);
+		if (statSync(file).isDirectory()) file = resolve(file, 'index.css');
+		const dir = dirname(file);
+		return readFileSync(file, 'utf8')
+			.split('@font-face')
+			.slice(1)
+			.map((block) => `@font-face${block.slice(0, block.indexOf('}') + 1)}`)
+			// One block per subset, per style. Latin only — a twin is the English
+			// card — upright only, and only a family some cover can name.
+			.filter((block) => /url\(\.\/files\/[^)]*-latin(-ext)?-/.test(block))
+			.filter((block) => !/font-style:\s*italic/.test(block))
+			.filter((block) => wanted.has(/font-family:\s*'([^']+)'/.exec(block)?.[1] ?? ''))
+			.map((block) =>
+				block
+					// woff2 only, and inlined: Chromium is rendering a string here,
+					// with no directory for a relative url() to resolve against.
+					.replace(/,\s*url\(\.\/files\/[^)]+\)\s*format\('woff'\)/g, '')
+					.replace(
+						/url\(\.\/files\/([^)]+)\)/g,
+						(_m, name) => `url(${dataUri(resolve(dir, 'files', name), 'font/woff2')})`
+					)
+			);
+	});
+
+	// Compared as SETS, not counts: a family ships one block per subset, so
+	// counting blocks let a missing family hide behind another family's second
+	// subset — which is how a guard meant to catch exactly this defect sat green
+	// while every twin rendered in the fallback face.
+	const found = new Set(
+		faces.map((block) => /font-family:\s*'([^']+)'/.exec(block)?.[1]).filter((f) => f)
+	);
+	const missing = [...wanted].filter((family) => !found.has(family));
+	if (missing.length) {
+		throw new Error(
+			`app.css names ${missing.join(', ')} in a --cover-face-* token but nothing ` +
+				`@imports the package — every card wearing that recipe would render in the ` +
+				`fallback face, and look deliberate.`
+		);
+	}
+	return `${faces.join('')}:root{${tokens.join(';')}}`;
+}
+
+/** Built once, and only when a page is actually drawn: it was a per-book call
+ *  (37 x 6 file reads), and `coverOgManifest.test.ts` imports this module for
+ *  `needTwins` alone and should not pay for it at all. */
+let FONT_CSS;
 
 const escape = (s) =>
 	s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
+/** The brand lockup, from the copy `BrandMark.svelte` itself renders. */
+const LOCKUP = readFileSync(resolve(HERE, '../src/lib/brand/ochorus-lockup.svg'), 'utf8');
+
 /**
- * What a twin is made from, as bytes — the manifest's subject.
+ * What a twin is made from, as bytes — half of the manifest's subject.
  *
- * The plate is its SVG, whole. The painting is the artwork plus the type drawn
- * over it, so the strings are in here too: retitling a curated book changes its
- * card, and the painting on disk does not move.
+ * The ground plus the type drawn over it, for BOTH tiers now: a plate file has
+ * no words in it either, so retitling a book or moving it to another author
+ * changes the card while nothing on disk moves. (It used to be the file alone
+ * for a plate, because the words were IN the file.)
+ *
+ * The author's STYLE is the other half of what a card is made from, and it is
+ * deliberately not in here: `CoverAssetTests` recomputes this digest to prove
+ * the twins were re-run, and that gate is Python — it cannot read a table in
+ * `coverStyles.ts`. A digest it cannot recompute is a digest that fails the
+ * build forever. So the style is recorded BESIDE this instead, and checked by
+ * `coverOgManifest.test.ts`, which can read the table. Each side checks the
+ * half it can actually derive.
  */
-function inputs(book) {
-	const art = book.cover.startsWith('/covers/art/');
-	const file = readFileSync(
-		art ? resolve(STATIC, book.cover.replace(/^\//, '')) : resolve(COVERS, `${book.slug}.svg`)
-	);
-	return art
-		? Buffer.concat([file, Buffer.from(`\0${book.title}\0${book.subtitle}\0${book.author}`)])
-		: file;
+function inputs(book, ground) {
+	return Buffer.concat([
+		ground,
+		Buffer.from(`\0${book.title}\0${book.subtitle}\0${book.author}`)
+	]);
 }
 
 /**
- * A plate: the committed SVG itself, inlined so the page's fonts apply.
+ * One book's cover, as a page — the same composition for a painting and for a
+ * plate, because the two tiers are the same shape: a wordless ground with the
+ * book's type over it.
  *
- * Inline rather than `<img src=...>` — an `<img>` renders the SVG in an
- * isolated document that the @font-face above cannot reach, which is the whole
- * reason the plate names a system font in the first place.
+ * THE COMPOSITION IS NOT WRITTEN HERE. `cover-type.css` is inlined whole, so
+ * this renders the rules `BookCover` renders, not a copy of them. It used to be
+ * a copy — the frame, the byline, the title ramp, all three rule ornaments, the
+ * scrim's four stops — and the copy is what shipped 37 twins set in Times.
+ * There is no way to mount a Svelte component in here, but there is no longer
+ * anything to keep in step either: the markup below is the component's markup,
+ * and everything about how it looks comes from that file.
  */
-function platePage(slug) {
-	const svg = readFileSync(resolve(COVERS, `${slug}.svg`), 'utf8');
-	return `<style>${fontFaces()}html,body{margin:0}svg{display:block;width:${WIDTH}px;height:${HEIGHT}px}</style>${svg}`;
-}
-
-/**
- * A painting: the shared artwork with this book's type over it.
- *
- * The composition `BookCover` draws over `covers/art/` — the scrim, the frame,
- * the byline at the top, the title centred — because that IS the cover for
- * these ten works, and a share card showing the bare painting would be a
- * picture with no book on it. Proportions echo the plate (STYLE_GUIDE section
- * 5): same frame inset, same optical centre, same rule.
- */
-function artPage({ title, subtitle, author, cover }) {
-	const painting = dataUri(resolve(STATIC, cover.replace(/^\//, '')), 'image/jpeg');
-	return `<style>${fontFaces()}
+function coverPage(book, groundBytes) {
+	// A painting is an <img> so `object-fit` can crop it; a plate is inlined,
+	// which is what lets its gradient and emblem paint at any size without a
+	// second file. Neither carries a word.
+	const ground = book.art
+		? `<img class="ground" src="data:image/jpeg;base64,${groundBytes.toString('base64')}" alt="">`
+		: `<div class="ground">${groundBytes.toString('utf8')}</div>`;
+	return `<style>${(FONT_CSS ??= buildFontCss())}${COVER_CSS}
 html,body{margin:0}
-.plate{position:relative;width:${WIDTH}px;height:${HEIGHT}px;overflow:hidden;
-  font-family:Georgia,serif;color:#fff;text-align:center}
-.plate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-/* A wash, not an eraser: the painting stays legible under the type. Heavier
-   at the top and bottom, where the words are. */
-.scrim{position:absolute;inset:0;background:
-  linear-gradient(180deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.28) 34%,rgba(0,0,0,.30) 62%,rgba(0,0,0,.68) 100%)}
-.frame{position:absolute;inset:26px;border:1.5px solid rgba(255,255,255,.34)}
-.type{position:absolute;inset:26px;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;padding:0 52px}
-.byline{position:absolute;top:60px;left:0;right:0;font-size:23px;letter-spacing:4px;
-  opacity:.9;text-transform:uppercase}
-.title{font-size:60px;font-weight:600;line-height:1.16;margin:0;
-  text-shadow:0 2px 18px rgba(0,0,0,.45)}
-.rule{width:76px;height:1.5px;background:rgba(255,255,255,.62);margin:34px 0 0}
-.sub{font-size:24px;font-style:italic;opacity:.86;margin:18px 0 0;line-height:1.3}
+/* The three things a page needs that a cover inside the app gets from its
+   surroundings: the card's box, the ground's own placement, and the container
+   the cq units are measured against. */
+.card{position:relative;width:${WIDTH}px;height:${HEIGHT}px;overflow:hidden}
+.ground{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ground svg{display:block;width:100%;height:100%}
+.cover-type{box-sizing:border-box}
+.brandmark svg{height:13.7cqw;width:auto;display:block;margin:0 auto}
 </style>
-<div class="plate">
-  <img src="${painting}" alt="">
-  <div class="scrim"></div>
-  <div class="frame"></div>
-  <div class="type">
-    <div class="byline">${escape(author)}</div>
-    <h1 class="title">${escape(title)}</h1>
-    <div class="rule"></div>
-    ${subtitle ? `<p class="sub">${escape(subtitle)}</p>` : ''}
+<div class="card">
+  ${ground}
+  <div class="cover-plate over-file${book.art ? ' over-art' : ''}">
+    <div class="cover-type style-${book.style}">
+      <div class="byline">${escape(book.author)}</div>
+      <div class="middle">
+        <div class="title">${escape(book.title)}</div>
+        <div class="rule"></div>
+        ${book.subtitle ? `<div class="subtitle">${escape(book.subtitle)}</div>` : ''}
+      </div>
+      ${book.art ? '' : '<div class="emblem-band"></div>'}
+      <div class="brandmark">${LOCKUP}</div>
+    </div>
   </div>
 </div>`;
+}
+
+/**
+ * Refuse to photograph a card whose title did not get the face it asked for.
+ *
+ * This is the guard the whole file was missing. `.title` names a token
+ * (`var(--cover-face-revival)`); a token that is never declared makes the
+ * declaration invalid, CSS falls back to the inherited family, and Chromium
+ * cheerfully renders — so the script wrote 37 perfectly good PNGs set in Times
+ * and reported success. Nothing downstream could tell: the digest covers the
+ * INPUTS, and a PNG has no font metadata to check.
+ *
+ * So the browser is asked what it actually resolved. `getComputedStyle` is the
+ * whole check: an undeclared token makes the declaration invalid, so the family
+ * falls back to the inherited one, and that is visible here.
+ *
+ * TWO THINGS IT CANNOT SEE, stated so the next person does not over-trust it.
+ * `document.fonts.check` is not used, because it is handed a stack ending in a
+ * generic family and therefore always answers true — a declared token whose
+ * woff2 failed to load would pass. `buildFontCss` covers that case instead, by
+ * refusing to build when a named family has no @font-face at all. And the house
+ * recipe is Fraunces, which is also the fallback, so it is the one style this
+ * cannot tell from failure — and the one where failure does not matter.
+ */
+async function assertTitleFace(page, book) {
+	const family = await page.evaluate(() => {
+		const el = document.querySelector('.title');
+		return el ? getComputedStyle(el).fontFamily.split(',')[0].replace(/["']/g, '') : '';
+	});
+	if (book.style !== 'house' && /^(Times|serif|)$/i.test(family)) {
+		throw new Error(
+			`${book.slug}: the title resolved to "${family}" — the ${book.style} face did ` +
+				`not load. Check that app.css still @imports it and declares its ` +
+				`--cover-face-* token; a card set in the wrong face renders without complaint.`
+		);
+	}
 }
 
 // ── The run ─────────────────────────────────────────────────────────────────
@@ -233,13 +369,15 @@ async function main() {
 	const wrote = [];
 	const manifest = {};
 	for (const book of books) {
-		const art = book.cover.startsWith('/covers/art/');
-		manifest[book.slug] = digest(inputs(book));
-		await page.setContent(art ? artPage(book) : platePage(book.slug));
+		// Read once, for the digest and for the page.
+		const groundBytes = readFileSync(resolve(STATIC, book.cover.replace(/^\//, '')));
+		manifest[book.slug] = { ground: digest(inputs(book, groundBytes)), style: book.style };
+		await page.setContent(coverPage(book, groundBytes));
 		// The faces are data URIs, so this resolves immediately — but a
 		// screenshot taken before it does silently falls back to the default
 		// serif, which is precisely the defect this script repairs.
 		await page.evaluate(() => document.fonts.ready);
+		await assertTitleFace(page, book);
 		// `dither` defaults to 1.0, which speckles a smooth gradient; the plates
 		// are mostly one, so it is turned down rather than off — off bands the
 		// gradient instead, and a band is more visible than a grain.
@@ -250,7 +388,7 @@ async function main() {
 		const dest = resolve(COVERS, `${book.slug}.png`);
 		if (existsSync(dest) && digest(readFileSync(dest)) === digest(png)) continue;
 		writeFileSync(dest, png);
-		wrote.push(`${book.slug}.png  ${art ? 'painting' : 'plate'}`);
+		wrote.push(`${book.slug}.png  ${book.art ? 'painting' : 'plate'}  ${book.style}`);
 	}
 
 	await browser.close();
@@ -261,8 +399,10 @@ async function main() {
 		JSON.stringify(
 			{
 				_comment:
-					'GENERATED by npm run og:covers. slug -> digest of what each twin was ' +
-					'made from, so the fixture gate can tell a stale twin from a fresh one.',
+					'GENERATED by npm run og:covers. slug -> what each twin was made from, ' +
+					'so a stale twin can be told from a fresh one: `ground` digests the ' +
+					'cover file and the type over it (checked by CoverAssetTests), `style` ' +
+					'names the house style it was set in (checked by coverOgManifest.test.ts).',
 				twins: Object.fromEntries(Object.entries(manifest).sort(([a], [b]) => a.localeCompare(b)))
 			},
 			null,
