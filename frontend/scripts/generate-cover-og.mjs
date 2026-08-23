@@ -44,21 +44,23 @@
  *
  * WHY CHROMIUM AND NOT SATORI
  * The sermon cards are satori because they are laid out here, in JSX-ish
- * objects. These are not: the plate is a committed SVG that `covers.py` already
- * drew, and re-describing its layout in a second engine is the drift this repo
- * keeps paying for (STYLE_GUIDE section 5). Chromium renders the committed file
- * itself — the artwork stays the one in `static/covers/`, and this only
- * photographs it.
+ * objects. These are laid out here too, now — but in CSS, and in the same
+ * lengths `BookCover.svelte` uses, which satori's partial flexbox could not
+ * carry (container units, `text-wrap: balance`, a rule drawn from gradients).
+ * Chromium runs the real thing.
  *
- * WHY THE TYPE COMES OUT IN FRAUNCES, NOT GEORGIA
- * The plate names Georgia because an SVG served through `<img>` cannot fetch a
- * webfont, so it may only name fonts the device already has. A PNG has no such
- * limit — the type is baked in — so it is set in the brand serif the site uses
- * everywhere else, which is what the SVG's stack is standing in for. The twin
- * is therefore closer to the design than the file it is made from, not further
- * from it. `Georgia` is mapped to Fraunces below rather than the SVG being
- * edited, so the committed artwork stays untouched and unconditional: the same
- * face renders on any machine, whether or not it has Georgia installed.
+ * WHY THE TYPE IS DRAWN HERE AT ALL
+ * It did not used to be, for the plates: the committed SVG had the words in it
+ * and this script inlined the file and photographed it. That is what changed —
+ * a plate is a wordless GROUND now, so a screenshot of one is a coloured
+ * rectangle with an emblem on it. Both tiers therefore go through one
+ * composition, which is also the first time the art twins get the brand mark
+ * the site draws over them.
+ *
+ * The old note here explained that Georgia was remapped to Fraunces, because
+ * the SVG could only name a face a device already has. There is nothing left to
+ * remap: the type asks for the real families, and the same six woff2 files the
+ * app loads are inlined below.
  *
  * PALETTISED to 256 colours, which is `ensure_og_twin`'s reasoning applied to
  * the other two tiers: at the size a share card is ever seen the difference is
@@ -79,11 +81,39 @@ import { dirname, resolve } from 'node:path';
 import { chromium } from 'playwright';
 import sharp from 'sharp';
 
+// Named with their extension because this is a plain .mjs script: Node resolves
+// it, and nothing type-checks this file. Both modules are import-free at
+// runtime for exactly this reason — see `coverStyles.ts`'s header and
+// `nodeLoadable.test.ts`.
+import { coverStyleFor } from '../src/lib/coverStyles.ts';
+import { eraOf } from '../src/lib/eras.ts';
+
 const HERE = dirname(fileURLToPath(import.meta.url));
 const STATIC = resolve(HERE, '../static');
 const COVERS = resolve(STATIC, 'covers');
 const CONTENT = resolve(HERE, '../../backend/library/fixtures/content');
-const FRAUNCES = resolve(HERE, '../node_modules/@fontsource-variable/fraunces/files');
+const MODULES = resolve(HERE, '../node_modules');
+
+/**
+ * The cover faces, by the family name their @font-face declares, and the latin
+ * woff2 the app itself loads. `app.css` maps these onto `--cover-face-*`
+ * tokens; `coverStyles.ts` hands back one of those tokens, so declaring them
+ * under the same names is all it takes for a card to be set in the face its
+ * cover is set in.
+ *
+ * Latin only: a twin is the English card (see ONE PER SLUG below).
+ */
+const COVER_FACES = {
+	'Fraunces Variable': '@fontsource-variable/fraunces/files/fraunces-latin-wght-normal.woff2',
+	'Cinzel Variable': '@fontsource-variable/cinzel/files/cinzel-latin-wght-normal.woff2',
+	'EB Garamond Variable':
+		'@fontsource-variable/eb-garamond/files/eb-garamond-latin-wght-normal.woff2',
+	'Playfair Display Variable':
+		'@fontsource-variable/playfair-display/files/playfair-display-latin-wght-normal.woff2',
+	'IM Fell English': '@fontsource/im-fell-english/files/im-fell-english-latin-400-normal.woff2',
+	'Libre Baskerville':
+		'@fontsource/libre-baskerville/files/libre-baskerville-latin-400-normal.woff2'
+};
 
 /** The cover's own canvas — `covers.py`'s W, H. A twin is the same picture. */
 const WIDTH = 600;
@@ -91,10 +121,15 @@ const HEIGHT = 800;
 
 // ── The content ─────────────────────────────────────────────────────────────
 
-/** Author slug → display name, from the shared authors fixture. */
-function authorNames() {
+/** Author slug → the fields a cover needs of them, from the shared fixture. */
+function authors() {
 	const rows = JSON.parse(readFileSync(resolve(CONTENT, 'authors.json'), 'utf8'));
-	return new Map(rows.map((r) => [r.fields.slug, r.fields.name]));
+	return new Map(
+		rows.map((r) => [
+			r.fields.slug,
+			{ slug: r.fields.slug, name: r.fields.name, birth_year: r.fields.birth_year ?? null }
+		])
+	);
 }
 
 /**
@@ -106,114 +141,159 @@ function authorNames() {
  * with it.
  */
 function needTwins() {
-	const names = authorNames();
+	const people = authors();
 	return readdirSync(resolve(CONTENT, 'books'))
 		.filter((f) => f.endsWith('.en.json'))
 		.sort()
 		.flatMap((file) => JSON.parse(readFileSync(resolve(CONTENT, 'books', file), 'utf8')))
 		.filter((row) => row.model === 'library.book')
-		.map(({ fields }) => ({
-			slug: fields.slug,
-			title: fields.title,
-			subtitle: fields.subtitle || '',
-			author: names.get(fields.author[0]) ?? fields.author[0],
-			color: fields.cover_color || '#3b5bdb',
-			cover: fields.cover_url || ''
-		}))
+		.map(({ fields }) => {
+			const author = people.get(fields.author[0]) ?? {
+				slug: fields.author[0],
+				name: fields.author[0],
+				birth_year: null
+			};
+			return {
+				slug: fields.slug,
+				title: fields.title,
+				subtitle: fields.subtitle || '',
+				author: author.name,
+				// The card is set in the face the cover is set in — one table, read
+				// from the app's own module rather than restated here.
+				style: coverStyleFor(eraOf(author.birth_year), author.slug),
+				color: fields.cover_color || '#3b5bdb',
+				cover: fields.cover_url || ''
+			};
+		})
 		.filter((b) => b.cover.endsWith('.svg') || b.cover.startsWith('/covers/art/'));
 }
 
 // ── The page ────────────────────────────────────────────────────────────────
 
-const dataUri = (file, mime) =>
-	`data:${mime};base64,${readFileSync(file).toString('base64')}`;
+const dataUri = (file, mime) => `data:${mime};base64,${readFileSync(file).toString('base64')}`;
 
 /**
- * Fraunces, under the name the artwork asks for.
+ * The cover faces, under the names the app declares them by.
  *
- * Both faces are the variable `wght` files the app itself loads, so the twin
- * and the site are set in the same metal. Latin only: these are English cards.
+ * The plate used to name Georgia and this script mapped Georgia to Fraunces,
+ * because an `<img>`-rendered SVG cannot fetch a webfont and could only ask for
+ * a face the device already had. The type is HTML now and asks for the real
+ * families, so there is nothing left to map: the same six faces the browser
+ * loads are loaded here, and a card is set in whatever its cover is set in.
  */
 const fontFaces = () =>
-	['normal', 'italic']
+	Object.entries(COVER_FACES)
 		.map(
-			(style) => `@font-face{font-family:Georgia;font-style:${style};font-weight:100 900;` +
-				`src:url(${dataUri(resolve(FRAUNCES, `fraunces-latin-wght-${style}.woff2`), 'font/woff2')})` +
-				` format('woff2-variations')}`
+			([family, file]) =>
+				`@font-face{font-family:'${family}';font-style:normal;font-weight:100 900;` +
+				`src:url(${dataUri(resolve(MODULES, file), 'font/woff2')}) format('woff2')}`
 		)
 		.join('');
 
 const escape = (s) =>
 	s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
+/** The brand lockup, from the copy `BrandMark.svelte` itself renders. */
+const LOCKUP = readFileSync(resolve(HERE, '../src/lib/brand/ochorus-lockup.svg'), 'utf8');
+
 /**
- * What a twin is made from, as bytes — the manifest's subject.
+ * What a twin is made from, as bytes — half of the manifest's subject.
  *
- * The plate is its SVG, whole. The painting is the artwork plus the type drawn
- * over it, so the strings are in here too: retitling a curated book changes its
- * card, and the painting on disk does not move.
+ * The ground plus the type drawn over it, for BOTH tiers now: a plate file has
+ * no words in it either, so retitling a book or moving it to another author
+ * changes the card while nothing on disk moves. (It used to be the file alone
+ * for a plate, because the words were IN the file.)
+ *
+ * The author's STYLE is the other half of what a card is made from, and it is
+ * deliberately not in here: `CoverAssetTests` recomputes this digest to prove
+ * the twins were re-run, and that gate is Python — it cannot read a table in
+ * `coverStyles.ts`. A digest it cannot recompute is a digest that fails the
+ * build forever. So the style is recorded BESIDE this instead, and checked by
+ * `coverOgManifest.test.ts`, which can read the table. Each side checks the
+ * half it can actually derive.
  */
 function inputs(book) {
+	const ground = readFileSync(resolve(STATIC, book.cover.replace(/^\//, '')));
+	return Buffer.concat([
+		ground,
+		Buffer.from(`\0${book.title}\0${book.subtitle}\0${book.author}`)
+	]);
+}
+
+/**
+ * One book's cover, as a page — the same composition for a painting and for a
+ * plate, because the two tiers are the same shape: a wordless ground with the
+ * book's type over it.
+ *
+ * THE LENGTHS ARE `cqw`, and the plate below is the container, exactly as in
+ * `BookCover.svelte`. That is not a flourish: it means the numbers here are
+ * that component's numbers, copied as written rather than multiplied out to
+ * pixels — a 600-wide plate makes a cqw six units, and this canvas is 600 wide,
+ * so a reviewer can diff the two files line for line. The composition is still
+ * a COPY (there is no way to run a Svelte component in here), which is why it
+ * is kept as thin as it can be and why the manifest above exists.
+ */
+function coverPage(book) {
 	const art = book.cover.startsWith('/covers/art/');
-	const file = readFileSync(
-		art ? resolve(STATIC, book.cover.replace(/^\//, '')) : resolve(COVERS, `${book.slug}.svg`)
-	);
-	return art
-		? Buffer.concat([file, Buffer.from(`\0${book.title}\0${book.subtitle}\0${book.author}`)])
-		: file;
-}
-
-/**
- * A plate: the committed SVG itself, inlined so the page's fonts apply.
- *
- * Inline rather than `<img src=...>` — an `<img>` renders the SVG in an
- * isolated document that the @font-face above cannot reach, which is the whole
- * reason the plate names a system font in the first place.
- */
-function platePage(slug) {
-	const svg = readFileSync(resolve(COVERS, `${slug}.svg`), 'utf8');
-	return `<style>${fontFaces()}html,body{margin:0}svg{display:block;width:${WIDTH}px;height:${HEIGHT}px}</style>${svg}`;
-}
-
-/**
- * A painting: the shared artwork with this book's type over it.
- *
- * The composition `BookCover` draws over `covers/art/` — the scrim, the frame,
- * the byline at the top, the title centred — because that IS the cover for
- * these ten works, and a share card showing the bare painting would be a
- * picture with no book on it. Proportions echo the plate (STYLE_GUIDE section
- * 5): same frame inset, same optical centre, same rule.
- */
-function artPage({ title, subtitle, author, cover }) {
-	const painting = dataUri(resolve(STATIC, cover.replace(/^\//, '')), 'image/jpeg');
+	const groundFile = resolve(STATIC, book.cover.replace(/^\//, ''));
+	// A painting is an <img> so `object-fit` can crop it; a plate is inlined,
+	// which is what lets its gradient and emblem paint at any size without a
+	// second file. Neither carries a word.
+	const ground = art
+		? `<img class="ground" src="${dataUri(groundFile, 'image/jpeg')}" alt="">`
+		: `<div class="ground">${readFileSync(groundFile, 'utf8')}</div>`;
+	const rule = { plain: '', double: 'rule-double', diamond: 'rule-diamond' }[book.style.rule];
 	return `<style>${fontFaces()}
 html,body{margin:0}
-.plate{position:relative;width:${WIDTH}px;height:${HEIGHT}px;overflow:hidden;
-  font-family:Georgia,serif;color:#fff;text-align:center}
-.plate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-/* A wash, not an eraser: the painting stays legible under the type. Heavier
-   at the top and bottom, where the words are. */
-.scrim{position:absolute;inset:0;background:
-  linear-gradient(180deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.28) 34%,rgba(0,0,0,.30) 62%,rgba(0,0,0,.68) 100%)}
-.frame{position:absolute;inset:26px;border:1.5px solid rgba(255,255,255,.34)}
-.type{position:absolute;inset:26px;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;padding:0 52px}
-.byline{position:absolute;top:60px;left:0;right:0;font-size:23px;letter-spacing:4px;
-  opacity:.9;text-transform:uppercase}
-.title{font-size:60px;font-weight:600;line-height:1.16;margin:0;
-  text-shadow:0 2px 18px rgba(0,0,0,.45)}
-.rule{width:76px;height:1.5px;background:rgba(255,255,255,.62);margin:34px 0 0}
-.sub{font-size:24px;font-style:italic;opacity:.86;margin:18px 0 0;line-height:1.3}
+.plate{container-type:inline-size;position:relative;width:${WIDTH}px;height:${HEIGHT}px;
+  overflow:hidden;color:#fff;text-align:center}
+.ground{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ground svg{display:block;width:100%;height:100%}
+/* Only a painting gets a scrim: a plate's colour is floored for contrast where
+   it is minted (covers.ink_safe), a photograph's brightness is nobody's to
+   promise. Both numbers are BookCover's .over-art. */
+.scrim{position:absolute;inset:0;background:linear-gradient(180deg,
+  rgb(0 0 0 / .62) 0%, rgb(0 0 0 / .34) 30%, rgb(0 0 0 / .4) 70%, rgb(0 0 0 / .7) 100%),
+  rgb(26 20 16 / .26)}
+.type{position:absolute;inset:0;display:flex;flex-direction:column;
+  padding:17cqw 7cqw 9cqw;box-sizing:border-box}
+.type::before{content:'';position:absolute;inset:4.3cqw;
+  border:1px solid rgb(255 255 255 / ${art ? '.3' : '.22'})}
+.byline{font-size:3.9cqw;letter-spacing:0.28em;text-transform:uppercase;opacity:.86;
+  font-family:var(--font-display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.middle{margin:auto 0}
+.title{font-family:${book.style.face};font-weight:${book.style.weight};
+  font-size:calc(9.5cqw * ${book.style.scale});letter-spacing:${book.style.tracking};
+  text-transform:${book.style.transform};line-height:1.15;text-wrap:balance}
+.rule{width:12.7cqw;margin:5cqw auto 0;height:1px;background:rgb(255 255 255 / .55)}
+.rule-double{width:16cqw;height:0.9cqw;background:
+  linear-gradient(rgb(255 255 255 / .55) 0 0) top / 100% 1px no-repeat,
+  linear-gradient(rgb(255 255 255 / .4) 0 0) bottom / 100% 1px no-repeat}
+.rule-diamond{position:relative;width:18cqw;height:1.6cqw;background:
+  linear-gradient(rgb(255 255 255 / .55) 0 0) left center / 6cqw 1px no-repeat,
+  linear-gradient(rgb(255 255 255 / .55) 0 0) right center / 6cqw 1px no-repeat}
+.rule-diamond::before{content:'';position:absolute;inset:50% auto auto 50%;
+  width:1.1cqw;height:1.1cqw;translate:-50% -50%;rotate:45deg;
+  border:1px solid rgb(255 255 255 / .62)}
+.subtitle{margin-top:3cqw;font-family:var(--font-display);font-style:italic;
+  font-size:3.7cqw;opacity:.85}
+.emblem-band{height:20cqw;margin-bottom:4cqw}
+.mark{margin:0 auto;height:13.7cqw;opacity:.82;color:#fff}
+.mark svg{height:100%;width:auto;display:block}
+:root{--font-display:'Fraunces Variable',Georgia,serif}
 </style>
 <div class="plate">
-  <img src="${painting}" alt="">
-  <div class="scrim"></div>
-  <div class="frame"></div>
+  ${ground}
+  ${art ? '<div class="scrim"></div>' : ''}
   <div class="type">
-    <div class="byline">${escape(author)}</div>
-    <h1 class="title">${escape(title)}</h1>
-    <div class="rule"></div>
-    ${subtitle ? `<p class="sub">${escape(subtitle)}</p>` : ''}
+    <div class="byline">${escape(book.author)}</div>
+    <div class="middle">
+      <div class="title">${escape(book.title)}</div>
+      <div class="rule ${rule}"></div>
+      ${book.subtitle ? `<div class="subtitle">${escape(book.subtitle)}</div>` : ''}
+    </div>
+    ${art ? '' : '<div class="emblem-band"></div>'}
+    <div class="mark">${LOCKUP}</div>
   </div>
 </div>`;
 }
@@ -234,8 +314,8 @@ async function main() {
 	const manifest = {};
 	for (const book of books) {
 		const art = book.cover.startsWith('/covers/art/');
-		manifest[book.slug] = digest(inputs(book));
-		await page.setContent(art ? artPage(book) : platePage(book.slug));
+		manifest[book.slug] = { ground: digest(inputs(book)), style: book.style.id };
+		await page.setContent(coverPage(book));
 		// The faces are data URIs, so this resolves immediately — but a
 		// screenshot taken before it does silently falls back to the default
 		// serif, which is precisely the defect this script repairs.
@@ -261,8 +341,10 @@ async function main() {
 		JSON.stringify(
 			{
 				_comment:
-					'GENERATED by npm run og:covers. slug -> digest of what each twin was ' +
-					'made from, so the fixture gate can tell a stale twin from a fresh one.',
+					'GENERATED by npm run og:covers. slug -> what each twin was made from, ' +
+					'so a stale twin can be told from a fresh one: `ground` digests the ' +
+					'cover file and the type over it (checked by CoverAssetTests), `style` ' +
+					'names the house style it was set in (checked by coverOgManifest.test.ts).',
 				twins: Object.fromEntries(Object.entries(manifest).sort(([a], [b]) => a.localeCompare(b)))
 			},
 			null,

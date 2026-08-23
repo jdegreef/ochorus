@@ -7,16 +7,22 @@ import BookCover from './BookCover.svelte';
 import type { BookSummary } from '$lib/library';
 
 /**
- * The plate is a PLACEHOLDER, and this is the rule that keeps it one.
+ * The cover's type is drawn HERE, over whatever ground the book has, and these
+ * are the rules that keep it the only drawing of it.
  *
- * It used to be a hand-built SVG replica of `covers.py`'s generated cover, and
- * the two drifted in every dimension that could drift: type ramp, wrap budget,
- * line height, title centre, rule offset, gradient angle, the missing vignette
- * — and, worse, no RTL, no per-script fonts and no script scaling, so an Arabic
- * book's fallback came out in Georgia set left-to-right.
+ * There used to be two: `covers.py` composited the words into the plate file,
+ * and this component had a hand-built SVG replica of that plate for a book with
+ * no file. The two drifted in every dimension that could drift — type ramp,
+ * wrap budget, line height, title centre, rule offset, gradient angle, the
+ * missing vignette — and, worse, the replica had no RTL, no per-script fonts and
+ * no script scaling, so an Arabic book's fallback came out in Georgia set
+ * left-to-right.
  *
- * These assert the properties that made the replica wrong, not pixels: the
- * title is real text the browser can shape and wrap, and no second copy of the
+ * The words left the file, which is also what let a cover be set in a real face
+ * (an `<img>`-rendered SVG cannot reach the page's webfonts, so every generated
+ * cover in the library was Georgia). So these assert the properties that made
+ * the replica wrong, not pixels: the title is real text the browser can shape
+ * and wrap, it is set in its author's house style, and no second copy of the
  * generator's metrics decides how it is set.
  */
 const book = (over: Partial<BookSummary> = {}): BookSummary =>
@@ -24,7 +30,7 @@ const book = (over: Partial<BookSummary> = {}): BookSummary =>
 	slug: 'waiting-on-god',
 	title: 'Waiting on God',
 	subtitle: '',
-	author: { slug: 'andrew-murray', name: 'Andrew Murray' },
+	author: { slug: 'andrew-murray', name: 'Andrew Murray', birth_year: 1828 },
 	cover_url: '',
 	cover_color: '#1864ab',
 	chapter_count: 31,
@@ -108,10 +114,66 @@ describe('BookCover falls back to a plate', () => {
 		expect(svg.querySelector('img')?.hasAttribute('srcset')).toBe(false);
 	});
 
-	it('shows the artwork instead when the book has some', () => {
+	it('draws the type over a plate ground too, and reserves the emblem band', () => {
+		// A committed `.svg` is a GROUND — colour, vignette, emblem, no words —
+		// so it gets the same treatment as a painting. It used to arrive with its
+		// title already in it, and this component drew nothing over it.
 		const el = render({ book: book({ cover_url: '/covers/waiting-on-god.svg' }) });
 		expect(el.querySelector('img')?.getAttribute('src')).toBe('/covers/waiting-on-god.svg');
+		expect(el.querySelector('.plate.over-ground')).not.toBeNull();
+		expect(el.querySelector('.title')?.textContent).toBe('Waiting on God');
+		// The emblem is drawn INTO the ground by covers.py, at a fixed band; this
+		// is what keeps the type off it.
+		expect(el.querySelector('.emblem-band')).not.toBeNull();
+	});
+
+	it('leaves the emblem band out where there is no emblem under it', () => {
+		// A painting has none, and neither has the CSS plate a book with no file
+		// at all falls back to. Reserving the room anyway would push their titles
+		// up the cover for nothing.
+		const painting = render({ book: book({ cover_url: '/covers/art/waiting-on-god.jpg' }) });
+		expect(painting.querySelector('.emblem-band')).toBeNull();
+		expect(render({ book: book() }).querySelector('.emblem-band')).toBeNull();
+	});
+
+	it('leaves a DESIGNED raster alone — its words are already in the file', () => {
+		// The one tier that must not get type over it: `/covers/<slug>.jpg` is a
+		// finished cover, and a second title over it would be a mess.
+		const el = render({ book: book({ cover_url: '/covers/humility-2.jpg' }) });
 		expect(el.querySelector('.plate')).toBeNull();
+		expect(el.querySelector('img')?.getAttribute('alt')).toContain('Waiting on God');
+	});
+});
+
+describe("the title wears its author's house style", () => {
+	/**
+	 * The table lives in `coverStyles.ts` and is tested there; what is checked
+	 * here is that it REACHES the pixel — a style resolved and then not passed
+	 * down leaves every cover in the house serif, which is exactly the sameness
+	 * the table exists to end, and looks like nothing at all went wrong.
+	 */
+	const faceOf = (author: { slug: string; name: string; birth_year: number | null }) =>
+		render({ book: book({ author } as Partial<BookSummary>) })
+			.querySelector('.type')
+			?.getAttribute('style') ?? '';
+
+	it('sets a devotional writer and a Victorian one in different faces', () => {
+		const murray = faceOf({ slug: 'andrew-murray', name: 'Andrew Murray', birth_year: 1828 });
+		const spurgeon = faceOf({
+			slug: 'charles-h-spurgeon',
+			name: 'Charles H. Spurgeon',
+			birth_year: 1834
+		});
+		expect(murray).toContain('--cover-face-devotional');
+		expect(spurgeon).toContain('--cover-face-revival');
+	});
+
+	it("dresses an author nobody has entered in their century's face", () => {
+		// An admin import, or a writer added this morning. Falling back to the
+		// house face would make them the only unfinished-looking book on a shelf.
+		expect(faceOf({ slug: 'not-in-any-table', name: 'A Puritan', birth_year: 1620 })).toContain(
+			'--cover-face-press'
+		);
 	});
 });
 

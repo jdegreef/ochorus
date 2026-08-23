@@ -5885,10 +5885,10 @@ class InkSafePlateTests(SimpleTestCase):
                 self.assertEqual(ink_safe(value), "#3b5bdb")
 
     def test_the_drawn_plate_uses_the_floored_colour(self):
-        from library.covers import build_svg
+        from library.covers import build_ground
 
-        # The floor is only worth anything if build_svg actually applies it.
-        svg = build_svg("Title", "", "Author", "#ca8d21", "en")
+        # The floor is only worth anything if build_ground actually applies it.
+        svg = build_ground("#ca8d21")
         self.assertIn('stop-color="#956818"', svg)
         self.assertNotIn('stop-color="#ca8d21"', svg)
 
@@ -5925,45 +5925,46 @@ class CoverEmblemTests(SimpleTestCase):
 
         self.assertIs(seed_topics.TOPICS, TOPICS)
 
-    def test_the_emblem_is_fitted_to_the_room_that_is_left(self):
-        """A constant offset put it through the subtitle and into the lockup.
+    def test_the_emblem_lands_in_the_band_the_type_reserves(self):
+        """The two halves of the cover have to agree about where the emblem is.
 
-        A plate's type runs to a different depth on every book — a four-line
-        title pushes the rule 52 units lower than a one-line one, and a two-line
-        subtitle another 30 below that. The emblem is fitted to the band between
-        the last line of type and the mark, and omitted when that band is too
-        small to be worth taking.
+        The emblem is drawn into this file; the type is drawn over it by
+        `BookCover.svelte`, which holds itself off the drawing with a spacer
+        (`.emblem-band`, 20cqw tall over a 4cqw gap) rather than by measuring
+        anything. Nothing checks that at runtime — one is an SVG on disk and the
+        other is CSS — so the numbers are pinned here.
+
+        It used to be fitted instead: the band between the last line of type and
+        the lockup was measured and the drawing sized to what was left, because
+        a four-line title pushed the type 52 units further down than a one-line
+        one. Nothing in this module knows where the type ends any more.
         """
-        from library.covers import _MARK_TOP, build_svg
+        import re
 
-        def emblem_box(svg):
-            import re
+        from library.covers import _EMBLEM_BOTTOM, _EMBLEM_TOP, build_ground
 
-            found = re.search(
-                r'<g transform="translate\((\d+) (\d+)\) scale\(([\d.]+)\)"(?! fill)', svg
-            )
-            return (int(found.group(2)), float(found.group(3)) * 48) if found else None
-
-        roomy = build_svg("Humility", "", "Andrew Murray", "#0b7285", "en", "praying-hands")
-        top, size = emblem_box(roomy)
-        self.assertLessEqual(top + size, _MARK_TOP, "emblem runs into the lockup")
-
-        # Long title AND a two-line subtitle leaves nothing worth drawing in.
-        crowded = build_svg(
-            "A Plain Account of Christian Perfection",
-            "Wherein the whole doctrine is fully explained for the plain reader",
-            "John Wesley", "#0b7285", "en", "praying-hands",
+        found = re.search(
+            r'<g transform="translate\((\d+) (\d+)\) scale\(([\d.]+)\)"',
+            build_ground("#0b7285", "praying-hands"),
         )
-        self.assertIsNone(emblem_box(crowded), "emblem drawn with no room for it")
+        left, top, scale = int(found.group(1)), int(found.group(2)), float(found.group(3))
+        size = scale * 48  # every emblem is drawn on a 48x48 canvas
+
+        self.assertEqual(top, _EMBLEM_TOP)
+        self.assertEqual(top + size, _EMBLEM_BOTTOM)
+        self.assertEqual(left, (600 - size) / 2, "emblem is not centred on the plate")
+        # 4cqw of gap under a 13.7cqw mark over 9cqw of padding, on a plate
+        # whose container is 600 wide: the foot BookCover leaves free.
+        self.assertEqual(_EMBLEM_BOTTOM, 800 - 54 - 82 - 24)
 
     def test_a_plate_without_an_emblem_is_unchanged(self):
         """A book in no topic, or one whose emblem the API image is missing,
         gets the plate it had — not a broken one, and not a shifted one."""
-        from library.covers import build_svg
+        from library.covers import build_ground
 
         self.assertEqual(
-            build_svg("Humility", "", "Andrew Murray", "#0b7285", "en"),
-            build_svg("Humility", "", "Andrew Murray", "#0b7285", "en", emblem="not-an-emblem"),
+            build_ground("#0b7285"),
+            build_ground("#0b7285", emblem="not-an-emblem"),
         )
 
 
@@ -6006,30 +6007,22 @@ class GeneratedCoverTests(TestCase):
         self.assertTrue(is_generated("/covers/all-of-grace.svg"))
         self.assertTrue(is_generated(""))
 
-    def test_cover_renders_the_rows_own_title(self):
-        """The Spanish row's cover must say the Spanish title, not the English."""
-        from library.covers import build_svg
+    def test_a_ground_carries_no_words(self):
+        """The whole point of the tier, and the thing that can regress quietly.
 
-        es = build_svg("La oración que prevalece", "", "Dwight L. Moody", "#8a4b1f", "es")
-        self.assertIn("prevalece", es)
-        self.assertNotIn("Prevailing", es)
+        The generator used to composite the byline, the title, the rule and the
+        subtitle into the file, which is why it could only ever set them in a
+        font the device already had — an `<img>`-rendered SVG cannot reach the
+        page's webfonts, so every cover in the library came out in Georgia. A
+        stray `<text>` node here would put a second, worse-set title under the
+        one `BookCover` draws, in the wrong language on seven locales out of
+        eight.
+        """
+        from library.covers import build_ground
 
-    def test_rtl_and_script_font_are_declared_for_arabic(self):
-        from library.covers import build_svg, font_for
-
-        svg = build_svg("الغرفة الداخلية", "", "أندرو موراي", "#4a3b6b", "ar")
-        self.assertIn('direction="rtl"', svg)
-        self.assertIn("Amiri", svg)
-        # Latin must NOT get the RTL attribute.
-        self.assertNotIn('direction="rtl"', build_svg("Waiting on God", "", "A M", "#111", "en"))
-        self.assertNotEqual(font_for("ar"), font_for("en"))
-
-    def test_long_titles_step_down_rather_than_overflow(self):
-        from library.covers import _title_metrics
-
-        short = _title_metrics("Confessions")[0]
-        long = _title_metrics("The Life and Diary of David Brainerd")[0]
-        self.assertGreater(short, long)
+        svg = build_ground("#8a4b1f", "praying-hands")
+        self.assertNotIn("<text", svg)
+        self.assertNotIn("font-family", svg)
 
 
 class CuratedArtTests(TestCase):

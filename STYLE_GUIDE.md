@@ -146,6 +146,39 @@ when `--fs-eyebrow` has been tried and does not fit.
 - Constrain the reading column to a comfortable measure — the reader's **Width**
   control (narrow / normal / wide) maps to `--reading-measure`; `normal` is `42rem`.
 
+### Book covers are the one place with other faces
+
+A cover is **artwork**, not interface. The two-typeface rule above governs the
+app; a book's cover is set in the type of the century that wrote it, the way a
+real imprint sets one. Five extra faces are loaded for this and this only —
+Cinzel, EB Garamond, IM Fell English, Libre Baskerville, Playfair Display —
+declared as `--cover-face-*` tokens in `app.css` beside the `@import` that
+fetches them, and chosen per author by `$lib/coverStyles.ts`.
+
+The rules that keep it from becoming a free-for-all:
+
+- **Only the title.** The byline and the subtitle stay in `--font-display` on
+  every cover, as do the frame, the rule's placement, the mark and the whole
+  geometry. The grid is what holds a shelf together; the title is what tells one
+  book from the next.
+- **Never in the UI.** These faces are for the `.title` inside a `BookCover` and
+  nowhere else. A page heading, a card, a button set in Playfair is a bug.
+- **Keyed by author, defaulted by era.** `eras.ts` already buckets a writer by
+  birth year and colours their card by it everywhere; covers use the same
+  buckets rather than inventing a second set of dates. An author gets an entry
+  of their own only where their books genuinely read differently from their
+  century — and the entry says why.
+- **Every stack ends at `--font-display`.** None of these faces covers Arabic or
+  Devanagari, so those titles fall through, per glyph, to what they use today.
+  A cover in a script none of the five covers keeps its identity from its
+  artwork and its colour instead.
+- **Weights a face actually has.** Two of the five ship one static weight;
+  asking for a bolder one gets a synthesised bold, which is the most visible way
+  to make a good face look cheap. The weight belongs to the recipe.
+
+The sizes are `cqw` off the cover's own container, deliberately outside the
+`--fs-*` ramp — a cover scales with its card, from a 40px fan to a 300px page.
+
 ---
 
 ## 3. Spacing, radius & layout
@@ -307,28 +340,37 @@ is also the one place a sermon's own hue sits inside another surface's
 beside it are already showing theirs.
 
 **Book card** (`.book-card`) — the cover is the visual, so the chrome stays
-quiet: hairline, surface fill, no colour wash. Covers come in three tiers and
-`BookCover` draws all of them: a **designed cover** (an image, with `srcset`
-variants built by `scripts/build_cover_assets.py`), a **painting** under
-`covers/art/` with the type drawn over it (one file per work, shared by every
-language — a painting has no words, so it needs no translation), and the
-**plate** for a book with no artwork at all: the book's colour, its title set
-as real text, the lockup at the foot. It is a placeholder in the house style,
-*not* a copy of the generated cover — the copy it replaced drifted in every
-metric it duplicated and never learned RTL or the non-Latin font stacks.
-Proportions may echo `covers.py`; algorithms may not, and that includes the
-emblem below: this plate does not draw one.
+quiet: hairline, surface fill, no colour wash.
 
-The **generated cover** (`covers.py`, a committed SVG, which reaches the reader
-through the designed-cover path above) is where most of the library actually
-lives — 105 of 153 editions — and it carries one thing the CSS plate does not:
-the emblem of the book's topic, between the type and the lockup. It is that
-cover's second variable. The colour already varied per book but the composition
-didn't, so a grid of them read as coloured slabs; the emblem is the drawing the
-book's topic already wears on the topics shelf, fitted to whatever room the type
-leaves and omitted when there is none. (On a topic's own shelf every book shares
-it, which is honest rather than useless: they do share the topic, and that shelf
-is tinted for it anyway.)
+**A cover is a wordless GROUND with the book's type drawn over it in HTML.**
+That is one sentence for the whole system, and it is what lets a title be
+translated, shaped for its own script, and set in a real webfont. `BookCover`
+draws the type; the ground is one of three things:
+
+- a **painting** under `covers/art/` — one file per work, shared by every
+  language, because a painting has no words to translate;
+- a **plate** (`covers.py`, a committed SVG) — the book's colour, the vignette,
+  and the emblem of its topic. Most of the library lives here;
+- **nothing at all**, for a book whose file isn't drawn yet or whose image
+  broke: the same plate, painted in CSS from `cover_color`.
+
+A **designed cover** (`/covers/<slug>.jpg`, `srcset` variants from
+`scripts/build_cover_assets.py`) is the one exception: its type is baked into
+the image, so nothing is drawn over it — and it cannot be translated, which is
+why it is not the tier anything new should use.
+
+The words used to live in the plate file. They could not be set in a brand face
+there (an `<img>`-rendered SVG cannot reach the page's webfonts, so every
+generated cover in the library was Georgia), the component kept a second,
+drifting copy of the drawing for the no-file case, and the composition never
+varied — a grid of plates read as coloured slabs. It now varies twice over: the
+**emblem** the book's topic wears, drawn into the ground, and the **house style**
+its author's century is set in (§2). Proportions may echo `covers.py`;
+algorithms may not — the emblem's band is 20cqw over a 4cqw gap on both sides of
+that line, and neither side measures anything.
+
+(On a topic's own shelf every book shares the emblem, which is honest rather
+than useless: they do share the topic, and that shelf is tinted for it anyway.)
 
 **Sermon plate** (`<SermonPlate>`) — a sermon's head, on its own page and in
 Sermon of the week: the eyebrow/title/byline in a hue wash with the sermon's

@@ -84,6 +84,30 @@ export function isArtCover(url: string | null | undefined): boolean {
 }
 
 /**
+ * A cover under `/covers/` ending `.svg` is a plate GROUND: the book's colour,
+ * the vignette and its topic emblem, and no words at all — `BookCover` sets the
+ * edition's title over it, exactly as it does over a painting.
+ *
+ * The words used to be IN this file, and moving them out is what let a cover be
+ * set in a webfont: an SVG served through `<img>` renders in a document that
+ * cannot reach the page's fonts, so every generated cover in the library came
+ * out in Georgia. See `$lib/coverStyles`.
+ *
+ * The extension is the whole test, and it is the same one `generate_covers`
+ * uses to decide what it may redraw (`is_generated`). A `.jpg`/`.png` under
+ * `/covers/` is a DESIGNED cover with its type baked in — drawing a second
+ * title over those would be the mess this distinguishes.
+ *
+ * Still per-(slug, language) on disk, and no longer needs to be: a ground with
+ * no words in it is language-neutral, like the paintings, so the eight copies
+ * of each are eight identical files. Consolidating them means repointing every
+ * translated row's `cover_url`, which is a fixture change and its own PR.
+ */
+export function isPlateCover(url: string | null | undefined): boolean {
+	return (url ?? '').startsWith('/covers/') && url!.endsWith('.svg');
+}
+
+/**
  * The webp variant files beside a raster cover; empty when there are none.
  *
  * A generated plate is a few KB of vector with nothing to resize, so it gets no
