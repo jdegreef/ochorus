@@ -5926,18 +5926,17 @@ class CoverEmblemTests(SimpleTestCase):
         self.assertIs(seed_topics.TOPICS, TOPICS)
 
     def test_the_emblem_lands_in_the_band_the_type_reserves(self):
-        """The two halves of the cover have to agree about where the emblem is.
-
-        The emblem is drawn into this file; the type is drawn over it by
-        `BookCover.svelte`, which holds itself off the drawing with a spacer
-        (`.emblem-band`, 20cqw tall over a 4cqw gap) rather than by measuring
-        anything. Nothing checks that at runtime — one is an SVG on disk and the
-        other is CSS — so the numbers are pinned here.
+        """The emblem lands in the band, centred, at the size the band allows.
 
         It used to be fitted instead: the band between the last line of type and
         the lockup was measured and the drawing sized to what was left, because
         a four-line title pushed the type 52 units further down than a one-line
-        one. Nothing in this module knows where the type ends any more.
+        one. Nothing in this module knows where the type ends any more — the
+        browser wraps it — so the band is reserved on both sides instead.
+
+        That the CSS reserves the SAME band is checked by `coverBand.test.ts`,
+        which reads the constants below and converts them; asserting it here
+        would only restate the arithmetic that defines them.
         """
         import re
 
@@ -5953,9 +5952,6 @@ class CoverEmblemTests(SimpleTestCase):
         self.assertEqual(top, _EMBLEM_TOP)
         self.assertEqual(top + size, _EMBLEM_BOTTOM)
         self.assertEqual(left, (600 - size) / 2, "emblem is not centred on the plate")
-        # 4cqw of gap under a 13.7cqw mark over 9cqw of padding, on a plate
-        # whose container is 600 wide: the foot BookCover leaves free.
-        self.assertEqual(_EMBLEM_BOTTOM, 800 - 54 - 82 - 24)
 
     def test_a_plate_without_an_emblem_is_unchanged(self):
         """A book in no topic, or one whose emblem the API image is missing,

@@ -76,7 +76,7 @@ describe('BookCover falls back to a plate', () => {
 		const el = render({ book: book({ cover_color: '#0b7285' }) });
 		// The gradient goes in as a custom property, which the browser stores
 		// verbatim (a plain `background` would come back normalised to rgb()).
-		const style = el.querySelector('.plate')?.getAttribute('style') ?? '';
+		const style = el.querySelector('.cover-plate')?.getAttribute('style') ?? '';
 		expect(style).toContain('#0b7285'); // the book's own colour
 		expect(style).toContain('#063f49'); // shaded to 0.55, as the file's stop is
 	});
@@ -84,7 +84,7 @@ describe('BookCover falls back to a plate', () => {
 	it('names the cover once for a screen reader, and hides the decorative type', () => {
 		// role="img" makes the plate a leaf, so the title inside is not announced
 		// a second time after the label.
-		const plate = render({ book: book() }).querySelector('.plate');
+		const plate = render({ book: book() }).querySelector('.cover-plate');
 		expect(plate?.getAttribute('role')).toBe('img');
 		expect(plate?.getAttribute('aria-label')).toContain('Waiting on God');
 	});
@@ -99,7 +99,7 @@ describe('BookCover falls back to a plate', () => {
 		// The descriptor format is pinned in coverArt.test.ts; here we only care
 		// that the component asks for the variants at all.
 		expect(img?.getAttribute('srcset')).toContain('/covers/art/waiting-on-god-320.webp');
-		expect(el.querySelector('.plate.over-art')).not.toBeNull();
+		expect(el.querySelector('.cover-plate.over-art')).not.toBeNull();
 		expect(el.querySelector('.title')?.textContent).toBe('Waiting on God');
 	});
 
@@ -120,7 +120,7 @@ describe('BookCover falls back to a plate', () => {
 		// title already in it, and this component drew nothing over it.
 		const el = render({ book: book({ cover_url: '/covers/waiting-on-god.svg' }) });
 		expect(el.querySelector('img')?.getAttribute('src')).toBe('/covers/waiting-on-god.svg');
-		expect(el.querySelector('.plate.over-ground')).not.toBeNull();
+		expect(el.querySelector('.cover-plate.over-file')).not.toBeNull();
 		expect(el.querySelector('.title')?.textContent).toBe('Waiting on God');
 		// The emblem is drawn INTO the ground by covers.py, at a fixed band; this
 		// is what keeps the type off it.
@@ -140,39 +140,40 @@ describe('BookCover falls back to a plate', () => {
 		// The one tier that must not get type over it: `/covers/<slug>.jpg` is a
 		// finished cover, and a second title over it would be a mess.
 		const el = render({ book: book({ cover_url: '/covers/humility-2.jpg' }) });
-		expect(el.querySelector('.plate')).toBeNull();
+		expect(el.querySelector('.cover-plate')).toBeNull();
 		expect(el.querySelector('img')?.getAttribute('alt')).toContain('Waiting on God');
 	});
 });
 
 describe("the title wears its author's house style", () => {
 	/**
-	 * The table lives in `coverStyles.ts` and is tested there; what is checked
-	 * here is that it REACHES the pixel — a style resolved and then not passed
-	 * down leaves every cover in the house serif, which is exactly the sameness
-	 * the table exists to end, and looks like nothing at all went wrong.
+	 * The table lives in `coverStyles.ts` and the recipes in `cover-type.css`;
+	 * both are tested there. What is checked here is that the decision REACHES
+	 * the markup — a style resolved and then not put on the element leaves every
+	 * cover in the house serif, which is exactly the sameness the table exists to
+	 * end, and looks like nothing at all went wrong.
 	 */
-	const faceOf = (author: { slug: string; name: string; birth_year: number | null }) =>
+	const styleOf = (author: { slug: string; name: string; birth_year: number | null }) =>
 		render({ book: book({ author } as Partial<BookSummary>) })
-			.querySelector('.type')
-			?.getAttribute('style') ?? '';
+			.querySelector('.cover-type')
+			?.className ?? '';
 
 	it('sets a devotional writer and a Victorian one in different faces', () => {
-		const murray = faceOf({ slug: 'andrew-murray', name: 'Andrew Murray', birth_year: 1828 });
-		const spurgeon = faceOf({
+		const murray = styleOf({ slug: 'andrew-murray', name: 'Andrew Murray', birth_year: 1828 });
+		const spurgeon = styleOf({
 			slug: 'charles-h-spurgeon',
 			name: 'Charles H. Spurgeon',
 			birth_year: 1834
 		});
-		expect(murray).toContain('--cover-face-devotional');
-		expect(spurgeon).toContain('--cover-face-revival');
+		expect(murray).toContain('style-devotional');
+		expect(spurgeon).toContain('style-revival');
 	});
 
 	it("dresses an author nobody has entered in their century's face", () => {
 		// An admin import, or a writer added this morning. Falling back to the
 		// house face would make them the only unfinished-looking book on a shelf.
-		expect(faceOf({ slug: 'not-in-any-table', name: 'A Puritan', birth_year: 1620 })).toContain(
-			'--cover-face-press'
+		expect(styleOf({ slug: 'not-in-any-table', name: 'A Puritan', birth_year: 1620 })).toContain(
+			'style-press'
 		);
 	});
 });

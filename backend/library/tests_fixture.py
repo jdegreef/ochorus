@@ -808,12 +808,14 @@ class CoverAssetTests(SimpleTestCase):
 
         HALF THE SUBJECT, ON PURPOSE. A card is made from its ground, its
         strings, and the house style its author's century is set in. The first
-        two are here; the style is a table in `coverStyles.ts`, which this
-        cannot read — the API image has rootDir `backend/`, and a digest this
-        cannot recompute would fail the build forever. So the manifest records
-        the style beside the digest and `coverOgManifest.test.ts` checks it from
-        the side that owns the table. Each half is checked where it can be
-        derived.
+        two are here; the style is decided by a TypeScript table
+        (`coverStyles.ts`) and applied by a CSS class, and parsing either from
+        Python to fold into this digest would be a worse copy than the one it
+        replaced — it is not that this test cannot reach `frontend/` (it reads
+        `STATIC_DIR` throughout), it is that it cannot evaluate that table. So
+        the manifest records the style beside the digest and
+        `coverOgManifest.test.ts` checks it from the side that owns it. Each
+        half is checked where it can actually be derived.
         """
         manifest_file = STATIC_DIR / "covers" / "og-manifest.json"
         self.assertTrue(
@@ -826,6 +828,9 @@ class CoverAssetTests(SimpleTestCase):
         english = {
             f["slug"]: f for f in self.books if f.get("language") == "en"
         }
+        # Hoisted: `authors_by_slug` re-reads and re-parses authors.json on every
+        # call, and this loop runs over every English row.
+        names = authors_by_slug()
         stale, unrecorded = [], []
         for slug, fields in sorted(english.items()):
             cover = _cover(fields)
@@ -843,7 +848,6 @@ class CoverAssetTests(SimpleTestCase):
             # The type is drawn over the ground at render time — for BOTH tiers
             # now, since a plate carries no words either — so the strings are
             # part of what the card was made from.
-            names = authors_by_slug()
             author = names.get(fields["author"][0], {}).get("name", fields["author"][0])
             blob = source.read_bytes() + "\0{}\0{}\0{}".format(
                 fields["title"], fields.get("subtitle") or "", author

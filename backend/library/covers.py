@@ -101,11 +101,16 @@ def cover_path(slug: str, language: str) -> tuple[str, str]:
     return f"/covers/{language}/{slug}.svg", f"{language}/{slug}.svg"
 
 
-# The ink is white at these opacities. The author line is set at
-# 23px, which is NOT "large text" under WCAG 1.4.3, so AA asks 4.5:1 of it; the
-# title runs 34-60px and asks 3:1, which every colour that satisfies the author
-# line clears with room to spare (the worst measured is 5.08 against a 3.0 bar).
-# So the author line is the binding constraint, and the only one checked.
+# The ink is white at these opacities. The byline is set at 3.9cqw — 23px on the
+# 600-wide plate this module's geometry describes — which is NOT "large text"
+# under WCAG 1.4.3, so AA asks 4.5:1 of it. The title runs 7.6-10.45cqw and asks
+# 3:1, which every colour that satisfies the byline clears with room to spare
+# (the worst measured is 5.08 against a 3.0 bar). So the byline is the binding
+# constraint, and the only one checked.
+#
+# Both sizes are `BookCover`'s now, not this module's — the type moved to HTML —
+# but the QUESTION is still this module's: what colour is under white ink at
+# that height. See `cover-type.css` for where the numbers are set.
 AUTHOR_INK_OPACITY = 0.86
 AUTHOR_MIN_CONTRAST = 4.5
 
