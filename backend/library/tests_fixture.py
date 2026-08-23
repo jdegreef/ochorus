@@ -880,6 +880,65 @@ class SermonShareCardTests(SimpleTestCase):
             "npm run og:sermons` and commit frontend/static/og/sermons/<slug>.png",
         )
 
+    def test_every_card_was_drawn_from_the_sermon_it_stands_in_for(self):
+        """Existence was never the hard part — staleness was.
+
+        The check above passes on a card from any era. Retitle a sermon, correct
+        its passage or fix a preacher's name and the old card keeps shipping,
+        seen only by people who are not us — which is exactly how the book twins
+        sat a design generation out of date for months.
+
+        `npm run og:sermons` records what each card was drawn from; this
+        recomputes the half that lives in the fixture. The other half — which
+        emblem the slug resolves to and its drawing — is recomputed by
+        `sermonCards.test.ts`, because the catalogue is TypeScript and this side
+        cannot read it. Neither sees a change to the generator's own
+        composition; only re-running it can.
+        """
+        manifest_file = STATIC_DIR / "og" / "sermons" / "og-manifest.json"
+        self.assertTrue(
+            manifest_file.is_file(),
+            "frontend/static/og/sermons/og-manifest.json is missing — run "
+            "`cd frontend && npm run og:sermons`",
+        )
+        recorded = json.loads(manifest_file.read_text())["cards"]
+        names = authors_by_slug()
+
+        stale, unrecorded = [], []
+        for row in sorted(all_rows(), key=lambda r: str(r["fields"].get("slug"))):
+            if row["model"] != "library.sermon":
+                continue
+            fields = row["fields"]
+            if fields.get("language", "en") != "en":
+                continue
+            slug = fields["slug"]
+            if slug not in recorded:
+                unrecorded.append(slug)
+                continue
+            author_slug = fields["author"][0]
+            # Mirrors `contentDigest` in generate-sermon-og.mjs: the strings the
+            # card actually sets, in the order it joins them.
+            blob = "\0".join(
+                (
+                    fields["title"],
+                    fields.get("scripture_ref") or "",
+                    names.get(author_slug, {}).get("name", author_slug),
+                    (fields.get("preached_on") or "")[:4],
+                )
+            )
+            if hashlib.sha256(blob.encode()).hexdigest() != recorded[slug]["content"]:
+                stale.append(slug)
+
+        self.assertEqual(
+            unrecorded, [],
+            "sermon with no entry in og-manifest.json — run `npm run og:sermons`",
+        )
+        self.assertEqual(
+            stale, [],
+            "the sermon changed but its share card did not — a forwarded link "
+            "would show the previous title. Run `cd frontend && npm run og:sermons`",
+        )
+
 
 class SermonBriefCoverageTests(SimpleTestCase):
     """Every sermon on the shelf should carry its "In brief".
