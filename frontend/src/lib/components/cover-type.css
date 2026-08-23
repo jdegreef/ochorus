@@ -117,7 +117,9 @@
    face is the title's, and a byline that changed with it would make the shelf's
    one constant line the loudest thing on the grid. Clipped rather than wrapped
    — a long byline has nowhere to wrap to at this tracking, and clipping beats
-   pushing the title down the plate. */
+   pushing the title down the plate. The clipping is HERE rather than Tailwind's
+   `truncate` in the markup: the og script inlines this file and knows nothing of
+   Tailwind, so a utility class would leave the two renderers disagreeing. */
 .cover-type .byline {
 	font-family: var(--font-display);
 	font-size: 3.9cqw;

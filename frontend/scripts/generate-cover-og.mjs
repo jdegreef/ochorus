@@ -172,7 +172,10 @@ const dataUri = (file, mime) => `data:${mime};base64,${readFileSync(file).toStri
  * committed twins shipped set in Times, silently, while both test suites stayed
  * green. Adding a sixth cover face is now one edit in `app.css`, not four.
  *
- * Latin only: a twin is the English card (see ONE PER SLUG above).
+ * Latin AND latin-ext: a twin is an English card, but an English card's title
+ * can still carry a name the latin subset does not cover, and the two files
+ * together are ~11 rather than ~6. Italic and every other subset are dropped —
+ * only the title takes a cover face, and it is never italic.
  */
 function buildFontCss() {
 	// The token block first: it is also the list of families a cover can ask
@@ -181,7 +184,12 @@ function buildFontCss() {
 	const tokens = [...APP_CSS.matchAll(/^\s*(--(?:cover-face-[a-z]+|font-display):[^;]+);/gm)].map(
 		([, decl]) => decl.trim()
 	);
-	const wanted = new Set([...tokens.join(';').matchAll(/'([^']+)'/g)].map(([, family]) => family));
+	// The families a cover can ask for: the FIRST quoted name in each token, which
+	// is the webfont — the rest of a stack is Georgia and the generic, which have
+	// no @font-face to find and would make the completeness check below a lie.
+	const wanted = new Set(
+		tokens.map((decl) => /'([^']+)'/.exec(decl)?.[1]).filter((f) => f !== undefined)
+	);
 
 	const faces = [...APP_CSS.matchAll(/@import '(@fontsource[^']+)'/g)].flatMap(([, spec]) => {
 		// A bare package specifier ('@fontsource-variable/fraunces') is its
@@ -195,7 +203,7 @@ function buildFontCss() {
 			.map((block) => `@font-face${block.slice(0, block.indexOf('}') + 1)}`)
 			// One block per subset, per style. Latin only — a twin is the English
 			// card — upright only, and only a family some cover can name.
-			.filter((block) => /url\(\.\/files\/[^)]*-latin-/.test(block))
+			.filter((block) => /url\(\.\/files\/[^)]*-latin(-ext)?-/.test(block))
 			.filter((block) => !/font-style:\s*italic/.test(block))
 			.filter((block) => wanted.has(/font-family:\s*'([^']+)'/.exec(block)?.[1] ?? ''))
 			.map((block) =>
@@ -210,10 +218,19 @@ function buildFontCss() {
 			);
 	});
 
-	if (faces.length < wanted.size) {
+	// Compared as SETS, not counts: a family ships one block per subset, so
+	// counting blocks let a missing family hide behind another family's second
+	// subset — which is how a guard meant to catch exactly this defect sat green
+	// while every twin rendered in the fallback face.
+	const found = new Set(
+		faces.map((block) => /font-family:\s*'([^']+)'/.exec(block)?.[1]).filter((f) => f)
+	);
+	const missing = [...wanted].filter((family) => !found.has(family));
+	if (missing.length) {
 		throw new Error(
-			`app.css names ${wanted.size} cover families but only ${faces.length} latin ` +
-				`@font-face blocks were found — a --cover-face-* token has no @import beside it.`
+			`app.css names ${missing.join(', ')} in a --cover-face-* token but nothing ` +
+				`@imports the package — every card wearing that recipe would render in the ` +
+				`fallback face, and look deliberate.`
 		);
 	}
 	return `${faces.join('')}:root{${tokens.join(';')}}`;
@@ -311,27 +328,26 @@ html,body{margin:0}
  * and reported success. Nothing downstream could tell: the digest covers the
  * INPUTS, and a PNG has no font metadata to check.
  *
- * So the browser is asked what it actually used. `document.fonts.check` is the
- * only honest answer available — computed style reports the resolved family
- * name, which is exactly what goes wrong here, but `check` reports whether a
- * face by that name is loaded and usable at that size and weight.
+ * So the browser is asked what it actually resolved. `getComputedStyle` is the
+ * whole check: an undeclared token makes the declaration invalid, so the family
+ * falls back to the inherited one, and that is visible here.
  *
- * The house style is Fraunces, which is also the fallback, so it is the one
- * recipe this cannot distinguish from failure — and it is the one that does not
- * matter, since falling back to Fraunces IS the house style.
+ * TWO THINGS IT CANNOT SEE, stated so the next person does not over-trust it.
+ * `document.fonts.check` is not used, because it is handed a stack ending in a
+ * generic family and therefore always answers true — a declared token whose
+ * woff2 failed to load would pass. `buildFontCss` covers that case instead, by
+ * refusing to build when a named family has no @font-face at all. And the house
+ * recipe is Fraunces, which is also the fallback, so it is the one style this
+ * cannot tell from failure — and the one where failure does not matter.
  */
 async function assertTitleFace(page, book) {
-	const got = await page.evaluate(() => {
+	const family = await page.evaluate(() => {
 		const el = document.querySelector('.title');
-		const cs = getComputedStyle(el);
-		return {
-			family: cs.fontFamily.split(',')[0].replace(/["']/g, ''),
-			ok: document.fonts.check(`${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`)
-		};
+		return el ? getComputedStyle(el).fontFamily.split(',')[0].replace(/["']/g, '') : '';
 	});
-	if (!got.ok || (book.style !== 'house' && /^(Times|serif)$/i.test(got.family))) {
+	if (book.style !== 'house' && /^(Times|serif|)$/i.test(family)) {
 		throw new Error(
-			`${book.slug}: the title resolved to "${got.family}" — the ${book.style} face did ` +
+			`${book.slug}: the title resolved to "${family}" — the ${book.style} face did ` +
 				`not load. Check that app.css still @imports it and declares its ` +
 				`--cover-face-* token; a card set in the wrong face renders without complaint.`
 		);
@@ -344,7 +360,7 @@ const digest = (buf) => createHash('sha256').update(buf).digest('hex');
 
 async function main() {
 	const books = needTwins();
-	const browser = await chromium.launch({ channel: 'chrome' });
+	const browser = await chromium.launch();
 	const page = await browser.newPage({
 		viewport: { width: WIDTH, height: HEIGHT },
 		deviceScaleFactor: 1

@@ -102,7 +102,7 @@
      is down there to leave room for. -->
 {#snippet plateType(reserveEmblem: boolean)}
 	<div class="cover-type style-{style}">
-		<div class="byline truncate" dir="auto">{book.author.name}</div>
+		<div class="byline" dir="auto">{book.author.name}</div>
 		<!-- Title, rule and subtitle move as one block so the auto margins centre
 		     THEM between the byline and the mark. Left as three siblings, the
 		     leftover space split three ways and the title rode up the plate. -->

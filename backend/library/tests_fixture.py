@@ -835,8 +835,14 @@ class CoverAssetTests(SimpleTestCase):
         for slug, fields in sorted(english.items()):
             cover = _cover(fields)
             art = cover.startswith("/covers/art/")
-            if not (art or cover.endswith(".svg")):
-                continue  # a designed raster; its twin is ensure_og_twin's
+            # Under `/covers/` on BOTH arms, which is what `needTwins` in the
+            # generator tests (`isArtCover` / `isPlateCover`). Without the prefix
+            # this demanded a twin for a `.svg` hosted anywhere — an unpublished
+            # row can carry one, since the self-hosting gate only checks
+            # published books — and the generator, which reads the ground off
+            # disk, can never produce it. That is a red build no re-run fixes.
+            if not cover.startswith("/covers/") or not (art or cover.endswith(".svg")):
+                continue  # a designed raster, or not ours; twins are ensure_og_twin's
             if slug not in recorded:
                 unrecorded.append(slug)
                 continue
