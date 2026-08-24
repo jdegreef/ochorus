@@ -266,25 +266,27 @@ services:
       # HTML is a soft 404 for image search.
       - type: redirect
         source: /wp-content/uploads/2025/08/Grace-for-Grace-FB-Cover.jpg
-        destination: /covers/grace-for-grace-2.svg
+        destination: /covers/art/grace-for-grace-2.jpg
       - type: redirect
         source: /wp-content/uploads/2026/02/Artboard-1-copy-11-100.jpg
-        destination: /covers/if.svg
+        destination: /covers/art/if.jpg
       - type: redirect
         source: /wp-content/uploads/2025/08/66544dc564f9bec5388fc9f4_Screenshot-2024-05-27-120849-1.png
-        destination: /covers/let-us-pray-2.svg
+        destination: /covers/art/let-us-pray-2.jpg
       - type: redirect
         source: /wp-content/uploads/2025/08/Body-of-Christ.jpg
-        destination: /covers/the-body-of-christ-a-reality.svg
+        destination: /covers/art/the-body-of-christ-a-reality.jpg
       - type: redirect
         source: /wp-content/uploads/2026/01/small-library-copy-3100.png
-        destination: /covers/the-body-of-christ-teens.svg
+        destination: /covers/art/the-body-of-christ-teens.jpg
       - type: redirect
         source: /wp-content/uploads/2025/08/Normal-Christian-Life.jpg
-        # Repointed when the book was given a painting and its generated plate
-        # was deleted. A retired cover's redirect has to follow the cover, not
-        # the filename — `renderRoutes.test.ts` fails on a destination that no
-        # longer exists in static/, which is what caught this.
+        # These `/covers/art/*.jpg` destinations were `/covers/<slug>.svg` until
+        # each book was given a painting and its generated plate was deleted. A
+        # retired cover's redirect follows the COVER, not the filename, and
+        # `renderRoutes.test.ts` is what enforces it: it fails on a destination
+        # that no longer exists in static/. Curating a book therefore means
+        # checking this block — six of these rules have moved so far.
         destination: /covers/art/the-normal-christian-life.jpg
       # INDEX pages: Render doesn't auto-map extensionless URLs to their .html
       # files, so map each one here.

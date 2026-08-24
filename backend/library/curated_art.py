@@ -208,6 +208,111 @@ CURATED: dict[str, Artwork] = {
         "Nee's whole argument is that what the New Testament describes is not "
         "the exceptional Christian life but the normal one.",
     ),
+    # ── Batch 4 ────────────────────────────────────────────────────────────
+    # The last fifteen, which is every remaining generated plate in the English
+    # library. Chosen against each other as much as individually: they land on
+    # one shelf, so two books on one subject do not get one picture (Murray's
+    # moving stream against Simpson's still pond), and the four Watchman Nee
+    # editions are deliberately four different weathers.
+    "around-the-wicket-gate": Artwork(
+        "cma", 97189, "Herman van Swanevelt", "Landscape with Travelers", "1630s",
+        "Travellers at a bridge, not yet across. Spurgeon is writing to the "
+        "people standing AROUND the gate rather than through it, and the whole "
+        "book is a friendly hand on the elbow.",
+    ),
+    "cheque-book": Artwork(
+        "met", 438380, "Salomon van Ruysdael", "Fishing Boats on a River", "early 1660s",
+        "Daily readings on God's promises. This is daily provision being drawn "
+        "out of the water — the same errand every morning, the sail already up "
+        "before anyone has decided whether to trust it.",
+    ),
+    "days-of-heaven-upon-earth": Artwork(
+        "cma", 134072, "George Inness", "Sunny Autumn Day", "1892",
+        "A year of daily devotions. Inness spent his life painting the ordinary "
+        "American afternoon as though the light in it came from somewhere else, "
+        "which is this book's title and not a word more.",
+    ),
+    "divine-healing": Artwork(
+        "met", 436090, "Charles-François Daubigny",
+        "Landscape with a Sunlit Stream", "ca. 1877",
+        "Moving water with light let into it. Murray's case is that healing is "
+        "God's ordinary provision rather than a spectacle, so the picture is a "
+        "stream and not a miracle.",
+    ),
+    "grace-for-grace-2": Artwork(
+        "cma", 140338, "Charles-François Daubigny", "Sunset on the River Oise", "1866",
+        "John 1:16 — grace UPON grace, one measure laid over the last until "
+        "there is nothing left to add. Light on water is the only thing that "
+        "does that in front of you.",
+    ),
+    "if": Artwork(
+        "cma", 133298, "George Inness", "Montclair, New Jersey", "c. 1878",
+        "A hundred one-line self-examinations, not one of which raises its "
+        "voice. Neither does this: a hazy valley, olive trees, nothing "
+        "insisting on itself. The quietest painting in the library, for the "
+        "quietest book in it.",
+    ),
+    "let-us-pray-2": Artwork(
+        "cma", 128371, "Camille Corot", "The Pond at the Entrance of the Woods", "c. 1860–75",
+        "The edge of a wood, where you go to be out of sight. Nee is writing "
+        "about the closet rather than the platform.",
+    ),
+    "plain-account-christian-perfection": Artwork(
+        "cma", 154962, "Richard Wilson", "Cader Idris, with the Mawddach River", "c. 1774",
+        "Wesley's own century and his own roads — he rode something like a "
+        "quarter of a million miles over country of exactly this kind. "
+        "Perfection as a long way up, which is how the book argues it.",
+    ),
+    "sermons-on-several-occasions": Artwork(
+        "cma", 128363, "Charles-François Daubigny",
+        "Villerville Seen from Le Ratier", "1855",
+        "The same enormous sky over a low horizon that `selected-sermons-"
+        "whitefield` wears, and the echo is the point: the two men preached the "
+        "same way, in the open, to whoever came.",
+    ),
+    # Susanna Wesley HAS artwork now, and the reason she had none still stands.
+    # Every candidate was a period PORTRAIT of a different real woman, and a
+    # portrait on a cover reads as a portrait OF the subject — so shipping one
+    # would have claimed an image is Susanna Wesley when it is not. That
+    # objection is about portraits, not about her, and it does not reach a
+    # house. Her life's work was a household: ten surviving children taught at
+    # a kitchen table, in this century. So the cover is the house, and nobody
+    # in it is being passed off as her.
+    "susanna-wesley-clarke": Artwork(
+        "met", 438116, "Francesco Guardi", "The Villa Loredan, Paese", "early 1780s",
+        "A house of her century, for a woman whose work was a household — and "
+        "not a face, which is the one thing this book must not be given.",
+    ),
+    "the-body-of-christ-a-reality": Artwork(
+        "met", 436556, "Jan van Goyen", "Country House near the Water", "1646",
+        "The title is arguing that the body is a fact and not a figure of "
+        "speech, so it gets a building: something actually standing there, "
+        "weathered, lived in, with boats tied up against it.",
+    ),
+    "the-body-of-christ-teens": Artwork(
+        "cma", 110952, "George Inness", "Landscape", "1888",
+        "The same subject as `the-body-of-christ-a-reality` in a younger "
+        "register — one small figure under trees that read as a wood rather "
+        "than as a crowd of separate trees.",
+    ),
+    "the-gospel-of-healing": Artwork(
+        "cma", 124078, "Camille Corot", "Pond at Ville-d'Avray", "late 1860s",
+        "Still water, where Murray's `divine-healing` gets a moving stream. Two "
+        "books on one subject sitting on one shelf should not wear one picture.",
+    ),
+    "things-as-they-are": Artwork(
+        "cma", 148365, "Georges Michel", "Landscape Near Paris", "c. 1840",
+        "Carmichael wrote this to correct the romance in mission reports and "
+        "was told it was too discouraging to print. Hard country under a heavy "
+        "sky, the people in it very small. Deliberately NOT a picture of India: "
+        "the European painting of Indian subjects available here is precisely "
+        "the exoticism the book exists to refuse.",
+    ),
+    "way-into-holiest": Artwork(
+        "cma", 109239, "George Inness", "A Winter Sky", "1866",
+        "Hebrews, and the veil. A burning horizon at the far end of a cold "
+        "marsh: the light is real, and it is not where you are standing.",
+    ),
 }
 
 

@@ -6065,14 +6065,41 @@ class CuratedArtFetchTests(SimpleTestCase):
 class CuratedArtTests(TestCase):
     """Guards on the curated-artwork manifest (library/curated_art.py)."""
 
-    def test_susanna_wesley_has_no_artwork_on_purpose(self):
-        """Every candidate portrait was of a DIFFERENT real woman, and a
-        portrait on a cover reads as a portrait OF that person. Adding one
-        would imply an image is Susanna Wesley when it isn't. If someone adds
-        her here later, this should make them argue for it first."""
+    def test_no_curated_cover_is_a_portrait_of_its_subject(self):
+        """A cover must never appear to be a picture OF the person it is about.
+
+        This began life as `test_susanna_wesley_has_no_artwork_on_purpose`,
+        which asserted she was absent from the manifest. The reason was sound
+        and is unchanged — every candidate for her was a period portrait of a
+        DIFFERENT real woman, and a portrait on a cover reads as a portrait of
+        the subject, so shipping one would have claimed an image is Susanna
+        Wesley when it is not.
+
+        But that objection was about PORTRAITS, and the old test enforced it by
+        naming one book, which caught nothing else and blocked her from art that
+        raises no such question. She now wears a house of her own century. What
+        is worth pinning is the actual rule, for every book: the art direction
+        is landscape, architecture, sky, water and path, and a portrait is what
+        must not appear — for her, and for the next biography added.
+        """
         from library.curated_art import CURATED
 
-        self.assertNotIn("susanna-wesley-clarke", CURATED)
+        # Titles that would be a person rather than a place. Cheap and
+        # deliberately blunt: the manifest is 37 hand-written lines, and a
+        # curator who wants a portrait has to defeat a named list to get one.
+        portraitish = ("portrait of", "self-portrait", "bust of", "effigy")
+        offenders = [
+            f"{slug}: {art.title}"
+            for slug, art in CURATED.items()
+            if any(word in art.title.lower() for word in portraitish)
+        ]
+        self.assertEqual(
+            offenders,
+            [],
+            "a curated cover looks like a portrait — on a book ABOUT that "
+            "person it reads as a picture of them, which is a claim the "
+            "artwork cannot support",
+        )
 
     def test_every_entry_records_its_provenance_and_reason(self):
         from library.curated_art import CURATED, SOURCES
