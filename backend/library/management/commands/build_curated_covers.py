@@ -44,6 +44,7 @@ import shutil
 import subprocess
 import tempfile
 import urllib.request
+from contextlib import contextmanager
 from pathlib import Path
 
 from django.conf import settings
@@ -59,26 +60,39 @@ UA = {"User-Agent": "ochorus-cover-build/1.0 (+https://ochorus.com)"}
 W, H = 600, 800
 
 
-def _fetch(url: str, dest: Path) -> None:
-    """Download to `dest`, atomically.
+@contextmanager
+def _written_atomically(dest: Path):
+    """Yield a scratch path, and move it onto `dest` only if the block finishes.
 
-    Written beside `dest` and renamed only once the transfer completes, because
-    the cache trusts `dest.exists()` and nothing downstream re-checks it. A
-    museum original is tens of MB over a connection that can and does drop
-    mid-stream — one did, leaving a 163 KB `.orig.jpg` with no JPEG end marker
-    that every later run would have accepted as the painting, cropped, and
-    committed. `os.replace` is atomic on the same filesystem, so a file that
-    exists here is a file that arrived whole.
+    BOTH caches in this file decide they already have something with
+    `Path.exists()`, and neither re-reads the bytes. So anything that writes
+    straight to a cached path turns an interruption into a permanent lie: the
+    file is there, so every later run skips the work and uses it.
+
+    Not hypothetical. A Met transfer dropped mid-stream while this batch was
+    being curated and left a 163 KB `.orig.jpg` with no JPEG end marker — which
+    the next run would have accepted as the painting, cropped, and committed.
+    The crop step has exactly the same shape (`sips` writing in place), so it
+    gets the same treatment rather than waiting for its turn to fail.
+
+    `Path.replace` is atomic within a filesystem, and the scratch file sits
+    beside its destination to stay on one.
     """
     dest.parent.mkdir(parents=True, exist_ok=True)
     part = dest.with_suffix(dest.suffix + ".part")
-    req = urllib.request.Request(url, headers=UA)
     try:
-        with urllib.request.urlopen(req, timeout=90) as r, part.open("wb") as f:
-            shutil.copyfileobj(r, f)
+        yield part
         part.replace(dest)
     finally:
         part.unlink(missing_ok=True)
+
+
+def _fetch(url: str, dest: Path) -> None:
+    """Download to `dest`, whole or not at all."""
+    req = urllib.request.Request(url, headers=UA)
+    with _written_atomically(dest) as part:
+        with urllib.request.urlopen(req, timeout=90) as r, part.open("wb") as f:
+            shutil.copyfileobj(r, f)
 
 
 def _json(url: str) -> dict:
@@ -167,11 +181,15 @@ def _crop_3x4(src: Path, key: str) -> Path:
         # scrim and a lot of type — the artefacts JPEG makes at this level are
         # invisible here, and it's the difference between a 235 KB cover and a
         # ~90 KB one. The designed covers on the same shelf are 19-51 KB.
-        subprocess.run(
-            ["sips", "-c", str(H), str(W), "-s", "formatOptions", "55",
-             str(step), "--out", str(out)],
-            check=True, capture_output=True,
-        )
+        # Onto a scratch path, not straight onto the cached one: `sips` writes
+        # in place, and a run killed here would leave a half-written crop that
+        # `out.exists()` above trusts forever.
+        with _written_atomically(out) as part:
+            subprocess.run(
+                ["sips", "-c", str(H), str(W), "-s", "formatOptions", "55",
+                 str(step), "--out", str(part)],
+                check=True, capture_output=True,
+            )
     return out
 
 

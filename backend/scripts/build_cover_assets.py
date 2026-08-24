@@ -119,6 +119,29 @@ def main() -> int:
                     f"{slug} is curated but has no painting at {rel} — "
                     "run `manage.py build_curated_covers` first"
                 )
+            # And the plate it replaced must be GONE. The mirror of the check
+            # above, and it belongs here for the same reason: this is the one
+            # place that knows every curated slug and owns the covers dir.
+            #
+            # Deleting them was a manual step for two batches running, and a
+            # missed one is invisible — `cover_url` has moved to the painting,
+            # so nothing renders the plate, no test reads it, and the plate
+            # contrast gate skips any file whose stem is curated. It is not
+            # merely dead weight: `render.yaml` redirects retired WordPress
+            # image URLs at `/covers/<slug>.svg`, and `renderRoutes.test.ts`
+            # only checks that the destination EXISTS. Leave the plate behind
+            # and that check passes while the redirect quietly sends a legacy
+            # URL to a design that is no longer the book's cover, forever.
+            stale = sorted(
+                p for p in COVERS.rglob(f"{slug}.svg") if p.is_file()
+            )
+            if stale:
+                listed = ", ".join(str(p.relative_to(COVERS)) for p in stale)
+                raise SystemExit(
+                    f"{slug} is curated but still has its generated plate: {listed}. "
+                    "Delete it — a curated work wears the painting, and a leftover "
+                    "plate is what a retired render.yaml redirect will keep pointing at."
+                )
             sources.add(painting)
             continue
         cover = fields.get("cover_url") or ""

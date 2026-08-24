@@ -158,9 +158,17 @@ CURATED: dict[str, Artwork] = {
         "garden enclosed, the vines in flower. Painted in his own decade.",
     ),
     # ── Batch 3 ────────────────────────────────────────────────────────────
-    # Where a book belongs to a place and a decade, the art is from that place
-    # and decade — Finney's revival lectures get the American landscape of his
-    # own burned-over district, painted the year he was writing.
+    # Where a book is ABOUT a place and a moment, the art comes from that place
+    # and near that moment: Finney gets the American landscape of his own
+    # burned-over district, painted three years after his lectures. That is two
+    # of the six, and the rule is not general — four of these are Dutch Golden
+    # Age landscapes on books that are neither Dutch nor of that century,
+    # chosen for what they show rather than when they were painted. Whitefield's
+    # enormous sky is a van Goyen because the sky is the subject, not because
+    # 1646 has anything to do with him.
+    #
+    # ONE PAIRING IS DELIBERATE, and only one: the two Hobbema roads. Everything
+    # else here should be able to stand on its own book.
     "all-things-for-good": Artwork(
         "cma", 148363, "Simon de Vlieger",
         "Sleeping Peasants near Fields (Parable of the Weeds)", "1650–53",

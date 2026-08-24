@@ -6021,7 +6021,7 @@ class GeneratedCoverTests(TestCase):
         self.assertNotIn("font-family", svg)
 
 
-class CuratedArtFetchTests(TestCase):
+class CuratedArtFetchTests(SimpleTestCase):
     """A half-downloaded painting must not be mistaken for a whole one.
 
     `build_curated_covers` caches museum originals under `.cache/` and decides
@@ -6035,10 +6035,6 @@ class CuratedArtFetchTests(TestCase):
     """
 
     def test_an_interrupted_download_leaves_no_file_behind(self):
-        import tempfile
-        from pathlib import Path
-        from unittest import mock
-
         from library.management.commands import build_curated_covers as cmd
 
         with tempfile.TemporaryDirectory() as td:
@@ -6057,15 +6053,12 @@ class CuratedArtFetchTests(TestCase):
                 with self.assertRaises(BrokenPipeError):
                     cmd._fetch("https://example.invalid/x.jpg", dest)
 
-            self.assertFalse(
-                dest.exists(),
-                "a partial download was left where the cache will trust it as "
-                "the finished painting",
-            )
+            # Nothing at all: not the truncated download the cache would trust
+            # as the finished painting, and not the `.part` scratch either.
             self.assertEqual(
-                sorted(q.name for q in Path(td).iterdir()),
+                [q.name for q in Path(td).iterdir()],
                 [],
-                "the .part scratch file was left behind",
+                "an interrupted download left a file behind",
             )
 
 
