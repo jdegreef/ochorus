@@ -558,9 +558,10 @@ class BookDetailSerializer(BookListSerializer):
         reader saw it and no screen reader announced it. The painting is now a
         plain image with the type drawn over it in HTML, so the credit needs
         somewhere real to live — and it should be somewhere real regardless:
-        these are Met Open Access works, CC0 and not requiring attribution, but
-        crediting the painter is right, and it lets a reader check the
-        provenance ``curated_art`` records.
+        every collection these come from releases CC0, so attribution is not
+        required of us, but crediting the painter is right and it lets a reader
+        check the provenance ``curated_art`` records. Which institution it names
+        is the manifest's to say — there is more than one now.
         """
         # Keyed on the cover this edition actually wears, not on the manifest:
         # the fixture gate deliberately allows an edition to carry designed

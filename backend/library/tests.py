@@ -6034,16 +6034,30 @@ class CuratedArtTests(TestCase):
         self.assertNotIn("susanna-wesley-clarke", CURATED)
 
     def test_every_entry_records_its_provenance_and_reason(self):
-        from library.curated_art import CURATED
+        from library.curated_art import CURATED, SOURCES
 
         for slug, art in CURATED.items():
             with self.subTest(slug=slug):
-                self.assertGreater(art.met_id, 0, "needs a Met object id as the licence receipt")
+                # The id is only meaningful with the collection it belongs to —
+                # two museums number their objects independently.
+                self.assertIn(art.source, SOURCES, "unknown collection")
+                self.assertGreater(art.object_id, 0, "needs an object id as the licence receipt")
                 self.assertTrue(art.artist.strip())
                 self.assertTrue(art.title.strip())
                 # `why` is not decoration: it's what stops the next person
                 # swapping in a prettier painting that means nothing.
                 self.assertTrue(art.why.strip())
+
+    def test_every_source_can_actually_be_fetched(self):
+        """A source in the manifest with no fetcher is a build that dies on a
+        re-run, months after the entry was added and by someone else."""
+        from library.curated_art import CURATED
+        from library.management.commands.build_curated_covers import FETCHERS
+
+        for slug, art in CURATED.items():
+            with self.subTest(slug=slug):
+                self.assertIn(art.source, FETCHERS, f"no fetcher for {art.source!r}")
+
 
     def test_credit_names_the_artist_and_the_source(self):
         from library.curated_art import credit

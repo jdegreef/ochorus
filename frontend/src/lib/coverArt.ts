@@ -225,3 +225,34 @@ export function tintable(hex: string, min = 0.34, max = 0.52): string {
 	const scale = (1 - target) / (1 - lightness);
 	return toHex(rgb.map((c) => 255 - (255 - c) * scale));
 }
+
+/**
+ * WCAG relative luminance of an [r, g, b], 0–1.
+ *
+ * Here rather than beside its caller because this module's header already
+ * claims colour ARITHMETIC generally, and a constant like 0.03928 typed out per
+ * call site is one that gets corrected in a single place and stays wrong in the
+ * others.
+ *
+ * TWO OTHER COPIES SURVIVE, both for a reason. `covers.py` cannot import
+ * anything under `frontend/` — the API image is built from `backend/` alone.
+ * And `scripts/og-card.mjs` could import this, but `sermonCards.test.ts`
+ * digests that file's SOURCE to catch composition drift, so even a
+ * behaviour-preserving edit demands every sermon card be redrawn — and those
+ * can only be drawn on Linux, since the generator wants the Liberation faces.
+ * Deduplicating it needs to be done from a machine that can re-run
+ * `npm run og:sermons`, not from here.
+ */
+export function relativeLuminance(rgb: number[]): number {
+	const [r, g, b] = rgb.map((value) => {
+		const c = value / 255;
+		return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+	});
+	return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+
+/** WCAG contrast ratio between two [r, g, b] colours — 1 (same) to 21. */
+export function contrastRatio(a: number[], b: number[]): number {
+	const [hi, lo] = [relativeLuminance(a), relativeLuminance(b)].sort((x, y) => y - x);
+	return (hi + 0.05) / (lo + 0.05);
+}

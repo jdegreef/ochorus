@@ -4,10 +4,22 @@
     python manage.py build_curated_covers confessions
     python manage.py build_curated_covers --dry-run
 
-For each slug in library/curated_art.py this downloads the Met's open-access
+For each slug in library/curated_art.py this downloads that entry's open-access
 image, crops it to the cover's 3:4 box, and writes ONE painting per work to
 ``covers/art/<slug>.jpg``. Every language points at that file and ``BookCover``
 draws the edition's title over it in HTML.
+
+ONE FETCHER PER COLLECTION, in ``FETCHERS`` below, keyed by the manifest's
+``source``. Each does the same two jobs: re-check the licence flag on the live
+object, and hand back a URL for the largest usable image.
+
+ADDING A COLLECTION is three edits, not one: a ``Source`` in
+``curated_art.SOURCES`` (how to cite it), a fetcher here, and its ``FETCHERS``
+entry. The two tables cannot merge — ``curated_art`` is imported on the request
+path by the serializer and must stay free of ``urllib`` and of this command —
+so ``test_every_source_can_actually_be_fetched`` is what stops a manifest entry
+whose pixels nothing knows how to fetch. Miss the ``SOURCES`` half instead and
+``credit()`` raises a KeyError inside a serializer.
 
 It used to composite the type into an SVG, once per (slug, language), because
 an SVG served through <img> cannot fetch a sibling file — so the painting had to
@@ -38,12 +50,11 @@ from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 
 from library.covers import art_url
-from library.curated_art import CURATED
+from library.curated_art import CURATED, Artwork
 from library.models import Book
 
 COVERS_DIR = settings.BASE_DIR.parent / "frontend" / "static" / "covers"
 CACHE = settings.BASE_DIR.parent / ".cache" / "curated-art"
-MET_API = "https://collectionapi.metmuseum.org/public/collection/v1/objects/{}"
 UA = {"User-Agent": "ochorus-cover-build/1.0 (+https://ochorus.com)"}
 W, H = 600, 800
 
@@ -55,30 +66,80 @@ def _fetch(url: str, dest: Path) -> None:
         shutil.copyfileobj(r, f)
 
 
-def _met_image(met_id: int) -> Path:
-    """The full-size open-access image, cached. Re-verifies isPublicDomain on
-    every fetch rather than trusting the manifest — the manifest records what
-    we believed, the API is what's true."""
-    raw = CACHE / f"{met_id}.orig.jpg"
-    if raw.exists():
-        return raw
-    req = urllib.request.Request(MET_API.format(met_id), headers=UA)
-    with urllib.request.urlopen(req, timeout=60) as r:
-        obj = json.load(r)
+def _json(url: str) -> dict:
+    with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60) as r:
+        return json.load(r)
+
+
+def _met_image_url(object_id: int) -> str:
+    """The Met's largest open-access image URL for an object."""
+    obj = _json(f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{object_id}")
+    # Re-verified on every fetch rather than trusted from the manifest: the
+    # manifest records what we believed, the API is what is true.
     if not obj.get("isPublicDomain"):
-        raise CommandError(f"Met object {met_id} is NOT flagged public domain — refusing.")
+        raise CommandError(f"Met object {object_id} is NOT flagged public domain — refusing.")
     src = obj.get("primaryImage") or obj.get("primaryImageSmall")
     if not src:
-        raise CommandError(f"Met object {met_id} has no image.")
-    _fetch(src, raw)
+        raise CommandError(f"Met object {object_id} has no image.")
+    return src
+
+
+def _cma_image_url(object_id: int) -> str:
+    """The Cleveland Museum's largest usable image URL for an object.
+
+    `print` (a few thousand px) rather than `full`, which is a TIFF `sips` would
+    have to transcode for no gain at 600x800; `web` is the fallback for objects
+    with no print derivative. Both are on their open-access CDN.
+    """
+    obj = _json(f"https://openaccess-api.clevelandart.org/api/artworks/{object_id}")["data"]
+    if obj.get("share_license_status") != "CC0":
+        raise CommandError(
+            f"Cleveland object {object_id} is "
+            f"{obj.get('share_license_status')!r}, not CC0 — refusing."
+        )
+    images = obj.get("images") or {}
+    for size in ("print", "web"):
+        url = (images.get(size) or {}).get("url")
+        if url:
+            return url
+    raise CommandError(f"Cleveland object {object_id} has no print or web image.")
+
+
+#: Manifest ``source`` → the function that licence-checks it and returns a URL.
+FETCHERS = {"met": _met_image_url, "cma": _cma_image_url}
+
+
+def _cache_key(art: Artwork) -> str:
+    """What this artwork's cached files are named after.
+
+    `<source>-<id>`, not the bare id: two collections number their objects
+    independently, so `150354` means one thing to Cleveland and another to the
+    Met, and a shared key would serve one museum's painting for the other's.
+
+    A function rather than an f-string at each site because the download and
+    the crop are cached separately — spelled twice, a change to the scheme
+    would leave the two caches keying different objects, which is the exact
+    collision this is here to prevent.
+    """
+    return f"{art.source}-{art.object_id}"
+
+
+def _artwork_image(art: Artwork) -> Path:
+    """The source image for one manifest entry, downloaded once and cached."""
+    fetch = FETCHERS.get(art.source)
+    if fetch is None:
+        raise CommandError(f"No fetcher for source {art.source!r} — see FETCHERS.")
+    raw = CACHE / f"{_cache_key(art)}.orig.jpg"
+    if not raw.exists():
+        _fetch(fetch(art.object_id), raw)
     return raw
 
 
-def _crop_3x4(src: Path, met_id: int) -> Path:
+def _crop_3x4(src: Path, key: str) -> Path:
     """Scale to the cover height, then centre-crop to width. Scaling by HEIGHT
     matters: most of these are wide landscapes, and fitting them to width first
     would leave a letterbox rather than filling the plate."""
-    out = CACHE / f"{met_id}.{W}x{H}.jpg"
+    out = CACHE / f"{key}.{W}x{H}.jpg"
     if out.exists():
         return out
     with tempfile.TemporaryDirectory() as td:
@@ -120,7 +181,7 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.WARNING(f"  – {slug}: no Book rows, skipping"))
                 continue
 
-            jpeg = _crop_3x4(_met_image(art.met_id), art.met_id)
+            jpeg = _crop_3x4(_artwork_image(art), _cache_key(art))
             url, rel = art_url(slug)
 
             # ONE painting per work, with no type in it. Every language points at
