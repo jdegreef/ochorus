@@ -64,15 +64,31 @@
    carry: a global darkener so white type holds anywhere, and heavier bands top
    and bottom, under the byline and the mark, which is where art is most likely
    to be pale. A plate needs none — its colour is a floored flat tone, not a
-   photograph. */
+   photograph.
+
+   THESE FOUR STOPS ARE A PROMISE, not a look. A plate colour is floored for
+   contrast where it is minted (`covers.ink_safe`); a painting has no colour to
+   floor, so the scrim is the whole of what makes white type legible, and it has
+   to work for a painting nobody has chosen yet. `coverArtContrast.test.ts`
+   reads these numbers, composites them over PURE WHITE — the worst input there
+   is — and fails if the ink drops below AA.
+
+   The 60% stop used to sit at 70% and 0.4, which left a trough exactly where
+   the subtitle falls: measured in the browser, the subtitle band runs 0.58-0.64
+   on a two-line title and lower on a three-line one, and over white the ink
+   there reached only 3.70:1 against a 4.5 bar. Two shipped covers were already
+   under it — `confessions` at 4.16 and `union-and-communion` at 4.39 — which is
+   how a guarantee nobody checks decays: not all at once, one pale painting at a
+   time. The trough is now behind the title (which is large text and asks 3:1)
+   and the scrim closes up again before the subtitle. */
 .cover-plate.over-art {
 	background:
 		linear-gradient(
 			180deg,
-			rgb(0 0 0 / 0.62) 0%,
-			rgb(0 0 0 / 0.34) 30%,
-			rgb(0 0 0 / 0.4) 70%,
-			rgb(0 0 0 / 0.7) 100%
+			rgb(0 0 0 / 0.64) 0%,
+			rgb(0 0 0 / 0.36) 30%,
+			rgb(0 0 0 / 0.5) 60%,
+			rgb(0 0 0 / 0.74) 100%
 		),
 		rgb(26 20 16 / 0.26);
 }
