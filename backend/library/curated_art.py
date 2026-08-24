@@ -161,9 +161,17 @@ CURATED: dict[str, Artwork] = {
 
 
 def credit(slug: str) -> str | None:
-    """One-line attribution for a curated cover, or None if it has no art."""
+    """One-line attribution for a curated cover, or None if it has no art.
+
+    Lenient about an unknown ``source`` rather than raising, because this runs
+    on the REQUEST path — the book detail serializer is its only caller — and a
+    manifest typo should cost a credit line, not turn a public book page into a
+    500. `test_every_entry_records_its_provenance_and_reason` is what actually
+    stops such an entry, before it is ever deployed; this is the floor under it.
+    """
     a = CURATED.get(slug)
-    if not a:
+    source = SOURCES.get(a.source) if a else None
+    if not a or source is None:
         return None
-    return f"{a.artist}, “{a.title}” ({a.year}). {SOURCES[a.source].institution}."
+    return f"{a.artist}, “{a.title}” ({a.year}). {source.institution}."
 
