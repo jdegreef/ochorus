@@ -281,7 +281,11 @@ services:
         destination: /covers/the-body-of-christ-teens.svg
       - type: redirect
         source: /wp-content/uploads/2025/08/Normal-Christian-Life.jpg
-        destination: /covers/the-normal-christian-life.svg
+        # Repointed when the book was given a painting and its generated plate
+        # was deleted. A retired cover's redirect has to follow the cover, not
+        # the filename — `renderRoutes.test.ts` fails on a destination that no
+        # longer exists in static/, which is what caught this.
+        destination: /covers/art/the-normal-christian-life.jpg
       # INDEX pages: Render doesn't auto-map extensionless URLs to their .html
       # files, so map each one here.
       #

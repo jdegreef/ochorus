@@ -60,10 +60,25 @@ W, H = 600, 800
 
 
 def _fetch(url: str, dest: Path) -> None:
+    """Download to `dest`, atomically.
+
+    Written beside `dest` and renamed only once the transfer completes, because
+    the cache trusts `dest.exists()` and nothing downstream re-checks it. A
+    museum original is tens of MB over a connection that can and does drop
+    mid-stream — one did, leaving a 163 KB `.orig.jpg` with no JPEG end marker
+    that every later run would have accepted as the painting, cropped, and
+    committed. `os.replace` is atomic on the same filesystem, so a file that
+    exists here is a file that arrived whole.
+    """
     dest.parent.mkdir(parents=True, exist_ok=True)
+    part = dest.with_suffix(dest.suffix + ".part")
     req = urllib.request.Request(url, headers=UA)
-    with urllib.request.urlopen(req, timeout=90) as r, dest.open("wb") as f:
-        shutil.copyfileobj(r, f)
+    try:
+        with urllib.request.urlopen(req, timeout=90) as r, part.open("wb") as f:
+            shutil.copyfileobj(r, f)
+        part.replace(dest)
+    finally:
+        part.unlink(missing_ok=True)
 
 
 def _json(url: str) -> dict:
