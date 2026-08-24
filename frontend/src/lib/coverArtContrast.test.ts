@@ -1,6 +1,8 @@
 import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
+
+import { contrastRatio } from './coverArt';
 
 /**
  * The scrim has to carry white type over ANY painting — including one we have
@@ -28,14 +30,40 @@ import { describe, expect, it } from 'vitest';
  * two renderers share, this one pins what the type can be trusted to land on.
  */
 const COVER_CSS = readFileSync(join(process.cwd(), 'src/lib/components/cover-type.css'), 'utf-8');
+const COVERS_PY = readFileSync(
+	resolve(process.cwd(), '..', 'backend', 'library', 'covers.py'),
+	'utf-8'
+);
 
-/** WCAG relative luminance. */
-const luminance = (rgb: number[]): number => {
-	const [r, g, b] = rgb.map((c) => {
-		const s = c / 255;
-		return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
-	});
-	return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+/**
+ * The AA bar for small text, read from `covers.py` rather than typed as 4.5.
+ *
+ * The generated plates hold their byline to `AUTHOR_MIN_CONTRAST` and floor the
+ * plate colour until it clears; the paintings have no colour to floor, so the
+ * scrim does that job instead. Same promise, two mechanisms — so it should be
+ * the same number, and reading it is how that stays true.
+ */
+const SMALL_TEXT_MIN = (() => {
+	const found = /^AUTHOR_MIN_CONTRAST = ([\d.]+)/m.exec(COVERS_PY);
+	expect(found, 'covers.py no longer declares AUTHOR_MIN_CONTRAST').not.toBeNull();
+	return Number(found![1]);
+})();
+
+/**
+ * How opaque a run of type's ink is, from the stylesheet that sets it.
+ *
+ * Retyping these was the flaw in the first version of this file: it read the
+ * scrim and hardcoded the ink, so it pinned half of the contrast equation.
+ * Soften `.byline` to 0.72 for a lighter look and the test would have gone on
+ * computing 0.86 and staying green while the real byline dropped under AA —
+ * the same one-thing-at-a-time decay the header describes.
+ */
+const inkOpacity = (selector: string): number => {
+	const block = new RegExp(`\\.cover-type \\.${selector} \\{([^}]*)\\}`).exec(COVER_CSS);
+	expect(block, `.cover-type .${selector} is gone from cover-type.css`).not.toBeNull();
+	const opacity = /opacity:\s*([\d.]+)/.exec(block![1]);
+	// No `opacity` means full-strength ink, which is what `.title` is.
+	return opacity ? Number(opacity[1]) : 1;
 };
 
 /**
@@ -76,19 +104,24 @@ const alphaAt = (stops: [number, number][], t: number): number => {
 /**
  * Where the type sits, how opaque its ink is, and what AA asks of it.
  *
- * The byline is the binding constraint at 4.5:1 — it is small text, and
- * `covers.py` reasons identically about the generated plates. The title runs
- * large enough to count as large text under WCAG 1.4.3, so it asks 3:1. Each
- * band is measured at its LIGHTEST point, which is where the gradient is
- * thinnest across the run of type.
+ * The POSITIONS are the only hand-written numbers here, and they are measured
+ * rather than guessed: `.byline`, `.title` and `.subtitle` were read off the
+ * running app with `getBoundingClientRect` against the plate. Everything else —
+ * the scrim, the ink, the bar — is read from the source that sets it, because
+ * this file's whole job is to notice when one of them moves.
+ *
+ * Each band is checked at its LIGHTEST point, which is where the gradient is
+ * thinnest across that run of type.
  */
 const BANDS = {
-	byline: { from: 0.12, to: 0.18, ink: 0.86, min: 4.5 },
-	title: { from: 0.33, to: 0.57, ink: 1.0, min: 3.0 },
+	byline: { from: 0.12, to: 0.18, ink: inkOpacity('byline'), min: SMALL_TEXT_MIN },
+	// 3:1 is WCAG 1.4.3's bar for LARGE text, which the title is at every size a
+	// cover is drawn — there is no constant to read this one from.
+	title: { from: 0.33, to: 0.57, ink: inkOpacity('title'), min: 3 },
 	// Runs to 0.70 rather than the 0.64 a two-line title measures at: the title
 	// block is centred by auto margins, so a three-line title pushes the
 	// subtitle down, and the band has to cover the lowest it can go.
-	subtitle: { from: 0.57, to: 0.7, ink: 0.85, min: 4.5 }
+	subtitle: { from: 0.57, to: 0.7, ink: inkOpacity('subtitle'), min: SMALL_TEXT_MIN }
 };
 
 /** Contrast of the band's ink over the worst case the scrim can be asked to
@@ -100,7 +133,7 @@ function worstCase(band: (typeof BANDS)[keyof typeof BANDS]) {
 		const a = alphaAt(stops, t);
 		const bg = wash.map((w) => (1 - a) * (washAlpha * w + (1 - washAlpha) * 255));
 		const ink = bg.map((c) => band.ink * 255 + (1 - band.ink) * c);
-		const ratio = (luminance(ink) + 0.05) / (luminance(bg) + 0.05);
+		const ratio = contrastRatio(ink, bg);
 		if (ratio < worst) worst = ratio;
 	}
 	return worst;

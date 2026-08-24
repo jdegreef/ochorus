@@ -11,8 +11,15 @@ draws the edition's title over it in HTML.
 
 ONE FETCHER PER COLLECTION, in ``FETCHERS`` below, keyed by the manifest's
 ``source``. Each does the same two jobs: re-check the licence flag on the live
-object, and hand back a URL for the largest usable image. Adding a collection
-is a function and a dict entry.
+object, and hand back a URL for the largest usable image.
+
+ADDING A COLLECTION is three edits, not one: a ``Source`` in
+``curated_art.SOURCES`` (how to cite it), a fetcher here, and its ``FETCHERS``
+entry. The two tables cannot merge — ``curated_art`` is imported on the request
+path by the serializer and must stay free of ``urllib`` and of this command —
+so ``test_every_source_can_actually_be_fetched`` is what stops a manifest entry
+whose pixels nothing knows how to fetch. Miss the ``SOURCES`` half instead and
+``credit()`` raises a KeyError inside a serializer.
 
 It used to composite the type into an SVG, once per (slug, language), because
 an SVG served through <img> cannot fetch a sibling file — so the painting had to
@@ -42,15 +49,12 @@ from pathlib import Path
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 
-from library.content_fixtures import book_editions, persist_fields
 from library.covers import art_url
-from library.curated_art import CURATED
+from library.curated_art import CURATED, Artwork
 from library.models import Book
 
 COVERS_DIR = settings.BASE_DIR.parent / "frontend" / "static" / "covers"
 CACHE = settings.BASE_DIR.parent / ".cache" / "curated-art"
-MET_API = "https://collectionapi.metmuseum.org/public/collection/v1/objects/{}"
-CMA_API = "https://openaccess-api.clevelandart.org/api/artworks/{}"
 UA = {"User-Agent": "ochorus-cover-build/1.0 (+https://ochorus.com)"}
 W, H = 600, 800
 
@@ -67,9 +71,9 @@ def _json(url: str) -> dict:
         return json.load(r)
 
 
-def _met_source(object_id: int) -> str:
+def _met_image_url(object_id: int) -> str:
     """The Met's largest open-access image URL for an object."""
-    obj = _json(MET_API.format(object_id))
+    obj = _json(f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{object_id}")
     # Re-verified on every fetch rather than trusted from the manifest: the
     # manifest records what we believed, the API is what is true.
     if not obj.get("isPublicDomain"):
@@ -80,14 +84,14 @@ def _met_source(object_id: int) -> str:
     return src
 
 
-def _cma_source(object_id: int) -> str:
+def _cma_image_url(object_id: int) -> str:
     """The Cleveland Museum's largest usable image URL for an object.
 
     `print` (a few thousand px) rather than `full`, which is a TIFF `sips` would
     have to transcode for no gain at 600x800; `web` is the fallback for objects
     with no print derivative. Both are on their open-access CDN.
     """
-    obj = _json(CMA_API.format(object_id))["data"]
+    obj = _json(f"https://openaccess-api.clevelandart.org/api/artworks/{object_id}")["data"]
     if obj.get("share_license_status") != "CC0":
         raise CommandError(
             f"Cleveland object {object_id} is "
@@ -102,21 +106,30 @@ def _cma_source(object_id: int) -> str:
 
 
 #: Manifest ``source`` → the function that licence-checks it and returns a URL.
-FETCHERS = {"met": _met_source, "cma": _cma_source}
+FETCHERS = {"met": _met_image_url, "cma": _cma_image_url}
 
 
-def _artwork_image(art) -> Path:
-    """The source image for one manifest entry, cached on disk.
+def _cache_key(art: Artwork) -> str:
+    """What this artwork's cached files are named after.
 
-    Keyed `<source>-<id>`, not the bare id: two collections number their objects
+    `<source>-<id>`, not the bare id: two collections number their objects
     independently, so `150354` means one thing to Cleveland and another to the
-    Met, and a shared cache key would serve one museum's painting for the
-    other's.
+    Met, and a shared key would serve one museum's painting for the other's.
+
+    A function rather than an f-string at each site because the download and
+    the crop are cached separately — spelled twice, a change to the scheme
+    would leave the two caches keying different objects, which is the exact
+    collision this is here to prevent.
     """
+    return f"{art.source}-{art.object_id}"
+
+
+def _artwork_image(art: Artwork) -> Path:
+    """The source image for one manifest entry, downloaded once and cached."""
     fetch = FETCHERS.get(art.source)
     if fetch is None:
         raise CommandError(f"No fetcher for source {art.source!r} — see FETCHERS.")
-    raw = CACHE / f"{art.source}-{art.object_id}.orig.jpg"
+    raw = CACHE / f"{_cache_key(art)}.orig.jpg"
     if not raw.exists():
         _fetch(fetch(art.object_id), raw)
     return raw
@@ -168,7 +181,7 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.WARNING(f"  – {slug}: no Book rows, skipping"))
                 continue
 
-            jpeg = _crop_3x4(_artwork_image(art), f"{art.source}-{art.object_id}")
+            jpeg = _crop_3x4(_artwork_image(art), _cache_key(art))
             url, rel = art_url(slug)
 
             # ONE painting per work, with no type in it. Every language points at
@@ -186,20 +199,6 @@ class Command(BaseCommand):
                     if book.cover_url != url:
                         book.cover_url = url
                         book.save(update_fields=["cover_url"])
-                # And in the FIXTURE, which is the source of truth. Updating
-                # only the DB made this command look like it worked and then
-                # undid itself: the seeds re-upsert every committed row on every
-                # deploy, so the next one would point the book back at the plate
-                # it had before — on production, days later, with the painting
-                # still sitting in the repo.
-                #
-                # `cover_color` is deliberately left alone. A curated cover
-                # draws on the painting and wears whatever hex the edition
-                # already carries; `localize_covers` says the same, and the
-                # colour only surfaces on the missing-file plate.
-                for path, edition_slug, _language, fields in book_editions():
-                    if edition_slug == slug and fields.get("cover_url") != url:
-                        persist_fields(path, {"cover_url": url})
             wrote += 1
             kb = jpeg.stat().st_size // 1024
             self.stdout.write(

@@ -6058,12 +6058,6 @@ class CuratedArtTests(TestCase):
             with self.subTest(slug=slug):
                 self.assertIn(art.source, FETCHERS, f"no fetcher for {art.source!r}")
 
-    def test_the_receipt_points_at_the_right_collection(self):
-        from library.curated_art import object_url
-
-        self.assertIn("metmuseum.org", object_url("confessions"))
-        self.assertIn("clevelandart.org", object_url("the-imitation-of-christ"))
-        self.assertIsNone(object_url("a-book-with-no-curated-art"))
 
     def test_credit_names_the_artist_and_the_source(self):
         from library.curated_art import credit

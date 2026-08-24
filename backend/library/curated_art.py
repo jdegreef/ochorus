@@ -45,7 +45,10 @@ class Source(NamedTuple):
 
     #: How the credit line names the institution, after the artist and title.
     institution: str
-    #: The public page for one object — the licence receipt, for a human.
+    #: The public page for one object, as a `{}` template for its id. Data for
+    #: a human checking provenance — format it and open it — not a code path;
+    #: nothing renders a link to the source, and a reader gets the artist,
+    #: title and year through `credit()` instead.
     object_url: str
 
 
@@ -156,6 +159,7 @@ CURATED: dict[str, Artwork] = {
     ),
 }
 
+
 def credit(slug: str) -> str | None:
     """One-line attribution for a curated cover, or None if it has no art."""
     a = CURATED.get(slug)
@@ -163,8 +167,3 @@ def credit(slug: str) -> str | None:
         return None
     return f"{a.artist}, “{a.title}” ({a.year}). {SOURCES[a.source].institution}."
 
-
-def object_url(slug: str) -> str | None:
-    """The collection's own page for a curated cover's artwork — the receipt."""
-    a = CURATED.get(slug)
-    return SOURCES[a.source].object_url.format(a.object_id) if a else None
