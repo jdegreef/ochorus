@@ -553,12 +553,20 @@ export interface EngagementOverview {
 	total_users: number;
 }
 
-export interface EngagementBook {
+/** What a reading row's slug names — see WorkKind on the server. */
+export type EngagementKind = 'book' | 'sermon' | 'bio';
+
+export interface EngagementWork {
+	/** Books, sermons and biographies share the slug column and can collide, so
+	 *  a row is only identified by kind AND slug. */
+	kind: EngagementKind;
 	slug: string;
 	title: string;
 	author: string;
 	readers: number;
-	finishers?: number;
+	/** Books only: reaching the last chapter means nothing for a single-document
+	 *  sermon or bio, so the server sends null rather than a misleading count. */
+	finishers?: number | null;
 	chapters?: number;
 }
 
@@ -568,8 +576,8 @@ export interface EngagementLang extends Language {
 
 export interface AdminEngagement {
 	overview: EngagementOverview;
-	most_read: EngagementBook[];
-	most_marked: EngagementBook[];
+	most_read: EngagementWork[];
+	most_marked: EngagementWork[];
 	by_language: EngagementLang[];
 	weekly_active: { week: string; readers: number }[];
 }

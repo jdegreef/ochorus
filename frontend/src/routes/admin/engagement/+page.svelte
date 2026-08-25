@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { auth } from '$lib/auth.svelte';
 	import { ApiError } from '$lib/api';
-	import { getAdminEngagement, type AdminEngagement } from '$lib/library';
+	import { getAdminEngagement, type AdminEngagement, type EngagementWork } from '$lib/library';
 
 	let data = $state<AdminEngagement | null>(null);
 	let loading = $state(true);
@@ -52,6 +52,16 @@
 
 	const weekMax = $derived(Math.max(1, ...(data?.weekly_active.map((w) => w.readers) ?? [1])));
 	const langMax = $derived(Math.max(1, ...(data?.by_language.map((l) => l.readers) ?? [1])));
+
+	// Books, sermons and biographies all appear in these lists and their slugs
+	// live in different namespaces, so the row's kind decides the path. Every row
+	// used to link to /books/<slug>, which 404s for a sermon or a bio.
+	const workHref = (w: EngagementWork) =>
+		w.kind === 'sermon'
+			? `/sermons/${w.slug}`
+			: w.kind === 'bio'
+				? `/authors/${w.slug}`
+				: `/books/${w.slug}`;
 </script>
 
 <svelte:head><title>Admin · Engagement — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
@@ -123,9 +133,9 @@
 					<h2 class="text-h3 mb-3">Most read</h2>
 					{#if d.most_read.length}
 						<ul class="space-y-2">
-							{#each d.most_read as b (b.slug)}
+							{#each d.most_read as b (`${b.kind}:${b.slug}`)}
 								<li class="flex items-baseline justify-between gap-3">
-									<a href="/books/{b.slug}" class="min-w-0 truncate text-body text-text hover:text-accent">
+									<a href={workHref(b)} class="min-w-0 truncate text-body text-text hover:text-accent">
 										{b.title}<span class="text-small text-muted"> · {b.author}</span>
 									</a>
 									<span class="shrink-0 text-small text-muted tabular-nums">
@@ -144,9 +154,9 @@
 					<h2 class="text-h3 mb-3">Most highlighted</h2>
 					{#if d.most_marked.length}
 						<ul class="space-y-2">
-							{#each d.most_marked as b (b.slug)}
+							{#each d.most_marked as b (`${b.kind}:${b.slug}`)}
 								<li class="flex items-baseline justify-between gap-3">
-									<a href="/books/{b.slug}" class="min-w-0 truncate text-body text-text hover:text-accent">
+									<a href={workHref(b)} class="min-w-0 truncate text-body text-text hover:text-accent">
 										{b.title}<span class="text-small text-muted"> · {b.author}</span>
 									</a>
 									<span class="shrink-0 text-small text-muted tabular-nums">
