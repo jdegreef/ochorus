@@ -1,5 +1,4 @@
 <script lang="ts">
-	import NoteDialog from '$lib/components/NoteDialog.svelte';
 	import { onMount, tick, untrack } from 'svelte';
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
@@ -15,10 +14,7 @@
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { marks } from '$lib/marks.svelte';
-	import { DEFAULT_HIGHLIGHT } from '$lib/reading-schema';
 	import { bookmarks } from '$lib/bookmarks.svelte';
-	import { findQueryHits } from '$lib/searchHits';
-	import { renderMarks } from '$lib/rangeMarks';
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import {
@@ -31,18 +27,16 @@
 	import { listen } from '$lib/listen.svelte';
 	import { define } from '$lib/define.svelte';
 	import { scripture } from '$lib/scripture.svelte';
+	import { createReaderText } from '$lib/readerText.svelte';
+	import ReaderOverlays from '$lib/components/ReaderOverlays.svelte';
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
 	import { jsonLd, hreflangFor } from '$lib/seo';
 	import { localizeHref } from '$lib/href';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Icon from '$lib/components/Icon.svelte';
-	import DefinePopover from '$lib/components/DefinePopover.svelte';
-	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
 	import TocDrawer from '$lib/components/TocDrawer.svelte';
 	import SearchDrawer from '$lib/components/SearchDrawer.svelte';
-	import SelectionBar from '$lib/components/SelectionBar.svelte';
-	import ListenBar from '$lib/components/ListenBar.svelte';
 
 	let { data } = $props();
 	const chapter = $derived(data.chapter as Chapter);
@@ -105,14 +99,6 @@
 		const wantsModern = new URLSearchParams(location.search).get('edition') === 'modern';
 		if (wantsModern && edition !== 'modern') invalidateAll();
 	});
-
-	// Note editor state — edits the note of an existing mark group, or creates
-	// a new mark from pending selection segments when noteId is null.
-	let noteOpen = $state(false);
-	let noteId = $state<string | null>(null);
-	let notePending = $state<{ p: number; s: number; e: number }[]>([]);
-	let noteDraft = $state('');
-	let noteColor = $state<string>(DEFAULT_HIGHLIGHT);
 
 	let tocOpen = $state(false);
 	let searchOpen = $state(false);
@@ -371,7 +357,6 @@
 		if (Number.isFinite(jumpTo) && jumpTo > 0) saveScrollAnchor(s, order, jumpTo);
 
 		saveProgress(s, order, language);
-		marks.load(s, order, language);
 		bookmarks.load(s);
 
 		// A backward chapter turn in page mode asks to land on the last page.
@@ -455,21 +440,6 @@
 		return () => window.removeEventListener('resize', onResize);
 	});
 
-	// A first-sign-in sync can replace the local cache underneath us — re-read the
-	// current chapter's marks so freshly-pulled highlights/notes appear.
-	onMount(() => {
-		const onSync = () => marks.refresh();
-		window.addEventListener('ochorus:sync', onSync);
-		return () => window.removeEventListener('ochorus:sync', onSync);
-	});
-
-	// Listen mode: stop speech when the chapter changes or the reader unmounts.
-	$effect(() => {
-		void slug;
-		void chapter.order;
-		return () => listen.stop();
-	});
-
 	/** The plan day covering a chapter of THIS book, when following a plan. */
 	function planDayFor(order: number): number | null {
 		const d = plan?.days.find((x) => x.book_slug === slug && x.chapter_order === order);
@@ -519,7 +489,7 @@
 		const el = e.target as HTMLElement;
 		if (
 			el?.closest?.('input, textarea, select, [contenteditable="true"]') ||
-			noteOpen ||
+			reader.open ||
 			define.open ||
 			// These two were missing, so a page turned underneath an open scripture
 			// popover or text-settings panel while the reader was using it.
@@ -529,7 +499,7 @@
 			searchOpen
 		) {
 			// Escape still has to work from inside a panel — it is how you leave.
-			if (e.key === 'Escape' && readerUi.focus && !noteOpen) readerUi.exitFocus();
+			if (e.key === 'Escape' && readerUi.focus && !reader.open) readerUi.exitFocus();
 			return;
 		}
 		// Focus mode had no keyboard exit at all: exitFocus() existed and nothing
@@ -562,15 +532,6 @@
 	}
 
 	/** Tap a server-wrapped Bible reference → open the scripture popover. */
-	function tryScriptureClick(e: MouseEvent): boolean {
-		const a = (e.target as HTMLElement).closest?.('a.scripture-ref') as HTMLElement | null;
-		if (!a?.dataset.ref) return false;
-		e.preventDefault();
-		const r = a.getBoundingClientRect();
-		scripture.show(a.dataset.ref, r.bottom + window.scrollY, r.left + window.scrollX + r.width / 2);
-		return true;
-	}
-
 	/**
 	 * Edge tap zones: in PAGED mode the outer 15% turns the page, which is the
 	 * Kindle convention and what a paginated view is for.
@@ -584,7 +545,7 @@
 	 * should change which chapter you are in.
 	 */
 	function onArticleClick(e: MouseEvent) {
-		if (tryScriptureClick(e)) return;
+		if (reader.onScriptureClick(e)) return;
 		if (!paged) return;
 		const el = e.target as HTMLElement;
 		if (el.closest('a, button, mark, input, textarea, select, .selbar, .define-pop, .scripture-pop')) return;
@@ -653,16 +614,6 @@
 		}
 	}
 
-	/** Read the chapter aloud from the topmost visible paragraph. */
-	function startListening() {
-		if (!body) return;
-		const paragraphs = [...body.children].map((el) => (el as HTMLElement).innerText);
-		listen.start(paragraphs, topVisibleIndex(), getLang(), {
-			title: chapter.title,
-			artist: `${chapter.author_name} · ${chapter.book_title}`
-		});
-	}
-
 	function topVisibleIndex(): number {
 		if (!body) return 0;
 		const kids = body.children;
@@ -671,19 +622,6 @@
 		}
 		return 0;
 	}
-
-	// Highlight the paragraph being spoken and keep it in view.
-	$effect(() => {
-		const current = listen.current;
-		if (!body) return;
-		const kids = body.children;
-		for (let i = 0; i < kids.length; i++) {
-			kids[i].classList.toggle('tts-current', i === current);
-		}
-		if (current >= 0 && kids[current]) {
-			kids[current].scrollIntoView({ block: 'center', behavior: 'smooth' });
-		}
-	});
 
 	function restoreScroll(s: string, order: number) {
 		// Prefer the device-local anchor; fall back to the synced resume point so
@@ -728,50 +666,6 @@
 		return () => io.disconnect();
 	}
 
-	// Render text-range marks as <mark> spans; clicking one opens its note.
-	// Arriving from a search result: highlight what matched and scroll to it,
-	// rather than dropping the reader at the top to re-find their sentence.
-	// Offsets are computed from the rendered blocks and handed to the SAME
-	// renderer the highlights use — that function restores each block from
-	// `dataset.pristine`, so a separate pass would be wiped whenever a highlight
-	// changed, and the two would fight over the same HTML.
-	const searchQuery = $derived(($page.url.searchParams.get('q') ?? '').trim());
-	let scrolledToHit = false;
-
-	$effect(() => {
-		const list = marks.list;
-		if (!body) return;
-		// Recomputed here, not once on mount: the marks render restores pristine
-		// HTML, so hit offsets have to be handed over on every pass.
-		const hits = searchQuery
-			? findQueryHits(
-					Array.from(body.children).map((el) => el.textContent ?? ''),
-					searchQuery
-				)
-			: [];
-		renderMarks(body, list, (id) => {
-			noteId = id;
-			notePending = [];
-			noteDraft = marks.getNote(id);
-			noteColor = marks.getColor(id);
-			noteOpen = true;
-		}, hits);
-
-		// Once per arrival: bring the first match into view. Guarded, or every
-		// highlight edit would yank the reader back up the page.
-		if (hits.length && !scrolledToHit) {
-			scrolledToHit = true;
-			requestAnimationFrame(() =>
-				body
-					?.querySelector('mark.search-hit')
-					// Both axes: the paged reader lays chapters out in columns and
-					// scrolls horizontally, so `block` alone would never reach a hit
-					// on a later page.
-					?.scrollIntoView({ block: 'center', inline: 'center', behavior: 'smooth' })
-			);
-		}
-	});
-
 	const cite = $derived({
 		author: chapter.author_name,
 		book: chapter.book_title,
@@ -779,28 +673,23 @@
 		url: $page.url.href
 	});
 
-	/** Note on a fresh selection: highlight it first, then attach the note. */
-	function openNoteForSelection(segments: { p: number; s: number; e: number }[]) {
-		const existing = marks.groupCovering(segments);
-		noteId = existing;
-		notePending = existing ? [] : segments;
-		noteDraft = existing ? marks.getNote(existing) : '';
-		noteColor = existing ? marks.getColor(existing) : DEFAULT_HIGHLIGHT;
-		noteOpen = true;
-	}
-	function saveNote() {
-		if (noteId) {
-			marks.setNote(noteId, noteDraft);
-			marks.setColor(noteId, noteColor);
-		} else if (notePending.length && noteDraft.trim()) {
-			marks.add(notePending, noteDraft, noteColor);
-		}
-		noteOpen = false;
-	}
-	function removeMark() {
-		if (noteId) marks.remove(noteId);
-		noteOpen = false;
-	}
+	// Everything attached to the TEXT — highlights, notes, the selection bar,
+	// listen follow-along, search hits — is shared with the sermon and biography
+	// readers. Position is not: page-turn mode has no scroll offset, so the
+	// paging code above stays here and hands the machinery its own answer for
+	// "which paragraph am I on".
+	const reader = createReaderText({
+		kind: () => 'book',
+		slug: () => slug,
+		order: () => chapter.order,
+		language: () => getLang(),
+		body: () => body,
+		topIndex: topVisibleIndex,
+		listenTitle: () => chapter.title,
+		listenArtist: () => `${chapter.author_name} · ${chapter.book_title}`,
+		cite: () => cite,
+		searchQuery: () => $page.url.searchParams.get('q') ?? ''
+	});
 </script>
 
 <Seo
@@ -902,7 +791,7 @@
 					<button
 						class="btn btn-icon btn-ghost"
 						class:text-accent={listen.status !== 'idle'}
-						onclick={() => (listen.status === 'idle' ? startListening() : listen.stop())}
+						onclick={() => (listen.status === 'idle' ? reader.startListening() : listen.stop())}
 						aria-label={t('reader.listen')}
 						title={t('reader.listen')}><Icon name="headphones" size={18} /></button
 					>
@@ -1079,42 +968,14 @@
 	</div>
 {/if}
 
-<SelectionBar
-	container={body}
-	{cite}
-	onHighlight={(segments, color) => {
-		const existing = marks.groupCovering(segments);
-		if (!existing) marks.add(segments, undefined, color);
-		else if (marks.getColor(existing) === color) marks.remove(existing);
-		else marks.setColor(existing, color);
-	}}
-	onNote={openNoteForSelection}
-	highlightColor={(segments) => {
-		const id = marks.groupCovering(segments);
-		return id ? marks.getColor(id) : null;
-	}}
-	onDefine={(word, top, left) => define.show(word, top, left)}
-/>
-
-<DefinePopover />
-<ScripturePopover />
+<!-- Outside the <article>: in page-turn mode it carries a translateX, and a
+     fixed-position overlay inside a transformed ancestor is laid out against
+     that ancestor — every one of these would slide with the page turn. -->
+<ReaderOverlays {reader} container={body} />
 
 <TocDrawer {slug} currentOrder={chapter.order} {edition} bind:open={tocOpen} />
 
 <SearchDrawer {slug} bind:open={searchOpen} />
-
-<ListenBar />
-
-{#if noteOpen}
-	<NoteDialog
-		bind:text={noteDraft}
-		bind:color={noteColor}
-		canRemove={!!noteId}
-		onSave={saveNote}
-		onRemove={removeMark}
-		onClose={() => (noteOpen = false)}
-	/>
-{/if}
 
 <style>
 	/* --- Page-turn mode --------------------------------------------------------
