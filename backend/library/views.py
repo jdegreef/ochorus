@@ -7,7 +7,7 @@ Books are addressed by their canonical ``slug`` plus a ``language`` query param
 import logging
 
 from django.core.cache import cache
-from django.db.models import Count, Prefetch, Q
+from django.db.models import Count, Exists, OuterRef, Prefetch, Q
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status
@@ -24,6 +24,7 @@ from .localization import language_from_request
 from .models import (
     SERMON_CARD_DEFER,
     Author,
+    AuthorTranslation,
     Book,
     Chapter,
     Plan,
@@ -58,6 +59,8 @@ from .serializers import (
     TopicDetailSerializer,
     TopicListSerializer,
     book_topic_map,
+    plan_book_index,
+    plan_chapter_index,
 )
 
 logger = logging.getLogger(__name__)
@@ -113,16 +116,22 @@ class AuthorListView(PublicContentCacheMixin, generics.ListAPIView):
         # where their card would then render blank (the serializer no longer
         # falls back). An author earns a place here by having a work in this
         # language, or a bio a reader of this language can actually read.
-        has_bio = (Q(original_language=lang) & (~Q(bio="") | ~Q(bio_html=""))) | (
-            Q(translations__language=lang)
-            & (~Q(translations__bio="") | ~Q(translations__bio_html=""))
+        # Exists(), not a join. Joining `translations` fanned this query out a
+        # third way and forced the trailing .distinct() — which then made
+        # Postgres de-duplicate over every selected column, `bio` and `bio_html`
+        # included. A correlated EXISTS asks the same question without
+        # multiplying rows, so no DISTINCT is needed and the biography text
+        # never reaches a GROUP BY.
+        translated_bio = Exists(
+            AuthorTranslation.objects.filter(author=OuterRef("pk"), language=lang)
+            .exclude(bio="", bio_html="")
         )
+        own_bio = Q(original_language=lang) & (~Q(bio="") | ~Q(bio_html=""))
         return (
             Author.objects.filter(is_imprint=False)
             .prefetch_related("translations")
             .with_work_counts(lang)
-            .filter(Q(num_books__gt=0) | Q(num_sermons__gt=0) | has_bio)
-            .distinct()
+            .filter(Q(num_books__gt=0) | Q(num_sermons__gt=0) | own_bio | translated_bio)
             .order_by("name")
         )
 
@@ -291,6 +300,20 @@ class PlanListView(PublicContentCacheMixin, generics.ListAPIView):
             .order_by("sort_order", "title")
         )
 
+    def get_serializer_context(self):
+        """Resolve every plan's chapters and books ONCE for the page.
+
+        Each card shows total words, where the plan starts, and a cover strip,
+        and each of those used to fetch its own rows — three queries per plan.
+        The same pattern BookListView uses for topic chips.
+        """
+        ctx = super().get_serializer_context()
+        plans = list(self.get_queryset())
+        language = _language(self.request)
+        ctx["plan_chapters"] = plan_chapter_index(plans, language)
+        ctx["plan_books"] = plan_book_index(plans, language)
+        return ctx
+
 
 class PlanDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
     serializer_class = PlanDetailSerializer
@@ -303,6 +326,19 @@ class PlanDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
             slug=self.kwargs["slug"],
             language=_language(self.request),
         )
+
+    def get_serializer_context(self):
+        """One index for all four consumers on this page.
+
+        The detail payload needs the same chapters four times over — total
+        words, day one, the cover strip, and the day list — and each resolved
+        them separately.
+        """
+        ctx = super().get_serializer_context()
+        plan = self.get_object()
+        ctx["plan_chapters"] = plan_chapter_index([plan], plan.language)
+        ctx["plan_books"] = plan_book_index([plan], plan.language)
+        return ctx
 
 
 def _attach_books(topics, language):
