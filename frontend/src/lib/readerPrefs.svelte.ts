@@ -51,10 +51,37 @@ export const MEASURE: Record<Measure, string> = {
 // $lib/pageWidth.svelte) and the shared `.page-col` class; MEASURE below stays
 // purely the prose column inside a chapter.
 
+/**
+ * The three faces a reader can choose, as CSS `font-family` values.
+ *
+ * TWO OF THESE NAME A TOKEN RATHER THAN A STACK, and that is the point. They
+ * used to spell Fraunces and Hanken out here, which made this a third copy of
+ * a list `app.css` already declares twice — and copies drift silently, because
+ * nothing renders both. The reader is the app's most-read surface, so the copy
+ * that drifted was the one that mattered: `--font-display` grew Arabic,
+ * Devanagari and Cyrillic faces and the READER did not, since
+ * `--reading-font` is always set from here and the `var(--reading-font,
+ * var(--font-display))` fallback in `.reading` therefore never fires.
+ *
+ * A `var()` is legal here: these land in a custom property on the reading
+ * article, and substitution is token-level, so `--reading-font:var(--font-display)`
+ * resolves exactly as the literal stack would.
+ *
+ * DYSLEXIC NAMES ONE LITERAL AND THEN THE TOKEN, because only OpenDyslexic
+ * itself has no token — the tail does. It is the one preference this change
+ * cannot honour outside Latin: OpenDyslexic is Latin-only and no Arabic or
+ * Devanagari equivalent exists, so an Arabic reader who asked for it was
+ * getting `cursive`, a generic that matches every glyph and hands the script to
+ * whatever the device felt like. Ending at `var(--font-display)` puts that
+ * reader on Amiri or Tiro instead — the same text they would get without the
+ * preference rather than something worse — and, unlike spelling those three
+ * families out here, it cannot drift from the stack they are named in. What the
+ * setting SHOULD do for those readers is a product question, not a CSS one.
+ */
 export const FONT_STACK: Record<ReaderFont, string> = {
-	serif: "'Fraunces Variable', Georgia, 'Times New Roman', serif",
-	sans: "'Hanken Grotesk Variable', ui-sans-serif, system-ui, sans-serif",
-	dyslexic: "'OpenDyslexic', 'Comic Sans MS', cursive"
+	serif: 'var(--font-display)',
+	sans: 'var(--font-sans)',
+	dyslexic: "'OpenDyslexic', 'Comic Sans MS', var(--font-display)"
 };
 
 const SCALE_MIN = 0.8;

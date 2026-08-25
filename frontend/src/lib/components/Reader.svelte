@@ -194,7 +194,7 @@
 <!-- eslint-disable-next-line svelte/no-at-html-tags -->
 <div class="reading {className}" bind:this={body} onclick={reader.onScriptureClick} dir="auto" lang={contentLang(language)}>{@html html}</div>
 
-<ReaderOverlays {reader} container={body} />
+<ReaderOverlays {reader} container={body} {language} />
 
 <style>
 	/* Paragraph currently being read aloud in Listen mode. */

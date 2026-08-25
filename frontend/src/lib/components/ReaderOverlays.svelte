@@ -20,17 +20,27 @@
 
 	let {
 		reader,
-		container
+		container,
+		language
 	}: {
 		/** The shared machinery — see `$lib/readerText.svelte.ts`. */
 		reader: ReaderText;
 		/** The prose element the selection bar watches for selections. */
 		container: HTMLElement | undefined;
+		/**
+		 * The edition's language. The quote card draws the reader's own sentence
+		 * onto a canvas, where a font stack has to be named outright — so it needs
+		 * to know the script to pick a face that can actually draw it. Required,
+		 * as it is on SelectionBar: a quote card with no language falls back to a
+		 * Latin stack, which cannot draw Arabic or Devanagari at all.
+		 */
+		language: string;
 	} = $props();
 </script>
 
 <SelectionBar
 	{container}
+	{language}
 	cite={reader.cite}
 	onHighlight={reader.onHighlight}
 	onNote={reader.openNoteForSelection}

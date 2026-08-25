@@ -971,7 +971,7 @@
 <!-- Outside the <article>: in page-turn mode it carries a translateX, and a
      fixed-position overlay inside a transformed ancestor is laid out against
      that ancestor — every one of these would slide with the page turn. -->
-<ReaderOverlays {reader} container={body} />
+<ReaderOverlays {reader} container={body} {language} />
 
 <TocDrawer {slug} currentOrder={chapter.order} {edition} bind:open={tocOpen} />
 
