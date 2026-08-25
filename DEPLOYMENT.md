@@ -110,6 +110,15 @@ PUBLIC_SITE_URL     = https://ochorus.com
 > and redeploy **after** the cert is issued. `PUBLIC_SITE_URL` has no such
 > constraint — it's only baked into meta-tag strings, never fetched.
 
+> ⚠️ **A new API host also needs a CSP edit.** `ochorus-web`'s
+> `Content-Security-Policy` (in `render.yaml`) names the API origin literally,
+> because Render substitutes no env vars into header values. Both
+> `ochorus-api.onrender.com` and `api.ochorus.com` are already listed, so the
+> flip above is covered — but any *other* host would be blocked, and the symptom
+> is every API call failing in the browser console with a CSP violation while the
+> server logs look perfectly healthy. Header changes also need a manual
+> **Blueprint → Sync** (gotcha #3); they do not ship on an ordinary auto-deploy.
+
 > `PUBLIC_SITE_URL` is baked into the prerendered pages (canonical / OG / sitemap)
 > at **build** time, so after changing it run `ochorus-web` → **Manual Deploy →
 > "Clear cache & deploy latest commit"**. A plain env save won't re-bake the
