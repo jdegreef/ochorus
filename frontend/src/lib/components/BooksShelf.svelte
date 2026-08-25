@@ -385,8 +385,8 @@
 					</h2>
 					{#if view === 'grid'}
 						<div class="book-grid">
-							{#each g.books as book (book.slug)}
-								<BookCard {book} />
+							{#each g.books as book, i (book.slug)}
+								<BookCard {book} priority={i < 6} />
 							{/each}
 						</div>
 					{:else}
@@ -400,8 +400,8 @@
 			{/each}
 		{:else if view === 'grid'}
 			<div class="book-grid">
-				{#each sorted as book (book.slug)}
-					<BookCard {book} showAuthor />
+				{#each sorted as book, i (book.slug)}
+					<BookCard {book} showAuthor priority={i < 6} />
 				{/each}
 			</div>
 		{:else}

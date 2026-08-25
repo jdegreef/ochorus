@@ -2,6 +2,7 @@
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { getBook, getChapter } from '$lib/library';
 	import { getLang } from '$lib/lang.svelte';
+	import { createLimiter } from '$lib/limiter';
 	import { i18n } from '$lib/i18n.svelte';
 	import { highlightAround } from '$lib/highlight';
 	import { localizeHref } from '$lib/href';
@@ -75,9 +76,16 @@
 		const lang = getLang();
 		try {
 			const book = await getBook(slug, lang);
+			// Gated at six. An unbounded Promise.all fired one request per
+			// chapter at once — 39 for Mawe ya Kukanyagia — from a drawer a
+			// reader opens casually. That exceeds the browser's own connection
+			// cap anyway, so the requests queued regardless; all it added was a
+			// spike at the API proportional to book length. createLimiter exists
+			// for exactly this and its docstring uses this shape as the example.
+			const gate = createLimiter(6);
 			const chapters = await Promise.all(
 				book.chapters.map((c) =>
-					getChapter(slug, c.order, lang)
+					gate(() => getChapter(slug, c.order, lang))
 						.then((ch) => ({ order: c.order, title: c.title || `${c.order}`, html: ch.body_html }))
 						.catch(() => null)
 				)

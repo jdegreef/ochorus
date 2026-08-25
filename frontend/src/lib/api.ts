@@ -62,7 +62,7 @@ async function robustFetch(url: string, init: RequestInit): Promise<Response> {
  * user is signed in we attach their Supabase Bearer token so authenticated
  * endpoints (e.g. /api/auth/me) work.
  */
-export async function apiFetch<T = unknown>(path: string, init: RequestInit = {}): Promise<T> {
+async function requestJSON<T>(path: string, init: RequestInit): Promise<T> {
 	const headers = new Headers(init.headers);
 	if (init.body && !headers.has('Content-Type')) {
 		headers.set('Content-Type', 'application/json');
@@ -72,7 +72,11 @@ export async function apiFetch<T = unknown>(path: string, init: RequestInit = {}
 		headers.set('Authorization', `Bearer ${token}`);
 	}
 
-	const res = await robustFetch(`${API_BASE_URL}${path}`, { ...init, headers });
+	const res = await robustFetch(`${API_BASE_URL}${path}`, {
+		...init,
+		headers,
+		signal: withTimeout(init.signal)
+	});
 	if (!res.ok) {
 		let body: unknown = null;
 		try {
@@ -84,6 +88,59 @@ export async function apiFetch<T = unknown>(path: string, init: RequestInit = {}
 	}
 	if (res.status === 204) return null as T;
 	return (await res.json()) as T;
+}
+
+/**
+ * How long a request may hang before it is abandoned.
+ *
+ * There was no timeout at all, so a request that never settles — a captive
+ * portal, a dyno that accepted the connection and went away — left `loading`
+ * true forever on every shelf and admin page. An error the reader can retry is
+ * better than a spinner that never stops.
+ *
+ * Not applied during the build: prerender already has its own retry ladder
+ * whose last delay is sized to ride out an API restart, and a 15s ceiling would
+ * cut that short.
+ */
+const REQUEST_TIMEOUT_MS = 15_000;
+
+function withTimeout(caller: AbortSignal | null | undefined): AbortSignal | undefined {
+	if (building) return caller ?? undefined;
+	const timeout = AbortSignal.timeout(REQUEST_TIMEOUT_MS);
+	// Preserve a caller's own signal (the define popover aborts on new input).
+	return caller ? AbortSignal.any([caller, timeout]) : timeout;
+}
+
+/**
+ * In-flight GET requests, so concurrent callers asking for the same thing make
+ * one request. Keyed by path AND token: two readers never share a response, and
+ * a signed-in request never resolves from an anonymous one.
+ *
+ * The home page alone fired `listPlans` three times, `listBooks` twice and
+ * `listSermons` twice on hydration — five components asking independently, all
+ * at once, so neither the HTTP cache nor the service worker could dedupe them
+ * (every lookup misses before the first response lands).
+ *
+ * NOTE: callers share ONE response object. That matches how this codebase
+ * already treats API results — every sort copies first (`[...books].sort(...)`)
+ * — and a caller that mutates a response in place would now leak that into
+ * every other holder. Copy before mutating.
+ */
+const inFlight = new Map<string, Promise<unknown>>();
+
+export function apiFetch<T = unknown>(path: string, init: RequestInit = {}): Promise<T> {
+	const method = (init.method ?? 'GET').toUpperCase();
+	// Only GETs. A POST is an action, not a question — two of them are two
+	// intentions, and collapsing them would drop one.
+	if (method !== 'GET' || init.body || init.signal) {
+		return requestJSON<T>(path, init);
+	}
+	const key = `${path}\u0000${tokenProvider() ?? ''}`;
+	const existing = inFlight.get(key) as Promise<T> | undefined;
+	if (existing) return existing;
+	const request = requestJSON<T>(path, init).finally(() => inFlight.delete(key));
+	inFlight.set(key, request);
+	return request;
 }
 
 /**
