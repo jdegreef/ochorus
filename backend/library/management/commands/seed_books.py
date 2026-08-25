@@ -29,6 +29,7 @@ from __future__ import annotations
 
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
+from django.db.models import Prefetch
 
 from library.author_sync import sync_all_authors
 from library.content_fixtures import authors_by_slug, load_all_rows
@@ -57,6 +58,23 @@ CHAPTER_FIELDS = ("order", "title", "body_html", "word_count")
 # it out; a fixture that re-asserted either would walk the decision back.
 CREATE_ONLY_FIELDS = frozenset({"source_type", "is_published"})
 UPDATE_FIELDS = tuple(f for f in BOOK_FIELDS if f not in CREATE_ONLY_FIELDS)
+
+
+def drift_books():
+    """Books carrying only the chapter columns ``chapter_drift`` compares.
+
+    An unconstrained ``prefetch_related("chapters")`` materialised EVERY chapter
+    of every language at once — bodies, body_text and tsvectors — inside the
+    atomic seed, for a report-only diagnostic. chapter_drift reads order, title
+    and body_html and nothing else, so the rest was pure allocation. Same rows,
+    a third of the bytes.
+    """
+    return Book.objects.prefetch_related(
+        Prefetch(
+            "chapters",
+            queryset=Chapter.objects.only("book_id", "order", "title", "body_html"),
+        )
+    )
 
 
 def chapter_drift(books, chapters_by_book):
@@ -267,11 +285,13 @@ class Command(BaseCommand):
         # good seed, so its reads are swallowed (only reads, so the transaction
         # stays usable) rather than allowed to propagate out of the block.
         try:
-            drifted = list(
-                chapter_drift(
-                    Book.objects.prefetch_related("chapters"), chapters_by_book
-                )
-            )
+            # `.only(...)` on the prefetch: chapter_drift compares order, title
+            # and body_html and nothing else, but an unconstrained
+            # prefetch_related materialised EVERY chapter of every language at
+            # once — bodies, body_text and tsvectors — inside the atomic seed,
+            # and did it for a report-only diagnostic. Same rows, a third of the
+            # bytes.
+            drifted = list(chapter_drift(drift_books(), chapters_by_book))
         except Exception as exc:  # noqa: BLE001 — never let diagnostics fail a deploy
             self.stdout.write(
                 self.style.WARNING(f"⚠ Chapter-drift check skipped ({exc!r}).")

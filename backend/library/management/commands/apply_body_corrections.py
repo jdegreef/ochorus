@@ -29,7 +29,17 @@ class Command(BaseCommand):
 
     def handle(self, *args, **opts):
         fixed = 0
-        for chapter in Chapter.objects.select_related("book").iterator(chunk_size=100):
+        # Defer the two heaviest columns. This command reads only body_html
+        # and writes it back; body_text is re-derived by Chapter.save() (which
+        # assigns it, un-deferring it so it IS written), and the tsvector is
+        # refreshed by fts.refresh_chapter's own UPDATE — neither needs to be
+        # fetched. Together they are roughly two thirds of the bytes this scan
+        # pulled, on EVERY deploy, to change nothing in the steady state.
+        for chapter in (
+            Chapter.objects.select_related("book")
+            .defer("body_text", "search_vector")
+            .iterator(chunk_size=100)
+        ):
             slug = chapter.book.slug
             new = strip_trailing_pagenum(chapter.body_html)
             # Unconditional: `apply_body_corrections` now carries the line-break
@@ -44,7 +54,9 @@ class Command(BaseCommand):
                 self.stdout.write(f"  fixed {slug}/{chapter.order}")
         sermons_fixed = 0
         # Every sermon, not just those with an entry — same reason as above.
-        for sermon in Sermon.objects.iterator(chunk_size=100):
+        for sermon in Sermon.objects.defer("body_text", "search_vector").iterator(
+            chunk_size=100
+        ):
             # order=None: sermons have no chapters, so no drop-cap may apply.
             new_html = apply_body_corrections(sermon.slug, None, sermon.body_html)
             if new_html != sermon.body_html:

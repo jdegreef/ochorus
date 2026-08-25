@@ -28,7 +28,11 @@ class Command(BaseCommand):
         parser.add_argument("--all", action="store_true", help="Rescan every chapter.")
 
     def handle(self, *args, **opts):
-        qs = Chapter.objects.all()
+        # body_html and the tsvector are never read here — the scan works off
+        # body_text and stamps via .update(). Fetching them made an
+        # every-deploy pass over the corpus several times heavier than the work
+        # it was doing.
+        qs = Chapter.objects.defer("body_html", "search_vector")
         if not opts["all"]:
             qs = qs.filter(citations_indexed_at__isnull=True)
         now = timezone.now()
