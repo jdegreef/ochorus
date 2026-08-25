@@ -1,11 +1,27 @@
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-import { AUTHOR_STYLE, COVER_STYLE_IDS, ERA_STYLE, coverStyleFor } from './coverStyles';
+import type { CoverScript } from './coverStyles';
+import {
+	AUTHOR_STYLE,
+	COVER_SCRIPTS,
+	COVER_STYLE_IDS,
+	ERA_STYLE,
+	coverStyleFor,
+	scriptOf
+} from './coverStyles';
 import { ERAS, eraOf } from './eras';
 
 const CONTENT = resolve(process.cwd(), '..', 'backend', 'library', 'fixtures', 'content');
+
+/** A font family's fontsource package name. One rule, three readers: the two
+ *  `@import` gates and the package-directory probe. */
+const pkgSlug = (family: string) =>
+	family
+		.replace(/ Variable$/, '')
+		.toLowerCase()
+		.replace(/ /g, '-');
 const APP_CSS = readFileSync(join(process.cwd(), 'src/app.css'), 'utf-8');
 const COVER_CSS = readFileSync(join(process.cwd(), 'src/lib/components/cover-type.css'), 'utf-8');
 
@@ -64,10 +80,7 @@ describe('cover styles', () => {
 			// The house recipe is Fraunces, which the app already loads for
 			// everything else; the other five each need their own package.
 			if (family) {
-				const pkg = family[1]
-					.replace(/ Variable$/, '')
-					.toLowerCase()
-					.replace(/ /g, '-');
+				const pkg = pkgSlug(family[1]);
 				expect(APP_CSS, `nothing @imports ${family[1]}`).toMatch(
 					new RegExp(`@import '@fontsource[^']*/${pkg}`)
 				);
@@ -138,5 +151,324 @@ describe('cover styles', () => {
 		// line being read in this order.
 		expect(coverStyleFor(eraOf(1828), 'andrew-murray')).toBe('devotional');
 		expect(coverStyleFor(eraOf(1828), 'charles-h-spurgeon')).toBe('revival');
+	});
+});
+
+/**
+ * The scripts the recipes were not written in.
+ *
+ * Ochorus reads in eight languages and the recipes above were evened out by eye
+ * against Latin faces. Three of those languages are not Latin, and until now not
+ * one of the six stacks named a face that could draw them — so every Arabic and
+ * Hindi cover, and four of six Ukrainian ones, came out in whatever serif the
+ * device happened to ship. That is the defect these gate; each of them fails on
+ * a way of half-fixing it that would still look deliberate.
+ */
+describe('cover scripts', () => {
+	/** A fontsource package's directory, from the family name in a stack. */
+	const packageDir = (family: string) => {
+		const slug = pkgSlug(family);
+		for (const scope of ['@fontsource-variable', '@fontsource']) {
+			const dir = join(process.cwd(), 'node_modules', scope, slug);
+			try {
+				readFileSync(join(dir, 'index.css'));
+				return dir;
+			} catch {
+				/* try the other scope */
+			}
+		}
+		return null;
+	};
+
+	/** The unicode subsets a family ships, read off its files.
+	 *
+	 *  Matched against a known vocabulary rather than parsed positionally: a
+	 *  family name can itself contain the separator, and `im-fell-english-latin
+	 *  -400-normal.woff2` read positionally says its subset is "fell". */
+	const SUBSETS = ['latin', 'cyrillic', 'arabic', 'devanagari', 'greek', 'vietnamese'];
+	const subsetsOf = (family: string) => {
+		const dir = packageDir(family);
+		if (!dir) return new Set<string>();
+		const files = readdirSync(join(dir, 'files')).join('\n');
+		// `-latin-` would also match inside `-latin-ext-`, and a family can ship
+		// the extension without the base; the negative lookahead keeps them apart.
+		return new Set(SUBSETS.filter((s) => new RegExp(`-${s}-(?!ext-)`).test(files)));
+	};
+
+	/** The weights a family can actually draw — a range for a variable face. */
+	const weightsOf = (family: string) => {
+		const dir = packageDir(family);
+		if (!dir) return null;
+		const css = readFileSync(join(dir, 'index.css'), 'utf-8');
+		const variable = /font-weight:\s*(\d+)\s+(\d+)/.exec(css);
+		if (variable) {
+			const [, lo, hi] = variable;
+			return (w: number) => w >= Number(lo) && w <= Number(hi);
+		}
+		const have = new Set(
+			readdirSync(join(dir, 'files')).flatMap((f) => {
+				const m = /-(\d{3})-/.exec(f);
+				return m ? [Number(m[1])] : [];
+			})
+		);
+		return (w: number) => have.has(w);
+	};
+
+	/** The families a `--cover-face-*` stack names, in order. */
+	const stackOf = (style: string) => {
+		const at = APP_CSS.indexOf(`--cover-face-${style}:`);
+		expect(at, `--cover-face-${style} is not declared`).toBeGreaterThan(-1);
+		const decl = APP_CSS.slice(at, APP_CSS.indexOf(';', at));
+		return [...decl.matchAll(/'([^']+)'/g)].map(([, f]) => f);
+	};
+
+	/** What `font-weight` a (script, style) cover actually resolves to.
+	 *
+	 *  The cascade, spelled out: a block carrying BOTH classes outranks either
+	 *  alone; a script-only block and a style-only block tie on specificity, and
+	 *  the script blocks sit later in the file, so they win. */
+	const weightFor = (script: CoverScript, style: string): number => {
+		// EVERY block for a selector, and the LAST declaration wins — not the
+		// first match. A selector legitimately appears twice now (the sizes sit
+		// inside the container gate, the corrections outside it), and a
+		// first-match lookup silently read the block that does not set the
+		// property and reported the wrong answer.
+		const find = (selector: string) => {
+			const blocks = [
+				...COVER_CSS.matchAll(
+					new RegExp(`${selector.replace(/[.\\]/g, '\\$&')}[^{]*\\{([^}]*)\\}`, 'g')
+				)
+			];
+			const weights = blocks.flatMap((b) => {
+				const w = /font-weight:\s*(\d+)/.exec(b[1]);
+				return w ? [Number(w[1])] : [];
+			});
+			return weights.length ? weights[weights.length - 1] : null;
+		};
+		return (
+			find(`.cover-type.script-${script}.style-${style} .title`) ??
+			find(`.cover-type.script-${script} .title`) ??
+			find(`.cover-type.style-${style} .title`) ??
+			600
+		);
+	};
+
+	it('describes every script in the CSS, and names every CSS script here', () => {
+		const inCss = new Set(
+			[...COVER_CSS.matchAll(/\.cover-type\.script-([a-z]+)/g)].map(([, id]) => id)
+		);
+		for (const script of COVER_SCRIPTS) {
+			expect(inCss, `.cover-type.script-${script} is missing from cover-type.css`).toContain(
+				script
+			);
+		}
+		for (const id of inCss) {
+			expect(COVER_SCRIPTS, `cover-type.css corrects .script-${id}, which no script names`).toContain(
+				id
+			);
+		}
+	});
+
+	it('gives every recipe a face for every script', () => {
+		// The whole point. A stack with no Arabic family in it does not fall back
+		// to something reasonable — it falls back to Georgia, which has no Arabic
+		// either, and then to whatever the device picked.
+		for (const style of COVER_STYLE_IDS) {
+			const stack = stackOf(style);
+			for (const script of COVER_SCRIPTS) {
+				// A script id IS its fontsource subset name, so there is nothing to
+				// translate between them.
+				const face = stack.find((f) => subsetsOf(f).has(script));
+				expect(
+					face,
+					`--cover-face-${style} names no family with a ${script} subset — a ${script} ` +
+						`title in that recipe renders in a system font`
+				).toBeTruthy();
+			}
+		}
+	});
+
+	it('keeps the latin face first in every stack', () => {
+		// `scripts/generate-cover-og.mjs` takes the FIRST quoted family in a token
+		// as the one to inline into a share card, and the cards are English — so
+		// that family has to be the one that draws Latin. Lead a stack with a
+		// script face and the card embeds an Arabic font while its real face goes
+		// unembedded, which is the defect that once shipped 37 cards set in Times.
+		//
+		// "Ships a latin subset" is not enough on its own to express this: Amiri
+		// ships one too, and an English title set in Amiri's Latin is exactly the
+		// mistake. So a leading family must also NOT be a non-Latin script face.
+		// A Latin-and-Cyrillic face leading (PT Serif, Old Standard TT) would pass
+		// here, and should: it can still draw the card. The gate is against a
+		// script face leading, not against every reordering.
+		for (const style of COVER_STYLE_IDS) {
+			const [first] = stackOf(style);
+			expect(first, `--cover-face-${style} names no family at all`).toBeTruthy();
+			const subsets = subsetsOf(first);
+			expect(
+				subsets.has('latin'),
+				`--cover-face-${style} leads with ${first}, which ships no latin subset`
+			).toBe(true);
+			for (const script of ['arabic', 'devanagari']) {
+				expect(
+					subsets.has(script),
+					`--cover-face-${style} leads with ${first}, a ${script} face — an English ` +
+						`share card would embed it and set the title in its latin`
+				).toBe(false);
+			}
+		}
+	});
+
+	it('imports every family every stack names, not just the first', () => {
+		// The existing gate above checks the first family; these stacks now carry
+		// four, and an unimported one is a silent fallback for one script only.
+		for (const style of COVER_STYLE_IDS) {
+			for (const family of stackOf(style)) {
+				const pkg = pkgSlug(family);
+				expect(APP_CSS, `nothing @imports ${family}, named by --cover-face-${style}`).toMatch(
+					new RegExp(`@import '@fontsource[^']*/${pkg}[/']`)
+				);
+			}
+		}
+	});
+
+	it('asks each script face only for a weight it has', () => {
+		// The same rule the Latin recipes follow, and it bites harder here: Amiri
+		// and Tiro ship fewer weights than the faces they stand beside, so the
+		// recipes asking 500 and 600 would every one of them have been served a
+		// synthesised bold.
+		for (const script of COVER_SCRIPTS) {
+			for (const style of COVER_STYLE_IDS) {
+				const face = stackOf(style).find((f) => subsetsOf(f).has(script));
+				if (!face) continue; // the gate above owns that failure
+				const has = weightsOf(face);
+				const asked = weightFor(script, style);
+				expect(
+					has && has(asked),
+					`${script} + ${style} resolves to ${face} at weight ${asked}, which it has ` +
+						`not got — that is a synthesised bold`
+				).toBe(true);
+			}
+		}
+	});
+
+	it('never tracks a cursive script', () => {
+		// Not taste. Arabic letters JOIN, and letter-spacing prises the joins
+		// apart into disconnected shapes; Devanagari has conjuncts that break the
+		// same way. Five of the six recipes set a tracking, `inscriptional` at
+		// 0.06em, and every one of them was doing this.
+		for (const script of ['arabic', 'devanagari']) {
+			// Across every block for the selector: the tracking is set in the one
+			// outside the container gate, the sizes in the one inside it.
+			const blocks = [
+				...COVER_CSS.matchAll(
+					new RegExp(`\\.cover-type\\.script-${script} \\.title \\{([^}]*)\\}`, 'g')
+				)
+			];
+			expect(blocks.length, `no .script-${script} .title block`).toBeGreaterThan(0);
+			expect(
+				blocks.map((b) => b[1]).join(''),
+				`${script} titles would be tracked apart`
+			).toMatch(/letter-spacing:\s*0(?![.\d])/);
+		}
+	});
+
+	it('never fakes an italic in a script that has none', () => {
+		// The subtitle is italic, and neither Arabic nor Devanagari has one — so
+		// the browser obliges by slanting the upright, which is a synthesis
+		// nobody drew. Cyrillic is absent on purpose: both its faces ship a real
+		// italic.
+		for (const script of ['arabic', 'devanagari']) {
+			expect(
+				COVER_CSS,
+				`.script-${script} .subtitle still asks for an italic that does not exist`
+			).toMatch(
+				new RegExp(`\\.cover-type\\.script-${script} \\.subtitle[^{]*\\{[^}]*font-style:\\s*normal`)
+			);
+		}
+	});
+
+	it('corrects the scripts after the recipes it is correcting', () => {
+		// `.cover-type.script-arabic .title` and `.cover-type.style-press .title`
+		// are both three classes, so nothing but source order decides which wins.
+		// Move the script blocks above the recipes and the corrections silently
+		// stop applying — every gate here would still pass.
+		const lastRecipe = Math.max(
+			...COVER_STYLE_IDS.map((id) => COVER_CSS.indexOf(`.cover-type.style-${id} .title`))
+		);
+		const firstScript = COVER_CSS.indexOf('.cover-type.script-');
+		expect(firstScript, 'no script block at all').toBeGreaterThan(-1);
+		expect(
+			firstScript,
+			'a script block sits above the recipes it corrects, so it loses the cascade'
+		).toBeGreaterThan(lastRecipe);
+	});
+
+	it('derives a script for languages nobody has added yet', () => {
+		// The staleness this is here to prevent: an admin can add a language with
+		// no deploy, so a hand-written table of language codes would be right
+		// about every code it listed and silently wrong about the new one — the
+		// face still working while every correction stopped. Deriving through
+		// `Intl.Locale.maximize()` means Urdu and Farsi and Marathi are already
+		// answered.
+		const expected: Record<string, string | null> = {
+			// shipped today
+			ar: 'arabic',
+			hi: 'devanagari',
+			uk: 'cyrillic',
+			en: null,
+			es: null,
+			pt: null,
+			sw: null,
+			lg: null,
+			// not shipped, and answered anyway
+			ur: 'arabic',
+			fa: 'arabic',
+			ps: 'arabic',
+			mr: 'devanagari',
+			ne: 'devanagari',
+			ru: 'cyrillic',
+			sr: 'cyrillic',
+			// a script with no recipe corrections is left exactly as it is today,
+			// rather than corrected by numbers measured against another font
+			he: null,
+			ja: null,
+			ta: null
+		};
+		for (const [code, script] of Object.entries(expected)) {
+			expect(scriptOf(code), `${code} should resolve to ${script}`).toBe(script);
+		}
+	});
+
+	it('corrects the language codes the library actually ships', () => {
+		// Every language with book rows must resolve to something the CSS knows,
+		// or to null — a language resolving to a script with no `.script-*` block
+		// would take a class nothing styles.
+		const languages = new Set(
+			readdirSync(join(CONTENT, 'books')).map((f) => f.split('.')[1])
+		);
+		for (const code of languages) {
+			const script = scriptOf(code);
+			if (script !== null) {
+				expect(COVER_SCRIPTS, `${code} resolves to ${script}, which has no block`).toContain(
+					script
+				);
+			}
+		}
+	});
+
+	it('leaves no script correction unreachable', () => {
+		// A `.script-*` block no language can ever wear is CSS nobody reads.
+		const reachable = new Set(
+			[...new Set(readdirSync(join(CONTENT, 'books')).map((f) => f.split('.')[1]))]
+				.map((code) => scriptOf(code))
+				.filter((s) => s !== null)
+		);
+		for (const script of COVER_SCRIPTS) {
+			expect(
+				reachable,
+				`no language in the library resolves to ${script} — its corrections never apply`
+			).toContain(script);
+		}
 	});
 });
