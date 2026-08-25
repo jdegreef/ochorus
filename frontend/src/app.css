@@ -56,14 +56,34 @@
      Playfair — which ship Cyrillic already — leave uncovered.
 
    Same unicode-range gating as above, so a Latin shelf pulls none of these. */
-@import '@fontsource/amiri/400.css';
-@import '@fontsource/amiri/700.css';
-@import '@fontsource/tiro-devanagari-hindi/400.css';
-@import '@fontsource/martel/600.css';
-@import '@fontsource/old-standard-tt/400.css';
-@import '@fontsource/old-standard-tt/700.css';
-@import '@fontsource/pt-serif/400.css';
-@import '@fontsource/pt-serif/700.css';
+/* THE SUBSET ENTRYPOINTS, not the whole weight. Every one of these packages
+   also ships latin (and latin-ext, and vietnamese), and the weight entrypoint
+   declares all of them — 20 of the 30 @font-face rules it would add can never
+   match, because five of the six stacks lead with a face that already covers
+   latin and latin-ext, so per-glyph fallback never walks past family one for a
+   Latin character. Measured: the full entrypoints cost 11.0 KB raw / 571 B
+   gzipped of CSS on EVERY page, English included, and emit 700 KB of font files
+   into the deploy that no browser can ask for.
+
+   It also closes a door: with Amiri's latin-ext declared, a title carrying a
+   latin-ext character — Luganda's ŋ is U+014B, and there are 18 Luganda books —
+   would fall from IM Fell (latin only) into Amiri rather than into Fraunces,
+   which is already loaded. No shipped title does that today; none can now.
+
+   PT Serif is imported at 700 ALONE: it is named only by --cover-face-house,
+   only Cyrillic glyphs ever reach it, and .script-cyrillic.style-house sets 700
+   at four classes. Nothing can ask it for a 400. */
+@import '@fontsource/amiri/arabic-400.css';
+@import '@fontsource/amiri/arabic-700.css';
+@import '@fontsource/tiro-devanagari-hindi/devanagari-400.css';
+@import '@fontsource/martel/devanagari-600.css';
+@import '@fontsource/old-standard-tt/cyrillic-400.css';
+@import '@fontsource/old-standard-tt/cyrillic-ext-400.css';
+@import '@fontsource/old-standard-tt/cyrillic-700.css';
+@import '@fontsource/old-standard-tt/cyrillic-ext-700.css';
+/* cyrillic-ext stays: Ukrainian's ґ (U+0491) and ₴ (U+20B4) live there. */
+@import '@fontsource/pt-serif/cyrillic-700.css';
+@import '@fontsource/pt-serif/cyrillic-ext-700.css';
 
 /* Map semantic theme tokens onto Tailwind color utilities so `bg-surface
    text-text border-border` respond to the runtime [data-theme] switch. */

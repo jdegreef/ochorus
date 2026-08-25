@@ -151,28 +151,57 @@ export const COVER_SCRIPTS = ['arabic', 'devanagari', 'cyrillic'] as const;
 export type CoverScript = (typeof COVER_SCRIPTS)[number];
 
 /**
- * Language code → the script its titles are set in; absent means Latin.
+ * ISO 15924 script subtag → the recipe corrections that script needs.
  *
- * BY LANGUAGE, NOT BY SNIFFING THE TITLE. A title is a handful of words and may
- * be entirely digits, a quoted Latin name or a scripture reference — so a cover
- * that chose its metrics from the characters a translator happened to type
- * would change design from one book to the next inside one shelf. The edition's
- * language is the fact; its title is a sample.
+ * KEYED ON THE SCRIPT, NOT THE LANGUAGE, and that is the whole point. A table
+ * of language codes would have to name `ar`, then `fa`, then `ur`, then `ps` —
+ * and an admin can add a language to the registry WITHOUT A DEPLOY ("Add a
+ * language" in the admin; see `library/language_seed.py` on who owns which).
+ * So the day someone adds Urdu, a language table would still be right about
+ * every language it listed and silently wrong about the new one: the FACE would
+ * work, because font fallback is per glyph and does not care what language a
+ * title is in, while every correction stopped — Urdu's cursive joins prised
+ * apart by `inscriptional`'s tracking, its subtitle slanted by a synthesis
+ * nobody drew. Those are the three defects this module calls wrong rather than
+ * untuned, reappearing at full strength on the next language nobody thought
+ * about.
  *
- * Keyed to `Language.code` as the backend seeds it (`library/language_seed.py`).
- * A language this has never heard of is set exactly as it is today, which is
- * right for the next Latin-script language and no worse than today for anything
- * else — the same shape as `coverStyleFor` dressing an unknown author.
+ * A script table cannot go stale that way. It grows only when a script needs
+ * CSS that does not exist yet, which is a change to `cover-type.css` anyway.
+ *
+ * Absent scripts are Latin's case, deliberately: Latn is what the recipes are
+ * already written in and needs no entry, and a script with no entry — Hebrew,
+ * Ge'ez, Han — is set exactly as it is today rather than corrected by numbers
+ * measured against a font nobody chose for it. That is the same shape as
+ * `coverStyleFor` dressing an author it has never heard of.
  */
-const LANGUAGE_SCRIPT: Record<string, CoverScript> = {
-	ar: 'arabic',
-	hi: 'devanagari',
-	uk: 'cyrillic'
+const SCRIPT_SUBTAG: Record<string, CoverScript> = {
+	Arab: 'arabic',
+	Deva: 'devanagari',
+	Cyrl: 'cyrillic'
 };
 
-/** The script a cover in this language is corrected for; null when Latin. */
+/**
+ * The script a cover in this language is corrected for; null when it needs none.
+ *
+ * `Intl.Locale.maximize()` is what turns a bare language code into a script —
+ * `ar` and `ur` and `fa` all maximise to `Arab`, `hi` and `mr` to `Deva` — so
+ * this module never has to hold a list of the world's languages. It is a
+ * global, not an import, which is what keeps this file loadable from bare Node
+ * (`nodeLoadable.test.ts`).
+ *
+ * Anything unparseable comes back null and is set as it is today. That includes
+ * a code no browser has heard of, and — on a browser too old for `Intl.Locale`
+ * — every code, which degrades to exactly the behaviour before this existed
+ * rather than to a broken one.
+ */
 export function scriptOf(language: string): CoverScript | null {
-	return LANGUAGE_SCRIPT[language] ?? null;
+	try {
+		const script = new Intl.Locale(language).maximize().script;
+		return (script && SCRIPT_SUBTAG[script]) || null;
+	} catch {
+		return null;
+	}
 }
 
 /**

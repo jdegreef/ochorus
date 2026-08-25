@@ -2,6 +2,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
+import type { CoverScript } from './coverStyles';
 import {
 	AUTHOR_STYLE,
 	COVER_SCRIPTS,
@@ -13,6 +14,14 @@ import {
 import { ERAS, eraOf } from './eras';
 
 const CONTENT = resolve(process.cwd(), '..', 'backend', 'library', 'fixtures', 'content');
+
+/** A font family's fontsource package name. One rule, three readers: the two
+ *  `@import` gates and the package-directory probe. */
+const pkgSlug = (family: string) =>
+	family
+		.replace(/ Variable$/, '')
+		.toLowerCase()
+		.replace(/ /g, '-');
 const APP_CSS = readFileSync(join(process.cwd(), 'src/app.css'), 'utf-8');
 const COVER_CSS = readFileSync(join(process.cwd(), 'src/lib/components/cover-type.css'), 'utf-8');
 
@@ -71,10 +80,7 @@ describe('cover styles', () => {
 			// The house recipe is Fraunces, which the app already loads for
 			// everything else; the other five each need their own package.
 			if (family) {
-				const pkg = family[1]
-					.replace(/ Variable$/, '')
-					.toLowerCase()
-					.replace(/ /g, '-');
+				const pkg = pkgSlug(family[1]);
 				expect(APP_CSS, `nothing @imports ${family[1]}`).toMatch(
 					new RegExp(`@import '@fontsource[^']*/${pkg}`)
 				);
@@ -161,10 +167,7 @@ describe('cover styles', () => {
 describe('cover scripts', () => {
 	/** A fontsource package's directory, from the family name in a stack. */
 	const packageDir = (family: string) => {
-		const slug = family
-			.replace(/ Variable$/, '')
-			.toLowerCase()
-			.replace(/ /g, '-');
+		const slug = pkgSlug(family);
 		for (const scope of ['@fontsource-variable', '@fontsource']) {
 			const dir = join(process.cwd(), 'node_modules', scope, slug);
 			try {
@@ -224,21 +227,30 @@ describe('cover scripts', () => {
 	 *  The cascade, spelled out: a block carrying BOTH classes outranks either
 	 *  alone; a script-only block and a style-only block tie on specificity, and
 	 *  the script blocks sit later in the file, so they win. */
-	const weightFor = (script: string | null, style: string): number => {
+	const weightFor = (script: CoverScript, style: string): number => {
+		// EVERY block for a selector, and the LAST declaration wins — not the
+		// first match. A selector legitimately appears twice now (the sizes sit
+		// inside the container gate, the corrections outside it), and a
+		// first-match lookup silently read the block that does not set the
+		// property and reported the wrong answer.
 		const find = (selector: string) => {
-			const block = new RegExp(
-				`${selector.replace(/[.\\]/g, '\\$&')}[^{]*\\{([^}]*)\\}`
-			).exec(COVER_CSS);
-			const w = block && /font-weight:\s*(\d+)/.exec(block[1]);
-			return w ? Number(w[1]) : null;
+			const blocks = [
+				...COVER_CSS.matchAll(
+					new RegExp(`${selector.replace(/[.\\]/g, '\\$&')}[^{]*\\{([^}]*)\\}`, 'g')
+				)
+			];
+			const weights = blocks.flatMap((b) => {
+				const w = /font-weight:\s*(\d+)/.exec(b[1]);
+				return w ? [Number(w[1])] : [];
+			});
+			return weights.length ? weights[weights.length - 1] : null;
 		};
-		// Explicit null checks rather than `script && …`: with `script` typed as a
-		// string, `&&` widens the result to `number | ''` and the empty string
-		// then reads as a weight.
-		const pair =
-			script === null ? null : find(`.cover-type.script-${script}.style-${style} .title`);
-		const scriptOnly = script === null ? null : find(`.cover-type.script-${script} .title`);
-		return pair ?? scriptOnly ?? find(`.cover-type.style-${style} .title`) ?? 600;
+		return (
+			find(`.cover-type.script-${script}.style-${style} .title`) ??
+			find(`.cover-type.script-${script} .title`) ??
+			find(`.cover-type.style-${style} .title`) ??
+			600
+		);
 	};
 
 	it('describes every script in the CSS, and names every CSS script here', () => {
@@ -261,15 +273,12 @@ describe('cover scripts', () => {
 		// The whole point. A stack with no Arabic family in it does not fall back
 		// to something reasonable — it falls back to Georgia, which has no Arabic
 		// either, and then to whatever the device picked.
-		const need: Record<string, string> = {
-			arabic: 'arabic',
-			devanagari: 'devanagari',
-			cyrillic: 'cyrillic'
-		};
 		for (const style of COVER_STYLE_IDS) {
 			const stack = stackOf(style);
 			for (const script of COVER_SCRIPTS) {
-				const face = stack.find((f) => subsetsOf(f).has(need[script]));
+				// A script id IS its fontsource subset name, so there is nothing to
+				// translate between them.
+				const face = stack.find((f) => subsetsOf(f).has(script));
 				expect(
 					face,
 					`--cover-face-${style} names no family with a ${script} subset — a ${script} ` +
@@ -315,10 +324,7 @@ describe('cover scripts', () => {
 		// four, and an unimported one is a silent fallback for one script only.
 		for (const style of COVER_STYLE_IDS) {
 			for (const family of stackOf(style)) {
-				const pkg = family
-					.replace(/ Variable$/, '')
-					.toLowerCase()
-					.replace(/ /g, '-');
+				const pkg = pkgSlug(family);
 				expect(APP_CSS, `nothing @imports ${family}, named by --cover-face-${style}`).toMatch(
 					new RegExp(`@import '@fontsource[^']*/${pkg}[/']`)
 				);
@@ -331,14 +337,9 @@ describe('cover scripts', () => {
 		// and Tiro ship fewer weights than the faces they stand beside, so the
 		// recipes asking 500 and 600 would every one of them have been served a
 		// synthesised bold.
-		const subset: Record<string, string> = {
-			arabic: 'arabic',
-			devanagari: 'devanagari',
-			cyrillic: 'cyrillic'
-		};
 		for (const script of COVER_SCRIPTS) {
 			for (const style of COVER_STYLE_IDS) {
-				const face = stackOf(style).find((f) => subsetsOf(f).has(subset[script]));
+				const face = stackOf(style).find((f) => subsetsOf(f).has(script));
 				if (!face) continue; // the gate above owns that failure
 				const has = weightsOf(face);
 				const asked = weightFor(script, style);
@@ -357,13 +358,18 @@ describe('cover scripts', () => {
 		// same way. Five of the six recipes set a tracking, `inscriptional` at
 		// 0.06em, and every one of them was doing this.
 		for (const script of ['arabic', 'devanagari']) {
-			const block = new RegExp(`\\.cover-type\\.script-${script} \\.title \\{([^}]*)\\}`).exec(
-				COVER_CSS
-			);
-			expect(block, `no .script-${script} .title block`).not.toBeNull();
-			expect(block![1], `${script} titles would be tracked apart`).toMatch(
-				/letter-spacing:\s*0(?![.\d])/
-			);
+			// Across every block for the selector: the tracking is set in the one
+			// outside the container gate, the sizes in the one inside it.
+			const blocks = [
+				...COVER_CSS.matchAll(
+					new RegExp(`\\.cover-type\\.script-${script} \\.title \\{([^}]*)\\}`, 'g')
+				)
+			];
+			expect(blocks.length, `no .script-${script} .title block`).toBeGreaterThan(0);
+			expect(
+				blocks.map((b) => b[1]).join(''),
+				`${script} titles would be tracked apart`
+			).toMatch(/letter-spacing:\s*0(?![.\d])/);
 		}
 	});
 
@@ -398,20 +404,71 @@ describe('cover scripts', () => {
 		).toBeGreaterThan(lastRecipe);
 	});
 
-	it('maps only languages the library actually has', () => {
-		// A script mapping for a language nothing is published in is a guess that
-		// reads as a decision. Every key must name a language with book rows.
+	it('derives a script for languages nobody has added yet', () => {
+		// The staleness this is here to prevent: an admin can add a language with
+		// no deploy, so a hand-written table of language codes would be right
+		// about every code it listed and silently wrong about the new one — the
+		// face still working while every correction stopped. Deriving through
+		// `Intl.Locale.maximize()` means Urdu and Farsi and Marathi are already
+		// answered.
+		const expected: Record<string, string | null> = {
+			// shipped today
+			ar: 'arabic',
+			hi: 'devanagari',
+			uk: 'cyrillic',
+			en: null,
+			es: null,
+			pt: null,
+			sw: null,
+			lg: null,
+			// not shipped, and answered anyway
+			ur: 'arabic',
+			fa: 'arabic',
+			ps: 'arabic',
+			mr: 'devanagari',
+			ne: 'devanagari',
+			ru: 'cyrillic',
+			sr: 'cyrillic',
+			// a script with no recipe corrections is left exactly as it is today,
+			// rather than corrected by numbers measured against another font
+			he: null,
+			ja: null,
+			ta: null
+		};
+		for (const [code, script] of Object.entries(expected)) {
+			expect(scriptOf(code), `${code} should resolve to ${script}`).toBe(script);
+		}
+	});
+
+	it('corrects the language codes the library actually ships', () => {
+		// Every language with book rows must resolve to something the CSS knows,
+		// or to null — a language resolving to a script with no `.script-*` block
+		// would take a class nothing styles.
 		const languages = new Set(
 			readdirSync(join(CONTENT, 'books')).map((f) => f.split('.')[1])
 		);
-		for (const code of ['ar', 'hi', 'uk']) {
-			expect(scriptOf(code), `${code} should map to a script`).not.toBeNull();
-			expect(languages, `${code} is mapped but the library has no ${code} book`).toContain(code);
+		for (const code of languages) {
+			const script = scriptOf(code);
+			if (script !== null) {
+				expect(COVER_SCRIPTS, `${code} resolves to ${script}, which has no block`).toContain(
+					script
+				);
+			}
 		}
-		// And a Latin language must stay uncorrected — the recipes are already
-		// written for it.
-		for (const code of ['en', 'es', 'pt', 'sw', 'lg']) {
-			expect(scriptOf(code), `${code} is Latin and needs no correction`).toBeNull();
+	});
+
+	it('leaves no script correction unreachable', () => {
+		// A `.script-*` block no language can ever wear is CSS nobody reads.
+		const reachable = new Set(
+			[...new Set(readdirSync(join(CONTENT, 'books')).map((f) => f.split('.')[1]))]
+				.map((code) => scriptOf(code))
+				.filter((s) => s !== null)
+		);
+		for (const script of COVER_SCRIPTS) {
+			expect(
+				reachable,
+				`no language in the library resolves to ${script} — its corrections never apply`
+			).toContain(script);
 		}
 	});
 });

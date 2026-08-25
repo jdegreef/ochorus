@@ -328,6 +328,48 @@
 		font-family: var(--cover-face-house);
 		font-weight: 600;
 	}
+
+	/* ── The same evening-out, for the scripts ──────────────────────────────
+	 * INSIDE THE GATE, unlike the corrections at the foot of this file, and the
+	 * split is the point. A size is only meaningful next to the FACE it was
+	 * measured against, and the face is chosen here — below 140px the recipes
+	 * above do not apply, the title falls to the house serif, and a size tuned
+	 * for Amiri would be applied to whatever the device picked instead. The
+	 * corrections outside the gate (tracking, a fake italic) are wrong at every
+	 * size and cost no bytes, so they are not gated.
+	 *
+	 * Same three-class specificity as the recipes above and later in the file,
+	 * which is what carries them. */
+	.cover-type.script-arabic .title {
+		/* Naskh sets small for its point size and hangs deep — Amiri's
+		   descenders drop well below the baseline — so it wants more size and
+		   much more room between lines than a Latin title. */
+		font-size: 10.4cqw;
+		line-height: 1.5;
+	}
+	.cover-type.script-devanagari .title {
+		/* The shirorekha, with the matras above it and below, makes a line
+		   taller than its point size suggests. */
+		font-size: 8.8cqw;
+		line-height: 1.55;
+	}
+	.cover-type.script-arabic .subtitle,
+	.cover-type.script-devanagari .subtitle {
+		line-height: 1.5;
+	}
+	/* Cyrillic lands on faces the Latin numbers were never measured against.
+	   `press` and `enlightenment` both resolve to Old Standard TT, so they take
+	   ONE size: 8.36cqw was a correction for Libre Baskerville's large x-height,
+	   and carrying it to another face only makes one recipe smaller than the one
+	   beside it for no reason a reader can see. And 7.6cqw is a size for Cinzel,
+	   a caps-only face drawn to run to cap height; Old Standard's capitals are
+	   not. */
+	.cover-type.script-cyrillic.style-enlightenment .title {
+		font-size: 9.5cqw;
+	}
+	.cover-type.script-cyrillic.style-inscriptional .title {
+		font-size: 8.6cqw;
+	}
 }
 
 
@@ -366,11 +408,6 @@
 .cover-type.script-arabic .title {
 	font-weight: 400;
 	letter-spacing: 0;
-	/* Naskh sets small for its point size and hangs deep — Amiri's descenders
-	   drop well below the baseline — so it needs more size and much more room
-	   between lines than a Latin title wants. */
-	font-size: 10.4cqw;
-	line-height: 1.5;
 }
 /* The three loud recipes take Amiri's real 700. `inscriptional` is here rather
    than in a face of its own: Arabic's register distinction is a weight, not a
@@ -390,8 +427,6 @@
 .cover-type.script-devanagari .title {
 	font-weight: 400;
 	letter-spacing: 0;
-	font-size: 8.8cqw;
-	line-height: 1.55;
 }
 /* Martel carries the two loud recipes — Tiro has one weight, and a title page
    wants more — and has a real 600. */
@@ -409,19 +444,7 @@
 .cover-type.script-cyrillic.style-house .title {
 	font-weight: 700;
 }
-/* The sizes need the same evening-out the Latin recipes got, because Cyrillic
-   lands on different faces than the ones those numbers were measured against.
-   `press` and `enlightenment` both resolve to Old Standard TT, so they take one
-   size: 8.36cqw was a correction for Libre Baskerville's large x-height, and
-   carrying it to another face only makes one recipe smaller than the recipe
-   beside it for no reason a reader can see. And 7.6cqw is a size for Cinzel, a
-   caps-only face drawn to run to cap height; Old Standard's capitals do not. */
-.cover-type.script-cyrillic.style-enlightenment .title {
-	font-size: 9.5cqw;
-}
-.cover-type.script-cyrillic.style-inscriptional .title {
-	font-size: 8.6cqw;
-}
+
 
 /* NO ITALIC EXISTS in Arabic or Devanagari, so the subtitle's `font-style:
    italic` was being satisfied by the browser SLANTING the upright — a fake

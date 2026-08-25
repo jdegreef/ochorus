@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { coverGradient, coverSrcset, isArtCover, isPlateCover } from '$lib/coverArt';
 	import { coverStyleFor, scriptOf } from '$lib/coverStyles';
+	import { contentLang } from '$lib/reading';
 	import { eraOf } from '$lib/eras';
 	// The cover's whole drawing, in the one file that also feeds the share-card
 	// script (see its header). Global rather than scoped, like app.css's other
@@ -95,18 +96,26 @@
 
 	/** The author's house style — a class name; `cover-type.css` holds the rest. */
 	const style = $derived(coverStyleFor(eraOf(book.author.birth_year), book.author.slug));
-	/** The script whose metrics this edition needs correcting for; '' for Latin.
-	 *  The FACE needs no class — the stacks in app.css fall back per glyph. */
-	const script = $derived(scriptOf(book.language));
+	/** This edition's language as a browser will accept it. `en-modern` is
+	 *  Ochorus' own edition marker, not a BCP-47 subtag, so a browser drops it
+	 *  whole and shapes the title in the UI locale instead — which is the defect
+	 *  `contentLang` exists for, and every other content-language attribute in
+	 *  the app already goes through it. */
+	const lang = $derived(contentLang(book.language));
+	/** The script whose metrics this edition needs correcting for; null for
+	 *  Latin. The FACE needs no class — app.css's stacks fall back per glyph. */
+	const script = $derived(scriptOf(lang));
 </script>
 
 <!-- The cover's type. Identical over a painting, over a plate file and over the
      CSS plate — the only difference is what is behind it, and whether an emblem
      is down there to leave room for. -->
 {#snippet plateType(reserveEmblem: boolean)}
-	<div class="cover-type style-{style}" class:script-arabic={script === 'arabic'}
-		class:script-devanagari={script === 'devanagari'}
-		class:script-cyrillic={script === 'cyrillic'}>
+	<!-- `script` IS the class suffix, so it is used as one rather than compared
+	     against three times; a falsy entry is dropped, so a Latin cover emits no
+	     script class at all and the fourth script is a table entry, not an edit
+	     here. -->
+	<div class={['cover-type', `style-${style}`, script && `script-${script}`]}>
 		<!-- The byline takes no `lang`: an author's name is one row for every
 		     edition (`Author` has no per-language name), so it is Latin on an
 		     Arabic cover too, and claiming otherwise would tell a screen reader
@@ -121,9 +130,9 @@
 			     what tells a screen reader which language to read it in. The
 			     metrics come from the class above, which the LANGUAGE decides —
 			     never the characters (see `scriptOf`). -->
-			<div class="title" lang={book.language} dir="auto">{book.title}</div>
+			<div class="title" {lang} dir="auto">{book.title}</div>
 			<div class="rule"></div>
-			{#if book.subtitle}<div class="subtitle" lang={book.language} dir="auto">
+			{#if book.subtitle}<div class="subtitle" {lang} dir="auto">
 				{book.subtitle}
 			</div>{/if}
 		</div>
