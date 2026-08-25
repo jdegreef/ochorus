@@ -37,14 +37,41 @@ const CACHE = `ochorus-cache-${version}`;
 const OFFLINE = 'ochorus-offline';
 const APP_SHELL = '/';
 
-// Essential shell to precache: hashed build output (JS/CSS/fonts) + PWA assets.
-const PRECACHE = [...build, '/manifest.json', '/icons/icon-192.png'];
+/**
+ * What a first visit downloads before anything else.
+ *
+ * This was `[...build, ...]` — and `build` is EVERY artifact Vite emits: all
+ * nine font families the reader offers as preferences, each in four unicode
+ * subsets, plus every admin route chunk. A reader on a metered connection paid
+ * for the whole application and for typefaces they will never select, in the
+ * background, immediately after first paint.
+ *
+ * Now: the entry chunks and stylesheets that a first render actually needs.
+ * Everything else still gets cached — the runtime `cacheFirst` handler fills it
+ * in on demand — so offline support is unchanged for anything the reader has
+ * actually opened, and a font is fetched when it is first chosen rather than
+ * ahead of a choice nobody made.
+ */
+const isCritical = (path: string) =>
+	path.endsWith('.css') || path.includes('/entry/') || path.includes('/chunks/');
+
+const PRECACHE = [
+	...build.filter(isCritical),
+	'/manifest.json',
+	'/icons/icon-192.png'
+];
 
 sw.addEventListener('install', (event) => {
 	event.waitUntil(
 		(async () => {
 			const cache = await caches.open(CACHE);
-			await cache.addAll(PRECACHE);
+			// allSettled, not addAll: addAll is atomic, so ONE artifact that
+			// 404s aborts the whole install and the worker never activates —
+			// turning a single missing file into no offline support at all.
+			// A file that fails here is simply fetched on demand later.
+			await Promise.allSettled(
+				PRECACHE.map((path) => cache.add(path))
+			);
 			try {
 				const res = await fetch(APP_SHELL, { cache: 'reload' });
 				if (res.ok) await cache.put(APP_SHELL, res.clone());
