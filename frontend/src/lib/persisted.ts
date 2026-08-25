@@ -46,3 +46,33 @@ export function writeJSON(key: string, value: unknown): boolean {
 		return false;
 	}
 }
+
+/**
+ * Re-broadcast another tab's localStorage writes as `ochorus:sync`.
+ *
+ * The `storage` event fires only in the OTHER tabs, which is exactly what was
+ * missing: every reading store is a read-modify-write over a whole JSON blob, so
+ * two tabs open on Ochorus — a chapter in one, the notebook in the other — drift
+ * apart, and the last full-blob write wins. A highlight made in tab A is
+ * destroyed when tab B saves a scroll anchor.
+ *
+ * `ochorus:sync` is reused rather than invented: every store and component that
+ * needs to re-read already listens for it (it is what a sign-in merge fires), so
+ * one listener here reaches all of them. That fixes STALENESS — each listener
+ * re-reads from localStorage, which now holds the other tab's value. The
+ * lost-update half additionally needs each mutating store to re-read
+ * immediately before it writes; they mostly do.
+ *
+ * Registered once at module load: this module is imported by every store, and a
+ * per-store registration would multiply the work on every event.
+ */
+if (browser) {
+	window.addEventListener('storage', (event) => {
+		// `key === null` is a whole-storage clear (another tab signed out), which
+		// every store must also notice. Otherwise only our own keys matter — an
+		// unrelated app on the same origin must not spin the reader.
+		if (event.key === null || event.key.startsWith('ochorus:')) {
+			window.dispatchEvent(new CustomEvent('ochorus:sync'));
+		}
+	});
+}
