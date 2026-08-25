@@ -20,6 +20,7 @@ from . import languages as languages_module
 from .languages import entry as language_entry
 from .localization import language_from_request
 from .models import (
+    SERMON_CARD_DEFER,
     Author,
     Book,
     Chapter,
@@ -219,6 +220,7 @@ class SermonListView(generics.ListAPIView):
             Sermon.objects.filter(is_published=True, language=_language(self.request))
             .select_related("author")
             .prefetch_related("author__translations")
+            .defer(*SERMON_CARD_DEFER)
             .order_by("author__name", "sort_order", "title")
         )
 
@@ -319,6 +321,7 @@ def _attach_sermons(topics, language):
         Sermon.objects.filter(slug__in=wanted, language=language, is_published=True)
         .select_related("author")
         .prefetch_related("author__translations")
+        .defer(*SERMON_CARD_DEFER)
     )
     by_slug = {s.slug: s for s in sermons}
     for t in topics:
