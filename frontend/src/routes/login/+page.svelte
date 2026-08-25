@@ -5,6 +5,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import { authErrorKey } from '$lib/authErrors';
+	import { safeRedirect } from '$lib/safeRedirect';
 	import BrandMark from '$lib/components/BrandMark.svelte';
 	import GoogleMark from '$lib/components/GoogleMark.svelte';
 
@@ -42,7 +43,17 @@
 
 	// The redirect param is captured from the (already locale-prefixed) URL, so
 	// it needs no re-localizing; only the fallback home does.
-	const redirectTarget = $derived($page.url.searchParams.get('redirect') || localizeHref('/'));
+	//
+	// Only a same-origin PATH is honoured. `goto` happens to reject cross-origin
+	// URLs today, so an off-site value throws instead of navigating — which makes
+	// `?redirect=https://evil.test` a broken sign-in rather than an open redirect,
+	// and leaves this one `goto` change away from being a real one on the page
+	// where a phishing landing is worth the most. Rejected here instead: a
+	// protocol-relative `//evil.test` and a backslash `/\evil.test` both parse as
+	// off-site in some URL implementations, so both are excluded explicitly.
+	const redirectTarget = $derived(
+		safeRedirect($page.url.searchParams.get('redirect')) ?? localizeHref('/')
+	);
 
 	// Once a session exists (password sign-in, or returning from a magic/OAuth
 	// redirect), leave the login page for wherever the user was headed.

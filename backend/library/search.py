@@ -21,7 +21,8 @@ import difflib
 import re
 
 from django.db import connection
-from django.db.models import Exists, F, OuterRef, Q
+from django.db.models import Exists, F, OuterRef, Q, Subquery, TextField, Value
+from django.db.models.functions import Coalesce
 
 # Config lookup shared with the stored-vector write path (library/fts.py) so
 # query config always matches what the row was indexed with.
@@ -287,14 +288,10 @@ def _search_postgres(ctx, authors, books, topics, plans, chapters, sermons):
         SearchHeadline,
         SearchQuery,
         SearchRank,
-        SearchVector,
     )
 
     config = config_for(ctx.language)
     query = SearchQuery(ctx.q, config=config, search_type="websearch")
-
-    def sv(field, weight):
-        return SearchVector(field, weight=weight, config=config)
 
     def headline(field):
         return SearchHeadline(
@@ -317,22 +314,17 @@ def _search_postgres(ctx, authors, books, topics, plans, chapters, sermons):
 
     pairs: list[tuple[float, dict]] = []
 
-    pairs += entity(
-        authors, sv("name", "A") + sv("bio", "C"), _author_hit, "author"
-    )
-    pairs += entity(
-        books,
-        sv("title", "A") + sv("subtitle", "A") + sv("author__name", "B")
-        + sv("description", "C"),
-        _book_hit,
-        "book",
-    )
-    pairs += entity(
-        topics, sv("title", "A") + sv("description", "C"), _topic_hit, "topic"
-    )
-    pairs += entity(
-        plans, sv("title", "A") + sv("description", "C"), _plan_hit, "plan"
-    )
+    # One definition of what each entity type matches against, shared with
+    # _match and _pg_rank_order. These four were spelled out inline here, which
+    # is how the topic vector came to be wrong on THIS path — the one readers
+    # actually hit — while a fix elsewhere would have looked complete.
+    def vector(kind):
+        return _pg_vector(kind, config, ctx.language)
+
+    pairs += entity(authors, vector("author"), _author_hit, "author")
+    pairs += entity(books, vector("book"), _book_hit, "book")
+    pairs += entity(topics, vector("topic"), _topic_hit, "topic")
+    pairs += entity(plans, vector("plan"), _plan_hit, "plan")
 
     # Chapters and sermons match against their STORED vector (GIN-indexed,
     # populated by library/fts.py with the same fields + weights the old
@@ -474,7 +466,38 @@ def _lite_q(kind: str, q: str) -> Q:
     )
 
 
-def _pg_vector(kind: str, config: str):
+def _topic_localized(language: str):
+    """(title, description) expressions in the language the reader asked for.
+
+    English lives in the Topic row itself; every other language lives in a
+    TopicTranslation. There is deliberately NO English fallback (see
+    backend/CLAUDE.md): a reader who asked for Swahili must not be handed
+    English prose, and `_base_querysets` has already dropped topics with no
+    title in this language — so an empty string is the honest value for a
+    field this language has not translated, and it simply matches nothing.
+    """
+    if language == "en":
+        return F("title"), F("description")
+
+    def localized(field: str):
+        return Coalesce(
+            Subquery(
+                TopicTranslation.objects.filter(
+                    topic=OuterRef("pk"), language=language
+                ).values(field)[:1]
+            ),
+            Value(""),
+            # Explicit, because `title` is a CharField and `description` a
+            # TextField: without it Django refuses to resolve the mixed types
+            # and every non-English search raises. to_tsvector takes text
+            # either way.
+            output_field=TextField(),
+        )
+
+    return localized("title"), localized("description")
+
+
+def _pg_vector(kind: str, config: str, language: str):
     """The weighted vector an ENTITY type matches against.
 
     Chapters and sermons are absent on purpose — they match their stored,
@@ -494,7 +517,22 @@ def _pg_vector(kind: str, config: str):
             + sv("author__name", "B")
             + sv("description", "C")
         )
-    return sv("title", "A") + sv("description", "C")  # topic, plan
+    if kind == "topic":
+        # Topics are ONE row plus a TopicTranslation side-table, so `title` and
+        # `description` are the ENGLISH columns whatever language was asked for.
+        # Built from those, a Spanish reader searching "oración" never found the
+        # prayer shelf, while the SQLite dev path — which does search
+        # translations (`_lite_q`) — said it worked. Match the text the reader is
+        # actually shown: TopicListSerializer renders `title_for(language)`.
+        title, description = _topic_localized(language)
+        return (
+            SearchVector(title, weight="A", config=config)
+            + SearchVector(description, weight="C", config=config)
+        )
+    # Plans need no such treatment: they are per-language ROWS (unique(slug,
+    # language)) and the queryset is already filtered to one language, so these
+    # columns hold that language's prose.
+    return sv("title", "A") + sv("description", "C")
 
 
 def _match(kind: str, ctx, qs):
@@ -509,7 +547,7 @@ def _match(kind: str, ctx, qs):
     query = SearchQuery(ctx.q, config=config, search_type="websearch")
     if kind in ("chapter", "sermon"):
         return qs.filter(search_vector=query)
-    return qs.annotate(search=_pg_vector(kind, config)).filter(search=query)
+    return qs.annotate(search=_pg_vector(kind, config, ctx.language)).filter(search=query)
 
 
 #: Ordering per type per sort mode. "relevance" isn't here: on Postgres it is the
@@ -566,8 +604,10 @@ def _pg_rank_order(kind, ctx, qs):
 
     config = config_for(ctx.language)
     query = SearchQuery(ctx.q, config=config, search_type="websearch")
-    vector = F("search_vector") if kind in ("chapter", "sermon") else _pg_vector(
-        kind, config
+    vector = (
+        F("search_vector")
+        if kind in ("chapter", "sermon")
+        else _pg_vector(kind, config, ctx.language)
     )
     return qs.annotate(rank=SearchRank(vector, query)).order_by(
         "-rank", *_ORDER[kind]["natural"]

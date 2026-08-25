@@ -100,6 +100,65 @@ services:
         # prose readers see — and, until this entry existed, changed nothing
         # about whether the reader rebuilt to show it.
         - backend/library/corrections.py
+    # --- Security headers ---------------------------------------------------
+    # The reader had none. That matters more here than on a typical static site:
+    # the Supabase access token lives in localStorage and is attached as a Bearer
+    # to every API call, so any script that runs on this origin can read it — and
+    # the reader renders server-stored HTML with {@html} in seven places.
+    #
+    # `script-src` keeps 'unsafe-inline' because SvelteKit emits an inline
+    # bootstrap on every prerendered page and app.html runs an inline theme boot
+    # before hydration (both would need per-build hashes). So script-src is NOT
+    # the control here — `connect-src` is: it is what stops an injected script
+    # posting that token to an attacker's host. Everything the app actually talks
+    # to is enumerated below, and frontend/src/lib/csp.test.ts fails the build if
+    # code starts calling a host this list does not cover.
+    #
+    # ⚠️ connect-src names the API origin literally, because Render substitutes
+    # no env vars into header values. If PUBLIC_API_BASE_URL ever moves (e.g. to
+    # api.ochorus.com — already listed), update this line in the same change or
+    # every API call fails CORS-style with a CSP violation.
+    #
+    # ⚠️ render.yaml changes need a manual Blueprint → Sync (gotcha #3) — this
+    # will NOT take effect on the next auto-deploy.
+    headers:
+      - path: /*
+        name: Content-Security-Policy
+        value: >-
+          default-src 'self';
+          script-src 'self' 'unsafe-inline';
+          style-src 'self' 'unsafe-inline';
+          img-src 'self' data: blob: https:;
+          font-src 'self';
+          connect-src 'self' https://ochorus-api.onrender.com https://api.ochorus.com
+          https://*.supabase.co https://api.dictionaryapi.dev https://*.ingest.sentry.io
+          https://*.ingest.us.sentry.io;
+          manifest-src 'self';
+          worker-src 'self';
+          media-src 'self';
+          object-src 'none';
+          frame-src 'none';
+          frame-ancestors 'none';
+          base-uri 'self';
+          form-action 'self'
+      # Clickjacking cover for anything that predates frame-ancestors.
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      # Send the full URL same-origin, only the origin cross-origin — reader
+      # paths name what someone is reading, which is not a referrer's business.
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      # The reader needs none of these; denying them means an injected script
+      # cannot prompt for them either.
+      - path: /*
+        name: Permissions-Policy
+        value: "geolocation=(), camera=(), microphone=(), payment=(), usb=()"
+
     routes:
       # Legacy WordPress URLs (ochorus.com was a WordPress site before this app
       # took the domain). Book pages already share the app's /books/<slug>/ shape,

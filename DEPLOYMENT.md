@@ -39,6 +39,13 @@ cd ~/dev/ochorus && git push
 2. Fill in the prompted secrets:
    - `ochorus-api`: `DATABASE_URL`, `SUPABASE_URL`. Leave `DJANGO_ALLOWED_HOSTS`,
      `CORS_ALLOWED_ORIGINS`, `CSRF_TRUSTED_ORIGINS` blank for now (step 4).
+     `SUPABASE_URL` must be the **project origin** (`https://<ref>.supabase.co`)
+     — the API derives both the JWKS URL and the expected token issuer from it.
+     If every signed-in request suddenly resolves to anonymous and the API log
+     shows `Rejected Supabase token: Invalid token: Invalid issuer`, the derived
+     issuer disagrees with what your GoTrue stamps; set `SUPABASE_JWT_ISSUER` to
+     the token's actual `iss` (self-hosted GoTrue only — it is unset and unneeded
+     on hosted Supabase).
    - `ochorus-web`: `PUBLIC_SUPABASE_URL`, `PUBLIC_SUPABASE_ANON_KEY`. Leave
      `PUBLIC_API_BASE_URL` blank for now (step 4).
 3. Apply. The first API deploy runs migrations and **auto-seeds the 36 books**
@@ -109,6 +116,15 @@ PUBLIC_SITE_URL     = https://ochorus.com
 > origins, so the site is fully functional), then flip to `https://api.ochorus.com`
 > and redeploy **after** the cert is issued. `PUBLIC_SITE_URL` has no such
 > constraint — it's only baked into meta-tag strings, never fetched.
+
+> ⚠️ **A new API host also needs a CSP edit.** `ochorus-web`'s
+> `Content-Security-Policy` (in `render.yaml`) names the API origin literally,
+> because Render substitutes no env vars into header values. Both
+> `ochorus-api.onrender.com` and `api.ochorus.com` are already listed, so the
+> flip above is covered — but any *other* host would be blocked, and the symptom
+> is every API call failing in the browser console with a CSP violation while the
+> server logs look perfectly healthy. Header changes also need a manual
+> **Blueprint → Sync** (gotcha #3); they do not ship on an ordinary auto-deploy.
 
 > `PUBLIC_SITE_URL` is baked into the prerendered pages (canonical / OG / sitemap)
 > at **build** time, so after changing it run `ochorus-web` → **Manual Deploy →

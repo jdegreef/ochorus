@@ -5,6 +5,7 @@ from __future__ import annotations
 import re
 from html import unescape
 
+from django.db import transaction
 from django.db.models import Count, Max
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -342,16 +343,35 @@ class AdminReviewQueueView(APIView):
                     }
                 )
                 continue
-            err = self._apply(kind, slug, language, outcome)
-            if err:
-                skipped.append({"kind": kind, "slug": slug, "language": language, "reason": err})
+            # The field flip and its audit row are ONE unit. Apart, a failure
+            # between them approves a translation invisibly: the queue lists only
+            # ai_unreviewed rows, so the item vanishes from it with no
+            # ReviewOutcome — no reviewer, no reason, and no way to undo from the
+            # UI, because undo works off the row that was never written.
+            #
+            # Per item, not per batch: a 207 that holds back some rows and
+            # decides the rest is the documented result, so one bad row must not
+            # roll back twenty-four good decisions.
+            try:
+                with transaction.atomic():
+                    err = self._apply(kind, slug, language, outcome)
+                    if err:
+                        raise _Skip(err)
+                    ReviewOutcome.objects.update_or_create(
+                        kind=kind,
+                        slug=slug,
+                        language=language,
+                        defaults={"outcome": outcome, "note": note, "reviewer": reviewer},
+                    )
+            except _Skip as skip:
+                # _apply's own refusals (no such translation, public-domain
+                # original). Raised rather than returned so the atomic block
+                # rolls back instead of committing a flip whose audit row never
+                # followed.
+                skipped.append(
+                    {"kind": kind, "slug": slug, "language": language, "reason": str(skip)}
+                )
                 continue
-            ReviewOutcome.objects.update_or_create(
-                kind=kind,
-                slug=slug,
-                language=language,
-                defaults={"outcome": outcome, "note": note, "reviewer": reviewer},
-            )
             done.append({"kind": kind, "slug": slug, "language": language})
 
         # 207: a batch where some rows were held back is a normal result, not a
@@ -414,11 +434,30 @@ class AdminReviewQueueView(APIView):
         # Reversing is lossless: ai_reviewed → ai_unreviewed restores exactly the
         # state the fixture ships, and seed_* treats these fields as create-only
         # so the next deploy will not overwrite the correction.
-        err = self._apply(kind, slug, language, ReviewOutcome.Outcome.NEEDS_WORK)
-        if err:
-            return Response({"detail": err}, status=404)
-        ReviewOutcome.objects.filter(kind=kind, slug=slug, language=language).delete()
+        # Same pairing as the decide path, mirrored: un-reviewing the row and
+        # dropping its outcome are one unit. Apart, a failure between them leaves
+        # the item back in the queue while the dashboard still reports a decision
+        # that no longer holds.
+        try:
+            with transaction.atomic():
+                err = self._apply(kind, slug, language, ReviewOutcome.Outcome.NEEDS_WORK)
+                if err:
+                    raise _Skip(err)
+                ReviewOutcome.objects.filter(
+                    kind=kind, slug=slug, language=language
+                ).delete()
+        except _Skip as skip:
+            return Response({"detail": str(skip)}, status=404)
         return Response({"ok": True, "kind": kind, "slug": slug, "language": language})
+
+
+class _Skip(Exception):
+    """A row the reviewer's decision cannot be applied to.
+
+    Raised rather than returned so the surrounding ``transaction.atomic()``
+    rolls back: a refusal discovered midway must not leave a half-applied
+    decision behind. Carries the reason the API reports.
+    """
 
 
 def _tally(rows: list[dict], field: str) -> dict:
