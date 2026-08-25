@@ -313,6 +313,23 @@ BODY_CORRECTIONS: dict[str, dict] = {
             (".James 5:15", "James 5:15"),
             # "Jdb" for "Job" - the quoted words verify against Job 42:6.
             ("(Jdb 42:6)", "(Job 42:6)"),
+            # Found by the hi translators (job #707), same single-reading OCR
+            # classes as above: split verse number, digit zero for the vocative
+            # O, J for I, "eider" for "elder", stray capital/comma/apostrophe,
+            # and a doubled single-open mark where the book's double belongs.
+            # Language-agnostic on purpose: pt and ar reproduced the split
+            # faithfully ("Lucas 15:3 1", "لوقا 15:3 1"), so repair the digits.
+            ("15:3 1", "15:31"),
+            ("and so J did not enjoy", "and so I did not enjoy"),
+            ("The eider son", "The elder son"),
+            ("A minister once told me That,", "A minister once told me that,"),
+            ("thoughts of Thee, 0 God", "thoughts of Thee, O God"),
+            ("\u201c0 Christ", "\u201cO Christ"),
+            ("0 beloved brethren", "O beloved brethren"),
+            ("Not unto us, 0 Lord", "Not unto us, O Lord"),
+            ("began to pour its\u2019 sap", "began to pour its sap"),
+            ("Christ, the, heavenly Vine", "Christ, the heavenly Vine"),
+            ("one may say, \u2018\u2018pray", "one may say, \u201cpray"),
         ],
     },
     "the-gospel-of-healing": {
