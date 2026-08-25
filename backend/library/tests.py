@@ -6021,6 +6021,47 @@ class GeneratedCoverTests(TestCase):
         self.assertNotIn("font-family", svg)
 
 
+class CuratedArtFetchTests(SimpleTestCase):
+    """A half-downloaded painting must not be mistaken for a whole one.
+
+    `build_curated_covers` caches museum originals under `.cache/` and decides
+    it already has one with `raw.exists()` — nothing downstream re-reads the
+    bytes. So a transfer that dies mid-stream used to leave a truncated JPEG
+    that every later run accepted as the painting, cropped, and committed.
+
+    Not hypothetical: it happened while curating this batch. The Met connection
+    dropped and left a 163 KB `met-437975.orig.jpg` with no end-of-image marker,
+    which the next run would have shipped as Spurgeon's cover.
+    """
+
+    def test_an_interrupted_download_leaves_no_file_behind(self):
+        from library.management.commands import build_curated_covers as cmd
+
+        with tempfile.TemporaryDirectory() as td:
+            dest = Path(td) / "painting.orig.jpg"
+
+            # A response that yields some bytes and then dies, which is what a
+            # dropped connection looks like from up here.
+            def die_partway(src, dst, *a, **kw):
+                dst.write(b"\xff\xd8" + b"x" * 4096)
+                raise BrokenPipeError(32, "Broken pipe")
+
+            with (
+                mock.patch.object(cmd.urllib.request, "urlopen", mock.MagicMock()),
+                mock.patch.object(cmd.shutil, "copyfileobj", die_partway),
+            ):
+                with self.assertRaises(BrokenPipeError):
+                    cmd._fetch("https://example.invalid/x.jpg", dest)
+
+            # Nothing at all: not the truncated download the cache would trust
+            # as the finished painting, and not the `.part` scratch either.
+            self.assertEqual(
+                [q.name for q in Path(td).iterdir()],
+                [],
+                "an interrupted download left a file behind",
+            )
+
+
 class CuratedArtTests(TestCase):
     """Guards on the curated-artwork manifest (library/curated_art.py)."""
 
@@ -6146,13 +6187,23 @@ class CuratedCoversSurviveForceTests(TestCase):
 
         from django.core.management import call_command
 
+        from library.curated_art import CURATED
+
+        # A slug this test INVENTS, rather than a real uncurated book. It used
+        # to name `till-he-come`, which was a fine example right up until that
+        # book was given a painting — at which point the test was asserting the
+        # opposite of what it means, and failed for a reason that had nothing to
+        # do with the guard it exists to check. Curating another book must not
+        # be able to break this again.
+        slug = "a-book-nobody-has-curated"
+        self.assertNotIn(slug, CURATED)
         Book.objects.create(
-            slug="till-he-come", language="en", title="Till He Come",
-            author=self.author, cover_url="/covers/till-he-come.svg", cover_color="#333",
+            slug=slug, language="en", title="Uncurated",
+            author=self.author, cover_url=f"/covers/{slug}.svg", cover_color="#333",
         )
         out = StringIO()
         call_command("generate_covers", "--force", "--dry-run", stdout=out)
-        self.assertIn("till-he-come.svg", out.getvalue())
+        self.assertIn(f"{slug}.svg", out.getvalue())
 
 
 class ScriptureFetchTests(TestCase):

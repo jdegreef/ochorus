@@ -157,6 +157,57 @@ CURATED: dict[str, Artwork] = {
         "Taylor is reading the Song of Songs, which is set in an orchard — a "
         "garden enclosed, the vines in flower. Painted in his own decade.",
     ),
+    # ── Batch 3 ────────────────────────────────────────────────────────────
+    # Where a book is ABOUT a place and a moment, the art comes from that place
+    # and near that moment: Finney gets the American landscape of his own
+    # burned-over district, painted three years after his lectures. That is two
+    # of the six, and the rule is not general — four of these are Dutch Golden
+    # Age landscapes on books that are neither Dutch nor of that century,
+    # chosen for what they show rather than when they were painted. Whitefield's
+    # enormous sky is a van Goyen because the sky is the subject, not because
+    # 1646 has anything to do with him.
+    #
+    # ONE PAIRING IS DELIBERATE, and only one: the two Hobbema roads. Everything
+    # else here should be able to stand on its own book.
+    "all-things-for-good": Artwork(
+        "cma", 148363, "Simon de Vlieger",
+        "Sleeping Peasants near Fields (Parable of the Weeds)", "1650–53",
+        "Watson is expounding Romans 8:28, and this is the parable next door: "
+        "wheat and tares left to grow together while men sleep. Painted in his "
+        "own decade, and it trusts providence rather than explaining it.",
+    ),
+    "till-he-come": Artwork(
+        "met", 437975, "Andreas Achenbach",
+        "Sunset after a Storm on the Coast of Sicily", "1853",
+        "Communion meditations, and the title is 1 Corinthians 11:26 — the "
+        "church between the cross and the return. Light coming from behind the "
+        "headland, not yet arrived.",
+    ),
+    "the-way-to-god": Artwork(
+        "met", 436652, "Meyndert Hobbema", "Entrance to a Village", "ca. 1665",
+        "A road ARRIVING somewhere, deliberately paired with the Hobbema on "
+        "`a-call-to-the-unconverted`, which is a road leaving. Baxter summons a "
+        "reader to set out; Moody tells him where the road goes.",
+    ),
+    "revival-lectures": Artwork(
+        "cma", 93014, "Thomas Cole",
+        "View of Schroon Mountain, Essex County, New York, After a Storm", "1838",
+        "Finney's own decade, his own country, and very nearly his own county — "
+        "the burned-over district. A landscape after a storm, which is what he "
+        "spent the book arguing a revival leaves behind.",
+    ),
+    "selected-sermons-whitefield": Artwork(
+        "met", 436558, "Jan van Goyen", "View of Haarlem and the Haarlemmer Meer", "1646",
+        "Nine tenths sky over a low horizon. Whitefield preached in fields to "
+        "crowds no building could hold, and this is what they were standing "
+        "under.",
+    ),
+    "the-normal-christian-life": Artwork(
+        "met", 437191, "Aert van der Neer", "Landscape at Sunset", "1650s",
+        "Ordinary evening, ordinary people going home, nothing singled out. "
+        "Nee's whole argument is that what the New Testament describes is not "
+        "the exceptional Christian life but the normal one.",
+    ),
 }
 
 
