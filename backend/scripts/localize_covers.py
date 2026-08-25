@@ -101,6 +101,7 @@ from library.covers import (  # noqa: E402
     cover_path,
     emblem_for_book,
     palette_from_artwork,
+    write_og_twin,
 )
 from library.curated_art import CURATED  # noqa: E402
 from library.designed_covers import DERIVED_GROUND, is_designed  # noqa: E402
@@ -128,12 +129,14 @@ def ensure_og_twin(slug: str, artwork: Path) -> bool:
     properly means teaching the page the English row's cover_url, which is a
     different change.
 
-    Palettised deliberately. A truecolour PNG of these frames runs 250-400 KB
-    each; at feed size 256 colours is indistinguishable and costs a third of
-    that. Rasterising the localized SVGs instead — 58 files rather than 15 —
-    measured ~15 MB, which is not worth a preview card.
+    The DRAWING moved to ``covers.write_og_twin`` when
+    ``build_derived_grounds`` needed the same twin for the same reason; what is
+    left here is the decision to write one. Rasterising the localized SVGs
+    instead — 58 files rather than 15 — measured ~15 MB, which is not worth a
+    preview card.
     """
-    dest = COVERS / f"{slug}.png"
+    name = f"{slug}.png"
+    dest = COVERS / name
     if dest.exists():
         return False
     # `/covers/<slug>.png` is a generated twin for thirty works and a HAND-MADE
@@ -142,23 +145,13 @@ def ensure_og_twin(slug: str, artwork: Path) -> bool:
     # `exists()` above is what has been keeping them safe, which is to say
     # nothing has: delete one and re-run this, and a designed cover is silently
     # replaced by a machine crop of itself. Ask the registry, not the extension.
-    if is_designed(f"/covers/{slug}.png"):
+    if is_designed(f"/covers/{name}"):
         raise SystemExit(
             f"refusing to write {dest}: that path is {slug}'s designed cover "
             "(library.designed_covers.DESIGNED), not a twin to regenerate"
         )
 
-    from PIL import Image
-
-    im = Image.open(artwork).convert("RGB")
-    w, h = im.size
-    tw, th = (w, w * 4 // 3) if w * 4 // 3 <= h else (h * 3 // 4, h)
-    im = im.crop(
-        ((w - tw) // 2, (h - th) // 2, (w - tw) // 2 + tw, (h - th) // 2 + th)
-    ).resize((600, 800), Image.LANCZOS)
-    im.quantize(colors=256, method=Image.MEDIANCUT, dither=Image.FLOYDSTEINBERG).save(
-        dest, "PNG", optimize=True
-    )
+    write_og_twin(artwork, dest)
     return True
 
 

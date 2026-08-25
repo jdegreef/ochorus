@@ -69,91 +69,44 @@ from pathlib import Path
 BACKEND = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BACKEND))
 
-from library.covers import art_url  # noqa: E402
-from library.designed_covers import DERIVED_GROUND  # noqa: E402
+from PIL import Image, ImageFilter, ImageOps  # noqa: E402
+
+# `H`/`W` are the plate's canvas — imported rather than restated, because every
+# other cover tool derives its geometry from that pair and a private copy here
+# would go on drawing 600x800 after the module moved.
+from library.covers import H, W, art_url, write_og_twin  # noqa: E402
+from library.designed_covers import (  # noqa: E402
+    DERIVED_GROUND,
+    DESIGNED_BY_SLUG,
+    Ground,
+    is_designed,
+)
 
 ROOT = BACKEND.parent
 STATIC = ROOT / "frontend" / "static"
 
-#: The plate's canvas, matching `covers.W/H` and BookCover's reserved 3:4 box.
-W, H = 600, 800
+def derived_ground(source: Path, cut: Ground):
+    """The wordless ground for one work, as a 600x800 image.
 
-#: Per work: the band of the designed cover to take, as fractions of its size,
-#: and how far to open its shadows.
-#:
-#: * ``top`` / ``bottom`` — the words-free band, as fractions of the height.
-#:   Read off the artwork; every one of these excludes the byline, the title,
-#:   any rule, and the Ochorus or garethevansministries.org mark at the foot.
-#: * ``inset`` — how far in from each side, to clear the designed cover's own
-#:   hairline frame. `BookCover` draws a frame of its own, and two of them a few
-#:   pixels apart is worse than either. A cover with no frame (the four
-#:   full-bleed photographs) takes the 0.02 that just trims the edge.
-#: * ``lift`` — gamma on the band, against the art scrim. 1.0 leaves it alone.
-#: * ``sky`` — how much of the band's top the out-of-focus extension is built
-#:   from. The default suits a photograph whose top is already background; a
-#:   silhouette against a sunset wants less, or its subject blurs upward into
-#:   the sky it was cut out of.
-BAND: dict[str, tuple[float, float, float, float, float]] = {
-    #                                       top   bottom inset  lift  sky
-    "baptism-with-the-holy-spirit":        (0.42, 0.83, 0.11, 1.15, 0.35),
-    "clothed-with-strength-and-dignity":   (0.40, 0.78, 0.10, 1.45, 0.35),
-    "godliness":                           (0.44, 0.75, 0.09, 1.85, 0.35),
-    "he-holds-my-tomorrows":               (0.46, 0.88, 0.02, 1.10, 0.20),
-    "humility-2":                          (0.38, 0.80, 0.11, 1.20, 0.35),
-    # The rule under the title sits at 0.594 — measured, not guessed, after a
-    # crop from 0.56 shipped a hairline across the ground. What is left below it
-    # is 18% of the cover, which at the usual inset came out as five parts blur
-    # to one part picture; the wide inset crops IN to the cross's stem instead,
-    # so the sharp band lands at a third of the plate.
-    "jesus-himself-2":                     (0.62, 0.78, 0.22, 1.80, 0.35),
-    # A true silhouette: nearly black before the scrim, so the heaviest lift
-    # in the table and it is still the darkest ground here.
-    "lord-teach-us-to-pray-2":             (0.44, 0.84, 0.03, 2.50, 0.35),
-    "prayer-the-pulse-of-life":            (0.56, 0.84, 0.11, 1.50, 0.35),
-    "purity-of-heart":                     (0.55, 0.79, 0.12, 2.00, 0.35),
-    "stepping-stones-2":                   (0.26, 0.64, 0.02, 1.15, 0.35),
-    "talks-to-the-farmer":                 (0.46, 0.78, 0.09, 1.45, 0.35),
-    "the-god-of-all-comfort":              (0.50, 0.78, 0.11, 1.10, 0.35),
-    # The doorway itself is an unlit room — a black rectangle at any lift the
-    # highlights survive — so this takes the lintel and sandstone ABOVE it,
-    # under the byline. The one work here whose ground is not its cover's
-    # subject, because its subject is an absence of light.
-    "the-inner-chamber":                   (0.13, 0.33, 0.10, 1.60, 0.35),
-    "the-key-in-my-hand":                  (0.26, 0.60, 0.02, 1.05, 0.35),
-    "the-person-and-work-of-the-holy-spirit": (0.41, 0.82, 0.10, 1.00, 0.35),
-    "the-unselfishness-of-god":            (0.44, 0.80, 0.09, 1.15, 0.15),
-}
-
-
-def _fill(im, w: int, h: int):
-    """Scale to cover (w, h), centre-cropping the overflow."""
-    from PIL import Image
-
-    scale = max(w / im.width, h / im.height)
-    im = im.resize(
-        (max(w, round(im.width * scale)), max(h, round(im.height * scale))),
-        Image.LANCZOS,
-    )
-    left, top = (im.width - w) // 2, (im.height - h) // 2
-    return im.crop((left, top, left + w, top + h))
-
-
-def build_ground(source: Path, top: float, bottom: float, inset: float,
-                 lift: float, sky: float):
-    """The wordless ground for one work, as a 600x800 image."""
-    from PIL import Image, ImageFilter
-
+    NOT `covers.build_ground`, which takes a colour and returns the SVG plate.
+    Different input, different output, same subsystem — hence the name.
+    """
     im = Image.open(source).convert("RGB")
     w, h = im.size
-    band = im.crop((int(w * inset), int(h * top), int(w * (1 - inset)), int(h * bottom)))
+    band = im.crop((
+        int(w * cut.inset),
+        int(h * cut.top),
+        int(w * (1 - cut.inset)),
+        int(h * cut.bottom),
+    ))
     bh = round(band.height * W / band.width)
     band = band.resize((W, bh), Image.LANCZOS)
 
-    if lift != 1.0:
+    if cut.lift != 1.0:
         # Gamma rather than a brightness multiply: the scrim takes 36-64% back
         # out, and a multiply that lifted these shadows far enough would flatten
         # the highlights the photographs were chosen for.
-        lut = [min(255, round(255 * (v / 255) ** (1 / lift))) for v in range(256)]
+        lut = [min(255, round(255 * (v / 255) ** (1 / cut.lift))) for v in range(256)]
         band = band.point(lut * 3)
 
     if bh >= H:
@@ -161,10 +114,10 @@ def build_ground(source: Path, top: float, bottom: float, inset: float,
         return band.crop((0, y, W, y + H))
 
     seam = H - bh
-    slice_h = max(8, int(bh * sky))
-    ground = _fill(band.crop((0, 0, W, slice_h)), W, H).filter(
-        ImageFilter.GaussianBlur(radius=46)
-    )
+    slice_h = max(8, int(bh * cut.sky))
+    ground = ImageOps.fit(
+        band.crop((0, 0, W, slice_h)), (W, H), Image.LANCZOS
+    ).filter(ImageFilter.GaussianBlur(radius=46))
     # Feathered in rather than pasted: the join has to read as depth of field.
     mask = Image.new("L", (W, bh), 255)
     mask.paste(Image.linear_gradient("L").resize((W, min(120, bh // 2))), (0, 0))
@@ -181,19 +134,56 @@ def scrimmed(ground):
     a developer's machine, and the alternative — teaching a Python script to
     read a CSS custom property — is more machinery than the tuning is worth.
     """
-    from PIL import Image
+    stops = [(0.00, 0.64), (0.30, 0.36), (0.60, 0.50), (1.00, 0.74)]
+
+    def alpha(f: float) -> int:
+        """The scrim's opacity a fraction `f` down the plate, 0-255."""
+        for (p0, a0), (p1, a1) in zip(stops, stops[1:], strict=True):
+            if f <= p1:
+                return round(255 * (a0 + (a1 - a0) * (f - p0) / (p1 - p0)))
+        return round(255 * stops[-1][1])
 
     out = Image.blend(ground.convert("RGB"), Image.new("RGB", (W, H), (26, 20, 16)), 0.26)
-    stops = [(0.00, 0.64), (0.30, 0.36), (0.60, 0.50), (1.00, 0.74)]
+    # One pixel wide, then stretched: the ramp is vertical, so 800 values rather
+    # than 480,000.
     column = Image.new("L", (1, H))
-    px = column.load()
-    for y in range(H):
-        f = y / (H - 1)
-        for (p0, a0), (p1, a1) in zip(stops, stops[1:], strict=False):
-            if p0 <= f <= p1:
-                px[0, y] = int(255 * (a0 + (a1 - a0) * (f - p0) / (p1 - p0)))
-                break
+    column.putdata([alpha(y / (H - 1)) for y in range(H)])
     return Image.composite(Image.new("RGB", (W, H), (0, 0, 0)), out, column.resize((W, H)))
+
+
+def _ensure_twin(slug: str, designed) -> bool:
+    """Guarantee `/covers/<slug>.png` exists once this work wears a ground.
+
+    Handing the translations a `covers/art/` cover ARMS the og:image fallback —
+    `books/[slug]/+page.svelte` sends any art or `.svg` cover to
+    `/covers/<slug>.png` — and `test_covers_that_cannot_be_shared_have_a_raster
+    _twin` fails without one. `localize_covers.ensure_og_twin` used to be what
+    wrote it, and no longer can: a derived work now `continue`s out of that
+    script before its artwork branch, so the seventeenth of these would have
+    arrived at a red build with no command that produces the missing file —
+    the trap `tests_fixture` names elsewhere as "a red build no re-run fixes".
+
+    The twin is a crop of the DESIGNED cover, not of the ground: it is the one
+    image of this work that still has a title on it, which is the whole job of
+    a share card.
+
+    Two of the sixteen are the case that makes this delicate — for
+    `baptism-with-the-holy-spirit` and `prayer-the-pulse-of-life` the twin's
+    path IS the designed cover. Writing there would destroy a hand-made cover,
+    so the registry is asked, not the extension.
+    """
+    dest = STATIC / "covers" / f"{slug}.png"
+    if dest.exists():
+        return False
+    if is_designed(f"/covers/{slug}.png"):
+        # Cannot happen while the file is committed; if it ever does, the file
+        # is missing and regenerating it is precisely the wrong repair.
+        raise SystemExit(
+            f"{slug}'s og twin path is its designed cover and that file is "
+            "gone — restore it from git rather than redrawing it"
+        )
+    write_og_twin(designed, dest)
+    return True
 
 
 def main() -> int:
@@ -206,19 +196,16 @@ def main() -> int:
                     help="Also write each ground under the art scrim, for tuning.")
     args = ap.parse_args()
 
-    missing = sorted(set(DERIVED_GROUND) - set(BAND))
-    if missing:
-        raise SystemExit(f"no band recorded for: {', '.join(missing)}")
-
     wanted = set(args.slugs)
-    drawn = skipped = 0
+    drawn = skipped = twins = 0
     preview = Path(args.preview) if args.preview else None
     if preview and not args.dry_run:
         preview.mkdir(parents=True, exist_ok=True)
 
-    for slug, designed in sorted(DERIVED_GROUND.items()):
+    for slug, cut in sorted(DERIVED_GROUND.items()):
         if wanted and slug not in wanted:
             continue
+        designed = DESIGNED_BY_SLUG[slug]
         source = STATIC / designed.lstrip("/")
         if not source.is_file():
             raise SystemExit(f"missing designed cover for {slug}: {source}")
@@ -229,7 +216,7 @@ def main() -> int:
             print(f"  · {url:44} already drawn")
             continue
 
-        ground = build_ground(source, *BAND[slug])
+        ground = derived_ground(source, cut)
         drawn += 1
         if not args.dry_run:
             dest.parent.mkdir(parents=True, exist_ok=True)
@@ -238,10 +225,12 @@ def main() -> int:
             ground.save(dest, "JPEG", quality=88, subsampling=0, optimize=True)
             if preview:
                 scrimmed(ground).save(preview / f"{slug}.png")
+            if _ensure_twin(slug, source):
+                twins += 1
         print(f"  ✓ {url:44} from {designed}")
 
     verb = "would draw" if args.dry_run else "drew"
-    print(f"\n{verb} {drawn} grounds · {skipped} already on disk")
+    print(f"\n{verb} {drawn} grounds · {twins} og:image twins · {skipped} already on disk")
     if drawn and not args.dry_run:
         print("next: uv run python scripts/build_cover_assets.py  (webp variants)")
         print("      uv run python scripts/localize_covers.py     (repoint rows)")

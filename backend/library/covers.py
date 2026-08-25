@@ -340,6 +340,39 @@ def emblem_art(name: str) -> tuple[str, float, float] | None:
     return _read_art(_EMBLEM_DIR / f"{name}.svg")
 
 
+def write_og_twin(artwork, dest) -> None:
+    """Rasterise ``artwork`` into the 600x800 og:image twin at ``dest``.
+
+    og:image must be raster — WhatsApp, Facebook and X all refuse an SVG
+    preview — so ``books/[slug]/+page.svelte`` falls back to
+    ``/covers/<slug>.png`` whenever a book's cover cannot stand in for itself.
+    Both tiers that wear a wordless ground arm that fallback, so both need a
+    twin, and the two scripts that hand a row such a ground
+    (``localize_covers``, ``build_derived_grounds``) call this rather than each
+    growing a copy. Neither decides WHETHER to write — that is the caller's, and
+    on the derived tier one of those paths is a hand-made cover.
+
+    Palettised deliberately. A truecolour PNG of these frames runs 250-400 KB
+    each; at feed size 256 colours is indistinguishable and costs a third of
+    that.
+
+    Pillow is imported here, not at module scope, for the reason
+    ``palette_from_artwork`` is: the API image ships without it and must still
+    be able to import this module for ``build_ground``.
+    """
+    from PIL import Image
+
+    im = Image.open(artwork).convert("RGB")
+    w, h = im.size
+    tw, th = (w, w * 4 // 3) if w * 4 // 3 <= h else (h * 3 // 4, h)
+    im = im.crop(
+        ((w - tw) // 2, (h - th) // 2, (w - tw) // 2 + tw, (h - th) // 2 + th)
+    ).resize((W, H), Image.LANCZOS)
+    im.quantize(colors=256, method=Image.MEDIANCUT, dither=Image.FLOYDSTEINBERG).save(
+        dest, "PNG", optimize=True
+    )
+
+
 def palette_from_artwork(path) -> str:
     """The plate colour for a translated edition, taken from the ENGLISH
     edition's artwork.

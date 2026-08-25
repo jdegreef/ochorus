@@ -63,6 +63,7 @@ from library.curated_art import CURATED
 from library.designed_covers import (
     DERIVED_GROUND,
     DESIGNED,
+    DESIGNED_BY_SLUG,
     digest,
 )
 
@@ -925,13 +926,17 @@ class CoverAssetTests(SimpleTestCase):
         `build_derived_grounds` can draw them again from their recipes — and
         freezing those would forbid the redraw their scripts exist to do.
         """
-        unregistered = sorted({
-            _cover(f) for f in self.books
-            if _cover(f).startswith("/covers/")
-            and not _cover(f).startswith("/covers/art/")
-            and _cover(f).endswith(RASTER_SUFFIXES)
-            and _cover(f) not in DESIGNED
-        })
+        unregistered = set()
+        for f in self.books:
+            url = _cover(f)
+            if (
+                url.startswith("/covers/")
+                and not url.startswith("/covers/art/")
+                and url.endswith(RASTER_SUFFIXES)
+                and url not in DESIGNED
+            ):
+                unregistered.add(url)
+        unregistered = sorted(unregistered)
         self.assertEqual(
             unregistered, [],
             "designed cover with no entry in library.designed_covers.DESIGNED "
@@ -950,6 +955,9 @@ class CoverAssetTests(SimpleTestCase):
         work would silently lose the hand-made cover this whole tier was built to
         preserve.
         """
+        # `test_cover_files_exist` would also catch a missing ground, but only
+        # once a row points at it. This catches the state in between — added to
+        # DERIVED_GROUND, never drawn — and names the script that draws it.
         absent = sorted(
             slug for slug in DERIVED_GROUND
             if not (STATIC_DIR / "covers" / art_url(slug)[1]).is_file()
@@ -965,7 +973,7 @@ class CoverAssetTests(SimpleTestCase):
             if slug not in DERIVED_GROUND:
                 continue
             expected = (
-                DERIVED_GROUND[slug] if f["language"] == "en" else art_url(slug)[0]
+                DESIGNED_BY_SLUG[slug] if f["language"] == "en" else art_url(slug)[0]
             )
             if _cover(f) != expected:
                 wrong.append((slug, f["language"], _cover(f), expected))
@@ -974,6 +982,37 @@ class CoverAssetTests(SimpleTestCase):
             "a derived-ground work wearing the wrong cover — English wears the "
             "designed file, every other language wears /covers/art/<slug>.jpg "
             "(run `uv run python scripts/localize_covers.py`)",
+        )
+
+    def test_a_translated_designed_work_has_a_ground(self):
+        """A designed cover + a translation must mean a derived ground.
+
+        THIS IS THE GATE THAT MAKES THE FIX DEFAULT-ON, and without it the whole
+        tier is a one-time cleanup rather than a rule.
+
+        `DERIVED_GROUND`'s membership silently encodes "has translations today".
+        Eleven registered designed covers are English-only and rightly have no
+        ground — drawing one nobody points at is how a file with no reader gets
+        committed. But the day one of those eleven is translated,
+        `localize_covers` falls into its artwork branch and draws exactly the
+        flat coloured plate this tier exists to replace, and every other gate
+        stays green: `test_translated_editions_wear_their_own_cover` is
+        perfectly satisfied by `/covers/<lang>/<slug>.svg`.
+
+        So the regression would arrive silently, in the same shape, through the
+        same door it came in the first time. This closes it: translate such a
+        work and the build asks for its ground.
+        """
+        translated = {
+            f["slug"] for f in self.books
+            if f.get("language") != "en" and f["slug"] in DESIGNED_BY_SLUG
+        }
+        self.assertEqual(
+            sorted(translated - set(DERIVED_GROUND)), [],
+            "a work with a designed English cover now has a translation, and "
+            "no wordless ground for it to wear — that edition would fall back "
+            "to a flat plate. Add it to DERIVED_GROUND with its crop, then run "
+            "`uv run python scripts/build_derived_grounds.py`",
         )
 
     def test_covers_that_cannot_be_shared_have_a_raster_twin(self):

@@ -40,6 +40,13 @@ deleting either file and re-running a curation script would have replaced a
 designed cover with a machine crop of itself, silently. ``ensure_og_twin`` now
 asks this module first.
 
+THAT GUARD IS A LOCAL BACKSTOP, NOT THE PROTECTION. ``/covers/<slug>.png`` has
+a SECOND writer — ``frontend/scripts/generate-cover-og.mjs`` — which cannot
+import a Python registry and still decides by extension. The digest gate is
+what covers both, and every writer after them: it is content-addressed, so it
+does not care which tool moved the bytes or what language that tool was written
+in. A guard at a call site can only defend the call sites you thought of.
+
 WHY THE TRANSLATIONS NEEDED SOMETHING ELSE
 The words are IN these files, so a designed cover cannot serve a Swahili
 edition: a scrim is not an eraser, and the prototypes that tried came out with
@@ -69,6 +76,7 @@ from __future__ import annotations
 
 import hashlib
 from pathlib import Path
+from typing import NamedTuple
 
 #: Every hand-made cover, by the ``cover_url`` its row wears → SHA-256 of the
 #: committed file. Add an entry when you add a cover; change one only when you
@@ -131,40 +139,103 @@ DESIGNED: dict[str, str] = {
 }
 
 
-#: The works whose translations wear a ground derived from the designed cover
-#: above: slug → the ``cover_url`` the ground was cropped out of. Only the
-#: sixteen that HAVE translations are here — a work read in one language needs
-#: no language-neutral ground, and drawing one nobody points at is how a file
-#: with no reader gets committed.
-DERIVED_GROUND: dict[str, str] = {
-    "baptism-with-the-holy-spirit": "/covers/baptism-with-the-holy-spirit.png",
-    "clothed-with-strength-and-dignity": "/covers/clothed-with-strength-and-dignity.jpg",
-    "godliness": "/covers/godliness.jpg",
-    "he-holds-my-tomorrows": "/covers/he-holds-my-tomorrows.jpg",
-    "humility-2": "/covers/humility-2.jpg",
-    "jesus-himself-2": "/covers/jesus-himself-2.jpg",
-    "lord-teach-us-to-pray-2": "/covers/lord-teach-us-to-pray-2.jpg",
-    "prayer-the-pulse-of-life": "/covers/prayer-the-pulse-of-life.png",
-    "purity-of-heart": "/covers/purity-of-heart.jpg",
-    "stepping-stones-2": "/covers/stepping-stones-2.jpg",
-    "talks-to-the-farmer": "/covers/talks-to-the-farmer.jpg",
-    "the-god-of-all-comfort": "/covers/the-god-of-all-comfort.jpg",
-    "the-inner-chamber": "/covers/the-inner-chamber.jpg",
-    "the-key-in-my-hand": "/covers/the-key-in-my-hand.jpg",
-    "the-person-and-work-of-the-holy-spirit": "/covers/the-person-and-work-of-the-holy-spirit.jpg",
-    "the-unselfishness-of-god": "/covers/the-unselfishness-of-god.jpg",
+class Ground(NamedTuple):
+    """How one designed cover is cropped into a wordless ground.
+
+    The recipe lives here rather than in the script that draws it, for the
+    reason ``curated_art.CURATED`` does: what a work's artwork should be is
+    catalogue knowledge, and a script is a thing you run. Keeping it here also
+    means there is ONE table keyed by these sixteen slugs instead of two that a
+    hand-written consistency check has to hold together.
+
+    No rule finds these numbers, which is why they are written down one work at
+    a time: the ministry mark sits at 78% on one cover and over the subject on
+    the next, and ``jesus-himself-2`` has a hairline rule at 0.594 that a crop
+    from 0.56 quietly included.
+    """
+
+    #: The words-free band, as fractions of the designed cover's height. Every
+    #: one of these excludes the byline, the title, any rule, and the Ochorus or
+    #: garethevansministries.org mark at the foot.
+    top: float
+    bottom: float
+    #: How far in from each side, clearing the designed cover's own hairline
+    #: frame — `BookCover` draws a frame of its own, and two of them a few
+    #: pixels apart is worse than either. A full-bleed photograph takes the 0.02
+    #: that only trims the edge.
+    inset: float
+    #: Gamma on the band, against the art scrim's 36-64% black. 1.0 leaves it
+    #: alone. The curated tier needs none because a museum landscape is
+    #: daylight; these are ministry photographs chosen to be moody.
+    lift: float
+    #: How much of the band's top the out-of-focus extension is built from. The
+    #: default suits a photograph whose top is already background; a silhouette
+    #: against a sunset wants less, or its subject blurs upward into the sky it
+    #: was cut out of.
+    sky: float = 0.35
+
+
+#: The works whose translations wear a ground cropped from the designed English
+#: cover of the same name, and the crop that makes it. Only the sixteen that HAVE
+#: translations are here — a work read in one language needs no language-neutral
+#: ground, and drawing one nobody points at is how a file with no reader gets
+#: committed.
+#:
+#: The designed cover each is cut from is NOT restated here: it is
+#: ``designed_url(slug)``, derived from ``DESIGNED`` above, so replacing one of
+#: those files with a different extension stays the two-line diff this module
+#: advertises rather than quietly needing a third edit here.
+DERIVED_GROUND: dict[str, Ground] = {
+    "baptism-with-the-holy-spirit": Ground(0.42, 0.83, 0.11, 1.15),
+    "clothed-with-strength-and-dignity": Ground(0.40, 0.78, 0.10, 1.45),
+    "godliness": Ground(0.44, 0.75, 0.09, 1.85),
+    "he-holds-my-tomorrows": Ground(0.46, 0.88, 0.02, 1.10, sky=0.20),
+    "humility-2": Ground(0.38, 0.80, 0.11, 1.20),
+    # Below the rule at 0.594 there is only 18% of the cover left, which at the
+    # usual inset came out five parts blur to one part picture; the wide inset
+    # crops IN to the cross's stem, so the sharp band lands at a third of the
+    # plate.
+    "jesus-himself-2": Ground(0.62, 0.78, 0.22, 1.80),
+    # A true silhouette: nearly black before the scrim, so the heaviest lift
+    # here and still the darkest ground of the sixteen.
+    "lord-teach-us-to-pray-2": Ground(0.44, 0.84, 0.03, 2.50),
+    "prayer-the-pulse-of-life": Ground(0.56, 0.84, 0.11, 1.50),
+    "purity-of-heart": Ground(0.55, 0.79, 0.12, 2.00),
+    "stepping-stones-2": Ground(0.26, 0.64, 0.02, 1.15),
+    "talks-to-the-farmer": Ground(0.46, 0.78, 0.09, 1.45),
+    "the-god-of-all-comfort": Ground(0.50, 0.78, 0.11, 1.10),
+    # The doorway itself is an unlit room — a black rectangle at any lift its
+    # highlights survive — so this takes the lintel and sandstone ABOVE it,
+    # under the byline. The one work here whose ground is not its cover's
+    # subject, because its subject is an absence of light.
+    "the-inner-chamber": Ground(0.13, 0.33, 0.10, 1.60),
+    "the-key-in-my-hand": Ground(0.26, 0.60, 0.02, 1.05),
+    "the-person-and-work-of-the-holy-spirit": Ground(0.41, 0.82, 0.10, 1.00),
+    "the-unselfishness-of-god": Ground(0.44, 0.80, 0.09, 1.15, sky=0.15),
+}
+
+#: ``DESIGNED`` re-indexed by slug — the key every OTHER cover registry uses
+#: (``CURATED``, ``emblem_for_book``, ``art_url``, ``cover_path``), so a caller
+#: holding a slug does not have to guess at an extension to ask a question here.
+#: Two of these covers are ``.png`` and twenty-five are ``.jpg``, which is
+#: exactly the detail a second copy gets wrong the first time one is replaced.
+#:
+#: A re-index, not a second source of truth: every ``DESIGNED`` key is
+#: ``/covers/<slug>.<ext>`` and the stems are unique.
+DESIGNED_BY_SLUG: dict[str, str] = {
+    url.rsplit("/", 1)[1].rsplit(".", 1)[0]: url for url in DESIGNED
 }
 
 
-def is_designed(cover_url: str | None) -> bool:
+def is_designed(cover_url: str) -> bool:
     """Is this URL a registered hand-made cover — one no tool may rewrite?
 
-    Asked by ``ensure_og_twin`` before it writes, and by the fixture gates. Not
-    a guess from the extension: a ``.png`` under ``/covers/`` is a designed
-    cover for two works and a generated og twin for thirty, and only the
-    registry can tell those apart.
+    Asked by ``ensure_og_twin`` before it writes. Not a guess from the
+    extension: a ``.png`` under ``/covers/`` is a designed cover for two works
+    and a generated og twin for thirty, and only the registry can tell those
+    apart.
     """
-    return (cover_url or "") in DESIGNED
+    return cover_url in DESIGNED
 
 
 def digest(path: Path) -> str:
