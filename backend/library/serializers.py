@@ -727,49 +727,85 @@ class PlanListSerializer(serializers.ModelSerializer):
             "total_words", "covers", "day_one",
         ]
 
+    def _chapters(self, obj):
+        """The page-wide chapter index, or one built for this plan alone.
+
+        The view puts it in the context so a shelf of plans costs one query
+        rather than one per plan. The fallback keeps any other caller — and the
+        serializer used directly — working, at the old cost.
+        """
+        index = self.context.get("plan_chapters")
+        if index is None:
+            index = plan_chapter_index([obj], obj.language)
+            self.context["plan_chapters"] = index
+        return index
+
+    def _books(self, obj):
+        index = self.context.get("plan_books")
+        if index is None:
+            index = plan_book_index([obj], obj.language)
+            self.context["plan_books"] = index
+        return index
+
     def get_total_words(self, obj):
-        return _plan_total_words(obj, obj.language)
+        return _plan_total_words(obj, self._chapters(obj))
 
     def get_covers(self, obj):
-        return _plan_covers(obj, obj.language)
+        return _plan_covers(obj, self._books(obj))
 
     def get_day_one(self, obj):
-        return _plan_day_one(obj, obj.language)
+        return _plan_day_one(obj, self._chapters(obj))
 
 
-def _plan_total_words(plan, language):
-    """Sum the word counts of every day's chapter for a plan (one query for the
-    chapters; days are prefetched on the list, queried on detail)."""
-    pairs = [(d.book_slug, d.chapter_order) for d in plan.days.all()]
+def plan_chapter_index(plans, language):
+    """``{(book_slug, order): chapter values}`` for every day of every plan.
+
+    ONE query for a whole page. The three plan card fields — total words, day
+    one, the cover strip — plus the detail page's day list all need the same
+    chapters, and each used to fetch them itself: three queries per plan on the
+    shelf (a 3N+1), and four overlapping ones on the detail page.
+
+    Carries every column any of those four needs, so they read a dict instead of
+    the database. Same shape ``get_days`` already built for itself.
+    """
+    pairs = {(d.book_slug, d.chapter_order) for plan in plans for d in plan.days.all()}
     if not pairs:
-        return 0
+        return {}
     slugs = {slug for slug, _ in pairs}
-    wc = {
-        (c["book__slug"], c["order"]): c["word_count"]
+    return {
+        (c["book__slug"], c["order"]): c
         for c in Chapter.objects.filter(
             book__slug__in=slugs, book__language=language
-        ).values("book__slug", "order", "word_count")
+        ).values("book__slug", "book__title", "order", "title", "word_count")
     }
-    return sum(wc.get(p, 0) for p in pairs)
 
 
-def _plan_day_one(plan, language):
+def plan_book_index(plans, language):
+    """``{slug: Book}`` for every book any of these plans draws from — one query."""
+    slugs = {d.book_slug for plan in plans for d in plan.days.all()}
+    if not slugs:
+        return {}
+    return {b.slug: b for b in Book.objects.filter(slug__in=slugs, language=language)}
+
+
+def _plan_total_words(plan, chapters):
+    """Sum the word counts of every day's chapter, from a prebuilt index."""
+    return sum(
+        (chapters.get((d.book_slug, d.chapter_order)) or {}).get("word_count", 0)
+        for d in plan.days.all()
+    )
+
+
+def _plan_day_one(plan, chapters):
     """Day 1's book + chapter titles, so a card can say where the plan starts.
-    One query for the single chapter — days are prefetched and ordered by day,
-    so days.all()[0] is day one."""
-    days = plan.days.all()
+
+    Days are prefetched and ordered by day, so ``days.all()[0]`` is day one.
+    """
+    days = list(plan.days.all())
     if not days:
         return None
-    first = days[0]  # prefetched and ordered by day, so [0] is day one
-    chapter = (
-        Chapter.objects.filter(
-            book__slug=first.book_slug,
-            book__language=language,
-            order=first.chapter_order,
-        )
-        .values("book__title", "title")
-        .first()
-    )
+    first = days[0]
+    chapter = chapters.get((first.book_slug, first.chapter_order))
     if chapter is None:
         return None
     return {"book_title": chapter["book__title"], "chapter_title": chapter["title"]}
@@ -788,19 +824,15 @@ def _book_cover(book):
     }
 
 
-def _plan_covers(plan, language, limit=5):
+def _plan_covers(plan, books, limit=5):
     """The distinct books a plan draws from (first-appearance order), as small
-    cover descriptors — mirrors a topic's covers strip. One query for books."""
+    cover descriptors — mirrors a topic's covers strip. Reads a prebuilt index."""
     order = []
     for d in plan.days.all():
         if d.book_slug not in order:
             order.append(d.book_slug)
     if not order:
         return []
-    books = {
-        b.slug: b
-        for b in Book.objects.filter(slug__in=order, language=language)
-    }
     covers = []
     for slug in order:
         b = books.get(slug)
@@ -838,12 +870,9 @@ class PlanDetailSerializer(PlanListSerializer):
 
     def get_days(self, obj):
         days = list(obj.days.all())
-        # Resolve chapter/book titles for every day in two queries, not 2N.
-        slugs = {d.book_slug for d in days}
-        chapters = Chapter.objects.filter(
-            book__slug__in=slugs, book__language=obj.language
-        ).values("book__slug", "book__title", "order", "title", "word_count")
-        lookup = {(c["book__slug"], c["order"]): c for c in chapters}
+        # The same lookup the card fields need, so it is built once for the
+        # whole response rather than a fourth time here.
+        lookup = self._chapters(obj)
         for d in days:
             c = lookup.get((d.book_slug, d.chapter_order))
             d.book_title = c["book__title"] if c else ""

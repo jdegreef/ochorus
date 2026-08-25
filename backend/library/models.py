@@ -11,6 +11,8 @@ from __future__ import annotations
 
 from django.contrib.postgres.search import SearchVectorField
 from django.db import models
+from django.db.models import Subquery
+from django.db.models.functions import Coalesce
 
 from . import fts
 
@@ -21,21 +23,44 @@ class AuthorQuerySet(models.QuerySet):
 
         The library's one definition of how much an author carries — used by the
         public author list (which shows the counts) and by the admin's biography
-        queue (which ranks by them). ``distinct=True`` on both: two independent
-        reverse joins fan each other out, so a plain Count would multiply the
-        books by the sermons.
+        queue (which ranks by them).
+
+        Correlated SUBQUERIES rather than joined aggregates. Two reverse joins
+        fan each other out multiplicatively — Spurgeon's 5 books × 13 sermons is
+        65 intermediate rows for one author — and surviving that needed
+        ``Count(distinct=True)`` plus a trailing ``.distinct()``, which forced
+        Postgres to GROUP BY and de-duplicate over every selected column. That
+        includes ``bio`` and ``bio_html``: the full biography HTML of every
+        author, hashed and sorted, on a page the prerender crawl requests once
+        per locale. A subquery counts without fanning out, so the text columns
+        leave the GROUP BY entirely — there is no GROUP BY left.
         """
+        from django.apps import apps
+
+        def published_count(model_name: str, related_field: str):
+            model = apps.get_model("library", model_name)
+            return Coalesce(
+                Subquery(
+                    model.objects.filter(
+                        **{related_field: models.OuterRef("pk")},
+                        is_published=True,
+                        language=language,
+                    )
+                    # order_by() clears the model's default ordering, which
+                    # would otherwise be added to the subquery's GROUP BY and
+                    # break the aggregate.
+                    .order_by()
+                    .values(related_field)
+                    .annotate(n=models.Count("pk"))
+                    .values("n")[:1]
+                ),
+                models.Value(0),
+                output_field=models.IntegerField(),
+            )
+
         return self.annotate(
-            num_books=models.Count(
-                "books",
-                filter=models.Q(books__is_published=True, books__language=language),
-                distinct=True,
-            ),
-            num_sermons=models.Count(
-                "sermons",
-                filter=models.Q(sermons__is_published=True, sermons__language=language),
-                distinct=True,
-            ),
+            num_books=published_count("Book", "author"),
+            num_sermons=published_count("Sermon", "author"),
         )
 
 
