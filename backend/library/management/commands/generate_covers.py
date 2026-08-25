@@ -47,6 +47,7 @@ from django.core.management.base import BaseCommand
 
 from library.covers import build_ground, cover_path, emblem_for_book
 from library.curated_art import CURATED
+from library.designed_covers import DERIVED_GROUND
 from library.models import Book
 
 COVERS_DIR = settings.BASE_DIR.parent / "frontend" / "static" / "covers"
@@ -92,10 +93,19 @@ class Command(BaseCommand):
             if book.cover_url and not is_generated(book.cover_url):
                 skipped_art += 1
                 continue
-            # A curated work with no cover_url yet reaches here: the raster
-            # check above passes over it, and `is_generated("")` is True. Its
-            # painting comes from `build_curated_covers`, not from this.
-            if book.slug in CURATED:
+            # A work with a SHARED GROUND reaches here whenever its row does
+            # not already name the ground: the raster check above passes over
+            # it, and `is_generated("")` is True — as it is for the dangling
+            # `/covers/<lang>/<slug>.svg` that `translate_book` writes for a
+            # brand-new translation. Its file comes from `build_curated_covers`
+            # (curated) or `scripts/build_derived_grounds.py` (derived), never
+            # from here.
+            #
+            # DERIVED_GROUND is checked for a reason worth stating: without it
+            # a freshly translated derived edition took the plate below, which
+            # is the exact downgrade that tier exists to prevent — and left a
+            # committed SVG that then hard-exits `build_cover_assets`.
+            if book.slug in CURATED or book.slug in DERIVED_GROUND:
                 skipped_curated += 1
                 continue
             # Without --force, only fill the gaps.
@@ -119,6 +129,6 @@ class Command(BaseCommand):
         self.stdout.write(
             self.style.SUCCESS(
                 f"{verb} {wrote} · kept {skipped_art} artwork"
-                f" · kept {skipped_curated} curated · left {skipped_have} existing generated"
+                f" · kept {skipped_curated} shared-ground · left {skipped_have} existing generated"
             )
         )

@@ -54,6 +54,7 @@ from library.covers import (  # noqa: E402
     variant_url,
 )
 from library.curated_art import CURATED  # noqa: E402
+from library.designed_covers import DERIVED_GROUND, DESIGNED_BY_SLUG  # noqa: E402
 
 COVERS = BACKEND.parent / "frontend" / "static" / "covers"
 
@@ -103,21 +104,35 @@ def main() -> int:
     repointed = 0
     sources: set[Path] = set()
 
-    for path, slug, _language, fields in book_editions():
-        # A curated work's editions all point at the one painting. Written here
-        # as well as by `build_curated_covers` because the DB is not the vehicle:
-        # `seed_books` re-asserts cover_url from the fixture every deploy.
-        if slug in CURATED:
+    for path, slug, language, fields in book_editions():
+        # A work with a SHARED GROUND — a curated painting, or a ground cropped
+        # from its own designed cover — has one wordless file under `covers/art/`
+        # that its editions point at. Written here as well as by the script that
+        # draws it because the DB is not the vehicle: `seed_books` re-asserts
+        # cover_url from the fixture every deploy.
+        if slug in CURATED or slug in DERIVED_GROUND:
             url, rel = art_url(slug)
-            if fields.get("cover_url") != url:
+            # THE ENGLISH ROW IS THE EXCEPTION, and the reason the two tiers are
+            # not simply merged here. A derived ground was cut FROM the English
+            # edition's hand-made cover, which that edition goes on wearing
+            # (library/designed_covers.py); repointing it at the ground is
+            # precisely the loss this tier exists to prevent. A curated work has
+            # no such cover, and every one of its languages takes the painting.
+            wants = (
+                DESIGNED_BY_SLUG[slug]
+                if slug in DERIVED_GROUND and language == "en"
+                else url
+            )
+            if fields.get("cover_url") != wants:
                 if not args.dry_run:
-                    persist_field(path, "cover_url", url)
+                    persist_field(path, "cover_url", wants)
                 repointed += 1
             painting = COVERS / rel
             if not painting.exists():
                 raise SystemExit(
-                    f"{slug} is curated but has no painting at {rel} — "
-                    "run `manage.py build_curated_covers` first"
+                    f"{slug} wears a shared ground but has none at {rel} — run "
+                    "`manage.py build_curated_covers` (curated) or "
+                    "`scripts/build_derived_grounds.py` (derived) first"
                 )
             # And the plate it replaced must be GONE. The mirror of the check
             # above, and it belongs here for the same reason: this is the one
@@ -138,11 +153,16 @@ def main() -> int:
             if stale:
                 listed = ", ".join(str(p.relative_to(COVERS)) for p in stale)
                 raise SystemExit(
-                    f"{slug} is curated but still has its generated plate: {listed}. "
-                    "Delete it — a curated work wears the painting, and a leftover "
-                    "plate is what a retired render.yaml redirect will keep pointing at."
+                    f"{slug} wears a shared ground but still has its generated "
+                    f"plate: {listed}. Delete it — a leftover plate is what a "
+                    "retired render.yaml redirect will keep pointing at."
                 )
             sources.add(painting)
+            # The English designed cover is a raster a reader downloads too, and
+            # this branch `continue`s past the tier below that would have
+            # collected it — so it would have shipped without its variants.
+            if slug in DERIVED_GROUND and language == "en":
+                sources.add(COVERS / wants.removeprefix("/covers/"))
             continue
         cover = fields.get("cover_url") or ""
         if cover.endswith(RASTER_SUFFIXES):

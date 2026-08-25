@@ -60,6 +60,12 @@ from library.covers import (
     variant_url,
 )
 from library.curated_art import CURATED
+from library.designed_covers import (
+    DERIVED_GROUND,
+    DESIGNED,
+    DESIGNED_BY_SLUG,
+    digest,
+)
 
 EXPECTED_MODELS = {
     "library.author",
@@ -868,6 +874,215 @@ class CoverAssetTests(SimpleTestCase):
             stale, [],
             "the cover changed but its og:image twin did not — a shared link "
             "would show the previous design. Run `cd frontend && npm run og:covers`",
+        )
+
+    # ── The hand-made covers ────────────────────────────────────────────────
+    # `library.designed_covers` states the rule and holds the digests; these two
+    # are what make it a rule rather than a paragraph.
+
+    def test_designed_covers_are_never_changed(self):
+        """A registered hand-made cover must be byte-for-byte what we drew.
+
+        Every other cover in the library is output — a plate ground, a webp
+        variant, an og twin — and each of its tools decides what a book should
+        look like from the book's data. A designed cover carries a judgement no
+        data records, so nothing may redraw it.
+
+        Existence was never the hard part. `test_cover_files_exist` has always
+        passed on a file from any era, which is exactly how a whole generation
+        of stale share cards stayed green for months
+        (`test_every_twin_was_made_from_the_cover_it_stands_in_for` is the same
+        lesson, one tier over). This pins the BYTES, so an overwrite, a
+        re-compression or a well-meaning optimisation pass fails here naming the
+        file it touched.
+
+        Replacing one on purpose is a two-line diff — new file, new digest.
+        """
+        missing, changed = [], []
+        for url, recorded in sorted(DESIGNED.items()):
+            path = STATIC_DIR / url.lstrip("/")
+            if not path.is_file():
+                missing.append(url)
+            elif digest(path) != recorded:
+                changed.append(url)
+        self.assertEqual(
+            missing, [], "registered designed cover is not committed"
+        )
+        self.assertEqual(
+            changed, [],
+            "a hand-made cover changed. Nothing may redraw one of these — if a "
+            "script did, that script has a bug (see "
+            "library/designed_covers.py). If you meant to replace the artwork, "
+            "update its digest in DESIGNED in the same commit",
+        )
+
+    def test_every_designed_cover_is_registered(self):
+        """A row wearing a designed raster must have an entry in `DESIGNED`.
+
+        Registering is how a cover becomes protected, so a new hand-made cover
+        that nobody wrote down is one the gate above cannot defend. Scoped to
+        rasters under `/covers/` that are not `covers/art/`: a painting and a
+        derived ground ARE output — `build_curated_covers` and
+        `build_derived_grounds` can draw them again from their recipes — and
+        freezing those would forbid the redraw their scripts exist to do.
+        """
+        unregistered = set()
+        for f in self.books:
+            url = _cover(f)
+            if (
+                url.startswith("/covers/")
+                and not url.startswith("/covers/art/")
+                and url.endswith(RASTER_SUFFIXES)
+                and url not in DESIGNED
+            ):
+                unregistered.add(url)
+        unregistered = sorted(unregistered)
+        self.assertEqual(
+            unregistered, [],
+            "designed cover with no entry in library.designed_covers.DESIGNED "
+            "— add it with its sha256 so nothing can redraw it",
+        )
+
+    def test_derived_grounds_clothe_every_translation(self):
+        """A work with a derived ground: English keeps the designed cover, and
+        every other language wears the ground.
+
+        This is the split the tier exists for, and both halves are load-bearing.
+        If a translated row drifts back to a plate — which is what happens by
+        default, since `translate_book` copies `cover_url` from the English file
+        — that edition is a coloured slab again while its siblings carry the
+        photograph. And if the ENGLISH row were ever repointed at the ground, the
+        work would silently lose the hand-made cover this whole tier was built to
+        preserve.
+        """
+        # `test_cover_files_exist` would also catch a missing ground, but only
+        # once a row points at it. This catches the state in between — added to
+        # DERIVED_GROUND, never drawn — and names the script that draws it.
+        absent = sorted(
+            slug for slug in DERIVED_GROUND
+            if not (STATIC_DIR / "covers" / art_url(slug)[1]).is_file()
+        )
+        self.assertEqual(
+            absent, [],
+            "derived ground not committed — run "
+            "`uv run python scripts/build_derived_grounds.py`",
+        )
+        wrong = []
+        for f in self.books:
+            slug = f["slug"]
+            if slug not in DERIVED_GROUND:
+                continue
+            expected = (
+                DESIGNED_BY_SLUG[slug] if f["language"] == "en" else art_url(slug)[0]
+            )
+            if _cover(f) != expected:
+                wrong.append((slug, f["language"], _cover(f), expected))
+        self.assertEqual(
+            wrong, [],
+            "a derived-ground work wearing the wrong cover — English wears the "
+            "designed file, every other language wears /covers/art/<slug>.jpg "
+            "(run `uv run python scripts/localize_covers.py`)",
+        )
+
+    def test_designed_covers_index_cleanly(self):
+        """`DESIGNED_BY_SLUG` must lose nothing, and every ground must resolve.
+
+        Three one-line invariants that the code around them assumes and nothing
+        else states.
+
+        The index is keyed by stem, so two designed covers with the same stem
+        would collapse into one entry and the loser would vanish silently. That
+        is not hypothetical: `test_translated_editions_wear_their_own_cover`
+        deliberately leaves the extension open so a translated edition can carry
+        designed artwork of its own at `/covers/<lang>/<slug>.<ext>`, and the
+        day one is drawn its stem is a slug already in here.
+
+        `DERIVED_GROUND ⊆ DESIGNED_BY_SLUG` because three sites index it
+        unguarded — an entry added before its cover is registered would surface
+        as a bare `KeyError`, including from inside the gate whose message names
+        the fix.
+
+        And the two shared-ground tiers must not overlap: both write
+        `covers/art/<slug>.jpg`, so a slug in `CURATED` and `DERIVED_GROUND`
+        alike lets `build_derived_grounds --force` overwrite a licensed museum
+        painting with a crop of a ministry photograph.
+        """
+        stems = [
+            url.removeprefix("/covers/").rsplit(".", 1)[0]
+            for url in DESIGNED
+            if "/" not in url.removeprefix("/covers/")
+        ]
+        self.assertEqual(
+            sorted(s for s, n in Counter(stems).items() if n > 1), [],
+            "two designed covers share a slug — DESIGNED_BY_SLUG would keep "
+            "only one of them",
+        )
+        self.assertEqual(
+            sorted(set(DERIVED_GROUND) - set(DESIGNED_BY_SLUG)), [],
+            "a derived ground names a work with no registered designed cover",
+        )
+        self.assertEqual(
+            sorted(set(CURATED) & set(DERIVED_GROUND)), [],
+            "a work is both curated and derived — the two tiers write the same "
+            "file, so one would overwrite the other's artwork",
+        )
+
+    def test_derived_grounds_were_cut_from_the_current_cover(self):
+        """A ground must record the digest of the cover it was cut from.
+
+        This is what keeps "replacing a hand-made cover is a two-line diff"
+        true for the sixteen works that have one. Swap the artwork and update
+        its digest, and every other gate stays green over a ground and an og
+        twin still cut from the RETIRED photograph — the digest gate re-reads
+        whatever you just wrote, the twin-staleness gate skips designed
+        rasters by design, and both writers bail on `dest.exists()`. Every
+        translated edition would go on wearing the old picture.
+
+        Same lesson `og-manifest.json` records one tier over: existence was
+        never what went wrong, staleness was.
+        """
+        stale = sorted(
+            slug for slug, cut in DERIVED_GROUND.items()
+            if slug in DESIGNED_BY_SLUG
+            and cut.source != DESIGNED[DESIGNED_BY_SLUG[slug]]
+        )
+        self.assertEqual(
+            stale, [],
+            "the designed cover changed but the ground cut from it did not — "
+            "every translated edition still wears the retired artwork. Run "
+            "`uv run python scripts/build_derived_grounds.py --force <slug>`, "
+            "then update that work's Ground(source=...)",
+        )
+
+    def test_a_translated_designed_work_has_a_ground(self):
+        """A designed cover + a translation must mean a derived ground.
+
+        THIS IS THE GATE THAT MAKES THE FIX DEFAULT-ON, and without it the whole
+        tier is a one-time cleanup rather than a rule.
+
+        `DERIVED_GROUND`'s membership silently encodes "has translations today".
+        Eleven registered designed covers are English-only and rightly have no
+        ground — drawing one nobody points at is how a file with no reader gets
+        committed. But the day one of those eleven is translated,
+        `localize_covers` falls into its artwork branch and draws exactly the
+        flat coloured plate this tier exists to replace, and every other gate
+        stays green: `test_translated_editions_wear_their_own_cover` is
+        perfectly satisfied by `/covers/<lang>/<slug>.svg`.
+
+        So the regression would arrive silently, in the same shape, through the
+        same door it came in the first time. This closes it: translate such a
+        work and the build asks for its ground.
+        """
+        translated = {
+            f["slug"] for f in self.books
+            if f.get("language") != "en" and f["slug"] in DESIGNED_BY_SLUG
+        }
+        self.assertEqual(
+            sorted(translated - set(DERIVED_GROUND)), [],
+            "a work with a designed English cover now has a translation, and "
+            "no wordless ground for it to wear — that edition would fall back "
+            "to a flat plate. Add it to DERIVED_GROUND with its crop, then run "
+            "`uv run python scripts/build_derived_grounds.py`",
         )
 
     def test_covers_that_cannot_be_shared_have_a_raster_twin(self):
