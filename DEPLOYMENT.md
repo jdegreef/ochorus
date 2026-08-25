@@ -39,6 +39,13 @@ cd ~/dev/ochorus && git push
 2. Fill in the prompted secrets:
    - `ochorus-api`: `DATABASE_URL`, `SUPABASE_URL`. Leave `DJANGO_ALLOWED_HOSTS`,
      `CORS_ALLOWED_ORIGINS`, `CSRF_TRUSTED_ORIGINS` blank for now (step 4).
+     `SUPABASE_URL` must be the **project origin** (`https://<ref>.supabase.co`)
+     — the API derives both the JWKS URL and the expected token issuer from it.
+     If every signed-in request suddenly resolves to anonymous and the API log
+     shows `Rejected Supabase token: Invalid token: Invalid issuer`, the derived
+     issuer disagrees with what your GoTrue stamps; set `SUPABASE_JWT_ISSUER` to
+     the token's actual `iss` (self-hosted GoTrue only — it is unset and unneeded
+     on hosted Supabase).
    - `ochorus-web`: `PUBLIC_SUPABASE_URL`, `PUBLIC_SUPABASE_ANON_KEY`. Leave
      `PUBLIC_API_BASE_URL` blank for now (step 4).
 3. Apply. The first API deploy runs migrations and **auto-seeds the 36 books**

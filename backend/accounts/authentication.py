@@ -23,6 +23,21 @@ User = get_user_model()
 
 logger = logging.getLogger(__name__)
 
+# Accepted signature algorithms, per key source. These are CONSTANTS on purpose.
+# Passing the token's own `alg` header back to `jwt.decode` lets the caller
+# choose how their signature is checked, which is the setup for an
+# HS/RS confusion attack: sign with the JWKS *public* key as an HMAC secret and
+# a "verified" token falls out. The branch below happens to block that today —
+# an HS header routes to the shared secret, never to a JWKS key — but that is an
+# accident of control flow, not a decision, and one refactor away from being
+# untrue. Pinning the set per branch makes it a decision.
+HS_ALGORITHMS = ("HS256", "HS384", "HS512")
+ASYMMETRIC_ALGORITHMS = ("RS256", "RS384", "RS512", "ES256", "ES384", "ES512")
+
+# How long a fetched JWK Set is trusted before it is re-fetched. This bounds how
+# long a rotated-out or revoked Supabase signing key stays accepted.
+JWKS_CACHE_SECONDS = 300
+
 
 def _claim_true(value) -> bool:
     """A JWT boolean claim, tolerant of the string form some providers emit."""
@@ -94,6 +109,19 @@ class SupabaseJWTAuthentication(authentication.BaseAuthentication):
             raise exceptions.AuthenticationFailed(f"Malformed token: {exc}") from exc
 
         audience = settings.SUPABASE_JWT_AUDIENCE or None
+        issuer = self._issuer()
+
+        # Claims that must be PRESENT, not merely valid if present. PyJWT
+        # verifies `exp` only when the token carries one, so without this a
+        # token minted with no `exp` never expires. `aud`/`iss` are required
+        # only when we are actually checking them — demanding a claim we then
+        # ignore would reject valid tokens for no security gain.
+        required = ["exp", "sub"]
+        if audience:
+            required.append("aud")
+        if issuer:
+            required.append("iss")
+
         try:
             if alg.startswith("HS"):
                 if not settings.SUPABASE_JWT_SECRET:
@@ -101,15 +129,48 @@ class SupabaseJWTAuthentication(authentication.BaseAuthentication):
                         "Received an HS-signed token but SUPABASE_JWT_SECRET is not set."
                     )
                 key = settings.SUPABASE_JWT_SECRET
+                algorithms = list(HS_ALGORITHMS)
             else:
                 key = self._jwks().get_signing_key_from_jwt(token).key
-            return jwt.decode(token, key, algorithms=[alg], audience=audience)
+                algorithms = list(ASYMMETRIC_ALGORITHMS)
+            return jwt.decode(
+                token,
+                key,
+                algorithms=algorithms,
+                audience=audience,
+                issuer=issuer,
+                options={"require": required},
+            )
         except exceptions.AuthenticationFailed:
             raise
         except jwt.ExpiredSignatureError:
             raise exceptions.AuthenticationFailed("Token has expired") from None
         except jwt.PyJWTError as exc:
             raise exceptions.AuthenticationFailed(f"Invalid token: {exc}") from exc
+
+    def _issuer(self) -> str | None:
+        """The issuer these tokens must carry, or ``None`` to skip the check.
+
+        Supabase stamps ``iss`` as ``<project-url>/auth/v1``. Without checking
+        it, *any* token signed by a key the JWKS endpoint serves is accepted
+        regardless of who issued it.
+
+        ``SUPABASE_URL`` is normalised to a bare origin by ``origin_url`` (no
+        trailing slash, no path), so deriving the issuer from it is safe.
+        ``SUPABASE_JWT_ISSUER`` overrides it for a self-hosted GoTrue whose
+        issuer is not the project origin — an escape hatch that avoids a code
+        change if the derived value is ever wrong, since a mismatch resolves
+        every request to anonymous.
+
+        Returns ``None`` when neither is configured (a dev box on the shared
+        HS256 secret), leaving behaviour unchanged there.
+        """
+        override = getattr(settings, "SUPABASE_JWT_ISSUER", "")
+        if override:
+            return override
+        if settings.SUPABASE_URL:
+            return f"{settings.SUPABASE_URL}/auth/v1"
+        return None
 
     def _jwks(self) -> jwt.PyJWKClient:
         if not settings.SUPABASE_URL:
@@ -118,7 +179,23 @@ class SupabaseJWTAuthentication(authentication.BaseAuthentication):
             )
         if SupabaseJWTAuthentication._jwks_client is None:
             url = f"{settings.SUPABASE_URL}/auth/v1/.well-known/jwks.json"
-            SupabaseJWTAuthentication._jwks_client = jwt.PyJWKClient(url, cache_keys=True)
+            SupabaseJWTAuthentication._jwks_client = jwt.PyJWKClient(
+                url,
+                # Tier 1 — the JWK Set response — is cached and re-fetched every
+                # `lifespan` seconds, so a key rotation takes effect within five
+                # minutes without a request paying for a fetch.
+                cache_jwk_set=True,
+                lifespan=JWKS_CACHE_SECONDS,
+                # Tier 2 — PyJWT's per-`kid` signing-key LRU — is deliberately
+                # OFF (it was on). Its own docs: "no time-based expiration …
+                # evicted only when the cache reaches its maximum size". With it
+                # on, a signing key Supabase had ROTATED OUT or REVOKED stayed
+                # trusted for the life of the worker, because the kid sat in the
+                # 16-entry LRU and was never re-checked — even while Tier 1 was
+                # refreshing correctly. Tier 1 already removes the per-request
+                # network cost, so this tier bought nothing and cost revocation.
+                cache_keys=False,
+            )
         return SupabaseJWTAuthentication._jwks_client
 
     def _get_or_create_user(self, payload: dict):
