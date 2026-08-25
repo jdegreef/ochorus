@@ -170,28 +170,45 @@ def _upsert_plan_progress(profile, slug, done, started):
     propagate — deliberately, since silently losing a day a reader completed is
     far worse than an un-check that doesn't sync.)
 
-    The read-union-write runs inside a transaction with the existing row locked
+    The read-union-write runs inside a transaction with the row locked
     (``select_for_update``): without it, two devices PUTting at once can both read
     the same old ``done`` and the second write clobbers the first's union — losing
     a completed day, the exact thing this function promises never happens. On
     SQLite the lock is a no-op (single-writer already); on Postgres it serializes
     the two writers. Nested inside MergeView's atomic block it's just a savepoint.
+
+    The row is CREATED first, unlocked, and only then locked and merged. Locking
+    before creating was the bug: ``SELECT … FOR UPDATE`` on a row that does not
+    exist yet locks nothing — there is no tuple to lock, and a plain
+    ``FOR UPDATE`` takes no gap lock in Postgres. So for a plan's FIRST write
+    both devices saw ``existing = None``, both skipped the union, and both tried
+    to create; the loser caught the ``IntegrityError`` inside
+    ``update_or_create``, re-fetched, and then applied its own ``defaults``
+    verbatim — overwriting the winner's day instead of unioning it. The guarantee
+    held only from the second write onward, which is precisely when nobody is
+    racing.
     """
     with transaction.atomic():
-        existing = (
-            PlanProgress.objects.select_for_update()
-            .filter(profile=profile, plan_slug=slug)
-            .first()
-        )
-        if existing:
-            done = set(done) | set(existing.done)
-            started = min(started, existing.started_at)
-        obj, _ = PlanProgress.objects.update_or_create(
+        # get_or_create so there is always a tuple to lock. Its defaults are the
+        # incoming values, which is correct for a genuine first write and
+        # harmless for the loser of a race — the merge below runs either way.
+        obj, created = PlanProgress.objects.get_or_create(
             profile=profile,
             plan_slug=slug,
-            defaults={"started_at": started, "done": sorted(done)},
+            defaults={"started_at": started, "done": sorted(set(done))},
         )
-    return obj
+        # Re-read under the lock even when we just created the row: between the
+        # create and here, the device that lost the race may already have merged
+        # into it.
+        locked = PlanProgress.objects.select_for_update().get(pk=obj.pk)
+        merged_done = set(done) | set(locked.done)
+        merged_started = min(started, locked.started_at)
+        if created and merged_done == set(locked.done) and merged_started == locked.started_at:
+            return locked  # nothing to add — the create already said it
+        locked.done = sorted(merged_done)
+        locked.started_at = merged_started
+        locked.save(update_fields=["done", "started_at", "updated_at"])
+    return locked
 
 
 def _ms_to_dt(ms) -> datetime | None:
