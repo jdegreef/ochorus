@@ -329,3 +329,108 @@
 		font-weight: 600;
 	}
 }
+
+
+/* ── The scripts the recipes were not written in ───────────────────────────
+ * Ochorus reads in eight languages; every recipe above was evened out by eye
+ * against a Latin face, and three of those languages are not Latin.
+ *
+ * WHICH FACE a non-Latin title gets is NOT decided here and needs no class:
+ * `--cover-face-*` lists the Latin face, then an Arabic one, then a Devanagari
+ * one, and font fallback picks per GLYPH. What a script cannot inherit is the
+ * METRICS, and that is all these blocks touch.
+ *
+ * THEY MUST COME AFTER THE RECIPES. `.cover-type.script-arabic .title` and
+ * `.cover-type.style-press .title` are both three classes, so nothing but
+ * source order decides which wins. The pairs below carrying BOTH classes
+ * outrank either, but the script-only defaults rely on sitting here.
+ * `coverStyles.test.ts` fails if a script block moves above the recipes.
+ *
+ * OUTSIDE THE CONTAINER GATE, unlike the recipes. That gate exists so a 48px
+ * thumbnail does not fetch a face it cannot show; these rules fetch nothing,
+ * and a fake italic or a torn-apart Arabic word is just as wrong at 48px. */
+
+/* ARABIC. Two of these are corrections, not tuning.
+ *
+ * TRACKING GOES TO ZERO. Arabic is cursive — its letters join — and
+ * `letter-spacing` prises those joins apart into disconnected shapes. Five of
+ * the six recipes set a tracking, `inscriptional` at 0.06em, and every one of
+ * them was doing this to every Arabic title. `text-transform: uppercase` is
+ * left alone: it is simply inert here, and overriding it would claim something
+ * this does not know.
+ *
+ * WEIGHT. Amiri ships 400 and 700 and nothing between, so the recipes asking
+ * 500 and 600 were being served a synthesised bold — the smeared stems
+ * `coverStyles.ts` already refuses to ask a Latin face for. The two loud
+ * recipes take Amiri's real 700; the rest take its 400. */
+.cover-type.script-arabic .title {
+	font-weight: 400;
+	letter-spacing: 0;
+	/* Naskh sets small for its point size and hangs deep — Amiri's descenders
+	   drop well below the baseline — so it needs more size and much more room
+	   between lines than a Latin title wants. */
+	font-size: 10.4cqw;
+	line-height: 1.5;
+}
+/* The three loud recipes take Amiri's real 700. `inscriptional` is here rather
+   than in a face of its own: Arabic's register distinction is a weight, not a
+   second family (see app.css on why Reem Kufi was dropped), and its Latin
+   twin's 7.6cqw is a CAPS size — Arabic is caseless, so it takes the same size
+   as the rest of the script. */
+.cover-type.script-arabic.style-inscriptional .title,
+.cover-type.script-arabic.style-revival .title,
+.cover-type.script-arabic.style-house .title {
+	font-weight: 700;
+}
+
+/* DEVANAGARI. The shirorekha — the headline every word hangs from — with the
+   matras above it and below makes a line taller than its point size suggests,
+   so the size comes down and the leading goes up. Tracking to zero for the
+   same reason as Arabic: conjuncts break apart. */
+.cover-type.script-devanagari .title {
+	font-weight: 400;
+	letter-spacing: 0;
+	font-size: 8.8cqw;
+	line-height: 1.55;
+}
+/* Martel carries the two loud recipes — Tiro has one weight, and a title page
+   wants more — and has a real 600. */
+.cover-type.script-devanagari.style-inscriptional .title,
+.cover-type.script-devanagari.style-revival .title {
+	font-weight: 600;
+}
+
+/* CYRILLIC needs the least: EB Garamond and Playfair ship it, so `devotional`
+   and `revival` are already right and appear nowhere here. The rest fall to
+   Old Standard TT or PT Serif, which ship 400 and 700 — so the two recipes
+   asking 600 are the whole correction. Tracking stays: Cyrillic is not
+   cursive, and caps tracking is as right for it as for Latin. */
+.cover-type.script-cyrillic.style-inscriptional .title,
+.cover-type.script-cyrillic.style-house .title {
+	font-weight: 700;
+}
+/* The sizes need the same evening-out the Latin recipes got, because Cyrillic
+   lands on different faces than the ones those numbers were measured against.
+   `press` and `enlightenment` both resolve to Old Standard TT, so they take one
+   size: 8.36cqw was a correction for Libre Baskerville's large x-height, and
+   carrying it to another face only makes one recipe smaller than the recipe
+   beside it for no reason a reader can see. And 7.6cqw is a size for Cinzel, a
+   caps-only face drawn to run to cap height; Old Standard's capitals do not. */
+.cover-type.script-cyrillic.style-enlightenment .title {
+	font-size: 9.5cqw;
+}
+.cover-type.script-cyrillic.style-inscriptional .title {
+	font-size: 8.6cqw;
+}
+
+/* NO ITALIC EXISTS in Arabic or Devanagari, so the subtitle's `font-style:
+   italic` was being satisfied by the browser SLANTING the upright — a fake
+   nobody drew. Cyrillic is absent on purpose: both its faces ship a real one. */
+.cover-type.script-arabic .subtitle,
+.cover-type.script-devanagari .subtitle {
+	font-style: normal;
+	/* The slant was what set the subtitle apart from the title; without it the
+	   size and the opacity carry that alone. */
+	opacity: 0.78;
+	line-height: 1.5;
+}

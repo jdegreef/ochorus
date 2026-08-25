@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { coverGradient, coverSrcset, isArtCover, isPlateCover } from '$lib/coverArt';
-	import { coverStyleFor } from '$lib/coverStyles';
+	import { coverStyleFor, scriptOf } from '$lib/coverStyles';
 	import { eraOf } from '$lib/eras';
 	// The cover's whole drawing, in the one file that also feeds the share-card
 	// script (see its header). Global rather than scoped, like app.css's other
@@ -95,21 +95,37 @@
 
 	/** The author's house style — a class name; `cover-type.css` holds the rest. */
 	const style = $derived(coverStyleFor(eraOf(book.author.birth_year), book.author.slug));
+	/** The script whose metrics this edition needs correcting for; '' for Latin.
+	 *  The FACE needs no class — the stacks in app.css fall back per glyph. */
+	const script = $derived(scriptOf(book.language));
 </script>
 
 <!-- The cover's type. Identical over a painting, over a plate file and over the
      CSS plate — the only difference is what is behind it, and whether an emblem
      is down there to leave room for. -->
 {#snippet plateType(reserveEmblem: boolean)}
-	<div class="cover-type style-{style}">
+	<div class="cover-type style-{style}" class:script-arabic={script === 'arabic'}
+		class:script-devanagari={script === 'devanagari'}
+		class:script-cyrillic={script === 'cyrillic'}>
+		<!-- The byline takes no `lang`: an author's name is one row for every
+		     edition (`Author` has no per-language name), so it is Latin on an
+		     Arabic cover too, and claiming otherwise would tell a screen reader
+		     to pronounce "Andrew Murray" as Arabic. -->
 		<div class="byline" dir="auto">{book.author.name}</div>
 		<!-- Title, rule and subtitle move as one block so the auto margins centre
 		     THEM between the byline and the mark. Left as three siblings, the
 		     leftover space split three ways and the title rode up the plate. -->
 		<div class="middle">
-			<div class="title" dir="auto">{book.title}</div>
+			<!-- `lang` on the words themselves, not on the plate: it is what lets a
+			     browser pick the right shaping and hyphenation for the title, and
+			     what tells a screen reader which language to read it in. The
+			     metrics come from the class above, which the LANGUAGE decides —
+			     never the characters (see `scriptOf`). -->
+			<div class="title" lang={book.language} dir="auto">{book.title}</div>
 			<div class="rule"></div>
-			{#if book.subtitle}<div class="subtitle" dir="auto">{book.subtitle}</div>{/if}
+			{#if book.subtitle}<div class="subtitle" lang={book.language} dir="auto">
+				{book.subtitle}
+			</div>{/if}
 		</div>
 		<!-- The band the plate file draws its topic emblem into. Reserved here
 		     rather than drawn here: which emblem a book wears is decided from its

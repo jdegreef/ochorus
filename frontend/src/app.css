@@ -21,6 +21,50 @@
 @import '@fontsource/im-fell-english/400.css';
 @import '@fontsource/libre-baskerville/400.css';
 
+/* The same recipes in the scripts the Latin faces do not cover. Ochorus reads
+   in eight languages and five of them are Latin; the other three had NO cover
+   face at all, because every stack below ends at Fraunces → Georgia → Times and
+   not one of those has an Arabic or Devanagari glyph. So the whole per-author
+   system — Bunyan in Fell, Augustine in Roman capitals — was switched off for
+   Arabic and Hindi, and off for four of the six recipes in Ukrainian, and those
+   covers came out in whatever serif the device happened to ship: a different
+   face on every phone, chosen by nobody.
+
+   PICKED FOR REGISTER, NOT FOR PERIOD. There was no Fell type for Devanagari
+   and no Baskerville for Arabic, so a face here answers "what does this script
+   use for a monument, and what does it use for a book" rather than pretending
+   to a century it never had:
+
+   * Amiri carries ALL of Arabic: a revival of the Bulaq press Naskh, so
+     choosing it is the same act as reviving Fell or Baskerville. Arabic gets
+     its loud-and-quiet distinction from Amiri's two weights rather than from
+     two faces, which is less than the six the Latin recipes have and is said
+     plainly rather than faked.
+
+     Reem Kufi was tried for `inscriptional` first, and the argument for it was
+     good — Kufic is the angular, architectural hand Arabic CUTS, which is what
+     Cinzel is for Latin. It was rejected on the rendering: its letterforms
+     interlock by design, and at title length the words overlap into each other
+     at every weight from 400 to 700, with or without word-spacing. Checked in
+     Chromium against real titles before it was dropped. A face that looks
+     broken on the shelf is worse than a face that carries less meaning.
+   * Tiro Devanagari Hindi was drawn to set Devanagari beside classical Latin
+     book faces, which is what a cover here does.
+   * Martel takes the two loud recipes in Devanagari, where Tiro has one weight
+     and a title page wants more.
+   * Old Standard TT and PT Serif fill the Cyrillic that EB Garamond and
+     Playfair — which ship Cyrillic already — leave uncovered.
+
+   Same unicode-range gating as above, so a Latin shelf pulls none of these. */
+@import '@fontsource/amiri/400.css';
+@import '@fontsource/amiri/700.css';
+@import '@fontsource/tiro-devanagari-hindi/400.css';
+@import '@fontsource/martel/600.css';
+@import '@fontsource/old-standard-tt/400.css';
+@import '@fontsource/old-standard-tt/700.css';
+@import '@fontsource/pt-serif/400.css';
+@import '@fontsource/pt-serif/700.css';
+
 /* Map semantic theme tokens onto Tailwind color utilities so `bg-surface
    text-text border-border` respond to the runtime [data-theme] switch. */
 @theme inline {
@@ -88,15 +132,41 @@
    NOT part of the type SCALE above and not interchangeable with --font-display:
    this is the type a book's cover is set in — artwork, chosen by who wrote the
    book — where --font-display is the app's own voice. Every stack ends at it,
-   so a face that fails to load, or a script none of them covers, lands back in
-   the house serif. */
+   so a face that fails to load lands back in the house serif.
+
+   ONE STACK PER RECIPE, ALL SCRIPTS IN IT. Font fallback is per GLYPH, not per
+   element: the browser takes each character from the first family in the stack
+   that actually has it. So an Arabic title set in --cover-face-press skips IM
+   Fell, which has no Arabic, and lands on Amiri — without anything having to
+   ask what language it is. That is why there is no second set of tokens and no
+   :lang() here. What a script cannot inherit is the METRICS, because those were
+   evened out by eye against a Latin face; cover-type.css's .script-* blocks
+   correct the weight, the tracking and the size, and only those.
+
+   THE LATIN FACE STAYS FIRST in every stack. scripts/generate-cover-og.mjs
+   reads these tokens and takes the FIRST quoted family as the one to inline
+   into a share card — the cards are English, so that is the right one. Reorder
+   a stack so a script face led and the card would embed an Arabic font and
+   leave its real face unembedded, which is the defect that once shipped 37
+   cards set in Times. coverStyles.test.ts fails on that, on a stack with no
+   face for some script, and on a family nothing @imports.
+
+   A GENERIC CAN ONLY EVER BE LAST. --font-display expands to a stack ending in
+   `serif`, and a generic family matches EVERY glyph — so a token opening with
+   var(--font-display), as --cover-face-house used to, swallows the fallback and
+   no Arabic title ever reaches Amiri. */
 :root {
-	--cover-face-inscriptional: 'Cinzel Variable', var(--font-display);
-	--cover-face-devotional: 'EB Garamond Variable', var(--font-display);
-	--cover-face-press: 'IM Fell English', var(--font-display);
-	--cover-face-enlightenment: 'Libre Baskerville', var(--font-display);
-	--cover-face-revival: 'Playfair Display Variable', var(--font-display);
-	--cover-face-house: var(--font-display);
+	/*                       latin                    arabic               devanagari              cyrillic */
+	--cover-face-inscriptional: 'Cinzel Variable', 'Amiri', 'Martel', 'Old Standard TT', var(--font-display);
+	--cover-face-devotional: 'EB Garamond Variable', 'Amiri', 'Tiro Devanagari Hindi', var(--font-display);
+	--cover-face-press: 'IM Fell English', 'Amiri', 'Tiro Devanagari Hindi', 'Old Standard TT', var(--font-display);
+	--cover-face-enlightenment: 'Libre Baskerville', 'Amiri', 'Tiro Devanagari Hindi', 'Old Standard TT', var(--font-display);
+	--cover-face-revival: 'Playfair Display Variable', 'Amiri', 'Martel', var(--font-display);
+	/* `devotional` and `revival` name no Cyrillic face because EB Garamond and
+	   Playfair ship one already. Fraunces does not, so Ukrainian's contemporary
+	   recipe is PT Serif — and this token names Fraunces itself rather than
+	   opening with var(--font-display), for the reason above. */
+	--cover-face-house: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'PT Serif', var(--font-display);
 }
 
 /* Runtime theme variables. Default = "lamplight" (dark); [data-theme='light']

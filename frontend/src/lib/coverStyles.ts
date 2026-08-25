@@ -116,6 +116,66 @@ export const AUTHOR_STYLE: Record<string, CoverStyleId> = {
 };
 
 /**
+ * The SCRIPTS a cover's metrics are corrected for — and nothing about the faces.
+ *
+ * WHICH FACE a script gets is not decided here and cannot be: font fallback is
+ * per GLYPH, so `--cover-face-press` simply lists IM Fell, then Amiri, then
+ * Tiro Devanagari, and the browser takes each character from the first family
+ * that has it. Nothing has to know what language a title is in to pick a face.
+ *
+ * Nor does a script get six distinct faces. Arabic gets one with two weights
+ * and Devanagari two; the six Latin recipes are six CENTURIES of Latin
+ * printing, and there was no Fell type for Devanagari to revive. What carries
+ * across is the loud-and-quiet of a title page, and that is what these blocks
+ * preserve.
+ *
+ * What DOES need knowing is the METRICS. Every number in a `.style-*` recipe
+ * was evened out by eye against a Latin face — `cover-type.css` says as much —
+ * and three of those numbers are not merely untuned but WRONG in another
+ * script:
+ *
+ * * `letter-spacing` breaks Arabic. It is cursive: its letters join, and
+ *   tracking prises the joins apart into disconnected shapes. `inscriptional`
+ *   asks for 0.06em, so Augustine in Arabic was the worst of the six.
+ * * `font-style: italic` does not exist in Arabic or Devanagari. The browser
+ *   obliges by SLANTING the upright — a synthesis nobody drew.
+ * * A weight a face has not got is synthesised into the smeared-stem bold this
+ *   module already refuses to ask a Latin face for. Amiri and Tiro ship fewer
+ *   weights than the faces they stand beside.
+ *
+ * Latin is deliberately absent: it is what the recipes are already written in,
+ * so a Latin cover needs no correction and carries no class.
+ */
+export const COVER_SCRIPTS = ['arabic', 'devanagari', 'cyrillic'] as const;
+
+export type CoverScript = (typeof COVER_SCRIPTS)[number];
+
+/**
+ * Language code → the script its titles are set in; absent means Latin.
+ *
+ * BY LANGUAGE, NOT BY SNIFFING THE TITLE. A title is a handful of words and may
+ * be entirely digits, a quoted Latin name or a scripture reference — so a cover
+ * that chose its metrics from the characters a translator happened to type
+ * would change design from one book to the next inside one shelf. The edition's
+ * language is the fact; its title is a sample.
+ *
+ * Keyed to `Language.code` as the backend seeds it (`library/language_seed.py`).
+ * A language this has never heard of is set exactly as it is today, which is
+ * right for the next Latin-script language and no worse than today for anything
+ * else — the same shape as `coverStyleFor` dressing an unknown author.
+ */
+const LANGUAGE_SCRIPT: Record<string, CoverScript> = {
+	ar: 'arabic',
+	hi: 'devanagari',
+	uk: 'cyrillic'
+};
+
+/** The script a cover in this language is corrected for; null when Latin. */
+export function scriptOf(language: string): CoverScript | null {
+	return LANGUAGE_SCRIPT[language] ?? null;
+}
+
+/**
  * The style a book's cover is set in.
  *
  * Takes the era rather than deriving it (see the header on why this module
