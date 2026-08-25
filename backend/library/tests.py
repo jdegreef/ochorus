@@ -2519,7 +2519,7 @@ from unittest.mock import patch  # noqa: E402
     return_value={"reference": "John 3", "verses": [{"number": 3, "text": "…"}]},
 )
 @patch(
-    "library.management.commands.translate_sermon.anthropic.Anthropic",
+    "library.management.commands._translate_base.anthropic.Anthropic",
     new=_FakeClient,
 )
 class SermonTranslationTests(TestCase):
@@ -4274,8 +4274,8 @@ class TranslateTopicCommandTests(TestCase):
 
     def test_translates_title_and_description_and_writes_the_language_file(self):
         meta = {"title": "Kuhusu Maombi", "description": "Kujifunza kuomba."}
-        with mock.patch("library.management.commands.translate_topic.verify_bible_code"), \
-             mock.patch("library.management.commands.translate_topic.anthropic"), \
+        with mock.patch("library.management.commands._translate_base.verify_bible_code"), \
+             mock.patch("library.management.commands._translate_base.anthropic"), \
              mock.patch(
                  "library.management.commands.translate_topic.translate_topic_meta",
                  return_value=meta,
@@ -4299,8 +4299,8 @@ class TranslateTopicCommandTests(TestCase):
 
     def test_scripture_uses_the_bible_and_never_the_model(self):
         meta = {"title": "Kuhusu Maombi", "description": "d"}
-        with mock.patch("library.management.commands.translate_topic.verify_bible_code"), \
-             mock.patch("library.management.commands.translate_topic.anthropic"), \
+        with mock.patch("library.management.commands._translate_base.verify_bible_code"), \
+             mock.patch("library.management.commands._translate_base.anthropic"), \
              mock.patch(
                  "library.management.commands.translate_topic.translate_topic_meta",
                  return_value=meta,
@@ -4321,8 +4321,8 @@ class TranslateTopicCommandTests(TestCase):
 
     def test_unfetchable_verse_ships_empty_rather_than_paraphrased(self):
         meta = {"title": "Kuhusu Maombi", "description": "d"}
-        with mock.patch("library.management.commands.translate_topic.verify_bible_code"), \
-             mock.patch("library.management.commands.translate_topic.anthropic"), \
+        with mock.patch("library.management.commands._translate_base.verify_bible_code"), \
+             mock.patch("library.management.commands._translate_base.anthropic"), \
              mock.patch(
                  "library.management.commands.translate_topic.translate_topic_meta",
                  return_value=meta,
@@ -4353,8 +4353,8 @@ class TranslateTopicCommandTests(TestCase):
             self._run("--language", "sw")
             meta.assert_not_called()
 
-        with mock.patch("library.management.commands.translate_topic.verify_bible_code"), \
-             mock.patch("library.management.commands.translate_topic.anthropic"), \
+        with mock.patch("library.management.commands._translate_base.verify_bible_code"), \
+             mock.patch("library.management.commands._translate_base.anthropic"), \
              mock.patch(
                  "library.management.commands.translate_topic.translate_topic_meta",
                  return_value={"title": "Mpya", "description": "mpya"},

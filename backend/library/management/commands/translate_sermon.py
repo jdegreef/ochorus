@@ -17,38 +17,28 @@ from __future__ import annotations
 
 import re
 
-import anthropic
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import CommandError
 
-from library.languages import config as language_config
+from library.management.commands._translate_base import TranslateCommand
 from library.models import Book, Sermon
 from library.sanitize import clean_fragment
 from library.translation import (
     translate_scripture_ref,
     translate_sermon,
     translate_summary,
-    verify_bible_code,
-    verify_glossary,
 )
 
 
-class Command(BaseCommand):
+class Command(TranslateCommand):
     help = "AI-translate a sermon into a target language (ai_unreviewed)."
 
-    def add_arguments(self, parser):
+    force_help = "Re-translate if it exists"
+
+    def add_target_arguments(self, parser):
         parser.add_argument("slug")
-        parser.add_argument("--language", required=True, help="Target language code (see the admin)")
-        parser.add_argument("--force", action="store_true", help="Re-translate if it exists")
-        parser.add_argument("--effort", default="high", choices=["low", "medium", "high", "xhigh"])
-        parser.add_argument("--dry-run", action="store_true", help="Show the plan, translate nothing")
 
     def handle(self, slug, language, force, effort, dry_run, **opts):
-        # The target's Bible and glossary come from the Language registry, so an
-        # unknown code is a clear error here rather than a KeyError later.
-        try:
-            cfg = language_config(language)
-        except ValueError as e:
-            raise CommandError(str(e)) from None
+        cfg = self.language_config(language)
 
         try:
             source = Sermon.objects.select_related("author").get(slug=slug, language="en")
@@ -68,15 +58,9 @@ class Command(BaseCommand):
             self.stdout.write(f"  would translate sermon: {source.title[:60]} [{source.scripture_ref}]")
             return
 
-        # Preflight: a bad Bible code omits scripture silently, so check
-        # BEFORE any paid model work (see verify_bible_code / verify_glossary).
-        try:
-            verify_bible_code(language)
-            verify_glossary(language)
-        except ValueError as e:
-            raise CommandError(str(e)) from e
+        self.preflight(language)
 
-        client = anthropic.Anthropic()  # ANTHROPIC_API_KEY / ant auth profile
+        client = self.client()
 
         self.stdout.write("→ translating body…")
         title, body_html, usage = translate_sermon(

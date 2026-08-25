@@ -21,33 +21,25 @@ Usage:
 
 from __future__ import annotations
 
-import anthropic
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import CommandError
 
-from library.languages import config as language_config
+from library.management.commands._translate_base import TranslateCommand
 from library.models import Author, AuthorTranslation
 from library.sanitize import clean_bio_html
-from library.translation import translate_chapter, verify_bible_code, verify_glossary
+from library.translation import translate_chapter
 
 
-class Command(BaseCommand):
+class Command(TranslateCommand):
     help = "AI-translate author bios into a target language (unreviewed)."
 
-    def add_arguments(self, parser):
+    force_help = "Re-translate existing fields"
+
+    def add_target_arguments(self, parser):
         parser.add_argument("slugs", nargs="*", help="Author slugs (default: all with a bio)")
-        parser.add_argument("--language", required=True, help="Target language code (see the admin)")
         parser.add_argument("--long", action="store_true", help="Also translate the long bio_html")
-        parser.add_argument("--force", action="store_true", help="Re-translate existing fields")
-        parser.add_argument("--effort", default="high", choices=["low", "medium", "high", "xhigh"])
-        parser.add_argument("--dry-run", action="store_true", help="Show the plan, translate nothing")
 
     def handle(self, slugs, language, long, force, effort, dry_run, **opts):
-        # The target's Bible and glossary come from the Language registry, so an
-        # unknown code is a clear error here rather than a KeyError later.
-        try:
-            cfg = language_config(language)
-        except ValueError as e:
-            raise CommandError(str(e)) from None
+        cfg = self.language_config(language)
 
         authors = Author.objects.exclude(bio="")
         if slugs:
@@ -83,15 +75,9 @@ class Command(BaseCommand):
                 self.stdout.write(f"  {a.slug}: {', '.join(todo)}")
             return
 
-        # Preflight: a bad Bible code omits scripture silently, so check
-        # BEFORE any paid model work (see verify_bible_code / verify_glossary).
-        try:
-            verify_bible_code(language)
-            verify_glossary(language)
-        except ValueError as e:
-            raise CommandError(str(e)) from e
+        self.preflight(language)
 
-        client = anthropic.Anthropic()  # ANTHROPIC_API_KEY / ant auth profile
+        client = self.client()
         total_in = total_out = 0
 
         for a in plan:
