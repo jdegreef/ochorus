@@ -6179,7 +6179,36 @@ class CuratedCoversSurviveForceTests(TestCase):
         call_command("generate_covers", "--force", "--dry-run", stdout=out)
         report = out.getvalue()
         self.assertNotIn(f"{slug}.svg", report, "curated cover was redrawn by --force")
-        self.assertIn("kept 1 curated", report)
+        self.assertIn("kept 1 shared-ground", report)
+
+    def test_a_derived_slug_is_skipped_too(self):
+        """The same guard, for the other tier that wears a shared ground.
+
+        A freshly translated derived edition is the case this protects. It
+        arrives from `translate_book` carrying the dangling
+        `/covers/<lang>/<slug>.svg` that command writes — `is_generated` is True
+        for it — and `translate_book`'s own comment recommends running
+        `generate_covers <slug>` next. Without the guard that draws the flat
+        coloured plate the derived tier exists to replace, and commits an SVG
+        that then hard-exits `build_cover_assets`.
+        """
+        from io import StringIO
+
+        from django.core.management import call_command
+
+        from library.designed_covers import DERIVED_GROUND
+
+        slug = "godliness"
+        self.assertIn(slug, DERIVED_GROUND, "fixture assumes this slug is derived")
+        Book.objects.create(
+            slug=slug, language="sw", title="Utauwa",
+            author=self.author, cover_url=f"/covers/sw/{slug}.svg", cover_color="#634836",
+        )
+        out = StringIO()
+        call_command("generate_covers", "--force", "--dry-run", stdout=out)
+        report = out.getvalue()
+        self.assertNotIn(f"{slug}.svg", report, "derived edition was given a plate")
+        self.assertIn("kept 1 shared-ground", report)
 
     def test_an_uncurated_slug_is_still_redrawn(self):
         """The guard must not turn --force into a no-op for everything else."""

@@ -138,7 +138,9 @@ def scrimmed(ground):
 
     def alpha(f: float) -> int:
         """The scrim's opacity a fraction `f` down the plate, 0-255."""
-        for (p0, a0), (p1, a1) in zip(stops, stops[1:], strict=True):
+        # Not `strict=True`: `stops[1:]` is one shorter by construction, and
+        # completing the loop is how `f` past the last stop reaches the clamp.
+        for (p0, a0), (p1, a1) in zip(stops, stops[1:], strict=False):
             if f <= p1:
                 return round(255 * (a0 + (a1 - a0) * (f - p0) / (p1 - p0)))
         return round(255 * stops[-1][1])
@@ -211,23 +213,36 @@ def main() -> int:
             raise SystemExit(f"missing designed cover for {slug}: {source}")
         url, rel = art_url(slug)
         dest = STATIC / "covers" / rel
-        if dest.exists() and not args.force:
+        redraw = args.force or not dest.exists()
+        ground = None
+        if redraw:
+            ground = derived_ground(source, cut)
+            drawn += 1
+            if not args.dry_run:
+                dest.parent.mkdir(parents=True, exist_ok=True)
+                # Quality 88 and 4:2:0 off: these grounds carry soft gradients
+                # that 4:2:0 bands, and they are the only thing behind the
+                # title.
+                ground.save(dest, "JPEG", quality=88, subsampling=0, optimize=True)
+        else:
             skipped += 1
-            print(f"  · {url:44} already drawn")
-            continue
 
-        ground = derived_ground(source, cut)
-        drawn += 1
+        # THE TWIN AND THE PREVIEW ARE OF THE WORK, NOT OF THIS RUN'S DRAWING,
+        # so they sit outside the fills-gaps skip above. A twin inside it was
+        # unrecoverable: delete `/covers/<slug>.png` and the fixture gate goes
+        # red, while re-running this restored nothing because the ground was
+        # already on disk — leaving `--force`, which discards hand-edits, as
+        # the only repair. That is the trap `_ensure_twin` exists to close, and
+        # it had reproduced it one level up.
         if not args.dry_run:
-            dest.parent.mkdir(parents=True, exist_ok=True)
-            # Quality 88 and 4:2:0 off: these grounds carry soft gradients that
-            # 4:2:0 bands, and they are the only thing behind the title.
-            ground.save(dest, "JPEG", quality=88, subsampling=0, optimize=True)
             if preview:
-                scrimmed(ground).save(preview / f"{slug}.png")
+                scrimmed(ground or Image.open(dest)).save(preview / f"{slug}.png")
             if _ensure_twin(slug, source):
                 twins += 1
-        print(f"  ✓ {url:44} from {designed}")
+        print(
+            f"  {'✓' if redraw else '·'} {url:44} "
+            f"{'from ' + designed if redraw else 'already drawn'}"
+        )
 
     verb = "would draw" if args.dry_run else "drew"
     print(f"\n{verb} {drawn} grounds · {twins} og:image twins · {skipped} already on disk")

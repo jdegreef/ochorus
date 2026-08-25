@@ -173,6 +173,22 @@ class Ground(NamedTuple):
     #: against a sunset wants less, or its subject blurs upward into the sky it
     #: was cut out of.
     sky: float = 0.35
+    #: The ``DESIGNED`` digest of the cover this ground was actually cut from.
+    #:
+    #: WHY A GROUND RECORDS ITS SOURCE. Replacing a hand-made cover is meant to
+    #: be a two-line diff — new file, new digest — and for the eleven
+    #: English-only works it is. For these sixteen it cannot be: the ground and
+    #: the og twin were cut from the OLD artwork, and every gate stays green
+    #: over them. ``test_designed_covers_are_never_changed`` re-reads whatever
+    #: digest you just wrote, the twin-staleness gate deliberately skips
+    #: designed rasters, and both writers bail on ``dest.exists()``. Every
+    #: translated edition would keep the retired photograph, silently.
+    #:
+    #: So this pins what the committed ground was MADE FROM, the way
+    #: ``og-manifest.json`` pins what a share card was made from — and for the
+    #: same reason, which that file learned the hard way: existence was never
+    #: what went wrong, staleness was.
+    source: str = ""
 
 
 #: The works whose translations wear a ground cropped from the designed English
@@ -186,32 +202,64 @@ class Ground(NamedTuple):
 #: those files with a different extension stays the two-line diff this module
 #: advertises rather than quietly needing a third edit here.
 DERIVED_GROUND: dict[str, Ground] = {
-    "baptism-with-the-holy-spirit": Ground(0.42, 0.83, 0.11, 1.15),
-    "clothed-with-strength-and-dignity": Ground(0.40, 0.78, 0.10, 1.45),
-    "godliness": Ground(0.44, 0.75, 0.09, 1.85),
-    "he-holds-my-tomorrows": Ground(0.46, 0.88, 0.02, 1.10, sky=0.20),
-    "humility-2": Ground(0.38, 0.80, 0.11, 1.20),
+    "baptism-with-the-holy-spirit": Ground(0.42, 0.83, 0.11, 1.15,
+        source="d7a50b3b4aef331a353c928d60f5a0a4db8328429a9e024e80dab6f11a8d9667",
+    ),
+    "clothed-with-strength-and-dignity": Ground(0.40, 0.78, 0.10, 1.45,
+        source="818722e5ec6ae8ad955eb88481552b54c8822084238e62af8957274f18a54fe4",
+    ),
+    "godliness": Ground(0.44, 0.75, 0.09, 1.85,
+        source="50b72ef83e3f24780d1274148d034ea55317bb5c2d36c1b339d2213c80593dd1",
+    ),
+    "he-holds-my-tomorrows": Ground(0.46, 0.88, 0.02, 1.10, sky=0.20,
+        source="ecc94170eec003af3df0a6cd7de73321f752a18120abba82b96f6e77c8eaf433",
+    ),
+    "humility-2": Ground(0.38, 0.80, 0.11, 1.20,
+        source="d1a0e7653d874c4df65e1a37e4963724028584faa66ce51d69892acdfa6cc997",
+    ),
     # Below the rule at 0.594 there is only 18% of the cover left, which at the
     # usual inset came out five parts blur to one part picture; the wide inset
     # crops IN to the cross's stem, so the sharp band lands at a third of the
     # plate.
-    "jesus-himself-2": Ground(0.62, 0.78, 0.22, 1.80),
+    "jesus-himself-2": Ground(0.62, 0.78, 0.22, 1.80,
+        source="e40e84e7b60120827a09351a7dc152c7d78a7bab62246cb50382f825ebd29c13",
+    ),
     # A true silhouette: nearly black before the scrim, so the heaviest lift
     # here and still the darkest ground of the sixteen.
-    "lord-teach-us-to-pray-2": Ground(0.44, 0.84, 0.03, 2.50),
-    "prayer-the-pulse-of-life": Ground(0.56, 0.84, 0.11, 1.50),
-    "purity-of-heart": Ground(0.55, 0.79, 0.12, 2.00),
-    "stepping-stones-2": Ground(0.26, 0.64, 0.02, 1.15),
-    "talks-to-the-farmer": Ground(0.46, 0.78, 0.09, 1.45),
-    "the-god-of-all-comfort": Ground(0.50, 0.78, 0.11, 1.10),
+    "lord-teach-us-to-pray-2": Ground(0.44, 0.84, 0.03, 2.50,
+        source="d1a60e268eb163232e075407d5b3ca24ee2caf70b056dce1f02ad048117c6da0",
+    ),
+    "prayer-the-pulse-of-life": Ground(0.56, 0.84, 0.11, 1.50,
+        source="29030df615f17c8cf480f36a1bf738c14a7407cf9cc51c0e178cc480386cc3e1",
+    ),
+    "purity-of-heart": Ground(0.55, 0.79, 0.12, 2.00,
+        source="f3659ad885cb95c3bf8f0d954d45c078c709674407fd560fcc4cf96d1bd60554",
+    ),
+    "stepping-stones-2": Ground(0.26, 0.64, 0.02, 1.15,
+        source="f3564c524858961bbe55d4a7b900f70b88589a349ca8ad56f9b94ef92bce15da",
+    ),
+    "talks-to-the-farmer": Ground(0.46, 0.78, 0.09, 1.45,
+        source="120ca61d19bce6c692bc1bc8c9eecc38543224945496fbb427f0c1ecdbf6ed48",
+    ),
+    "the-god-of-all-comfort": Ground(0.50, 0.78, 0.11, 1.10,
+        source="d2917c2f827ac26b0570ef7995dfe2c7bc0560ad81e4ccf1937dbc265b1a9dcd",
+    ),
     # The doorway itself is an unlit room — a black rectangle at any lift its
     # highlights survive — so this takes the lintel and sandstone ABOVE it,
     # under the byline. The one work here whose ground is not its cover's
     # subject, because its subject is an absence of light.
-    "the-inner-chamber": Ground(0.13, 0.33, 0.10, 1.60),
-    "the-key-in-my-hand": Ground(0.26, 0.60, 0.02, 1.05),
-    "the-person-and-work-of-the-holy-spirit": Ground(0.41, 0.82, 0.10, 1.00),
-    "the-unselfishness-of-god": Ground(0.44, 0.80, 0.09, 1.15, sky=0.15),
+    "the-inner-chamber": Ground(0.13, 0.33, 0.10, 1.60,
+        source="524abc40f0fb242aaba695875851382a6d98481799a6178304d47c8befbde671",
+    ),
+    "the-key-in-my-hand": Ground(0.26, 0.60, 0.02, 1.05,
+        source="3e1a5e8c26072334f96a3a1039808ab24d0e749aad148613c23948c987fb1b62",
+    ),
+    "the-person-and-work-of-the-holy-spirit": Ground(0.41, 0.82, 0.10, 1.00,
+        source="854342772afb4da0ac470fdc3b92b253794051942e82bde23a3681388c7bab60",
+    ),
+    "the-unselfishness-of-god": Ground(0.44, 0.80, 0.09, 1.15, sky=0.15,
+        source="da76ca7d2a047bac2463d0ab58af54f40d987ce0bf5127001d102d553f8f4078",
+    ),
 }
 
 #: ``DESIGNED`` re-indexed by slug — the key every OTHER cover registry uses
@@ -222,8 +270,17 @@ DERIVED_GROUND: dict[str, Ground] = {
 #:
 #: A re-index, not a second source of truth: every ``DESIGNED`` key is
 #: ``/covers/<slug>.<ext>`` and the stems are unique.
+#: Only covers directly under ``/covers/`` are indexed. A translated edition is
+#: allowed designed artwork of ITS own one day, at ``/covers/<lang>/<slug>.<ext>``
+#: (two gates say so explicitly), and that file's stem is the same slug — so
+#: indexing it here would let ``/covers/sw/humility-2.jpg`` silently win the key
+#: belonging to ``/covers/humility-2.jpg`` and hand every consumer the wrong
+#: cover. ``test_designed_covers_index_cleanly`` fails on a collision rather
+#: than letting one entry quietly replace another.
 DESIGNED_BY_SLUG: dict[str, str] = {
-    url.rsplit("/", 1)[1].rsplit(".", 1)[0]: url for url in DESIGNED
+    url.removeprefix("/covers/").rsplit(".", 1)[0]: url
+    for url in DESIGNED
+    if "/" not in url.removeprefix("/covers/")
 }
 
 
