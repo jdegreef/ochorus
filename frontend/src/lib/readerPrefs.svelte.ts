@@ -67,19 +67,21 @@ export const MEASURE: Record<Measure, string> = {
  * article, and substitution is token-level, so `--reading-font:var(--font-display)`
  * resolves exactly as the literal stack would.
  *
- * DYSLEXIC IS STILL A LITERAL, because there is no token for it — and it is the
- * one preference this change cannot honour outside Latin. OpenDyslexic is
- * Latin-only and no Arabic or Devanagari equivalent exists, so an Arabic reader
- * who asks for it was getting `cursive`: a generic that matches every glyph and
- * hands the script to whatever the device felt like. The serif faces are
- * appended so that reader lands on Amiri or Tiro instead — the same text they
- * would get without the preference, rather than something worse. What the
+ * DYSLEXIC NAMES ONE LITERAL AND THEN THE TOKEN, because only OpenDyslexic
+ * itself has no token — the tail does. It is the one preference this change
+ * cannot honour outside Latin: OpenDyslexic is Latin-only and no Arabic or
+ * Devanagari equivalent exists, so an Arabic reader who asked for it was
+ * getting `cursive`, a generic that matches every glyph and hands the script to
+ * whatever the device felt like. Ending at `var(--font-display)` puts that
+ * reader on Amiri or Tiro instead — the same text they would get without the
+ * preference rather than something worse — and, unlike spelling those three
+ * families out here, it cannot drift from the stack they are named in. What the
  * setting SHOULD do for those readers is a product question, not a CSS one.
  */
 export const FONT_STACK: Record<ReaderFont, string> = {
 	serif: 'var(--font-display)',
 	sans: 'var(--font-sans)',
-	dyslexic: "'OpenDyslexic', 'Comic Sans MS', 'Amiri', 'Tiro Devanagari Hindi', 'PT Serif', cursive"
+	dyslexic: "'OpenDyslexic', 'Comic Sans MS', var(--font-display)"
 };
 
 const SCALE_MIN = 0.8;

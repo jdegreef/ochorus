@@ -34,13 +34,20 @@ describe('font stacks', () => {
 		return [...from.slice(at, from.indexOf(';', at)).matchAll(/'([^']+)'/g)].map(([, f]) => f);
 	};
 
-	/** The subsets a fontsource family ships, from its file names. */
-	const SUBSETS = ['latin', 'cyrillic', 'arabic', 'devanagari'];
-	const subsetsOf = (family: string) => {
-		const slug = family
+	/** A fontsource package directory name, from the family as CSS names it. */
+	const pkgSlug = (family: string) =>
+		family
 			.replace(/ Variable$/, '')
 			.toLowerCase()
 			.replace(/ /g, '-');
+
+	/** Does this family ship as a variable font (one file, a weight range)? */
+	const isVariable = (family: string) => family.endsWith(' Variable');
+
+	/** The subsets a fontsource family ships, from its file names. */
+	const SUBSETS = ['latin', 'cyrillic', 'arabic', 'devanagari'];
+	const subsetsOf = (family: string) => {
+		const slug = pkgSlug(family);
 		for (const scope of ['@fontsource-variable', '@fontsource']) {
 			try {
 				const files = readdirSync(join(process.cwd(), 'node_modules', scope, slug, 'files')).join(
@@ -121,22 +128,67 @@ describe('font stacks', () => {
 	it('never lets a reader preference resolve to a bare generic', () => {
 		// `--reading-font` is ALWAYS set from FONT_STACK, so `.reading`'s
 		// `var(--reading-font, var(--font-display))` fallback never fires and these
-		// three strings are the whole of what the app's most-read surface is set
-		// in. Two now name a token so they cannot drift from it; `dyslexic` cannot,
-		// because no Arabic or Devanagari dyslexic face exists — but it must still
-		// end at a real family rather than handing the script to `cursive`, which
-		// matches every glyph and resolves to whatever the device felt like.
-		expect(FONT_STACK.serif).toBe('var(--font-display)');
-		expect(FONT_STACK.sans).toBe('var(--font-sans)');
-		for (const script of ['arabic', 'devanagari']) {
-			const face = [...FONT_STACK.dyslexic.matchAll(/'([^']+)'/g)]
-				.map(([, f]) => f)
-				.find((f) => subsetsOf(f).has(script));
+		// three strings are the whole of what the app's most-read surface is set in.
+		//
+		// Resolved THROUGH the indirection, not read off the literal: two of them
+		// name a token now, and a gate that only counted quoted families would have
+		// called that a regression when it is the fix.
+		const resolved = (value: string): string[] => [
+			...[...value.matchAll(/'([^']+)'/g)].map(([, f]) => f),
+			...[...value.matchAll(/var\((--font-[a-z-]+)\)/g)].flatMap(([, t]) =>
+				stackOf(t.slice(2))
+			)
+		];
+
+		expect(FONT_STACK.serif, 'the serif preference should name the token').toBe(
+			'var(--font-display)'
+		);
+		expect(FONT_STACK.sans, 'the sans preference should name the token').toBe('var(--font-sans)');
+
+		// `sans` is deliberately absent from the loop below, and saying so here is
+		// the point: `--font-sans` has no Arabic or Devanagari face yet, so a reader
+		// who picks "sans" in those languages still falls to a device font. That is
+		// the known follow-up, named rather than left to be rediscovered — add
+		// 'sans' here the day the token gains them, and this gate will hold it.
+		for (const pref of ['serif', 'dyslexic'] as const) {
+			for (const script of ['arabic', 'devanagari']) {
+				const face = resolved(FONT_STACK[pref]).find((f) => subsetsOf(f).has(script));
+				expect(
+					face,
+					`the ${pref} preference resolves to no ${script} face, so an ${script} ` +
+						`reader who picks it gets a generic and whatever the device substitutes`
+				).toBeTruthy();
+			}
+		}
+	});
+
+	it('imports every weight the prose actually sets', () => {
+		// A family with no @font-face for the weight asked does NOT fall through to
+		// the next family — it renders in the nearest weight it has. PT Serif was
+		// imported at 700 alone, correctly, while only `--cover-face-house` named
+		// it; the moment `--font-display` did, Ukrainian body prose at 400 would
+		// have come out bold. Nothing caught it, because a stack that names the
+		// right family looks right.
+		//
+		// 400 is the floor because `.reading` sets no font-weight, so prose is 400;
+		// headings that use --font-display go bolder, but those are Latin-first and
+		// land on Fraunces, which is variable.
+		const imported = new Set(
+			[...APP_CSS.matchAll(/@import '@fontsource[^']*\/([a-z-]+)\/(\d{3})\.css'/g)].map(
+				([, pkg, weight]) => `${pkg}/${weight}`
+			)
+		);
+		for (const family of stackOf('font-display')) {
+			const slug = pkgSlug(family);
+			// Variable faces carry a range and need no per-weight file; a family the
+			// app does not import at all is either a device face (Georgia) or is
+			// caught by the coverage gate above.
+			if (!subsetsOf(family).size || isVariable(family)) continue;
 			expect(
-				face,
-				`the dyslexic preference names no ${script} face, so an ${script} reader ` +
-					`who picks it gets \`cursive\` and a device font`
-			).toBeTruthy();
+				imported.has(`${slug}/400`),
+				`--font-display names ${family} for prose but app.css never imports ` +
+					`${slug}/400.css — prose would render in whatever weight it did import`
+			).toBe(true);
 		}
 	});
 

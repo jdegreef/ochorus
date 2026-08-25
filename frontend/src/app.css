@@ -70,15 +70,20 @@
    with a face that already covers both — about 11 KB of extra CSS, gzipping to
    ~570 B. Paying that to keep the unicode-range gating is the right way round.
 
-   PT Serif is imported at 700 ALONE: it is named only by --cover-face-house,
-   only Cyrillic glyphs ever reach it, and .script-cyrillic.style-house asks for
-   700 at four classes. Nothing can ask it for a 400. */
+   PT SERIF NEEDS BOTH WEIGHTS, and it used to need only 700. That was true
+   while it was named by `--cover-face-house` alone, where the one recipe that
+   reaches it asks for 700. `--font-display` now names it for BODY PROSE, which
+   is 400 — and a family with no 400 face does not fall through to the next
+   family, it renders in the nearest weight it has. Ukrainian prose would have
+   come out bold. `fontStacks.test.ts` fails now if a family in --font-display
+   has no @font-face for the weight prose sets. */
 @import '@fontsource/amiri/400.css';
 @import '@fontsource/amiri/700.css';
 @import '@fontsource/tiro-devanagari-hindi/400.css';
 @import '@fontsource/martel/600.css';
 @import '@fontsource/old-standard-tt/400.css';
 @import '@fontsource/old-standard-tt/700.css';
+@import '@fontsource/pt-serif/400.css';
 @import '@fontsource/pt-serif/700.css';
 
 /* Map semantic theme tokens onto Tailwind color utilities so `bg-surface
