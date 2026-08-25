@@ -23,6 +23,7 @@
 	let {
 		container,
 		cite,
+		language,
 		onHighlight,
 		onNote,
 		highlightColor,
@@ -30,6 +31,8 @@
 	}: {
 		container: HTMLElement | undefined;
 		cite: Cite;
+		/** The edition's language, so a quote card is set in its own script. */
+		language: string;
 		/** Toggle/recolour: called with the picked colour key. */
 		onHighlight?: (segments: Segment[], color: string) => void;
 		onNote?: (segments: Segment[]) => void;
@@ -132,7 +135,8 @@
 				quote: selectedText,
 				author: cite.author,
 				source: cite.chapter ? `${cite.book}, ${cite.chapter}` : cite.book,
-				site: 'ochorus.com'
+				site: 'ochorus.com',
+				language
 			});
 		} catch {
 			/* rendering/sharing failed — nothing to surface, the quote is still selected */

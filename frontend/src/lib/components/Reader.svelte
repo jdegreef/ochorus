@@ -313,6 +313,7 @@
 <SelectionBar
 	container={body}
 	{cite}
+	{language}
 	onHighlight={(segments, color) => {
 		const existing = marks.groupCovering(segments);
 		if (!existing) marks.add(segments, undefined, color);
