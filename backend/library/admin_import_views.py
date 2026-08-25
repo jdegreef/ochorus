@@ -16,7 +16,7 @@ from rest_framework.views import APIView
 from accounts.permissions import IsAdminEmail
 
 from . import upload_import
-from .languages import language_map
+from .languages import known_codes, language_map
 from .models import Author
 from .serializers import AuthorSerializer
 from .views import _language_entry
@@ -111,6 +111,16 @@ class AdminImportPublishView(APIView):
             return Response({"detail": "kind must be 'book' or 'sermon'."}, status=400)
         if not title:
             return Response({"detail": "A title is required."}, status=400)
+        # Free text before this: a typo published content into a locale that
+        # does not exist, where nothing lists it and no reader can reach it —
+        # and create_book stamps every upload PUBLIC_DOMAIN, so it would be
+        # presented as an original rather than surfacing in the review queue.
+        # The same check the translation-job endpoint already makes.
+        if language not in known_codes():
+            return Response(
+                {"detail": f"Unknown language {language!r} — pick one from the list."},
+                status=400,
+            )
         author = Author.objects.filter(slug=(d.get("author_slug") or "").strip()).first()
         if not author:
             return Response({"detail": "Unknown author — pick one from the list."}, status=400)
@@ -145,7 +155,11 @@ class AdminImportPublishView(APIView):
                 status=201,
             )
 
-        body = d.get("body_html") or ""
+        # `or ""` guards absence, not TYPE: a client sending a number reached
+        # .strip() on an int and raised AttributeError — a 500 out of the branch
+        # whose whole job is to reject bad input.
+        raw_body = d.get("body_html")
+        body = raw_body if isinstance(raw_body, str) else ""
         if not body.strip():
             return Response({"detail": "The sermon body is empty."}, status=400)
         try:
