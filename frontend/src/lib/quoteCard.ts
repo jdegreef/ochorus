@@ -10,6 +10,8 @@
 
 import markSvg from '$lib/brand/ochorus-mark.svg?raw';
 
+import { scriptOf } from '$lib/coverStyles';
+
 export interface QuoteCardOptions {
 	quote: string;
 	author: string;
@@ -17,7 +19,40 @@ export interface QuoteCardOptions {
 	source: string;
 	/** Footer site label, e.g. "ochorus.com". */
 	site?: string;
+	/** The edition's language, so the card can be set in the reader's script.
+	 *  Optional, and Latin when absent — a caller that does not know is no worse
+	 *  off than before, rather than broken. */
+	language?: string;
 }
+
+/**
+ * The serif stack, as a canvas literal.
+ *
+ * A LITERAL BECAUSE CANVAS CANNOT READ A CUSTOM PROPERTY. Everywhere else in
+ * the app this list is `var(--font-display)` and there is one copy; `ctx.font`
+ * takes a plain font shorthand, so this is the one place that genuinely has to
+ * restate it. `quoteCard.test.ts` checks it against app.css so the copy cannot
+ * drift.
+ *
+ * It matters here for the same reason it matters in the reader: this card draws
+ * the reader's OWN SENTENCE, and it was set in `'Fraunces Variable', Georgia,
+ * serif` — neither of which has an Arabic or Devanagari glyph. An Arabic reader
+ * highlighting a line and tapping "Quote card" got a PNG in whatever serif the
+ * device chose, on the one surface built to leave the site.
+ */
+export const CARD_SERIF =
+	"'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'PT Serif', Georgia, 'Times New Roman', serif";
+
+/**
+ * How the quote itself is set, per script.
+ *
+ * UPRIGHT AND 400 OUTSIDE LATIN, where the Latin card is `italic 600`. Not
+ * taste: Amiri and Tiro have no italic at all and Amiri ships 400 and 700 with
+ * nothing between, so `italic 600` asked all three faces for two things they
+ * have not got and got a synthesised slant over a synthesised bold. An upright
+ * pull-quote is right in each of these traditions anyway.
+ */
+export const quoteStyle = (script: string | null) => (script ? '400' : 'italic 600');
 
 const SIZE = 1080;
 const PAPER = '#f7f1e5';
@@ -59,15 +94,16 @@ function fitQuote(
 	ctx: CanvasRenderingContext2D,
 	text: string,
 	maxWidth: number,
-	maxHeight: number
+	maxHeight: number,
+	style: string
 ): { lines: string[]; fontSize: number; lineHeight: number } {
 	for (let fs = 70; fs >= 30; fs -= 2) {
-		ctx.font = `italic 600 ${fs}px 'Fraunces Variable', Georgia, serif`;
+		ctx.font = `${style} ${fs}px ${CARD_SERIF}`;
 		const lines = wrapLines(ctx, text, maxWidth);
 		const lineHeight = fs * 1.34;
 		if (lines.length * lineHeight <= maxHeight) return { lines, fontSize: fs, lineHeight };
 	}
-	ctx.font = `italic 600 30px 'Fraunces Variable', Georgia, serif`;
+	ctx.font = `${style} 30px ${CARD_SERIF}`;
 	return { lines: wrapLines(ctx, text, maxWidth), fontSize: 30, lineHeight: 30 * 1.34 };
 }
 
@@ -106,13 +142,28 @@ function drawMark(ctx: CanvasRenderingContext2D, x: number, y: number, size: num
 	ctx.restore();
 }
 
-async function ensureFonts(): Promise<void> {
+/** The face each script's quote is actually drawn in — what has to be LOADED
+ *  before the canvas paints, since `ctx.fillText` does not wait for a webfont
+ *  the way the DOM does: it silently falls back and the PNG keeps the fallback
+ *  forever. Mirrors the non-Latin families in `SERIF`. */
+export const SCRIPT_FACE: Record<string, string> = {
+	arabic: 'Amiri',
+	devanagari: 'Tiro Devanagari Hindi',
+	cyrillic: 'PT Serif'
+};
+
+async function ensureFonts(script: string | null): Promise<void> {
 	try {
 		const fonts = (document as Document & { fonts?: FontFaceSet }).fonts;
 		if (!fonts) return;
+		const face = script && SCRIPT_FACE[script];
 		await Promise.all([
 			fonts.load("italic 600 64px 'Fraunces Variable'"),
-			fonts.load("600 40px 'Fraunces Variable'")
+			fonts.load("600 40px 'Fraunces Variable'"),
+			// The script face at both sizes the card sets it at. Without this the
+			// card drew Arabic in the device serif even though the stack named
+			// Amiri, because nothing had asked the browser to fetch it yet.
+			...(face ? [fonts.load(`400 64px '${face}'`), fonts.load(`600 34px '${face}'`)] : [])
 		]);
 		await fonts.ready;
 	} catch {
@@ -122,7 +173,9 @@ async function ensureFonts(): Promise<void> {
 
 /** Render the card to a PNG Blob. */
 export async function renderQuoteCard(opts: QuoteCardOptions): Promise<Blob> {
-	await ensureFonts();
+	const script = scriptOf(opts.language ?? 'en');
+	const style = quoteStyle(script);
+	await ensureFonts(script);
 	const canvas = document.createElement('canvas');
 	canvas.width = SIZE;
 	canvas.height = SIZE;
@@ -150,9 +203,9 @@ export async function renderQuoteCard(opts: QuoteCardOptions): Promise<Blob> {
 	const quote = trimQuote(opts.quote);
 	const bodyTop = 300;
 	const bodyBottom = 812;
-	const { lines, fontSize, lineHeight } = fitQuote(ctx, quote, maxWidth, bodyBottom - bodyTop);
+	const { lines, fontSize, lineHeight } = fitQuote(ctx, quote, maxWidth, bodyBottom - bodyTop, style);
 	ctx.fillStyle = INK;
-	ctx.font = `italic 600 ${fontSize}px 'Fraunces Variable', Georgia, serif`;
+	ctx.font = `${style} ${fontSize}px ${CARD_SERIF}`;
 	ctx.textBaseline = 'top';
 	const blockHeight = lines.length * lineHeight;
 	let y = bodyTop + Math.max(0, (bodyBottom - bodyTop - blockHeight) / 2);
@@ -163,11 +216,13 @@ export async function renderQuoteCard(opts: QuoteCardOptions): Promise<Blob> {
 
 	// Attribution.
 	ctx.fillStyle = INK;
-	ctx.font = "600 34px 'Fraunces Variable', Georgia, serif";
+	ctx.font = `600 34px ${CARD_SERIF}`;
 	ctx.fillText(`— ${opts.author}`, margin, 864);
 	if (opts.source) {
 		ctx.fillStyle = MUTED;
-		ctx.font = '400 26px Georgia, serif';
+		// The source is a BOOK TITLE, so it is translated — Georgia alone has no
+		// Devanagari, and this line was the last one still naming it.
+		ctx.font = `400 26px ${CARD_SERIF}`;
 		ctx.fillText(opts.source, margin, 910);
 	}
 
@@ -182,7 +237,7 @@ export async function renderQuoteCard(opts: QuoteCardOptions): Promise<Blob> {
 
 	drawMark(ctx, margin, footY + 16, 40, INK);
 	ctx.fillStyle = INK;
-	ctx.font = "700 30px 'Fraunces Variable', Georgia, serif";
+	ctx.font = `700 30px ${CARD_SERIF}`;
 	ctx.textBaseline = 'alphabetic';
 	ctx.fillText('Ochorus', margin + 54, footY + 47);
 

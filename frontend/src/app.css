@@ -70,15 +70,20 @@
    with a face that already covers both — about 11 KB of extra CSS, gzipping to
    ~570 B. Paying that to keep the unicode-range gating is the right way round.
 
-   PT Serif is imported at 700 ALONE: it is named only by --cover-face-house,
-   only Cyrillic glyphs ever reach it, and .script-cyrillic.style-house asks for
-   700 at four classes. Nothing can ask it for a 400. */
+   PT SERIF NEEDS BOTH WEIGHTS, and it used to need only 700. That was true
+   while it was named by `--cover-face-house` alone, where the one recipe that
+   reaches it asks for 700. `--font-display` now names it for BODY PROSE, which
+   is 400 — and a family with no 400 face does not fall through to the next
+   family, it renders in the nearest weight it has. Ukrainian prose would have
+   come out bold. `fontStacks.test.ts` fails now if a family in --font-display
+   has no @font-face for the weight prose sets. */
 @import '@fontsource/amiri/400.css';
 @import '@fontsource/amiri/700.css';
 @import '@fontsource/tiro-devanagari-hindi/400.css';
 @import '@fontsource/martel/600.css';
 @import '@fontsource/old-standard-tt/400.css';
 @import '@fontsource/old-standard-tt/700.css';
+@import '@fontsource/pt-serif/400.css';
 @import '@fontsource/pt-serif/700.css';
 
 /* Map semantic theme tokens onto Tailwind color utilities so `bg-surface
@@ -100,7 +105,8 @@
 	--color-warning: var(--warning);
 	--radius-card: 12px;
 	--radius-sm: 9px;
-	--font-display: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'PT Serif', Georgia,
+		'Times New Roman', serif;
 	--font-sans: 'Hanken Grotesk Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
 
 	/* The type scale, as Tailwind utilities. Without this the scale existed only
@@ -215,7 +221,32 @@
 	--shadow-card: 0 6px 20px -12px rgb(0 0 0 / 0.55);
 	--shadow-popover: 0 10px 30px rgb(0 0 0 / 0.4);
 	--shadow-drawer: -12px 0 40px rgb(0 0 0 / 0.45);
-	--font-display: 'Fraunces Variable', Georgia, serif;
+	/* THE SCRIPTS FRAUNCES DOES NOT COVER. Ochorus reads in eight languages and
+	   three of them are not Latin; Fraunces has no Arabic and no Devanagari, and
+	   Georgia behind it has no Devanagari either. So ~609,000 words of Arabic and
+	   Hindi prose were being drawn by whatever the DEVICE chose — measured in
+	   Chromium as DejaVu Sans and FreeSans, which is to say a SANS on the surface
+	   the style guide asks to be "set like a printed devotional page", and a
+	   different face on every phone.
+
+	   Amiri and Tiro Devanagari Hindi are here rather than a fresh pick because
+	   both are book faces first — Amiri is a Bulaq press Naskh revival, Tiro was
+	   drawn to set Devanagari beside classical Latin book faces — and because the
+	   covers already ship them, so a Latin page pays nothing new. PT Serif takes
+	   the Cyrillic Fraunces lacks; it sits BEFORE Georgia deliberately, so
+	   Ukrainian gets a chosen face rather than the one a device happened to
+	   substitute.
+
+	   Per-glyph fallback does the rest: Latin never leaves Fraunces, so no Latin
+	   reader fetches any of these. `fontStacks.test.ts` measures that rather than
+	   assuming it.
+
+	   `--font-sans` is NOT yet fixed the same way, and that is a separate change:
+	   it needs a SANS for each script, not these, and Hanken ships `cyrillic-ext`
+	   without the base `cyrillic` block — so even Ukrainian UI chrome falls out of
+	   it to a device font. */
+	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'PT Serif', Georgia,
+		'Times New Roman', serif;
 	--font-sans: 'Hanken Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
 	--reading-scale: 1;
 	/* Motion, per STYLE_GUIDE §7 (quiet and quick, 120-240ms). Eight distinct
@@ -591,10 +622,18 @@
    - `float: inline-start`, so it sits on the reading edge in either direction.
    - Not in paged mode: a float cannot span CSS columns, and the initial would
      be clipped at the column boundary.
-   - Not for Arabic, where a floated initial is not a convention of the script.
+   - Not for Arabic OR Devanagari, where a floated initial is not a convention
+     of the script — and, for Devanagari, is not even a well-defined operation.
+     A "letter" there is an AKSHARA: a consonant with its vowel signs, hung
+     from the shirorekha, the bar that runs along the top of the whole word.
+     `::first-letter` takes the base consonant and its marks and nothing else,
+     so `मैरी` came apart as `मै` | `री` — a word split mid-cluster with its top
+     bar broken across a float, which is what shipping a Devanagari face made
+     visible. Latin can do this because its letters stand alone; these scripts
+     cannot.
    - `:first-of-type`, so a chapter opening with a heading still caps its first
      real paragraph, and no later paragraph gets one. */
-article:not(.paged) .reading > p:first-of-type:not(:lang(ar))::first-letter {
+article:not(.paged) .reading > p:first-of-type:not(:lang(ar)):not(:lang(hi))::first-letter {
 	float: inline-start;
 	font-family: var(--font-display);
 	font-size: 3.1em;
