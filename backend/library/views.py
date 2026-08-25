@@ -6,6 +6,7 @@ Books are addressed by their canonical ``slug`` plus a ``language`` query param
 
 import logging
 
+from django.core.cache import cache
 from django.db.models import Count, Prefetch, Q
 from django.http import Http404
 from django.shortcuts import get_object_or_404
@@ -17,6 +18,7 @@ from rest_framework.views import APIView
 from common.throttling import ScopedCacheThrottle
 
 from . import languages as languages_module
+from .http_cache import PublicContentCacheMixin
 from .languages import entry as language_entry
 from .localization import language_from_request
 from .models import (
@@ -59,6 +61,9 @@ from .serializers import (
 
 logger = logging.getLogger(__name__)
 
+#: See LanguageListView — short enough that an admin go-live shows up promptly.
+LANGUAGES_CACHE_SECONDS = 30
+
 
 def _language(request) -> str:
     return language_from_request(request)
@@ -78,7 +83,7 @@ def _language_entry(code: str) -> dict:
 # Snippet highlight markers. The API returns *plain text* snippets with matches
 # wrapped in these; the client HTML-escapes the text and then swaps the markers
 # for <mark> tags, so no HTML ever crosses the boundary unescaped.
-class AuthorListView(generics.ListAPIView):
+class AuthorListView(PublicContentCacheMixin, generics.ListAPIView):
     """Authors for the Biographies page: anyone with a bio OR a book to read."""
 
     serializer_class = AuthorListSerializer
@@ -126,7 +131,7 @@ class AuthorListView(generics.ListAPIView):
         return ctx
 
 
-class AuthorDetailView(generics.RetrieveAPIView):
+class AuthorDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
     """A single author with their published books (for the author page)."""
 
     serializer_class = AuthorDetailSerializer
@@ -142,7 +147,7 @@ class AuthorDetailView(generics.RetrieveAPIView):
         return ctx
 
 
-class BookListView(generics.ListAPIView):
+class BookListView(PublicContentCacheMixin, generics.ListAPIView):
     """All published books for a language, ordered for the shelf."""
 
     serializer_class = BookListSerializer
@@ -164,7 +169,7 @@ class BookListView(generics.ListAPIView):
         return ctx
 
 
-class BookDetailView(generics.RetrieveAPIView):
+class BookDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
     serializer_class = BookDetailSerializer
 
     def get_object(self):
@@ -192,7 +197,7 @@ class BookDetailView(generics.RetrieveAPIView):
         )
 
 
-class ChapterDetailView(generics.RetrieveAPIView):
+class ChapterDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
     serializer_class = ChapterDetailSerializer
 
     def get_object(self):
@@ -209,7 +214,7 @@ class ChapterDetailView(generics.RetrieveAPIView):
         )
 
 
-class SermonListView(generics.ListAPIView):
+class SermonListView(PublicContentCacheMixin, generics.ListAPIView):
     """All published sermons for a language, ordered for the shelf."""
 
     serializer_class = SermonListSerializer
@@ -223,7 +228,7 @@ class SermonListView(generics.ListAPIView):
         )
 
 
-class SermonDetailView(generics.RetrieveAPIView):
+class SermonDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
     serializer_class = SermonDetailSerializer
 
     def get_object(self):
@@ -235,7 +240,7 @@ class SermonDetailView(generics.RetrieveAPIView):
         )
 
 
-class LanguageListView(APIView):
+class LanguageListView(PublicContentCacheMixin, APIView):
     """Languages a reader is offered — LIVE in the registry, with books to read.
 
     Powers the content-language selector, and (with ``?all=1``) the build, which
@@ -254,15 +259,24 @@ class LanguageListView(APIView):
             # not books have landed yet. It needs the intent, not the inventory —
             # a locale can be live and still be filling up.
             return Response([_language_entry(c) for c in live])
-        with_books = set(
-            Book.objects.filter(is_published=True)
-            .values_list("language", flat=True)
-            .distinct()
+        # Which languages have anything published is a scan of every book, and
+        # the answer changes when content ships or an admin takes a locale
+        # live — never between two requests a second apart. Memoised briefly so
+        # the language switcher, which every page renders, stops paying for it.
+        # Short TTL because an admin going live should see it almost at once.
+        with_books = cache.get_or_set(
+            "languages-with-books",
+            lambda: set(
+                Book.objects.filter(is_published=True)
+                .values_list("language", flat=True)
+                .distinct()
+            ),
+            LANGUAGES_CACHE_SECONDS,
         )
         return Response([_language_entry(c) for c in live if c in with_books])
 
 
-class PlanListView(generics.ListAPIView):
+class PlanListView(PublicContentCacheMixin, generics.ListAPIView):
     """Published reading plans for a language."""
 
     serializer_class = PlanListSerializer
@@ -276,7 +290,7 @@ class PlanListView(generics.ListAPIView):
         )
 
 
-class PlanDetailView(generics.RetrieveAPIView):
+class PlanDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
     serializer_class = PlanDetailSerializer
 
     def get_object(self):
@@ -330,7 +344,7 @@ def _attach_sermons(topics, language):
     return topics
 
 
-class TopicListView(generics.ListAPIView):
+class TopicListView(PublicContentCacheMixin, generics.ListAPIView):
     """Published topical shelves that have at least one member — book OR sermon —
     in the requested language, so a partially-translated library never shows an
     empty shelf. Localized titles/descriptions, with a few sample tiles each."""
@@ -362,7 +376,7 @@ class TopicListView(generics.ListAPIView):
         ]
 
 
-class TopicDetailView(generics.RetrieveAPIView):
+class TopicDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
     """A single topical shelf with its member books in the requested language."""
 
     serializer_class = TopicDetailSerializer
@@ -544,6 +558,9 @@ class PopularSearchesView(APIView):
     """
 
     WINDOW_DAYS = 30
+    #: Five minutes. The window is thirty days; nobody can tell the difference,
+    #: and it bounds this scan to once per worker per five minutes.
+    CACHE_SECONDS = 300
     MIN_COUNT = 5  # a query must recur to read as "popular", not a one-off blip
     MIN_DISTINCT = 4  # ...and there must be a real spread, or show nothing
     LIMIT = 8
@@ -555,6 +572,10 @@ class PopularSearchesView(APIView):
         from django.utils import timezone
 
         language = _language(request)
+        cached = cache.get(f"popular-searches:{language}")
+        if cached is not None:
+            return Response({"queries": cached})
+
         since = timezone.now() - timedelta(days=self.WINDOW_DAYS)
         rows = (
             SearchQueryLog.objects.filter(
@@ -569,7 +590,12 @@ class PopularSearchesView(APIView):
         )
         queries = [r["q"] for r in rows]
         if len(queries) < self.MIN_DISTINCT:
-            return Response({"queries": []})
+            queries = []
+        # A GROUP BY over thirty days of the search log, recomputed for every
+        # reader who opened the search page. It is an aggregate of a month —
+        # per-request freshness is worth nothing, and the table it scans is the
+        # one search itself is designed to grow.
+        cache.set(f"popular-searches:{language}", queries, self.CACHE_SECONDS)
         return Response({"queries": queries})
 
 
