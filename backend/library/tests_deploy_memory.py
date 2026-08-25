@@ -56,14 +56,27 @@ class DeployScanColumnTests(TestCase):
             body_html="<p>More prose.</p>",
         )
 
+    @staticmethod
+    def _is_read(sql: str) -> bool:
+        """A query that READS chapters, on either backend.
+
+        Not simply `startswith("SELECT")`. These commands stream with
+        `.iterator(chunk_size=...)`, and on POSTGRES that opens a server-side
+        cursor — so the captured statement is `DECLARE ... CURSOR FOR SELECT`,
+        which a SELECT-prefix filter drops on the floor. SQLite has no
+        server-side cursors and issues a plain SELECT, so a prefix filter passes
+        locally and finds nothing in CI. It did exactly that.
+        """
+        head = sql.lstrip().upper()
+        return head.startswith("SELECT") or head.startswith("DECLARE")
+
     def _chapter_selects(self, *command):
         with CaptureQueriesContext(connection) as captured:
             call_command(*command, stdout=StringIO())
         return [
             q["sql"]
             for q in captured.captured_queries
-            if q["sql"].lstrip().upper().startswith("SELECT")
-            and "library_chapter" in q["sql"]
+            if self._is_read(q["sql"]) and "library_chapter" in q["sql"]
         ]
 
     def test_corrections_scan_never_selects_the_tsvector_or_derived_text(self):
@@ -94,7 +107,7 @@ class DeployScanColumnTests(TestCase):
         chapter_selects = [
             q["sql"]
             for q in captured.captured_queries
-            if "library_chapter" in q["sql"]
+            if self._is_read(q["sql"]) and "library_chapter" in q["sql"]
         ]
         self.assertTrue(chapter_selects, "the prefetch issued no chapter query")
         for sql in chapter_selects:
