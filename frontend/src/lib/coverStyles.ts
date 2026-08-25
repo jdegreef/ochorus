@@ -116,6 +116,95 @@ export const AUTHOR_STYLE: Record<string, CoverStyleId> = {
 };
 
 /**
+ * The SCRIPTS a cover's metrics are corrected for — and nothing about the faces.
+ *
+ * WHICH FACE a script gets is not decided here and cannot be: font fallback is
+ * per GLYPH, so `--cover-face-press` simply lists IM Fell, then Amiri, then
+ * Tiro Devanagari, and the browser takes each character from the first family
+ * that has it. Nothing has to know what language a title is in to pick a face.
+ *
+ * Nor does a script get six distinct faces. Arabic gets one with two weights
+ * and Devanagari two; the six Latin recipes are six CENTURIES of Latin
+ * printing, and there was no Fell type for Devanagari to revive. What carries
+ * across is the loud-and-quiet of a title page, and that is what these blocks
+ * preserve.
+ *
+ * What DOES need knowing is the METRICS. Every number in a `.style-*` recipe
+ * was evened out by eye against a Latin face — `cover-type.css` says as much —
+ * and three of those numbers are not merely untuned but WRONG in another
+ * script:
+ *
+ * * `letter-spacing` breaks Arabic. It is cursive: its letters join, and
+ *   tracking prises the joins apart into disconnected shapes. `inscriptional`
+ *   asks for 0.06em, so Augustine in Arabic was the worst of the six.
+ * * `font-style: italic` does not exist in Arabic or Devanagari. The browser
+ *   obliges by SLANTING the upright — a synthesis nobody drew.
+ * * A weight a face has not got is synthesised into the smeared-stem bold this
+ *   module already refuses to ask a Latin face for. Amiri and Tiro ship fewer
+ *   weights than the faces they stand beside.
+ *
+ * Latin is deliberately absent: it is what the recipes are already written in,
+ * so a Latin cover needs no correction and carries no class.
+ */
+export const COVER_SCRIPTS = ['arabic', 'devanagari', 'cyrillic'] as const;
+
+export type CoverScript = (typeof COVER_SCRIPTS)[number];
+
+/**
+ * ISO 15924 script subtag → the recipe corrections that script needs.
+ *
+ * KEYED ON THE SCRIPT, NOT THE LANGUAGE, and that is the whole point. A table
+ * of language codes would have to name `ar`, then `fa`, then `ur`, then `ps` —
+ * and an admin can add a language to the registry WITHOUT A DEPLOY ("Add a
+ * language" in the admin; see `library/language_seed.py` on who owns which).
+ * So the day someone adds Urdu, a language table would still be right about
+ * every language it listed and silently wrong about the new one: the FACE would
+ * work, because font fallback is per glyph and does not care what language a
+ * title is in, while every correction stopped — Urdu's cursive joins prised
+ * apart by `inscriptional`'s tracking, its subtitle slanted by a synthesis
+ * nobody drew. Those are the three defects this module calls wrong rather than
+ * untuned, reappearing at full strength on the next language nobody thought
+ * about.
+ *
+ * A script table cannot go stale that way. It grows only when a script needs
+ * CSS that does not exist yet, which is a change to `cover-type.css` anyway.
+ *
+ * Absent scripts are Latin's case, deliberately: Latn is what the recipes are
+ * already written in and needs no entry, and a script with no entry — Hebrew,
+ * Ge'ez, Han — is set exactly as it is today rather than corrected by numbers
+ * measured against a font nobody chose for it. That is the same shape as
+ * `coverStyleFor` dressing an author it has never heard of.
+ */
+const SCRIPT_SUBTAG: Record<string, CoverScript> = {
+	Arab: 'arabic',
+	Deva: 'devanagari',
+	Cyrl: 'cyrillic'
+};
+
+/**
+ * The script a cover in this language is corrected for; null when it needs none.
+ *
+ * `Intl.Locale.maximize()` is what turns a bare language code into a script —
+ * `ar` and `ur` and `fa` all maximise to `Arab`, `hi` and `mr` to `Deva` — so
+ * this module never has to hold a list of the world's languages. It is a
+ * global, not an import, which is what keeps this file loadable from bare Node
+ * (`nodeLoadable.test.ts`).
+ *
+ * Anything unparseable comes back null and is set as it is today. That includes
+ * a code no browser has heard of, and — on a browser too old for `Intl.Locale`
+ * — every code, which degrades to exactly the behaviour before this existed
+ * rather than to a broken one.
+ */
+export function scriptOf(language: string): CoverScript | null {
+	try {
+		const script = new Intl.Locale(language).maximize().script;
+		return (script && SCRIPT_SUBTAG[script]) || null;
+	} catch {
+		return null;
+	}
+}
+
+/**
  * The style a book's cover is set in.
  *
  * Takes the era rather than deriving it (see the header on why this module

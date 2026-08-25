@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { coverGradient, coverSrcset, isArtCover, isPlateCover } from '$lib/coverArt';
-	import { coverStyleFor } from '$lib/coverStyles';
+	import { coverStyleFor, scriptOf } from '$lib/coverStyles';
+	import { contentLang } from '$lib/reading';
 	import { eraOf } from '$lib/eras';
 	// The cover's whole drawing, in the one file that also feeds the share-card
 	// script (see its header). Global rather than scoped, like app.css's other
@@ -95,21 +96,47 @@
 
 	/** The author's house style — a class name; `cover-type.css` holds the rest. */
 	const style = $derived(coverStyleFor(eraOf(book.author.birth_year), book.author.slug));
+	/** This edition's language as a browser will accept it. `en-modern` is
+	 *  Ochorus' own edition marker, not a BCP-47 subtag, so a browser drops it
+	 *  whole and shapes the title in the UI locale instead — which is the defect
+	 *  `contentLang` exists for, and every other content-language attribute in
+	 *  the app already goes through it. */
+	const lang = $derived(contentLang(book.language));
+	/** The script whose metrics this edition needs correcting for; null for
+	 *  Latin. The FACE needs no class — app.css's stacks fall back per glyph. */
+	const script = $derived(scriptOf(lang));
 </script>
 
 <!-- The cover's type. Identical over a painting, over a plate file and over the
      CSS plate — the only difference is what is behind it, and whether an emblem
      is down there to leave room for. -->
 {#snippet plateType(reserveEmblem: boolean)}
-	<div class="cover-type style-{style}">
+	<!-- `script` IS the class suffix, so it is used as one rather than compared
+	     against three times; a falsy entry is dropped, so a Latin cover emits no
+	     script class at all and the fourth script is a table entry, not an edit
+	     here. -->
+	<div class={['cover-type', `style-${style}`, script && `script-${script}`]}>
+		<!-- The byline takes no `lang`: an author's name is one row for every
+		     edition (`Author` has no per-language name), so it is Latin on an
+		     Arabic cover too, and claiming otherwise would tell a screen reader
+		     to pronounce "Andrew Murray" as Arabic. -->
 		<div class="byline" dir="auto">{book.author.name}</div>
 		<!-- Title, rule and subtitle move as one block so the auto margins centre
 		     THEM between the byline and the mark. Left as three siblings, the
 		     leftover space split three ways and the title rode up the plate. -->
 		<div class="middle">
-			<div class="title" dir="auto">{book.title}</div>
+			<!-- `lang` on the words themselves, not on the plate: it is what lets
+			     a browser shape and hyphenate the title correctly. NOT an
+			     accessibility win, though it looks like one — the plate is
+			     `role="img"` with an `aria-label`, so a screen reader never
+			     reaches these nodes and reads the label instead. The metrics come
+			     from the class above, which the LANGUAGE decides — never the
+			     characters (see `scriptOf`). -->
+			<div class="title" {lang} dir="auto">{book.title}</div>
 			<div class="rule"></div>
-			{#if book.subtitle}<div class="subtitle" dir="auto">{book.subtitle}</div>{/if}
+			{#if book.subtitle}<div class="subtitle" {lang} dir="auto">
+				{book.subtitle}
+			</div>{/if}
 		</div>
 		<!-- The band the plate file draws its topic emblem into. Reserved here
 		     rather than drawn here: which emblem a book wears is decided from its

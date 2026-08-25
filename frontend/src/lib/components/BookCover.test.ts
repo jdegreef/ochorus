@@ -72,6 +72,30 @@ describe('BookCover falls back to a plate', () => {
 		expect(arabic.querySelector('.title')?.textContent).toBe('الانتظار أمام الله');
 	});
 
+	it('tells the browser, and the CSS, what script the title is in', () => {
+		// The gates in `coverStyles.test.ts` read CSS text; this is the other half
+		// — that the component actually emits what those blocks select on. Two
+		// separate things: `lang` is for the browser (shaping, hyphenation, a
+		// screen reader's voice), the class is for the metric corrections.
+		const ar = render({ book: book({ language: 'ar', title: 'المخدع', subtitle: 'دراسة' }) });
+		expect(ar.querySelector('.cover-type')?.classList).toContain('script-arabic');
+		expect(ar.querySelector('.title')?.getAttribute('lang')).toBe('ar');
+		expect(ar.querySelector('.subtitle')?.getAttribute('lang')).toBe('ar');
+		// The byline is one Latin row for every edition — an author has no
+		// per-language name — so claiming it is Arabic would tell a screen reader
+		// to read "Andrew Murray" in the wrong voice.
+		expect(ar.querySelector('.byline')?.hasAttribute('lang')).toBe(false);
+
+		// Latin is what the recipes are already written in, so it takes no class.
+		const en = render({ book: book() });
+		expect(en.querySelector('.cover-type')?.className).not.toMatch(/script-/);
+
+		// `en-modern` is Ochorus' own edition marker, not a BCP-47 subtag: a
+		// browser drops the whole attribute and shapes the title in the UI locale.
+		const modern = render({ book: book({ language: 'en-modern' }) });
+		expect(modern.querySelector('.title')?.getAttribute('lang')).toBe('en');
+	});
+
 	it("paints the book's own colour, falling to a darker tone of itself", () => {
 		const el = render({ book: book({ cover_color: '#0b7285' }) });
 		// The gradient goes in as a custom property, which the browser stores

@@ -196,6 +196,18 @@ class AuthorTranslation(models.Model):
         return f"{self.author.slug} [{self.language}]"
 
 
+#: Columns a sermon CARD never renders. SermonListSerializer emits title,
+#: scripture_ref, summary, word_count and author — no body — yet every list path
+#: was hauling body_html, body_text AND the tsvector, roughly 100 KB a row, to
+#: draw a line of text. The chapter equivalent was found and fixed for
+#: BookDetailView (see its Prefetch note, and the 2026-08-14 OOM); the same
+#: lesson never reached sermons.
+#:
+#: One constant, not four literals: this list drifted apart once already by
+#: existing in one place and not the others.
+SERMON_CARD_DEFER = ("body_html", "body_text", "search_vector")
+
+
 class BookManager(models.Manager):
     def get_by_natural_key(self, slug, language):
         return self.get(slug=slug, language=language)

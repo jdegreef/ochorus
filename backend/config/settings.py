@@ -315,7 +315,20 @@ STORAGES = {
 _TESTING = len(sys.argv) > 1 and sys.argv[1] == "test"
 
 CACHES = {
-    "default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache"},
+    # Dummy under test, for the same reason as "throttle" below: LocMemCache
+    # lives for the whole process, so one test's memoised value is served to the
+    # next one and the failure looks like the endpoint returning nothing. Two
+    # existing tests broke exactly that way the moment anything started using
+    # this cache. A test that wants to exercise caching should opt in with
+    # override_settings rather than every other test having to remember to
+    # clear it.
+    "default": {
+        "BACKEND": (
+            "django.core.cache.backends.dummy.DummyCache"
+            if _TESTING
+            else "django.core.cache.backends.locmem.LocMemCache"
+        )
+    },
     "throttle": {
         "BACKEND": (
             "django.core.cache.backends.dummy.DummyCache"
