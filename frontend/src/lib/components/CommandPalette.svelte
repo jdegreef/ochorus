@@ -15,6 +15,8 @@
 	let activeIndex = $state(0);
 	let inputEl = $state<HTMLInputElement>();
 	let timer: ReturnType<typeof setTimeout> | undefined;
+	/** Monotonic token so only the newest in-flight search may write `hits`. */
+	let searchSeq = 0;
 
 	// Quick-nav destinations — the app's primary pages, jumpable by name.
 	const COMMANDS = $derived([
@@ -109,13 +111,25 @@
 			hits = [];
 			return;
 		}
+		// A sequence token, as the full /search page uses. Without it a slow older
+		// request can land after a faster newer one and overwrite it: type
+		// "pray" (a cold FTS scan), then "prayer" (cached and quick), and the
+		// results for "pray" arrive last and win. The 200 ms debounce narrows
+		// that window but does not close it.
+		const token = ++searchSeq;
 		timer = setTimeout(async () => {
 			loading = true;
 			try {
 				const res = await search(term, getLang());
-				hits = res.results;
+				if (token === searchSeq) hits = res.results;
+			} catch {
+				// try/finally with no catch made a failed search an UNHANDLED
+				// rejection — nothing awaits this callback — while leaving the
+				// previous query's hits on screen under the new term. Clearing
+				// says "no results for what you typed", which is at least true.
+				if (token === searchSeq) hits = [];
 			} finally {
-				loading = false;
+				if (token === searchSeq) loading = false;
 			}
 		}, 200);
 	}

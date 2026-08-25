@@ -45,6 +45,18 @@ class Auth {
 	#token: string | null = null;
 	#ready = false;
 	#pushTimer: ReturnType<typeof setTimeout> | undefined;
+	/**
+	 * Whether the account's saved preferences have been applied locally yet.
+	 *
+	 * `pushPrefs` is debounced 600 ms and fires from a layout effect that tracks
+	 * `auth.user`, which `#applySession` sets BEFORE `#pullProfile` runs. On a
+	 * slow connection the pull can take longer than the debounce, so the PATCH
+	 * landed first and overwrote the account's saved theme, font scale and TTS
+	 * voice with THIS DEVICE'S defaults. The pull then returned pre-PATCH values
+	 * and restored them locally, so this device looked fine — while any other
+	 * device reading the profile in that window got the clobbered values.
+	 */
+	#profileLoaded = false;
 
 	async init() {
 		if (!browser || this.#ready) return;
@@ -78,6 +90,9 @@ class Auth {
 				// isn't merged into the next account on a shared browser. Idempotent,
 				// so signOut() calling clearOnSignOut() too is harmless.
 				clearTimeout(this.#pushTimer);
+				// Re-gate: the next account's prefs must be read before anything
+				// is pushed to it.
+				this.#profileLoaded = false;
 				this.displayName = '';
 				this.isAdmin = false;
 				readingSync.clearOnSignOut();
@@ -200,6 +215,10 @@ class Auth {
 			// device actually has that voice (best-effort across devices).
 			if (typeof p.tts_rate === 'number') listen.setRate(p.tts_rate);
 			if (typeof p.tts_voice_uri === 'string') listen.setVoice(p.tts_voice_uri);
+			// The account's values are now the local values, so pushing is safe
+			// again. Set BEFORE the language reconcile below, which pushes
+			// deliberately. See #profileLoaded.
+			this.#profileLoaded = true;
 			// Language: a locale the reader explicitly picked on this device wins
 			// over the synced profile (otherwise the profile would bounce them back
 			// out of the language they just chose). When they have such a choice,
@@ -214,12 +233,17 @@ class Auth {
 			}
 		} catch {
 			/* first-time profile or API down — keep local prefs */
+			// Still open the gate: with no saved profile to clobber, this
+			// device's prefs are the only ones there are, and a first sign-in
+			// must be able to create the profile from them.
+			this.#profileLoaded = true;
 		}
 	}
 
 	/** Debounced push of the current local prefs to the profile. */
 	pushPrefs() {
-		if (!this.user) return;
+		// Never push over an account whose saved prefs have not been read yet.
+		if (!this.user || !this.#profileLoaded) return;
 		clearTimeout(this.#pushTimer);
 		this.#pushTimer = setTimeout(() => {
 			apiFetch('/api/auth/me/', {
