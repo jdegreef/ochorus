@@ -166,6 +166,11 @@ class AuthorTranslation(models.Model):
                 fields=["author", "language"], name="uniq_author_translation"
             ),
         ]
+        indexes = [
+            # The admin language pages filter by language across all authors;
+            # the unique constraint leads with author_id and cannot serve that.
+            models.Index(fields=["language"], name="idx_authortr_language"),
+        ]
 
     def __str__(self) -> str:
         return f"{self.author.slug} [{self.language}]"
@@ -224,6 +229,18 @@ class Book(models.Model):
         constraints = [
             models.UniqueConstraint(
                 fields=["slug", "language"], name="uniq_book_slug_language"
+            ),
+        ]
+        indexes = [
+            # BookListView: filter(is_published, language) then
+            # order_by(sort_order, title). The unique constraint above leads
+            # with `slug`, which this query does not mention, so it was a
+            # sequential scan of every book in every language on the busiest
+            # read in the app. Column order matches the query: equality first,
+            # then the sort, so Postgres can satisfy both from the index.
+            models.Index(
+                fields=["language", "is_published", "sort_order", "title"],
+                name="idx_book_shelf",
             ),
         ]
 
@@ -295,6 +312,19 @@ class Chapter(models.Model):
         constraints = [
             models.UniqueConstraint(
                 fields=["book", "order"], name="uniq_chapter_book_order"
+            ),
+        ]
+        indexes = [
+            # index_citations runs on EVERY deploy and asks for the chapters it
+            # has not stamped yet — `filter(citations_indexed_at__isnull=True)`.
+            # In the steady state that is zero rows, but finding them was a scan
+            # of the whole corpus. A PARTIAL index holds only the unstamped
+            # rows, so the usual answer ("none") is an empty index lookup, and
+            # the index itself stays tiny.
+            models.Index(
+                fields=["citations_indexed_at"],
+                condition=models.Q(citations_indexed_at__isnull=True),
+                name="idx_chapter_uncited",
             ),
         ]
 
@@ -419,6 +449,14 @@ class Sermon(models.Model):
         constraints = [
             models.UniqueConstraint(
                 fields=["slug", "language"], name="uniq_sermon_slug_language"
+            ),
+        ]
+        indexes = [
+            # SermonListView, and the topic/author attach paths — same shape and
+            # same reason as idx_book_shelf.
+            models.Index(
+                fields=["language", "is_published", "sort_order", "title"],
+                name="idx_sermon_shelf",
             ),
         ]
 
@@ -633,6 +671,12 @@ class TopicBook(models.Model):
                 fields=["topic", "book_slug"], name="uniq_topic_book"
             ),
         ]
+        indexes = [
+            # BookDetailSerializer asks "which shelves is this book on?" on
+            # every book page — a lookup by book_slug alone. The unique
+            # constraint leads with topic_id, so it cannot serve it.
+            models.Index(fields=["book_slug"], name="idx_topicbook_slug"),
+        ]
 
     def __str__(self) -> str:
         return f"{self.topic.slug} ⊃ {self.book_slug}"
@@ -658,6 +702,10 @@ class TopicSermon(models.Model):
             models.UniqueConstraint(
                 fields=["topic", "sermon_slug"], name="uniq_topic_sermon"
             ),
+        ]
+        indexes = [
+            # The sermon counterpart of idx_topicbook_slug.
+            models.Index(fields=["sermon_slug"], name="idx_topicsermon_slug"),
         ]
 
     def __str__(self) -> str:
@@ -687,6 +735,13 @@ class SearchQueryLog(models.Model):
 
     class Meta:
         ordering = ["-created_at"]
+        indexes = [
+            # Both the popular-searches endpoint and the admin search report
+            # filter on created_at AND language. `created_at` alone is indexed
+            # (db_index on the field), which makes the window cheap but still
+            # reads every language's rows inside it.
+            models.Index(fields=["language", "created_at"], name="idx_searchlog_lang_at"),
+        ]
 
     def __str__(self) -> str:
         return f"{self.query!r} [{self.language}] → {self.result_count}"
