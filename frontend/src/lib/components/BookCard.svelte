@@ -6,7 +6,17 @@
 	import BookCover from './BookCover.svelte';
 	import SourceBadge from './SourceBadge.svelte';
 
-	let { book, showAuthor = false }: { book: BookSummary; showAuthor?: boolean } = $props();
+	let {
+		book,
+		showAuthor = false,
+		/**
+		 * Above the fold: load eagerly with an intrinsic size and high fetch
+		 * priority. The LCP element on the two most-linked pages was
+		 * `loading="lazy"` and started at opacity-0, which defers the preload
+		 * scanner and makes some LCP implementations discount it entirely.
+		 */
+		priority = false
+	}: { book: BookSummary; showAuthor?: boolean; priority?: boolean } = $props();
 	const t = i18n.t;
 
 	const translated = $derived(isTranslated(book.source_type));
@@ -26,7 +36,7 @@
 	     English shelf is entirely public-domain, so this is 0 containment roots
 	     there rather than one per card. -->
 	<div class="relative" class:cover-container={translated}>
-		<BookCover {book} />
+		<BookCover {book} {priority} />
 		{#if translated}
 			<SourceBadge sourceType={book.source_type} variant="overlay" class="absolute start-2 top-2" />
 		{/if}

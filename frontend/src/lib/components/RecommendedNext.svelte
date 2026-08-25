@@ -19,11 +19,24 @@
 	const t = i18n.t;
 
 	const LIMIT = 4;
-	let catalog = $state<BookSummary[]>([]);
+
+	let {
+		/**
+		 * The shelf, when the page already has it. The homepage is prerendered
+		 * WITH the book list baked in, so fetching it again on hydration was a
+		 * second copy of data already on the page — the same reason
+		 * ContinueReading takes it as a prop.
+		 */
+		books = undefined
+	}: { books?: BookSummary[] } = $props();
+
+	let fetched = $state<BookSummary[]>([]);
+	const catalog = $derived(books ?? fetched);
 
 	onMount(async () => {
+		if (books) return; // already have it — no request
 		try {
-			catalog = await listBooks(getLang());
+			fetched = await listBooks(getLang());
 		} catch {
 			/* recommendations are a bonus block — never break the homepage */
 		}

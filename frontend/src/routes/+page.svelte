@@ -171,8 +171,11 @@
 		     would leave a lone sixth card on a second row. 2 / 3 / 6 all divide
 		     six. -->
 		<div class="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 lg:grid-cols-6">
-			{#each featured as book (book.slug)}
-				<BookCard {book} showAuthor />
+			{#each featured as book, i (book.slug)}
+				<!-- The first row is above the fold at every breakpoint (2 up on
+				     mobile, 6 up on desktop); three covers the common cases
+				     without eagerly loading a shelf nobody has scrolled to. -->
+				<BookCard {book} showAuthor priority={i < 3} />
 			{/each}
 		</div>
 	</section>
@@ -181,7 +184,7 @@
 <!-- Personal plan / sermon blocks — client-side only (this page is prerendered) -->
 <TodaysReading />
 <PlansProgress />
-<RecommendedNext />
+<RecommendedNext books={data.books} />
 <FavoritesShelf />
 <SermonOfTheWeek />
 
