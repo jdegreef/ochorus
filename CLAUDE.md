@@ -27,6 +27,21 @@ See also `backend/CLAUDE.md` and `frontend/CLAUDE.md`.
   `approve_sermon_translation`. Never auto-approve; never present an unreviewed
   translation as an original.
 
+## Covers
+
+- **A hand-made cover is frozen.** The designed rasters under `/covers/<slug>.<ext>`
+  carry a judgement no data records, so nothing may redraw one: they are
+  registered with their digests in `library/designed_covers.py` and two fixture
+  gates fail the build if a file's bytes move or a new one goes unregistered.
+  Every other cover — plate, painting, derived ground, webp variant, og twin —
+  IS output, and its script may draw it again. Replacing a designed cover on
+  purpose is a two-line diff: new file, new digest.
+- A cover with WORDS in it serves one language. A wordless ground under
+  `/covers/art/` serves them all, because `BookCover` draws the title over it per
+  edition. So a translated edition never wears another edition's designed file —
+  the sixteen works in `DERIVED_GROUND` keep the English cover in English and
+  wear a crop of its photography everywhere else (`scripts/build_derived_grounds.py`).
+
 ## The fixture (now a friendly edge)
 
 - Content lives in `backend/library/fixtures/content/` — **one file per work**:

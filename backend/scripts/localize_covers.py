@@ -103,6 +103,7 @@ from library.covers import (  # noqa: E402
     palette_from_artwork,
 )
 from library.curated_art import CURATED  # noqa: E402
+from library.designed_covers import DERIVED_GROUND, is_designed  # noqa: E402
 
 ROOT = BACKEND.parent
 STATIC = ROOT / "frontend" / "static"
@@ -135,6 +136,17 @@ def ensure_og_twin(slug: str, artwork: Path) -> bool:
     dest = COVERS / f"{slug}.png"
     if dest.exists():
         return False
+    # `/covers/<slug>.png` is a generated twin for thirty works and a HAND-MADE
+    # COVER for two — `baptism-with-the-holy-spirit` and
+    # `prayer-the-pulse-of-life` are designed `.png`s at exactly this path. The
+    # `exists()` above is what has been keeping them safe, which is to say
+    # nothing has: delete one and re-run this, and a designed cover is silently
+    # replaced by a machine crop of itself. Ask the registry, not the extension.
+    if is_designed(f"/covers/{slug}.png"):
+        raise SystemExit(
+            f"refusing to write {dest}: that path is {slug}'s designed cover "
+            "(library.designed_covers.DESIGNED), not a twin to regenerate"
+        )
 
     from PIL import Image
 
@@ -207,13 +219,25 @@ def main() -> int:
         title = fields["title"]
         color: str | None = None
 
-        if slug in CURATED:
-            # A painting has no language. It is one shared file under
+        if slug in CURATED or slug in DERIVED_GROUND:
+            # A wordless ground has no language. It is one shared file under
             # `covers/art/`, and BookCover draws this edition's title over it —
             # so there is nothing to DRAW here. Tested BEFORE the raster branch,
-            # not after: the shared painting IS a .jpg, so extension alone would
+            # not after: the shared file IS a .jpg, so extension alone would
             # file it as designed artwork and draw a plate over a book that
             # already has a cover.
+            #
+            # TWO TIERS TAKE THIS PATH and they differ only in where the file
+            # came from — `CURATED` is a public-domain painting fetched by
+            # `build_curated_covers`, `DERIVED_GROUND` is a crop of this work's
+            # OWN designed English cover, drawn by `build_derived_grounds`. What
+            # happens to the fixture row is identical, so the branch is shared;
+            # the registries stay separate because one carries a museum's
+            # licence receipt and the other must never be mistaken for it.
+            #
+            # The English row is NOT here — this loop only sees translations —
+            # which is exactly the point for the derived tier: English goes on
+            # wearing the hand-made cover, untouched (library.designed_covers).
             #
             # The ROW still gets pointed at the painting. `translate_book` writes
             # `/covers/<lang>/<slug>.svg` for a new translation and those
@@ -226,7 +250,8 @@ def main() -> int:
                 patched += 1
                 if not args.dry_run:
                     patch(path, url)
-                print(f"  ✓ {url:52} {'curated':9} {'row':9} {'':8} {title}")
+                tier = "curated" if slug in CURATED else "derived"
+                print(f"  ✓ {url:52} {tier:9} {'row':9} {'':8} {title}")
             else:
                 unchanged += 1
             continue
