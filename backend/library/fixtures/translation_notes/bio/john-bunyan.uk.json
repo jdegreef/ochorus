@@ -1,0 +1,32 @@
+{
+ "kind": "bio",
+ "slug": "john-bunyan",
+ "language": "uk",
+ "job_issue": 781,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Jeremiah 49:11a",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text — ebible ukr_pan, public domain"
+  },
+  {
+   "reference": "Jeremiah 15:11",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text — ebible ukr_pan, public domain"
+  },
+  {
+   "reference": "Job 1:9b",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text — ebible ukr_pan, public domain"
+  }
+ ],
+ "note": [
+  "Take Root API is egress-blocked from this container (curl to api.takeroot.bible returns 000). The Kulish text was fetched instead from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/ukr_pan), all 66 books, and every span below was lifted from it byte-for-byte rather than typed.",
+  "Jer 49:11a — «Полиши тілько твої сироти, я не дам їм загинути» — one of the two texts he held on to in prison.",
+  "REVIEWER: Jeremiah 15:11 is a TEXTUAL DIVERGENCE, not a translation choice. Bunyan quotes the AV's 'Verily it shall be well with thy remnant'; Kulish reads «Конець твій буде добрий» — 'your end shall be good'. Same consolation, different sentence. Kulish is quoted verbatim, as the skill requires, but the English's wording is not recoverable from it. This is the Qere/Ketiv-class hazard the skill flags for Job and the Prophets, and it is an editorial call, not a defect to patch.",
+  "Job 1:9b — «Чи то ж Йов дармо такий богобоязливий?» — Satan's question, the word that ended his despair. Recorded as 'b': the verse opens with the narrative frame he does not quote.",
+  "'Thy righteousness is in heaven' is NOT scripture and is not recorded as such — Bunyan reports it as a sentence that fell on his soul, and it is rendered as his words.",
+  "The Esau passage (Heb 12:16-17) is alluded to, never quoted, so nothing is claimed for it."
+ ]
+}

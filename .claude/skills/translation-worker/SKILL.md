@@ -1440,6 +1440,36 @@ archaic spelling and period punctuation are the text, not defects in it.
   normalise an inflected language, decline the replacement per case
   (`Учителеві`->`Владиці`, `Учителем`->`Владикою`) and assert the tag sequence is
   unchanged afterwards.
+- **A Latin letter inside a Cyrillic word is invisible, survives every other gate,
+  and a single translator produces them too** (the ten-bio uk batch, 2026-08-25).
+  Two slipped through a run where the tag sequence, quote balance, aside classes and
+  word band were all clean: `сміливa` (Latin `a`) and `прямішe` (Latin `e`). They
+  render identically, they pass a spellcheck-free pipeline, and they would have
+  shipped. The check is one regex and belongs in every non-Latin-script job:
+  `\b(?=\w*[А-Яа-яЄєІіЇїҐґ])(?=\w*[A-Za-z])\w+\b` over the tag-stripped text.
+  Generalise the character classes per script. Note this is NOT a fan-out failure —
+  it is a keyboard-level slip, so a single-translator batch needs it just as much.
+- **Sentence counts are a bad completeness signal in Ukrainian (and any language with
+  dash-attributed dialogue); NUMBERS are a good one.** Comparing sentence-final
+  punctuation per block flagged 18 blocks across the ten uk bios, and every one was
+  benign: English `"Ah!" I said, "this is just the point."` becomes
+  `«Ах! — сказала я. — Ось у чому вся річ.»`, where the attribution dash splits one
+  sentence into three. What DOES transfer verbatim is digits — dates, ages, counts,
+  page numbers — so diffing the multiset of `\d+` per block catches a dropped clause
+  without the false positives. It ran clean across all ten (zero blocks lost a
+  number), which is what made the low word ratios trustworthy.
+- **The uk BIO band, now n=16: 0.837-0.935, mean 0.870** (the six earlier bios ran
+  0.849-0.935 mean 0.900; this batch of ten ran 0.837-0.863, mean 0.851). The batch
+  sits consistently at and just below the earlier floor with tag sequences exact and
+  no numbers lost — one more instance of the standing rule that a floor is a
+  per-(language x translator) observation and never a gate. Re-derive rather than
+  copy: it is a dict comprehension over the shipped pairs.
+- **uk nests `„ … “` inside `« … »` — verified, and a naive "stray mark" check will
+  flag it as a defect.** The shipped uk BOOKS carry 24 `„` and 20 `“` against 1105 `«`
+  and 1085 `»`; the shipped uk BIOS carry none, so a bio validator written from the
+  bio corpus alone reports a correct nested quotation as foreign. Count the marks
+  with TAGS STRIPPED, too — `class="prayer"` contributes 26 straight quotes to a
+  naive count of the bio corpus and makes it look mixed-style when it is not.
 - **The ebible mirror's Arabic Van Dyck is `arb_vdv`, in `usfm/` — and the whole
   Bible is 7.6 MB, so there is no reason to work from a crib alone** (job #764).
   The documented probe order (`meta.json`, then `usfm/`, then `usx/`) is right,

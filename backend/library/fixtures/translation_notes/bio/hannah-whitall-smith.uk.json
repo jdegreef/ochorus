@@ -1,0 +1,20 @@
+{
+ "kind": "bio",
+ "slug": "hannah-whitall-smith",
+ "language": "uk",
+ "job_issue": 805,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "John 16:24b",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text — ebible ukr_pan, public domain"
+  }
+ ],
+ "note": [
+  "Take Root API is egress-blocked from this container (curl to api.takeroot.bible returns 000). The Kulish text was fetched instead from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/ukr_pan), all 66 books, and every span below was lifted from it byte-for-byte rather than typed.",
+  "John 16:24b — «Просїть, то й приймете» — quoted inside her diary entry. Recorded as 'b': the verse opens «Досі не просили ви нїчого в імя моє», which she does not quote.",
+  "Set as a NESTED quotation („…“ inside «…»), which the shipped uk books support — 24 „ and 20 “ against 1105 « and 1085 ».",
+  "Also filed under #885, a duplicate of this job."
+ ]
+}

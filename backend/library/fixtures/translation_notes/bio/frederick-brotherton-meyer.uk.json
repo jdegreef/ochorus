@@ -1,0 +1,13 @@
+{
+ "kind": "bio",
+ "slug": "frederick-brotherton-meyer",
+ "language": "uk",
+ "job_issue": 807,
+ "pull_request": null,
+ "references": [],
+ "note": [
+  "The English bio quotes no scripture verbatim and carries no Book C:V citations; every quotation in it is the subject's own words.",
+  "Take Root API is egress-blocked from this container (curl to api.takeroot.bible returns 000). The Kulish text was fetched instead from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/ukr_pan), all 66 books, and every span below was lifted from it byte-for-byte rather than typed.",
+  "'The manna falls only where the cloud rests' (Exod 16 / Num 9:17) is Meyer's own aphorism, rendered as his phrase, not as a quotation. The hi bio of the same author took the same decision."
+ ]
+}
