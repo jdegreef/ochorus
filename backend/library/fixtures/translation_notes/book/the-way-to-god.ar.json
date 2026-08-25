@@ -1,0 +1,1860 @@
+{
+ "kind": "book",
+ "slug": "the-way-to-god",
+ "language": "ar",
+ "job_issue": 765,
+ "references": [
+  {
+   "reference": "Ephesians 3:19a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "1 John 4:16b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "1 John 4:16b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 2
+  },
+  {
+   "reference": "John 15:13",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Luke 23:34b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "John 13:1b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "John 14:20",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "John 14:21a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "John 14:23b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "John 17:23",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "Isaiah 49:15b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 16
+  },
+  {
+   "reference": "Isaiah 49:16",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 16
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "John 3:16a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "Ephesians 3:19a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "Luke 23:34b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "John 15:13",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "1 John 4:10",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 24
+  },
+  {
+   "reference": "Romans 5:6",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 28
+  },
+  {
+   "reference": "Romans 5:8",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 29
+  },
+  {
+   "reference": "Revelation 1:5b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "Song of Songs 2:4",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Song of Songs 2:6",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 2
+  },
+  {
+   "reference": "John 3:7b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "Luke 13:3b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 18:3b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 5:20b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "John 3:5",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "John 3:6",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Romans 4:5a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "Philippians 2:12b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "John 19:30b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "John 3:8",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "Galatians 1:15-16",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "2 Corinthians 5:17b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "John 3:14-15",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "John 3:15b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "John 3:15b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "Hebrews 2:3a",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "John 1:29b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "John 1:29b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 32
+  },
+  {
+   "reference": "John 3:14-15",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 33
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "Luke 18:10a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Acts 16:30b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Romans 3:10b-11",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 2
+  },
+  {
+   "reference": "Romans 3:12",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 2
+  },
+  {
+   "reference": "Romans 3:17-19",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 2
+  },
+  {
+   "reference": "Romans 3:22b-23",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "Romans 3:23b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "1 John 1:8",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "John 3:3b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "Luke 13:3b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Matthew 5:20b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 21:31b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Acts 16:30b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "Acts 16:31a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "John 3:35-36",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Jeremiah 17:9a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "1 John 5:9-12",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "1 John 5:9a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 11:10b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "1 John 4:18b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "John 17:3",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 24
+  },
+  {
+   "reference": "John 5:24",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 26
+  },
+  {
+   "reference": "1 John 4:17",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "John 11:25b-26a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "Revelation 1:18b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "Romans 10:17b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 39
+  },
+  {
+   "reference": "John 6:47-48",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 40
+  },
+  {
+   "reference": "Isaiah 42:3a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 12:20a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Romans 5:6",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 2
+  },
+  {
+   "reference": "John 8:12",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "Isaiah 42:7a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "Romans 6:23",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Mark 2:14",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Luke 19:5",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Luke 19:8b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Acts 8:36b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Acts 8:37",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Ephesians 4:28a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "Matthew 5:34",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "Psalm 121:1-8",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 16
+  },
+  {
+   "reference": "Hebrews 6:17-20",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 19
+  },
+  {
+   "reference": "2 Timothy 1:12b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "2 Timothy 1:12b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "Jude 1:24",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Isaiah 41:10",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 24
+  },
+  {
+   "reference": "Isaiah 41:13",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 25
+  },
+  {
+   "reference": "Deuteronomy 33:25b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "2 Timothy 2:23",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 28
+  },
+  {
+   "reference": "Deuteronomy 29:29a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 33
+  },
+  {
+   "reference": "Titus 3:9",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "John 7:17",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 38
+  },
+  {
+   "reference": "Daniel 12:10",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 39
+  },
+  {
+   "reference": "Psalm 25:14",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 41
+  },
+  {
+   "reference": "John 15:15",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Genesis 18:17b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "James 1:5b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 44
+  },
+  {
+   "reference": "Matthew 16:16b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "1 Corinthians 15:47",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 2
+  },
+  {
+   "reference": "1 John 5:20",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "John 17:3",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Mark 14:60-64",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "John 8:58b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "Exodus 20:3",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "Acts 10:38b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "John 5:21-23",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "John 5:23b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 26:63b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "John 10:24b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "John 10:30b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "Leviticus 24:16",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "John 16:15",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "Psalm 68:18",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "John 20:13b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "Matthew 18:20b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 19
+  },
+  {
+   "reference": "Matthew 28:18",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Mark 2:7-9",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Mark 5:41b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Luke 7:14b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 24
+  },
+  {
+   "reference": "John 11:43b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 26
+  },
+  {
+   "reference": "John 5:25",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 28
+  },
+  {
+   "reference": "John 9:38b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 29
+  },
+  {
+   "reference": "Revelation 22:6-9",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Revelation 22:9b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 32
+  },
+  {
+   "reference": "Matthew 14:33",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Matthew 8:2",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Matthew 15:25",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Acts 17:30a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 3:2b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 2
+  },
+  {
+   "reference": "Matthew 4:17b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "Mark 6:12b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "Acts 2:38a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "Acts 17:30a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "Ezekiel 33:11b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 21:28b-29a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 21:29a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Acts 17:30a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "Romans 2:4b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 25
+  },
+  {
+   "reference": "Romans 4:25",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 25
+  },
+  {
+   "reference": "Matthew 3:8b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 29
+  },
+  {
+   "reference": "Ezekiel 18:32",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 33
+  },
+  {
+   "reference": "Luke 5:32",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "Luke 18:13b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "Luke 18:11b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 35
+  },
+  {
+   "reference": "Luke 18:12",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 35
+  },
+  {
+   "reference": "Luke 18:14a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 35
+  },
+  {
+   "reference": "Romans 3:10b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 35
+  },
+  {
+   "reference": "Romans 3:23a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 35
+  },
+  {
+   "reference": "Luke 14:11",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 35
+  },
+  {
+   "reference": "1 John 5:13",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "John 6:37b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Rev 22:17b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "John 20:31",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "John 20:31",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "1 John 5:13a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "1 John 5:13b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "1 John 5:13b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 John 3:5",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "1 John 3:19",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 19
+  },
+  {
+   "reference": "John 8:36",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 19
+  },
+  {
+   "reference": "1 John 3:14a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "1 John 3:14b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "1 John 3:24",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "1 John 3:2a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "1 John 3:2",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "1 John 2:1",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 24
+  },
+  {
+   "reference": "John 16:7a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 24
+  },
+  {
+   "reference": "Jude 24b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 24
+  },
+  {
+   "reference": "Phil 3:13-14",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "2 Cor 13:5",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 29
+  },
+  {
+   "reference": "Gal 5:22-23",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "Matt 7:16a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "Matt 12:33b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "Rom 8:9b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 31
+  },
+  {
+   "reference": "2 Pet 3:18a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 32
+  },
+  {
+   "reference": "2 Pet 1:5b-8",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 32
+  },
+  {
+   "reference": "Rom 8:14",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 32
+  },
+  {
+   "reference": "2 Cor 5:1",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 33
+  },
+  {
+   "reference": "Phil 1:23b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 33
+  },
+  {
+   "reference": "Col 3:4",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 33
+  },
+  {
+   "reference": "Col 1:12-13",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "Col 1:12b/1:13",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "Col 1:14",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 36
+  },
+  {
+   "reference": "2 Cor 5:1",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Rom 8:32",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 37
+  },
+  {
+   "reference": "Rom 8:33-39",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 38
+  },
+  {
+   "reference": "Job 19:25",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 40
+  },
+  {
+   "reference": "2 Tim 1:12",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 41
+  },
+  {
+   "reference": "Luke 10:17b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Luke 10:20",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "John 5:24",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 44
+  },
+  {
+   "reference": "Matt 25:20b-21",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 45
+  },
+  {
+   "reference": "1 Pet 2:24",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Isa 53:5",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 47
+  },
+  {
+   "reference": "Rom 4:25",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 47
+  },
+  {
+   "reference": "John 10:9",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 48
+  },
+  {
+   "reference": "John 10:27-29",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 48
+  },
+  {
+   "reference": "John 10:9a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 49
+  },
+  {
+   "reference": "John 10:14a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 49
+  },
+  {
+   "reference": "John 8:12b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 49
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "John 14:6a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 49
+  },
+  {
+   "reference": "John 6:35b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 49
+  },
+  {
+   "reference": "John 4:14 (cf.)",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "John 4:14b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 49
+  },
+  {
+   "reference": "John 11:25b-26a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 49
+  },
+  {
+   "reference": "Isa 26:3",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 51
+  },
+  {
+   "reference": "Matt 14:31b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 52
+  },
+  {
+   "reference": "Heb 12:2a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 52
+  },
+  {
+   "reference": "Acts 7:56b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 57
+  },
+  {
+   "reference": "Luke 23:42b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 58
+  },
+  {
+   "reference": "Job 19:25a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 58
+  },
+  {
+   "reference": "Job 13:15",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Matt 14:30b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 59
+  },
+  {
+   "reference": "Acts 4:11-12",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 59
+  },
+  {
+   "reference": "Mark 9:24b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 60
+  },
+  {
+   "reference": "Rom 8:33a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 60
+  },
+  {
+   "reference": "Rom 8:34a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 60
+  },
+  {
+   "reference": "2 Tim 1:12b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 61
+  },
+  {
+   "reference": "2 Tim 4:8a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 61
+  },
+  {
+   "reference": "Eph 3:18a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "Isa 22:23-24",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 66
+  },
+  {
+   "reference": "Isaiah 53:2a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Isaiah 53:2b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 1:21b",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Philippians 3:10a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 2
+  },
+  {
+   "reference": "Luke 2:10b-11",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "Isaiah 43:11",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "1 John 4:14",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "2 Corinthians 1:10",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "John 6:68a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "Isaiah 52:3b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "1 Peter 1:18",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "John 14:6a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 8:9b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "John 8:12a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "John 8:12b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "Acts 1:8b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Matthew 5:14a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "John 14:6b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Psalm 121:4",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 16
+  },
+  {
+   "reference": "Isaiah 41:10",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 16
+  },
+  {
+   "reference": "Jude 24",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "1 John 2:1b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 16
+  },
+  {
+   "reference": "John 10:11a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "John 10:27a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "John 10:15b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "John 10:28b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "Colossians 3:3b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "John 10:27",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "Hebrews 12:6",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Colossians 3:2a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Hebrews 1:3",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Hosea 14:4",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Psalm 85:5-7",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 2
+  },
+  {
+   "reference": "Psalm 85:8",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 2
+  },
+  {
+   "reference": "Jeremiah 6:10",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Jeremiah 6:14-17",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Jeremiah 2:5",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "Jeremiah 2:9",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "Jeremiah 2:13",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "Jeremiah 2:5a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Jeremiah 2:32",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Jeremiah 2:32b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Jeremiah 2:19",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "Jeremiah 2:19a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "2 Samuel 18:33b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "Jeremiah 8:5",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "Jeremiah 8:5b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "Jeremiah 8:6-7",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "Jeremiah 8:6a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 19
+  },
+  {
+   "reference": "Jeremiah 3:12",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 19
+  },
+  {
+   "reference": "Jeremiah 3:13",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 19
+  },
+  {
+   "reference": "Jeremiah 3:14",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 19
+  },
+  {
+   "reference": "Jeremiah 3:14a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 19
+  },
+  {
+   "reference": "Jeremiah 3:13a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Hosea 6:4",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Jeremiah 3:22",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "Hosea 14:1",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Hosea 14:2",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Hosea 14:4",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "John 6:68b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 25
+  },
+  {
+   "reference": "Revelation 2:4-5",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "1 Corinthians 10:12",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 28
+  },
+  {
+   "reference": "Numbers 20:10b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 29
+  },
+  {
+   "reference": "Luke 22:31-32a",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 31
+  },
+  {
+   "reference": "Luke 22:33b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 31
+  },
+  {
+   "reference": "Matthew 26:33b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 31
+  },
+  {
+   "reference": "Luke 22:34b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 31
+  },
+  {
+   "reference": "Matthew 26:40b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 33
+  },
+  {
+   "reference": "Matthew 26:52b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 33
+  },
+  {
+   "reference": "Luke 22:54b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 33
+  },
+  {
+   "reference": "Matthew 26:69b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "Matthew 26:70b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "Matthew 26:71b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "Matthew 26:72b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "Luke 5:8b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 36
+  },
+  {
+   "reference": "Matthew 14:30",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Matthew 17:4",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Mark 16:7b",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 37
+  },
+  {
+   "reference": "Psalm 32:1",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 39
+  }
+ ]
+}

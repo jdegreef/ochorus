@@ -11,6 +11,15 @@
     "title": "إله كل تعزية: إيمانٌ في الأتون",
     "description": "للأيّام التي يصعب أن نصلّي فيها. هانا ويتال سميث عن إله كلّ تعزية، وغاريث إيفانز عن الثقة بمن يمسك غدنا — رحلة خمسة أسابيع إلى سلامٍ راسخ حين تكون الحياة غير مؤكّدة."
   },
+  "grace-for-every-sinner": {
+    "title": "الطريق إلى الله: نعمة لكل خاطئ",
+    "description": "شهر كامل مع أقدم بشارة على الإطلاق. نداء ريتشارد باكستر الرقيق إلى غير المهتدين، ود. ل. مودي عن الطريق إلى الله، وكتاب تشارلز سبرجن «كل شيء من النعمة» — أوضح المرشدين إلى كيف يخلُص الخاطئ، وكيف يوقن بخلاصه.",
+    "note": [
+      "Same rule as the sw entry: the title opens with «الطريق إلى الله», which is the shipped Arabic edition's title verbatim (books/the-way-to-god.ar.json, job #765), so the plan card names the book the way the book names itself.",
+      "Two of the three source books — a-call-to-the-unconverted and all-of-grace — have no Arabic edition yet, so seed_plans will not create this row today; it skips a plan whose books are not all present. The prose ships anyway, and deliberately: the moment the last book lands in Arabic the row IS created, and without an entry here it would be silently ABSENT from the ar plans page (seed_plans now refuses the English fallback). Shipping the prose with the book is the cheap half of preventing the #819 defect.",
+      "«كل شيء من النعمة» for Spurgeon's All of Grace is provisional — that book has no Arabic edition yet. When it ships, harmonise this description with its actual shipped title (the card-quotes-the-book rule), as was done for the opening title here."
+    ]
+  },
   "humility-12-days": {
     "title": "التواضع في اثني عشر يومًا",
     "description": "كتاب أندرو موراي الكلاسيكيّ عن أصل كلّ فضيلة: فصلٌ قصيرٌ واحد كلّ يوم، على مدى اثني عشر يومًا."
