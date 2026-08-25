@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { auth } from '$lib/auth.svelte';
-	import { ApiError, apiFetchRaw } from '$lib/api';
-	import { getAdminStats, type AdminStats, type SourceType } from '$lib/library';
+	import { apiFetchRaw } from '$lib/api';
+	import { adminResource } from '$lib/adminResource.svelte';
+	import AdminGate from '$lib/components/AdminGate.svelte';
+	import { getAdminStats, type SourceType } from '$lib/library';
 	import AddLanguageForm from '$lib/components/AddLanguageForm.svelte';
-	import { localizeHref } from '$lib/paraglide/runtime';
 
 	let exporting = $state<'csv' | 'json' | null>(null);
 
@@ -26,44 +26,8 @@
 	}
 
 	// Internal tool: copy is English-only (not run through Paraglide).
-	let stats = $state<AdminStats | null>(null);
-	let loading = $state(true);
-	let denied = $state(false);
-	let error = $state<string | null>(null);
-	// Monotonic request id: only the latest load()'s outcome is applied, so a
-	// stale early request can't clobber the authenticated one that supersedes it.
-	let seq = 0;
-
-	async function load() {
-		const id = ++seq;
-		loading = true;
-		denied = false;
-		error = null;
-		try {
-			const result = await getAdminStats();
-			if (id !== seq) return; // superseded by a newer load
-			stats = result;
-		} catch (e) {
-			if (id !== seq) return;
-			if (e instanceof ApiError && (e.status === 401 || e.status === 403)) {
-				denied = true;
-			} else {
-				error = e instanceof Error ? e.message : 'Something went wrong loading the dashboard.';
-			}
-		} finally {
-			if (id === seq) loading = false;
-		}
-	}
-
-	// Fetch once auth has settled, and again whenever the signed-in identity
-	// changes. Gating on `auth.initialized` avoids firing an unauthenticated
-	// request before the Supabase session is restored on a fresh page load — that
-	// premature request 401s and would otherwise flash "Not authorised".
-	$effect(() => {
-		if (auth.enabled && !auth.initialized) return;
-		void auth.user?.email;
-		load();
-	});
+	const dashboard = adminResource(getAdminStats, 'Something went wrong loading the dashboard.');
+	const stats = $derived(dashboard.data);
 
 	const nf = new Intl.NumberFormat('en');
 	const fmt = (n: number | null | undefined) => nf.format(n ?? 0);
@@ -124,8 +88,6 @@
 				].filter((f) => f.n > 0)
 			: []
 	);
-
-	const loginHref = `/login?redirect=${encodeURIComponent('/admin')}`;
 </script>
 
 <svelte:head><title>Admin — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
@@ -145,178 +107,156 @@
 				<button class="btn btn-sm btn-ghost" onclick={() => exportInventory('json')} disabled={!!exporting}>
 					{exporting === 'json' ? 'Exporting…' : 'Export JSON'}
 				</button>
-				<button class="btn btn-ghost" onclick={load} disabled={loading}>
-					{loading ? 'Refreshing…' : 'Refresh'}
+				<button class="btn btn-ghost" onclick={dashboard.load} disabled={dashboard.loading}>
+					{dashboard.loading ? 'Refreshing…' : 'Refresh'}
 				</button>
 			</div>
 		{/if}
 	</header>
 
-	{#if loading && !stats}
-		<p class="text-body text-muted">Loading…</p>
-	{:else if denied}
-		<div class="rounded-card border border-border bg-surface p-8">
-			{#if auth.enabled && !auth.user}
-				<h2 class="text-h3 mb-2">Sign in required</h2>
-				<p class="mb-5 text-body text-muted">
-					The admin dashboard is restricted. Please sign in with an administrator account.
-				</p>
-				<a class="btn btn-primary" href={localizeHref(loginHref)}>Sign in</a>
-			{:else}
-				<h2 class="text-h3 mb-2">Not authorised</h2>
-				<p class="text-body text-muted">
-					{#if auth.user}This account ({auth.user.email}) doesn't have{:else}You don't have{/if}
-					access to the admin dashboard.
-				</p>
-			{/if}
-		</div>
-	{:else if error}
-		<div class="rounded-card border border-border bg-surface p-8">
-			<h2 class="text-h3 mb-2">Couldn't load the dashboard</h2>
-			<p class="mb-5 text-body text-muted">{error}</p>
-			<button class="btn btn-ghost" onclick={load}>Try again</button>
-		</div>
-	{:else if stats}
-		<!-- Attention flags -->
-		{#if flags.length}
-			<div class="mb-10 flex flex-wrap gap-2">
-				{#each flags as f (f.label)}
-					{#if f.href}
-						<a
-							href={f.href}
-							class="inline-flex items-center gap-1.5 rounded-full border border-warning/40 bg-warning/10 px-3 py-1 text-small text-warning hover:bg-warning/20 hover:no-underline"
-						>
-							<strong class="font-semibold">{fmt(f.n)}</strong>
-							{f.label} →
-						</a>
-					{:else}
-						<span
-							class="inline-flex items-center gap-1.5 rounded-full border border-warning/40 bg-warning/10 px-3 py-1 text-small text-warning"
-						>
-							<strong class="font-semibold">{fmt(f.n)}</strong>
-							{f.label}
-						</span>
-					{/if}
-				{/each}
-			</div>
-		{/if}
-
-		<!-- Headline totals -->
-		<section class="mb-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
-			{#each cards as c (c.label)}
-				<div class="rounded-card border border-border bg-surface p-5">
-					<div class="stat-number">{fmt(c.value)}</div>
-					<div class="mt-2 text-small font-semibold text-text">{c.label}</div>
-					<div class="text-small text-muted">{c.sub}</div>
-				</div>
-			{/each}
-		</section>
-
-		<!-- By language -->
-		<section class="mb-10">
-			<div class="mb-1 flex flex-wrap items-center justify-between gap-2">
-				<h2 class="text-h2">By language</h2>
-				<a href="/admin/coverage" class="text-small font-semibold text-accent hover:underline">Coverage matrix →</a>
-			</div>
-			<p class="mb-3 text-small text-muted">Select a language to see what's translated and what to work on next.</p>
-			<div class="overflow-x-auto rounded-card border border-border bg-surface">
-				<table class="w-full min-w-[44rem] border-collapse text-body">
-					<thead>
-						<tr class="eyebrow border-b border-border text-muted">
-							<th class="px-4 py-3 text-left font-semibold">Language</th>
-							<th class="px-4 py-3 text-right font-semibold">Books</th>
-							<th class="px-4 py-3 text-right font-semibold">Chapters</th>
-							<th class="px-4 py-3 text-right font-semibold">Sermons</th>
-							<th class="px-4 py-3 text-right font-semibold">Plans</th>
-							<th class="px-4 py-3 text-right font-semibold">Bios</th>
-							<th class="px-4 py-3 text-right font-semibold">Words</th>
-							<th class="px-4 py-3 text-left font-semibold">Source</th>
-						</tr>
-					</thead>
-					<tbody>
-						{#each stats.languages as l (l.code)}
-							<tr class="border-b border-border last:border-0 hover:bg-surface-2">
-								<td class="px-4 py-3">
-									<a href="/admin/languages/{l.code}" class="font-semibold text-accent hover:underline">{l.name}</a>
-									<span class="text-small text-muted">· {l.code}</span>
-								</td>
-								<td class="px-4 py-3 text-right tabular-nums">
-									{fmt(l.books)}
-									{#if l.published_books !== l.books}
-										<span class="text-small text-muted">({fmt(l.published_books)} pub)</span>
-									{/if}
-								</td>
-								<td class="px-4 py-3 text-right tabular-nums">{fmt(l.chapters)}</td>
-								<td class="px-4 py-3 text-right tabular-nums">{fmt(l.sermons)}</td>
-								<td class="px-4 py-3 text-right tabular-nums">{fmt(l.plans)}</td>
-								<td class="px-4 py-3 text-right tabular-nums">{fmt(l.bios)}</td>
-								<td class="px-4 py-3 text-right tabular-nums">{fmt(l.words)}</td>
-								<td class="px-4 py-3 text-small text-muted">
-									{#if l.source_types.public_domain}<span title="Public domain">PD {l.source_types.public_domain}</span>{/if}
-									{#if l.source_types.ai_reviewed}<span class="ml-2" title="AI reviewed">AI✓ {l.source_types.ai_reviewed}</span>{/if}
-									{#if l.source_types.ai_unreviewed}<span class="ml-2 text-warning" title="AI unreviewed">AI· {l.source_types.ai_unreviewed}</span>{/if}
-								</td>
-							</tr>
-						{/each}
-					</tbody>
-				</table>
-			</div>
-			<!-- Starting a language begins here: the row is what the translate_*
-			     commands read, so it has to exist before any work can be queued. -->
-			<AddLanguageForm oncreated={() => load()} />
-		</section>
-
-		<div class="grid gap-6 md:grid-cols-2">
-			<!-- Books by source type -->
-			<section class="rounded-card border border-border bg-surface p-5">
-				<h2 class="text-h3 mb-3">Books by source</h2>
-				<ul class="space-y-2 text-body">
-					{#each Object.entries(SOURCE_LABELS) as [key, label] (key)}
-						<li class="flex items-center justify-between">
-							<span class="text-muted">{label}</span>
-							<span class="font-semibold tabular-nums text-text"
-								>{fmt(stats.source_types[key as SourceType])}</span
+	<AdminGate resource={dashboard} errorTitle="Couldn't load the dashboard">
+		{#snippet children(s)}
+			<!-- Attention flags -->
+			{#if flags.length}
+				<div class="mb-10 flex flex-wrap gap-2">
+					{#each flags as f (f.label)}
+						{#if f.href}
+							<a
+								href={f.href}
+								class="inline-flex items-center gap-1.5 rounded-full border border-warning/40 bg-warning/10 px-3 py-1 text-small text-warning hover:bg-warning/20 hover:no-underline"
 							>
-						</li>
+								<strong class="font-semibold">{fmt(f.n)}</strong>
+								{f.label} →
+							</a>
+						{:else}
+							<span
+								class="inline-flex items-center gap-1.5 rounded-full border border-warning/40 bg-warning/10 px-3 py-1 text-small text-warning"
+							>
+								<strong class="font-semibold">{fmt(f.n)}</strong>
+								{f.label}
+							</span>
+						{/if}
 					{/each}
-					<li class="flex items-center justify-between border-t border-border pt-2">
-						<span class="text-muted">Author bio translations</span>
-						<span class="font-semibold tabular-nums text-text">
-							{fmt(stats.author_translations.total)}
-							<span class="text-small font-normal text-muted"
-								>({fmt(stats.author_translations.reviewed)} reviewed)</span
-							>
-						</span>
-					</li>
-				</ul>
+				</div>
+			{/if}
+
+			<!-- Headline totals -->
+			<section class="mb-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
+				{#each cards as c (c.label)}
+					<div class="rounded-card border border-border bg-surface p-5">
+						<div class="stat-number">{fmt(c.value)}</div>
+						<div class="mt-2 text-small font-semibold text-text">{c.label}</div>
+						<div class="text-small text-muted">{c.sub}</div>
+					</div>
+				{/each}
 			</section>
 
-			<!-- Recently added -->
-			<section class="rounded-card border border-border bg-surface p-5">
-				<h2 class="text-h3 mb-3">Recently added books</h2>
-				{#if stats.recent_books.length}
-					<ul class="space-y-3">
-						{#each stats.recent_books as b (`${b.slug}-${b.language}`)}
-							<li class="flex items-start justify-between gap-3">
-								<div class="min-w-0">
-									<a
-										href={`/admin/books/${b.slug}`}
-										class="block truncate font-semibold text-text hover:text-accent"
-										>{b.title}</a
-									>
-									<div class="text-small text-muted">
-										{b.author} · {b.language}
-										{#if !b.is_published}· <span class="text-warning">unpublished</span>{/if}
-									</div>
-								</div>
-								<span class="shrink-0 text-small text-muted">{dateFmt(b.created_at)}</span>
+			<!-- By language -->
+			<section class="mb-10">
+				<div class="mb-1 flex flex-wrap items-center justify-between gap-2">
+					<h2 class="text-h2">By language</h2>
+					<a href="/admin/coverage" class="text-small font-semibold text-accent hover:underline">Coverage matrix →</a>
+				</div>
+				<p class="mb-3 text-small text-muted">Select a language to see what's translated and what to work on next.</p>
+				<div class="overflow-x-auto rounded-card border border-border bg-surface">
+					<table class="w-full min-w-[44rem] border-collapse text-body">
+						<thead>
+							<tr class="eyebrow border-b border-border text-muted">
+								<th class="px-4 py-3 text-left font-semibold">Language</th>
+								<th class="px-4 py-3 text-right font-semibold">Books</th>
+								<th class="px-4 py-3 text-right font-semibold">Chapters</th>
+								<th class="px-4 py-3 text-right font-semibold">Sermons</th>
+								<th class="px-4 py-3 text-right font-semibold">Plans</th>
+								<th class="px-4 py-3 text-right font-semibold">Bios</th>
+								<th class="px-4 py-3 text-right font-semibold">Words</th>
+								<th class="px-4 py-3 text-left font-semibold">Source</th>
+							</tr>
+						</thead>
+						<tbody>
+							{#each s.languages as l (l.code)}
+								<tr class="border-b border-border last:border-0 hover:bg-surface-2">
+									<td class="px-4 py-3">
+										<a href="/admin/languages/{l.code}" class="font-semibold text-accent hover:underline">{l.name}</a>
+										<span class="text-small text-muted">· {l.code}</span>
+									</td>
+									<td class="px-4 py-3 text-right tabular-nums">
+										{fmt(l.books)}
+										{#if l.published_books !== l.books}
+											<span class="text-small text-muted">({fmt(l.published_books)} pub)</span>
+										{/if}
+									</td>
+									<td class="px-4 py-3 text-right tabular-nums">{fmt(l.chapters)}</td>
+									<td class="px-4 py-3 text-right tabular-nums">{fmt(l.sermons)}</td>
+									<td class="px-4 py-3 text-right tabular-nums">{fmt(l.plans)}</td>
+									<td class="px-4 py-3 text-right tabular-nums">{fmt(l.bios)}</td>
+									<td class="px-4 py-3 text-right tabular-nums">{fmt(l.words)}</td>
+									<td class="px-4 py-3 text-small text-muted">
+										{#if l.source_types.public_domain}<span title="Public domain">PD {l.source_types.public_domain}</span>{/if}
+										{#if l.source_types.ai_reviewed}<span class="ml-2" title="AI reviewed">AI✓ {l.source_types.ai_reviewed}</span>{/if}
+										{#if l.source_types.ai_unreviewed}<span class="ml-2 text-warning" title="AI unreviewed">AI· {l.source_types.ai_unreviewed}</span>{/if}
+									</td>
+								</tr>
+							{/each}
+						</tbody>
+					</table>
+				</div>
+				<!-- Starting a language begins here: the row is what the translate_*
+				     commands read, so it has to exist before any work can be queued. -->
+				<AddLanguageForm oncreated={dashboard.load} />
+			</section>
+
+			<div class="grid gap-6 md:grid-cols-2">
+				<!-- Books by source type -->
+				<section class="rounded-card border border-border bg-surface p-5">
+					<h2 class="text-h3 mb-3">Books by source</h2>
+					<ul class="space-y-2 text-body">
+						{#each Object.entries(SOURCE_LABELS) as [key, label] (key)}
+							<li class="flex items-center justify-between">
+								<span class="text-muted">{label}</span>
+								<span class="font-semibold tabular-nums text-text"
+									>{fmt(s.source_types[key as SourceType])}</span
+								>
 							</li>
 						{/each}
+						<li class="flex items-center justify-between border-t border-border pt-2">
+							<span class="text-muted">Author bio translations</span>
+							<span class="font-semibold tabular-nums text-text">
+								{fmt(s.author_translations.total)}
+								<span class="text-small font-normal text-muted"
+									>({fmt(s.author_translations.reviewed)} reviewed)</span
+								>
+							</span>
+						</li>
 					</ul>
-				{:else}
-					<p class="text-body text-muted">No books yet.</p>
-				{/if}
-			</section>
-		</div>
-	{/if}
+				</section>
+
+				<!-- Recently added -->
+				<section class="rounded-card border border-border bg-surface p-5">
+					<h2 class="text-h3 mb-3">Recently added books</h2>
+					{#if s.recent_books.length}
+						<ul class="space-y-3">
+							{#each s.recent_books as b (`${b.slug}-${b.language}`)}
+								<li class="flex items-start justify-between gap-3">
+									<div class="min-w-0">
+										<a
+											href={`/admin/books/${b.slug}`}
+											class="block truncate font-semibold text-text hover:text-accent"
+											>{b.title}</a
+										>
+										<div class="text-small text-muted">
+											{b.author} · {b.language}
+											{#if !b.is_published}· <span class="text-warning">unpublished</span>{/if}
+										</div>
+									</div>
+									<span class="shrink-0 text-small text-muted">{dateFmt(b.created_at)}</span>
+								</li>
+							{/each}
+						</ul>
+					{:else}
+						<p class="text-body text-muted">No books yet.</p>
+					{/if}
+				</section>
+			</div>
+		{/snippet}
+	</AdminGate>
 </div>
