@@ -751,7 +751,10 @@ class AdminAddLanguageTests(TestCase):
 
         perm = patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True)
         fetch = patch(
-            "library.admin_views.content.fetch_chapter",
+            # The seam is the module that CALLS it, so this names languages.py —
+            # where the create view lives now that the language-registry
+            # endpoints have their own module.
+            "library.admin_views.languages.fetch_chapter",
             return_value={"verses": [{"number": 1, "text": "…"}]} if verses else None,
         )
         api = patch.object(readiness_module, "api_reachable", return_value=reachable)

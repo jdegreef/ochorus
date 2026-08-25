@@ -26,7 +26,7 @@ from django.test import TestCase, override_settings
 from rest_framework.test import APIClient
 
 from . import readiness
-from .admin_views import content
+from .admin_views import languages
 from .language_seed import SEED_LANGUAGES
 from .models import Language
 from .readiness import FAIL, PASS, SKIPPED, Check, _attribution_check
@@ -163,13 +163,13 @@ class AdminCreatedLanguageTests(TestCase):
             ("_verify_bible", (True, "stubbed")),
             ("licence_for", ("", False)),
         ):
-            patcher = mock.patch.object(content, target, return_value=value)
+            patcher = mock.patch.object(languages, target, return_value=value)
             patcher.start()
             self.addCleanup(patcher.stop)
 
     def _catalogue(self, licence: str, known: bool = True):
         """What Take Root says about the submitted Bible code."""
-        return mock.patch.object(content, "licence_for", return_value=(licence, known))
+        return mock.patch.object(languages, "licence_for", return_value=(licence, known))
 
     def _create(self, **extra):
         payload = {
