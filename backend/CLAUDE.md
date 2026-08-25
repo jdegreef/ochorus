@@ -9,9 +9,16 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
 - DRF defaults are `SupabaseJWTAuthentication` + **`AllowAny`**. So every
   private/admin endpoint MUST set `permission_classes = [IsAdminEmail]` (or
   stricter) explicitly — forgetting it ships an open, DB-mutating endpoint.
-- Supabase exposes the `public` schema over its anon API; RLS is what gates it.
-  Before adding a model, confirm RLS covers the new table — one reachable by the
-  anon key without RLS is a data leak. (See the RLS notes.)
+- Supabase exposes the `public` schema over its anon API; RLS is what gates it —
+  one table reachable by the anon key without RLS is a data leak. Every public
+  table has RLS enabled (no policies = deny-all for non-owners; Django connects
+  as the table owner and bypasses it), and the anon/authenticated roles hold no
+  grants on the schema at all.
+  **You no longer have to remember this**: `accounts/tests_rls.py` reads the live
+  catalogue and fails on any table without RLS, naming the model and the exact
+  `ALTER` to write. That test is the rule; this bullet is just context. Nineteen
+  tables were once missed precisely because six were done by hand and nothing
+  checked.
 
 ## Data model
 
