@@ -63,7 +63,7 @@ class Auth {
 		this.#ready = true;
 		setAuthTokenProvider(() => this.#token);
 
-		const sb = supabase();
+		const sb = await supabase();
 		if (!sb) {
 			this.initialized = true; // auth unconfigured — nothing to restore
 			return;
@@ -116,7 +116,7 @@ class Auth {
 	// a catalogue key.
 
 	async signIn(email: string, password: string): Promise<string | null> {
-		const sb = supabase();
+		const sb = await supabase();
 		if (!sb) return NOT_CONFIGURED;
 		const { error } = await sb.auth.signInWithPassword({ email, password });
 		// `||`, not `??`: an AuthError with an empty-string code would otherwise
@@ -126,7 +126,7 @@ class Auth {
 	}
 
 	async signUp(email: string, password: string): Promise<string | null> {
-		const sb = supabase();
+		const sb = await supabase();
 		if (!sb) return NOT_CONFIGURED;
 		const { error } = await sb.auth.signUp({
 			email,
@@ -141,7 +141,7 @@ class Auth {
 
 	/** Passwordless: email the user a one-time sign-in link. */
 	async signInWithMagicLink(email: string): Promise<string | null> {
-		const sb = supabase();
+		const sb = await supabase();
 		if (!sb) return NOT_CONFIGURED;
 		const { error } = await sb.auth.signInWithOtp({
 			email,
@@ -155,7 +155,7 @@ class Auth {
 
 	/** OAuth via Google. On success the browser navigates away to Google. */
 	async signInWithGoogle(): Promise<string | null> {
-		const sb = supabase();
+		const sb = await supabase();
 		if (!sb) return NOT_CONFIGURED;
 		const { error } = await sb.auth.signInWithOAuth({
 			provider: 'google',
@@ -169,7 +169,7 @@ class Auth {
 
 	/** Email a password-reset link that lands on /reset-password. */
 	async sendPasswordReset(email: string): Promise<string | null> {
-		const sb = supabase();
+		const sb = await supabase();
 		if (!sb) return NOT_CONFIGURED;
 		const redirectTo = browser ? `${window.location.origin}/reset-password` : undefined;
 		const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo });
@@ -181,7 +181,7 @@ class Auth {
 
 	/** Set a new password during a recovery session (from the reset link). */
 	async updatePassword(password: string): Promise<string | null> {
-		const sb = supabase();
+		const sb = await supabase();
 		if (!sb) return NOT_CONFIGURED;
 		const { error } = await sb.auth.updateUser({ password });
 		// `||`, not `??`: an AuthError with an empty-string code would otherwise
@@ -193,7 +193,7 @@ class Auth {
 	async signOut() {
 		// Cancel a pending prefs push — it would fire after the token is gone.
 		clearTimeout(this.#pushTimer);
-		await supabase()?.auth.signOut();
+		await (await supabase())?.auth.signOut();
 		this.user = null;
 		this.#token = null;
 		this.isAdmin = false;
