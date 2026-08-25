@@ -29,6 +29,7 @@ catches loudly:
 
 from __future__ import annotations
 
+import ast
 import hashlib
 import json
 import re
@@ -2061,4 +2062,204 @@ class ContentProseTests(SimpleTestCase):
             (repo_root / "backend" / "scripts" / "fixture-textconv.py").is_file(),
             ".gitattributes names a diff driver whose script is missing, so a "
             "clone that opts in gets empty diffs for every fixture.",
+        )
+
+
+class ReleaseProseSourceCoverageTests(SimpleTestCase):
+    """Every module the DEPLOY reads to write reader prose must be a content root.
+
+    ``ContentSourceCoverageTests`` above checks that the three lists agree with
+    *each other*. It cannot catch the failure that actually happened: a source
+    of reader prose that is in **none** of them. ``library/corrections.py`` was
+    exactly that — ``apply_body_corrections`` runs on every deploy
+    (``release.py``) and rewrites ``Chapter.body_html`` / ``Sermon.body_html``
+    from it, so a one-word fix shipped to the API, moved no digest, and never
+    rebuilt the prerendered page that shows it. Readers kept the defective text
+    until some unrelated commit happened to trigger a build.
+
+    This test comes at it from the other side. It walks the release chain,
+    follows its ``library`` imports, and finds the modules that carry prose —
+    long, natural-language string literals that are not docstrings. Each one
+    must then be either a declared content root or explicitly exempt below.
+
+    The point is that a NEW prose module cannot be quietly added: it lands in
+    neither list, so the test fails and names it, and whoever added it has to
+    decide which it is. That decision is the thing that was missing.
+    """
+
+    # Modules the walk finds that are deliberately NOT content roots. Each needs
+    # a reason, because "it's fine" is what let corrections.py sit unlisted.
+    NOT_READER_PROSE = {
+        # One-line author stubs planted only when an IMPORT creates a new author
+        # (the import_* commands are not in the release chain). The real bio
+        # comes from the fixture, and author_sync exists to recognise a stub and
+        # replace it — so editing one changes nothing a reader sees on a deploy.
+        "library/catalog.py": "import-time author stubs; the fixture supersedes them",
+        # Reads catalog stubs to DETECT them; writes bios from the fixture.
+        "library/author_sync.py": "stub detection, not a source of prose",
+        # bible_licence / attribution text. Admin-facing (AddLanguageForm) — it
+        # is not in the public serializers and reaches no prerendered page.
+        "library/language_seed.py": "admin-facing licence text, not reader prose",
+        # A stopword list that happens to look like a sentence.
+        "library/scripture.py": "stopword list, not prose",
+    }
+
+    # A literal counts as prose if it is long, reads like sentences, and carries
+    # no regex metacharacters (which is what a pattern looks like).
+    _MIN_CHARS = 60
+    _MIN_WORDS = 10
+    _NO_REGEX = re.compile(r"^[^\\^$*+?{}\[\]|]*$")
+
+    @staticmethod
+    def _library_imports(path: Path) -> set[str]:
+        tree = ast.parse(path.read_text())
+        found: set[str] = set()
+        for node in ast.walk(tree):
+            if isinstance(node, ast.ImportFrom) and node.module:
+                if node.module.startswith("library"):
+                    found.add(node.module)
+            elif isinstance(node, ast.Import):
+                found.update(a.name for a in node.names if a.name.startswith("library"))
+        return found
+
+    @classmethod
+    def _release_reachable(cls) -> set[Path]:
+        """Every ``library`` module the release chain can reach."""
+        backend = Path(__file__).resolve().parent.parent
+        release = backend / "library/management/commands/release.py"
+        commands = re.findall(r'call_command\(\s*"([a-z_]+)"', release.read_text())
+
+        queue = [
+            p
+            for c in commands
+            if (p := backend / f"library/management/commands/{c}.py").exists()
+        ]
+        seen: set[Path] = set()
+        while queue:
+            for module in cls._library_imports(queue.pop()):
+                candidate = backend / (module.replace(".", "/") + ".py")
+                if candidate.exists() and candidate not in seen:
+                    seen.add(candidate)
+                    queue.append(candidate)
+        return seen
+
+    # Calls whose string arguments are addressed to an OPERATOR, not a reader:
+    # command help, console output, error messages. A management command is full
+    # of these and none of them ship to the site — but the module is still
+    # checked for genuine data literals, because CLAUDE.md's rule is precisely
+    # that reader-visible seed prose must not live in a `seed_*` command.
+    _OPERATOR_SINKS = {
+        "write",
+        "CommandError",
+        "SUCCESS",
+        "WARNING",
+        "ERROR",
+        "NOTICE",
+        "add_argument",
+    }
+
+    @classmethod
+    def _operator_facing(cls, tree: ast.AST) -> set[int]:
+        """ids() of string nodes that are console/CLI text rather than content."""
+        out: set[int] = set()
+
+        def mark(node: ast.AST) -> None:
+            for child in ast.walk(node):
+                if isinstance(child, ast.Constant) and isinstance(child.value, str):
+                    out.add(id(child))
+
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Call):
+                func = node.func
+                name = (
+                    func.attr
+                    if isinstance(func, ast.Attribute)
+                    else func.id
+                    if isinstance(func, ast.Name)
+                    else ""
+                )
+                if name in cls._OPERATOR_SINKS:
+                    mark(node)
+            # `help="…"` as an argument keyword…
+            elif isinstance(node, ast.keyword) and node.arg == "help" or isinstance(node, ast.Assign) and any(
+                isinstance(t, ast.Name) and t.id == "help" for t in node.targets
+            ):
+                mark(node)
+        return out
+
+    @classmethod
+    def _prose_literals(cls, path: Path) -> int:
+        tree = ast.parse(path.read_text())
+        docstrings = set()
+        for node in ast.walk(tree):
+            if isinstance(
+                node,
+                (ast.Module, ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef),
+            ):
+                doc = ast.get_docstring(node, clean=False)
+                if doc:
+                    docstrings.add(doc)
+        operator = cls._operator_facing(tree)
+        return sum(
+            1
+            for node in ast.walk(tree)
+            if isinstance(node, ast.Constant)
+            and isinstance(node.value, str)
+            and len(node.value) >= cls._MIN_CHARS
+            and len(node.value.split()) >= cls._MIN_WORDS
+            and cls._NO_REGEX.match(node.value)
+            and node.value not in docstrings
+            and id(node) not in operator
+        )
+
+    def test_release_chain_prose_modules_are_roots_or_exempt(self):
+        backend = Path(__file__).resolve().parent.parent
+        roots = json.loads(
+            (backend / "library/content_sources.json").read_text()
+        )["roots"]
+
+        reachable = self._release_reachable()
+        # Guard against the walk silently finding nothing and passing vacuously.
+        self.assertGreater(len(reachable), 5, "the release-chain import walk found almost nothing")
+
+        unclassified = []
+        for path in sorted(reachable):
+            if not self._prose_literals(path):
+                continue
+            rel = path.relative_to(backend).as_posix()
+            declared = any(
+                rel == root or rel.startswith(root.rstrip("/") + "/") for root in roots
+            )
+            if not declared and rel not in self.NOT_READER_PROSE:
+                unclassified.append(rel)
+
+        self.assertEqual(
+            unclassified,
+            [],
+            "These modules are read by the deploy and carry prose, but are "
+            "neither a content root nor listed as exempt:\n  "
+            + "\n  ".join(unclassified)
+            + "\n\nIf a reader can see this text, add the module to "
+            "library/content_sources.json AND render.yaml's buildFilter — "
+            "otherwise its pages never rebuild and readers keep the old prose. "
+            "If a reader cannot, add it to NOT_READER_PROSE with the reason.",
+        )
+
+    def test_corrections_is_a_declared_root(self):
+        """The specific regression: prose fixes must rebuild the reader."""
+        backend = Path(__file__).resolve().parent.parent
+        roots = json.loads(
+            (backend / "library/content_sources.json").read_text()
+        )["roots"]
+        self.assertIn("library/corrections.py", roots)
+
+    def test_exempt_list_has_no_stale_entries(self):
+        """An exemption for a module the walk no longer reaches is a lie."""
+        backend = Path(__file__).resolve().parent.parent
+        reachable = {p.relative_to(backend).as_posix() for p in self._release_reachable()}
+        stale = sorted(set(self.NOT_READER_PROSE) - reachable)
+        self.assertEqual(
+            stale,
+            [],
+            f"NOT_READER_PROSE names modules the release chain no longer reaches: {stale}",
         )
