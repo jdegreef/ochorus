@@ -9,7 +9,7 @@ from rest_framework.views import APIView
 
 from accounts.permissions import IsAdminEmail
 
-from ..models import Book, Chapter, SearchClickLog
+from ..models import Author, Book, Chapter, SearchClickLog, Sermon
 from ..views import _language_entry
 
 
@@ -69,11 +69,26 @@ class AdminEngagementView(APIView):
 
         return UserProfile.objects.count()
 
-    def _book_meta(self) -> dict:
-        meta: dict[str, tuple[str, str]] = {}
+    def _work_meta(self) -> dict:
+        """``(kind, slug)`` → ``(title, author)`` for every work a row can name.
+
+        Keyed by kind as well as slug because ``ReadingProgress.book_slug`` names
+        a book, a sermon OR an author biography (see ``WorkKind``), and those
+        namespaces overlap: a sermon sharing a slug with a book used to be
+        labelled with the BOOK's title and author.
+        """
+        meta: dict[tuple[str, str], tuple[str, str]] = {}
         for b in Book.objects.values("slug", "language", "title", "author__name"):
-            if b["language"] == "en" or b["slug"] not in meta:
-                meta[b["slug"]] = (b["title"], b["author__name"])
+            key = ("book", b["slug"])
+            if b["language"] == "en" or key not in meta:
+                meta[key] = (b["title"], b["author__name"])
+        for sm in Sermon.objects.values("slug", "language", "title", "author__name"):
+            key = ("sermon", sm["slug"])
+            if sm["language"] == "en" or key not in meta:
+                meta[key] = (sm["title"], sm["author__name"])
+        # A biography's slug names the AUTHOR, so the person is the title.
+        for a in Author.objects.values("slug", "name"):
+            meta[("bio", a["slug"])] = (a["name"], "")
         return meta
 
     def _chapter_counts(self) -> dict:
@@ -84,65 +99,67 @@ class AdminEngagementView(APIView):
             .annotate(n=Count("id"))
         }
 
-    def _most_read(self, limit: int = 10) -> list[dict]:
-        from reading.models import ReadingProgress
+    def _row(self, meta, kind, slug, **extra) -> dict:
+        title, author = meta.get((kind, slug), (slug, ""))
+        return {"kind": kind, "slug": slug, "title": title, "author": author, **extra}
 
-        meta = self._book_meta()
+    def _most_read(self, limit: int = 10) -> list[dict]:
+        from reading.models import ReadingProgress, WorkKind
+
+        meta = self._work_meta()
         counts = self._chapter_counts()
+        # Grouped by KIND as well as slug. Without it a sermon and a book sharing
+        # a slug merged into one row wearing the book's title, and every sermon
+        # reader was counted against that book.
         top = (
-            ReadingProgress.objects.values("book_slug")
+            ReadingProgress.objects.values("kind", "book_slug")
             .annotate(readers=Count("profile", distinct=True))
             .order_by("-readers")[:limit]
         )
         out = []
         for r in top:
-            slug = r["book_slug"]
-            title, author = meta.get(slug, (slug, ""))
-            length = counts.get(slug)
-            finishers = (
-                ReadingProgress.objects.filter(
-                    book_slug=slug, chapter_order__gte=length
+            kind, slug = r["kind"], r["book_slug"]
+            # "Finished" only means something for a multi-chapter work. Sermons
+            # and bios pin chapter_order to 1, so the old query counted every
+            # one of their readers as a finisher of a one-chapter book.
+            finishers = None
+            if kind == WorkKind.BOOK:
+                length = counts.get(slug)
+                finishers = (
+                    ReadingProgress.objects.filter(
+                        kind=WorkKind.BOOK, book_slug=slug, chapter_order__gte=length
+                    )
+                    .values("profile")
+                    .distinct()
+                    .count()
+                    if length
+                    else 0
                 )
-                .values("profile")
-                .distinct()
-                .count()
-                if length
-                else 0
-            )
             out.append(
-                {
-                    "slug": slug,
-                    "title": title,
-                    "author": author,
-                    "readers": r["readers"],
-                    "finishers": finishers,
-                }
+                self._row(meta, kind, slug, readers=r["readers"], finishers=finishers)
             )
         return out
 
     def _most_marked(self, limit: int = 10) -> list[dict]:
         from reading.models import ChapterMarks
 
-        meta = self._book_meta()
+        meta = self._work_meta()
         top = (
             ChapterMarks.objects.exclude(marks=[])
-            .values("book_slug")
+            .values("kind", "book_slug")
             .annotate(readers=Count("profile", distinct=True), chapters=Count("id"))
             .order_by("-readers", "-chapters")[:limit]
         )
-        out = []
-        for r in top:
-            title, author = meta.get(r["book_slug"], (r["book_slug"], ""))
-            out.append(
-                {
-                    "slug": r["book_slug"],
-                    "title": title,
-                    "author": author,
-                    "readers": r["readers"],
-                    "chapters": r["chapters"],
-                }
+        return [
+            self._row(
+                meta,
+                r["kind"],
+                r["book_slug"],
+                readers=r["readers"],
+                chapters=r["chapters"],
             )
-        return out
+            for r in top
+        ]
 
     def _by_language(self) -> list[dict]:
         from reading.models import ReadingProgress

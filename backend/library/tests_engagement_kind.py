@@ -1,0 +1,124 @@
+"""Engagement analytics must not blend books, sermons and biographies.
+
+``ReadingProgress.book_slug`` names a book, a sermon OR an author biography (see
+``WorkKind``) — the column kept its historical name. The dashboard grouped by
+that column alone, so:
+
+* a sermon and a book sharing a slug merged into ONE row, labelled with the
+  book's title and author;
+* every sermon and bio row pins ``chapter_order`` to 1, so against a
+  single-chapter book they all counted as "finishers";
+* and the row linked to ``/books/<slug>``, which 404s for a sermon or a bio.
+
+These are the numbers content and translation priorities are chosen from, so
+"roughly right" is not good enough.
+"""
+
+from __future__ import annotations
+
+from django.contrib.auth import get_user_model
+from django.test import TestCase, override_settings
+from rest_framework.test import APIClient
+
+from accounts.models import UserProfile
+from reading.models import ChapterMarks, ReadingProgress, WorkKind
+
+from .models import Author, Book, Chapter, Sermon
+
+User = get_user_model()
+
+
+@override_settings(DEBUG=True)
+class EngagementKindTests(TestCase):
+    """A book and a sermon deliberately share the slug "humility"."""
+
+    @classmethod
+    def setUpTestData(cls):
+        cls.author = Author.objects.create(slug="am", name="Andrew Murray")
+        cls.book = Book.objects.create(
+            author=cls.author, slug="humility", language="en", title="Humility"
+        )
+        for order in (1, 2):
+            Chapter.objects.create(
+                book=cls.book, order=order, title=f"Ch {order}", body_html="<p>x</p>"
+            )
+        cls.sermon = Sermon.objects.create(
+            author=cls.author, slug="humility", language="en", title="A Sermon on Humility"
+        )
+
+        def reader(n):
+            user = User.objects.create(username=f"00000000-0000-0000-0000-00000000000{n}")
+            return UserProfile.objects.create(
+                user=user, supabase_uid=user.username, email=f"r{n}@example.com"
+            )
+
+        # One reader of the BOOK, on chapter 1 of 2 — not a finisher.
+        ReadingProgress.objects.create(
+            profile=reader(1), kind=WorkKind.BOOK, book_slug="humility", chapter_order=1
+        )
+        # Two readers of the SERMON, which pins chapter_order to 1.
+        for n in (2, 3):
+            ReadingProgress.objects.create(
+                profile=reader(n),
+                kind=WorkKind.SERMON,
+                book_slug="humility",
+                chapter_order=1,
+            )
+        # One reader of a BIO, whose slug names the author.
+        ReadingProgress.objects.create(
+            profile=reader(4), kind=WorkKind.BIO, book_slug="am", chapter_order=1
+        )
+
+    def _rows(self, section="most_read"):
+        res = APIClient().get("/api/admin/engagement/")
+        self.assertEqual(res.status_code, 200)
+        return {(r["kind"], r["slug"]): r for r in res.data[section]}
+
+    def test_the_book_and_the_sermon_are_separate_rows(self):
+        rows = self._rows()
+        self.assertIn(("book", "humility"), rows)
+        self.assertIn(("sermon", "humility"), rows)
+        self.assertEqual(rows[("book", "humility")]["readers"], 1)
+        self.assertEqual(rows[("sermon", "humility")]["readers"], 2)
+
+    def test_each_row_carries_its_own_title(self):
+        rows = self._rows()
+        self.assertEqual(rows[("book", "humility")]["title"], "Humility")
+        self.assertEqual(
+            rows[("sermon", "humility")]["title"], "A Sermon on Humility"
+        )
+
+    def test_a_biography_is_titled_with_the_person(self):
+        rows = self._rows()
+        self.assertEqual(rows[("bio", "am")]["title"], "Andrew Murray")
+
+    def test_sermon_readers_are_not_counted_as_finishers(self):
+        """chapter_order=1 must not read as "finished" for a single document."""
+        rows = self._rows()
+        self.assertIsNone(rows[("sermon", "humility")]["finishers"])
+        self.assertIsNone(rows[("bio", "am")]["finishers"])
+
+    def test_book_finishers_still_count_and_exclude_other_kinds(self):
+        rows = self._rows()
+        # The book's only reader is on chapter 1 of 2, so nobody has finished —
+        # even though two sermon readers sit at chapter_order 1 under the same slug.
+        self.assertEqual(rows[("book", "humility")]["finishers"], 0)
+
+    def test_a_reader_who_reached_the_last_chapter_is_a_finisher(self):
+        ReadingProgress.objects.filter(
+            kind=WorkKind.BOOK, book_slug="humility"
+        ).update(chapter_order=2)
+        self.assertEqual(self._rows()[("book", "humility")]["finishers"], 1)
+
+    def test_highlights_are_separated_by_kind_too(self):
+        profile = UserProfile.objects.first()
+        ChapterMarks.objects.create(
+            profile=profile,
+            kind=WorkKind.SERMON,
+            book_slug="humility",
+            chapter_order=1,
+            marks=[{"id": "a", "p": 0, "s": 0, "e": 4}],
+        )
+        rows = self._rows("most_marked")
+        self.assertIn(("sermon", "humility"), rows)
+        self.assertEqual(rows[("sermon", "humility")]["title"], "A Sermon on Humility")
