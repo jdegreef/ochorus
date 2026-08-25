@@ -353,8 +353,22 @@
 		font-size: 8.8cqw;
 		line-height: 1.55;
 	}
-	.cover-type.script-arabic .subtitle,
+	/* THE SUBTITLE NEEDS A FACE TOO, and had none. It stays in the house serif
+	   by design — a cover's title takes the style, its byline and subtitle do
+	   not — but the house serif is Fraunces, and Fraunces has no Arabic and no
+	   Devanagari. So the two Arabic books that ship a subtitle had their title
+	   in Amiri above a subtitle in whatever the device picked; they used to at
+	   least match. This is what "the house serif" means in a script that
+	   Fraunces cannot set.
+	   Cyrillic is absent on purpose and needs nothing: `var(--font-display)`
+	   reaches Georgia, which ships Cyrillic, so those subtitles already land on
+	   a real face rather than an arbitrary one. */
+	.cover-type.script-arabic .subtitle {
+		font-family: 'Amiri', var(--font-display);
+		line-height: 1.5;
+	}
 	.cover-type.script-devanagari .subtitle {
+		font-family: 'Tiro Devanagari Hindi', var(--font-display);
 		line-height: 1.5;
 	}
 	/* Cyrillic lands on faces the Latin numbers were never measured against.

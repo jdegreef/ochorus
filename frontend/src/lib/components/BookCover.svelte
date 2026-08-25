@@ -125,11 +125,13 @@
 		     THEM between the byline and the mark. Left as three siblings, the
 		     leftover space split three ways and the title rode up the plate. -->
 		<div class="middle">
-			<!-- `lang` on the words themselves, not on the plate: it is what lets a
-			     browser pick the right shaping and hyphenation for the title, and
-			     what tells a screen reader which language to read it in. The
-			     metrics come from the class above, which the LANGUAGE decides —
-			     never the characters (see `scriptOf`). -->
+			<!-- `lang` on the words themselves, not on the plate: it is what lets
+			     a browser shape and hyphenate the title correctly. NOT an
+			     accessibility win, though it looks like one — the plate is
+			     `role="img"` with an `aria-label`, so a screen reader never
+			     reaches these nodes and reads the label instead. The metrics come
+			     from the class above, which the LANGUAGE decides — never the
+			     characters (see `scriptOf`). -->
 			<div class="title" {lang} dir="auto">{book.title}</div>
 			<div class="rule"></div>
 			{#if book.subtitle}<div class="subtitle" {lang} dir="auto">
