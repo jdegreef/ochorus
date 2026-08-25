@@ -26,6 +26,7 @@ from django.core.management.base import BaseCommand, CommandError
 
 from library.languages import config as language_config
 from library.models import Author, AuthorTranslation
+from library.sanitize import clean_bio_html
 from library.translation import translate_chapter, verify_bible_code, verify_glossary
 
 
@@ -118,7 +119,12 @@ class Command(BaseCommand):
                 # source_stale clears: this wording was just made from the
                 # CURRENT English, whatever the old row was translated from.
                 defaults={
-                    "bio": bio_out, "bio_html": html_out,
+                    # bio is plain text (escaped at render); bio_html is rendered
+                    # with {@html}, so the model's output is sanitized first. The
+                    # BIO profile, not the chapter one — a biography's <aside
+                    # class="prayer"> callouts and <cite> attributions are
+                    # legitimate markup the chapter allowlist would strip.
+                    "bio": bio_out, "bio_html": clean_bio_html(html_out),
                     "reviewed": False, "source_stale": False,
                 },
             )

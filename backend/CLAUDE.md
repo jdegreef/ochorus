@@ -34,9 +34,24 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
   without a deploy. `library/language_seed.py` is the repo-owned seed for the
   built-in six (identity re-asserted every deploy); a language added from the
   admin is DB-owned and the seed never touches it.
-- Content HTML is sanitized to a tag allowlist **once on ingest**
-  (`ingest.clean_fragment`); the reader trusts stored HTML. Never store
-  un-sanitized HTML; never sanitize hopefully at render.
+- Content HTML is sanitized to a tag allowlist **at every write path**
+  (`library/sanitize.py`); the reader trusts stored HTML and renders it with
+  `{@html}`. Never store un-sanitized HTML; never sanitize hopefully at render.
+  Two profiles, and picking the wrong one is destructive:
+  `clean_fragment` for chapter/sermon bodies (narrow, **no attributes**), and
+  `clean_bio_html` for author bios, which legitimately carry
+  `<aside class="prayer">` callouts, `<cite>` attributions and internal links —
+  the chapter profile would unwrap 323 asides, 478 cites and 7 links across the
+  172 bio files, deleting a feature silently.
+  Model output is untrusted input: the `translate_*` / `contemporize_book`
+  commands sanitize before storing (a `</content></invoke>` artifact reached a
+  live page before they did). The Django admin's HTML textareas sanitize via
+  their `ModelForm`.
+  Sanitizing is deliberately **not** in `Model.save()`: BeautifulSoup
+  round-trips entities (`&quot;` → `"`), which renders identically but would
+  rewrite 743 of 3,033 stored rows on the next deploy. `tests_sanitize.py` is
+  the enforcement instead — it scans every shipped row, so a write path that
+  forgets fails the build rather than shipping.
 
 ## Migrations & seeds
 
