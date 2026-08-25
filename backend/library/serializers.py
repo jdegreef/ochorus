@@ -4,7 +4,17 @@ from rest_framework import serializers
 from .contemporize import MODERN_LANGUAGE
 from .curated_art import credit
 from .localization import language_from_request
-from .models import Author, Book, Chapter, Plan, PlanDay, Sermon, Topic, TopicBook
+from .models import (
+    SERMON_CARD_DEFER,
+    Author,
+    Book,
+    Chapter,
+    Plan,
+    PlanDay,
+    Sermon,
+    Topic,
+    TopicBook,
+)
 from .scripture import book_of
 
 #: The annotations every book card needs. ``BookListSerializer`` reads
@@ -421,6 +431,7 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
                 obj.sermons.filter(is_published=True, language=self._language())
                 .select_related("author")
                 .prefetch_related("author__translations")
+                .defer(*SERMON_CARD_DEFER)
                 .order_by("sort_order", "title")
             ),
         )
@@ -936,7 +947,12 @@ class TopicListSerializer(LocalizedMixin, serializers.ModelSerializer):
             s.slug: s
             for s in Sermon.objects.filter(
                 slug__in=order, language=self._language(), is_published=True
-            ).select_related("author")
+            )
+            .select_related("author")
+            # author__translations was missing here alone: AuthorSerializer.get_bio
+            # reads them, so this fallback N+1'd one query per sermon.
+            .prefetch_related("author__translations")
+            .defer(*SERMON_CARD_DEFER)
         }
         return [by_slug[s] for s in order if s in by_slug]
 
