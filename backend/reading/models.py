@@ -62,6 +62,15 @@ class ReadingProgress(models.Model):
                 name="uniq_progress_profile_work",
             ),
         ]
+        indexes = [
+            # The engagement dashboard groups by (kind, book_slug) and counts
+            # finishers per work. The unique constraint leads with `profile`, so
+            # none of that could use it — every panel scanned the whole table.
+            models.Index(fields=["kind", "book_slug"], name="idx_progress_work"),
+            # ...and the weekly-active panel windows on updated_at. `ordering`
+            # is not an index.
+            models.Index(fields=["updated_at"], name="idx_progress_updated"),
+        ]
 
     def __str__(self) -> str:
         return f"{self.profile_id}:{self.kind}:{self.book_slug} → ch{self.chapter_order}"
