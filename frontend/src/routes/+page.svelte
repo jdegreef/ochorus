@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { BookSummary, AuthorBio, TopicSummary } from '$lib/library';
+	import type { BookSummary, AuthorBio, TopicSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { jsonLd } from '$lib/seo';
 	import { goto } from '$app/navigation';

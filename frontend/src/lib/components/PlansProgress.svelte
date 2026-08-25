@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { listPlans, type PlanSummary } from '$lib/library';
+	import { listPlans, type PlanSummary } from '$lib/library-public';
 	import { planProgress } from '$lib/planProgress.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';

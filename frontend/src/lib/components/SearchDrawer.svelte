@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { focusTrap } from '$lib/actions/focusTrap';
-	import { getBook, getChapter } from '$lib/library';
+	import { getBook, getChapter } from '$lib/library-public';
 	import { getLang } from '$lib/lang.svelte';
 	import { createLimiter } from '$lib/limiter';
 	import { i18n } from '$lib/i18n.svelte';

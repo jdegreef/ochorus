@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { isTranslated, type SourceType } from '$lib/library';
+	import { isTranslated, type SourceType } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 
 	/**

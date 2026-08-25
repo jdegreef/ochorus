@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { coverGradient, coverSrcset } from '$lib/coverArt';
 	import type { Snippet } from 'svelte';
-	import { isSermonTile, type TopicCover } from '$lib/library';
+	import { isSermonTile, type TopicCover } from '$lib/library-public';
 	import Emblem from '$lib/components/Emblem.svelte';
 	import { sermonArt } from '$lib/sermonArt';
 	import type { EmblemName } from '$lib/emblems';

@@ -1,5 +1,5 @@
 // prerender refresh 2026-08-21: divine-healing.ar (job #764, PR #1010)
-import { listBooks } from '$lib/library';
+import { listBooks } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';

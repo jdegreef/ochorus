@@ -13,7 +13,7 @@
 		type SearchSort,
 		type SearchType,
 		type TopicSummary
-	} from '$lib/library';
+	} from '$lib/library-public';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { apiFetch } from '$lib/api';

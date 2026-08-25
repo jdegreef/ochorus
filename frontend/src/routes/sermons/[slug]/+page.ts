@@ -1,4 +1,4 @@
-import { getSermon, listSermons } from '$lib/library';
+import { getSermon, listSermons } from '$lib/library-public';
 import { getLang } from '$lib/lang.svelte';
 import { orNotFound } from '$lib/loadHelpers';
 import type { EntryGenerator, PageLoad } from './$types';

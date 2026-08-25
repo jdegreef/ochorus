@@ -1,5 +1,5 @@
 import { SITE_URL } from '$lib/config';
-import { listAuthors, listBooks, listPlans, listSermons, listTopics } from '$lib/library';
+import { listAuthors, listBooks, listPlans, listSermons, listTopics } from '$lib/library-public';
 import { locales } from '$lib/paraglide/runtime';
 import { ADVERTISED_LOCALES, UNADVERTISED_LOCALES } from '$lib/advertised-locales';
 import { ERAS, eraOf } from '$lib/eras';

@@ -1,5 +1,5 @@
 import { browser } from '$app/environment';
-import type { Language } from './library';
+import type { Language } from './library-public';
 import { getLocale, setLocale, locales } from '$lib/paraglide/runtime';
 
 // Set when the reader explicitly picks a language on this device, so a synced

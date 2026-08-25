@@ -11,7 +11,7 @@
 		type ReviewDetail,
 		type ReviewTarget,
 		type ReviewKind
-	} from '$lib/library';
+	} from '$lib/library-admin';
 
 	// Filters. Read in exactly one place (the fetcher), so moving them into the
 	// querystring later is a local change.

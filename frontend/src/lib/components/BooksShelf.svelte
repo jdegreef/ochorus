@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { isTranslated, type BookSummary } from '$lib/library';
+	import { isTranslated, type BookSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { getLang } from '$lib/lang.svelte';
 	import { localizeHref } from '$lib/href';

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { getBook, getChapter, getSermon, getAuthor, type BookDetail } from '$lib/library';
+	import { getBook, getChapter, getSermon, getAuthor, type BookDetail } from '$lib/library-public';
 	import { getLang } from '$lib/lang.svelte';
 	import { bookmarks } from '$lib/bookmarks.svelte';
 	import { marks } from '$lib/marks.svelte';

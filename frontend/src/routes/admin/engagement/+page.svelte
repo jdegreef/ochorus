@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
-	import { getAdminEngagement, type EngagementWork } from '$lib/library';
+	import { getAdminEngagement, type EngagementWork } from '$lib/library-admin';
 
 	const engagement = adminResource(getAdminEngagement, 'Something went wrong loading engagement.');
 	const data = $derived(engagement.data);

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
-	import { getAdminCoverage, type AdminCoverageRow } from '$lib/library';
+	import { getAdminCoverage, type AdminCoverageRow } from '$lib/library-admin';
 
 	const coverage = adminResource(getAdminCoverage, 'Something went wrong loading coverage.');
 	const cov = $derived(coverage.data);

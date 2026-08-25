@@ -3,7 +3,7 @@
 // richard-baxter, thomas-watson, amy-carmichael (jobs #780/#781/#782/#785/#805/#806/
 // #807/#808/#809/#810, and their duplicates #882/#883/#884/#885)
 // prerender refresh 2026-08-20: hi bios: jonathan-edwards, john-wesley, frederick-brotherton-meyer (jobs #704/#705/#706, PRs #1005/#1003/#1002)
-import { getAuthorWithLang, listAuthors, listBooks } from '$lib/library';
+import { getAuthorWithLang, listAuthors, listBooks } from '$lib/library-public';
 import { getLang } from '$lib/lang.svelte';
 import { orNotFound } from '$lib/loadHelpers';
 import type { EntryGenerator, PageLoad } from './$types';

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { TopicDetail } from '$lib/library';
+	import type { TopicDetail } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';

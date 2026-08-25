@@ -1,4 +1,4 @@
-import { listAuthors } from '$lib/library';
+import { listAuthors } from '$lib/library-public';
 import { ERAS, eraOf } from '$lib/eras';
 import type { PageLoad } from './$types';
 

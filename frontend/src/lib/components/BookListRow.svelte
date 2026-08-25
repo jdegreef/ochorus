@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { isTranslated, type BookSummary } from '$lib/library';
+	import { isTranslated, type BookSummary } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { readingTime } from '$lib/reading';

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { type Sermon, type SermonSummary, listSermons } from '$lib/library';
+	import { type Sermon, type SermonSummary, listSermons } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';

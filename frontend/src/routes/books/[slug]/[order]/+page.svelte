@@ -4,7 +4,7 @@
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 	import { goto, invalidateAll } from '$app/navigation';
-	import { getBook, getPlan, type BookDetail, type Chapter, type PlanDetail } from '$lib/library';
+	import { getBook, getPlan, type BookDetail, type Chapter, type PlanDetail } from '$lib/library-public';
 	import { planProgress } from '$lib/planProgress.svelte';
 	import {
 		saveProgress,

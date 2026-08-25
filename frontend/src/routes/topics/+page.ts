@@ -1,4 +1,4 @@
-import { listTopics } from '$lib/library';
+import { listTopics } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';

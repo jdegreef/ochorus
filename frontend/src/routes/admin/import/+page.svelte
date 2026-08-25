@@ -3,7 +3,7 @@
 	import { ApiError, apiFetch, apiFetchRaw } from '$lib/api';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
-	import { createAuthor, listAuthors, listImportLanguages, type AuthorBio } from '$lib/library';
+	import { createAuthor, listAuthors, listImportLanguages, type AuthorBio } from '$lib/library-public';
 
 	type Chapter = { title: string; html: string; words: number };
 	type Warning = {

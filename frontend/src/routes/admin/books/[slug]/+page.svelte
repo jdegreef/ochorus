@@ -3,7 +3,8 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { API_BASE_URL } from '$lib/config';
-	import { getAdminBook, type SourceType } from '$lib/library';
+	import { type SourceType } from '$lib/library-public';
+	import { getAdminBook } from '$lib/library-admin';
 
 	let { data } = $props();
 
