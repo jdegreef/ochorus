@@ -137,9 +137,15 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.AllowAny",
     ],
+    # JSON only in production. The browsable API renders an interactive HTML
+    # console over every endpoint — enumerating fields and drawing write forms
+    # for the admin ones — on an origin whose entire job is to serve JSON to a
+    # separate SPA. Nothing consumes the HTML, so in production it is pure
+    # attack surface (and an HTML-rendering sink on the API origin). Kept in
+    # DEBUG, where clicking through endpoints by hand is genuinely useful.
     "DEFAULT_RENDERER_CLASSES": [
         "rest_framework.renderers.JSONRenderer",
-        "rest_framework.renderers.BrowsableAPIRenderer",
+        *(["rest_framework.renderers.BrowsableAPIRenderer"] if DEBUG else []),
     ],
     "EXCEPTION_HANDLER": "common.exception_handler.detail_exception_handler",
     # No DEFAULT_PAGINATION_CLASS, deliberately. The shelves are a WHOLE-SET
@@ -190,6 +196,12 @@ REST_FRAMEWORK = {
 SUPABASE_URL = origin_url(os.getenv("SUPABASE_URL", ""))
 SUPABASE_JWT_SECRET = os.getenv("SUPABASE_JWT_SECRET", "")
 SUPABASE_JWT_AUDIENCE = os.getenv("SUPABASE_JWT_AUDIENCE", "authenticated")
+# The `iss` every token must carry. Left empty, the auth layer derives it from
+# SUPABASE_URL as "<origin>/auth/v1", which is what Supabase stamps. Set this
+# only for a self-hosted GoTrue whose issuer is not the project origin — it is
+# the escape hatch for a derived value being wrong, which would otherwise
+# resolve every authenticated request to anonymous.
+SUPABASE_JWT_ISSUER = os.getenv("SUPABASE_JWT_ISSUER", "")
 SUPABASE_SERVICE_ROLE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY", "")
 
 
