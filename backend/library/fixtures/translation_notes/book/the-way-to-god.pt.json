@@ -1,0 +1,1631 @@
+{
+ "kind": "book",
+ "slug": "the-way-to-god",
+ "language": "pt",
+ "job_issue": 770,
+ "references": [
+  {
+   "reference": "Ephesians 3:19b",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "1 John 4:8b",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "1 John 4:8b",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "John 15:13",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Luke 23:34a",
+   "status": "mined",
+   "source_file": "godliness.pt.json",
+   "block_index": 10
+  },
+  {
+   "reference": "John 13:1b",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "John 14:20, 21b",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "John 14:23b",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "John 17:23",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Isaiah 49:15, 16a",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "source_file": "christs-boundless-compassion.pt.json",
+   "block_index": 22
+  },
+  {
+   "reference": "John 3:16a",
+   "status": "mined",
+   "source_file": "prayer-the-pulse-of-life.pt.json",
+   "block_index": 22
+  },
+  {
+   "reference": "Ephesians 3:19b",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Luke 23:34a",
+   "status": "mined",
+   "source_file": "godliness.pt.json",
+   "block_index": 23
+  },
+  {
+   "reference": "John 15:13",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "1 John 4:10",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Romans 5:6",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Romans 5:8",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Revelation 1:5b",
+   "status": "mined",
+   "source_file": "free-grace.pt.json",
+   "block_index": 30
+  },
+  {
+   "reference": "Song of Solomon 2:4b, 6",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "John 3:3",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "source_file": "the-new-birth.pt.json",
+   "block_index": 2
+  },
+  {
+   "reference": "John 3:7",
+   "status": "mined",
+   "source_file": "the-ravens-cry.pt.json",
+   "block_index": 3
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "source_file": "the-ravens-cry.pt.json",
+   "block_index": 3
+  },
+  {
+   "reference": "John 3:3a",
+   "status": "mined",
+   "source_file": "the-new-birth.pt.json",
+   "block_index": 4
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "source_file": "the-new-birth.pt.json",
+   "block_index": 4
+  },
+  {
+   "reference": "John 3:8b",
+   "status": "mined",
+   "source_file": "the-new-birth.pt.json",
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 13:3, 5",
+   "status": "mined",
+   "source_file": "godliness.pt.json",
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 5:20",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "source_file": "the-new-birth.pt.json",
+   "block_index": 8
+  },
+  {
+   "reference": "John 3:3",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "John 3:5",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "John 3:3",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "John 3:8",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "John 5:24b",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "source_file": "the-new-birth.pt.json",
+   "block_index": 11
+  },
+  {
+   "reference": "John 3:6",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Romans 4:5b",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Philippians 2:12b",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "John 19:30b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "John 3:9b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "John 3:8",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Galatians 1:15, 16",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "John 3:14, 15",
+   "status": "mined",
+   "source_file": "the-new-birth.pt.json",
+   "block_index": 21
+  },
+  {
+   "reference": "John 3:15a",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "John 3:15b",
+   "status": "mined",
+   "source_file": "the-new-birth.pt.json",
+   "block_index": 22
+  },
+  {
+   "reference": "Hebrews 2:3a",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Numbers 21:8",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "John 1:29b",
+   "status": "mined",
+   "source_file": "the-new-birth.pt.json",
+   "block_index": 30
+  },
+  {
+   "reference": "John 1:29b",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "John 3:14, 15",
+   "status": "mined",
+   "source_file": "the-new-birth.pt.json",
+   "block_index": 33
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "source_file": "the-new-birth.pt.json",
+   "block_index": 34
+  },
+  {
+   "reference": "Luke 18:10a",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Acts 16:30b",
+   "status": "mined",
+   "source_file": "godliness.pt.json",
+   "block_index": 1
+  },
+  {
+   "reference": "Romans 3:10-11",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Romans 3:12",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Romans 3:17-19",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Romans 3:22b-23",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Romans 3:23b",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "1 John 1:8",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "John 3:3",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Luke 13:3b",
+   "status": "mined",
+   "source_file": "godliness.pt.json",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Matthew 5:20b",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 21:31b",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Acts 16:30b",
+   "status": "mined",
+   "source_file": "godliness.pt.json",
+   "block_index": 12
+  },
+  {
+   "reference": "Acts 16:31a",
+   "status": "mined",
+   "source_file": "free-grace.pt.json",
+   "block_index": 12
+  },
+  {
+   "reference": "John 3:35-36",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Jeremiah 17:9",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 John 5:9-12",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "1 John 5:9a",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 11:10b",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "1 John 4:18b",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "John 17:3",
+   "status": "mined",
+   "source_file": "the-unselfishness-of-god.pt.json",
+   "block_index": 24
+  },
+  {
+   "reference": "John 5:24",
+   "status": "mined",
+   "source_file": "the-unselfishness-of-god.pt.json",
+   "block_index": 26
+  },
+  {
+   "reference": "1 John 4:17",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "John 11:25-26",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Revelation 1:18a",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Romans 10:17",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "John 6:47b-48",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Isaiah 42:3a",
+   "status": "mined",
+   "source_file": "christs-boundless-compassion.pt.json",
+   "block_index": 0
+  },
+  {
+   "reference": "Romans 5:6",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "John 8:12a",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Isaiah 42:7b",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Romans 6:23",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 9:9",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Luke 19:5b",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Luke 19:8b",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Acts 8:36b",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Acts 8:37a",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Ephesians 4:28a",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Matthew 5:34a",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Psalm 121:1-8",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Hebrews 6:17-20",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "2 Timothy 1:12b",
+   "status": "mined",
+   "source_file": "the-unselfishness-of-god.pt.json",
+   "block_index": 21
+  },
+  {
+   "reference": "2 Timothy 1:12b",
+   "status": "mined",
+   "source_file": "the-unselfishness-of-god.pt.json",
+   "block_index": 22
+  },
+  {
+   "reference": "Isaiah 41:10",
+   "status": "mined",
+   "source_file": "clothed-with-strength-and-dignity.pt.json",
+   "block_index": 24
+  },
+  {
+   "reference": "Isaiah 41:13",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Deuteronomy 33:25b",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "2 Timothy 2:23",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Deuteronomy 29:29",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Titus 3:9",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "John 7:17",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Daniel 12:10",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Psalm 25:14",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "John 15:15",
+   "status": "mined",
+   "source_file": "the-unselfishness-of-god.pt.json",
+   "block_index": 42
+  },
+  {
+   "reference": "Genesis 18:17b",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "James 1:5",
+   "status": "mined",
+   "source_file": "christ-all-in-all.pt.json",
+   "block_index": 44
+  },
+  {
+   "reference": "Matthew 16:16b",
+   "status": "mined",
+   "source_file": "stepping-stones-2.pt.json",
+   "block_index": 0
+  },
+  {
+   "reference": "1 Corinthians 15:47",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "1 John 5:20",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "John 17:3",
+   "status": "mined",
+   "source_file": "the-unselfishness-of-god.pt.json",
+   "block_index": 4
+  },
+  {
+   "reference": "Mark 14:60-64",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "John 8:58b",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Exodus 20:3",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Acts 10:38b",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "John 5:21-23",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "John 5:23b",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 26:63b",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "John 10:24b",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "John 10:30",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Leviticus 24:16",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "John 16:15",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Psalm 68:18",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "John 20:13b",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Matthew 18:20a",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Matthew 18:20",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Matthew 28:18",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Matthew 28:18b",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Mark 2:7-9",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Mark 5:41b",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Luke 7:14b",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "John 11:43b",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "John 5:25",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "John 9:38",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Revelation 22:6-9",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Revelation 22:9b",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Matthew 14:33",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Matthew 8:2",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Matthew 15:25",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Acts 17:30",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 3:2",
+   "status": "mined",
+   "source_file": "godliness.pt.json",
+   "block_index": 2
+  },
+  {
+   "reference": "Matthew 4:17",
+   "status": "mined",
+   "source_file": "godliness.pt.json",
+   "block_index": 3
+  },
+  {
+   "reference": "Mark 6:12b",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Acts 17:30",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Ezekiel 33:11a",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 21:28b-29a",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Acts 17:30b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Romans 2:4b",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Romans 4:25",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Matthew 3:8b",
+   "status": "mined",
+   "source_file": "godliness.pt.json",
+   "block_index": 29
+  },
+  {
+   "reference": "Ezekiel 18:32",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Luke 5:32",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Luke 18:13b",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Luke 18:11b",
+   "status": "mined",
+   "source_file": "humility-2.pt.json",
+   "block_index": 35
+  },
+  {
+   "reference": "Luke 18:12",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Luke 18:14a",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Romans 3:10b",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Romans 3:23",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Luke 14:11",
+   "status": "mined",
+   "source_file": "humility-2.pt.json",
+   "block_index": 35
+  },
+  {
+   "reference": "1 John 5:13",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "John 6:37b",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "John 20:31",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "1 John 5:13a",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 John 5:13b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 John 3:5",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "1 John 3:19",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "John 8:36",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "1 John 3:14a",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "1 John 3:14b",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "1 John 3:24",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "1 John 3:2a",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "1 John 3:2",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "1 John 2:1",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "1 John 2:1b",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "John 16:7a",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Philippians 3:13b-14",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "2 Corinthians 13:5",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Galatians 5:22-23",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Matthew 7:16a",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Matthew 12:33b",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Romans 8:9b",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "2 Peter 3:18a",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "2 Peter 1:5-8",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "mined",
+   "source_file": "the-inner-chamber.pt.json",
+   "block_index": 32
+  },
+  {
+   "reference": "2 Corinthians 5:1",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Philippians 1:23b",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Colossians 3:4",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Colossians 1:12-13",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Colossians 1:12b",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Colossians 1:13a",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Colossians 1:13b",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Colossians 1:14",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "2 Corinthians 5:1",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Romans 8:33-39",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Job 19:25",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "2 Timothy 1:12b",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Luke 10:17b",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Luke 10:20",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "John 5:24a",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "John 5:24b",
+   "status": "mined",
+   "source_file": "the-unselfishness-of-god.pt.json",
+   "block_index": 44
+  },
+  {
+   "reference": "Matthew 25:20b-21",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "Romans 4:25",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "John 10:9",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "John 10:27-29",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "John 10:9a",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "John 10:14",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "John 8:12b",
+   "status": "mined",
+   "source_file": "christ-all-in-all.pt.json",
+   "block_index": 49
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "John 6:35a",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "John 4:14",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "John 4:14b",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "John 11:25-26",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "John 15:15b",
+   "status": "self_rendered",
+   "block_index": 50
+  },
+  {
+   "reference": "Isaiah 26:3",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "Matthew 14:31b",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Hebrews 12:2a",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Acts 7:56",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "Luke 23:42b",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Job 19:25a",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Job 13:15a",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Matthew 14:30b",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Acts 4:11-12",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Mark 9:24b",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "Romans 8:33-34a",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "2 Timothy 1:12b",
+   "status": "mined",
+   "source_file": "the-unselfishness-of-god.pt.json",
+   "block_index": 61
+  },
+  {
+   "reference": "2 Timothy 4:8b",
+   "status": "self_rendered",
+   "block_index": 61
+  },
+  {
+   "reference": "Ephesians 3:17b",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Isaiah 22:23-24",
+   "status": "self_rendered",
+   "block_index": 66
+  },
+  {
+   "reference": "Isaiah 53:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Isaiah 53:2b",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 1:21",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Philippians 3:10a",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Luke 2:10, 11",
+   "status": "mined",
+   "source_file": "christ-all-in-all.pt.json",
+   "block_index": 3
+  },
+  {
+   "reference": "Isaiah 43:11",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "1 John 4:14b",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "2 Corinthians 1:10",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "John 6:68a",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Isaiah 52:3b",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "1 Peter 1:18",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "John 14:6a",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 8:9b",
+   "status": "mined",
+   "source_file": "baptism-with-the-holy-spirit.pt.json",
+   "block_index": 8
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "John 8:12a",
+   "status": "mined",
+   "source_file": "christ-all-in-all.pt.json",
+   "block_index": 9
+  },
+  {
+   "reference": "John 8:12b",
+   "status": "mined",
+   "source_file": "christ-all-in-all.pt.json",
+   "block_index": 9
+  },
+  {
+   "reference": "Acts 1:8b",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Matthew 5:14a",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Psalm 121:4",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Isaiah 41:10",
+   "status": "mined",
+   "source_file": "clothed-with-strength-and-dignity.pt.json",
+   "block_index": 16
+  },
+  {
+   "reference": "1 John 2:1b",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "John 10:11a",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "John 10:27a",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "John 10:15b",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "John 10:28b",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Colossians 3:3b",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "John 10:27a",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 12:6",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Colossians 3:2a",
+   "status": "mined",
+   "source_file": "christ-all-in-all.pt.json",
+   "block_index": 20
+  },
+  {
+   "reference": "Hebrews 1:3a",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Hosea 14:4",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Psalm 85:5-7",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Psalm 85:8",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Jeremiah 6:10",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Jeremiah 6:14-17",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Jeremiah 2:5, 9, 13",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Jeremiah 2:5",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Jeremiah 2:32",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Jeremiah 2:32b",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Jeremiah 2:5",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Jeremiah 2:19",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Jeremiah 2:19a",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "2 Samuel 18:33",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Jeremiah 8:5",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Jeremiah 8:5b",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Jeremiah 8:6-7",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Jeremiah 8:6a",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Jeremiah 3:12",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Jeremiah 3:13-14a",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Jeremiah 3:14",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Jeremiah 3:13a",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Hosea 6:4",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Jeremiah 3:22",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Hosea 14:1, 2, 4",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "John 6:68a",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "John 6:68b",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Revelation 2:4, 5",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Revelation 2:5b",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "1 Corinthians 10:12",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Numbers 20:10",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Luke 22:31, 32",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Luke 22:33b",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Matthew 26:33b",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Luke 22:34",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Matthew 26:40b",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Matthew 26:52b",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Matthew 26:58a",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Matthew 26:69b",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Matthew 26:70b",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Matthew 26:71b",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Matthew 26:72b",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Luke 5:8b",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Matthew 14:30b",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Matthew 17:4b",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Mark 16:7a",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Psalm 32:1",
+   "status": "self_rendered",
+   "block_index": 39
+  }
+ ]
+}
