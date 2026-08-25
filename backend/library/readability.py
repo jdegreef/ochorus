@@ -45,11 +45,26 @@ def flesch_reading_ease(text: str) -> float | None:
     return 206.835 - 1.015 * (len(words) / sentences) - 84.6 * (syllables / len(words))
 
 
-@lru_cache(maxsize=1024)
 def difficulty(text: str) -> str | None:
     """'accessible' | 'moderate' | 'advanced', or None when there's too little
-    text to judge. Cached — the same body is scored on every detail request."""
-    score = flesch_reading_ease(text)
+    text to judge. Cached — the same body is scored on every detail request.
+
+    The cache is keyed on the SAMPLE, not the whole text. It used to key on the
+    full body, and ``lru_cache`` bounds entries rather than bytes: 1,024 book and
+    sermon bodies retained permanently is tens to hundreds of MB of dead strings
+    per worker, and the prerender crawl — every work in every live locale — is
+    exactly the access pattern that fills it to capacity. Since the score reads
+    only ``text[:_SAMPLE_CHARS]``, the rest of each key was never even looked at.
+
+    Keying on the sample is exactly equivalent (same input to the same
+    computation) and bounds the cache at roughly sample size × maxsize.
+    """
+    return _difficulty_of_sample(text[:_SAMPLE_CHARS])
+
+
+@lru_cache(maxsize=512)
+def _difficulty_of_sample(sample: str) -> str | None:
+    score = flesch_reading_ease(sample)
     if score is None:
         return None
     if score >= 70:

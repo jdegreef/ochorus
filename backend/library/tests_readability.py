@@ -42,3 +42,47 @@ class ReadabilityTests(TestCase):
 
     def test_deterministic(self):
         self.assertEqual(difficulty(_HEAVY), difficulty(_HEAVY))
+
+
+class DifficultyCacheTests(TestCase):
+    """The cache must be bounded in BYTES, not just in entries.
+
+    ``difficulty`` was ``lru_cache``d on the whole body. ``lru_cache`` bounds
+    entries, not bytes, so 1,024 book and sermon bodies were retained
+    permanently per worker — and the prerender crawl (every work × every live
+    locale) is precisely the access pattern that fills it to capacity. The score
+    only ever reads ``text[:_SAMPLE_CHARS]``, so the rest of each key was
+    retained without ever being looked at.
+    """
+
+    def setUp(self):
+        from .readability import _difficulty_of_sample
+
+        _difficulty_of_sample.cache_clear()
+
+    def test_only_the_sample_is_retained(self):
+        """Two bodies identical up to the sample cap share one cache entry."""
+        from .readability import _SAMPLE_CHARS, _difficulty_of_sample
+
+        base = _HEAVY * 200
+        self.assertGreater(len(base), _SAMPLE_CHARS)
+        difficulty(base + "one ending")
+        difficulty(base + "a completely different ending")
+        self.assertEqual(_difficulty_of_sample.cache_info().currsize, 1)
+
+    def test_scoring_the_full_text_equals_scoring_the_sample(self):
+        """Keying on the sample must not change a single verdict."""
+        from .readability import _SAMPLE_CHARS
+
+        for body in (_EASY * 40, _HEAVY * 40):
+            self.assertEqual(difficulty(body), difficulty(body[:_SAMPLE_CHARS]))
+
+    def test_a_distinct_work_still_gets_its_own_entry(self):
+        from .readability import _difficulty_of_sample
+
+        difficulty(_EASY * 40)
+        difficulty(_HEAVY * 40)
+        self.assertEqual(_difficulty_of_sample.cache_info().currsize, 2)
+
+    def test_short_text_is_still_unjudgeable(self):
+        self.assertIsNone(difficulty("Too little."))
