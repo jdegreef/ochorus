@@ -22,6 +22,7 @@ from django.core.management.base import BaseCommand, CommandError
 
 from library.languages import config as language_config
 from library.models import Book, Sermon
+from library.sanitize import clean_fragment
 from library.translation import (
     translate_scripture_ref,
     translate_sermon,
@@ -86,6 +87,13 @@ class Command(BaseCommand):
         # gave the translated shelves bare titles while the English one read
         # properly — 38 rows across es/lg/sw/pt/ar/uk before this was fixed.
         summary = translate_summary(client, language, source.summary)
+
+        # The model's output is untrusted: it is a regex capture of generated
+        # text, produced from source prose scraped off the public web, and it
+        # lands in a column the reader renders with {@html}. Sanitize before it
+        # is stored — and before word_count is taken from it, so the count
+        # describes the text that was actually kept.
+        body_html = clean_fragment(body_html)
 
         Sermon.objects.update_or_create(
             slug=slug,

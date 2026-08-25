@@ -8,41 +8,28 @@ from __future__ import annotations
 
 import re
 
-from bs4 import BeautifulSoup, Tag
+from bs4 import BeautifulSoup
 from django.db import transaction
 
 from library.catalog import AUTHORS, BOOKS, BookEntry
 from library.corrections import apply_body_corrections, chapter_title_overrides
 from library.models import Author, Book, Chapter
 
-# Tags we keep in chapter bodies; everything else is unwrapped (kept text) or
-# decomposed (dropped entirely, below).
-ALLOWED_TAGS = {
-    "p", "h2", "h3", "h4", "blockquote",
-    "em", "strong", "i", "b", "br", "hr",
-    "ul", "ol", "li", "sup",
-}
-# Elements removed wholesale (chrome, page furniture, footnote machinery).
-DROP_SELECTORS = [
-    "script", "style", "nav", "header", "footer", "form", "button",
-    "[class*=pagenum]", "[class*=pageno]", "[class*=page-num]",
-    # CCEL marks a print page break with <span class="pb">17</span>. Left in,
-    # the number lands mid-sentence (or alone at the top of a chapter) in a
-    # reflowable reader. Exact selector — "pb" is too short to substring-match.
-    "span.pb",
-    "[class*=navbar i]", "[class*=toolbar i]",
-    # CCEL's whole footnote apparatus: the note text (`class="Footnote"`) plus
-    # the superscript markers that point at it (`Note`, `NoteRef`, `mnote`).
-    # `i` = case-insensitive — a case-sensitive `[class*=footnote]` missed the
-    # capitalised classes entirely and inlined note text into the prose
-    # ("desires knowledge 2 Aristotle, Metaphysics, i. 1. ; but"), while the
-    # markers left bare digits mid-sentence.
-    "[class*=note i]",
-    "[class*=pg-boilerplate]", "[class*=pginternal]",
-    "[id*=navbar]", "[id*=toc]",
-]
-_PAGE_MARKER = re.compile(r"\[p\s*[ivxlcdm0-9]+\s*\]", re.I)
-_WS = re.compile(r"\s+")
+# Re-exported so `from library.ingest import clean_fragment` keeps working —
+# it is the documented entry point (backend/CLAUDE.md) and has many callers.
+from library.sanitize import (  # noqa: F401
+    _PAGE_MARKER,
+    _WS,
+    ALLOWED_TAGS,
+    DROP_SELECTORS,
+    clean_fragment,
+    clean_html,
+)
+
+# The sanitizer and its allowlists now live in library/sanitize.py — the trust
+# boundary is security-critical enough to own a module, and models/commands need
+# to import it without dragging in this module's model dependencies.
+
 
 # A redundant "Chapter <n>." prefix (word / digit / roman numeral, any
 # separator) — the reader already shows the chapter number, so it reads as
@@ -100,32 +87,6 @@ def _titlecase_caps(s: str) -> str:
         else:
             out.append(_cap_first(low))
     return " ".join(out)
-
-
-def clean_html(node: Tag) -> str:
-    """Reduce a parsed content node to safe, attribute-free HTML."""
-    for sel in DROP_SELECTORS:
-        for el in node.select(sel):
-            el.decompose()
-    for tag in node.find_all(True):
-        if tag.name not in ALLOWED_TAGS:
-            tag.unwrap()
-        else:
-            tag.attrs = {}
-    html = node.decode_contents() if isinstance(node, Tag) else str(node)
-    html = _PAGE_MARKER.sub("", html)
-    html = _WS.sub(" ", html)
-    # Drop blocks left empty — including spacer paragraphs whose only content is
-    # a <br> (CCEL uses <p><br/></p> for vertical space; in a reflowable reader
-    # that renders as a ragged gap).
-    html = re.sub(r"<(p|h2|h3|h4|blockquote|li)>(?:\s|<br\s*/?>)*</\1>", "", html)
-    return html.strip()
-
-
-def clean_fragment(html: str) -> str:
-    """Clean a raw HTML fragment string (re-parses it; non-mutating to caller)."""
-    wrapper = BeautifulSoup(f"<div>{html}</div>", "lxml").div
-    return clean_html(wrapper)
 
 
 def clean_title(raw: str) -> str:

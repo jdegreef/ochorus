@@ -22,6 +22,7 @@ from django.core.management.base import BaseCommand, CommandError
 from library.covers import cover_path
 from library.languages import config as language_config
 from library.models import Book, Chapter
+from library.sanitize import clean_fragment
 from library.translation import (
     translate_book_meta,
     translate_chapter,
@@ -120,6 +121,11 @@ class Command(BaseCommand):
             title, body_html, usage = translate_chapter(
                 client, language, chapter.title, chapter.body_html, effort=effort
             )
+            # The model's output is untrusted: it is a regex capture of generated
+            # text, produced from source prose scraped off the public web, and it
+            # lands in a column the reader renders with {@html}. Sanitize before
+            # it is stored, not hopefully at render.
+            body_html = clean_fragment(body_html)
             Chapter.objects.update_or_create(
                 book=target,
                 order=chapter.order,

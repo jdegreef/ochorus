@@ -27,6 +27,7 @@ from django.core.management.base import BaseCommand, CommandError
 
 from library.contemporize import MODERN_LANGUAGE, modernize_chapter, modernize_light
 from library.models import Book, Chapter
+from library.sanitize import clean_fragment
 
 
 def _word_count(body_html: str) -> int:
@@ -115,6 +116,10 @@ class Command(BaseCommand):
                 )
                 total_in += usage.input_tokens
                 total_out += usage.output_tokens
+            # Untrusted in both modes: the model path returns generated text, and
+            # the light path rewrites source prose scraped off the public web.
+            # This column is rendered with {@html}.
+            body_html = clean_fragment(body_html)
             Chapter.objects.update_or_create(
                 book=target,
                 order=chapter.order,
