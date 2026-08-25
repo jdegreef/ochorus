@@ -1,0 +1,15 @@
+{
+ "kind": "bio",
+ "slug": "richard-baxter",
+ "language": "uk",
+ "job_issue": 808,
+ "pull_request": null,
+ "references": [],
+ "note": [
+  "The English bio quotes no scripture verbatim and carries no Book C:V citations; every quotation in it is the subject's own words.",
+  "Take Root API is egress-blocked from this container (curl to api.takeroot.bible returns 000). The Kulish text was fetched instead from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/ukr_pan), all 66 books, and every span below was lifted from it byte-for-byte rather than typed.",
+  "Baxter's hymn 'The Covenant and Confidence of Faith' in the prayer callout is VERSE, not scripture, and is rendered as such.",
+  "Latin left untranslated, matching the shipped convention for non-English titles: Reliquiae Baxterianae, Praematura Senectus, habeas corpus.",
+  "Also filed under #883, a duplicate of this job."
+ ]
+}

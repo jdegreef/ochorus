@@ -1,0 +1,26 @@
+{
+ "kind": "bio",
+ "slug": "catherine-booth",
+ "language": "uk",
+ "job_issue": 785,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "2 Corinthians 6:14a",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text — ebible ukr_pan, public domain"
+  },
+  {
+   "reference": "2 Corinthians 12:9a",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text — ebible ukr_pan, public domain"
+  }
+ ],
+ "note": [
+  "Take Root API is egress-blocked from this container (curl to api.takeroot.bible returns 000). The Kulish text was fetched instead from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/ukr_pan), all 66 books, and every span below was lifted from it byte-for-byte rather than typed.",
+  "2 Cor 6:14a — «Не ходїть у жадному ярмі з невірними» — the verse she read when breaking off her engagement.",
+  "2 Cor 12:9a — «Доволї з тебе благодати моєї» — the text hung at the foot of her deathbed.",
+  "Both are the opening clause only, so recorded with the 'a' suffix; the rest of each verse is not quoted.",
+  "Charles Wesley's hymn lines in the answered-prayer callout are a HYMN, not scripture, and are rendered as verse, not mined."
+ ]
+}

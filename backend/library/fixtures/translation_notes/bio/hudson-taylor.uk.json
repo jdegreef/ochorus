@@ -1,0 +1,19 @@
+{
+ "kind": "bio",
+ "slug": "hudson-taylor",
+ "language": "uk",
+ "job_issue": 806,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text — ebible ukr_pan, public domain"
+  }
+ ],
+ "note": [
+  "Take Root API is egress-blocked from this container (curl to api.takeroot.bible returns 000). The Kulish text was fetched instead from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/ukr_pan), all 66 books, and every span below was lifted from it byte-for-byte rather than typed.",
+  "John 19:30 — «Звершилось» — the cry from the cross, the phrase on which his conversion turned. Kulish renders 'It is finished' as a single word, which is why the surrounding sentence carries the sense the English spreads over three.",
+  "Also filed under #884, a duplicate of this job."
+ ]
+}

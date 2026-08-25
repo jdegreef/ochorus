@@ -1,0 +1,15 @@
+{
+ "kind": "bio",
+ "slug": "thomas-watson",
+ "language": "uk",
+ "job_issue": 809,
+ "pull_request": null,
+ "references": [],
+ "note": [
+  "The English bio quotes no scripture verbatim and carries no Book C:V citations; every quotation in it is the subject's own words.",
+  "Take Root API is egress-blocked from this container (curl to api.takeroot.bible returns 000). The Kulish text was fetched instead from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/ukr_pan), all 66 books, and every span below was lifted from it byte-for-byte rather than typed.",
+  "2 Corinthians 7:1 and Romans 8:28 are named as sermon TEXTS but never quoted, so nothing is recorded for them — recording a reference the English only points at overstates the coverage.",
+  "'pro re nata' left untranslated, as a non-English phrase.",
+  "Also filed under #882, a duplicate of this job."
+ ]
+}
