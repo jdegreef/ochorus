@@ -23,6 +23,7 @@
     "library/data/topic_translations",
     "library/migrations/data",
     "library/topic_seed.py",
-    "library/plan_seed.py"
+    "library/plan_seed.py",
+    "library/corrections.py"
   ]
 }

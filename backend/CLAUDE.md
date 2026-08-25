@@ -65,8 +65,16 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
   `manage.py content_version` prints the digest; compare it with
   `/api/health/`'s to tell "the reader is stale" from "something else is wrong".
   A root is normally a directory; a single file is allowed and is how the seed
-  DATA modules (`topic_seed.py`, `plan_seed.py`) are covered — keep reader-visible
-  seed literals in those, not in the `seed_*` commands, which nothing watches.
+  DATA modules (`topic_seed.py`, `plan_seed.py`, `corrections.py`) are covered —
+  keep reader-visible seed literals in those, not in the `seed_*` commands, which
+  nothing watches.
+  **You no longer have to remember this**: `tests_fixture.ReleaseProseSourceCoverageTests`
+  walks the release chain, follows its `library` imports, finds the modules
+  carrying prose, and fails on any that is neither a declared root nor explicitly
+  exempt (with a reason). `corrections.py` was missing for exactly as long as
+  nothing checked — `apply_body_corrections` rewrites chapter and sermon
+  `body_html` on every deploy, so a prose fix reached the API, moved no digest,
+  and never rebuilt the page showing it.
 - **Reviewing a content diff: `manage.py content_diff`.** Raw, a one-word fix in
   a chapter is a 36 KB diff of escaped HTML (the body is a single JSON line); as
   prose it is one line that names the chapter and paragraph. `--install` wires

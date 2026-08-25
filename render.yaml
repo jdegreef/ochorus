@@ -95,6 +95,11 @@ services:
         # `/**` over a Python package would sweep in __pycache__.
         - backend/library/topic_seed.py
         - backend/library/plan_seed.py
+        # apply_body_corrections runs on EVERY deploy and rewrites chapter and
+        # sermon body_html from this file, so an added correction changes the
+        # prose readers see — and, until this entry existed, changed nothing
+        # about whether the reader rebuilt to show it.
+        - backend/library/corrections.py
     # --- Security headers ---------------------------------------------------
     # The reader had none. That matters more here than on a typical static site:
     # the Supabase access token lives in localStorage and is attached as a Bearer
