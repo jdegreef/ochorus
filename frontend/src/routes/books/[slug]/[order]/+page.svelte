@@ -358,7 +358,7 @@
 		if (Number.isFinite(jumpTo) && jumpTo > 0) saveScrollAnchor(s, order, jumpTo);
 
 		saveProgress(s, order, language);
-		bookmarks.load(s);
+		bookmarks.load('book', s);
 
 		// A backward chapter turn in page mode asks to land on the last page.
 		const wantLast = $page.url.searchParams.get('pg') === 'last';

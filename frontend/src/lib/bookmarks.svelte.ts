@@ -1,11 +1,27 @@
-import { BOOKMARKS_KEY, type Bookmark, type BookmarksStore } from './reading-schema';
+import {
+	BOOKMARKS_KEY,
+	parseWorkSlugKey,
+	workSlugKey,
+	type Bookmark,
+	type BookmarksStore,
+	type WorkKind
+} from './reading-schema';
 import { readJSON, writeJSON } from './persisted';
 
 /**
- * Explicit bookmarks — places the reader saved on purpose (a chapter + paragraph),
- * distinct from the single auto-saved resume point (`progress.ts`) and from
- * text-range highlights (`marks.svelte.ts`). Device-local in localStorage for
- * now; account-sync can follow the marks/progress pattern later.
+ * Explicit bookmarks — places the reader saved on purpose (a paragraph within a
+ * work), distinct from the single auto-saved resume point (`progress.ts`) and
+ * from text-range highlights (`marks.svelte.ts`). Device-local in localStorage
+ * for now; account-sync can follow the marks/progress pattern later.
+ *
+ * Keyed by `workSlugKey`, so all three long-form kinds can be bookmarked. Books
+ * stay under their bare slug, which is what keeps every bookmark saved before
+ * this change exactly where it was — the same compatibility rule marks and
+ * progress already follow. A sermon and a book may legitimately share a slug,
+ * and before the prefix they would have shared a bookmark list.
+ *
+ * A sermon or biography is a single document: its `order` is always 1
+ * (SERMON_CHAPTER_ORDER / BIO_CHAPTER_ORDER), so `p` alone locates the spot.
  */
 
 const readAll = (): BookmarksStore => readJSON<BookmarksStore>(BOOKMARKS_KEY, {});
@@ -14,28 +30,28 @@ const writeAll = (store: BookmarksStore) => writeJSON(BOOKMARKS_KEY, store);
 const byPosition = (a: Bookmark, b: Bookmark) => a.order - b.order || a.p - b.p;
 
 class Bookmarks {
-	/** Reactive bookmarks of the currently open book, in reading order. */
+	/** Reactive bookmarks of the currently open work, in reading order. */
 	list = $state<Bookmark[]>([]);
-	#slug = '';
+	#key = '';
 
-	load(slug: string) {
-		this.#slug = slug;
+	load(kind: WorkKind, slug: string) {
+		this.#key = workSlugKey(kind, slug);
 		this.#hydrate();
 	}
 
 	#hydrate() {
-		this.list = [...(readAll()[this.#slug] ?? [])].sort(byPosition);
+		this.list = [...(readAll()[this.#key] ?? [])].sort(byPosition);
 	}
 
 	/** Re-read after the cache was replaced underneath us (e.g. sign-in sync). */
 	refresh() {
-		if (this.#slug) this.#hydrate();
+		if (this.#key) this.#hydrate();
 	}
 
 	#persist() {
 		const store = readAll();
-		if (this.list.length === 0) delete store[this.#slug];
-		else store[this.#slug] = this.list;
+		if (this.list.length === 0) delete store[this.#key];
+		else store[this.#key] = this.list;
 		writeAll(store);
 	}
 
@@ -72,12 +88,13 @@ class Bookmarks {
 		this.#persist();
 	}
 
-	/** Every bookmark across all books, for the notebook. */
-	all(): (Bookmark & { slug: string })[] {
+	/** Every bookmark across every work, for the notebook. */
+	all(): (Bookmark & { kind: WorkKind; slug: string })[] {
 		const store = readAll();
-		return Object.entries(store).flatMap(([slug, list]) =>
-			list.map((b) => ({ ...b, slug }))
-		);
+		return Object.entries(store).flatMap(([key, list]) => {
+			const { kind, slug } = parseWorkSlugKey(key);
+			return list.map((b) => ({ ...b, kind, slug }));
+		});
 	}
 }
 
