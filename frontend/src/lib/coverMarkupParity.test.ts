@@ -1,0 +1,248 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { mount, unmount } from 'svelte';
+import { afterEach, describe, expect, it } from 'vitest';
+
+import BookCover from './components/BookCover.svelte';
+import { coverTypeMarkup, type CoverCardBook } from './coverCardMarkup';
+import type { BookSummary } from '$lib/library-public';
+
+/**
+ * The two renderers, held against each other.
+ *
+ * A cover is drawn twice: by `BookCover.svelte` in the browser, and by
+ * `scripts/generate-cover-og.mjs` into the share card that a link preview
+ * shows. The second cannot mount a Svelte component, so it builds the same
+ * tree by hand — and until this file existed, NOTHING compared the two. They
+ * had drifted in three ways that all change pixels, and every one of them was
+ * invisible because twins are only built for English books today:
+ *
+ *   * no `script-<x>` class, so the first Arabic or Hindi card would take the
+ *     Latin face;
+ *   * no `dir="auto"`, so an Arabic card would lay out left-to-right;
+ *   * no `lang`, so the browser would shape and hyphenate it as English.
+ *
+ * WHAT THIS GATES IS THE PIXELS, not the markup byte for byte. A share card is
+ * a raster: it has no accessibility tree, so `role`, `aria-label` and
+ * `aria-hidden` cannot change it, and a gate demanding those match would be
+ * asserting something it does not care about. Structure, classes, `lang` and
+ * `dir` all decide what gets drawn, so those must agree exactly.
+ */
+const book = (over: Partial<BookSummary> = {}): BookSummary =>
+	({
+		slug: 'waiting-on-god',
+		title: 'Waiting on God',
+		subtitle: '',
+		author: { slug: 'andrew-murray', name: 'Andrew Murray', birth_year: 1828 },
+		cover_url: '',
+		cover_color: '#1864ab',
+		chapter_count: 31,
+		word_count: 20000,
+		language: 'en',
+		source_type: 'public_domain',
+		...over
+	}) as BookSummary;
+
+const LOCKUP = readFileSync(
+	join(process.cwd(), 'src/lib/brand/ochorus-lockup.svg'),
+	'utf8'
+);
+
+let target: HTMLElement;
+let component: Record<string, unknown> | undefined;
+
+afterEach(() => {
+	if (component) unmount(component);
+	component = undefined;
+	target?.remove();
+});
+
+/** Mount the real component and hand back its `.cover-type` element. */
+function rendered(props: Partial<BookSummary>): Element {
+	target = document.createElement('div');
+	document.body.appendChild(target);
+	component = mount(BookCover, { target, props: { book: book(props) } }) as Record<
+		string,
+		unknown
+	>;
+	const el = target.querySelector('.cover-type');
+	expect(el, 'BookCover drew no .cover-type at all').not.toBeNull();
+	return el!;
+}
+
+/** Parse the script's markup and hand back its `.cover-type` element. */
+function built(card: CoverCardBook): Element {
+	const host = document.createElement('div');
+	host.innerHTML = coverTypeMarkup(card, LOCKUP);
+	const el = host.querySelector('.cover-type');
+	expect(el, 'coverTypeMarkup drew no .cover-type at all').not.toBeNull();
+	return el!;
+}
+
+/**
+ * An element reduced to what a RASTER can tell apart: its tag, its classes, and
+ * the attributes that change how the browser draws it.
+ *
+ * `style` is deliberately included — the brandmark's `--h` is what sizes the
+ * mark, so a card that dropped it would draw the logo at its default height.
+ * Text is deliberately excluded: the two callers are given different books in
+ * the wild, and the words are not what drifts.
+ */
+function skeleton(el: Element): unknown {
+	// `svelte-<hash>` is the compiler's style scoping, not markup anyone wrote —
+	// it appears on exactly the elements whose component has a `<style>` block,
+	// and the script has no equivalent because it inlines the stylesheet whole.
+	const classes = [...el.classList].filter((c) => !/^svelte-[a-z0-9]+$/.test(c)).sort();
+	const attrs: Record<string, string> = {};
+	for (const name of ['lang', 'dir', 'style']) {
+		const v = el.getAttribute(name);
+		// Svelte serialises a style attribute with a trailing `;` and the string
+		// version has none. Same declaration, two spellings.
+		if (v !== null) attrs[name] = v.replace(/\s+/g, ' ').replace(/;$/, '').trim();
+	}
+	return {
+		tag: el.tagName.toLowerCase(),
+		classes,
+		attrs,
+		// The lockup is a whole SVG document in both; comparing its innards would
+		// be comparing the brand file to itself. Its PRESENCE is the property.
+		children: el.classList.contains('brandmark')
+			? [`<svg>x${el.querySelectorAll('svg').length}`]
+			: [...el.children].map(skeleton)
+	};
+}
+
+describe('the two cover renderers agree', () => {
+	// One Latin book and one of every script the library is read in. The Latin
+	// case alone would have passed the whole time this was broken.
+	//
+	// EVERY CASE CARRIES A GROUND, because that is the branch the share card
+	// mirrors. `BookCover` draws the type over a file (`overFile`) or, when a
+	// book has no cover at all, over a CSS plate — and only the first can ever
+	// be photographed, since the script is handed a ground to draw. Written
+	// against the coverless branch this gate compared the card to a tree the
+	// script never produces, and disagreed about the emblem band for a reason
+	// that was the test's fault rather than the code's.
+	const PLATE = '/covers/waiting-on-god.svg';
+	const ART = '/covers/art/waiting-on-god.jpg';
+	const cases: Array<[string, Partial<BookSummary>, Partial<CoverCardBook>]> = [
+		['a plate, no subtitle', { cover_url: PLATE }, {}],
+		[
+			'a painting',
+			{ cover_url: ART },
+			// A painting has no emblem beneath it to leave room for.
+			{ art: true }
+		],
+		[
+			'a plate with a subtitle',
+			{ cover_url: PLATE, subtitle: 'Thoughts on the Nearness of God' },
+			{ subtitle: 'Thoughts on the Nearness of God' }
+		],
+		[
+			'arabic',
+			{ cover_url: PLATE, language: 'ar', title: 'انتظار الله', subtitle: 'تأملات' },
+			{ lang: 'ar', script: 'arabic', title: 'انتظار الله', subtitle: 'تأملات' }
+		],
+		[
+			'devanagari',
+			{ cover_url: PLATE, language: 'hi', title: 'परमेश्वर की प्रतीक्षा' },
+			{ lang: 'hi', script: 'devanagari', title: 'परमेश्वर की प्रतीक्षा' }
+		],
+		[
+			'cyrillic',
+			{ cover_url: PLATE, language: 'uk', title: 'Чекання на Бога' },
+			{ lang: 'uk', script: 'cyrillic', title: 'Чекання на Бога' }
+		]
+	];
+
+	for (const [name, props, card] of cases) {
+		it(`draws the same tree for ${name}`, () => {
+			const fromComponent = skeleton(rendered(props));
+			const fromScript = skeleton(
+				built({
+					author: 'Andrew Murray',
+					title: props.title ?? 'Waiting on God',
+					subtitle: null,
+					style: 'devotional',
+					script: null,
+					lang: props.language ?? 'en',
+					// A plate by default; the painting case overrides it below.
+					// `BookCover` reserves the band for a PLATE specifically — not for
+					// a painting, which has no emblem beneath it, and not for the
+					// coverless CSS fallback, which no share card is ever made from.
+					art: false,
+					...card
+				})
+			);
+			expect(
+				fromScript,
+				`the share card's markup has drifted from the component's for ${name} — ` +
+					`a link preview would be drawn differently from the page it points at`
+			).toEqual(fromComponent);
+		});
+	}
+
+	it('gives a non-latin card the script class that picks its face', () => {
+		// The specific regression this file was written for, asserted head-on so
+		// a failure names it rather than showing a tree diff.
+		for (const [lang, script] of [
+			['ar', 'arabic'],
+			['hi', 'devanagari'],
+			['uk', 'cyrillic']
+		]) {
+			const el = built({
+				author: 'Andrew Murray',
+				title: 'x',
+				style: 'devotional',
+				script,
+				lang,
+				art: false
+			});
+			expect(
+				[...el.classList],
+				`a ${lang} share card carries no script-${script}, so it would be set in ` +
+					`the Latin face`
+			).toContain(`script-${script}`);
+			expect(el.querySelector('.title')?.getAttribute('dir')).toBe('auto');
+			expect(el.querySelector('.title')?.getAttribute('lang')).toBe(lang);
+		}
+	});
+
+	it('leaves the emblem band off a painting, as the component does', () => {
+		// A painting has no emblem under it to leave room for; a plate does. Get
+		// this wrong and every painted card's title sits at the wrong height.
+		expect(
+			built({
+				author: 'a',
+				title: 'b',
+				style: 'devotional',
+				lang: 'en',
+				art: true
+			}).querySelector('.emblem-band')
+		).toBeNull();
+		expect(
+			built({
+				author: 'a',
+				title: 'b',
+				style: 'devotional',
+				lang: 'en',
+				art: false
+			}).querySelector('.emblem-band')
+		).not.toBeNull();
+	});
+
+	it('escapes what it interpolates', () => {
+		// The script builds a string; the component builds nodes. A title with a
+		// bracket in it is the one input that can turn one into markup.
+		const el = built({
+			author: 'a"b',
+			title: '<script>x</script>',
+			style: 'devotional',
+			lang: 'en',
+			art: false
+		});
+		expect(el.querySelectorAll('script')).toHaveLength(0);
+		expect(el.querySelector('.title')?.textContent).toBe('<script>x</script>');
+		expect(el.querySelector('.byline')?.textContent).toBe('a"b');
+	});
+});

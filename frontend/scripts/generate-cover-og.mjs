@@ -86,7 +86,13 @@ import sharp from 'sharp';
 // runtime for exactly this reason — see `coverStyles.ts`'s header and
 // `nodeLoadable.test.ts`.
 import { isArtCover, isPlateCover } from '../src/lib/coverArt.ts';
-import { coverStyleFor } from '../src/lib/coverStyles.ts';
+// The cover's type, as markup — the same tree `BookCover` renders, stated once
+// so `coverMarkupParity.test.ts` can hold the two renderers against each other.
+// It used to be hand-built below, and had drifted into a card with no
+// `script-` class, no `lang` and no `dir`: an Arabic preview would have been
+// set in the Latin face and laid out left-to-right.
+import { coverTypeMarkup } from '../src/lib/coverCardMarkup.ts';
+import { coverStyleFor, scriptOf } from '../src/lib/coverStyles.ts';
 import { eraOf } from '../src/lib/eras.ts';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -154,6 +160,14 @@ function needTwins() {
 				// from the app's own module rather than restated here.
 				style: coverStyleFor(eraOf(author.birth_year), author.slug),
 				cover,
+				// The edition's language, and the script its type is set in — both
+				// through the app's own table. Only English books get a twin today,
+				// so these are `en`/null for every card this script currently draws;
+				// they are read rather than hardcoded so that the day a translated
+				// edition gets one, it is set in its own face rather than silently
+				// in Latin.
+				language: fields.language || 'en',
+				script: scriptOf(fields.language || 'en'),
 				// Which tier, through the app's own predicates rather than a fourth
 				// hand-written copy of "what is a painting".
 				art: isArtCover(cover)
@@ -250,9 +264,6 @@ function buildFontCss() {
  *  `needTwins` alone and should not pay for it at all. */
 let FONT_CSS;
 
-const escape = (s) =>
-	s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-
 /** The brand lockup, from the copy `BrandMark.svelte` itself renders. */
 const LOCKUP = readFileSync(resolve(HERE, '../src/lib/brand/ochorus-lockup.svg'), 'utf8');
 
@@ -284,13 +295,15 @@ function inputs(book, ground) {
  * plate, because the two tiers are the same shape: a wordless ground with the
  * book's type over it.
  *
- * THE COMPOSITION IS NOT WRITTEN HERE. `cover-type.css` is inlined whole, so
- * this renders the rules `BookCover` renders, not a copy of them. It used to be
- * a copy — the frame, the byline, the title ramp, all three rule ornaments, the
- * scrim's four stops — and the copy is what shipped 37 twins set in Times.
- * There is no way to mount a Svelte component in here, but there is no longer
- * anything to keep in step either: the markup below is the component's markup,
- * and everything about how it looks comes from that file.
+ * NEITHER THE COMPOSITION NOR THE MARKUP IS WRITTEN HERE. `cover-type.css` is
+ * inlined whole, so this renders the rules `BookCover` renders rather than a
+ * copy of them — it used to be a copy, and the copy is what shipped 37 twins
+ * set in Times. The TREE was still a copy after that, and drifted the same way:
+ * no `script-` class, no `lang`, no `dir`, so the first translated card would
+ * have been set in the Latin face and laid out left-to-right. It now comes from
+ * `coverCardMarkup.ts`, which `coverMarkupParity.test.ts` renders the component
+ * against. There is still no way to mount Svelte in here — there is just no
+ * longer anything left in here to keep in step by hand.
  */
 function coverPage(book, groundBytes) {
 	// A painting is an <img> so `object-fit` can crop it; a plate is inlined,
@@ -313,16 +326,18 @@ html,body{margin:0}
 <div class="card">
   ${ground}
   <div class="cover-plate over-file${book.art ? ' over-art' : ''}">
-    <div class="cover-type style-${book.style}">
-      <div class="byline">${escape(book.author)}</div>
-      <div class="middle">
-        <div class="title">${escape(book.title)}</div>
-        <div class="rule"></div>
-        ${book.subtitle ? `<div class="subtitle">${escape(book.subtitle)}</div>` : ''}
-      </div>
-      ${book.art ? '' : '<div class="emblem-band"></div>'}
-      <div class="brandmark">${LOCKUP}</div>
-    </div>
+    ${coverTypeMarkup(
+			{
+				author: book.author,
+				title: book.title,
+				subtitle: book.subtitle,
+				style: book.style,
+				script: book.script,
+				lang: book.language,
+				art: book.art
+			},
+			LOCKUP
+		)}
   </div>
 </div>`;
 }
@@ -428,6 +443,15 @@ async function main() {
 				// would demand an 8 MB, 37-binary regeneration for a typo in a
 				// docstring. That is how a gate earns being deleted.
 				css: digest(Buffer.from(COVER_CSS)),
+				// AND THE TREE THOSE RULES ARE HUNG ON, for the same reason. The
+				// stylesheet decides how a card looks only given the markup, and the
+				// markup is a second file that can change on its own: reorder the
+				// title and the rule, drop the `script-` class, and every committed
+				// twin keeps the old arrangement with `css` unmoved. Digesting the
+				// module rather than each card's output because it is the SOURCE that
+				// drifts — a card's own markup already reaches the picture through
+				// the byte comparison above.
+				markup: digest(readFileSync(resolve(HERE, '../src/lib/coverCardMarkup.ts'))),
 				twins: Object.fromEntries(Object.entries(manifest).sort(([a], [b]) => a.localeCompare(b)))
 			},
 			null,

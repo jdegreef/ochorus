@@ -102,6 +102,26 @@ describe('the og twins were drawn with the composition that ships now', () => {
 				'npm run og:covers`'
 		).toBe(drawn);
 	});
+
+	it('records the markup the cards were drawn from', () => {
+		// The stylesheet only decides how a card looks GIVEN a tree to hang on, and
+		// the tree is a second file that moves on its own. `coverCardMarkup.ts` is
+		// what the script builds each card from, and a change there — a reordered
+		// title and rule, a dropped `script-` class — leaves every committed twin
+		// on the old arrangement with `css` unmoved and every other gate green.
+		// The same hole as the one above, one file over.
+		//
+		// NOT comment-stripped, unlike the stylesheet: this is a TypeScript module
+		// of about a hundred lines, not a document that is half prose, so digesting
+		// it whole costs nothing anyone will resent and needs no parser that could
+		// itself be wrong about what a comment is.
+		const source = readFileSync(join(process.cwd(), 'src/lib/coverCardMarkup.ts'));
+		expect(
+			manifestFile().markup,
+			'the cover markup changed but the og:image twins did not — every shared ' +
+				'link would show the previous tree. Run `cd frontend && npm run og:covers`'
+		).toBe(createHash('sha256').update(source).digest('hex'));
+	});
 });
 
 describe('the og twins were drawn in the style the table names now', () => {
