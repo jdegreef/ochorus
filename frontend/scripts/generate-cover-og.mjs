@@ -226,24 +226,57 @@ const dataUri = (file, mime) => `data:${mime};base64,${readFileSync(file).toStri
  * committed twins shipped set in Times, silently, while both test suites stayed
  * green. Adding a sixth cover face is now one edit in `app.css`, not four.
  *
- * Latin AND latin-ext: a twin is an English card, but an English card's title
- * can still carry a name the latin subset does not cover, and the two files
- * together are ~11 rather than ~6. Italic and every other subset are dropped —
- * only the title takes a cover face, and it is never italic.
+ * PER SCRIPT, and that is the correction that matters. This inlined the latin
+ * subset of the FIRST family in each token and nothing else, on the stated
+ * grounds that "a twin is an English card" — true when it was written, false
+ * the moment translated editions got cards of their own. The effect was not a
+ * missing file but a silent substitution: `Amiri` appeared in the token block,
+ * so the stack named it, while no `@font-face` for it ever reached the page.
+ * Measured on the real card before this change, an Arabic title resolved to
+ * Liberation Serif and Unifont — the runner's system fallbacks — where the page
+ * it stands in for resolves to Amiri.
+ *
+ * So the families are every quoted name in the tokens, and the subsets are
+ * latin, latin-ext and the CARD'S OWN script. An English card still pays for
+ * latin alone; an Arabic one adds Arabic and nothing else. Italic is dropped
+ * throughout — only the title takes a cover face, and it is never italic.
  */
-function buildFontCss() {
+function buildFontCss(script) {
 	// The token block first: it is also the list of families a cover can ask
 	// for, which is how the reader's OpenDyslexic and the UI's Hanken are left
 	// out without naming either of them here.
 	const tokens = [...APP_CSS.matchAll(/^\s*(--(?:cover-face-[a-z]+|font-display):[^;]+);/gm)].map(
 		([, decl]) => decl.trim()
 	);
-	// The families a cover can ask for: the FIRST quoted name in each token, which
-	// is the webfont — the rest of a stack is Georgia and the generic, which have
-	// no @font-face to find and would make the completeness check below a lie.
+	// EVERY quoted name in the tokens, because a stack's script faces sit after
+	// its first: `--font-display` names Fraunces, then Amiri, then Tiro, then PT
+	// Serif. Taking only the first is what left every non-Latin card unserved.
 	const wanted = new Set(
+		tokens.flatMap((decl) => [...decl.matchAll(/'([^']+)'/g)].map(([, f]) => f))
+	);
+	// The RECIPE face — still the first name in each token — is the one whose
+	// absence means a cover renders in the fallback and looks deliberate, so it
+	// stays the thing the completeness check below insists on. The rest of a
+	// stack is script faces (checked separately, against the script actually
+	// being drawn) and device families like 'Times New Roman', which ship no
+	// package and would make that check throw on every run.
+	const recipeFaces = new Set(
 		tokens.map((decl) => /'([^']+)'/.exec(decl)?.[1]).filter((f) => f !== undefined)
 	);
+	// latin always — even an Arabic card sets its byline in it — plus the card's
+	// own. Cyrillic takes its ext too: PT Serif splits Ukrainian's ґ out of the
+	// base block, the same split that hid the gap in `--font-sans`.
+	const subsets = ['latin', 'latin-ext'];
+	if (script === 'arabic') subsets.push('arabic');
+	if (script === 'devanagari') subsets.push('devanagari');
+	if (script === 'cyrillic') subsets.push('cyrillic', 'cyrillic-ext');
+	const wantedSubset = new RegExp(`url\\(\\./files/[^)]*-(${subsets.join('|')})-`);
+	// Recorded HERE, while the filenames are still filenames. The blocks are
+	// rewritten below to carry the woff2 inline, which is what a data URI is for
+	// — and that erases the only evidence of which subset a block was. Asking
+	// afterwards is asking the wrong text: it looks like no script face arrived,
+	// on a run where all of them did.
+	const subsetsSeen = new Set();
 
 	const faces = [...APP_CSS.matchAll(/@import '(@fontsource[^']+)'/g)].flatMap(([, spec]) => {
 		// A bare package specifier ('@fontsource-variable/fraunces') is its
@@ -255,9 +288,13 @@ function buildFontCss() {
 			.split('@font-face')
 			.slice(1)
 			.map((block) => `@font-face${block.slice(0, block.indexOf('}') + 1)}`)
-			// One block per subset, per style. Latin only — a twin is the English
-			// card — upright only, and only a family some cover can name.
-			.filter((block) => /url\(\.\/files\/[^)]*-latin(-ext)?-/.test(block))
+			// One block per subset, per style: the card's subsets, upright only,
+			// and only a family some cover can name.
+			.filter((block) => {
+				const hit = wantedSubset.exec(block);
+				if (hit) subsetsSeen.add(hit[1]);
+				return hit !== null;
+			})
 			.filter((block) => !/font-style:\s*italic/.test(block))
 			.filter((block) => wanted.has(/font-family:\s*'([^']+)'/.exec(block)?.[1] ?? ''))
 			.map((block) =>
@@ -279,7 +316,7 @@ function buildFontCss() {
 	const found = new Set(
 		faces.map((block) => /font-family:\s*'([^']+)'/.exec(block)?.[1]).filter((f) => f)
 	);
-	const missing = [...wanted].filter((family) => !found.has(family));
+	const missing = [...recipeFaces].filter((family) => !found.has(family));
 	if (missing.length) {
 		throw new Error(
 			`app.css names ${missing.join(', ')} in a --cover-face-* token but nothing ` +
@@ -287,13 +324,27 @@ function buildFontCss() {
 				`fallback face, and look deliberate.`
 		);
 	}
+	// AND THE SCRIPT ACTUALLY HAS A FACE. The check above asks whether each
+	// recipe's own family arrived; it cannot notice that an Arabic card carries
+	// six Latin faces and nothing that can draw an Arabic glyph, which is
+	// precisely what shipped. This asks the question the card is about.
+	if (script && !subsetsSeen.has(script)) {
+		throw new Error(
+			`no @font-face for ${script} reached the card — every ${script} twin would ` +
+				`render in whatever font the machine drawing it happens to have, and look ` +
+				`deliberate. Check that a --cover-face-* or --font-display token names a ` +
+				`family with a ${script} subset, and that app.css @imports it.`
+		);
+	}
 	return `${faces.join('')}:root{${tokens.join(';')}}`;
 }
 
-/** Built once, and only when a page is actually drawn: it was a per-book call
- *  (37 x 6 file reads), and `coverOgManifest.test.ts` imports this module for
- *  `needTwins` alone and should not pay for it at all. */
-let FONT_CSS;
+/** Built once PER SCRIPT, and only when a page is actually drawn: it was a
+ *  per-book call (37 x 6 file reads), and `coverOgManifest.test.ts` imports
+ *  this module for `needTwins` alone and should not pay for it at all. Keyed by
+ *  script because the faces a card needs depend on it — four entries at most,
+ *  and the library draws its cards in slug order, so the cache still holds. */
+const FONT_CSS = new Map();
 
 /** The brand lockup, from the copy `BrandMark.svelte` itself renders. */
 const LOCKUP = readFileSync(resolve(HERE, '../src/lib/brand/ochorus-lockup.svg'), 'utf8');
@@ -343,7 +394,9 @@ function coverPage(book, groundBytes) {
 	const ground = book.art
 		? `<img class="ground" src="data:image/jpeg;base64,${groundBytes.toString('base64')}" alt="">`
 		: `<div class="ground">${groundBytes.toString('utf8')}</div>`;
-	return `<style>${(FONT_CSS ??= buildFontCss())}${COVER_CSS}
+	const scriptKey = book.script ?? 'latin';
+	if (!FONT_CSS.has(scriptKey)) FONT_CSS.set(scriptKey, buildFontCss(book.script));
+	return `<style>${FONT_CSS.get(scriptKey)}${COVER_CSS}
 html,body{margin:0}
 /* The three things a page needs that a cover inside the app gets from its
    surroundings: the card's box, the ground's own placement, and the container
