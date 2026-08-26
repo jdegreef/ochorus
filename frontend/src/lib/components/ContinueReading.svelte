@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { coverGradient, coverSrcset } from '$lib/coverArt';
 	import { onMount } from 'svelte';
-	import { listSermons, type BookSummary, type SermonSummary } from '$lib/library';
+	import { listSermons, type BookSummary, type SermonSummary } from '$lib/library-public';
 	import { allProgress } from '$lib/progress';
 	import { workSlugKey } from '$lib/reading-schema';
 	import { bookProgressPercent } from '$lib/reading';

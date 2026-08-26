@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlanDetail } from '$lib/library';
+	import type { PlanDetail } from '$lib/library-public';
 	import { planProgress } from '$lib/planProgress.svelte';
 	import { readingMinutes, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';

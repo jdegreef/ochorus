@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Icon from '$lib/components/Icon.svelte';
-	import { type AuthorDetail, type AuthorBio, listAuthors, formatLifespan } from '$lib/library';
+	import { type AuthorDetail, type AuthorBio, listAuthors, formatLifespan } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { cssString } from '$lib/cssString';
 	import { absUrl, jsonLd, breadcrumb, hreflangAll } from '$lib/seo';

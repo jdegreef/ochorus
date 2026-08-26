@@ -2,12 +2,14 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import {
+		type SearchType
+	} from '$lib/library-public';
+	import {
 		getAdminSearchGap,
 		type AdminSearchGap,
 		getAdminSearchStats,
-		type SearchTopQuery,
-		type SearchType
-	} from '$lib/library';
+		type SearchTopQuery
+	} from '$lib/library-admin';
 
 	const stats = adminResource(
 		getAdminSearchStats,

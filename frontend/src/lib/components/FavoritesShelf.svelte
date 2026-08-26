@@ -9,7 +9,7 @@
 		type BookSummary,
 		type PlanSummary,
 		type SermonSummary
-	} from '$lib/library';
+	} from '$lib/library-public';
 	import { favorites, type FavoriteEntry } from '$lib/favorites.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { listSermons, type SermonSummary } from '$lib/library';
+	import { listSermons, type SermonSummary } from '$lib/library-public';
 	import { getLang } from '$lib/lang.svelte';
 	import { readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';

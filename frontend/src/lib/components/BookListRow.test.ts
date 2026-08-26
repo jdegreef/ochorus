@@ -4,7 +4,7 @@ import { mount, unmount } from 'svelte';
 import { afterEach, describe, expect, it } from 'vitest';
 
 import BookListRow from './BookListRow.svelte';
-import type { BookSummary } from '$lib/library';
+import type { BookSummary } from '$lib/library-public';
 
 /**
  * The row must show a whole title, on a phone as much as on a desk.

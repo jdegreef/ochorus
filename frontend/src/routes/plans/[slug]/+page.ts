@@ -1,4 +1,4 @@
-import { getPlan, listPlans } from '$lib/library';
+import { getPlan, listPlans } from '$lib/library-public';
 import { orNotFound } from '$lib/loadHelpers';
 import { getLang } from '$lib/lang.svelte';
 import type { EntryGenerator, PageLoad } from './$types';

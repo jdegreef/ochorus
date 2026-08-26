@@ -1,4 +1,4 @@
-import { listAuthors, listBooks, type BookSummary } from '$lib/library';
+import { listAuthors, listBooks, type BookSummary } from '$lib/library-public';
 import { getLang } from '$lib/lang.svelte';
 import { error } from '@sveltejs/kit';
 import { ERAS, eraById, eraOf } from '$lib/eras';

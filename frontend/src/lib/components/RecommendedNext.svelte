@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { listBooks, type BookSummary } from '$lib/library';
+	import { listBooks, type BookSummary } from '$lib/library-public';
 	import { allProgress } from '$lib/progress';
 	import { favorites } from '$lib/favorites.svelte';
 	import { getLang } from '$lib/lang.svelte';

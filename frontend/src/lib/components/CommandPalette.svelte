@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { search, type SearchHit } from '$lib/library';
+	import { search, type SearchHit } from '$lib/library-public';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';

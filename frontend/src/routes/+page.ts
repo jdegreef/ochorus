@@ -1,5 +1,5 @@
 import { building } from '$app/environment';
-import { listBooks, listAuthors, listTopics } from '$lib/library';
+import { listBooks, listAuthors, listTopics } from '$lib/library-public';
 import { pickByDay, dayNumber } from '$lib/dailyPicks';
 import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';

@@ -1,6 +1,6 @@
 import { SITE_URL } from '$lib/config';
 import { FEED_EPOCH, isoOrEpoch } from '$lib/feedDate';
-import { listBooks, listSermons } from '$lib/library';
+import { listBooks, listSermons } from '$lib/library-public';
 
 export const prerender = true;
 

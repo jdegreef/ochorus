@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
-	import { getAdminUsers } from '$lib/library';
+	import { getAdminUsers } from '$lib/library-admin';
 
 	const users = adminResource(getAdminUsers, 'Something went wrong loading users.');
 	const data = $derived(users.data);

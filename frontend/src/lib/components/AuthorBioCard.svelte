@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { type AuthorBio, type BookSummary, formatLifespan } from '$lib/library';
+	import { type AuthorBio, type BookSummary, formatLifespan } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { portraitPosition } from '$lib/portraits';

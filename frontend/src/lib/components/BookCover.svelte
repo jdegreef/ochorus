@@ -7,7 +7,7 @@
 	// script (see its header). Global rather than scoped, like app.css's other
 	// component classes, and namespaced under `.cover-*` so it cannot collide.
 	import './cover-type.css';
-	import type { BookSummary } from '$lib/library';
+	import type { BookSummary } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import BrandMark from './BrandMark.svelte';
 

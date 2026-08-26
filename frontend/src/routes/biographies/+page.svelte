@@ -2,7 +2,7 @@
 	import { onMount, tick } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { type AuthorBio, type BookSummary } from '$lib/library';
+	import { type AuthorBio, type BookSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumb } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';

@@ -4,12 +4,14 @@
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import LanguageSettingsCard from '$lib/components/LanguageSettingsCard.svelte';
 	import {
+		type SourceType
+	} from '$lib/library-public';
+	import {
 		getAdminLanguageDetail,
 		getAdminTranslationJobs,
 		createAdminTranslationJob,
 		type AdminLangBio,
 		type AdminTranslationJob,
-		type SourceType,
 		type TranslationJobType,
 		getAdminLanguageReadiness,
 		updateAdminLanguageThresholds,
@@ -18,7 +20,7 @@
 		goLiveAdminLanguage,
 		checkAdminLanguageDeploy,
 		type GoLiveResult
-	} from '$lib/library';
+	} from '$lib/library-admin';
 
 	let { data } = $props();
 

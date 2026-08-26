@@ -2,7 +2,8 @@
 	import { apiFetchRaw } from '$lib/api';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
-	import { getAdminStats, type SourceType } from '$lib/library';
+	import { type SourceType } from '$lib/library-public';
+	import { getAdminStats } from '$lib/library-admin';
 	import AddLanguageForm from '$lib/components/AddLanguageForm.svelte';
 
 	let exporting = $state<'csv' | 'json' | null>(null);

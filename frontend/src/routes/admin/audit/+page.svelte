@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
-	import { getAdminAudit, type AdminAudit, type AuditChapterFinding } from '$lib/library';
+	import { getAdminAudit, type AdminAudit, type AuditChapterFinding } from '$lib/library-admin';
 
 	const auditRes = adminResource(getAdminAudit, 'Something went wrong running the audit.');
 	const audit = $derived(auditRes.data);

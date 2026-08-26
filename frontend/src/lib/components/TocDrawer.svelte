@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Icon from '$lib/components/Icon.svelte';
-	import { getBook, type BookDetail } from '$lib/library';
+	import { getBook, type BookDetail } from '$lib/library-public';
 	import { getLang } from '$lib/lang.svelte';
 	import { getScrollAnchor } from '$lib/progress';
 	import { marks } from '$lib/marks.svelte';

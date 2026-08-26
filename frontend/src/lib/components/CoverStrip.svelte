@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { coverGradient, coverSrcset } from '$lib/coverArt';
-	import type { BookTile } from '$lib/library';
+	import type { BookTile } from '$lib/library-public';
 
 	/**
 	 * A small fanned "shelf peek" of book covers — the plan page's strip.

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { SermonSummary } from '$lib/library';
+	import type { SermonSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { itemList } from '$lib/seo';
 	import { localizeHref } from '$lib/href';

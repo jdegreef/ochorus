@@ -4,7 +4,7 @@ import { mount, unmount } from 'svelte';
 import { afterEach, describe, expect, it } from 'vitest';
 
 import BookCover from './BookCover.svelte';
-import type { BookSummary } from '$lib/library';
+import type { BookSummary } from '$lib/library-public';
 
 /**
  * The cover's type is drawn HERE, over whatever ground the book has, and these

@@ -1,5 +1,5 @@
 import { building } from '$app/environment';
-import { getChapterWithLang, listBooks, MODERN_EDITION } from '$lib/library';
+import { getChapterWithLang, listBooks, MODERN_EDITION } from '$lib/library-public';
 import { getLang } from '$lib/lang.svelte';
 import { orNotFound } from '$lib/loadHelpers';
 import type { EntryGenerator, PageLoad } from './$types';

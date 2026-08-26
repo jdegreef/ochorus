@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { isArtCover } from '$lib/coverArt';
-	import { type BookDetail, formatLifespan } from '$lib/library';
+	import { type BookDetail, formatLifespan } from '$lib/library-public';
 	import { getProgress } from '$lib/progress';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readingMinutes, readingTime } from '$lib/reading';

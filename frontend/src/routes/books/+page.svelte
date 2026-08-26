@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { BookSummary } from '$lib/library';
+	import type { BookSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { itemList } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';

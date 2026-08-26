@@ -8,7 +8,7 @@
 // og:image. The content-race, not a skipped build: verified 6 of 8 sampled
 // book pages still advertising ochorus.com artwork while the API served
 // /covers/. This touch re-prerenders now the migration is live.
-import { getBook, listBooks } from '$lib/library';
+import { getBook, listBooks } from '$lib/library-public';
 import { getLang } from '$lib/lang.svelte';
 import { orNotFound } from '$lib/loadHelpers';
 import type { EntryGenerator, PageLoad } from './$types';

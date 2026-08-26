@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { SermonSummary } from '$lib/library';
+	import type { SermonSummary } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { readingTime, preachedYear } from '$lib/reading';
