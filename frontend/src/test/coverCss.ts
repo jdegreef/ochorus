@@ -42,8 +42,18 @@ export const COVER_CSS_CODE = COVER_CSS.replace(/\/\*[\s\S]*?\*\//g, '');
  * hypothetical: it is how the weight gate came to report that `.style-press`
  * asked for no weight at all, and how the tracking gate passed on a block that
  * does not decide anything.
+ *
+ * SCANS THE COMMENT-STRIPPED TEXT BY DEFAULT, and that is not tidiness either.
+ * `[^{]*\{` run over the raw file walks forward from any PROSE that quotes a
+ * selector to the next real brace, and returns that unrelated block's body as
+ * though it belonged to the selector named in the comment. `.style-press
+ * .title` is quoted in a paragraph about cascade order, so scanning raw text
+ * returned `.script-arabic .title`'s body as a third `press` block — and since
+ * that phantom sets `font-weight: 400`, the weight gate read 400 no matter what
+ * the real recipe asked for. Verified: with the raw default, setting the press
+ * recipe to a 700 IM Fell has not got left every gate green.
  */
-export function blocksFor(selector: string, css = COVER_CSS): RegExpMatchArray[] {
+export function blocksFor(selector: string, css = COVER_CSS_CODE): RegExpMatchArray[] {
 	return [
 		...css.matchAll(new RegExp(`${selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[^{]*\\{([^}]*)\\}`, 'g'))
 	];
@@ -57,7 +67,7 @@ export function blocksFor(selector: string, css = COVER_CSS): RegExpMatchArray[]
  * decides. Returning the last match is that rule, written once, instead of in
  * each gate that depends on it.
  */
-export function lastDecl(selector: string, decl: RegExp, css = COVER_CSS): string | null {
+export function lastDecl(selector: string, decl: RegExp, css = COVER_CSS_CODE): string | null {
 	const found = blocksFor(selector, css)
 		.flatMap((m) => [...m[1].matchAll(new RegExp(decl, 'g'))])
 		.map((m) => m[1]);

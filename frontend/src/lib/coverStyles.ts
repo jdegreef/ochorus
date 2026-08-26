@@ -151,14 +151,22 @@ export const COVER_SCRIPTS = ['arabic', 'devanagari', 'cyrillic'] as const;
 /**
  * The scripts that letter-spacing DAMAGES rather than merely mistunes.
  *
- * Data rather than prose, because two gates and three CSS blocks act on it and
- * every one of them was carrying its own hand-written `['arabic',
- * 'devanagari']`. A fourth cursive script added to `COVER_SCRIPTS` used to
- * inherit a Latin arrangement in silence; now it fails the tracking gate with a
- * message that names what to do.
+ * Data rather than prose, so that a cursive script added to `COVER_SCRIPTS`
+ * fails the tracking gate naming what to do, instead of inheriting a Latin
+ * arrangement in silence.
  *
  * Cyrillic is absent and belongs absent: it is not cursive, and tracked
  * capitals are as right for it as for Latin.
+ *
+ * OTHER LISTS NAME THE SAME TWO SCRIPTS AND ARE NOT THIS ONE. They are
+ * deliberately not consolidated, because they are four different properties
+ * that merely coincide today: a face that must not LEAD a stack (`coverStyles
+ * .test.ts`, where a Cyrillic face may lead and an Arabic one may not); a
+ * script with NO ITALIC (Cyrillic has one, so the fake-slant correction skips
+ * it); a script `--font-sans` does not cover YET (`fontStacks.test.ts`, which
+ * changes the day that token gains them); and this one, a script that tracking
+ * damages. Folding them together would make a change to any one of them
+ * silently move the other three.
  */
 export const CURSIVE_SCRIPTS: readonly CoverScript[] = ['arabic', 'devanagari'];
 

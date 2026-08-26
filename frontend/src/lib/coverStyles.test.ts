@@ -7,6 +7,7 @@ import {
 	AUTHOR_STYLE,
 	COVER_SCRIPTS,
 	COVER_STYLE_IDS,
+	CURSIVE_SCRIPTS,
 	ERA_STYLE,
 	coverStyleFor,
 	scriptOf
@@ -362,7 +363,7 @@ describe('cover scripts', () => {
 		// apart into disconnected shapes; Devanagari has conjuncts that break the
 		// same way. Five of the six recipes set a tracking, `inscriptional` at
 		// 0.06em, and every one of them was doing this.
-		for (const script of ['arabic', 'devanagari']) {
+		for (const script of CURSIVE_SCRIPTS) {
 			// Across every block for the selector: the tracking is set in the one
 			// outside the container gate, the sizes in the one inside it.
 			const blocks = [

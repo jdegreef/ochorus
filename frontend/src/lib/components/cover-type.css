@@ -615,4 +615,12 @@
 	   size and the opacity carry that alone. */
 	opacity: 0.78;
 	line-height: 1.5;
+	/* AND THE SIZE THE TRACKED-CAPS BLOCK TOOK AWAY. That block cuts the
+	   subtitle to 2.9cqw because tracked capitals read larger than the 3.7cqw
+	   the base sets — but a caseless script gets no capitals and, corrected
+	   above, no tracking either, so it was simply being shrunk for a treatment
+	   it never receives. Restored to the base, which is what the three
+	   compositions that DON'T track already give it, so all six agree in
+	   Arabic and Devanagari. */
+	font-size: 3.7cqw;
 }

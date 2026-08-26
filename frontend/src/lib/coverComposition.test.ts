@@ -60,36 +60,46 @@ describe('cover compositions', () => {
 		// never needed it before these arrangements existed. One live cover sits on
 		// this: `the-way-to-god` in Arabic is a `revival` book with a real Arabic
 		// subtitle.
+		// Detected with the shared scanner, which follows a selector through a
+		// GROUP. The three compositions share one tracked-caps block, and only the
+		// last selector in that group is the one followed by `{` — a regex demanding
+		// `.style-<id> .subtitle {` therefore saw `revival` alone and would have let
+		// a change to `press` or `inscriptional` past.
 		const tracked = COVER_STYLE_IDS.filter((style) =>
-			new RegExp(`\\.cover-type\\.style-${style} \\.subtitle \\{[^}]*letter-spacing:\\s*[.\\d]`)
-				.test(COVER_CSS)
+			blocksFor(`.cover-type.style-${style} .subtitle`).some((m) =>
+				/letter-spacing:\s*[.\d]/.test(m[1])
+			)
 		);
-		expect(tracked.length, 'no composition tracks a subtitle; this gate is watching nothing')
-			.toBeGreaterThan(0);
-		for (const script of CURSIVE_SCRIPTS) {
-			// There are TWO `.script-<x> .subtitle` blocks — one inside the
-			// container gate giving the script its face, one at the foot correcting
-			// what a Latin recipe gets wrong. Both are three classes, exactly like
-			// the style blocks, so nothing but SOURCE ORDER decides which wins:
-			// the correction has to zero the tracking AND sit after the composition
-			// that set it. Checking the first block found would pass on the wrong
-			// one, which is what this gate did before it was fixed.
-			const zeroed = blocksFor(`.cover-type.script-${script} .subtitle`).filter((m) =>
-				/letter-spacing:\s*0(?![.\d])/.test(m[1])
-			);
-			expect(
-				zeroed.length,
-				`${tracked.join(', ')} track the subtitle, and no .script-${script} rule ` +
-					`zeroes it — those covers would have their subtitle torn apart`
-			).toBeGreaterThan(0);
+		expect(
+			tracked.length,
+			'no composition tracks a subtitle; this gate is watching nothing'
+		).toBeGreaterThan(1);
 
-			const lastTracking = Math.max(
-				...tracked.map((style) =>
-					COVER_CSS.search(new RegExp(`\\.cover-type\\.style-${style} \\.subtitle \\{`))
-				)
-			);
+		// The LAST rule wins: every selector here is three classes by construction,
+		// so nothing but source order decides. Both offsets are taken from the same
+		// comment-stripped text — mixing a stripped index with a raw one compares
+		// two different coordinate systems and silently drifts by the length of
+		// every comment between them.
+		const lastTracking = Math.max(
+			...tracked.flatMap((style) =>
+				blocksFor(`.cover-type.style-${style} .subtitle`).map((m) => m.index!)
+			)
+		);
+		for (const script of CURSIVE_SCRIPTS) {
+			// Two `.script-<x> .subtitle` blocks exist — one inside the container
+			// gate giving the script its face, one at the foot correcting what a
+			// Latin recipe gets wrong — so it is the last that has to do the zeroing,
+			// and it has to sit below the composition that set the tracking.
+			const blocks = blocksFor(`.cover-type.script-${script} .subtitle`);
+			expect(blocks.length, `no .script-${script} .subtitle rule at all`).toBeGreaterThan(0);
+			const winner = blocks[blocks.length - 1];
 			expect(
-				zeroed[zeroed.length - 1].index!,
+				winner[1],
+				`${tracked.join(', ')} track the subtitle, and the last .script-${script} ` +
+					`rule does not zero it — those covers would have their subtitle torn apart`
+			).toMatch(/letter-spacing:\s*0(?![.\d])/);
+			expect(
+				winner.index!,
 				`the ${script} correction sits above the compositions that track the ` +
 					`subtitle, so it loses the cascade and does nothing`
 			).toBeGreaterThan(lastTracking);
