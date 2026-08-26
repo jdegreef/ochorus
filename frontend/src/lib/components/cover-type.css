@@ -305,6 +305,9 @@
    ground through it on a painting and on a plate alike. A dot would have to be
    painted some colour, and every colour is wrong on a ground this file cannot
    see.
+   The viewBox is inset by a unit on every side because each lobe reaches 0.4
+   units beyond a `0 0 24 24` box and was being clipped FLAT — a straight edge
+   on all four petals, small enough to look like a design choice.
    NOT the printer's hedera, which is what was drawn here first. The hedera is
    the historically right mark — and it is heart-shaped, so at every size from
    300px down it read as the modern sentiment icon rather than as a leaf, which
@@ -314,22 +317,24 @@
 	width: 22cqw;
 	height: 5cqw;
 	background:
-		url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' opacity='.8'><circle cx='19' cy='12' r='5.4'/><circle cx='5' cy='12' r='5.4'/><circle cx='12' cy='19' r='5.4'/><circle cx='12' cy='5' r='5.4'/></svg>") center / auto 100% no-repeat,
+		url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-1 -1 26 26' fill='white' opacity='.8'><circle cx='19' cy='12' r='5.4'/><circle cx='5' cy='12' r='5.4'/><circle cx='12' cy='19' r='5.4'/><circle cx='12' cy='5' r='5.4'/></svg>") center / auto 100% no-repeat,
 		var(--hairline) left center / 5.5cqw 1px no-repeat,
 		var(--hairline) right center / 5.5cqw 1px no-repeat;
 }
 
 /* REVIVAL — the centre-piece a Victorian title page set between its title and
-   everything else: a lozenge with sprays tapering AWAY from it. The taper's
-   direction is the whole of it — drawn the other way, thick at the outside and
-   pointed at the lozenge, the pair reads as two arrowheads aimed inward, which
-   is a diagram and not an ornament. */
+   everything else: a lozenge with arms at full thickness against it, tapering
+   to a point outward. The taper's DIRECTION is the whole of it, and it was
+   drawn backwards first — thick at the outside and pointed at the lozenge,
+   which makes the pair read as two arrowheads aimed inward: a diagram, not an
+   ornament. The comment claimed the right thing while the path did the wrong
+   one, and only a large render told them apart. */
 .cover-type.style-revival .rule,
 .cover-type.style-revival .middle::before {
 	width: 27cqw;
 	height: 4.4cqw;
 	background:
-		url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='16 0 40 14' fill='white' opacity='.8'><path d='M36 3.4l3.4 3.6-3.4 3.6-3.4-3.6z'/><path d='M31 7 C27 4.4 22 3.1 16 3.3 C22 5.1 26 5.9 31 7 Z'/><path d='M31 7 C27 9.6 22 10.9 16 10.7 C22 8.9 26 8.1 31 7 Z'/><path d='M41 7 C45 4.4 50 3.1 56 3.3 C50 5.1 46 5.9 41 7 Z'/><path d='M41 7 C45 9.6 50 10.9 56 10.7 C50 8.9 46 8.1 41 7 Z'/></svg>") center / auto 100% no-repeat,
+		url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='16 0 40 14' fill='white' opacity='.8'><path d='M36 3.4l3.4 3.6-3.4 3.6-3.4-3.6z'/><path d='M31.4 6.55 C26 6.0 21 4.9 16 3.1 C21 5.5 26 5.75 31.4 5.2 Z'/><path d='M31.4 7.45 C26 8.0 21 9.1 16 10.9 C21 8.5 26 8.25 31.4 8.8 Z'/><path d='M40.6 6.55 C46 6.0 51 4.9 56 3.1 C51 5.5 46 5.75 40.6 5.2 Z'/><path d='M40.6 7.45 C46 8.0 51 9.1 56 10.9 C51 8.5 46 8.25 40.6 8.8 Z'/></svg>") center / auto 100% no-repeat,
 		var(--hairline) left center / 6cqw 1px no-repeat,
 		var(--hairline) right center / 6cqw 1px no-repeat;
 }

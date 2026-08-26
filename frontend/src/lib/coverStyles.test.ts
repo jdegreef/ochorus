@@ -13,7 +13,7 @@ import {
 	scriptOf
 } from './coverStyles';
 import { ERAS, eraOf } from './eras';
-import { COVER_CSS, lastDecl } from '../test/coverCss';
+import { COVER_CSS, COVER_CSS_CODE, lastDecl } from '../test/coverCss';
 
 const CONTENT = resolve(process.cwd(), '..', 'backend', 'library', 'fixtures', 'content');
 
@@ -112,9 +112,18 @@ describe('cover styles', () => {
 		// rails, and would otherwise pull ~184 KB of display faces to draw type
 		// nobody can tell apart. A font file is fetched only when a glyph renders
 		// in it, so the container gate is what keeps that page from paying.
-		const gate = COVER_CSS.indexOf('@container');
+		//
+		// BOTH OFFSETS COME FROM THE COMMENT-STRIPPED TEXT, and they have to: the
+		// ornament section now contains the words "@container" in PROSE, 237 lines
+		// above the real at-rule, so a raw `indexOf` anchors on the paragraph and
+		// every face below it clears a threshold that means nothing — the gate
+		// would have stayed green over a `var(--cover-face-*)` added anywhere in
+		// the composition section. Mixing the two texts is just as bad: a stripped
+		// index and a raw one are different coordinate systems, and comparing them
+		// drifts by the length of every comment between.
+		const gate = COVER_CSS_CODE.indexOf('@container');
 		expect(gate, 'the recipes are no longer behind a container query').toBeGreaterThan(-1);
-		for (const token of [...COVER_CSS.matchAll(/var\((--cover-face-[a-z]+)\)/g)]) {
+		for (const token of [...COVER_CSS_CODE.matchAll(/var\((--cover-face-[a-z]+)\)/g)]) {
 			expect(
 				token.index,
 				`${token[1]} is named outside the container gate — a thumbnail would fetch it`
