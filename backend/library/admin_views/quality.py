@@ -13,6 +13,7 @@ from rest_framework.views import APIView
 from accounts.permissions import IsAdminEmail
 
 from ..audit import AdminAudited
+from ..languages import entry as language_entry
 from ..models import (
     AdminAction,
     Author,
@@ -126,6 +127,23 @@ class AdminReviewQueueView(AdminAudited, APIView):
             "kind": _tally(undecided, "kind"),
         }
 
+        # Display names come from the registry rather than a map in the frontend.
+        # An admin can add a language without a deploy, and its first
+        # translations land HERE — every one of them is ai_unreviewed, so a new
+        # language's whole catalogue arrives in this queue before it appears
+        # anywhere else. A hardcoded map cannot know that language's name, so it
+        # rendered a bare code: the same drift that once had Arabic showing as
+        # "ar / ar" (see views._language_entry).
+        #
+        # Keyed on the rows, not the registry, so a language that only exists in
+        # old content still gets a label — `entry` falls back to the bare code.
+        # Over the distinct codes rather than the rows: `entry` reads a
+        # per-process cache, but a miss on an unknown code costs a rebuild, and
+        # the queue is hundreds of rows across a handful of languages.
+        language_names = {
+            code: language_entry(code)["name"] for code in {r["language"] for r in rows}
+        }
+
         if outcome == "needs_work":
             sel = [r for r in rows if r["outcome"] and r["outcome"]["outcome"] == "needs_work"]
         else:
@@ -171,6 +189,7 @@ class AdminReviewQueueView(AdminAudited, APIView):
                 "pages": pages,
                 "page_size": self.PAGE_SIZE,
                 "facets": facets,
+                "language_names": language_names,
             }
         )
 

@@ -49,19 +49,6 @@
 	let notingKey = $state<string | null>(null);
 	let noteText = $state('');
 
-	const LANGUAGE_NAMES: Record<string, string> = {
-		en: 'English',
-		es: 'Spanish',
-		pt: 'Portuguese',
-		sw: 'Swahili',
-		lg: 'Luganda',
-		ar: 'Arabic',
-		uk: 'Ukrainian',
-		hi: 'Hindi'
-	};
-	// Codes are unambiguous to whoever built this and cryptic to a new reviewer —
-	// and `uk` for Ukrainian is two actively misleading letters.
-	const languageName = (c: string) => LANGUAGE_NAMES[c] ?? c.toUpperCase();
 	const KIND_LABEL: Record<ReviewKind, string> = {
 		book: 'Book',
 		sermon: 'Sermon',
@@ -86,6 +73,13 @@
 	);
 	const queue = $derived(reviewQueue.data);
 	const load = reviewQueue.load;
+
+	// Codes are unambiguous to whoever built this and cryptic to a new reviewer —
+	// and `uk` for Ukrainian is two actively misleading letters. The names come
+	// from the registry with the queue (see ReviewQueue.language_names), so a
+	// language an admin added without a deploy reads as itself here. The code is
+	// still the fallback: the queue is null while it loads.
+	const languageName = (c: string) => queue?.language_names?.[c] ?? c.toUpperCase();
 
 	function applyFilters() {
 		page = 1;

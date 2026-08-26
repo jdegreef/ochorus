@@ -14,6 +14,7 @@ from django.core.management import call_command
 from django.test import SimpleTestCase, TestCase
 from rest_framework.test import APIClient
 
+from . import languages as languages_module
 from . import readiness as readiness_module
 from .language_seed import SEED_LANGUAGES
 from .languages import config as language_config
@@ -42,6 +43,82 @@ INVENTED = {
     "bible_label": "Stand-in Version",
     "glossary": {t: f"zz-{t}" for t in GLOSSARY_TERMS},
 }
+
+
+class LanguageDisplayCacheTests(TestCase):
+    """The per-process display cache, and how it recovers from another worker.
+
+    `post_save` invalidates the cache in the process that did the write — and
+    only there. Under more than one worker (which is every deployment) that made
+    "the registry is the source of language names" true for one process and
+    false for the rest: a language added from the admin rendered as a bare code
+    everywhere else until a deploy restarted them.
+
+    `bulk_create` is the faithful simulation: it writes the row WITHOUT sending
+    `post_save`, which is exactly what another process's write looks like from
+    in here.
+    """
+
+    def setUp(self):
+        languages_module.invalidate()
+
+    def test_a_language_another_worker_created_is_found(self):
+        languages_module.entry("en")  # warm this process's map, before `fr` exists
+        Language.objects.bulk_create(
+            [Language(code="fr", name="French", native_name="Français")]
+        )
+        self.assertEqual(languages_module.entry("fr")["name"], "French")
+
+    def test_a_code_with_no_row_still_falls_back_to_itself(self):
+        self.assertEqual(languages_module.entry("qq")["name"], "qq")
+
+    def test_an_unresolvable_code_is_not_requeried_forever(self):
+        """The cost of the recovery above, paid once per process per code."""
+        languages_module.entry("qq")
+        with self.assertNumQueries(0):
+            languages_module.entry("qq")
+            languages_module.entry("qq")
+
+    def test_two_unresolvable_codes_do_not_erase_each_other(self):
+        """They did, when the miss path went through `invalidate`.
+
+        `invalidate` clears every recorded absence, so a response naming two
+        codes with no row rebuilt the map once per lookup — each miss forgetting
+        the other's negative. A queue listing a handful of retired codes would
+        have paid a query per row, which is precisely the N+1 this cache exists
+        to prevent.
+        """
+        languages_module.entry("qq")
+        languages_module.entry("xx")
+        with self.assertNumQueries(0):
+            for _ in range(5):
+                languages_module.entry("qq")
+                languages_module.entry("xx")
+
+    def test_a_recorded_absence_is_dropped_once_the_row_appears(self):
+        """A negative must never outlive the fact it recorded."""
+        self.assertEqual(languages_module.entry("fr")["name"], "fr")  # absent, recorded
+        Language.objects.bulk_create(
+            [Language(code="fr", name="French", native_name="Français")]
+        )
+        # Nothing has invalidated this process's map — but another miss on a
+        # DIFFERENT code refreshes it, and that refresh must retract "fr".
+        languages_module.entry("yy")
+        self.assertEqual(languages_module.entry("fr")["name"], "French")
+
+    def test_a_known_language_costs_nothing_after_the_first_build(self):
+        """The reason this cache exists — callers loop over content rows."""
+        languages_module.entry("en")
+        with self.assertNumQueries(0):
+            for _ in range(20):
+                languages_module.entry("en")
+
+    def test_an_edit_in_this_process_still_invalidates(self):
+        languages_module.entry("en")
+        Language.objects.filter(code="en").update(name="English (edited)")
+        # `update()` sends no signal either, so this is the same recovery path.
+        languages_module.invalidate()
+        self.assertEqual(languages_module.entry("en")["name"], "English (edited)")
 
 
 class LanguageSeedTableTests(SimpleTestCase):

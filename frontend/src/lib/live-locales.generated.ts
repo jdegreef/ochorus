@@ -3,4 +3,17 @@
 // The locales the Language registry says are LIVE. Regenerated before every
 // build from the API, so an admin pressing "Go live" reaches the static site on
 // the next deploy. Committed so type-checking and tests work before a build.
+//
+// EXPECT THIS LIST TO LAG PRODUCTION. It is refreshed only when someone runs a
+// build and commits the result, so between an admin pressing "Go live" and the
+// next commit of this file, the deployed site advertises a locale that is not
+// named here. That is not a bug and does not need a hand-edit: the build
+// overwrites this from the API before every deploy. Read it as "the last list
+// someone happened to commit", never as "what the site currently advertises" —
+// checking the registry, or the live footer, is how you answer that.
 export const LIVE_LOCALES = ["en","es","sw","lg","pt"] as const;
+
+// Each live language's autonym, as the registry holds it. The reader
+// prefers these over the hand-maintained map in lang.svelte.ts, so
+// correcting a name in the admin reaches the picker on the next build.
+export const LIVE_LOCALE_NAMES: Record<string, string> = {"en":"English","es":"Español","sw":"Kiswahili","lg":"Luganda","pt":"Português"};
