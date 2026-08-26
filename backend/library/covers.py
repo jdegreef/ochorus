@@ -451,6 +451,94 @@ def _emblem_mark(emblem: str | None) -> str:
     )
 
 
+# ── The material ───────────────────────────────────────────────────────────
+# A plate used to be a flat gradient, and read like one: a coloured rectangle
+# where the other two tiers are a photograph and a painting. These give it a
+# surface — the ribbing of a bound cloth — so a generated cover looks like a
+# made object rather than a fallback.
+#
+# DARKENING ONLY, AND THAT IS A CONSTRAINT RATHER THAN A TASTE. `ink_safe`
+# promises white type at `_AUTHOR_Y` clears `AUTHOR_MIN_CONTRAST` against this
+# ground, and it computes that from the flat colour, which is the only thing it
+# can see. A material that LIGHTENS any pixel breaks the promise for that pixel,
+# and breaks it exactly where there is no headroom — on a plate `ink_safe` has
+# already floored to 4.5:1. Measured on the library's floored colours, with a
+# symmetric `mix-blend-mode: overlay` grain:
+#
+#     flat                  worst pixel 4.58   AA pass
+#     overlay, faintest     worst pixel 4.12   AA FAIL
+#     overlay, mid          worst pixel 3.85   AA FAIL
+#
+# Overlay is not luminance-neutral on a dark backdrop — it lightens net — so
+# every symmetric grain failed at every strength tried. Black at a low alpha
+# cannot fail that way: white ink on a darker ground is higher contrast, never
+# lower. So the material is black, and the contrast model stays a conservative
+# bound on what actually ships.
+#
+# A PATTERN RATHER THAN `feTurbulence`, which is where this landed after
+# measuring the noise version that came first. Laid ribbing is periodic in
+# life, and periodic is worth a great deal here:
+#
+#   * SIZE. Noise is close to incompressible, and `generate-cover-og.mjs`
+#     PALETTISES every share card — a step whose own comment assumes a plate is
+#     mostly one colour. Measured on a rendered plate, palettised: turbulence
+#     2.00x the flat card, this pattern 1.16x. Across the fifteen twins that is
+#     the difference between +1.4 MB and +0.25 MB of shared-link weight.
+#   * AGREEMENT BETWEEN RENDERERS. `feTurbulence`'s PRNG is specified, but the
+#     filter resolution and colour-space round trip are not: Chromium and resvg
+#     came out a little apart on the same plate. A pattern of rectangles has
+#     nothing to disagree about, so the committed twins stop being a noise field
+#     that re-diffs wholesale on a browser bump.
+#   * SMALL SIZES. Noise is point-sampled rather than area-averaged, so it stays
+#     speckle at a 48px fan instead of resolving into anything.
+#
+# What it gives up is a per-book weave, and that is the right trade: one house
+# binding across the generated tier reads as a series, and a book is already
+# told apart by its colour, its emblem and its era's ornament.
+#
+# `PlateMaterialTests` is this argument as a gate.
+_GRAIN_ALPHA = 0.11
+# One line every four units, a unit and a half wide. Checked at 300, 180, 90
+# and 48px for the moire a regular pattern can throw when it is scaled: none at
+# this period, where a finer one (every two units) averaged away into a flat
+# darkening and stopped being a texture at all.
+_GRAIN_PERIOD = 4
+_GRAIN_RIB = 1.5
+
+
+def _grain() -> tuple[str, str]:
+    """The material layer for every plate: `(defs, rect)`.
+
+    Takes nothing, and that is the point twice over. `build_ground`'s signature
+    stays `(colour, emblem)` — a ground is not allowed to know its slug — and
+    with no seed there is nothing per-book to drift, so a regenerated plate is
+    byte-identical, which a committed file needs.
+    """
+    defs = (
+        f'<pattern id="grain" width="{_GRAIN_PERIOD}" height="{_GRAIN_PERIOD}"'
+        f' patternUnits="userSpaceOnUse">'
+        # Black, and nothing but black: the tile's remaining area is left
+        # transparent rather than painted, so the material can only ever
+        # subtract light. This is the whole of the argument above.
+        f'<rect width="{_GRAIN_RIB}" height="{_GRAIN_PERIOD}"'
+        f' fill="black" opacity="{_GRAIN_ALPHA}"/>'
+        f"</pattern>"
+    )
+    # THIS RECT MUST NEVER BE ABLE TO PAINT ITSELF. SVG's initial fill is
+    # BLACK and it covers the whole plate, so a refactor that drops the `fill`
+    # here ships every generated cover in the library as a solid black
+    # rectangle — measured, not feared: (0, 0, 0) against the plate's
+    # (100, 32, 52). And it would ship GREEN, because the contrast gate reads
+    # the gradient stop and the no-words gate greps for <text>; neither looks
+    # at this element. `PlateMaterialTests` is what actually catches that, by
+    # requiring the reference to be here at all.
+    # The `none` fallback covers the milder case: a reference that survives but
+    # stops resolving. Chromium already degrades that to the flat plate on its
+    # own (measured — identical with and without the fallback), so this is
+    # belt-and-braces for renderers that do not, and it is free.
+    return defs, f'<rect width="{W}" height="{H}" fill="url(#grain) none"/>'
+
+
 def build_ground(color: str, emblem: str | None = None) -> str:
     """The plate ground for one book. Returns SVG source.
 
@@ -462,6 +550,7 @@ def build_ground(color: str, emblem: str | None = None) -> str:
     # The plate yields to the ink, not the other way round: `ink_safe` returns
     # the book's own colour untouched unless white type could not sit on it.
     color = ink_safe(color)
+    grain_defs, grain_rect = _grain()
     return f"""<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" role="presentation">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0.35" y2="1">
@@ -472,8 +561,10 @@ def build_ground(color: str, emblem: str | None = None) -> str:
       <stop offset="0.55" stop-color="#000000" stop-opacity="0"/>
       <stop offset="1" stop-color="#000000" stop-opacity="0.34"/>
     </radialGradient>
+    {grain_defs}
   </defs>
   <rect width="{W}" height="{H}" fill="url(#bg)"/>
+  {grain_rect}
   <rect width="{W}" height="{H}" fill="url(#vig)"/>
   {_emblem_mark(emblem)}
 </svg>

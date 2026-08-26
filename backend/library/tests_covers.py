@@ -4,6 +4,7 @@ Moved out of the 6,500-line library/tests.py so a domain can be run — and
 edited — on its own. Pure move: no test changed.
 """
 
+import re
 import tempfile
 from io import StringIO
 from pathlib import Path
@@ -16,6 +17,91 @@ from .models import (
     Author,
     Book,
 )
+
+
+class PlateMaterialTests(SimpleTestCase):
+    """The ribbing that gives a generated plate a surface, and its one rule.
+
+    `ink_safe` promises white type at the byline clears AA against this ground,
+    and it computes that from the FLAT colour — the only thing it can see. So a
+    material that lightens any pixel breaks the promise exactly where there is
+    no headroom: on a plate already floored to 4.5:1. Measured on the library's
+    floored colours, a symmetric `mix-blend-mode: overlay` grain took the worst
+    pixel from 4.58 to 4.12 — below AA — at the faintest strength tried.
+
+    Black at a low alpha cannot do that: white ink on a darker ground is higher
+    contrast, never lower. These hold the drawing to that, because the failure
+    is invisible — a lightening material looks like a nicer texture and quietly
+    costs a book its contrast floor.
+    """
+
+    def _pattern(self, svg):
+        """The one grain pattern, or a failure naming what it found instead."""
+        found = re.findall(r"<pattern\b.*?</pattern>", svg, re.S)
+        self.assertEqual(len(found), 1, f"expected one pattern, found {len(found)}")
+        return found[0]
+
+    def test_the_material_is_black_and_nothing_but_black(self):
+        from library.covers import build_ground
+
+        tile = self._pattern(build_ground("#7a2740"))
+        fills = re.findall(r'fill="([^"]+)"', tile)
+        self.assertEqual(
+            fills,
+            ["black"],
+            "the tile paints something other than black, so it can lighten a pixel "
+            "and break the contrast floor ink_safe computed from the flat plate",
+        )
+        # A tile that painted its whole area would be a flat wash, not a rib —
+        # and the transparent remainder is half of why this can only subtract.
+        rib = re.search(r'<rect[^>]*width="([\d.]+)"[^>]*height="([\d.]+)"', tile)
+        period = re.search(r'<pattern[^>]*width="([\d.]+)"', tile)
+        self.assertLess(
+            float(rib.group(1)),
+            float(period.group(1)),
+            "the rib fills the tile, so the material is a flat darkening",
+        )
+        opacity = float(re.search(r'opacity="([\d.]+)"', tile).group(1))
+        self.assertTrue(0 < opacity < 1, f"opacity {opacity} is not a partial ink")
+
+    def test_the_material_holds_no_lightening_primitive(self):
+        from library.covers import build_ground
+
+        svg = build_ground("#7a2740")
+        # A blend mode is exactly the mechanism by which a black layer ends up
+        # lightening a pixel — `overlay` is what made the first attempt look
+        # right and measure wrong. A filter could do it too (an `feComposite`
+        # in arithmetic, an `feBlend` in screen), and a ground has no other use
+        # for one, so neither may appear at all.
+        self.assertNotIn("mix-blend-mode", svg)
+        self.assertNotIn("<filter", svg)
+        self.assertNotIn("feBlend", svg)
+        self.assertNotIn("feComposite", svg)
+
+    def test_the_material_rect_paints_nothing_of_its_own(self):
+        from library.covers import build_ground
+
+        # A paint reference that does not resolve is an error, and a dropped
+        # reference falls to SVG's initial fill, which is BLACK across the whole
+        # plate. Either way every generated cover breaks at once — and breaks
+        # green, because no other gate looks at this element. The `none`
+        # fallback degrades it to the flat plate instead.
+        rect = re.search(r"<rect[^>]*url\(#grain\)[^>]*>", build_ground("#7a2740"))
+        self.assertIsNotNone(rect, "the ground no longer references the material")
+        self.assertIn(
+            'fill="url(#grain) none"',
+            rect.group(0),
+            "no paint fallback, so a broken reference paints the plate black",
+        )
+
+    def test_a_plate_is_byte_identical_when_rebuilt(self):
+        from library.covers import build_ground
+
+        # The plates are committed files. Anything per-run in the material would
+        # rewrite all eighteen on every regeneration and bury a real change.
+        for color in ("#7a2740", "#4a7ac8", "#8ab04a"):
+            with self.subTest(color=color):
+                self.assertEqual(build_ground(color), build_ground(color))
 
 
 class InkSafePlateTests(SimpleTestCase):

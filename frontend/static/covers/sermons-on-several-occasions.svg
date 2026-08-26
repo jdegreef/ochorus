@@ -8,8 +8,10 @@
       <stop offset="0.55" stop-color="#000000" stop-opacity="0"/>
       <stop offset="1" stop-color="#000000" stop-opacity="0.34"/>
     </radialGradient>
+    <pattern id="grain" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="1.5" height="4" fill="black" opacity="0.11"/></pattern>
   </defs>
   <rect width="600" height="800" fill="url(#bg)"/>
+  <rect width="600" height="800" fill="url(#grain) none"/>
   <rect width="600" height="800" fill="url(#vig)"/>
   <g transform="translate(240 520) scale(2.50000)">
 		<path d="M8 20c-1.8 2.2-3 4.8-3.4 7.6M40 20c1.8 2.2 3 4.8 3.4 7.6" stroke="#d9a441" stroke-width="2.2" stroke-linecap="round" fill="none"/>

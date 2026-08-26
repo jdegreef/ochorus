@@ -164,12 +164,24 @@ export function coverSrcset(url: string | null | undefined): string {
  * `0.55` is the same factor `generate_covers` bakes into the real artwork, so a
  * generated cover and this fallback sit at the same value.
  */
+const GROUND_RIB = 0.959;
+
 export function coverGradient(color: string | null | undefined): string {
 	// Both stops go through `shade`, which returns the fallback for anything that
 	// isn't a six-digit hex. `cover_color` is a free-text CharField the admin
 	// import can set, and this string lands in a `style` attribute — an unchecked
 	// value could carry a `;` and a second declaration into it.
-	const base = shade(color ?? '', 1);
+	// `GROUND_RIB` is the real plate's ribbing, averaged. `covers.build_ground`
+	// lays a black rib over its gradient — 1.5 of every 4 user units at alpha
+	// 0.11 — which multiplies the whole plate by 1 - (1.5/4 x 0.11) = 0.959.
+	// The rib itself is NOT restated here and should not be: its period is in the
+	// file's user units, so at the 2.5rem these fans draw at it is a quarter of a
+	// pixel wide and averages away to exactly this darkening. What would be wrong
+	// is leaving it out, which is the failure the note below already describes —
+	// a fallback lighter than the artwork quietly spends `ink_safe`'s margin.
+	// Measured against the rendered plates rather than taken from the algebra:
+	// 0.9590-0.9596 across four books, against 0.9587 predicted.
+	const base = shade(color ?? '', GROUND_RIB);
 	// `165deg … 89%` is covers.py's gradient written in CSS, not an eyeball
 	// match. The file runs its gradient from (0, 0) to (0.35, 1) in bounding-box
 	// units — on a 600x800 plate a vector of (210, 800), atan(210/800) off
