@@ -57,8 +57,8 @@ from library.covers import (
     COVER_WIDTHS,
     RASTER_SUFFIXES,
     art_url,
-    twin_path,
     author_ink_contrast,
+    twin_path,
     variant_url,
 )
 from library.curated_art import CURATED
