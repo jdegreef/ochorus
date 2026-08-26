@@ -176,31 +176,88 @@
 	height: 1px;
 	background: rgb(255 255 255 / 0.55);
 }
-/* The ornaments key off the STYLE, not off a class of their own: the rule is a
-   sibling of the title rather than a property of it, and routing "which
-   ornament" back through the markup would put half of one recipe in TypeScript.
-   Deliberately outside the container gate below — a fleuron costs no bytes and
-   is drawn to read at 40px, so a thumbnail keeps its ornament even though it
-   does not get its face. */
 
-/* A double rule, the way a 17th-century title page breaks a page: the second
-   line lighter, so it reads as an echo rather than as a box. */
+/* ── A composition per era ─────────────────────────────────────────────────
+ * THE FACE WAS ONLY HALF OF IT. Six recipes shared one arrangement — byline,
+ * centred title, short rule, italic subtitle — so a shelf of them read as one
+ * publisher's back catalogue set in six fonts. A 1670s title page does not
+ * look like a 1900 one with the font swapped: it is BUILT differently, and
+ * that is what these blocks do.
+ *
+ * WHAT THEY MAY NOT MOVE. The byline stays at the top padding and the foot
+ * stays where it is: `covers.ink_safe` floors a plate's colour for the
+ * contrast under the byline AT that height, and `coverBand.test.ts` pins the
+ * emblem band and the foot against `covers.py`. Two renderers and a contrast
+ * guarantee meet at those two edges. Everything between them — `.middle` — is
+ * free, and that is where an era gets to differ.
+ *
+ * OUTSIDE THE CONTAINER GATE, like the ornaments they grew out of and for the
+ * same reason: a rule costs no bytes and is drawn to read at 40px, so a
+ * thumbnail keeps its composition even where it does not get its face. The
+ * gate exists to stop a thumbnail FETCHING a font, and none of this fetches
+ * anything. */
+
+/* PRESS — a 1670s Oxford title page BRACKETS its title between rules, the way
+   metal type broke a page into stanzas, and sets the "wherein is discovered…"
+   line beneath in small tracked capitals. Never italic: that line was set from
+   the same case as the title.
+
+   ONE DRAWING, STATED ONCE. The bracket above and the rule below are the same
+   double rule — that is what "answers" means — so they share a block rather
+   than being written twice with independently drifting alphas. They were, and
+   the bracket was `3px` against the rule's `0.9cqw`: 5.4px at a 600px plate and
+   0.43px at a 48px thumbnail, so the pair that is supposed to match never did,
+   and the relationship inverted across the size range this file exists to
+   serve. `53.3cqw` is 62% of the 86cqw column `.cover-type`'s 7cqw side padding
+   leaves — a container unit, like every other length here, rather than a
+   percentage of a box that could be repadded without anything noticing. */
+.cover-type.style-press .middle::before,
 .cover-type.style-press .rule {
-	width: 16cqw;
+	width: 53.3cqw;
 	height: 0.9cqw;
 	background:
 		linear-gradient(rgb(255 255 255 / 0.55) 0 0) top / 100% 1px no-repeat,
 		linear-gradient(rgb(255 255 255 / 0.4) 0 0) bottom / 100% 1px no-repeat;
 }
-/* A lozenge between two short rules — the printer's fleuron, reduced to the one
-   shape that still reads at 40px. */
-.cover-type.style-devotional .rule {
-	position: relative;
+.cover-type.style-press .middle::before {
+	content: '';
+	display: block;
+	margin: 0 auto 4.6cqw;
+}
+.cover-type.style-press .title {
+	line-height: 1.04;
+}
+
+/* INSCRIPTIONAL — a carved tablet has no rules on it. The lines stack close,
+   the words are held apart (Rome separated them with interpuncts; a wide word
+   space is the quiet echo of that), and there is nothing on the stone but
+   letters. */
+.cover-type.style-inscriptional .rule {
+	display: none;
+}
+.cover-type.style-inscriptional .title {
+	line-height: 1;
+	word-spacing: 0.22em;
+}
+
+/* The armature both period ornaments are built on: two short rules with a gap
+   between them, reduced to the one shape that still reads at 40px. Shared
+   because it IS the same drawing in both — what differs is what sits in the
+   gap, and that stays in each era's own block below. */
+.cover-type.style-devotional .rule,
+.cover-type.style-revival .rule,
+.cover-type.style-revival .middle::before {
 	width: 18cqw;
 	height: 1.6cqw;
 	background:
 		linear-gradient(rgb(255 255 255 / 0.55) 0 0) left center / 6cqw 1px no-repeat,
 		linear-gradient(rgb(255 255 255 / 0.55) 0 0) right center / 6cqw 1px no-repeat;
+}
+
+/* DEVOTIONAL — the manual for the closet stays the quiet one, and keeps the
+   printer's fleuron: a lozenge set in the gap of the armature above. */
+.cover-type.style-devotional .rule {
+	position: relative;
 }
 .cover-type.style-devotional .rule::before {
 	content: '';
@@ -211,6 +268,82 @@
 	translate: -50% -50%;
 	rotate: 45deg;
 	border: 1px solid rgb(255 255 255 / 0.62);
+}
+.cover-type.style-devotional .subtitle {
+	margin-top: 3.4cqw;
+}
+
+/* ENLIGHTENMENT — Baskerville's century set title pages OPEN: one fine rule
+   run wide across the measure, and air around everything on the page. */
+.cover-type.style-enlightenment .rule {
+	width: 67cqw;
+	margin-top: 6cqw;
+	opacity: 0.7;
+}
+.cover-type.style-enlightenment .title {
+	line-height: 1.24;
+}
+.cover-type.style-enlightenment .subtitle {
+	margin-top: 4.4cqw;
+}
+
+/* REVIVAL — the Victorian title page is symmetrical and packed: the same
+   ornament above the title as beneath it, with the gap left open rather than
+   filled, and the subtitle in tracked capitals. */
+.cover-type.style-revival .middle::before {
+	content: '';
+	display: block;
+	margin: 0 auto 5cqw;
+}
+
+/* THE TRACKED-CAPS SUBTITLE, shared by the three compositions that set one.
+   A period title page put the line under its title in small capitals from the
+   same case, not in italic — so `press`, `inscriptional` and `revival` all want
+   the same treatment, and it was written three times with the tracking, size
+   and opacity jittered by amounts no reader can see (0.16-0.20em, 2.8-2.9cqw,
+   0.72-0.82). What genuinely differs between them is how much air sits above
+   it, which is each composition's own business and stays in its own block. */
+.cover-type.style-press .subtitle,
+.cover-type.style-inscriptional .subtitle,
+.cover-type.style-revival .subtitle {
+	font-style: normal;
+	text-transform: uppercase;
+	letter-spacing: 0.18em;
+	font-size: 2.9cqw;
+	opacity: 0.8;
+}
+.cover-type.style-press .subtitle {
+	margin-top: 4cqw;
+}
+/* The tablet's second line recedes further than a title page's: it is cut
+   smaller on the stone, not set from a different case. */
+.cover-type.style-inscriptional .subtitle {
+	margin-top: 6cqw;
+	opacity: 0.72;
+}
+.cover-type.style-revival .subtitle {
+	margin-top: 3.6cqw;
+}
+
+/* HOUSE — the contemporary voice, and the one plate that inverts the order:
+   its rule sits ABOVE the title rather than under it, so a modern book
+   announces itself before it speaks.
+   Centred like the rest, deliberately. A ranged-left block was tried and
+   dropped: `covers.py` draws the topic emblem centred into the ground, and
+   type ranging left over a centred device reads as an accident. */
+.cover-type.style-house .middle::before {
+	content: '';
+	display: block;
+	width: 9cqw;
+	height: 1px;
+	margin: 0 auto 5cqw;
+	background: rgb(255 255 255 / 0.55);
+}
+.cover-type.style-house .rule {
+	display: none;
+}
+.cover-type.style-house .subtitle {
+	margin-top: 3.6cqw;
 }
 
 /* Two lines at most — the generator's own subtitle budget; past that the plate
@@ -226,6 +359,10 @@
 	-webkit-line-clamp: 2;
 	line-clamp: 2;
 	overflow: hidden;
+	/* A subtitle is a title-page line, not a caption, and must not strand its
+	   last word on a line of its own. `balance` is what `.title` already uses;
+	   without it six of the twelve covers measured stranded one. */
+	text-wrap: balance;
 }
 
 /* The emblem's room, not the emblem: 120 units of drawing and a 24-unit gap on
@@ -466,8 +603,24 @@
 .cover-type.script-arabic .subtitle,
 .cover-type.script-devanagari .subtitle {
 	font-style: normal;
+	/* THREE OF THE COMPOSITIONS TRACK THE SUBTITLE — the small-caps line a
+	   period title page sets under its title — and tracking is exactly what
+	   prises a cursive script apart. The title has been corrected for this
+	   since the scripts got faces; the subtitle never needed it until the
+	   compositions arrived. `the-way-to-god` in Arabic is a `revival` book
+	   with a real Arabic subtitle, so this is one live cover, not a
+	   hypothetical. */
+	letter-spacing: 0;
 	/* The slant was what set the subtitle apart from the title; without it the
 	   size and the opacity carry that alone. */
 	opacity: 0.78;
 	line-height: 1.5;
+	/* AND THE SIZE THE TRACKED-CAPS BLOCK TOOK AWAY. That block cuts the
+	   subtitle to 2.9cqw because tracked capitals read larger than the 3.7cqw
+	   the base sets — but a caseless script gets no capitals and, corrected
+	   above, no tracking either, so it was simply being shrunk for a treatment
+	   it never receives. Restored to the base, which is what the three
+	   compositions that DON'T track already give it, so all six agree in
+	   Arabic and Devanagari. */
+	font-size: 3.7cqw;
 }

@@ -7,11 +7,13 @@ import {
 	AUTHOR_STYLE,
 	COVER_SCRIPTS,
 	COVER_STYLE_IDS,
+	CURSIVE_SCRIPTS,
 	ERA_STYLE,
 	coverStyleFor,
 	scriptOf
 } from './coverStyles';
 import { ERAS, eraOf } from './eras';
+import { COVER_CSS, lastDecl } from '../test/coverCss';
 
 const CONTENT = resolve(process.cwd(), '..', 'backend', 'library', 'fixtures', 'content');
 
@@ -23,7 +25,7 @@ const pkgSlug = (family: string) =>
 		.toLowerCase()
 		.replace(/ /g, '-');
 const APP_CSS = readFileSync(join(process.cwd(), 'src/app.css'), 'utf-8');
-const COVER_CSS = readFileSync(join(process.cwd(), 'src/lib/components/cover-type.css'), 'utf-8');
+
 
 /**
  * The cover style table — the thing that stops a shelf of books reading as one
@@ -94,9 +96,13 @@ describe('cover styles', () => {
 		// like a bad font rather than a bad number, so it is the kind of thing
 		// that ships.
 		for (const id of ['press', 'enlightenment']) {
-			const block = new RegExp(`\\.cover-type\\.style-${id} \\.title \\{([^}]*)\\}`).exec(COVER_CSS);
-			expect(block, `no .style-${id} block to check`).not.toBeNull();
-			expect(block![1], `${id} would synthesise a bold`).toMatch(/font-weight:\s*400/);
+			// The weight that WINS, not the first written: a style writes `.title`
+			// twice now — once in the container gate for its face, once outside for
+			// its composition's leading — and reading the first found reported no
+			// weight at all. `lastDecl` is that cascade rule, kept in one place.
+			const weight = lastDecl(`.cover-type.style-${id} .title`, /font-weight:\s*(\d+)/);
+			expect(weight, `.style-${id} asks for no weight at all`).not.toBeNull();
+			expect(weight, `${id} would synthesise a bold`).toBe('400')
 		}
 	});
 
@@ -357,7 +363,7 @@ describe('cover scripts', () => {
 		// apart into disconnected shapes; Devanagari has conjuncts that break the
 		// same way. Five of the six recipes set a tracking, `inscriptional` at
 		// 0.06em, and every one of them was doing this.
-		for (const script of ['arabic', 'devanagari']) {
+		for (const script of CURSIVE_SCRIPTS) {
 			// Across every block for the selector: the tracking is set in the one
 			// outside the container gate, the sizes in the one inside it.
 			const blocks = [

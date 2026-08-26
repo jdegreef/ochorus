@@ -1,9 +1,11 @@
+import { createHash } from 'node:crypto';
 import { readFileSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 import { coverStyleFor } from './coverStyles';
 import { eraOf } from './eras';
+import { COVER_CSS_CODE } from '../test/coverCss';
 import { isArtCover, isPlateCover } from './coverArt';
 
 /**
@@ -40,8 +42,10 @@ const CONTENT = resolve(process.cwd(), '..', 'backend', 'library', 'fixtures', '
 
 type Twin = { ground: string; style: string };
 
-const manifest = (): Record<string, Twin> =>
-	JSON.parse(readFileSync(join(STATIC, 'covers', 'og-manifest.json'), 'utf8')).twins;
+const manifestFile = () =>
+	JSON.parse(readFileSync(join(STATIC, 'covers', 'og-manifest.json'), 'utf8'));
+
+const manifest = (): Record<string, Twin> => manifestFile().twins;
 
 /** Author slug → birth year, from the shipped fixture. */
 const births = (): Map<string, number | null> =>
@@ -72,6 +76,33 @@ const needTwins = () => {
 			style: coverStyleFor(eraOf(birth.get(f.author[0]) ?? null), f.author[0])
 		}));
 };
+
+describe('the og twins were drawn with the composition that ships now', () => {
+	it('records the stylesheet the cards were drawn with', () => {
+		// `ground` digests the cover file and the strings; `style` names the recipe.
+		// NEITHER SEES THE DRAWING. A cover's type — its rules, its ornaments, the
+		// arrangement its era composes in — is `cover-type.css`, which the script
+		// inlines into every card and no digest covered. Edit a `.style-*` block
+		// and the committed twins keep the previous composition, indefinitely, with
+		// every gate green: the exact defect `generate-cover-og.mjs`'s own header
+		// describes as the reason it exists, re-created one layer up.
+		//
+		// Python could never have closed this — `CoverAssetTests` cannot evaluate a
+		// stylesheet — which is why the script's header said only running it would
+		// catch a composition change. This gate is JS and reads the file directly.
+		//
+		// Comments stripped on both sides, matching the writer: this stylesheet is
+		// more than half prose, and failing the build over a typo in a docstring is
+		// how a gate gets deleted rather than obeyed.
+		const drawn = createHash('sha256').update(Buffer.from(COVER_CSS_CODE)).digest('hex');
+		expect(
+			manifestFile().css,
+			'the cover composition changed but the og:image twins did not — every ' +
+				'shared link would show the previous design. Run `cd frontend && ' +
+				'npm run og:covers`'
+		).toBe(drawn);
+	});
+});
 
 describe('the og twins were drawn in the style the table names now', () => {
 	it('records a ground and a style for every twin', () => {
