@@ -5,6 +5,7 @@ Previously one 1,190-line module. The view classes are re-exported here so
 — which is what lets a module be split again without touching the URL conf.
 """
 
+from .activity import AdminActivityView
 from .analytics import (
     AdminEngagementView,
     AdminSearchGapView,
@@ -29,6 +30,7 @@ from .languages import (
 from .quality import AdminAuditView, AdminReviewDetailView, AdminReviewQueueView
 
 __all__ = [
+    "AdminActivityView",
     "AdminAuditView",
     "AdminBookDetailView",
     "AdminCoverageView",

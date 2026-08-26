@@ -1024,3 +1024,62 @@ class TranslationNote(models.Model):
 
     def __str__(self) -> str:
         return f"{self.reference} [{self.language}] {self.status}"
+
+
+class AdminAction(models.Model):
+    """Who changed what, from the admin dashboard.
+
+    Nothing recorded this. Eight endpoints under ``/api/admin/`` mutate the
+    library or its configuration — a language created, its Bible code or
+    glossary edited, its readiness bar moved, a language taken live, a
+    translation job filed, an author created, a document published — and
+    afterwards the only evidence any of it happened was the changed row itself.
+    "Who took Hindi live, and when?" had no answer.
+
+    Not a replacement for ``ReviewOutcome``, which already records a review
+    decision far better than this could: the outcome, the reason, the reviewer,
+    and enough to undo it. That is workflow STATE, and the review screen reads
+    it. This is the flat, append-only record of every admin write including
+    those, so that one table answers "what has been done here" without a reader
+    having to know which workflow owned which decision.
+
+    Append-only by intent — nothing updates or deletes a row — which is what
+    makes it worth reading. It is also why it stores the actor's email as text
+    rather than a foreign key: the record must survive the account.
+    """
+
+    class Action(models.TextChoices):
+        LANGUAGE_CREATE = "language.create", "Language created"
+        LANGUAGE_SETTINGS = "language.settings", "Language settings changed"
+        LANGUAGE_THRESHOLDS = "language.thresholds", "Readiness thresholds changed"
+        LANGUAGE_GO_LIVE = "language.go_live", "Language taken live"
+        TRANSLATION_JOB = "translation.job", "Translation job filed"
+        AUTHOR_CREATE = "author.create", "Author created"
+        CONTENT_PUBLISH = "content.publish", "Document published"
+        REVIEW_DECIDE = "review.decide", "Review decision recorded"
+        REVIEW_UNDO = "review.undo", "Review decision undone"
+
+    action = models.CharField(max_length=32, choices=Action.choices)
+    #: Who, by email — the identity `IsAdminEmail` gates on. Blank only when a
+    #: DEBUG-mode request carried no token at all.
+    actor = models.EmailField(blank=True)
+    #: What it acted on, in the shape the rest of the codebase names things:
+    #: "language:sw", "book:humility:es", "author:andrew-murray". Free text
+    #: because the targets are of different kinds and this table only has to be
+    #: readable, never joined.
+    target = models.CharField(max_length=200, blank=True)
+    #: Whatever the endpoint thought was worth keeping — the fields that
+    #: changed, the outcome, the count. Small by construction: a summary, not a
+    #: copy of the request.
+    detail = models.JSONField(default=dict, blank=True)
+    at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-at"]
+        indexes = [
+            models.Index(fields=["-at"], name="idx_adminaction_at"),
+            models.Index(fields=["action", "-at"], name="idx_adminaction_action"),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.action} {self.target} by {self.actor or 'unknown'}"

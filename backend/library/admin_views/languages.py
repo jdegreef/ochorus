@@ -23,9 +23,11 @@ from rest_framework.views import APIView
 from accounts.permissions import IsAdminEmail
 
 from .. import golive, readiness
+from ..audit import AdminAudited
 from ..language_seed import SEED_LANGUAGES
 from ..language_suggestions import licence_for, suggestions
 from ..models import (
+    AdminAction,
     Language,
 )
 from ..translation import (
@@ -69,7 +71,7 @@ class AdminLanguageReadinessView(APIView):
         return Response(data)
 
 
-class AdminLanguageThresholdsView(APIView):
+class AdminLanguageThresholdsView(AdminAudited, APIView):
     """Edit a language's readiness bar.
 
     The bar is per-language and yours to set: a language with a big catalogue
@@ -81,8 +83,20 @@ class AdminLanguageThresholdsView(APIView):
 
     permission_classes = [IsAdminEmail]
 
+    audit_action = AdminAction.Action.LANGUAGE_THRESHOLDS
+
     INT_FIELDS = ("min_books", "min_sermons", "min_bios", "min_plans")
     BOOL_FIELDS = ("require_all_topics", "require_complete_ui")
+
+    def audit_entry(self, request, response):
+        # The fields that moved AND what they moved to — "who lowered the book
+        # requirement, and to what" is the question this has to answer, and
+        # recording the whole bar every time buries the answer in five values
+        # nobody touched.
+        data = response.data
+        return f"language:{data['code']}", {
+            f: data["thresholds"][f] for f in data["updated"]
+        }
 
     def patch(self, request, code):
         lang = Language.objects.filter(code=code.lower()).first()
@@ -129,7 +143,7 @@ class AdminLanguageThresholdsView(APIView):
         )
 
 
-class AdminLanguageGoLiveView(APIView):
+class AdminLanguageGoLiveView(AdminAudited, APIView):
     """Take a language live: re-check, record, and trigger the rebuild.
 
     The checks run again HERE rather than trusting what the browser was holding —
@@ -142,6 +156,18 @@ class AdminLanguageGoLiveView(APIView):
     """
 
     permission_classes = [IsAdminEmail]
+    audit_action = AdminAction.Action.LANGUAGE_GO_LIVE
+
+    def audit_entry(self, request, response):
+        # A refused launch answers 409 and is never recorded — this only runs
+        # on a launch that happened. `forced` is the fact worth keeping: it says
+        # someone overrode the readiness bar rather than cleared it.
+        data = response.data
+        return f"language:{self.kwargs['code'].lower()}", {
+            "forced": data.get("forced", False),
+            "already_live": data.get("already_live", False),
+            "deploy": (data.get("deploy") or {}).get("status", ""),
+        }
 
     def post(self, request, code):
         lang = Language.objects.filter(code=code.lower()).first()
@@ -246,7 +272,7 @@ def _clean_glossary(raw) -> dict:
     return cleaned
 
 
-class AdminLanguageCreateView(APIView):
+class AdminLanguageCreateView(AdminAudited, APIView):
     """Add a language to the registry — where a new language begins.
 
     Creating the row is what makes a language *exist* for the rest of the
@@ -266,6 +292,18 @@ class AdminLanguageCreateView(APIView):
     """
 
     permission_classes = [IsAdminEmail]
+    audit_action = AdminAction.Action.LANGUAGE_CREATE
+
+    def audit_entry(self, request, response):
+        lang = response.data["language"]
+        # The Bible code and whether it verified: this is the decision that
+        # silently costs the most later, because a bad code omits scripture
+        # rather than failing.
+        return f"language:{lang['code']}", {
+            "name": lang.get("name", ""),
+            "bible_code": lang.get("bible_code", ""),
+            "bible_verified": response.data.get("bible_verified"),
+        }
 
     def get(self, request):
         """What the form needs to render: the glossary it must fill, the codes
@@ -388,7 +426,7 @@ class AdminLanguageCreateView(APIView):
         )
 
 
-class AdminLanguageSettingsView(APIView):
+class AdminLanguageSettingsView(AdminAudited, APIView):
     """Edit a language's identity: names, Bible, glossary, direction.
 
     Refuses (409) for a language defined in ``library/language_seed.py``. Those
@@ -399,6 +437,20 @@ class AdminLanguageSettingsView(APIView):
     """
 
     permission_classes = [IsAdminEmail]
+    audit_action = AdminAction.Action.LANGUAGE_SETTINGS
+
+    def audit_entry(self, request, response):
+        data = response.data
+        # Which fields moved, and the glossary's SIZE rather than its contents:
+        # a glossary is dozens of terms and belongs in the row, not copied into
+        # every log line that touched it.
+        detail = {"updated": data["updated"]}
+        if "bible_code" in data["updated"]:
+            detail["bible_code"] = data["settings"]["bible_code"]
+            detail["bible_verified"] = data.get("bible_verified")
+        if "glossary" in data["updated"]:
+            detail["glossary_terms"] = len(data["settings"].get("glossary") or {})
+        return f"language:{data['code']}", detail
 
     def patch(self, request, code):
         lang = Language.objects.filter(code=code.lower()).first()
