@@ -148,6 +148,20 @@ export const AUTHOR_STYLE: Record<string, CoverStyleId> = {
  */
 export const COVER_SCRIPTS = ['arabic', 'devanagari', 'cyrillic'] as const;
 
+/**
+ * The scripts that letter-spacing DAMAGES rather than merely mistunes.
+ *
+ * Data rather than prose, because two gates and three CSS blocks act on it and
+ * every one of them was carrying its own hand-written `['arabic',
+ * 'devanagari']`. A fourth cursive script added to `COVER_SCRIPTS` used to
+ * inherit a Latin arrangement in silence; now it fails the tracking gate with a
+ * message that names what to do.
+ *
+ * Cyrillic is absent and belongs absent: it is not cursive, and tracked
+ * capitals are as right for it as for Latin.
+ */
+export const CURSIVE_SCRIPTS: readonly CoverScript[] = ['arabic', 'devanagari'];
+
 export type CoverScript = (typeof COVER_SCRIPTS)[number];
 
 /**

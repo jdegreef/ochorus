@@ -12,6 +12,7 @@ import {
 	scriptOf
 } from './coverStyles';
 import { ERAS, eraOf } from './eras';
+import { COVER_CSS, lastDecl } from '../test/coverCss';
 
 const CONTENT = resolve(process.cwd(), '..', 'backend', 'library', 'fixtures', 'content');
 
@@ -23,7 +24,7 @@ const pkgSlug = (family: string) =>
 		.toLowerCase()
 		.replace(/ /g, '-');
 const APP_CSS = readFileSync(join(process.cwd(), 'src/app.css'), 'utf-8');
-const COVER_CSS = readFileSync(join(process.cwd(), 'src/lib/components/cover-type.css'), 'utf-8');
+
 
 /**
  * The cover style table — the thing that stops a shelf of books reading as one
@@ -94,21 +95,13 @@ describe('cover styles', () => {
 		// like a bad font rather than a bad number, so it is the kind of thing
 		// that ships.
 		for (const id of ['press', 'enlightenment']) {
-			// EVERY block, not the first one found. A style now writes `.title`
-			// twice — once inside the container gate for its face and weight, once
-			// outside it for the leading its composition wants — and a scan that
-			// stopped at the first match read the composition block and reported
-			// no weight at all.
-			const blocks = [
-				...COVER_CSS.matchAll(
-					new RegExp(`\\.cover-type\\.style-${id} \\.title \\{([^}]*)\\}`, 'g')
-				)
-			].map(([, body]) => body);
-			expect(blocks.length, `no .style-${id} .title block to check`).toBeGreaterThan(0);
-			const weights = blocks.flatMap((b) => [...b.matchAll(/font-weight:\s*(\d+)/g)].map((m) => m[1]));
-			expect(weights.length, `.style-${id} asks for no weight at all`).toBeGreaterThan(0);
-			// The last one wins the cascade, and it is the one the face is asked for.
-			expect(weights[weights.length - 1], `${id} would synthesise a bold`).toBe('400');
+			// The weight that WINS, not the first written: a style writes `.title`
+			// twice now — once in the container gate for its face, once outside for
+			// its composition's leading — and reading the first found reported no
+			// weight at all. `lastDecl` is that cascade rule, kept in one place.
+			const weight = lastDecl(`.cover-type.style-${id} .title`, /font-weight:\s*(\d+)/);
+			expect(weight, `.style-${id} asks for no weight at all`).not.toBeNull();
+			expect(weight, `${id} would synthesise a bold`).toBe('400')
 		}
 	});
 

@@ -200,36 +200,32 @@
 /* PRESS — a 1670s Oxford title page BRACKETS its title between rules, the way
    metal type broke a page into stanzas, and sets the "wherein is discovered…"
    line beneath in small tracked capitals. Never italic: that line was set from
-   the same case as the title. */
-.cover-type.style-press .middle::before {
-	content: '';
-	display: block;
-	width: 62%;
-	height: 3px;
-	margin: 0 auto 4.6cqw;
-	background:
-		linear-gradient(rgb(255 255 255 / 0.5) 0 0) top / 100% 1px no-repeat,
-		linear-gradient(rgb(255 255 255 / 0.36) 0 0) bottom / 100% 1px no-repeat;
-}
-.cover-type.style-press .title {
-	line-height: 1.04;
-}
-/* The rule below answers the bracket above: same width, the second line
-   lighter so it reads as an echo rather than as a box. */
+   the same case as the title.
+
+   ONE DRAWING, STATED ONCE. The bracket above and the rule below are the same
+   double rule — that is what "answers" means — so they share a block rather
+   than being written twice with independently drifting alphas. They were, and
+   the bracket was `3px` against the rule's `0.9cqw`: 5.4px at a 600px plate and
+   0.43px at a 48px thumbnail, so the pair that is supposed to match never did,
+   and the relationship inverted across the size range this file exists to
+   serve. `53.3cqw` is 62% of the 86cqw column `.cover-type`'s 7cqw side padding
+   leaves — a container unit, like every other length here, rather than a
+   percentage of a box that could be repadded without anything noticing. */
+.cover-type.style-press .middle::before,
 .cover-type.style-press .rule {
-	width: 62%;
+	width: 53.3cqw;
 	height: 0.9cqw;
 	background:
 		linear-gradient(rgb(255 255 255 / 0.55) 0 0) top / 100% 1px no-repeat,
 		linear-gradient(rgb(255 255 255 / 0.4) 0 0) bottom / 100% 1px no-repeat;
 }
-.cover-type.style-press .subtitle {
-	font-style: normal;
-	text-transform: uppercase;
-	letter-spacing: 0.18em;
-	font-size: 2.9cqw;
-	opacity: 0.8;
-	margin-top: 4cqw;
+.cover-type.style-press .middle::before {
+	content: '';
+	display: block;
+	margin: 0 auto 4.6cqw;
+}
+.cover-type.style-press .title {
+	line-height: 1.04;
 }
 
 /* INSCRIPTIONAL — a carved tablet has no rules on it. The lines stack close,
@@ -243,25 +239,25 @@
 	line-height: 1;
 	word-spacing: 0.22em;
 }
-.cover-type.style-inscriptional .subtitle {
-	font-style: normal;
-	text-transform: uppercase;
-	letter-spacing: 0.2em;
-	font-size: 2.8cqw;
-	opacity: 0.72;
-	margin-top: 6cqw;
-}
 
-/* DEVOTIONAL — the manual for the closet stays the quiet one, and keeps the
-   printer's fleuron: a lozenge between two short rules, reduced to the one
-   shape that still reads at 40px. */
-.cover-type.style-devotional .rule {
-	position: relative;
+/* The armature both period ornaments are built on: two short rules with a gap
+   between them, reduced to the one shape that still reads at 40px. Shared
+   because it IS the same drawing in both — what differs is what sits in the
+   gap, and that stays in each era's own block below. */
+.cover-type.style-devotional .rule,
+.cover-type.style-revival .rule,
+.cover-type.style-revival .middle::before {
 	width: 18cqw;
 	height: 1.6cqw;
 	background:
 		linear-gradient(rgb(255 255 255 / 0.55) 0 0) left center / 6cqw 1px no-repeat,
 		linear-gradient(rgb(255 255 255 / 0.55) 0 0) right center / 6cqw 1px no-repeat;
+}
+
+/* DEVOTIONAL — the manual for the closet stays the quiet one, and keeps the
+   printer's fleuron: a lozenge set in the gap of the armature above. */
+.cover-type.style-devotional .rule {
+	position: relative;
 }
 .cover-type.style-devotional .rule::before {
 	content: '';
@@ -280,7 +276,7 @@
 /* ENLIGHTENMENT — Baskerville's century set title pages OPEN: one fine rule
    run wide across the measure, and air around everything on the page. */
 .cover-type.style-enlightenment .rule {
-	width: 78%;
+	width: 67cqw;
 	margin-top: 6cqw;
 	opacity: 0.7;
 }
@@ -291,29 +287,42 @@
 	margin-top: 4.4cqw;
 }
 
-/* REVIVAL — the Victorian title page is symmetrical and packed: an ornament
-   above the title answering the one beneath it, and the subtitle in tracked
-   capitals. */
-.cover-type.style-revival .middle::before,
-.cover-type.style-revival .rule {
+/* REVIVAL — the Victorian title page is symmetrical and packed: the same
+   ornament above the title as beneath it, with the gap left open rather than
+   filled, and the subtitle in tracked capitals. */
+.cover-type.style-revival .middle::before {
 	content: '';
 	display: block;
-	width: 18cqw;
-	height: 1.6cqw;
-	background:
-		linear-gradient(rgb(255 255 255 / 0.55) 0 0) left center / 6cqw 1px no-repeat,
-		linear-gradient(rgb(255 255 255 / 0.55) 0 0) right center / 6cqw 1px no-repeat;
-}
-.cover-type.style-revival .middle::before {
 	margin: 0 auto 5cqw;
 }
+
+/* THE TRACKED-CAPS SUBTITLE, shared by the three compositions that set one.
+   A period title page put the line under its title in small capitals from the
+   same case, not in italic — so `press`, `inscriptional` and `revival` all want
+   the same treatment, and it was written three times with the tracking, size
+   and opacity jittered by amounts no reader can see (0.16-0.20em, 2.8-2.9cqw,
+   0.72-0.82). What genuinely differs between them is how much air sits above
+   it, which is each composition's own business and stays in its own block. */
+.cover-type.style-press .subtitle,
+.cover-type.style-inscriptional .subtitle,
 .cover-type.style-revival .subtitle {
 	font-style: normal;
 	text-transform: uppercase;
-	letter-spacing: 0.16em;
+	letter-spacing: 0.18em;
 	font-size: 2.9cqw;
+	opacity: 0.8;
+}
+.cover-type.style-press .subtitle {
+	margin-top: 4cqw;
+}
+/* The tablet's second line recedes further than a title page's: it is cut
+   smaller on the stone, not set from a different case. */
+.cover-type.style-inscriptional .subtitle {
+	margin-top: 6cqw;
+	opacity: 0.72;
+}
+.cover-type.style-revival .subtitle {
 	margin-top: 3.6cqw;
-	opacity: 0.82;
 }
 
 /* HOUSE — the contemporary voice, and the one plate that inverts the order:

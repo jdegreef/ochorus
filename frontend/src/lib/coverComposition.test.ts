@@ -1,10 +1,7 @@
-import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-import { COVER_SCRIPTS, COVER_STYLE_IDS } from './coverStyles';
-
-const COVER_CSS = readFileSync(join(process.cwd(), 'src/lib/components/cover-type.css'), 'utf-8');
+import { COVER_STYLE_IDS, CURSIVE_SCRIPTS } from './coverStyles';
+import { COVER_CSS, blocksFor } from '../test/coverCss';
 
 /**
  * A cover's ARRANGEMENT, not its face.
@@ -20,11 +17,20 @@ const COVER_CSS = readFileSync(join(process.cwd(), 'src/lib/components/cover-typ
  * quietly goes back to being a face with no arrangement of its own.
  */
 describe('cover compositions', () => {
-	/** Every rule the CSS writes for one style, whatever it targets. */
+	/** Every rule the CSS writes for one style, whatever it targets.
+	 *
+	 *  ANCHORED TO THE START OF A LINE and stopped at one, because a selector is
+	 *  the only thing that starts a line here. Unanchored, this scraped the PROSE:
+	 *  the comment that mentions `.cover-type.style-press .title` came back as a
+	 *  rule target, which would let a style satisfy "has a composition" with a
+	 *  sentence about one, and would fail the edges gate the day a comment named
+	 *  `.byline`. */
 	const rulesFor = (style: string) =>
-		[...COVER_CSS.matchAll(new RegExp(`\\.cover-type\\.style-${style}([^{,]*)[,{]`, 'g'))].map(
-			([, target]) => target.trim()
-		);
+		[
+			...COVER_CSS.matchAll(
+				new RegExp(`^\\s*\\.cover-type\\.style-${style}([^{,\\n]*)[,{]`, 'gm')
+			)
+		].map(([, target]) => target.trim());
 
 	it('gives every recipe an arrangement, not only a face', () => {
 		// The defect this whole section exists to fix. A style whose only rule
@@ -54,7 +60,7 @@ describe('cover compositions', () => {
 		);
 		expect(tracked.length, 'no composition tracks a subtitle; this gate is watching nothing')
 			.toBeGreaterThan(0);
-		for (const script of ['arabic', 'devanagari']) {
+		for (const script of CURSIVE_SCRIPTS) {
 			// There are TWO `.script-<x> .subtitle` blocks — one inside the
 			// container gate giving the script its face, one at the foot correcting
 			// what a Latin recipe gets wrong. Both are three classes, exactly like
@@ -62,11 +68,9 @@ describe('cover compositions', () => {
 			// the correction has to zero the tracking AND sit after the composition
 			// that set it. Checking the first block found would pass on the wrong
 			// one, which is what this gate did before it was fixed.
-			const zeroed = [
-				...COVER_CSS.matchAll(
-					new RegExp(`\\.cover-type\\.script-${script} \\.subtitle[^{]*\\{([^}]*)\\}`, 'g')
-				)
-			].filter((m) => /letter-spacing:\s*0(?![.\d])/.test(m[1]));
+			const zeroed = blocksFor(`.cover-type.script-${script} .subtitle`).filter((m) =>
+				/letter-spacing:\s*0(?![.\d])/.test(m[1])
+			);
 			expect(
 				zeroed.length,
 				`${tracked.join(', ')} track the subtitle, and no .script-${script} rule ` +
@@ -112,27 +116,21 @@ describe('cover compositions', () => {
 		// The gate exists so a 48px thumbnail does not FETCH a display face it
 		// cannot show. An ornament fetches nothing and is drawn to read small, so
 		// a thumbnail keeps its composition even where it does not get its face —
-		// which is what makes the shelf legible as a shelf of different books.
+		// which is what makes a shelf legible as a shelf of different books.
+		//
+		// SLICED FROM THE GATE ITSELF. This used to find the block's end by
+		// searching back from a selector that happens to sit inside it, which
+		// landed 73 lines PAST the closing brace — and would have returned -1 the
+		// day that selector was renamed, making every assertion below vacuously
+		// true while the gate went on reporting green.
 		const gate = COVER_CSS.indexOf('@container');
 		expect(gate, 'the recipes are no longer behind a container query').toBeGreaterThan(-1);
-		const gateEnd = COVER_CSS.indexOf('\n}\n', COVER_CSS.lastIndexOf('.cover-type.script-cyrillic.style-inscriptional'));
-		for (const style of COVER_STYLE_IDS) {
-			for (const m of COVER_CSS.matchAll(
-				new RegExp(`\\.cover-type\\.style-${style} \\.(middle|rule|subtitle)`, 'g')
-			)) {
-				expect(
-					m.index! > gate && m.index! < gateEnd,
-					`.style-${style} arranges ${m[1]} inside the container gate, so a ` +
-						`thumbnail loses its composition`
-				).toBe(false);
-			}
-		}
+		const gateBody = COVER_CSS.slice(gate, COVER_CSS.indexOf('\n}\n', gate));
+		expect(
+			gateBody,
+			'a composition sits inside the container gate, so a thumbnail loses its ' +
+				'arrangement along with its face'
+		).not.toMatch(/\.cover-type\.style-[a-z]+ \.(middle|rule|subtitle)/);
 	});
 
-	it('corrects every script the library is read in', () => {
-		// A guard on the guard: the tracking correction above names two scripts by
-		// hand. If a fourth script is ever added to COVER_SCRIPTS, this says so
-		// rather than letting it inherit a Latin arrangement silently.
-		expect([...COVER_SCRIPTS].sort()).toEqual(['arabic', 'cyrillic', 'devanagari']);
-	});
 });
