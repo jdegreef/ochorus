@@ -22,6 +22,13 @@ function loadSentry(): Promise<SentryModule> {
 			module.init({
 				dsn: env.PUBLIC_SENTRY_DSN,
 				environment: env.PUBLIC_SENTRY_ENVIRONMENT || 'production',
+				// WHICH build an error came from. Without it every browser report
+				// is attributed to one undifferentiated "production", so a
+				// regression cannot be traced to the deploy that introduced it.
+				// Baked in at build time (see vite.config.ts); empty outside a
+				// Render build, and an empty release is worse than none — Sentry
+				// would group every local and CI error under "".
+				release: __RELEASE__ || undefined,
 				tracesSampleRate: 0
 			});
 			return module;

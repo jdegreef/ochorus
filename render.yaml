@@ -46,7 +46,11 @@ services:
         sync: false
       - key: CSRF_TRUSTED_ORIGINS # same frontend URL (used by the Django admin)
         sync: false
-      - key: SENTRY_DSN # optional: paste a Sentry DSN to turn on API error monitoring
+      # Optional: paste a Sentry DSN to turn on API error monitoring. Each report
+      # is tagged with the deploy's commit automatically (Render sets
+      # RENDER_GIT_COMMIT), so an error names the release that introduced it
+      # rather than an undifferentiated "production".
+      - key: SENTRY_DSN
         sync: false
       # Taking a language live triggers a rebuild of the READER: the site is
       # prerendered, so a status change alone changes nothing a reader sees.
@@ -646,5 +650,14 @@ services:
         sync: false
       - key: PUBLIC_SUPABASE_ANON_KEY # Supabase anon/publishable key (safe in the browser)
         sync: false
-      - key: PUBLIC_SENTRY_DSN # optional: paste a Sentry DSN to turn on browser error monitoring
+      # Optional: paste a Sentry DSN to turn on browser error monitoring. Reports
+      # carry the build's commit, baked in at build time (see vite.config.ts).
+      #
+      # NOT YET WIRED: source maps. Without them a browser stack trace is one
+      # minified line, so the release tells you WHICH build broke and not where.
+      # Uploading them needs a Sentry auth token, org and project in the build
+      # environment — credentials this file deliberately does not carry — plus
+      # `build.sourcemap` on and the maps deleted after upload, since serving
+      # them publishes the source.
+      - key: PUBLIC_SENTRY_DSN
         sync: false

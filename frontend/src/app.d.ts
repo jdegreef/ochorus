@@ -6,6 +6,12 @@ declare global {
 		// interface PageData {}
 		// interface Platform {}
 	}
+
+	/**
+	 * The commit this bundle was built from — injected by `define` in
+	 * vite.config.ts. Empty outside a Render build.
+	 */
+	const __RELEASE__: string;
 }
 
 export {};
