@@ -57,6 +57,7 @@ from library.covers import (
     COVER_WIDTHS,
     RASTER_SUFFIXES,
     art_url,
+    twin_path,
     author_ink_contrast,
     variant_url,
 )
@@ -832,14 +833,19 @@ class CoverAssetTests(SimpleTestCase):
         )
         recorded = json.loads(manifest_file.read_text())["twins"]
 
-        english = {
-            f["slug"]: f for f in self.books if f.get("language") == "en"
+        # EVERY EDITION, not the English rows. A card carries the title in its
+        # pixels, so each language has its own; checking only English left 93 of
+        # the 130 committed cards unverified, and this gate reported green with
+        # a translated twin deleted from disk.
+        editions = {
+            (f["slug"], f["language"]): f for f in self.books
         }
         # Hoisted: `authors_by_slug` re-reads and re-parses authors.json on every
-        # call, and this loop runs over every English row.
+        # call, and this loop runs over every row.
         names = authors_by_slug()
         stale, unrecorded = [], []
-        for slug, fields in sorted(english.items()):
+        for (slug, language), fields in sorted(editions.items()):
+            key = twin_path(slug, language)[1].removesuffix(".png")
             cover = _cover(fields)
             art = cover.startswith("/covers/art/")
             # Under `/covers/` on BOTH arms, which is what `needTwins` in the
@@ -850,12 +856,14 @@ class CoverAssetTests(SimpleTestCase):
             # disk, can never produce it. That is a red build no re-run fixes.
             if not cover.startswith("/covers/") or not (art or cover.endswith(".svg")):
                 continue  # a designed raster, or not ours; twins are ensure_og_twin's
-            if slug not in recorded:
-                unrecorded.append(slug)
+            if key not in recorded:
+                unrecorded.append(key)
                 continue
-            source = STATIC_DIR / (
-                cover.lstrip("/") if art else f"covers/{slug}.svg"
-            )
+            # The row's OWN cover_url on both arms: a translated plate already
+            # names its language directory, and a painting is one shared file for
+            # every edition. The plate arm used to rebuild the path from the slug,
+            # which was the English one whatever row it was looking at.
+            source = STATIC_DIR / cover.lstrip("/")
             if not source.is_file():
                 continue  # the twin gate above owns "the file isn't there"
             # The type is drawn over the ground at render time — for BOTH tiers
@@ -865,8 +873,8 @@ class CoverAssetTests(SimpleTestCase):
             blob = source.read_bytes() + "\0{}\0{}\0{}".format(
                 fields["title"], fields.get("subtitle") or "", author
             ).encode()
-            if hashlib.sha256(blob).hexdigest() != recorded[slug].get("ground"):
-                stale.append(slug)
+            if hashlib.sha256(blob).hexdigest() != recorded[key].get("ground"):
+                stale.append(key)
 
         self.assertEqual(
             unrecorded, [], "cover with no entry in og-manifest.json — run `npm run og:covers`"
@@ -1087,7 +1095,7 @@ class CoverAssetTests(SimpleTestCase):
         )
 
     def test_covers_that_cannot_be_shared_have_a_raster_twin(self):
-        """og:image falls back to /covers/<slug>.png — that file must exist.
+        """og:image falls back to an edition's twin — that file must exist.
 
         Two covers can't stand in for themselves on a social card: a generated
         `.svg`, which every platform refuses, and a `covers/art/` painting,
@@ -1101,16 +1109,20 @@ class CoverAssetTests(SimpleTestCase):
         this, the eleventh curated work would ship a 404 og:image with every
         gate green.
         """
+        # PER EDITION. This iterated every row and then looked for the ENGLISH
+        # twin of each, so an Arabic row was satisfied by the English card — the
+        # same file og:image was wrongly serving it. Deleting a translated twin
+        # outright left this green; it is what `twin_path` was extracted for.
         missing = sorted(
-            f["slug"]
+            twin_path(f["slug"], f["language"])[0]
             for f in self.books
             if (_cover(f).endswith(".svg") or _cover(f).startswith("/covers/art/"))
-            and not (STATIC_DIR / "covers" / f"{f['slug']}.png").is_file()
+            and not (STATIC_DIR / "covers" / twin_path(f["slug"], f["language"])[1]).is_file()
         )
         self.assertEqual(
             missing, [],
-            "cover that can't be its own og:image, with no .png twin beside it — "
-            "rasterize one (600x800, with the title on it)",
+            "an edition whose cover can't be its own og:image, with no .png twin — "
+            "run `cd frontend && npm run og:covers`",
         )
 
 

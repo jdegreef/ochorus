@@ -101,6 +101,32 @@ def cover_path(slug: str, language: str) -> tuple[str, str]:
     return f"/covers/{language}/{slug}.svg", f"{language}/{slug}.svg"
 
 
+def twin_path(slug: str, language: str) -> tuple[str, str]:
+    """(url, path under the covers dir) for one edition's og:image twin.
+
+    A twin is the cover PHOTOGRAPHED — the ground with the title drawn over it,
+    flattened to a raster, because every social platform refuses an SVG and a
+    painting carries no words of its own. So it is per EDITION, not per work:
+    the title is in the pixels.
+
+    That is what this function exists to stop anyone forgetting again. og:image
+    resolved to ``/covers/<slug>.png``, keyed by slug alone, so sharing the
+    Arabic page of a book posted a card with the ENGLISH title on it — for every
+    translated edition in the library, in prerendered HTML the runtime never got
+    to correct. Both fixture gates read the same wrong path and agreed it was
+    fine.
+
+    Same layout as ``cover_path`` above and for the same reason: English keeps
+    the historic root path so cards already shared do not 404, everything else
+    sits under its language. ``frontend/src/lib/coverArt.ts``'s ``twinUrl`` is
+    the JS side of this one rule — the generator and the page both read it from
+    there, and ``CoverAssetTests`` reads it from here.
+    """
+    if language == "en":
+        return f"/covers/{slug}.png", f"{slug}.png"
+    return f"/covers/{language}/{slug}.png", f"{language}/{slug}.png"
+
+
 # The ink is white at these opacities. The byline is set at 3.9cqw — 23px on the
 # 600-wide plate this module's geometry describes — which is NOT "large text"
 # under WCAG 1.4.3, so AA asks 4.5:1 of it. The title runs 7.6-10.45cqw and asks

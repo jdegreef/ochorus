@@ -74,7 +74,14 @@
  * this whole script exists to repair.
  */
 import { createHash } from 'node:crypto';
-import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
+import {
+	existsSync,
+	mkdirSync,
+	readFileSync,
+	readdirSync,
+	statSync,
+	writeFileSync
+} from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
@@ -85,7 +92,7 @@ import sharp from 'sharp';
 // it, and nothing type-checks this file. Both modules are import-free at
 // runtime for exactly this reason — see `coverStyles.ts`'s header and
 // `nodeLoadable.test.ts`.
-import { isArtCover, isPlateCover } from '../src/lib/coverArt.ts';
+import { isArtCover, isPlateCover, twinUrl } from '../src/lib/coverArt.ts';
 // The cover's type, as markup — the same tree `BookCover` renders, stated once
 // so `coverMarkupParity.test.ts` can hold the two renderers against each other.
 // It used to be hand-built below, and had drifted into a card with no
@@ -130,7 +137,19 @@ function authors() {
 }
 
 /**
- * Every English book whose cover cannot be its own og:image, in slug order.
+ * Every EDITION whose cover cannot be its own og:image, in slug order.
+ *
+ * Every edition, not every English book, and that was the bug. A twin carries
+ * the book's TITLE baked into its pixels, and `og:image` resolved to
+ * `/covers/<slug>.png` — keyed by slug alone. So sharing the Arabic, Hindi or
+ * Portuguese page of a book posted a preview card with the ENGLISH title on it,
+ * for all 93 translated editions. Localized pages are prerendered, so that was
+ * in the HTML a crawler reads, not something the runtime could correct.
+ *
+ * It also quietly broke the rule the content model is built on: a language with
+ * no row simply does not show that item. The share layer was substituting
+ * English instead of declining, which is the one fallback this library does not
+ * have.
  *
  * The same two conditions the fixture gate tests, deliberately spelled out
  * again rather than shared: that gate is what proves this script was run, and a
@@ -140,7 +159,7 @@ function authors() {
 function needTwins() {
 	const people = authors();
 	return readdirSync(resolve(CONTENT, 'books'))
-		.filter((f) => f.endsWith('.en.json'))
+		.filter((f) => f.endsWith('.json'))
 		.sort()
 		.flatMap((file) => JSON.parse(readFileSync(resolve(CONTENT, 'books', file), 'utf8')))
 		.filter((row) => row.model === 'library.book')
@@ -168,12 +187,24 @@ function needTwins() {
 				// in Latin.
 				language: fields.language || 'en',
 				script: scriptOf(fields.language || 'en'),
+				// Where this edition's card lives, and what names it in the manifest.
+				// English keeps the historic root path so cards already shared do not
+				// 404; every other language sits under its own directory. The same
+				// layout `covers.cover_path` gives a plate, for the same reason.
+				twin: twinPath(fields.slug, fields.language || 'en'),
 				// Which tier, through the app's own predicates rather than a fourth
 				// hand-written copy of "what is a painting".
 				art: isArtCover(cover)
 			};
 		})
 		.filter((b) => b.art || isPlateCover(b.cover));
+}
+
+/** (key, file) for one edition's twin, from the URL the app resolves — so the
+ *  writer and the reader cannot disagree about where a card lives. */
+function twinPath(slug, language) {
+	const file = twinUrl(slug, language).replace('/covers/', '');
+	return { key: file.replace(/\.png$/, ''), file };
 }
 
 // ── The page ────────────────────────────────────────────────────────────────
@@ -395,7 +426,7 @@ async function main() {
 	for (const book of books) {
 		// Read once, for the digest and for the page.
 		const groundBytes = readFileSync(resolve(STATIC, book.cover.replace(/^\//, '')));
-		manifest[book.slug] = { ground: digest(inputs(book, groundBytes)), style: book.style };
+		manifest[book.twin.key] = { ground: digest(inputs(book, groundBytes)), style: book.style };
 		await page.setContent(coverPage(book, groundBytes));
 		// The faces are data URIs, so this resolves immediately — but a
 		// screenshot taken before it does silently falls back to the default
@@ -409,10 +440,13 @@ async function main() {
 			.png({ palette: true, colours: 256, dither: 0.4, effort: 10 })
 			.toBuffer();
 
-		const dest = resolve(COVERS, `${book.slug}.png`);
+		const dest = resolve(COVERS, book.twin.file);
 		if (existsSync(dest) && digest(readFileSync(dest)) === digest(png)) continue;
+		// A translated edition's card is the first thing written into its language
+		// directory when that language has no plate of its own.
+		mkdirSync(dirname(dest), { recursive: true });
 		writeFileSync(dest, png);
-		wrote.push(`${book.slug}.png  ${book.art ? 'painting' : 'plate'}  ${book.style}`);
+		wrote.push(`${book.twin.file}  ${book.art ? 'painting' : 'plate'}  ${book.style}`);
 	}
 
 	await browser.close();

@@ -70,6 +70,24 @@ function shade(hex: string, factor: number): string {
  * `backend/scripts/build_cover_assets.py` writes them and a fixture gate proves
  * they exist, so `srcset` here is a promise something keeps.
  */
+/**
+ * Where one edition's og:image twin lives.
+ *
+ * A twin carries the book's TITLE baked into its pixels, so it is per EDITION,
+ * not per work — and this used to be `/covers/<slug>.png`, keyed by slug alone.
+ * Sharing the Arabic page of a book therefore posted a card with the English
+ * title on it, for every translated edition in the library, in prerendered HTML
+ * that the runtime never got to correct.
+ *
+ * English keeps the historic root path so cards already shared do not 404;
+ * every other language sits under its own directory. That is the layout
+ * `covers.cover_path` already gives a plate, and `generate-cover-og.mjs` writes
+ * to it through this same function rather than a second copy of the rule.
+ */
+export function twinUrl(slug: string, language: string): string {
+	return language === 'en' ? `/covers/${slug}.png` : `/covers/${language}/${slug}.png`;
+}
+
 export const COVER_WIDTHS = [320, 640];
 const RASTER = /\.(jpe?g|png)$/;
 
