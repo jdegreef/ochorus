@@ -36,7 +36,7 @@
 	 */
 	import { onMount, tick } from 'svelte';
 	import { page } from '$app/stores';
-	import { contentLang, HEADER_OFFSET } from '$lib/reading';
+	import { contentLang, HEADER_OFFSET, placeAfterLayout } from '$lib/reading';
 	import { getScrollAnchor, saveScrollAnchor, saveProgress, getProgressRecord } from '$lib/progress';
 	import { type WorkKind } from '$lib/reading-schema';
 	import { createReaderText, type Cite } from '$lib/readerText.svelte';
@@ -156,8 +156,13 @@
 						getProgressRecord(slug, kind)?.paragraph_index ??
 						0);
 			if (idx > 0 && body?.children[idx]) {
-				body.children[idx].scrollIntoView({ block: 'start' });
-				window.scrollBy(0, -headerOffset);
+				placeAfterLayout(() => {
+					const el = body?.children[idx];
+					if (!el) return;
+					el.scrollIntoView({ block: 'start' });
+					window.scrollBy(0, -headerOffset);
+					updateFraction();
+				});
 			}
 			updateFraction();
 		})();

@@ -21,7 +21,8 @@
 		contentLang,
 		readingTime,
 		minutesLeft as minutesLeftOf,
-		HEADER_OFFSET
+		HEADER_OFFSET,
+		placeAfterLayout
 	} from '$lib/reading';
 	import { pageOfOffset } from '$lib/pageMath';
 	import { listen } from '$lib/listen.svelte';
@@ -380,8 +381,12 @@
 				}
 				goToPage(target, false);
 			} else if (Number.isFinite(jumpTo) && body?.children[jumpTo]) {
-				body.children[jumpTo].scrollIntoView({ block: 'start' });
-				window.scrollBy(0, -HEADER_OFFSET);
+				placeAfterLayout(() => {
+					const el = body?.children[jumpTo];
+					if (!el) return;
+					el.scrollIntoView({ block: 'start' });
+					window.scrollBy(0, -HEADER_OFFSET);
+				});
 			} else {
 				restoreScroll(s, order);
 			}
@@ -631,29 +636,33 @@
 			getScrollAnchor(s, order) ??
 			(rec && rec.order === order ? rec.paragraph_index : null);
 		if (idx && body && body.children[idx]) {
-			body.children[idx].scrollIntoView({ block: 'start' });
-			window.scrollBy(0, -HEADER_OFFSET);
+			placeAfterLayout(() => {
+				const el = body?.children[idx];
+				if (!el) return;
+				el.scrollIntoView({ block: 'start' });
+				window.scrollBy(0, -HEADER_OFFSET);
+			});
 		} else {
 			window.scrollTo(0, 0);
 		}
 	}
 
 	// Throttled save of the topmost visible paragraph as the scroll anchor.
+	//
+	// Through `topVisibleIndex()` — the same question the restore's contract is
+	// written against. This used to ask its own: the first paragraph whose TOP
+	// had passed the header line, minus one. Restore parks paragraph N just
+	// below that line, and that rule answers N-1 for the same screen, so a
+	// chapter reopened where it was left recorded one paragraph earlier each
+	// time. Two rules for one contract is precisely the drift the shared
+	// HEADER_OFFSET was introduced to end.
 	let saveTimer: ReturnType<typeof setTimeout> | undefined;
 	function onScroll() {
 		clearTimeout(saveTimer);
 		saveTimer = setTimeout(() => {
 			if (!body) return;
 			updateFraction();
-			const kids = body.children;
-			let topIndex = 0;
-			for (let i = 0; i < kids.length; i++) {
-				if (kids[i].getBoundingClientRect().top >= HEADER_OFFSET) {
-					topIndex = Math.max(0, i - 1);
-					break;
-				}
-			}
-			saveScrollAnchor(slug, chapter.order, topIndex);
+			saveScrollAnchor(slug, chapter.order, topVisibleIndex());
 		}, 250);
 	}
 
