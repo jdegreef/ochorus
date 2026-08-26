@@ -602,8 +602,16 @@ class AdminAuditView(APIView):
         generic, tiny, giant, fragmented, dropcap, mid_split, empty = (
             [], [], [], [], [], [], []
         )
-        titles: dict[str, list[str]] = {}
-        orders: dict[str, list[int]] = {}
+        # Keyed by (slug, language), NOT slug. A work is a per-language ROW —
+        # eight editions of the-inner-chamber share one slug — so grouping by
+        # slug alone pools chapters that belong to different books. That made
+        # `_duplicate_titles` report 17 cross-language collisions as duplicates
+        # "in a book" (a chapter 19 titled "Hazelglen Fellowship" in en, lg, pt
+        # and sw is one untranslated proper noun, not four duplicates), and it
+        # would hide a real gap in one edition behind another edition's chapters
+        # in `_order_gaps`.
+        titles: dict[tuple[str, str], list[str]] = {}
+        orders: dict[tuple[str, str], list[int]] = {}
 
         rows = Chapter.objects.select_related("book").values(
             "book_id", "book__slug", "book__language", "order", "title",
@@ -617,8 +625,8 @@ class AdminAuditView(APIView):
             wc = c["word_count"] or 0
             body = (c["body_text"] or "").strip()
 
-            titles.setdefault(slug, []).append(title)
-            orders.setdefault(slug, []).append(order)
+            titles.setdefault((slug, lang), []).append(title)
+            orders.setdefault((slug, lang), []).append(order)
 
             def finding(slug=slug, lang=lang, order=order, title=title, **extra):
                 return {"book": slug, "language": lang, "order": order, "title": title, **extra}
@@ -657,15 +665,17 @@ class AdminAuditView(APIView):
 
     def _duplicate_titles(self, titles_by_book: dict) -> dict:
         out = []
-        for slug, titles in titles_by_book.items():
+        for (slug, language), titles in titles_by_book.items():
             seen: dict[str, int] = {}
             for t in titles:
                 if t:
                     seen[t] = seen.get(t, 0) + 1
             for title, n in seen.items():
                 if n > 1:
-                    out.append({"book": slug, "title": title, "count": n})
-        out.sort(key=lambda r: (-r["count"], r["book"]))
+                    out.append(
+                        {"book": slug, "language": language, "title": title, "count": n}
+                    )
+        out.sort(key=lambda r: (-r["count"], r["book"], r["language"]))
         return _capped(out)
 
     def _empty_books(self) -> list[dict]:
@@ -682,13 +692,20 @@ class AdminAuditView(APIView):
 
     def _order_gaps(self, orders_by_book: dict) -> list[dict]:
         out = []
-        for slug, orders in orders_by_book.items():
+        for (slug, language), orders in orders_by_book.items():
             present = set(orders)
             expected = set(range(1, max(orders) + 1))
             missing = sorted(expected - present)
             if missing:
-                out.append({"book": slug, "missing": missing, "count": len(orders)})
-        out.sort(key=lambda r: r["book"])
+                out.append(
+                    {
+                        "book": slug,
+                        "language": language,
+                        "missing": missing,
+                        "count": len(orders),
+                    }
+                )
+        out.sort(key=lambda r: (r["book"], r["language"]))
         return out
 
     def _broken_plan_days(self) -> list[dict]:

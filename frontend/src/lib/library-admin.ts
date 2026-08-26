@@ -528,12 +528,12 @@ export interface AdminAudit {
 		fragmented: Capped<AuditChapterFinding>;
 		missing_dropcap: Capped<AuditChapterFinding>;
 		mid_sentence_splits: Capped<AuditChapterFinding>;
-		duplicate_titles: Capped<{ book: string; title: string; count: number }>;
+		duplicate_titles: Capped<{ book: string; language: string; title: string; count: number }>;
 	};
 	integrity: {
 		empty_books: Capped<{ book: string; language: string; title: string; author: string }>;
 		empty_chapters: Capped<AuditChapterFinding>;
-		order_gaps: Capped<{ book: string; missing: number[]; count: number }>;
+		order_gaps: Capped<{ book: string; language: string; missing: number[]; count: number }>;
 		broken_plan_days: Capped<{ plan: string; language: string; day: number; book: string; order: number }>;
 	};
 }
