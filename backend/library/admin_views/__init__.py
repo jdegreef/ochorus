@@ -1,7 +1,8 @@
 """Admin dashboard API, split by concern.
 
 Previously one 1,190-line module. The view classes are re-exported here so
-``from library.admin_views import AdminStatsView`` (config/urls.py) is unchanged.
+``from library.admin_views import AdminStatsView`` (config/urls.py) is unchanged
+— which is what lets a module be split again without touching the URL conf.
 """
 
 from .analytics import (
@@ -12,17 +13,19 @@ from .analytics import (
 )
 from .content import (
     AdminCoverageView,
-    AdminLanguageCreateView,
-    AdminLanguageDeployCheckView,
     AdminLanguageDetailView,
-    AdminLanguageGoLiveView,
-    AdminLanguageReadinessView,
-    AdminLanguageSettingsView,
-    AdminLanguageThresholdsView,
     AdminStatsView,
 )
 from .detail import AdminBookDetailView, AdminExportView
 from .jobs import AdminTranslationJobsView
+from .languages import (
+    AdminLanguageCreateView,
+    AdminLanguageDeployCheckView,
+    AdminLanguageGoLiveView,
+    AdminLanguageReadinessView,
+    AdminLanguageSettingsView,
+    AdminLanguageThresholdsView,
+)
 from .quality import AdminAuditView, AdminReviewDetailView, AdminReviewQueueView
 
 __all__ = [
