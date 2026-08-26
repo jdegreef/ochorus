@@ -1,4 +1,10 @@
 import { apiFetch, ApiError } from './api';
+import {
+	BOOK_FIELDS,
+	CHAPTER_FIELDS,
+	requireFields,
+	SERMON_FIELDS
+} from './payloadGuards';
 
 export interface Author {
 	slug: string;
@@ -358,22 +364,38 @@ export const getAuthor = (slug: string, language = 'en') =>
 export const getAuthorWithLang = (slug: string, language = 'en') =>
 	localizedWithLang<AuthorDetail>((l) => `/api/library/authors/${slug}/?language=${l}`, language);
 
-export const getBook = (slug: string, language = 'en') =>
-	localized<BookDetail>((l) => `/api/library/books/${slug}/?language=${l}`, language);
+export const getBook = async (slug: string, language = 'en') =>
+	requireFields<BookDetail>(
+		`book ${slug}`,
+		await localized<BookDetail>((l) => `/api/library/books/${slug}/?language=${l}`, language),
+		BOOK_FIELDS
+	);
 
-export const getChapter = (slug: string, order: number, language = 'en') =>
-	localized<Chapter>((l) => `/api/library/books/${slug}/chapters/${order}/?language=${l}`, language);
+export const getChapter = async (slug: string, order: number, language = 'en') =>
+	requireFields<Chapter>(
+		`chapter ${slug}/${order}`,
+		await localized<Chapter>(
+			(l) => `/api/library/books/${slug}/chapters/${order}/?language=${l}`,
+			language
+		),
+		CHAPTER_FIELDS
+	);
 
 /**
  * A chapter plus the language its body is actually in. The Chapter payload
  * carries no language of its own, and the reader needs the real one for the
  * prose's `lang` attribute — see localizedWithLang.
  */
-export const getChapterWithLang = (slug: string, order: number, language = 'en') =>
-	localizedWithLang<Chapter>(
+export const getChapterWithLang = async (slug: string, order: number, language = 'en') => {
+	// The route the chapter reader actually takes, so this is where the guard
+	// has to be: `getChapter` above is the notebook's and the search drawer's
+	// path, and guarding only that would leave the reader itself unchecked.
+	const res = await localizedWithLang<Chapter>(
 		(l) => `/api/library/books/${slug}/chapters/${order}/?language=${l}`,
 		language
 	);
+	return { ...res, data: requireFields<Chapter>(`chapter ${slug}/${order}`, res.data, CHAPTER_FIELDS) };
+};
 
 /** The queries readers search most (aggregate, public). Empty when the log is
  * too sparse — the caller falls back to browse-topic chips. */
@@ -397,8 +419,12 @@ export const createAuthor = (name: string) =>
 // filters by (slug, language), so a language-switch on a sermon page or a shared
 // /lg/sermons/<slug> link to an untranslated sermon would otherwise dead-end at
 // the not-found page instead of degrading to the readable English original.
-export const getSermon = (slug: string, language = 'en') =>
-	localized<Sermon>((l) => `/api/library/sermons/${slug}/?language=${l}`, language);
+export const getSermon = async (slug: string, language = 'en') =>
+	requireFields<Sermon>(
+		`sermon ${slug}`,
+		await localized<Sermon>((l) => `/api/library/sermons/${slug}/?language=${l}`, language),
+		SERMON_FIELDS
+	);
 
 export const search = (q: string, language = 'en', scope = '') => {
 	const params = new URLSearchParams({ q, language });

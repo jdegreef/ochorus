@@ -27,9 +27,26 @@ function mockFetchByLanguage(present: string[], payload: unknown) {
 
 afterEach(() => vi.restoreAllMocks());
 
+/**
+ * Payloads carrying what the guards require (see $lib/payloadGuards).
+ *
+ * These were previously `{ slug, title }` — enough for a fallback assertion, and
+ * nothing like what the API sends. The guards rejected them the moment they
+ * landed, which is the guards working: a double that does not resemble the real
+ * thing cannot catch the day the real thing changes.
+ */
+const sermonPayload = (title: string) => ({
+	slug: 's',
+	language: 'en',
+	title,
+	body_html: '<p>Prose.</p>',
+	author_name: 'A. B. Simpson'
+});
+const bookPayload = (title: string) => ({ slug: 'b', language: 'en', title, chapters: [] });
+
 describe('localized detail fallback', () => {
 	it('getSermon falls back to English when the language has no row', async () => {
-		const fetchSpy = mockFetchByLanguage(['en'], { slug: 's', title: 'English Sermon' });
+		const fetchSpy = mockFetchByLanguage(['en'], sermonPayload('English Sermon'));
 		vi.stubGlobal('fetch', fetchSpy);
 		const sermon = await getSermon('s', 'es');
 		expect((sermon as { title: string }).title).toBe('English Sermon');
@@ -47,7 +64,7 @@ describe('localized detail fallback', () => {
 	});
 
 	it('does not fall back when the requested language exists', async () => {
-		const fetchSpy = mockFetchByLanguage(['en', 'lg'], { slug: 's', title: 'Luganda Sermon' });
+		const fetchSpy = mockFetchByLanguage(['en', 'lg'], sermonPayload('Luganda Sermon'));
 		vi.stubGlobal('fetch', fetchSpy);
 		const sermon = await getSermon('s', 'lg');
 		expect((sermon as { title: string }).title).toBe('Luganda Sermon');
@@ -55,7 +72,7 @@ describe('localized detail fallback', () => {
 	});
 
 	it('getBook keeps its existing fallback (regression guard)', async () => {
-		vi.stubGlobal('fetch', mockFetchByLanguage(['en'], { slug: 'b', title: 'English Book' }));
+		vi.stubGlobal('fetch', mockFetchByLanguage(['en'], bookPayload('English Book')));
 		const book = await getBook('b', 'sw');
 		expect((book as { title: string }).title).toBe('English Book');
 	});
