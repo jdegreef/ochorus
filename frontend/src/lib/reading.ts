@@ -72,6 +72,36 @@ export function preachedYear(preachedOn: string | null): string {
 export const HEADER_OFFSET = 64;
 
 /**
+ * Run `place` once the prose has stopped moving, then once more after the next
+ * frame — for restoring a reader to their paragraph.
+ *
+ * `await tick()` is not enough, and the gap is not small. It waits for Svelte to
+ * write the DOM, not for the browser to finish laying it out: measured on a
+ * chapter restore, the document grew from 6,010px to 6,673px between the scroll
+ * and the following frame, carrying the target paragraph 209px down with it.
+ * Webfonts are the bulk of it — this is a reading app, and its prose faces load
+ * after first paint.
+ *
+ * That mattered because the resume point WALKED BACKWARDS. The scroll landed
+ * the paragraph 35px lower than intended, which left the paragraph above it
+ * still crossing the header line, so the next save recorded N-1 — and every
+ * reopen lost another one: a chapter opened at paragraph 8 read 7, then 6, then
+ * 5, and eventually the top.
+ *
+ * Both passes are needed, and neither is a guess: the first puts the reader
+ * roughly right immediately rather than leaving them at the top while fonts
+ * load, and the second corrects for the reflow once it has happened.
+ */
+export function placeAfterLayout(place: () => void): void {
+	place();
+	const again = () => requestAnimationFrame(place);
+	// `fonts.ready` has usually resolved by the time a client-side navigation
+	// runs, in which case this is just the extra frame.
+	if (typeof document !== 'undefined' && document.fonts) void document.fonts.ready.then(again);
+	else again();
+}
+
+/**
  * A content-language code as a `lang` attribute value.
  *
  * Reading surfaces never set `lang` on the prose, so the browser fell back to
