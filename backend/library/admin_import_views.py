@@ -16,8 +16,9 @@ from rest_framework.views import APIView
 from accounts.permissions import IsAdminEmail
 
 from . import upload_import
+from .audit import AdminAudited, AdminNotAudited
 from .languages import known_codes, language_map
-from .models import Author
+from .models import AdminAction, Author
 from .serializers import AuthorSerializer
 from .views import _language_entry
 
@@ -37,7 +38,7 @@ def _unique_author_slug(name: str) -> str:
     return slug
 
 
-class AdminAuthorCreateView(APIView):
+class AdminAuthorCreateView(AdminAudited, APIView):
     """POST {name} → create a name-only stub Author.
 
     Lets the import flow add an author who isn't in the system yet without
@@ -46,6 +47,10 @@ class AdminAuthorCreateView(APIView):
     """
 
     permission_classes = [IsAdminEmail]
+    audit_action = AdminAction.Action.AUTHOR_CREATE
+
+    def audit_entry(self, request, response):
+        return f"author:{response.data['slug']}", {"name": response.data.get("name", "")}
 
     def post(self, request):
         name = (request.data.get("name") or "").strip()
@@ -74,10 +79,14 @@ class AdminImportLanguagesView(APIView):
         return Response([_language_entry(code) for code in language_map()])
 
 
-class AdminImportParseView(APIView):
+class AdminImportParseView(AdminNotAudited, APIView):
     """POST a file (+ ``kind`` = book|sermon) → detected-chapters preview, no save."""
 
     permission_classes = [IsAdminEmail]
+    audit_exempt = (
+        "Parses an upload into a preview and returns it. Nothing is written — "
+        "publishing is a separate request, and that one is audited."
+    )
     parser_classes = [MultiPartParser, FormParser]
 
     def post(self, request):
@@ -95,10 +104,24 @@ class AdminImportParseView(APIView):
         return Response(result)
 
 
-class AdminImportPublishView(APIView):
+class AdminImportPublishView(AdminAudited, APIView):
     """POST reviewed content → create the Book+Chapters or Sermon; return its link."""
 
     permission_classes = [IsAdminEmail]
+    audit_action = AdminAction.Action.CONTENT_PUBLISH
+
+    def audit_entry(self, request, response):
+        # This is the endpoint that puts prose in front of readers, and
+        # `create_book` stamps every upload PUBLIC_DOMAIN — so it never passes
+        # through the review queue. The record of who published it is the only
+        # one there will be.
+        data = response.data
+        target = f"{data['kind']}:{data['slug']}:{request.data.get('language') or 'en'}"
+        return target, {
+            "title": data.get("title", ""),
+            "chapters": data.get("chapters"),
+            "source_url": (request.data.get("source_url") or "").strip(),
+        }
 
     def post(self, request):
         d = request.data

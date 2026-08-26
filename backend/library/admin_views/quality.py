@@ -12,7 +12,9 @@ from rest_framework.views import APIView
 
 from accounts.permissions import IsAdminEmail
 
+from ..audit import AdminAudited
 from ..models import (
+    AdminAction,
     Author,
     AuthorTranslation,
     Book,
@@ -34,7 +36,7 @@ from ..qa import (
 )
 
 
-class AdminReviewQueueView(APIView):
+class AdminReviewQueueView(AdminAudited, APIView):
     """The AI-translation review queue.
 
     GET lists everything awaiting a native-speaker check — books and sermons
@@ -58,6 +60,35 @@ class AdminReviewQueueView(APIView):
 
     KINDS = ("book", "sermon", "bio")
     PAGE_SIZE = 25
+
+    # `ReviewOutcome` already records the decision itself — reviewer, reason and
+    # all — and the review screen reads it. These rows exist so that ONE table
+    # answers "what has been done in the admin", without a reader having to know
+    # that review decisions keep their own ledger. See `AdminAction`.
+    def audit_action_for(self, request):
+        return (
+            AdminAction.Action.REVIEW_UNDO
+            if request.method == "DELETE"
+            else AdminAction.Action.REVIEW_DECIDE
+        )
+
+    def audit_entry(self, request, response):
+        data = response.data
+        if request.method == "DELETE":
+            return f"{data['kind']}:{data['slug']}:{data['language']}", {}
+        # A batch is one action over many items: name what it settled, and keep
+        # the count of what it held back (a 207).
+        decided = data.get("decided") or []
+        target = (
+            f"{decided[0]['kind']}:{decided[0]['slug']}:{decided[0]['language']}"
+            if len(decided) == 1
+            else f"{len(decided)} items"
+        )
+        return target, {
+            "outcome": request.data.get("outcome") or "approved",
+            "decided": len(decided),
+            "skipped": len(data.get("skipped") or []),
+        }
 
     # ---- read ---------------------------------------------------------------
 

@@ -686,3 +686,30 @@ export const getAdminSearchGap = (q: string, language: string) =>
 	apiFetch<AdminSearchGap>(
 		`/api/admin/search-gap/?q=${encodeURIComponent(q)}&language=${encodeURIComponent(language)}`
 	);
+
+/**
+ * The record of what has been done in the admin — who created a language, moved
+ * a readiness bar, took one live, published a document, decided a review.
+ *
+ * Append-only and read as a window: the endpoint caps what it returns, so
+ * `total` can exceed `actions.length` and the page says so rather than implying
+ * it is showing everything.
+ */
+export interface AdminActionRow {
+	action: string;
+	/** Human phrasing, from the model's own choices so the two can't drift. */
+	label: string;
+	/** Email; blank only for a DEBUG loopback request with no token. */
+	actor: string;
+	target: string;
+	detail: Record<string, unknown>;
+	at: string;
+}
+
+export interface AdminActivity {
+	total: number;
+	limit: number;
+	actions: AdminActionRow[];
+}
+
+export const getAdminActivity = () => apiFetch<AdminActivity>('/api/admin/activity/');

@@ -29,9 +29,11 @@ from rest_framework.views import APIView
 
 from accounts.permissions import IsAdminEmail
 
+from ..audit import AdminAudited
 from ..languages import entry as language_entry
 from ..languages import known_codes
 from ..models import (
+    AdminAction,
     Author,
     AuthorTranslation,
     Book,
@@ -168,10 +170,23 @@ def _list_open_jobs() -> list[dict]:
     return [job for issue in r.json() if (job := _issue_to_job(issue))]
 
 
-class AdminTranslationJobsView(APIView):
+class AdminTranslationJobsView(AdminAudited, APIView):
     """GET the open translation queue; POST to enqueue one item."""
 
     permission_classes = [IsAdminEmail]
+    audit_action = AdminAction.Action.TRANSLATION_JOB
+
+    def audit_entry(self, request, response):
+        # `created` distinguishes filing a job from pressing the button again on
+        # one already open — both answer 2xx, and only the first spends anything.
+        data = request.data
+        target = ":".join(
+            str(data.get(k, "")).strip().lower() for k in ("type", "slug", "language")
+        )
+        return target, {
+            "created": response.data.get("created", False),
+            "issue": (response.data.get("job") or {}).get("url", ""),
+        }
 
     def get(self, request):
         if not settings.GITHUB_TRANSLATION_TOKEN:
