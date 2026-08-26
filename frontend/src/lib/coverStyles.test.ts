@@ -94,9 +94,21 @@ describe('cover styles', () => {
 		// like a bad font rather than a bad number, so it is the kind of thing
 		// that ships.
 		for (const id of ['press', 'enlightenment']) {
-			const block = new RegExp(`\\.cover-type\\.style-${id} \\.title \\{([^}]*)\\}`).exec(COVER_CSS);
-			expect(block, `no .style-${id} block to check`).not.toBeNull();
-			expect(block![1], `${id} would synthesise a bold`).toMatch(/font-weight:\s*400/);
+			// EVERY block, not the first one found. A style now writes `.title`
+			// twice — once inside the container gate for its face and weight, once
+			// outside it for the leading its composition wants — and a scan that
+			// stopped at the first match read the composition block and reported
+			// no weight at all.
+			const blocks = [
+				...COVER_CSS.matchAll(
+					new RegExp(`\\.cover-type\\.style-${id} \\.title \\{([^}]*)\\}`, 'g')
+				)
+			].map(([, body]) => body);
+			expect(blocks.length, `no .style-${id} .title block to check`).toBeGreaterThan(0);
+			const weights = blocks.flatMap((b) => [...b.matchAll(/font-weight:\s*(\d+)/g)].map((m) => m[1]));
+			expect(weights.length, `.style-${id} asks for no weight at all`).toBeGreaterThan(0);
+			// The last one wins the cascade, and it is the one the face is asked for.
+			expect(weights[weights.length - 1], `${id} would synthesise a bold`).toBe('400');
 		}
 	});
 
