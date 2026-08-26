@@ -8,7 +8,6 @@
 		getPopularSearches,
 		recordSearchClick,
 		type SearchHit,
-		type ChapterHit,
 		type SearchScope,
 		type SearchSort,
 		type SearchType,
@@ -19,7 +18,18 @@
 	import { apiFetch } from '$lib/api';
 	import { readJSON, writeJSON } from '$lib/persisted';
 	import { readSearchState, searchStateKey, writeSearchState } from '$lib/searchState';
-	import { portraitPosition } from '$lib/portraits';
+	import {
+		GROUP_ORDER,
+		grandTotal as grandTotalOf,
+		groupRows,
+		navList,
+		passageBooks as passageBooksOf,
+		toRow,
+		totalFor as totalForOf,
+		type PassageBook,
+		type ResultGroup,
+		type ResultRow
+	} from '$lib/searchResults';
 	import type { ScriptureResult } from '$lib/scripture.svelte';
 	import { markSnippet } from '$lib/highlight';
 	import { localizeHref } from '$lib/href';
@@ -32,115 +42,6 @@
 
 	const t = i18n.t;
 
-	// One flat shape for every hit type, so the list renders uniformly (and so
-	// grouping by type is a small step from here). `label` is the type chip;
-	// `meta` is the muted line under the title; `snippet` may be empty for
-	// entities with no prose.
-	type Row = {
-		key: string;
-		label: string;
-		href: string;
-		title: string;
-		meta: string;
-		snippet: string;
-		date: string;
-		/** Cover or portrait. "" for rows that have neither — topics and plans. */
-		image: string;
-		/** Backing colour for the reserved box, so the list never reflows. */
-		color: string;
-		/** Portraits are round and small; covers keep a book's proportions. */
-		round: boolean;
-		/** Where the face sits in a portrait; unset for covers, which crop nothing. */
-		focus?: string;
-	};
-
-	function toRow(hit: SearchHit): Row {
-		switch (hit.type) {
-			case 'author':
-				return {
-					key: 'author:' + hit.author_slug,
-					label: t('search.typeAuthor'),
-					href: `/authors/${hit.author_slug}`,
-					title: hit.author_name,
-					meta: '',
-					snippet: hit.snippet,
-					date: hit.date,
-					image: hit.photo_url,
-					color: '',
-					round: true,
-					focus: portraitPosition(hit.author_slug)
-				};
-			case 'book':
-				return {
-					key: 'book:' + hit.book_slug,
-					label: t('search.typeBook'),
-					href: `/books/${hit.book_slug}`,
-					title: hit.book_title,
-					meta: hit.author_name,
-					snippet: hit.snippet,
-					date: hit.date,
-					image: hit.cover_url,
-					color: hit.cover_color,
-					round: false
-				};
-			case 'topic':
-				return {
-					key: 'topic:' + hit.topic_slug,
-					label: t('search.typeTopic'),
-					href: `/topics/${hit.topic_slug}`,
-					title: hit.topic_title,
-					meta: '',
-					snippet: hit.snippet,
-					date: hit.date,
-					image: '',
-					color: '',
-					round: false
-				};
-			case 'plan':
-				return {
-					key: 'plan:' + hit.plan_slug,
-					label: t('search.typePlan'),
-					href: `/plans/${hit.plan_slug}`,
-					title: hit.plan_title,
-					meta: '',
-					snippet: hit.snippet,
-					date: hit.date,
-					image: '',
-					color: '',
-					round: false
-				};
-			case 'sermon':
-				return {
-					key: 'sermon:' + hit.sermon_slug,
-					label: t('search.typeSermon'),
-					href: `/sermons/${hit.sermon_slug}?q=${encodeURIComponent(ran || q.trim())}`,
-					title: hit.sermon_title,
-					meta: hit.scripture_ref
-						? `${hit.author_name} · ${hit.scripture_ref}`
-						: hit.author_name,
-					snippet: hit.snippet,
-					date: hit.date,
-					image: '',
-					color: '',
-					round: false
-				};
-			default:
-				return {
-					key: `chapter:${hit.book_slug}:${hit.chapter_order}`,
-					label: t('search.typeChapter'),
-					// The query rides along so the reader lands on the match rather than
-					// at the top of the chapter.
-					href: `/books/${hit.book_slug}/${hit.chapter_order}?q=${encodeURIComponent(ran || q.trim())}`,
-					title: hit.chapter_title || hit.book_title,
-					meta: `${hit.book_title} · ${hit.author_name}`,
-					snippet: hit.snippet,
-					date: hit.date,
-					image: hit.cover_url,
-					color: hit.cover_color,
-					round: false
-				};
-		}
-	}
 	// "Search inside this author / topic / book", carried as `kind:slug`. The
 	// label comes back with the results (`scopeInfo`) so the chip can name the
 	// shelf without a second request; null means the server found no such shelf
@@ -188,8 +89,25 @@
 	let typeSeq = 0;
 
 
-	type ResultRow = Row & { type: SearchHit['type'] };
-	const rows = $derived<ResultRow[]>(hits.map((h) => ({ ...toRow(h), type: h.type })));
+	// The type chip's wording and the query ride in, so the shaping itself stays
+	// a pure function of the hit — see $lib/searchResults.
+	// Spelled out rather than derived from the type name: a key built by string
+	// surgery type-checks against nothing and would fail silently the first time
+	// a type's chip doesn't follow the pattern.
+	const TYPE_LABELS: Record<SearchHit['type'], () => string> = {
+		author: () => t('search.typeAuthor'),
+		book: () => t('search.typeBook'),
+		topic: () => t('search.typeTopic'),
+		plan: () => t('search.typePlan'),
+		sermon: () => t('search.typeSermon'),
+		chapter: () => t('search.typeChapter')
+	};
+	const rowCtx = $derived({
+		label: (type: SearchHit['type']) => TYPE_LABELS[type](),
+		query: ran || q.trim()
+	});
+	const rows = $derived<ResultRow[]>(hits.map((h) => ({ ...toRow(h, rowCtx), type: h.type })));
+	const groups = $derived<ResultGroup[]>(groupRows(rows));
 
 	// Sort is the SERVER's job, and only offered once a type is selected. It used
 	// to reorder the fetched rows in the browser, which meant "newest" showed the
@@ -199,30 +117,6 @@
 	let sortMode = $state<SearchSort>('relevance');
 	const SORTS: SearchSort[] = ['relevance', 'title', 'newest'];
 
-	// Cluster the flat result list into type sections in a fixed reading order —
-	// navigational entities first, passages last — keeping only sections present.
-	const GROUP_ORDER: { type: SearchHit['type']; labelKey: string }[] = [
-		{ type: 'book', labelKey: 'search.groupBooks' },
-		{ type: 'author', labelKey: 'search.groupAuthors' },
-		{ type: 'topic', labelKey: 'search.groupTopics' },
-		{ type: 'plan', labelKey: 'search.groupPlans' },
-		{ type: 'chapter', labelKey: 'search.groupPassages' },
-		{ type: 'sermon', labelKey: 'search.groupSermons' }
-	];
-	const groups = $derived.by(() => {
-		const by = new Map<string, ResultRow[]>();
-		for (const r of rows) {
-			const arr = by.get(r.type);
-			if (arr) arr.push(r);
-			else by.set(r.type, [r]);
-		}
-		return GROUP_ORDER.filter((g) => by.has(g.type)).map((g) => ({
-			type: g.type,
-			labelKey: g.labelKey,
-			rows: by.get(g.type)!
-		}));
-	});
-
 	// Type facet: narrow the result set to one kind. Chips are built from the
 	// groups actually present, labelled with the REAL total rather than how many
 	// rows the merged list happened to carry. Reset to "all" on each new query.
@@ -230,7 +124,7 @@
 
 	/** Rows for the selected type, from the server once its page has landed. */
 	const typeGroupRows = $derived<ResultRow[]>(
-		typeRows ? typeRows.map((h) => ({ ...toRow(h), type: h.type })) : []
+		typeRows ? typeRows.map((h) => ({ ...toRow(h, rowCtx), type: h.type })) : []
 	);
 
 	const shownGroups = $derived.by(() => {
@@ -271,7 +165,7 @@
 
 	/** How many matches of `type` exist — the server's count, else what we hold. */
 	function totalFor(type: SearchType, loaded: number): number {
-		return totals[type] ?? loaded;
+		return totalForOf(totals, type, loaded);
 	}
 	/** True when the count stopped at the server's ceiling ("200+"). */
 	function isCapped(type: SearchType): boolean {
@@ -282,9 +176,7 @@
 	 * usually far larger than what is on screen — and saying "30 results" when it
 	 * is 251 was the whole problem.
 	 */
-	const grandTotal = $derived(
-		groups.reduce((n, g) => n + totalFor(g.type, g.rows.length), 0)
-	);
+	const grandTotal = $derived(grandTotalOf(groups, totals));
 	const anyCapped = $derived(groups.some((g) => isCapped(g.type)));
 
 	/** Matches of the selected type not yet loaded. */
@@ -300,46 +192,11 @@
 	const PASSAGE_PREVIEW = 3;
 	let expandedBooks = $state(new Set<string>());
 
-	type PassageBook = {
-		slug: string;
-		title: string;
-		author: string;
-		date: string;
-		cover: string;
-		color: string;
-		chapters: { key: string; order: number; title: string; snippet: string }[];
-	};
-	const passageBooks = $derived.by<PassageBook[]>(() => {
+	const passageBooks = $derived<PassageBook[]>(
 		// The selected type's own page when there is one, else the merged list —
 		// otherwise "show more" would load passages the map never rendered.
-		const source = typeFilter === 'chapter' && typeRows ? typeRows : hits;
-		const by = new Map<string, PassageBook>();
-		for (const h of source) {
-			if (h.type !== 'chapter') continue;
-			const c = h as ChapterHit;
-			let g = by.get(c.book_slug);
-			if (!g) {
-				g = {
-					slug: c.book_slug,
-					title: c.book_title,
-					author: c.author_name,
-					date: c.date,
-					cover: c.cover_url,
-					color: c.cover_color,
-					chapters: []
-				};
-				by.set(c.book_slug, g);
-			}
-			g.chapters.push({
-				key: `${c.book_slug}:${c.chapter_order}`,
-				order: c.chapter_order,
-				title: c.chapter_title || c.book_title,
-				snippet: c.snippet
-			});
-		}
-		// Server order throughout: books in first-match order, chapters in book order.
-		return [...by.values()];
-	});
+		passageBooksOf(typeFilter === 'chapter' && typeRows ? typeRows : hits)
+	);
 
 	function toggleBook(slug: string) {
 		const next = new Set(expandedBooks);
@@ -352,39 +209,7 @@
 	// Flatten the *visible* leaf results (entity/sermon rows + the shown passage
 	// chapters, in display order) so ↑/↓ walk them and Enter opens the active one.
 	let activeIndex = $state(-1);
-	const nav = $derived.by(() => {
-		const keys: string[] = [];
-		const map = new Map<string, string>();
-		const labels = new Map<string, string>();
-		// Which type each key is. Built here rather than parsed off the key
-		// because this is the one place that already knows, and it doubles as the
-		// reading order the click log records a position against.
-		const types = new Map<string, SearchType>();
-		for (const g of shownGroups) {
-			if (g.type === 'chapter') {
-				for (const pb of passageBooks) {
-					const shown = expandedBooks.has(pb.slug)
-						? pb.chapters
-						: pb.chapters.slice(0, PASSAGE_PREVIEW);
-					for (const ch of shown) {
-						keys.push(ch.key);
-						map.set(ch.key, `/books/${pb.slug}/${ch.order}`);
-						labels.set(ch.key, `${ch.title} — ${pb.title}`);
-						types.set(ch.key, 'chapter');
-					}
-				}
-			} else {
-				for (const row of g.rows) {
-					keys.push(row.key);
-					map.set(row.key, row.href);
-					labels.set(row.key, row.meta ? `${row.title} — ${row.meta}` : row.title);
-					types.set(row.key, g.type as SearchType);
-				}
-			}
-		}
-		return { keys, map, labels, types };
-	});
-
+	const nav = $derived(navList(shownGroups, passageBooks, expandedBooks, PASSAGE_PREVIEW));
 	/**
 	 * Tell the server a result was opened — anonymously, and never in the way.
 	 *
