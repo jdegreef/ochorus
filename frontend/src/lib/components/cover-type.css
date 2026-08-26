@@ -240,35 +240,89 @@
 	word-spacing: 0.22em;
 }
 
-/* The armature both period ornaments are built on: two short rules with a gap
-   between them, reduced to the one shape that still reads at 40px. Shared
-   because it IS the same drawing in both — what differs is what sits in the
-   gap, and that stays in each era's own block below. */
-.cover-type.style-devotional .rule,
-.cover-type.style-revival .rule,
-.cover-type.style-revival .middle::before {
-	width: 18cqw;
-	height: 1.6cqw;
+/* ── The ornaments ─────────────────────────────────────────────────────────
+ * The compositions arrange a page; these are the marks a press cut into one.
+ * Three of the six get one and the other three are bare on purpose: nothing was
+ * ornamented onto a carved tablet, Baskerville's century made the empty page
+ * the point, and `house` is of our own.
+ *
+ * DRAWN IN THIS STYLESHEET as data URIs, and that is forced rather than
+ * preferred. `generate-cover-og.mjs` builds the share card with
+ * `page.setContent` — no server and no document base — so `url(/ornaments/…)`
+ * would resolve to nothing there while looking right in the app. It hand-builds
+ * this markup too, and nothing gates the two copies against each other, so an
+ * ornament added as an ELEMENT would have to be added twice and would diverge
+ * the first time only one was. In the stylesheet both renderers get it free.
+ *
+ * `fill='white'` RATHER THAN A HEX, because `#` must be percent-encoded in a
+ * data URI and an encoder that also escapes its own `%` turns `%23fff` into
+ * `%2523fff` — an invalid fill, which paints BLACK on a dark plate and reads as
+ * a shadow rather than as a bug. That happened here. The colour keyword has no
+ * such edge, and `coverOrnaments.test.ts` decodes every URI and fails on both.
+ *
+ * SIZED TO SURVIVE A LIST ROW, where the cover is 64px and an ornament is
+ * twelve pixels across. These are silhouettes, not engravings; each was checked
+ * at 300, 128 and 64px, and what they lose as they shrink is detail, never
+ * legibility. */
+
+/* DEVOTIONAL — a pierced quatrefoil, the four-lobed mark cut into devotional
+   books since the manuscripts, run out to a short rule on either side. The
+   centre is a HOLE rather than a dark dot: four circles that do not quite meet
+   leave the pierce open, so it shows the ground through it on a painting and on
+   a plate alike. A dot would have to be painted some colour, and every colour
+   is wrong on a ground this file cannot see.
+   NOT the printer's hedera, which is what was drawn here first. The hedera is
+   the historically right mark — and it is heart-shaped, so at every size from
+   300px down it read as the modern sentiment icon rather than as a leaf, which
+   on a devotional cover is the one association worth avoiding. Adding the ivy
+   stem did not fix it: the stem is the part that disappears first. */
+.cover-type.style-devotional .rule {
+	width: 22cqw;
+	height: 5cqw;
 	background:
-		linear-gradient(rgb(255 255 255 / 0.55) 0 0) left center / 6cqw 1px no-repeat,
-		linear-gradient(rgb(255 255 255 / 0.55) 0 0) right center / 6cqw 1px no-repeat;
+		url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'><circle cx='19' cy='12' r='5.4'/><circle cx='5' cy='12' r='5.4'/><circle cx='12' cy='19' r='5.4'/><circle cx='12' cy='5' r='5.4'/></svg>") center / auto 100% no-repeat,
+		linear-gradient(rgb(255 255 255 / 0.5) 0 0) left center / 5.5cqw 1px no-repeat,
+		linear-gradient(rgb(255 255 255 / 0.5) 0 0) right center / 5.5cqw 1px no-repeat;
+	opacity: 0.8;
 }
 
-/* DEVOTIONAL — the manual for the closet stays the quiet one, and keeps the
-   printer's fleuron: a lozenge set in the gap of the armature above. */
-.cover-type.style-devotional .rule {
-	position: relative;
+/* REVIVAL — the centre-piece a Victorian title page set between its title and
+   everything else: a lozenge with sprays tapering AWAY from it, run out to
+   hairlines. The taper's direction is the whole of it — drawn the other way,
+   thick at the outside and pointed at the lozenge, the pair reads as two
+   arrowheads aimed inward, which is a diagram and not an ornament. */
+.cover-type.style-revival .rule,
+.cover-type.style-revival .middle::before {
+	width: 27cqw;
+	height: 4.4cqw;
+	background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 14' fill='white'><path d='M36 3.4l3.4 3.6-3.4 3.6-3.4-3.6z'/><path d='M31 7 C27 4.4 22 3.1 16 3.3 C22 5.1 26 5.9 31 7 Z'/><path d='M31 7 C27 9.6 22 10.9 16 10.7 C22 8.9 26 8.1 31 7 Z'/><path d='M41 7 C45 4.4 50 3.1 56 3.3 C50 5.1 46 5.9 41 7 Z'/><path d='M41 7 C45 9.6 50 10.9 56 10.7 C50 8.9 46 8.1 41 7 Z'/><path d='M7 6.6h8v0.8h-8z'/><path d='M57 6.6h8v0.8h-8z'/></svg>") center / 100% auto no-repeat;
+	opacity: 0.82;
 }
-.cover-type.style-devotional .rule::before {
+
+/* PRESS — corner pieces set inside the hairline frame, the way a ruled border
+   was made up from rule and corner quads. In gradients rather than a drawing,
+   and that is the right choice at this size: an angle is two straight lines,
+   and two straight lines survive twelve pixels where a curve turns to grey.
+   `6.4cqw` sits them just inside the frame's `4.3cqw` so they read as a second,
+   broken border rather than as a thickening of the first. */
+.cover-type.style-press::after {
 	content: '';
 	position: absolute;
-	inset: 50% auto auto 50%;
-	width: 1.1cqw;
-	height: 1.1cqw;
-	translate: -50% -50%;
-	rotate: 45deg;
-	border: 1px solid rgb(255 255 255 / 0.62);
+	inset: 6.4cqw;
+	pointer-events: none;
+	background:
+		linear-gradient(rgb(255 255 255 / 0.4) 0 0) top left / 3.4cqw 1px no-repeat,
+		linear-gradient(rgb(255 255 255 / 0.4) 0 0) top left / 1px 3.4cqw no-repeat,
+		linear-gradient(rgb(255 255 255 / 0.4) 0 0) top right / 3.4cqw 1px no-repeat,
+		linear-gradient(rgb(255 255 255 / 0.4) 0 0) top right / 1px 3.4cqw no-repeat,
+		linear-gradient(rgb(255 255 255 / 0.4) 0 0) bottom left / 3.4cqw 1px no-repeat,
+		linear-gradient(rgb(255 255 255 / 0.4) 0 0) bottom left / 1px 3.4cqw no-repeat,
+		linear-gradient(rgb(255 255 255 / 0.4) 0 0) bottom right / 3.4cqw 1px no-repeat,
+		linear-gradient(rgb(255 255 255 / 0.4) 0 0) bottom right / 1px 3.4cqw no-repeat;
 }
+
+/* DEVOTIONAL — the manual for the closet stays the quiet one; the hedera it
+   carries is drawn in the ornament section above. */
 .cover-type.style-devotional .subtitle {
 	margin-top: 3.4cqw;
 }
@@ -288,8 +342,8 @@
 }
 
 /* REVIVAL — the Victorian title page is symmetrical and packed: the same
-   ornament above the title as beneath it, with the gap left open rather than
-   filled, and the subtitle in tracked capitals. */
+   ornament above the title as beneath it, and the subtitle in tracked
+   capitals. */
 .cover-type.style-revival .middle::before {
 	content: '';
 	display: block;
