@@ -4,7 +4,7 @@ import { mount, unmount } from 'svelte';
 import { afterEach, describe, expect, it } from 'vitest';
 
 import BookCover from './components/BookCover.svelte';
-import { coverTypeMarkup, type CoverCardBook } from './coverCardMarkup';
+import { coverPlateMarkup, coverTypeMarkup, type CoverCardBook } from './coverCardMarkup';
 import type { BookSummary } from '$lib/library-public';
 
 /**
@@ -57,7 +57,12 @@ afterEach(() => {
 	target?.remove();
 });
 
-/** Mount the real component and hand back its `.cover-type` element. */
+/** Mount the real component and hand back its `.cover-plate` element.
+ *
+ *  THE PLATE, not the type inside it. Starting a level lower left the wrapper
+ *  ungated, and it carries `.over-art` — the class that puts the four-stop
+ *  scrim under white type on a painting. Renamed there and nowhere else, every
+ *  painted card would keep the old scrim with this file green. */
 function rendered(props: Partial<BookSummary>): Element {
 	target = document.createElement('div');
 	document.body.appendChild(target);
@@ -65,19 +70,26 @@ function rendered(props: Partial<BookSummary>): Element {
 		string,
 		unknown
 	>;
-	const el = target.querySelector('.cover-type');
-	expect(el, 'BookCover drew no .cover-type at all').not.toBeNull();
+	const el = target.querySelector('.cover-plate');
+	expect(el, 'BookCover drew no .cover-plate at all').not.toBeNull();
 	return el!;
 }
 
-/** Parse the script's markup and hand back its `.cover-type` element. */
+/** Parse the script's markup and hand back its `.cover-plate` element. */
 function built(card: CoverCardBook): Element {
 	const host = document.createElement('div');
-	host.innerHTML = coverTypeMarkup(card, LOCKUP);
-	const el = host.querySelector('.cover-type');
-	expect(el, 'coverTypeMarkup drew no .cover-type at all').not.toBeNull();
+	host.innerHTML = coverPlateMarkup(card, LOCKUP);
+	const el = host.querySelector('.cover-plate');
+	expect(el, 'coverPlateMarkup drew no .cover-plate at all').not.toBeNull();
 	return el!;
 }
+
+/** The type block alone, for the assertions that are about it. */
+const builtType = (card: CoverCardBook): Element => {
+	const host = document.createElement('div');
+	host.innerHTML = coverTypeMarkup(card, LOCKUP);
+	return host.querySelector('.cover-type')!;
+};
 
 /**
  * An element reduced to what a RASTER can tell apart: its tag, its classes, and
@@ -190,7 +202,7 @@ describe('the two cover renderers agree', () => {
 			['hi', 'devanagari'],
 			['uk', 'cyrillic']
 		]) {
-			const el = built({
+			const el = builtType({
 				author: 'Andrew Murray',
 				title: 'x',
 				style: 'devotional',
@@ -212,29 +224,19 @@ describe('the two cover renderers agree', () => {
 		// A painting has no emblem under it to leave room for; a plate does. Get
 		// this wrong and every painted card's title sits at the wrong height.
 		expect(
-			built({
-				author: 'a',
-				title: 'b',
-				style: 'devotional',
-				lang: 'en',
-				art: true
-			}).querySelector('.emblem-band')
+			builtType({ author: 'a', title: 'b', style: 'devotional', lang: 'en', art: true })
+				.querySelector('.emblem-band')
 		).toBeNull();
 		expect(
-			built({
-				author: 'a',
-				title: 'b',
-				style: 'devotional',
-				lang: 'en',
-				art: false
-			}).querySelector('.emblem-band')
+			builtType({ author: 'a', title: 'b', style: 'devotional', lang: 'en', art: false })
+				.querySelector('.emblem-band')
 		).not.toBeNull();
 	});
 
 	it('escapes what it interpolates', () => {
 		// The script builds a string; the component builds nodes. A title with a
 		// bracket in it is the one input that can turn one into markup.
-		const el = built({
+		const el = builtType({
 			author: 'a"b',
 			title: '<script>x</script>',
 			style: 'devotional',

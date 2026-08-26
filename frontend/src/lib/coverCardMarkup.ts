@@ -96,3 +96,23 @@ export function coverTypeMarkup(book: CoverCardBook, lockup: string): string {
 	<span class="brandmark" style="--h: 13.7cqw" role="img" aria-label="Ochorus">${lockup}</span>
 </div>`;
 }
+
+/**
+ * The plate the type sits in — `BookCover`'s `overFile` branch.
+ *
+ * Included here because it was the last hand-built piece, and it carries a
+ * class that decides pixels: `.over-art` is what puts the four-stop scrim under
+ * white type on a painting. Left outside, a renamed or added class on that
+ * wrapper would leave every painted card wearing the old scrim with the parity
+ * gate green, since the gate started one element lower down.
+ *
+ * `role="img"` and `aria-label` are the component's and are deliberately NOT
+ * here: a card is a raster with no accessibility tree, the label it would carry
+ * is the alt text of the `<img>` that embeds the finished PNG, and putting one
+ * here would be inventing a difference for the gate to ignore.
+ */
+export function coverPlateMarkup(book: CoverCardBook, lockup: string): string {
+	const classes = ['cover-plate', 'over-file'];
+	if (book.art) classes.push('over-art');
+	return `<div class="${classes.join(' ')}">${coverTypeMarkup(book, lockup)}</div>`;
+}

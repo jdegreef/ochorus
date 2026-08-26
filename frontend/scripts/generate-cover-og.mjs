@@ -98,7 +98,7 @@ import { isArtCover, isPlateCover, twinUrl } from '../src/lib/coverArt.ts';
 // It used to be hand-built below, and had drifted into a card with no
 // `script-` class, no `lang` and no `dir`: an Arabic preview would have been
 // set in the Latin face and laid out left-to-right.
-import { coverTypeMarkup } from '../src/lib/coverCardMarkup.ts';
+import { coverPlateMarkup } from '../src/lib/coverCardMarkup.ts';
 import { coverStyleFor, scriptOf } from '../src/lib/coverStyles.ts';
 import { eraOf } from '../src/lib/eras.ts';
 
@@ -405,24 +405,22 @@ html,body{margin:0}
 .ground{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .ground svg{display:block;width:100%;height:100%}
 .cover-type{box-sizing:border-box}
-.brandmark svg{height:13.7cqw;width:auto;display:block;margin:0 auto}
+.brandmark svg{height:var(--h);width:auto;display:block;margin:0 auto}
 </style>
 <div class="card">
   ${ground}
-  <div class="cover-plate over-file${book.art ? ' over-art' : ''}">
-    ${coverTypeMarkup(
-			{
-				author: book.author,
-				title: book.title,
-				subtitle: book.subtitle,
-				style: book.style,
-				script: book.script,
-				lang: book.language,
-				art: book.art
-			},
-			LOCKUP
-		)}
-  </div>
+  ${coverPlateMarkup(
+		{
+			author: book.author,
+			title: book.title,
+			subtitle: book.subtitle,
+			style: book.style,
+			script: book.script,
+			lang: book.language,
+			art: book.art
+		},
+		LOCKUP
+	)}
 </div>`;
 }
 
