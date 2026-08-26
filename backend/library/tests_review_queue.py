@@ -16,6 +16,7 @@ from .models import (
     AuthorTranslation,
     Book,
     Chapter,
+    Language,
     ReviewOutcome,
     Sermon,
     TranslationNote,
@@ -129,6 +130,53 @@ class ReviewQueueTests(TestCase):
         self.assertEqual(only["filtered"], 1)
         self.assertEqual(only["results"][0]["kind"], "sermon")
         self.assertEqual(only["total"], 3, "total stays the unfiltered backlog")
+
+    def test_language_names_come_from_the_registry(self):
+        """The queue labels its own languages, so the frontend holds no map."""
+        self.assertEqual(self._get()["language_names"]["sw"], "Swahili")
+
+    def test_a_language_added_without_a_deploy_reads_as_itself(self):
+        """The failure this replaces.
+
+        Adding a language is an admin action, not a deploy — and every one of
+        its first translations is ai_unreviewed, so its whole catalogue arrives
+        in THIS queue before it shows up anywhere else. A map compiled into the
+        frontend cannot contain a row created after that build, so the language
+        a reviewer most needs named is the one that rendered as "FR".
+        """
+        Language.objects.create(
+            code="fr", name="French", native_name="Français", status=Language.Status.DRAFT
+        )
+        b = Book.objects.create(
+            author=self.author, slug="waiting", language="fr", title="En attendant",
+            source_type=Book.SourceType.AI_UNREVIEWED,
+        )
+        Chapter.objects.create(book=b, order=1, title="Un", body_html="<p>x</p>")
+
+        data = self._get()
+        self.assertIn("fr", data["facets"]["language"], "precondition: it is in the queue")
+        self.assertEqual(data["language_names"]["fr"], "French")
+
+    def test_an_unknown_code_still_gets_a_label(self):
+        """Old content carrying a code with no registry row must not 500 or vanish.
+
+        `languages.entry` falls back to the code itself, which is what the
+        frontend would have shown anyway — the point is that it is present.
+        """
+        b = Book.objects.create(
+            author=self.author, slug="waiting", language="zz", title="Zed",
+            source_type=Book.SourceType.AI_UNREVIEWED,
+        )
+        Chapter.objects.create(book=b, order=1, title="One", body_html="<p>x</p>")
+        self.assertEqual(self._get()["language_names"]["zz"], "zz")
+
+    def test_every_queued_language_is_named(self):
+        """No row can render a bare code — the map covers the queue, not a guess."""
+        data = self._get()
+        for row in data["results"]:
+            self.assertIn(row["language"], data["language_names"])
+        for code in data["facets"]["language"]:
+            self.assertIn(code, data["language_names"])
 
     def test_mechanical_flags_attached_to_the_page(self):
         row = next(r for r in self._get(kind="sermon")["results"] if r["kind"] == "sermon")

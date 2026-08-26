@@ -433,6 +433,16 @@ export interface ReviewQueue {
 	pages: number;
 	page_size: number;
 	facets: { language: Record<string, number>; kind: Record<string, number> };
+	/**
+	 * Language code → its English name, from the `Language` registry.
+	 *
+	 * Served rather than held as a map here because an admin can add a language
+	 * without a deploy, and its first translations arrive in this very queue —
+	 * a frontend map has no way to know that language's name and rendered a bare
+	 * code instead. Covers every language present in the queue; a code with no
+	 * registry row maps to itself.
+	 */
+	language_names: Record<string, string>;
 }
 
 export interface ReviewQueueParams {

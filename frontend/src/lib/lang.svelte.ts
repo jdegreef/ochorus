@@ -1,5 +1,6 @@
 import { browser } from '$app/environment';
 import type { Language } from './library-public';
+import { LIVE_LOCALE_NAMES } from '$lib/live-locales.generated';
 import { getLocale, setLocale, locales } from '$lib/paraglide/runtime';
 
 // Set when the reader explicitly picks a language on this device, so a synced
@@ -17,7 +18,24 @@ const CHOSEN_KEY = 'ochorus:lang';
  * `lang.*` call sites didn't have to change.
  */
 
-/** Native names for the picker; a locale not listed falls back to its code. */
+/**
+ * Autonyms for every compiled locale — the fallback half of `localeName`.
+ *
+ * The registry is the source wherever it can speak: `LIVE_LOCALE_NAMES` is
+ * generated from it before every build and wins below, so correcting a name in
+ * the admin reaches this picker on the next deploy. But it only covers LIVE
+ * languages, and the picker offers every *compiled* locale — a reader can
+ * switch to one we don't advertise yet (that is the point of the settings
+ * switch; see footerLocales). So this stays a COMPLETE list, launched locales
+ * included: the generated file lags whatever was last committed, and a name is
+ * not worth making conditional on a build having run.
+ *
+ * Hand-maintained, and safely so: a locale exists only once someone adds it to
+ * project.inlang/settings.json and writes messages/<code>.json, so there is
+ * always a frontend commit to add the name to. `localeNames.test.ts` fails the
+ * build if that commit forgets — which is the failure this replaces, because
+ * the old fallback was a bare "hi" in the language picker.
+ */
 export const LOCALE_NAMES: Record<string, string> = {
 	en: 'English',
 	es: 'Español',
@@ -29,14 +47,18 @@ export const LOCALE_NAMES: Record<string, string> = {
 	uk: 'Українська'
 };
 
+/** The registry's autonym if it has one, else the map above, else the code. */
+export const localeName = (code: string): string =>
+	LIVE_LOCALE_NAMES[code] ?? LOCALE_NAMES[code] ?? code;
+
 export function getLang(): string {
 	return getLocale();
 }
 
 const asEntry = (code: string): Language => ({
 	code,
-	name: LOCALE_NAMES[code] ?? code,
-	native_name: LOCALE_NAMES[code] ?? code
+	name: localeName(code),
+	native_name: localeName(code)
 });
 
 // All configured UI locales, computed once (the set is compile-time constant).
