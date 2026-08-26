@@ -64,6 +64,32 @@ describe('font stacks', () => {
 		return new Set<string>();
 	};
 
+	it('gives --font-sans a face for every script the library is read in', () => {
+		// The same property as the display stack below, and it was false for longer
+		// — the chrome and the reader's "sans" preference both resolve through it.
+		// Cyrillic is checked too, and it is the one that looks fine and is not:
+		// Hanken ships `cyrillic-ext` (U+0460-052F) WITHOUT the base block, so a
+		// stack that merely "has Hanken" still drops Б, і, ї and є. Coverage is read
+		// from the files each package ships, so a family covering only an extension
+		// block cannot satisfy this by name.
+		const stack = stackOf('font-sans');
+		for (const script of ['arabic', 'devanagari', 'cyrillic']) {
+			const face = stack.find((f) => subsetsOf(f).has(script));
+			expect(
+				face,
+				`--font-sans names no family with a ${script} subset — a reader who picks ` +
+					`"sans" in that script gets a system font, differently on every device`
+			).toBeTruthy();
+		}
+	});
+
+	it('keeps the latin face first in --font-sans', () => {
+		// Hanken is the app's UI voice and every Latin surface must keep it. The
+		// script faces ship Latin too, so leading with one would quietly reset the
+		// whole English interface into Noto's Latin.
+		expect(stackOf('font-sans')[0], 'no family at all').toBe('Hanken Grotesk Variable');
+	});
+
 	it('gives --font-display a face for every script the library is read in', () => {
 		// The whole point. A stack with no Arabic family does not degrade to
 		// something reasonable — it degrades to Georgia, which has no Arabic
@@ -145,12 +171,12 @@ describe('font stacks', () => {
 		);
 		expect(FONT_STACK.sans, 'the sans preference should name the token').toBe('var(--font-sans)');
 
-		// `sans` is deliberately absent from the loop below, and saying so here is
-		// the point: `--font-sans` has no Arabic or Devanagari face yet, so a reader
-		// who picks "sans" in those languages still falls to a device font. That is
-		// the known follow-up, named rather than left to be rediscovered — add
-		// 'sans' here the day the token gains them, and this gate will hold it.
-		for (const pref of ['serif', 'dyslexic'] as const) {
+		// `sans` is IN this loop now. It was excluded, with a note saying so, for
+		// as long as `--font-sans` named one Latin family and three generics — a
+		// reader who picked it in Arabic or Hindi got whatever the device chose.
+		// The token gained Noto Sans Arabic, Noto Sans Devanagari and PT Sans, and
+		// this is the gate that was written to hold it the day it did.
+		for (const pref of ['serif', 'sans', 'dyslexic'] as const) {
 			for (const script of ['arabic', 'devanagari']) {
 				const face = resolved(FONT_STACK[pref]).find((f) => subsetsOf(f).has(script));
 				expect(
@@ -178,7 +204,7 @@ describe('font stacks', () => {
 				([, pkg, weight]) => `${pkg}/${weight}`
 			)
 		);
-		for (const family of stackOf('font-display')) {
+		for (const family of [...stackOf('font-display'), ...stackOf('font-sans')]) {
 			const slug = pkgSlug(family);
 			// Variable faces carry a range and need no per-weight file; a family the
 			// app does not import at all is either a device face (Georgia) or is
