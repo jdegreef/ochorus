@@ -20,6 +20,14 @@ import { expect, test, type Page } from '@playwright/test';
 const BOOK = 'godliness';
 
 /**
+ * The reader's sticky bar, and so the line a restored paragraph is parked on.
+ * Mirrors `HEADER_OFFSET` in `$lib/reading.ts`, which cannot be imported here:
+ * that module pulls in a rune module, and this spec runs outside the Svelte
+ * compiler. Keep the two in step — a change there wants a change here.
+ */
+const HEADER_OFFSET = 64;
+
+/**
  * Count document loads. A client-side (SvelteKit) navigation does NOT load a new
  * document, so a count that is UNCHANGED across a click proves the app hydrated
  * and took over routing — something a plain `<a href>` click would satisfy even
@@ -106,11 +114,11 @@ test('a resume point records the paragraph the reader is actually on', async ({ 
 
 	// Park paragraph 12 on the header line — where a restore leaves it, and where
 	// a reader who has just read paragraph 11 ends up.
-	await page.evaluate(() => {
+	await page.evaluate((offset) => {
 		const el = document.querySelector('.reading')?.children[12];
 		el?.scrollIntoView({ block: 'start' });
-		window.scrollBy(0, -64);
-	});
+		window.scrollBy(0, -offset);
+	}, HEADER_OFFSET);
 
 	await expect
 		.poll(
@@ -158,15 +166,22 @@ test('a deep link lands on its paragraph even when the fonts arrive late', async
 		.toBe(8);
 
 	// ...and actually put it there, once the reflow had happened.
+	//
+	// The distance FROM the line, so the bound is two-sided: a one-sided "not far
+	// below it" would also accept a restore that overshot and left the paragraph
+	// above the fold. 12px is loose enough for rendering differences between
+	// machines and a third of the 35px the unfixed restore misses by — measured
+	// at 0px here at CPU throttling up to 20x.
 	await expect
 		.poll(
 			() =>
-				page.evaluate(
-					() => document.querySelector('.reading')?.children[8]?.getBoundingClientRect().top ?? -1
-				),
+				page.evaluate((offset) => {
+					const top = document.querySelector('.reading')?.children[8]?.getBoundingClientRect().top;
+					return top === undefined ? Number.POSITIVE_INFINITY : Math.abs(top - offset);
+				}, HEADER_OFFSET),
 			{ timeout: 20_000 }
 		)
-		.toBeLessThan(70);
+		.toBeLessThanOrEqual(12);
 });
 
 test('an unknown slug is served the SPA fallback and renders not-found', async ({ page }) => {
