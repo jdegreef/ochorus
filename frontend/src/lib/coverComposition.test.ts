@@ -1,3 +1,9 @@
+// @vitest-environment node
+//
+// This file reads a stylesheet and matches regexes against it; it touches no
+// DOM. `vitest.config.ts` sets jsdom globally, and standing one up costs ~690ms
+// of a ~990ms run here — measured. Opting out takes the file to ~250ms and
+// frees a jsdom instance in CI's per-file worker pool.
 import { describe, expect, it } from 'vitest';
 
 import { COVER_STYLE_IDS, CURSIVE_SCRIPTS } from './coverStyles';
