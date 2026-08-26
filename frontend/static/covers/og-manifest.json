@@ -19,11 +19,11 @@
 			"style": "revival"
 		},
 		"around-the-wicket-gate": {
-			"ground": "42998d13888f60183071f6b4da39c1065b3da48be880a2166f4ddc7b58a2aa86",
+			"ground": "d0dffec0b0d0fafbfa67d420586e8d5bd48dc8fa96091357e0c6737926ce6a55",
 			"style": "revival"
 		},
 		"cheque-book": {
-			"ground": "26578c0522ac4a18fd73d6096817233d5e22bdbe72dfd52bdd1902fde5a4b08d",
+			"ground": "f73eebbb63067fc07332959d55cb5edb0cf3c01e241b1e796c3e106b946e1607",
 			"style": "revival"
 		},
 		"confessions": {
@@ -31,11 +31,11 @@
 			"style": "inscriptional"
 		},
 		"days-of-heaven-upon-earth": {
-			"ground": "dfdf86b3494ad81d8f956fb770af9a37ce6c6774fe1c496d0d7857e3fdfe43d8",
+			"ground": "6217dfe1fbbda48292bccb868127977ab7197e2d53d41bac95384a7d685b7c75",
 			"style": "revival"
 		},
 		"divine-healing": {
-			"ground": "f2ccd5d647e6a66db8c2ba05f12e868b77ae4d204ef30428b9af0cbc8a609d75",
+			"ground": "85d2fe0f41c5e9a4318d3ebf48446b6599308a24ec922a3d79d59b3ba6da35c7",
 			"style": "devotional"
 		},
 		"freedom-of-the-will": {
@@ -47,15 +47,15 @@
 			"style": "press"
 		},
 		"grace-for-grace-2": {
-			"ground": "c0b53a011969e65dd0ad8ee9dccacd82344fc87732e9ea9f102aa51d0baf2dd0",
+			"ground": "bdbb5ca5e1e0e64dde3d1accd097a32e70de1ecff3019b424741a2a82d6162a4",
 			"style": "house"
 		},
 		"if": {
-			"ground": "6dfa4e439186ff2b91ffc4bd154fc604105c05c0a6f3317df34ce5eafc39b60b",
+			"ground": "0c65bcb9120c231a9934c71eb12065665162accd56ddffed98cf593540cbb2b0",
 			"style": "devotional"
 		},
 		"let-us-pray-2": {
-			"ground": "b4c052f49a412aa003bbf1974896e81859be347648dc4c0b306a8473c8729ee6",
+			"ground": "4725e322e9f3052085a3cf616a13b1d6bbb3a9f9efe226aaf09d166fcf8aa6c9",
 			"style": "house"
 		},
 		"life-and-diary-of-david-brainerd": {
@@ -67,7 +67,7 @@
 			"style": "press"
 		},
 		"plain-account-christian-perfection": {
-			"ground": "279b2743323c9f6983041fb4b267551d25167a4858a0f924de51fc6a8a040a25",
+			"ground": "14f79a881f38534b38e843632bb5208371e00ae830fbee4a54649b4a6f7a1168",
 			"style": "enlightenment"
 		},
 		"prevailing-prayer": {
@@ -87,11 +87,11 @@
 			"style": "enlightenment"
 		},
 		"sermons-on-several-occasions": {
-			"ground": "f2e7dd75616d03d931ff33a6cdfbcb8b9e21973110eb51544eedea2c2c06ee2f",
+			"ground": "7046ca3cbb052dda7c471547cde793c571bd3e54971626f92a851ccf02ea57f3",
 			"style": "enlightenment"
 		},
 		"susanna-wesley-clarke": {
-			"ground": "6bfb48a0c7c674c18ece5867894fe9d5a989ea66a03726252c49d5aa194c0867",
+			"ground": "128d56f11dc172aa9e958354d12cc265121c9a6d20abb0fc375f97d7c1c7c166",
 			"style": "press"
 		},
 		"ten-commandments": {
@@ -99,11 +99,11 @@
 			"style": "press"
 		},
 		"the-body-of-christ-a-reality": {
-			"ground": "2855fc902b01fb3d8b96c47d1f5e15353b4d9d7bd5fd037feddaa6e9e7b6746c",
+			"ground": "0fdd83b40849fce8da366d2bee1a697dc5b5082ff59a6b708f875c5249d6aefe",
 			"style": "house"
 		},
 		"the-body-of-christ-teens": {
-			"ground": "b29504dfda61a4dcf72ec20056e2a9906ce196a0edf9ba522d303da0e46710e2",
+			"ground": "943d094952f2e7259de2c6be9eaede99f87e56aa1aedf2e4624d11c32c78f39f",
 			"style": "house"
 		},
 		"the-fourfold-gospel": {
@@ -111,7 +111,7 @@
 			"style": "revival"
 		},
 		"the-gospel-of-healing": {
-			"ground": "4df4a085f7bb64fff1b34087d3c2ae9bc4361bb3ccc4449d8778a5a6427fe7e2",
+			"ground": "1883499ea592265954865f02edbaf0e6c92b980f512ca2405bf0817d4d15f720",
 			"style": "revival"
 		},
 		"the-imitation-of-christ": {
@@ -131,7 +131,7 @@
 			"style": "revival"
 		},
 		"things-as-they-are": {
-			"ground": "1fc703384ea5987df722c9db0155b9a4063940d3236326d346bcbfe55a479f07",
+			"ground": "deaba4c697c1f87ab7f425b816de8e34012d2517b68dc0d58ab1737331c55df7",
 			"style": "devotional"
 		},
 		"till-he-come": {
@@ -147,7 +147,7 @@
 			"style": "devotional"
 		},
 		"way-into-holiest": {
-			"ground": "0444616825f4fccfc40683470d55ac5a5ff5ad9532ffb8b4bc81512dcfa9ab99",
+			"ground": "a322f7e2c337cadaf64cde66de6c269faa24bc5822b796149fe5578d2348676d",
 			"style": "devotional"
 		}
 	}

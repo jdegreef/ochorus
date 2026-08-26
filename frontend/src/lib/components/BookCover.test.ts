@@ -101,8 +101,17 @@ describe('BookCover falls back to a plate', () => {
 		// The gradient goes in as a custom property, which the browser stores
 		// verbatim (a plain `background` would come back normalised to rgb()).
 		const style = el.querySelector('.cover-plate')?.getAttribute('style') ?? '';
-		expect(style).toContain('#0b7285'); // the book's own colour
-		expect(style).toContain('#063f49'); // shaded to 0.55, as the file's stop is
+		// NOT `#0b7285` exactly, and the difference is the point. This fallback
+		// stands in for `covers.build_ground`, which lays a rib over its gradient
+		// — 1.5 of every 4 user units of black at alpha 0.11 — so the real plate
+		// renders 0.959x its own colour. The fallback carries that same factor, so
+		// the two sit at the same value, which is the invariant `coverGradient`
+		// documents and the reason its `89%` stop exists at all. Measured at the
+		// byline: the ribbed plate gives 5.322:1 and this gives 5.324:1, where
+		// the unfactored colour gives 5.009:1 — and for the library's floored
+		// blue, 4.465:1, under the 4.5 bar the plate itself clears.
+		expect(style).toContain('#0b6d80'); // the book's colour as the artwork renders it
+		expect(style).toContain('#063c46'); // and that, shaded to 0.55, as the file's stop is
 	});
 
 	it('names the cover once for a screen reader, and hides the decorative type', () => {
