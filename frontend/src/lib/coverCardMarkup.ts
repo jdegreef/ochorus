@@ -69,8 +69,13 @@ export function coverTypeMarkup(book: CoverCardBook, lockup: string): string {
 	// `script` IS the class suffix, so it is used as one rather than compared
 	// against three times — the same reasoning as the component's template, and
 	// the same reason a Latin cover emits no script class at all.
-	const classes = ['cover-type', `style-${book.style}`];
-	if (book.script) classes.push(`script-${book.script}`);
+	// Escaped like everything else here. Both come from closed tables today
+	// (`COVER_STYLE_IDS`, `COVER_SCRIPTS`) so nothing can currently carry a
+	// quote — but they are typed `string`, they are interpolated into an
+	// attribute, and the two lines below escape their inputs. One of these
+	// being the exception is how the exception stops being noticed.
+	const classes = ['cover-type', `style-${escapeHtml(book.style)}`];
+	if (book.script) classes.push(`script-${escapeHtml(book.script)}`);
 	const lang = escapeHtml(book.lang);
 	// The byline takes NO `lang`, matching the component: an author's name is
 	// one row for every edition, so it is Latin on an Arabic cover too, and

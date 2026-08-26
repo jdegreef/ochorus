@@ -45,18 +45,55 @@ describe('font stacks', () => {
 	const isVariable = (family: string) => family.endsWith(' Variable');
 
 	/** The subsets a fontsource family ships, from its file names. */
-	const SUBSETS = ['latin', 'cyrillic', 'arabic', 'devanagari'];
+	// A representative codepoint per script, and coverage is asked of the
+	// `unicode-range` declarations rather than of file names.
+	//
+	// FILE NAMES LIE, and Hanken Grotesk is the proof: it ships
+	// `hanken-grotesk-cyrillic-wght-normal.woff2`, whose range is
+	// U+0460-052F — the cyrillic EXTENSION block. It cannot draw Б, і, ї or є,
+	// every one of which is base Cyrillic, and a filename check calls it a
+	// Cyrillic face. That is the exact gap this gate exists to catch, so
+	// checking it by name would have made the gate agree with the bug.
+	//
+	// The package slug is also part of every filename, so a name check is
+	// satisfiable by the name alone: `noto-sans-arabic-latin-400-normal.woff2`
+	// contains `-arabic-` and holds no Arabic. Three of the six families here
+	// are named after their script.
+	const PROBE: Record<string, number> = {
+		latin: 0x0041, // A
+		cyrillic: 0x0411, // Б — base block, not the extension
+		arabic: 0x0627, // ا
+		devanagari: 0x0915 // क
+	};
+	const SUBSETS = Object.keys(PROBE);
+
+	/** Does this `unicode-range` value cover the codepoint? */
+	const covers = (range: string, cp: number) =>
+		range.split(',').some((part) => {
+			const [lo, hi] = part.trim().replace(/U\+/i, '').split('-');
+			const a = parseInt(lo, 16);
+			const b = hi === undefined ? a : parseInt(hi, 16);
+			return cp >= a && cp <= b;
+		});
+
+	/** The scripts a family can actually draw, from the ranges it declares. */
 	const subsetsOf = (family: string) => {
 		const slug = pkgSlug(family);
 		for (const scope of ['@fontsource-variable', '@fontsource']) {
+			const dir = join(process.cwd(), 'node_modules', scope, slug);
 			try {
-				const files = readdirSync(join(process.cwd(), 'node_modules', scope, slug, 'files')).join(
-					'\n'
-				);
-				// `-latin-` also matches inside `-latin-ext-`, and a family can ship
-				// the extension without the base — Hanken ships `cyrillic-ext` and no
-				// `cyrillic`, which is exactly how Ukrainian fell out of the UI font.
-				return new Set(SUBSETS.filter((s) => new RegExp(`-${s}-(?!ext-)`).test(files)));
+				// Every stylesheet the package ships at its top level: a family is
+				// split across weight entrypoints (`400.css`) or one `index.css`, and
+				// which of those exists differs between variable and static packages.
+				const css = readdirSync(dir)
+					.filter((f) => f.endsWith('.css'))
+					.map((f) => readFileSync(join(dir, f), 'utf-8'))
+					.join('\n');
+				const ranges = [...css.matchAll(/unicode-range:\s*([^;}]+)/g)].map(([, r]) => r);
+				// No ranges at all means the package declares no `unicode-range` —
+				// its faces then cover everything they contain, which this cannot
+				// determine, so it claims nothing rather than claiming coverage.
+				return new Set(SUBSETS.filter((s) => ranges.some((r) => covers(r, PROBE[s]))));
 			} catch {
 				/* try the other scope */
 			}
