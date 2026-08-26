@@ -722,6 +722,7 @@ article:not(.paged) .reading > p:first-of-type:not(:lang(ar)):not(:lang(hi))::fi
 	.outline-panel,
 	.outline-rail,
 	.min-left,
+	.bio-bookmark,
 	.pwa-stack,
 	.reader-chrome,
 	.read-progress,

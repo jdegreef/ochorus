@@ -41,7 +41,7 @@
 	$effect(() => {
 		if (!open) return;
 		opener = document.activeElement;
-		bookmarks.load(slug);
+		bookmarks.load('book', slug);
 		if (!book || book.slug !== slug || book.is_modern_edition !== (edition === 'modern')) {
 			getBook(slug, contentLang)
 				.then((b) => (book = b))

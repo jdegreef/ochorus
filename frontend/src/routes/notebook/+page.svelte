@@ -6,7 +6,13 @@
 	import { marks } from '$lib/marks.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import { HIGHLIGHT_COLORS, DEFAULT_HIGHLIGHT, type Bookmark, type Mark } from '$lib/reading-schema';
+	import {
+		HIGHLIGHT_COLORS,
+		DEFAULT_HIGHLIGHT,
+		type Bookmark,
+		type Mark,
+		type WorkKind
+	} from '$lib/reading-schema';
 	import { createLimiter, NOTEBOOK_CONCURRENCY } from '$lib/limiter';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 
@@ -22,9 +28,15 @@
 		chapters: ChapterBlock[];
 	};
 
-	type SermonBlock = { slug: string; title: string; author: string; highlights: HL[] };
+	type SermonBlock = {
+		slug: string;
+		title: string;
+		author: string;
+		bookmarks: Bookmark[];
+		highlights: HL[];
+	};
 	// A biography block: the slug is the author's; the "title" is their name.
-	type BioBlock = { slug: string; name: string; highlights: HL[] };
+	type BioBlock = { slug: string; name: string; bookmarks: Bookmark[]; highlights: HL[] };
 
 	let loading = $state(true);
 	let books = $state<BookBlock[]>([]);
@@ -66,6 +78,15 @@
 			})
 			.filter((bk) => bk.bookmarks.length || bk.chapters.length);
 	});
+	/** Bookmarks surviving the query — same rule the books lane uses. */
+	const matchingBookmarks = (
+		list: Bookmark[],
+		workHit: boolean,
+		hit: (s: string) => boolean
+	) =>
+		// Bookmarks aren't coloured, so a colour filter hides them.
+		colorFilter ? [] : workHit ? list : list.filter((b) => hit(b.snippet) || hit(b.title));
+
 	const filteredSermons = $derived.by(() => {
 		if (!active) return sermons;
 		const hit = (s: string) => s.toLowerCase().includes(q);
@@ -77,9 +98,9 @@
 						(!colorFilter || h.color === colorFilter) &&
 						(sermonHit || hit(h.text) || hit(h.note ?? ''))
 				);
-				return { ...sm, highlights };
+				return { ...sm, bookmarks: matchingBookmarks(sm.bookmarks, sermonHit, hit), highlights };
 			})
-			.filter((sm) => sm.highlights.length);
+			.filter((sm) => sm.bookmarks.length || sm.highlights.length);
 	});
 	const filteredBios = $derived.by(() => {
 		if (!active) return bios;
@@ -92,9 +113,9 @@
 						(!colorFilter || h.color === colorFilter) &&
 						(bioHit || hit(h.text) || hit(h.note ?? ''))
 				);
-				return { ...b, highlights };
+				return { ...b, bookmarks: matchingBookmarks(b.bookmarks, bioHit, hit), highlights };
 			})
-			.filter((b) => b.highlights.length);
+			.filter((b) => b.bookmarks.length || b.highlights.length);
 	});
 	const hasContent = $derived(books.length > 0 || sermons.length > 0 || bios.length > 0);
 	const noMatches = $derived(
@@ -149,7 +170,16 @@
 		const allMarks = marks.all();
 		type MarkEntry = (typeof allMarks)[number];
 		const mks = allMarks.filter((m) => m.kind === 'book');
-		const slugs = [...new Set([...bms.map((b) => b.slug), ...mks.map((m) => m.slug)])];
+		// Bookmarks now exist on all three kinds, so each lane takes its own —
+		// and each lane's membership is the UNION of what was highlighted and
+		// what was bookmarked. Keying a lane on highlights alone would drop a
+		// sermon someone bookmarked and never highlighted, which is the whole
+		// point of a bookmark: the place you meant to come back to.
+		const bmOf = (kind: WorkKind) => bms.filter((b) => b.kind === kind);
+		const bookBms = bmOf('book');
+		const sermonBms = bmOf('sermon');
+		const bioBms = bmOf('bio');
+		const slugs = [...new Set([...bookBms.map((b) => b.slug), ...mks.map((m) => m.slug)])];
 
 		// The whole page used to load one request at a time, nested two deep:
 		// every book, then every highlighted chapter within it, then every
@@ -195,15 +225,27 @@
 				slug,
 				title: book?.title || slug,
 				author: book?.author.name || '',
-				bookmarks: bms
+				bookmarks: bookBms
 					.filter((b) => b.slug === slug)
 					.sort((a, b) => a.order - b.order || a.p - b.p),
 				chapters
 			};
 		};
 
-		// Sermon highlights (device-local, keyed by sermon slug — no chapters).
-		const loadSermon = async ({ slug, marks: ms }: MarkEntry): Promise<SermonBlock> => {
+		/** Every slug of `kind` that was highlighted or bookmarked, once each. */
+		const slugsOf = (kind: WorkKind, bookmarked: (Bookmark & { slug: string })[]) => [
+			...new Set([
+				...allMarks.filter((m) => m.kind === kind).map((m) => m.slug),
+				...bookmarked.map((b) => b.slug)
+			])
+		];
+		const marksFor = (kind: WorkKind, slug: string): MarkEntry['marks'] =>
+			allMarks.find((m) => m.kind === kind && m.slug === slug)?.marks ?? [];
+		const bookmarksFor = (list: (Bookmark & { slug: string })[], slug: string) =>
+			list.filter((b) => b.slug === slug).sort((a, b) => a.p - b.p);
+
+		// Sermon marks and bookmarks (device-local, keyed by sermon slug — no chapters).
+		const loadSermon = async (slug: string): Promise<SermonBlock> => {
 			let paras: string[] = [];
 			let title = slug;
 			let author = '';
@@ -213,13 +255,19 @@
 				title = sermon.title;
 				author = sermon.author_name;
 			} catch {
-				/* offline — the highlight still links through, just without its text */
+				/* offline — the saved place still links through, just without its text */
 			}
-			return { slug, title, author, highlights: groupMarks(paras, ms) };
+			return {
+				slug,
+				title,
+				author,
+				bookmarks: bookmarksFor(sermonBms, slug),
+				highlights: groupMarks(paras, marksFor('sermon', slug))
+			};
 		};
 
-		// Biography highlights (kind 'bio'; the slug names the author).
-		const loadBio = async ({ slug, marks: ms }: MarkEntry): Promise<BioBlock> => {
+		// Biographies (kind 'bio'; the slug names the author).
+		const loadBio = async (slug: string): Promise<BioBlock> => {
 			let paras: string[] = [];
 			let name = slug;
 			try {
@@ -227,15 +275,20 @@
 				paras = paragraphs(a.bio_html);
 				name = a.name;
 			} catch {
-				/* offline — the highlight still links through, just without its text */
+				/* offline — the saved place still links through, just without its text */
 			}
-			return { slug, name, highlights: groupMarks(paras, ms) };
+			return {
+				slug,
+				name,
+				bookmarks: bookmarksFor(bioBms, slug),
+				highlights: groupMarks(paras, marksFor('bio', slug))
+			};
 		};
 
 		const [bookBlocks, sermonBlocks, bioBlocks] = await Promise.all([
 			Promise.all(slugs.map(loadBook)),
-			Promise.all(allMarks.filter((m) => m.kind === 'sermon').map(loadSermon)),
-			Promise.all(allMarks.filter((m) => m.kind === 'bio').map(loadBio))
+			Promise.all(slugsOf('sermon', sermonBms).map(loadSermon)),
+			Promise.all(slugsOf('bio', bioBms).map(loadBio))
 		]);
 
 		books = bookBlocks.sort((a, b) => a.title.localeCompare(b.title));
@@ -365,6 +418,26 @@
 					<a href={localizeHref(`/sermons/${sm.slug}`)} class="hover:text-accent">{sm.title}</a>
 				</h2>
 				{#if sm.author}<p class="mb-3 text-small text-muted">{sm.author}</p>{/if}
+
+				{#if sm.bookmarks.length}
+					<h3 class="section-label mt-4">
+						🔖 {t('reader.bookmarks')}
+					</h3>
+					<ul class="mb-4 space-y-2">
+						{#each sm.bookmarks as bm (bm.id)}
+							<li>
+								<a
+									href={localizeHref(`/sermons/${sm.slug}?p=${bm.p}`)}
+									class="block rounded-sm border border-border bg-surface px-4 py-2.5 hover:border-accent hover:no-underline"
+								>
+									<span class="block text-body text-text">{bm.snippet}</span>
+									<span class="block text-small text-muted">{bm.title}</span>
+								</a>
+							</li>
+						{/each}
+					</ul>
+				{/if}
+
 				<ul class="space-y-2">
 					{#each sm.highlights as hl (hl.id)}
 						<li>
@@ -394,6 +467,26 @@
 				<h2 class="text-h2">
 					<a href={localizeHref(`/authors/${b.slug}`)} class="hover:text-accent">{b.name}</a>
 				</h2>
+
+				{#if b.bookmarks.length}
+					<h3 class="section-label mt-4">
+						🔖 {t('reader.bookmarks')}
+					</h3>
+					<ul class="mb-4 space-y-2">
+						{#each b.bookmarks as bm (bm.id)}
+							<li>
+								<a
+									href={localizeHref(`/authors/${b.slug}?p=${bm.p}`)}
+									class="block rounded-sm border border-border bg-surface px-4 py-2.5 hover:border-accent hover:no-underline"
+								>
+									<span class="block text-body text-text">{bm.snippet}</span>
+									<span class="block text-small text-muted">{bm.title}</span>
+								</a>
+							</li>
+						{/each}
+					</ul>
+				{/if}
+
 				<ul class="mt-3 space-y-2">
 					{#each b.highlights as hl (hl.id)}
 						<li>
