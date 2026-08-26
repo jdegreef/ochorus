@@ -95,7 +95,16 @@ const COVERS = resolve(STATIC, 'covers');
 const CONTENT = resolve(HERE, '../../backend/library/fixtures/content');
 const MODULES = resolve(HERE, '../node_modules');
 const APP_CSS = readFileSync(resolve(HERE, '../src/app.css'), 'utf8');
-const COVER_CSS = readFileSync(resolve(HERE, '../src/lib/components/cover-type.css'), 'utf8');
+// Stripped of comments ONCE, here, rather than inlined whole into every card.
+// `cover-type.css` is deliberately more than half prose — it is where the two
+// renderers' shared reasoning lives — and that prose is ~24 KB that Chromium
+// would otherwise parse again for each of the sixty-odd books in a full run.
+// It is also exactly the text the manifest digest below already ignores, so
+// stripping it changes nothing about what is drawn or when a card is redrawn.
+const COVER_CSS = readFileSync(
+	resolve(HERE, '../src/lib/components/cover-type.css'),
+	'utf8'
+).replace(/\/\*[\s\S]*?\*\//g, '');
 
 /** The cover's own canvas — `covers.py`'s W, H. A twin is the same picture. */
 const WIDTH = 600;
@@ -418,7 +427,7 @@ async function main() {
 				// this file is more than half prose by volume, and digesting it whole
 				// would demand an 8 MB, 37-binary regeneration for a typo in a
 				// docstring. That is how a gate earns being deleted.
-				css: digest(Buffer.from(COVER_CSS.replace(/\/\*[\s\S]*?\*\//g, ''))),
+				css: digest(Buffer.from(COVER_CSS)),
 				twins: Object.fromEntries(Object.entries(manifest).sort(([a], [b]) => a.localeCompare(b)))
 			},
 			null,

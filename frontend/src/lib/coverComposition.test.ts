@@ -7,7 +7,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { COVER_STYLE_IDS, CURSIVE_SCRIPTS } from './coverStyles';
-import { COVER_CSS, blocksFor } from '../test/coverCss';
+import { COVER_CSS_CODE, blocksFor } from '../test/coverCss';
 
 /**
  * A cover's ARRANGEMENT, not its face.
@@ -25,15 +25,17 @@ import { COVER_CSS, blocksFor } from '../test/coverCss';
 describe('cover compositions', () => {
 	/** Every rule the CSS writes for one style, whatever it targets.
 	 *
-	 *  ANCHORED TO THE START OF A LINE and stopped at one, because a selector is
-	 *  the only thing that starts a line here. Unanchored, this scraped the PROSE:
-	 *  the comment that mentions `.cover-type.style-press .title` came back as a
-	 *  rule target, which would let a style satisfy "has a composition" with a
-	 *  sentence about one, and would fail the edges gate the day a comment named
-	 *  `.byline`. */
+	 *  READ FROM THE COMMENT-STRIPPED TEXT, like every scan in this file. Prose in
+	 *  `cover-type.css` quotes its own selectors constantly, and each of these
+	 *  assertions has a way to be fooled by that: this one would let a style
+	 *  satisfy "has a composition" with a SENTENCE about one, and the container
+	 *  gate below would slice a fake block body out of the paragraph that
+	 *  explains why the ornaments are not gated. That second one is not
+	 *  hypothetical — it went red the moment such a paragraph was written.
+	 *  The line anchor stays as a second guard on selector shape. */
 	const rulesFor = (style: string) =>
 		[
-			...COVER_CSS.matchAll(
+			...COVER_CSS_CODE.matchAll(
 				new RegExp(`^\\s*\\.cover-type\\.style-${style}([^{,\\n]*)[,{]`, 'gm')
 			)
 		].map(([, target]) => target.trim());
@@ -121,7 +123,7 @@ describe('cover compositions', () => {
 				).not.toMatch(/\.byline|\.emblem-band|\.brandmark/);
 			}
 			expect(
-				new RegExp(`\\.cover-type\\.style-${style} \\{[^}]*padding`).test(COVER_CSS),
+				new RegExp(`\\.cover-type\\.style-${style} \\{[^}]*padding`).test(COVER_CSS_CODE),
 				`.style-${style} sets its own padding, which moves the byline off the ` +
 					`height ink_safe floored the colour against`
 			).toBe(false);
@@ -139,9 +141,9 @@ describe('cover compositions', () => {
 		// landed 73 lines PAST the closing brace — and would have returned -1 the
 		// day that selector was renamed, making every assertion below vacuously
 		// true while the gate went on reporting green.
-		const gate = COVER_CSS.indexOf('@container');
+		const gate = COVER_CSS_CODE.indexOf('@container');
 		expect(gate, 'the recipes are no longer behind a container query').toBeGreaterThan(-1);
-		const gateBody = COVER_CSS.slice(gate, COVER_CSS.indexOf('\n}\n', gate));
+		const gateBody = COVER_CSS_CODE.slice(gate, COVER_CSS_CODE.indexOf('\n}\n', gate));
 		expect(
 			gateBody,
 			'a composition sits inside the container gate, so a thumbnail loses its ' +

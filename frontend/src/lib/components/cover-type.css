@@ -108,6 +108,17 @@
 	padding: 17cqw 7cqw 9cqw;
 	color: #fff;
 	text-align: center;
+	/* The frame's distance from the plate edge, named because the press corner
+	   pieces are placed just inside it and a hardcoded second copy would let
+	   the frame move out from under them — the drift this file already
+	   documents at the press rules below. */
+	--frame-inset: 4.3cqw;
+	/* ONE HAIRLINE INK for every short rule an ornament flanks itself with:
+	   both period marks and the press corners draw the same 1px white at the
+	   same alpha, and they were three separate literals. The alpha is final
+	   here — it used to be `0.5` multiplied by an element `opacity` of `0.8`,
+	   so neither written number was the value on screen. */
+	--hairline: linear-gradient(rgb(255 255 255 / 0.4) 0 0);
 }
 .cover-plate.over-file .cover-type {
 	position: absolute;
@@ -118,7 +129,7 @@
 .cover-type::before {
 	content: '';
 	position: absolute;
-	inset: 4.3cqw;
+	inset: var(--frame-inset);
 	border: 1px solid rgb(255 255 255 / 0.22);
 }
 .cover-plate.over-art .cover-type::before {
@@ -260,17 +271,43 @@
  * a shadow rather than as a bug. That happened here. The colour keyword has no
  * such edge, and `coverOrnaments.test.ts` decodes every URI and fails on both.
  *
- * SIZED TO SURVIVE A LIST ROW, where the cover is 64px and an ornament is
- * twelve pixels across. These are silhouettes, not engravings; each was checked
- * at 300, 128 and 64px, and what they lose as they shrink is detail, never
- * legibility. */
+ * SIZED TO SURVIVE A LIST ROW, which the header of this file puts at 48px —
+ * an ornament there is about ten pixels across. These are silhouettes, not
+ * engravings; each was checked against real books at 300, 128, 64 and 48px,
+ * and what they lose as they shrink is detail, never legibility.
+ *
+ * NOT behind the `@container` gate at the foot, though a 1.6px corner bracket
+ * is close to invisible and gating it would save eight paint layers on a
+ * thumbnail. That gate exists so a small cover does not FETCH a face it cannot
+ * show; an ornament fetches nothing, and `coverComposition.test.ts` pins the
+ * rule that a thumbnail keeps its arrangement even where it loses its face.
+ * Consistency of the shelf beats eight raster ops on four works. */
+
+/* Both drawn ornaments are ONE ARRANGEMENT: a mark centred in the box with a
+   short hairline run out to either side of it. Only the mark differs, so only
+   the mark is a drawing — the hairlines are `--hairline` in both, rather than
+   CSS in one era and two `<path>` rects inside the other era's SVG, which is
+   how they were first written and would have left the same line drawn in two
+   languages with independently drifting inks.
+
+   THE ALPHA RIDES ON THE DRAWING (`opacity` on the `<svg>` root), not on the
+   element. An element `opacity` over three background layers cannot be folded
+   into a single paint, so it opens a transparency group and an offscreen
+   buffer per cover; on the root of an already-isolated SVG document it is free.
+   It also keeps one written number equal to what lands on screen.
+
+   Both size the mark `auto 100%` — height-driven — so the two react the same
+   way to a change in the box. */
 
 /* DEVOTIONAL — a pierced quatrefoil, the four-lobed mark cut into devotional
-   books since the manuscripts, run out to a short rule on either side. The
-   centre is a HOLE rather than a dark dot: four circles that do not quite meet
-   leave the pierce open, so it shows the ground through it on a painting and on
-   a plate alike. A dot would have to be painted some colour, and every colour
-   is wrong on a ground this file cannot see.
+   books since the manuscripts. The centre is a HOLE rather than a dark dot:
+   four circles that do not quite meet leave the pierce open, so it shows the
+   ground through it on a painting and on a plate alike. A dot would have to be
+   painted some colour, and every colour is wrong on a ground this file cannot
+   see.
+   The viewBox is inset by a unit on every side because each lobe reaches 0.4
+   units beyond a `0 0 24 24` box and was being clipped FLAT — a straight edge
+   on all four petals, small enough to look like a design choice.
    NOT the printer's hedera, which is what was drawn here first. The hedera is
    the historically right mark — and it is heart-shaped, so at every size from
    300px down it read as the modern sentiment icon rather than as a leaf, which
@@ -280,49 +317,61 @@
 	width: 22cqw;
 	height: 5cqw;
 	background:
-		url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'><circle cx='19' cy='12' r='5.4'/><circle cx='5' cy='12' r='5.4'/><circle cx='12' cy='19' r='5.4'/><circle cx='12' cy='5' r='5.4'/></svg>") center / auto 100% no-repeat,
-		linear-gradient(rgb(255 255 255 / 0.5) 0 0) left center / 5.5cqw 1px no-repeat,
-		linear-gradient(rgb(255 255 255 / 0.5) 0 0) right center / 5.5cqw 1px no-repeat;
-	opacity: 0.8;
+		url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-1 -1 26 26' fill='white' opacity='.8'><circle cx='19' cy='12' r='5.4'/><circle cx='5' cy='12' r='5.4'/><circle cx='12' cy='19' r='5.4'/><circle cx='12' cy='5' r='5.4'/></svg>") center / auto 100% no-repeat,
+		var(--hairline) left center / 5.5cqw 1px no-repeat,
+		var(--hairline) right center / 5.5cqw 1px no-repeat;
 }
 
 /* REVIVAL — the centre-piece a Victorian title page set between its title and
-   everything else: a lozenge with sprays tapering AWAY from it, run out to
-   hairlines. The taper's direction is the whole of it — drawn the other way,
-   thick at the outside and pointed at the lozenge, the pair reads as two
-   arrowheads aimed inward, which is a diagram and not an ornament. */
+   everything else: a lozenge with arms at full thickness against it, tapering
+   to a point outward. The taper's DIRECTION is the whole of it, and it was
+   drawn backwards first — thick at the outside and pointed at the lozenge,
+   which makes the pair read as two arrowheads aimed inward: a diagram, not an
+   ornament. The comment claimed the right thing while the path did the wrong
+   one, and only a large render told them apart. */
 .cover-type.style-revival .rule,
 .cover-type.style-revival .middle::before {
 	width: 27cqw;
 	height: 4.4cqw;
-	background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 14' fill='white'><path d='M36 3.4l3.4 3.6-3.4 3.6-3.4-3.6z'/><path d='M31 7 C27 4.4 22 3.1 16 3.3 C22 5.1 26 5.9 31 7 Z'/><path d='M31 7 C27 9.6 22 10.9 16 10.7 C22 8.9 26 8.1 31 7 Z'/><path d='M41 7 C45 4.4 50 3.1 56 3.3 C50 5.1 46 5.9 41 7 Z'/><path d='M41 7 C45 9.6 50 10.9 56 10.7 C50 8.9 46 8.1 41 7 Z'/><path d='M7 6.6h8v0.8h-8z'/><path d='M57 6.6h8v0.8h-8z'/></svg>") center / 100% auto no-repeat;
-	opacity: 0.82;
+	background:
+		url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='16 0 40 14' fill='white' opacity='.8'><path d='M36 3.4l3.4 3.6-3.4 3.6-3.4-3.6z'/><path d='M31.4 6.55 C26 6.0 21 4.9 16 3.1 C21 5.5 26 5.75 31.4 5.2 Z'/><path d='M31.4 7.45 C26 8.0 21 9.1 16 10.9 C21 8.5 26 8.25 31.4 8.8 Z'/><path d='M40.6 6.55 C46 6.0 51 4.9 56 3.1 C51 5.5 46 5.75 40.6 5.2 Z'/><path d='M40.6 7.45 C46 8.0 51 9.1 56 10.9 C51 8.5 46 8.25 40.6 8.8 Z'/></svg>") center / auto 100% no-repeat,
+		var(--hairline) left center / 6cqw 1px no-repeat,
+		var(--hairline) right center / 6cqw 1px no-repeat;
 }
 
 /* PRESS — corner pieces set inside the hairline frame, the way a ruled border
    was made up from rule and corner quads. In gradients rather than a drawing,
    and that is the right choice at this size: an angle is two straight lines,
-   and two straight lines survive twelve pixels where a curve turns to grey.
-   `6.4cqw` sits them just inside the frame's `4.3cqw` so they read as a second,
-   broken border rather than as a thickening of the first. */
+   and two straight lines survive a 48px list row where a curve turns to grey.
+   Eight layers because a `linear-gradient` layer paints one band, so an L
+   needs two — but one ink and one arm length, stated once each. Written out
+   long, the alpha and the arm lived in eight places apiece and "make the
+   corners longer" was an eight-line edit that could half-land.
+   Placed FROM the frame rather than beside it: `2.1cqw` inside `--frame-inset`
+   reads as a second, broken border rather than as a thickening of the first,
+   and moving the frame now moves these with it.
+   The `background` shorthand resets `background-repeat`, so the `no-repeat`
+   has to come after it, not inside it. */
 .cover-type.style-press::after {
+	--arm: 3.4cqw;
 	content: '';
 	position: absolute;
-	inset: 6.4cqw;
+	inset: calc(var(--frame-inset) + 2.1cqw);
 	pointer-events: none;
 	background:
-		linear-gradient(rgb(255 255 255 / 0.4) 0 0) top left / 3.4cqw 1px no-repeat,
-		linear-gradient(rgb(255 255 255 / 0.4) 0 0) top left / 1px 3.4cqw no-repeat,
-		linear-gradient(rgb(255 255 255 / 0.4) 0 0) top right / 3.4cqw 1px no-repeat,
-		linear-gradient(rgb(255 255 255 / 0.4) 0 0) top right / 1px 3.4cqw no-repeat,
-		linear-gradient(rgb(255 255 255 / 0.4) 0 0) bottom left / 3.4cqw 1px no-repeat,
-		linear-gradient(rgb(255 255 255 / 0.4) 0 0) bottom left / 1px 3.4cqw no-repeat,
-		linear-gradient(rgb(255 255 255 / 0.4) 0 0) bottom right / 3.4cqw 1px no-repeat,
-		linear-gradient(rgb(255 255 255 / 0.4) 0 0) bottom right / 1px 3.4cqw no-repeat;
+		var(--hairline) top left / var(--arm) 1px,
+		var(--hairline) top left / 1px var(--arm),
+		var(--hairline) top right / var(--arm) 1px,
+		var(--hairline) top right / 1px var(--arm),
+		var(--hairline) bottom left / var(--arm) 1px,
+		var(--hairline) bottom left / 1px var(--arm),
+		var(--hairline) bottom right / var(--arm) 1px,
+		var(--hairline) bottom right / 1px var(--arm);
+	background-repeat: no-repeat;
 }
 
-/* DEVOTIONAL — the manual for the closet stays the quiet one; the hedera it
-   carries is drawn in the ornament section above. */
+/* DEVOTIONAL — the manual for the closet stays the quiet one; its mark is
+   drawn in the ornament section above. */
 .cover-type.style-devotional .subtitle {
 	margin-top: 3.4cqw;
 }
