@@ -2,6 +2,8 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { getAdminAudit, type AdminAudit, type AuditChapterFinding } from '$lib/library-admin';
+	import { localizeHref } from '$lib/href';
+	import { locales } from '$lib/paraglide/runtime';
 
 	const auditRes = adminResource(getAdminAudit, 'Something went wrong running the audit.');
 	const audit = $derived(auditRes.data);
@@ -24,6 +26,26 @@
 				)
 			: 0
 	);
+
+	// A finding is against one EDITION, and the reader route takes its content
+	// language from the URL's locale prefix — so a link without one opens
+	// whichever edition the admin's own locale resolves to, which for a Swahili
+	// finding is usually the English text. Every link here is localized to the
+	// language the finding is actually about.
+	// `en-modern` is a content language with no locale of its own, and a language
+	// could be added to the registry before its interface exists — so an unrouted
+	// code falls back to an unprefixed link rather than inventing a 404. The row
+	// still names the edition either way.
+	// Books, sermons and plans are per-language ROWS sharing a slug, so a finding
+	// is identified by the triple. Keying on book+order alone crashed the page
+	// with `each_key_duplicate` the moment one chapter was flagged in two
+	// editions — which for `the-key-in-my-hand` chapter 2 meant six.
+	const findingKey = (f: AuditChapterFinding) => `${f.book}:${f.language}:${f.order}`;
+
+	const editionHref = (path: string, language: string) =>
+		(locales as readonly string[]).includes(language)
+			? localizeHref(path, { locale: language as (typeof locales)[number] })
+			: localizeHref(path);
 
 	function evidence(f: AuditChapterFinding): string {
 		if (f.avg_words != null) return `${f.avg_words} words/¶ · ${f.paragraphs} ¶`;
@@ -58,8 +80,12 @@
 
 			{#snippet chapterItem(f: AuditChapterFinding)}
 				<li class="flex items-baseline justify-between gap-3 py-1.5">
-					<a href="/books/{f.book}/{f.order}" class="min-w-0 truncate text-body text-text hover:text-accent">
-						<span class="text-muted">{f.book}/{f.order}</span> — {f.title || '(untitled)'}
+					<a
+						href={editionHref(`/books/${f.book}/${f.order}`, f.language)}
+						class="min-w-0 truncate text-body text-text hover:text-accent"
+					>
+						<span class="text-muted">{f.book}/{f.order}</span>
+						<span class="text-micro text-muted">{f.language}</span> — {f.title || '(untitled)'}
 					</a>
 					{#if evidence(f)}<span class="shrink-0 text-small text-muted">{evidence(f)}</span>{/if}
 				</li>
@@ -86,14 +112,14 @@
 								{#if c.total}
 									<ul class="mt-1">
 										{#if check.key === 'duplicate_titles'}
-											{#each a.quality.duplicate_titles.items as f (f.book + f.title)}
+											{#each a.quality.duplicate_titles.items as f (f.book + ':' + f.language + ':' + f.title)}
 												<li class="flex items-baseline justify-between gap-3 py-1.5">
-													<a href="/books/{f.book}" class="min-w-0 truncate text-body text-text hover:text-accent"><span class="text-muted">{f.book}</span> — “{f.title}”</a>
+													<a href={editionHref(`/books/${f.book}`, f.language)} class="min-w-0 truncate text-body text-text hover:text-accent"><span class="text-muted">{f.book}</span> <span class="text-micro text-muted">{f.language}</span> — “{f.title}”</a>
 													<span class="shrink-0 text-small text-muted">×{f.count}</span>
 												</li>
 											{/each}
 										{:else}
-											{#each (c.items as AuditChapterFinding[]) as f (f.book + '/' + f.order)}
+											{#each c.items as AuditChapterFinding[] as f (findingKey(f))}
 												{@render chapterItem(f)}
 											{/each}
 										{/if}
@@ -114,9 +140,9 @@
 							{@render section('Broken plan days', 'A plan day points at a missing chapter', a.integrity.broken_plan_days.total, true)}
 							{#if a.integrity.broken_plan_days.total}
 								<ul class="mt-1">
-									{#each a.integrity.broken_plan_days.items as d (d.plan + d.day)}
+									{#each a.integrity.broken_plan_days.items as d (d.plan + ':' + d.language + ':' + d.day)}
 										<li class="py-1.5 text-body">
-											<a href="/plans/{d.plan}" class="text-text hover:text-accent">{d.plan}</a>
+											<a href={editionHref(`/plans/${d.plan}`, d.language)} class="text-text hover:text-accent">{d.plan}</a>
 											<span class="text-small text-muted">day {d.day} → {d.book}/{d.order} ({d.language})</span>
 										</li>
 									{/each}
@@ -129,7 +155,7 @@
 							{#if a.integrity.empty_books.total}
 								<ul class="mt-1">
 									{#each a.integrity.empty_books.items as b (b.book + b.language)}
-										<li class="py-1.5 text-body"><a href="/books/{b.book}" class="text-text hover:text-accent">{b.title}</a> <span class="text-small text-muted">{b.author} · {b.language}</span></li>
+										<li class="py-1.5 text-body"><a href={editionHref(`/books/${b.book}`, b.language)} class="text-text hover:text-accent">{b.title}</a> <span class="text-small text-muted">{b.author} · {b.language}</span></li>
 									{/each}
 								</ul>
 							{/if}
@@ -139,7 +165,7 @@
 							{@render section('Empty chapters', 'No body text', a.integrity.empty_chapters.total, a.integrity.empty_chapters.items.length >= a.integrity.empty_chapters.total)}
 							{#if a.integrity.empty_chapters.total}
 								<ul class="mt-1">
-									{#each a.integrity.empty_chapters.items as f (f.book + '/' + f.order)}
+									{#each a.integrity.empty_chapters.items as f (findingKey(f))}
 										{@render chapterItem(f)}
 									{/each}
 								</ul>
@@ -151,8 +177,8 @@
 							{@render section('Chapter-order gaps', 'Missing chapter numbers', a.integrity.order_gaps.total, true)}
 							{#if a.integrity.order_gaps.total}
 								<ul class="mt-1">
-									{#each a.integrity.order_gaps.items as g (g.book)}
-										<li class="py-1.5 text-body"><a href="/books/{g.book}" class="text-text hover:text-accent">{g.book}</a> <span class="text-small text-muted">missing {g.missing.join(', ')} of {g.count}</span></li>
+									{#each a.integrity.order_gaps.items as g (g.book + ':' + g.language)}
+										<li class="py-1.5 text-body"><a href={editionHref(`/books/${g.book}`, g.language)} class="text-text hover:text-accent">{g.book}</a> <span class="text-small text-muted">{g.language} · missing {g.missing.join(', ')} of {g.count}</span></li>
 									{/each}
 								</ul>
 							{/if}

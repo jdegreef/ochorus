@@ -379,6 +379,108 @@ class AdminAuditTests(TestCase):
         self.assertIn(res.status_code, (401, 403))
 
 
+class AdminAuditMultiLanguageTests(TestCase):
+    """The audit against the content model it actually runs on.
+
+    Books are per-language ROWS sharing a slug, and every check above was
+    written against a one-language fixture — which is how the audit came to
+    group chapters by slug alone. That pooled unrelated editions: it reported
+    17 cross-language title collisions as duplicates "in a book", and it left
+    the API emitting findings that no longer had a unique identity, which
+    crashed the admin page outright.
+    """
+
+    def setUp(self):
+        self.client = APIClient()
+        author = Author.objects.create(slug="am", name="Andrew Murray")
+        # One work, three editions — the shape the whole content model is built
+        # around, and the shape the single-language fixture above never had.
+        for lang in ("en", "es", "pt"):
+            book = Book.objects.create(
+                author=author, slug="humility", language=lang, title="Humility"
+            )
+            # Same defect in every edition: a body with no terminal punctuation,
+            # in a chapter that has a later one. One finding per edition.
+            Chapter.objects.create(
+                book=book, order=1, title="One", body_html="<p>runs on</p>", word_count=300
+            )
+            Chapter.objects.create(
+                book=book, order=2, title="Two", body_html="<p>Ends well.</p>", word_count=300
+            )
+
+    @override_settings(DEBUG=True)
+    def test_a_finding_in_three_editions_keeps_three_identities(self):
+        """The crash: a page cannot key rows that aren't distinguishable."""
+        res = self.client.get("/api/admin/audit/")
+        splits = res.data["quality"]["mid_sentence_splits"]["items"]
+        mine = [f for f in splits if f["book"] == "humility"]
+        self.assertEqual(len(mine), 3, "one finding per edition")
+        keys = {(f["book"], f["language"], f["order"]) for f in mine}
+        self.assertEqual(len(keys), 3, "book+language+order must be unique")
+
+    @override_settings(DEBUG=True)
+    def test_every_chapter_finding_is_uniquely_identified(self):
+        """Asserted over every list, so a new check inherits the guarantee."""
+        res = self.client.get("/api/admin/audit/")
+        lists = {**res.data["quality"], **res.data["integrity"]}
+        checked = 0
+        for name, capped in lists.items():
+            items = capped["items"]
+            if not items or "order" not in items[0]:
+                continue
+            checked += 1
+            keys = [(f["book"], f["language"], f["order"]) for f in items]
+            self.assertEqual(
+                len(keys), len(set(keys)), f"{name} has two findings with one identity"
+            )
+        self.assertTrue(checked, "no chapter-finding list was examined")
+
+    @override_settings(DEBUG=True)
+    def test_the_same_title_in_two_editions_is_not_a_duplicate(self):
+        """A proper noun that survives translation is not a defect.
+
+        "Hazelglen Fellowship" as chapter 19 of en, lg, pt and sw is one
+        untranslated name, and the audit reported it as four duplicates.
+        """
+        res = self.client.get("/api/admin/audit/")
+        dupes = res.data["quality"]["duplicate_titles"]["items"]
+        self.assertEqual([d for d in dupes if d["book"] == "humility"], [])
+
+    @override_settings(DEBUG=True)
+    def test_a_real_duplicate_within_one_edition_still_reports(self):
+        """The check must still do its job — and say which edition."""
+        es = Book.objects.get(slug="humility", language="es")
+        Chapter.objects.create(
+            book=es, order=3, title="One", body_html="<p>Again.</p>", word_count=300
+        )
+        res = self.client.get("/api/admin/audit/")
+        dupes = res.data["quality"]["duplicate_titles"]["items"]
+        mine = [d for d in dupes if d["book"] == "humility"]
+        self.assertEqual(len(mine), 1)
+        self.assertEqual(mine[0]["language"], "es")
+        self.assertEqual(mine[0]["title"], "One")
+
+    @override_settings(DEBUG=True)
+    def test_a_gap_in_one_edition_is_not_masked_by_another(self):
+        """Spanish is missing chapter 2; English has it. That is still a gap.
+
+        Pooled by slug, English's chapter 2 filled the hole in Spanish and the
+        gap went unreported — a false negative in the check whose entire job is
+        noticing a missing chapter.
+        """
+        Chapter.objects.filter(book__slug="humility", book__language="es", order=2).delete()
+        es = Book.objects.get(slug="humility", language="es")
+        Chapter.objects.create(
+            book=es, order=3, title="Three", body_html="<p>Third.</p>", word_count=300
+        )
+        res = self.client.get("/api/admin/audit/")
+        gaps = res.data["integrity"]["order_gaps"]["items"]
+        mine = [g for g in gaps if g["book"] == "humility"]
+        self.assertEqual(len(mine), 1, "the Spanish gap must be reported")
+        self.assertEqual(mine[0]["language"], "es")
+        self.assertEqual(mine[0]["missing"], [2])
+
+
 class AdminEngagementTests(TestCase):
     def setUp(self):
         import uuid
