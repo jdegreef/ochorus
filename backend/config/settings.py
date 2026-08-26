@@ -389,6 +389,13 @@ if SENTRY_DSN:
     sentry_sdk.init(
         dsn=SENTRY_DSN,
         environment=os.getenv("SENTRY_ENVIRONMENT", "production" if not DEBUG else "development"),
+        # WHICH deploy an error came from. Without it every report is attributed
+        # to one undifferentiated "production", so a regression cannot be traced
+        # to the release that introduced it — the first question anyone asks.
+        # RELEASE_COMMIT is already read above for the API/web release-sync
+        # check; this is the same value, doing a second job. Empty (local, CI)
+        # sends no release rather than a wrong one.
+        release=RELEASE_COMMIT or None,
         # Errors only by default; raise these later if you want tracing/profiling.
         traces_sample_rate=float(os.getenv("SENTRY_TRACES_SAMPLE_RATE", "0")),
         send_default_pii=False,

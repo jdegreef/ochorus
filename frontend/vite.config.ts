@@ -50,5 +50,21 @@ export default defineConfig({
 		}),
 		sveltekit(),
 		absoluteAssetUrls()
-	]
+	],
+	define: {
+		/**
+		 * The commit this bundle was built from, baked in so a browser error can
+		 * name its release.
+		 *
+		 * Injected here rather than read through `$env` because it is not a public
+		 * runtime setting: the static site is built once per deploy and served
+		 * from a CDN, so the value is fixed at build time and there is no server
+		 * left to read an env var at request time.
+		 *
+		 * Render sets RENDER_GIT_COMMIT during every build. Locally and in CI it
+		 * is unset, which yields '' — Sentry then sends no release rather than a
+		 * wrong one.
+		 */
+		__RELEASE__: JSON.stringify(process.env.RENDER_GIT_COMMIT ?? '')
+	}
 });
