@@ -3,6 +3,7 @@ import { readJSON, writeJSON } from './persisted';
 import {
 	DEFAULT_HIGHLIGHT,
 	MARKS_KEY,
+	baseEdition,
 	markInEdition,
 	migrateLegacySermonState,
 	workKey,
@@ -214,6 +215,47 @@ class Marks {
 		const e = readAll()[workKey(kind, slug, order)];
 		if (!e?.m) return 0;
 		return new Set(e.m.filter((m) => markInEdition(m, edition)).map((m) => m.id)).size;
+	}
+
+	/**
+	 * Every work's marks, SPLIT by the edition each was made in.
+	 *
+	 * `all()` answers "which marks belong to this edition"; this answers "which
+	 * editions are there at all", which is what a surface quoting the marks back
+	 * needs — it has to fetch one text per edition rather than assume the page's
+	 * own. Asking `all()` once per edition would not do: an untagged mark counts
+	 * as the base edition of whatever it is asked about, so it would come back
+	 * under every language enumerated.
+	 *
+	 * A mark with no `lang` lands in `fallback`'s base edition, the same rule
+	 * `markInEdition` applies, so every stored mark appears in exactly one group.
+	 */
+	allByEdition(
+		fallback: string
+	): { edition: string; kind: WorkKind; slug: string; order: number; marks: Mark[] }[] {
+		const base = baseEdition(fallback);
+		const out: {
+			edition: string;
+			kind: WorkKind;
+			slug: string;
+			order: number;
+			marks: Mark[];
+		}[] = [];
+		for (const [key, entry] of Object.entries(readAll())) {
+			const parsed = parseWorkKey(key);
+			if (!parsed || !entry.m?.length) continue;
+			const byEdition = new Map<string, Mark[]>();
+			for (const m of entry.m) {
+				const edition = m.lang ?? base;
+				const list = byEdition.get(edition);
+				if (list) list.push(m);
+				else byEdition.set(edition, [m]);
+			}
+			for (const [edition, ms] of byEdition) {
+				out.push({ edition, ...parsed, marks: ms });
+			}
+		}
+		return out;
 	}
 
 	/**

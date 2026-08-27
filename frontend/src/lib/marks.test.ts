@@ -175,3 +175,68 @@ describe('editions share a chapter but not a text (#1085)', () => {
 		expect(marks.all('en').flatMap((w) => w.marks).map((m) => m.p)).toEqual([3]);
 	});
 });
+
+describe('allByEdition — every edition, each exactly once (#1120)', () => {
+	// The notebook quotes each highlight against the text it was measured on, so
+	// it needs the editions, not one of them. Asking `all()` once per edition
+	// would not do: an untagged mark counts as the base edition of whatever it
+	// is asked about, so it would come back under every language enumerated.
+
+	it('splits one chapter’s marks by the edition each was made in', () => {
+		marks.load('humility', 3, 'en', 'book');
+		marks.add([{ p: 0, s: 0, e: 5 }]);
+		marks.load('humility', 3, 'en-modern', 'book');
+		marks.add([{ p: 1, s: 0, e: 5 }]);
+
+		const groups = marks.allByEdition('en');
+		expect(groups).toHaveLength(2);
+		expect(groups.map((g) => g.edition).sort()).toEqual(['en', 'en-modern']);
+		expect(groups.every((g) => g.slug === 'humility' && g.order === 3)).toBe(true);
+	});
+
+	it('places an untagged mark in the base edition, once', () => {
+		localStorage.setItem(
+			MARKS_KEY,
+			JSON.stringify({ 'humility:2': { m: [{ id: 'old', p: 0, s: 0, e: 5 }] } })
+		);
+
+		const groups = marks.allByEdition('en');
+		expect(groups).toHaveLength(1);
+		expect(groups[0].edition).toBe('en');
+		expect(groups[0].marks.map((m) => m.id)).toEqual(['old']);
+	});
+
+	it('does not repeat an untagged mark across the editions on offer', () => {
+		// The failure mode of enumerating editions and calling `all()` per one.
+		localStorage.setItem(
+			MARKS_KEY,
+			JSON.stringify({
+				'humility:2': { m: [{ id: 'old', p: 0, s: 0, e: 5 }, { id: 'es1', p: 1, s: 0, e: 5, lang: 'es' }] }
+			})
+		);
+
+		const groups = marks.allByEdition('en');
+		const ids = groups.flatMap((g) => g.marks.map((m) => m.id)).sort();
+		expect(ids).toEqual(['es1', 'old']);
+		expect(groups.find((g) => g.edition === 'en')!.marks.map((m) => m.id)).toEqual(['old']);
+		expect(groups.find((g) => g.edition === 'es')!.marks.map((m) => m.id)).toEqual(['es1']);
+	});
+
+	it('reads an untagged mark as the base edition when the reader is on modern', () => {
+		// `baseEdition('en-modern')` is 'en', so the legacy mark stays where it
+		// was made and does not migrate onto the modern text.
+		localStorage.setItem(
+			MARKS_KEY,
+			JSON.stringify({ 'humility:2': { m: [{ id: 'old', p: 0, s: 0, e: 5 }] } })
+		);
+		expect(marks.allByEdition('en-modern')[0].edition).toBe('en');
+	});
+
+	it('carries kind and order through for each group', () => {
+		marks.load('faith', SERMON_CHAPTER_ORDER, 'es', 'sermon');
+		marks.add([{ p: 0, s: 0, e: 4 }]);
+
+		const [g] = marks.allByEdition('en');
+		expect(g).toMatchObject({ kind: 'sermon', slug: 'faith', order: SERMON_CHAPTER_ORDER, edition: 'es' });
+	});
+});
