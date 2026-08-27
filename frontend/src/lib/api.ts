@@ -12,6 +12,29 @@ export class ApiError extends Error {
 }
 
 /**
+ * The body of a failed response: parsed JSON when it is JSON (DRF errors are,
+ * so callers can read `.detail`), otherwise the raw text.
+ *
+ * ONE read. This was `res.json()` with a `res.text()` fallback in its catch —
+ * but a failed `res.json()` has already consumed the stream, so the fallback
+ * always rejected and was swallowed into `null`. Every non-JSON error body
+ * therefore arrived as `body: null`: exactly the HTML 502/503 pages Render's
+ * proxy serves during an outage, which is when the body is the only clue there
+ * is. The fallback the code appeared to offer was dead from the start.
+ */
+async function errorBody(res: Response): Promise<unknown> {
+	const text = await res.text().catch(() => null);
+	// An empty body stays `null` rather than becoming `''` — callers test the
+	// body for truthiness, and that is what they got before this change.
+	if (!text) return null;
+	try {
+		return JSON.parse(text);
+	} catch {
+		return text;
+	}
+}
+
+/**
  * Supplies the current Supabase access token, if any. The auth store registers
  * this (via `setAuthTokenProvider`) so we avoid an import cycle: api ↔ auth.
  */
@@ -78,13 +101,7 @@ async function requestJSON<T>(path: string, init: RequestInit): Promise<T> {
 		signal: withTimeout(init.signal)
 	});
 	if (!res.ok) {
-		let body: unknown = null;
-		try {
-			body = await res.json();
-		} catch {
-			body = await res.text().catch(() => null);
-		}
-		throw new ApiError(res.status, body);
+		throw new ApiError(res.status, await errorBody(res));
 	}
 	if (res.status === 204) return null as T;
 	return (await res.json()) as T;
@@ -156,15 +173,7 @@ export async function apiFetchRaw(path: string, init: RequestInit = {}): Promise
 	}
 	const res = await robustFetch(`${API_BASE_URL}${path}`, { ...init, headers });
 	if (!res.ok) {
-		// Parse the error body as JSON when possible (DRF errors are JSON) so
-		// callers can read `.detail`, matching apiFetch; fall back to raw text.
-		let body: unknown = null;
-		try {
-			body = await res.json();
-		} catch {
-			body = await res.text().catch(() => null);
-		}
-		throw new ApiError(res.status, body);
+		throw new ApiError(res.status, await errorBody(res));
 	}
 	return res;
 }
