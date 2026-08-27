@@ -85,6 +85,20 @@
 @import '@fontsource/old-standard-tt/700.css';
 @import '@fontsource/pt-serif/400.css';
 @import '@fontsource/pt-serif/700.css';
+/* And the SANS side of the same problem. `--font-sans` named one Latin family
+   and three generics, so a reader who picks "sans" in Arabic, Hindi or
+   Ukrainian got whatever their device chose — on the app's chrome and, through
+   the reading preference, on its most-read surface. Hanken is not a partial
+   answer for Cyrillic either: it ships `cyrillic-ext` (U+0460-052F) and NOT the
+   base block, so every ordinary letter — Б, і, ї, є — fell through it. Only ґ
+   did not. PT Sans rather than another neutral because `--font-display` already
+   sets Cyrillic in PT Serif, and the two are one superfamily. */
+@import '@fontsource/noto-sans-arabic/400.css';
+@import '@fontsource/noto-sans-arabic/700.css';
+@import '@fontsource/noto-sans-devanagari/400.css';
+@import '@fontsource/noto-sans-devanagari/700.css';
+@import '@fontsource/pt-sans/400.css';
+@import '@fontsource/pt-sans/700.css';
 
 /* Map semantic theme tokens onto Tailwind color utilities so `bg-surface
    text-text border-border` respond to the runtime [data-theme] switch. */
@@ -107,7 +121,8 @@
 	--radius-sm: 9px;
 	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'PT Serif', Georgia,
 		'Times New Roman', serif;
-	--font-sans: 'Hanken Grotesk Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
+	--font-sans: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari',
+		'PT Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
 
 	/* The type scale, as Tailwind utilities. Without this the scale existed only
 	   as --fs-* custom properties, so `text-small` / `text-body` / `text-h1..h3`
@@ -241,13 +256,15 @@
 	   reader fetches any of these. `fontStacks.test.ts` measures that rather than
 	   assuming it.
 
-	   `--font-sans` is NOT yet fixed the same way, and that is a separate change:
-	   it needs a SANS for each script, not these, and Hanken ships `cyrillic-ext`
-	   without the base `cyrillic` block — so even Ukrainian UI chrome falls out of
-	   it to a device font. */
+	   `--font-sans` now carries the same fix with SANS faces rather than these:
+	   Noto Sans Arabic, Noto Sans Devanagari and PT Sans, which pairs with the
+	   PT Serif above. Hanken was not even a partial answer for Cyrillic — it
+	   ships `cyrillic-ext` (U+0460-052F) and not the base block, so Б, і, ї and є
+	   all fell through it and only ґ did not. Latin still never leaves Hanken. */
 	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'PT Serif', Georgia,
 		'Times New Roman', serif;
-	--font-sans: 'Hanken Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-sans: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari',
+		'PT Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
 	--reading-scale: 1;
 	/* Motion, per STYLE_GUIDE §7 (quiet and quick, 120-240ms). Eight distinct
 	   durations had accumulated across the app, including a 0.28s and a 0.3s

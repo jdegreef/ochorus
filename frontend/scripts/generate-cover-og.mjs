@@ -74,7 +74,14 @@
  * this whole script exists to repair.
  */
 import { createHash } from 'node:crypto';
-import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
+import {
+	existsSync,
+	mkdirSync,
+	readFileSync,
+	readdirSync,
+	statSync,
+	writeFileSync
+} from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
@@ -85,8 +92,14 @@ import sharp from 'sharp';
 // it, and nothing type-checks this file. Both modules are import-free at
 // runtime for exactly this reason — see `coverStyles.ts`'s header and
 // `nodeLoadable.test.ts`.
-import { isArtCover, isPlateCover } from '../src/lib/coverArt.ts';
-import { coverStyleFor } from '../src/lib/coverStyles.ts';
+import { isArtCover, isPlateCover, twinUrl } from '../src/lib/coverArt.ts';
+// The cover's type, as markup — the same tree `BookCover` renders, stated once
+// so `coverMarkupParity.test.ts` can hold the two renderers against each other.
+// It used to be hand-built below, and had drifted into a card with no
+// `script-` class, no `lang` and no `dir`: an Arabic preview would have been
+// set in the Latin face and laid out left-to-right.
+import { coverPlateMarkup } from '../src/lib/coverCardMarkup.ts';
+import { coverStyleFor, scriptOf } from '../src/lib/coverStyles.ts';
 import { eraOf } from '../src/lib/eras.ts';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -124,7 +137,19 @@ function authors() {
 }
 
 /**
- * Every English book whose cover cannot be its own og:image, in slug order.
+ * Every EDITION whose cover cannot be its own og:image, in slug order.
+ *
+ * Every edition, not every English book, and that was the bug. A twin carries
+ * the book's TITLE baked into its pixels, and `og:image` resolved to
+ * `/covers/<slug>.png` — keyed by slug alone. So sharing the Arabic, Hindi or
+ * Portuguese page of a book posted a preview card with the ENGLISH title on it,
+ * for all 93 translated editions. Localized pages are prerendered, so that was
+ * in the HTML a crawler reads, not something the runtime could correct.
+ *
+ * It also quietly broke the rule the content model is built on: a language with
+ * no row simply does not show that item. The share layer was substituting
+ * English instead of declining, which is the one fallback this library does not
+ * have.
  *
  * The same two conditions the fixture gate tests, deliberately spelled out
  * again rather than shared: that gate is what proves this script was run, and a
@@ -134,7 +159,7 @@ function authors() {
 function needTwins() {
 	const people = authors();
 	return readdirSync(resolve(CONTENT, 'books'))
-		.filter((f) => f.endsWith('.en.json'))
+		.filter((f) => f.endsWith('.json'))
 		.sort()
 		.flatMap((file) => JSON.parse(readFileSync(resolve(CONTENT, 'books', file), 'utf8')))
 		.filter((row) => row.model === 'library.book')
@@ -154,12 +179,32 @@ function needTwins() {
 				// from the app's own module rather than restated here.
 				style: coverStyleFor(eraOf(author.birth_year), author.slug),
 				cover,
+				// The edition's language, and the script its type is set in — both
+				// through the app's own table. Only English books get a twin today,
+				// so these are `en`/null for every card this script currently draws;
+				// they are read rather than hardcoded so that the day a translated
+				// edition gets one, it is set in its own face rather than silently
+				// in Latin.
+				language: fields.language || 'en',
+				script: scriptOf(fields.language || 'en'),
+				// Where this edition's card lives, and what names it in the manifest.
+				// English keeps the historic root path so cards already shared do not
+				// 404; every other language sits under its own directory. The same
+				// layout `covers.cover_path` gives a plate, for the same reason.
+				twin: twinPath(fields.slug, fields.language || 'en'),
 				// Which tier, through the app's own predicates rather than a fourth
 				// hand-written copy of "what is a painting".
 				art: isArtCover(cover)
 			};
 		})
 		.filter((b) => b.art || isPlateCover(b.cover));
+}
+
+/** (key, file) for one edition's twin, from the URL the app resolves — so the
+ *  writer and the reader cannot disagree about where a card lives. */
+function twinPath(slug, language) {
+	const file = twinUrl(slug, language).replace('/covers/', '');
+	return { key: file.replace(/\.png$/, ''), file };
 }
 
 // ── The page ────────────────────────────────────────────────────────────────
@@ -181,24 +226,57 @@ const dataUri = (file, mime) => `data:${mime};base64,${readFileSync(file).toStri
  * committed twins shipped set in Times, silently, while both test suites stayed
  * green. Adding a sixth cover face is now one edit in `app.css`, not four.
  *
- * Latin AND latin-ext: a twin is an English card, but an English card's title
- * can still carry a name the latin subset does not cover, and the two files
- * together are ~11 rather than ~6. Italic and every other subset are dropped —
- * only the title takes a cover face, and it is never italic.
+ * PER SCRIPT, and that is the correction that matters. This inlined the latin
+ * subset of the FIRST family in each token and nothing else, on the stated
+ * grounds that "a twin is an English card" — true when it was written, false
+ * the moment translated editions got cards of their own. The effect was not a
+ * missing file but a silent substitution: `Amiri` appeared in the token block,
+ * so the stack named it, while no `@font-face` for it ever reached the page.
+ * Measured on the real card before this change, an Arabic title resolved to
+ * Liberation Serif and Unifont — the runner's system fallbacks — where the page
+ * it stands in for resolves to Amiri.
+ *
+ * So the families are every quoted name in the tokens, and the subsets are
+ * latin, latin-ext and the CARD'S OWN script. An English card still pays for
+ * latin alone; an Arabic one adds Arabic and nothing else. Italic is dropped
+ * throughout — only the title takes a cover face, and it is never italic.
  */
-function buildFontCss() {
+function buildFontCss(script) {
 	// The token block first: it is also the list of families a cover can ask
 	// for, which is how the reader's OpenDyslexic and the UI's Hanken are left
 	// out without naming either of them here.
 	const tokens = [...APP_CSS.matchAll(/^\s*(--(?:cover-face-[a-z]+|font-display):[^;]+);/gm)].map(
 		([, decl]) => decl.trim()
 	);
-	// The families a cover can ask for: the FIRST quoted name in each token, which
-	// is the webfont — the rest of a stack is Georgia and the generic, which have
-	// no @font-face to find and would make the completeness check below a lie.
+	// EVERY quoted name in the tokens, because a stack's script faces sit after
+	// its first: `--font-display` names Fraunces, then Amiri, then Tiro, then PT
+	// Serif. Taking only the first is what left every non-Latin card unserved.
 	const wanted = new Set(
+		tokens.flatMap((decl) => [...decl.matchAll(/'([^']+)'/g)].map(([, f]) => f))
+	);
+	// The RECIPE face — still the first name in each token — is the one whose
+	// absence means a cover renders in the fallback and looks deliberate, so it
+	// stays the thing the completeness check below insists on. The rest of a
+	// stack is script faces (checked separately, against the script actually
+	// being drawn) and device families like 'Times New Roman', which ship no
+	// package and would make that check throw on every run.
+	const recipeFaces = new Set(
 		tokens.map((decl) => /'([^']+)'/.exec(decl)?.[1]).filter((f) => f !== undefined)
 	);
+	// latin always — even an Arabic card sets its byline in it — plus the card's
+	// own. Cyrillic takes its ext too: PT Serif splits Ukrainian's ґ out of the
+	// base block, the same split that hid the gap in `--font-sans`.
+	const subsets = ['latin', 'latin-ext'];
+	if (script === 'arabic') subsets.push('arabic');
+	if (script === 'devanagari') subsets.push('devanagari');
+	if (script === 'cyrillic') subsets.push('cyrillic', 'cyrillic-ext');
+	const wantedSubset = new RegExp(`url\\(\\./files/[^)]*-(${subsets.join('|')})-`);
+	// Recorded HERE, while the filenames are still filenames. The blocks are
+	// rewritten below to carry the woff2 inline, which is what a data URI is for
+	// — and that erases the only evidence of which subset a block was. Asking
+	// afterwards is asking the wrong text: it looks like no script face arrived,
+	// on a run where all of them did.
+	const subsetsSeen = new Set();
 
 	const faces = [...APP_CSS.matchAll(/@import '(@fontsource[^']+)'/g)].flatMap(([, spec]) => {
 		// A bare package specifier ('@fontsource-variable/fraunces') is its
@@ -210,9 +288,13 @@ function buildFontCss() {
 			.split('@font-face')
 			.slice(1)
 			.map((block) => `@font-face${block.slice(0, block.indexOf('}') + 1)}`)
-			// One block per subset, per style. Latin only — a twin is the English
-			// card — upright only, and only a family some cover can name.
-			.filter((block) => /url\(\.\/files\/[^)]*-latin(-ext)?-/.test(block))
+			// One block per subset, per style: the card's subsets, upright only,
+			// and only a family some cover can name.
+			.filter((block) => {
+				const hit = wantedSubset.exec(block);
+				if (hit) subsetsSeen.add(hit[1]);
+				return hit !== null;
+			})
 			.filter((block) => !/font-style:\s*italic/.test(block))
 			.filter((block) => wanted.has(/font-family:\s*'([^']+)'/.exec(block)?.[1] ?? ''))
 			.map((block) =>
@@ -234,7 +316,7 @@ function buildFontCss() {
 	const found = new Set(
 		faces.map((block) => /font-family:\s*'([^']+)'/.exec(block)?.[1]).filter((f) => f)
 	);
-	const missing = [...wanted].filter((family) => !found.has(family));
+	const missing = [...recipeFaces].filter((family) => !found.has(family));
 	if (missing.length) {
 		throw new Error(
 			`app.css names ${missing.join(', ')} in a --cover-face-* token but nothing ` +
@@ -242,16 +324,27 @@ function buildFontCss() {
 				`fallback face, and look deliberate.`
 		);
 	}
+	// AND THE SCRIPT ACTUALLY HAS A FACE. The check above asks whether each
+	// recipe's own family arrived; it cannot notice that an Arabic card carries
+	// six Latin faces and nothing that can draw an Arabic glyph, which is
+	// precisely what shipped. This asks the question the card is about.
+	if (script && !subsetsSeen.has(script)) {
+		throw new Error(
+			`no @font-face for ${script} reached the card — every ${script} twin would ` +
+				`render in whatever font the machine drawing it happens to have, and look ` +
+				`deliberate. Check that a --cover-face-* or --font-display token names a ` +
+				`family with a ${script} subset, and that app.css @imports it.`
+		);
+	}
 	return `${faces.join('')}:root{${tokens.join(';')}}`;
 }
 
-/** Built once, and only when a page is actually drawn: it was a per-book call
- *  (37 x 6 file reads), and `coverOgManifest.test.ts` imports this module for
- *  `needTwins` alone and should not pay for it at all. */
-let FONT_CSS;
-
-const escape = (s) =>
-	s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+/** Built once PER SCRIPT, and only when a page is actually drawn: it was a
+ *  per-book call (37 x 6 file reads), and `coverOgManifest.test.ts` imports
+ *  this module for `needTwins` alone and should not pay for it at all. Keyed by
+ *  script because the faces a card needs depend on it — four entries at most,
+ *  and the library draws its cards in slug order, so the cache still holds. */
+const FONT_CSS = new Map();
 
 /** The brand lockup, from the copy `BrandMark.svelte` itself renders. */
 const LOCKUP = readFileSync(resolve(HERE, '../src/lib/brand/ochorus-lockup.svg'), 'utf8');
@@ -284,13 +377,15 @@ function inputs(book, ground) {
  * plate, because the two tiers are the same shape: a wordless ground with the
  * book's type over it.
  *
- * THE COMPOSITION IS NOT WRITTEN HERE. `cover-type.css` is inlined whole, so
- * this renders the rules `BookCover` renders, not a copy of them. It used to be
- * a copy — the frame, the byline, the title ramp, all three rule ornaments, the
- * scrim's four stops — and the copy is what shipped 37 twins set in Times.
- * There is no way to mount a Svelte component in here, but there is no longer
- * anything to keep in step either: the markup below is the component's markup,
- * and everything about how it looks comes from that file.
+ * NEITHER THE COMPOSITION NOR THE MARKUP IS WRITTEN HERE. `cover-type.css` is
+ * inlined whole, so this renders the rules `BookCover` renders rather than a
+ * copy of them — it used to be a copy, and the copy is what shipped 37 twins
+ * set in Times. The TREE was still a copy after that, and drifted the same way:
+ * no `script-` class, no `lang`, no `dir`, so the first translated card would
+ * have been set in the Latin face and laid out left-to-right. It now comes from
+ * `coverCardMarkup.ts`, which `coverMarkupParity.test.ts` renders the component
+ * against. There is still no way to mount Svelte in here — there is just no
+ * longer anything left in here to keep in step by hand.
  */
 function coverPage(book, groundBytes) {
 	// A painting is an <img> so `object-fit` can crop it; a plate is inlined,
@@ -299,7 +394,9 @@ function coverPage(book, groundBytes) {
 	const ground = book.art
 		? `<img class="ground" src="data:image/jpeg;base64,${groundBytes.toString('base64')}" alt="">`
 		: `<div class="ground">${groundBytes.toString('utf8')}</div>`;
-	return `<style>${(FONT_CSS ??= buildFontCss())}${COVER_CSS}
+	const scriptKey = book.script ?? 'latin';
+	if (!FONT_CSS.has(scriptKey)) FONT_CSS.set(scriptKey, buildFontCss(book.script));
+	return `<style>${FONT_CSS.get(scriptKey)}${COVER_CSS}
 html,body{margin:0}
 /* The three things a page needs that a cover inside the app gets from its
    surroundings: the card's box, the ground's own placement, and the container
@@ -308,22 +405,22 @@ html,body{margin:0}
 .ground{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .ground svg{display:block;width:100%;height:100%}
 .cover-type{box-sizing:border-box}
-.brandmark svg{height:13.7cqw;width:auto;display:block;margin:0 auto}
+.brandmark svg{height:var(--h);width:auto;display:block;margin:0 auto}
 </style>
 <div class="card">
   ${ground}
-  <div class="cover-plate over-file${book.art ? ' over-art' : ''}">
-    <div class="cover-type style-${book.style}">
-      <div class="byline">${escape(book.author)}</div>
-      <div class="middle">
-        <div class="title">${escape(book.title)}</div>
-        <div class="rule"></div>
-        ${book.subtitle ? `<div class="subtitle">${escape(book.subtitle)}</div>` : ''}
-      </div>
-      ${book.art ? '' : '<div class="emblem-band"></div>'}
-      <div class="brandmark">${LOCKUP}</div>
-    </div>
-  </div>
+  ${coverPlateMarkup(
+		{
+			author: book.author,
+			title: book.title,
+			subtitle: book.subtitle,
+			style: book.style,
+			script: book.script,
+			lang: book.language,
+			art: book.art
+		},
+		LOCKUP
+	)}
 </div>`;
 }
 
@@ -380,7 +477,7 @@ async function main() {
 	for (const book of books) {
 		// Read once, for the digest and for the page.
 		const groundBytes = readFileSync(resolve(STATIC, book.cover.replace(/^\//, '')));
-		manifest[book.slug] = { ground: digest(inputs(book, groundBytes)), style: book.style };
+		manifest[book.twin.key] = { ground: digest(inputs(book, groundBytes)), style: book.style };
 		await page.setContent(coverPage(book, groundBytes));
 		// The faces are data URIs, so this resolves immediately — but a
 		// screenshot taken before it does silently falls back to the default
@@ -394,10 +491,13 @@ async function main() {
 			.png({ palette: true, colours: 256, dither: 0.4, effort: 10 })
 			.toBuffer();
 
-		const dest = resolve(COVERS, `${book.slug}.png`);
+		const dest = resolve(COVERS, book.twin.file);
 		if (existsSync(dest) && digest(readFileSync(dest)) === digest(png)) continue;
+		// A translated edition's card is the first thing written into its language
+		// directory when that language has no plate of its own.
+		mkdirSync(dirname(dest), { recursive: true });
 		writeFileSync(dest, png);
-		wrote.push(`${book.slug}.png  ${book.art ? 'painting' : 'plate'}  ${book.style}`);
+		wrote.push(`${book.twin.file}  ${book.art ? 'painting' : 'plate'}  ${book.style}`);
 	}
 
 	await browser.close();
@@ -428,6 +528,15 @@ async function main() {
 				// would demand an 8 MB, 37-binary regeneration for a typo in a
 				// docstring. That is how a gate earns being deleted.
 				css: digest(Buffer.from(COVER_CSS)),
+				// AND THE TREE THOSE RULES ARE HUNG ON, for the same reason. The
+				// stylesheet decides how a card looks only given the markup, and the
+				// markup is a second file that can change on its own: reorder the
+				// title and the rule, drop the `script-` class, and every committed
+				// twin keeps the old arrangement with `css` unmoved. Digesting the
+				// module rather than each card's output because it is the SOURCE that
+				// drifts — a card's own markup already reaches the picture through
+				// the byte comparison above.
+				markup: digest(readFileSync(resolve(HERE, '../src/lib/coverCardMarkup.ts'))),
 				twins: Object.fromEntries(Object.entries(manifest).sort(([a], [b]) => a.localeCompare(b)))
 			},
 			null,

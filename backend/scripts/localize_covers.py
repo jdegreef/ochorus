@@ -122,12 +122,20 @@ def ensure_og_twin(slug: str, artwork: Path) -> bool:
     404. ``CoverAssetTests.test_covers_that_cannot_be_shared_have_a_raster_twin``
     catches it, which is how this was found.
 
-    One twin per WORK, not per language: the fallback path is keyed by slug
-    alone, so a translated page's card shows the English designed cover. That is
-    already true of the 27 works whose English cover is a generated SVG, so it
-    is the existing behaviour rather than a new inconsistency — and fixing it
-    properly means teaching the page the English row's cover_url, which is a
-    different change.
+    ONE TWIN PER WORK, AND THAT IS NO LONGER THE WHOLE STORY. This wrote
+    `<slug>.png` because og:image was keyed by slug alone, so a translated
+    page's card showed the English one — this docstring used to call fixing
+    that "a different change". It has since been made: `covers.twin_path` and
+    `coverArt.twinUrl` key a card by edition, and `frontend/npm run og:covers`
+    draws one per row.
+
+    What is left here is a STOPGAP, and it is worth knowing which. This writes
+    the artwork rasterised, with no type on it; the card a reader actually sees
+    has the book's title in its pixels and only the JS generator draws that. So
+    this guarantees the English path is not a 404 the moment a localized SVG
+    arms the fallback, and `npm run og:covers` supersedes it — which the
+    translation-worker skill now names as a step, because `CoverAssetTests`
+    asks for the per-language card that only that script produces.
 
     The DRAWING moved to ``covers.write_og_twin`` when
     ``build_derived_grounds`` needed the same twin for the same reason; what is

@@ -154,8 +154,17 @@ worker specifics that shipped ~11 editions:
   scripts/localize_covers.py <slug>` after writing the file: it draws the cover
   in this language (typographic plate, or the curated painting under the new
   title) and repoints the row. The `CoverAssetTests` guard on per-language
-  covers fails the PR if you skip it. No other file is touched — parallel jobs
-  cannot conflict. Full regens only via `backend/scripts/regen_fixture.py`.
+  covers fails the PR if you skip it.
+  **Then run `cd frontend && npm run og:covers`** and commit what it writes.
+  A share card carries the book's title in its PIXELS, so it is per edition:
+  the new row needs `static/covers/<lang>/<slug>.png`, and only that script
+  draws one with type on it (`localize_covers`' own `ensure_og_twin` writes a
+  WORDLESS crop, and only at the root path). `CoverAssetTests` fails the PR
+  without it. This is the one step that touches files outside the work's own:
+  the new card, and a key in the shared `static/covers/og-manifest.json` —
+  so two translation jobs running at once CAN conflict there, on one line of
+  JSON each. Rerun the script after rebasing rather than merging that file by
+  hand. Full regens only via `backend/scripts/regen_fixture.py`.
   Verify `seed_books` recreates the rows locally; run `manage.py test library`
   (which includes the fixture + file-coherence gates).
 - Scripture: if `api.takeroot.bible` is reachable, use `scripture_context()`

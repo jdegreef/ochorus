@@ -6,7 +6,7 @@ import { describe, expect, it } from 'vitest';
 import { coverStyleFor } from './coverStyles';
 import { eraOf } from './eras';
 import { COVER_CSS_CODE } from '../test/coverCss';
-import { isArtCover, isPlateCover } from './coverArt';
+import { isArtCover, isPlateCover, twinUrl } from './coverArt';
 
 /**
  * The other half of the share-card staleness gate.
@@ -59,20 +59,37 @@ const births = (): Map<string, number | null> =>
 	);
 
 /**
- * Every English book whose cover cannot be its own og:image, with the style its
- * card should be set in — the same two conditions the script filters on, and
- * the same conditions the Python gate spells out for itself.
+ * Every EDITION whose cover cannot be its own og:image, keyed the way the
+ * manifest keys it, with the style its card should be set in — the same two
+ * conditions the script filters on, and the same conditions the Python gate
+ * spells out for itself.
+ *
+ * Every edition, not every English book. A twin carries the TITLE in its
+ * pixels, so one card per work served the English title on all 93 translated
+ * pages; this gate agreed with the script that that was complete, because both
+ * of them only ever looked at `.en.json`.
  */
 const needTwins = () => {
 	const birth = births();
 	return readdirSync(join(CONTENT, 'books'))
-		.filter((f) => f.endsWith('.en.json'))
+		.filter((f) => f.endsWith('.json'))
 		.flatMap((f) => JSON.parse(readFileSync(join(CONTENT, 'books', f), 'utf8')))
 		.filter((row) => row.model === 'library.book')
-		.map((row) => row.fields as { slug: string; author: string[]; cover_url?: string })
+		.map(
+			(row) =>
+				row.fields as {
+					slug: string;
+					language: string;
+					author: string[];
+					cover_url?: string;
+				}
+		)
 		.filter((f) => isArtCover(f.cover_url) || isPlateCover(f.cover_url))
 		.map((f) => ({
-			slug: f.slug,
+			// The manifest is keyed by the twin's path without its extension, which
+			// `twinUrl` owns — restating it here would be the drift this whole file
+			// exists to catch, one directory up.
+			key: twinUrl(f.slug, f.language).replace('/covers/', '').replace(/\.png$/, ''),
 			style: coverStyleFor(eraOf(birth.get(f.author[0]) ?? null), f.author[0])
 		}));
 };
@@ -102,6 +119,26 @@ describe('the og twins were drawn with the composition that ships now', () => {
 				'npm run og:covers`'
 		).toBe(drawn);
 	});
+
+	it('records the markup the cards were drawn from', () => {
+		// The stylesheet only decides how a card looks GIVEN a tree to hang on, and
+		// the tree is a second file that moves on its own. `coverCardMarkup.ts` is
+		// what the script builds each card from, and a change there — a reordered
+		// title and rule, a dropped `script-` class — leaves every committed twin
+		// on the old arrangement with `css` unmoved and every other gate green.
+		// The same hole as the one above, one file over.
+		//
+		// NOT comment-stripped, unlike the stylesheet: this is a TypeScript module
+		// of about a hundred lines, not a document that is half prose, so digesting
+		// it whole costs nothing anyone will resent and needs no parser that could
+		// itself be wrong about what a comment is.
+		const source = readFileSync(join(process.cwd(), 'src/lib/coverCardMarkup.ts'));
+		expect(
+			manifestFile().markup,
+			'the cover markup changed but the og:image twins did not — every shared ' +
+				'link would show the previous tree. Run `cd frontend && npm run og:covers`'
+		).toBe(createHash('sha256').update(source).digest('hex'));
+	});
 });
 
 describe('the og twins were drawn in the style the table names now', () => {
@@ -113,25 +150,43 @@ describe('the og twins were drawn in the style the table names now', () => {
 		expect(half, 'run `cd frontend && npm run og:covers`').toEqual([]);
 	});
 
-	it('covers every book that needs a twin, and no book that does not', () => {
+	it('covers every edition that needs a twin, and none that does not', () => {
 		const recorded = new Set(Object.keys(manifest()));
-		const wanted = new Set(needTwins().map((b) => b.slug));
+		const wanted = new Set(needTwins().map((b) => b.key));
 		expect(
-			[...wanted].filter((slug) => !recorded.has(slug)),
-			'a cover that cannot be its own og:image has no twin recorded — run `npm run og:covers`'
+			[...wanted].filter((key) => !recorded.has(key)),
+			'an edition whose cover cannot be its own og:image has no twin recorded — ' +
+				'run `npm run og:covers`'
 		).toEqual([]);
 		expect(
-			[...recorded].filter((slug) => !wanted.has(slug)),
-			'a twin for a book that no longer needs one — it has designed artwork now, ' +
-				'or it is gone. Re-run `npm run og:covers` and delete the orphan png.'
+			[...recorded].filter((key) => !wanted.has(key)),
+			'a twin for an edition that no longer needs one — it has designed artwork ' +
+				'now, or it is gone. Re-run `npm run og:covers` and delete the orphan png.'
 		).toEqual([]);
 	});
 
-	it('agrees with coverStyles for every book that has one', () => {
+	it('gives every translated edition a card of its own', () => {
+		// The gate above would pass on a library that had no translations at all.
+		// This is the property that was actually broken: a work with editions in
+		// several languages needs a card per EDITION, because the title is in the
+		// pixels, and it had one for the whole work.
+		const byLanguage = new Map<string, number>();
+		for (const key of Object.keys(manifest())) {
+			const lang = key.includes('/') ? key.split('/')[0] : 'en';
+			byLanguage.set(lang, (byLanguage.get(lang) ?? 0) + 1);
+		}
+		expect(
+			[...byLanguage.keys()].filter((l) => l !== 'en').length,
+			'every twin is English, so a shared link to a translated edition would ' +
+				'show a card with the English title on it'
+		).toBeGreaterThan(0);
+	});
+
+	it('agrees with coverStyles for every edition that has a card', () => {
 		const recorded = manifest();
 		const stale = needTwins()
-			.filter((b) => recorded[b.slug] && recorded[b.slug].style !== b.style)
-			.map((b) => `${b.slug}: drawn in ${recorded[b.slug].style}, now ${b.style}`);
+			.filter((b) => recorded[b.key] && recorded[b.key].style !== b.style)
+			.map((b) => `${b.key}: drawn in ${recorded[b.key].style}, now ${b.style}`);
 		expect(
 			stale,
 			'an author was restyled but their share cards were not redrawn — run ' +
