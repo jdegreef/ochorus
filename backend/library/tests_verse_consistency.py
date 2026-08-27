@@ -129,6 +129,53 @@ class VerseConsistencyPrecisionTests(SimpleTestCase):
         )
         self.assertIn(("ar", "أيوب 13:15"), found)
 
+    def test_different_clauses_of_one_verse_are_not_a_conflict(self):
+        """A verse is often several clauses, and two works can quote different
+        ones under the same citation. Juan 6:68 is quoted in this corpus as both
+        halves of Peter's answer; matching them would force one to be rewritten
+        into words its own sentence does not contain.
+        """
+        self.assertEqual(
+            _find(
+                ("es", "a.es.json", "<p>«¿A quién más iremos, Señor nuestro?» (Juan 6:68)</p>"),
+                ("es", "b.es.json", "<p>«Tú tienes palabras de vida eterna» (Juan 6:68)</p>"),
+            ),
+            {},
+        )
+
+    def test_two_renderings_of_one_clause_still_conflict_though_worded_apart(self):
+        """The guard on the exemption above, and the reason it demands ZERO
+        shared words rather than "few". Two translations of the SAME clause keep
+        content words in common even when the wording differs a lot — so the
+        pair is still reported, which is what stops the exemption excusing the
+        drift this module exists to find.
+        """
+        found = _find(
+            ("es", "a.es.json", "<p>«Porque de tal manera amó Dios al mundo» (Juan 3:16)</p>"),
+            ("es", "b.es.json", "<p>«Pues Dios amó tanto al mundo entero» (Juan 3:16)</p>"),
+        )
+        self.assertIn(("es", "Juan 3:16"), found)
+
+    def test_arabic_vocalisation_is_not_mistaken_for_a_different_clause(self):
+        """The exemption must not undo the rule above it.
+
+        Comparing words character-exactly, a vocalised rendering and a bare one
+        share NO word — so the same clause read as two different clauses and was
+        exempted. Measured, not hypothetical: it cleared 30 Arabic references,
+        يوحنا 3:16 among them, and would have dropped the ratchet from 124
+        entries to 87. The same-words test therefore ignores diacritics (and
+        folds alef variants) while the wording comparison keeps them.
+        """
+        found = _find(
+            (
+                "ar",
+                "a.ar.json",
+                "<p>«هَكَذَا أَحَبَّ ٱللهُ ٱلْعَالَمَ حَتَّى بَذَلَ ٱبْنَهُ» (يوحنا 3:16)</p>",
+            ),
+            ("ar", "b.ar.json", "<p>«هكذا أحبّ الله العالم حتى بذل ابنه» (يوحنا 3:16)</p>"),
+        )
+        self.assertIn(("ar", "يوحنا 3:16"), found)
+
     def test_the_citation_must_follow_the_quotation(self):
         """The rule that removed the largest false-positive class.
 
