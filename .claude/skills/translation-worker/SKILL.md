@@ -1598,3 +1598,80 @@ archaic spelling and period punctuation are the text, not defects in it.
   adjudicate against the source, never a FAIL — and note the corollary for the
   nesting walk: a `«` re-opening at the start of a block while one is already open
   is a paragraph-continuation mark, not a depth-2 error.
+- **Kulish's verse NUMBERING is off by one in more places than Numbers and Jonah,
+  and a well-formed crib entry is how you find out** (job #788). The list above
+  records Numbers 23 and Jonah 2:3; `he-holds-my-tomorrows` hit two more.
+  **Genesis 3 runs one BEHIND the AV** — the protoevangilium the author cites as
+  3:15 is Kulish's 3:14, and Kulish's 3:15 is the woman's curse — and **1 Samuel
+  24** does the same, so the "I will not lay my hand against the Lord's elect"
+  the author cites at 24:6 is a different sentence there. Neither is detectable
+  from the crib entry, which is perfectly well-formed and simply holds the wrong
+  verse; both were found by reading the fetched verse against what the English
+  actually quotes. Do that for every verse the author QUOTES rather than merely
+  points at, and when the offset is real, print the citation as the author
+  printed it and say in the notes that a reader checking it in Kulish lands
+  elsewhere. Assume the offset is per BOOK, not global — Genesis, 1 Samuel,
+  Numbers and Jonah diverge while Matthew, John, Romans and Hebrews do not.
+- **Kulish's own nested quotation mark is `‟` (U+201F), not `“` — paste it
+  unchanged and your chapter fails a balance check that is right to fail it**
+  (job #788). Van Dyck has no character markers at all and the hi IRV nests with
+  none, so this is Kulish-specific: `Heb 11:5`, `Heb 10:38`, `Ps 137:3`, `Jas
+  2:23` and others carry `„ … ‟` around their OT citations. The shipped uk corpus
+  contains **zero** U+201F against 24 `„`, so the corpus has always normalised it
+  to `„ … “` and you should too — punctuation only, no letter moves. Two
+  corollaries. A byte-substring verifier must strip `‟` on BOTH sides or it
+  reports every such verse as unmatched (18 false positives in one book here).
+  And where the AUTHOR's own quotation already brackets the same span, his marks
+  govern and Kulish's inner pair is dropped, or the nest reaches depth 3 for no
+  reader's benefit.
+- **A book-name choice can be a reader-harm decision, not a fidelity one — and
+  the corpus may already be split on it** (job #788). The rule further up is to
+  take `scripture_ref` book names from the edition's own `\toc2`, and it is
+  right. But Kulish's running head for Hebrews is **`Жидів`**, and `жид` is
+  pejorative in modern Ukrainian — Kulish's 1905 usage predates that shift.
+  In a book citing Hebrews twice that is a curiosity; in a sustained exposition
+  of Hebrews 11 it is on almost every page and is a chapter title. Measure before
+  agonising: the shipped uk corpus was **already split**, `Жидів` in godliness.uk
+  and baptism-with-the-holy-spirit.uk (5 sites) against `Євреїв` in
+  clothed-with-strength-and-dignity.uk and jesus-himself-2.uk (2), so both are
+  attested and neither is a house rule. #788 shipped `Євреїв` and said so loudly
+  in the PR, the issue and the notes file. The generalisable part: **an editorial
+  label is ours, the Bible's wording is not** — changing how we point at a book
+  is a different act from changing what the book says, and only the second is
+  off-limits.
+- **`&#x27;` undecoded in the fixture is a defect class, and it will corrupt your
+  own digit check** (job #788). `he-holds-my-tomorrows.en` carries the raw entity
+  wherever an apostrophe should be (`don&#x27;t`, `God&#x27;s`,
+  `children&#x27;s`) plus one `[b]` footnote marker copied from a Bible site.
+  Both are pure extraction artifacts with exactly one reading, so the translation
+  renders the intended text rather than reproducing them — the same call
+  `BODY_CORRECTIONS` already makes for `L ORD`. Watch the side effect: a
+  per-block digit-multiset check reads `27` out of `&#x27;` and reports a digit
+  the translation "lost" in every block that has one. Strip entities before
+  counting, or you will chase a dozen phantom losses.
+- **Ukrainian dash-attribution merges a split quotation, so an outer-mark count
+  runs BELOW its source and is still correct** (job #788). English writes
+  `"…," he said. "…"` — two pairs; Ukrainian writes `«… — сказав він. — …»` — one.
+  Three of ch03's 58 pairs went this way and every one was right. Combined with
+  the reverse effect (Ukrainian orthography needs guillemets for a title in plain
+  text where English uses italics or nothing, which ADDS pairs), the count can
+  drift in both directions within one chapter. Gate on it as a WARN to adjudicate
+  against the source — never a FAIL, and never against zero.
+- **The uk BOOK band, now n=92** (the 74 recorded above plus #788's 18):
+  `he-holds-my-tomorrows` ran **0.765-0.906, mean 0.814, book total 0.814**,
+  which sits inside the 0.806-0.895 the shipped per-book totals span. Two
+  chapters fell under the corpus floor and both were settled the #515 way rather
+  than by padding: ch06 (0.765) is 24% quotation and its scripture runs 0.924
+  while its prose runs 0.728, and ch14 (0.767) compresses in BOTH halves
+  (quoted 0.737, prose 0.772) — the same signature `baptism-with-the-holy-spirit`
+  showed. Re-derive rather than copy.
+- **A "no fan-out" session is not a worse session — it just moves where the risk
+  is** (job #788, 18 chapters translated sequentially by one context). Everything
+  the batch entries above warn about — cross-chapter convention drift, a verse
+  rendered two ways, chapter titles disagreeing — mostly cannot arise, and the
+  reconciliation pass came back clean on the first run. What DOES survive is the
+  keyboard-level slip: the Latin-in-Cyrillic scan caught `točки` and `сміливa`
+  in a single-translator run, exactly as the ten-bio uk entry predicts. Keep that
+  scan, keep the tag gate, and spend the time you saved on reading the fetched
+  verses against what the English actually quotes — that is where this run's real
+  findings came from.
