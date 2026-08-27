@@ -1429,7 +1429,20 @@ class QuoteStyleTests(SimpleTestCase):
                 r["fields"].get("body_html", "") or "" for r in rows
             ))
             straight = text.count("&quot;") + text.count('"')
-            curly = text.count("“") + text.count("”")
+            # Guillemets count here too, as a typographic mark and not a third
+            # style. Spanish books set « » as the OUTER mark and “ ” as the
+            # nested one, so a file carrying « with straight marks is mixing
+            # exactly what this guard exists to stop — but it carries no “, and
+            # counting only curly marks left four es works invisible
+            # (prevailing-prayer, jesus-himself-2,
+            # clothed-with-strength-and-dignity, and the unfailing-springs
+            # sermon). It also surfaced a genuine defect the narrow count could
+            # not see: susanna-wesley-clarke.en, wholly straight-quoted, had ten
+            # OCR-damaged guillemets in it — two of them corrupted letters.
+            curly = (
+                text.count("“") + text.count("”")
+                + text.count("«") + text.count("»")
+            )
             if straight and curly:
                 offenders.append(f"{path.name}: {straight} straight, {curly} curly")
         self.assertEqual(

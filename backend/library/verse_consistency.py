@@ -61,6 +61,16 @@ PAIR = re.compile(
 _TAG = re.compile(r"<[^>]+>")
 _ENTITY = re.compile(r"&[a-z]+;|&#\d+;")
 MIN_WORDS = 4  # below this a "quotation" is a fragment and matches everything
+# A word this long carries meaning; shorter ones are articles, prepositions and
+# conjunctions that two unrelated clauses of the same verse share by accident
+# ("de", "la", "que", "los"). Used only to ask whether two renderings quote the
+# same words at all — never to compare wording, which stays exact.
+MIN_WORD_LEN = 4
+#: Arabic alef variants folded to bare alef for the same-words test only. Van
+#: Dyck sets ٱ (alef wasla) where an unvocalised quotation writes ا, which is a
+#: spelling of the same word — without this, رؤيا 1:8's two renderings of ONE
+#: clause shared no word and were exempted as different clauses.
+_ALEF = str.maketrans("\u0671\u0623\u0625\u0622", "\u0627\u0627\u0627\u0627")
 
 
 def clean(fragment: str) -> str:
@@ -114,13 +124,71 @@ def scan(bodies=None) -> dict[tuple[str, str], list[Rendering]]:
     return dict(found)
 
 
-def _diverges(renderings: list[Rendering]) -> bool:
-    keys = sorted({r.key for r in renderings}, key=len)
-    return any(
-        keys[i] not in keys[j] and keys[j] not in keys[i]
-        for i in range(len(keys))
-        for j in range(i + 1, len(keys))
+def _content_words(text: str) -> frozenset[str]:
+    """The words long enough to mean something, WITHOUT diacritics.
+
+    Diacritics are stripped here and nowhere else, and the distinction is the
+    whole safety of the exemption below. `normalise` keeps them on purpose:
+    in Arabic a vocalised quotation claims to be verbatim Van Dyck, so two
+    spellings differing only in harakat are a real disagreement (see the module
+    docstring). But this function asks a different question — *which words are
+    these two quoting?* — and that is about the words, not their pointing.
+
+    Keeping them here was measured and wrong: it exempted 30 Arabic references,
+    among them يوحنا 3:16, whose two renderings are the SAME clause, one
+    unvocalised and one fully vocalised. Character-exact word sets shared
+    nothing, so the pair read as two different clauses and the ratchet would
+    have dropped 124 entries to 87 — losing the real findings this module was
+    written for.
+    """
+    return frozenset(
+        w
+        for w in (
+            "".join(
+                c for c in normalise(part)
+                if not unicodedata.category(c).startswith("M")
+            ).translate(_ALEF)
+            for part in text.split()
+        )
+        if len(w) >= MIN_WORD_LEN
     )
+
+
+def _diverges(renderings: list[Rendering]) -> bool:
+    """Do these renderings actually disagree?
+
+    Two exemptions, and both are about a pair that is not competing:
+
+    1. **Containment.** Quoting half a verse in one place and all of it in
+       another is normal (see the module docstring).
+    2. **No shared words at all.** A verse is often several clauses, and two
+       works can quote different ones under the same citation — `Juan 6:68` is
+       quoted here as both "¿A quién más iremos?" and "Tú tienes palabras de
+       vida eterna", which are the two halves of Peter's answer, not two
+       renderings of one sentence. Matching them would force one of them to be
+       rewritten into words its own sentence does not contain, degrading an
+       accurate quotation into a paraphrase.
+
+    The second exemption is deliberately at ZERO overlap, not "little": two
+    translations of the SAME clause practically always keep a content word in
+    common, so requiring none at all is what keeps this from excusing real
+    drift. Both flagged pairs that survive it prove the point — `Juan 3:6`
+    still shares "carne", and `1 Juan 1:9` still shares "fiel", "justo" and
+    "maldad", so both remain reported.
+    """
+    unique: dict[str, Rendering] = {}
+    for r in renderings:
+        unique.setdefault(r.key, r)
+    items = sorted(unique.values(), key=lambda r: len(r.key))
+    for i in range(len(items)):
+        for j in range(i + 1, len(items)):
+            a, b = items[i], items[j]
+            if a.key in b.key or b.key in a.key:
+                continue
+            if not (_content_words(a.text) & _content_words(b.text)):
+                continue
+            return True
+    return False
 
 
 def conflicts(grouped=None) -> dict[tuple[str, str], list[Rendering]]:
