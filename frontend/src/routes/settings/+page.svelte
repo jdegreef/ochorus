@@ -6,7 +6,7 @@
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { theme } from '$lib/theme.svelte';
-	import { lang } from '$lib/lang.svelte';
+	import { lang, localeName } from '$lib/lang.svelte';
 	import { readerPrefs, FONT_STACK, MEASURE, type ReaderFont, type Measure } from '$lib/readerPrefs.svelte';
 	import { listen, RATES } from '$lib/listen.svelte';
 	import { readingSync } from '$lib/readingSync';
@@ -659,17 +659,20 @@
 				{#if offlineList.length}
 					<h3 class="text-h3 mb-3 mt-8">{t('settings.downloadsTitle')}</h3>
 					<ol class="divide-y divide-border">
-						{#each offlineList as b (b.slug)}
+						{#each offlineList as b (`${b.slug}:${b.language}`)}
 							<li class="flex items-baseline gap-3 py-2.5">
 								<a href={localizeHref(`/books/${b.slug}`)} class="min-w-0 flex-1 hover:no-underline">
 									<span class="block truncate text-body text-text">{b.title}</span>
+									<!-- The language is named because a book downloaded in two of
+									     them is now two rows, and without it they read as duplicates. -->
 									<span class="block truncate text-small text-muted">
-										{#if b.author}{b.author} · {/if}{b.chapterCount} {t('settings.downloadsChapters')}
+										{#if b.author}{b.author} · {/if}{localeName(b.language)} · {b.chapterCount}
+										{t('settings.downloadsChapters')}
 									</span>
 								</a>
 								<button
 									class="shrink-0 text-small text-muted hover:text-danger"
-									onclick={() => offlineBooks.remove(b.slug)}
+									onclick={() => offlineBooks.remove(b.slug, b.language)}
 								>
 									{t('offline.remove')}
 								</button>

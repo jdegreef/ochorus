@@ -40,6 +40,21 @@ export interface DownloadableBook {
 
 const supported = () => browser && 'caches' in globalThis;
 
+/**
+ * A download is a book in ONE language, and always was in the bytes: every
+ * cached URL carries `?language=`, and the metadata has recorded `language`
+ * since this file was written. Only the TRACKING conflated them — `has()`, the
+ * download dedupe and `remove()` all matched on slug alone — so downloading
+ * "Humility" in English made the Spanish edition claim to be available offline
+ * while its `?language=es` fetches missed the cache and failed, which the
+ * reader discovered only once offline and could not then fix.
+ *
+ * Per-language rows under one slug ARE the content model (see CLAUDE.md);
+ * per-slug tracking contradicted it.
+ */
+const sameEdition = (b: OfflineBook, slug: string, language: string) =>
+	b.slug === slug && b.language === language;
+
 function chapterUrl(slug: string, order: number, lang: string): string {
 	return `${API_BASE_URL}/api/library/books/${slug}/chapters/${order}/?language=${lang}`;
 }
@@ -51,7 +66,7 @@ class OfflineBooks {
 	/** Bumped on any change so `list()` / `has()` re-derive. */
 	ticks = $state(0);
 	/** The in-flight download, for a progress indicator. */
-	active = $state<{ slug: string; done: number; total: number } | null>(null);
+	active = $state<{ slug: string; language: string; done: number; total: number } | null>(null);
 
 	#load(): OfflineBook[] {
 		const raw = readJSON<OfflineBook[]>(KEY, []);
@@ -68,9 +83,9 @@ class OfflineBooks {
 		return [...this.#load()].sort((a, b) => b.at - a.at);
 	}
 
-	has(slug: string): boolean {
+	has(slug: string, language: string): boolean {
 		this.ticks;
-		return this.#load().some((b) => b.slug === slug);
+		return this.#load().some((b) => sameEdition(b, slug, language));
 	}
 
 	/** Precache a book. Requires a connection; a no-op if already downloading. */
@@ -78,7 +93,7 @@ class OfflineBooks {
 		if (!supported() || this.active || !navigator.onLine) return false;
 		const orders = book.chapters.map((c) => c.order);
 		const urls = [bookUrl(book.slug, book.language), ...orders.map((o) => chapterUrl(book.slug, o, book.language))];
-		this.active = { slug: book.slug, done: 0, total: urls.length };
+		this.active = { slug: book.slug, language: book.language, done: 0, total: urls.length };
 		try {
 			const cache = await caches.open(OFFLINE_CACHE);
 			for (const url of urls) {
@@ -88,7 +103,12 @@ class OfflineBooks {
 				} catch {
 					/* one chapter failed — keep going; the rest still download */
 				}
-				this.active = { slug: book.slug, done: (this.active?.done ?? 0) + 1, total: urls.length };
+				this.active = {
+					slug: book.slug,
+					language: book.language,
+					done: (this.active?.done ?? 0) + 1,
+					total: urls.length
+				};
 			}
 			// Cover (often cross-origin): best-effort, opaque is fine for <img>.
 			//
@@ -106,7 +126,10 @@ class OfflineBooks {
 					/* cover unavailable — text still reads offline */
 				}
 			}
-			const list = this.#load().filter((b) => b.slug !== book.slug);
+			// Replace only THIS edition's entry. Filtering on slug alone discarded
+			// the other language's metadata while its cached bytes stayed behind —
+			// an untracked download that nothing could then remove.
+			const list = this.#load().filter((b) => !sameEdition(b, book.slug, book.language));
 			list.push({
 				slug: book.slug,
 				title: book.title,
@@ -123,15 +146,25 @@ class OfflineBooks {
 		}
 	}
 
-	/** Remove a downloaded book: drop its cached entries and untrack it. */
-	async remove(slug: string): Promise<void> {
+	/** Remove one downloaded EDITION: drop its cached entries and untrack it. */
+	async remove(slug: string, language: string): Promise<void> {
 		if (!supported()) return;
-		const meta = this.#load().find((b) => b.slug === slug);
+		const meta = this.#load().find((b) => sameEdition(b, slug, language));
+		const rest = this.#load().filter((b) => !sameEdition(b, slug, language));
 		try {
 			const cache = await caches.open(OFFLINE_CACHE);
 			const marker = `/api/library/books/${slug}/`;
 			for (const req of await cache.keys()) {
-				if (new URL(req.url).pathname.includes(marker)) await cache.delete(req);
+				const url = new URL(req.url);
+				// The language too: matching the path alone would delete the OTHER
+				// edition's chapters as collateral, leaving it tracked as downloaded
+				// with nothing cached behind it.
+				if (
+					url.pathname.includes(marker) &&
+					url.searchParams.get('language') === language
+				) {
+					await cache.delete(req);
+				}
 			}
 			// The VARIANTS too, not just the original. `download()` caches all
 			// three (BookCover's srcset only ever asks for a variant), so deleting
@@ -140,7 +173,13 @@ class OfflineBooks {
 			// clears. "Remove download" is the storage-reclaim button; it has to
 			// reclaim what the download took, or every download/remove cycle
 			// leaks on exactly the storage-pressured phones this is for.
-			if (meta?.coverUrl) {
+			//
+			// Unless an edition we are KEEPING wears the same file: a wordless
+			// ground under /covers/art/ serves every language (see CLAUDE.md), so
+			// two editions can share a cover_url, and deleting it here would
+			// blank the one still downloaded.
+			const stillUsed = new Set(rest.map((b) => b.coverUrl));
+			if (meta?.coverUrl && !stillUsed.has(meta.coverUrl)) {
 				for (const url of [meta.coverUrl, ...coverVariants(meta.coverUrl)]) {
 					await cache.delete(url);
 				}
@@ -148,7 +187,7 @@ class OfflineBooks {
 		} catch {
 			/* cache unavailable — still untrack below */
 		}
-		this.#save(this.#load().filter((b) => b.slug !== slug));
+		this.#save(rest);
 	}
 }
 
