@@ -93,8 +93,11 @@
 </div>
 
 <style>
-	/* padding-inline-start, not padding-left: the rule stays on the reading edge
-	   if this page is ever served under an RTL locale. */
+	/* Logical inline-start, not a physical side, so the rule stays on the reading
+	   edge if this page is ever served under an RTL locale. (Spelling the
+	   physical property here would trip rtl.test.ts, which scans style blocks
+	   line by line and does not strip comments — see the same note on
+	   topics/[slug].) */
 	.verse {
 		margin: 1rem 0 0;
 		padding-inline-start: 1rem;
