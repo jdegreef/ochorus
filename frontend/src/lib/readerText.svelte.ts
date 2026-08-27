@@ -144,6 +144,11 @@ export class ReaderText {
 		void define.show(word, top, left);
 	};
 
+	/** Retire a definition once the selection has grown past the word it was for. */
+	onDefineClose = (): void => {
+		define.close();
+	};
+
 	/** Note on a fresh selection: highlight it first, then attach the note. */
 	openNoteForSelection = (segments: Segment[]): void => {
 		const existing = marks.groupCovering(segments);
