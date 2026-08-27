@@ -1,10 +1,9 @@
 <script lang="ts">
 	import type { TopicSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
-	import { itemList } from '$lib/seo';
+	import { itemList, hreflangAll } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import { locales } from '$lib/paraglide/runtime';
 	import ShelfCard from '$lib/components/ShelfCard.svelte';
 	import { topicMeta } from '$lib/emblemNames';
 	import PageHeader from '$lib/components/PageHeader.svelte';
@@ -23,16 +22,24 @@
 		)
 	);
 
+
+	// Gated on ADVERTISED_LOCALES, not Paraglide's full `locales`: a locale that
+	// is wired in the UI but has an empty catalog must not be advertised to
+	// crawlers (see advertised-locales.ts). This page was claiming alternates
+	// for draft locales while sitemap.xml, the detail pages and the footer all
+	// correctly omitted them — two contradictory claims, with the wrong one on
+	// the site's most-crawled pages.
+	const hreflang = hreflangAll('/topics');
 </script>
 
 <svelte:head>
 	<title>{t('topics.title')} — Ochorus</title>
 	<meta name="description" content={t('topics.tagline')} />
 	<link rel="canonical" href="{SITE_URL}{localizeHref('/topics')}" />
-	{#each locales as loc (loc)}
-		<link rel="alternate" hreflang={loc} href="{SITE_URL}{localizeHref('/topics', { locale: loc })}" />
+	{#each hreflang.alternates as a (a.loc)}
+		<link rel="alternate" hreflang={a.loc} href={a.href} />
 	{/each}
-	<link rel="alternate" hreflang="x-default" href="{SITE_URL}/topics" />
+	<link rel="alternate" hreflang="x-default" href={hreflang.xDefault} />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="{t('topics.title')} — Ochorus" />
 	<meta property="og:description" content={t('topics.tagline')} />
