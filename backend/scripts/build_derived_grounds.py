@@ -74,7 +74,7 @@ from PIL import Image, ImageFilter, ImageOps  # noqa: E402
 # `H`/`W` are the plate's canvas — imported rather than restated, because every
 # other cover tool derives its geometry from that pair and a private copy here
 # would go on drawing 600x800 after the module moved.
-from library.covers import H, W, art_url, write_og_twin  # noqa: E402
+from library.covers import H, W, art_url, scrimmed, write_og_twin  # noqa: E402
 from library.designed_covers import (  # noqa: E402
     DERIVED_GROUND,
     DESIGNED_BY_SLUG,
@@ -125,34 +125,10 @@ def derived_ground(source: Path, cut: Ground):
     return ground
 
 
-def scrimmed(ground):
-    """`cover-type.css`'s `.cover-plate.over-art`, composited — what a reader
-    actually sees. Only `--preview` uses this; nothing is written through it.
-
-    A hand-copy of four alpha stops, and the third copy of that gradient in the
-    repo. Deliberate, and thin enough to stay honest: this is a curation aid on
-    a developer's machine, and the alternative — teaching a Python script to
-    read a CSS custom property — is more machinery than the tuning is worth.
-    """
-    stops = [(0.00, 0.64), (0.30, 0.36), (0.60, 0.50), (1.00, 0.74)]
-
-    def alpha(f: float) -> int:
-        """The scrim's opacity a fraction `f` down the plate, 0-255."""
-        # Not `strict=True`: `stops[1:]` is one shorter by construction, and
-        # completing the loop is how `f` past the last stop reaches the clamp.
-        for (p0, a0), (p1, a1) in zip(stops, stops[1:], strict=False):
-            if f <= p1:
-                return round(255 * (a0 + (a1 - a0) * (f - p0) / (p1 - p0)))
-        return round(255 * stops[-1][1])
-
-    out = Image.blend(ground.convert("RGB"), Image.new("RGB", (W, H), (26, 20, 16)), 0.26)
-    # One pixel wide, then stretched: the ramp is vertical, so 800 values rather
-    # than 480,000.
-    column = Image.new("L", (1, H))
-    column.putdata([alpha(y / (H - 1)) for y in range(H)])
-    return Image.composite(Image.new("RGB", (W, H), (0, 0, 0)), out, column.resize((W, H)))
-
-
+# `scrimmed` moved to `library.covers`: the fixture gate that measures every
+# committed painting needs the same curve, and this was already described here
+# as "a hand-copy of four alpha stops, and the third copy of that gradient in
+# the repo". Two callers of one function beats two copies of one gradient.
 def _ensure_twin(slug: str, designed) -> bool:
     """Guarantee `/covers/<slug>.png` exists once this work wears a ground.
 

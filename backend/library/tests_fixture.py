@@ -53,9 +53,14 @@ from library.content_fixtures import (
     work_filename,
 )
 from library.covers import (
+    _AUTHOR_Y,
+    _FRAME_INSET,
+    AUTHOR_INK_OPACITY,
     AUTHOR_MIN_CONTRAST,
     COVER_WIDTHS,
     RASTER_SUFFIXES,
+    H,
+    W,
     art_url,
     author_ink_contrast,
     twin_path,
@@ -1126,6 +1131,67 @@ class CoverAssetTests(SimpleTestCase):
             "no wordless ground for it to wear — that edition would fall back "
             "to a flat plate. Add it to DERIVED_GROUND with its crop, then run "
             "`uv run python scripts/build_derived_grounds.py`",
+        )
+
+    def test_every_painting_still_carries_white_type(self):
+        """The scrim is light enough that this is no longer a tautology.
+
+        `.cover-plate.over-art` used to be heavy enough that a sheet of pure
+        WHITE cleared AA under it — so measuring the committed paintings proved
+        nothing, and the frontend gate says so in as many words. It was also why
+        a translated cover looked dark beside its English one: every painting
+        was shown at 38.7% of its own brightness, and at the foot as little as
+        21%, because a single even wash had to serve the brightest artwork in
+        the library.
+
+        The scrim now follows the type — three overlapping bands, air between —
+        and the paintings read at 53.4%. The guarantee narrows with it: white
+        type is safe over THESE paintings, not over any painting. So the
+        measurement has to be real, and this is it. Add a pale painting and this
+        fails with its name before a reader finds it.
+
+        Pillow is a dev-group dependency, like the rest of `CoverAssetTests`'
+        image work; the whole sweep is well under a second.
+        """
+        from PIL import Image
+
+        from library.covers import scrimmed
+
+        def relative_luminance(channels):
+            def channel(v):
+                v /= 255
+                return v / 12.92 if v <= 0.03928 else ((v + 0.055) / 1.055) ** 2.4
+
+            r, g, b = (channel(c) for c in channels)
+            return 0.2126 * r + 0.7152 * g + 0.0722 * b
+
+        def worst(band, opacity):
+            """Least white-on-artwork contrast anywhere in a band."""
+            out = 1e9
+            for px in band.getdata():
+                ink = tuple(round(255 * opacity + c * (1 - opacity)) for c in px)
+                a, b = relative_luminance(ink) + 0.05, relative_luminance(px) + 0.05
+                out = min(out, max(a, b) / min(a, b))
+            return out
+
+        art_dir = STATIC_DIR / "covers" / "art"
+        thin = []
+        for path in sorted(art_dir.glob("*.jpg")):
+            plate = scrimmed(
+                Image.open(path).convert("RGB").resize((W, H), Image.LANCZOS)
+            )
+            # The byline is the binding constraint at 4.5:1 (it is not large
+            # text); the title runs 7.6-10.45cqw and asks 3:1.
+            byline = plate.crop((_FRAME_INSET, _AUTHOR_Y - 9, W - _FRAME_INSET, _AUTHOR_Y + 9))
+            title = plate.crop((_FRAME_INSET, round(H * 0.36), W - _FRAME_INSET, round(H * 0.62)))
+            wb = worst(byline, AUTHOR_INK_OPACITY)
+            wt = worst(title, 1.0)
+            if wb < AUTHOR_MIN_CONTRAST or wt < 3.0:
+                thin.append(f"{path.stem}: byline {wb:.2f}:1, title {wt:.2f}:1")
+        self.assertEqual(
+            thin, [],
+            "a painting too pale for white type under the scrim — darken the "
+            "artwork, crop it differently, or give it its own scrim strength",
         )
 
     def test_covers_that_cannot_be_shared_have_a_raster_twin(self):
