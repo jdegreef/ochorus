@@ -3,6 +3,7 @@
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
+	import { loginHref as buildLoginHref } from '$lib/loginHref';
 
 	const t = i18n.t;
 
@@ -15,12 +16,9 @@
 		((auth.displayName || auth.user?.email)?.[0] ?? '?').toUpperCase()
 	);
 
-	// Preserve where the user was, so sign-in returns them there.
-	const loginHref = $derived(
-		$page.url.pathname.startsWith('/login')
-			? '/login'
-			: `/login?redirect=${encodeURIComponent($page.url.pathname)}`
-	);
+	// Preserve where the user was, so sign-in returns them there. The locale
+	// handling is subtle enough to be worth testing — see $lib/loginHref.
+	const loginHref = $derived(buildLoginHref($page.url.pathname, $page.url.search));
 
 	function onWindowClick(e: MouseEvent) {
 		if (open && root && !root.contains(e.target as Node)) open = false;
