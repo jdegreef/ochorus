@@ -176,7 +176,41 @@ export interface Mark {
 	note?: string;
 	/** Highlight colour key (see HIGHLIGHT_COLORS); absent = the default gold. */
 	color?: string;
+	/**
+	 * The EDITION this mark's offsets were measured against — the content
+	 * language, with Modern English as its own edition (`en-modern`). Absent on
+	 * anything written before editions were tagged; see `markInEdition`.
+	 */
+	lang?: string;
 }
+
+/**
+ * An edition is a content language, plus `en-modern` for the Modern English
+ * text — the same strings the chapter reader uses to fetch a chapter, so a
+ * mark's `lang` and the text it was made against can never drift apart.
+ *
+ * `{p, s, e}` offsets index one edition's characters. A book's editions share a
+ * slug and chapter order (that IS the content model: per-language rows under
+ * one slug), so the storage key alone cannot tell them apart — which is how a
+ * highlight made in the original text came to be painted across the middle of
+ * the modern text's words, and why removing it there deleted the real one.
+ */
+
+/** The plain-language edition behind an edition tag (`en-modern` → `en`). */
+const baseEdition = (edition: string): string => edition.replace(/-modern$/, '');
+
+/**
+ * Does this mark belong to `edition`?
+ *
+ * An untagged mark counts as the BASE edition of whatever is being read. Every
+ * such mark predates tagging, and nothing could then create one against the
+ * Modern English text under a tag of its own — so untagged marks stay visible
+ * in the plain-language edition (losing them would be far worse than the bug)
+ * and never bleed into a `-modern` one. No key migration, no rewrite of the
+ * reader's own data: marks are separated within the entry they already share.
+ */
+export const markInEdition = (m: Mark, edition: string): boolean =>
+	(m.lang ?? baseEdition(edition)) === edition;
 
 /**
  * The highlight palette. Keys are stored on marks (locale-independent) and map

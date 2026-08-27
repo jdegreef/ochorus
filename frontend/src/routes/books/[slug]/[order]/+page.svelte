@@ -691,7 +691,10 @@
 		kind: () => 'book',
 		slug: () => slug,
 		order: () => chapter.order,
-		language: () => getLang(),
+		// The EDITION, not just the UI language — the same string the chapter
+		// fetch above uses. Marks index this text's characters, and the modern
+		// edition is different text under the same slug and order.
+		language: () => (edition === 'modern' ? 'en-modern' : getLang()),
 		body: () => body,
 		topIndex: topVisibleIndex,
 		listenTitle: () => chapter.title,

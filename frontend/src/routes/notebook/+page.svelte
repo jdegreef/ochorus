@@ -167,7 +167,9 @@
 	onMount(async () => {
 		const lang = getLang();
 		const bms = bookmarks.all();
-		const allMarks = marks.all();
+		// `lang` is what every chapter fetch below asks for, so it is also the
+		// only edition whose offsets index the text we are about to quote.
+		const allMarks = marks.all(lang);
 		type MarkEntry = (typeof allMarks)[number];
 		const mks = allMarks.filter((m) => m.kind === 'book');
 		// Bookmarks now exist on all three kinds, so each lane takes its own —

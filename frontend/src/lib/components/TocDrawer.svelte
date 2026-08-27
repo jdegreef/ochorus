@@ -143,7 +143,7 @@
 			{:else}
 				<ol>
 					{#each book.chapters as ch (ch.order)}
-						{@const markCount = marks.countFor(slug, ch.order)}
+						{@const markCount = marks.countFor(slug, ch.order, 'book', contentLang)}
 						<li>
 							<a
 								href={localizeHref(`/books/${slug}/${ch.order}${suffix}`)}

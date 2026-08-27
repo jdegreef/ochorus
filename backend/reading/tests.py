@@ -5,7 +5,7 @@ from rest_framework.test import APIClient
 
 from accounts.models import UserProfile
 
-from .marks import clean_mark_list, from_legacy, merge_mark_lists
+from .marks import MAX_LANG_LEN, clean_mark_list, from_legacy, merge_mark_lists
 from .models import ChapterMarks, Favorite, ReadingDay, ReadingProgress
 
 User = get_user_model()
@@ -264,6 +264,39 @@ class MarkHelpersTests(TestCase):
         self.assertEqual(len(big), 1)
         self.assertLessEqual(len(big[0]["id"]), MAX_ID_LEN)
         self.assertEqual(len(big[0]["note"]), MAX_NOTE_LEN)
+
+    def test_clean_keeps_the_edition_tag(self):
+        # A mark's `lang` says which edition's characters its offsets index.
+        # Dropping it (the field whitelist did) is what let a highlight made on
+        # the original text be painted across the modern text's words.
+        cleaned = clean_mark_list([{"id": "a", "p": 0, "s": 0, "e": 5, "lang": "en-modern"}])
+        self.assertEqual(cleaned[0]["lang"], "en-modern")
+        # Absent on an untagged (pre-editions) mark rather than invented.
+        self.assertNotIn("lang", clean_mark_list([{"id": "b", "p": 0, "s": 0, "e": 5}])[0])
+        # Junk and over-long values don't reach storage.
+        self.assertNotIn("lang", clean_mark_list([{"id": "c", "p": 0, "s": 0, "e": 5, "lang": 7}])[0])
+        long = clean_mark_list([{"id": "d", "p": 0, "s": 0, "e": 5, "lang": "x" * 40}])
+        self.assertEqual(len(long[0]["lang"]), MAX_LANG_LEN)
+
+    def test_clean_keeps_one_range_per_edition(self):
+        # Same offsets, different texts: two highlights, not one. The dedupe key
+        # used to be the offsets alone, which silently ate the second.
+        cleaned = clean_mark_list(
+            [
+                {"id": "a", "p": 0, "s": 0, "e": 5, "lang": "en"},
+                {"id": "b", "p": 0, "s": 0, "e": 5, "lang": "en-modern"},
+                {"id": "c", "p": 0, "s": 0, "e": 5, "lang": "en"},  # a real duplicate
+            ]
+        )
+        self.assertEqual([m["lang"] for m in cleaned], ["en", "en-modern"])
+
+    def test_merge_keeps_editions_apart(self):
+        a = [dict(mark(0, 0, 5), lang="en")]
+        b = [dict(mark(0, 0, 5), lang="en-modern")]
+        self.assertEqual(len(merge_mark_lists(a, b)), 2)
+        # An untagged mark still merges with an untagged one, so nothing already
+        # on the server is duplicated by the tag arriving.
+        self.assertEqual(len(merge_mark_lists([mark(0, 0, 5)], [mark(0, 0, 5)])), 1)
 
     def test_merge_holds_the_per_chapter_cap(self):
         from .marks import MAX_MARKS_PER_CHAPTER

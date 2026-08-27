@@ -31,6 +31,8 @@ _HL_COLORS = {"gold", "blue", "green", "rose"}
 MAX_MARKS_PER_CHAPTER = 500
 MAX_NOTE_LEN = 5000
 MAX_ID_LEN = 64
+# A mark's edition tag ("en", "es", "en-modern"). Matches ChapterMarks.language.
+MAX_LANG_LEN = 10
 
 
 def _int(value, default=-1) -> int:
@@ -56,7 +58,13 @@ def clean_mark_list(raw) -> list[dict]:
         e = _int(m.get("e"))
         if p < 0 or s < 0 or (e != -1 and e <= s):
             continue
-        key = (p, s, e)
+        lang = m.get("lang")
+        lang = lang[:MAX_LANG_LEN] if isinstance(lang, str) and lang else None
+        # The edition is part of a mark's identity, not decoration. A chapter's
+        # editions share one row (same kind/slug/order) but not one text, so two
+        # marks at identical offsets in different editions are two different
+        # highlights — deduping them on offsets alone silently ate one.
+        key = (p, s, e, lang)
         if key in seen:
             continue
         seen.add(key)
@@ -66,6 +74,8 @@ def clean_mark_list(raw) -> list[dict]:
             "s": s,
             "e": e,
         }
+        if lang:
+            mark["lang"] = lang
         note = m.get("note")
         if isinstance(note, str) and note.strip():
             mark["note"] = note.strip()[:MAX_NOTE_LEN]
@@ -94,11 +104,18 @@ def from_legacy(highlights, notes) -> list[dict]:
     return sorted(marks.values(), key=lambda m: m["p"])
 
 
+def _range_key(m: dict) -> tuple:
+    """A mark's identity: its offsets AND the edition they were measured in."""
+    return (m["p"], m["s"], m["e"], m.get("lang"))
+
+
 def merge_mark_lists(server: list[dict], incoming: list[dict]) -> list[dict]:
-    """Union two mark lists by (p, s, e); on a note collision the longer wins."""
-    by_range: dict[tuple, dict] = {(m["p"], m["s"], m["e"]): dict(m) for m in server}
+    """Union two mark lists by (p, s, e, lang); on a note collision the longer
+    wins. Untagged marks (written before editions were tagged) keep merging with
+    each other, so nothing already on the server is duplicated by this change."""
+    by_range: dict[tuple, dict] = {_range_key(m): dict(m) for m in server}
     for m in incoming:
-        key = (m["p"], m["s"], m["e"])
+        key = _range_key(m)
         existing = by_range.get(key)
         if not existing:
             by_range[key] = dict(m)

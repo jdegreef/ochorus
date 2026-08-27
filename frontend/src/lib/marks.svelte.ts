@@ -3,6 +3,7 @@ import { readJSON, writeJSON } from './persisted';
 import {
 	DEFAULT_HIGHLIGHT,
 	MARKS_KEY,
+	markInEdition,
 	migrateLegacySermonState,
 	workKey,
 	parseWorkKey,
@@ -76,10 +77,16 @@ export interface Segment {
 const rangeKey = (m: Segment) => `${m.p}:${m.s}:${m.e}`;
 
 class Marks {
-	/** Reactive marks of the currently open chapter, sorted by position. */
+	/**
+	 * Reactive marks of the currently open chapter AND edition, sorted by
+	 * position. Marks belonging to the chapter's other editions are deliberately
+	 * absent — their offsets index different text — but they are still in
+	 * storage, and `#persist` puts them back.
+	 */
 	list = $state<Mark[]>([]);
 	#slug = '';
 	#order = 0;
+	/** The edition being read: a content language, or `en-modern`. */
 	#language = 'en';
 	#kind: WorkKind = 'book';
 
@@ -92,8 +99,10 @@ class Marks {
 	}
 
 	#hydrate() {
-		const entry = readAll()[workKey(this.#kind, this.#slug, this.#order)];
-		this.list = [...(entry?.m ?? [])].sort((a, b) => a.p - b.p || a.s - b.s);
+		const stored = readAll()[workKey(this.#kind, this.#slug, this.#order)]?.m ?? [];
+		this.list = stored
+			.filter((m) => markInEdition(m, this.#language))
+			.sort((a, b) => a.p - b.p || a.s - b.s);
 	}
 
 	/** Re-read after the cache was replaced underneath us (e.g. sign-in sync). */
@@ -104,10 +113,19 @@ class Marks {
 	#persist() {
 		const store = readAll();
 		const key = workKey(this.#kind, this.#slug, this.#order);
-		if (this.list.length === 0) delete store[key];
-		else store[key] = { m: this.list };
+		// The chapter's OTHER editions share this entry and are not in `list`, so
+		// they have to be carried across every write — otherwise reading the
+		// modern text would silently erase the original's highlights, which is
+		// the same data loss by a quieter route.
+		const others = (store[key]?.m ?? []).filter((m) => !markInEdition(m, this.#language));
+		const next = [...others, ...this.list];
+		if (next.length === 0) delete store[key];
+		else store[key] = { m: next };
 		writeAll(store);
-		readingSync.pushMarks(this.#kind, this.#slug, this.#order, this.list, this.#language);
+		// The server row is per (kind, slug, order) and its PUT REPLACES the list,
+		// so it takes every edition's marks too — pushing `list` alone would drop
+		// the others from the account on the next highlight.
+		readingSync.pushMarks(this.#kind, this.#slug, this.#order, next, this.#language);
 	}
 
 	/** Add a group of range segments (one selection) as a single mark unit. */
@@ -121,7 +139,17 @@ class Marks {
 		const tint = color && color !== DEFAULT_HIGHLIGHT ? { color } : {};
 		const fresh = segments
 			.filter((seg) => !existing.has(rangeKey(seg)))
-			.map((seg, i) => ({ id, ...seg, ...tint, ...(i === 0 && note ? { note } : {}) }));
+			// Tagged with the edition its offsets were measured against. Written in
+			// full even when it matches the base edition: `color` can default to
+			// absence because a wrong colour is cosmetic, but an untagged mark is
+			// ambiguous forever, and this is the reader's own annotation.
+			.map((seg, i) => ({
+				id,
+				...seg,
+				lang: this.#language,
+				...tint,
+				...(i === 0 && note ? { note } : {})
+			}));
 		this.list = [...this.list, ...fresh].sort((a, b) => a.p - b.p || a.s - b.s);
 		this.#persist();
 		return id;
@@ -175,20 +203,34 @@ class Marks {
 		this.#persist();
 	}
 
-	/** Mark-group count for a chapter without loading it (for the TOC). */
-	countFor(slug: string, order: number, kind: WorkKind = 'book'): number {
+	/**
+	 * Mark-group count for a chapter without loading it (for the TOC).
+	 *
+	 * Counts one edition, because the TOC shows one: the drawer on the modern
+	 * text reporting the original's highlight counts would promise annotations
+	 * that chapter isn't going to show.
+	 */
+	countFor(slug: string, order: number, kind: WorkKind = 'book', edition = 'en'): number {
 		const e = readAll()[workKey(kind, slug, order)];
 		if (!e?.m) return 0;
-		return new Set(e.m.map((m) => m.id)).size;
+		return new Set(e.m.filter((m) => markInEdition(m, edition)).map((m) => m.id)).size;
 	}
 
-	/** Every work's marks across books and sermons, for the notebook. */
-	all(): { kind: WorkKind; slug: string; order: number; marks: Mark[] }[] {
+	/**
+	 * Every work's marks across books and sermons, for the notebook.
+	 *
+	 * One edition again, and for a sharper reason: the notebook re-fetches each
+	 * chapter's text to quote what was highlighted, in ONE language. Marks from
+	 * another edition would be quoted against text they don't index — the same
+	 * mis-rendering, moved to a different page.
+	 */
+	all(edition = 'en'): { kind: WorkKind; slug: string; order: number; marks: Mark[] }[] {
 		const out: { kind: WorkKind; slug: string; order: number; marks: Mark[] }[] = [];
 		for (const [key, entry] of Object.entries(readAll())) {
 			const parsed = parseWorkKey(key);
-			if (parsed && entry.m?.length) {
-				out.push({ ...parsed, marks: entry.m });
+			const mine = entry.m?.filter((m) => markInEdition(m, edition)) ?? [];
+			if (parsed && mine.length) {
+				out.push({ ...parsed, marks: mine });
 			}
 		}
 		return out;
