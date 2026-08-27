@@ -133,7 +133,18 @@ class OfflineBooks {
 			for (const req of await cache.keys()) {
 				if (new URL(req.url).pathname.includes(marker)) await cache.delete(req);
 			}
-			if (meta?.coverUrl) await cache.delete(meta.coverUrl);
+			// The VARIANTS too, not just the original. `download()` caches all
+			// three (BookCover's srcset only ever asks for a variant), so deleting
+			// `coverUrl` alone left the bytes a render actually uses orphaned in
+			// `ochorus-offline` — the durable cache `activate` deliberately never
+			// clears. "Remove download" is the storage-reclaim button; it has to
+			// reclaim what the download took, or every download/remove cycle
+			// leaks on exactly the storage-pressured phones this is for.
+			if (meta?.coverUrl) {
+				for (const url of [meta.coverUrl, ...coverVariants(meta.coverUrl)]) {
+					await cache.delete(url);
+				}
+			}
 		} catch {
 			/* cache unavailable — still untrack below */
 		}

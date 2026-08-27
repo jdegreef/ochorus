@@ -135,3 +135,39 @@ describe('every reader-facing switcher goes through choose()', () => {
 		expect(offenders).toEqual([]);
 	});
 });
+
+describe('the language switch survives blocked storage', () => {
+	/**
+	 * `chosen()` and `choose()` touched `localStorage` bare. Where storage access
+	 * THROWS — Safari/Chrome with "block all cookies", some embedded webviews —
+	 * `setItem` threw before `set()` ran, so the footer's language strip was
+	 * simply dead: no navigation, no error the reader could see. Every other
+	 * store in the app degrades instead (persisted.ts); this one took the caller
+	 * down with it, in exactly the privacy-conscious configurations where the
+	 * rest of the app is careful.
+	 */
+	const blocked = () => {
+		const boom = () => {
+			throw new DOMException('The operation is insecure.', 'SecurityError');
+		};
+		vi.stubGlobal('localStorage', { getItem: boom, setItem: boom, removeItem: boom });
+	};
+
+	beforeEach(() => {
+		setLocale.mockClear();
+	});
+
+	it('still performs the switch when the preference cannot be written', () => {
+		blocked();
+		expect(() => lang.choose('es')).not.toThrow();
+		expect(setLocale).toHaveBeenCalledWith('es');
+		vi.unstubAllGlobals();
+	});
+
+	it('reports no remembered choice rather than throwing', () => {
+		blocked();
+		expect(() => lang.chosen()).not.toThrow();
+		expect(lang.chosen()).toBeNull();
+		vi.unstubAllGlobals();
+	});
+});

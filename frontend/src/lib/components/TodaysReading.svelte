@@ -35,8 +35,18 @@
 				.map(({ slug }) => plans.find((p) => p.slug === slug))
 				.filter((p): p is NonNullable<typeof p> => !!p)
 				.filter((p) => planProgress.nextDay(p.slug, p.day_count) !== null);
-			const pick = started[0] ?? plans[0];
-			const day = planProgress.nextDay(pick.slug, pick.day_count) ?? 1;
+			// Fall back to a plan that still HAS a day left, not merely the first
+			// in the catalog. `nextDay` returns null for a completed plan and the
+			// `?? 1` below turned that into day 1 — so finishing the catalog's
+			// first plan was rewarded with "Continue — Day 1 of 30", presenting a
+			// 100%-complete plan as in progress at the beginning, right after the
+			// reader's most satisfying moment.
+			const unfinished = plans.filter(
+				(p) => planProgress.nextDay(p.slug, p.day_count) !== null
+			);
+			const pick = started[0] ?? unfinished[0] ?? plans[0];
+			const next = planProgress.nextDay(pick.slug, pick.day_count);
+			const day = next ?? 1;
 
 			const detail = await getPlan(pick.slug, getLang());
 			const entry = detail.days.find((d) => d.day === day) ?? detail.days[0];
@@ -44,7 +54,9 @@
 			today = {
 				plan: pick,
 				day: entry.day,
-				isStarted: planProgress.isStarted(pick.slug),
+				// A finished plan is offered as a fresh START at day 1, never as a
+				// continuation of something already complete.
+				isStarted: next !== null && planProgress.isStarted(pick.slug),
 				chapterTitle: entry.chapter_title,
 				bookTitle: entry.book_title,
 				href: `/books/${entry.book_slug}/${entry.chapter_order}?plan=${pick.slug}&day=${entry.day}`
