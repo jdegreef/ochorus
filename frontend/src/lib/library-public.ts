@@ -52,6 +52,12 @@ export interface BookSummary {
 	/** Published topics this book belongs to (for the shelf's topic filter). */
 	topics: TopicChip[];
 	created_at: string;
+	/**
+	 * Last modification (ISO) — the sitemap's `<lastmod>`. Optional because the
+	 * API and the reader deploy as separate services: an API running behind this
+	 * build omits it, and the sitemap then omits the tag rather than guessing.
+	 */
+	updated_at?: string;
 }
 
 export interface ChapterToc {
@@ -257,6 +263,8 @@ export interface SermonSummary {
 	author: Author;
 	/** When the sermon was added to Ochorus (ISO) — powers the "recent" feed. */
 	created_at: string;
+	/** Last modification (ISO) — the sitemap's `<lastmod>`; see BookSummary. */
+	updated_at?: string;
 }
 
 /** Adjacent sermon in the author's corpus, for prev/next navigation. */
