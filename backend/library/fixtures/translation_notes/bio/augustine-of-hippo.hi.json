@@ -1,0 +1,29 @@
+{
+ "kind": "bio",
+ "slug": "augustine-of-hippo",
+ "language": "hi",
+ "job_issue": 1097,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Romans 13:13b-14",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Romans 14:1a",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 23
+  }
+ ],
+ "note": [
+  "The garden scene turns on a verbatim scripture quotation — the passage Augustine's eye fell on in Romans 13 — so it is the one place in these five bios where getting the Bible text exactly right decides whether the paragraph works. Both it and the line Alypius applied to himself (Romans 14:1) are IRV byte-for-byte.",
+  "«Tolle, lege» is left in Latin, as the English leaves it, with the Hindi rendering following it in the same sentence — the child's chant is a Latin artefact of the story, not a phrase to translate away.",
+  "Everything else quoted is Augustine's own (the Confessions, Monica's words, Possidius's record), so there is nothing further to mine.",
+  "Take Root API is egress-blocked from this container (curl to api.takeroot.bible returns 000). The IRV text was fetched instead from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/hin_irv/usx — note the collection serves USX, not USFM), all 66 books / 31,104 verses, and every span marked mined was lifted from it with a script rather than typed.",
+  "The eight already-shipped Hindi bios MIRROR their English source's quotation marks — 8 of 8 pairs, including frederick-brotherton-meyer, whose English uses 18 straight quotes and whose Hindi carries exactly 18. Measured as PAIRS rather than as a column, which is what stops meyer looking like an outlier. This bio mirrors its own source accordingly.",
+  "Reconciled against the shipped Hindi corpus before shipping: conversion is मन-फिराव, the term the eight shipped bios settled on (9 uses, and zero of the मन-परिवर्तन this run first wrote). Names follow the shipped forms — डी. एल. मूडी, and हडसन टेलर as the Hindi deeper-life-in-christ plan card (job #696) fixed it."
+ ]
+}

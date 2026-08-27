@@ -1,0 +1,23 @@
+{
+ "kind": "bio",
+ "slug": "hudson-taylor",
+ "language": "hi",
+ "job_issue": 1094,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "John 19:30b",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 1
+  }
+ ],
+ "note": [
+  "The bio quotes exactly one verse: the cry from the cross, «पूरा हुआ» (John 19:30), which is the hinge of Taylor's conversion — the tract's phrase 'the finished work of Christ'. Taken byte-for-byte from the IRV. The Hindi keeps the wordplay the English has, because पूरा हुआ (the verse) and पूरा हो चुका (the tract's phrase) share a root.",
+  "Everything else in quotation marks is Taylor's own words or his mother's — the parents' prayer, the Brighton flyleaf note, 'I cannot read; I cannot think; I cannot even pray, but I can trust' — not scripture, so there is nothing to mine for them.",
+  "One unquoted allusion, deliberately NOT recorded as a reference: 'the branch has only to abide in the vine' (John 15:5). The English neither quotes nor cites it, and recording pointers that carry no wording to check only inflates the review queue.",
+  "Take Root API is egress-blocked from this container (curl to api.takeroot.bible returns 000). The IRV text was fetched instead from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/hin_irv/usx — note the collection serves USX, not USFM), all 66 books / 31,104 verses, and every span marked mined was lifted from it with a script rather than typed.",
+  "The eight already-shipped Hindi bios MIRROR their English source's quotation marks — 8 of 8 pairs, including frederick-brotherton-meyer, whose English uses 18 straight quotes and whose Hindi carries exactly 18. Measured as PAIRS rather than as a column, which is what stops meyer looking like an outlier. This bio mirrors its own source accordingly.",
+  "Reconciled against the shipped Hindi corpus before shipping: conversion is मन-फिराव, the term the eight shipped bios settled on (9 uses, and zero of the मन-परिवर्तन this run first wrote). Names follow the shipped forms — डी. एल. मूडी, and हडसन टेलर as the Hindi deeper-life-in-christ plan card (job #696) fixed it."
+ ]
+}

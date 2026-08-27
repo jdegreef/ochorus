@@ -1,3 +1,8 @@
+// prerender refresh 2026-08-27: hi bios x5 — hudson-taylor, r-a-torrey,
+// richard-baxter, augustine-of-hippo, charles-finney (jobs #1094/#1095/#1096/
+// #1097/#1098). hi seeds status=draft, so these pages build but are not
+// advertised in the sitemap; the touch is still worth making, so launching the
+// language from the admin is a switch rather than a switch plus a deploy.
 // prerender refresh 2026-08-25: uk bios x10 — gareth-evans, john-bunyan, r-a-torrey,
 // catherine-booth, hannah-whitall-smith, hudson-taylor, frederick-brotherton-meyer,
 // richard-baxter, thomas-watson, amy-carmichael (jobs #780/#781/#782/#785/#805/#806/

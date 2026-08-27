@@ -1,0 +1,16 @@
+{
+ "kind": "bio",
+ "slug": "r-a-torrey",
+ "language": "hi",
+ "job_issue": 1095,
+ "pull_request": null,
+ "references": [],
+ "note": [
+  "No scripture is quoted or cited anywhere in this bio: every quotation is Torrey's own words, Moody's, or Will Houghton's. pythonbible finds zero references in the text, and reading it confirms that is right rather than a detector failure.",
+  "One deliberate deviation from the source's digits, which shows up as a benign warning in the digit check: the English gives the London campaign's aggregate attendance as '1,114,000'. Hindi groups large numbers by lakh, not by thousand, so writing 11,14,000 would have changed the digit groups anyway; it is spelled out as ग्यारह लाख चौदह हज़ार, which is how the shipped Hindi corpus handles large figures (dwight-l-moody.hi writes दस करोड़).",
+  "«Moody Bible Institute» is kept in Latin script, following dwight-l-moody.hi, which does the same for the same institution.",
+  "Take Root API is egress-blocked from this container (curl to api.takeroot.bible returns 000). The IRV text was fetched instead from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/hin_irv/usx — note the collection serves USX, not USFM), all 66 books / 31,104 verses, and every span marked mined was lifted from it with a script rather than typed.",
+  "The eight already-shipped Hindi bios MIRROR their English source's quotation marks — 8 of 8 pairs, including frederick-brotherton-meyer, whose English uses 18 straight quotes and whose Hindi carries exactly 18. Measured as PAIRS rather than as a column, which is what stops meyer looking like an outlier. This bio mirrors its own source accordingly.",
+  "Reconciled against the shipped Hindi corpus before shipping: conversion is मन-फिराव, the term the eight shipped bios settled on (9 uses, and zero of the मन-परिवर्तन this run first wrote). Names follow the shipped forms — डी. एल. मूडी, and हडसन टेलर as the Hindi deeper-life-in-christ plan card (job #696) fixed it."
+ ]
+}
