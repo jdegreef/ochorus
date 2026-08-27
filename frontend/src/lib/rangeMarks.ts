@@ -124,7 +124,21 @@ export function renderMarks(
 	}
 	// One delegated listener; replaced on each render via property assignment.
 	container.onclick = (ev: MouseEvent) => {
-		const el = (ev.target as HTMLElement).closest?.('mark.range-mark') as HTMLElement | null;
+		const target = ev.target as HTMLElement;
+		// A scripture reference inside a highlight belongs to the REFERENCE.
+		//
+		// `wrapRange` splits text nodes in place, so a mark over "John 3:16"
+		// nests inside the anchor rather than around it — and this handler runs
+		// first (the container is inside the article that owns the scripture
+		// handler) without stopping propagation. Both fired: the note editor
+		// opened on top of the scripture popover from one tap, and a verse
+		// reference stopped being tappable at all once highlighted.
+		//
+		// The reference wins because it is the smaller, deliberately tappable
+		// target, and the rest of the highlight is still there to tap for the
+		// note editor.
+		if (target.closest?.('a.scripture-ref')) return;
+		const el = target.closest?.('mark.range-mark') as HTMLElement | null;
 		if (el?.dataset.markId) {
 			ev.preventDefault();
 			onMarkClick(el.dataset.markId, ev);

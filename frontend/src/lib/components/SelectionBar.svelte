@@ -27,7 +27,8 @@
 		onHighlight,
 		onNote,
 		highlightColor,
-		onDefine
+		onDefine,
+		onDefineClose
 	}: {
 		container: HTMLElement | undefined;
 		cite: Cite;
@@ -39,6 +40,8 @@
 		/** Current highlight colour of the selection, or null if not highlighted. */
 		highlightColor?: (segments: Segment[]) => string | null;
 		onDefine?: (word: string, top: number, left: number) => void;
+		/** Retire a definition opened for a word the selection has since outgrown. */
+		onDefineClose?: () => void;
 	} = $props();
 	const t = i18n.t;
 
@@ -52,12 +55,33 @@
 	let copied = $state(false);
 	let cardBusy = $state(false);
 
+	/**
+	 * A pointer-driven selection in progress. Its intermediate states are not
+	 * what the reader means yet, so the define branch waits for the gesture.
+	 */
+	let dragging = false;
+	let defineTimer: ReturnType<typeof setTimeout>;
+
+	/**
+	 * How long a selection with no pointer gesture behind it must hold before a
+	 * definition is looked up. Keyboard selection (shift+arrow) has no pointerup
+	 * to settle on and would otherwise fire on every two-character state it
+	 * passes through.
+	 */
+	const DEFINE_SETTLE_MS = 250;
+
 	function attribution(): string {
 		const where = cite.chapter ? `${cite.book}, ${cite.chapter}` : cite.book;
 		return `“${selectedText}”\n— ${cite.author}, ${where}\n${cite.url}`;
 	}
 
-	function update() {
+	/**
+	 * `immediate` marks a gesture that has definitively ENDED (a pointerup), so
+	 * a double-click or long-press still opens its definition at once. Every
+	 * other caller debounces, which is what covers keyboard selection.
+	 */
+	function update(immediate = false) {
+		clearTimeout(defineTimer);
 		const sel = window.getSelection();
 		const text = sel?.toString().trim() ?? '';
 		const inContainer =
@@ -77,11 +101,30 @@
 		// action bar below, which is the part that must work in every language.
 		// Routing it here instead would strip it to nothing and show neither.
 		if (inContainer && onDefine && /^[\p{Script=Latin}\p{M}’'-]{2,}$/u.test(text)) {
-			const rect = sel.getRangeAt(0).getBoundingClientRect();
-			onDefine(text, rect.bottom + window.scrollY, rect.left + window.scrollX + rect.width / 2);
 			visible = false;
+			// DEFERRED, never immediate. `selectionchange` fires on every
+			// intermediate state of a drag, so starting a drag mid-word — inside
+			// "**Go**spel" — used to open the dictionary on "Go" and send a lookup
+			// for it, mid-gesture, on nearly every selection that begins mid-word.
+			// The popover then sat there next to the action bar until the next
+			// mousedown, for a word the reader never chose.
+			if (dragging) return;
+			const rect = sel.getRangeAt(0).getBoundingClientRect();
+			const word = text;
+			const top = rect.bottom + window.scrollY;
+			const left = rect.left + window.scrollX + rect.width / 2;
+			if (immediate) onDefine(word, top, left);
+			else defineTimer = setTimeout(() => onDefine(word, top, left), DEFINE_SETTLE_MS);
 			return;
 		}
+
+		// Past one word now, so retire a definition opened for a word this
+		// selection has grown beyond — `update()` used to fall straight through
+		// to the action bar and leave it open alongside.
+		//
+		// Guarded on there BEING a selection: an empty one is a click, possibly
+		// into the popover itself, and must not dismiss it.
+		if (inContainer && text.length >= 2) onDefineClose?.();
 
 		// Two characters, not four: the old floor silently refused to highlight or
 		// share a short quote, and "God", "Amen" and most Arabic words are under
@@ -145,12 +188,25 @@
 		}
 	}
 
+	/** The pointer gesture is over: re-evaluate, which is what actually opens a
+	 *  definition for a deliberate double-click or long-press. */
+	function settle() {
+		if (!dragging) return;
+		dragging = false;
+		update(true);
+	}
+
 	const activeColor = $derived(
 		highlightColor && segments.length > 0 ? highlightColor(segments) : null
 	);
 </script>
 
-<svelte:document onselectionchange={update} />
+<svelte:document
+	onselectionchange={() => update()}
+	onpointerdown={() => (dragging = true)}
+	onpointerup={settle}
+	onpointercancel={settle}
+/>
 
 {#if visible}
 	<!--
