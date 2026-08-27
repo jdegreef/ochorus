@@ -85,15 +85,39 @@ class Lang {
 		return true;
 	}
 
-	/** The language the reader explicitly chose on this device, if any. */
+	/**
+	 * The language the reader explicitly chose on this device, if any.
+	 *
+	 * Guarded, like every other store in the app (see persisted.ts): where
+	 * storage access THROWS — Safari/Chrome with "block all cookies", some
+	 * embedded webviews — a bare `getItem` took the caller down with it, and
+	 * the auth profile's locale pull is one such caller. Not routed through
+	 * `persisted.ts` only because these helpers JSON-encode, and this key has
+	 * always held a bare string that a deployed build already reads.
+	 */
 	chosen(): string | null {
-		return browser ? localStorage.getItem(CHOSEN_KEY) : null;
+		if (!browser) return null;
+		try {
+			return localStorage.getItem(CHOSEN_KEY);
+		} catch {
+			return null; // storage blocked — no remembered choice, not a crash
+		}
 	}
 
 	/** A reader-initiated switch: record the choice so it survives the reload and
 	 *  outranks a synced profile locale, then navigate. */
 	choose(code: string): boolean {
-		if (browser) localStorage.setItem(CHOSEN_KEY, code);
+		if (browser) {
+			try {
+				localStorage.setItem(CHOSEN_KEY, code);
+			} catch {
+				// Storage blocked or full. The switch itself must still happen —
+				// an uncaught SecurityError here threw BEFORE `set()` ran, so the
+				// footer's language strip was simply dead for the readers most
+				// likely to be browsing privately. The preference just won't
+				// survive the reload.
+			}
+		}
 		return this.set(code);
 	}
 
