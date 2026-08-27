@@ -1,4 +1,9 @@
-// prerender refresh 2026-08-21: divine-healing.ar (job #764, PR #1010)
+// prerender refresh 2026-08-27: he-holds-my-tomorrows.uk (job #788)
+// ONLY this loader. The book is a source of the curated faith-in-the-fire
+// plan, but that plan also needs the-god-of-all-comfort, which has no uk
+// edition — so seed_plans creates no uk plan row and plans/+page.ts has
+// nothing new to bake. Whoever ships that second book DOES owe the plans
+// touch, because it completes the set.
 import { listBooks } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
