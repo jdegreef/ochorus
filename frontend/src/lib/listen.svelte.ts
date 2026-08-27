@@ -127,6 +127,9 @@ class Listen {
 		if (!this.supported) return;
 		this.#utterance = null; // signal the onend handler this was deliberate
 		speechSynthesis.cancel();
+		// Same reason as #speakFrom: leave the engine unpaused, or a later
+		// start() on another chapter queues into a paused engine and is silent.
+		speechSynthesis.resume();
 		this.status = 'idle';
 		this.current = -1;
 		this.#mediaState();
@@ -183,6 +186,13 @@ class Listen {
 	#speakFrom(index: number) {
 		this.#utterance = null;
 		speechSynthesis.cancel();
+		// `cancel()` does NOT clear the engine's global `paused` flag, so an
+		// utterance queued while paused never starts — and `#speakFrom` sets
+		// status='playing' regardless, leaving the bar showing the pause icon
+		// and the follow-along highlight moving over silence, with no control
+		// short of a reload to recover. Skip and speed/voice changes are all
+		// enabled while paused and all route through here.
+		speechSynthesis.resume();
 
 		// Skip empty/whitespace-only blocks (images, rules) without recursing.
 		while (index < this.#paragraphs.length && !this.#paragraphs[index].trim()) index++;
