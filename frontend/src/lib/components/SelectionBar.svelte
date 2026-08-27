@@ -153,12 +153,23 @@
 <svelte:document onselectionchange={update} />
 
 {#if visible}
+	<!--
+	  Pressing a button must not collapse the selection. Without this, mousedown
+	  clears the range, the queued `selectionchange` runs `update()`, `visible`
+	  goes false, and the button unmounts BEFORE `click` fires — so Copy, Share
+	  and the swatches silently did nothing, intermittently, per browser timing.
+	  Suppressing the default mousedown behaviour keeps the selection (and the
+	  bar) alive long enough for the click to land. Keyboard focus is unaffected:
+	  Tab doesn't go through mousedown.
+	-->
 	<div
 		class="selbar"
 		class:below
 		style="top: {top}px; left: {left}px"
 		role="toolbar"
 		aria-label={t('a11y.selectionActions')}
+		tabindex="-1"
+		onmousedown={(e) => e.preventDefault()}
 	>
 		<button class="selbar-btn" onclick={copy}>
 			{copied ? '✓ ' : ''}{t('reader.copyQuote')}

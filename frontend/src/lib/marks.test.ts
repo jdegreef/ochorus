@@ -80,3 +80,98 @@ describe('note lifecycle on the unified store', () => {
 		expect(marks.getNote(id)).toBe('');
 	});
 });
+
+describe('editions share a chapter but not a text (#1085)', () => {
+	// The Modern English edition of a book has the same slug and the same
+	// chapter order as the original, and different words. `{p, s, e}` offsets
+	// index one of those texts, so a mark has to say which.
+
+	it('does not show the original edition’s highlight on the modern text', () => {
+		marks.load('humility', 3, 'en', 'book');
+		marks.add([{ p: 0, s: 10, e: 20 }]);
+		expect(marks.list).toHaveLength(1);
+
+		marks.load('humility', 3, 'en-modern', 'book');
+		expect(marks.list).toHaveLength(0);
+	});
+
+	it('does not let a removal in one edition delete the other’s mark', () => {
+		marks.load('humility', 3, 'en', 'book');
+		const original = marks.add([{ p: 0, s: 10, e: 20 }]);
+
+		marks.load('humility', 3, 'en-modern', 'book');
+		const modern = marks.add([{ p: 0, s: 10, e: 20 }]); // same offsets, other text
+		marks.remove(modern);
+		expect(marks.list).toHaveLength(0);
+
+		marks.load('humility', 3, 'en', 'book');
+		expect(marks.list.map((m) => m.id)).toEqual([original]);
+	});
+
+	it('keeps both editions in storage through a write from either', () => {
+		marks.load('humility', 3, 'en', 'book');
+		marks.add([{ p: 1, s: 0, e: 4 }]);
+		marks.load('humility', 3, 'en-modern', 'book');
+		marks.add([{ p: 2, s: 0, e: 4 }]);
+
+		// One entry, both editions, each tagged with the text it was measured on.
+		const stored = JSON.parse(localStorage.getItem(MARKS_KEY)!)['humility:3'].m;
+		expect(stored.map((m: { lang: string }) => m.lang).sort()).toEqual(['en', 'en-modern']);
+	});
+
+	it('separates the same book’s languages too', () => {
+		marks.load('humility', 1, 'en', 'book');
+		marks.add([{ p: 0, s: 0, e: 8 }]);
+		marks.load('humility', 1, 'es', 'book');
+		expect(marks.list).toHaveLength(0);
+	});
+
+	it('keeps untagged legacy marks in the base edition, out of the modern one', () => {
+		// Everything written before editions were tagged was made against the
+		// reader's plain content language. Hiding those would be a worse bug than
+		// the one being fixed, so the base edition still shows them.
+		localStorage.setItem(
+			MARKS_KEY,
+			JSON.stringify({ 'humility:2': { m: [{ id: 'old', p: 0, s: 0, e: 5 }] } })
+		);
+
+		marks.load('humility', 2, 'en', 'book');
+		expect(marks.list.map((m) => m.id)).toEqual(['old']);
+
+		marks.load('humility', 2, 'en-modern', 'book');
+		expect(marks.list).toHaveLength(0);
+	});
+
+	it('survives a legacy mark being carried across a modern-edition write', () => {
+		localStorage.setItem(
+			MARKS_KEY,
+			JSON.stringify({ 'humility:2': { m: [{ id: 'old', p: 0, s: 0, e: 5 }] } })
+		);
+		marks.load('humility', 2, 'en-modern', 'book');
+		marks.add([{ p: 9, s: 0, e: 3 }]);
+
+		marks.load('humility', 2, 'en', 'book');
+		expect(marks.list.map((m) => m.id)).toEqual(['old']);
+	});
+
+	it('counts marks per edition for the TOC', () => {
+		marks.load('humility', 4, 'en', 'book');
+		marks.add([{ p: 0, s: 0, e: 2 }]);
+		marks.add([{ p: 1, s: 0, e: 2 }]);
+		marks.load('humility', 4, 'en-modern', 'book');
+		marks.add([{ p: 5, s: 0, e: 2 }]);
+
+		expect(marks.countFor('humility', 4, 'book', 'en')).toBe(2);
+		expect(marks.countFor('humility', 4, 'book', 'en-modern')).toBe(1);
+	});
+
+	it('gives the notebook only the edition whose text it fetches', () => {
+		marks.load('humility', 6, 'es', 'book');
+		marks.add([{ p: 0, s: 0, e: 2 }]);
+		marks.load('humility', 6, 'en', 'book');
+		marks.add([{ p: 3, s: 0, e: 2 }]);
+
+		expect(marks.all('es').flatMap((w) => w.marks).map((m) => m.p)).toEqual([0]);
+		expect(marks.all('en').flatMap((w) => w.marks).map((m) => m.p)).toEqual([3]);
+	});
+});
