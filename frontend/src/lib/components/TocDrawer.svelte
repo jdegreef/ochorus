@@ -36,6 +36,11 @@
 	// TOC titles) so tapping a chapter in the drawer stays in the same edition.
 	const suffix = $derived(edition === 'modern' ? '?edition=modern' : '');
 	const contentLang = $derived(editionLang(edition));
+	// What to COUNT highlights against: the edition the API actually returned,
+	// which is not always the one asked for (`getBook` falls back to English for
+	// a book with no copy in this language). Counting the requested edition
+	// would show a zero beside a chapter whose highlights are right there.
+	const shownLang = $derived(book?.language ?? contentLang);
 
 	$effect(() => {
 		if (!open) return;
@@ -142,7 +147,7 @@
 			{:else}
 				<ol>
 					{#each book.chapters as ch (ch.order)}
-						{@const markCount = marks.countFor(slug, ch.order, 'book', contentLang)}
+						{@const markCount = marks.countFor(slug, ch.order, 'book', shownLang)}
 						<li>
 							<a
 								href={localizeHref(`/books/${slug}/${ch.order}${suffix}`)}

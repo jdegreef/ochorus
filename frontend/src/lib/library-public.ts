@@ -29,8 +29,14 @@ export type SourceType = 'public_domain' | 'ai_reviewed' | 'ai_unreviewed';
 export const isTranslated = (sourceType: SourceType): boolean =>
 	sourceType !== 'public_domain';
 
-/** Content-language code of the Modern English edition (not a UI locale). */
-export const MODERN_EDITION = 'en-modern';
+/**
+ * Content-language code of the Modern English edition (not a UI locale).
+ * Defined in `reading-schema` (which imports nothing, so the storage contract
+ * can hold it) and re-exported here, where the fetch helpers want it — one
+ * definition, so a rename can't leave the fetched edition and the edition
+ * stamped on a highlight disagreeing with no type error to show for it.
+ */
+export { MODERN_EDITION } from './reading-schema';
 
 export interface BookSummary {
 	slug: string;

@@ -210,12 +210,19 @@ export const baseEdition = (edition: string): string =>
 /**
  * Does this mark belong to `edition`?
  *
- * An untagged mark counts as the BASE edition of whatever is being read. Every
- * such mark predates tagging, and nothing could then create one against the
- * Modern English text under a tag of its own — so untagged marks stay visible
- * in the plain-language edition (losing them would be far worse than the bug)
- * and never bleed into a `-modern` one. No key migration, no rewrite of the
- * reader's own data: marks are separated within the entry they already share.
+ * An untagged mark counts as the BASE edition of whatever is being read, so
+ * untagged marks stay visible in the plain-language edition and never bleed
+ * into a `-modern` one. No key migration, no rewrite of the reader's own data:
+ * marks are separated within the entry they already share.
+ *
+ * That rule is a guess for one cohort, and knowingly so. The `?edition=modern`
+ * reader shipped before marks were tagged, so a highlight made on the modern
+ * text in that window is untagged too, and this treats it as the original's —
+ * it shows there, mispositioned, and not on the modern text where it was made.
+ * Nothing recorded which text those offsets came from, so no rule can place
+ * them correctly; this one is chosen because the overwhelming majority of
+ * untagged marks predate the modern edition entirely. Marks made from here on
+ * carry their edition and are unaffected.
  */
 export const markInEdition = (m: Mark, edition: string): boolean =>
 	(m.lang ?? baseEdition(edition)) === edition;

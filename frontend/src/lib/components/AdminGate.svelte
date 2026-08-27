@@ -14,6 +14,7 @@
 	import type { Snippet } from 'svelte';
 	import { page } from '$app/stores';
 	import { localizeHref } from '$lib/paraglide/runtime';
+	import { loginHref as buildLoginHref } from '$lib/loginHref';
 	import { auth } from '$lib/auth.svelte';
 	import type { AdminResource } from '$lib/adminResource.svelte';
 
@@ -39,7 +40,7 @@
 	// Come back here after signing in, not to the dashboard: the copied-from
 	// original hard-coded /admin, which dropped you a click away from wherever
 	// you were actually headed.
-	const loginHref = $derived(`/login?redirect=${encodeURIComponent($page.url.pathname)}`);
+	const loginHref = $derived(buildLoginHref($page.url.pathname, $page.url.search));
 </script>
 
 {#if resource.loading && !resource.data}

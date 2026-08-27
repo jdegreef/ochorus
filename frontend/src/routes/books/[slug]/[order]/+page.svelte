@@ -692,10 +692,13 @@
 		kind: () => 'book',
 		slug: () => slug,
 		order: () => chapter.order,
-		// The EDITION, not just the UI language — the same string the chapter
-		// fetch above uses. Marks index this text's characters, and the modern
-		// edition is different text under the same slug and order.
-		language: () => editionLang(edition),
+		// The RESOLVED edition (`data.language`), not the requested one. Marks
+		// index the characters of the text actually on the page, and +page.ts
+		// falls back to English on a 404 — so a book with no Arabic copy read
+		// under /ar shows English prose, and tagging those marks `ar` would
+		// mispaint them the day an Arabic translation ships. Same for
+		// ?edition=modern on a book that has no modern edition.
+		language: () => language,
 		body: () => body,
 		topIndex: topVisibleIndex,
 		listenTitle: () => chapter.title,
