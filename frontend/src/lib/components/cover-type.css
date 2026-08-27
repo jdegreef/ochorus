@@ -81,16 +81,84 @@
    how a guarantee nobody checks decays: not all at once, one pale painting at a
    time. The trough is now behind the title (which is large text and asks 3:1)
    and the scrim closes up again before the subtitle. */
+/* THE SCRIM, AND WHERE IT IS NOT.
+ *
+ * A painting carries white type, so something has to darken it — but this used
+ * to darken ALL of it: a flat wash toward the house near-black, and then a ramp
+ * from 36 to 74 per cent black over every pixel. Measured across the 38
+ * paintings the library ships, a reader saw them at 38.7 per cent of their own
+ * brightness, and at the foot as little as 21. That is why a translated cover
+ * looked dark beside its English one: the English cover of those works is a
+ * hand-made raster and skips all of this, while every other language is
+ * composited through it.
+ *
+ * The type does not cover the plate, so the scrim need not either. Type sits in
+ * three places — the byline near the top, the title block in the middle, the
+ * mark at the foot — and this is a curve with a peak at each and air between.
+ * The same paintings now read at 53.4 per cent, and every one still clears AA
+ * where type falls: measured through THIS rule in Chromium, per pixel, worst
+ * byline 6.13:1 against a 4.5 bar and worst title 3.34:1 against 3.0.
+ *
+ * BANDS THAT OVERLAP, and a floor that is never zero. Three separate peaks with
+ * clear air between them read as STRIPES across a smooth sky — visibly worse
+ * than the even wash they replace. Wide cosine shoulders and a floor make one
+ * continuous curve instead, with no edge anywhere on the photograph.
+ *
+ * Sampled every 2.5 per cent because CSS has no cosine. The deviation from the
+ * true curve is under 0.02 alpha; a coarser 5 per cent sampling missed by
+ * 0.048, which is enough to cost a painting its contrast.
+ *
+ * ONE STRENGTH FOR EVERY PAINTING, which is the compromise here and worth
+ * naming. What each one needs spans 0.60x to 1.10x — `godliness` clears AA at
+ * 11.95:1 under a light scrim and carries the same weight as the brightest
+ * artwork in the library. Tuning per painting measured at 67.7 per cent
+ * retained rather than 53.4, and needs a per-work table the frontend can read:
+ * worth doing, as its own change. */
 .cover-plate.over-art {
-	background:
-		linear-gradient(
-			180deg,
-			rgb(0 0 0 / 0.64) 0%,
-			rgb(0 0 0 / 0.36) 30%,
-			rgb(0 0 0 / 0.5) 60%,
-			rgb(0 0 0 / 0.74) 100%
-		),
-		rgb(26 20 16 / 0.26);
+	background: linear-gradient(
+		180deg,
+			rgb(0 0 0 / 0.26) 0%,
+			rgb(0 0 0 / 0.36) 2.5%,
+			rgb(0 0 0 / 0.47) 5%,
+			rgb(0 0 0 / 0.56) 7.5%,
+			rgb(0 0 0 / 0.63) 10%,
+			rgb(0 0 0 / 0.66) 12.5%,
+			rgb(0 0 0 / 0.65) 15%,
+			rgb(0 0 0 / 0.59) 17.5%,
+			rgb(0 0 0 / 0.51) 20%,
+			rgb(0 0 0 / 0.41) 22.5%,
+			rgb(0 0 0 / 0.30) 25%,
+			rgb(0 0 0 / 0.21) 27.5%,
+			rgb(0 0 0 / 0.27) 30%,
+			rgb(0 0 0 / 0.33) 32.5%,
+			rgb(0 0 0 / 0.40) 35%,
+			rgb(0 0 0 / 0.47) 37.5%,
+			rgb(0 0 0 / 0.53) 40%,
+			rgb(0 0 0 / 0.58) 42.5%,
+			rgb(0 0 0 / 0.62) 45%,
+			rgb(0 0 0 / 0.63) 47.5%,
+			rgb(0 0 0 / 0.64) 50%,
+			rgb(0 0 0 / 0.62) 52.5%,
+			rgb(0 0 0 / 0.59) 55%,
+			rgb(0 0 0 / 0.54) 57.5%,
+			rgb(0 0 0 / 0.48) 60%,
+			rgb(0 0 0 / 0.42) 62.5%,
+			rgb(0 0 0 / 0.35) 65%,
+			rgb(0 0 0 / 0.28) 67.5%,
+			rgb(0 0 0 / 0.22) 70%,
+			rgb(0 0 0 / 0.17) 72.5%,
+			rgb(0 0 0 / 0.16) 75%,
+			rgb(0 0 0 / 0.24) 77.5%,
+			rgb(0 0 0 / 0.34) 80%,
+			rgb(0 0 0 / 0.45) 82.5%,
+			rgb(0 0 0 / 0.55) 85%,
+			rgb(0 0 0 / 0.62) 87.5%,
+			rgb(0 0 0 / 0.66) 90%,
+			rgb(0 0 0 / 0.65) 92.5%,
+			rgb(0 0 0 / 0.61) 95%,
+			rgb(0 0 0 / 0.53) 97.5%,
+			rgb(0 0 0 / 0.43) 100%
+	);
 }
 
 .cover-type {

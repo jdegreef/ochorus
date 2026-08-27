@@ -46,6 +46,7 @@ underneath it.
 from __future__ import annotations
 
 import json
+import math
 import re
 from functools import lru_cache
 from pathlib import Path
@@ -99,6 +100,53 @@ def cover_path(slug: str, language: str) -> tuple[str, str]:
     if language == "en":
         return f"/covers/{slug}.svg", f"{slug}.svg"
     return f"/covers/{language}/{slug}.svg", f"{language}/{slug}.svg"
+
+
+# ── The scrim over a painting ──────────────────────────────────────────────
+# `cover-type.css`'s `.cover-plate.over-art`, as a curve, so Python can composite
+# what a reader sees. Two callers need it: `build_derived_grounds --preview`,
+# and the fixture gate that checks every committed painting still carries white
+# type. It was a hand-copy inside the first of those; a second copy would be one
+# too many.
+#
+# STATED AS THE CURVE, not as the CSS's 41 sampled stops. The stylesheet has no
+# cosine so it samples this; sampling it again here would be reproducing an
+# approximation rather than the thing approximated. `coverArtContrast.test.ts`
+# is what holds the CSS to this shape from the other side.
+_SCRIM_BANDS = ((0.13, 0.20, 0.60), (0.49, 0.30, 0.58), (0.91, 0.20, 0.60))
+_SCRIM_FLOOR = 0.10
+_SCRIM_STRENGTH = 1.1
+_SCRIM_CEILING = 0.88
+
+
+def scrim_alpha(f: float) -> float:
+    """How black the scrim is a fraction ``f`` down the plate, 0-1.
+
+    Three overlapping cosine bands — the byline, the title block, the mark —
+    over a floor that is never zero. The shape is the point: the type occupies
+    three strips, so the parts of a photograph no word crosses are left alone.
+    Peaks with clear air between them read as STRIPES across a smooth sky, which
+    is why the bands are wide enough to merge into one curve.
+    """
+    a = _SCRIM_FLOOR
+    for centre, half, peak in _SCRIM_BANDS:
+        d = abs(f - centre) / half
+        if d < 1.0:
+            a = max(a, _SCRIM_FLOOR + (peak - _SCRIM_FLOOR) * (0.5 + 0.5 * math.cos(math.pi * d)))
+    return min(_SCRIM_CEILING, _SCRIM_STRENGTH * a)
+
+
+def scrimmed(ground):
+    """A painting as a reader sees it: the artwork under the scrim above."""
+    from PIL import Image
+
+    column = Image.new("L", (1, H))
+    column.putdata([round(255 * scrim_alpha(y / (H - 1))) for y in range(H)])
+    return Image.composite(
+        Image.new("RGB", (W, H), (0, 0, 0)),
+        ground.convert("RGB"),
+        column.resize((W, H)),
+    )
 
 
 def twin_path(slug: str, language: str) -> tuple[str, str]:
