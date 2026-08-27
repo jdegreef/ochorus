@@ -99,6 +99,7 @@ import { isArtCover, isPlateCover, twinUrl } from '../src/lib/coverArt.ts';
 // `script-` class, no `lang` and no `dir`: an Arabic preview would have been
 // set in the Latin face and laid out left-to-right.
 import { coverPlateMarkup } from '../src/lib/coverCardMarkup.ts';
+import { scrimStrength } from '../src/lib/coverScrim.ts';
 import { coverStyleFor, scriptOf } from '../src/lib/coverStyles.ts';
 import { eraOf } from '../src/lib/eras.ts';
 
@@ -194,7 +195,11 @@ function needTwins() {
 				twin: twinPath(fields.slug, fields.language || 'en'),
 				// Which tier, through the app's own predicates rather than a fourth
 				// hand-written copy of "what is a painting".
-				art: isArtCover(cover)
+				art: isArtCover(cover),
+				// And how far its scrim is scaled — the same table the component
+				// reads. A card drawn without this wears the strength the palest
+				// painting in the library needs.
+				scrim: scrimStrength(fields.slug)
 			};
 		})
 		.filter((b) => b.art || isPlateCover(b.cover));
@@ -417,7 +422,8 @@ html,body{margin:0}
 			style: book.style,
 			script: book.script,
 			lang: book.language,
-			art: book.art
+			art: book.art,
+			scrim: book.scrim
 		},
 		LOCKUP
 	)}

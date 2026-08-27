@@ -1,0 +1,178 @@
+#!/usr/bin/env python3
+"""Measure how much scrim each painting actually needs.
+
+    uv run python scripts/tune_art_scrim.py --dry-run
+    uv run python scripts/tune_art_scrim.py
+
+WHAT THIS IS FOR
+`.cover-plate.over-art` darkens a painting so white type can sit on it, and its
+SHAPE is shared — three bands following the byline, the title and the mark,
+which are in the same place on every cover. How much of that a picture needs is
+not shared at all: measured across the library the span is more than threefold.
+
+One strength for all of them therefore has to be the maximum, and that is what
+shipped first — every painting carried the weight the palest one needed, and the
+library read at 53.2 per cent of its own brightness where it could read at 70.0.
+
+The numbers in the generated tables are computed from the measurement rather
+than typed here, because a hand-written span in a docstring is exactly the thing
+that goes stale the first time a painting is recropped.
+
+So this searches, per painting, for the LEAST strength that still clears AA
+where the type falls, and writes `library/art_scrim.py`. The search is a walk
+rather than a bisection: the predicate is contrast after an 8-bit composite, so
+it is very slightly non-monotone, and a bisection that "agreed on every sample"
+is not a guarantee. It costs seconds, offline.
+
+RE-RUN THIS WHEN ARTWORK CHANGES. A recropped or replaced painting is a
+different picture and may need a different scrim;
+`CoverAssetTests.test_every_painting_still_carries_white_type` fails the build
+until the table matches what is on disk, and names the file.
+
+Pillow is a dev-group dependency, like the rest of the cover tooling.
+"""
+
+from __future__ import annotations
+
+import argparse
+import sys
+from pathlib import Path
+
+BACKEND = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(BACKEND))
+
+from library.covers import (  # noqa: E402
+    _AUTHOR_Y,
+    _FRAME_INSET,
+    AUTHOR_INK_OPACITY,
+    AUTHOR_MIN_CONTRAST,
+    H,
+    W,
+    scrimmed,
+)
+
+ART = BACKEND.parent / "frontend" / "static" / "covers" / "art"
+TABLE = BACKEND / "library" / "art_scrim.py"
+TS_TABLE = BACKEND.parent / "frontend" / "src" / "lib" / "coverScrim.ts"
+
+# The title runs 7.6-10.45cqw, which is large text: AA asks 3:1 of it, where the
+# byline at 3.9cqw is small and asks 4.5. Both are held a little above their bar
+# so a re-encode or a resampling difference cannot drop a painting under it.
+TITLE_MIN = 3.0
+MARGIN = 0.1
+
+
+def _relative_luminance(channels) -> float:
+    def channel(v: float) -> float:
+        v /= 255
+        return v / 12.92 if v <= 0.03928 else ((v + 0.055) / 1.055) ** 2.4
+
+    r, g, b = (channel(c) for c in channels)
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b
+
+
+def _worst(band, opacity: float) -> float:
+    """Least white-on-artwork contrast anywhere in a band of pixels."""
+    out = 1e9
+    for px in band.getdata():
+        ink = tuple(round(255 * opacity + c * (1 - opacity)) for c in px)
+        a, b = _relative_luminance(ink) + 0.05, _relative_luminance(px) + 0.05
+        out = min(out, max(a, b) / min(a, b))
+    return out
+
+
+def measure(image, strength: float) -> tuple[float, float]:
+    """(byline, title) worst contrast for one painting at one strength."""
+    plate = scrimmed(image, strength)
+    byline = plate.crop((_FRAME_INSET, _AUTHOR_Y - 9, W - _FRAME_INSET, _AUTHOR_Y + 9))
+    title = plate.crop((_FRAME_INSET, round(H * 0.36), W - _FRAME_INSET, round(H * 0.62)))
+    return _worst(byline, AUTHOR_INK_OPACITY), _worst(title, 1.0)
+
+
+def needed(image) -> float | None:
+    """The least strength that clears both bars, or None if none does."""
+    for step in range(30, 201, 5):
+        strength = step / 100
+        byline, title = measure(image, strength)
+        if byline >= AUTHOR_MIN_CONTRAST + MARGIN and title >= TITLE_MIN + MARGIN:
+            return strength
+    return None
+
+
+def main() -> int:
+    from PIL import Image
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dry-run", action="store_true")
+    opts = parser.parse_args()
+
+    table, unusable = {}, []
+    for path in sorted(ART.glob("*.jpg")):
+        image = Image.open(path).convert("RGB").resize((W, H), Image.LANCZOS)
+        strength = needed(image)
+        if strength is None:
+            unusable.append(path.stem)
+            continue
+        table[path.stem] = strength
+        print(f"  {path.stem:44} {strength:.2f}x")
+
+    if unusable:
+        print(
+            f"\nno strength up to 2.00x carries white type over: {', '.join(unusable)}\n"
+            "That is a painting too pale for this composition, not a tuning problem "
+            "— recrop it, or give the work a darker artwork.",
+            file=sys.stderr,
+        )
+        return 1
+
+    span = sorted(table.values())
+    print(f"\n{len(table)} paintings, {span[0]:.2f}x .. {span[-1]:.2f}x")
+    if opts.dry_run:
+        return 0
+
+    body = "\n".join(f'    "{slug}": {k:.2f},' for slug, k in sorted(table.items()))
+    TABLE.write_text(
+        '"""How much scrim each painting needs — GENERATED by '
+        "scripts/tune_art_scrim.py.\n\n"
+        "The scrim's SHAPE is shared and lives in `covers.scrim_alpha`: three bands\n"
+        "following the byline, the title and the mark, which sit in the same place on\n"
+        "every cover. How much of it a picture needs is a property of the picture, and\n"
+        f"the span here is {span[0]:.2f}x to {span[-1]:.2f}x — so one strength for all of\n"
+        "them has to be the maximum, and every other painting pays for the palest.\n\n"
+        "Measured, not chosen: each value is the least strength at which white type\n"
+        "still clears AA where it falls, found by walking upward.\n"
+        "`CoverAssetTests.test_every_painting_still_carries_white_type` re-measures\n"
+        "every entry against the artwork on disk, so a recropped painting fails the\n"
+        "build by name rather than shipping illegible.\n\n"
+        "`frontend/src/lib/coverScrim.ts` is the same table for the two renderers\n"
+        'that draw a cover; `coverScrim.test.ts` fails if the two drift.\n"""\n\n'
+        "ART_SCRIM: dict[str, float] = {\n" + body + "\n}\n"
+    )
+    # THE SAME TABLE FOR THE TWO RENDERERS. `BookCover` and the share-card
+    # script both draw a painting and both need its strength, and neither can
+    # read Python. Written from here rather than hand-kept, and
+    # `coverScrim.test.ts` fails if the two files disagree.
+    ts_body = "\n".join(f"\t{slug!r}: {k:.2f}," for slug, k in sorted(table.items()))
+    TS_TABLE.write_text(
+        "// GENERATED by backend/scripts/tune_art_scrim.py — do not edit by hand.\n"
+        "//\n"
+        "// How much scrim each painting needs. The scrim's SHAPE lives in\n"
+        "// `cover-type.css` and in `covers.scrim_alpha`; this is how far it is\n"
+        "// scaled for one picture, measured as the least that still carries white\n"
+        "// type over it. A painting with no entry takes 1, which is the strength\n"
+        "// every painting carried before this table existed.\n"
+        "//\n"
+        "// `coverScrim.test.ts` holds this against `library/art_scrim.py`, and\n"
+        "// `CoverAssetTests` re-measures that against the artwork on disk.\n\n"
+        "export const COVER_SCRIM: Record<string, number> = {\n" + ts_body + "\n};\n\n"
+        "/** How far to scale the scrim over one work's painting. */\n"
+        "export function scrimStrength(slug: string): number {\n"
+        "\treturn COVER_SCRIM[slug] ?? 1;\n"
+        "}\n"
+    )
+    print(f"wrote {TABLE.relative_to(BACKEND)} and {TS_TABLE.name}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

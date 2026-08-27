@@ -29,6 +29,12 @@ import { describe, expect, it } from 'vitest';
  *
  * `coverBand.test.ts` is the neighbouring check: that one pins the geometry the
  * two renderers share, this one pins the scrim they both draw through.
+ *
+ * The curve here is the shape at FULL strength. How far it is scaled for one
+ * painting is `coverScrim.ts`, checked by `coverScrim.test.ts` against the
+ * Python table it is generated from — and that table is re-measured against the
+ * artwork itself by `CoverAssetTests`. Shape here, strength there, artwork in
+ * Python: each held where it can actually be derived.
  */
 const COVER_CSS = readFileSync(join(process.cwd(), 'src/lib/components/cover-type.css'), 'utf-8');
 const COVERS_PY = readFileSync(
@@ -59,8 +65,11 @@ function pythonCurve() {
 
 /** The scrim as the stylesheet spells it: sampled stops. */
 function cssStops(): Array<[number, number]> {
-	const block = /\.cover-plate\.over-art \{([\s\S]*?)\n\}/.exec(COVER_CSS);
-	expect(block, '.cover-plate.over-art is gone from cover-type.css').not.toBeNull();
+	// `::before`, because the scrim moved onto a pseudo-element so one painting's
+	// can be lighter than another's — `opacity: var(--scrim-strength)` scales the
+	// whole layer, which a gradient cannot do from a custom property.
+	const block = /\.cover-plate\.over-art::before \{([\s\S]*?)\n\}/.exec(COVER_CSS);
+	expect(block, '.cover-plate.over-art::before is gone from cover-type.css').not.toBeNull();
 	const stops = [...block![1].matchAll(/rgb\(0 0 0 \/ ([\d.]+)\)\s+([\d.]+)%/g)].map(
 		([, alpha, pos]) => [Number(pos) / 100, Number(alpha)] as [number, number]
 	);

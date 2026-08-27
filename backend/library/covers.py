@@ -119,7 +119,7 @@ _SCRIM_STRENGTH = 1.1
 _SCRIM_CEILING = 0.88
 
 
-def scrim_alpha(f: float) -> float:
+def scrim_alpha(f: float, strength: float = 1.0) -> float:
     """How black the scrim is a fraction ``f`` down the plate, 0-1.
 
     Three overlapping cosine bands — the byline, the title block, the mark —
@@ -127,21 +127,29 @@ def scrim_alpha(f: float) -> float:
     three strips, so the parts of a photograph no word crosses are left alone.
     Peaks with clear air between them read as STRIPES across a smooth sky, which
     is why the bands are wide enough to merge into one curve.
+
+    ``strength`` scales the whole curve for ONE painting. The shape is shared —
+    it follows where type sits, which is the same on every cover — but how much
+    of it a picture needs is a property of the picture, and the library's span
+    is wide: `godliness` clears AA under 0.60x where the palest artwork wants
+    1.10x. Carrying the maximum everywhere is what the single-strength version
+    did, and it cost the other 37 paintings a quarter of their brightness.
+    ``ART_SCRIM`` holds the measured value per slug.
     """
     a = _SCRIM_FLOOR
     for centre, half, peak in _SCRIM_BANDS:
         d = abs(f - centre) / half
         if d < 1.0:
             a = max(a, _SCRIM_FLOOR + (peak - _SCRIM_FLOOR) * (0.5 + 0.5 * math.cos(math.pi * d)))
-    return min(_SCRIM_CEILING, _SCRIM_STRENGTH * a)
+    return min(_SCRIM_CEILING, strength * _SCRIM_STRENGTH * a)
 
 
-def scrimmed(ground):
+def scrimmed(ground, strength: float = 1.0):
     """A painting as a reader sees it: the artwork under the scrim above."""
     from PIL import Image
 
     column = Image.new("L", (1, H))
-    column.putdata([round(255 * scrim_alpha(y / (H - 1))) for y in range(H)])
+    column.putdata([round(255 * scrim_alpha(y / (H - 1), strength)) for y in range(H)])
     return Image.composite(
         Image.new("RGB", (W, H), (0, 0, 0)),
         ground.convert("RGB"),

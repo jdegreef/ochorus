@@ -1155,6 +1155,7 @@ class CoverAssetTests(SimpleTestCase):
         """
         from PIL import Image
 
+        from library.art_scrim import ART_SCRIM
         from library.covers import scrimmed
 
         def relative_luminance(channels):
@@ -1175,10 +1176,18 @@ class CoverAssetTests(SimpleTestCase):
             return out
 
         art_dir = STATIC_DIR / "covers" / "art"
-        thin = []
+        thin, untuned = [], []
         for path in sorted(art_dir.glob("*.jpg")):
+            # AT ITS OWN STRENGTH, which is the thing being checked. A painting
+            # with no entry falls back to the full scrim — the safe end, and what
+            # every painting carried before the table existed — but it is still
+            # reported, because an untuned painting is carrying the weight the
+            # palest artwork in the library needs.
+            if path.stem not in ART_SCRIM:
+                untuned.append(path.stem)
             plate = scrimmed(
-                Image.open(path).convert("RGB").resize((W, H), Image.LANCZOS)
+                Image.open(path).convert("RGB").resize((W, H), Image.LANCZOS),
+                ART_SCRIM.get(path.stem, 1.0),
             )
             # The byline is the binding constraint at 4.5:1 (it is not large
             # text); the title runs 7.6-10.45cqw and asks 3:1.
@@ -1190,8 +1199,15 @@ class CoverAssetTests(SimpleTestCase):
                 thin.append(f"{path.stem}: byline {wb:.2f}:1, title {wt:.2f}:1")
         self.assertEqual(
             thin, [],
-            "a painting too pale for white type under the scrim — darken the "
-            "artwork, crop it differently, or give it its own scrim strength",
+            "a painting too pale for white type under the scrim it is given — "
+            "re-run `cd backend && uv run python scripts/tune_art_scrim.py`, or "
+            "recrop the artwork if no strength carries it",
+        )
+        self.assertEqual(
+            untuned, [],
+            "a painting with no measured scrim strength — it is wearing the "
+            "weight the palest artwork needs. Run "
+            "`cd backend && uv run python scripts/tune_art_scrim.py`",
         )
 
     def test_covers_that_cannot_be_shared_have_a_raster_twin(self):
