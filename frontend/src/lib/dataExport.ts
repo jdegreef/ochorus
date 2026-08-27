@@ -89,8 +89,17 @@ async function loadTitles(language: string): Promise<TitleMaps> {
 	return maps;
 }
 
+/**
+ * The favorites store and the title catalog name the same thing differently:
+ * a favorited author is kind `author` (see FavoriteKind), while its titles are
+ * keyed `bio` here, after the work kind. So `lookup(maps, 'author', …)` found
+ * no map at all and every favorited author fell through to `unslug(slug)` —
+ * "J C Ryle" for J. C. Ryle, with the real name sitting unused in `maps.bio`.
+ */
+const TITLE_MAP_KIND: Record<string, keyof TitleMaps> = { author: 'bio' };
+
 function lookup(maps: TitleMaps, kind: string, slug: string): { title: string; author: string } {
-	const m = (maps as Record<string, Map<string, { title: string; author: string }>>)[kind];
+	const m = maps[TITLE_MAP_KIND[kind] ?? (kind as keyof TitleMaps)];
 	return m?.get(slug) ?? { title: unslug(slug), author: '' };
 }
 
