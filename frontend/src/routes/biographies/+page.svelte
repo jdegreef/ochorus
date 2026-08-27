@@ -4,10 +4,9 @@
 	import { page } from '$app/stores';
 	import { type AuthorBio, type BookSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
-	import { absUrl, jsonLd, breadcrumb } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumb, hreflangAll } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import { locales } from '$lib/paraglide/runtime';
 	import { ERAS, eraOf, type EraId } from '$lib/eras';
 	import AuthorBioCard from '$lib/components/AuthorBioCard.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
@@ -218,21 +217,36 @@
 		})
 	);
 
-	// Redirect old /biographies#<slug> deep-links to the new author pages.
+	// Redirect old /biographies#<slug> deep-links to the new author pages —
+	// but ONLY for a fragment that names an author we actually have. Any other
+	// fragment used to be forwarded too, so `/biographies#main` (the target of
+	// the layout's own skip link, and a natural thing to copy or share after
+	// using the keyboard) replaced a working page with the 404 — and
+	// `replaceState` erased the good URL from history on the way.
 	onMount(() => {
 		const slug = location.hash.replace(/^#/, '');
-		if (slug) goto(localizeHref(`/authors/${slug}`), { replaceState: true });
+		if (slug && authors.some((a) => a.slug === slug)) {
+			goto(localizeHref(`/authors/${slug}`), { replaceState: true });
+		}
 	});
+
+	// Gated on ADVERTISED_LOCALES, not Paraglide's full `locales`: a locale that
+	// is wired in the UI but has an empty catalog must not be advertised to
+	// crawlers (see advertised-locales.ts). This page was claiming alternates
+	// for draft locales while sitemap.xml, the detail pages and the footer all
+	// correctly omitted them — two contradictory claims, with the wrong one on
+	// the site's most-crawled pages.
+	const hreflang = hreflangAll('/biographies');
 </script>
 
 <svelte:head>
 	<title>{t('bios.metaTitle')} — Ochorus</title>
 	<meta name="description" content={t('bios.metaDescription')} />
 	<link rel="canonical" href="{SITE_URL}{localizeHref('/biographies')}" />
-	{#each locales as loc (loc)}
-		<link rel="alternate" hreflang={loc} href="{SITE_URL}{localizeHref('/biographies', { locale: loc })}" />
+	{#each hreflang.alternates as a (a.loc)}
+		<link rel="alternate" hreflang={a.loc} href={a.href} />
 	{/each}
-	<link rel="alternate" hreflang="x-default" href="{SITE_URL}/biographies" />
+	<link rel="alternate" hreflang="x-default" href={hreflang.xDefault} />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="{t('bios.metaTitle')} — Ochorus" />
 	<meta property="og:description" content={t('bios.metaDescription')} />
