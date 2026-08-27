@@ -20,7 +20,14 @@
  * place to hold it.
  */
 import { SITE_URL } from '$lib/config';
-import { listAuthors, listBooks, listPlans, listSermons, listTopics } from '$lib/library-public';
+import {
+	listAuthors,
+	listBooks,
+	listPlans,
+	listScripturePages,
+	listSermons,
+	listTopics
+} from '$lib/library-public';
 import { locales } from '$lib/paraglide/runtime';
 import { ADVERTISED_LOCALES, UNADVERTISED_LOCALES } from '$lib/advertised-locales';
 import { ERAS, eraOf } from '$lib/eras';
@@ -82,6 +89,8 @@ export function urlsetXml(entries: Entry[], only?: string): string {
 export interface SitemapData {
 	/** Static app pages, era landings, topics and plans — the small tail. */
 	pages: Entry[];
+	/** The scripture graph. English only, so these entries carry one locale. */
+	scripture: Entry[];
 	authors: Entry[];
 	books: Entry[];
 	sermons: Entry[];
@@ -103,6 +112,7 @@ export const sections = (): string[] => [
 	'books',
 	'sermons',
 	'authors',
+	'scripture',
 	'pages'
 ];
 
@@ -120,6 +130,7 @@ export function sectionEntries(data: SitemapData, section: string): Entry[] | nu
 	if (section === 'books') return data.books;
 	if (section === 'sermons') return data.sermons;
 	if (section === 'authors') return data.authors;
+	if (section === 'scripture') return data.scripture;
 	if (section === 'pages') return data.pages;
 	return null;
 }
@@ -145,6 +156,11 @@ async function build(): Promise<SitemapData> {
 		}))
 	);
 	const authors = await listAuthors().catch(() => []);
+	// The SAME list the /scripture route entry generators build from. Reading it
+	// here rather than re-deriving the floor is what keeps "advertised" and
+	// "built" from drifting apart — the failure prerenderCoverage.test.ts exists
+	// to catch, and which is only cheap to avoid up front.
+	const scripturePages = await listScripturePages().catch(() => []);
 
 	// Emission uses only the advertised locales; `perLocale` (all UI locales)
 	// stays available for the drift check below.
@@ -261,6 +277,21 @@ async function build(): Promise<SitemapData> {
 	pages.push(...collect('topics', (s) => `/topics/${s}/`));
 	pages.push(...collect('plans', (s) => `/plans/${s}/`));
 
+	// Scripture pages carry ONE locale, not the advertised set: citations parse
+	// only against English book names, so there is no localized version of these
+	// and claiming one would be a false alternate.
+	const scripture: Entry[] = [
+		{ byLocale: new Map([['en', '/scripture/']]) },
+		...scripturePages.map((p) => ({
+			byLocale: new Map([
+				[
+					'en',
+					`/scripture/${p.book}/${p.chapter}/` + (p.verse === null ? '' : `${p.verse}/`)
+				] as [string, string]
+			])
+		}))
+	];
+
 	// Chapter pages (prerendered): one entry per (work, chapter), again listing
 	// only the locales whose edition actually has that chapter.
 	const byChapter = new Map<string, Entry>();
@@ -275,7 +306,14 @@ async function build(): Promise<SitemapData> {
 		}
 	}
 
-	return { pages, authors: authorEntries, books, sermons, chapters: [...byChapter.values()] };
+	return {
+		pages,
+		authors: authorEntries,
+		books,
+		sermons,
+		scripture,
+		chapters: [...byChapter.values()]
+	};
 }
 
 let cached: Promise<SitemapData> | null = null;

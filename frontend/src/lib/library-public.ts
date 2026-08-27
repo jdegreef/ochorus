@@ -597,3 +597,65 @@ export const listTopics = (language = 'en') =>
 
 export const getTopic = (slug: string, language = 'en') =>
 	apiFetch<TopicDetail>(`/api/library/topics/${slug}/?language=${language}`);
+
+// --- The scripture graph ------------------------------------------------------
+// Which passages in the library treat a given verse — the reverse of the
+// reader's cross-reference popover, and the one thing here that has no locale
+// parameter. Citations are extracted by validating against pythonbible's
+// ENGLISH book names, so a Spanish or Swahili edition indexes essentially
+// nothing ("Juan 3:16" parses as no reference at all). These pages therefore
+// exist in English only, and are advertised that way.
+
+/** One scripture page the build should render — the API decides which qualify. */
+export interface ScripturePageRef {
+	book: string;
+	book_title: string;
+	book_order: number;
+	chapter: number;
+	/** null for a whole-Bible-chapter page. */
+	verse: number | null;
+	citing_count: number;
+}
+
+/** A library passage that cites the reference this page is about. */
+export interface CitingPassage {
+	book_slug: string;
+	book_title: string;
+	author_name: string;
+	author_slug: string;
+	chapter_order: number;
+	chapter_title: string;
+	/** The reference AS PRINTED in that book ("Rom. viii. 28"), not normalised. */
+	ref: string;
+	/** Excerpt centred on the citation, matches wrapped in the search markers. */
+	excerpt: string;
+}
+
+export interface ScripturePage {
+	reference: string;
+	book: { slug: string; title: string; order: number };
+	chapter: number;
+	verse: number | null;
+	version: string;
+	/** Total citing chapters — NOT the length of `passages`, which is capped. */
+	citing_count: number;
+	passages: CitingPassage[];
+	passages_shown: number;
+	/** Verse pages only: the ASV text of the verse. */
+	text?: string;
+	/**
+	 * Chapter pages only: the verses the library actually treats, most-cited
+	 * first. `has_page` says whether that verse cleared the (higher) verse floor
+	 * and so has a page to link to — the floor lives on the server, so only the
+	 * server can answer it.
+	 */
+	verses?: { number: number; text: string; citing_count: number; has_page: boolean }[];
+}
+
+export const listScripturePages = () =>
+	apiFetch<ScripturePageRef[]>('/api/library/scripture/pages/');
+
+export const getScripturePage = (book: string, chapter: number, verse?: number) =>
+	apiFetch<ScripturePage>(
+		`/api/library/scripture/${book}/${chapter}/` + (verse ? `${verse}/` : '')
+	);

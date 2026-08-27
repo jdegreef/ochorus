@@ -715,6 +715,156 @@ class SearchClickView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+class ScripturePagesView(APIView):
+    """Every scripture page that has earned a URL — the build's page list.
+
+    Read at build time by the reader's prerender entry generator and its sitemap
+    section, so both get the list from the same place the detail view enforces.
+    Not a reader-facing endpoint.
+    """
+
+    def get(self, request):
+        from .scripture_graph import qualifying_pages
+
+        return Response(qualifying_pages())
+
+
+class ScriptureGraphView(APIView):
+    """The passages in the library that cite a verse, or a Bible chapter.
+
+    The reverse of the popover below: that one answers "what does this
+    reference say", this one answers "who in the library preached it". Search
+    has been able to do this since citations were indexed; this gives it a URL.
+
+    404 for a reference no page exists for — an unreal one (Romans 99), one the
+    bundled ASV has no text for, or one under the citation floor. The floor
+    lives in ``scripture_graph.qualifying_pages`` and is checked HERE too, so a
+    URL guessed by hand cannot reach a page the sitemap never advertised.
+    """
+
+    def get(self, request, book, chapter, verse=None):
+        from .scripture import VERSION_LABEL
+        from .scripture_graph import (
+            MAX_PASSAGES,
+            VERSE_SPAN_CAP,
+            book_from_slug,
+            citing_rows,
+            english_chapters,
+            reference_label,
+            verse_ids_for,
+            verse_text,
+        )
+        from .search import fallback_snippet
+
+        target = book_from_slug(book)
+        if target is None:
+            raise Http404("No such book of the Bible.")
+        ids = verse_ids_for(target, chapter, verse)
+        if not ids:
+            raise Http404("No such chapter or verse.")
+
+        chapters = english_chapters()
+        rows = citing_rows(ids, chapters)
+        # The floor, enforced on the page itself and not only in the page list:
+        # a hand-typed URL for a once-cited verse must 404 rather than render
+        # the thin page the list deliberately withheld.
+        floor = _scripture_floor(verse)
+        if len(rows) < floor:
+            raise Http404("Too few citations for a page.")
+
+        # The TRUE number of citing chapters, taken before the cap. Reporting
+        # len(passages) here would have said "40" for a passage 113 chapters
+        # treat — understating the page's own evidence, and disagreeing with
+        # the count the page list published for the same reference.
+        citing_count = len(rows)
+        all_rows = rows
+        rows = sorted(rows, key=lambda r: -r["count"])[:MAX_PASSAGES]
+        bodies = {
+            c.pk: c
+            for c in chapters.filter(pk__in=[r["chapter_id"] for r in rows])
+            .select_related("book__author")
+        }
+        passages = [
+            {
+                "book_slug": ch.book.slug,
+                "book_title": ch.book.title,
+                "author_name": ch.book.author.name,
+                "author_slug": ch.book.author.slug,
+                "chapter_order": ch.order,
+                "chapter_title": ch.title,
+                "ref": r["ref_text"],
+                "excerpt": fallback_snippet(ch.body_text or "", r["ref_text"]),
+            }
+            for r in rows
+            if (ch := bodies.get(r["chapter_id"])) is not None
+        ]
+
+        data = {
+            "reference": reference_label(target, chapter, verse),
+            "book": {"slug": book, "title": target.title, "order": target.value},
+            "chapter": chapter,
+            "verse": verse,
+            "version": VERSION_LABEL,
+            "citing_count": citing_count,
+            "passages": passages,
+            #: How many of them this payload actually carries. The page says
+            #: "40 of 113" rather than quietly showing a fraction as the whole.
+            "passages_shown": len(passages),
+        }
+        if verse is not None:
+            data["text"] = verse_text(ids[0])
+        else:
+            # A chapter page shows the verses the library ACTUALLY treats, not
+            # the whole chapter: the full ASV text is the one part of this page
+            # that is not ours and that every other site already has. What makes
+            # it worth a visit is which verses these writers stopped at.
+            #
+            # Counted from the rows ALREADY fetched for this chapter, not with a
+            # query per verse. The per-verse version issued one query for each
+            # of Romans 8's 39 verses, which across a build of 604 chapter pages
+            # is roughly eighteen thousand queries to render a list this loop
+            # can produce from data it is already holding.
+            per_verse: dict[int, set[int]] = {}
+            for r in all_rows:
+                span = range(
+                    max(r["start_verse_id"], ids[0]), min(r["end_verse_id"], ids[-1]) + 1
+                )
+                # A citation of the WHOLE chapter says nothing about which verse
+                # a writer stopped at, so it is not evidence for any single one.
+                if len(span) >= len(ids):
+                    continue
+                for vid in span:
+                    per_verse.setdefault(vid, set()).add(r["chapter_id"])
+            # `has_page` — whether THIS verse cleared the higher verse floor and
+            # so has a page of its own. The server owns the floor, so the server
+            # says what is linkable: the chapter page linked every cited verse
+            # before this, and the build died on /scripture/genesis/1/27/, a
+            # verse cited but under the floor. The reader must never be handed a
+            # link to a page the floor deliberately withheld.
+            from .scripture_graph import VERSE_FLOOR
+
+            cited = [
+                {
+                    "number": vid % 1000,
+                    "text": verse_text(vid),
+                    "citing_count": len(cids),
+                    "has_page": len(cids) >= VERSE_FLOOR,
+                }
+                for vid, cids in per_verse.items()
+                if verse_text(vid)
+            ]
+            data["verses"] = sorted(
+                cited, key=lambda v: (-v["citing_count"], v["number"])
+            )[:VERSE_SPAN_CAP]
+        return Response(data)
+
+
+def _scripture_floor(verse):
+    from .scripture_graph import CHAPTER_FLOOR, VERSE_FLOOR
+
+    return VERSE_FLOOR if verse is not None else CHAPTER_FLOOR
+
+
 class ScriptureView(APIView):
     """Verse text for a Bible reference — the reader's cross-reference popover.
 
