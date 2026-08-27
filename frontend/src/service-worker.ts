@@ -35,7 +35,26 @@ const sw = self as unknown as ServiceWorkerGlobalScope;
 
 const CACHE = `ochorus-cache-${version}`;
 const OFFLINE = 'ochorus-offline';
+
+/**
+ * The prerendered HOME page. A real document with home's own content and
+ * embedded route data — so it is the right answer for a navigation to `/`, and
+ * the wrong one for a navigation to anything else.
+ */
 const APP_SHELL = '/';
+
+/**
+ * The router-booting SPA fallback (`adapter-static`'s `fallback: '200.html'`,
+ * see svelte.config.js). Unlike the prerendered `/`, it carries no route data
+ * and renders whatever URL it is served at — which is exactly what an offline
+ * deep link needs.
+ *
+ * `networkThenShell` always named this file, but nothing ever cached it, so the
+ * match could not hit and every offline navigation fell through to `/`: a
+ * reader who had explicitly downloaded a book got the homepage's HTML at their
+ * chapter's URL, reachable only by then navigating from home by hand.
+ */
+const SPA_SHELL = '/200.html';
 
 /**
  * What a first visit downloads before anything else.
@@ -72,12 +91,10 @@ sw.addEventListener('install', (event) => {
 			await Promise.allSettled(
 				PRECACHE.map((path) => cache.add(path))
 			);
-			try {
-				const res = await fetch(APP_SHELL, { cache: 'reload' });
-				if (res.ok) await cache.put(APP_SHELL, res.clone());
-			} catch {
-				/* offline at install time — shell caches on first online nav */
-			}
+			// Both shells, and neither is fatal: `ensureShells` re-tries on the
+			// first successful navigation, so installing while offline no longer
+			// leaves this worker version permanently without a fallback.
+			await ensureShells(cache);
 		})()
 	);
 	// Do NOT skipWaiting here: the new worker waits until the user accepts.
@@ -184,12 +201,46 @@ async function cacheFirst(request: Request): Promise<Response> {
 	}
 }
 
+/**
+ * Cache the shell documents that aren't cached yet. A no-op once both are in.
+ *
+ * `ignoreVary` throughout: a static host commonly answers HTML with
+ * `Vary: Accept-Encoding`, and a navigation whose `Accept-Encoding` differs
+ * from the install-time fetch's would then MISS a shell that is sitting right
+ * there — turning the offline fallback off for reasons no one could see. Any
+ * cached copy of a shell is the copy we want.
+ */
+async function ensureShells(cache: Cache): Promise<void> {
+	await Promise.allSettled(
+		[SPA_SHELL, APP_SHELL].map(async (path) => {
+			if (await cache.match(path, { ignoreVary: true })) return;
+			const res = await fetch(path, { cache: 'reload' });
+			if (res.ok) await cache.put(path, res.clone());
+		})
+	);
+}
+
 async function networkThenShell(request: Request): Promise<Response> {
 	const cache = await caches.open(CACHE);
 	try {
-		return await fetch(request);
+		const res = await fetch(request);
+		// Online, so this is the moment to repair a shell the install couldn't
+		// fetch. Best-effort and deliberately not awaited: the response must not
+		// wait on it, and a miss just retries on the next navigation.
+		void ensureShells(cache);
+		return res;
 	} catch {
-		const shell = (await cache.match(APP_SHELL)) ?? (await cache.match('/200.html'));
+		// An exact prerendered copy of THIS url beats either shell — it carries
+		// the page's own content and data. (Home is such a copy of itself, which
+		// is why `/` is no longer consulted first: it is the right answer for `/`
+		// and the wrong one everywhere else.)
+		const exact = await cache.match(request, { ignoreVary: true });
+		if (exact) return exact;
+		// Then the route-agnostic fallback, and only then home — which at least
+		// boots the app, even though it renders home's data at the wrong URL.
+		const shell =
+			(await cache.match(SPA_SHELL, { ignoreVary: true })) ??
+			(await cache.match(APP_SHELL, { ignoreVary: true }));
 		return shell ?? Response.error();
 	}
 }
