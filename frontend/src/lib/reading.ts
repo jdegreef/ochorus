@@ -1,4 +1,6 @@
 import { i18n } from './i18n.svelte';
+import { getLang } from './lang.svelte';
+import { MODERN_EDITION, baseEdition } from './reading-schema';
 
 /** Estimated reading time in whole minutes from a word count (~200 wpm). */
 export function readingMinutes(words: number): number {
@@ -115,7 +117,20 @@ export function placeAfterLayout(place: () => void): void {
  * its base language — a Modern English edition hyphenates as English.
  */
 export function contentLang(language: string): string {
-	return language === 'en-modern' ? 'en' : language;
+	return baseEdition(language);
+}
+
+/**
+ * The content language a reader on `edition` is actually reading — what to
+ * fetch, and what any annotation of that text belongs to.
+ *
+ * One helper because the mapping was written out at three call sites (the
+ * chapter fetch, the TOC drawer, the reader's marks), and a highlight landing
+ * on the wrong edition is precisely what happens when two of them agree and
+ * the third doesn't.
+ */
+export function editionLang(edition: 'modern' | null): string {
+	return edition === 'modern' ? MODERN_EDITION : getLang();
 }
 
 

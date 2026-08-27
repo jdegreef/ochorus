@@ -1,11 +1,10 @@
 <script lang="ts">
 	import Icon from '$lib/components/Icon.svelte';
 	import { getBook, type BookDetail } from '$lib/library-public';
-	import { getLang } from '$lib/lang.svelte';
 	import { getScrollAnchor } from '$lib/progress';
 	import { marks } from '$lib/marks.svelte';
 	import { bookmarks } from '$lib/bookmarks.svelte';
-	import { readingTime } from '$lib/reading';
+	import { editionLang, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 
@@ -36,7 +35,7 @@
 	// Carry the reader's edition onto every chapter link (and fetch the matching
 	// TOC titles) so tapping a chapter in the drawer stays in the same edition.
 	const suffix = $derived(edition === 'modern' ? '?edition=modern' : '');
-	const contentLang = $derived(edition === 'modern' ? 'en-modern' : getLang());
+	const contentLang = $derived(editionLang(edition));
 
 	$effect(() => {
 		if (!open) return;

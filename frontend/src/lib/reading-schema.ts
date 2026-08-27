@@ -196,8 +196,16 @@ export interface Mark {
  * the modern text's words, and why removing it there deleted the real one.
  */
 
+/**
+ * The Modern English edition's content language. Mirrors the backend's single
+ * `MODERN_LANGUAGE` constant (library/contemporize.py) — there is exactly one
+ * modern edition, and it is English.
+ */
+export const MODERN_EDITION = 'en-modern';
+
 /** The plain-language edition behind an edition tag (`en-modern` → `en`). */
-const baseEdition = (edition: string): string => edition.replace(/-modern$/, '');
+export const baseEdition = (edition: string): string =>
+	edition === MODERN_EDITION ? 'en' : edition;
 
 /**
  * Does this mark belong to `edition`?

@@ -210,7 +210,7 @@ class Marks {
 	 * text reporting the original's highlight counts would promise annotations
 	 * that chapter isn't going to show.
 	 */
-	countFor(slug: string, order: number, kind: WorkKind = 'book', edition = 'en'): number {
+	countFor(slug: string, order: number, kind: WorkKind, edition: string): number {
 		const e = readAll()[workKey(kind, slug, order)];
 		if (!e?.m) return 0;
 		return new Set(e.m.filter((m) => markInEdition(m, edition)).map((m) => m.id)).size;
@@ -224,7 +224,7 @@ class Marks {
 	 * another edition would be quoted against text they don't index — the same
 	 * mis-rendering, moved to a different page.
 	 */
-	all(edition = 'en'): { kind: WorkKind; slug: string; order: number; marks: Mark[] }[] {
+	all(edition: string): { kind: WorkKind; slug: string; order: number; marks: Mark[] }[] {
 		const out: { kind: WorkKind; slug: string; order: number; marks: Mark[] }[] = [];
 		for (const [key, entry] of Object.entries(readAll())) {
 			const parsed = parseWorkKey(key);

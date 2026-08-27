@@ -19,6 +19,7 @@
 	import { getLang } from '$lib/lang.svelte';
 	import {
 		contentLang,
+		editionLang,
 		readingTime,
 		minutesLeft as minutesLeftOf,
 		HEADER_OFFSET,
@@ -567,7 +568,7 @@
 	$effect(() => {
 		const next = chapter.next;
 		const s = slug;
-		const language = edition === 'modern' ? 'en-modern' : getLang();
+		const language = editionLang(edition);
 		if (!next) return;
 		const url = `${API_BASE_URL}/api/library/books/${s}/chapters/${next.order}/?language=${language}`;
 		// timeout guarantees the prefetch even when idle never comes (busy or
@@ -694,7 +695,7 @@
 		// The EDITION, not just the UI language — the same string the chapter
 		// fetch above uses. Marks index this text's characters, and the modern
 		// edition is different text under the same slug and order.
-		language: () => (edition === 'modern' ? 'en-modern' : getLang()),
+		language: () => editionLang(edition),
 		body: () => body,
 		topIndex: topVisibleIndex,
 		listenTitle: () => chapter.title,
