@@ -130,7 +130,7 @@ sw.addEventListener('fetch', (event) => {
 	const url = new URL(request.url);
 
 	if (request.mode === 'navigate') {
-		event.respondWith(networkThenShell(request));
+		event.respondWith(networkThenShell(request, event));
 		return;
 	}
 	if (isLibraryApi(url)) {
@@ -220,14 +220,16 @@ async function ensureShells(cache: Cache): Promise<void> {
 	);
 }
 
-async function networkThenShell(request: Request): Promise<Response> {
+async function networkThenShell(request: Request, event: FetchEvent): Promise<Response> {
 	const cache = await caches.open(CACHE);
 	try {
 		const res = await fetch(request);
 		// Online, so this is the moment to repair a shell the install couldn't
-		// fetch. Best-effort and deliberately not awaited: the response must not
-		// wait on it, and a miss just retries on the next navigation.
-		void ensureShells(cache);
+		// fetch. Handed to `waitUntil` rather than left floating: the response
+		// must not wait on it, but the worker may be terminated as soon as the
+		// response settles — which would abort the very fetch this self-heal
+		// depends on, silently and only for readers who first loaded offline.
+		event.waitUntil(ensureShells(cache));
 		return res;
 	} catch {
 		// An exact prerendered copy of THIS url beats either shell — it carries

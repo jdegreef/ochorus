@@ -33,7 +33,7 @@ describe('sermon marks via the unified store (kind="sermon")', () => {
 		expect(marks.list).toHaveLength(0); // the book's mark doesn't bleed over
 		marks.add([{ p: 3, s: 0, e: 4 }]);
 
-		const all = marks.all();
+		const all = marks.all('en');
 		expect(new Set(all.map((m) => `${m.kind}:${m.slug}`))).toEqual(
 			new Set(['book:free-grace', 'sermon:free-grace'])
 		);

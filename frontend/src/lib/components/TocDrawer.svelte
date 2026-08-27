@@ -1,11 +1,10 @@
 <script lang="ts">
 	import Icon from '$lib/components/Icon.svelte';
 	import { getBook, type BookDetail } from '$lib/library-public';
-	import { getLang } from '$lib/lang.svelte';
 	import { getScrollAnchor } from '$lib/progress';
 	import { marks } from '$lib/marks.svelte';
 	import { bookmarks } from '$lib/bookmarks.svelte';
-	import { readingTime } from '$lib/reading';
+	import { editionLang, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 
@@ -36,7 +35,12 @@
 	// Carry the reader's edition onto every chapter link (and fetch the matching
 	// TOC titles) so tapping a chapter in the drawer stays in the same edition.
 	const suffix = $derived(edition === 'modern' ? '?edition=modern' : '');
-	const contentLang = $derived(edition === 'modern' ? 'en-modern' : getLang());
+	const contentLang = $derived(editionLang(edition));
+	// What to COUNT highlights against: the edition the API actually returned,
+	// which is not always the one asked for (`getBook` falls back to English for
+	// a book with no copy in this language). Counting the requested edition
+	// would show a zero beside a chapter whose highlights are right there.
+	const shownLang = $derived(book?.language ?? contentLang);
 
 	$effect(() => {
 		if (!open) return;
@@ -143,7 +147,7 @@
 			{:else}
 				<ol>
 					{#each book.chapters as ch (ch.order)}
-						{@const markCount = marks.countFor(slug, ch.order, 'book', contentLang)}
+						{@const markCount = marks.countFor(slug, ch.order, 'book', shownLang)}
 						<li>
 							<a
 								href={localizeHref(`/books/${slug}/${ch.order}${suffix}`)}
