@@ -25,6 +25,14 @@
  * deployed host: that one answers "is the canonical URL served correctly?", this
  * one answers "was it built at all?".
  *
+ * SINCE THE SITEMAP SPLIT this has to walk an index. `sitemap.xml` is a
+ * `<sitemapindex>` whose `<loc>`s name child sitemaps — which are all real
+ * built files, so a guard that checked them directly would pass while
+ * inspecting no page at all, and go on passing however many chapter URLs went
+ * missing. Silently disarming this test would be a worse outcome than the two
+ * incidents it was written for, so the URLs are collected from the children and
+ * the index is asserted to actually have some.
+ *
  * Skipped when there is no build/ — `npm run test` is run without one locally.
  */
 import { describe, expect, it } from 'vitest';
@@ -35,8 +43,10 @@ import { join, resolve } from 'node:path';
 // does) rather than import.meta.url, which vitest rewrites during transform —
 // the same trap that silently disabled the href guard.
 const BUILD =
-	[resolve(process.cwd(), 'build'), resolve(process.cwd(), 'frontend/build')].find(existsSync) ??
-	'';
+	[
+		resolve(process.cwd(), 'build'),
+		resolve(process.cwd(), 'frontend/build')
+	].find(existsSync) ?? '';
 const SITEMAP = BUILD ? join(BUILD, 'sitemap.xml') : '';
 
 /**
@@ -47,13 +57,49 @@ const SITEMAP = BUILD ? join(BUILD, 'sitemap.xml') : '';
 function isPrerendered(pathname: string): boolean {
 	const p = pathname.replace(/^\/+|\/+$/g, '');
 	if (!p) return existsSync(join(BUILD, 'index.html'));
-	return existsSync(join(BUILD, p, 'index.html')) || existsSync(join(BUILD, `${p}.html`));
+	return (
+		existsSync(join(BUILD, p, 'index.html')) ||
+		existsSync(join(BUILD, `${p}.html`))
+	);
 }
 
+/** Every `<loc>` in an XML sitemap document. */
+const locsIn = (xml: string): string[] =>
+	[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+
+/** A built sitemap file, by the pathname its `<loc>` advertises. */
+const readSitemap = (pathname: string): string | null => {
+	const file = join(BUILD, pathname.replace(/^\/+/, ''));
+	return existsSync(file) ? readFileSync(file, 'utf8') : null;
+};
+
 describe.skipIf(!BUILD || !existsSync(SITEMAP))('prerender coverage', () => {
-	it('prerenders every URL listed in sitemap.xml', () => {
-		const xml = readFileSync(SITEMAP, 'utf8');
-		const urls = [...new Set([...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]))];
+	it('prerenders every URL the sitemap advertises', () => {
+		const root = readFileSync(SITEMAP, 'utf8');
+		const isIndex = root.includes('<sitemapindex');
+		const children = isIndex ? locsIn(root) : [];
+
+		// The index has to link something. An index over nothing is the shape
+		// this guard would otherwise read as "no missing pages".
+		if (isIndex) expect(children.length).toBeGreaterThan(0);
+
+		// A child named in the index but absent from the build is the same broken
+		// promise as a missing page, one level up — name them rather than
+		// silently collecting no URLs from them.
+		const missingChildren = children.filter(
+			(u) => readSitemap(new URL(u).pathname) === null
+		);
+		expect(missingChildren.map((u) => new URL(u).pathname)).toEqual([]);
+
+		const urls = [
+			...new Set(
+				isIndex
+					? children.flatMap((u) =>
+							locsIn(readSitemap(new URL(u).pathname) ?? '')
+						)
+					: locsIn(root)
+			)
+		];
 
 		// A sitemap that lost its content would vacuously pass, and this guard is
 		// most valuable exactly when a build goes wrong.
