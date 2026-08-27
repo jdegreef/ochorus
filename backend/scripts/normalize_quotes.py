@@ -41,16 +41,36 @@ ENTITY = "&quot;"
 def _style(text: str) -> str:
     plain = TAG.sub(" ", text)
     straight = plain.count(ENTITY) + plain.count(STRAIGHT)
-    curly = plain.count("“") + plain.count("”")
+    # Guillemets count as typographic, not as a third style. Spanish books set
+    # « » as the OUTER mark and “ ” as the nested one, so a file using « » with
+    # straight marks is mixing exactly what this script exists to stop — but it
+    # carries no “, and counting only curly marks left three es books invisible
+    # (prevailing-prayer, jesus-himself-2, clothed-with-strength-and-dignity).
+    curly = plain.count("“") + plain.count("”") + plain.count("«") + plain.count("»")
     if straight and curly:
         return "MIXED"
     return "straight" if straight else ("curly" if curly else "none")
 
 
 def _convert(html: str) -> tuple[str, int]:
-    """Rewrite straight marks as curly, deciding each one from its context."""
+    """Rewrite straight marks typographically, deciding each one from context.
+
+    TWO decisions, not one. Which PAIR the mark belongs to is decided by
+    guillemet depth, and only then does the preceding character decide whether
+    it opens or closes:
+
+      * inside an open « … » span, a straight mark is the NESTED level → “ ”
+      * outside one, it is the outer level → « »
+
+    A file with no guillemets at all is unaffected by the first decision and
+    converts to “ ” exactly as before, which is every English file this script
+    has ever touched. The distinction only bites in the Spanish books, where
+    the outer mark is « »: converting their outer quotations to “ ” would have
+    swapped one inconsistency for another rather than fixing it.
+    """
     out: list[str] = []
     i, n, changed = 0, len(html), 0
+    depth = 0
     while i < n:
         # Never touch anything inside a tag: attribute values are quoted too.
         if html[i] == "<":
@@ -64,6 +84,10 @@ def _convert(html: str) -> tuple[str, int]:
         elif html[i] == STRAIGHT:
             _, width = STRAIGHT, 1
         else:
+            if html[i] == "«":
+                depth += 1
+            elif html[i] == "»":
+                depth = max(0, depth - 1)
             out.append(html[i])
             i += 1
             continue
@@ -86,7 +110,10 @@ def _convert(html: str) -> tuple[str, int]:
         # The preceding character answers all of those correctly on its own.
         before = "".join(out)[-1:]
         opens = not before or before.isspace() or before in "([{—–->"
-        out.append("“" if opens else "”")
+        if depth > 0:
+            out.append("“" if opens else "”")
+        else:
+            out.append("«" if opens else "»")
         changed += 1
         i += width
     return "".join(out), changed
