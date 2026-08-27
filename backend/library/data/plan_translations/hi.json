@@ -15,5 +15,18 @@
    "Names are transliterated, as all shipped Hindi content does: एंड्रयू मरे and डी. एल. मूडी follow the shipped Hindi corpus (12 and 3 occurrences). हन्ना बुयिंज़ा has NO Hindi precedent — this is the first Hindi content to name her, so a later prayer-the-pulse-of-life edition or bio should match this form rather than diverge. Note es/pt/sw/lg keep her name in Latin script; Hindi cannot, so it is transliterated here.",
    "The three guides are named by AUTHOR, not by book title, because none of the three books ships in Hindi yet — there is no shipped title to quote. When they arrive, whoever translates them should either harmonise their titles with this card or adjust this entry in the same PR, exactly as the Arabic and Spanish notes ask."
   ]
+ },
+ "deeper-life-in-christ": {
+  "title": "गहरा जीवन: मसीह तुम में",
+  "description": "अधिक परिश्रम नहीं, परन्तु एक व्यक्ति: गहरे जीवन का भेद यह है कि स्वयं मसीह भीतर वास करता है। एंड्रयू मरे “स्वयं यीशु” के अचम्भे से आरम्भ करते हैं, फिर भीतर वास करनेवाले जीवन को खोलते हैं, और हडसन टेलर प्रियतम के साथ मिलन और संगति के विश्राम में समाप्त करते हैं।",
+  "note": [
+   "Queue job #696. Of this curated plan's three source books (jesus-himself-2, the-masters-indwelling, union-and-communion) only jesus-himself-2 has a Hindi edition, so seed_plans creates NO row today — this prose lands dormant on purpose, exactly as the Hindi school-of-prayer entry (#695) and the Arabic/Spanish entries for this same plan did. It exists so that whichever book lands last cannot publish an English-titled card in Hindi (the #819 defect).",
+   "“स्वयं यीशु” is the shipped Hindi edition's own title verbatim (jesus-himself-2.hi.json), quoted so the plan card and the book on the shelf agree — the same rule the Spanish (Jesús Mismo) and Swahili (Yesu Mwenyewe) entries follow. Hindi has no capitalisation, so quotation marks are what marks it as a title; the book's own description uses curly marks the same way.",
+   "«मसीह तुम में» is Colossians 1:27 as the shipped Hindi corpus already quotes it — himself.hi.json carries that exact short form six times, where Simpson hammers it. The IRV's full clause is «मसीह जो महिमा की आशा है तुम में रहता है»; the card quotes the short form the corpus uses, not a fresh rendering.",
+   "Vocabulary follows the shipped Hindi books rather than being coined here: भीतर वास for indwelling (35 occurrences), मिलन for union (80), संगति for communion (274), विश्राम for rest (144), भेद for the secret/mystery (209, and the IRV's own word at Col 1:27). एंड्रयू मरे is the shipped Hindi form of the author's name.",
+   "हडसन टेलर has NO Hindi precedent — this is the first Hindi content to name him, so a later union-and-communion edition or bio should match this form rather than diverge. Same situation as हन्ना बुयिंज़ा in the school-of-prayer entry.",
+   "The middle and closing phrases (भीतर वास करनेवाला जीवन, मिलन और संगति) are this entry's own renderings of the two untranslated books' motifs, not quotations of shipped titles. Whoever translates the-masters-indwelling or union-and-communion into Hindi should either harmonise its title with this card or adjust this entry in the same PR.",
+   "गहरा जीवन renders \"the deeper life\" with the positive adjective: Hindi has no idiomatic bare comparative for an attributive like this, and अधिक गहरा जीवन reads as a comparison to something named. The corpus offered no precedent (zero hits for any गहरा/गहन + जीवन collocation), so this is a fresh rendering."
+  ]
  }
 }
