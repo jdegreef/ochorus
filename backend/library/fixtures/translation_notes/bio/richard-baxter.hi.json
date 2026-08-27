@@ -1,0 +1,16 @@
+{
+ "kind": "bio",
+ "slug": "richard-baxter",
+ "language": "hi",
+ "job_issue": 1096,
+ "pull_request": null,
+ "references": [],
+ "note": [
+  "No scripture is quoted or cited: every quotation is Baxter's own (chiefly the Reliquiae Baxterianae), Margaret Baxter's, or from his verse.",
+  "Latin titles and terms the English keeps in Latin are kept in Latin — Reliquiae Baxterianae, Praematura Senectus, habeas corpus — because they are the names of the things, not phrases to render.",
+  "This is the one of the five whose English uses CURLY quotation marks (17 pairs); the other four use straight. The Hindi mirrors each source separately, which is why the five files are not uniform with each other.",
+  "Take Root API is egress-blocked from this container (curl to api.takeroot.bible returns 000). The IRV text was fetched instead from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/hin_irv/usx — note the collection serves USX, not USFM), all 66 books / 31,104 verses, and every span marked mined was lifted from it with a script rather than typed.",
+  "The eight already-shipped Hindi bios MIRROR their English source's quotation marks — 8 of 8 pairs, including frederick-brotherton-meyer, whose English uses 18 straight quotes and whose Hindi carries exactly 18. Measured as PAIRS rather than as a column, which is what stops meyer looking like an outlier. This bio mirrors its own source accordingly.",
+  "Reconciled against the shipped Hindi corpus before shipping: conversion is मन-फिराव, the term the eight shipped bios settled on (9 uses, and zero of the मन-परिवर्तन this run first wrote). Names follow the shipped forms — डी. एल. मूडी, and हडसन टेलर as the Hindi deeper-life-in-christ plan card (job #696) fixed it."
+ ]
+}

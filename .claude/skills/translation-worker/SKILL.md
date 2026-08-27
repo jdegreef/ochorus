@@ -1675,3 +1675,45 @@ archaic spelling and period punctuation are the text, not defects in it.
   scan, keep the tag gate, and spend the time you saved on reading the fetched
   verses against what the English actually quotes — that is where this run's real
   findings came from.
+- **hi BIOS mirror their source's marks — and the "outlier" that seems to disprove it is
+  the proof** (jobs #1094-#1098). Counted as a COLUMN the eight shipped Hindi bios look
+  like a curly-quote house style with one straight-quoted exception
+  (`frederick-brotherton-meyer`, 18 straight). Paired against their own English sources,
+  **8 of 8 mirror exactly** — meyer's English uses 18 straight quotes and its Hindi carries
+  18. The apparent outlier is the file whose source differs, which is exactly what #423
+  found for sw sermons and #515 for es. The picture is now: **sw sermons mirror, hi bios
+  mirror, es books CONVERT to « », uk books CONVERT to « »** — so the question is never
+  "what does this language use?" but "what does this (language x TYPE) pair do, measured
+  file by file?". Practical consequence here: four of the five bios shipped straight-quoted
+  and Baxter curly, and the batch is deliberately NOT uniform with itself.
+- **The hi BIO band, n=8: 1.139-1.235, mean 1.182**, re-derived from the shipped pairs
+  (the first-batch entry above recorded 1.139-1.209; `john-wesley` at 1.235 extends it).
+  This batch of five landed 1.152-1.177. Hindi runs far ABOVE its English, so a session
+  borrowing any other language's band would compress a correct file.
+- **In Devanagari, a DOUBLED MATRA is the invisible slip — add it beside the mixed-script
+  scan** (job #1098). `मानने` typed with the vowel sign twice renders as a stray mark,
+  passes the tag gate, passes the digit check, passes a mixed-script scan (it is all
+  Devanagari), and would have shipped. One regex catches it:
+  `\w*([ा-ौ])\1\w*` over the html. This is the Devanagari cousin of the
+  Latin-in-Cyrillic check the uk bio batch records, and like that one it is a
+  keyboard-level slip, so a SINGLE-translator run needs it just as much as a fan-out.
+- **A one-context batch still drifts — from ITSELF** (jobs #1094-#1098, five bios
+  translated sequentially by one session). The batch entries above blame convention drift
+  on fan-out, and that is right about the mechanism but wrong about the cure: this run
+  wrote मन-परिवर्तन for *conversion* at eleven sites across four bios **while already
+  using मन-फिराव once in a fifth**, which is also the term the eight shipped Hindi bios
+  had settled on (9 uses, zero of the other). Nothing about a single context prevented it;
+  what caught it was running the cross-work reconciliation pass anyway and diffing the
+  batch's TERMS against the shipped corpus, not just against each other. Do that pass even
+  when there was no fan-out to reconcile, and normalise per grammatical form — the noun,
+  the plural and the participle each needed a different replacement here.
+- **A PR can MERGE mid-session, and then the branch you are told to develop on cannot
+  carry the next job** (this session, #1093 merged while five more jobs were in flight).
+  A merged PR is finished: it cannot track new work and must not be reused. Restart the
+  same branch name from the new default branch
+  (`git fetch origin main && git checkout -B <branch> origin/main`), which is safe when the
+  branch holds only already-merged history, then force-with-lease and open a NEW PR.
+  Two things to check rather than assume: that your uncommitted work survived the reset —
+  **by checksum, not by `git status`**, for the reason the #728 entry gives — and that the
+  merge did not already ship the target you are about to write, since the double-ship guard
+  is a check on fresh `origin/main` and a mid-session merge moves it.
