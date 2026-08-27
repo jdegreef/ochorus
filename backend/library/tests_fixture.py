@@ -161,6 +161,40 @@ class FixtureIntegrityTests(SimpleTestCase):
             "(CLAUDE.md: The fixture) — never hand-assign pks.",
         )
 
+    def test_prose_rows_carry_a_word_count(self):
+        # `word_count` drives the per-chapter reading-time estimate in the TOC
+        # drawer and the length sort on the books shelf, and NOTHING recomputes
+        # it after creation — `ingest.word_count` sets it once at import time,
+        # and no save() hook keeps it in step the way body_text is kept. So a
+        # row that arrived by any other route (a translation written straight to
+        # body_html, a queryset.update()) keeps its zero permanently, and the
+        # release backfill only repairs what already shipped.
+        #
+        # 32 chapters shipped this way — all 20 of all-of-grace.es, all 11 of
+        # prevailing-prayer.es, and one of the-inner-chamber.lg — so both
+        # Spanish books showed no reading times at all and sorted as the
+        # shortest in the library.
+        from library.ingest import word_count
+
+        blank = []
+        for r in self.rows:
+            if r["model"] not in ("library.chapter", "library.sermon"):
+                continue
+            f = r["fields"]
+            if f.get("word_count"):
+                continue
+            # A body with no words in it is legitimately zero.
+            words = word_count(f.get("body_html") or "")
+            if words:
+                blank.append((r["model"], f.get("book") or f.get("slug"), f.get("order"), words))
+        self.assertEqual(
+            blank[:5], [],
+            f"{len(blank)} prose row(s) ship with word_count 0 but have prose, first "
+            f"{blank[:5]} — the reader shows no reading time and sorts them shortest. "
+            "Run `manage.py backfill_word_count` against a seeded DB and re-serialize, "
+            "or set the count when the row is written.",
+        )
+
     def test_natural_identity_unique(self):
         # Content identity: what the DB's unique constraints enforce at load
         # time. A duplicate here is the same work added twice — loaddata is
