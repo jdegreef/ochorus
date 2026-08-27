@@ -108,6 +108,12 @@
 		clearTimeout(timer);
 		const term = q.trim();
 		if (term.length < 2) {
+			// Bump the token too. `clearTimeout` only helps while the debounce
+			// hasn't fired; a request already in flight still matches `searchSeq`
+			// when it lands and repaints the results we just cleared — "prayer"'s
+			// hits under a query of "p", which is the exact failure the token
+			// exists to prevent.
+			searchSeq++;
 			hits = [];
 			return;
 		}
@@ -146,8 +152,12 @@
 	$effect(() => {
 		if (paletteUi.open) {
 			// An in-flight debounce from the previous session would land on the
-			// fresh palette and repopulate it with the old query's hits.
+			// fresh palette and repopulate it with the old query's hits — and so
+			// would an in-flight FETCH, which `clearTimeout` can't reach. Retire
+			// its token as well, or Esc-then-⌘K reopens blank and then fills with
+			// the previous query's results, which Enter will happily navigate to.
 			clearTimeout(timer);
+			searchSeq++;
 			q = '';
 			hits = [];
 			activeIndex = 0;
