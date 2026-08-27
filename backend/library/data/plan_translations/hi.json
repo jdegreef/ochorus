@@ -28,5 +28,15 @@
    "The middle and closing phrases (भीतर वास करनेवाला जीवन, मिलन और संगति) are this entry's own renderings of the two untranslated books' motifs, not quotations of shipped titles. Whoever translates the-masters-indwelling or union-and-communion into Hindi should either harmonise its title with this card or adjust this entry in the same PR.",
    "गहरा जीवन renders \"the deeper life\" with the positive adjective: Hindi has no idiomatic bare comparative for an attributive like this, and अधिक गहरा जीवन reads as a comparison to something named. The corpus offered no precedent (zero hits for any गहरा/गहन + जीवन collocation), so this is a fresh rendering."
   ]
+ },
+ "humility-12-days": {
+  "title": "दीनता बारह दिनों में",
+  "description": "हर सद्गुण की जड़ पर एंड्रयू मरे की वह उत्कृष्ट पुस्तक — बारह दिनों तक, हर दिन एक छोटा अध्याय।",
+  "note": [
+   "Queue job #1103, shipping in the SAME PR as humility-2.hi.json because it has to. humility-12-days is a LAUNCH plan with a single source book, so the moment the Hindi Humility lands, seed_plans creates the Hindi plan row on the next deploy — and without this entry it would publish the English card in Hindi, which is exactly the defect PR #819 shipped in Arabic. Verified against a seeded database: with this entry the row is created with the Hindi prose.",
+   "«दीनता» is the shipped Hindi edition's own title verbatim, so the plan card and the book it opens agree — the same rule the Spanish (Humildad) and Swahili (Unyenyekevu) entries follow.",
+   "«हर सद्गुण की जड़» is the phrase the Hindi book itself uses for 'the root of every virtue' (humility-2.hi ch01: «हर गुण की जड़», rendered here with सद्गुण to match the English card's 'virtue'), so the card quotes the edition rather than re-rendering the motif. एंड्रयू मरे is the shipped Hindi form of the author's name, the same one the-inner-chamber-month and deeper-life-in-christ use.",
+   "Digits: the title spells out बारह rather than using 12, unlike the Spanish and Portuguese cards. Hindi reads a bare numeral in a heading as a count rather than a span of days, and the description carries the number anyway; the Swahili and Luganda entries make the same choice in the description."
+  ]
  }
 }

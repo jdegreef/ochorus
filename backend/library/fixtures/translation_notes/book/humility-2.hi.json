@@ -1,0 +1,340 @@
+{
+ "kind": "book",
+ "slug": "humility-2",
+ "language": "hi",
+ "job_issue": 1103,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Revelation 4:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Philippians 2:8",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Philippians 2:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 24
+  },
+  {
+   "reference": "Luke 22:27",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 36
+  },
+  {
+   "reference": "Matthew 23:12",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 38
+  },
+  {
+   "reference": "John 5:19",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 40
+  },
+  {
+   "reference": "John 5:30",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "John 5:41",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "John 6:38",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "John 7:16",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 45
+  },
+  {
+   "reference": "John 7:28",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 45
+  },
+  {
+   "reference": "John 14:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 46
+  },
+  {
+   "reference": "John 8:28",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "John 8:42",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 46
+  },
+  {
+   "reference": "John 8:50",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 46
+  },
+  {
+   "reference": "John 14:24",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 47
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 59
+  },
+  {
+   "reference": "Matthew 20:27",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Matthew 5:3, 5",
+   "status": "self_rendered",
+   "block_index": 61
+  },
+  {
+   "reference": "Luke 9:48",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 66
+  },
+  {
+   "reference": "Matthew 18:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 66
+  },
+  {
+   "reference": "Luke 14:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 70
+  },
+  {
+   "reference": "Luke 22:26",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 80
+  },
+  {
+   "reference": "Luke 5:8",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 82
+  },
+  {
+   "reference": "Matthew 20:28",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 87
+  },
+  {
+   "reference": "Romans 5:20",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 91
+  },
+  {
+   "reference": "Proverbs 3:7",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 101
+  },
+  {
+   "reference": "Romans 12:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 101
+  },
+  {
+   "reference": "Romans 12:16",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 101
+  },
+  {
+   "reference": "1 Corinthians 13:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 102
+  },
+  {
+   "reference": "Philippians 2:3",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 103
+  },
+  {
+   "reference": "Colossians 3:12-13",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 104
+  },
+  {
+   "reference": "Philippians 2:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 104
+  },
+  {
+   "reference": "Philippians 2:7",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 104
+  },
+  {
+   "reference": "Isaiah 65:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 119
+  },
+  {
+   "reference": "Job 1:6",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 123
+  },
+  {
+   "reference": "Luke 18:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 123
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 135
+  },
+  {
+   "reference": "1 Corinthians 15:9, 10",
+   "status": "self_rendered",
+   "block_index": 136
+  },
+  {
+   "reference": "1 Timothy 1:13, 15",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 137
+  },
+  {
+   "reference": "Ephesians 3:8",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 137
+  },
+  {
+   "reference": "1 Thessalonians 2:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 142
+  },
+  {
+   "reference": "2 Corinthians 1:12",
+   "status": "self_rendered",
+   "block_index": 142
+  },
+  {
+   "reference": "Isaiah 2:17",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 149
+  },
+  {
+   "reference": "John 5:44",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 152
+  },
+  {
+   "reference": "Matthew 15:28",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 157
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 180
+  },
+  {
+   "reference": "Hebrews 10:14",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 185
+  },
+  {
+   "reference": "2 Corinthians 12:9, 10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 192
+  },
+  {
+   "reference": "2 Corinthians 12:11",
+   "status": "self_rendered",
+   "block_index": 204
+  },
+  {
+   "reference": "2 Corinthians 12:9-10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 205
+  },
+  {
+   "reference": "James 4:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 213
+  },
+  {
+   "reference": "Luke 14:11, 18",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 213
+  },
+  {
+   "reference": "1 Peter 5:6",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 214
+  },
+  {
+   "reference": "Isaiah 57:15",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 230
+  }
+ ],
+ "note": [
+  "Take Root API is egress-blocked from this container (curl to api.takeroot.bible returns 000). The IRV was fetched instead from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/hin_irv/usx — that collection serves USX, not USFM), all 66 books / 31,104 verses, and every span marked mined was lifted from it with a script rather than typed.",
+  "Derived by measurement, not from a translator's report: each quoted span was byte-matched against the IRV verse it cites, blind only to our own quotation marks. 47 of 55 distinct references matched; the rest are the review queue.",
+  "Quotation marks MIRROR the English source, which is what the six shipped Hindi books do — 6 of 6 pairs reproduce their source's marks exactly, including clothed-with-strength-and-dignity carrying its source's 104 &quot; entities. Citations follow the shipped corpus: Western digits (3,252 against 0 Devanagari) and a tight C:V colon (364 of 367).",
+  "This book carries 11 BODY_CORRECTIONS entries plus a source_fixes repair on ch09, so the chapters were prepped through apply_body_corrections + apply_source_fixes and the CORRECTED text was translated — the fixture keeps the defects and the release chain repairs the rows on deploy, so prepping straight from the fixture would have handed known defects into a new language.",
+  "ENGLISH, found not fixed: ch08 opens «1 Timothy 1:15 umility is often identified...» — the chapter's first letter is missing, a dropped drop-cap. Rendered as the intended word, the same call BODY_CORRECTIONS already makes for L ORD. Also, &#x27; appears undecoded throughout this fixture (as it does in he-holds-my-tomorrows), which is why the per-block digit check reports phantom 27s.",
+  "ch02 opens with a paragraph whose quotation marks are garbled in the English (no opening mark, and a stray “ before the citation). Rendered as plain scripture with the citation at the end — which is exactly what the shipped Spanish, Arabic and Portuguese editions of this book all do at the same paragraph.",
+  "The 8 unverified references fall into two kinds, both conservative rather than composed. (a) The author ABRIDGES a verse mid-sentence to fit his argument — John 5:30 stops at «I seek not my own will», John 6:38 at «not to do my own», John 8:28 at «I can do nothing on my own» — so the Hindi carries the IRV's words but not a contiguous stretch of them. (b) The citation joins NON-ADJACENT verses (Matthew 5:3,5 skips 5:4; 1 Corinthians 15:9,10; Matthew 20:27 where the quotation runs on into 20:28), so the joined span cannot match the IRV contiguously even though each verse does. Both are listed unverified deliberately: it is better to overstate the review queue than to let an abridged quotation read as checked."
+ ]
+}
