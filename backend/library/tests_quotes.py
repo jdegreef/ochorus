@@ -12,19 +12,21 @@ import importlib
 import json
 from unittest import skipUnless
 
-from django.apps import apps
 from django.contrib.postgres.search import SearchVector
 from django.db import connection
+from django.db.migrations.executor import MigrationExecutor
 from django.db.models import Value
 from django.test import SimpleTestCase, TestCase
 
 from library.content_fixtures import BOOKS_DIR, SERMONS_DIR
+from library.ingest import word_count
 from library.models import Author, Book, Chapter
 from library.quotes import (
     assert_punctuation_only,
     convert,
     uses_guillemets,
 )
+from library.text import html_to_text
 
 MIGRATION = importlib.import_module("library.migrations.0082_repair_mixed_quotes")
 
@@ -104,6 +106,18 @@ class QuoteConversionTests(SimpleTestCase):
         with self.assertRaises(AssertionError):
             assert_punctuation_only("<p>a</p>", "<p><b>a</b></p>", "tags")
 
+    def test_the_guard_reads_scripts_the_old_allowlist_dropped(self):
+        """It listed Latin, Arabic and Cyrillic. Devanagari fell through it, so
+        on the Hindi editions it compared "" with "" and guarded nothing."""
+        for before, after in [
+            ("<p>नम्रता है</p>", "<p>नम्रता हैं</p>"),   # Devanagari (hi)
+            ("<p>ตัวอย่าง</p>", "<p>ตัวอย่างๆ</p>"),      # a script nothing listed
+            ("<p>a b</p>", "<p>a  b</p>"),               # whitespace
+            ("<p>one, two</p>", "<p>one; two</p>"),      # punctuation
+        ]:
+            with self.subTest(before=before), self.assertRaises(AssertionError):
+                assert_punctuation_only(before, after, "script")
+
 
 class Migration0082FidelityTests(SimpleTestCase):
     """The rows the migration repairs must land on the text the fixture holds.
@@ -141,9 +155,31 @@ class Migration0082FidelityTests(SimpleTestCase):
                     )
                     self.assertEqual(out, body)
 
+    def test_both_body_fields_carry_the_same_marks(self):
+        """`body_text` is what search indexes, and `loaddata` writes it VERBATIM.
+
+        The first sweep converted `body_html` only, so these four works shipped
+        a `body_text` still holding all 299 of their pre-conversion straight
+        marks — a fresh database indexed and snippeted straight quotes while its
+        pages rendered « ». `backfill_body_text` would not have caught it: it
+        fills an EMPTY `body_text`, never a wrong one.
+
+        Scoped to these works deliberately. The same drift is corpus-wide (46
+        files, ~12,000 marks) and repairing it is its own change; this pins the
+        part repaired here so it cannot regress.
+        """
+        for path in [*MIGRATION_0082, SERMON_ALREADY_SEEDED]:
+            with self.subTest(path.name):
+                for row in json.loads(path.read_text(encoding="utf-8")):
+                    body_html = row["fields"].get("body_html")
+                    body_text = row["fields"].get("body_text")
+                    if not body_html or body_text is None:
+                        continue
+                    self.assertEqual(html_to_text(body_html), body_text)
+
 
 class Migration0082BehaviourTests(TestCase):
-    """The migration itself, against real rows.
+    """The migration itself, run the way `migrate` runs it.
 
     `Migration0082FidelityTests` proves the fixture needs no conversion; that is
     the state AFTER this has run everywhere. This proves the step that gets a
@@ -151,15 +187,27 @@ class Migration0082BehaviourTests(TestCase):
     a deployed database holds eight other editions of
     `clothed-with-strength-and-dignity`, and the converter would give an English
     chapter's straight quotes the Spanish outer mark.
+
+    HISTORICAL models, not `django.apps.apps`. Passing the live registry looks
+    equivalent and quietly disarms two of these tests: a real `Chapter.save()`
+    re-derives `body_text` itself, so `_derive` could be deleted outright and
+    they would still pass; and it fires `fts.refresh_chapter`, which repopulates
+    the very vector the migration nulls. The migration receives models with no
+    hooks at all, so that is what it is given here.
     """
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        executor = MigrationExecutor(connection)
+        cls.historical = executor.loader.project_state(
+            ("library", MIGRATION.Migration.dependencies[0][1])
+        ).apps
 
     def _book(self, language, body):
         author = Author.objects.create(slug=f"a-{language}", name="A")
         book = Book.objects.create(
-            slug="clothed-with-strength-and-dignity",
-            language=language,
-            title="T",
-            author=author,
+            slug=MIGRATION.BOOK_SLUGS[0], language=language, title="T", author=author
         )
         return Chapter.objects.create(book=book, order=1, title="One", body_html=body)
 
@@ -167,7 +215,7 @@ class Migration0082BehaviourTests(TestCase):
         es = self._book("es", '<p>«Él dijo: "ven".» Y luego "se fue".</p>')
         en = self._book("en", '<p>He said, "come." And then "he left."</p>')
 
-        MIGRATION.repair(apps, None)
+        MIGRATION.repair(self.historical, None)
 
         es.refresh_from_db()
         en.refresh_from_db()
@@ -179,17 +227,28 @@ class Migration0082BehaviourTests(TestCase):
         )
 
     def test_it_re_derives_what_save_would_have_derived(self):
-        """A historical model runs no `save()` hook, so the repair has to do by
-        hand what the hook would have done — otherwise `body_text` (what search
-        indexes) still holds the old marks."""
-        chapter = self._book("es", '<p>«Él dijo: "ven".»</p>')
+        """No hook runs, so the repair must do by hand what `save()` would.
+
+        Compared against a real `save()` rather than against itself: a local
+        `<[^>]+>` sub passes self-consistency and still spaces every inline tag
+        and leaves entities escaped.
+        """
+        chapter = self._book("es", '<p>«Él dijo: <i>"ven"</i>, y G&amp;C vino.»</p>')
         Chapter.objects.filter(pk=chapter.pk).update(body_text="stale", word_count=0)
 
-        MIGRATION.repair(apps, None)
+        MIGRATION.repair(self.historical, None)
 
         chapter.refresh_from_db()
         self.assertIn("“ven”", chapter.body_text)
-        self.assertEqual(chapter.word_count, len(chapter.body_text.split()))
+
+        witness = Chapter.objects.create(
+            book=chapter.book, order=99, title="W", body_html=chapter.body_html
+        )
+        self.assertEqual(chapter.body_text, witness.body_text)
+        # `word_count` gets no witness: `save()` does not set it — that is what
+        # `backfill_word_count` exists for — so the import-time rule is the
+        # reference, and a witness row would only prove 0 == 0.
+        self.assertEqual(chapter.word_count, word_count(chapter.body_html))
 
     @skipUnless(connection.vendor == "postgresql", "tsvector is a Postgres type")
     def test_it_nulls_the_vector_it_invalidates(self):
@@ -202,7 +261,7 @@ class Migration0082BehaviourTests(TestCase):
             search_vector=SearchVector(Value("stale"))
         )
 
-        MIGRATION.repair(apps, None)
+        MIGRATION.repair(self.historical, None)
 
         chapter.refresh_from_db()
         self.assertIsNone(chapter.search_vector)
@@ -212,13 +271,13 @@ class Migration0082BehaviourTests(TestCase):
 
         A repair that saved every row anyway would null every search vector it
         touched, queueing the whole corpus for a needless rebuild on a deploy
-        where nothing changed. `body_text` is the witness: any save re-derives
-        it from `body_html`, so a marker surviving proves no save happened.
+        where nothing changed. `body_text` is the witness: a save rewrites it
+        from `body_html`, so a marker surviving proves no save happened.
         """
         chapter = self._book("es", "<p>«Él dijo: “ven”.»</p>")
         Chapter.objects.filter(pk=chapter.pk).update(body_text="untouched-marker")
 
-        MIGRATION.repair(apps, None)
+        MIGRATION.repair(self.historical, None)
 
         chapter.refresh_from_db()
         self.assertEqual(chapter.body_html, "<p>«Él dijo: “ven”.»</p>")

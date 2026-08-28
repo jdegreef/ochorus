@@ -182,15 +182,27 @@ def convert_work(bodies: list[str], label: str) -> tuple[list[str], int]:
     return out, total
 
 
-def rendered_letters(text: str) -> str:
-    """Rendered letters and digits only.
+# The marks `convert` is allowed to move, and nothing else.
+_MARKS = re.compile(r'["“”«»]')
 
-    Entities must be unescaped FIRST. `&quot;` literally contains q-u-o-t, so
-    comparing raw strings reports "letters changed" the moment an entity becomes
-    a curly mark — which is exactly what the assertion caught on the first run.
-    What must be identical is what the reader sees, not the storage form.
+
+def rendered_without_marks(text: str) -> str:
+    """Everything the reader sees EXCEPT the quotation marks themselves.
+
+    Stated as a subtraction rather than as an allowlist of scripts, which is
+    what it was: `[0-9A-Za-zÀ-ɏ؀-ۿЀ-ӿ]` covers Latin, Arabic and Cyrillic and
+    silently drops Devanagari — so on the Hindi editions the wording half of
+    `assert_punctuation_only` was comparing "" with "" and guarding nothing, on
+    exactly the works whose script no reviewer here can proofread. Subtracting
+    also widens the guard for every language at once: punctuation, digits and
+    whitespace are now compared too, and none of them is `convert`'s to move.
+
+    Entities are unescaped FIRST. `&quot;` literally contains q-u-o-t, so
+    comparing raw strings reports "text changed" the moment an entity becomes a
+    curly mark — which is what this assertion caught on its first run. What must
+    be identical is what the reader sees, not the storage form.
     """
-    return re.sub(r"[^0-9A-Za-zÀ-ɏ؀-ۿЀ-ӿ]", "", unescape(TAG.sub("", text)))
+    return _MARKS.sub("", unescape(TAG.sub("", text)))
 
 
 def assert_punctuation_only(before: str, after: str, where: str) -> None:
@@ -202,6 +214,6 @@ def assert_punctuation_only(before: str, after: str, where: str) -> None:
     would be the one place it was needed.
     """
     assert TAG.findall(before) == TAG.findall(after), f"{where}: tag sequence moved"
-    assert rendered_letters(before) == rendered_letters(after), (
-        f"{where}: letters/digits changed"
+    assert rendered_without_marks(before) == rendered_without_marks(after), (
+        f"{where}: text other than the quotation marks changed"
     )
