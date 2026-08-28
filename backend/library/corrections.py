@@ -120,6 +120,34 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 # `apply_body_corrections`, plus a data migration for prod).
 
 BODY_CORRECTIONS: dict[str, dict] = {
+    "all-of-grace": {
+        # Four OCR slips in the English text, found while translating the book
+        # to Hindi. All four are single occurrences and none changes meaning —
+        # each mis-read produces a NON-WORD, so there is no reading in which
+        # they are Spurgeon's period spelling rather than the scanner's error:
+        #
+        #   everasting  ch08  quoting John 4:14, "springing up into everlasting
+        #                     life" — the l is simply dropped
+        #   wordly      ch11  "wordly cares"; the book spells worldly correctly
+        #                     elsewhere (ch07, "worldly lusts")
+        #   which l would ch11 quoting Romans 7:18, "how to perform that which I
+        #                     would I find not" — the classic l/I confusion, and
+        #                     the same sentence is quoted correctly in ch01
+        #   mutrition   ch13  "the whole process of nutrition"
+        #
+        # English-only: the es and lg editions already read eterna/nutrición/
+        # mundanas and obulamu/emmere/ensi, so all three translators read
+        # through the damage and nothing propagated. That is why this is a
+        # BODY_CORRECTIONS entry and not a source_fixes one.
+        #
+        # Each pair carries a following word so it cannot match anywhere else.
+        "replacements": [
+            ("into everasting life", "into everlasting life"),
+            ("with wordly cares", "with worldly cares"),
+            ("that which l would I find not", "that which I would I find not"),
+            ("process of mutrition", "process of nutrition"),
+        ],
+    },
     "baptism-with-the-holy-spirit": {
         # Source defects (OCR) in the English text, found while translating the
         # book to Portuguese. Both are scripture references only — the prose is
