@@ -75,6 +75,54 @@ class EnglishAuditPrecisionTests(SimpleTestCase):
         # This single test took the class from 233 findings to 8.
         self.assertNotIn("broken-smallcaps", _findings("<p>A SHORT preface follows</p>"))
 
+    def test_word_fusion_needs_a_function_head_a_common_tail_and_a_rare_whole(self):
+        """The three conditions, and the convention each one spares.
+
+        Measured against the corpus: all three together find 17 and every one
+        is a real defect. Drop any one of them and the class re-floods, which
+        is the failure this module exists to avoid.
+        """
+        # The defect: a space lost inside a sentence.
+        self.assertEqual(_findings("<p>all my children weresafe, and he hoped</p>").get("word-fusion"), 1)
+        self.assertEqual(_findings("<p>it would not be amiss tospeak of it</p>").get("word-fusion"), 1)
+
+        # 1. The head must be a function word that cannot begin an English word.
+        #    `in`, `be`, `for` and `up` are productive prefixes and are excluded
+        #    by their absence — otherwise `inborn`, `befitting`, `forgiver` and
+        #    `upbringing` all read as fusions.
+        for ordinary in ("inborn", "befitting", "forgiver", "upbringing", "aboard"):
+            self.assertNotIn(
+                "word-fusion",
+                _findings(f"<p>the {ordinary} thing</p>"),
+                f"{ordinary} begins with a productive prefix, not a lost space",
+            )
+
+        # 2. The tail must be a word the library uses often. Without this the
+        #    same heads match ordinary vocabulary.
+        for ordinary in ("tornado", "torchlight", "buttery", "shearings", "tonsure"):
+            self.assertNotIn(
+                "word-fusion",
+                _findings(f"<p>the {ordinary} was there</p>"),
+                f"{ordinary} splits into a head and a non-word, not two words",
+            )
+
+        # 3. The fused form must itself be rare. A real word recurs — `himself`
+        #    3,491 times across the library, `today` 445 — so the corpus counts
+        #    are what tell a compound from a fusion.
+        for real in ("himself", "themselves", "yourself", "today", "whatever", "whenever"):
+            self.assertNotIn(
+                "word-fusion",
+                _findings(f"<p>he said {real} would do</p>"),
+                f"{real} is a word the library uses constantly, not a fusion",
+            )
+
+    def test_word_fusion_spares_the_latin_it_cannot_judge(self):
+        """A foreign quotation is the one thing an English word oracle can't
+        read: `solet` and `nomen` are Latin, and both are named rather than
+        reasoned about."""
+        for latin in ("solet", "nomen"):
+            self.assertNotIn("word-fusion", _findings(f"<p>tristis abire {latin} est</p>"))
+
     def test_dropcap_only_when_the_remainder_is_a_common_word(self):
         self.assertEqual(_findings("<p>Ithink it is so</p>").get("dropcap-fused"), 1)
         for ordinary in ("Indian", "Inquire", "Ireland", "Increase"):
