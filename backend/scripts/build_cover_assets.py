@@ -51,10 +51,11 @@ from library.covers import (  # noqa: E402
     COVER_WIDTHS,
     RASTER_SUFFIXES,
     art_url,
+    keeps_english_designed,
+    shares_a_ground,
     variant_url,
 )
-from library.curated_art import CURATED  # noqa: E402
-from library.designed_covers import DERIVED_GROUND, DESIGNED_BY_SLUG  # noqa: E402
+from library.designed_covers import DESIGNED_BY_SLUG  # noqa: E402
 
 COVERS = BACKEND.parent / "frontend" / "static" / "covers"
 
@@ -110,7 +111,7 @@ def main() -> int:
         # that its editions point at. Written here as well as by the script that
         # draws it because the DB is not the vehicle: `seed_books` re-asserts
         # cover_url from the fixture every deploy.
-        if slug in CURATED or slug in DERIVED_GROUND:
+        if shares_a_ground(slug):
             url, rel = art_url(slug)
             # THE ENGLISH ROW IS THE EXCEPTION, and the reason the two tiers are
             # not simply merged here. A derived ground was cut FROM the English
@@ -120,7 +121,7 @@ def main() -> int:
             # no such cover, and every one of its languages takes the painting.
             wants = (
                 DESIGNED_BY_SLUG[slug]
-                if slug in DERIVED_GROUND and language == "en"
+                if keeps_english_designed(slug) and language == "en"
                 else url
             )
             if fields.get("cover_url") != wants:
@@ -161,7 +162,7 @@ def main() -> int:
             # The English designed cover is a raster a reader downloads too, and
             # this branch `continue`s past the tier below that would have
             # collected it — so it would have shipped without its variants.
-            if slug in DERIVED_GROUND and language == "en":
+            if keeps_english_designed(slug) and language == "en":
                 sources.add(COVERS / wants.removeprefix("/covers/"))
             continue
         cover = fields.get("cover_url") or ""

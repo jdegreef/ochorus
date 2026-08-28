@@ -45,9 +45,12 @@ from __future__ import annotations
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
-from library.covers import build_ground, cover_path, emblem_for_book
-from library.curated_art import CURATED
-from library.designed_covers import DERIVED_GROUND
+from library.covers import (
+    build_ground,
+    cover_path,
+    emblem_for_book,
+    shares_a_ground,
+)
 from library.models import Book
 
 COVERS_DIR = settings.BASE_DIR.parent / "frontend" / "static" / "covers"
@@ -101,11 +104,12 @@ class Command(BaseCommand):
             # (curated) or `scripts/build_derived_grounds.py` (derived), never
             # from here.
             #
-            # DERIVED_GROUND is checked for a reason worth stating: without it
-            # a freshly translated derived edition took the plate below, which
-            # is the exact downgrade that tier exists to prevent — and left a
-            # committed SVG that then hard-exits `build_cover_assets`.
-            if book.slug in CURATED or book.slug in DERIVED_GROUND:
+            # The designed-cover tiers are in here for a reason worth stating:
+            # without them a freshly translated edition of such a work took the
+            # plate below, which is the exact downgrade they exist to prevent —
+            # and left a committed SVG that then hard-exits
+            # `build_cover_assets`.
+            if shares_a_ground(book.slug):
                 skipped_curated += 1
                 continue
             # Without --force, only fill the gaps.

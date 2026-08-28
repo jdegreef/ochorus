@@ -51,6 +51,12 @@ import re
 from functools import lru_cache
 from pathlib import Path
 
+# The three cover-tier registries, for the two predicates below. Both are plain
+# tables with no Django import between them and this, which is what lets the
+# predicates live beside `art_url` rather than in a command.
+from library.curated_art import CURATED, CURATED_GROUND
+from library.designed_covers import DERIVED_GROUND
+
 # A plain module, imported for exactly that reason — see its docstring.
 from library.topic_seed import TOPICS
 
@@ -80,6 +86,43 @@ def art_url(slug: str) -> tuple[str, str]:
     language points at it and ``BookCover`` draws that edition's title over it.
     """
     return f"/covers/art/{slug}.jpg", f"art/{slug}.jpg"
+
+
+def shares_a_ground(slug: str) -> bool:
+    """Does this work's artwork live in ONE wordless file under ``covers/art/``?
+
+    True for all three shared-ground tiers, which differ in where that file
+    comes from and in nothing a caller of this cares about:
+
+    * ``CURATED`` — a museum painting, fetched by ``build_curated_covers``.
+    * ``DERIVED_GROUND`` — a crop of the work's own designed English cover,
+      drawn by ``scripts/build_derived_grounds.py``.
+    * ``CURATED_GROUND`` — a museum painting for a work that HAS a designed
+      English cover but no croppable picture inside it.
+
+    Three call sites spelled the membership out as an ``or`` over two tables —
+    ``generate_covers``, ``scripts/localize_covers.py`` and
+    ``scripts/build_cover_assets.py``. A third tier is what turns that
+    repetition into a hazard: miss one site and a work is half in the tier,
+    which does not fail loudly — it draws a plate over a book that already has
+    a cover, or ships a painting with no webp variants.
+    """
+    return slug in CURATED or slug in DERIVED_GROUND or slug in CURATED_GROUND
+
+
+def keeps_english_designed(slug: str) -> bool:
+    """Does English wear a hand-made cover while the translations wear a ground?
+
+    The exception inside ``shares_a_ground``. A ground exists so a translated
+    edition is not stuck with English words baked into a raster; the English
+    edition has no such problem and goes on wearing the cover someone drew for
+    it. Repointing it at the ground is the precise loss both designed-cover
+    tiers exist to prevent.
+
+    ``CURATED`` is the tier this is false for: those works have no designed
+    cover, so every one of their languages takes the painting.
+    """
+    return slug in DERIVED_GROUND or slug in CURATED_GROUND
 
 
 def variant_url(cover_url: str, width: int) -> str:

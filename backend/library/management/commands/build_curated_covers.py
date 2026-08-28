@@ -50,8 +50,8 @@ from pathlib import Path
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 
-from library.covers import art_url
-from library.curated_art import CURATED, Artwork
+from library.covers import art_url, keeps_english_designed
+from library.curated_art import CURATED, CURATED_GROUND, Artwork
 from library.models import Book
 
 COVERS_DIR = settings.BASE_DIR.parent / "frontend" / "static" / "covers"
@@ -201,14 +201,19 @@ class Command(BaseCommand):
         parser.add_argument("--dry-run", action="store_true")
 
     def handle(self, *args, **opts):
-        slugs = opts["slugs"] or list(CURATED)
-        unknown = [s for s in slugs if s not in CURATED]
+        # BOTH curated tiers are fetched here, because fetching is the half
+        # they share: same collections, same licence re-check, same 3:4 crop,
+        # same one file per work. Where they part is who POINTS at that file,
+        # which is the loop below and not this line.
+        manifest = {**CURATED, **CURATED_GROUND}
+        slugs = opts["slugs"] or list(manifest)
+        unknown = [s for s in slugs if s not in manifest]
         if unknown:
             raise CommandError(f"Not in the curated manifest: {', '.join(unknown)}")
 
         wrote = 0
         for slug in slugs:
-            art = CURATED[slug]
+            art = manifest[slug]
             rows = list(Book.objects.select_related("author").filter(slug=slug))
             if not rows:
                 self.stdout.write(self.style.WARNING(f"  – {slug}: no Book rows, skipping"))
@@ -229,6 +234,16 @@ class Command(BaseCommand):
                 dest.parent.mkdir(parents=True, exist_ok=True)
                 dest.write_bytes(jpeg.read_bytes())
                 for book in rows:
+                    # THE ENGLISH ROW OF A `CURATED_GROUND` WORK IS NOT MOVED.
+                    # That work has a hand-made English cover and came here only
+                    # because no wordless picture could be cut out of it; the
+                    # painting is for the translations. Repointing English at it
+                    # would retire the designed cover, which is the whole thing
+                    # this tier exists to avoid — and it would do it silently,
+                    # since every other gate is satisfied by a row pointing at a
+                    # painting that really is there.
+                    if keeps_english_designed(slug) and book.language == "en":
+                        continue
                     if book.cover_url != url:
                         book.cover_url = url
                         book.save(update_fields=["cover_url"])
