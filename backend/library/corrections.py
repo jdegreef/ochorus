@@ -36,6 +36,30 @@ EXCLUDED_SLUGS: set[str] = {
 }
 
 CORRECTIONS: dict[str, dict] = {
+    "mortification-of-sin": {
+        # CCEL's TOC titles these "Chapter I."…"Chapter XIV.", which the
+        # numbering-cleanup leaves blank so the reader shows a bare "Chapter N"
+        # — and the Preface takes slot 1, so those numbers are one ahead of
+        # Owen's own. Each title below is the lead clause of Owen's own chapter
+        # summary, which the edition prints as the chapter's opening line.
+        "chapter_titles": {
+            2: "The foundation of the whole discourse, laid in Romans viii. 13",
+            3: "The necessity of mortification: the duty of the best believers",
+            4: "The Spirit is the only author of this work",
+            5: "The usefulness of mortification to the vigour of our spiritual lives",
+            6: "What it is to mortify a sin, negatively considered",
+            7: "The mortification of sin in particular described",
+            8: "General rules, without which no lust will be mortified",
+            9: "Without universal sincerity, no one lust will be mortified",
+            10: "Consider the dangerous symptoms of any lust",
+            11: "Get a clear sense of the guilt, danger and evil of the sin",
+            12: "Load thy conscience with the guilt of the perplexing distemper",
+            13: "Thoughtfulness of the excellency of the majesty of God",
+            14: "When the heart is disquieted by sin, speak no peace to it "
+                "until God speak it",
+            15: "Act faith on Christ for the killing of thy sin",
+        },
+    },
     "the-bruised-reed": {
         # Grosart's scan carries its chapter titles on the marker line, where
         # they both truncate and pick up the worst of the OCR. Each title below
