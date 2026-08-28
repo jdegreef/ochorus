@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { coverGradient, coverSrcset, isArtCover, isPlateCover } from '$lib/coverArt';
+	import { scrimStrength } from '$lib/coverScrim';
 	import { coverStyleFor, scriptOf } from '$lib/coverStyles';
 	import { contentLang } from '$lib/reading';
 	import { eraOf } from '$lib/eras';
@@ -177,7 +178,18 @@
 		{#if overFile}
 			<!-- The ground carries no words, so the cover's type is drawn here —
 			     one shared image, a title per language. -->
-			<div class="cover-plate over-file" class:over-art={isArt} role="img" aria-label={label}>
+			<!-- `--scrim-strength` only reaches a painting: the scrim it scales is on
+			     `.over-art`, and a plate has none. Measured per work rather than
+			     chosen, because how much darkening a picture needs is a property of
+			     the picture — the library spans 0.30x to 1.00x, and one strength for
+			     all of them has to be the palest one's. -->
+			<div
+				class="cover-plate over-file"
+				class:over-art={isArt}
+				style={isArt ? `--scrim-strength: ${scrimStrength(book.slug)}` : undefined}
+				role="img"
+				aria-label={label}
+			>
 				{@render plateType(isPlate)}
 			</div>
 		{/if}

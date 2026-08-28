@@ -191,6 +191,13 @@ class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
             "word_count",
             "topics",
             "created_at",
+            # The sitemap's <lastmod>. `auto_now`, but seed_books diffs every
+            # field and only calls save() when one really changed, so a deploy
+            # that re-upserts an unchanged book does NOT re-stamp it — which is
+            # what makes this honest enough to hand a crawler. created_at was
+            # standing in for it and told them a corrected book was last
+            # touched on its import day.
+            "updated_at",
         ]
 
     def get_topics(self, obj):
@@ -252,6 +259,8 @@ class SermonListSerializer(serializers.ModelSerializer):
             "word_count",
             "author",
             "created_at",
+            # The sitemap's <lastmod> — see BookListSerializer.updated_at.
+            "updated_at",
         ]
 
 

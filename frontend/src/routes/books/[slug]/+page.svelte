@@ -22,10 +22,15 @@
 	const t = i18n.t;
 	const book = $derived<BookDetail>(data.book);
 
-	// Download-for-offline state for this book.
-	const savedOffline = $derived(offlineBooks.has(book.slug));
+	// Download-for-offline state for THIS EDITION. `book.language` is the
+	// language the API actually served (getBook falls back to English for a book
+	// with no copy in this locale), so it is what was cached and what must be
+	// asked for — not the UI locale.
+	const savedOffline = $derived(offlineBooks.has(book.slug, book.language));
 	const downloading = $derived(
-		offlineBooks.active?.slug === book.slug ? offlineBooks.active : null
+		offlineBooks.active?.slug === book.slug && offlineBooks.active?.language === book.language
+			? offlineBooks.active
+			: null
 	);
 
 	let resumeOrder = $state<number | null>(null);
@@ -183,7 +188,7 @@
 					<button
 						class="btn btn-ghost"
 						title={t('offline.remove')}
-						onclick={() => offlineBooks.remove(book.slug)}
+						onclick={() => offlineBooks.remove(book.slug, book.language)}
 					>
 						✓ {t('offline.saved')}
 					</button>

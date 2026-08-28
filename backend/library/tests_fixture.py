@@ -53,9 +53,14 @@ from library.content_fixtures import (
     work_filename,
 )
 from library.covers import (
+    _AUTHOR_Y,
+    _FRAME_INSET,
+    AUTHOR_INK_OPACITY,
     AUTHOR_MIN_CONTRAST,
     COVER_WIDTHS,
     RASTER_SUFFIXES,
+    H,
+    W,
     art_url,
     author_ink_contrast,
     twin_path,
@@ -159,6 +164,40 @@ class FixtureIntegrityTests(SimpleTestCase):
             f"{len(stale)} old-format (integer-pk) row(s), first {stale[:5]}. "
             "Re-serialize with Django's serializer using natural keys "
             "(CLAUDE.md: The fixture) — never hand-assign pks.",
+        )
+
+    def test_prose_rows_carry_a_word_count(self):
+        # `word_count` drives the per-chapter reading-time estimate in the TOC
+        # drawer and the length sort on the books shelf, and NOTHING recomputes
+        # it after creation — `ingest.word_count` sets it once at import time,
+        # and no save() hook keeps it in step the way body_text is kept. So a
+        # row that arrived by any other route (a translation written straight to
+        # body_html, a queryset.update()) keeps its zero permanently, and the
+        # release backfill only repairs what already shipped.
+        #
+        # 32 chapters shipped this way — all 20 of all-of-grace.es, all 11 of
+        # prevailing-prayer.es, and one of the-inner-chamber.lg — so both
+        # Spanish books showed no reading times at all and sorted as the
+        # shortest in the library.
+        from library.ingest import word_count
+
+        blank = []
+        for r in self.rows:
+            if r["model"] not in ("library.chapter", "library.sermon"):
+                continue
+            f = r["fields"]
+            if f.get("word_count"):
+                continue
+            # A body with no words in it is legitimately zero.
+            words = word_count(f.get("body_html") or "")
+            if words:
+                blank.append((r["model"], f.get("book") or f.get("slug"), f.get("order"), words))
+        self.assertEqual(
+            blank[:5], [],
+            f"{len(blank)} prose row(s) ship with word_count 0 but have prose, first "
+            f"{blank[:5]} — the reader shows no reading time and sorts them shortest. "
+            "Run `manage.py backfill_word_count` against a seeded DB and re-serialize, "
+            "or set the count when the row is written.",
         )
 
     def test_natural_identity_unique(self):
@@ -1094,6 +1133,83 @@ class CoverAssetTests(SimpleTestCase):
             "`uv run python scripts/build_derived_grounds.py`",
         )
 
+    def test_every_painting_still_carries_white_type(self):
+        """The scrim is light enough that this is no longer a tautology.
+
+        `.cover-plate.over-art` used to be heavy enough that a sheet of pure
+        WHITE cleared AA under it — so measuring the committed paintings proved
+        nothing, and the frontend gate says so in as many words. It was also why
+        a translated cover looked dark beside its English one: every painting
+        was shown at 38.7% of its own brightness, and at the foot as little as
+        21%, because a single even wash had to serve the brightest artwork in
+        the library.
+
+        The scrim now follows the type — three overlapping bands, air between —
+        and the paintings read at 53.4%. The guarantee narrows with it: white
+        type is safe over THESE paintings, not over any painting. So the
+        measurement has to be real, and this is it. Add a pale painting and this
+        fails with its name before a reader finds it.
+
+        Pillow is a dev-group dependency, like the rest of `CoverAssetTests`'
+        image work; the whole sweep is well under a second.
+        """
+        from PIL import Image
+
+        from library.art_scrim import ART_SCRIM
+        from library.covers import scrimmed
+
+        def relative_luminance(channels):
+            def channel(v):
+                v /= 255
+                return v / 12.92 if v <= 0.03928 else ((v + 0.055) / 1.055) ** 2.4
+
+            r, g, b = (channel(c) for c in channels)
+            return 0.2126 * r + 0.7152 * g + 0.0722 * b
+
+        def worst(band, opacity):
+            """Least white-on-artwork contrast anywhere in a band."""
+            out = 1e9
+            for px in band.getdata():
+                ink = tuple(round(255 * opacity + c * (1 - opacity)) for c in px)
+                a, b = relative_luminance(ink) + 0.05, relative_luminance(px) + 0.05
+                out = min(out, max(a, b) / min(a, b))
+            return out
+
+        art_dir = STATIC_DIR / "covers" / "art"
+        thin, untuned = [], []
+        for path in sorted(art_dir.glob("*.jpg")):
+            # AT ITS OWN STRENGTH, which is the thing being checked. A painting
+            # with no entry falls back to the full scrim — the safe end, and what
+            # every painting carried before the table existed — but it is still
+            # reported, because an untuned painting is carrying the weight the
+            # palest artwork in the library needs.
+            if path.stem not in ART_SCRIM:
+                untuned.append(path.stem)
+            plate = scrimmed(
+                Image.open(path).convert("RGB").resize((W, H), Image.LANCZOS),
+                ART_SCRIM.get(path.stem, 1.0),
+            )
+            # The byline is the binding constraint at 4.5:1 (it is not large
+            # text); the title runs 7.6-10.45cqw and asks 3:1.
+            byline = plate.crop((_FRAME_INSET, _AUTHOR_Y - 9, W - _FRAME_INSET, _AUTHOR_Y + 9))
+            title = plate.crop((_FRAME_INSET, round(H * 0.36), W - _FRAME_INSET, round(H * 0.62)))
+            wb = worst(byline, AUTHOR_INK_OPACITY)
+            wt = worst(title, 1.0)
+            if wb < AUTHOR_MIN_CONTRAST or wt < 3.0:
+                thin.append(f"{path.stem}: byline {wb:.2f}:1, title {wt:.2f}:1")
+        self.assertEqual(
+            thin, [],
+            "a painting too pale for white type under the scrim it is given — "
+            "re-run `cd backend && uv run python scripts/tune_art_scrim.py`, or "
+            "recrop the artwork if no strength carries it",
+        )
+        self.assertEqual(
+            untuned, [],
+            "a painting with no measured scrim strength — it is wearing the "
+            "weight the palest artwork needs. Run "
+            "`cd backend && uv run python scripts/tune_art_scrim.py`",
+        )
+
     def test_covers_that_cannot_be_shared_have_a_raster_twin(self):
         """og:image falls back to an edition's twin — that file must exist.
 
@@ -1395,7 +1511,20 @@ class QuoteStyleTests(SimpleTestCase):
                 r["fields"].get("body_html", "") or "" for r in rows
             ))
             straight = text.count("&quot;") + text.count('"')
-            curly = text.count("“") + text.count("”")
+            # Guillemets count here too, as a typographic mark and not a third
+            # style. Spanish books set « » as the OUTER mark and “ ” as the
+            # nested one, so a file carrying « with straight marks is mixing
+            # exactly what this guard exists to stop — but it carries no “, and
+            # counting only curly marks left four es works invisible
+            # (prevailing-prayer, jesus-himself-2,
+            # clothed-with-strength-and-dignity, and the unfailing-springs
+            # sermon). It also surfaced a genuine defect the narrow count could
+            # not see: susanna-wesley-clarke.en, wholly straight-quoted, had ten
+            # OCR-damaged guillemets in it — two of them corrupted letters.
+            curly = (
+                text.count("“") + text.count("”")
+                + text.count("«") + text.count("»")
+            )
             if straight and curly:
                 offenders.append(f"{path.name}: {straight} straight, {curly} curly")
         self.assertEqual(

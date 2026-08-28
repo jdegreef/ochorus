@@ -102,7 +102,16 @@ def verify_deployed(lang: Language) -> dict:
 
     The honest answer to "did my launch land", which the status field cannot
     give: it reflects the decision, not the deploy. Fetches the live sitemap and
-    looks for the locale's URL prefix.
+    looks for evidence of the locale.
+
+    TWO SITEMAP SHAPES, deliberately. `sitemap.xml` is a `<sitemapindex>` over
+    per-type children, and a locale's `sitemap-chapters-<code>.xml` is linked
+    there only when the BUILT site really carries that locale's chapters — so
+    the index alone answers the question, in one request. The old flat
+    `<urlset>` is still understood because the API and the reader deploy as
+    separate Render services: between the two deploys the live sitemap is the
+    previous shape, and a launch checked in that window must not report a
+    failure that isn't happening.
     """
     site = settings.PUBLIC_SITE_URL
     if not site:
@@ -121,8 +130,14 @@ def verify_deployed(lang: Language) -> dict:
         }
     if not res.ok:
         return {"status": "unknown", "detail": f"Sitemap returned {res.status_code}."}
-    needle = f"{site}/{lang.code}/"
-    if needle in res.text:
+    if "<sitemapindex" in res.text:
+        # The child's own name carries the locale, so no child needs fetching.
+        if f"{site}/sitemap-chapters-{lang.code}.xml" in res.text:
+            return {
+                "status": "deployed",
+                "detail": f"{lang.code} has a chapter sitemap in the live index.",
+            }
+    elif f"{site}/{lang.code}/" in res.text:
         return {"status": "deployed", "detail": f"{lang.code} URLs are in the live sitemap."}
     return {
         "status": "pending",

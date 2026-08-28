@@ -637,3 +637,71 @@ class SeedAuthorTranslationsTests(TestCase):
             n_langs,
         )
         self.assertEqual(AuthorTranslation.objects.count(), n_langs)
+
+
+class BackfillWordCountTests(TestCase):
+    """`word_count` has no save() hook, unlike `body_text`.
+
+    `ingest.word_count` sets it once at import time and nothing recomputes it,
+    so a row created by any other route keeps its zero permanently — which is
+    how 32 chapters shipped with no reading time in the TOC drawer and sorting
+    as the shortest books in the library.
+    """
+
+    def _book(self, slug="w", language="en"):
+        author = Author.objects.create(slug=f"a-{slug}-{language}", name="A")
+        return Book.objects.create(slug=slug, language=language, title="T", author=author)
+
+    def test_fills_a_zero_count_from_the_body(self):
+        book = self._book()
+        # queryset.update(), so the count stays as created — the exact shape the
+        # fixture rows arrived in.
+        ch = Chapter.objects.create(
+            book=book, order=1, title="One", body_html="<p>one two three four</p>"
+        )
+        Chapter.objects.filter(pk=ch.pk).update(word_count=0)
+
+        call_command("backfill_word_count", verbosity=0)
+        ch.refresh_from_db()
+        self.assertEqual(ch.word_count, 4)
+
+    def test_leaves_a_genuinely_empty_chapter_at_zero(self):
+        book = self._book(slug="x")
+        ch = Chapter.objects.create(book=book, order=1, title="Empty", body_html="")
+        Chapter.objects.filter(pk=ch.pk).update(word_count=0)
+
+        call_command("backfill_word_count", verbosity=0)
+        ch.refresh_from_db()
+        self.assertEqual(ch.word_count, 0)
+
+    def test_does_not_touch_a_count_that_is_already_set(self):
+        # Only zeroes, mirroring backfill_body_text's "fill what is empty"
+        # contract: recomputing every row on every deploy to correct the few
+        # that drifted would rewrite the whole corpus.
+        book = self._book(slug="y")
+        ch = Chapter.objects.create(
+            book=book, order=1, title="One", body_html="<p>one two three four</p>"
+        )
+        Chapter.objects.filter(pk=ch.pk).update(word_count=999)
+
+        call_command("backfill_word_count", verbosity=0)
+        ch.refresh_from_db()
+        self.assertEqual(ch.word_count, 999)
+
+    def test_fills_sermons_too_and_is_idempotent(self):
+        author = Author.objects.create(slug="a-s", name="A")
+        s = Sermon.objects.create(
+            slug="s", language="en", title="S", author=author,
+            body_html="<p>one two three</p>",
+        )
+        Sermon.objects.filter(pk=s.pk).update(word_count=0)
+
+        call_command("backfill_word_count", verbosity=0)
+        s.refresh_from_db()
+        self.assertEqual(s.word_count, 3)
+
+        out = StringIO()
+        call_command("backfill_word_count", stdout=out)
+        s.refresh_from_db()
+        self.assertEqual(s.word_count, 3)
+        self.assertIn("already have a word_count", out.getvalue())

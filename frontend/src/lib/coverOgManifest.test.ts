@@ -37,26 +37,51 @@ import { isArtCover, isPlateCover, twinUrl } from './coverArt';
  * boilerplate is restated, and a drift there fails the completeness check
  * below rather than passing silently.
  */
+/**
+ * Read once, not once per assertion.
+ *
+ * `needTwins()` reads and JSON-parses EVERY book fixture — 158 files, 82 MB —
+ * and it was called by three separate tests, as `manifestFile()` and `births()`
+ * were by several more. The file spent most of its time re-parsing the whole
+ * library, which put it right at vitest's 5s default: it passed alone and timed
+ * out under load, an intermittent red that told nobody anything true. Nothing
+ * here mutates the fixtures, so one read is the correct number.
+ */
+function once<T>(read: () => T): () => T {
+	let value: T;
+	let done = false;
+	return () => {
+		if (!done) {
+			value = read();
+			done = true;
+		}
+		return value;
+	};
+}
+
 const STATIC = resolve(process.cwd(), 'static');
 const CONTENT = resolve(process.cwd(), '..', 'backend', 'library', 'fixtures', 'content');
 
 type Twin = { ground: string; style: string };
 
-const manifestFile = () =>
-	JSON.parse(readFileSync(join(STATIC, 'covers', 'og-manifest.json'), 'utf8'));
+const manifestFile = once(() =>
+	JSON.parse(readFileSync(join(STATIC, 'covers', 'og-manifest.json'), 'utf8'))
+);
 
 const manifest = (): Record<string, Twin> => manifestFile().twins;
 
 /** Author slug → birth year, from the shipped fixture. */
-const births = (): Map<string, number | null> =>
-	new Map(
-		JSON.parse(readFileSync(join(CONTENT, 'authors.json'), 'utf8')).map(
-			(r: { fields: { slug: string; birth_year: number | null } }) => [
-				r.fields.slug,
-				r.fields.birth_year ?? null
-			]
+const births = once(
+	(): Map<string, number | null> =>
+		new Map(
+			JSON.parse(readFileSync(join(CONTENT, 'authors.json'), 'utf8')).map(
+				(r: { fields: { slug: string; birth_year: number | null } }) => [
+					r.fields.slug,
+					r.fields.birth_year ?? null
+				]
+			)
 		)
-	);
+);
 
 /**
  * Every EDITION whose cover cannot be its own og:image, keyed the way the
@@ -69,7 +94,7 @@ const births = (): Map<string, number | null> =>
  * pages; this gate agreed with the script that that was complete, because both
  * of them only ever looked at `.en.json`.
  */
-const needTwins = () => {
+const needTwins = once(() => {
 	const birth = births();
 	return readdirSync(join(CONTENT, 'books'))
 		.filter((f) => f.endsWith('.json'))
@@ -92,7 +117,7 @@ const needTwins = () => {
 			key: twinUrl(f.slug, f.language).replace('/covers/', '').replace(/\.png$/, ''),
 			style: coverStyleFor(eraOf(birth.get(f.author[0]) ?? null), f.author[0])
 		}));
-};
+});
 
 describe('the og twins were drawn with the composition that ships now', () => {
 	it('records the stylesheet the cards were drawn with', () => {

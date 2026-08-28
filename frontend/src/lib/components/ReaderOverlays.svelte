@@ -46,6 +46,7 @@
 	onNote={reader.openNoteForSelection}
 	highlightColor={reader.highlightColor}
 	onDefine={reader.onDefine}
+	onDefineClose={reader.onDefineClose}
 />
 
 <ScripturePopover />

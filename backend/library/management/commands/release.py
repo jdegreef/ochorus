@@ -28,6 +28,12 @@ class Command(BaseCommand):
         # Fixture loads bypass Chapter.save(), so derive search text afterwards.
         self.stdout.write("→ backfill_body_text")
         call_command("backfill_body_text")
+        # Same reason, different field — and NOTHING keeps this one in step
+        # after creation, so a row that arrived without a count never gained
+        # one. A zero means no reading time in the TOC and a book that sorts
+        # as the shortest in the library.
+        self.stdout.write("→ backfill_word_count")
+        call_command("backfill_word_count")
         # Idempotent text repairs (no-op when the fixture is already fixed).
         self.stdout.write("→ apply_body_corrections")
         call_command("apply_body_corrections")

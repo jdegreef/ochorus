@@ -29,10 +29,12 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'amanda-berry-smith': '50% 0%',
 	'amy-carmichael': '50% 0%',
 	'andrew-murray': '50% 2%',
+	'athanasius-of-alexandria': '50% 0%', // icon: head at ~20% of a 0.69 plate
 	'augustine-of-hippo': '50% 0%',
 	'catherine-booth': '50% 0%',
 	'charles-finney': '50% 0%',
 	'charles-h-spurgeon': '50% 0%',
+	'cyprian-of-carthage': '50% 0%', // icon: bust, face at ~22%
 	'david-brainerd': '50% 0%',
 	'dwight-l-moody': '50% 5%',
 	'frederick-brotherton-meyer': '50% 0%',
@@ -41,8 +43,10 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'george-whitefield': '50% 0%',
 	'hannah-whitall-smith': '50% 0%',
 	'hudson-taylor': '50% 20%',
+	'ignatius-of-antioch': '50% 0%', // fresco: head at ~17% of a 0.72 plate
 	'jeanne-guyon': '50% 58%',
 	'john-bunyan': '50% 0%',
+	'john-chrysostom': '50% 0%', // mosaic: standing figure, head at ~11%
 	'john-wesley': '50% 0%',
 	'jonathan-edwards': '50% 0%',
 	'lemuel-haynes': '50% 0%',

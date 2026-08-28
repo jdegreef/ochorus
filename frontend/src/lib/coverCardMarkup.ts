@@ -46,6 +46,9 @@ export interface CoverCardBook {
 	/** Is the ground a painting? A painting has no emblem beneath it to leave
 	 *  room for; a plate does. */
 	art: boolean;
+	/** How far to scale the scrim over this painting, from `coverScrim`. Only a
+	 *  painting has a scrim to scale, so a plate leaves it undefined. */
+	scrim?: number | null;
 }
 
 /** Escape text for an HTML attribute or a text node. */
@@ -114,5 +117,11 @@ export function coverTypeMarkup(book: CoverCardBook, lockup: string): string {
 export function coverPlateMarkup(book: CoverCardBook, lockup: string): string {
 	const classes = ['cover-plate', 'over-file'];
 	if (book.art) classes.push('over-art');
-	return `<div class="${classes.join(' ')}">${coverTypeMarkup(book, lockup)}</div>`;
+	// Matching the component: the property is set only where there is a scrim to
+	// scale, so a plate's markup is unchanged and the parity gate compares like
+	// with like. A painting without a measured strength takes 1, which is what
+	// every painting carried before the table existed.
+	const style =
+		book.art && book.scrim != null ? ` style="--scrim-strength: ${Number(book.scrim)}"` : '';
+	return `<div class="${classes.join(' ')}"${style}>${coverTypeMarkup(book, lockup)}</div>`;
 }

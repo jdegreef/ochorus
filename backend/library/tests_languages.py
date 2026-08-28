@@ -753,6 +753,50 @@ class DeployCheckTests(TestCase):
                     res = self.client.get("/api/admin/languages/ar/deploy-check/")
         self.assertEqual(res.data["status"], "pending")
 
+    # --- The split sitemap ---------------------------------------------------
+    # sitemap.xml is a <sitemapindex> over per-type children, so the locale's
+    # own URLs are no longer in the file this fetches. The check reads the
+    # CHILD'S NAME instead — a locale gets a chapters-<code> child only once
+    # the built site really carries its chapters, which is the question. Read
+    # for the flat shape only, this would have reported "pending" forever, on
+    # the dashboard whose whole point is not to say the deploy landed when it
+    # hasn't (and not to say it hasn't when it has).
+
+    def _index(self, *children):
+        locs = "".join(f"<sitemap><loc>https://ochorus.test/{c}</loc></sitemap>" for c in children)
+        return mock.Mock(ok=True, text=f"<sitemapindex>{locs}</sitemapindex>")
+
+    def test_deployed_when_the_index_links_the_locales_chapter_sitemap(self):
+        with self.settings(PUBLIC_SITE_URL="https://ochorus.test"):
+            with self._perm():
+                with mock.patch("library.golive.requests.get") as get:
+                    get.return_value = self._index(
+                        "sitemap-chapters-en.xml", "sitemap-chapters-ar.xml", "sitemap-books.xml"
+                    )
+                    res = self.client.get("/api/admin/languages/ar/deploy-check/")
+        self.assertEqual(res.data["status"], "deployed")
+
+    def test_pending_when_the_index_has_no_child_for_this_locale(self):
+        with self.settings(PUBLIC_SITE_URL="https://ochorus.test"):
+            with self._perm():
+                with mock.patch("library.golive.requests.get") as get:
+                    get.return_value = self._index(
+                        "sitemap-chapters-en.xml", "sitemap-books.xml"
+                    )
+                    res = self.client.get("/api/admin/languages/ar/deploy-check/")
+        self.assertEqual(res.data["status"], "pending")
+
+    def test_another_locales_child_is_not_mistaken_for_this_one(self):
+        # A substring check against the whole index would let any child whose
+        # name merely CONTAINS the code pass. Matching the full child URL is
+        # what keeps "ar" from being found inside a future "chapters-ar-EG".
+        with self.settings(PUBLIC_SITE_URL="https://ochorus.test"):
+            with self._perm():
+                with mock.patch("library.golive.requests.get") as get:
+                    get.return_value = self._index("sitemap-chapters-ar-EG.xml")
+                    res = self.client.get("/api/admin/languages/ar/deploy-check/")
+        self.assertEqual(res.data["status"], "pending")
+
 
 class AdminDashboardLanguageListTests(TestCase):
     """Every registry language is listed, whether or not it has content.

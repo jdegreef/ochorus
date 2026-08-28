@@ -2,32 +2,39 @@ import { readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-import { contrastRatio } from './coverArt';
-
 /**
- * The scrim has to carry white type over ANY painting — including one we have
- * not chosen yet.
+ * The scrim is one curve, written twice — and this is what holds the copies
+ * together.
  *
- * A curated cover is a painting with the book's type drawn over it in white.
- * Always white: the frame, the byline, the rule and the mark are white on every
- * tier, and a per-cover decision to flip to dark ink would break the one thing
- * the tiers have in common. So the art yields, and the only thing between a
- * title and an illegible cover is `.cover-plate.over-art`'s scrim.
+ * A curated cover is a painting with the book's type drawn over it in white, so
+ * something has to darken the artwork. That used to be a flat wash plus an even
+ * ramp, heavy enough that a sheet of PURE WHITE cleared AA under it, and this
+ * file proved exactly that. The guarantee was strong and the cost was the
+ * covers: every painting was shown at 38.7% of its own brightness, which is why
+ * a translated cover looked dark beside the hand-made English one.
  *
- * The obvious test is to measure each committed painting. That test was written
- * first, and it was a tautology: the scrim is opaque enough that the worst
- * possible input — a sheet of pure white — still clears AA, so no image could
- * ever fail it and the 16 file reads proved nothing. What is actually load
- * bearing is the SCRIM, and nothing pinned it.
+ * The scrim now follows the type instead — three overlapping bands with air
+ * between — and the paintings read at 53.4%. THE GUARANTEE NARROWS WITH IT:
+ * white type is safe over the paintings the library ships, not over any
+ * painting anyone might add. So the real measurement moved to
+ * `CoverAssetTests.test_every_painting_still_carries_white_type`, which
+ * composites all 38 committed paintings through the curve and measures the ink.
+ * Python owns that because Pillow is there and it costs under a second; it is
+ * no longer the tautology this file's header used to call it.
  *
- * So this pins the guarantee instead of sampling its consequences. It reads the
- * real stop values out of `cover-type.css`, composites them over white, and
- * checks the ink. Lighten the scrim to show more of a painting — a reasonable
- * thing to want — and this fails with the number it fell to, before a curator
- * discovers it one pale painting at a time.
+ * What is left here is the join. The curve lives in `covers.py` as a cosine;
+ * CSS has no cosine, so `cover-type.css` SAMPLES it into stops. Two spellings
+ * of one shape, and nothing but this compares them — lighten the stylesheet and
+ * the Python gate goes on measuring a curve that is no longer what ships.
  *
  * `coverBand.test.ts` is the neighbouring check: that one pins the geometry the
- * two renderers share, this one pins what the type can be trusted to land on.
+ * two renderers share, this one pins the scrim they both draw through.
+ *
+ * The curve here is the shape at FULL strength. How far it is scaled for one
+ * painting is `coverScrim.ts`, checked by `coverScrim.test.ts` against the
+ * Python table it is generated from — and that table is re-measured against the
+ * artwork itself by `CoverAssetTests`. Shape here, strength there, artwork in
+ * Python: each held where it can actually be derived.
  */
 const COVER_CSS = readFileSync(join(process.cwd(), 'src/lib/components/cover-type.css'), 'utf-8');
 const COVERS_PY = readFileSync(
@@ -35,121 +42,80 @@ const COVERS_PY = readFileSync(
 	'utf-8'
 );
 
-/**
- * The AA bar for small text, read from `covers.py` rather than typed as 4.5.
- *
- * The generated plates hold their byline to `AUTHOR_MIN_CONTRAST` and floor the
- * plate colour until it clears; the paintings have no colour to floor, so the
- * scrim does that job instead. Same promise, two mechanisms — so it should be
- * the same number, and reading it is how that stays true.
- */
-const SMALL_TEXT_MIN = (() => {
-	const found = /^AUTHOR_MIN_CONTRAST = ([\d.]+)/m.exec(COVERS_PY);
-	expect(found, 'covers.py no longer declares AUTHOR_MIN_CONTRAST').not.toBeNull();
-	return Number(found![1]);
-})();
-
-/**
- * How opaque a run of type's ink is, from the stylesheet that sets it.
- *
- * Retyping these was the flaw in the first version of this file: it read the
- * scrim and hardcoded the ink, so it pinned half of the contrast equation.
- * Soften `.byline` to 0.72 for a lighter look and the test would have gone on
- * computing 0.86 and staying green while the real byline dropped under AA —
- * the same one-thing-at-a-time decay the header describes.
- */
-const inkOpacity = (selector: string): number => {
-	const block = new RegExp(`\\.cover-type \\.${selector} \\{([^}]*)\\}`).exec(COVER_CSS);
-	expect(block, `.cover-type .${selector} is gone from cover-type.css`).not.toBeNull();
-	const opacity = /opacity:\s*([\d.]+)/.exec(block![1]);
-	// No `opacity` means full-strength ink, which is what `.title` is.
-	return opacity ? Number(opacity[1]) : 1;
-};
-
-/**
- * The scrim, read from the stylesheet rather than restated here — the whole
- * point is to notice when it changes.
- *
- * `.cover-plate.over-art` paints a four-stop black gradient over a flat wash.
- * Both are matched out of the same rule.
- */
-function scrim() {
-	const block = /\.cover-plate\.over-art \{([\s\S]*?)\n\}/.exec(COVER_CSS);
-	expect(block, '.cover-plate.over-art is gone from cover-type.css').not.toBeNull();
-	const stops = [...block![1].matchAll(/rgb\(0 0 0 \/ ([\d.]+)\)\s+([\d.]+)%/g)].map(
-		([, alpha, pos]) => [Number(pos) / 100, Number(alpha)] as [number, number]
-	);
-	const wash = /rgb\((\d+) (\d+) (\d+) \/ ([\d.]+)\)(?!\s+[\d.]+%)/.exec(block![1]);
-	expect(stops.length, 'no gradient stops found in the scrim').toBeGreaterThan(1);
-	expect(wash, 'no flat wash found under the scrim gradient').not.toBeNull();
-	return {
-		stops,
-		wash: [1, 2, 3].map((i) => Number(wash![i])),
-		washAlpha: Number(wash![4])
+/** The scrim curve, read out of `covers.py` — bands, floor, strength, ceiling. */
+function pythonCurve() {
+	const num = (name: string) => {
+		const m = new RegExp(`^${name} = ([\\d.]+)`, 'm').exec(COVERS_PY);
+		expect(m, `covers.py no longer declares ${name}`).not.toBeNull();
+		return Number(m![1]);
+	};
+	const bands = [...COVERS_PY.matchAll(/\((0\.\d+), (0\.\d+), (0\.\d+)\)/g)]
+		.map(([, c, h, p]) => [Number(c), Number(h), Number(p)] as [number, number, number]);
+	expect(bands.length, 'covers.py declares no scrim bands').toBeGreaterThan(2);
+	const floor = num('_SCRIM_FLOOR'), strength = num('_SCRIM_STRENGTH'), ceiling = num('_SCRIM_CEILING');
+	return (f: number) => {
+		let a = floor;
+		for (const [centre, half, peak] of bands.slice(0, 3)) {
+			const d = Math.abs(f - centre) / half;
+			if (d < 1) a = Math.max(a, floor + (peak - floor) * (0.5 + 0.5 * Math.cos(Math.PI * d)));
+		}
+		return Math.min(ceiling, strength * a);
 	};
 }
 
-/** The gradient's alpha a fraction `t` down the plate. */
-const alphaAt = (stops: [number, number][], t: number): number => {
-	for (let i = 1; i < stops.length; i++) {
-		if (t <= stops[i][0]) {
-			const [p0, a0] = stops[i - 1];
-			const [p1, a1] = stops[i];
-			return a0 + (a1 - a0) * ((t - p0) / (p1 - p0));
-		}
-	}
-	return stops[stops.length - 1][1];
-};
-
-/**
- * Where the type sits, how opaque its ink is, and what AA asks of it.
- *
- * The POSITIONS are the only hand-written numbers here, and they are measured
- * rather than guessed: `.byline`, `.title` and `.subtitle` were read off the
- * running app with `getBoundingClientRect` against the plate. Everything else —
- * the scrim, the ink, the bar — is read from the source that sets it, because
- * this file's whole job is to notice when one of them moves.
- *
- * Each band is checked at its LIGHTEST point, which is where the gradient is
- * thinnest across that run of type.
- */
-const BANDS = {
-	byline: { from: 0.12, to: 0.18, ink: inkOpacity('byline'), min: SMALL_TEXT_MIN },
-	// 3:1 is WCAG 1.4.3's bar for LARGE text, which the title is at every size a
-	// cover is drawn — there is no constant to read this one from.
-	title: { from: 0.33, to: 0.57, ink: inkOpacity('title'), min: 3 },
-	// Runs to 0.70 rather than the 0.64 a two-line title measures at: the title
-	// block is centred by auto margins, so a three-line title pushes the
-	// subtitle down, and the band has to cover the lowest it can go.
-	subtitle: { from: 0.57, to: 0.7, ink: inkOpacity('subtitle'), min: SMALL_TEXT_MIN }
-};
-
-/** Contrast of the band's ink over the worst case the scrim can be asked to
- *  cover: a painting that is pure white there. */
-function worstCase(band: (typeof BANDS)[keyof typeof BANDS]) {
-	const { stops, wash, washAlpha } = scrim();
-	let worst = Infinity;
-	for (let t = band.from; t <= band.to; t += 0.005) {
-		const a = alphaAt(stops, t);
-		const bg = wash.map((w) => (1 - a) * (washAlpha * w + (1 - washAlpha) * 255));
-		const ink = bg.map((c) => band.ink * 255 + (1 - band.ink) * c);
-		const ratio = contrastRatio(ink, bg);
-		if (ratio < worst) worst = ratio;
-	}
-	return worst;
+/** The scrim as the stylesheet spells it: sampled stops. */
+function cssStops(): Array<[number, number]> {
+	// `::before`, because the scrim moved onto a pseudo-element so one painting's
+	// can be lighter than another's — `opacity: var(--scrim-strength)` scales the
+	// whole layer, which a gradient cannot do from a custom property.
+	const block = /\.cover-plate\.over-art::before \{([\s\S]*?)\n\}/.exec(COVER_CSS);
+	expect(block, '.cover-plate.over-art::before is gone from cover-type.css').not.toBeNull();
+	const stops = [...block![1].matchAll(/rgb\(0 0 0 \/ ([\d.]+)\)\s+([\d.]+)%/g)].map(
+		([, alpha, pos]) => [Number(pos) / 100, Number(alpha)] as [number, number]
+	);
+	expect(stops.length, 'no gradient stops found in the scrim').toBeGreaterThan(20);
+	return stops;
 }
 
-describe('the art scrim carries white type over anything', () => {
-	for (const [name, band] of Object.entries(BANDS)) {
-		it(`holds the ${name} at ${band.min}:1 over a pure-white painting`, () => {
-			const ratio = worstCase(band);
-			expect(
-				ratio,
-				`the ${name} falls to ${ratio.toFixed(2)}:1 over white, against a ${band.min} bar. ` +
-					`The scrim in cover-type.css is no longer strong enough to guarantee legible ` +
-					`type, so a pale painting would now ship unreadable. Darken it, or stop ` +
-					`promising that any public-domain painting can be dropped in.`
-			).toBeGreaterThanOrEqual(band.min);
-		});
-	}
+describe('the scrim over a painting', () => {
+	it('is the same curve in the stylesheet and in covers.py', () => {
+		// The deviation that matters is not "did someone edit the CSS" but "does
+		// the CSS still describe the curve the Python gate measures". Sampling
+		// every 2.5% keeps this under 0.02; a 5% sampling missed by 0.048, which
+		// is enough to cost a painting its contrast.
+		const curve = pythonCurve();
+		let worst = 0, at = 0;
+		for (const [pos, alpha] of cssStops()) {
+			const d = Math.abs(alpha - curve(pos));
+			if (d > worst) { worst = d; at = pos; }
+		}
+		expect(
+			worst,
+			`the stylesheet's scrim has drifted from covers.py's curve by ${worst.toFixed(3)} ` +
+				`alpha at ${(at * 100).toFixed(0)}% — the fixture gate is measuring a scrim ` +
+				`that is not the one shipping`
+		).toBeLessThan(0.02);
+	});
+
+	it('keeps a peak over each of the three places type sits', () => {
+		// The shape IS the feature: byline near the top, title block in the
+		// middle, mark at the foot. Flatten it back into an even ramp and the
+		// paintings go dark again — which is the change this replaced.
+		const stops = cssStops();
+		const at = (f: number) => stops.reduce((b, s) => (Math.abs(s[0] - f) < Math.abs(b[0] - f) ? s : b))[1];
+		for (const [name, pos] of [['byline', 0.13], ['title', 0.49], ['mark', 0.91]] as const) {
+			expect(at(pos), `the scrim has no peak over the ${name}`).toBeGreaterThan(0.55);
+		}
+		// And air between them, or there is no brightening at all.
+		for (const gap of [0.29, 0.73]) {
+			expect(at(gap), `the scrim never lifts at ${gap * 100}%`).toBeLessThan(0.35);
+		}
+	});
+
+	it('never lets the scrim reach opaque', () => {
+		// A stop at 1.0 would paint the photograph out entirely at that height.
+		for (const [pos, alpha] of cssStops()) {
+			expect(alpha, `the scrim is opaque at ${pos * 100}%`).toBeLessThan(0.9);
+		}
+	});
 });
