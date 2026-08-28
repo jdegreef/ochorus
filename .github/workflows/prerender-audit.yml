@@ -1,0 +1,63 @@
+name: Prerender audit
+
+# Does every author and book in the fixtures actually have a page on the live
+# site? A content row reaches the API in its release step, so a web build that
+# runs before that release lands never generates the page and the static host
+# answers with the noindex 200.html shell. The deploy stays green and the
+# omission is invisible until someone opens the page — which is how #1138,
+# #1163, #1165 and #1173 were each found, after the fact, by a person.
+#
+# WHY THIS IS NOT A PR GATE. The property is about what a DEPLOY produced, so it
+# cannot be known before one happens, and CI could not see it anyway: CI seeds
+# its API from these same fixtures, so the row is always present there and a
+# build-time gate is green in exactly the case production breaks. The existing
+# built-output guards are self-referential for the same reason — they compare
+# the sitemap to the build, and when a row is missing both halves lack it.
+#
+# Scheduled rather than on push: main auto-deploys, so a push-triggered run
+# would probe the site before Render had finished shipping the commit that
+# triggered it, and report a failure that is only the deploy still running.
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      base:
+        description: 'Origin to probe'
+        required: false
+        default: 'https://ochorus.com'
+
+concurrency:
+  group: prerender-audit
+  # NOT cancel-in-progress. The job is a checkout and a few hundred HEAD-ish
+  # requests, so overlap costs nothing — whereas cancelling means the window that
+  # run was covering gets no verdict at all. That is the hazard ci.yml's
+  # concurrency comment documents, and it applies harder to a scheduled audit
+  # nobody is watching.
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: frontend/.nvmrc
+
+      # No `npm ci`: the script uses only node builtins and global fetch, so the
+      # audit stays a checkout and a run. Nothing to install means nothing to
+      # break in a job whose whole job is to be trustworthy.
+      # `base` reaches the script through env, never interpolated into the shell:
+      # a dispatch input expanded straight into `run:` is a command-injection
+      # hole for anyone who can press the button.
+      - name: Audit prerendered content
+        working-directory: frontend
+        env:
+          BASE: ${{ inputs.base || 'https://ochorus.com' }}
+        run: node scripts/check-content-prerendered.mjs --base "$BASE"
