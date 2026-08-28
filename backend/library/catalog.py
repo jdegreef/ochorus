@@ -57,6 +57,13 @@ class BookEntry:
     # Priesthood inside npnf109, "xvi.ii" is the Life of Antony inside npnf204.
     # Empty imports the whole volume, as before.
     part: str = ""
+    #: archive only: the heading of the NEXT work, ending this one. Without it a
+    #: part runs until the chapter numbering restarts, which fails when the scan
+    #: loses a marker — Grosart's Sibbes drops XXVI and XXVII, so the Bruised
+    #: Reed ran on into The Soul's Conflict and produced a 93,000-word chapter.
+    #: The person adding a part has to read the scan anyway (`--inspect`), so
+    #: naming both ends is a check, not a burden.
+    part_end: str = ""
     # CCEL only: NPNF/ANF section "titles" are often not titles at all but a
     # paragraph-long summary of the argument ("Introductory.--The subject of
     # this treatise: the humiliation and incarnation of the Word. Presupposes

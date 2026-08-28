@@ -219,3 +219,84 @@ class ContentsTitleTests(SimpleTestCase):
             "",
         ] + ["x"] * 3 + ["Chap. I. — Signs of one truly bruised. Means and", "Body text here."])
         self.assertEqual(chapterize(text)[0][0], "Signs of one truly bruised. Means and measure of bruising")
+
+
+class PartSelectionTests(SimpleTestCase):
+    """One work out of a collected-works volume.
+
+    Sibbes, Owen, Manton and Charnock are all mainly available that way, and
+    the collected editions are the better-produced scans: Grosart's Sibbes
+    prints "All should side with Christ" where the standalone 1878 printing
+    OCRs it "^// should side with Christ".
+    """
+
+    VOLUME = "\n".join([
+        "THE COMPLETE WORKS",
+        "MEMOIR OF THE AUTHOR",
+        "He was born in 1577.",
+        "THE BRUISED REED AND SMOKING FLAX.",          # half-title, no chapters below
+    ] + ["front matter"] * 40 + [
+        "THE BRUISED REED AND SMOKING FLAX.",          # the real start
+        "[CHAPTER I. — The Text opened and divided.]",
+        "The prophet Isaiah being lifted up.",
+        "[CHAPTER II. — Grace is little at first.]",
+        "Grace is small in its beginnings.",
+        "THE SWORD OF THE WICKED,",
+        "[CHAPTER I. — Another work entirely.]",
+        "This belongs to the next treatise.",
+    ])
+
+    def _titles(self, part="", end=""):
+        return [t for t, _ in chapterize(self.VOLUME, part, end)]
+
+    def test_a_part_takes_only_its_own_work(self):
+        self.assertEqual(
+            self._titles("THE BRUISED REED AND SMOKING FLAX.", "THE SWORD OF THE WICKED,"),
+            ["The Text opened and divided", "Grace is little at first"],
+        )
+
+    def test_the_start_is_the_title_the_chapters_sit_under(self):
+        # Not the half-title forty lines earlier, which would drag the memoir in.
+        secs = chapterize(self.VOLUME, "THE BRUISED REED AND SMOKING FLAX.", "THE SWORD OF THE WICKED,")
+        self.assertNotIn("born in 1577", secs[0][1])
+
+    def test_without_an_end_the_next_work_ends_it_by_renumbering(self):
+        self.assertEqual(len(self._titles("THE BRUISED REED AND SMOKING FLAX.")), 2)
+
+    def test_an_unknown_part_is_an_error_not_a_silent_whole_volume(self):
+        from django.core.management.base import CommandError
+
+        with self.assertRaises(CommandError):
+            self._titles("A WORK NOT IN THIS VOLUME")
+
+    def test_an_unknown_end_is_an_error_too(self):
+        from django.core.management.base import CommandError
+
+        with self.assertRaises(CommandError):
+            self._titles("THE BRUISED REED AND SMOKING FLAX.", "NO SUCH HEADING")
+
+    def test_the_last_chapter_stops_at_the_part_boundary(self):
+        # Without this the final chapter ran to the end of the volume — 93,000
+        # words of somebody else's treatise.
+        secs = chapterize(self.VOLUME, "THE BRUISED REED AND SMOKING FLAX.", "THE SWORD OF THE WICKED,")
+        self.assertNotIn("next treatise", secs[-1][1])
+
+
+class MangledMarkerTests(SimpleTestCase):
+    """Both halves of a chapter marker get mis-scanned, and both are tolerated."""
+
+    def test_the_word_chapter_is_matched_however_it_scanned(self):
+        # CHAPTEE (Clarke), CHAPTEB (Grosart) — real, from two different scans.
+        for word in ("CHAPTER", "CHAPTEE", "CHAPTEB", "Chap."):
+            text = f"{word} II. — A title\nSome body text here.\n"
+            self.assertEqual([t for t, _ in chapterize(text)], ["A title"], word)
+
+    def test_a_numeral_scanned_with_y_for_v_still_parses(self):
+        # "[CHAPTER YI. — Grace is mingled with Corruption.]" — losing this
+        # merged two chapters into one silently.
+        self.assertEqual(_roman("YI"), 6)
+        self.assertEqual(_roman("Yl"), 6)
+
+    def test_a_numeral_that_is_still_not_roman_is_rejected(self):
+        self.assertIsNone(_roman("XVIL"))
+        self.assertIsNone(_roman("ZZ"))
