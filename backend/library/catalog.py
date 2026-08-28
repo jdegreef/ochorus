@@ -304,6 +304,18 @@ AUTHORS: dict[str, AuthorEntry] = {
             "after the Bible the most widely read Christian book ever written."
         ),
     ),
+    "e-m-bounds": AuthorEntry(
+        slug="e-m-bounds",
+        name="E. M. Bounds",
+        birth_year=1835,
+        death_year=1913,
+        bio=(
+            "American Methodist pastor and Civil War chaplain who left the "
+            "practice of law for the ministry and gave his last years to rising "
+            "at four in the morning to pray. Seven of his eight books on prayer "
+            "were published only after his death."
+        ),
+    ),
 }
 
 # Shelf order. Small, clean books first.
@@ -450,6 +462,12 @@ BOOKS: list[BookEntry] = [
               "ccel", "schaff/npnf204", part="xvi.ii",
               subtitle="The Life That Began Christian Monasticism",
               cover_color="#8a6a3d"),
+    # Published in 1907 as "Preacher and Prayer" — the one prayer book Bounds
+    # saw in print; the other seven were issued posthumously, 1920–1931.
+    BookEntry("power-through-prayer", "Power Through Prayer", "e-m-bounds",
+              "ccel", "bounds/power",
+              subtitle="Men Are God's Method",
+              cover_color="#1d3557"),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an
