@@ -122,6 +122,21 @@ export interface Chapter {
 	available_languages: string[];
 	prev: ChapterNav | null;
 	next: ChapterNav | null;
+	/**
+	 * The passages this chapter treats, for the scripture index at its foot.
+	 * `page` is null when the citation floor withheld a page for that
+	 * reference — the server owns the floor, so only the server can say what is
+	 * linkable. English chapters only; optional so an API running behind this
+	 * build simply renders no row.
+	 */
+	scripture_refs?: { ref: string; page: ScripturePageRef | null }[];
+}
+
+/** Where a cited reference's scripture page lives, when one exists. */
+export interface ScripturePageRef {
+	book: string;
+	chapter: number;
+	verse: number | null;
 }
 
 export interface Language {
@@ -614,7 +629,7 @@ export const getTopic = (slug: string, language = 'en') =>
 // exist in English only, and are advertised that way.
 
 /** One scripture page the build should render — the API decides which qualify. */
-export interface ScripturePageRef {
+export interface ScripturePageEntry {
 	book: string;
 	book_title: string;
 	book_order: number;
@@ -660,7 +675,7 @@ export interface ScripturePage {
 }
 
 export const listScripturePages = () =>
-	apiFetch<ScripturePageRef[]>('/api/library/scripture/pages/');
+	apiFetch<ScripturePageEntry[]>('/api/library/scripture/pages/');
 
 export const getScripturePage = (book: string, chapter: number, verse?: number) =>
 	apiFetch<ScripturePage>(
