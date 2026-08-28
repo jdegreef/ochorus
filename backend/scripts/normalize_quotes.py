@@ -59,7 +59,7 @@ def main() -> int:
         files = [p for p in files if any(name in p.name for name in only)]
     touched = total = 0
     for path in files:
-        rows = json.loads(path.read_text())
+        rows = json.loads(path.read_text(encoding="utf-8"))
         # `body_html` ONLY. `body_text` is DERIVED from it — `save()` sets it to
         # `html_to_text(body_html)` — and converting it here independently is
         # not the same operation: this decision is context-sensitive, so a field
@@ -79,7 +79,7 @@ def main() -> int:
         total += changed_here
         print(f"  {path.name:<52} {changed_here:>6} marks")
         if not check:
-            path.write_text(render_rows(rows))
+            path.write_text(render_rows(rows), encoding="utf-8")
     print(f"\n{'would convert' if check else 'converted'} {total} marks across {touched} files")
     return 0
 

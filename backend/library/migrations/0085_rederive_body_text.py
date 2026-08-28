@@ -44,15 +44,31 @@ def rederive(apps, schema_editor):
         # `search_vector` is written but never read, and it is the largest
         # column on the row — the same reason `apply_body_corrections` defers
         # it. `body_text` cannot be deferred: it is what we compare against.
-        for row in (
-            model.objects.defer("search_vector").iterator(chunk_size=100)
-        ):
-            derived = html_to_text(row.body_html or "")
+        stamped = model_name == "Chapter"
+        for row in model.objects.defer("search_vector").iterator(chunk_size=100):
+            # Same rule as the fixture command and its gate: a row with no
+            # `body_html` has nothing to derive FROM, and deriving "" would
+            # blank a `body_text` rather than repair it.
+            if not row.body_html:
+                continue
+            derived = html_to_text(row.body_html)
             if derived == row.body_text:
                 continue
             row.body_text = derived
             row.search_vector = None
-            row.save(update_fields=["body_text", "search_vector"])
+            fields = ["body_text", "search_vector"]
+            if stamped:
+                # `index_citations` scans `body_text` and is INCREMENTAL on this
+                # stamp, so a repaired row keeps the citations extracted from
+                # the text it no longer holds — `jesus-himself-2.en` ch2 would
+                # keep five where its new text yields four, and a fresh build
+                # and the deployed database would disagree permanently.
+                # `Chapter.save()` clears it whenever `body_html` moves; here
+                # `body_html` does not move and `body_text` does, which is the
+                # one case that rule does not cover.
+                row.citations_indexed_at = None
+                fields.append("citations_indexed_at")
+            row.save(update_fields=fields)
 
 
 def noop(apps, schema_editor):

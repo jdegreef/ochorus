@@ -20,13 +20,16 @@ hyphen-free file was applied in memory and then dropped — silently, with the d
 run reporting "0 files". Ten book fixtures were stale that way. It now writes
 whenever the text actually changed, and reports the two kinds separately.
 
-Both body fields are normalized. `body_text` is DERIVED from `body_html`
-(`Chapter.save()` keeps them in step), so correcting one and not the other
-leaves the committed file disagreeing with itself — which is how 36 fixtures
-came to carry a `body_text` that its own `body_html` no longer matched.
-Production never saw it: `apply_body_corrections` calls `.save()`, which
-recomputes `body_text` and refreshes the search vector. The fixture is the only
-place it persists. Dry-run by default.
+`body_html` ONLY, and `body_text` is left to `rederive_body_text`. This did
+correct both fields, because `body_text` is DERIVED (`Chapter.save()` keeps them
+in step) and correcting one alone leaves the committed file disagreeing with
+itself — the state 36 fixtures were in. But a declared pair is an exact string,
+and a pair carrying markup or an entity (`<p>Amajor`, `it is<i>the God`) matches
+`body_html` and never the tagless `body_text`, so correcting the two fields
+INDEPENDENTLY cannot converge on what `save()` produces. Deriving it can, which
+is what production has always done — `apply_body_corrections` calls `.save()`.
+So: correct the source here, then `manage.py rederive_body_text --write`.
+`tests_fixture.BodyTextDerivationTests` fails until you do. Dry-run by default.
 
     manage.py normalize_english_fixture            # show what would change
     manage.py normalize_english_fixture --write    # do it
@@ -46,8 +49,6 @@ from django.core.management.base import BaseCommand
 from library.content_fixtures import BOOKS_DIR, SERMONS_DIR, render_rows
 from library.corrections import _HYPHEN_LINEBREAK, apply_body_corrections
 
-FIELDS = ("body_html", "body_text")
-
 
 class Command(BaseCommand):
     help = "Close line-break hyphens ('self- righteous') in the English fixture."
@@ -65,7 +66,7 @@ class Command(BaseCommand):
             file_hyphens = file_edits = 0
             for row in rows:
                 fields = row.get("fields", {})
-                for key in FIELDS:
+                for key in ("body_html",):
                     before = fields.get(key)
                     if not before:
                         continue

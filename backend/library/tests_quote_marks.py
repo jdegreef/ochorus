@@ -17,6 +17,8 @@ from django.db import connection
 from django.db.migrations.executor import MigrationExecutor
 from django.db.models import Value
 from django.test import SimpleTestCase, TestCase
+from django.test.utils import CaptureQueriesContext
+from django.utils import timezone
 
 from library.content_fixtures import BOOKS_DIR, SERMONS_DIR
 from library.ingest import word_count
@@ -341,16 +343,51 @@ class Migration0085Tests(TestCase):
         chapter.refresh_from_db()
         self.assertIsNone(chapter.search_vector)
 
-    def test_a_row_already_in_step_is_not_written(self):
-        """Otherwise it would null every vector in the corpus and queue the
-        whole library for a needless re-index."""
-        chapter = self._chapter("<p>Settled.</p>", "Settled.")
-        Chapter.objects.filter(pk=chapter.pk).update(word_count=999)
+    def test_a_row_already_in_step_issues_no_write_at_all(self):
+        """Otherwise it would null every vector and citation stamp in the
+        corpus, queueing the whole library for a needless re-index on a deploy
+        where nothing changed.
+
+        Asserted on the QUERIES, not on a column. The first version of this
+        checked `word_count` survived — which `save(update_fields=[...])` never
+        writes on any path, so it passed with the skip-guard deleted and proved
+        nothing. Only a field `update_fields` carries can witness a save, and
+        the cheapest witness is that no UPDATE is issued.
+        """
+        self._chapter("<p>Settled.</p>", "Settled.")
+
+        with CaptureQueriesContext(connection) as queries:
+            self._repair()(self._historical(), None)
+
+        updates = [q["sql"] for q in queries if q["sql"].lstrip().upper().startswith("UPDATE")]
+        self.assertEqual(updates, [], "an in-step row must not be written")
+
+    def test_it_clears_the_citation_stamp_it_invalidates(self):
+        """`index_citations` scans `body_text` and is INCREMENTAL on this stamp.
+
+        `Chapter.save()` clears it whenever `body_html` moves; here `body_html`
+        does NOT move and `body_text` does, which is the one case that rule does
+        not cover — so a repaired chapter would keep the citations extracted
+        from text it no longer holds, and a fresh build and the deployed
+        database would disagree permanently.
+        """
+        chapter = self._chapter("<p>See Matthew 5:3 and John 3:16.</p>", "stale")
+        Chapter.objects.filter(pk=chapter.pk).update(citations_indexed_at=timezone.now())
 
         self._repair()(self._historical(), None)
 
         chapter.refresh_from_db()
-        self.assertEqual(chapter.word_count, 999, "an untouched row must not be saved")
+        self.assertIsNone(chapter.citations_indexed_at)
+
+    def test_a_row_with_no_body_html_is_left_alone(self):
+        """The fixture command and its gate both skip these; deriving from
+        nothing would blank a `body_text` rather than repair it."""
+        chapter = self._chapter("", "kept")
+
+        self._repair()(self._historical(), None)
+
+        chapter.refresh_from_db()
+        self.assertEqual(chapter.body_text, "kept")
 
     def test_it_repairs_sermons_as_well_as_chapters(self):
         author = Author.objects.create(slug="a-85s", name="A")
