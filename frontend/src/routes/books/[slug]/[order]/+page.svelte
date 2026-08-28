@@ -214,6 +214,24 @@
 			: 'var(--reading-measure)'
 	);
 
+	/**
+	 * The chrome bar tracks the text it belongs to.
+	 *
+	 * It was a flat `max-w-3xl` (48rem) while the article ranges from 27rem to
+	 * 83rem — measure (34/42/52rem) times scale (0.8–1.6) — and 88rem as a
+	 * two-column spread. So the bar was up to 333px WIDER than the text at the
+	 * small end and 640px NARROWER at the large end, matching it at no setting a
+	 * reader can actually pick. Sharing `articleMax` puts its edges on the text's
+	 * edges: the bar's `px-5` equals the pager's own `--pgpad`, so the controls
+	 * line up with the column, not merely with the box.
+	 *
+	 * The floor is for the bar's sake — seven controls plus a title in 435px
+	 * (narrow at 0.8x) is a crush, and unlike the prose the bar doesn't get to
+	 * reflow. The min() then keeps that floor inside a phone, where 32rem is
+	 * wider than the viewport.
+	 */
+	const chromeMax = $derived(`min(max(${articleMax}, 32rem), 100%)`);
+
 	// The paged viewport is fixed between the reader chrome and the progress
 	// footer; measure their real heights (the chrome wraps to several rows on
 	// narrow screens) so the columns never sit under either bar.
@@ -741,7 +759,10 @@
 		class:fixed={paged}
 		class:sticky={!paged}
 	>
-		<div class="mx-auto flex max-w-3xl items-center justify-between gap-3 px-5 py-2.5">
+		<div
+			class="mx-auto flex items-center justify-between gap-3 px-5 py-2.5"
+			style="max-width: {chromeMax}"
+		>
 			<!--
 				Hidden below `sm`. The controls alone need ~303px of a 360px phone, so
 				with this block in the row the bar wrapped to THREE rows — 141px of an
