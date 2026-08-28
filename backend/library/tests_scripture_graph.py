@@ -111,6 +111,115 @@ class PageListTests(TestCase):
         self.assertEqual([p for p in qualifying_pages() if p["verse"] == 28], [])
 
 
+class ChapterScriptureRowTests(TestCase):
+    """The chapter page's scripture index — and that it never links to a 404."""
+
+    def setUp(self):
+        self.client = APIClient()
+        author = Author.objects.create(slug="a", name="A Writer")
+        self.book = Book.objects.create(
+            author=author, slug="w", language="en", title="A Work"
+        )
+        # Enough citing chapters that Romans 8:28 clears the VERSE floor, which
+        # also clears the (lower) chapter floor for Romans 8.
+        for i in range(VERSE_FLOOR + 1):
+            cite(self.book, i + 1, "Romans 8:28")
+        # Cited once — under both floors, so it has no page to link to.
+        # Obadiah is a one-chapter book, so the canonical display form drops
+        # the chapter: "Obadiah 1:3" is rendered "Obadiah 3".
+        cite(self.book, 90, "Obadiah 1:3")
+        from django.core.management import call_command
+
+        call_command("index_citations", "--all", verbosity=0)
+
+    def _row(self, order=1, slug="w"):
+        res = self.client.get(f"/api/library/books/{slug}/chapters/{order}/")
+        self.assertEqual(res.status_code, 200)
+        return res.data["scripture_refs"]
+
+    def test_a_chapter_lists_the_passages_it_treats(self):
+        self.assertEqual([r["ref"] for r in self._row()], ["Romans 8:28"])
+
+    def test_a_reference_with_a_page_carries_where_to_find_it(self):
+        row = self._row()
+        self.assertEqual(
+            row[0]["page"], {"book": "romans", "chapter": 8, "verse": 28}
+        )
+
+    def test_a_reference_under_the_floor_carries_no_page(self):
+        # The chip still shows — the passage IS treated here — but it links
+        # nowhere, because the page list deliberately never built one.
+        row = self._row(order=90)
+        self.assertEqual([r["ref"] for r in row], ["Obadiah 3"])
+        self.assertIsNone(row[0]["page"])
+
+    def test_every_page_the_row_offers_really_serves(self):
+        """The guard that matters: a chip must never be a dead link.
+
+        This is the same failure that killed the prerender build once already,
+        one level along — there the chapter page linked a verse the floor had
+        withheld, here it would be a chip doing it.
+        """
+        for order in (1, 90):
+            for entry in self._row(order=order):
+                page = entry["page"]
+                if page is None:
+                    continue
+                path = f"/api/library/scripture/{page['book']}/{page['chapter']}/"
+                if page["verse"]:
+                    path += f"{page['verse']}/"
+                with self.subTest(ref=entry["ref"]):
+                    self.assertEqual(self.client.get(path).status_code, 200)
+
+    def test_pages_for_agrees_with_the_published_page_list(self):
+        """`pages_for` and `qualifying_pages` share `bucket` — prove it holds.
+
+        Two implementations of "does this page exist" would drift, and the drift
+        is silent: chips would point at pages the sitemap never advertised and
+        the build never rendered.
+        """
+        from .scripture_graph import pages_for
+
+        published = {
+            (p["book"], p["chapter"], p["verse"]) for p in qualifying_pages()
+        }
+        for ref, page in pages_for(["Romans 8:28", "Obadiah 1:3", "Romans 8:1"]).items():
+            with self.subTest(ref=ref):
+                if page is None:
+                    continue
+                self.assertIn(
+                    (page["book"], page["chapter"], page["verse"]), published
+                )
+
+    def test_it_resolves_one_query_however_many_references(self):
+        # Asking per reference is ten thousand queries across a build of 1,264
+        # chapter pages, which is why this is written as one range filter.
+        from .scripture_graph import pages_for
+
+        with self.assertNumQueries(1):
+            pages_for(["Romans 8:28", "John 3:16", "Psalm 23:1", "Obadiah 1:3"])
+
+    def test_a_translated_chapter_has_no_row(self):
+        # Citations parse against English book names, and the pages they would
+        # point at are English. A Spanish chapter with a stray English string
+        # must not present two references as its scripture index.
+        es = Book.objects.create(
+            author=self.book.author, slug="w", language="es", title="Una obra"
+        )
+        cite(es, 1, "Romans 8:28")
+        from django.core.management import call_command
+
+        call_command("index_citations", "--all", verbosity=0)
+        res = self.client.get("/api/library/books/w/chapters/1/?language=es")
+        self.assertEqual(res.data["scripture_refs"], [])
+
+    def test_a_chapter_citing_nothing_has_an_empty_row(self):
+        Chapter.objects.create(
+            book=self.book, order=70, title="Quiet", body_html="<p>No references.</p>"
+        )
+        self.assertEqual(self._row(order=70), [])
+
+
 class BookSlugTests(TestCase):
     def test_slugs_are_readable_and_round_trip(self):
         # The URL is the name people search, not the USFM code.

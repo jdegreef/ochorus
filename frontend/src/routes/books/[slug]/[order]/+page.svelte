@@ -899,6 +899,37 @@
 		<div class="reading" bind:this={body} dir="auto" lang={contentLang(language)}>{@html chapter.body_html}</div>
 	</div>
 
+	<!-- Scripture index: the passages this chapter treats. Placed here — after
+	     the text, before the next-chapter nav — to match the sermon page, which
+	     has carried the same row since citations were indexed. The reading comes
+	     first and the apparatus sits under it, so a reader in flow scrolls past
+	     it to the next chapter and never has to read around it.
+
+	     This is also what makes the scripture graph reciprocal: those pages are
+	     linked from /scripture and the sitemap, and now from the 904 English
+	     chapters that actually cite something.
+
+	     A chip links to its scripture page when one exists, and to a search for
+	     the reference when the citation floor withheld one — never to a page
+	     that was not built. English chapters only; `scripture_refs` is empty
+	     elsewhere, because the citations behind it are English. -->
+	{#if chapter.scripture_refs?.length}
+		<div class="mt-10 flex flex-wrap items-center gap-2 border-t border-border pt-5">
+			<span class="eyebrow text-muted">{t('reader.scripture')}</span>
+			{#each chapter.scripture_refs as entry (entry.ref)}
+				<a
+					href={entry.page
+						? `/scripture/${entry.page.book}/${entry.page.chapter}/` +
+							(entry.page.verse ? `${entry.page.verse}/` : '')
+						: localizeHref(`/search?q=${encodeURIComponent(entry.ref)}`)}
+					class="rounded-full border border-border px-3 py-1 text-small text-text hover:border-accent hover:text-accent hover:no-underline"
+				>
+					{entry.ref}
+				</a>
+			{/each}
+		</div>
+	{/if}
+
 	<nav class="mt-14 flex items-stretch justify-between gap-3 border-t border-border pt-6">
 		{#if chapter.prev}
 			<a

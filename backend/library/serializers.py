@@ -695,6 +695,40 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
     # no English fallback). Chapter counts match across a book's translations.
     available_languages = serializers.SerializerMethodField()
 
+    scripture_refs = serializers.SerializerMethodField()
+
+    def get_scripture_refs(self, obj):
+        """The passages this chapter treats, and where each one has a page.
+
+        The sermon page has carried this row since citations were indexed; book
+        chapters — 1,264 of them, the bulk of the library — never had it. It is
+        the cheapest thing that makes a chapter page unlike every other copy of
+        the same public-domain text: the body is Bunyan's and everyone has it,
+        but which passages this chapter engages is DERIVED from our own citation
+        index and is ours.
+
+        `page` is null unless a scripture page really exists for that reference
+        — the reader must never be handed a link to a page the citation floor
+        deliberately withheld, and the crawler must never be handed a dead one.
+
+        ENGLISH ONLY, because the citations are. `extract_citations` validates
+        against pythonbible's English book names, so a translated edition yields
+        a handful of residual English strings and nothing else; the scripture
+        pages those chips point at are English too. Running the row on a Spanish
+        chapter would offer a reader two or three stray references and call it
+        an index.
+        """
+        from .scripture import cited_references
+        from .scripture_graph import pages_for
+
+        if obj.book.language != "en":
+            return []
+        refs = cited_references(obj.body_html)
+        if not refs:
+            return []
+        pages = pages_for(refs)
+        return [{"ref": r, "page": pages.get(r)} for r in refs]
+
     def get_available_languages(self, obj):
         return _available_languages(Book, obj.book.slug)
 
@@ -720,6 +754,8 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
             "book_title", "book_slug", "author_name", "author_slug",
             "is_modern_edition", "has_modern_edition", "available_languages",
             "prev", "next",
+            # The scripture index row at the foot of the chapter — see above.
+            "scripture_refs",
         ]
 
     def _sibling(self, obj, delta):
