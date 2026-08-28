@@ -53,9 +53,7 @@ from library.content_fixtures import (
     work_filename,
 )
 from library.covers import (
-    _AUTHOR_Y,
     _FRAME_INSET,
-    AUTHOR_INK_OPACITY,
     AUTHOR_MIN_CONTRAST,
     COVER_WIDTHS,
     RASTER_SUFFIXES,
@@ -1235,7 +1233,7 @@ class CoverAssetTests(SimpleTestCase):
         from PIL import Image
 
         from library.art_scrim import ART_SCRIM
-        from library.covers import scrimmed
+        from library.covers import INK_REGIONS, scrimmed
 
         def relative_luminance(channels):
             def channel(v):
@@ -1255,6 +1253,13 @@ class CoverAssetTests(SimpleTestCase):
             return out
 
         art_dir = STATIC_DIR / "covers" / "art"
+        # WHICH WORKS DRAW A SUBTITLE, because that decides both the scrim curve
+        # and whether there is a subtitle strip to measure. Any language: the
+        # painting is one file for every edition, so a Spanish subtitle needs the
+        # band as much as an English one.
+        subtitled = {
+            f["slug"] for f in self.books if (f.get("subtitle") or "").strip()
+        }
         thin, untuned = [], []
         for path in sorted(art_dir.glob("*.jpg")):
             # AT ITS OWN STRENGTH, which is the thing being checked. A painting
@@ -1264,23 +1269,36 @@ class CoverAssetTests(SimpleTestCase):
             # palest artwork in the library needs.
             if path.stem not in ART_SCRIM:
                 untuned.append(path.stem)
+            has_sub = path.stem in subtitled
             plate = scrimmed(
                 Image.open(path).convert("RGB").resize((W, H), Image.LANCZOS),
                 ART_SCRIM.get(path.stem, 1.0),
+                has_sub,
             )
-            # The byline is the binding constraint at 4.5:1 (it is not large
-            # text); the title runs 7.6-10.45cqw and asks 3:1.
-            byline = plate.crop((_FRAME_INSET, _AUTHOR_Y - 9, W - _FRAME_INSET, _AUTHOR_Y + 9))
-            title = plate.crop((_FRAME_INSET, round(H * 0.36), W - _FRAME_INSET, round(H * 0.62)))
-            wb = worst(byline, AUTHOR_INK_OPACITY)
-            wt = worst(title, 1.0)
-            if wb < AUTHOR_MIN_CONTRAST or wt < 3.0:
-                thin.append(f"{path.stem}: byline {wb:.2f}:1, title {wt:.2f}:1")
+            # EVERY STRIP THAT CARRIES INK, from the one table the tuner reads.
+            # This used to measure the byline and the title and stop. The byline
+            # band was also 8px short of the real byline, so five paintings were
+            # failing in rows nothing looked at; the subtitle and the brandmark
+            # were not measured at all, and 36 of 38 paintings were under 4.5:1
+            # under the subtitle. `INK_REGIONS` is shared with
+            # `scripts/tune_art_scrim.py` so the bar this gate holds and the bar
+            # that script tunes to cannot drift apart.
+            bad = []
+            for name, top, bottom, opacity, bar in INK_REGIONS:
+                if name == "subtitle" and not has_sub:
+                    continue
+                got = worst(
+                    plate.crop((_FRAME_INSET, top, W - _FRAME_INSET, bottom)), opacity
+                )
+                if got < bar:
+                    bad.append(f"{name} {got:.2f}:1 (needs {bar})")
+            if bad:
+                thin.append(f"{path.stem}: {', '.join(bad)}")
         self.assertEqual(
             thin, [],
-            "a painting too pale for white type under the scrim it is given — "
-            "re-run `cd backend && uv run python scripts/tune_art_scrim.py`, or "
-            "recrop the artwork if no strength carries it",
+            "a painting too pale for the ink it carries under the scrim it is "
+            "given — re-run `cd backend && uv run python scripts/tune_art_scrim.py`, "
+            "or recrop the artwork if no strength carries it",
         )
         self.assertEqual(
             untuned, [],

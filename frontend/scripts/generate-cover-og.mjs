@@ -29,6 +29,21 @@
  * re-run. It cannot catch a change to the COMPOSITION below — nothing but
  * running it can — which is why the tiers are kept as thin as they are.
  *
+ * THE MANIFEST IS ALSO READ, which it was not for a long time. It was written
+ * every run and consulted only by a test, while this script launched Chromium
+ * and re-rendered all 134 cards each time, then discarded the ones whose bytes
+ * matched. Comparing the digests it wrote last time first takes a run from
+ * minutes to about two seconds. A card is skipped only when its `ground` and
+ * `style` are unchanged AND the global `css` and `markup` digests still match
+ * AND the file is still on disk; `--force` ignores all of that.
+ *
+ * That also stopped a quieter problem. These PNGs are reproducible on one
+ * machine and NOT across machines — a different Chromium or libvips build
+ * re-encodes the same pixels a shade differently, and twelve twins drawn in
+ * another session came back as twelve modified files here for a mean-brightness
+ * difference of 0.3. Because a skip does not re-encode, a checkout whose inputs
+ * have not moved no longer churns files just for having been run somewhere else.
+ *
  * ONE PER SLUG, ENGLISH. The fallback path is keyed by slug alone, so a
  * translated page shares the English card. That is `generate-og.mjs`'s policy,
  * inherited rather than invented here: scrapers rarely read localized cards.
@@ -470,8 +485,42 @@ async function assertTitleFace(page, book) {
 
 const digest = (buf) => createHash('sha256').update(buf).digest('hex');
 
+/**
+ * What the last run recorded, or nothing.
+ *
+ * The manifest has always been WRITTEN and never READ. Its own header says it
+ * exists "so a stale twin can be told from a fresh one" — and the only reader
+ * was a test. Meanwhile this script launched Chromium and re-rendered all 134
+ * cards on every run, then threw away the ones whose bytes matched. Reading
+ * back what it just wrote last time turns a multi-minute run into a few
+ * seconds, using digests the gates already trust.
+ */
+function lastRun() {
+	const path = resolve(COVERS, 'og-manifest.json');
+	if (!existsSync(path)) return null;
+	try {
+		return JSON.parse(readFileSync(path, 'utf8'));
+	} catch {
+		// A half-written or hand-mangled manifest means "redraw everything",
+		// which is the safe answer and the behaviour this had before.
+		return null;
+	}
+}
+
 async function main() {
 	const books = needTwins();
+	const force = process.argv.includes('--force');
+	const previous = force ? null : lastRun();
+	// THE COMPOSITION IS GLOBAL, so it gates the whole skip rather than any one
+	// card: a changed stylesheet or a changed markup module redraws all of them.
+	// Checked once, here, because getting it wrong is not a slow run — it is 134
+	// cards silently keeping a retired design, the exact failure this script was
+	// written to end.
+	const composed =
+		previous?.css === digest(Buffer.from(COVER_CSS)) &&
+		previous?.markup === digest(readFileSync(resolve(HERE, '../src/lib/coverCardMarkup.ts')));
+	const known = composed ? (previous.twins ?? {}) : {};
+
 	const browser = await chromium.launch();
 	const page = await browser.newPage({
 		viewport: { width: WIDTH, height: HEIGHT },
@@ -480,10 +529,27 @@ async function main() {
 
 	const wrote = [];
 	const manifest = {};
+	let skipped = 0;
 	for (const book of books) {
 		// Read once, for the digest and for the page.
 		const groundBytes = readFileSync(resolve(STATIC, book.cover.replace(/^\//, '')));
-		manifest[book.twin.key] = { ground: digest(inputs(book, groundBytes)), style: book.style };
+		const entry = { ground: digest(inputs(book, groundBytes)), style: book.style };
+		manifest[book.twin.key] = entry;
+		const dest = resolve(COVERS, book.twin.file);
+		// Same inputs, same composition, and the file is still there: nothing a
+		// render could produce differs from what is on disk. The file check is
+		// not belt-and-braces — a twin deleted by hand leaves the manifest
+		// claiming it, and skipping on the digest alone would never write it back.
+		const cached = known[book.twin.key];
+		if (
+			cached &&
+			cached.ground === entry.ground &&
+			cached.style === entry.style &&
+			existsSync(dest)
+		) {
+			skipped++;
+			continue;
+		}
 		await page.setContent(coverPage(book, groundBytes));
 		// The faces are data URIs, so this resolves immediately — but a
 		// screenshot taken before it does silently falls back to the default
@@ -497,7 +563,6 @@ async function main() {
 			.png({ palette: true, colours: 256, dither: 0.4, effort: 10 })
 			.toBuffer();
 
-		const dest = resolve(COVERS, book.twin.file);
 		if (existsSync(dest) && digest(readFileSync(dest)) === digest(png)) continue;
 		// A translated edition's card is the first thing written into its language
 		// directory when that language has no plate of its own.
@@ -550,7 +615,10 @@ async function main() {
 		) + '\n'
 	);
 
-	console.log(`wrote ${wrote.length} of ${books.length} twins`);
+	console.log(
+		`wrote ${wrote.length} of ${books.length} twins` +
+			(skipped ? ` (${skipped} unchanged, skipped — \`--force\` redraws them)` : '')
+	);
 	for (const line of wrote) console.log(`    ${line}`);
 }
 

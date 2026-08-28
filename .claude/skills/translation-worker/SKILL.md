@@ -146,7 +146,15 @@ worker specifics that shipped ~11 editions:
   chapter's `"book"` is `["<slug>", "<lang>"]`). Serialize with Django
   (`django.core.serializers.serialize("json", objs,
   use_natural_primary_keys=True, use_natural_foreign_keys=True)`) — never
-  hand-write pks, never `json.dumps`. Copy source_url/sort_order from the
+  hand-write pks, never `json.dumps`. **Write it in the canonical fixture
+  format** — records at column 0, `indent=1`, trailing newline, i.e.
+  `"[\n" + ",\n".join(json.dumps(r, indent=1, ensure_ascii=False) for r in rows) + "\n]\n"`
+  (`scripts/regen_fixture.py:render()`). The serializer hands you one long line,
+  so this step is yours; improvising it is how 43 translation fixtures ended up
+  in three different near-miss formats (measured 2026-08-28 — harmless, since
+  the prose textconv hides whitespace, but don't add a 44th).
+  *(`authors.json` is the one file that is NOT this format — it is `indent=2`.
+  Books, sermons and `plans.json` all are.)* Copy source_url/sort_order from the
   English file; `source_type=ai_unreviewed`; `pdf_url` empty; `body_text`
   via `library.text.html_to_text`. **Never copy `cover_url`** — it is
   per-language (`/covers/<lang>/<slug>.svg`), and copying the English one puts
@@ -178,6 +186,8 @@ and `body_html` (preserve ALL tags 1:1 — blockquote/h2/br/i, hymn stanzas);
 write one new file `content/sermons/<slug>.<lang>.json` holding the single
 translated Sermon row (natural-key format — `"author": ["author-slug"]`, no
 `pk`; copy source_url/sort_order/preached_on from the English file); `seed_sermons` upserts it on deploy.
+Same canonical formatting as the book file above — half the drifted fixtures are
+sermons, so "same shape, smaller" was evidently not enough.
 
 **Plan** — a reading plan is a per-language `Plan` row (title + description);
 its days reference **books by slug** and resolve to that language's book rows

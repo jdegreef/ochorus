@@ -180,6 +180,69 @@
 	);
 }
 
+/* THE SAME CURVE PLUS ITS FOURTH BAND, for a cover that draws a subtitle.
+   A whole second gradient rather than a second layer stacked on the first:
+   `scrim_alpha` takes the MAX of its bands, and two stacked translucent blacks
+   composite as 1-(1-a)(1-b), which is not that. One rule overriding the other
+   is the only spelling that stays faithful to the Python.
+
+   The subtitle sits at 0.649-0.677 of the plate and was getting alpha 0.29
+   where the title gets 0.58 — half the scrim, under smaller type at lower ink
+   opacity than the byline. 36 of 38 paintings measured under 4.5:1 there and
+   nothing looked: the tuner and the fixture gate both stopped at the title.
+
+   Only on covers that HAVE a subtitle, because 18 of the 38 works do not, and
+   darkening a strip of their photography to protect words that are not there
+   is the even-wash thinking the shaped scrim replaced. Sampled from
+   `covers.scrim_alpha(f, 1.0, subtitle=True)` every 2.5%, like its sibling;
+   `coverArtContrast.test.ts` holds the two spellings together. */
+.cover-plate.over-art.has-subtitle::before {
+	background: linear-gradient(
+		180deg,
+rgb(0 0 0 / 0.26) 0%,
+			rgb(0 0 0 / 0.36) 2.5%,
+			rgb(0 0 0 / 0.47) 5%,
+			rgb(0 0 0 / 0.56) 7.5%,
+			rgb(0 0 0 / 0.63) 10%,
+			rgb(0 0 0 / 0.66) 12.5%,
+			rgb(0 0 0 / 0.65) 15%,
+			rgb(0 0 0 / 0.59) 17.5%,
+			rgb(0 0 0 / 0.51) 20%,
+			rgb(0 0 0 / 0.41) 22.5%,
+			rgb(0 0 0 / 0.30) 25%,
+			rgb(0 0 0 / 0.21) 27.5%,
+			rgb(0 0 0 / 0.27) 30%,
+			rgb(0 0 0 / 0.33) 32.5%,
+			rgb(0 0 0 / 0.40) 35%,
+			rgb(0 0 0 / 0.47) 37.5%,
+			rgb(0 0 0 / 0.53) 40%,
+			rgb(0 0 0 / 0.58) 42.5%,
+			rgb(0 0 0 / 0.62) 45%,
+			rgb(0 0 0 / 0.63) 47.5%,
+			rgb(0 0 0 / 0.64) 50%,
+			rgb(0 0 0 / 0.62) 52.5%,
+			rgb(0 0 0 / 0.59) 55%,
+			rgb(0 0 0 / 0.54) 57.5%,
+			rgb(0 0 0 / 0.54) 60%,
+			rgb(0 0 0 / 0.69) 62.5%,
+			rgb(0 0 0 / 0.76) 65%,
+			rgb(0 0 0 / 0.75) 67.5%,
+			rgb(0 0 0 / 0.66) 70%,
+			rgb(0 0 0 / 0.51) 72.5%,
+			rgb(0 0 0 / 0.34) 75%,
+			rgb(0 0 0 / 0.24) 77.5%,
+			rgb(0 0 0 / 0.34) 80%,
+			rgb(0 0 0 / 0.45) 82.5%,
+			rgb(0 0 0 / 0.55) 85%,
+			rgb(0 0 0 / 0.62) 87.5%,
+			rgb(0 0 0 / 0.66) 90%,
+			rgb(0 0 0 / 0.65) 92.5%,
+			rgb(0 0 0 / 0.61) 95%,
+			rgb(0 0 0 / 0.53) 97.5%,
+			rgb(0 0 0 / 0.43) 100%
+	);
+}
+
 .cover-type {
 	display: flex;
 	flex-direction: column;
@@ -813,4 +876,21 @@
 	   compositions that DON'T track already give it, so all six agree in
 	   Arabic and Devanagari. */
 	font-size: 3.7cqw;
+}
+
+/* MORE INK OVER A PHOTOGRAPH, rather than more black under it.
+   The subtitle is set at 0.72-0.85 opacity and the brandmark at 0.82, which
+   subordinates them nicely on a flat plate whose colour is chosen to carry
+   white. Over artwork it is the wrong lever: paler ink needs MORE scrim to
+   clear the same bar, so every point of opacity saved from the type was paid
+   for by darkening the picture underneath it. Measured — raising these two and
+   adding the subtitle band leaves 12 paintings darker, 6 LIGHTER and 20
+   unchanged, where the band alone made three of them unsatisfiable at any
+   strength the curve can reach. `.over-art` only: a plate is unaffected. */
+.cover-plate.over-art .subtitle {
+	opacity: 0.9;
+}
+
+.cover-plate.over-art .brandmark {
+	opacity: 0.95;
 }
