@@ -71,6 +71,7 @@ from library.designed_covers import (
     DESIGNED_BY_SLUG,
     digest,
 )
+from library.ingest import strip_numbering_prefix
 from library.quote_marks import mark_counts
 from library.text import html_to_text
 
@@ -1623,6 +1624,44 @@ class BodyTextDerivationTests(SimpleTestCase):
             f"{len(stale)} rows carry a body_text their own body_html no longer "
             f"derives — search indexes one thing and the page shows another. Run "
             f"`manage.py rederive_body_text --write`.",
+        )
+
+
+class ChapterTitleNumberingTests(SimpleTestCase):
+    """No stored title may carry the number the reader is about to add.
+
+    The reader renders a chapter as `{order}. {title}` — TocDrawer,
+    SearchDrawer and the notebook all do — so a title stored as "1. The God of
+    Our Salvation" reached the page as "3. 1. The God of Our Salvation", the
+    two numbers disagreeing because front matter occupies the first orders.
+    245 rows were in that state: `waiting-on-god` in six languages, and the 59
+    chapters of `selected-sermons-whitefield`, styled "01. ", "02. " …
+
+    `clean_title` strips the prefix on import now, and migration 0090 stripped
+    the rows already in the database. This is what keeps them from coming back:
+    the importer's rule is not applied to a fixture edited by hand, and
+    `seed_books` never re-syncs the chapters of a book it has already created,
+    so a numbered title committed here would ship and then be unreachable.
+
+    Every title in the corpus, not just chapters — a numeral in front of a book
+    or sermon name is the same source artefact, and today there are none.
+    """
+
+    def test_no_title_carries_a_redundant_numbering_prefix(self):
+        numbered = []
+        for path in ordered_fixture_paths():
+            for row in json.loads(path.read_text()):
+                title = row.get("fields", {}).get("title")
+                if not isinstance(title, str):
+                    continue
+                if strip_numbering_prefix(title) != title:
+                    numbered.append(f"{path.name} #{row['fields'].get('order', '-')}: {title!r}")
+        self.assertEqual(
+            numbered[:20],
+            [],
+            f"{len(numbered)} title(s) begin with their own number, which the "
+            f"reader prepends again — pass them through "
+            f"`library.ingest.strip_numbering_prefix`.",
         )
 
 
