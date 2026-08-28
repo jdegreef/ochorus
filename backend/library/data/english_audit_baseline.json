@@ -29,7 +29,7 @@
    "anachronism": 2
   },
   "divine-healing": {
-   "orphan-close-quote": 4,
+   "orphan-close-quote": 3,
    "space-before-punct": 11
   },
   "feasting-at-the-table": {
@@ -94,9 +94,6 @@
    "hyphen-space": 1,
    "space-before-punct": 4
   },
-  "prevailing-prayer": {
-   "misspelling": 1
-  },
   "purity-of-heart": {
    "orphan-close-quote": 1,
    "run-together": 1
@@ -133,7 +130,6 @@
    "hyphen-space": 1
   },
   "ten-commandments": {
-   "anachronism": 2,
    "orphan-close-quote": 1,
    "space-before-punct": 9
   },
