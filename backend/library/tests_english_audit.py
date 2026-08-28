@@ -273,21 +273,36 @@ class LineBreakHyphenTests(SimpleTestCase):
         self.assertEqual(rejoin(once), once)
 
     def test_the_fixture_is_clean(self):
-        """The committed English fixture must carry no repairable hyphen.
+        """The committed English fixture must carry no repairable text.
 
         `apply_body_corrections` heals the database on every deploy, but the
         fixture is a file — nothing rewrites it, and it is what a fresh build
         loads and what the ratchet measures.
+
+        Checks `apply_body_corrections`, NOT the bare hyphen rule. It used to
+        check the rule, which is the same blind spot the command had: a
+        DECLARED repair added to `BODY_CORRECTIONS` later leaves the fixture
+        stale, the rule says nothing about it, and ten book fixtures sat that
+        way undetected. Both body fields, because `body_text` is derived from
+        `body_html` and a file that corrects one and not the other disagrees
+        with itself.
         """
         import json
 
         from library.content_fixtures import BOOKS_DIR, SERMONS_DIR
+        from library.corrections import apply_body_corrections
 
         dirty = []
         for path in sorted(BOOKS_DIR.glob("*.en.json")) + sorted(SERMONS_DIR.glob("*.en.json")):
+            slug = path.name[: -len(".en.json")]
             for row in json.loads(path.read_text(encoding="utf-8")):
-                body = row.get("fields", {}).get("body_html") or ""
-                if rejoin(body) != body:
+                fields = row.get("fields", {})
+                order = fields.get("order")
+                if any(
+                    apply_body_corrections(slug, order, fields.get(key) or "")
+                    != (fields.get(key) or "")
+                    for key in ("body_html", "body_text")
+                ):
                     dirty.append(path.name)
                     break
         self.assertEqual(
