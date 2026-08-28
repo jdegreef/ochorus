@@ -103,6 +103,9 @@ force if every paragraph is a box.
    That round-trip reproduces the committed file byte-for-byte. **The regen
    script's `render()` disagrees with what is on disk** — it writes records at
    column 0 with `indent=1`, which is ~2.7KB smaller and reformats every line.
+   `authors.json` is the ODD ONE OUT: the `books/`, `sermons/` and `plans.json`
+   fixtures really are in `render()` format, so don't carry `indent=2` over to
+   them (see the book-import skill, which is correct for those).
    Do not follow its format, and do not run the regen script to save your edit:
    it would reformat the whole file and bury a 75-line addition in a full-file
    diff (this cost time on PR #1134).
