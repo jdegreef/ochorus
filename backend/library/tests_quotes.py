@@ -1,284 +1,225 @@
-"""The quote converter, which now has two callers that must not diverge.
+"""Curated quotations — the sourcing, and the gate that keeps them unpublished.
 
-`scripts/normalize_quotes.py` writes the committed fixture; migration 0082
-writes the rows a deployed database already holds. Both call
-`library.quotes.convert`, so these tests pin the decision itself rather than
-either caller's output.
+The risk this page type carries is not a bug, it is publication: a quote page
+has no primary text under it, so a page of weak or misattributed lines is the
+doorway shape search engines judge a whole domain by. These tests hold the two
+things that make it safe — every quotation names its exact source, and nothing
+reaches a reader until a person approves it.
 """
 
 from __future__ import annotations
 
-import importlib
-import json
-from unittest import skipUnless
-
-from django.contrib.postgres.search import SearchVector
-from django.db import connection
-from django.db.migrations.executor import MigrationExecutor
-from django.db.models import Value
+from django.core.management import call_command
 from django.test import SimpleTestCase, TestCase
+from rest_framework.test import APIClient
 
-from library.content_fixtures import BOOKS_DIR, SERMONS_DIR
-from library.ingest import word_count
-from library.models import Author, Book, Chapter
-from library.quotes import (
-    assert_punctuation_only,
-    convert,
-    uses_guillemets,
-)
-from library.text import html_to_text
-
-MIGRATION = importlib.import_module("library.migrations.0082_repair_mixed_quotes")
-
-# Read off the migration rather than restated beside it: a slug added to 0082
-# would otherwise leave this test quietly checking the old set.
-MIGRATION_0082 = [
-    BOOKS_DIR / f"{slug}.{MIGRATION.LANGUAGE}.json" for slug in MIGRATION.BOOK_SLUGS
-]
-
-# The Spanish sermon #1132 also converted is deliberately NOT here, and not in
-# the migration: `seed_sermons` upserts `body_html` and calls a real `save()`
-# (only `source_type` and `is_published` are create-only), so a sermon's fixture
-# edit DOES reach a deployed database on the next deploy — with better fidelity
-# than a migration, since `save()` re-derives `body_text` and the vector through
-# the model's own hooks. Only chapters are stranded.
-SERMON_ALREADY_SEEDED = SERMONS_DIR / "unfailing-springs.es.json"
+from .models import Author, Book, Chapter, Quote, Sermon
+from .quote_seed import APPROVED, QUOTES
 
 
-class QuoteConversionTests(SimpleTestCase):
-    def test_a_work_without_guillemets_takes_the_curly_pair(self):
-        """Every English work. The case `convert`'s first version got wrong."""
-        out, changed = convert(
-            '<p>He said, "Come and see," and they came.</p>', outer_guillemets=False
-        )
-        self.assertEqual(out, "<p>He said, “Come and see,” and they came.</p>")
-        self.assertEqual(changed, 2)
+class SeedDataTests(SimpleTestCase):
+    """Shape of the curated list itself, before any database is involved."""
 
-    def test_inside_a_guillemet_span_the_straight_mark_is_the_NESTED_level(self):
-        """The Spanish rule: « » outside, “ ” nested — decided by depth.
+    def all_quotes(self):
+        return [q for quotes in QUOTES.values() for q in quotes]
 
-        Converting these outer quotations to “ ” would have swapped one
-        inconsistency for another rather than fixing it, which is why depth is
-        tracked at all.
-        """
-        out, _ = convert(
-            '<p>«Él dijo: "ven", y vino.» Luego "se fue".</p>', outer_guillemets=True
-        )
-        self.assertEqual(out, "<p>«Él dijo: “ven”, y vino.» Luego «se fue».</p>")
-
-    def test_depth_does_not_survive_an_unclosed_span(self):
-        """These books leave quotations open across a chapter; depth is per call."""
-        first, _ = convert('<p>«Una cita que no cierra: "aquí".</p>', outer_guillemets=True)
-        second, _ = convert('<p>Y aquí "otra".</p>', outer_guillemets=True)
-        self.assertIn("“aquí”", first)
-        self.assertIn("«otra»", second)
-
-    def test_a_mark_opening_a_paragraph_opens(self):
-        """`<p>` and nothing else to its left."""
-        out, _ = convert('<p>"Come and see," he said.</p>', outer_guillemets=False)
-        self.assertTrue(out.startswith("<p>“Come"))
-
-    def test_quotes_inside_a_tag_are_left_alone(self):
-        """Attribute values are quoted too."""
-        out, changed = convert(
-            '<p class="lead">nothing to convert</p>', outer_guillemets=False
-        )
-        self.assertEqual(out, '<p class="lead">nothing to convert</p>')
-        self.assertEqual(changed, 0)
-
-    def test_the_entity_form_converts_and_the_guard_still_passes(self):
-        """The entity form, and the guard reading through it rather than at it."""
-        before = "<p>He said, &quot;Come.&quot;</p>"
-        after, changed = convert(before, outer_guillemets=False)
-        self.assertEqual(after, "<p>He said, “Come.”</p>")
-        self.assertEqual(changed, 2)
-        assert_punctuation_only(before, after, "entity")
-
-    def test_conversion_is_idempotent(self):
-        once, _ = convert('<p>«Él dijo: "ven".»</p>', outer_guillemets=True)
-        twice, changed = convert(once, outer_guillemets=True)
-        self.assertEqual(twice, once)
-        self.assertEqual(changed, 0)
-
-    def test_the_guard_rejects_a_change_to_the_wording(self):
-        with self.assertRaises(AssertionError):
-            assert_punctuation_only("<p>the word</p>", "<p>the words</p>", "wording")
-        with self.assertRaises(AssertionError):
-            assert_punctuation_only("<p>a</p>", "<p><b>a</b></p>", "tags")
-
-    def test_the_guard_reads_scripts_the_old_allowlist_dropped(self):
-        """It listed Latin, Arabic and Cyrillic. Devanagari fell through it, so
-        on the Hindi editions it compared "" with "" and guarded nothing."""
-        for before, after in [
-            ("<p>नम्रता है</p>", "<p>नम्रता हैं</p>"),   # Devanagari (hi)
-            ("<p>ตัวอย่าง</p>", "<p>ตัวอย่างๆ</p>"),      # a script nothing listed
-            ("<p>a b</p>", "<p>a  b</p>"),               # whitespace
-            ("<p>one, two</p>", "<p>one; two</p>"),      # punctuation
-        ]:
-            with self.subTest(before=before), self.assertRaises(AssertionError):
-                assert_punctuation_only(before, after, "script")
-
-
-class Migration0082FidelityTests(SimpleTestCase):
-    """The rows the migration repairs must land on the text the fixture holds.
-
-    The migration and `scripts/normalize_quotes.py` run the SAME converter over
-    the SAME works, one against the database and one against the file. If the
-    converter is ever changed, a fresh build (which loads the fixture) and a
-    deployed database (which the migration repaired) would start showing the
-    reader different marks for the same edition — and nothing else would say so.
-    """
-
-    def test_the_named_works_are_in_the_fixture_and_need_no_conversion(self):
-        for path in [*MIGRATION_0082, SERMON_ALREADY_SEEDED]:
-            with self.subTest(path.name):
-                self.assertTrue(path.exists(), f"{path.name} is named by 0082 but missing")
-                rows = json.loads(path.read_text(encoding="utf-8"))
-                bodies = [
-                    body
-                    for r in rows
-                    if (body := r["fields"].get("body_html"))
-                ]
-                self.assertTrue(bodies, f"{path.name} carries no prose")
-                outer = uses_guillemets("".join(bodies))
-                self.assertTrue(
-                    outer, f"{path.name} is repaired as a « »-quoting work but sets none"
+    def test_every_quotation_names_exactly_one_source(self):
+        # A quotation whose source cannot be named is the thing the aggregators
+        # already publish, and the reason they cannot be trusted.
+        for q in self.all_quotes():
+            with self.subTest(slug=q["slug"]):
+                self.assertEqual(
+                    ("chapter" in q) + ("sermon" in q), 1, "need exactly one source"
                 )
-                for i, body in enumerate(bodies):
-                    out, changed = convert(body, outer_guillemets=outer)
-                    self.assertEqual(
-                        changed,
-                        0,
-                        f"{path.name} row {i} still holds straight marks the "
-                        f"migration would convert — the fixture and the deployed "
-                        f"database would disagree",
-                    )
-                    self.assertEqual(out, body)
+                self.assertIsInstance(q["paragraph"], int)
 
-    def test_both_body_fields_carry_the_same_marks(self):
-        """`body_text` is what search indexes, and `loaddata` writes it VERBATIM.
+    def test_no_quotation_points_at_paragraph_zero(self):
+        # The reader ignores `?p=0` (it treats 0 as "no jump"), so a card citing
+        # the first paragraph would silently fail to land.
+        for q in self.all_quotes():
+            with self.subTest(slug=q["slug"]):
+                self.assertGreater(q["paragraph"], 0)
 
-        The first sweep converted `body_html` only, so these four works shipped
-        a `body_text` still holding all 299 of their pre-conversion straight
-        marks — a fresh database indexed and snippeted straight quotes while its
-        pages rendered « ». `backfill_body_text` would not have caught it: it
-        fills an EMPTY `body_text`, never a wrong one.
+    def test_slugs_are_unique_and_carry_the_author(self):
+        slugs = [q["slug"] for q in self.all_quotes()]
+        self.assertEqual(len(slugs), len(set(slugs)))
+        for author, quotes in QUOTES.items():
+            for q in quotes:
+                self.assertTrue(q["slug"].startswith(f"{author}-"))
 
-        Scoped to these works deliberately. The same drift is corpus-wide (46
-        files, ~12,000 marks) and repairing it is its own change; this pins the
-        part repaired here so it cannot regress.
-        """
-        for path in [*MIGRATION_0082, SERMON_ALREADY_SEEDED]:
-            with self.subTest(path.name):
-                for row in json.loads(path.read_text(encoding="utf-8")):
-                    body_html = row["fields"].get("body_html")
-                    body_text = row["fields"].get("body_text")
-                    if not body_html or body_text is None:
-                        continue
-                    self.assertEqual(html_to_text(body_html), body_text)
+    def test_the_text_is_a_whole_sentence(self):
+        # Fragments are the failure mode of extracting from imported prose: the
+        # library's own QA has found fragmented paragraphs, and half a sentence
+        # under an author's name reads as a misquotation.
+        for q in self.all_quotes():
+            with self.subTest(slug=q["slug"]):
+                self.assertRegex(q["text"], r"^[A-Z“\"]")
+                self.assertRegex(q["text"], r"[.!?]$")
+                self.assertGreaterEqual(len(q["text"].split()), 8)
+
+    def test_no_unescaped_html_entities_survived_extraction(self):
+        # `&#x27;` reached a candidate once, because the first pass used a
+        # hand-rolled entity map instead of html.unescape.
+        for q in self.all_quotes():
+            with self.subTest(slug=q["slug"]):
+                self.assertNotRegex(q["text"], r"&[#a-zA-Z0-9]+;")
+
+    def test_the_pilot_is_still_one_author(self):
+        # Scope guard, not a limit of the design: the pilot exists so that the
+        # indexation of ONE author's page decides whether the rest are built.
+        self.assertEqual(list(QUOTES), ["charles-h-spurgeon"])
 
 
-class Migration0082BehaviourTests(TestCase):
-    """The migration itself, run the way `migrate` runs it.
+class SeedCommandTests(TestCase):
+    def _nobody_approved(self):
+        from unittest import mock
 
-    `Migration0082FidelityTests` proves the fixture needs no conversion; that is
-    the state AFTER this has run everywhere. This proves the step that gets a
-    database there — and, just as much, that it leaves alone what it must:
-    a deployed database holds eight other editions of
-    `clothed-with-strength-and-dignity`, and the converter would give an English
-    chapter's straight quotes the Spanish outer mark.
+        return mock.patch(
+            "library.management.commands.seed_quotes.APPROVED", frozenset()
+        )
 
-    HISTORICAL models, not `django.apps.apps`. Passing the live registry looks
-    equivalent and quietly disarms two of these tests: a real `Chapter.save()`
-    re-derives `body_text` itself, so `_derive` could be deleted outright and
-    they would still pass; and it fires `fts.refresh_chapter`, which repopulates
-    the very vector the migration nulls. The migration receives models with no
-    hooks at all, so that is what it is given here.
-    """
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        executor = MigrationExecutor(connection)
-        cls.historical = executor.loader.project_state(
-            ("library", MIGRATION.Migration.dependencies[0][1])
-        ).apps
-
-    def _book(self, language, body):
-        author = Author.objects.create(slug=f"a-{language}", name="A")
+    def setUp(self):
+        self.author = Author.objects.create(slug="charles-h-spurgeon", name="C. H. Spurgeon")
         book = Book.objects.create(
-            slug=MIGRATION.BOOK_SLUGS[0], language=language, title="T", author=author
+            author=self.author, slug="all-of-grace", language="en", title="All of Grace"
         )
-        return Chapter.objects.create(book=book, order=1, title="One", body_html=body)
+        for order in range(1, 21):
+            Chapter.objects.create(
+                book=book, order=order, title=f"Ch {order}",
+                body_html="<p>a</p><p>b</p><p>c</p>" * 60,
+            )
+        for slug in ("compel-them-to-come-in", "order-and-argument-in-prayer",
+                     "christ-crucified", "christ-precious-to-believers",
+                     "pauls-first-prayer", "the-sweet-uses-of-adversity"):
+            Sermon.objects.create(
+                author=self.author, slug=slug, language="en", title=slug,
+                body_html="<p>x</p>" * 80,
+            )
 
-    def test_it_converts_the_spanish_edition_and_leaves_the_english_alone(self):
-        es = self._book("es", '<p>«Él dijo: "ven".» Y luego "se fue".</p>')
-        en = self._book("en", '<p>He said, "come." And then "he left."</p>')
+    def test_an_approved_author_seeds_published(self):
+        # The approval is recorded in the repo, so a rebuilt database comes up
+        # with the same quotations published — a prod-only approval would not
+        # survive one.
+        self.assertIn("charles-h-spurgeon", APPROVED)
+        call_command("seed_quotes", verbosity=0)
+        self.assertTrue(Quote.objects.exists())
+        self.assertEqual(Quote.objects.filter(reviewed=False).count(), 0)
 
-        MIGRATION.repair(self.historical, None)
+    def test_an_author_not_in_approved_seeds_unreviewed(self):
+        # The gate still holds for anyone nobody has signed off. Patched on the
+        # COMMAND's namespace: it does `from ... import APPROVED`, so the name is
+        # bound at import and patching the seed module would miss it.
+        with self._nobody_approved():
+            call_command("seed_quotes", verbosity=0)
+        self.assertTrue(Quote.objects.exists())
+        self.assertEqual(Quote.objects.filter(reviewed=True).count(), 0)
 
-        es.refresh_from_db()
-        en.refresh_from_db()
-        self.assertEqual(es.body_html, "<p>«Él dijo: “ven”.» Y luego «se fue».</p>")
-        self.assertEqual(
-            en.body_html,
-            '<p>He said, "come." And then "he left."</p>',
-            "the English edition shares the slug and must not be touched",
-        )
+    def test_a_takedown_survives_the_next_deploy(self):
+        """The reason `reviewed` is create-only, and why it cuts both ways.
 
-    def test_it_re_derives_what_save_would_have_derived(self):
-        """No hook runs, so the repair must do by hand what `save()` would.
-
-        Compared against a real `save()` rather than against itself: a local
-        `<[^>]+>` sub passes self-consistency and still spaces every inline tag
-        and leaves entities escaped.
+        Somebody clears the flag on a quotation — a misattribution spotted, a
+        complaint — and the seed runs again on the next deploy. If it re-asserted
+        what the repo approved, the quotation would come straight back, which is
+        exactly the trap `is_published` is protected from in seed_books.
         """
-        chapter = self._book("es", '<p>«Él dijo: <i>"ven"</i>, y G&amp;C vino.»</p>')
-        Chapter.objects.filter(pk=chapter.pk).update(body_text="stale", word_count=0)
+        call_command("seed_quotes", verbosity=0)
+        pulled = Quote.objects.first()
+        pulled.reviewed = False
+        pulled.save(update_fields=["reviewed"])
+        call_command("seed_quotes", verbosity=0)
+        pulled.refresh_from_db()
+        self.assertFalse(pulled.reviewed)
 
-        MIGRATION.repair(self.historical, None)
+    def test_re_running_writes_nothing(self):
+        call_command("seed_quotes", verbosity=0)
+        n = Quote.objects.count()
+        call_command("seed_quotes", verbosity=0)
+        self.assertEqual(Quote.objects.count(), n)
 
-        chapter.refresh_from_db()
-        self.assertIn("“ven”", chapter.body_text)
+    def test_a_row_created_before_its_author_was_approved_stays_unreviewed(self):
+        # Create-only means the repo cannot retro-publish an existing row; that
+        # is what `approve_quotes` is for, and the command's docstring says so.
+        with self._nobody_approved():
+            call_command("seed_quotes", verbosity=0)
+        call_command("seed_quotes", verbosity=0)
+        self.assertEqual(Quote.objects.filter(reviewed=True).count(), 0)
+        call_command("approve_quotes", "charles-h-spurgeon", verbosity=0)
+        self.assertEqual(Quote.objects.filter(reviewed=False).count(), 0)
 
-        witness = Chapter.objects.create(
-            book=chapter.book, order=99, title="W", body_html=chapter.body_html
+    def test_approval_survives_a_re_seed(self):
+        # `reviewed` is create-only. A seed that re-asserted it would revoke a
+        # person's decision on the next deploy — the trap CLAUDE.md warns about.
+        call_command("seed_quotes", verbosity=0)
+        call_command("approve_quotes", "charles-h-spurgeon", verbosity=0)
+        call_command("seed_quotes", verbosity=0)
+        self.assertEqual(Quote.objects.filter(reviewed=False).count(), 0)
+
+    def test_a_quotation_whose_work_is_missing_is_skipped_not_stored(self):
+        Sermon.objects.all().delete()
+        call_command("seed_quotes", verbosity=0)
+        # Nothing stored without a source to cite.
+        self.assertFalse(Quote.objects.filter(chapter=None, sermon=None).exists())
+
+    def test_every_stored_quote_can_name_its_source(self):
+        call_command("seed_quotes", verbosity=0)
+        for q in Quote.objects.select_related("chapter", "sermon"):
+            with self.subTest(slug=q.slug):
+                self.assertTrue(q.chapter_id or q.sermon_id)
+
+
+class QuotePageApiTests(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+        self.author = Author.objects.create(slug="w", name="A Writer")
+        book = Book.objects.create(
+            author=self.author, slug="b", language="en", title="A Work"
         )
-        self.assertEqual(chapter.body_text, witness.body_text)
-        # `word_count` gets no witness: `save()` does not set it — that is what
-        # `backfill_word_count` exists for — so the import-time rule is the
-        # reference, and a witness row would only prove 0 == 0.
-        self.assertEqual(chapter.word_count, word_count(chapter.body_html))
-
-    @skipUnless(connection.vendor == "postgresql", "tsvector is a Postgres type")
-    def test_it_nulls_the_vector_it_invalidates(self):
-        """Left alone the stored vector stays valid-LOOKING but stale, and
-        search keeps matching text the page no longer shows. The release
-        chain's `backfill_search_vectors` repairs NULLs, so nulling is what
-        puts it back in step."""
-        chapter = self._book("es", '<p>«Él dijo: "ven".»</p>')
-        Chapter.objects.filter(pk=chapter.pk).update(
-            search_vector=SearchVector(Value("stale"))
+        self.chapter = Chapter.objects.create(
+            book=book, order=3, title="Third", body_html="<p>a</p><p>b</p>"
+        )
+        self.quote = Quote.objects.create(
+            slug="w-abc", author=self.author, text="A memorable sentence about grace.",
+            chapter=self.chapter, paragraph=5,
         )
 
-        MIGRATION.repair(self.historical, None)
+    def test_an_unreviewed_author_has_no_page(self):
+        self.assertEqual(self.client.get("/api/library/quotes/w/").status_code, 404)
+        self.assertEqual(self.client.get("/api/library/quotes/").data, [])
 
-        chapter.refresh_from_db()
-        self.assertIsNone(chapter.search_vector)
+    def test_approving_publishes_the_page(self):
+        self.quote.reviewed = True
+        self.quote.save()
+        res = self.client.get("/api/library/quotes/w/")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(len(res.data["quotes"]), 1)
+        self.assertEqual(self.client.get("/api/library/quotes/").data, ["w"])
 
-    def test_it_is_a_no_op_on_a_database_that_already_holds_the_repair(self):
-        """Not merely "the text is unchanged" — the ROW must not be written.
+    def test_the_payload_carries_the_citation(self):
+        self.quote.reviewed = True
+        self.quote.save()
+        q = self.client.get("/api/library/quotes/w/").data["quotes"][0]
+        self.assertEqual(q["paragraph"], 5)
+        self.assertEqual(q["source"]["work"], "A Work")
+        self.assertEqual(q["source"]["order"], 3)
+        self.assertEqual(q["source"]["kind"], "chapter")
 
-        A repair that saved every row anyway would null every search vector it
-        touched, queueing the whole corpus for a needless rebuild on a deploy
-        where nothing changed. `body_text` is the witness: a save rewrites it
-        from `body_html`, so a marker surviving proves no save happened.
-        """
-        chapter = self._book("es", "<p>«Él dijo: “ven”.»</p>")
-        Chapter.objects.filter(pk=chapter.pk).update(body_text="untouched-marker")
+    def test_an_unreviewed_quote_never_leaks_onto_a_published_page(self):
+        self.quote.reviewed = True
+        self.quote.save()
+        Quote.objects.create(
+            slug="w-def", author=self.author, text="Not yet approved by anyone at all.",
+            chapter=self.chapter, paragraph=6,
+        )
+        slugs = [q["slug"] for q in self.client.get("/api/library/quotes/w/").data["quotes"]]
+        self.assertEqual(slugs, ["w-abc"])
 
-        MIGRATION.repair(self.historical, None)
+    def test_an_unknown_author_is_404_not_an_empty_page(self):
+        self.assertEqual(self.client.get("/api/library/quotes/nobody/").status_code, 404)
 
-        chapter.refresh_from_db()
-        self.assertEqual(chapter.body_html, "<p>«Él dijo: “ven”.»</p>")
-        self.assertEqual(chapter.body_text, "untouched-marker")
+    def test_the_author_page_counts_only_reviewed_quotes(self):
+        # The author page offers the link on this count; counting unreviewed
+        # rows would link to a page the gate keeps 404ing.
+        self.assertEqual(self.client.get("/api/library/authors/w/").data["quote_count"], 0)
+        self.quote.reviewed = True
+        self.quote.save()
+        self.assertEqual(self.client.get("/api/library/authors/w/").data["quote_count"], 1)

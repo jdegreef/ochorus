@@ -1,3 +1,15 @@
+// Rebuild marker 2026-08-28: PR #1150 filled `CURATED_GROUND`, which is what
+// makes `credit()` return an attribution line for the translated editions of
+// the-inner-chamber and prayer-the-pulse-of-life. That PR touched frontend/
+// (the paintings), so the web build DID run — in parallel with the api deploy,
+// and the crawler's requests interleaved with the api's rollover: 6 of the 12
+// translated pages prerendered against the OLD api, whose CURATED_GROUND was
+// empty, and baked HTML with no credit. Scattered by language (es/lg/sw
+// missing, ar/hi/pt/uk present) rather than a clean prefix, which is what a
+// concurrent crawler against a rolling restart looks like. Readers saw the
+// credit on hydration throughout; only the static HTML disagreed. This touch
+// re-prerenders now the api is settled.
+
 // Rebuild marker 2026-07-15: backend-only PR #121 backfilled descriptions for
 // 16 books that imported without one; Render skips the web build for backend
 // commits, so this touch forces a prerender against the migrated API data.

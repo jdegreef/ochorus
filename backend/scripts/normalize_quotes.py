@@ -27,7 +27,7 @@ books leave quotations unbalanced (one opens in a paragraph and closes in the
 next, and some never close at all), and a toggle turns the next stray mark into
 an opener and stays wrong for the rest of the file.
 
-The decision itself lives in `library/quotes.py`, because migration 0082 makes
+The decision itself lives in `library/quote_marks.py`, because migration 0084 makes
 the same repair to rows already in a deployed database — `seed_books` never
 rewrites an existing book's chapters, so this sweep reaches a fresh build and
 never a running one.
@@ -44,7 +44,7 @@ CONTENT = BACKEND / "library" / "fixtures" / "content"
 
 sys.path.insert(0, str(BACKEND))
 
-from library.quotes import convert_work  # noqa: E402  (path set above; no Django)
+from library.quote_marks import convert_work  # noqa: E402  (path set above; no Django)
 
 # `body_text` is DERIVED from `body_html`, so converting one and not the
 # other leaves the committed file disagreeing with itself.

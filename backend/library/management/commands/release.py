@@ -58,6 +58,11 @@ class Command(BaseCommand):
         # Create/refresh the curated topical shelves.
         self.stdout.write("→ seed_topics")
         call_command("seed_topics")
+        # Curated quotations. After the book and sermon seeds, because a quote
+        # is stored against the chapter or sermon it came from and is skipped
+        # rather than stored unsourced when that work is not installed yet.
+        self.stdout.write("→ seed_quotes")
+        call_command("seed_quotes")
         # Fixture loads bypass save(), so fill any NULL search vectors last —
         # after body_text exists and all seed steps have created their rows.
         # Citation index feeds scripture search; incremental after body edits.

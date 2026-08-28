@@ -4,7 +4,7 @@ Lives here rather than in `scripts/normalize_quotes.py` because TWO callers
 need the identical decision and the decision is subtle:
 
 * `scripts/normalize_quotes.py` sweeps the committed fixture, and
-* migration `0082` repairs the rows already in a deployed database.
+* migration `0084` repairs the rows already in a deployed database.
 
 `seed_books` deliberately never rewrites an existing book's chapters, so a
 fixture sweep reaches a fresh build and never a running one. Two

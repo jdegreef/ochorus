@@ -305,6 +305,16 @@
 				href={localizeHref(scopedSearchHref('author', author.slug))}
 				class="btn btn-sm btn-ghost shrink-0">{t('search.inAuthor')}</a
 			>
+			<!-- Shown only when a person has approved quotations for this writer,
+			     and only to English readers: the page is English (the quotations
+			     are lifted from the English works and each citation names an
+			     English chapter), so offering it under a locale prefix would
+			     promise a page that does not exist. Un-localized href for the
+			     same reason. This link is also what keeps the quote page off the
+			     list of pages reachable only from the sitemap. -->
+			{#if author.quote_count && getLang() === 'en'}
+				<a href={`/quotes/${author.slug}/`} class="btn btn-sm btn-ghost shrink-0">Quotes</a>
+			{/if}
 			<FavoriteButton kind="author" slug={author.slug} showLabel />
 			{#if listen.supported && author.bio_html}
 				<button

@@ -32,6 +32,7 @@ const data = (over: Partial<SitemapData> = {}): SitemapData => ({
 	books: [],
 	sermons: [],
 	scripture: [],
+	quotes: [],
 	chapters: [],
 	...over
 });

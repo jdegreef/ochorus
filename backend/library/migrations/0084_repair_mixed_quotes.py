@@ -30,7 +30,7 @@ damage rather than style, because the repair that tells it so is
 `apply_body_corrections`, which runs LATER in the release chain. Four slugs are
 reviewable by reading them; a scan is not.
 
-`library.quotes.convert_work` makes the decision, shared with the fixture sweep
+`library.quote_marks.convert_work` makes the decision, shared with the fixture sweep
 so a fresh build and a repaired database cannot land on different text, and
 gated as that sweep gates: a work is converted only if its chapters TOGETHER
 still mix the two styles, so on a database already holding the repair this
@@ -54,7 +54,7 @@ from __future__ import annotations
 from django.db import migrations
 
 from library.ingest import word_count
-from library.quotes import convert_work
+from library.quote_marks import convert_work
 from library.text import html_to_text
 
 LANGUAGE = "es"
@@ -116,5 +116,5 @@ def noop(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-    dependencies = [("library", "0081_author_same_as")]
+    dependencies = [("library", "0083_quote_rls")]
     operations = [migrations.RunPython(repair, noop)]
