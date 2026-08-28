@@ -68,6 +68,44 @@ describe('sermon outline — pointLabel', () => {
 		expect(pointLabel('I am persuaded that nothing can separate us.')).toBeNull();
 	});
 
+	it('reads the accented alphabets, not just ASCII', () => {
+		// `[A-Z]` cuts at the first accented letter, so the Spanish and
+		// Portuguese sermons rendered "III. Aplica", "III. Exhortaci" and
+		// "III. O Benef" — a label chopped mid-word.
+		expect(pointLabel('III. Ahora para la APLICACIÓN. Una palabra o dos…')).toBe(
+			'III. Aplicación'
+		);
+		expect(pointLabel('III. O BENEFÍCIO QUE ESTES RECEBEM. Ora…')).toBe(
+			'III. O Benefício Que Estes Recebem'
+		);
+		// And the title-caser must raise an accented opening: `[a-z]` left
+		// "é Necessário Que A Nossa Causa…" in lower case.
+		expect(pointLabel('I. é necessário que a nossa causa seja posta. Ora…')).toBe(
+			'I. É Necessário Que A Nossa Causa Seja Posta'
+		);
+	});
+
+	it('never truncates a label it inferred from a sentence', () => {
+		// The guard that holds in EVERY language. `CONNECTIVE` is English-only
+		// by nature, so the half-sentences it removes from the-ravens-cry would
+		// have survived in its Portuguese and Spanish translations; a sentence
+		// that does not fit was not a title, and that rule needs no vocabulary.
+		expect(
+			pointLabel('V. De novo, há ainda outro e muito mais poderoso argumento a usar. Quando…')
+		).toBeNull();
+		expect(
+			pointLabel('VI. Mas tenho argumentos mais poderosos e mais próximos do alvo. Quando…')
+		).toBeNull();
+	});
+
+	it('accepts a head that closes with a colon or dash', () => {
+		// `the-possibilities-of-faith` opens its first point this way, and lost
+		// it while keeping points II and III — in five languages.
+		expect(pointLabel('I. Let us consider the possibilities of faith:-- and first…')).toBe(
+			'I. Let Us Consider The Possibilities Of Faith'
+		);
+	});
+
 	it('caps a very long thesis', () => {
 		// the-immutability-of-god II runs to nine words; anything longer is
 		// trimmed rather than allowed to fill the drawer.
