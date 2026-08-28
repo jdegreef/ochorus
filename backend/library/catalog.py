@@ -468,6 +468,24 @@ BOOKS: list[BookEntry] = [
               "ccel", "bounds/power",
               subtitle="Men Are God's Method",
               cover_color="#1d3557"),
+    # The companion volume Bounds wrote to Power Through Prayer; posthumous,
+    # 1920, the first of the seven his friends placed after his death.
+    BookEntry("purpose-in-prayer", "Purpose in Prayer", "e-m-bounds",
+              "ccel", "bounds/purpose",
+              subtitle="On Importunity and the Prayer That Persists",
+              cover_color="#3d2b56"),
+    # Posthumous, 1929. Chapters pair prayer with faith, trust, desire,
+    # fervency, importunity, character, obedience and the Word.
+    BookEntry("necessity-of-prayer", "The Necessity of Prayer", "e-m-bounds",
+              "ccel", "bounds/necessity",
+              subtitle="Prayer and Faith, Desire, and Obedience",
+              cover_color="#1f4d3f"),
+    # Posthumous, 1921. Nine praying men of Scripture — Abraham, Moses,
+    # Elijah, Hezekiah, Ezra, Nehemiah, Samuel, Daniel and Paul.
+    BookEntry("prayer-and-praying-men", "Prayer and Praying Men", "e-m-bounds",
+              "ccel", "bounds/prayingmen",
+              subtitle="Nine Men of the Bible and How They Prayed",
+              cover_color="#5c2a3e"),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an
