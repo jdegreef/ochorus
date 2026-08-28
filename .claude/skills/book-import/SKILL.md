@@ -234,6 +234,65 @@ dropped; chapters under 120 words are dropped as stubs.
   Summary"; and `span.pb` must be decomposed *first*, since a page-break marker
   sitting before the heading otherwise counts as content and blocks the strip.
   *(2026-07)*
+- **Set the numbering aside AFTER `_norm`, not before — and the asymmetry that
+  punishes you for doing it the other way.** `_LEAD_COUNTER` strips a digit or
+  strict-roman counter from the already-`_norm`ed (lowercase) text on BOTH sides,
+  so the two sides always shed the same thing and case never enters into it. A
+  version that stripped roman numerals from the RAW text needed an ALL-CAPS guard
+  (to avoid eating "CIVIL"/"MILD"/"LIVID"), and that guard made the strip
+  conditional on a property of the string — so where a book's TOC title is mixed
+  case and its page heading is ALL-CAPS, only one side shed its numeral and the
+  restatement was missed. Necessity of Prayer is that book ("I. Prayer and Faith"
+  vs "I. PRAYER AND FAITH"): eleven chapters, silently. Post-`_norm` stripping
+  cannot have the bug. *(2026-08)*
+- **A strict roman numeral must drop the thousands place.** `_ROMAN_STRICT` is
+  `(?=[ivxlcd])…` with no `m{0,3}` — deliberately, because "MIX" IS a well-formed
+  numeral (1009), so a grammar that accepts thousands eats the heading "MIX AND
+  MATCH". Strictness alone is what rules out "civil", "mild", "livid", "mill",
+  "dim" and "did"; no case guard is needed once the grammar is strict and the
+  comparison symmetric. *(2026-08)*
+- **Verify a predicate change by diffing OLD vs NEW decisions over the SAME
+  cached HTML, across every CCEL book in `catalog.py`.** Fetch each section once
+  to a disk cache, then run `extract_body` twice — old predicate monkeypatched
+  in, then new — and diff the outputs. Upstream drift is excluded, so every
+  difference is yours. ~1150 sections over 30 books, ~25 min at `DELAY`; keep the
+  cache, it makes every later re-check free. This is the only thing that catches
+  the asymmetry class above: no unit test and no scan of the stored fixtures
+  shows it, because it only appears where a book's TOC and page headings disagree
+  about case. Apply `summary_title()` for books with `summary_titles=True` or you
+  compare against the wrong title, and re-check the three `part=` Schaff volumes,
+  where `_is_leading_noise` shares the predicate. The same harness is how you
+  compare YOUR rule against one that landed on main while you worked — 1156
+  sections agreeing is a real answer; a passing unit suite is not.
+  **Never reason about `extract_body` from hand-built HTML** — fed
+  `<div id='theText'>IX. A WARNING AGAINST UNBELIEF <h4>…`, it correctly keeps
+  the label, and you conclude the importer has a gap. The real page doesn't look
+  like that: CCEL prints the chapter title in a navigation table
+  (`td.book_navbar_title`) OUTSIDE `#theText`, so a fresh import never sees it.
+  Synthetic markup omits the page furniture that decides the answer. *(2026-08)*
+- **`_norm` keeps ASCII `[a-z0-9]` ONLY — every non-Latin string reduces to `""`,
+  so anything built on it matches anything.** Russian, Hindi, Arabic and Greek all
+  collapse: `_restates("СЛОВО БОЖИЕ", "Совсем Другое")` was `True`, and through a
+  data migration that would DELETE an unrelated heading from a translated chapter.
+  CCEL is English, which is why it sat unnoticed — but the library is multilingual
+  and this predicate also decides what migrations delete from stored rows.
+  `_restates` now refuses an empty comparison form. `_norm` itself is unchanged:
+  making it Unicode-aware moves normalisation for every caller and every language
+  and wants its own change and its own corpus run. *(2026-08)*
+- **A stored restatement outlives the rule that would have stopped it, in TWO
+  shapes.** `seed_books` never re-syncs an existing book's chapters, so shipping
+  the import rule alone changes nothing for readers — #1176 landed the roman rule
+  and every one of *The Way Into the Holiest*'s 36 chapters kept printing its
+  title twice until migration 0092 rewrote the bodies. Match both shapes: 14 held
+  it as a real `<h2>`, 22 as loose text before the first tag (which is also in
+  `body_text`, so in the search index). The loose shape is residue from an older
+  import and needs no importer change — see the navbar note above. Keep the
+  transform a pure `rewrite(body_html, title)` shared by the migration AND the
+  fixture refresh so the two cannot disagree (a work fixture round-trips
+  byte-identically through `content_fixtures.render_rows`, so load-modify-dump is
+  safe for chapter fields — `persist_fields` only covers Book-row fields).
+  Strongest check: every repaired body should equal what a fresh import
+  produces. *(2026-08)*
 - **CCEL page numbers and spacer gaps in the body** — CCEL marks a print page
   break as `<span class="pb">17</span>` (lands mid-sentence, or alone at the top
   of a chapter) and uses `<p><br/></p>` for vertical space (a ragged gap when
@@ -295,7 +354,14 @@ dropped; chapters under 120 words are dropped as stubs.
 - **Known limits (unfixed):** a book whose Introduction heading is fused with
   its body text in one block loses that intro (feasting-at-the-table); a drop
   cap belonging mid-paragraph after a scripture-ref merge isn't reattached
-  ("Ephesians 2:11-22 aul writes").
+  ("Ephesians 2:11-22 aul writes"); `ingest._ROMAN_PREFIX` accepts any
+  roman-LETTERED token rather than a well-formed numeral, so an ALL-CAPS title
+  "DIM. LIGHT" / "MILD. REBUKE" loses its first word (`clean_title` returns
+  "Light"). `_ROMAN_STRICT` in `import_ccel` is the grammar it wants — but keep
+  the two apart on the STOP: an optional stop is safe in a symmetric equality
+  test and unsafe in a destructive normalisation, where it would eat the "I"
+  from real stored titles like "I Will Go Before You" (stepping-stones-2) if a
+  source ever printed one ALL-CAPS.
 - **A CCEL work whose leaf sections are too small to be chapters** — Augustine's
   *Confessions* is 278 leaves of 150–900 words titled "Chapter I" … "Chapter
   XXXVIII", and those titles **repeat in every one of the thirteen Books**, so a

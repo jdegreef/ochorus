@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import importlib
 import io
 import zipfile
 from unittest import mock
@@ -14,6 +15,10 @@ from library import upload_import as ui
 from library.catalog import AUTHORS, BOOKS
 from library.ingest import upsert_book
 from library.models import Author, Book, Sermon
+
+MIGRATION_0092 = importlib.import_module(
+    "library.migrations.0092_way_into_holiest_restated_headings"
+)
 
 # --- fixtures: build real PDF / DOCX bytes in-memory ------------------------
 
@@ -967,6 +972,18 @@ class CcelVolumeFurnitureTests(TestCase):
         )
         self.assertIn("Civil War", out)
 
+    def test_a_non_latin_heading_is_never_matched_on_an_empty_form(self):
+        # `_norm` keeps only ASCII [a-z0-9], so every Russian/Hindi/Arabic
+        # heading and title reduces to "" — which once made any two of them
+        # compare equal. CCEL is English so it never showed here, but the same
+        # predicate decides what a data migration deletes from stored rows.
+        out = self._body(
+            "<div id='theText'><h2>\u0413\u0415\u0424\u0421\u0418\u041c\u0410\u041d\u0418\u042f</h2>"
+            "<p>\u041f\u0440\u043e\u0437\u0430.</p></div>",
+            "\u0427\u0430\u0448\u0430 \u0421\u0442\u0440\u0430\u0434\u0430\u043d\u0438\u0439",
+        )
+        self.assertIn("\u0413\u0415\u0424\u0421\u0418\u041c\u0410\u041d\u0418\u042f", out)
+
     def test_a_contents_page_is_recognised_by_its_body(self):
         from library.management.commands.import_ccel import is_contents_body
 
@@ -974,3 +991,67 @@ class CcelVolumeFurnitureTests(TestCase):
         # body gives it away.
         self.assertTrue(is_contents_body("<p>Life of Antony.</p><p>Table of Contents.</p>"))
         self.assertFalse(is_contents_body("<p>1. Antony was by descent an Egyptian.</p>"))
+
+
+class RestatedHeadingMigrationTests(TestCase):
+    """Migration 0092's rewrite — the stored half of the duplicate-heading rule."""
+
+    def test_a_restatement_in_a_heading_element_goes(self):
+        self.assertEqual(
+            MIGRATION_0092.rewrite(
+                "<h2>II. THE DIGNITY OF CHRIST</h2>  <p>Who being the brightness.</p>",
+                "The Dignity of Christ",
+            ),
+            "<p>Who being the brightness.</p>",
+        )
+
+    def test_a_restatement_left_loose_before_the_first_tag_goes(self):
+        # Twenty-two chapters carry it in this shape, which lands in body_text
+        # and so in the search index too. It is residue from an older import:
+        # CCEL prints that title in a navbar table outside #theText, so a fresh
+        # import never sees it and the importer needs no change for it.
+        self.assertEqual(
+            MIGRATION_0092.rewrite(
+                'IX. A WARNING AGAINST UNBELIEF   <h4>"Take heed, brethren."</h4>',
+                "A Warning Against Unbelief",
+            ),
+            '<h4>"Take heed, brethren."</h4>',
+        )
+
+    def test_the_preface_goes_too(self):
+        # Every chapter of this book restates its own title; leaving one row
+        # duplicated to be tidy about numbering style is a worse book.
+        self.assertEqual(
+            MIGRATION_0092.rewrite(
+                "<h2>PREFACE.</h2> <p>This Epistle bears no name.</p>", "Preface"
+            ),
+            "<p>This Epistle bears no name.</p>",
+        )
+
+    def test_a_heading_that_is_not_the_title_is_left_alone(self):
+        self.assertIsNone(
+            MIGRATION_0092.rewrite(
+                "<h2>II. THE DIGNITY OF CHRIST</h2> <p>Prose.</p>", "Sinai and Sion"
+            )
+        )
+
+    def test_a_non_latin_heading_is_left_alone(self):
+        # `_norm` keeps ASCII only, so both sides once reduced to "" and matched.
+        self.assertIsNone(
+            MIGRATION_0092.rewrite(
+                "<h2>\u0413\u0415\u0424\u0421\u0418\u041c\u0410\u041d\u0418\u042f</h2><p>\u041f\u0440\u043e\u0437\u0430.</p>",
+                "\u0427\u0430\u0448\u0430 \u0421\u0442\u0440\u0430\u0434\u0430\u043d\u0438\u0439",
+            )
+        )
+
+    def test_a_chapter_that_is_only_its_own_title_keeps_it(self):
+        self.assertIsNone(
+            MIGRATION_0092.rewrite("<h2>XXX. SINAI AND SION</h2>", "Sinai and Sion")
+        )
+
+    def test_the_rewrite_is_idempotent(self):
+        once = MIGRATION_0092.rewrite(
+            "<h2>XXX. SINAI AND SION</h2> <p>Ye are come unto Mount Sion.</p>",
+            "Sinai and Sion",
+        )
+        self.assertIsNone(MIGRATION_0092.rewrite(once, "Sinai and Sion"))

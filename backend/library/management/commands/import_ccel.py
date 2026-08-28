@@ -339,10 +339,21 @@ _LEAD_COUNTER = re.compile(rf"^(?:\d{{1,3}}|{_ROMAN_STRICT})\s+")
 
 
 def _restates(text: str, title: str) -> bool:
-    """Does this heading merely repeat the chapter's own title, numbering aside?"""
+    """Does this heading merely repeat the chapter's own title, numbering aside?
+
+    An EMPTY comparison form is never evidence. `_norm` keeps ASCII `[a-z0-9]`
+    only, so every heading and every title in a non-Latin script — Russian,
+    Hindi, Arabic, Greek — reduces to "", and comparing those made any two of
+    them "the same": `_restates("СЛОВО БОЖИЕ", "Совсем Другое")` was True. CCEL
+    is English, which is why that never showed here, but this predicate also
+    decides what a data migration deletes from STORED rows, and the library is
+    multilingual. Keeping a heading we cannot read costs a duplicated line;
+    deleting one costs the author's prose.
+    """
     if not title:
         return False
-    return _LEAD_COUNTER.sub("", _norm(text)) == _LEAD_COUNTER.sub("", _norm(title))
+    stripped = _LEAD_COUNTER.sub("", _norm(text))
+    return bool(stripped) and stripped == _LEAD_COUNTER.sub("", _norm(title))
 
 
 # A typographic rule set as its own paragraph — CCEL prints one under the
