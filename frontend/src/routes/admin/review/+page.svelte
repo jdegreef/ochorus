@@ -7,10 +7,13 @@
 		getReviewDetail,
 		decideReview,
 		undoReview,
+		decideVerse,
+		undoVerse,
 		type ReviewItem,
 		type ReviewDetail,
 		type ReviewTarget,
-		type ReviewKind
+		type ReviewKind,
+		type VerseOutcome
 	} from '$lib/library-admin';
 
 	// Filters. Read in exactly one place (the fetcher), so moving them into the
@@ -37,6 +40,46 @@
 	// behaviour of splicing the row out of the list on success.
 	let settled = $state<Record<string, { outcome: string; title: string }>>({});
 	let selected = $state<Record<string, boolean>>({});
+
+	// Settling one verse. Keyed by reference within the open item, so two
+	// panels can never write each other's busy flag.
+	let verseBusy = $state<Record<string, boolean>>({});
+	let verseError = $state<string | null>(null);
+
+	async function settleVerse(reference: string, outcome: VerseOutcome | null) {
+		if (!detail) return;
+		const t = { kind: detail.kind, slug: detail.slug, language: detail.language };
+		// Whether it was ALREADY settled decides the delta. Re-deciding an
+		// approved verse as needs_work is a change of mind, not a second unit of
+		// progress, and counting it again reads "13 of 12".
+		const wasSettled = !!detail.notes.find((n) => n.reference === reference)?.review;
+		verseBusy[reference] = true;
+		verseError = null;
+		try {
+			const review = outcome
+				? await decideVerse({ ...t, reference, outcome })
+				: (await undoVerse({ ...t, reference }), null);
+			// Patch in place rather than refetching: the panel holds a whole
+			// chapter of both editions, and re-reading it to change one chip
+			// would throw the reviewer's scroll position away mid-pass.
+			detail = {
+				...detail,
+				notes: detail.notes.map((n) => (n.reference === reference ? { ...n, review } : n))
+			};
+			// Keep the row's "n of m settled" honest without a queue refetch.
+			// `queue.data` is $state, so its rows are the same proxied objects the
+			// list renders — mutating one updates the chip in place.
+			const row = queue?.results.find(
+				(i) => key(i.kind, i.slug, i.language) === key(t.kind, t.slug, t.language)
+			);
+			const delta = outcome ? (wasSettled ? 0 : 1) : wasSettled ? -1 : 0;
+			if (row) row.notes.settled = Math.max(0, row.notes.settled + delta);
+		} catch (e) {
+			verseError = e instanceof ApiError ? e.message : 'Could not save that decision.';
+		} finally {
+			verseBusy[reference] = false;
+		}
+	}
 
 	// Expanded review panel.
 	let openKey = $state<string | null>(null);
@@ -455,18 +498,101 @@
 												{/if}
 
 												{#if detail.notes.length}
+													{@const flagged = detail.notes.filter(
+														(n) => n.status === 'self_rendered'
+													)}
 													<div class="mb-3 rounded-sm border border-border bg-bg p-3">
-														<p class="text-small mb-1 font-semibold">Verses to check</p>
-														<ul class="text-small space-y-0.5 text-muted">
+														<p class="text-small mb-2 font-semibold">
+															Verses to check
+															{#if flagged.length}
+																<span class="font-normal text-muted">
+																	— {flagged.filter((n) => n.review).length} of {flagged.length} settled
+																</span>
+															{/if}
+														</p>
+														{#if verseError}
+															<p class="text-small mb-2 text-warning">{verseError}</p>
+														{/if}
+														<ul class="space-y-2">
 															{#each detail.notes as n (n.reference + n.status)}
-																<li>
-																	<span class={n.status === 'self_rendered' ? 'text-warning' : ''}>
-																		{n.reference}
-																	</span>
-																	{#if n.status === 'mined'}
-																		— mined{n.source_file ? ` from ${n.source_file}` : ''}
+																<li class="text-small border-t border-border pt-2 first:border-0 first:pt-0">
+																	<div class="flex flex-wrap items-baseline gap-x-2">
+																		<span
+																			class={n.status === 'self_rendered'
+																				? 'font-semibold text-warning'
+																				: ''}
+																		>
+																			{n.reference}
+																		</span>
+																		{#if n.status === 'mined'}
+																			<span class="text-muted"
+																				>mined{n.source_file ? ` from ${n.source_file}` : ''}</span
+																			>
+																		{:else}
+																			<span class="text-muted">rendered by the translator</span>
+																		{/if}
+																		{#if n.chapter}
+																			<button
+																				type="button"
+																				class="link text-small"
+																				onclick={() => openDetail(i, n.chapter ?? undefined)}
+																			>
+																				ch {n.chapter}
+																			</button>
+																		{/if}
+																	</div>
+
+																	{#if n.text}
+																		<p class="mt-1 text-muted" dir="auto">{n.text}</p>
 																	{:else}
-																		— rendered by the translator, unverified
+																		<p class="mt-1 text-muted italic">
+																			The text has moved since this note was written — open the chapter
+																			to find it.
+																		</p>
+																	{/if}
+
+																	{#if n.status === 'self_rendered'}
+																		<div class="mt-1 flex flex-wrap items-center gap-2">
+																			{#if n.review}
+																				<span
+																					class={n.review.outcome === 'approved'
+																						? 'font-semibold'
+																						: 'font-semibold text-warning'}
+																				>
+																					{n.review.outcome === 'approved'
+																						? 'Rendering is right'
+																						: 'Needs work'}
+																				</span>
+																				{#if n.review.reviewer}
+																					<span class="text-muted">— {n.review.reviewer}</span>
+																				{/if}
+																				<button
+																					type="button"
+																					class="link"
+																					disabled={verseBusy[n.reference]}
+																					onclick={() => settleVerse(n.reference, null)}
+																				>
+																					Undo
+																				</button>
+																			{:else}
+																				<button
+																					type="button"
+																					class="btn btn-small"
+																					disabled={verseBusy[n.reference]}
+																					onclick={() => settleVerse(n.reference, 'approved')}
+																				>
+																					Rendering is right
+																				</button>
+																				<button
+																					type="button"
+																					class="btn btn-small"
+																					disabled={verseBusy[n.reference]}
+																					onclick={() => settleVerse(n.reference, 'needs_work')}
+																				>
+																					Needs work
+																				</button>
+																			{/if}
+																		</div>
 																	{/if}
 																</li>
 															{/each}

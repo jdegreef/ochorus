@@ -417,7 +417,13 @@ export interface ReviewItem {
 	flagged: boolean;
 	/** Whether the pipeline recorded ANY scripture notes. Absence is not safety. */
 	notes_recorded: boolean;
-	notes: { mined: number; self_rendered: number; references: ReviewNoteRef[] };
+	notes: {
+		mined: number;
+		self_rendered: number;
+		/** How many of this translation's verses already carry a decision. */
+		settled: number;
+		references: ReviewNoteRef[];
+	};
 	provenance: { job_issue: number | null; pull_request: number | null } | null;
 	outcome: ReviewOutcome | null;
 	flags?: ReviewFlags | null;
@@ -490,6 +496,27 @@ export const undoReview = (t: ReviewTarget) => {
 	return apiFetch<{ ok: boolean }>(`/api/admin/review-queue/?${q}`, { method: 'DELETE' });
 };
 
+/** One flagged verse: what it says, where, and whether anyone has settled it. */
+export interface ReviewVerse {
+	reference: string;
+	status: string;
+	block_index: number | null;
+	source_file: string;
+	/** The rendered wording, resolved from `block_index`. Null when the text has
+	 *  been edited since the note was written and the index no longer lands. */
+	text: string | null;
+	/** Which chapter it sits in, so the reviewer can open the right one. */
+	chapter: number | null;
+	review: {
+		outcome: VerseOutcome;
+		note: string;
+		reviewer: string;
+		decided_at: string;
+	} | null;
+}
+
+export type VerseOutcome = 'approved' | 'needs_work';
+
 export interface ReviewDetail {
 	kind: ReviewKind;
 	slug: string;
@@ -500,8 +527,28 @@ export interface ReviewDetail {
 	target: { language: string; blocks: string[] };
 	aligned: boolean;
 	block_counts: [number, number];
-	notes: { reference: string; status: string; block_index: number | null; source_file: string }[];
+	notes: ReviewVerse[];
 }
+
+/** Settle ONE flagged verse — the unit the review backlog actually moves in. */
+export const decideVerse = (
+	body: ReviewTarget & { reference: string; outcome: VerseOutcome; note?: string }
+) =>
+	apiFetch<ReviewVerse['review']>('/api/admin/review-queue/verse/', {
+		method: 'POST',
+		body: JSON.stringify(body)
+	});
+
+/** Undo one verse decision. */
+export const undoVerse = (t: ReviewTarget & { reference: string }) => {
+	const q = new URLSearchParams({
+		kind: t.kind,
+		slug: t.slug,
+		language: t.language,
+		reference: t.reference
+	});
+	return apiFetch<unknown>(`/api/admin/review-queue/verse/?${q}`, { method: 'DELETE' });
+};
 
 export const getReviewDetail = (t: ReviewTarget & { chapter?: number }) => {
 	const q = new URLSearchParams({ kind: t.kind, slug: t.slug, language: t.language });

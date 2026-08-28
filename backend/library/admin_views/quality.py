@@ -24,6 +24,7 @@ from ..models import (
     ReviewOutcome,
     Sermon,
     TranslationNote,
+    VerseReview,
 )
 from ..qa import (
     FRAG_MAX_AVG,
@@ -105,6 +106,7 @@ class AdminReviewQueueView(AdminAudited, APIView):
         decided = self._outcomes()
         notes = self._note_summary()
         noted = set(notes)
+        settled = self._settled_counts()
 
         # A row is "flagged" when the pipeline recorded a verse it had to render
         # itself. That list is the actual review task, and it is the one thing a
@@ -114,6 +116,11 @@ class AdminReviewQueueView(AdminAudited, APIView):
             r["outcome"] = decided.get(k)
             r["notes"] = notes.get(k, {"mined": 0, "self_rendered": 0, "references": []})
             r["provenance"] = self._provenance(notes.get(k))
+            # Progress, not just a count of problems. "12 verses" is a wall;
+            # "12 verses, 9 settled" is a task someone can finish — and it is
+            # what turns approval from a blind yes/no into a decision with
+            # evidence behind it.
+            r["notes"]["settled"] = settled.get(k, 0)
             r["flagged"] = r["notes"]["self_rendered"] > 0
             # Distinguish "examined and clean" from "never examined" — the UI
             # must not render an absence of notes as an absence of problems.
@@ -291,6 +298,18 @@ class AdminReviewQueueView(AdminAudited, APIView):
             e["job"] = e["job"] or n.job_issue
             e["pr"] = e["pr"] or n.pull_request
         return out
+
+    @staticmethod
+    def _settled_counts() -> dict:
+        """(kind, slug, language) -> how many of its verses carry a decision.
+
+        One query for the whole page, not one per row: the queue lists 25 items
+        and this table is small enough to aggregate in the database.
+        """
+        rows = VerseReview.objects.values("kind", "slug", "language").annotate(
+            n=Count("id")
+        )
+        return {(r["kind"], r["slug"], r["language"]): r["n"] for r in rows}
 
     @staticmethod
     def _provenance(note: dict | None) -> dict | None:
@@ -562,11 +581,7 @@ class AdminReviewDetailView(APIView):
             return Response({"detail": "Nothing to review for that item."}, status=404)
 
         s_blocks, t_blocks = _blocks(src or ""), _blocks(tgt or "")
-        notes = list(
-            TranslationNote.objects.filter(kind=kind, slug=slug, language=language).values(
-                "reference", "status", "block_index", "source_file"
-            )
-        )
+        notes = self._notes(kind, slug, language, tgt)
         return Response(
             {
                 "kind": kind,
@@ -581,6 +596,67 @@ class AdminReviewDetailView(APIView):
                 "notes": notes,
             }
         )
+
+    @staticmethod
+    def _notes(kind: str, slug: str, language: str, single_body: str | None) -> list[dict]:
+        """The flagged verses, each with its decision and the text it points at.
+
+        `block_index` is WORK-level and 0-based — the blocks of every chapter
+        laid end to end in `order`, not an offset into the chapter on screen.
+        Measured rather than assumed, because reading it wrong shows a reviewer
+        a sentence the note is not about: across the 2,321 notes whose reference
+        carries chapter:verse digits, treating the index as-is lands on a block
+        citing that very verse 253 times, against 120 for index+1 and 11 for
+        index-1. 0.3% of indexes fall outside the work entirely — a text edited
+        since the note was written — and those resolve to `null` rather than to
+        a neighbouring block.
+
+        The text is DERIVED here, never stored beside the note. A reviewer has
+        to see the wording to judge it, and a copy taken at ship time would
+        drift the moment the text was corrected, showing a rendering the book no
+        longer contains — which is worse than showing none.
+
+        The decision comes from `VerseReview`, a separate table:
+        `seed_translation_notes` re-seeds by delete-then-create, so a decision
+        held on the note itself would be destroyed on the next deploy.
+        """
+        if kind == "book":
+            bodies = Chapter.objects.filter(
+                book__slug=slug, book__language=language
+            ).order_by("order").values_list("order", "body_html")
+        else:
+            bodies = [(None, single_body or "")]
+
+        # Where each chapter starts in the work-level sequence, so a note can
+        # name the chapter to open rather than only an index into nothing.
+        blocks: list[str] = []
+        chapter_of: list[int | None] = []
+        for order, html in bodies:
+            found = _blocks(html or "")
+            blocks.extend(found)
+            chapter_of.extend([order] * len(found))
+
+        decided = {
+            v["reference"]: v
+            for v in VerseReview.objects.filter(
+                kind=kind, slug=slug, language=language
+            ).values("reference", "outcome", "note", "reviewer", "decided_at")
+        }
+        out = []
+        for n in TranslationNote.objects.filter(
+            kind=kind, slug=slug, language=language
+        ).values("reference", "status", "block_index", "source_file"):
+            i = n["block_index"]
+            inside = i is not None and 0 <= i < len(blocks)
+            out.append(
+                {
+                    **n,
+                    "text": blocks[i] if inside else None,
+                    "chapter": chapter_of[i] if inside else None,
+                    "review": decided.get(n["reference"]),
+                }
+            )
+        return out
 
     @staticmethod
     def _chapter(slug, language, number):
@@ -616,6 +692,108 @@ AUDIT_LIMIT = 100
 
 def _capped(items: list) -> dict:
     return {"total": len(items), "items": items[:AUDIT_LIMIT]}
+
+
+class AdminVerseReviewView(AdminAudited, APIView):
+    """Settle ONE flagged quotation.
+
+    The unit the backlog actually moves in. `AdminReviewQueueView` decides a
+    whole work, which is why 187 translations sit `ai_unreviewed` and none is
+    approved: a reviewer is asked "is this 35-chapter book right, yes or no"
+    about 63 verses they must hold in their head at once. `TranslationNote`
+    already names the verses; this lets someone answer them one at a time and
+    keep the answer.
+
+    Deliberately NOT a gate on work-level approval, yet. The queue reports
+    progress ("9 of 12 settled") and leaves the decision with the reviewer;
+    making a full sweep mandatory would strand all 187 works behind 1,570
+    judgements on the day it shipped. Tightening it later is a one-line change
+    to the existing bulk gate, and the counts this records are what will make
+    that safe.
+    """
+
+    permission_classes = [IsAdminEmail]
+
+    def audit_action_for(self, request):
+        return AdminAction.Action.REVIEW_DECIDE
+
+    def audit_entry(self, request, response):
+        d = response.data
+        return f"{d['kind']}:{d['slug']}:{d['language']}:{d['reference']}", {
+            "outcome": d["outcome"]
+        }
+
+    def post(self, request):
+        data = request.data or {}
+        kind = data.get("kind")
+        slug = (data.get("slug") or "").strip()
+        language = (data.get("language") or "").strip()
+        reference = (data.get("reference") or "").strip()
+        outcome = data.get("outcome")
+
+        if kind not in AdminReviewQueueView.KINDS or not slug or not language or not reference:
+            return Response(
+                {"detail": "kind, slug, language and reference are required."}, status=400
+            )
+        if outcome not in VerseReview.Outcome.values:
+            return Response(
+                {"detail": f"outcome must be one of {VerseReview.Outcome.values}."},
+                status=400,
+            )
+        # The verse must be one the pipeline actually flagged. Without this the
+        # endpoint would happily record a decision about a reference that is not
+        # in the work, and the settled count could exceed the count of things
+        # needing settling — a progress bar that reads 14 of 12.
+        if not TranslationNote.objects.filter(
+            kind=kind, slug=slug, language=language, reference=reference
+        ).exists():
+            return Response(
+                {"detail": "No such flagged verse in that translation."}, status=404
+            )
+
+        row, _ = VerseReview.objects.update_or_create(
+            kind=kind,
+            slug=slug,
+            language=language,
+            reference=reference,
+            defaults={
+                "outcome": outcome,
+                "note": (data.get("note") or "").strip(),
+                "reviewer": getattr(request.user, "email", "") or "",
+            },
+        )
+        return Response(
+            {
+                "kind": row.kind,
+                "slug": row.slug,
+                "language": row.language,
+                "reference": row.reference,
+                "outcome": row.outcome,
+                "note": row.note,
+                "reviewer": row.reviewer,
+                "decided_at": row.decided_at,
+            }
+        )
+
+    def delete(self, request):
+        """Undo one decision, the same way a work-level one can be undone."""
+        q = request.query_params
+        kind, slug = q.get("kind"), q.get("slug")
+        language, reference = q.get("language"), q.get("reference")
+        deleted, _ = VerseReview.objects.filter(
+            kind=kind, slug=slug, language=language, reference=reference
+        ).delete()
+        if not deleted:
+            return Response({"detail": "No decision to undo."}, status=404)
+        return Response(
+            {
+                "kind": kind,
+                "slug": slug,
+                "language": language,
+                "reference": reference,
+                "outcome": None,
+            }
+        )
 
 
 class AdminAuditView(APIView):
