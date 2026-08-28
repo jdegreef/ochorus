@@ -59,22 +59,25 @@ class CleanTitleTests(TestCase):
         self.assertEqual(clean_title("D. L. Moody (1837 – 1899)"), "D. L. Moody (1837 – 1899)")
 
     def test_strips_a_bare_number_prefix(self):
-        # A CCEL TOC often numbers its own entries, and the reader prepends the
-        # chapter order itself — so "1. Men of Prayer Needed" renders as
-        # "1. 1. Men of Prayer Needed". Same redundancy as "Chapter N.".
+        # A CCEL TOC numbers its own entries and the reader prepends the chapter
+        # order itself, so "1. Men of Prayer Needed" rendered as "1. 1. Men of
+        # Prayer Needed". Same redundancy as "Chapter N.".
         self.assertEqual(clean_title("1. Men of Prayer Needed"), "Men of Prayer Needed")
         self.assertEqual(clean_title("01. Walking with God"), "Walking with God")
         self.assertEqual(clean_title("13) Grace from the Heart"), "Grace from the Heart")
 
-    def test_keeps_a_number_that_is_not_a_prefix(self):
-        # Nothing follows the numeral, so it IS the title — as with a bare
-        # "Chapter 3", there would be nothing left to show. (The trailing stop
-        # goes, but to the older typographic-noise rule, not to this one.)
+    def test_keeps_a_bare_numeral_that_is_the_whole_title(self):
+        # Nothing descriptive follows, so as with a bare "Chapter 3" there would
+        # be nothing left to show. (The stop goes to the older trailing-noise
+        # rule, not to this one.)
         self.assertEqual(clean_title("12."), "12")
-        # A year opening the title is the author's own text, not numbering:
-        # no separator follows the digits, so the rule never sees a prefix.
-        self.assertTrue(clean_title("1859 and After").startswith("1859 "))
-        # Four digits are not a chapter number.
+
+    def test_keeps_digits_that_are_not_a_numbering_prefix(self):
+        # No separator follows the digits, so this is the author's own text.
+        # ("and" is capitalised by the pre-existing first-letter rule, which is
+        # not what this test is about — it is pinned here only to stay honest.)
+        self.assertEqual(clean_title("1859 and After"), "1859 And After")
+        # Four digits are a year, not a chapter number.
         self.assertEqual(clean_title("1662. The Great Ejection"), "1662. The Great Ejection")
 
     def test_bare_roman_numeral_left_alone(self):

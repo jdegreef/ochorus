@@ -37,11 +37,10 @@ from library.sanitize import (  # noqa: F401
 # follows (a bare "Chapter 3" is left alone — there's nothing else to show).
 _CHAPTER_PREFIX = re.compile(r"^\s*chapter\s+\S[^.:—–]*?\s*[.:—–]\s+", re.I)
 # The same redundancy without the word "Chapter": a CCEL TOC often numbers its
-# own entries ("1. Men of Prayer Needed", "01. Walking with God"), and the
-# reader prepends the order itself, so it renders "1. 1. Men of Prayer Needed".
-# Digits only — a roman-numeral prefix is handled below, under a caps guard it
-# needs and this does not. Bounded to 3 digits and required to be followed by a
-# descriptive title, so a numeral that IS the title ("1. " alone) survives.
+# own entries ("1. Men of Prayer Needed"), and the reader prepends the order
+# itself, so it renders "1. 1. Men of Prayer Needed". Digits only — a
+# roman-numeral prefix is handled below, under a caps guard it needs and this
+# does not.
 _NUMBER_PREFIX = re.compile(r"^\s*\d{1,3}[.)]\s+(?=\S)")
 # Quotation marks are noise in a title. Double quotes (incl. straight ") go
 # everywhere; a straight single quote only when it's NOT flanked by letters, so
@@ -108,14 +107,13 @@ def clean_title(raw: str) -> str:
     # Drop a trailing "Contents" nav link, but never blank the whole title — a
     # bare "Contents" must stay so is_front_matter can recognise and drop it.
     t = re.sub(r"\s*Contents$", "", t).strip() or t
-    # Drop the "Chapter N." prefix when a descriptive title remains.
-    m = _CHAPTER_PREFIX.match(t)
-    if m and t[m.end():].strip():
-        t = t[m.end():]
-    # Same for a bare "N." / "N)" numbering prefix.
-    m = _NUMBER_PREFIX.match(t)
-    if m and t[m.end():].strip():
-        t = t[m.end():]
+    # Drop a redundant "Chapter N." or bare "N." numbering prefix — but only
+    # when a descriptive title remains, since a bare "Chapter 3" or "12" has
+    # nothing else to show.
+    for prefix in (_CHAPTER_PREFIX, _NUMBER_PREFIX):
+        m = prefix.match(t)
+        if m and t[m.end():].strip():
+            t = t[m.end():]
     # Remove quotation marks; tidy stray wrapping punctuation and spacing.
     t = _DQUOTE.sub("", t)
     t = _SQUOTE.sub("", t)

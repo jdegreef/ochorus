@@ -300,9 +300,16 @@ def _norm(text: str) -> str:
 # entry does: Bounds's TOC reads "1. Men of Prayer Needed" while the page's
 # <h2> reads "1 Men of Prayer Needed". Both are the same restatement, and
 # `clean_title` now drops the TOC's number, so the two only compare equal with
-# the numbering set aside on each side. Digits ONLY — a leading roman numeral
-# cannot be told from an ordinary word here, since "civil", "mild" and "livid"
-# are all spelled out of [ivxlcdm].
+# the numbering set aside on each side.
+#
+# Digits only, and the roman half of this gap is REAL and still open: 13
+# chapters of `way-into-holiest` open with "<h2>II. THE DIGNITY OF CHRIST</h2>"
+# above prose the reader already sees titled. Closing it here would change
+# nothing for those readers — `seed_books` never re-syncs an existing book's
+# chapters — so the rule and the migration that rewrites the stored bodies
+# belong in one change, together with the ALL-CAPS guard `_ROMAN_PREFIX` uses
+# (ingest.py): unguarded, a roman strip also eats ordinary words, since
+# "civil", "mild" and "livid" are all spelled out of [ivxlcdm].
 _LEAD_NUMBER = re.compile(r"^\d{1,3}\s+")
 
 
@@ -332,7 +339,7 @@ def _is_leading_noise(text: str, title: str, work_title: str) -> bool:
     if _RULE_LINE.match(text) or _is_ordinal_heading(text):
         return True
     normalised = _norm(text)
-    if title and normalised == _norm(title):
+    if _restates(text, title):
         return True
     # The running head, which quotes the work's own title — in either
     # direction, since CCEL prints both the full title ("Life of Antony." above
