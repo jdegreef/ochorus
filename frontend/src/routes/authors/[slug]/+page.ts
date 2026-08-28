@@ -1,3 +1,5 @@
+// prerender refresh 2026-08-28: richard-sibbes (#1183), created with his book
+// by `seed_books` and so missed by the same build.
 // prerender refresh 2026-08-28: e-m-bounds (#1166). Same shape as the three
 // below: a biography-only author created by a migration in the api's release
 // step, so the web build that shipped him enumerated the author list before the
