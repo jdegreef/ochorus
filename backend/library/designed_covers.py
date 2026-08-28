@@ -65,6 +65,11 @@ draws a per-language title over, so every translated edition gets the work's own
 artwork with its own title on it, and the English row keeps pointing at the
 untouched designed cover.
 
+When a designed cover has no picture that survives losing its words — a void
+behind a doorway, a blur behind a mark — there is nothing to crop, and the work
+takes a museum painting as its ground instead (``curated_art.CURATED_GROUND``).
+Same shape, different source; ``covers.keeps_english_designed`` is true of both.
+
 So a work in ``DERIVED_GROUND`` deliberately wears TWO covers: the hand-made one
 in English, and its wordless sibling everywhere else. That is not the drift
 ``test_translated_editions_wear_their_own_cover`` guards against — the point of

@@ -66,7 +66,7 @@ from library.covers import (
     twin_path,
     variant_url,
 )
-from library.curated_art import CURATED
+from library.curated_art import CURATED, CURATED_GROUND
 from library.designed_covers import (
     DERIVED_GROUND,
     DESIGNED,
@@ -1069,10 +1069,37 @@ class CoverAssetTests(SimpleTestCase):
             sorted(set(DERIVED_GROUND) - set(DESIGNED_BY_SLUG)), [],
             "a derived ground names a work with no registered designed cover",
         )
+        # THREE tiers write `covers/art/<slug>.jpg` now, so the exclusivity is
+        # pairwise rather than a single intersection. `CURATED_GROUND` overlaps
+        # the other two in the two different ways that are each wrong: with
+        # `DERIVED_GROUND` it is two recipes for one file, and with `CURATED` it
+        # is a disagreement about whether English keeps a designed cover — which
+        # `keeps_english_designed` would answer yes to while the curated gate
+        # demands every edition point at the painting.
+        for a, b in (
+            ("CURATED", "DERIVED_GROUND"),
+            ("CURATED", "CURATED_GROUND"),
+            ("CURATED_GROUND", "DERIVED_GROUND"),
+        ):
+            tiers = {
+                "CURATED": CURATED,
+                "DERIVED_GROUND": DERIVED_GROUND,
+                "CURATED_GROUND": CURATED_GROUND,
+            }
+            self.assertEqual(
+                sorted(set(tiers[a]) & set(tiers[b])), [],
+                f"a work is in both {a} and {b} — the two tiers write the same "
+                "file, so one would overwrite the other's artwork",
+            )
+
+        # A ground for a work with no designed cover has nothing to be the
+        # ground FOR: `keeps_english_designed` would send its English edition to
+        # a hand-made raster that does not exist, and `build_cover_assets`
+        # hard-exits on the missing file. Such a work belongs in `CURATED`.
         self.assertEqual(
-            sorted(set(CURATED) & set(DERIVED_GROUND)), [],
-            "a work is both curated and derived — the two tiers write the same "
-            "file, so one would overwrite the other's artwork",
+            sorted(set(CURATED_GROUND) - set(DESIGNED_BY_SLUG)), [],
+            "a curated ground names a work with no registered designed cover — "
+            "it wants CURATED, which points every edition at the painting",
         )
 
     def test_derived_grounds_were_cut_from_the_current_cover(self):
@@ -1125,12 +1152,62 @@ class CoverAssetTests(SimpleTestCase):
             f["slug"] for f in self.books
             if f.get("language") != "en" and f["slug"] in DESIGNED_BY_SLUG
         }
+        # EITHER designed-cover ground satisfies this. The requirement is that
+        # a wordless ground EXISTS for the translations, not that it was cut
+        # from the cover: `CURATED_GROUND` is the tier for a designed cover with
+        # no croppable picture in it, and a work there is as covered as one in
+        # `DERIVED_GROUND`.
         self.assertEqual(
-            sorted(translated - set(DERIVED_GROUND)), [],
+            sorted(translated - set(DERIVED_GROUND) - set(CURATED_GROUND)), [],
             "a work with a designed English cover now has a translation, and "
             "no wordless ground for it to wear — that edition would fall back "
             "to a flat plate. Add it to DERIVED_GROUND with its crop, then run "
-            "`uv run python scripts/build_derived_grounds.py`",
+            "`uv run python scripts/build_derived_grounds.py` — or, if nothing "
+            "croppable survives losing the words, to CURATED_GROUND with a "
+            "painting and run `manage.py build_curated_covers`",
+        )
+
+    def test_a_curated_ground_leaves_english_on_its_designed_cover(self):
+        """The whole point of the tier, asserted where it can actually fail.
+
+        `CURATED_GROUND` exists so a work can have BOTH: the hand-made English
+        cover someone drew, and a real painting for the languages that cover
+        cannot serve. Those are two claims about `cover_url`, and each fails
+        differently and quietly.
+
+        Point English at the painting and the designed cover is retired — no
+        error anywhere, because a row pointing at a painting that exists is
+        exactly what the curated tier looks like. Leave a translation on the
+        designed cover and that reader is back to English words baked into a
+        raster, which is the defect the whole ground system was built for.
+
+        `test_every_edition_points_at_a_cover_that_exists` would pass on both.
+        """
+        wrong = []
+        for f in self.books:
+            slug, language, cover = f["slug"], f.get("language"), _cover(f)
+            if slug not in CURATED_GROUND:
+                continue
+            wants = (
+                DESIGNED_BY_SLUG[slug] if language == "en" else art_url(slug)[0]
+            )
+            if cover != wants:
+                wrong.append((slug, language, cover, wants))
+        self.assertEqual(
+            wrong, [],
+            "a curated-ground edition wears the wrong cover — English keeps its "
+            "designed raster, every other language takes /covers/art/<slug>.jpg. "
+            "Run `uv run python scripts/build_cover_assets.py`",
+        )
+        absent = sorted(
+            slug for slug in CURATED_GROUND
+            if any(f["slug"] == slug for f in self.books)
+            and not (STATIC_DIR / "covers" / art_url(slug)[1]).is_file()
+        )
+        self.assertEqual(
+            absent, [],
+            "curated-ground work with no committed painting — run "
+            "`manage.py build_curated_covers <slug>`",
         )
 
     def test_every_painting_still_carries_white_type(self):

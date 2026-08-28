@@ -345,9 +345,13 @@ class CuratedArtTests(TestCase):
         self.assertNotIn("susanna-wesley-clarke", CURATED)
 
     def test_every_entry_records_its_provenance_and_reason(self):
-        from library.curated_art import CURATED, SOURCES
+        # BOTH curated tiers. `CURATED_GROUND` carries the same museum object
+        # under the same licence and is shown to readers the same way; the only
+        # difference is which editions wear it. An entry there with no receipt
+        # is the same defect, so it is the same gate.
+        from library.curated_art import CURATED, CURATED_GROUND, SOURCES
 
-        for slug, art in CURATED.items():
+        for slug, art in {**CURATED, **CURATED_GROUND}.items():
             with self.subTest(slug=slug):
                 # The id is only meaningful with the collection it belongs to —
                 # two museums number their objects independently.
@@ -362,13 +366,54 @@ class CuratedArtTests(TestCase):
     def test_every_source_can_actually_be_fetched(self):
         """A source in the manifest with no fetcher is a build that dies on a
         re-run, months after the entry was added and by someone else."""
-        from library.curated_art import CURATED
+        from library.curated_art import CURATED, CURATED_GROUND
         from library.management.commands.build_curated_covers import FETCHERS
 
-        for slug, art in CURATED.items():
+        for slug, art in {**CURATED, **CURATED_GROUND}.items():
             with self.subTest(slug=slug):
                 self.assertIn(art.source, FETCHERS, f"no fetcher for {art.source!r}")
 
+
+    def test_the_three_cover_tiers_answer_the_two_questions_differently(self):
+        """The tier predicates, exercised on a member of each.
+
+        `CURATED_GROUND` has no entries yet — the two works it was built for are
+        waiting on artwork that has to be fetched from a museum API — so every
+        gate keyed on it is vacuous, and vacuous gates are how a tier ships
+        broken and nobody finds out until the first entry lands. This one is
+        not: it puts a slug in the table and asks the predicates the two
+        questions the whole system turns on.
+
+        The answers are the tier, stated as a truth table:
+
+            tier             shares a ground   English keeps its designed cover
+            CURATED                yes                      no
+            DERIVED_GROUND         yes                      yes
+            CURATED_GROUND         yes                      yes
+            (none of them)         no                       no
+
+        Row three is the new one, and it is deliberately identical to row two:
+        where the ground CAME FROM is the registries' business, not these
+        predicates'. If those two rows ever stop matching, one of the five call
+        sites is treating a painting differently from a crop for a reason that
+        does not exist.
+        """
+        from unittest.mock import patch
+
+        from library.covers import keeps_english_designed, shares_a_ground
+        from library.curated_art import CURATED_GROUND, Artwork
+
+        art = Artwork("met", 1, "A Painter", "A Painting", "1650", "because")
+        with patch.dict(CURATED_GROUND, {"a-designed-work": art}, clear=True):
+            for slug, shared, keeps in (
+                ("waiting-on-god", True, False),        # CURATED
+                ("the-inner-chamber", True, True),      # DERIVED_GROUND
+                ("a-designed-work", True, True),        # CURATED_GROUND
+                ("a-work-in-no-tier-at-all", False, False),
+            ):
+                with self.subTest(slug=slug):
+                    self.assertIs(shares_a_ground(slug), shared)
+                    self.assertIs(keeps_english_designed(slug), keeps)
 
     def test_credit_names_the_artist_and_the_source(self):
         from library.curated_art import credit
@@ -377,6 +422,20 @@ class CuratedArtTests(TestCase):
         self.assertIn("Géricault", c)
         self.assertIn("Metropolitan Museum", c)
         self.assertIsNone(credit("a-book-with-no-curated-art"))
+
+        # A painting used as a GROUND is credited too — same museum object,
+        # same licence, same reader looking at it. The serializer is what keeps
+        # the credit off the English edition, which wears its designed cover:
+        # it asks only for editions whose cover_url is under /covers/art/.
+        from unittest.mock import patch
+
+        from library.curated_art import CURATED_GROUND, Artwork
+
+        art = Artwork("met", 1, "Jan van Goyen", "A River", "1646", "because")
+        with patch.dict(CURATED_GROUND, {"a-designed-work": art}, clear=True):
+            g = credit("a-designed-work")
+            self.assertIn("van Goyen", g)
+            self.assertIn("Metropolitan Museum", g)
 
     def test_the_credit_reaches_the_reader(self):
         """The book detail API must actually SERVE the credit.

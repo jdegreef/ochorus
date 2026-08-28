@@ -101,6 +101,7 @@ from library.covers import (  # noqa: E402
     cover_path,
     emblem_for_book,
     palette_from_artwork,
+    shares_a_ground,
     write_og_twin,
 )
 from library.curated_art import CURATED  # noqa: E402
@@ -220,7 +221,7 @@ def main() -> int:
         title = fields["title"]
         color: str | None = None
 
-        if slug in CURATED or slug in DERIVED_GROUND:
+        if shares_a_ground(slug):
             # A wordless ground has no language. It is one shared file under
             # `covers/art/`, and BookCover draws this edition's title over it —
             # so there is nothing to DRAW here. Tested BEFORE the raster branch,
@@ -251,7 +252,11 @@ def main() -> int:
                 patched += 1
                 if not args.dry_run:
                     patch(path, url)
-                tier = "curated" if slug in CURATED else "derived"
+                tier = (
+                    "curated" if slug in CURATED
+                    else "derived" if slug in DERIVED_GROUND
+                    else "art-gnd"
+                )
                 print(f"  ✓ {url:52} {tier:9} {'row':9} {'':8} {title}")
             else:
                 unchanged += 1
