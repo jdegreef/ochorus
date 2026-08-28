@@ -92,6 +92,9 @@ class EnglishAuditPrecisionTests(SimpleTestCase):
         self.assertEqual(
             _findings(f"<p>{long_para}</p><p>{long_para}</p>").get("lost-paragraphing"), 1
         )
+        # And the shape `life-of-antony` sets 28 of its 45 chapters in: a whole
+        # chapter as ONE block. A 600-word floor exempted that entire book.
+        self.assertEqual(_findings(f"<p>{'word ' * 450}</p>").get("lost-paragraphing"), 1)
 
         # A chapter of the SAME length, properly broken up, is not a finding —
         # length alone is not the defect, and a class that said so would report
@@ -108,9 +111,32 @@ class EnglishAuditPrecisionTests(SimpleTestCase):
         )
         self.assertNotIn("lost-paragraphing", _findings(one_giant))
 
-        # Short works are exempt: front matter and stubs are legitimately one
-        # block, and 600 words is where a chapter starts owing the reader breaks.
-        self.assertNotIn("lost-paragraphing", _findings(f"<p>{'word ' * 400}</p>"))
+        # Short works are exempt: a note or a fragment is honestly one block.
+        self.assertNotIn("lost-paragraphing", _findings(f"<p>{'word ' * 250}</p>"))
+
+    def test_lost_paragraphing_counts_blocks_and_words_the_way_the_reader_sees_them(self):
+        """Both counts are taken from the RAW html, and both have to be.
+
+        `BLOCK`'s `<(p|…)>(.*?)</\1>` swallows a `<blockquote>` and the `<p>`s
+        inside it as a single match. Counting blocks that way undercounts any
+        chapter carrying a multi-paragraph quotation and inflates its mean —
+        34 fixture records are already miscounted like that — which in a class
+        whose whole claim is precision is a false-positive vector.
+        """
+        quoted = "<blockquote>" + "".join(
+            f"<p>{'word ' * 100}</p>" for _ in range(6)
+        ) + "</blockquote>"
+        self.assertNotIn(
+            "lost-paragraphing",
+            _findings(quoted),
+            "the paragraphs inside a blockquote are still paragraphs",
+        )
+
+        # Words come from the whole body, not from inside block tags: 204
+        # records carry prose no `<p>` encloses, and a chapter that lost its
+        # tags altogether would otherwise score zero words and be skipped in
+        # silence — the one shape this check least wants to miss.
+        self.assertEqual(_findings("word " * 450).get("lost-paragraphing"), 1)
 
     def test_word_fusion_needs_a_function_head_a_common_tail_and_a_rare_whole(self):
         """The three conditions, and the convention each one spares.
