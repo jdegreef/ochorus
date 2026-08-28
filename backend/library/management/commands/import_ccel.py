@@ -19,7 +19,18 @@ from django.core.management.base import BaseCommand, CommandError
 
 from library import english_audit
 from library.catalog import BOOKS, BookEntry
-from library.ingest import clean_html, clean_title, is_front_matter, soup, upsert_book
+from library.ingest import (
+    _ROMAN_STRICT,
+    MAX_LEADING_BLOCKS,
+    clean_html,
+    clean_title,
+    is_front_matter,
+    normalize_words,
+    restates_title,
+    soup,
+    upsert_book,
+)
+from library.sanitize import DROP_SELECTORS
 
 CCEL_BASE = "https://ccel.org/ccel/"
 # summary_title: a sentence terminator followed by a dash, a space, or the end
@@ -146,7 +157,7 @@ def summary_title(title: str) -> str:
             continue
         # The word carrying the full stop: an abbreviation is not a sentence end.
         word = re.split(r"[\s(\u2014\u2013-]", candidate.rstrip(".?!"))[-1]
-        if _norm(word) in _ABBREVIATIONS:
+        if normalize_words(word) in _ABBREVIATIONS:
             continue
         lead = candidate
         break
@@ -297,18 +308,6 @@ _COUNTER = (
 )
 
 
-# A WELL-FORMED roman numeral below a thousand — a chapter counter, in other
-# words. `_COUNTER` above spells its roman arm loosely as `[ivxlcdm]+`, which is
-# safe only there because the word "chapter" sits beside it; alone that class
-# also spells "civil", "mild", "livid", "mill", "dim" and "did", every one of
-# which is a heading a book might really carry. The thousands place is dropped
-# deliberately: `m{0,3}` would make this match "mix" (MIX is a real numeral,
-# 1009), and no chapter is numbered past CMXCIX. Both bare-counter tests below
-# use it. Same construction as `ingest._ROMAN_WORD`, lowercase for the `_norm`ed
-# text `_restates` compares.
-_ROMAN_STRICT = r"(?=[ivxlcd])(?:cm|cd|d?c{0,3})(?:xc|xl|l?x{0,3})(?:ix|iv|v?i{0,3})"
-
-
 def _is_ordinal_heading(text: str) -> bool:
     t = text.strip().rstrip(".")
     return bool(
@@ -320,29 +319,6 @@ def _is_ordinal_heading(text: str) -> bool:
         # loose roman class are both ordinary English.
         or re.fullmatch(rf"{_ROMAN_STRICT}|\d{{1,3}}", t, re.I)
     )
-
-
-def _norm(text: str) -> str:
-    return re.sub(r"[^a-z0-9]+", " ", text.lower()).strip()
-
-
-# A chapter page's own heading numbers itself, and not always the way its TOC
-# entry does: Bounds's TOC reads "1. Men of Prayer Needed" while the page's
-# <h2> reads "1 Men of Prayer Needed". Both are the same restatement, and
-# `clean_title` now drops the TOC's number, so the two only compare equal with
-# the numbering set aside on each side.
-#
-# Roman numerals count too: every chapter of Prayer and Praying Men opens
-# "<h2>III. ABRAHAM, THE MAN OF PRAYER</h2>" above prose the reader already sees
-# titled. Strict, for the reason `_ROMAN_STRICT` gives.
-_LEAD_COUNTER = re.compile(rf"^(?:\d{{1,3}}|{_ROMAN_STRICT})\s+")
-
-
-def _restates(text: str, title: str) -> bool:
-    """Does this heading merely repeat the chapter's own title, numbering aside?"""
-    if not title:
-        return False
-    return _LEAD_COUNTER.sub("", _norm(text)) == _LEAD_COUNTER.sub("", _norm(title))
 
 
 # A typographic rule set as its own paragraph — CCEL prints one under the
@@ -363,8 +339,7 @@ def _is_leading_noise(text: str, title: str, book_title: str) -> bool:
     """
     if _RULE_LINE.match(text) or _is_ordinal_heading(text):
         return True
-    normalised = _norm(text)
-    if _restates(text, title):
+    if restates_title(text, title):
         return True
     # The running head, which quotes the work's own title — in either
     # direction, since CCEL prints both the full title ("Life of Antony." above
@@ -372,8 +347,12 @@ def _is_leading_noise(text: str, title: str, book_title: str) -> bool:
     # so a real opening sentence that happens to name the book survives.
     if not book_title or len(text.split()) > 10:
         return False
-    work = _norm(book_title)
+    normalised = normalize_words(text)
+    work = normalize_words(book_title)
     return bool(normalised) and (work in normalised or normalised in work)
+
+
+_CONTENTS = "table of contents"
 
 
 def is_contents_body(html: str) -> bool:
@@ -386,7 +365,7 @@ def is_contents_body(html: str) -> bool:
     announcing a table of contents.
     """
     blocks = re.findall(r"<p[^>]*>(.*?)</p>", html, re.S | re.I)[:3]
-    return any(_norm(re.sub(r"<[^>]+>", " ", b)) == "table of contents" for b in blocks)
+    return any(normalize_words(re.sub(r"<[^>]+>", " ", b)) == _CONTENTS for b in blocks)
 
 
 def extract_body(
@@ -403,13 +382,28 @@ def extract_body(
     if node is None:
         return ""
     content = node.select_one("[class*=book-content]") or node
-    # Page-break markers are dropped by clean_html, but that runs last — and a
-    # `<span class="pb">3</span>` sitting before the opening heading would count
-    # as content here and block the duplicate-heading strip below. Remove them
-    # first so the heading really is what leads the chapter.
-    for pb in content.select("span.pb"):
-        pb.decompose()
-    for el in list(content.find_all(["h1", "h2", "h3", "h4", "h5"], recursive=True))[:2]:
+    # Page furniture goes FIRST. `clean_html` drops all of it too, but it runs
+    # last, and until it does, furniture sitting in or before the opening
+    # heading is what the two tests below read:
+    #
+    #   * a `<span class="pb">3</span>` ahead of the heading counts as content,
+    #     so the heading no longer "leads" and nothing is stripped;
+    #   * a footnote marker INSIDE the heading joins its text, so the
+    #     restatement test stops matching. Whitefield's farewell sermon is the
+    #     case — its heading reads "The Good Shepherd: A Farewell Sermon"
+    #     against a title of exactly that, but its footnote made the text
+    #     "…Sermon 5 5 (The last sermon which Whitefield preached in London…)",
+    #     and that one duplicate survived the import that dropped the other 55.
+    #
+    # `DROP_SELECTORS` itself, not a hand-picked subset of it: that list is the
+    # one that grows (pagenum, navbar, and the footnote classes twice), and a
+    # copy here would go on reading furniture the sanitizer had learned to drop.
+    for selector in DROP_SELECTORS:
+        for furniture in content.select(selector):
+            furniture.decompose()
+    for el in list(content.find_all(["h1", "h2", "h3", "h4", "h5"], recursive=True))[
+        :MAX_LEADING_BLOCKS
+    ]:
         # Only consider headings that still lead the content, so a mid-chapter
         # heading is never touched. Empty markup (CCEL's `<span class="index">`
         # anchors, stray whitespace) doesn't count as content.
@@ -421,8 +415,8 @@ def extract_body(
         text = el.get_text(" ", strip=True)
         if (
             _is_ordinal_heading(text)
-            or _restates(text, title)
-            or _restates(text, book_title)
+            or restates_title(text, title)
+            or restates_title(text, book_title)
         ):
             el.decompose()
         else:
@@ -488,7 +482,19 @@ class Command(BaseCommand):
             # own chapter, titled by itself. One loop then serves both modes, so
             # a fix to the crawl, the front-matter rule or the error handling
             # can't land in only half of them.
-            parts = [(t, [(u, t)]) for _, leaves in parts for u, t in leaves]
+            #
+            # A leaf inherits its PART's front-matter verdict on the way. The
+            # part title is the only thing that says an "Indexes" section is
+            # back matter: its leaves are titled "Greek Words and Phrases" and
+            # "Latin Words and Phrases", which name nothing that is_front_matter
+            # can recognise, and they imported as two chapters of Owen's
+            # Mortification of Sin.
+            parts = [
+                (t, [(u, t)])
+                for part_title, leaves in parts
+                if not is_front_matter(part_title)
+                for u, t in leaves
+            ]
 
         chapters: list[tuple[str, str]] = []
         for part_title, leaves in parts:

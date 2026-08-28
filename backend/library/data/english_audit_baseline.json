@@ -82,6 +82,9 @@
    "hyphen-space": 1,
    "space-before-punct": 4
   },
+  "mortification-of-sin": {
+   "space-before-punct": 2
+  },
   "necessity-of-prayer": {
    "space-before-punct": 4,
    "word-fusion": 1
@@ -134,7 +137,8 @@
   },
   "sermons-on-several-occasions": {
    "orphan-close-quote": 47,
-   "run-together": 2
+   "run-together": 2,
+   "word-fusion": 1
   },
   "soar-like-the-eagle-3": {
    "orphan-close-quote": 2
@@ -152,7 +156,8 @@
   },
   "ten-commandments": {
    "orphan-close-quote": 1,
-   "space-before-punct": 9
+   "space-before-punct": 8,
+   "word-fusion": 1
   },
   "the-body-of-christ-a-reality": {
    "run-together": 1,
