@@ -795,6 +795,17 @@ class CcelSummaryTitleTests(TestCase):
 
     def test_a_real_short_title_is_untouched(self):
         self.assertEqual(self._t("Birth and beginnings of Antony"), "Birth and beginnings of Antony")
+    def test_an_abbreviations_full_stop_does_not_end_the_lead_clause(self):
+        # Without the guard this cut to "The life of St" — and Schaff's section
+        # summaries are full of St./Cf./cap. abbreviations.
+        self.assertEqual(
+            self._t("The life of St. Antony. He was by descent an Egyptian."),
+            "The life of St. Antony",
+        )
+        self.assertEqual(
+            self._t("Cf. the earlier argument. This is the second reason."),
+            "Cf. the earlier argument",
+        )
 
 
 class CcelVolumeFurnitureTests(TestCase):

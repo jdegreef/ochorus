@@ -22,9 +22,14 @@ from library.catalog import BOOKS, BookEntry
 from library.ingest import clean_html, clean_title, is_front_matter, soup, upsert_book
 
 CCEL_BASE = "https://ccel.org/ccel/"
-# summary_title: the lead clause ends at the first sentence terminator that is
-# followed by a dash, a space, or the end of the string.
-_SUMMARY_LEAD = re.compile(r"^(.{4,}?[.?!])(?:\s*--|\s+\S|$)")
+# summary_title: a sentence terminator followed by a dash, a space, or the end
+# of the string ends the lead clause — unless it is an abbreviation's full stop,
+# which would cut "Life of St. Antony. …" down to "Life of St".
+_SENTENCE_END = re.compile(r"[.?!](?=\s*--|\s+\S|$)")
+_ABBREVIATIONS = frozenset(
+    "st ss mt mk lk jn cf ch chap chaps vs viz etc no nos vol vols p pp fr dr mr "
+    "mrs rev jr sr al ad bc ib ibid ed eds trans".split()
+)
 _TITLE_CAP = 72   # characters; a contents-list line that still reads at a glance
 _TITLE_MIN = 24   # never cut so short that the title says nothing
 USER_AGENT = "OchorusBot/0.1 (+https://ochorus.org; public-domain book reader)"
@@ -118,8 +123,17 @@ def summary_title(title: str) -> str:
     the 57 land on the fallback; a mid-sentence cut reads better than 443
     characters, and the full summary is still the first thing in the chapter.
     """
-    m = _SUMMARY_LEAD.match(title)
-    lead = (m.group(1) if m else title).strip()
+    lead = title.strip()
+    for m in _SENTENCE_END.finditer(title):
+        candidate = title[: m.end()].strip()
+        if len(candidate) < 5:
+            continue
+        # The word carrying the full stop: an abbreviation is not a sentence end.
+        word = re.split(r"[\s(\u2014\u2013-]", candidate.rstrip(".?!"))[-1]
+        if _norm(word) in _ABBREVIATIONS:
+            continue
+        lead = candidate
+        break
     if len(lead) > _TITLE_CAP:
         for sep in (";", ":", "--", ","):
             i = lead.find(sep, _TITLE_MIN)
