@@ -14,9 +14,51 @@ describe('sermon outline — pointLabel', () => {
 		);
 	});
 
-	it('falls back to the leading words when there is no caps run', () => {
-		const out = pointLabel('III. Now consider the comfort this doctrine brings to us daily.');
-		expect(out).toMatch(/^III\. Now Consider The Comfort/);
+	it('keeps the apostrophe in a possessive', () => {
+		// `\b` treats an apostrophe as a word boundary, so the old title-caser
+		// capitalised the letter after it: `WHERE GOD'S PEOPLE OFTEN ARE` came
+		// out as "Where God'S People Often Are" in consolation-in-the-furnace.
+		expect(pointLabel("I. We commence by gazing into the place WHERE GOD'S PEOPLE ARE.")).toBe(
+			"I. Where God's People Are"
+		);
+	});
+
+	it('lifts a ONE-word thesis too', () => {
+		// The caps RUN needs two words, so these three points across the corpus
+		// fell through to the sentence fallback and came out as noise.
+		expect(pointLabel('I. First, there is a COMPLAINT. How many a Christian…')).toBe(
+			'I. Complaint'
+		);
+		expect(pointLabel('III. Now for the APPLICATION. A word or two with you…')).toBe(
+			'III. Application'
+		);
+		// Five letters minimum, so an initial or a stray capital is not a thesis.
+		expect(pointLabel('II. Then said Mr. A. B. to his friend, and they walked on.')).toBeNull();
+	});
+
+	it('uses the opening sentence only when it reads as a title', () => {
+		// Short, and names the division — these are real points in
+		// salvation-by-faith and the-joy-of-the-lord.
+		expect(pointLabel('I. What faith it is through which we are saved. And first…')).toBe(
+			'I. What Faith It Is Through Which We Are Saved'
+		);
+		expect(pointLabel('II. The secret of this joy. Consider now…')).toBe(
+			'II. The Secret Of This Joy'
+		);
+	});
+
+	it('emits nothing rather than a truncated sentence', () => {
+		// The promise at the top of the module is precision over recall, and the
+		// old unconditional fallback broke it: eleven points across eight sermons
+		// became half-sentences in the drawer. Both guards were measured against
+		// the corpus — a title is short, and it does not open with a connective.
+		expect(
+			pointLabel('I. I argue that He will, first, when I remember that He hears the lowly ravens.')
+		).toBeNull();
+		expect(pointLabel('VI. But I have mightier arguments and nearer the mark.')).toBeNull();
+		expect(pointLabel('V. Again, there is yet another and a far mightier argument.')).toBeNull();
+		// No sentence end at all is not a title either.
+		expect(pointLabel('IV. ' + Array.from({ length: 20 }, (_, i) => `word${i}`).join(' '))).toBeNull();
 	});
 
 	it('ignores paragraphs that are not points', () => {
@@ -26,8 +68,13 @@ describe('sermon outline — pointLabel', () => {
 		expect(pointLabel('I am persuaded that nothing can separate us.')).toBeNull();
 	});
 
-	it('caps the label length', () => {
-		const long = 'IV. ' + Array.from({ length: 20 }, (_, i) => `word${i}`).join(' ');
-		expect(pointLabel(long)!.endsWith('…')).toBe(true);
+	it('caps a very long thesis', () => {
+		// the-immutability-of-god II runs to nine words; anything longer is
+		// trimmed rather than allowed to fill the drawer.
+		const label = pointLabel(
+			'II. Now secondly, a word on THE PERSONS TO WHOM THIS UNCHANGEABLE GOD IS A GREAT BENEFIT. Now, who…'
+		);
+		expect(label!.endsWith('…')).toBe(true);
+		expect(label!.split(' ').length).toBeLessThanOrEqual(11);
 	});
 });
