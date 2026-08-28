@@ -740,10 +740,11 @@ class QuotePageView(APIView):
         writer = Author.objects.filter(slug=author).first()
         if writer is None:
             raise Http404("No such author.")
-        rows = (
-            Quote.objects.filter(author=writer, reviewed=True)
-            .select_related("chapter__book", "sermon")
-            .order_by("slug")
+        rows = sorted(
+            Quote.objects.filter(author=writer, reviewed=True).select_related(
+                "chapter__book", "sermon"
+            ),
+            key=self._reading_order,
         )
         if not rows:
             raise Http404("No published quotes for this author.")
@@ -753,10 +754,36 @@ class QuotePageView(APIView):
                     "slug": writer.slug,
                     "name": writer.name,
                     "photo_url": writer.photo_url,
+                    # The sermons group has no cover colour of its own, so the
+                    # page tints it from the writer's era — the same hue their
+                    # row wears on the sermons index.
+                    "birth_year": writer.birth_year,
                 },
                 "quotes": [self._quote(q) for q in rows],
             }
         )
+
+    @staticmethod
+    def _reading_order(q):
+        """Books before sermons, then through each work in its own order.
+
+        Ordering used to be by `slug`, which is a hash of the text — so the
+        sequence was arbitrary and a reader scrolling sixty cards could not
+        predict what came next. Reading order does three things instead: the
+        page walks each work from its first chapter to its last, the citation
+        becomes the page's structure rather than a footnote under each card,
+        and consecutive quotations share a work, which is what lets the page
+        GROUP them. That grouping is what earns the colour: the house rule is
+        that a list's hue tracks whatever it is grouped by (STYLE_GUIDE §5), so
+        an ungrouped list has no claim to one.
+
+        Books first because they are the substantial works; sermons are one
+        group of their own at the foot, since six sermons carrying nine
+        quotations between them would otherwise be six groups of one or two.
+        """
+        if q.sermon_id:
+            return (1, q.sermon.title, 0, q.paragraph)
+        return (0, q.chapter.book.title, q.chapter.order, q.paragraph)
 
     def _quote(self, q):
         # The citation is the product. A card without a source is the thing the
@@ -768,6 +795,9 @@ class QuotePageView(APIView):
                 "title": q.sermon.title,
                 "work": q.sermon.title,
                 "order": None,
+                # Sermons carry no cover colour; the page tints their group from
+                # the author's era instead, which is what the sermons index does.
+                "cover_color": "",
             }
         else:
             source = {
@@ -776,6 +806,9 @@ class QuotePageView(APIView):
                 "title": q.chapter.title,
                 "work": q.chapter.book.title,
                 "order": q.chapter.order,
+                # The work's own hue, for the group heading. Sent because the
+                # page groups BY work — see `_reading_order`.
+                "cover_color": q.chapter.book.cover_color,
             }
         return {"slug": q.slug, "text": q.text, "paragraph": q.paragraph, "source": source}
 

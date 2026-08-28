@@ -213,6 +213,71 @@ class QuotePageApiTests(TestCase):
         slugs = [q["slug"] for q in self.client.get("/api/library/quotes/w/").data["quotes"]]
         self.assertEqual(slugs, ["w-abc"])
 
+    def test_quotes_arrive_in_reading_order(self):
+        """Books before sermons, each work from its first chapter to its last.
+
+        Ordering was by `slug` — a hash of the text — so the sequence was
+        arbitrary. Reading order is what lets the page GROUP by work, and the
+        grouping is what earns the colour (STYLE_GUIDE §5). A regression here
+        would not error; it would silently shatter every work into singletons.
+        """
+        book2 = Book.objects.create(
+            author=self.author, slug="a", language="en", title="A Later Work"
+        )
+        later = Chapter.objects.create(
+            book=book2, order=1, title="One", body_html="<p>x</p>"
+        )
+        serm = Sermon.objects.create(
+            author=self.author, slug="s", language="en", title="A Sermon",
+            body_html="<p>x</p>",
+        )
+        # Created deliberately out of order.
+        for slug, ch, para in (
+            ("z1", self.chapter, 9), ("z2", later, 1), ("z3", self.chapter, 2),
+        ):
+            Quote.objects.create(
+                slug=slug, author=self.author, text="Text.", chapter=ch,
+                paragraph=para, reviewed=True,
+            )
+        Quote.objects.create(
+            slug="z0", author=self.author, text="Text.", sermon=serm,
+            paragraph=1, reviewed=True,
+        )
+        self.quote.reviewed = True
+        self.quote.save()
+
+        got = [
+            (q["source"]["work"], q["source"]["order"], q["paragraph"])
+            for q in self.client.get("/api/library/quotes/w/").data["quotes"]
+        ]
+        self.assertEqual(
+            got,
+            [
+                ("A Later Work", 1, 1),
+                ("A Work", 3, 2),
+                ("A Work", 3, 5),
+                ("A Work", 3, 9),
+                ("A Sermon", None, 1),
+            ],
+        )
+
+    def test_a_chapter_quote_carries_its_book_hue(self):
+        # The group heading is tinted from the work, so the payload has to say
+        # which colour that is.
+        self.chapter.book.cover_color = "#3b5bdb"
+        self.chapter.book.save(update_fields=["cover_color"])
+        self.quote.reviewed = True
+        self.quote.save()
+        q = self.client.get("/api/library/quotes/w/").data["quotes"][0]
+        self.assertEqual(q["source"]["cover_color"], "#3b5bdb")
+
+    def test_the_author_carries_a_birth_year_for_the_sermons_hue(self):
+        # Sermons have no cover colour, so their group takes the writer's era.
+        self.quote.reviewed = True
+        self.quote.save()
+        data = self.client.get("/api/library/quotes/w/").data
+        self.assertIn("birth_year", data["author"])
+
     def test_an_unknown_author_is_404_not_an_empty_page(self):
         self.assertEqual(self.client.get("/api/library/quotes/nobody/").status_code, 404)
 

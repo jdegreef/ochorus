@@ -699,6 +699,8 @@ export interface QuoteSource {
 	work: string;
 	/** Chapter order; null for a sermon. */
 	order: number | null;
+	/** The book's own hue, for the group heading. "" for a sermon. */
+	cover_color: string;
 }
 
 export interface Quote {
@@ -710,8 +712,57 @@ export interface Quote {
 }
 
 export interface QuotePage {
-	author: { slug: string; name: string; photo_url: string };
+	author: { slug: string; name: string; photo_url: string; birth_year: number | null };
+	/**
+	 * In READING ORDER — books before sermons, then each work from its first
+	 * chapter to its last. Consecutive quotations therefore share a work, which
+	 * is what lets the page group them (and, per STYLE_GUIDE §5, what earns the
+	 * group its hue). Do not re-sort without regrouping.
+	 */
 	quotes: Quote[];
+}
+
+/** One work's run of quotations — the unit the page renders and tints. */
+export interface QuoteGroup {
+	work: string;
+	kind: 'chapter' | 'sermon';
+	/** Book slug for a chapter group; "" for the sermons group. */
+	slug: string;
+	hue: string;
+	/** Anchor id for the jump row. */
+	id: string;
+	quotes: Quote[];
+}
+
+/**
+ * Split quotations in reading order into one group per work, with the sermons
+ * gathered into a single trailing group.
+ *
+ * Six sermons carrying nine quotations between them would otherwise be six
+ * groups of one or two, which reads as debris rather than structure.
+ */
+export function groupQuotes(page: QuotePage, eraHue: string): QuoteGroup[] {
+	const groups: QuoteGroup[] = [];
+	for (const q of page.quotes) {
+		const sermon = q.source.kind === 'sermon';
+		const work = sermon ? 'Sermons' : q.source.work;
+		const last = groups[groups.length - 1];
+		if (last && last.work === work) {
+			last.quotes.push(q);
+			continue;
+		}
+		groups.push({
+			work,
+			kind: q.source.kind,
+			slug: sermon ? '' : q.source.slug,
+			// A sermon has no cover of its own, so its group takes the writer's
+			// era hue — the same one their row wears on the sermons index.
+			hue: sermon ? eraHue : q.source.cover_color || eraHue,
+			id: sermon ? 'sermons' : `w-${q.source.slug}`,
+			quotes: [q]
+		});
+	}
+	return groups;
 }
 
 /** Authors with at least one REVIEWED quotation — the pages that may be built. */
