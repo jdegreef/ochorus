@@ -13,9 +13,12 @@ correct typography in every language we ship.
     uv run python scripts/normalize_quotes.py                  # rewrite in place
     uv run python scripts/normalize_quotes.py humility.es      # just these
 
-A trailing NAME limits the run to files whose name contains it. The corpus is
-not in a settled state — see the `body_text` note below — so a repair that is
-scoped to a few works should be shippable without sweeping every one.
+A trailing NAME limits the run to files whose name contains it, so a repair
+scoped to a few works is shippable without sweeping every one.
+
+Writes `body_html` only. `body_text` is derived from it, so after a run do
+`manage.py rederive_body_text --write` — a gate in `tests_fixture` fails until
+you have.
 
 SAFETY. Punctuation only. Every file is asserted to come out with an identical
 ordered tag sequence and identical letters/digits; only the quote characters
@@ -44,11 +47,8 @@ CONTENT = BACKEND / "library" / "fixtures" / "content"
 
 sys.path.insert(0, str(BACKEND))
 
-from library.quote_marks import convert_work  # noqa: E402  (path set above; no Django)
-
-# `body_text` is DERIVED from `body_html`, so converting one and not the
-# other leaves the committed file disagreeing with itself.
-FIELDS = ("body_html", "body_text")
+from library.content_fixtures import render_rows  # noqa: E402  (path set above)
+from library.quote_marks import convert_work  # noqa: E402  (no Django needed)
 
 
 def main() -> int:
@@ -60,35 +60,26 @@ def main() -> int:
     touched = total = 0
     for path in files:
         rows = json.loads(path.read_text())
-        # BOTH body fields, which the first sweep did not do: it converted
-        # body_html and left every one of the four Spanish files carrying its
-        # pre-conversion straight marks in body_text (54, 112, 128 and 5 of
-        # them). `loaddata` writes body_text verbatim — it never calls `save()`
-        # — and `backfill_body_text` only fills an EMPTY one, so a freshly
-        # seeded database indexed and snippeted straight quotes while its pages
-        # rendered « ». `normalize_english_fixture` normalizes both fields for
-        # exactly this reason; so does this.
-        fields = [
-            (row, key)
-            for row in rows
-            for key in FIELDS
-            if row["fields"].get(key)
-        ]
-        repaired, changed_here = convert_work(
-            [row["fields"][key] for row, key in fields], path.name
-        )
+        # `body_html` ONLY. `body_text` is DERIVED from it — `save()` sets it to
+        # `html_to_text(body_html)` — and converting it here independently is
+        # not the same operation: this decision is context-sensitive, so a field
+        # whose marks are already converted and one whose are not reach
+        # different depths and land on different pairs. `the-inner-chamber.pt`
+        # is the case that showed it, taking » in `body_text` where `body_html`
+        # has ”. Convert the source; then run `manage.py rederive_body_text
+        # --write`, which `tests_fixture.BodyTextDerivationTests` will demand.
+        bodies = [r["fields"].get("body_html") or "" for r in rows]
+        repaired, changed_here = convert_work(bodies, path.name)
         if not changed_here:
             continue
-        for (row, key), new in zip(fields, repaired, strict=True):
-            row["fields"][key] = new
+        for row, new in zip(rows, repaired, strict=True):
+            if row["fields"].get("body_html"):
+                row["fields"]["body_html"] = new
         touched += 1
         total += changed_here
         print(f"  {path.name:<52} {changed_here:>6} marks")
         if not check:
-            body = "[\n" + ",\n".join(
-                json.dumps(r, indent=1, ensure_ascii=False) for r in rows
-            ) + "\n]\n"
-            path.write_text(body)
+            path.write_text(render_rows(rows))
     print(f"\n{'would convert' if check else 'converted'} {total} marks across {touched} files")
     return 0
 

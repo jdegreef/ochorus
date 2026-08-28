@@ -20,7 +20,7 @@ from django.test import SimpleTestCase, TestCase
 
 from library.content_fixtures import BOOKS_DIR, SERMONS_DIR
 from library.ingest import word_count
-from library.models import Author, Book, Chapter
+from library.models import Author, Book, Chapter, Sermon
 from library.quote_marks import (
     assert_punctuation_only,
     convert,
@@ -282,3 +282,85 @@ class Migration0084BehaviourTests(TestCase):
         chapter.refresh_from_db()
         self.assertEqual(chapter.body_html, "<p>«Él dijo: “ven”.»</p>")
         self.assertEqual(chapter.body_text, "untouched-marker")
+
+
+class Migration0085Tests(TestCase):
+    """Re-deriving `body_text`, which nothing else in the release chain repairs.
+
+    `backfill_body_text` filters on `body_text=""`, so a value that is present
+    but WRONG is invisible to it — and `body_text` is what search indexes, so a
+    wrong one means the index and the page disagree with nobody noticing.
+    """
+
+    def _repair(self):
+        return importlib.import_module("library.migrations.0085_rederive_body_text").rederive
+
+    def _historical(self):
+        return MigrationExecutor(connection).loader.project_state(
+            ("library", "0084_repair_mixed_quotes")
+        ).apps
+
+    def _chapter(self, body_html, body_text):
+        author = Author.objects.create(slug="a-85", name="A")
+        book = Book.objects.create(slug="b-85", language="en", title="T", author=author)
+        chapter = Chapter.objects.create(
+            book=book, order=1, title="One", body_html=body_html
+        )
+        Chapter.objects.filter(pk=chapter.pk).update(body_text=body_text)
+        return chapter
+
+    def test_it_repairs_a_present_but_wrong_body_text(self):
+        """The case `backfill_body_text` cannot see, because it is not empty."""
+        chapter = self._chapter("<p>God&#x27;s own “work”.</p>", "God&#x27;s own \"work\".")
+
+        self._repair()(self._historical(), None)
+
+        chapter.refresh_from_db()
+        self.assertEqual(chapter.body_text, "God's own “work”.")
+
+    def test_it_fills_an_empty_one_too(self):
+        chapter = self._chapter("<p>One.</p><p>Two.</p>", "")
+
+        self._repair()(self._historical(), None)
+
+        chapter.refresh_from_db()
+        self.assertEqual(chapter.body_text, "One. Two.")
+
+    @skipUnless(connection.vendor == "postgresql", "tsvector is a Postgres type")
+    def test_it_nulls_the_index_it_invalidates(self):
+        """`body_text` IS the indexed text, so here this is the point of the
+        migration rather than a precaution: a repaired row whose vector was left
+        alone keeps matching searches for text it no longer holds."""
+        chapter = self._chapter("<p>correct</p>", "stale")
+        Chapter.objects.filter(pk=chapter.pk).update(
+            search_vector=SearchVector(Value("stale"))
+        )
+
+        self._repair()(self._historical(), None)
+
+        chapter.refresh_from_db()
+        self.assertIsNone(chapter.search_vector)
+
+    def test_a_row_already_in_step_is_not_written(self):
+        """Otherwise it would null every vector in the corpus and queue the
+        whole library for a needless re-index."""
+        chapter = self._chapter("<p>Settled.</p>", "Settled.")
+        Chapter.objects.filter(pk=chapter.pk).update(word_count=999)
+
+        self._repair()(self._historical(), None)
+
+        chapter.refresh_from_db()
+        self.assertEqual(chapter.word_count, 999, "an untouched row must not be saved")
+
+    def test_it_repairs_sermons_as_well_as_chapters(self):
+        author = Author.objects.create(slug="a-85s", name="A")
+        sermon = Sermon.objects.create(
+            author=author, slug="s-85", language="es", title="S",
+            body_html="<p>«Ven», dijo.</p>",
+        )
+        Sermon.objects.filter(pk=sermon.pk).update(body_text="wrong")
+
+        self._repair()(self._historical(), None)
+
+        sermon.refresh_from_db()
+        self.assertEqual(sermon.body_text, "«Ven», dijo.")

@@ -74,6 +74,7 @@ from library.designed_covers import (
     digest,
 )
 from library.quote_marks import mark_counts
+from library.text import html_to_text
 
 EXPECTED_MODELS = {
     "library.author",
@@ -1561,6 +1562,49 @@ class PlanTranslationCoverageTests(SimpleTestCase):
             "has no entry, so "
             "seed_plans will skip it and the language gets no plan at all. Add "
             "the prose to that file",
+        )
+
+
+class BodyTextDerivationTests(SimpleTestCase):
+    """`body_text` must be exactly what `save()` would derive from `body_html`.
+
+    It is a DERIVED column — `Chapter.save()` and `Sermon.save()` both set it to
+    `html_to_text(body_html)` — and it is what full-text search indexes and what
+    snippets are rendered from. The fixture is the one place it can drift:
+    `loaddata` writes it verbatim (it never calls `save()`), and
+    `backfill_body_text` only fills an EMPTY one, so a value that is present but
+    wrong self-corrects nowhere — not in a fresh build, not on a deploy.
+
+    490 rows across 58 files had drifted, in four ways and none of them visible
+    on a page: quote marks left behind by a sweep that converted `body_html`
+    only; `man&#x27;s` where the rule gives `man's`; `الخيرات. »` for
+    `الخيرات.»`, from an older derivation that spaced every tag rather than the
+    block-level ones; and 36 chapters of `the-inner-chamber.lg` with no
+    `body_text` at all.
+
+    Nothing was watching, which is why it accumulated. This is the watch.
+    """
+
+    def test_every_body_text_is_derived_from_its_body_html(self):
+        stale = []
+        for path in ordered_fixture_paths():
+            if path.name in {"authors.json", "plans.json"}:
+                continue
+            for row in json.loads(path.read_text()):
+                fields = row.get("fields", {})
+                body_html = fields.get("body_html")
+                # `is None`, not falsy: a row whose body_text is "" is precisely
+                # one of the rows this exists to catch.
+                if not body_html or fields.get("body_text") is None:
+                    continue
+                if html_to_text(body_html) != fields["body_text"]:
+                    stale.append(f"{path.name} #{fields.get('order', '-')}")
+        self.assertEqual(
+            stale[:20],
+            [],
+            f"{len(stale)} rows carry a body_text their own body_html no longer "
+            f"derives — search indexes one thing and the page shows another. Run "
+            f"`manage.py rederive_body_text --write`.",
         )
 
 

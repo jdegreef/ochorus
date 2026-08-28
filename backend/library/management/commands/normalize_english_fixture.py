@@ -43,15 +43,10 @@ import json
 
 from django.core.management.base import BaseCommand
 
-from library.content_fixtures import BOOKS_DIR, SERMONS_DIR
+from library.content_fixtures import BOOKS_DIR, SERMONS_DIR, render_rows
 from library.corrections import _HYPHEN_LINEBREAK, apply_body_corrections
 
 FIELDS = ("body_html", "body_text")
-
-
-def render(rows: list[dict]) -> str:
-    """Byte-stable Django-fixture formatting — identical to regen_fixture.py."""
-    return "[\n" + ",\n".join(json.dumps(r, indent=1, ensure_ascii=False) for r in rows) + "\n]\n"
 
 
 class Command(BaseCommand):
@@ -94,7 +89,7 @@ class Command(BaseCommand):
             edits += file_edits
             self.stdout.write(f"  {file_edits:4d} edits ({file_hyphens:4d} hyphens)  {path.name}")
             if opts["write"]:
-                path.write_text(render(rows), encoding="utf-8")
+                path.write_text(render_rows(rows), encoding="utf-8")
 
         summary = f"{edits} fields ({hyphens} hyphen sites) across {touched_files} files"
         self.stdout.write(

@@ -37,6 +37,17 @@ SERMONS_DIR = CONTENT_DIR / "sermons"
 PLANS_FILE = CONTENT_DIR / "plans.json"
 
 
+
+def render_rows(rows: list[dict]) -> str:
+    """Byte-stable Django-fixture formatting: one record per line, indent=1.
+
+    The one copy. `regen_fixture.py`, `normalize_english_fixture` and
+    `normalize_quotes.py` each carried this expression, and a fixture writer
+    that formats differently from the others rewrites every file it touches —
+    turning a two-value repair into a thousand-line diff nobody can review.
+    """
+    return "[\n" + ",\n".join(json.dumps(r, indent=1, ensure_ascii=False) for r in rows) + "\n]\n"
+
 APP_DIR = Path(__file__).resolve().parent
 CONTENT_SOURCES_FILE = APP_DIR / "content_sources.json"
 
