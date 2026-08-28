@@ -118,6 +118,21 @@ def _numbering_prefix(t: str) -> re.Match[str] | None:
     return None
 
 
+def strip_numbering_prefix(t: str) -> str:
+    """Drop a redundant "Chapter N." / "N." numbering prefix from `t`.
+
+    To a fixpoint, so it is idempotent: one pass over a doubly-numbered
+    "1. 2. Title" would leave "2. Title" and the next call would shorten it
+    again.
+
+    Split out of `clean_title` so a backfill can apply this rule alone; see
+    migration 0090 for why the full cleaner is wrong for stored titles.
+    """
+    while (m := _numbering_prefix(t)) is not None:
+        t = t[m.end():].strip()
+    return t
+
+
 def clean_title(raw: str) -> str:
     """Normalise a chapter heading for display.
 
@@ -130,12 +145,7 @@ def clean_title(raw: str) -> str:
     # Drop a trailing "Contents" nav link, but never blank the whole title — a
     # bare "Contents" must stay so is_front_matter can recognise and drop it.
     t = re.sub(r"\s*Contents$", "", t).strip() or t
-    # Drop a redundant "Chapter N." / "N." numbering prefix. To a fixpoint, so
-    # the function stays idempotent as its docstring promises: one pass over a
-    # doubly-numbered "1. 2. Title" would leave "2. Title" and the next call
-    # would shorten it again.
-    while (m := _numbering_prefix(t)) is not None:
-        t = t[m.end():]
+    t = strip_numbering_prefix(t)
     # Remove quotation marks; tidy stray wrapping punctuation and spacing.
     t = _DQUOTE.sub("", t)
     t = _SQUOTE.sub("", t)

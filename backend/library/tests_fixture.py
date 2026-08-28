@@ -71,6 +71,7 @@ from library.designed_covers import (
     DESIGNED_BY_SLUG,
     digest,
 )
+from library.ingest import strip_numbering_prefix
 from library.quote_marks import mark_counts
 from library.text import html_to_text
 
@@ -1623,6 +1624,56 @@ class BodyTextDerivationTests(SimpleTestCase):
             f"{len(stale)} rows carry a body_text their own body_html no longer "
             f"derives — search indexes one thing and the page shows another. Run "
             f"`manage.py rederive_body_text --write`.",
+        )
+
+
+class ChapterTitleNumberingTests(SimpleTestCase):
+    """No stored title may carry the number the reader is about to add.
+
+    The reader renders a chapter as `{order}. {title}` — TocDrawer,
+    SearchDrawer and the notebook all do — so a title stored as "1. The God of
+    Our Salvation" reached the page as "3. 1. The God of Our Salvation", the
+    two numbers disagreeing because front matter occupies the first orders.
+    245 rows were in that state: `waiting-on-god` in six languages, and the 59
+    chapters of `selected-sermons-whitefield`, styled "01. ", "02. " …
+
+    `clean_title` strips the prefix on import now, and migration 0090 stripped
+    the rows already in the database. This is what keeps them from coming back:
+    the importer's rule is not applied to a fixture edited by hand, and
+    `seed_books` never re-syncs the chapters of a book it has already created,
+    so a numbered title committed here would ship and then be unreachable.
+
+    Every title in the corpus, not just chapters — a numeral in front of a book
+    or sermon name is the same source artefact, and today there are none.
+
+    One case this must NOT be obeyed blindly: `_NUMBERED_BOOKS` spells the
+    numbered Bible books in English only, so a Spanish "1. Juan" or a Hindi
+    "१. यूहन्ना" reads to the rule as a numbering prefix rather than a name.
+    Nothing in the corpus is in that state, but a hand-written title that is
+    would fail here, and stripping it would leave one chapter titled "Juan" —
+    hence the second half of the message rather than a bare instruction.
+    """
+
+    def test_no_title_carries_a_redundant_numbering_prefix(self):
+        numbered = []
+        for path, rows in rows_by_file().items():
+            for row in rows:
+                fields = row.get("fields", {})
+                title = fields.get("title")
+                if not title:
+                    continue
+                if strip_numbering_prefix(title) != title:
+                    numbered.append(
+                        f"{path.name} #{fields.get('order', '-')}: {title!r}"
+                    )
+        self.assertEqual(
+            numbered[:20],
+            [],
+            f"{len(numbered)} title(s) begin with their own number, which the "
+            f"reader prepends again — pass them through "
+            f"`library.ingest.strip_numbering_prefix`. Unless the numeral is "
+            f"part of a Bible book's NAME in a language `_NUMBERED_BOOKS` does "
+            f"not spell ('1. Juan'), in which case widen that guard instead.",
         )
 
 
