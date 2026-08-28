@@ -58,6 +58,16 @@ _CHAPTER = re.compile(
     # well-formed numeral once the known confusions are undone.
     r"^\s*\[?\s*chap\w*\.?\s+([IVXLCYil|]+)\.?\s*(?:[\u2014\u2013-]\s*(.*?))?\s*\]?$", re.I
 )
+#: A bracketed marker whose OPENING was eaten by the scanner. Grosart's chapter
+#: VIII survives only as "B VIII. — Tenderness required in ministers toward
+#: young beginners.]" — the tail of "[CHAPTEB". Losing it merges two chapters
+#: silently, so the closing bracket plus a dash plus a well-formed numeral is
+#: taken as enough evidence. The junk prefix is capped so this cannot reach
+#: into prose, and the numeral is still validated by `_roman`.
+_CHAPTER_SALVAGE = re.compile(
+    r"^.{0,12}?\b([IVXLCYil|]+)\.\s*[\u2014\u2013-]\s*(.+?)\s*\]$", re.I
+)
+
 #: Letter-for-letter confusions a page scanner makes inside a roman numeral.
 _NUMERAL_OCR = str.maketrans({"Y": "V", "y": "v", "l": "I", "|": "I"})
 _ROMAN = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100}
@@ -70,6 +80,9 @@ _NON_LETTER = re.compile(r"[^A-Za-z]")
 #: How far below a work's title its first chapter may sit and still count as
 #: that title's text (rather than a half-title page or a running header).
 _PART_HEADING_GAP = 30
+#: How many lines a bracketed chapter heading may wrap onto before we stop
+#: looking for its closing bracket.
+_HEADING_WRAP = 4
 
 
 def _norm_heading(text: str) -> str:
@@ -389,9 +402,30 @@ def chapterize(text: str, part: str = "", part_end: str = "") -> list[tuple[str,
     lines = text.split("\n")
     markers: list[tuple[int, str, str]] = []
     for i, line in enumerate(lines):
-        m = _CHAPTER.match(line.strip())
-        if m:
-            markers.append((i, m.group(1), (m.group(2) or "").strip()))
+        stripped = line.strip()
+        m = _CHAPTER.match(stripped) or _CHAPTER_SALVAGE.match(stripped)
+        if m and _roman(m.group(1)) is not None:
+            # A bracketed heading that has not closed by the end of its line
+            # continues onto the next: "[CHAPTER I. — The Text opened and
+            # divided. What the Reed is, and what" / "the Bruising.]". Take the
+            # rest of it, or it reads as the chapter's opening words.
+            title = (m.group(2) or "").strip()
+            spans = 0
+            if stripped.startswith("[") and not stripped.endswith("]"):
+                for j in range(i + 1, min(i + 1 + _HEADING_WRAP, len(lines))):
+                    nxt = lines[j].strip()
+                    # A page break can fall inside the heading, so a blank line
+                    # does not end it — chapters I, IX and XXI all wrap across
+                    # one. The closing bracket is what ends it.
+                    if not nxt:
+                        continue
+                    if _CHAPTER.match(nxt) or _CHAPTER_SALVAGE.match(nxt):
+                        break
+                    title = f"{title} {nxt.rstrip(']')}".strip()
+                    spans = j - i
+                    if nxt.endswith("]"):
+                        break
+            markers.append((i + spans, m.group(1), _WS.sub(" ", title).strip()))
     if part:
         # Scope to one work first: a volume's other treatises have their own
         # chapter I, which the contents-run rule below would read as a restart.

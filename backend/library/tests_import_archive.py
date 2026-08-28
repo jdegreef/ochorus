@@ -300,3 +300,73 @@ class MangledMarkerTests(SimpleTestCase):
     def test_a_numeral_that_is_still_not_roman_is_rejected(self):
         self.assertIsNone(_roman("XVIL"))
         self.assertIsNone(_roman("ZZ"))
+
+
+class WrappedHeadingTests(SimpleTestCase):
+    """A bracketed chapter heading that does not close on its own line."""
+
+    def test_the_rest_of_the_heading_is_not_left_in_the_body(self):
+        # Grosart wraps 8 of the Bruised Reed's 27 headings, and their tails
+        # read as the chapter's opening words: "the Bruising.] THE prophet
+        # Isaiah being lifted up".
+        text = "\n".join([
+            "[CHAPTER I. — The Text opened and divided. What the Reed is, and what",
+            "the Bruising.]",
+            "THE prophet Isaiah being lifted up.",
+        ])
+        (title, body), = chapterize(text)
+        self.assertEqual(title, "The Text opened and divided. What the Reed is, and what the Bruising")
+        self.assertNotIn("Bruising.]", body)
+        self.assertIn("prophet Isaiah", body)
+
+    def test_a_page_break_inside_the_heading_does_not_end_it(self):
+        # Chapters I, IX and XXI each wrap across a blank line.
+        text = "\n".join([
+            "[CHAPTER IX. — Governors should be tender of weak ones, and also private",
+            "",
+            "Christians.]",
+            "So in the censures of the church.",
+        ])
+        (title, body), = chapterize(text)
+        self.assertTrue(title.endswith("private Christians"), title)
+        self.assertNotIn("Christians.]", body)
+
+    def test_a_heading_that_closes_on_its_own_line_is_untouched(self):
+        text = "[CHAPTER V. — Grace is little at first.]\nGrace is small in its beginnings.\n"
+        (title, body), = chapterize(text)
+        self.assertEqual(title, "Grace is little at first")
+        self.assertIn("small in its beginnings", body)
+
+    def test_the_wrap_stops_at_the_next_marker(self):
+        text = "\n".join([
+            "[CHAPTER I. — An unclosed heading",
+            "[CHAPTER II. — A closed one.]",
+            "Body of two.",
+        ])
+        self.assertEqual([t for t, _ in chapterize(text)][0], "An unclosed heading")
+
+
+class SalvagedMarkerTests(SimpleTestCase):
+    """A bracketed marker whose opening the scanner ate."""
+
+    def test_a_marker_reduced_to_its_numeral_is_still_found(self):
+        # Grosart's chapter VIII survives only as "B VIII. — Tenderness
+        # required in ministers toward young beginners.]" — the tail of
+        # "[CHAPTEB". Losing it merged chapters VII and VIII silently.
+        text = "\n".join([
+            "[CHAPTER VII. — Christ will not quench small beginnings.]",
+            "The first body.",
+            "B VIII. — Tenderness required in ministers toward young beginners.]",
+            "The second body.",
+        ])
+        titles = [t for t, _ in chapterize(text)]
+        self.assertEqual(len(titles), 2)
+        self.assertEqual(titles[1], "Tenderness required in ministers toward young beginners")
+
+    def test_ordinary_prose_ending_in_a_bracket_is_not_a_marker(self):
+        text = "\n".join([
+            "[CHAPTER I. — A real one.]",
+            "He wrote of the bruised reed [see note 4]",
+            "and carried on in the same paragraph.",
+        ])
+        self.assertEqual(len(chapterize(text)), 1)

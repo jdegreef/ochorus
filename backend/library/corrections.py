@@ -36,6 +36,47 @@ EXCLUDED_SLUGS: set[str] = {
 }
 
 CORRECTIONS: dict[str, dict] = {
+    "the-bruised-reed": {
+        # Grosart's scan carries its chapter titles on the marker line, where
+        # they both truncate and pick up the worst of the OCR. Each title below
+        # is the full heading transcribed from the scan (marker line plus its
+        # wrapped continuation), with the misreads repaired: "ivill"->will,
+        # "Rides"->Rules, "Eeproof"->Reproof, "he\epresenteth"->he representeth,
+        # "unto its"->unto us. Chapters 1, 9 and 21 were cut mid-phrase by the
+        # page edge and are completed from the 1878 printing's contents page.
+        "chapter_titles": {
+            1: "The Text opened and divided. What the Reed is, and what the bruising",
+            2: "Those that Christ hath to do withal are bruised",
+            3: "Christ will not break the Bruised Reed",
+            4: "Signs of one truly bruised. Means and measure of bruising, and comfort to such",
+            5: "Grace is little at first",
+            6: "Grace is mingled with Corruption",
+            7: "Christ will not quench small and weak beginnings",
+            8: "Tenderness required in ministers toward young beginners",
+            9: "Governors should be tender of weak ones, and also private Christians",
+            10: "Rules to try whether we be such as Christ will not quench",
+            11: "Signs of smoking flax which Christ will not quench",
+            12: "Scruples hindering comfort removed",
+            13: "Set upon Duties notwithstanding Weaknesses",
+            14: "The case of Indisposition resolved, and Discouragements",
+            15: "Of infirmities. No cause of discouragement, in whom they are, "
+                "and how to recover peace lost",
+            16: "Satan not to be believed, as he representeth Christ unto us",
+            17: "Reproof of such as sin against this merciful disposition in Christ. "
+                "Of quenching the Spirit",
+            18: "Of Christ's judgment in us, and his victory: what it is",
+            19: "Christ is so mild that yet he will govern those that enjoy "
+                "the comfort of his mildness",
+            20: "The spiritual government of Christ is joined with judgment and wisdom",
+            21: "Where true wisdom and judgment is, there Christ sets up his government",
+            22: "Christ's government is victorious",
+            23: "Means to make Grace victorious",
+            24: "All should side with Christ",
+            25: "Christ's government shall be openly victorious",
+            26: "Christ alone advanceth this government",
+            27: "Victory not to be had without fighting",
+        },
+    },
     "union-and-communion": {
         # CCEL's TOC labels the foreword "Forward" (a period typo); fix it.
         # After the bare "Title" page is dropped as front matter, the foreword
