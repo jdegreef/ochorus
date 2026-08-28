@@ -212,8 +212,10 @@ The sizes are `cqw` off the cover's own container, deliberately outside the
 
   `scroll-mt-*` is not spacing — it offsets an anchor jump for the sticky bar,
   and should track that bar's height rather than this rhythm.
-- **Page column — one width, everywhere.** Every top-level browse surface wraps
-  its content in **`.page-col`**. Do **not** give a page its own `mx-auto
+- **Page column — one width, everywhere.** Every page shell wraps its content in
+  **`.page-col`** — the browse surfaces *and* the leaf pages you reach from them
+  (a book, an author, a topic, a plan, a quotes page, a scripture chapter, the
+  notebook, settings, the error page). Do **not** give a page its own `mx-auto
   max-w-*`.
 
   > This rule replaces the old "max-w-2xl/3xl/5xl per surface" guidance, which
@@ -221,6 +223,11 @@ The sizes are `cqw` off the cover's own container, deliberately outside the
   > ended up at five different widths (Books `6xl`, Topics `5xl`, Biographies
   > `4xl`, Plans/Sermons `3xl`, Home a mix), so the content edge jumped on every
   > navigation.
+  >
+  > The leaf pages were left behind when the browse pages were converted, which
+  > put the same jump one click deeper: the stepper moved Books and then did
+  > nothing on the book you opened from it. A preference the shell advertises on
+  > every page has to act on every page.
 
   `.page-col` reads `--pw` from the **`pageWidth`** store — five steps,
   48/62/76/90/104rem, default 76rem — which the quick-settings **Page width**
@@ -228,7 +235,11 @@ The sizes are `cqw` off the cover's own container, deliberately outside the
   direction-aware so RTL doesn't shift sideways.
 
   The exceptions are genuine prose blocks, not page shells: the home hero's
-  centred text and empty-state copy keep their own narrower measure.
+  centred text and empty-state copy keep their own narrower measure, and the
+  three static prose pages (About / Contact / Legal) stay at their own reading
+  measure — they are a page of text, not a shell around content. The two reading
+  surfaces (the chapter reader and a sermon) answer to `--reading-measure`
+  instead; see below.
 - **Breakpoints:** use Tailwind's (`sm` 640, `md` 768, `lg` 1024, `xl` 1280),
   including in hand-written media queries — `max-width: 767.98px` rather than a
   bespoke 760px. The nav used to collapse at 760px while the markup above it
@@ -545,7 +556,7 @@ next parallel session:
 |---|---|
 | `colorTokens.test.ts` | raw hex outside `app.css`/admin, unless a comment says why (`hex-ok:` / `hex-ok-file:`) |
 | `typeScaleGuard.test.ts` | arbitrary `text-[…]`, literal `font-size` in markup, scoped CSS or app.css; `.text-display` outside the home hero |
-| `pageShell.test.ts` | a browse page dropping `.page-col` or `<PageHeader>` |
+| `pageShell.test.ts` | a browse or leaf page dropping `.page-col`; a browse page dropping `<PageHeader>` |
 | `rtl.test.ts` | physical utilities **and** physical CSS in `<style>` blocks |
 | `messageCatalogues.test.ts` | a locale's UI catalogue drifting from `messages/*.json` |
 | `readerDirection.test.ts` | reader surfaces losing their direction handling |

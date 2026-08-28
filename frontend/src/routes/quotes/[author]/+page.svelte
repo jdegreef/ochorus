@@ -90,7 +90,7 @@
      reason is on this page: at 48rem a quotation ran about 95 characters to
      the line, well past the 45-75 an eye tracks comfortably. Narrowing it and
      setting the quotation a step larger (below) lands at roughly 67. -->
-<div class="mx-auto max-w-2xl px-5 py-6">
+<div class="page-col px-5 py-6">
 	<Breadcrumb items={crumbs} />
 
 	<header class="mb-6">

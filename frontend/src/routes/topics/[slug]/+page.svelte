@@ -69,7 +69,7 @@
 	structuredData={[topicLd, crumbsLd]}
 />
 
-<div class="mx-auto max-w-5xl px-5 py-10" style="--topic: {meta.accent}">
+<div class="page-col px-5 py-10" style="--topic: {meta.accent}">
 	<Breadcrumb items={crumbs} />
 
 	<header class="hero mb-8 mt-4">

@@ -133,7 +133,7 @@
 	structuredData={[bookLd, crumbsLd]}
 />
 
-<div class="mx-auto max-w-3xl px-5 py-10">
+<div class="page-col px-5 py-10">
 	<Breadcrumb items={crumbs} />
 
 	<header class="mt-5 flex flex-col gap-5 sm:flex-row sm:items-start">

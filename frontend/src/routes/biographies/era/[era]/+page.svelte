@@ -91,7 +91,7 @@
 	structuredData={[peopleLd, crumbsLd]}
 />
 
-<div class="mx-auto max-w-3xl px-5 py-10">
+<div class="page-col px-5 py-10">
 	<Breadcrumb items={crumbs} />
 	<header class="mb-8">
 		<p class="eyebrow mb-2 text-accent">{t('bios.eyebrow')}</p>

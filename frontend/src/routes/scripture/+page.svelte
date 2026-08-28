@@ -45,7 +45,7 @@
 
 <Seo {title} {description} {canonical} {hreflang} structuredData={[crumbsLd]} />
 
-<div class="mx-auto max-w-4xl px-5 py-6">
+<div class="page-col px-5 py-6">
 	<Breadcrumb items={crumbs} />
 
 	<header class="mb-8">

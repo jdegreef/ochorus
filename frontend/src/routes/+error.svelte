@@ -67,7 +67,7 @@
 	<meta name="robots" content="noindex" />
 </svelte:head>
 
-<div class="mx-auto max-w-5xl px-5 pb-24">
+<div class="page-col px-5 pb-24">
 	<!-- Hero -->
 	<section class="mx-auto flex max-w-xl flex-col items-center pt-20 pb-4 text-center">
 		<p class="mb-2 font-display text-6xl leading-none text-muted/60">{status || 500}</p>

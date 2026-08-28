@@ -56,7 +56,7 @@
 	structuredData={[crumbsLd, quotesLd]}
 />
 
-<div class="mx-auto max-w-3xl px-5 py-6">
+<div class="page-col px-5 py-6">
 	<Breadcrumb items={crumbs} />
 
 	<header class="mb-8">

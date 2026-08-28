@@ -251,7 +251,7 @@
 	structuredData={[personLd, crumbsLd]}
 />
 
-<div class="mx-auto max-w-3xl px-5 py-10">
+<div class="page-col px-5 py-10">
 	<!-- Focus mode strips the page back to the life itself. Everything here is
 	     context around the biography — portrait, timeline, epigraph, shelves,
 	     contemporaries — and it is exactly what someone reading eleven minutes
