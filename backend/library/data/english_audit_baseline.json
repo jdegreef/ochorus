@@ -151,6 +151,9 @@
    "run-together": 1,
    "space-before-punct": 2
   },
+  "the-bruised-reed": {
+   "word-fusion": 2
+  },
   "the-christians-secret-of-a-happy-life-4": {
    "anachronism": 2,
    "broken-smallcaps": 1,

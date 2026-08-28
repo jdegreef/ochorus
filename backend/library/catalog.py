@@ -303,6 +303,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "died on a forced march into exile."
         ),
     ),
+    "richard-sibbes": AuthorEntry(
+        slug="richard-sibbes",
+        name="Richard Sibbes",
+        birth_year=1577,
+        death_year=1635,
+        bio=(
+            "English Puritan preacher known as \u201cthe heavenly Doctor\u201d, whose "
+            "gentleness toward struggling believers set him apart from his "
+            "sterner contemporaries."
+        ),
+    ),
     "thomas-a-kempis": AuthorEntry(
         slug="thomas-a-kempis",
         name="Thomas à Kempis",
@@ -497,6 +508,17 @@ BOOKS: list[BookEntry] = [
               "ccel", "bounds/prayingmen",
               subtitle="Nine Men of the Bible and How They Prayed",
               cover_color="#5c2a3e"),
+    # Sibbes is on neither CCEL (`ccel/sibbes` 404s) nor Gutenberg — the gap the
+    # archive source exists to close. Grosart's collected edition rather than the
+    # 1878 standalone printing: same book, half the OCR damage (0.17% suspect
+    # tokens against 0.35%), and it opens "THE prophet Isaiah being lifted up"
+    # where the standalone opens "B L For his cattingz God stykdi liMn".
+    BookEntry("the-bruised-reed", "The Bruised Reed", "richard-sibbes",
+              "archive", "completeworksofr01sibbuoft",
+              part="THE BRUISED REED AND SMOKING FLAX.",
+              part_end="THE SWORD OF THE WICKED,",
+              subtitle="And Smoking Flax",
+              cover_color="#4a6741"),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an
