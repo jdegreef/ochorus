@@ -2193,7 +2193,7 @@ class ContentSourceCoverageTests(SimpleTestCase):
         # And nothing may be in both lists: the two make opposite claims about
         # whether a change there reaches a reader.
         self.assertEqual(
-            sorted(set(exempt) & {r for r in self.roots}),
+            sorted(set(exempt) & set(self.roots)),
             [],
             "a module is both a content root and reader-exempt",
         )
