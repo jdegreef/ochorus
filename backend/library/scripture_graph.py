@@ -30,7 +30,7 @@ from functools import lru_cache
 import pythonbible as bible
 
 from .models import Chapter, ChapterCitation
-from .scripture import VERSION
+from .scripture import VERSION, reference_verse_ids
 
 #: A page needs this many DISTINCT citing chapters to exist. Measured over the
 #: English corpus (9,318 citations across 904 of 1,264 chapters): at 3+, 609
@@ -165,20 +165,31 @@ VERSE_SPAN_CAP = 25
 _SPAN_GUARD = 400
 
 
-def _tally() -> tuple[dict[int, set[int]], dict[int, set[int]]]:
-    """(verse id → citing chapter ids, BBBCCC → citing chapter ids), English only.
+def english_citation_rows():
+    """The citation rows a page may be built from: English, published."""
+    return ChapterCitation.objects.filter(
+        chapter__book__language="en", chapter__book__is_published=True
+    ).values_list("chapter_id", "start_verse_id", "end_verse_id")
 
-    One pass over the citation rows. Sets, not counters: the floor is about how
-    many DISTINCT chapters treat a passage — one book returning to a verse ten
-    times is one voice, and counting it ten times is how a single author's
-    favourite text would manufacture a page nobody else cites.
+
+def bucket(rows) -> tuple[dict[int, set[int]], dict[int, set[int]]]:
+    """(verse id → citing chapter ids, BBBCCC → citing chapter ids).
+
+    THE RULE THAT DECIDES WHAT EXISTS, in one place. `qualifying_pages` runs it
+    over the whole corpus to build the page list, and `pages_for` runs it over a
+    handful of rows to tell a chapter page which of its references may be
+    linked. Two copies of this would drift, and the drift would be silent until
+    a chapter page linked somewhere the page list never built — a 404 for the
+    reader and a dead internal link for the crawler.
+
+    Sets, not counters: the floor is about how many DISTINCT chapters treat a
+    passage — one book returning to a verse ten times is one voice, and counting
+    it ten times is how a single author's favourite text would manufacture a
+    page nobody else cites.
     """
     by_verse: dict[int, set[int]] = {}
     by_chapter: dict[int, set[int]] = {}
-    rows = ChapterCitation.objects.filter(
-        chapter__book__language="en", chapter__book__is_published=True
-    ).values_list("chapter_id", "start_verse_id", "end_verse_id")
-    for cid, start, end in rows.iterator(chunk_size=2000):
+    for cid, start, end in rows:
         end = min(end, start + _SPAN_GUARD)
         if end - start < VERSE_SPAN_CAP:
             for vid in range(start, end + 1):
@@ -186,6 +197,11 @@ def _tally() -> tuple[dict[int, set[int]], dict[int, set[int]]]:
         for vid in range(start, end + 1):
             by_chapter.setdefault(vid // 1000, set()).add(cid)
     return by_verse, by_chapter
+
+
+def _tally() -> tuple[dict[int, set[int]], dict[int, set[int]]]:
+    """`bucket` over the whole English corpus — the page list's input."""
+    return bucket(english_citation_rows().iterator(chunk_size=2000))
 
 
 def _page(bcv: int, verse: bool) -> dict | None:
@@ -235,3 +251,56 @@ def qualifying_pages() -> list[dict]:
         pages.append({**page, "citing_count": len(cids)})
     pages.sort(key=lambda p: (p["book_order"], p["chapter"], p["verse"] or 0))
     return pages
+
+
+def pages_for(refs: list[str]) -> dict[str, dict | None]:
+    """Which of ``refs`` have a scripture page, as ``{ref: page or None}``.
+
+    What the chapter page's scripture chips need: a chip may link to a page only
+    if that page was built, or it is a 404 for the reader and a dead internal
+    link for the crawler. The answer uses `bucket` — the same rule
+    `qualifying_pages` uses — so the two cannot disagree about what exists.
+
+    ONE QUERY, not one per reference. The obvious implementation asks per
+    reference, and at up to eight references across a build of 1,264 chapter
+    pages that is ten thousand queries to render a row of chips. Instead every
+    reference's Bible chapter becomes one range predicate, OR'd into a single
+    filter: the rows come back together and are bucketed in memory.
+
+    A reference resolves to its VERSE page when it names one verse that clears
+    the verse floor, otherwise to its Bible-chapter page, otherwise to nothing —
+    the same order of preference a reader would want, most specific first.
+    """
+    from django.db.models import Q
+
+    parsed: dict[str, tuple] = {}
+    keys: set[int] = set()
+    for ref in refs:
+        ids = sorted(reference_verse_ids(ref))
+        if not ids:
+            continue
+        # The Bible chapter this reference sits in. A reference spanning two
+        # chapters is keyed by its first — the page it most belongs to.
+        key = ids[0] // 1000
+        parsed[ref] = (ids, key)
+        keys.add(key)
+    if not keys:
+        return {}
+
+    span = Q()
+    for key in keys:
+        span |= Q(start_verse_id__lte=key * 1000 + 999, end_verse_id__gte=key * 1000)
+    by_verse, by_chapter = bucket(english_citation_rows().filter(span))
+
+    out: dict[str, dict | None] = {}
+    for ref, (ids, key) in parsed.items():
+        book = bible.Book(key // 1000)
+        chapter = key % 1000
+        verse = ids[0] % 1000 if len(ids) == 1 else None
+        if verse is not None and len(by_verse.get(ids[0], ())) >= VERSE_FLOOR:
+            out[ref] = {"book": book_slug(book), "chapter": chapter, "verse": verse}
+        elif len(by_chapter.get(key, ())) >= CHAPTER_FLOOR:
+            out[ref] = {"book": book_slug(book), "chapter": chapter, "verse": None}
+        else:
+            out[ref] = None
+    return out

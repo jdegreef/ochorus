@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ScripturePageRef } from '$lib/library-public';
+	import type { ScripturePageEntry } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
@@ -8,14 +8,14 @@
 
 	// English-only; see the note on the chapter page.
 	let { data } = $props();
-	const pages = $derived<ScripturePageRef[]>(data.pages);
+	const pages = $derived<ScripturePageEntry[]>(data.pages);
 
 	// Grouped into the books of the Bible, in canonical order, each carrying its
 	// chapter pages. This is what makes the graph navigable rather than a list
 	// of URLs only a crawler ever sees: from here every chapter page is one
 	// click and every verse page two.
 	const books = $derived.by(() => {
-		const by = new Map<string, { title: string; order: number; chapters: ScripturePageRef[] }>();
+		const by = new Map<string, { title: string; order: number; chapters: ScripturePageEntry[] }>();
 		for (const p of pages) {
 			if (p.verse !== null) continue;
 			let b = by.get(p.book);
