@@ -31,6 +31,7 @@ from library.admin_views import (
     AdminStatsView,
     AdminTranslationJobsView,
     AdminUsersView,
+    AdminVerseReviewView,
 )
 
 urlpatterns = [
@@ -80,6 +81,11 @@ urlpatterns = [
         "api/admin/review-queue/detail/",
         AdminReviewDetailView.as_view(),
         name="admin-review-detail",
+    ),
+    path(
+        "api/admin/review-queue/verse/",
+        AdminVerseReviewView.as_view(),
+        name="admin-review-verse",
     ),
     path(
         "api/admin/translation-jobs/",

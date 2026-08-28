@@ -1093,6 +1093,73 @@ class TranslationNote(models.Model):
         return f"{self.reference} [{self.language}] {self.status}"
 
 
+class VerseReview(models.Model):
+    """A reviewer's decision about ONE flagged scripture quotation.
+
+    `ReviewOutcome` records the same thing for a whole work, and that is the
+    granularity that made the backlog immovable: 187 translations are
+    `ai_unreviewed` and none is approved, because approving one means answering
+    "is this 35-chapter book right, yes or no" with no way to work the specific
+    lines. `TranslationNote` already says WHICH lines — a verse the translator
+    rendered itself, rather than recovered verbatim from our corpus, is the
+    actual review task — but nothing could record that a reviewer had settled
+    one, so the list was read-only advice.
+
+    A SEPARATE TABLE, and not a field on `TranslationNote`, for a reason that is
+    not stylistic: `seed_translation_notes` re-seeds by `delete()` then
+    `bulk_create()`, so a decision stored there would not merely be walked back
+    on the next deploy — it would be destroyed. Keyed by the same natural key so
+    the two join at read time, and the notes can be rebuilt from the repo as
+    often as the pipeline likes without touching a human judgement.
+
+    Keyed per TRANSLATION — (kind, slug, language, reference) — not per
+    (language, reference) across the corpus. #972 proposed the latter, on the
+    grounds that one verse is re-flagged in every book so one decision should
+    settle them all. The shipped notes do not bear that out: 1,570 flagged
+    quotations span 1,517 distinct (language, reference) pairs and only 48 pairs
+    recur at all, so grouping would collapse 3% of the work — and a rendering
+    right in one book can still be wrong in another.
+
+    Nor is it keyed per SITE, which would be the ideal: 33 rows across three
+    files flag the same reference twice in one work at genuinely different
+    blocks (`the-way-to-god.pt` quotes Ephesians 3:19b at block 0 and again at
+    block 22), and one decision covers both. There is no key that would separate
+    them — 984 of the 1,570 flagged notes carry no `block_index` at all, so for
+    two thirds of the corpus the site is simply not recorded. The reviewer is
+    shown each occurrence and its wording, so nothing is hidden; the judgement
+    is one per verse per translation, and the counts are computed over DISTINCT
+    references so a work can actually reach "settled".
+    """
+
+    class Outcome(models.TextChoices):
+        APPROVED = "approved", "Rendering is right"
+        NEEDS_WORK = "needs_work", "Needs work"
+
+    kind = models.CharField(max_length=10, choices=ReviewOutcome.Kind.choices)
+    slug = models.SlugField(max_length=200)
+    language = models.CharField(max_length=10)
+    reference = models.CharField(max_length=64)
+    outcome = models.CharField(max_length=12, choices=Outcome.choices)
+    note = models.TextField(blank=True)
+    reviewer = models.EmailField(blank=True)
+    decided_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["kind", "slug", "language", "reference"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["kind", "slug", "language", "reference"],
+                name="uniq_verse_review",
+            ),
+        ]
+        # The review screen asks "which of THIS translation's verses are
+        # settled", once per item it lists.
+        indexes = [models.Index(fields=["kind", "slug", "language"])]
+
+    def __str__(self) -> str:
+        return f"{self.reference} [{self.language}] {self.outcome}"
+
+
 class AdminAction(models.Model):
     """Who changed what, from the admin dashboard.
 

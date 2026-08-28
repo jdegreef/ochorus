@@ -27,7 +27,12 @@ from .languages import (
     AdminLanguageSettingsView,
     AdminLanguageThresholdsView,
 )
-from .quality import AdminAuditView, AdminReviewDetailView, AdminReviewQueueView
+from .quality import (
+    AdminAuditView,
+    AdminReviewDetailView,
+    AdminReviewQueueView,
+    AdminVerseReviewView,
+)
 
 __all__ = [
     "AdminActivityView",
@@ -47,6 +52,7 @@ __all__ = [
     "AdminLanguageThresholdsView",
     "AdminReviewDetailView",
     "AdminReviewQueueView",
+    "AdminVerseReviewView",
     "AdminStatsView",
     "AdminTranslationJobsView",
     "AdminUsersView",
