@@ -211,6 +211,47 @@ CURATED: dict[str, Artwork] = {
 }
 
 
+# ── Curated artwork used as a GROUND, not as the cover ────────────────────────
+#
+# Fetched exactly like ``CURATED`` above, pointed exactly like
+# ``designed_covers.DERIVED_GROUND``. That sentence is the whole tier.
+#
+# WHY IT HAS TO EXIST. A work with a hand-made English cover and translations
+# needs a wordless ground for those translations to wear, and ``DERIVED_GROUND``
+# makes one by cropping the English cover's own photography. That works when
+# there IS photography to cut — sixteen times it did. It cannot work when the
+# designed cover has no picture in it that survives losing its words:
+#
+#   * ``the-inner-chamber`` is a stone doorway around a black void. Every crop
+#     is either the void — an empty dark rectangle — or the lintel where the
+#     byline sits.
+#   * ``prayer-the-pulse-of-life`` is brown bokeh behind an ECG line. The line
+#     IS the design and it sits where the title goes; what is left is a blur,
+#     and a crop of a blur is a blur.
+#
+# The three ways out are: crop anyway and ship a wash (what those two do
+# today); move the work to ``CURATED``, which points EVERY edition at the
+# painting and so retires the hand-made English cover; or this — give the
+# translations a real painting and leave English alone. Only the third keeps
+# both halves, which is why it is worth a third table rather than a flag on one
+# of the other two.
+#
+# WHY NOT A FLAG. ``Ground`` is a crop recipe: four numbers and the digest of
+# the cover they were cut from, policed by a gate that re-reads that digest. An
+# ``Artwork`` is a museum object id and a licence receipt. Nothing about one is
+# a special case of the other, and the registries stay separate for the reason
+# the header above gives for ``CURATED`` and ``DERIVED_GROUND`` — one carries a
+# collection's licence receipt and the other must never be mistaken for it.
+#
+# ART DIRECTION is the same as ``CURATED``: landscape, architecture, sky, water,
+# path; no figurative devotional painting. A ground has the title drawn over it
+# in every language, so it also has to survive being the BACKGROUND of type in
+# a script it was not chosen for — which is the one extra thing asked of this
+# tier over the other, and the reason `tune_art_scrim.py` measures these files
+# alongside the rest.
+CURATED_GROUND: dict[str, Artwork] = {}
+
+
 def credit(slug: str) -> str | None:
     """One-line attribution for a curated cover, or None if it has no art.
 
@@ -219,8 +260,20 @@ def credit(slug: str) -> str | None:
     manifest typo should cost a credit line, not turn a public book page into a
     500. `test_every_entry_records_its_provenance_and_reason` is what actually
     stops such an entry, before it is ever deployed; this is the floor under it.
+
+    BOTH curated tiers are credited. A painting used as a ground is the same
+    museum object under the same licence, shown to the same reader — a credit
+    line that skipped it would drop the attribution for exactly the editions
+    that are showing the painting.
+
+    That this returns a credit for the ENGLISH edition of a ``CURATED_GROUND``
+    work too, which wears its hand-made cover rather than the painting, is
+    already handled where it matters: the serializer asks only for editions
+    whose ``cover_url`` is under ``/covers/art/``. Keying on the cover an
+    edition actually wears rather than on the manifest is its rule, not a
+    special case for this tier.
     """
-    a = CURATED.get(slug)
+    a = CURATED.get(slug) or CURATED_GROUND.get(slug)
     source = SOURCES.get(a.source) if a else None
     if not a or source is None:
         return None
