@@ -282,10 +282,23 @@ class AdminReviewQueueView(AdminAudited, APIView):
             k = (n.kind, n.slug, n.language)
             e = out.setdefault(
                 k,
-                {"mined": 0, "self_rendered": 0, "references": [], "job": None, "pr": None},
+                {
+                    "mined": 0,
+                    "self_rendered": 0,
+                    "references": [],
+                    "job": None,
+                    "pr": None,
+                    "_seen": set(),
+                },
             )
             if n.status == TranslationNote.Status.SELF_RENDERED:
-                e["self_rendered"] += 1
+                # DISTINCT references, not rows. A decision is keyed by
+                # reference, so counting rows makes a target `settled` can never
+                # reach: `the-way-to-god.pt` flags 267 rows over 248 references,
+                # and 19 of them would stay forever outstanding.
+                if n.reference not in e["_seen"]:
+                    e["_seen"].add(n.reference)
+                    e["self_rendered"] += 1
                 e["references"].append(
                     {
                         "reference": n.reference,
@@ -297,19 +310,32 @@ class AdminReviewQueueView(AdminAudited, APIView):
                 e["mined"] += 1
             e["job"] = e["job"] or n.job_issue
             e["pr"] = e["pr"] or n.pull_request
+        for e in out.values():
+            del e["_seen"]
         return out
 
     @staticmethod
     def _settled_counts() -> dict:
-        """(kind, slug, language) -> how many of its verses carry a decision.
+        """(kind, slug, language) -> how many of its FLAGGED verses are settled.
 
-        One query for the whole page, not one per row: the queue lists 25 items
-        and this table is small enough to aggregate in the database.
+        Counted against the same set the denominator uses — the self-rendered
+        references — rather than every `VerseReview` row. The two can diverge:
+        a decision survives a notes re-seed by design, so a verse that has since
+        been re-classified as mined, or dropped from the work altogether, would
+        otherwise still be counted and the row would read "14 of 12".
         """
-        rows = VerseReview.objects.values("kind", "slug", "language").annotate(
-            n=Count("id")
-        )
-        return {(r["kind"], r["slug"], r["language"]): r["n"] for r in rows}
+        flagged = {
+            (n["kind"], n["slug"], n["language"], n["reference"])
+            for n in TranslationNote.objects.filter(
+                status=TranslationNote.Status.SELF_RENDERED
+            ).values("kind", "slug", "language", "reference")
+        }
+        out: dict = {}
+        for v in VerseReview.objects.values("kind", "slug", "language", "reference"):
+            k = (v["kind"], v["slug"], v["language"])
+            if (*k, v["reference"]) in flagged:
+                out[k] = out.get(k, 0) + 1
+        return out
 
     @staticmethod
     def _provenance(note: dict | None) -> dict | None:
@@ -620,6 +646,17 @@ class AdminReviewDetailView(APIView):
         `seed_translation_notes` re-seeds by delete-then-create, so a decision
         held on the note itself would be destroyed on the next deploy.
         """
+        rows = list(
+            TranslationNote.objects.filter(
+                kind=kind, slug=slug, language=language
+            ).values("reference", "status", "block_index", "source_file")
+        )
+        # Most works carry no notes at all, and splitting a 36-chapter book into
+        # blocks to hand back an empty list is megabytes of parsing per panel
+        # open and per chapter click.
+        if not rows:
+            return []
+
         if kind == "book":
             bodies = Chapter.objects.filter(
                 book__slug=slug, book__language=language
@@ -643,9 +680,7 @@ class AdminReviewDetailView(APIView):
             ).values("reference", "outcome", "note", "reviewer", "decided_at")
         }
         out = []
-        for n in TranslationNote.objects.filter(
-            kind=kind, slug=slug, language=language
-        ).values("reference", "status", "block_index", "source_file"):
+        for n in rows:
             i = n["block_index"]
             inside = i is not None and 0 <= i < len(blocks)
             out.append(
@@ -715,13 +750,18 @@ class AdminVerseReviewView(AdminAudited, APIView):
     permission_classes = [IsAdminEmail]
 
     def audit_action_for(self, request):
-        return AdminAction.Action.REVIEW_DECIDE
+        return (
+            AdminAction.Action.REVIEW_UNDO
+            if request.method == "DELETE"
+            else AdminAction.Action.REVIEW_DECIDE
+        )
 
     def audit_entry(self, request, response):
         d = response.data
-        return f"{d['kind']}:{d['slug']}:{d['language']}:{d['reference']}", {
-            "outcome": d["outcome"]
-        }
+        target = f"{d['kind']}:{d['slug']}:{d['language']}:{d['reference']}"
+        if request.method == "DELETE":
+            return target, {}
+        return target, {"outcome": d["outcome"]}
 
     def post(self, request):
         data = request.data or {}
@@ -745,7 +785,11 @@ class AdminVerseReviewView(AdminAudited, APIView):
         # in the work, and the settled count could exceed the count of things
         # needing settling — a progress bar that reads 14 of 12.
         if not TranslationNote.objects.filter(
-            kind=kind, slug=slug, language=language, reference=reference
+            kind=kind,
+            slug=slug,
+            language=language,
+            reference=reference,
+            status=TranslationNote.Status.SELF_RENDERED,
         ).exists():
             return Response(
                 {"detail": "No such flagged verse in that translation."}, status=404

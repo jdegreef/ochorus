@@ -48,11 +48,16 @@
 
 	async function settleVerse(reference: string, outcome: VerseOutcome | null) {
 		if (!detail) return;
+		// Pin the panel this decision belongs to. `detail` is replaced wholesale
+		// when the reviewer changes chapter or opens another item, so re-reading
+		// it after the await either throws on null — reporting a failure for a
+		// decision that saved — or patches the wrong translation's note.
+		const opened = detail;
 		const t = { kind: detail.kind, slug: detail.slug, language: detail.language };
 		// Whether it was ALREADY settled decides the delta. Re-deciding an
 		// approved verse as needs_work is a change of mind, not a second unit of
 		// progress, and counting it again reads "13 of 12".
-		const wasSettled = !!detail.notes.find((n) => n.reference === reference)?.review;
+		const wasSettled = !!opened.notes.find((n) => n.reference === reference)?.review;
 		verseBusy[reference] = true;
 		verseError = null;
 		try {
@@ -62,10 +67,12 @@
 			// Patch in place rather than refetching: the panel holds a whole
 			// chapter of both editions, and re-reading it to change one chip
 			// would throw the reviewer's scroll position away mid-pass.
-			detail = {
-				...detail,
-				notes: detail.notes.map((n) => (n.reference === reference ? { ...n, review } : n))
-			};
+			if (detail === opened) {
+				detail = {
+					...opened,
+					notes: opened.notes.map((n) => (n.reference === reference ? { ...n, review } : n))
+				};
+			}
 			// Keep the row's "n of m settled" honest without a queue refetch.
 			// `queue.data` is $state, so its rows are the same proxied objects the
 			// list renders — mutating one updates the chip in place.
@@ -413,9 +420,20 @@
 													{KIND_LABEL[i.kind]}
 												</span>
 												{#if i.flagged}
-													<span class="text-small font-semibold text-warning">
-														{i.notes.self_rendered} verse{i.notes.self_rendered === 1 ? '' : 's'}
-														unverified
+													<span
+														class={i.notes.settled >= i.notes.self_rendered
+															? 'text-small font-semibold'
+															: 'text-small font-semibold text-warning'}
+													>
+														{#if i.notes.settled}
+															{i.notes.settled} of {i.notes.self_rendered} verse{i.notes
+																.self_rendered === 1
+																? ''
+																: 's'} settled
+														{:else}
+															{i.notes.self_rendered} verse{i.notes.self_rendered === 1 ? '' : 's'}
+															unverified
+														{/if}
 													</span>
 												{:else if !i.notes_recorded}
 													<span class="text-small text-muted">no scripture notes recorded</span>

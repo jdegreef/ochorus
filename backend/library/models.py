@@ -1112,15 +1112,23 @@ class VerseReview(models.Model):
     the two join at read time, and the notes can be rebuilt from the repo as
     often as the pipeline likes without touching a human judgement.
 
-    Keyed per SITE — (kind, slug, language, reference) — rather than per
+    Keyed per TRANSLATION — (kind, slug, language, reference) — not per
     (language, reference) across the corpus. #972 proposed the latter, on the
     grounds that one verse is re-flagged in every book so one decision should
     settle them all. The shipped notes do not bear that out: 1,570 flagged
-    quotations span 1,517 distinct (language, reference) pairs, and only 48
-    pairs recur at all. Grouping would collapse 3% of the work, and a rendering
-    that is right in one book can still be wrong in another — so the decision
-    belongs to the site, and the recurrence is surfaced as a hint rather than
-    built into the key.
+    quotations span 1,517 distinct (language, reference) pairs and only 48 pairs
+    recur at all, so grouping would collapse 3% of the work — and a rendering
+    right in one book can still be wrong in another.
+
+    Nor is it keyed per SITE, which would be the ideal: 33 rows across three
+    files flag the same reference twice in one work at genuinely different
+    blocks (`the-way-to-god.pt` quotes Ephesians 3:19b at block 0 and again at
+    block 22), and one decision covers both. There is no key that would separate
+    them — 984 of the 1,570 flagged notes carry no `block_index` at all, so for
+    two thirds of the corpus the site is simply not recorded. The reviewer is
+    shown each occurrence and its wording, so nothing is hidden; the judgement
+    is one per verse per translation, and the counts are computed over DISTINCT
+    references so a work can actually reach "settled".
     """
 
     class Outcome(models.TextChoices):

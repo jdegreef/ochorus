@@ -14,6 +14,7 @@ from django.urls import reverse
 from rest_framework.test import APIClient
 
 from .models import (
+    AdminAction,
     Author,
     Book,
     Chapter,
@@ -65,6 +66,10 @@ class VerseReviewTests(TestCase):
             username="a", email="admin@example.com", password="x"
         )
         self.client.force_login(self.admin)
+
+    def _row(self) -> dict:
+        rows = self.client.get(self.queue_url).json()["results"]
+        return next(r for r in rows if r["kind"] == "book" and r["language"] == "sw")
 
     def _decide(self, **over):
         payload = {
@@ -159,15 +164,12 @@ class VerseReviewTests(TestCase):
         self.assertIsNone(mined["review"])
 
     def test_the_queue_reports_progress(self):
-        rows = self.client.get(self.queue_url).json()["results"]
-        row = next(r for r in rows if r["kind"] == "book" and r["language"] == "sw")
+        row = self._row()
         self.assertEqual(row["notes"]["self_rendered"], 1)
         self.assertEqual(row["notes"]["settled"], 0)
 
         self._decide()
-        rows = self.client.get(self.queue_url).json()["results"]
-        row = next(r for r in rows if r["kind"] == "book" and r["language"] == "sw")
-        self.assertEqual(row["notes"]["settled"], 1)
+        self.assertEqual(self._row()["notes"]["settled"], 1)
 
     def test_a_decision_names_its_reviewer(self):
         """Attribution is the point of recording a decision at all.
@@ -184,6 +186,66 @@ class VerseReviewTests(TestCase):
         }, format="json")
         self.assertEqual(res.status_code, 200)
         self.assertEqual(VerseReview.objects.get().reviewer, "admin@example.com")
+
+    # ---- the counts have to be able to reach each other ----------------------
+
+    def test_a_mined_verse_cannot_be_settled(self):
+        """Only a self-rendered verse is review WORK. Settling a mined one would
+        push `settled` past the count of things needing settling."""
+        res = self._decide(reference="John 3:16")
+        self.assertEqual(res.status_code, 404)
+        self.assertFalse(VerseReview.objects.exists())
+
+    def test_a_reference_flagged_twice_counts_once(self):
+        """`the-way-to-god.pt` flags 267 rows over 248 references. Counting rows
+        sets a target `settled` can never reach, because one decision is keyed by
+        reference and covers both occurrences."""
+        TranslationNote.objects.create(
+            kind="book", slug="waiting", language="sw",
+            reference="Psalm 62:5", status=TranslationNote.Status.SELF_RENDERED,
+            block_index=1,
+        )
+        row = self._row()
+        self.assertEqual(row["notes"]["self_rendered"], 1, "distinct references")
+
+        self._decide()
+        self.assertEqual(self._row()["notes"]["settled"], 1, "and it can be reached")
+
+    def test_a_decision_left_behind_by_a_re_seed_is_not_counted(self):
+        """Decisions outlive the notes on purpose. One whose verse is no longer
+        flagged must stop counting, or the row reads "1 of 0"."""
+        self._decide()
+        TranslationNote.objects.filter(reference="Psalm 62:5").update(
+            status=TranslationNote.Status.MINED
+        )
+        row = self._row()
+        self.assertEqual(row["notes"]["self_rendered"], 0)
+        self.assertEqual(row["notes"]["settled"], 0)
+
+    def test_a_work_with_no_notes_reads_no_bodies(self):
+        """The panel splits every chapter to resolve a note's wording. Most works
+        have no notes, and parsing a 36-chapter book to hand back an empty list
+        is megabytes per panel open."""
+        TranslationNote.objects.filter(slug="waiting").delete()
+        with self.assertNumQueries(4):
+            data = self.client.get(
+                self.detail_url, {"kind": "book", "slug": "waiting", "language": "sw"}
+            ).json()
+        self.assertEqual(data["notes"], [])
+
+    def test_an_undo_is_audited_as_an_undo(self):
+        """One table answers "what has been done in the admin". A verse undo
+        logged as a decision — with no outcome — makes that table lie."""
+        self._decide()
+        self.client.delete(
+            f"{self.url}?kind=book&slug=waiting&language=sw&reference=Psalm+62:5"
+        )
+        actions = list(
+            AdminAction.objects.order_by("id").values_list("action", flat=True)
+        )
+        self.assertEqual(
+            actions, [AdminAction.Action.REVIEW_DECIDE, AdminAction.Action.REVIEW_UNDO]
+        )
 
     # ---- the reason this is a separate table ---------------------------------
 
