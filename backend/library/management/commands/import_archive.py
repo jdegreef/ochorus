@@ -49,8 +49,27 @@ _PD_LICENCE = re.compile(r"creativecommons\.org/publicdomain|/mark/1\.0|/zero/1\
 # bruised" with the title on the same line after a dash (Sibbes' Bruised Reed).
 # A book that numbers chapters in words or digits will still need this revisited.
 _CHAPTER = re.compile(
-    r"^\s*chap(?:ter)?\.?\s+([IVXLC]+)\.?\s*(?:[\u2014\u2013-]\s*(.*))?$", re.I
+    # Tolerant in two places, because both halves of a marker get mis-scanned:
+    #   the WORD  — "CHAPTEE" (Clarke), "CHAPTEB" (Grosart), plain "Chap."
+    #   the NUMERAL — "YI" for VI, where the scanner read V as Y
+    # The bracket is Grosart's: a collected-works volume marks its editorial
+    # divisions "[CHAPTER XXIV. — All should side with Christ.]". Both halves
+    # are still validated below — `_roman` rejects anything that is not a
+    # well-formed numeral once the known confusions are undone.
+    r"^\s*\[?\s*chap\w*\.?\s+([IVXLCYil|]+)\.?\s*(?:[\u2014\u2013-]\s*(.*?))?\s*\]?$", re.I
 )
+#: A bracketed marker whose OPENING was eaten by the scanner. Grosart's chapter
+#: VIII survives only as "B VIII. — Tenderness required in ministers toward
+#: young beginners.]" — the tail of "[CHAPTEB". Losing it merges two chapters
+#: silently, so the closing bracket plus a dash plus a well-formed numeral is
+#: taken as enough evidence. The junk prefix is capped so this cannot reach
+#: into prose, and the numeral is still validated by `_roman`.
+_CHAPTER_SALVAGE = re.compile(
+    r"^.{0,12}?\b([IVXLCYil|]+)\.\s*[\u2014\u2013-]\s*(.+?)\s*\]$", re.I
+)
+
+#: Letter-for-letter confusions a page scanner makes inside a roman numeral.
+_NUMERAL_OCR = str.maketrans({"Y": "V", "y": "v", "l": "I", "|": "I"})
 _ROMAN = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100}
 _BARE_NUM = re.compile(r"^\s*\d{1,4}\s*$")
 _HYPHEN_EOL = re.compile(r"([A-Za-z])-$")
@@ -58,6 +77,17 @@ _HYPHEN_SPACE = re.compile(r"([a-z])-\s+([a-z])")  # OCR split a compound: "fift
 _WS = re.compile(r"\s+")
 _DIGIT = re.compile(r"\d")
 _NON_LETTER = re.compile(r"[^A-Za-z]")
+#: How far below a work's title its first chapter may sit and still count as
+#: that title's text (rather than a half-title page or a running header).
+_PART_HEADING_GAP = 30
+#: How many lines a bracketed chapter heading may wrap onto before we stop
+#: looking for its closing bracket.
+_HEADING_WRAP = 4
+
+
+def _norm_heading(text: str) -> str:
+    """Compare headings ignoring case, punctuation and OCR's doubled spaces."""
+    return _WS.sub(" ", re.sub(r"[^A-Za-z0-9 ]", " ", text)).strip().lower()
 
 
 def _is_header(line: str) -> bool:
@@ -98,7 +128,7 @@ def _roman(numeral: str) -> int | None:
     contents list starting over, so 16 of Sibbes' 26 chapters were discarded.
     Re-rendering and comparing rejects the mangled numeral instead.
     """
-    numeral = numeral.upper()
+    numeral = numeral.translate(_NUMERAL_OCR).upper()
     total = prev = 0
     for ch in reversed(numeral):
         if ch not in _ROMAN:
@@ -161,6 +191,56 @@ def contents_titles(lines: list[str], markers: list[tuple[int, str, str]]) -> di
         if text and len(text) <= 90:
             titles[value] = clean_title(text)
     return titles
+
+
+def _find_part_start(lines: list[str], markers: list[tuple[int, str, str]], part: str) -> int:
+    """The line where the work named by ``part`` begins inside a volume.
+
+    A collected-works scan prints the work's title more than once — a half-title
+    page, then the title again over the opening text, then as a running header
+    on every page after. The one that matters is the one the chapters start
+    under, so pick the occurrence with a chapter marker just below it. In
+    Grosart's Sibbes that is line 10270 (chapter I at 10277) and not the
+    half-title 370 lines earlier.
+    """
+    wanted = _norm_heading(part)
+    first_markers = {m[0] for m in markers}
+    best = -1
+    for i, line in enumerate(lines):
+        if _norm_heading(line) != wanted:
+            continue
+        if any(j in first_markers for j in range(i + 1, i + 1 + _PART_HEADING_GAP)):
+            best = i
+    return best
+
+
+def _find_heading(lines: list[str], heading: str, *, after: int) -> int | None:
+    """The first line after ``after`` whose text is ``heading``."""
+    wanted = _norm_heading(heading)
+    for i in range(after + 1, len(lines)):
+        if _norm_heading(lines[i]) == wanted:
+            return i
+    return None
+
+
+def markers_in_part(
+    markers: list[tuple[int, str, str]], start: int, end: int | None = None
+) -> list[tuple[int, str, str]]:
+    """The chapter markers belonging to one work.
+
+    ``end`` is the line where the next work's heading appears, and is the
+    reliable boundary. Falling back to "the next work numbers from I again"
+    works only while every marker survives the scan: Grosart's Sibbes loses
+    XXVI and XXVII, so without an end the Bruised Reed ran on through The
+    Soul's Conflict and finished with a 93,000-word chapter.
+    """
+    run = [m for m in markers if m[0] > start and (end is None or m[0] < end)]
+    if end is not None:
+        return run
+    for i, (_, numeral, _) in enumerate(run[1:], start=1):
+        if _roman(numeral) == 1:
+            return run[:i]
+    return run
 
 
 def better_title(body: str, contents: str, *, body_was_inline: bool) -> str:
@@ -309,20 +389,62 @@ def _reflow(lines: list[str]) -> str:
     return "".join(f"<p>{p}</p>" for p in paras)
 
 
-def chapterize(text: str) -> list[tuple[str, str]]:
-    """Split the OCR text into (title, body_html) at each CHAPTER marker."""
+def chapterize(text: str, part: str = "", part_end: str = "") -> list[tuple[str, str]]:
+    """Split the OCR text into (title, body_html) at each CHAPTER marker.
+
+    ``part`` narrows the split to ONE work inside a collected-works volume,
+    named by the heading it is printed under. Sibbes, Owen, Manton and Charnock
+    are all mainly available that way, and the collected editions are far
+    better-produced scans than the standalone printings — Grosart's Sibbes
+    prints "All should side with Christ" where the 1878 standalone OCRs it as
+    "^// should side with Christ".
+    """
     lines = text.split("\n")
     markers: list[tuple[int, str, str]] = []
     for i, line in enumerate(lines):
-        m = _CHAPTER.match(line.strip())
-        if m:
-            markers.append((i, m.group(1), (m.group(2) or "").strip()))
-    markers, contents = split_contents_run(markers)
+        stripped = line.strip()
+        m = _CHAPTER.match(stripped) or _CHAPTER_SALVAGE.match(stripped)
+        if m and _roman(m.group(1)) is not None:
+            # A bracketed heading that has not closed by the end of its line
+            # continues onto the next: "[CHAPTER I. — The Text opened and
+            # divided. What the Reed is, and what" / "the Bruising.]". Take the
+            # rest of it, or it reads as the chapter's opening words.
+            title = (m.group(2) or "").strip()
+            spans = 0
+            if stripped.startswith("[") and not stripped.endswith("]"):
+                for j in range(i + 1, min(i + 1 + _HEADING_WRAP, len(lines))):
+                    nxt = lines[j].strip()
+                    # A page break can fall inside the heading, so a blank line
+                    # does not end it — chapters I, IX and XXI all wrap across
+                    # one. The closing bracket is what ends it.
+                    if not nxt:
+                        continue
+                    if _CHAPTER.match(nxt) or _CHAPTER_SALVAGE.match(nxt):
+                        break
+                    title = f"{title} {nxt.rstrip(']')}".strip()
+                    spans = j - i
+                    if nxt.endswith("]"):
+                        break
+            markers.append((i + spans, m.group(1), _WS.sub(" ", title).strip()))
+    if part:
+        # Scope to one work first: a volume's other treatises have their own
+        # chapter I, which the contents-run rule below would read as a restart.
+        start = _find_part_start(lines, markers, part)
+        if start < 0:
+            raise CommandError(f"part {part!r} is not a heading in this item")
+        end = _find_heading(lines, part_end, after=start) if part_end else None
+        if part_end and end is None:
+            raise CommandError(f"part_end {part_end!r} is not a heading after {part!r}")
+        markers, contents = markers_in_part(markers, start, end), []
+        part_limit = end
+    else:
+        markers, contents = split_contents_run(markers)
+        part_limit = None
     from_contents = contents_titles(lines, contents)
 
     sections: list[tuple[str, str]] = []
     for n, (start, numeral, inline_title) in enumerate(markers):
-        end = markers[n + 1][0] if n + 1 < len(markers) else len(lines)
+        end = markers[n + 1][0] if n + 1 < len(markers) else (part_limit or len(lines))
         block = lines[start + 1 : end]
         if inline_title:
             # "Chap. IV. — Signs of one truly bruised": the title is on the
@@ -426,7 +548,7 @@ class Command(BaseCommand):
             return
         sections = [
             (t, b)
-            for t, b in chapterize(text)
+            for t, b in chapterize(text, entry.part, entry.part_end)
             if not is_front_matter(t) and word_count(b) >= 120
         ]
         if not sections:

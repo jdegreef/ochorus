@@ -82,6 +82,10 @@
    "hyphen-space": 1,
    "space-before-punct": 4
   },
+  "necessity-of-prayer": {
+   "space-before-punct": 4,
+   "word-fusion": 1
+  },
   "on-the-incarnation": {
    "space-before-punct": 2
   },
@@ -102,6 +106,9 @@
   "power-through-prayer": {
    "space-before-punct": 2,
    "word-fusion": 1
+  },
+  "prayer-and-praying-men": {
+   "anachronism": 1
   },
   "prayer-the-pulse-of-life": {
    "hyphen-space": 1,
@@ -150,6 +157,9 @@
   "the-body-of-christ-a-reality": {
    "run-together": 1,
    "space-before-punct": 2
+  },
+  "the-bruised-reed": {
+   "word-fusion": 2
   },
   "the-christians-secret-of-a-happy-life-4": {
    "anachronism": 2,

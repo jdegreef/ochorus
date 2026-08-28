@@ -26,6 +26,28 @@
     "library/plan_seed.py",
     "library/corrections.py",
     "library/quote_seed.py",
-    "library/curated_art.py"
-  ]
+    "library/curated_art.py",
+    "library/scripture.py",
+    "library/scripture_graph.py",
+    "library/readability.py",
+    "library/serializers.py"
+  ],
+  "_reader_exempt_note": [
+    "Modules the serializers import that carry NO reader prose, so a change to",
+    "them cannot stale a prerendered page. Every module reachable from",
+    "library/serializers.py must be either a root above or listed here with a",
+    "reason — ContentSourceCoverageTests enforces it, so a NEW content-bearing",
+    "module cannot join the graph unclassified. That is the hole this closes:",
+    "curated_art.py reached the serializers on 2026-08-22 and was declared",
+    "nowhere, and #1150 prerendered six pages with no artwork credit."
+  ],
+  "reader_exempt": {
+    "library/models.py": "Schema and queries. The prose is ROWS, shipped as fixtures; the only computed properties are chapter_count and is_live, both counts. Every commit here in the last 300 was an index or a query shape.",
+    "library/fts.py": "Search vectors. Search is a runtime query against the API — no static page bakes a result.",
+    "library/text.py": "HTML to plain text for Chapter.body_text, which feeds search rather than any rendered page.",
+    "library/translation.py": "The translate pipeline. What it produces ships as fixture rows under library/fixtures/content, which is already a root.",
+    "library/contemporize.py": "The modern-English pipeline. The serializers take only its MODERN_LANGUAGE key; the prose itself ships as fixture rows.",
+    "library/localization.py": "Resolves which language a request asked for. Routing, not prose.",
+    "library/languages.py": "The Language registry accessor. The registry's DATA is DB-owned (an admin can add a language without a deploy) and seeded from language_seed.py; which locales are live reaches the build through fetch-live-locales.mjs, not through this digest."
+  }
 }

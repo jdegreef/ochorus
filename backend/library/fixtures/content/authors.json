@@ -809,5 +809,24 @@
         "https://www.wikidata.org/wiki/Q4018797"
       ]
     }
+  },
+  {
+    "model": "library.author",
+    "fields": {
+      "slug": "richard-sibbes",
+      "name": "Richard Sibbes",
+      "bio": "Richard Sibbes (1577–1635) was an English Puritan preacher known in his own day as “the heavenly Doctor”. Where much Puritan preaching pressed hard on the conscience, Sibbes was famous for gentleness toward people who had already given up on themselves; his best-known book takes its title from Isaiah's promise that the bruised reed will not be broken. He preached at Gray's Inn in London and was master of St Catharine's Hall, Cambridge, and his warmth shaped the writers who came after him, Richard Baxter among them.",
+      "bio_html": "",
+      "photo_url": "",
+      "birth_year": 1577,
+      "death_year": 1635,
+      "original_language": "en",
+      "is_imprint": false,
+      "created_at": "2026-08-28T00:00:00.000Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Richard_Sibbes",
+        "https://www.wikidata.org/wiki/Q3431220"
+      ]
+    }
   }
 ]

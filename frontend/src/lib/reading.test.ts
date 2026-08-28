@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { bookProgressPercent, contentLang, minutesLeft, readingMinutes, readingTime } from './reading';
+import {
+	bookProgressPercent,
+	chapterLabel,
+	contentLang,
+	minutesLeft,
+	readingMinutes,
+	readingTime
+} from './reading';
 
 describe('readingMinutes', () => {
 	it('never returns less than one minute', () => {
@@ -82,5 +89,24 @@ describe('contentLang', () => {
 		// en-modern is our own edition marker, not a subtag a browser can
 		// hyphenate against; a Modern English edition hyphenates as English.
 		expect(contentLang('en-modern')).toBe('en');
+	});
+});
+
+describe('chapterLabel', () => {
+	it('numbers a titled chapter', () => {
+		expect(chapterLabel(3, 'The Letter Killeth')).toBe('3. The Letter Killeth');
+	});
+
+	it('names an untitled chapter instead of leaving a dangling number', () => {
+		// Bounds's Purpose in Prayer is thirteen untitled chapters. The number
+		// moves INSIDE the label, so it can never read "1. Chapter 1".
+		const label = chapterLabel(1, '');
+		expect(label).toMatch(/1$/);
+		expect(label).not.toMatch(/^1\./);
+	});
+
+	it('treats null and undefined as untitled', () => {
+		expect(chapterLabel(2, null)).toBe(chapterLabel(2, ''));
+		expect(chapterLabel(2, undefined)).toBe(chapterLabel(2, ''));
 	});
 });

@@ -25,6 +25,7 @@ from django.utils.text import slugify
 from . import qa
 from .covers import ink_safe
 from .ingest import (
+    chapter_title,
     clean_fragment,
     clean_title,
     is_front_matter,
@@ -295,7 +296,10 @@ def create_book(
         Chapter.objects.create(
             book=book,
             order=order,
-            title=(clean_title(ch.get("title") or "") or f"Chapter {order}")[:300],
+            # Untitled stays untitled, and a counter-only title is untitled —
+            # same rule as `upsert_book`, so a heading imports to the same
+            # stored title whichever path brought it in. The reader names it.
+            title=chapter_title(ch.get("title") or "")[:300],
             body_html=body,
             word_count=words,
         )

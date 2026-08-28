@@ -20,6 +20,7 @@
 	import QuickSettings from '$lib/components/QuickSettings.svelte';
 	import { MEASURE } from '$lib/readerPrefs.svelte';
 	import { pageWidth } from '$lib/pageWidth.svelte';
+	import { isReaderRoute } from '$lib/readerRoutes';
 	import CommandPalette from '$lib/components/CommandPalette.svelte';
 	import PwaToasts from '$lib/components/PwaToasts.svelte';
 	import Icon from '$lib/components/Icon.svelte';
@@ -87,9 +88,7 @@
 	let navEl = $state<HTMLElement>();
 
 	/** Reading surfaces pin their OWN bar to the top; see .appnav-static. */
-	const inReader = $derived(
-		$page.route.id === '/books/[slug]/[order]' || $page.route.id === '/sermons/[slug]'
-	);
+	const inReader = $derived(isReaderRoute($page.route.id));
 
 	// Publish the bar's height so the handful of pages with their own sticky
 	// sub-bar (search filters, the biographies index) can sit below it rather

@@ -2,10 +2,11 @@
 	import { onMount } from 'svelte';
 	import { getBook, getChapter, getSermon, getAuthor, type BookDetail } from '$lib/library-public';
 	import { getLang, lang as langStore, localeName } from '$lib/lang.svelte';
-	import { bookmarks } from '$lib/bookmarks.svelte';
+	import { bookmarks, byPosition } from '$lib/bookmarks.svelte';
 	import { marks } from '$lib/marks.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import { chapterLabel } from '$lib/reading';
 	import {
 		HIGHLIGHT_COLORS,
 		DEFAULT_HIGHLIGHT,
@@ -259,6 +260,22 @@
 		// chapters apiece, is forty-eight requests in flight.
 		const gate = createLimiter(NOTEBOOK_CONCURRENCY);
 
+		// A bookmark carries the title FROZEN at the moment it was saved, so a
+		// title corrected since then left it quoting text that appears nowhere
+		// else on the page. `live` reads the current one — per chapter for books,
+		// the work's own for sermons and biographies, which are single documents.
+		// It returns undefined when the fetch failed, and offline the snapshot is
+		// the only title there is.
+		const bookmarksFor = (
+			list: (Bookmark & { slug: string })[],
+			slug: string,
+			live: (b: Bookmark) => string | undefined
+		) =>
+			list
+				.filter((b) => b.slug === slug)
+				.sort(byPosition)
+				.map((b) => ({ ...b, title: live(b) || b.title }));
+
 		const loadBook = async (slug: string): Promise<BookBlock> => {
 			let book: BookDetail | null = null;
 			try {
@@ -266,8 +283,7 @@
 			} catch {
 				/* offline — fall back to slug/order labels */
 			}
-			const titleFor = (order: number) =>
-				book?.chapters.find((c) => c.order === order)?.title || `${order}`;
+			const chapterTitle = (order: number) => book?.chapters.find((c) => c.order === order)?.title;
 
 			const chapters = await Promise.all(
 				mks
@@ -285,7 +301,12 @@
 						} catch {
 							/* offline — the highlight still links through, just without its text */
 						}
-						return { order, edition, title: titleFor(order), highlights: groupMarks(paras, ms, edition) };
+						return {
+							order,
+							edition,
+							title: chapterTitle(order) || `${order}`,
+							highlights: groupMarks(paras, ms, edition)
+						};
 					})
 			);
 
@@ -293,9 +314,7 @@
 				slug,
 				title: book?.title || slug,
 				author: book?.author.name || '',
-				bookmarks: bookBms
-					.filter((b) => b.slug === slug)
-					.sort((a, b) => a.order - b.order || a.p - b.p),
+				bookmarks: bookmarksFor(bookBms, slug, (b) => chapterTitle(b.order)),
 				chapters
 			};
 		};
@@ -312,8 +331,6 @@
 			allMarks
 				.filter((m) => m.kind === kind && m.slug === slug)
 				.sort((a, b) => a.edition.localeCompare(b.edition));
-		const bookmarksFor = (list: (Bookmark & { slug: string })[], slug: string) =>
-			list.filter((b) => b.slug === slug).sort((a, b) => a.p - b.p);
 
 		// Sermon marks and bookmarks (device-local, keyed by sermon slug — no chapters).
 		//
@@ -346,7 +363,7 @@
 				slug,
 				title: named?.title || slug,
 				author: named?.author || '',
-				bookmarks: bookmarksFor(sermonBms, slug),
+				bookmarks: bookmarksFor(sermonBms, slug, () => named?.title),
 				highlights: parts.flatMap((p) => p.highlights)
 			};
 		};
@@ -371,7 +388,7 @@
 			return {
 				slug,
 				name: named?.name || slug,
-				bookmarks: bookmarksFor(bioBms, slug),
+				bookmarks: bookmarksFor(bioBms, slug, () => named?.name),
 				highlights: parts.flatMap((p) => p.highlights)
 			};
 		};
@@ -480,7 +497,7 @@
 					{#if ch.highlights.length}
 						{@const label = editionLabel(ch.edition)}
 						<h3 class="mb-2 mt-5 text-small font-semibold text-text">
-							{ch.order}. {ch.title}{#if label}<span class="ms-2 font-normal text-muted"
+							{chapterLabel(ch.order, ch.title)}{#if label}<span class="ms-2 font-normal text-muted"
 									>· {label}</span
 								>{/if}
 						</h3>

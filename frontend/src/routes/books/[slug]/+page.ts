@@ -1,3 +1,6 @@
+// Rebuild marker 2026-08-28: #1183 added The Bruised Reed. New books reach
+// prod through `seed_books` in the api's release step, so the web build
+// enumerated /books before the row existed and it served the SPA shell.
 // Rebuild marker 2026-08-28: #1161 added On the Priesthood, The Life of Antony
 // and On the Incarnation. New books reach prod through `seed_books` in the
 // api's release step, so the web build enumerated /books before the rows

@@ -68,10 +68,21 @@ def _toc_entries(ref: str) -> tuple[list[str], dict[str, str], dict[str, str]]:
     # of the Imitation and reported "✓ 2 chapters".) `toc` is excluded below:
     # the TOC page links to itself and now matches this wider pattern.
     pattern = re.compile(rf"{re.escape(work)}(?:\.[a-z0-9_]+)+\.html$", re.I)
-    # A section can be linked more than once (e.g. an untitled "start reading"
-    # button plus the titled TOC entry). Keep the longest title per URL, and
-    # preserve first-seen order.
-    order: list[str] = []
+    # A section can be linked more than once: its TOC list entry, plus an
+    # untitled "start reading" button above the list. Keep the longest title per
+    # URL, and place each section at its first TITLED link — the button skips
+    # the front matter and points at the first chapter, so ordering by first
+    # sighting put Prayer and Praying Men's INTRODUCTION, real prose, second.
+    #
+    # A URL that is only ever linked untitled (an icon-only anchor, say) has no
+    # titled position to use, so it keeps its document one rather than being
+    # pushed to the end of the book. No CCEL work has one today.
+    #
+    # Verified against the real `toc_parts` path: no shipped book's chapter
+    # order moves. That check matters — chapter order is a public contract
+    # (`PlanDay.chapter_order`, saved positions, prerendered URLs) — and a
+    # cruder comparison that skipped `toc_parts` wrongly said two books moved.
+    anchors: list[tuple[str, str]] = []
     titles: dict[str, str] = {}
     for a in s.select("a[href]"):
         href = a.get("href", "")
@@ -81,11 +92,13 @@ def _toc_entries(ref: str) -> tuple[list[str], dict[str, str], dict[str, str]]:
         if absolute == toc_url:
             continue  # the TOC's self-link is not a section
         title = a.get_text(" ", strip=True)
-        if absolute not in titles:
-            order.append(absolute)
-            titles[absolute] = title
-        elif len(title) > len(titles[absolute]):
-            titles[absolute] = title
+        anchors.append((absolute, title))
+        titles[absolute] = max(titles.get(absolute, ""), title, key=len)
+    order: list[str] = []
+    for absolute, title in anchors:
+        if absolute in order or not (title or titles[absolute] == ""):
+            continue
+        order.append(absolute)
 
     def stem(url: str) -> str:
         name = url.rstrip("/").split("/")[-1]
@@ -284,11 +297,28 @@ _COUNTER = (
 )
 
 
+# A WELL-FORMED roman numeral below a thousand — a chapter counter, in other
+# words. `_COUNTER` above spells its roman arm loosely as `[ivxlcdm]+`, which is
+# safe only there because the word "chapter" sits beside it; alone that class
+# also spells "civil", "mild", "livid", "mill", "dim" and "did", every one of
+# which is a heading a book might really carry. The thousands place is dropped
+# deliberately: `m{0,3}` would make this match "mix" (MIX is a real numeral,
+# 1009), and no chapter is numbered past CMXCIX. Both bare-counter tests below
+# use it. Same construction as `ingest._ROMAN_WORD`, lowercase for the `_norm`ed
+# text `_restates` compares.
+_ROMAN_STRICT = r"(?=[ivxlcd])(?:cm|cd|d?c{0,3})(?:xc|xl|l?x{0,3})(?:ix|iv|v?i{0,3})"
+
+
 def _is_ordinal_heading(text: str) -> bool:
     t = text.strip().rstrip(".")
     return bool(
         re.fullmatch(rf"(the\s+)?{_COUNTER}\s+chapter", t, re.I)
         or re.fullmatch(rf"chapter\s+{_COUNTER}", t, re.I)
+        # The counter ALONE — an untitled chapter heads its page with just the
+        # numeral, as Purpose in Prayer's "<h2>I</h2>" does. Strict roman or
+        # digits, never `_COUNTER`: its ordinal WORDS ("One", "Last") and its
+        # loose roman class are both ordinary English.
+        or re.fullmatch(rf"{_ROMAN_STRICT}|\d{{1,3}}", t, re.I)
     )
 
 
@@ -302,22 +332,17 @@ def _norm(text: str) -> str:
 # `clean_title` now drops the TOC's number, so the two only compare equal with
 # the numbering set aside on each side.
 #
-# Digits only, and the roman half of this gap is REAL and still open: 13
-# chapters of `way-into-holiest` open with "<h2>II. THE DIGNITY OF CHRIST</h2>"
-# above prose the reader already sees titled. Closing it here would change
-# nothing for those readers — `seed_books` never re-syncs an existing book's
-# chapters — so the rule and the migration that rewrites the stored bodies
-# belong in one change, together with the ALL-CAPS guard `_ROMAN_PREFIX` uses
-# (ingest.py): unguarded, a roman strip also eats ordinary words, since
-# "civil", "mild" and "livid" are all spelled out of [ivxlcdm].
-_LEAD_NUMBER = re.compile(r"^\d{1,3}\s+")
+# Roman numerals count too: every chapter of Prayer and Praying Men opens
+# "<h2>III. ABRAHAM, THE MAN OF PRAYER</h2>" above prose the reader already sees
+# titled. Strict, for the reason `_ROMAN_STRICT` gives.
+_LEAD_COUNTER = re.compile(rf"^(?:\d{{1,3}}|{_ROMAN_STRICT})\s+")
 
 
 def _restates(text: str, title: str) -> bool:
     """Does this heading merely repeat the chapter's own title, numbering aside?"""
     if not title:
         return False
-    return _LEAD_NUMBER.sub("", _norm(text)) == _LEAD_NUMBER.sub("", _norm(title))
+    return _LEAD_COUNTER.sub("", _norm(text)) == _LEAD_COUNTER.sub("", _norm(title))
 
 
 # A typographic rule set as its own paragraph — CCEL prints one under the
@@ -326,7 +351,7 @@ _RULE_LINE = re.compile(r"^[\s\u2014\u2013\-_*·.]+$")
 _MAX_LEAD_NOISE = 4
 
 
-def _is_leading_noise(text: str, title: str, work_title: str) -> bool:
+def _is_leading_noise(text: str, title: str, book_title: str) -> bool:
     """Is this leading paragraph page furniture rather than the author's prose?
 
     The Schaff volumes open each section with the tail of the running head, a
@@ -345,9 +370,9 @@ def _is_leading_noise(text: str, title: str, work_title: str) -> bool:
     # direction, since CCEL prints both the full title ("Life of Antony." above
     # the Preface) and a tail of it ("treatise on the priesthood."). Kept short
     # so a real opening sentence that happens to name the book survives.
-    if not work_title or len(text.split()) > 10:
+    if not book_title or len(text.split()) > 10:
         return False
-    work = _norm(work_title)
+    work = _norm(book_title)
     return bool(normalised) and (work in normalised or normalised in work)
 
 
@@ -364,7 +389,15 @@ def is_contents_body(html: str) -> bool:
     return any(_norm(re.sub(r"<[^>]+>", " ", b)) == "table of contents" for b in blocks)
 
 
-def extract_body(html: str, title: str = "", work_title: str = "") -> str:
+def extract_body(
+    html: str, title: str = "", book_title: str = "", volume: bool = False
+) -> str:
+    """Clean one section page into a chapter body.
+
+    A leading HEADING carrying `book_title` is furniture by definition, so it
+    goes for every book. The same line as a leading <p> only goes for a `volume`
+    import (`part=`) — see `_is_leading_noise` for why that gate has to stay.
+    """
     s = soup(html)
     node = s.select_one("#theText") or s.select_one("[class*=contentSection]") or s.body
     if node is None:
@@ -386,28 +419,31 @@ def extract_body(html: str, title: str = "", work_title: str = "") -> str:
         ):
             break
         text = el.get_text(" ", strip=True)
-        if _is_ordinal_heading(text) or _restates(text, title):
+        if (
+            _is_ordinal_heading(text)
+            or _restates(text, title)
+            or _restates(text, book_title)
+        ):
             el.decompose()
         else:
             break
     # The same duplication, one tag down: leading <p> furniture (running head,
     # rule, restated section name). Bounded, and it stops at the first real line.
     #
-    # Gated on `work_title`, which only a `part` import supplies, and
-    # deliberately so: this furniture is a property of a Schaff VOLUME's section
-    # pages, and the books imported from per-work CCEL paths do not have it.
+    # Gated on `volume`, i.e. a `part` import, and deliberately so: this
+    # furniture is a property of a Schaff VOLUME's section pages, and the books imported from per-work CCEL paths do not have it.
     # Run unconditionally it does real damage — measured against the committed
     # fixtures, it stripped 296 words from The Imitation of Christ (deleting the
     # chapter "True Comfort Is to Be Sought in God Alone" outright, whose body
     # is a single paragraph restating its title), 116 from Union and Communion
     # and 86 from All of Grace.
-    for el in (list(content.find_all("p", recursive=True))[:_MAX_LEAD_NOISE] if work_title else []):
+    for el in (list(content.find_all("p", recursive=True))[:_MAX_LEAD_NOISE] if volume else []):
         if any(
             (prev.get_text(strip=True) if prev.name else (prev.string or "").strip())
             for prev in el.previous_siblings
         ):
             break
-        if _is_leading_noise(el.get_text(" ", strip=True), title, work_title):
+        if _is_leading_noise(el.get_text(" ", strip=True), title, book_title):
             el.decompose()
         else:
             break
@@ -469,7 +505,7 @@ class Command(BaseCommand):
                 if entry.summary_titles:
                     leaf_title = summary_title(leaf_title)
                 # Only a volume import carries the volume's page furniture.
-                body = self._section_body(url, leaf_title, entry.title if entry.part else "")
+                body = self._section_body(url, leaf_title, entry.title, bool(entry.part))
                 if is_contents_body(body):
                     continue
                 if not body:
@@ -492,11 +528,13 @@ class Command(BaseCommand):
         english_audit.report(self, english_audit.audit_book(book), book.slug)
         self.stdout.write(self.style.SUCCESS(f"  ✓ {book.chapter_count} chapters"))
 
-    def _section_body(self, url: str, title: str, work_title: str = "") -> str:
+    def _section_body(
+        self, url: str, title: str, book_title: str = "", volume: bool = False
+    ) -> str:
         """Fetch and clean one TOC section; "" when the request fails."""
         try:
             time.sleep(DELAY)
-            return extract_body(fetch(url), title, work_title)
+            return extract_body(fetch(url), title, book_title, volume)
         except requests.RequestException as exc:
             self.stderr.write(self.style.WARNING(f"  skip {url}: {exc}"))
             return ""

@@ -59,7 +59,7 @@ const PROSE_OWNERS = [
  */
 const CONTENT_SURFACES: [path: string, needle: string][] = [
 	['src/routes/books/[slug]/+page.svelte', '{book.title}</h1>'],
-	['src/routes/books/[slug]/+page.svelte', '{ch.title}</span>']
+	['src/routes/books/[slug]/+page.svelte', '{chapterName(ch.order, ch.title)}</span>']
 ];
 
 const read = (path: string) => readFileSync(join(FRONTEND, path), 'utf8');

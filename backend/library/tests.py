@@ -101,6 +101,17 @@ class CleanTitleTests(TestCase):
             once = clean_title(raw)
             self.assertEqual(clean_title(once), once, raw)
 
+    def test_a_bare_chapter_counter_survives_clean_title(self):
+        # Emptying it is `upsert_book`'s job, not this function's: `clean_title`
+        # also cleans HEADINGS that other code reads the counter out of —
+        # Confessions' 276 grouped leaf headings are bare counters, and
+        # `import_gutenberg._ROMAN_OR_NUM` matches one to know it must borrow
+        # the real title from the next node. See `_BARE_CHAPTER`.
+        self.assertEqual(clean_title("Chapter I"), "Chapter I")
+        self.assertEqual(clean_title("CHAPTER IV."), "Chapter IV")
+        # A real title that merely begins with the word is untouched.
+        self.assertEqual(clean_title("Chapter Summary"), "Chapter Summary")
+
     def test_bare_roman_numeral_left_alone(self):
         self.assertEqual(clean_title("IV"), "IV")
 

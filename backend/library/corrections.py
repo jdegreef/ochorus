@@ -36,6 +36,47 @@ EXCLUDED_SLUGS: set[str] = {
 }
 
 CORRECTIONS: dict[str, dict] = {
+    "the-bruised-reed": {
+        # Grosart's scan carries its chapter titles on the marker line, where
+        # they both truncate and pick up the worst of the OCR. Each title below
+        # is the full heading transcribed from the scan (marker line plus its
+        # wrapped continuation), with the misreads repaired: "ivill"->will,
+        # "Rides"->Rules, "Eeproof"->Reproof, "he\epresenteth"->he representeth,
+        # "unto its"->unto us. Chapters 1, 9 and 21 were cut mid-phrase by the
+        # page edge and are completed from the 1878 printing's contents page.
+        "chapter_titles": {
+            1: "The Text opened and divided. What the Reed is, and what the bruising",
+            2: "Those that Christ hath to do withal are bruised",
+            3: "Christ will not break the Bruised Reed",
+            4: "Signs of one truly bruised. Means and measure of bruising, and comfort to such",
+            5: "Grace is little at first",
+            6: "Grace is mingled with Corruption",
+            7: "Christ will not quench small and weak beginnings",
+            8: "Tenderness required in ministers toward young beginners",
+            9: "Governors should be tender of weak ones, and also private Christians",
+            10: "Rules to try whether we be such as Christ will not quench",
+            11: "Signs of smoking flax which Christ will not quench",
+            12: "Scruples hindering comfort removed",
+            13: "Set upon Duties notwithstanding Weaknesses",
+            14: "The case of Indisposition resolved, and Discouragements",
+            15: "Of infirmities. No cause of discouragement, in whom they are, "
+                "and how to recover peace lost",
+            16: "Satan not to be believed, as he representeth Christ unto us",
+            17: "Reproof of such as sin against this merciful disposition in Christ. "
+                "Of quenching the Spirit",
+            18: "Of Christ's judgment in us, and his victory: what it is",
+            19: "Christ is so mild that yet he will govern those that enjoy "
+                "the comfort of his mildness",
+            20: "The spiritual government of Christ is joined with judgment and wisdom",
+            21: "Where true wisdom and judgment is, there Christ sets up his government",
+            22: "Christ's government is victorious",
+            23: "Means to make Grace victorious",
+            24: "All should side with Christ",
+            25: "Christ's government shall be openly victorious",
+            26: "Christ alone advanceth this government",
+            27: "Victory not to be had without fighting",
+        },
+    },
     "union-and-communion": {
         # CCEL's TOC labels the foreword "Forward" (a period typo); fix it.
         # After the bare "Title" page is dropped as front matter, the foreword
@@ -61,6 +102,32 @@ CORRECTIONS: dict[str, dict] = {
         "chapter_titles": {
             11: "Enthusiasm And Full Salvation",
             13: "Addresses On Holiness In Exeter Hall (First Address)",
+        },
+    },
+    "purpose-in-prayer": {
+        # EDITORIAL TITLES, not a repair. Unlike Bounds' other three books —
+        # which CCEL carries with their own chapter titles — the 1920 Purpose in
+        # Prayer numbers its chapters and never names them, so the import was
+        # right to leave all 13 blank and the reader showed a bare "1", "2", "3".
+        # These were written from each chapter's own argument, using Bounds' own
+        # phrasing wherever he gives a usable one ("prayerless praying", "pray
+        # and never faint", "put the men to praying"), so the book reads like the
+        # rest of the shelf. They are OURS, not his: if a titled edition ever
+        # turns up, prefer its titles to these.
+        "chapter_titles": {
+            1: "God Shapes the World by Prayer",
+            2: "Prayer Changes the Purpose of God",
+            3: "We Have Not Because We Ask Not",
+            4: "Men Who Prayed With a Purpose",
+            5: "Prayer Is a Trade to Be Learned",
+            6: "Pray and Never Faint",
+            7: "Men Ought Always to Pray",
+            8: "Put the Men to Praying",
+            9: "Reaching the Ear of God",
+            10: "Prayerless Praying",
+            11: "The Prayer of Faith Never Fails",
+            12: "Revivals Are Born in Prayer",
+            13: "Christ Our Example in Prayer",
         },
     },
     "talks-to-the-farmer": {
@@ -89,6 +156,34 @@ CORRECTIONS: dict[str, dict] = {
         "chapter_titles": {
             12: "Friends' Testimonies Against Fiction, Music, And Art",
             13: "Quaker Scruples",
+        },
+    },
+    "necessity-of-prayer": {
+        # CCEL numbers this TOC "I. Prayer and Faith" … "XIV. Prayer and the
+        # House of God", and the reader prints the chapter order itself — so it
+        # rendered "2. I. Prayer and Faith", two numbers that do not even agree
+        # (the Foreword is chapter 1). `clean_title` strips a roman prefix only
+        # from an ALL-CAPS heading, which is why its sibling Prayer and Praying
+        # Men needs no entry here and this book does.
+        #
+        # Per-book rather than a widened rule: dropping the ALL-CAPS gate would
+        # also strip Edwards's twelve numbered SIGNS in religious-affections,
+        # where the numeral is the structure the book is cited by.
+        "chapter_titles": {
+            2: "Prayer and Faith",
+            3: "Prayer and Faith (Continued)",
+            4: "Prayer and Trust",
+            5: "Prayer and Desire",
+            6: "Prayer and Fervency",
+            7: "Prayer and Importunity",
+            8: "Prayer and Importunity (Continued)",
+            9: "Prayer and Character and Conduct",
+            10: "Prayer and Obedience",
+            11: "Prayer and Obedience (Continued)",
+            12: "Prayer and Vigilance",
+            13: "Prayer and the Word of God",
+            14: "Prayer and the Word of God (Continued)",
+            15: "Prayer and the House of God",
         },
     },
     "stepping-stones-2": {
@@ -120,6 +215,22 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 # `apply_body_corrections`, plus a data migration for prod).
 
 BODY_CORRECTIONS: dict[str, dict] = {
+    "prayer-and-praying-men": {
+        # Two words glued together in CCEL's own text (verified upstream, so
+        # not something our cleaning introduced). Both produce a NON-word, and
+        # the seam is forced by the sentence — there is no reading in which
+        # "fromheaven" or "isthat" is Bounds's own spelling:
+        #
+        #   fromheaven  ch10  "at the third call fromheaven, when he recognized
+        #                     God's voice" — Samuel, 1 Samuel 3
+        #   isthat      ch15  "the evidence of sincerity in a true seeker of
+        #                     religion isthat it can be said of him, 'Behold he
+        #                     prayeth.'"
+        "replacements": [
+            ("call fromheaven", "call from heaven"),
+            ("religion isthat", "religion is that"),
+        ],
+    },
     "all-of-grace": {
         # Four OCR slips in the English text, found while translating the book
         # to Hindi. All four are single occurrences and none changes meaning —

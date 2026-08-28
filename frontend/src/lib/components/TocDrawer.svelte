@@ -4,7 +4,8 @@
 	import { getScrollAnchor } from '$lib/progress';
 	import { marks } from '$lib/marks.svelte';
 	import { bookmarks } from '$lib/bookmarks.svelte';
-	import { editionLang, readingTime } from '$lib/reading';
+	import type { Bookmark } from '$lib/reading-schema';
+	import { chapterLabel, editionLang, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 
@@ -36,20 +37,38 @@
 	// TOC titles) so tapping a chapter in the drawer stays in the same edition.
 	const suffix = $derived(edition === 'modern' ? '?edition=modern' : '');
 	const contentLang = $derived(editionLang(edition));
+	// The fetched book, but only while it is THIS work: a drawer reopened on a
+	// second book keeps the previous one in `book` until its replacement lands,
+	// and chapter 3 of the wrong book is not chapter 3 of this one.
+	//
+	// Slug only — deliberately NOT the edition. `getBook` answers a modern-edition
+	// request with the original when a book has no modern text (a silent 404
+	// fallback, the same one the reader's own body takes), so gating the render on
+	// the edition emptied the whole panel for every book without a modern edition.
+	const loaded = $derived(book && book.slug === slug ? book : null);
+	// What the current `book` was REQUESTED with, which is the only sound thing to
+	// re-fetch on: asking "is what came back the edition I wanted?" never settles
+	// for a book with no modern text — the fallback answers the same way forever,
+	// and each reply is a new object, so the effect refetched in a loop.
+	let fetchedKey = '';
+	const wantKey = $derived(`${slug}\u0000${contentLang}`);
 	// What to COUNT highlights against: the edition the API actually returned,
 	// which is not always the one asked for (`getBook` falls back to English for
 	// a book with no copy in this language). Counting the requested edition
 	// would show a zero beside a chapter whose highlights are right there.
-	const shownLang = $derived(book?.language ?? contentLang);
+	const shownLang = $derived(loaded?.language ?? contentLang);
 
 	$effect(() => {
 		if (!open) return;
 		opener = document.activeElement;
 		bookmarks.load('book', slug);
-		if (!book || book.slug !== slug || book.is_modern_edition !== (edition === 'modern')) {
+		if (fetchedKey !== wantKey) {
+			fetchedKey = wantKey;
 			getBook(slug, contentLang)
 				.then((b) => (book = b))
-				.catch(() => (book = null));
+				// Clear the key too, so reopening the drawer retries rather than
+				// sitting on a failure for the life of the page.
+				.catch(() => ((book = null), (fetchedKey = '')));
 		}
 		// Focus the panel once it renders.
 		queueMicrotask(() => panel?.querySelector<HTMLElement>('a, button')?.focus());
@@ -89,6 +108,14 @@
 
 	const visited = (order: number) =>
 		order === currentOrder || getScrollAnchor(slug, order) !== null;
+
+	// A bookmark froze its chapter title at the moment it was saved, so a title
+	// corrected since then (a redundant "1. " prefix stripped, a typo fixed) left
+	// the bookmark quoting the old text — directly above the contents list showing
+	// the new one. Read the live title instead, and keep the snapshot as the
+	// fallback: it is all there is before the book loads, and offline.
+	const titleOf = (bm: Bookmark) =>
+		loaded?.chapters.find((c) => c.order === bm.order)?.title || bm.title;
 </script>
 
 <svelte:window onkeydown={onKeydown} />
@@ -105,9 +132,9 @@
 	>
 		<header class="flex items-center justify-between gap-3 border-b border-border px-5 py-4">
 			<div class="min-w-0">
-				<h2 class="truncate text-h3 text-text">{book?.title ?? t('reader.contents')}</h2>
-				{#if book}
-					<p class="text-small text-muted">{book.author.name}</p>
+				<h2 class="truncate text-h3 text-text">{loaded?.title ?? t('reader.contents')}</h2>
+				{#if loaded}
+					<p class="text-small text-muted">{loaded.author.name}</p>
 				{/if}
 			</div>
 			<button class="btn btn-icon btn-ghost" onclick={close} aria-label={t('a11y.close')}>✕</button>
@@ -119,6 +146,7 @@
 					<p class="bm-heading eyebrow">🔖 {t('reader.bookmarks')}</p>
 					<ul>
 						{#each bookmarks.list as bm (bm.id)}
+							{@const title = titleOf(bm)}
 							<li class="bm-row">
 								<a
 									href={localizeHref(
@@ -128,8 +156,8 @@
 									onclick={close}
 								>
 									<span class="min-w-0 flex-1">
-										<span class="block truncate text-small text-text">{bm.snippet || bm.title}</span>
-										<span class="block text-micro text-muted">{bm.order}. {bm.title}</span>
+										<span class="block truncate text-small text-text">{bm.snippet || title}</span>
+										<span class="block text-micro text-muted">{chapterLabel(bm.order, title)}</span>
 									</span>
 								</a>
 								<button
@@ -142,11 +170,11 @@
 					</ul>
 				</div>
 			{/if}
-			{#if !book}
+			{#if !loaded}
 				<p class="px-5 py-4 text-small text-muted">…</p>
 			{:else}
 				<ol>
-					{#each book.chapters as ch (ch.order)}
+					{#each loaded.chapters as ch (ch.order)}
 						{@const markCount = marks.countFor(slug, ch.order, 'book', shownLang)}
 						<li>
 							<a
@@ -163,7 +191,7 @@
 								></span>
 								<span class="min-w-0 flex-1">
 									<span class="block truncate text-small text-text">
-										{ch.order}. {ch.title || `${t('plans.day')} ${ch.order}`}
+										{chapterLabel(ch.order, ch.title)}
 									</span>
 									<span class="block text-micro text-muted">
 										{readingTime(ch.word_count)}{#if markCount > 0}

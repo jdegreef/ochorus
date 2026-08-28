@@ -18,6 +18,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import {
+		chapterName,
 		contentLang,
 		editionLang,
 		readingTime,
@@ -75,7 +76,7 @@
 		jsonLd({
 			'@context': 'https://schema.org',
 			'@type': 'Chapter',
-			name: chapter.title,
+			name: chapterName(chapter.order, chapter.title),
 			position: chapter.order,
 			isPartOf: {
 				'@type': 'Book',
@@ -679,7 +680,7 @@
 	const cite = $derived({
 		author: chapter.author_name,
 		book: chapter.book_title,
-		chapter: chapter.title,
+		chapter: chapterName(chapter.order, chapter.title),
 		url: $page.url.href
 	});
 
@@ -701,7 +702,7 @@
 		language: () => language,
 		body: () => body,
 		topIndex: topVisibleIndex,
-		listenTitle: () => chapter.title,
+		listenTitle: () => chapterName(chapter.order, chapter.title),
 		listenArtist: () => `${chapter.author_name} · ${chapter.book_title}`,
 		cite: () => cite,
 		searchQuery: () => $page.url.searchParams.get('q') ?? ''
@@ -709,12 +710,12 @@
 </script>
 
 <Seo
-	title="{chapter.title} — {chapter.book_title} — Ochorus"
+	title="{chapterName(chapter.order, chapter.title)} — {chapter.book_title} — Ochorus"
 	description={metaDescription}
 	{canonical}
 	{hreflang}
 	ogType="article"
-	ogTitle="{chapter.title} — {chapter.book_title}"
+	ogTitle="{chapterName(chapter.order, chapter.title)} — {chapter.book_title}"
 	structuredData={[chapterLd]}
 />
 <svelte:window onscroll={onScroll} onkeydown={onKeydown} />
@@ -748,7 +749,7 @@
 				{:else}
 					<!-- Once the heading scrolls away, show where you are. -->
 					<div class="truncate text-small text-text">
-						<span class="text-muted">{chapter.book_title} · </span>{chapter.title}
+						<span class="text-muted">{chapter.book_title} · </span>{chapterName(chapter.order, chapter.title)}
 					</div>
 				{/if}
 			</div>
@@ -892,7 +893,7 @@
 				<span class="ms-1 text-accent">· {t('reader.modernEdition')}</span>
 			{/if}
 		</p>
-		<h1 bind:this={titleEl} class="text-h1 mb-8" dir="auto" lang={contentLang(language)}>{chapter.title}</h1>
+		<h1 bind:this={titleEl} class="text-h1 mb-8" dir="auto" lang={contentLang(language)}>{chapterName(chapter.order, chapter.title)}</h1>
 
 		<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. -->
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
@@ -937,7 +938,7 @@
 				class="btn btn-ghost flex-1 flex-col items-start gap-0.5 text-start"
 			>
 				<span class="eyebrow text-muted">{t('reader.previous')}</span>
-				<span class="text-small">{chapter.prev.title}</span>
+				<span class="text-small">{chapterName(chapter.prev.order, chapter.prev.title)}</span>
 			</a>
 		{:else}
 			<span class="flex-1"></span>
@@ -948,7 +949,7 @@
 				class="btn btn-primary flex-1 flex-col items-end gap-0.5 text-end"
 			>
 				<span class="eyebrow opacity-75">{t('reader.next')}</span>
-				<span class="text-small">{chapter.next.title}</span>
+				<span class="text-small">{chapterName(chapter.next.order, chapter.next.title)}</span>
 			</a>
 		{:else}
 			<a href={localizeHref(`/books/${slug}`)} class="btn btn-ghost flex-1 text-center">{t('reader.backToContents')}</a>
