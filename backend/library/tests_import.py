@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import io
 import zipfile
+from unittest import mock
 
 import fitz  # PyMuPDF
 from django.test import TestCase, override_settings
@@ -709,3 +710,154 @@ class ReimportCreateOnlyTests(TestCase):
         self.assertEqual(again.sort_order, 99)  # not reshuffled
         self.assertEqual(again.title, "Humility (revised)")  # content DID refresh
         self.assertEqual(again.chapters.count(), 1)
+
+
+class CcelPartSelectorTests(TestCase):
+    """`BookEntry.part` — one work out of a Schaff volume.
+
+    The Schaff sets publish a whole volume under one work path (verified by
+    probe: `chrysostom/priesthood`, `cyprian/treatises` and
+    `athanasius/life_antony` all 404), so a work is addressed by its
+    section-stem prefix in the volume TOC. These tests drive `toc_parts`
+    against a stubbed TOC rather than the network.
+    """
+
+    VOLUME = """
+      <a href="vol.i.html">Title Page</a>
+      <a href="vol.iv.html">On the Priesthood</a>
+      <a href="vol.iv.i.html">Introduction</a>
+      <a href="vol.iv.ii.html">Book I</a>
+      <a href="vol.iv.iii.html">Book II</a>
+      <a href="vol.vii.html">Another Work</a>
+      <a href="vol.vii.ii.html">Another Work</a>
+      <a href="vol.vii.ii.i.html">Section 1</a>
+      <a href="vol.vii.ii.ii.html">Section 2</a>
+    """
+
+    def _parts(self, part=""):
+        from library.management.commands import import_ccel
+
+        with mock.patch.object(import_ccel, "fetch", return_value=self.VOLUME):
+            return import_ccel.toc_parts("schaff/vol", part)
+
+    def test_no_part_still_groups_the_whole_volume_by_its_first_segment(self):
+        titles = [t for t, _ in self._parts()]
+        self.assertEqual(titles, ["Title Page", "On the Priesthood", "Another Work"])
+
+    def test_a_part_narrows_to_that_work_and_groups_one_level_down(self):
+        # The part's own divider page is a parent, so it is not itself a chapter.
+        self.assertEqual(
+            [t for t, _ in self._parts("iv")], ["Introduction", "Book I", "Book II"]
+        )
+
+    def test_a_two_segment_part_reaches_the_level_below_it(self):
+        # "vii.ii" skips the volume-level sibling "vii" entirely.
+        self.assertEqual([t for t, _ in self._parts("vii.ii")], ["Section 1", "Section 2"])
+
+    def test_a_part_that_matches_nothing_is_an_error_not_an_empty_book(self):
+        from django.core.management.base import CommandError
+
+        with self.assertRaises(CommandError):
+            self._parts("zz")
+
+
+class CcelSummaryTitleTests(TestCase):
+    """NPNF/ANF section "titles" that are really a precis of the argument."""
+
+    def _t(self, title):
+        from library.management.commands.import_ccel import summary_title
+
+        return summary_title(title)
+
+    def test_the_lead_clause_before_a_dash_is_the_title(self):
+        self.assertEqual(
+            self._t("Introductory.--The subject of this treatise: the humiliation of the Word"),
+            "Introductory",
+        )
+
+    def test_the_first_sentence_is_the_title_when_there_is_no_dash(self):
+        self.assertEqual(
+            self._t("The true doctrine. Creation out of nothing, of God's lavish bounty of being."),
+            "The true doctrine",
+        )
+
+    def test_a_single_long_sentence_falls_back_to_a_clause_break(self):
+        out = self._t(
+            "For God has not only made us out of nothing; but He gave us freely, by the Grace "
+            "of the Word, a life in correspondence with God"
+        )
+        self.assertEqual(out, "For God has not only made us out of nothing")
+
+    def test_a_title_with_no_break_at_all_is_cut_at_a_word_boundary(self):
+        out = self._t("Man " * 40)
+        self.assertLessEqual(len(out), 72)
+        self.assertFalse(out.endswith("Ma"))
+
+    def test_a_real_short_title_is_untouched(self):
+        self.assertEqual(self._t("Birth and beginnings of Antony"), "Birth and beginnings of Antony")
+    def test_an_abbreviations_full_stop_does_not_end_the_lead_clause(self):
+        # Without the guard this cut to "The life of St" — and Schaff's section
+        # summaries are full of St./Cf./cap. abbreviations.
+        self.assertEqual(
+            self._t("The life of St. Antony. He was by descent an Egyptian."),
+            "The life of St. Antony",
+        )
+        self.assertEqual(
+            self._t("Cf. the earlier argument. This is the second reason."),
+            "Cf. the earlier argument",
+        )
+
+
+class CcelVolumeFurnitureTests(TestCase):
+    """Leading page furniture on a Schaff section page, and contents pages."""
+
+    def _body(self, html, title="", work_title=""):
+        from library.management.commands.import_ccel import extract_body
+
+        return extract_body(html, title, work_title)
+
+    def test_running_head_rule_and_restated_title_are_dropped(self):
+        # Book I of On the Priesthood opens exactly like this.
+        out = self._body(
+            "<div id='theText'><p>treatise on the priesthood.</p><p>————————————</p>"
+            "<p>Book I.</p><p>1. I had many genuine and true friends.</p></div>",
+            "Book I",
+            "On the Priesthood",
+        )
+        self.assertNotIn("treatise on the priesthood", out)
+        self.assertNotIn("————", out)
+        self.assertIn("I had many genuine and true friends", out)
+
+    def test_the_running_head_matches_in_either_direction(self):
+        # CCEL prints both a tail of the title and the whole of it.
+        out = self._body(
+            "<div id='theText'><p>Life of Antony.</p><p>The life and conversation of Antony.</p></div>",
+            "Preface",
+            "The Life of Antony",
+        )
+        self.assertNotIn("<p>Life of Antony.</p>", out)
+        self.assertIn("The life and conversation", out)
+
+    def test_nothing_is_stripped_without_a_work_title(self):
+        # The gate that keeps this off the books imported from per-work paths:
+        # run unconditionally it deleted a real chapter of The Imitation of
+        # Christ whose whole body restates its title.
+        html = "<div id='theText'><p>Book I.</p><p>1. I had many friends.</p></div>"
+        self.assertIn("Book I.", self._body(html, "Book I"))
+
+    def test_a_real_opening_sentence_survives(self):
+        out = self._body(
+            "<div id='theText'><p>The events recorded in this celebrated treatise on the "
+            "Priesthood must be read with care by every reader of it.</p></div>",
+            "Introduction",
+            "On the Priesthood",
+        )
+        self.assertIn("The events recorded", out)
+
+    def test_a_contents_page_is_recognised_by_its_body(self):
+        from library.management.commands.import_ccel import is_contents_body
+
+        # The Life of Antony's contents page is titled "Prologue", so only the
+        # body gives it away.
+        self.assertTrue(is_contents_body("<p>Life of Antony.</p><p>Table of Contents.</p>"))
+        self.assertFalse(is_contents_body("<p>1. Antony was by descent an Egyptian.</p>"))
