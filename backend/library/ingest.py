@@ -112,15 +112,22 @@ def _titlecase_caps(s: str) -> str:
     return " ".join(out)
 
 
-# A "title" that is nothing but a chapter counter. The reader already prints the
-# chapter number, so "Chapter I" tells a reader nothing and renders as
-# "1. Chapter I"; Bounds's Purpose in Prayer is thirteen of them, untitled in
-# the source. Emptied rather than kept, so the reader can show the number alone.
+# A CHAPTER TITLE that is nothing but a counter. The reader already prints the
+# chapter number, so "Chapter I" tells a reader nothing and renders "1. Chapter
+# I"; Bounds's Purpose in Prayer is thirteen of them, untitled in the source.
 #
-# CHAPTER only — deliberately not "Section"/"Part", which name a unit the reader
-# does NOT number and so still carry information ("Section I" in Union and
-# Communion, "Part III" in Religious Affections; nine such titles ship today and
-# none is a bare "Chapter N").
+# Applied in `upsert_book`, NOT in `clean_title`, and that distinction is the
+# whole point: `clean_title` also cleans headings and intermediate values that
+# other code reads the counter OUT of. Emptying there broke two callers —
+# `import_ccel`'s grouped path writes each leaf as `<h3>{clean_title(...)}</h3>`
+# and all 276 of Confessions' leaves are bare counters, and
+# `import_gutenberg._ROMAN_OR_NUM` matches "Chapter IV" to know it must borrow
+# the real title from the next node. A title is only "no title" once it is being
+# stored AS a title.
+#
+# CHAPTER only — not "Section"/"Part", which name a unit the reader does NOT
+# number and so still carry information ("Section I" in Union and Communion,
+# "Part III" in Religious Affections; nine such titles ship today).
 _BARE_CHAPTER = re.compile(r"^\s*chapter\s+[ivxlcdm\d]+\.?\s*$", re.I)
 
 
@@ -196,7 +203,18 @@ def clean_title(raw: str) -> str:
     # rather than mangled to "Iv"; roman-numeral words inside are preserved.
     if is_allcaps and not re.fullmatch(r"[IVXLCDM]+", t):
         t = _titlecase_caps(t)
-    return "" if _BARE_CHAPTER.match(t) else _cap_first(t)
+    return _cap_first(t)
+
+
+def chapter_title(raw: str) -> str:
+    """`clean_title`, plus: a title that is only a counter is no title at all.
+
+    The split from `clean_title` is deliberate — see `_BARE_CHAPTER`. Every
+    importer that STORES a chapter title goes through here; the ones that clean
+    a heading or an intermediate value call `clean_title` and keep the counter.
+    """
+    t = clean_title(raw)
+    return "" if _BARE_CHAPTER.match(t) else t
 
 
 def text_of(html: str) -> str:
@@ -292,11 +310,12 @@ def upsert_book(entry: BookEntry, sections: list[tuple[str, str]], language: str
         # A per-book override is normalised the same way import_ochorus does, so
         # the same declared correction yields the same stored title on any source.
         override = title_overrides.get(order)
-        # An empty title stays empty — a chapter can genuinely have no name (see
-        # `_BARE_CHAPTER`). `Chapter.title` is `blank=True` and the reader names
-        # it; the synthetic "Chapter {order}" this used to store only stood in
-        # the way, and produced no title that ever shipped.
-        final_title = clean_title(override) if override else title
+        # A chapter can genuinely have no name: an empty title stays empty, and
+        # a title that is only a counter becomes one (see `_BARE_CHAPTER`).
+        # `Chapter.title` is `blank=True` and the reader names it; the synthetic
+        # "Chapter {order}" this used to store only stood in the way, and
+        # produced no title that ever shipped.
+        final_title = chapter_title(override) if override else chapter_title(title)
         Chapter.objects.create(
             book=book,
             order=order,

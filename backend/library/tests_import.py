@@ -148,7 +148,11 @@ class CreateTests(TestCase):
         chapters = [{"title": "One", "html": f"<p>{BODY}</p>"}, {"title": "", "html": f"<p>{BODY}</p>"}]
         book = ui.create_book(self.author, "My Book", chapters, "en")
         self.assertEqual(book.chapters.count(), 2)
-        self.assertEqual(book.chapters.get(order=2).title, "Chapter 2")  # untitled → numbered
+        # Untitled stays untitled. It used to be stored as "Chapter 2", which the
+        # reader — printing the order itself — then rendered "2. Chapter 2". The
+        # reader now names an untitled chapter, and `upsert_book` takes the same
+        # line, so the two import paths agree on what a nameless chapter is.
+        self.assertEqual(book.chapters.get(order=2).title, "")
         self.assertTrue(book.chapters.first().body_text)  # derived on save
 
     def test_slug_uniqueness(self):
@@ -806,6 +810,35 @@ class CcelSummaryTitleTests(TestCase):
             self._t("Cf. the earlier argument. This is the second reason."),
             "Cf. the earlier argument",
         )
+
+
+class BareChapterTitleTests(TestCase):
+    """A chapter whose "title" is only a counter is stored as untitled."""
+
+    def _titles(self, sections):
+        # A real catalog entry: `upsert_book` reads `BOOKS` for `sort_order`.
+        from library.catalog import BOOKS
+        from library.ingest import upsert_book
+
+        entry = next(b for b in BOOKS if b.slug == "purpose-in-prayer")
+        book = upsert_book(entry, sections)
+        return [c.title for c in book.chapters.order_by("order")]
+
+    def test_a_counter_only_title_is_stored_empty(self):
+        titles = self._titles([("Chapter I", "<p>" + "word " * 200 + "</p>"),
+                               ("Chapter II", "<p>" + "word " * 200 + "</p>")])
+        self.assertEqual(titles, ["", ""])
+
+    def test_a_real_title_is_untouched(self):
+        titles = self._titles([("The Letter Killeth", "<p>" + "word " * 200 + "</p>")])
+        self.assertEqual(titles, ["The Letter Killeth"])
+
+    def test_section_and_part_counters_are_kept(self):
+        # They name a unit the reader does NOT number, so unlike "Chapter N"
+        # they still carry information — nine such titles ship today.
+        titles = self._titles([("Section I", "<p>" + "word " * 200 + "</p>"),
+                               ("Part III", "<p>" + "word " * 200 + "</p>")])
+        self.assertEqual(titles, ["Section I", "Part III"])
 
 
 class CcelVolumeFurnitureTests(TestCase):

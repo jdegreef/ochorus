@@ -53,16 +53,27 @@ export function readingTime(words: number): string {
 }
 
 /**
- * How a chapter is named in a list: "3. The Letter Killeth".
+ * What a chapter is CALLED: its title, or "Chapter 3" when it has none.
  *
  * A chapter may genuinely have no title — Bounds's *Purpose in Prayer* is
- * thirteen untitled chapters — and then the number IS the name, so it moves
- * inside the label ("Chapter 3") rather than being prefixed to an empty string.
- * Shared because four places list chapters (the TOC, its bookmarks, the search
- * drawer and the notebook) and three of them had grown the same inline ternary.
+ * thirteen untitled chapters, unnamed in the source — and every surface that
+ * prints a chapter's name needs the same answer, or the reader gets a blank
+ * heading, a `<title>` starting with an em-dash, and JSON-LD with `name: ""`.
+ */
+export function chapterName(order: number, title: string | null | undefined): string {
+	return title || `${i18n.t('settings.chapterN')} ${order}`;
+}
+
+/**
+ * How a chapter is named in a LIST: "3. The Letter Killeth".
+ *
+ * When there is no title the number is already inside the name, so it must not
+ * also be prefixed — that is the "1. Chapter 1" this exists to avoid. Shared
+ * because four places list chapters (the TOC, its bookmarks, the search drawer
+ * and the notebook) and three had grown the same inline ternary.
  */
 export function chapterLabel(order: number, title: string | null | undefined): string {
-	return title ? `${order}. ${title}` : `${i18n.t('settings.chapterN')} ${order}`;
+	return title ? `${order}. ${title}` : chapterName(order, title);
 }
 
 /**

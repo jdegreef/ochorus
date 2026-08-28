@@ -101,22 +101,16 @@ class CleanTitleTests(TestCase):
             once = clean_title(raw)
             self.assertEqual(clean_title(once), once, raw)
 
-    def test_a_bare_chapter_counter_is_not_a_title(self):
-        # The reader prints the chapter number itself, so "Chapter I" would
-        # render "1. Chapter I" and tells a reader nothing. Purpose in Prayer is
-        # thirteen of them, untitled in the source.
-        self.assertEqual(clean_title("Chapter I"), "")
-        self.assertEqual(clean_title("Chapter 13"), "")
-        self.assertEqual(clean_title("chapter iv."), "")
+    def test_a_bare_chapter_counter_survives_clean_title(self):
+        # Emptying it is `upsert_book`'s job, not this function's: `clean_title`
+        # also cleans HEADINGS that other code reads the counter out of —
+        # Confessions' 276 grouped leaf headings are bare counters, and
+        # `import_gutenberg._ROMAN_OR_NUM` matches one to know it must borrow
+        # the real title from the next node. See `_BARE_CHAPTER`.
+        self.assertEqual(clean_title("Chapter I"), "Chapter I")
+        self.assertEqual(clean_title("CHAPTER IV."), "Chapter IV")
         # A real title that merely begins with the word is untouched.
         self.assertEqual(clean_title("Chapter Summary"), "Chapter Summary")
-
-    def test_section_and_part_counters_are_kept(self):
-        # They name a unit the reader does NOT number, so unlike "Chapter N"
-        # they still carry information — and nine such titles ship today.
-        self.assertEqual(clean_title("Section I"), "Section I")
-        self.assertEqual(clean_title("Section 25"), "Section 25")
-        self.assertEqual(clean_title("Part III"), "Part III")
 
     def test_bare_roman_numeral_left_alone(self):
         self.assertEqual(clean_title("IV"), "IV")

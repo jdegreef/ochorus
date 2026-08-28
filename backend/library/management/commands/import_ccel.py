@@ -68,14 +68,21 @@ def _toc_entries(ref: str) -> tuple[list[str], dict[str, str], dict[str, str]]:
     # of the Imitation and reported "✓ 2 chapters".) `toc` is excluded below:
     # the TOC page links to itself and now matches this wider pattern.
     pattern = re.compile(rf"{re.escape(work)}(?:\.[a-z0-9_]+)+\.html$", re.I)
-    # A section can be linked more than once: the TOC list entry, plus an
-    # untitled "start reading" button above it. Keep the longest title per URL,
-    # and take ORDER from the titled links only — the button skips the front
-    # matter and points at the first chapter, so ordering by first sighting put
-    # Prayer and Praying Men's INTRODUCTION, real prose, second. A URL only ever
-    # linked untitled is still kept, after the listed ones.
-    order: list[str] = []
-    untitled: list[str] = []
+    # A section can be linked more than once: its TOC list entry, plus an
+    # untitled "start reading" button above the list. Keep the longest title per
+    # URL, and place each section at its first TITLED link — the button skips
+    # the front matter and points at the first chapter, so ordering by first
+    # sighting put Prayer and Praying Men's INTRODUCTION, real prose, second.
+    #
+    # A URL that is only ever linked untitled (an icon-only anchor, say) has no
+    # titled position to use, so it keeps its document one rather than being
+    # pushed to the end of the book. No CCEL work has one today.
+    #
+    # Verified against the real `toc_parts` path: no shipped book's chapter
+    # order moves. That check matters — chapter order is a public contract
+    # (`PlanDay.chapter_order`, saved positions, prerendered URLs) — and a
+    # cruder comparison that skipped `toc_parts` wrongly said two books moved.
+    anchors: list[tuple[str, str]] = []
     titles: dict[str, str] = {}
     for a in s.select("a[href]"):
         href = a.get("href", "")
@@ -85,11 +92,13 @@ def _toc_entries(ref: str) -> tuple[list[str], dict[str, str], dict[str, str]]:
         if absolute == toc_url:
             continue  # the TOC's self-link is not a section
         title = a.get_text(" ", strip=True)
-        listed = order if title else untitled
-        if absolute not in listed:
-            listed.append(absolute)
+        anchors.append((absolute, title))
         titles[absolute] = max(titles.get(absolute, ""), title, key=len)
-    order += [u for u in untitled if u not in order]
+    order: list[str] = []
+    for absolute, title in anchors:
+        if absolute in order or not (title or titles[absolute] == ""):
+            continue
+        order.append(absolute)
 
     def stem(url: str) -> str:
         name = url.rstrip("/").split("/")[-1]
