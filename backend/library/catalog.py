@@ -314,6 +314,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "sterner contemporaries."
         ),
     ),
+    "john-owen": AuthorEntry(
+        slug="john-owen",
+        name="John Owen",
+        birth_year=1616,
+        death_year=1683,
+        bio=(
+            "The foremost theologian of English Puritanism, Vice-Chancellor of "
+            "Oxford under Cromwell and ejected from public ministry in 1662, "
+            "who wrote with unusual precision about how sin is actually fought."
+        ),
+    ),
     "thomas-a-kempis": AuthorEntry(
         slug="thomas-a-kempis",
         name="Thomas à Kempis",
@@ -519,6 +530,12 @@ BOOKS: list[BookEntry] = [
               part_end="THE SWORD OF THE WICKED,",
               subtitle="And Smoking Flax",
               cover_color="#4a6741"),
+    # Owen's most-read book, and the one that needs no volume slicing: CCEL
+    # carries it as its own work path rather than inside the collected works.
+    BookEntry("mortification-of-sin", "The Mortification of Sin in Believers",
+              "john-owen", "ccel", "owen/mort",
+              subtitle="On Killing Sin by the Spirit",
+              cover_color="#5b2333"),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an
