@@ -122,6 +122,14 @@ jobs:
         run: |
           uv run python manage.py migrate --noinput
           uv run python manage.py seed_if_empty
+          # Release-chain steps, because two page types exist only after them
+          # and the built-output guards below are blind to a page that was
+          # never built. `index_citations` is what gives /scripture its 925
+          # pages; `seed_quotes` is what gives /quotes/<author> its cards. Both
+          # shipped with the guards passing vacuously — the bare-link defect on
+          # the quotes page reached production that way.
+          uv run python manage.py index_citations
+          uv run python manage.py seed_quotes
           uv run python manage.py runserver 8000 --noreload &
           for i in $(seq 1 30); do
             curl -sf http://localhost:8000/api/health/ >/dev/null && break
