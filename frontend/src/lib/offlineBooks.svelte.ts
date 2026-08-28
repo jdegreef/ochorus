@@ -1,4 +1,5 @@
 import { browser } from '$app/environment';
+import { preloadCode } from '$app/navigation';
 import { API_BASE_URL } from './config';
 import { coverVariants } from './coverArt';
 import { readJSON, writeJSON } from './persisted';
@@ -62,6 +63,13 @@ function bookUrl(slug: string, lang: string): string {
 	return `${API_BASE_URL}/api/library/books/${slug}/?language=${lang}`;
 }
 
+/**
+ * An in-app path matching the chapter route, for `preloadCode`. Trailing slash
+ * because the route declares `trailingSlash = 'always'`; not localized, because
+ * the module is the same one whatever locale prefixes the URL.
+ */
+const chapterPath = (slug: string, order: number) => `/books/${slug}/${order}/`;
+
 class OfflineBooks {
 	/** Bumped on any change so `list()` / `has()` re-derive. */
 	ticks = $state(0);
@@ -110,6 +118,29 @@ class OfflineBooks {
 					total: urls.length
 				};
 			}
+			// The chapter route's own MODULE, not just its data.
+			//
+			// `PRECACHE` deliberately holds only the entry chunks and stylesheets,
+			// so the code that renders a chapter is fetched the first time one is
+			// opened. A reader who downloaded a book without ever opening one of
+			// its chapters therefore had every chapter's text and none of the code
+			// that draws it: offline, the service worker served the SPA shell
+			// correctly (#1072) and the shell then 500'd on a route module it had
+			// never seen. Download for a flight, close the tab, open it on the
+			// plane — an error page for a book the device holds in full.
+			//
+			// `preloadCode` imports the module, which puts it through the worker's
+			// `cacheFirst` like any other same-origin asset. Best-effort: the
+			// chapters are already cached by this point, and a reader who has read
+			// any chapter of any book already has this module.
+			if (orders.length) {
+				try {
+					await preloadCode(chapterPath(book.slug, orders[0]));
+				} catch {
+					/* route module unavailable — the text is still downloaded */
+				}
+			}
+
 			// Cover (often cross-origin): best-effort, opaque is fine for <img>.
 			//
 			// The VARIANTS too, not just `cover_url`. `BookCover` asks for

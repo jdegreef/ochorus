@@ -7,9 +7,10 @@ import { defineConfig } from 'vitest/config';
  * Unit-test config for the reader's pure logic and localStorage stores.
  *
  * We use the plain Svelte plugin (not the full SvelteKit plugin) so `.svelte.ts`
- * rune modules compile, and alias the two SvelteKit imports the stores use:
- * `$app/environment` → a tiny browser=true mock, and `$lib` → `src/lib`. The
- * jsdom environment supplies `localStorage`, which the stores persist to.
+ * rune modules compile, and alias the SvelteKit imports the stores use:
+ * `$app/environment` → a tiny browser=true mock, `$app/navigation` → a stub
+ * that records what was preloaded, and `$lib` → `src/lib`. The jsdom
+ * environment supplies `localStorage`, which the stores persist to.
  */
 export default defineConfig({
 	plugins: [svelte({ compilerOptions: { runes: true } })],
@@ -28,6 +29,10 @@ export default defineConfig({
 			{
 				find: '$app/environment',
 				replacement: fileURLToPath(new URL('./src/test/app-environment.ts', import.meta.url))
+			},
+			{
+				find: '$app/navigation',
+				replacement: fileURLToPath(new URL('./src/test/app-navigation.ts', import.meta.url))
 			},
 			{
 				find: /^\$env\/(static|dynamic)\/public$/,
