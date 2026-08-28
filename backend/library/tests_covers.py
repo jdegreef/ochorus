@@ -362,6 +362,53 @@ class CuratedArtTests(TestCase):
                 # `why` is not decoration: it's what stops the next person
                 # swapping in a prettier painting that means nothing.
                 self.assertTrue(art.why.strip())
+                # A focus outside 0..1 asks for a window off the edge of the
+                # picture. Pillow's `crop` does not raise on that — it pads with
+                # black — so the cover would ship with a bar down one side and
+                # nothing anywhere would have failed.
+                self.assertGreaterEqual(art.focus, 0.0, "focus is a fraction of the overflow")
+                self.assertLessEqual(art.focus, 1.0, "focus is a fraction of the overflow")
+
+    def test_focus_moves_the_crop_window_along_the_overflowing_axis(self):
+        """`focus` has to change PIXELS, not just be stored.
+
+        The crop is the one place a curated painting is decided, and it reads
+        `focus` through two layers — the manifest entry, then the cache key. Get
+        either wrong and the value is inert: the entry keeps its number, the
+        command reports success, and every cover is still a centre crop. That is
+        a defect with no symptom, so this asserts the thing itself by cropping a
+        picture whose left and right halves differ and reading the result back.
+        """
+        from PIL import Image
+
+        from library.management.commands.build_curated_covers import CACHE, _crop_3x4
+
+        CACHE.mkdir(parents=True, exist_ok=True)
+        # Twice as wide as 3:4 needs, so a third of the width is thrown away and
+        # the two ends are far apart. Left half red, right half blue.
+        source = Image.new("RGB", (2400, 800), (200, 40, 40))
+        source.paste(Image.new("RGB", (1200, 800), (40, 40, 200)), (1200, 0))
+        written = []
+        try:
+            with tempfile.TemporaryDirectory() as td:
+                src = Path(td) / "s.png"
+                source.save(src)
+                seen = {}
+                for focus in (0.0, 0.5, 1.0):
+                    out = _crop_3x4(src, "focus-selftest", focus)
+                    written.append(out)
+                    with Image.open(out) as im:
+                        self.assertEqual(im.size, (600, 800))
+                        seen[focus] = im.getpixel((300, 400))
+            # Left edge is in the red half, right edge in the blue half. The
+            # centre sits on the seam, so it is asserted only to differ from the
+            # ends rather than to be a particular colour.
+            self.assertGreater(seen[0.0][0], seen[0.0][2], "focus=0 should take the LEFT (red) end")
+            self.assertGreater(seen[1.0][2], seen[1.0][0], "focus=1 should take the RIGHT (blue) end")
+            self.assertNotEqual(seen[0.0], seen[1.0], "focus changed nothing at all")
+        finally:
+            for path in written:
+                path.unlink(missing_ok=True)
 
     def test_every_source_can_actually_be_fetched(self):
         """A source in the manifest with no fetcher is a build that dies on a

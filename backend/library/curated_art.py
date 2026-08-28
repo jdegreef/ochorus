@@ -74,6 +74,23 @@ class Artwork(NamedTuple):
     title: str
     year: str
     why: str
+    #: WHERE in the painting the 3:4 plate is taken from, along whichever axis
+    #: overflows: 0 is the left (or top) edge, 1 the right (or bottom), 0.5 the
+    #: centre. Default 0.5, which is what every entry above was cropped at.
+    #:
+    #: A cover is 3:4 and most of these paintings are wide landscapes, so
+    #: cropping to fill throws away a third to a half of the picture — and a
+    #: centre crop assumes the subject is in the middle, which is exactly what a
+    #: landscape composition tends not to do. Hobbema's road leaves the frame at
+    #: one side; Saenredam's nave recedes from a corner. `DERIVED_GROUND` has
+    #: carried per-work crop numbers from the start, for the same reason and with
+    #: the same lesson behind it: framing is most of whether a ground reads as a
+    #: picture or as a texture.
+    #:
+    #: Nothing detects a crop left stale by a changed `focus` — unlike a derived
+    #: ground, which digests the cover it was cut from, a museum's image has no
+    #: digest recorded here. Change this and re-run `build_curated_covers`.
+    focus: float = 0.5
 
 
 # slug -> artwork. Slugs match Book.slug (shared across languages).

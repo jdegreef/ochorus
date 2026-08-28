@@ -32,23 +32,22 @@ are cached under .cache/curated-art/ so a re-run doesn't re-fetch. Afterwards
 run ``scripts/build_cover_assets.py`` to give the new painting its webp
 variants — the fixture gate will tell you if you forget.
 
-Cropping uses `sips`, which ships with macOS. This is a curation step run by
-hand on a developer's machine, not something the deploy does. If it ever needs
-to run in CI, swap in Pillow.
+Cropping uses Pillow, so this runs anywhere the dependencies install. It is a
+curation step run by hand — the deploy does not do it — but "by hand" should not
+have meant "on a Mac", which is what shelling out to `sips` made it.
 """
 
 from __future__ import annotations
 
 import json
 import shutil
-import subprocess
-import tempfile
 import urllib.request
 from contextlib import contextmanager
 from pathlib import Path
 
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
+from PIL import Image
 
 from library.covers import art_url, keeps_english_designed
 from library.curated_art import CURATED, CURATED_GROUND, Artwork
@@ -164,32 +163,62 @@ def _artwork_image(art: Artwork) -> Path:
     return raw
 
 
-def _crop_3x4(src: Path, key: str) -> Path:
-    """Scale to the cover height, then centre-crop to width. Scaling by HEIGHT
-    matters: most of these are wide landscapes, and fitting them to width first
-    would leave a letterbox rather than filling the plate."""
-    out = CACHE / f"{key}.{W}x{H}.jpg"
+def _crop_3x4(src: Path, key: str, focus: float = 0.5) -> Path:
+    """Scale the artwork to COVER the 3:4 plate, then crop the overflow away.
+
+    WHERE the crop is taken from is the artwork's own to say: `Artwork.focus`
+    slides the window along whichever axis overflows, and defaults to the centre.
+
+    Scaling to COVER — the larger of the two ratios — rather than to height.
+    Height alone is right for the wide landscapes that make up most of this
+    manifest, and wrong for anything taller than 3:4: a portrait scaled to 800px
+    high comes out NARROWER than the 600px plate, and the crop that followed ran
+    off the edge of the image. Nothing in the manifest is portrait today, which
+    is the only reason that never fired. Cover-fit is the same arithmetic for a
+    landscape and correct for the rest.
+
+    PILLOW, NOT ``sips``. This used to shell out to macOS's ``sips`` twice, which
+    made a curation step that anyone can run into one only a Mac can — the file
+    said as much ("If it ever needs to run in CI, swap in Pillow") and the day it
+    mattered was a cloud session that could reach the museums but had no ``sips``.
+    Pillow is already a dependency; the fixture gates open these same JPEGs with
+    it to measure their contrast.
+
+    Bytes will not match ``sips``'s output for the same input — two encoders, and
+    quality 55 does not mean the same thing to both. That changes nothing already
+    committed, because a painting is cropped once and the result is cached and
+    committed; only a work fetched from here on is encoded by this path.
+    """
+    # `focus` is IN THE CACHE KEY. It changes the pixels, and the cache is
+    # consulted before anything is drawn — leave it out and re-running after
+    # adjusting a crop hands back the old one, silently, forever.
+    out = CACHE / f"{key}.{W}x{H}@{focus:.2f}.jpg"
     if out.exists():
         return out
-    with tempfile.TemporaryDirectory() as td:
-        step = Path(td) / "step.jpg"
-        subprocess.run(
-            ["sips", "-s", "format", "jpeg", "--resampleHeight", str(H), str(src), "--out", str(step)],
-            check=True, capture_output=True,
+    with Image.open(src) as im:
+        # RGB explicitly: the collections serve the odd CMYK TIFF-derived JPEG
+        # and a palettised PNG, and neither can be written as a JPEG as-is.
+        im = im.convert("RGB")
+        scale = max(W / im.width, H / im.height)
+        im = im.resize(
+            (max(W, round(im.width * scale)), max(H, round(im.height * scale))),
+            Image.LANCZOS,
         )
+        # Exactly one axis overflows — `scale` is the max of the two ratios, so
+        # the other lands on its target — and `focus` slides the window along
+        # whichever one it is. 0.5 is the centre crop this did before.
+        left = round((im.width - W) * focus)
+        top = round((im.height - H) * focus)
+        im = im.crop((left, top, left + W, top + H))
         # Quality 55 is deliberate. These are 600x800 thumbnails behind a
         # scrim and a lot of type — the artefacts JPEG makes at this level are
         # invisible here, and it's the difference between a 235 KB cover and a
         # ~90 KB one. The designed covers on the same shelf are 19-51 KB.
-        # Onto a scratch path, not straight onto the cached one: `sips` writes
-        # in place, and a run killed here would leave a half-written crop that
-        # `out.exists()` above trusts forever.
+        # Onto a scratch path, not straight onto the cached one: a run killed
+        # mid-write would leave a half-written crop that `out.exists()` above
+        # trusts forever.
         with _written_atomically(out) as part:
-            subprocess.run(
-                ["sips", "-c", str(H), str(W), "-s", "formatOptions", "55",
-                 str(step), "--out", str(part)],
-                check=True, capture_output=True,
-            )
+            im.save(part, "JPEG", quality=55, optimize=True)
     return out
 
 
@@ -219,7 +248,7 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.WARNING(f"  – {slug}: no Book rows, skipping"))
                 continue
 
-            jpeg = _crop_3x4(_artwork_image(art), _cache_key(art))
+            jpeg = _crop_3x4(_artwork_image(art), _cache_key(art), art.focus)
             url, rel = art_url(slug)
 
             # ONE painting per work, with no type in it. Every language points at
