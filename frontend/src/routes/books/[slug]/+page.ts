@@ -1,3 +1,10 @@
+// Rebuild marker 2026-08-28: #1185 gave Purpose in Prayer's thirteen chapters
+// editorial titles. Unlike the markers below, the page was NOT the SPA shell —
+// it prerendered fine when the book shipped, but that build predates #1185, so
+// the contents list is baked with the "Chapter 1" … "Chapter 13" fallback the
+// reader shows for an untitled chapter. The api is confirmed live with the
+// titles; the other three Bounds books and /authors/e-m-bounds are already
+// correct, so this is the only stale page.
 // Rebuild marker 2026-08-28: #1183 added The Bruised Reed. New books reach
 // prod through `seed_books` in the api's release step, so the web build
 // enumerated /books before the row existed and it served the SPA shell.
