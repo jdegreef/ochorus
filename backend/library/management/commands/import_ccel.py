@@ -22,6 +22,19 @@ from library.catalog import BOOKS, BookEntry
 from library.ingest import clean_html, clean_title, is_front_matter, soup, upsert_book
 
 CCEL_BASE = "https://ccel.org/ccel/"
+# summary_title: a sentence terminator followed by a dash, a space, or the end
+# of the string ends the lead clause — unless it is an abbreviation's full stop,
+# which would cut "Life of St. Antony. …" down to "Life of St".
+_SENTENCE_END = re.compile(r"[.?!](?=\s*--|\s+\S|$)")
+_ABBREVIATIONS = frozenset(
+    # Saints and gospels, reference shorthand, and the honorifics Schaff uses.
+    ["st", "ss", "mt", "mk", "lk", "jn"]
+    + ["cf", "ch", "chap", "chaps", "vs", "viz", "etc", "no", "nos", "vol", "vols"]
+    + ["p", "pp", "ib", "ibid", "ed", "eds", "trans", "al", "ad", "bc"]
+    + ["fr", "dr", "mr", "mrs", "rev", "jr", "sr"]
+)
+_TITLE_CAP = 72   # characters; a contents-list line that still reads at a glance
+_TITLE_MIN = 24   # never cut so short that the title says nothing
 USER_AGENT = "OchorusBot/0.1 (+https://ochorus.org; public-domain book reader)"
 DELAY = 0.8  # be polite to CCEL
 
@@ -99,8 +112,51 @@ def _parent_urls(stems: dict[str, str]) -> set[str]:
     }
 
 
-def toc_parts(ref: str) -> list[tuple[str, list[tuple[str, str]]]]:
+def summary_title(title: str) -> str:
+    """The lead clause of an NPNF/ANF section summary, capped at a readable length.
+
+    Schaff's editors head each section with a precis of its argument, not a
+    title: *On the Incarnation*'s 57 sections average 232 characters and run to
+    443. Unmodified they are useless as chapter titles and unusable in a
+    contents list. The lead clause is almost always the real heading
+    ("Introductory.--The subject of this treatise: …" → "Introductory").
+
+    Some sections have no short lead — they are one long sentence — so the cut
+    falls back to the first clause break and then to a word boundary. Six of
+    the 57 land on the fallback; a mid-sentence cut reads better than 443
+    characters, and the full summary is still the first thing in the chapter.
+    """
+    lead = title.strip()
+    for m in _SENTENCE_END.finditer(title):
+        candidate = title[: m.end()].strip()
+        if len(candidate) < 5:
+            continue
+        # The word carrying the full stop: an abbreviation is not a sentence end.
+        word = re.split(r"[\s(\u2014\u2013-]", candidate.rstrip(".?!"))[-1]
+        if _norm(word) in _ABBREVIATIONS:
+            continue
+        lead = candidate
+        break
+    if len(lead) > _TITLE_CAP:
+        for sep in (";", ":", "--", ","):
+            i = lead.find(sep, _TITLE_MIN)
+            if _TITLE_MIN <= i <= _TITLE_CAP:
+                lead = lead[:i]
+                break
+    if len(lead) > _TITLE_CAP:
+        lead = lead[:_TITLE_CAP].rsplit(" ", 1)[0]
+    return lead.rstrip(" .,;:-").strip() or title
+
+
+def toc_parts(ref: str, part: str = "") -> list[tuple[str, list[tuple[str, str]]]]:
     """Group a two-level work by its parts: [(part_title, [(url, title), …]), …].
+
+    ``part`` narrows the crawl to ONE work inside a multi-work volume, named by
+    its section-stem prefix ("xvi.ii" is the Life of Antony inside npnf204).
+    Grouping is then relative to that prefix — the part's own children become
+    the chapters — so the same call shape serves a whole volume and one work
+    out of it. See ``BookEntry.part`` for why volumes have to be addressed this
+    way at all.
 
     The grouped view of the TOC, for works whose real reading unit is the PART,
     not the leaf section. Augustine's *Confessions* is the case this exists for:
@@ -121,30 +177,39 @@ def toc_parts(ref: str) -> list[tuple[str, list[tuple[str, str]]]]:
     widen ``clean_title`` again.
     """
     order, titles, stems = _toc_entries(ref)
+    if part:
+        order = [u for u in order if stems[u] == part or stems[u].startswith(part + ".")]
+        if not order:
+            raise CommandError(f"part {part!r} matches no section of {ref}")
+        # Restrict the parent test to the subtree too: a page is only a divider
+        # relative to what is actually being imported.
+        stems = {u: stems[u] for u in order}
     parents = _parent_urls(stems)
     # Stem → its divider page, so the part can take that page's real title
     # ("Book I") instead of its first leaf's ("Chapter I").
     divider = {stems[p]: p for p in parents}
+    # Group one level below the part: with no part that is the first segment
+    # ("ii.iv" → "ii"), and under part "xvi.ii" it is "xvi.ii.iii".
+    depth = len(part.split(".")) if part else 0
     groups: dict[str, tuple[str, list[tuple[str, str]]]] = {}
     for url in order:
         if url in parents:
             continue
-        # "ii.iv" → part key "ii"; a single-segment stem is its own part.
-        key = stems[url].split(".")[0]
+        key = ".".join(stems[url].split(".")[: depth + 1])
         parent = divider.get(key)
         groups.setdefault(key, (titles[parent] if parent else titles[url], []))
         groups[key][1].append((url, titles[url]))
     return list(groups.values())
 
 
-def toc_sections(ref: str) -> list[tuple[str, str]]:
+def toc_sections(ref: str, part: str = "") -> list[tuple[str, str]]:
     """Return [(absolute_section_url, title), ...] from the work's TOC page.
 
     The flat view: ``toc_parts`` with its grouping discarded. Defined in terms
     of it so the two views can never disagree about what counts as a part
     divider or about section order.
     """
-    return [leaf for _, leaves in toc_parts(ref) for leaf in leaves]
+    return [leaf for _, leaves in toc_parts(ref, part) for leaf in leaves]
 
 
 _LEADING_P = re.compile(r"\s*<p>(.*?)</p>", re.S)
@@ -231,7 +296,51 @@ def _norm(text: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", text.lower()).strip()
 
 
-def extract_body(html: str, title: str = "") -> str:
+# A typographic rule set as its own paragraph — CCEL prints one under the
+# running head on most Schaff section pages.
+_RULE_LINE = re.compile(r"^[\s\u2014\u2013\-_*·.]+$")
+_MAX_LEAD_NOISE = 4
+
+
+def _is_leading_noise(text: str, title: str, work_title: str) -> bool:
+    """Is this leading paragraph page furniture rather than the author's prose?
+
+    The Schaff volumes open each section with the tail of the running head, a
+    rule, and then the section's own name, all as plain paragraphs — Book I of
+    *On the Priesthood* begins "treatise on the priesthood." / "————" / "Book
+    I." before the first sentence. The existing duplicate-heading strip only
+    looks at real ``<h1>``–``<h5>`` elements, so none of it was caught and the
+    fragments rendered as a stray line at the top of every chapter.
+    """
+    if _RULE_LINE.match(text) or _is_ordinal_heading(text):
+        return True
+    normalised = _norm(text)
+    if title and normalised == _norm(title):
+        return True
+    # The running head, which quotes the work's own title — in either
+    # direction, since CCEL prints both the full title ("Life of Antony." above
+    # the Preface) and a tail of it ("treatise on the priesthood."). Kept short
+    # so a real opening sentence that happens to name the book survives.
+    if not work_title or len(text.split()) > 10:
+        return False
+    work = _norm(work_title)
+    return bool(normalised) and (work in normalised or normalised in work)
+
+
+def is_contents_body(html: str) -> bool:
+    """Does this section's body open with a table of contents?
+
+    A volume's per-work contents page is sometimes filed under a title that
+    says nothing about it — the Life of Antony's is titled "Prologue", so
+    ``is_front_matter`` passes it and 630 words of section list import as
+    chapter 1. Gate on the body instead: a real chapter does not open by
+    announcing a table of contents.
+    """
+    blocks = re.findall(r"<p[^>]*>(.*?)</p>", html, re.S | re.I)[:3]
+    return any(_norm(re.sub(r"<[^>]+>", " ", b)) == "table of contents" for b in blocks)
+
+
+def extract_body(html: str, title: str = "", work_title: str = "") -> str:
     s = soup(html)
     node = s.select_one("#theText") or s.select_one("[class*=contentSection]") or s.body
     if node is None:
@@ -254,6 +363,27 @@ def extract_body(html: str, title: str = "") -> str:
             break
         text = el.get_text(" ", strip=True)
         if _is_ordinal_heading(text) or (title and _norm(text) == _norm(title)):
+            el.decompose()
+        else:
+            break
+    # The same duplication, one tag down: leading <p> furniture (running head,
+    # rule, restated section name). Bounded, and it stops at the first real line.
+    #
+    # Gated on `work_title`, which only a `part` import supplies, and
+    # deliberately so: this furniture is a property of a Schaff VOLUME's section
+    # pages, and the books imported from per-work CCEL paths do not have it.
+    # Run unconditionally it does real damage — measured against the committed
+    # fixtures, it stripped 296 words from The Imitation of Christ (deleting the
+    # chapter "True Comfort Is to Be Sought in God Alone" outright, whose body
+    # is a single paragraph restating its title), 116 from Union and Communion
+    # and 86 from All of Grace.
+    for el in (list(content.find_all("p", recursive=True))[:_MAX_LEAD_NOISE] if work_title else []):
+        if any(
+            (prev.get_text(strip=True) if prev.name else (prev.string or "").strip())
+            for prev in el.previous_siblings
+        ):
+            break
+        if _is_leading_noise(el.get_text(" ", strip=True), title, work_title):
             el.decompose()
         else:
             break
@@ -283,9 +413,10 @@ class Command(BaseCommand):
             self._import_one(entry)
 
     def _import_one(self, entry: BookEntry):
-        self.stdout.write(f"→ {entry.title}  (ccel:{entry.source_ref})")
+        ref = f"{entry.source_ref}#{entry.part}" if entry.part else entry.source_ref
+        self.stdout.write(f"→ {entry.title}  (ccel:{ref})")
         try:
-            parts = toc_parts(entry.source_ref)
+            parts = toc_parts(entry.source_ref, entry.part)
         except requests.RequestException as exc:
             self.stderr.write(self.style.ERROR(f"  TOC fetch failed: {exc}"))
             return
@@ -311,7 +442,12 @@ class Command(BaseCommand):
                 if is_front_matter(leaf_title):
                     continue
                 leaf_title = clean_title(leaf_title)
-                body = self._section_body(url, leaf_title)
+                if entry.summary_titles:
+                    leaf_title = summary_title(leaf_title)
+                # Only a volume import carries the volume's page furniture.
+                body = self._section_body(url, leaf_title, entry.title if entry.part else "")
+                if is_contents_body(body):
+                    continue
                 if not body:
                     continue
                 # A single-leaf part is the whole chapter — no subheading needed.
@@ -321,7 +457,10 @@ class Command(BaseCommand):
                 pieces.append(f"<h3>{leaf_title}</h3>{body}" if len(leaves) > 1 else body)
             if not pieces:
                 continue
-            chapters.append((clean_title(part_title), "".join(pieces)))
+            chapter_title = clean_title(part_title)
+            if entry.summary_titles:
+                chapter_title = summary_title(chapter_title)
+            chapters.append((chapter_title, "".join(pieces)))
             if entry.group_parts:
                 self.stdout.write(f"    {part_title}: {len(pieces)} sections")
 
@@ -329,11 +468,11 @@ class Command(BaseCommand):
         english_audit.report(self, english_audit.audit_book(book), book.slug)
         self.stdout.write(self.style.SUCCESS(f"  ✓ {book.chapter_count} chapters"))
 
-    def _section_body(self, url: str, title: str) -> str:
+    def _section_body(self, url: str, title: str, work_title: str = "") -> str:
         """Fetch and clean one TOC section; "" when the request fails."""
         try:
             time.sleep(DELAY)
-            return extract_body(fetch(url), title)
+            return extract_body(fetch(url), title, work_title)
         except requests.RequestException as exc:
             self.stderr.write(self.style.WARNING(f"  skip {url}: {exc}"))
             return ""

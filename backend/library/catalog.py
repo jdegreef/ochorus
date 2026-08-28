@@ -43,6 +43,23 @@ class BookEntry:
     # numbered divisions ("Chapter I" … repeated in every Book) the part is the
     # real reading unit — see `import_ccel.toc_parts`.
     group_parts: bool = False
+    # CCEL only: import ONE WORK out of a multi-work volume. The Schaff sets
+    # (ANF/NPNF) publish a whole volume under a single work path — there is no
+    # per-work URL, verified by probing: `chrysostom/priesthood`,
+    # `cyprian/treatises` and `athanasius/life_antony` all 404, and the one
+    # per-work path that does resolve, `athanasius/incarnation`, is the 1944
+    # C.S.M.V. translation and still in copyright. So a volume's works are
+    # addressed by their section-stem prefix in its TOC: "iv" is On the
+    # Priesthood inside npnf109, "xvi.ii" is the Life of Antony inside npnf204.
+    # Empty imports the whole volume, as before.
+    part: str = ""
+    # CCEL only: NPNF/ANF section "titles" are often not titles at all but a
+    # paragraph-long summary of the argument ("Introductory.--The subject of
+    # this treatise: the humiliation and incarnation of the Word. Presupposes
+    # …", 443 characters). Keep the lead clause — see
+    # `import_ccel.summary_title`. Opt-in, because a work whose titles are real
+    # titles must not have them cut at their first full stop.
+    summary_titles: bool = False
 
 
 AUTHORS: dict[str, AuthorEntry] = {
@@ -253,6 +270,28 @@ AUTHORS: dict[str, AuthorEntry] = {
             "since."
         ),
     ),
+    "athanasius-of-alexandria": AuthorEntry(
+        slug="athanasius-of-alexandria",
+        name="Athanasius of Alexandria",
+        birth_year=296,
+        death_year=373,
+        bio=(
+            "Bishop of Alexandria for forty-five years, seventeen of them in "
+            "exile, who refused to concede that the Son of God was a creature "
+            "and very largely settled how the church confesses Christ."
+        ),
+    ),
+    "john-chrysostom": AuthorEntry(
+        slug="john-chrysostom",
+        name="John Chrysostom",
+        birth_year=347,
+        death_year=407,
+        bio=(
+            "Archbishop of Constantinople and the greatest preacher of the "
+            "ancient church, named golden-mouthed by later generations, who "
+            "died on a forced march into exile."
+        ),
+    ),
     "thomas-a-kempis": AuthorEntry(
         slug="thomas-a-kempis",
         name="Thomas à Kempis",
@@ -391,6 +430,26 @@ BOOKS: list[BookEntry] = [
               "ccel", "augustine/confess",
               subtitle="Translated by Edward B. Pusey",
               cover_color="#5c4033", group_parts=True),
+    # The Schaff sets publish a whole volume under one work path, so these three
+    # are addressed by `part` — the work's section-stem prefix inside the
+    # volume's TOC. See BookEntry.part for why there is no per-work URL to use
+    # instead, and note the trap it names: `athanasius/incarnation` resolves,
+    # but it is the 1944 C.S.M.V. translation and still in copyright. npnf204 is
+    # Robertson's, public domain.
+    BookEntry("on-the-priesthood", "On the Priesthood", "john-chrysostom",
+              "ccel", "schaff/npnf109", part="iv",
+              subtitle="Six Books on the Pastoral Office",
+              cover_color="#6b4a2f"),
+    # summary_titles: Schaff heads each section with a precis of its argument
+    # rather than a title — 57 of them here, averaging 232 characters.
+    BookEntry("on-the-incarnation", "On the Incarnation", "athanasius-of-alexandria",
+              "ccel", "schaff/npnf204", part="vii.ii",
+              subtitle="Translated by Archibald Robertson",
+              cover_color="#2f5d62", summary_titles=True),
+    BookEntry("life-of-antony", "The Life of Antony", "athanasius-of-alexandria",
+              "ccel", "schaff/npnf204", part="xvi.ii",
+              subtitle="The Life That Began Christian Monasticism",
+              cover_color="#8a6a3d"),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an
