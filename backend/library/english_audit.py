@@ -187,6 +187,67 @@ COMMON_MIN = 20
 FUSED_MAX = 2
 SPACE_BEFORE_PUNCT = re.compile(r"\S\s+[,.;:!?](?:\s|$)")
 
+# --- lost paragraphing -----------------------------------------------------
+#
+# A chapter whose blocks average this many words has not lost A paragraph
+# break; it has lost its paragraphing. `the-gospel-of-healing` ch03 is 4,602
+# words in TWO blocks, one of them 4,571 words carrying an enumerated list
+# inside it. Nobody wrote that, and no reader can face it.
+#
+# MEASURED AT CHAPTER SCALE BECAUSE PER-PARAGRAPH RULES DO NOT WORK HERE. Four
+# were tried against the whole corpus and each failed the precision bar this
+# module exists to hold:
+#
+#   * a long block alone — 749 blocks run to 20+ sentences and most are the
+#     period's own prose, quoted letters, or Chrysostom, who simply writes long;
+#   * a division marker mid-block (`Secondly,`, `II.`, a vocative) — 922 and 954
+#     blocks, and a read of nine showed roughly two true: the rest were scripture
+#     citations split at `Rom. viii. ‖ 32.`, markers inside a quoted psalm, and
+#     run-in enumerations Bunyan wrote deliberately;
+#   * a long quotation fused to its commentary — 3 findings, of which one matched
+#     a `”` inside a bracketed editorial note;
+#   * a mid-block speech attribution — 8 findings, mostly Wesley citing apostles
+#     (`Paul: … James: … John:`) rather than dialogue.
+#
+# The reason none of them works is that there is no oracle. `word-fusion` can
+# ask the library whether a word exists; "should this have been two paragraphs"
+# has nothing to ask. At CHAPTER scale the question changes and needs no oracle:
+# against a corpus median of 92 words per block and a 99th percentile of 379, a
+# chapter averaging 400+ is broken however it got that way.
+#
+# Seven chapters across three works exceed it, and all seven were read: four
+# chapters of `the-gospel-of-healing` (up to 2,301 w/block), two Whitefield
+# sermons, and `on-the-priesthood` ch06.
+#
+# The cut is deliberately on the conservative side, and one case shows by how
+# much: `on-the-incarnation` ch44 is a 78-word editorial summary followed by the
+# whole chapter as a single 713-word block — plainly the same defect, and it
+# sits just outside at 396. Lowering the bar to catch it would admit the ordinary
+# long-winded chapter as well, and a class that reports those is the 8,917-finding
+# failure this module was built after. Under-reporting is the safer error here:
+# every finding it does make is one a reader can confirm at a glance.
+#
+# Deliberately NOT auto-fixable: where a paragraph breaks is a judgement about
+# the prose, not a rule, so this reports and a person repairs.
+MEAN_BLOCK_MAX = 400
+#: Below this a work is front matter or a stub, where one block is normal.
+PARAGRAPHING_MIN_WORDS = 600
+
+
+def _lost_paragraphing(blocks: list[str]) -> Iterator[tuple[str, str]]:
+    words = sum(len(t.split()) for t in blocks)
+    if not blocks or words < PARAGRAPHING_MIN_WORDS:
+        return
+    mean = words / len(blocks)
+    if mean >= MEAN_BLOCK_MAX:
+        yield (
+            "lost-paragraphing",
+            f"{words:,} words in {len(blocks)} block(s) — {mean:,.0f} words each, "
+            f"against a corpus median of 92",
+        )
+
+
+
 # Overlaps `corrections.BODY_CORRECTIONS` by design: that table REPAIRS these in
 # the books they were found in, this one DETECTS them anywhere, including a book
 # imported tomorrow. Matched on word boundaries — a bare substring search made
@@ -333,6 +394,10 @@ def audit_records(records: Iterable[Record]) -> list[Finding]:
                 )
         for label, i, ex in _orphan_quotes(blocks):
             found.append(Finding(label, rec.where, rec.work, i, ex))
+        # Whole-record, so block -1 as `title-case-vs-body` does: the finding is
+        # about the chapter's structure, not about any one block in it.
+        for label, ex in _lost_paragraphing(blocks):
+            found.append(Finding(label, rec.where, rec.work, -1, ex))
         # A title that hyphenates a word the body capitalises after the hyphen
         # ("Self-denial" vs "Self-Denial") — one of them was retyped.
         body = " ".join(blocks)
