@@ -5,6 +5,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 
 import BookCover from './components/BookCover.svelte';
 import { coverPlateMarkup, coverTypeMarkup, type CoverCardBook } from './coverCardMarkup';
+import { scrimStrength } from './coverScrim';
 import type { BookSummary } from '$lib/library-public';
 
 /**
@@ -142,8 +143,11 @@ describe('the two cover renderers agree', () => {
 		[
 			'a painting',
 			{ cover_url: ART },
-			// A painting has no emblem beneath it to leave room for.
-			{ art: true }
+			// A painting has no emblem beneath it to leave room for — and carries
+			// `--scrim-strength`, which the skeleton compares as a style attribute.
+			// `waiting-on-god` is a real work with a measured strength, so this is
+			// the case that catches the card and the page disagreeing about it.
+			{ art: true, scrim: scrimStrength('waiting-on-god') }
 		],
 		[
 			'a plate with a subtitle',
