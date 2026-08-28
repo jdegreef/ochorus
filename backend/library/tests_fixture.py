@@ -1106,7 +1106,7 @@ class CoverAssetTests(SimpleTestCase):
         """A ground must record the digest of the cover it was cut from.
 
         This is what keeps "replacing a hand-made cover is a two-line diff"
-        true for the sixteen works that have one. Swap the artwork and update
+        true for the fourteen works that have one. Swap the artwork and update
         its digest, and every other gate stays green over a ground and an og
         twin still cut from the RETIRED photograph — the digest gate re-reads
         whatever you just wrote, the twin-staleness gate skips designed

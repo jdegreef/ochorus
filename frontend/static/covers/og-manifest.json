@@ -48,7 +48,7 @@
 			"style": "devotional"
 		},
 		"ar/prayer-the-pulse-of-life": {
-			"ground": "cfc3939b5bd1f1c3ff2e7de752f8ffc52d7e52507e81a5bbb121513537ee25aa",
+			"ground": "02de18cb1bd999fc8e6b030d12c36d647da0f5c6860d703ecf91cccddd8df9c8",
 			"style": "house"
 		},
 		"ar/prevailing-prayer": {
@@ -60,7 +60,7 @@
 			"style": "devotional"
 		},
 		"ar/the-inner-chamber": {
-			"ground": "301b64a37f5af58ec694534c03face6c8ac8d4389916b7a10486b262ada2505a",
+			"ground": "92e412b1dfa904a4ff2c2a140ce2c1fc138eb6c1bb74659c8be8f1163d3a61e5",
 			"style": "devotional"
 		},
 		"ar/the-key-in-my-hand": {
@@ -132,7 +132,7 @@
 			"style": "devotional"
 		},
 		"es/prayer-the-pulse-of-life": {
-			"ground": "d23733e1e797cae37ffb08d5b92bd0edc3005788ec54cf6558be05fd3c5a3932",
+			"ground": "07ff36d5465ef33f20173862088a794684cb65b8315b612c52de71e270d3676a",
 			"style": "house"
 		},
 		"es/prevailing-prayer": {
@@ -144,7 +144,7 @@
 			"style": "revival"
 		},
 		"es/the-inner-chamber": {
-			"ground": "7ea02b20029b20835de57c7701d97fa0f6f87f000dfc37dbfff940c0d6a213e2",
+			"ground": "336703e5a3b031ffc4533590d4d4a6024e164a09540a43bc18546d77db4c3e7d",
 			"style": "devotional"
 		},
 		"es/the-key-in-my-hand": {
@@ -204,7 +204,7 @@
 			"style": "devotional"
 		},
 		"hi/the-inner-chamber": {
-			"ground": "2374b1409fe7e43c5b0966e3b207e675f606cb492a0ff2b9bbd63bbda8a05340",
+			"ground": "ab87508dcc75a253086b0a2fd380975eb0de8bff35bdc9fb0804777e4aaf106e",
 			"style": "devotional"
 		},
 		"hi/the-way-to-god": {
@@ -256,7 +256,7 @@
 			"style": "devotional"
 		},
 		"lg/prayer-the-pulse-of-life": {
-			"ground": "53b492a2a735b0defc78d5f675ea23c4586c8e7841a624ed17cbb8b8b146c804",
+			"ground": "842b16bd6293350349dfa3f338a5ac38838c6723a58c4e6598b2a86c1a2f2dfe",
 			"style": "house"
 		},
 		"lg/prevailing-prayer": {
@@ -276,7 +276,7 @@
 			"style": "devotional"
 		},
 		"lg/the-inner-chamber": {
-			"ground": "889f5d43dfea86229e9524fee306225e88ec8eef8cf2d1fb213cfe6b302432ce",
+			"ground": "e097ab385616b11ca0532e575c685decef2450eec4afc0abb13e17214ae905ad",
 			"style": "devotional"
 		},
 		"lg/the-key-in-my-hand": {
@@ -340,7 +340,7 @@
 			"style": "devotional"
 		},
 		"pt/prayer-the-pulse-of-life": {
-			"ground": "39fc2f594bedada23b8ecca800a31b5fb5ffcae36c39df991157d1ea8aca5b9b",
+			"ground": "c30d5a2e43720ff023e27178fbe750b0f787860c1ef010c52bc8f4b5dc593635",
 			"style": "house"
 		},
 		"pt/stepping-stones-2": {
@@ -348,7 +348,7 @@
 			"style": "house"
 		},
 		"pt/the-inner-chamber": {
-			"ground": "33e89bbfe616a497abbad416b36b60e7d81d90b2530a94ff869bcee3cf354c4a",
+			"ground": "052bf57f286a90ecf5bd22b37f8c755f5d2ab324d27a8938b2d5618139a537da",
 			"style": "devotional"
 		},
 		"pt/the-key-in-my-hand": {
@@ -416,7 +416,7 @@
 			"style": "devotional"
 		},
 		"sw/prayer-the-pulse-of-life": {
-			"ground": "2d2d02ce4fc24d0848bc07191d41df10fe4e5182c0caf4d9b19425e6b5bb9cfb",
+			"ground": "6b9f5ca7685a1b7114298f2faf67d94f19d8ce4699d7532802f945db9cf5fa70",
 			"style": "house"
 		},
 		"sw/prevailing-prayer": {
@@ -436,7 +436,7 @@
 			"style": "revival"
 		},
 		"sw/the-inner-chamber": {
-			"ground": "1391e9ee87cd2674ef6e414b3bdd5b8fbd6f5e57d9011479f7b5e33722e0dea7",
+			"ground": "f61e809f09f9599943ecc915b7631473eff9c78e20dbdbf35a0c021d057941a6",
 			"style": "devotional"
 		},
 		"sw/the-key-in-my-hand": {
@@ -524,7 +524,7 @@
 			"style": "devotional"
 		},
 		"uk/the-inner-chamber": {
-			"ground": "1dc172802adce46a57d77bc3e95482bdbc08c98d626299620fab1eb33ec3cf77",
+			"ground": "fb9325a52995fb69b6b6b5bc819ff6a2ef8d6c7f655b62023089bf7a0879eebd",
 			"style": "devotional"
 		},
 		"union-and-communion": {

@@ -33,7 +33,7 @@ ART_SCRIM: dict[str, float] = {
     "life-and-diary-of-david-brainerd": 0.55,
     "lord-teach-us-to-pray-2": 0.30,
     "pilgrims-progress": 0.65,
-    "prayer-the-pulse-of-life": 0.30,
+    "prayer-the-pulse-of-life": 0.90,
     "prevailing-prayer": 0.50,
     "purity-of-heart": 0.30,
     "religious-affections": 0.50,

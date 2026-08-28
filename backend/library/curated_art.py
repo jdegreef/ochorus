@@ -219,7 +219,7 @@ CURATED: dict[str, Artwork] = {
 # WHY IT HAS TO EXIST. A work with a hand-made English cover and translations
 # needs a wordless ground for those translations to wear, and ``DERIVED_GROUND``
 # makes one by cropping the English cover's own photography. That works when
-# there IS photography to cut — sixteen times it did. It cannot work when the
+# there IS photography to cut — fourteen times it did. It cannot work when the
 # designed cover has no picture in it that survives losing its words:
 #
 #   * ``the-inner-chamber`` is a stone doorway around a black void. Every crop
@@ -229,12 +229,12 @@ CURATED: dict[str, Artwork] = {
 #     IS the design and it sits where the title goes; what is left is a blur,
 #     and a crop of a blur is a blur.
 #
-# The three ways out are: crop anyway and ship a wash (what those two do
-# today); move the work to ``CURATED``, which points EVERY edition at the
-# painting and so retires the hand-made English cover; or this — give the
-# translations a real painting and leave English alone. Only the third keeps
-# both halves, which is why it is worth a third table rather than a flag on one
-# of the other two.
+# The three ways out are: crop anyway and ship a wash (which is what those two
+# did, out of ``DERIVED_GROUND``, until this table existed); move the work to
+# ``CURATED``, which points EVERY edition at the painting and so retires the
+# hand-made English cover; or this — give the translations a real painting and
+# leave English alone. Only the third keeps both halves, which is why it is
+# worth a third table rather than a flag on one of the other two.
 #
 # WHY NOT A FLAG. ``Ground`` is a crop recipe: four numbers and the digest of
 # the cover they were cut from, policed by a gate that re-reads that digest. An
@@ -249,7 +249,26 @@ CURATED: dict[str, Artwork] = {
 # a script it was not chosen for — which is the one extra thing asked of this
 # tier over the other, and the reason `tune_art_scrim.py` measures these files
 # alongside the rest.
-CURATED_GROUND: dict[str, Artwork] = {}
+CURATED_GROUND: dict[str, Artwork] = {
+    "the-inner-chamber": Artwork(
+        "met", 440726, "Adolph Menzel", "The Artist’s Sitting Room in Ritterstrasse", "1851",
+        "Murray’s first two chapters are “The Morning Hour” and “The Door Shut "
+        "— Alone With God”, and this is a back room with the door shut, morning "
+        "at the window, a table drawn up to it and nobody there. Menzel painted "
+        "his own lodgings. The book is about the ordinary private room rather "
+        "than a sanctuary, and so is the picture — which is also why it is not "
+        "the church interior on `the-reformed-pastor`.",
+    ),
+    "prayer-the-pulse-of-life": Artwork(
+        "met", 11113, "Winslow Homer", "Cannon Rock", "1895",
+        "Water that does not stop moving, painted from a stretch of Maine coast "
+        "Homer went back to for years. A pulse is a beat that keeps on whether "
+        "or not anyone is attending to it, which is this book’s argument about "
+        "prayer — day by day, year by year. The opposite number of the still "
+        "water on `waiting-on-god`: the same sea, and the whole difference is "
+        "whether it is moving.",
+    ),
+}
 
 
 def credit(slug: str) -> str | None:
