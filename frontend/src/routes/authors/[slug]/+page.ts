@@ -1,3 +1,10 @@
+// prerender refresh 2026-08-28: e-m-bounds (#1166). Same shape as the three
+// below: a biography-only author created by a migration in the api's release
+// step, so the web build that shipped him enumerated the author list before the
+// row existed and /authors/e-m-bounds served the SPA shell with no <title>.
+// Fourth time in this sequence (#1138, #1163, #1165). His four books are
+// declared in catalog.py (#1168) but not imported yet, so this touch is only
+// for the author page.
 // prerender refresh 2026-08-28: three monastic bios — john-cassian,
 // anselm-of-canterbury, bernard-of-clairvaux (#1152). Biography-only authors
 // created by a migration, so the web build enumerated the author list before
