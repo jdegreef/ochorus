@@ -1645,6 +1645,13 @@ class ChapterTitleNumberingTests(SimpleTestCase):
 
     Every title in the corpus, not just chapters — a numeral in front of a book
     or sermon name is the same source artefact, and today there are none.
+
+    One case this must NOT be obeyed blindly: `_NUMBERED_BOOKS` spells the
+    numbered Bible books in English only, so a Spanish "1. Juan" or a Hindi
+    "१. यूहन्ना" reads to the rule as a numbering prefix rather than a name.
+    Nothing in the corpus is in that state, but a hand-written title that is
+    would fail here, and stripping it would leave one chapter titled "Juan" —
+    hence the second half of the message rather than a bare instruction.
     """
 
     def test_no_title_carries_a_redundant_numbering_prefix(self):
@@ -1664,7 +1671,9 @@ class ChapterTitleNumberingTests(SimpleTestCase):
             [],
             f"{len(numbered)} title(s) begin with their own number, which the "
             f"reader prepends again — pass them through "
-            f"`library.ingest.strip_numbering_prefix`.",
+            f"`library.ingest.strip_numbering_prefix`. Unless the numeral is "
+            f"part of a Bible book's NAME in a language `_NUMBERED_BOOKS` does "
+            f"not spell ('1. Juan'), in which case widen that guard instead.",
         )
 
 
