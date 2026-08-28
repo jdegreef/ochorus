@@ -111,6 +111,90 @@ def _roman(numeral: str) -> int | None:
     return total
 
 
+#: A contents line trails dot leaders and a page number ("... . . . 1", ". .113").
+_LEADERS = re.compile(r"[\s.,'*\u2019\u2018]*\d*\s*$")
+
+
+def contents_titles(lines: list[str], markers: list[tuple[int, str, str]]) -> dict[int, str]:
+    """Chapter number → the title as the book's own CONTENTS page gives it.
+
+    A body heading is set as a wrapped display line and only its first line is
+    captured, so it truncates: Sibbes' chapter I reads "The Text opened and
+    divided. What the" in the body and "The Text opened and divided. What the
+    Reed is, and what the bruising" in the contents. A contents entry is one
+    logical line, so it is the complete one.
+
+    That is the ONLY thing the contents page is reliably better at. It is set in
+    smaller type and often OCRs worse — Clarke's contents says "BIKTH AND
+    ANCESTRY" where her body says "BIRTH" — which is why the caller prefers it
+    on LENGTH alone and never on a tie.
+    """
+    titles: dict[int, str] = {}
+    # The next entry, however the OCR spelled it — Clarke's contents page says
+    # "CHAPTEE" for eleven of its sixteen lines, which the marker pattern does
+    # not match, so without this the wrap-scan swallowed the rest of the page
+    # into chapter one's title.
+    looks_like_entry = re.compile(r"^\s*chap\w*\.?\s+[IVXLC]+\b", re.I)
+    for i, (line_no, numeral, inline) in enumerate(markers):
+        value = _roman(numeral)
+        if value is None:
+            continue
+        parts = [inline] if inline else []
+        # A contents title may wrap; take following lines until a blank or the
+        # next entry. Bounded so a stray marker cannot swallow the front matter.
+        end = markers[i + 1][0] if i + 1 < len(markers) else line_no + 4
+        for line in lines[line_no + 1 : min(end, line_no + 4)]:
+            if not line.strip() or looks_like_entry.match(line):
+                break
+            parts.append(line.strip())
+        # A contents title wraps mid-word ("bruis'" / "ing"); join those without
+        # a space, the way _reflow does for the body.
+        text = ""
+        for part in parts:
+            if text and text.rstrip().endswith(("-", "'", "\u2019")):
+                text = text.rstrip().rstrip("-'\u2019") + part
+            else:
+                text = f"{text} {part}" if text else part
+        text = _LEADERS.sub("", _WS.sub(" ", text).strip()).strip()
+        # A chapter title is a title, not a paragraph. Anything this long means
+        # the scan ran two entries together and neither is usable.
+        if text and len(text) <= 90:
+            titles[value] = clean_title(text)
+    return titles
+
+
+def better_title(body: str, contents: str, *, body_was_inline: bool) -> str:
+    """Whichever of the two headings is the complete one.
+
+    The signal is STRUCTURAL, not a comparison of the strings. Where the body
+    title sat decides which source is the trustworthy one:
+
+    * On the marker's own line ("Chap. VI. — Gract is minted with Corruptum")
+      it is a wrapped display heading and we captured only its first line, so it
+      is truncated AND set in the type that OCRs worst. The contents entry is
+      one logical line and wins.
+    * On its own line below a bare marker (Clarke's "BIRTH AND ANCESTRY" under
+      "CHAPTER I.") it is the display heading in full, set large. It wins — her
+      contents page reads "BIKTH AND ANCESTRY", which is exactly the kind of
+      damage a length comparison cannot see and this rule never asks about.
+
+    Length was the first attempt and it fails on the case that matters: the
+    body's "Gract is minted with Corruptum" and the contents' correct "Grace is
+    mingled with Corruption" differ by two characters.
+    """
+    if body_was_inline and contents:
+        return contents
+    return body or contents
+
+
+def split_contents_run(
+    markers: list[tuple[int, str, str]],
+) -> tuple[list[tuple[int, str, str]], list[tuple[int, str, str]]]:
+    """(body markers, contents markers) — the split `drop_contents_run` makes."""
+    body = drop_contents_run(markers)
+    return body, markers[: len(markers) - len(body)]
+
+
 def drop_contents_run(markers: list[tuple[int, str, str]]) -> list[tuple[int, str, str]]:
     """Discard a leading table of contents, by its NUMBERING RESTART.
 
@@ -233,10 +317,11 @@ def chapterize(text: str) -> list[tuple[str, str]]:
         m = _CHAPTER.match(line.strip())
         if m:
             markers.append((i, m.group(1), (m.group(2) or "").strip()))
-    markers = drop_contents_run(markers)
+    markers, contents = split_contents_run(markers)
+    from_contents = contents_titles(lines, contents)
 
     sections: list[tuple[str, str]] = []
-    for n, (start, _, inline_title) in enumerate(markers):
+    for n, (start, numeral, inline_title) in enumerate(markers):
         end = markers[n + 1][0] if n + 1 < len(markers) else len(lines)
         block = lines[start + 1 : end]
         if inline_title:
@@ -252,6 +337,12 @@ def chapterize(text: str) -> list[tuple[str, str]]:
                     title = clean_title(line.strip())
                     body_start = j + 1
                     break
+        value = _roman(numeral)
+        title = better_title(
+            title,
+            from_contents.get(value, "") if value else "",
+            body_was_inline=bool(inline_title),
+        )
         body = _reflow(block[body_start:])
         sections.append((title, body))
     return sections

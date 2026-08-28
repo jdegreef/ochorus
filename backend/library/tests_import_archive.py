@@ -148,3 +148,74 @@ class PrintingFloorTests(SimpleTestCase):
         # Not an arbitrary round number: below it the scans are long-s and
         # ligature type, which OCRs to noise. See the module docstring.
         self.assertEqual(MIN_PRINTING_YEAR, 1800)
+
+
+class ContentsTitleTests(SimpleTestCase):
+    """Whose heading to believe when the contents page and the body disagree."""
+
+    SIBBES = "\n".join([
+        "CONTENTS.",
+        "Chapter I.",
+        "The Text opened and divided. What the Reed is, and",
+        "what the bruising . . . * .",
+        "",
+        "Chapter II.",
+        "Grace is mingled with Corruption",
+        "",
+    ] + ["front matter"] * 4 + [
+        "Chap. I. — T/ie Text opened and divided. What the",
+        "THE prophet Isaiah being lifted up.",
+        "Chap. II. — Gract is minted with Corruptum.",
+        "Grace is little at the first.",
+    ])
+
+    CLARKE = "\n".join([
+        "CONTENTS.",
+        "CHAPTER  I.— BIKTH  AND  ANCESTRY  .  .  .1",
+        "CHAPTEE  II.— YOUTH  AND  MARRIAGE  .  .  15",
+        "",
+    ] + ["front matter"] * 4 + [
+        "CHAPTER  I.",
+        "",
+        "BIRTH    AND    ANCESTRY.",
+        "",
+        "THE armies of the Church Militant.",
+        "CHAPTER  II.",
+        "",
+        "YOUTH    AND    MARRIAGE.",
+        "",
+        "She married Samuel in 1688.",
+    ])
+
+    def test_an_inline_heading_defers_to_the_contents_page(self):
+        # The body heading is a wrapped display line, so it is both truncated
+        # and set in the type that OCRs worst.
+        titles = [t for t, _ in chapterize(self.SIBBES)]
+        self.assertEqual(
+            titles,
+            [
+                "The Text opened and divided. What the Reed is, and what the bruising",
+                "Grace is mingled with Corruption",
+            ],
+        )
+
+    def test_a_heading_on_its_own_line_beats_the_contents_page(self):
+        # Clarke's contents reads "BIKTH"; her body reads "BIRTH". A rule that
+        # preferred the contents, or compared lengths, would ship the typo.
+        titles = [t for t, _ in chapterize(self.CLARKE)]
+        self.assertEqual(titles, ["Birth and Ancestry", "Youth and Marriage"])
+
+    def test_the_contents_scan_stops_at_the_next_entry_however_it_is_spelled(self):
+        # "CHAPTEE" is not a marker this importer matches, so without an
+        # explicit stop the wrap-scan swallowed the rest of the contents page
+        # into chapter one's title — a 130-character heading.
+        titles = [t for t, _ in chapterize(self.CLARKE)]
+        self.assertNotIn("YOUTH", titles[0].upper())
+        self.assertLess(len(titles[0]), 40)
+
+    def test_a_contents_title_that_wrapped_mid_word_is_rejoined(self):
+        text = "\n".join([
+            "Chapter I.", "Signs of one truly bruised. Means and measure of bruis'", "ing",
+            "",
+        ] + ["x"] * 3 + ["Chap. I. — Signs of one truly bruised. Means and", "Body text here."])
+        self.assertEqual(chapterize(text)[0][0], "Signs of one truly bruised. Means and measure of bruising")
