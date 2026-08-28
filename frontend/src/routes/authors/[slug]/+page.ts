@@ -1,3 +1,9 @@
+// prerender refresh 2026-08-28: three monastic bios — john-cassian,
+// anselm-of-canterbury, bernard-of-clairvaux (#1152). Biography-only authors
+// created by a migration, so the web build enumerated the author list before
+// the rows existed and all three served the SPA shell. Third time this has
+// bitten a content ship; it is not specific to biography-only authors, it is
+// any row `release` creates.
 // prerender refresh 2026-08-27: five early-church bios — clement-of-rome,
 // ignatius-of-antioch, cyprian-of-carthage, athanasius-of-alexandria,
 // john-chrysostom (#1134). They are biography-only authors created by a
