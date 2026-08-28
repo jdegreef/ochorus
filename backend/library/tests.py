@@ -625,6 +625,39 @@ class ContentQAFixesTests(TestCase):
             ),
         )
 
+    def test_susanna_damaged_guillemets_reach_a_deployed_database(self):
+        """#1132 repaired these in the fixture, which no running database reads.
+
+        `seed_books` never rewrites an existing book's chapters, so the ten
+        OCR-damaged guillemets it found stayed on the site until they were
+        declared here — `apply_body_corrections` runs on every deploy. The two
+        CORRUPTED LETTERS are the reason this matters most: they read as a stray
+        mark rather than a misspelling, so no other gate will ever catch them.
+        """
+        from library.corrections import apply_body_corrections
+
+        damaged = (
+            "<p>Deborah Ellison also married a French refugee, a «ilk-weaver "
+            "named Pierre Collett; in January and February 1750, it was evident "
+            "that her «nd was approaching.</p>"
+            "<p>« Epworth, June 7th, 1705. MY LORD, « Lincoln Castle, "
+            "the key of the chamber which led to my study » I could not find it, "
+            "and get «my children over into the street; "
+            "the name given by the girls to the intruding agency » f:My brother "
+            'came. it is but aiming. #»••*.»# " But I am got to the end.</p>'
+            "<p>**•»#* ' ' Of temperance in recreation I shall say little.</p>"
+        )
+        fixed = apply_body_corrections("susanna-wesley-clarke", 16, damaged)
+
+        self.assertNotIn("«", fixed)
+        self.assertNotIn("»", fixed)
+        self.assertIn("a silk-weaver named Pierre Collett", fixed)
+        self.assertIn("her end was approaching", fixed)
+        self.assertIn("led to my study. I could not find", fixed)
+        self.assertIn("the intruding agency. My brother", fixed)
+        self.assertIn("<p>Epworth, June 7th, 1705.", fixed)
+        self.assertIn("<p>' ' Of temperance", fixed)
+
     def test_teens_heading_unfused_from_body(self):
         from library.corrections import apply_body_corrections
 
