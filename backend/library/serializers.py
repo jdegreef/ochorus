@@ -404,7 +404,19 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
             # Person markup, so shipping them on every book row would be bytes
             # nothing reads.
             "same_as",
+            # How many REVIEWED quotations this author has, so the page can
+            # offer the quote page only when one exists. Counting unreviewed
+            # rows would link to a page the review gate keeps 404ing.
+            "quote_count",
         ]
+
+    # Reads the view's annotation; falls back to a count only when a caller
+    # serialized an un-annotated Author (the admin does).
+    quote_count = serializers.SerializerMethodField()
+
+    def get_quote_count(self, obj):
+        n = getattr(obj, "reviewed_quotes", None)
+        return n if n is not None else obj.quotes.filter(reviewed=True).count()
 
     def get_bio(self, obj):
         return obj.bio_for(self._language())

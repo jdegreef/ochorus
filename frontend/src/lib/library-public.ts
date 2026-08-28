@@ -342,6 +342,8 @@ export interface AuthorDetail extends AuthorBio {
 	sermons: SermonSummary[];
 	/** Topical shelves this author appears in (via their books/sermons). */
 	topics: TopicChip[];
+	/** How many REVIEWED quotations this author has; 0 means no quote page. */
+	quote_count?: number;
 	/**
 	 * Authoritative identifiers for this person — Wikipedia, Wikidata — emitted
 	 * as schema.org `sameAs`. Empty for the house byline and for contemporary
@@ -681,3 +683,45 @@ export const getScripturePage = (book: string, chapter: number, verse?: number) 
 	apiFetch<ScripturePage>(
 		`/api/library/scripture/${book}/${chapter}/` + (verse ? `${verse}/` : '')
 	);
+
+// --- Quotes -------------------------------------------------------------------
+// Sourced quotations, by author. English-only for the same reason the scripture
+// graph is: they are lifted from the English works, and the citation names an
+// English chapter. Every card carries its source — that is the product, and the
+// one thing the unattributed aggregators cannot copy.
+
+export interface QuoteSource {
+	kind: 'chapter' | 'sermon';
+	slug: string;
+	/** Chapter title, or the sermon's own title. */
+	title: string;
+	/** The work: the book's title, or the sermon's. */
+	work: string;
+	/** Chapter order; null for a sermon. */
+	order: number | null;
+}
+
+export interface Quote {
+	slug: string;
+	text: string;
+	/** Index among the body's top-level children — the reader's `?p=` unit. */
+	paragraph: number;
+	source: QuoteSource;
+}
+
+export interface QuotePage {
+	author: { slug: string; name: string; photo_url: string };
+	quotes: Quote[];
+}
+
+/** Authors with at least one REVIEWED quotation — the pages that may be built. */
+export const listQuoteAuthors = () => apiFetch<string[]>('/api/library/quotes/');
+
+export const getQuotePage = (author: string) =>
+	apiFetch<QuotePage>(`/api/library/quotes/${author}/`);
+
+/** Where a quote's card sends the reader: the exact paragraph it came from. */
+export const quoteHref = (q: Quote): string =>
+	q.source.kind === 'sermon'
+		? `/sermons/${q.source.slug}?p=${q.paragraph}`
+		: `/books/${q.source.slug}/${q.source.order}?p=${q.paragraph}`;

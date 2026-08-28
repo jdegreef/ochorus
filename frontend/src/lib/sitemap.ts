@@ -24,6 +24,7 @@ import {
 	listAuthors,
 	listBooks,
 	listPlans,
+	listQuoteAuthors,
 	listScripturePages,
 	listSermons,
 	listTopics
@@ -91,6 +92,8 @@ export interface SitemapData {
 	pages: Entry[];
 	/** The scripture graph. English only, so these entries carry one locale. */
 	scripture: Entry[];
+	/** Quote pages. English only, and only where a person approved them. */
+	quotes: Entry[];
 	authors: Entry[];
 	books: Entry[];
 	sermons: Entry[];
@@ -113,6 +116,7 @@ export const sections = (): string[] => [
 	'sermons',
 	'authors',
 	'scripture',
+	'quotes',
 	'pages'
 ];
 
@@ -131,6 +135,7 @@ export function sectionEntries(data: SitemapData, section: string): Entry[] | nu
 	if (section === 'sermons') return data.sermons;
 	if (section === 'authors') return data.authors;
 	if (section === 'scripture') return data.scripture;
+	if (section === 'quotes') return data.quotes;
 	if (section === 'pages') return data.pages;
 	return null;
 }
@@ -161,6 +166,10 @@ async function build(): Promise<SitemapData> {
 	// "built" from drifting apart — the failure prerenderCoverage.test.ts exists
 	// to catch, and which is only cheap to avoid up front.
 	const scripturePages = await listScripturePages().catch(() => []);
+	// Authors whose quotations a person has REVIEWED. The same list the route's
+	// entry generator builds from, so the sitemap cannot advertise a quote page
+	// the review gate has not opened.
+	const quoteAuthors = await listQuoteAuthors().catch(() => []);
 
 	// Emission uses only the advertised locales; `perLocale` (all UI locales)
 	// stays available for the drift check below.
@@ -292,6 +301,13 @@ async function build(): Promise<SitemapData> {
 		}))
 	];
 
+	// Quote pages carry ONE locale, like the scripture graph and for the same
+	// reason: the quotations are lifted from the English works and every citation
+	// names an English chapter.
+	const quotes: Entry[] = quoteAuthors.map((a) => ({
+		byLocale: new Map([['en', `/quotes/${a}/`]] as [string, string][])
+	}));
+
 	// Chapter pages (prerendered): one entry per (work, chapter), again listing
 	// only the locales whose edition actually has that chapter.
 	const byChapter = new Map<string, Entry>();
@@ -312,6 +328,7 @@ async function build(): Promise<SitemapData> {
 		books,
 		sermons,
 		scripture,
+		quotes,
 		chapters: [...byChapter.values()]
 	};
 }

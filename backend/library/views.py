@@ -147,8 +147,16 @@ class AuthorDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
     serializer_class = AuthorDetailSerializer
 
     def get_object(self):
+        # `reviewed_quotes` is ANNOTATED, not counted per object: the serializer
+        # asking `obj.quotes.filter(...).count()` added a query to every author
+        # page, which `BookCardPayloadTests` budgets and caught.
         return get_object_or_404(
-            Author.objects.prefetch_related("translations"), slug=self.kwargs["slug"]
+            Author.objects.prefetch_related("translations").annotate(
+                reviewed_quotes=Count(
+                    "quotes", filter=Q(quotes__reviewed=True), distinct=True
+                )
+            ),
+            slug=self.kwargs["slug"],
         )
 
     def get_serializer_context(self):
@@ -713,6 +721,82 @@ class SearchClickView(APIView):
             except Exception:
                 logger.warning("search click logging failed", exc_info=True)
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class QuotePageView(APIView):
+    """An author's reviewed quotations, each with the citation that sources it.
+
+    REVIEWED ONLY, and that is the whole publication gate: extraction is
+    mechanical plus judgement, and neither is a person deciding a sentence may
+    be printed under an author's name. Unreviewed rows exist in the database and
+    reach no reader, exactly as an unapproved translation does.
+
+    404 when an author has none, so a page is never built for an empty shelf.
+    """
+
+    def get(self, request, author):
+        from .models import Author, Quote
+
+        writer = Author.objects.filter(slug=author).first()
+        if writer is None:
+            raise Http404("No such author.")
+        rows = (
+            Quote.objects.filter(author=writer, reviewed=True)
+            .select_related("chapter__book", "sermon")
+            .order_by("slug")
+        )
+        if not rows:
+            raise Http404("No published quotes for this author.")
+        return Response(
+            {
+                "author": {
+                    "slug": writer.slug,
+                    "name": writer.name,
+                    "photo_url": writer.photo_url,
+                },
+                "quotes": [self._quote(q) for q in rows],
+            }
+        )
+
+    def _quote(self, q):
+        # The citation is the product. A card without a source is the thing the
+        # aggregators already publish, and the reason they cannot be trusted.
+        if q.sermon_id:
+            source = {
+                "kind": "sermon",
+                "slug": q.sermon.slug,
+                "title": q.sermon.title,
+                "work": q.sermon.title,
+                "order": None,
+            }
+        else:
+            source = {
+                "kind": "chapter",
+                "slug": q.chapter.book.slug,
+                "title": q.chapter.title,
+                "work": q.chapter.book.title,
+                "order": q.chapter.order,
+            }
+        return {"slug": q.slug, "text": q.text, "paragraph": q.paragraph, "source": source}
+
+
+class QuoteAuthorsView(APIView):
+    """Authors with at least one reviewed quotation — the build's page list.
+
+    Read by the prerender entry generator and the sitemap, so neither can
+    advertise a quote page the review gate has not opened.
+    """
+
+    def get(self, request):
+        from .models import Quote
+
+        slugs = (
+            Quote.objects.filter(reviewed=True)
+            .values_list("author__slug", flat=True)
+            .distinct()
+            .order_by("author__slug")
+        )
+        return Response(list(slugs))
 
 
 class ScripturePagesView(APIView):

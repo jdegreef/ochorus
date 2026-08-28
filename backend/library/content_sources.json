@@ -24,6 +24,7 @@
     "library/migrations/data",
     "library/topic_seed.py",
     "library/plan_seed.py",
-    "library/corrections.py"
+    "library/corrections.py",
+    "library/quote_seed.py"
   ]
 }

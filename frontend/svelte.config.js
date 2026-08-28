@@ -92,6 +92,10 @@ const config = {
 					'/topics/[slug]',
 					'/scripture/[book]/[chapter]',
 					'/scripture/[book]/[chapter]/[verse]',
+					// Quote pages exist only for an author whose quotations a
+					// person has approved. Until `approve_quotes` runs there are
+					// none, which is the correct state — not a broken build.
+					'/quotes/[author]',
 					'/account'
 				]);
 				const unexpected = routes.filter((id) => !expected.has(id));
