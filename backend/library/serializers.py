@@ -399,6 +399,11 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
             "slug", "name", "bio", "bio_html", "photo_url", "birth_year",
             "death_year", "book_count", "sermon_count", "has_long_bio",
             "books", "sermons", "topics",
+            # Authoritative identifiers for the Person markup — see the field.
+            # Only the DETAIL serializer carries them: a card never emits
+            # Person markup, so shipping them on every book row would be bytes
+            # nothing reads.
+            "same_as",
         ]
 
     def get_bio(self, obj):

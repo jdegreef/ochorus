@@ -11,7 +11,11 @@
       "death_year": 1917,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-06-28T04:24:21.962Z"
+      "created_at": "2026-06-28T04:24:21.962Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Andrew_Murray_(minister)",
+        "https://www.wikidata.org/wiki/Q506510"
+      ]
     }
   },
   {
@@ -26,7 +30,11 @@
       "death_year": 1972,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-06-28T15:45:00.822Z"
+      "created_at": "2026-06-28T15:45:00.822Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Watchman_Nee",
+        "https://www.wikidata.org/wiki/Q379806"
+      ]
     }
   },
   {
@@ -41,7 +49,8 @@
       "death_year": null,
       "original_language": "en",
       "is_imprint": true,
-      "created_at": "2026-06-28T15:45:03.584Z"
+      "created_at": "2026-06-28T15:45:03.584Z",
+      "same_as": []
     }
   },
   {
@@ -56,7 +65,11 @@
       "death_year": 1928,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-06-28T15:49:42.033Z"
+      "created_at": "2026-06-28T15:49:42.033Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/R._A._Torrey",
+        "https://www.wikidata.org/wiki/Q718392"
+      ]
     }
   },
   {
@@ -71,7 +84,8 @@
       "death_year": null,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-06-28T15:49:44.838Z"
+      "created_at": "2026-06-28T15:49:44.838Z",
+      "same_as": []
     }
   },
   {
@@ -86,7 +100,10 @@
       "death_year": 1911,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-06-28T15:49:47.772Z"
+      "created_at": "2026-06-28T15:49:47.772Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Hannah_Whitall_Smith"
+      ]
     }
   },
   {
@@ -101,7 +118,8 @@
       "death_year": null,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-06-28T15:49:58.745Z"
+      "created_at": "2026-06-28T15:49:58.745Z",
+      "same_as": []
     }
   },
   {
@@ -116,7 +134,11 @@
       "death_year": 1892,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-06-28T15:50:10.689Z"
+      "created_at": "2026-06-28T15:50:10.689Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Charles_Spurgeon",
+        "https://www.wikidata.org/wiki/Q278825"
+      ]
     }
   },
   {
@@ -131,7 +153,10 @@
       "death_year": 1912,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-06-28T15:50:16.186Z"
+      "created_at": "2026-06-28T15:50:16.186Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/William_Booth"
+      ]
     }
   },
   {
@@ -146,7 +171,10 @@
       "death_year": 1951,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-06-28T15:50:38.382Z"
+      "created_at": "2026-06-28T15:50:38.382Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Amy_Carmichael"
+      ]
     }
   },
   {
@@ -161,7 +189,11 @@
       "death_year": 1929,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-06-28T15:50:48.807Z"
+      "created_at": "2026-06-28T15:50:48.807Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/F._B._Meyer",
+        "https://www.wikidata.org/wiki/Q5497430"
+      ]
     }
   },
   {
@@ -176,7 +208,11 @@
       "death_year": 1890,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-06-29T01:16:40.469Z"
+      "created_at": "2026-06-29T01:16:40.469Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Catherine_Booth",
+        "https://www.wikidata.org/wiki/Q431614"
+      ]
     }
   },
   {
@@ -191,7 +227,11 @@
       "death_year": 1717,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-06-29T01:16:40.471Z"
+      "created_at": "2026-06-29T01:16:40.471Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Jeanne_Guyon",
+        "https://www.wikidata.org/wiki/Q235098"
+      ]
     }
   },
   {
@@ -206,7 +246,11 @@
       "death_year": 1742,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-06-29T01:16:40.474Z"
+      "created_at": "2026-06-29T01:16:40.474Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Susanna_Wesley",
+        "https://www.wikidata.org/wiki/Q461044"
+      ]
     }
   },
   {
@@ -221,7 +265,11 @@
       "death_year": 1899,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-07-06T02:25:36.925Z"
+      "created_at": "2026-07-06T02:25:36.925Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Dwight_L._Moody",
+        "https://www.wikidata.org/wiki/Q453218"
+      ]
     }
   },
   {
@@ -236,7 +284,10 @@
       "death_year": 1919,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-07-09T16:24:35.548Z"
+      "created_at": "2026-07-09T16:24:35.548Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Albert_Benjamin_Simpson"
+      ]
     }
   },
   {
@@ -251,7 +302,10 @@
       "death_year": 1915,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-07-11T22:40:01.549Z"
+      "created_at": "2026-07-11T22:40:01.549Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Amanda_Berry_Smith"
+      ]
     }
   },
   {
@@ -266,7 +320,10 @@
       "death_year": 1891,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-07-11T22:40:01.559Z"
+      "created_at": "2026-07-11T22:40:01.559Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Samuel_Ajayi_Crowther"
+      ]
     }
   },
   {
@@ -281,7 +338,10 @@
       "death_year": 1831,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-07-11T22:40:01.566Z"
+      "created_at": "2026-07-11T22:40:01.566Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Richard_Allen_(bishop)"
+      ]
     }
   },
   {
@@ -296,7 +356,11 @@
       "death_year": 1988,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-07-11T22:40:01.573Z"
+      "created_at": "2026-07-11T22:40:01.573Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Festo_Kivengere",
+        "https://www.wikidata.org/wiki/Q1408749"
+      ]
     }
   },
   {
@@ -311,7 +375,8 @@
       "death_year": 1978,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-07-11T22:40:01.579Z"
+      "created_at": "2026-07-11T22:40:01.579Z",
+      "same_as": []
     }
   },
   {
@@ -326,7 +391,10 @@
       "death_year": 1898,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-07-11T22:40:01.586Z"
+      "created_at": "2026-07-11T22:40:01.586Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/George_M%C3%BCller"
+      ]
     }
   },
   {
@@ -341,7 +409,10 @@
       "death_year": 1905,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-07-11T22:40:01.592Z"
+      "created_at": "2026-07-11T22:40:01.592Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Hudson_Taylor"
+      ]
     }
   },
   {
@@ -356,7 +427,11 @@
       "death_year": 1875,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-07-13T19:32:07.163Z"
+      "created_at": "2026-07-13T19:32:07.163Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Charles_Grandison_Finney",
+        "https://www.wikidata.org/wiki/Q532375"
+      ]
     }
   },
   {
@@ -371,7 +446,11 @@
       "death_year": 1747,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-07-13T19:32:08.493Z"
+      "created_at": "2026-07-13T19:32:08.493Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/David_Brainerd",
+        "https://www.wikidata.org/wiki/Q727346"
+      ]
     }
   },
   {
@@ -386,7 +465,11 @@
       "death_year": 1688,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-07-16T04:08:59.808Z"
+      "created_at": "2026-07-16T04:08:59.808Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/John_Bunyan",
+        "https://www.wikidata.org/wiki/Q108206"
+      ]
     }
   },
   {
@@ -401,7 +484,10 @@
       "death_year": 1686,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-07-16T04:09:22.012Z"
+      "created_at": "2026-07-16T04:09:22.012Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Thomas_Watson_(Puritan)"
+      ]
     }
   },
   {
@@ -416,7 +502,11 @@
       "death_year": 1691,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-07-16T04:10:13.118Z"
+      "created_at": "2026-07-16T04:10:13.118Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Richard_Baxter",
+        "https://www.wikidata.org/wiki/Q680070"
+      ]
     }
   },
   {
@@ -431,7 +521,11 @@
       "death_year": 1758,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-07-16T04:10:53.079Z"
+      "created_at": "2026-07-16T04:10:53.079Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Jonathan_Edwards_(theologian)",
+        "https://www.wikidata.org/wiki/Q313073"
+      ]
     }
   },
   {
@@ -446,7 +540,11 @@
       "death_year": 1770,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-07-16T04:12:44.766Z"
+      "created_at": "2026-07-16T04:12:44.766Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/George_Whitefield",
+        "https://www.wikidata.org/wiki/Q314399"
+      ]
     }
   },
   {
@@ -461,7 +559,11 @@
       "death_year": 1791,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-07-16T04:12:52.443Z"
+      "created_at": "2026-07-16T04:12:52.443Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/John_Wesley",
+        "https://www.wikidata.org/wiki/Q213393"
+      ]
     }
   },
   {
@@ -476,7 +578,11 @@
       "death_year": 430,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-07-25T18:00:00Z"
+      "created_at": "2026-07-25T18:00:00Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Augustine_of_Hippo",
+        "https://www.wikidata.org/wiki/Q8018"
+      ]
     }
   },
   {
@@ -491,7 +597,11 @@
       "death_year": 1833,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-07-25T18:00:00Z"
+      "created_at": "2026-07-25T18:00:00Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Lemuel_Haynes",
+        "https://www.wikidata.org/wiki/Q6521557"
+      ]
     }
   },
   {
@@ -506,7 +616,10 @@
       "death_year": 1761,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-07-25T18:00:00Z"
+      "created_at": "2026-07-25T18:00:00Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/William_Law"
+      ]
     }
   },
   {
@@ -521,7 +634,10 @@
       "death_year": 1471,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-07-26T05:13:45.435Z"
+      "created_at": "2026-07-26T05:13:45.435Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Thomas_%C3%A0_Kempis"
+      ]
     }
   },
   {
@@ -536,7 +652,11 @@
       "death_year": 99,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-08-27T00:00:00.000Z"
+      "created_at": "2026-08-27T00:00:00.000Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Clement_of_Rome",
+        "https://www.wikidata.org/wiki/Q42887"
+      ]
     }
   },
   {
@@ -551,7 +671,10 @@
       "death_year": 108,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-08-27T00:00:00.000Z"
+      "created_at": "2026-08-27T00:00:00.000Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Ignatius_of_Antioch"
+      ]
     }
   },
   {
@@ -566,7 +689,11 @@
       "death_year": 258,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-08-27T00:00:00.000Z"
+      "created_at": "2026-08-27T00:00:00.000Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Cyprian",
+        "https://www.wikidata.org/wiki/Q190240"
+      ]
     }
   },
   {
@@ -581,7 +708,11 @@
       "death_year": 373,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-08-27T00:00:00.000Z"
+      "created_at": "2026-08-27T00:00:00.000Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Athanasius_of_Alexandria",
+        "https://www.wikidata.org/wiki/Q44024"
+      ]
     }
   },
   {
@@ -596,7 +727,11 @@
       "death_year": 407,
       "original_language": "en",
       "is_imprint": false,
-      "created_at": "2026-08-27T00:00:00.000Z"
+      "created_at": "2026-08-27T00:00:00.000Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/John_Chrysostom",
+        "https://www.wikidata.org/wiki/Q43706"
+      ]
     }
   }
 ]

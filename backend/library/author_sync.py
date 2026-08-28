@@ -34,6 +34,18 @@ from functools import cache
 # rename is a decision the catalog side owns.
 FILL_ONLY_FIELDS = ("bio_html", "photo_url", "birth_year", "death_year")
 
+# Fixture-wins, unlike everything above, and the difference is deliberate.
+#
+# Fill-only exists to protect a human decision made in the admin. `same_as` has
+# no such workflow — the identifiers are researched into `authors.json` and
+# nothing else writes them — so the only thing fill-only would protect is a
+# value already in the row, including a WRONG one. An identifier pointing at
+# the wrong person is the failure this field has to be able to recover from,
+# and a correction to the fixture has to reach production on the next deploy
+# rather than needing a migration. So the fixture is the source of truth here,
+# including when it clears the list.
+SYNCED_FIELDS = ("same_as",)
+
 # Stub wordings that USED to be in the catalogs. A live row still carrying one
 # is just as much a placeholder as a current stub — but string equality can't
 # know that, so rewording a stub would strand every row holding the old text,
@@ -134,6 +146,14 @@ def sync_author(author, fields: dict) -> tuple[list[str], list[str]]:
         value = fields.get(field)
         if value and not getattr(author, field, None):
             setattr(author, field, value)
+            changed.append(field)
+
+    for field in SYNCED_FIELDS:
+        # `in fields` rather than a truth test: a fixture row that OMITS the key
+        # (an older serialization) must be left alone, while one that carries an
+        # empty list is deliberately clearing it.
+        if field in fields and fields[field] != getattr(author, field, None):
+            setattr(author, field, fields[field])
             changed.append(field)
 
     if not changed:

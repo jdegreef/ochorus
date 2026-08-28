@@ -1,0 +1,181 @@
+"""`Author.same_as` — the entity identifiers behind the author page's Person markup.
+
+WHAT THIS CAN AND CANNOT GUARD. Whether a URL names the RIGHT person is a human
+check: nothing here can tell Thomas Watson the Puritan from Thomas Watson the
+IBM chairman, and a wrong identifier is worse than none because it tells search
+engines the page is about somebody else. So these tests guard everything else —
+shape, scope, and the rules that would let a bad value in quietly — and the
+identity check stays with the person who wrote the row.
+"""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+from django.test import SimpleTestCase, TestCase
+
+from .author_sync import sync_author
+from .models import Author
+
+FIXTURE = Path(__file__).resolve().parent / "fixtures" / "content" / "authors.json"
+
+#: The vocabularies we actually publish. Deliberately a closed list: `sameAs`
+#: is only as strong as the authority behind it, and a link to a blog or a
+#: bookseller dilutes the claim rather than supporting it.
+ALLOWED_HOSTS = ("en.wikipedia.org", "www.wikidata.org")
+
+
+def fixture_authors() -> list[dict]:
+    return [r["fields"] for r in json.loads(FIXTURE.read_text()) if r["model"] == "library.author"]
+
+
+class FixtureIdentifierTests(SimpleTestCase):
+    """Shape and scope of what ships in `authors.json`."""
+
+    def test_every_identifier_is_an_absolute_url_on_an_authority_we_trust(self):
+        for a in fixture_authors():
+            for url in a.get("same_as", []):
+                with self.subTest(author=a["slug"], url=url):
+                    self.assertTrue(url.startswith("https://"), "must be absolute https")
+                    host = url.split("/")[2]
+                    self.assertIn(host, ALLOWED_HOSTS)
+
+    def test_a_wikidata_identifier_is_a_q_number(self):
+        # A Wikidata URL that is not an item — a property, a lexeme, a search
+        # page — is not an identifier, and would assert something false.
+        for a in fixture_authors():
+            for url in a.get("same_as", []):
+                if "wikidata.org" in url:
+                    with self.subTest(author=a["slug"], url=url):
+                        self.assertRegex(url, r"^https://www\.wikidata\.org/wiki/Q\d+$")
+
+    def test_no_author_carries_the_same_identifier_twice(self):
+        for a in fixture_authors():
+            urls = a.get("same_as", [])
+            with self.subTest(author=a["slug"]):
+                self.assertEqual(len(urls), len(set(urls)))
+
+    def test_two_authors_never_share_an_identifier(self):
+        # The failure this catches is a copy-paste between neighbouring rows,
+        # which would claim two of our writers are the same human being.
+        seen: dict[str, str] = {}
+        for a in fixture_authors():
+            for url in a.get("same_as", []):
+                self.assertNotIn(
+                    url, seen, f"{a['slug']} and {seen.get(url)} share {url}"
+                )
+                seen[url] = a["slug"]
+
+    def test_an_imprint_never_gets_a_person_identifier(self):
+        # "Ochorus Originals" is a house byline. Pointing it at a real person
+        # would be a false claim about who wrote those books.
+        for a in fixture_authors():
+            if a.get("is_imprint"):
+                with self.subTest(author=a["slug"]):
+                    self.assertEqual(a.get("same_as", []), [])
+
+    def test_a_wikipedia_identifier_names_an_article_not_a_search(self):
+        for a in fixture_authors():
+            for url in a.get("same_as", []):
+                if "wikipedia.org" in url:
+                    with self.subTest(author=a["slug"], url=url):
+                        self.assertRegex(url, r"^https://en\.wikipedia\.org/wiki/[^?#]+$")
+
+    def test_the_historical_writers_are_actually_covered(self):
+        # A ratchet, not a target. Unlike almost everything else about this
+        # library, the entity work is FINISHABLE: it scales with the number of
+        # writers, not the number of books, so coverage going backwards is a
+        # mistake rather than a backlog.
+        with_ids = [a for a in fixture_authors() if a.get("same_as")]
+        self.assertGreaterEqual(len(with_ids), 36)
+
+    def test_every_author_is_either_identified_or_deliberately_not(self):
+        """No author may sit in the gap between "researched" and "decided".
+
+        The failure this prevents is silent: a writer added later inherits an
+        empty list, which is indistinguishable from one we looked into and
+        chose to leave blank. Naming the exceptions means adding a writer
+        WITHOUT an identifier is a decision someone has to make here.
+        """
+        # A house byline, two living contributors, and a writer with no
+        # article to point at.
+        expected_blank = {
+            "ochorus-originals",
+            "gareth-evans",
+            "hannah-buyinza",
+            "simeon-nsibambi",
+        }
+        blank = {a["slug"] for a in fixture_authors() if not a.get("same_as")}
+        self.assertEqual(
+            blank,
+            expected_blank,
+            "an author has no identifiers and is not on the known-blank list — "
+            "research them, or add them here with a reason",
+        )
+
+
+class SyncTests(TestCase):
+    """`same_as` is fixture-owned, unlike the fill-only author fields."""
+
+    def setUp(self):
+        self.author = Author.objects.create(slug="w", name="A Writer")
+
+    def test_an_empty_row_is_filled(self):
+        sync_author(self.author, {"same_as": ["https://en.wikipedia.org/wiki/X"]})
+        self.author.refresh_from_db()
+        self.assertEqual(self.author.same_as, ["https://en.wikipedia.org/wiki/X"])
+
+    def test_a_wrong_identifier_can_be_CORRECTED_by_the_fixture(self):
+        # The reason this field is not fill-only. An identifier pointing at the
+        # wrong person is exactly what has to be fixable by editing the fixture
+        # and deploying, rather than needing a data migration.
+        self.author.same_as = ["https://en.wikipedia.org/wiki/Wrong_Person"]
+        self.author.save()
+        sync_author(self.author, {"same_as": ["https://en.wikipedia.org/wiki/Right_Person"]})
+        self.author.refresh_from_db()
+        self.assertEqual(self.author.same_as, ["https://en.wikipedia.org/wiki/Right_Person"])
+
+    def test_the_fixture_can_clear_them(self):
+        self.author.same_as = ["https://en.wikipedia.org/wiki/X"]
+        self.author.save()
+        sync_author(self.author, {"same_as": []})
+        self.author.refresh_from_db()
+        self.assertEqual(self.author.same_as, [])
+
+    def test_a_row_that_omits_the_key_leaves_the_value_alone(self):
+        # An older serialization must not read as "clear it".
+        self.author.same_as = ["https://en.wikipedia.org/wiki/X"]
+        self.author.save()
+        changed, _ = sync_author(self.author, {"bio": ""})
+        self.author.refresh_from_db()
+        self.assertEqual(self.author.same_as, ["https://en.wikipedia.org/wiki/X"])
+        self.assertNotIn("same_as", changed)
+
+    def test_an_unchanged_row_writes_nothing(self):
+        # The seeds run on every deploy; a no-op has to stay a no-op.
+        self.author.same_as = ["https://en.wikipedia.org/wiki/X"]
+        self.author.save()
+        changed, _ = sync_author(self.author, {"same_as": ["https://en.wikipedia.org/wiki/X"]})
+        self.assertEqual(changed, [])
+
+
+class ApiTests(TestCase):
+    """The author page can only mark up what the API sends it."""
+
+    def test_the_detail_endpoint_carries_the_identifiers(self):
+        Author.objects.create(
+            slug="w",
+            name="A Writer",
+            same_as=["https://www.wikidata.org/wiki/Q1"],
+        )
+        res = self.client.get("/api/library/authors/w/")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["same_as"], ["https://www.wikidata.org/wiki/Q1"])
+
+    def test_an_author_without_any_sends_an_empty_list_not_null(self):
+        # `sameAs: null` in JSON-LD is invalid; the page tests for length, so
+        # the shape has to be a list either way.
+        Author.objects.create(slug="x", name="Another")
+        res = self.client.get("/api/library/authors/x/")
+        self.assertEqual(res.data["same_as"], [])
