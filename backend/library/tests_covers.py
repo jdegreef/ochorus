@@ -377,12 +377,12 @@ class CuratedArtTests(TestCase):
     def test_the_three_cover_tiers_answer_the_two_questions_differently(self):
         """The tier predicates, exercised on a member of each.
 
-        `CURATED_GROUND` has no entries yet — the two works it was built for are
-        waiting on artwork that has to be fetched from a museum API — so every
-        gate keyed on it is vacuous, and vacuous gates are how a tier ships
-        broken and nobody finds out until the first entry lands. This one is
-        not: it puts a slug in the table and asks the predicates the two
-        questions the whole system turns on.
+        Written when `CURATED_GROUND` was still empty, and it stays patched
+        rather than reaching for a real member now that it has two: what is
+        being tested is the PREDICATES, and a test that names a live slug goes
+        quietly vacuous the day someone moves that work to another tier — which
+        is exactly what happened to the `DERIVED_GROUND` row below when
+        `the-inner-chamber` left it.
 
         The answers are the tier, stated as a truth table:
 
@@ -407,7 +407,7 @@ class CuratedArtTests(TestCase):
         with patch.dict(CURATED_GROUND, {"a-designed-work": art}, clear=True):
             for slug, shared, keeps in (
                 ("waiting-on-god", True, False),        # CURATED
-                ("the-inner-chamber", True, True),      # DERIVED_GROUND
+                ("humility-2", True, True),             # DERIVED_GROUND
                 ("a-designed-work", True, True),        # CURATED_GROUND
                 ("a-work-in-no-tier-at-all", False, False),
             ):

@@ -150,7 +150,7 @@ class Ground(NamedTuple):
     The recipe lives here rather than in the script that draws it, for the
     reason ``curated_art.CURATED`` does: what a work's artwork should be is
     catalogue knowledge, and a script is a thing you run. Keeping it here also
-    means there is ONE table keyed by these sixteen slugs instead of two that a
+    means there is ONE table keyed by these fourteen slugs instead of two that a
     hand-written consistency check has to hold together.
 
     No rule finds these numbers, which is why they are written down one work at
@@ -182,7 +182,7 @@ class Ground(NamedTuple):
     #:
     #: WHY A GROUND RECORDS ITS SOURCE. Replacing a hand-made cover is meant to
     #: be a two-line diff — new file, new digest — and for the eleven
-    #: English-only works it is. For these sixteen it cannot be: the ground and
+    #: English-only works it is. For these fourteen it cannot be: the ground and
     #: the og twin were cut from the OLD artwork, and every gate stays green
     #: over them. ``test_designed_covers_are_never_changed`` re-reads whatever
     #: digest you just wrote, the twin-staleness gate deliberately skips
@@ -197,10 +197,18 @@ class Ground(NamedTuple):
 
 
 #: The works whose translations wear a ground cropped from the designed English
-#: cover of the same name, and the crop that makes it. Only the sixteen that HAVE
+#: cover of the same name, and the crop that makes it. Only works that HAVE
 #: translations are here — a work read in one language needs no language-neutral
 #: ground, and drawing one nobody points at is how a file with no reader gets
 #: committed.
+#:
+#: Fourteen of the sixteen translated works with a designed cover. The other
+#: two had nothing croppable left once the words were gone — a black doorway
+#: and a blur — and take a museum painting instead
+#: (``curated_art.CURATED_GROUND``). Membership here is therefore not "has a
+#: designed cover and translations"; it is that AND "the cover contains a
+#: picture". ``test_a_translated_designed_work_has_a_ground`` accepts either
+#: table.
 #:
 #: The designed cover each is cut from is NOT restated here: it is
 #: ``designed_url(slug)``, derived from ``DESIGNED`` above, so replacing one of
@@ -235,12 +243,9 @@ DERIVED_GROUND: dict[str, Ground] = {
         source="e40e84e7b60120827a09351a7dc152c7d78a7bab62246cb50382f825ebd29c13",
     ),
     # A true silhouette: nearly black before the scrim, so the heaviest lift
-    # here and still the darkest ground of the sixteen.
+    # here and still the darkest ground of the fourteen.
     "lord-teach-us-to-pray-2": Ground(0.44, 0.84, 0.03, 2.50,
         source="d1a60e268eb163232e075407d5b3ca24ee2caf70b056dce1f02ad048117c6da0",
-    ),
-    "prayer-the-pulse-of-life": Ground(0.56, 0.84, 0.11, 1.50,
-        source="29030df615f17c8cf480f36a1bf738c14a7407cf9cc51c0e178cc480386cc3e1",
     ),
     "purity-of-heart": Ground(0.55, 0.79, 0.12, 2.00,
         source="f3659ad885cb95c3bf8f0d954d45c078c709674407fd560fcc4cf96d1bd60554",
@@ -257,13 +262,6 @@ DERIVED_GROUND: dict[str, Ground] = {
     ),
     "the-god-of-all-comfort": Ground(0.50, 0.78, 0.11, 1.10,
         source="d2917c2f827ac26b0570ef7995dfe2c7bc0560ad81e4ccf1937dbc265b1a9dcd",
-    ),
-    # The doorway itself is an unlit room — a black rectangle at any lift its
-    # highlights survive — so this takes the lintel and sandstone ABOVE it,
-    # under the byline. The one work here whose ground is not its cover's
-    # subject, because its subject is an absence of light.
-    "the-inner-chamber": Ground(0.13, 0.33, 0.10, 1.60,
-        source="524abc40f0fb242aaba695875851382a6d98481799a6178304d47c8befbde671",
     ),
     "the-key-in-my-hand": Ground(0.26, 0.60, 0.02, 1.05,
         source="3e1a5e8c26072334f96a3a1039808ab24d0e749aad148613c23948c987fb1b62",
