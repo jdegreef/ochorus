@@ -29,6 +29,21 @@
  * re-run. It cannot catch a change to the COMPOSITION below — nothing but
  * running it can — which is why the tiers are kept as thin as they are.
  *
+ * THE MANIFEST IS ALSO READ, which it was not for a long time. It was written
+ * every run and consulted only by a test, while this script launched Chromium
+ * and re-rendered all 134 cards each time, then discarded the ones whose bytes
+ * matched. Comparing the digests it wrote last time first takes a run from
+ * minutes to about two seconds. A card is skipped only when its `ground` and
+ * `style` are unchanged AND the global `css` and `markup` digests still match
+ * AND the file is still on disk; `--force` ignores all of that.
+ *
+ * That also stopped a quieter problem. These PNGs are reproducible on one
+ * machine and NOT across machines — a different Chromium or libvips build
+ * re-encodes the same pixels a shade differently, and twelve twins drawn in
+ * another session came back as twelve modified files here for a mean-brightness
+ * difference of 0.3. Because a skip does not re-encode, a checkout whose inputs
+ * have not moved no longer churns files just for having been run somewhere else.
+ *
  * ONE PER SLUG, ENGLISH. The fallback path is keyed by slug alone, so a
  * translated page shares the English card. That is `generate-og.mjs`'s policy,
  * inherited rather than invented here: scrapers rarely read localized cards.
@@ -41,16 +56,6 @@
  * tiers it does not cover. They never collide (a work is one tier), and the
  * split is worth naming because one filename with two writers is the kind of
  * thing that grows a third.
- *
- * IT ONLY REDRAWS WHAT CHANGED, and that is about the DIFF rather than time.
- * A run used to render all 134 cards and write any whose bytes differed from
- * the committed file — which asks whether THIS renderer agrees with the one
- * that drew them, and two Chromiums do not. On a machine a version ahead every
- * card re-encodes, so a two-cover change arrives as a 134-file commit with the
- * real edit buried in it. That happened, and the 129 unrelated files had to be
- * picked back out by hand against this very manifest. So the manifest is what
- * decides now: it already records what each card was MADE from, which is the
- * question that has an answer. A deliberate renderer change is `--force`.
  *
  * WHY CHROMIUM AND NOT SATORI
  * The sermon cards are satori because they are laid out here, in JSX-ish
@@ -361,15 +366,15 @@ function buildFontCss(script) {
  *  and the library draws its cards in slug order, so the cache still holds. */
 const FONT_CSS = new Map();
 
-/** What a card with no script of its own is set in — Latin, and said once.
- *  The manifest records this normalised value, so it has to be the same rule
- *  the faces are chosen by rather than a second copy of it. */
+/** What a card with no script of its own is set in. Said once, because the
+ *  manifest records this normalised value and it has to be the same rule the
+ *  faces are chosen by rather than a second copy of it. */
 const scriptKey = (script) => script ?? 'latin';
 
 /** The face block for one card's script, cut once and kept. The ONE place that
- *  populates the Map: it had become two — the page builder and the digest —
- *  which is a quiet way for the digest to end up describing faces other than
- *  the ones actually rendered. */
+ *  populates the Map — it had become two, the page builder and the digest, and
+ *  that is a quiet way for the digest to describe faces other than the ones
+ *  actually rendered. */
 function fontCssFor(script) {
 	const key = scriptKey(script);
 	if (!FONT_CSS.has(key)) FONT_CSS.set(key, buildFontCss(script));
@@ -493,25 +498,30 @@ async function assertTitleFace(page, book) {
 
 const digest = (buf) => createHash('sha256').update(buf).digest('hex');
 
-/** `--force` redraws every twin, whatever the manifest says. For a deliberate
- *  renderer change — a Playwright bump you mean to adopt, a `sharp` setting —
- *  which is real drift no input digest can see. */
-const force = process.argv.includes('--force');
-
+/**
+ * What the last run recorded, or nothing.
+ *
+ * The manifest has always been WRITTEN and never READ. Its own header says it
+ * exists "so a stale twin can be told from a fresh one" — and the only reader
+ * was a test. Meanwhile this script launched Chromium and re-rendered all 134
+ * cards on every run, then threw away the ones whose bytes matched. Reading
+ * back what it just wrote last time turns a multi-minute run into a few
+ * seconds, using digests the gates already trust.
+ */
 /**
  * Everything one card is made from, as the manifest records it.
  *
  * `ground` and `style` are the two the GATES read, and their names are fixed by
  * those readers: `CoverAssetTests` recomputes `ground` in Python, and
  * `coverOgManifest.test.ts` checks `style` against the table. The rest are here
- * for this script's own skip decision, and each is a way a card changes while
- * the ground bytes and the strings sit still:
+ * for the skip, and each is a way a card changes while the ground bytes and the
+ * strings sit still — which, with the skip in place, means silently:
  *
- *   `scrim`  — how far the wash over a painting is scaled, per slug. Not
- *              hypothetical: re-measuring took `prayer-the-pulse-of-life` from
- *              0.30 to 0.90 in one commit. Had the painting not changed in the
- *              same breath, `ground` would not have moved and every translated
- *              card would have kept the old wash.
+ *   `scrim`  — how far the wash over a painting is scaled, per slug. NOT
+ *              hypothetical, and measured on this very script: re-measuring took
+ *              `prayer-the-pulse-of-life` from 0.30 to 0.90, and moving
+ *              `godliness` alone redrew nothing at all — its seven translated
+ *              cards kept the old wash with every gate green.
  *   `script` — which face the title is set in. Derived from the language, so it
  *              moves only if that table does; a twin whose LANGUAGE changed is a
  *              different key rather than a changed entry.
@@ -531,42 +541,23 @@ function made(book, groundBytes) {
 }
 
 /**
- * Same card, by every field the PREVIOUS entry actually recorded.
- *
- * Lenient about a field the old entry does not carry, which is a migration
- * decision rather than laziness. Add a field to `made` and every committed
- * entry lacks it; the strict reading is "unknown, therefore stale", which
- * redraws all 134 on the next run — the mass diff this skip exists to stop,
- * reintroduced once per field added. The lenient reading backfills it from what
- * is on disk, and every run after that is strict about it.
- *
- * What that costs: a card already wrong in the NEW field's dimension stays
- * wrong, because nothing recorded an old value to disagree with. So when you
- * add one, satisfy yourself the committed twins are right for it — or run
- * `--force` once, deliberately, and commit the redraw.
- *
- * `ground` and `style` are required outright: every entry has carried both
- * since the manifest existed, so their absence is a truncated entry rather than
- * an older schema.
- */
-function sameEntry(before, now) {
-	if (!before || before.ground === undefined || before.style === undefined) return false;
-	return Object.keys(now).every((k) => before[k] === undefined || before[k] === now[k]);
-}
-
-/**
  * The font faces every card is drawn with, as bytes.
  *
  * Built for each script UP FRONT rather than lazily as pages are rendered, and
- * the skip is what forces that: populate this Map on demand and its contents
- * depend on which cards happened to be redrawn, so the digest would change from
+ * the skip is what forces that: populate the Map on demand and its contents
+ * depend on which cards happened to be redrawn, so the digest would move from
  * run to run for no reason at all.
  *
- * Worth digesting because a fontsource upgrade re-cuts the woff2 and every
- * title is then set in glyphs nothing else here can see — not `ground` (the
- * cover file and the strings), not `css` (the composition), not `markup` (the
- * tree). While every twin was redrawn every run the byte comparison caught that
- * by accident; a skip that trusts the manifest needs it recorded on purpose.
+ * Worth digesting because a fontsource upgrade re-cuts the woff2 and every title
+ * is then set in glyphs nothing else here can see — not `ground` (the cover file
+ * and the strings), not `css` (the composition), not `markup` (the tree). While
+ * every twin was redrawn every run the byte comparison caught that by accident;
+ * a skip that trusts the manifest needs it recorded on purpose.
+ *
+ * No gate recomputes this one and none should: a digest a gate cannot derive is
+ * a gate that fails forever, and these come out of node_modules. It is the
+ * script comparing its own arithmetic across two runs, so it cannot go
+ * stale-and-unverifiable the way a gate-side digest could.
  */
 function fontDigest(books) {
 	for (const book of books) fontCssFor(book.script);
@@ -576,40 +567,70 @@ function fontDigest(books) {
 	return digest(Buffer.from(blocks.join('\0')));
 }
 
-/** What the previous run recorded, or empty on a first run. */
-function priorManifest() {
-	const file = resolve(COVERS, 'og-manifest.json');
-	if (!existsSync(file)) return {};
+/**
+ * Was this card drawn from what it is made from now?
+ *
+ * Strict about `ground` and `style`, which every entry has carried since the
+ * manifest existed. LENIENT about a field the recorded entry simply lacks, and
+ * that is a migration decision rather than laziness: add a field and every
+ * committed entry is missing it, so the strict reading is "unknown, therefore
+ * stale" and redraws all 134 on the next run — which on a machine whose
+ * Chromium differs is a 134-file diff, the thing this skip exists to prevent,
+ * reintroduced once per field added. The lenient reading backfills from what is
+ * on disk, and every run after that is strict about it.
+ *
+ * What it costs: a card already wrong in the NEW field's dimension stays wrong,
+ * because nothing recorded an old value to disagree with. So when you add one,
+ * satisfy yourself the committed twins are right for it — or run `--force` once,
+ * deliberately, and commit the redraw.
+ */
+function drawnFrom(cached, entry) {
+	if (!cached || cached.ground !== entry.ground || cached.style !== entry.style) return false;
+	return Object.keys(entry).every((k) => cached[k] === undefined || cached[k] === entry[k]);
+}
+
+function lastRun() {
+	const path = resolve(COVERS, 'og-manifest.json');
+	if (!existsSync(path)) return null;
 	try {
-		return JSON.parse(readFileSync(file, 'utf8'));
+		return JSON.parse(readFileSync(path, 'utf8'));
 	} catch {
-		// Unreadable is not a reason to fail — it is a reason to redraw
-		// everything, which is what an empty prior does.
-		return {};
+		// A half-written or hand-mangled manifest means "redraw everything",
+		// which is the safe answer and the behaviour this had before.
+		return null;
 	}
 }
 
 async function main() {
 	const books = needTwins();
+	const force = process.argv.includes('--force');
+	const previous = force ? null : lastRun();
+	// THE COMPOSITION IS GLOBAL, so it gates the whole skip rather than any one
+	// card: a changed stylesheet or a changed markup module redraws all of them.
+	// Checked once, here, because getting it wrong is not a slow run — it is 134
+	// cards silently keeping a retired design, the exact failure this script was
+	// written to end.
+	const shared = {
+		css: digest(Buffer.from(COVER_CSS)),
+		markup: digest(readFileSync(resolve(HERE, '../src/lib/coverCardMarkup.ts'))),
+		// THE FACES too, for the reason `fontDigest` gives. Lenient about its
+		// ABSENCE, and only its absence: it arrived after the committed manifest
+		// was written, and reading a missing digest as a mismatch would redraw the
+		// whole library once, on the first run after it shipped. `css` and
+		// `markup` stay strict — every manifest has carried both.
+		fonts: fontDigest(books)
+	};
+	const composed =
+		previous?.css === shared.css &&
+		previous?.markup === shared.markup &&
+		(previous.fonts === undefined || previous.fonts === shared.fonts);
+	const known = composed ? (previous.twins ?? {}) : {};
+
 	// Launched on first use, not here: a run with nothing to redraw should not
 	// need a browser at all, and on a machine where Playwright's download never
 	// happened that is the difference between a no-op and a crash.
 	let browser = null;
 	let page = null;
-
-	// The digests every card shares. Recomputed first, because they decide
-	// whether ANY twin may be skipped: move the composition, the tree or the
-	// faces and every committed card is stale at once, whatever its own entry
-	// says. Absent is not "changed" — see `sameEntry` for why.
-	const previous = priorManifest();
-	const shared = {
-		css: digest(Buffer.from(COVER_CSS)),
-		markup: digest(readFileSync(resolve(HERE, '../src/lib/coverCardMarkup.ts'))),
-		fonts: fontDigest(books)
-	};
-	const sharedUnchanged = Object.entries(shared).every(
-		([key, value]) => previous[key] === undefined || previous[key] === value
-	);
 
 	const wrote = [];
 	const manifest = {};
@@ -620,21 +641,11 @@ async function main() {
 		const entry = made(book, groundBytes);
 		manifest[book.twin.key] = entry;
 		const dest = resolve(COVERS, book.twin.file);
-
-		// NOTHING THIS CARD IS MADE FROM HAS MOVED — so do not redraw it.
-		//
-		// The byte comparison further down cannot be what decides this. It asks
-		// whether THIS renderer would produce the committed pixels, and two
-		// Chromiums do not agree on that: a version ahead, all 134 re-encode and
-		// the run commits a 134-file diff with the two that actually changed
-		// invisible inside it. The manifest is the better question because it asks
-		// about INPUTS, which is what it has recorded all along.
-		if (
-			!force &&
-			sharedUnchanged &&
-			sameEntry(previous.twins?.[book.twin.key], entry) &&
-			existsSync(dest)
-		) {
+		// Same inputs, same composition, and the file is still there: nothing a
+		// render could produce differs from what is on disk. The file check is
+		// not belt-and-braces — a twin deleted by hand leaves the manifest
+		// claiming it, and skipping on the digest alone would never write it back.
+		if (drawnFrom(known[book.twin.key], entry) && existsSync(dest)) {
 			skipped++;
 			continue;
 		}
@@ -679,8 +690,7 @@ async function main() {
 					'names the house style it was set in, and `css` digests the composition ' +
 					'they were drawn with (both checked by coverOgManifest.test.ts). ' +
 					'`script`, `art`, `scrim` and `fonts` are the rest of what a card is ' +
-					'made from; the script re-reads them to skip redrawing a twin whose ' +
-					'inputs have not moved. `--force` redraws regardless.',
+					'made from, read back by the skip so a change to any of them redraws.',
 				// THE COMPOSITION, so a change to it cannot ship without a redraw.
 				// This file's header used to say nothing but running it could catch a
 				// change to the drawing — true while the Python gate was the only one,
@@ -705,11 +715,9 @@ async function main() {
 				// drifts — a card's own markup already reaches the picture through
 				// the byte comparison above.
 				markup: shared.markup,
-				// THE FACES, which no gate recomputes and none should: a digest a gate
-				// cannot derive is a gate that fails forever, and these come out of
-				// node_modules. It is recorded for the skip above, which is this script
-				// comparing its own arithmetic across two runs — so it cannot go
-				// stale-and-unverifiable the way a gate-side digest could.
+				// AND THE FACES. Not a gate — nothing recomputes this and nothing
+				// should; see `fontDigest`. It is here so the next run can ask
+				// whether the faces moved, which no other digest here can answer.
 				fonts: shared.fonts,
 				twins: Object.fromEntries(Object.entries(manifest).sort(([a], [b]) => a.localeCompare(b)))
 			},
@@ -720,7 +728,7 @@ async function main() {
 
 	console.log(
 		`wrote ${wrote.length} of ${books.length} twins` +
-			(skipped ? ` \u00b7 skipped ${skipped} whose inputs are unchanged` : '')
+			(skipped ? ` (${skipped} unchanged, skipped — \`--force\` redraws them)` : '')
 	);
 	for (const line of wrote) console.log(`    ${line}`);
 }

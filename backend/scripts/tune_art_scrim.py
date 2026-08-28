@@ -42,10 +42,8 @@ BACKEND = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BACKEND))
 
 from library.covers import (  # noqa: E402
-    _AUTHOR_Y,
     _FRAME_INSET,
-    AUTHOR_INK_OPACITY,
-    AUTHOR_MIN_CONTRAST,
+    INK_REGIONS,
     H,
     W,
     scrimmed,
@@ -58,7 +56,6 @@ TS_TABLE = BACKEND.parent / "frontend" / "src" / "lib" / "coverScrim.ts"
 # The title runs 7.6-10.45cqw, which is large text: AA asks 3:1 of it, where the
 # byline at 3.9cqw is small and asks 4.5. Both are held a little above their bar
 # so a re-encode or a resampling difference cannot drop a painting under it.
-TITLE_MIN = 3.0
 MARGIN = 0.1
 
 
@@ -81,22 +78,55 @@ def _worst(band, opacity: float) -> float:
     return out
 
 
-def measure(image, strength: float) -> tuple[float, float]:
-    """(byline, title) worst contrast for one painting at one strength."""
-    plate = scrimmed(image, strength)
-    byline = plate.crop((_FRAME_INSET, _AUTHOR_Y - 9, W - _FRAME_INSET, _AUTHOR_Y + 9))
-    title = plate.crop((_FRAME_INSET, round(H * 0.36), W - _FRAME_INSET, round(H * 0.62)))
-    return _worst(byline, AUTHOR_INK_OPACITY), _worst(title, 1.0)
 
 
-def needed(image) -> float | None:
-    """The least strength that clears both bars, or None if none does."""
+def measure(image, strength: float, subtitle: bool) -> dict[str, float]:
+    """Worst contrast per region for one painting at one strength."""
+    plate = scrimmed(image, strength, subtitle)
+    out = {}
+    for name, top, bottom, opacity, _bar in INK_REGIONS:
+        if name == "subtitle" and not subtitle:
+            continue
+        out[name] = _worst(
+            plate.crop((_FRAME_INSET, top, W - _FRAME_INSET, bottom)), opacity
+        )
+    return out
+
+
+def needed(image, subtitle: bool) -> float | None:
+    """The least strength that clears every bar, or None if none does.
+
+    ``subtitle`` says whether this work's covers draw one. It decides both
+    whether the subtitle strip is measured AND whether the fourth scrim band is
+    there to be measured against — the two go together, which is why one flag
+    carries both.
+    """
+    bars = {name: bar for name, _t, _b, _o, bar in INK_REGIONS}
     for step in range(30, 201, 5):
         strength = step / 100
-        byline, title = measure(image, strength)
-        if byline >= AUTHOR_MIN_CONTRAST + MARGIN and title >= TITLE_MIN + MARGIN:
+        got = measure(image, strength, subtitle)
+        if all(v >= bars[k] + MARGIN for k, v in got.items()):
             return strength
     return None
+
+
+def works_with_a_subtitle() -> set[str]:
+    """Slugs whose fixture carries a subtitle in any language.
+
+    ANY language, not English: the scrim is one file per work and a Spanish
+    subtitle needs the band as much as an English one. A work that gains a
+    subtitle in a translation therefore wants this re-run — which the fixture
+    gate says, because it measures the same way.
+    """
+    import json
+
+    books = BACKEND / "library" / "fixtures" / "content" / "books"
+    return {
+        row["fields"]["slug"]
+        for path in books.glob("*.json")
+        for row in json.loads(path.read_text())
+        if row["model"] == "library.book" and (row["fields"].get("subtitle") or "").strip()
+    }
 
 
 def main() -> int:
@@ -106,15 +136,17 @@ def main() -> int:
     parser.add_argument("--dry-run", action="store_true")
     opts = parser.parse_args()
 
+    subtitled = works_with_a_subtitle()
     table, unusable = {}, []
     for path in sorted(ART.glob("*.jpg")):
         image = Image.open(path).convert("RGB").resize((W, H), Image.LANCZOS)
-        strength = needed(image)
+        strength = needed(image, path.stem in subtitled)
         if strength is None:
             unusable.append(path.stem)
             continue
         table[path.stem] = strength
-        print(f"  {path.stem:44} {strength:.2f}x")
+        mark = " +subtitle" if path.stem in subtitled else ""
+        print(f"  {path.stem:44} {strength:.2f}x{mark}")
 
     if unusable:
         print(
