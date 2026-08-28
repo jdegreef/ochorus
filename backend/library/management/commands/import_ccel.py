@@ -27,8 +27,11 @@ CCEL_BASE = "https://ccel.org/ccel/"
 # which would cut "Life of St. Antony. …" down to "Life of St".
 _SENTENCE_END = re.compile(r"[.?!](?=\s*--|\s+\S|$)")
 _ABBREVIATIONS = frozenset(
-    "st ss mt mk lk jn cf ch chap chaps vs viz etc no nos vol vols p pp fr dr mr "
-    "mrs rev jr sr al ad bc ib ibid ed eds trans".split()
+    # Saints and gospels, reference shorthand, and the honorifics Schaff uses.
+    ["st", "ss", "mt", "mk", "lk", "jn"]
+    + ["cf", "ch", "chap", "chaps", "vs", "viz", "etc", "no", "nos", "vol", "vols"]
+    + ["p", "pp", "ib", "ibid", "ed", "eds", "trans", "al", "ad", "bc"]
+    + ["fr", "dr", "mr", "mrs", "rev", "jr", "sr"]
 )
 _TITLE_CAP = 72   # characters; a contents-list line that still reads at a glance
 _TITLE_MIN = 24   # never cut so short that the title says nothing
