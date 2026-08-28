@@ -1,3 +1,8 @@
+// prerender refresh 2026-08-28: humility-12-days.hi (job #1103).
+// humility-2 is that plan's ONE source book, so shipping the hi edition
+// publishes the plan for hi and this shelf has a new card to bake. The two
+// other books in the same PR (all-of-grace.hi, the-way-to-god.hi) feed no
+// plan at all and owe only the books/ touch.
 import { listPlans } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
