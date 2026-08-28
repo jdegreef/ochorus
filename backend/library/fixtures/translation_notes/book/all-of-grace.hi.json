@@ -1,0 +1,379 @@
+{
+ "kind": "book",
+ "slug": "all-of-grace",
+ "language": "hi",
+ "job_issue": 1101,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Isaiah 1:18",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Romans 4:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "Isaiah 64:6",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Romans 3:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Romans 8:33",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 33
+  },
+  {
+   "reference": "Romans 8:30",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 39
+  },
+  {
+   "reference": "Psalm 51:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 41
+  },
+  {
+   "reference": "Isaiah 43:25",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Micah 7:18",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Matthew 12:31",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 47
+  },
+  {
+   "reference": "Matthew 8:3",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 48
+  },
+  {
+   "reference": "Psalm 22:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 60
+  },
+  {
+   "reference": "Job 41:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 70
+  },
+  {
+   "reference": "1 John 3:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 72
+  },
+  {
+   "reference": "Matthew 1:21",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 73
+  },
+  {
+   "reference": "Romans 11:29",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 80
+  },
+  {
+   "reference": "John 3:7",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 81
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 87
+  },
+  {
+   "reference": "Ephesians 2:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 89
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 90
+  },
+  {
+   "reference": "2 Corinthians 5:19",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 97
+  },
+  {
+   "reference": "Hebrews 11:6",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 97
+  },
+  {
+   "reference": "Isaiah 55:3",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 97
+  },
+  {
+   "reference": "Psalm 9:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 97
+  },
+  {
+   "reference": "Romans 10:14",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 97
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 98
+  },
+  {
+   "reference": "1 John 5:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 98
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 101
+  },
+  {
+   "reference": "Mark 5:36",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 103
+  },
+  {
+   "reference": "John 6:47",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 104
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 109
+  },
+  {
+   "reference": "John 20:29",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 117
+  },
+  {
+   "reference": "Ephesians 2:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 127
+  },
+  {
+   "reference": "Luke 7:50",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 127
+  },
+  {
+   "reference": "Romans 10:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 130
+  },
+  {
+   "reference": "Mark 16:16",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 132
+  },
+  {
+   "reference": "Romans 7:18",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 134
+  },
+  {
+   "reference": "Psalm 76:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 137
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 139
+  },
+  {
+   "reference": "Romans 5:6",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 139
+  },
+  {
+   "reference": "Zechariah 12:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 154
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 175
+  },
+  {
+   "reference": "John 5:44",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 178
+  },
+  {
+   "reference": "Job 19:25",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 193
+  },
+  {
+   "reference": "Matthew 19:6",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 208
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 209
+  },
+  {
+   "reference": "Acts 5:31",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 227
+  },
+  {
+   "reference": "Ezekiel 18:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 228
+  },
+  {
+   "reference": "Matthew 27:25",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 232
+  },
+  {
+   "reference": "John 1:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 233
+  },
+  {
+   "reference": "Psalm 81:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 233
+  },
+  {
+   "reference": "1 Corinthians 1:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 252
+  },
+  {
+   "reference": "1 Corinthians 15:58",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 254
+  },
+  {
+   "reference": "1 Corinthians 1:8",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 261
+  },
+  {
+   "reference": "Genesis 49:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 262
+  },
+  {
+   "reference": "Genesis 21:7",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 264
+  },
+  {
+   "reference": "1 Corinthians 1:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 276
+  },
+  {
+   "reference": "Matthew 22:14",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 279
+  },
+  {
+   "reference": "Song of Songs 8:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 283
+  },
+  {
+   "reference": "John 4:23",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 288
+  }
+ ],
+ "note": [
+  "Take Root API is egress-blocked from this container (curl to api.takeroot.bible returns 000). The IRV was fetched instead from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/hin_irv/usx — that collection serves USX, not USFM), all 66 books / 31,104 verses, and every span marked mined was lifted from it with a script rather than typed.",
+  "Derived by measurement, not from a translator's report — and measured the opposite way round from humility-2, because this author quotes scripture constantly and prints a reference perhaps a dozen times in twenty chapters. Every quoted span of 12 characters or more was searched against the whole IRV; where it matched, the match itself named the reference. 60 of 60 distinct references matched. The remainder are spans the author DID cite and whose Hindi is ours, not the IRV's: that is the review queue. Quoted spans that neither matched nor carried a citation are not listed — they are hymn stanzas, Rowland Hill's sow, and Luther's retort to the devil, not scripture.",
+  "Quotation marks MIRROR the English source, which is what the shipped Hindi books do. all-of-grace's source is a straight-quote text, so this edition is too; humility-2's is curly, and it stayed curly. Citations follow the shipped corpus: Western digits and a tight C:V colon.",
+  "HAZARD, flagged for a native reviewer — Isaiah 45:22. The author's whole argument in ch04 rests on the word LOOK: he tells how he was converted by hearing \"Look unto me, and be ye saved\", and the sermon he heard hung on the ease of a look. The IRV does not read look; it reads \"तुम मेरी ओर फिरो\" (turn toward me). The verse is printed as the IRV has it, and the author's own sentence then reads \"तब मैंने उसी ओर दृष्टि की\" (then I looked that way), which follows coherently from turn but no longer echoes the verse word for word. ch11 quotes the same verse in passing and uses the same IRV wording, so the two chapters agree. A reviewer may prefer to render the verse with a look-verb in both places and say so in a footnote; that is an editorial call, not a mechanical one.",
+  "DECISION, flagged — ch08 opens an illustration with \"The Negro said, when he read the chapter…\". The anecdote turns on a malapropism, not on the man's race, and the obvious Hindi word for the racial term (हबशी) is a slur in current use. It is rendered \"एक अश्वेत व्यक्ति\" (a Black person), which keeps the anecdote and drops nothing but the epithet. The malapropism itself carries: confound/expound became उलझा/सुलझा, a real Hindi minimal pair.",
+  "ch18 discusses two ENGLISH renderings of 1 Corinthians 1:8 — the Authorized \"blameless\" against the Revised Version's \"unreproveable\", with the author proposing \"unimpeachable\". None of that distinction exists in Hindi, where the IRV reads निर्दोष throughout. The three are rendered as three Hindi phrases (निर्दोष / निन्दा से परे / जिस पर कोई अभियोग न लग सके) so the argument still has three terms to compare, but a reviewer should know the contrast is imported, not native.",
+  "ENGLISH SOURCE DEFECTS found while translating and NOT silently repaired here — they remain in all-of-grace.en.json and want a separate content fix: ch08 \"springing up into everasting life\" (for everlasting) and an opening quote that is never closed; ch13 \"the whole process of mutrition\" (for nutrition); ch11 \"how to perform that which l would\" (lowercase L for I); ch07 and ch11 \"wordly cares\" (for worldly). Two paragraphs have also lost their opening quotation mark to a dropped drop-cap: ch13 opens YE MUST BE BORN AGAIN.\" and ch18 has blameless unto the day of our Lord Jesus Christ.\" The Hindi mirrors the source rather than inventing marks the English does not have.",
+  "Every scripture span this edition quotes and the author cites is now the IRV's own wording: the review queue for verse fidelity is empty. That is a statement about byte-match against the IRV, not about whether the surrounding Hindi prose reads well — the prose is what the native review is for."
+ ]
+}
