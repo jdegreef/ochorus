@@ -202,12 +202,12 @@ class Ground(NamedTuple):
 #: ground, and drawing one nobody points at is how a file with no reader gets
 #: committed.
 #:
-#: Fourteen of the sixteen translated works with a designed cover. The other
-#: two had nothing croppable left once the words were gone — a black doorway
-#: and a blur — and take a museum painting instead
-#: (``curated_art.CURATED_GROUND``). Membership here is therefore not "has a
-#: designed cover and translations"; it is that AND "the cover contains a
-#: picture". ``test_a_translated_designed_work_has_a_ground`` accepts either
+#: NOT every translated work with a designed cover, which is what membership
+#: here looks like from the outside. Two of them had nothing croppable left
+#: once the words were gone — a black doorway and a blur — and take a museum
+#: painting instead (``curated_art.CURATED_GROUND``). So the rule is "designed
+#: cover, and translations, AND a picture in it that survives losing the
+#: words", and ``test_a_translated_designed_work_has_a_ground`` accepts either
 #: table.
 #:
 #: The designed cover each is cut from is NOT restated here: it is
