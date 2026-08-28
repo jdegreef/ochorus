@@ -361,6 +361,21 @@ function buildFontCss(script) {
  *  and the library draws its cards in slug order, so the cache still holds. */
 const FONT_CSS = new Map();
 
+/** What a card with no script of its own is set in — Latin, and said once.
+ *  The manifest records this normalised value, so it has to be the same rule
+ *  the faces are chosen by rather than a second copy of it. */
+const scriptKey = (script) => script ?? 'latin';
+
+/** The face block for one card's script, cut once and kept. The ONE place that
+ *  populates the Map: it had become two — the page builder and the digest —
+ *  which is a quiet way for the digest to end up describing faces other than
+ *  the ones actually rendered. */
+function fontCssFor(script) {
+	const key = scriptKey(script);
+	if (!FONT_CSS.has(key)) FONT_CSS.set(key, buildFontCss(script));
+	return FONT_CSS.get(key);
+}
+
 /** The brand lockup, from the copy `BrandMark.svelte` itself renders. */
 const LOCKUP = readFileSync(resolve(HERE, '../src/lib/brand/ochorus-lockup.svg'), 'utf8');
 
@@ -409,9 +424,7 @@ function coverPage(book, groundBytes) {
 	const ground = book.art
 		? `<img class="ground" src="data:image/jpeg;base64,${groundBytes.toString('base64')}" alt="">`
 		: `<div class="ground">${groundBytes.toString('utf8')}</div>`;
-	const scriptKey = book.script ?? 'latin';
-	if (!FONT_CSS.has(scriptKey)) FONT_CSS.set(scriptKey, buildFontCss(book.script));
-	return `<style>${FONT_CSS.get(scriptKey)}${COVER_CSS}
+	return `<style>${fontCssFor(book.script)}${COVER_CSS}
 html,body{margin:0}
 /* The three things a page needs that a cover inside the app gets from its
    surroundings: the card's box, the ground's own placement, and the container
@@ -511,7 +524,7 @@ function made(book, groundBytes) {
 	return {
 		ground: digest(inputs(book, groundBytes)),
 		style: book.style,
-		script: book.script ?? 'latin',
+		script: scriptKey(book.script),
 		art: book.art,
 		scrim: book.scrim
 	};
@@ -556,10 +569,7 @@ function sameEntry(before, now) {
  * by accident; a skip that trusts the manifest needs it recorded on purpose.
  */
 function fontDigest(books) {
-	for (const book of books) {
-		const key = book.script ?? 'latin';
-		if (!FONT_CSS.has(key)) FONT_CSS.set(key, buildFontCss(book.script));
-	}
+	for (const book of books) fontCssFor(book.script);
 	const blocks = [...FONT_CSS.entries()]
 		.sort(([a], [b]) => a.localeCompare(b))
 		.map(([key, css]) => `${key}\0${css}`);
