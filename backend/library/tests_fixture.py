@@ -71,7 +71,7 @@ from library.designed_covers import (
     DESIGNED_BY_SLUG,
     digest,
 )
-from library.ingest import strip_numbering_prefix
+from library.ingest import strip_numbering_prefix, strip_restated_heading
 from library.quote_marks import mark_counts
 from library.text import html_to_text
 
@@ -87,6 +87,17 @@ EXPECTED_MODELS = {
 
 def _dupes(counter: Counter) -> list:
     return sorted(k for k, n in counter.items() if n > 1)
+
+
+@lru_cache(maxsize=1)
+def files_by_path() -> dict:
+    """`rows_by_file()`, parsed once for the whole suite.
+
+    Same reason `all_rows` is cached: the bare call re-reads and re-parses all
+    166 fixture files (~250MB of transient garbage, 0.14s), and three gates in
+    this module want the per-file view.
+    """
+    return rows_by_file()
 
 
 @lru_cache(maxsize=1)
@@ -405,7 +416,7 @@ class FileCoherenceTests(SimpleTestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.files = rows_by_file()
+        cls.files = files_by_path()
 
     def test_authors_file_is_authors_only(self):
         models = {r["model"] for r in self.files.get(AUTHORS_FILE, [])}
@@ -1627,6 +1638,46 @@ class BodyTextDerivationTests(SimpleTestCase):
         )
 
 
+class RestatedChapterHeadingTests(SimpleTestCase):
+    """No stored body may open by repeating the title printed above it.
+
+    The reader renders the chapter title above the body, so a body that leads
+    with its own title prints it twice — `all-of-grace` chapter 1 is titled "To
+    You" and its prose began "<h2>TO YOU</h2>". Migration 0092 has the census
+    and the judgement calls; this is the watch. The importer's rule reaches no
+    fixture edited by hand, and `seed_books` never re-syncs the chapters of a
+    book it has already created, so a restated heading committed here would
+    ship and then be beyond the reach of any deploy.
+
+    A translated heading that PARAPHRASES its title rather than repeating it
+    reads as clean here and is not this test's to catch — 0092 decides those by
+    their English twin, and `tests_translation_markup` is what notices when a
+    translation stops matching the English block for block.
+    """
+
+    def test_no_body_opens_by_restating_its_own_title(self):
+        restated = []
+        for path, rows in files_by_path().items():
+            for row in rows:
+                fields = row.get("fields", {})
+                body_html, title = fields.get("body_html"), fields.get("title")
+                if not body_html or not title:
+                    continue
+                if strip_restated_heading(body_html, title) != body_html:
+                    restated.append(
+                        f"{path.name} #{fields.get('order', '-')}: {title!r}"
+                    )
+        self.assertEqual(
+            restated[:20],
+            [],
+            f"{len(restated)} body(ies) open with a heading that only repeats "
+            f"the title the reader already prints above them — run "
+            f"`uv run python scripts/strip_restated_headings.py --write`, "
+            f"which applies the same rule and re-derives `body_text` and "
+            f"`word_count` with it.",
+        )
+
+
 class ChapterTitleNumberingTests(SimpleTestCase):
     """No stored title may carry the number the reader is about to add.
 
@@ -1656,7 +1707,7 @@ class ChapterTitleNumberingTests(SimpleTestCase):
 
     def test_no_title_carries_a_redundant_numbering_prefix(self):
         numbered = []
-        for path, rows in rows_by_file().items():
+        for path, rows in files_by_path().items():
             for row in rows:
                 fields = row.get("fields", {})
                 title = fields.get("title")

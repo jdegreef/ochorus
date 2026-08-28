@@ -596,6 +596,122 @@ class CcelLeadingHeadingTests(TestCase):
         self.assertEqual(self._fold(html), html)
 
 
+class RestatedHeadingStripTests(TestCase):
+    """`strip_restated_heading` — the rule migration 0092 and the fixture share.
+
+    `import_ccel.extract_body` drops these while the source page is still
+    parsed markup; this is the same rule expressed over a body that is already
+    STORED, which is not the same text. `clean_html` keeps h2-h4 and unwraps
+    everything else, so a source heading that was an <h1> survives as bare text
+    in front of the first <p>.
+    """
+
+    def _strip(self, html, title):
+        from library.ingest import strip_restated_heading
+
+        return strip_restated_heading(html, title)
+
+    def test_a_leading_heading_that_repeats_the_title_goes(self):
+        self.assertEqual(
+            self._strip("<h2>TO YOU</h2> <p>HE WHO SPOKE and wrote…</p>", "To You"),
+            "<p>HE WHO SPOKE and wrote…</p>",
+        )
+
+    def test_an_unwrapped_h1_left_as_loose_text_goes_too(self):
+        self.assertEqual(
+            self._strip("THE MONTH OF JANUARY <p>Jan. 1</p>", "The Month of January"),
+            "<p>Jan. 1</p>",
+        )
+
+    def test_a_heading_that_says_more_than_the_title_stays(self):
+        # Till He Come chapter 2 keeps its subtitle once the restatement above
+        # it is gone; nothing else about the chapter may move.
+        html = "<h3>A COMMUNION ADDRESS AT MENTONE.</h3> <p>IT is a theme…</p>"
+        self.assertEqual(self._strip(html, "Mysterious Visits"), html)
+
+    def test_a_numbering_difference_is_not_a_difference(self):
+        self.assertEqual(
+            self._strip("<h2>1 Men of Prayer Needed</h2> <p>Prose.</p>",
+                        "Men of Prayer Needed"),
+            "<p>Prose.</p>",
+        )
+
+    def test_a_numeral_that_is_part_of_the_NAME_is_not_numbering(self):
+        # "1. John" and "2. John" both reduce to "john" once the numbering is
+        # set aside, so without `_NUMBERED_BOOKS` a chapter headed for one
+        # epistle restates a chapter titled for another. Same guard
+        # `strip_numbering_prefix` carries, which cannot reach this: the
+        # normaliser has already removed the "." it keys on.
+        html = "<h2>1. John</h2> <p>Prose.</p>"
+        self.assertEqual(self._strip(html, "2. John"), html)
+        self.assertEqual(self._strip(html, "1. John"), "<p>Prose.</p>")
+        # A real numbered title still loses its numeral, as it always did.
+        self.assertEqual(
+            self._strip("<h2>1 John the Baptist</h2> <p>Prose.</p>", "John the Baptist"),
+            "<p>Prose.</p>",
+        )
+
+    def test_a_mid_chapter_heading_is_never_reached(self):
+        html = "<p>Opening prose.</p> <h2>To You</h2> <p>More prose.</p>"
+        self.assertEqual(self._strip(html, "To You"), html)
+
+    def test_it_is_idempotent(self):
+        once = self._strip("<h2>CLOSE</h2> <p>Prose.</p>", "Close")
+        self.assertEqual(self._strip(once, "Close"), once)
+
+    def test_a_strip_that_would_empty_the_chapter_is_refused(self):
+        html = "<h2>Close</h2>"
+        self.assertEqual(self._strip(html, "Close"), html)
+
+    def test_a_non_latin_heading_is_compared_in_its_own_script(self):
+        # The rule normalised to [a-z0-9] until 0092, which reduces any Arabic
+        # or Devanagari string to "" — so every Arabic heading "restated" every
+        # Arabic title. Both directions are asserted here.
+        html = "<h2>आपके नाम</h2> <p>गद्य।</p>"
+        self.assertEqual(self._strip(html, "आपके नाम"), "<p>गद्य।</p>")
+        other = "<h2>وليمة العهد</h2> <p>نثر.</p>"
+        self.assertEqual(self._strip(other, "الأولويّات"), other)
+
+    def test_a_heading_of_pure_punctuation_restates_nothing(self):
+        html = "<h2>———</h2> <p>Prose.</p>"
+        self.assertEqual(self._strip(html, "———"), html)
+
+    def test_a_translation_follows_its_english_twin(self):
+        # `strip_leading_heading_element` drops the block whatever it says,
+        # because the English chapter facing it decided. The Hindi heading here
+        # paraphrases its own title, so the title rule alone leaves it.
+        from library.ingest import strip_leading_heading_element
+
+        html = '<h2>"परमेश्वर वह है जो उनको धर्मी ठहरानेवाला है"</h2> <p>रोमियों 8:33</p>'
+        title = "परमेश्वर वह है जो धर्मी ठहराता है"
+        self.assertEqual(self._strip(html, title), html)
+        self.assertEqual(strip_leading_heading_element(html), "<p>रोमियों 8:33</p>")
+
+    def test_following_the_english_never_eats_loose_text(self):
+        from library.ingest import strip_leading_heading_element
+
+        html = "Opening prose with no markup at all."
+        self.assertEqual(strip_leading_heading_element(html), html)
+
+    def test_a_footnote_inside_the_heading_does_not_save_it(self):
+        # `extract_body` reads a candidate heading BEFORE clean_html removes the
+        # footnote apparatus, so a marker inside the heading joined its text and
+        # the restatement test stopped matching. Whitefield's farewell sermon
+        # was the one duplicate heading in that book to survive the import.
+        from library.management.commands.import_ccel import extract_body
+
+        html = (
+            '<div id="theText"><h1>The Good Shepherd: A Farewell Sermon'
+            '<span class="NoteRef">5</span></h1>'
+            '<p class="Footnote">The last sermon he preached in London.</p>'
+            "<p>John 10:27 — My sheep hear my voice.</p></div>"
+        )
+        self.assertEqual(
+            extract_body(html, "The Good Shepherd: A Farewell Sermon"),
+            "<p>John 10:27 — My sheep hear my voice.</p>",
+        )
+
+
 class EmptyBlockCleaningTests(TestCase):
     """<p><br/></p> spacers and CCEL page-break markers are page furniture."""
 
