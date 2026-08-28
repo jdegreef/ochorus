@@ -43,19 +43,24 @@ const COVERS_PY = readFileSync(
 );
 
 /** The scrim curve, read out of `covers.py` — bands, floor, strength, ceiling. */
-function pythonCurve() {
+function pythonCurve(subtitle = false) {
 	const num = (name: string) => {
 		const m = new RegExp(`^${name} = ([\\d.]+)`, 'm').exec(COVERS_PY);
 		expect(m, `covers.py no longer declares ${name}`).not.toBeNull();
 		return Number(m![1]);
 	};
+	// The first three tuples are `_SCRIM_BANDS`; the fourth is `_SUBTITLE_BAND`,
+	// which only a cover that draws a subtitle wears. Sliced explicitly rather
+	// than relying on order alone being obvious — it was `slice(0, 3)` with no
+	// fourth band to exclude, and a reader could not tell whether that was a
+	// bound or a leftover.
 	const bands = [...COVERS_PY.matchAll(/\((0\.\d+), (0\.\d+), (0\.\d+)\)/g)]
 		.map(([, c, h, p]) => [Number(c), Number(h), Number(p)] as [number, number, number]);
-	expect(bands.length, 'covers.py declares no scrim bands').toBeGreaterThan(2);
+	expect(bands.length, 'covers.py no longer declares four scrim bands').toBe(4);
 	const floor = num('_SCRIM_FLOOR'), strength = num('_SCRIM_STRENGTH'), ceiling = num('_SCRIM_CEILING');
 	return (f: number) => {
 		let a = floor;
-		for (const [centre, half, peak] of bands.slice(0, 3)) {
+		for (const [centre, half, peak] of bands.slice(0, subtitle ? 4 : 3)) {
 			const d = Math.abs(f - centre) / half;
 			if (d < 1) a = Math.max(a, floor + (peak - floor) * (0.5 + 0.5 * Math.cos(Math.PI * d)));
 		}
@@ -64,12 +69,16 @@ function pythonCurve() {
 }
 
 /** The scrim as the stylesheet spells it: sampled stops. */
-function cssStops(): Array<[number, number]> {
+function cssStops(subtitle = false): Array<[number, number]> {
 	// `::before`, because the scrim moved onto a pseudo-element so one painting's
 	// can be lighter than another's — `opacity: var(--scrim-strength)` scales the
 	// whole layer, which a gradient cannot do from a custom property.
-	const block = /\.cover-plate\.over-art::before \{([\s\S]*?)\n\}/.exec(COVER_CSS);
-	expect(block, '.cover-plate.over-art::before is gone from cover-type.css').not.toBeNull();
+	const selector = subtitle
+		? /\.cover-plate\.over-art\.has-subtitle::before \{([\s\S]*?)\n\}/
+		: /\n\.cover-plate\.over-art::before \{([\s\S]*?)\n\}/;
+	const block = selector.exec(COVER_CSS);
+	expect(block, `the ${subtitle ? 'has-subtitle ' : ''}scrim rule is gone from cover-type.css`)
+		.not.toBeNull();
 	const stops = [...block![1].matchAll(/rgb\(0 0 0 \/ ([\d.]+)\)\s+([\d.]+)%/g)].map(
 		([, alpha, pos]) => [Number(pos) / 100, Number(alpha)] as [number, number]
 	);
@@ -83,18 +92,48 @@ describe('the scrim over a painting', () => {
 		// the CSS still describe the curve the Python gate measures". Sampling
 		// every 2.5% keeps this under 0.02; a 5% sampling missed by 0.048, which
 		// is enough to cost a painting its contrast.
-		const curve = pythonCurve();
-		let worst = 0, at = 0;
-		for (const [pos, alpha] of cssStops()) {
-			const d = Math.abs(alpha - curve(pos));
-			if (d > worst) { worst = d; at = pos; }
+		// BOTH SPELLINGS, because there are two gradients now: the three-band
+		// curve, and the four-band one a cover with a subtitle wears. The second
+		// is the one that was missing entirely — the subtitle sat far down the
+		// title band's cosine at alpha 0.29, and 36 of 38 paintings measured
+		// under 4.5:1 beneath it.
+		for (const subtitle of [false, true]) {
+			const curve = pythonCurve(subtitle);
+			let worst = 0, at = 0;
+			for (const [pos, alpha] of cssStops(subtitle)) {
+				const d = Math.abs(alpha - curve(pos));
+				if (d > worst) { worst = d; at = pos; }
+			}
+			expect(
+				worst,
+				`the stylesheet's ${subtitle ? 'has-subtitle ' : ''}scrim has drifted from ` +
+					`covers.py's curve by ${worst.toFixed(3)} alpha at ${(at * 100).toFixed(0)}% — ` +
+					`the fixture gate is measuring a scrim that is not the one shipping`
+			).toBeLessThan(0.02);
 		}
+	});
+
+	it('darkens the subtitle strip only on covers that draw one', () => {
+		// The whole reason the fourth band is conditional: 18 of the 38 works
+		// have no subtitle, and darkening a strip of their photography to protect
+		// words that are not there is the even-wash thinking the shaped scrim
+		// replaced. Applied to all of them it also made three paintings
+		// unsatisfiable at any strength the curve can reach.
+		const near = (stops: Array<[number, number]>, f: number) =>
+			stops.reduce((b, s) => (Math.abs(s[0] - f) < Math.abs(b[0] - f) ? s : b))[1];
+		const plain = cssStops(false);
+		const withSub = cssStops(true);
 		expect(
-			worst,
-			`the stylesheet's scrim has drifted from covers.py's curve by ${worst.toFixed(3)} ` +
-				`alpha at ${(at * 100).toFixed(0)}% — the fixture gate is measuring a scrim ` +
-				`that is not the one shipping`
-		).toBeLessThan(0.02);
+			near(withSub, 0.66),
+			'the has-subtitle scrim has no peak where the subtitle sits'
+		).toBeGreaterThan(near(plain, 0.66) + 0.15);
+		// And identical where the subtitle is not: same curve, one extra band.
+		for (const f of [0.13, 0.49, 0.91]) {
+			expect(
+				Math.abs(near(withSub, f) - near(plain, f)),
+				`the two scrims disagree at ${f * 100}%, where the subtitle band does not reach`
+			).toBeLessThan(0.02);
+		}
 	});
 
 	it('keeps a peak over each of the three places type sits', () => {
@@ -114,8 +153,9 @@ describe('the scrim over a painting', () => {
 
 	it('never lets the scrim reach opaque', () => {
 		// A stop at 1.0 would paint the photograph out entirely at that height.
-		for (const [pos, alpha] of cssStops()) {
-			expect(alpha, `the scrim is opaque at ${pos * 100}%`).toBeLessThan(0.9);
-		}
+		for (const subtitle of [false, true])
+			for (const [pos, alpha] of cssStops(subtitle)) {
+				expect(alpha, `the scrim is opaque at ${pos * 100}%`).toBeLessThan(0.9);
+			}
 	});
 });

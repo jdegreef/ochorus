@@ -186,6 +186,7 @@
 			<div
 				class="cover-plate over-file"
 				class:over-art={isArt}
+				class:has-subtitle={!!book.subtitle}
 				style={isArt ? `--scrim-strength: ${scrimStrength(book.slug)}` : undefined}
 				role="img"
 				aria-label={label}

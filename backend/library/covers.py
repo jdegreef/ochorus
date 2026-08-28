@@ -157,12 +157,27 @@ def cover_path(slug: str, language: str) -> tuple[str, str]:
 # approximation rather than the thing approximated. `coverArtContrast.test.ts`
 # is what holds the CSS to this shape from the other side.
 _SCRIM_BANDS = ((0.13, 0.20, 0.60), (0.49, 0.30, 0.58), (0.91, 0.20, 0.60))
+#: A FOURTH BAND, for covers that draw a subtitle — and only those.
+#:
+#: The subtitle sits at 0.649-0.677 of the plate (measured in the browser, not
+#: derived: it barely moves with title length). That is inside the title band's
+#: span but far down its cosine, so it was getting alpha 0.29 where the title
+#: gets 0.58 — half the scrim, under smaller type at LOWER ink opacity than the
+#: byline. 36 of 38 paintings were under 4.5:1 there. Nothing measured it: the
+#: tuner and the fixture gate both stopped at the byline and the title.
+#:
+#: Conditional because 18 of the 38 works draw no subtitle at all, and darkening
+#: a strip of their photography to protect words that are not there is exactly
+#: the even-wash thinking the shaped scrim replaced. Applied to all 38 it made
+#: three paintings unsatisfiable at any strength the curve can reach; applied
+#: where the words are, none.
+_SUBTITLE_BAND = (0.66, 0.15, 0.70)
 _SCRIM_FLOOR = 0.10
 _SCRIM_STRENGTH = 1.1
 _SCRIM_CEILING = 0.88
 
 
-def scrim_alpha(f: float, strength: float = 1.0) -> float:
+def scrim_alpha(f: float, strength: float = 1.0, subtitle: bool = False) -> float:
     """How black the scrim is a fraction ``f`` down the plate, 0-1.
 
     Three overlapping cosine bands — the byline, the title block, the mark —
@@ -178,21 +193,34 @@ def scrim_alpha(f: float, strength: float = 1.0) -> float:
     1.10x. Carrying the maximum everywhere is what the single-strength version
     did, and it cost the other 37 paintings a quarter of their brightness.
     ``ART_SCRIM`` holds the measured value per slug.
+
+    ``subtitle`` adds the fourth band for a cover that draws one. It is a
+    parameter rather than always-on because a cover with no subtitle has nothing
+    there to protect — see ``_SUBTITLE_BAND``.
     """
     a = _SCRIM_FLOOR
-    for centre, half, peak in _SCRIM_BANDS:
+    bands = (*_SCRIM_BANDS, _SUBTITLE_BAND) if subtitle else _SCRIM_BANDS
+    for centre, half, peak in bands:
         d = abs(f - centre) / half
         if d < 1.0:
             a = max(a, _SCRIM_FLOOR + (peak - _SCRIM_FLOOR) * (0.5 + 0.5 * math.cos(math.pi * d)))
     return min(_SCRIM_CEILING, strength * _SCRIM_STRENGTH * a)
 
 
-def scrimmed(ground, strength: float = 1.0):
-    """A painting as a reader sees it: the artwork under the scrim above."""
+
+
+def scrimmed(ground, strength: float = 1.0, subtitle: bool = False):
+    """A painting as a reader sees it: the artwork under the scrim above.
+
+    ``subtitle`` picks the four-band curve, for a cover that draws one — the
+    same switch `BookCover` makes with its `has-subtitle` class.
+    """
     from PIL import Image
 
     column = Image.new("L", (1, H))
-    column.putdata([round(255 * scrim_alpha(y / (H - 1), strength)) for y in range(H)])
+    column.putdata(
+        [round(255 * scrim_alpha(y / (H - 1), strength, subtitle)) for y in range(H)]
+    )
     return Image.composite(
         Image.new("RGB", (W, H), (0, 0, 0)),
         ground.convert("RGB"),
@@ -238,6 +266,30 @@ def twin_path(slug: str, language: str) -> tuple[str, str]:
 # that height. See `cover-type.css` for where the numbers are set.
 AUTHOR_INK_OPACITY = 0.86
 AUTHOR_MIN_CONTRAST = 4.5
+
+TITLE_MIN = 3.0
+
+#: Every strip of a cover that carries ink, as (top, bottom, ink opacity, bar).
+#:
+#: MEASURED IN THE BROWSER, not derived from the stylesheet's `cq` arithmetic:
+#: rendered at 600x800 through the real CSS, the byline lands at 102-129, the
+#: title at 284-462 for the longest title in the library, the subtitle at
+#: 519-542 and the brandmark at 664-746.
+#:
+#: The first version of the tuner measured two of them. The byline band was
+#: also 8px short of the real byline — 5 paintings failed in the rows it did
+#: not look at — and the subtitle and brandmark were not measured at all.
+#:
+#: The bars are WCAG: 4.5:1 for the byline and subtitle, which are small text,
+#: 3:1 for the title (7.6-10.45cqw is large text) and for the brandmark, which
+#: is a graphic rather than words. The opacities are what `cover-type.css`
+#: actually sets over artwork.
+INK_REGIONS = (
+    ("byline", 102, 130, AUTHOR_INK_OPACITY, AUTHOR_MIN_CONTRAST),
+    ("title", 284, 463, 1.0, TITLE_MIN),
+    ("subtitle", 519, 543, 0.90, AUTHOR_MIN_CONTRAST),
+    ("mark", 664, 747, 0.95, 3.0),
+)
 
 # The plate gradient's far stop, as a fraction of the base colour.
 # `build_ground` paints from this same constant, so the contrast model cannot
