@@ -7,6 +7,7 @@ write Author / Book / Chapter rows through `upsert_book`.
 from __future__ import annotations
 
 import re
+import unicodedata
 
 from bs4 import BeautifulSoup
 from django.db import transaction
@@ -72,6 +73,13 @@ _TRAILING_PAREN = re.compile(r"\s*\([^()]*\)\s*$")
 # word uppercase through the caps→title-case pass so scripture/section headings
 # don't mangle ("II CORINTHIANS" -> "II Corinthians", not "Ii Corinthians").
 _ROMAN_WORD = re.compile(r"M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})", re.I)
+# The same numeral as a raw pattern, lowercase, for matching text that has been
+# through `normalize_words`. WELL-FORMED and below a thousand, because it is
+# used with no "chapter" beside it to disambiguate: a loose `[ivxlcdm]+` also
+# spells "civil", "mild", "livid", "mill", "dim" and "did", every one of which
+# is a heading a book might really carry, and `m{0,3}` would make it match
+# "mix" (MIX is 1009). No chapter is numbered past CMXCIX.
+_ROMAN_STRICT = r"(?=[ivxlcd])(?:cm|cd|d?c{0,3})(?:xc|xl|l?x{0,3})(?:ix|iv|v?i{0,3})"
 _TITLE_EDGE = "\"“”'‘’.,;:?!()[]"
 _TITLE_SMALL = {
     "a", "an", "and", "as", "at", "but", "by", "for", "if", "in", "into", "nor",
@@ -251,6 +259,141 @@ def strip_trailing_pagenum(body_html: str) -> str:
     body_html = body_html.rstrip()
     body_html = _TRAILING_NUM_IN.sub(r"\1\2", body_html)
     return _TRAILING_NUM_OUT.sub(r"\1", body_html)
+
+
+# --- headings that merely restate the chapter's own title --------------------
+
+# The comparison form of a heading or a title: case-folded, stripped of
+# everything that is not a letter, a mark or a digit, and NFC-normalised so two
+# spellings of the same accented or Indic character compare equal.
+#
+# Deliberately NOT `[^a-z0-9]` — that was the rule until this comment, and it
+# reduces every Arabic and Devanagari string to the empty string, so under it
+# ANY Arabic heading "restates" ANY Arabic title. Measured on the committed
+# fixture: 67 rows of `waiting-on-god.ar` / `.hi`, `the-key-in-my-hand.ar` and
+# one of `all-of-grace.hi` matched that way, none of them a real restatement
+# ("وليمة العهد" against the title "الأولويّات"). Nothing acted on it — the rule only ran inside the CCEL
+# importer, which imports English — but this module's `strip_restated_heading`
+# is meant to run over the whole corpus, so the rule has to be true in every
+# script before it can. `\w` is not enough either: it drops Devanagari vowel
+# signs (category Mc/Mn), fusing distinct words.
+_KEPT_CATEGORIES = ("L", "M", "N")
+
+
+def normalize_words(text: str) -> str:
+    """Case-folded, punctuation-free words — the form two titles compare in."""
+    folded = unicodedata.normalize("NFC", text).lower()
+    kept = (c if unicodedata.category(c)[0] in _KEPT_CATEGORIES else " " for c in folded)
+    return _WS.sub(" ", "".join(kept)).strip()
+
+
+# A chapter page's own heading numbers itself, and not always the way its TOC
+# entry does: Bounds's TOC reads "1. Men of Prayer Needed" while the page's
+# <h2> reads "1 Men of Prayer Needed". Both are the same restatement, and
+# `clean_title` drops the TOC's number, so the two only compare equal with the
+# numbering set aside on each side.
+#
+# Roman numerals count too: every chapter of Prayer and Praying Men opens
+# "<h2>III. ABRAHAM, THE MAN OF PRAYER</h2>", and thirty-five of `way-into-holiest`
+# open "<h2>II. THE DIGNITY OF CHRIST</h2>", above prose the reader already sees
+# titled. Strict, for the reason `_ROMAN_STRICT` gives.
+_LEAD_COUNTER = re.compile(rf"^(?:\d{{1,3}}|{_ROMAN_STRICT})\s+")
+
+
+def _compared(text: str) -> str:
+    """``text`` as `restates_title` weighs it: normalised, numbering set aside.
+
+    `_NUMBERED_BOOKS` guards the strip, exactly as `_numbering_prefix` and
+    `_ROMAN_PREFIX` guard `clean_title`'s. Without it "1. John" and "2. John"
+    both reduce to "john" and a chapter headed for one epistle restates a
+    chapter titled for another — and "II. Timothy" loses the numeral that is
+    part of the name. `normalize_words` has already removed the "." that the
+    numbering rule up in this module keys on, so its own guard cannot reach
+    this.
+    """
+    words = normalize_words(text)
+    without = _LEAD_COUNTER.sub("", words)
+    return words if without in _NUMBERED_BOOKS else without
+
+
+def restates_title(text: str, title: str) -> bool:
+    """Does this heading merely repeat the chapter's own title, numbering aside?"""
+    if not title:
+        return False
+    heading = _compared(text)
+    # A heading that normalises to nothing — a rule of dashes, a lone bullet —
+    # is not a restatement of anything; without this it would equal a title
+    # that also normalises to nothing.
+    return bool(heading) and heading == _compared(title)
+
+
+# The two shapes a leading heading takes in a STORED body. `clean_html` keeps
+# h2-h4 and unwraps everything else, so a chapter whose source heading was an
+# <h1> or <h5> — Whitefield's sermons, Spurgeon's Cheque Book, Till He Come —
+# carries it as bare text in front of the first <p> instead.
+_LEADING_HEADING = re.compile(r"\s*<(h[1-6])\b[^>]*>(?P<text>.*?)</\1\s*>", re.S | re.I)
+_LEADING_LOOSE = re.compile(r"\s*(?P<text>[^<]+)")
+# How many leading blocks a scan may take. `import_ccel.extract_body` imports
+# this for its own window, so the two cannot drift apart about the same chapter.
+MAX_LEADING_BLOCKS = 2
+
+
+def _strip_leading(body_html: str, accept, limit: int = 1) -> str:
+    """Drop leading heading blocks while ``accept(text)`` says so.
+
+    Shared by both strippers below so the two rules that matter — where a
+    leading block starts and ends, and that a strip may never empty the chapter
+    — have one definition. A one-line chapter whose only line is its own title
+    is still worth more than a blank page.
+    """
+    rest = body_html
+    for _ in range(limit):
+        match = _LEADING_HEADING.match(rest) or _LEADING_LOOSE.match(rest)
+        if match is None or not accept(text_of(match.group("text"))):
+            break
+        rest = rest[match.end():].lstrip()
+    return rest if text_of(rest) else body_html
+
+
+def strip_restated_heading(body_html: str, title: str) -> str:
+    """Drop a leading heading that only repeats ``title``.
+
+    The reader renders the chapter title above the body, so such a heading
+    prints the title twice. ``import_ccel.extract_body`` has dropped these
+    since the rule was written, which is why a fresh import has none; this is
+    the same rule expressed over a body that is already STORED, and it is what
+    migration 0092, `scripts/strip_restated_headings.py` and the committed
+    fixture all go through, so they cannot disagree about which rows are
+    affected. See that migration for the census and the judgement calls.
+
+    Only a LEADING heading, and only one that restates the title in full — a
+    mid-chapter heading is never reached, and a heading that says anything of
+    its own stops the scan.
+    """
+    return _strip_leading(
+        body_html, lambda text: restates_title(text, title), MAX_LEADING_BLOCKS
+    )
+
+
+def strip_leading_heading_element(body_html: str) -> str:
+    """Drop one leading ``<h1>``-``<h6>``, whatever it says.
+
+    THE CALLER MUST HAVE A REASON — this applies no rule of its own. It exists
+    for a TRANSLATED chapter, which migration 0092 judges by its English twin
+    rather than by its own title, because that is what a translation is: written
+    from the English body, keeping its markup block for block
+    (`tests_translation_markup` enforces the ordered tag sequence), so the block
+    facing a restated English heading is the same restatement.
+
+    An ELEMENT only, never loose text: a translated body that opens with bare
+    text is opening with prose, since the `<h1>`-unwrapping that produces the
+    loose shape happened in the CCEL importer, which only ever ran in English.
+    """
+    match = _LEADING_HEADING.match(body_html)
+    if match is None:
+        return body_html
+    rest = body_html[match.end():].lstrip()
+    return rest if text_of(rest) else body_html
 
 
 @transaction.atomic
