@@ -94,18 +94,24 @@ force if every paragraph is a box.
    `scripts/regen_fixture.py` regenerates from the COMMITTED fixture files via
    a scratch DB (loaddata → dumpdata round-trip); it never reads your dev DB.
    So edit `library/fixtures/content/authors.json` directly — set the row's
-   `bio_html` — and rewrite the file in the regen script's exact format so the
-   diff stays one line per author:
+   `bio_html` — and rewrite the file in the format it is COMMITTED in, so the
+   diff is only the lines you touched:
    ```python
    rows = json.load(open(PATH));  # ... set fields ...
-   out = "[\n" + ",\n".join(json.dumps(r, indent=1, ensure_ascii=False) for r in rows) + "\n]\n"
+   out = json.dumps(rows, indent=2, ensure_ascii=False) + "\n"
    ```
-   Then verify with a scratch-DB loaddata (migrate + loaddata all ordered
-   fixtures into a temp sqlite; assert the new lengths). Running the regen
-   script afterwards is ideal when it works — but it aborts on any
-   pre-existing field drift (new model fields not yet in DEFAULTED_OK), which
-   is NOT your change's fault; the loaddata check is the gate that matters.
-   NEVER bare `dumpdata library`.
+   That round-trip reproduces the committed file byte-for-byte. **The regen
+   script's `render()` disagrees with what is on disk** — it writes records at
+   column 0 with `indent=1`, which is ~2.7KB smaller and reformats every line.
+   Do not follow its format, and do not run the regen script to save your edit:
+   it would reformat the whole file and bury a 75-line addition in a full-file
+   diff (this cost time on PR #1134).
+   Verify with a scratch-DB loaddata (migrate + loaddata all ordered fixtures
+   into a temp sqlite; assert the new lengths) — that is the gate that matters.
+   Don't reach for the regen script as the check: it rewrites the files it
+   reads, and it aborts on any pre-existing field drift (new model fields not
+   yet in DEFAULTED_OK) that is NOT your change's fault. Full regens are a
+   separate, deliberate job. NEVER bare `dumpdata library`.
 5. **If the author ALREADY EXISTS on prod:** the short `bio` now ships from the
    fixture on its own; `bio_html` and `photo_url` still don't.
 
@@ -180,8 +186,8 @@ force if every paragraph is a box.
 
 7. **APPEND new rows to `authors.json` — never re-sort it.** The file is in
    creation order, not slug order; sorting turns a 45-line addition into a
-   282-insert/237-delete diff. Append, then write with the regen renderer's
-   exact format (records at column 0, `indent=1`, trailing newline).
+   282-insert/237-delete diff. Append, then write in the committed file's
+   format (`indent=2`, `ensure_ascii=False`, trailing newline — step 4).
 
 ## The portrait (optional, same page)
 
@@ -216,6 +222,21 @@ Check the result visually (a contact sheet of several at once is quickest) — t
 API's lead image is occasionally a statue, a book cover, or the wrong person.
 Ship `photo_url` the same way as `bio_html` (step 5 above).
 
+**Then give the file a focal point — this is a CI gate.**
+`frontend/src/lib/portraits.ts` holds a `PORTRAIT_POSITION` table, and
+`frontend/src/lib/portraits.test.ts` fails the build **both ways**: a file in
+`frontend/static/portraits/` with no entry, or an entry with no file. A portrait
+added without an entry is a red build (it happened on PR #1134). Add
+`'<slug>': '50% N%',` in slug order, deriving `N` with the formula documented in
+the table's header comment — for a source of aspect `a` (width ÷ height) with
+the face centred at `fy` (a fraction of image height):
+
+    y = (fy − 0.45·a) ÷ (1 − a)      clamped to 0–100
+
+Measure `a` and `fy` off the file you just saved, not off the Commons original.
+Tall plates with a high head clamp to `50% 0%`; a square source crops nothing, so
+its value is inert — list it anyway to keep the table a complete inventory.
+
 ## Adding sermons (optional, same page)
 
 Sermons render under the books. A sermon is a standalone piece — see the
@@ -245,7 +266,9 @@ current signatures in `library/ingest.py` before relying on them.)
    "quotes."
 5. Only the allowed tags; no inline styles; valid, clean HTML.
 6. Reads well and looks good in **both themes**; the short `bio` summary is set.
-7. Fixture regenerated.
+7. `authors.json` edited in place, in the committed format (step 4) — not
+   regenerated.
+8. Any new portrait has a `PORTRAIT_POSITION` entry (`portraits.test.ts`).
 
 ## Pitfalls found in practice (2026-07-24, PR #387)
 
