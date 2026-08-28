@@ -31,6 +31,7 @@ const data = (over: Partial<SitemapData> = {}): SitemapData => ({
 	authors: [],
 	books: [],
 	sermons: [],
+	scripture: [],
 	chapters: [],
 	...over
 });
@@ -102,6 +103,15 @@ describe('sections', () => {
 		// Search Console could accept and index as a valid, contentless sitemap.
 		expect(sectionEntries(data(), 'chapters-zz')).toBeNull();
 		expect(sectionEntries(data(), 'nonsense')).toBeNull();
+	});
+
+	it('gives the scripture graph its own section, carrying only English', () => {
+		// These pages exist in English alone (citations parse against English book
+		// names), so a second locale here would be a false alternate.
+		const d = data({ scripture: [entry({ en: '/scripture/romans/8/' })] });
+		expect(sectionEntries(d, 'scripture')).toHaveLength(1);
+		expect(sections()).toContain('scripture');
+		expect(urlXml(d.scripture[0])).not.toContain('hreflang="sw"');
 	});
 
 	it('routes topics and plans into pages, so no section goes unserved', () => {

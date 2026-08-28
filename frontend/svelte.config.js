@@ -77,11 +77,21 @@ const config = {
 			// their API endpoints have no content (or lag a simultaneous deploy),
 			// and /account is only linked at runtime (signed-in header). Any other
 			// unseen prerenderable route is still a real error.
+			//
+			// The two /scripture detail routes are the same case with a sharper
+			// edge: their pages exist only where `ChapterCitation` has rows, and
+			// citations are indexed by the `index_citations` RELEASE step — not by
+			// `seed_if_empty`. So a build against a freshly seeded database (CI
+			// does exactly this, and so does a first deploy) legitimately finds no
+			// scripture page to render, and must not fail for it. The pages appear
+			// on the next build after the release chain has run.
 			handleUnseenRoutes: ({ routes }) => {
 				const expected = new Set([
 					'/sermons/[slug]',
 					'/plans/[slug]',
 					'/topics/[slug]',
+					'/scripture/[book]/[chapter]',
+					'/scripture/[book]/[chapter]/[verse]',
 					'/account'
 				]);
 				const unexpected = routes.filter((id) => !expected.has(id));

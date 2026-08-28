@@ -269,6 +269,15 @@
 						<li><a href={localizeHref('/plans')}>{t('nav.plans')}</a></li>
 						<li><a href={localizeHref('/sermons')}>{t('nav.sermons')}</a></li>
 						<li><a href={localizeHref('/biographies')}>{t('nav.biographies')}</a></li>
+						<!-- English only, and shown only to English readers rather than
+						     localized. The scripture graph is built from citations parsed
+						     against English book names, so there is no Spanish or Swahili
+						     version to send anyone to — and offering the link under a
+						     locale prefix would both promise a page that does not exist
+						     and let the prerender crawler bake localized copies of it. -->
+						{#if lang.current === 'en'}
+							<li><a href="/scripture/">{t('reader.scripture')}</a></li>
+						{/if}
 						<li><a href="/feed.xml">RSS</a></li>
 					</ul>
 				</nav>
