@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, it, expect, vi } from 'vitest';
 import { coverVariants } from './coverArt';
 import { offlineBooks } from './offlineBooks.svelte';
+import { preloaded, setPreloadFails } from '../test/app-navigation';
 
 const KEY = 'ochorus:offline-books';
 
@@ -171,5 +172,55 @@ describe('a download is one book in one language (#1073)', () => {
 		// Once the last edition wearing it goes, so does the file.
 		await offlineBooks.remove('humility', 'es');
 		expect(store.has(abs(shared))).toBe(false);
+	});
+});
+
+describe('a download brings the code that renders it (#1140)', () => {
+	// `PRECACHE` holds only the entry chunks, so the chapter route's own module
+	// is fetched the first time a chapter is opened. A reader who downloaded a
+	// book without ever opening one had its text and none of the code that draws
+	// it — offline, the worker served the SPA shell correctly and the shell then
+	// 500'd on a module it had never seen.
+	const book = {
+		slug: 'godliness',
+		title: 'Godliness',
+		language: 'en',
+		cover_url: '',
+		author: { name: 'Catherine Booth' },
+		chapters: [{ order: 3 }, { order: 4 }]
+	};
+
+	beforeEach(() => {
+		preloaded.length = 0;
+		vi.stubGlobal('fetch', async () => new Response('{}', { status: 200 }));
+		Object.defineProperty(navigator, 'onLine', { value: true, configurable: true });
+	});
+
+	it('preloads the chapter route’s module', async () => {
+		fakeCaches([]);
+		const ok = await offlineBooks.download(book);
+
+		expect(ok).toBe(true);
+		// A concrete path matching `/books/[slug]/[order]`, with the trailing
+		// slash the route declares.
+		expect(preloaded).toEqual(['/books/godliness/3/']);
+	});
+
+	it('still records the download when the preload fails', async () => {
+		// The module is a bonus: the chapters are already cached by that point,
+		// so a failure there must not lose the download.
+		fakeCaches([]);
+		setPreloadFails(true);
+		const ok = await offlineBooks.download(book);
+		setPreloadFails(false);
+
+		expect(ok).toBe(true);
+		expect(offlineBooks.has('godliness', 'en')).toBe(true);
+	});
+
+	it('asks for nothing when the book has no chapters', async () => {
+		fakeCaches([]);
+		await offlineBooks.download({ ...book, slug: 'empty', chapters: [] });
+		expect(preloaded).toEqual([]);
 	});
 });
