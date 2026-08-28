@@ -417,6 +417,13 @@ class EnglishAuditContractTests(SimpleTestCase):
                 "orphan-close-quote",
                 "run-together",
                 "title-case-vs-body",
+                # Neither: the scanner can spot that a word LOOKS like two
+                # glued together, but only a reader can say where the seam
+                # goes — or that there is no seam. Power Through Prayer is the
+                # work that first put this class in the corpus, and its one
+                # finding is a false positive ("soother", a real word that
+                # occurs nowhere else in the library, read as "so" + "other").
+                "word-fusion",
             }
         )
         emitted = {label for classes in _corpus().values() for label in classes}

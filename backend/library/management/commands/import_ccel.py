@@ -296,6 +296,23 @@ def _norm(text: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", text.lower()).strip()
 
 
+# A chapter page's own heading numbers itself, and not always the way its TOC
+# entry does: Bounds's TOC reads "1. Men of Prayer Needed" while the page's
+# <h2> reads "1 Men of Prayer Needed". Both are the same restatement, and
+# `clean_title` now drops the TOC's number, so the two only compare equal with
+# the numbering set aside on each side. Digits ONLY — a leading roman numeral
+# cannot be told from an ordinary word here, since "civil", "mild" and "livid"
+# are all spelled out of [ivxlcdm].
+_LEAD_NUMBER = re.compile(r"^\d{1,3}\s+")
+
+
+def _restates(text: str, title: str) -> bool:
+    """Does this heading merely repeat the chapter's own title, numbering aside?"""
+    if not title:
+        return False
+    return _LEAD_NUMBER.sub("", _norm(text)) == _LEAD_NUMBER.sub("", _norm(title))
+
+
 # A typographic rule set as its own paragraph — CCEL prints one under the
 # running head on most Schaff section pages.
 _RULE_LINE = re.compile(r"^[\s\u2014\u2013\-_*·.]+$")
@@ -362,7 +379,7 @@ def extract_body(html: str, title: str = "", work_title: str = "") -> str:
         ):
             break
         text = el.get_text(" ", strip=True)
-        if _is_ordinal_heading(text) or (title and _norm(text) == _norm(title)):
+        if _is_ordinal_heading(text) or _restates(text, title):
             el.decompose()
         else:
             break

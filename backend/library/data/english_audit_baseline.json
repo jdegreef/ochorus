@@ -93,6 +93,10 @@
    "orphan-close-quote": 1,
    "space-before-punct": 3
   },
+  "power-through-prayer": {
+   "space-before-punct": 2,
+   "word-fusion": 1
+  },
   "prayer-the-pulse-of-life": {
    "hyphen-space": 1,
    "space-before-punct": 4

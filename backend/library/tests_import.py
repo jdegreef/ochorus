@@ -854,6 +854,29 @@ class CcelVolumeFurnitureTests(TestCase):
         )
         self.assertIn("The events recorded", out)
 
+    def test_a_heading_that_restates_the_title_with_its_number_is_dropped(self):
+        # Bounds's TOC entry is "1. Men of Prayer Needed" (which clean_title
+        # reduces to the title alone), while the page's own <h2> numbers itself
+        # differently: "1 Men of Prayer Needed". Same restatement, so it goes —
+        # otherwise every chapter opens by repeating its own heading.
+        out = self._body(
+            "<div id='theText'><h2>1 Men of Prayer Needed</h2>"
+            "<p>Study universal holiness of life.</p></div>",
+            "Men of Prayer Needed",
+        )
+        self.assertNotIn("Men of Prayer Needed", out)
+        self.assertIn("Study universal holiness", out)
+
+    def test_a_heading_that_is_not_the_title_survives_its_leading_number(self):
+        # The leading number must not make any heading disposable — only one
+        # that restates the chapter's own title.
+        out = self._body(
+            "<div id='theText'><h2>1 The Voice of Christ</h2>"
+            "<p>Hear, my son, my words.</p></div>",
+            "Men of Prayer Needed",
+        )
+        self.assertIn("The Voice of Christ", out)
+
     def test_a_contents_page_is_recognised_by_its_body(self):
         from library.management.commands.import_ccel import is_contents_body
 
