@@ -33,7 +33,7 @@
 
 	const crumbs = $derived([
 		{ name: 'Home', href: '/' },
-		{ name: page.author.name, href: `/authors/${page.author.slug}` },
+		{ name: page.author.name, href: `/authors/${page.author.slug}/` },
 		{ name: 'Quotes', href: path }
 	]);
 	const crumbsLd = $derived(
@@ -86,7 +86,11 @@
 
 <Seo {title} {description} {canonical} {hreflang} structuredData={[crumbsLd, quotesLd]} />
 
-<div class="mx-auto max-w-3xl px-5 py-6">
+<!-- max-w-2xl is 42rem — the measure STYLE_GUIDE §2 calls normal, and the
+     reason is on this page: at 48rem a quotation ran about 95 characters to
+     the line, well past the 45-75 an eye tracks comfortably. Narrowing it and
+     setting the quotation a step larger (below) lands at roughly 67. -->
+<div class="mx-auto max-w-2xl px-5 py-6">
 	<Breadcrumb items={crumbs} />
 
 	<header class="mb-6">
@@ -202,13 +206,21 @@
 		padding: 1.1rem 1.3rem;
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius-card);
-		background: color-mix(in srgb, var(--hue) 4%, var(--color-surface));
+		/* No hue wash. At 4% it was invisible against the surface, and the
+		   heading's rule (55%) and the jump chip (8%) already carry the group's
+		   colour — a tint nobody can see is dead CSS, not design. */
+		background: var(--color-surface);
 	}
 	.quote blockquote {
 		margin: 0;
 		font-family: var(--font-display, Georgia, serif);
-		font-size: var(--fs-body);
-		line-height: 1.55;
+		/* A step up from body: this is the content of the card, and at body size
+		   it was the smallest type on a page whose h1 is 1.953rem. A token from
+		   the scale, not an invented size (STYLE_GUIDE §2). */
+		font-size: var(--fs-h3);
+		/* Looser than the 1.3 the scale gives --fs-h3, because that leading is
+		   for headings and this is reading prose. */
+		line-height: 1.45;
 		color: var(--color-text);
 	}
 	.foot {

@@ -366,6 +366,21 @@ function buildFontCss(script) {
  *  and the library draws its cards in slug order, so the cache still holds. */
 const FONT_CSS = new Map();
 
+/** What a card with no script of its own is set in. Said once, because the
+ *  manifest records this normalised value and it has to be the same rule the
+ *  faces are chosen by rather than a second copy of it. */
+const scriptKey = (script) => script ?? 'latin';
+
+/** The face block for one card's script, cut once and kept. The ONE place that
+ *  populates the Map — it had become two, the page builder and the digest, and
+ *  that is a quiet way for the digest to describe faces other than the ones
+ *  actually rendered. */
+function fontCssFor(script) {
+	const key = scriptKey(script);
+	if (!FONT_CSS.has(key)) FONT_CSS.set(key, buildFontCss(script));
+	return FONT_CSS.get(key);
+}
+
 /** The brand lockup, from the copy `BrandMark.svelte` itself renders. */
 const LOCKUP = readFileSync(resolve(HERE, '../src/lib/brand/ochorus-lockup.svg'), 'utf8');
 
@@ -414,9 +429,7 @@ function coverPage(book, groundBytes) {
 	const ground = book.art
 		? `<img class="ground" src="data:image/jpeg;base64,${groundBytes.toString('base64')}" alt="">`
 		: `<div class="ground">${groundBytes.toString('utf8')}</div>`;
-	const scriptKey = book.script ?? 'latin';
-	if (!FONT_CSS.has(scriptKey)) FONT_CSS.set(scriptKey, buildFontCss(book.script));
-	return `<style>${FONT_CSS.get(scriptKey)}${COVER_CSS}
+	return `<style>${fontCssFor(book.script)}${COVER_CSS}
 html,body{margin:0}
 /* The three things a page needs that a cover inside the app gets from its
    surroundings: the card's box, the ground's own placement, and the container
@@ -495,6 +508,87 @@ const digest = (buf) => createHash('sha256').update(buf).digest('hex');
  * back what it just wrote last time turns a multi-minute run into a few
  * seconds, using digests the gates already trust.
  */
+/**
+ * Everything one card is made from, as the manifest records it.
+ *
+ * `ground` and `style` are the two the GATES read, and their names are fixed by
+ * those readers: `CoverAssetTests` recomputes `ground` in Python, and
+ * `coverOgManifest.test.ts` checks `style` against the table. The rest are here
+ * for the skip, and each is a way a card changes while the ground bytes and the
+ * strings sit still — which, with the skip in place, means silently:
+ *
+ *   `scrim`  — how far the wash over a painting is scaled, per slug. NOT
+ *              hypothetical, and measured on this very script: re-measuring took
+ *              `prayer-the-pulse-of-life` from 0.30 to 0.90, and moving
+ *              `godliness` alone redrew nothing at all — its seven translated
+ *              cards kept the old wash with every gate green.
+ *   `script` — which face the title is set in. Derived from the language, so it
+ *              moves only if that table does; a twin whose LANGUAGE changed is a
+ *              different key rather than a changed entry.
+ *   `art`    — painting or plate, which is a different ground element entirely.
+ *
+ * Add a field to `coverPage`'s call and it belongs here too, or the first card
+ * that needs it will be skipped.
+ */
+function made(book, groundBytes) {
+	return {
+		ground: digest(inputs(book, groundBytes)),
+		style: book.style,
+		script: scriptKey(book.script),
+		art: book.art,
+		scrim: book.scrim
+	};
+}
+
+/**
+ * The font faces every card is drawn with, as bytes.
+ *
+ * Built for each script UP FRONT rather than lazily as pages are rendered, and
+ * the skip is what forces that: populate the Map on demand and its contents
+ * depend on which cards happened to be redrawn, so the digest would move from
+ * run to run for no reason at all.
+ *
+ * Worth digesting because a fontsource upgrade re-cuts the woff2 and every title
+ * is then set in glyphs nothing else here can see — not `ground` (the cover file
+ * and the strings), not `css` (the composition), not `markup` (the tree). While
+ * every twin was redrawn every run the byte comparison caught that by accident;
+ * a skip that trusts the manifest needs it recorded on purpose.
+ *
+ * No gate recomputes this one and none should: a digest a gate cannot derive is
+ * a gate that fails forever, and these come out of node_modules. It is the
+ * script comparing its own arithmetic across two runs, so it cannot go
+ * stale-and-unverifiable the way a gate-side digest could.
+ */
+function fontDigest(books) {
+	for (const book of books) fontCssFor(book.script);
+	const blocks = [...FONT_CSS.entries()]
+		.sort(([a], [b]) => a.localeCompare(b))
+		.map(([key, css]) => `${key}\0${css}`);
+	return digest(Buffer.from(blocks.join('\0')));
+}
+
+/**
+ * Was this card drawn from what it is made from now?
+ *
+ * Strict about `ground` and `style`, which every entry has carried since the
+ * manifest existed. LENIENT about a field the recorded entry simply lacks, and
+ * that is a migration decision rather than laziness: add a field and every
+ * committed entry is missing it, so the strict reading is "unknown, therefore
+ * stale" and redraws all 134 on the next run — which on a machine whose
+ * Chromium differs is a 134-file diff, the thing this skip exists to prevent,
+ * reintroduced once per field added. The lenient reading backfills from what is
+ * on disk, and every run after that is strict about it.
+ *
+ * What it costs: a card already wrong in the NEW field's dimension stays wrong,
+ * because nothing recorded an old value to disagree with. So when you add one,
+ * satisfy yourself the committed twins are right for it — or run `--force` once,
+ * deliberately, and commit the redraw.
+ */
+function drawnFrom(cached, entry) {
+	if (!cached || cached.ground !== entry.ground || cached.style !== entry.style) return false;
+	return Object.keys(entry).every((k) => cached[k] === undefined || cached[k] === entry[k]);
+}
+
 function lastRun() {
 	const path = resolve(COVERS, 'og-manifest.json');
 	if (!existsSync(path)) return null;
@@ -516,16 +610,27 @@ async function main() {
 	// Checked once, here, because getting it wrong is not a slow run — it is 134
 	// cards silently keeping a retired design, the exact failure this script was
 	// written to end.
+	const shared = {
+		css: digest(Buffer.from(COVER_CSS)),
+		markup: digest(readFileSync(resolve(HERE, '../src/lib/coverCardMarkup.ts'))),
+		// THE FACES too, for the reason `fontDigest` gives. Lenient about its
+		// ABSENCE, and only its absence: it arrived after the committed manifest
+		// was written, and reading a missing digest as a mismatch would redraw the
+		// whole library once, on the first run after it shipped. `css` and
+		// `markup` stay strict — every manifest has carried both.
+		fonts: fontDigest(books)
+	};
 	const composed =
-		previous?.css === digest(Buffer.from(COVER_CSS)) &&
-		previous?.markup === digest(readFileSync(resolve(HERE, '../src/lib/coverCardMarkup.ts')));
+		previous?.css === shared.css &&
+		previous?.markup === shared.markup &&
+		(previous.fonts === undefined || previous.fonts === shared.fonts);
 	const known = composed ? (previous.twins ?? {}) : {};
 
-	const browser = await chromium.launch();
-	const page = await browser.newPage({
-		viewport: { width: WIDTH, height: HEIGHT },
-		deviceScaleFactor: 1
-	});
+	// Launched on first use, not here: a run with nothing to redraw should not
+	// need a browser at all, and on a machine where Playwright's download never
+	// happened that is the difference between a no-op and a crash.
+	let browser = null;
+	let page = null;
 
 	const wrote = [];
 	const manifest = {};
@@ -533,23 +638,23 @@ async function main() {
 	for (const book of books) {
 		// Read once, for the digest and for the page.
 		const groundBytes = readFileSync(resolve(STATIC, book.cover.replace(/^\//, '')));
-		const entry = { ground: digest(inputs(book, groundBytes)), style: book.style };
+		const entry = made(book, groundBytes);
 		manifest[book.twin.key] = entry;
 		const dest = resolve(COVERS, book.twin.file);
 		// Same inputs, same composition, and the file is still there: nothing a
 		// render could produce differs from what is on disk. The file check is
 		// not belt-and-braces — a twin deleted by hand leaves the manifest
 		// claiming it, and skipping on the digest alone would never write it back.
-		const cached = known[book.twin.key];
-		if (
-			cached &&
-			cached.ground === entry.ground &&
-			cached.style === entry.style &&
-			existsSync(dest)
-		) {
+		if (drawnFrom(known[book.twin.key], entry) && existsSync(dest)) {
 			skipped++;
 			continue;
 		}
+
+		browser ??= await chromium.launch();
+		page ??= await browser.newPage({
+			viewport: { width: WIDTH, height: HEIGHT },
+			deviceScaleFactor: 1
+		});
 		await page.setContent(coverPage(book, groundBytes));
 		// The faces are data URIs, so this resolves immediately — but a
 		// screenshot taken before it does silently falls back to the default
@@ -571,7 +676,7 @@ async function main() {
 		wrote.push(`${book.twin.file}  ${book.art ? 'painting' : 'plate'}  ${book.style}`);
 	}
 
-	await browser.close();
+	await browser?.close();
 
 	// Sorted, so the file is a stable diff rather than readdir order.
 	writeFileSync(
@@ -583,7 +688,9 @@ async function main() {
 					'so a stale twin can be told from a fresh one: `ground` digests the ' +
 					'cover file and the type over it (checked by CoverAssetTests), `style` ' +
 					'names the house style it was set in, and `css` digests the composition ' +
-					'they were drawn with (both checked by coverOgManifest.test.ts).',
+					'they were drawn with (both checked by coverOgManifest.test.ts). ' +
+					'`script`, `art`, `scrim` and `fonts` are the rest of what a card is ' +
+					'made from, read back by the skip so a change to any of them redraws.',
 				// THE COMPOSITION, so a change to it cannot ship without a redraw.
 				// This file's header used to say nothing but running it could catch a
 				// change to the drawing — true while the Python gate was the only one,
@@ -598,7 +705,7 @@ async function main() {
 				// this file is more than half prose by volume, and digesting it whole
 				// would demand an 8 MB, 37-binary regeneration for a typo in a
 				// docstring. That is how a gate earns being deleted.
-				css: digest(Buffer.from(COVER_CSS)),
+				css: shared.css,
 				// AND THE TREE THOSE RULES ARE HUNG ON, for the same reason. The
 				// stylesheet decides how a card looks only given the markup, and the
 				// markup is a second file that can change on its own: reorder the
@@ -607,7 +714,11 @@ async function main() {
 				// module rather than each card's output because it is the SOURCE that
 				// drifts — a card's own markup already reaches the picture through
 				// the byte comparison above.
-				markup: digest(readFileSync(resolve(HERE, '../src/lib/coverCardMarkup.ts'))),
+				markup: shared.markup,
+				// AND THE FACES. Not a gate — nothing recomputes this and nothing
+				// should; see `fontDigest`. It is here so the next run can ask
+				// whether the faces moved, which no other digest here can answer.
+				fonts: shared.fonts,
 				twins: Object.fromEntries(Object.entries(manifest).sort(([a], [b]) => a.localeCompare(b)))
 			},
 			null,

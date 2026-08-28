@@ -771,8 +771,16 @@ export const listQuoteAuthors = () => apiFetch<string[]>('/api/library/quotes/')
 export const getQuotePage = (author: string) =>
 	apiFetch<QuotePage>(`/api/library/quotes/${author}/`);
 
-/** Where a quote's card sends the reader: the exact paragraph it came from. */
+/**
+ * Where a quote's card sends the reader: the exact paragraph it came from.
+ *
+ * TRAILING SLASH BEFORE THE QUERY. Chapter and sermon pages prerender as
+ * directory indexes, so the static host serves them at the slashed URL and
+ * 301s the bare one to it. Sixty cards linking the bare form is sixty
+ * redirects a reader pays for and a crawler follows, which is what
+ * `href.test.ts` scans the built output for.
+ */
 export const quoteHref = (q: Quote): string =>
 	q.source.kind === 'sermon'
-		? `/sermons/${q.source.slug}?p=${q.paragraph}`
-		: `/books/${q.source.slug}/${q.source.order}?p=${q.paragraph}`;
+		? `/sermons/${q.source.slug}/?p=${q.paragraph}`
+		: `/books/${q.source.slug}/${q.source.order}/?p=${q.paragraph}`;
