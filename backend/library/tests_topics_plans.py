@@ -148,23 +148,27 @@ class PlanTests(TestCase):
         This is the #819 defect at its source. `seed_plans` creates a plan row
         per language the source book is published in, so shipping a BOOK is what
         creates the plan — and the prose used to fall back to English, putting
-        "Humility in 12 Days" on the Arabic plans page. Hindi has no
-        data/plan_translations/hi.json, so no Hindi plan may appear.
+        "Humility in 12 Days" on the Arabic plans page.
+
+        The stand-in language has to be one with no prose for THIS plan, so it
+        moves as languages get translated: it was Hindi until job #1103 shipped
+        the Hindi Humility and its plan card together. Ukrainian has none today
+        (its own plan jobs #803/#890 are still open in the queue).
         """
 
-        hi_book = Book.objects.create(
+        uk_book = Book.objects.create(
             author=Author.objects.get(slug="am"),
             slug="humility-2",
-            language="hi",
-            title="विनम्रता",
+            language="uk",
+            title="Смирення",
         )
-        Chapter.objects.create(book=hi_book, order=1, title="एक", body_html="<p>x</p>")
+        Chapter.objects.create(book=uk_book, order=1, title="Один", body_html="<p>x</p>")
         call_command("seed_plans", verbosity=0)
 
         self.assertFalse(
-            Plan.objects.filter(slug="humility-12-days", language="hi").exists(),
-            "seed_plans created a Hindi plan with no Hindi prose — it would "
-            "render the English title to a Hindi reader.",
+            Plan.objects.filter(slug="humility-12-days", language="uk").exists(),
+            "seed_plans created a Ukrainian plan with no Ukrainian prose — it "
+            "would render the English title to a Ukrainian reader.",
         )
         # The languages that DO have prose are unaffected.
         self.assertTrue(Plan.objects.filter(slug="humility-12-days", language="en").exists())
@@ -173,12 +177,12 @@ class PlanTests(TestCase):
         """A row created before this guard keeps its prose; deleting a published
         plan is a bigger decision than a seed step makes on its own."""
 
-        hi_book = Book.objects.create(
-            author=Author.objects.get(slug="am"), slug="humility-2", language="hi", title="विनम्रता"
+        uk_book = Book.objects.create(
+            author=Author.objects.get(slug="am"), slug="humility-2", language="uk", title="Смирення"
         )
-        Chapter.objects.create(book=hi_book, order=1, title="एक", body_html="<p>x</p>")
+        Chapter.objects.create(book=uk_book, order=1, title="Один", body_html="<p>x</p>")
         legacy = Plan.objects.create(
-            slug="humility-12-days", language="hi", title="Humility in 12 Days", description="old"
+            slug="humility-12-days", language="uk", title="Humility in 12 Days", description="old"
         )
         PlanDay.objects.create(plan=legacy, day=1, book_slug="humility-2", chapter_order=1)
         call_command("seed_plans", verbosity=0)

@@ -179,6 +179,10 @@
 			"ground": "bdbb5ca5e1e0e64dde3d1accd097a32e70de1ecff3019b424741a2a82d6162a4",
 			"style": "house"
 		},
+		"hi/all-of-grace": {
+			"ground": "78fae5e14193a81d07daeff0d5f7a217d67ae78bc7b6ca5b3c773a1b75b87f23",
+			"style": "revival"
+		},
 		"hi/clothed-with-strength-and-dignity": {
 			"ground": "a37e2b937513601c765bfc2e1c2159590c1cebbaa38a3a6c3bd4db0193a88297",
 			"style": "house"
@@ -191,6 +195,10 @@
 			"ground": "ef7c6add906c870155399b927acfff42b6e2df2a1300168ff70f733c8e4e6c47",
 			"style": "house"
 		},
+		"hi/humility-2": {
+			"ground": "929c516319eb3d18570bfabb3230d1de3bac5cdc736d7710508a71ccd9866a98",
+			"style": "devotional"
+		},
 		"hi/jesus-himself-2": {
 			"ground": "b9af4fe3ef449fe7f13663974065c5eee1ae27b723f8d5648ee66a207a92370f",
 			"style": "devotional"
@@ -198,6 +206,10 @@
 		"hi/the-inner-chamber": {
 			"ground": "2374b1409fe7e43c5b0966e3b207e675f606cb492a0ff2b9bbd63bbda8a05340",
 			"style": "devotional"
+		},
+		"hi/the-way-to-god": {
+			"ground": "236ff3c574cbe11b6f00c4d617553bd04f91035124ced88c0785570c75164edc",
+			"style": "revival"
 		},
 		"hi/waiting-on-god": {
 			"ground": "c9ecae20e6c796d9a10b26118f9766d40b814f25507e06716c37c393f7514bfa",

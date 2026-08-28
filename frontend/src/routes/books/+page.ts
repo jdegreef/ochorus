@@ -1,3 +1,10 @@
+// prerender refresh 2026-08-28: all-of-grace.hi, the-way-to-god.hi
+// (jobs #1101, #1102). Neither book is a source of any curated plan, so
+// seed_plans creates no new hi plan row for them and this loader is the
+// only one they owe. The plans touch in the same PR is for humility-2.hi
+// (job #1103), which IS the single source of humility-12-days and so
+// activates that plan's hi card.
+//
 // prerender refresh 2026-08-27: he-holds-my-tomorrows.uk (job #788)
 // ONLY this loader. The book is a source of the curated faith-in-the-fire
 // plan, but that plan also needs the-god-of-all-comfort, which has no uk
