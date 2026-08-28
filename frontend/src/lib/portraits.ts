@@ -29,8 +29,10 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'amanda-berry-smith': '50% 0%',
 	'amy-carmichael': '50% 0%',
 	'andrew-murray': '50% 2%',
+	'anselm-of-canterbury': '50% 0%', // engraved profile, face at ~28% of a near-square plate
 	'athanasius-of-alexandria': '50% 0%', // icon: head at ~20% of a 0.69 plate
 	'augustine-of-hippo': '50% 0%',
+	'bernard-of-clairvaux': '50% 0%', // painting cropped to a bust; face at ~42%, near-square so nearly inert
 	'catherine-booth': '50% 0%',
 	'charles-finney': '50% 0%',
 	'charles-h-spurgeon': '50% 0%',
