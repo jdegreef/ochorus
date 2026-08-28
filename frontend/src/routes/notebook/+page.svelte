@@ -396,7 +396,7 @@
 	<a class="btn btn-primary inline-block" href={localizeHref('/books')}>{t('notebook.browse')}</a>
 {/snippet}
 
-<div class="mx-auto max-w-2xl px-5 py-10">
+<div class="page-col px-5 py-10">
 	<header class="mb-8">
 		<p class="eyebrow mb-2 text-accent">Ochorus</p>
 		<h1 class="text-h1">{t('notebook.title')}</h1>

@@ -97,7 +97,7 @@
 	structuredData={[planLd, crumbsLd]}
 />
 
-<div class="mx-auto max-w-3xl px-5 py-10">
+<div class="page-col px-5 py-10">
 	<Breadcrumb items={crumbs} />
 
 	<div class="flex items-start justify-between gap-4">
