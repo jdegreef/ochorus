@@ -125,12 +125,8 @@ def strip_numbering_prefix(t: str) -> str:
     "1. 2. Title" would leave "2. Title" and the next call would shorten it
     again.
 
-    Split out of `clean_title` so a backfill can apply THIS rule alone. Applying
-    the whole of `clean_title` to stored titles would sweep in its quote and
-    trailing-stop rules as well, and across the corpus those reach titles this
-    has no business touching — "Sidney, B.C." would lose the abbreviation's
-    stop, and "Friends' Testimonies" its possessive apostrophe. See migration
-    0090.
+    Split out of `clean_title` so a backfill can apply this rule alone; see
+    migration 0090 for why the full cleaner is wrong for stored titles.
     """
     while (m := _numbering_prefix(t)) is not None:
         t = t[m.end():].strip()

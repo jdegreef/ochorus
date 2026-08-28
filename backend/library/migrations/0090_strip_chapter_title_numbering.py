@@ -42,15 +42,15 @@ from library.ingest import strip_numbering_prefix
 
 def strip_numbering(apps, schema_editor):
     Chapter = apps.get_model("library", "Chapter")
-    # `search_vector` is written but never read here, and it is by far the
-    # largest column on the row — the same reason 0085 defers it.
-    for ch in Chapter.objects.defer("search_vector").iterator(chunk_size=100):
-        stripped = strip_numbering_prefix(ch.title or "")
-        if not stripped or stripped == ch.title:
-            # `not stripped`: a title that IS only a number ("1.") has no name
-            # under the numeral, and blanking it would leave the drawer with
-            # nothing to show. `_numbering_prefix` already refuses those, so
-            # this is a belt-and-braces guard, not a live case.
+    # `.only()`, not 0085's `.defer("search_vector")`: that migration compared
+    # `body_text` against `body_html` and so had to load both, where this reads
+    # nothing but the title. Deferring the vector alone would still drag the two
+    # body columns across the wire — ~79MB for the corpus, to look at 89KB of
+    # titles. Assigning a deferred field is a plain attribute set; only reading
+    # one would refetch.
+    for ch in Chapter.objects.only("id", "title").iterator(chunk_size=2000):
+        stripped = strip_numbering_prefix(ch.title)
+        if stripped == ch.title:
             continue
         ch.title = stripped
         ch.search_vector = None

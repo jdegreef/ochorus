@@ -1649,13 +1649,16 @@ class ChapterTitleNumberingTests(SimpleTestCase):
 
     def test_no_title_carries_a_redundant_numbering_prefix(self):
         numbered = []
-        for path in ordered_fixture_paths():
-            for row in json.loads(path.read_text()):
-                title = row.get("fields", {}).get("title")
-                if not isinstance(title, str):
+        for path, rows in rows_by_file().items():
+            for row in rows:
+                fields = row.get("fields", {})
+                title = fields.get("title")
+                if not title:
                     continue
                 if strip_numbering_prefix(title) != title:
-                    numbered.append(f"{path.name} #{row['fields'].get('order', '-')}: {title!r}")
+                    numbered.append(
+                        f"{path.name} #{fields.get('order', '-')}: {title!r}"
+                    )
         self.assertEqual(
             numbered[:20],
             [],
