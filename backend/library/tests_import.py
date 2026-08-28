@@ -811,10 +811,10 @@ class CcelSummaryTitleTests(TestCase):
 class CcelVolumeFurnitureTests(TestCase):
     """Leading page furniture on a Schaff section page, and contents pages."""
 
-    def _body(self, html, title="", work_title="", book_title=""):
+    def _body(self, html, title="", book_title="", volume=False):
         from library.management.commands.import_ccel import extract_body
 
-        return extract_body(html, title, work_title, book_title)
+        return extract_body(html, title, book_title, volume)
 
     def test_running_head_rule_and_restated_title_are_dropped(self):
         # Book I of On the Priesthood opens exactly like this.
@@ -823,6 +823,7 @@ class CcelVolumeFurnitureTests(TestCase):
             "<p>Book I.</p><p>1. I had many genuine and true friends.</p></div>",
             "Book I",
             "On the Priesthood",
+            volume=True,
         )
         self.assertNotIn("treatise on the priesthood", out)
         self.assertNotIn("————", out)
@@ -834,6 +835,7 @@ class CcelVolumeFurnitureTests(TestCase):
             "<div id='theText'><p>Life of Antony.</p><p>The life and conversation of Antony.</p></div>",
             "Preface",
             "The Life of Antony",
+            volume=True,
         )
         self.assertNotIn("<p>Life of Antony.</p>", out)
         self.assertIn("The life and conversation", out)
@@ -851,6 +853,7 @@ class CcelVolumeFurnitureTests(TestCase):
             "Priesthood must be read with care by every reader of it.</p></div>",
             "Introduction",
             "On the Priesthood",
+            volume=True,
         )
         self.assertIn("The events recorded", out)
 
@@ -900,7 +903,6 @@ class CcelVolumeFurnitureTests(TestCase):
             "<div id='theText'><h1>PRAYER AND PRAYING MEN</h1>"
             "<h2>INTRODUCTION</h2><p>Rev. Edward McKendrie Bounds was…</p></div>",
             "Introduction",
-            "",
             "Prayer and Praying Men",
         )
         self.assertNotIn("PRAYER AND PRAYING MEN", out)

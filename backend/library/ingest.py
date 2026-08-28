@@ -127,7 +127,8 @@ _BARE_CHAPTER = re.compile(r"^\s*chapter\s+[ivxlcdm\d]+\.?\s*$", re.I)
 def _numbering_prefix(t: str) -> re.Match[str] | None:
     """A redundant numbering prefix on `t`, if removing it leaves a title."""
     m = _CHAPTER_PREFIX.match(t)
-    # A bare "Chapter 3" is left alone — there would be nothing else to show.
+    # Nothing descriptive after the counter means there is no prefix to strip —
+    # the whole title is the counter, and `_BARE_CHAPTER` empties it at the end.
     if m and t[m.end():].strip():
         return m
     m = _NUMBER_PREFIX.match(t)
@@ -195,7 +196,6 @@ def clean_title(raw: str) -> str:
     # rather than mangled to "Iv"; roman-numeral words inside are preserved.
     if is_allcaps and not re.fullmatch(r"[IVXLCDM]+", t):
         t = _titlecase_caps(t)
-    # A bare chapter counter is not a title; the reader shows the number itself.
     return "" if _BARE_CHAPTER.match(t) else _cap_first(t)
 
 
@@ -292,12 +292,10 @@ def upsert_book(entry: BookEntry, sections: list[tuple[str, str]], language: str
         # A per-book override is normalised the same way import_ochorus does, so
         # the same declared correction yields the same stored title on any source.
         override = title_overrides.get(order)
-        # An empty title stays empty. A chapter can genuinely have no name —
-        # Purpose in Prayer's thirteen are untitled in the source — and the
-        # synthetic "Chapter {order}" this used to store was worse than nothing:
-        # the reader prints the number itself, so it rendered "1. Chapter 1".
-        # `Chapter.title` is `blank=True`, the reader falls back to "Chapter N"
-        # for display, and no shipped title was ever produced by this branch.
+        # An empty title stays empty — a chapter can genuinely have no name (see
+        # `_BARE_CHAPTER`). `Chapter.title` is `blank=True` and the reader names
+        # it; the synthetic "Chapter {order}" this used to store only stood in
+        # the way, and produced no title that ever shipped.
         final_title = clean_title(override) if override else title
         Chapter.objects.create(
             book=book,

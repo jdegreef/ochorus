@@ -53,6 +53,19 @@ export function readingTime(words: number): string {
 }
 
 /**
+ * How a chapter is named in a list: "3. The Letter Killeth".
+ *
+ * A chapter may genuinely have no title — Bounds's *Purpose in Prayer* is
+ * thirteen untitled chapters — and then the number IS the name, so it moves
+ * inside the label ("Chapter 3") rather than being prefixed to an empty string.
+ * Shared because four places list chapters (the TOC, its bookmarks, the search
+ * drawer and the notebook) and three of them had grown the same inline ternary.
+ */
+export function chapterLabel(order: number, title: string | null | undefined): string {
+	return title ? `${order}. ${title}` : `${i18n.t('settings.chapterN')} ${order}`;
+}
+
+/**
  * The year a sermon was preached, for display — `''` when undated (about half
  * the shelf). Shared so the sermon shelf and the sermon page agree on both the
  * slice and the empty-string fallback; they had grown identical private copies.

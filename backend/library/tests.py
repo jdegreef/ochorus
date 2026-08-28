@@ -108,6 +108,8 @@ class CleanTitleTests(TestCase):
         self.assertEqual(clean_title("Chapter I"), "")
         self.assertEqual(clean_title("Chapter 13"), "")
         self.assertEqual(clean_title("chapter iv."), "")
+        # A real title that merely begins with the word is untouched.
+        self.assertEqual(clean_title("Chapter Summary"), "Chapter Summary")
 
     def test_section_and_part_counters_are_kept(self):
         # They name a unit the reader does NOT number, so unlike "Chapter N"
@@ -115,8 +117,6 @@ class CleanTitleTests(TestCase):
         self.assertEqual(clean_title("Section I"), "Section I")
         self.assertEqual(clean_title("Section 25"), "Section 25")
         self.assertEqual(clean_title("Part III"), "Part III")
-        # A real title that merely begins with the word is untouched.
-        self.assertEqual(clean_title("Chapter Summary"), "Chapter Summary")
 
     def test_bare_roman_numeral_left_alone(self):
         self.assertEqual(clean_title("IV"), "IV")
