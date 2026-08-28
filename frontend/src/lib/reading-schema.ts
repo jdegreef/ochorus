@@ -248,9 +248,16 @@ export type MarksStore = Record<string, ChapterMarks>;
 // --- Bookmarks ----------------------------------------------------------------
 /**
  * A saved place in a book: a chapter (`order`) + a paragraph index (`p`) within
- * it, with a short `snippet` and the chapter `title` captured at save time so
- * the list renders without re-fetching. Distinct from `ProgressRecord` (the
- * single auto-saved resume point) and from `Mark` (a text-range highlight).
+ * it, with a short `snippet` and the chapter `title` captured at save time.
+ * Distinct from `ProgressRecord` (the single auto-saved resume point) and from
+ * `Mark` (a text-range highlight).
+ *
+ * `title` is a CACHE, not the truth: it is frozen at save time and nothing
+ * reconciles it, so a chapter retitled since then leaves it quoting text that
+ * no longer exists. Render the live title from the loaded work and fall back to
+ * this only when that work isn't loaded — see `TocDrawer` and the notebook.
+ * (`marks` and `progress` store no title at all, for exactly this reason; the
+ * snapshot earns its place here because a bookmark list has to read offline.)
  */
 export interface Bookmark {
 	id: string;
