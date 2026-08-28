@@ -80,6 +80,27 @@ class CleanTitleTests(TestCase):
         # Four digits are a year, not a chapter number.
         self.assertEqual(clean_title("1662. The Great Ejection"), "1662. The Great Ejection")
 
+    def test_keeps_the_numeral_of_a_numbered_bible_book(self):
+        # The numeral is part of the book's NAME, so stripping it would collapse
+        # the three epistles of John to one title. `_ROMAN_PREFIX` guards the
+        # roman spelling ("II. Timothy") for the same reason.
+        self.assertEqual(clean_title("1. John"), "1. John")
+        self.assertEqual(clean_title("2. John"), "2. John")
+        self.assertEqual(clean_title("2. Peter"), "2. Peter")
+        # Matched whole: a real numbered title that merely STARTS with a book
+        # name still loses its numbering.
+        self.assertEqual(clean_title("1. John the Baptist"), "John the Baptist")
+        # And the guard is not a word-count test — Murray's one-word chapter
+        # titles must still be stripped.
+        self.assertEqual(clean_title("11. Patiently"), "Patiently")
+
+    def test_is_idempotent_on_a_doubly_numbered_title(self):
+        # The docstring promises it, and it is applied more than once by design
+        # (migration 0003 runs it over already-cleaned rows).
+        for raw in ("1. 2. Title", "Chapter 1. Chapter 2. Title", "1. 1. Men of Prayer"):
+            once = clean_title(raw)
+            self.assertEqual(clean_title(once), once, raw)
+
     def test_bare_roman_numeral_left_alone(self):
         self.assertEqual(clean_title("IV"), "IV")
 

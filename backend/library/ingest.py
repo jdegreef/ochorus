@@ -42,6 +42,17 @@ _CHAPTER_PREFIX = re.compile(r"^\s*chapter\s+\S[^.:—–]*?\s*[.:—–]\s+", r
 # roman-numeral prefix is handled below, under a caps guard it needs and this
 # does not.
 _NUMBER_PREFIX = re.compile(r"^\s*\d{1,3}[.)]\s+(?=\S)")
+# …except where the numeral is part of a Bible book's NAME. `_ROMAN_PREFIX`
+# keeps "II. Timothy" for this reason, and the arabic rule needs the same guard
+# or "1. John" / "2. John" / "3. John" all collapse to "John" — three chapters
+# with one title. Only the books that come numbered; matched whole, so "1. John
+# the Baptist" (a real numbered title) still loses its numeral. Not a word-count
+# test — Murray's "11. Patiently" and "25. Quietly" are one-word titles that
+# must still be stripped.
+_NUMBERED_BOOKS = frozenset(
+    {"samuel", "kings", "chronicles", "corinthians", "thessalonians",
+     "timothy", "peter", "john", "maccabees", "esdras"}
+)
 # Quotation marks are noise in a title. Double quotes (incl. straight ") go
 # everywhere; a straight single quote only when it's NOT flanked by letters, so
 # apostrophes in contractions/possessives (God's, Paul's) are preserved.
@@ -95,6 +106,18 @@ def _titlecase_caps(s: str) -> str:
     return " ".join(out)
 
 
+def _numbering_prefix(t: str) -> re.Match[str] | None:
+    """A redundant numbering prefix on `t`, if removing it leaves a title."""
+    m = _CHAPTER_PREFIX.match(t)
+    # A bare "Chapter 3" is left alone — there would be nothing else to show.
+    if m and t[m.end():].strip():
+        return m
+    m = _NUMBER_PREFIX.match(t)
+    if m and (rest := t[m.end():].strip()) and rest.rstrip(".").lower() not in _NUMBERED_BOOKS:
+        return m
+    return None
+
+
 def clean_title(raw: str) -> str:
     """Normalise a chapter heading for display.
 
@@ -107,13 +130,12 @@ def clean_title(raw: str) -> str:
     # Drop a trailing "Contents" nav link, but never blank the whole title — a
     # bare "Contents" must stay so is_front_matter can recognise and drop it.
     t = re.sub(r"\s*Contents$", "", t).strip() or t
-    # Drop a redundant "Chapter N." or bare "N." numbering prefix — but only
-    # when a descriptive title remains, since a bare "Chapter 3" or "12" has
-    # nothing else to show.
-    for prefix in (_CHAPTER_PREFIX, _NUMBER_PREFIX):
-        m = prefix.match(t)
-        if m and t[m.end():].strip():
-            t = t[m.end():]
+    # Drop a redundant "Chapter N." / "N." numbering prefix. To a fixpoint, so
+    # the function stays idempotent as its docstring promises: one pass over a
+    # doubly-numbered "1. 2. Title" would leave "2. Title" and the next call
+    # would shorten it again.
+    while (m := _numbering_prefix(t)) is not None:
+        t = t[m.end():]
     # Remove quotation marks; tidy stray wrapping punctuation and spacing.
     t = _DQUOTE.sub("", t)
     t = _SQUOTE.sub("", t)
