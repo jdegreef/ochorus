@@ -296,6 +296,30 @@ def _norm(text: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", text.lower()).strip()
 
 
+# A chapter page's own heading numbers itself, and not always the way its TOC
+# entry does: Bounds's TOC reads "1. Men of Prayer Needed" while the page's
+# <h2> reads "1 Men of Prayer Needed". Both are the same restatement, and
+# `clean_title` now drops the TOC's number, so the two only compare equal with
+# the numbering set aside on each side.
+#
+# Digits only, and the roman half of this gap is REAL and still open: 13
+# chapters of `way-into-holiest` open with "<h2>II. THE DIGNITY OF CHRIST</h2>"
+# above prose the reader already sees titled. Closing it here would change
+# nothing for those readers — `seed_books` never re-syncs an existing book's
+# chapters — so the rule and the migration that rewrites the stored bodies
+# belong in one change, together with the ALL-CAPS guard `_ROMAN_PREFIX` uses
+# (ingest.py): unguarded, a roman strip also eats ordinary words, since
+# "civil", "mild" and "livid" are all spelled out of [ivxlcdm].
+_LEAD_NUMBER = re.compile(r"^\d{1,3}\s+")
+
+
+def _restates(text: str, title: str) -> bool:
+    """Does this heading merely repeat the chapter's own title, numbering aside?"""
+    if not title:
+        return False
+    return _LEAD_NUMBER.sub("", _norm(text)) == _LEAD_NUMBER.sub("", _norm(title))
+
+
 # A typographic rule set as its own paragraph — CCEL prints one under the
 # running head on most Schaff section pages.
 _RULE_LINE = re.compile(r"^[\s\u2014\u2013\-_*·.]+$")
@@ -315,7 +339,7 @@ def _is_leading_noise(text: str, title: str, work_title: str) -> bool:
     if _RULE_LINE.match(text) or _is_ordinal_heading(text):
         return True
     normalised = _norm(text)
-    if title and normalised == _norm(title):
+    if _restates(text, title):
         return True
     # The running head, which quotes the work's own title — in either
     # direction, since CCEL prints both the full title ("Life of Antony." above
@@ -362,7 +386,7 @@ def extract_body(html: str, title: str = "", work_title: str = "") -> str:
         ):
             break
         text = el.get_text(" ", strip=True)
-        if _is_ordinal_heading(text) or (title and _norm(text) == _norm(title)):
+        if _is_ordinal_heading(text) or _restates(text, title):
             el.decompose()
         else:
             break

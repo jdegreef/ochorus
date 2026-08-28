@@ -557,6 +557,13 @@
 			"art": false,
 			"scrim": 1
 		},
+		"power-through-prayer": {
+			"ground": "8479431a9a178feab19a83728054c8e6a389ea0cbc630908e02a51ca109f134a",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"prevailing-prayer": {
 			"ground": "ab6be6abcbd4950e2d71be21c9d06de9b5e739d14d3415a41ed852a1389a2188",
 			"style": "revival",
@@ -944,7 +951,10 @@
 		},
 		"uk/the-unselfishness-of-god": {
 			"ground": "88293e22762c4408c14ee417f17fa9cfd5db143be9f8655a631d1da4e0bf3190",
-			"style": "devotional"
+			"style": "devotional",
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.95
 		},
 		"union-and-communion": {
 			"ground": "526cff85d67cbd9bd08c0b5116e2bcfbb07b1b84c81d11f66b5104d0a2245b50",
