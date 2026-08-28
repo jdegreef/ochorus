@@ -816,11 +816,19 @@ class BareChapterTitleTests(TestCase):
     """A chapter whose "title" is only a counter is stored as untitled."""
 
     def _titles(self, sections):
-        # A real catalog entry: `upsert_book` reads `BOOKS` for `sort_order`.
+        # A real catalog entry, because `upsert_book` reads `BOOKS` for
+        # `sort_order` — but it must be one with NO `chapter_titles` correction,
+        # since `upsert_book` applies those and they would replace the titles
+        # under test. This was pinned to `purpose-in-prayer` until that book
+        # gained editorial titles for its unnamed chapters, at which point all
+        # three tests here failed with the corrections' titles rather than their
+        # own. Picking the entry by that property instead of by name keeps the
+        # next corrections entry from re-arming the same trap.
         from library.catalog import BOOKS
+        from library.corrections import chapter_title_overrides
         from library.ingest import upsert_book
 
-        entry = next(b for b in BOOKS if b.slug == "purpose-in-prayer")
+        entry = next(b for b in BOOKS if not chapter_title_overrides(b.slug))
         book = upsert_book(entry, sections)
         return [c.title for c in book.chapters.order_by("order")]
 
