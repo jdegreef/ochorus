@@ -89,6 +89,26 @@ class Author(models.Model):
     # cards and schema.org ItemList both speak of Person — their works are still
     # reachable from /books and the byline's own author page.
     is_imprint = models.BooleanField(default=False)
+    # Authoritative identifiers for this PERSON — Wikipedia, Wikidata, VIAF —
+    # emitted as schema.org `sameAs` in the author page's Person markup.
+    #
+    # This is the strongest entity signal available to the site, and the reason
+    # it matters is that search and answer engines resolve ENTITIES before they
+    # rank documents. On "andrew murray books" Ochorus competes with Wikipedia
+    # and CCEL for the right to be recognised as a page ABOUT that man; without
+    # this, the connection has to be inferred from the prose, and with it the
+    # page asserts which person it is about.
+    #
+    # A WRONG identifier is worse than none — it tells search engines the page
+    # is about somebody else — so entries are verified against the person's
+    # dates before they are written, and an author nobody could confirm keeps
+    # an empty list rather than a plausible guess. `tests_author_entity.py` is
+    # the standing guard on shape; identity is a human check, by design.
+    #
+    # Never populated for an imprint (`is_imprint`): "Ochorus Originals" is a
+    # house byline, not a person, and pointing it at a real one would be a
+    # false claim about authorship.
+    same_as = models.JSONField(default=list, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     objects = AuthorManager()

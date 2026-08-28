@@ -189,7 +189,13 @@
 			image: ogImage || undefined,
 			birthDate: author.birth_year ? String(author.birth_year) : undefined,
 			deathDate: author.death_year ? String(author.death_year) : undefined,
-			url: canonical
+			url: canonical,
+			// The strongest entity signal the page can carry: it names WHICH
+			// person this is, in the vocabularies search and answer engines
+			// reconcile against, instead of leaving them to infer it from the
+			// prose. Omitted rather than emitted empty when we have none — an
+			// empty sameAs asserts nothing and is noise in the markup.
+			sameAs: author.same_as?.length ? author.same_as : undefined
 		})
 	);
 	const crumbsLd = $derived(

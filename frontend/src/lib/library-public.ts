@@ -327,6 +327,13 @@ export interface AuthorDetail extends AuthorBio {
 	sermons: SermonSummary[];
 	/** Topical shelves this author appears in (via their books/sermons). */
 	topics: TopicChip[];
+	/**
+	 * Authoritative identifiers for this person — Wikipedia, Wikidata — emitted
+	 * as schema.org `sameAs`. Empty for the house byline and for contemporary
+	 * contributors, and optional besides: an API running behind this build
+	 * simply omits the property rather than breaking the markup.
+	 */
+	same_as?: string[];
 }
 
 /**
