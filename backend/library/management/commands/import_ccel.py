@@ -488,7 +488,19 @@ class Command(BaseCommand):
             # own chapter, titled by itself. One loop then serves both modes, so
             # a fix to the crawl, the front-matter rule or the error handling
             # can't land in only half of them.
-            parts = [(t, [(u, t)]) for _, leaves in parts for u, t in leaves]
+            #
+            # A leaf inherits its PART's front-matter verdict on the way. The
+            # part title is the only thing that says an "Indexes" section is
+            # back matter: its leaves are titled "Greek Words and Phrases" and
+            # "Latin Words and Phrases", which name nothing that is_front_matter
+            # can recognise, and they imported as two chapters of Owen's
+            # Mortification of Sin.
+            parts = [
+                (t, [(u, t)])
+                for part_title, leaves in parts
+                if not is_front_matter(part_title)
+                for u, t in leaves
+            ]
 
         chapters: list[tuple[str, str]] = []
         for part_title, leaves in parts:

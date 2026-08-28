@@ -828,5 +828,24 @@
         "https://www.wikidata.org/wiki/Q3431220"
       ]
     }
+  },
+  {
+    "model": "library.author",
+    "fields": {
+      "slug": "john-owen",
+      "name": "John Owen",
+      "bio": "John Owen (1616–1683) was the foremost theologian of English Puritanism — chaplain to Cromwell, Dean of Christ Church and Vice-Chancellor of Oxford, and after 1662 a dissenting minister barred from the universities he had led. He is famous for the density of his prose and for an unusually exact understanding of how sin actually works on a person, which is why The Mortification of Sin has outlived almost everything else written in its century on the subject.",
+      "bio_html": "",
+      "photo_url": "",
+      "birth_year": 1616,
+      "death_year": 1683,
+      "original_language": "en",
+      "is_imprint": false,
+      "created_at": "2026-08-28T00:00:00.000Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/John_Owen_(theologian)",
+        "https://www.wikidata.org/wiki/Q1339789"
+      ]
+    }
   }
 ]
