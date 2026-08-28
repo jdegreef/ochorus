@@ -27,7 +27,8 @@ import { readJSON, writeJSON } from './persisted';
 const readAll = (): BookmarksStore => readJSON<BookmarksStore>(BOOKMARKS_KEY, {});
 const writeAll = (store: BookmarksStore) => writeJSON(BOOKMARKS_KEY, store);
 
-const byPosition = (a: Bookmark, b: Bookmark) => a.order - b.order || a.p - b.p;
+/** Reading order within a work. Exported: the notebook sorts its own copies. */
+export const byPosition = (a: Bookmark, b: Bookmark) => a.order - b.order || a.p - b.p;
 
 class Bookmarks {
 	/** Reactive bookmarks of the currently open work, in reading order. */
