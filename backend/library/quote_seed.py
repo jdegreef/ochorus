@@ -33,6 +33,23 @@ Registered in `content_sources.json`, so editing this file rebuilds the reader.
 
 from __future__ import annotations
 
+#: Authors whose quotations a PERSON has read and signed off, recorded here so
+#: the decision lives in version control rather than only in a production
+#: database — where a rebuild would silently lose it, the way an imported
+#: author's stub bio used to outlive every correction (see author_sync.py).
+#:
+#: charles-h-spurgeon — approved 2026-08-28, all sixty.
+#:
+#: THIS ONLY EVER PUBLISHES, AT CREATION. `seed_quotes` reads it when it creates
+#: a row and never again, which is the same rule `is_published` and
+#: `source_type` follow in seed_books: the live database owns TAKEDOWN. Someone
+#: who clears `reviewed` on a quotation — a misattribution spotted, a complaint
+#: — must not have that undone by the next deploy, so removing an author from
+#: this set prevents future publication but does not retract a live one. To pull
+#: a published quotation, clear the flag in the database AND drop it here, which
+#: is the same two-sided rule authors.json already documents for a portrait.
+APPROVED = frozenset({"charles-h-spurgeon"})
+
 #: (author slug, quotations). Source is a ("book-slug", chapter_order) pair or a
 #: sermon slug — exactly one of the two.
 SPURGEON = [

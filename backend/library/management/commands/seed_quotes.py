@@ -5,11 +5,19 @@ by its slug (author + hash of the normalised text), so re-running updates the
 row rather than duplicating it, and a reworded quotation becomes a NEW row
 instead of silently editing one somebody already approved.
 
-`reviewed` is CREATE-ONLY. It is the publication gate — a person decides a
-quotation may appear under the author's name — and a seed that re-asserted it
-would walk that decision back on the next deploy, which is the trap
-backend/CLAUDE.md warns about and that `source_type` is protected from for the
-same reason.
+`reviewed` is CREATE-ONLY, and set from `quote_seed.APPROVED` — the record, in
+version control, of which authors a person has signed off. Recording it here
+rather than only in production is deliberate: a prod-only approval is invisible
+to a database rebuild, which is the failure author_sync.py exists to fix.
+
+Create-only cuts BOTH ways and that is the point. The seed publishes what the
+repo has approved when it first creates a row, and never touches `reviewed`
+again — so a takedown in the live database (a misattribution found, a
+complaint) survives every later deploy. That is the same rule `is_published`
+and `source_type` follow in seed_books, for the same reason.
+
+A row created before its author was approved therefore stays unreviewed; that
+is what `approve_quotes` is for.
 """
 
 from __future__ import annotations
@@ -18,7 +26,7 @@ from django.core.management.base import BaseCommand
 from django.db import transaction
 
 from library.models import Author, Chapter, Quote, Sermon
-from library.quote_seed import QUOTES
+from library.quote_seed import APPROVED, QUOTES
 
 
 class Command(BaseCommand):
@@ -47,7 +55,9 @@ class Command(BaseCommand):
                 if row is None:
                     Quote.objects.create(
                         slug=q["slug"], author=author, text=q["text"],
-                        paragraph=q["paragraph"], **{field: obj},
+                        paragraph=q["paragraph"],
+                        reviewed=author_slug in APPROVED,
+                        **{field: obj},
                     )
                     created += 1
                     continue

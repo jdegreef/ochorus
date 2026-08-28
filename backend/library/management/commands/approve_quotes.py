@@ -10,6 +10,18 @@ translation waits for `approve_translation`.
     manage.py approve_quotes charles-h-spurgeon --list    # read them first
 
 `--list` exists because approving unread is the failure this gate is for.
+
+WHERE THE DECISION LIVES. Approving here writes only to this database, and a
+rebuild loses it. The durable record is `quote_seed.APPROVED` — a set of author
+slugs in version control, which `seed_quotes` applies when it CREATES a row. Use
+this command to publish rows that already exist (an author approved after their
+quotations were seeded), and add the author to `APPROVED` so a rebuilt database
+comes up the same way.
+
+The reverse is deliberately not symmetrical: clearing `reviewed` here is a
+takedown, and the seed never re-asserts the flag, so it survives every later
+deploy. Drop the author from `APPROVED` as well, or a rebuild will publish them
+again.
 """
 
 from __future__ import annotations

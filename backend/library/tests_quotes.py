@@ -14,7 +14,7 @@ from django.test import SimpleTestCase, TestCase
 from rest_framework.test import APIClient
 
 from .models import Author, Book, Chapter, Quote, Sermon
-from .quote_seed import QUOTES
+from .quote_seed import APPROVED, QUOTES
 
 
 class SeedDataTests(SimpleTestCase):
@@ -71,6 +71,13 @@ class SeedDataTests(SimpleTestCase):
 
 
 class SeedCommandTests(TestCase):
+    def _nobody_approved(self):
+        from unittest import mock
+
+        return mock.patch(
+            "library.management.commands.seed_quotes.APPROVED", frozenset()
+        )
+
     def setUp(self):
         self.author = Author.objects.create(slug="charles-h-spurgeon", name="C. H. Spurgeon")
         book = Book.objects.create(
@@ -89,16 +96,55 @@ class SeedCommandTests(TestCase):
                 body_html="<p>x</p>" * 80,
             )
 
-    def test_quotes_seed_unreviewed(self):
+    def test_an_approved_author_seeds_published(self):
+        # The approval is recorded in the repo, so a rebuilt database comes up
+        # with the same quotations published — a prod-only approval would not
+        # survive one.
+        self.assertIn("charles-h-spurgeon", APPROVED)
         call_command("seed_quotes", verbosity=0)
         self.assertTrue(Quote.objects.exists())
+        self.assertEqual(Quote.objects.filter(reviewed=False).count(), 0)
+
+    def test_an_author_not_in_approved_seeds_unreviewed(self):
+        # The gate still holds for anyone nobody has signed off. Patched on the
+        # COMMAND's namespace: it does `from ... import APPROVED`, so the name is
+        # bound at import and patching the seed module would miss it.
+        with self._nobody_approved():
+            call_command("seed_quotes", verbosity=0)
+        self.assertTrue(Quote.objects.exists())
         self.assertEqual(Quote.objects.filter(reviewed=True).count(), 0)
+
+    def test_a_takedown_survives_the_next_deploy(self):
+        """The reason `reviewed` is create-only, and why it cuts both ways.
+
+        Somebody clears the flag on a quotation — a misattribution spotted, a
+        complaint — and the seed runs again on the next deploy. If it re-asserted
+        what the repo approved, the quotation would come straight back, which is
+        exactly the trap `is_published` is protected from in seed_books.
+        """
+        call_command("seed_quotes", verbosity=0)
+        pulled = Quote.objects.first()
+        pulled.reviewed = False
+        pulled.save(update_fields=["reviewed"])
+        call_command("seed_quotes", verbosity=0)
+        pulled.refresh_from_db()
+        self.assertFalse(pulled.reviewed)
 
     def test_re_running_writes_nothing(self):
         call_command("seed_quotes", verbosity=0)
         n = Quote.objects.count()
         call_command("seed_quotes", verbosity=0)
         self.assertEqual(Quote.objects.count(), n)
+
+    def test_a_row_created_before_its_author_was_approved_stays_unreviewed(self):
+        # Create-only means the repo cannot retro-publish an existing row; that
+        # is what `approve_quotes` is for, and the command's docstring says so.
+        with self._nobody_approved():
+            call_command("seed_quotes", verbosity=0)
+        call_command("seed_quotes", verbosity=0)
+        self.assertEqual(Quote.objects.filter(reviewed=True).count(), 0)
+        call_command("approve_quotes", "charles-h-spurgeon", verbosity=0)
+        self.assertEqual(Quote.objects.filter(reviewed=False).count(), 0)
 
     def test_approval_survives_a_re_seed(self):
         # `reviewed` is create-only. A seed that re-asserted it would revoke a
