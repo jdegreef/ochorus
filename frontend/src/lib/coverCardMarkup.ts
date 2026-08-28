@@ -117,6 +117,11 @@ export function coverTypeMarkup(book: CoverCardBook, lockup: string): string {
 export function coverPlateMarkup(book: CoverCardBook, lockup: string): string {
 	const classes = ['cover-plate', 'over-file'];
 	if (book.art) classes.push('over-art');
+	// The subtitle's own scrim band, which only exists on covers that draw one.
+	// On the wrapper rather than the type block because the scrim is drawn by
+	// `.cover-plate.over-art::before`, and a pseudo-element cannot be selected
+	// from a descendant.
+	if (book.subtitle) classes.push('has-subtitle');
 	// Matching the component: the property is set only where there is a scrim to
 	// scale, so a plate's markup is unchanged and the parity gate compares like
 	// with like. A painting without a measured strength takes 1, which is what
