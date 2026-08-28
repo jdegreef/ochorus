@@ -1,3 +1,9 @@
+// Rebuild marker 2026-08-28: #1161 added On the Priesthood, The Life of Antony
+// and On the Incarnation. New books reach prod through `seed_books` in the
+// api's release step, so the web build enumerated /books before the rows
+// existed and all three prerendered as the SPA shell — 5,688 bytes, no
+// <title>, identical for every slug. The api is confirmed live with all
+// three; this touch forces the build that actually prerenders them.
 // Rebuild marker 2026-08-28: PR #1150 filled `CURATED_GROUND`, which is what
 // makes `credit()` return an attribution line for the translated editions of
 // the-inner-chamber and prayer-the-pulse-of-life. That PR touched frontend/
