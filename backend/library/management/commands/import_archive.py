@@ -28,13 +28,30 @@ from library.catalog import BOOKS, BookEntry
 from library.ingest import clean_title, is_front_matter, upsert_book, word_count
 
 USER_AGENT = "OchorusBot/0.1 (+https://ochorus.org; public-domain book reader)"
+METADATA_URL = "https://archive.org/metadata/{item_id}"
 
-# NB: the chapter-marker and running-header patterns below are tuned to the one
-# archive book in the catalogue (Clarke's Susanna Wesley). They are provisional,
-# not settled infrastructure — a future archive book with spelled-out or numeric
-# chapter headings, or a different header style, will need them revisited (or a
-# per-book config on BookEntry). The _reflow logic, by contrast, is general.
-_CHAPTER = re.compile(r"^\s*CHAPTER\s+[IVXLC]+\.?\s*$", re.I)
+#: Below this the scan is pre-modern type — long s, ligatures — and the OCR is
+#: noise, not prose. Measured on one book in two printings: the 1651 first
+#: edition of Burroughs' *Rare Jewel* gives "Thai through Gods mercy in my
+#: afflidion, I find the Graces of Gods Spirit workirtg as ftrongly in me",
+#: while the 1878 reprint of Sibbes reads cleanly. The PRINTING decides this,
+#: not the work, and archive.org usually holds several.
+MIN_PRINTING_YEAR = 1800
+#: US public domain is 95 years from publication. A literal rather than a
+#: computed date so an import is reproducible and a bump is a reviewed change.
+PD_THROUGH_YEAR = 1929
+_PD_STATUS = "NOT_IN_COPYRIGHT"
+_PD_LICENCE = re.compile(r"creativecommons\.org/publicdomain|/mark/1\.0|/zero/1\.0")
+
+# The header pattern below is still tuned to a house style rather than settled
+# infrastructure. The chapter marker is no longer: it accepts "CHAPTER IV." on
+# its own line (Clarke's Susanna Wesley) and "Chap. IV. — Signs of one truly
+# bruised" with the title on the same line after a dash (Sibbes' Bruised Reed).
+# A book that numbers chapters in words or digits will still need this revisited.
+_CHAPTER = re.compile(
+    r"^\s*chap(?:ter)?\.?\s+([IVXLC]+)\.?\s*(?:[\u2014\u2013-]\s*(.*))?$", re.I
+)
+_ROMAN = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100}
 _BARE_NUM = re.compile(r"^\s*\d{1,4}\s*$")
 _HYPHEN_EOL = re.compile(r"([A-Za-z])-$")
 _HYPHEN_SPACE = re.compile(r"([a-z])-\s+([a-z])")  # OCR split a compound: "fifty- four"
@@ -54,6 +71,202 @@ def _is_header(line: str) -> bool:
         return False
     letters = _NON_LETTER.sub("", line)  # str.isupper() ignores the dropped chars
     return bool(letters) and letters.isupper()
+
+
+_ROMAN_CANON = [
+    (100, "C"), (90, "XC"), (50, "L"), (40, "XL"),
+    (10, "X"), (9, "IX"), (5, "V"), (4, "IV"), (1, "I"),
+]
+
+
+def _to_roman(value: int) -> str:
+    out = ""
+    for size, sign in _ROMAN_CANON:
+        while value >= size:
+            out += sign
+            value -= size
+    return out
+
+
+def _roman(numeral: str) -> int | None:
+    """Roman numeral to int, or None when it is not a well-formed numeral.
+
+    The round-trip check is the point. "XVIL" — how this scan renders XVII —
+    parses happily under the usual subtractive rule and comes out as 34, and
+    that wrong-but-plausible value poisoned the restart detection below: the
+    next real chapter, XVIII, read as a step BACKWARDS and looked like a
+    contents list starting over, so 16 of Sibbes' 26 chapters were discarded.
+    Re-rendering and comparing rejects the mangled numeral instead.
+    """
+    numeral = numeral.upper()
+    total = prev = 0
+    for ch in reversed(numeral):
+        if ch not in _ROMAN:
+            return None
+        value = _ROMAN[ch]
+        total = total - value if value < prev else total + value
+        prev = max(prev, value)
+    if not total or _to_roman(total) != numeral:
+        return None
+    return total
+
+
+#: A contents line trails dot leaders and a page number ("... . . . 1", ". .113").
+_LEADERS = re.compile(r"[\s.,'*\u2019\u2018]*\d*\s*$")
+
+
+def contents_titles(lines: list[str], markers: list[tuple[int, str, str]]) -> dict[int, str]:
+    """Chapter number → the title as the book's own CONTENTS page gives it.
+
+    A body heading is set as a wrapped display line and only its first line is
+    captured, so it truncates: Sibbes' chapter I reads "The Text opened and
+    divided. What the" in the body and "The Text opened and divided. What the
+    Reed is, and what the bruising" in the contents. A contents entry is one
+    logical line, so it is the complete one.
+
+    That is the ONLY thing the contents page is reliably better at. It is set in
+    smaller type and often OCRs worse — Clarke's contents says "BIKTH AND
+    ANCESTRY" where her body says "BIRTH" — which is why the caller prefers it
+    on LENGTH alone and never on a tie.
+    """
+    titles: dict[int, str] = {}
+    # The next entry, however the OCR spelled it — Clarke's contents page says
+    # "CHAPTEE" for eleven of its sixteen lines, which the marker pattern does
+    # not match, so without this the wrap-scan swallowed the rest of the page
+    # into chapter one's title.
+    looks_like_entry = re.compile(r"^\s*chap\w*\.?\s+[IVXLC]+\b", re.I)
+    for i, (line_no, numeral, inline) in enumerate(markers):
+        value = _roman(numeral)
+        if value is None:
+            continue
+        parts = [inline] if inline else []
+        # A contents title may wrap; take following lines until a blank or the
+        # next entry. Bounded so a stray marker cannot swallow the front matter.
+        end = markers[i + 1][0] if i + 1 < len(markers) else line_no + 4
+        for line in lines[line_no + 1 : min(end, line_no + 4)]:
+            if not line.strip() or looks_like_entry.match(line):
+                break
+            parts.append(line.strip())
+        # A contents title wraps mid-word ("bruis'" / "ing"); join those without
+        # a space, the way _reflow does for the body.
+        text = ""
+        for part in parts:
+            if text and text.rstrip().endswith(("-", "'", "\u2019")):
+                text = text.rstrip().rstrip("-'\u2019") + part
+            else:
+                text = f"{text} {part}" if text else part
+        text = _LEADERS.sub("", _WS.sub(" ", text).strip()).strip()
+        # A chapter title is a title, not a paragraph. Anything this long means
+        # the scan ran two entries together and neither is usable.
+        if text and len(text) <= 90:
+            titles[value] = clean_title(text)
+    return titles
+
+
+def better_title(body: str, contents: str, *, body_was_inline: bool) -> str:
+    """Whichever of the two headings is the complete one.
+
+    The signal is STRUCTURAL, not a comparison of the strings. Where the body
+    title sat decides which source is the trustworthy one:
+
+    * On the marker's own line ("Chap. VI. — Gract is minted with Corruptum")
+      it is a wrapped display heading and we captured only its first line, so it
+      is truncated AND set in the type that OCRs worst. The contents entry is
+      one logical line and wins.
+    * On its own line below a bare marker (Clarke's "BIRTH AND ANCESTRY" under
+      "CHAPTER I.") it is the display heading in full, set large. It wins — her
+      contents page reads "BIKTH AND ANCESTRY", which is exactly the kind of
+      damage a length comparison cannot see and this rule never asks about.
+
+    Length was the first attempt and it fails on the case that matters: the
+    body's "Gract is minted with Corruptum" and the contents' correct "Grace is
+    mingled with Corruption" differ by two characters.
+    """
+    if body_was_inline and contents:
+        return contents
+    return body or contents
+
+
+def split_contents_run(
+    markers: list[tuple[int, str, str]],
+) -> tuple[list[tuple[int, str, str]], list[tuple[int, str, str]]]:
+    """(body markers, contents markers) — the split `drop_contents_run` makes."""
+    body = drop_contents_run(markers)
+    return body, markers[: len(markers) - len(body)]
+
+
+def drop_contents_run(markers: list[tuple[int, str, str]]) -> list[tuple[int, str, str]]:
+    """Discard a leading table of contents, by its NUMBERING RESTART.
+
+    A scan's contents list matches any chapter-marker pattern as well as the
+    body does — that is what it is a list of — and the importer split Sibbes'
+    *Bruised Reed* at its contents, producing one chapter from a 26-chapter
+    book while every gate stayed green. Line-gap thresholds get this wrong too:
+    the LAST contents entry's gap spans the whole of the front matter and looks
+    exactly like a real chapter.
+
+    Numbering is the honest signal. A book's chapters ascend; a contents list
+    ends and the body starts over at I. So find the last place the numbering
+    goes backwards and keep only what follows it. Markers the OCR mangled past
+    parsing are carried along rather than treated as a restart.
+    """
+    restart = 0
+    for i, (_, numeral, _) in enumerate(markers[1:], start=1):
+        # Only a return to ONE is a restart. Any other backwards step is an OCR
+        # misread or a stray marker in the front matter, and cutting the book
+        # there would throw away everything before it.
+        if _roman(numeral) == 1:
+            restart = i
+    return markers[restart:]
+
+
+def metadata(item_id: str) -> dict:
+    """The item's metadata. archive.org publishes this as an API, so unlike
+    Gutenberg — whose search page asks not to be scraped — nothing here parses
+    HTML."""
+    resp = requests.get(
+        METADATA_URL.format(item_id=item_id), headers={"User-Agent": USER_AGENT}, timeout=60
+    )
+    resp.raise_for_status()
+    return resp.json()
+
+
+def printing_year(meta: dict) -> int | None:
+    """The year of THIS printing, from whichever date field the item carries."""
+    for key in ("year", "date", "publicdate"):
+        m = re.search(r"\b(1[5-9]\d\d|20\d\d)\b", str(meta.get(key, "")))
+        if m:
+            return int(m.group(1))
+    return None
+
+
+def public_domain_reason(meta: dict) -> tuple[bool, str]:
+    """(is_public_domain, why) — the licence gate, with its reasoning kept.
+
+    Unlike CCEL and Gutenberg, whose whole catalogues are public domain, an
+    archive.org identifier can be anything at all, including a book that is
+    merely lendable. So this is the one source that needs a gate.
+
+    Three items probed while writing this had three different shapes: an
+    explicit NOT_IN_COPYRIGHT status; a CC public-domain licenseurl; and
+    Ramabai's 1888 *High-Caste Hindu Woman*, which carries neither and nothing
+    but a date. So age has to be an accepted signal or genuinely public-domain
+    scans get refused — while an explicit status of anything else has to beat
+    age, or a modern edition of an old work slips through on its subject's.
+    """
+    status = str(meta.get("possible-copyright-status", "")).strip()
+    if status and status.upper() != _PD_STATUS:
+        return False, f"archive.org records copyright status {status!r}"
+    if status.upper() == _PD_STATUS:
+        return True, "archive.org records NOT_IN_COPYRIGHT"
+    if _PD_LICENCE.search(str(meta.get("licenseurl", ""))):
+        return True, f"public-domain licence {meta.get('licenseurl')}"
+    year = printing_year(meta)
+    if year is None:
+        return False, "no printing year on the item, and no explicit status"
+    if year <= PD_THROUGH_YEAR:
+        return True, f"printed {year}, US public domain (through {PD_THROUGH_YEAR})"
+    return False, f"printed {year}, after {PD_THROUGH_YEAR} and with no PD status"
 
 
 def fetch_text(item_id: str) -> str:
@@ -99,19 +312,37 @@ def _reflow(lines: list[str]) -> str:
 def chapterize(text: str) -> list[tuple[str, str]]:
     """Split the OCR text into (title, body_html) at each CHAPTER marker."""
     lines = text.split("\n")
-    starts = [i for i, line in enumerate(lines) if _CHAPTER.match(line)]
+    markers: list[tuple[int, str, str]] = []
+    for i, line in enumerate(lines):
+        m = _CHAPTER.match(line.strip())
+        if m:
+            markers.append((i, m.group(1), (m.group(2) or "").strip()))
+    markers, contents = split_contents_run(markers)
+    from_contents = contents_titles(lines, contents)
+
     sections: list[tuple[str, str]] = []
-    for n, start in enumerate(starts):
-        end = starts[n + 1] if n + 1 < len(starts) else len(lines)
+    for n, (start, numeral, inline_title) in enumerate(markers):
+        end = markers[n + 1][0] if n + 1 < len(markers) else len(lines)
         block = lines[start + 1 : end]
-        # The first non-furniture line after the marker is the chapter title.
-        title = ""
-        body_start = 0
-        for j, line in enumerate(block):
-            if line.strip() and not _BARE_NUM.match(line.strip()):
-                title = clean_title(line.strip())
-                body_start = j + 1
-                break
+        if inline_title:
+            # "Chap. IV. — Signs of one truly bruised": the title is on the
+            # marker line and the body starts immediately.
+            title, body_start = clean_title(inline_title), 0
+        else:
+            # The first non-furniture line after the marker is the chapter title.
+            title = ""
+            body_start = 0
+            for j, line in enumerate(block):
+                if line.strip() and not _BARE_NUM.match(line.strip()):
+                    title = clean_title(line.strip())
+                    body_start = j + 1
+                    break
+        value = _roman(numeral)
+        title = better_title(
+            title,
+            from_contents.get(value, "") if value else "",
+            body_was_inline=bool(inline_title),
+        )
         body = _reflow(block[body_start:])
         sections.append((title, body))
     return sections
@@ -122,8 +353,15 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument("slugs", nargs="*", help="Book slugs (default: all archive books).")
+        parser.add_argument(
+            "--inspect",
+            metavar="ITEM_ID",
+            help="Print an item's licence verdict and an OCR sample; import nothing.",
+        )
 
     def handle(self, *args, **opts):
+        if opts.get("inspect"):
+            return self._inspect(opts["inspect"])
         wanted = set(opts["slugs"])
         entries = [b for b in BOOKS if b.source == "archive" and (not wanted or b.slug in wanted)]
         unknown = wanted - {b.slug for b in BOOKS}
@@ -132,8 +370,55 @@ class Command(BaseCommand):
         for entry in entries:
             self._import_one(entry)
 
+    def _inspect(self, item_id: str):
+        """Read the OCR before trusting it.
+
+        The 1651-versus-1878 difference is invisible in a catalogue entry and
+        obvious in three lines of the text itself, so choosing a printing has to
+        be a thing someone does with their eyes before an entry is written.
+        """
+        meta = metadata(item_id).get("metadata", {})
+        ok, why = public_domain_reason(meta)
+        year = printing_year(meta)
+        self.stdout.write(f"  title  : {str(meta.get('title', ''))[:70]}")
+        self.stdout.write(f"  creator: {str(meta.get('creator', ''))[:70]}")
+        self.stdout.write(f"  printed: {year}")
+        self.stdout.write(f"  licence: {'PD' if ok else 'NOT PD'} — {why}")
+        if year is not None and year < MIN_PRINTING_YEAR:
+            self.stdout.write(self.style.WARNING(
+                f"  ⚠ printed {year}, before {MIN_PRINTING_YEAR} — expect pre-modern type "
+                "and unusable OCR. Look for a later printing."
+            ))
+        try:
+            body = fetch_text(item_id)
+        except requests.RequestException as exc:
+            self.stderr.write(self.style.ERROR(f"  no OCR text: {exc}"))
+            return
+        middle = _WS.sub(" ", body[len(body) // 2 : len(body) // 2 + 700]).strip()
+        self.stdout.write("  --- OCR sample from the middle of the book ---")
+        self.stdout.write("  " + middle[:600])
+
     def _import_one(self, entry: BookEntry):
         self.stdout.write(f"→ {entry.title}  (archive:{entry.source_ref})")
+        try:
+            meta = metadata(entry.source_ref).get("metadata", {})
+        except requests.RequestException as exc:
+            self.stderr.write(self.style.ERROR(f"  metadata fetch failed: {exc}"))
+            return
+        if not meta:
+            self.stderr.write(self.style.ERROR(f"  no such item: {entry.source_ref}"))
+            return
+        ok, why = public_domain_reason(meta)
+        if not ok:
+            self.stderr.write(self.style.ERROR(f"  REFUSED — {why}"))
+            return
+        year = printing_year(meta)
+        if year is not None and year < MIN_PRINTING_YEAR:
+            self.stderr.write(self.style.ERROR(
+                f"  REFUSED — printed {year}, before the {MIN_PRINTING_YEAR} floor; "
+                "pre-modern type does not OCR. Find a later printing."
+            ))
+            return
         try:
             text = fetch_text(entry.source_ref)
         except requests.RequestException as exc:
@@ -149,4 +434,4 @@ class Command(BaseCommand):
             return
         book = upsert_book(entry, sections)
         english_audit.report(self, english_audit.audit_book(book), book.slug)
-        self.stdout.write(self.style.SUCCESS(f"  ✓ {book.chapter_count} chapters"))
+        self.stdout.write(self.style.SUCCESS(f"  ✓ {book.chapter_count} chapters  ({why})"))

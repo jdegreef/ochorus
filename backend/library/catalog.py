@@ -1,8 +1,12 @@
 """The Ochorus launch shelf: 10 public-domain Christian classics.
 
-Each book declares its `source` ("ccel" or "gutenberg") and a `source_ref`:
+Each book declares its `source` ("ccel", "gutenberg" or "archive") and a `source_ref`:
   - ccel:      the work path under ccel.org/ccel/<ref>  (e.g. "spurgeon/grace")
   - gutenberg: the Project Gutenberg ebook id as a string (e.g. "57121")
+  - archive:   the archive.org item identifier (e.g. "bruisedreedands00sibbgoog").
+               A work has many scans there and the PRINTING decides whether the
+               OCR is usable — run `import_archive --inspect <id>` and read the
+               sample before adding an entry.
 
 The order of BOOKS is the shelf order.
 """
@@ -34,7 +38,7 @@ class BookEntry:
     slug: str
     title: str
     author_slug: str
-    source: str  # "ccel" | "gutenberg"
+    source: str  # "ccel" | "gutenberg" | "archive"
     source_ref: str
     subtitle: str = ""
     cover_color: str = ""
