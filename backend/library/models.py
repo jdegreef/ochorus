@@ -613,6 +613,53 @@ class PlanDay(models.Model):
         return f"{self.plan_id} day {self.day} → {self.book_slug}/{self.chapter_order}"
 
 
+class Quote(models.Model):
+    """One sourced sentence from a work, for the author's quote page.
+
+    THE POINT IS THE SOURCING. Quote queries are large and are served today by
+    aggregators that publish unattributed — often misattributed — lines. The one
+    thing they cannot fake is the citation, so every row here points at the exact
+    work, chapter and PARAGRAPH the sentence came from, and the card shows it.
+    A quote whose source cannot be named has no business on the page.
+
+    `paragraph` indexes the body's TOP-LEVEL CHILDREN, which is the unit the
+    reader's `?p=` jump counts — not the <p> elements alone. Any chapter with an
+    <h2> makes those two disagree, and the reader would land in the wrong place.
+
+    `reviewed` is the publication gate and mirrors the translation pipeline's
+    trust model: extraction is mechanical plus judgement, and neither is a human
+    saying "yes, print this under his name". Nothing reaches a reader until
+    `approve_quotes` runs. The public serializer filters on it.
+    """
+
+    #: Stable identity for the seed: author slug + a hash of the normalised text,
+    #: so re-running extraction updates a row rather than duplicating it, and a
+    #: reworded quote is a new row rather than a silent edit of an approved one.
+    slug = models.SlugField(max_length=80, unique=True)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name="quotes")
+    text = models.TextField()
+    # Exactly one of these carries the source; a quote with neither is unsourced
+    # and the fixture gate rejects it.
+    chapter = models.ForeignKey(
+        "Chapter", on_delete=models.CASCADE, null=True, blank=True, related_name="quotes"
+    )
+    sermon = models.ForeignKey(
+        Sermon, on_delete=models.CASCADE, null=True, blank=True, related_name="quotes"
+    )
+    paragraph = models.PositiveIntegerField()
+    reviewed = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["slug"]
+
+    def natural_key(self):
+        return (self.slug,)
+
+    def __str__(self) -> str:
+        return f"{self.author.slug}: {self.text[:48]}"
+
+
 class Topic(models.Model):
     """A curated topical shelf — a themed grouping of works (e.g. "On Prayer").
 

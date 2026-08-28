@@ -10,6 +10,8 @@ from .views import (
     PlanDetailView,
     PlanListView,
     PopularSearchesView,
+    QuoteAuthorsView,
+    QuotePageView,
     ScriptureGraphView,
     ScripturePagesView,
     ScriptureView,
@@ -30,6 +32,8 @@ urlpatterns = [
     path("search/", SearchView.as_view(), name="search"),
     path("popular-searches/", PopularSearchesView.as_view(), name="popular-searches"),
     path("search-click/", SearchClickView.as_view(), name="search-click"),
+    path("quotes/", QuoteAuthorsView.as_view(), name="quote-authors"),
+    path("quotes/<slug:author>/", QuotePageView.as_view(), name="quote-page"),
     path("scripture/", ScriptureView.as_view(), name="scripture"),
     # Before the <book> patterns: "pages" is one segment, they are two or three,
     # so these cannot actually collide — the order is for a reader of this file.
