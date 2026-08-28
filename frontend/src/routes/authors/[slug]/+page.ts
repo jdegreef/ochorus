@@ -1,3 +1,9 @@
+// prerender refresh 2026-08-27: five early-church bios — clement-of-rome,
+// ignatius-of-antioch, cyprian-of-carthage, athanasius-of-alexandria,
+// john-chrysostom (#1134). They are biography-only authors created by a
+// migration, so the web build that shipped them raced the API's release and
+// enumerated the author list before the rows existed — all five served the SPA
+// shell. This touch forces the rebuild that actually prerenders them.
 // prerender refresh 2026-08-27: hi bios x5 — hudson-taylor, r-a-torrey,
 // richard-baxter, augustine-of-hippo, charles-finney (jobs #1094/#1095/#1096/
 // #1097/#1098). hi seeds status=draft, so these pages build but are not
