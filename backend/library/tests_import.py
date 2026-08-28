@@ -811,10 +811,10 @@ class CcelSummaryTitleTests(TestCase):
 class CcelVolumeFurnitureTests(TestCase):
     """Leading page furniture on a Schaff section page, and contents pages."""
 
-    def _body(self, html, title="", work_title=""):
+    def _body(self, html, title="", work_title="", book_title=""):
         from library.management.commands.import_ccel import extract_body
 
-        return extract_body(html, title, work_title)
+        return extract_body(html, title, work_title, book_title)
 
     def test_running_head_rule_and_restated_title_are_dropped(self):
         # Book I of On the Priesthood opens exactly like this.
@@ -876,6 +876,53 @@ class CcelVolumeFurnitureTests(TestCase):
             "Men of Prayer Needed",
         )
         self.assertIn("The Voice of Christ", out)
+
+    def test_a_bare_counter_heading_is_dropped(self):
+        # An untitled chapter heads its page with just the numeral. Purpose in
+        # Prayer's pages open "<h2>I</h2>" above the first line, and with no
+        # title to compare against, nothing else would remove it.
+        out = self._body(
+            "<div id='theText'><h2>I</h2><p>My Creed leads me to think…</p></div>", ""
+        )
+        self.assertNotIn("<h2>", out)
+        self.assertIn("My Creed leads me", out)
+
+    def test_a_heading_that_merely_starts_with_a_numeral_survives(self):
+        out = self._body(
+            "<div id='theText'><h2>I Believe</h2><p>Body text here.</p></div>", ""
+        )
+        self.assertIn("I Believe", out)
+
+    def test_a_heading_carrying_the_books_own_title_is_dropped(self):
+        # Prayer and Praying Men's Introduction opens with the work's name above
+        # the section's, so the chapter began by shouting the book's title.
+        out = self._body(
+            "<div id='theText'><h1>PRAYER AND PRAYING MEN</h1>"
+            "<h2>INTRODUCTION</h2><p>Rev. Edward McKendrie Bounds was…</p></div>",
+            "Introduction",
+            "",
+            "Prayer and Praying Men",
+        )
+        self.assertNotIn("PRAYER AND PRAYING MEN", out)
+        self.assertNotIn("INTRODUCTION", out)
+        self.assertIn("Rev. Edward McKendrie Bounds", out)
+
+    def test_a_roman_numbered_heading_restating_the_title_is_dropped(self):
+        out = self._body(
+            "<div id='theText'><h2>III. ABRAHAM, THE MAN OF PRAYER</h2>"
+            "<p>Oh for determined men and women…</p></div>",
+            "Abraham, the Man of Prayer",
+        )
+        self.assertNotIn("ABRAHAM", out)
+        self.assertIn("Oh for determined men", out)
+
+    def test_a_roman_looking_word_is_not_read_as_a_numeral(self):
+        # "civil", "mild", "livid" are all spelled out of [ivxlcdm]; a loose
+        # class would let this heading match the title it merely precedes.
+        out = self._body(
+            "<div id='theText'><h2>Civil War</h2><p>Prose follows.</p></div>", "War"
+        )
+        self.assertIn("Civil War", out)
 
     def test_a_contents_page_is_recognised_by_its_body(self):
         from library.management.commands.import_ccel import is_contents_body

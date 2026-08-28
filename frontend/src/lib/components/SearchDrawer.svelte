@@ -180,7 +180,7 @@
 								onclick={close}
 							>
 								<span class="eyebrow block text-muted">
-									{hit.order}. {hit.title}
+									{hit.title ? `${hit.order}. ${hit.title}` : `${t('settings.chapterN')} ${hit.order}`}
 								</span>
 								<!-- snippet is HTML-escaped by highlightAround ($lib/highlight); only <mark> is added -->
 								<!-- eslint-disable-next-line svelte/no-at-html-tags -->

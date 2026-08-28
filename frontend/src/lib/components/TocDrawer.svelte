@@ -163,7 +163,7 @@
 								></span>
 								<span class="min-w-0 flex-1">
 									<span class="block truncate text-small text-text">
-										{ch.order}. {ch.title || `${t('plans.day')} ${ch.order}`}
+										{ch.title ? `${ch.order}. ${ch.title}` : `${t('settings.chapterN')} ${ch.order}`}
 									</span>
 									<span class="block text-micro text-muted">
 										{readingTime(ch.word_count)}{#if markCount > 0}

@@ -480,7 +480,7 @@
 					{#if ch.highlights.length}
 						{@const label = editionLabel(ch.edition)}
 						<h3 class="mb-2 mt-5 text-small font-semibold text-text">
-							{ch.order}. {ch.title}{#if label}<span class="ms-2 font-normal text-muted"
+							{ch.title ? `${ch.order}. ${ch.title}` : `${t('settings.chapterN')} ${ch.order}`}{#if label}<span class="ms-2 font-normal text-muted"
 									>· {label}</span
 								>{/if}
 						</h3>

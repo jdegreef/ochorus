@@ -112,6 +112,18 @@ def _titlecase_caps(s: str) -> str:
     return " ".join(out)
 
 
+# A "title" that is nothing but a chapter counter. The reader already prints the
+# chapter number, so "Chapter I" tells a reader nothing and renders as
+# "1. Chapter I"; Bounds's Purpose in Prayer is thirteen of them, untitled in
+# the source. Emptied rather than kept, so the reader can show the number alone.
+#
+# CHAPTER only — deliberately not "Section"/"Part", which name a unit the reader
+# does NOT number and so still carry information ("Section I" in Union and
+# Communion, "Part III" in Religious Affections; nine such titles ship today and
+# none is a bare "Chapter N").
+_BARE_CHAPTER = re.compile(r"^\s*chapter\s+[ivxlcdm\d]+\.?\s*$", re.I)
+
+
 def _numbering_prefix(t: str) -> re.Match[str] | None:
     """A redundant numbering prefix on `t`, if removing it leaves a title."""
     m = _CHAPTER_PREFIX.match(t)
@@ -183,7 +195,8 @@ def clean_title(raw: str) -> str:
     # rather than mangled to "Iv"; roman-numeral words inside are preserved.
     if is_allcaps and not re.fullmatch(r"[IVXLCDM]+", t):
         t = _titlecase_caps(t)
-    return _cap_first(t)
+    # A bare chapter counter is not a title; the reader shows the number itself.
+    return "" if _BARE_CHAPTER.match(t) else _cap_first(t)
 
 
 def text_of(html: str) -> str:
@@ -279,7 +292,13 @@ def upsert_book(entry: BookEntry, sections: list[tuple[str, str]], language: str
         # A per-book override is normalised the same way import_ochorus does, so
         # the same declared correction yields the same stored title on any source.
         override = title_overrides.get(order)
-        final_title = clean_title(override) if override else (title or f"Chapter {order}")
+        # An empty title stays empty. A chapter can genuinely have no name —
+        # Purpose in Prayer's thirteen are untitled in the source — and the
+        # synthetic "Chapter {order}" this used to store was worse than nothing:
+        # the reader prints the number itself, so it rendered "1. Chapter 1".
+        # `Chapter.title` is `blank=True`, the reader falls back to "Chapter N"
+        # for display, and no shipped title was ever produced by this branch.
+        final_title = clean_title(override) if override else title
         Chapter.objects.create(
             book=book,
             order=order,

@@ -683,6 +683,13 @@
 			"art": true,
 			"scrim": 0.6
 		},
+		"purpose-in-prayer": {
+			"ground": "dfa244b7d8aab7d51a6688b7dde8bc430a9a32b648aec3062bf17d6adb379b81",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"religious-affections": {
 			"ground": "f08da596078f54e62ce2185d38705028382066fe51e4fc47d6bd74151b2399d8",
 			"style": "enlightenment",

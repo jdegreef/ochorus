@@ -301,6 +301,12 @@ def _is_ordinal_heading(text: str) -> bool:
     return bool(
         re.fullmatch(rf"(the\s+)?{_COUNTER}\s+chapter", t, re.I)
         or re.fullmatch(rf"chapter\s+{_COUNTER}", t, re.I)
+        # The counter ALONE. An untitled chapter heads its page with just the
+        # numeral — Purpose in Prayer's pages open "<h2>I</h2>" above the first
+        # line — and no real chapter title is a bare numeral, so this cannot eat
+        # one. Restricted to roman/digits: the ordinal WORDS in `_COUNTER`
+        # ("One", "Last") are also ordinary English and do title chapters.
+        or re.fullmatch(r"[ivxlcdm]+|\d{1,3}", t, re.I)
     )
 
 
