@@ -75,6 +75,69 @@ class EnglishAuditPrecisionTests(SimpleTestCase):
         # This single test took the class from 233 findings to 8.
         self.assertNotIn("broken-smallcaps", _findings("<p>A SHORT preface follows</p>"))
 
+    def test_lost_paragraphing_is_judged_per_CHAPTER_not_per_paragraph(self):
+        """The granularity is the whole finding.
+
+        Four per-paragraph rules were measured against the corpus and each one
+        failed: a long block alone (749 blocks of 20+ sentences, mostly the
+        period's own prose), a division marker mid-block (922 blocks, and a read
+        of nine showed roughly two true — the rest were scripture citations split
+        at `Rom. viii. | 32.`), a quotation fused to its commentary (3 findings,
+        one of them a `”` inside an editorial bracket), and a mid-block speech
+        attribution (8, mostly Wesley citing apostles). None had an oracle to
+        appeal to. At chapter scale the question needs none.
+        """
+        long_para = "word " * 500
+        # A chapter set as two enormous blocks has lost its paragraphing.
+        self.assertEqual(
+            _findings(f"<p>{long_para}</p><p>{long_para}</p>").get("lost-paragraphing"), 1
+        )
+        # And the shape `life-of-antony` sets 28 of its 45 chapters in: a whole
+        # chapter as ONE block. A 600-word floor exempted that entire book.
+        self.assertEqual(_findings(f"<p>{'word ' * 450}</p>").get("lost-paragraphing"), 1)
+
+        # A chapter of the SAME length, properly broken up, is not a finding —
+        # length alone is not the defect, and a class that said so would report
+        # most of the library.
+        broken_up = "".join(f"<p>{'word ' * 100}</p>" for _ in range(10))
+        self.assertNotIn("lost-paragraphing", _findings(broken_up))
+
+        # A single long paragraph inside an otherwise well-set chapter is left
+        # alone. This is the case per-paragraph rules kept getting wrong: the
+        # period writes long, and `on-the-priesthood` legitimately averages 256
+        # words a paragraph.
+        one_giant = f"<p>{long_para}</p>" + "".join(
+            f"<p>{'word ' * 100}</p>" for _ in range(10)
+        )
+        self.assertNotIn("lost-paragraphing", _findings(one_giant))
+
+        # Short works are exempt: a note or a fragment is honestly one block.
+        self.assertNotIn("lost-paragraphing", _findings(f"<p>{'word ' * 250}</p>"))
+
+    def test_lost_paragraphing_counts_blocks_and_words_the_way_the_reader_sees_them(self):
+        """Both counts are taken from the RAW html, and both have to be.
+
+        `BLOCK`'s `<(p|…)>(.*?)</\1>` swallows a `<blockquote>` and the `<p>`s
+        inside it as a single match. Counting blocks that way undercounts any
+        chapter carrying a multi-paragraph quotation and inflates its mean —
+        34 fixture records are already miscounted like that — which in a class
+        whose whole claim is precision is a false-positive vector.
+        """
+        quoted = "<blockquote>" + "".join(
+            f"<p>{'word ' * 100}</p>" for _ in range(6)
+        ) + "</blockquote>"
+        self.assertNotIn(
+            "lost-paragraphing",
+            _findings(quoted),
+            "the paragraphs inside a blockquote are still paragraphs",
+        )
+
+        # Words come from the whole body, not from inside block tags: 204
+        # records carry prose no `<p>` encloses, and a chapter that lost its
+        # tags altogether would otherwise score zero words and be skipped in
+        # silence — the one shape this check least wants to miss.
+        self.assertEqual(_findings("word " * 450).get("lost-paragraphing"), 1)
+
     def test_word_fusion_needs_a_function_head_a_common_tail_and_a_rare_whole(self):
         """The three conditions, and the convention each one spares.
 
@@ -424,6 +487,11 @@ class EnglishAuditContractTests(SimpleTestCase):
                 # finding is a false positive ("soother", a real word that
                 # occurs nowhere else in the library, read as "so" + "other").
                 "word-fusion",
+                # Neither, and emphatically not mechanical: where a paragraph
+                # breaks is a judgement about the prose. The scanner can say a
+                # chapter has lost its paragraphing — 4,602 words in two blocks
+                # is not a style — but only a reader can put the breaks back.
+                "lost-paragraphing",
             }
         )
         emitted = {label for classes in _corpus().values() for label in classes}

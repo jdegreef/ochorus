@@ -69,6 +69,9 @@
    "orphan-close-quote": 1,
    "space-before-punct": 2
   },
+  "life-of-antony": {
+   "lost-paragraphing": 4
+  },
   "lord-teach-us-to-pray-2": {
    "orphan-close-quote": 1
   },
@@ -85,6 +88,9 @@
   },
   "on-the-incarnation": {
    "space-before-punct": 2
+  },
+  "on-the-priesthood": {
+   "lost-paragraphing": 1
   },
   "pauls-first-prayer": {
    "orphan-close-quote": 1
@@ -122,6 +128,7 @@
   },
   "selected-sermons-whitefield": {
    "hyphen-space": 3,
+   "lost-paragraphing": 2,
    "orphan-close-quote": 17,
    "space-before-punct": 15
   },
@@ -166,6 +173,7 @@
    "space-before-punct": 2
   },
   "the-gospel-of-healing": {
+   "lost-paragraphing": 4,
    "space-before-punct": 13
   },
   "the-imitation-of-christ": {
