@@ -524,15 +524,24 @@
 		},
 		"life-of-antony": {
 			"ground": "b8d68b82f5d631de4cf12eecedc0ed43875517f0d14f64664eabbab47426b700",
-			"style": "inscriptional"
+			"style": "inscriptional",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"on-the-incarnation": {
 			"ground": "d30af98073eec4232fee171574c16c78db2e7364713c237925dc64a129981321",
-			"style": "inscriptional"
+			"style": "inscriptional",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"on-the-priesthood": {
 			"ground": "0cc758e0ca605f7c50c1d0ac699e6163ce1e38b8cc60a2e72cf0dd2509ee6f66",
-			"style": "inscriptional"
+			"style": "inscriptional",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"pilgrims-progress": {
 			"ground": "8127b1cc84e2573af44c41f4f7dfbf76f7e9ee51ea8beab21a3883579fd6e5a8",
