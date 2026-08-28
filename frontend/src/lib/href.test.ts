@@ -81,8 +81,17 @@ const BUILD = [resolve(process.cwd(), 'build'), resolve(process.cwd(), 'frontend
 // /pt/ — a guard that quietly narrows is the very failure this change exists to
 // prevent.
 const LOCALE_PREFIX = locales.filter((l) => l !== 'en').join('|');
+// A path segment cannot contain `?` or `#`, and the URL can END at one as well
+// as at the closing quote. The old class allowed `?`, so `/sermons/slug/?p=43`
+// — a CORRECTLY slashed link with a query — was read as the two-segment
+// `/sermons/slug/<?p=43>` and reported. Nothing had linked a one-segment detail
+// route with a query from a prerendered page until the quote cards did.
+//
+// The terminator matters as much as the class, and makes this STRICTER than
+// what it replaces: `/sermons/slug?p=1` is genuinely bare and the old pattern
+// missed it, because it only ever looked for a closing quote.
 const BARE_DETAIL = new RegExp(
-	`href="(?:/(?:${LOCALE_PREFIX}))?/(?:books|authors|topics|sermons|plans)/[^"/.]+(?:/[^"/.]+)?"`,
+	`href="(?:/(?:${LOCALE_PREFIX}))?/(?:books|authors|topics|sermons|plans)/[^"/.?#]+(?:/[^"/.?#]+)?["?#]`,
 	'g'
 );
 
