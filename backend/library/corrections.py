@@ -91,6 +91,34 @@ CORRECTIONS: dict[str, dict] = {
             13: "Quaker Scruples",
         },
     },
+    "necessity-of-prayer": {
+        # CCEL numbers this TOC "I. Prayer and Faith" … "XIV. Prayer and the
+        # House of God", and the reader prints the chapter order itself — so it
+        # rendered "2. I. Prayer and Faith", two numbers that do not even agree
+        # (the Foreword is chapter 1). `clean_title` strips a roman prefix only
+        # from an ALL-CAPS heading, which is why its sibling Prayer and Praying
+        # Men needs no entry here and this book does.
+        #
+        # Per-book rather than a widened rule: dropping the ALL-CAPS gate would
+        # also strip Edwards's twelve numbered SIGNS in religious-affections,
+        # where the numeral is the structure the book is cited by.
+        "chapter_titles": {
+            2: "Prayer and Faith",
+            3: "Prayer and Faith (Continued)",
+            4: "Prayer and Trust",
+            5: "Prayer and Desire",
+            6: "Prayer and Fervency",
+            7: "Prayer and Importunity",
+            8: "Prayer and Importunity (Continued)",
+            9: "Prayer and Character and Conduct",
+            10: "Prayer and Obedience",
+            11: "Prayer and Obedience (Continued)",
+            12: "Prayer and Vigilance",
+            13: "Prayer and the Word of God",
+            14: "Prayer and the Word of God (Continued)",
+            15: "Prayer and the House of God",
+        },
+    },
     "stepping-stones-2": {
         # Ch.30's title misspells Millennium; the chapter body spells it
         # correctly. Found by the English audit. This lives here rather than in
@@ -120,6 +148,22 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 # `apply_body_corrections`, plus a data migration for prod).
 
 BODY_CORRECTIONS: dict[str, dict] = {
+    "prayer-and-praying-men": {
+        # Two words glued together in CCEL's own text (verified upstream, so
+        # not something our cleaning introduced). Both produce a NON-word, and
+        # the seam is forced by the sentence — there is no reading in which
+        # "fromheaven" or "isthat" is Bounds's own spelling:
+        #
+        #   fromheaven  ch10  "at the third call fromheaven, when he recognized
+        #                     God's voice" — Samuel, 1 Samuel 3
+        #   isthat      ch15  "the evidence of sincerity in a true seeker of
+        #                     religion isthat it can be said of him, 'Behold he
+        #                     prayeth.'"
+        "replacements": [
+            ("call fromheaven", "call from heaven"),
+            ("religion isthat", "religion is that"),
+        ],
+    },
     "all-of-grace": {
         # Four OCR slips in the English text, found while translating the book
         # to Hindi. All four are single occurrences and none changes meaning —

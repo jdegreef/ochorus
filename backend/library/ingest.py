@@ -62,6 +62,12 @@ _SQUOTE = re.compile(r"(?<![A-Za-z])'|'(?![A-Za-z])")
 # OF CHRIST"); the rest of the library is Title Case. A roman-numeral prefix and
 # a set of lowercase-in-title connector words for the caps→title-case pass.
 _ROMAN_PREFIX = re.compile(r"^[IVXLCDM]+\.\s+")
+# A trailing "(Continued)" / "(Concluded)" marker. CCEL sets the heading itself
+# in caps but the marker in title case, which defeated the all-caps test below:
+# three of Prayer and Praying Men's sixteen headings kept their roman numeral
+# and stayed SHOUTING beside title-cased siblings from the same TOC. Judged on
+# the heading proper, they are as ALL-CAPS as the rest.
+_TRAILING_PAREN = re.compile(r"\s*\([^()]*\)\s*$")
 # A whole-token roman numeral ("II", "IV", "CXIX", "XLV") — used to KEEP such a
 # word uppercase through the caps→title-case pass so scripture/section headings
 # don't mangle ("II CORINTHIANS" -> "II Corinthians", not "Ii Corinthians").
@@ -106,10 +112,30 @@ def _titlecase_caps(s: str) -> str:
     return " ".join(out)
 
 
+# A CHAPTER TITLE that is nothing but a counter. The reader already prints the
+# chapter number, so "Chapter I" tells a reader nothing and renders "1. Chapter
+# I"; Bounds's Purpose in Prayer is thirteen of them, untitled in the source.
+#
+# Applied in `upsert_book`, NOT in `clean_title`, and that distinction is the
+# whole point: `clean_title` also cleans headings and intermediate values that
+# other code reads the counter OUT of. Emptying there broke two callers —
+# `import_ccel`'s grouped path writes each leaf as `<h3>{clean_title(...)}</h3>`
+# and all 276 of Confessions' leaves are bare counters, and
+# `import_gutenberg._ROMAN_OR_NUM` matches "Chapter IV" to know it must borrow
+# the real title from the next node. A title is only "no title" once it is being
+# stored AS a title.
+#
+# CHAPTER only — not "Section"/"Part", which name a unit the reader does NOT
+# number and so still carry information ("Section I" in Union and Communion,
+# "Part III" in Religious Affections; nine such titles ship today).
+_BARE_CHAPTER = re.compile(r"^\s*chapter\s+[ivxlcdm\d]+\.?\s*$", re.I)
+
+
 def _numbering_prefix(t: str) -> re.Match[str] | None:
     """A redundant numbering prefix on `t`, if removing it leaves a title."""
     m = _CHAPTER_PREFIX.match(t)
-    # A bare "Chapter 3" is left alone — there would be nothing else to show.
+    # Nothing descriptive after the counter means there is no prefix to strip —
+    # the whole title is the counter, and `_BARE_CHAPTER` empties it at the end.
     if m and t[m.end():].strip():
         return m
     m = _NUMBER_PREFIX.match(t)
@@ -159,7 +185,8 @@ def clean_title(raw: str) -> str:
     # dash — an internal one ("Elijah — The Man of God") is the author's
     # punctuation and must stay.
     t = re.sub(r"\s*[—–-]+$", "", t) or t
-    is_allcaps = any(c.isalpha() for c in t) and all(c.isupper() for c in t if c.isalpha())
+    core = _TRAILING_PAREN.sub("", t).strip() or t
+    is_allcaps = any(c.isalpha() for c in core) and all(c.isupper() for c in core if c.isalpha())
     # Drop a leading roman-numeral chapter prefix ("II. THE DIGNITY OF CHRIST" ->
     # "THE DIGNITY OF CHRIST"), but ONLY on ALL-CAPS CCEL-style headings. A
     # mixed-case numbered title (Murray's "I. Humility: The Glory of the
@@ -177,6 +204,17 @@ def clean_title(raw: str) -> str:
     if is_allcaps and not re.fullmatch(r"[IVXLCDM]+", t):
         t = _titlecase_caps(t)
     return _cap_first(t)
+
+
+def chapter_title(raw: str) -> str:
+    """`clean_title`, plus: a title that is only a counter is no title at all.
+
+    The split from `clean_title` is deliberate — see `_BARE_CHAPTER`. Every
+    importer that STORES a chapter title goes through here; the ones that clean
+    a heading or an intermediate value call `clean_title` and keep the counter.
+    """
+    t = clean_title(raw)
+    return "" if _BARE_CHAPTER.match(t) else t
 
 
 def text_of(html: str) -> str:
@@ -272,7 +310,12 @@ def upsert_book(entry: BookEntry, sections: list[tuple[str, str]], language: str
         # A per-book override is normalised the same way import_ochorus does, so
         # the same declared correction yields the same stored title on any source.
         override = title_overrides.get(order)
-        final_title = clean_title(override) if override else (title or f"Chapter {order}")
+        # A chapter can genuinely have no name: an empty title stays empty, and
+        # a title that is only a counter becomes one (see `_BARE_CHAPTER`).
+        # `Chapter.title` is `blank=True` and the reader names it; the synthetic
+        # "Chapter {order}" this used to store only stood in the way, and
+        # produced no title that ever shipped.
+        final_title = chapter_title(override) if override else chapter_title(title)
         Chapter.objects.create(
             book=book,
             order=order,

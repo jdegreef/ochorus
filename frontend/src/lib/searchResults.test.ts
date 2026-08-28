@@ -87,10 +87,14 @@ describe('toRow', () => {
 		expect(new Set(keys).size).toBe(keys.length);
 	});
 
-	// A chapter with no title of its own falls back to the book's, or the row
-	// renders as an untitled line the reader can't identify.
-	it('falls back to the book title for an untitled chapter', () => {
-		expect(toRow(chapter('humility', 2), ctx).title).toBe('Humility');
+	// A chapter with no title of its own is NAMED by its number, not by the
+	// book's title. Falling back to the book collapsed every hit from an
+	// untitled book into identical rows — Purpose in Prayer is thirteen
+	// untitled chapters, so a search across it returned thirteen lines all
+	// reading "Purpose in Prayer". The book is still on the row, in `meta`.
+	it('names an untitled chapter by its number', () => {
+		expect(toRow(chapter('humility', 2), ctx).title).toBe('Chapter 2');
+		expect(toRow(chapter('humility', 2), ctx).meta).toContain('Humility');
 		expect(toRow(chapter('humility', 2, 'The Path'), ctx).title).toBe('The Path');
 	});
 

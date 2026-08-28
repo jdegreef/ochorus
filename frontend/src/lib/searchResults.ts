@@ -15,6 +15,7 @@
  */
 import { portraitPosition } from '$lib/portraits';
 import type { ChapterHit, SearchHit, SearchType } from '$lib/library-public';
+import { chapterName } from './reading';
 
 /** One flat shape for every hit type, so the list renders uniformly. */
 export interface Row {
@@ -129,7 +130,7 @@ export function toRow(hit: SearchHit, ctx: RowContext): Row {
 				key: `chapter:${hit.book_slug}:${hit.chapter_order}`,
 				label: ctx.label('chapter'),
 				href: withQuery(`/books/${hit.book_slug}/${hit.chapter_order}`),
-				title: hit.chapter_title || hit.book_title,
+				title: chapterName(hit.chapter_order, hit.chapter_title),
 				meta: `${hit.book_title} · ${hit.author_name}`,
 				snippet: hit.snippet,
 				date: hit.date,

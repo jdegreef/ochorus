@@ -529,6 +529,13 @@
 			"art": false,
 			"scrim": 1
 		},
+		"necessity-of-prayer": {
+			"ground": "d844ea2f137f4bfa1d5a83fe0d9e2a1a2c15055e7d077c661107212e90576c19",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"on-the-incarnation": {
 			"ground": "d30af98073eec4232fee171574c16c78db2e7364713c237925dc64a129981321",
 			"style": "inscriptional",
@@ -559,6 +566,13 @@
 		},
 		"power-through-prayer": {
 			"ground": "8479431a9a178feab19a83728054c8e6a389ea0cbc630908e02a51ca109f134a",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
+		"prayer-and-praying-men": {
+			"ground": "5cc495c62a3feff95d3f78ce5fc3fc3783e4dd76a0089a84cb3d21c2a3245318",
 			"style": "revival",
 			"script": "latin",
 			"art": false,
@@ -668,6 +682,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6
+		},
+		"purpose-in-prayer": {
+			"ground": "dfa244b7d8aab7d51a6688b7dde8bc430a9a32b648aec3062bf17d6adb379b81",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"religious-affections": {
 			"ground": "f08da596078f54e62ce2185d38705028382066fe51e4fc47d6bd74151b2399d8",

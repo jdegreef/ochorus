@@ -4,7 +4,7 @@
 	import { getScrollAnchor } from '$lib/progress';
 	import { marks } from '$lib/marks.svelte';
 	import { bookmarks } from '$lib/bookmarks.svelte';
-	import { editionLang, readingTime } from '$lib/reading';
+	import { chapterLabel, editionLang, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 
@@ -129,7 +129,7 @@
 								>
 									<span class="min-w-0 flex-1">
 										<span class="block truncate text-small text-text">{bm.snippet || bm.title}</span>
-										<span class="block text-micro text-muted">{bm.order}. {bm.title}</span>
+										<span class="block text-micro text-muted">{chapterLabel(bm.order, bm.title)}</span>
 									</span>
 								</a>
 								<button
@@ -163,7 +163,7 @@
 								></span>
 								<span class="min-w-0 flex-1">
 									<span class="block truncate text-small text-text">
-										{ch.order}. {ch.title || `${t('plans.day')} ${ch.order}`}
+										{chapterLabel(ch.order, ch.title)}
 									</span>
 									<span class="block text-micro text-muted">
 										{readingTime(ch.word_count)}{#if markCount > 0}

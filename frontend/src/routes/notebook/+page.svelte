@@ -6,6 +6,7 @@
 	import { marks } from '$lib/marks.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import { chapterLabel } from '$lib/reading';
 	import {
 		HIGHLIGHT_COLORS,
 		DEFAULT_HIGHLIGHT,
@@ -480,7 +481,7 @@
 					{#if ch.highlights.length}
 						{@const label = editionLabel(ch.edition)}
 						<h3 class="mb-2 mt-5 text-small font-semibold text-text">
-							{ch.order}. {ch.title}{#if label}<span class="ms-2 font-normal text-muted"
+							{chapterLabel(ch.order, ch.title)}{#if label}<span class="ms-2 font-normal text-muted"
 									>· {label}</span
 								>{/if}
 						</h3>

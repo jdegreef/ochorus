@@ -3,7 +3,7 @@
 	import { type BookDetail, formatLifespan } from '$lib/library-public';
 	import { getProgress } from '$lib/progress';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
-	import { readingMinutes, readingTime } from '$lib/reading';
+	import { chapterName, readingMinutes, readingTime } from '$lib/reading';
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
@@ -268,7 +268,7 @@
 						class="flex items-baseline gap-3 py-2.5 hover:no-underline"
 					>
 						<span class="w-6 shrink-0 text-small text-muted">{ch.order}</span>
-						<span class="flex-1 text-body text-text" dir="auto">{ch.title}</span>
+						<span class="flex-1 text-body text-text" dir="auto">{chapterName(ch.order, ch.title)}</span>
 						<span class="text-small text-muted">{readingMinutes(ch.word_count)} {t('common.min')}</span>
 					</a>
 				</li>

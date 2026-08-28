@@ -5,6 +5,7 @@
 	import { createLimiter } from '$lib/limiter';
 	import { i18n } from '$lib/i18n.svelte';
 	import { highlightAround } from '$lib/highlight';
+	import { chapterLabel } from '$lib/reading';
 	import { localizeHref } from '$lib/href';
 	import { scopedSearchHref } from '$lib/searchState';
 
@@ -180,7 +181,7 @@
 								onclick={close}
 							>
 								<span class="eyebrow block text-muted">
-									{hit.order}. {hit.title}
+									{chapterLabel(hit.order, hit.title)}
 								</span>
 								<!-- snippet is HTML-escaped by highlightAround ($lib/highlight); only <mark> is added -->
 								<!-- eslint-disable-next-line svelte/no-at-html-tags -->
