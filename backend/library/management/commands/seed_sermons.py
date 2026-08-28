@@ -141,7 +141,7 @@ class Command(BaseCommand):
                 for k in changed:
                     if k in SERMON_FIELDS:
                         setattr(sermon, k, f.get(k))
-                sermon.save()  # save() re-derives body_text
+                sermon.save()  # save() re-derives body_text and word_count
                 updated += 1
 
         if created or updated:
