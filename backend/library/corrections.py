@@ -120,6 +120,27 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 # `apply_body_corrections`, plus a data migration for prod).
 
 BODY_CORRECTIONS: dict[str, dict] = {
+    # --- lost-space word fusion (english_audit `word-fusion`) ----------------
+    #
+    # Seventeen sites where a space vanished INSIDE a sentence, so two words
+    # were stored as one: "all my children weresafe". `run-together` only ever
+    # caught the same defect after a full stop, so these sat unreported.
+    #
+    # Here as well as in the fixture because `seed_books` deliberately never
+    # touches an existing book's chapters (see its `chapter_drift` note) — a
+    # fixture edit alone reaches a fresh database and never a deployed one.
+    "confessions": {
+        "replacements": [("his socalled constellations", "his so-called constellations")],
+    },
+    "grace-for-grace-2": {
+        "replacements": [("this hard-todeal-with", "this hard-to-deal-with")],
+    },
+    "plain-account-christian-perfection": {
+        "replacements": [("as given in aninstant?", "as given in an instant?")],
+    },
+    "consolation-in-the-furnace": {
+        "replacements": [("He is near youthis day", "He is near you this day")],
+    },
     "baptism-with-the-holy-spirit": {
         # Source defects (OCR) in the English text, found while translating the
         # book to Portuguese. Both are scripture references only — the prose is
@@ -614,6 +635,8 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("<p>Amajor", "<p>A major"),
             ("<p>Agreat", "<p>A great"),
             ("Lord G OD", "Lord GOD"),
+            # Lost-space word fusion (english_audit `word-fusion`).
+            ("in our socalled temporal life", "in our so-called temporal life"),
         ],
     },
     "men-of-prayer-2": {
@@ -631,6 +654,18 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("twentyseven", "twenty-seven"),
             ("twentyone", "twenty-one"),
             ("earlypart", "early part"),
+            # Nine more of exactly that class, which nothing reported until
+            # `word-fusion` existed: a space lost INSIDE a sentence, where
+            # `run-together` only ever saw the loss after a full stop.
+            ("in after life towrite down", "in after life to write down"),
+            ("public worship, tospend the time", "public worship, to spend the time"),
+            ("all my children weresafe,", "all my children were safe,"),
+            ("amiss for you tospeak of it", "amiss for you to speak of it"),
+            ("sight of, and nointelligence of his fate", "sight of, and no intelligence of his fate"),
+            ("him little or nohappiness.", "him little or no happiness."),
+            ("which is tomend men", "which is to mend men"),
+            ("for me which hehad at Oxford", "for me which he had at Oxford"),
+            ("she was still sogenerous that", "she was still so generous that"),
         ],
     },
     "the-person-and-work-of-the-holy-spirit": {
@@ -660,7 +695,14 @@ BODY_CORRECTIONS: dict[str, dict] = {
     # inside a word. Distinct from `dropcap_letters` below, which handles the
     # other failure: the letter dropped out altogether.
     "soar-like-the-eagle-3": {
-        "replacements": [("<p>Iwas", "<p>I was"), ("<p>Iwell", "<p>I well")],
+        "replacements": [
+            ("<p>Iwas", "<p>I was"),
+            ("<p>Iwell", "<p>I well"),
+            # Lost-space word fusion: "excommunication from society, no ability
+            # to obtain or keep employment". `notability` is a real word, but
+            # not the one meant here.
+            ("from society, notability to obtain", "from society, no ability to obtain"),
+        ],
     },
     "if": {
         # Unpublished (copyright audit), but the row is in the fixture and would
@@ -906,12 +948,20 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("Heart.—Ps. 80:5, 6.", "Heart.—Ps. 130:5, 6."),
             ("Corazón.—Sal. 80:5, 6.", "Corazón.—Sal. 130:5, 6."),
             # --- lost word spaces, all extraction artifacts -------------------
-            # A general check for these would need a dictionary the audit does
-            # not carry: splitting on "both halves are corpus words" yields 746
-            # candidates corpus-wide, nearly all real compounds ("waterfall") or
-            # archaic verb forms ("delightest").
+            # These were found by hand, and the note here said a general check
+            # would need a dictionary the audit does not carry: splitting on
+            # "both halves are corpus words" yields 746 candidates corpus-wide,
+            # nearly all real compounds ("waterfall") or archaic verb forms
+            # ("delightest"). `english_audit.word-fusion` is now that check —
+            # the library's own word counts ARE the dictionary, and requiring a
+            # function-word head and a rare fused form is what made it precise.
+            # It found `andhappiness` below independently, plus sixteen more
+            # across seven other works.
             ("God Himselfmust work", "God Himself must work"),
             ("life andhappiness", "life and happiness"),
+            # The same defect made by markup rather than by a lost character:
+            # the italic opens hard against "is", so a browser renders "isthe".
+            ("it is<i>the God</i> who works", "it is <i>the God</i> who works"),
             ("afresh forboldness", "afresh for boldness"),
             ("freshfulfilment", "fresh fulfilment"),
             ("in that day,Lo", "in that day, Lo"),

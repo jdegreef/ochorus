@@ -44,6 +44,7 @@ import re
 from collections import Counter, defaultdict
 from collections.abc import Iterable, Iterator
 from dataclasses import dataclass
+from functools import lru_cache
 from itertools import chain
 from pathlib import Path
 
@@ -135,6 +136,55 @@ DROPCAP_FUSED = re.compile(r"\b(I)([a-z]{2,})\b")
 
 HYPHEN_SPACE = re.compile(r"\b\w+-\s+\w+\b")
 RUN_TOGETHER = re.compile(r"\b[a-z]{3,}\.[A-Z][a-z]{2,}\b")
+
+# `run-together` catches SENTENCE fusion (a lost space after a full stop). This
+# is the same defect inside a sentence: "weresafe", "tospeak", "andhappiness".
+#
+# The rule that makes it precise, measured against the whole English corpus:
+#
+#   1. The head is a function word that CANNOT begin an English word. English
+#      does not compound `to`+verb or `and`+noun, so that shape is a lost space.
+#      The productive prefixes are excluded by their absence here — `in`, `be`,
+#      `a`, `up`, `for`, `as`, `at`, `by`, `un`, `re` gave `inborn`,
+#      `befitting`, `aboard`, `uphill`, `forgiver`, 253 candidates between them
+#      and almost all real words.
+#   2. The tail is a word the library uses OFTEN (`COMMON_MIN`). Without this
+#      the same heads match `tornado`, `torchlight`, `buttery`, `shearings` —
+#      35 findings, nearly all false, which is the 8,917-finding failure this
+#      module exists to avoid.
+#   3. The fused form itself is RARE (`FUSED_MAX`). A real word recurs:
+#      `himself` 3,491 times, `today` 445, `willfully` 14. Without this the
+#      rule adds `islands`, `shewing`, `whensoever`, `willest`, `willpower`.
+#
+# All three together find 9 across the corpus and every one is a real defect.
+# Both thresholds have margin: at `tail >= 10` it gains two false positives,
+# and the true findings all occur exactly once against a cut of two.
+FUSION_HEADS = frozenset({
+    "an", "and", "been", "but", "from", "had", "has", "have", "he", "him", "if",
+    "is", "it", "its", "no", "not", "she", "so", "that", "their", "them",
+    "these", "they", "this", "those", "to", "was", "were", "what", "when",
+    "will", "you", "your",
+})
+
+#: Real words the heads above also produce, and the check's curated test — the
+#: same role `FUSED_TAIL` plays for drop caps. `an`, `he`, `no`, `not` and `so`
+#: each earn their place (`aninstant`, `hehad`, `nohappiness`, `nointelligence`,
+#: `socalled`, `sogenerous`, and `notability` where the text means "no ability
+#: to obtain or keep employment"), and each also produces a handful of real
+#: words. Listing those is cheaper than losing seven findings.
+#:
+#: `solet` and `nomen` are not English at all — Latin, from a couplet quoted in
+#: `ten-commandments` and from the inscription on Thomas à Kempis's memorial
+#: ("cujus nomen perennius quam monumentum"). A foreign quotation is the one
+#: thing an English word oracle cannot judge, so they are named here rather
+#: than reasoned about.
+FUSION_EXEMPT = frozenset({
+    "anothers", "nomad", "nomen", "noway", "noways", "solet", "sounder",
+})
+#: A tail must reach this many uses across the English library to count as a word.
+COMMON_MIN = 20
+#: Above this the fused form is itself a word, not a fusion.
+FUSED_MAX = 2
 SPACE_BEFORE_PUNCT = re.compile(r"\S\s+[,.;:!?](?:\s|$)")
 
 # Overlaps `corrections.BODY_CORRECTIONS` by design: that table REPAIRS these in
@@ -179,7 +229,19 @@ def excerpt(t: str, i: int, w: int = 65) -> str:
     return " ".join(t[max(0, i - w) : i + w].split())
 
 
-def _check_block(t: str, is_pd: bool) -> Iterator[tuple[str, str]]:
+def _word_fusion(t: str, counts: Counter[str]) -> Iterator[tuple[str, str]]:
+    """Two words run together inside a sentence — see FUSION_HEADS above."""
+    for m in re.finditer(r"\b[a-z]{5,}\b", t):
+        word = m.group(0)
+        if word in FUSION_EXEMPT or counts.get(word, 0) > FUSED_MAX:
+            continue
+        for k in range(2, len(word) - 2):
+            if word[:k] in FUSION_HEADS and counts.get(word[k:], 0) >= COMMON_MIN:
+                yield "word-fusion", excerpt(t, m.start())
+                break
+
+
+def _check_block(t: str, is_pd: bool, counts: Counter[str]) -> Iterator[tuple[str, str]]:
     if is_pd:
         for m in ANACHRONISM.finditer(t.lower()):
             yield "anachronism", excerpt(t, m.start())
@@ -193,6 +255,7 @@ def _check_block(t: str, is_pd: bool) -> Iterator[tuple[str, str]]:
         yield "hyphen-space", excerpt(t, m.start())
     for m in RUN_TOGETHER.finditer(t):
         yield "run-together", excerpt(t, m.start())
+    yield from _word_fusion(t, counts)
     for m in MISSPELLED.finditer(t):
         yield "misspelling", excerpt(t, m.start())
 
@@ -226,15 +289,43 @@ def _sporadic_only(per_work: dict[str, list[Finding]]) -> Iterator[Finding]:
             yield from rows
 
 
+@lru_cache(maxsize=1)
+def library_word_counts() -> Counter[str]:
+    """How often each lowercase word occurs across the English library.
+
+    The oracle behind `word-fusion`: it is what separates `to`+`speak` from
+    `to`+`rnado`, and a fusion from a rare real word.
+
+    Derived from the committed fixture rather than from whatever is being
+    audited, so the check behaves the same at both entry points. That is not a
+    convenience — a per-work vocabulary was measured and is unusable: inside a
+    single book `ever`, `self` and `land` do not recur often enough, so
+    `whenever`, `himself` and `island` all read as fusions and one corpus scan
+    produced 60 findings, nearly all false.
+
+    Cached: the corpus is 94 works, and `audit_book` is called per import.
+    """
+    counts: Counter[str] = Counter()
+    # The same corpus `audit_fixtures` scans — biographies included, or a word
+    # that is common in the bios but nowhere else reads as unknown and the
+    # fusions there go unjudged.
+    for rec in chain(_fixture_records(), _bio_records()):
+        for _, block in BLOCK.findall(rec.body_html or ""):
+            for w in re.findall(r"[A-Za-z]+", text(block)):
+                counts[w.lower()] += 1
+    return counts
+
+
 def audit_records(records: Iterable[Record]) -> list[Finding]:
     """Every finding across `records`, per-work aggregation applied."""
     found: list[Finding] = []
     spb: dict[str, list[Finding]] = defaultdict(list)
+    counts = library_word_counts()
 
     for rec in records:
         blocks = [text(b) for _, b in BLOCK.findall(rec.body_html or "")]
         for i, t in enumerate(blocks):
-            for label, ex in _check_block(t, rec.is_pd):
+            for label, ex in _check_block(t, rec.is_pd, counts):
                 found.append(Finding(label, rec.where, rec.work, i, ex))
             for m in SPACE_BEFORE_PUNCT.finditer(t):
                 spb[rec.work].append(
