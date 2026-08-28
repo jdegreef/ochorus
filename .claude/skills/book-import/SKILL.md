@@ -433,6 +433,89 @@ dropped; chapters under 120 words are dropped as stubs.
   legitimately rewrites every affected file, so diff-check that the only change
   is the new key. (Fields declared `serialize=False`, like `search_vector`,
   never dump and are never the cause.) *(Sermon.summary, 61 sermons, 2026-07)*
+- **THE READER PRINTS THE CHAPTER NUMBER ITSELF, so any numbering left in a
+  stored title renders twice.** `TocDrawer.svelte`, `SearchDrawer.svelte` and
+  `notebook/+page.svelte` all render `{ch.order}. {ch.title}`, so a title of
+  "1. Men of Prayer Needed" reads "1. 1. Men of Prayer Needed" — and CCEL
+  numbers its own TOC entries constantly. `clean_title` now strips a bare
+  `N.`/`N)` prefix and empties a bare "Chapter N", alongside the older
+  `Chapter N.` rule. Two things NOT stripped, both deliberate: a roman prefix on
+  a MIXED-CASE title (Edwards's twelve "signs" in religious-affections are
+  referential), and "Section N"/"Part N", which name a unit the reader does not
+  number. **Before adding any strip, count what it hits corpus-wide** — the
+  arabic rule hit 245 stored titles across waiting-on-god (×6 languages) and
+  selected-sermons-whitefield, all of which still read doubled until a migration
+  rewrites them; `seed_books` never re-syncs an existing book's chapters.
+  *(2026-08)*
+- **A chapter may legitimately have NO title.** Bounds's *Purpose in Prayer* is
+  thirteen untitled chapters (CCEL lists them "Chapter I" … and the pages carry
+  only an epigraph). `Chapter.title` is `blank=True`; `upsert_book` no longer
+  substitutes `"Chapter {order}"`, which only ever stood between an untitled
+  chapter and the reader. The reader names them: all three `{order}. {title}`
+  sites fall back to `settings.chapterN` ("Chapter N", translated everywhere),
+  with the number INSIDE the fallback so it cannot double up. Before this the
+  fallback was `plans.day`, the reading-plan label, so an untitled chapter would
+  have read "1. Day 1". *(2026-08)*
+- **An untitled "start reading" button on a CCEL TOC decides chapter ORDER.**
+  It links past the front matter straight to chapter one, in ABSOLUTE-URL form,
+  and first-seen order took its target as section one — so *Prayer and Praying
+  Men*'s INTRODUCTION, real prose, imported second. Order now comes from the
+  titled TOC entries. Eight CCEL works carry the button; in seven it points past
+  a Title Page that `is_front_matter` drops anyway, which is why this hid for so
+  long. Note a plain `grep` for the relative href MISSES these — they are written
+  `https://ccel.org/ccel/<a>/<w>/<w>.ii.html`. *(2026-08)*
+- **`[ivxlcdm]+` is not a roman numeral — it also spells "civil", "mild",
+  "livid", "mimic", "did", "mill".** Any rule that strips a leading roman
+  numeral must use a STRICT numeral (the `_ROMAN_WORD` construction in
+  `ingest.py`, or `_LEAD_COUNTER` in `import_ccel.py`), or a heading whose first
+  word merely looks roman will match a title it only precedes. Test the rule
+  against those words explicitly. *(2026-08)*
+- **A trailing "(Continued)" defeats an ALL-CAPS test.** CCEL sets the heading
+  in caps and the continuation marker in title case, so `is_allcaps` went False
+  and three of *Prayer and Praying Men*'s sixteen headings kept their numeral
+  and stayed SHOUTING beside title-cased siblings from the same TOC. Judge caps
+  on the heading with a trailing parenthetical removed. *(2026-08)*
+
+### Verifying a change to shared import logic (the method that works)
+
+- **Isolate your change from upstream drift** by running the OLD and NEW
+  predicate over the SAME freshly-fetched HTML for every CCEL book and diffing
+  the *decisions*. Reasoning about blast radius is not enough — do this.
+- **For a `clean_title` change, measure the corpus BASELINE both ways**: count
+  the stored titles `clean_title` would change on `main`, then on your branch.
+  The delta is your change; the baseline is pre-existing drift and is not your
+  problem (it was 28, then 273 once the arabic rule landed).
+- **Replicate the REAL code path, not a simplified one.** A hand-rolled harness
+  said the section-ordering fix would reorder two shipped books; running it
+  through the actual `toc_parts` (which drops part dividers via `_parent_urls`)
+  showed it changes nothing for them. The cruder check was wrong in the
+  dangerous direction. Chapter order is a public contract — `PlanDay`, saved
+  positions, prerendered URLs — so settle it against the real path.
+- **`audit_english <slug>` reads the committed FIXTURE, not your DB**, so it
+  reports "0 findings" for a freshly imported book until you write the fixture.
+  Inspect with `english_audit.audit_book(book)` before that point.
+- Recurring audit FALSE positives, all faithful to the source: a spaced ellipsis
+  ("the Holy One . . . .") as `space-before-punct`; a real but corpus-rare word
+  as `word-fusion` ("soother" read as "so"+"other"); and "box car letters" in a
+  1921 book as an `anachronism` on "car". Repair only what is genuinely fused
+  ("call fromheaven", "religion isthat" — both present in CCEL's own text) and
+  pin the rest with `audit_english --update-baseline`.
+
+### Two working-practice traps this loop hit
+
+- **`git stash` on a CLEAN tree is a no-op, so a following `git stash pop` pops
+  somebody ELSE's stash.** Stashing to compare against `main` is a natural move
+  during a review; if everything is already committed there is nothing to stash,
+  and the pop landed an unrelated `fix/slash-followups` stash as conflict markers
+  in two frontend files. Use `git stash -u` and CHECK it created an entry, or
+  better, compare with `git show main:<path>` / a detached worktree instead.
+- **A parallel session may ship your author or catalog entry from the other
+  side while you are in review.** Rebase onto their commits and keep theirs
+  where both had an answer — then RE-IMPORT so the book row takes their catalog
+  values, and rewrite the fixture. `seed_books` syncs `subtitle`/`cover_color`
+  FROM THE FIXTURE, so a fixture left on your values has each deploy asserting
+  one subtitle and each re-import the other. Redraw the plate and its og twin
+  after, since both encode the subtitle. *(#1166 vs #1170, 2026-08)*
 
 ## Adding a public-domain book NOT on ochorus.com
 
