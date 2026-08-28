@@ -73,6 +73,7 @@ from library.designed_covers import (
     DESIGNED_BY_SLUG,
     digest,
 )
+from library.quotes import mark_counts
 
 EXPECTED_MODELS = {
     "library.author",
@@ -1584,23 +1585,16 @@ class QuoteStyleTests(SimpleTestCase):
             if path.name in {"authors.json", "plans.json"}:
                 continue
             rows = json.loads(path.read_text())
-            text = re.sub(r"<[^>]+>", " ", "".join(
-                r["fields"].get("body_html", "") or "" for r in rows
-            ))
-            straight = text.count("&quot;") + text.count('"')
-            # Guillemets count here too, as a typographic mark and not a third
-            # style. Spanish books set « » as the OUTER mark and “ ” as the
-            # nested one, so a file carrying « with straight marks is mixing
-            # exactly what this guard exists to stop — but it carries no “, and
-            # counting only curly marks left four es works invisible
-            # (prevailing-prayer, jesus-himself-2,
-            # clothed-with-strength-and-dignity, and the unfailing-springs
-            # sermon). It also surfaced a genuine defect the narrow count could
-            # not see: susanna-wesley-clarke.en, wholly straight-quoted, had ten
-            # OCR-damaged guillemets in it — two of them corrupted letters.
-            curly = (
-                text.count("“") + text.count("”")
-                + text.count("«") + text.count("»")
+            # `library.quotes` owns the counting rule, and the fixture sweep and
+            # migration 0082 read it from there too. It used to be re-derived
+            # here, which is the one place a drift would go unnoticed — this is
+            # the guard, so nothing guards it. Widening it to count guillemets
+            # is what surfaced four invisible es works AND a genuine defect the
+            # narrow count could not see: susanna-wesley-clarke.en, wholly
+            # straight-quoted, had ten OCR-damaged guillemets in it, two of them
+            # corrupted letters.
+            straight, curly = mark_counts(
+                "".join(r["fields"].get("body_html", "") or "" for r in rows)
             )
             if straight and curly:
                 offenders.append(f"{path.name}: {straight} straight, {curly} curly")

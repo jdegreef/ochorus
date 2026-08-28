@@ -25,19 +25,35 @@ STRAIGHT = '"'
 ENTITY = "&quot;"
 
 
-def quote_style(text: str) -> str:
-    """"straight", "curly", "MIXED" or "none" — which marks this text sets."""
+def mark_counts(text: str) -> tuple[int, int]:
+    """(straight, typographic) quotation marks this text sets.
+
+    Guillemets count as typographic, not as a third style. Spanish books set
+    « » as the OUTER mark and “ ” as the nested one, so a work using « » with
+    straight marks is mixing exactly what this rule exists to stop — but it
+    carries no “, and counting only curly marks left three es books invisible
+    (prevailing-prayer, jesus-himself-2, clothed-with-strength-and-dignity).
+
+    Returned rather than reduced to the verdict because the corpus guard names
+    the numbers in its failure message, and a guard nothing else guards should
+    not be running its own private copy of the rule to get them.
+    """
     plain = TAG.sub(" ", text)
     straight = plain.count(ENTITY) + plain.count(STRAIGHT)
-    # Guillemets count as typographic, not as a third style. Spanish books set
-    # « » as the OUTER mark and “ ” as the nested one, so a file using « » with
-    # straight marks is mixing exactly what this rule exists to stop — but it
-    # carries no “, and counting only curly marks left three es books invisible
-    # (prevailing-prayer, jesus-himself-2, clothed-with-strength-and-dignity).
     curly = plain.count("“") + plain.count("”") + plain.count("«") + plain.count("»")
-    if straight and curly:
-        return "MIXED"
-    return "straight" if straight else ("curly" if curly else "none")
+    return straight, curly
+
+
+def is_mixed(text: str) -> bool:
+    """Does this work show the reader BOTH styles? The one question callers ask.
+
+    Deliberately not a four-valued `quote_style()`: `library/qa.py` already has
+    a function of that name with different vocabulary and a different rule (it
+    ignores guillemets and counts entities as a third style), and two same-named
+    style oracles in one app is a caller away from a silently different verdict.
+    """
+    straight, curly = mark_counts(text)
+    return bool(straight and curly)
 
 
 def uses_guillemets(text: str) -> bool:
@@ -128,6 +144,42 @@ def convert(html: str, *, outer_guillemets: bool) -> tuple[str, int]:
         changed += 1
         i += width
     return "".join(out), changed
+
+
+def convert_work(bodies: list[str], label: str) -> tuple[list[str], int]:
+    """Convert every body of ONE work. The unit both callers actually have.
+
+    The gate and the outer-pair question are asked HERE, once, of the joined
+    work — because both are facts about the work and getting either one per-row
+    is a bug the corpus has already produced:
+
+      * a chapter wholly straight-quoted inside a mixed book must still be
+        converted, so the mixed test cannot be per row;
+      * a chapter of a « »-quoting book carrying no guillemet of its own must
+        still take « », or that one chapter ends up quoted unlike its book.
+
+    Written once rather than in each caller because the fixture sweep and
+    migration 0082 have to reach the same text for the same work — a fresh
+    build loads the fixture, a deployed database was repaired by the migration,
+    and a reader must not be shown two different editions of one book depending
+    on when its row was written. That agreement used to rest on a test
+    comparing two hand-written copies of this protocol; now there is one.
+
+    Returns the bodies unchanged, and 0, for a work that does not mix styles.
+    """
+    joined = "".join(bodies)
+    if not is_mixed(joined):
+        return list(bodies), 0
+    outer = uses_guillemets(joined)
+    out: list[str] = []
+    total = 0
+    for i, body in enumerate(bodies):
+        new, changed = convert(body, outer_guillemets=outer)
+        if changed:
+            assert_punctuation_only(body, new, f"{label}[{i}]")
+        out.append(new)
+        total += changed
+    return out, total
 
 
 def rendered_letters(text: str) -> str:

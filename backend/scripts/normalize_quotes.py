@@ -39,12 +39,7 @@ CONTENT = BACKEND / "library" / "fixtures" / "content"
 
 sys.path.insert(0, str(BACKEND))
 
-from library.quotes import (  # noqa: E402  (path set above; no Django needed)
-    assert_punctuation_only,
-    convert,
-    quote_style,
-    uses_guillemets,
-)
+from library.quotes import convert_work  # noqa: E402  (path set above; no Django)
 
 
 def main() -> int:
@@ -53,25 +48,11 @@ def main() -> int:
     touched = total = 0
     for path in files:
         rows = json.loads(path.read_text())
-        joined = "".join(r["fields"].get("body_html", "") for r in rows)
-        if quote_style(joined) != "MIXED":
-            continue
-        # Asked of the FILE, then passed to every chapter in it: a chapter of a
-        # « »-quoting book can carry no guillemet of its own, and deciding per
-        # chapter would set that chapter's quotations in “ ” and the rest of the
-        # book's in « ».
-        outer = uses_guillemets(joined)
-        changed_here = 0
-        for row in rows:
-            body = row["fields"].get("body_html")
-            if not body:
-                continue
-            new, k = convert(body, outer_guillemets=outer)
-            if not k:
-                continue
-            assert_punctuation_only(body, new, path.name)
-            row["fields"]["body_html"] = new
-            changed_here += k
+        bodies = [r["fields"].get("body_html") or "" for r in rows]
+        repaired, changed_here = convert_work(bodies, path.name)
+        for row, new in zip(rows, repaired, strict=True):
+            if row["fields"].get("body_html"):
+                row["fields"]["body_html"] = new
         if not changed_here:
             continue
         touched += 1

@@ -8,9 +8,8 @@ either caller's output.
 
 from __future__ import annotations
 
-import importlib.util
+import importlib
 import json
-from pathlib import Path
 from unittest import skipUnless
 
 from django.apps import apps
@@ -24,29 +23,29 @@ from library.models import Author, Book, Chapter
 from library.quotes import (
     assert_punctuation_only,
     convert,
-    quote_style,
     uses_guillemets,
 )
 
-# The works migration 0082 repairs, and the language it repairs them in.
+MIGRATION = importlib.import_module("library.migrations.0082_repair_mixed_quotes")
+
+# Read off the migration rather than restated beside it: a slug added to 0082
+# would otherwise leave this test quietly checking the old set.
 MIGRATION_0082 = [
-    (BOOKS_DIR / "clothed-with-strength-and-dignity.es.json", "book"),
-    (BOOKS_DIR / "jesus-himself-2.es.json", "book"),
-    (BOOKS_DIR / "prevailing-prayer.es.json", "book"),
-    (SERMONS_DIR / "unfailing-springs.es.json", "sermon"),
+    BOOKS_DIR / f"{slug}.{MIGRATION.LANGUAGE}.json" for slug in MIGRATION.BOOK_SLUGS
 ]
+
+# The Spanish sermon #1132 also converted is deliberately NOT here, and not in
+# the migration: `seed_sermons` upserts `body_html` and calls a real `save()`
+# (only `source_type` and `is_published` are create-only), so a sermon's fixture
+# edit DOES reach a deployed database on the next deploy — with better fidelity
+# than a migration, since `save()` re-derives `body_text` and the vector through
+# the model's own hooks. Only chapters are stranded.
+SERMON_ALREADY_SEEDED = SERMONS_DIR / "unfailing-springs.es.json"
 
 
 class QuoteConversionTests(SimpleTestCase):
     def test_a_work_without_guillemets_takes_the_curly_pair(self):
-        """Every English work this has ever touched.
-
-        The first version decided this from guillemet DEPTH alone, so a
-        guillemet-free work took « » — Spanish outer marks in English prose. It
-        never fired (the English works were normalised before guillemets were
-        understood, and none has been mixed since), but a single newly-imported
-        mixed English book would have tripped it.
-        """
+        """Every English work. The case `convert`'s first version got wrong."""
         out, changed = convert(
             '<p>He said, "Come and see," and they came.</p>', outer_guillemets=False
         )
@@ -66,20 +65,14 @@ class QuoteConversionTests(SimpleTestCase):
         self.assertEqual(out, "<p>«Él dijo: “ven”, y vino.» Luego «se fue».</p>")
 
     def test_depth_does_not_survive_an_unclosed_span(self):
-        """Depth is per CALL, and a call is one chapter.
-
-        Both callers convert a chapter at a time, so neither can carry an
-        unclosed « into the next one — which is what makes the fixture sweep
-        and the migration agree row for row.
-        """
+        """These books leave quotations open across a chapter; depth is per call."""
         first, _ = convert('<p>«Una cita que no cierra: "aquí".</p>', outer_guillemets=True)
         second, _ = convert('<p>Y aquí "otra".</p>', outer_guillemets=True)
         self.assertIn("“aquí”", first)
         self.assertIn("«otra»", second)
 
     def test_a_mark_opening_a_paragraph_opens(self):
-        """`<p>` and nothing else to its left. Without ">" in the opening set
-        EVERY paragraph-initial quotation became a closing mark."""
+        """`<p>` and nothing else to its left."""
         out, _ = convert('<p>"Come and see," he said.</p>', outer_guillemets=False)
         self.assertTrue(out.startswith("<p>“Come"))
 
@@ -92,9 +85,7 @@ class QuoteConversionTests(SimpleTestCase):
         self.assertEqual(changed, 0)
 
     def test_the_entity_form_converts_and_the_guard_still_passes(self):
-        """`&quot;` literally contains q-u-o-t, so a raw string comparison
-        reports "letters changed" the moment an entity becomes a curly mark.
-        The guard compares what the READER sees."""
+        """The entity form, and the guard reading through it rather than at it."""
         before = "<p>He said, &quot;Come.&quot;</p>"
         after, changed = convert(before, outer_guillemets=False)
         self.assertEqual(after, "<p>He said, “Come.”</p>")
@@ -125,7 +116,7 @@ class Migration0082FidelityTests(SimpleTestCase):
     """
 
     def test_the_named_works_are_in_the_fixture_and_need_no_conversion(self):
-        for path, kind in MIGRATION_0082:
+        for path in [*MIGRATION_0082, SERMON_ALREADY_SEEDED]:
             with self.subTest(path.name):
                 self.assertTrue(path.exists(), f"{path.name} is named by 0082 but missing")
                 rows = json.loads(path.read_text(encoding="utf-8"))
@@ -144,19 +135,11 @@ class Migration0082FidelityTests(SimpleTestCase):
                     self.assertEqual(
                         changed,
                         0,
-                        f"{path.name} row {i} ({kind}) still holds straight marks the "
+                        f"{path.name} row {i} still holds straight marks the "
                         f"migration would convert — the fixture and the deployed "
                         f"database would disagree",
                     )
                     self.assertEqual(out, body)
-
-    def test_those_works_read_as_consistently_typographic(self):
-        """The state the migration is driving a deployed database towards."""
-        for path, _ in MIGRATION_0082:
-            with self.subTest(path.name):
-                rows = json.loads(path.read_text(encoding="utf-8"))
-                joined = "".join(r["fields"].get("body_html") or "" for r in rows)
-                self.assertEqual(quote_style(joined), "curly")
 
 
 class Migration0082BehaviourTests(TestCase):
@@ -169,13 +152,6 @@ class Migration0082BehaviourTests(TestCase):
     `clothed-with-strength-and-dignity`, and the converter would give an English
     chapter's straight quotes the Spanish outer mark.
     """
-
-    def _load_repair(self):
-        path = Path(__file__).resolve().parent / "migrations" / "0082_repair_mixed_quotes.py"
-        spec = importlib.util.spec_from_file_location("m0082", str(path))
-        module = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(module)
-        return module.repair
 
     def _book(self, language, body):
         author = Author.objects.create(slug=f"a-{language}", name="A")
@@ -191,7 +167,7 @@ class Migration0082BehaviourTests(TestCase):
         es = self._book("es", '<p>«Él dijo: "ven".» Y luego "se fue".</p>')
         en = self._book("en", '<p>He said, "come." And then "he left."</p>')
 
-        self._load_repair()(apps, None)
+        MIGRATION.repair(apps, None)
 
         es.refresh_from_db()
         en.refresh_from_db()
@@ -209,7 +185,7 @@ class Migration0082BehaviourTests(TestCase):
         chapter = self._book("es", '<p>«Él dijo: "ven".»</p>')
         Chapter.objects.filter(pk=chapter.pk).update(body_text="stale", word_count=0)
 
-        self._load_repair()(apps, None)
+        MIGRATION.repair(apps, None)
 
         chapter.refresh_from_db()
         self.assertIn("“ven”", chapter.body_text)
@@ -226,7 +202,7 @@ class Migration0082BehaviourTests(TestCase):
             search_vector=SearchVector(Value("stale"))
         )
 
-        self._load_repair()(apps, None)
+        MIGRATION.repair(apps, None)
 
         chapter.refresh_from_db()
         self.assertIsNone(chapter.search_vector)
@@ -242,7 +218,7 @@ class Migration0082BehaviourTests(TestCase):
         chapter = self._book("es", "<p>«Él dijo: “ven”.»</p>")
         Chapter.objects.filter(pk=chapter.pk).update(body_text="untouched-marker")
 
-        self._load_repair()(apps, None)
+        MIGRATION.repair(apps, None)
 
         chapter.refresh_from_db()
         self.assertEqual(chapter.body_html, "<p>«Él dijo: “ven”.»</p>")
