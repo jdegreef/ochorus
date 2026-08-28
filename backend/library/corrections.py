@@ -694,6 +694,52 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("which is tomend men", "which is to mend men"),
             ("for me which hehad at Oxford", "for me which he had at Oxford"),
             ("she was still sogenerous that", "she was still so generous that"),
+            # --- ten OCR-damaged guillemets -----------------------------------
+            #
+            # Found by the widened quote guard in #1132 and repaired in the
+            # fixture there; here so they reach a database that already holds
+            # the book. Not one of the ten is a quotation mark — this is a
+            # wholly straight-quoted work (796 marks, zero curly), so every «
+            # and » in it is damage.
+            #
+            # Two are CORRUPTED LETTERS, which is the reason they survived every
+            # other gate: they read as a stray mark rather than as a misspelling,
+            # so no dictionary check was ever going to see them.
+            ("a French refugee, a «ilk-weaver", "a French refugee, a silk-weaver"),
+            (
+                "it was evident that her «nd was approaching",
+                "it was evident that her end was approaching",
+            ),
+            # Four are extraction garbage sitting between sentences. None of
+            # these four is anchored on `<p>`: `body_text` carries the same
+            # prose with the tags stripped, so a tag-anchored pair repairs
+            # only `body_html` and leaves the fixture disagreeing with
+            # itself — the drift #1146 exists to stop.
+            ("**•»#* ' ' Of temperance", "' ' Of temperance"),
+            # Cut at the garbage run rather than carrying the quotation that
+            # follows it: the mark is not part of the defect, and a pair holding
+            # a straight `"` cannot be checked by `test_no_replacement_pair_is_dead`,
+            # which matches against the JSON-SERIALIZED corpus where it is `\"`.
+            ("it is but aiming. #»••*.»# ", "it is but aiming. "),
+            # Three are a stray mark where the letterpress had none.
+            ("« Epworth, June 7th, 1705.", "Epworth, June 7th, 1705."),
+            ("MY LORD, « Lincoln Castle,", "MY LORD, Lincoln Castle,"),
+            (
+                "and get «my children over into the street",
+                "and get my children over into the street",
+            ),
+            # And one stands where a full stop belongs, ending the sentence.
+            (
+                "which led to my study » I could not find",
+                "which led to my study. I could not find",
+            ),
+            # ch11's `» f:` sits at a quotation boundary. Rather than invent an
+            # opening quote the source may or may not have had, close the
+            # sentence and leave the structure alone.
+            (
+                "the intruding agency » f:My brother",
+                "the intruding agency. My brother",
+            ),
         ],
     },
     "the-person-and-work-of-the-holy-spirit": {
