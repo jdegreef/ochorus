@@ -351,6 +351,10 @@ class Chapter(models.Model):
     # snippets. Kept by save(); fixture loads bypass save(), so the
     # backfill_body_text command (run on every deploy) fills any gaps.
     body_text = models.TextField(blank=True, default="")
+    # Words in body_html (text.word_count) — the per-chapter reading time in
+    # the TOC, the length sort on the shelf, the totals under a book and a plan.
+    # Derived, like body_text, and kept by the same save(); fixture loads bypass
+    # save(), so backfill_word_count fills any that arrive at zero.
     word_count = models.PositiveIntegerField(default=0)
     # Stored tsvector (Postgres only; NULL on SQLite). Kept by save() +
     # backfill_search_vectors; GIN-indexed in migration 0041. See library/fts.py.
@@ -394,9 +398,10 @@ class Chapter(models.Model):
         return f"{self.book.slug}/{self.order} — {self.title}"
 
     def save(self, *args, **kwargs):
-        from .text import html_to_text
+        from .text import html_to_text, word_count
 
         self.body_text = html_to_text(self.body_html)
+        self.word_count = word_count(self.body_html)
         update_fields = kwargs.get("update_fields")
         if update_fields is None or "body_html" in update_fields:
             # A body change invalidates the citation index; the index_citations
@@ -405,6 +410,7 @@ class Chapter(models.Model):
             if update_fields is not None:
                 kwargs["update_fields"] = list(update_fields) + [
                     "body_text",
+                    "word_count",
                     "citations_indexed_at",
                 ]
         super().save(*args, **kwargs)
@@ -487,6 +493,7 @@ class Sermon(models.Model):
     body_html = models.TextField()
     # Plain text derived from body_html; what full-text search indexes.
     body_text = models.TextField(blank=True, default="")
+    # Words in body_html — derived and kept by save(), as on Chapter.
     word_count = models.PositiveIntegerField(default=0)
     # Stored tsvector (Postgres only; NULL on SQLite). Kept by save() +
     # backfill_search_vectors; GIN-indexed in migration 0041. See library/fts.py.
@@ -526,12 +533,16 @@ class Sermon(models.Model):
         return f"{self.title} — {self.author.name} ({self.language})"
 
     def save(self, *args, **kwargs):
-        from .text import html_to_text
+        from .text import html_to_text, word_count
 
         self.body_text = html_to_text(self.body_html)
+        self.word_count = word_count(self.body_html)
         update_fields = kwargs.get("update_fields")
         if update_fields is not None and "body_html" in update_fields:
-            kwargs["update_fields"] = list(update_fields) + ["body_text"]
+            kwargs["update_fields"] = list(update_fields) + [
+                "body_text",
+                "word_count",
+            ]
         super().save(*args, **kwargs)
         # Skip the vector rebuild when a scoped save touches no indexed field
         # (e.g. approve_sermon_translation flips only source_type).

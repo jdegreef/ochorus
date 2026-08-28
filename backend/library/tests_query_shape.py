@@ -66,9 +66,6 @@ class PlanShelfQueryTests(TestCase):
                     order=order,
                     title=f"Ch {order}",
                     body_html="<p>Some words here.</p>",
-                    # Set explicitly: word_count is stamped at ingest, not
-                    # derived in save(), so a directly-created chapter has 0.
-                    word_count=100,
                 )
 
     @staticmethod

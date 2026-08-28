@@ -640,12 +640,13 @@ class SeedAuthorTranslationsTests(TestCase):
 
 
 class BackfillWordCountTests(TestCase):
-    """`word_count` has no save() hook, unlike `body_text`.
+    """`word_count` is derived, and the routes that bypass save() need a keeper.
 
-    `ingest.word_count` sets it once at import time and nothing recomputes it,
-    so a row created by any other route keeps its zero permanently — which is
-    how 32 chapters shipped with no reading time in the TOC drawer and sorting
-    as the shortest books in the library.
+    `Chapter.save()`/`Sermon.save()` derive it now, so a row written through the
+    model is in step. This command is for the routes that do not go through it —
+    loaddata above all — where a row keeps its zero permanently. That is how 32
+    chapters shipped with no reading time in the TOC drawer and sorting as the
+    shortest books in the library.
     """
 
     def _book(self, slug="w", language="en"):

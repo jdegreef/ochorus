@@ -28,3 +28,17 @@ def enforcing_throttle(throttle_cls, rate: str):
         mock.patch.object(throttle_cls, "get_rate", return_value=rate),
     ):
         yield
+
+
+def body_of(words: int, tag: str = "p", end: str = "") -> str:
+    """Chapter/sermon HTML whose stored ``word_count`` will be exactly ``words``.
+
+    ``Chapter.save()``/``Sermon.save()`` derive ``word_count`` from the body, so
+    a test that wants a 200-word book has to supply 200 words — passing
+    ``word_count=200`` beside ``body_html="<p>x</p>"`` used to stick, and now
+    (correctly) does not.
+
+    ``end`` appends to the last word without adding one, for the quality checks
+    that read whether a chapter stops on terminal punctuation.
+    """
+    return f"<{tag}>{' '.join(['word'] * words)}{end}</{tag}>"

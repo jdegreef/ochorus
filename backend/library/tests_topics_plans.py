@@ -14,6 +14,8 @@ from django.core.management import call_command
 from django.test import TestCase
 from rest_framework.test import APIClient
 
+from common.testing import body_of
+
 from .models import (
     Author,
     Book,
@@ -35,7 +37,7 @@ class PlanTests(TestCase):
         book = Book.objects.create(author=author, slug="humility-2", language="en", title="Humility")
         for i in (1, 2):
             Chapter.objects.create(
-                book=book, order=i, title=f"Ch {i}", body_html="<p>x</p>", word_count=100
+                book=book, order=i, title=f"Ch {i}", body_html=body_of(100)
             )
         plan = Plan.objects.create(slug="humility-12-days", language="en", title="Humility in 12 Days")
         for i in (1, 2):

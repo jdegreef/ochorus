@@ -114,6 +114,15 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
   matching the old text. Such a change must also NULL `search_vector` on the
   touched rows (the release backfill then repairs them) or run
   `manage.py backfill_search_vectors --all`.
+- **Three columns are derived from `body_html`, and `save()` keeps all three**:
+  `body_text`, `word_count` (both `library/text.py`) and `search_vector`. So a
+  body written THROUGH the model is in step. The bypassing routes are the ones
+  to think about — `loaddata`, `queryset.update()`, a historical model — and
+  each derived column has its own release-chain keeper for them
+  (`backfill_body_text`, `backfill_word_count`, `backfill_search_vectors`).
+  Note the two backfills **fill only what is empty**, so a bypassing route that
+  writes a WRONG non-zero count or non-empty text repairs nowhere: set the
+  derived values yourself, the way the quote-mark migrations do.
 
 ## Shared logic
 

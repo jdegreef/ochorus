@@ -27,6 +27,14 @@ from library.sanitize import (  # noqa: F401
     clean_html,
 )
 
+# `word_count` and its `text_of` reduction now live in library/text.py, beside
+# the other derivation from body_html — moved for the same reason as the
+# sanitizer below. Chapter/Sermon.save() derives the count now, and importing
+# THIS module from models.py would close an import cycle and pull the catalog
+# and every importer into the serializers' reach graph. Re-exported because
+# `from library.ingest import word_count` is what a dozen callers already say.
+from library.text import text_of, word_count  # noqa: F401
+
 # The sanitizer and its allowlists now live in library/sanitize.py — the trust
 # boundary is security-critical enough to own a module, and models/commands need
 # to import it without dragging in this module's model dependencies.
@@ -223,14 +231,6 @@ def chapter_title(raw: str) -> str:
     """
     t = clean_title(raw)
     return "" if _BARE_CHAPTER.match(t) else t
-
-
-def text_of(html: str) -> str:
-    return _WS.sub(" ", re.sub(r"<[^>]+>", " ", html)).strip()
-
-
-def word_count(html: str) -> int:
-    return len(text_of(html).split())
 
 
 def is_front_matter(title: str) -> bool:

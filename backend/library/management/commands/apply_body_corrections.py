@@ -2,7 +2,8 @@
 
 The same fixes run automatically on every import; this command backfills rows
 that were imported before the corrections existed. Idempotent — safe to re-run.
-`save()` re-derives body_text, so search stays in step.
+`save()` re-derives body_text and word_count, so search and the reading-time
+estimates stay in step with the body this rewrites.
 
 Covers chapters AND sermons. Sermons joined BODY_CORRECTIONS when the sermon
 importer started using it; until this ran over them too, a sermon entry in the
@@ -30,11 +31,12 @@ class Command(BaseCommand):
     def handle(self, *args, **opts):
         fixed = 0
         # Defer the two heaviest columns. This command reads only body_html
-        # and writes it back; body_text is re-derived by Chapter.save() (which
-        # assigns it, un-deferring it so it IS written), and the tsvector is
-        # refreshed by fts.refresh_chapter's own UPDATE — neither needs to be
-        # fetched. Together they are roughly two thirds of the bytes this scan
-        # pulled, on EVERY deploy, to change nothing in the steady state.
+        # and writes it back; body_text and word_count are re-derived by
+        # Chapter.save() (which assigns them, un-deferring body_text so it IS
+        # written), and the tsvector is refreshed by fts.refresh_chapter's own
+        # UPDATE — none of the three needs to be fetched. Together the deferred
+        # two are roughly two thirds of the bytes this scan pulled, on EVERY
+        # deploy, to change nothing in the steady state.
         for chapter in (
             Chapter.objects.select_related("book")
             .defer("body_text", "search_vector")

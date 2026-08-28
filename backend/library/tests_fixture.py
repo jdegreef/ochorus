@@ -180,12 +180,10 @@ class FixtureIntegrityTests(SimpleTestCase):
 
     def test_prose_rows_carry_a_word_count(self):
         # `word_count` drives the per-chapter reading-time estimate in the TOC
-        # drawer and the length sort on the books shelf, and NOTHING recomputes
-        # it after creation — `ingest.word_count` sets it once at import time,
-        # and no save() hook keeps it in step the way body_text is kept. So a
-        # row that arrived by any other route (a translation written straight to
-        # body_html, a queryset.update()) keeps its zero permanently, and the
-        # release backfill only repairs what already shipped.
+        # drawer and the length sort on the books shelf. `save()` derives it, but
+        # `loaddata` does not call `save()` — so a fixture row is exactly the
+        # case the model hook cannot cover, and a zero shipped here stays zero
+        # in every fresh build until the release backfill happens to catch it.
         #
         # 32 chapters shipped this way — all 20 of all-of-grace.es, all 11 of
         # prevailing-prayer.es, and one of the-inner-chamber.lg — so both

@@ -8,6 +8,8 @@ edited — on its own. Pure move: no test changed.
 from django.test import TestCase, override_settings
 from rest_framework.test import APIClient
 
+from common.testing import body_of
+
 from .models import (
     Author,
     AuthorTranslation,
@@ -41,7 +43,7 @@ class AdminStatsTests(TestCase):
         )
         Sermon.objects.create(
             author=author, slug="all-of-grace", language="en", title="All of Grace",
-            body_html="<p>grace</p>", word_count=120,
+            body_html="<p>grace</p>",
         )
         Plan.objects.create(slug="p1", language="en", title="Plan One")
 
@@ -115,7 +117,7 @@ class AdminLanguageDetailTests(TestCase):
         )
         Sermon.objects.create(
             author=self.murray, slug="grace", language="en", title="Grace",
-            body_html="<p>g</p>", word_count=10,
+            body_html="<p>g</p>",
         )
         Plan.objects.create(slug="p1", language="en", title="Plan One")
 
@@ -150,11 +152,11 @@ class AdminLanguageDetailTests(TestCase):
         for i, slug in enumerate(("m1", "m2", "m3", "m4", "m5"), start=1):
             Sermon.objects.create(
                 author=self.murray, slug=slug, language="en", title=slug.upper(),
-                body_html="<p>x</p>", word_count=10, sort_order=i,
+                body_html="<p>x</p>", sort_order=i,
             )
         Sermon.objects.create(
             author=moody, slug="fire", language="en", title="Fire",
-            body_html="<p>f</p>", word_count=10, sort_order=99,
+            body_html="<p>f</p>", sort_order=99,
         )
         todo = self.client.get("/api/admin/languages/sw/").data["todo"]["sermons"]
         # Murray's best ("grace", sort_order 0), then Moody's only sermon despite
@@ -179,7 +181,7 @@ class AdminLanguageDetailTests(TestCase):
         for i, slug in enumerate(("z1", "z2", "z3", "z4"), start=1):
             Sermon.objects.create(
                 author=prolific, slug=slug, language="en", title=slug.upper(),
-                body_html="<p>x</p>", word_count=10, sort_order=i,
+                body_html="<p>x</p>", sort_order=i,
             )
         Author.objects.create(
             slug="aa-one", name="Aaron One", bio="P.", bio_html="<p>b</p>"
@@ -338,11 +340,11 @@ class AdminAuditTests(TestCase):
         self.author = Author.objects.create(slug="am", name="Andrew Murray")
         self.book = Book.objects.create(author=self.author, slug="humility", language="en", title="Humility")
         # ch1: generic title + doesn't end in terminal punctuation (mid-split, has next).
-        Chapter.objects.create(book=self.book, order=1, title="Chapter I", body_html="<p>text runs on</p>", word_count=300)
+        Chapter.objects.create(book=self.book, order=1, title="Chapter I", body_html="<p>text runs on</p>")
         # ch2: empty chapter (also an order gap will exist since order 3 skipped).
-        Chapter.objects.create(book=self.book, order=2, title="Real Title", body_html="", word_count=0)
+        Chapter.objects.create(book=self.book, order=2, title="Real Title", body_html="")
         # ch4: starts lowercase (missing drop cap); order 3 is missing → gap.
-        Chapter.objects.create(book=self.book, order=4, title="Good", body_html="<p>and so it began.</p>", word_count=200)
+        Chapter.objects.create(book=self.book, order=4, title="Good", body_html="<p>and so it began.</p>")
         # A book with no chapters at all.
         Book.objects.create(author=self.author, slug="empty", language="en", title="Empty Book")
         # A plan whose day points at a non-existent chapter.
@@ -402,10 +404,10 @@ class AdminAuditMultiLanguageTests(TestCase):
             # Same defect in every edition: a body with no terminal punctuation,
             # in a chapter that has a later one. One finding per edition.
             Chapter.objects.create(
-                book=book, order=1, title="One", body_html="<p>runs on</p>", word_count=300
+                book=book, order=1, title="One", body_html="<p>runs on</p>"
             )
             Chapter.objects.create(
-                book=book, order=2, title="Two", body_html="<p>Ends well.</p>", word_count=300
+                book=book, order=2, title="Two", body_html="<p>Ends well.</p>"
             )
 
     @override_settings(DEBUG=True)
@@ -451,7 +453,7 @@ class AdminAuditMultiLanguageTests(TestCase):
         """The check must still do its job — and say which edition."""
         es = Book.objects.get(slug="humility", language="es")
         Chapter.objects.create(
-            book=es, order=3, title="One", body_html="<p>Again.</p>", word_count=300
+            book=es, order=3, title="One", body_html="<p>Again.</p>"
         )
         res = self.client.get("/api/admin/audit/")
         dupes = res.data["quality"]["duplicate_titles"]["items"]
@@ -471,7 +473,7 @@ class AdminAuditMultiLanguageTests(TestCase):
         Chapter.objects.filter(book__slug="humility", book__language="es", order=2).delete()
         es = Book.objects.get(slug="humility", language="es")
         Chapter.objects.create(
-            book=es, order=3, title="Three", body_html="<p>Third.</p>", word_count=300
+            book=es, order=3, title="Three", body_html="<p>Third.</p>"
         )
         res = self.client.get("/api/admin/audit/")
         gaps = res.data["integrity"]["order_gaps"]["items"]
@@ -595,8 +597,8 @@ class AdminBookDetailTests(TestCase):
         en = Book.objects.create(author=author, slug="humility", language="en", title="Humility")
         # ch1 has a next and doesn't end in punctuation → mid-split (+ no drop cap);
         # ch2 has a generic title and ends fine.
-        Chapter.objects.create(book=en, order=1, title="Real", body_html="<p>runs on</p>", word_count=300)
-        Chapter.objects.create(book=en, order=2, title="Chapter II", body_html="<p>All is well.</p>", word_count=200)
+        Chapter.objects.create(book=en, order=1, title="Real", body_html=body_of(300))
+        Chapter.objects.create(book=en, order=2, title="Chapter II", body_html=body_of(200, end="."))
         Book.objects.create(
             author=author, slug="humility", language="sw", title="Unyenyekevu",
             source_type=Book.SourceType.AI_UNREVIEWED,
@@ -634,8 +636,8 @@ class AdminExportTests(TestCase):
         self.client = APIClient()
         author = Author.objects.create(slug="am", name="Andrew Murray", bio="x")
         b = Book.objects.create(author=author, slug="humility", language="en", title="Humility")
-        Chapter.objects.create(book=b, order=1, title="One", body_html="<p>x</p>", word_count=100)
-        Sermon.objects.create(author=author, slug="grace", language="en", title="Grace", body_html="<p>g</p>", word_count=50)
+        Chapter.objects.create(book=b, order=1, title="One", body_html=body_of(100))
+        Sermon.objects.create(author=author, slug="grace", language="en", title="Grace", body_html=body_of(50))
         Plan.objects.create(slug="p1", language="en", title="Plan One")
 
     @override_settings(DEBUG=True)
