@@ -219,9 +219,14 @@ DERIVED_GROUND: dict[str, Ground] = {
     ),
     # Below the rule at 0.594 there is only 18% of the cover left, which at the
     # usual inset came out five parts blur to one part picture; the wide inset
-    # crops IN to the cross's stem, so the sharp band lands at a third of the
-    # plate.
-    "jesus-himself-2": Ground(0.62, 0.78, 0.22, 1.80,
+    # crops IN to the cross's stem. At 0.22 that landed the sharp band at a
+    # third of the plate — the note this replaces — and the rest stayed blur.
+    # 0.38 is the same lever taken to where it ENDS: a band this narrow is
+    # taller than 4:3 once widened, so it fills the plate and there is no blurred
+    # extension at all. What it costs is width, and what it buys is that a
+    # translated reader sees the wall's real texture rather than a teal wash.
+    # The cross does not survive either crop; it is behind the title.
+    "jesus-himself-2": Ground(0.60, 0.82, 0.38, 1.80,
         source="e40e84e7b60120827a09351a7dc152c7d78a7bab62246cb50382f825ebd29c13",
     ),
     # A true silhouette: nearly black before the scrim, so the heaviest lift
@@ -235,7 +240,11 @@ DERIVED_GROUND: dict[str, Ground] = {
     "purity-of-heart": Ground(0.55, 0.79, 0.12, 2.00,
         source="f3659ad885cb95c3bf8f0d954d45c078c709674407fd560fcc4cf96d1bd60554",
     ),
-    "stepping-stones-2": Ground(0.26, 0.64, 0.02, 1.15,
+    # Full-bleed at 0.02 took the whole stream and, being a 3:4 crop of a 3:4
+    # cover, came out three parts blurred extension to one part water. Cropping
+    # IN to the centre 40% makes the band taller than the plate, so every pixel
+    # is photograph: the stones and the current are sharp instead of a wash.
+    "stepping-stones-2": Ground(0.28, 0.63, 0.30, 1.15,
         source="f3564c524858961bbe55d4a7b900f70b88589a349ca8ad56f9b94ef92bce15da",
     ),
     "talks-to-the-farmer": Ground(0.46, 0.78, 0.09, 1.45,
