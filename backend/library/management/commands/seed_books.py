@@ -49,7 +49,10 @@ BOOK_FIELDS = (
     "sort_order",
     "is_published",
 )
-CHAPTER_FIELDS = ("order", "title", "body_html", "word_count")
+# No `word_count`: `Chapter.save()` derives it from body_html, so passing the
+# fixture's copy here would be discarded. See seed_sermons.SERMON_FIELDS, where
+# the same entry also cost a re-write on every deploy.
+CHAPTER_FIELDS = ("order", "title", "body_html")
 
 # Seeded on create, then owned by workflows that act on the live DB:
 # approve_translation flips source_type (37 fixture books still say

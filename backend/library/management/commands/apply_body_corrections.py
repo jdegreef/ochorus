@@ -31,12 +31,13 @@ class Command(BaseCommand):
     def handle(self, *args, **opts):
         fixed = 0
         # Defer the two heaviest columns. This command reads only body_html
-        # and writes it back; body_text and word_count are re-derived by
-        # Chapter.save() (which assigns them, un-deferring body_text so it IS
-        # written), and the tsvector is refreshed by fts.refresh_chapter's own
-        # UPDATE — none of the three needs to be fetched. Together the deferred
-        # two are roughly two thirds of the bytes this scan pulled, on EVERY
-        # deploy, to change nothing in the steady state.
+        # and writes it back; body_text is re-derived by Chapter.save() (which
+        # assigns it, un-deferring it so it IS written), and the tsvector is
+        # refreshed by fts.refresh_chapter's own UPDATE — neither needs to be
+        # fetched. Together they are roughly two thirds of the bytes this scan
+        # pulled, on EVERY deploy, to change nothing in the steady state.
+        # (word_count is derived by the same save() but stays loaded: it is a
+        # 4-byte int, so deferring it would buy nothing.)
         for chapter in (
             Chapter.objects.select_related("book")
             .defer("body_text", "search_vector")

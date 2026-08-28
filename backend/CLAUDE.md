@@ -106,23 +106,22 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
   rows from them. Reviewed rows keep the approver's wording — only a
   still-empty field lands there, re-gating review. No new migration per batch,
   and don't hand-edit prod rows: the files win on the next deploy.
-- Chapter/Sermon carry stored `search_vector` tsvectors kept fresh by `save()`
-  hooks (library/fts.py); the release backfill repairs **NULL vectors only**.
-  A data migration or command that changes chapter/sermon text, titles, or
-  author names via `queryset.update()` or historical-model `.save()` (which
-  lacks the hooks) leaves vectors STALE, not NULL — search silently keeps
-  matching the old text. Such a change must also NULL `search_vector` on the
-  touched rows (the release backfill then repairs them) or run
-  `manage.py backfill_search_vectors --all`.
 - **Three columns are derived from `body_html`, and `save()` keeps all three**:
-  `body_text`, `word_count` (both `library/text.py`) and `search_vector`. So a
-  body written THROUGH the model is in step. The bypassing routes are the ones
-  to think about — `loaddata`, `queryset.update()`, a historical model — and
-  each derived column has its own release-chain keeper for them
-  (`backfill_body_text`, `backfill_word_count`, `backfill_search_vectors`).
-  Note the two backfills **fill only what is empty**, so a bypassing route that
-  writes a WRONG non-zero count or non-empty text repairs nowhere: set the
-  derived values yourself, the way the quote-mark migrations do.
+  `body_text`, `word_count` (both `library/text.py`) and `search_vector`
+  (library/fts.py). A body written THROUGH the model is therefore in step, and
+  a derived column is not a fact a fixture gets to assert — don't compare one
+  against a fixture value in a seed, or the seed "repairs" it and `save()`
+  derives it straight back, every deploy, forever.
+  The routes that BYPASS `save()` are the hazard: `loaddata`, a
+  `queryset.update()`, a data migration's historical model. Each column has a
+  release-chain keeper for them (`backfill_body_text`, `backfill_word_count`,
+  `backfill_search_vectors`) but **all three repair only what is empty** — so a
+  bypassing route that writes a WRONG non-empty value repairs nowhere, and must
+  set the derived columns itself (the quote-mark migrations show the shape).
+  The tsvector is the sharpest case: a bulk text change leaves vectors STALE
+  rather than NULL, so search silently keeps matching the old prose. NULL
+  `search_vector` on the touched rows, or run
+  `manage.py backfill_search_vectors --all`.
 
 ## Shared logic
 

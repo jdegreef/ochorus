@@ -14,8 +14,6 @@ Usage:
 
 from __future__ import annotations
 
-import re
-
 from django.core.management.base import CommandError
 
 from library.covers import cover_path
@@ -116,7 +114,6 @@ class Command(TranslateCommand):
                 defaults={
                     "title": title[:300],
                     "body_html": body_html,
-                    "word_count": len(re.sub(r"<[^>]+>", " ", body_html).split()),
                 },
             )
             total_in += usage.input_tokens

@@ -27,8 +27,8 @@ from __future__ import annotations
 from django.core.management.base import BaseCommand
 from django.db.models import Q
 
-from library.ingest import word_count
 from library.models import Chapter, Sermon
+from library.text import word_count
 
 
 class Command(BaseCommand):

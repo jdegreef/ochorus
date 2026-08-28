@@ -350,7 +350,6 @@ class Command(BaseCommand):
                 "scripture_ref": scripture_ref,
                 "preached_on": preached_on,
                 "body_html": body,
-                "word_count": word_count(body),
                 "source_url": source_url,
                 "sort_order": SERMONS.index(entry),
                 "is_published": True,

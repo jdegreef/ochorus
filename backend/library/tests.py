@@ -131,11 +131,11 @@ class HtmlToTextTests(TestCase):
 
 
 class WordCountRuleTests(SimpleTestCase):
-    """The count's reduction is NOT html_to_text, and the difference is real.
+    """Pins the divergence `library.text.text_of` documents.
 
-    Both derive from body_html and both live in library/text.py, which makes
-    reaching for the wrong one easy. It costs words: html_to_text spaces only
-    block closers, so a body leaning on inline markup fuses and undercounts.
+    Two reductions of the same column live side by side, which makes reaching
+    for the wrong one easy — and it is silent, because it only costs words on
+    bodies that lean on inline markup.
     """
 
     def test_every_tag_is_a_word_boundary(self):
@@ -166,17 +166,12 @@ class ChapterBodyTextTests(TestCase):
         ch.refresh_from_db()
         self.assertEqual(ch.body_text, "New text.")
 
-    def test_save_derives_word_count(self):
-        ch = Chapter.objects.create(
-            book=self.book, order=1, title="One", body_html="<p>Pride must die.</p>"
-        )
-        self.assertEqual(ch.word_count, 3)
-
-    def test_a_count_passed_to_create_does_not_beat_the_body(self):
+    def test_save_derives_word_count_and_a_passed_count_does_not_beat_it(self):
         """The column is derived, so the body is the only thing that sets it.
 
-        Worth pinning: `create(word_count=...)` used to stick, and every seed
-        and sync path still passes the field through from a fixture row.
+        The passed value is worth pinning: `create(word_count=...)` used to
+        stick, and it is still spelled out in `content_sync` and in fixture
+        rows that `loaddata` writes without ever reaching `save()`.
         """
         ch = Chapter.objects.create(
             book=self.book, order=1, title="One",

@@ -487,6 +487,24 @@ class SeedSermonsTests(TestCase):
         lg = Sermon.objects.get(slug="the-immutability-of-god", language="lg")
         self.assertEqual(lg.source_type, Book.SourceType.AI_UNREVIEWED)
 
+    def test_second_run_updates_nothing(self):
+        """A no-op deploy must not touch a single row — updated_at is the tell.
+
+        `seed_books` has had this gate for a while; sermons went without, and
+        that is what let a DERIVED column into SERMON_FIELDS go unnoticed. The
+        seed compared the fixture's stored word_count against the one save()
+        derives, "repaired" every row where the two disagreed, and save() then
+        derived the value straight back — 33 full-row rewrites plus 33 tsvector
+        rebuilds, on every deploy, converging never.
+        """
+        from django.core.management import call_command
+
+        call_command("seed_sermons", verbosity=0)
+        stamps = dict(Sermon.objects.values_list("pk", "updated_at"))
+        self.assertTrue(stamps, "the seed created no sermons to check")
+        call_command("seed_sermons", verbosity=0)
+        self.assertEqual(dict(Sermon.objects.values_list("pk", "updated_at")), stamps)
+
     def test_seed_never_reverts_an_approved_translation(self):
         # source_type is create-only. It ships in the fixture as ai_unreviewed,
         # but once a native speaker approves a translation the review workflow

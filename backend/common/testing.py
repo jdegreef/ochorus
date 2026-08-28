@@ -30,7 +30,7 @@ def enforcing_throttle(throttle_cls, rate: str):
         yield
 
 
-def body_of(words: int, tag: str = "p", end: str = "") -> str:
+def body_of(words: int, end: str = "") -> str:
     """Chapter/sermon HTML whose stored ``word_count`` will be exactly ``words``.
 
     ``Chapter.save()``/``Sermon.save()`` derive ``word_count`` from the body, so
@@ -41,4 +41,4 @@ def body_of(words: int, tag: str = "p", end: str = "") -> str:
     ``end`` appends to the last word without adding one, for the quality checks
     that read whether a chapter stops on terminal punctuation.
     """
-    return f"<{tag}>{' '.join(['word'] * words)}{end}</{tag}>"
+    return f"<p>{' '.join(['word'] * words)}{end}</p>"

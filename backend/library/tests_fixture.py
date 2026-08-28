@@ -350,12 +350,12 @@ class SeedFieldCoverageTests(SimpleTestCase):
         from library.management.commands.seed_books import CHAPTER_FIELDS
         from library.models import Chapter
 
-        # body_text and search_vector are derived by save(); the seed must
-        # not set them directly. citations_indexed_at must stay unset so the
-        # index_citations release step scans freshly seeded chapters.
+        # body_text, word_count and search_vector are derived by save(); the
+        # seed must not set them directly. citations_indexed_at must stay unset
+        # so the index_citations release step scans freshly seeded chapters.
         expected = self._content_fields(
             Chapter,
-            exclude={"id", "book", "body_text", "search_vector",
+            exclude={"id", "book", "body_text", "word_count", "search_vector",
                      "citations_indexed_at", "created_at", "updated_at"},
         )
         self.assertEqual(set(CHAPTER_FIELDS), expected)
@@ -364,12 +364,16 @@ class SeedFieldCoverageTests(SimpleTestCase):
         from library.management.commands.seed_sermons import SERMON_FIELDS
         from library.models import Sermon
 
-        # preached_on is handled separately (date parsing); body_text and
-        # search_vector are derived.
+        # preached_on is handled separately (date parsing); body_text,
+        # word_count and search_vector are derived. A derived field listed here
+        # is not merely redundant: the seed compares it against the fixture, so
+        # it re-writes every row where the two disagree and save() derives the
+        # value straight back — see SeedSermonsTests.test_second_run_updates_nothing.
         expected = self._content_fields(
             Sermon,
             exclude={"id", "author", "slug", "language", "preached_on",
-                     "body_text", "search_vector", "created_at", "updated_at"},
+                     "body_text", "word_count", "search_vector",
+                     "created_at", "updated_at"},
         )
         self.assertEqual(set(SERMON_FIELDS), expected)
 

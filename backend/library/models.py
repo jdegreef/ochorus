@@ -351,10 +351,9 @@ class Chapter(models.Model):
     # snippets. Kept by save(); fixture loads bypass save(), so the
     # backfill_body_text command (run on every deploy) fills any gaps.
     body_text = models.TextField(blank=True, default="")
-    # Words in body_html (text.word_count) — the per-chapter reading time in
-    # the TOC, the length sort on the shelf, the totals under a book and a plan.
-    # Derived, like body_text, and kept by the same save(); fixture loads bypass
-    # save(), so backfill_word_count fills any that arrive at zero.
+    # Words in body_html — derived and kept by the same save() as body_text.
+    # Spent on the per-chapter reading time in the TOC, the length sort on the
+    # shelf, and the totals under a book and under a reading plan.
     word_count = models.PositiveIntegerField(default=0)
     # Stored tsvector (Postgres only; NULL on SQLite). Kept by save() +
     # backfill_search_vectors; GIN-indexed in migration 0041. See library/fts.py.

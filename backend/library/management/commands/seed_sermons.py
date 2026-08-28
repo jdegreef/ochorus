@@ -24,12 +24,16 @@ from library.content_fixtures import authors_by_slug, load_all_rows
 from library.management.commands.seed_books import require_natural_format
 from library.models import Author, Sermon
 
+# `word_count` is deliberately absent: `Sermon.save()` derives it from
+# body_html, so a fixture row does not get to assert it. Listing it here made
+# the seed compare a derived column against a stored one and "repair" it on
+# every deploy — a full-row UPDATE plus a tsvector rebuild for 33 sermons,
+# forever, because save() immediately derived the value straight back.
 SERMON_FIELDS = (
     "title",
     "scripture_ref",
     "summary",
     "body_html",
-    "word_count",
     "source_type",
     "source_url",
     "sort_order",
