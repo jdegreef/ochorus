@@ -48,6 +48,12 @@ export default defineConfig({
 	test: {
 		environment: 'jsdom',
 		include: ['src/**/*.test.ts'],
-		globals: true
+		globals: true,
+		// Runs before the assertions in every file, and stops the run with one
+		// message when the environment cannot do what these tests need. A broken
+		// jsdom localStorage otherwise surfaces as ~99 unrelated-looking failures
+		// in files nobody touched — noise that reads as "broken here" and hides
+		// any real regression underneath it. See the file for the mechanism.
+		setupFiles: [fileURLToPath(new URL('./src/test/dom-environment-guard.ts', import.meta.url))]
 	}
 });
