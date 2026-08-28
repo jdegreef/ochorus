@@ -62,6 +62,12 @@ _SQUOTE = re.compile(r"(?<![A-Za-z])'|'(?![A-Za-z])")
 # OF CHRIST"); the rest of the library is Title Case. A roman-numeral prefix and
 # a set of lowercase-in-title connector words for the caps→title-case pass.
 _ROMAN_PREFIX = re.compile(r"^[IVXLCDM]+\.\s+")
+# A trailing "(Continued)" / "(Concluded)" marker. CCEL sets the heading itself
+# in caps but the marker in title case, which defeated the all-caps test below:
+# three of Prayer and Praying Men's sixteen headings kept their roman numeral
+# and stayed SHOUTING beside title-cased siblings from the same TOC. Judged on
+# the heading proper, they are as ALL-CAPS as the rest.
+_TRAILING_PAREN = re.compile(r"\s*\([^()]*\)\s*$")
 # A whole-token roman numeral ("II", "IV", "CXIX", "XLV") — used to KEEP such a
 # word uppercase through the caps→title-case pass so scripture/section headings
 # don't mangle ("II CORINTHIANS" -> "II Corinthians", not "Ii Corinthians").
@@ -159,7 +165,8 @@ def clean_title(raw: str) -> str:
     # dash — an internal one ("Elijah — The Man of God") is the author's
     # punctuation and must stay.
     t = re.sub(r"\s*[—–-]+$", "", t) or t
-    is_allcaps = any(c.isalpha() for c in t) and all(c.isupper() for c in t if c.isalpha())
+    core = _TRAILING_PAREN.sub("", t).strip() or t
+    is_allcaps = any(c.isalpha() for c in core) and all(c.isupper() for c in core if c.isalpha())
     # Drop a leading roman-numeral chapter prefix ("II. THE DIGNITY OF CHRIST" ->
     # "THE DIGNITY OF CHRIST"), but ONLY on ALL-CAPS CCEL-style headings. A
     # mixed-case numbered title (Murray's "I. Humility: The Glory of the

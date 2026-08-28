@@ -120,6 +120,22 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 # `apply_body_corrections`, plus a data migration for prod).
 
 BODY_CORRECTIONS: dict[str, dict] = {
+    "prayer-and-praying-men": {
+        # Two words glued together in CCEL's own text (verified upstream, so
+        # not something our cleaning introduced). Both produce a NON-word, and
+        # the seam is forced by the sentence — there is no reading in which
+        # "fromheaven" or "isthat" is Bounds's own spelling:
+        #
+        #   fromheaven  ch10  "at the third call fromheaven, when he recognized
+        #                     God's voice" — Samuel, 1 Samuel 3
+        #   isthat      ch15  "the evidence of sincerity in a true seeker of
+        #                     religion isthat it can be said of him, 'Behold he
+        #                     prayeth.'"
+        "replacements": [
+            ("call fromheaven", "call from heaven"),
+            ("religion isthat", "religion is that"),
+        ],
+    },
     "all-of-grace": {
         # Four OCR slips in the English text, found while translating the book
         # to Hindi. All four are single occurrences and none changes meaning —
