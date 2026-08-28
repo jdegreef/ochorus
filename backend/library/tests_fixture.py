@@ -71,7 +71,11 @@ from library.designed_covers import (
     DESIGNED_BY_SLUG,
     digest,
 )
-from library.ingest import strip_numbering_prefix, strip_restated_heading
+from library.ingest import (
+    strip_numbering_prefix,
+    strip_restated_heading,
+    word_count,
+)
 from library.quote_marks import mark_counts
 from library.text import html_to_text
 
@@ -191,8 +195,6 @@ class FixtureIntegrityTests(SimpleTestCase):
         # prevailing-prayer.es, and one of the-inner-chamber.lg — so both
         # Spanish books showed no reading times at all and sorted as the
         # shortest in the library.
-        from library.ingest import word_count
-
         blank = []
         for r in self.rows:
             if r["model"] not in ("library.chapter", "library.sermon"):
@@ -1675,6 +1677,54 @@ class RestatedChapterHeadingTests(SimpleTestCase):
             f"`uv run python scripts/strip_restated_headings.py --write`, "
             f"which applies the same rule and re-derives `body_text` and "
             f"`word_count` with it.",
+        )
+
+
+class WordCountDerivationTests(SimpleTestCase):
+    """`word_count` must be exactly what `ingest.word_count` gives its `body_html`.
+
+    It is a DERIVED column — every importer sets it with
+    `ingest.word_count(body_html)` — and the reader spends it: the per-chapter
+    reading-time estimate in the TOC drawer, the length sort on the shelf, the
+    word totals under a book and under a reading plan.
+
+    It is worse off than `body_text`, which at least has a keeper in
+    `Chapter.save()`/`Sermon.save()`. NOTHING recomputes `word_count` after
+    creation: `loaddata` writes it verbatim, `backfill_word_count` deliberately
+    fills only rows sitting at zero, and an edit to the body it describes does
+    not disturb it. So a count that is present but WRONG self-corrects nowhere —
+    not in a fresh build, not on a deploy, not on the next prose repair.
+
+    381 rows across 83 files had drifted, in two classes and neither of them
+    visible on a page: 237 English rows whose count still described the
+    `body_html` as it stood before a later prose repair (a closed line-break
+    hyphen fuses two half-words and drops the count by one), and 144 translated
+    rows — every non-English one — counted with `html_to_text`, the derivation
+    `body_text` uses, which joins across inline tags where this one spaces them.
+
+    Nothing was watching, which is why it accumulated. This is the watch.
+    """
+
+    def test_every_word_count_is_derived_from_its_body_html(self):
+        stale = []
+        for path in ordered_fixture_paths():
+            if path.name in {"authors.json", "plans.json"}:
+                continue
+            for row in json.loads(path.read_text()):
+                fields = row.get("fields", {})
+                body_html = fields.get("body_html")
+                # `is None`, not falsy: a row whose word_count is 0 is precisely
+                # one of the rows this exists to catch.
+                if not body_html or fields.get("word_count") is None:
+                    continue
+                if word_count(body_html) != fields["word_count"]:
+                    stale.append(f"{path.name} #{fields.get('order', '-')}")
+        self.assertEqual(
+            stale[:20],
+            [],
+            f"{len(stale)} rows carry a word_count their own body_html does not "
+            f"give — the reading time, the length sort and the plan totals all "
+            f"quote it. Run `manage.py rederive_word_count --write`.",
         )
 
 
