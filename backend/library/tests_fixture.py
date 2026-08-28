@@ -2091,6 +2091,113 @@ class ContentSourceCoverageTests(SimpleTestCase):
                     "and leaves the prerendered pages on the previous prose.",
                 )
 
+    def test_every_module_the_serializers_reach_is_classified(self):
+        """A NEW content-bearing module cannot join the graph unnoticed.
+
+        The two tests above pin that three lists AGREE. Nothing pins that they
+        are COMPLETE, and completeness is what actually failed: `curated_art.py`
+        began feeding `artwork_credit` on 2026-08-22, was declared nowhere, and
+        so `content_version` sat still while what the API returned changed. The
+        prebuild gate matched on its first poll and #1150 prerendered six of
+        twelve pages with no credit at all. Every other gate was green — they
+        were all asking whether the declared list was self-consistent, and it
+        was.
+
+        So this asks the other question: is every module the serializers can
+        reach either a declared root or explicitly exempt? The serializers are
+        the seed because they are what renders every field a prerendered page
+        shows. It is a REACHABILITY check, deliberately not a per-commit one —
+        an import graph cannot tell a changed SQL query from a changed string,
+        and a gate that rebuilt the reader for every `select_related` would be
+        ignored within a month. It fails only when the SHAPE of the graph
+        changes, which is exactly when a human should decide which list the new
+        module belongs in.
+
+        What it does not catch: prose added INSIDE an already-exempt module.
+        The graph does not move, so this stays green. Closing that would take a
+        post-deploy differential against the live API, which is a different
+        piece of work with a different cost.
+        """
+        import ast
+
+        lib = Path(__file__).resolve().parent
+
+        def module_file(dotted):
+            path = lib / (dotted.removeprefix("library.").replace(".", "/") + ".py")
+            return path if path.is_file() else None
+
+        def imported_by(path):
+            """`library.*` modules one file imports, absolute or relative."""
+            found = set()
+            for node in ast.walk(ast.parse(path.read_text())):
+                if isinstance(node, ast.ImportFrom):
+                    if node.level == 1:  # `from .x import y` / `from . import x`
+                        if node.module:
+                            found.add(f"library.{node.module}")
+                        else:
+                            found.update(f"library.{a.name}" for a in node.names)
+                    elif not node.level and node.module and node.module.startswith("library"):
+                        found.add(node.module)
+                elif isinstance(node, ast.Import):
+                    found.update(a.name for a in node.names if a.name.startswith("library"))
+            return found
+
+        reachable, pending = set(), ["library.serializers"]
+        while pending:
+            dotted = pending.pop()
+            if dotted in reachable:
+                continue
+            reachable.add(dotted)
+            path = module_file(dotted)
+            if path:
+                pending.extend(imported_by(path))
+
+        declared = {r for r in self.roots if r.endswith(".py")}
+        sources = json.loads(
+            (Path(__file__).resolve().parent / "content_sources.json").read_text()
+        )
+        exempt = set(sources.get("reader_exempt", {}))
+        unclassified = sorted(
+            f"library/{d.removeprefix('library.').replace('.', '/')}.py"
+            for d in reachable
+            if module_file(d) is not None
+        )
+        unclassified = [u for u in unclassified if u not in declared and u not in exempt]
+        self.assertEqual(
+            unclassified,
+            [],
+            "a module the serializers reach is neither a content root nor "
+            "exempt, so nothing knows whether changing it stales a prerendered "
+            "page. Add it to content_sources.json's `roots` (and render.yaml's "
+            "buildFilter) if it carries reader prose, or to `reader_exempt` "
+            "with the reason it does not.",
+        )
+
+    def test_every_exempt_module_gives_a_reason(self):
+        """An exemption is a claim, and an unexplained one is just a silence.
+
+        Empty strings would let the gate above be satisfied by listing every
+        module — which is how a check gets neutralised without anyone deleting
+        it. The reason is also what a reviewer reads when deciding whether the
+        claim is still true.
+        """
+        sources = json.loads(
+            (Path(__file__).resolve().parent / "content_sources.json").read_text()
+        )
+        exempt = sources.get("reader_exempt", {})
+        self.assertEqual(
+            sorted(m for m, why in exempt.items() if not (why or "").strip()),
+            [],
+            "an exempt module with no reason recorded",
+        )
+        # And nothing may be in both lists: the two make opposite claims about
+        # whether a change there reaches a reader.
+        self.assertEqual(
+            sorted(set(exempt) & {r for r in self.roots}),
+            [],
+            "a module is both a content root and reader-exempt",
+        )
+
     def test_the_build_filter_names_no_undeclared_backend_path(self):
         """The other direction, which matters as much.
 
