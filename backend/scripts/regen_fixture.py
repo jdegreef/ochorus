@@ -46,6 +46,7 @@ from library.content_fixtures import (  # noqa: E402  (path set above; no Django
     SERMONS_DIR,
     load_all_rows,
     ordered_fixture_paths,
+    render_rows,
     work_filename,
 )
 
@@ -96,13 +97,6 @@ def identity(row):
     if m == "library.planday":
         return (m, tuple(f["plan"]), f["day"])
     return (m, json.dumps(f, sort_keys=True))
-
-
-def render(rows: list[dict]) -> str:
-    """Byte-stable Django-fixture formatting (records at column 0, indent=1)."""
-    return "[\n" + ",\n".join(
-        json.dumps(r, indent=1, ensure_ascii=False) for r in rows
-    ) + "\n]\n"
 
 
 def split_layout(rows: list[dict]) -> dict[Path, list[dict]]:
@@ -220,7 +214,7 @@ def main():
     for path, rows in files.items():
         target = staging / path.relative_to(CONTENT_DIR)
         target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(render(rows))
+        target.write_text(render_rows(rows))
     shutil.rmtree(CONTENT_DIR)
     staging.rename(CONTENT_DIR)
     print(f"✓ regenerated: {len(new_rows)} rows across {len(files)} files "
