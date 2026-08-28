@@ -113,6 +113,22 @@ services:
         # no frontend path at all, and without this entry the credit line every
         # reader sees would never rebuild.
         - backend/library/curated_art.py
+        # Computed at SERIALIZE time, not stored — so editing any of these
+        # rewrites pages that are already on disk, with nothing else changing.
+        # `annotate_references` wraps the Bible refs in every chapter and sermon
+        # body (serializers.py calls it on `body_html`); `difficulty` is the
+        # badge on a book page; scripture_graph feeds /scripture/**, which is
+        # `prerender = true`. Two commits in the last 300 widened the citation
+        # parser and neither rebuilt the reader.
+        - backend/library/scripture.py
+        - backend/library/scripture_graph.py
+        - backend/library/readability.py
+        # Every field a prerendered page shows passes through here, so a new one
+        # is new prose. #371 added `day_one` with no migration and still raced.
+        # The cost is honest: ~17 of the last 300 commits touch this file and
+        # most only change a query shape, so this trades some needless rebuilds
+        # for never shipping a field the static pages do not have.
+        - backend/library/serializers.py
     # --- Security headers ---------------------------------------------------
     # The reader had none. That matters more here than on a typical static site:
     # the Supabase access token lives in localStorage and is attached as a Bearer
