@@ -25,6 +25,7 @@
     "library/topic_seed.py",
     "library/plan_seed.py",
     "library/corrections.py",
-    "library/quote_seed.py"
+    "library/quote_seed.py",
+    "library/curated_art.py"
   ]
 }

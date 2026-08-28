@@ -105,6 +105,14 @@ services:
         # prose readers see — and, until this entry existed, changed nothing
         # about whether the reader rebuilt to show it.
         - backend/library/corrections.py
+        # `credit()` reads this module and the book detail serializer emits it as
+        # `artwork_credit`, so a curated entry is prose on a prerendered page —
+        # the same shape as corrections.py above. Adding a painting happens to
+        # touch frontend/ (the file itself), which hid this: the reader rebuilt
+        # for the image, not for the credit. A change to `SOURCES` alone touches
+        # no frontend path at all, and without this entry the credit line every
+        # reader sees would never rebuild.
+        - backend/library/curated_art.py
     # --- Security headers ---------------------------------------------------
     # The reader had none. That matters more here than on a typical static site:
     # the Supabase access token lives in localStorage and is attached as a Bearer
