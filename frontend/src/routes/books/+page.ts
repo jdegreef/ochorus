@@ -1,3 +1,9 @@
+// prerender refresh 2026-08-28: the-unselfishness-of-god.uk (job #789).
+// ONLY this loader. The book is in no LAUNCH_PLANS or CURATED_PLANS entry
+// at all — grepped seed_plans.py and plans.py for the slug and it appears
+// in neither — so seed_plans has no plan to build from it in any language
+// and plans/+page.ts has nothing new to bake.
+//
 // prerender refresh 2026-08-28: all-of-grace.hi, the-way-to-god.hi
 // (jobs #1101, #1102). Neither book is a source of any curated plan, so
 // seed_plans creates no new hi plan row for them and this loader is the

@@ -1,0 +1,342 @@
+{
+  "kind": "book",
+  "slug": "the-unselfishness-of-god",
+  "language": "uk",
+  "job_issue": 789,
+  "pull_request": 1164,
+  "references": [
+    {
+      "reference": "John 17:3",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 2
+    },
+    {
+      "reference": "John 14:10",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 7
+    },
+    {
+      "reference": "John 1:18",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 7
+    },
+    {
+      "reference": "Hebrews 1:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 12
+    },
+    {
+      "reference": "Hebrews 1:2",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 12
+    },
+    {
+      "reference": "Hebrews 1:3",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 12
+    },
+    {
+      "reference": "Job 22:21",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 26
+    },
+    {
+      "reference": "John 15:14-15",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 86
+    },
+    {
+      "reference": "Deuteronomy 14:2",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 96
+    },
+    {
+      "reference": "Matthew 10:18",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 122
+    },
+    {
+      "reference": "1 Samuel 16:7",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 238
+    },
+    {
+      "reference": "Matthew 23:10",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 298
+    },
+    {
+      "reference": "Psalm 150:4",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 322
+    },
+    {
+      "reference": "Hebrews 10:34",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 336
+    },
+    {
+      "reference": "Matthew 6:9",
+      "status": "self_rendered",
+      "block_index": 358,
+      "why": "Kulish has «Отче наш». Her diary says 'my Father who art in Heaven', so the possessive was changed to «мій» to keep it a personal prayer, not the Lord's Prayer."
+    },
+    {
+      "reference": "1 John 1:9",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 392
+    },
+    {
+      "reference": "Hebrews 4:16",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 397
+    },
+    {
+      "reference": "Mark 9:24",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 421
+    },
+    {
+      "reference": "Hosea 4:17",
+      "status": "mined",
+      "block_index": 423,
+      "why": "Kulish is masculine («понехай його»), and Smith quotes it of a woman ('She is wedded to her idols; let her alone'). The gender was left as Kulish has it.",
+      "source_file": "Kulish (ukr1871) Bible text"
+    },
+    {
+      "reference": "1 John 5:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 458
+    },
+    {
+      "reference": "John 5:24",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 459
+    },
+    {
+      "reference": "John 20:30-31",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 460
+    },
+    {
+      "reference": "John 10:10",
+      "status": "self_rendered",
+      "block_index": 465,
+      "why": "The English phrase is 'life more abundant'. Kulish reads «щоб життє мали, й надто мали» — a clause, not a noun phrase, so it cannot be lifted as one. Rendered «життя вдосталь»."
+    },
+    {
+      "reference": "Acts 13:38",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 469
+    },
+    {
+      "reference": "2 Corinthians 5:19",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 471
+    },
+    {
+      "reference": "Luke 2:10",
+      "status": "self_rendered",
+      "block_index": 477,
+      "why": "Kulish has the verb form «благовіщу вам радість велику». The English uses it as a noun phrase ('glad tidings of great joy'), so it was recast rather than lifted."
+    },
+    {
+      "reference": "Isaiah 53:11",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 534
+    },
+    {
+      "reference": "1 Corinthians 15:22",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 536
+    },
+    {
+      "reference": "1 John 2:2",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 537
+    },
+    {
+      "reference": "Acts 3:21",
+      "status": "self_rendered",
+      "block_index": 539,
+      "why": "Kulish renders 'restitution of all things' as «часу новонастання всього». «новонастання» is opaque, so her running phrase and the chapter title use «відновлення всього» while the quoted verse keeps Kulish. A reviewer may prefer to align the two."
+    },
+    {
+      "reference": "Philippians 2:10; Revelation 5:13",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 539
+    },
+    {
+      "reference": "Romans 5:18",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 539
+    },
+    {
+      "reference": "Romans 7:24",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 619
+    },
+    {
+      "reference": "Romans 7:25",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 619
+    },
+    {
+      "reference": "Hebrews 7:25",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 697
+    },
+    {
+      "reference": "1 John 5:14",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 698
+    },
+    {
+      "reference": "Romans 8:37",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 702
+    },
+    {
+      "reference": "1 Corinthians 1:30",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 707
+    },
+    {
+      "reference": "Jeremiah 9:23-24",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 721
+    },
+    {
+      "reference": "Ephesians 2:8",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 726
+    },
+    {
+      "reference": "Psalm 44:3",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 727
+    },
+    {
+      "reference": "Psalm 44:8",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 728
+    },
+    {
+      "reference": "Galatians 2:20",
+      "status": "self_rendered",
+      "block_index": 729,
+      "why": "'Not I, but Christ' is Smith's four-word compression of the verse, not a quotation. Kulish reads «живу ж уже не я, а живе Христос у менї»; the short form was condensed from it."
+    },
+    {
+      "reference": "Romans 6:6",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 737
+    },
+    {
+      "reference": "Romans 6:6",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 744
+    },
+    {
+      "reference": "Romans 6:14",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 756
+    },
+    {
+      "reference": "1 John 5:4-5",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 758
+    },
+    {
+      "reference": "Joshua 1:3",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 812
+    },
+    {
+      "reference": "2 Corinthians 9:8",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 813
+    },
+    {
+      "reference": "Psalm 34:8",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 818
+    },
+    {
+      "reference": "Numbers 8:25",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 847
+    },
+    {
+      "reference": "Matthew 5:48",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 849
+    },
+    {
+      "reference": "Psalm 8:3",
+      "status": "mined",
+      "block_index": 851,
+      "why": "The English has 'the work of His fingers'; Kulish reads «дїло рук» — hands. Nothing in the argument turns on it.",
+      "source_file": "Kulish (ukr1871) Bible text"
+    },
+    {
+      "reference": "1 Corinthians 2:9",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 856
+    },
+    {
+      "reference": "John 17:24",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 858
+    }
+  ],
+  "note": "Scripture was recovered from the Kulish (ukr1871) Ukrainian Bible, the same source the six shipped Ukrainian books use. A reference is 'mined' when the Kulish wording sits in the text verbatim — verified mechanically by requiring a common substring of at least 32 characters with the verse itself, not by reading it off a report. The 'self_rendered' rows, and the 'why' notes on several mined rows, are the review task: places where Kulish and the English do not say quite the same thing."
+}
