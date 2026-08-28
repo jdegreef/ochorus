@@ -104,6 +104,32 @@ CORRECTIONS: dict[str, dict] = {
             13: "Addresses On Holiness In Exeter Hall (First Address)",
         },
     },
+    "purpose-in-prayer": {
+        # EDITORIAL TITLES, not a repair. Unlike Bounds' other three books —
+        # which CCEL carries with their own chapter titles — the 1920 Purpose in
+        # Prayer numbers its chapters and never names them, so the import was
+        # right to leave all 13 blank and the reader showed a bare "1", "2", "3".
+        # These were written from each chapter's own argument, using Bounds' own
+        # phrasing wherever he gives a usable one ("prayerless praying", "pray
+        # and never faint", "put the men to praying"), so the book reads like the
+        # rest of the shelf. They are OURS, not his: if a titled edition ever
+        # turns up, prefer its titles to these.
+        "chapter_titles": {
+            1: "God Shapes the World by Prayer",
+            2: "Prayer Changes the Purpose of God",
+            3: "We Have Not Because We Ask Not",
+            4: "Men Who Prayed With a Purpose",
+            5: "Prayer Is a Trade to Be Learned",
+            6: "Pray and Never Faint",
+            7: "Men Ought Always to Pray",
+            8: "Put the Men to Praying",
+            9: "Reaching the Ear of God",
+            10: "Prayerless Praying",
+            11: "The Prayer of Faith Never Fails",
+            12: "Revivals Are Born in Prayer",
+            13: "Christ Our Example in Prayer",
+        },
+    },
     "talks-to-the-farmer": {
         # Ch.1's title block is fused with the subhead and opening body text in
         # one oversized block ("THE SLUGGARD'S FARM  Introduction  From a
