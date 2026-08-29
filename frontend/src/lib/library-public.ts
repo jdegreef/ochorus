@@ -89,6 +89,7 @@ export interface BookDetail extends BookSummary {
 	 */
 	author_same_as?: string[];
 	alternate_titles?: string[];
+	about_html?: string;
 	/** Original publication year of the source work; null when unknown. */
 	publication_year: number | null;
 	/** This row IS the Modern English edition (language en-modern). */

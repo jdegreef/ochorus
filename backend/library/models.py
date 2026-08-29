@@ -252,7 +252,18 @@ class Book(models.Model):
 
     title = models.CharField(max_length=300)
     subtitle = models.CharField(max_length=300, blank=True)
+    # Short summary (a few sentences) — used on cards, lists and SEO meta.
     description = models.TextField(blank=True)
+    # Long-form "About this work" as cleaned HTML, the twin of Author.bio_html
+    # and cleaned by the same sanitizer: what the work is, the situation it was
+    # written into, and who it still repays. Rendered on the book page.
+    #
+    # It exists because the chapters do not distinguish this page from anyone
+    # else's copy of the same public-domain text — CCEL, Gutenberg and a dozen
+    # reprints carry them verbatim. This is the part that is Ochorus's own, so
+    # it is the part worth writing, and it is per-language for the same reason
+    # every other row is: there is no English fallback.
+    about_html = models.TextField(blank=True)
     # Year the work was first published (e.g. 1885). Optional — many classics
     # are known only by era.
     publication_year = models.PositiveIntegerField(null=True, blank=True)

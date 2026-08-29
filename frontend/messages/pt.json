@@ -365,6 +365,7 @@
   "book_meta_fallback": "%title% de %name% — leitura gratuita no Ochorus.",
   "book_title_tag": "%title% de %name% — leitura gratuita online · Ochorus",
   "book_other_titles": "Outros títulos",
+  "book_about_work": "Sobre este livro",
   "sermon_meta_fallback": "%title% — um sermão de %name%.",
   "error_not_found_title": "Página não encontrada",
   "error_generic_title": "Algo deu errado",

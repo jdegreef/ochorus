@@ -105,6 +105,17 @@
 			? absUrl(book.cover_url)
 			: absUrl(twinUrl(book.slug, book.language))
 	);
+	// Watson's *All Things for Good* carries "A Divine Cordial" as its SUBTITLE
+	// and as an alternate title, so the page printed it twice, two lines apart.
+	// Dropped from the visible line, NOT from `alternateName`: a subtitle does
+	// not assert that the string names the same work, which is the whole claim
+	// the markup makes — and the page still shows the words, so markup and page
+	// still agree.
+	const otherTitles = $derived(
+		(book.alternate_titles ?? []).filter(
+			(n) => n.toLowerCase() !== (book.subtitle ?? '').trim().toLowerCase()
+		)
+	);
 	const bookLd = $derived(
 		jsonLd({
 			'@context': 'https://schema.org',
@@ -205,9 +216,9 @@
 			     in the right place. Held to one line — it is confirmation, not a
 			     second title, and it sits above the author so it reads as part of
 			     naming the work rather than as a fact about it. -->
-			{#if book.alternate_titles?.length}
+			{#if otherTitles.length}
 				<p class="mt-1 text-small text-muted" dir="auto">
-					{t('book.otherTitles')}: {book.alternate_titles.join(' · ')}
+					{t('book.otherTitles')}: {otherTitles.join(' · ')}
 				</p>
 			{/if}
 			<!-- Separator as an expression, not literal text: the span's leading space
@@ -300,6 +311,35 @@
 			</div>
 		</div>
 	</header>
+
+	<!-- About this book. The page previously said nothing about the WORK: the
+	     book's own `description` fed the meta tag and the JSON-LD and was never
+	     rendered, while the author's bio was. So a reader arriving on a
+	     fourth-century treatise met the chapter list and a paragraph about
+	     Athanasius, and nothing about the book itself.
+
+	     This is also the only prose on the page that is Ochorus's own — the
+	     chapters are the same public-domain text CCEL, Gutenberg and a dozen
+	     reprints carry verbatim — which is why it is worth writing and why it
+	     sits above the author, not below.
+
+	     Falls back to `description` exactly as the author page falls back from
+	     bio_html to bio, so the 63 books with a description gain visible prose
+	     today rather than waiting for a long-form piece to be written. -->
+	{#if book.about_html}
+		<section class="about-work mt-8 max-w-xl" aria-labelledby="about-work">
+			<h2 id="about-work" class="mb-3 text-h3">{t('book.aboutWork')}</h2>
+			<div class="text-body leading-relaxed" dir="auto">
+				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+				{@html book.about_html}
+			</div>
+		</section>
+	{:else if book.description}
+		<section class="mt-8 max-w-xl" aria-labelledby="about-work">
+			<h2 id="about-work" class="mb-3 text-h3">{t('book.aboutWork')}</h2>
+			<p class="text-body leading-relaxed" dir="auto">{book.description}</p>
+		</section>
+	{/if}
 
 	{#if book.author.bio}
 		<p class="mt-6 max-w-xl text-body text-muted" dir="auto">{book.author.bio}</p>
