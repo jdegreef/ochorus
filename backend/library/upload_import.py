@@ -301,7 +301,6 @@ def create_book(
             # stored title whichever path brought it in. The reader names it.
             title=chapter_title(ch.get("title") or "")[:300],
             body_html=body,
-            word_count=words,
         )
     if order == 0:
         raise ParseError("No chapters had readable text.")
@@ -335,7 +334,6 @@ def create_sermon(
         title=title.strip()[:300],
         scripture_ref=scripture_ref.strip()[:160],
         body_html=body,
-        word_count=words,
         source_url=_http_url(source_url),
         sort_order=last + 1,
         is_published=True,

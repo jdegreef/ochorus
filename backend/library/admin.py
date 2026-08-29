@@ -75,6 +75,10 @@ class ChapterAdmin(admin.ModelAdmin):
     list_display = ("book", "order", "title", "word_count")
     list_filter = ("book__language", "book")
     search_fields = ("title",)
+    # Derived from body_html by save(), like body_text — an editable box here
+    # would take a number and then silently replace it. Same reason the inline
+    # above has it read-only.
+    readonly_fields = ("word_count",)
 
 
 class PlanDayInline(admin.TabularInline):

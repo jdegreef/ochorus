@@ -255,7 +255,15 @@
 <!-- Reader top bar -->
 {#if !readerUi.focus}
 	<div class="reader-chrome sticky top-0 z-10 border-b border-border bg-bg/90 backdrop-blur">
-		<div class="mx-auto flex max-w-3xl items-center justify-between gap-3 px-5 py-2.5">
+		<!-- Tracks the article below it (same `--reading-measure`, same `px-5`)
+		     rather than sitting at a flat 48rem, which was wider than the text at
+		     small settings and far narrower at large ones. The floor keeps the
+		     controls from crushing at narrow/0.8x; the min() keeps that floor
+		     inside a phone. -->
+		<div
+			class="mx-auto flex items-center justify-between gap-3 px-5 py-2.5"
+			style="max-width: min(max(var(--reading-measure), 32rem), 100%)"
+		>
 			<a href={localizeHref('/sermons')} class="text-small text-muted hover:text-text"
 				>← {t('nav.sermons')}</a
 			>

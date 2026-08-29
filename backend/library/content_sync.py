@@ -105,7 +105,9 @@ def backfill_bios_and_sermons(apps, fixture: Path = FIXTURE) -> tuple[int, int]:
                 "scripture_ref": f.get("scripture_ref", ""),
                 "preached_on": _date(f.get("preached_on")),
                 "body_html": f.get("body_html", ""),
-                "word_count": f.get("word_count", 0),
+                # word_count deliberately not carried across: Sermon.save()
+                # derives it from the body this just set, so a stale count in
+                # the feed cannot outrank the prose it describes.
                 "source_url": f.get("source_url", ""),
                 "sort_order": f.get("sort_order", 0),
                 "is_published": f.get("is_published", True),

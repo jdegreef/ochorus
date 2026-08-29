@@ -15,8 +15,6 @@ Usage:
 
 from __future__ import annotations
 
-import re
-
 from django.core.management.base import CommandError
 
 from library.management.commands._translate_base import TranslateCommand
@@ -75,8 +73,8 @@ class Command(TranslateCommand):
         # The model's output is untrusted: it is a regex capture of generated
         # text, produced from source prose scraped off the public web, and it
         # lands in a column the reader renders with {@html}. Sanitize before it
-        # is stored — and before word_count is taken from it, so the count
-        # describes the text that was actually kept.
+        # is stored — save() derives body_text and word_count from what is
+        # stored, so both describe the text that was actually kept.
         body_html = clean_fragment(body_html)
 
         Sermon.objects.update_or_create(
@@ -89,7 +87,6 @@ class Command(TranslateCommand):
                 "summary": summary,
                 "preached_on": source.preached_on,
                 "body_html": body_html,
-                "word_count": len(re.sub(r"<[^>]+>", " ", body_html).split()),
                 "source_type": Book.SourceType.AI_UNREVIEWED,
                 # source_url deliberately not copied: it points at the English edition.
                 "sort_order": source.sort_order,

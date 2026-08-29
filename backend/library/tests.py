@@ -5,6 +5,8 @@ from django.db import connection
 from django.test import SimpleTestCase, TestCase
 from rest_framework.test import APIClient
 
+from common.testing import body_of
+
 from . import language_suggestions
 from .ingest import clean_title
 from .models import (
@@ -21,7 +23,7 @@ from .models import (
     TopicSermon,
     TopicTranslation,
 )
-from .text import html_to_text
+from .text import html_to_text, word_count
 
 
 class CleanTitleTests(TestCase):
@@ -128,6 +130,22 @@ class HtmlToTextTests(TestCase):
         self.assertEqual(html_to_text("<p>God&rsquo;s &amp; grace</p>"), "God’s & grace")
 
 
+class WordCountRuleTests(SimpleTestCase):
+    """Pins the divergence `library.text.text_of` documents.
+
+    Two reductions of the same column live side by side, which makes reaching
+    for the wrong one easy — and it is silent, because it only costs words on
+    bodies that lean on inline markup.
+    """
+
+    def test_every_tag_is_a_word_boundary(self):
+        self.assertEqual(word_count("<p><i>one</i><b>two</b></p>"), 2)
+        self.assertEqual(html_to_text("<p><i>one</i><b>two</b></p>"), "onetwo")
+
+    def test_entities_are_left_escaped_and_still_count_as_one_word(self):
+        self.assertEqual(word_count("<p>G&amp;C</p>"), 1)
+
+
 class ChapterBodyTextTests(TestCase):
     def setUp(self):
         author = Author.objects.create(slug="a", name="Andrew Murray")
@@ -148,6 +166,35 @@ class ChapterBodyTextTests(TestCase):
         ch.refresh_from_db()
         self.assertEqual(ch.body_text, "New text.")
 
+    def test_save_derives_word_count_and_a_passed_count_does_not_beat_it(self):
+        """The column is derived, so the body is the only thing that sets it.
+
+        The passed value is worth pinning: `create(word_count=...)` used to
+        stick, and it is still spelled out in `content_sync` and in fixture
+        rows that `loaddata` writes without ever reaching `save()`.
+        """
+        ch = Chapter.objects.create(
+            book=self.book, order=1, title="One",
+            body_html="<p>Pride must die.</p>", word_count=999,
+        )
+        ch.refresh_from_db()
+        self.assertEqual(ch.word_count, 3)
+
+    def test_save_with_update_fields_keeps_word_count_in_step(self):
+        """The gap this closes: a body rewritten in place left the count behind.
+
+        `apply_body_corrections` runs on every deploy and does exactly this —
+        assign body_html, save — and nothing downstream repairs a count that is
+        present but wrong (`backfill_word_count` fills only zeros).
+        """
+        ch = Chapter.objects.create(
+            book=self.book, order=1, title="One", body_html="<p>One two three.</p>"
+        )
+        ch.body_html = "<p>One two.</p>"
+        ch.save(update_fields=["body_html"])
+        ch.refresh_from_db()
+        self.assertEqual(ch.word_count, 2)
+
 
 class SermonBodyTextTests(TestCase):
     def test_save_derives_body_text(self):
@@ -156,6 +203,17 @@ class SermonBodyTextTests(TestCase):
             author=author, slug="s", title="S", body_html="<p>Hear my <b>cry</b>.</p>"
         )
         self.assertEqual(s.body_text, "Hear my cry.")
+
+    def test_save_derives_word_count_and_keeps_it_in_step(self):
+        author = Author.objects.create(slug="a", name="A")
+        s = Sermon.objects.create(
+            author=author, slug="s", title="S", body_html="<p>Hear my cry.</p>"
+        )
+        self.assertEqual(s.word_count, 3)
+        s.body_html = "<p>Hear me.</p>"
+        s.save(update_fields=["body_html"])
+        s.refresh_from_db()
+        self.assertEqual(s.word_count, 2)
 
 
 class AuthorListTests(TestCase):
@@ -1242,10 +1300,8 @@ class BookCardPayloadTests(TestCase):
         self.book = Book.objects.create(
             author=self.author, slug="humility", language="en", title="Humility"
         )
-        Chapter.objects.create(book=self.book, order=1, title="One", body_html="<p>a</p>",
-                               body_text="a", word_count=120)
-        Chapter.objects.create(book=self.book, order=2, title="Two", body_html="<p>b</p>",
-                               body_text="b", word_count=80)
+        Chapter.objects.create(book=self.book, order=1, title="One", body_html=body_of(120))
+        Chapter.objects.create(book=self.book, order=2, title="Two", body_html=body_of(80))
         topic = Topic.objects.create(slug="prayer", title="On Prayer")
         TopicBook.objects.create(topic=topic, book_slug="humility", sort_order=0)
 
@@ -1284,8 +1340,7 @@ class BookCardPayloadTests(TestCase):
         lg = Book.objects.create(
             author=self.author, slug="humility", language="lg", title="Obuwombeefu"
         )
-        Chapter.objects.create(book=lg, order=1, title="Emu", body_html="<p>a</p>",
-                               body_text="a", word_count=200)
+        Chapter.objects.create(book=lg, order=1, title="Emu", body_html=body_of(200))
         card = self._card("/api/library/authors/murray/?language=lg")
         self.assertEqual(card["topics"], [])
         # …and the same book still carries the chip in English.
