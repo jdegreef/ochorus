@@ -92,5 +92,5 @@ def noop(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-    dependencies = [("library", "0093_merge_20260828_leaf_conflict")]
+    dependencies = [("library", "0093_merge_index_chapters_and_restated_headings")]
     operations = [migrations.RunPython(rederive, noop)]
