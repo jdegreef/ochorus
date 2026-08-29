@@ -497,38 +497,48 @@ class Command(BaseCommand):
             ]
 
         chapters: list[tuple[str, str]] = []
-        for part_title, leaves in parts:
-            # Gate front matter on the RAW title — clean_title strips a trailing
-            # "Contents", which would turn a "Contents" TOC section into an empty
-            # title that slips past is_front_matter and leaks in as a chapter.
-            if is_front_matter(part_title):
-                continue
-            pieces: list[str] = []
-            for url, leaf_title in leaves:
-                if is_front_matter(leaf_title):
+        # One failed section fetch aborts the WHOLE book: upsert_book replaces the
+        # book's chapters wholesale, so importing a partial crawl would drop a
+        # chapter and renumber every later one (like import_web, which returns
+        # here rather than ship a book with a hole in it).
+        try:
+            for part_title, leaves in parts:
+                # Gate front matter on the RAW title — clean_title strips a trailing
+                # "Contents", which would turn a "Contents" TOC section into an empty
+                # title that slips past is_front_matter and leaks in as a chapter.
+                if is_front_matter(part_title):
                     continue
-                leaf_title = clean_title(leaf_title)
+                pieces: list[str] = []
+                for url, leaf_title in leaves:
+                    if is_front_matter(leaf_title):
+                        continue
+                    leaf_title = clean_title(leaf_title)
+                    if entry.summary_titles:
+                        leaf_title = summary_title(leaf_title)
+                    # Only a volume import carries the volume's page furniture.
+                    body = self._section_body(url, leaf_title, entry.title, bool(entry.part))
+                    if is_contents_body(body):
+                        continue
+                    if not body:
+                        continue
+                    # A single-leaf part is the whole chapter — no subheading needed.
+                    # Multi-leaf parts keep each leaf's heading, so the work's own
+                    # divisions stay visible and citable (Confessions is quoted as
+                    # Book VIII.12). <h3> matches import_gutenberg's joined sections.
+                    pieces.append(f"<h3>{leaf_title}</h3>{body}" if len(leaves) > 1 else body)
+                if not pieces:
+                    continue
+                chapter_title = clean_title(part_title)
                 if entry.summary_titles:
-                    leaf_title = summary_title(leaf_title)
-                # Only a volume import carries the volume's page furniture.
-                body = self._section_body(url, leaf_title, entry.title, bool(entry.part))
-                if is_contents_body(body):
-                    continue
-                if not body:
-                    continue
-                # A single-leaf part is the whole chapter — no subheading needed.
-                # Multi-leaf parts keep each leaf's heading, so the work's own
-                # divisions stay visible and citable (Confessions is quoted as
-                # Book VIII.12). <h3> matches import_gutenberg's joined sections.
-                pieces.append(f"<h3>{leaf_title}</h3>{body}" if len(leaves) > 1 else body)
-            if not pieces:
-                continue
-            chapter_title = clean_title(part_title)
-            if entry.summary_titles:
-                chapter_title = summary_title(chapter_title)
-            chapters.append((chapter_title, "".join(pieces)))
-            if entry.group_parts:
-                self.stdout.write(f"    {part_title}: {len(pieces)} sections")
+                    chapter_title = summary_title(chapter_title)
+                chapters.append((chapter_title, "".join(pieces)))
+                if entry.group_parts:
+                    self.stdout.write(f"    {part_title}: {len(pieces)} sections")
+        except requests.RequestException as exc:
+            self.stderr.write(
+                self.style.ERROR(f"  section fetch failed: {exc} — aborted, book left unchanged")
+            )
+            return
 
         book = upsert_book(entry, chapters)
         english_audit.report(self, english_audit.audit_book(book), book.slug)
@@ -537,10 +547,14 @@ class Command(BaseCommand):
     def _section_body(
         self, url: str, title: str, book_title: str = "", volume: bool = False
     ) -> str:
-        """Fetch and clean one TOC section; "" when the request fails."""
-        try:
-            time.sleep(DELAY)
-            return extract_body(fetch(url), title, book_title, volume)
-        except requests.RequestException as exc:
-            self.stderr.write(self.style.WARNING(f"  skip {url}: {exc}"))
-            return ""
+        """Fetch and clean one TOC section.
+
+        Raises ``requests.RequestException`` on a fetch failure so the caller
+        aborts the whole book. Swallowing it (returning "") is indistinguishable
+        from a genuinely empty section, so the section was silently dropped and
+        ``upsert_book`` renumbered every later chapter — breaking plan days,
+        saved reading positions and prerendered URLs. An empty extract from a
+        page that DID load still returns "" and is skipped as before.
+        """
+        time.sleep(DELAY)
+        return extract_body(fetch(url), title, book_title, volume)
