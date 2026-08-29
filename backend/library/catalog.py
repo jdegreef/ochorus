@@ -159,6 +159,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "without ever asking anyone but God for money."
         ),
     ),
+    "jeanne-guyon": AuthorEntry(
+        slug="jeanne-guyon",
+        name="Jeanne Guyon",
+        birth_year=1648,
+        death_year=1717,
+        bio=(
+            "French mystic whose 'A Short and Easy Method of Prayer' (1685) "
+            "taught that the humblest soul may seek and find God in the heart. "
+            "Condemned in Catholic France, she was embraced by Protestants."
+        ),
+    ),
     "hudson-taylor": AuthorEntry(
         slug="hudson-taylor",
         name="Hudson Taylor",
@@ -418,6 +429,9 @@ BOOKS: list[BookEntry] = [
     BookEntry("the-life-of-trust", "The Life of Trust", "george-muller",
               "gutenberg", "27288",
               subtitle="The Lord's Dealings with George Müller", cover_color="#1e3a5f"),
+    BookEntry("a-short-and-easy-method-of-prayer", "A Short and Easy Method of Prayer",
+              "jeanne-guyon", "gutenberg", "24989",
+              subtitle="Translated by A. W. Marston", cover_color="#4c1d6b"),
     BookEntry("union-and-communion", "Union and Communion", "hudson-taylor",
               "ccel", "taylor_jh/union",
               subtitle="Thoughts on the Song of Solomon", cover_color="#862e9c"),
