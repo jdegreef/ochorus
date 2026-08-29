@@ -173,6 +173,40 @@ class ApiTests(TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.data["same_as"], ["https://www.wikidata.org/wiki/Q1"])
 
+    def test_the_book_detail_carries_its_author_identifiers(self):
+        """The book page emits Person markup, so it needs them too.
+
+        Only the DETAIL payload: a book CARD emits no Person markup, so putting
+        these on AuthorSerializer would ship the same handful of URLs on all 130
+        rows of a shelf for nothing to read.
+        """
+        from .models import Book, Chapter
+
+        writer = Author.objects.create(
+            slug="w2", name="A Writer", same_as=["https://www.wikidata.org/wiki/Q2"]
+        )
+        book = Book.objects.create(
+            author=writer, slug="b2", language="en", title="A Work"
+        )
+        Chapter.objects.create(book=book, order=1, title="One", body_html="<p>x</p>")
+        res = self.client.get("/api/library/books/b2/")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["author_same_as"], ["https://www.wikidata.org/wiki/Q2"])
+        # The card nested inside carries none — that is the point.
+        self.assertNotIn("same_as", res.data["author"])
+
+    def test_a_book_whose_author_has_none_sends_an_empty_list(self):
+        from .models import Book, Chapter
+
+        writer = Author.objects.create(slug="w3", name="Nobody")
+        book = Book.objects.create(
+            author=writer, slug="b3", language="en", title="Another"
+        )
+        Chapter.objects.create(book=book, order=1, title="One", body_html="<p>x</p>")
+        self.assertEqual(
+            self.client.get("/api/library/books/b3/").data["author_same_as"], []
+        )
+
     def test_an_author_without_any_sends_an_empty_list_not_null(self):
         # `sameAs: null` in JSON-LD is invalid; the page tests for length, so
         # the shape has to be a list either way.
