@@ -1367,3 +1367,55 @@ def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
         if m:
             body_html = body_html[: m.start(1)] + letter + body_html[m.start(1) :]
     return body_html
+
+
+# --- the settled form: what the deploy leaves in the database ----------------
+#
+# `apply_body_corrections` is one of two steps that repair a chapter's prose;
+# the other strips an absorbed trailing page number. The pair below name that
+# composite, because SIX call sites have to agree on it and nothing made them:
+# the two importers and `ingest.upsert_book`, which decide what a work looks
+# like before it reaches the fixture; the `apply_body_corrections` command,
+# which writes the settled form to the DB on every deploy; and `seed_sermons`
+# and `seed_books`'s `chapter_drift`, which compare the fixture against the DB
+# afterwards.
+#
+# The seeds are why this got a name. They compared the FIXTURE's uncorrected
+# text against the DB's corrected text, so every deploy wrote
+# `christ-all-in-all[sw]` back to its uncorrected body — losing a real repair
+# (it cites John 14:6; the fixture says "Yohana 10") to a full-row UPDATE plus a
+# tsvector rebuild, and pinning "Sermons: 0 created, N updated" permanently
+# above zero. That line is the seed's only signal that a real edit shipped. The
+# chapter side said the same thing in its own dialect: 13 books reported "body
+# differs from fixture" on a FAITHFUL install, drowning the one warning that
+# would have meant something.
+#
+# Both helpers are idempotent — `settled(settled(x)) == settled(x)`, guarded
+# corpus-wide in tests_fixture.py — which is what lets the deploy converge: the
+# corrections step writes the settled form, and the seeds recognise it as the
+# fixture's own.
+#
+# NOTE this deliberately makes `chapter_drift` blind to one case: a human who
+# runs `apply_body_corrections` against prod without regenerating the fixture.
+# That is not a divergence anyone must act on — the release chain does exactly
+# that on every deploy, by design. A data-migration transform or a hand edit
+# produces text that is neither the fixture's nor the settled form, and is
+# still reported.
+
+
+def settled_chapter_body(slug: str, order: int | None, body_html: str) -> str:
+    """A chapter body as the deploy's correction step leaves it. Idempotent."""
+    # Deferred: `library.ingest` imports THIS module at import time, and it is
+    # the heavier of the two (bs4, catalog, models). Called at import/deploy
+    # time, long after both modules are loaded.
+    from library.ingest import strip_trailing_pagenum
+
+    return apply_body_corrections(slug, order, strip_trailing_pagenum(body_html))
+
+
+def settled_sermon_body(slug: str, body_html: str) -> str:
+    """A sermon body as the deploy's correction step leaves it. Idempotent.
+
+    No page-number strip — that rule reads a chapter's absorbed page marker.
+    """
+    return apply_body_corrections(slug, None, body_html)

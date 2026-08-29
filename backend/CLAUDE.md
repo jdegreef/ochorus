@@ -92,6 +92,13 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
 - Therefore any field a workflow owns after creation — review state
   (`source_type`), an approver's edit — must be **create-only** in the seed, or
   a deploy walks it back. (This bit us; there's a regression test guarding it.)
+- The sibling rule for prose: `apply_body_corrections` runs over stored bodies
+  *before* the seeds, so anything comparing the RAW fixture body sees its own
+  correction as a difference and reverts it — forever. Compare, create and
+  import the **settled form** (`corrections.settled_chapter_body` /
+  `settled_sermon_body`); `corrections.py` explains what it cost. A correction
+  must also be **idempotent**, or the same loop churns one rung down — guarded
+  corpus-wide by `tests_fixture.SettledBodyIdempotenceTests`.
 - A fresh DB loads the fixture *after* migrate runs, so a data migration that
   depends on fixture rows no-ops on a rebuild — put the same fact in the
   fixture, not only the migration. (The historical pk-parsing migrations no-op

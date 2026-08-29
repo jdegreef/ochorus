@@ -6,6 +6,7 @@ deploy silently walks the approver's decision back. That rule has no home in the
 code; these tests are where it lives."""
 
 import json
+import re
 from io import StringIO
 from unittest import skipUnless
 from unittest.mock import patch  # noqa: E402
@@ -23,6 +24,27 @@ from .models import (
 )
 
 
+def synthetic_repair(body_html):
+    """BODY_CORRECTIONS replacement pairs that repair ``body_html``.
+
+    The tests below need a work the correction step still changes. Reading one
+    out of the committed fixture is the obvious way and the wrong one: the
+    non-English backlog is 30 chapters and 1 sermon TODAY, and normalising it
+    away is a live option — so a corpus-derived probe pins the backlog's
+    existence, and doing the right thing later would fail the build with
+    "this test no longer exercises the behaviour it guards". These tests are
+    about the mechanism, so they bring their own defect.
+
+    Upper-cases the first long word, which is idempotent (the upper-cased form
+    no longer contains the lower-cased original) — the property every entry in
+    BODY_CORRECTIONS needs, and the one convergence rests on.
+    """
+    match = re.search(r">[^<>]*?\b([a-z]{6,})\b", body_html)
+    assert match, "no lower-case word in the body to build a repair from"
+    word = match.group(1)
+    return [(word, word.upper())]
+
+
 class SeedBooksTests(TestCase):
     def test_creates_missing_books_with_chapters_and_author(self):
         from django.core.management import call_command
@@ -38,6 +60,35 @@ class SeedBooksTests(TestCase):
         before = Book.objects.count()
         call_command("seed_books", verbosity=0)
         self.assertEqual(Book.objects.count(), before)
+
+
+    def test_a_new_book_is_created_with_corrected_prose(self):
+        # seed_books runs AFTER apply_body_corrections in the release, so a book
+        # that lands today would otherwise sit live with a known defect until
+        # the NEXT deploy walked the corpus again — and read as drift meanwhile.
+        from library import corrections
+        from library.content_fixtures import BOOKS_DIR, work_filename
+
+        row = json.loads(
+            (BOOKS_DIR / work_filename("the-way-to-god", "en")).read_text()
+        )
+        raw = next(r for r in row if r["model"] == "library.chapter")["fields"]
+
+        with patch.dict(
+            corrections.BODY_CORRECTIONS,
+            {"the-way-to-god": {"replacements": synthetic_repair(raw["body_html"])}},
+        ):
+            corrected = corrections.settled_chapter_body(
+                "the-way-to-god", raw["order"], raw["body_html"]
+            )
+            self.assertNotEqual(corrected, raw["body_html"])
+            # The test DB starts empty, so this first seed IS the create path.
+            call_command("seed_books", verbosity=0)
+
+        chapter = Chapter.objects.get(
+            book__slug="the-way-to-god", book__language="en", order=raw["order"]
+        )
+        self.assertEqual(chapter.body_html, corrected)
 
 
 class SeedBooksUpsertTests(TestCase):
@@ -444,6 +495,33 @@ class SeedBooksChapterDriftTests(TestCase):
         c.refresh_from_db()
         self.assertEqual(c.body_html, "<p>tampered</p>")
 
+    def test_a_corrected_chapter_is_not_drift(self):
+        # apply_body_corrections runs over every stored chapter immediately
+        # BEFORE seed_books on each deploy, so the corrected text is a faithful
+        # state, not a divergence. Comparing the raw fixture only, prod (whose
+        # chapters seed_if_empty loaded raw) reported 13 books "differ from
+        # fixture" every deploy — all of them the corrections step doing its
+        # job. The check exists to catch a live-DB transform that never got a
+        # fixture regen, and a warning that is permanently on cannot.
+        from library import corrections
+
+        chapter = self.book.chapters.first()
+        raw = chapter.body_html
+
+        with patch.dict(
+            corrections.BODY_CORRECTIONS,
+            {self.book.slug: {"replacements": synthetic_repair(raw)}},
+        ):
+            corrected = corrections.settled_chapter_body(
+                self.book.slug, chapter.order, raw
+            )
+            self.assertNotEqual(corrected, raw)
+            self.assertEqual(self._drift(), {})  # the raw fixture is faithful…
+            call_command("apply_body_corrections", stdout=StringIO())
+            chapter.refresh_from_db()
+            self.assertEqual(chapter.body_html, corrected)  # …it was corrected…
+            self.assertEqual(self._drift(), {})  # …and that is not drift either
+
     def test_drift_check_failure_never_aborts_the_seed(self):
         # The drift pass runs inside seed_books' @transaction.atomic handle(),
         # so a bug in this diagnostics-only code must not roll back a good seed
@@ -518,6 +596,46 @@ class SeedSermonsTests(TestCase):
         call_command("seed_sermons", verbosity=0)  # the next deploy
         lg = Sermon.objects.get(slug="the-immutability-of-god", language="lg")
         self.assertEqual(lg.source_type, Book.SourceType.AI_REVIEWED)
+
+    def test_a_correction_survives_the_next_deploy(self):
+        # The release corrects the stored prose and THEN runs this seed, which
+        # compares the fixture against the DB — so while it compared the RAW
+        # fixture body the two steps fought over the same sermon forever.
+        # christ-all-in-all[sw] cites John 14:6; the fixture body says "(Yohana
+        # 10)", corrections repaired it, and the seed wrote the wrong reference
+        # back. Every deploy. The waste was a full-row UPDATE and a tsvector
+        # rebuild, but the real cost was the log: "Sermons: 0 created, N
+        # updated" is the seed's ONLY signal that a sermon edit shipped, and it
+        # could never return to zero to mean anything.
+        #
+        # test_second_run_updates_nothing does NOT catch this — without the
+        # corrections step in between there is nothing for the seed to revert.
+        from library import corrections
+
+        call_command("seed_sermons", verbosity=0)
+        sermon = Sermon.objects.filter(language="en").first()
+
+        with patch.dict(
+            corrections.BODY_CORRECTIONS,
+            {sermon.slug: {"replacements": synthetic_repair(sermon.body_html)}},
+        ):
+            corrected = corrections.settled_sermon_body(sermon.slug, sermon.body_html)
+            self.assertNotEqual(corrected, sermon.body_html)
+            call_command("apply_body_corrections", stdout=StringIO())
+            stamps = dict(Sermon.objects.values_list("pk", "updated_at"))
+
+            for _ in range(2):  # two more deploys
+                call_command("apply_body_corrections", stdout=StringIO())
+                out = StringIO()
+                call_command("seed_sermons", stdout=out)
+                self.assertIn("already up to date", out.getvalue())
+
+            # Not one row rewritten, and the repair is still there.
+            self.assertEqual(
+                dict(Sermon.objects.values_list("pk", "updated_at")), stamps
+            )
+            sermon.refresh_from_db()
+            self.assertEqual(sermon.body_html, corrected)
 
     def test_seed_never_republishes_an_unpublished_sermon(self):
         # is_published is create-only for the same reason as source_type: an

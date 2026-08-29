@@ -27,15 +27,10 @@ from django.utils.text import slugify
 from library import english_audit
 from library.corrections import (
     EXCLUDED_SLUGS,
-    apply_body_corrections,
     chapter_title_overrides,
+    settled_chapter_body,
 )
-from library.ingest import (
-    clean_title,
-    is_front_matter,
-    strip_trailing_pagenum,
-    word_count,
-)
+from library.ingest import clean_title, is_front_matter, word_count
 from library.models import Author, Book, Chapter
 
 CATALOG_URL = "https://ochorus.com/ochorus-books/"
@@ -565,8 +560,7 @@ def upsert(meta: dict, chapters: list[tuple[str, str]], sort_order: int) -> Book
     overrides = chapter_title_overrides(meta["slug"])
     for order, (title, body) in enumerate(chapters, start=1):
         final = clean_title(overrides.get(order, title))
-        body = strip_trailing_pagenum(body)
-        body = apply_body_corrections(meta["slug"], order, body)
+        body = settled_chapter_body(meta["slug"], order, body)
         Chapter.objects.create(
             book=book, order=order, title=final[:300], body_html=body,
         )

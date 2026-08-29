@@ -33,6 +33,7 @@ from django.db.models import Prefetch
 
 from library.author_sync import sync_all_authors
 from library.content_fixtures import authors_by_slug, load_all_rows
+from library.corrections import settled_chapter_body
 from library.models import Author, Book, Chapter
 
 BOOK_FIELDS = (
@@ -128,7 +129,16 @@ def chapter_drift(books, chapters_by_book):
                     f"{fc.get('title')!r} (fixture)"
                 )
                 break
-            if (fc.get("body_html") or "") != dc.body_html:
+            fixture_body = fc.get("body_html") or ""
+            # Two spellings count as faithful: the fixture's own text, and that
+            # text corrected — the release corrects every stored chapter
+            # immediately BEFORE this seed, so comparing only the first reported
+            # 13 books as drifted on a clean install (see `corrections.py`).
+            # Lazily: the settled form costs 0.26ms a chapter, so it is computed
+            # only for the ~30 that already disagree, not all 3,218.
+            if fixture_body != dc.body_html and (
+                settled_chapter_body(book.slug, order, fixture_body) != dc.body_html
+            ):
                 yield book, f"chapter {order} body differs from fixture"
                 break
 
@@ -235,10 +245,17 @@ class Command(BaseCommand):
                     chapters_by_book.get((f["slug"], language), []),
                     key=lambda c: c["order"],
                 ):
+                    fields = {k: cf[k] for k in CHAPTER_FIELDS if k in cf}
+                    if "body_html" in fields:
+                        # Corrected now: apply_body_corrections already ran this
+                        # deploy (it precedes seed_books), so a book arriving
+                        # today would otherwise sit live with a known defect
+                        # until the NEXT deploy came round to it.
+                        fields["body_html"] = settled_chapter_body(
+                            f["slug"], cf["order"], cf["body_html"]
+                        )
                     # .create() runs save(), which derives body_text.
-                    Chapter.objects.create(
-                        book=book, **{k: cf[k] for k in CHAPTER_FIELDS if k in cf}
-                    )
+                    Chapter.objects.create(book=book, **fields)
                 created += 1
                 self.stdout.write(
                     f"  + {book.slug} [{language}] "

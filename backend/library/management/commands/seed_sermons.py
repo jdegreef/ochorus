@@ -21,6 +21,7 @@ from django.db import transaction
 
 from library.author_sync import sync_all_authors
 from library.content_fixtures import authors_by_slug, load_all_rows
+from library.corrections import settled_sermon_body
 from library.management.commands.seed_books import require_natural_format
 from library.models import Author, Sermon
 
@@ -58,6 +59,30 @@ def _date(value):
     return value or None
 
 
+def fixture_fields(f: dict) -> dict:
+    """One fixture sermon's fields, with ``body_html`` in its settled form.
+
+    The release corrects the stored prose and then runs this seed, so comparing
+    the RAW fixture body compared uncorrected against corrected and the two
+    steps fought over the same sermon forever — see `corrections.py`, which
+    spells it out.
+
+    Correcting here rather than regenerating the fixture closes the class
+    instead of the instance: a correction added tomorrow costs one deploy to
+    apply and then settles, with no regen needed to stop the churn. The fixture
+    stays the source of truth for the prose, `corrections.py` for the repairs.
+
+    Settling is eager here, where `chapter_drift` is lazy: 118 sermons cost 33ms
+    a deploy, so the single-expression helper is worth it, while settling 3,218
+    chapters up front to answer a report-only question would cost 800ms.
+    """
+    # `if k in f` guards run through this module for fields an older
+    # serialization may predate; keep the same discipline here.
+    if "body_html" not in f:
+        return f
+    return {**f, "body_html": settled_sermon_body(f["slug"], f["body_html"])}
+
+
 class Command(BaseCommand):
     help = "Upsert the fixture's sermons into an existing DB (deploy step)."
 
@@ -82,7 +107,7 @@ class Command(BaseCommand):
         for row in rows:
             if row.get("model") != "library.sermon":
                 continue
-            f = row["fields"]
+            f = fixture_fields(row["fields"])
             af = author_fields_by_slug.get(f["author"][0])
             if af is None:
                 # Forbidden by the CI integrity test — a corrupt fixture must

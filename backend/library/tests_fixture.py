@@ -1599,6 +1599,43 @@ class PlanTranslationCoverageTests(SimpleTestCase):
         )
 
 
+class SettledBodyIdempotenceTests(SimpleTestCase):
+    """The deploy converges only because the corrections are a fixed point.
+
+    `manage.py release` corrects every stored body and then runs the seeds,
+    which compare the fixture's SETTLED form against the DB. That loop is
+    stable only while `settled(settled(x)) == settled(x)`: a correction whose
+    output re-matches its own input would be re-applied on every deploy, the
+    seed would see a difference every deploy, and the pair would churn forever
+    — the exact failure the settled form was introduced to end, reintroduced
+    one rung down where no seed test would see it.
+
+    Cheap to get wrong: a replacement pair whose replacement still contains the
+    string it replaces ("Yohana 10" -> "Yohana 10:1") does it. So does a new
+    rule-shaped correction. This asserts the property over the whole corpus, so
+    the entry that breaks it fails the build that adds it.
+    """
+
+    def test_every_fixture_body_is_a_fixed_point(self):
+        from library.corrections import settled_chapter_body, settled_sermon_body
+
+        for row in all_rows():
+            f = row["fields"]
+            body = f.get("body_html") or ""
+            if row["model"] == "library.chapter":
+                slug = f["book"][0]
+                once = settled_chapter_body(slug, f["order"], body)
+                twice = settled_chapter_body(slug, f["order"], once)
+            elif row["model"] == "library.sermon":
+                slug = f["slug"]
+                once = settled_sermon_body(slug, body)
+                twice = settled_sermon_body(slug, once)
+            else:
+                continue
+            with self.subTest(model=row["model"], slug=slug):
+                self.assertEqual(twice, once)
+
+
 class BodyTextDerivationTests(SimpleTestCase):
     """`body_text` must be exactly what `save()` would derive from `body_html`.
 
