@@ -215,3 +215,23 @@ Reported, not fixed
   fused drop cap. Every check in `english_audit.py` carries a test in
   `tests_english_audit.py` that separates the defect from the convention. A
   check without one will re-flood the report and the report will stop being read.
+- **Reading GROWTH as a new defect without checking.** The ratchet says a work
+  that grew has a new defect — usually true, but a neighbouring edit can tip a
+  PRE-EXISTING chapter over a threshold without touching its prose.
+  `the-reformed-pastor` ch04 sat at ~385 words/block, just under
+  `MEAN_BLOCK_MAX` (400); when #1189 stripped the `<h2>` restating the chapter's
+  own title, one block fewer put the mean at 405 and `lost-paragraphing`
+  appeared. Nothing about the paragraphing had changed — and per **Restoring
+  lost paragraphing** above, CCEL carries the same 19 blocks, so it was never
+  ours to begin with. Before repairing or re-pinning, get the block distribution
+  and ask whether the defect is new or newly VISIBLE. The repair is the same
+  either way, but what belongs in the commit message — and how hard you should
+  look at the edit that "caused" it — are not.
+- **Forgetting the baseline is corpus-wide, so it collides in parallel.**
+  `english_audit_baseline.json` is generated from every fixture, so ANY two PRs
+  that touch ANY fixture collide on it — and invisibly, because each branch
+  re-pins correctly against a corpus that lacks the other's edit. Both CI runs
+  pass; main fails the moment the second one lands. That is exactly how
+  #1189/#1190 left main red on 2026-08-28. If you re-pin, fetch first and
+  re-pin again right before merge; if main is already red on
+  `tests_english_audit`, check whether a fix is already open before writing one.
