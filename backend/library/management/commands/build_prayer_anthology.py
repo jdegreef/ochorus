@@ -203,7 +203,7 @@ class Command(BaseCommand):
             raise CommandError(
                 f"Author {AUTHOR_SLUG!r} is not in this database — run "
                 "`manage.py seed_if_empty` first."
-            )
+            ) from None
         # Content fields refresh on every rebuild; the workflow-owned fields
         # (source_type, is_published, sort_order) are create-only so a rebuild
         # can't walk back a review/unpublish (backend/CLAUDE.md).
