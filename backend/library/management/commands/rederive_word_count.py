@@ -1,18 +1,21 @@
 """Re-derive the committed fixture's ``word_count`` from its ``body_html``.
 
 ``word_count`` is DERIVED, not authored: every importer sets it with
-``ingest.word_count(body_html)`` — the number of whitespace-separated tokens
+``text.word_count(body_html)`` — the number of whitespace-separated tokens
 left once the tags are replaced by spaces — and the reader spends it on
 per-chapter reading times, the length sort on the shelf, and the word totals
 under a book and a reading plan.
 
-It is derived ONCE, though, and that is the whole defect. Unlike ``body_text``,
-which ``Chapter.save()`` and ``Sermon.save()`` recompute on every write, NOTHING
-recomputes ``word_count`` after creation — ``backfill_word_count`` says so in
-its own docstring, and deliberately fills only rows sitting at zero. So a count
-that is present but WRONG self-corrects nowhere: not in a fresh build
-(``loaddata`` writes it verbatim), not on a deploy (the backfill skips it), not
-on a later edit to the body it is supposed to describe.
+For most of the corpus's life it was derived ONCE, and that is where these
+rows come from. ``body_text`` was recomputed by ``Chapter.save()`` and
+``Sermon.save()`` on every write; the count beside it was not, so an edit to a
+body left the number describing the body it USED to have — and it self-corrected
+nowhere, because ``loaddata`` writes the count verbatim and
+``backfill_word_count`` deliberately fills only rows sitting at zero.
+
+#1197 closed that write path — ``save()`` derives ``word_count`` now — but a
+fixture row never passes through ``save()``, so the committed numbers are still
+whatever was last written into them. That is what this repairs.
 
 381 rows across 83 files were in that state, in two classes:
 
@@ -25,7 +28,7 @@ on a later edit to the body it is supposed to describe.
   * MIS-DERIVED AT BIRTH (144 rows — every non-English row that drifted, across
     ar/es/hi/lg/pt/sw/uk) — the count equals ``len(html_to_text(body_html)
     .split())``, the OTHER text derivation in this codebase, the one
-    ``body_text`` uses. It joins across inline tags where ``ingest.word_count``
+    ``body_text`` uses. It joins across inline tags where ``text.word_count``
     spaces them, so `لأجلك<em>.</em>` counts one token to the first rule and two
     to the second. These matched no revision: they were wrong in the commit that
     introduced them.
@@ -61,7 +64,7 @@ import re
 from django.core.management.base import BaseCommand, CommandError
 
 from library.content_fixtures import BOOKS_DIR, SERMONS_DIR
-from library.ingest import word_count
+from library.text import word_count
 
 #: Every stored ``word_count`` is a bare non-negative integer literal, so its
 #: value can be replaced without re-serialising the row around it.

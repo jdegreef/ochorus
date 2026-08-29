@@ -1683,19 +1683,19 @@ class RestatedChapterHeadingTests(SimpleTestCase):
 
 
 class WordCountDerivationTests(SimpleTestCase):
-    """`word_count` must be exactly what `ingest.word_count` gives its `body_html`.
+    """`word_count` must be exactly what `text.word_count` gives its `body_html`.
 
-    It is a DERIVED column — every importer sets it with
-    `ingest.word_count(body_html)` — and the reader spends it: the per-chapter
-    reading-time estimate in the TOC drawer, the length sort on the shelf, the
-    word totals under a book and under a reading plan.
+    It is a DERIVED column — `Chapter.save()`/`Sermon.save()` derive it, and so
+    does every importer — and the reader spends it: the per-chapter reading-time
+    estimate in the TOC drawer, the length sort on the shelf, the word totals
+    under a book and under a reading plan.
 
-    It is worse off than `body_text`, which at least has a keeper in
-    `Chapter.save()`/`Sermon.save()`. NOTHING recomputes `word_count` after
-    creation: `loaddata` writes it verbatim, `backfill_word_count` deliberately
-    fills only rows sitting at zero, and an edit to the body it describes does
-    not disturb it. So a count that is present but WRONG self-corrects nowhere —
-    not in a fresh build, not on a deploy, not on the next prose repair.
+    A fixture row is the one place that keeper cannot reach: `loaddata` never
+    calls `save()`, so a committed count is simply whatever was last written
+    into it. `backfill_word_count` deliberately fills only rows sitting at zero,
+    so a count that is present but WRONG self-corrects nowhere — not in a fresh
+    build, not on a deploy, not on the next prose repair. That is the gap this
+    gate stands in.
 
     381 rows across 83 files had drifted, in two classes and neither of them
     visible on a page: 237 English rows whose count still described the
@@ -1704,7 +1704,9 @@ class WordCountDerivationTests(SimpleTestCase):
     rows — every non-English one — counted with `html_to_text`, the derivation
     `body_text` uses, which joins across inline tags where this one spaces them.
 
-    Nothing was watching, which is why it accumulated. This is the watch.
+    Nothing was watching, which is why it accumulated. This is the watch — and
+    it stays useful now that #1197 keeps the DATABASE in step, because a fresh
+    build starts from this file rather than from a database.
     """
 
     def test_every_word_count_is_derived_from_its_body_html(self):
