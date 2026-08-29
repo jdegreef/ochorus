@@ -178,8 +178,10 @@ def merge_tombstones(server: dict[str, int], incoming: dict[str, int]) -> dict[s
 
 def prune_tombstones(tombs: dict[str, int], now_ms: int) -> dict[str, int]:
     """Drop tombstones past the TTL, then cap to the newest MAX (keeps the set
-    from growing without bound under repeated highlight/delete churn)."""
-    live = {k: v for k, v in tombs.items() if v == 0 or now_ms - v < TOMBSTONE_TTL_MS}
+    from growing without bound under repeated highlight/delete churn). An at=0
+    (unknown-age) tombstone is "long ago" and prunes with the rest — matching
+    clean_tombstones' contract and the frontend's pruneTombstones."""
+    live = {k: v for k, v in tombs.items() if now_ms - v < TOMBSTONE_TTL_MS}
     if len(live) > MAX_TOMBSTONES_PER_CHAPTER:
         newest = sorted(live.items(), key=lambda kv: kv[1], reverse=True)
         live = dict(newest[:MAX_TOMBSTONES_PER_CHAPTER])
