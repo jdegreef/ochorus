@@ -601,7 +601,7 @@ class BookDetailSerializer(BookListSerializer):
             "publication_year", "attribution", "topics", "related",
             "difficulty", "is_modern_edition", "has_modern_edition",
             "available_languages", "artwork_credit", "author_same_as",
-            "alternate_titles",
+            "alternate_titles", "about_html",
         ]
 
     def get_available_languages(self, obj):

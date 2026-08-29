@@ -40,6 +40,7 @@ BOOK_FIELDS = (
     "title",
     "subtitle",
     "description",
+    "about_html",
     "publication_year",
     "source_type",
     "source_url",

@@ -365,6 +365,7 @@
   "book_meta_fallback": "%title% — %name%. Читайте безкоштовно на Ochorus.",
   "book_title_tag": "%title% — %name%. Читайте безкоштовно онлайн · Ochorus",
   "book_other_titles": "Інші назви",
+  "book_about_work": "Про цю книгу",
   "sermon_meta_fallback": "%title% — проповідь %name%.",
   "error_not_found_title": "Сторінку не знайдено",
   "error_generic_title": "Щось пішло не так",
