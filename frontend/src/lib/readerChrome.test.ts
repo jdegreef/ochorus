@@ -56,6 +56,37 @@ describe('the layout publishes the nav height as a fact', () => {
 	});
 });
 
+describe('the chrome bars track the text they belong to', () => {
+	// The bars were a flat max-w-3xl (48rem) while the article ranges 27–83rem
+	// (measure x scale) and 88rem as a two-column spread — up to 333px wider than
+	// the text at the small end, 640px narrower at the large end, matching at no
+	// setting a reader can pick.
+	it.each([
+		{ label: 'reader', file: READER },
+		{ label: 'sermon', file: 'routes/sermons/[slug]/+page.svelte' }
+	])('$label bar is not pinned to its own fixed width', ({ file }) => {
+		const bar = read(file).match(/<div\n?\s*class="mx-auto flex[^"]*"/)?.[0];
+		// Assert the bar was FOUND before asserting anything about it — a regex
+		// that quietly stops matching would otherwise turn this into a test that
+		// passes because it looked at nothing.
+		expect(bar, `${file}: could not find the chrome bar's container div.`).toBeDefined();
+		expect(bar, `${file}: the reader chrome bar should not carry its own max-w-*.`).not.toMatch(
+			/\bmax-w-(?:xl|2xl|3xl|4xl|5xl)\b/
+		);
+	});
+
+	it('reader bar shares the article width expression', () => {
+		// Same source, so the spread case comes along for free.
+		expect(read(READER)).toMatch(/const chromeMax = \$derived\(`min\(max\(\$\{articleMax\}, 32rem\), 100%\)`\)/);
+	});
+
+	it('sermon bar tracks the reading measure', () => {
+		expect(read('routes/sermons/[slug]/+page.svelte')).toMatch(
+			/max-width: min\(max\(var\(--reading-measure\), 32rem\), 100%\)/
+		);
+	});
+});
+
 describe('the paged reader clears the nav', () => {
 	const src = read(READER);
 
