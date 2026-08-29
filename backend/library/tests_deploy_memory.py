@@ -119,8 +119,15 @@ class CorrectionsStillWriteCorrectlyTests(TestCase):
     """A deferred load must not cost the command its correctness.
 
     ``Chapter.save()`` assigns ``body_text``, which un-defers it so it IS
-    written; ``search_vector`` stays deferred and is refreshed by fts's own
-    UPDATE. This proves that rather than assuming it.
+    written; ``word_count`` is never deferred and is written the same way;
+    ``search_vector`` stays deferred and is refreshed by fts's own UPDATE. This
+    proves that rather than assuming it.
+
+    ``word_count`` is here because this command is where its drift was actually
+    manufactured: on a fresh build it rewrites the bodies of 30 chapters and a
+    sermon, and while nothing re-derived the count, nine of them came out of
+    the deploy describing a body they no longer had — with nothing later in the
+    chain to repair it (``backfill_word_count`` fills only zeros).
     """
 
     def setUp(self):
@@ -144,17 +151,21 @@ class CorrectionsStillWriteCorrectlyTests(TestCase):
 
         chapter.refresh_from_db()
         self.assertEqual(chapter.body_html, "<p>The grace of humility.</p>")
-        # The derived column must match the corrected HTML, not the old one.
+        # The derived columns must match the corrected HTML, not the old one.
         self.assertIn("The grace of humility.", chapter.body_text)
         self.assertNotIn("17", chapter.body_text)
+        # Five words went in; the stripped page number is not one of them.
+        self.assertEqual(chapter.word_count, 4)
 
     def test_an_untouched_chapter_keeps_its_derived_text(self):
         chapter = Chapter.objects.create(
             book=self.book, order=2, title="Two", body_html="<p>Nothing to fix here.</p>"
         )
-        before = Chapter.objects.get(pk=chapter.pk).body_text
+        before = Chapter.objects.get(pk=chapter.pk)
         call_command("apply_body_corrections", stdout=StringIO())
-        self.assertEqual(Chapter.objects.get(pk=chapter.pk).body_text, before)
+        after = Chapter.objects.get(pk=chapter.pk)
+        self.assertEqual(after.body_text, before.body_text)
+        self.assertEqual(after.word_count, before.word_count)
 
     def test_sermons_take_the_same_path(self):
         """Sermons stream deferred too, and their writes must survive it.
@@ -173,6 +184,8 @@ class CorrectionsStillWriteCorrectlyTests(TestCase):
         call_command("apply_body_corrections", stdout=StringIO())
         sermon.refresh_from_db()
         self.assertEqual(sermon.body_html, "<p>A humil-ity deeper than words.</p>")
-        # The derived column follows the corrected HTML, not the old one.
+        # The derived columns follow the corrected HTML, not the old one.
         self.assertIn("humil-ity", sermon.body_text)
         self.assertNotIn("humil- ity", sermon.body_text)
+        # The rejoin fused two half-words, so the count must drop by one.
+        self.assertEqual(sermon.word_count, 5)

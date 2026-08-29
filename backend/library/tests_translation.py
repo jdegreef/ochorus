@@ -210,7 +210,7 @@ class AdminTranslationJobsTests(TestCase):
         )
         Sermon.objects.create(
             author=author, slug="himself", language="en", title="Himself",
-            body_html="<p>x</p>", word_count=10,
+            body_html="<p>x</p>",
         )
         # An English plan and an author with a long-form bio, so plan/bio jobs
         # have real English sources to resolve against.

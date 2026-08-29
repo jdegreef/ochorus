@@ -30,7 +30,12 @@ from library.corrections import (
     apply_body_corrections,
     chapter_title_overrides,
 )
-from library.ingest import clean_title, is_front_matter, strip_trailing_pagenum
+from library.ingest import (
+    clean_title,
+    is_front_matter,
+    strip_trailing_pagenum,
+    word_count,
+)
 from library.models import Author, Book, Chapter
 
 CATALOG_URL = "https://ochorus.com/ochorus-books/"
@@ -365,7 +370,7 @@ def _segment(blocks, is_heading, is_noise, thresh) -> list[tuple[str, str]]:
         body_paras = [p for p in body_paras if not _is_dropcap(p)]
         body_paras = _repair_dropcaps(_merge_paragraphs(body_paras), caps)
         body_html = "".join(f"<p>{html.escape(p)}</p>" for p in body_paras)
-        if len(re.sub(r"<[^>]+>", " ", body_html).split()) < 120:  # stub / TOC entry
+        if word_count(body_html) < 120:  # stub / TOC entry
             continue
         chapters.append((title[:300], body_html))
     return chapters
@@ -564,7 +569,6 @@ def upsert(meta: dict, chapters: list[tuple[str, str]], sort_order: int) -> Book
         body = apply_body_corrections(meta["slug"], order, body)
         Chapter.objects.create(
             book=book, order=order, title=final[:300], body_html=body,
-            word_count=len(re.sub(r"<[^>]+>", " ", body).split()),
         )
     return book
 
