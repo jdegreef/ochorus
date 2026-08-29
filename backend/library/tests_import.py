@@ -893,6 +893,46 @@ class SermonReimportCreateOnlyTests(TestCase):
         self.assertFalse(sermon.is_published)  # NOT resurrected
 
 
+class CcelAbortOnFetchFailureTests(TestCase):
+    """A transient section-fetch failure mid-crawl must abort the whole book, not
+    ship a partial one — a dropped section renumbers every later chapter, breaking
+    plan days, saved positions and prerendered URLs (bug #3)."""
+
+    def test_fetch_failure_leaves_the_existing_book_untouched(self):
+        import requests
+
+        from library.catalog import BookEntry
+        from library.management.commands import import_ccel
+        from library.models import Chapter
+
+        author = Author.objects.create(slug="a-author", name="A Author")
+        book = Book.objects.create(
+            slug="testbook", language="en", author=author, title="T", is_published=True
+        )
+        Chapter.objects.create(book=book, order=1, title="One", body_html="<p>one</p>")
+        Chapter.objects.create(book=book, order=2, title="Two", body_html="<p>two</p>")
+
+        entry = BookEntry(
+            slug="testbook", title="T", author_slug="a-author", source="ccel", source_ref="x/y"
+        )
+        cmd = import_ccel.Command()
+
+        with (
+            mock.patch.object(
+                import_ccel,
+                "toc_parts",
+                return_value=[("Ch1", [("u1", "Ch1")]), ("Ch2", [("u2", "Ch2")])],
+            ),
+            mock.patch.object(import_ccel.time, "sleep"),
+            mock.patch.object(import_ccel, "fetch", side_effect=requests.RequestException("boom")),
+        ):
+            cmd._import_one(entry)
+
+        book.refresh_from_db()
+        self.assertTrue(book.is_published)  # not unpublished
+        self.assertEqual(book.chapters.count(), 2)  # chapters NOT wiped or renumbered
+
+
 class CcelPartSelectorTests(TestCase):
     """`BookEntry.part` — one work out of a Schaff volume.
 
