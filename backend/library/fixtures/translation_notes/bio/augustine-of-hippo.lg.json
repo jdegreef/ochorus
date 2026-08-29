@@ -1,0 +1,29 @@
+{
+  "kind": "bio",
+  "slug": "augustine-of-hippo",
+  "language": "lg",
+  "job_issue": 1204,
+  "pull_request": 1225,
+  "references": [
+    {
+      "reference": "Romans 13:14",
+      "status": "mined",
+      "source_file": "jesus-himself-2.lg.json",
+      "block_index": 22,
+      "why": "The verse that converted Augustine in the garden. The clause 'put ye on the Lord Jesus Christ' was recovered verbatim as «Twambale Mukama waffe Yesu Kristo» — it appears with this exact wording in two shipped Luganda books (also the-god-of-all-comfort.lg.json), which is what makes it safe to treat as settled corpus wording rather than one translator's choice. The book name follows the corpus: Abaruumi."
+    },
+    {
+      "reference": "Romans 13:13",
+      "status": "self_rendered",
+      "block_index": 22,
+      "why": "The first half of the garden text — 'not in rioting and drunkenness, not in chambering and wantonness, not in strife and envying' — is not quoted anywhere in our shipped Luganda corpus, so only the 13:14 clause could be mined. This half is the translator's rendering and is the main review task in this bio."
+    },
+    {
+      "reference": "Romans 14:1",
+      "status": "self_rendered",
+      "block_index": 22,
+      "why": "'him that is weak in the faith, receive' — the line Alypius applied to himself. The phrase 'weak in the faith' does occur in the-way-to-god.lg.json but in ordinary prose, not as this quotation, so it was rendered rather than mined."
+    }
+  ],
+  "note": "Scripture mined from our own shipped Luganda corpus, not from the mirrored Luganda Bible (OLCB, Biblica 2017, CC BY-SA), which is off-tradition from what this library ships — see the note on athanasius-of-alexandria.lg for the measurements. Most of this bio's quotations are from the Confessions and from Monica and Ambrose, not from the Bible, and are the translator's rendering; they are not listed here because they are not scripture and a reviewer checking verses should not have to wade through them."
+}
