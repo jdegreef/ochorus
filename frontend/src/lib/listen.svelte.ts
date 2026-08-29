@@ -18,6 +18,16 @@ export const RATES = [0.8, 1, 1.25, 1.5, 1.75] as const;
 
 const KEY = 'ochorus:listen';
 
+/**
+ * The voice to reach for, per language, when the listener hasn't chosen one —
+ * matched by name substring. English defaults to Google UK English Male
+ * (Chrome's warm British male voice); where it isn't installed (Safari, iOS,
+ * Firefox) we fall back to the top-ranked device voice.
+ */
+const PREFERRED_DEFAULTS: Record<string, RegExp> = {
+	en: /google uk english male/i
+};
+
 interface Stored {
 	rate: number;
 	voiceURI: string;
@@ -75,15 +85,18 @@ class Listen {
 	 * robotic legacy voices; this surfaces only the top few. "Best" heuristic:
 	 * prefer natural/neural cloud voices (Google, Neural, Premium, Enhanced,
 	 * WaveNet, Siri) and known-good system voices, then the platform default, then
-	 * cloud over local — deduped by name so a voice listed twice appears once.
+	 * cloud over local — deduped by name so a voice listed twice appears once. A
+	 * language's preferred default (`PREFERRED_DEFAULTS`) outranks everything, so
+	 * it leads the picker and is what `defaultVoice` returns.
 	 */
 	topVoices(langCode: string, max = 4): SpeechSynthesisVoice[] {
-		const prefix = langCode.toLowerCase().split('-')[0];
-		const matches = this.voices.filter((v) => v.lang.toLowerCase().startsWith(prefix));
+		const matches = this.#voicesForLang(langCode);
+		const preferred = PREFERRED_DEFAULTS[this.#langPrefix(langCode)];
 		const NATURAL = /google|neural|natural|premium|enhanced|wavenet|siri/i;
 		// Apple's higher-quality named voices (they don't advertise "natural").
 		const NAMED = /samantha|daniel|karen|moira|tessa|serena|allison|ava|zoe|nicky|aaron|fiona|rishi/i;
 		const score = (v: SpeechSynthesisVoice) =>
+			(preferred?.test(v.name) ? 10 : 0) +
 			(NATURAL.test(v.name) ? 5 : 0) +
 			(NAMED.test(v.name) ? 2 : 0) +
 			(v.default ? 1 : 0) +
@@ -93,6 +106,40 @@ class Listen {
 			if (!byName.has(v.name)) byName.set(v.name, v);
 		}
 		return [...byName.values()].slice(0, max);
+	}
+
+	/**
+	 * The voice to use for `lang` when the listener hasn't picked one: the
+	 * language's preferred default (e.g. Google UK English Male for English) if
+	 * the device has it, otherwise the top-ranked device voice. This is exactly
+	 * the head of `topVoices`, so the picker's first option and the reading
+	 * voice never disagree.
+	 */
+	defaultVoice(lang: string): SpeechSynthesisVoice | undefined {
+		return this.topVoices(lang, 1)[0];
+	}
+
+	/**
+	 * The voice to actually speak with: `preferURI` (the listener's saved choice
+	 * by default) if it's still present on the device, otherwise the language
+	 * default from `defaultVoice`.
+	 */
+	resolveVoice(lang = this.#lang, preferURI = this.voiceURI): SpeechSynthesisVoice | undefined {
+		if (preferURI) {
+			const chosen = this.voices.find((v) => v.voiceURI === preferURI);
+			if (chosen) return chosen;
+		}
+		return this.defaultVoice(lang);
+	}
+
+	#langPrefix(lang: string): string {
+		return lang.toLowerCase().split('-')[0];
+	}
+
+	/** The device voices whose BCP-47 tag falls under `lang`'s base language. */
+	#voicesForLang(lang: string): SpeechSynthesisVoice[] {
+		const prefix = this.#langPrefix(lang);
+		return this.voices.filter((v) => v.lang.toLowerCase().startsWith(prefix));
 	}
 
 	/**
@@ -166,7 +213,9 @@ class Listen {
 		this.stop();
 		const u = new SpeechSynthesisUtterance(sample);
 		u.rate = rate;
-		const voice = this.voices.find((v) => v.voiceURI === voiceURI);
+		// Honour the passed URI if it names a real voice; otherwise audition the
+		// language default so the preview matches what reading will actually use.
+		const voice = this.resolveVoice(this.#lang, voiceURI);
 		if (voice) {
 			u.voice = voice;
 			u.lang = voice.lang;
@@ -204,7 +253,7 @@ class Listen {
 		const u = new SpeechSynthesisUtterance(this.#paragraphs[index]);
 		u.rate = this.rate;
 		u.lang = this.#lang;
-		const voice = this.voices.find((v) => v.voiceURI === this.voiceURI);
+		const voice = this.resolveVoice(this.#lang);
 		if (voice) u.voice = voice;
 
 		u.onend = () => {
