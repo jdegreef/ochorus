@@ -24,7 +24,8 @@ from __future__ import annotations
 
 import time
 
-from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand, CommandError
+from django.db import transaction
 
 from library import english_audit
 from library.corrections import settled_chapter_body
@@ -194,8 +195,15 @@ would count it joy.</p>
 class Command(BaseCommand):
     help = "Build the curated Spurgeon prayer anthology (dev DB); then serialize the fixture."
 
+    @transaction.atomic  # a mid-run abort rolls back, never a partial book
     def handle(self, *args, **opts):
-        author = Author.objects.get(slug=AUTHOR_SLUG)
+        try:
+            author = Author.objects.get(slug=AUTHOR_SLUG)
+        except Author.DoesNotExist:
+            raise CommandError(
+                f"Author {AUTHOR_SLUG!r} is not in this database — run "
+                "`manage.py seed_if_empty` first."
+            )
         # Content fields refresh on every rebuild; the workflow-owned fields
         # (source_type, is_published, sort_order) are create-only so a rebuild
         # can't walk back a review/unpublish (backend/CLAUDE.md).
@@ -237,8 +245,7 @@ class Command(BaseCommand):
             body = settled_chapter_body(SLUG, i, body)
             wc = word_count(body)
             if wc < 500:
-                self.stderr.write(self.style.ERROR(f"  {title!r}: only {wc} words — aborted ({url})"))
-                return
+                raise CommandError(f"{title!r}: only {wc} words — aborted ({url})")
             flag = "" if ref.startswith(want_ref) else f"  ⚠ ref {ref!r} != expected {want_ref!r}"
             Chapter.objects.create(book=book, order=i, title=title, body_html=body)
             self.stdout.write(f"  ch {i:2}: {title[:44]:44} {ref:22} {wc:>6} words{flag}")
