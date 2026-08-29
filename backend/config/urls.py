@@ -1,5 +1,6 @@
 """Top-level URL configuration for the Ochorus API."""
 
+from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
 
@@ -35,7 +36,6 @@ from library.admin_views import (
 )
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
     path("api/health/", health, name="health"),
     path("api/auth/me/", MeView.as_view(), name="me"),
     path("api/admin/stats/", AdminStatsView.as_view(), name="admin-stats"),
@@ -140,3 +140,13 @@ urlpatterns = [
     path("api/library/", include("library.urls")),
     path("api/reading/", include("reading.urls")),
 ]
+
+# Django's own admin is mounted only in local DEBUG. In production the admin
+# surface is the SPA dashboard, gated per-request by IsAdminEmail on the
+# api/admin/* views; Django's password login is a redundant, weaker second door
+# — unthrottled, no lockout, no 2FA — and mounting it on the public API origin
+# is a standing brute-force target that bypasses the whole Supabase/allowlist
+# model if a superuser is ever cracked. Kept in DEBUG, where clicking through
+# models by hand is genuinely useful.
+if settings.DEBUG:
+    urlpatterns.append(path("admin/", admin.site.urls))
