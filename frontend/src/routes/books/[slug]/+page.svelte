@@ -72,6 +72,21 @@
 				.replace('%name%', book.author.name)
 		).slice(0, 300)
 	);
+	// The <title> carries the words people actually type. It was
+	// "{title} — {author} — Ochorus", which names the book and says nothing about
+	// what you can do with it; the query patterns this page competes for are
+	// "<title> read online free" and "<title> by <author>". Localized, and each
+	// locale's wording is DERIVED from its own reviewed `book_meta_fallback`
+	// rather than newly translated — same vocabulary, "on Ochorus." traded for
+	// the site's "· Ochorus" title suffix.
+	//
+	// It runs long — about 73 characters for this book against a ~60 character
+	// display budget — and the ordering is the answer to that: title, author,
+	// then the qualifier, then the brand, so what truncates is the least
+	// load-bearing part. A truncated title still counts for relevance.
+	const titleTag = $derived(
+		t('book.titleTag').replace('%title%', book.title).replace('%name%', book.author.name)
+	);
 	// og:image must be raster — WhatsApp/Facebook/Twitter refuse SVG preview
 	// images — and it must carry the book's TITLE, since a preview card is often
 	// all a reader sees. Two covers can't stand in for themselves: a generated
@@ -123,7 +138,7 @@
 </script>
 
 <Seo
-	title="{book.title} — {book.author.name} — Ochorus"
+	title={titleTag}
 	{description}
 	{canonical}
 	{hreflang}

@@ -363,6 +363,7 @@
   "author_heading_books": "%name% — книги",
   "author_heading_sermons": "%name% — проповіді",
   "book_meta_fallback": "%title% — %name%. Читайте безкоштовно на Ochorus.",
+  "book_title_tag": "%title% — %name%. Читайте безкоштовно онлайн · Ochorus",
   "sermon_meta_fallback": "%title% — проповідь %name%.",
   "error_not_found_title": "Сторінку не знайдено",
   "error_generic_title": "Щось пішло не так",
