@@ -35,6 +35,7 @@ TOPICS = [
         [
             "the-inner-chamber",
             "spurgeon-on-prayer",
+            "a-short-and-easy-method-of-prayer",
             "lord-teach-us-to-pray-2",
             "let-us-pray-2",
             "prevailing-prayer",

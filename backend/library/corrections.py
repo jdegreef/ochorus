@@ -37,6 +37,31 @@ EXCLUDED_SLUGS: set[str] = {
 }
 
 CORRECTIONS: dict[str, dict] = {
+    "a-short-and-easy-method-of-prayer": {
+        # Marston's 1875 edition prints a 30–50-word analytical "argument" as
+        # each chapter heading (and the ALL-CAPS→Title-Case pass leaves the word
+        # after an em-dash lowercased: "Pray—prayer"). Replace with each
+        # chapter's own lead clause — faithful, and a readable TOC. Chapter 7's
+        # short "Mysteries"/"Virtue" sections merged in as <h3> subheads (under
+        # 300 words), so its title names the group.
+        "chapter_titles": {
+            3: "All Are Commanded to Pray",
+            4: "The First Degree of Prayer",
+            5: "The Second Degree: The Prayer of Simplicity",
+            6: "Abandonment to God",
+            7: "Suffering, Mysteries, and Virtue",
+            8: "Of Perfect Conversion",
+            9: "The Simple Presence of God",
+            10: "Rest in the Presence of God",
+            11: "Self-Examination and Confession",
+            12: "Distractions and Temptations",
+            13: "Prayer and Sacrifice",
+            14: "Prayer as Noble Action",
+            15: "Interior and Exterior Actions",
+            16: "A Word to Preachers",
+            17: "The Way to Divine Union",
+        },
+    },
     "the-life-of-trust": {
         # One chapter's Gutenberg divider heading is a stray page number
         # ("[364]") instead of the title; the real title sits in an <h3> at the
