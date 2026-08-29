@@ -17,6 +17,7 @@ Shape:
 from __future__ import annotations
 
 import re as _re
+from collections.abc import Sequence
 
 # Catalogue slugs to skip on a full import (e.g. duplicate/teen editions we don't
 # want in the library). An explicit `import_ochorus <slug>` still imports them.
@@ -225,7 +226,14 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 
 
 # --- Body-text corrections ------------------------------------------------------
-# Extraction artifacts inside chapter bodies that heuristics can't fix:
+# Defects inside chapter bodies that heuristics can't fix — mostly extraction
+# artifacts, but ALSO what the source transcription itself lost, where the fix
+# has to reach a deployed reader page. `source_fixes.py` is the usual home for a
+# source defect and is still right when the defect has propagated into other
+# languages; it is wrong here, because it reaches production only through a
+# hand-written migration and is not a root in `content_sources.json`, so a
+# repair there moves no content digest and the prerendered page keeps the old
+# prose. This table is a root and runs on every deploy.
 #
 #   dropcap_letters: {order: "G"} — the chapter's opening letter was an IMAGE
 #     drop cap in the source, so the text layer starts one letter short
@@ -234,6 +242,10 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 #     split off before punctuation: "blesse d!" → "blessed!"). Kept as literal
 #     pairs — no clever regex — so scripture citations like "Song i." are never
 #     touched. Verify each in context before adding.
+#   paragraph_breaks: [(tail, head)] — the source transcription ran one
+#     paragraph into the one before it, and the break is put back between these
+#     two exact strings ("…their own experience." / "Alas!"). Not a
+#     `replacements` pair; `restore_paragraph_breaks` says why.
 #
 # Applied on every import AND backfillable over stored rows (management command
 # `apply_body_corrections`, plus a data migration for prod).
@@ -1201,6 +1213,45 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("'Rest in the lord, and wait", "'Rest in the Lord, and wait"),
         ],
     },
+    "the-reformed-pastor": {
+        # RESTORED PARAGRAPHING, not an OCR repair — this puts a block boundary
+        # back rather than mending a word. CCEL's transcription runs five of
+        # chapter 4's paragraphs into the one before them, leaving 7,689 words in 19
+        # blocks — 405 to a block against a corpus median of 92, which is what
+        # `english_audit._lost_paragraphing` flags. (The defect long predates
+        # the finding: it sat at ~385 until #1189 removed the heading that
+        # restated the chapter's own title, and one block fewer put the mean
+        # over the bar.)
+        #
+        # Where a paragraph breaks is a judgement about the prose, so none of
+        # these five was guessed from block length: each was READ OFF THE SCAN
+        # of the edition this text is a transcription of — Brown's 1862 printing
+        # (archive.org `reformedpastor00baxtgoog`, section pages 19-46). Its OCR
+        # word coordinates carry the compositor's first-line indent, ~85 units
+        # against a body margin that varies by under ±15 on every page, so every
+        # paragraph opening in the section is legible; and the whole section
+        # holds exactly 23 of them. The five below are the ones the stored text
+        # had lost.
+        #
+        # The other long blocks stay whole because the scan shows them whole:
+        # "When man was made perfect" (577 words) and "Content not yourselves"
+        # (637) each run unbroken across three pages. Baxter writes long, and
+        # splitting to satisfy a mean would be inventing his paragraphing rather
+        # than restoring it. The stored text also carries one break the 1862
+        # printing does NOT have — before "When you are studying what to say to
+        # your people", which begins mid-line there — and it is left alone: this
+        # repair only puts back what was lost.
+        #
+        # Each seam carries the tail of the preceding sentence, so it matches
+        # its one site and nowhere else in the book.
+        "paragraph_breaks": [
+            ("riches of the gospel from their own experience.", "Alas!"),
+            ("will not do so small a matter to attain it.", "It is a palpable error"),
+            ("so much skill and zeal as to awake them!", "Moreover, what skill"),
+            ("and to the trouble of the Church?", "What skill is necessary to deal"),
+            ("one poor ignorant soul for his conversion!", "O brethren! do you not shrink"),
+        ],
+    },
 }
 
 # First lowercase letter opening the first paragraph of a body.
@@ -1251,6 +1302,33 @@ def rejoin_linebreak_hyphens(body_html: str) -> str:
     return _HYPHEN_LINEBREAK.sub(r"\1-", body_html)
 
 
+# How a restored break is spelled, matching the block separator the fixture
+# already uses between paragraphs. Named so the hygiene test can ask for the
+# applied spelling instead of restating it.
+PARAGRAPH_BREAK = "</p> <p>"
+
+
+def restore_paragraph_breaks(body_html: str, seams: Sequence[tuple[str, str]]) -> str:
+    """Split a run-together paragraph at each declared seam. Idempotent.
+
+    `body_html` ONLY, which is why this is not a `replacements` pair: a seam is
+    plain prose with no markup in it, so a pair spelling out "…experience." →
+    "…experience.</p> <p>" would match the DERIVED, tagless `body_text` just as
+    happily and write block tags into a field that must never hold any. The
+    escape hatch the other keys use — anchoring `old` on markup a tagless body
+    can never contain (`<p>Amajor`) — is not available mid-paragraph, so the
+    guard below stands in for it: no `</p>`, no paragraphs to restore.
+    `tests_english_audit.test_the_fixture_is_clean` is what feeds this function
+    `body_text`; production never needs that field corrected, because
+    `Chapter.save()` re-derives it from the HTML this has already fixed.
+    """
+    if not seams or "</p>" not in body_html:
+        return body_html
+    for tail, head in seams:
+        body_html = body_html.replace(f"{tail} {head}", f"{tail}{PARAGRAPH_BREAK}{head}")
+    return body_html
+
+
 def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
     """Apply a work's body corrections to one chapter's HTML. Idempotent.
 
@@ -1269,11 +1347,16 @@ def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
     With the rule first, it closed to "scales-only", the declared pair no longer
     matched, and the em dash was lost. A regression test has guarded that string
     since long before this rule existed, and it caught this.
+
+    Declared paragraph breaks run with the replacements, ahead of the rule, for
+    the same reason: a seam is exact prose, and the rule could move a hyphen
+    inside one out from under it.
     """
     entry = BODY_CORRECTIONS.get(slug)
     if entry:
         for old, new in entry.get("replacements", []):
             body_html = body_html.replace(old, new)
+        body_html = restore_paragraph_breaks(body_html, entry.get("paragraph_breaks", ()))
     body_html = rejoin_linebreak_hyphens(body_html)
     if not entry:
         return body_html

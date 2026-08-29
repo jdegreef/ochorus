@@ -437,7 +437,7 @@ class CorrectionsHygieneTests(SimpleTestCase):
         import json
 
         from library.content_fixtures import BOOKS_DIR, SERMONS_DIR
-        from library.corrections import BODY_CORRECTIONS
+        from library.corrections import BODY_CORRECTIONS, PARAGRAPH_BREAK
 
         corpus = "\n".join(
             json.dumps(json.loads(p.read_text(encoding="utf-8")), ensure_ascii=False)
@@ -446,10 +446,53 @@ class CorrectionsHygieneTests(SimpleTestCase):
         dead = [
             (slug, old)
             for slug, entry in BODY_CORRECTIONS.items()
-            for old, new in entry.get("replacements", ())
+            # A declared paragraph break has the same two states, spelled with
+            # the seam closed up (not yet applied) and split (applied).
+            for old, new in (
+                *entry.get("replacements", ()),
+                *(
+                    (f"{tail} {head}", f"{tail}{PARAGRAPH_BREAK}{head}")
+                    for tail, head in entry.get("paragraph_breaks", ())
+                ),
+            )
             if old not in corpus and new not in corpus
         ]
         self.assertEqual(dead, [], "BODY_CORRECTIONS entries matching nothing in the fixture")
+
+    def test_reformed_pastor_ch04_paragraphing_restored(self):
+        """The five paragraphs CCEL ran into the one before them.
+
+        Read off the 1862 scan's first-line indents, not chosen by block length
+        — see the `the-reformed-pastor` entry in `corrections.py`. Asserted
+        against the SHIPPED fixture because that is what the ratchet measures
+        and what a deployed database gets rewritten to. Only the openings and
+        the count: that the corrections are a no-op over this file is
+        `test_the_fixture_is_clean`'s job, and that the book audits clean is the
+        ratchet's — its baseline entry is removed in the same commit.
+        """
+        import json
+
+        from library.content_fixtures import book_fixture_path
+
+        records = json.loads(
+            book_fixture_path("the-reformed-pastor", "en").read_text(encoding="utf-8")
+        )
+        body = next(
+            r["fields"]["body_html"]
+            for r in records
+            if r["model"] == "library.chapter" and r["fields"]["order"] == 4
+        )
+        for opening in (
+            "<p>Alas! it is the common danger",
+            "<p>It is a palpable error of some ministers",
+            "<p>Moreover, what skill is necessary to defend",
+            "<p>What skill is necessary to deal in private",
+            "<p>O brethren! do you not shrink",
+        ):
+            self.assertIn(opening, body)
+        # 24 paragraphs: the scan's 23, plus the one break the stored text
+        # carries that the 1862 printing does not.
+        self.assertEqual(body.count("<p>"), 24)
 
 
 class EnglishAuditContractTests(SimpleTestCase):
