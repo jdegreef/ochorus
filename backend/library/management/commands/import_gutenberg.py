@@ -263,9 +263,11 @@ def extract_chapters(html: str) -> list[tuple[str, str]]:
                 merged[-1] = (pt, f"{pb}<h3>{t}</h3>{b}")
             continue
         merged.append((t, b))
-    # Drop the publisher's back catalogue, if any, off the end.
+    # Drop the publisher's back catalogue, if any, off the end. `cut` is falsy
+    # both when there is none and at index 0 — a whole work is never a catalogue,
+    # so 0 means leave it be, never slice the book to nothing.
     cut = _catalogue_start(merged)
-    return merged[:cut] if cut is not None else merged
+    return merged[:cut] if cut else merged
 
 
 class Command(BaseCommand):
