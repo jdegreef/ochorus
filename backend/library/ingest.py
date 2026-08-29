@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 from django.db import transaction
 
 from library.catalog import AUTHORS, BOOKS, BookEntry
-from library.corrections import apply_body_corrections, chapter_title_overrides
+from library.corrections import chapter_title_overrides, settled_chapter_body
 from library.models import Author, Book, Chapter
 
 # Re-exported so `from library.ingest import clean_fragment` keeps working —
@@ -447,8 +447,7 @@ def upsert_book(entry: BookEntry, sections: list[tuple[str, str]], language: str
         if not body or word_count(body) < 5:
             continue
         order += 1
-        body = strip_trailing_pagenum(body)
-        body = apply_body_corrections(entry.slug, order, body)
+        body = settled_chapter_body(entry.slug, order, body)
         # A per-book override is normalised the same way import_ochorus does, so
         # the same declared correction yields the same stored title on any source.
         override = title_overrides.get(order)

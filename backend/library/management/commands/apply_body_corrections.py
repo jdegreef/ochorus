@@ -20,8 +20,7 @@ from __future__ import annotations
 
 from django.core.management.base import BaseCommand
 
-from library.corrections import apply_body_corrections
-from library.ingest import strip_trailing_pagenum
+from library.corrections import settled_chapter_body, settled_sermon_body
 from library.models import Chapter, Sermon
 
 
@@ -44,12 +43,11 @@ class Command(BaseCommand):
             .iterator(chunk_size=100)
         ):
             slug = chapter.book.slug
-            new = strip_trailing_pagenum(chapter.body_html)
             # Unconditional: `apply_body_corrections` now carries the line-break
             # hyphen rejoin, which is a RULE and applies to every work, not only
             # the 22 with a hand-written entry. For a slug with no entry the rest
             # of the call is a no-op.
-            new = apply_body_corrections(slug, chapter.order, new)
+            new = settled_chapter_body(slug, chapter.order, chapter.body_html)
             if new != chapter.body_html:
                 chapter.body_html = new
                 chapter.save()
@@ -60,8 +58,7 @@ class Command(BaseCommand):
         for sermon in Sermon.objects.defer("body_text", "search_vector").iterator(
             chunk_size=100
         ):
-            # order=None: sermons have no chapters, so no drop-cap may apply.
-            new_html = apply_body_corrections(sermon.slug, None, sermon.body_html)
+            new_html = settled_sermon_body(sermon.slug, sermon.body_html)
             if new_html != sermon.body_html:
                 sermon.body_html = new_html
                 sermon.save()

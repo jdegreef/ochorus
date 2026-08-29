@@ -29,7 +29,7 @@ import requests
 from django.core.management.base import BaseCommand, CommandError
 
 from library import english_audit
-from library.corrections import apply_body_corrections
+from library.corrections import settled_sermon_body
 from library.ingest import clean_fragment, soup, word_count
 from library.management.commands.import_gutenberg import content_root
 from library.management.commands.import_web import NAV_TARGET
@@ -329,7 +329,7 @@ class Command(BaseCommand):
         # keyed by slug and sermons have slugs, so this reuses the book table
         # rather than inventing a second one. Re-applied on every import, so a
         # hand-edited fixture can't drift from what the importer produces.
-        body = apply_body_corrections(entry.slug, order=None, body_html=body)
+        body = settled_sermon_body(entry.slug, body)
 
         if entry.scripture_ref:
             scripture_ref = entry.scripture_ref
