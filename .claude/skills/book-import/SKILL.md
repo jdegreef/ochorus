@@ -567,7 +567,8 @@ into the catalog. Instead:
   `word_count`. Put `source_type`/`is_published`/`sort_order` in
   `create_defaults` only. Wrap `handle()` in `@transaction.atomic` and raise
   `CommandError` (not `return`) on a short body, so an abort can't leave a
-  partial book. `sort_order` isn't derivable from `BOOKS` — hardcode `max+1`.
+  partial book — and inside an `except` clause chain it `... from None`, or ruff
+  B904 fails CI. `sort_order` isn't derivable from `BOOKS` — hardcode `max+1`.
 - **Then run the standard new-book finish:** serialize the row to the fixture
   (Django serializer, `indent=1`, natural keys — NOT `json.dump(indent=1)`,
   which indents the top-level list and every sibling fixture does not);
