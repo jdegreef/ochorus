@@ -363,6 +363,7 @@
   "author_heading_books": "%name% Books",
   "author_heading_sermons": "%name% Sermons",
   "book_meta_fallback": "%title% by %name% — free to read on Ochorus.",
+  "book_title_tag": "%title% by %name% — read free online · Ochorus",
   "sermon_meta_fallback": "%title% — a sermon by %name%.",
   "error_not_found_title": "Page not found",
   "error_generic_title": "Something went wrong",
