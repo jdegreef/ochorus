@@ -184,12 +184,10 @@ class FixtureIntegrityTests(SimpleTestCase):
 
     def test_prose_rows_carry_a_word_count(self):
         # `word_count` drives the per-chapter reading-time estimate in the TOC
-        # drawer and the length sort on the books shelf, and NOTHING recomputes
-        # it after creation — `ingest.word_count` sets it once at import time,
-        # and no save() hook keeps it in step the way body_text is kept. So a
-        # row that arrived by any other route (a translation written straight to
-        # body_html, a queryset.update()) keeps its zero permanently, and the
-        # release backfill only repairs what already shipped.
+        # drawer and the length sort on the books shelf. `save()` derives it, but
+        # `loaddata` does not call `save()` — so a fixture row is exactly the
+        # case the model hook cannot cover, and a zero shipped here stays zero
+        # in every fresh build until the release backfill happens to catch it.
         #
         # 32 chapters shipped this way — all 20 of all-of-grace.es, all 11 of
         # prevailing-prayer.es, and one of the-inner-chamber.lg — so both
@@ -354,12 +352,12 @@ class SeedFieldCoverageTests(SimpleTestCase):
         from library.management.commands.seed_books import CHAPTER_FIELDS
         from library.models import Chapter
 
-        # body_text and search_vector are derived by save(); the seed must
-        # not set them directly. citations_indexed_at must stay unset so the
-        # index_citations release step scans freshly seeded chapters.
+        # body_text, word_count and search_vector are derived by save(); the
+        # seed must not set them directly. citations_indexed_at must stay unset
+        # so the index_citations release step scans freshly seeded chapters.
         expected = self._content_fields(
             Chapter,
-            exclude={"id", "book", "body_text", "search_vector",
+            exclude={"id", "book", "body_text", "word_count", "search_vector",
                      "citations_indexed_at", "created_at", "updated_at"},
         )
         self.assertEqual(set(CHAPTER_FIELDS), expected)
@@ -368,12 +366,16 @@ class SeedFieldCoverageTests(SimpleTestCase):
         from library.management.commands.seed_sermons import SERMON_FIELDS
         from library.models import Sermon
 
-        # preached_on is handled separately (date parsing); body_text and
-        # search_vector are derived.
+        # preached_on is handled separately (date parsing); body_text,
+        # word_count and search_vector are derived. A derived field listed here
+        # is not merely redundant: the seed compares it against the fixture, so
+        # it re-writes every row where the two disagree and save() derives the
+        # value straight back — see SeedSermonsTests.test_second_run_updates_nothing.
         expected = self._content_fields(
             Sermon,
             exclude={"id", "author", "slug", "language", "preached_on",
-                     "body_text", "search_vector", "created_at", "updated_at"},
+                     "body_text", "word_count", "search_vector",
+                     "created_at", "updated_at"},
         )
         self.assertEqual(set(SERMON_FIELDS), expected)
 

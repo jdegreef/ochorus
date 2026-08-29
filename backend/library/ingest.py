@@ -27,9 +27,16 @@ from library.sanitize import (  # noqa: F401
     clean_html,
 )
 
+# Same again for the word-count pair, which moved to library/text.py to sit
+# beside the other derivation from body_html.
+from library.text import text_of, word_count  # noqa: F401
+
 # The sanitizer and its allowlists now live in library/sanitize.py — the trust
 # boundary is security-critical enough to own a module, and models/commands need
-# to import it without dragging in this module's model dependencies.
+# to import it without dragging in this module's model dependencies. `text_of`
+# and `word_count` left for a second reason too: Chapter/Sermon.save() derives
+# the count now, and reaching THIS module from models.py would pull the catalog
+# and every importer into the graph the serializers reach (see tests_fixture).
 
 
 # A redundant "Chapter <n>." prefix (word / digit / roman numeral, any
@@ -223,14 +230,6 @@ def chapter_title(raw: str) -> str:
     """
     t = clean_title(raw)
     return "" if _BARE_CHAPTER.match(t) else t
-
-
-def text_of(html: str) -> str:
-    return _WS.sub(" ", re.sub(r"<[^>]+>", " ", html)).strip()
-
-
-def word_count(html: str) -> int:
-    return len(text_of(html).split())
 
 
 def is_front_matter(title: str) -> bool:
@@ -464,7 +463,6 @@ def upsert_book(entry: BookEntry, sections: list[tuple[str, str]], language: str
             order=order,
             title=final_title[:300],
             body_html=body,
-            word_count=word_count(body),
         )
     return book
 

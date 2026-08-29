@@ -247,9 +247,9 @@ class Migration0084BehaviourTests(TestCase):
             book=chapter.book, order=99, title="W", body_html=chapter.body_html
         )
         self.assertEqual(chapter.body_text, witness.body_text)
-        # `word_count` gets no witness: `save()` does not set it — that is what
-        # `backfill_word_count` exists for — so the import-time rule is the
-        # reference, and a witness row would only prove 0 == 0.
+        # `word_count` is checked against the rule rather than the witness: a
+        # migration runs on the HISTORICAL model, which has no save() and so no
+        # derivation, which is exactly why the repair has to do it by hand.
         self.assertEqual(chapter.word_count, word_count(chapter.body_html))
 
     @skipUnless(connection.vendor == "postgresql", "tsvector is a Postgres type")
@@ -349,10 +349,10 @@ class Migration0085Tests(TestCase):
         where nothing changed.
 
         Asserted on the QUERIES, not on a column. The first version of this
-        checked `word_count` survived — which `save(update_fields=[...])` never
-        writes on any path, so it passed with the skip-guard deleted and proved
-        nothing. Only a field `update_fields` carries can witness a save, and
-        the cheapest witness is that no UPDATE is issued.
+        checked `word_count` survived — which at the time no save() wrote, so it
+        passed with the skip-guard deleted and proved nothing. A column can only
+        witness a write the migration would actually make, and the cheapest
+        witness is that no UPDATE is issued at all.
         """
         self._chapter("<p>Settled.</p>", "Settled.")
 

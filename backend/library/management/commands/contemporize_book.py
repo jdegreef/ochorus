@@ -20,18 +20,12 @@ Usage:
 
 from __future__ import annotations
 
-import re
-
 import anthropic
 from django.core.management.base import BaseCommand, CommandError
 
 from library.contemporize import MODERN_LANGUAGE, modernize_chapter, modernize_light
 from library.models import Book, Chapter
 from library.sanitize import clean_fragment
-
-
-def _word_count(body_html: str) -> int:
-    return len(re.sub(r"<[^>]+>", " ", body_html).split())
 
 
 class Command(BaseCommand):
@@ -126,7 +120,6 @@ class Command(BaseCommand):
                 defaults={
                     "title": title[:300],
                     "body_html": body_html,
-                    "word_count": _word_count(body_html),
                 },
             )
             self.stdout.write(self.style.SUCCESS(f"  ✓ {title[:60]}"))

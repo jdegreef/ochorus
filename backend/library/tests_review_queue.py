@@ -87,7 +87,6 @@ class ReviewQueueTests(TestCase):
                 language=lang,
                 title=f"Possibilities {lang}",
                 body_html="<p>one</p><p>two</p>",
-                word_count=2,
                 source_type=st,
             )
         for lang, st in (

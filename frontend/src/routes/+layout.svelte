@@ -90,13 +90,28 @@
 	/** Reading surfaces pin their OWN bar to the top; see .appnav-static. */
 	const inReader = $derived(isReaderRoute($page.route.id));
 
-	// Publish the bar's height so the handful of pages with their own sticky
-	// sub-bar (search filters, the biographies index) can sit below it rather
-	// than under it. Measured rather than assumed: the bar wraps when the mobile
-	// drawer opens, and its height changes with the type scale.
+	// Publish the bar's RENDERED height so the handful of pages with their own
+	// sticky sub-bar (search filters, the biographies index) can sit below it
+	// rather than under it. Measured rather than assumed: the bar wraps when the
+	// mobile drawer opens, and its height changes with the type scale.
+	//
+	// This is a FACT about the nav, not a policy about who should clear it. It
+	// used to publish 0 on the reading routes — true there only because the nav
+	// is static and rides away with the scroll. In the reader's page-turn mode
+	// nothing scrolls, so it never rides away, and a consumer that trusted the 0
+	// pinned itself underneath a bar that was still sitting there. Whether to
+	// clear the nav depends on what the consumer is doing; the height doesn't.
+	// Focus mode is the one case where the height really is 0: the nav is not
+	// rendered at all.
 	let navH = $state(0);
 	$effect(() => {
 		if (!navEl) return;
+		// Measure once, synchronously, BEFORE observing. A ResizeObserver's first
+		// callback lands a frame late, so the reader's page-turn bar — which now
+		// starts at var(--appnav-h) — spent that frame at 0, drawn underneath the
+		// nav, and then jumped 56px down. Nobody sees a stale height here: an
+		// element that just rendered has its real one.
+		navH = Math.round(navEl.getBoundingClientRect().height);
 		const ro = new ResizeObserver(([entry]) => {
 			navH = Math.round(entry.target.getBoundingClientRect().height);
 		});
@@ -147,7 +162,7 @@
 	class="flex min-h-screen flex-col"
 	style="--reading-scale: {readerPrefs.scale}; --reading-measure: {MEASURE[
 		readerPrefs.measure
-	]}; --pw: {pageWidth.rem}rem; --appnav-h: {inReader ? 0 : navH}px"
+	]}; --pw: {pageWidth.rem}rem; --appnav-h: {readerUi.focus ? 0 : navH}px"
 >
 	<a href="#main" class="skip-link">{t('a11y.skipToContent')}</a>
 	{#if !readerUi.focus}
