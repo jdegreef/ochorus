@@ -450,6 +450,21 @@ dropped; chapters under 120 words are dropped as stubs.
   ("twentyone"→"twenty-one"). Scan for merges with a "digit-word glued to
   [a-z]" regex, but hand-filter — "eighteenth"/"understand" are real words.
   *(2026-07)*
+- **A Victorian edition's quotation marks OCR as guillemets `« »`.** The Patmore
+  Bernard scanned every quote as `«`/`»` (22 of them) — a mark that never occurs
+  legitimately in English, so map the pair to curly quotes in `corrections.py`
+  (`("« ", "“")`, `("«", "“")`, `("»", "”")`). `normalize_quotes.py` only touches
+  STRAIGHT quotes, so it leaves guillemets alone — they must be corrected before
+  it runs. *(on-loving-god, 2026-08)*
+- **A wrapped ALL-CAPS chapter heading leaves its tail as the first paragraph.**
+  When the printed heading runs across two OCR lines ("WHY WE OUGHT TO LOVE GOD,
+  AND HOW WE" / "OUGHT TO LOVE HIM."), `import_archive` takes the first line as
+  the title and the ALL-CAPS remainder becomes the opening `<p>`. Same shape as
+  the Guyon/Marston long headings: set a short `chapter_titles` lead clause and
+  strip the tail paragraph with a `BODY_CORRECTIONS` `("<p>TAIL.</p>", "")` per
+  chapter. Don't strip by a leading-ALL-CAPS regex — Victorian prose opens on a
+  small-caps word ("THOSE who…", "LET us…") that flattens to caps and would be
+  eaten. *(on-loving-god, 2026-08)*
 - **`regen_fixture.py` aborts with `N unexpected new field(s)`** — nothing to do
   with your import. Someone added a model field with a blank/false default, so
   dumpdata now materializes it on every older row while the committed fixtures
@@ -561,6 +576,21 @@ curl -s https://ccel.org/ccel/<ref>/<work>.i.html | sed 's/<[^>]*>/ /g' | grep -
 A translator's name with a 20th-century date means stop. Record the translator in
 the book's `subtitle` and `attribution` so the next person can see which edition
 this is without re-deriving it. *(Confessions, 2026-07)*
+
+**NO named translator is also a stop for a translated work.** CCEL's Bernard
+`bernard/loving_god` is a Fordham Internet Medieval Sourcebook e-text ("Made
+available… by Paul Halsall") with no translator or date anywhere — and the only
+modern edition it could be, Robert Walton's (Cistercian Fathers Series, 1970s),
+is in copyright. Unverifiable provenance is not clearance: fall back to a dated,
+pre-1929 edition you CAN name (the Patmore 1881/1884 translation on the Internet
+Archive, `saintbernardlove00bernuoft`, records NOT_IN_COPYRIGHT). *(On Loving
+God, 2026-08)*
+
+**A Gutenberg ebook id can be an AUDIOBOOK — no text to import.** `#21152` "On
+Loving God" is a LibriVox recording: its `/files/` holds only `m4b`/`mp3`/`ogg`
+zips, and every `import_gutenberg` fetch URL 404s. Before adding a Gutenberg
+`BookEntry`, open `gutenberg.org/ebooks/<id>` and confirm an HTML/txt format
+exists; a lone audiobook means look elsewhere for the text. *(2026-08)*
 
 **A curated ANTHOLOGY — one book compiled from many individual sermon pages
 across volumes — fits no single-work importer.** `import_ccel`/`import_web` each
