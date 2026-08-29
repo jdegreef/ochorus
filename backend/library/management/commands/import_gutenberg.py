@@ -185,6 +185,35 @@ def split_by_heading(root, tag) -> list[tuple[str, str]]:
     return out
 
 
+# 19th-century texts often close with the publisher's back catalogue — an imprint
+# page ("PUBLISHED BY GOULD AND LINCOLN … 12mo, cloth, $1.25") followed by more
+# priced-book pages. These carry the divider heading like a chapter but are not
+# the work. The one clean signal is the ALL-CAPS imprint: a book price ($x.xx) or
+# a binding word (octavo/quarto/cloth) each fire on real prose — a parable's
+# "$10.00", or Portuguese "décimo quarto versículo" — but "PUBLISHED BY <NAME>"
+# in caps does not. So the imprint marks where the catalogue BEGINS, and
+# everything from there to the end goes (the continuation pages have no imprint of
+# their own). Scanned only in the trailing sections, so an imprint quoted
+# mid-text can't truncate the book.
+_AD_IMPRINT = re.compile(r"PUBLISHED BY\s+[A-Z]")
+
+
+def _catalogue_start(sections: list[tuple[str, str]]) -> int | None:
+    """Index of the trailing publisher-catalogue's first section, or None.
+
+    A section BEGINS the catalogue only when the imprint stands at its head — the
+    whole section is the ad. A real chapter that merely appends a publisher notice
+    at its tail (some Gutenberg texts fold the ad into the last chapter) keeps its
+    prose and is left alone. Scanned only across the trailing sections, so an
+    imprint quoted mid-book can't truncate the work.
+    """
+    for i in range(max(0, len(sections) - 5), len(sections)):
+        head = re.sub(r"<[^>]+>", " ", sections[i][1])[:200]
+        if _AD_IMPRINT.search(head):
+            return i
+    return None
+
+
 _MONTHS = (
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December",
@@ -234,7 +263,9 @@ def extract_chapters(html: str) -> list[tuple[str, str]]:
                 merged[-1] = (pt, f"{pb}<h3>{t}</h3>{b}")
             continue
         merged.append((t, b))
-    return merged
+    # Drop the publisher's back catalogue, if any, off the end.
+    cut = _catalogue_start(merged)
+    return merged[:cut] if cut is not None else merged
 
 
 class Command(BaseCommand):

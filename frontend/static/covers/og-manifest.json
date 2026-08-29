@@ -914,6 +914,13 @@
 			"art": true,
 			"scrim": 0.85
 		},
+		"the-life-of-trust": {
+			"ground": "26c795b8ff1dc53e59b6c6ad4932ef76a192df61dda9d794901d88dcb7beca7b",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"the-normal-christian-life": {
 			"ground": "8bb2cd5bfa77bd37b5401ec9e9a3ae51a47520480d88b0b122813c7ce593a0c7",
 			"style": "house",

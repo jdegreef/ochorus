@@ -37,6 +37,14 @@ EXCLUDED_SLUGS: set[str] = {
 }
 
 CORRECTIONS: dict[str, dict] = {
+    "the-life-of-trust": {
+        # One chapter's Gutenberg divider heading is a stray page number
+        # ("[364]") instead of the title; the real title sits in an <h3> at the
+        # top of the body (see the matching BODY_CORRECTIONS entry that removes
+        # the now-duplicated heading). Every other chapter's title came through
+        # cleanly.
+        "chapter_titles": {23: "A New Victory of Faith"},
+    },
     "mortification-of-sin": {
         # CCEL's TOC titles these "Chapter I."…"Chapter XIV.", which the
         # numbering-cleanup leaves blank so the reader shows a bare "Chapter N"
@@ -251,6 +259,12 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 # `apply_body_corrections`, plus a data migration for prod).
 
 BODY_CORRECTIONS: dict[str, dict] = {
+    "the-life-of-trust": {
+        # The stray-page-number heading (see CORRECTIONS above) left the real
+        # title as an <h3> at the top of ch23's body, which now duplicates the
+        # chapter title. Every other chapter's body opens on its <h4> date line.
+        "replacements": [("<h3>A NEW VICTORY OF FAITH.</h3>", "")],
+    },
     "prayer-and-praying-men": {
         # Two words glued together in CCEL's own text (verified upstream, so
         # not something our cleaning introduced). Both produce a NON-word, and
