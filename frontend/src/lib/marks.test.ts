@@ -69,6 +69,27 @@ describe('sermon marks via the unified store (kind="sermon")', () => {
 	});
 });
 
+describe('deletion tombstones (cross-device loss #1)', () => {
+	it('records a tombstone for a removed mark and retains the entry', () => {
+		marks.load('humility', 2, 'en', 'book');
+		const id = marks.add([{ p: 0, s: 0, e: 5 }]);
+		marks.remove(id);
+		const entry = JSON.parse(localStorage.getItem(MARKS_KEY)!)['humility:2'];
+		// The entry survives even with no marks left, so the tombstone can ride on
+		// the next sync and stop a stale device resurrecting the highlight.
+		expect(entry).toBeTruthy();
+		expect(entry.m).toHaveLength(0);
+		expect(Object.keys(entry.d)).toContain(id);
+	});
+
+	it('does not tombstone on a plain add', () => {
+		marks.load('humility', 4, 'en', 'book');
+		marks.add([{ p: 0, s: 0, e: 5 }]);
+		const entry = JSON.parse(localStorage.getItem(MARKS_KEY)!)['humility:4'];
+		expect(entry.d).toBeUndefined();
+	});
+});
+
 describe('note lifecycle on the unified store', () => {
 	it('round-trips a note through setNote/getNote and clears it', () => {
 		marks.load('faith', SERMON_CHAPTER_ORDER, 'en', 'sermon');

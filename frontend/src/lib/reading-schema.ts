@@ -240,6 +240,13 @@ export const DEFAULT_HIGHLIGHT: HighlightColor = 'gold';
 /** All marks for one chapter. */
 export interface ChapterMarks {
 	m: Mark[];
+	/**
+	 * Deletion tombstones: `{ group id -> deleted-at ms }`. A removed mark is
+	 * recorded here and sent with every sync so the server (which now unions
+	 * marks instead of replacing) can't let a stale device resurrect it. Absent
+	 * when the chapter has never had a deletion.
+	 */
+	d?: Record<string, number>;
 }
 
 /** `workKey(kind, slug, order)` -> ChapterMarks. */

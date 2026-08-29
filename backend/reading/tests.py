@@ -5,8 +5,16 @@ from rest_framework.test import APIClient
 
 from accounts.models import UserProfile
 
-from .marks import MAX_LANG_LEN, clean_mark_list, from_legacy, merge_mark_lists
+from .marks import (
+    MAX_LANG_LEN,
+    clean_mark_list,
+    clean_tombstones,
+    from_legacy,
+    merge_mark_lists,
+    reconcile_marks,
+)
 from .models import ChapterMarks, Favorite, ReadingDay, ReadingProgress
+from .views import _now_ms
 
 User = get_user_model()
 
@@ -60,6 +68,90 @@ class ReadingSyncTests(TestCase):
 
         self.client.put("/api/reading/marks/humility/2/", {"marks": []}, format="json")
         self.assertEqual(ChapterMarks.objects.count(), 0)
+
+    def test_tombstone_put_preserves_another_devices_highlight(self):
+        # The cross-device loss bug: device A saves H1; device B, which never saw
+        # H1, saves only H2 with the new protocol (a `deleted` key present). The
+        # server unions, so H1 is NOT clobbered.
+        self.client.put(
+            "/api/reading/marks/humility/3/",
+            {"marks": [mark(1, 0, 5, id="A1")], "deleted": []},
+            format="json",
+        )
+        res = self.client.put(
+            "/api/reading/marks/humility/3/",
+            {"marks": [mark(2, 0, 5, id="B2")], "deleted": []},
+            format="json",
+        )
+        self.assertEqual({m["id"] for m in res.data["marks"]}, {"A1", "B2"})
+
+    def test_tombstone_put_deletes_only_the_marked_id(self):
+        # Two marks; deleting one via a tombstone removes just it and never
+        # resurrects it on a later stale re-push that still carries it.
+        now = _now_ms()
+        self.client.put(
+            "/api/reading/marks/humility/4/",
+            {"marks": [mark(1, 0, 5, id="A1"), mark(2, 0, 5, id="A2")], "deleted": []},
+            format="json",
+        )
+        res = self.client.put(
+            "/api/reading/marks/humility/4/",
+            {"marks": [mark(2, 0, 5, id="A2")], "deleted": [{"id": "A1", "at": now}]},
+            format="json",
+        )
+        self.assertEqual({m["id"] for m in res.data["marks"]}, {"A2"})
+        # A stale device re-pushes the whole old list — A1 must stay gone.
+        res = self.client.put(
+            "/api/reading/marks/humility/4/",
+            {"marks": [mark(1, 0, 5, id="A1"), mark(2, 0, 5, id="A2")], "deleted": []},
+            format="json",
+        )
+        self.assertEqual({m["id"] for m in res.data["marks"]}, {"A2"})
+
+    def test_tombstone_only_row_is_retained_not_deleted(self):
+        # Deleting the last mark leaves an empty row that still holds the tombstone
+        # (so a stale re-push can't bring the mark back), rather than dropping the
+        # row entirely as the legacy path does.
+        now = _now_ms()
+        self.client.put(
+            "/api/reading/marks/humility/5/",
+            {"marks": [mark(1, 0, 5, id="A1")], "deleted": []},
+            format="json",
+        )
+        self.client.put(
+            "/api/reading/marks/humility/5/",
+            {"marks": [], "deleted": [{"id": "A1", "at": now}]},
+            format="json",
+        )
+        row = ChapterMarks.objects.get(book_slug="humility", chapter_order=5)
+        self.assertEqual(row.marks, [])
+        self.assertEqual(row.deleted, {"A1": now})
+
+    def test_signin_merge_does_not_resurrect_a_deleted_mark(self):
+        # A reader deletes a highlight (server keeps the tombstone). Another device
+        # signs in still holding it locally and merges — it must stay deleted.
+        now = _now_ms()
+        self.client.put(
+            "/api/reading/marks/humility/6/",
+            {"marks": [mark(1, 0, 5, id="A1")], "deleted": []},
+            format="json",
+        )
+        self.client.put(
+            "/api/reading/marks/humility/6/",
+            {"marks": [], "deleted": [{"id": "A1", "at": now}]},
+            format="json",
+        )
+        state = self.client.post(
+            "/api/reading/merge/",
+            {
+                "marks": [
+                    {"book_slug": "humility", "chapter_order": 6, "marks": [mark(1, 0, 5, id="A1")]}
+                ]
+            },
+            format="json",
+        ).data
+        ch6 = [m for m in state["marks"] if m["chapter_order"] == 6]
+        self.assertEqual(ch6[0]["marks"], [])  # not resurrected
 
     def test_marks_preserve_highlight_colour(self):
         # A valid colour survives; an unknown one is dropped (default = gold).
@@ -308,6 +400,51 @@ class MarkHelpersTests(TestCase):
             [{"id": f"b{i}", "p": i, "s": 0, "e": 1} for i in range(10_000, 10_000 + MAX_MARKS_PER_CHAPTER)]
         )
         self.assertEqual(len(merge_mark_lists(a, b)), MAX_MARKS_PER_CHAPTER)
+
+    def test_reconcile_unions_marks_the_stale_pusher_never_saw(self):
+        # The core cross-device fix: device A's H1 is on the server; device B,
+        # which never synced it, pushes only its own H2. The union keeps both.
+        h1 = mark(1, 0, 5, id="A1")
+        h2 = mark(2, 0, 5, id="B2")
+        merged, tombs = reconcile_marks([h1], {}, [h2], {}, now_ms=1000)
+        self.assertEqual({m["id"] for m in merged}, {"A1", "B2"})
+        self.assertEqual(tombs, {})
+
+    def test_reconcile_deletes_by_tombstone(self):
+        # A delete rides in as a tombstone; the mark goes and the tombstone stays.
+        h1 = mark(1, 0, 5, id="A1")
+        merged, tombs = reconcile_marks([h1], {}, [], {"A1": 900}, now_ms=1000)
+        self.assertEqual(merged, [])
+        self.assertEqual(tombs, {"A1": 900})
+
+    def test_reconcile_suppresses_a_stale_devices_resurrection(self):
+        # Server already deleted A1 (tombstone). A stale device that still holds it
+        # re-pushes it in its mark list — it must NOT come back.
+        h1 = mark(1, 0, 5, id="A1")
+        merged, tombs = reconcile_marks([], {"A1": 900}, [h1], {}, now_ms=1000)
+        self.assertEqual(merged, [])
+        self.assertEqual(tombs, {"A1": 900})
+
+    def test_reconcile_keeps_a_delete_then_readd_of_the_same_range(self):
+        # One payload deletes A1 and re-highlights the same range as B1: the fresh
+        # mark wins (this push's deletion is applied to the server side first).
+        old = mark(1, 0, 5, id="A1")
+        new = mark(1, 0, 5, id="B1")
+        merged, _ = reconcile_marks([old], {}, [new], {"A1": 1000}, now_ms=1000)
+        self.assertEqual([m["id"] for m in merged], ["B1"])
+
+    def test_prune_drops_expired_tombstones(self):
+        from .marks import TOMBSTONE_TTL_MS, prune_tombstones
+
+        now = 10 * TOMBSTONE_TTL_MS
+        kept = prune_tombstones({"fresh": now - 1, "old": now - TOMBSTONE_TTL_MS - 1}, now)
+        self.assertEqual(set(kept), {"fresh"})
+
+    def test_clean_tombstones_accepts_list_or_dict(self):
+        self.assertEqual(clean_tombstones({"a": 5}), {"a": 5})
+        self.assertEqual(clean_tombstones([{"id": "a", "at": 5}]), {"a": 5})
+        self.assertEqual(clean_tombstones(["a"]), {"a": 0})  # bare id => "long ago"
+        self.assertEqual(clean_tombstones([{"at": 5}, 7, None]), {})  # malformed dropped
 
 
 class WorkKindTests(TestCase):

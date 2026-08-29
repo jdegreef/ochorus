@@ -21,7 +21,13 @@ from rest_framework.views import APIView
 from accounts.models import UserProfile
 from common.throttling import ScopedCacheThrottle
 
-from .marks import clean_mark_list, from_legacy, merge_mark_lists
+from .marks import (
+    clean_mark_list,
+    clean_tombstones,
+    from_legacy,
+    merge_mark_lists,
+    reconcile_marks,
+)
 from .models import (
     ChapterMarks,
     Favorite,
@@ -239,6 +245,10 @@ def _marks_from_payload(data) -> list[dict]:
     return from_legacy(data.get("highlights"), data.get("notes"))
 
 
+def _now_ms() -> int:
+    return int(datetime.now(UTC).timestamp() * 1000)
+
+
 class StateView(APIView):
     """The reader's entire synced state — every progress row and chapter's marks.
 
@@ -281,7 +291,16 @@ class ProgressView(APIView):
 
 
 class MarksView(APIView):
-    """Replace the reader's marks for one chapter (empty payload deletes them)."""
+    """Sync the reader's marks for one chapter.
+
+    A client that speaks the tombstone protocol (it sends a ``deleted`` list, even
+    an empty one) is UNIONED with the server row, so a highlight another device
+    added since this one last synced is never clobbered by a full-list push; that
+    client's own deletions ride in ``deleted``. A client that sends no ``deleted``
+    key is an older bundle that relies on replace-for-delete — it keeps the
+    previous blind-replace behaviour so its deletions still land. The compat
+    branch ages out with those bundles.
+    """
 
     permission_classes = [IsAuthenticated]
     throttle_classes = [_ReadingWriteThrottle]
@@ -298,24 +317,63 @@ class MarksView(APIView):
             return Response({"detail": "Unknown kind."}, status=400)
         marks = _marks_from_payload(data)
 
-        if not marks:
-            ChapterMarks.objects.filter(
-                profile=profile, kind=kind, book_slug=slug, chapter_order=order
-            ).delete()
-            return Response({"marks": []})
+        # Legacy client (no `deleted` key): blind replace, exactly as before — an
+        # empty list still means "delete this chapter's marks".
+        if not isinstance(data.get("deleted"), (list, dict)):
+            if not marks:
+                ChapterMarks.objects.filter(
+                    profile=profile, kind=kind, book_slug=slug, chapter_order=order
+                ).delete()
+                return Response({"marks": []})
+            obj, _ = ChapterMarks.objects.update_or_create(
+                profile=profile,
+                kind=kind,
+                book_slug=slug,
+                chapter_order=order,
+                defaults={
+                    "language": _lang(data.get("language")),
+                    "marks": marks,
+                    "highlights": [],
+                    "notes": {},
+                },
+            )
+            return Response(ChapterMarksSerializer(obj).data)
 
-        obj, _ = ChapterMarks.objects.update_or_create(
-            profile=profile,
-            kind=kind,
-            book_slug=slug,
-            chapter_order=order,
-            defaults={
-                "language": _lang(data.get("language")),
-                "marks": marks,
-                "highlights": [],
-                "notes": {},
-            },
-        )
+        # Tombstone protocol: lock the row so two devices' concurrent read-merge-
+        # write can't lose one another's marks, then reconcile.
+        incoming_tombs = clean_tombstones(data.get("deleted"))
+        with transaction.atomic():
+            row = (
+                ChapterMarks.objects.select_for_update()
+                .filter(profile=profile, kind=kind, book_slug=slug, chapter_order=order)
+                .first()
+            )
+            server_marks = (
+                (row.marks or from_legacy(row.highlights, row.notes)) if row else []
+            )
+            server_tombs = (row.deleted or {}) if row else {}
+            merged, tombs = reconcile_marks(
+                server_marks, server_tombs, marks, incoming_tombs, _now_ms()
+            )
+            # Keep an empty row alive while it still carries tombstones — dropping
+            # it would let a stale device re-push the deleted marks and win.
+            if not merged and not tombs:
+                if row:
+                    row.delete()
+                return Response({"marks": []})
+            obj, _ = ChapterMarks.objects.update_or_create(
+                profile=profile,
+                kind=kind,
+                book_slug=slug,
+                chapter_order=order,
+                defaults={
+                    "language": _lang(data.get("language")),
+                    "marks": merged,
+                    "deleted": tombs,
+                    "highlights": [],
+                    "notes": {},
+                },
+            )
         return Response(ChapterMarksSerializer(obj).data)
 
 
@@ -545,6 +603,7 @@ class MergeView(APIView):
         existing = {
             (m.kind, m.book_slug, m.chapter_order): m for m in profile.marks.all()
         }
+        now_ms = _now_ms()
         for row in incoming[:MAX_MERGE_ROWS]:
             if not isinstance(row, dict):
                 continue
@@ -557,13 +616,19 @@ class MergeView(APIView):
                 continue
             marks = _marks_from_payload(row)
             server = existing.get((kind, slug, order))
-            if server:
-                # A pre-conversion server row folds its legacy fields in too.
-                server_marks = server.marks or from_legacy(
-                    server.highlights, server.notes
-                )
-                marks = merge_mark_lists(server_marks, marks)
-            if not marks:
+            # A pre-conversion server row folds its legacy fields in too. Reconcile
+            # with tombstones so a highlight a reader deleted offline stays deleted
+            # instead of the union resurrecting it on sign-in.
+            server_marks = (
+                (server.marks or from_legacy(server.highlights, server.notes))
+                if server
+                else []
+            )
+            server_tombs = (server.deleted or {}) if server else {}
+            marks, tombs = reconcile_marks(
+                server_marks, server_tombs, marks, clean_tombstones(row.get("deleted")), now_ms
+            )
+            if not marks and not tombs:
                 continue
             ChapterMarks.objects.update_or_create(
                 profile=profile,
@@ -573,6 +638,7 @@ class MergeView(APIView):
                 defaults={
                     "language": _lang(row.get("language")),
                     "marks": marks,
+                    "deleted": tombs,
                     "highlights": [],
                     "notes": {},
                 },

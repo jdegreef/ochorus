@@ -143,6 +143,11 @@ class ChapterMarks(models.Model):
 
     # Text-range marks: [{"id", "p", "s", "e", "note"?}, ...] — see reading/marks.py.
     marks = models.JSONField(default=list)
+    # Deletion tombstones: {group_id: deleted_at_ms}. A mark removed on one device
+    # is recorded here so a stale device re-pushing the full list can't resurrect
+    # it (the live PUT unions marks now, so absence no longer means "deleted").
+    # See reading/marks.py (reconcile_marks) and backend/CLAUDE.md.
+    deleted = models.JSONField(default=dict)
     # Legacy paragraph-level fields, converted to `marks` by data migration
     # 0002 and no longer written; kept only so old rows remain inspectable.
     highlights = models.JSONField(default=list)

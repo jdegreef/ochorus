@@ -151,12 +151,22 @@ class ReadingSync {
 		});
 	}
 
-	pushMarks(kind: WorkKind, slug: string, order: number, marks: Mark[], language: string) {
+	pushMarks(
+		kind: WorkKind,
+		slug: string,
+		order: number,
+		marks: Mark[],
+		deleted: Record<string, number>,
+		language: string
+	) {
 		if (!this.signedIn || !browser) return;
 		this.#debounce(`m:${workKey(kind, slug, order)}`, () => {
 			apiFetch(`/api/reading/marks/${slug}/${order}/${this.#kindQuery(kind)}`, {
 				method: 'PUT',
-				body: JSON.stringify({ kind, language, marks })
+				// `deleted` is always present (even when empty): it is the signal that
+				// this client speaks the tombstone protocol, so the server unions
+				// instead of blind-replacing. Older bundles omit it and keep replace.
+				body: JSON.stringify({ kind, language, marks, deleted })
 			})
 				.then(() => this.#markSynced())
 				.catch(() => {});
@@ -246,6 +256,9 @@ class ReadingSync {
 						kind: parsed.kind,
 						book_slug: parsed.slug,
 						chapter_order: parsed.order,
+						// Carry tombstones into the sign-in reconcile so a highlight
+						// deleted offline stays deleted instead of the union resurrecting it.
+						deleted: entry.d ?? {},
 						...(Array.isArray(entry.m)
 							? { marks: entry.m }
 							: { highlights: legacy.h ?? [], notes: legacy.n ?? {} })

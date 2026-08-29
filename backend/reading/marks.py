@@ -34,6 +34,15 @@ MAX_ID_LEN = 64
 # A mark's edition tag ("en", "es", "en-modern"). Matches ChapterMarks.language.
 MAX_LANG_LEN = 10
 
+# Deletions are recorded as tombstones — {group_id: deleted_at_ms} — so a mark
+# removed on one device stays removed everywhere: a stale device that still holds
+# it and re-pushes the whole list can't resurrect it (the live PUT unions instead
+# of replacing, so absence alone no longer means "deleted"). Bounded like marks,
+# and pruned by age: a tombstone only needs to outlive the slowest un-synced
+# device, after which dropping it just risks re-importing a months-offline edit.
+MAX_TOMBSTONES_PER_CHAPTER = 500
+TOMBSTONE_TTL_MS = 1000 * 60 * 60 * 24 * 180  # 180 days
+
 
 def _int(value, default=-1) -> int:
     try:
@@ -130,3 +139,71 @@ def merge_mark_lists(server: list[dict], incoming: list[dict]) -> list[dict]:
     # abuse territory — beyond the cap — are the trailing ranges dropped. That
     # anti-abuse ceiling is deliberately preferred over an unbounded stored blob.
     return merged[:MAX_MARKS_PER_CHAPTER]
+
+
+def clean_tombstones(raw) -> dict[str, int]:
+    """A client-supplied deletion set → ``{group_id: deleted_at_ms}``.
+
+    Accepts a dict ``{id: at}``, a list of ids, or a list of ``{"id", "at"}``.
+    Anything malformed is dropped; a missing/invalid ``at`` becomes 0 (treated as
+    "long ago", so it prunes first). Bounded like the mark list.
+    """
+    items: list[tuple] = []
+    if isinstance(raw, dict):
+        items = list(raw.items())
+    elif isinstance(raw, list):
+        for entry in raw:
+            if isinstance(entry, str):
+                items.append((entry, 0))
+            elif isinstance(entry, dict):
+                items.append((entry.get("id"), entry.get("at")))
+    out: dict[str, int] = {}
+    for key, at in items:
+        if not isinstance(key, str) or not key:
+            continue
+        out[key[:MAX_ID_LEN]] = max(0, _int(at, default=0))
+        if len(out) >= MAX_TOMBSTONES_PER_CHAPTER:
+            break
+    return out
+
+
+def merge_tombstones(server: dict[str, int], incoming: dict[str, int]) -> dict[str, int]:
+    """Union two tombstone sets, keeping the newer ``deleted_at`` per id."""
+    out = dict(server)
+    for key, at in incoming.items():
+        if key not in out or at > out[key]:
+            out[key] = at
+    return out
+
+
+def prune_tombstones(tombs: dict[str, int], now_ms: int) -> dict[str, int]:
+    """Drop tombstones past the TTL, then cap to the newest MAX (keeps the set
+    from growing without bound under repeated highlight/delete churn)."""
+    live = {k: v for k, v in tombs.items() if v == 0 or now_ms - v < TOMBSTONE_TTL_MS}
+    if len(live) > MAX_TOMBSTONES_PER_CHAPTER:
+        newest = sorted(live.items(), key=lambda kv: kv[1], reverse=True)
+        live = dict(newest[:MAX_TOMBSTONES_PER_CHAPTER])
+    return live
+
+
+def reconcile_marks(
+    server_marks: list[dict],
+    server_tombs: dict[str, int],
+    incoming_marks: list[dict],
+    incoming_tombs: dict[str, int],
+    now_ms: int,
+) -> tuple[list[dict], dict[str, int]]:
+    """Tombstone-aware merge of one chapter's marks. Returns (marks, tombstones).
+
+    1. This push's own deletions remove the matching server marks first, so a
+       delete + re-highlight of the same range in one payload keeps the re-add.
+    2. Union the (remaining) server marks with the incoming ones by range —
+       nothing either side still holds is dropped (the cross-device fix).
+    3. Suppress any mark whose group id is tombstoned by EITHER side, so a stale
+       device re-pushing a mark someone else deleted can't resurrect it.
+    """
+    tombs = merge_tombstones(server_tombs, incoming_tombs)
+    kept_server = [m for m in server_marks if m.get("id") not in incoming_tombs]
+    merged = merge_mark_lists(kept_server, incoming_marks)
+    merged = [m for m in merged if m.get("id") not in tombs]
+    return merged, prune_tombstones(tombs, now_ms)
