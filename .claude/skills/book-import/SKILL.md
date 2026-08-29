@@ -286,6 +286,12 @@ dropped; chapters under 120 words are dropped as stubs.
   every import by both importer paths and backfillable over stored rows via
   `manage.py apply_body_corrections`. *(around-the-wicket-gate all 11 caps +
   13 OCR pairs across 6 books, 2026-07)*
+- **A chapter that lost its paragraphing** in the SOURCE transcription (not on
+  import) goes in the same table under `paragraph_breaks`, as `(tail, head)`
+  prose seams — a plain-text pair would also match the tagless `body_text`.
+  Find the breaks with the scan-indent method, never by block length: see the
+  english-qa skill's "Restoring lost paragraphing".
+  *(the-reformed-pastor ch04, 5 breaks, 2026-08)*
 - **Repeated book-title counts are NOT running headers by themselves** — Torrey
   writes "Baptism with the Holy Spirit" 27–39×/chapter as prose; "Jesus
   Himself" is the sermon's refrain. Confirm with inspect_pdf (isolated
