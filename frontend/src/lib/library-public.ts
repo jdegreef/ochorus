@@ -88,6 +88,7 @@ export interface BookDetail extends BookSummary {
 	 * carries them — a card emits no Person markup.
 	 */
 	author_same_as?: string[];
+	alternate_titles?: string[];
 	/** Original publication year of the source work; null when unknown. */
 	publication_year: number | null;
 	/** This row IS the Modern English edition (language en-modern). */

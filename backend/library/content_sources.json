@@ -27,6 +27,7 @@
     "library/corrections.py",
     "library/quote_seed.py",
     "library/curated_art.py",
+    "library/alternate_titles.py",
     "library/scripture.py",
     "library/scripture_graph.py",
     "library/readability.py",

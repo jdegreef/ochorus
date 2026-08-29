@@ -110,6 +110,10 @@
 			'@context': 'https://schema.org',
 			'@type': 'Book',
 			name: book.title,
+			// The names this same work is published and searched under. A reader
+			// looking for "A Divine Cordial" or "De Incarnatione" is looking for a
+			// book on this shelf; without these the page answers to one name only.
+			alternateName: book.alternate_titles?.length ? book.alternate_titles : undefined,
 			author: {
 				'@type': 'Person',
 				name: book.author.name,
@@ -195,6 +199,17 @@
 		<div class="flex-1">
 			<h1 class="text-h1" dir="auto">{book.title}</h1>
 			{#if book.subtitle}<p class="mt-1 text-h3 text-muted">{book.subtitle}</p>{/if}
+			<!-- The names this work is also published under. Shown, not merely marked
+			     up: a reader who searched "A Divine Cordial" and landed on a page
+			     headed "All Things for Good" needs to see, on arrival, that they are
+			     in the right place. Held to one line — it is confirmation, not a
+			     second title, and it sits above the author so it reads as part of
+			     naming the work rather than as a fact about it. -->
+			{#if book.alternate_titles?.length}
+				<p class="mt-1 text-small text-muted" dir="auto">
+					{t('book.otherTitles')}: {book.alternate_titles.join(' · ')}
+				</p>
+			{/if}
 			<!-- Separator as an expression, not literal text: the span's leading space
 			     sits at an {#if} boundary and gets compiler-trimmed, which rendered
 			     "Booth· 1829" with the space missing. -->
