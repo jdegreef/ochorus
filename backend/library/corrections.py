@@ -37,6 +37,26 @@ EXCLUDED_SLUGS: set[str] = {
 }
 
 CORRECTIONS: dict[str, dict] = {
+    "on-loving-god": {
+        # The Patmore edition prints a long ALL-CAPS "argument" as each chapter
+        # heading, wrapped across two OCR lines; the archive importer took the
+        # first line as the title and left the ALL-CAPS remainder as the opening
+        # paragraph (stripped in the matching BODY_CORRECTIONS entry). Titles
+        # here are each chapter's own lead clause, for a readable TOC.
+        "chapter_titles": {
+            1: "Why We Ought to Love God",
+            2: "God's Right to Our Love",
+            3: "The Christian's Greater Motive to Love",
+            4: "Who Finds Comfort in God",
+            5: "The Duty to Love God",
+            6: "A Summary",
+            7: "The Reward of Loving God",
+            8: "The First Degree of Love",
+            9: "The Second and Third Degrees of Love",
+            10: "The Fourth Degree of Love",
+            11: "Perfect Love After the Resurrection",
+        },
+    },
     "the-life-of-trust": {
         # One chapter's Gutenberg divider heading is a stray page number
         # ("[364]") instead of the title; the real title sits in an <h3> at the
@@ -259,6 +279,33 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 # `apply_body_corrections`, plus a data migration for prod).
 
 BODY_CORRECTIONS: dict[str, dict] = {
+    "on-loving-god": {
+        # Strip the ALL-CAPS heading-remainder paragraph the archive importer
+        # left at the top of nine chapters (the wrapped tail of the chapter
+        # title; see the chapter_titles entry). Chapters 6 and 9 open straight
+        # into prose and need no strip. Exact strings, so each matches once.
+        "replacements": [
+            ("<p>OUGHT TO LOVE HIM.</p>", ""),
+            ("<p>BECAUSE OF HIS GIFTS TO SOUL AND BODY. HOW THESE SHOULD BE "
+             "CONFESSED, AND NOT TURNED AGAINST HIM WHO GAVE THEM.</p>", ""),
+            ("<p>INFIDELS, TO LOVE GOD.</p>", ""),
+            ("<p>OF GOD ; AND WHO ARE FITTEST TO FEEL LOVE FOR HIM.</p>", ""),
+            ("<p>FOR CHRISTIANS.</p>", ""),
+            ("<p>GOD. THE HEART OF MAN IS NOT TO BE SATISFIED BY EARTHLY "
+             "THINGS.</p>", ""),
+            ("<p>US THE FIRST DEGREE OF LOVE.</p>", ""),
+            ("<p>ONLY FOR GOD.</p>", ""),
+            ("<p>AFTER THE GENERAL RESURRECTION.</p>", ""),
+            # Chapter 6 lost its opening drop-cap "I" ("Fateor" — "I confess").
+            ("<p>CONFESS that God deserves", "<p>I CONFESS that God deserves"),
+            # The 1884 edition's quotation marks OCR'd as guillemets throughout;
+            # they never occur legitimately in this English text, so map the pair
+            # to curly double quotes (drop the space the opener carried).
+            ("« ", "“"),
+            ("«", "“"),
+            ("»", "”"),
+        ],
+    },
     "the-life-of-trust": {
         # The stray-page-number heading (see CORRECTIONS above) left the real
         # title as an <h3> at the top of ch23's body, which now duplicates the

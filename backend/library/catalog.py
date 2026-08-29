@@ -159,6 +159,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "without ever asking anyone but God for money."
         ),
     ),
+    "bernard-of-clairvaux": AuthorEntry(
+        slug="bernard-of-clairvaux",
+        name="Bernard of Clairvaux",
+        birth_year=1090,
+        death_year=1153,
+        bio=(
+            "Cistercian abbot, reformer, and preacher of the twelfth century "
+            "whose writings on the love of God shaped medieval devotion and were "
+            "prized by the Reformers after him."
+        ),
+    ),
     "hudson-taylor": AuthorEntry(
         slug="hudson-taylor",
         name="Hudson Taylor",
@@ -418,6 +429,11 @@ BOOKS: list[BookEntry] = [
     BookEntry("the-life-of-trust", "The Life of Trust", "george-muller",
               "gutenberg", "27288",
               subtitle="The Lord's Dealings with George Müller", cover_color="#1e3a5f"),
+    BookEntry("on-loving-god", "On Loving God", "bernard-of-clairvaux",
+              "archive", "saintbernardlove00bernuoft",
+              part="A LITTLE WORK BY ST. BERNARD",
+              part_end="FRAGMENT BY ST. BERNARD",
+              subtitle="De Diligendo Deo", cover_color="#7a1f2b"),
     BookEntry("union-and-communion", "Union and Communion", "hudson-taylor",
               "ccel", "taylor_jh/union",
               subtitle="Thoughts on the Song of Solomon", cover_color="#862e9c"),
