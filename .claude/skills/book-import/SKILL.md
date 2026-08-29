@@ -279,6 +279,27 @@ dropped; chapters under 120 words are dropped as stubs.
   `ingest.strip_trailing_pagenum` runs on every import; requires terminal
   punctuation first so verse refs ("Psalm 145:7") and years are safe.
   *(till-he-come ch2–22, 2026-07)*
+- **Publisher back-catalogue imported as extra chapters at the end of a
+  Gutenberg book** ("Valuable Works", "Works for Church Members" — priced ad
+  pages: "PUBLISHED BY GOULD AND LINCOLN … 12mo, cloth, $1.25"). Dropped by
+  `import_gutenberg._catalogue_start`, which cuts from the first trailing section
+  whose HEAD carries an ALL-CAPS `PUBLISHED BY <name>` imprint to the end (the
+  continuation pages have no imprint of their own). **The clean signal is only
+  the imprint** — a bare price ($x.xx) fires on a parable's "$10.00", and a
+  binding word (octavo/quarto/cloth) on Portuguese "décimo quarto versículo", so
+  both were tried and cut. **Imprint-at-HEAD, not anywhere:** some texts fold the
+  ad into the LAST chapter's tail (`around-the-wicket-gate` ch11 ends "…PUBLISHED
+  BY THE American Tract Society"); cutting the whole section would delete a real
+  chapter, so only a section that BEGINS with the imprint counts, and the scan is
+  limited to the trailing ~5 sections. Regression-check any change here by
+  scanning the whole corpus for head-imprints (expect 0) and re-importing a
+  couple of Gutenberg books to confirm counts hold. *(the-life-of-trust, 2026-08)*
+- **A stray page-number divider heading ("[364]")** — one chapter's Gutenberg
+  chapter-divider heading was a bracketed page number, not the title, and the
+  real title sat in an `<h3>` at the top of the body. Heuristics can't infer the
+  title from a page number; fix per-book: `corrections.chapter_titles` restores
+  the title, and a `BODY_CORRECTIONS` `replacements` pair drops the now-duplicated
+  `<h3>` so the body opens like its siblings. *(the-life-of-trust ch23, 2026-08)*
 - **OCR letter-splits** ("blesse d!", "lif e.", "conversatio n.") and
   **image-drop-cap first letters** lost from the text layer: recorded as
   explicit literal pairs / letters in `corrections.py` `BODY_CORRECTIONS`
