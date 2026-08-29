@@ -1,3 +1,10 @@
+// prerender refresh 2026-08-29: four Luganda bios — e-m-bounds (#1201),
+// athanasius-of-alexandria (#1202), r-a-torrey (#1203), augustine-of-hippo
+// (#1204). Different cause from the touches below: these authors already
+// exist and their pages already prerender. What is new is the `lg`
+// AuthorTranslation, and the author pages are prerendered PER LOCALE, so
+// /lg/authors/<slug> keeps serving the English bio until this loader
+// changes and the reader rebuilds.
 // prerender refresh 2026-08-28: richard-sibbes (#1183), created with his book
 // by `seed_books` and so missed by the same build.
 // prerender refresh 2026-08-28: e-m-bounds (#1166). Same shape as the three

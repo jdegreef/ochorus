@@ -1,0 +1,17 @@
+{
+  "kind": "bio",
+  "slug": "athanasius-of-alexandria",
+  "language": "lg",
+  "job_issue": 1202,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Psalm 136",
+      "status": "mined",
+      "source_file": "prevailing-prayer.lg.json",
+      "block_index": 10,
+      "why": "The refrain the congregation answers with as the soldiers break in. Recovered verbatim from our own shipped Luganda corpus (2 Chronicles 20:21 quotes it there): «kubanga okusaasira kwe kubeerera emirembe gyonna». The English gives the psalm by number only, so no fuller text was needed."
+    }
+  ],
+  "note": "Scripture was NOT taken from the mirrored Luganda Bible. The only Luganda text on the ebible mirror is lug_bib (Open Luganda Contemporary Bible, Biblica 2017, CC BY-SA) and it is off-tradition from the Luganda this library already ships: our corpus tracks the KJV where OLCB paraphrases (Ps 119:11 «nkikwese» vs OLCB «Ntadde»; Prov 31:27 «amakubo» vs «empisa»). Pasting OLCB would have made this bio disagree with the 28 Luganda bios and 18 Luganda books already shipped, so wording was mined from our own corpus instead, the way the Swahili jobs do it. This bio quotes scripture only once; its other block quotations are Athanasius' own works (On the Incarnation, Festal Letter 39) and are the translator's rendering, not scripture."
+}

@@ -1,0 +1,9 @@
+{
+  "kind": "bio",
+  "slug": "e-m-bounds",
+  "language": "lg",
+  "job_issue": 1201,
+  "pull_request": null,
+  "references": [],
+  "note": "No scripture references: this biography quotes Bounds himself throughout (the blockquotes are from Power Through Prayer and from his last letter to Homer W. Hodge) and never quotes the Bible directly. The empty list is deliberate rather than padded — recording a reference the text does not quote would overstate what a reviewer has to check. Same policy as the rest of this batch: the only Luganda Bible on the ebible mirror (OLCB, Biblica 2017, CC BY-SA) is off-tradition from the Luganda this library ships, so nothing was pasted from it; wording would have been mined from our own corpus had any verse been quoted."
+}
