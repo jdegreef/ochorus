@@ -69,6 +69,18 @@ function readAll(): MarksStore {
 
 const writeAll = (store: MarksStore) => writeJSON(MARKS_KEY, store);
 
+// A deletion tombstone lives only long enough to outlast the slowest un-synced
+// device; past that, dropping it just risks re-importing a months-offline edit.
+// Mirrors reading/marks.py TOMBSTONE_TTL_MS.
+const TOMBSTONE_TTL_MS = 1000 * 60 * 60 * 24 * 180; // 180 days
+
+function pruneTombstones(t: Record<string, number>): Record<string, number> {
+	const now = Date.now();
+	const out: Record<string, number> = {};
+	for (const [id, at] of Object.entries(t)) if (now - at < TOMBSTONE_TTL_MS) out[id] = at;
+	return out;
+}
+
 export interface Segment {
 	p: number;
 	s: number;
@@ -111,7 +123,7 @@ class Marks {
 		if (this.#slug) this.#hydrate();
 	}
 
-	#persist() {
+	#persist(deletedId?: string) {
 		const store = readAll();
 		const key = workKey(this.#kind, this.#slug, this.#order);
 		// The chapter's OTHER editions share this entry and are not in `list`, so
@@ -120,13 +132,21 @@ class Marks {
 		// the same data loss by a quieter route.
 		const others = (store[key]?.m ?? []).filter((m) => !markInEdition(m, this.#language));
 		const next = [...others, ...this.list];
-		if (next.length === 0) delete store[key];
-		else store[key] = { m: next };
+		// Record the deletion as a tombstone (see reading-schema ChapterMarks.d):
+		// the server unions marks now, so a delete only sticks if it travels as a
+		// tombstone rather than as the mark's absence from the pushed list.
+		const tombs = pruneTombstones({
+			...(store[key]?.d ?? {}),
+			...(deletedId ? { [deletedId]: Date.now() } : {})
+		});
+		const hasTombs = Object.keys(tombs).length > 0;
+		if (next.length === 0 && !hasTombs) delete store[key];
+		else store[key] = hasTombs ? { m: next, d: tombs } : { m: next };
 		writeAll(store);
-		// The server row is per (kind, slug, order) and its PUT REPLACES the list,
-		// so it takes every edition's marks too — pushing `list` alone would drop
-		// the others from the account on the next highlight.
-		readingSync.pushMarks(this.#kind, this.#slug, this.#order, next, this.#language);
+		// Push the full per-(kind, slug, order) list (every edition — see above)
+		// plus the tombstones; the server reconciles by unioning marks and applying
+		// deletions, so a highlight another device just made is never clobbered.
+		readingSync.pushMarks(this.#kind, this.#slug, this.#order, next, tombs, this.#language);
 	}
 
 	/** Add a group of range segments (one selection) as a single mark unit. */
@@ -159,7 +179,7 @@ class Marks {
 	/** Remove every segment of a mark group. */
 	remove(id: string) {
 		this.list = this.list.filter((m) => m.id !== id);
-		this.#persist();
+		this.#persist(id);
 	}
 
 	/** The group id whose segments already cover this exact selection, if any. */
