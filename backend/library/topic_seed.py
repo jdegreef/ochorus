@@ -34,6 +34,7 @@ TOPICS = [
         "of prayer, from the secret place to prevailing intercession.",
         [
             "the-inner-chamber",
+            "spurgeon-on-prayer",
             "lord-teach-us-to-pray-2",
             "let-us-pray-2",
             "prevailing-prayer",
