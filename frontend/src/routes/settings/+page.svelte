@@ -250,7 +250,9 @@
 	// then show only the best few for the currently-selected language.
 	onMount(() => listen.init());
 	const voices = $derived(listen.supported ? listen.topVoices(lang.current, 4) : []);
-	// If the saved voice isn't among this language's picks, fall back to the first.
+	// If the saved voice isn't among this language's picks, fall back to the
+	// first — topVoices leads with the language default (Google UK English Male
+	// for English), so voices[0] is that default.
 	const voiceValue = $derived(
 		voices.some((v) => v.voiceURI === listen.voiceURI) ? listen.voiceURI : (voices[0]?.voiceURI ?? '')
 	);
