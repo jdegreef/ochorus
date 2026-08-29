@@ -570,6 +570,15 @@ class BookDetailSerializer(BookListSerializer):
     has_modern_edition = serializers.SerializerMethodField()
     available_languages = serializers.SerializerMethodField()
     artwork_credit = serializers.SerializerMethodField()
+    # The author's authoritative identifiers, for the Person inside this page's
+    # Book markup. NOT on AuthorSerializer, which draws cards: a card emits no
+    # Person markup, so putting them there would ship the same handful of URLs
+    # on all 130 rows of a shelf for nothing to read. Only the page that marks
+    # the author up needs them.
+    author_same_as = serializers.SerializerMethodField()
+
+    def get_author_same_as(self, obj):
+        return obj.author.same_as or []
 
     # How many related books to surface, and how much a shared topic counts
     # relative to sharing the author (a shared topic is the stronger signal).
@@ -582,7 +591,7 @@ class BookDetailSerializer(BookListSerializer):
             "description", "source_url", "pdf_url", "chapters",
             "publication_year", "attribution", "topics", "related",
             "difficulty", "is_modern_edition", "has_modern_edition",
-            "available_languages", "artwork_credit",
+            "available_languages", "artwork_credit", "author_same_as",
         ]
 
     def get_available_languages(self, obj):

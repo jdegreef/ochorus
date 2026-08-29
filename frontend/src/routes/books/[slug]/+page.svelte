@@ -113,14 +113,45 @@
 			author: {
 				'@type': 'Person',
 				name: book.author.name,
-				url: absUrl(localizeHref(`/authors/${book.author.slug}`))
+				url: absUrl(localizeHref(`/authors/${book.author.slug}`)),
+				// The identifiers the author page asserts. Without them this Person
+				// is a bare name and the book inherits none of the entity work done
+				// on /authors — the two say "Athanasius" and hope a search engine
+				// joins them up.
+				sameAs: book.author_same_as?.length ? book.author_same_as : undefined
 			},
 			description: book.description || undefined,
 			image: ogImage || undefined,
 			inLanguage: book.language,
 			url: canonical,
 			isAccessibleForFree: true,
-			numberOfPages: book.chapter_count,
+			// A digital edition, said plainly. It is also what distinguishes these
+			// from the print editions that dominate a title query.
+			bookFormat: 'https://schema.org/EBook',
+			// `numberOfPages: chapter_count` was here, and it was simply false —
+			// On the Incarnation has 57 chapters and nothing resembling 57 pages,
+			// and a page count is a physical fact this edition does not have.
+			// `wordCount` is the true measure of the same thing, is defined on
+			// CreativeWork, and the page already computes it for the reading time.
+			wordCount: totalWords || undefined,
+			// What the work is ABOUT, as opposed to what it is called — the topical
+			// shelves it belongs to, which the page has always rendered as chips
+			// and never told a machine.
+			about: book.topics?.length
+				? book.topics.map((t) => ({
+						'@type': 'Thing',
+						name: t.title,
+						url: absUrl(localizeHref(`/topics/${t.slug}`))
+					}))
+				: undefined,
+			// `isAccessibleForFree` states the fact; this is its verb. The whole
+			// book can be read here, now, without an account, and a ReadAction is
+			// how that is expressed to a machine rather than implied.
+			potentialAction: {
+				'@type': 'ReadAction',
+				target: absUrl(localizeHref(`/books/${book.slug}/1`)),
+				actionStatus: 'https://schema.org/PotentialActionStatus'
+			},
 			datePublished: book.publication_year ? String(book.publication_year) : undefined,
 			publisher: { '@type': 'Organization', name: 'Ochorus' }
 		})

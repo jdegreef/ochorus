@@ -82,6 +82,12 @@ export interface BookDetail extends BookSummary {
 	topics: TopicChip[];
 	related: BookSummary[];
 	difficulty: Difficulty;
+	/**
+	 * The author's authoritative identifiers (Wikipedia, Wikidata), for the
+	 * Person inside this page's Book markup. Only the book DETAIL payload
+	 * carries them — a card emits no Person markup.
+	 */
+	author_same_as?: string[];
 	/** Original publication year of the source work; null when unknown. */
 	publication_year: number | null;
 	/** This row IS the Modern English edition (language en-modern). */
