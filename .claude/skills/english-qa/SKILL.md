@@ -136,6 +136,11 @@ oracle, and it survives into archive.org's OCR coordinates.
        ],
    },
    ```
+   **Do not key the seams by chapter order** the way `dropcap_letters` is,
+   however tempting the neighbouring precedent. A seam identifies itself by its
+   prose, so leaving it unkeyed costs a few string scans over the book's other
+   chapters and survives a renumbering — which is precisely what happened to
+   this book when #1189 dropped a chapter's restated-title heading.
    `body_text` and `word_count` are unchanged by a pure re-paragraphing, so
    stored search vectors stay correct — no `backfill_search_vectors --all`.
 
