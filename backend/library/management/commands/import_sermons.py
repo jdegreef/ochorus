@@ -341,19 +341,24 @@ class Command(BaseCommand):
             if entry.source == "gutenberg"
             else entry.source_ref
         )
+        fields = {
+            "author": self._author(entry),
+            "title": entry.title,
+            "scripture_ref": scripture_ref,
+            "preached_on": preached_on,
+            "body_html": body,
+            "source_url": source_url,
+            "sort_order": SERMONS.index(entry),
+        }
         sermon, _ = Sermon.objects.update_or_create(
             slug=entry.slug,
             language="en",
-            defaults={
-                "author": self._author(entry),
-                "title": entry.title,
-                "scripture_ref": scripture_ref,
-                "preached_on": preached_on,
-                "body_html": body,
-                "source_url": source_url,
-                "sort_order": SERMONS.index(entry),
-                "is_published": True,
-            },
+            defaults=fields,
+            # is_published is workflow-owned once the sermon exists: an urgent
+            # unpublish (a copyright pull) happens directly in the DB, and
+            # re-asserting True on every re-import would silently resurrect it.
+            # CREATE-ONLY, matching seed_sermons.CREATE_ONLY_FIELDS.
+            create_defaults={**fields, "is_published": True},
         )
         self.stdout.write(
             self.style.SUCCESS(

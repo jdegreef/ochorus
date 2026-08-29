@@ -527,7 +527,7 @@ def chapterize(blocks: list[tuple[str, float]], body_size: float) -> list[tuple[
 
 
 @transaction.atomic
-def upsert(meta: dict, chapters: list[tuple[str, str]], sort_order: int) -> Book:
+def upsert(meta: dict, chapters: list[tuple[str, str]], sort_order: int) -> tuple[Book, bool]:
     author, _ = Author.objects.get_or_create(
         slug=slugify(meta["author"])[:120] or "ochorus",
         defaults={"name": meta["author"]},
@@ -550,12 +550,18 @@ def upsert(meta: dict, chapters: list[tuple[str, str]], sort_order: int) -> Book
         "is_published": bool(chapters),
         "sort_order": sort_order,
     }
-    book, _ = Book.objects.update_or_create(
+    book, created = Book.objects.update_or_create(
         slug=meta["slug"],
         language="en",
         defaults=fields,
         create_defaults={**fields, **create_only},
     )
+    # An empty chapter list means detection FAILED (a PDF layout change, a
+    # chapterizer regression) — never wipe an existing book's chapters over it,
+    # which would leave a published book with no content. A brand-new book was
+    # created unpublished (is_published=bool(chapters)) and has nothing to build.
+    if not chapters:
+        return book, created
     book.chapters.all().delete()
     overrides = chapter_title_overrides(meta["slug"])
     for order, (title, body) in enumerate(chapters, start=1):
@@ -564,7 +570,7 @@ def upsert(meta: dict, chapters: list[tuple[str, str]], sort_order: int) -> Book
         Chapter.objects.create(
             book=book, order=order, title=final[:300], body_html=body,
         )
-    return book
+    return book, created
 
 
 class Command(BaseCommand):
@@ -610,9 +616,13 @@ class Command(BaseCommand):
             self.stderr.write(self.style.ERROR(f"  PDF failed: {exc}"))
             return
         chapters = chapterize(blocks, body_size)
-        book = upsert(meta, chapters, sort_order)
+        book, created = upsert(meta, chapters, sort_order)
         if chapters:
             self.stdout.write(self.style.SUCCESS(f"  ✓ {book.chapter_count} chapters"))
+        elif created:
+            self.stderr.write(self.style.WARNING("  ⚠ no chapters detected (new book saved unpublished)"))
         else:
-            self.stderr.write(self.style.WARNING("  ⚠ no chapters detected (saved unpublished)"))
+            self.stderr.write(
+                self.style.WARNING("  ⚠ no chapters detected — kept the existing book unchanged")
+            )
         english_audit.report(self, english_audit.audit_book(book), book.slug)
