@@ -40,7 +40,7 @@ def drop_index_chapters(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("library", "0091_purpose_in_prayer_chapter_titles"),
+        ("library", "0092_strip_restated_chapter_headings"),
     ]
 
     operations = [
