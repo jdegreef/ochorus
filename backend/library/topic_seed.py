@@ -107,6 +107,7 @@ TOPICS = [
         "faith, not sight.",
         [
             "the-secret-of-guidance",
+            "the-life-of-trust",
             "days-of-heaven-upon-earth",
             "the-fourfold-gospel",
             "soar-like-the-eagle-3",
