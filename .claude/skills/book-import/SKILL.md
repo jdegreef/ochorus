@@ -541,6 +541,54 @@ A translator's name with a 20th-century date means stop. Record the translator i
 the book's `subtitle` and `attribution` so the next person can see which edition
 this is without re-deriving it. *(Confessions, 2026-07)*
 
+**A curated ANTHOLOGY — one book compiled from many individual sermon pages
+across volumes — fits no single-work importer.** `import_ccel`/`import_web` each
+take ONE `source_ref` (a work TOC or a single URL); a book gathering, say,
+twelve Spurgeon sermons from twelve different Pulpit volumes can't be a
+`catalog.BookEntry` without breaking that one-source invariant. Don't force it
+into the catalog. Instead:
+- **Seeding is fixture-driven, so no `catalog.BOOKS` entry is needed.**
+  `seed_books` reads `fixtures/content/books/<slug>.en.json`, not `BOOKS`, and
+  creates the book with its chapters on deploy. The fixture is the whole
+  deliverable; the catalog is just dev import-input.
+- **Write a one-purpose `build_<name>` management command** that holds the
+  ordered `(title, ccel_url, expected_ref)` list + an editorial intro as module
+  constants, and REUSES `import_sermons.extract(fetch(url))` for the clean CCEL
+  sermon body (masthead stripped, scripture kept as a `<blockquote>`).
+  `extract()` returns `(body, scripture_ref, preached_on)` — assert `body`'s ref
+  `startswith` your expected prefix to catch a wrong leaf URL (CCEL's scripRef is
+  sometimes terser than the verse: `1 John 3` for 3:22–24, `Jude` for 20).
+- **Store the SETTLED form.** Wrap each body in
+  `corrections.settled_chapter_body(slug, order, body)` (NOT bare
+  `apply_body_corrections`) — the deploy re-applies the settled form (+ trailing
+  page-number strip), so a fixture built without it churns on every seed. Create
+  chapters through `Chapter.objects.create` (per-row, so `save()` derives
+  `body_text`/`word_count`/`search_vector`); don't `bulk_create`, don't pass
+  `word_count`. Put `source_type`/`is_published`/`sort_order` in
+  `create_defaults` only. Wrap `handle()` in `@transaction.atomic` and raise
+  `CommandError` (not `return`) on a short body, so an abort can't leave a
+  partial book — and inside an `except` clause chain it `... from None`, or ruff
+  B904 fails CI. `sort_order` isn't derivable from `BOOKS` — hardcode `max+1`.
+- **Then run the standard new-book finish:** serialize the row to the fixture
+  (Django serializer, `indent=1`, natural keys — NOT `json.dump(indent=1)`,
+  which indents the top-level list and every sibling fixture does not);
+  `scripts/normalize_quotes.py <slug>` then `manage.py rederive_body_text
+  --write` (early CCEL volumes mix straight + curly quotes, tripping a
+  `tests_fixture` gate); `manage.py generate_covers <slug>` then
+  `cd frontend && npm run og:covers` for the required raster twin. The house
+  cover's emblem comes from the book's TOPIC (`topic_seed.py` +
+  `covers.emblem_for_book`) — add the slug to the fitting topic to get an emblem
+  (and the right shelf) rather than a blank ground.
+- **Faithful vs. defect:** early sermons (New Park Street era) genuinely run
+  long paragraphs and use running multi-paragraph quotes — `lost-paragraphing`
+  and `orphan-close-quote` on them are FALSE positives; baseline them with
+  `audit_english --update-baseline` (whole-corpus; diff the baseline JSON to
+  confirm only your work's entry moved). Fix only unambiguous OCR slips via
+  `corrections.py`.
+If a SECOND such anthology ever appears, THEN lift the URL list into a catalog
+sidecar consumed by a shared importer — one is bespoke, two is a pattern.
+*(Mighty Power in Prayer — 12 Spurgeon sermons on prayer, 2026-08)*
+
 **Vet US public-domain status by PUBLICATION year, not author death.** A work
 first published before 1929 is US-PD regardless of when the author died — and a
 long-lived author can have both PD and still-copyrighted books. Amy Carmichael

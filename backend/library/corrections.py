@@ -267,6 +267,20 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("religion isthat", "religion is that"),
         ],
     },
+    "spurgeon-on-prayer": {
+        # CCEL transcription slips in the printed Pulpit text, each unambiguous
+        # from context (verified in the sermon, not introduced by our cleaning):
+        #   Sis- ters  ch3  "my Brothers and Sis- ters" — a word split on a
+        #               line-break hyphen that survived into the transcription.
+        #   1 can say   ch9  "O Lord, 1 can say no more" — a digit-1 misread of
+        #               the pronoun "I" inside a quoted prayer.
+        #   Yet ,       ch11 "Yet , doubtless" — a stray space before the comma.
+        "replacements": [
+            ("Brothers and Sis- ters", "Brothers and Sisters"),
+            ("O Lord, 1 can say no more", "O Lord, I can say no more"),
+            ("Yet , doubtless", "Yet, doubtless"),
+        ],
+    },
     "all-of-grace": {
         # Four OCR slips in the English text, found while translating the book
         # to Hindi. All four are single occurrences and none changes meaning —
