@@ -148,6 +148,13 @@ services:
     # api.ochorus.com — already listed), update this line in the same change or
     # every API call fails CORS-style with a CSP violation.
     #
+    # ⚠️ The Supabase host is pinned to the exact project, NOT `*.supabase.co`:
+    # anyone can create a free Supabase project and receive traffic at their own
+    # `<ref>.supabase.co`, so a wildcard here would let an injected script POST
+    # the localStorage token to an attacker-controlled origin — defeating the one
+    # control this whole block exists for. Update the ref below if the project's
+    # PUBLIC_SUPABASE_URL ever changes, or login breaks with a CSP violation.
+    #
     # ⚠️ render.yaml changes need a manual Blueprint → Sync (gotcha #3) — this
     # will NOT take effect on the next auto-deploy.
     headers:
@@ -160,8 +167,8 @@ services:
           img-src 'self' data: blob: https:;
           font-src 'self';
           connect-src 'self' https://ochorus-api.onrender.com https://api.ochorus.com
-          https://*.supabase.co https://api.dictionaryapi.dev https://*.ingest.sentry.io
-          https://*.ingest.us.sentry.io;
+          https://eywunobxqijvwymdzlwy.supabase.co https://api.dictionaryapi.dev
+          https://*.ingest.sentry.io https://*.ingest.us.sentry.io;
           manifest-src 'self';
           worker-src 'self';
           media-src 'self';

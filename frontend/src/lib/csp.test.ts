@@ -139,6 +139,16 @@ describe('render.yaml security headers', () => {
 		expect(connect).toContain("'self'");
 	});
 
+	it('pins the Supabase host to the exact project, not a wildcard', () => {
+		// Anyone can create a free `<ref>.supabase.co`, so `*.supabase.co` would let
+		// an injected script POST the localStorage token to an attacker-controlled
+		// Supabase project — the exact exfiltration connect-src exists to stop.
+		// (The bare-`*` check above misses this: `https://*.supabase.co` !== '*'.)
+		const connect = directives(headers['Content-Security-Policy'])['connect-src'];
+		expect(connect.some((s) => s.includes('*.supabase.co'))).toBe(false);
+		expect(connect.some((s) => /^https:\/\/[a-z0-9]+\.supabase\.co$/.test(s))).toBe(true);
+	});
+
 	it('covers every host the app actually fetches', () => {
 		const connect = directives(headers['Content-Security-Policy'])['connect-src'];
 		const used = [...originsUsedInSource()];
