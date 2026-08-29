@@ -375,6 +375,14 @@ dropped; chapters under 120 words are dropped as stubs.
   now fails CI on any such mismatch, so a new entry can't reintroduce it — but
   when ADDING an author, take the slug from `authors.json` rather than inventing
   one. *(2026-07)*
+- **Adding the FIRST book for a biography-only author needs a `catalog.AUTHORS`
+  stub first.** Many authors have a full `bio_html` in `authors.json` but NO
+  entry in `catalog.AUTHORS` (they were biography-only). `upsert_book` opens with
+  `AUTHORS[entry.author_slug]`, so importing their first book `KeyError`s until
+  you add an `AuthorEntry`. Write a SHORT `bio` stub (one to three sentences —
+  `test_catalog_bios_stay_short_stubs` caps it); `authors.json` stays the source
+  of truth and the stub is create-only, so it never overwrites the real bio.
+  *(jeanne-guyon → A Short and Easy Method of Prayer, 2026-08)*
 - **Adding a book for an author who already exists in the DB with a scraped bio:**
   ~~Copy the existing bio verbatim into the new `AuthorEntry`.~~ **No longer
   needed — fixed at the root (PR #449).** `upsert_book` used to push the catalog
