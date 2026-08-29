@@ -725,7 +725,16 @@
 	<!-- Pinned to the top. In scroll mode it's `sticky` (rides the scroll, then
 	     sticks); in page mode nothing scrolls, so it's `fixed` — and crucially a
 	     `sticky` sibling makes Chromium drop the top line of the reader's later
-	     paged columns (a paint bug), which `fixed` avoids. -->
+	     paged columns (a paint bug), which `fixed` avoids.
+
+	     `fixed` measures from the VIEWPORT, though, and the global nav is
+	     `.appnav-static` here — in flow, at the top, and (since nothing scrolls
+	     in page mode) never going anywhere. So `top-0` parked this whole bar
+	     underneath it at z-10 vs the nav's z-40: every control in it, Contents
+	     and Text settings and Focus included, was invisible and unclickable at
+	     every viewport width. `.reader-chrome.fixed` below starts it beneath the
+	     nav instead. Scroll mode is untouched — there the nav really does ride
+	     away, and 0 is right. -->
 	<div
 		bind:this={chromeEl}
 		class="reader-chrome top-0 inset-x-0 z-10 border-b border-border bg-bg/90 backdrop-blur"
@@ -1037,7 +1046,10 @@
 	}
 	article.paged {
 		position: fixed;
-		top: var(--pgtop, 3.4rem);
+		/* --pgtop is the chrome's measured height; the nav sits above that again
+		   (see the bar's comment). Both are viewport-relative because this is
+		   `fixed`, so they add. */
+		top: calc(var(--appnav-h, 0px) + var(--pgtop, 3.4rem));
 		bottom: var(--pgbot, 3.1rem);
 		inset-inline: 0;
 		z-index: 5;
@@ -1052,6 +1064,10 @@
 	}
 	/* Sits below the columns (z 5) and the edge arrows (z 6), above the page, so
 	   the whole reading surface is one uniform shade. */
+	/* Page mode only: `sticky` already sits below the nav in flow. */
+	.reader-chrome.fixed {
+		top: var(--appnav-h, 0px);
+	}
 	.paged-backdrop {
 		position: fixed;
 		inset: 0;
