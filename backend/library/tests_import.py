@@ -810,7 +810,8 @@ class ReimportCreateOnlyTests(TestCase):
     def test_reimport_keeps_pulled_publish_state_and_source_type(self):
         from library.management.commands.import_ochorus import upsert
 
-        book = upsert(self._meta(), [("Ch1", "<p>a</p>")], sort_order=3)
+        book, created = upsert(self._meta(), [("Ch1", "<p>a</p>")], sort_order=3)
+        self.assertTrue(created)
         self.assertTrue(book.is_published)
         self.assertEqual(book.source_type, Book.SourceType.PUBLIC_DOMAIN)
 
@@ -821,15 +822,75 @@ class ReimportCreateOnlyTests(TestCase):
         book.sort_order = 99
         book.save(update_fields=["is_published", "source_type", "sort_order"])
 
-        again = upsert(
+        again, created = upsert(
             self._meta(title="Humility (revised)"), [("Ch1", "<p>b</p>")], sort_order=3
         )
+        self.assertFalse(created)
         self.assertEqual(again.pk, book.pk)
         self.assertFalse(again.is_published)  # not republished
         self.assertEqual(again.source_type, Book.SourceType.AI_REVIEWED)  # not re-typed
         self.assertEqual(again.sort_order, 99)  # not reshuffled
         self.assertEqual(again.title, "Humility (revised)")  # content DID refresh
         self.assertEqual(again.chapters.count(), 1)
+
+    def test_reimport_with_no_chapters_preserves_existing_book(self):
+        """A chapterize regression (empty result) on an existing book must NOT
+        wipe its chapters or touch its publish state — the pre-fix code deleted
+        every chapter and left the book published-but-empty (review #26, bug #6).
+        """
+        from library.management.commands.import_ochorus import upsert
+
+        book, _ = upsert(
+            self._meta(), [("Ch1", "<p>a</p>"), ("Ch2", "<p>b</p>")], sort_order=3
+        )
+        self.assertEqual(book.chapters.count(), 2)
+        self.assertTrue(book.is_published)
+
+        again, created = upsert(self._meta(), [], sort_order=3)
+        self.assertFalse(created)
+        self.assertEqual(again.pk, book.pk)
+        self.assertEqual(again.chapters.count(), 2)  # chapters NOT wiped
+        self.assertTrue(again.is_published)  # still published, unchanged
+
+    def test_first_import_with_no_chapters_saves_unpublished(self):
+        """A brand-new book whose detection yields nothing is created unpublished
+        (is_published=bool(chapters)) rather than shipping empty-but-live."""
+        from library.management.commands.import_ochorus import upsert
+
+        book, created = upsert(self._meta(slug="empty-one"), [], sort_order=4)
+        self.assertTrue(created)
+        self.assertFalse(book.is_published)
+        self.assertEqual(book.chapters.count(), 0)
+
+
+class SermonReimportCreateOnlyTests(TestCase):
+    """A sermon re-import must not resurrect one that was unpublished in prod
+    (a copyright pull). is_published is CREATE-ONLY, matching seed_sermons and
+    the book importer (review #26, bug #2)."""
+
+    def test_reimport_does_not_republish_a_pulled_sermon(self):
+        from library.management.commands import import_sermons
+        from library.sermon_catalog import SERMONS
+
+        entry = SERMONS[0]  # a real ccel entry so SERMONS.index(entry) resolves
+        body = "<p>" + " ".join(["word"] * 400) + "</p>"  # clears the 300-word floor
+        cmd = import_sermons.Command()
+
+        with mock.patch.object(import_sermons.time, "sleep"), \
+             mock.patch.object(import_sermons, "fetch", return_value="<html></html>"), \
+             mock.patch.object(import_sermons, "extract", return_value=(body, "Ps 1:1", None)):
+            cmd._import_one(entry)
+            sermon = Sermon.objects.get(slug=entry.slug, language="en")
+            self.assertTrue(sermon.is_published)
+
+            # Prod pulls it for a copyright complaint, directly in the DB.
+            sermon.is_published = False
+            sermon.save(update_fields=["is_published"])
+
+            cmd._import_one(entry)  # a routine re-import
+
+        sermon.refresh_from_db()
+        self.assertFalse(sermon.is_published)  # NOT resurrected
 
 
 class CcelPartSelectorTests(TestCase):
