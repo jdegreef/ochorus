@@ -1,6 +1,7 @@
 from django.db.models import Count, Sum
 from rest_framework import serializers
 
+from .alternate_titles import alternate_titles
 from .contemporize import MODERN_LANGUAGE
 from .curated_art import credit
 from .localization import language_from_request
@@ -576,9 +577,17 @@ class BookDetailSerializer(BookListSerializer):
     # on all 130 rows of a shelf for nothing to read. Only the page that marks
     # the author up needs them.
     author_same_as = serializers.SerializerMethodField()
+    # Other names this same work is published and searched under — see
+    # library/alternate_titles.py. Detail only, for the same reason as
+    # author_same_as: a card has no room to show them and no markup to carry
+    # them, so a shelf would ship the strings 130 times over for nothing.
+    alternate_titles = serializers.SerializerMethodField()
 
     def get_author_same_as(self, obj):
         return obj.author.same_as or []
+
+    def get_alternate_titles(self, obj) -> list[str]:
+        return alternate_titles(obj.slug, obj.language, obj.title)
 
     # How many related books to surface, and how much a shared topic counts
     # relative to sharing the author (a shared topic is the stronger signal).
@@ -592,6 +601,7 @@ class BookDetailSerializer(BookListSerializer):
             "publication_year", "attribution", "topics", "related",
             "difficulty", "is_modern_edition", "has_modern_edition",
             "available_languages", "artwork_credit", "author_same_as",
+            "alternate_titles",
         ]
 
     def get_available_languages(self, obj):
