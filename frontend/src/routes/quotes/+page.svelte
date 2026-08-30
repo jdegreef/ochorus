@@ -19,8 +19,9 @@
 	const title = 'Christian quotes, with their sources · Ochorus';
 	const description =
 		'Quotations from the classic Christian writers — Spurgeon, Andrew Murray, ' +
-		'Thomas à Kempis — each one traced to the book, chapter and paragraph it comes ' +
-		'from, and linked to the full text, free to read.';
+		'Thomas à Kempis, Augustine, John Wesley, Jonathan Edwards, E. M. Bounds — each ' +
+		'one traced to the book, chapter and paragraph it comes from, and linked to the ' +
+		'full text, free to read.';
 
 	const crumbs = [
 		{ name: 'Home', href: '/' },

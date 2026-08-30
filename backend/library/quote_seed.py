@@ -5,7 +5,7 @@ them: a chapter page is 1,900 words of Bunyan whatever else it carries, but a
 quote page IS its furniture. That is the shape search engines classify as a
 doorway when it is mass-produced, and the risk is not confined to the quote
 pages — scaled thin content is judged against a domain. The pilot shipped ONE
-author (Spurgeon) and waited; this is the considered scale-up to three, chosen
+author (Spurgeon) and waited; this is the considered scale-up to seven, chosen
 for depth of shelf and quotability, not a blanket rollout of all forty.
 Amy Carmichael was a fourth candidate, held back: her aphorisms live in *If*,
 which is not published, and a quote may only cite a live page.
@@ -46,6 +46,10 @@ from __future__ import annotations
 #: charles-h-spurgeon    — approved 2026-08-28, sixty.
 #: thomas-a-kempis       — approved 2026-08-30, thirty-six.
 #: andrew-murray         — approved 2026-08-30, twenty-seven.
+#: e-m-bounds            — approved 2026-08-30, twenty-eight.
+#: augustine-of-hippo    — approved 2026-08-30, thirteen.
+#: jonathan-edwards      — approved 2026-08-30, eleven.
+#: john-wesley           — approved 2026-08-30, eighteen.
 #:
 #: THIS ONLY EVER PUBLISHES, AT CREATION. `seed_quotes` reads it when it creates
 #: a row and never again, which is the same rule `is_published` and
@@ -56,7 +60,15 @@ from __future__ import annotations
 #: a published quotation, clear the flag in the database AND drop it here, which
 #: is the same two-sided rule authors.json already documents for a portrait.
 APPROVED = frozenset(
-    {"charles-h-spurgeon", "thomas-a-kempis", "andrew-murray"}
+    {
+        "charles-h-spurgeon",
+        "thomas-a-kempis",
+        "andrew-murray",
+        "e-m-bounds",
+        "augustine-of-hippo",
+        "jonathan-edwards",
+        "john-wesley",
+    }
 )
 
 #: (author slug, quotations). Source is a ("book-slug", chapter_order) pair or a
@@ -809,8 +821,444 @@ ANDREW_MURRAY = [
 ]
 
 
+E_M_BOUNDS = [
+    {
+        "slug": "e-m-bounds-3b245347",
+        "text": "Faith does the impossible because it brings God to undertake for us, and nothing is impossible with God.",
+        "chapter": ("necessity-of-prayer", 2),
+        "paragraph": 2,
+    },
+    {
+        "slug": "e-m-bounds-b174257b",
+        "text": "Christ holds Himself ready to supply exactly, and fully, all the demands of faith and prayer.",
+        "chapter": ("necessity-of-prayer", 3),
+        "paragraph": 7,
+    },
+    {
+        "slug": "e-m-bounds-6b8891e3",
+        "text": "Nothing distinguishes the children of God so clearly and strongly as prayer.",
+        "chapter": ("necessity-of-prayer", 7),
+        "paragraph": 4,
+    },
+    {
+        "slug": "e-m-bounds-49d3b925",
+        "text": "Nothing is too hard for prayer because nothing is too hard for God.",
+        "chapter": ("prayer-and-praying-men", 3),
+        "paragraph": 6,
+    },
+    {
+        "slug": "e-m-bounds-52b568c0",
+        "text": "The story of every great Christian achievement is the history of answered prayer.",
+        "chapter": ("purpose-in-prayer", 2),
+        "paragraph": 26,
+    },
+    {
+        "slug": "e-m-bounds-6e68a441",
+        "text": "No person is a soul-winner who is not an adept in the ministry of prayer.",
+        "chapter": ("purpose-in-prayer", 7),
+        "paragraph": 10,
+    },
+    {
+        "slug": "e-m-bounds-1f61d2a7",
+        "text": "The closet cannot be made holy to God when the life has not been holy to God.",
+        "chapter": ("purpose-in-prayer", 10),
+        "paragraph": 30,
+    },
+    {
+        "slug": "e-m-bounds-456fba5b",
+        "text": "Prayer is mighty in its operations, and God never disappoints those who put their trust and confidence in Him.",
+        "chapter": ("purpose-in-prayer", 11),
+        "paragraph": 14,
+    },
+    {
+        "slug": "e-m-bounds-b26355f0",
+        "text": "Every revival of which we have any record has been bathed in prayer.",
+        "chapter": ("purpose-in-prayer", 12),
+        "paragraph": 17,
+    },
+    {
+        "slug": "e-m-bounds-38b0ca28",
+        "text": "Faith in Christ is the basis of all working, and of all praying.",
+        "chapter": ("necessity-of-prayer", 2),
+        "paragraph": 29,
+    },
+    {
+        "slug": "e-m-bounds-170e43be",
+        "text": "Faith is not an aimless act of the soul, but a looking to God and a resting upon His promises.",
+        "chapter": ("necessity-of-prayer", 3),
+        "paragraph": 9,
+    },
+    {
+        "slug": "e-m-bounds-cc849a69",
+        "text": "Faith is not believing just anything; it is believing God, resting in Him, trusting His Word.",
+        "chapter": ("necessity-of-prayer", 3),
+        "paragraph": 9,
+    },
+    {
+        "slug": "e-m-bounds-d44f9cee",
+        "text": "To see God, to know God, and to live for God -- these form the objective of all true praying.",
+        "chapter": ("necessity-of-prayer", 5),
+        "paragraph": 33,
+    },
+    {
+        "slug": "e-m-bounds-ab7864b0",
+        "text": "The difficulty in prayer is not with faith, but with obedience, which is faith's foundation.",
+        "chapter": ("necessity-of-prayer", 11),
+        "paragraph": 14,
+    },
+    {
+        "slug": "e-m-bounds-7894b850",
+        "text": "No man can pray -- really pray -- who does not obey.",
+        "chapter": ("necessity-of-prayer", 11),
+        "paragraph": 16,
+    },
+    {
+        "slug": "e-m-bounds-ca009ef5",
+        "text": "The will must be surrendered to God as a primary condition of all successful praying.",
+        "chapter": ("necessity-of-prayer", 11),
+        "paragraph": 17,
+    },
+    {
+        "slug": "e-m-bounds-aac43fc2",
+        "text": "Prayer is not simply to get things from God, but to make those things holy, which already have been received from Him.",
+        "chapter": ("necessity-of-prayer", 13),
+        "paragraph": 31,
+    },
+    {
+        "slug": "e-m-bounds-927b8825",
+        "text": "The past has not exhausted the possibilities nor the demands for doing great things for God.",
+        "chapter": ("power-through-prayer", 20),
+        "paragraph": 8,
+    },
+    {
+        "slug": "e-m-bounds-07331d8e",
+        "text": "The name and honor of Jesus Christ, the advance of his cause, must be all in all.",
+        "chapter": ("power-through-prayer", 10),
+        "paragraph": 4,
+    },
+    {
+        "slug": "e-m-bounds-054f2705",
+        "text": "The number and efficiency of the labourers in God’s vineyard in all lands is dependent on the men of prayer.",
+        "chapter": ("purpose-in-prayer", 8),
+        "paragraph": 15,
+    },
+    {
+        "slug": "e-m-bounds-01f9f8d8",
+        "text": "Prayer is not a mere form of words; it is not just calling upon a Name.",
+        "chapter": ("necessity-of-prayer", 11),
+        "paragraph": 9,
+    },
+    {
+        "slug": "e-m-bounds-af08081e",
+        "text": "The one prominent characteristic of the experience into which believers are brought through prayer, is not a life of works, but of faith.",
+        "chapter": ("necessity-of-prayer", 3),
+        "paragraph": 30,
+    },
+    {
+        "slug": "e-m-bounds-bef0ccaf",
+        "text": "Love of ease, spiritual indolence, religious slothfulness, all operate against this type of petitioning.",
+        "chapter": ("necessity-of-prayer", 8),
+        "paragraph": 16,
+    },
+    {
+        "slug": "e-m-bounds-da0bf2bc",
+        "text": "To do God's will without demur, is the joy as it is the privilege of the successful praying-man.",
+        "chapter": ("necessity-of-prayer", 10),
+        "paragraph": 30,
+    },
+    {
+        "slug": "e-m-bounds-4945fb19",
+        "text": "The spirit which prompts a man to break one commandment is the spirit which may move him to break them all.",
+        "chapter": ("necessity-of-prayer", 10),
+        "paragraph": 12,
+    },
+    {
+        "slug": "e-m-bounds-2b2db6e0",
+        "text": "The Christian soldier is to pray at all seasons, and under all circumstances.",
+        "chapter": ("necessity-of-prayer", 12),
+        "paragraph": 18,
+    },
+    {
+        "slug": "e-m-bounds-aaca3882",
+        "text": "The entire life of a Christian soldier -- its being, intention, implication and action -- are all dependent on its being a life of prayer.",
+        "chapter": ("necessity-of-prayer", 12),
+        "paragraph": 30,
+    },
+    {
+        "slug": "e-m-bounds-056461e2",
+        "text": "Nothing short of being red hot for God, can keep the glow of heaven in our hearts, these chilly days.",
+        "chapter": ("necessity-of-prayer", 5),
+        "paragraph": 19,
+    },
+]
+
+AUGUSTINE = [
+    {
+        "slug": "augustine-of-hippo-01e56d20",
+        "text": "Thou awakest us to delight in Thy praise; for Thou madest us for Thyself, and our heart is restless, until it repose in Thee.",
+        "chapter": ("confessions", 1),
+        "paragraph": 1,
+    },
+    {
+        "slug": "augustine-of-hippo-71005631",
+        "text": "Too late loved I Thee, O Thou Beauty of ancient days, yet ever new!",
+        "chapter": ("confessions", 10),
+        "paragraph": 64,
+    },
+    {
+        "slug": "augustine-of-hippo-c389620c",
+        "text": "Thou enjoinest continency: give me what Thou enjoinest, and enjoin what Thou wilt.",
+        "chapter": ("confessions", 10),
+        "paragraph": 68,
+    },
+    {
+        "slug": "augustine-of-hippo-88e28a03",
+        "text": "By continency verily are we bound up and brought back into One, whence we were dissipated into many.",
+        "chapter": ("confessions", 10),
+        "paragraph": 68,
+    },
+    {
+        "slug": "augustine-of-hippo-6e758fea",
+        "text": "The mind commands the body, and it obeys instantly; the mind commands itself, and is resisted.",
+        "chapter": ("confessions", 8),
+        "paragraph": 32,
+    },
+    {
+        "slug": "augustine-of-hippo-5bdf6944",
+        "text": "Man himself is a great deep, whose very hairs Thou numberest, O Lord, and they fall not to the ground without Thee.",
+        "chapter": ("confessions", 4),
+        "paragraph": 36,
+    },
+    {
+        "slug": "augustine-of-hippo-28a0d308",
+        "text": "Let the restless, the godless, depart and flee from Thee; yet Thou seest them, and dividest the darkness.",
+        "chapter": ("confessions", 5),
+        "paragraph": 3,
+    },
+    {
+        "slug": "augustine-of-hippo-f39c2fe5",
+        "text": "The Way, the Saviour Himself, well pleased me, but as yet I shrunk from going through its straitness.",
+        "chapter": ("confessions", 8),
+        "paragraph": 1,
+    },
+    {
+        "slug": "augustine-of-hippo-b4abaa5a",
+        "text": "Nothing then of Thy Word doth give place or replace, because It is truly immortal and eternal.",
+        "chapter": ("confessions", 11),
+        "paragraph": 15,
+    },
+    {
+        "slug": "augustine-of-hippo-ae703f88",
+        "text": "When out of their order, they are restless; restored to order, they are at rest.",
+        "chapter": ("confessions", 13),
+        "paragraph": 18,
+    },
+    {
+        "slug": "augustine-of-hippo-74654bbf",
+        "text": "Let me know Thee, O Lord, who knowest me: let me know Thee, as I am known.",
+        "chapter": ("confessions", 10),
+        "paragraph": 1,
+    },
+    {
+        "slug": "augustine-of-hippo-c210876c",
+        "text": "To Thy grace I ascribe it, and to Thy mercy, that Thou hast melted away my sins as it were ice.",
+        "chapter": ("confessions", 2),
+        "paragraph": 21,
+    },
+    {
+        "slug": "augustine-of-hippo-8a53adb9",
+        "text": "Let my soul cleave unto Thee, now that Thou hast freed it from that fast-holding birdlime of death.",
+        "chapter": ("confessions", 6),
+        "paragraph": 14,
+    },
+]
+
+JONATHAN_EDWARDS = [
+    {
+        "slug": "jonathan-edwards-028e1a61",
+        "text": "Nothing can be invented that is a greater absurdity, than a morose, hard, close, high-spirited, spiteful, true Christian.",
+        "chapter": ("religious-affections", 22),
+        "paragraph": 18,
+    },
+    {
+        "slug": "jonathan-edwards-32a16695",
+        "text": "The kingdom of heaven is not to be taken but by violence.",
+        "chapter": ("religious-affections", 26),
+        "paragraph": 6,
+    },
+    {
+        "slug": "jonathan-edwards-4daf7d38",
+        "text": "The deceitfulness of the heart of man appears in no one thing so much as this of spiritual pride and self-righteousness.",
+        "chapter": ("religious-affections", 20),
+        "paragraph": 9,
+    },
+    {
+        "slug": "jonathan-edwards-12bd1ec0",
+        "text": "Nothing is more manifest in fact, than that the things of religion take hold of men's souls, no further than they affect them.",
+        "chapter": ("religious-affections", 2),
+        "paragraph": 39,
+    },
+    {
+        "slug": "jonathan-edwards-a32641a0",
+        "text": "The soul of a saint, by having something of God opened to sight, is convinced of much more than is seen.",
+        "chapter": ("religious-affections", 20),
+        "paragraph": 17,
+    },
+    {
+        "slug": "jonathan-edwards-35c8dd47",
+        "text": "The former rejoices in himself; self is the first foundation of his joy: the latter rejoices in God.",
+        "chapter": ("religious-affections", 16),
+        "paragraph": 20,
+    },
+    {
+        "slug": "jonathan-edwards-5d08473b",
+        "text": "The true beauty and loveliness of all intelligent beings does primarily and most essentially consist in their moral excellency or holiness.",
+        "chapter": ("religious-affections", 17),
+        "paragraph": 9,
+    },
+    {
+        "slug": "jonathan-edwards-f0750291",
+        "text": "The saint's affections begin with God; and self-love has a hand in these affections consequentially, and secondarily only.",
+        "chapter": ("religious-affections", 16),
+        "paragraph": 13,
+    },
+    {
+        "slug": "jonathan-edwards-1a52dfe1",
+        "text": "God has revealed no certain connection between salvation, and any qualifications in men, but only grace and its fruits.",
+        "chapter": ("religious-affections", 10),
+        "paragraph": 15,
+    },
+    {
+        "slug": "jonathan-edwards-7617f48e",
+        "text": "The saints desire the sincere milk of the word, not so much to testify God's love to them, as that they may grow thereby in holiness.",
+        "chapter": ("religious-affections", 25),
+        "paragraph": 8,
+    },
+    {
+        "slug": "jonathan-edwards-257aca58",
+        "text": "The subtlety of Satan appears in its height, in his managing of persons with respect to this sin.",
+        "chapter": ("religious-affections", 20),
+        "paragraph": 9,
+    },
+]
+
+JOHN_WESLEY = [
+    {
+        "slug": "john-wesley-8c6200bd",
+        "text": "Prayer is the lifting up of the heart to God: All words of prayer, without this, are mere hypocrisy.",
+        "chapter": ("sermons-on-several-occasions", 27),
+        "paragraph": 11,
+    },
+    {
+        "slug": "john-wesley-b0fcf5f2",
+        "text": "The way to hell has nothing singular in it; but the way to heaven is singularity all over.",
+        "chapter": ("sermons-on-several-occasions", 32),
+        "paragraph": 27,
+    },
+    {
+        "slug": "john-wesley-9fddda8a",
+        "text": "The righteousness of Christ is the whole and sole foundation of all our hope.",
+        "chapter": ("sermons-on-several-occasions", 21),
+        "paragraph": 42,
+    },
+    {
+        "slug": "john-wesley-60c79eda",
+        "text": "Faith is the condition, and the only condition, of sanctification, exactly as it is of justification.",
+        "chapter": ("sermons-on-several-occasions", 44),
+        "paragraph": 27,
+    },
+    {
+        "slug": "john-wesley-61081fe1",
+        "text": "God can give the end without any means at all; but you have no reason to think He will.",
+        "chapter": ("sermons-on-several-occasions", 38),
+        "paragraph": 44,
+    },
+    {
+        "slug": "john-wesley-9a985cd4",
+        "text": "Let not the thought of receiving more grace to-morrow, make you negligent of to-day.",
+        "chapter": ("sermons-on-several-occasions", 43),
+        "paragraph": 29,
+    },
+    {
+        "slug": "john-wesley-d93987cf",
+        "text": "No works are good, which are not done as God hath willed and commanded them to be done.",
+        "chapter": ("sermons-on-several-occasions", 6),
+        "paragraph": 32,
+    },
+    {
+        "slug": "john-wesley-cf00ad11",
+        "text": "Love has purified his heart from envy, malice, wrath, and every unkind temper.",
+        "chapter": ("plain-account-christian-perfection", 2),
+        "paragraph": 38,
+    },
+    {
+        "slug": "john-wesley-77e024db",
+        "text": "The heart has more heat than the eye; yet it cannot see.",
+        "chapter": ("plain-account-christian-perfection", 5),
+        "paragraph": 105,
+    },
+    {
+        "slug": "john-wesley-27045827",
+        "text": "Every new victory which a soul gains is the effect of a new prayer.",
+        "chapter": ("plain-account-christian-perfection", 5),
+        "paragraph": 165,
+    },
+    {
+        "slug": "john-wesley-b8fe8d3c",
+        "text": "The root of all religion is faith, without which it is impossible to please God.",
+        "chapter": ("sermons-on-several-occasions", 109),
+        "paragraph": 9,
+    },
+    {
+        "slug": "john-wesley-14ab445e",
+        "text": "Every action of a Christian that is good, is sanctified by the word and prayer.",
+        "chapter": ("sermons-on-several-occasions", 106),
+        "paragraph": 38,
+    },
+    {
+        "slug": "john-wesley-185b43a1",
+        "text": "Nothing is higher than this, but Christian love; the love of our neighbour, flowing from the love of God.",
+        "chapter": ("sermons-on-several-occasions", 92),
+        "paragraph": 24,
+    },
+    {
+        "slug": "john-wesley-3185ddc5",
+        "text": "The religion of Christ rises infinitely higher, and lies immensely deeper, than all these.",
+        "chapter": ("sermons-on-several-occasions", 8),
+        "paragraph": 8,
+    },
+    {
+        "slug": "john-wesley-b2f0969f",
+        "text": "A man may be in God’s favour though he feel sin; but not if he yields to it.",
+        "chapter": ("sermons-on-several-occasions", 14),
+        "paragraph": 54,
+    },
+    {
+        "slug": "john-wesley-0d8ca0c2",
+        "text": "The pure love of our neighbour, springing from the love of God, thinketh no evil, believeth and hopeth all things.",
+        "chapter": ("plain-account-christian-perfection", 3),
+        "paragraph": 246,
+    },
+    {
+        "slug": "john-wesley-f5f83dd2",
+        "text": "A man of a truly catholic spirit has not now his religion to seek.",
+        "chapter": ("sermons-on-several-occasions", 40),
+        "paragraph": 40,
+    },
+    {
+        "slug": "john-wesley-08527d5b",
+        "text": "The very same is the case with every soul that truly hungers and thirsts after righteousness.",
+        "chapter": ("sermons-on-several-occasions", 23),
+        "paragraph": 24,
+    },
+]
+
 QUOTES = {
     "charles-h-spurgeon": SPURGEON,
     "thomas-a-kempis": THOMAS_A_KEMPIS,
     "andrew-murray": ANDREW_MURRAY,
+    "e-m-bounds": E_M_BOUNDS,
+    "augustine-of-hippo": AUGUSTINE,
+    "jonathan-edwards": JONATHAN_EDWARDS,
+    "john-wesley": JOHN_WESLEY,
 }

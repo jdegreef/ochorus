@@ -73,7 +73,15 @@ class SeedDataTests(SimpleTestCase):
         self.assertEqual(set(QUOTES), set(APPROVED))
         self.assertEqual(
             set(QUOTES),
-            {"charles-h-spurgeon", "thomas-a-kempis", "andrew-murray"},
+            {
+                "charles-h-spurgeon",
+                "thomas-a-kempis",
+                "andrew-murray",
+                "e-m-bounds",
+                "augustine-of-hippo",
+                "jonathan-edwards",
+                "john-wesley",
+            },
         )
 
 
