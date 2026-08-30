@@ -64,6 +64,7 @@ TOPICS = [
         "going further in.",
         [
             "humility-2",
+            "on-loving-god",
             "the-christians-secret-of-a-happy-life-4",
             "purity-of-heart",
             "way-into-holiest",
