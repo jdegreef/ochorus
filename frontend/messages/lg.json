@@ -367,6 +367,7 @@
   "book_other_titles": "Amannya amalala",
   "book_about_work": "Ku kitabo kino",
   "book_scripture_treats": "Ebyawandiikibwa ekitabo kino bye kyogerako",
+  "book_opening_from": "Okuva mu %chapter%",
   "sermon_meta_fallback": "%title% — okubuulira kwa %name%.",
   "error_not_found_title": "Olupapula terulabise",
   "error_generic_title": "Waliwo ekitagenze bulungi",

@@ -367,6 +367,7 @@
   "book_other_titles": "Vichwa vingine",
   "book_about_work": "Kuhusu kitabu hiki",
   "book_scripture_treats": "Maandiko ambayo kitabu hiki hushughulikia",
+  "book_opening_from": "Kutoka %chapter%",
   "sermon_meta_fallback": "%title% — mahubiri ya %name%.",
   "error_not_found_title": "Ukurasa haukupatikana",
   "error_generic_title": "Kuna hitilafu",

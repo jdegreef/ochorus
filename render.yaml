@@ -129,6 +129,11 @@ services:
         - backend/library/scripture.py
         - backend/library/scripture_graph.py
         - backend/library/readability.py
+        # Same shape: the excerpt on every book page is chosen at serialize time
+        # by this module's rules, not stored anywhere. Widening APPARATUS or
+        # moving MAX_WORDS changes the opening paragraph 65 book pages show,
+        # while touching no fixture and no frontend path.
+        - backend/library/opening.py
         # Every field a prerendered page shows passes through here, so a new one
         # is new prose. #371 added `day_one` with no migration and still raced.
         # The cost is honest: ~17 of the last 300 commits touch this file and

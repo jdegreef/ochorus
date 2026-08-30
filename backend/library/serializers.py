@@ -16,6 +16,7 @@ from .models import (
     Topic,
     TopicBook,
 )
+from .opening import opening_excerpt
 from .scripture import book_of
 from .scripture_graph import treated_passages
 
@@ -587,12 +588,23 @@ class BookDetailSerializer(BookListSerializer):
     # see library/scripture_graph.treated_passages. Detail only: it costs two
     # queries, which is nothing on one page and 130 times nothing on a shelf.
     scripture = serializers.SerializerMethodField()
+    # The book's first paragraph of actual prose — see library/opening.py.
+    # Detail only, and it is the one field here that reads chapter BODIES, so a
+    # shelf carrying it would drag 130 books' HTML through the join.
+    opening = serializers.SerializerMethodField()
 
     def get_author_same_as(self, obj):
         return obj.author.same_as or []
 
     def get_alternate_titles(self, obj) -> list[str]:
         return alternate_titles(obj.slug, obj.language, obj.title)
+
+    def get_opening(self, obj) -> dict | None:
+        chapters = obj.chapters.order_by("order").values_list(
+            "order", "title", "body_html"
+        )
+        text, chapter = opening_excerpt(list(chapters))
+        return {"text": text, "chapter": chapter} if text else None
 
     def get_scripture(self, obj) -> list[dict]:
         # English only. The citation index is built from English bodies
@@ -616,7 +628,7 @@ class BookDetailSerializer(BookListSerializer):
             "publication_year", "attribution", "topics", "related",
             "difficulty", "is_modern_edition", "has_modern_edition",
             "available_languages", "artwork_credit", "author_same_as",
-            "alternate_titles", "about_html", "scripture",
+            "alternate_titles", "about_html", "scripture", "opening",
         ]
 
     def get_available_languages(self, obj):

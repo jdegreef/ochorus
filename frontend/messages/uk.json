@@ -367,6 +367,7 @@
   "book_other_titles": "Інші назви",
   "book_about_work": "Про цю книгу",
   "book_scripture_treats": "Місця Писання, які розглядає ця книга",
+  "book_opening_from": "З розділу «%chapter%»",
   "sermon_meta_fallback": "%title% — проповідь %name%.",
   "error_not_found_title": "Сторінку не знайдено",
   "error_generic_title": "Щось пішло не так",
