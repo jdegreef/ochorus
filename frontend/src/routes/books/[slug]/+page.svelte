@@ -359,6 +359,30 @@
 		</nav>
 	{/if}
 
+	<!-- The first taste of the prose itself. Everything else on this page is
+	     ABOUT the book — cover, chapter list, description, the About section —
+	     and a reader deciding whether to start a fourth-century treatise wants
+	     to know how it reads.
+
+	     Named with its chapter, because an unattributed paragraph leaves the
+	     reader unable to tell the opening of the book from something plucked
+	     out of the middle. Blockquote, not body text: it is the author's voice,
+	     not the page's, and the page has just been speaking in its own.
+
+	     Absent for three books whose front matter yields no clean prose. Server
+	     owns that judgement (library/opening.py); the page just renders what it
+	     is given. -->
+	{#if book.opening}
+		<figure class="mt-8 max-w-xl border-s-2 border-border ps-4">
+			<blockquote class="text-body leading-relaxed" dir="auto">
+				{book.opening.text}
+			</blockquote>
+			<figcaption class="mt-2 text-small text-muted" dir="auto">
+				{t('book.openingFrom').replace('%chapter%', book.opening.chapter)}
+			</figcaption>
+		</figure>
+	{/if}
+
 	<!-- Scripture this book treats. Derived from the book's own chapters rather
 	     than declared, which is why no other edition of the same public-domain
 	     text carries it — and it turns every book page into a way into the

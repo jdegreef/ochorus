@@ -100,6 +100,13 @@ export interface BookDetail extends BookSummary {
 	 * bodies, so it is empty elsewhere.
 	 */
 	scripture?: { reference: string; chapters: number; page: ScripturePageRef | null }[];
+	/**
+	 * The book's first paragraph of actual prose, and the chapter it came from
+	 * — see library/opening.py. Null when the front of the book yields nothing
+	 * clean (an editorial synopsis, a chapter argument, an absorbed running
+	 * head); the page simply shows no excerpt, which is the honest answer.
+	 */
+	opening?: { text: string; chapter: string } | null;
 	/** Original publication year of the source work; null when unknown. */
 	publication_year: number | null;
 	/** This row IS the Modern English edition (language en-modern). */

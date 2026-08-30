@@ -30,6 +30,7 @@
     "library/alternate_titles.py",
     "library/scripture.py",
     "library/scripture_graph.py",
+    "library/opening.py",
     "library/readability.py",
     "library/serializers.py"
   ],
