@@ -1226,6 +1226,17 @@ BODY_CORRECTIONS: dict[str, dict] = {
     # cars to hear, let him hear" (Matthew 11:15).
     "sermons-on-several-occasions": {
         "replacements": [("cars to hear", "ears to hear")],
+        # Wesley's Standard Sermons carry the 1872 editor's footnotes, and the
+        # importer doubled every marker and inlined every note (the same defect
+        # PR #1243 unwelded by hand elsewhere). 122 of them are a pure
+        # transcription stamp — "[text from the 1872 edition]" — welded into a
+        # "Sermon N" number-heading, saying nothing a reader wants. This flag
+        # runs `strip_transcription_footnotes`, which removes exactly those and
+        # nothing else. The genuine notes in this book (each sermon's "Preached
+        # at ... 1738" dateline, the series descriptions, the editor's
+        # commentary on the Great Assize) are left welded on purpose — they are
+        # content, and placing them where they read well is a separate pass.
+        "strip_transcription_footnotes": True,
     },
     "ten-commandments": {
         "replacements": [
@@ -1493,6 +1504,35 @@ def rejoin_linebreak_hyphens(body_html: str) -> str:
 PARAGRAPH_BREAK = "</p> <p>"
 
 
+#: A footnote whose marker the extractor DOUBLED and whose text it inlined into
+#: a heading, where the note is only a transcription-provenance stamp — which
+#: 1872 reprint the etext was keyed from. See the `welded-footnote` audit class
+#: and PR #1243 for the defect; this is the sub-case that is pure noise. The
+#: doubled SAME-numbered marker and the `</h2>` lookahead together mean this can
+#: only ever fire on such a heading — never on a real reference, an ordinal, or
+#: a note carrying content — so it strips the marker and the stamp and leaves
+#: the heading text. Opt-in per work (`strip_transcription_footnotes`), because
+#: "1872 edition" is specific to Wesley's Sermons and no global rule should scan
+#: every book for it. Genuine notes ("Preached at St. Mary\'s, Oxford, 1738")
+#: are deliberately NOT matched here — they are kept and re-placed by hand.
+_TRANSCRIPTION_FOOTNOTE = _re.compile(
+    r"\s*<sup>(\d+)</sup>\s*<sup>\1</sup>"
+    r"\s*[\[(]\s*text (?:from|of) (?:the )?1872 (?:edition|ed)\.?\s*[\])]"
+    r"\s*(?=</h2>)",
+    _re.IGNORECASE,
+)
+
+
+def strip_transcription_footnotes(body_html: str) -> str:
+    """Remove doubled-marker transcription stamps welded into headings. Idempotent.
+
+    `body_html` only, and safe on the tagless `body_text` besides: the pattern
+    is anchored on `<sup>` markup and an `</h2>` lookahead, neither of which a
+    stripped body carries, so it no-ops there.
+    """
+    return _TRANSCRIPTION_FOOTNOTE.sub("", body_html)
+
+
 def restore_paragraph_breaks(body_html: str, seams: Sequence[tuple[str, str]]) -> str:
     """Split a run-together paragraph at each declared seam. Idempotent.
 
@@ -1542,6 +1582,8 @@ def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
         for old, new in entry.get("replacements", []):
             body_html = body_html.replace(old, new)
         body_html = restore_paragraph_breaks(body_html, entry.get("paragraph_breaks", ()))
+        if entry.get("strip_transcription_footnotes"):
+            body_html = strip_transcription_footnotes(body_html)
     body_html = rejoin_linebreak_hyphens(body_html)
     if not entry:
         return body_html

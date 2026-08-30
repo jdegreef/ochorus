@@ -456,6 +456,62 @@ class LineBreakHyphenTests(SimpleTestCase):
         )
 
 
+class TranscriptionFootnoteTests(SimpleTestCase):
+    """`strip_transcription_footnotes` — the opt-in sub-case of the weld.
+
+    Wesley's Sermons weld a doubled-marker "[text from the 1872 edition]" stamp
+    into 122 sermon-number headings. This removes exactly those, and its whole
+    safety is that it fires ONLY on a doubled same-numbered marker whose note is
+    that stamp and which ends the heading. It must leave every genuine note
+    alone, because those are content a later pass will re-place, not delete.
+    """
+
+    def _strip(self, html):
+        from library.corrections import strip_transcription_footnotes
+
+        return strip_transcription_footnotes(html)
+
+    def test_removes_the_stamp_and_leaves_the_heading(self):
+        for note in (
+            "[text from the 1872 edition]",
+            "(text of the 1872 edition)",
+            "[text of the 1872 ed.]",
+            "[text from the 1872 Edition]",
+        ):
+            html = f"<h2>Sermon 7 <sup>15</sup><sup>15</sup>{note} </h2>"
+            with self.subTest(note=note):
+                self.assertEqual(self._strip(html), "<h2>Sermon 7</h2>")
+
+    def test_keeps_a_genuine_dateline_note(self):
+        """"Preached at ..." is content — this pass must not touch it."""
+        html = ("<h2>The Almost Christian <sup>7</sup><sup>7</sup>"
+                "Preached at St. Mary\u2019s, Oxford, on July 25, 1741. </h2>")
+        self.assertEqual(self._strip(html), html)
+
+    def test_keeps_a_series_description(self):
+        html = ("<h2>Fourth Series <sup>3</sup><sup>3</sup>Consisting of seven "
+                "discourses which were published by Mr. Wesley only.</h2>")
+        self.assertEqual(self._strip(html), html)
+
+    def test_needs_the_marker_doubled_with_the_same_number(self):
+        # A single marker is a correctly extracted reference.
+        html = "<h2>Sermon 7 <sup>15</sup>[text from the 1872 edition] </h2>"
+        self.assertEqual(self._strip(html), html)
+        # Two DIFFERENT numbers are two real markers, not a marker + label.
+        html2 = "<h2>Sermon 7 <sup>15</sup><sup>16</sup>[text from the 1872 edition] </h2>"
+        self.assertEqual(self._strip(html2), html2)
+
+    def test_only_fires_inside_a_heading(self):
+        """The `</h2>` lookahead keeps it off body prose, even if some
+        paragraph ever carried the same stamp."""
+        html = "<p>as noted<sup>4</sup><sup>4</sup>[text from the 1872 edition] the text reads</p>"
+        self.assertEqual(self._strip(html), html)
+
+    def test_is_idempotent(self):
+        once = self._strip("<h2>Sermon 7 <sup>15</sup><sup>15</sup>[text from the 1872 edition] </h2>")
+        self.assertEqual(self._strip(once), once)
+
+
 class CorrectionsHygieneTests(SimpleTestCase):
     def test_no_replacement_pair_is_dead(self):
         """Every repair must still refer to text that exists somewhere.
