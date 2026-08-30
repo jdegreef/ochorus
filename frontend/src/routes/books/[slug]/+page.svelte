@@ -359,6 +359,40 @@
 		</nav>
 	{/if}
 
+	<!-- Scripture this book treats. Derived from the book's own chapters rather
+	     than declared, which is why no other edition of the same public-domain
+	     text carries it — and it turns every book page into a way into the
+	     scripture graph, which until now was reachable only from chapter pages
+	     and the sitemap.
+
+	     Chips match the chapter page's scripture row exactly, including its
+	     fallback: a chip links to its scripture page when one exists, and to a
+	     search for the reference when the corpus floor withheld one — never to a
+	     page that was not built. Trailing slashes are load-bearing; the bare
+	     form costs a 301 (see lib/href.test.ts).
+
+	     English editions only; `scripture` is empty elsewhere because the
+	     citations behind it are English. -->
+	{#if book.scripture?.length}
+		<nav
+			class="mt-6 flex flex-wrap items-center gap-2"
+			aria-label={t('book.scriptureTreats')}
+		>
+			<span class="text-small text-muted">{t('book.scriptureTreats')}:</span>
+			{#each book.scripture as entry (entry.reference)}
+				<a
+					href={entry.page
+						? `/scripture/${entry.page.book}/${entry.page.chapter}/` +
+							(entry.page.verse ? `${entry.page.verse}/` : '')
+						: localizeHref(`/search?q=${encodeURIComponent(entry.reference)}`)}
+					class="rounded-full border border-border px-3 py-1 text-small text-muted hover:border-accent hover:text-accent hover:no-underline"
+				>
+					{entry.reference}
+				</a>
+			{/each}
+		</nav>
+	{/if}
+
 	<section class="mt-8">
 		<h2 class="mb-3 text-h3">{t('reader.contents')}</h2>
 		<ol class="divide-y divide-border">

@@ -366,6 +366,7 @@
   "book_title_tag": "%title% by %name% — read free online · Ochorus",
   "book_other_titles": "Other titles",
   "book_about_work": "About this book",
+  "book_scripture_treats": "Scripture this book treats",
   "sermon_meta_fallback": "%title% — a sermon by %name%.",
   "error_not_found_title": "Page not found",
   "error_generic_title": "Something went wrong",

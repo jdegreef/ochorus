@@ -366,6 +366,7 @@
   "book_title_tag": "%title% — %name% द्वारा, ऑनलाइन निःशुल्क पढ़ें · Ochorus",
   "book_other_titles": "अन्य शीर्षक",
   "book_about_work": "इस पुस्तक के बारे में",
+  "book_scripture_treats": "पवित्रशास्त्र के अंश जिन पर यह पुस्तक चलती है",
   "sermon_meta_fallback": "%title% — %name% का एक उपदेश।",
   "error_not_found_title": "पेज नहीं मिला",
   "error_generic_title": "कुछ गड़बड़ हो गई",

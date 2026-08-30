@@ -90,6 +90,16 @@ export interface BookDetail extends BookSummary {
 	author_same_as?: string[];
 	alternate_titles?: string[];
 	about_html?: string;
+	/**
+	 * The passages this book returns to most, derived from its chapters'
+	 * citations — see library/scripture_graph.treated_passages. `chapters` is
+	 * how many of the book's own chapters treat the passage, which is what the
+	 * list is ranked by. `page` is null when the corpus-wide floor withheld a
+	 * page; the server owns that floor, so only the server can say what is
+	 * linkable. English editions only — the citation index is built from English
+	 * bodies, so it is empty elsewhere.
+	 */
+	scripture?: { reference: string; chapters: number; page: ScripturePageRef | null }[];
 	/** Original publication year of the source work; null when unknown. */
 	publication_year: number | null;
 	/** This row IS the Modern English edition (language en-modern). */

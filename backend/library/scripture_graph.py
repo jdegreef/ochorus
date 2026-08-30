@@ -304,3 +304,107 @@ def pages_for(refs: list[str]) -> dict[str, dict | None]:
         else:
             out[ref] = None
     return out
+
+#: How many of a BOOK's own chapters must treat a passage before the book page
+#: lists it. Two, not the corpus's three: this is a different question. The
+#: corpus floors ask "do enough independent voices treat this to deserve a
+#: page"; this asks "does this book keep coming back here", and a work that
+#: returns to Romans 8 in two of its chapters genuinely does. One chapter is
+#: a mention, and mentions are what this section must not be full of.
+BOOK_PASSAGE_FLOOR = 2
+
+#: A row, not a list. Past eight the section stops saying "this is what the
+#: book is about" and starts being an index — and the ranking below is only
+#: trustworthy at the top, where the gaps between counts are real.
+BOOK_PASSAGES = 8
+
+
+def treated_passages(book_id: int) -> list[dict]:
+    """The passages one book returns to most, each with its page if it has one.
+
+    The book page's answer to "what scripture is this actually about" — derived
+    from the text rather than declared, which is why no reprint of the same
+    public-domain book can carry it.
+
+    Ranked by how many of THIS book's chapters treat a passage, not by how often
+    it is cited. Sets again, for the reason `bucket` uses them: a single chapter
+    quoting Romans 8:28 nine times is one chapter making one argument, and
+    counting the nine would let one insistent passage outrank a theme the book
+    actually returns to. Total citations break ties, so the more-worked of two
+    equally-spread passages leads.
+
+    GRAIN. A passage is reported at Bible-chapter grain unless the book's
+    treatment is concentrated on a single verse — every chapter that treats
+    Matthew 11 treating 11:29 — in which case the verse is the truer label, and
+    Murray on Humility is the case: a chapter-grain "Matthew 11" would blur what
+    the book keeps quoting.
+
+    The label is then taken FROM the resolved page whenever there is one, so it
+    can never promise a grain the link does not deliver. The two rules answer
+    different questions — this book's concentration, versus the corpus-wide
+    floor — and they disagree often enough to matter: "Luke 14:11" is
+    concentrated within Murray but sits under the verse floor across the
+    corpus, so it links to, and is now labelled, Luke 14.
+
+    LINKS. Whether a passage HAS a page is not this function's rule to invent —
+    it asks `pages_for`, which runs `bucket` exactly as `qualifying_pages` does.
+    A passage this book leans on may still have no page, because the floors are
+    about the corpus and one book is not a corpus; it is listed unlinked rather
+    than dropped, because it is true about the book either way, and a link to a
+    page that was never built is a 404 for the reader and a dead link for the
+    crawler.
+    """
+    # Materialised once: `bucket` consumes the iterable, and the tie-break needs
+    # a second pass over the same rows. Two queries here would be two chances to
+    # rank on data the buckets were not built from.
+    rows = list(
+        ChapterCitation.objects.filter(chapter__book_id=book_id).values_list(
+            "chapter_id", "start_verse_id", "end_verse_id"
+        )
+    )
+    by_verse, by_chapter = bucket(rows)
+    if not by_chapter:
+        return []
+
+    # Total citations per Bible chapter, for the tie-break only.
+    weight: dict[int, int] = {}
+    for _cid, start, _end in rows:
+        weight[start // 1000] = weight.get(start // 1000, 0) + 1
+
+    ranked = sorted(
+        (k for k, cids in by_chapter.items() if len(cids) >= BOOK_PASSAGE_FLOOR),
+        key=lambda k: (-len(by_chapter[k]), -weight.get(k, 0), k),
+    )[:BOOK_PASSAGES]
+
+    labels: list[tuple[str, int, int | None, int]] = []
+    for key in ranked:
+        book = bible.Book(key // 1000)
+        chapter = key % 1000
+        if not chapter or not verse_text(key * 1000 + 1):
+            continue
+        # Concentrated on one verse? Only when that verse carries the chapter's
+        # whole spread — a majority would promote a verse the book mentions
+        # everywhere alongside a chapter it treats broadly.
+        spread = by_chapter[key]
+        verse = None
+        for vid, cids in by_verse.items():
+            if vid // 1000 == key and cids == spread and verse_text(vid):
+                verse = vid % 1000
+                break
+        labels.append(
+            (reference_label(book, chapter, verse), chapter, verse, len(spread))
+        )
+
+    pages = pages_for([label for label, _c, _v, _n in labels])
+    out = []
+    for label, _chapter, _verse, count in labels:
+        page = pages.get(label)
+        if page is not None:
+            # Relabel from the page. `pages_for` may resolve a verse-grain
+            # candidate down to its Bible chapter, and a chip reading
+            # "Luke 14:11" that lands on Luke 14 has misdescribed itself.
+            label = reference_label(
+                book_from_slug(page["book"]), page["chapter"], page["verse"]
+            )
+        out.append({"reference": label, "chapters": count, "page": page})
+    return out
