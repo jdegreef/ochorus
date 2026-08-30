@@ -304,6 +304,85 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 # `apply_body_corrections`, plus a data migration for prod).
 
 BODY_CORRECTIONS: dict[str, dict] = {
+    "pilgrims-progress": {
+        # The 1678 text carries an editor's marginal glosses. The extractor
+        # emitted each note's in-text marker AND its label at the foot of the
+        # page as two superscripts, then ran the note body straight into
+        # Bunyan's line:
+        #
+        #   Should prove <i>ad infinitum</i>,<sup>1</sup><sup>1</sup>Without end. and eat out
+        #
+        # which a reader sees as "ad infinitum,11Without end. and eat out". Nine
+        # of these, and ch02's lands inside the book's most-quoted sentence —
+        # "a certain place where was a den,33Bedford jail, in which the author
+        # was imprisoned for conscience' sake and laid me down in that place to
+        # sleep". The gloss is a later editor's, not Bunyan's, and there is no
+        # footnote surface to move it to, so it comes out and the line reads as
+        # written. Recoverable from this diff if footnotes are ever added.
+        "replacements": [
+            ("<sup>1</sup><sup>1</sup>Without end. and eat out", " and eat out"),
+            ("<sup>2</sup><sup>2</sup>Hint, whisper, insinuation. of it", " of it"),
+            ("<sup>3</sup><sup>3</sup>Bedford jail, in which the author was "
+             "imprisoned for conscience\u2019 sake and laid me down", " and laid me down"),
+            ("<sup>4</sup><sup>4</sup>Slight knowledge. of him", " of him"),
+            ("<sup>5</sup><sup>5</sup>Wish a curse to. him for his counsel!",
+             " him for his counsel!"),
+            ("<sup>6</sup><sup>6</sup>The Holy Spirit. where he knocked", " where he knocked"),
+            ("<sup>7</sup><sup>7</sup>Of the flesh and blood of Christ. "
+             "John 6:54-57; Heb. 9:14; (you know physicians", " (you know physicians"),
+            ("<sup>8</sup><sup>8</sup>A musical instrument. so she played", " so she played"),
+            ("<sup>9</sup><sup>9</sup>A gold angel was a coin of the value of ten "
+             "shillings sterling and according to the comparative value of money "
+             "in Bunyan\u2019s time, equal at least to a guinea at the present time. "
+             "in his hand", " in his hand"),
+        ],
+    },
+    "union-and-communion": {
+        # Same defect. Hudson Taylor's own notes on the Song of Solomon, welded
+        # into the verse lines he is expounding — "For Thy love11 Loves =
+        # endearments, caresses. is better than wine." Four of the five sit in
+        # the refrain "Until she please", which the note makes unreadable.
+        "replacements": [
+            ("<sup>1</sup><sup>1</sup> Loves = endearments, caresses. is better",
+             " is better"),
+            ("<sup>2</sup><sup>2</sup> The pronoun here and in chapter iii. 5, and "
+             "viii. 4, should not be \u201che\u201d as A. V., nor \u201cit\u201d as R.V., but "
+             "\u201cshe\u201d. please.", " please."),
+            ("<sup>3</sup><sup>3</sup> [The pronoun here should not be \u201che\u201d as "
+             "A. V., nor \u201cit\u201d as R.V., but \u201cshe\u201d.] please.", " please."),
+            ("<sup>4</sup><sup>4</sup> The Church of Popular Opinion, as pointed out "
+             "by the Rev. Charles Fox in an address at Keswick, as the Church of "
+             "Philadelphia is the Church of Brotherly Love. Church:", " Church:"),
+            ("<sup>5</sup><sup>5</sup> [The pronoun here should not be \u201che\u201d as "
+             "A. V., nor \u201cit\u201d as R.V., but \u201cshe\u201d.] please?", " please?"),
+        ],
+    },
+    "till-he-come": {
+        # A doubled marker with no note behind it — the digits "11" render at
+        # the end of the quotation and point at nothing.
+        "replacements": [("<sup>1</sup><sup>1</sup></p>", "</p>")],
+    },
+    "revival-lectures": {
+        # Here the notes sit at the END of their paragraph rather than inside a
+        # sentence, so the prose is intact and only the doubled marker shows.
+        # The notes are the editor's and worth keeping ("This was said in
+        # 1833."), so only the marker comes out — no content is lost.
+        "replacements": [
+            ("communion.<sup>1</sup><sup>1</sup>Why not", "communion. Why not"),
+            ("destruction?\u201d<sup>2</sup><sup>2</sup>Edwards\u2019 Works.",
+             "destruction?\u201d Edwards\u2019 Works."),
+            ("order a battle.<sup>3</sup><sup>3</sup>This was said in 1833.",
+             "order a battle. This was said in 1833."),
+            ("of doing it.<sup>4</sup><sup>4</sup>This was said with pain",
+             "of doing it. This was said with pain"),
+            ("since the world began.<sup>5</sup><sup>5</sup>This was in 1831.",
+             "since the world began. This was in 1831."),
+            ("less and less powerful.<sup>6</sup><sup>6</sup>The strange opposition",
+             "less and less powerful. The strange opposition"),
+            ("need to make you feel so.\u201d<sup>7</sup><sup>7</sup>I believe the reporter",
+             "need to make you feel so.\u201d I believe the reporter"),
+        ],
+    },
     "on-loving-god": {
         # Strip the ALL-CAPS heading-remainder paragraph the archive importer
         # left at the top of nine chapters (the wrapped tail of the chapter
@@ -519,7 +598,13 @@ BODY_CORRECTIONS: dict[str, dict] = {
     "a-call-to-the-unconverted": {
         # Misprinted references, from `audit_citations`. Baxter's own wording is
         # untouched — each of these moves a numeral only.
+        #
+        # Plus one welded footnote (see pilgrims-progress for the defect): the
+        # note naming the gentleman and the bridge sits between two sentences of
+        # Baxter's story about the Severn.
         "replacements": [
+            ("<sup>1</sup><sup>1</sup>Mr. R. Rowley, of Shrewsbury, upon Acham "
+             "bridge. A man was driving", " A man was driving"),
             # "O that there were such a heart in this people" is Deut 5:29;
             # 5:20 is the ninth commandment.
             ("Deut. v. 20.", "Deut. v. 29."),

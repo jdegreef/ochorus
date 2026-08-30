@@ -125,7 +125,8 @@
    "run-together": 1
   },
   "religious-affections": {
-   "orphan-close-quote": 6
+   "orphan-close-quote": 6,
+   "welded-footnote": 75
   },
   "revival-lectures": {
    "anachronism": 1,
@@ -136,11 +137,13 @@
    "hyphen-space": 3,
    "lost-paragraphing": 2,
    "orphan-close-quote": 17,
-   "space-before-punct": 15
+   "space-before-punct": 15,
+   "welded-footnote": 5
   },
   "sermons-on-several-occasions": {
    "orphan-close-quote": 47,
    "run-together": 2,
+   "welded-footnote": 170,
    "word-fusion": 1
   },
   "soar-like-the-eagle-3": {

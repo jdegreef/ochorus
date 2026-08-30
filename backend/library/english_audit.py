@@ -306,6 +306,28 @@ AUTO_FIXABLE = frozenset({"broken-smallcaps"})
 MECHANICAL = frozenset({"hyphen-space", "space-before-punct"})
 
 
+#: A footnote whose marker was duplicated and whose TEXT was inlined into the
+#: prose. The extractor emitted the in-text marker and the note's own label at
+#: the foot of the page as two adjacent superscripts, then ran the note body
+#: straight on into the sentence:
+#:
+#:     Should prove <i>ad infinitum</i>,<sup>1</sup><sup>1</sup>Without end. and eat out
+#:
+#: which renders as "Should prove ad infinitum,11Without end. and eat out" — the
+#: gloss spliced into Bunyan's line, and the doubled digits visible in it.
+#:
+#: The DOUBLED marker is the whole signal, and it is exact: across the corpus
+#: every weld carries one and no legitimate footnote does, so a single <sup>
+#: (a real reference, an ordinal, a verse number) never fires. The pair must
+#: also carry the SAME number — the second superscript is the note's own label,
+#: not a second reference, and two different numbers in a row are two ordinary
+#: markers.
+#:
+#: Where the note ENDS is not mechanical (only ~39% close on a clean full stop),
+#: which is why this reports and a person repairs.
+WELDED_FOOTNOTE = re.compile(r"<sup>(\d{1,3})</sup>\s*<sup>(\1)</sup>")
+
+
 def text(fragment: str) -> str:
     return html.unescape(TAG.sub(" ", INLINE_TAG.sub("", fragment)))
 
@@ -324,6 +346,20 @@ def _word_fusion(t: str, counts: Counter[str]) -> Iterator[tuple[str, str]]:
             if word[:k] in FUSION_HEADS and counts.get(word[k:], 0) >= COMMON_MIN:
                 yield "word-fusion", excerpt(t, m.start())
                 break
+
+
+
+def _welded_footnotes(body_html: str) -> Iterator[tuple[str, int, str]]:
+    """A footnote's text run into the prose behind a doubled marker.
+
+    Reported at the block it lands in, so a repair can be located; the excerpt
+    is taken from the HTML rather than the stripped text because the doubled
+    marker IS the evidence and `text()` deletes it.
+    """
+    starts = [m.start() for m in BLOCK.finditer(body_html)]
+    for m in WELDED_FOOTNOTE.finditer(body_html):
+        i = sum(1 for s in starts if s <= m.start()) - 1
+        yield "welded-footnote", max(i, 0), excerpt(body_html, m.start())
 
 
 def _check_block(t: str, is_pd: bool, counts: Counter[str]) -> Iterator[tuple[str, str]]:
@@ -417,6 +453,8 @@ def audit_records(records: Iterable[Record]) -> list[Finding]:
                     Finding("space-before-punct", rec.where, rec.work, i, excerpt(t, m.start()))
                 )
         for label, i, ex in _orphan_quotes(blocks):
+            found.append(Finding(label, rec.where, rec.work, i, ex))
+        for label, i, ex in _welded_footnotes(rec.body_html or ""):
             found.append(Finding(label, rec.where, rec.work, i, ex))
         # Whole-record, so block -1 as `title-case-vs-body` does: the finding is
         # about the chapter's structure, not about any one block in it.

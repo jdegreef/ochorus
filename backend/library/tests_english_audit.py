@@ -75,6 +75,41 @@ class EnglishAuditPrecisionTests(SimpleTestCase):
         # This single test took the class from 233 findings to 8.
         self.assertNotIn("broken-smallcaps", _findings("<p>A SHORT preface follows</p>"))
 
+    def test_welded_footnote_needs_the_marker_DOUBLED_with_the_same_number(self):
+        """The doubled marker is the whole signal, and it has to stay narrow.
+
+        `<sup>` is ordinary markup here — real footnote references, verse
+        numbers, ordinals — so flagging any `<sup>` next to prose would fire on
+        every properly-extracted note in the corpus. What is wrong is the
+        extractor emitting the in-text marker AND the note's own label at the
+        foot of the page, then running the note body into the sentence.
+        """
+        # The defect: same number twice, note text welded to the prose.
+        welded = "<p>Should prove <i>ad infinitum</i>,<sup>1</sup><sup>1</sup>Without end. and eat out</p>"
+        self.assertEqual(_findings(welded).get("welded-footnote"), 1)
+
+        # A correctly extracted reference — one marker, note elsewhere.
+        self.assertNotIn("welded-footnote", _findings("<p>worketh in Christians,<sup>2</sup> and of the Spirit</p>"))
+        # Two ADJACENT references to different notes. Ugly, but two real
+        # markers, not a marker and a duplicated label.
+        self.assertNotIn("welded-footnote", _findings("<p>as both attest<sup>4</sup><sup>5</sup> in their letters</p>"))
+        # An ordinal, which is what <sup> is for outside footnotes.
+        self.assertNotIn("welded-footnote", _findings("<p>on the 1<sup>st</sup> of June</p>"))
+
+    def test_welded_footnote_is_found_in_headings_too(self):
+        """155 of the corpus instances are inside an <h2>, where the doubled
+        digits render in the heading itself."""
+        h = "<h2>Fourth Series <sup>3</sup><sup>3</sup>Consisting of seven discourses</h2>"
+        self.assertEqual(_findings(h).get("welded-footnote"), 1)
+
+    def test_welded_footnote_is_not_auto_fixable(self):
+        """Where the note ENDS is a judgement — only ~39% close on a clean full
+        stop — so a machine must never cut it."""
+        from library.english_audit import AUTO_FIXABLE, MECHANICAL
+
+        self.assertNotIn("welded-footnote", AUTO_FIXABLE)
+        self.assertNotIn("welded-footnote", MECHANICAL)
+
     def test_lost_paragraphing_is_judged_per_CHAPTER_not_per_paragraph(self):
         """The granularity is the whole finding.
 
@@ -535,6 +570,14 @@ class EnglishAuditContractTests(SimpleTestCase):
                 # chapter has lost its paragraphing — 4,602 words in two blocks
                 # is not a style — but only a reader can put the breaks back.
                 "lost-paragraphing",
+                # Neither. The DETECTION is exact — a doubled marker carrying
+                # the same number, which no correctly extracted footnote has —
+                # but the repair is not, because where the note ends is not
+                # marked. Only ~39% close on a clean full stop; the rest run
+                # "Mr. R. Rowley, of Shrewsbury, upon Acham bridge." or carry a
+                # scripture reference mid-note, so a machine cutting at the
+                # first period would take half a note or half a sentence.
+                "welded-footnote",
             }
         )
         emitted = {label for classes in _corpus().values() for label in classes}
