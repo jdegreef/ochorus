@@ -566,6 +566,15 @@ dropped; chapters under 120 words are dropped as stubs.
   FROM THE FIXTURE, so a fixture left on your values has each deploy asserting
   one subtitle and each re-import the other. Redraw the plate and its og twin
   after, since both encode the subtitle. *(#1166 vs #1170, 2026-08)*
+- **Two NEW-book PRs collide at the same `catalog.py`/`corrections.py`
+  insertion points.** Adding books back-to-back off `origin/main`, each puts an
+  `AuthorEntry` at the same slot (both anchored before `hudson-taylor`), a
+  `BookEntry` after the same neighbour, and a `CORRECTIONS`/`BODY_CORRECTIONS`
+  entry at the dict top — so whichever merges second conflicts in exactly those
+  two files. The resolution is always **keep BOTH entries** (`git merge
+  origin/main`, un-nest the two blocks, close each). To avoid it, merge each
+  book's PR before starting the next, or anchor new entries at distinct
+  neighbours. *(#1238 Guyon vs #1239 Bernard, 2026-08)*
 
 ## Adding a public-domain book NOT on ochorus.com
 
