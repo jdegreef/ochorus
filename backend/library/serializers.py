@@ -17,6 +17,7 @@ from .models import (
     TopicBook,
 )
 from .scripture import book_of
+from .scripture_graph import treated_passages
 
 #: The annotations every book card needs. ``BookListSerializer`` reads
 #: ``num_chapters`` and ``total_words`` off the instance; a queryset missing
@@ -582,12 +583,26 @@ class BookDetailSerializer(BookListSerializer):
     # author_same_as: a card has no room to show them and no markup to carry
     # them, so a shelf would ship the strings 130 times over for nothing.
     alternate_titles = serializers.SerializerMethodField()
+    # The passages this book keeps returning to, derived from its own text —
+    # see library/scripture_graph.treated_passages. Detail only: it costs two
+    # queries, which is nothing on one page and 130 times nothing on a shelf.
+    scripture = serializers.SerializerMethodField()
 
     def get_author_same_as(self, obj):
         return obj.author.same_as or []
 
     def get_alternate_titles(self, obj) -> list[str]:
         return alternate_titles(obj.slug, obj.language, obj.title)
+
+    def get_scripture(self, obj) -> list[dict]:
+        # English only. The citation index is built from English bodies
+        # (`english_citation_rows`), so a translated edition has no rows of its
+        # own — and answering from the English book's would put English chapter
+        # counts on a Swahili page and link into a graph that has no Swahili
+        # pages to land on.
+        if obj.language != "en":
+            return []
+        return treated_passages(obj.pk)
 
     # How many related books to surface, and how much a shared topic counts
     # relative to sharing the author (a shared topic is the stronger signal).
@@ -601,7 +616,7 @@ class BookDetailSerializer(BookListSerializer):
             "publication_year", "attribution", "topics", "related",
             "difficulty", "is_modern_edition", "has_modern_edition",
             "available_languages", "artwork_credit", "author_same_as",
-            "alternate_titles", "about_html",
+            "alternate_titles", "about_html", "scripture",
         ]
 
     def get_available_languages(self, obj):

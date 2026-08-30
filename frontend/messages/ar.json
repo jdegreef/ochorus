@@ -366,6 +366,7 @@
   "book_title_tag": "%title% لـ%name% — للقراءة مجانًا عبر الإنترنت · Ochorus",
   "book_other_titles": "عناوين أخرى",
   "book_about_work": "عن هذا الكتاب",
+  "book_scripture_treats": "مواضع الكتاب المقدس التي يتناولها هذا الكتاب",
   "sermon_meta_fallback": "%title% — عظة لـ%name%.",
   "error_not_found_title": "الصفحة غير موجودة",
   "error_generic_title": "حدث خطأ ما",
