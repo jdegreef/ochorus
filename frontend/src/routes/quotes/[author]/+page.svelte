@@ -31,10 +31,13 @@
 			'book, chapter and paragraph it comes from — and linked to the full text, free to read.'
 	);
 
+	// Home › Quotes › Author: the page is a child of the quotes index, not of the
+	// author's bio. This also gives the index an inbound link from every author
+	// page, which is what makes /quotes a hub rather than a dead end.
 	const crumbs = $derived([
 		{ name: 'Home', href: '/' },
-		{ name: page.author.name, href: `/authors/${page.author.slug}/` },
-		{ name: 'Quotes', href: path }
+		{ name: 'Quotes', href: '/quotes/' },
+		{ name: page.author.name, href: path }
 	]);
 	const crumbsLd = $derived(
 		jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))))

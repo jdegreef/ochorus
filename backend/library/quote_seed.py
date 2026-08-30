@@ -5,7 +5,7 @@ them: a chapter page is 1,900 words of Bunyan whatever else it carries, but a
 quote page IS its furniture. That is the shape search engines classify as a
 doorway when it is mass-produced, and the risk is not confined to the quote
 pages — scaled thin content is judged against a domain. The pilot shipped ONE
-author (Spurgeon) and waited; this is the considered scale-up to seven, chosen
+author (Spurgeon) and waited; this is the considered scale-up to nine, chosen
 for depth of shelf and quotability, not a blanket rollout of all forty.
 Amy Carmichael was a fourth candidate, held back: her aphorisms live in *If*,
 which is not published, and a quote may only cite a live page.
@@ -50,6 +50,8 @@ from __future__ import annotations
 #: augustine-of-hippo    — approved 2026-08-30, thirteen.
 #: jonathan-edwards      — approved 2026-08-30, eleven.
 #: john-wesley           — approved 2026-08-30, eighteen.
+#: george-muller         — approved 2026-08-30, eleven.
+#: hudson-taylor         — approved 2026-08-30, ten.
 #:
 #: THIS ONLY EVER PUBLISHES, AT CREATION. `seed_quotes` reads it when it creates
 #: a row and never again, which is the same rule `is_published` and
@@ -68,6 +70,8 @@ APPROVED = frozenset(
         "augustine-of-hippo",
         "jonathan-edwards",
         "john-wesley",
+        "george-muller",
+        "hudson-taylor",
     }
 )
 
@@ -1253,6 +1257,138 @@ JOHN_WESLEY = [
     },
 ]
 
+GEORGE_MULLER = [
+    {
+        "slug": "george-muller-5fa461a5",
+        "text": "Wherever God has given faith, it is given, among other reasons, for the very purpose of being tried.",
+        "chapter": ("answers-to-prayer", 1),
+        "paragraph": 55,
+    },
+    {
+        "slug": "george-muller-6e95f222",
+        "text": "Do but stand still in the hour of trial, and you will see the help of God, if you trust in Him.",
+        "chapter": ("answers-to-prayer", 1),
+        "paragraph": 53,
+    },
+    {
+        "slug": "george-muller-da2889c3",
+        "text": "How great is the blessing which the soul obtains by trusting in God, and by waiting patiently.",
+        "chapter": ("answers-to-prayer", 2),
+        "paragraph": 11,
+    },
+    {
+        "slug": "george-muller-3c0cd7a5",
+        "text": "To this class likewise I desired to show, by a visible proof, that God is unchangeably the same.",
+        "chapter": ("answers-to-prayer", 1),
+        "paragraph": 3,
+    },
+    {
+        "slug": "george-muller-71b05b84",
+        "text": "Truly, the Lord has wise purposes in allowing us to call so long upon Him for help.",
+        "chapter": ("answers-to-prayer", 1),
+        "paragraph": 68,
+    },
+    {
+        "slug": "george-muller-6e80ebdf",
+        "text": "Not to believe Him is to make Him both a liar and a perjurer.",
+        "chapter": ("answers-to-prayer", 3),
+        "paragraph": 157,
+    },
+    {
+        "slug": "george-muller-51145329",
+        "text": "Ask God also to enlighten you not merely concerning your state by nature, but especially to reveal the Lord Jesus to your heart.",
+        "chapter": ("answers-to-prayer", 3),
+        "paragraph": 23,
+    },
+    {
+        "slug": "george-muller-aa940293",
+        "text": "Through our natural alienation from God we shrink from Him, and from eternal realities.",
+        "chapter": ("answers-to-prayer", 1),
+        "paragraph": 55,
+    },
+    {
+        "slug": "george-muller-0ddfdb70",
+        "text": "A flow of joy came into my soul whilst realising thus the unchangeableness of our adorable Lord.",
+        "chapter": ("answers-to-prayer", 1),
+        "paragraph": 20,
+    },
+    {
+        "slug": "george-muller-ef40c1e4",
+        "text": "God sent Him, that He might bear the punishment, due to us guilty sinners.",
+        "chapter": ("answers-to-prayer", 3),
+        "paragraph": 23,
+    },
+    {
+        "slug": "george-muller-a1e19e7a",
+        "text": "The answer is, believe in the Lord Jesus, trust in Him, depend upon Him alone as it regards the salvation of your soul.",
+        "chapter": ("answers-to-prayer", 3),
+        "paragraph": 86,
+    },
+]
+
+HUDSON_TAYLOR = [
+    {
+        "slug": "hudson-taylor-0ad5bd76",
+        "text": "Union with CHRIST, and abiding in CHRIST, what do they not secure?",
+        "chapter": ("union-and-communion", 3),
+        "paragraph": 1,
+    },
+    {
+        "slug": "hudson-taylor-cad7f3ed",
+        "text": "Despite all the unworthy fears of our poor hearts, Divine love is destined to conquer.",
+        "chapter": ("union-and-communion", 4),
+        "paragraph": 11,
+    },
+    {
+        "slug": "hudson-taylor-38d234ec",
+        "text": "To the soul really rescued by grace, no bribe to forsake GOD’S love will be finally successful.",
+        "chapter": ("union-and-communion", 9),
+        "paragraph": 33,
+    },
+    {
+        "slug": "hudson-taylor-2d3e6a96",
+        "text": "The sin of neglected communion may be forgiven, and yet the effect remain permanently; as wounds when healed often leave a scar behind.",
+        "chapter": ("union-and-communion", 4),
+        "paragraph": 36,
+    },
+    {
+        "slug": "hudson-taylor-042ae2a5",
+        "text": "The love that has made her what she is, and now takes delight in her, is not a fickle love, nor need she fear its change.",
+        "chapter": ("union-and-communion", 9),
+        "paragraph": 17,
+    },
+    {
+        "slug": "hudson-taylor-3303adbe",
+        "text": "No longer her own, heart-rest is alike her right and her enjoyment; and so the Bridegroom would have it.",
+        "chapter": ("union-and-communion", 4),
+        "paragraph": 108,
+    },
+    {
+        "slug": "hudson-taylor-b7ada31d",
+        "text": "Grace has made her like the palm-tree, the emblem alike of uprightness and of fruitfulness.",
+        "chapter": ("union-and-communion", 8),
+        "paragraph": 25,
+    },
+    {
+        "slug": "hudson-taylor-b091a3fb",
+        "text": "Do we sufficiently cultivate this unselfish desire to be all for JESUS, and to do all for His pleasure?",
+        "chapter": ("union-and-communion", 6),
+        "paragraph": 32,
+    },
+    {
+        "slug": "hudson-taylor-fab4ab06",
+        "text": "How wondrous the grace that has made the bride of CHRIST to be all this to her Beloved!",
+        "chapter": ("union-and-communion", 8),
+        "paragraph": 73,
+    },
+    {
+        "slug": "hudson-taylor-07ddeeeb",
+        "text": "The world can never be to her what it once was; the betrothed bride has learnt to love her LORD, and no other society than His can satisfy her.",
+        "chapter": ("union-and-communion", 4),
+        "paragraph": 5,
+    },
+]
+
 QUOTES = {
     "charles-h-spurgeon": SPURGEON,
     "thomas-a-kempis": THOMAS_A_KEMPIS,
@@ -1261,4 +1397,6 @@ QUOTES = {
     "augustine-of-hippo": AUGUSTINE,
     "jonathan-edwards": JONATHAN_EDWARDS,
     "john-wesley": JOHN_WESLEY,
+    "george-muller": GEORGE_MULLER,
+    "hudson-taylor": HUDSON_TAYLOR,
 }
