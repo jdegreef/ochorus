@@ -791,7 +791,16 @@ export function groupQuotes(page: QuotePage, eraHue: string): QuoteGroup[] {
 }
 
 /** Authors with at least one REVIEWED quotation — the pages that may be built. */
-export const listQuoteAuthors = () => apiFetch<string[]>('/api/library/quotes/');
+/** One row of the /quotes index: an author with a reviewed quote page. */
+export interface QuoteAuthorSummary {
+	slug: string;
+	name: string;
+	birth_year: number | null;
+	count: number;
+}
+
+export const listQuoteAuthors = () =>
+	apiFetch<QuoteAuthorSummary[]>('/api/library/quotes/');
 
 export const getQuotePage = (author: string) =>
 	apiFetch<QuotePage>(`/api/library/quotes/${author}/`);

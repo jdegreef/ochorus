@@ -821,15 +821,29 @@ class QuoteAuthorsView(APIView):
     """
 
     def get(self, request):
-        from .models import Quote
+        from django.db.models import Count, Q
 
-        slugs = (
-            Quote.objects.filter(reviewed=True)
-            .values_list("author__slug", flat=True)
-            .distinct()
-            .order_by("author__slug")
+        from .models import Author
+
+        # Author objects, not bare slugs: the /quotes index page renders a card
+        # per author (name, era hue, how many quotations), and the prerender
+        # entry generator and the sitemap take `.slug` from the same rows. One
+        # query, annotated — never a count() per author.
+        rows = (
+            Author.objects.annotate(
+                n=Count("quotes", filter=Q(quotes__reviewed=True))
+            )
+            .filter(n__gt=0)
+            .order_by("name")
+            .values("slug", "name", "birth_year", "n")
         )
-        return Response(list(slugs))
+        return Response(
+            [
+                {"slug": r["slug"], "name": r["name"],
+                 "birth_year": r["birth_year"], "count": r["n"]}
+                for r in rows
+            ]
+        )
 
 
 class ScripturePagesView(APIView):

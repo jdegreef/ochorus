@@ -232,6 +232,11 @@ async function build(): Promise<SitemapData> {
 		pages.push({ byLocale: new Map(ADVERTISED_LOCALES.map((l) => [l, path])) });
 	}
 
+	// The quotes index is English-only, like the author quote pages it links to
+	// and for the same reason: the quotations are lifted from the English works.
+	// Trailing slash, because it prerenders as /quotes/index.html.
+	if (quoteAuthors.length) pages.push({ byLocale: new Map([['en', '/quotes/']]) });
+
 	// Author pages prerender for every locale (the bio falls back to English).
 	const authorSlugs = new Set<string>(authors.map((a) => a.slug));
 	for (const { books } of perLocale) for (const b of books) authorSlugs.add(b.author.slug);
@@ -305,7 +310,7 @@ async function build(): Promise<SitemapData> {
 	// reason: the quotations are lifted from the English works and every citation
 	// names an English chapter.
 	const quotes: Entry[] = quoteAuthors.map((a) => ({
-		byLocale: new Map([['en', `/quotes/${a}/`]] as [string, string][])
+		byLocale: new Map([['en', `/quotes/${a.slug}/`]] as [string, string][])
 	}));
 
 	// Chapter pages (prerendered): one entry per (work, chapter), again listing
