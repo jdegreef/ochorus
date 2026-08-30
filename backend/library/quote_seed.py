@@ -5,7 +5,7 @@ them: a chapter page is 1,900 words of Bunyan whatever else it carries, but a
 quote page IS its furniture. That is the shape search engines classify as a
 doorway when it is mass-produced, and the risk is not confined to the quote
 pages — scaled thin content is judged against a domain. The pilot shipped ONE
-author (Spurgeon) and waited; this is the considered scale-up to nine, chosen
+author (Spurgeon) and waited; this is the considered scale-up to ten, chosen
 for depth of shelf and quotability, not a blanket rollout of all forty.
 Amy Carmichael was a fourth candidate, held back: her aphorisms live in *If*,
 which is not published, and a quote may only cite a live page.
@@ -52,6 +52,7 @@ from __future__ import annotations
 #: john-wesley           — approved 2026-08-30, eighteen.
 #: george-muller         — approved 2026-08-30, eleven.
 #: hudson-taylor         — approved 2026-08-30, ten.
+#: gareth-evans          — approved 2026-08-30, twenty-two.
 #:
 #: THIS ONLY EVER PUBLISHES, AT CREATION. `seed_quotes` reads it when it creates
 #: a row and never again, which is the same rule `is_published` and
@@ -72,6 +73,7 @@ APPROVED = frozenset(
         "john-wesley",
         "george-muller",
         "hudson-taylor",
+        "gareth-evans",
     }
 )
 
@@ -1389,6 +1391,141 @@ HUDSON_TAYLOR = [
     },
 ]
 
+GARETH_EVANS = [
+    {
+        "slug": "gareth-evans-acd8fcf2",
+        "text": "God has not called us to be famous or successful; He has called us to be faithful.",
+        "chapter": ("he-holds-my-tomorrows", 15),
+        "paragraph": 16,
+    },
+    {
+        "slug": "gareth-evans-250ffc80",
+        "text": "Faith does not deliver us from the chisel or hammer of the Divine sculptor.",
+        "chapter": ("he-holds-my-tomorrows", 16),
+        "paragraph": 45,
+    },
+    {
+        "slug": "gareth-evans-7bf997cc",
+        "text": "The only thing He requires of you is your love, and that cannot be forced from you.",
+        "chapter": ("he-holds-my-tomorrows", 17),
+        "paragraph": 25,
+    },
+    {
+        "slug": "gareth-evans-ea56a35e",
+        "text": "The great promises of God only come to those who have died to themselves.",
+        "chapter": ("he-holds-my-tomorrows", 12),
+        "paragraph": 28,
+    },
+    {
+        "slug": "gareth-evans-8f7e4023",
+        "text": "The faith that pleases God is not evidenced in the obedience of fear, but in the obedience of love and willingness.",
+        "chapter": ("he-holds-my-tomorrows", 5),
+        "paragraph": 19,
+    },
+    {
+        "slug": "gareth-evans-0b4a12e9",
+        "text": "Faith is an attribute of the heart and is evidenced in obedience.",
+        "chapter": ("he-holds-my-tomorrows", 2),
+        "paragraph": 40,
+    },
+    {
+        "slug": "gareth-evans-c9e0110e",
+        "text": "Faith does not need a man to understand and believe; it needs anyone who will obey, even when he does not understand or believe!",
+        "chapter": ("he-holds-my-tomorrows", 17),
+        "paragraph": 9,
+    },
+    {
+        "slug": "gareth-evans-c17f1706",
+        "text": "Jesus did not die to give us a crutch - he died that we might be made whole!",
+        "chapter": ("soar-like-the-eagle-3", 2),
+        "paragraph": 20,
+    },
+    {
+        "slug": "gareth-evans-73429902",
+        "text": "God never counts us as a failure if we do not pass His present testing.",
+        "chapter": ("he-holds-my-tomorrows", 13),
+        "paragraph": 10,
+    },
+    {
+        "slug": "gareth-evans-5229253d",
+        "text": "God only allows testing to come in our lives so that He might make us pure.",
+        "chapter": ("he-holds-my-tomorrows", 13),
+        "paragraph": 26,
+    },
+    {
+        "slug": "gareth-evans-5df533df",
+        "text": "God knows the heart of man and will only reveal Himself to those who are pure in heart.",
+        "chapter": ("he-holds-my-tomorrows", 7),
+        "paragraph": 41,
+    },
+    {
+        "slug": "gareth-evans-cf0d0a61",
+        "text": "The only way man can approach God is through the shed blood of a lamb.",
+        "chapter": ("he-holds-my-tomorrows", 7),
+        "paragraph": 31,
+    },
+    {
+        "slug": "gareth-evans-b4cd492e",
+        "text": "To every weapon of Satan they have an answer in the Word of God.",
+        "chapter": ("feasting-at-the-table", 9),
+        "paragraph": 9,
+    },
+    {
+        "slug": "gareth-evans-732b3ef4",
+        "text": "The Lord’s priority is not just the healing, which blesses you, but the reconciliation which blesses Him!",
+        "chapter": ("the-key-in-my-hand", 15),
+        "paragraph": 44,
+    },
+    {
+        "slug": "gareth-evans-6a4f8972",
+        "text": "Jesus pointed out to them that it was faith they needed, not belief.",
+        "chapter": ("he-holds-my-tomorrows", 2),
+        "paragraph": 13,
+    },
+    {
+        "slug": "gareth-evans-d75fc266",
+        "text": "God is always willing to reveal more of Himself to the one who is an overcomer when faced with the tests of life.",
+        "chapter": ("feasting-at-the-table", 1),
+        "paragraph": 4,
+    },
+    {
+        "slug": "gareth-evans-04db311b",
+        "text": "Jesus said that He did not come to be served but to serve - and He expects the same from His disciples.",
+        "chapter": ("soar-like-the-eagle-3", 4),
+        "paragraph": 13,
+    },
+    {
+        "slug": "gareth-evans-dc3ec2c5",
+        "text": "The gifts are given to individuals, not that they might glory or boast in them, but that they might be for the benefit of all.",
+        "chapter": ("he-holds-my-tomorrows", 3),
+        "paragraph": 68,
+    },
+    {
+        "slug": "gareth-evans-7f44b4a6",
+        "text": "The child does not experience the love whose fruit is security, identity, self-esteem, acceptance, and encouragement.",
+        "chapter": ("the-key-in-my-hand", 6),
+        "paragraph": 9,
+    },
+    {
+        "slug": "gareth-evans-12a18c7e",
+        "text": "To those who have placed their trust in the finished work of Calvary, there is no more condemnation but an access into the presence and fellowship of God.",
+        "chapter": ("he-holds-my-tomorrows", 7),
+        "paragraph": 34,
+    },
+    {
+        "slug": "gareth-evans-eece1b59",
+        "text": "The last prayer of Jesus for all who would come to believe Him, is that we may be ONE.",
+        "chapter": ("feasting-at-the-table", 4),
+        "paragraph": 5,
+    },
+    {
+        "slug": "gareth-evans-cd926d0d",
+        "text": "The end of the journey for all who walk in faith, is that they shall be with their Saviour, glorified in His presence.",
+        "chapter": ("he-holds-my-tomorrows", 16),
+        "paragraph": 39,
+    },
+]
+
 QUOTES = {
     "charles-h-spurgeon": SPURGEON,
     "thomas-a-kempis": THOMAS_A_KEMPIS,
@@ -1399,4 +1536,5 @@ QUOTES = {
     "john-wesley": JOHN_WESLEY,
     "george-muller": GEORGE_MULLER,
     "hudson-taylor": HUDSON_TAYLOR,
+    "gareth-evans": GARETH_EVANS,
 }
