@@ -314,20 +314,27 @@
 
 	<!-- About this book. The page previously said nothing about the WORK: the
 	     book's own `description` fed the meta tag and the JSON-LD and was never
-	     rendered, while the author's bio was. So a reader arriving on a
+	     rendered, while the AUTHOR's bio was. So a reader arriving on a
 	     fourth-century treatise met the chapter list and a paragraph about
 	     Athanasius, and nothing about the book itself.
 
-	     This is also the only prose on the page that is Ochorus's own — the
-	     chapters are the same public-domain text CCEL, Gutenberg and a dozen
-	     reprints carry verbatim — which is why it is worth writing and why it
-	     sits above the author, not below.
+	     The author's summary has since been dropped from this page entirely. It
+	     sat directly under this heading in muted type, which read as a second
+	     paragraph of the book's own prose — E. M. Bounds's dates and Civil War
+	     chaplaincy presented as if they were part of what "Prayer and Praying
+	     Men" is about. It belongs on the author page, which the byline links to.
+
+	     No `max-w-*`: this band runs the full page width, aligning with the
+	     Contents list below it. That is wider than a reading measure, which is
+	     the deliberate trade — this is a metadata band the reader scans, not a
+	     surface they settle into, and the ragged right edge against a
+	     full-width table of contents read worse than the long line does.
 
 	     Falls back to `description` exactly as the author page falls back from
 	     bio_html to bio, so the 63 books with a description gain visible prose
 	     today rather than waiting for a long-form piece to be written. -->
 	{#if book.about_html}
-		<section class="about-work mt-8 max-w-xl" aria-labelledby="about-work">
+		<section class="about-work mt-8" aria-labelledby="about-work">
 			<h2 id="about-work" class="mb-3 text-h3">{t('book.aboutWork')}</h2>
 			<div class="text-body leading-relaxed" dir="auto">
 				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
@@ -335,14 +342,10 @@
 			</div>
 		</section>
 	{:else if book.description}
-		<section class="mt-8 max-w-xl" aria-labelledby="about-work">
+		<section class="mt-8" aria-labelledby="about-work">
 			<h2 id="about-work" class="mb-3 text-h3">{t('book.aboutWork')}</h2>
 			<p class="text-body leading-relaxed" dir="auto">{book.description}</p>
 		</section>
-	{/if}
-
-	{#if book.author.bio}
-		<p class="mt-6 max-w-xl text-body text-muted" dir="auto">{book.author.bio}</p>
 	{/if}
 
 	{#if book.topics?.length}

@@ -42,7 +42,16 @@ describe('the book page states what the book is', () => {
 		expect(PAGE.match(/t\('book\.aboutWork'\)/g)?.length).toBe(2);
 	});
 
-	it('places the work above the author, not below', () => {
-		expect(PAGE.indexOf('book.about_html')).toBeLessThan(PAGE.indexOf('book.author.bio'));
+	it('does not show the author bio', () => {
+		// Dropped deliberately: it sat under "About this book" in muted type and
+		// read as a second paragraph of the book's own prose — the author's dates
+		// and career presented as if they were what the book is about. The byline
+		// links to the author page, which is where that summary belongs.
+		expect(PAGE).not.toMatch(/book\.author\.bio/);
+	});
+
+	it('runs the full page width, like the Contents list below it', () => {
+		const about = PAGE.slice(PAGE.indexOf("{#if book.about_html}"), PAGE.indexOf("{#if book.topics"));
+		expect(about).not.toMatch(/max-w-/);
 	});
 });
