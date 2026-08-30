@@ -94,7 +94,7 @@
 	<Breadcrumb items={crumbs} />
 
 	<header class="mb-6">
-		<h1 class="text-h1">{page.author.name} — in his own words</h1>
+		<h1 class="text-h1">{page.author.name} — in their own words</h1>
 		<p class="mt-2 max-w-2xl text-small text-muted">
 			{page.quotes.length} quotations, each traced to the exact paragraph it comes from. Follow
 			any of them into the full text — free, and without an account.

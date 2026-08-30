@@ -64,10 +64,103 @@ class SeedDataTests(SimpleTestCase):
             with self.subTest(slug=q["slug"]):
                 self.assertNotRegex(q["text"], r"&[#a-zA-Z0-9]+;")
 
-    def test_the_pilot_is_still_one_author(self):
-        # Scope guard, not a limit of the design: the pilot exists so that the
-        # indexation of ONE author's page decides whether the rest are built.
-        self.assertEqual(list(QUOTES), ["charles-h-spurgeon"])
+    def test_the_curated_authors_are_the_reviewed_set(self):
+        # Scope guard: every author carrying quotations must also be one the
+        # repo has signed off in APPROVED, so a curated-but-unapproved author
+        # cannot ship a page by accident. Widen both together, deliberately.
+        from library.quote_seed import APPROVED
+
+        self.assertEqual(set(QUOTES), set(APPROVED))
+        self.assertEqual(
+            set(QUOTES),
+            {"charles-h-spurgeon", "thomas-a-kempis", "andrew-murray"},
+        )
+
+
+class QuoteResolutionTests(SimpleTestCase):
+    """Every quote's `paragraph` must land on the block it was taken from.
+
+    This is the gate the pilot lacked. `paragraph` is `body.children[p]` — the
+    0-indexed top-level child the reader jumps to — counted against the SERVED
+    HTML, so the check applies `annotate_references` (the one transform the
+    chapter and sermon serializers run on `body_html`) before parsing, then
+    asserts the quote's own text is in that block. Without it, eighteen of the
+    sixty Spurgeon rows shipped off by one, their card links landing nowhere.
+
+    Reads the fixtures directly, like `tests_english_audit`, so it needs no DB.
+    """
+
+    from pathlib import Path
+
+    BOOKS = Path(__file__).resolve().parent / "fixtures" / "content" / "books"
+    SERMONS = Path(__file__).resolve().parent / "fixtures" / "content" / "sermons"
+
+    def _body_html(self, q):
+        import json
+
+        if "chapter" in q:
+            slug, order = q["chapter"]
+            rows = json.loads((self.BOOKS / f"{slug}.en.json").read_text())
+            for r in rows:
+                f = r["fields"]
+                if r["model"] == "library.chapter" and f.get("order") == order:
+                    return f["body_html"]
+            return None
+        rows = json.loads((self.SERMONS / f"{q['sermon']}.en.json").read_text())
+        for r in rows:
+            if r["model"] == "library.sermon":
+                return r["fields"]["body_html"]
+        return None
+
+    def test_every_quote_resolves_to_a_block_containing_its_text(self):
+        from bs4 import BeautifulSoup
+
+        from .scripture import annotate_references
+
+        def norm(t):
+            return " ".join(t.split())
+
+        for _author, quotes in QUOTES.items():
+            for q in quotes:
+                body = self._body_html(q)
+                with self.subTest(slug=q["slug"]):
+                    self.assertIsNotNone(body, "source work missing from fixtures")
+                    served = annotate_references(body)
+                    blocks = [
+                        norm(k.get_text())
+                        for k in BeautifulSoup(f"<div>{served}</div>", "lxml").div.find_all(
+                            recursive=False
+                        )
+                    ]
+                    p = q["paragraph"]
+                    self.assertTrue(0 < p < len(blocks), f"paragraph {p} out of range {len(blocks)}")
+                    self.assertIn(norm(q["text"]), blocks[p])
+
+    def test_no_quote_cites_an_unpublished_work(self):
+        """A quote links to its source page. If that page is not published it
+        404s — a dead card link, and a prerender failure. Amy Carmichael was
+        held out of the launch for exactly this: her aphorisms are in *If*,
+        which is `is_published=False`.
+        """
+        import json
+
+        def is_published(q):
+            if "chapter" in q:
+                slug = q["chapter"][0]
+                rows = json.loads((self.BOOKS / f"{slug}.en.json").read_text())
+                model = "library.book"
+            else:
+                slug = q["sermon"]
+                rows = json.loads((self.SERMONS / f"{slug}.en.json").read_text())
+                model = "library.sermon"
+            row = next(r for r in rows if r["model"] == model)
+            # Absent means the model default, which is published.
+            return row["fields"].get("is_published", True)
+
+        for _author, quotes in QUOTES.items():
+            for q in quotes:
+                with self.subTest(slug=q["slug"]):
+                    self.assertTrue(is_published(q), "quote cites an unpublished work")
 
 
 class SeedCommandTests(TestCase):
@@ -192,7 +285,10 @@ class QuotePageApiTests(TestCase):
         res = self.client.get("/api/library/quotes/w/")
         self.assertEqual(res.status_code, 200)
         self.assertEqual(len(res.data["quotes"]), 1)
-        self.assertEqual(self.client.get("/api/library/quotes/").data, ["w"])
+        listing = self.client.get("/api/library/quotes/").data
+        self.assertEqual(
+            listing, [{"slug": "w", "name": "A Writer", "birth_year": None, "count": 1}]
+        )
 
     def test_the_payload_carries_the_citation(self):
         self.quote.reviewed = True

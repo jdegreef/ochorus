@@ -10,7 +10,7 @@ export const trailingSlash = 'always';
 // sitemap reads the same list, so it cannot advertise one either.
 export const entries: EntryGenerator = async () => {
 	try {
-		return (await listQuoteAuthors()).map((author) => ({ author }));
+		return (await listQuoteAuthors()).map((a) => ({ author: a.slug }));
 	} catch {
 		return [];
 	}

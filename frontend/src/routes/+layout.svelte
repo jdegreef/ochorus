@@ -291,6 +291,11 @@
 						     and let the prerender crawler bake localized copies of it. -->
 						{#if lang.current === 'en'}
 							<li><a href="/scripture/">{t('reader.scripture')}</a></li>
+							<!-- Quotes, like Scripture, is an English-only hub: the
+							     quotations are lifted from the English works and every
+							     citation names an English chapter. Footer, not top nav —
+							     it is an entry point for search, not a primary journey. -->
+							<li><a href="/quotes/">{t('nav.quotes')}</a></li>
 						{/if}
 						<li><a href="/feed.xml">RSS</a></li>
 					</ul>
