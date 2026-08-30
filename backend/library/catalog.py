@@ -170,6 +170,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "prized by the Reformers after him."
         ),
     ),
+    "jeanne-guyon": AuthorEntry(
+        slug="jeanne-guyon",
+        name="Jeanne Guyon",
+        birth_year=1648,
+        death_year=1717,
+        bio=(
+            "French mystic whose 'A Short and Easy Method of Prayer' (1685) "
+            "taught that the humblest soul may seek and find God in the heart. "
+            "Condemned in Catholic France, she was embraced by Protestants."
+        ),
+    ),
     "hudson-taylor": AuthorEntry(
         slug="hudson-taylor",
         name="Hudson Taylor",
@@ -434,6 +445,9 @@ BOOKS: list[BookEntry] = [
               part="A LITTLE WORK BY ST. BERNARD",
               part_end="FRAGMENT BY ST. BERNARD",
               subtitle="De Diligendo Deo", cover_color="#7a1f2b"),
+    BookEntry("a-short-and-easy-method-of-prayer", "A Short and Easy Method of Prayer",
+              "jeanne-guyon", "gutenberg", "24989",
+              subtitle="Translated by A. W. Marston", cover_color="#4c1d6b"),
     BookEntry("union-and-communion", "Union and Communion", "hudson-taylor",
               "ccel", "taylor_jh/union",
               subtitle="Thoughts on the Song of Solomon", cover_color="#862e9c"),

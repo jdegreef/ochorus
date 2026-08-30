@@ -11,6 +11,13 @@
 			"art": true,
 			"scrim": 0.7
 		},
+		"a-short-and-easy-method-of-prayer": {
+			"ground": "d6b8f71d8325be736feb6e3aca9d6df1f45a9168a6ab776058e9636cbce17cb1",
+			"style": "devotional",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"all-of-grace": {
 			"ground": "25d18c1f3133cdd46d916757dc58d064dd8cda9ff6adce9f7edf269c234762d4",
 			"style": "revival",
