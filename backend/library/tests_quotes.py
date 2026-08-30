@@ -81,6 +81,8 @@ class SeedDataTests(SimpleTestCase):
                 "augustine-of-hippo",
                 "jonathan-edwards",
                 "john-wesley",
+                "george-muller",
+                "hudson-taylor",
             },
         )
 
