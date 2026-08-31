@@ -52,7 +52,8 @@ from __future__ import annotations
 #: john-wesley           — approved 2026-08-30, eighteen.
 #: george-muller         — approved 2026-08-30, eleven.
 #: hudson-taylor         — approved 2026-08-30, ten.
-#: gareth-evans          — approved 2026-08-30, twenty-two.
+#: gareth-evans          — approved 2026-08-30, twenty-two;
+#:                          four more 2026-08-31 (twenty-six).
 #:
 #: THIS ONLY EVER PUBLISHES, AT CREATION. `seed_quotes` reads it when it creates
 #: a row and never again, which is the same rule `is_published` and
@@ -1523,6 +1524,30 @@ GARETH_EVANS = [
         "text": "The end of the journey for all who walk in faith, is that they shall be with their Saviour, glorified in His presence.",
         "chapter": ("he-holds-my-tomorrows", 16),
         "paragraph": 39,
+    },
+    {
+        "slug": "gareth-evans-5c0753d7",
+        "text": "The ministry is built on their charisma or business acumen, rather than on the charismata and unction of God.",
+        "chapter": ("soar-like-the-eagle-3", 9),
+        "paragraph": 7,
+    },
+    {
+        "slug": "gareth-evans-12ac9d3d",
+        "text": "The eagle does not rest until it sees its offspring rise to soar above all the other birds in the vast expanse of the heavens.",
+        "chapter": ("soar-like-the-eagle-3", 1),
+        "paragraph": 33,
+    },
+    {
+        "slug": "gareth-evans-90d08e5c",
+        "text": "A sure way to stop the Lord moving in miraculous ways in your life, is to take offense.",
+        "chapter": ("the-key-in-my-hand", 8),
+        "paragraph": 27,
+    },
+    {
+        "slug": "gareth-evans-531d812b",
+        "text": "Jesus washed the feet of Judas knowing all that was in his heart.",
+        "chapter": ("the-key-in-my-hand", 3),
+        "paragraph": 29,
     },
 ]
 
