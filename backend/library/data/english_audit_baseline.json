@@ -5,6 +5,10 @@
    "orphan-close-quote": 3,
    "space-before-punct": 2
   },
+  "a-retrospect": {
+   "space-before-punct": 8,
+   "word-fusion": 2
+  },
   "all-things-for-good": {
    "orphan-close-quote": 3,
    "space-before-punct": 2
@@ -46,7 +50,8 @@
    "space-before-punct": 9
   },
   "grace-abounding": {
-   "space-before-punct": 9
+   "space-before-punct": 9,
+   "word-fusion": 1
   },
   "grace-for-grace-2": {
    "space-before-punct": 6

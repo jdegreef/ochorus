@@ -451,6 +451,13 @@ BOOKS: list[BookEntry] = [
     BookEntry("union-and-communion", "Union and Communion", "hudson-taylor",
               "ccel", "taylor_jh/union",
               subtitle="Thoughts on the Song of Solomon", cover_color="#862e9c"),
+    # A Retrospect (Gutenberg #26744) — Taylor's own autobiographical account of
+    # the founding of the China Inland Mission. Imported here from the GITenberg
+    # mirror because this environment's egress blocks gutenberg.org; the
+    # ebook-id source_ref is unchanged, so `import_gutenberg a-retrospect` picks
+    # it up unmodified wherever the web is reachable.
+    BookEntry("a-retrospect", "A Retrospect", "hudson-taylor",
+              "gutenberg", "26744", cover_color="#862e9c"),
     # Revival & Awakening — clean CCEL/Gutenberg sources.
     BookEntry("revival-lectures", "Lectures on Revivals of Religion", "charles-finney",
               "ccel", "finney/revivals",
