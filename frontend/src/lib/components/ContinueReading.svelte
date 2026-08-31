@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { coverGradient, coverSrcset } from '$lib/coverArt';
 	import { onMount } from 'svelte';
 	import { listSermons, type BookSummary, type SermonSummary } from '$lib/library-public';
+	import BookCover from '$lib/components/BookCover.svelte';
 	import { allProgress } from '$lib/progress';
 	import { workSlugKey } from '$lib/reading-schema';
 	import { bookProgressPercent } from '$lib/reading';
@@ -56,8 +56,9 @@
 		href: string;
 		title: string;
 		author: string;
-		cover_url?: string;
-		cover_color?: string;
+		/** The full book, for books — passed to <BookCover> so plate (SVG) covers
+		 * get their title drawn, exactly as on the shelves. Absent for sermons. */
+		book?: BookSummary;
 		/** null for sermons — a single document has no chapter meter. */
 		pct: number | null;
 		meta: string;
@@ -98,8 +99,7 @@
 					href: `/books/${book.slug}/${p.order}`,
 					title: book.title,
 					author: book.author.name,
-					cover_url: book.cover_url,
-					cover_color: book.cover_color,
+					book,
 					pct,
 					meta: `${t('continue.chapter')} ${p.order} / ${book.chapter_count} · ${pct}%`
 				};
@@ -118,27 +118,20 @@
 					href={localizeHref(item.href)}
 					class="group flex gap-4 rounded-card border border-border p-4 hover:bg-surface-2 hover:no-underline"
 				>
-					{#if item.cover_url}
-						<img
-							src={item.cover_url}
-							srcset={coverSrcset(item.cover_url) || undefined}
-							alt=""
-							loading="lazy"
-							class="h-20 w-14 shrink-0 rounded-sm object-cover shadow-sm"
-						/>
-					{:else if item.kind === 'sermon'}
-						<!-- Sermons have no cover; a soft mic tile (matching SermonCard's
-						     visual language) reads as intentional, not a blank block. -->
-						<div class="sermon-thumb flex h-20 w-14 shrink-0 items-center justify-center rounded-sm border shadow-sm">
-							<Icon name="mic" size={22} />
+					{#if item.book}
+						<!-- Draw through BookCover, not a bare <img>: a plate (SVG) ground
+						     carries no title in the file, so a raw image shows a blank
+						     coloured tile — BookCover sets the title over it, as the
+						     shelves do. -->
+						<div class="w-14 shrink-0">
+							<BookCover book={item.book} rounded="rounded-sm" />
 						</div>
 					{:else}
-						<div
-							class="h-20 w-14 shrink-0 rounded-sm shadow-sm"
-							style="background: {item.cover_color
-								? coverGradient(item.cover_color)
-								: 'var(--color-accent-soft)'}"
-						></div>
+						<!-- Sermons have no cover; a soft mic tile (matching SermonCard's
+						     visual language) reads as intentional, not a blank block. -->
+						<div class="sermon-thumb flex aspect-[3/4] w-14 shrink-0 items-center justify-center rounded-sm border shadow-sm">
+							<Icon name="mic" size={22} />
+						</div>
 					{/if}
 					<div class="min-w-0 flex-1 self-center">
 						<div class="truncate text-small font-semibold text-text">{item.title}</div>
