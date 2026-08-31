@@ -11,6 +11,13 @@
 			"art": true,
 			"scrim": 0.7
 		},
+		"a-retrospect": {
+			"ground": "d3166331f6beff1bc85dc4b336357ae441aeb869b81775064ae7f669d23c84f9",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"a-short-and-easy-method-of-prayer": {
 			"ground": "d6b8f71d8325be736feb6e3aca9d6df1f45a9168a6ab776058e9636cbce17cb1",
 			"style": "devotional",
