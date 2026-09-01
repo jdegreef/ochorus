@@ -37,6 +37,45 @@ EXCLUDED_SLUGS: set[str] = {
 }
 
 CORRECTIONS: dict[str, dict] = {
+    "holy-in-christ": {
+        # A thirty-one-day devotional. The 31 daily chapters imported all
+        # titled "Holy in Christ" (the repeated running header); this edition
+        # keeps the day THEMES only in the Contents. Titles from there (order
+        # 2-32 = Day 1-31); ch1 Preface and ch33 Notes keep their own titles.
+        "chapter_titles": {
+            2: 'God’s Call to Holiness',
+            3: 'God’s Provision for Holiness',
+            4: 'Holiness and Creation',
+            5: 'Holiness and Revelation',
+            6: 'Holiness and Redemption',
+            7: 'Holiness and Glory',
+            8: 'Holiness and Obedience',
+            9: 'Holiness and Indwelling',
+            10: 'Holiness and Meditation',
+            11: 'Holiness and Separation',
+            12: 'The Holy One of Israel',
+            13: 'The Thrice Holy One',
+            14: 'Holiness and Humility',
+            15: 'The Holy One of God',
+            16: 'The Holy Spirit',
+            17: 'Holiness and Truth',
+            18: 'Holiness and Crucifixion',
+            19: 'Holiness and Faith',
+            20: 'Holiness and Resurrection',
+            21: 'Holiness and Liberty',
+            22: 'Holiness and Happiness',
+            23: 'In Christ our Sanctification',
+            24: 'Holiness and the Body',
+            25: 'Holiness and Cleansing',
+            26: 'Holiness and Blamelessness',
+            27: 'Holiness and the Will of God',
+            28: 'Holiness and Service',
+            29: 'The Way into the Holiest',
+            30: 'Holiness and Chastisement',
+            31: 'The Unction from the Holy One',
+            32: 'Holiness and Heaven',
+        },
+    },
     "ministry-of-intercession": {
         # This edition prints chapter titles only in the Contents (chapter
         # bodies open with a bare "CHAPTER N" then the scripture epigraph), so

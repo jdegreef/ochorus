@@ -397,6 +397,12 @@ BOOKS: list[BookEntry] = [
     BookEntry("ministry-of-intercession", "The Ministry of Intercession",
               "andrew-murray", "gutenberg", "29296",
               subtitle="A Plea for More Prayer", cover_color="#0b7285"),
+    # Holy in Christ (1887, Gutenberg #26990) — a thirty-one-day devotional on
+    # holiness, same daily-reading shape as Waiting on God.
+    BookEntry("holy-in-christ", "Holy in Christ", "andrew-murray",
+              "gutenberg", "26990",
+              subtitle="Thoughts on the Calling of God's Children to Be Holy as He Is Holy",
+              cover_color="#1864ab"),
     BookEntry("around-the-wicket-gate", "Around the Wicket Gate", "charles-h-spurgeon",
               "gutenberg", "60669",
               subtitle="A Friendly Talk with Seekers", cover_color="#a61e4d"),

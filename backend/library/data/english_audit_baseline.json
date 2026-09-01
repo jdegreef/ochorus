@@ -62,6 +62,9 @@
   "himself": {
    "space-before-punct": 1
   },
+  "holy-in-christ": {
+   "space-before-punct": 1
+  },
   "humility-2": {
    "orphan-close-quote": 2,
    "run-together": 1,
