@@ -86,6 +86,32 @@ describe('readingSync.clearOnSignOut', () => {
 		}
 	});
 
+	it('pushProgress sends the record\'s client timestamp for recency', async () => {
+		const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+			new Response('{}', { status: 200 })
+		);
+		vi.useFakeTimers();
+		try {
+			readingSync.setSignedIn(true);
+			readingSync.pushProgress('book', 'humility', {
+				order: 8,
+				paragraph_index: 2,
+				language: 'en',
+				at: 1234
+			});
+			await vi.runAllTimersAsync();
+			const [url, init] = fetchSpy.mock.calls[0];
+			expect(String(url)).toContain('/api/reading/progress/humility/');
+			// The server keeps a newer position when a stale tab flushes late, so
+			// the push must carry the record's client time.
+			expect(JSON.parse(String(init?.body))).toMatchObject({ chapter_order: 8, updated_at: 1234 });
+		} finally {
+			fetchSpy.mockRestore();
+			vi.useRealTimers();
+			readingSync.setSignedIn(false);
+		}
+	});
+
 	it('pushPlan PUTs a plan\'s progress when signed in', async () => {
 		const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
 			new Response('{}', { status: 200 })

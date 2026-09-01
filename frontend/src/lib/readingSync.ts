@@ -143,7 +143,11 @@ class ReadingSync {
 					kind,
 					language: rec.language,
 					chapter_order: rec.order,
-					paragraph_index: rec.paragraph_index
+					paragraph_index: rec.paragraph_index,
+					// The record's client-clock time, so the server keeps a newer
+					// position when a stale tab flushes a late push (recency is judged
+					// against the client's own clock — see reading/views _upsert_progress).
+					updated_at: rec.at
 				})
 			})
 				.then(() => this.#markSynced())

@@ -25,7 +25,6 @@ from .marks import (
     clean_mark_list,
     clean_tombstones,
     from_legacy,
-    merge_mark_lists,
     reconcile_marks,
 )
 from .models import (
@@ -249,6 +248,99 @@ def _now_ms() -> int:
     return int(datetime.now(UTC).timestamp() * 1000)
 
 
+def _upsert_progress(
+    profile, kind, slug, *, language, chapter_order, paragraph_index, client_dt, keep_server_when_unknown
+):
+    """Upsert one reading-position row, keeping the server's when it is newer.
+
+    The recency rule is SHARED by the live PUT and the sign-in merge so both
+    resolve a conflict identically: a stale device — a backgrounded tab flushing
+    a debounced push, an old localStorage bundle — can't rewind a position a
+    newer device already recorded. It compares the incoming ``client_dt`` against
+    the row's stored ``client_updated_at`` (both client-clock) rather than the
+    server's ``updated_at`` (auto_now); comparing to the server clock would freeze
+    any device whose clock lags the server, since after each save the server time
+    is ~now and the lagging device's next timestamp is behind it.
+
+    Progress is last-write-wins, not a union, so no row lock is needed: a race
+    just picks a momentary winner and self-heals on the next read (contrast marks
+    / plan progress, which union and so must lock — see ``_upsert_marks_locked``).
+
+    ``keep_server_when_unknown`` differs by caller. The live PUT passes False: a
+    PUT is an ACTIVE write, and an old client that sends no timestamp must still
+    be able to save. The merge passes True: an untimestamped bundle is stale local
+    state, so it must not overwrite a newer server position it can't out-date.
+    """
+    existing = ReadingProgress.objects.filter(
+        profile=profile, kind=kind, book_slug=slug
+    ).first()
+    if existing:
+        stored = existing.client_updated_at
+        if client_dt is not None and stored is not None and stored >= client_dt:
+            return existing
+        if client_dt is None and keep_server_when_unknown:
+            return existing
+    obj, _ = ReadingProgress.objects.update_or_create(
+        profile=profile,
+        kind=kind,
+        book_slug=slug,
+        defaults={
+            "language": language,
+            "chapter_order": chapter_order,
+            "paragraph_index": paragraph_index,
+            "client_updated_at": client_dt,
+        },
+    )
+    return obj
+
+
+def _upsert_marks_locked(profile, kind, slug, order, *, language, marks, tombs, now_ms):
+    """Reconcile one chapter's marks into the reader's row under a row lock.
+
+    Same create-then-lock-then-reconcile shape (and reasoning) as
+    ``_upsert_plan_progress``: without the lock two devices merging at once both
+    read the same server marks and the second write clobbers the first's union,
+    dropping a highlight the merge promises never to drop. The row is created
+    first (so there is a tuple to lock — ``SELECT … FOR UPDATE`` on a not-yet-
+    existing row locks nothing), then locked and reconciled. Returns the row, or
+    None when nothing remains to store.
+
+    An empty incoming (no marks, no tombstones) is a no-op — it neither adds nor
+    deletes — so the existing row is returned untouched without taking the lock.
+    """
+    if not marks and not tombs:
+        return ChapterMarks.objects.filter(
+            profile=profile, kind=kind, book_slug=slug, chapter_order=order
+        ).first()
+    with transaction.atomic():
+        obj, _ = ChapterMarks.objects.get_or_create(
+            profile=profile,
+            kind=kind,
+            book_slug=slug,
+            chapter_order=order,
+            defaults={"language": language, "marks": [], "deleted": {}},
+        )
+        locked = ChapterMarks.objects.select_for_update().get(pk=obj.pk)
+        server_marks = locked.marks or from_legacy(locked.highlights, locked.notes)
+        merged, merged_tombs = reconcile_marks(
+            server_marks, locked.deleted or {}, marks, tombs, now_ms
+        )
+        # Keep an empty row alive while it still carries tombstones — dropping it
+        # would let a stale device re-push the deleted marks and win.
+        if not merged and not merged_tombs:
+            locked.delete()
+            return None
+        locked.language = language
+        locked.marks = merged
+        locked.deleted = merged_tombs
+        locked.highlights = []
+        locked.notes = {}
+        locked.save(
+            update_fields=["language", "marks", "deleted", "highlights", "notes", "updated_at"]
+        )
+    return locked
+
+
 class StateView(APIView):
     """The reader's entire synced state — every progress row and chapter's marks.
 
@@ -277,15 +369,16 @@ class ProgressView(APIView):
         kind = _kind_or_none(request.query_params.get("kind") or data.get("kind"))
         if kind is None:
             return Response({"detail": "Unknown kind."}, status=400)
-        obj, _ = ReadingProgress.objects.update_or_create(
-            profile=profile,
-            kind=kind,
-            book_slug=slug,
-            defaults={
-                "language": _lang(data.get("language")),
-                "chapter_order": _clamp_int(data.get("chapter_order"), default=1, low=1, high=MAX_CHAPTER_ORDER),
-                "paragraph_index": _clamp_int(data.get("paragraph_index"), default=0, high=MAX_CHAPTER_ORDER),
-            },
+        obj = _upsert_progress(
+            profile,
+            kind,
+            slug,
+            language=_lang(data.get("language")),
+            chapter_order=_clamp_int(data.get("chapter_order"), default=1, low=1, high=MAX_CHAPTER_ORDER),
+            paragraph_index=_clamp_int(data.get("paragraph_index"), default=0, high=MAX_CHAPTER_ORDER),
+            client_dt=_ms_to_dt(data.get("updated_at")),
+            # An active write: an old client without a timestamp must still save.
+            keep_server_when_unknown=False,
         )
         return Response(ReadingProgressSerializer(obj).data)
 
@@ -339,42 +432,22 @@ class MarksView(APIView):
             )
             return Response(ChapterMarksSerializer(obj).data)
 
-        # Tombstone protocol: lock the row so two devices' concurrent read-merge-
-        # write can't lose one another's marks, then reconcile.
-        incoming_tombs = clean_tombstones(data.get("deleted"))
-        with transaction.atomic():
-            row = (
-                ChapterMarks.objects.select_for_update()
-                .filter(profile=profile, kind=kind, book_slug=slug, chapter_order=order)
-                .first()
-            )
-            server_marks = (
-                (row.marks or from_legacy(row.highlights, row.notes)) if row else []
-            )
-            server_tombs = (row.deleted or {}) if row else {}
-            merged, tombs = reconcile_marks(
-                server_marks, server_tombs, marks, incoming_tombs, _now_ms()
-            )
-            # Keep an empty row alive while it still carries tombstones — dropping
-            # it would let a stale device re-push the deleted marks and win.
-            if not merged and not tombs:
-                if row:
-                    row.delete()
-                return Response({"marks": []})
-            obj, _ = ChapterMarks.objects.update_or_create(
-                profile=profile,
-                kind=kind,
-                book_slug=slug,
-                chapter_order=order,
-                defaults={
-                    "language": _lang(data.get("language")),
-                    "marks": merged,
-                    "deleted": tombs,
-                    "highlights": [],
-                    "notes": {},
-                },
-            )
-        return Response(ChapterMarksSerializer(obj).data)
+        # Tombstone protocol: reconcile under a row lock (the shared helper) so two
+        # devices' concurrent merges can't lose one another's marks. None back means
+        # the chapter has neither marks nor tombstones left.
+        row = _upsert_marks_locked(
+            profile,
+            kind,
+            slug,
+            order,
+            language=_lang(data.get("language")),
+            marks=marks,
+            tombs=clean_tombstones(data.get("deleted")),
+            now_ms=_now_ms(),
+        )
+        if row is None:
+            return Response({"marks": []})
+        return Response(ChapterMarksSerializer(row).data)
 
 
 class SermonMarksView(APIView):
@@ -573,7 +646,6 @@ class MergeView(APIView):
     def _merge_progress(self, profile, incoming):
         if not isinstance(incoming, list):
             return
-        existing = {(p.kind, p.book_slug): p for p in profile.progress.all()}
         for row in incoming[:MAX_MERGE_ROWS]:
             if not isinstance(row, dict):
                 continue
@@ -581,28 +653,22 @@ class MergeView(APIView):
             kind = _kind_or_none(row.get("kind"))
             if not _valid_slug(slug) or kind is None:
                 continue
-            local_dt = _ms_to_dt(row.get("updated_at"))
-            server = existing.get((kind, slug))
-            # Keep the server row unless the local one is strictly newer.
-            if server and local_dt and server.updated_at >= local_dt:
-                continue
-            ReadingProgress.objects.update_or_create(
-                profile=profile,
-                kind=kind,
-                book_slug=slug,
-                defaults={
-                    "language": _lang(row.get("language")),
-                    "chapter_order": _clamp_int(row.get("chapter_order"), default=1, low=1, high=MAX_CHAPTER_ORDER),
-                    "paragraph_index": _clamp_int(row.get("paragraph_index"), default=0, high=MAX_CHAPTER_ORDER),
-                },
+            _upsert_progress(
+                profile,
+                kind,
+                slug,
+                language=_lang(row.get("language")),
+                chapter_order=_clamp_int(row.get("chapter_order"), default=1, low=1, high=MAX_CHAPTER_ORDER),
+                paragraph_index=_clamp_int(row.get("paragraph_index"), default=0, high=MAX_CHAPTER_ORDER),
+                client_dt=_ms_to_dt(row.get("updated_at")),
+                # Stale local state must not overwrite a newer server position it
+                # can't out-date; an untimestamped row keeps the server's.
+                keep_server_when_unknown=True,
             )
 
     def _merge_marks(self, profile, incoming):
         if not isinstance(incoming, list):
             return
-        existing = {
-            (m.kind, m.book_slug, m.chapter_order): m for m in profile.marks.all()
-        }
         now_ms = _now_ms()
         for row in incoming[:MAX_MERGE_ROWS]:
             if not isinstance(row, dict):
@@ -614,34 +680,18 @@ class MergeView(APIView):
             # a junk chapter-0 row; require a real 1-based order instead.
             if not _valid_slug(slug) or kind is None or order is None:
                 continue
-            marks = _marks_from_payload(row)
-            server = existing.get((kind, slug, order))
-            # A pre-conversion server row folds its legacy fields in too. Reconcile
-            # with tombstones so a highlight a reader deleted offline stays deleted
-            # instead of the union resurrecting it on sign-in.
-            server_marks = (
-                (server.marks or from_legacy(server.highlights, server.notes))
-                if server
-                else []
-            )
-            server_tombs = (server.deleted or {}) if server else {}
-            marks, tombs = reconcile_marks(
-                server_marks, server_tombs, marks, clean_tombstones(row.get("deleted")), now_ms
-            )
-            if not marks and not tombs:
-                continue
-            ChapterMarks.objects.update_or_create(
-                profile=profile,
-                kind=kind,
-                book_slug=slug,
-                chapter_order=order,
-                defaults={
-                    "language": _lang(row.get("language")),
-                    "marks": marks,
-                    "deleted": tombs,
-                    "highlights": [],
-                    "notes": {},
-                },
+            # The locked reconcile unions marks and applies tombstones (so a
+            # highlight deleted offline stays deleted) under a row lock — two
+            # devices merging at once can't lose each other's marks.
+            _upsert_marks_locked(
+                profile,
+                kind,
+                slug,
+                order,
+                language=_lang(row.get("language")),
+                marks=_marks_from_payload(row),
+                tombs=clean_tombstones(row.get("deleted")),
+                now_ms=now_ms,
             )
 
     def _merge_sermon_marks(self, profile, incoming):
@@ -650,31 +700,25 @@ class MergeView(APIView):
         non-list is ignored and non-dict rows skipped."""
         if not isinstance(incoming, list):
             return
+        now_ms = _now_ms()
         for row in incoming[:MAX_MERGE_ROWS]:
             if not isinstance(row, dict):
                 continue
             slug = row.get("sermon_slug")
             if not _valid_slug(slug):
                 continue
-            marks = _marks_from_payload(row)
-            server = ChapterMarks.objects.filter(
-                profile=profile, kind=WorkKind.SERMON, book_slug=slug, chapter_order=1
-            ).first()
-            if server:
-                marks = merge_mark_lists(server.marks or [], marks)
-            if not marks:
-                continue
-            ChapterMarks.objects.update_or_create(
-                profile=profile,
-                kind=WorkKind.SERMON,
-                book_slug=slug,
-                chapter_order=1,
-                defaults={
-                    "language": _lang(row.get("language")),
-                    "marks": marks,
-                    "highlights": [],
-                    "notes": {},
-                },
+            # Old bundles carry no tombstones here, so this is a plain union —
+            # but routed through the same locked reconcile as every other mark
+            # write, so a concurrent merge can't drop a sermon highlight either.
+            _upsert_marks_locked(
+                profile,
+                WorkKind.SERMON,
+                slug,
+                1,
+                language=_lang(row.get("language")),
+                marks=_marks_from_payload(row),
+                tombs={},
+                now_ms=now_ms,
             )
 
 
