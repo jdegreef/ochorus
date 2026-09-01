@@ -15,7 +15,7 @@ from rest_framework.views import APIView
 
 from accounts.permissions import IsAdminEmail
 
-from . import upload_import
+from . import invalidation, upload_import
 from .audit import AdminAudited, AdminNotAudited
 from .languages import known_codes, language_map
 from .models import AdminAction, Author
@@ -167,6 +167,9 @@ class AdminImportPublishView(AdminAudited, APIView):
                 )
             except upload_import.ParseError as exc:
                 return Response({"detail": str(exc)}, status=400)
+            # A new published book is reader-visible now but on prerendered pages
+            # only after a rebuild — trigger it (and bump the content revision).
+            invalidation.mark_content_changed()
             return Response(
                 {
                     "kind": "book",
@@ -196,6 +199,7 @@ class AdminImportPublishView(AdminAudited, APIView):
             )
         except upload_import.ParseError as exc:
             return Response({"detail": str(exc)}, status=400)
+        invalidation.mark_content_changed()
         return Response(
             {"kind": "sermon", "slug": sermon.slug, "title": sermon.title, "path": f"/sermons/{sermon.slug}"},
             status=201,

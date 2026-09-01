@@ -12,6 +12,7 @@ from rest_framework.views import APIView
 
 from accounts.permissions import IsAdminEmail
 
+from .. import invalidation
 from ..audit import AdminAudited
 from ..languages import entry as language_entry
 from ..models import (
@@ -469,6 +470,10 @@ class AdminReviewQueueView(AdminAudited, APIView):
                 continue
             done.append({"kind": kind, "slug": slug, "language": language})
 
+        # Any decision flips a reader-visible "awaiting native review" badge, so
+        # rebuild the reader (once for the whole batch, after the rows committed).
+        if done:
+            invalidation.mark_content_changed()
         # 207: a batch where some rows were held back is a normal result, not a
         # failure — one ineligible row must not reject the other twenty-four.
         status = 200 if not skipped else (400 if not done else 207)
@@ -543,6 +548,8 @@ class AdminReviewQueueView(AdminAudited, APIView):
                 ).delete()
         except _Skip as skip:
             return Response({"detail": str(skip)}, status=404)
+        # Undo returns the item to the queue (re-shows the badge) — reader-visible.
+        invalidation.mark_content_changed()
         return Response({"ok": True, "kind": kind, "slug": slug, "language": language})
 
 

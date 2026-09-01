@@ -1238,3 +1238,41 @@ class AdminAction(models.Model):
 
     def __str__(self) -> str:
         return f"{self.action} {self.target} by {self.actor or 'unknown'}"
+
+
+class ContentRevision(models.Model):
+    """A monotonic counter of reader-visible content changed THROUGH the API.
+
+    The prerendered reader and the public API's ETags both need to know when
+    admin-borne content changed *without a deploy* — an import publish, a review
+    approval, a language go-live. The repo content digest can't see those: it
+    hashes files on disk, and those actions touch only the DB (library/http_cache
+    spells this out). So every such mutation bumps this counter, through the one
+    channel in ``library/invalidation.py``; the counter drives the deploy hook (so
+    the static site rebuilds) and will key the public ETag (so a conditional
+    request stops answering 304 the moment content changes).
+
+    One row (``pk=1``). ``deploy_fired_*`` record the last hook fire so a burst of
+    approvals coalesces into few rebuilds without leaving a change un-deployed.
+    """
+
+    revision = models.BigIntegerField(default=0)
+    updated_at = models.DateTimeField(auto_now=True)
+    deploy_fired_at = models.DateTimeField(null=True, blank=True)
+    deploy_fired_revision = models.BigIntegerField(default=0)
+
+    def __str__(self) -> str:
+        return f"content revision {self.revision}"
+
+    @classmethod
+    def bump(cls) -> int:
+        """Increment the revision atomically and return the new value."""
+        cls.objects.get_or_create(pk=1)
+        # F() so two concurrent mutations can't both read N and write N+1.
+        cls.objects.filter(pk=1).update(revision=models.F("revision") + 1)
+        return cls.objects.values_list("revision", flat=True).get(pk=1)
+
+    @classmethod
+    def load(cls) -> "ContentRevision":
+        obj, _ = cls.objects.get_or_create(pk=1)
+        return obj
