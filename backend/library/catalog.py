@@ -464,6 +464,12 @@ BOOKS: list[BookEntry] = [
     # it up unmodified wherever the web is reachable.
     BookEntry("a-retrospect", "A Retrospect", "hudson-taylor",
               "gutenberg", "26744", cover_color="#862e9c"),
+    # Unfailing Springs (Gutenberg #57109) — a short single-essay exposition of
+    # John 4 (the living water). Headingless, so it imports as one chapter;
+    # the content_root START/END-marker fix strips the licence wrapper that this
+    # 2018-era mirror carries with no boilerplate class.
+    BookEntry("unfailing-springs", "Unfailing Springs", "hudson-taylor",
+              "gutenberg", "57109", cover_color="#862e9c"),
     # Separation and Service (1898, Gutenberg #26384) — one continuous
     # exposition of Numbers 6–7 across ~30 short sections. Described as
     # "addresses" but a single book-length argument by structure and size, so it

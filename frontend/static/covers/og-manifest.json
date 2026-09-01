@@ -1068,6 +1068,13 @@
 			"art": true,
 			"scrim": 0.95
 		},
+		"unfailing-springs": {
+			"ground": "9b2979902a49b2d4cc7c4f22da4bd237f8b6ceb447c51fe1a433c0c3fd0ec513",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"union-and-communion": {
 			"ground": "526cff85d67cbd9bd08c0b5116e2bcfbb07b1b84c81d11f66b5104d0a2245b50",
 			"style": "revival",
