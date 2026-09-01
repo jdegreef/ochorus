@@ -396,6 +396,13 @@
 			"art": true,
 			"scrim": 0.6
 		},
+		"holy-in-christ": {
+			"ground": "534fe06a744aab7ea045b1225fd92df566fee50902a5f5c1269376f822911d11",
+			"style": "devotional",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"if": {
 			"ground": "0c65bcb9120c231a9934c71eb12065665162accd56ddffed98cf593540cbb2b0",
 			"style": "devotional",

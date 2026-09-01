@@ -319,6 +319,22 @@ dropped; chapters under 120 words are dropped as stubs.
   heading-size blocks near page edges) before treating as noise. Likewise
   10–15k-word chapters can be the author's real structure (Torrey, Nee) —
   check the PDF TOC before splitting. *(2026-07)*
+- **A Gutenberg `<h3>Transcriber's Notes</h3>` block leaks into the LAST
+  chapter.** The trailing transcriber note is an `<h3>` nested inside the final
+  `<h2>` chapter (below the tag `split_by_heading` split on), so it is never its
+  own section and `is_front_matter` never sees it — it rides in the last
+  chapter's body, and its stripped page refs ("On page ,") show up as
+  `space-before-punct`. Fix per-book: a `BODY_CORRECTIONS` replacement removing
+  the exact `<h3>Transcriber's Notes</h3>…` trailing string (capture the bytes
+  from the DB rather than hand-typing the curly quotes). Common enough across
+  Gutenberg editions that a general ingest strip may be worth it if it recurs.
+  *(ministry-of-intercession, 2026-09)*
+- **This-edition-only chapter titles live in the CONTENTS, not the chapter
+  openings.** Some Gutenberg editions (e.g. Murray #29296) open each chapter
+  with a bare "CHAPTER N" then the scripture epigraph — no descriptive title in
+  the body at all — so every core chapter imports untitled. The titles are in
+  the Contents table (as ALL-CAPS text beside page-number links); read them from
+  there and supply a per-book `chapter_titles`. *(2026-09)*
 - **Known limits (unfixed):** a book whose Introduction heading is fused with
   its body text in one block loses that intro (feasting-at-the-table); a drop
   cap belonging mid-paragraph after a scripture-ref merge isn't reattached
