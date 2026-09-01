@@ -319,6 +319,13 @@
 			"art": true,
 			"scrim": 0.95
 		},
+		"gleanings-among-the-sheaves": {
+			"ground": "4d159092144091f8213712cc67f408e7ea6beda437b6e17abf22acebd34af3cf",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"grace-abounding": {
 			"ground": "b9a29734b5a2d4efd0ad4c60c44def4907123af14a7a74c0da07cc4a1c4d718a",
 			"style": "press",

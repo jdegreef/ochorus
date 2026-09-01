@@ -335,6 +335,23 @@ dropped; chapters under 120 words are dropped as stubs.
   the body at all — so every core chapter imports untitled. The titles are in
   the Contents table (as ALL-CAPS text beside page-number links); read them from
   there and supply a per-book `chapter_titles`. *(2026-09)*
+- **An extract collection (many tiny standalone pieces) → thematic chapters via
+  a one-off build script, NOT the importer.** Spurgeon's *Gleanings Among the
+  Sheaves* (#42657) is 146 short titled extracts with no grouping;
+  `import_gutenberg` makes 146 flat chapters or (worse) drops them all under the
+  300-word `_TINY_SECTION_WORDS` filter that `extract_chapters` applies. Instead
+  write a committed build script (`scripts/build_gleanings.py` is the model):
+  reuse `split_by_heading(root, "h3")` — which cleans each body with
+  `clean_fragment` but does NOT stub-filter — apply a title→theme mapping (the
+  editorial content, kept in the script for reproducibility), and upsert the
+  Book + N chapters through the model, each chapter concatenating its extracts
+  as `<h3>{title}</h3>{body}` in source order. **Give it NO `catalog.py` entry**,
+  or a stray `import_gutenberg <slug>` re-imports it flat and clobbers the
+  grouping. Two gotchas: `RestatedChapterHeadingTests` fails if a chapter opens
+  with an `<h3>` that repeats its own title, so order any extract whose title
+  equals the theme LAST (a stable sort on `title.casefold() == theme.casefold()`
+  does it); and lint runs in CI before the tests — `ruff check scripts/<file>.py`
+  locally, the seeds/gates don't catch C408 (`dict()` → literal) etc. *(2026-09)*
 - **Known limits (unfixed):** a book whose Introduction heading is fused with
   its body text in one block loses that intro (feasting-at-the-table); a drop
   cap belonging mid-paragraph after a scripture-ref merge isn't reattached
