@@ -19,7 +19,7 @@ from django.urls import reverse
 from rest_framework.test import APIClient
 
 from .http_cache import MAX_AGE
-from .models import Author, Book, Chapter, Language, SearchQueryLog
+from .models import Author, Book, Chapter, ContentRevision, Language, SearchQueryLog
 
 REAL_CACHE = override_settings(
     CACHES={
@@ -77,16 +77,37 @@ class CacheControlHeaderTests(TestCase):
         """A stuck cache is the failure mode being avoided; keep max-age small."""
         self.assertLessEqual(MAX_AGE, 300)
 
-    def test_no_etag_is_offered(self):
-        """Deliberate — see http_cache.py.
+    def test_a_conditional_request_returns_304_without_querying(self):
+        url = reverse("book-list")
+        first = self.client.get(url)
+        etag = first.headers.get("ETag")
+        self.assertTrue(etag and etag.startswith('W/"'), etag)
 
-        An ETag keyed on the content digest cannot see an admin publishing a
-        book, so it would answer 304 against an unchanged digest indefinitely.
-        Bounded staleness is the safe half; conditional requests need an
-        `updated_at` the content models do not all have.
-        """
-        res = self.client.get(reverse("book-list"))
-        self.assertIsNone(res.headers.get("ETag"))
+        with CaptureQueriesContext(connection) as full:
+            self.client.get(url)
+        with CaptureQueriesContext(connection) as conditional:
+            res = self.client.get(url, HTTP_IF_NONE_MATCH=etag)
+
+        self.assertEqual(res.status_code, 304)
+        self.assertFalse(res.content)  # a 304 carries no body
+        # The 304 is answered before the queryset — strictly fewer queries.
+        self.assertLess(len(conditional.captured_queries), len(full.captured_queries))
+
+    def test_a_content_change_busts_the_etag(self):
+        # The whole point over a digest-only tag: an admin mutation (which bumps
+        # ContentRevision) invalidates the client's cached tag, so it re-fetches.
+        url = reverse("book-list")
+        stale = self.client.get(url).headers["ETag"]
+        ContentRevision.bump()
+        res = self.client.get(url, HTTP_IF_NONE_MATCH=stale)
+        self.assertEqual(res.status_code, 200)
+        self.assertNotEqual(res.headers["ETag"], stale)
+
+    def test_the_etag_is_per_url(self):
+        # A client holding the /books tag must not be told 304 for /authors.
+        books = self.client.get(reverse("book-list")).headers["ETag"]
+        res = self.client.get(reverse("author-list"), HTTP_IF_NONE_MATCH=books)
+        self.assertEqual(res.status_code, 200)
 
     def test_search_is_not_cached(self):
         """Query-dependent, and it writes a log row per call."""

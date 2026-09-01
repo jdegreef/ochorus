@@ -1358,8 +1358,9 @@ class BookCardPayloadTests(TestCase):
         # field, and each field used to re-run its own query — on a page the
         # prerender walks once per author per locale. This was 15; the number
         # is pinned rather than bounded so a reintroduced repeat shows up as a
-        # failure with the query list attached.
-        with self.assertNumQueries(10):
+        # failure with the query list attached. The +1 over the view's 10 is the
+        # one constant read the ETag adds (the content revision — not per-row).
+        with self.assertNumQueries(11):
             self.client.get("/api/library/authors/murray/?language=en")
 
 
