@@ -572,6 +572,11 @@ BOOKS: list[BookEntry] = [
     BookEntry("reality-of-prayer", "The Reality of Prayer", "e-m-bounds",
               "gutenberg", "73032",
               subtitle="The Life That Prays", cover_color="#5c2a3e"),
+    # Essentials of Prayer (1925, Gutenberg #73271) — companion posthumous
+    # prayer volume; clean chapterised Gutenberg source.
+    BookEntry("essentials-of-prayer", "The Essentials of Prayer", "e-m-bounds",
+              "gutenberg", "73271",
+              subtitle="What Prayer Requires of the One Who Prays", cover_color="#5c2a3e"),
     # Sibbes is on neither CCEL (`ccel/sibbes` 404s) nor Gutenberg — the gap the
     # archive source exists to close. Grosart's collected edition rather than the
     # 1878 standalone printing: same book, half the OCR damage (0.17% suspect

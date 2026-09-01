@@ -783,24 +783,34 @@ seeding a scratch DB from every fixture EXCEPT the new one, then running
 yourself.** The script is a fixture→fixture round-trip (fresh scratch DB →
 `loaddata` every committed fixture → `dumpdata`); it never reads your dev DB, so
 a freshly imported book is simply absent from its output and the import silently
-ships as nothing. Serialize the book yourself, then re-run the regen to
-canonicalise the formatting and prove the file loads:
+ships as nothing. Serialize the book yourself — and **write the serializer's own
+`indent=1` output DIRECTLY**, which already IS the canonical dumpdata format
+(record braces at column 0, no `pk`), so you do NOT need the full regen:
 ```bash
 DJANGO_DEBUG=true uv run python manage.py shell -c "
-import json; from django.core import serializers; from library.models import Book
+from django.core import serializers; from library.models import Book
 b = Book.objects.get(slug='SLUG', language='en')
-rows = json.loads(serializers.serialize('json', [b, *b.chapters.order_by('order')],
-    use_natural_primary_keys=True, use_natural_foreign_keys=True))
-for r in rows: r.pop('pk', None)
-open('library/fixtures/content/books/SLUG.en.json','w').write(
-    json.dumps(rows, ensure_ascii=False, indent=1) + '\n')"
-DJANGO_DEBUG=true uv run python scripts/regen_fixture.py   # rewrites it in dumpdata style
+out = serializers.serialize('json', [b, *b.chapters.order_by('order')],
+    indent=1, use_natural_primary_keys=True, use_natural_foreign_keys=True)
+open('library/fixtures/content/books/SLUG.en.json','w').write(out + '\n')"
 ```
-The second step matters for more than tidiness: `json.dump(indent=1)` indents the
-top-level list items and `dumpdata` does not, so skipping it commits a file that
-differs from every other fixture. If the regen aborts, that is a pre-existing
-field-drift problem and NOT your import: see the `N unexpected new field(s)`
-entry above. *(Confessions, 2026-07)*
+Do NOT `json.loads` → `pop('pk')` → `json.dumps(indent=1)`: re-dumping indents
+the top-level list items and `dumpdata` does not, so that path commits a file
+that differs from every other fixture (the reason the old snippet then ran a
+full regen). `serializers.serialize` with natural keys already omits `pk` and
+formats it right — one file, no regen. **Prefer this over `regen_fixture.py` for
+a single new book**: the full regen reformats the ~43 drifted translation
+fixtures too, burying a one-file addition in a corpus-wide diff. (Reserve the
+full regen for the deliberate corpus-regen job; if it aborts with `N unexpected
+new field(s)`, that is pre-existing field drift, not your import — see that
+entry above.) *(verified byte-identical to committed fixtures, 2026-09)*
+
+**Write the fixture file BEFORE `npm run og:covers`.** The og twin generator
+enumerates books from the COMMITTED `content/books/*.json` files, not the DB, so
+running it before the fixture exists reports the new book as absent and writes no
+twin (`wrote 0 of N twins`) — and `tests_fixture` then reds on the missing raster
+twin. Order: import → `generate_covers` → write fixture → `npm run og:covers`.
+*(2026-09)*
 
 **ochorus.com no longer serves `/pdfs/<slug>.pdf`** (404 as of 2026-07) — every
 `import_ochorus` re-import fails at the fetch. It fails safely, leaving existing
