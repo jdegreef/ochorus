@@ -5,8 +5,12 @@
 # with Dependabot alerts on in the repo's Security settings, security PRs) so a
 # vulnerability is surfaced and actionable rather than silent.
 #
-# Updates are grouped per ecosystem into one PR so a fast-moving main isn't
-# flooded — each still runs CI before it can merge.
+# Minor + patch updates are grouped per ecosystem into ONE PR so a fast-moving
+# main isn't flooded. MAJOR updates are deliberately left out of the group and
+# come as their own PRs: a single incompatible major (e.g. typescript 7, which
+# svelte-check doesn't yet support) grouped with everything else fails the whole
+# batch's `npm ci`/CI and blocks 20+ safe updates. On its own PR, a breaking
+# major is reviewed and held or fixed in isolation. Each still runs CI to merge.
 version: 2
 updates:
   # Python API (uv / pyproject.toml + uv.lock).
@@ -18,6 +22,7 @@ updates:
     groups:
       backend:
         patterns: ["*"]
+        update-types: ["minor", "patch"]
 
   # SvelteKit frontend.
   - package-ecosystem: "npm"
@@ -28,6 +33,7 @@ updates:
     groups:
       frontend:
         patterns: ["*"]
+        update-types: ["minor", "patch"]
 
   # The CI / prerender-audit workflows' own action versions.
   - package-ecosystem: "github-actions"
