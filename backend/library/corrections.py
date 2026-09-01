@@ -37,6 +37,20 @@ EXCLUDED_SLUGS: set[str] = {
 }
 
 CORRECTIONS: dict[str, dict] = {
+    "separation-and-service": {
+        # Taylor's exposition falls into an Introductory section and three Parts
+        # (I Separation to God, II The Blessing of God, III Princely Service).
+        # The importer took each chapter's SCRIPTURE REFERENCE ("Numb. vi. 1-21")
+        # as the title and left the descriptive heading in the body; these
+        # restore the Part names for a readable TOC. The 39 sub-section headings
+        # survive as <h3> inside the bodies.
+        "chapter_titles": {
+            1: "Introductory",
+            2: "Separation to God",
+            3: "The Blessing of God",
+            4: "Princely Service",
+        },
+    },
     "on-loving-god": {
         # The Patmore edition prints a long ALL-CAPS "argument" as each chapter
         # heading, wrapped across two OCR lines; the archive importer took the
@@ -304,6 +318,18 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 # `apply_body_corrections`, plus a data migration for prod).
 
 BODY_CORRECTIONS: dict[str, dict] = {
+    "separation-and-service": {
+        # Two chapters open with an <h3> that merely restates the chapter title
+        # (the importer borrowed the scripture ref as the title and left the
+        # descriptive heading in the body — the matching chapter_titles entry
+        # fixes the title). Drop the redundant leading heading so the chapter
+        # doesn't echo its own name. ch2's leading <h3> is a genuine sub-heading
+        # ("THE INSTITUTION OF THE ORDER OF NAZARITES") and is left alone.
+        "replacements": [
+            ("<h3>INTRODUCTORY.</h3> ", ""),
+            ("<h3>Princely Service.</h3> <h3> Numb. vii.</h3> ", ""),
+        ],
+    },
     "pilgrims-progress": {
         # The 1678 text carries an editor's marginal glosses. The extractor
         # emitted each note's in-text marker AND its label at the foot of the

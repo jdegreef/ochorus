@@ -458,6 +458,14 @@ BOOKS: list[BookEntry] = [
     # it up unmodified wherever the web is reachable.
     BookEntry("a-retrospect", "A Retrospect", "hudson-taylor",
               "gutenberg", "26744", cover_color="#862e9c"),
+    # Separation and Service (1898, Gutenberg #26384) — one continuous
+    # exposition of Numbers 6–7 across ~30 short sections. Described as
+    # "addresses" but a single book-length argument by structure and size, so it
+    # imports as a book, not sermons (see the book-import skill's Book-vs-Sermon
+    # note).
+    BookEntry("separation-and-service", "Separation and Service", "hudson-taylor",
+              "gutenberg", "26384",
+              subtitle="Thoughts on Numbers VI and VII", cover_color="#862e9c"),
     # Revival & Awakening — clean CCEL/Gutenberg sources.
     BookEntry("revival-lectures", "Lectures on Revivals of Religion", "charles-finney",
               "ccel", "finney/revivals",

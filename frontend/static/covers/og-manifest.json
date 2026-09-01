@@ -739,6 +739,13 @@
 			"art": true,
 			"scrim": 0.6
 		},
+		"separation-and-service": {
+			"ground": "5ae1db4d9e3c0a5a2a1871a103064d0936fa323dd2eae87570b549627b06f6ab",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"sermons-on-several-occasions": {
 			"ground": "7046ca3cbb052dda7c471547cde793c571bd3e54971626f92a851ccf02ea57f3",
 			"style": "enlightenment",
