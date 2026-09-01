@@ -305,6 +305,13 @@
 			"art": true,
 			"scrim": 0.6
 		},
+		"essentials-of-prayer": {
+			"ground": "f78b2607d20ea32b17e11e5fb4379abb8eeb156ab113bf355568fc7a033ec263",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"freedom-of-the-will": {
 			"ground": "4ea3b353acb149bbd8daf7c9bef83437620e1cd2a5acddd1c3d12c35016e92a2",
 			"style": "enlightenment",

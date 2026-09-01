@@ -37,6 +37,26 @@ EXCLUDED_SLUGS: set[str] = {
 }
 
 CORRECTIONS: dict[str, dict] = {
+    "essentials-of-prayer": {
+        # Same roman-prefix redundancy as its companion volume (the reader prints
+        # the chapter number), plus a spaced "( Continued )". Titles from the
+        # Contents, roman prefix dropped.
+        "chapter_titles": {
+            1: "Prayer Takes in the Whole Man",
+            2: "Prayer and Humility",
+            3: "Prayer and Devotion",
+            4: "Prayer, Praise and Thanksgiving",
+            5: "Prayer and Trouble",
+            6: "Prayer and Trouble (Continued)",
+            7: "Prayer and God’s Work",
+            8: "Prayer and Consecration",
+            9: "Prayer and a Definite Religious Standard",
+            10: "Prayer Born of Compassion",
+            11: "Concerted Prayer",
+            12: "The Universality of Prayer",
+            13: "Prayer and Missions",
+        },
+    },
     "reality-of-prayer": {
         # The chapter headings carry a roman-numeral prefix (I … XVI) that only
         # duplicates the number the reader already prints, and the ALL-CAPS→Title
@@ -343,6 +363,14 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 # `apply_body_corrections`, plus a data migration for prod).
 
 BODY_CORRECTIONS: dict[str, dict] = {
+    "essentials-of-prayer": {
+        # A quoted hymn line broke across a line and rejoined with a space
+        # before the comma ("He has said He will , If we but trust"). Restore
+        # the comma spacing.
+        "replacements": [
+            ("He has said He will ,<br/>", "He has said He will,<br/>"),
+        ],
+    },
     "separation-and-service": {
         # Two chapters open with an <h3> that merely restates the chapter title
         # (the importer borrowed the scripture ref as the title and left the
