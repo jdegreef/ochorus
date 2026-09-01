@@ -900,6 +900,16 @@ class ProgressRecencyTests(TestCase):
         )
         self.assertEqual(self._state_order(), 8)
 
+    def test_a_live_put_still_advances_a_null_baseline_row(self):
+        # A row with no recency baseline (an old client wrote it with no timestamp)
+        # must not freeze the live PUT out of saving — an active write always lands.
+        ReadingProgress.objects.create(
+            profile=self.profile, kind="book", book_slug="humility",
+            chapter_order=8, client_updated_at=None,
+        )
+        self._put(9, at=1_000)
+        self.assertEqual(self._state_order(), 9)
+
 
 @skipUnless(connection.vendor == "postgresql", "row locking is a Postgres behaviour")
 class MarksConcurrentMergeTests(TransactionTestCase):
