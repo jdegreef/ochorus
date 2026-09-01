@@ -12,7 +12,6 @@ from unittest import mock
 
 import requests
 from django.test import TestCase, override_settings
-
 from rest_framework.test import APIClient
 
 from library import invalidation

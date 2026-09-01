@@ -1273,6 +1273,6 @@ class ContentRevision(models.Model):
         return cls.objects.values_list("revision", flat=True).get(pk=1)
 
     @classmethod
-    def load(cls) -> "ContentRevision":
+    def load(cls) -> ContentRevision:
         obj, _ = cls.objects.get_or_create(pk=1)
         return obj
