@@ -115,6 +115,20 @@ force if every paragraph is a box.
    reads, and it aborts on any pre-existing field drift (new model fields not
    yet in DEFAULTED_OK) that is NOT your change's fault. Full regens are a
    separate, deliberate job. NEVER bare `dumpdata library`.
+
+   **Store the SETTLED (sanitized) `bio_html`, not your raw HTML.** The fixture
+   loads via `loaddata`, which BYPASSES the model's sanitize step, and
+   `tests_sanitize.py` fails on any stored row where `clean_bio_html(row) != row`.
+   The trap is whitespace: `clean_bio_html` collapses the `\n\n` you put between
+   block tags down to a single space, so a pretty-printed bio is "unsettled" and
+   reddens the build. Run each bio through the sanitizer once and commit THAT:
+   ```python
+   from library.sanitize import clean_bio_html
+   settled = clean_bio_html(raw_html)          # idempotent: clean(settled)==settled
+   # set fields[...]["bio_html"] = settled, then dump the file (step above)
+   ```
+   Same trap, same fix, for a translated bio's `.html` file under
+   `library/migrations/data/author_bios_<lang>/`.
 5. **If the author ALREADY EXISTS on prod:** the short `bio` now ships from the
    fixture on its own; `bio_html` and `photo_url` still don't.
 
