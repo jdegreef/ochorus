@@ -37,6 +37,31 @@ EXCLUDED_SLUGS: set[str] = {
 }
 
 CORRECTIONS: dict[str, dict] = {
+    "reality-of-prayer": {
+        # The chapter headings carry a roman-numeral prefix (I … XVI) that only
+        # duplicates the number the reader already prints, and the ALL-CAPS→Title
+        # pass left a lowercase "the" and a spaced "( Continued )". clean_title
+        # deliberately leaves roman prefixes on mixed-case titles (they are
+        # referential in Edwards), so these are set per-book from the Contents.
+        "chapter_titles": {
+            1: "Prayer—A Privilege, Princely, Sacred",
+            2: "Prayer—Fills Man’s Poverty with God’s Riches",
+            3: "Prayer—The All-Important Essence of Earthly Worship",
+            4: "God Has Everything to Do with Prayer",
+            5: "Jesus Christ, the Divine Teacher of Prayer",
+            6: "Jesus Christ, the Divine Teacher of Prayer (Continued)",
+            7: "Jesus Christ an Example of Prayer",
+            8: "Prayer Incidents in the Life of Our Lord",
+            9: "Prayer Incidents in the Life of Our Lord (Continued)",
+            10: "Our Lord’s Model Prayer",
+            11: "Our Lord’s Sacerdotal Prayer",
+            12: "The Gethsemane Prayer",
+            13: "The Holy Spirit and Prayer",
+            14: "The Holy Spirit Our Helper in Prayer",
+            15: "The Two Comforters and Two Advocates",
+            16: "Prayer and the Holy Ghost Dispensation",
+        },
+    },
     "separation-and-service": {
         # Taylor's exposition falls into an Introductory section and three Parts
         # (I Separation to God, II The Blessing of God, III Princely Service).

@@ -567,6 +567,11 @@ BOOKS: list[BookEntry] = [
               "ccel", "bounds/prayingmen",
               subtitle="Nine Men of the Bible and How They Prayed",
               cover_color="#5c2a3e"),
+    # The Reality of Prayer (1924, Gutenberg #73032) — one of the posthumous
+    # prayer volumes; clean chapterised Gutenberg source.
+    BookEntry("reality-of-prayer", "The Reality of Prayer", "e-m-bounds",
+              "gutenberg", "73032",
+              subtitle="The Life That Prays", cover_color="#5c2a3e"),
     # Sibbes is on neither CCEL (`ccel/sibbes` 404s) nor Gutenberg — the gap the
     # archive source exists to close. Grosart's collected edition rather than the
     # 1878 standalone printing: same book, half the OCR damage (0.17% suspect
