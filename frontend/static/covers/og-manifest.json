@@ -550,6 +550,13 @@
 			"art": false,
 			"scrim": 1
 		},
+		"ministry-of-intercession": {
+			"ground": "27e7b8bc1e354b0e4643c0024cc47d117b6352ac750b1546e3482008b6df99ba",
+			"style": "devotional",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"mortification-of-sin": {
 			"ground": "81ab25ff3ce6cc4a67630451dbdaf9cbc6982f338d4aa2e22d03663043df9bbd",
 			"style": "press",
