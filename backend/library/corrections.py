@@ -37,6 +37,30 @@ EXCLUDED_SLUGS: set[str] = {
 }
 
 CORRECTIONS: dict[str, dict] = {
+    "ministry-of-intercession": {
+        # This edition prints chapter titles only in the Contents (chapter
+        # bodies open with a bare "CHAPTER N" then the scripture epigraph), so
+        # the 15 numbered chapters imported untitled — titles from the Contents.
+        # ch1 is the Havergal frontispiece poem; labelled Dedication.
+        "chapter_titles": {
+            1: 'Dedication',
+            3: 'The Lack of Prayer',
+            4: 'The Ministration of the Spirit and Prayer',
+            5: 'A Model of Intercession',
+            6: 'Because of His Importunity',
+            7: 'The Life That Can Pray',
+            8: 'Restraining Prayer—Is It Sin?',
+            9: 'Who Shall Deliver?',
+            10: 'Wilt Thou Be Made Whole?',
+            11: 'The Secret of Effectual Prayer',
+            12: 'The Spirit of Supplication',
+            13: 'In the Name of Christ',
+            14: 'My God Will Hear Me',
+            15: 'Paul a Pattern of Prayer',
+            16: 'God Seeks Intercessors',
+            17: 'The Coming Revival',
+        },
+    },
     "essentials-of-prayer": {
         # Same roman-prefix redundancy as its companion volume (the reader prints
         # the chapter number), plus a spaced "( Continued )". Titles from the
@@ -363,6 +387,14 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 # `apply_body_corrections`, plus a data migration for prod).
 
 BODY_CORRECTIONS: dict[str, dict] = {
+    "ministry-of-intercession": {
+        # A Gutenberg <h3>Transcriber's Notes</h3> block (formatting notes, not
+        # Murray) trailed the final Notes chapter; the two space-before-punct
+        # findings were its stripped page refs. Remove the whole block.
+        "replacements": [
+            ('<h3>Transcriber’s Notes</h3><p>Minor errors and inconsistencies in punctuation and hyphenation have been silently corrected.</p> <p>On page , the heading “What the Health that Jesus Offers.” is as in the original text.</p> <p>As explained in the section on , on each daily page in the tract “Pray Without Ceasing”, several lines are ruled to leave room for “SPECIAL PETITIONS”. These are hidden on screen in this version, but can be displayed by following the instructions in the file header. The ruled lines will be displayed if the text is printed.</p>', ""),
+        ],
+    },
     "essentials-of-prayer": {
         # A quoted hymn line broke across a line and rejoined with a space
         # before the comma ("He has said He will , If we but trust"). Restore
