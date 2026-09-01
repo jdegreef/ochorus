@@ -1,0 +1,39 @@
+# Dependabot keeps dependencies watched, not just frozen. The lockfiles (uv.lock,
+# package-lock.json) are pinned for reproducibility, which is good — but frozen
+# and unwatched means a disclosed CVE in Django, PyJWT or @supabase/supabase-js
+# sits unpatched until a human happens to notice. This opens update PRs (and,
+# with Dependabot alerts on in the repo's Security settings, security PRs) so a
+# vulnerability is surfaced and actionable rather than silent.
+#
+# Updates are grouped per ecosystem into one PR so a fast-moving main isn't
+# flooded — each still runs CI before it can merge.
+version: 2
+updates:
+  # Python API (uv / pyproject.toml + uv.lock).
+  - package-ecosystem: "pip"
+    directory: "/backend"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    groups:
+      backend:
+        patterns: ["*"]
+
+  # SvelteKit frontend.
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    groups:
+      frontend:
+        patterns: ["*"]
+
+  # The CI / prerender-audit workflows' own action versions.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      actions:
+        patterns: ["*"]
