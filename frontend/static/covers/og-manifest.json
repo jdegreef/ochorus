@@ -718,6 +718,13 @@
 			"art": false,
 			"scrim": 1
 		},
+		"reality-of-prayer": {
+			"ground": "3d2667f90139353f2c09b74a6d34cb14706df45d63c13659e261614f683bf8c1",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"religious-affections": {
 			"ground": "f08da596078f54e62ce2185d38705028382066fe51e4fc47d6bd74151b2399d8",
 			"style": "enlightenment",
