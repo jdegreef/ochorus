@@ -991,6 +991,13 @@
 			"art": true,
 			"scrim": 0.95
 		},
+		"uk/waiting-on-god": {
+			"ground": "2a48ba8503d4f5b382e666f943146d9ee15fa6320016a0663c1827f77c7cd8ae",
+			"style": "devotional",
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.6
+		},
 		"union-and-communion": {
 			"ground": "526cff85d67cbd9bd08c0b5116e2bcfbb07b1b84c81d11f66b5104d0a2245b50",
 			"style": "revival",
