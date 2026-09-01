@@ -1276,3 +1276,11 @@ class ContentRevision(models.Model):
     def load(cls) -> ContentRevision:
         obj, _ = cls.objects.get_or_create(pk=1)
         return obj
+
+    @classmethod
+    def current(cls) -> int:
+        """The revision as a single read, without creating the row.
+
+        For the read path (the ETag, on every public request) — one SELECT, and
+        no row yet means nothing has changed through the API, i.e. revision 0."""
+        return cls.objects.values_list("revision", flat=True).first() or 0
