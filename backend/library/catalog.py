@@ -507,6 +507,13 @@ BOOKS: list[BookEntry] = [
     BookEntry("freedom-of-the-will", "Freedom of the Will", "jonathan-edwards",
               "ccel", "edwards/will",
               subtitle="A Careful and Strict Inquiry", cover_color="#6b4a3b"),
+    # Selected Sermons of Jonathan Edwards (1904, Gutenberg #34632), ed. H.
+    # Norman Gardiner — a handful of the major sermons ("Sinners in the Hands of
+    # an Angry God" among them) with the editor's introduction. A book, like the
+    # Whitefield / Wesley sermon collections.
+    BookEntry("selected-sermons-edwards", "Selected Sermons of Jonathan Edwards",
+              "jonathan-edwards", "gutenberg", "34632",
+              subtitle="Edited by H. Norman Gardiner", cover_color="#3b5b6b"),
     BookEntry("selected-sermons-whitefield", "Selected Sermons of George Whitefield",
               "george-whitefield", "ccel", "whitefield/sermons",
               subtitle="Fifty-Nine Sermons", cover_color="#6b4e3d"),

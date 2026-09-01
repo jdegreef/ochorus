@@ -37,6 +37,23 @@ EXCLUDED_SLUGS: set[str] = {
 }
 
 CORRECTIONS: dict[str, dict] = {
+    "selected-sermons-edwards": {
+        # Seven sermons (ch1 is the editor's Introduction, ch9 the editor's
+        # Notes). The body headings became the titles carrying a roman prefix
+        # (redundant with the reader number) and a trailing "°" footnote marker;
+        # these give each sermon its clean, recognizable title (Gardiner's
+        # Contents forms, but the famous name for the Divine-and-Supernatural-
+        # Light sermon, whose formal heading ran to 130 characters).
+        "chapter_titles": {
+            2: 'God Glorified in Man’s Dependence',
+            3: 'A Divine and Supernatural Light',
+            4: 'Ruth’s Resolution',
+            5: 'The Many Mansions',
+            6: 'Sinners in the Hands of an Angry God',
+            7: 'A Strong Rod Broken and Withered',
+            8: 'A Farewell Sermon',
+        },
+    },
     "holy-in-christ": {
         # A thirty-one-day devotional. The 31 daily chapters imported all
         # titled "Holy in Christ" (the repeated running header); this edition
