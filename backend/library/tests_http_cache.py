@@ -109,6 +109,20 @@ class CacheControlHeaderTests(TestCase):
         res = self.client.get(reverse("author-list"), HTTP_IF_NONE_MATCH=books)
         self.assertEqual(res.status_code, 200)
 
+    def test_bump_command_busts_the_etag_after_a_direct_db_change(self):
+        # A change made directly in the DB (e.g. an urgent copyright pull) bypasses
+        # the revision channel, so the tag is unchanged and a conditional request
+        # still 304s — until the admin runs bump_content_revision.
+        from django.core.management import call_command
+
+        url = reverse("book-list")
+        etag = self.client.get(url).headers["ETag"]
+        Book.objects.filter(slug="humility").update(is_published=False)
+        self.assertEqual(self.client.get(url, HTTP_IF_NONE_MATCH=etag).status_code, 304)
+
+        call_command("bump_content_revision")
+        self.assertEqual(self.client.get(url, HTTP_IF_NONE_MATCH=etag).status_code, 200)
+
     def test_search_is_not_cached(self):
         """Query-dependent, and it writes a log row per call."""
         res = self.client.get(reverse("search"), {"q": "humility"})

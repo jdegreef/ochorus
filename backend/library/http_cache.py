@@ -24,6 +24,13 @@ origin, on top of the body it no longer re-transmits every ``max-age``.
 stuck; the ETag lets a revalidation after that window return ``304`` instead of
 the whole shelf.
 
+**One gap, the same one the rebuild has.** A change made DIRECTLY in the database
+— the documented urgent copyright pull (``seed_sermons``), or a manual SQL fix —
+bumps neither the digest (no deploy) nor the revision (no API call), so the ETag
+would keep answering ``304`` against it, just as the prerendered reader would
+stay stale. Run ``manage.py bump_content_revision`` after such a change: it bumps
+the revision (busting every ETag) and fires the rebuild, closing both.
+
 ``public`` is deliberate and was checked, not assumed: nothing in the public
 views or serializers reads ``request.user``, so no response varies by reader and
 a shared cache cannot leak one reader's view to another. Anything that DOES vary
@@ -36,6 +43,7 @@ from __future__ import annotations
 import hashlib
 
 from django.http import HttpResponseNotModified
+from django.utils.http import parse_etags
 
 #: How long a client may reuse a response without asking again. Short on
 #: purpose: an admin who publishes a book should see it in the reader in about a
@@ -70,7 +78,12 @@ def content_etag(request) -> str:
 
 def _if_none_match(request, etag: str) -> bool:
     header = request.META.get("HTTP_IF_NONE_MATCH")
-    return bool(header) and any(tag.strip() == etag for tag in header.split(","))
+    if not header:
+        return False
+    # Django's parser handles the comma list, whitespace, and the `*` wildcard
+    # ("304 if any representation exists"), which a plain split would miss.
+    candidates = parse_etags(header)
+    return "*" in candidates or etag in candidates
 
 
 class PublicContentCacheMixin:
