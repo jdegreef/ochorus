@@ -53,6 +53,13 @@ class ReadingProgress(models.Model):
     paragraph_index = models.PositiveIntegerField(default=0)
 
     updated_at = models.DateTimeField(auto_now=True)
+    # The CLIENT's as-of time for this position (its Date.now() when the read
+    # happened), distinct from `updated_at` (server clock, auto_now, which the
+    # analytics window on). Recency is judged on THIS so a device is compared to
+    # its own clock, not the server's — comparing a client timestamp to the
+    # server's save time would freeze any device whose clock lags the server.
+    # Null on rows written before this field existed / by pre-timestamp clients.
+    client_updated_at = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         ordering = ["-updated_at"]

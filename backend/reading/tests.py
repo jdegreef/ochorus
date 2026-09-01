@@ -1,6 +1,9 @@
 
+from unittest import skipUnless
+
 from django.contrib.auth import get_user_model
-from django.test import TestCase
+from django.db import connection
+from django.test import TestCase, TransactionTestCase
 from rest_framework.test import APIClient
 
 from accounts.models import UserProfile
@@ -843,3 +846,122 @@ class MergeHardeningTests(TestCase):
         self.assertEqual(codes[2], 429)
 
 
+
+class ProgressRecencyTests(TestCase):
+    """A stale device must not rewind a reading position a newer one recorded.
+
+    Recency is judged on the CLIENT's own clock (`client_updated_at`), not the
+    server's `updated_at` — so a device is compared to itself and can always
+    advance, even if its clock lags the server (bug #1 sibling)."""
+
+    def setUp(self):
+        self.user = User.objects.create(username="00000000-0000-0000-0000-0000000000c1")
+        self.profile = UserProfile.objects.create(
+            user=self.user, supabase_uid=self.user.username, email="rec@example.com"
+        )
+        self.client = APIClient()
+        self.client.force_authenticate(self.user)
+
+    def _put(self, order, at=None):
+        body = {"chapter_order": order, "paragraph_index": 0}
+        if at is not None:
+            body["updated_at"] = at
+        return self.client.put("/api/reading/progress/humility/", body, format="json")
+
+    def _state_order(self):
+        return self.client.get("/api/reading/state/").data["progress"][0]["chapter_order"]
+
+    def test_a_stale_put_does_not_rewind_a_newer_position(self):
+        self._put(8, at=2_000)  # a newer device recorded chapter 8
+        self._put(5, at=1_000)  # a backgrounded tab flushes an older position
+        self.assertEqual(self._state_order(), 8)
+
+    def test_a_device_can_always_advance_its_own_position(self):
+        # Monotonic client times always win — the safety property that a clock
+        # lagging the server can never freeze a device out of saving.
+        for order, at in ((1, 1_000), (2, 2_000), (3, 3_000)):
+            self._put(order, at=at)
+        self.assertEqual(self._state_order(), 3)
+
+    def test_an_untimestamped_put_still_saves(self):
+        # An old client that sends no timestamp is an active write and must land.
+        self._put(8, at=5_000)
+        self._put(4)
+        self.assertEqual(self._state_order(), 4)
+
+    def test_merge_keeps_the_server_when_the_bundle_has_no_timestamp(self):
+        # The sign-in half of the fix: an untimestamped (stale/old) bundle must
+        # not overwrite a newer server position it can't out-date.
+        self._put(8, at=5_000)
+        self.client.post(
+            "/api/reading/merge/",
+            {"progress": [{"book_slug": "humility", "chapter_order": 3}]},
+            format="json",
+        )
+        self.assertEqual(self._state_order(), 8)
+
+    def test_a_live_put_still_advances_a_null_baseline_row(self):
+        # A row with no recency baseline (an old client wrote it with no timestamp)
+        # must not freeze the live PUT out of saving — an active write always lands.
+        ReadingProgress.objects.create(
+            profile=self.profile, kind="book", book_slug="humility",
+            chapter_order=8, client_updated_at=None,
+        )
+        self._put(9, at=1_000)
+        self.assertEqual(self._state_order(), 9)
+
+
+@skipUnless(connection.vendor == "postgresql", "row locking is a Postgres behaviour")
+class MarksConcurrentMergeTests(TransactionTestCase):
+    """Two devices merging marks into the same chapter at once.
+
+    The live PUT was already locked; this proves the SIGN-IN merge path is too —
+    without the row lock both readers see the same server marks and the second
+    write clobbers the first's union, dropping a highlight (bug #2). Postgres-only
+    and a no-op-safe TransactionTestCase, mirroring the plan-progress race test."""
+
+    def setUp(self):
+        self.user = User.objects.create(username="00000000-0000-0000-0000-0000000000c2")
+        self.profile = UserProfile.objects.create(
+            user=self.user, supabase_uid=self.user.username, email="cm@example.com"
+        )
+
+    def test_neither_device_loses_its_mark(self):
+        import threading
+
+        from django.db import connections
+
+        from reading.views import _now_ms, _upsert_marks_locked
+
+        now = _now_ms()
+        ready = threading.Barrier(2, timeout=10)
+        errors: list[BaseException] = []
+
+        def write(mark_id: str, p: int):
+            try:
+                ready.wait()  # both threads enter together
+                _upsert_marks_locked(
+                    self.profile,
+                    "book",
+                    "humility",
+                    1,
+                    language="en",
+                    marks=[{"id": mark_id, "p": p, "s": 0, "e": 5}],
+                    tombs={},
+                    now_ms=now,
+                )
+            except BaseException as exc:  # noqa: BLE001 — re-raised in the assertions
+                errors.append(exc)
+            finally:
+                connections.close_all()
+
+        threads = [threading.Thread(target=write, args=a) for a in (("A", 1), ("B", 2))]
+        for t in threads:
+            t.start()
+        for t in threads:
+            t.join(timeout=15)
+
+        self.assertEqual(errors, [], f"a writer raised: {errors}")
+        self.assertEqual(ChapterMarks.objects.count(), 1)
+        ids = {m["id"] for m in ChapterMarks.objects.get().marks}
+        self.assertEqual(ids, {"A", "B"}, "a highlight made on one device was lost to the other's merge")
