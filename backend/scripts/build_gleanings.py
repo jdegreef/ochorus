@@ -107,14 +107,14 @@ def build() -> None:
     book, _ = Book.objects.update_or_create(
         slug=SLUG,
         language="en",
-        defaults=dict(
-            author=author,
-            title="Gleanings Among the Sheaves",
-            subtitle="Short Readings for Heart and Soul",
-            source_type=Book.SourceType.PUBLIC_DOMAIN,
-            source_url=f"https://www.gutenberg.org/ebooks/{BOOK_ID}",
-            is_published=True,
-        ),
+        defaults={
+            "author": author,
+            "title": "Gleanings Among the Sheaves",
+            "subtitle": "Short Readings for Heart and Soul",
+            "source_type": Book.SourceType.PUBLIC_DOMAIN,
+            "source_url": f"https://www.gutenberg.org/ebooks/{BOOK_ID}",
+            "is_published": True,
+        },
     )
     book.chapters.all().delete()
 
