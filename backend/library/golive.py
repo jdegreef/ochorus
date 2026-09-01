@@ -86,7 +86,13 @@ def go_live(lang: Language, *, force: bool = False) -> dict:
         lang.went_live_at = timezone.now()
     lang.save(update_fields=["status", "went_live_at"])
 
-    deploy = trigger_web_deploy()
+    # Route through the one content-changed channel so go-live also bumps the
+    # content revision (the ETag/rebuild signal). `force` bypasses the throttle:
+    # a launch is a deliberate single action that must always rebuild and report
+    # its result. Imported locally because invalidation imports this module.
+    from . import invalidation
+
+    deploy = invalidation.mark_content_changed(force=True)
     return {
         "launched": True,
         "already_live": already,
