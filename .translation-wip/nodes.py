@@ -69,18 +69,18 @@ def write(slug,n,T,title):
               ensure_ascii=False,indent=1,sort_keys=True)
     for i,t in T.items(): p[i]=expand(t)
     body="".join(p)
+    flat=re.sub(r'<[^>]+>',' ',body)
+    probe=re.sub(r'\.\s*\.\s*\.','\u2026',flat)   # an ellipsis is not doubling
+    # a token's fragment carries its own punctuation; typing more doubles it,
+    # and the tag gate cannot see it.  ch08-ch11 shipped ".!»" before this ran.
+    for m in re.finditer(r'[.,;:!?]\s*[«»]?\s*[.,;:!?]',probe):
+        if probe[max(0,m.start()-4):m.start()+1]=='марг.': continue   # abbreviation
+        raise SystemExit(f"ch{n:02d}: doubled punctuation "
+                         f"{probe[max(0,m.start()-40):m.end()+10]!r}")
     json.dump({"title":expand(title),"body_html":body},
               open(f'uk/{slug}/draft{n:02d}.json','w',encoding='utf-8'),
               ensure_ascii=False,indent=1)
     # per-chapter verbatim audit: every «…» of any length must be Kulish or prose
-    flat=re.sub(r'<[^>]+>',' ',body)
-    # a token's fragment carries its own punctuation; typing more doubles it,
-    # and the tag gate cannot see it.  ch08-ch11 shipped ".!»" before this ran.
-    for m in re.finditer(r'[.,;:!?]\s*[«»]?\s*[.,;:!?]',flat):
-        if set(m.group(0))<={'.',' '}: continue        # spaced ellipsis
-        if flat[max(0,m.start()-4):m.start()+1]=='марг.': continue   # abbreviation
-        raise SystemExit(f"ch{n:02d}: doubled punctuation "
-                         f"{flat[max(0,m.start()-40):m.end()+10]!r}")
     hay=" || ".join(BIBLE.values()).lower()   # `+`/`^` only touch case
     bad=[]
     for m in re.finditer(r'«([^»]{25,})»',flat):

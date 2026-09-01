@@ -57,3 +57,71 @@ ch16 2TH 3:5 mined but SPLICED — Murray quotes only the second half ("into
      the patience of Christ"); Kulish carries both halves in one sentence, so
      the uk joins "Господь же нехай направить серця ваші" to "і в терпіннє
      Христове", reproducing his elision rather than quoting past it.
+ch17 PSA 106:13 mined (epigraph + three re-quotes) ; ACT 10:44 mined ;
+     ACT 10:33 mined — the two italic spans land on exactly the phrases the
+     English italicises ("before God" / "of God" -> "перед Богом" / "від Бога").
+ch17 TENSION FOR THE REVIEWER — Kulish renders "counsel" in PSA 106:13 as
+     "присуд" (verdict), but uses "рада" for the same idea elsewhere (EPH 1:11,
+     "по радї волї своєї"). The whole chapter turns on the word. The quotes
+     keep "присуд" verbatim; the prose and the chapter title use "рада". The
+     seam is visible and deliberate — a native reader may want it handled
+     differently, but silently amending Kulish is not an option.
+ch18 PSA 130:5,6 mined (epigraph) ; ISA 60:20 mined ; PSA 62:5 (refrain)
+ch18 PSA 130:6 REORDERED in the prose — Murray inverts the verse ("More than
+     watchmen for the morning, my soul waiteth for the Lord"); the uk inverts
+     Kulish's two halves the same way and lower-cases the joint.
+ch18 2CO 4:6 mined but SPLICED twice — Murray quotes "God has shined in our
+     hearts to give the light", cutting Kulish's single sentence; the uk joins
+     "Бог" to "засьвітив у серцях наших...", reproducing the cut.
+ch18 ratio 0.806 sits exactly on the band floor; checked node by node against
+     the English — nothing is dropped, the compression is real (no articles,
+     fewer prepositional chains). Longest chapter in the book at 1001w.
+ch19 ISA 8:17 mined (epigraph + three re-quotes) ; PSA 130:5,6 mined (closing)
+ch19 "orthodox creeds" -> "правовірними символами віри", NOT "православними":
+     Murray is contrasting Protestant churches with the Greek and Roman ones a
+     line earlier, so the Eastern-Orthodox word would reverse his sentence.
+ch20 ISA 25:9 mined (epigraph, twice re-quoted whole) ; ACT 10:33 mined.
+     Murray compresses the verse to "Lo, this is our God; this is the Lord!",
+     skipping its middle; the uk joins the same two fragments.
+ch21 ISA 26:8,9 / ISA 30:18 mined (the two epigraphs) ; MAL 3:2, ISA 64:1-2,
+     NUM 10:35, ISA 1:27 mined. ISA 26:8 is spliced to drop "Господи", which
+     Murray's own re-quote drops. ISA 64:1+64:2 join two verses as he does.
+ch22 ISA 30:18 mined (epigraph + four re-quotes) ; JAS 5:7, LAM 3:25 mined.
+ch23 ISA 40:27-31 mined ; PRO 20:29, DEU 32:11,12 mined. The four italic spans
+     in the eagle passage land on the same words the English italicises.
+ch23 digit WARN is the Kulish book naming: Deuteronomy is "5 Мойсея", so the
+     citation carries a 5 the English "(Deut. 32: 11)" does not. Same benign
+     class as Genesis = "1 Мойсея". Not a defect.
+ch23 SCRIPTURE APOSTROPHE: Kulish uses U+02BC (303 verses, never U+2019), e.g.
+     "безʼутомний" in ISA 40:28. Prose uses U+2019. The tokens carry U+02BC
+     through untouched, which is what the shipped uk book already does.
+ch24 ISA 49:23 / ISA 30:18 mined (both epigraphs, re-quoted through the
+     chapter; the three italic spans sit on the same words as the English).
+     PSA 33:20, 2CO 4:6 mined. PSA 25:3 is the ch08 SELF petition, reused
+     word for word so the two chapters agree.
+ch25 ISA 64:4 mined (epigraph) ; ISA 63:15,17, ISA 64:1,2,3, 1CO 2:10,11,
+     ISA 30:18 mined. Murray's own ellipsis between ISA 64:1 and 64:2 is kept.
+ch25 NOTE FOR THE REVIEWER — this chapter compares two ENGLISH versions (A.V.
+     vs R.V.) of ISA 64:4. Kulish happens to read like the R.V. ("нїяке око не
+     видало иншого Бога крім тебе"), so the epigraph and Murray's quoted R.V.
+     line come out the same words. That repetition is real, not an error: a
+     version-comparison passage cannot be reproduced in a language with one
+     version. The two versions are named in Ukrainian (Переглянутий /
+     Уповноважений переклад) rather than as Latin "R.V." / "A.V.", which the
+     mixed-script scan would flag.
+
+## Tooling defect found and fixed at ch25
+The doubled-punctuation guard ran AFTER nodes.write() had already dumped the
+draft, so a rejected chapter still landed on disk and put_uk.py gated it
+happily. The guard now runs BEFORE the write. Its ellipsis exemption was also
+wrong twice over: it first passed anything made of dots and spaces (which would
+have let "на Господа.." through), then rejected Murray's own ", . . ." Now the
+scan collapses real ellipses to a single character first, so "…" is invisible
+to it while ".." and ".!" are still caught. All 24 chapters gated before the
+fix were re-checked against the corrected guard: 0 hits.
+ch26 LAM 3:25 mined (epigraph + four re-quotes) ; LAM 3:26, MRK 10:18,
+     PSA 36:5, PSA 31:19, PSA 34:8 mined.
+ch26 LAM 3:25 REORDERED once: the English italicises the predicate ("The Lord
+     /is good/ to them that wait"), and in Ukrainian the predicate adjective
+     "благий" opens Kulish's clause, so the uk puts "Господь" first and the
+     italic falls on "благий" — same word emphasised, natural word order.
