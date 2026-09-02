@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-02: Swahili biographies for e-m-bounds (job #1298)
+// and john-owen (job #1299) — the authors already prerender; this rebuilds
+// their /sw/authors/<slug> pages with the translated bio_html.
 // prerender refresh 2026-09-02: erica-sabiti, a NEW biography-only author, and
 // ochorus-originals gains a ninth book (tukutendereza).
 // Sabiti is the shape that has bitten this loader four times before (#1138,

@@ -1,0 +1,140 @@
+{
+ "kind": "sermon",
+ "slug": "pauls-first-prayer",
+ "language": "lg",
+ "job_issue": 1215,
+ "references": [
+  {
+   "reference": "Acts 9:11",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 9:4",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Acts 9:11",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 9:11",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Acts 9:11",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 65:24",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 11:25-26",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 53:1",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Luke 3:8",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Luke 18:11-12",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Ezekiel 33:11",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 145:8",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Luke 3:8",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Luke 15:10",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Acts 9:15",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Isaiah 49:4",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Isaiah 66:8",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Psalm 7:11",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Luke 16:24",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Hosea 14:4",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Psalm 115:1",
+   "status": "self_rendered",
+   "block_index": 35
+  }
+ ]
+}

@@ -156,7 +156,16 @@ worker specifics that shipped ~11 editions:
   *(`authors.json` is the one file that is NOT this format — it is `indent=2`.
   Books, sermons and `plans.json` all are.)* Copy source_url/sort_order from the
   English file; `source_type=ai_unreviewed`; `pdf_url` empty; `body_text`
-  via `library.text.html_to_text`. **Never copy `cover_url`** — it is
+  via `library.text.html_to_text`. **Set `word_count` with
+  `library.text.word_count(body_html)`, NOT `len(body_text.split())`** — the
+  canonical count tokenises `body_html` (tags→space) and a fixture row never
+  passes through `save()`, so a naive count off `body_text` disagrees and fails
+  `tests_fixture` ("N rows carry a word_count their own body_html does not
+  give"). Easiest reliable path: build the row on the DB's cloned English
+  `Sermon`/`Book` object and let `serializers.serialize(..., natural keys)`
+  emit it — the format then matches a shipped file byte-for-byte except the
+  timestamps (seed re-sets those, so set a clean `…T00:00:00Z`, don't clone the
+  DB's microsecond value). **Never copy `cover_url`** — it is
   per-language (`/covers/<lang>/<slug>.svg`), and copying the English one puts
   the English title on a translated card. Run `uv run python
   scripts/localize_covers.py <slug>` after writing the file: it draws the cover
@@ -355,7 +364,18 @@ So when the English does not say what it should:
    the editions disagreeing.
 2. **Add the repair to `corrections.BODY_CORRECTIONS`** for that slug. It is in
    the release chain (`apply_body_corrections`), so it reaches production on
-   the next deploy without a migration.
+   the next deploy without a migration. **But a declared correction now has a
+   CI gate you must satisfy in the same PR** (`tests_english_audit.LineBreak\
+   HyphenTests.test_the_fixture_is_clean`, 2026-09-02): it applies your
+   correction to the raw English fixture and fails if that changes anything —
+   i.e. the English fixture must already carry the SETTLED text. Run
+   `manage.py normalize_english_fixture --write` to bake it in, then note the
+   trap that bites next: **that command rewrites `body_html` only, and the gate
+   checks `body_text` too.** `body_text` is derived from `body_html`, so
+   re-derive it yourself for the touched rows —
+   `fields["body_text"] = library.text.html_to_text(fields["body_html"])` — and
+   re-render the file canonically, or the gate still fails on the stale
+   `body_text` half.
 3. **Check whether it already propagated.** The defect is probably in the other
    language editions too, faithfully reproduced:
    ```bash
@@ -794,6 +814,41 @@ archaic spelling and period punctuation are the text, not defects in it.
   **flagged unverified** so it reaches the PR as a review queue instead of
   disappearing into the diff. The same applies to any language whose only
   mirrored Bible is licensed or off-tradition — check before briefing.
+  **Confirmed 2026-09-02: the mirror now carries FOUR Swahili texts and every
+  one is unusable, so don't be lured by the count.** `git ls-tree HEAD bibles/`
+  lists `swh_bib` (Neno, 2018, cc-by-sa), `swh_bib2` (Neno, 2024, cc-by-sa),
+  `swh_ulb` (2019, cc-by-sa) and `swh_swa` — whose `meta.json` says **1850,
+  license `public`** and looks like the PD Union text you want. It is not: the
+  file is a modern dynamic paraphrase (Eph 2:8 reads "Maana, kwa neema ya Mungu
+  mmekombolewa kwa njia ya imani. Jambo hili si matokeo ya juhudi zenu…"),
+  off-tradition from our shipped «Kwa maana mmeokolewa kwa neema…». The metadata
+  date is not the text's register — **fetch one known verse and diff it against
+  a shipped `*.sw.json` before trusting any of them.** All four fail; mine the
+  corpus.
+- **The ebible mirror's Luganda OLCB is `lug_bib`, in `usx/` (not `usfm/`) — and
+  it IS the `lug` text `language_seed.py` names, verbatim in our shipped lg
+  corpus** (jobs #1213-#1216/#1303, 2026-09-02). The collection id is not
+  guessable: `lug` 404s; the directory is `bibles/lug_bib/` (`git ls-tree` it, or
+  the GitHub API 403s on `contents/` — use git). `meta.json` confirms OLCB 2017,
+  **cc-by-sa** (Biblica) — so credit is owed exactly as `language_seed.py`'s
+  `bible_licence`/`bible_attribution` now record, and `_attribution_check` gates
+  on it. Format is USX, lowercase 3-letter codes (`usx/mat.usx`, `usx/eph.usx`);
+  all 66 books are ~8 MB via `xargs -P8 curl`. Parsing is a ten-line regex walk:
+  each verse is `<verse … sid="MAT 11:28"/>TEXT<verse eid="MAT 11:28"/>`, so key
+  on the `sid` (no chapter-state tracking); strip `<note>…</note>` with `''`,
+  then drop remaining tags — 31,104 verses parse clean, and MAT 11:28 / JHN 3:16
+  match shipped `all-of-grace.lg`/`he-holds-my-tomorrows.lg` byte-for-byte.
+  Localized book names come from each file's `<para style="toc2">` (Matayo,
+  Makko, Lukka, Yokaana, Ebikolwa by'Abatume, Abaefeso, Abaruumi…). Hand the
+  translator the whole 31k-verse dict on disk and tell them to grep it for every
+  quoted verse, cited or not — the highest-leverage line in the brief.
+- **The lg SERMON band, n=12: 0.685–0.778, mean 0.729** (measured from
+  `word_count` on both sides of the shipped pairs, 2026-09-02) — well below the
+  lg *book* band and far below any sw type. Luganda compresses hard. Both sw and
+  lg sermons **mirror their source's quote-mark style** file by file (sw n=13,
+  lg n=12; curly→curly, straight→straight, never guillemets) — the same per-FILE
+  rule #423/#515 found, so measure your own English source, don't borrow a
+  language-wide style.
 - **Check BOOK NAMES against the edition too, not just verses.** The uk brief
   guessed six and got three wrong: the Kulish text headers Matthew `Маттея`
   (not `Матея`), Isaiah `Ісаїї` (not `Ісаї`), Malachi `Малахія` (nominative,
