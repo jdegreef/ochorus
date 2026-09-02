@@ -480,6 +480,13 @@
 			"art": true,
 			"scrim": 0.3
 		},
+		"lg/feasting-at-the-table": {
+			"ground": "cc7ee2adc9479b3488c09b82f3a1af77a1a8c55aa2df806a4df05abcbca2d169",
+			"style": "house",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8
+		},
 		"lg/godliness": {
 			"ground": "4cb31b3a75b03bc37af1168039c51491e522f747ac27006e966557043d9ea11e",
 			"style": "revival",

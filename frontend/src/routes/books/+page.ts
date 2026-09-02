@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-02 (batch2): feasting-at-the-table.lg (#1209), the
+// library's newest Luganda book (9 chapters, Ephesians). Rebuilds the /lg/books
+// shelf and its per-chapter pages.
 // prerender refresh 2026-09-02: waiting-on-god.lg (job #1205). ONLY this
 // loader, for the same three reasons the uk edition of this book recorded
 // above. The slug appears in no plan module — grepped plan_seed.py, plans.py,

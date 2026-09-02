@@ -184,6 +184,39 @@ worker specifics that shipped ~11 editions:
   hand. Full regens only via `backend/scripts/regen_fixture.py`.
   Verify `seed_books` recreates the rows locally; run `manage.py test library`
   (which includes the fixture + file-coherence gates).
+  **If the book has a DESIGNED English cover (a `/covers/<slug>.<ext>` raster in
+  `designed_covers.py`, words baked into the pixels), the first translation of it
+  needs a WORDLESS GROUND, and `localize_covers` alone will NOT make one — it
+  draws a flat typographic plate and three gates then fail** (measured shipping
+  the first such book, `feasting-at-the-table` → lg, 2026-09-02):
+  `CoverAssetTests.test_a_translated_designed_work_has_a_ground`,
+  `.test_every_painting_still_carries_white_type`, and the frontend
+  `coverOgManifest.test.ts`. The full chain, in order:
+  1. Add the slug to `DERIVED_GROUND` in `library/designed_covers.py` with a
+     `Ground(top, bottom, inset, lift, sky=…, source=<sha256 of the cover jpg>)`
+     — a words-free band (fractions of height) that clears the byline, title,
+     any rule AND the Ochorus/ministry mark at the foot. No rule finds these
+     numbers; LOOK at the cover (Read the jpg) and pick the band, then eyeball
+     the output — my first `bottom` dipped into the Ochorus wordmark. (If nothing
+     croppable survives losing the words, use `CURATED_GROUND` + a painting
+     instead.)
+  2. `uv run python scripts/build_derived_grounds.py <slug> --force` (draws
+     `/covers/art/<slug>.jpg`; `--force` because it skips an existing file).
+  3. `uv run python scripts/localize_covers.py <slug> --force` — now it repoints
+     the row to the shared `/covers/art/<slug>.jpg` ground (title drawn per
+     edition), NOT a per-language plate.
+  4. `uv run python scripts/build_cover_assets.py` (webp variants) — it also
+     WARNS if the old per-language plate SVG is now a leftover; delete that
+     `static/covers/<lang>/<slug>.svg`.
+  5. `uv run python scripts/tune_art_scrim.py` — a new ground has no measured
+     scrim, so white title type fails legibility; this writes `library/
+     art_scrim.py` + `frontend/src/lib/coverScrim.ts` (only your slug is added).
+  6. `cd frontend && npm run og:covers` for the titled twin + manifest entry.
+  **`og:covers` needs frontend `node_modules` (playwright + sharp)**, which a
+  fresh worktree lacks; borrow the main checkout's with a temporary
+  `ln -s <main>/frontend/node_modules node_modules`, run it, then `rm` the
+  symlink (fine for a standalone build script — the "symlink breaks hydration"
+  caveat is only about the Vite dev server).
 - Scripture: if `api.takeroot.bible` is reachable, use `scripture_context()`
   for authoritative wording; if egress-blocked (the current default), render
   quotations conservatively in the language's reverent biblical register and
@@ -849,6 +882,16 @@ archaic spelling and period punctuation are the text, not defects in it.
   lg n=12; curly→curly, straight→straight, never guillemets) — the same per-FILE
   rule #423/#515 found, so measure your own English source, don't borrow a
   language-wide style.
+- **The lg BOOK-CHAPTER band, n=18: 0.703–0.833, mean 0.745** (measured from
+  `word_count` on both sides of the shipped book pairs, 2026-09-02) — above the
+  lg *sermon* band (0.685–0.778) but still far below any sw type. And **lg BOOKS
+  mirror their source's marks exactly like lg sermons — 16 of 18 shipped lg
+  books are curly-source→curly, 2 are straight-source→straight, ZERO use
+  guillemets.** So unlike uk (which converts books to « »), lg NEVER converts:
+  settle it by measuring your own English source. In-word apostrophe: most
+  curly-quoted lg files use the curly ’ (U+2019, matching OLCB); a few use
+  ASCII ' — either is attested, pick one and keep the file internally
+  consistent.
 - **Check BOOK NAMES against the edition too, not just verses.** The uk brief
   guessed six and got three wrong: the Kulish text headers Matthew `Маттея`
   (not `Матея`), Isaiah `Ісаїї` (not `Ісаї`), Malachi `Малахія` (nominative,

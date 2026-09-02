@@ -24,6 +24,7 @@ ART_SCRIM: dict[str, float] = {
     "baptism-with-the-holy-spirit": 0.85,
     "clothed-with-strength-and-dignity": 0.30,
     "confessions": 1.00,
+    "feasting-at-the-table": 0.80,
     "freedom-of-the-will": 0.95,
     "godliness": 0.30,
     "grace-abounding": 0.65,
