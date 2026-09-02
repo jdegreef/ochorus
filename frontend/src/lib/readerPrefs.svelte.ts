@@ -101,6 +101,7 @@ interface Stored {
 	font: ReaderFont;
 	align: Align;
 	paged: boolean;
+	tapToScroll: boolean;
 	preferModern: boolean;
 }
 
@@ -111,6 +112,10 @@ const DEFAULTS: Stored = {
 	font: 'serif',
 	align: 'left',
 	paged: false,
+	// Off by default: tapping the body to scroll is opt-in. An implicit version
+	// of the sibling idea (edge-tap to change chapter) was a footgun on phones
+	// and was removed; this one only turns on when a reader asks for it.
+	tapToScroll: false,
 	preferModern: false
 };
 
@@ -135,6 +140,8 @@ function load(): Stored {
 			typeof raw.paged === 'boolean'
 				? raw.paged
 				: browser && window.innerWidth >= WIDE_SCREEN_MIN,
+		tapToScroll:
+			typeof raw.tapToScroll === 'boolean' ? raw.tapToScroll : DEFAULTS.tapToScroll,
 		preferModern: typeof raw.preferModern === 'boolean' ? raw.preferModern : DEFAULTS.preferModern
 	};
 }
@@ -146,6 +153,8 @@ class ReaderPrefs {
 	font = $state<ReaderFont>(DEFAULTS.font);
 	align = $state<Align>(DEFAULTS.align);
 	paged = $state(DEFAULTS.paged);
+	/** Opt-in: in scroll mode, a tap in the lower part of the screen pages down. */
+	tapToScroll = $state(DEFAULTS.tapToScroll);
 	/** When a Modern English edition exists, open it by default (device-local). */
 	preferModern = $state(DEFAULTS.preferModern);
 	#loaded = false;
@@ -160,6 +169,7 @@ class ReaderPrefs {
 		this.font = s.font;
 		this.align = s.align;
 		this.paged = s.paged;
+		this.tapToScroll = s.tapToScroll;
 		this.preferModern = s.preferModern;
 		this.#loaded = true;
 	}
@@ -172,6 +182,7 @@ class ReaderPrefs {
 			font: this.font,
 			align: this.align,
 			paged: this.paged,
+			tapToScroll: this.tapToScroll,
 			preferModern: this.preferModern
 		};
 		writeJSON(KEY, s);
@@ -204,6 +215,10 @@ class ReaderPrefs {
 		this.paged = v;
 		this.#save();
 	}
+	setTapToScroll(v: boolean) {
+		this.tapToScroll = v;
+		this.#save();
+	}
 	setPreferModern(v: boolean) {
 		this.preferModern = v;
 		this.#save();
@@ -218,6 +233,7 @@ class ReaderPrefs {
 		this.font = DEFAULTS.font;
 		this.align = DEFAULTS.align;
 		this.paged = DEFAULTS.paged;
+		this.tapToScroll = DEFAULTS.tapToScroll;
 		this.preferModern = DEFAULTS.preferModern;
 		this.#save();
 	}

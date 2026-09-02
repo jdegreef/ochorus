@@ -131,6 +131,7 @@
   "reader_layout": "Layout",
   "reader_layout_scroll": "Scroll",
   "reader_layout_page": "Page",
+  "reader_tap_scroll": "Tap to page down",
   "reader_search": "Search in book",
   "reader_search_placeholder": "Search this book…",
   "search_indexing": "Preparing search…",

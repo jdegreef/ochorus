@@ -239,6 +239,20 @@
 						aria-pressed={readerPrefs.paged}>{t('reader.layoutPage')}</button
 					>
 				</div>
+				<!-- Scroll-mode only: page mode already turns on a tap (left/right).
+				     A single opt-in toggle, off by default — tapping the lower screen
+				     scrolls down a page. -->
+				{#if !readerPrefs.paged}
+					<button
+						class="rc-opt mt-1.5 w-full rounded-sm border px-2 py-1.5 text-small"
+						class:border-accent={readerPrefs.tapToScroll}
+						class:text-accent={readerPrefs.tapToScroll}
+						class:border-border-strong={!readerPrefs.tapToScroll}
+						class:text-muted={!readerPrefs.tapToScroll}
+						onclick={() => readerPrefs.setTapToScroll(!readerPrefs.tapToScroll)}
+						aria-pressed={readerPrefs.tapToScroll}>{t('reader.tapScroll')}</button
+					>
+				{/if}
 			</div>
 			{/if}
 		</div>
