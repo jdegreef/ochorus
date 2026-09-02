@@ -56,6 +56,12 @@ class Listen {
 	voices = $state<SpeechSynthesisVoice[]>([]);
 	/** Minutes until playback auto-stops (0 = off). Session-only, not persisted. */
 	sleepMinutes = $state(0);
+	/**
+	 * True when a `start()` was asked for but no voice the reader would actually
+	 * speak with resolves — reading would be silent, so the reader shows a
+	 * one-line explanation instead of a Listen bar that never makes a sound.
+	 */
+	noVoice = $state(false);
 
 	#paragraphs: string[] = [];
 	#lang = 'en';
@@ -132,6 +138,11 @@ class Listen {
 		return this.defaultVoice(lang);
 	}
 
+	/** Clear the missing-voice notice (the listener dismissed it). */
+	dismissNoVoice() {
+		this.noVoice = false;
+	}
+
 	#langPrefix(lang: string): string {
 		return lang.toLowerCase().split('-')[0];
 	}
@@ -149,6 +160,18 @@ class Listen {
 	start(paragraphs: string[], startAt = 0, lang = 'en', media?: { title: string; artist?: string }) {
 		if (!this.supported) return;
 		this.init();
+		// If the engine has loaded voices but none the reader would actually speak
+		// with resolves for this language, reading would be silent — flag it and
+		// bail so the reader can explain, rather than showing a Listen bar that
+		// never makes a sound. `resolveVoice` (not a strict language match) is the
+		// right predicate: it's exactly what `#speakFrom` uses, so a listener's
+		// saved cross-language voice still counts as sound. An empty list means
+		// voices haven't loaded yet (not that there are none), so don't warn then.
+		if (this.voices.length > 0 && !this.resolveVoice(lang)) {
+			this.noVoice = true;
+			return;
+		}
+		this.noVoice = false;
 		this.stop();
 		this.#paragraphs = paragraphs;
 		this.#lang = lang;
@@ -177,6 +200,10 @@ class Listen {
 		// Same reason as #speakFrom: leave the engine unpaused, or a later
 		// start() on another chapter queues into a paused engine and is silent.
 		speechSynthesis.resume();
+		// The missing-voice notice belongs to the work we were asked to read;
+		// stopping (including the stop() the reader fires on navigation) retires
+		// it, so it can't linger onto the next page.
+		this.noVoice = false;
 		this.status = 'idle';
 		this.current = -1;
 		this.#mediaState();

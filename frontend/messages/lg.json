@@ -126,6 +126,7 @@
   "reader_speed": "Sipiidi",
   "reader_voice": "Eddoboozi",
   "reader_stop_listening": "Lekera awo okuwuliriza",
+  "reader_listen_no_voice": "Tewali ddoboozi eriteekeddwako olw'olulimi luno ku kyuma kino, noolwekyo tewali kya kusomebwa mu ddoboozi. Oyinza okwongerako eddoboozi mu nteekateeka z'okwogera ez'ekyuma kyo.",
   "reader_sleep_timer": "Essaawa y'otulo",
   "reader_layout": "Enteekateeka",
   "reader_layout_scroll": "Okuseerula",

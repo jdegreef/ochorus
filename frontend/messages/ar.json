@@ -126,6 +126,7 @@
   "reader_speed": "السرعة",
   "reader_voice": "الصوت",
   "reader_stop_listening": "إيقاف الاستماع",
+  "reader_listen_no_voice": "لا يوجد صوت مثبَّت لهذه اللغة على هذا الجهاز، لذا لا يوجد ما يُقرأ بصوت عالٍ. يمكنك إضافة صوت من إعدادات النطق في جهازك.",
   "reader_sleep_timer": "مؤقّت النوم",
   "reader_layout": "التخطيط",
   "reader_layout_scroll": "تمرير",

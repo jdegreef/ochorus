@@ -126,6 +126,7 @@
   "reader_speed": "गति",
   "reader_voice": "आवाज़",
   "reader_stop_listening": "सुनना बंद करें",
+  "reader_listen_no_voice": "इस डिवाइस पर इस भाषा के लिए कोई आवाज़ इंस्टॉल नहीं है, इसलिए ज़ोर से पढ़ने के लिए कुछ नहीं है। आप अपने डिवाइस की स्पीच सेटिंग में एक आवाज़ जोड़ सकते हैं।",
   "reader_sleep_timer": "स्लीप टाइमर",
   "reader_layout": "लेआउट",
   "reader_layout_scroll": "स्क्रॉल",

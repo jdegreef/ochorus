@@ -126,6 +126,7 @@
   "reader_speed": "Speed",
   "reader_voice": "Voice",
   "reader_stop_listening": "Stop listening",
+  "reader_listen_no_voice": "No voice for this language is installed on this device, so there's nothing to read aloud with. You can add one in your device's speech settings.",
   "reader_sleep_timer": "Sleep timer",
   "reader_layout": "Layout",
   "reader_layout_scroll": "Scroll",

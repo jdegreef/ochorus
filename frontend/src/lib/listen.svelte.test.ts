@@ -55,3 +55,33 @@ describe('listen voice defaults', () => {
 		expect(top[0]?.name).toBe(listen.defaultVoice('en')?.name);
 	});
 });
+
+// The missing-voice notice fires when nothing the reader would actually speak
+// with resolves for the language — i.e. the same `resolveVoice` predicate the
+// `start()` guard uses. These pin that predicate so the guard can't drift.
+describe('listen missing-voice predicate', () => {
+	beforeEach(() => {
+		listen.voiceURI = '';
+		listen.noVoice = false;
+	});
+
+	it('resolves nothing when the device lacks the language and no voice is saved', () => {
+		listen.voices = [GOOGLE_US, SAMANTHA]; // English only
+		expect(listen.resolveVoice('sw')).toBeUndefined();
+		expect(listen.resolveVoice('lg')).toBeUndefined();
+	});
+
+	it('still resolves a saved cross-language voice, so playback is not silent', () => {
+		// A listener whose saved English voice is installed must NOT be warned
+		// off a Swahili book — reading it aloud in that voice makes sound.
+		listen.voices = [GOOGLE_US, SAMANTHA];
+		listen.voiceURI = 'Samantha';
+		expect(listen.resolveVoice('sw')?.name).toBe('Samantha');
+	});
+
+	it('dismissNoVoice clears the notice', () => {
+		listen.noVoice = true;
+		listen.dismissNoVoice();
+		expect(listen.noVoice).toBe(false);
+	});
+});

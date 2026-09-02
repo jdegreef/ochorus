@@ -126,6 +126,7 @@
   "reader_speed": "Kasi",
   "reader_voice": "Sauti",
   "reader_stop_listening": "Acha kusikiliza",
+  "reader_listen_no_voice": "Hakuna sauti iliyosakinishwa kwa lugha hii kwenye kifaa hiki, kwa hivyo hakuna cha kusomwa kwa sauti. Unaweza kuongeza sauti katika mipangilio ya matamshi ya kifaa chako.",
   "reader_sleep_timer": "Kipima muda cha kulala",
   "reader_layout": "Mpangilio",
   "reader_layout_scroll": "Kusogeza",
