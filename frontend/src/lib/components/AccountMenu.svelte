@@ -66,6 +66,9 @@
 							>Admin</a
 						>
 					{/if}
+					<a class="account-item" href={localizeHref('/favorites')} onclick={() => (open = false)}
+						>{t('fav.yourFavorites')}</a
+					>
 					<a class="account-item" href={localizeHref('/notebook')} onclick={() => (open = false)}
 						>{t('notebook.title')}</a
 					>
