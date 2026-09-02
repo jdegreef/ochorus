@@ -48,20 +48,7 @@ from library.content_fixtures import rows_by_file
 #   chapters: (language, book_slug, chapter_order)
 # Each is a real divergence awaiting re-translation, not an accepted deviation.
 # Delete the line when the repair ships — a stale entry fails below.
-# unfailing-springs (all six languages): the English sermon had its truncated
-# ending restored — the closing prayer-hymn, a <blockquote> the source dropped
-# (PR #1304) — so English now carries markup the translations, made from the
-# truncated text, do not. They await a re-translation pass from the corrected
-# English (the queue has no re-translation path — the dashboard 409s an existing
-# translation), after which these lines come out (the shrink-only gate forces it).
-KNOWN_SERMON_GAPS: set[tuple[str, str]] = {
-    ("ar", "unfailing-springs"),   # en 82 tags -> ar 75
-    ("es", "unfailing-springs"),   # en 82 tags -> es 75
-    ("hi", "unfailing-springs"),   # en 82 tags -> hi 75
-    ("lg", "unfailing-springs"),   # en 82 tags -> lg 75
-    ("pt", "unfailing-springs"),   # en 82 tags -> pt 75
-    ("sw", "unfailing-springs"),   # en 82 tags -> sw 75
-}
+KNOWN_SERMON_GAPS: set[tuple[str, str]] = set()
 
 # es/the-unselfishness-of-god: the Spanish edition carries substantially MORE
 # markup than its English source (ch11 is 126 tags against 40) — the translator
