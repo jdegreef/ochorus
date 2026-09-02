@@ -849,6 +849,16 @@ archaic spelling and period punctuation are the text, not defects in it.
   lg n=12; curly→curly, straight→straight, never guillemets) — the same per-FILE
   rule #423/#515 found, so measure your own English source, don't borrow a
   language-wide style.
+- **The lg BOOK-CHAPTER band, n=18: 0.703–0.833, mean 0.745** (measured from
+  `word_count` on both sides of the shipped book pairs, 2026-09-02) — above the
+  lg *sermon* band (0.685–0.778) but still far below any sw type. And **lg BOOKS
+  mirror their source's marks exactly like lg sermons — 16 of 18 shipped lg
+  books are curly-source→curly, 2 are straight-source→straight, ZERO use
+  guillemets.** So unlike uk (which converts books to « »), lg NEVER converts:
+  settle it by measuring your own English source. In-word apostrophe: most
+  curly-quoted lg files use the curly ’ (U+2019, matching OLCB); a few use
+  ASCII ' — either is attested, pick one and keep the file internally
+  consistent.
 - **Check BOOK NAMES against the edition too, not just verses.** The uk brief
   guessed six and got three wrong: the Kulish text headers Matthew `Маттея`
   (not `Матея`), Isaiah `Ісаїї` (not `Ісаї`), Malachi `Малахія` (nominative,

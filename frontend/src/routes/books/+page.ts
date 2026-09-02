@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-02 (batch2): feasting-at-the-table.lg (#1209), the
+// library's newest Luganda book (9 chapters, Ephesians). Rebuilds the /lg/books
+// shelf and its per-chapter pages.
 // prerender refresh 2026-09-02: tukutendereza.en — a second NEW English
 // original, so /books gains a card and 14 chapter pages need baking. ONLY this
 // loader: no plan module names the slug, it is English-only, and its cover is

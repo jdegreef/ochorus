@@ -1,0 +1,117 @@
+{
+ "kind": "sermon",
+ "slug": "the-dying-thief",
+ "language": "sw",
+ "job_issue": 869,
+ "references": [
+  {
+   "reference": "Matthew 27:44",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Luke 23:40",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Proverbs 9:10",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Luke 23:38",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Luke 23:41",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Hebrews 5:6",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Romans 10:10",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Galatians 3:13",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Matthew 3:17",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "prevailing-prayer.sw.json"
+  },
+  {
+   "reference": "Luke 23:35",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Luke 23:42",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "prevailing-prayer.sw.json"
+  },
+  {
+   "reference": "Luke 23:41",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Luke 23:42",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "prevailing-prayer.sw.json"
+  },
+  {
+   "reference": "Luke 23:43",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Luke 2:14",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "christ-all-in-all.sw.json"
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Hebrews 9:22",
+   "status": "self_rendered",
+   "block_index": 24
+  }
+ ]
+}

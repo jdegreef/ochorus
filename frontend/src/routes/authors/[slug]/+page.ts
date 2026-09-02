@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-02 (batch2): Swahili bios for richard-sibbes (#1300),
+// athanasius-of-alexandria (#1312), cyprian-of-carthage (#1313) and erica-sabiti
+// (#1314) — rebuilds their /sw/authors/<slug> pages with the translated bio_html.
 // prerender refresh 2026-09-02: Swahili biographies for e-m-bounds (job #1298)
 // and john-owen (job #1299) — the authors already prerender; this rebuilds
 // their /sw/authors/<slug> pages with the translated bio_html.

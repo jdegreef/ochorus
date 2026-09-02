@@ -221,6 +221,13 @@ DERIVED_GROUND: dict[str, Ground] = {
     "clothed-with-strength-and-dignity": Ground(0.40, 0.78, 0.10, 1.45,
         source="818722e5ec6ae8ad955eb88481552b54c8822084238e62af8957274f18a54fe4",
     ),
+    # The words-free band is the open Bible on the wooden table below the title
+    # and its rule (which end by ~0.58) and above the Ochorus mark at the foot
+    # (~0.90). The coffee cup and steam sit up in the title's band, so the crop
+    # takes the page spread instead — the richest wordless picture on the cover.
+    "feasting-at-the-table": Ground(0.60, 0.83, 0.07, 1.15, sky=0.25,
+        source="75428579274b21090f44604464e1608fa54321307892f01791ac7b1f46a28713",
+    ),
     "godliness": Ground(0.44, 0.75, 0.09, 1.85,
         source="50b72ef83e3f24780d1274148d034ea55317bb5c2d36c1b339d2213c80593dd1",
     ),

@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-02 (batch2): three new sw sermons — blessed-adversity
+// (Hudson Taylor, #867), salvation-by-faith (Wesley, #868), the-dying-thief
+// (Moody, #869). Rebuilds the /sw/sermons shelf.
 // prerender refresh 2026-09-02: five new sermon editions — rest.sw & rest.lg
 // (Moody, jobs #1303/#1216), pauls-first-prayer.lg (Spurgeon, #1215),
 // salvation-by-faith.lg (Wesley, #1214), aggressive-christianity.lg (Booth,
