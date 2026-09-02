@@ -536,6 +536,13 @@ BOOKS: list[BookEntry] = [
               "ccel", "augustine/confess",
               subtitle="Translated by Edward B. Pusey",
               cover_color="#5c4033", group_parts=True),
+    # The Enchiridion (Handbook on Faith, Hope, and Love) — the NPNF public-
+    # domain translation (J. F. Shaw), extracted from Schaff's npnf103 volume by
+    # its section stem (part="iv.ii"); CCEL's standalone augustine/enchiridion is
+    # the copyrighted Outler translation.
+    BookEntry("enchiridion", "The Enchiridion", "augustine-of-hippo",
+              "ccel", "schaff/npnf103", part="iv.ii",
+              subtitle="On Faith, Hope, and Love", cover_color="#4a5d4a"),
     # The Schaff sets publish a whole volume under one work path, so these three
     # are addressed by `part` — the work's section-stem prefix inside the
     # volume's TOC. See BookEntry.part for why there is no per-work URL to use
