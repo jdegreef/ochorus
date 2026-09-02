@@ -53,6 +53,13 @@
 			"art": true,
 			"scrim": 0.85
 		},
+		"amanda-smith-autobiography": {
+			"ground": "110821467004b06445dd48a27d29244e03bf2f2fadef05b6b54882bb11b27cd3",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"answers-to-prayer": {
 			"ground": "eea397da9a1340cccc9ed01bd4d174bcfa0db47a0da4fc6676220efe11d644ca",
 			"style": "revival",
@@ -570,6 +577,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7
+		},
+		"life-experience-gospel-labours": {
+			"ground": "ab972d9ce9456ffd581edd7f8d988bf896f42272232aa5f9ad4df7b6366bdb42",
+			"style": "enlightenment",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"life-of-antony": {
 			"ground": "b8d68b82f5d631de4cf12eecedc0ed43875517f0d14f64664eabbab47426b700",

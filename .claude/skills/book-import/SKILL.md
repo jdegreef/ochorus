@@ -781,6 +781,48 @@ the transcribed chapters against the work's own TOC before choosing it.
    rather than trusted from the manifest — so use the Met (or another source
    with a per-object licence flag), not a general image search.
 
+**Documenting the American South** (`import_docsouth`, `source="docsouth"`,
+`source_ref` = the full `https://docsouth.unc.edu/...html` page URL) is the
+cleanest source for early African-American / Southern texts — human-KEYED, not
+OCR (Richard Allen's and Amanda Berry Smith's autobiographies came from here).
+The whole book is ONE page; hazards worth knowing before reusing it:
+  - **Isolate the transcribed text or docsouth's own front matter imports as
+    phantom chapters.** The funding statement, source description and
+    "Electronic Edition" title block are all set in `<h3>` like a chapter. The
+    book proper begins at the first inlined print-page anchor
+    (`<a name="allen3"> Page 3</a>`) and ends at `<!-- footer inside begins -->`;
+    cut to that window first. Decompose the `<a name>` anchors (they carry the
+    visible "Page N" text) and the illustration `<img>`s.
+  - **Split on `<h3>` at the STRING level, not by walking BeautifulSoup
+    siblings.** The centred summary sub-headings are malformed
+    (`<P align="center">…</P></P></FONT>`), and lxml reparents later headings
+    under a stray `<p>`, so a sibling walk silently merges and drops chapters
+    (Smith came out 31 of 38). Regex-split on `<h3>`, then soup each chapter body
+    in isolation, where the mangled nesting can't swallow a heading.
+  - **A numbered chapter's real title leads its body.** docsouth prints
+    "`<h3>CHAPTER I.</h3>`" then the title as an ALL-CAPS centred sub-heading,
+    then the prose — so `import_gutenberg.resolve_title` would be right in spirit
+    (borrow the next node) but it also CONSUMES the borrowed node and would eat a
+    chapter's first sentence on any source whose numbered heading is followed by
+    prose. Promote an ALL-CAPS lead paragraph to the title only, and only when
+    the heading was a bare numeral. NB `clean_title` empties a bare *arabic*
+    "Chapter 3" but keeps a *roman* "Chapter I" (which then doubles to "1.
+    Chapter I") — detect the bare chapter yourself.
+  - **`is_front_matter` gained "list of illustrations"/"illustrations"** (a plate
+    list, no prose) — general, not docsouth-specific.
+  - **19th-c. chapter "arguments" make poor titles verbatim** (100–300 chars,
+    em-dash chains, OCR word-splits like "Wa Y"/"Florenc E"). Smith's are curated
+    down to concise titles in `corrections.chapter_titles`, the same channel as
+    `holy-in-christ` / `ministry-of-intercession`. Ask the user how they want the
+    chapter list to read before hand-writing 36 titles.
+  - **A compilation is not a chaptered book.** Allen's volume is autobiography +
+    AME supplement + three devotional Acts + the 1793 yellow-fever narrative +
+    two addresses; each `<h3>` section becomes a chapter, and the ones whose
+    descriptive subtitle sits in the body get their title from `chapter_titles`.
+  - Quote style: docsouth is uniformly STRAIGHT-quoted, which `QuoteStyleTests`
+    (consistency, not curly) leaves alone — so keep titles/descriptions straight
+    too rather than normalising.
+
 ## Two kinds of fix
 
 - **Improve the importer** (`import_ochorus.py`) when the pattern recurs across
