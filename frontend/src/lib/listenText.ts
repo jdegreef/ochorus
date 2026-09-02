@@ -1,11 +1,13 @@
 /**
- * The text to read aloud for one prose block.
+ * What a footnote marker is, and how to remove one — shared by every surface
+ * that has to show a reader's prose without the eye-only bits in it.
  *
- * The reader speaks one paragraph per utterance, and the naive `el.innerText`
- * includes bits that are on the page for the eye, not the ear — footnote
- * reference markers most of all. A `<sup>4</sup>` after a sentence, or an
- * inline `[2]`, gets voiced as "…grace **four**" / "…much **two**", which
- * derails the listen. This strips those before they reach the engine.
+ * Chapter prose carries reference markers that are on the page for the eye, not
+ * for anything downstream of it: a `<sup>4</sup>` after a sentence, or an inline
+ * `[2]`. The listen engine would voice them ("…grace **four**"); the shareable
+ * quote card would bake them into the PNG ("grace;[4]"); the search index would
+ * disagree with both. So the *definition* of a marker lives here, in one place,
+ * and each surface removes markers in the way its own coordinate system allows.
  *
  * The two kinds of marker are owned in two different places, because they are
  * not the same kind of thing:
@@ -33,6 +35,10 @@
  * reads as a word (kept, because `[is]`/`[in]` are real editor words), and a
  * single uppercase `[I]` is kept for the same reason (it is an inserted word or
  * a roman numeral, never a footnote letter — those are lowercase `[a]`, `[b]`).
+ *
+ * `FOOTNOTE_MARKER` and `isFootnoteMarker` are exported so the surfaces that
+ * cannot use `spokenText` directly — the shareable quote card and the search
+ * index — reuse this one definition rather than re-deriving it.
  */
 
 // A bracketed footnote marker, plus one optional space in front so removing
@@ -40,21 +46,45 @@
 // LOWERCASE letter — the shape a footnote reference takes. Multi-letter brackets
 // like "[him]" and an uppercase "[I]" are the editor's word (or a roman
 // numeral), not a marker, and are kept.
-const FOOTNOTE_MARKER = /\s?\[(?:\d{1,3}|[a-z])\]/g;
+export const FOOTNOTE_MARKER = /\s?\[(?:\d{1,3}|[a-z])\]/g;
+
+/** The DOM half of the definition: is this element a footnote marker itself
+ *  (a `<sup>`) or otherwise eye-only (`aria-hidden`)? Since the import-time
+ *  strip landed, the `<sup>` case here is a fallback — see the header. */
+export function isFootnoteMarker(el: Element): boolean {
+	return el.tagName === 'SUP' || el.getAttribute('aria-hidden') === 'true';
+}
 
 // Block-level tags whose boundaries are a word break: a `<blockquote>` holding
 // two `<p>`s must read "…end. Start…", never "…end.Start…". Only the blocks
 // that actually occur in chapter prose — <br> is handled on its own below.
 const BLOCK = /^(?:P|DIV|BLOCKQUOTE|LI|H[1-6])$/;
 
-export function spokenText(el: Element): string {
-	return collect(el)
+/**
+ * Reader-facing prose of a node, footnote markers removed and whitespace
+ * normalised — what the listen engine (`spokenText`) and the shareable quote
+ * card both want. Accepts any `Node`, so a caller can hand it a cloned
+ * selection range (a `DocumentFragment`) as readily as a paragraph element.
+ *
+ * OFFSET-DESTRUCTIVE by design: it collapses runs of whitespace and inserts
+ * spaces at block boundaries, so a character position in the result no longer
+ * lines up with the source's `textContent`. That is fine for text bound for the
+ * ear or a PNG, and wrong for anything pinned to offsets — highlights, notes,
+ * search hits. Those use `blankFootnoteMarkers`, which preserves length.
+ */
+export function readerProse(root: Node): string {
+	return collect(root)
 		.replace(FOOTNOTE_MARKER, '')
 		.replace(/\s+/g, ' ')
 		.trim();
 }
 
-function collect(el: Element): string {
+/** The text to read aloud for one prose block. See `readerProse`. */
+export function spokenText(el: Element): string {
+	return readerProse(el);
+}
+
+function collect(el: Node): string {
 	let out = '';
 	for (const node of el.childNodes) {
 		if (node.nodeType === Node.TEXT_NODE) {
@@ -64,7 +94,7 @@ function collect(el: Element): string {
 		if (node.nodeType !== Node.ELEMENT_NODE) continue;
 		const e = node as Element;
 		const tag = e.tagName;
-		if (tag === 'SUP' || e.getAttribute('aria-hidden') === 'true') continue;
+		if (isFootnoteMarker(e)) continue;
 		if (tag === 'BR') {
 			out += ' ';
 			continue;
@@ -73,4 +103,36 @@ function collect(el: Element): string {
 		out += BLOCK.test(tag) ? ` ${inner} ` : inner;
 	}
 	return out;
+}
+
+/**
+ * `textContent` of a node with every footnote marker blanked to spaces —
+ * length-preserving, so it is safe for the offset-pinned surfaces.
+ *
+ * Highlights, notes and search hits are stored and rendered as character
+ * offsets into a block's raw `textContent` (see `rangeMarks.ts`), and the code
+ * that paints them walks the live text nodes. So the search index can't just
+ * DELETE markers — that would shift every offset after one and land the
+ * highlight on the wrong words. Instead each marker's characters are replaced
+ * by an equal number of spaces: the string stays the same length (position for
+ * position identical to `textContent`), a marker can no longer match a query,
+ * and no hit can begin inside one or run across one.
+ */
+export function blankFootnoteMarkers(root: Node): string {
+	const walk = (node: Node, hidden: boolean): string => {
+		let out = '';
+		for (const child of node.childNodes) {
+			if (child.nodeType === Node.TEXT_NODE) {
+				const data = child.textContent ?? '';
+				out += hidden ? ' '.repeat(data.length) : data;
+				continue;
+			}
+			if (child.nodeType !== Node.ELEMENT_NODE) continue;
+			out += walk(child, hidden || isFootnoteMarker(child as Element));
+		}
+		return out;
+	};
+	// Blank the inline `[n]` markers last, replacing each match with spaces of
+	// the same length so the total length is unchanged.
+	return walk(root, false).replace(FOOTNOTE_MARKER, (m) => ' '.repeat(m.length));
 }

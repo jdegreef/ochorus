@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { i18n } from '$lib/i18n.svelte';
 	import { segmentsFromSelection } from '$lib/rangeMarks';
+	import { readerProse } from '$lib/listenText';
 	import { HIGHLIGHT_COLORS } from '$lib/reading-schema';
 	import { shareQuoteCard } from '$lib/quoteCard';
 	import { clampPopoverLeft, HEADER_OFFSET } from '$lib/reading';
@@ -172,10 +173,20 @@
 
 	async function quoteCard() {
 		if (cardBusy) return;
+		// The quote card is the one artifact built to leave the site, so strip the
+		// footnote markers (a `<sup>4</sup>`, an inline `[4]`) the selection carries
+		// for the eye. Computed here from the live selection, not captured on every
+		// `selectionchange`: it is only ever needed on this tap, and the bar's
+		// mousedown-preventDefault keeps the range alive for the click (the same
+		// reason `onHighlight` can still read the selection below).
+		const sel = window.getSelection();
+		if (!sel || sel.rangeCount === 0) return;
+		const quote = readerProse(sel.getRangeAt(0).cloneContents());
+		if (!quote) return; // a selection of nothing but a marker — no card to make
 		cardBusy = true;
 		try {
 			await shareQuoteCard({
-				quote: selectedText,
+				quote,
 				author: cite.author,
 				source: cite.chapter ? `${cite.book}, ${cite.chapter}` : cite.book,
 				site: 'ochorus.com',

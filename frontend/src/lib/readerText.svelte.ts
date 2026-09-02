@@ -34,7 +34,7 @@ import { listen } from '$lib/listen.svelte';
 import { define } from '$lib/define.svelte';
 import { scripture } from '$lib/scripture.svelte';
 import { getLang } from '$lib/lang.svelte';
-import { spokenText } from '$lib/listenText';
+import { spokenText, blankFootnoteMarkers } from '$lib/listenText';
 import { shouldFollow } from '$lib/listenFollow';
 import { saveScrollAnchor } from '$lib/progress';
 import { HEADER_OFFSET } from '$lib/reading';
@@ -303,9 +303,15 @@ export class ReaderText {
 			const query = (o.searchQuery?.() ?? '').trim();
 			// Recomputed here, not once on mount: the marks render restores pristine
 			// HTML, so hit offsets have to be handed over on every pass.
+			// `blankFootnoteMarkers`, not raw `textContent`: a search must see the
+			// same paragraph the listen engine speaks, with footnote markers gone, so
+			// a query never matches a `<sup>4</sup>` or an inline `[4]`. It blanks them
+			// to spaces rather than deleting them, keeping the string the same length
+			// so the offsets still line up with the live text nodes the highlighter
+			// walks.
 			const hits = query
 				? findQueryHits(
-						Array.from(body.children).map((el) => el.textContent ?? ''),
+						Array.from(body.children).map((el) => blankFootnoteMarkers(el)),
 						query
 					)
 				: [];
