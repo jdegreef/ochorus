@@ -1,6 +1,20 @@
 from rest_framework import serializers
 
-from .models import ChapterMarks, Favorite, PlanProgress, ReadingProgress
+from .models import Bookmark, ChapterMarks, Favorite, PlanProgress, ReadingProgress
+
+
+class BookmarkSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Bookmark
+        fields = [
+            "kind",
+            "book_slug",
+            "chapter_order",
+            "paragraph_index",
+            "bm_id",
+            "snippet",
+            "title",
+        ]
 
 
 class PlanProgressSerializer(serializers.ModelSerializer):

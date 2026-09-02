@@ -16,7 +16,7 @@ from .marks import (
     merge_mark_lists,
     reconcile_marks,
 )
-from .models import ChapterMarks, Favorite, ReadingDay, ReadingProgress
+from .models import Bookmark, ChapterMarks, Favorite, ReadingDay, ReadingProgress
 from .views import _now_ms
 
 User = get_user_model()
@@ -328,6 +328,103 @@ class FavoriteTests(TestCase):
     def test_requires_auth(self):
         anon = APIClient()
         self.assertEqual(anon.put("/api/reading/favorites/book/humility/").status_code, 401)
+
+
+class BookmarkTests(TestCase):
+    def setUp(self):
+        self.user = User.objects.create(username="00000000-0000-0000-0000-000000000009")
+        self.profile = UserProfile.objects.create(
+            user=self.user, supabase_uid=self.user.username, email="bm@example.com"
+        )
+        self.client = APIClient()
+        self.client.force_authenticate(self.user)
+
+    def test_save_idempotent_unsave_and_state(self):
+        res = self.client.put(
+            "/api/reading/bookmarks/book/humility/2/5/",
+            {"bm_id": "x1", "snippet": "Blessed is he", "title": "Chapter 2", "at": 111},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(
+            (res.data["kind"], res.data["book_slug"], res.data["chapter_order"], res.data["paragraph_index"]),
+            ("book", "humility", 2, 5),
+        )
+        self.assertEqual(res.data["snippet"], "Blessed is he")
+        # Saving the same spot again keeps one row (display text refreshed).
+        self.client.put(
+            "/api/reading/bookmarks/book/humility/2/5/",
+            {"snippet": "Blessed is he who", "title": "Chapter 2", "at": 222},
+            format="json",
+        )
+        self.assertEqual(Bookmark.objects.filter(profile=self.profile).count(), 1)
+        self.assertEqual(Bookmark.objects.get(profile=self.profile).snippet, "Blessed is he who")
+
+        # A second spot, then confirm both surface in /state.
+        self.client.put("/api/reading/bookmarks/book/humility/3/0/", {}, format="json")
+        state = self.client.get("/api/reading/state/").data
+        spots = {(b["chapter_order"], b["paragraph_index"]) for b in state["bookmarks"]}
+        self.assertEqual(spots, {(2, 5), (3, 0)})
+
+        res = self.client.delete("/api/reading/bookmarks/book/humility/2/5/")
+        self.assertEqual(res.status_code, 204)
+        self.assertEqual(Bookmark.objects.filter(profile=self.profile).count(), 1)
+
+    def test_unknown_kind_and_bad_position_rejected(self):
+        self.assertEqual(
+            self.client.put("/api/reading/bookmarks/galaxy/humility/1/0/", {}, format="json").status_code,
+            400,
+        )
+        # order 0 is not a valid 1-based chapter.
+        self.assertEqual(
+            self.client.put("/api/reading/bookmarks/book/humility/0/0/", {}, format="json").status_code,
+            400,
+        )
+        # An out-of-range paragraph index is rejected before it reaches the DB
+        # (an unbounded int would overflow Postgres integer → 500). SQLite would
+        # accept it, so this asserts the guard, not the column.
+        self.assertEqual(
+            self.client.put(
+                "/api/reading/bookmarks/book/humility/1/9999999999/", {}, format="json"
+            ).status_code,
+            400,
+        )
+        self.assertEqual(Bookmark.objects.filter(profile=self.profile).count(), 0)
+
+    def test_sermon_bookmark_kind(self):
+        res = self.client.put(
+            "/api/reading/bookmarks/sermon/the-blood/1/4/", {"snippet": "s"}, format="json"
+        )
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["kind"], "sermon")
+
+    def test_merge_unions_bookmarks_and_skips_malformed(self):
+        Bookmark.objects.create(
+            profile=self.profile, kind="book", book_slug="humility", chapter_order=1, paragraph_index=2
+        )
+        res = self.client.post(
+            "/api/reading/merge/",
+            {
+                "bookmarks": [
+                    {"kind": "book", "book_slug": "humility", "chapter_order": 1, "paragraph_index": 2},  # on server
+                    {"kind": "book", "book_slug": "humility", "chapter_order": 4, "paragraph_index": 0, "snippet": "off"},  # offline
+                    {"kind": "book", "book_slug": "humility", "chapter_order": 0, "paragraph_index": 0},  # bad order
+                    {"kind": "galaxy", "book_slug": "x", "chapter_order": 1, "paragraph_index": 0},  # bad kind
+                    {"kind": "book", "book_slug": "humility", "chapter_order": 1, "paragraph_index": "nope"},  # bad p
+                    {"kind": "book", "book_slug": "humility", "chapter_order": 1, "paragraph_index": 9999999999},  # p out of range
+                ]
+            },
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        spots = {(b["chapter_order"], b["paragraph_index"]) for b in res.data["bookmarks"]}
+        self.assertEqual(spots, {(1, 2), (4, 0)})
+
+    def test_requires_auth(self):
+        anon = APIClient()
+        self.assertEqual(
+            anon.put("/api/reading/bookmarks/book/humility/1/0/", {}, format="json").status_code, 401
+        )
 
 
 class MarkHelpersTests(TestCase):

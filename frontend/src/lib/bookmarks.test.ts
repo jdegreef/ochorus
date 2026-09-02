@@ -1,5 +1,6 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { bookmarks } from './bookmarks.svelte';
+import { readingSync } from './readingSync';
 import { BOOKMARKS_KEY, SERMON_CHAPTER_ORDER } from './reading-schema';
 
 const stored = () => JSON.parse(localStorage.getItem(BOOKMARKS_KEY) || '{}');
@@ -22,6 +23,23 @@ describe('bookmarks store', () => {
 		expect(removed).toBe(false);
 		expect(bookmarks.has(2, 4)).toBe(false);
 		expect(bookmarks.list).toHaveLength(0);
+	});
+
+	it('mirrors add and remove to the account via readingSync', () => {
+		const push = vi.spyOn(readingSync, 'pushBookmark');
+		const remove = vi.spyOn(readingSync, 'removeBookmark');
+		try {
+			bookmarks.toggle(2, 4, 'a snippet', 'Chapter Two');
+			expect(push).toHaveBeenCalledTimes(1);
+			expect(push.mock.calls[0].slice(0, 2)).toEqual(['book', 'inner']);
+			expect(push.mock.calls[0][2]).toMatchObject({ order: 2, p: 4 });
+
+			bookmarks.toggle(2, 4, 'a snippet', 'Chapter Two'); // toggles off
+			expect(remove).toHaveBeenCalledWith('book', 'inner', 2, 4);
+		} finally {
+			push.mockRestore();
+			remove.mockRestore();
+		}
 	});
 
 	it('persists to localStorage and drops the work key when empty', () => {
