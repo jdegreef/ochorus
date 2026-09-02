@@ -7,29 +7,40 @@
  * inline `[2]`, gets voiced as "…grace **four**" / "…much **two**", which
  * derails the listen. This strips those before they reach the engine.
  *
- * What it removes:
- *  - `<sup>` elements — in this corpus they are always footnote markers
- *    (numbered or empty), never exponents or ordinals.
- *  - `[1]` / `[a]` style inline footnote references — a bracketed number or a
- *    single letter. Multi-letter brackets like `[him]` are the editor's own
- *    words inserted into a quotation and ARE read, so they're kept.
- *  - anything `aria-hidden` — marked as not for assistive tech, so not for TTS.
+ * The two kinds of marker are owned in two different places, because they are
+ * not the same kind of thing:
  *
- * It is deliberately DOM-based (not a string regex over innerHTML): removing
- * `<sup>` nodes can't be confused with prose that merely contains a digit.
+ *  - `<sup>` footnote residue is stripped at IMPORT, not here. In this corpus a
+ *    `<sup>` is only ever a footnote marker (numbered or empty) pointing at a
+ *    note that is gone, so the backend removes the lone ones from the stored
+ *    body outright — junk for the eye as much as the ear
+ *    (`library/corrections.py` `strip_footnote_markers`). Dropping `<sup>` below
+ *    is now a FALLBACK: it covers un-migrated content and the welded-footnote
+ *    markers the backend deliberately leaves for their own repair.
+ *  - `[1]` / `[a]` inline brackets are an EAR-ONLY concern and stay here. The
+ *    backend can't touch them: across the corpus they are overwhelmingly the
+ *    author's own enumeration ("three things: [1] Wisdom. [2] Authority.") —
+ *    prose the page must keep. So they are kept for the eye and dropped only on
+ *    the way to the engine.
  *
- * These rules INFER what a footnote marker is from its shape, because the
- * backend importer doesn't tag them semantically. That's good enough for the
- * current corpus but brittle at the edges (a roman-numeral ref `[iv]`, an
- * editor's single-letter insertion `[I]`, a genuine `<sup>` exponent). The
- * durable fix is for the importer to emit an explicit class (`<sup class="fn">`
- * / `<a class="footnote-ref">`) and strip on that — see the book-import skill.
+ * Also removed: anything `aria-hidden` — marked as not for assistive tech, so
+ * not for TTS.
+ *
+ * The `<sup>` fallback is deliberately DOM-based (not a string regex over
+ * innerHTML): removing `<sup>` nodes can't be confused with prose that merely
+ * contains a digit. The bracket rule INFERS a footnote marker from its shape,
+ * which is inherently approximate at the edges — a roman-numeral ref `[iv]`
+ * reads as a word (kept, because `[is]`/`[in]` are real editor words), and a
+ * single uppercase `[I]` is kept for the same reason (it is an inserted word or
+ * a roman numeral, never a footnote letter — those are lowercase `[a]`, `[b]`).
  */
 
 // A bracketed footnote marker, plus one optional space in front so removing
-// "much. [2]" leaves "much." and not "much. ". A single letter or short number;
-// multi-letter brackets like "[him]" are the editor's word and are kept.
-const FOOTNOTE_MARKER = /\s?\[(?:\d{1,3}|[a-zA-Z])\]/g;
+// "much. [2]" leaves "much." and not "much. ". A short number, or a single
+// LOWERCASE letter — the shape a footnote reference takes. Multi-letter brackets
+// like "[him]" and an uppercase "[I]" are the editor's word (or a roman
+// numeral), not a marker, and are kept.
+const FOOTNOTE_MARKER = /\s?\[(?:\d{1,3}|[a-z])\]/g;
 
 // Block-level tags whose boundaries are a word break: a `<blockquote>` holding
 // two `<p>`s must read "…end. Start…", never "…end.Start…". Only the blocks

@@ -33,12 +33,22 @@ one:
 | `source_fixes.py` | what the **source itself** got wrong, keyed `(slug, order)` | Applies in **any** language — use when the defect already propagated |
 | `contemporize-book` skill | modernizing period style | A separate, **labelled** Modern English edition. Never in place. |
 
-`apply_body_corrections` also carries one RULE rather than a list — the
-line-break hyphen rejoin — and it runs for every work, not just the 22 with a
-declared entry. **Declared pairs run first**, so a hand-written repair always
-beats the rule: `the-inner-chamber` declares "scales- only" → "scales — only",
-where the trailing hyphen is a flattened dash, and with the rule first that em
-dash was lost.
+`apply_body_corrections` also carries two RULES rather than lists, each run for
+every work, not just the ones with a declared entry:
+
+- **the line-break hyphen rejoin** — closes "self- righteous";
+- **`strip_footnote_markers`** — removes LONE footnote-reference superscripts, an
+  empty `<sup></sup>` or a bare `<sup>4</sup>`, the residue left when a note was
+  dropped in extraction. It fires only on a lone marker: a WELDED footnote
+  (`<sup>1</sup><sup>1</sup>Note text…`, the tracked `welded-footnote` class) is
+  excluded by lookbehind/lookahead so its note text is never stranded, and inline
+  `[1]`/`[a]` brackets are left alone (they are usually the author's own
+  enumeration, "three things: [1] Wisdom. [2] Authority." — content the page
+  keeps; the reader strips those for the ear only, in `listenText.ts`).
+
+**Declared pairs run first**, so a hand-written repair always beats a rule:
+`the-inner-chamber` declares "scales- only" → "scales — only", where the trailing
+hyphen is a flattened dash, and with the rule first that em dash was lost.
 
 `apply_body_corrections` calls `.save()`, so the FTS hooks fire and search
 vectors stay in step. A fix applied with `queryset.update()` instead would

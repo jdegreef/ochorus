@@ -1748,6 +1748,43 @@ def rejoin_linebreak_hyphens(body_html: str) -> str:
     return _HYPHEN_LINEBREAK.sub(r"\1-", body_html)
 
 
+#: A LONE footnote-reference superscript: an empty ``<sup></sup>`` (the marker
+#: whose number the extractor dropped, leaving pure residue) or a bare numbered
+#: one, ``<sup>4</sup>``. In this corpus a ``<sup>`` is only ever a footnote
+#: marker — never an exponent or an ordinal (an ordinal keeps its letters,
+#: ``1<sup>st</sup>``, which the digit class below cannot match) — and the notes
+#: they point at are gone (dropped with CCEL's ``[class*=note i]`` apparatus, or
+#: never extracted), so the marker is unstyled residue that the reader has no
+#: feature behind: junk for the eye, and read aloud as "…grace FOUR" for the ear.
+#:
+#: LONE is the whole point of the two guards. A WELDED footnote —
+#: ``<sup>1</sup><sup>1</sup>Note text…`` — is a different, tracked defect
+#: (`welded-footnote`), repaired per work by hand or by
+#: :func:`strip_transcription_footnotes`, because removing only its markers would
+#: strand the note text mid-prose. The lookbehind excludes the second marker of
+#: such a pair and the lookahead the first, so this rule never touches one.
+#:
+#: Inline ``[1]`` / ``[a]`` brackets are deliberately NOT handled here: across the
+#: corpus they are overwhelmingly the author's own enumeration ("three things: [1]
+#: Wisdom. [2] Authority.") — prose the page must keep. Stripping *those* for the
+#: ear only is the reader's job (`frontend/src/lib/listenText.ts`), not the
+#: importer's, because the eye still needs them.
+_LONE_FOOTNOTE_SUP = _re.compile(
+    r"(?<!</sup>)\s?<sup>(?:\d{1,3}|\s*)</sup>(?!<sup>)"
+)
+
+
+def strip_footnote_markers(body_html: str) -> str:
+    """Remove lone footnote-reference superscripts. Idempotent.
+
+    ``body_html`` only, and a no-op on the tagless ``body_text`` besides: the
+    pattern is anchored on ``<sup>`` markup, which a stripped body never carries.
+    Welded footnotes and inline ``[n]`` enumeration are left untouched — see
+    :data:`_LONE_FOOTNOTE_SUP`.
+    """
+    return _LONE_FOOTNOTE_SUP.sub("", body_html)
+
+
 # How a restored break is spelled, matching the block separator the fixture
 # already uses between paragraphs. Named so the hygiene test can ask for the
 # applied spelling instead of restating it.
@@ -1835,6 +1872,11 @@ def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
         if entry.get("strip_transcription_footnotes"):
             body_html = strip_transcription_footnotes(body_html)
     body_html = rejoin_linebreak_hyphens(body_html)
+    # A rule, not a list, like the rejoin above: lone footnote-marker residue
+    # occurs across works and is unambiguous, so it comes out for every one. It
+    # runs AFTER the declared replacements so a work's own welded-footnote repair
+    # consumes its markers first, leaving this nothing to half-strip.
+    body_html = strip_footnote_markers(body_html)
     if not entry:
         return body_html
     letter = entry.get("dropcap_letters", {}).get(order)

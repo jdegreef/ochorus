@@ -224,6 +224,19 @@ dropped; chapters under 120 words are dropped as stubs.
   the `Note`/`NoteRef` markers left as bare digits. Now `[class*=note i]` (the
   `i` flag) covers the whole apparatus. When adding a drop selector for a CCEL
   class, **assume capitalisation you haven't seen** and use `i`. *(2026-07)*
+- **Lone footnote-marker superscripts left after the note is gone** — a
+  non-CCEL source (an ochorus.com PDF) has no `note` class to drop, so a
+  reference superscript survives as unstyled residue pointing at a note that
+  was never extracted: `<sup></sup>` (number lost) or `<sup>4</sup>`. It is junk
+  for the eye and reads aloud as "…grace FOUR" for the ear.
+  `corrections.strip_footnote_markers` (a corpus-wide rule inside
+  `apply_body_corrections`, so it runs on import AND on every deploy) removes the
+  LONE ones. It deliberately leaves a WELDED footnote alone
+  (`<sup>1</sup><sup>1</sup>Note…`, the `welded-footnote` class — repair those
+  per work) and never touches inline `[1]`/`[a]` brackets, which are usually the
+  author's enumeration and stay as content. After it lands you must bring the
+  committed fixture in line: `normalize_english_fixture --write`, then
+  `rederive_body_text --write` and `rederive_word_count --write`. *(2026-09)*
 - **Every CCEL chapter restating its own heading** — bodies open
   `<h4>The Twenty-Second Chapter</h4><h3>{the title}</h3>` above prose the reader
   already sees titled. `extract_body(html, title)` drops a leading ordinal

@@ -30,6 +30,12 @@ describe('spokenText', () => {
 		expect(spokenText(block('he gave [him] grace'))).toBe('he gave [him] grace');
 	});
 
+	it("keeps a single UPPERCASE bracket — an inserted word or roman numeral, not a footnote letter", () => {
+		// Footnote letters are lowercase ([a], [b]); "[I]" is the pronoun/roman
+		// the editor inserted, and reading "he gave I grace" would be right.
+		expect(spokenText(block('and [I] said to them'))).toBe('and [I] said to them');
+	});
+
 	it('keeps scripture references, which are prose to be read', () => {
 		expect(spokenText(block('See <span class="scripture-ref">John 3:16</span> today'))).toBe(
 			'See John 3:16 today'

@@ -512,6 +512,69 @@ class TranscriptionFootnoteTests(SimpleTestCase):
         self.assertEqual(self._strip(once), once)
 
 
+class LoneFootnoteMarkerTests(SimpleTestCase):
+    """`strip_footnote_markers` — the corpus-wide rule that removes lone
+    footnote-reference superscripts (residue the notes are gone from).
+
+    Its whole safety is that it fires only on a LONE marker: an empty
+    ``<sup></sup>`` or a bare numbered one, never a marker that abuts another
+    ``<sup>`` (a welded footnote, a different and tracked defect), never an
+    ordinal (which keeps its letters), and never an inline ``[n]`` bracket
+    (which is usually the author's own enumeration and content the page keeps).
+    """
+
+    def _strip(self, html):
+        from library.corrections import strip_footnote_markers
+
+        return strip_footnote_markers(html)
+
+    def test_removes_an_empty_marker(self):
+        self.assertEqual(
+            self._strip("<p>towards its centre,<sup></sup> from that</p>"),
+            "<p>towards its centre, from that</p>",
+        )
+
+    def test_removes_an_empty_marker_before_a_block_close(self):
+        self.assertEqual(
+            self._strip("<p>availeth much.<sup></sup></p>"),
+            "<p>availeth much.</p>",
+        )
+
+    def test_removes_a_bare_numbered_marker(self):
+        self.assertEqual(
+            self._strip("<p>first did meet with grace;<sup>4</sup> for he</p>"),
+            "<p>first did meet with grace; for he</p>",
+        )
+
+    def test_leaves_a_welded_footnote_untouched(self):
+        """Removing only its markers would strand the note text mid-prose, so
+        the lookbehind/lookahead exclude both markers of the pair."""
+        welded = "<p>the only Son from me.”<sup>1</sup><sup>1</sup>Full Text: Genesis 22:1–12</p>"
+        self.assertEqual(self._strip(welded), welded)
+
+    def test_keeps_an_ordinal_superscript(self):
+        """An ordinal keeps its letters (`1<sup>st</sup>`); the digit class
+        cannot match it, so a genuine ordinal survives."""
+        html = "<p>on the 1<sup>st</sup> of June</p>"
+        self.assertEqual(self._strip(html), html)
+
+    def test_leaves_inline_bracket_enumeration_alone(self):
+        """`[1]`/`[a]` are the reader's (ear-only) concern — the page keeps
+        them as the author's numbered points."""
+        html = "<p>three things requisite: [1] Wisdom. [2] Authority.</p>"
+        self.assertEqual(self._strip(html), html)
+
+    def test_no_op_on_a_stripped_body(self):
+        """The pattern is anchored on `<sup>`, which body_text never carries."""
+        text = "first did meet with grace; for he found it"
+        self.assertEqual(self._strip(text), text)
+
+    def test_is_idempotent(self):
+        once = self._strip("<p>grace;<sup>4</sup> and much.<sup></sup></p>")
+        self.assertEqual(self._strip(once), once)
+        self.assertEqual(once, "<p>grace; and much.</p>")
+
+
 class CorrectionsHygieneTests(SimpleTestCase):
     def test_no_replacement_pair_is_dead(self):
         """Every repair must still refer to text that exists somewhere.
