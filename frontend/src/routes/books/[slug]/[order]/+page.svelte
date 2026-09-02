@@ -22,6 +22,7 @@
 		contentLang,
 		editionLang,
 		readingTime,
+		listenTime,
 		minutesLeft as minutesLeftOf,
 		HEADER_OFFSET,
 		placeAfterLayout
@@ -1047,7 +1048,8 @@
 						class:text-accent={listen.status !== 'idle'}
 						onclick={() => (listen.status === 'idle' ? reader.startListening() : listen.stop())}
 						aria-label={t('reader.listen')}
-						title={t('reader.listen')}><Icon name="headphones" size={18} /></button
+						title="{t('reader.listen')} · {listenTime(chapter.word_count, listen.rate)}"
+						><Icon name="headphones" size={18} /></button
 					>
 				{/if}
 				<!-- `layout`: the chapter reader is the one surface that implements
@@ -1139,6 +1141,9 @@
 	<div class="pager" class:dragging bind:this={pager} style="--page-w:{pageW}px; --page-idx:{pageIndex}; --cols:{cols};">
 		<p class="eyebrow mb-1 text-muted">
 			{t('continue.chapter')} {chapter.order} · {readingTime(chapter.word_count)}
+			{#if listen.supported}
+				· {listenTime(chapter.word_count, listen.rate)}
+			{/if}
 			{#if chapter.is_modern_edition}
 				<span class="ms-1 text-accent">· {t('reader.modernEdition')}</span>
 			{/if}

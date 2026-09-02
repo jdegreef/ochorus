@@ -5,7 +5,9 @@ import {
 	contentLang,
 	minutesLeft,
 	readingMinutes,
-	readingTime
+	readingTime,
+	listenMinutes,
+	listenTime
 } from './reading';
 
 describe('readingMinutes', () => {
@@ -54,6 +56,33 @@ describe('readingTime', () => {
 	it('labels hours and minutes together', () => {
 		expect(readingTime(200 * 65)).toBe('1 hr 5 min read');
 		expect(readingTime(200 * 130)).toBe('2 hr 10 min read');
+	});
+});
+
+describe('listenMinutes', () => {
+	it('runs slower than reading — a longer estimate for the same words', () => {
+		expect(listenMinutes(1550)).toBe(10); // 1550 / 155 wpm
+		expect(readingMinutes(1550)).toBe(8); // 1550 / 200 wpm — reading is quicker
+	});
+
+	it('shrinks with a faster speed multiplier', () => {
+		expect(listenMinutes(1550, 2)).toBe(5); // twice as fast
+	});
+
+	it('floors at 1 minute', () => {
+		expect(listenMinutes(0)).toBe(1);
+		expect(listenMinutes(20)).toBe(1);
+	});
+});
+
+describe('listenTime', () => {
+	it('labels sub-hour listens in minutes', () => {
+		expect(listenTime(1550)).toBe('10 min listen');
+	});
+
+	it('labels hours and minutes at speed', () => {
+		expect(listenTime(155 * 60)).toBe('1 hr listen');
+		expect(listenTime(155 * 65)).toBe('1 hr 5 min listen');
 	});
 });
 
