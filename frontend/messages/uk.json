@@ -221,6 +221,8 @@
   "auth_err_signup_disabled": "Наразі нові облікові записи не створюються.",
   "auth_err_not_configured": "Вхід ще не налаштовано.",
   "login_welcome_back": "З поверненням",
+  "home_welcome_back": "З поверненням",
+  "home_welcome_back_named": "З поверненням, {name}",
   "login_signup_title": "Створіть обліковий запис",
   "login_reset_title": "Скиньте пароль",
   "login_sync_note": "Синхронізуйте читання — виділення, нотатки та місце в книзі — між пристроями.",

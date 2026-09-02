@@ -1,0 +1,132 @@
+<script lang="ts">
+	import { onMount } from 'svelte';
+	import { i18n } from '$lib/i18n.svelte';
+	import { localizeHref } from '$lib/href';
+	import { lang } from '$lib/lang.svelte';
+	import Icon from '$lib/components/Icon.svelte';
+	import ReadingHeatmap from '$lib/components/ReadingHeatmap.svelte';
+	import StatTiles from '$lib/components/StatTiles.svelte';
+	import { readingActivity } from '$lib/readingActivity.svelte';
+	import { readingGoal } from '$lib/readingGoal.svelte';
+	import { currentStreak, longestStreak, localToday } from '$lib/streak';
+	import { weekReadCount } from '$lib/heatmap';
+	import { collectReadingActivity, readingCounts, type ReadingStats } from '$lib/readingStats';
+
+	/**
+	 * The signed-in dashboard's "your reading" panel: streak, weekly goal, a
+	 * reading calendar, and totals. It gathers what the Settings › Activity view
+	 * shows and brings it onto the home page, so a returning reader sees their
+	 * momentum without hunting for it.
+	 *
+	 * Replaces the compact ReadingNudge on the dashboard (the marketing page
+	 * keeps ReadingNudge for logged-out returning readers), so the streak isn't
+	 * shown twice. Renders nothing until there's a day read — a brand-new reader
+	 * gets the OnboardingCard instead. Client-only (prerendered page): read
+	 * localStorage on mount and re-read on the ochorus:sync a sign-in merge fires.
+	 */
+	const t = i18n.t;
+
+	let ticks = $state(0);
+	// Full stats (incl. "finished", which needs the catalog) load async; the
+	// streak/goal/heatmap come straight from localStorage and render immediately.
+	let stats = $state<ReadingStats | null>(null);
+
+	onMount(() => {
+		const bump = () => ticks++;
+		bump();
+		window.addEventListener('ochorus:sync', bump);
+		// A failed fetch just leaves `stats` null — `s` below falls back to the
+		// synchronous counts (with finished = 0), so no explicit error branch.
+		collectReadingActivity(lang.current)
+			.then((r) => (stats = r.stats))
+			.catch(() => {});
+		return () => window.removeEventListener('ochorus:sync', bump);
+	});
+
+	const days = $derived.by(() => {
+		void ticks;
+		return readingActivity.days();
+	});
+	const today = $derived(localToday());
+	const streak = $derived(currentStreak(days, today));
+	const longest = $derived(longestStreak(days));
+	const weekCount = $derived(weekReadCount(days, today));
+	const goal = $derived(readingGoal.perWeek);
+	const goalMet = $derived(weekCount >= goal);
+
+	// The stats behind the tiles. The five synchronous totals come straight from
+	// `readingCounts()` every time (kept live by `void ticks`, so an ochorus:sync
+	// merge refreshes them), while `finished` — the one total that needs the
+	// catalog — rides in from the async load and is 0 until it lands.
+	const s = $derived.by<ReadingStats>(() => {
+		void ticks;
+		return { ...readingCounts(), finished: stats?.finished ?? 0 };
+	});
+	const hasNotebook = $derived(s.highlights + s.notes + s.bookmarks > 0);
+</script>
+
+{#if days.length}
+	<section class="page-col px-5 pt-14">
+		<div class="space-y-5">
+			<!-- Streak + weekly goal -->
+			<div
+				class="flex flex-col gap-4 rounded-card border border-border bg-surface-2 px-5 py-4 sm:flex-row sm:items-center sm:gap-6"
+			>
+				<div class="flex items-center gap-3">
+					<span class="text-gold"><Icon name="flame" size={28} /></span>
+					<div class="leading-tight">
+						{#if streak > 0}
+							<div>
+								<span class="font-display text-h2 font-semibold">{streak}</span>
+								<span class="ms-1 text-body text-text">{t('settings.streakLabel')}</span>
+							</div>
+							<div class="text-small text-muted">
+								{t('settings.streakLongest')}
+								{longest}<span class="opacity-50"> · </span>{days.length}
+								{t('settings.streakDaysRead')}
+							</div>
+						{:else}
+							<div class="text-body text-text">{t('settings.streakNone')}</div>
+						{/if}
+					</div>
+				</div>
+
+				<div class="hidden h-9 w-px bg-border sm:block"></div>
+
+				<div class="min-w-0 flex-1">
+					<div class="mb-1.5 text-small text-muted">
+						{#if goalMet}
+							{t('settings.goalMet')}
+						{:else}
+							{weekCount} {t('settings.goalOf')} {goal} {t('settings.goalDaysThisWeek')}
+						{/if}
+					</div>
+					<div class="flex gap-1.5">
+						{#each Array(goal) as _, i (i)}
+							<span class="h-2 w-6 rounded-full {i < weekCount ? 'bg-gold' : 'bg-border'}"></span>
+						{/each}
+					</div>
+				</div>
+			</div>
+
+			<!-- Totals -->
+			<StatTiles stats={s} />
+
+			<!-- Reading calendar -->
+			<div>
+				<h3 class="text-h3 mb-2">{t('settings.heatmapTitle')}</h3>
+				<ReadingHeatmap {days} {today} locale={lang.current} />
+			</div>
+
+			<!-- Into the notebook, when there's something in it -->
+			{#if hasNotebook}
+				<a
+					href={localizeHref('/notebook')}
+					class="inline-flex items-center gap-1.5 text-small font-semibold text-accent hover:underline"
+				>
+					{t('notebook.title')} →
+				</a>
+			{/if}
+		</div>
+	</section>
+{/if}

@@ -19,6 +19,7 @@
 	import { currentStreak, longestStreak, localToday } from '$lib/streak';
 	import { weekReadCount } from '$lib/heatmap';
 	import ReadingHeatmap from '$lib/components/ReadingHeatmap.svelte';
+	import StatTiles from '$lib/components/StatTiles.svelte';
 	import { buildReminderICS } from '$lib/reminder';
 	import { relativeTime } from '$lib/relativeTime';
 	import Icon, { type IconName } from '$lib/components/Icon.svelte';
@@ -135,19 +136,6 @@
 		syncTick; // reload after a sync/merge changes the local cache
 		if (section === 'activity') loadActivity();
 	});
-	// Ordered stat tiles for the grid (label + value), zeros included.
-	const statTiles = $derived(
-		stats
-			? [
-					{ label: t('settings.statInProgress'), value: stats.inProgress },
-					{ label: t('settings.statFinished'), value: stats.finished },
-					{ label: t('settings.statHighlights'), value: stats.highlights },
-					{ label: t('settings.statNotes'), value: stats.notes },
-					{ label: t('settings.statFavorites'), value: stats.favorites },
-					{ label: t('settings.statBookmarks'), value: stats.bookmarks }
-				]
-			: []
-	);
 	// Reading streak — derived from the synced activity log (see readingActivity).
 	const activityDays = $derived(readingActivity.days());
 	const streak = $derived(currentStreak(activityDays, localToday()));
@@ -641,14 +629,9 @@
 					{/if}
 
 					<!-- Stat tiles -->
-					<div class="grid grid-cols-3 gap-3 sm:grid-cols-6">
-						{#each statTiles as tile (tile.label)}
-							<div class="rounded-card border border-border bg-surface-2 px-3 py-4 text-center">
-								<div class="font-display text-h2 font-semibold text-text">{tile.value}</div>
-								<div class="mt-0.5 text-eyebrow text-muted">{tile.label}</div>
-							</div>
-						{/each}
-					</div>
+					{#if stats}
+						<StatTiles {stats} />
+					{/if}
 
 					<!-- Recently reading -->
 					<h3 class="text-h3 mb-3 mt-8">{t('settings.recentReading')}</h3>

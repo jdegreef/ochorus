@@ -221,6 +221,8 @@
   "auth_err_signup_disabled": "لا يجري إنشاء حسابات جديدة في الوقت الحالي.",
   "auth_err_not_configured": "لم يُهيَّأ تسجيل الدخول بعد.",
   "login_welcome_back": "أهلًا بعودتك",
+  "home_welcome_back": "أهلًا بعودتك",
+  "home_welcome_back_named": "أهلًا بعودتك، {name}",
   "login_signup_title": "أنشئ حسابك",
   "login_reset_title": "إعادة تعيين كلمة المرور",
   "login_sync_note": "زامِن قراءتك — التظليلات والملاحظات وموضع القراءة — عبر أجهزتك.",
