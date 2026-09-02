@@ -49,12 +49,14 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'jeanne-guyon': '50% 58%',
 	'john-bunyan': '50% 0%',
 	'john-chrysostom': '50% 0%', // mosaic: standing figure, head at ~11%
+	'john-owen': '50% 0%', // Greenhill portrait; face at ~31% of a 0.81 plate
 	'john-wesley': '50% 0%',
 	'jonathan-edwards': '50% 0%',
 	'lemuel-haynes': '50% 0%',
 	'r-a-torrey': '50% 10%',
 	'richard-allen': '50% 37%',
 	'richard-baxter': '50% 18%',
+	'richard-sibbes': '50% 0%', // labelled portrait; face at ~28% of a 0.72 plate
 	'samuel-ajayi-crowther': '50% 45%',
 	'susanna-wesley': '50% 21%',
 	'thomas-a-kempis': '50% 0%',
