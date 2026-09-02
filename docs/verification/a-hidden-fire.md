@@ -24,6 +24,11 @@ filling the gap. This file records where those lines were drawn.
 | Illness from 1941, described by Church only as a "weakness"; confined to his home near Namirembe Cathedral until his death | ch6, ch7 | Consistent, and the phrasing "weakness" is attributed to Church |
 | Married Eva Bakaluba; twelve children; son Apolo Nsibambi later Prime Minister | ch4 | Attested |
 | Festo Kivengere and Janani Luwum came out of the movement; Luwum killed in 1977 | ch6, ch7 | Well documented independently |
+| Missionaries reached Buganda in 1877; converts burned at Namugongo in 1886 | ch1 | General Ugandan church history, well documented independently of Nsibambi |
+| Joe Church was a doctor of the Ruanda Mission running the hospital at Gahini, and came to Kampala in Sept 1929 to rest | ch2 | Attested; his age and the exact length of his time at Gahini are approximate here |
+| A group around Nsibambi was known as the Abaka, "men of fire" | ch4 | Attested, though how formal the grouping was is unclear |
+| Blasio Kigozi was ordained deacon, posted to Gahini, carried a plea for revival to the Kampala synod of January 1936, contracted tick fever on that journey and died | ch5 | Attested |
+| Erica Sabiti became the first African archbishop of the Church of Uganda | ch6 | Attested, but **check the title and date** — this is the newest claim in the book and the one I am least sure of |
 
 ## NOT asserted in the book, because I could not verify them
 
@@ -36,11 +41,30 @@ them, both the book and the bio should be revisited.
 - That he served in the African Native Medical Corps in the First World War,
   and was decorated for distinguished service.
 - That his father was a chief.
-- That he personally buried Blasio Kigozi on Cathedral Hill. (Kigozi is
-  reported to have contracted tick fever while travelling to the synod in
-  Kampala; who buried him, I could not establish.)
+- That he personally buried Blasio Kigozi on Cathedral Hill. Chapter 5 now
+  narrates Kigozi's death and **says in the text that the record does not tell
+  us plainly who buried him**, rather than leaving the claim out silently. An
+  earlier draft of that chapter asserted it; it was caught and removed.
 - The exact wording of his question to Joe Church. The book paraphrases it and
   states openly that the wording varies between tellings.
+
+## What changed when the book became a biography as well
+
+The book was first drafted as devotional reflection alone, with the life
+appearing only in fragments. It was then rebuilt to the house pattern the other
+`ochorus-originals` books use — biography and devotional in one chapter — with
+the biography **serialised** across the seven chapters rather than repeated.
+
+The extra length (5,693 → 6,832 words) is entirely **context**, never
+interiority: what Buganda's church was in 1897, who Joe Church was and why he
+was in Kampala, what Kigozi did and how he died, what the revival became and
+whom it produced. Nothing was added about what Nsibambi thought, felt or said
+in private, because none of that is recoverable.
+
+A check worth repeating if the chapters are edited: read only the narrative
+sections, in order, skipping every reflection. They should form a continuous
+life with no gaps and no repetition. They currently do — ten sections, about
+1,800 words, a quarter of the book.
 
 ## Judgement calls a reviewer may want to overturn
 
