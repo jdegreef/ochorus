@@ -8,7 +8,7 @@
 	import { readingTime, readingMinutes } from '$lib/reading';
 	import { localizeHref } from '$lib/href';
 	import { scopedSearchHref } from '$lib/searchState';
-	import { portraitPosition } from '$lib/portraits';
+	import { initials, portraitPosition } from '$lib/portraits';
 	import { listen } from '$lib/listen.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { page } from '$app/stores';
@@ -17,6 +17,7 @@
 	import { BIO_CHAPTER_ORDER } from '$lib/reading-schema';
 	import { bookmarks } from '$lib/bookmarks.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
+	import PersonCard from '$lib/components/PersonCard.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import LifeTimeline from '$lib/components/LifeTimeline.svelte';
@@ -85,9 +86,6 @@
 		chapter: '',
 		url: $page.url.href
 	});
-
-	const initials = (name: string) =>
-		name.split(' ').filter(Boolean).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
 
 	const years = $derived(
 		formatLifespan(author.birth_year, author.death_year, t('common.bornPrefix'))
@@ -451,7 +449,21 @@
 		</section>
 	{/if}
 
-	{#if !author.books.length && !author.sermons.length}
+	<!-- Also appears in: books this person is FOUND IN but did not write
+	     (BookPerson) — an anthology or a life that features them. Book cards, not
+	     person cards, and showAuthor so it's clear whose work it is. -->
+	{#if author.appears_in?.length}
+		<section class="mt-14">
+			<h2 class="mb-4 text-h3">{t('author.appearsIn')}</h2>
+			<div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+				{#each author.appears_in as book (book.slug)}
+					<BookCard {book} showAuthor />
+				{/each}
+			</div>
+		</section>
+	{/if}
+
+	{#if !author.books.length && !author.sermons.length && !author.appears_in?.length}
 		<div class="mt-10"><EmptyState message={t('author.empty')} /></div>
 	{/if}
 
@@ -461,34 +473,7 @@
 			<h2 class="mb-4 text-h3">{t('author.moreLives')}</h2>
 			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
 				{#each contemporaries as c (c.slug)}
-					<a
-						href={localizeHref(`/authors/${c.slug}`)}
-						class="flex items-center gap-3 rounded-card border border-border p-3 hover:border-accent hover:no-underline"
-					>
-						{#if c.photo_url}
-							<img
-								src={c.photo_url}
-								alt="{t('a11y.portraitOf')} {c.name}"
-								loading="lazy"
-								class="h-11 w-11 shrink-0 rounded-full border border-border object-cover"
-								style="filter: grayscale(1); object-position: {portraitPosition(c.slug)}"
-							/>
-						{:else}
-							<span
-								class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-soft text-small font-semibold text-accent"
-							>
-								{initials(c.name)}
-							</span>
-						{/if}
-						<span class="min-w-0">
-							<span class="block truncate text-body font-medium text-text">{c.name}</span>
-							{#if c.birth_year}
-								<span class="block whitespace-nowrap text-small text-muted"
-									>{formatLifespan(c.birth_year, c.death_year, t('common.bornPrefix'))}</span
-								>
-							{/if}
-						</span>
-					</a>
+					<PersonCard person={c} />
 				{/each}
 			</div>
 		</section>

@@ -80,3 +80,9 @@ export const PORTRAIT_POSITION_DEFAULT = '50% 30%';
 export function portraitPosition(slug: string | null | undefined): string {
 	return (slug && PORTRAIT_POSITION[slug]) || PORTRAIT_POSITION_DEFAULT;
 }
+
+/** Initials for the placeholder avatar shown when a person has no portrait —
+ * first letter of the first two words, uppercased. One home so the author
+ * header, the bio card and the person card can't drift apart. */
+export const initials = (name: string): string =>
+	name.split(' ').filter(Boolean).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
