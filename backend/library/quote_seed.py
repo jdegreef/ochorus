@@ -51,10 +51,12 @@ from __future__ import annotations
 #: e-m-bounds            — approved 2026-08-30, twenty-eight;
 #:                          twenty-seven more 2026-09-02 (fifty-five).
 #: augustine-of-hippo    — approved 2026-08-30, thirteen.
-#: jonathan-edwards      — approved 2026-08-30, eleven.
+#: jonathan-edwards      — approved 2026-08-30, eleven;
+#:                         and 2026-09-02, ten more (Selected Sermons).
 #: john-wesley           — approved 2026-08-30, eighteen.
 #: george-muller         — approved 2026-08-30, eleven.
-#: hudson-taylor         — approved 2026-08-30, ten.
+#: hudson-taylor         — approved 2026-08-30, ten;
+#:                         and 2026-09-02, ten more (Separation and Service).
 #: gareth-evans          — approved 2026-08-30, twenty-two;
 #:                          four more 2026-08-31 (twenty-six).
 #:
@@ -1570,6 +1572,66 @@ JONATHAN_EDWARDS = [
         "chapter": ("religious-affections", 20),
         "paragraph": 9,
     },
+    {
+        "slug": "jonathan-edwards-20cf3293",
+        "text": "There is not only a rational belief that God is holy and that holiness is a good thing, but there is a sense of the loveliness of God’s holiness.",
+        "chapter": ("selected-sermons-edwards", 3),
+        "paragraph": 27,
+    },
+    {
+        "slug": "jonathan-edwards-f9dba01f",
+        "text": "Faith abases men and exalts God, it gives all the glory of redemption to God alone.",
+        "chapter": ("selected-sermons-edwards", 2),
+        "paragraph": 54,
+    },
+    {
+        "slug": "jonathan-edwards-f3a4122f",
+        "text": "None that will come to Christ, let his condition be what it will, need to fear but that Christ will provide a place suitable for him in heaven.",
+        "chapter": ("selected-sermons-edwards", 5),
+        "paragraph": 16,
+    },
+    {
+        "slug": "jonathan-edwards-707150e7",
+        "text": "Holiness and happiness are in the fruit, here and hereafter, because God dwells in them, and they in God.",
+        "chapter": ("selected-sermons-edwards", 2),
+        "paragraph": 41,
+    },
+    {
+        "slug": "jonathan-edwards-278945d4",
+        "text": "The sword of divine justice is every moment brandished over their heads, and ’tis nothing but the hand of arbitrary mercy, and God’s mere will, that holds it back.",
+        "chapter": ("selected-sermons-edwards", 6),
+        "paragraph": 13,
+    },
+    {
+        "slug": "jonathan-edwards-053525a7",
+        "text": "It is God that gives us faith whereby we close with Christ.",
+        "chapter": ("selected-sermons-edwards", 2),
+        "paragraph": 7,
+    },
+    {
+        "slug": "jonathan-edwards-961af03e",
+        "text": "The Spirit of God may act upon a creature, and yet not in acting communicate himself.",
+        "chapter": ("selected-sermons-edwards", 3),
+        "paragraph": 19,
+    },
+    {
+        "slug": "jonathan-edwards-0334dcf6",
+        "text": "We may often observe it, that the Holy Spirit who indited the Scriptures, often takes notice of little things, minute occurrences, that do but remotely relate to Jesus Christ.",
+        "chapter": ("selected-sermons-edwards", 4),
+        "paragraph": 1,
+    },
+    {
+        "slug": "jonathan-edwards-b7680c47",
+        "text": "Many that others worship and serve as gods are cruel beings, spirits that seek the ruin of souls; but this is a God that delighteth in mercy; his grace is infinite and endures forever.",
+        "chapter": ("selected-sermons-edwards", 4),
+        "paragraph": 11,
+    },
+    {
+        "slug": "jonathan-edwards-27f6a365",
+        "text": "He does not merely rationally believe that God is glorious, but he has a sense of the gloriousness of God in his heart.",
+        "chapter": ("selected-sermons-edwards", 3),
+        "paragraph": 27,
+    },
 ]
 
 JOHN_WESLEY = [
@@ -1812,6 +1874,66 @@ HUDSON_TAYLOR = [
         "text": "The world can never be to her what it once was; the betrothed bride has learnt to love her LORD, and no other society than His can satisfy her.",
         "chapter": ("union-and-communion", 4),
         "paragraph": 5,
+    },
+    {
+        "slug": "hudson-taylor-5e3c78b3",
+        "text": "As the Spirit reveals Christ, so does Christ bestow the Spirit; and by faith in Christ and in His Word we appropriate the gift.",
+        "chapter": ("separation-and-service", 3),
+        "paragraph": 60,
+    },
+    {
+        "slug": "hudson-taylor-a656aebe",
+        "text": "Many there are who fail to see that there can be but one lord, and that those who do not make God Lord of all do not make Him Lord at all.",
+        "chapter": ("separation-and-service", 3),
+        "paragraph": 8,
+    },
+    {
+        "slug": "hudson-taylor-e1f8b629",
+        "text": "The good works of the unsaved may indeed benefit their fellow-creatures; but until life in Christ has been received, they cannot please God.",
+        "chapter": ("separation-and-service", 2),
+        "paragraph": 23,
+    },
+    {
+        "slug": "hudson-taylor-a1356158",
+        "text": "We do not estimate our love-gifts by their intrinsic value, but rather by the love they express.",
+        "chapter": ("separation-and-service", 4),
+        "paragraph": 18,
+    },
+    {
+        "slug": "hudson-taylor-037c4f21",
+        "text": "The highest service demands the greatest sacrifice, but it secures the fullest blessing and the greatest fruitfulness.",
+        "chapter": ("separation-and-service", 2),
+        "paragraph": 12,
+    },
+    {
+        "slug": "hudson-taylor-6fa59319",
+        "text": "Many a believer to whom Christ has left peace, knows little of it; but those who are filled with the Spirit are filled with peace.",
+        "chapter": ("separation-and-service", 3),
+        "paragraph": 58,
+    },
+    {
+        "slug": "hudson-taylor-dac18fb3",
+        "text": "It was one of the objects of our Saviour's mission to reveal to us that, in Christ Jesus, God is also our Father.",
+        "chapter": ("separation-and-service", 3),
+        "paragraph": 28,
+    },
+    {
+        "slug": "hudson-taylor-d7a46992",
+        "text": "It may be that we have separated ourselves to carry out our own will, or thought, or plan of service, instead of surrendering ourselves and our will, to learn and to do His will.",
+        "chapter": ("separation-and-service", 3),
+        "paragraph": 4,
+    },
+    {
+        "slug": "hudson-taylor-d4f6ede5",
+        "text": "The little one's heart is full; and the mother's heart is also full; but her capacity is greater, and so her joy is deeper.",
+        "chapter": ("separation-and-service", 3),
+        "paragraph": 14,
+    },
+    {
+        "slug": "hudson-taylor-09cb8768",
+        "text": "The Brightness of His Father's glory, the Sun of Righteousness, He came to manifest, as well as to speak of, the Father's love.",
+        "chapter": ("separation-and-service", 3),
+        "paragraph": 35,
     },
 ]
 
