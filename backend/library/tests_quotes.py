@@ -258,6 +258,49 @@ class SeedCommandTests(TestCase):
         call_command("seed_quotes", verbosity=0)
         self.assertEqual(Quote.objects.filter(reviewed=False).count(), 0)
 
+    def test_repairing_text_under_the_same_slug_updates_in_place(self):
+        """The slug freeze (Wave 0 of the per-quote-URL plan).
+
+        A quotation's slug is its permanent identity — the address a per-quote
+        page will be served at. Repairing the TEXT (an OCR slip, a punctuation
+        fix — the english-qa channels) while keeping the SAME slug must edit the
+        existing row: same pk, same slug, approval intact. It must NOT create a
+        new row and strand the approved original — which, once the slug is a
+        URL, would 404 every link to it. A fresh hash is reserved for a
+        genuinely new quotation, not a repair (the extraction skill says so).
+        """
+        import copy
+        from unittest import mock
+
+        call_command("seed_quotes", verbosity=0)
+        row = Quote.objects.first()
+        pk, slug = row.pk, row.slug
+        self.assertTrue(row.reviewed)  # Spurgeon is in APPROVED.
+        n = Quote.objects.count()
+
+        # The same slug, carrying a repaired sentence — the edit-in-place the
+        # freeze requires. Patched on the COMMAND namespace (it does
+        # `from ... import QUOTES`, so patching the seed module would miss it).
+        patched = copy.deepcopy(QUOTES)
+        repaired = None
+        for quotes in patched.values():
+            for q in quotes:
+                if q["slug"] == slug:
+                    q["text"] = repaired = q["text"] + " — repaired."
+        self.assertIsNotNone(repaired, "the first row's slug must be in the seed")
+
+        with mock.patch(
+            "library.management.commands.seed_quotes.QUOTES", patched
+        ):
+            call_command("seed_quotes", verbosity=0)
+
+        self.assertEqual(Quote.objects.count(), n)  # No new row, nothing orphaned.
+        row.refresh_from_db()
+        self.assertEqual(row.pk, pk)  # Same row …
+        self.assertEqual(row.slug, slug)  # … same address …
+        self.assertEqual(row.text, repaired)  # … text repaired …
+        self.assertTrue(row.reviewed)  # … approval intact.
+
     def test_a_quotation_whose_work_is_missing_is_skipped_not_stored(self):
         Sermon.objects.all().delete()
         call_command("seed_quotes", verbosity=0)

@@ -656,6 +656,11 @@ class Quote(models.Model):
     #: Stable identity for the seed: author slug + a hash of the normalised text,
     #: so re-running extraction updates a row rather than duplicating it, and a
     #: reworded quote is a new row rather than a silent edit of an approved one.
+    #: It is also the quote's PERMANENT public address — the per-quote page will
+    #: be served at it — so a text REPAIR must keep this slug (edit the row in
+    #: place), and only a genuinely new quotation earns a fresh hash. The
+    #: extraction skill states the rule; seed_quotes never rewrites the slug (it
+    #: is the match key), and tests_quotes guards the edit-in-place path.
     slug = models.SlugField(max_length=80, unique=True)
     author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name="quotes")
     text = models.TextField()
