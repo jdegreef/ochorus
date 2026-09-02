@@ -30,23 +30,43 @@ filling the gap. This file records where those lines were drawn.
 | Blasio Kigozi was ordained deacon, posted to Gahini, carried a plea for revival to the Kampala synod of January 1936, contracted tick fever on that journey and died | ch5 | Attested |
 | Erica Sabiti became the first African archbishop of the Church of Uganda | ch6 | Attested, but **check the title and date** — this is the newest claim in the book and the one I am least sure of |
 
-## NOT asserted in the book, because I could not verify them
+## CORRECTED 2026-09-02 — these WERE verifiable, and are now asserted
 
-These appear in the existing author biography on his Ochorus page and in some
-popular accounts. **The book deliberately does not build on any of them**, and
-chapter 1 says as much in the text. If a Ugandan reader can confirm or correct
-them, both the book and the bio should be revisited.
+An earlier version of this file listed the claims below as unverifiable and
+recorded that the book deliberately left them out. **That was wrong, and the
+error was mine, not the biography's.** My first research pass simply did not
+surface the sources. A later search found them attested in Christian History
+Institute's account of the revival and in the Dictionary of African Christian
+Biography's material, and the book has been corrected to state them:
 
-- That he was educated at Mengo High School and King's College, Budo.
-- That he served in the African Native Medical Corps in the First World War,
-  and was decorated for distinguished service.
-- That his father was a chief.
-- That he personally buried Blasio Kigozi on Cathedral Hill. Chapter 5 now
-  narrates Kigozi's death and **says in the text that the record does not tell
-  us plainly who buried him**, rather than leaving the claim out silently. An
-  earlier draft of that chapter asserted it; it was caught and removed.
-- The exact wording of his question to Joe Church. The book paraphrases it and
-  states openly that the wording varies between tellings.
+| Claim | Now in | Basis |
+| --- | --- | --- |
+| His father was Walusimbi Kimanje, a chief | ch1 | Christian History Institute |
+| Schooled at Mengo High School and King's College, Budo | ch1 | Christian History Institute |
+| Served in the African Native Medical Corps in the First World War and was decorated for distinguished service | ch1 | Christian History Institute |
+| Made Chief Health Officer in the Buganda king's government in 1920 | ch1 | Christian History Institute — more precise than the "sanitation officer" the book first said |
+| Became a Christian in 1922; married Eva Bakaluba about three years later | ch1 | Christian History Institute |
+| An athlete — footballer and wrestler — and a singer | ch1 | Christian History Institute |
+| **He buried Blasio Kigozi**, officiating at a crowded funeral on Cathedral Hill at Namirembe; the word Blasio carried to the synod is cut into the headstone | ch5 | Corroborated across accounts of Kigozi's death |
+| Kigozi died on 26 January 1936, aged twenty-six | ch5 (and Tukutendereza ch5) | Dates 1909–1936 |
+
+**The burial claim is the one worth dwelling on.** An earlier draft of chapter 5
+asserted it; I removed it as unverified and reported that removal as a defect
+caught. The removal was itself the defect. The claim was true, and it is
+restored.
+
+The lesson recorded here for whoever writes the next one: *"I could not verify
+it"* is a statement about the search, not about the world, and it should be
+written down as such rather than as a finding about the source.
+
+## Still NOT asserted
+
+- The exact wording of Nsibambi's question to Joe Church. The book paraphrases
+  it and states openly that the wording varies between tellings.
+- The exact wording of the "he's gone mad" complaint, given as remembered
+  speech rather than a citation.
+- Any diagnosis of the illness that began in 1941. Church's word "weakness" is
+  all the book claims.
 
 ## What changed when the book became a biography as well
 

@@ -1,3 +1,9 @@
+// prerender refresh 2026-09-02: tukutendereza.en — a second NEW English
+// original, so /books gains a card and 14 chapter pages need baking. ONLY this
+// loader: no plan module names the slug, it is English-only, and its cover is
+// a generated house plate at /covers/tukutendereza.svg — output, so nothing is
+// registered in designed_covers.py and nothing is frozen.
+//
 // prerender refresh 2026-09-02: a-hidden-fire.en — a NEW English original,
 // so /books gains a card and its chapter pages need baking. ONLY this loader:
 // the book is in no plan module (grepped plan_seed.py, plans.py,
