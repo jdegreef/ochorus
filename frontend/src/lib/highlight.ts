@@ -23,6 +23,21 @@ export function markSnippet(snippet: string): string {
 }
 
 /**
+ * A window of `text` around the span [idx, idx+len), with that span wrapped in
+ * `<mark>`. The caller has already located the match (a literal `indexOf`, or a
+ * normalized/stemmed word span — see searchNormalize); this only renders the
+ * window. Everything is HTML-escaped, so the sole markup is the `<mark>`.
+ */
+export function windowAt(text: string, idx: number, len: number, radius = 60): string {
+	const start = Math.max(0, idx - radius);
+	const end = Math.min(text.length, idx + len + radius);
+	const before = (start > 0 ? '… ' : '') + escapeHtml(text.slice(start, idx));
+	const match = escapeHtml(text.slice(idx, idx + len));
+	const after = escapeHtml(text.slice(idx + len, end)) + (end < text.length ? ' …' : '');
+	return `${before}<mark>${match}</mark>${after}`;
+}
+
+/**
  * A client snippet: a window of `text` around the first case-insensitive match
  * of `query`, with the match wrapped in `<mark>`. Used by the in-book search,
  * which searches cached chapter text on the device. Falls back to the head of
@@ -31,10 +46,5 @@ export function markSnippet(snippet: string): string {
 export function highlightAround(text: string, query: string, radius = 60): string {
 	const idx = text.toLowerCase().indexOf(query.toLowerCase());
 	if (idx < 0) return escapeHtml(text.slice(0, 140));
-	const start = Math.max(0, idx - radius);
-	const end = Math.min(text.length, idx + query.length + radius);
-	const before = (start > 0 ? '… ' : '') + escapeHtml(text.slice(start, idx));
-	const match = escapeHtml(text.slice(idx, idx + query.length));
-	const after = escapeHtml(text.slice(idx + query.length, end)) + (end < text.length ? ' …' : '');
-	return `${before}<mark>${match}</mark>${after}`;
+	return windowAt(text, idx, query.length, radius);
 }
