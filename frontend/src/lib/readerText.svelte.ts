@@ -34,6 +34,7 @@ import { listen } from '$lib/listen.svelte';
 import { define } from '$lib/define.svelte';
 import { scripture } from '$lib/scripture.svelte';
 import { getLang } from '$lib/lang.svelte';
+import { spokenText } from '$lib/listenText';
 import { DEFAULT_HIGHLIGHT, type WorkKind } from '$lib/reading-schema';
 
 /** Attribution for copy/share from the selection bar. */
@@ -100,7 +101,10 @@ export class ReaderText {
 	startListening = (): void => {
 		const body = this.#o.body();
 		if (!body) return;
-		const paragraphs = [...body.children].map((el) => (el as HTMLElement).innerText);
+		// spokenText, not innerText: one entry per child (so the follow-along
+		// highlight still lines up), with footnote markers and other eye-only
+		// bits removed so the engine doesn't voice "…grace four".
+		const paragraphs = [...body.children].map((el) => spokenText(el));
 		listen.start(paragraphs, this.#o.topIndex(), getLang(), {
 			title: this.#o.listenTitle(),
 			artist: this.#o.listenArtist()
