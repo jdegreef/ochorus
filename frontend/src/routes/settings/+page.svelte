@@ -8,7 +8,7 @@
 	import { theme } from '$lib/theme.svelte';
 	import { lang, localeName } from '$lib/lang.svelte';
 	import { readerPrefs, FONT_STACK, MEASURE, type ReaderFont, type Measure } from '$lib/readerPrefs.svelte';
-	import { listen, RATES } from '$lib/listen.svelte';
+	import { listen, RATE_MIN, RATE_MAX } from '$lib/listen.svelte';
 	import { readingSync } from '$lib/readingSync';
 	import { SITE_URL } from '$lib/config';
 	import { collectExport, toMarkdown, downloadFile } from '$lib/dataExport';
@@ -256,6 +256,15 @@
 	const voiceValue = $derived(
 		voices.some((v) => v.voiceURI === listen.voiceURI) ? listen.voiceURI : (voices[0]?.voiceURI ?? '')
 	);
+
+	// The speed slider mirrors this draft while dragging and only APPLIES on
+	// release (onchange) — so tuning speed mid-listen doesn't restart the utterance
+	// (cancel+speak) and rewrite localStorage on every drag tick. Kept in sync when
+	// the rate changes elsewhere (e.g. the Listen bar's cycle button).
+	let speedDraft = $state(listen.rate);
+	$effect(() => {
+		speedDraft = listen.rate;
+	});
 </script>
 
 <svelte:head><title>{t('settings.title')} — Ochorus</title></svelte:head>
@@ -506,10 +515,18 @@
 							<div class="setting-label">{t('settings.speed')}</div>
 							<div class="setting-sub">{t('settings.speedSub')}</div>
 						</div>
-						<div class="seg">
-							{#each RATES as r (r)}
-								<button class:active={listen.rate === r} onclick={() => listen.setRate(r)}>{r}×</button>
-							{/each}
+						<div class="flex items-center gap-3">
+							<input
+								class="speed-range"
+								type="range"
+								min={RATE_MIN}
+								max={RATE_MAX}
+								step="0.05"
+								bind:value={speedDraft}
+								onchange={() => listen.setRate(speedDraft)}
+								aria-label={t('settings.speed')}
+							/>
+							<span class="min-w-11 text-end tabular-nums text-small">{speedDraft}×</span>
 						</div>
 					</div>
 				{/if}
@@ -734,5 +751,13 @@
 		background: var(--color-accent-soft);
 		color: var(--color-accent);
 		font-weight: 600;
+	}
+	/* Native range, themed via accent-color — thumb and filled track pick up the
+	   brand accent in both light and dark with no per-browser pseudo-elements. */
+	.speed-range {
+		accent-color: var(--color-accent);
+		inline-size: 9rem;
+		max-inline-size: 55vw;
+		cursor: pointer;
 	}
 </style>
