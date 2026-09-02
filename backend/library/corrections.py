@@ -443,6 +443,13 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 # `apply_body_corrections`, plus a data migration for prod).
 
 BODY_CORRECTIONS: dict[str, dict] = {
+    "absolute-surrender": {
+        # The CCEL text is uniformly curly; one opening double quote slipped
+        # through the importer's straight->curly pass. Curl it (QuoteStyleTests).
+        "replacements": [
+            ('unto him, "Thus saith', 'unto him, \u201cThus saith'),
+        ],
+    },
     "ministry-of-intercession": {
         # A Gutenberg <h3>Transcriber's Notes</h3> block (formatting notes, not
         # Murray) trailed the final Notes chapter; the two space-before-punct
