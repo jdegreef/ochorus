@@ -1,3 +1,12 @@
+// prerender refresh 2026-09-01: waiting-on-god.uk (job #790).
+// ONLY this loader. Grepped every plan module for the slug — plan_seed.py,
+// plans.py, plan_translations.py, seed_plans.py — and it appears in none of
+// them, so no LAUNCH or CURATED plan is built from this book in any language
+// and plans/+page.ts has nothing new to bake. The cover needs no touch
+// either: waiting-on-god is curated art, one shared painting that BookCover
+// draws each edition's title over, so localize_covers.py is a no-op for it
+// and the uk row carries the same /covers/art/waiting-on-god.jpg as the rest.
+//
 // prerender refresh 2026-08-28: the-unselfishness-of-god.uk (job #789).
 // ONLY this loader. The book is in no LAUNCH_PLANS or CURATED_PLANS entry
 // at all — grepped seed_plans.py and plans.py for the slug and it appears
