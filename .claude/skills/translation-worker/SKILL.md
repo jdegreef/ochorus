@@ -794,6 +794,41 @@ archaic spelling and period punctuation are the text, not defects in it.
   **flagged unverified** so it reaches the PR as a review queue instead of
   disappearing into the diff. The same applies to any language whose only
   mirrored Bible is licensed or off-tradition — check before briefing.
+  **Confirmed 2026-09-02: the mirror now carries FOUR Swahili texts and every
+  one is unusable, so don't be lured by the count.** `git ls-tree HEAD bibles/`
+  lists `swh_bib` (Neno, 2018, cc-by-sa), `swh_bib2` (Neno, 2024, cc-by-sa),
+  `swh_ulb` (2019, cc-by-sa) and `swh_swa` — whose `meta.json` says **1850,
+  license `public`** and looks like the PD Union text you want. It is not: the
+  file is a modern dynamic paraphrase (Eph 2:8 reads "Maana, kwa neema ya Mungu
+  mmekombolewa kwa njia ya imani. Jambo hili si matokeo ya juhudi zenu…"),
+  off-tradition from our shipped «Kwa maana mmeokolewa kwa neema…». The metadata
+  date is not the text's register — **fetch one known verse and diff it against
+  a shipped `*.sw.json` before trusting any of them.** All four fail; mine the
+  corpus.
+- **The ebible mirror's Luganda OLCB is `lug_bib`, in `usx/` (not `usfm/`) — and
+  it IS the `lug` text `language_seed.py` names, verbatim in our shipped lg
+  corpus** (jobs #1213-#1216/#1303, 2026-09-02). The collection id is not
+  guessable: `lug` 404s; the directory is `bibles/lug_bib/` (`git ls-tree` it, or
+  the GitHub API 403s on `contents/` — use git). `meta.json` confirms OLCB 2017,
+  **cc-by-sa** (Biblica) — so credit is owed exactly as `language_seed.py`'s
+  `bible_licence`/`bible_attribution` now record, and `_attribution_check` gates
+  on it. Format is USX, lowercase 3-letter codes (`usx/mat.usx`, `usx/eph.usx`);
+  all 66 books are ~8 MB via `xargs -P8 curl`. Parsing is a ten-line regex walk:
+  each verse is `<verse … sid="MAT 11:28"/>TEXT<verse eid="MAT 11:28"/>`, so key
+  on the `sid` (no chapter-state tracking); strip `<note>…</note>` with `''`,
+  then drop remaining tags — 31,104 verses parse clean, and MAT 11:28 / JHN 3:16
+  match shipped `all-of-grace.lg`/`he-holds-my-tomorrows.lg` byte-for-byte.
+  Localized book names come from each file's `<para style="toc2">` (Matayo,
+  Makko, Lukka, Yokaana, Ebikolwa by'Abatume, Abaefeso, Abaruumi…). Hand the
+  translator the whole 31k-verse dict on disk and tell them to grep it for every
+  quoted verse, cited or not — the highest-leverage line in the brief.
+- **The lg SERMON band, n=12: 0.685–0.778, mean 0.729** (measured from
+  `word_count` on both sides of the shipped pairs, 2026-09-02) — well below the
+  lg *book* band and far below any sw type. Luganda compresses hard. Both sw and
+  lg sermons **mirror their source's quote-mark style** file by file (sw n=13,
+  lg n=12; curly→curly, straight→straight, never guillemets) — the same per-FILE
+  rule #423/#515 found, so measure your own English source, don't borrow a
+  language-wide style.
 - **Check BOOK NAMES against the edition too, not just verses.** The uk brief
   guessed six and got three wrong: the Kulish text headers Matthew `Маттея`
   (not `Матея`), Isaiah `Ісаїї` (not `Ісаї`), Malachi `Малахія` (nominative,

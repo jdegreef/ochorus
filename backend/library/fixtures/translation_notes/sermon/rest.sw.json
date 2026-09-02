@@ -1,0 +1,97 @@
+{
+ "kind": "sermon",
+ "slug": "rest",
+ "language": "sw",
+ "job_issue": 1303,
+ "references": [
+  {
+   "reference": "Matthew 11:28-30",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "Psalm 66:18",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Psalm 84:11",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "baptism-with-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Joshua 23:14",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "Luke 12:19",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "eight-i-wills-of-christ.sw.json"
+  },
+  {
+   "reference": "Ecclesiastes 12:12",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Ecclesiastes 1:2",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Isaiah 57:20",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 31,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Isaiah 53:4",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "christ-all-in-all.sw.json"
+  },
+  {
+   "reference": "John 5:40",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "block_index": 43,
+   "source_file": "the-way-to-god.sw.json"
+  }
+ ]
+}

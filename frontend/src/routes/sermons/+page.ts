@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-02: five new sermon editions — rest.sw & rest.lg
+// (Moody, jobs #1303/#1216), pauls-first-prayer.lg (Spurgeon, #1215),
+// salvation-by-faith.lg (Wesley, #1214), aggressive-christianity.lg (Booth,
+// #1213). Rebuilds the localized /sw/sermons and /lg/sermons shelves.
 // prerender refresh 2026-08-21: the-joy-of-the-lord.pt (job #775, PR #1008)
 // prerender refresh 2026-08-20: himself.hi (job #700, PR #1004)
 import { listSermons } from '$lib/library-public';

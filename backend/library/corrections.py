@@ -739,6 +739,19 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("positively, “yes, “or” no, &#x27; &#x27; to the question", "positively, “yes” or “no” to the question"),
         ],
     },
+    "rest": {
+        # Two OCR slips in Moody's "Rest" (Gutenberg #33015), each found
+        # independently by the Swahili AND Luganda translators, and each with a
+        # single possible reading that the already-shipped es/pt editions had
+        # also resolved the same way (es "altar familiar" / "hallar descanso",
+        # pt "altar de família"). English-only defects, so BODY_CORRECTIONS
+        # rather than source_fixes; the strings carry enough context to be
+        # unique.
+        "replacements": [
+            ("gamily altar", "family altar"),
+            ("You can end rest on the bosom", "You can find rest on the bosom"),
+        ],
+    },
     "the-key-in-my-hand": {
         # Source defects found while translating the book to Portuguese.
         # The verse-range typo also reached the sw/lg/pt editions, so the

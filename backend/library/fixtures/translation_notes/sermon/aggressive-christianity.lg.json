@@ -1,0 +1,117 @@
+{
+ "kind": "sermon",
+ "slug": "aggressive-christianity",
+ "language": "lg",
+ "job_issue": 1213,
+ "references": [
+  {
+   "reference": "Psalm 119:136",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Revelation 11:15",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 John 3:7-8",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Acts 26:17",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Acts 26:17-18",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Acts 26:18",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "2 Corinthians 5:11",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Acts 8:4",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Luke 14:23",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Luke 14:18-20",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "John 3:16",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Psalm 119:136",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Acts 26:17",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 10:34",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 27:42",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  }
+ ]
+}
