@@ -201,10 +201,46 @@ force if every paragraph is a box.
    slug with rows created here. Verify three paths: fresh install, prod-shaped
    create, idempotent re-run.
 
+   **Take the next migration number from `origin/main`, not from your local
+   directory.** `ls library/migrations/` shows what YOUR branch has; two
+   branches cut from the same commit both see the same tail and both pick the
+   same integer, and Django then has two leaf nodes and refuses to run. Fetch
+   first and number against the remote:
+   ```bash
+   git fetch origin main
+   git ls-tree --name-only origin/main backend/library/migrations/ | tail -3
+   ```
+   If a collision has already landed on main, do NOT renumber someone else's
+   migration. Renumber YOURS to sit after theirs and point `dependencies` at
+   the current leaf — a merge migration if main made one. Then prove the graph
+   is linear again before you push:
+   ```bash
+   DJANGO_DEBUG=true uv run python manage.py makemigrations --check --dry-run
+   DJANGO_DEBUG=true uv run python manage.py showmigrations library | tail -4
+   ```
+
 7. **APPEND new rows to `authors.json` — never re-sort it.** The file is in
    creation order, not slug order; sorting turns a 45-line addition into a
    282-insert/237-delete diff. Append, then write in the committed file's
    format (`indent=2`, `ensure_ascii=False`, trailing newline — step 4).
+
+   **Expect that append to conflict.** Because the rule is "always append",
+   every concurrent session writes to the same last line, so two biography PRs
+   in flight at once collide by construction. Resolve by keeping EVERY new row
+   — take the three-way stages and diff each side against the base rather than
+   picking a side, since "ours" and "theirs" each hold a row the other lacks:
+   ```python
+   g = lambda st: json.loads(subprocess.run(
+       ['git','show',f':{st}:'+PATH], capture_output=True, text=True).stdout)
+   base, ours, theirs = g(1), g(2), g(3)
+   bslugs = {r['fields']['slug'] for r in base}
+   new_theirs = [r for r in theirs if r['fields']['slug'] not in bslugs]
+   new_ours   = [r for r in ours   if r['fields']['slug'] not in bslugs]
+   merged = base + new_theirs + new_ours     # main's row first: creation order
+   assert len({r['fields']['slug'] for r in merged}) == len(merged)
+   ```
+   Main's rows go first, because the file is in creation order and theirs
+   landed first. Then re-dump in the committed format (step 4).
 
 ## The portrait (optional, same page)
 
@@ -307,5 +343,37 @@ current signatures in `library/ingest.py` before relying on them.)
 - **Verify site facts before adopting.** ochorus.com bios contain real errors
   (wrong parent names, date conflations); adjudicate contradictions against
   external sources and document per-author which claims were rejected.
+- **Two biography PRs in flight collide TWICE, and both collisions are
+  structural.** On 2026-09-02 three sessions added biography-only authors at
+  once: Martin Luther (#1277), John Calvin (#1276) and Erica Sabiti (#1278).
+  Luther and Calvin both took `0098` against the same `0097` parent, so main
+  ended up resolving itself with `0099_merge_calvin_luther_biography_authors`
+  — which then collided with #1278's own `0099`, forcing a second resolution
+  to `0100`. `authors.json` conflicted in both rounds at the append point. The
+  first PR merged silently; the second was `mergeable_state: dirty` for
+  half an hour before anyone looked, and CI does not run on a conflicted PR, so
+  the symptom was "no checks have started" rather than a conflict warning. If
+  your PR shows no check runs, check mergeability before assuming a slow queue.
+
+- **"I could not verify it" is a statement about your search, not about the
+  world — write it down as such.** Four claims about Simeon Nsibambi (his
+  father Walusimbi Kimanje, a chief; Mengo and Budo; the African Native
+  Medical Corps and his decoration; that he buried his brother Blasio Kigozi)
+  were recorded in `docs/verification/` as unverifiable, and two whole books
+  were then written around the gap. All four are attested — the first research
+  pass simply had not surfaced Christian History Institute's account. Worse,
+  one draft correctly asserted the burial, and it was REMOVED as unverified
+  and the removal reported as a defect caught. The removal was the defect.
+  Two habits prevent this: search on the specific claim (`"<name>" "<school>"`,
+  `"<name>" buried`) rather than only on the person, and record findings as
+  "not found by these searches" rather than "not true".
+
+- **Some of the best sources are egress-blocked.** `dacb.org` (Dictionary of
+  African Christian Biography) and `en.wikipedia.org` both refuse `WebFetch`
+  here. `WebSearch` still returns summaries of their content, which is how the
+  Sabiti and Nsibambi material was recovered — so a blocked fetch is not a dead
+  end, but it does mean you are working from summaries. Say so in the
+  verification file rather than implying you read the source.
+
 
 _This is a living playbook — append tips and pitfalls as we write more._
