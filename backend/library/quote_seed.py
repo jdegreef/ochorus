@@ -43,7 +43,8 @@ from __future__ import annotations
 #: database — where a rebuild would silently lose it, the way an imported
 #: author's stub bio used to outlive every correction (see author_sync.py).
 #:
-#: charles-h-spurgeon    — approved 2026-08-28, sixty.
+#: charles-h-spurgeon    — approved 2026-08-28, sixty;
+#:                         and 2026-09-02, twenty more from Gleanings Among the Sheaves.
 #: thomas-a-kempis       — approved 2026-08-30, thirty-six.
 #: andrew-murray         — approved 2026-08-30, twenty-seven;
 #:                         and 2026-09-02, twenty-three more (the four new books).
@@ -442,6 +443,126 @@ SPURGEON = [
         "text": "God’s Spirit is teaching you how to wrestle and agonize in prayer.",
         "sermon": "the-sweet-uses-of-adversity",
         "paragraph": 20,
+    },
+    {
+        "slug": "charles-h-spurgeon-7faf8f59",
+        "text": "Christ in the heart, means Christ believed in, Christ beloved, Christ trusted, Christ espoused, Christ communed with, Christ as our daily food, and ourselves as the temple and palace wherein Jesus Christ daily walks.",
+        "chapter": ("gleanings-among-the-sheaves", 12),
+        "paragraph": 7,
+    },
+    {
+        "slug": "charles-h-spurgeon-3abc20c9",
+        "text": "Let a man truly know the grace of our Lord Jesus Christ, and he will be a happy man; and the deeper he drinks into the Spirit of Christ, the happier will he become.",
+        "chapter": ("gleanings-among-the-sheaves", 10),
+        "paragraph": 7,
+    },
+    {
+        "slug": "charles-h-spurgeon-d59a45ab",
+        "text": "There never yet was a heavenly thought, a hallowed deed, or a consecrated act, acceptable to God by Jesus Christ, which was not worked in us by the Holy Spirit.",
+        "chapter": ("gleanings-among-the-sheaves", 19),
+        "paragraph": 3,
+    },
+    {
+        "slug": "charles-h-spurgeon-cfdd6903",
+        "text": "The love of Christ casts not out the love of relatives, but it sanctifies our creature love, and makes it sweeter far.",
+        "chapter": ("gleanings-among-the-sheaves", 7),
+        "paragraph": 14,
+    },
+    {
+        "slug": "charles-h-spurgeon-ab484f68",
+        "text": "Little faith will get very great mercies, but great faith still greater.",
+        "chapter": ("gleanings-among-the-sheaves", 11),
+        "paragraph": 6,
+    },
+    {
+        "slug": "charles-h-spurgeon-36a701d9",
+        "text": "Faith was Peter's life-buoy—it kept him up; but unbelief sent him down.",
+        "chapter": ("gleanings-among-the-sheaves", 2),
+        "paragraph": 2,
+    },
+    {
+        "slug": "charles-h-spurgeon-5fcb15f8",
+        "text": "The gospel is not a scheme of giving to God, but of receiving from God.",
+        "chapter": ("gleanings-among-the-sheaves", 8),
+        "paragraph": 13,
+    },
+    {
+        "slug": "charles-h-spurgeon-4389b884",
+        "text": "He who delights in the possession of the Lord Jesus hath all that heart can wish.",
+        "chapter": ("gleanings-among-the-sheaves", 6),
+        "paragraph": 1,
+    },
+    {
+        "slug": "charles-h-spurgeon-2daf7b58",
+        "text": "You will never perceive God in nature, until you have learned to see God in grace.",
+        "chapter": ("gleanings-among-the-sheaves", 12),
+        "paragraph": 15,
+    },
+    {
+        "slug": "charles-h-spurgeon-f28139b1",
+        "text": "Believers are not only to be with Christ, and to behold His glory, but they are to be like Christ, and to be glorified with Him.",
+        "chapter": ("gleanings-among-the-sheaves", 16),
+        "paragraph": 13,
+    },
+    {
+        "slug": "charles-h-spurgeon-870f2640",
+        "text": "It is ours to ask for a blessing, but not to define what the blessing shall be.",
+        "chapter": ("gleanings-among-the-sheaves", 11),
+        "paragraph": 10,
+    },
+    {
+        "slug": "charles-h-spurgeon-57735f38",
+        "text": "We are saved by faith, and not by feeling; yet there is a relation between holy faith and hallowed feeling like that between the root and the flower.",
+        "chapter": ("gleanings-among-the-sheaves", 2),
+        "paragraph": 10,
+    },
+    {
+        "slug": "charles-h-spurgeon-0c53a2aa",
+        "text": "As the Lord hath but one family, written in one register, redeemed with one blood, quickened by one Spirit, so this whole household abides in one habitation evermore.",
+        "chapter": ("gleanings-among-the-sheaves", 20),
+        "paragraph": 1,
+    },
+    {
+        "slug": "charles-h-spurgeon-d25d6079",
+        "text": "Grace is always grace, but it never seems so gracious as when we see it brought to our unworthy selves.",
+        "chapter": ("gleanings-among-the-sheaves", 8),
+        "paragraph": 9,
+    },
+    {
+        "slug": "charles-h-spurgeon-f0f5f775",
+        "text": "The Christian's life is one of daily dependence on the grace and strength of God.",
+        "chapter": ("gleanings-among-the-sheaves", 5),
+        "paragraph": 1,
+    },
+    {
+        "slug": "charles-h-spurgeon-8e8ecc65",
+        "text": "It is the distinguishing mark of God's people that they know the love of Christ.",
+        "chapter": ("gleanings-among-the-sheaves", 7),
+        "paragraph": 1,
+    },
+    {
+        "slug": "charles-h-spurgeon-4b7afe02",
+        "text": "The prayer that this morning you offered, Christ is now offering before His Father's throne.",
+        "chapter": ("gleanings-among-the-sheaves", 9),
+        "paragraph": 5,
+    },
+    {
+        "slug": "charles-h-spurgeon-f87efc94",
+        "text": "We are not trees by ourselves, but we are branches fixed on the Living Vine.",
+        "chapter": ("gleanings-among-the-sheaves", 18),
+        "paragraph": 1,
+    },
+    {
+        "slug": "charles-h-spurgeon-18e34bba",
+        "text": "There are some sciences that may be learned by the head, but the science of Christ crucified can only be learned by the heart.",
+        "chapter": ("gleanings-among-the-sheaves", 17),
+        "paragraph": 5,
+    },
+    {
+        "slug": "charles-h-spurgeon-010273ba",
+        "text": "Unless the heart be kept peaceable, the life will not be happy.",
+        "chapter": ("gleanings-among-the-sheaves", 15),
+        "paragraph": 1,
     },
 ]
 
