@@ -1,3 +1,13 @@
+// prerender refresh 2026-09-02: ochorus-originals gains an eighth book,
+// a-hidden-fire. The author already exists and the page already prerenders,
+// but the baked page lists the author's works, so without this touch
+// /authors/ochorus-originals keeps serving a shelf of seven.
+// NOTE for whoever revisits this: the book is ABOUT Simeon Nsibambi and is
+// attributed to ochorus-originals, because he did not write it — he has a
+// biography only, exactly as e-m-bounds does. The consequence, accepted
+// deliberately rather than by oversight, is that it does NOT appear on
+// /authors/simeon-nsibambi. Changing that means a real modelling decision
+// (a subject relation, not an author one), not a re-attribution.
 // prerender refresh 2026-08-29: four Luganda bios — e-m-bounds (#1201),
 // athanasius-of-alexandria (#1202), r-a-torrey (#1203), augustine-of-hippo
 // (#1204). Different cause from the touches below: these authors already
