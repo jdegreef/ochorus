@@ -50,11 +50,14 @@ from __future__ import annotations
 #:                         and 2026-09-02, twenty-three more (the four new books).
 #: e-m-bounds            — approved 2026-08-30, twenty-eight;
 #:                          twenty-seven more 2026-09-02 (fifty-five).
-#: augustine-of-hippo    — approved 2026-08-30, thirteen.
+#: augustine-of-hippo    — approved 2026-08-30, thirteen;
+#:                         and 2026-09-02, six more (Confessions).
 #: jonathan-edwards      — approved 2026-08-30, eleven;
 #:                         and 2026-09-02, ten more (Selected Sermons).
-#: john-wesley           — approved 2026-08-30, eighteen.
-#: george-muller         — approved 2026-08-30, eleven.
+#: john-wesley           — approved 2026-08-30, eighteen;
+#:                         and 2026-09-02, thirteen more (Sermons on Several Occasions).
+#: george-muller         — approved 2026-08-30, eleven;
+#:                         and 2026-09-02, four more (The Life of Trust).
 #: hudson-taylor         — approved 2026-08-30, ten;
 #:                         and 2026-09-02, ten more (Separation and Service).
 #: gareth-evans          — approved 2026-08-30, twenty-two;
@@ -1503,6 +1506,42 @@ AUGUSTINE = [
         "chapter": ("confessions", 6),
         "paragraph": 14,
     },
+    {
+        "slug": "augustine-of-hippo-2be5d987",
+        "text": "I will now call to mind my past foulness, and the carnal corruptions of my soul; not because I love them, but that I may love Thee, O my God.",
+        "chapter": ("confessions", 2),
+        "paragraph": 1,
+    },
+    {
+        "slug": "augustine-of-hippo-42c3e683",
+        "text": "Not with doubting, but with assured consciousness, do I love Thee, Lord.",
+        "chapter": ("confessions", 10),
+        "paragraph": 13,
+    },
+    {
+        "slug": "augustine-of-hippo-6218667a",
+        "text": "He is within the very heart, yet hath the heart strayed from Him.",
+        "chapter": ("confessions", 4),
+        "paragraph": 30,
+    },
+    {
+        "slug": "augustine-of-hippo-babac59e",
+        "text": "The mind commands the mind, its own self, to will, and yet it doth not.",
+        "chapter": ("confessions", 8),
+        "paragraph": 32,
+    },
+    {
+        "slug": "augustine-of-hippo-5d965455",
+        "text": "All consult Thee on what they will, though they hear not always what they will.",
+        "chapter": ("confessions", 10),
+        "paragraph": 62,
+    },
+    {
+        "slug": "augustine-of-hippo-cd00fc05",
+        "text": "What then do I love, when I love my God? who is He above the head of my soul?",
+        "chapter": ("confessions", 10),
+        "paragraph": 17,
+    },
 ]
 
 JONATHAN_EDWARDS = [
@@ -1743,6 +1782,84 @@ JOHN_WESLEY = [
         "chapter": ("sermons-on-several-occasions", 23),
         "paragraph": 24,
     },
+    {
+        "slug": "john-wesley-c2096cd8",
+        "text": "We might have loved God the Creator, God the Preserver, God the Governor; but there would have been no place for love to God the Redeemer.",
+        "chapter": ("sermons-on-several-occasions", 58),
+        "paragraph": 26,
+    },
+    {
+        "slug": "john-wesley-69cc6ec9",
+        "text": "God gives this faith; in that moment we are accepted of God; and yet, not for the sake of that faith, but of what Christ has done and suffered for us.",
+        "chapter": ("sermons-on-several-occasions", 21),
+        "paragraph": 42,
+    },
+    {
+        "slug": "john-wesley-6cc20b2f",
+        "text": "If we love Him, we cannot but love one another, as Christ loved us.",
+        "chapter": ("sermons-on-several-occasions", 95),
+        "paragraph": 11,
+    },
+    {
+        "slug": "john-wesley-17ad2058",
+        "text": "We know everyone who has peace with God, through Jesus Christ, has power over all sin.",
+        "chapter": ("sermons-on-several-occasions", 47),
+        "paragraph": 10,
+    },
+    {
+        "slug": "john-wesley-664808a5",
+        "text": "It is love excluding sin; love filling the heart, taking up the whole capacity of the soul.",
+        "chapter": ("sermons-on-several-occasions", 44),
+        "paragraph": 19,
+    },
+    {
+        "slug": "john-wesley-cf8b3317",
+        "text": "No suffering, but that of Christ, has any power to expiate sin; and no fire, but that of love, can purify the soul, either in time or in eternity.",
+        "chapter": ("sermons-on-several-occasions", 113),
+        "paragraph": 31,
+    },
+    {
+        "slug": "john-wesley-697ed3cb",
+        "text": "Reason, however cultivated and improved, cannot produce the love of God; which is plain from hence: It cannot produce either faith or hope; from which alone this love can flow.",
+        "chapter": ("sermons-on-several-occasions", 71),
+        "paragraph": 51,
+    },
+    {
+        "slug": "john-wesley-9142f92d",
+        "text": "We have by nature, not only no love, but no fear of God.",
+        "chapter": ("sermons-on-several-occasions", 45),
+        "paragraph": 20,
+    },
+    {
+        "slug": "john-wesley-a998de10",
+        "text": "Many indeed think of being happy with God in heaven; but the being happy in God on earth never entered into their thoughts.",
+        "chapter": ("sermons-on-several-occasions", 115),
+        "paragraph": 14,
+    },
+    {
+        "slug": "john-wesley-e2deb11e",
+        "text": "What we love we delight in: But no man has naturally any delight in God.",
+        "chapter": ("sermons-on-several-occasions", 45),
+        "paragraph": 19,
+    },
+    {
+        "slug": "john-wesley-baa7a7a5",
+        "text": "The foundation is faith, purifying the heart; the end love, preserving a good conscience.",
+        "chapter": ("plain-account-christian-perfection", 5),
+        "paragraph": 14,
+    },
+    {
+        "slug": "john-wesley-49a416d8",
+        "text": "The fruits of this Spirit must not be mere moral virtues, calculated for the comfort and decency of the present life; but holy dispositions, suitable to the instincts of a superior life already begun.",
+        "chapter": ("sermons-on-several-occasions", 142),
+        "paragraph": 33,
+    },
+    {
+        "slug": "john-wesley-740b7c0e",
+        "text": "Believe in the Lord Jesus; and thou, even thou, art reconciled to God.",
+        "chapter": ("sermons-on-several-occasions", 6),
+        "paragraph": 46,
+    },
 ]
 
 GEORGE_MULLER = [
@@ -1811,6 +1928,30 @@ GEORGE_MULLER = [
         "text": "The answer is, believe in the Lord Jesus, trust in Him, depend upon Him alone as it regards the salvation of your soul.",
         "chapter": ("answers-to-prayer", 3),
         "paragraph": 86,
+    },
+    {
+        "slug": "george-muller-5ff82d10",
+        "text": "When God gives a spirit of prayer, how easy then to pray!",
+        "chapter": ("the-life-of-trust", 12),
+        "paragraph": 5,
+    },
+    {
+        "slug": "george-muller-65f3b573",
+        "text": "Faith has to do with the word of God,—rests upon the written word of God; but there is no promise that he will pay our debts.",
+        "chapter": ("the-life-of-trust", 18),
+        "paragraph": 4,
+    },
+    {
+        "slug": "george-muller-4202e1fe",
+        "text": "Do but stand still in the hour of trial, and you will see the help of God, if you trust in him.",
+        "chapter": ("the-life-of-trust", 17),
+        "paragraph": 32,
+    },
+    {
+        "slug": "george-muller-a3309ebd",
+        "text": "I do not find the life in connection with this work a trying life, but a very happy one.",
+        "chapter": ("the-life-of-trust", 21),
+        "paragraph": 34,
     },
 ]
 
