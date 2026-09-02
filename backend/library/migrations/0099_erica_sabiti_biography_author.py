@@ -70,7 +70,7 @@ def create_authors(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("library", "0097_contentrevision_rls"),
+        ("library", "0098_martin_luther_biography_author"),
     ]
 
     operations = [

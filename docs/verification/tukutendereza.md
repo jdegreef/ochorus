@@ -33,9 +33,10 @@ should check this book against it before approval.
 
 ## Asserted more cautiously than the sources state
 
-- **Kigozi's age at death.** Sources give 1909–1936, so twenty-six or
-  twenty-seven. Chapter 5 says "still in his twenties" and chapter 14 says
-  "twenty-six"; if the birth year is firm, the second is right.
+- **Kigozi's death is now stated precisely**: 26 January 1936, aged twenty-six,
+  buried on Cathedral Hill at Namirembe at a crowded funeral officiated by his
+  brother Simeon Nsibambi, with the word he carried to the synod cut into the
+  headstone. An earlier draft hedged on all of this; it is attested.
 - **Sabiti's Command Post encounter with Amin (early 1972).** The bag, the
   flask, the diabetes, the Bible and the threat repeated three times come from
   a Ugandan newspaper account. **Chapter 7 deliberately reports only the
@@ -54,8 +55,10 @@ should check this book against it before approval.
   rather than constructing a representative figure. **If a reviewer can supply
   named, documented women of the revival, this chapter should be rewritten
   around them.** That would be a clear improvement.
-- **Nsibambi's schooling, war service and decoration, and his father's rank**
-  are omitted here as in *A Hidden Fire*, for the same reason: unverified.
+- ~~Nsibambi's schooling, war service and decoration, and his father's rank~~
+  **— CORRECTED.** These are attested (Christian History Institute) and are now
+  stated in *A Hidden Fire* ch1. My first research pass missed the sources and
+  I wrongly recorded them as unverifiable. See that book's verification file.
 - **The internal divisions of the 1960s–70s** are acknowledged in chapter 6 in
   general terms. I did not have enough to attribute positions to individuals,
   and did not try.
