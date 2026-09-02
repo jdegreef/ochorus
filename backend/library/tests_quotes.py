@@ -84,6 +84,8 @@ class SeedDataTests(SimpleTestCase):
                 "george-muller",
                 "hudson-taylor",
                 "gareth-evans",
+                "richard-allen",
+                "amanda-berry-smith",
             },
         )
 
