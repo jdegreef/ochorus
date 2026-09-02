@@ -3,12 +3,12 @@
 	import { goto } from '$app/navigation';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
-	import { portraitPosition } from '$lib/portraits';
 	import ContinueReading from '$lib/components/ContinueReading.svelte';
 	import ReadingNudge from '$lib/components/ReadingNudge.svelte';
 	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
 	import DiscoverStrip from '$lib/components/DiscoverStrip.svelte';
 	import TopicChips from '$lib/components/TopicChips.svelte';
+	import AuthorTile from '$lib/components/AuthorTile.svelte';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
 
 	/**
@@ -46,15 +46,6 @@
 		const q = query.trim();
 		goto(localizeHref('/search') + (q ? `?q=${encodeURIComponent(q)}` : ''));
 	}
-
-	const initials = (name: string) =>
-		name
-			.split(' ')
-			.filter(Boolean)
-			.map((w) => w[0])
-			.slice(0, 2)
-			.join('')
-			.toUpperCase();
 </script>
 
 <!-- Continue reading + streak render ABOVE the acquisition hero: a returning
@@ -155,33 +146,7 @@
 		/>
 		<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
 			{#each authors as author (author.slug)}
-				<a
-					href={localizeHref(`/authors/${author.slug}`)}
-					class="flex items-center gap-3 rounded-card border border-border p-4 hover:no-underline hover:bg-surface-2"
-				>
-					{#if author.photo_url}
-						<img
-							src={author.photo_url}
-							alt="{t('a11y.portraitOf')} {author.name}"
-							loading="lazy"
-							class="h-11 w-11 shrink-0 rounded-full border border-border object-cover"
-							style="filter: grayscale(1); object-position: {portraitPosition(author.slug)}"
-						/>
-					{:else}
-						<span
-							class="font-display flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-soft text-small font-semibold text-accent"
-						>
-							{initials(author.name)}
-						</span>
-					{/if}
-					<span>
-						<span class="block text-small font-semibold text-text">{author.name}</span>
-						<span class="block text-small text-muted">
-							{author.book_count}
-							{author.book_count === 1 ? t('common.bookOne') : t('common.bookMany')}
-						</span>
-					</span>
-				</a>
+				<AuthorTile {author} />
 			{/each}
 		</div>
 	</section>

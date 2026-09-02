@@ -28,11 +28,14 @@
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Icon from '$lib/components/Icon.svelte';
+	import { favorites } from '$lib/favorites.svelte';
 	import SourceBadge from '$lib/components/SourceBadge.svelte';
 	import SermonPlate from '$lib/components/SermonPlate.svelte';
 
 	let { data } = $props();
 	const sermon = $derived(data.sermon as Sermon);
+	// Whether this sermon is saved to the reader's library (device-local, synced).
+	const sermonSaved = $derived(favorites.has('sermon', sermon.slug));
 	const t = i18n.t;
 
 	/**
@@ -287,6 +290,17 @@
 						title={t('reader.listen')}><Icon name="headphones" size={18} /></button
 					>
 				{/if}
+				<!-- Save this sermon to "My Library". A sermon has no other favorite
+				     control (unlike book/author/plan pages, which carry a FavoriteButton),
+				     so without this the reader's saved-sermons shelf could never fill. -->
+				<button
+					class="btn btn-icon btn-ghost"
+					class:text-accent={sermonSaved}
+					onclick={() => favorites.toggle('sermon', sermon.slug)}
+					aria-label={sermonSaved ? t('fav.saved') : t('fav.save')}
+					title={sermonSaved ? t('fav.saved') : t('fav.save')}
+					aria-pressed={sermonSaved}><Icon name="heart" size={18} /></button
+				>
 				<button
 					class="btn btn-icon btn-ghost"
 					class:text-accent={currentBookmarked}

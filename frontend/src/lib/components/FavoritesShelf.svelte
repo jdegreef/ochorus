@@ -14,6 +14,7 @@
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import { unslug } from '$lib/strings';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
 
 	/**
@@ -60,8 +61,6 @@
 		loaded = true;
 	});
 
-	const unslug = (slug: string) =>
-		slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
 	const titleOf = (e: FavoriteEntry) => titles[`${e.kind}:${e.slug}`] ?? unslug(e.slug);
 
 	const groups = $derived.by(() => {
@@ -79,7 +78,11 @@
 
 {#if loaded && groups.length}
 	<section class="page-col px-5 pt-14">
-		<SectionHeader title={t('fav.yourFavorites')} />
+		<SectionHeader
+			title={t('fav.yourFavorites')}
+			href={localizeHref('/favorites')}
+			linkText={t('search.showAll')}
+		/>
 		<div class="space-y-4">
 			{#each groups as g (g.kind)}
 				<div class="flex flex-wrap items-baseline gap-2">
