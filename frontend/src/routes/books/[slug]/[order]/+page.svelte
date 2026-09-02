@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount, tick, untrack } from 'svelte';
+	import { onMount, onDestroy, tick, untrack } from 'svelte';
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 	import { goto, invalidateAll } from '$app/navigation';
@@ -441,6 +441,45 @@
 		};
 	}
 
+	// --- Peek the chrome in focus mode -----------------------------------------
+	// Focus mode hides the reader chrome; a keyboard has Esc, but a phone doesn't.
+	// A swipe DOWN from the top edge briefly summons the chrome (Aa, Contents,
+	// Listen, the focus toggle) so the reader can reach a control without leaving
+	// immersive reading. It re-hides after a few seconds — but not while a panel
+	// it opened is still up.
+	let peeking = $state(false);
+	let peekTimer: ReturnType<typeof setTimeout> | undefined;
+	let peekTrackY = false;
+	let peekStartY = 0;
+	// Derive the visible peek from focus rather than resetting `peeking` in an
+	// effect: leaving focus hides the chrome for free, no stale-state cleanup.
+	const showPeek = $derived(readerUi.focus && peeking);
+	function schedulePeekHide() {
+		clearTimeout(peekTimer);
+		peekTimer = setTimeout(() => {
+			// Hold the chrome up while a panel it opened is still in use; otherwise
+			// hide. Bounded — once focus ends or the panel closes, it stops.
+			if (readerUi.focus && readerUi.panelOpen) return schedulePeekHide();
+			peeking = false;
+		}, 4000);
+	}
+	function onWinTouchStart(e: TouchEvent) {
+		// Intentional pull-from-top affordance: a gesture STARTING in the top-edge
+		// band and dragging down summons the chrome. The listener is passive, so it
+		// never blocks a scroll — at worst a rare top-edge scroll-up also peeks.
+		peekTrackY = readerUi.focus && e.touches.length === 1 && e.touches[0].clientY <= 48;
+		if (peekTrackY) peekStartY = e.touches[0].clientY;
+	}
+	function onWinTouchMove(e: TouchEvent) {
+		if (!peekTrackY) return;
+		if (e.touches[0].clientY - peekStartY > 40) {
+			peekTrackY = false;
+			peeking = true;
+			schedulePeekHide();
+		}
+	}
+	onDestroy(() => clearTimeout(peekTimer));
+
 	onMount(() => {
 		readerPrefs.init();
 		listen.init();
@@ -832,10 +871,20 @@
 	ogTitle="{chapterName(chapter.order, chapter.title)} — {chapter.book_title}"
 	structuredData={[chapterLd]}
 />
-<svelte:window onscroll={onScroll} onkeydown={onKeydown} />
+<svelte:window
+	onscroll={onScroll}
+	onkeydown={onKeydown}
+	ontouchstart={onWinTouchStart}
+	ontouchmove={onWinTouchMove}
+/>
 
-<!-- Reader top bar: breadcrumb / context + controls. Hidden in focus mode. -->
-{#if !readerUi.focus}
+<!-- Compact "where you are" — book · chapter. One definition, rendered both as
+     the inline label (≥sm) and the phone location line below the controls. -->
+{#snippet locationLabel()}<span class="text-muted">{chapter.book_title} · </span>{chapterName(chapter.order, chapter.title)}{/snippet}
+
+<!-- Reader top bar: breadcrumb / context + controls. Hidden in focus mode,
+     except a transient peek summoned by a swipe-down from the top (see above). -->
+{#if !readerUi.focus || showPeek}
 	<!-- Pinned to the top. In scroll mode it's `sticky` (rides the scroll, then
 	     sticks); in page mode nothing scrolls, so it's `fixed` — and crucially a
 	     `sticky` sibling makes Chromium drop the top line of the reader's later
@@ -852,8 +901,9 @@
 	<div
 		bind:this={chromeEl}
 		class="reader-chrome top-0 inset-x-0 z-10 border-b border-border bg-bg/90 backdrop-blur"
-		class:fixed={paged}
-		class:sticky={!paged}
+		class:fixed={paged || showPeek}
+		class:sticky={!paged && !showPeek}
+		class:peeking={showPeek}
 	>
 		<div
 			class="mx-auto flex items-center justify-between gap-3 px-5 py-2.5"
@@ -874,9 +924,7 @@
 					</a>
 				{:else}
 					<!-- Once the heading scrolls away, show where you are. -->
-					<div class="truncate text-small text-text">
-						<span class="text-muted">{chapter.book_title} · </span>{chapterName(chapter.order, chapter.title)}
-					</div>
+					<div class="truncate text-small text-text">{@render locationLabel()}</div>
 				{/if}
 			</div>
 			<div class="flex shrink-0 items-center gap-0.5">
@@ -950,10 +998,19 @@
 				>
 			</div>
 		</div>
+		<!-- Phones below `sm` have no room for the inline label in the controls row
+		     above, so give them a compact location line of their own: the article's
+		     own breadcrumb scrolls away, and is hidden entirely in page mode, so
+		     without this the smallest phones lose all sense of where they are. -->
+		<div class="mx-auto px-5 pb-1.5 sm:hidden" style="max-width: {chromeMax}">
+			<div class="truncate text-micro text-text">{@render locationLabel()}</div>
+		</div>
 	</div>
 {/if}
 
-{#if readerUi.focus}
+<!-- Hidden during a peek: the peeked chrome carries its own focus toggle, and
+     the full-width bar would otherwise sit on top of this pill. -->
+{#if readerUi.focus && !showPeek}
 	<button
 		class="fixed end-4 top-4 z-30 rounded-full border border-border bg-surface/90 px-3 py-1.5 text-small text-muted shadow-md backdrop-blur hover:text-text"
 		onclick={() => readerUi.exitFocus()}>
@@ -1188,6 +1245,31 @@
 	/* Page mode only: `sticky` already sits below the nav in flow. */
 	.reader-chrome.fixed {
 		top: var(--appnav-h, 0px);
+	}
+	/* A peek in focus mode floats at the very top over the reading surface,
+	   regardless of where the (possibly hidden) global nav sits, and slides in. */
+	.reader-chrome.peeking {
+		top: 0;
+		z-index: 40;
+		animation: chrome-peek var(--duration-base) ease;
+	}
+	@keyframes chrome-peek {
+		from {
+			transform: translateY(-100%);
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.reader-chrome.peeking {
+			animation: none;
+		}
+	}
+	/* Touch: give the chrome's icon buttons a full-height tap target (≥44px on
+	   the axis that fits — nine controls can't also be 44px WIDE on a 360px
+	   phone without moving some off the bar, a larger redesign left for later). */
+	@media (pointer: coarse) {
+		.reader-chrome :global(.btn-icon) {
+			min-height: 44px;
+		}
 	}
 	.paged-backdrop {
 		position: fixed;
