@@ -72,13 +72,25 @@ blocks = BeautifulSoup(f"<div>{served}</div>", "lxml").div.find_all(recursive=Fa
 # paragraph = i (the index of blocks[i] whose norm(get_text()) contains the sentence)
 ```
 
-**Robust way to build the rows:** don't hand-type the text (curly quotes drift).
-Write an extraction script that emits candidates as `(book, order, i, sentence)`
-straight from `blocks`, curate by eye, then a second script that re-pulls each
-chosen sentence from its block by a distinctive **prefix** and asserts
-`norm(text) in blocks[i]` before writing the row — so the stored text is
-character-exact and provably resolves. (Worked example: the Murray batch, PR
-that grew him 27→50.)
+**Robust way to build the rows — DERIVE the index, don't transcribe it.** Write
+an extraction script that emits candidates as `(book, order, i, sentence)`
+straight from `blocks`, curate by eye, then a second script that, for each
+chosen quote, **re-finds it by a distinctive fragment searched across every
+block of the book** — and takes the `(order, paragraph)` from where it lands
+plus the exact sentence text from that block. Two traps this avoids, both of
+which bit the Gleanings batch:
+- **Don't reuse the candidate list's paragraph index.** Re-derive it. The
+  `annotate_references` + `find_all(recursive=False)` split must be identical to
+  the gate's, and a transcribed `i` silently goes stale (or you fat-finger it).
+- **Match on a fragment with NO apostrophe / em-dash / quote.** Apostrophes vary
+  between books — the same "Peter's" is a straight `'` in one source and a curly
+  `’` in another — so a prefix that includes one matches zero blocks in the book
+  that uses the other. Search on a plain-ASCII middle fragment ("life-buoy",
+  "not to define what the blessing"), assert it hits exactly one block AND one
+  sentence, then store the sentence verbatim.
+
+(Worked examples: Murray 27→50 by prefix — which then failed on Spurgeon's
+Gleanings until rewritten to the fragment search above.)
 
 ## Review & the auto-publish trap
 
