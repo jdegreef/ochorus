@@ -265,7 +265,17 @@ dropped; chapters under 120 words are dropped as stubs.
   bulk-creates the corrected sets (safe: nothing FKs Chapter; progress/marks are
   localStorage slug+order — but CHECK PlanDay: reading plans soft-reference
   chapters by (book_slug, chapter_order), so an order shift breaks seeded
-  plans). Pattern: `0009_rechapterize_bio_collections`. Ship only books that
+  plans; and CHECK TRANSLATION PARITY: a book with translations must keep the
+  SAME chapter count and order in every language — `tests_translation_markup`
+  compares English chapter-for-chapter against each translation, and the reader's
+  hreflang assumes `/books/<slug>/<N>/` resolves in every locale a chapter
+  exists in. So adding/removing/reordering an English chapter of a translated
+  book breaks parity unless you make the same change in every language
+  (translating any new chapter — which ships unreviewed) or register the gap in
+  `tests_translation_markup.KNOWN_CHAPTER_GAPS`. This is why the on-site
+  `talks-to-the-farmer` was left one chapter short of the Gutenberg edition
+  rather than "completed" with `Meal-Time in the Cornfields`). Pattern:
+  `0009_rechapterize_bio_collections`. Ship only books that
   MATERIALLY changed — a re-import that merely adds a Preface as ch1 shifts
   every chapter_order, breaking the book's seeded plan and readers' saved
   positions (we excluded the-inner-chamber for exactly this). *(2026-07)*
