@@ -62,6 +62,10 @@ from __future__ import annotations
 #:                         and 2026-09-02, ten more (Separation and Service).
 #: gareth-evans          — approved 2026-08-30, twenty-two;
 #:                          four more 2026-08-31 (twenty-six).
+#: richard-allen         — approved 2026-09-02, six (The Life, Experience, and
+#:                          Gospel Labours — his antislavery address and his
+#:                          address on Christian charity).
+#: amanda-berry-smith    — approved 2026-09-02, fifteen (An Autobiography).
 #:
 #: THIS ONLY EVER PUBLISHES, AT CREATION. `seed_quotes` reads it when it creates
 #: a row and never again, which is the same rule `is_published` and
@@ -83,6 +87,8 @@ APPROVED = frozenset(
         "george-muller",
         "hudson-taylor",
         "gareth-evans",
+        "richard-allen",
+        "amanda-berry-smith",
     }
 )
 
@@ -2237,6 +2243,142 @@ GARETH_EVANS = [
     },
 ]
 
+#: Richard Allen — 6 quotations from his autobiography (the antislavery
+#: address to slaveholders and his address on Christian charity).
+RICHARD_ALLEN = [
+    {
+        "slug": "richard-allen-33f14308",
+        "text": "We wish you to consider, that God himself was the first pleader of the cause of slaves.",
+        "chapter": ("life-experience-gospel-labours", 9),
+        "paragraph": 3,
+    },
+    {
+        "slug": "richard-allen-55587960",
+        "text": "Consider, my brethren, that all we have and are is entrusted to us by Almighty God.",
+        "chapter": ("life-experience-gospel-labours", 11),
+        "paragraph": 16,
+    },
+    {
+        "slug": "richard-allen-79563ce8",
+        "text": "Our blessed Lord has not committed his goods to us as a dead stock, to be boarded up, or to lie unprofitably in our own hands.",
+        "chapter": ("life-experience-gospel-labours", 11),
+        "paragraph": 17,
+    },
+    {
+        "slug": "richard-allen-83c101e1",
+        "text": "In short, the love of this world is a heavy weight upon the soul, which chains her down, and prevents her flight towards heaven.",
+        "chapter": ("life-experience-gospel-labours", 11),
+        "paragraph": 25,
+    },
+    {
+        "slug": "richard-allen-31ab9496",
+        "text": "To be slow and uneasy at almsgiving, argues a strong distrust in providence, either that God cannot or will not make up to us what we thus bestow.",
+        "chapter": ("life-experience-gospel-labours", 11),
+        "paragraph": 28,
+    },
+    {
+        "slug": "richard-allen-009d57ea",
+        "text": "All objections to charitable contributions may well be supposed to arise from covetousness, or an unwillingness to part with the present penny.",
+        "chapter": ("life-experience-gospel-labours", 11),
+        "paragraph": 33,
+    },
+]
+
+#: Amanda Berry Smith — 15 quotations from her Autobiography (faith,
+#: sanctification, prayer, trust, and temperance).
+AMANDA_BERRY_SMITH = [
+    {
+        "slug": "amanda-berry-smith-a27a891a",
+        "text": "In my heart was peace, but I did not know how to exercise faith as I should.",
+        "chapter": ("amanda-smith-autobiography", 4),
+        "paragraph": 12,
+    },
+    {
+        "slug": "amanda-berry-smith-6ba0da7f",
+        "text": "Thank God for real, practical, inright, outright, downright common sense; that is all I think people need on the color line.",
+        "chapter": ("amanda-smith-autobiography", 6),
+        "paragraph": 2,
+    },
+    {
+        "slug": "amanda-berry-smith-d3999568",
+        "text": "What else ought we to do, when we bring our friends, but to sink into the will of God, and put them into His hands, and trust Him?",
+        "chapter": ("amanda-smith-autobiography", 8),
+        "paragraph": 45,
+    },
+    {
+        "slug": "amanda-berry-smith-c5cbc2c8",
+        "text": "How often when we are passing through deep trials we look for human sympathy, and lean on the human more than on God.",
+        "chapter": ("amanda-smith-autobiography", 8),
+        "paragraph": 59,
+    },
+    {
+        "slug": "amanda-berry-smith-3649ad8b",
+        "text": "Learn to know the beauty of love and power and sympathy of Jesus Christ, our Lord and Savior.",
+        "chapter": ("amanda-smith-autobiography", 10),
+        "paragraph": 33,
+    },
+    {
+        "slug": "amanda-berry-smith-e93eed38",
+        "text": "The Gospel of Jesus was so full and practical, and with good, common sense it seemed to cover all my need.",
+        "chapter": ("amanda-smith-autobiography", 10),
+        "paragraph": 33,
+    },
+    {
+        "slug": "amanda-berry-smith-3fe22a05",
+        "text": "How glad I am that God nowhere teaches that men have to go into filth and indolence in order to be holy.",
+        "chapter": ("amanda-smith-autobiography", 24),
+        "paragraph": 18,
+    },
+    {
+        "slug": "amanda-berry-smith-a0c1cb51",
+        "text": "God gives us His Spirit, but we must walk in the light of the Spirit; then we will not fulfill the lust of the flesh, going in our own way.",
+        "chapter": ("amanda-smith-autobiography", 24),
+        "paragraph": 33,
+    },
+    {
+        "slug": "amanda-berry-smith-a6a638e8",
+        "text": "Strong drink does not only destroy the soul and body of men, but robs them of every comfort of life.",
+        "chapter": ("amanda-smith-autobiography", 27),
+        "paragraph": 113,
+    },
+    {
+        "slug": "amanda-berry-smith-f22720ef",
+        "text": "The very best chance for growing in grace, really and successfully, is to get the cleansing and all obstruction to growth out.",
+        "chapter": ("amanda-smith-autobiography", 34),
+        "paragraph": 132,
+    },
+    {
+        "slug": "amanda-berry-smith-6316c853",
+        "text": "How I do thank the Lord when it is my privilege to sing and pray and cheer the weary traveler along the lonesome road.",
+        "chapter": ("amanda-smith-autobiography", 28),
+        "paragraph": 108,
+    },
+    {
+        "slug": "amanda-berry-smith-a8ab3c92",
+        "text": "God was to separate me unto Himself and I must be weaned.",
+        "chapter": ("amanda-smith-autobiography", 13),
+        "paragraph": 23,
+    },
+    {
+        "slug": "amanda-berry-smith-7de9680d",
+        "text": "The burden rolled away; I felt it when it left me, and a flood of light and joy swept through my soul such as I had never known before.",
+        "chapter": ("amanda-smith-autobiography", 6),
+        "paragraph": 48,
+    },
+    {
+        "slug": "amanda-berry-smith-cf826ddb",
+        "text": "God showed me I was a dreadful sinner, but still I wanted to have my own way about it.",
+        "chapter": ("amanda-smith-autobiography", 6),
+        "paragraph": 17,
+    },
+    {
+        "slug": "amanda-berry-smith-afbc34b8",
+        "text": "How I have lived through it I cannot tell, but the blessedness of the love and the peace and power I can never describe.",
+        "chapter": ("amanda-smith-autobiography", 9),
+        "paragraph": 32,
+    },
+]
+
 QUOTES = {
     "charles-h-spurgeon": SPURGEON,
     "thomas-a-kempis": THOMAS_A_KEMPIS,
@@ -2248,4 +2390,6 @@ QUOTES = {
     "george-muller": GEORGE_MULLER,
     "hudson-taylor": HUDSON_TAYLOR,
     "gareth-evans": GARETH_EVANS,
+    "richard-allen": RICHARD_ALLEN,
+    "amanda-berry-smith": AMANDA_BERRY_SMITH,
 }
