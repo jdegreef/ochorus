@@ -23,6 +23,9 @@ Everything below assumes `~/dev/ochorus/backend`, Django via `uv run` with
   Honour the person; don't hagiographize. Name real struggles (Spurgeon's
   depression, a missionary's failures) — they make the faith credible.
 - **Accurate.** These are real people. Every fact and date should be verifiable.
+- **A portrait where an honest one exists.** Try to ship the bio with a real
+  public-domain likeness of the person, not just the initials monogram — see
+  **The portrait** below.
 
 ## Research first — real quotes, real prayers, no invention
 
@@ -206,7 +209,15 @@ force if every paragraph is a box.
    282-insert/237-delete diff. Append, then write in the committed file's
    format (`indent=2`, `ensure_ascii=False`, trailing newline — step 4).
 
-## The portrait (optional, same page)
+## The portrait (try for one, same page)
+
+**Every new bio should try to ship with a portrait.** A face makes the page,
+and most Ochorus authors — preachers, missionaries, reformers — have a
+well-known, plainly public-domain likeness (Cranach's Luther, the classic
+Calvin engraving, a Victorian studio photograph). So treat sourcing a good
+portrait as a normal part of creating the bio, not an afterthought — go looking
+for one every time. The monogram below is the honest fallback for when there
+genuinely isn't one, not the default.
 
 **Check first — the portrait may already exist.** Several authors carry a
 `photo_url` and a file under `frontend/static/portraits/` even with an empty
@@ -214,8 +225,9 @@ force if every paragraph is a box.
 the live URL before doing any image work.
 
 Without `photo_url` the page falls back to an initials monogram (which looks
-fine — a portrait is not mandatory, and some Puritans have no known likeness).
-House format: **grayscale JPEG, max 600px, `frontend/static/portraits/<slug>.jpg`,
+fine — some Puritans have no known likeness, and a spurious face is worse than
+initials). But don't settle for it while an honest portrait is gettable. House
+format: **grayscale JPEG, max 600px, `frontend/static/portraits/<slug>.jpg`,
 `photo_url="/portraits/<slug>.jpg"`.**
 
 **Some subjects have no honest portrait.** William Law never permitted one to be
@@ -238,6 +250,14 @@ im.save(f"frontend/static/portraits/{slug}.jpg", "JPEG", quality=85, optimize=Tr
 Check the result visually (a contact sheet of several at once is quickest) — the
 API's lead image is occasionally a statue, a book cover, or the wrong person.
 Ship `photo_url` the same way as `bio_html` (step 5 above).
+
+**If the environment can't reach the image (blocked egress, no Commons access),
+that is not "no portrait exists" — it's "couldn't fetch it here."** Don't
+silently ship a monogram for someone with an obvious public-domain likeness.
+Say so in the PR ("portrait deferred — Commons was unreachable in this session;
+`<slug>` has a clear PD portrait to add") so it gets picked up, rather than
+leaving a famous face as initials by accident. (Calvin and Luther shipped as
+monograms this way on PRs #1276 / #1277.)
 
 **Then give the file a focal point — this is a CI gate.**
 `frontend/src/lib/portraits.ts` holds a `PORTRAIT_POSITION` table, and
@@ -285,7 +305,10 @@ current signatures in `library/ingest.py` before relying on them.)
 6. Reads well and looks good in **both themes**; the short `bio` summary is set.
 7. `authors.json` edited in place, in the committed format (step 4) — not
    regenerated.
-8. Any new portrait has a `PORTRAIT_POSITION` entry (`portraits.test.ts`).
+8. **Tried for a portrait**: shipped a verified public-domain likeness, or — if
+   none is honest/gettable — said so (and why) rather than defaulting to the
+   monogram. Any new portrait has a `PORTRAIT_POSITION` entry
+   (`portraits.test.ts`).
 
 ## Pitfalls found in practice (2026-07-24, PR #387)
 
