@@ -1263,10 +1263,98 @@ BODY_CORRECTIONS: dict[str, dict] = {
         ],
     },
     "feasting-at-the-table": {
-        # ch7: drop cap fused to the word after it.
+        # Imported with pervasive extraction corruption: a stray space was
+        # sprayed through almost every chapter, splitting words ("Je rusalem",
+        # "spirit ual", "r ecipients") and stranding single letters ("t he
+        # words", "God ’s", the whole "G od’s R iches A t C hrist’s E xpense"
+        # acrostic). The first three pairs (ch7 drop cap + "repea t"/"wif e")
+        # were an earlier pass; the rest were found chapter by chapter when the
+        # book was translated to Luganda (the lg edition rendered the intended
+        # reading, so only the English needed repair). Each pair is anchored on
+        # enough context to match once; the derived body_text carries every fix
+        # too. Also four non-spacing slips the same pass surfaced (a factual
+        # "Moses’"→"Noah’s", "symbol"→"cymbal", "sever"→"seven",
+        # "follow"→"following"), and ten dropped or mismatched quotation marks
+        # closed to the reading the surrounding prose forces.
         "replacements": [
-            ("repea t:", "repeat:"), ("wif e!", "wife!"),
+            # ch1 — Paul’s Prayer
+            ("P aul writes:", "Paul writes:"),
+            ("Creator and Hi s Son", "Creator and His Son"),
+            ("yet t here was a hunger", "yet there was a hunger"),
+            ("Ephesians’ fa ith and love", "Ephesians’ faith and love"),
+            ("day , thi s scripture", "day , this scripture"),
+            ("“… t hat He would grant", "“… that He would grant"),
+            ("robbed the church of its power.</p>", "robbed the church of its power.”</p>"),
+            # ch2 — In Him
+            ("Consider this: Moses’ salvation", "Consider this: Noah’s salvation"),
+            ("God looks upo n us", "God looks upon us"),
+            ("the praise o f His glory", "the praise of His glory"),
+            ("GRACE - G od’s R iches A t C hrist’s E xpense", "GRACE - God’s Riches At Christ’s Expense"),
+            ("Jesu s said that", "Jesus said that"),
+            ("We are reckone d to have", "We are reckoned to have"),
+            ("with the se words", "with these words"),
+            ("praise of His glory!”", "praise of His glory!’"),
+            # ch3 — Sealed and Seated
+            ("‘wait in Je rusalem", "‘wait in Jerusalem"),
+            ("the Holy Sp irit", "the Holy Spirit"),
+            ("we are n ow called", "we are now called"),
+            ("‘heavenly places’ i n Christ", "‘heavenly places’ in Christ"),
+            ("this is G od’s will", "this is God’s will"),
+            ("implying tha t it", "implying that it"),
+            ("visit my h ome", "visit my home"),
+            ("“I am seated in Gareth’s home, unless", "“I am seated in Gareth’s home”, unless"),
+            # ch4 — A Body and a Building
+            ("‘summed up’ in Ch rist", "‘summed up’ in Christ"),
+            ("are a tem ple of God", "are a temple of God"),
+            ("no r vice versa", "nor vice versa"),
+            ("lost world wit h the hands", "lost world with the hands"),
+            ("‘fo r good works’", "‘for good works’"),
+            ("systems and bringin g glory", "systems and bringing glory"),
+            ("many differi ng parts", "many differing parts"),
+            ("one leg pu shes backward", "one leg pushes backward"),
+            ("the ‘chief cornerstone (Eph 2:20)", "the ‘chief cornerstone’ (Eph 2:20)"),
+            # ch5 — A Covenant People
+            ("They were r ecipients", "They were recipients"),
+            ("above al l other peoples", "above all other peoples"),
+            ("Jesus will reveal Himsel f as", "Jesus will reveal Himself as"),
+            ("those ceremoni es was", "those ceremonies was"),
+            ("will obey your Wo rd", "will obey your Word"),
+            ("elements ‘unworthily , i.e.", "elements ‘unworthily’, i.e."),
+            # ch6 — The Privilege of Ministry
+            ("Adifferent perspective", "A different perspective"),
+            ("ministers for Christ Jes us", "ministers for Christ Jesus"),
+            ("try to do God ’s work", "try to do God’s work"),
+            ("build up the c hurch", "build up the church"),
+            ("released me with t he words", "released me with the words"),
+            # ch7 — The Christian Walk
+            ("repea t:", "repeat:"),
+            ("wif e!", "wife!"),
             ("<p>Itrust", "<p>I trust"),
+            ("we have lea rned to", "we have learned to"),
+            ("longsuffering, gentl eness, goodness", "longsuffering, gentleness, goodness"),
+            ("the new n ature", "the new nature"),
+            ("just as Chris t also loved", "just as Christ also loved"),
+            ("filled with t he Spirit", "filled with the Spirit"),
+            ("a groaning fo llowed by", "a groaning followed by"),
+            ("The follow three pieces", "The following three pieces"),
+            ("clanging symbol", "clanging cymbal"),
+            # ch8 — Godly Relationships
+            ("I bel ieve the emphasis", "I believe the emphasis"),
+            ("to the vicious c ircle", "to the vicious circle"),
+            ("book of Revela tion", "book of Revelation"),
+            ("“all in heavenly places’ (the external", "“all in heavenly places” (the external"),
+            ("“give the devil an opportunity’?", "“give the devil an opportunity”?"),
+            # ch9 — Stand Firm
+            ("but they ca n say", "but they can say"),
+            ("understand th e tactics", "understand the tactics"),
+            ("His glory, t o be strengthened", "His glory, to be strengthened"),
+            ("tried by o ur circumstances", "tried by our circumstances"),
+            ("up my gr eat career", "up my great career"),
+            ("a resurrecti on for me", "a resurrection for me"),
+            ("the sever churches of Asia", "the seven churches of Asia"),
+            ("take ‘time out” to consider", "take ‘time out’ to consider"),
+            ("love of God in Christ Jesus (Rom 8:39)", "love of God in Christ Jesus” (Rom 8:39)"),
+            ("for the hope of the resurrection! (Acts 26:1-8 paraphrased)", "for the hope of the resurrection!” (Acts 26:1-8 paraphrased)"),
         ],
     },
     "the-christians-secret-of-a-happy-life-4": {
