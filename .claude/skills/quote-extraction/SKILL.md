@@ -124,4 +124,34 @@ cites an `is_published=False` work (a dead card link). Then prove the seed:
 uv run python manage.py seed_quotes   # on a fresh seeded DB; confirm the new rows appear
 ```
 
+## Gotchas found in the field
+
+- **A new author widens TWO sets, not one.** `test_the_curated_authors_are_the_reviewed_set`
+  asserts `set(QUOTES) == APPROVED` AND `set(QUOTES) ==` a **hardcoded literal
+  set** in `tests_quotes.py` (a deliberate scope tripwire). Adding an author to
+  `QUOTES` + `APPROVED` still reds until you also add the slug to that literal.
+  *(allen/smith, 2026-09)*
+- **The sentence splitter must break at `." ` (closing quote before the space),
+  or a Scripture quotation fuses into the next sentence and drags forbidden
+  double-quotes into the row.** Allen's "…make them rest from their burthens."
+  We wish you to consider…" merged under a naive `(?<=[.!?])\s+` split, so the
+  clean maxim ("We wish you to consider, that God himself was the first pleader
+  of the cause of slaves.") arrived wrapped in a `"…"` Pharaoh quote and would
+  have failed the no-double-quotes gate. Split on `(?<=[.!?])[”"'’]?\s+`.
+  *(2026-09)*
+- **An autobiography / testimony source is mostly situational narrative, not
+  maxims.** Raw subject-keyword scoring surfaces "the Lord gave me great liberty
+  in speaking that night" a hundred times over. Penalise proper names (any
+  capitalised word outside a God/Christ/Spirit/pronoun whitelist) and
+  occasion markers ("that night", "the meeting", "got the blessing"), and boost
+  gnomic present-tense forms (is/are/must/cannot/whoever/those who) to float the
+  real aphorisms up. Expect a thin yield — Allen's plain narrative gave ~6, and
+  quality-over-quantity is the rule. *(allen/smith, 2026-09)*
+- **Prefer the author's own prose; a sourced card still shouldn't be Scripture
+  the author merely quotes.** These two books quote the KJV constantly ("Greater
+  love hath no man…", "without holiness no man shall see the Lord"); drop those,
+  and drop reprinted devotional formulas (Allen's traditional "Acts of Faith /
+  Hope / Love" are not his composition). The card cites the chapter, so ordinary
+  authorial prose is fine even where the author draws on a tradition. *(2026-09)*
+
 _Living playbook — append gotchas as we find them._
