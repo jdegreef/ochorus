@@ -32,10 +32,11 @@
 
 	const t = i18n.t;
 
-	// Cycle through the preset speeds on tap — quicker than a dropdown mid-listen.
+	// Cycle through the notable speeds on tap — quicker than the Settings slider
+	// mid-listen. Jumps to the next preset above the current rate (which may be an
+	// off-preset slider value), wrapping back to the slowest.
 	function cycleRate() {
-		const i = RATES.indexOf(listen.rate as (typeof RATES)[number]);
-		listen.setRate(RATES[(i + 1) % RATES.length]);
+		listen.setRate(RATES.find((r) => r > listen.rate) ?? RATES[0]);
 	}
 </script>
 

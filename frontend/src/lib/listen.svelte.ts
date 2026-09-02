@@ -14,7 +14,16 @@ import { readJSON, writeJSON } from './persisted';
  * Rate and voice are device preferences, persisted in localStorage.
  */
 
-export const RATES = [0.8, 1, 1.25, 1.5, 1.75] as const;
+/** Notable speeds for the Listen bar's quick-cycle button. Settings offers the
+ *  full continuous range between RATE_MIN and RATE_MAX. */
+export const RATES = [0.8, 1, 1.25, 1.5, 1.75, 2] as const;
+export const RATE_MIN = 0.5;
+export const RATE_MAX = 2;
+
+/** A requested speed snapped into range and onto a clean 0.05 step. */
+export function clampRate(rate: number): number {
+	return Math.min(RATE_MAX, Math.max(RATE_MIN, Math.round(rate * 20) / 20));
+}
 
 const KEY = 'ochorus:listen';
 
@@ -36,8 +45,10 @@ interface Stored {
 function loadPrefs(): Stored {
 	const raw = readJSON<{ rate?: number; voiceURI?: unknown }>(KEY, {});
 	return {
+		// Any speed inside the range — Settings is a continuous slider now, so a
+		// saved value need not be one of the RATES presets.
 		rate:
-			typeof raw.rate === 'number' && (RATES as readonly number[]).includes(raw.rate)
+			typeof raw.rate === 'number' && raw.rate >= RATE_MIN && raw.rate <= RATE_MAX
 				? raw.rate
 				: 1,
 		voiceURI: typeof raw.voiceURI === 'string' ? raw.voiceURI : ''
@@ -231,7 +242,7 @@ class Listen {
 	}
 
 	setRate(rate: number) {
-		this.rate = rate;
+		this.rate = clampRate(rate);
 		this.#savePrefs();
 		this.#restartCurrent();
 	}

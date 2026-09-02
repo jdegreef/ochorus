@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { listen } from './listen.svelte';
+import { listen, clampRate, RATES, RATE_MIN, RATE_MAX } from './listen.svelte';
 
 // SpeechSynthesis isn't in jsdom, so these exercise the pure voice-resolution
 // logic directly by seeding `listen.voices` — the part a device can't vary.
@@ -83,5 +83,35 @@ describe('listen missing-voice predicate', () => {
 		listen.noVoice = true;
 		listen.dismissNoVoice();
 		expect(listen.noVoice).toBe(false);
+	});
+});
+
+describe('listen rate range', () => {
+	it('clamps a requested speed into [RATE_MIN, RATE_MAX]', () => {
+		expect(clampRate(3)).toBe(RATE_MAX);
+		expect(clampRate(0.1)).toBe(RATE_MIN);
+		expect(clampRate(1.25)).toBe(1.25);
+	});
+
+	it('snaps to a clean 0.05 step', () => {
+		expect(clampRate(1.234)).toBe(1.25);
+		expect(clampRate(1.111)).toBe(1.1);
+	});
+
+	it('keeps every RATES preset a fixed point of clampRate', () => {
+		for (const r of RATES) expect(clampRate(r)).toBe(r);
+	});
+
+	it('offers a faster-than-default 2x preset for power listeners', () => {
+		expect(RATES.includes(2 as (typeof RATES)[number])).toBe(true);
+		expect(RATE_MAX).toBe(2);
+	});
+
+	it("cycleRate picks the next preset above an off-preset slider value", () => {
+		// The ListenBar's rule: first preset strictly greater than current, else wrap.
+		const next = (rate: number) => RATES.find((r) => r > rate) ?? RATES[0];
+		expect(next(1.15)).toBe(1.25); // off-preset -> next notable speed
+		expect(next(1)).toBe(1.25);
+		expect(next(2)).toBe(RATES[0]); // at the top -> wrap to slowest
 	});
 });
