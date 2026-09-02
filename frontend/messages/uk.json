@@ -1,5 +1,7 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
+  "book_people_in_book": "Люди в цій книзі",
+  "author_appears_in": "Також з'являється в",
   "nav_about": "Про нас",
   "nav_home": "Головна",
   "nav_books": "Книги",

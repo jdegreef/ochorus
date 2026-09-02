@@ -515,8 +515,24 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # transcription slip; the rest of the audit's space-before-punct flags
         # sit inside the source's dash-redacted names ("Rev L-- G-- .") and are
         # left as the source has them.
+        #
+        # The second pair BACKFILLS a live row: this book was imported (#1319)
+        # before the docsouth footer-nav fix (#1330), so prod's last chapter
+        # still carries the "Return to Menu Page…" nav that #1330 removed from
+        # the fixture. seed_books never rewrites an existing chapter, so the
+        # deploy left it stale; apply_body_corrections does (through save()).
+        # A no-op on the fixed fixture, which no longer contains the nav.
         "replacements": [
             ("Joseph B . McKean", "Joseph B. McKean"),
+            (
+                " <p>Return to Menu Page for The Life, Experience, and Gospel "
+                "Labours of the Rt. Rev. Richard Allen... by Richard Allen</p> "
+                "<p>Return to The Church in the Southern Black Community Home "
+                "Page</p><p>Return to North American Slave Narratives Home "
+                "Page</p> <p>Return to Documenting the American South Home "
+                "Page</p>",
+                "",
+            ),
         ],
     },
     "amanda-smith-autobiography": {
@@ -1740,6 +1756,17 @@ BODY_CORRECTIONS: dict[str, dict] = {
 # pairs stay together and reviewable, and so this class of defect -- our own
 # translation output, not the extractor and not the source -- is visibly its own
 # thing. They are Luganda strings and can never match another language's text.
+# `waiting-on-god.en` ch07 opens a paragraph with a quotation mark that never
+# closes: "<p> 'I SPOKE of an army...". Murray is recalling his own previous
+# chapter, not quoting anyone, and the mark renders as a stray glyph in the
+# reader. Repaired here rather than per-edition because the editions AGREE —
+# all six shipped translations (es, pt, sw, hi, ar, uk) drop it, which is the
+# bar this file uses for touching a source. Found while translating to lg (#1205).
+BODY_CORRECTIONS.setdefault("waiting-on-god", {}).setdefault("replacements", []).append(
+    ("<p> 'I SPOKE of an army", "<p> I SPOKE of an army")
+)
+
+
 _LG_DOUBLED_VERB: dict[str, list[tuple[str, str]]] = {
     "all-of-grace": [
         ('biteekeddwateekeddwa', 'biteekeddwa'),

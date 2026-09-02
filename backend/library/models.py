@@ -837,6 +837,62 @@ class TopicSermon(models.Model):
         return f"{self.topic.slug} ⊃ {self.sermon_slug}"
 
 
+class PersonRole(models.TextChoices):
+    """How a person relates to a book they are named in but did not write.
+
+    A curated distinction, not a derived one — it says why this bio hangs off
+    this work, and lets the page phrase it ("the subject of" vs "mentioned in").
+    """
+
+    FEATURED = "featured", "Featured"      # a central figure of the book
+    SUBJECT = "subject", "Subject"         # the book is largely about them
+    MENTIONED = "mentioned", "Mentioned"   # a notable figure who appears in it
+
+
+class BookPerson(models.Model):
+    """A person FOUND IN a book — a bio the work points at, not its author.
+
+    An anthology or biography names people who have their own author page (a
+    bio), and this links the two so the book can offer "people in this book" and
+    the bio can offer "appears in". It is deliberately NOT ``Book.author``:
+    authorship says who wrote the work, this says who it is about or who walks
+    through it, and a work has one of the first and any number of the second.
+
+    Modelled like ``TopicBook``: a soft ``book_slug`` reference rather than an FK
+    to a per-language ``Book`` row, so ONE row covers every language edition of
+    the work (the person is the same in all of them) and it survives a book
+    re-import. The ``person`` end IS an FK, because an ``Author`` is canonical and
+    language-agnostic already (its prose lives in ``AuthorTranslation``) — the
+    same reason ``Book.author`` is an FK. A person with no bio in the reader's
+    language simply isn't shown there, the usual no-English-fallback rule.
+    """
+
+    book_slug = models.SlugField(max_length=160)
+    person = models.ForeignKey(
+        Author, on_delete=models.CASCADE, related_name="featured_in_books"
+    )
+    role = models.CharField(
+        max_length=20, choices=PersonRole.choices, default=PersonRole.FEATURED
+    )
+    sort_order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["sort_order", "id"]
+        constraints = [
+            # Leads with book_slug, so it also serves BookDetail's "who is in
+            # this book?" lookup (filter by book_slug alone) — no separate
+            # single-column index needed, unlike TopicBook whose unique index
+            # leads with topic_id. The reverse lookup ("what does this person
+            # appear in?") goes through person_id, which the FK indexes for free.
+            models.UniqueConstraint(
+                fields=["book_slug", "person"], name="uniq_book_person"
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.book_slug} ▷ {self.person.slug} ({self.role})"
+
+
 class SearchQueryLog(models.Model):
     """One executed library search — anonymous by design (no user, ever).
 

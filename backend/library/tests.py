@@ -1360,7 +1360,11 @@ class BookCardPayloadTests(TestCase):
         # is pinned rather than bounded so a reintroduced repeat shows up as a
         # failure with the query list attached. The +1 over the view's 10 is the
         # one constant read the ETag adds (the content revision — not per-row).
-        with self.assertNumQueries(11):
+        # The 12th is the `featured_in_books` prefetch for `appears_in` — one
+        # constant lookup for the "also appears in" section, prefetched in the
+        # view so it stays a single query whether or not the author appears in
+        # anything (an author with appearances pays one more, for the books).
+        with self.assertNumQueries(12):
             self.client.get("/api/library/authors/murray/?language=en")
 
 
