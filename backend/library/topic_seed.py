@@ -97,6 +97,7 @@ TOPICS = [
             "life-and-diary-of-david-brainerd",
             "things-as-they-are",
             "journal-of-an-expedition-up-the-niger",
+            "religious-experience-and-journal",
             "men-and-women-who-gave-everything-2",
             "women-who-moved-heaven-2",
             "union-and-communion",

@@ -375,6 +375,25 @@ dropped; chapters under 120 words are dropped as stubs.
   equals the theme LAST (a stable sort on `title.casefold() == theme.casefold()`
   does it); and lint runs in CI before the tests — `ruff check scripts/<file>.py`
   locally, the seeds/gates don't catch C408 (`dict()` → literal) etc. *(2026-09)*
+- **The OPPOSITE shape — one heading over a huge undivided section (a long
+  journal/diary) → split into reading chapters via a `build_<name>` command.**
+  Jarena Lee's *Religious Experience and Journal* (Gutenberg #66953) has three
+  authorial headings, and the third runs unbroken through her whole 44k-word
+  travelling journal — one endless scroll on a phone. `extract_chapters` gives
+  the three clean sections; the build command keeps the short ones and splits the
+  long one into ~7k-word chapters at block boundaries, folding a short tail back.
+  Two things earned the hard way: (1) **split on ALL top-level blocks, not just
+  `<p>`** — a `re.findall(r'<p>.*?</p>')` split silently DROPPED 746 words of the
+  hymns she quotes in `<blockquote>`; iterate `BeautifulSoup(body).children`
+  instead and assert word-count parity with the source before trusting it.
+  (2) Title the chunks **`Part I/II/…` (a `_roman(n)` generator, not a fixed
+  list), not year-ranges** — a diarist who recounts past and future years within
+  one entry makes min/max-year titles overlap and mislead; Part N is honest, and
+  duplicate bare "The Journal" titles trip `qa.duplicate_title`. A brand-new
+  author arriving WITH a book needs NO migration — `seed_books` `get_or_create`s
+  the author from `authors.json` (full bio and all) while creating the book;
+  verify the prod path by deleting both from the dev DB and running `seed_books`.
+  *(religious-experience-and-journal, 2026-09)*
 - **Known limits (unfixed):** a book whose Introduction heading is fused with
   its body text in one block loses that intro (feasting-at-the-table); a drop
   cap belonging mid-paragraph after a scripture-ref merge isn't reattached

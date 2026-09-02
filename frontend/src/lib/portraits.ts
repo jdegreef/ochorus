@@ -48,6 +48,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'hannah-whitall-smith': '50% 0%',
 	'hudson-taylor': '50% 20%',
 	'ignatius-of-antioch': '50% 0%', // fresco: head at ~17% of a 0.72 plate
+	'jarena-lee': '50% 0%', // 1849 lithograph: seated figure, face at ~18% of a 0.73 plate
 	'jeanne-guyon': '50% 58%',
 	'john-bunyan': '50% 0%',
 	'john-cassian': '50% 0%', // icon: standing figure, head at ~20% of a 0.70 plate
