@@ -53,7 +53,11 @@ DELAY = 1.0  # be polite
 # title/author/"Electronic Edition" block is set in <h3>, so it would otherwise
 # import as phantom chapters.
 _BOOK_START = re.compile(r'<a\s+name="[^"]*">\s*Page\b', re.I)
-_BOOK_END = re.compile(r"<!--\s*footer inside begins", re.I)
+# The book text ends at docsouth's per-book navigation block — a
+# `<div class="links">` of "Return to Menu Page…" links that sits just BEFORE
+# the footer comment — so cut at whichever comes first. Cutting only at the
+# footer comment let that nav div leak into the last chapter's body.
+_BOOK_END = re.compile(r'<div\s+class="links"|<!--\s*footer inside begins', re.I)
 
 # Each chapter/section opens with an <h3> divider. We split on it at the STRING
 # level rather than walking BeautifulSoup siblings: the summary sub-headings are
