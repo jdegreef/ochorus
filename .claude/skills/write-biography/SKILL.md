@@ -287,6 +287,19 @@ Check the result visually (a contact sheet of several at once is quickest) — t
 API's lead image is occasionally a statue, a book cover, or the wrong person.
 Ship `photo_url` the same way as `bio_html` (step 5 above).
 
+**A CC "own work" claim on a lifetime photo is copyfraud — reject it.** For a
+20th-century subject (the era where PD runs out), Commons' only image is often a
+real press/studio photograph from the person's life that a recent uploader
+re-posted as "own work" under CC BY(-SA). The tell is
+`extmetadata.DateTimeOriginal`: a file created *after* the subject died (Festo
+Kivengere d. 1988, image dated 2016) cannot be the uploader's own work, so the
+licence doesn't hold — and it isn't PD anyway, and the portrait system carries no
+attribution field to satisfy CC BY. Treat it exactly like William Law: ship the
+monogram. The honest route to a real face for these is a rights grant from the
+holder (a ministry, estate, or archive), which is the founder's call to pursue,
+not something to fake with a mislicensed upload. (Kivengere / Nsibambi both
+stayed monograms this way — Nsibambi has no free image at all.)
+
 **If the environment can't reach the image (blocked egress, no Commons access),
 that is not "no portrait exists" — it's "couldn't fetch it here."** Don't
 silently ship a monogram for someone with an obvious public-domain likeness.
