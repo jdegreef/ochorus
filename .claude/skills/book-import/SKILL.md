@@ -790,6 +790,16 @@ Also check the catalog before scraping — a book absent from ochorus.com (whose
 `/books/<slug>/` soft-404s with a 200 and no `<title>`) is often already
 declared against a CCEL or PDF source.
 
+**A declared book may already be LIVE under a different slug — verify the WORK,
+not just the declared slug's fixture.** `Talks to Farmers` (declared, Gutenberg
+#42518) is the same book as the on-site `talks-to-the-farmer`, chapter for
+chapter; `Humility` (= `humility-2`) and `school-of-prayer`
+(= `lord-teach-us-to-pray-2`) were the same trap. A 404 on the declared slug is
+necessary but not sufficient — search the live API for the title
+(`/api/library/search/?q=…`) and compare the source TOC against any
+similarly-titled existing book before importing, or you ship a second copy of a
+book already on the shelf. *(2026-09)*
+
 A brand-new book needs **no data migration**: the deploy's `manage.py release`
 runs `seed_books`, which creates a new book *with its chapters* straight from
 the fixture (and is a clean no-op on re-run). Prove it before shipping by
@@ -844,6 +854,15 @@ running it before the fixture exists reports the new book as absent and writes n
 twin (`wrote 0 of N twins`) — and `tests_fixture` then reds on the missing raster
 twin. Order: import → `generate_covers` → write fixture → `npm run og:covers`.
 *(2026-09)*
+
+**`npm run og:covers` on a FRESH worktree dies until Playwright's browser is
+installed.** The twin generator renders with Playwright's chromium, which a
+fresh `npm install` does NOT download; it fails with a Playwright banner
+("Please run npx playwright install") that surfaces as a bare `Node.js vXX` line
+and writes no twin — then `tests_fixture` reds on the missing raster. Run
+`npx playwright install chromium` once; it caches under
+`~/Library/Caches/ms-playwright`, so later worktrees on the same machine are
+fine. *(2026-09)*
 
 **ochorus.com no longer serves `/pdfs/<slug>.pdf`** (404 as of 2026-07) — every
 `import_ochorus` re-import fails at the fetch. It fails safely, leaving existing
