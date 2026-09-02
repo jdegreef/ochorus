@@ -37,6 +37,15 @@ EXCLUDED_SLUGS: set[str] = {
 }
 
 CORRECTIONS: dict[str, dict] = {
+    "true-vine": {
+        # Murray gives two meditations the identical title "The Vine" (day 2 on
+        # John 15:1, day 11 on John 15:5) — a duplicate title in the TOC.
+        # Disambiguate by the verse each expounds.
+        "chapter_titles": {
+            2: "The Vine (John 15:1)",
+            11: "The Vine (John 15:5)",
+        },
+    },
     "selected-sermons-edwards": {
         # Seven sermons (ch1 is the editor's Introduction, ch9 the editor's
         # Notes). The body headings became the titles carrying a roman prefix

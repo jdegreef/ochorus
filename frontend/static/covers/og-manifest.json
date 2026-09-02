@@ -1033,6 +1033,13 @@
 			"art": true,
 			"scrim": 0.75
 		},
+		"true-vine": {
+			"ground": "54b7d63dda3eb100efe8295a4392fe2def46adebd5317bf6a3841589cc727ea7",
+			"style": "devotional",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"uk/baptism-with-the-holy-spirit": {
 			"ground": "c37eea644e4e24407c58d34ead9e43f85fe22462f71bf8d7ec86c3bc626a1943",
 			"style": "revival",
