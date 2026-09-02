@@ -35,7 +35,15 @@ import { define } from '$lib/define.svelte';
 import { scripture } from '$lib/scripture.svelte';
 import { getLang } from '$lib/lang.svelte';
 import { spokenText } from '$lib/listenText';
+import { shouldFollow } from '$lib/listenFollow';
+import { HEADER_OFFSET } from '$lib/reading';
 import { DEFAULT_HIGHLIGHT, type WorkKind } from '$lib/reading-schema';
+
+/** How long read-along leaves the page alone after a hand-scroll. */
+const FOLLOW_YIELD_MS = 3000;
+/** How long to disregard `scroll` events after our own follow scroll (covers the
+ *  smooth animation) so it isn't mistaken for the reader scrolling by hand. */
+const SELF_SCROLL_MS = 1000;
 
 /** Attribution for copy/share from the selection bar. */
 export interface Cite {
@@ -207,15 +215,48 @@ export class ReaderText {
 		// Track the marked element rather than toggling the class over every block
 		// — a long chapter is 76+ blocks and this fires on every paragraph.
 		let spokenEl: Element | null = null;
+
+		// "When did the reader last scroll by hand?" This watches the real `scroll`
+		// event, so it catches every way to move the page — wheel, touch (and its
+		// momentum glide), keyboard (Space / PageDown), scrollbar drag — not just
+		// the pointer subset. The one thing `scroll` can't tell apart is our OWN
+		// scrollIntoView below, which also fires it; `ignoreScrollUntil` masks the
+		// brief window around that so following the audio isn't read as the reader
+		// moving the page and doesn't make us yield to ourselves.
+		let lastUserScroll = -Infinity;
+		let ignoreScrollUntil = 0;
+		$effect(() => {
+			const onScroll = () => {
+				if (Date.now() < ignoreScrollUntil) return;
+				lastUserScroll = Date.now();
+			};
+			window.addEventListener('scroll', onScroll, { passive: true });
+			return () => window.removeEventListener('scroll', onScroll);
+		});
+
 		$effect(() => {
 			const current = listen.current;
 			const body = o.body();
 			if (!body) return;
 			spokenEl?.classList.remove('tts-current');
 			spokenEl = body.children[current] ?? null;
-			if (spokenEl) {
-				spokenEl.classList.add('tts-current');
-				spokenEl.scrollIntoView({ block: 'center', behavior: 'smooth' });
+			if (!spokenEl) return;
+			spokenEl.classList.add('tts-current');
+			// Only pull it into view when it has drifted off-station and the reader
+			// isn't mid-scroll — see `shouldFollow`. Re-centring every block, or
+			// fighting a hand-scroll, is what made long chapters lose their place.
+			const follow = shouldFollow({
+				top: spokenEl.getBoundingClientRect().top,
+				viewportHeight: window.innerHeight,
+				headerOffset: HEADER_OFFSET,
+				msSinceUserScroll: Date.now() - lastUserScroll,
+				yieldMs: FOLLOW_YIELD_MS
+			});
+			if (follow) {
+				// Mask the scroll events our own animation is about to emit.
+				ignoreScrollUntil = Date.now() + SELF_SCROLL_MS;
+				const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+				spokenEl.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' });
 			}
 		});
 
