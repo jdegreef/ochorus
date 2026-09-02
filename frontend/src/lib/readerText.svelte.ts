@@ -36,6 +36,7 @@ import { scripture } from '$lib/scripture.svelte';
 import { getLang } from '$lib/lang.svelte';
 import { spokenText } from '$lib/listenText';
 import { shouldFollow } from '$lib/listenFollow';
+import { saveScrollAnchor } from '$lib/progress';
 import { HEADER_OFFSET } from '$lib/reading';
 import { DEFAULT_HIGHLIGHT, type WorkKind } from '$lib/reading-schema';
 
@@ -123,13 +124,17 @@ export class ReaderText {
 		// highlight still lines up), with footnote markers and other eye-only
 		// bits removed so the engine doesn't voice "…grace four".
 		const paragraphs = [...body.children].map((el) => spokenText(el));
-		listen.start(
-			paragraphs,
-			from ?? this.#o.topIndex(),
-			getLang(),
-			{ title: this.#o.listenTitle(), artist: this.#o.listenArtist() },
-			this.#o.onListenFinish
-		);
+		listen.start(paragraphs, from ?? this.#o.topIndex(), {
+			lang: getLang(),
+			media: { title: this.#o.listenTitle(), artist: this.#o.listenArtist() },
+			onFinish: this.#o.onListenFinish,
+			// The spoken paragraph IS the resume point while listening — save it (this
+			// also pushes the synced progress paragraph_index), so picking the work
+			// back up, here or on another device, lands where the audio reached. The
+			// scroll handlers step aside while playing so they don't overwrite it.
+			onAdvance: (index) =>
+				saveScrollAnchor(this.#o.slug(), this.#o.order(), index, this.#o.kind())
+		});
 	};
 
 	/**
@@ -255,6 +260,9 @@ export class ReaderText {
 			spokenEl = body.children[current] ?? null;
 			if (!spokenEl) return;
 			spokenEl.classList.add('tts-current');
+			// (The resume-point save lives in the `onAdvance` handed to listen.start
+			// below — driven by the audio, not this reactive effect, so it can't fire
+			// with a stale index against a freshly-navigated chapter.)
 			// Only pull it into view when it has drifted off-station and the reader
 			// isn't mid-scroll — see `shouldFollow`. Re-centring every block, or
 			// fighting a hand-scroll, is what made long chapters lose their place.

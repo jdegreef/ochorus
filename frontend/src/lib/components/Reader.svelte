@@ -38,6 +38,7 @@
 	import { page } from '$app/stores';
 	import { contentLang, HEADER_OFFSET, placeAfterLayout } from '$lib/reading';
 	import { getScrollAnchor, saveScrollAnchor, saveProgress, getProgressRecord } from '$lib/progress';
+	import { listen } from '$lib/listen.svelte';
 	import { type WorkKind } from '$lib/reading-schema';
 	import { createReaderText, type Cite } from '$lib/readerText.svelte';
 	import ReaderOverlays from '$lib/components/ReaderOverlays.svelte';
@@ -122,7 +123,10 @@
 		clearTimeout(saveTimer);
 		saveTimer = setTimeout(() => {
 			updateFraction();
-			saveScrollAnchor(slug, order, topVisibleIndex(), kind);
+			// While actively playing, listen.start's onAdvance owns the resume point
+			// (the spoken paragraph); don't overwrite it with the viewport-top one.
+			// While PAUSED we do save — the reader may be scrolling ahead to read.
+			if (listen.status !== 'playing') saveScrollAnchor(slug, order, topVisibleIndex(), kind);
 		}, 250);
 	}
 
