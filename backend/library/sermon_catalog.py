@@ -311,4 +311,40 @@ SERMONS: list[SermonEntry] = [
         # full book name, and this string is what the reader displays.
         scripture_ref="Ephesians 2:8",
     ),
+    # --- One famous sermon each for four preachers who had none --------------
+    # These authors already carry a bio (and some a book that is NOT a sermon
+    # collection); a single landmark sermon gives their preaching a home.
+    # Finney's CCEL sermons render via a JS reader (a raw fetch gets only
+    # "loading…"); the same sermon is served as static HTML on gospeltruth.net
+    # (already the source for Catherine Booth's sermon).
+    SermonEntry(
+        "gods-love-for-a-sinning-world",
+        "God's Love for a Sinning World",
+        "charles-finney",
+        "web",
+        "https://www.gospeltruth.net/1853OE/530622_gods_love.htm",
+        scripture_ref="John 3:16",
+        body_starts="Sin is the most expensive thing in the universe",
+    ),
+    SermonEntry(
+        "against-eutropius",
+        "Against Eutropius",
+        "john-chrysostom",
+        "ccel",
+        "https://ccel.org/ccel/schaff/npnf109.xv.iii.html",
+        scripture_ref="Ecclesiastes 1:2",
+    ),
+    # Luther has no standalone-page PD sermon on CCEL, and the Gutenberg Lenker
+    # Postil (28464) sets every sermon AND its subsections at the same <h4>, so
+    # the section importer can't bound one sermon. The Lenker translation is
+    # served one-sermon-per-page (public domain) at sermons.martinluther.us.
+    SermonEntry(
+        "pauls-praise-of-christian-love",
+        "Paul's Praise of Christian Love",
+        "martin-luther",
+        "web",
+        "https://sermons.martinluther.us/sermons33.html",
+        scripture_ref="1 Corinthians 13",
+        body_starts="1. Paul's purpose in this chapter is to silence",
+    ),
 ]
