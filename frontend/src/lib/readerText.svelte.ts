@@ -82,6 +82,12 @@ export interface ReaderTextOptions {
 	 * the URL out of here leaves the decisions testable without a router.
 	 */
 	searchQuery?: () => string;
+	/**
+	 * Called when read-aloud finishes the last paragraph on its own (not on a
+	 * user stop). The chapter reader supplies it to roll into the next chapter;
+	 * single-document surfaces (sermon, bio) leave it unset.
+	 */
+	onListenFinish?: () => void;
 }
 
 export class ReaderText {
@@ -105,18 +111,25 @@ export class ReaderText {
 		return this.#o.cite();
 	}
 
-	/** Read aloud, starting from the paragraph the surface says you're on. */
-	startListening = (): void => {
+	/**
+	 * Read aloud. Starts from the paragraph the surface says you're on, or from
+	 * `from` when given — the chapter roll-over passes 0 to begin the next
+	 * chapter at its top.
+	 */
+	startListening = (from?: number): void => {
 		const body = this.#o.body();
 		if (!body) return;
 		// spokenText, not innerText: one entry per child (so the follow-along
 		// highlight still lines up), with footnote markers and other eye-only
 		// bits removed so the engine doesn't voice "…grace four".
 		const paragraphs = [...body.children].map((el) => spokenText(el));
-		listen.start(paragraphs, this.#o.topIndex(), getLang(), {
-			title: this.#o.listenTitle(),
-			artist: this.#o.listenArtist()
-		});
+		listen.start(
+			paragraphs,
+			from ?? this.#o.topIndex(),
+			getLang(),
+			{ title: this.#o.listenTitle(), artist: this.#o.listenArtist() },
+			this.#o.onListenFinish
+		);
 	};
 
 	/**

@@ -95,6 +95,14 @@
 	let titleEl: HTMLHeadingElement | undefined = $state();
 	let titleVisible = $state(true);
 
+	// The chapter order read-aloud rolled over INTO, so the per-chapter effect
+	// picks playback up from its top on arrival (audiobook roll-over). Scoped to
+	// the specific target order — not a bare flag — so that if the reader
+	// manually navigates somewhere else mid-roll-over, the arriving chapter won't
+	// match and won't surprise-play. A plain var, not $state: the page component
+	// is reused across chapter navigations, so it survives the goto.
+	let autoContinueOrder: number | null = null;
+
 	// The prerendered HTML is always the standard edition (query params don't
 	// exist at build time — see +page.ts). A direct visit to ?edition=modern
 	// hydrates with that standard-edition data, so re-run load client-side once
@@ -523,6 +531,13 @@
 		const order = chapter.order;
 		const language = getLang();
 
+		// Consume any audiobook roll-over intent up front (synchronously, so a
+		// throw later in setup can't strand it): we roll into playback only if
+		// THIS is the chapter read-aloud asked to continue into, not one the
+		// reader picked by hand in the meantime.
+		const rollInto = autoContinueOrder === order;
+		autoContinueOrder = null;
+
 		// Arriving from a bookmark / notebook deep-link (?p=N): seed the scroll
 		// anchor to N *before* saveProgress reads it, so the book's resume point
 		// records paragraph N. Without this, saveProgress ran with no anchor yet
@@ -567,6 +582,9 @@
 			}
 			if (!paged) updateFraction();
 			cleanup = observeTitle();
+			// Rolled over from the previous chapter's read-aloud: pick playback up
+			// at the top of this one (intent already consumed synchronously above).
+			if (rollInto) reader.startListening(0);
 		})();
 		return () => cleanup?.();
 	});
@@ -894,7 +912,16 @@
 		listenTitle: () => chapterName(chapter.order, chapter.title),
 		listenArtist: () => `${chapter.author_name} · ${chapter.book_title}`,
 		cite: () => cite,
-		searchQuery: () => $page.url.searchParams.get('q') ?? ''
+		searchQuery: () => $page.url.searchParams.get('q') ?? '',
+		// Audiobook roll-over: when a chapter finishes reading itself, continue
+		// into the next one. Only when there is a next chapter — the last chapter
+		// simply stops. gotoChapter navigates; the per-chapter effect resumes.
+		onListenFinish: () => {
+			if (chapter.next) {
+				autoContinueOrder = chapter.next.order;
+				gotoChapter(chapter.next);
+			}
+		}
 	});
 </script>
 
