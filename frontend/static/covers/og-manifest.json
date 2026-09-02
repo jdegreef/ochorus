@@ -11,6 +11,13 @@
 			"art": true,
 			"scrim": 0.7
 		},
+		"a-hidden-fire": {
+			"ground": "16eeb1abc5f0d51a97fe2a60edbc61633e158a1bceb8b255c9c4bc21a5b45fcf",
+			"style": "house",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"a-retrospect": {
 			"ground": "d3166331f6beff1bc85dc4b336357ae441aeb869b81775064ae7f669d23c84f9",
 			"style": "revival",

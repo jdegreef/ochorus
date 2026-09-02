@@ -1,3 +1,11 @@
+// prerender refresh 2026-09-02: a-hidden-fire.en — a NEW English original,
+// so /books gains a card and its chapter pages need baking. ONLY this loader:
+// the book is in no plan module (grepped plan_seed.py, plans.py,
+// plan_translations.py, seed_plans.py), and it is English-only, so there is no
+// translated edition and no localized cover. Its cover is a generated house
+// plate at /covers/a-hidden-fire.svg — output, not a designed raster, so
+// nothing is registered in designed_covers.py and nothing is frozen.
+//
 // prerender refresh 2026-09-01: waiting-on-god.uk (job #790).
 // ONLY this loader. Grepped every plan module for the slug — plan_seed.py,
 // plans.py, plan_translations.py, seed_plans.py — and it appears in none of
