@@ -36,9 +36,11 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'catherine-booth': '50% 0%',
 	'charles-finney': '50% 0%',
 	'charles-h-spurgeon': '50% 0%',
+	'clement-of-rome': '50% 0%', // mosaic bust; face at ~28% of a 0.80 plate
 	'cyprian-of-carthage': '50% 0%', // icon: bust, face at ~22%
 	'david-brainerd': '50% 0%',
 	'dwight-l-moody': '50% 5%',
+	'e-m-bounds': '50% 2%', // 1864 photograph; face at ~32% of a 0.72 plate
 	'frederick-brotherton-meyer': '50% 0%',
 	'gareth-evans': '50% 45%', // square source
 	'george-muller': '50% 37%',
@@ -48,6 +50,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'ignatius-of-antioch': '50% 0%', // fresco: head at ~17% of a 0.72 plate
 	'jeanne-guyon': '50% 58%',
 	'john-bunyan': '50% 0%',
+	'john-cassian': '50% 0%', // icon: standing figure, head at ~20% of a 0.70 plate
 	'john-chrysostom': '50% 0%', // mosaic: standing figure, head at ~11%
 	'john-owen': '50% 0%', // Greenhill portrait; face at ~31% of a 0.81 plate
 	'john-wesley': '50% 0%',
