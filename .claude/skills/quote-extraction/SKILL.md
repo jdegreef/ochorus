@@ -45,6 +45,17 @@ character (curly `’ “ ”`, em-dashes and all), or the resolution gate fails
    sourced card exists to beat. Drop "Holy, holy, holy, Lord God of hosts", "God
    is love; and he that abideth in love …", etc. Also skip prayer-addresses
    ("Lord Jesus, reveal Thyself …") — they are prayers, not maxims.
+2a. **Watch for an editor's voice inside the author's own book.** Many public-
+   domain editions wrap the author's text in editorial framing — an Editor's
+   Preface, an Introduction, connecting summaries, third-person narration — and
+   a sentence lifted from those prints the *editor's* words under the author's
+   name (the same misattribution as a verse-tracking line). *The Life of Trust*
+   is George Müller's narrative from ch. 4 on, but ch. 1–3 are H. L. Wayland's
+   Editor's Preface + Introduction; the tell is third person ("Müller was led
+   to…", "the Author") where the author's own chapters are first person. Check
+   the chapter titles for the editorial boundary, keep the author's voice only,
+   and when unsure print the block's opening words alongside each candidate so
+   you can see whose voice it is before shipping.
 3. **Scoring pass** favours contrast (`not … but`, `yet`, `though`), brevity,
    and a recognisable subject (God, Christ, prayer, faith, grace, holiness …).
 4. **Read the shortlist and choose.** This is judgement, and it is NOT the human
