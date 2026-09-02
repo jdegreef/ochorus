@@ -86,6 +86,10 @@
   "jesus-himself-2": {
    "space-before-punct": 2
   },
+  "journal-of-an-expedition-up-the-niger": {
+   "lost-paragraphing": 1,
+   "orphan-close-quote": 3
+  },
   "let-us-pray-2": {
    "orphan-close-quote": 1,
    "space-before-punct": 2
@@ -192,7 +196,8 @@
    "title-case-vs-body": 1
   },
   "susanna-wesley-clarke": {
-   "hyphen-space": 1
+   "hyphen-space": 1,
+   "word-fusion": 1
   },
   "ten-commandments": {
    "orphan-close-quote": 1,
@@ -204,7 +209,7 @@
    "space-before-punct": 2
   },
   "the-bruised-reed": {
-   "word-fusion": 2
+   "word-fusion": 3
   },
   "the-christians-secret-of-a-happy-life-4": {
    "anachronism": 2,

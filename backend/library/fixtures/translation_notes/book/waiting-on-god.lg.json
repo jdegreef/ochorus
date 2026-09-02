@@ -1,0 +1,242 @@
+{
+ "kind": "book",
+ "slug": "waiting-on-god",
+ "language": "lg",
+ "job_issue": 1205,
+ "references": [
+  {
+   "reference": "2 Corinthians 4:6",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.lg.json",
+   "block_index": 6,
+   "why": "ch24 quotes it in full and carries the mined rendering. ch18 shortens it to 'the light of the glory of God' (dropping 'of the knowledge'), so that site is an adaptation, not the mined span."
+  },
+  {
+   "reference": "Acts 1:4",
+   "status": "mined",
+   "source_file": "baptism-with-the-holy-spirit.lg.json",
+   "block_index": 1
+  },
+  {
+   "reference": "Habakkuk 2:20",
+   "status": "mined",
+   "source_file": "the-inner-chamber.lg.json",
+   "block_index": 5,
+   "why": "the-inner-chamber.lg opens the block 'Naye Mukama' (But the LORD); Murray has no conjunction, so 'Naye' is dropped. Otherwise verbatim."
+  },
+  {
+   "reference": "Lamentations 3:25",
+   "status": "mined",
+   "source_file": "prevailing-prayer.lg.json",
+   "block_index": 6
+  },
+  {
+   "reference": "Lamentations 3:25",
+   "status": "mined",
+   "source_file": "prevailing-prayer.lg.json",
+   "block_index": 1
+  },
+  {
+   "reference": "Lamentations 3:25",
+   "status": "mined",
+   "source_file": "prevailing-prayer.lg.json",
+   "block_index": 2
+  },
+  {
+   "reference": "Lamentations 3:25",
+   "status": "mined",
+   "source_file": "prevailing-prayer.lg.json",
+   "block_index": 3
+  },
+  {
+   "reference": "Lamentations 3:25",
+   "status": "mined",
+   "source_file": "prevailing-prayer.lg.json",
+   "block_index": 5
+  },
+  {
+   "reference": "Lamentations 3:25",
+   "status": "mined",
+   "source_file": "prevailing-prayer.lg.json",
+   "block_index": 6
+  },
+  {
+   "reference": "Lamentations 3:26",
+   "status": "mined",
+   "source_file": "prevailing-prayer.lg.json",
+   "block_index": 1
+  },
+  {
+   "reference": "Proverbs 3:5",
+   "status": "mined",
+   "source_file": "the-inner-chamber.lg.json",
+   "block_index": 5
+  },
+  {
+   "reference": "Psalms 145:15",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.lg.json",
+   "block_index": 3
+  },
+  {
+   "reference": "Psalms 145:15",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.lg.json",
+   "block_index": 6
+  },
+  {
+   "reference": "Psalms 145:15",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.lg.json",
+   "block_index": 12
+  },
+  {
+   "reference": "Psalms 34:8",
+   "status": "mined",
+   "source_file": "the-unselfishness-of-god.lg.json",
+   "block_index": 2
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "mined",
+   "source_file": "humility-2.lg.json",
+   "block_index": 4
+  },
+  {
+   "reference": "1 Thessalonians 1:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 6:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Thessalonians 3:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Deuteronomy 32:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 49:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hosea 12:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 25:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 26:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 30:18",
+   "status": "self_rendered",
+   "why": "Quoted at 4 sites, more than any other verse but the refrain. Not present in the shipped lg corpus."
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "self_rendered",
+   "why": "Backbone verse (mount up with eagles' wings). Not present in the shipped lg corpus."
+  },
+  {
+   "reference": "Isaiah 49:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 64:4",
+   "status": "self_rendered",
+   "why": "The book's other governing verse (its title page quotes it). No lg corpus rendering exists; rendered conservatively."
+  },
+  {
+   "reference": "Isaiah 8:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 12:36",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 2:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 104:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 106:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 130:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 145:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 25:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 25:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 25:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 27:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 31:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 33:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 37:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 37:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 39:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 40:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 62:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "why": "The book's refrain, at 42 sites. NOT mined. the-god-of-all-comfort.lg renders Ps 62:5 as “Ggwe emmeeme yange, lindirira Katonda yekka mu kasirise; kubanga essuubi lyange liva gy’ali” — but that follows a 'wait in SILENCE' English and Murray's AV has no such clause. Trimming it makes the sentence mine, so it ships self_rendered. The corpus hit gave the vocabulary, not the sentence."
+  },
+  {
+   "reference": "Zechariah 2:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zephaniah 1:7",
+   "status": "self_rendered"
+  }
+ ]
+}

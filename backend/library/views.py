@@ -151,7 +151,13 @@ class AuthorDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
         # asking `obj.quotes.filter(...).count()` added a query to every author
         # page, which `BookCardPayloadTests` budgets and caught.
         return get_object_or_404(
-            Author.objects.prefetch_related("translations").annotate(
+            Author.objects.prefetch_related(
+                "translations",
+                # appears_in reads these (BookPerson rows for this person);
+                # prefetching keeps it out of the serializer as a lazy query and
+                # in the page's fixed budget (BookCardPayloadTests).
+                "featured_in_books",
+            ).annotate(
                 reviewed_quotes=Count(
                     "quotes", filter=Q(quotes__reviewed=True), distinct=True
                 )

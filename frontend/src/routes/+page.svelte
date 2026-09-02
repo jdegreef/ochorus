@@ -1,46 +1,15 @@
 <script lang="ts">
-	import type { BookSummary, AuthorBio, TopicSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { jsonLd, hreflangAll } from '$lib/seo';
-	import { goto } from '$app/navigation';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
-	import { portraitPosition } from '$lib/portraits';
-	import ContinueReading from '$lib/components/ContinueReading.svelte';
-	import ReadingNudge from '$lib/components/ReadingNudge.svelte';
-	import TodaysReading from '$lib/components/TodaysReading.svelte';
-	import PlansProgress from '$lib/components/PlansProgress.svelte';
-	import FavoritesShelf from '$lib/components/FavoritesShelf.svelte';
-	import RecommendedNext from '$lib/components/RecommendedNext.svelte';
-	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
-	import BookCard from '$lib/components/BookCard.svelte';
-	import SectionHeader from '$lib/components/SectionHeader.svelte';
+	import { auth } from '$lib/auth.svelte';
+	import HomeMarketing from '$lib/components/HomeMarketing.svelte';
+	import HomeDashboard from '$lib/components/HomeDashboard.svelte';
 
 	let { data } = $props();
-	const featured = $derived<BookSummary[]>(data.featured);
-	const authors = $derived<AuthorBio[]>(data.authors);
-	const topics = $derived<TopicSummary[]>(data.topics ?? []);
 
 	const t = i18n.t;
-
-	// Hero search → the full search page. Progressive enhancement: the form is a
-	// real GET to /search (works with no JS); with JS we intercept and navigate
-	// client-side so it stays in the SPA.
-	let query = $state('');
-	function submitSearch(e: Event) {
-		e.preventDefault();
-		const q = query.trim();
-		goto(localizeHref('/search') + (q ? `?q=${encodeURIComponent(q)}` : ''));
-	}
-
-	const initials = (name: string) =>
-		name
-			.split(' ')
-			.filter(Boolean)
-			.map((w) => w[0])
-			.slice(0, 2)
-			.join('')
-			.toUpperCase();
 
 	// Site-level structured data: a WebSite with the sitelinks-searchbox action
 	// (the hero search posts to /search) and the publishing Organization.
@@ -75,6 +44,21 @@
 	// correctly omitted them — two contradictory claims, with the wrong one on
 	// the site's most-crawled pages.
 	const hreflang = hreflangAll('/');
+
+	// Signed-in readers get a personal dashboard; everyone else — and every
+	// crawler — gets the marketing home. The gate matters for SEO: this page is
+	// prerendered, and during the build `auth.initialized` is false (auth only
+	// resolves in the browser, on mount), so the baked HTML is always
+	// <HomeMarketing>. The dashboard swaps in client-side once the session
+	// resolves — the same "personal blocks appear at hydration" trade the home
+	// page already made. `auth.initialized` also holds the marketing page in
+	// place for the moment before a signed-in session is confirmed, rather than
+	// flashing the dashboard to a reader who turns out to be logged out.
+	const showDashboard = $derived(auth.enabled && auth.initialized && !!auth.user);
+
+	// The head is identical for both views — the canonical home metadata is the
+	// marketing page's, and the dashboard is a private, noindex-by-nature surface
+	// rendered over the same URL.
 </script>
 
 <svelte:head>
@@ -95,196 +79,8 @@
 	{@html siteLd}
 </svelte:head>
 
-<!-- Continue reading + streak render ABOVE the acquisition hero: a returning
-     reader came back to resume, not to be sold the site again, and leaving
-     these under a full-height hero meant scrolling past a pitch they had
-     already accepted. Both render nothing until there is reading activity, so
-     a first-time visitor still lands on the hero and sees no change.
-
-     The reordering is `order`, not DOM order, so the page's only <h1> still
-     comes before every <h2> in the source — a document that opens on an <h2>
-     is a worse outline for anyone navigating by heading. Client-side only
-     (this page is prerendered), so the blocks appear at hydration rather than
-     in the baked HTML. -->
-<div class="flex flex-col">
-	<!-- Hero -->
-	<section class="order-2 border-b border-border bg-surface-2">
-		<div class="mx-auto max-w-4xl px-5 py-14 text-center sm:py-20">
-			<p class="eyebrow mb-4 text-accent">
-				{t('home.heroEyebrow')}
-			</p>
-			<h1 class="text-display mx-auto mb-5 max-w-3xl">
-				{t('home.heroTitle')}
-			</h1>
-			<p class="mx-auto mb-6 max-w-xl text-body text-muted">
-				{t('home.heroTagline')}
-			</p>
-			<form
-				onsubmit={submitSearch}
-				method="GET"
-				action={localizeHref('/search')}
-				role="search"
-				class="mx-auto mb-6 flex max-w-lg items-center gap-2 rounded-full border border-border bg-surface px-2 py-1.5 shadow-sm focus-within:border-accent"
-			>
-				<svg
-					class="ms-2 h-5 w-5 shrink-0 text-muted"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					aria-hidden="true"
-				>
-					<circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
-				</svg>
-				<input
-					bind:value={query}
-					name="q"
-					type="search"
-					enterkeyhint="search"
-					placeholder={t('search.placeholder')}
-					aria-label={t('nav.search')}
-					class="min-w-0 flex-1 bg-transparent py-1 text-body text-text placeholder:text-muted focus-visible:-outline-offset-2"
-				/>
-				<button type="submit" class="btn btn-primary shrink-0 rounded-full">{t('nav.search')}</button>
-			</form>
-			<!-- One primary per view: the search submit above. These two are the
-			     alternative routes into the same library, not competing calls to
-			     action, so they read as secondary. -->
-			<div class="flex flex-wrap justify-center gap-3">
-				<a href={localizeHref('/books')} class="btn btn-ghost">{t('home.browseLibrary')}</a>
-				<a href={localizeHref('/about')} class="btn btn-ghost">{t('home.aboutOchorus')}</a>
-			</div>
-		</div>
-	</section>
-	<div class="personal order-1"><ContinueReading books={data.books} /><ReadingNudge /></div>
-</div>
-
-<!-- Discover Your Next Book — above the plan/sermon blocks.
-     Hidden when empty, like the topics row below it: if the shelf failed to
-     load (see the note in +page.ts) a bare heading over an empty grid reads as
-     "Ochorus has no books", where showing nothing simply reads as a shorter
-     page around the personal blocks that still work. -->
-{#if featured.length}
-	<section class="page-col px-5 pt-14">
-		<SectionHeader
-			title={t('home.discoverNext')}
-			href={localizeHref('/books')}
-			linkText={t('home.allBooks')}
-		/>
-		<!-- Its own ramp rather than .book-grid: this strip is exactly six books,
-		     and .book-grid's open-shelf ramp passes through five columns, which
-		     would leave a lone sixth card on a second row. 2 / 3 / 6 all divide
-		     six. -->
-		<div class="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 lg:grid-cols-6">
-			{#each featured as book, i (book.slug)}
-				<!-- The first row is above the fold at every breakpoint (2 up on
-				     mobile, 6 up on desktop); three covers the common cases
-				     without eagerly loading a shelf nobody has scrolled to. -->
-				<BookCard {book} showAuthor priority={i < 3} />
-			{/each}
-		</div>
-	</section>
+{#if showDashboard}
+	<HomeDashboard {data} />
+{:else}
+	<HomeMarketing {data} />
 {/if}
-
-<!-- Personal plan / sermon blocks — client-side only (this page is prerendered) -->
-<TodaysReading />
-<PlansProgress />
-<RecommendedNext books={data.books} />
-<FavoritesShelf />
-<SermonOfTheWeek />
-
-<!-- Browse by topic -->
-{#if topics.length}
-	<section class="page-col px-5 pt-14">
-		<SectionHeader
-			title={t('home.browseTopic')}
-			href={localizeHref('/topics')}
-			linkText={t('home.allTopics')}
-		/>
-		<div class="flex flex-wrap gap-2.5">
-			{#each topics as topic (topic.slug)}
-				<a
-					href={localizeHref(`/topics/${topic.slug}`)}
-					class="inline-flex items-baseline gap-1.5 rounded-full border border-border bg-surface px-4 py-2 text-small font-medium text-text hover:border-accent hover:text-accent hover:no-underline"
-				>
-					{topic.title}
-					<!-- Members, not books: a shelf carried by its sermons showed a bare
-					     "0" here, which reads as an empty shelf rather than a full one. -->
-					<span class="text-eyebrow font-normal text-muted"
-						>{topic.book_count + topic.sermon_count}</span
-					>
-				</a>
-			{/each}
-		</div>
-	</section>
-{/if}
-
-<!-- Mission teaser -->
-<section class="mt-14 border-y border-border bg-surface-2">
-	<div class="mx-auto max-w-3xl px-5 py-16 text-center">
-		<h2 class="text-h1 mb-3">{t('home.missionTitle')}</h2>
-		<p class="mx-auto max-w-xl text-body text-muted">
-			{t('home.missionText')}
-		</p>
-		<a href={localizeHref('/about')} class="btn btn-ghost mt-6">{t('home.ourStory')}</a>
-	</div>
-</section>
-
-<!-- Christian Authors — hidden when the shelf is empty, same reason as
-     "Discover your next book" above. -->
-{#if authors.length}
-	<section class="page-col px-5 pt-14 pb-20">
-		<SectionHeader
-			title={t('home.authorsTitle')}
-			href={localizeHref('/biographies')}
-			linkText={t('home.allBiographies')}
-		/>
-		<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-			{#each authors as author (author.slug)}
-				<a
-					href={localizeHref(`/authors/${author.slug}`)}
-					class="flex items-center gap-3 rounded-card border border-border p-4 hover:no-underline hover:bg-surface-2"
-				>
-					{#if author.photo_url}
-						<img
-							src={author.photo_url}
-							alt="{t('a11y.portraitOf')} {author.name}"
-							loading="lazy"
-							class="h-11 w-11 shrink-0 rounded-full border border-border object-cover"
-							style="filter: grayscale(1); object-position: {portraitPosition(author.slug)}"
-						/>
-					{:else}
-						<span
-							class="font-display flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-soft text-small font-semibold text-accent"
-						>
-							{initials(author.name)}
-						</span>
-					{/if}
-					<span>
-						<span class="block text-small font-semibold text-text">{author.name}</span>
-						<span class="block text-small text-muted">
-							{author.book_count}
-							{author.book_count === 1 ? t('common.bookOne') : t('common.bookMany')}
-						</span>
-					</span>
-				</a>
-			{/each}
-		</div>
-	</section>
-{/if}
-
-<style>
-	/*
-	 * The strip only exists for a returning reader: both blocks inside render
-	 * nothing when there is no reading activity, leaving a wrapper whose only
-	 * children are Svelte's anchor comments — which is `:empty` per the spec.
-	 * So the closing rule and the space above the hero come and go with the
-	 * content, and a first visit is exactly the page it was before.
-	 */
-	.personal:not(:empty) {
-		padding-bottom: 3.5rem;
-		border-bottom: 1px solid var(--border);
-	}
-</style>

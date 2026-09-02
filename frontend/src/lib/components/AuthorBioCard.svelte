@@ -2,7 +2,7 @@
 	import { type AuthorBio, type BookSummary, formatLifespan } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import { portraitPosition } from '$lib/portraits';
+	import { initials, portraitPosition } from '$lib/portraits';
 	import BookCover from '$lib/components/BookCover.svelte';
 
 	// One writer's card: portrait, name + lifespan, the "Full life" badge, a
@@ -15,9 +15,6 @@
 	// Five covers fit the text column without a scrollbar; beyond that a "+N"
 	// tile carries the rest to the author page.
 	const SHELF_MAX = 5;
-
-	const initials = (name: string) =>
-		name.split(' ').filter(Boolean).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
 </script>
 
 <!-- A bordered card (matching the site's rounded-card pattern) that reads as one

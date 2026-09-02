@@ -397,6 +397,23 @@ dropped; chapters under 120 words are dropped as stubs.
     rule (which is why *Confessions* ships with `Chapter XXi`/`Chapter Xi`
     unfixed). If a second grouped book needs per-leaf fixes, add a hook rather
     than widening `clean_title` again. *(2026-07)*
+  - **When the work has NO internal part dividers, `group_parts` can't help** —
+    a `part=`-extracted NPNF work like Augustine's *Enchiridion* is 124 tiny
+    numbered sections under one implicit part, so `group_parts` fuses the whole
+    thing into a single 35k-word chapter. Import it flat, then regroup with a
+    committed build script keyed by editorial order-ranges: `GROUPS = [(title,
+    lo, hi), …]` covering every raw section, each chapter concatenating its
+    sections as `<h3>{section-title}</h3>{body}` through `clean_fragment`
+    (`scripts/build_enchiridion.py` is the model — idempotent: reads the raw
+    chapters, deletes, writes the grouped ones; asserts the raw count first; no
+    `catalog.py` entry). Same `RestatedChapterHeading` and local-`ruff` cautions
+    as the Gleanings build. **The trap (bit the Enchiridion, #1349):** an NPNF
+    section body OPENS with its own running title, `<p>Chapter N.—<title>.</p>`,
+    so wrapping it in an `<h3>` of the same title renders EVERY sub-heading
+    twice. `RestatedChapterHeadingTests` only checks a chapter's *first* block
+    against the chapter title, so it never sees the internal repeats — strip that
+    leading title paragraph per section before concatenating, and eyeball the
+    rendered sub-structure, not just the gates. *(2026-09)*
 - **CCEL two-level section numbering** (`<work>.i.ii.html` = part i, chapter ii).
   The `toc_sections` pattern matched only single-segment `<work>.iii.html`, so a
   parts-divided work imported as 1 chapter. Regex now allows one-or-more dotted
@@ -514,6 +531,31 @@ dropped; chapters under 120 words are dropped as stubs.
   ("twentyone"→"twenty-one"). Scan for merges with a "digit-word glued to
   [a-z]" regex, but hand-filter — "eighteenth"/"understand" are real words.
   *(2026-07)*
+- **A heavily-damaged Archive scan can need HUNDREDS of OCR fixes, and the
+  standard `[A-Za-z]*[a-z][A-Z]` mixed-case scan MISSES whole classes.** Crowther's
+  1855 Niger journal (`journalofexpedit00crow`) needed ~350: a stray `^` caret
+  sprinkled into words, `r` read as an apostrophe (`fi'om`→from, straight AND
+  curly), `h` read as `li` (`witli`→with, `tlie`→the ×17), `w` read as `Av`
+  (`Avas`→was), `E`/`Il` read for `R`/`H` in names, and hyphen-split words.
+  **Verify cleanup with a spellcheck scan against `/usr/share/dict/web2`, and do
+  NOT exclude capitalized tokens** — the `Av…`/`Il…`/`E…`-prefixed garbles wear a
+  spurious capital and masquerade as proper nouns, so a scan that skips
+  capitalized words reports "pristine" while dozens remain. web2 lacks many
+  inflections/British spellings (feet, replied, favour), so filter those, and an
+  OCR-aware corrector (try `li→h`, `rn→m`, `di→h`, `ii→n`… and keep any single
+  edit that yields a web2 word) auto-resolves the bulk; hand-resolve the rest
+  from context. **Best signal a capitalized garble is real:** its correct twin
+  dominates the same text (`Hamaruwa` ×37 vs `Ilamaruwa` ×7). **The `w`→`Av`
+  class needs a sentence-aware fix** (the capital A is spurious, so capitalise the
+  result only when it opens a sentence), not a case-preserving word map.
+  **A residue of mis-scanned foreign PROPER NOUNS is left faithful to the print**
+  — "correcting" a transliterated place name without a gazetteer invents. For a
+  book the importer can't chapter at all, this lives in a `build_<name>` command
+  (the anthology pattern below): reuse `import_archive`'s `_reflow`, split at
+  verified anchors, hold the fix tables as module constants there rather than
+  bloating `corrections.py`, and wrap the body in `clean_fragment(...)` before
+  `settled_chapter_body`. Estimate generously and say so early — this scan was
+  under-called twice. *(journal-of-an-expedition-up-the-niger, 2026-09)*
 - **A Victorian edition's quotation marks OCR as guillemets `« »`.** The Patmore
   Bernard scanned every quote as `«`/`»` (22 of them) — a mark that never occurs
   legitimately in English, so map the pair to curly quotes in `corrections.py`
@@ -803,9 +845,13 @@ The whole book is ONE page; hazards worth knowing before reusing it:
     phantom chapters.** The funding statement, source description and
     "Electronic Edition" title block are all set in `<h3>` like a chapter. The
     book proper begins at the first inlined print-page anchor
-    (`<a name="allen3"> Page 3</a>`) and ends at `<!-- footer inside begins -->`;
-    cut to that window first. Decompose the `<a name>` anchors (they carry the
-    visible "Page N" text) and the illustration `<img>`s.
+    (`<a name="allen3"> Page 3</a>`) and ends at docsouth's per-book nav block
+    `<div class="links">` (the "Return to Menu Page…" links) — cut at that OR
+    `<!-- footer inside begins -->`, WHICHEVER COMES FIRST. The links div sits
+    just before the footer comment, so cutting only at the comment leaks four
+    nav lines into the last chapter (shipped that way in Allen's book, fixed in
+    #1330). Decompose the `<a name>` anchors (they carry the visible "Page N"
+    text) and the illustration `<img>`s.
   - **Split on `<h3>` at the STRING level, not by walking BeautifulSoup
     siblings.** The centred summary sub-headings are malformed
     (`<P align="center">…</P></P></FONT>`), and lxml reparents later headings
@@ -835,6 +881,17 @@ The whole book is ONE page; hazards worth knowing before reusing it:
   - Quote style: docsouth is uniformly STRAIGHT-quoted, which `QuoteStyleTests`
     (consistency, not curly) leaves alone — so keep titles/descriptions straight
     too rather than normalising.
+  - **Fixing an ALREADY-SHIPPED book with an importer change does NOT reach
+    prod.** The importer + fixture fix only helps fresh installs — `seed_books`
+    never rewrites an existing book's chapters (backend/CLAUDE.md). The Allen
+    footer-nav fix (#1330: importer + fixture) deployed and left the live last
+    chapter unchanged; it took a one-time `BODY_CORRECTIONS` replacement (#1336)
+    to backfill the stale prod row. Prefer a correction over a hand-written
+    migration for a body-text edit: `apply_body_corrections` runs it through
+    `save()` every deploy, re-deriving `body_text`/`word_count`/`search_vector`
+    (no manual column bookkeeping), and it no-ops on the already-fixed fixture.
+    Confirm `stale.replace(old, "") == fixed_fixture_body` exactly so prod and
+    fresh installs converge.
 
 ## Two kinds of fix
 
