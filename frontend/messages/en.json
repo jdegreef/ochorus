@@ -221,6 +221,8 @@
   "auth_err_signup_disabled": "New accounts are not being created just now.",
   "auth_err_not_configured": "Sign-in is not configured yet.",
   "login_welcome_back": "Welcome back",
+  "home_welcome_back": "Welcome back",
+  "home_welcome_back_named": "Welcome back, {name}",
   "login_signup_title": "Create your account",
   "login_reset_title": "Reset your password",
   "login_sync_note": "Sync your reading — highlights, notes, and place — across devices.",

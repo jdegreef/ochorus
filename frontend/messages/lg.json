@@ -221,6 +221,8 @@
   "auth_err_signup_disabled": "Akawunti empya tezikolebwa kaakano.",
   "auth_err_not_configured": "Okuyingira tekunnateekebwateekebwa.",
   "login_welcome_back": "Tukwanirizza nate",
+  "home_welcome_back": "Tukwanirizza nate",
+  "home_welcome_back_named": "Tukwanirizza nate, {name}",
   "login_signup_title": "Kola akaunti yo",
   "login_reset_title": "Zzaawo ekigambo kyo eky’ekyama",
   "login_sync_note": "Kwataganya okusoma kwo — obubonero, ebiwandiiko, n’aw’otuuse — ku byuma byonna.",

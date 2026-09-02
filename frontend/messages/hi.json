@@ -221,6 +221,8 @@
   "auth_err_signup_disabled": "अभी नए खाते नहीं बनाए जा रहे हैं।",
   "auth_err_not_configured": "साइन इन अभी कॉन्फ़िगर नहीं किया गया है।",
   "login_welcome_back": "वापसी पर स्वागत है",
+  "home_welcome_back": "वापसी पर स्वागत है",
+  "home_welcome_back_named": "वापसी पर स्वागत है, {name}",
   "login_signup_title": "अपना खाता बनाएँ",
   "login_reset_title": "अपना पासवर्ड रीसेट करें",
   "login_sync_note": "अपने पठन को — हाइलाइट, टिप्पणियाँ और जगह — सभी उपकरणों पर सिंक करें।",

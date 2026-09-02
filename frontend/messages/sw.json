@@ -221,6 +221,8 @@
   "auth_err_signup_disabled": "Akaunti mpya hazifunguliwi kwa sasa.",
   "auth_err_not_configured": "Kuingia bado hakujasanidiwa.",
   "login_welcome_back": "Karibu tena",
+  "home_welcome_back": "Karibu tena",
+  "home_welcome_back_named": "Karibu tena, {name}",
   "login_signup_title": "Fungua akaunti yako",
   "login_reset_title": "Weka upya nywila yako",
   "login_sync_note": "Sawazisha usomaji wako — misisitizo, madokezo na mahali ulipofikia — kati ya vifaa.",

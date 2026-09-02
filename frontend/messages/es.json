@@ -221,6 +221,8 @@
   "auth_err_signup_disabled": "Por ahora no se están creando cuentas nuevas.",
   "auth_err_not_configured": "El inicio de sesión aún no está configurado.",
   "login_welcome_back": "Bienvenido de nuevo",
+  "home_welcome_back": "Bienvenido de nuevo",
+  "home_welcome_back_named": "Bienvenido de nuevo, {name}",
   "login_signup_title": "Crea tu cuenta",
   "login_reset_title": "Restablece tu contraseña",
   "login_sync_note": "Sincroniza tu lectura — subrayados, notas y punto de lectura — entre dispositivos.",
