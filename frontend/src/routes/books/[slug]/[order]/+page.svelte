@@ -119,11 +119,40 @@
 	// also read `bookForProgress`, so that fetch's async write re-ran the effect
 	// and snapped `chapterFrac` back to 0 *after* the position had been restored,
 	// jumping the progress footer/scrubber to page 1.
+	// --- Finishing a chapter ---------------------------------------------------
+	// Reaching the end of a chapter is a small milestone; mark it once, with a
+	// brief haptic and a gentle pulse of the "Next chapter" button, so finishing
+	// feels like an arrival rather than passing silently. Respects
+	// prefers-reduced-motion (no motion, no buzz). Gated once per chapter, and
+	// only after a settling window (below) so it fires on READING to the end, not
+	// on the restore-scroll that reopening lands at the saved position.
+	let chapterCelebrated = false;
+	let chapterOpenedAt = 0;
+	let celebrate = $state(false);
+	const reduceMotion = browser ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+
 	$effect(() => {
 		void slug;
 		void chapter.order;
 		chapterFrac = 0;
+		chapterCelebrated = false;
+		celebrate = false;
+		chapterOpenedAt = performance.now();
 	});
+
+	function markChapterComplete() {
+		if (chapterCelebrated) return;
+		// The restore-scroll settles to the saved position — possibly the chapter's
+		// end — shortly after open, and (via scrollIntoView/scrollBy) it emits the
+		// scroll events onScroll listens to. This window ignores that settle, so
+		// reopening a chapter you'd read to the bottom of doesn't re-congratulate
+		// you; genuine reading reaches the end well after it.
+		if (performance.now() - chapterOpenedAt < 1500) return;
+		chapterCelebrated = true;
+		if (reduceMotion?.matches) return;
+		navigator.vibrate?.(12);
+		celebrate = true;
+	}
 
 	// Fetch the book once per (slug, language) for the book-level progress
 	// figures. It must NOT read `bookForProgress` — setting it would otherwise
@@ -343,6 +372,9 @@
 		if (save) {
 			topIndex = firstIndexOnPage(pageIndex);
 			saveScrollAnchor(slug, chapter.order, topIndex);
+			// Paging to the last page = reached the end. `save` is false on the
+			// initial restore, so opening mid-chapter at the last page doesn't fire.
+			if (pageIndex >= pageTotal - 1) markChapterComplete();
 		}
 	}
 
@@ -818,6 +850,10 @@
 			if (!body) return;
 			updateFraction();
 			saveScrollAnchor(slug, chapter.order, topVisibleIndex());
+			// Scrolled to the bottom of the chapter. markChapterComplete ignores the
+			// post-open settle window, so the restore-scroll landing at a saved
+			// end-of-chapter position doesn't count as finishing.
+			if (chapterFrac >= 0.999) markChapterComplete();
 		}, 250);
 	}
 
@@ -1134,12 +1170,13 @@
 			<a
 				href={chapterHref(chapter.next.order)}
 				class="btn btn-primary flex-1 flex-col items-end gap-0.5 text-end"
+				class:celebrate
 			>
 				<span class="eyebrow opacity-75">{t('reader.next')}</span>
 				<span class="text-small">{chapterName(chapter.next.order, chapter.next.title)}</span>
 			</a>
 		{:else}
-			<a href={localizeHref(`/books/${slug}`)} class="btn btn-ghost flex-1 text-center">{t('reader.backToContents')}</a>
+			<a href={localizeHref(`/books/${slug}`)} class="btn btn-ghost flex-1 text-center" class:celebrate>{t('reader.backToContents')}</a>
 		{/if}
 	</nav>
 </article>
@@ -1391,6 +1428,19 @@
 	@media (pointer: coarse) {
 		.pageturn {
 			display: none;
+		}
+	}
+
+	/* Finishing a chapter: one gentle pulse of the onward button so the arrival
+	   registers. Set only when the chapter is completed (and never under
+	   prefers-reduced-motion — the flag isn't set there). */
+	.celebrate {
+		animation: chapter-done 1.1s ease;
+	}
+	@keyframes chapter-done {
+		30% {
+			transform: scale(1.035);
+			border-color: var(--accent);
 		}
 	}
 
