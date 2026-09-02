@@ -8,6 +8,21 @@ export function readingMinutes(words: number): number {
 }
 
 /**
+ * Words a TTS voice speaks per minute at 1×. Natural speech is a good deal
+ * slower than silent reading (~200 wpm), so a listen takes longer than a read.
+ */
+const LISTEN_WPM = 155;
+
+/**
+ * Estimated listen time in whole minutes, at speed multiplier `rate` (the
+ * reader's chosen Listen speed, always a validated RATES member). Floored at 1
+ * like `readingMinutes`.
+ */
+export function listenMinutes(words: number, rate = 1): number {
+	return Math.max(1, Math.round(words / (LISTEN_WPM * rate)));
+}
+
+/**
  * Whole minutes of reading left, from a word count and how far through the
  * reader is (0-1).
  *
@@ -41,15 +56,39 @@ export function bookProgressPercent(order: number, chapterCount: number): number
  * The count is substituted into the locale's template so word order stays
  * correct per language (the number isn't always at the front).
  */
-export function readingTime(words: number): string {
-	const mins = readingMinutes(words);
-	// %n%/%h%/%m% (not {n}) so Paraglide doesn't treat these as message params.
-	if (mins < 60) return i18n.t('common.minRead').replace('%n%', String(mins));
+/**
+ * A whole-minute count as a localized "N min / H hr / H hr M min" label, via a
+ * locale key trio. Shared by readingTime and listenTime so the two format
+ * identically. %n%/%h%/%m% (not {n}) so Paraglide doesn't treat these as params.
+ */
+function durationLabel(mins: number, keys: { min: string; hr: string; hrMin: string }): string {
+	if (mins < 60) return i18n.t(keys.min).replace('%n%', String(mins));
 	const h = Math.floor(mins / 60);
 	const m = mins % 60;
 	return m
-		? i18n.t('common.hrMinRead').replace('%h%', String(h)).replace('%m%', String(m))
-		: i18n.t('common.hrRead').replace('%h%', String(h));
+		? i18n.t(keys.hrMin).replace('%h%', String(h)).replace('%m%', String(m))
+		: i18n.t(keys.hr).replace('%h%', String(h));
+}
+
+export function readingTime(words: number): string {
+	return durationLabel(readingMinutes(words), {
+		min: 'common.minRead',
+		hr: 'common.hrRead',
+		hrMin: 'common.hrMinRead'
+	});
+}
+
+/**
+ * Localized listen-time label, e.g. "12 min listen" — the audio counterpart of
+ * `readingTime`, at the reader's chosen `rate`. Same %n%/%h%/%m% templating so
+ * word order stays correct per language.
+ */
+export function listenTime(words: number, rate = 1): string {
+	return durationLabel(listenMinutes(words, rate), {
+		min: 'common.minListen',
+		hr: 'common.hrListen',
+		hrMin: 'common.hrMinListen'
+	});
 }
 
 /**
