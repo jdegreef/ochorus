@@ -4,7 +4,8 @@
 	import { getLang } from '$lib/lang.svelte';
 	import { createLimiter } from '$lib/limiter';
 	import { i18n } from '$lib/i18n.svelte';
-	import { highlightAround } from '$lib/highlight';
+	import { escapeHtml, windowAt } from '$lib/highlight';
+	import { normalizeForSearch, firstMatchSpan } from '$lib/searchNormalize';
 	import { chapterLabel } from '$lib/reading';
 	import { localizeHref } from '$lib/href';
 	import { scopedSearchHref } from '$lib/searchState';
@@ -17,12 +18,13 @@
 	 * to the matching paragraph via ?p=, the same anchor bookmarks and highlights
 	 * use.
 	 *
-	 * It matches **literal substrings**, which is what makes it work offline and
-	 * land on the exact paragraph — but it means "praying" does not find
-	 * "prayer". So every state offers the way up to the server's search of the
-	 * same book (`/search?in=book:…`), which stems and ranks; from there one
-	 * click widens to the whole library. Device → book → library, and the reader
-	 * can always see which rung they are on.
+	 * Matching is normalized: text and query are folded (case + diacritics +
+	 * curly quotes), and for ENGLISH books each word is Porter-stemmed, so
+	 * "promise" finds "promises" and "prayers" finds "prayer". Different roots
+	 * ("praying" ↔ "prayer") still don't fold — so every state offers the way up
+	 * to the server's search of the same book (`/search?in=book:…`), which stems
+	 * cross-root and ranks; from there one click widens to the whole library.
+	 * Device → book → library, and the reader can always see which rung they're on.
 	 */
 	let {
 		slug,
@@ -34,7 +36,9 @@
 
 	const t = i18n.t;
 
-	type Para = { order: number; title: string; p: number; text: string };
+	// `norm` is the fold-/stem-normalized text the query matches against; `text`
+	// stays raw for the snippet, so the highlight marks the real word.
+	type Para = { order: number; title: string; p: number; text: string; norm: string };
 	type Hit = { order: number; title: string; p: number; snippet: string };
 
 	let input = $state<HTMLInputElement>();
@@ -43,23 +47,34 @@
 	let indexed = $state<Para[]>([]);
 	let indexedSlug = '';
 	let indexing = $state(false);
+	// Stem only English content (Porter's rules would mangle other scripts).
+	let indexEnglish = $state(false);
 
 	let query = $state('');
 	const MAX_RESULTS = 80;
 
+	/** Snippet for a hit: a window around the literal match, or — when the match
+	 *  was found only after normalization — around the actual inflected word. */
+	function snippetFor(text: string, q: string): string {
+		const lit = text.toLowerCase().indexOf(q.toLowerCase());
+		if (lit >= 0) return windowAt(text, lit, q.length);
+		const span = firstMatchSpan(text, q, indexEnglish);
+		return span ? windowAt(text, span[0], span[1]) : escapeHtml(text.slice(0, 140));
+	}
+
 	const results = $derived.by<Hit[]>(() => {
 		const q = query.trim();
 		if (q.length < 2) return [];
-		const needle = q.toLowerCase();
+		const needle = normalizeForSearch(q, indexEnglish);
 		const hits: Hit[] = [];
 		for (const para of indexed) {
-			if (para.text.toLowerCase().includes(needle)) {
+			if (para.norm.includes(needle)) {
 				hits.push({
-				order: para.order,
-				title: para.title,
-				p: para.p,
-				snippet: highlightAround(para.text, q)
-			});
+					order: para.order,
+					title: para.title,
+					p: para.p,
+					snippet: snippetFor(para.text, q)
+				});
 				if (hits.length >= MAX_RESULTS) break;
 			}
 		}
@@ -77,6 +92,9 @@
 		const lang = getLang();
 		try {
 			const book = await getBook(slug, lang);
+			// Porter-stem only English editions (incl. en-modern); other scripts
+			// are folded but never suffix-stripped.
+			indexEnglish = (book.language || lang).startsWith('en');
 			// Gated at six. An unbounded Promise.all fired one request per
 			// chapter at once — 39 for Mawe ya Kukanyagia — from a drawer a
 			// reader opens casually. That exceeds the browser's own connection
@@ -98,7 +116,14 @@
 				div.innerHTML = ch.html;
 				[...div.children].forEach((el, p) => {
 					const text = (el.textContent ?? '').replace(/\s+/g, ' ').trim();
-					if (text) paras.push({ order: ch.order, title: ch.title, p, text });
+					if (text)
+						paras.push({
+							order: ch.order,
+							title: ch.title,
+							p,
+							text,
+							norm: normalizeForSearch(text, indexEnglish)
+						});
 				});
 			}
 			indexed = paras;
@@ -193,9 +218,9 @@
 			{/if}
 
 			<!-- The way up. Shown alongside hits as well as instead of them: this
-			     search matches literal substrings, so a short list is not proof
-			     there is nothing more — "praying" simply doesn't find "prayer"
-			     here, and does one rung up. -->
+			     search folds inflections of one root but not across roots, so a
+			     short list is not proof there is nothing more — "praying" still
+			     doesn't find "prayer" here, and does one rung up. -->
 			{#if query.trim().length >= 2 && !indexing}
 				<a
 					href={localizeHref(scopedSearchHref('book', slug, query))}
