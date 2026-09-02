@@ -535,6 +535,19 @@
 		letter-spacing: -0.018em;
 		font-weight: 600;
 	}
+	/* The translucent bar docked to the bottom of the reader. The Listen
+	   controls and the missing-voice notice are mutually-exclusive states of the
+	   same feature and share this glass chrome — keep the look in one place so a
+	   legibility fix is one edit, not a hunt. */
+	.reader-dock {
+		position: fixed;
+		inset-inline: 0;
+		bottom: 0;
+		z-index: 40;
+		border-top: 1px solid var(--border);
+		background: color-mix(in srgb, var(--surface) 92%, transparent);
+		backdrop-filter: blur(8px);
+	}
 	/* A soft, devotional button. */
 	.btn {
 		display: inline-flex;
@@ -732,7 +745,7 @@ article:not(.paged) .reading > p:first-of-type:not(:lang(ar)):not(:lang(hi))::fi
 	footer,
 	.skip-link,
 	.progress-foot,
-	.listen-bar,
+	.reader-dock,
 	.pageturn,
 	.selbar,
 	.toc-panel,

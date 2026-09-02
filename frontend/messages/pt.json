@@ -126,6 +126,7 @@
   "reader_speed": "Velocidade",
   "reader_voice": "Voz",
   "reader_stop_listening": "Parar de ouvir",
+  "reader_listen_no_voice": "Este dispositivo não tem nenhuma voz instalada para este idioma, por isso não há nada para ler em voz alta. Você pode adicionar uma nas configurações de voz do seu dispositivo.",
   "reader_sleep_timer": "Temporizador",
   "reader_layout": "Disposição",
   "reader_layout_scroll": "Rolagem",

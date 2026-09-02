@@ -12,11 +12,16 @@
 -->
 <script lang="ts">
 	import DefinePopover from '$lib/components/DefinePopover.svelte';
+	import Icon from '$lib/components/Icon.svelte';
 	import ListenBar from '$lib/components/ListenBar.svelte';
 	import NoteDialog from '$lib/components/NoteDialog.svelte';
 	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
 	import SelectionBar from '$lib/components/SelectionBar.svelte';
+	import { i18n } from '$lib/i18n.svelte';
+	import { listen } from '$lib/listen.svelte';
 	import type { ReaderText } from '$lib/readerText.svelte';
+
+	const t = i18n.t;
 
 	let {
 		reader,
@@ -53,6 +58,22 @@
 <DefinePopover />
 <ListenBar />
 
+{#if listen.noVoice}
+	<!-- The listener tapped Listen but no voice the reader would speak with
+	     resolves for this edition, so playback would be silent — say so instead
+	     of failing quietly. -->
+	<div class="reader-dock listen-notice" role="status">
+		<span class="min-w-0 text-small">{t('reader.listenNoVoice')}</span>
+		<button
+			class="btn btn-icon btn-ghost shrink-0"
+			onclick={() => listen.dismissNoVoice()}
+			aria-label={t('a11y.close')}
+		>
+			<Icon name="close" size={16} />
+		</button>
+	</div>
+{/if}
+
 {#if reader.open}
 	<NoteDialog
 		bind:text={reader.draft}
@@ -63,3 +84,17 @@
 		onClose={reader.close}
 	/>
 {/if}
+
+<style>
+	/* Dock chrome (fixed, glass, border) comes from `.reader-dock` in app.css;
+	   these are the notice's own inline layout and padding. */
+	.listen-notice {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		max-width: 48rem;
+		margin-inline: auto;
+		padding: 0.625rem 1rem;
+		padding-bottom: calc(0.625rem + env(safe-area-inset-bottom));
+	}
+</style>

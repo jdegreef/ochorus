@@ -40,7 +40,7 @@
 </script>
 
 {#if listen.status !== 'idle'}
-	<div class="listen-bar" role="region" aria-label={t('reader.listen')} bind:this={barEl}>
+	<div class="reader-dock listen-bar" role="region" aria-label={t('reader.listen')} bind:this={barEl}>
 		<div class="mx-auto flex max-w-3xl items-center gap-2 px-4 py-2.5">
 			<button
 				class="btn btn-sm btn-primary rounded-full"
@@ -95,14 +95,9 @@
 {/if}
 
 <style>
+	/* Chrome (fixed dock, glass, border) comes from `.reader-dock` in app.css;
+	   only the safe-area inset is the bar's own. */
 	.listen-bar {
-		position: fixed;
-		inset-inline: 0;
-		bottom: 0;
-		z-index: 40;
 		padding-bottom: env(safe-area-inset-bottom);
-		border-top: 1px solid var(--border);
-		background: color-mix(in srgb, var(--surface) 92%, transparent);
-		backdrop-filter: blur(8px);
 	}
 </style>
