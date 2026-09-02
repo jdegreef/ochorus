@@ -1,3 +1,8 @@
+// Rebuild marker 2026-09-02: #1320 added Augustine's Enchiridion (11 thematic
+// chapters). The book's first deploy lost the prerender race — the web build
+// enumerated /books before the API's seed_books created the row, so the page
+// baked as the 5.7 KB SPA shell (empty <title>). The API is confirmed live with
+// the book; this frontend touch forces one more web build to prerender it.
 // Rebuild marker 2026-08-28: #1185 gave Purpose in Prayer's thirteen chapters
 // editorial titles. Unlike the markers below, the page was NOT the SPA shell —
 // it prerendered fine when the book shipped, but that build predates #1185, so
