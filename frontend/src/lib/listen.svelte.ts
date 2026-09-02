@@ -66,6 +66,10 @@ class Listen {
 	#paragraphs: string[] = [];
 	#lang = 'en';
 	#media: { title: string; artist?: string } | null = null;
+	// Called once when playback runs off the end of the paragraphs on its own —
+	// NOT on a user stop or a navigation. The book reader uses it to roll into
+	// the next chapter. Held per start() and cleared by stop().
+	#onFinish: (() => void) | null = null;
 	#mediaBound = false;
 	#sleepTimer: ReturnType<typeof setTimeout> | null = null;
 	// Keep a reference to the active utterance — Chrome garbage-collects it
@@ -157,7 +161,13 @@ class Listen {
 	 * Begin reading `paragraphs` (plain text, in order) from `startAt`. `media`
 	 * populates the OS Media Session (lock-screen / background controls).
 	 */
-	start(paragraphs: string[], startAt = 0, lang = 'en', media?: { title: string; artist?: string }) {
+	start(
+		paragraphs: string[],
+		startAt = 0,
+		lang = 'en',
+		media?: { title: string; artist?: string },
+		onFinish?: () => void
+	) {
 		if (!this.supported) return;
 		this.init();
 		// If the engine has loaded voices but none the reader would actually speak
@@ -177,6 +187,7 @@ class Listen {
 		this.#lang = lang;
 		this.total = paragraphs.length;
 		this.#media = media ?? null;
+		this.#onFinish = onFinish ?? null; // after stop(), which clears it
 		this.#setupMedia();
 		this.#speakFrom(Math.max(0, Math.min(startAt, paragraphs.length - 1)));
 	}
@@ -204,6 +215,9 @@ class Listen {
 		// stopping (including the stop() the reader fires on navigation) retires
 		// it, so it can't linger onto the next page.
 		this.noVoice = false;
+		// A user stop / navigation is not a natural finish — retire the callback so
+		// the end-of-chapter roll-over can't fire from a deliberate stop.
+		this.#onFinish = null;
 		this.status = 'idle';
 		this.current = -1;
 		this.#mediaState();
@@ -273,7 +287,11 @@ class Listen {
 		// Skip empty/whitespace-only blocks (images, rules) without recursing.
 		while (index < this.#paragraphs.length && !this.#paragraphs[index].trim()) index++;
 		if (index >= this.#paragraphs.length) {
+			// Reached the end on our own. Capture the finish callback before stop()
+			// clears it, then run it — it may start() the next chapter's playback.
+			const finished = this.#onFinish;
 			this.stop();
+			finished?.();
 			return;
 		}
 
