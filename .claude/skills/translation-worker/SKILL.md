@@ -156,7 +156,16 @@ worker specifics that shipped ~11 editions:
   *(`authors.json` is the one file that is NOT this format — it is `indent=2`.
   Books, sermons and `plans.json` all are.)* Copy source_url/sort_order from the
   English file; `source_type=ai_unreviewed`; `pdf_url` empty; `body_text`
-  via `library.text.html_to_text`. **Never copy `cover_url`** — it is
+  via `library.text.html_to_text`. **Set `word_count` with
+  `library.text.word_count(body_html)`, NOT `len(body_text.split())`** — the
+  canonical count tokenises `body_html` (tags→space) and a fixture row never
+  passes through `save()`, so a naive count off `body_text` disagrees and fails
+  `tests_fixture` ("N rows carry a word_count their own body_html does not
+  give"). Easiest reliable path: build the row on the DB's cloned English
+  `Sermon`/`Book` object and let `serializers.serialize(..., natural keys)`
+  emit it — the format then matches a shipped file byte-for-byte except the
+  timestamps (seed re-sets those, so set a clean `…T00:00:00Z`, don't clone the
+  DB's microsecond value). **Never copy `cover_url`** — it is
   per-language (`/covers/<lang>/<slug>.svg`), and copying the English one puts
   the English title on a translated card. Run `uv run python
   scripts/localize_covers.py <slug>` after writing the file: it draws the cover
@@ -355,7 +364,18 @@ So when the English does not say what it should:
    the editions disagreeing.
 2. **Add the repair to `corrections.BODY_CORRECTIONS`** for that slug. It is in
    the release chain (`apply_body_corrections`), so it reaches production on
-   the next deploy without a migration.
+   the next deploy without a migration. **But a declared correction now has a
+   CI gate you must satisfy in the same PR** (`tests_english_audit.LineBreak\
+   HyphenTests.test_the_fixture_is_clean`, 2026-09-02): it applies your
+   correction to the raw English fixture and fails if that changes anything —
+   i.e. the English fixture must already carry the SETTLED text. Run
+   `manage.py normalize_english_fixture --write` to bake it in, then note the
+   trap that bites next: **that command rewrites `body_html` only, and the gate
+   checks `body_text` too.** `body_text` is derived from `body_html`, so
+   re-derive it yourself for the touched rows —
+   `fields["body_text"] = library.text.html_to_text(fields["body_html"])` — and
+   re-render the file canonically, or the gate still fails on the stale
+   `body_text` half.
 3. **Check whether it already propagated.** The defect is probably in the other
    language editions too, faithfully reproduced:
    ```bash
