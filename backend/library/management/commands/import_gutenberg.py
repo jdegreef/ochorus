@@ -59,8 +59,22 @@ def fetch_html(book_id: str) -> str:
 def content_root(html: str):
     """Parse, drop PG boilerplate, return the element holding the book body."""
     # Some ebooks' license footers carry no boilerplate classes (e.g. #61883),
-    # so cut at the universal end marker before parsing.
-    html = re.split(r"\*\*\*\s*END OF THE PROJECT GUTENBERG", html, flags=re.I)[0]
+    # so cut at the universal end marker before parsing. The marker's wording
+    # varies — newer files say "END OF THE", older ones "END OF THIS" — and a
+    # miss leaves the whole licence footer in the last chapter (Unfailing
+    # Springs #57109 leaked it as its only chapter).
+    html = re.split(r"\*\*\*\s*END OF TH(?:E|IS) PROJECT GUTENBERG", html, flags=re.I)[0]
+    # Cut the header at the START marker too. Pre-2019 mirrors carry no
+    # `pgheader` class for the CSS strip below to catch, so without this the
+    # licence preamble and title page import as the book's opening — invisible
+    # on a book with real chapter headings (front matter is dropped), fatal on
+    # one without, which becomes a single chapter of pure boilerplate.
+    after = re.split(
+        r"\*\*\*\s*START OF TH(?:E|IS) PROJECT GUTENBERG[^*]*\*\*\*",
+        html, flags=re.I, maxsplit=1,
+    )
+    if len(after) > 1:
+        html = after[1]
     s = soup(html)
     for el in s.select("[class*=pg-boilerplate], [class*=pgheader], [class*=pg-footer]"):
         el.decompose()
