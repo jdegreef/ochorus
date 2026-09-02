@@ -1,0 +1,75 @@
+<script lang="ts">
+	import type { BookSummary, TopicSummary } from '$lib/library-public';
+	import { i18n } from '$lib/i18n.svelte';
+	import { auth } from '$lib/auth.svelte';
+	import ContinueReading from '$lib/components/ContinueReading.svelte';
+	import ReadingNudge from '$lib/components/ReadingNudge.svelte';
+	import TodaysReading from '$lib/components/TodaysReading.svelte';
+	import PlansProgress from '$lib/components/PlansProgress.svelte';
+	import RecommendedNext from '$lib/components/RecommendedNext.svelte';
+	import FavoritesShelf from '$lib/components/FavoritesShelf.svelte';
+	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
+	import DiscoverStrip from '$lib/components/DiscoverStrip.svelte';
+	import TopicChips from '$lib/components/TopicChips.svelte';
+
+	/**
+	 * The signed-in home: a reading dashboard, not an acquisition page. Rendered
+	 * only client-side, only for a signed-in user (see the branch in
+	 * `+page.svelte`), so it never touches the prerendered HTML the crawlers get.
+	 *
+	 * Personal-first order: resume where they left off, then their streak, plan,
+	 * recommendations and favourites — the marketing hero, mission and author
+	 * roster stay on the logged-out page. Discovery still trails the personal
+	 * blocks so a reader with no history yet has somewhere to start; each block
+	 * self-hides when it has nothing to show.
+	 */
+	// The dashboard never shows the author roster (that lives on the marketing
+	// page), so it takes a narrower slice of the page data than HomeMarketing.
+	interface HomeData {
+		books: BookSummary[];
+		featured: BookSummary[];
+		topics?: TopicSummary[];
+	}
+	let { data }: { data: HomeData } = $props();
+
+	const featured = $derived<BookSummary[]>(data.featured);
+	const topics = $derived<TopicSummary[]>(data.topics ?? []);
+
+	const t = i18n.t;
+
+	// The display name if the reader set one, else the local part of their email
+	// (never the full address — a greeting is not the place to print it). The
+	// whole clause is dropped when we have neither, leaving a bare "Welcome back".
+	const greetingName = $derived(auth.displayName || (auth.user?.email?.split('@')[0] ?? ''));
+</script>
+
+<section class="page-col px-5 pt-10 sm:pt-14">
+	<h1 class="text-h1">
+		{t('login.welcomeBack')}{greetingName ? `, ${greetingName}` : ''}
+	</h1>
+</section>
+
+<!-- Resume first: the one thing a returning reader most likely came back to do.
+     Promoted above every other block, full width, with deep-link resume. -->
+<ContinueReading books={data.books} />
+<ReadingNudge />
+
+<!-- Today's plan day, then multi-plan progress -->
+<TodaysReading />
+<PlansProgress />
+
+<!-- Personalised discovery — self-hides until there is history to score against -->
+<RecommendedNext books={data.books} />
+
+<!-- Saved items -->
+<FavoritesShelf />
+
+<!-- Generic discovery for a reader with little history yet (RecommendedNext
+     above self-hides without one). Same six-book strip as the logged-out page. -->
+<DiscoverStrip books={featured} />
+
+<SermonOfTheWeek />
+
+<!-- Browse by topic — the last block on the dashboard, so it carries the
+     trailing bottom padding. -->
+<TopicChips {topics} lastBlock />
