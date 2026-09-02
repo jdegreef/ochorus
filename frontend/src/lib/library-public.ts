@@ -71,6 +71,25 @@ export interface TopicChip {
 	title: string;
 }
 
+/** How a person relates to a book they are named in but did not write. */
+export type PersonRole = 'featured' | 'subject' | 'mentioned';
+
+/**
+ * A person FOUND IN a book who has a bio of their own — the book detail page
+ * links out to their author page. Language-gated server-side: only people with a
+ * bio in this edition's language appear, so the list is never a dead link.
+ */
+export interface FeaturedPerson {
+	slug: string;
+	name: string;
+	photo_url: string;
+	birth_year: number | null;
+	death_year: number | null;
+	/** Curated relationship to the book. Carried for a UI that phrases it ("the
+	 * subject of", "mentioned in"); the reader doesn't render it yet. */
+	role: PersonRole;
+}
+
 /** Relative reading-difficulty badge, computed server-side; null = unjudged. */
 export type Difficulty = 'accessible' | 'moderate' | 'advanced' | null;
 
@@ -122,6 +141,13 @@ export interface BookDetail extends BookSummary {
 	 * (CC0), so this is courtesy rather than obligation — and provenance a
 	 * reader can check. */
 	artwork_credit: string | null;
+	/**
+	 * People found IN this work who have a bio of their own (not its author) —
+	 * links to their author pages, in curated order. Optional so an API running
+	 * behind this build simply renders no section; already language-gated, so
+	 * every entry is a live link.
+	 */
+	featured_people?: FeaturedPerson[];
 }
 
 export interface ChapterNav {
@@ -361,12 +387,23 @@ export const formatLifespan = (
 	bornLabel: string
 ): string => (!birth ? '' : death ? `${birth}–${death}` : `${bornLabel} ${birth}`);
 
+/** A book this person is found IN but did not write, with the role they play. */
+export interface AppearsInBook extends BookSummary {
+	role: PersonRole;
+}
+
 export interface AuthorDetail extends AuthorBio {
 	bio_html: string;
 	books: BookSummary[];
 	sermons: SermonSummary[];
 	/** Topical shelves this author appears in (via their books/sermons). */
 	topics: TopicChip[];
+	/**
+	 * Books this person is found IN but did not write (the reverse of a book's
+	 * featured_people) — books they wrote are under `books`. Optional so an API
+	 * running behind this build simply renders no section.
+	 */
+	appears_in?: AppearsInBook[];
 	/** How many REVIEWED quotations this author has; 0 means no quote page. */
 	quote_count?: number;
 	/**

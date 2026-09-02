@@ -9,6 +9,7 @@ from .models import (
     SERMON_CARD_DEFER,
     Author,
     Book,
+    BookPerson,
     Chapter,
     Plan,
     PlanDay,
@@ -389,6 +390,9 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
     topics = serializers.SerializerMethodField()
     bio = serializers.SerializerMethodField()
     bio_html = serializers.SerializerMethodField()
+    # Books this person is FOUND IN but did not write (BookPerson) — the reverse
+    # of BookDetailSerializer.featured_people, so a bio can offer "appears in".
+    appears_in = serializers.SerializerMethodField()
 
     # Present so AuthorDetail honours the AuthorBio contract the list shares;
     # the detail page already has the full sermons array + bio_html, so these
@@ -401,7 +405,7 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
         fields = [
             "slug", "name", "bio", "bio_html", "photo_url", "birth_year",
             "death_year", "book_count", "sermon_count", "has_long_bio",
-            "books", "sermons", "topics",
+            "books", "sermons", "topics", "appears_in",
             # Authoritative identifiers for the Person markup — see the field.
             # Only the DETAIL serializer carries them: a card never emits
             # Person markup, so shipping them on every book row would be bytes
@@ -550,6 +554,42 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
         to the themes their work sits under (cross-navigation into browse)."""
         return self._topic_pass(obj)[0]
 
+    def get_appears_in(self, obj):
+        """The books this person is found IN but did not write (BookPerson) —
+        book cards, each carrying the ``role`` they play, so the bio can link
+        out to those works. Published books in this language only (no English
+        fallback), and a book they actually wrote is left out: it's already in
+        ``books``, and showing it twice would read as a bug.
+
+        Inline (not via ``_cached``): unlike books/sermons/topics, one field
+        reads this set, so there's nothing to share it with."""
+        lang = self._language()
+        # Ordered by the person's curated BookPerson.sort_order (the model's
+        # Meta ordering), so their appearances show in the order a curator set —
+        # the reverse of featured_people honoring the same field.
+        rows = list(obj.featured_in_books.all())
+        if not rows:
+            return []
+        roles = {r.book_slug: r.role for r in rows}
+        order = {r.book_slug: i for i, r in enumerate(rows)}
+        books = (
+            Book.objects.filter(slug__in=roles.keys(), is_published=True, language=lang)
+            .exclude(author=obj)
+            .select_related("author")
+            .prefetch_related("author__translations")
+            .annotate(**BOOK_CARD_ANNOTATIONS)
+        )
+        # Empty book_topics so BookListSerializer doesn't scan the whole topic
+        # set again for this secondary section — the author's own book cards
+        # already paid for one such walk (get_books). No topic chips on the
+        # "appears in" cards is a fair price for not doubling that query.
+        ctx = {**self.context, "book_topics": {}}
+        data = BookListSerializer(books, many=True, context=ctx).data
+        for card in data:
+            card["role"] = roles.get(card["slug"])
+        data.sort(key=lambda c: order.get(c["slug"], 0))
+        return data
+
 
 class ChapterTocSerializer(serializers.ModelSerializer):
     """A chapter's metadata for the table of contents (no body)."""
@@ -592,6 +632,10 @@ class BookDetailSerializer(BookListSerializer):
     # Detail only, and it is the one field here that reads chapter BODIES, so a
     # shelf carrying it would drag 130 books' HTML through the join.
     opening = serializers.SerializerMethodField()
+    # The people found IN this work who have a bio of their own (BookPerson) —
+    # chips linking to their author pages. Localized: only people with a bio in
+    # THIS edition's language are shown, the usual no-English-fallback rule.
+    featured_people = serializers.SerializerMethodField()
 
     def get_author_same_as(self, obj):
         return obj.author.same_as or []
@@ -605,6 +649,38 @@ class BookDetailSerializer(BookListSerializer):
         )
         text, chapter = opening_excerpt(list(chapters))
         return {"text": text, "chapter": chapter} if text else None
+
+    def get_featured_people(self, obj) -> list[dict]:
+        """The bios of people found in this work — {slug, name, photo_url,
+        role}, in ``BookPerson.sort_order``. Language-gated: a person with no
+        bio in this edition's language has nothing to link to here, so they're
+        omitted (like an untranslated topic chip).
+
+        ``role`` is carried for a UI that phrases the relationship ("the subject
+        of", "mentioned in"); the reader doesn't render it yet, so it's the
+        curated data made available, not a live label — see BookPerson."""
+        lang = obj.language
+        rows = (
+            BookPerson.objects.filter(book_slug=obj.slug)
+            .select_related("person")
+            .prefetch_related("person__translations")
+        )
+        out = []
+        for row in rows:
+            person = row.person
+            if not person.has_bio_in(lang):
+                continue
+            out.append(
+                {
+                    "slug": person.slug,
+                    "name": person.name,
+                    "photo_url": person.photo_url,
+                    "birth_year": person.birth_year,
+                    "death_year": person.death_year,
+                    "role": row.role,
+                }
+            )
+        return out
 
     def get_scripture(self, obj) -> list[dict]:
         # English only. The citation index is built from English bodies
@@ -629,6 +705,7 @@ class BookDetailSerializer(BookListSerializer):
             "difficulty", "is_modern_edition", "has_modern_edition",
             "available_languages", "artwork_credit", "author_same_as",
             "alternate_titles", "about_html", "scripture", "opening",
+            "featured_people",
         ]
 
     def get_available_languages(self, obj):

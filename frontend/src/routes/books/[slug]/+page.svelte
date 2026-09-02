@@ -10,6 +10,7 @@
 	import { localizeHref } from '$lib/href';
 	import { scopedSearchHref } from '$lib/searchState';
 	import BookCard from '$lib/components/BookCard.svelte';
+	import PersonCard from '$lib/components/PersonCard.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
@@ -437,6 +438,21 @@
 			{/each}
 		</ol>
 	</section>
+
+	<!-- People found IN this work who have a bio of their own — an anthology's
+	     subjects, the figures a biography follows. Links to their author pages.
+	     Language-gated server-side (a person with no bio in this edition's
+	     language is dropped), so every card here is a live link. -->
+	{#if book.featured_people?.length}
+		<section class="mt-12">
+			<h2 class="mb-4 text-h3">{t('book.peopleInBook')}</h2>
+			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
+				{#each book.featured_people as person (person.slug)}
+					<PersonCard {person} />
+				{/each}
+			</div>
+		</section>
+	{/if}
 
 	{#if book.related?.length}
 		<section class="mt-12">

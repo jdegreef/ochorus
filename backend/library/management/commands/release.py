@@ -58,6 +58,11 @@ class Command(BaseCommand):
         # Create/refresh the curated topical shelves.
         self.stdout.write("→ seed_topics")
         call_command("seed_topics")
+        # Link books to the bios of people found in them. After seed_topics and
+        # the author-translation seed for symmetry with the other membership
+        # seeds; tolerant of a person whose bio hasn't landed yet.
+        self.stdout.write("→ seed_book_people")
+        call_command("seed_book_people")
         # Curated quotations. After the book and sermon seeds, because a quote
         # is stored against the chapter or sermon it came from and is skipped
         # rather than stored unsourced when that work is not installed yet.

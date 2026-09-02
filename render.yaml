@@ -98,6 +98,7 @@ services:
         # Single files, not trees: these two are Python seed modules, and a
         # `/**` over a Python package would sweep in __pycache__.
         - backend/library/topic_seed.py
+        - backend/library/book_people_seed.py
         - backend/library/plan_seed.py
         - backend/library/quote_seed.py
         # apply_body_corrections runs on EVERY deploy and rewrites chapter and
