@@ -73,10 +73,19 @@ describe('type scale', () => {
 		// subheading. Three public pages had drifted there (a topic, a
 		// biographies era, the notebook) alongside the admin surface, which is
 		// English-only, has its own header language, and is exempt.
+		//
+		// The home hero now lives in HomeMarketing.svelte (the logged-out home was
+		// split out of +page.svelte into HomeMarketing / HomeDashboard), so the
+		// exemption follows it there — it is still the one and only home hero.
 		const offenders: string[] = [];
 		for (const file of svelteFiles(SRC)) {
 			const rel = file.replace(SRC, 'src');
-			if (rel.includes('/admin/') || rel.endsWith('src/routes/+page.svelte')) continue;
+			if (
+				rel.includes('/admin/') ||
+				rel.endsWith('src/routes/+page.svelte') ||
+				rel.endsWith('src/lib/components/HomeMarketing.svelte')
+			)
+				continue;
 			const src = readFileSync(file, 'utf-8');
 			// Only markup — PageHeader's doc comment names the class on purpose.
 			for (const line of src.split('\n')) {
