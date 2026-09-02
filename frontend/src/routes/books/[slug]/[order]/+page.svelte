@@ -27,6 +27,7 @@
 		placeAfterLayout
 	} from '$lib/reading';
 	import { pageOfOffset } from '$lib/pageMath';
+	import { tapTurn, swipeTurn, dampDrag } from '$lib/pageGestures';
 	import { listen } from '$lib/listen.svelte';
 	import { define } from '$lib/define.svelte';
 	import { scripture } from '$lib/scripture.svelte';
@@ -357,6 +358,89 @@
 		}
 	}
 
+	// Elements a tap or swipe must leave alone — the reader's own interactive
+	// affordances. One list, shared by the touch-start guard and the click guard.
+	const INTERACTIVE = 'a, button, mark, input, textarea, select, .selbar, .define-pop, .scripture-pop';
+
+	// Pointer type is stable for a session — query it once, not per click.
+	const coarsePointer = browser ? window.matchMedia('(pointer: coarse)') : null;
+
+	// --- Touch swipe-to-turn (paged mode) --------------------------------------
+	// A one-finger horizontal drag follows the page with the finger and snaps on
+	// release. Touch only (mouse/desktop keeps the click zones + edge arrows), and
+	// only once the drag is clearly horizontal, so a vertical touch is left to do
+	// nothing in this fixed, non-scrolling viewport. The live offset is a `--drag`
+	// px added to the pager transform; the raw travel (not the rubber-banded one)
+	// decides the turn, so a firm swipe still rolls over to the next chapter.
+	let dragStartX = 0;
+	let dragStartY = 0;
+	let dragRawDx = 0;
+	let dragRawDy = 0;
+	let dragActive = false;
+	let dragging = $state(false);
+	// A tap that only just crossed the drag threshold can still emit a synthetic
+	// click; ignore any click within this window of a swipe so the tap-turn
+	// doesn't fire on top of it. A timestamp, not a latched flag — a real swipe
+	// emits no click at all, and a stale flag would then eat the next honest tap.
+	let lastSwipeEnd = 0;
+
+	function onTouchStart(e: TouchEvent) {
+		if (!paged || e.touches.length !== 1) return;
+		const el = e.target as HTMLElement;
+		if (el.closest(INTERACTIVE)) return;
+		dragActive = true;
+		dragging = false;
+		dragStartX = e.touches[0].clientX;
+		dragStartY = e.touches[0].clientY;
+	}
+	function onTouchMove(e: TouchEvent) {
+		if (!dragActive) return;
+		const dx = e.touches[0].clientX - dragStartX;
+		const dy = e.touches[0].clientY - dragStartY;
+		if (!dragging) {
+			if (Math.abs(dx) < 12 || Math.abs(dx) <= Math.abs(dy)) return; // not yet a page drag
+			dragging = true;
+		}
+		e.preventDefault(); // the gesture is ours now — don't also bounce the page
+		dragRawDx = dx;
+		dragRawDy = dy;
+		const damped = dampDrag(dx, pageIndex === 0, pageIndex >= pageTotal - 1, contentRtl);
+		pager?.style.setProperty('--drag', `${damped}px`);
+	}
+	function onTouchEnd() {
+		if (!dragActive) return;
+		dragActive = false;
+		if (!dragging) return;
+		const turn = swipeTurn(dragRawDx, dragRawDy, pageW, contentRtl);
+		pager?.style.setProperty('--drag', '0px'); // settle back / animate the snap
+		if (turn === 'next') turnPage(1);
+		else if (turn === 'prev') turnPage(-1);
+		dragging = false;
+		// Only a drag short enough to still register as a tap emits a synthetic
+		// click; a real (long) swipe emits none, so arming the guard for it would
+		// only eat a deliberate tap that lands within the window right after.
+		if (Math.abs(dragRawDx) < 24) lastSwipeEnd = performance.now();
+	}
+	function onTouchCancel() {
+		if (!dragActive) return;
+		dragActive = false;
+		dragging = false;
+		pager?.style.setProperty('--drag', '0px');
+	}
+
+	// touchmove has to be NON-passive so it can preventDefault — a horizontal page
+	// swipe near the screen edge would otherwise trigger the browser's own
+	// back/forward gesture. Svelte registers `ontouchmove={...}` as passive, so
+	// bind it by hand instead.
+	function swipeMove(node: HTMLElement) {
+		node.addEventListener('touchmove', onTouchMove, { passive: false });
+		return {
+			destroy() {
+				node.removeEventListener('touchmove', onTouchMove);
+			}
+		};
+	}
+
 	onMount(() => {
 		readerPrefs.init();
 		listen.init();
@@ -508,6 +592,12 @@
 		if (target) goto(chapterHref(target.order));
 	}
 
+	/** Scroll a screenful (0.85 of the viewport) — shared by the space key and the
+	 *  opt-in tap-to-page-down, so "a page" is one number in one place. */
+	function pageScroll(dir: 1 | -1) {
+		window.scrollBy({ top: dir * window.innerHeight * 0.85, behavior: 'smooth' });
+	}
+
 	/** Keyboard: ←/→ chapters (or paragraph skip while listening), space pages. */
 	function onKeydown(e: KeyboardEvent) {
 		if (e.metaKey || e.ctrlKey || e.altKey) return;
@@ -548,37 +638,43 @@
 		} else if (e.key === ' ') {
 			e.preventDefault();
 			if (paged) turnPage(e.shiftKey ? -1 : 1);
-			else
-				window.scrollBy({
-					top: (e.shiftKey ? -1 : 1) * window.innerHeight * 0.85,
-					behavior: 'smooth'
-				});
+			else pageScroll(e.shiftKey ? -1 : 1);
 		}
 	}
 
-	/** Tap a server-wrapped Bible reference → open the scripture popover. */
 	/**
-	 * Edge tap zones: in PAGED mode the outer 15% turns the page, which is the
-	 * Kindle convention and what a paginated view is for.
+	 * Tapping the page. In PAGED mode this is how you turn: on TOUCH the screen is
+	 * split in half — tap the right side to go forward, the left to go back (the
+	 * split is physical; RTL content flips which half is "next", handled in
+	 * tapTurn). On a fine pointer only the outer 15% stays live (deadZone 0.7):
+	 * there a click in the body is for selecting, and the edge arrows are the
+	 * affordance, so a half-screen click zone would fight normal clicking.
 	 *
-	 * It used to turn the CHAPTER in scroll mode too, on any coarse pointer. On a
-	 * 360px phone that is a 54px strip down each side against the article's own
-	 * 20px padding — so roughly 34px of live body text on each edge silently
-	 * threw the reader into the previous or next chapter, with no affordance
-	 * marking the zone and no way back except the browser's own Back. Scrolling
-	 * is how you move through a scrolling view; nothing about tapping the text
-	 * should change which chapter you are in.
+	 * In SCROLL mode a tap turns nothing unless the reader opted into
+	 * `tapToScroll`, and then only in the lower part of the screen, on touch —
+	 * scrolls down a screenful. This is deliberately NOT the old removed
+	 * behaviour, where an implicit edge tap in scroll mode threw a phone reader
+	 * into the previous/next CHAPTER off ~34px of live body text, unmarked and
+	 * hard to undo. Changing which page you're on is fine and reversible;
+	 * changing which chapter you're in off a stray tap is not.
 	 */
 	function onArticleClick(e: MouseEvent) {
+		// A click right on the heels of a swipe is that swipe's synthetic tap.
+		if (performance.now() - lastSwipeEnd < 400) return;
 		if (reader.onScriptureClick(e)) return;
-		if (!paged) return;
 		const el = e.target as HTMLElement;
-		if (el.closest('a, button, mark, input, textarea, select, .selbar, .define-pop, .scripture-pop')) return;
+		if (el.closest(INTERACTIVE)) return;
 		if (window.getSelection()?.toString()) return;
-		const x = e.clientX / window.innerWidth;
-		// Edge taps are physical; the page they turn to is logical.
-		if (x < 0.15) turnPage(contentRtl ? 1 : -1);
-		else if (x > 0.85) turnPage(contentRtl ? -1 : 1);
+		const coarse = coarsePointer?.matches ?? false;
+		if (paged) {
+			const turn = tapTurn(e.clientX, window.innerWidth, contentRtl, coarse ? 0 : 0.7);
+			if (turn === 'next') turnPage(1);
+			else if (turn === 'prev') turnPage(-1);
+			return;
+		}
+		if (readerPrefs.tapToScroll && coarse && e.clientY / window.innerHeight > 0.66) {
+			pageScroll(1);
+		}
 	}
 
 	// Prefetch the next chapter when the browser is idle: the plain GET flows
@@ -881,6 +977,10 @@
 	class:twocol={cols === 2}
 	style="{readerPrefs.style}; max-width: {articleMax}"
 	onclick={onArticleClick}
+	ontouchstart={onTouchStart}
+	ontouchend={onTouchEnd}
+	ontouchcancel={onTouchCancel}
+	use:swipeMove
 >
 	<!-- Breadcrumb -->
 	<nav class="mb-5 flex flex-wrap items-center gap-1.5 text-small text-muted" aria-label={t('a11y.breadcrumb')}>
@@ -916,7 +1016,7 @@
 	<!-- The pager wraps the chapter's own content (label, title, body). In scroll
 	     mode it is display:contents (no effect); in page mode it becomes the
 	     translated CSS-column content and the surrounding chrome is hidden. -->
-	<div class="pager" bind:this={pager} style="--page-w:{pageW}px; --page-idx:{pageIndex}; --cols:{cols};">
+	<div class="pager" class:dragging bind:this={pager} style="--page-w:{pageW}px; --page-idx:{pageIndex}; --cols:{cols};">
 		<p class="eyebrow mb-1 text-muted">
 			{t('continue.chapter')} {chapter.order} · {readingTime(chapter.word_count)}
 			{#if chapter.is_modern_edition}
@@ -1120,9 +1220,17 @@
 		column-width: calc(var(--page-w) / var(--cols) - 2 * var(--pgpad));
 		column-gap: calc(2 * var(--pgpad));
 		column-fill: auto;
-		/* --page-dir is 1 (LTR) or -1 (RTL): RTL pages advance rightwards. */
-		transform: translateX(calc(var(--page-dir, 1) * -1 * var(--page-idx) * var(--page-w)));
+		/* --page-dir is 1 (LTR) or -1 (RTL): RTL pages advance rightwards. --drag is
+		   the live touch offset (physical px, added straight so it follows the
+		   finger in either direction); it's 0 except mid-swipe. */
+		transform: translateX(
+			calc(var(--page-dir, 1) * -1 * var(--page-idx) * var(--page-w) + var(--drag, 0px))
+		);
 		transition: transform var(--duration-base) ease;
+	}
+	/* While the finger is down the page tracks it 1:1 — no easing to lag behind. */
+	.paged .pager.dragging {
+		transition: none;
 	}
 	/* A touch more breathing room around a two-column spread. */
 	.paged.twocol .pager {

@@ -36,14 +36,22 @@ describe('readerPrefs store', () => {
 		readerPrefs.setScale(1.4);
 		readerPrefs.setFont('dyslexic');
 		readerPrefs.setMeasure('wide');
+		readerPrefs.setTapToScroll(true);
 		readerPrefs.setPreferModern(true);
 		readerPrefs.reset();
 		expect(readerPrefs.scale).toBe(1);
 		expect(readerPrefs.font).toBe('serif');
 		expect(readerPrefs.measure).toBe('normal');
+		expect(readerPrefs.tapToScroll).toBe(false);
 		expect(readerPrefs.preferModern).toBe(false);
 		expect(stored().scale).toBe(1);
 		expect(stored().font).toBe('serif');
+	});
+
+	it('persists the tap-to-page-down default (off by default)', () => {
+		expect(readerPrefs.tapToScroll).toBe(false);
+		readerPrefs.setTapToScroll(true);
+		expect(stored().tapToScroll).toBe(true);
 	});
 
 	it('persists the prefer-Modern-English default (off by default)', () => {
