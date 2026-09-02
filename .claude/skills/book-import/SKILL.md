@@ -803,9 +803,13 @@ The whole book is ONE page; hazards worth knowing before reusing it:
     phantom chapters.** The funding statement, source description and
     "Electronic Edition" title block are all set in `<h3>` like a chapter. The
     book proper begins at the first inlined print-page anchor
-    (`<a name="allen3"> Page 3</a>`) and ends at `<!-- footer inside begins -->`;
-    cut to that window first. Decompose the `<a name>` anchors (they carry the
-    visible "Page N" text) and the illustration `<img>`s.
+    (`<a name="allen3"> Page 3</a>`) and ends at docsouth's per-book nav block
+    `<div class="links">` (the "Return to Menu Page…" links) — cut at that OR
+    `<!-- footer inside begins -->`, WHICHEVER COMES FIRST. The links div sits
+    just before the footer comment, so cutting only at the comment leaks four
+    nav lines into the last chapter (shipped that way in Allen's book, fixed in
+    #1330). Decompose the `<a name>` anchors (they carry the visible "Page N"
+    text) and the illustration `<img>`s.
   - **Split on `<h3>` at the STRING level, not by walking BeautifulSoup
     siblings.** The centred summary sub-headings are malformed
     (`<P align="center">…</P></P></FONT>`), and lxml reparents later headings
@@ -835,6 +839,17 @@ The whole book is ONE page; hazards worth knowing before reusing it:
   - Quote style: docsouth is uniformly STRAIGHT-quoted, which `QuoteStyleTests`
     (consistency, not curly) leaves alone — so keep titles/descriptions straight
     too rather than normalising.
+  - **Fixing an ALREADY-SHIPPED book with an importer change does NOT reach
+    prod.** The importer + fixture fix only helps fresh installs — `seed_books`
+    never rewrites an existing book's chapters (backend/CLAUDE.md). The Allen
+    footer-nav fix (#1330: importer + fixture) deployed and left the live last
+    chapter unchanged; it took a one-time `BODY_CORRECTIONS` replacement (#1336)
+    to backfill the stale prod row. Prefer a correction over a hand-written
+    migration for a body-text edit: `apply_body_corrections` runs it through
+    `save()` every deploy, re-deriving `body_text`/`word_count`/`search_vector`
+    (no manual column bookkeeping), and it no-ops on the already-fixed fixture.
+    Confirm `stale.replace(old, "") == fixed_fixture_body` exactly so prod and
+    fresh installs converge.
 
 ## Two kinds of fix
 
