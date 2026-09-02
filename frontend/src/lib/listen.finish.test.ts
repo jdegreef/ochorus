@@ -58,7 +58,7 @@ describe('listen onFinish (audiobook roll-over hook)', () => {
 	it('fires onFinish once when playback runs off the end', async () => {
 		const { listen, synth } = await freshListen();
 		const cb = vi.fn();
-		listen.start(['one', 'two', 'three'], 0, 'en', { title: 't' }, cb);
+		listen.start(['one', 'two', 'three'], 0, { onFinish: cb });
 		expect(listen.status).toBe('playing');
 		endParagraph(synth); // -> two
 		endParagraph(synth); // -> three
@@ -71,7 +71,7 @@ describe('listen onFinish (audiobook roll-over hook)', () => {
 	it('does not fire onFinish on a user stop mid-chapter', async () => {
 		const { listen, synth } = await freshListen();
 		const cb = vi.fn();
-		listen.start(['a', 'b', 'c', 'd'], 0, 'en', { title: 't' }, cb);
+		listen.start(['a', 'b', 'c', 'd'], 0, { onFinish: cb });
 		endParagraph(synth); // -> b
 		listen.stop();
 		expect(cb).not.toHaveBeenCalled();
@@ -81,13 +81,32 @@ describe('listen onFinish (audiobook roll-over hook)', () => {
 	it('does not carry a finish callback from a stopped run into the next', async () => {
 		const { listen, synth } = await freshListen();
 		const first = vi.fn();
-		listen.start(['a', 'b'], 0, 'en', { title: 't' }, first);
+		listen.start(['a', 'b'], 0, { onFinish: first });
 		listen.stop(); // retires `first`
 		// A second run with no callback must not resurrect the first one.
-		listen.start(['x', 'y'], 0, 'en', { title: 't' });
+		listen.start(['x', 'y'], 0, {});
 		endParagraph(synth); // -> y
 		endParagraph(synth); // -> past the end
 		expect(first).not.toHaveBeenCalled();
 		expect(listen.status).toBe('idle');
+	});
+
+	it('fires onAdvance with each paragraph index as the audio reaches it', async () => {
+		const { listen, synth } = await freshListen();
+		const seen: number[] = [];
+		listen.start(['a', 'b', 'c'], 1, { onAdvance: (i) => seen.push(i) });
+		expect(seen).toEqual([1]); // started at index 1
+		endParagraph(synth); // -> 2
+		expect(seen).toEqual([1, 2]);
+		endParagraph(synth); // past the end — no advance for a non-existent paragraph
+		expect(seen).toEqual([1, 2]);
+	});
+
+	it('does not fire onAdvance after a user stop', async () => {
+		const { listen } = await freshListen();
+		const seen: number[] = [];
+		listen.start(['a', 'b', 'c'], 0, { onAdvance: (i) => seen.push(i) });
+		listen.stop();
+		expect(seen).toEqual([0]); // only the paragraph that had begun before stop
 	});
 });

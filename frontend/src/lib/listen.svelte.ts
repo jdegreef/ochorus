@@ -42,6 +42,18 @@ interface Stored {
 	voiceURI: string;
 }
 
+export interface StartOptions {
+	/** Content language (BCP-47); decides the voice and utterance lang. */
+	lang?: string;
+	/** OS Media Session metadata (lock-screen / background controls). */
+	media?: { title: string; artist?: string };
+	/** Fires when playback runs off the end on its own — audiobook roll-over. */
+	onFinish?: () => void;
+	/** Fires as each paragraph `index` begins, driven by the audio (not a
+	 *  reactive effect) — the reader saves the resume point from it. */
+	onAdvance?: (index: number) => void;
+}
+
 function loadPrefs(): Stored {
 	const raw = readJSON<{ rate?: number; voiceURI?: unknown }>(KEY, {});
 	return {
@@ -81,6 +93,9 @@ class Listen {
 	// NOT on a user stop or a navigation. The book reader uses it to roll into
 	// the next chapter. Held per start() and cleared by stop().
 	#onFinish: (() => void) | null = null;
+	// Called as each paragraph begins (the audio drives it) — the reader saves
+	// the resume point from it. Held per start() and cleared by stop().
+	#onAdvance: ((index: number) => void) | null = null;
 	#mediaBound = false;
 	#sleepTimer: ReturnType<typeof setTimeout> | null = null;
 	// Keep a reference to the active utterance — Chrome garbage-collects it
@@ -169,16 +184,14 @@ class Listen {
 	}
 
 	/**
-	 * Begin reading `paragraphs` (plain text, in order) from `startAt`. `media`
-	 * populates the OS Media Session (lock-screen / background controls).
+	 * Begin reading `paragraphs` (plain text, in order) from `startAt`.
+	 * `opts.media` populates the OS Media Session (lock-screen / background
+	 * controls); `opts.onFinish` fires when playback runs off the end on its own
+	 * (audiobook roll-over); `opts.onAdvance(index)` fires as each paragraph
+	 * begins, driven by the audio — the reader uses it to save the resume point.
 	 */
-	start(
-		paragraphs: string[],
-		startAt = 0,
-		lang = 'en',
-		media?: { title: string; artist?: string },
-		onFinish?: () => void
-	) {
+	start(paragraphs: string[], startAt = 0, opts: StartOptions = {}) {
+		const lang = opts.lang ?? 'en';
 		if (!this.supported) return;
 		this.init();
 		// If the engine has loaded voices but none the reader would actually speak
@@ -197,8 +210,10 @@ class Listen {
 		this.#paragraphs = paragraphs;
 		this.#lang = lang;
 		this.total = paragraphs.length;
-		this.#media = media ?? null;
-		this.#onFinish = onFinish ?? null; // after stop(), which clears it
+		this.#media = opts.media ?? null;
+		// After stop(), which clears these.
+		this.#onFinish = opts.onFinish ?? null;
+		this.#onAdvance = opts.onAdvance ?? null;
 		this.#setupMedia();
 		this.#speakFrom(Math.max(0, Math.min(startAt, paragraphs.length - 1)));
 	}
@@ -226,9 +241,11 @@ class Listen {
 		// stopping (including the stop() the reader fires on navigation) retires
 		// it, so it can't linger onto the next page.
 		this.noVoice = false;
-		// A user stop / navigation is not a natural finish — retire the callback so
-		// the end-of-chapter roll-over can't fire from a deliberate stop.
+		// A user stop / navigation is not a natural finish — retire the callbacks so
+		// the roll-over can't fire from a deliberate stop and no stray resume-point
+		// save lands after we've stopped.
 		this.#onFinish = null;
+		this.#onAdvance = null;
 		this.status = 'idle';
 		this.current = -1;
 		this.#mediaState();
@@ -326,6 +343,9 @@ class Listen {
 		this.#utterance = u;
 		this.current = index;
 		this.status = 'playing';
+		// Resume-point save, bound to the content this start() was given — the
+		// audio clock drives it, so it can't race a reactive chapter change.
+		this.#onAdvance?.(index);
 		this.#mediaState();
 		speechSynthesis.speak(u);
 	}

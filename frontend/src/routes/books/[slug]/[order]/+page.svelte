@@ -380,6 +380,9 @@
 		chapterFrac = pageTotal > 1 ? pageIndex / (pageTotal - 1) : 1;
 		if (save) {
 			topIndex = firstIndexOnPage(pageIndex);
+			// Not gated on listen.status like the scroll handlers: paged mode is
+			// force-disabled while listening (`paged` derives on listen.status ===
+			// 'idle'), so a page turn can't happen mid-listen to clobber the resume.
 			saveScrollAnchor(slug, chapter.order, topIndex);
 			// Paging to the last page = reached the end. `save` is false on the
 			// initial restore, so opening mid-chapter at the last page doesn't fire.
@@ -868,7 +871,10 @@
 		saveTimer = setTimeout(() => {
 			if (!body) return;
 			updateFraction();
-			saveScrollAnchor(slug, chapter.order, topVisibleIndex());
+			// While actively playing, listen.start's onAdvance owns the resume point
+			// (the spoken paragraph); don't overwrite it with the viewport-top one.
+			// While PAUSED we do save — the reader may be scrolling ahead to read.
+			if (listen.status !== 'playing') saveScrollAnchor(slug, chapter.order, topVisibleIndex());
 			// Scrolled to the bottom of the chapter. markChapterComplete ignores the
 			// post-open settle window, so the restore-scroll landing at a saved
 			// end-of-chapter position doesn't count as finishing.
