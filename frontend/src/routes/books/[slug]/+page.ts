@@ -1,3 +1,10 @@
+// Rebuild marker 2026-09-01: #1273 added The True Vine. New books reach prod
+// through `seed_books` in the api's release step, so this deploy's web build
+// enumerated /books before the row existed and it served the SPA shell (5,693
+// bytes, no <title>). Its sibling #1271 (Absolute Surrender) prerendered fine
+// — only /books/true-vine/ was stale. The api is confirmed live with all 32
+// chapters (incl. the "The Vine (John 15:1)"/"(John 15:5)" disambiguation);
+// this touch forces the build that actually prerenders it.
 // Rebuild marker 2026-08-28: #1185 gave Purpose in Prayer's thirteen chapters
 // editorial titles. Unlike the markers below, the page was NOT the SPA shell —
 // it prerendered fine when the book shipped, but that build predates #1185, so
