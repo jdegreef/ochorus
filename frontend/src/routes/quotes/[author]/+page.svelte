@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Quote, QuotePage } from '$lib/library-public';
-	import { groupQuotes, quoteHref } from '$lib/library-public';
+	import { groupQuotes, quoteHref, workHref } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { hueForBirthYear } from '$lib/eras';
 	import { jsonLd, breadcrumb, hreflangFor, absUrl } from '$lib/seo';
@@ -63,10 +63,6 @@
 		name: page.author.name,
 		url: authorUrl
 	});
-	// The work a quote sits in, as its public URL — books and sermons live under
-	// different roots, mirroring quoteHref's own split.
-	const workUrl = (q: Quote) =>
-		absUrl(q.source.kind === 'sermon' ? `/sermons/${q.source.slug}/` : `/books/${q.source.slug}/`);
 	// An ItemList, not CollectionPage.hasPart: the quotations arrive in reading
 	// order and the ListItem positions preserve it, where hasPart is an unordered
 	// set. `about` names the whole collection's subject as the author entity.
@@ -91,7 +87,7 @@
 						isPartOf: {
 							'@type': q.source.kind === 'sermon' ? 'CreativeWork' : 'Book',
 							name: q.source.work,
-							url: workUrl(q)
+							url: absUrl(workHref(q))
 						},
 						url: `${SITE_URL}${quoteHref(q)}`
 					}
