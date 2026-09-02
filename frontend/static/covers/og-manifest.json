@@ -1047,6 +1047,13 @@
 			"art": false,
 			"scrim": 1
 		},
+		"tukutendereza": {
+			"ground": "153daf8655f1057a61a8c46d62ddc21980a1b613d0450ce91d777c2507dd957d",
+			"style": "house",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"uk/baptism-with-the-holy-spirit": {
 			"ground": "c37eea644e4e24407c58d34ead9e43f85fe22462f71bf8d7ec86c3bc626a1943",
 			"style": "revival",

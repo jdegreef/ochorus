@@ -1,3 +1,13 @@
+// prerender refresh 2026-09-02: erica-sabiti, a NEW biography-only author, and
+// ochorus-originals gains a ninth book (tukutendereza).
+// Sabiti is the shape that has bitten this loader four times before (#1138,
+// #1163, #1165, #1166): an author with no works of his own, created by a data
+// migration in the api's release step, so the web build that ships him
+// enumerated the author list BEFORE the row existed and /authors/erica-sabiti
+// served the SPA shell with no <title>. The migration is
+// 0098_erica_sabiti_biography_author.
+// He has no portrait: he died in 1988, so any photograph of him is very likely
+// still in copyright, and the page falls back to the initials monogram.
 // prerender refresh 2026-09-02: ochorus-originals gains an eighth book,
 // a-hidden-fire. The author already exists and the page already prerenders,
 // but the baked page lists the author's works, so without this touch
