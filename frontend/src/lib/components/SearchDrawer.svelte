@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { focusTrap } from '$lib/actions/focusTrap';
+	import DrawerShell from '$lib/components/DrawerShell.svelte';
 	import { getBook, getChapter } from '$lib/library-public';
 	import { getLang } from '$lib/lang.svelte';
 	import { createLimiter } from '$lib/limiter';
@@ -137,138 +137,73 @@
 	$effect(() => {
 		if (!open) return;
 		buildIndex();
-		// Focus the query field; focusTrap on the panel owns keeping Tab inside it
-		// and returning focus to the opener on close.
+		// Focus the query field; DrawerShell's focusTrap (autoFocus off) owns
+		// keeping Tab inside the panel and returning focus to the opener on close.
 		queueMicrotask(() => input?.focus());
 	});
 
 	function close() {
 		open = false;
 	}
-
-	function onKeydown(e: KeyboardEvent) {
-		if (!open) return;
-		if (e.key === 'Escape') {
-			e.stopPropagation();
-			close();
-		}
-	}
 </script>
 
-<svelte:window onkeydown={onKeydown} />
+<DrawerShell bind:open title={t('reader.search')} autoFocus={false}>
+	{#snippet headerExtra()}
+		<input
+			bind:this={input}
+			bind:value={query}
+			type="search"
+			class="field mt-3 w-full"
+			placeholder={t('reader.searchPlaceholder')}
+			aria-label={t('reader.searchPlaceholder')}
+		/>
+	{/snippet}
 
-{#if open}
-	<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
-	<div class="search-scrim" onclick={close}></div>
-	<!-- focusTrap keeps Tab inside the panel. Without it this dialog declared
-	     aria-modal="true" — telling assistive tech the rest of the page is inert
-	     — while Tab actually walked straight out into the content behind the
-	     scrim. autoFocus is off because the effect above focuses the input
-	     itself. Escape has two paths on purpose: the trap handles it (and stops
-	     propagation) whenever focus is inside the panel, and the window listener
-	     still catches it if focus has fallen elsewhere, e.g. after a scrim click. -->
-	<div
-		class="search-panel"
-		role="dialog"
-		aria-modal="true"
-		aria-label={t('reader.search')}
-		use:focusTrap={{ onEscape: close, autoFocus: false }}
-	>
-		<header class="border-b border-border px-5 py-4">
-			<div class="flex items-center justify-between gap-3">
-				<h2 class="text-h3 text-text">{t('reader.search')}</h2>
-				<button class="btn btn-icon btn-ghost" onclick={close} aria-label={t('a11y.close')}>✕</button>
-			</div>
-			<input
-				bind:this={input}
-				bind:value={query}
-				type="search"
-				class="field mt-3 w-full"
-				placeholder={t('reader.searchPlaceholder')}
-				aria-label={t('reader.searchPlaceholder')}
-			/>
-		</header>
+	<div class="search-list">
+		{#if indexing}
+			<p class="px-5 py-4 text-small text-muted">{t('search.indexing')}</p>
+		{:else if query.trim().length < 2}
+			<p class="px-5 py-4 text-small text-muted">{t('search.prompt')}</p>
+		{:else if results.length === 0}
+			<p class="px-5 py-4 text-small text-muted">{t('search.noResults')} “{query.trim()}”</p>
+		{:else}
+			<ul>
+				{#each results as hit (hit.order + '-' + hit.p)}
+					<li>
+						<a
+							href={localizeHref(`/books/${slug}/${hit.order}?p=${hit.p}`)}
+							class="search-item"
+							onclick={close}
+						>
+							<span class="eyebrow block text-muted">
+								{chapterLabel(hit.order, hit.title)}
+							</span>
+							<!-- snippet is HTML-escaped by highlightAround ($lib/highlight); only <mark> is added -->
+							<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+							<span class="mt-0.5 block text-small text-text">{@html hit.snippet}</span>
+						</a>
+					</li>
+				{/each}
+			</ul>
+		{/if}
 
-		<div class="search-list">
-			{#if indexing}
-				<p class="px-5 py-4 text-small text-muted">{t('search.indexing')}</p>
-			{:else if query.trim().length < 2}
-				<p class="px-5 py-4 text-small text-muted">{t('search.prompt')}</p>
-			{:else if results.length === 0}
-				<p class="px-5 py-4 text-small text-muted">{t('search.noResults')} “{query.trim()}”</p>
-			{:else}
-				<ul>
-					{#each results as hit (hit.order + '-' + hit.p)}
-						<li>
-							<a
-								href={localizeHref(`/books/${slug}/${hit.order}?p=${hit.p}`)}
-								class="search-item"
-								onclick={close}
-							>
-								<span class="eyebrow block text-muted">
-									{chapterLabel(hit.order, hit.title)}
-								</span>
-								<!-- snippet is HTML-escaped by highlightAround ($lib/highlight); only <mark> is added -->
-								<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-								<span class="mt-0.5 block text-small text-text">{@html hit.snippet}</span>
-							</a>
-						</li>
-					{/each}
-				</ul>
-			{/if}
-
-			<!-- The way up. Shown alongside hits as well as instead of them: this
-			     search folds inflections of one root but not across roots, so a
-			     short list is not proof there is nothing more — "praying" still
-			     doesn't find "prayer" here, and does one rung up. -->
-			{#if query.trim().length >= 2 && !indexing}
-				<a
-					href={localizeHref(scopedSearchHref('book', slug, query))}
-					class="block px-5 py-4 text-small font-semibold text-accent hover:underline"
-					onclick={close}
-				>
-					{t('search.wider')} →
-				</a>
-			{/if}
-		</div>
+		<!-- The way up. Shown alongside hits as well as instead of them: this
+		     search folds inflections of one root but not across roots, so a
+		     short list is not proof there is nothing more — "praying" still
+		     doesn't find "prayer" here, and does one rung up. -->
+		{#if query.trim().length >= 2 && !indexing}
+			<a
+				href={localizeHref(scopedSearchHref('book', slug, query))}
+				class="block px-5 py-4 text-small font-semibold text-accent hover:underline"
+				onclick={close}
+			>
+				{t('search.wider')} →
+			</a>
+		{/if}
 	</div>
-{/if}
+</DrawerShell>
 
 <style>
-	.search-scrim {
-		position: fixed;
-		inset: 0;
-		z-index: 48;
-		background: rgb(0 0 0 / 0.35);
-	}
-	.search-panel {
-		position: fixed;
-		top: 0;
-		bottom: 0;
-		/* Anchored to the end of the reading direction — the left edge under
-		   dir="rtl". See the matching note in TocDrawer: box-shadow and
-		   translateX have no logical form, so they are flipped explicitly. */
-		inset-inline-end: 0;
-		z-index: 49;
-		width: min(24rem, 92vw);
-		display: flex;
-		flex-direction: column;
-		background: var(--surface);
-		border-inline-start: 1px solid var(--border);
-		box-shadow: var(--shadow-drawer);
-		--search-slide-from: 1.5rem;
-		animation: search-in var(--duration-fast) ease-out;
-	}
-	:global([dir='rtl']) .search-panel {
-		box-shadow: 12px 0 40px rgb(0 0 0 / 0.25);
-		--search-slide-from: -1.5rem;
-	}
-	@keyframes search-in {
-		from {
-			transform: translateX(var(--search-slide-from, 1.5rem));
-			opacity: 0;
-		}
-	}
 	.search-list {
 		flex: 1;
 		overflow-y: auto;
