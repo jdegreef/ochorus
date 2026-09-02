@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { Quote, QuotePage } from '$lib/library-public';
-	import { groupQuotes, quoteHref } from '$lib/library-public';
+	import { groupQuotes, quoteHref, workHref } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { hueForBirthYear } from '$lib/eras';
-	import { jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
+	import { jsonLd, breadcrumb, hreflangFor, absUrl } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 
@@ -42,6 +42,30 @@
 	const crumbsLd = $derived(
 		jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))))
 	);
+
+	// Share card: the author's own portrait when we have one, so a shared quote
+	// page wears the face it is about; otherwise the branded /quotes section card
+	// (the sixteen image-less pages the topic/plan detail pages already fall back
+	// on). Both go through absUrl so the og:image is an absolute URL.
+	const ogImage = $derived(
+		page.author.photo_url ? absUrl(page.author.photo_url) : absUrl('/og/quotes.png')
+	);
+
+	// One @id per author, shared with the /authors bio page's Person node (which
+	// carries the same url): that is what lets a crawler fuse "the person quoted
+	// here" with "the person whose life is here" into one entity. `creator`, not
+	// `spokenByCharacter` — the latter is for a fictional character speaking a
+	// line, whereas these are the writer's own words.
+	const authorUrl = $derived(`${SITE_URL}/authors/${page.author.slug}/`);
+	const person = $derived({
+		'@type': 'Person',
+		'@id': authorUrl,
+		name: page.author.name,
+		url: authorUrl
+	});
+	// An ItemList, not CollectionPage.hasPart: the quotations arrive in reading
+	// order and the ListItem positions preserve it, where hasPart is an unordered
+	// set. `about` names the whole collection's subject as the author entity.
 	const quotesLd = $derived(
 		jsonLd({
 			'@context': 'https://schema.org',
@@ -49,13 +73,26 @@
 			name: `Quotations from ${page.author.name}`,
 			description,
 			url: canonical,
-			hasPart: page.quotes.map((q) => ({
-				'@type': 'Quotation',
-				text: q.text,
-				spokenByCharacter: page.author.name,
-				isPartOf: { '@type': 'Book', name: q.source.work },
-				url: `${SITE_URL}${quoteHref(q)}`
-			}))
+			about: person,
+			mainEntity: {
+				'@type': 'ItemList',
+				numberOfItems: page.quotes.length,
+				itemListElement: page.quotes.map((q, i) => ({
+					'@type': 'ListItem',
+					position: i + 1,
+					item: {
+						'@type': 'Quotation',
+						text: q.text,
+						creator: { '@id': authorUrl },
+						isPartOf: {
+							'@type': q.source.kind === 'sermon' ? 'CreativeWork' : 'Book',
+							name: q.source.work,
+							url: absUrl(workHref(q))
+						},
+						url: `${SITE_URL}${quoteHref(q)}`
+					}
+				}))
+			}
 		})
 	);
 
@@ -87,7 +124,7 @@
 	}
 </script>
 
-<Seo {title} {description} {canonical} {hreflang} structuredData={[crumbsLd, quotesLd]} />
+<Seo {title} {description} {canonical} {hreflang} {ogImage} structuredData={[crumbsLd, quotesLd]} />
 
 <!-- max-w-2xl is 42rem — the measure STYLE_GUIDE §2 calls normal, and the
      reason is on this page: at 48rem a quotation ran about 95 characters to

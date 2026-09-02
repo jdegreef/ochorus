@@ -818,3 +818,11 @@ export const quoteHref = (q: Quote): string =>
 	q.source.kind === 'sermon'
 		? `/sermons/${q.source.slug}/?p=${q.paragraph}`
 		: `/books/${q.source.slug}/${q.source.order}/?p=${q.paragraph}`;
+
+/**
+ * The landing page of the WORK a quote sits in (not the paragraph) — its title
+ * links here, and its JSON-LD names it as the source's `isPartOf.url`. Shares
+ * quoteHref's books-vs-sermons root split so the two never drift apart.
+ */
+export const workHref = (q: Quote): string =>
+	q.source.kind === 'sermon' ? `/sermons/${q.source.slug}/` : `/books/${q.source.slug}/`;
