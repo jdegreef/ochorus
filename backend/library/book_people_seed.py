@@ -35,6 +35,11 @@ keep the curation here rather than only in the database.
 
 from __future__ import annotations
 
-# (book_slug, [(author_slug, role), ...]). Empty for now — add works as their
-# featured bios are curated. See the module docstring for the shape and roles.
-BOOK_PEOPLE: list[tuple[str, list[tuple[str, str]]]] = []
+# (book_slug, [(author_slug, role), ...]). See the module docstring for the
+# shape and roles.
+BOOK_PEOPLE: list[tuple[str, list[tuple[str, str]]]] = [
+    # "Men Who Moved Heaven" is an anthology of men of prayer, one chapter each.
+    # John Wesley has his own chapter ("The Methodical Man of Methodical
+    # Prayer"), so he is a subject of the book.
+    ("men-who-moved-heaven", [("john-wesley", "subject")]),
+]
