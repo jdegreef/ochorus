@@ -64,14 +64,24 @@ class SeedDeclarationTests(TestCase):
         ]
         self.assertEqual(orphans, [])
 
-    def test_hindi_is_the_licensed_one(self):
-        """Pinned deliberately. Not because Hindi is special, but because a second
-        licensed Bible arriving unnoticed is exactly the change that should make
-        someone stop and read this file."""
-        self.assertEqual(sorted(_seed_attributions()), ["hi"])
+    def test_the_licensed_bibles_are_pinned(self):
+        """Pinned deliberately, so a licensed Bible arriving unnoticed is the
+        change that makes someone stop and read this file.
+
+        It worked. Luganda was added to this list on 2026-09-02 because `lug`
+        on the ebible mirror is the Open Luganda Contemporary Bible, CC BY-SA
+        4.0 to Biblica — and its seed entry had set no `bible_licence` at all,
+        so `_attribution_check` skipped it as public domain while 2,867 words of
+        verbatim OLCB were already shipped across 17 Luganda books. The failure
+        this test produced when `lg` gained a licence is precisely the stop-and-
+        read it was written for; growing the list is the deliberate act."""
+        self.assertEqual(sorted(_seed_attributions()), ["hi", "lg"])
         hi = SEED_LANGUAGES["hi"]
         self.assertEqual(hi["bible_licence"], "CC BY-SA 4.0")
         self.assertIn("Bridge Connectivity Solutions", hi["bible_attribution"])
+        lg = SEED_LANGUAGES["lg"]
+        self.assertEqual(lg["bible_licence"], "CC BY-SA 4.0")
+        self.assertIn("Biblica", lg["bible_attribution"])
 
 
 class SeedToRegistryTests(TestCase):
@@ -83,7 +93,8 @@ class SeedToRegistryTests(TestCase):
 
     def test_public_domain_languages_stay_blank(self):
         call_command("seed_languages")
-        for code in ("en", "es", "sw", "lg", "pt", "ar", "uk"):
+        # lg left this list on 2026-09-02 — see test_the_licensed_bibles_are_pinned.
+        for code in ("en", "es", "sw", "pt", "ar", "uk"):
             row = Language.objects.get(code=code)
             self.assertEqual(row.bible_licence, "", code)
             self.assertEqual(row.bible_attribution, "", code)

@@ -1,10 +1,21 @@
 /**
  * Credit lines for Bible texts whose licence asks for one.
  *
- * Ochorus is a public-domain library and its Bibles were public domain too —
- * KJV, Van Dyck, Kulish, Almeida — right up until Hindi. The Indian Revised
- * Version is the only Hindi text on Take Root that is not somebody's
- * proprietary edition, and it is CC BY-SA 4.0. Share-Alike binds derivatives of
+ * Ochorus is a public-domain library and most of its Bibles are public domain
+ * too — KJV, Van Dyck, Kulish, Almeida. Two are not. The Indian Revised Version
+ * is the only Hindi text on Take Root that is not somebody's proprietary
+ * edition, and it is CC BY-SA 4.0; the Open Luganda Contemporary Bible is the
+ * only Luganda text mirrored at all, and it is CC BY-SA 4.0 as well.
+ *
+ * Luganda arrived here the hard way, and the lesson is worth keeping: its seed
+ * entry set no `bible_licence` and labelled the text "(open)", so the readiness
+ * check written for exactly this case skipped with "Public-domain Bible —
+ * nothing to credit" while 2,867 words of verbatim OLCB were already shipped
+ * across 17 books. The guard was fine; the declaration was wrong. A Bible added
+ * without a licence field is assumed public domain, so that field is the whole
+ * safety mechanism.
+ *
+ * Share-Alike binds derivatives of
  * the Bible text itself rather than a library that quotes it, but BY still
  * wants the credit carried wherever the verses appear — and they appear inside
  * ordinary sermon and biography prose, not in a Bible widget we could hang a
@@ -23,6 +34,10 @@ export const BIBLE_CREDIT: Readonly<Record<string, string>> = {
 	hi:
 		'Scripture quotations are from the Indian Revised Version (IRV), ' +
 		'© 2017–2019 Bridge Connectivity Solutions, licensed under ' +
+		'CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/).',
+	lg:
+		'Scripture quotations are from the Open Luganda Contemporary Bible, ' +
+		'© Biblica, Inc., licensed under ' +
 		'CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/).'
 };
 
