@@ -397,6 +397,23 @@ dropped; chapters under 120 words are dropped as stubs.
     rule (which is why *Confessions* ships with `Chapter XXi`/`Chapter Xi`
     unfixed). If a second grouped book needs per-leaf fixes, add a hook rather
     than widening `clean_title` again. *(2026-07)*
+  - **When the work has NO internal part dividers, `group_parts` can't help** —
+    a `part=`-extracted NPNF work like Augustine's *Enchiridion* is 124 tiny
+    numbered sections under one implicit part, so `group_parts` fuses the whole
+    thing into a single 35k-word chapter. Import it flat, then regroup with a
+    committed build script keyed by editorial order-ranges: `GROUPS = [(title,
+    lo, hi), …]` covering every raw section, each chapter concatenating its
+    sections as `<h3>{section-title}</h3>{body}` through `clean_fragment`
+    (`scripts/build_enchiridion.py` is the model — idempotent: reads the raw
+    chapters, deletes, writes the grouped ones; asserts the raw count first; no
+    `catalog.py` entry). Same `RestatedChapterHeading` and local-`ruff` cautions
+    as the Gleanings build. **The trap (bit the Enchiridion, #1349):** an NPNF
+    section body OPENS with its own running title, `<p>Chapter N.—<title>.</p>`,
+    so wrapping it in an `<h3>` of the same title renders EVERY sub-heading
+    twice. `RestatedChapterHeadingTests` only checks a chapter's *first* block
+    against the chapter title, so it never sees the internal repeats — strip that
+    leading title paragraph per section before concatenating, and eyeball the
+    rendered sub-structure, not just the gates. *(2026-09)*
 - **CCEL two-level section numbering** (`<work>.i.ii.html` = part i, chapter ii).
   The `toc_sections` pattern matched only single-segment `<work>.iii.html`, so a
   parts-divided work imported as 1 chapter. Regex now allows one-or-more dotted

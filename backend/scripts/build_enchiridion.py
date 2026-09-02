@@ -4,11 +4,17 @@ own arc (Faith -> Hope -> Love). The two editor front-matter sections
 (Introductory Notice, Argument) are dropped; each thematic chapter gathers its
 sections as titled <h3> sub-headings, in order.
 
+Each raw NPNF section body OPENS with its own running title, "Chapter N.—<title>.",
+as a paragraph. That duplicates the <h3> we add from the section's title field, so
+we strip that leading title paragraph before concatenating (else every one of the
+124 sub-headings renders twice — once as the <h3>, once as a "Chapter N.—" <p>).
+
 Reproducible: run `import_ccel enchiridion` first (populates the 124 raw NPNF
 sections from schaff/npnf103 part iv.ii), then this script. Idempotent — it
 reads the raw sections, deletes them, and writes the 11 grouped chapters.
 """
 import os
+import re
 import sys
 
 import django
@@ -17,10 +23,23 @@ sys.path.insert(0, ".")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
 os.environ.setdefault("DJANGO_DEBUG", "true")
 django.setup()
+from bs4 import BeautifulSoup  # noqa: E402
 from django.utils.html import escape  # noqa: E402
 
 from library.ingest import clean_fragment  # noqa: E402
 from library.models import Book, Chapter  # noqa: E402
+
+_CHAP_TITLE = re.compile(r"^\s*Chapter\s+\d+\.\s*[—-]")
+
+
+def strip_leading_title(body_html: str) -> str:
+    """Drop a leading '<p>Chapter N.—…</p>' running-title paragraph, which the
+    NPNF section repeats from its own title (we render that title as the <h3>)."""
+    soup = BeautifulSoup(f"<div>{body_html}</div>", "lxml").div
+    first = next((c for c in soup.find_all(recursive=False)), None)
+    if first is not None and first.name == "p" and _CHAP_TITLE.match(first.get_text()):
+        first.decompose()
+    return soup.decode_contents()
 
 # (thematic title, first raw order, last raw order) — covers raw 3..124 with no gaps
 GROUPS = [
@@ -48,7 +67,7 @@ def build():
     book.chapters.all().delete()
     for i, (title, lo, hi) in enumerate(GROUPS, 1):
         parts = [
-            f"<h3>{escape(sections[o][0])}</h3>{sections[o][1]}"
+            f"<h3>{escape(sections[o][0])}</h3>{strip_leading_title(sections[o][1])}"
             for o in range(lo, hi + 1)
         ]
         body = clean_fragment("".join(parts))
