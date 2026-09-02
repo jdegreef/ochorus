@@ -1633,6 +1633,73 @@ BODY_CORRECTIONS: dict[str, dict] = {
     },
 }
 
+
+# --- Luganda: a doubled inflected verb, 23 sites across 10 lg editions -------
+#
+# The translations wrote e.g. "biteekeddwateekeddwa" where the word is
+# "biteekeddwa" (prepared/appointed). It is NOT Luganda reduplication: a genuine
+# reduplication doubles the STEM (okuteekateeka, okubuusabuusa, enkyukakyuka,
+# mpolampola), whereas this doubles a fully INFLECTED form, suffixes and all.
+# he-holds-my-tomorrows ch09 settles it by using both in one clause -- "mu
+# nteekateeka Katonda gy'atuteekeddeteekedde" -- the real reduplicated noun
+# standing beside the defect. The same files use the clean form freely (22 times
+# in the-unselfishness-of-god alone).
+#
+# The repair collapses the repetition and KEEPS THE FIRST inflection, so the
+# author's own voice survives: by'ateekedde stays active, biteekeddwa stays
+# passive. Found while building the scripture crib for waiting-on-god -> lg
+# (#1205), where 1 Cor 2:9 came back carrying one.
+#
+# Merged in below rather than threaded through the literal above so all twenty
+# pairs stay together and reviewable, and so this class of defect -- our own
+# translation output, not the extractor and not the source -- is visibly its own
+# thing. They are Luganda strings and can never match another language's text.
+_LG_DOUBLED_VERB: dict[str, list[tuple[str, str]]] = {
+    "all-of-grace": [
+        ('biteekeddwateekeddwa', 'biteekeddwa'),
+        ('kikuteekeddeteekedde', 'kikuteekedde'),
+    ],
+    "godliness": [
+        ('eteekeddwateekeddwa', 'eteekeddwa'),
+    ],
+    "he-holds-my-tomorrows": [
+        ('abateekeddwateekeddwa', 'abateekeddwa'),
+        ('akuteekeddeteekedde', 'akuteekedde'),
+        ('atuteekeddeteekedde', 'atuteekedde'),
+    ],
+    "prayer-the-pulse-of-life": [
+        ("by'akuteekeddeteekedde", "by'akuteekedde"),
+    ],
+    "stepping-stones-2": [
+        ('atuteekeddeteekedde', 'atuteekedde'),
+        ('biteekeddwateekeddwa', 'biteekeddwa'),
+    ],
+    "talks-to-the-farmer": [
+        ('teriteekeddwateekeddwa', 'teriteekeddwa'),
+    ],
+    "the-god-of-all-comfort": [
+        ('eteekeddwateekeddwa', 'eteekeddwa'),
+    ],
+    "the-inner-chamber": [
+        ('amuteekeddeteekedde', 'amuteekedde'),
+        ('obuteekeddwateekeddwa', 'obuteekeddwa'),
+    ],
+    "the-person-and-work-of-the-holy-spirit": [
+        ('eteekeddwateekeddwa', 'eteekeddwa'),
+    ],
+    "the-unselfishness-of-god": [
+        ('abateekeddwateekeddwa', 'abateekeddwa'),
+        ('biteekeddwateekeddwa', 'biteekeddwa'),
+        ("by'ateekeddeteekeddwa", "by'ateekedde"),
+        ('eteekeddwateekeddwa', 'eteekeddwa'),
+        ('guteekeddwateekeddwa', 'guteekeddwa'),
+        ('nteekeddwateekeddwa', 'nteekeddwa'),
+    ],
+}
+
+for _slug, _reps in _LG_DOUBLED_VERB.items():
+    BODY_CORRECTIONS.setdefault(_slug, {}).setdefault("replacements", []).extend(_reps)
+
 # First lowercase letter opening the first paragraph of a body.
 _FIRST_LOWER = _re.compile(r"<p[^>]*>\s*([a-z])")
 
