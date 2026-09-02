@@ -431,6 +431,13 @@
 			"art": false,
 			"scrim": 1
 		},
+		"journal-of-an-expedition-up-the-niger": {
+			"ground": "e01666420f7301b7df294ded8f55e2150ced01efd63b2493e8ffddcaf27b1330",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"let-us-pray-2": {
 			"ground": "4725e322e9f3052085a3cf616a13b1d6bbb3a9f9efe226aaf09d166fcf8aa6c9",
 			"style": "house",
