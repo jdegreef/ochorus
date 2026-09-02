@@ -46,7 +46,8 @@ from __future__ import annotations
 #: charles-h-spurgeon    — approved 2026-08-28, sixty.
 #: thomas-a-kempis       — approved 2026-08-30, thirty-six.
 #: andrew-murray         — approved 2026-08-30, twenty-seven.
-#: e-m-bounds            — approved 2026-08-30, twenty-eight.
+#: e-m-bounds            — approved 2026-08-30, twenty-eight;
+#:                          twenty-seven more 2026-09-02 (fifty-five).
 #: augustine-of-hippo    — approved 2026-08-30, thirteen.
 #: jonathan-edwards      — approved 2026-08-30, eleven.
 #: john-wesley           — approved 2026-08-30, eighteen.
@@ -996,6 +997,168 @@ E_M_BOUNDS = [
         "text": "Nothing short of being red hot for God, can keep the glow of heaven in our hearts, these chilly days.",
         "chapter": ("necessity-of-prayer", 5),
         "paragraph": 19,
+    },
+    {
+        "slug": "e-m-bounds-019df67e",
+        "text": "God is so concerned that men pray that He has promised to answer prayer.",
+        "chapter": ("reality-of-prayer", 1),
+        "paragraph": 17,
+    },
+    {
+        "slug": "e-m-bounds-5c98ee06",
+        "text": "Prayer is the seeking of God’s great and greatest good, which will not come if we do not pray.",
+        "chapter": ("reality-of-prayer", 2),
+        "paragraph": 9,
+    },
+    {
+        "slug": "e-m-bounds-fa8348c7",
+        "text": "Prayer is the child’s request, not to the winds nor to the world, but to the Father.",
+        "chapter": ("reality-of-prayer", 2),
+        "paragraph": 9,
+    },
+    {
+        "slug": "e-m-bounds-81aa80b3",
+        "text": "Prayer is God’s plan to supply man’s great and continuous need with God’s great and continuous abundance.",
+        "chapter": ("reality-of-prayer", 2),
+        "paragraph": 13,
+    },
+    {
+        "slug": "e-m-bounds-31dfd977",
+        "text": "God has everything to do with prayer, as well as everything to do with the one who prays.",
+        "chapter": ("reality-of-prayer", 4),
+        "paragraph": 5,
+    },
+    {
+        "slug": "e-m-bounds-cac9217a",
+        "text": "God’s Gospel has always waited more on prayer than on anything else for its successes.",
+        "chapter": ("reality-of-prayer", 16),
+        "paragraph": 6,
+    },
+    {
+        "slug": "e-m-bounds-eaa3a1c9",
+        "text": "Prayer is the only element in which the Holy Spirit can live and work.",
+        "chapter": ("reality-of-prayer", 16),
+        "paragraph": 9,
+    },
+    {
+        "slug": "e-m-bounds-b95b2a8f",
+        "text": "Jesus Christ was always a busy man with His work, but never too busy to pray.",
+        "chapter": ("reality-of-prayer", 7),
+        "paragraph": 25,
+    },
+    {
+        "slug": "e-m-bounds-3aad54a5",
+        "text": "Prayer does not interpret God’s providences, but it does justify them and recognise God in them.",
+        "chapter": ("essentials-of-prayer", 5),
+        "paragraph": 22,
+    },
+    {
+        "slug": "e-m-bounds-7b379a07",
+        "text": "Prayer without fervour is as a sun without light or heat, or as a flower without beauty or fragrance.",
+        "chapter": ("essentials-of-prayer", 3),
+        "paragraph": 16,
+    },
+    {
+        "slug": "e-m-bounds-20b5210a",
+        "text": "God can afford to commit Himself in prayer to those who have fully committed themselves to God.",
+        "chapter": ("essentials-of-prayer", 8),
+        "paragraph": 16,
+    },
+    {
+        "slug": "e-m-bounds-1ce791ff",
+        "text": "Prayer holds earth to heaven and brings heaven in close contact with earth.",
+        "chapter": ("essentials-of-prayer", 12),
+        "paragraph": 25,
+    },
+    {
+        "slug": "e-m-bounds-3de95408",
+        "text": "Prayer is intended for all men, because all men need God and need what God has and what prayer only can secure.",
+        "chapter": ("essentials-of-prayer", 12),
+        "paragraph": 2,
+    },
+    {
+        "slug": "e-m-bounds-552c19f1",
+        "text": "Prayer so prepares the heart that it softens under the disciplining hand of God.",
+        "chapter": ("essentials-of-prayer", 5),
+        "paragraph": 33,
+    },
+    {
+        "slug": "e-m-bounds-55b9917c",
+        "text": "The prayer life is the direct fruit of entire consecration to God.",
+        "chapter": ("essentials-of-prayer", 9),
+        "paragraph": 16,
+    },
+    {
+        "slug": "e-m-bounds-4d0e283e",
+        "text": "God wants consecrated men because they can pray and will pray.",
+        "chapter": ("essentials-of-prayer", 8),
+        "paragraph": 20,
+    },
+    {
+        "slug": "e-m-bounds-ec80b3c8",
+        "text": "Prayer promotes the spirit of devotion, while devotion is favourable to the best praying.",
+        "chapter": ("essentials-of-prayer", 3),
+        "paragraph": 4,
+    },
+    {
+        "slug": "e-m-bounds-ad66c674",
+        "text": "Prayer is natural and almost spontaneous when compassion is begotten in the heart.",
+        "chapter": ("essentials-of-prayer", 10),
+        "paragraph": 3,
+    },
+    {
+        "slug": "e-m-bounds-132bf8cd",
+        "text": "The prayer is made to God and the issue is with God.",
+        "chapter": ("prayer-and-praying-men", 6),
+        "paragraph": 19,
+    },
+    {
+        "slug": "e-m-bounds-541d3401",
+        "text": "God’s people were always safe when their princes were princes in prayer.",
+        "chapter": ("prayer-and-praying-men", 7),
+        "paragraph": 12,
+    },
+    {
+        "slug": "e-m-bounds-f89a467a",
+        "text": "Nothing is clearer than that prayer has its only worth and significance in the great fact that God hears and answers prayer.",
+        "chapter": ("prayer-and-praying-men", 3),
+        "paragraph": 8,
+    },
+    {
+        "slug": "e-m-bounds-bb90e88c",
+        "text": "Prayer breaks all bars, dissolves all chains, opens all prisons and widens all straits by which God’s saints have been holden.",
+        "chapter": ("prayer-and-praying-men", 7),
+        "paragraph": 46,
+    },
+    {
+        "slug": "e-m-bounds-d8c4a388",
+        "text": "Prayer unites with the purposes of God and lays itself out to secure those purposes.",
+        "chapter": ("prayer-and-praying-men", 5),
+        "paragraph": 1,
+    },
+    {
+        "slug": "e-m-bounds-d3d581c6",
+        "text": "Prayer makes the man; prayer makes the preacher; prayer makes the pastor.",
+        "chapter": ("power-through-prayer", 1),
+        "paragraph": 10,
+    },
+    {
+        "slug": "e-m-bounds-d4c5d477",
+        "text": "Prayer puts the preacher’s heart into the preacher’s sermon; prayer puts the preacher’s sermon into the preacher’s heart.",
+        "chapter": ("power-through-prayer", 12),
+        "paragraph": 5,
+    },
+    {
+        "slug": "e-m-bounds-d464b8c2",
+        "text": "God’s true preachers have been distinguished by one great feature: they were men of prayer.",
+        "chapter": ("power-through-prayer", 6),
+        "paragraph": 4,
+    },
+    {
+        "slug": "e-m-bounds-b99a6740",
+        "text": "Prayer which is felt as a mighty force is the mediate or immediate product of much time spent with God.",
+        "chapter": ("power-through-prayer", 7),
+        "paragraph": 1,
     },
 ]
 
