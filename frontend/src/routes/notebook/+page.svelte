@@ -9,7 +9,6 @@
 	import { chapterLabel } from '$lib/reading';
 	import {
 		HIGHLIGHT_COLORS,
-		DEFAULT_HIGHLIGHT,
 		MODERN_EDITION,
 		baseEdition,
 		type Bookmark,
@@ -17,6 +16,7 @@
 		type WorkKind
 	} from '$lib/reading-schema';
 	import { createLimiter, NOTEBOOK_CONCURRENCY } from '$lib/limiter';
+	import { paragraphs, groupMarks, type Highlight as HL } from '$lib/markText';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 
 	const t = i18n.t;
@@ -26,14 +26,6 @@
 	/** The locale union `localizeHref` accepts; `isAvailable` is its runtime check. */
 	type UiLocale = NonNullable<Parameters<typeof localizeHref>[1]>['locale'];
 
-	type HL = {
-		id: string;
-		p: number;
-		text: string;
-		note?: string;
-		color: string;
-		edition: string;
-	};
 	// One block per (chapter, EDITION). A chapter highlighted in both the
 	// original and the Modern English text is two blocks, because the quoted
 	// passages come from two different texts and only their own offsets index
@@ -151,38 +143,8 @@
 			filteredBios.length === 0
 	);
 
-	// Split a chapter's cleaned HTML into its top-level blocks' text — the same
-	// blocks the reader indexes marks against (p = block, s/e = chars in it).
-	function paragraphs(bodyHtml: string): string[] {
-		const div = document.createElement('div');
-		div.innerHTML = bodyHtml;
-		return [...div.children].map((el) => el.textContent ?? '');
-	}
-	function segText(paras: string[], m: Mark): string {
-		const tx = paras[m.p] ?? '';
-		return tx.slice(m.s, m.e === -1 ? undefined : m.e).trim();
-	}
-	// One selection can be several segments (multi-paragraph) sharing an id; join
-	// them and carry the note (which lives on the first segment).
-	function groupMarks(paras: string[], ms: Mark[], edition: string): HL[] {
-		const byId = new Map<string, Mark[]>();
-		for (const m of ms) {
-			const arr = byId.get(m.id) ?? [];
-			arr.push(m);
-			byId.set(m.id, arr);
-		}
-		return [...byId.values()].map((segs) => {
-			segs.sort((a, b) => a.p - b.p || a.s - b.s);
-			return {
-				id: segs[0].id,
-				p: segs[0].p,
-				text: segs.map((s) => segText(paras, s)).filter(Boolean).join(' … '),
-				note: segs.find((s) => s.note)?.note,
-				color: segs.find((s) => s.color)?.color ?? DEFAULT_HIGHLIGHT,
-				edition
-			};
-		});
-	}
+	// paragraphs() / groupMarks() (and the HL type) are shared with the in-reader
+	// notes drawer via $lib/markText.
 
 	/**
 	 * How a block's edition is named, or '' for the one the page is already in.

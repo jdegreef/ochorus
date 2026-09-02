@@ -42,6 +42,7 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import TocDrawer from '$lib/components/TocDrawer.svelte';
 	import SearchDrawer from '$lib/components/SearchDrawer.svelte';
+	import NotesDrawer from '$lib/components/NotesDrawer.svelte';
 
 	let { data } = $props();
 	const chapter = $derived(data.chapter as Chapter);
@@ -115,6 +116,7 @@
 
 	let tocOpen = $state(false);
 	let searchOpen = $state(false);
+	let notesOpen = $state(false);
 
 	// --- Reading-progress indicators -------------------------------------------
 	// Fraction of the current chapter scrolled past (0..1), updated by the same
@@ -704,7 +706,8 @@
 			scripture.open ||
 			readerUi.panelOpen ||
 			tocOpen ||
-			searchOpen
+			searchOpen ||
+			notesOpen
 		) {
 			// Escape still has to work from inside a panel — it is how you leave.
 			if (e.key === 'Escape' && readerUi.focus && !reader.open) readerUi.exitFocus();
@@ -1048,6 +1051,12 @@
 					aria-label={t('reader.search')}
 					title={t('reader.search')}><Icon name="search" size={18} /></button
 				>
+				<button
+					class="btn btn-icon btn-ghost"
+					onclick={() => (notesOpen = true)}
+					aria-label={t('notebook.title')}
+					title={t('notebook.title')}><Icon name="book" size={18} /></button
+				>
 				{#if listen.supported}
 					<button
 						class="btn btn-icon btn-ghost"
@@ -1286,6 +1295,8 @@
 <TocDrawer {slug} currentOrder={chapter.order} {edition} bind:open={tocOpen} />
 
 <SearchDrawer {slug} bind:open={searchOpen} />
+
+<NotesDrawer {slug} {edition} bind:open={notesOpen} />
 
 <style>
 	/* --- Page-turn mode --------------------------------------------------------
