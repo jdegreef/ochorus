@@ -25,6 +25,13 @@
 			"art": false,
 			"scrim": 1
 		},
+		"absolute-surrender": {
+			"ground": "982288344fa5dedd67d66b698ab5c885b8d616570b74a5833d19215533b775f5",
+			"style": "devotional",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"all-of-grace": {
 			"ground": "25d18c1f3133cdd46d916757dc58d064dd8cda9ff6adce9f7edf269c234762d4",
 			"style": "revival",
