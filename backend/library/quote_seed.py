@@ -57,7 +57,8 @@ from __future__ import annotations
 #: john-wesley           — approved 2026-08-30, eighteen;
 #:                         and 2026-09-02, thirteen more (Sermons on Several Occasions).
 #: george-muller         — approved 2026-08-30, eleven;
-#:                         and 2026-09-02, four more (The Life of Trust).
+#:                         and 2026-09-02, four more (The Life of Trust);
+#:                         and 2026-09-02, sixteen more (The Life of Trust) — thirty-one.
 #: hudson-taylor         — approved 2026-08-30, ten;
 #:                         and 2026-09-02, ten more (Separation and Service).
 #: gareth-evans          — approved 2026-08-30, twenty-two;
@@ -1952,6 +1953,102 @@ GEORGE_MULLER = [
         "text": "I do not find the life in connection with this work a trying life, but a very happy one.",
         "chapter": ("the-life-of-trust", 21),
         "paragraph": 34,
+    },
+    {
+        "slug": "george-muller-19668d74",
+        "text": "If, after prayer, I feel persuaded that I should, I fix upon it, yet so that I would desire to leave myself open to the Lord to change it if he please.",
+        "chapter": ("the-life-of-trust", 7),
+        "paragraph": 7,
+    },
+    {
+        "slug": "george-muller-48c5690b",
+        "text": "Frequently, too, a fresh answer to prayer, obtained in this way, has been the means of quickening my soul, and filling me with much joy.",
+        "chapter": ("the-life-of-trust", 7),
+        "paragraph": 32,
+    },
+    {
+        "slug": "george-muller-9ef0f4c9",
+        "text": "A hearty desire for the conversion of sinners, and earnest prayer for it to the Lord, is quite scriptural; but it is unscriptural to expect the conversion of the whole world.",
+        "chapter": ("the-life-of-trust", 9),
+        "paragraph": 5,
+    },
+    {
+        "slug": "george-muller-708ce87e",
+        "text": "The lying too long in bed not merely keeps us from giving the most precious part of the day to prayer and meditation, but this sloth leads also to many other evils.",
+        "chapter": ("the-life-of-trust", 14),
+        "paragraph": 22,
+    },
+    {
+        "slug": "george-muller-a471336a",
+        "text": "Truly, we are poorer than ever; but through grace my eyes look not at the empty stores and the empty purse, but to the riches of the Lord only.",
+        "chapter": ("the-life-of-trust", 17),
+        "paragraph": 12,
+    },
+    {
+        "slug": "george-muller-caed9faa",
+        "text": "From my inmost soul I do ascribe it to God alone that he has enabled me to trust in him, and that hitherto he has not suffered my confidence in him to fail.",
+        "chapter": ("the-life-of-trust", 17),
+        "paragraph": 32,
+    },
+    {
+        "slug": "george-muller-76e31dd8",
+        "text": "As the increase of faith is a good gift, it must come from God, and therefore he ought to be asked for this blessing.",
+        "chapter": ("the-life-of-trust", 17),
+        "paragraph": 33,
+    },
+    {
+        "slug": "george-muller-7716c8c8",
+        "text": "Jesus came not to save painted but real sinners; but he has saved us, and will surely make it manifest.",
+        "chapter": ("the-life-of-trust", 18),
+        "paragraph": 28,
+    },
+    {
+        "slug": "george-muller-46c0a31e",
+        "text": "The Lord has indeed manifested his tender care of and his great love towards me in Jesus, in inclining my heart cheerfully to lay all I have hitherto called my own at his feet.",
+        "chapter": ("the-life-of-trust", 18),
+        "paragraph": 17,
+    },
+    {
+        "slug": "george-muller-ded699a3",
+        "text": "In all simplicity have we to tell out our heart before God, and then we have to believe that he will give to us according to our need.",
+        "chapter": ("the-life-of-trust", 19),
+        "paragraph": 19,
+    },
+    {
+        "slug": "george-muller-74de7829",
+        "text": "It is certain that we children of God are so abundantly blessed in Jesus, by the grace of God, that we ought to need no stimulus to good works.",
+        "chapter": ("the-life-of-trust", 19),
+        "paragraph": 33,
+    },
+    {
+        "slug": "george-muller-a1c9f7be",
+        "text": "How I shall be supplied with the means which are yet requisite, and when, I know not; but I am sure that God will help me in his own time and way.",
+        "chapter": ("the-life-of-trust", 21),
+        "paragraph": 42,
+    },
+    {
+        "slug": "george-muller-dcfed640",
+        "text": "A million of tracts may not be the means of converting one single soul; and yet how great, beyond calculation, may be the blessing which results from one single tract.",
+        "chapter": ("the-life-of-trust", 25),
+        "paragraph": 58,
+    },
+    {
+        "slug": "george-muller-b28e4625",
+        "text": "The desires of my heart were, to retain the beloved daughter, if it were the will of God; the means to return her were, to be satisfied with the will of the Lord.",
+        "chapter": ("the-life-of-trust", 25),
+        "paragraph": 64,
+    },
+    {
+        "slug": "george-muller-ebf7ed77",
+        "text": "How good is the Lord to have thus appeared for us, in answer to prayer, and what an encouragement to commit everything to him in prayer!",
+        "chapter": ("the-life-of-trust", 8),
+        "paragraph": 21,
+    },
+    {
+        "slug": "george-muller-f1d681d8",
+        "text": "What a striking confirmation that the Lord will help, though the necessities should increase more and more.",
+        "chapter": ("the-life-of-trust", 18),
+        "paragraph": 33,
     },
 ]
 
