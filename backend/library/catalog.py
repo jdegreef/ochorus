@@ -38,7 +38,7 @@ class BookEntry:
     slug: str
     title: str
     author_slug: str
-    source: str  # "ccel" | "gutenberg" | "archive"
+    source: str  # "ccel" | "gutenberg" | "archive" | "pdf" | "web" | "docsouth"
     source_ref: str
     subtitle: str = ""
     cover_color: str = ""
@@ -371,6 +371,31 @@ AUTHORS: dict[str, AuthorEntry] = {
             "were published only after his death."
         ),
     ),
+    "richard-allen": AuthorEntry(
+        slug="richard-allen",
+        name="Richard Allen",
+        birth_year=1760,
+        death_year=1831,
+        bio=(
+            "Born into slavery in Philadelphia, Richard Allen was converted "
+            "under Methodist preaching, bought his freedom, and in 1816 was "
+            "consecrated the first bishop of the African Methodist Episcopal "
+            "Church, the independent Black denomination he founded."
+        ),
+    ),
+    "amanda-berry-smith": AuthorEntry(
+        slug="amanda-berry-smith",
+        name="Amanda Berry Smith",
+        birth_year=1837,
+        death_year=1915,
+        bio=(
+            "Born into slavery in Maryland, Amanda Berry Smith became a "
+            "washerwoman and then one of the most widely travelled evangelists "
+            "of the Wesleyan-Holiness movement, preaching across the United "
+            "States, Britain, India, and West Africa as an independent "
+            "missionary."
+        ),
+    ),
 }
 
 # Shelf order. Small, clean books first.
@@ -607,6 +632,21 @@ BOOKS: list[BookEntry] = [
               "john-owen", "ccel", "owen/mort",
               subtitle="On Killing Sin by the Spirit",
               cover_color="#5b2333"),
+    # Two early African-American spiritual autobiographies, keyed (not OCR'd) by
+    # UNC's Documenting the American South. Both first published pre-1929, US
+    # public domain. See `import_docsouth`. Amanda Smith's per-chapter titles are
+    # bare "CHAPTER I." in the body; her real titles live in the CONTENTS and are
+    # supplied via `corrections.chapter_titles`.
+    BookEntry("life-experience-gospel-labours",
+              "The Life, Experience, and Gospel Labours", "richard-allen",
+              "docsouth", "https://docsouth.unc.edu/neh/allen/allen.html",
+              subtitle="Written by Himself",
+              cover_color="#7a1f2b"),
+    BookEntry("amanda-smith-autobiography", "An Autobiography",
+              "amanda-berry-smith", "docsouth",
+              "https://docsouth.unc.edu/neh/smitham/smith.html",
+              subtitle="The Story of the Lord's Dealings with Mrs. Amanda Smith",
+              cover_color="#1d6f6f"),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an

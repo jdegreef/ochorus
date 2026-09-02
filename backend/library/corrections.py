@@ -37,6 +37,63 @@ EXCLUDED_SLUGS: set[str] = {
 }
 
 CORRECTIONS: dict[str, dict] = {
+    "life-experience-gospel-labours": {
+        # A compilation: the autobiography ("LIFE, &c."), the AME African
+        # Supplement, three devotional Acts, the 1793 yellow-fever Narrative, and
+        # two addresses. Four section headings in the source are bare or their
+        # descriptive subtitle sits in the body — give them their known titles.
+        "chapter_titles": {
+            2: "The Life of Richard Allen",
+            7: "A Narrative of the Proceedings of the Coloured People",
+            9: "An Address to Those Who Keep Slaves",
+            11: "A Short Address to the Friends of Him Who Hath No Helper",
+        },
+    },
+    "amanda-smith-autobiography": {
+        # The 36 numbered chapters carry only long "arguments" as titles (the
+        # source's own Contents). These are curated concise titles distilled from
+        # each argument; the front matter, the Address (37) and the two guest
+        # testimonies (38-39) keep their own headings.
+        "chapter_titles": {
+            3: "Birth, Parentage, and Deliverance from Slavery",
+            4: "Removal to Pennsylvania",
+            5: "Remembrances of My Girlhood Days",
+            6: "Marriage and Conversion",
+            7: "How I Bought My Sister Frances",
+            8: "Disappointed Hopes and My Father's Death",
+            9: "The Blessing of Sanctification",
+            10: "My First Temptation",
+            11: "His Presence and My Obedience",
+            12: "Learning 'Thy Will Be Done'",
+            13: "My Call to Go Out",
+            14: "My Last Call, and How I Obeyed It",
+            15: "Remembrances of Camp Meeting",
+            16: "Kennebunk Camp Meeting",
+            17: "At Dr. Taylor's Church, New York",
+            18: "The National Camp Meeting at Knoxville",
+            19: "Sea Cliff, and First Thoughts of Africa",
+            20: "Pittman Church, Philadelphia",
+            21: "The Call to Go to England",
+            22: "Liverpool, and Pages from My Diary",
+            23: "Scotland, London, and the Call to India",
+            24: "On the Way to India",
+            25: "India: Notes from My Diary",
+            26: "The Great Meeting at Bangalore",
+            27: "Africa: Arrival at Monrovia",
+            28: "Temperance Work at Fortsville",
+            29: "Conference at Monrovia",
+            30: "Old Calabar, and the Women of Africa",
+            31: "How I Came to Take Little Bob",
+            32: "Among the People of Creektown",
+            33: "Liberia: Its People and Schools",
+            34: "Cape Palmas, and a Great Revival",
+            35: "Emigration and the Schools of Liberia",
+            36: "Letters and Testimonials",
+            37: "An Address from the A. M. E. Zion Church, Sierra Leone",
+            40: "Return to Liverpool, and Faith Healing",
+            41: "Work in England, and Home Again",
+        },
+    },
     "true-vine": {
         # Murray gives two meditations the identical title "The Vine" (day 2 on
         # John 15:1, day 11 on John 15:5) — a duplicate title in the TOC.
@@ -452,6 +509,22 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 # `apply_body_corrections`, plus a data migration for prod).
 
 BODY_CORRECTIONS: dict[str, dict] = {
+    "life-experience-gospel-labours": {
+        # A stray space before the period after a middle initial in the AME
+        # supplement's petition ("Joseph B . McKean"). Faithful-looking but a
+        # transcription slip; the rest of the audit's space-before-punct flags
+        # sit inside the source's dash-redacted names ("Rev L-- G-- .") and are
+        # left as the source has them.
+        "replacements": [
+            ("Joseph B . McKean", "Joseph B. McKean"),
+        ],
+    },
+    "amanda-smith-autobiography": {
+        # A stray space before a comma ("our dinner , and"), a transcription slip.
+        "replacements": [
+            ("our dinner , and", "our dinner, and"),
+        ],
+    },
     "absolute-surrender": {
         # The CCEL text is uniformly curly; one opening double quote slipped
         # through the importer's straight->curly pass. Curl it (QuoteStyleTests).

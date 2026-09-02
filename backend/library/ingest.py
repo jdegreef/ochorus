@@ -107,6 +107,13 @@ def _cap_first(s: str) -> str:
     return s
 
 
+# Only whitespace opens a new word above, so the first word of each em/en-dash-
+# joined clause of an ALL-CAPS heading stays lowercased ("Pennsylvania—going",
+# "Pray—prayer"). A dash begins a new clause the way a colon subtitle does, so
+# capitalise after it too. Em/en-dash only — a hyphen joins one compound word.
+_AFTER_DASH = re.compile(r"([—–]\s*)([a-z])")
+
+
 def _titlecase_caps(s: str) -> str:
     """Title-case an ALL-CAPS heading, keeping connector words lowercase and
     preserving apostrophes ("CHRIST'S" -> "Christ's", not "Christ'S") and
@@ -124,7 +131,7 @@ def _titlecase_caps(s: str) -> str:
             out.append(low)
         else:
             out.append(_cap_first(low))
-    return " ".join(out)
+    return _AFTER_DASH.sub(lambda m: m.group(1) + m.group(2).upper(), " ".join(out))
 
 
 # A CHAPTER TITLE that is nothing but a counter. The reader already prints the
@@ -240,6 +247,8 @@ def is_front_matter(title: str) -> bool:
         return True
     # "title" = a bare title-page section (CCEL lists one for some works); note
     # "the title" (a real exposition section) is a different string and kept.
+    if t in {"list of illustrations", "illustrations"}:  # a plate list, no prose
+        return True
     return t in {"contents", "table of contents", "title", "title page", "prefatory note"}
 
 
