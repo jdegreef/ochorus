@@ -1,22 +1,22 @@
-"""Create Erica Sabiti as a biography-only author on already-seeded databases.
+"""Create John Calvin as a biography-only author on already-seeded databases.
 
-Sabiti (1903–1988), the first African Archbishop of the Church of Uganda and a
-leader of the East African Revival, joins the Biographies section with a short
-``bio`` card summary and a long-form ``bio_html``.
+Jean Calvin (1509–1564) joins the Biographies section with a short ``bio`` card
+summary and a long-form ``bio_html``. He has no catalogued work of his own yet,
+so no content seed reaches him: ``seed_books`` and ``seed_sermons`` create
+authors only as a side effect of importing a work, and ``seed_if_empty``
+populates a fresh database only.
 
-He appears as a CHAPTER in ``tukutendereza``, but that book is attributed to
-``ochorus-originals`` — he did not write it — so no content seed reaches him:
-``seed_books``/``seed_sermons`` create authors only as a side effect of
-importing a work of their own, and ``seed_if_empty`` populates a fresh database
-only. Without this migration the author page never exists on a live install.
-
-Same shape as ``0053_three_new_biography_authors``, and the same two guards:
+Fifth in the series after ``0053`` (Augustine, Haynes, Law), ``0080`` (the five
+early-church writers), ``0086`` (the three monastics) and ``0087`` (E. M.
+Bounds); same two guards, and it carries ``same_as`` so the Person markup has
+its Wikipedia/Wikidata identifiers from the first deploy:
 
 - Fresh installs are populated wholesale by ``seed_if_empty`` (keyed on the
-  Book table) right after migrations run, and its loaddata would then collide
-  by slug with a row created here. So act only on an already-seeded DB.
-- ``get_or_create`` means an author that somehow already exists keeps its prose
-  untouched; re-runs are no-ops.
+  Book table) right after migrations run, and loaddata would then collide by
+  slug with rows created here. So act only on an already-seeded DB.
+- ``get_or_create`` means an author that somehow already exists keeps its
+  prose untouched; re-runs are no-ops. That also makes this a no-op once a
+  Calvin work is imported and ``seed_books`` creates the row itself.
 """
 
 from __future__ import annotations
@@ -30,15 +30,17 @@ AUTHORS_FILE = (
     Path(__file__).resolve().parent.parent / "fixtures" / "content" / "authors.json"
 )
 
-NEW_SLUGS = {"erica-sabiti"}
+NEW_SLUGS = {
+    "john-calvin",
+}
 
 
 def create_authors(apps, schema_editor):
     Author = apps.get_model("library", "Author")
     Book = apps.get_model("library", "Book")
 
-    # Fresh install → the fixture seeding that follows migrate supplies this
-    # row directly; creating it here first would collide on slug.
+    # Fresh install → the fixture seeding that follows migrate supplies these
+    # rows directly; creating them here first would collide on slug.
     if not Book.objects.exists():
         return
 
@@ -64,13 +66,14 @@ def create_authors(apps, schema_editor):
                 "death_year": f.get("death_year"),
                 "original_language": f.get("original_language", "en"),
                 "is_imprint": f.get("is_imprint", False),
+                "same_as": f.get("same_as", []),
             },
         )
 
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("library", "0098_martin_luther_biography_author"),
+        ("library", "0097_contentrevision_rls"),
     ]
 
     operations = [
