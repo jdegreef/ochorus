@@ -45,7 +45,8 @@ from __future__ import annotations
 #:
 #: charles-h-spurgeon    — approved 2026-08-28, sixty.
 #: thomas-a-kempis       — approved 2026-08-30, thirty-six.
-#: andrew-murray         — approved 2026-08-30, twenty-seven.
+#: andrew-murray         — approved 2026-08-30, twenty-seven;
+#:                         and 2026-09-02, twenty-three more (the four new books).
 #: e-m-bounds            — approved 2026-08-30, twenty-eight;
 #:                          twenty-seven more 2026-09-02 (fifty-five).
 #: augustine-of-hippo    — approved 2026-08-30, thirteen.
@@ -825,6 +826,144 @@ ANDREW_MURRAY = [
         "text": "The effect of the word on the heart is in most cases not immediate.",
         "chapter": ("the-inner-chamber", 8),
         "paragraph": 4,
+    },
+    {
+        "slug": "andrew-murray-3272b680",
+        "text": "Faith in Jesus is the secret of a holy life: all holy conduct, all really holy deeds, are the fruit of faith in Jesus as our holiness.",
+        "chapter": ("holy-in-christ", 19),
+        "paragraph": 5,
+    },
+    {
+        "slug": "andrew-murray-6fe1dfa3",
+        "text": "As that holy will enters man’s will, as man’s will accepts and unites itself with God’s will, he becomes holy.",
+        "chapter": ("holy-in-christ", 8),
+        "paragraph": 2,
+    },
+    {
+        "slug": "andrew-murray-7866a702",
+        "text": "Let obedience, the listening to and the doing the will of God, be the joy and the glory of your life; it will give you access unto the Holiness of God.",
+        "chapter": ("holy-in-christ", 8),
+        "paragraph": 11,
+    },
+    {
+        "slug": "andrew-murray-29a39898",
+        "text": "Chastisement is bringing your heart into unity with God’s Will, God’s Son, God’s Love.",
+        "chapter": ("holy-in-christ", 30),
+        "paragraph": 11,
+    },
+    {
+        "slug": "andrew-murray-54e28ba2",
+        "text": "God is not only holy, but makes holy: in the revelation of the Three Persons we have the revelation of the way in which God makes holy.",
+        "chapter": ("holy-in-christ", 13),
+        "paragraph": 4,
+    },
+    {
+        "slug": "andrew-murray-ba80b140",
+        "text": "The spirit of separation is the spirit of self-sacrifice, of surrender to the love of God; the truly separate one will be the most loving and love-winning, given up to serve God and man.",
+        "chapter": ("holy-in-christ", 11),
+        "paragraph": 21,
+    },
+    {
+        "slug": "andrew-murray-77a4141f",
+        "text": "It is the New Life that is the holy life: the full apprehension of it in faith, the full surrender to it in conduct, will be the highway of holiness.",
+        "chapter": ("holy-in-christ", 20),
+        "paragraph": 8,
+    },
+    {
+        "slug": "andrew-murray-71f58011",
+        "text": "In the beginning of the faith-life, faith is struggling; but as long as faith is struggling, faith has not attained its strength.",
+        "chapter": ("absolute-surrender", 8),
+        "paragraph": 59,
+    },
+    {
+        "slug": "andrew-murray-c28b985e",
+        "text": "God alone, who gave us the Holy Spirit, can restore the Holy Spirit in power into our life.",
+        "chapter": ("absolute-surrender", 7),
+        "paragraph": 48,
+    },
+    {
+        "slug": "andrew-murray-3279a07e",
+        "text": "The Holy Spirit is the life of the heavenly Vine, and what you must get from Christ is nothing less than a strong inflow of the Holy Spirit.",
+        "chapter": ("absolute-surrender", 9),
+        "paragraph": 36,
+    },
+    {
+        "slug": "andrew-murray-9222df6d",
+        "text": "Let us seek to understand that the life of the branch is a life of much fruit, because it is a life rooted in Christ, the living, heavenly Vine.",
+        "chapter": ("absolute-surrender", 9),
+        "paragraph": 37,
+    },
+    {
+        "slug": "andrew-murray-c38b33cb",
+        "text": "If the love of God is in your heart you will love your brother.",
+        "chapter": ("absolute-surrender", 2),
+        "paragraph": 45,
+    },
+    {
+        "slug": "andrew-murray-7f00de09",
+        "text": "Christ’s life and work, His suffering and death—it was all prayer, all dependence on God, trust in God, receiving from God, surrender to God.",
+        "chapter": ("ministry-of-intercession", 13),
+        "paragraph": 10,
+    },
+    {
+        "slug": "andrew-murray-ceef792c",
+        "text": "It is the life abiding wholly in Christ that can pray the effectual prayer in the name of Christ.",
+        "chapter": ("ministry-of-intercession", 7),
+        "paragraph": 7,
+    },
+    {
+        "slug": "andrew-murray-be6e77d9",
+        "text": "Intercession is the most perfect form of prayer: it is the prayer Christ ever liveth to pray on His throne.",
+        "chapter": ("ministry-of-intercession", 5),
+        "paragraph": 4,
+    },
+    {
+        "slug": "andrew-murray-3450b45b",
+        "text": "Blessed the man who is not staggered by God’s delay, or silence, or apparent refusal, but is strong in faith, giving glory to God.",
+        "chapter": ("ministry-of-intercession", 5),
+        "paragraph": 16,
+    },
+    {
+        "slug": "andrew-murray-75191679",
+        "text": "Throughout Scripture, in the life of every saint, of God’s own Son, throughout the history of God’s Church, God is, first of all, a prayer-hearing God.",
+        "chapter": ("ministry-of-intercession", 2),
+        "paragraph": 8,
+    },
+    {
+        "slug": "andrew-murray-13b9ac31",
+        "text": "It is the branch-life, existing solely for the Vine, that will have the power to pray aright.",
+        "chapter": ("ministry-of-intercession", 7),
+        "paragraph": 6,
+    },
+    {
+        "slug": "andrew-murray-d736c7c7",
+        "text": "It was by obedience Christ as Vine honored the Father as Husbandman; it is by obedience the believer as branch honors Christ as Vine.",
+        "chapter": ("true-vine", 23),
+        "paragraph": 1,
+    },
+    {
+        "slug": "andrew-murray-20077327",
+        "text": "It is as our life abides in Christ, as we abide in Him, that the fruit we bear will abide.",
+        "chapter": ("true-vine", 31),
+        "paragraph": 2,
+    },
+    {
+        "slug": "andrew-murray-def0eaf2",
+        "text": "The life of abiding and obedience, of love and joy, of cleansing and fruit-bearing, will surely lead to the power of prevailing prayer.",
+        "chapter": ("true-vine", 32),
+        "paragraph": 2,
+    },
+    {
+        "slug": "andrew-murray-716ef8a0",
+        "text": "To be a branch means not only bearing fruit on earth, but power in prayer to bring down blessing from Heaven.",
+        "chapter": ("true-vine", 16),
+        "paragraph": 6,
+    },
+    {
+        "slug": "andrew-murray-53a45df8",
+        "text": "Ever stand before God, in Christ; ever wait for all grace from God, in Christ; ever yield yourself to bear the more fruit the Husbandman asks, in Christ.",
+        "chapter": ("true-vine", 11),
+        "paragraph": 5,
     },
 ]
 
