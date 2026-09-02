@@ -71,7 +71,30 @@ SEED_LANGUAGES: dict[str, dict] = {
         "name": "Luganda",
         "native": "Luganda",
         "bible": "lug",
-        "bible_label": "Luganda Bible (open)",
+        "bible_label": "Open Luganda Contemporary Bible (OLCB)",
+        # The second licensed Bible in the library, and it was declared as
+        # public domain by omission for months. `lug` on the ebible mirror is
+        # the Open Luganda Contemporary Bible (2017), and its meta.json says
+        # `cc-by-sa` with attribution to Biblica, Inc. — not public domain, and
+        # the old "(open)" label read as though it were.
+        #
+        # Measured on 2026-09-02 before this was fixed: 242 quoted spans across
+        # 17 of the 18 shipped Luganda books reproduce OLCB verbatim, 2,867
+        # words in total, with runs up to 34 words (Num 7:89 in
+        # the-inner-chamber is character-identical bar the apostrophe form).
+        # That is not chance — random 6-word runs of shipped Luganda PROSE match
+        # OLCB once in 3,000. So the credit is owed on text already live.
+        #
+        # `_attribution_check` gates on `bible_licence` being non-blank, so
+        # leaving it unset made the check that exists for exactly this case skip
+        # with "Public-domain Bible — nothing to credit." The declaration was
+        # the bug; the guard was fine.
+        "bible_licence": "CC BY-SA 4.0",
+        "bible_attribution": (
+            "Scripture quotations are from the Open Luganda Contemporary Bible, "
+            "© Biblica, Inc., licensed under "
+            "CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)."
+        ),
         "glossary": {
             "justification": "okuweebwa obutuukirivu",
             "sanctification": "okutukuzibwa",

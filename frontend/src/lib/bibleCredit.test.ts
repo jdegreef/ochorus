@@ -13,7 +13,7 @@ describe('bibleCredit', () => {
 	it('says nothing for a public-domain Bible, or an unknown locale', () => {
 		// The normal case. KJV, Van Dyck, Kulish and Almeida owe no credit, and a
 		// footer line saying so anyway would be noise on every page of the site.
-		for (const l of ['en', 'es', 'sw', 'lg', 'pt', 'ar', 'uk']) expect(bibleCredit(l)).toBe('');
+		for (const l of ['en', 'es', 'sw', 'pt', 'ar', 'uk']) expect(bibleCredit(l)).toBe('');
 		expect(bibleCredit('zz')).toBe('');
 	});
 
