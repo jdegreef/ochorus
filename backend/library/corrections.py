@@ -1727,6 +1727,17 @@ BODY_CORRECTIONS: dict[str, dict] = {
 # pairs stay together and reviewable, and so this class of defect -- our own
 # translation output, not the extractor and not the source -- is visibly its own
 # thing. They are Luganda strings and can never match another language's text.
+# `waiting-on-god.en` ch07 opens a paragraph with a quotation mark that never
+# closes: "<p> 'I SPOKE of an army...". Murray is recalling his own previous
+# chapter, not quoting anyone, and the mark renders as a stray glyph in the
+# reader. Repaired here rather than per-edition because the editions AGREE —
+# all six shipped translations (es, pt, sw, hi, ar, uk) drop it, which is the
+# bar this file uses for touching a source. Found while translating to lg (#1205).
+BODY_CORRECTIONS.setdefault("waiting-on-god", {}).setdefault("replacements", []).append(
+    ("<p> 'I SPOKE of an army", "<p> I SPOKE of an army")
+)
+
+
 _LG_DOUBLED_VERB: dict[str, list[tuple[str, str]]] = {
     "all-of-grace": [
         ('biteekeddwateekeddwa', 'biteekeddwa'),

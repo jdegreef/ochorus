@@ -578,6 +578,13 @@
 			"art": true,
 			"scrim": 0.6
 		},
+		"lg/waiting-on-god": {
+			"ground": "84626082c3df7eb5d2a5cd11b5d88ad6e267f6b07fcfdafbc281034e8bc0faf7",
+			"style": "devotional",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.6
+		},
 		"life-and-diary-of-david-brainerd": {
 			"ground": "442fbc2b3e5ed7d8f7277cab5df72e1d099de462f456783a8bb148587be12e80",
 			"style": "enlightenment",
