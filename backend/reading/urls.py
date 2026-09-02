@@ -2,6 +2,7 @@ from django.urls import path
 
 from .views import (
     ActivityView,
+    BookmarksView,
     FavoriteView,
     MarksView,
     MergeView,
@@ -19,6 +20,11 @@ urlpatterns = [
         "favorites/<slug:kind>/<slug:slug>/",
         FavoriteView.as_view(),
         name="reading-favorite",
+    ),
+    path(
+        "bookmarks/<slug:kind>/<slug:slug>/<int:order>/<int:p>/",
+        BookmarksView.as_view(),
+        name="reading-bookmark",
     ),
     path("progress/<slug:slug>/", ProgressView.as_view(), name="reading-progress"),
     path("plan/<slug:slug>/", PlanProgressView.as_view(), name="reading-plan"),

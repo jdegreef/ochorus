@@ -7,6 +7,7 @@ import {
 	FAVORITES_KEY,
 	ACTIVITY_KEY,
 	PLANS_KEY,
+	BOOKMARKS_KEY,
 	LAST_SYNC_KEY,
 	READING_DATA_KEYS,
 	SIGN_OUT_DATA_KEYS,
@@ -18,6 +19,8 @@ import {
 	type WorkKind,
 	type Mark,
 	type MarksStore,
+	type Bookmark,
+	type BookmarksStore,
 	type ProgressRecord,
 	type ProgressMap
 } from './reading-schema';
@@ -61,10 +64,20 @@ interface ServerPlanProgress {
 	done: number[];
 	updated_at: string;
 }
+interface ServerBookmark {
+	kind: WorkKind;
+	book_slug: string;
+	chapter_order: number;
+	paragraph_index: number;
+	bm_id: string;
+	snippet: string;
+	title: string;
+}
 interface ServerState {
 	progress: ServerProgress[];
 	marks: ServerMarks[];
 	favorites?: ServerFavorite[];
+	bookmarks?: ServerBookmark[];
 	activity?: string[];
 	plan_progress?: ServerPlanProgress[];
 }
@@ -199,6 +212,29 @@ class ReadingSync {
 		});
 	}
 
+	/** Mirror a saved bookmark to the account (a paragraph the reader saved). */
+	pushBookmark(kind: WorkKind, slug: string, bm: Bookmark) {
+		if (!this.signedIn || !browser) return;
+		this.#debounce(`bm:${workSlugKey(kind, slug)}:${bm.order}:${bm.p}`, () => {
+			apiFetch(`/api/reading/bookmarks/${kind}/${slug}/${bm.order}/${bm.p}/`, {
+				method: 'PUT',
+				body: JSON.stringify({ bm_id: bm.id, snippet: bm.snippet, title: bm.title })
+			})
+				.then(() => this.#markSynced())
+				.catch(() => {});
+		});
+	}
+
+	/** Mirror a removed bookmark to the account. */
+	removeBookmark(kind: WorkKind, slug: string, order: number, p: number) {
+		if (!this.signedIn || !browser) return;
+		this.#debounce(`bm:${workSlugKey(kind, slug)}:${order}:${p}`, () => {
+			apiFetch(`/api/reading/bookmarks/${kind}/${slug}/${order}/${p}/`, { method: 'DELETE' })
+				.then(() => this.#markSynced())
+				.catch(() => {});
+		});
+	}
+
 	/** Mirror a plan's progress (started + completed days) to the account. */
 	pushPlan(slug: string, state: PlanState) {
 		if (!this.signedIn || !browser) return;
@@ -226,6 +262,7 @@ class ReadingSync {
 		const localProgress = readJson<ProgressMap>(PROGRESS_KEY, {});
 		const localMarks = readJson<MarksStore>(MARKS_KEY, {});
 		const localFavorites = readJson<Record<string, number>>(FAVORITES_KEY, {});
+		const localBookmarks = readJson<BookmarksStore>(BOOKMARKS_KEY, {});
 		const localPlans = readJson<Record<string, PlanState>>(PLANS_KEY, {});
 		// Activity is a bare array, so read it directly (readJson spreads onto an
 		// object fallback, which would mangle an array).
@@ -274,6 +311,20 @@ class ReadingSync {
 				const i = key.indexOf(':');
 				return { kind: key.slice(0, i), slug: key.slice(i + 1) };
 			}),
+			// Bookmarks: a workSlugKey ("book:humility") -> that work's list. Flatten
+			// to one row per saved paragraph; the server unions them by position.
+			bookmarks: Object.entries(localBookmarks).flatMap(([key, list]) => {
+				const { kind, slug } = parseWorkSlugKey(key);
+				return (Array.isArray(list) ? list : []).map((b) => ({
+					kind,
+					book_slug: slug,
+					chapter_order: b.order,
+					paragraph_index: b.p,
+					bm_id: b.id,
+					snippet: b.snippet,
+					title: b.title
+				}));
+			}),
 			activity: localActivity,
 			plan_progress: Object.entries(localPlans).map(([slug, p]) => ({
 				plan_slug: slug,
@@ -307,15 +358,14 @@ class ReadingSync {
 
 	/**
 	 * Sign-out teardown. Cancels any in-flight debounced pushes (they'd fire as
-	 * unauthenticated 401s) and wipes the reader's *server-backed* data from
-	 * localStorage — on a shared device, anything left behind would be merged
-	 * into the next account that signs in (`mergeOnSignIn`).
+	 * unauthenticated 401s) and wipes the reader's data from localStorage — on a
+	 * shared device, anything left behind would be merged into the next account
+	 * that signs in (`mergeOnSignIn`).
 	 *
-	 * Uses SIGN_OUT_DATA_KEYS, NOT the full set: a store with no server copy
-	 * (bookmarks) must not be destroyed by a routine sign-out/expiry, or the
-	 * reader loses it for good. Those are cleared only by the explicit "clear
-	 * reading data" control (`clearDeviceData`). Device preferences (theme, font,
-	 * language) deliberately survive; they aren't identity data.
+	 * Every reading store now has a server copy (bookmarks joined the synced set),
+	 * so SIGN_OUT_DATA_KEYS clears them all — the reader's own copy is safe on the
+	 * account. Device preferences (theme, font, language) deliberately survive;
+	 * they aren't identity data.
 	 */
 	clearOnSignOut() {
 		this.#wipe(SIGN_OUT_DATA_KEYS);
@@ -323,9 +373,9 @@ class ReadingSync {
 
 	/**
 	 * Wipe ALL of the reader's own data from this device — the settings "clear
-	 * reading data" control. Unlike the sign-out teardown this also clears stores
-	 * with no server backup (bookmarks), because the reader asked to erase
-	 * everything. Device preferences (theme, font, language) survive.
+	 * reading data" control. Same set as the sign-out teardown now that every
+	 * store syncs; kept distinct so an intentional erase reads clearly at the call
+	 * site. Device preferences (theme, font, language) survive.
 	 */
 	clearDeviceData() {
 		this.#wipe(READING_DATA_KEYS);
@@ -367,6 +417,26 @@ class ReadingSync {
 				favs[`${f.kind}:${f.slug}`] = Date.parse(f.created_at) || Date.now();
 			}
 			localStorage.setItem(FAVORITES_KEY, JSON.stringify(favs));
+		}
+		if (state.bookmarks) {
+			// Regroup the flat server list back into workSlugKey -> Bookmark[], the
+			// shape the bookmarks store reads. (The store re-hydrates on 'ochorus:sync'.)
+			const store: BookmarksStore = {};
+			for (const b of state.bookmarks) {
+				const key = workSlugKey(b.kind ?? 'book', b.book_slug);
+				const bm: Bookmark = {
+					id: b.bm_id || `${b.chapter_order}:${b.paragraph_index}`,
+					order: b.chapter_order,
+					p: b.paragraph_index,
+					snippet: b.snippet ?? '',
+					title: b.title ?? '',
+					// The save-time is a local-only field the server doesn't keep
+					// (nothing reads it — the list sorts by position).
+					at: Date.now()
+				};
+				(store[key] ??= []).push(bm);
+			}
+			localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(store));
 		}
 		if (state.activity) {
 			localStorage.setItem(

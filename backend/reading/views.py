@@ -28,6 +28,7 @@ from .marks import (
     reconcile_marks,
 )
 from .models import (
+    Bookmark,
     ChapterMarks,
     Favorite,
     FavoriteKind,
@@ -37,6 +38,7 @@ from .models import (
     WorkKind,
 )
 from .serializers import (
+    BookmarkSerializer,
     ChapterMarksSerializer,
     FavoriteSerializer,
     PlanProgressSerializer,
@@ -517,6 +519,68 @@ class FavoriteView(APIView):
         return Response(status=204)
 
 
+def _bookmark_fields(data) -> dict:
+    """The cached display fields from a bookmark payload, bounded to the columns."""
+    return {
+        "bm_id": str(data.get("bm_id") or "")[:80],
+        "snippet": str(data.get("snippet") or "")[:300],
+        "title": str(data.get("title") or "")[:300],
+    }
+
+
+class BookmarksView(APIView):
+    """Save / unsave one bookmark — a paragraph the reader saved on purpose.
+
+    Add/remove like :class:`FavoriteView`: PUT the position to save it (with its
+    cached snippet/title), DELETE to remove it. Identity is the position, so
+    saving the same paragraph twice keeps one row (its display text refreshed).
+    """
+
+    permission_classes = [IsAuthenticated]
+    throttle_classes = [_ReadingWriteThrottle]
+
+    def _locate(self, kind, slug, order, p):
+        """Validate the path parts → (kind, order, p) or None.
+
+        `p` is bounded like the other integer columns (see MAX_CHAPTER_ORDER):
+        `<int:p>` matches an arbitrarily long run of digits, and an out-of-range
+        value would reach the DB as an integer-overflow DataError (a 500). A
+        paragraph index far beyond any real chapter is junk regardless.
+        """
+        k = _kind_or_none(kind)
+        o = _valid_order(order)
+        if k is None or not _valid_slug(slug) or o is None or not 0 <= p <= MAX_CHAPTER_ORDER:
+            return None
+        return k, o, p
+
+    def put(self, request, kind, slug, order, p):
+        loc = self._locate(kind, slug, order, p)
+        if loc is None:
+            return Response({"detail": "Invalid bookmark."}, status=400)
+        k, o, pi = loc
+        profile = _profile(request)
+        obj, _ = Bookmark.objects.update_or_create(
+            profile=profile,
+            kind=k,
+            book_slug=slug,
+            chapter_order=o,
+            paragraph_index=pi,
+            defaults=_bookmark_fields(_dict_body(request)),
+        )
+        return Response(BookmarkSerializer(obj).data)
+
+    def delete(self, request, kind, slug, order, p):
+        loc = self._locate(kind, slug, order, p)
+        if loc is None:
+            return Response({"detail": "Invalid bookmark."}, status=400)
+        k, o, pi = loc
+        profile = _profile(request)
+        Bookmark.objects.filter(
+            profile=profile, kind=k, book_slug=slug, chapter_order=o, paragraph_index=pi
+        ).delete()
+        return Response(status=204)
+
+
 class PlanProgressView(APIView):
     """Upsert the reader's progress in one reading plan.
 
@@ -584,6 +648,7 @@ class MergeView(APIView):
             self._merge_marks(profile, data.get("marks") or [])
             self._merge_sermon_marks(profile, data.get("sermon_marks") or [])
             self._merge_favorites(profile, data.get("favorites") or [])
+            self._merge_bookmarks(profile, data.get("bookmarks") or [])
             self._merge_activity(profile, data.get("activity") or [])
             self._merge_plan_progress(profile, data.get("plan_progress") or [])
         return Response(_serialize_state(profile))
@@ -666,6 +731,41 @@ class MergeView(APIView):
                 keep_server_when_unknown=True,
             )
 
+    def _merge_bookmarks(self, profile, incoming):
+        """Union offline bookmarks into the account in one INSERT … ON CONFLICT
+        DO NOTHING — a bookmark made on either side survives and re-runs are
+        idempotent (the unique position constraint skips ones already saved),
+        like ``_merge_favorites``. A non-list is ignored and non-dict / malformed
+        rows are skipped so a bad bundle can't 500 the reconcile; ``p`` is bounded
+        like the other integer columns to keep an out-of-range value off the DB."""
+        if not isinstance(incoming, list):
+            return
+        rows = {}
+        for row in incoming[:MAX_MERGE_ROWS]:
+            if not isinstance(row, dict):
+                continue
+            slug = row.get("book_slug")
+            kind = _kind_or_none(row.get("kind"))
+            order = _valid_order(row.get("chapter_order"))
+            p = row.get("paragraph_index")
+            if (
+                not _valid_slug(slug)
+                or kind is None
+                or order is None
+                or not isinstance(p, int)
+                or not 0 <= p <= MAX_CHAPTER_ORDER
+            ):
+                continue
+            rows[(kind, slug, order, p)] = Bookmark(
+                profile=profile,
+                kind=kind,
+                book_slug=slug,
+                chapter_order=order,
+                paragraph_index=p,
+                **_bookmark_fields(row),
+            )
+        Bookmark.objects.bulk_create(list(rows.values()), ignore_conflicts=True)
+
     def _merge_marks(self, profile, incoming):
         if not isinstance(incoming, list):
             return
@@ -739,6 +839,7 @@ def _serialize_state(profile) -> dict:
         ).data,
         "marks": ChapterMarksSerializer(profile.marks.all(), many=True).data,
         "favorites": FavoriteSerializer(profile.favorites.all(), many=True).data,
+        "bookmarks": BookmarkSerializer(profile.bookmarks.all(), many=True).data,
         "plan_progress": PlanProgressSerializer(
             profile.plan_progress.all(), many=True
         ).data,

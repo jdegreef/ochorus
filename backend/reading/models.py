@@ -180,6 +180,71 @@ class ChapterMarks(models.Model):
 
 
 
+class Bookmark(models.Model):
+    """A reader's explicit bookmark — a paragraph they saved on purpose.
+
+    Modelled like :class:`Favorite`: one row per saved spot, created by a live
+    PUT and removed by a DELETE, and merges union by position — so a bookmark
+    made on any device shows on all of them. Un-bookmarking is a real server
+    DELETE (it propagates), but — as with Favorites and PlanProgress — it is
+    not tombstoned, so a still-offline device that holds the bookmark can
+    re-introduce it on its next merge. That is the accepted tradeoff for a
+    curated set that unions, and it keeps this a plain add/remove model rather
+    than the tombstoned reconcile ChapterMarks needs.
+
+    Identity is the position — (profile, kind, book_slug, chapter_order,
+    paragraph_index) — because the reader keeps at most one bookmark per
+    paragraph. ``snippet``/``title`` are cached display text so a bookmark shows
+    without refetching the chapter; ``bm_id``/``at`` carry the client's own id
+    and save-time so the localStorage cache round-trips through the server
+    unchanged. A sermon or biography is a single document, so its
+    ``chapter_order`` is always 1 and ``paragraph_index`` alone locates the spot.
+    """
+
+    profile = models.ForeignKey(
+        "accounts.UserProfile",
+        on_delete=models.CASCADE,
+        related_name="bookmarks",
+    )
+    kind = models.CharField(
+        max_length=10, choices=WorkKind.choices, default=WorkKind.BOOK
+    )
+    book_slug = models.SlugField(max_length=160)
+    chapter_order = models.PositiveIntegerField(default=1)
+    paragraph_index = models.PositiveIntegerField(default=0)
+
+    # Cached display text + the client's own id, so the reader shows a bookmark
+    # without refetching the chapter and its list key stays stable across a sync.
+    # (The client also keeps a local save-time, but nothing reads it — the list
+    # sorts by position — so it isn't stored here.)
+    bm_id = models.CharField(max_length=80, blank=True)
+    snippet = models.CharField(max_length=300, blank=True)
+    title = models.CharField(max_length=300, blank=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["book_slug", "chapter_order", "paragraph_index"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=[
+                    "profile",
+                    "kind",
+                    "book_slug",
+                    "chapter_order",
+                    "paragraph_index",
+                ],
+                name="uniq_bookmark_profile_spot",
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return (
+            f"{self.profile_id} ▸ {self.kind}:{self.book_slug}"
+            f"/{self.chapter_order}#{self.paragraph_index}"
+        )
+
+
 class ReadingDay(models.Model):
     """One calendar day on which the reader read something — the activity log
     behind the reading streak.

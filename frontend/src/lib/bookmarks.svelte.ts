@@ -1,3 +1,4 @@
+import { browser } from '$app/environment';
 import {
 	BOOKMARKS_KEY,
 	parseWorkSlugKey,
@@ -7,12 +8,14 @@ import {
 	type WorkKind
 } from './reading-schema';
 import { readJSON, writeJSON } from './persisted';
+import { readingSync } from './readingSync';
 
 /**
  * Explicit bookmarks — places the reader saved on purpose (a paragraph within a
  * work), distinct from the single auto-saved resume point (`progress.ts`) and
- * from text-range highlights (`marks.svelte.ts`). Device-local in localStorage
- * for now; account-sync can follow the marks/progress pattern later.
+ * from text-range highlights (`marks.svelte.ts`). localStorage is the offline
+ * source of truth; each change mirrors to the account via `readingSync` (a live
+ * PUT to save, DELETE to remove), the same add/remove sync Favorites use.
  *
  * Keyed by `workSlugKey`, so all three long-form kinds can be bookmarked. Books
  * stay under their bare slug, which is what keeps every bookmark saved before
@@ -34,8 +37,18 @@ class Bookmarks {
 	/** Reactive bookmarks of the currently open work, in reading order. */
 	list = $state<Bookmark[]>([]);
 	#key = '';
+	#kind: WorkKind = 'book';
+	#slug = '';
+
+	constructor() {
+		// After a sign-in merge / cross-tab write overwrites the cache, re-read so
+		// the open work reflects the synced set (same signal marks/favorites use).
+		if (browser) window.addEventListener('ochorus:sync', () => this.refresh());
+	}
 
 	load(kind: WorkKind, slug: string) {
+		this.#kind = kind;
+		this.#slug = slug;
 		this.#key = workSlugKey(kind, slug);
 		this.#hydrate();
 	}
@@ -81,12 +94,15 @@ class Bookmarks {
 		};
 		this.list = [...this.list, bm].sort(byPosition);
 		this.#persist();
+		readingSync.pushBookmark(this.#kind, this.#slug, bm);
 		return true;
 	}
 
 	remove(id: string) {
+		const bm = this.list.find((b) => b.id === id);
 		this.list = this.list.filter((b) => b.id !== id);
 		this.#persist();
+		if (bm) readingSync.removeBookmark(this.#kind, this.#slug, bm.order, bm.p);
 	}
 
 	/** Every bookmark across every work, for the notebook. */

@@ -33,7 +33,7 @@ describe('readingSync last-synced', () => {
 });
 
 describe('readingSync.clearOnSignOut', () => {
-	it('removes server-backed reading data but keeps bookmarks and device prefs', () => {
+	it('removes all reading data (bookmarks now sync) but keeps device prefs', () => {
 		for (const key of READING_DATA_KEYS) localStorage.setItem(key, '{"some":"data"}');
 		localStorage.setItem('ochorus:reader-prefs', '{"scale":1.2}');
 		localStorage.setItem('ochorus:lang', 'lg');
@@ -41,9 +41,9 @@ describe('readingSync.clearOnSignOut', () => {
 		readingSync.clearOnSignOut();
 
 		for (const key of SIGN_OUT_DATA_KEYS) expect(localStorage.getItem(key)).toBeNull();
-		// Bookmarks have no server copy yet, so a sign-out must NOT destroy them
-		// (see review #36) — they'd be unrecoverable.
-		expect(localStorage.getItem(BOOKMARKS_KEY)).toBe('{"some":"data"}');
+		// Bookmarks now have a server copy, so a sign-out clears them like the rest
+		// (the account keeps them) — no shared-device leak into the next merge.
+		expect(localStorage.getItem(BOOKMARKS_KEY)).toBeNull();
 		// Theme/font/language are device preferences, not identity data.
 		expect(localStorage.getItem('ochorus:reader-prefs')).toBe('{"scale":1.2}');
 		expect(localStorage.getItem('ochorus:lang')).toBe('lg');
@@ -144,6 +144,43 @@ describe('readingSync.clearOnSignOut', () => {
 		} finally {
 			fetchSpy.mockRestore();
 			vi.useRealTimers();
+		}
+	});
+
+	it('pushBookmark PUTs a saved paragraph, removeBookmark DELETEs it', async () => {
+		const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+			new Response('{}', { status: 200 })
+		);
+		vi.useFakeTimers();
+		try {
+			readingSync.setSignedIn(true);
+			readingSync.pushBookmark('book', 'humility', {
+				id: 'abc',
+				order: 2,
+				p: 5,
+				snippet: 'Blessed',
+				title: 'Ch 2',
+				at: 111
+			});
+			await vi.runAllTimersAsync();
+			const [url, init] = fetchSpy.mock.calls[0];
+			expect(String(url)).toContain('/api/reading/bookmarks/book/humility/2/5/');
+			expect(init?.method).toBe('PUT');
+			expect(JSON.parse(String(init?.body))).toEqual({
+				bm_id: 'abc',
+				snippet: 'Blessed',
+				title: 'Ch 2'
+			});
+
+			readingSync.removeBookmark('book', 'humility', 2, 5);
+			await vi.runAllTimersAsync();
+			const [url2, init2] = fetchSpy.mock.calls[1];
+			expect(String(url2)).toContain('/api/reading/bookmarks/book/humility/2/5/');
+			expect(init2?.method).toBe('DELETE');
+		} finally {
+			fetchSpy.mockRestore();
+			vi.useRealTimers();
+			readingSync.setSignedIn(false);
 		}
 	});
 
