@@ -8,14 +8,19 @@ Reproducible: run `import_ccel enchiridion` first (populates the 124 raw NPNF
 sections from schaff/npnf103 part iv.ii), then this script. Idempotent — it
 reads the raw sections, deletes them, and writes the 11 grouped chapters.
 """
-import os, sys, django
+import os
+import sys
+
+import django
+
 sys.path.insert(0, ".")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
 os.environ.setdefault("DJANGO_DEBUG", "true")
 django.setup()
-from django.utils.html import escape
-from library.ingest import clean_fragment
-from library.models import Book, Chapter
+from django.utils.html import escape  # noqa: E402
+
+from library.ingest import clean_fragment  # noqa: E402
+from library.models import Book, Chapter  # noqa: E402
 
 # (thematic title, first raw order, last raw order) — covers raw 3..124 with no gaps
 GROUPS = [
