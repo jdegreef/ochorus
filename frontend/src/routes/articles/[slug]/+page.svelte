@@ -88,7 +88,7 @@
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		<div class="article-body" lang={article.language}>{@html article.body_html}</div>
 
-		{#if article.related.length}
+		{#if article.related?.length}
 			<aside class="read-next" aria-labelledby="read-next-heading">
 				<h2 id="read-next-heading" class="text-h3">Read next</h2>
 				<ul>
