@@ -433,6 +433,20 @@ dropped; chapters under 120 words are dropped as stubs.
     against the chapter title, so it never sees the internal repeats — strip that
     leading title paragraph per section before concatenating, and eyeball the
     rendered sub-structure, not just the gates. *(2026-09)*
+  - **When the sub-work IS a collection of works (each a real part divider),
+    `group_parts=True` works — but keeps two things you don't want.** Cyprian's
+    treatises are `schaff/anf05` under stem `iv.v`: `part="iv.v"` alone
+    over-splits into 205 per-paragraph leaves; `group_parts=True` gives 13 clean
+    chapters (one per treatise), but includes the ANF editor's trailing
+    **"Elucidations"** (scholarly notes, not the author) and restates a redundant
+    `<p>Treatise N.</p><p>Title.</p>` at each chapter head. Drop/strip both with a
+    `build_<name>` command that reuses `import_ccel.toc_parts` + `extract_body`
+    (skip `is_front_matter(part_title) or "elucidation" in part_title.lower()`;
+    `re.sub` the head with `count=1` — do NOT `\A`-anchor it, because a multi-leaf
+    part carries the head AFTER its first `<h3>` leaf subheading). Cyprian already
+    had a bio+portrait, so no authors.json/migration — `seed_books` creates the
+    book on the existing author. `build_cyprian_treatises` is the model.
+    *(treatises-of-cyprian, 2026-09)*
   - **Fixing the bodies of an ALREADY-SHIPPED book needs a data migration, not
     just a fixture edit.** `seed_books` never re-syncs the chapters of a book it
     has already created (chapter `order` is a public contract), so a re-chapterize
