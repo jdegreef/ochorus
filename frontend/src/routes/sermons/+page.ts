@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-02 (batch3b): six Luganda Spurgeon/Taylor sermons —
+// blessed-adversity (#1340), sweet-comfort-for-feeble-saints (#1341),
+// comfort-for-the-desponding (#1342), the-sweet-uses-of-adversity (#1343),
+// the-ravens-cry (#1344), christ-precious-to-believers (#1345). Rebuilds /lg/sermons.
 // prerender refresh 2026-09-02: five new sermon editions — aggressive-christianity.es
 // (Booth), blessed-adversity.es (Hudson Taylor), salvation-by-faith.es & .pt
 // (Wesley), the-dying-thief.pt (Moody). Rebuilds the /es and /pt sermon shelves.
