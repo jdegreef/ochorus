@@ -92,8 +92,15 @@ BOOK_PEOPLE: list[tuple[str, list[tuple[str, str]]]] = [
         "tukutendereza",
         [
             ("simeon-nsibambi", "subject"),
+            ("joe-church", "subject"),
+            ("yosiya-kinuka", "subject"),
+            ("blasio-kigozi", "subject"),
+            ("william-nagenda", "subject"),
             ("erica-sabiti", "subject"),
+            ("yona-kanamuzeyi", "subject"),
             ("festo-kivengere", "subject"),
+            ("janani-luwum", "subject"),
+            ("lawrence-barham", "subject"),
         ],
     ),
     (
