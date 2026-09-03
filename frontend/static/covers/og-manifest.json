@@ -956,6 +956,13 @@
 			"art": true,
 			"scrim": 0.5
 		},
+		"sw/the-fourfold-gospel": {
+			"ground": "976ff3d612d8a48631c31ec06ae934c87a27df53d247074256f3289f651ae593",
+			"style": "revival",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85
+		},
 		"sw/the-inner-chamber": {
 			"ground": "f61e809f09f9599943ecc915b7631473eff9c78e20dbdbf35a0c021d057941a6",
 			"style": "devotional",

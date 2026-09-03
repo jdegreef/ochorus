@@ -1,0 +1,249 @@
+{
+ "kind": "book",
+ "slug": "the-fourfold-gospel",
+ "language": "sw",
+ "job_issue": 871,
+ "references": [
+  {
+   "reference": "Rev 7:10",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Rev 7:10",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Exod 20:19",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Col 1:13",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Mark 9:44",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Rev 5:12",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "christs-boundless-compassion.sw.json"
+  },
+  {
+   "reference": "Rev 7:10",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Eph 1:13",
+   "status": "mined",
+   "block_index": 31,
+   "source_file": "the-inner-chamber.sw.json"
+  },
+  {
+   "reference": "Isa 45:22",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "John 6:40",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Col 2:6",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Rom 10:6-9",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "John 5:24",
+   "status": "mined",
+   "block_index": 53,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "2 Cor 6:2",
+   "status": "mined",
+   "block_index": 60,
+   "source_file": "purity-of-heart.sw.json"
+  },
+  {
+   "reference": "Matthew 8:17",
+   "status": "mined",
+   "block_index": 115,
+   "source_file": "himself.sw.json"
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "mined",
+   "block_index": 115,
+   "source_file": "the-key-in-my-hand.sw.json"
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "mined",
+   "block_index": 291,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "1 Peter 1:5",
+   "status": "mined",
+   "block_index": 292,
+   "source_file": "free-grace.sw.json"
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "self_rendered",
+   "block_index": 293
+  },
+  {
+   "reference": "1 Peter 1:5",
+   "status": "self_rendered",
+   "block_index": 293
+  },
+  {
+   "reference": "Jeremiah 31:10",
+   "status": "self_rendered",
+   "block_index": 293
+  },
+  {
+   "reference": "Genesis 28:15",
+   "status": "self_rendered",
+   "block_index": 295
+  },
+  {
+   "reference": "Isaiah 41:14",
+   "status": "self_rendered",
+   "block_index": 295
+  },
+  {
+   "reference": "Genesis 48:15-16",
+   "status": "self_rendered",
+   "block_index": 295
+  },
+  {
+   "reference": "Genesis 28:15",
+   "status": "self_rendered",
+   "block_index": 296
+  },
+  {
+   "reference": "Psalm 17:8",
+   "status": "self_rendered",
+   "block_index": 305
+  },
+  {
+   "reference": "Psalm 31:20",
+   "status": "self_rendered",
+   "block_index": 310
+  },
+  {
+   "reference": "Psalm 120:3-4",
+   "status": "self_rendered",
+   "block_index": 310
+  },
+  {
+   "reference": "2 Samuel 16:10-12",
+   "status": "self_rendered",
+   "block_index": 310
+  },
+  {
+   "reference": "1 Peter 4:19",
+   "status": "self_rendered",
+   "block_index": 310
+  },
+  {
+   "reference": "Isaiah 26:3",
+   "status": "mined",
+   "block_index": 311,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Philippians 4:6-7",
+   "status": "mined",
+   "block_index": 311,
+   "source_file": "blessed-adversity.sw.json"
+  },
+  {
+   "reference": "2 Chronicles 32:7-8",
+   "status": "self_rendered",
+   "block_index": 311
+  },
+  {
+   "reference": "1 Peter 1:5",
+   "status": "self_rendered",
+   "block_index": 332
+  },
+  {
+   "reference": "2 Corinthians 2:14",
+   "status": "self_rendered",
+   "block_index": 332
+  },
+  {
+   "reference": "John 17:15",
+   "status": "self_rendered",
+   "block_index": 333
+  },
+  {
+   "reference": "1 Peter 5:8",
+   "status": "mined",
+   "block_index": 333,
+   "source_file": "the-key-in-my-hand.sw.json"
+  },
+  {
+   "reference": "1 John 5:18",
+   "status": "mined",
+   "block_index": 335,
+   "source_file": "salvation-by-faith.sw.json"
+  },
+  {
+   "reference": "Isaiah 42:6",
+   "status": "self_rendered",
+   "block_index": 336
+  },
+  {
+   "reference": "Psalm 105:15",
+   "status": "self_rendered",
+   "block_index": 336
+  },
+  {
+   "reference": "Romans 14:4",
+   "status": "self_rendered",
+   "block_index": 336
+  },
+  {
+   "reference": "Isaiah 51:16",
+   "status": "self_rendered",
+   "block_index": 336
+  },
+  {
+   "reference": "Isaiah 27:2-3",
+   "status": "mined",
+   "block_index": 337,
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "mined",
+   "block_index": 338,
+   "source_file": "the-way-to-god.sw.json"
+  }
+ ]
+}

@@ -508,6 +508,24 @@ archaic spelling and period punctuation are the text, not defects in it.
   per-chapter validation + gap re-dispatch catches whatever still slips.
 - Container restarts mid-run: output files survive in the scratchpad; re-run
   validation and fill gaps rather than restarting from zero.
+- **A SESSION RATE LIMIT can 429 every in-flight translator at once, mid-run,
+  and their output files survive in a DEFECTIVE, pre-fix state — existing is not
+  valid** (batch of 16, 2026-09-02; the limit reset hours later). Salvage it,
+  don't lose the batch: (1) `ls out/` to see what got written — agents that
+  died DURING their own self-validation had already written output, so more
+  survives than the failure notices imply (here 11 of 16, incl. all 6 chapters
+  of a book); (2) re-validate EVERY on-disk file yourself — an agent 429'd while
+  applying a fix leaves the pre-fix version, so two files here had real defects
+  (a chapter missing two empty `<b> </b>` artifacts → tag-count mismatch; a
+  sermon with dropped numerals from an unfinished pass); (3) hand-repair the
+  trivial STRUCTURAL drops (restoring `<b> </b>` to match the source tag
+  sequence is safe and byte-local) but DISCARD a file with content defects you
+  can't confidently fix — re-run it after the reset instead; (4) ship the
+  complete valid subset and **release the undone jobs**: remove their
+  `in-progress` label and comment why, so a fresh run can take them. A book is
+  all-or-nothing (a partial book cannot ship), so one unrepairable chapter
+  blocks the whole book — but a dropped-empty-tag chapter is usually
+  hand-fixable, which saved the book here.
 - `library/tests.py` `ScriptureTests` fail locally without `pythonbible` —
   install it via `uv pip install pythonbible` (CI has it; don't skip tests).
 - Job already shipped out-of-band (job #170): another session translated and
