@@ -58,6 +58,10 @@
 			"content": "6a18896e765d694195f5cea44bdc22ce28d5aaaf7c427458db595e42e5c204bd",
 			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
 		},
+		"fall-and-recovery-of-man": {
+			"content": "67aa2a52a0d92f064decc26ee1da94b87555af50ecd68ea8fb4d14af85a3daa0",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
 		"free-grace": {
 			"content": "43fd7561c1c80c780f2a0faeb520d2d3e1f183ec0ed7696343f7135fff2fec39",
 			"art": "95dc35b22ecab4ab1c127c0171c0371b2d5a775d8b134617f1884b5b206d0fd7"
@@ -138,9 +142,17 @@
 			"content": "daa26fb3232004840cba6054a8a867b2423c518bbf58f5d039e238f892c8ff02",
 			"art": "ba717aed7ca98ed58c1a33bde7285915223b31709ae013cb7af8a60252f5c15f"
 		},
+		"the-resurrection-of-jesus": {
+			"content": "1d8038a312613ab36fc37ef86f055775db36a633f9c28d84c5cbf4174ef4c5c2",
+			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
+		},
 		"the-sweet-uses-of-adversity": {
 			"content": "716df6ad29e427eccd4faf225930cee8e6674c7cb1dd6e9c14490ac12b60e400",
 			"art": "a5189620af47a2f8dfcaab22b93ef11d5dd5306b10885e4546ae1ff7fb95dc55"
+		},
+		"the-triumph-of-calvary": {
+			"content": "0ff214cacd5eadabe8cbce746a6aaa8ee0a86d67ab98a4cf1db6397a1acd970f",
+			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
 		},
 		"the-way-of-salvation": {
 			"content": "151b76b0c1604949d091d01f48c00420054529381befbe652eec80cf109ac49b",
