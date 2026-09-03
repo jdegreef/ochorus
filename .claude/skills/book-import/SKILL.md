@@ -761,8 +761,20 @@ gotchas found adding one sermon each for Chrysostom/Finney/Luther *(2026-09)*:
     real paragraph) to cut a leading byline/nav, and its page may append a
     trailer the single-element nav rule can't reach: `extract_web_sermon` now
     also cuts the gospeltruth.net trailer (index link / copyright / nav menu /
-    certification seal) and a bare `<p>TOP</p>` jump link. After any such change,
-    re-import the OTHER web sermons and confirm word counts are byte-unchanged.
+    certification seal), a bare `<p>TOP</p>` jump link, BibleHub's "Parallel
+    Verses" cross-reference block (+ ad-slot comments), and a collected-edition
+    "END OF VOL." marker. After any such change, re-import the OTHER web sermons
+    and confirm word counts are byte-unchanged. **Good web fallbacks by author:**
+    gospeltruth.net (Finney), sermons.martinluther.us (Luther/Lenker),
+    biblehub.com `/sermons/auth/…` (Calvin, and other PD anthology sermons in
+    the Kleiser translation).
+  - **Adding sermons can trip `ReleaseProseSourceCoverageTests`** — enough
+    `body_starts`/title/comment text in `sermon_catalog.py` tips its prose
+    detector, and it fails "modules … carry prose, but are neither a content
+    root nor exempt." The reader sees a sermon's title/scripture from the
+    FIXTURE (what `seed_sermons` upserts), not from `sermon_catalog.py`, so the
+    module belongs in `NOT_READER_PROSE` (added, same as `catalog.py`), not in
+    `content_sources.json`.
   - **A sermon needs a `summary`** (a shelf gate) and an **og:image twin**
     (`SermonShareCardTests`). The twin generator `frontend/scripts/og-card.mjs`
     reads Linux-only Liberation fonts from `/usr/share/fonts/…`, so
