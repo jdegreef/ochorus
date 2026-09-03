@@ -6,6 +6,9 @@ name: Generate sermon og twins
 # fonts) to generate and commit the twins to the current branch.
 on:
   workflow_dispatch:
+  push:
+    branches: [claude/ochorus-dev-add-sermons]
+    paths: ['.github/workflows/og-sermons.yml']
 
 permissions:
   contents: write
