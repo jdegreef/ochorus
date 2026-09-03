@@ -284,6 +284,10 @@
    "orphan-close-quote": 4,
    "space-before-punct": 8
   },
+  "treatises-of-cyprian": {
+   "orphan-close-quote": 6,
+   "word-fusion": 1
+  },
   "unfailing-springs": {
    "space-before-punct": 1
   },

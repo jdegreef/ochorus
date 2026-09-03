@@ -140,6 +140,7 @@ TOPICS = [
         "\u2014 the old paths, still good.",
         [
             "confessions",
+            "treatises-of-cyprian",
             "pilgrims-progress",
             "the-imitation-of-christ",
             "freedom-of-the-will",

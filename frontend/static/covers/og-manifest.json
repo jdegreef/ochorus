@@ -1138,6 +1138,13 @@
 			"art": true,
 			"scrim": 0.75
 		},
+		"treatises-of-cyprian": {
+			"ground": "adf0f653b6f737896e056694d6d40586a1be563a3e2454d1e9a08fe57b77deec",
+			"style": "inscriptional",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"true-vine": {
 			"ground": "54b7d63dda3eb100efe8295a4392fe2def46adebd5317bf6a3841589cc727ea7",
 			"style": "devotional",
