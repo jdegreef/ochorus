@@ -1289,6 +1289,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("Consider this: Moses’ salvation", "Consider this: Noah’s salvation"),
             ("God looks upo n us", "God looks upon us"),
             ("the praise o f His glory", "the praise of His glory"),
+            ("with every spirit ual blessing", "with every spiritual blessing"),
             ("GRACE - G od’s R iches A t C hrist’s E xpense", "GRACE - God’s Riches At Christ’s Expense"),
             ("Jesu s said that", "Jesus said that"),
             ("We are reckone d to have", "We are reckoned to have"),
