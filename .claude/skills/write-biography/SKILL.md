@@ -239,21 +239,24 @@ force if every paragraph is a box.
 
    **Expect that append to conflict.** Because the rule is "always append",
    every concurrent session writes to the same last line, so two biography PRs
-   in flight at once collide by construction. Resolve by keeping EVERY new row
-   — take the three-way stages and diff each side against the base rather than
-   picking a side, since "ours" and "theirs" each hold a row the other lacks:
+   in flight at once collide by construction. If YOUR branch only ever appended
+   (the normal case), the whole resolution is **main's file plus your new
+   rows** — take `theirs` (origin/main) entire and add only the slugs it lacks:
    ```python
-   g = lambda st: json.loads(subprocess.run(
-       ['git','show',f':{st}:'+PATH], capture_output=True, text=True).stdout)
-   base, ours, theirs = g(1), g(2), g(3)
-   bslugs = {r['fields']['slug'] for r in base}
-   new_theirs = [r for r in theirs if r['fields']['slug'] not in bslugs]
-   new_ours   = [r for r in ours   if r['fields']['slug'] not in bslugs]
-   merged = base + new_theirs + new_ours     # main's row first: creation order
+   show = lambda ref: json.loads(subprocess.run(
+       ['git','show',f'{ref}:'+PATH], capture_output=True, text=True).stdout)
+   theirs, ours = show('origin/main'), show('HEAD')
+   their_slugs = {r['fields']['slug'] for r in theirs}
+   merged = theirs + [r for r in ours if r['fields']['slug'] not in their_slugs]
    assert len({r['fields']['slug'] for r in merged}) == len(merged)
    ```
-   Main's rows go first, because the file is in creation order and theirs
-   landed first. Then re-dump in the committed format (step 4).
+   **Do NOT rebuild from `base + new_theirs + new_ours`.** That keeps *base's*
+   copy of every existing row — so if main edited rows IN PLACE (2026-09: a
+   `list_in_biographies` field added corpus-wide), the diff-against-base recipe
+   silently reverts those edits, and `AuthorListTests` reddens the build. Taking
+   `theirs` whole preserves main's in-place edits; you only ever add your own new
+   rows. Verify the diff against origin/main is exactly your appended author(s).
+   Then re-dump in the committed format (step 4).
 
 ## The portrait (try for one, same page)
 
