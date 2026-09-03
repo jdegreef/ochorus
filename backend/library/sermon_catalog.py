@@ -292,6 +292,41 @@ SERMONS: list[SermonEntry] = [
         scripture_ref="Mark 16:15",
         body_starts="I WAS thinking, while I was reading the lesson",
     ),
+    # Three more from the same 1880 "Aggressive Christianity" volume, so the
+    # first woman on the shelf has more than one address. The verse sits in the
+    # source's Geneva-font masthead block (not a <p>), so a web import keeps it
+    # in scripture_ref and starts the body at `body_starts` — the fixture is
+    # authoritative regardless (see backend/CLAUDE.md; sermon_catalog is
+    # import-time config the fixture supersedes).
+    SermonEntry(
+        "the-worlds-need",
+        "The World's Need",
+        "catherine-booth",
+        "web",
+        "https://www.gospeltruth.net/booth/cath_booth/agressive_christianity/cbooth_9_worldsneed.htm",
+        # Source masthead prints "Matthew xxi. 23", but the words it quotes
+        # ("Son, go work today in my vineyard") are Matthew 21:28.
+        scripture_ref="Matthew 21:28; Luke 14:23",
+        body_starts="WE might have enumerated other texts",
+    ),
+    SermonEntry(
+        "witnessing-for-christ",
+        "Witnessing for Christ",
+        "catherine-booth",
+        "web",
+        "https://www.gospeltruth.net/booth/cath_booth/agressive_christianity/cbooth_7_witnesses.htm",
+        scripture_ref="Acts 1:8; Acts 5:32",
+        body_starts="AGAIN and again the same vocation and commission",
+    ),
+    SermonEntry(
+        "the-holy-ghost",
+        "The Holy Ghost",
+        "catherine-booth",
+        "web",
+        "https://www.gospeltruth.net/booth/cath_booth/agressive_christianity/cbooth_10_holyghost.htm",
+        scripture_ref="Luke 24:49; Acts 1:8",
+        body_starts="FRIENDS who were present at former services",
+    ),
     # John Wesley — the first pre-19th-century sermon in the library, and the
     # opening of the largest untapped seam here: the 44 Standard Sermons are
     # his primary corpus, all public domain on CCEL.
@@ -310,6 +345,39 @@ SERMONS: list[SermonEntry] = [
         # CCEL renders it "Eph. 2:8"; every other sermon on the shelf stores a
         # full book name, and this string is what the reader displays.
         scripture_ref="Ephesians 2:8",
+    ),
+    # Three more Standard Sermons, so Wesley has more than one on the shelf.
+    SermonEntry(
+        "the-almost-christian",
+        "The Almost Christian",
+        "john-wesley",
+        "ccel",
+        _WESLEY + "sermons.v.ii.html",
+        scripture_ref="Acts 26:28",
+        preached_on="1741-07-25",
+    ),
+    # The shipped fixture repairs one CCEL 1872-text slip by hand — "whether
+    # we;' eat" → "whether we eat"; a re-import would reintroduce it, so the
+    # fixture is authoritative here.
+    SermonEntry(
+        "the-circumcision-of-the-heart",
+        "The Circumcision of the Heart",
+        "john-wesley",
+        "ccel",
+        _WESLEY + "sermons.v.xvii.html",
+        scripture_ref="Romans 2:29",
+        preached_on="1733-01-01",
+    ),
+    # CCEL appends Charles Wesley's hymn "Catholic Love" ("added in some
+    # editions") in brackets after the sermon; the shipped fixture drops that
+    # editorial appendix, which extract() does not — so the fixture wins.
+    SermonEntry(
+        "catholic-spirit",
+        "Catholic Spirit",
+        "john-wesley",
+        "ccel",
+        _WESLEY + "sermons.v.xxxix.html",
+        scripture_ref="2 Kings 10:15",
     ),
     # --- One famous sermon each for four preachers who had none --------------
     # These authors already carry a bio (and some a book that is NOT a sermon
