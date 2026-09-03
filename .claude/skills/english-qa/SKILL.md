@@ -213,6 +213,17 @@ Reported, not fixed
   that protects an approver's review state is what stops the seed overwriting
   bodies. So watch the seed output for drift, and remember: body text reaches
   production through `BODY_CORRECTIONS`; metadata needs a migration.
+- **Verifying a split-word sweep with a stranded-LETTER scan, or with the
+  audit.** A pervasive-spacing repair (`feasting-at-the-table`, PRs #1356/#1370)
+  is a hand-built list, and the audit is no safety net: `audit_english` has no
+  split-word class, so it read 0 both before and after while `spirit ual` still
+  shipped. A quick "any lone 1–2 char token left?" scan is no net either — it
+  misses a split into a valid word plus a ≥3-char tail (`spirit`+`ual`,
+  `resurrecti`+`on`, `follow`+`ed`). The only real check is to re-run the FULL
+  detector — the one that flags a two-token pair whose concatenation is a word
+  the corpus knows but whose pieces aren't both words — against the SETTLED
+  fixture after `normalize`/`rederive`, and confirm zero real survivors. Skip
+  that and the list ships one pair short, invisibly, past a green audit.
 - **A `BODY_CORRECTIONS` pair whose `old` is plain prose.** Every declared pair
   is applied to `body_html` AND handed `body_text` by
   `tests_english_audit.test_the_fixture_is_clean`, which requires a no-op on
