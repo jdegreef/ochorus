@@ -886,6 +886,44 @@ that continues the last one has no standalone reference to give. Check the lengt
 distribution too — existing sermons run ~1,000–8,300 words, so a 57k-word "set of
 addresses" is a book by size alone. *(Taylor sermon sourcing, 2026-08)*
 
+**Adding a STANDALONE sermon — use `import_sermons`, don't hand-roll the
+extractor.** A single sermon on the sermon shelf (not sermons compiled into a
+book) has a maintained end-to-end path; a whole session was once spent
+re-writing a CCEL/gospeltruth extractor + Django-serializing fixtures by hand,
+all of which this command already does. The steps:
+- **Add a `SermonEntry` to `SERMONS` in `library/sermon_catalog.py`.** `source`
+  is `"ccel"` (one page per sermon, `source_ref` = full URL), `"gutenberg"`
+  (`source_ref` = ebook id, `section` = the heading text), or `"web"`
+  (`source_ref` = URL, `body_starts` = the literal text the first body paragraph
+  begins with — this is how it finds the body under a gospeltruth masthead).
+  `scripture_ref` / `preached_on` are overrides; leave blank to let the page
+  parse them. An author with NO books yet also needs an `AuthorEntry` in
+  `SERMON_AUTHORS` (use the slug `authors.json` uses); an author who already has
+  books reuses the book catalog's entry.
+- **`python manage.py import_sermons <slug>`** upserts the `Sermon` row:
+  `extract()` drops the masthead, parses the date + scripture ref, keeps the
+  scripture quote as an opening `<blockquote>` (CCEL) — web sermons keep the
+  verse only in `scripture_ref`, body is plain `<p>` — stores the settled body,
+  and runs `english_audit`. Both CCEL (Wesley/Spurgeon) and gospeltruth-style
+  web pages (Booth, Finney) are supported.
+- **Then the finish:** serialize the row to `fixtures/content/sermons/<slug>.<lang>.json`
+  (Django serializer, `indent=1`, natural keys — NOT `json.dump`), and
+  **`cd frontend && npm run og:sermons`** — `SermonShareCardTests` fails the
+  build until each sermon has a committed `frontend/static/og/sermons/<slug>.png`
+  + a matching `og-manifest.json` entry. A sermon with no curated emblem in
+  `SERMON_EMBLEMS` (`frontend/src/lib/emblemNames.ts`) draws a fallback-pool
+  emblem automatically — fine, no catalogue edit required.
+- **macOS font gotcha for `og:sermons`.** `scripts/og-card.mjs` hardcodes Linux
+  Liberation paths (`/usr/share/fonts/truetype/liberation/Liberation{Serif-Bold,
+  Sans-Regular}.ttf`); SIP blocks creating that dir on a Mac. Fetch the real
+  Liberation TTFs (SIL OFL, the `liberationfonts` GitHub release — the copies at
+  `/private/tmp/libfonts` were once a broken HTML download) and run the
+  generator under a tiny `--import` preload that remaps only those two
+  `fs.readFileSync`/`openSync` paths. Editing `og-card.mjs` directly would
+  poison the manifest's `composition` digest (bytes of the two scripts); the
+  preload keeps it CI-correct because nothing recomputes composition, only
+  re-running does. *(Wesley + Booth second sermons, 2026-09)*
+
 When the catalogue lacks a wanted title (e.g. more Spurgeon), source it from
 elsewhere. Preference order — cleaner text first: **CCEL** (`source="ccel"`,
 `<author>/<work>` path) → **Project Gutenberg** (`source="gutenberg"`, ebook id)
