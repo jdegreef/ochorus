@@ -1,0 +1,122 @@
+{
+ "kind": "sermon",
+ "slug": "blessed-adversity",
+ "language": "es",
+ "references": [
+  {
+   "reference": "Psalm 23:6",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Romans 8:28",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Romans 5:3-5",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Job 1:8",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Job 2:3",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Job 1:9",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Philippians 4:4-7",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Job 1:12",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Job 2:9",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Job 1:21",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Job 1:11",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Job 2:5",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "John 18:11",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Romans 8:28",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Job 2:3",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Job 2:4-5",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Job 19:17",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Psalm 30:5",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Genesis 1:5",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Ephesians 6:11",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Romans 8:31",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "self_rendered",
+   "block_index": 28
+  }
+ ]
+}
