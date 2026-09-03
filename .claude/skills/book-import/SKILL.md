@@ -433,6 +433,15 @@ dropped; chapters under 120 words are dropped as stubs.
     against the chapter title, so it never sees the internal repeats — strip that
     leading title paragraph per section before concatenating, and eyeball the
     rendered sub-structure, not just the gates. *(2026-09)*
+  - **Fixing the bodies of an ALREADY-SHIPPED book needs a data migration, not
+    just a fixture edit.** `seed_books` never re-syncs the chapters of a book it
+    has already created (chapter `order` is a public contract), so a re-chapterize
+    or body fix that only lands in the fixture reaches fresh installs but SKIPS
+    prod — the deploy logs a `chapter_drift` warning and the live pages stay
+    wrong. Ship the migration half too (see the `ship-content-fix` skill;
+    migration `0103` strips the Enchiridion's doubled titles, `0092` is the other
+    model — both re-derive `body_text`/`word_count` and NULL `search_vector`).
+    And verify the fix on the live BOOK body, not just the API. *(2026-09)*
 - **CCEL two-level section numbering** (`<work>.i.ii.html` = part i, chapter ii).
   The `toc_sections` pattern matched only single-segment `<work>.iii.html`, so a
   parts-divided work imported as 1 chapter. Regex now allows one-or-more dotted
