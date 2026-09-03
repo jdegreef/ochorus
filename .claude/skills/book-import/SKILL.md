@@ -863,6 +863,31 @@ gotchas found adding one sermon each for Chrysostom/Finney/Luther *(2026-09)*:
     has them. NPNF homilies
     are faithfully set in a few very long numbered paragraphs — baseline the
     `lost-paragraphing` flag.
+    - **Simpler than a CI workflow — generate the twins locally on macOS**
+      *(2026-09, proven)*: download the real Liberation TTFs (official
+      `liberationfonts` GitHub release, SIL OFL — the `/private/tmp/libfonts`
+      copies a prior session left were HTML error pages, so `file` them first),
+      then run `node --import <preload.mjs> scripts/generate-sermon-og.mjs`
+      where `preload.mjs` wraps `fs.readFileSync`/`fs.openSync` to remap ONLY
+      the two hardcoded `/usr/share/fonts/…/liberation/…` paths (SIP blocks
+      creating that dir). The preload leaves the two generator scripts
+      byte-identical, so the manifest's `composition` digest stays correct —
+      editing og-card's font consts and reverting would NOT (nothing recomputes
+      composition, but the manifest would then disagree with the committed
+      script). Verify with a plain-node replica of `sermonCards.test.ts` (Node
+      ≥22.18 strips the TS types) since a symlinked `node_modules` breaks vitest.
+  - **Hand-writing a sermon fixture skips the per-work `english_audit` that
+    `import_sermons` runs — so CI's corpus ratchet (`tests_english_audit`) is
+    the FIRST thing to catch an OCR slip, one red round-trip later** *(2026-09)*.
+    Before pushing new sermons, run `audit_english <slug…>`: FIX genuine defects
+    (a gospeltruth Booth sermon read "into His cars" — an OCR misread of "ears",
+    surfaced as an `anachronism` since cars = automobiles), then
+    `--update-baseline` for the mechanical noise — `space-before-punct` (the
+    era's " ?"/" !" typography, only flagged under 16 hits/work) and
+    `orphan-close-quote` (an author's split scripture quote, e.g. Wesley's
+    `"All things are possible to him that" thus "believeth"`). Diff the baseline
+    JSON and confirm it touches ONLY your new works — `--update-baseline`
+    re-pins the WHOLE corpus and would silently absorb another work's drift.
 
 **Vet US public-domain status by PUBLICATION year, not author death.** A work
 first published before 1929 is US-PD regardless of when the author died — and a
