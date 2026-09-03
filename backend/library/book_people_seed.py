@@ -113,9 +113,16 @@ BOOK_PEOPLE: list[tuple[str, list[tuple[str, str]]]] = [
     (
         "women-who-moved-heaven-2",
         [
+            ("monica-of-hippo", "subject"),
+            ("teresa-of-avila", "subject"),
             ("susanna-wesley", "subject"),
             ("jeanne-guyon", "subject"),
             ("amy-carmichael", "subject"),
+            ("corrie-ten-boom", "subject"),
+            ("lottie-moon", "subject"),
+            ("mary-slessor", "subject"),
+            ("gladys-aylward", "subject"),
+            ("evelyn-christenson", "subject"),
         ],
     ),
 ]

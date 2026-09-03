@@ -61,6 +61,8 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'jonathan-edwards': '50% 0%',
 	'julia-foote': '50% 0%', // studio photo: standing figure, face at ~22% of a 0.62 plate
 	'lemuel-haynes': '50% 0%',
+	'lottie-moon': '50% 30%', // oval studio photo; face at ~40% of a 0.66 plate
+	'mary-slessor': '50% 3%', // seated photo; head high at ~22% of a 0.67 plate
 	'r-a-torrey': '50% 10%',
 	'richard-allen': '50% 37%',
 	'richard-baxter': '50% 18%',
