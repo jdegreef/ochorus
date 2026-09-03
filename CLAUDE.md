@@ -92,4 +92,5 @@ See also `backend/CLAUDE.md` and `frontend/CLAUDE.md`.
 - **founder-kit skills**: `dev-setup`, `deploy`, `verify-local`,
   `ship-content-fix`, `translate-book`, `book-qa`.
 - **in-repo `.claude/skills/`**: `translation-worker`, `book-import`,
-  `english-qa`, `contemporize-book`, `write-biography`, `quote-extraction`.
+  `english-qa`, `contemporize-book`, `write-biography`, `quote-extraction`,
+  `write-article`.
