@@ -70,6 +70,7 @@ TOPICS = [
             "way-into-holiest",
             "if",
             "the-normal-christian-life",
+            "watchman-nee-a-life",
         ],
     ),
     (
