@@ -228,6 +228,8 @@ class Command(BaseCommand):
                     # fixture later is created unflagged on the existing prod DB
                     # (seed_if_empty no-ops there) and lands on Biographies.
                     "is_imprint": af.get("is_imprint", False),
+                    # Same reasoning for the "withhold this person" flag.
+                    "list_in_biographies": af.get("list_in_biographies", True),
                 },
             )
             language = f.get("language", "en")
