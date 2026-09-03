@@ -11,7 +11,7 @@
 		saveScrollAnchor,
 		getProgressRecord
 	} from '$lib/progress';
-	import { readerPrefs } from '$lib/readerPrefs.svelte';
+	import { readerPrefs, MARGIN } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { marks } from '$lib/marks.svelte';
 	import { bookmarks } from '$lib/bookmarks.svelte';
@@ -263,8 +263,10 @@
 	 * two-column spread. So the bar was up to 333px WIDER than the text at the
 	 * small end and 640px NARROWER at the large end, matching it at no setting a
 	 * reader can actually pick. Sharing `articleMax` puts its edges on the text's
-	 * edges: the bar's `px-5` equals the pager's own `--pgpad`, so the controls
-	 * line up with the column, not merely with the box.
+	 * edges, and `chromeGutter` puts its padding on the text's gutter: in page
+	 * mode that is the pager's own `--pgpad`, in scroll mode the reader's
+	 * Margins pref (the article's `--reading-margin`) — so the controls line up
+	 * with the column at every setting, not merely with the box.
 	 *
 	 * The floor is for the bar's sake — seven controls plus a title in 435px
 	 * (narrow at 0.8x) is a crush, and unlike the prose the bar doesn't get to
@@ -272,6 +274,10 @@
 	 * wider than the viewport.
 	 */
 	const chromeMax = $derived(`min(max(${articleMax}, 32rem), 100%)`);
+	// The bar's side padding tracks the text's gutter (see the comment above).
+	// Page mode zeroes the article padding and uses --pgpad (1.25rem); scroll
+	// mode uses whatever Margins the reader chose.
+	const chromeGutter = $derived(paged ? '1.25rem' : MARGIN[readerPrefs.margin]);
 
 	// The paged viewport is fixed between the reader chrome and the progress
 	// footer; measure their real heights (the chrome wraps to several rows on
@@ -979,8 +985,8 @@
 		class:peeking={showPeek}
 	>
 		<div
-			class="mx-auto flex items-center justify-between gap-3 px-5 py-2.5"
-			style="max-width: {chromeMax}"
+			class="mx-auto flex items-center justify-between gap-3 py-2.5"
+			style="max-width: {chromeMax}; padding-inline: {chromeGutter}"
 		>
 			<!--
 				Hidden below `sm`. The controls alone need ~303px of a 360px phone, so
@@ -1069,7 +1075,10 @@
 				{/if}
 				<!-- `layout`: the chapter reader is the one surface that implements
 				     paged mode, so it is the one that offers the switch. -->
-				<ReaderControls layout />
+				<!-- `sample`: the chapter's opening line, so the panel's live preview
+				     restyles the reader's own prose. metaDescription is already the
+				     body's plain text. -->
+				<ReaderControls layout margins sample={metaDescription.slice(0, 90)} />
 				<button
 					class="btn btn-icon btn-ghost"
 					onclick={() => readerUi.toggleFocus()}
@@ -1082,7 +1091,7 @@
 		     above, so give them a compact location line of their own: the article's
 		     own breadcrumb scrolls away, and is hidden entirely in page mode, so
 		     without this the smallest phones lose all sense of where they are. -->
-		<div class="mx-auto px-5 pb-1.5 sm:hidden" style="max-width: {chromeMax}">
+		<div class="mx-auto pb-1.5 sm:hidden" style="max-width: {chromeMax}; padding-inline: {chromeGutter}">
 			<div class="truncate text-micro text-text">{@render locationLabel()}</div>
 		</div>
 	</div>
@@ -1108,7 +1117,7 @@
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events -->
 <article
 	bind:this={articleEl}
-	class="mx-auto reading-article px-5 py-10"
+	class="mx-auto reading-article py-10"
 	class:paged
 	class:focus={readerUi.focus}
 	class:twocol={cols === 2}
@@ -1497,6 +1506,10 @@
 	   so the chapter's last line and its "Next chapter" CTA are not underneath
 	   the scrubber. */
 	.reading-article {
+		/* Side gutters come from the reader's Margins pref (readerPrefs emits
+		   --reading-margin on this element); page mode zeroes padding and keeps
+		   its own --pgpad, so this is scroll mode only. */
+		padding-inline: var(--reading-margin, 1.25rem);
 		padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
 	}
 	.progress-foot {

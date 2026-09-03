@@ -3,6 +3,7 @@
 		readerPrefs,
 		type Align,
 		type Leading,
+		type Margin,
 		type Measure,
 		type ReaderFont
 	} from '$lib/readerPrefs.svelte';
@@ -27,8 +28,24 @@
 		 * hides a control it can't honour rather than lying about one. When
 		 * paged mode is shared (design review items 2-3), pass it everywhere.
 		 */
-		layout = false
-	}: { layout?: boolean } = $props();
+		layout = false,
+		/**
+		 * Show the Margins group. Same rule as `layout`: only a surface whose
+		 * article actually consumes `--reading-margin` may offer it — today the
+		 * chapter reader's `.reading-article`. Sermons and biographies don't, so
+		 * on them the control would persist a pref and change nothing, which
+		 * `readerSurfaces.test.ts` exists to forbid. Defaults to hidden so a new
+		 * surface fails safe.
+		 */
+		margins = false,
+		/**
+		 * A line of the reader's OWN text, shown at the top of the panel restyled
+		 * live as size/spacing/typeface change — a preview that is the actual
+		 * prose rather than a translated sample sentence. Omit (sermons, bios)
+		 * and no preview renders.
+		 */
+		sample = ''
+	}: { layout?: boolean; margins?: boolean; sample?: string } = $props();
 
 	// Shared, not local: the reader's keyboard handler has to know a panel is
 	// open so it stops turning pages under it (see readerUi.panelOpen).
@@ -63,7 +80,15 @@
 	const MEASURES: { v: Measure; k: string }[] = [
 		{ v: 'narrow', k: 'width.narrow' },
 		{ v: 'normal', k: 'width.normal' },
-		{ v: 'wide', k: 'width.wide' }
+		{ v: 'wide', k: 'width.wide' },
+		{ v: 'xwide', k: 'width.xwide' }
+	];
+	/** Side gutters (scroll mode). Own keys, not the Width ones: "Margins" is
+	 *  plural in most locales and the adjectives must agree with it. */
+	const MARGINS: { v: Margin; k: string }[] = [
+		{ v: 'narrow', k: 'margin.narrow' },
+		{ v: 'normal', k: 'margin.normal' },
+		{ v: 'generous', k: 'margin.generous' }
 	];
 	const FONTS: { v: ReaderFont; k: string }[] = [
 		{ v: 'serif', k: 'font.serif' },
@@ -98,10 +123,23 @@
 
 	{#if open.value}
 		<div
-			class="absolute end-0 z-30 mt-2 w-64 rounded-card border border-border bg-surface p-4 shadow-lg"
+			class="absolute end-0 z-30 mt-2 max-h-[70vh] w-64 overflow-y-auto rounded-card border border-border bg-surface p-4 shadow-lg"
 			role="dialog"
 			aria-label={t('reader.textSettings')}
 		>
+			<!-- Live preview: the chapter's own opening line, restyled as the
+			     controls change, so a size/spacing/typeface choice shows its
+			     effect on the real prose before you close the panel. -->
+			{#if sample}
+				<!-- `reading` supplies the face/size/leading from the same custom
+				     properties the article consumes (one definition, in app.css);
+				     `dir="auto"` because this is content prose inside localized
+				     chrome — see readerDirection.test.ts. -->
+				<div class="reading rc-preview mb-3" style={readerPrefs.style} dir="auto" aria-hidden="true">
+					{sample}
+				</div>
+			{/if}
+
 			<!-- Font size -->
 			<div class="mb-3 flex items-center justify-between">
 				<span class="text-small font-semibold text-text">{t('reader.size')}</span>
@@ -161,7 +199,7 @@
 			<!-- Measure / width -->
 			<div class="mb-3">
 				<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.width')}</span>
-				<div class="grid grid-cols-3 gap-1">
+				<div class="grid grid-cols-2 gap-1">
 					{#each MEASURES as o (o.v)}
 						<button
 							class="rc-opt rounded-sm border px-2 py-1.5 text-small"
@@ -175,6 +213,30 @@
 					{/each}
 				</div>
 			</div>
+
+			<!-- Margins: the column's side gutters in scroll mode. Width sets how
+			     wide the text runs; this is the space between it and the screen
+			     edge — the knob a tablet reader reaches for when the column floats.
+			     Only where the surface honours it (`margins`), and not in page
+			     mode, which zeroes the article padding and keeps its own gutters. -->
+			{#if margins && !readerPrefs.paged}
+			<div class="mb-3">
+				<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.margins')}</span>
+				<div class="grid grid-cols-3 gap-1">
+					{#each MARGINS as o (o.v)}
+						<button
+							class="rc-opt rounded-sm border px-2 py-1.5 text-small"
+							class:border-accent={readerPrefs.margin === o.v}
+							class:text-accent={readerPrefs.margin === o.v}
+							class:border-border-strong={readerPrefs.margin !== o.v}
+							class:text-muted={readerPrefs.margin !== o.v}
+							onclick={() => readerPrefs.setMargin(o.v)}
+							aria-pressed={readerPrefs.margin === o.v}>{t(o.k)}</button
+						>
+					{/each}
+				</div>
+			</div>
+			{/if}
 
 			<!-- Typeface -->
 			<div>
@@ -258,3 +320,21 @@
 		</div>
 	{/if}
 </div>
+
+<style>
+	/* Face, size and leading come from the global `.reading` (app.css) — the one
+	   definition the article uses, so retuning it retunes this. This only adds
+	   the alignment and the chrome, bounded to two lines so a 1.6x size can't
+	   balloon the panel. */
+	.rc-preview {
+		text-align: var(--reading-align, start);
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		padding: 0.35rem 0.5rem;
+		border-radius: var(--radius-sm);
+		background: var(--surface-2);
+	}
+</style>
