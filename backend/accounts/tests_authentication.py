@@ -104,6 +104,56 @@ class SupabaseJWTAuthenticationTests(TestCase):
         self.assertEqual(User.objects.filter(username=SUB).count(), 1)
         self.assertEqual(UserProfile.objects.filter(supabase_uid=SUB).count(), 1)
 
+    def test_records_providers_and_last_seen_from_token(self):
+        token = _token(
+            email="reader@example.com",
+            app_metadata={"provider": "google", "providers": ["email", "google"]},
+        )
+        user, _ = self.auth.authenticate(_request(token))
+        profile = UserProfile.objects.get(user=user)
+        # Stored sorted + de-duplicated across provider/providers.
+        self.assertEqual(profile.providers, "email,google")
+        self.assertIsNotNone(profile.last_seen_at)
+
+    def test_last_seen_refreshes_only_past_the_throttle(self):
+        from datetime import timedelta
+
+        from django.utils import timezone
+
+        from accounts.authentication import LAST_SEEN_THROTTLE
+
+        self.auth.authenticate(_request(_token()))
+        # A second sign-in within the throttle window leaves last_seen_at alone.
+        UserProfile.objects.filter(supabase_uid=SUB).update(
+            last_seen_at=timezone.now() - LAST_SEEN_THROTTLE / 2
+        )
+        recent = UserProfile.objects.get(supabase_uid=SUB).last_seen_at
+        self.auth.authenticate(_request(_token()))
+        self.assertEqual(UserProfile.objects.get(supabase_uid=SUB).last_seen_at, recent)
+        # Once it's stale beyond the window, the next sign-in refreshes it.
+        UserProfile.objects.filter(supabase_uid=SUB).update(
+            last_seen_at=timezone.now() - LAST_SEEN_THROTTLE - timedelta(minutes=1)
+        )
+        stale = UserProfile.objects.get(supabase_uid=SUB).last_seen_at
+        self.auth.authenticate(_request(_token()))
+        self.assertGreater(UserProfile.objects.get(supabase_uid=SUB).last_seen_at, stale)
+
+    def test_newly_linked_provider_is_picked_up(self):
+        self.auth.authenticate(
+            _request(_token(app_metadata={"providers": ["email"]}))
+        )
+        self.auth.authenticate(
+            _request(_token(app_metadata={"providers": ["email", "google"]}))
+        )
+        self.assertEqual(UserProfile.objects.get(supabase_uid=SUB).providers, "email,google")
+
+    def test_token_without_providers_does_not_clear_them(self):
+        self.auth.authenticate(
+            _request(_token(app_metadata={"providers": ["google"]}))
+        )
+        self.auth.authenticate(_request(_token()))  # no app_metadata at all
+        self.assertEqual(UserProfile.objects.get(supabase_uid=SUB).providers, "google")
+
     def test_authenticate_header_is_bearer(self):
         self.assertEqual(self.auth.authenticate_header(_request(None)), "Bearer")
 

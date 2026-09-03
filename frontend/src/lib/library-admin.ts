@@ -643,6 +643,28 @@ export const getAdminEngagement = () => apiFetch<AdminEngagement>('/api/admin/en
 
 // Account analytics: sign-up growth, locale/theme split, activation.
 
+/** One sign-in provider and how many accounts use it. Counts overlap: an
+ *  account with both email and Google is in both rows. `method` "unknown"
+ *  collects accounts with no provider recorded yet. */
+export interface AdminSignInMethod {
+	method: string;
+	label: string;
+	count: number;
+}
+
+/** A single recent sign-up. Admin-only — this is the one place account
+ *  analytics names individuals (see the backend AdminUsersView docstring).
+ *  `providers` carry their display label from the server, so the client never
+ *  keeps its own copy of the provider→label map. */
+export interface AdminRecentSignup {
+	display_name: string;
+	email: string;
+	providers: { code: string; label: string }[];
+	locale: string;
+	joined_at: string;
+	last_seen_at: string | null;
+}
+
 export interface AdminUsers {
 	total: number;
 	with_activity: number;
@@ -650,6 +672,8 @@ export interface AdminUsers {
 	signups_7d: number;
 	signups_30d: number;
 	weekly_signups: { week: string; count: number }[];
+	by_method: AdminSignInMethod[];
+	recent: AdminRecentSignup[];
 	by_locale: (Language & { count: number })[];
 	by_theme: { theme: string; label: string; count: number }[];
 }

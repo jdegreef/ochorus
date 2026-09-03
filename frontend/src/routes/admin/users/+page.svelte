@@ -11,6 +11,8 @@
 	const weekLabel = (iso: string) =>
 		new Date(iso + 'T00:00:00').toLocaleDateString('en', { month: 'short', day: 'numeric' });
 	const pct = (n: number, total: number) => (total ? Math.round((n / total) * 100) : 0);
+	const dayFmt = (iso: string | null) =>
+		iso ? new Date(iso).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' }) : '—';
 
 	const cards = $derived(
 		data
@@ -35,7 +37,7 @@
 		<div>
 			<p class="eyebrow mb-2 text-accent">Admin</p>
 			<h1 class="text-display">Users</h1>
-			<p class="mt-2 text-body text-muted">Account growth and make-up. Aggregate counts only — no personal data.</p>
+			<p class="mt-2 text-body text-muted">Account growth, make-up, and who's signing up. Admin-only.</p>
 		</div>
 		{#if data}
 			<button class="btn btn-ghost" onclick={users.load} disabled={users.loading}
@@ -79,6 +81,70 @@
 						{/each}
 					</div>
 				</section>
+
+				<!-- By sign-in method + Recent sign-ups -->
+				<div class="mb-8 grid gap-6 lg:grid-cols-3">
+					<!-- By sign-in method -->
+					<section class="rounded-card border border-border bg-surface p-5">
+						<h2 class="text-h3 mb-3">By sign-in method</h2>
+						{#if d.by_method.length}
+							<ul class="space-y-2">
+								{#each d.by_method as m (m.method)}
+									<li class="flex items-center justify-between gap-3">
+										<span class="text-body {m.method === 'unknown' ? 'text-muted' : 'text-text'}"
+											>{m.label}</span
+										>
+										<span class="font-semibold tabular-nums text-text">{fmt(m.count)}</span>
+									</li>
+								{/each}
+							</ul>
+							<p class="mt-3 text-micro text-muted">
+								Counts overlap — an account with more than one method is in each.
+							</p>
+						{:else}
+							<p class="text-body text-muted">No sign-in methods recorded yet.</p>
+						{/if}
+					</section>
+
+					<!-- Recent sign-ups -->
+					<section class="rounded-card border border-border bg-surface p-5 lg:col-span-2">
+						<h2 class="text-h3 mb-3">Recent sign-ups</h2>
+						{#if d.recent.length}
+							<ul class="divide-y divide-border">
+								<!-- Keyed by position: the list is replaced wholesale on each load
+							     and the payload carries no stable id, so email+date could
+							     collide (blank emails, same timestamp). -->
+							{#each d.recent as u, i (i)}
+									<li class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 py-2.5">
+										<div class="min-w-0">
+											{#if u.display_name}
+												<div class="truncate font-semibold text-text">{u.display_name}</div>
+												<div class="truncate text-small text-muted">{u.email || '—'}</div>
+											{:else}
+												<div class="truncate font-semibold text-text">{u.email || '—'}</div>
+											{/if}
+										</div>
+										<div class="flex items-baseline gap-4 text-small text-muted">
+											<span class="text-text">
+												{#if u.providers.length}
+													{u.providers.map((p) => p.label).join(', ')}
+												{:else}
+													<span class="text-muted">—</span>
+												{/if}
+											</span>
+											<span class="whitespace-nowrap tabular-nums" title="Joined">{dayFmt(u.joined_at)}</span>
+											<span class="hidden whitespace-nowrap tabular-nums sm:inline" title="Last seen"
+												>seen {dayFmt(u.last_seen_at)}</span
+											>
+										</div>
+									</li>
+								{/each}
+							</ul>
+						{:else}
+							<p class="text-body text-muted">No sign-ups yet.</p>
+						{/if}
+					</section>
+				</div>
 
 				<div class="grid gap-6 md:grid-cols-2">
 					<!-- By locale -->

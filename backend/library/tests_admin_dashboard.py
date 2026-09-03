@@ -553,15 +553,21 @@ class AdminUsersTests(TestCase):
         self.client = APIClient()
         User = get_user_model()
 
-        def mk(locale="en", theme="paper"):
+        def mk(locale="en", theme="paper", providers="", display_name="", email=""):
             u = User.objects.create(username=str(uuid.uuid4()))
             return UserProfile.objects.create(
-                user=u, supabase_uid=uuid.uuid4(), locale=locale, theme=theme
+                user=u,
+                supabase_uid=uuid.uuid4(),
+                locale=locale,
+                theme=theme,
+                providers=providers,
+                display_name=display_name,
+                email=email,
             )
 
-        self.p1 = mk("en", "dark")
-        self.p2 = mk("sw", "paper")
-        self.p3 = mk("en", "paper")  # dormant (no progress)
+        self.p1 = mk("en", "dark", providers="google", email="a@example.com")
+        self.p2 = mk("sw", "paper", providers="email,google", display_name="Bea", email="b@example.com")
+        self.p3 = mk("en", "paper")  # dormant (no progress), no provider recorded
         ReadingProgress.objects.create(profile=self.p1, book_slug="humility", language="en")
         ReadingProgress.objects.create(profile=self.p2, book_slug="humility", language="sw")
 
@@ -583,6 +589,35 @@ class AdminUsersTests(TestCase):
 
         self.assertEqual(len(res.data["weekly_signups"]), 12)
         self.assertEqual(res.data["weekly_signups"][-1]["count"], 3)  # all signed up this week
+
+    @override_settings(DEBUG=True)
+    def test_by_method_counts_overlap_and_unknown(self):
+        res = self.client.get("/api/admin/users/")
+        by_method = {r["method"]: r["count"] for r in res.data["by_method"]}
+        # google: p1 + p2; email: p2 only; unknown: p3 (nothing recorded).
+        self.assertEqual(by_method["google"], 2)
+        self.assertEqual(by_method["email"], 1)
+        self.assertEqual(by_method["unknown"], 1)
+        labels = {r["method"]: r["label"] for r in res.data["by_method"]}
+        self.assertEqual(labels["google"], "Google")
+        self.assertEqual(labels["email"], "Email")
+
+    @override_settings(DEBUG=True)
+    def test_recent_lists_individuals_newest_first(self):
+        res = self.client.get("/api/admin/users/")
+        recent = res.data["recent"]
+        self.assertEqual(len(recent), 3)
+        # Newest first: p3 was created last.
+        self.assertEqual(recent[0]["email"], self.p3.email)
+        bea = next(r for r in recent if r["email"] == "b@example.com")
+        self.assertEqual(bea["display_name"], "Bea")
+        # Providers carry their server label so the frontend needs no map.
+        self.assertEqual(
+            bea["providers"],
+            [{"code": "email", "label": "Email"}, {"code": "google", "label": "Google"}],
+        )
+        self.assertIn("joined_at", bea)
+        self.assertIn("last_seen_at", bea)
 
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
     def test_requires_admin(self):
