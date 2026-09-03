@@ -306,6 +306,11 @@ class AuthorListTests(TestCase):
         # A house byline with books — not a person, so not on this shelf.
         imprint = Author.objects.create(slug="house", name="House Originals", is_imprint=True)
         Book.objects.create(author=imprint, slug="anthology", language="en", title="Anthology")
+        # A real person with a book, withheld from the shelf by choice.
+        withheld = Author.objects.create(
+            slug="withheld", name="Withheld Writer", list_in_biographies=False
+        )
+        Book.objects.create(author=withheld, slug="withheld-book", language="en", title="A Book")
 
     def slugs(self, lang="en"):
         res = self.client.get(f"/api/library/authors/?language={lang}")
@@ -351,6 +356,25 @@ class AuthorListTests(TestCase):
             if r.get("model") == "library.author" and r["fields"].get("is_imprint")
         }
         self.assertIn("ochorus-originals", imprints)
+
+    def test_person_with_a_book_can_be_withheld_from_the_shelf(self):
+        # A real contributor with a book stays on /books but is kept off the
+        # Biographies shelf when list_in_biographies is False.
+        self.assertNotIn("withheld", self.slugs())
+
+    def test_fixture_withholds_hannah_buyinza(self):
+        # Same fresh-DB reasoning as the imprint flag: the fixture has to carry
+        # list_in_biographies=false, since a rebuild seeds from it after migrate.
+        from library.content_fixtures import load_all_rows
+
+        rows = load_all_rows()
+        withheld = {
+            r["fields"]["slug"]
+            for r in rows
+            if r.get("model") == "library.author"
+            and r["fields"].get("list_in_biographies") is False
+        }
+        self.assertIn("hannah-buyinza", withheld)
 
 
 class SermonTranslationLabelTests(TestCase):

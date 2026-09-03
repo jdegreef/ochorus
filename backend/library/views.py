@@ -127,8 +127,12 @@ class AuthorListView(PublicContentCacheMixin, generics.ListAPIView):
             .exclude(bio="", bio_html="")
         )
         own_bio = Q(original_language=lang) & (~Q(bio="") | ~Q(bio_html=""))
+        # `list_in_biographies=False` withholds a real person who has work in the
+        # library but should not appear on this shelf — their books stay on /books
+        # and their own author page stays reachable. `is_imprint` excludes a
+        # non-person byline; this excludes a person by choice.
         return (
-            Author.objects.filter(is_imprint=False)
+            Author.objects.filter(is_imprint=False, list_in_biographies=True)
             .prefetch_related("translations")
             .with_work_counts(lang)
             .filter(Q(num_books__gt=0) | Q(num_sermons__gt=0) | own_bio | translated_bio)
