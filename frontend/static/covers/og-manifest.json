@@ -4,6 +4,13 @@
 	"markup": "f8b29dbad187b14d8090908923bc12f592389d81fb3dd3a731dffb44ad0faf80",
 	"fonts": "41c38d96baff251262ef9f47c2944a57660f0a2aac0b882b7f1309ed1017cbdf",
 	"twins": {
+		"a-brand-plucked-from-the-fire": {
+			"ground": "cb8466a300a0936259886dc06b1f7b9af2b1930a3e92a712b0a319a81a94e630",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"a-call-to-the-unconverted": {
 			"ground": "689800d8c2cae0fbd40918c9ca62c29bd12198213ea2a027f1e7f0c544be9982",
 			"style": "press",

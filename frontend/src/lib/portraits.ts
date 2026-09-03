@@ -56,6 +56,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'john-owen': '50% 0%', // Greenhill portrait; face at ~31% of a 0.81 plate
 	'john-wesley': '50% 0%',
 	'jonathan-edwards': '50% 0%',
+	'julia-foote': '50% 0%', // studio photo: standing figure, face at ~22% of a 0.62 plate
 	'lemuel-haynes': '50% 0%',
 	'r-a-torrey': '50% 10%',
 	'richard-allen': '50% 37%',
