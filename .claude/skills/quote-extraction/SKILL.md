@@ -85,7 +85,14 @@ page. Treat every slug already in `quote_seed.py` as immutable.
    avoid overlapping the author's existing rows.
 
 Target ~20–25 new rows to move an author toward fifty. Mine the **newly added
-books first** — that is where fresh, non-overlapping material is.
+books first** — that is where fresh, non-overlapping material is. But the target
+is a ceiling, not a quota: some source books are structurally thin. A book that is
+a running **exposition of one biblical text** (Taylor's *Union and Communion* on
+the Song of Songs, or a chapter walking the Nazarite vow) carries its sense in
+"the bride" / "the Beloved" / "the Nazarite" and few sentences stand alone as
+maxims — expect a lean harvest (2 of 13 for Taylor came from that book) and don't
+force the count with context-bound lines. Didactic/devotional prose (sermons,
+consecration addresses) yields far more per page; weight the mining toward those.
 
 ## The paragraph-resolution gate (the one that bites)
 
