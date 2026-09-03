@@ -5,6 +5,8 @@
 	import { getScrollAnchor } from '$lib/progress';
 	import { marks } from '$lib/marks.svelte';
 	import { bookmarks } from '$lib/bookmarks.svelte';
+	import { removeBookmarkUndoable } from '$lib/undoable';
+	import { undo } from '$lib/undo.svelte';
 	import type { Bookmark } from '$lib/reading-schema';
 	import { chapterLabel, editionLang, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
@@ -74,6 +76,13 @@
 		open = false;
 	}
 
+	// An Undo drawn in here loses its home when the drawer closes — by a link,
+	// the shell's ✕, its scrim or Escape alike — so hand it to the corner toast
+	// rather than throwing it away with the panel.
+	$effect(() => {
+		if (!open) undo.toToast();
+	});
+
 	const visited = (order: number) =>
 		order === currentOrder || getScrollAnchor(slug, order) !== null;
 
@@ -118,13 +127,24 @@
 							</a>
 							<button
 								class="bm-remove"
-								onclick={() => bookmarks.remove(bm.id)}
+								onclick={() => removeBookmarkUndoable(bm.id, { inline: true })}
 								aria-label={t('reader.bookmark')}><Icon name="close" size={14} /></button
 							>
 						</li>
 					{/each}
 				</ul>
 			</div>
+		{/if}
+		<!-- The Undo for a bookmark removed just above, drawn INSIDE the dialog:
+		     the shell is aria-modal with a focus trap, so the corner toast that
+		     carries every other Undo is out of a keyboard's and a screen reader's
+		     reach here. Outside the bookmarks block, because removing the last
+		     bookmark makes that block disappear. -->
+		{#if undo.current?.inline}
+			<p class="bm-undo" role="status">
+				<span class="text-small text-muted">{t('undo.removed')}</span>
+				<button class="bm-undo-btn" onclick={() => undo.act()}>{t('undo.action')}</button>
+			</p>
 		{/if}
 		{#if !loaded}
 			<p class="px-5 py-4 text-small text-muted">…</p>
@@ -202,6 +222,21 @@
 	}
 	.bm-remove:hover {
 		color: var(--text);
+	}
+	.bm-undo {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 0.5rem 1.25rem;
+		border-bottom: 1px solid var(--border);
+	}
+	.bm-undo-btn {
+		border-radius: 999px;
+		background: var(--accent);
+		color: var(--accent-contrast);
+		padding: 0.2rem 0.7rem;
+		font-weight: 600;
+		font-size: var(--fs-small);
 	}
 	.toc-item.current {
 		background: color-mix(in srgb, var(--accent) 8%, transparent);

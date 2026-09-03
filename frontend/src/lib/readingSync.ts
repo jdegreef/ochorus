@@ -1,4 +1,5 @@
 import { browser } from '$app/environment';
+import { undo } from './undo.svelte';
 import { apiFetch } from './api';
 import type { PlanState } from './planProgress.svelte';
 import {
@@ -384,6 +385,8 @@ class ReadingSync {
 	/** Cancel in-flight debounced pushes (they'd 401 after sign-out), remove the
 	 * given keys, and tell open views the cache was emptied underneath them. */
 	#wipe(keys: readonly string[]) {
+		// A pending Undo must not resurrect what was just deliberately erased.
+		undo.dismiss();
 		if (!browser) return;
 		for (const timer of this.#timers.values()) clearTimeout(timer);
 		this.#timers.clear();

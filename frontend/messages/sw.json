@@ -606,5 +606,8 @@
   "sermons_group_all": "Mahubiri yote",
   "books_meta_description": "Vinjari maktaba ya Ochorus — vitabu vya Kikristo vya kale vya Andrew Murray, Charles Spurgeon, Watchman Nee, Hannah Whitall Smith na wengine. Bila malipo kusoma.",
   "sermons_meta_description": "Mahubiri ya Kikristo ya kale — bila malipo kusoma. Neno lililohubiriwa la waandishi ambao vitabu vyao unaweza kusoma kwenye Ochorus.",
-  "storage_save_failed": "Imeshindwa kuhifadhi kwenye kifaa hiki — maelezo yako na mahali pa kusoma yanaweza yasihifadhiwe (hifadhi imejaa au unatumia hali ya faragha)."
+  "storage_save_failed": "Imeshindwa kuhifadhi kwenye kifaa hiki — maelezo yako na mahali pa kusoma yanaweza yasihifadhiwe (hifadhi imejaa au unatumia hali ya faragha).",
+  "undo_removed": "Imeondolewa",
+  "undo_action": "Tendua",
+  "undo_note_cleared": "Dokezo limefutwa"
 }
