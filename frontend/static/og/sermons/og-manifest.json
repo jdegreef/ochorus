@@ -14,6 +14,10 @@
 			"content": "a7f700f3b1b3c3a4c1001375e3d3f7c5cf96bd049902bbde9e1e15b81fb87fba",
 			"art": "9cd00f892ca0891ecc1333a269dd432483319497e9fc151fa1507428773014e7"
 		},
+		"catholic-spirit": {
+			"content": "6aa2c468f3b4c385cbba149f67b1c65a28f5e7820a32bd27d7aaf08b440da167",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
 		"christ-all-in-all": {
 			"content": "7ae2c5efd9098ae3d1bfe01d9703a69a980e99ca0a86e1a89cc4034964d083d1",
 			"art": "3d8f702979ee73b00ad14fa4b29f64effd77e55fb5da2d3aaaa472f6aabaae4d"
@@ -90,6 +94,14 @@
 			"content": "31822ce7059517b4cd9b2ee165884a4d1d19f0ba4f0ec0fe1fe2f472e9e735f8",
 			"art": "4270f12a471bb934910276f57736f7b7e1a1f479f1d0ca7fab15dfb5f9970830"
 		},
+		"the-almost-christian": {
+			"content": "dcf4f69c92fcf72903946eb9aaba1cf59792b828c83123e99906a35b8420c403",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
+		"the-circumcision-of-the-heart": {
+			"content": "debd804716411924f2d799fd38d3c96753b89f33dbf7fc30bad5ba65ac9ff9f8",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
 		"the-dying-thief": {
 			"content": "38fe826661d5299881cc71b00f153ed09169de7330b0b7d0d38fa2875d2482b3",
 			"art": "c362a82aa2a96d3b77460852bbe0941c8f4ae90b12c5c26eb9f3e46417b961ba"
@@ -97,6 +109,10 @@
 		"the-golden-key-of-prayer": {
 			"content": "4d55494457453a857ff1572cab7c2938178ee25fe3d4a688abf655897c68e550",
 			"art": "c0ea17542d40e7c8ee0e3c36b070a1588358a77250bd419d3ddcc9c13f41408b"
+		},
+		"the-holy-ghost": {
+			"content": "c8a212a00453bbd403977e1139f5384fe7310ec320df944bfedc08caa5d64ed7",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
 		},
 		"the-immutability-of-god": {
 			"content": "ffbdfee8258c33ec5f08f1138c2b52225a8d0cf4afd865e3d4525f5d1142fe42",
@@ -130,9 +146,17 @@
 			"content": "151b76b0c1604949d091d01f48c00420054529381befbe652eec80cf109ac49b",
 			"art": "c63f7ded14fc0aaebb329e201ef9ab2bd50df90979f7dec6b8583bc6499804da"
 		},
+		"the-worlds-need": {
+			"content": "729f64b7b7c9cdc61b6fa4684a8d0ccec82532b0ef7cae63dbb579a23b11a40a",
+			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
+		},
 		"unfailing-springs": {
 			"content": "3e26bd5e2962f43039438c73e14041331964ab35365c62a8614512c59f92b377",
 			"art": "a119b69171daeb01d17d2651e5f18619184df5898f80387ffc4295c5b18e2537"
+		},
+		"witnessing-for-christ": {
+			"content": "ba0ec10ff35f8e703485822b786b2054e43f2c630b6034d4aa1cc92b86942a66",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		}
 	}
 }
