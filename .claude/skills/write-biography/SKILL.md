@@ -221,6 +221,13 @@ force if every paragraph is a box.
    DJANGO_DEBUG=true uv run python manage.py makemigrations --check --dry-run
    DJANGO_DEBUG=true uv run python manage.py showmigrations library | tail -4
    ```
+   **COMMIT the rename before you force-push.** `git mv 0106_x 0107_x` stages the
+   rename, but if you rebased and then `git push --force-with-lease` WITHOUT an
+   `git commit --amend`, you ship the un-amended rebase commit — still carrying
+   the old `0106_x` name — and CI fails with the identical "multiple leaf nodes"
+   error a second time while your working tree looks correct. `git ls-tree HEAD
+   backend/library/migrations/ | grep <slug>` shows what you're actually pushing;
+   amend, then force-push. (Cost two red CI cycles on the Howells/Hyde batch.)
 
 7. **APPEND new rows to `authors.json` — never re-sort it.** The file is in
    creation order, not slug order; sorting turns a 45-line addition into a
