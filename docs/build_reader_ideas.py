@@ -205,9 +205,10 @@ THREE = ("If you could only do three next: <b>#19 continue-across-devices</b>, "
          "tablet page, and hands-free reading, now that the half-finished gaps are closed.")
 
 # Idea numbers already built and shipped to production (marked ✓ on the cards).
-# #1–6 the phone batch (plus a left/right single-page tap mode) and #15–17 the
-# cross-device study batch.
-SHIPPED = {1, 2, 3, 4, 5, 6, 15, 16, 17}
+# #1–6 the phone batch (plus a left/right single-page tap mode), #15–17 the
+# cross-device study batch, and #8 / #14 with the type & layout controls
+# (tablet default width, extra-wide measure).
+SHIPPED = {1, 2, 3, 4, 5, 6, 8, 14, 15, 16, 17}
 
 # Supplemental styles for the shipped treatment, appended after the borrowed
 # <style> from ideas.html (which this doc reuses verbatim for its look).
@@ -233,8 +234,9 @@ SHIP_NOTE = (
     '    The <b>phone batch</b> (#1 swipe-to-turn, #2 focus-mode peek, #3 phone breadcrumb, '
     '#4 larger touch targets, #5 tap-to-page-down, #6 chapter-complete) plus a left/right '
     '<b>single-page tap mode</b>; and the <b>cross-device batch</b> (#15 bookmark sync, '
-    '#16 search stemming, #17 notes &amp; highlights panel). Each is verified live and marked '
-    '<b>✓ Shipped</b> on its card below.\n'
+    '#16 search stemming, #17 notes &amp; highlights panel); and, with the <b>type &amp; layout '
+    'controls</b>, #8 tablet default width and #14 extra-wide measure. Each is verified live '
+    'and marked <b>✓ Shipped</b> on its card below.\n'
     '  </div>\n'
 )
 
