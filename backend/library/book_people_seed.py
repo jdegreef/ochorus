@@ -31,6 +31,14 @@ bio, the same way a topic can be seeded ahead of a book.
 
 Populated by hand (or via the Django admin locally); the repo wins on deploy, so
 keep the curation here rather than only in the database.
+
+The Ochorus Originals are biographical anthologies — one chapter per figure — so
+the people in them are the figures each gives a chapter to (``role="subject"``),
+listed in the book's own chapter order. Only figures who already have a bio in
+the library are listed; a chapter subject with no bio yet is left out until one
+is written (linking a bio-less name would be a dead end). ``A Hidden Fire`` is
+the exception to the one-chapter-per-figure shape: it is a single biography of
+Simeon Nsibambi, so he is its lone subject.
 """
 
 from __future__ import annotations
@@ -38,15 +46,62 @@ from __future__ import annotations
 # (book_slug, [(author_slug, role), ...]). See the module docstring for the
 # shape and roles.
 BOOK_PEOPLE: list[tuple[str, list[tuple[str, str]]]] = [
-    # "Men Who Moved Heaven" is an anthology of men of prayer, one chapter each,
-    # so its subjects are the men it gives a chapter to. Listed in the book's
-    # own chapter order.
+    ("a-hidden-fire", [("simeon-nsibambi", "subject")]),
+    (
+        "men-and-women-who-gave-everything-2",
+        [
+            ("catherine-booth", "subject"),
+            ("dwight-l-moody", "subject"),
+        ],
+    ),
+    (
+        "men-of-prayer-2",
+        [
+            ("andrew-murray", "subject"),
+            ("charles-h-spurgeon", "subject"),
+            ("watchman-nee", "subject"),
+            ("dwight-l-moody", "subject"),
+            ("r-a-torrey", "subject"),
+            ("e-m-bounds", "subject"),
+            ("jonathan-edwards", "subject"),
+            ("charles-finney", "subject"),
+        ],
+    ),
     (
         "men-who-moved-heaven",
         [
             ("charles-h-spurgeon", "subject"),
+            ("andrew-murray", "subject"),
+            ("hudson-taylor", "subject"),
+            ("e-m-bounds", "subject"),
             ("george-muller", "subject"),
+            ("david-brainerd", "subject"),
+            ("martin-luther", "subject"),
             ("john-wesley", "subject"),
+        ],
+    ),
+    (
+        "men-who-tended-the-flock-2",
+        [
+            ("john-chrysostom", "subject"),
+            ("richard-baxter", "subject"),
+            ("jonathan-edwards", "subject"),
+        ],
+    ),
+    (
+        "tukutendereza",
+        [
+            ("simeon-nsibambi", "subject"),
+            ("erica-sabiti", "subject"),
+            ("festo-kivengere", "subject"),
+        ],
+    ),
+    (
+        "women-who-moved-heaven-2",
+        [
+            ("susanna-wesley", "subject"),
+            ("jeanne-guyon", "subject"),
+            ("amy-carmichael", "subject"),
         ],
     ),
 ]
