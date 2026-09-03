@@ -59,7 +59,10 @@ const PROSE_OWNERS = [
  */
 const CONTENT_SURFACES: [path: string, needle: string][] = [
 	['src/routes/books/[slug]/+page.svelte', '{book.title}</h1>'],
-	['src/routes/books/[slug]/+page.svelte', '{chapterName(ch.order, ch.title)}</span>']
+	['src/routes/books/[slug]/+page.svelte', '{chapterName(ch.order, ch.title)}</span>'],
+	// The Aa panel's live preview renders a line of the chapter's own prose
+	// inside localized chrome — a new content surface, so it is pinned here.
+	['src/lib/components/ReaderControls.svelte', 'rc-preview mb-3']
 ];
 
 const read = (path: string) => readFileSync(join(FRONTEND, path), 'utf8');

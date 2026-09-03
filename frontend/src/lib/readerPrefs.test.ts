@@ -1,5 +1,13 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { readerPrefs, LEADING, MEASURE, FONT_STACK } from './readerPrefs.svelte';
+import {
+	readerPrefs,
+	LEADING,
+	MEASURE,
+	MARGIN,
+	FONT_STACK,
+	defaultMeasureFor,
+	load
+} from './readerPrefs.svelte';
 
 const KEY = 'ochorus:reader-prefs';
 const stored = () => JSON.parse(localStorage.getItem(KEY) || '{}');
@@ -80,5 +88,52 @@ describe('readerPrefs store', () => {
 		expect(style).toContain(`--reading-leading:${LEADING.relaxed}`);
 		expect(style).toContain(`--reading-measure:${MEASURE.wide}`);
 		expect(style).toContain(`--reading-font:${FONT_STACK.serif}`);
+	});
+
+	it('offers an extra-wide measure and emits it', () => {
+		readerPrefs.setMeasure('xwide');
+		expect(stored().measure).toBe('xwide');
+		expect(readerPrefs.style).toContain(`--reading-measure:${MEASURE.xwide}`);
+	});
+
+	it('persists the margin pref, emits it, and resets it', () => {
+		expect(readerPrefs.margin).toBe('normal');
+		readerPrefs.setMargin('generous');
+		expect(stored().margin).toBe('generous');
+		expect(readerPrefs.style).toContain(`--reading-margin:${MARGIN.generous}`);
+		readerPrefs.reset();
+		expect(readerPrefs.margin).toBe('normal');
+	});
+});
+
+describe('load(): a stored measure beats the device default', () => {
+	const setWidth = (w: number) =>
+		Object.defineProperty(window, 'innerWidth', { value: w, configurable: true, writable: true });
+
+	it('picks the tablet default only when nothing is stored', () => {
+		setWidth(800);
+		localStorage.removeItem('ochorus:reader-prefs');
+		expect(load().measure).toBe('wide');
+	});
+
+	it("honours a stored choice on a tablet (a saved 'narrow' is never overridden)", () => {
+		setWidth(800);
+		localStorage.setItem('ochorus:reader-prefs', JSON.stringify({ measure: 'narrow' }));
+		expect(load().measure).toBe('narrow');
+	});
+
+	it('drops a junk margin (prototype key) to the default rather than injecting it', () => {
+		localStorage.setItem('ochorus:reader-prefs', JSON.stringify({ margin: 'constructor' }));
+		expect(load().margin).toBe('normal');
+	});
+});
+
+describe('defaultMeasureFor (first-run column width by device class)', () => {
+	it('gives tablets a wide column, phones and desktops the normal one', () => {
+		expect(defaultMeasureFor(375)).toBe('normal'); // phone
+		expect(defaultMeasureFor(768)).toBe('wide'); // tablet portrait (lower bound)
+		expect(defaultMeasureFor(1023)).toBe('wide'); // just under the two-column threshold
+		expect(defaultMeasureFor(1024)).toBe('normal'); // desktop: gets the paged spread instead
+		expect(defaultMeasureFor(1440)).toBe('normal');
 	});
 });

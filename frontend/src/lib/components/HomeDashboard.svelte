@@ -1,9 +1,10 @@
 <script lang="ts">
 	import type { BookSummary, TopicSummary } from '$lib/library-public';
-	import { i18n } from '$lib/i18n.svelte';
+	import * as m from '$lib/paraglide/messages.js';
 	import { auth } from '$lib/auth.svelte';
 	import ContinueReading from '$lib/components/ContinueReading.svelte';
-	import ReadingNudge from '$lib/components/ReadingNudge.svelte';
+	import OnboardingCard from '$lib/components/OnboardingCard.svelte';
+	import DashboardStats from '$lib/components/DashboardStats.svelte';
 	import TodaysReading from '$lib/components/TodaysReading.svelte';
 	import PlansProgress from '$lib/components/PlansProgress.svelte';
 	import RecommendedNext from '$lib/components/RecommendedNext.svelte';
@@ -35,8 +36,6 @@
 	const featured = $derived<BookSummary[]>(data.featured);
 	const topics = $derived<TopicSummary[]>(data.topics ?? []);
 
-	const t = i18n.t;
-
 	// The display name if the reader set one, else the local part of their email
 	// (never the full address — a greeting is not the place to print it). The
 	// whole clause is dropped when we have neither, leaving a bare "Welcome back".
@@ -44,15 +43,25 @@
 </script>
 
 <section class="page-col px-5 pt-10 sm:pt-14">
+	<!-- Parameterised so the name sits where each language wants it, rather than a
+	     hardcoded ", {name}" — Paraglide's message function, not the param-free
+	     t() facade. Falls back to a bare "Welcome back" when we have no name. -->
 	<h1 class="text-h1">
-		{t('login.welcomeBack')}{greetingName ? `, ${greetingName}` : ''}
+		{greetingName ? m.home_welcome_back_named({ name: greetingName }) : m.home_welcome_back()}
 	</h1>
 </section>
+
+<!-- Brand-new signed-in reader with nothing yet: a warm start, not empty blocks.
+     Self-hides the moment there's any reading, favourite or plan. -->
+<OnboardingCard />
 
 <!-- Resume first: the one thing a returning reader most likely came back to do.
      Promoted above every other block, full width, with deep-link resume. -->
 <ContinueReading books={data.books} />
-<ReadingNudge />
+
+<!-- Streak, weekly goal, reading calendar and totals — self-hides until there's
+     activity to show (replaces the compact ReadingNudge on the dashboard). -->
+<DashboardStats />
 
 <!-- Today's plan day, then multi-plan progress -->
 <TodaysReading />

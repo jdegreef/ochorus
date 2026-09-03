@@ -51,7 +51,8 @@ from __future__ import annotations
 #: e-m-bounds            — approved 2026-08-30, twenty-eight;
 #:                          twenty-seven more 2026-09-02 (fifty-five).
 #: augustine-of-hippo    — approved 2026-08-30, thirteen;
-#:                         and 2026-09-02, six more (Confessions).
+#:                         and 2026-09-02, six more (Confessions);
+#:                         and 2026-09-02, sixteen more (The Enchiridion) — thirty-five.
 #: jonathan-edwards      — approved 2026-08-30, eleven;
 #:                         and 2026-09-02, ten more (Selected Sermons).
 #: john-wesley           — approved 2026-08-30, eighteen;
@@ -1548,6 +1549,102 @@ AUGUSTINE = [
         "text": "What then do I love, when I love my God? who is He above the head of my soul?",
         "chapter": ("confessions", 10),
         "paragraph": 17,
+    },
+    {
+        "slug": "augustine-of-hippo-f80a2bf6",
+        "text": "In these two you have those three graces exemplified: faith believes, hope and love pray.",
+        "chapter": ("enchiridion", 1),
+        "paragraph": 13,
+    },
+    {
+        "slug": "augustine-of-hippo-87986dcb",
+        "text": "The fact that we do not see either what we believe or what we hope for, is all that is common to faith and hope.",
+        "chapter": ("enchiridion", 1),
+        "paragraph": 15,
+    },
+    {
+        "slug": "augustine-of-hippo-78996a5d",
+        "text": "Although, therefore, evil, in so far as it is evil, is not a good; yet the fact that evil as well as good exists, is a good.",
+        "chapter": ("enchiridion", 8),
+        "paragraph": 25,
+    },
+    {
+        "slug": "augustine-of-hippo-a64a90a8",
+        "text": "From what is good, then, evils arose, and except in what is good they do not exist; nor was there any other source from which any evil nature could arise.",
+        "chapter": ("enchiridion", 2),
+        "paragraph": 11,
+    },
+    {
+        "slug": "augustine-of-hippo-f4cae61f",
+        "text": "To me, however, it seems certain that every lie is a sin, though it makes a great difference with what intention and on what subject one lies.",
+        "chapter": ("enchiridion", 2),
+        "paragraph": 19,
+    },
+    {
+        "slug": "augustine-of-hippo-567e0947",
+        "text": "No one, of course, is to be condemned as a liar who says what is false, believing it to be true, because such an one does not consciously deceive, but rather is himself deceived.",
+        "chapter": ("enchiridion", 2),
+        "paragraph": 19,
+    },
+    {
+        "slug": "augustine-of-hippo-1d48b0f6",
+        "text": "After the fall, however, a more abundant exercise of God’s mercy was required, because the will itself had to be freed from the bondage in which it was held by sin and death.",
+        "chapter": ("enchiridion", 9),
+        "paragraph": 19,
+    },
+    {
+        "slug": "augustine-of-hippo-f72c34ba",
+        "text": "As, then, the soul even now finds it impossible to desire unhappiness, so in future it shall be wholly impossible for it to desire sin.",
+        "chapter": ("enchiridion", 9),
+        "paragraph": 17,
+    },
+    {
+        "slug": "augustine-of-hippo-a1a3aac4",
+        "text": "Man, therefore, was thus made upright that, though unable to remain in his uprightness without divine help, he could of his own mere will depart from it.",
+        "chapter": ("enchiridion", 9),
+        "paragraph": 21,
+    },
+    {
+        "slug": "augustine-of-hippo-196b5d19",
+        "text": "No one, then, need hope that after he is dead he shall obtain merit with God which he has neglected to secure here.",
+        "chapter": ("enchiridion", 9),
+        "paragraph": 27,
+    },
+    {
+        "slug": "augustine-of-hippo-111df642",
+        "text": "What goodness of will, what goodness of desire and intention, what good works, had gone before, which made this man worthy to become one person with God?",
+        "chapter": ("enchiridion", 4),
+        "paragraph": 7,
+    },
+    {
+        "slug": "augustine-of-hippo-d1100b98",
+        "text": "The man whom the thunder of this warning does not awaken is not asleep, but dead; and yet so powerful is that voice, that it can awaken even the dead.",
+        "chapter": ("enchiridion", 7),
+        "paragraph": 15,
+    },
+    {
+        "slug": "augustine-of-hippo-daf2b4a0",
+        "text": "For when there is a question as to whether a man is good, one does not ask what he believes, or what he hopes, but what he loves.",
+        "chapter": ("enchiridion", 11),
+        "paragraph": 1,
+    },
+    {
+        "slug": "augustine-of-hippo-e0fb2a79",
+        "text": "We love God now by faith, then we shall love Him through sight.",
+        "chapter": ("enchiridion", 11),
+        "paragraph": 9,
+    },
+    {
+        "slug": "augustine-of-hippo-7df12100",
+        "text": "Of these four different stages the first is before the law, the second is under the law, the third is under grace, and the fourth is in full and perfect peace.",
+        "chapter": ("enchiridion", 11),
+        "paragraph": 3,
+    },
+    {
+        "slug": "augustine-of-hippo-2c5b7319",
+        "text": "Now we love even our neighbor by faith; for we who are ourselves mortal know not the hearts of mortal men.",
+        "chapter": ("enchiridion", 11),
+        "paragraph": 9,
     },
 ]
 

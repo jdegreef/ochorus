@@ -375,6 +375,25 @@ dropped; chapters under 120 words are dropped as stubs.
   equals the theme LAST (a stable sort on `title.casefold() == theme.casefold()`
   does it); and lint runs in CI before the tests — `ruff check scripts/<file>.py`
   locally, the seeds/gates don't catch C408 (`dict()` → literal) etc. *(2026-09)*
+- **The OPPOSITE shape — one heading over a huge undivided section (a long
+  journal/diary) → split into reading chapters via a `build_<name>` command.**
+  Jarena Lee's *Religious Experience and Journal* (Gutenberg #66953) has three
+  authorial headings, and the third runs unbroken through her whole 44k-word
+  travelling journal — one endless scroll on a phone. `extract_chapters` gives
+  the three clean sections; the build command keeps the short ones and splits the
+  long one into ~7k-word chapters at block boundaries, folding a short tail back.
+  Two things earned the hard way: (1) **split on ALL top-level blocks, not just
+  `<p>`** — a `re.findall(r'<p>.*?</p>')` split silently DROPPED 746 words of the
+  hymns she quotes in `<blockquote>`; iterate `BeautifulSoup(body).children`
+  instead and assert word-count parity with the source before trusting it.
+  (2) Title the chunks **`Part I/II/…` (a `_roman(n)` generator, not a fixed
+  list), not year-ranges** — a diarist who recounts past and future years within
+  one entry makes min/max-year titles overlap and mislead; Part N is honest, and
+  duplicate bare "The Journal" titles trip `qa.duplicate_title`. A brand-new
+  author arriving WITH a book needs NO migration — `seed_books` `get_or_create`s
+  the author from `authors.json` (full bio and all) while creating the book;
+  verify the prod path by deleting both from the dev DB and running `seed_books`.
+  *(religious-experience-and-journal, 2026-09)*
 - **Known limits (unfixed):** a book whose Introduction heading is fused with
   its body text in one block loses that intro (feasting-at-the-table); a drop
   cap belonging mid-paragraph after a scripture-ref merge isn't reattached
@@ -414,6 +433,15 @@ dropped; chapters under 120 words are dropped as stubs.
     against the chapter title, so it never sees the internal repeats — strip that
     leading title paragraph per section before concatenating, and eyeball the
     rendered sub-structure, not just the gates. *(2026-09)*
+  - **Fixing the bodies of an ALREADY-SHIPPED book needs a data migration, not
+    just a fixture edit.** `seed_books` never re-syncs the chapters of a book it
+    has already created (chapter `order` is a public contract), so a re-chapterize
+    or body fix that only lands in the fixture reaches fresh installs but SKIPS
+    prod — the deploy logs a `chapter_drift` warning and the live pages stay
+    wrong. Ship the migration half too (see the `ship-content-fix` skill;
+    migration `0103` strips the Enchiridion's doubled titles, `0092` is the other
+    model — both re-derive `body_text`/`word_count` and NULL `search_vector`).
+    And verify the fix on the live BOOK body, not just the API. *(2026-09)*
 - **CCEL two-level section numbering** (`<work>.i.ii.html` = part i, chapter ii).
   The `toc_sections` pattern matched only single-segment `<work>.iii.html`, so a
   parts-divided work imported as 1 chapter. Regex now allows one-or-more dotted

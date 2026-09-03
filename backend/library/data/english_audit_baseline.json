@@ -46,9 +46,6 @@
   "essentials-of-prayer": {
    "orphan-close-quote": 1
   },
-  "feasting-at-the-table": {
-   "orphan-close-quote": 2
-  },
   "free-grace": {
    "orphan-close-quote": 1
   },
@@ -158,6 +155,10 @@
   "religious-affections": {
    "orphan-close-quote": 6,
    "welded-footnote": 75
+  },
+  "religious-experience-and-journal": {
+   "anachronism": 5,
+   "lost-paragraphing": 1
   },
   "revival-lectures": {
    "anachronism": 1,

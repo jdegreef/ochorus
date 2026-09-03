@@ -1,5 +1,5 @@
 import { building } from '$app/environment';
-import { listBooks, listAuthors, listTopics } from '$lib/library-public';
+import { listBooks, listAuthors, listTopics, listSermons } from '$lib/library-public';
 import { pickByDay, dayNumber } from '$lib/dailyPicks';
 import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
@@ -29,7 +29,7 @@ const shelf = <T>(pending: Promise<T[]>): Promise<T[]> =>
 // blocks (Continue reading, Today's reading) fetch client-side in their
 // components so the baked HTML is the same for everyone.
 export const load: PageLoad = async () => {
-	const [books, authors, topics] = await Promise.all([
+	const [books, authors, topics, sermons] = await Promise.all([
 		shelf(listBooks(getLang())),
 		// The endpoint defaults to `en`, so calling it bare gave EVERY locale's
 		// home page the English roster — with English book counts, which the
@@ -40,10 +40,17 @@ export const load: PageLoad = async () => {
 		// Topics stay tolerant even during the build: they are a decorative
 		// cross-navigation row, and the page below already hides the section
 		// when there are none.
-		listTopics(getLang()).catch(() => [])
+		listTopics(getLang()).catch(() => []),
+		// Fetched only for the library-breadth count under the hero — tolerant at
+		// runtime, so a 0 just drops the sermon figure rather than breaking home.
+		shelf(listSermons(getLang()))
 	]);
 	return {
 		books,
+		// Library breadth for the hero's social-proof line. Counts of what this
+		// LANGUAGE actually has (the lists are already per-locale), so a locale
+		// with fewer works advertises its own honest numbers, not English's.
+		counts: { books: books.length, authors: authors.length, sermons: sermons.length },
 		// Six books that favour six DIFFERENT authors. `books.slice(0, 6)` took
 		// the API's own order, which groups by writer — so the front of the
 		// library was routinely three Murrays and three Spurgeons.

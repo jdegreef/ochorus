@@ -1,6 +1,11 @@
 // prerender refresh 2026-09-02 (batch3): Luganda bios for richard-sibbes (#1338),
 // john-owen (#1339), thomas-a-kempis (#1346), bernard-of-clairvaux (#1347) —
 // rebuilds their /lg/authors/<slug> pages with the translated bio_html.
+// prerender refresh 2026-09-02: Spanish and Portuguese biographies for
+// charles-finney and e-m-bounds — the authors already prerender; this rebuilds
+// their /es/authors/<slug> and /pt/authors/<slug> pages with the translated
+// bio_html and the new short bio.
+//
 // prerender refresh 2026-09-02 (batch2): Swahili bios for richard-sibbes (#1300),
 // athanasius-of-alexandria (#1312), cyprian-of-carthage (#1313) and erica-sabiti
 // (#1314) — rebuilds their /sw/authors/<slug> pages with the translated bio_html.

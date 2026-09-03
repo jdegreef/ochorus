@@ -1,3 +1,10 @@
+// prerender refresh 2026-09-02: five new sermon editions — aggressive-christianity.es
+// (Booth), blessed-adversity.es (Hudson Taylor), salvation-by-faith.es & .pt
+// (Wesley), the-dying-thief.pt (Moody). Rebuilds the /es and /pt sermon shelves.
+// With these, SPANISH SERMONS ARE COMPLETE at 29/29; Portuguese goes 19 -> 21.
+// No queued jobs for these — es had none open at all and pt only plan jobs, so
+// they were picked from the untranslated gap rather than the queue.
+//
 // prerender refresh 2026-09-02 (batch2): three new sw sermons — blessed-adversity
 // (Hudson Taylor, #867), salvation-by-faith (Wesley, #868), the-dying-thief
 // (Moody, #869). Rebuilds the /sw/sermons shelf.
