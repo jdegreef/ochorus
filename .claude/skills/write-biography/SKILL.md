@@ -185,8 +185,11 @@ force if every paragraph is a box.
    Verify all four paths before shipping: fresh-DB seed, prod-shaped row,
    idempotent re-run, and a hand-edited value surviving the migration.
 
-   Only a brand-new author arriving with its own books can skip this (seed_books
-   creates it from the fixture, bio and all).
+   Only a brand-new author arriving with its own works can skip this — a new
+   book (`seed_books`) OR a new sermon (`seed_sermons`) creates the author from
+   the fixture, bio and photo_url and all, via `get_or_create`. So a bio that
+   ships alongside the author's first sermons needs NO create-migration
+   (Christmas Evans, 2026-09: bio + portrait + three sermons, zero migrations).
 
    Also fixed 2026-07-26: a `catalog.py` author slug that `authors.json` doesn't
    have used to fork the author on re-import (`charles-spurgeon` vs
@@ -286,6 +289,16 @@ im.save(f"frontend/static/portraits/{slug}.jpg", "JPEG", quality=85, optimize=Tr
 Check the result visually (a contact sheet of several at once is quickest) — the
 API's lead image is occasionally a statue, a book cover, or the wrong person.
 Ship `photo_url` the same way as `bio_html` (step 5 above).
+
+**A public-domain book you are already sourcing is often the cleanest portrait,
+too.** When the sermons/works come from a Gutenberg or archive.org edition, that
+scan usually opens with an engraved frontispiece of the author — same PD status
+as the text, no licence hunt (Christmas Evans, 2026-09: `images/fp.jpg` in PG
+#42340). Such a plate is often *landscape* (a head-and-shoulders half-length),
+which breaks the portrait system's "taller than wide" assumption — so crop it to
+a ~3:4 bust centred on the face before saving, then derive the focal `N` from the
+CROPPED file (`y = (fy − 0.45·a) ÷ (1 − a)`), and eyeball the circle mask once
+(render an ellipse over an object-cover crop) to confirm the face lands well.
 
 **A CC "own work" claim on a lifetime photo is copyfraud — reject it.** For a
 20th-century subject (the era where PD runs out), Commons' only image is often a
