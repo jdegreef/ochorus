@@ -584,6 +584,30 @@ dropped; chapters under 120 words are dropped as stubs.
   bloating `corrections.py`, and wrap the body in `clean_fragment(...)` before
   `settled_chapter_body`. Estimate generously and say so early — this scan was
   under-called twice. *(journal-of-an-expedition-up-the-niger, 2026-09)*
+- **A cleaner Archive scan with intact CHAPTER markers but ILLEGIBLE title-lines
+  → build_<name> that splits on markers in DOCUMENT ORDER and applies the TOC
+  titles.** Julia Foote's *A Brand Plucked from the Fire* (`brandpluckedfrom00footrich`)
+  chaptered fine in `import_archive` (~1 defect), but every decorative title-line
+  OCR'd to garbage ("Tu", "public ||fllot|f") and two markers were mis-scanned
+  romans — **"CHAPTER XL" for XI, "CHAPTER XXL" for XXI** — and since `_roman`
+  reads "XL" as 40 the sequence check dropped one, merging a chapter (29 vs 30).
+  Fix: match all `^CHAP(TER)?\s+[IVXLC]+\.?$` lines and split on their ORDER, not
+  the parsed numeral (so the garbled romans still count); read the real titles
+  from the book's own Contents. Three cleanups the audit does NOT flag (it sees
+  real-looking words): (1) **line-wrap space-splits** — the scan drops the EOL
+  hyphen, leaving a space inside a word ("fright ened", "chil dren"); rejoin the
+  pair when `a+b` is a web2 word and the second fragment is NOT itself a word
+  (this is precise — it never merges a real pair; the both-are-words cases like
+  "per son"→person are hand-added and MUST be `\b`-anchored, or a bare replace
+  fuses "harper songs"). (2) **letter-substitution mangles** ("Tor"→For,
+  "clay"→day, "rne"→me, "pea<;e"→peace) — hand-fix from context. (3) **garbled
+  title-lines that leaked** — skip them by the small-caps opener: chapters open
+  "FROM this…"/"I WAS…", so after the marker skip lines until the first whose
+  first two letters are both uppercase. Verify no content lost with a
+  word-count-parity check (book ÷ raw-source-body ≈ 0.97; the missing ~3% is
+  running headers + page numbers + markers, NOT prose). Verse/hymn reflows to
+  prose paragraphs — words preserved, line breaks flattened (acceptable).
+  *(a-brand-plucked-from-the-fire, 2026-09)*
 - **A Victorian edition's quotation marks OCR as guillemets `« »`.** The Patmore
   Bernard scanned every quote as `«`/`»` (22 of them) — a mark that never occurs
   legitimately in English, so map the pair to curly quotes in `corrections.py`
