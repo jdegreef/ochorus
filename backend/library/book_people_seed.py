@@ -65,6 +65,7 @@ BOOK_PEOPLE: list[tuple[str, list[tuple[str, str]]]] = [
             ("e-m-bounds", "subject"),
             ("jonathan-edwards", "subject"),
             ("charles-finney", "subject"),
+            ("rees-howells", "subject"),
         ],
     ),
     (
@@ -72,9 +73,11 @@ BOOK_PEOPLE: list[tuple[str, list[tuple[str, str]]]] = [
         [
             ("charles-h-spurgeon", "subject"),
             ("andrew-murray", "subject"),
+            ("rees-howells", "subject"),
             ("hudson-taylor", "subject"),
             ("e-m-bounds", "subject"),
             ("george-muller", "subject"),
+            ("john-hyde", "subject"),
             ("david-brainerd", "subject"),
             ("martin-luther", "subject"),
             ("john-wesley", "subject"),
