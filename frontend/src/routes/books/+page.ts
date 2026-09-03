@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-02 (batch4): purity-of-heart.lg (#1206, William Booth,
+// 10 ch) and soar-like-the-eagle-3.sw (#870, Gareth Evans, 12 ch). Rebuilds the
+// /lg/books and /sw/books shelves and their per-chapter pages.
 // prerender refresh 2026-09-02 (batch3): the-fourfold-gospel.sw (#871), A. B.
 // Simpson's Injili Nne (6 chapters). Rebuilds the /sw/books shelf + chapter pages.
 // prerender refresh 2026-09-02 (batch2): feasting-at-the-table.lg (#1209), the

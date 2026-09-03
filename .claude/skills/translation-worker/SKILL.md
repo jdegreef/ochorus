@@ -137,6 +137,13 @@ worker specifics that shipped ~11 editions:
   "do it YOURSELF, sequentially — do NOT spawn subagents or watchers"
   instruction; over-delegating agents stall). Each writes
   `{"title","body_html"}` JSON, `ensure_ascii=False`.
+  **The concurrent-subagent cap is 20** (measured 2026-09-02: chapters 21 and 22
+  of a two-book batch failed to launch with "Concurrent subagent limit reached").
+  So a book over ~20 chapters — `divine-healing` (32), `holy-in-christ` (33),
+  `cheque-book` (13 but paired with another book) — must **stage the dispatch**:
+  send ≤20, and launch the rest as running agents complete and free slots (they
+  write to the scratchpad, not a branch, so staging costs nothing). Don't try to
+  raise it mid-run; just queue the overflow.
 - **Validate before anything ships:** every chapter's `<p>` count equals the
   source's; JSON parses; title/body non-empty. Re-dispatch only the gaps.
 - Translate book metadata (title/subtitle/description) too.

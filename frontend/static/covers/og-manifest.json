@@ -557,6 +557,13 @@
 			"art": true,
 			"scrim": 0.45
 		},
+		"lg/purity-of-heart": {
+			"ground": "3575add9f9c00040342b7ce3bcb3ce2f0ebe9085d6e2d240cf644f79c6b32ffd",
+			"style": "revival",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35
+		},
 		"lg/stepping-stones-2": {
 			"ground": "3773397d863ef4a812d5461e684e94f9b92d2f7ee5ce22e1a386d8d60cbc9a98",
 			"style": "house",
@@ -962,6 +969,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.35
+		},
+		"sw/soar-like-the-eagle-3": {
+			"ground": "871f2ff44a8ebe78013b811a4ef6684be3ed3dd8dc67ce78f5e80a7b876ec2c1",
+			"style": "house",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.9
 		},
 		"sw/stepping-stones-2": {
 			"ground": "a76e128fd07329d31d457d2ecfbace09f003d08f7650e567d288eae117a005e5",

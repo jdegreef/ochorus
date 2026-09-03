@@ -33,6 +33,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'religious-affections': 0.50,
 	'revival-lectures': 0.85,
 	'selected-sermons-whitefield': 0.60,
+	'soar-like-the-eagle-3': 0.90,
 	'stepping-stones-2': 0.70,
 	'talks-to-the-farmer': 0.50,
 	'ten-commandments': 0.90,
