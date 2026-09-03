@@ -22,7 +22,7 @@ command.
 
 ```python
 {
-    "slug": "andrew-murray-3272b680",          # "<author-slug>-<hash>", unique
+    "slug": "andrew-murray-3272b680",          # "<author-slug>-<hash>", unique, PERMANENT (see freeze below)
     "text": "Faith in Jesus is the secret …",  # ONE whole sentence, verbatim
     "chapter": ("holy-in-christ", 19),         # (book-slug, chapter_order) …
     "paragraph": 5,                            # … OR "sermon": "<sermon-slug>"
@@ -31,6 +31,28 @@ command.
 
 `text` must be the **served, whitespace-normalised** sentence, character for
 character (curly `’ “ ”`, em-dashes and all), or the resolution gate fails.
+
+## The slug is frozen: repair text in place, never re-hash an existing row
+
+The `slug` is not only the seed's dedupe key — it is the quotation's **permanent
+public address**. The per-quote-URL plan serves each quotation at
+`/quotes/<author>/<slug>/`, so a slug that moves is a URL that 404s and a lost
+page. Treat every slug already in `quote_seed.py` as immutable.
+
+- **Repairing an existing quotation** — a typo, an OCR slip, a punctuation fix
+  (the `english-qa` channels): edit that row's `text` and **leave its `slug`
+  literal exactly as it is**. `seed_quotes` matches on the slug, so it updates
+  the row in place — same address, approval intact. (Guarded by
+  `test_repairing_text_under_the_same_slug_updates_in_place`.)
+- **Never regenerate slugs for rows that already exist.** Do not re-run the
+  extraction/hash tool over an author to "refresh" their rows — a recomputed
+  hash mints a NEW row, strands the approved original, and (once URLs ship)
+  breaks every inbound link. Run extraction only to ADD genuinely new
+  quotations; hand-edit existing ones.
+- **A fresh hash means a genuinely new quotation** — a different sentence, not a
+  reworked version of one already present. That is the deliberate "reworded ⇒
+  new row, re-gated for review" behaviour (`Quote` slug comment, `seed_quotes`
+  docstring); keep it for new text, don't trigger it for a fix.
 
 ## Method (what the seed docstring describes)
 
