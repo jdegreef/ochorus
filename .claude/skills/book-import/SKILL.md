@@ -783,6 +783,63 @@ If a SECOND such anthology ever appears, THEN lift the URL list into a catalog
 sidecar consumed by a shared importer — one is bespoke, two is a pattern.
 *(Mighty Power in Prayer — 12 Spurgeon sermons on prayer, 2026-08)*
 
+**Adding a single STANDALONE sermon** (a `SermonEntry` in `sermon_catalog.py`,
+one per work, `source` = `ccel` | `gutenberg` | `web`; `import_sermons <slug>`;
+then serialize `fixtures/content/sermons/<slug>.en.json`). `seed_sermons` upserts
+on every deploy — NO migration, and NO author stub when the author already
+exists in `authors.json` (`_author` resolves the DB row first). Source-picking
+gotchas found adding one sermon each for Chrysostom/Finney/Luther *(2026-09)*:
+  - **CCEL serves SOME works only through its JS reader** — a raw fetch of
+    Finney's `ccel/finney/sermons/…` returns a 20 KB "loading" shell, 0 words,
+    while Spurgeon/Wesley pages return full static HTML. When a CCEL sermon
+    imports as 0 words, fetch the URL and check for `<title>loading` before
+    blaming the extractor; fall back to a `web` source (gospeltruth.net carries
+    Finney, already the source for Catherine Booth).
+  - **A Gutenberg Postil can set every sermon AND its subsections at the same
+    heading level** (Lenker's *Epistle Sermons*, id 28464, is all `<h4>`), so
+    `extract_gutenberg_section` — which bounds a sermon on the next SAME-tag
+    heading — returns only the first subsection. Verify the target's heading
+    level is DISTINCT from its subsections in `pg<id>-images.html` before using
+    a gutenberg section; else use a one-sermon-per-page `web` source
+    (sermons.martinluther.us for the Lenker translation).
+  - **A `web` sermon needs `body_starts`** (the literal opening of the first
+    real paragraph) to cut a leading byline/nav, and its page may append a
+    trailer the single-element nav rule can't reach: `extract_web_sermon` now
+    also cuts the gospeltruth.net trailer (index link / copyright / nav menu /
+    certification seal), a bare `<p>TOP</p>` jump link, BibleHub's "Parallel
+    Verses" cross-reference block (+ ad-slot comments), and a collected-edition
+    "END OF VOL." marker. After any such change, re-import the OTHER web sermons
+    and confirm word counts are byte-unchanged. **Good web fallbacks by author:**
+    gospeltruth.net (Finney), sermons.martinluther.us (Luther/Lenker),
+    biblehub.com `/sermons/auth/…` (Calvin, and other PD anthology sermons in
+    the Kleiser translation).
+  - **Adding sermons can trip `ReleaseProseSourceCoverageTests`** — enough
+    `body_starts`/title/comment text in `sermon_catalog.py` tips its prose
+    detector, and it fails "modules … carry prose, but are neither a content
+    root nor exempt." The reader sees a sermon's title/scripture from the
+    FIXTURE (what `seed_sermons` upserts), not from `sermon_catalog.py`, so the
+    module belongs in `NOT_READER_PROSE` (added, same as `catalog.py`), not in
+    `content_sources.json`.
+  - **A sermon needs a `summary`** (a shelf gate) and an **og:image twin**
+    (`SermonShareCardTests`). The twin generator `frontend/scripts/og-card.mjs`
+    reads Linux-only Liberation fonts from `/usr/share/fonts/…`, so
+    `npm run og:sermons` FAILS on macOS (and the top-level manifest
+    `composition` digest is gated by `sermonCards.test.ts`, so you can't fake
+    it or run a modified generator and revert). Generate the twins where those
+    fonts are installed (Linux / CI), or vendor the TTFs into the repo and point
+    og-card at them (the file's own comment invites vendoring). **Proven CI
+    recipe** (2026-09): add a throwaway workflow that `sudo apt-get install -y
+    fonts-liberation`, `npm ci`, `npm run og:sermons`, then git-commits
+    `frontend/static/og/sermons/` back to the branch (needs `permissions:
+    contents: write`). Trigger it with **`on: push` scoped to the branch** — NOT
+    `workflow_dispatch`, which GitHub only exposes from the DEFAULT branch, so
+    `gh workflow run` 404s for a branch-only file. Its GITHUB_TOKEN push won't
+    re-run CI (recursion guard); land the twins, then push your own follow-up
+    (e.g. removing the workflow) to re-trigger `test-and-build` on a head that
+    has them. NPNF homilies
+    are faithfully set in a few very long numbered paragraphs — baseline the
+    `lost-paragraphing` flag.
+
 **Vet US public-domain status by PUBLICATION year, not author death.** A work
 first published before 1929 is US-PD regardless of when the author died — and a
 long-lived author can have both PD and still-copyrighted books. Amy Carmichael
