@@ -1,0 +1,408 @@
+{
+ "kind": "book",
+ "slug": "soar-like-the-eagle-3",
+ "language": "sw",
+ "job_issue": 870,
+ "references": [
+  {
+   "reference": "Isaiah 40:28-31",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "waiting-on-god.sw.json"
+  },
+  {
+   "reference": "Psalm 103:1-5",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 15:53",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "2 Corinthians 6:14",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "the-key-in-my-hand.sw.json"
+  },
+  {
+   "reference": "Luke 22:26",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Ephesians 4:12",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Philippians 1:6",
+   "status": "self_rendered",
+   "block_index": 50
+  },
+  {
+   "reference": "Hebrews 11:32",
+   "status": "mined",
+   "block_index": 60,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 12:18",
+   "status": "self_rendered",
+   "block_index": 66
+  },
+  {
+   "reference": "1 Corinthians 12:28",
+   "status": "mined",
+   "block_index": 67,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Romans 12:6",
+   "status": "self_rendered",
+   "block_index": 69
+  },
+  {
+   "reference": "2 Kings 2:14",
+   "status": "self_rendered",
+   "block_index": 72
+  },
+  {
+   "reference": "1 Samuel 4:8",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "1 Samuel 4:10",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "1 Samuel 6:20",
+   "status": "self_rendered",
+   "block_index": 90
+  },
+  {
+   "reference": "Numbers 4:15",
+   "status": "self_rendered",
+   "block_index": 95
+  },
+  {
+   "reference": "1 Timothy 3:2",
+   "status": "self_rendered",
+   "block_index": 99
+  },
+  {
+   "reference": "Matthew 16:18",
+   "status": "self_rendered",
+   "block_index": 103
+  },
+  {
+   "reference": "Exodus 3:14",
+   "status": "self_rendered",
+   "block_index": 139
+  },
+  {
+   "reference": "Romans 8:39",
+   "status": "mined",
+   "block_index": 153,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "mined",
+   "block_index": 154,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "John 13:3",
+   "status": "mined",
+   "block_index": 156,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "John 17:15-16",
+   "status": "mined",
+   "block_index": 165,
+   "source_file": "the-fourfold-gospel.sw.json"
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "block_index": 174,
+   "source_file": "lord-teach-us-to-pray-2.sw.json"
+  },
+  {
+   "reference": "Matthew 16:18",
+   "status": "mined",
+   "block_index": 174,
+   "source_file": "the-key-in-my-hand.sw.json"
+  },
+  {
+   "reference": "Luke 21:28",
+   "status": "mined",
+   "block_index": 180,
+   "source_file": "prayer-the-pulse-of-life.sw.json"
+  },
+  {
+   "reference": "Ephesians 1:10",
+   "status": "self_rendered",
+   "block_index": 182
+  },
+  {
+   "reference": "2 Kings 6:15",
+   "status": "self_rendered",
+   "block_index": 184
+  },
+  {
+   "reference": "2 Kings 6:17",
+   "status": "self_rendered",
+   "block_index": 185
+  },
+  {
+   "reference": "2 Kings 6:17",
+   "status": "self_rendered",
+   "block_index": 186
+  },
+  {
+   "reference": "Psalm 3:1",
+   "status": "self_rendered",
+   "block_index": 187
+  },
+  {
+   "reference": "Psalm 3:8",
+   "status": "self_rendered",
+   "block_index": 187
+  },
+  {
+   "reference": "Psalm 3:3",
+   "status": "self_rendered",
+   "block_index": 187
+  },
+  {
+   "reference": "Psalm 121:1-2",
+   "status": "mined",
+   "block_index": 187,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Philippians 1:6",
+   "status": "self_rendered",
+   "block_index": 189
+  },
+  {
+   "reference": "Matthew 11:28-30",
+   "status": "mined",
+   "block_index": 203,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "Matthew 11:30",
+   "status": "mined",
+   "block_index": 206,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "Matthew 16:18",
+   "status": "mined",
+   "block_index": 206,
+   "source_file": "the-key-in-my-hand.sw.json"
+  },
+  {
+   "reference": "Galatians 6:2",
+   "status": "self_rendered",
+   "block_index": 211
+  },
+  {
+   "reference": "Galatians 6:5",
+   "status": "self_rendered",
+   "block_index": 211
+  },
+  {
+   "reference": "Matthew 23:4",
+   "status": "self_rendered",
+   "block_index": 211
+  },
+  {
+   "reference": "Matthew 25:21",
+   "status": "mined",
+   "block_index": 237,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "Ephesians 4:11-13",
+   "status": "self_rendered",
+   "block_index": 255
+  },
+  {
+   "reference": "Ephesians 4:7",
+   "status": "mined",
+   "block_index": 259,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 12:4-7",
+   "status": "mined",
+   "block_index": 260,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 12:21",
+   "status": "mined",
+   "block_index": 260,
+   "source_file": "the-key-in-my-hand.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 12:13",
+   "status": "mined",
+   "block_index": 260,
+   "source_file": "the-key-in-my-hand.sw.json"
+  },
+  {
+   "reference": "Romans 12:6",
+   "status": "self_rendered",
+   "block_index": 260
+  },
+  {
+   "reference": "1 Corinthians 12:18",
+   "status": "self_rendered",
+   "block_index": 260
+  },
+  {
+   "reference": "1 Corinthians 12:11",
+   "status": "mined",
+   "block_index": 262,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 12:28",
+   "status": "mined",
+   "block_index": 262,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Ephesians 4:11",
+   "status": "self_rendered",
+   "block_index": 262
+  },
+  {
+   "reference": "2 Timothy 1:6-7",
+   "status": "self_rendered",
+   "block_index": 294
+  },
+  {
+   "reference": "Matthew 3:15",
+   "status": "self_rendered",
+   "block_index": 365
+  },
+  {
+   "reference": "Luke 3:22",
+   "status": "mined",
+   "block_index": 367,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Luke 4:18-19",
+   "status": "mined",
+   "block_index": 370,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Luke 7:22",
+   "status": "mined",
+   "block_index": 375,
+   "source_file": "the-key-in-my-hand.sw.json"
+  },
+  {
+   "reference": "Luke 7:23",
+   "status": "mined",
+   "block_index": 376,
+   "source_file": "the-key-in-my-hand.sw.json"
+  },
+  {
+   "reference": "John 20:22",
+   "status": "mined",
+   "block_index": 381,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Luke 24:49",
+   "status": "mined",
+   "block_index": 382,
+   "source_file": "baptism-with-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "self_rendered",
+   "block_index": 384
+  },
+  {
+   "reference": "2 Timothy 4:3",
+   "status": "self_rendered",
+   "block_index": 397
+  },
+  {
+   "reference": "1 Corinthians 12:28",
+   "status": "mined",
+   "block_index": 406,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 12:29",
+   "status": "mined",
+   "block_index": 406,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "mined",
+   "block_index": 410,
+   "source_file": "waiting-on-god.sw.json"
+  },
+  {
+   "reference": "Matthew 11:30",
+   "status": "mined",
+   "block_index": 410,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "mined",
+   "block_index": 411,
+   "source_file": "the-possibilities-of-faith.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 1:27",
+   "status": "self_rendered",
+   "block_index": 417
+  },
+  {
+   "reference": "John 4:23-24",
+   "status": "mined",
+   "block_index": 440,
+   "source_file": "lord-teach-us-to-pray-2.sw.json"
+  },
+  {
+   "reference": "Galatians 5:1",
+   "status": "self_rendered",
+   "block_index": 468
+  }
+ ]
+}

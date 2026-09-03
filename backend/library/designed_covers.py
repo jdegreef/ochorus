@@ -267,6 +267,13 @@ DERIVED_GROUND: dict[str, Ground] = {
     "talks-to-the-farmer": Ground(0.46, 0.78, 0.09, 1.45,
         source="120ca61d19bce6c692bc1bc8c9eecc38543224945496fbb427f0c1ecdbf6ed48",
     ),
+    # A golden sunset: the eagle silhouette sits IN the title band and can't be
+    # cropped free of the type, so the words-free band is the lower sky — the
+    # sun's glow and the tree silhouettes — below the subtitle (~0.58) and above
+    # the garethevansministries.org mark (~0.88). Bright already, so no lift.
+    "soar-like-the-eagle-3": Ground(0.70, 0.86, 0.04, 1.0, sky=0.4,
+        source="2db8925dd6782464cd895d241508324b7955d9678acf8f6afd33d4c4a5d2c107",
+    ),
     "the-god-of-all-comfort": Ground(0.50, 0.78, 0.11, 1.10,
         source="d2917c2f827ac26b0570ef7995dfe2c7bc0560ad81e4ccf1937dbc265b1a9dcd",
     ),
