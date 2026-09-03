@@ -32,6 +32,8 @@
 	import { fetchSyncedProgress } from '$lib/progress';
 	import { auth } from '$lib/auth.svelte';
 	import { syncedAhead, type Position } from '$lib/resumeSync';
+	import { paceDelta, paragraphWordCounts, type PaceSample } from '$lib/pace';
+	import { readingPace } from '$lib/readingPace.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import { define } from '$lib/define.svelte';
 	import { scripture } from '$lib/scripture.svelte';
@@ -420,6 +422,7 @@
 	/** Scroll to a fraction of the chapter — drives the draggable scrubber. */
 	function scrubTo(frac: number) {
 		if (!body) return;
+		breakPace(); // a seek, not reading — the settle after it must not be paced
 		const rect = body.getBoundingClientRect();
 		const bodyTop = window.scrollY + rect.top;
 		window.scrollTo({ top: Math.max(0, bodyTop - window.innerHeight + frac * rect.height) });
@@ -500,6 +503,7 @@
 			// force-disabled while listening (`paged` derives on listen.status ===
 			// 'idle'), so a page turn can't happen mid-listen to clobber the resume.
 			saveScrollAnchor(slug, chapter.order, topIndex);
+			samplePace(topIndex);
 			// Paging to the last page = reached the end. `save` is false on the
 			// initial restore, so opening mid-chapter at the last page doesn't fire.
 			if (pageIndex >= pageTotal - 1) markChapterComplete();
@@ -703,6 +707,11 @@
 
 		saveProgress(s, order, language);
 		bookmarks.load('book', s);
+		// A new chapter: its paragraph lengths are counted at the first pace
+		// sample (not here — see samplePace), and that sample starts a fresh
+		// pair: the open itself is not reading.
+		paraWords = [];
+		breakPace();
 
 		// A backward chapter turn in page mode asks to land on the last page.
 		const wantLast = $page.url.searchParams.get('pg') === 'last';
@@ -1026,6 +1035,46 @@
 		}
 	}
 
+	// The reader's pace, fed from the same samples the resume point already
+	// produces — "the top paragraph moved from 4 to 7 in 51 s" (see $lib/pace).
+	// A pair must be two rest points in one stretch of READING, so it is broken
+	// (`lastSample = null`) by anything else that moves the top: a chapter
+	// open, a scrub, read-aloud's playback, the tab going away — a backgrounded
+	// tab's clock keeps running but nobody is reading.
+	let paraWords: number[] = [];
+	let lastSample: PaceSample | null = null;
+	const breakPace = () => {
+		lastSample = null;
+	};
+	function samplePace(p: number) {
+		if (document.visibilityState !== 'visible') {
+			breakPace();
+			return;
+		}
+		// Counted lazily, at the first sample of a chapter: this runs from event
+		// handlers, where reading `body` tracks nothing. In the chapter effect it
+		// made the whole setup re-run on mount, once `bind:this` landed — which
+		// re-read this device's record AFTER the open had touched it and killed
+		// the cross-device offer on exactly the cold load it exists for.
+		if (!paraWords.length && body) paraWords = paragraphWordCounts(body.children);
+		const now = Date.now();
+		if (lastSample) {
+			const d = paceDelta(lastSample, { p, at: now }, paraWords);
+			if (d) readingPace.record(d.words, d.ms);
+		}
+		lastSample = { p, at: now };
+	}
+	$effect(() => {
+		document.addEventListener('visibilitychange', breakPace);
+		return () => document.removeEventListener('visibilitychange', breakPace);
+	});
+	$effect(() => {
+		// Read-aloud moves the top at the voice's pace, not the reader's: a pair
+		// straddling a listen would write the TTS speed into the reading pace.
+		void listen.status;
+		breakPace();
+	});
+
 	// Throttled save of the topmost visible paragraph as the scroll anchor.
 	//
 	// Through `topVisibleIndex()` — the same question the restore's contract is
@@ -1044,7 +1093,11 @@
 			// While actively playing, listen.start's onAdvance owns the resume point
 			// (the spoken paragraph); don't overwrite it with the viewport-top one.
 			// While PAUSED we do save — the reader may be scrolling ahead to read.
-			if (listen.status !== 'playing') saveScrollAnchor(slug, chapter.order, topVisibleIndex());
+			if (listen.status !== 'playing') {
+				const top = topVisibleIndex();
+				saveScrollAnchor(slug, chapter.order, top);
+				samplePace(top);
+			}
 			// Scrolled to the bottom of the chapter. markChapterComplete ignores the
 			// post-open settle window, so the restore-scroll landing at a saved
 			// end-of-chapter position doesn't count as finishing.
@@ -1497,8 +1550,10 @@
 			value={chapterFrac}
 			oninput={(e) => {
 				const frac = Number(e.currentTarget.value);
-				if (paged) goToPage(Math.round(frac * (pageTotal - 1)));
-				else scrubTo(frac);
+				if (paged) {
+					breakPace(); // a seek: goToPage samples, and this pair must not count
+					goToPage(Math.round(frac * (pageTotal - 1)));
+				} else scrubTo(frac);
 			}}
 			aria-label={t('progress.scrub')}
 			aria-valuetext="{t('progress.page')} {currentPage} / {pageCount}"
@@ -1506,7 +1561,12 @@
 		<div class="progress-meta">
 			<span>{t('progress.page')} {currentPage} / {pageCount}</span>
 			<span class="mx-1.5 opacity-50">·</span>
-			<span>{minsLeft} {t('progress.minLeft')}</span>
+			<span>
+				{minsLeft}
+				{t('progress.minLeft')}{#if readingPace.personalized}<span class="hidden sm:inline"
+						><span class="mx-1.5 opacity-50">·</span>{t('progress.yourPace')}</span
+					>{/if}
+			</span>
 			{#if bookPercent !== null}
 				<span class="mx-1.5 opacity-50">·</span>
 				<span>{bookPercent}% {t('progress.through')}</span>

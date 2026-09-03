@@ -1,10 +1,16 @@
 import { i18n } from './i18n.svelte';
 import { getLang } from './lang.svelte';
 import { MODERN_EDITION, baseEdition } from './reading-schema';
+import { readingPace } from './readingPace.svelte';
 
-/** Estimated reading time in whole minutes from a word count (~200 wpm). */
+/**
+ * Estimated reading time in whole minutes from a word count, at THIS reader's
+ * pace — measured from their own reading once there is enough of it, the
+ * 200 wpm everyone was assumed to read at until then (see `readingPace`).
+ * Reactive: a surface showing "12 min read" follows the pace as it settles.
+ */
 export function readingMinutes(words: number): number {
-	return Math.max(1, Math.round(words / 200));
+	return Math.max(1, Math.round(words / readingPace.wpm));
 }
 
 /**
