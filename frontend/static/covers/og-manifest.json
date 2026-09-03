@@ -1229,6 +1229,13 @@
 			"art": true,
 			"scrim": 0.6
 		},
+		"watchman-nee-a-life": {
+			"ground": "270ba249cf7d9dd78ad7c500a380996b1d07e92668c1322742897bb13d2fdbf9",
+			"style": "house",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"way-into-holiest": {
 			"ground": "a322f7e2c337cadaf64cde66de6c269faa24bc5822b796149fe5578d2348676d",
 			"style": "devotional",
