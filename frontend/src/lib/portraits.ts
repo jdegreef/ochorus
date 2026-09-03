@@ -36,6 +36,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'catherine-booth': '50% 0%',
 	'charles-finney': '50% 0%',
 	'charles-h-spurgeon': '50% 0%',
+	'christmas-evans': '50% 25%', // 1859 engraved frontispiece; face at ~40% of a 0.75 plate
 	'clement-of-rome': '50% 0%', // mosaic bust; face at ~28% of a 0.80 plate
 	'cyprian-of-carthage': '50% 0%', // icon: bust, face at ~22%
 	'david-brainerd': '50% 0%',

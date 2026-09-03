@@ -185,8 +185,11 @@ force if every paragraph is a box.
    Verify all four paths before shipping: fresh-DB seed, prod-shaped row,
    idempotent re-run, and a hand-edited value surviving the migration.
 
-   Only a brand-new author arriving with its own books can skip this (seed_books
-   creates it from the fixture, bio and all).
+   Only a brand-new author arriving with its own works can skip this — a new
+   book (`seed_books`) OR a new sermon (`seed_sermons`) creates the author from
+   the fixture, bio and photo_url and all, via `get_or_create`. So a bio that
+   ships alongside the author's first sermons needs NO create-migration
+   (Christmas Evans, 2026-09: bio + portrait + three sermons, zero migrations).
 
    Also fixed 2026-07-26: a `catalog.py` author slug that `authors.json` doesn't
    have used to fork the author on re-import (`charles-spurgeon` vs
@@ -236,21 +239,24 @@ force if every paragraph is a box.
 
    **Expect that append to conflict.** Because the rule is "always append",
    every concurrent session writes to the same last line, so two biography PRs
-   in flight at once collide by construction. Resolve by keeping EVERY new row
-   — take the three-way stages and diff each side against the base rather than
-   picking a side, since "ours" and "theirs" each hold a row the other lacks:
+   in flight at once collide by construction. If YOUR branch only ever appended
+   (the normal case), the whole resolution is **main's file plus your new
+   rows** — take `theirs` (origin/main) entire and add only the slugs it lacks:
    ```python
-   g = lambda st: json.loads(subprocess.run(
-       ['git','show',f':{st}:'+PATH], capture_output=True, text=True).stdout)
-   base, ours, theirs = g(1), g(2), g(3)
-   bslugs = {r['fields']['slug'] for r in base}
-   new_theirs = [r for r in theirs if r['fields']['slug'] not in bslugs]
-   new_ours   = [r for r in ours   if r['fields']['slug'] not in bslugs]
-   merged = base + new_theirs + new_ours     # main's row first: creation order
+   show = lambda ref: json.loads(subprocess.run(
+       ['git','show',f'{ref}:'+PATH], capture_output=True, text=True).stdout)
+   theirs, ours = show('origin/main'), show('HEAD')
+   their_slugs = {r['fields']['slug'] for r in theirs}
+   merged = theirs + [r for r in ours if r['fields']['slug'] not in their_slugs]
    assert len({r['fields']['slug'] for r in merged}) == len(merged)
    ```
-   Main's rows go first, because the file is in creation order and theirs
-   landed first. Then re-dump in the committed format (step 4).
+   **Do NOT rebuild from `base + new_theirs + new_ours`.** That keeps *base's*
+   copy of every existing row — so if main edited rows IN PLACE (2026-09: a
+   `list_in_biographies` field added corpus-wide), the diff-against-base recipe
+   silently reverts those edits, and `AuthorListTests` reddens the build. Taking
+   `theirs` whole preserves main's in-place edits; you only ever add your own new
+   rows. Verify the diff against origin/main is exactly your appended author(s).
+   Then re-dump in the committed format (step 4).
 
 ## The portrait (try for one, same page)
 
@@ -293,6 +299,16 @@ im.save(f"frontend/static/portraits/{slug}.jpg", "JPEG", quality=85, optimize=Tr
 Check the result visually (a contact sheet of several at once is quickest) — the
 API's lead image is occasionally a statue, a book cover, or the wrong person.
 Ship `photo_url` the same way as `bio_html` (step 5 above).
+
+**A public-domain book you are already sourcing is often the cleanest portrait,
+too.** When the sermons/works come from a Gutenberg or archive.org edition, that
+scan usually opens with an engraved frontispiece of the author — same PD status
+as the text, no licence hunt (Christmas Evans, 2026-09: `images/fp.jpg` in PG
+#42340). Such a plate is often *landscape* (a head-and-shoulders half-length),
+which breaks the portrait system's "taller than wide" assumption — so crop it to
+a ~3:4 bust centred on the face before saving, then derive the focal `N` from the
+CROPPED file (`y = (fy − 0.45·a) ÷ (1 − a)`), and eyeball the circle mask once
+(render an ellipse over an object-cover crop) to confirm the face lands well.
 
 **A CC "own work" claim on a lifetime photo is copyfraud — reject it.** For a
 20th-century subject (the era where PD runs out), Commons' only image is often a

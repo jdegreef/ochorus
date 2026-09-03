@@ -833,6 +833,19 @@ gotchas found adding one sermon each for Chrysostom/Finney/Luther *(2026-09)*:
     imports as 0 words, fetch the URL and check for `<title>loading` before
     blaming the extractor; fall back to a `web` source (gospeltruth.net carries
     Finney, already the source for Catherine Booth).
+  - **A collected volume with PAGE-NUMBERED headings doesn't fit the gutenberg
+    section matcher at all** *(2026-09, Christmas Evans, PG #42340)*. Its 22
+    sermons are clean `<h3>SERMON IV.<br>FALL AND RECOVERY OF MAN</h3>`, but each
+    heading carries a `<span class="pagenum">p. 108</span>` prefix, and
+    `extract_gutenberg_section` matches `_norm_heading(h.get_text(" "))` whole —
+    so `section` would have to embed the page number ("p. 108 SERMON IV. …"),
+    which is absurd. When the source is a page-numbered collected edition,
+    hand-extract the chosen sermons into fixtures and ship them **without a
+    `sermon_catalog.py` entry** (the fixture is the source of truth — the
+    Wesley/Booth batch did the same for its two hand-corrected sermons). Note
+    also: Gutenberg italicizes a whole scripture epigraph word-by-word, so strip
+    `<i>` from the opening verse (the blockquote already marks it) and fold
+    `<span class="smcap">` to uppercase, as the Booth sermons preserve caps.
   - **A Gutenberg Postil can set every sermon AND its subsections at the same
     heading level** (Lenker's *Epistle Sermons*, id 28464, is all `<h4>`), so
     `extract_gutenberg_section` — which bounds a sermon on the next SAME-tag
