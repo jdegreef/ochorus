@@ -24,6 +24,9 @@
    "orphan-close-quote": 1,
    "space-before-punct": 5
   },
+  "catholic-spirit": {
+   "space-before-punct": 2
+  },
   "cheque-book": {
    "space-before-punct": 1
   },
@@ -226,6 +229,10 @@
    "anachronism": 2,
    "broken-smallcaps": 1,
    "orphan-close-quote": 23
+  },
+  "the-circumcision-of-the-heart": {
+   "orphan-close-quote": 4,
+   "space-before-punct": 4
   },
   "the-fourfold-gospel": {
    "hyphen-space": 1
