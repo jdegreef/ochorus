@@ -128,6 +128,7 @@ TOPICS = [
             "a-call-to-the-unconverted",
             "around-the-wicket-gate",
             "grace-abounding",
+            "how-to-bring-men-to-christ",
         ],
     ),
     (
@@ -169,6 +170,7 @@ TOPICS = [
             "till-he-come",
             "the-reformed-pastor",
             "men-who-tended-the-flock-2",
+            "the-fundamental-doctrines-of-the-christian-faith",
         ],
     ),
 ]
