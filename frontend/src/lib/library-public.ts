@@ -1,5 +1,6 @@
 import { apiFetch, ApiError } from './api';
 import {
+	ARTICLE_FIELDS,
 	BOOK_FIELDS,
 	CHAPTER_FIELDS,
 	requireFields,
@@ -524,6 +525,58 @@ export const getSermon = async (slug: string, language = 'en') =>
 		`sermon ${slug}`,
 		await localized<Sermon>((l) => `/api/library/sermons/${slug}/?language=${l}`, language),
 		SERMON_FIELDS
+	);
+
+// --- Articles ----------------------------------------------------------------
+// Original devotional/theological writing — no author, no chapters. Per-language
+// rows like everything else (English only for now). See backend Article model.
+
+export interface ArticleSummary {
+	slug: string;
+	language: string;
+	/** The on-page headline / display title (the warm H1). */
+	h1: string;
+	/** SEO <title> text; "" falls back to h1. */
+	meta_title: string;
+	/** Standfirst — shown under the H1 and used as the meta description. */
+	description: string;
+	sort_order: number;
+	created_at: string;
+	/** Last modification (ISO) — the sitemap's `<lastmod>`; see BookSummary. */
+	updated_at?: string;
+}
+
+/** A resolved "Read next" link the article funnels the reader to. */
+export interface ArticleRelated {
+	type: 'book' | 'sermon' | 'author';
+	slug: string;
+	title: string;
+	/** Reader path, trailing-slashed (e.g. `/books/the-life-of-trust/`). */
+	url: string;
+}
+
+export interface Article extends ArticleSummary {
+	body_html: string;
+	/** The funnel: books / sermons / bios to read next, already resolved to
+	 *  titles + URLs server-side (unresolvable references are dropped). */
+	related: ArticleRelated[];
+	source_url: string;
+	/** Content locales this article is published in — the only locales an
+	 *  hreflang alternate should point at (per-language rows, no fallback). */
+	available_languages: string[];
+}
+
+export const listArticles = (language = 'en') =>
+	apiFetch<ArticleSummary[]>(`/api/library/articles/?language=${language}`);
+
+// Falls back to English on a 404, like getSermon: an article detail filters by
+// (slug, language), so a language switch or a shared /lg link to an
+// untranslated article degrades to the English original rather than a 404.
+export const getArticle = async (slug: string, language = 'en') =>
+	requireFields<Article>(
+		`article ${slug}`,
+		await localized<Article>((l) => `/api/library/articles/${slug}/?language=${l}`, language),
+		ARTICLE_FIELDS
 	);
 
 export const search = (q: string, language = 'en', scope = '') => {

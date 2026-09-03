@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { getBook, getChapterWithLang, getSermon } from './library-public';
+import { getArticle, getBook, getChapterWithLang, getSermon } from './library-public';
 import { PayloadError } from './payloadGuards';
 
 /**
@@ -46,6 +46,11 @@ describe('the reader helpers reject a payload they cannot render', () => {
 	it('a sermon with no body', async () => {
 		vi.stubGlobal('fetch', respond({ slug: 's', language: 'en', title: 'Himself' }));
 		await expect(getSermon('s', 'en')).rejects.toThrow(PayloadError);
+	});
+
+	it('an article with no body', async () => {
+		vi.stubGlobal('fetch', respond({ slug: 'a', language: 'en', h1: 'How to Pray' }));
+		await expect(getArticle('a', 'en')).rejects.toThrow(PayloadError);
 	});
 
 	it('and pass a payload they can', async () => {
