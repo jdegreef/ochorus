@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { readingSync } from './readingSync';
 import {
 	READING_DATA_KEYS,
@@ -192,5 +192,58 @@ describe('readingSync.clearOnSignOut', () => {
 		// user's state must not be part of the next account's merge payload.
 		expect(localStorage.getItem(PROGRESS_KEY)).toBeNull();
 		expect(localStorage.getItem(MARKS_KEY)).toBeNull();
+	});
+});
+
+describe('readingSync.fetchProgress', () => {
+	const row = (client_updated_at: string | null) =>
+		new Response(
+			JSON.stringify({
+				kind: 'book',
+				book_slug: 'humility',
+				language: 'en',
+				chapter_order: 7,
+				paragraph_index: 3,
+				updated_at: '2024-01-01T10:00:00.000000Z',
+				client_updated_at
+			}),
+			{ status: 200, headers: { 'content-type': 'application/json' } }
+		);
+
+	afterEach(() => vi.unstubAllGlobals());
+
+	it('does not even ask when signed out', async () => {
+		const fetchSpy = vi.fn();
+		vi.stubGlobal('fetch', fetchSpy);
+		readingSync.setSignedIn(false);
+		await expect(readingSync.fetchProgress('book', 'humility')).resolves.toBeNull();
+		expect(fetchSpy).not.toHaveBeenCalled();
+	});
+
+	it("returns the row with `at` from the writing device's own clock", async () => {
+		vi.stubGlobal('fetch', vi.fn(async () => row('2024-01-01T09:58:00.000000Z')));
+		readingSync.setSignedIn(true);
+		const rec = await readingSync.fetchProgress('book', 'humility');
+		expect(rec).toEqual({
+			order: 7,
+			paragraph_index: 3,
+			language: 'en',
+			at: Date.parse('2024-01-01T09:58:00.000Z')
+		});
+	});
+
+	it('falls back to the server clock for a row an old client wrote without one', async () => {
+		vi.stubGlobal('fetch', vi.fn(async () => row(null)));
+		readingSync.setSignedIn(true);
+		const rec = await readingSync.fetchProgress('book', 'humility');
+		expect(rec?.at).toBe(Date.parse('2024-01-01T10:00:00.000Z'));
+	});
+
+	it('answers null for no position (404) and for a network failure', async () => {
+		vi.stubGlobal('fetch', vi.fn(async () => new Response('{"detail":"No position."}', { status: 404 })));
+		readingSync.setSignedIn(true);
+		await expect(readingSync.fetchProgress('book', 'humility')).resolves.toBeNull();
+		vi.stubGlobal('fetch', vi.fn(async () => { throw new TypeError('offline'); }));
+		await expect(readingSync.fetchProgress('book', 'humility')).resolves.toBeNull();
 	});
 });

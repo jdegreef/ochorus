@@ -29,6 +29,9 @@
 	} from '$lib/reading';
 	import { pageOfOffset } from '$lib/pageMath';
 	import { tapTurn, swipeTurn, dampDrag } from '$lib/pageGestures';
+	import { fetchSyncedProgress } from '$lib/progress';
+	import { auth } from '$lib/auth.svelte';
+	import { syncedAhead, type Position } from '$lib/resumeSync';
 	import { listen } from '$lib/listen.svelte';
 	import { define } from '$lib/define.svelte';
 	import { scripture } from '$lib/scripture.svelte';
@@ -144,10 +147,18 @@
 	// the book's resume record, offered as a pill for a short while, then let go.
 	let returnTo = $state<{ order: number; p: number } | null>(null);
 	let returnTimer: ReturnType<typeof setTimeout> | undefined;
-	// Set for the one navigation the pill itself makes: that arrival also carries
-	// a ?p=, and would otherwise read the spot just left as "prior" and offer the
-	// reverse jump — a pill that never goes away.
-	let returningNow = false;
+	// The one arrival that must NOT offer a way back: a jump this page made
+	// itself (the pill, or the synced-position offer). That arrival carries a
+	// ?p= too, and would otherwise read the spot just left as "prior" and offer
+	// the reverse jump — a pill that never goes away. Keyed by target rather
+	// than a boolean because the chapter effect can run more than once while a
+	// navigation settles; only the run that actually lands there consumes it.
+	let ownJumpTarget = '';
+	function jumpTo(to: { order: number; p: number }) {
+		ownJumpTarget = `${to.order}:${to.p}`;
+		const href = chapterHref(to.order);
+		goto(`${href}${href.includes('?') ? '&' : '?'}p=${to.p}`);
+	}
 	function offerReturn(to: { order: number; p: number }) {
 		returnTo = to;
 		clearTimeout(returnTimer);
@@ -156,10 +167,63 @@
 	function goBackToPrior() {
 		const to = returnTo;
 		returnTo = null;
-		if (!to) return;
-		returningNow = true;
-		const href = chapterHref(to.order);
-		goto(`${href}${href.includes('?') ? '&' : '?'}p=${to.p}`);
+		if (to) jumpTo(to);
+	}
+
+	// "Continue where you left off on your other device": the account's synced
+	// position when it is newer than, and meaningfully ahead of, where this
+	// device is opening (see $lib/resumeSync). One ask per book per page-life:
+	// taken, dismissed, or left alone for a while, it is not asked again — a
+	// fresh pill on every chapter turn would be a nag, and once taken the
+	// reader is where the other device was.
+	let syncOffer = $state<Position | null>(null);
+	let syncTimer: ReturnType<typeof setTimeout> | undefined;
+	const syncDismissed = new Set<string>();
+	// What the chapter effect asks for, answered by the effect below once the
+	// session has settled: on a cold load (a deep link, the PWA icon) the
+	// session resolves AFTER the first chapter opens, and an ask made before
+	// that is answered "signed out". `local` is this device's record as read
+	// before the open touched it.
+	let syncAsk = $state<{
+		slug: string;
+		order: number;
+		language: string;
+		local: ReturnType<typeof getProgressRecord>;
+	} | null>(null);
+	$effect(() => {
+		const ask = syncAsk;
+		if (!ask || !auth.initialized) return;
+		let cancelled = false;
+		fetchSyncedProgress(ask.slug).then((remote) => {
+			if (cancelled) return;
+			const offer = syncedAhead(
+				ask.local && { order: ask.local.order, p: ask.local.paragraph_index, at: ask.local.at },
+				remote && { order: remote.order, p: remote.paragraph_index, at: remote.at },
+				ask.order
+			);
+			if (!offer) return;
+			// One row serves every edition and outlives a re-import: never offer a
+			// chapter this book (as loaded) does not have, and trust the paragraph
+			// only when it was measured in the edition being read here.
+			const chapters = bookForProgress?.chapters;
+			if (chapters && !chapters.some((c) => c.order === offer.order)) return;
+			syncOffer = { ...offer, p: remote?.language === ask.language ? offer.p : 0 };
+			clearTimeout(syncTimer);
+			syncTimer = setTimeout(dismissSyncOffer, 15000);
+		});
+		return () => {
+			cancelled = true;
+		};
+	});
+	function takeSyncOffer() {
+		const to = syncOffer;
+		dismissSyncOffer();
+		if (to) jumpTo(to);
+	}
+	function dismissSyncOffer() {
+		clearTimeout(syncTimer);
+		syncOffer = null;
+		syncDismissed.add(slug);
 	}
 
 	// --- Reading-progress indicators -------------------------------------------
@@ -577,6 +641,7 @@
 	onDestroy(() => {
 		clearTimeout(peekTimer);
 		clearTimeout(returnTimer);
+		clearTimeout(syncTimer);
 	});
 
 	onMount(() => {
@@ -603,21 +668,38 @@
 		// and stored paragraph 0 — leaving the chapter before scrolling threw the
 		// bookmarked spot away.
 		const pParam = $page.url.searchParams.get('p');
-		const jumpTo = pParam !== null ? Number(pParam) : NaN;
+		const jumpP = pParam !== null ? Number(pParam) : NaN;
 		// A deep-link jump strands the reader: saveProgress below moves the book's
 		// resume point to the target, so the spot they left is gone. Read it FIRST
 		// and offer a way back (only when it really is somewhere else).
 		clearTimeout(returnTimer);
 		returnTo = null;
 		// (A bare `?p=` is Number('') === 0 — finite, but not a jump.)
-		if (Number.isFinite(jumpTo) && pParam !== '' && !returningNow) {
+		const deliberateJump = Number.isFinite(jumpP) && pParam !== '';
+		const ownJump = deliberateJump && ownJumpTarget === `${order}:${jumpP}`;
+		// Consumed by its own arrival — or dropped by any plain navigation, so a
+		// jump that never landed (cancelled, redirected) cannot linger to mute a
+		// later genuine deep link to the same spot.
+		if (ownJump || !deliberateJump) ownJumpTarget = '';
+		if (deliberateJump && !ownJump) {
 			const prior = getProgressRecord(s);
-			if (prior && (prior.order !== order || prior.paragraph_index !== jumpTo)) {
+			if (prior && (prior.order !== order || prior.paragraph_index !== jumpP)) {
 				offerReturn({ order: prior.order, p: prior.paragraph_index });
 			}
 		}
-		returningNow = false;
-		if (Number.isFinite(jumpTo) && jumpTo > 0) saveScrollAnchor(s, order, jumpTo);
+		if (Number.isFinite(jumpP) && jumpP > 0) saveScrollAnchor(s, order, jumpP);
+
+		// Ask the account where it last was (answered by its own effect, once
+		// the session has settled). This device's record is read HERE, before
+		// saveProgress: that keeps `at` when the position is unchanged, but a
+		// deep link moves it. Not after a deliberate jump (a bookmark, a search
+		// hit): the reader chose that spot.
+		clearTimeout(syncTimer);
+		syncOffer = null;
+		syncAsk =
+			!deliberateJump && !syncDismissed.has(s)
+				? { slug: s, order, language, local: getProgressRecord(s) }
+				: null;
 
 		saveProgress(s, order, language);
 		bookmarks.load('book', s);
@@ -632,8 +714,8 @@
 				measurePages();
 				let target = 0;
 				if (wantLast) target = pageTotal - 1;
-				else if (Number.isFinite(jumpTo) && body?.children[jumpTo]) {
-					target = pageOf(body.children[jumpTo] as HTMLElement);
+				else if (Number.isFinite(jumpP) && body?.children[jumpP]) {
+					target = pageOf(body.children[jumpP] as HTMLElement);
 				} else {
 					const rec = getProgressRecord(s);
 					const idx =
@@ -642,9 +724,9 @@
 					if (idx && body?.children[idx]) target = pageOf(body.children[idx] as HTMLElement);
 				}
 				goToPage(target, false);
-			} else if (Number.isFinite(jumpTo) && body?.children[jumpTo]) {
+			} else if (Number.isFinite(jumpP) && body?.children[jumpP]) {
 				placeAfterLayout(() => {
-					const el = body?.children[jumpTo];
+					const el = body?.children[jumpP];
 					if (!el) return;
 					el.scrollIntoView({ block: 'start' });
 					window.scrollBy(0, -HEADER_OFFSET);
@@ -1383,6 +1465,23 @@
 		<Icon name="chevron-left" size={14} />
 		{t('reader.returnPrior')}
 	</button>
+{:else if syncOffer}
+	<!-- The account is further along than this device (another device read on).
+	     Same slot as the return pill; the two never coincide — a deliberate jump
+	     skips the sync ask — but the pill wins if they somehow did. -->
+	<div class="return-pill sync-pill" role="status">
+		<span>{t('reader.syncedAhead')}</span>
+		<button class="sync-cta" onclick={takeSyncOffer}>
+			{#if syncOffer.order !== chapter.order}
+				{t('book.continueCh')} {syncOffer.order}
+			{:else}
+				{t('reader.continueThere')}
+			{/if}
+		</button>
+		<button class="sync-dismiss" onclick={dismissSyncOffer} aria-label={t('pwa.dismiss')}>
+			<Icon name="close" size={14} />
+		</button>
+	</div>
 {/if}
 
 <!-- Reading-progress footer: a draggable scrubber + location, fixed, hidden in
@@ -1702,8 +1801,36 @@
 		backdrop-filter: blur(6px);
 		animation: return-in var(--duration-base) ease;
 	}
-	.return-pill:hover {
+	.return-pill:not(.sync-pill):hover {
 		border-color: var(--accent);
+	}
+	/* The synced-position offer wears the pill's chrome with two actions inside. */
+	.sync-pill {
+		gap: 0.6rem;
+		padding-inline: 0.9rem 0.4rem;
+		max-width: calc(100vw - 2rem);
+	}
+	.sync-cta {
+		white-space: nowrap;
+		border-radius: 999px;
+		background: var(--accent);
+		color: var(--accent-contrast);
+		padding: 0.25rem 0.75rem;
+		font-weight: 600;
+		font-size: var(--fs-small);
+	}
+	.sync-cta:hover {
+		filter: brightness(1.05);
+	}
+	.sync-dismiss {
+		display: inline-flex;
+		padding: 0.55rem; /* ~32px beside the CTA: a thumb target, not a mouse one */
+		border-radius: 999px;
+		color: var(--muted);
+	}
+	.sync-dismiss:hover {
+		color: var(--text);
+		background: var(--surface-2);
 	}
 	/* "Back" points the other way in Arabic. */
 	:global([dir='rtl']) .return-pill :global(svg) {

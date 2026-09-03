@@ -58,6 +58,29 @@ class ReadingSyncTests(TestCase):
         self.assertEqual(len(state["progress"]), 1)
         self.assertEqual(state["progress"][0]["chapter_order"], 5)
 
+    def test_progress_get_returns_the_synced_position_with_the_writers_clock(self):
+        # Nothing synced yet: a clean 404, not an empty row.
+        self.assertEqual(self.client.get("/api/reading/progress/humility/").status_code, 404)
+
+        self.client.put(
+            "/api/reading/progress/humility/",
+            {"language": "en", "chapter_order": 7, "paragraph_index": 3, "updated_at": 1_700_000_000_000},
+            format="json",
+        )
+        res = self.client.get("/api/reading/progress/humility/")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual((res.data["chapter_order"], res.data["paragraph_index"]), (7, 3))
+        # The writing device's clock rides along, so a second device can tell
+        # "further along elsewhere" from its own older record.
+        self.assertTrue(res.data["client_updated_at"].startswith("2023-11-14"))
+
+        # Scoped by kind: a sermon of the same slug is a different row.
+        self.assertEqual(self.client.get("/api/reading/progress/humility/?kind=sermon").status_code, 404)
+        self.assertEqual(self.client.get("/api/reading/progress/humility/?kind=nope").status_code, 400)
+
+        # Reads are for everyone who is signed in, and only them.
+        self.assertEqual(APIClient().get("/api/reading/progress/humility/").status_code, 401)
+
     def test_range_marks_put_and_delete(self):
         res = self.client.put(
             "/api/reading/marks/humility/2/",
