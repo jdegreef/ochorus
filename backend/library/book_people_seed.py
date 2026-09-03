@@ -38,8 +38,15 @@ from __future__ import annotations
 # (book_slug, [(author_slug, role), ...]). See the module docstring for the
 # shape and roles.
 BOOK_PEOPLE: list[tuple[str, list[tuple[str, str]]]] = [
-    # "Men Who Moved Heaven" is an anthology of men of prayer, one chapter each.
-    # John Wesley has his own chapter ("The Methodical Man of Methodical
-    # Prayer"), so he is a subject of the book.
-    ("men-who-moved-heaven", [("john-wesley", "subject")]),
+    # "Men Who Moved Heaven" is an anthology of men of prayer, one chapter each,
+    # so its subjects are the men it gives a chapter to. Listed in the book's
+    # own chapter order.
+    (
+        "men-who-moved-heaven",
+        [
+            ("charles-h-spurgeon", "subject"),
+            ("george-muller", "subject"),
+            ("john-wesley", "subject"),
+        ],
+    ),
 ]
