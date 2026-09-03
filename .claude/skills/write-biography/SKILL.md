@@ -412,4 +412,45 @@ current signatures in `library/ingest.py` before relying on them.)
   verification file rather than implying you read the source.
 
 
+## Writing a BATCH at once (parallel subagents) — 2026-09-03, PR #1380
+
+Seven East African Revival bios (Joe Church, Kinuka, Kigozi, Nagenda,
+Kanamuzeyi, Luwum, Barham) were written in one pass this way, and it held
+quality:
+
+1. **One research subagent per figure, in parallel.** Brief each to return a
+   structured dossier — life facts with dates+sources, 2–4 vouched verbatim
+   quotes, the prayer moments, and an explicit **THIN/UNVERIFIABLE** section —
+   under a hard "never fabricate; say 'not found by these searches'" rule.
+   Expect `en.wikipedia.org` and `dacb.org` to REFUSE WebFetch; WebSearch
+   summaries of them still come back, so a blocked fetch is not a dead end — but
+   say you're working from summaries.
+2. **Stage shared inputs as FILES**, not giant prompts: one `SPEC.md` (voice +
+   the allowed-tags markup + the literal-Unicode-not-entities trap + the
+   no-invention rule), the full text of an existing bio as the **voice template**
+   (Sabiti's is a good one — same milieu), and one `dossier-<slug>.md` per figure.
+3. **One writer subagent per figure, in parallel**, each told to read
+   SPEC + template + its dossier and write `bio-<slug>.html`, then print
+   `SHORT_BIO / BIRTH_YEAR / DEATH_YEAR`. Leave a year **NULL** when the dossier
+   couldn't verify it — don't guess (Kanamuzeyi's birth and both of Barham's
+   years shipped blank).
+4. **Review every draft against its dossier yourself** — this is not optional;
+   the subagents are disciplined but you own the accuracy. A fast mechanical
+   scan catches the rest: `grep` the drafts for stray HTML entities (only
+   `&amp;` allowed), for any year/word you told them to omit, and for
+   disallowed tags.
+5. **Assemble with a Django-aware script** (`django.setup()` after
+   `sys.path.insert(0, os.getcwd())` from `backend/`): run each bio through
+   `clean_bio_html` to store the SETTLED form, append the rows, dump
+   `indent=2, ensure_ascii=False`. One create-migration covers the whole batch
+   (a `NEW_SLUGS` set, mirroring `0100_erica_sabiti`). Verify BOTH create paths
+   (fresh `seed_if_empty`; migration on a seeded DB with the rows deleted).
+
+Cost: ~7 research + 7 writer agents. The `same_as` decision is per-figure — the
+well-documented ones (Church, Luwum, Kanamuzeyi) got a verified Wikipedia URL;
+the four with no confirmed standalone entity were registered blank in
+`tests_author_entity` rather than given a guessed identifier. Portraits: a whole
+20th-century batch is monograms — lifetime photos are copyfraud-risk, so none
+shipped a face.
+
 _This is a living playbook — append tips and pitfalls as we write more._
