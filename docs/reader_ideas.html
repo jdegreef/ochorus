@@ -101,7 +101,7 @@ body{ font-family:var(--sans); color:var(--text); background:var(--bg); font-siz
   </div>
   <div class="shipnote">
     <span class="k">Shipped since this brief</span>
-    The <b>phone batch</b> (#1 swipe-to-turn, #2 focus-mode peek, #3 phone breadcrumb, #4 larger touch targets, #5 tap-to-page-down, #6 chapter-complete) plus a left/right <b>single-page tap mode</b>; and the <b>cross-device batch</b> (#15 bookmark sync, #16 search stemming, #17 notes &amp; highlights panel). Each is verified live and marked <b>✓ Shipped</b> on its card below.
+    The <b>phone batch</b> (#1 swipe-to-turn, #2 focus-mode peek, #3 phone breadcrumb, #4 larger touch targets, #5 tap-to-page-down, #6 chapter-complete) plus a left/right <b>single-page tap mode</b>; and the <b>cross-device batch</b> (#15 bookmark sync, #16 search stemming, #17 notes &amp; highlights panel); and, with the <b>type &amp; layout controls</b>, #8 tablet default width and #14 extra-wide measure. Each is verified live and marked <b>✓ Shipped</b> on its card below.
   </div>
 </section>
 
@@ -181,10 +181,10 @@ body{ font-family:var(--sans); color:var(--text); background:var(--bg); font-siz
         <div class="prompt"><span class="plabel">Prompt</span><code>Ochorus gates its paged two-column spread at TWO_COL_MIN = 1024px (chapter +page.svelte). Make it orientation-aware so a landscape tablet gets the two-page spread while portrait tablets stay single-column — e.g. enable two columns when the available width clears a lower threshold in landscape. Verify on iPad-sized viewports in both orientations.</code></div>
       </div>
     </div>
-      <div class="idea">
+      <div class="idea shipped">
       <div class="num">8</div>
       <div class="idea-body">
-        <h3>Sensible default measure on tablets</h3>
+        <h3>Sensible default measure on tablets <span class="ship-badge">✓ Shipped</span></h3>
         <p><span class="lbl">What</span>Pick a device-class-aware default column width so a tablet reads like a page, not a stretched phone.</p>
         <p><span class="lbl">Why</span>At “normal” width a tablet can render a phone-width column floating in whitespace — it feels unfinished.</p>
         <p><span class="lbl watch">Watch</span>Only change the *default*; users who set a measure themselves keep their choice.</p>
@@ -245,10 +245,10 @@ body{ font-family:var(--sans); color:var(--text); background:var(--bg); font-siz
         <div class="prompt"><span class="plabel">Prompt</span><code>Ochorus wraps Bible references with a tappable ScripturePopover (readerText.svelte.ts ~115-126). On fine-pointer devices only (pointer: fine), add a hover-intent preview so hovering a reference shows the popover after a short delay, while preserving the existing click/tap behaviour for touch. Don’t enable hover on coarse pointers.</code></div>
       </div>
     </div>
-      <div class="idea">
+      <div class="idea shipped">
       <div class="num">14</div>
       <div class="idea-body">
-        <h3>An extra-wide measure for big displays</h3>
+        <h3>An extra-wide measure for big displays <span class="ship-badge">✓ Shipped</span></h3>
         <p><span class="lbl">What</span>Add a wider measure step (or true two-column on large desktop) for readers who want the page to fill a big screen.</p>
         <p><span class="lbl">Why</span>52rem “wide” can still feel like a narrow ribbon on a 27″ display.</p>
         <p><span class="lbl watch">Watch</span>Keep the comfortable defaults; this is an extra step for people who ask for it, not a new default.</p>
