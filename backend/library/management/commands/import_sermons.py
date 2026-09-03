@@ -282,6 +282,12 @@ def extract_web_sermon(html: str, title: str, body_starts: str = "") -> str:
     ).strip()
     # A bare trailing "TOP" jump link (sermons.martinluther.us and others).
     body = re.sub(r"<p>\s*TOP\s*</p>\s*$", "", body, flags=re.I).strip()
+    # BibleHub appends its own chrome after a sermon: a "Parallel Verses"
+    # cross-reference block (and ad-slot comment paragraphs). Cut from it to the
+    # end — the phrase is a template label, never sermon prose.
+    body = re.sub(r"(?:<hr/>\s*)?Parallel Verses.*$", "", body, flags=re.I | re.S).strip()
+    # A trailing volume-end marker from a collected edition ("END OF VOL. I.").
+    body = re.sub(r"<p>\s*END OF VOL\.?\s*[IVXLC0-9]*\.?\s*</p>\s*$", "", body, flags=re.I).strip()
     return body
 
 

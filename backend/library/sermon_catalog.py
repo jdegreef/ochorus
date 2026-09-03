@@ -347,4 +347,17 @@ SERMONS: list[SermonEntry] = [
         scripture_ref="1 Corinthians 13",
         body_starts="1. Paul's purpose in this chapter is to silence",
     ),
+    # Calvin's sermons are on neither CCEL (commentaries only) nor Gutenberg as
+    # a clean single section (the Kleiser anthology, id 11981, repeats the
+    # heading for the biographical note and the sermon). BibleHub carries the
+    # same public-domain Kleiser translation as one page.
+    SermonEntry(
+        "enduring-persecution-for-christ",
+        "Enduring Persecution for Christ",
+        "john-calvin",
+        "web",
+        "https://biblehub.com/sermons/auth/various/calvin_--_enduring_persecution_for_christ.htm",
+        scripture_ref="Hebrews 13:13",
+        body_starts="All the exhortations which can be given us to suffer patiently",
+    ),
 ]

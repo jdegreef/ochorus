@@ -2669,6 +2669,10 @@ class ReleaseProseSourceCoverageTests(SimpleTestCase):
         # comes from the fixture, and author_sync exists to recognise a stub and
         # replace it — so editing one changes nothing a reader sees on a deploy.
         "library/catalog.py": "import-time author stubs; the fixture supersedes them",
+        # Sermon import config: titles/scripture reach the reader through the
+        # sermon FIXTURES (what seed_sermons upserts), not this module; its own
+        # strings are body_starts anchors and dev comments. Same as catalog.py.
+        "library/sermon_catalog.py": "import-time sermon config; the fixture supersedes it",
         # Reads catalog stubs to DETECT them; writes bios from the fixture.
         "library/author_sync.py": "stub detection, not a source of prose",
         # bible_licence / attribution text. Admin-facing (AddLanguageForm) — it
