@@ -87,8 +87,12 @@ BOOK_PEOPLE: list[tuple[str, list[tuple[str, str]]]] = [
         "men-who-tended-the-flock-2",
         [
             ("john-chrysostom", "subject"),
+            ("gregory-the-great", "subject"),
+            ("george-herbert", "subject"),
             ("richard-baxter", "subject"),
             ("jonathan-edwards", "subject"),
+            ("john-newton", "subject"),
+            ("robert-murray-mcheyne", "subject"),
         ],
     ),
     (

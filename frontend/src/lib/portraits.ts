@@ -43,6 +43,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'e-m-bounds': '50% 2%', // 1864 photograph; face at ~32% of a 0.72 plate
 	'frederick-brotherton-meyer': '50% 0%',
 	'gareth-evans': '50% 45%', // square source
+	'george-herbert': '50% 8%', // engraving; face at ~35% of a 0.80 plate
 	'george-muller': '50% 37%',
 	'george-whitefield': '50% 0%',
 	'hannah-whitall-smith': '50% 0%',
@@ -53,6 +54,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'john-bunyan': '50% 0%',
 	'john-cassian': '50% 0%', // icon: standing figure, head at ~20% of a 0.70 plate
 	'john-chrysostom': '50% 0%', // mosaic: standing figure, head at ~11%
+	'john-newton': '50% 27%', // portrait; face at ~40% of a 0.72 plate
 	'john-owen': '50% 0%', // Greenhill portrait; face at ~31% of a 0.81 plate
 	'john-wesley': '50% 0%',
 	'jonathan-edwards': '50% 0%',
@@ -62,6 +64,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'richard-allen': '50% 37%',
 	'richard-baxter': '50% 18%',
 	'richard-sibbes': '50% 0%', // labelled portrait; face at ~28% of a 0.72 plate
+	'robert-murray-mcheyne': '50% 2%', // engraving; side profile, head high at ~32% of a 0.78 plate
 	'samuel-ajayi-crowther': '50% 45%',
 	'susanna-wesley': '50% 21%',
 	'thomas-a-kempis': '50% 0%',
