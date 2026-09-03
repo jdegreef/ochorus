@@ -118,6 +118,50 @@
 	let searchOpen = $state(false);
 	let notesOpen = $state(false);
 
+	// The next chapter's opening line, for the "up next" card at the chapter's
+	// end. Captured from the idle prefetch below (which already fetches that
+	// chapter to warm the cache), so it costs no extra request.
+	let nextPreview = $state('');
+
+	/** The first paragraph's text, cheaply: one regex over the head of the HTML,
+	 *  no DOM parse of a whole chapter for a single line. Entities that the
+	 *  sanitizer leaves in prose are unescaped; anything else is rare enough. */
+	function openingLine(html: string): string {
+		const m = /<p\b[^>]*>([\s\S]*?)<\/p>/i.exec(html.slice(0, 8000));
+		return (m?.[1] ?? '')
+			.replace(/<[^>]+>/g, '')
+			.replace(/&amp;/g, '&')
+			.replace(/&quot;/g, '"')
+			.replace(/&#39;/g, "'")
+			.replace(/&nbsp;/g, ' ')
+			.replace(/\s+/g, ' ')
+			.trim()
+			.slice(0, 120);
+	}
+
+	// "Back to where you were": the resume point a ?p= deep-link (a bookmark,
+	// search hit or note) jumped AWAY from. Captured before the jump overwrites
+	// the book's resume record, offered as a pill for a short while, then let go.
+	let returnTo = $state<{ order: number; p: number } | null>(null);
+	let returnTimer: ReturnType<typeof setTimeout> | undefined;
+	// Set for the one navigation the pill itself makes: that arrival also carries
+	// a ?p=, and would otherwise read the spot just left as "prior" and offer the
+	// reverse jump — a pill that never goes away.
+	let returningNow = false;
+	function offerReturn(to: { order: number; p: number }) {
+		returnTo = to;
+		clearTimeout(returnTimer);
+		returnTimer = setTimeout(() => (returnTo = null), 12000);
+	}
+	function goBackToPrior() {
+		const to = returnTo;
+		returnTo = null;
+		if (!to) return;
+		returningNow = true;
+		const href = chapterHref(to.order);
+		goto(`${href}${href.includes('?') ? '&' : '?'}p=${to.p}`);
+	}
+
 	// --- Reading-progress indicators -------------------------------------------
 	// Fraction of the current chapter scrolled past (0..1), updated by the same
 	// throttled scroll handler that saves the position anchor.
@@ -530,7 +574,10 @@
 			schedulePeekHide();
 		}
 	}
-	onDestroy(() => clearTimeout(peekTimer));
+	onDestroy(() => {
+		clearTimeout(peekTimer);
+		clearTimeout(returnTimer);
+	});
 
 	onMount(() => {
 		readerPrefs.init();
@@ -557,6 +604,19 @@
 		// bookmarked spot away.
 		const pParam = $page.url.searchParams.get('p');
 		const jumpTo = pParam !== null ? Number(pParam) : NaN;
+		// A deep-link jump strands the reader: saveProgress below moves the book's
+		// resume point to the target, so the spot they left is gone. Read it FIRST
+		// and offer a way back (only when it really is somewhere else).
+		clearTimeout(returnTimer);
+		returnTo = null;
+		// (A bare `?p=` is Number('') === 0 — finite, but not a jump.)
+		if (Number.isFinite(jumpTo) && pParam !== '' && !returningNow) {
+			const prior = getProgressRecord(s);
+			if (prior && (prior.order !== order || prior.paragraph_index !== jumpTo)) {
+				offerReturn({ order: prior.order, p: prior.paragraph_index });
+			}
+		}
+		returningNow = false;
 		if (Number.isFinite(jumpTo) && jumpTo > 0) saveScrollAnchor(s, order, jumpTo);
 
 		saveProgress(s, order, language);
@@ -797,9 +857,28 @@
 							requestIdleCallback: (cb: () => void, opts?: { timeout: number }) => number;
 						}).requestIdleCallback(fn, { timeout: 3000 })
 				: (fn: () => void) => setTimeout(fn, 1500);
+		nextPreview = '';
+		// A slow fetch for THIS chapter's successor must not land after the reader
+		// has turned the page — it would put the chapter they are now reading under
+		// "Next". Same cancel-flag shape as the book fetch above.
+		let cancelled = false;
 		idle(() => {
-			fetch(url).catch(() => {});
+			if (cancelled) return;
+			// The response used to be thrown away; now its opening line feeds the
+			// "up next" card, so this is a read as well as a cache warm. It stays a
+			// raw fetch of the same URL on purpose — that is what makes the service
+			// worker's cache entry the one the navigation will hit; routing it
+			// through apiFetch would change the key and warm nothing.
+			fetch(url)
+				.then((r) => (r.ok ? r.json() : null))
+				.then((ch: { body_html?: string } | null) => {
+					if (!cancelled) nextPreview = openingLine(ch?.body_html ?? '');
+				})
+				.catch(() => {});
 		});
+		return () => {
+			cancelled = true;
+		};
 	});
 
 	// Reading-plan context (?plan=<slug>&day=<n>): show the Day N of M strip and
@@ -1223,18 +1302,37 @@
 			<span class="flex-1"></span>
 		{/if}
 		{#if chapter.next}
+			{@const nextWords = bookForProgress?.chapters.find((c) => c.order === chapter.next?.order)?.word_count}
 			<a
 				href={chapterHref(chapter.next.order)}
 				class="btn btn-primary flex-1 flex-col items-end gap-0.5 text-end"
 				class:celebrate
+				aria-label="{t('reader.next')}: {chapterName(chapter.next.order, chapter.next.title)}"
 			>
 				<span class="eyebrow opacity-75">{t('reader.next')}</span>
 				<span class="text-small">{chapterName(chapter.next.order, chapter.next.title)}</span>
+				<!-- The moment of highest intent: say how long it is, and let its
+				     opening line do the inviting. Both are optional — the time needs
+				     the book fetched, the line needs the prefetch to have landed — so
+				     the line's height is reserved: the button must not grow under a
+				     thumb that is already aiming at it. -->
+				<span class="up-next-meta mt-0.5 block text-micro opacity-75" dir="auto">
+					{#if nextWords}{readingTime(nextWords)}{/if}{#if nextWords && nextPreview}
+						·
+					{/if}{#if nextPreview}<span class="italic">{nextPreview}…</span>{/if}
+				</span>
 			</a>
 		{:else}
 			<a href={localizeHref(`/books/${slug}`)} class="btn btn-ghost flex-1 text-center" class:celebrate>{t('reader.backToContents')}</a>
 		{/if}
 	</nav>
+	<!-- A way to the contents even mid-book: the "back to contents" button above
+	     only appears once the last chapter has nothing to point forward to. -->
+	{#if chapter.next}
+		<p class="mt-3 text-center">
+			<a href={localizeHref(`/books/${slug}`)} class="text-small text-muted hover:text-text">{t('reader.contents')}</a>
+		</p>
+	{/if}
 </article>
 
 <!-- Kindle-style edge page-turn arrows (page mode only). The outer screen edge
@@ -1259,10 +1357,32 @@
 	</button>
 {/if}
 
-<!-- In focus mode the scrubber is hidden, so this hairline stands in for it:
-     immersive should mean calm, not lost. Same indicator the sermon page uses. -->
-{#if readerUi.focus}
+<!-- A hairline of progress along the top. It began as focus mode's stand-in
+     for the hidden scrubber; it now stays on in scroll mode too, so a glance
+     tells you where you are without looking down at the footer. Page mode
+     keeps it to focus only — the fixed chrome bar sits where it would go, and
+     "Page 3 / 9" already says it. -->
+{#if readerUi.focus || !paged}
 	<div class="read-progress" style="transform: scaleX({chapterFrac})" aria-hidden="true"></div>
+{/if}
+
+<!-- Focus mode hides the footer, and with it the scrubber's aria-valuetext —
+     so announce the page here instead (only there: elsewhere it would be said
+     twice). The text re-renders only when currentPage does, so a screen reader
+     hears "Page 4 / 9", not every pixel. -->
+{#if readerUi.focus}
+	<div class="sr-only" role="status" aria-live="polite">
+		{t('progress.page')} {currentPage} / {pageCount}
+	</div>
+{/if}
+
+<!-- Offered after a deep-link jump (bookmark, search hit, note): the spot the
+     reader left, which the jump would otherwise have thrown away. -->
+{#if returnTo}
+	<button class="return-pill" onclick={goBackToPrior}>
+		<Icon name="chevron-left" size={14} />
+		{t('reader.returnPrior')}
+	</button>
 {/if}
 
 <!-- Reading-progress footer: a draggable scrubber + location, fixed, hidden in
@@ -1538,6 +1658,73 @@
 		cursor: pointer;
 		accent-color: var(--accent);
 		background: transparent;
+	}
+	/* Touch: a range input's whole height is its hit area, so growing it gives
+	   the thumb a ≥44px target without restyling the native thumb (which
+	   `accent-color` would lose under `appearance: none`). */
+	@media (pointer: coarse) {
+		.scrubber {
+			height: 2.75rem;
+		}
+		/* The footer is auto-height, so the taller scrubber makes it ~1.65rem
+		   deeper; scroll mode's bottom clearance is a constant (page mode
+		   measures the footer), so it grows by the same amount here. */
+		.reading-article {
+			padding-bottom: calc(6.2rem + env(safe-area-inset-bottom));
+		}
+	}
+
+	/* Reserve the "Next" card's meta line before its content arrives. */
+	.up-next-meta {
+		min-height: 1.4em;
+	}
+
+	/* "Back to where you were" — a small pill parked above the progress footer,
+	   centred, that a deep-link jump leaves behind for a few seconds. */
+	.return-pill {
+		position: fixed;
+		inset-inline: 0;
+		bottom: calc(3.6rem + env(safe-area-inset-bottom));
+		z-index: 31;
+		margin-inline: auto;
+		width: max-content;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		padding-block: 0.45rem;
+		padding-inline: 0.7rem 0.9rem; /* tighter on the icon side, whichever side that is */
+		border-radius: 9999px;
+		border: 1px solid var(--border);
+		background: color-mix(in srgb, var(--surface) 92%, transparent);
+		color: var(--text);
+		font-size: var(--fs-small);
+		box-shadow: var(--shadow-popover);
+		backdrop-filter: blur(6px);
+		animation: return-in var(--duration-base) ease;
+	}
+	.return-pill:hover {
+		border-color: var(--accent);
+	}
+	/* "Back" points the other way in Arabic. */
+	:global([dir='rtl']) .return-pill :global(svg) {
+		transform: scaleX(-1);
+	}
+	@media (pointer: coarse) {
+		.return-pill {
+			/* Above the footer that the taller touch scrubber deepened (see above). */
+			bottom: calc(5.3rem + env(safe-area-inset-bottom));
+		}
+	}
+	@keyframes return-in {
+		from {
+			opacity: 0;
+			transform: translateY(6px);
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.return-pill {
+			animation: none;
+		}
 	}
 
 	/* Text-range marks (<mark> spans) are styled globally in app.css. */
