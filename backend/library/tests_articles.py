@@ -1,0 +1,145 @@
+"""The Articles public API contract.
+
+Articles are original site writing with no author, addressed by ``slug`` +
+``language`` like every other content row. These tests pin the three things the
+frontend relies on: the index card carries no body, the detail resolves its
+``related`` soft-references into ready-to-render "Read next" cards (dropping any
+that don't resolve), and the per-language visibility rules match books/sermons
+(unpublished hidden, no English fallback).
+"""
+
+from __future__ import annotations
+
+from django.test import TestCase
+from django.urls import reverse
+from rest_framework.test import APIClient
+
+from .models import Article, Author, Book
+
+BODY = "<p>" + ("A settled paragraph about prayer. " * 50) + "</p>"
+
+
+class ArticleApiTests(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.author = Author.objects.create(slug="george-muller", name="George Müller")
+        cls.book = Book.objects.create(
+            author=cls.author,
+            slug="the-life-of-trust",
+            language="en",
+            title="The Life of Trust",
+            is_published=True,
+        )
+        # An unpublished book — a related reference to it must be dropped, not
+        # shipped as a dead link.
+        Book.objects.create(
+            author=cls.author,
+            slug="draft-book",
+            language="en",
+            title="Draft",
+            is_published=False,
+        )
+        cls.article = Article.objects.create(
+            slug="how-to-pray-so-god-answers",
+            language="en",
+            h1="How to Pray So That God Answers",
+            meta_title="How to Pray — Müller",
+            description="How Müller prayed.",
+            body_html=BODY,
+            sort_order=1,
+            related=[
+                {"type": "book", "slug": "the-life-of-trust"},
+                {"type": "author", "slug": "george-muller"},
+                {"type": "book", "slug": "draft-book"},        # unpublished → dropped
+                {"type": "book", "slug": "does-not-exist"},    # missing → dropped
+            ],
+            is_published=True,
+        )
+        # A second, earlier-sorted published article, to pin ordering.
+        Article.objects.create(
+            slug="what-is-faith",
+            language="en",
+            h1="What Is Faith?",
+            body_html=BODY,
+            sort_order=0,
+            is_published=True,
+        )
+        # Hidden from the en index: one unpublished, one in another language.
+        Article.objects.create(
+            slug="draft", language="en", h1="Draft", body_html=BODY, is_published=False
+        )
+        Article.objects.create(
+            slug="how-to-pray-so-god-answers",
+            language="es",
+            h1="Cómo orar",
+            body_html=BODY,
+            is_published=True,
+        )
+
+    def setUp(self):
+        self.client = APIClient()
+
+    def test_list_returns_published_en_only_ordered_without_body(self):
+        res = self.client.get(reverse("article-list"), {"language": "en"})
+        self.assertEqual(res.status_code, 200)
+        slugs = [a["slug"] for a in res.data]
+        # Ordered by sort_order; unpublished "draft" and the es row are absent.
+        self.assertEqual(slugs, ["what-is-faith", "how-to-pray-so-god-answers"])
+        self.assertNotIn("body_html", res.data[0])
+
+    def test_detail_resolves_related_and_drops_unresolvable(self):
+        res = self.client.get(
+            reverse("article-detail", args=["how-to-pray-so-god-answers"]),
+            {"language": "en"},
+        )
+        self.assertEqual(res.status_code, 200)
+        self.assertIn("body_html", res.data)
+        related = res.data["related"]
+        # Only the published book and the author survive; the unpublished and
+        # missing books are dropped, and order is preserved.
+        self.assertEqual(
+            related,
+            [
+                {
+                    "type": "book",
+                    "slug": "the-life-of-trust",
+                    "title": "The Life of Trust",
+                    "url": "/books/the-life-of-trust/",
+                },
+                {
+                    "type": "author",
+                    "slug": "george-muller",
+                    "title": "George Müller",
+                    "url": "/authors/george-muller/",
+                },
+            ],
+        )
+        self.assertEqual(res.data["available_languages"], ["en", "es"])
+
+    def test_detail_tolerates_malformed_related(self):
+        # `related` is a hand-authored JSON field with no schema: a bare slug
+        # string, a non-dict, or a non-list must be skipped, not 500 the page.
+        Article.objects.create(
+            slug="malformed",
+            language="en",
+            h1="Malformed",
+            body_html=BODY,
+            related=["the-life-of-trust", {"type": "book", "slug": "the-life-of-trust"}, 7],
+            is_published=True,
+        )
+        res = self.client.get(reverse("article-detail", args=["malformed"]), {"language": "en"})
+        self.assertEqual(res.status_code, 200)
+        # Only the well-formed entry resolves; the string and the int are dropped.
+        self.assertEqual([c["slug"] for c in res.data["related"]], ["the-life-of-trust"])
+
+    def test_detail_hides_unpublished(self):
+        res = self.client.get(reverse("article-detail", args=["draft"]), {"language": "en"})
+        self.assertEqual(res.status_code, 404)
+
+    def test_detail_404_when_language_missing(self):
+        # No English fallback: a slug published only in es must 404 for fr.
+        res = self.client.get(
+            reverse("article-detail", args=["how-to-pray-so-god-answers"]),
+            {"language": "fr"},
+        )
+        self.assertEqual(res.status_code, 404)

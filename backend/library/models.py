@@ -571,6 +571,88 @@ class Sermon(models.Model):
             fts.refresh_sermon(self)
 
 
+class ArticleManager(models.Manager):
+    def get_by_natural_key(self, slug, language):
+        return self.get(slug=slug, language=language)
+
+
+class Article(models.Model):
+    """A devotional / theological article — original site writing, NOT a
+    public-domain work and NOT attributed to anyone.
+
+    Articles are the SEO layer: they answer the questions people search
+    ("how to trust God", "what does it mean to abide in Christ") and funnel the
+    reader into the library via the ``related`` links at the end. Unlike a Book
+    or Sermon there is **no author FK** — an article is simply a page on the
+    site, so nothing on it claims a byline.
+
+    Everything else follows the per-language row convention: ``slug`` is the
+    canonical identifier shared across translations, unique per language, with no
+    English fallback. English is the only language today; a future translation is
+    just another row on the same slug.
+    """
+
+    # Canonical, language-agnostic identifier shared across translations.
+    slug = models.SlugField(max_length=180)
+    language = models.CharField(max_length=10, default="en")
+
+    # The on-page headline — the warm, human H1, and the display title
+    # everywhere the article is listed.
+    h1 = models.CharField(max_length=300)
+    # The SEO <title> tag, which leads with the keyword. Blank falls back to h1,
+    # so a title only differs from the headline when it needs to.
+    meta_title = models.CharField(max_length=300, blank=True)
+    # The standfirst: a short summary shown under the H1 and reused as the meta
+    # description. Like Book.description, one field serves the page and the crawl.
+    description = models.TextField(blank=True)
+    # The article body as cleaned, structured HTML. Carries pull-quotes and
+    # internal links, so it is sanitized with the RICH (bio) profile, not the
+    # narrow chapter one — see backend/CLAUDE.md on the two sanitize profiles.
+    body_html = models.TextField()
+
+    # The funnel. A list of soft references to the works this article sends the
+    # reader to, rendered as the "Read next" block:
+    #   [{"type": "book"|"sermon"|"author", "slug": "..."}, ...]
+    # Soft references (not FKs) so they are language-agnostic and survive a
+    # re-import, exactly like TopicBook.book_slug.
+    related = models.JSONField(default=list, blank=True)
+
+    source_url = models.URLField(blank=True)
+
+    sort_order = models.PositiveIntegerField(default=0)
+    is_published = models.BooleanField(default=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    objects = ArticleManager()
+
+    class Meta:
+        ordering = ["sort_order", "h1"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["slug", "language"], name="uniq_article_slug_language"
+            ),
+        ]
+        indexes = [
+            # ArticleListView: filter(language, is_published) then
+            # order_by(sort_order, h1) — same shape and reason as idx_book_shelf.
+            models.Index(
+                fields=["language", "is_published", "sort_order", "h1"],
+                name="idx_article_shelf",
+            ),
+        ]
+
+    def natural_key(self):
+        return (self.slug, self.language)
+
+    # No `dependencies`: unlike Book/Sermon, an article has no author FK to load
+    # first, so it can seed in any order.
+
+    def __str__(self) -> str:
+        return f"{self.h1} ({self.language})"
+
+
 class PlanManager(models.Manager):
     def get_by_natural_key(self, slug, language):
         return self.get(slug=slug, language=language)
