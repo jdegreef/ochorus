@@ -62,7 +62,8 @@ from __future__ import annotations
 #:                         and 2026-09-02, four more (The Life of Trust);
 #:                         and 2026-09-02, sixteen more (The Life of Trust) — thirty-one.
 #: hudson-taylor         — approved 2026-08-30, ten;
-#:                         and 2026-09-02, ten more (Separation and Service).
+#:                         and 2026-09-02, ten more (Separation and Service);
+#:                         and 2026-09-03, thirteen more (Union and Communion, Separation and Service) — thirty-three.
 #: gareth-evans          — approved 2026-08-30, twenty-two;
 #:                          four more 2026-08-31 (twenty-six).
 #: richard-allen         — approved 2026-09-02, six (The Life, Experience, and
@@ -2378,6 +2379,84 @@ HUDSON_TAYLOR = [
         "text": "The Brightness of His Father's glory, the Sun of Righteousness, He came to manifest, as well as to speak of, the Father's love.",
         "chapter": ("separation-and-service", 3),
         "paragraph": 35,
+    },
+    {
+        "slug": "hudson-taylor-1f25798f",
+        "text": "How much of prayer there is that begins and ends with the creature, forgetful of the privilege of giving joy to the Creator!",
+        "chapter": ("union-and-communion", 6),
+        "paragraph": 32,
+    },
+    {
+        "slug": "hudson-taylor-fca298ba",
+        "text": "Man's heart is so darkened by the Fall, and by personal sinfulness, that otherwise he would regard sin as a very small matter.",
+        "chapter": ("separation-and-service", 2),
+        "paragraph": 28,
+    },
+    {
+        "slug": "hudson-taylor-d51cda35",
+        "text": "Nearness to God calls for tenderness of conscience, thoughtfulness in service, and implicit obedience.",
+        "chapter": ("separation-and-service", 2),
+        "paragraph": 33,
+    },
+    {
+        "slug": "hudson-taylor-a6c81b90",
+        "text": "The burnt-offering tells us of the perfect and accepted righteousness of Christ, in virtue of which the imperfect believer and his imperfect service are accepted by God.",
+        "chapter": ("separation-and-service", 2),
+        "paragraph": 68,
+    },
+    {
+        "slug": "hudson-taylor-4257638e",
+        "text": "When the Lord blesses His people with peace and plenty, it is His open Heart that moves His loving Hand.",
+        "chapter": ("separation-and-service", 3),
+        "paragraph": 12,
+    },
+    {
+        "slug": "hudson-taylor-292a6824",
+        "text": "The Bible is a supernatural book, a divine revelation: the Holy Spirit is the supernatural, the divine Guide to its meaning.",
+        "chapter": ("separation-and-service", 3),
+        "paragraph": 49,
+    },
+    {
+        "slug": "hudson-taylor-61a35270",
+        "text": "The Holy Spirit is the other Comforter, sent by the Father in Christ's name, that He might abide with the Church for ever.",
+        "chapter": ("separation-and-service", 3),
+        "paragraph": 54,
+    },
+    {
+        "slug": "hudson-taylor-b1a3a6a3",
+        "text": "When sin is put away the Spirit again lifts up His countenance upon us, and peace fills the heart.",
+        "chapter": ("separation-and-service", 3),
+        "paragraph": 56,
+    },
+    {
+        "slug": "hudson-taylor-c92c5138",
+        "text": "God is not hard to please, nor is true human love, for it is a dim reflection of His own.",
+        "chapter": ("separation-and-service", 4),
+        "paragraph": 18,
+    },
+    {
+        "slug": "hudson-taylor-6659df97",
+        "text": "When the Lord Jesus comes again, those, surely, who have stored most in heaven, and have least to leave behind on earth, will render their account with the greatest joy.",
+        "chapter": ("separation-and-service", 4),
+        "paragraph": 27,
+    },
+    {
+        "slug": "hudson-taylor-34852374",
+        "text": "Though we are not our own, it is, alas! possible to live as though we were; devotion to God is still a voluntary thing; hence the differences of attainment among Christians.",
+        "chapter": ("separation-and-service", 2),
+        "paragraph": 5,
+    },
+    {
+        "slug": "hudson-taylor-10b13faf",
+        "text": "Our true self-denial, self-emptying, and giving for Christ's cause practically show our real estimate of the value of the Cross of Christ, our real love for the Christ who was crucified for us.",
+        "chapter": ("separation-and-service", 4),
+        "paragraph": 65,
+    },
+    {
+        "slug": "hudson-taylor-7ac514c2",
+        "text": "Thanks be to God, the illumination of the HOLY GHOST is promised to all who seek for it: what more can we desire?",
+        "chapter": ("union-and-communion", 2),
+        "paragraph": 1,
     },
 ]
 
