@@ -1,0 +1,158 @@
+{
+ "kind": "sermon",
+ "slug": "the-ravens-cry",
+ "language": "lg",
+ "job_issue": 1344,
+ "references": [
+  {
+   "reference": "Psalm 147:9",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Luke 12:24",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Esther 4:16",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Genesis 1:26",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 11:12",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Micah 7:18",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Luke 15:24",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Romans 10:13",
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 50:15",
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Mark 16:15-16",
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Acts 2:38",
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Hosea 14:2",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 3:7",
+   "status": "mined",
+   "block_index": 40,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Proverbs 15:8",
+   "status": "mined",
+   "block_index": 43,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "mined",
+   "block_index": 46,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "1 Kings 18:43",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "Psalm 27:8",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "John 3:18",
+   "status": "mined",
+   "block_index": 64,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 6:47",
+   "status": "mined",
+   "block_index": 64,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 3:18",
+   "status": "mined",
+   "block_index": 65,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 John 5:10",
+   "status": "mined",
+   "block_index": 67,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  }
+ ]
+}

@@ -1,0 +1,120 @@
+{
+ "kind": "sermon",
+ "slug": "christ-precious-to-believers",
+ "language": "lg",
+ "job_issue": 1345,
+ "references": [
+  {
+   "reference": "1 Peter 2:7",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Numbers 23:23",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Peter 2:7",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 10:37-38",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Hebrews 11:36",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Hebrews 12:4",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "1 Peter 2:7",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Peter 2:7",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Acts 26:29",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Job 2:4",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Luke 7:47",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Psalm 41:3",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Romans 8:28",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "John 11:25",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 46:4",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 23:4",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 119:9",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 21:16",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 21:17",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "1 John 4:19",
+   "status": "self_rendered",
+   "block_index": 26
+  }
+ ]
+}

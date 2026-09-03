@@ -365,6 +365,16 @@ that matter:
   mined would have told the reviewer four verses were checked that nobody had
   checked. When in doubt, diff your rendering against the source file character
   for character before writing `mined`.
+  **If you AUTOMATE that substring check over the translators' reports, strip the
+  report line's annotations FIRST or you get mass false downgrades** (batch of
+  2026-09-02): a report's "text" field is `“<the rendered verse>”—Book C:V.`
+  often trailed by `[a bracketed note]`, and the citation suffix and bracket are
+  not verse words, so a naive `frag in olcb_verse` fails on genuinely-verbatim
+  quotes. One sermon dropped from 24 real `mined` to 4 until the checker stripped
+  `<…>`, `[…]`, `(…)` and everything from the first ` —` before fragmenting. It
+  false-downgrades toward `self_rendered` (the safe direction), so it corrupts the
+  count quietly rather than loudly — sanity-check a known epigraph verse comes
+  back `mined` before trusting the run.
 - **`block_index` is the block the verse appears in**, using the same
   `</p>|</li>|</blockquote>|</h1-6>` split the admin detail view uses, so the
   reviewer can be taken straight there. Optional, but cheap: find the rendered
