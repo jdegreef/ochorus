@@ -179,6 +179,10 @@ REST_FRAMEWORK = {
         # scripted account can't amplify sync into unbounded writes. A bound, not
         # access control: per-worker local-memory cache, keyed by user id.
         "reading": "240/min",
+        # Reads of reading state (one per chapter open, for "continue on your
+        # other device"): their own budget, so they never eat into the writes' —
+        # and still a ceiling.
+        "reading-read": "600/min",
     },
     # Exactly one proxy (Render's) sits in front of the app, so the client
     # address is the LAST entry in X-Forwarded-For. Without this, DRF keys
