@@ -782,7 +782,16 @@ gotchas found adding one sermon each for Chrysostom/Finney/Luther *(2026-09)*:
     `composition` digest is gated by `sermonCards.test.ts`, so you can't fake
     it or run a modified generator and revert). Generate the twins where those
     fonts are installed (Linux / CI), or vendor the TTFs into the repo and point
-    og-card at them (the file's own comment invites vendoring). NPNF homilies
+    og-card at them (the file's own comment invites vendoring). **Proven CI
+    recipe** (2026-09): add a throwaway workflow that `sudo apt-get install -y
+    fonts-liberation`, `npm ci`, `npm run og:sermons`, then git-commits
+    `frontend/static/og/sermons/` back to the branch (needs `permissions:
+    contents: write`). Trigger it with **`on: push` scoped to the branch** — NOT
+    `workflow_dispatch`, which GitHub only exposes from the DEFAULT branch, so
+    `gh workflow run` 404s for a branch-only file. Its GITHUB_TOKEN push won't
+    re-run CI (recursion guard); land the twins, then push your own follow-up
+    (e.g. removing the workflow) to re-trigger `test-and-build` on a head that
+    has them. NPNF homilies
     are faithfully set in a few very long numbered paragraphs — baseline the
     `lost-paragraphing` flag.
 
