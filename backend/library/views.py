@@ -23,6 +23,7 @@ from .languages import entry as language_entry
 from .localization import language_from_request
 from .models import (
     SERMON_CARD_DEFER,
+    Article,
     Author,
     AuthorTranslation,
     Book,
@@ -47,6 +48,8 @@ from .search import (
 )
 from .serializers import (
     BOOK_CARD_ANNOTATIONS,
+    ArticleDetailSerializer,
+    ArticleListSerializer,
     AuthorDetailSerializer,
     AuthorListSerializer,
     BookDetailSerializer,
@@ -266,6 +269,34 @@ class SermonDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
             slug=self.kwargs["slug"],
             language=_language(self.request),
             is_published=True,
+        )
+
+
+class ArticleListView(PublicContentCacheMixin, generics.ListAPIView):
+    """All published articles for a language, newest curation first."""
+
+    serializer_class = ArticleListSerializer
+
+    def get_queryset(self):
+        # The index needs no bodies — defer body_html so the shelf query stays
+        # small even as articles grow long (they run 1,500–2,000 words each).
+        return (
+            Article.objects.filter(
+                is_published=True, language=_language(self.request)
+            )
+            .defer("body_html")
+            .order_by("sort_order", "h1")
+        )
+
+
+class ArticleDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
+    serializer_class = ArticleDetailSerializer
+
+    def get_object(self):
+        return get_object_or_404(
+            Article.objects.filter(is_published=True),
+            slug=self.kwargs["slug"],
+            language=_language(self.request),
         )
 
 

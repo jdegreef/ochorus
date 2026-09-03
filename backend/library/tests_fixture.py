@@ -84,6 +84,7 @@ EXPECTED_MODELS = {
     "library.book",
     "library.chapter",
     "library.sermon",
+    "library.article",
     "library.plan",
     "library.planday",
 }

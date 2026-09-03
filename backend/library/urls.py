@@ -1,6 +1,8 @@
 from django.urls import path
 
 from .views import (
+    ArticleDetailView,
+    ArticleListView,
     AuthorDetailView,
     AuthorListView,
     BookDetailView,
@@ -52,6 +54,8 @@ urlpatterns = [
     path("plans/<slug:slug>/", PlanDetailView.as_view(), name="plan-detail"),
     path("topics/", TopicListView.as_view(), name="topic-list"),
     path("topics/<slug:slug>/", TopicDetailView.as_view(), name="topic-detail"),
+    path("articles/", ArticleListView.as_view(), name="article-list"),
+    path("articles/<slug:slug>/", ArticleDetailView.as_view(), name="article-detail"),
     path("books/<slug:slug>/", BookDetailView.as_view(), name="book-detail"),
     path("sermons/<slug:slug>/", SermonDetailView.as_view(), name="sermon-detail"),
     path(
