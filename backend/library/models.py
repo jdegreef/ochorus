@@ -89,6 +89,13 @@ class Author(models.Model):
     # cards and schema.org ItemList both speak of Person — their works are still
     # reachable from /books and the byline's own author page.
     is_imprint = models.BooleanField(default=False)
+    # A real PERSON who is part of the library through their work but is kept off
+    # the Biographies shelf (e.g. a living contributor who does not want a
+    # biographical presence). Unlike `is_imprint`, this makes no claim that the
+    # byline isn't human — their Person markup and `same_as` stand — it only
+    # withholds the card. Their books/sermons stay on /books and their own author
+    # page stays reachable. Default True: everyone is listed unless withheld.
+    list_in_biographies = models.BooleanField(default=True)
     # Authoritative identifiers for this PERSON — Wikipedia, Wikidata, VIAF —
     # emitted as schema.org `sameAs` in the author page's Person markup.
     #
