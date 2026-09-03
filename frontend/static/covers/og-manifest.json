@@ -438,6 +438,20 @@
 			"art": false,
 			"scrim": 1
 		},
+		"how-to-bring-men-to-christ": {
+			"ground": "c791a5af50aa589a5ed13c2400f03f4fc5e0f91e19cf8af57ee65dbf7007194b",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
+		"how-to-succeed-in-the-christian-life": {
+			"ground": "4f36094f976a13ae6922fedd1510e349ba2c1c392a9760ed7aeea20aebdfff14",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"if": {
 			"ground": "0c65bcb9120c231a9934c71eb12065665162accd56ddffed98cf593540cbb2b0",
 			"style": "devotional",
@@ -1032,6 +1046,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85
+		},
+		"the-fundamental-doctrines-of-the-christian-faith": {
+			"ground": "4a3bacb9c75255ea1ddc45cc312db4b169a84c6c8597dbed9f9818abe38798b8",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"the-gospel-of-healing": {
 			"ground": "1883499ea592265954865f02edbaf0e6c92b980f512ca2405bf0817d4d15f720",

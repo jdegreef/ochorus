@@ -396,6 +396,18 @@ AUTHORS: dict[str, AuthorEntry] = {
             "missionary."
         ),
     ),
+    "r-a-torrey": AuthorEntry(
+        slug="r-a-torrey",
+        name="R. A. Torrey",
+        birth_year=1856,
+        death_year=1928,
+        bio=(
+            "American evangelist, pastor and teacher, the first superintendent "
+            "of the Moody Bible Institute and first dean of the Bible Institute "
+            "of Los Angeles, who wrote more than forty books chiefly on prayer "
+            "and the Holy Spirit."
+        ),
+    ),
 }
 
 # Shelf order. Small, clean books first.
@@ -654,6 +666,18 @@ BOOKS: list[BookEntry] = [
               "https://docsouth.unc.edu/neh/smitham/smith.html",
               subtitle="The Story of the Lord's Dealings with Mrs. Amanda Smith",
               cover_color="#1d6f6f"),
+    # Three more R. A. Torrey titles alongside his two Holy-Spirit books, from
+    # Project Gutenberg (all first published pre-1929, US public domain).
+    BookEntry("how-to-bring-men-to-christ", "How to Bring Men to Christ",
+              "r-a-torrey", "gutenberg", "51931",
+              subtitle="A Handbook of Personal Work",
+              cover_color="#1b4965"),
+    BookEntry("how-to-succeed-in-the-christian-life",
+              "How to Succeed in the Christian Life", "r-a-torrey", "gutenberg",
+              "55743", cover_color="#2f6b4f"),
+    BookEntry("the-fundamental-doctrines-of-the-christian-faith",
+              "The Fundamental Doctrines of the Christian Faith", "r-a-torrey",
+              "gutenberg", "52648", cover_color="#6a4c93"),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an

@@ -476,6 +476,13 @@ CORRECTIONS: dict[str, dict] = {
         # a title is out of its reach entirely.
         "chapter_titles": {30: "Into A New Millennium"},
     },
+    "how-to-bring-men-to-christ": {
+        # Ch.7's heading alone is set in lower case ("Dealing with those who Lack
+        # Assurance…") where every sibling is Title Case, and the print's
+        # line-break hyphen in "Back-sliders" is transcribed as an en-dash inside
+        # the word. Give the clean, consistent title.
+        "chapter_titles": {7: "Dealing with Those Who Lack Assurance and with Backsliders"},
+    },
 }
 
 

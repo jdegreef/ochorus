@@ -72,6 +72,13 @@
   "holy-in-christ": {
    "space-before-punct": 1
   },
+  "how-to-bring-men-to-christ": {
+   "anachronism": 1,
+   "lost-paragraphing": 2
+  },
+  "how-to-succeed-in-the-christian-life": {
+   "anachronism": 2
+  },
   "humility-2": {
    "orphan-close-quote": 2,
    "run-together": 1,
