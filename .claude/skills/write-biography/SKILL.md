@@ -224,6 +224,13 @@ force if every paragraph is a box.
    DJANGO_DEBUG=true uv run python manage.py makemigrations --check --dry-run
    DJANGO_DEBUG=true uv run python manage.py showmigrations library | tail -4
    ```
+   **COMMIT the rename before you force-push.** `git mv 0106_x 0107_x` stages the
+   rename, but if you rebased and then `git push --force-with-lease` WITHOUT an
+   `git commit --amend`, you ship the un-amended rebase commit — still carrying
+   the old `0106_x` name — and CI fails with the identical "multiple leaf nodes"
+   error a second time while your working tree looks correct. `git ls-tree HEAD
+   backend/library/migrations/ | grep <slug>` shows what you're actually pushing;
+   amend, then force-push. (Cost two red CI cycles on the Howells/Hyde batch.)
 
 7. **APPEND new rows to `authors.json` — never re-sort it.** The file is in
    creation order, not slug order; sorting turns a 45-line addition into a
@@ -371,6 +378,37 @@ current signatures in `library/ingest.py` before relying on them.)
    none is honest/gettable — said so (and why) rather than defaulting to the
    monogram. Any new portrait has a `PORTRAIT_POSITION` entry
    (`portraits.test.ts`).
+
+## Removing a bio, or withholding an author from the Biographies shelf
+
+Withdrawing an author's biography (owner's request, etc.) has TWO independent
+levers — know which the ask needs, because clearing the bio alone rarely does
+what people mean by "remove them from biographies":
+
+- **The bio text.** Clear `Author.bio` (and `bio_html`) in `authors.json`, and
+  delete the `<slug>.short.txt` / `<slug>.html` files under
+  `migrations/data/author_bios_<lang>/`. But the seeds only ever FILL, never
+  blank (`author_sync.sync_author` skips an empty fixture bio;
+  `seed_author_translations` leaves a stored value alone for a missing file), so
+  the fixture/file edits reach only a FRESH DB. A **data migration** must clear
+  the live `bio`/`bio_html` and `delete()` the author's `AuthorTranslation`
+  rows on the existing prod DB. Both channels are mandatory — see PR #1389 and
+  migration `0105`, and the general two-channel rule in `backend/CLAUDE.md`.
+- **The Biographies shelf card.** `AuthorListView` lists anyone with **a bio OR
+  a book/sermon** (so a writer with no bio yet isn't invisible), so clearing the
+  bio does NOT remove the card of an author who has a work — it just loses its
+  blurb. To take a real person off the shelf while keeping their work, set
+  `Author.list_in_biographies = False` (default True; the person-level analogue
+  of `is_imprint`, added in PR #1389 / migration `0106`). **Do NOT use
+  `is_imprint` for this** — it asserts the byline is not a person and strips
+  their schema.org `Person` markup and `same_as`. Ship it like `is_imprint`:
+  field + migration flag + fixture flag + `seed_books` create-default + test.
+
+Keeping the book means her author page stays reachable and prerendered (the
+`entries` generator unions authors from `listBooks`), and it correctly drops out
+of the Biographies *sitemap* section — the same accepted state as a book-subject
+author like `simeon-nsibambi`. `prerenderCoverage.test.ts` only forbids
+advertised-but-unbuilt, so built-but-unadvertised is fine.
 
 ## Pitfalls found in practice (2026-07-24, PR #387)
 

@@ -290,6 +290,11 @@
 						     locale prefix would both promise a page that does not exist
 						     and let the prerender crawler bake localized copies of it. -->
 						{#if lang.current === 'en'}
+							<!-- Articles are original English writing with no translations
+							     yet, so — like Scripture and Quotes below — the link is shown
+							     only to English readers rather than localized to a page that
+							     would list nothing. It ungates when articles are translated. -->
+							<li><a href="/articles/">{t('nav.articles')}</a></li>
 							<li><a href="/scripture/">{t('reader.scripture')}</a></li>
 							<!-- Quotes, like Scripture, is an English-only hub: the
 							     quotations are lifted from the English works and every

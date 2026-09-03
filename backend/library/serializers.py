@@ -7,6 +7,7 @@ from .curated_art import credit
 from .localization import language_from_request
 from .models import (
     SERMON_CARD_DEFER,
+    Article,
     Author,
     Book,
     BookPerson,
@@ -377,6 +378,111 @@ class SermonDetailSerializer(serializers.ModelSerializer):
             "summary",
             "difficulty",
             "topics",
+            "available_languages",
+        ]
+
+
+def resolve_related(related, language: str) -> list[dict]:
+    """Turn an article's stored ``related`` soft-references into ready-to-render
+    "Read next" cards: ``[{type, slug, title, url}, ...]``.
+
+    Each entry names a ``type`` (book / sermon / author) and a ``slug``; this
+    resolves it to the published row's display title and its reader URL, in the
+    article's language. A reference that doesn't resolve — an unpublished target,
+    or a book/sermon with no row in this language (there is no English fallback)
+    — is dropped rather than shipped as a dead link, and order is preserved.
+
+    Books and sermons are looked up by (slug, language); an author is a single
+    language-agnostic row, so it is looked up by slug alone. One query per type
+    present, not one per reference.
+
+    ``related`` is a hand-authored JSON field with no schema, so a malformed
+    entry (a bare slug string, a non-list) is skipped rather than 500-ing the
+    page. Validated entries are collected once, in order, and reused for both
+    the batched lookup and the final card list.
+    """
+    entries: list[tuple[str, str]] = []  # (kind, slug), in order, validated
+    for item in related if isinstance(related, list) else []:
+        if not isinstance(item, dict):
+            continue
+        slug, kind = item.get("slug"), item.get("type")
+        if slug and kind in ("book", "sermon", "author"):
+            entries.append((kind, slug))
+
+    by_type: dict[str, list[str]] = {}
+    for kind, slug in entries:
+        by_type.setdefault(kind, []).append(slug)
+
+    titles: dict[tuple[str, str], str] = {}
+    if by_type.get("book"):
+        for slug, title in Book.objects.filter(
+            slug__in=by_type["book"], language=language, is_published=True
+        ).values_list("slug", "title"):
+            titles[("book", slug)] = title
+    if by_type.get("sermon"):
+        for slug, title in Sermon.objects.filter(
+            slug__in=by_type["sermon"], language=language, is_published=True
+        ).values_list("slug", "title"):
+            titles[("sermon", slug)] = title
+    if by_type.get("author"):
+        for slug, name in Author.objects.filter(
+            slug__in=by_type["author"]
+        ).values_list("slug", "name"):
+            titles[("author", slug)] = name
+
+    prefix = {"book": "/books/", "sermon": "/sermons/", "author": "/authors/"}
+    cards = []
+    for kind, slug in entries:
+        title = titles.get((kind, slug))
+        if title is None:
+            continue
+        cards.append(
+            {
+                "type": kind,
+                "slug": slug,
+                "title": title,
+                "url": f"{prefix[kind]}{slug}/",
+            }
+        )
+    return cards
+
+
+class ArticleListSerializer(serializers.ModelSerializer):
+    """An article card — enough for the /articles index (no body)."""
+
+    class Meta:
+        model = Article
+        fields = [
+            "slug",
+            "language",
+            "h1",
+            "meta_title",
+            "description",
+            "sort_order",
+            "created_at",
+            # The sitemap's <lastmod> — see BookListSerializer.updated_at. The
+            # seed keeps this honest by only save()-ing a genuinely changed row.
+            "updated_at",
+        ]
+
+
+class ArticleDetailSerializer(ArticleListSerializer):
+    """A single article with its body and its resolved "Read next" links."""
+
+    related = serializers.SerializerMethodField()
+    available_languages = serializers.SerializerMethodField()
+
+    def get_related(self, obj):
+        return resolve_related(obj.related, obj.language)
+
+    def get_available_languages(self, obj):
+        return _available_languages(Article, obj.slug)
+
+    class Meta(ArticleListSerializer.Meta):
+        fields = ArticleListSerializer.Meta.fields + [
+            "body_html",
+            "related",
+            "source_url",
             "available_languages",
         ]
 

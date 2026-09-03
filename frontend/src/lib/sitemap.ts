@@ -21,6 +21,7 @@
  */
 import { SITE_URL } from '$lib/config';
 import {
+	listArticles,
 	listAuthors,
 	listBooks,
 	listPlans,
@@ -161,6 +162,9 @@ async function build(): Promise<SitemapData> {
 		}))
 	);
 	const authors = await listAuthors().catch(() => []);
+	// Articles: original English writing, no translations yet (like the quotes
+	// hub). The same list the /articles route entry generator reads.
+	const articles = await listArticles('en').catch(() => []);
 	// The SAME list the /scripture route entry generators build from. Reading it
 	// here rather than re-deriving the floor is what keeps "advertised" and
 	// "built" from drifting apart — the failure prerenderCoverage.test.ts exists
@@ -236,6 +240,15 @@ async function build(): Promise<SitemapData> {
 	// and for the same reason: the quotations are lifted from the English works.
 	// Trailing slash, because it prerenders as /quotes/index.html.
 	if (quoteAuthors.length) pages.push({ byLocale: new Map([['en', '/quotes/']]) });
+
+	// Articles: original English writing, no translations yet — the index and
+	// each article, English-only. `updated_at` is a trustworthy <lastmod> here
+	// (seed_articles diffs before saving, so auto_now doesn't re-stamp every row
+	// on every deploy), the same reasoning as books/sermons below.
+	if (articles.length) pages.push({ byLocale: new Map([['en', '/articles/']]) });
+	for (const a of articles) {
+		pages.push({ byLocale: new Map([['en', `/articles/${a.slug}/`]]), lastmod: a.updated_at });
+	}
 
 	// Author pages prerender for every locale (the bio falls back to English).
 	const authorSlugs = new Set<string>(authors.map((a) => a.slug));

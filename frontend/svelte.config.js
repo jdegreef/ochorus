@@ -90,6 +90,10 @@ const config = {
 					'/sermons/[slug]',
 					'/plans/[slug]',
 					'/topics/[slug]',
+					// Articles have no pages until the articles API serves content
+					// (or when the web build lags the backend deploy that adds it) —
+					// same case as /sermons/[slug]. The index still prerenders.
+					'/articles/[slug]',
 					'/scripture/[book]/[chapter]',
 					'/scripture/[book]/[chapter]/[verse]',
 					// Quote pages exist only for an author whose quotations a

@@ -46,6 +46,10 @@ class Command(BaseCommand):
         # Upsert fixture sermons into an already-seeded DB (new/updated ones).
         self.stdout.write("→ seed_sermons")
         call_command("seed_sermons")
+        # Upsert fixture articles (original site writing — no author, no
+        # chapters, no derived columns; a plain per-language content row).
+        self.stdout.write("→ seed_articles")
+        call_command("seed_articles")
         # Upsert unreviewed translated author bios from the in-repo data files
         # (AuthorTranslation has no fixture; reviewed rows are approver-owned).
         self.stdout.write("→ seed_author_translations")

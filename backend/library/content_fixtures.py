@@ -7,6 +7,7 @@ natural-key format (no integer pks — see Stage 1 / ``tests_fixture``):
       authors.json                    all Author rows (low churn, shared)
       books/<slug>.<language>.json    one Book row followed by its Chapters
       sermons/<slug>.<language>.json  one Sermon row
+      articles/<slug>.<language>.json one Article row (no author, no chapters)
       plans.json                      Plan rows, each followed by its PlanDays
 
 Why per work: parallel sessions add content constantly; separate files make
@@ -34,6 +35,7 @@ CONTENT_DIR = Path(__file__).resolve().parent / "fixtures" / "content"
 AUTHORS_FILE = CONTENT_DIR / "authors.json"
 BOOKS_DIR = CONTENT_DIR / "books"
 SERMONS_DIR = CONTENT_DIR / "sermons"
+ARTICLES_DIR = CONTENT_DIR / "articles"
 PLANS_FILE = CONTENT_DIR / "plans.json"
 
 
@@ -157,6 +159,11 @@ def sermon_fixture_path(slug: str, language: str) -> Path:
     return SERMONS_DIR / work_filename(slug, language)
 
 
+def article_fixture_path(slug: str, language: str) -> Path:
+    """The committed fixture file for an article edition (may not exist yet)."""
+    return ARTICLES_DIR / work_filename(slug, language)
+
+
 def book_editions() -> list[tuple[Path, str, str, dict]]:
     """Every committed book edition as ``(path, slug, language, fields)``.
 
@@ -227,7 +234,9 @@ def ordered_fixture_paths() -> list[Path]:
     paths: list[Path] = []
     if AUTHORS_FILE.exists():
         paths.append(AUTHORS_FILE)
-    for d in (BOOKS_DIR, SERMONS_DIR):
+    # Articles carry no FK, so their position here is free; grouped with the
+    # other per-work directories for a reader of this file.
+    for d in (BOOKS_DIR, SERMONS_DIR, ARTICLES_DIR):
         if d.is_dir():
             paths.extend(sorted(d.glob("*.json")))
     if PLANS_FILE.exists():
