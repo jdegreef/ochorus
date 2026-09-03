@@ -44,7 +44,8 @@ from __future__ import annotations
 #: author's stub bio used to outlive every correction (see author_sync.py).
 #:
 #: charles-h-spurgeon    — approved 2026-08-28, sixty;
-#:                         and 2026-09-02, twenty more from Gleanings Among the Sheaves.
+#:                         and 2026-09-02, twenty more from Gleanings Among the Sheaves;
+#:                         and 2026-09-03, seventeen more from Gleanings — ninety-seven.
 #: thomas-a-kempis       — approved 2026-08-30, thirty-six.
 #: andrew-murray         — approved 2026-08-30, twenty-seven;
 #:                         and 2026-09-02, twenty-three more (the four new books).
@@ -576,6 +577,108 @@ SPURGEON = [
         "text": "Unless the heart be kept peaceable, the life will not be happy.",
         "chapter": ("gleanings-among-the-sheaves", 15),
         "paragraph": 1,
+    },
+    {
+        "slug": "charles-h-spurgeon-31ec3990",
+        "text": "God's people are often chastened, and the Lord's hand lieth heavy upon them; yet there is paternal goodness in their chastenings, and infinite lovingkindness in their tribulations.",
+        "chapter": ("gleanings-among-the-sheaves", 3),
+        "paragraph": 26,
+    },
+    {
+        "slug": "charles-h-spurgeon-f34cdb2a",
+        "text": "Though they know a little about Christ on Calvary, they know nothing about Christ in the heart.",
+        "chapter": ("gleanings-among-the-sheaves", 12),
+        "paragraph": 7,
+    },
+    {
+        "slug": "charles-h-spurgeon-c3eec6ac",
+        "text": "Let us ever remember that Christ on the cross is of no value to us apart from the Holy Spirit in us.",
+        "chapter": ("gleanings-among-the-sheaves", 19),
+        "paragraph": 3,
+    },
+    {
+        "slug": "charles-h-spurgeon-f90f1753",
+        "text": "Little-faith was bought with the blood of Christ; ay, and he cost as much as Great-faith.",
+        "chapter": ("gleanings-among-the-sheaves", 2),
+        "paragraph": 14,
+    },
+    {
+        "slug": "charles-h-spurgeon-756e08e3",
+        "text": "Not one sin is to be spared, but against the whole is to be proclaimed an utter and entire war of extermination.",
+        "chapter": ("gleanings-among-the-sheaves", 4),
+        "paragraph": 6,
+    },
+    {
+        "slug": "charles-h-spurgeon-2c1ff73f",
+        "text": "Seek that you may keep your conversation always holy; that your course may be like the shining light which tarries not, but burns brighter and brighter until the fulness of the day.",
+        "chapter": ("gleanings-among-the-sheaves", 4),
+        "paragraph": 12,
+    },
+    {
+        "slug": "charles-h-spurgeon-49d53581",
+        "text": "Do you think that we are forever to be the drudges and the slaves of sin, sighing for freedom, and yet never able to escape from its bondage?",
+        "chapter": ("gleanings-among-the-sheaves", 4),
+        "paragraph": 16,
+    },
+    {
+        "slug": "charles-h-spurgeon-e48554af",
+        "text": "If we have grown in grace, it is absolutely certain that we shall have advanced in our knowledge and reciprocation of the love of Christ.",
+        "chapter": ("gleanings-among-the-sheaves", 7),
+        "paragraph": 4,
+    },
+    {
+        "slug": "charles-h-spurgeon-4bdec927",
+        "text": "Our court-dress in heaven, and our garment of sanctification for daily wear, are the condescending gifts of Christ's love.",
+        "chapter": ("gleanings-among-the-sheaves", 8),
+        "paragraph": 3,
+    },
+    {
+        "slug": "charles-h-spurgeon-d1598ff5",
+        "text": "Not only must the heart be kept pure, but it must also be kept full.",
+        "chapter": ("gleanings-among-the-sheaves", 10),
+        "paragraph": 4,
+    },
+    {
+        "slug": "charles-h-spurgeon-242c0cc9",
+        "text": "Christ, when He blesses, blesses not in word only, but in deed.",
+        "chapter": ("gleanings-among-the-sheaves", 10),
+        "paragraph": 17,
+    },
+    {
+        "slug": "charles-h-spurgeon-825c2f8b",
+        "text": "How careful God is of His people; how anxious He is concerning them, not only for their life, but for their comfort.",
+        "chapter": ("gleanings-among-the-sheaves", 14),
+        "paragraph": 11,
+    },
+    {
+        "slug": "charles-h-spurgeon-c96dd1a1",
+        "text": "The believer enjoys, in favored seasons, such an intimacy with the Lord Jesus, as fills his heart with an overflowing peace.",
+        "chapter": ("gleanings-among-the-sheaves", 15),
+        "paragraph": 3,
+    },
+    {
+        "slug": "charles-h-spurgeon-1b7df6d3",
+        "text": "If thou wouldst find thy way to God's bright throne, find first thy way to Jesus' cross; if thou wouldst know the way to happiness, tread in that path of misery which Jesus trod.",
+        "chapter": ("gleanings-among-the-sheaves", 16),
+        "paragraph": 11,
+    },
+    {
+        "slug": "charles-h-spurgeon-14b10a83",
+        "text": "You may read the Bible continuously, and yet never learn anything by it, unless it is illuminated by the Spirit; and then the words shine forth like stars.",
+        "chapter": ("gleanings-among-the-sheaves", 17),
+        "paragraph": 1,
+    },
+    {
+        "slug": "charles-h-spurgeon-62f2db13",
+        "text": "Your business is to seek Christ crucified for yourselves, not to take the representation of another man concerning the power of grace to subdue corruption and to sanctify the heart.",
+        "chapter": ("gleanings-among-the-sheaves", 12),
+        "paragraph": 1,
+    },
+    {
+        "slug": "charles-h-spurgeon-0a553264",
+        "text": "The Lord Jesus has led captivity captive, and now sits at the right hand of God, forever making intercession for us.",
+        "chapter": ("gleanings-among-the-sheaves", 9),
+        "paragraph": 5,
     },
 ]
 
