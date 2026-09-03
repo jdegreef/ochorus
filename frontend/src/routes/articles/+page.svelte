@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { ArticleSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
-	import { jsonLd, breadcrumb, hreflangFor, absUrl } from '$lib/seo';
+	import { jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 

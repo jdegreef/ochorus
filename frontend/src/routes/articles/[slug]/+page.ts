@@ -21,6 +21,12 @@ export const entries: EntryGenerator = async () => {
 };
 
 export const load: PageLoad = async ({ params }) => {
+	// getLang() (not a hardcoded 'en') is intentional: the detail page is already
+	// built translation-ready — self-referential canonical + hreflang from
+	// available_languages — while the index, entries() and sitemap stay English-
+	// only for now. getArticle falls back to English on a 404, so a localized URL
+	// degrades to the English original rather than 404ing. Don't "fix" this to
+	// 'en' to match the others; it's the one place that must lead the rollout.
 	const article = await orNotFound(() => getArticle(params.slug, getLang()));
 	return { article };
 };

@@ -2,7 +2,7 @@
 	import type { Article, ArticleRelated } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { localizeHref } from '$lib/href';
-	import { jsonLd, breadcrumb, hreflangFor, absUrl } from '$lib/seo';
+	import { jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 
@@ -42,21 +42,17 @@
 			publisher: { '@type': 'Organization', name: 'Ochorus' }
 		})
 	);
-	const crumbsLd = $derived(
-		jsonLd(
-			breadcrumb([
-				{ name: 'Home', url: '/' },
-				{ name: 'Articles', url: '/articles' },
-				{ name: article.h1, url: `/articles/${article.slug}` }
-			])
-		)
-	);
-
+	// One crumb trail feeds both the visible <Breadcrumb> and the JSON-LD, so the
+	// on-page path and the structured BreadcrumbList can't drift apart (the
+	// sibling detail routes keep this single source; see books/[slug]).
 	const crumbs = $derived([
 		{ name: 'Home', href: '/' },
 		{ name: 'Articles', href: '/articles/' },
 		{ name: article.h1, href: path }
 	]);
+	const crumbsLd = $derived(
+		jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))))
+	);
 
 	// The "Read next" label for each funnel target's kind.
 	const KIND_LABEL: Record<ArticleRelated['type'], string> = {
