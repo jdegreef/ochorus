@@ -95,6 +95,24 @@ describe('type scale', () => {
 		expect(offenders, offenders.join('\n')).toEqual([]);
 	});
 
+	it('reserves .text-h1 for the page <h1>', () => {
+		// A section heading at page-title size reads as a second page title — the
+		// home shelves (via SectionHeader) and the marketing blocks did exactly
+		// that. `.text-h1` belongs on the page `<h1>`; a section is `.text-h2`, a
+		// prose sub-section `.text-h3`, and a label above a list `.section-label`,
+		// by role (STYLE_GUIDE §5). Admin is exempt like the display check above.
+		const offenders: string[] = [];
+		for (const file of svelteFiles(SRC)) {
+			const rel = file.slice(file.indexOf('src/'));
+			if (rel.includes('/admin/')) continue;
+			const src = readFileSync(file, 'utf-8');
+			for (const line of src.split('\n')) {
+				if (/<h[2-6]\b[^>]*\btext-h1\b/.test(line)) offenders.push(`${rel}: ${line.trim()}`);
+			}
+		}
+		expect(offenders, offenders.join('\n')).toEqual([]);
+	});
+
 	it('app.css itself sizes text from the scale', () => {
 		const css = readFileSync(join(SRC, 'app.css'), 'utf-8');
 		const offenders = (css.match(/font-size:\s*[0-9.]+(rem|px)\s*;/g) ?? []).map(

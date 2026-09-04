@@ -310,6 +310,27 @@ previously had six sets of margins and two different title sizes.
 
 The `<h1>` is **`.text-h1`**. `.text-display` is the **home hero only**.
 
+### Section headings
+
+Below the page title, a heading's size follows its **role**, not the page it
+sits on — an `<h2>` had drifted to four sizes (`.text-h1` on the home shelves,
+`.text-h2` on Settings/About, `.text-h3` on leaf pages, `.section-label` on the
+browse shelves), so the same kind of heading looked different a click apart.
+
+- **`.section-label`** — the label above a *list* of cards or rows ("Continue
+  reading", "New to the library", a search result group). Small-caps, muted.
+- **`.text-h3`** — a titled *prose* sub-section inside a leaf page ("About this
+  book", "In this plan").
+- **`.text-h2`** — a titled *section* of a page (a Settings group, an About
+  block, and the home shelves' "title + see all" row via **`<SectionHeader>`**).
+- **`.text-h1`** is the page `<h1>` **only** — never an `<h2>`. A section
+  heading at page-title size reads as a second title;
+  `typeScaleGuard.test.ts` fails any `<h2>`–`<h6>` carrying `.text-h1`.
+
+Grouped browse shelves (Books/Sermons/Biographies by author or era) still
+hand-roll their group heading four ways; converging them on one recipe is a
+tracked follow-up (audit D2).
+
 ### Cards
 
 Four surfaces, all `--border` and `--radius-card` (12px). Three are a
