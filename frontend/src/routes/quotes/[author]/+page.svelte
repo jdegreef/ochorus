@@ -283,7 +283,7 @@
 		gap: 0.3rem;
 		padding: 0.2rem 0.5rem;
 		border: 0;
-		border-radius: var(--radius-chip, 0.4rem);
+		border-radius: var(--radius-sm);
 		background: transparent;
 		font-size: var(--fs-small);
 		color: var(--color-muted);

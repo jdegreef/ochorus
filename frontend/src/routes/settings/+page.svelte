@@ -422,7 +422,7 @@
 						>
 						<span class="w-12 text-center text-small text-muted">{Math.round(readerPrefs.scale * 100)}%</span>
 						<button
-							class="btn btn-sm btn-ghost text-base"
+							class="btn btn-sm btn-ghost text-body"
 							onclick={() => readerPrefs.bumpScale(0.1)}
 							aria-label={t('a11y.largerText')}>A+</button
 						>
@@ -553,7 +553,7 @@
 						{/each}
 					</select>
 				</div>
-				<p class="pt-1 text-lg text-text" style="font-family: {FONT_STACK[readerPrefs.font]}">
+				<p class="pt-1 text-body text-text" style="font-family: {FONT_STACK[readerPrefs.font]}">
 					{t('settings.fontSample')}
 				</p>
 

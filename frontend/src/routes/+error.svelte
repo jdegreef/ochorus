@@ -70,7 +70,7 @@
 <div class="page-col px-5 pb-24">
 	<!-- Hero -->
 	<section class="mx-auto flex max-w-xl flex-col items-center pt-20 pb-4 text-center">
-		<p class="mb-2 font-display text-6xl leading-none text-muted/60">{status || 500}</p>
+		<p class="mb-2 font-display text-display leading-none text-muted/60">{status || 500}</p>
 		<h1 class="text-h1 mb-3">{title}</h1>
 		<p class="mb-6 text-body text-muted">{message}</p>
 		{#if isNotFound}

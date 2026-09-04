@@ -83,7 +83,9 @@ describe('type scale', () => {
 			if (
 				rel.includes('/admin/') ||
 				rel.endsWith('src/routes/+page.svelte') ||
-				rel.endsWith('src/lib/components/HomeMarketing.svelte')
+				rel.endsWith('src/lib/components/HomeMarketing.svelte') ||
+				// The error page's status number ("404") is that page's hero.
+				rel.endsWith('src/routes/+error.svelte')
 			)
 				continue;
 			const src = readFileSync(file, 'utf-8');
@@ -109,6 +111,35 @@ describe('type scale', () => {
 			for (const line of src.split('\n')) {
 				if (/<h[2-6]\b[^>]*\btext-h1\b/.test(line)) offenders.push(`${rel}: ${line.trim()}`);
 			}
+		}
+		expect(offenders, offenders.join('\n')).toEqual([]);
+	});
+
+	it('sizes text from the --fs-* scale, not Tailwind default steps', () => {
+		// STYLE_GUIDE §2: the scale is --fs-* / .text-{micro,eyebrow,small,body,h3,h2,h1,
+		// display}. Tailwind's own text-base / -lg / -xl / -6xl sit off it (an error 404
+		// at text-6xl, settings and ReaderControls buttons at text-base). Admin is exempt.
+		const offenders: string[] = [];
+		for (const file of svelteFiles(SRC)) {
+			const rel = file.replace(SRC, 'src');
+			if (rel.includes('/admin/')) continue;
+			const src = readFileSync(file, 'utf-8');
+			for (const m of src.match(/\btext-(?:xs|sm|base|lg|xl|[2-9]xl)\b/g) ?? [])
+				offenders.push(`${rel}: ${m}`);
+		}
+		expect(offenders, offenders.join('\n')).toEqual([]);
+	});
+
+	it('never gives var(--radius-*) a fallback', () => {
+		// A fallback fires only when the token is MISSING, so it hides a typo:
+		// --radius-chip was never defined, so `var(--radius-chip, 0.4rem)` silently
+		// shipped 0.4rem on the quotes and scripture chips. Use a real token (§3).
+		const offenders: string[] = [];
+		for (const file of [join(SRC, 'app.css'), ...svelteFiles(SRC)]) {
+			const rel = file.replace(SRC, 'src');
+			const src = readFileSync(file, 'utf-8');
+			for (const m of src.match(/var\(--radius-[a-z-]+,[^)]*\)/g) ?? [])
+				offenders.push(`${rel}: ${m}`);
 		}
 		expect(offenders, offenders.join('\n')).toEqual([]);
 	});

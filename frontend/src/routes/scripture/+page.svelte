@@ -115,7 +115,7 @@
 		text-align: center;
 		font-variant-numeric: tabular-nums;
 		font-size: var(--fs-small);
-		border-radius: var(--radius-chip, 0.4rem);
+		border-radius: var(--radius-sm);
 		background: var(--color-surface-2);
 		color: var(--color-text);
 		text-decoration: none;
