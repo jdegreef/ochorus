@@ -60,8 +60,8 @@
 		font-weight: 600;
 		cursor: pointer;
 		transition:
-			color 0.15s,
-			border-color 0.15s;
+			color var(--duration-fast),
+			border-color var(--duration-fast);
 	}
 	.fav-btn:hover {
 		border-color: var(--accent);

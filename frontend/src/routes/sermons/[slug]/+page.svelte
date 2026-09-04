@@ -4,6 +4,7 @@
 	import { SITE_URL } from '$lib/config';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
+	import FocusExit from '$lib/components/FocusExit.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import {
 		contentLang,
@@ -323,12 +324,7 @@
 {/if}
 
 {#if readerUi.focus}
-	<button
-		class="fixed end-4 top-4 z-30 rounded-full border border-border bg-surface/90 px-3 py-1.5 text-small text-muted shadow-md backdrop-blur hover:text-text"
-		onclick={() => readerUi.exitFocus()}>
-		<Icon name="close" size={14} />
-		{t('reader.exitFocus')}</button
-	>
+	<FocusExit />
 {/if}
 
 <!-- Jump-to-section outline panel (opened from the top bar). -->

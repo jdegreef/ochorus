@@ -13,6 +13,7 @@
 	} from '$lib/progress';
 	import { readerPrefs, MARGIN } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
+	import FocusExit from '$lib/components/FocusExit.svelte';
 	import { marks } from '$lib/marks.svelte';
 	import SourceBadge from '$lib/components/SourceBadge.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
@@ -1326,12 +1327,7 @@
 <!-- Hidden during a peek: the peeked chrome carries its own focus toggle, and
      the full-width bar would otherwise sit on top of this pill. -->
 {#if readerUi.focus && !showPeek}
-	<button
-		class="fixed end-4 top-4 z-30 rounded-full border border-border bg-surface/90 px-3 py-1.5 text-small text-muted shadow-md backdrop-blur hover:text-text"
-		onclick={() => readerUi.exitFocus()}>
-		<Icon name="close" size={14} />
-		{t('reader.exitFocus')}</button
-	>
+	<FocusExit />
 {/if}
 
 <!-- A full-viewport wash behind the paged columns, so the margins beside the
