@@ -1860,3 +1860,87 @@ archaic spelling and period punctuation are the text, not defects in it.
   **by checksum, not by `git status`**, for the reason the #728 entry gives — and that the
   merge did not already ship the target you are about to write, since the double-ship guard
   is a check on fresh `origin/main` and a mid-session merge moves it.
+- **USX section headings sit INSIDE a verse span, so "stop at the eid marker" is
+  NOT enough — and this is the THIRD door onto the same bug** (jobs #1109-#1116,
+  hi IRV, 2026-09-04). The hi batch's entry above records swallowing headings by
+  running PAST `<verse eid=…/>`; the uk batch records eating whitespace after a
+  closing marker. Both were guarded here, and the heading still got in: in the
+  IRV a `<para style="s">` (section heading) and a `<para style="d">` (Hebrew
+  acrostic letter / psalm descriptor) can appear **between** a verse's `sid` and
+  its `eid`, carrying that verse's own `vid`. Taking everything between the two
+  markers therefore appends the heading to the verse — 29 verses here, mostly
+  Psalm 119, where every acrostic letter (`बेथ`, `सांदे`) landed inside the
+  preceding verse. Strip `<para style="(s\d?|d|ms\d?|mr|sr|r|qa|cl|cd)">…</para>`
+  **content and all** before extracting. Probe rather than assume the inventory:
+  `grep -o '<para style="[a-z0-9]*"[^>]*vid="'` over the corpus lists exactly
+  which styles intrude, and in the IRV it is `s` (29) and `d` (21) against
+  `p`/`q`/`q1-3`/`m`, which ARE genuine verse continuation and must be kept.
+  Two more things from the same parse. A `</para>` boundary is a LINE BREAK in
+  poetry, so deleting pretty-print indentation wholesale welds `है,मुझे` in
+  Psalm 23:1 — insert a space at every `</para>` first, then collapse. And the
+  IRV bakes editorial cross-references into 15 verses' own text (1 John 3:5 ends
+  `(यूह. 1:29)`), which is NOT a parser bug and must be dropped by the translator.
+  What caught all of it: **three translators independently reporting something
+  strange about "the Bible."** Two of the three reports were my tooling. The
+  standing lesson holds and is now worth stating as a rule — *before* briefing,
+  scan the built crib for a heading-shaped tail, for sentence punctuation glued
+  to a letter, and for parenthetical references at a verse's end; and after the
+  run, diff the pre-fix and post-fix verse dicts and grep every output for the
+  contaminated tails. Here that scan proved **zero contaminated spans shipped**,
+  which is the only way to know a mid-run parser fix came in time.
+- **Derive notes by measurement, then let a translator's flag DEMOTE but never
+  promote** (same batch). The ten-book batch established measurement over report
+  parsing; two calibrations make it honest. **Require an exact byte substring,
+  not shingle coverage** — a verse the translator re-personed ("in us" for the
+  IRV's "in you") scores as a near-match under any fuzzy metric and is exactly
+  what the #426 entry says is NOT mined. And **calibrate the length threshold
+  against real spans** rather than guessing a fraction: printing the longest
+  common span per reference for one finished sermon separated cleanly at 45
+  characters — genuine pasted quotations ran 45-104, incidental collisions
+  (`परमेश्वर ने`, `उन्होंने`) topped out at 34. A fraction-of-the-verse rule is
+  wrong for sermons, which quote half-verses constantly; it scored 2 mined where
+  the truth was 4. Then apply the translators' own departure list as a
+  demotion-only override — five verses here showed a long verbatim span but had
+  been re-personed or re-aimed, and measurement alone would have called them
+  mined.
+  **Cap range expansion, or the review queue fills with verses nobody quoted.**
+  `pythonbible` turns `Luke v.` into a whole chapter, and recording each verse
+  put 99 references on a sermon with 34 real ones — the same over-statement the
+  backfill entry warns about, arriving from the other side. A citation spanning
+  more than ~3 verses POINTS rather than quotes: keep only the verses the
+  translation verifiably contains, or its first verse alone if none. That took
+  eight files from 437 rows to 354 without losing a single verbatim hit.
+- **hi SERMONS mirror their source's quote marks — 12 of 12 now — and the band is
+  n=12: 1.055-1.176, mean 1.117** (jobs #1109-#1116). The four already-shipped
+  pairs match mark for mark (59→59, 80→80, 91/92→91/92, 53→53), so this batch
+  shipped five curly and three straight, deliberately non-uniform with itself,
+  and two of them mirror a source that is UNBALANCED by one mark. That extends
+  the per-FILE mirroring rule from sw sermons and hi bios; the picture is now
+  sw sermons / hi bios / hi sermons **mirror**, es books / uk books **convert**.
+  The band from n=4 (1.084-1.152) was far too narrow: two of eight files fell
+  outside it and both were verifiably complete.
+- **A translator's explanation for an off-band ratio is a hypothesis — measure
+  it** (same batch). Both outliers came with a confident, plausible cause and
+  neither survived the #515 quoted/unquoted split. `salvation-by-faith` at 1.176
+  blamed IRV verses running longer than Wesley's clipped KJV fragments, which
+  predicts the QUOTED half being high; measured, quoted ran 1.144 and the
+  author's own prose 1.194 — the excess is in the prose. `eight-i-wills-of-christ`
+  at 1.055 blamed 21 short `<h2>` refrain headings said to run 0.71-0.83×;
+  measured, short blocks ran 1.037 against prose at 1.055, barely distinguishable.
+  Both files were complete — tag sequences byte-identical, every per-block digit
+  preserved, **both halves moving together**, which is the signature the uk
+  `baptism-with-the-holy-spirit` entry identifies. So the right action was to
+  ship them and report the real numbers, not to pad, cut, or repeat the
+  explanation. Accepting a translator's reasoning unmeasured would have put a
+  wrong cause into this file, where the next session would inherit it.
+- **A cross-work verse flag is worth ten minutes even when you are sure**
+  (#1113). The ratchet flagged exactly one reference, hi रोमियों 4:5, and the new
+  file's rendering was verbatim IRV while the shipped one dropped
+  `भक्तिहीन के धर्मी ठहरानेवाले पर` — the theological heart of the verse. That
+  reads as an open-and-shut repair of the older work. It is not: `the-way-to-god`
+  quotes only "to him that worketh not, but believeth" and stops, while Wesley
+  continues "on him that justifieth the ungodly", so each Hindi is faithful to
+  its own English and harmonising would have PADDED a correct quotation with
+  words its source never quotes. Check what each ENGLISH quotes before deciding
+  which edition is wrong — the divergence may be in the authors, not the
+  translators.
