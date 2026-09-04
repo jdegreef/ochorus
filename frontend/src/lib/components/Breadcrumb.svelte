@@ -1,5 +1,9 @@
 <script lang="ts">
-	import { localizeHref } from '$lib/paraglide/runtime';
+	// $lib/href, not the raw Paraglide runtime: a non-final detail crumb (the
+	// reader's book link) must get its trailing slash or it falls through to the
+	// SPA shell instead of the prerendered page. Index-page crumbs are left
+	// unslashed by that helper, so nothing else changes.
+	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
 
 	// A visible breadcrumb trail for detail pages — the on-page counterpart of

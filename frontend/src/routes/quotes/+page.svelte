@@ -5,7 +5,6 @@
 	import { jsonLd, breadcrumb, hreflangFor, absUrl } from '$lib/seo';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import Seo from '$lib/components/Seo.svelte';
-	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 
@@ -32,7 +31,7 @@
 		{ name: 'Home', href: '/' },
 		{ name: 'Quotes', href: path }
 	];
-	const crumbsLd = $derived(jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href })))));
+	const crumbsLd = jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))));
 	// A CollectionPage listing each author page, so the set is one entity to a
 	// crawler rather than four unrelated URLs.
 	const listLd = $derived(
@@ -61,8 +60,10 @@
 />
 
 <div class="page-col px-5 py-10">
-	<Breadcrumb items={crumbs} />
-
+	<!-- No visible breadcrumb: a top-level hub's only trail is Home > <this>
+	     — Home is already the logo, <this> restates the H1 below, so it
+	     carries nothing. The BreadcrumbList JSON-LD stays in the head; the
+	     page's position is true even when we don't draw it. -->
 	<PageHeader
 		title="Quotes, with their sources"
 		tagline="The lines these writers are remembered for — {total} of them so far — each traced to the exact book, chapter and paragraph it comes from, and linked to the full work. What the unsourced quote sites cannot give you is the citation; that is the whole of this."
