@@ -414,7 +414,7 @@
 		<section class="mt-14">
 			<h2 class="mb-4 text-h3">
 				{t('author.booksBy')} {author.name}
-				<span class="text-small font-normal text-muted">({author.books.length})</span>
+				<span class="text-small font-normal count">({author.books.length})</span>
 			</h2>
 			<!-- Wider cards than .book-grid: one writer's shelf is a handful of
 			     books, and six-across would set them as thumbnails. -->
@@ -431,7 +431,7 @@
 		<section class="mt-14">
 			<h2 class="mb-4 text-h3">
 				{t('author.sermonsBy')} {author.name}
-				<span class="text-small font-normal text-muted">({author.sermons.length})</span>
+				<span class="text-small font-normal count">({author.sermons.length})</span>
 			</h2>
 			<!-- The shared card, not a hand-rolled list: this one used to compute
 			     its own length with Math.round(word_count / 200), which could

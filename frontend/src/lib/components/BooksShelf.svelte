@@ -294,14 +294,14 @@
 
 			<div class="seg">
 				<button
-					class:active={group === 'author'}
-					onclick={() => setGroup('author')}
-					aria-pressed={group === 'author'}>{t('books.groupAuthor')}</button
-				>
-				<button
 					class:active={group === 'all'}
 					onclick={() => setGroup('all')}
 					aria-pressed={group === 'all'}>{t('books.groupAll')}</button
+				>
+				<button
+					class:active={group === 'author'}
+					onclick={() => setGroup('author')}
+					aria-pressed={group === 'author'}>{t('books.groupAuthor')}</button
 				>
 			</div>
 
@@ -381,7 +381,7 @@
 				<section id="author-{g.slug}" class="mb-10 scroll-mt-20">
 					<h2 class="mb-4 flex items-baseline gap-2 text-h3 text-muted">
 						{g.name}
-						<span class="text-small font-normal opacity-60">{g.books.length}</span>
+						<span class="text-small font-normal count">{g.books.length}</span>
 					</h2>
 					{#if view === 'grid'}
 						<div class="book-grid">

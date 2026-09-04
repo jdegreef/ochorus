@@ -105,7 +105,7 @@
 					aria-pressed={filters.values.topic === ''}
 					onclick={() => (filters.values.topic = '')}
 				>
-					All <span class="tabular-nums opacity-70">{articles.length}</span>
+					All <span class="count">{articles.length}</span>
 				</button>
 				{#each topicTabs as tab (tab.slug)}
 					<button
@@ -116,7 +116,7 @@
 						onclick={() =>
 							(filters.values.topic = filters.values.topic === tab.slug ? '' : tab.slug)}
 					>
-						{tab.title} <span class="tabular-nums opacity-70">{tab.count}</span>
+						{tab.title} <span class="count">{tab.count}</span>
 					</button>
 				{/each}
 			</div>

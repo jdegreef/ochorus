@@ -257,7 +257,7 @@
 						/>
 					{/if}
 					<a href={localizeHref(`/authors/${g.slug}`)} class="text-text hover:underline">{g.name}</a>
-					<span class="text-small font-normal opacity-60">{g.items.length}</span>
+					<span class="text-small font-normal count">{g.items.length}</span>
 				</h2>
 				{@render sermonList(g.items)}
 			</section>

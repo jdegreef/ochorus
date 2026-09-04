@@ -978,7 +978,7 @@
 							>
 								{t(g.labelKey)}
 								<!-- The real total, not the number of rows we were handed. -->
-								<span class="tabular-nums opacity-70"
+								<span class="count"
 									>{totalFor(g.type, g.rows.length)}{isCapped(g.type) ? '+' : ''}</span
 								>
 							</button>
@@ -999,7 +999,6 @@
 							role="group"
 							aria-label={t('search.sortBy')}
 						>
-							<span class="text-small text-muted">{t('search.sortBy')}</span>
 							<div class="seg">
 								{#each SORTS as s (s)}
 									<button
