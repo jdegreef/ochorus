@@ -64,6 +64,12 @@ don't hand-wrap refs in the fixture.
 - **Verify every `related` slug resolves.** A dead ref is silently dropped, so the
   Read-next block just goes short. Seed locally and check the detail API returns
   the expected count.
+- **Tag the new article to its topics.** Add its slug to the matching topic(s) in
+  `TOPIC_ARTICLES` in `library/topic_seed.py` so it appears on the topic pages
+  ("Articles about X") and shows topic chips — the bidirectional funnel. Topic
+  slugs: prayer, holy-spirit, deeper-life, grace-and-comfort,
+  revival-and-missions, faith-and-guidance, the-gospel-call, the-way-of-holiness.
+  `seed_topics` upserts them.
 - **Edit the builder's `body_html` with HTML only.** When expanding a
   triple-quoted `body_html` string, the replacement text must be plain HTML —
   never paste `"""` or Python (`.replace(...)`) into it, or you close the string

@@ -931,6 +931,38 @@ class TopicSermon(models.Model):
         return f"{self.topic.slug} ⊃ {self.sermon_slug}"
 
 
+class TopicArticle(models.Model):
+    """Membership of an article in a topic, by canonical ``article_slug``.
+
+    The article companion to ``TopicBook``/``TopicSermon`` — same soft-reference,
+    language-agnostic pattern. This is what makes the funnel bidirectional: a
+    topic page lists the articles about it, and (via ``_topic_chips``) an article
+    shows which topics it belongs to.
+    """
+
+    topic = models.ForeignKey(
+        Topic, on_delete=models.CASCADE, related_name="article_entries"
+    )
+    article_slug = models.SlugField(max_length=180)
+    sort_order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["sort_order", "id"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["topic", "article_slug"], name="uniq_topic_article"
+            ),
+        ]
+        indexes = [
+            # The article counterpart of idx_topicbook_slug: the article detail
+            # serializer asks "which topics is this article on?" by article_slug.
+            models.Index(fields=["article_slug"], name="idx_topicarticle_slug"),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.topic.slug} ⊃ {self.article_slug}"
+
+
 class PersonRole(models.TextChoices):
     """How a person relates to a book they are named in but did not write.
 
