@@ -59,10 +59,24 @@ In this order, and nothing else at the top level:
    - *filtered to nothing* → `message` + `action` = clear filters;
    - *load failed* → `message={t('common.loadError')} onRetry`.
    Never a bare `<p class="py-16 text-center">`, never a hand-rolled panel.
-9. **Data** — the loader goes through `loadShelf()` so a failed fetch is
-   *reported*, not shown as an empty shelf. Filter values that describe *what
-   is shown* live in the URL via `urlFilters()`; view preferences (grid/list,
-   sort) live in localStorage.
+   The *no-rows* action is usually just `<CatalogLanguageNudge kind=…>` above
+   the list, not a second button inside the panel: the nudge already renders on
+   an empty shelf (it shows whenever English has more items), so a read-English
+   button in the EmptyState too is redundant — that's why Topics/Plans/Sermons
+   carry only the nudge. Extend the nudge's `kind` union rather than skipping a
+   surface. On an English-only hub the error message still localises
+   (`t('common.loadError')` — it is chrome), while the *empty* message may stay
+   an English literal (it describes English-only content; F3 tracks localising
+   those).
+9. **Data** — the loader routes the shelf's PRIMARY list through `loadShelf()`
+   so a failed fetch is *reported* (a `loadError` the page turns into
+   `<EmptyState onRetry>`), not crashed to the 500 route or baked as a false
+   empty shelf. Only the primary list: **decoration keeps its own silent
+   try/catch** — the biographies cover-strip books degrade to `[]` so the bios
+   still render, and routing them through `loadShelf` would either raise the
+   whole-page error panel when only a strip failed or leave a `loadError` no one
+   reads. Filter values that describe *what is shown* live in the URL via
+   `urlFilters()`; view preferences (grid/list, sort) live in localStorage.
 10. **`<Seo>`** — not a hand-written `<svelte:head>`. Title `Books — Ochorus`
     (em dash). Description falls back to a localized string, never empty.
 
