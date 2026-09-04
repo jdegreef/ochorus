@@ -7,9 +7,11 @@ created, changed ones are updated, untouched ones are left alone. Runs on every
 deploy (see the release command); idempotent, and the fixture stays the single
 source of truth.
 
-Follows seed_sermons, with two differences: an Article has **no author**, so
-there is no author to create or reconcile; and it has no derived columns, so
-``save()`` has nothing to re-derive and a plain field copy is the whole update.
+Follows seed_sermons, with one difference: an Article has **no author**, so
+there is no author to create or reconcile. Its one derived column, ``word_count``,
+is set by ``Article.save()`` (which create/update both call), so a body change
+re-derives it; a row whose body didn't change but whose count is stale is
+filled by ``backfill_word_count`` on the same deploy.
 """
 
 from __future__ import annotations
@@ -21,9 +23,8 @@ from library.content_fixtures import load_all_rows
 from library.management.commands.seed_books import require_natural_format
 from library.models import Article
 
-# The fields the fixture owns. No derived columns exist on Article (unlike
-# Chapter/Sermon, which derive word_count from body_html), so every field here
-# is a plain stored value the fixture may set.
+# The fields the fixture owns. word_count is NOT here — it is derived from
+# body_html by Article.save() (like Chapter/Sermon), not authored in the file.
 ARTICLE_FIELDS = (
     "h1",
     "meta_title",

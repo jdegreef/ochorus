@@ -549,6 +549,11 @@ export interface ArticleSummary {
 	meta_title: string;
 	/** Standfirst — shown under the H1 and used as the meta description. */
 	description: string;
+	/** Words in the body, derived server-side — feeds `readingTime()`. */
+	word_count: number;
+	/** Topics this article belongs to (localized chips) — the funnel back to the
+	 *  topic pages, and the card's taxonomy. Same shape the book/sermon cards use. */
+	topics: TopicChip[];
 	sort_order: number;
 	created_at: string;
 	/** Last modification (ISO) — the sitemap's `<lastmod>`; see BookSummary. */
@@ -562,6 +567,12 @@ export interface ArticleRelated {
 	title: string;
 	/** Reader path, trailing-slashed (e.g. `/books/the-life-of-trust/`). */
 	url: string;
+	/** Thumbnail fields, present per kind so the card renders a cover/portrait,
+	 *  not a bare link: a book carries `cover_url` + `cover_color`, an author
+	 *  `photo_url`; a sermon carries neither (its tile is a drawn emblem). */
+	cover_url?: string;
+	cover_color?: string;
+	photo_url?: string;
 }
 
 export interface Article extends ArticleSummary {
@@ -570,9 +581,6 @@ export interface Article extends ArticleSummary {
 	 *  titles + URLs server-side (unresolvable references are dropped). */
 	related: ArticleRelated[];
 	source_url: string;
-	/** Topics this article belongs to (localized chips) — links back to the
-	 *  topic pages that list it (the other half of the bidirectional funnel). */
-	topics: TopicChip[];
 	/** Content locales this article is published in — the only locales an
 	 *  hreflang alternate should point at (per-language rows, no fallback). */
 	available_languages: string[];

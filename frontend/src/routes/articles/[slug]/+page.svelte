@@ -4,12 +4,43 @@
 	import { localizeHref } from '$lib/href';
 	import { jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
 	import { scripture } from '$lib/scripture.svelte';
+	import { readingTime } from '$lib/reading';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
 
 	let { data } = $props();
 	const article = $derived(data.article as Article);
+
+	// A table of contents built from the body's <h2> sections. The stored body
+	// has bare <h2> headings (the rich sanitize profile carries no id), so we
+	// slug each heading, inject that id back into the HTML that gets rendered,
+	// and list the same ids as jump links. Derived from the body string, so it
+	// is computed once at prerender — the anchors work in the static page with
+	// no client JS. Shown only when there are enough sections to be worth it.
+	function slugifyHeading(text: string): string {
+		return (
+			text
+				.toLowerCase()
+				.replace(/[^\p{L}\p{N}]+/gu, '-')
+				.replace(/^-+|-+$/g, '') || 'section'
+		);
+	}
+	const withToc = $derived.by(() => {
+		const toc: { id: string; text: string }[] = [];
+		const seen = new Map<string, number>();
+		const html = (article.body_html || '').replace(/<h2>([\s\S]*?)<\/h2>/g, (_m, inner) => {
+			const text = inner.replace(/<[^>]+>/g, '').trim();
+			let id = slugifyHeading(text);
+			const n = seen.get(id) ?? 0; // de-dupe repeated headings
+			seen.set(id, n + 1);
+			if (n) id = `${id}-${n + 1}`;
+			toc.push({ id, text });
+			return `<h2 id="${id}">${inner}</h2>`;
+		});
+		return { html, toc };
+	});
+	const showToc = $derived(withToc.toc.length >= 3);
 
 	// Tap a server-wrapped Bible reference in the body → open the scripture
 	// popover, the same treatment the chapter/sermon readers give. The body's
@@ -92,19 +123,35 @@
 
 	<article class="article">
 		<header class="mb-5">
+			<!-- Kind eyebrow (page-design A8): KIND · TIME. The reading time is
+			     localized via readingTime(); the kind word is an English literal,
+			     as are this page's other chrome strings (see F3). -->
+			<p class="eyebrow mb-1 text-muted">Article · {readingTime(article.word_count)}</p>
 			<h1 class="text-h1">{article.h1}</h1>
 			{#if article.description}
 				<p class="standfirst">{article.description}</p>
 			{/if}
 		</header>
 
+		{#if showToc}
+			<nav class="toc" aria-labelledby="toc-heading">
+				<p id="toc-heading" class="eyebrow text-muted">On this page</p>
+				<ul>
+					{#each withToc.toc as h (h.id)}
+						<li><a href={`#${h.id}`}>{h.text}</a></li>
+					{/each}
+				</ul>
+			</nav>
+		{/if}
+
 		<!-- Server-sanitized HTML (backend rich/bio profile — pull-quotes, internal
-		     links, and server-wrapped scripture refs); never user input. The click
-		     delegate opens the scripture popover on a tapped reference (same as the
-		     reader; see onBodyClick). frontend/CLAUDE.md. -->
+		     links, and server-wrapped scripture refs); never user input. Headings
+		     carry the ids the TOC links to, injected from the same derived pass.
+		     The click delegate opens the scripture popover on a tapped reference
+		     (same as the reader; see onBodyClick). frontend/CLAUDE.md. -->
 		<!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-		<div class="article-body" lang={article.language} onclick={onBodyClick}>{@html article.body_html}</div>
+		<div class="article-body" lang={article.language} onclick={onBodyClick}>{@html withToc.html}</div>
 
 		{#if article.related?.length}
 			<aside class="read-next" aria-labelledby="read-next-heading">
@@ -113,8 +160,21 @@
 					{#each article.related as r (r.type + r.slug)}
 						<li>
 							<a href={r.url}>
-								<span class="kind">{KIND_LABEL[r.type]}</span>
-								<span class="rel-title">{r.title}</span>
+								{#if r.type === 'book' && r.cover_url}
+									<img
+										class="rel-cover"
+										src={r.cover_url}
+										alt=""
+										loading="lazy"
+										style:background={r.cover_color || undefined}
+									/>
+								{:else if r.type === 'author' && r.photo_url}
+									<img class="rel-portrait" src={r.photo_url} alt="" loading="lazy" />
+								{/if}
+								<span class="rel-text">
+									<span class="kind">{KIND_LABEL[r.type]}</span>
+									<span class="rel-title">{r.title}</span>
+								</span>
 							</a>
 						</li>
 					{/each}
@@ -170,6 +230,8 @@
 		line-height: 1.25;
 		margin: 2rem 0 0.75rem;
 		color: var(--color-text);
+		/* Keep a TOC jump from tucking the heading under the sticky top nav. */
+		scroll-margin-top: 5rem;
 	}
 	.article-body :global(h3) {
 		font-weight: 600;
@@ -231,8 +293,8 @@
 	}
 	.read-next a {
 		display: flex;
-		align-items: baseline;
-		gap: 0.7rem;
+		align-items: center;
+		gap: 0.8rem;
 		padding: 0.55rem 0.7rem;
 		border-radius: 0.5rem;
 		text-decoration: none;
@@ -241,8 +303,30 @@
 	.read-next a:hover {
 		background: var(--color-accent-soft);
 	}
-	.read-next .kind {
+	/* A small book cover (2:3) or a round portrait, so the funnel shows the
+	   shelf, not a text list. Fixed box so ragged art doesn't misalign rows. */
+	.read-next .rel-cover {
 		flex: 0 0 auto;
+		width: 2.75rem;
+		height: 4.125rem;
+		object-fit: cover;
+		border-radius: 0.25rem;
+		box-shadow: 0 1px 3px rgb(0 0 0 / 0.18);
+	}
+	.read-next .rel-portrait {
+		flex: 0 0 auto;
+		width: 2.75rem;
+		height: 2.75rem;
+		object-fit: cover;
+		border-radius: 999px;
+	}
+	.read-next .rel-text {
+		display: flex;
+		flex-direction: column;
+		gap: 0.1rem;
+		min-width: 0;
+	}
+	.read-next .kind {
 		font-family: var(--font-sans);
 		font-size: var(--fs-eyebrow);
 		font-weight: 700;
@@ -253,5 +337,30 @@
 	.read-next .rel-title {
 		font-family: var(--font-display);
 		color: var(--color-text);
+	}
+	/* On this page — a compact jump list, styled as a quiet bordered aside so it
+	   reads as navigation, not part of the prose. */
+	.toc {
+		margin: 0 0 2rem;
+		padding: 0.9rem 1.1rem;
+		border: 1px solid var(--color-border);
+		border-radius: 0.75rem;
+		background: var(--color-surface);
+	}
+	.toc ul {
+		list-style: none;
+		margin: 0.5rem 0 0;
+		padding: 0;
+		display: grid;
+		gap: 0.35rem;
+	}
+	.toc a {
+		color: var(--color-text);
+		text-decoration: none;
+		text-underline-offset: 2px;
+	}
+	.toc a:hover {
+		color: var(--color-accent);
+		text-decoration: underline;
 	}
 </style>

@@ -61,6 +61,7 @@ from .serializers import (
     SermonListSerializer,
     TopicDetailSerializer,
     TopicListSerializer,
+    article_topic_map,
     book_topic_map,
     plan_book_index,
     plan_chapter_index,
@@ -287,6 +288,14 @@ class ArticleListView(PublicContentCacheMixin, generics.ListAPIView):
             .defer("body_html")
             .order_by("sort_order", "h1")
         )
+
+    def get_serializer_context(self):
+        """Attach an ``article_slug -> [topic chip]`` map so the index's topic
+        chips cost a fixed handful of queries, not one per article (see
+        BookListView)."""
+        ctx = super().get_serializer_context()
+        ctx["article_topics"] = article_topic_map(_language(self.request))
+        return ctx
 
 
 class ArticleDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):

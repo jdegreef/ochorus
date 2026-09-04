@@ -117,6 +117,9 @@ class ArticleApiTests(TestCase):
         related = res.data["related"]
         # Only the published book and the author survive; the unpublished and
         # missing books are dropped, and order is preserved.
+        # A book card carries its cover (url + colour), an author their portrait,
+        # so "Read next" renders thumbnails, not bare links (blank here — the
+        # test rows set no cover). Order is preserved.
         self.assertEqual(
             related,
             [
@@ -125,12 +128,15 @@ class ArticleApiTests(TestCase):
                     "slug": "the-life-of-trust",
                     "title": "The Life of Trust",
                     "url": "/books/the-life-of-trust/",
+                    "cover_url": "",
+                    "cover_color": "",
                 },
                 {
                     "type": "author",
                     "slug": "george-muller",
                     "title": "George Müller",
                     "url": "/authors/george-muller/",
+                    "photo_url": "",
                 },
             ],
         )

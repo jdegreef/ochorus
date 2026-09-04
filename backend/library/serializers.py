@@ -82,6 +82,28 @@ def book_topic_map(language: str) -> dict[str, list[dict]]:
     return mapping
 
 
+def article_topic_map(language: str) -> dict[str, list[dict]]:
+    """``article_slug -> [topic chip]`` for every published topic, in one pass.
+
+    The article-index twin of ``book_topic_map`` (same reason: an index of
+    articles would otherwise cost one topic query per card). ``ArticleListView``
+    hands it to the serializer through the ``article_topics`` context key, and
+    ``ArticleListSerializer`` builds it on demand when a view hasn't."""
+    mapping: dict[str, list[dict]] = {}
+    topics = Topic.objects.filter(is_published=True).prefetch_related(
+        "translations", "article_entries"
+    )
+    for topic in topics:
+        if not topic.is_translated_into(language):
+            continue
+        chip = {"slug": topic.slug, "title": topic.title_for(language)}
+        for entry in topic.article_entries.all():
+            mapping.setdefault(entry.article_slug, []).append(chip)
+    for chips in mapping.values():
+        chips.sort(key=lambda c: c["title"])
+    return mapping
+
+
 def _topic_chips(language: str, **membership) -> list[dict]:
     """Localized {slug, title} chips for the published topics a work belongs to.
 
@@ -384,7 +406,11 @@ class SermonDetailSerializer(serializers.ModelSerializer):
 
 def resolve_related(related, language: str) -> list[dict]:
     """Turn an article's stored ``related`` soft-references into ready-to-render
-    "Read next" cards: ``[{type, slug, title, url}, ...]``.
+    "Read next" cards: ``[{type, slug, title, url, <thumbnail fields>}, ...]``.
+
+    A book card also carries ``cover_url`` + ``cover_color`` and an author card
+    ``photo_url``, so the block renders covers and portraits, not bare links; a
+    sermon carries neither (its shelf tile is a drawn emblem, not an image).
 
     Each entry names a ``type`` (book / sermon / author) and a ``slug``; this
     resolves it to the published row's display title and its reader URL, in the
@@ -413,42 +439,69 @@ def resolve_related(related, language: str) -> list[dict]:
     for kind, slug in entries:
         by_type.setdefault(kind, []).append(slug)
 
-    titles: dict[tuple[str, str], str] = {}
+    # (kind, slug) -> the card's display fields, INCLUDING the thumbnail a card
+    # needs to render a real shopfront rather than a text link: a book carries
+    # its cover (url + colour fallback), an author their portrait, a sermon has
+    # neither (its shelf tile is a drawn emblem, not an image) and stays text.
+    found: dict[tuple[str, str], dict] = {}
     if by_type.get("book"):
-        for slug, title in Book.objects.filter(
+        for slug, title, cover_url, cover_color in Book.objects.filter(
             slug__in=by_type["book"], language=language, is_published=True
-        ).values_list("slug", "title"):
-            titles[("book", slug)] = title
+        ).values_list("slug", "title", "cover_url", "cover_color"):
+            found[("book", slug)] = {
+                "title": title,
+                "cover_url": cover_url,
+                "cover_color": cover_color,
+            }
     if by_type.get("sermon"):
         for slug, title in Sermon.objects.filter(
             slug__in=by_type["sermon"], language=language, is_published=True
         ).values_list("slug", "title"):
-            titles[("sermon", slug)] = title
+            found[("sermon", slug)] = {"title": title}
     if by_type.get("author"):
-        for slug, name in Author.objects.filter(
+        for slug, name, photo_url in Author.objects.filter(
             slug__in=by_type["author"]
-        ).values_list("slug", "name"):
-            titles[("author", slug)] = name
+        ).values_list("slug", "name", "photo_url"):
+            found[("author", slug)] = {"title": name, "photo_url": photo_url}
 
     prefix = {"book": "/books/", "sermon": "/sermons/", "author": "/authors/"}
     cards = []
     for kind, slug in entries:
-        title = titles.get((kind, slug))
-        if title is None:
+        data = found.get((kind, slug))
+        if data is None:
             continue
         cards.append(
             {
                 "type": kind,
                 "slug": slug,
-                "title": title,
                 "url": f"{prefix[kind]}{slug}/",
+                # title, then whichever thumbnail fields the type carries.
+                **data,
             }
         )
     return cards
 
 
-class ArticleListSerializer(serializers.ModelSerializer):
-    """An article card — enough for the /articles index (no body)."""
+class ArticleListSerializer(LocalizedMixin, serializers.ModelSerializer):
+    """An article card — enough for the /articles index (no body).
+
+    Carries ``word_count`` (the "N min read" estimate) and ``topics`` (the
+    funnel chips back to the topic pages), so the index card matches the
+    book/sermon shelf cards rather than being a bare title + description.
+    """
+
+    topics = serializers.SerializerMethodField()
+
+    def get_topics(self, obj):
+        """Published topics this article belongs to (localized) — the chips that
+        close the funnel back to the topic pages. Served from a slug→chips map
+        built once per shelf (``article_topics`` context), like BookListSerializer,
+        so topics cost a fixed handful of queries however many cards are shown."""
+        mapping = self.context.get("article_topics")
+        if mapping is None:
+            mapping = article_topic_map(self._language())
+            self.context["article_topics"] = mapping
+        return mapping.get(obj.slug, [])
 
     class Meta:
         model = Article
@@ -458,6 +511,10 @@ class ArticleListSerializer(serializers.ModelSerializer):
             "h1",
             "meta_title",
             "description",
+            # The reading-time source, derived from body_html on save(); the
+            # index defers the body but this column loads with the row.
+            "word_count",
+            "topics",
             "sort_order",
             "created_at",
             # The sitemap's <lastmod> — see BookListSerializer.updated_at. The
@@ -471,13 +528,12 @@ class ArticleDetailSerializer(ArticleListSerializer):
 
     body_html = serializers.SerializerMethodField()
     related = serializers.SerializerMethodField()
-    topics = serializers.SerializerMethodField()
     available_languages = serializers.SerializerMethodField()
 
     def get_topics(self, obj):
-        """Published topics this article belongs to (localized) — the chips that
-        close the funnel back to the topic pages. Mirrors the book/sermon detail
-        chips; the topic page already lists the article in return."""
+        """The one article on the page — the batched map would be a whole-corpus
+        query to answer a single-row question, so ask directly (mirrors the
+        book/sermon detail chips; the topic page lists the article in return)."""
         return _topic_chips(obj.language, article_entries__article_slug=obj.slug)
 
     def get_body_html(self, obj):
@@ -496,10 +552,10 @@ class ArticleDetailSerializer(ArticleListSerializer):
         return _available_languages(Article, obj.slug)
 
     class Meta(ArticleListSerializer.Meta):
+        # topics + word_count already ride on the list serializer's fields.
         fields = ArticleListSerializer.Meta.fields + [
             "body_html",
             "related",
-            "topics",
             "source_url",
             "available_languages",
         ]
