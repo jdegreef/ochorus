@@ -375,6 +375,25 @@ dropped; chapters under 120 words are dropped as stubs.
   equals the theme LAST (a stable sort on `title.casefold() == theme.casefold()`
   does it); and lint runs in CI before the tests — `ruff check scripts/<file>.py`
   locally, the seeds/gates don't catch C408 (`dict()` → literal) etc. *(2026-09)*
+- **The OPPOSITE shape — one heading over a huge undivided section (a long
+  journal/diary) → split into reading chapters via a `build_<name>` command.**
+  Jarena Lee's *Religious Experience and Journal* (Gutenberg #66953) has three
+  authorial headings, and the third runs unbroken through her whole 44k-word
+  travelling journal — one endless scroll on a phone. `extract_chapters` gives
+  the three clean sections; the build command keeps the short ones and splits the
+  long one into ~7k-word chapters at block boundaries, folding a short tail back.
+  Two things earned the hard way: (1) **split on ALL top-level blocks, not just
+  `<p>`** — a `re.findall(r'<p>.*?</p>')` split silently DROPPED 746 words of the
+  hymns she quotes in `<blockquote>`; iterate `BeautifulSoup(body).children`
+  instead and assert word-count parity with the source before trusting it.
+  (2) Title the chunks **`Part I/II/…` (a `_roman(n)` generator, not a fixed
+  list), not year-ranges** — a diarist who recounts past and future years within
+  one entry makes min/max-year titles overlap and mislead; Part N is honest, and
+  duplicate bare "The Journal" titles trip `qa.duplicate_title`. A brand-new
+  author arriving WITH a book needs NO migration — `seed_books` `get_or_create`s
+  the author from `authors.json` (full bio and all) while creating the book;
+  verify the prod path by deleting both from the dev DB and running `seed_books`.
+  *(religious-experience-and-journal, 2026-09)*
 - **Known limits (unfixed):** a book whose Introduction heading is fused with
   its body text in one block loses that intro (feasting-at-the-table); a drop
   cap belonging mid-paragraph after a scripture-ref merge isn't reattached
@@ -397,6 +416,46 @@ dropped; chapters under 120 words are dropped as stubs.
     rule (which is why *Confessions* ships with `Chapter XXi`/`Chapter Xi`
     unfixed). If a second grouped book needs per-leaf fixes, add a hook rather
     than widening `clean_title` again. *(2026-07)*
+  - **When the work has NO internal part dividers, `group_parts` can't help** —
+    a `part=`-extracted NPNF work like Augustine's *Enchiridion* is 124 tiny
+    numbered sections under one implicit part, so `group_parts` fuses the whole
+    thing into a single 35k-word chapter. Import it flat, then regroup with a
+    committed build script keyed by editorial order-ranges: `GROUPS = [(title,
+    lo, hi), …]` covering every raw section, each chapter concatenating its
+    sections as `<h3>{section-title}</h3>{body}` through `clean_fragment`
+    (`scripts/build_enchiridion.py` is the model — idempotent: reads the raw
+    chapters, deletes, writes the grouped ones; asserts the raw count first; no
+    `catalog.py` entry). Same `RestatedChapterHeading` and local-`ruff` cautions
+    as the Gleanings build. **The trap (bit the Enchiridion, #1349):** an NPNF
+    section body OPENS with its own running title, `<p>Chapter N.—<title>.</p>`,
+    so wrapping it in an `<h3>` of the same title renders EVERY sub-heading
+    twice. `RestatedChapterHeadingTests` only checks a chapter's *first* block
+    against the chapter title, so it never sees the internal repeats — strip that
+    leading title paragraph per section before concatenating, and eyeball the
+    rendered sub-structure, not just the gates. *(2026-09)*
+  - **When the sub-work IS a collection of works (each a real part divider),
+    `group_parts=True` works — but keeps two things you don't want.** Cyprian's
+    treatises are `schaff/anf05` under stem `iv.v`: `part="iv.v"` alone
+    over-splits into 205 per-paragraph leaves; `group_parts=True` gives 13 clean
+    chapters (one per treatise), but includes the ANF editor's trailing
+    **"Elucidations"** (scholarly notes, not the author) and restates a redundant
+    `<p>Treatise N.</p><p>Title.</p>` at each chapter head. Drop/strip both with a
+    `build_<name>` command that reuses `import_ccel.toc_parts` + `extract_body`
+    (skip `is_front_matter(part_title) or "elucidation" in part_title.lower()`;
+    `re.sub` the head with `count=1` — do NOT `\A`-anchor it, because a multi-leaf
+    part carries the head AFTER its first `<h3>` leaf subheading). Cyprian already
+    had a bio+portrait, so no authors.json/migration — `seed_books` creates the
+    book on the existing author. `build_cyprian_treatises` is the model.
+    *(treatises-of-cyprian, 2026-09)*
+  - **Fixing the bodies of an ALREADY-SHIPPED book needs a data migration, not
+    just a fixture edit.** `seed_books` never re-syncs the chapters of a book it
+    has already created (chapter `order` is a public contract), so a re-chapterize
+    or body fix that only lands in the fixture reaches fresh installs but SKIPS
+    prod — the deploy logs a `chapter_drift` warning and the live pages stay
+    wrong. Ship the migration half too (see the `ship-content-fix` skill;
+    migration `0103` strips the Enchiridion's doubled titles, `0092` is the other
+    model — both re-derive `body_text`/`word_count` and NULL `search_vector`).
+    And verify the fix on the live BOOK body, not just the API. *(2026-09)*
 - **CCEL two-level section numbering** (`<work>.i.ii.html` = part i, chapter ii).
   The `toc_sections` pattern matched only single-segment `<work>.iii.html`, so a
   parts-divided work imported as 1 chapter. Regex now allows one-or-more dotted
@@ -514,6 +573,55 @@ dropped; chapters under 120 words are dropped as stubs.
   ("twentyone"→"twenty-one"). Scan for merges with a "digit-word glued to
   [a-z]" regex, but hand-filter — "eighteenth"/"understand" are real words.
   *(2026-07)*
+- **A heavily-damaged Archive scan can need HUNDREDS of OCR fixes, and the
+  standard `[A-Za-z]*[a-z][A-Z]` mixed-case scan MISSES whole classes.** Crowther's
+  1855 Niger journal (`journalofexpedit00crow`) needed ~350: a stray `^` caret
+  sprinkled into words, `r` read as an apostrophe (`fi'om`→from, straight AND
+  curly), `h` read as `li` (`witli`→with, `tlie`→the ×17), `w` read as `Av`
+  (`Avas`→was), `E`/`Il` read for `R`/`H` in names, and hyphen-split words.
+  **Verify cleanup with a spellcheck scan against `/usr/share/dict/web2`, and do
+  NOT exclude capitalized tokens** — the `Av…`/`Il…`/`E…`-prefixed garbles wear a
+  spurious capital and masquerade as proper nouns, so a scan that skips
+  capitalized words reports "pristine" while dozens remain. web2 lacks many
+  inflections/British spellings (feet, replied, favour), so filter those, and an
+  OCR-aware corrector (try `li→h`, `rn→m`, `di→h`, `ii→n`… and keep any single
+  edit that yields a web2 word) auto-resolves the bulk; hand-resolve the rest
+  from context. **Best signal a capitalized garble is real:** its correct twin
+  dominates the same text (`Hamaruwa` ×37 vs `Ilamaruwa` ×7). **The `w`→`Av`
+  class needs a sentence-aware fix** (the capital A is spurious, so capitalise the
+  result only when it opens a sentence), not a case-preserving word map.
+  **A residue of mis-scanned foreign PROPER NOUNS is left faithful to the print**
+  — "correcting" a transliterated place name without a gazetteer invents. For a
+  book the importer can't chapter at all, this lives in a `build_<name>` command
+  (the anthology pattern below): reuse `import_archive`'s `_reflow`, split at
+  verified anchors, hold the fix tables as module constants there rather than
+  bloating `corrections.py`, and wrap the body in `clean_fragment(...)` before
+  `settled_chapter_body`. Estimate generously and say so early — this scan was
+  under-called twice. *(journal-of-an-expedition-up-the-niger, 2026-09)*
+- **A cleaner Archive scan with intact CHAPTER markers but ILLEGIBLE title-lines
+  → build_<name> that splits on markers in DOCUMENT ORDER and applies the TOC
+  titles.** Julia Foote's *A Brand Plucked from the Fire* (`brandpluckedfrom00footrich`)
+  chaptered fine in `import_archive` (~1 defect), but every decorative title-line
+  OCR'd to garbage ("Tu", "public ||fllot|f") and two markers were mis-scanned
+  romans — **"CHAPTER XL" for XI, "CHAPTER XXL" for XXI** — and since `_roman`
+  reads "XL" as 40 the sequence check dropped one, merging a chapter (29 vs 30).
+  Fix: match all `^CHAP(TER)?\s+[IVXLC]+\.?$` lines and split on their ORDER, not
+  the parsed numeral (so the garbled romans still count); read the real titles
+  from the book's own Contents. Three cleanups the audit does NOT flag (it sees
+  real-looking words): (1) **line-wrap space-splits** — the scan drops the EOL
+  hyphen, leaving a space inside a word ("fright ened", "chil dren"); rejoin the
+  pair when `a+b` is a web2 word and the second fragment is NOT itself a word
+  (this is precise — it never merges a real pair; the both-are-words cases like
+  "per son"→person are hand-added and MUST be `\b`-anchored, or a bare replace
+  fuses "harper songs"). (2) **letter-substitution mangles** ("Tor"→For,
+  "clay"→day, "rne"→me, "pea<;e"→peace) — hand-fix from context. (3) **garbled
+  title-lines that leaked** — skip them by the small-caps opener: chapters open
+  "FROM this…"/"I WAS…", so after the marker skip lines until the first whose
+  first two letters are both uppercase. Verify no content lost with a
+  word-count-parity check (book ÷ raw-source-body ≈ 0.97; the missing ~3% is
+  running headers + page numbers + markers, NOT prose). Verse/hymn reflows to
+  prose paragraphs — words preserved, line breaks flattened (acceptable).
+  *(a-brand-plucked-from-the-fire, 2026-09)*
 - **A Victorian edition's quotation marks OCR as guillemets `« »`.** The Patmore
   Bernard scanned every quote as `«`/`»` (22 of them) — a mark that never occurs
   legitimately in English, so map the pair to curly quotes in `corrections.py`
@@ -713,6 +821,101 @@ If a SECOND such anthology ever appears, THEN lift the URL list into a catalog
 sidecar consumed by a shared importer — one is bespoke, two is a pattern.
 *(Mighty Power in Prayer — 12 Spurgeon sermons on prayer, 2026-08)*
 
+**Adding a single STANDALONE sermon** (a `SermonEntry` in `sermon_catalog.py`,
+one per work, `source` = `ccel` | `gutenberg` | `web`; `import_sermons <slug>`;
+then serialize `fixtures/content/sermons/<slug>.en.json`). `seed_sermons` upserts
+on every deploy — NO migration, and NO author stub when the author already
+exists in `authors.json` (`_author` resolves the DB row first). Source-picking
+gotchas found adding one sermon each for Chrysostom/Finney/Luther *(2026-09)*:
+  - **CCEL serves SOME works only through its JS reader** — a raw fetch of
+    Finney's `ccel/finney/sermons/…` returns a 20 KB "loading" shell, 0 words,
+    while Spurgeon/Wesley pages return full static HTML. When a CCEL sermon
+    imports as 0 words, fetch the URL and check for `<title>loading` before
+    blaming the extractor; fall back to a `web` source (gospeltruth.net carries
+    Finney, already the source for Catherine Booth).
+  - **A collected volume with PAGE-NUMBERED headings doesn't fit the gutenberg
+    section matcher at all** *(2026-09, Christmas Evans, PG #42340)*. Its 22
+    sermons are clean `<h3>SERMON IV.<br>FALL AND RECOVERY OF MAN</h3>`, but each
+    heading carries a `<span class="pagenum">p. 108</span>` prefix, and
+    `extract_gutenberg_section` matches `_norm_heading(h.get_text(" "))` whole —
+    so `section` would have to embed the page number ("p. 108 SERMON IV. …"),
+    which is absurd. When the source is a page-numbered collected edition,
+    hand-extract the chosen sermons into fixtures and ship them **without a
+    `sermon_catalog.py` entry** (the fixture is the source of truth — the
+    Wesley/Booth batch did the same for its two hand-corrected sermons). Note
+    also: Gutenberg italicizes a whole scripture epigraph word-by-word, so strip
+    `<i>` from the opening verse (the blockquote already marks it) and fold
+    `<span class="smcap">` to uppercase, as the Booth sermons preserve caps.
+  - **A Gutenberg Postil can set every sermon AND its subsections at the same
+    heading level** (Lenker's *Epistle Sermons*, id 28464, is all `<h4>`), so
+    `extract_gutenberg_section` — which bounds a sermon on the next SAME-tag
+    heading — returns only the first subsection. Verify the target's heading
+    level is DISTINCT from its subsections in `pg<id>-images.html` before using
+    a gutenberg section; else use a one-sermon-per-page `web` source
+    (sermons.martinluther.us for the Lenker translation).
+  - **A `web` sermon needs `body_starts`** (the literal opening of the first
+    real paragraph) to cut a leading byline/nav, and its page may append a
+    trailer the single-element nav rule can't reach: `extract_web_sermon` now
+    also cuts the gospeltruth.net trailer (index link / copyright / nav menu /
+    certification seal), a bare `<p>TOP</p>` jump link, BibleHub's "Parallel
+    Verses" cross-reference block (+ ad-slot comments), and a collected-edition
+    "END OF VOL." marker. After any such change, re-import the OTHER web sermons
+    and confirm word counts are byte-unchanged. **Good web fallbacks by author:**
+    gospeltruth.net (Finney), sermons.martinluther.us (Luther/Lenker),
+    biblehub.com `/sermons/auth/…` (Calvin, and other PD anthology sermons in
+    the Kleiser translation).
+  - **Adding sermons can trip `ReleaseProseSourceCoverageTests`** — enough
+    `body_starts`/title/comment text in `sermon_catalog.py` tips its prose
+    detector, and it fails "modules … carry prose, but are neither a content
+    root nor exempt." The reader sees a sermon's title/scripture from the
+    FIXTURE (what `seed_sermons` upserts), not from `sermon_catalog.py`, so the
+    module belongs in `NOT_READER_PROSE` (added, same as `catalog.py`), not in
+    `content_sources.json`.
+  - **A sermon needs a `summary`** (a shelf gate) and an **og:image twin**
+    (`SermonShareCardTests`). The twin generator `frontend/scripts/og-card.mjs`
+    reads Linux-only Liberation fonts from `/usr/share/fonts/…`, so
+    `npm run og:sermons` FAILS on macOS (and the top-level manifest
+    `composition` digest is gated by `sermonCards.test.ts`, so you can't fake
+    it or run a modified generator and revert). Generate the twins where those
+    fonts are installed (Linux / CI), or vendor the TTFs into the repo and point
+    og-card at them (the file's own comment invites vendoring). **Proven CI
+    recipe** (2026-09): add a throwaway workflow that `sudo apt-get install -y
+    fonts-liberation`, `npm ci`, `npm run og:sermons`, then git-commits
+    `frontend/static/og/sermons/` back to the branch (needs `permissions:
+    contents: write`). Trigger it with **`on: push` scoped to the branch** — NOT
+    `workflow_dispatch`, which GitHub only exposes from the DEFAULT branch, so
+    `gh workflow run` 404s for a branch-only file. Its GITHUB_TOKEN push won't
+    re-run CI (recursion guard); land the twins, then push your own follow-up
+    (e.g. removing the workflow) to re-trigger `test-and-build` on a head that
+    has them. NPNF homilies
+    are faithfully set in a few very long numbered paragraphs — baseline the
+    `lost-paragraphing` flag.
+    - **Simpler than a CI workflow — generate the twins locally on macOS**
+      *(2026-09, proven)*: download the real Liberation TTFs (official
+      `liberationfonts` GitHub release, SIL OFL — the `/private/tmp/libfonts`
+      copies a prior session left were HTML error pages, so `file` them first),
+      then run `node --import <preload.mjs> scripts/generate-sermon-og.mjs`
+      where `preload.mjs` wraps `fs.readFileSync`/`fs.openSync` to remap ONLY
+      the two hardcoded `/usr/share/fonts/…/liberation/…` paths (SIP blocks
+      creating that dir). The preload leaves the two generator scripts
+      byte-identical, so the manifest's `composition` digest stays correct —
+      editing og-card's font consts and reverting would NOT (nothing recomputes
+      composition, but the manifest would then disagree with the committed
+      script). Verify with a plain-node replica of `sermonCards.test.ts` (Node
+      ≥22.18 strips the TS types) since a symlinked `node_modules` breaks vitest.
+  - **Hand-writing a sermon fixture skips the per-work `english_audit` that
+    `import_sermons` runs — so CI's corpus ratchet (`tests_english_audit`) is
+    the FIRST thing to catch an OCR slip, one red round-trip later** *(2026-09)*.
+    Before pushing new sermons, run `audit_english <slug…>`: FIX genuine defects
+    (a gospeltruth Booth sermon read "into His cars" — an OCR misread of "ears",
+    surfaced as an `anachronism` since cars = automobiles), then
+    `--update-baseline` for the mechanical noise — `space-before-punct` (the
+    era's " ?"/" !" typography, only flagged under 16 hits/work) and
+    `orphan-close-quote` (an author's split scripture quote, e.g. Wesley's
+    `"All things are possible to him that" thus "believeth"`). Diff the baseline
+    JSON and confirm it touches ONLY your new works — `--update-baseline`
+    re-pins the WHOLE corpus and would silently absorb another work's drift.
+
 **Vet US public-domain status by PUBLICATION year, not author death.** A work
 first published before 1929 is US-PD regardless of when the author died — and a
 long-lived author can have both PD and still-copyrighted books. Amy Carmichael
@@ -734,6 +937,149 @@ entries also want a real `scripture_ref`; a section titled "The Burnt-Offering"
 that continues the last one has no standalone reference to give. Check the length
 distribution too — existing sermons run ~1,000–8,300 words, so a 57k-word "set of
 addresses" is a book by size alone. *(Taylor sermon sourcing, 2026-08)*
+
+**Adding a STANDALONE sermon — use `import_sermons`, don't hand-roll the
+extractor.** A single sermon on the sermon shelf (not sermons compiled into a
+book) has a maintained end-to-end path; a whole session was once spent
+re-writing a CCEL/gospeltruth extractor + Django-serializing fixtures by hand,
+all of which this command already does. The steps:
+- **Add a `SermonEntry` to `SERMONS` in `library/sermon_catalog.py`.** `source`
+  is `"ccel"` (one page per sermon, `source_ref` = full URL), `"gutenberg"`
+  (`source_ref` = ebook id, `section` = the heading text), or `"web"`
+  (`source_ref` = URL, `body_starts` = the literal text the first body paragraph
+  begins with — this is how it finds the body under a gospeltruth masthead).
+  `scripture_ref` / `preached_on` are overrides; leave blank to let the page
+  parse them. An author with NO books yet also needs an `AuthorEntry` in
+  `SERMON_AUTHORS` (use the slug `authors.json` uses); an author who already has
+  books reuses the book catalog's entry.
+- **`python manage.py import_sermons <slug>`** upserts the `Sermon` row:
+  `extract()` drops the masthead, parses the date + scripture ref, keeps the
+  scripture quote as an opening `<blockquote>` (CCEL) — web sermons keep the
+  verse only in `scripture_ref`, body is plain `<p>` — stores the settled body,
+  and runs `english_audit`. Both CCEL (Wesley/Spurgeon) and gospeltruth-style
+  web pages (Booth, Finney) are supported.
+- **Then the finish:** serialize the row to `fixtures/content/sermons/<slug>.<lang>.json`
+  (Django serializer, `indent=1`, natural keys — NOT `json.dump`), and
+  **`cd frontend && npm run og:sermons`** — `SermonShareCardTests` fails the
+  build until each sermon has a committed `frontend/static/og/sermons/<slug>.png`
+  + a matching `og-manifest.json` entry. A sermon with no curated emblem in
+  `SERMON_EMBLEMS` (`frontend/src/lib/emblemNames.ts`) draws a fallback-pool
+  emblem automatically — fine, no catalogue edit required.
+- **macOS font gotcha for `og:sermons`.** `scripts/og-card.mjs` hardcodes Linux
+  Liberation paths (`/usr/share/fonts/truetype/liberation/Liberation{Serif-Bold,
+  Sans-Regular}.ttf`); SIP blocks creating that dir on a Mac. Fetch the real
+  Liberation TTFs (SIL OFL, the `liberationfonts` GitHub release — the copies at
+  `/private/tmp/libfonts` were once a broken HTML download) and run the
+  generator under a tiny `--import` preload that remaps only those two
+  `fs.readFileSync`/`openSync` paths. Editing `og-card.mjs` directly would
+  poison the manifest's `composition` digest (bytes of the two scripts); the
+  preload keeps it CI-correct because nothing recomputes composition, only
+  re-running does. *(Wesley + Booth second sermons, 2026-09)*
+- **CCEL is not one layout — check each collection before trusting the
+  masthead parser** *(Whitefield / Edwards / M'Cheyne, 2026-09-04)*. Wesley is
+  `<h2>` + `<h3 class="scripRef">`; **Whitefield** is an `<h1>` title with the
+  scripture INSIDE the first `<p>` as `<a class="scripRef">Ref</a> — “verse”`,
+  and some sermons open straight into prose with no heading at all (Intercession's
+  text is the verse it calls "the text"); **Edwards** was transcribed piecemeal —
+  every masthead differs (title `<h1>`/`<h2>`, "A Sermon / by" rows, a bracketed
+  `<h5>` note, the scripture in a `<blockquote>`, `<p>`, `<h3>` or `<h4>`, verse
+  before OR after the ref). The stable rule: the block holding the FIRST
+  `a.scripRef` is the epigraph; **decompose the anchor before taking the verse**
+  (else the ref glues on — audit `run-together`) and strip the ` -- `/` — `
+  separator on whichever side; keep in-body DOCTRINE/APPLICATION/Part One as
+  `<h3>`. Pin `scripture_ref` (and `preached_on`) in the catalog for these.
+- **A hand-built body must be SETTLED or `tests_sanitize`/QA reddens** — three
+  triggers, each hit once: a bare `&` ("&c.") → emit `&amp;`; `<br>` → the
+  sanitizer's `<br/>` (and drop a break dangling at a paragraph edge); NBSP
+  (`&nbsp;` in "I.&nbsp;<i>The fact…") → a plain space.
+- **`QuoteStyleTests` counts DOUBLE quotes only.** Apostrophes don't count, a
+  wholly straight-quoted work passes (all five Edwards pages), and raw-HTML
+  `"` counts include attribute quotes — mcheyne.info looked mixed and wasn't.
+  When it IS mixed, `scripts/normalize_quotes.py <slug>` + `rederive_body_text
+  --write`, then eyeball: it cased the elided `'tis` as an OPENER (`‘tis`) —
+  correct to `’tis` by hand. `hyphen-space` fixes are per word: `with- out` →
+  `without`, but `us- ward`/`dwelling- place` are real KJV-era hyphenations.
+- **M'Cheyne: CCEL has no sermons.** mcheyne.info serves the printed Sermons
+  one per page (WordPress `entry-content`): masthead `<p>` "SERMON XIV Robert
+  Murray M‘Cheyne" (drop), his skeleton heading "Doctrine.—…" (keep; strip the
+  site's welded blurb), the verse `<p>` with an erratic citation tail
+  (`—MICAH vi. 6-8.`, `Hosea -vi., 4.`, `— Jer. xiv. 8,9.` — pin the ref), a
+  trailing date line → `preached_on`, `<br>` poems, and a SITE-WIDE
+  `<p class="footerPoem">` (about Baxter, identical on every page — drop). It
+  sets a closing `”` in opener position after `—`/`-`. Only six sermons exist
+  there (one an abridgement); no catalog entry — fixtures authoritative.
+- **A green local suite does not prove CI's `makemigrations --check`.** The
+  test runner only runs `migrate`, which tolerates multiple leaf migrations; CI
+  runs `--check` as well, and it runs it on the PR's synthetic merge with
+  *current* main. So after merging main into a branch, a local
+  `makemigrations --merge` can say "No conflicts detected" while CI fails on
+  two leaves that exist only in head + a main that moved after your fetch
+  (Edwards #1408, 2026-09-04: `0112_flock_moderns…` vs `0113_topicarticle_rls`).
+  Right before pushing a main-merge: `git fetch && git merge origin/main`
+  again, then `DJANGO_DEBUG=true uv run python manage.py makemigrations
+  --check --dry-run`; if it names leaves, `makemigrations --merge --no-input`
+  and commit the no-op merge migration.
+- **Batch several authors' sermons into ONE PR** when they land together
+  *(Tier 2, #1418, 2026-09-04)*. Every sermon PR touches `og-manifest.json`,
+  and catalog additions all insert at the same tail, so N parallel sermon PRs
+  cost N−1 main-merge + manifest-regen rounds (Tier 1's three PRs did). "Top up
+  five thin authors" is one job; one branch.
+- **Source shapes met in Tier 2** — each round-trips through the importer,
+  so give them catalog entries:
+  - *BibleHub "sermons" by an author are NOT sermons.* `/sermons/auth/calvin/…`
+    pages are ~150-word commentary snippets wrapped in ad scripts. Only the
+    Kleiser anthology pages there (`/sermons/auth/various/…`) are real sermons,
+    and Calvin has exactly one. No other clean PD Calvin standalone was found;
+    the 16th-c. Golding translations are PD but Elizabethan.
+  - *CCEL "Lectures on Revivals" (Finney)*: `<h2>LECTURE n</h2><h3>TITLE</h3>`,
+    then `<p class="text">` = `Text.—verse—<a scripRef>ref</a>.` (strip the
+    `Text.—` lead and the `—ref.` tail; the ref is `James v. 16` style, so pin
+    it), footnotes present, `span.sc` small caps.
+  - *NPNF treatises on CCEL (Chrysostom)*: `span.pb`/`a.page` page numbers,
+    dozens of `sup.Note`/`span.mnote` footnotes, a three-paragraph masthead
+    (A TREATISE / TO PROVE… / ————) before the first numbered paragraph,
+    500-word paragraphs (baseline `lost-paragraphing`), no scripture text.
+  - *Lenker Postil site (sermons.martinluther.us)*: flat `<p><span class="C-2">`
+    lines; a "Content Page" nav line, byline/intro and the caps title before the
+    first numbered paragraph (= `body_starts`); empty `<br>` spacers; ALL-CAPS
+    short lines are section headings (keep as `<h3>`); one page repeats the
+    title after the first heading; a `<a href="#top">TOP</a>` trailer. Spaced
+    ellipses `. . .` are the site's style (baseline `space-before-punct`).
+    Two-thirds of the Postil (61–117) is not on the site.
+  - *gospeltruth Finney pages* end with a `Copyright (c)… Gospel Truth
+    Ministries` paragraph (drop) and carry `[sic.]` editorial markers (drop).
+  - *PG 23438 "A Ribband of Blue" (Taylor)*: `<h3>`-delimited studies, but the
+    epigraph is a `<div class="c1"><em>"verse"</em>--1 Peter ii. 25.</div>`
+    BEFORE the first `<p>`, sometimes preceded by an all-caps subtitle div; the
+    whole book is wrapped in `<div>`s. `extract_gutenberg_section`'s
+    "blockquote the first paragraph if it opens with a quote" would swallow a
+    prose paragraph here — render only `<p>` and `div.c1`, and never skip a
+    `<p>` merely for having a div ancestor.
+- **A sermon may have no scripture text** (Luther's Good Friday Passion
+  meditation, Chrysostom's treatise): leave `scripture_ref` blank rather than
+  invent an anchor. Cards and pages render with the passage line empty.
+- **A content-only sermon merge can ship its new pages as the SPA shell — and
+  a frontend-only rebuild may not fix it** *(Tier 2 #1418 → #1420, 2026-09-04,
+  confirmed)*. The web build prerenders whatever the API returns at build time;
+  the Tier 2 build passed the digest gate yet baked eight 5.7 KB shells and
+  stale author sermon-counts, while the API already served all 65. Render skips
+  the web build unless `frontend/` changes, so a docs/backend-only push cannot
+  rebuild it. And a frontend-ONLY touch risks the gate: the live API's baked
+  `content_version` (b8ab6c…) did not match what a clean checkout of the same
+  commit digests to (ae3ff9… under both `manage.py content_version` and the JS
+  gate run with `RENDER_GIT_COMMIT` set), so a build with no API redeploy could
+  wait its 15-min timeout and fail. What worked, first try: ONE PR touching a
+  file under `backend/` (a comment beside `content_digest()`) AND one under
+  `frontend/` (a note in `sermons/[slug]/+page.ts`) — both services redeploy
+  together, the gate matches, every page prerenders. Verify with trailing-slash
+  URLs: a prerendered sermon is 40–120 KB with a `<title>`; the shell is
+  ~5.7 KB with none. Don't trust a LOCAL gate run to predict Render's: the two
+  digests disagree for the same tree (open question, noted in #1420).
+- **The worktree guard refuses long chains that mix `uv run` with git, or
+  heredoc-laden `git commit -m "$(cat <<…)"`.** Write the commit message and
+  PR body to files and use `git commit -F <file>` / `gh pr create --body-file
+  <file>`; keep `manage.py` gates in their own command, prefixed with an
+  explicit `cd <worktree>/backend &&`.
 
 When the catalogue lacks a wanted title (e.g. more Spurgeon), source it from
 elsewhere. Preference order — cleaner text first: **CCEL** (`source="ccel"`,
@@ -803,9 +1149,13 @@ The whole book is ONE page; hazards worth knowing before reusing it:
     phantom chapters.** The funding statement, source description and
     "Electronic Edition" title block are all set in `<h3>` like a chapter. The
     book proper begins at the first inlined print-page anchor
-    (`<a name="allen3"> Page 3</a>`) and ends at `<!-- footer inside begins -->`;
-    cut to that window first. Decompose the `<a name>` anchors (they carry the
-    visible "Page N" text) and the illustration `<img>`s.
+    (`<a name="allen3"> Page 3</a>`) and ends at docsouth's per-book nav block
+    `<div class="links">` (the "Return to Menu Page…" links) — cut at that OR
+    `<!-- footer inside begins -->`, WHICHEVER COMES FIRST. The links div sits
+    just before the footer comment, so cutting only at the comment leaks four
+    nav lines into the last chapter (shipped that way in Allen's book, fixed in
+    #1330). Decompose the `<a name>` anchors (they carry the visible "Page N"
+    text) and the illustration `<img>`s.
   - **Split on `<h3>` at the STRING level, not by walking BeautifulSoup
     siblings.** The centred summary sub-headings are malformed
     (`<P align="center">…</P></P></FONT>`), and lxml reparents later headings
@@ -835,6 +1185,17 @@ The whole book is ONE page; hazards worth knowing before reusing it:
   - Quote style: docsouth is uniformly STRAIGHT-quoted, which `QuoteStyleTests`
     (consistency, not curly) leaves alone — so keep titles/descriptions straight
     too rather than normalising.
+  - **Fixing an ALREADY-SHIPPED book with an importer change does NOT reach
+    prod.** The importer + fixture fix only helps fresh installs — `seed_books`
+    never rewrites an existing book's chapters (backend/CLAUDE.md). The Allen
+    footer-nav fix (#1330: importer + fixture) deployed and left the live last
+    chapter unchanged; it took a one-time `BODY_CORRECTIONS` replacement (#1336)
+    to backfill the stale prod row. Prefer a correction over a hand-written
+    migration for a body-text edit: `apply_body_corrections` runs it through
+    `save()` every deploy, re-deriving `body_text`/`word_count`/`search_vector`
+    (no manual column bookkeeping), and it no-ops on the already-fixed fixture.
+    Confirm `stale.replace(old, "") == fixed_fixture_body` exactly so prod and
+    fresh installs converge.
 
 ## Two kinds of fix
 

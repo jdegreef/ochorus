@@ -70,6 +70,7 @@ TOPICS = [
             "way-into-holiest",
             "if",
             "the-normal-christian-life",
+            "watchman-nee-a-life",
         ],
     ),
     (
@@ -96,6 +97,9 @@ TOPICS = [
             "revival-lectures",
             "life-and-diary-of-david-brainerd",
             "things-as-they-are",
+            "journal-of-an-expedition-up-the-niger",
+            "religious-experience-and-journal",
+            "a-brand-plucked-from-the-fire",
             "men-and-women-who-gave-everything-2",
             "women-who-moved-heaven-2",
             "union-and-communion",
@@ -126,6 +130,7 @@ TOPICS = [
             "a-call-to-the-unconverted",
             "around-the-wicket-gate",
             "grace-abounding",
+            "how-to-bring-men-to-christ",
         ],
     ),
     (
@@ -136,6 +141,7 @@ TOPICS = [
         "\u2014 the old paths, still good.",
         [
             "confessions",
+            "treatises-of-cyprian",
             "pilgrims-progress",
             "the-imitation-of-christ",
             "freedom-of-the-will",
@@ -167,6 +173,7 @@ TOPICS = [
             "till-he-come",
             "the-reformed-pastor",
             "men-who-tended-the-flock-2",
+            "the-fundamental-doctrines-of-the-christian-faith",
         ],
     ),
 ]
@@ -203,6 +210,65 @@ TOPIC_SERMONS = {
         "the-ravens-cry",
     ],
     "the-way-of-holiness": ["aggressive-christianity"],
+}
+
+
+# Article members per topic, by canonical article slug (language-agnostic, like
+# the book and sermon members). This is the bidirectional funnel: an article
+# shows on a topic's shelf, and the topics it lists appear as chips on the
+# article. {topic slug: [ordered article slugs]}
+TOPIC_ARTICLES = {
+    "prayer": [
+        "how-to-pray-so-god-answers",
+        "what-is-intercessory-prayer",
+        "the-power-of-persistent-prayer",
+        "how-to-pray-the-psalms",
+    ],
+    "holy-spirit": [
+        "what-is-the-baptism-of-the-holy-spirit",
+        "who-is-the-holy-spirit",
+        "what-are-the-spiritual-gifts",
+        "what-is-the-fruit-of-the-spirit",
+    ],
+    "deeper-life": [
+        "what-does-it-mean-to-abide-in-christ",
+        "the-cost-of-following-jesus",
+        "what-is-surrender-to-god",
+        "what-is-biblical-fasting",
+    ],
+    "grace-and-comfort": [
+        "how-to-trust-god-in-suffering",
+        "how-to-overcome-fear-and-anxiety-with-faith",
+    ],
+    "revival-and-missions": [
+        "what-is-revival-and-how-does-it-begin",
+        "what-is-the-great-commission",
+        "hudson-taylor-trusting-god-for-the-impossible",
+        "amy-carmichael-and-the-cost-of-love",
+        "samuel-crowther-from-captive-to-bishop",
+    ],
+    "faith-and-guidance": [
+        "how-to-find-gods-will-for-your-life",
+        "how-to-hear-gods-voice",
+        "how-to-trust-god-in-suffering",
+    ],
+    "the-gospel-call": [
+        "how-to-be-born-again",
+        "how-to-have-assurance-of-salvation",
+        "what-is-the-gospel",
+        "what-is-justification-by-faith",
+    ],
+    "the-way-of-holiness": [
+        "what-is-sanctification",
+        "how-to-forgive-someone-who-hurt-you",
+        "how-to-overcome-sin-and-temptation",
+        "the-priesthood-of-all-believers",
+        "why-humility-matters",
+    ],
+    "the-preached-word": [
+        "how-to-know-if-god-is-calling-you-to-ministry",
+        "what-makes-a-godly-leader",
+    ],
 }
 
 

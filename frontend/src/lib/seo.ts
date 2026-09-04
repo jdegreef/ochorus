@@ -113,3 +113,13 @@ export function breadcrumb(items: { name: string; url: string }[]) {
 		}))
 	};
 }
+
+/**
+ * A ready-to-inject JSON-LD BreadcrumbList straight from a Breadcrumb trail's
+ * `items` ({name, href}) — the visible <Breadcrumb> and the head markup then
+ * read from the same array. Bridges the one field-name mismatch (`href` vs the
+ * schema's `url`) in a single place, so a page can never hand-retype it wrong.
+ */
+export function breadcrumbLd(items: { name: string; href: string }[]): string {
+	return jsonLd(breadcrumb(items.map((c) => ({ name: c.name, url: c.href }))));
+}

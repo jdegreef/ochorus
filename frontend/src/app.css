@@ -748,7 +748,7 @@ article:not(.paged) .reading > p:first-of-type:not(:lang(ar)):not(:lang(hi))::fi
 	.reader-dock,
 	.pageturn,
 	.selbar,
-	.toc-panel,
+	.drawer-panel,
 	.outline-panel,
 	.outline-rail,
 	.min-left,

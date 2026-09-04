@@ -5,11 +5,12 @@
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { chapterName, readingMinutes, readingTime } from '$lib/reading';
 	import { SITE_URL } from '$lib/config';
-	import { absUrl, jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { scopedSearchHref } from '$lib/searchState';
 	import BookCard from '$lib/components/BookCard.svelte';
+	import PersonCard from '$lib/components/PersonCard.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
@@ -78,7 +79,7 @@
 	// "<title> read online free" and "<title> by <author>". Localized, and each
 	// locale's wording is DERIVED from its own reviewed `book_meta_fallback`
 	// rather than newly translated — same vocabulary, "on Ochorus." traded for
-	// the site's "· Ochorus" title suffix.
+	// the site's "— Ochorus" title suffix.
 	//
 	// It runs long — about 73 characters for this book against a ~60 character
 	// display budget — and the ordering is the answer to that: title, author,
@@ -178,9 +179,7 @@
 		{ name: t('nav.books'), href: '/books' },
 		{ name: book.title, href: `/books/${book.slug}` }
 	]);
-	const crumbsLd = $derived(
-		jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))))
-	);
+	const crumbsLd = $derived(breadcrumbLd(crumbs));
 </script>
 
 <Seo
@@ -437,6 +436,21 @@
 			{/each}
 		</ol>
 	</section>
+
+	<!-- People found IN this work who have a bio of their own — an anthology's
+	     subjects, the figures a biography follows. Links to their author pages.
+	     Language-gated server-side (a person with no bio in this edition's
+	     language is dropped), so every card here is a live link. -->
+	{#if book.featured_people?.length}
+		<section class="mt-12">
+			<h2 class="mb-4 text-h3">{t('book.peopleInBook')}</h2>
+			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
+				{#each book.featured_people as person (person.slug)}
+					<PersonCard {person} />
+				{/each}
+			</div>
+		</section>
+	{/if}
 
 	{#if book.related?.length}
 		<section class="mt-12">

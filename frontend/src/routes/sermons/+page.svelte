@@ -3,6 +3,7 @@
 	import type { SermonSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { itemList, hreflangAll } from '$lib/seo';
+	import Seo from '$lib/components/Seo.svelte';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readJSON, writeJSON } from '$lib/persisted';
@@ -12,6 +13,8 @@
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
+	import { urlFilters } from '$lib/urlFilters.svelte';
+	import { page } from '$app/stores';
 	import { portraitPosition } from '$lib/portraits';
 
 	const t = i18n.t;
@@ -29,8 +32,13 @@
 	);
 
 	// --- Filters ----------------------------------------------------------------
-	let queryText = $state('');
-	let bibleBook = $state('');
+	// The shelf's filters live in the URL (shareable, reloadable, Back-able) via
+	// $lib/urlFilters — the same helper Books and Biographies use. Grouping and
+	// sort stay in localStorage below: they describe the reader, not the shelf.
+	const filters = urlFilters({
+		defaults: { q: '', book: '' },
+		url: () => $page.url
+	});
 
 	/** Canonical position of a sermon's book; undated books sink to the end. */
 	const bookOrder = (s: SermonSummary) => s.scripture_book_order ?? 999;
@@ -48,9 +56,9 @@
 	});
 
 	const filtered = $derived.by(() => {
-		const q = queryText.trim().toLowerCase();
+		const q = filters.values.q.trim().toLowerCase();
 		return sermons.filter((s) => {
-			if (bibleBook && s.scripture_book !== bibleBook) return false;
+			if (filters.values.book && s.scripture_book !== filters.values.book) return false;
 			if (!q) return true;
 			return (
 				s.title.toLowerCase().includes(q) ||
@@ -60,12 +68,11 @@
 		});
 	});
 
-	const filtering = $derived(queryText.trim() !== '' || bibleBook !== '');
+	const filtering = $derived(filters.active);
 	// Clears what narrows the shelf, not how it is arranged — the grouping and
-	// sort are the reader's own preference and survive.
+	// sort are the reader's own preference (localStorage) and survive.
 	function clearFilters() {
-		queryText = '';
-		bibleBook = '';
+		filters.reset();
 	}
 
 	// --- Arrangement (persisted per device, mirroring the Books shelf) ----------
@@ -131,25 +138,17 @@
 	// correctly omitted them — two contradictory claims, with the wrong one on
 	// the site's most-crawled pages.
 	const hreflang = hreflangAll('/sermons');
+	const canonical = `${SITE_URL}${localizeHref('/sermons')}`;
 </script>
 
-<svelte:head>
-	<title>{t('nav.sermons')} — Ochorus</title>
-	<meta name="description" content={t('sermons.metaDescription')} />
-	<link rel="canonical" href="{SITE_URL}{localizeHref('/sermons')}" />
-	{#each hreflang.alternates as a (a.loc)}
-		<link rel="alternate" hreflang={a.loc} href={a.href} />
-	{/each}
-	<link rel="alternate" hreflang="x-default" href={hreflang.xDefault} />
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content="{t('nav.sermons')} — Ochorus" />
-	<meta property="og:description" content={t('sermons.metaDescription')} />
-	<meta property="og:url" content="{SITE_URL}{localizeHref('/sermons')}" />
-	<meta property="og:image" content="{SITE_URL}/og/sermons.png" />
-	<meta name="twitter:card" content="summary_large_image" />
-	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-	{#if sermons.length}{@html sermonsLd}{/if}
-</svelte:head>
+<Seo
+	title={`${t('nav.sermons')} — Ochorus`}
+	description={t('sermons.metaDescription')}
+	{canonical}
+	{hreflang}
+	ogImage={`${SITE_URL}/og/sermons.png`}
+	structuredData={sermons.length ? [sermonsLd] : []}
+/>
 
 <div class="page-col px-5 py-10">
 	<PageHeader eyebrow={t('nav.sermons')} title={t('sermons.title')} tagline={t('sermons.tagline')} />
@@ -167,14 +166,14 @@
 	<!-- Filter bar: free text + which book of the Bible the sermon expounds. -->
 	<div class="filter-row mb-8">
 		<input
-			bind:value={queryText}
+			bind:value={filters.values.q}
 			type="search"
 			autocomplete="off"
 			placeholder={t('sermons.filterPlaceholder')}
 			aria-label={t('sermons.filterPlaceholder')}
 			class="filter-field grow"
 		/>
-		<select bind:value={bibleBook} aria-label={t('sermons.allBooks')} class="filter-field">
+		<select bind:value={filters.values.book} aria-label={t('sermons.allBooks')} class="filter-field">
 			<option value="">{t('sermons.allBooks')}</option>
 			{#each bookFacets as b (b.name)}
 				<option value={b.name}>{b.name} ({b.count})</option>

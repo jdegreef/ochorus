@@ -249,6 +249,12 @@ def is_front_matter(title: str) -> bool:
     # "the title" (a real exposition section) is a different string and kept.
     if t in {"list of illustrations", "illustrations"}:  # a plate list, no prose
         return True
+    # "Book catalogue" is the heading Project Gutenberg's ebook maker puts over the
+    # publisher's trailing back-catalogue of priced titles (e.g. #55743's Revell
+    # ad list) — never the work, and its imprint is "WORKS BY <name>", which the
+    # "PUBLISHED BY" catalogue-cut in import_gutenberg does not catch.
+    if t in {"book catalogue", "book catalog"}:
+        return True
     return t in {"contents", "table of contents", "title", "title page", "prefatory note"}
 
 

@@ -44,14 +44,16 @@ from __future__ import annotations
 #: author's stub bio used to outlive every correction (see author_sync.py).
 #:
 #: charles-h-spurgeon    — approved 2026-08-28, sixty;
-#:                         and 2026-09-02, twenty more from Gleanings Among the Sheaves.
+#:                         and 2026-09-02, twenty more from Gleanings Among the Sheaves;
+#:                         and 2026-09-03, seventeen more from Gleanings — ninety-seven.
 #: thomas-a-kempis       — approved 2026-08-30, thirty-six.
 #: andrew-murray         — approved 2026-08-30, twenty-seven;
 #:                         and 2026-09-02, twenty-three more (the four new books).
 #: e-m-bounds            — approved 2026-08-30, twenty-eight;
 #:                          twenty-seven more 2026-09-02 (fifty-five).
 #: augustine-of-hippo    — approved 2026-08-30, thirteen;
-#:                         and 2026-09-02, six more (Confessions).
+#:                         and 2026-09-02, six more (Confessions);
+#:                         and 2026-09-02, sixteen more (The Enchiridion) — thirty-five.
 #: jonathan-edwards      — approved 2026-08-30, eleven;
 #:                         and 2026-09-02, ten more (Selected Sermons).
 #: john-wesley           — approved 2026-08-30, eighteen;
@@ -60,9 +62,14 @@ from __future__ import annotations
 #:                         and 2026-09-02, four more (The Life of Trust);
 #:                         and 2026-09-02, sixteen more (The Life of Trust) — thirty-one.
 #: hudson-taylor         — approved 2026-08-30, ten;
-#:                         and 2026-09-02, ten more (Separation and Service).
+#:                         and 2026-09-02, ten more (Separation and Service);
+#:                         and 2026-09-03, thirteen more (Union and Communion, Separation and Service) — thirty-three.
 #: gareth-evans          — approved 2026-08-30, twenty-two;
 #:                          four more 2026-08-31 (twenty-six).
+#: richard-allen         — approved 2026-09-02, six (The Life, Experience, and
+#:                          Gospel Labours — his antislavery address and his
+#:                          address on Christian charity).
+#: amanda-berry-smith    — approved 2026-09-02, fifteen (An Autobiography).
 #:
 #: THIS ONLY EVER PUBLISHES, AT CREATION. `seed_quotes` reads it when it creates
 #: a row and never again, which is the same rule `is_published` and
@@ -84,6 +91,8 @@ APPROVED = frozenset(
         "george-muller",
         "hudson-taylor",
         "gareth-evans",
+        "richard-allen",
+        "amanda-berry-smith",
     }
 )
 
@@ -569,6 +578,108 @@ SPURGEON = [
         "text": "Unless the heart be kept peaceable, the life will not be happy.",
         "chapter": ("gleanings-among-the-sheaves", 15),
         "paragraph": 1,
+    },
+    {
+        "slug": "charles-h-spurgeon-31ec3990",
+        "text": "God's people are often chastened, and the Lord's hand lieth heavy upon them; yet there is paternal goodness in their chastenings, and infinite lovingkindness in their tribulations.",
+        "chapter": ("gleanings-among-the-sheaves", 3),
+        "paragraph": 26,
+    },
+    {
+        "slug": "charles-h-spurgeon-f34cdb2a",
+        "text": "Though they know a little about Christ on Calvary, they know nothing about Christ in the heart.",
+        "chapter": ("gleanings-among-the-sheaves", 12),
+        "paragraph": 7,
+    },
+    {
+        "slug": "charles-h-spurgeon-c3eec6ac",
+        "text": "Let us ever remember that Christ on the cross is of no value to us apart from the Holy Spirit in us.",
+        "chapter": ("gleanings-among-the-sheaves", 19),
+        "paragraph": 3,
+    },
+    {
+        "slug": "charles-h-spurgeon-f90f1753",
+        "text": "Little-faith was bought with the blood of Christ; ay, and he cost as much as Great-faith.",
+        "chapter": ("gleanings-among-the-sheaves", 2),
+        "paragraph": 14,
+    },
+    {
+        "slug": "charles-h-spurgeon-756e08e3",
+        "text": "Not one sin is to be spared, but against the whole is to be proclaimed an utter and entire war of extermination.",
+        "chapter": ("gleanings-among-the-sheaves", 4),
+        "paragraph": 6,
+    },
+    {
+        "slug": "charles-h-spurgeon-2c1ff73f",
+        "text": "Seek that you may keep your conversation always holy; that your course may be like the shining light which tarries not, but burns brighter and brighter until the fulness of the day.",
+        "chapter": ("gleanings-among-the-sheaves", 4),
+        "paragraph": 12,
+    },
+    {
+        "slug": "charles-h-spurgeon-49d53581",
+        "text": "Do you think that we are forever to be the drudges and the slaves of sin, sighing for freedom, and yet never able to escape from its bondage?",
+        "chapter": ("gleanings-among-the-sheaves", 4),
+        "paragraph": 16,
+    },
+    {
+        "slug": "charles-h-spurgeon-e48554af",
+        "text": "If we have grown in grace, it is absolutely certain that we shall have advanced in our knowledge and reciprocation of the love of Christ.",
+        "chapter": ("gleanings-among-the-sheaves", 7),
+        "paragraph": 4,
+    },
+    {
+        "slug": "charles-h-spurgeon-4bdec927",
+        "text": "Our court-dress in heaven, and our garment of sanctification for daily wear, are the condescending gifts of Christ's love.",
+        "chapter": ("gleanings-among-the-sheaves", 8),
+        "paragraph": 3,
+    },
+    {
+        "slug": "charles-h-spurgeon-d1598ff5",
+        "text": "Not only must the heart be kept pure, but it must also be kept full.",
+        "chapter": ("gleanings-among-the-sheaves", 10),
+        "paragraph": 4,
+    },
+    {
+        "slug": "charles-h-spurgeon-242c0cc9",
+        "text": "Christ, when He blesses, blesses not in word only, but in deed.",
+        "chapter": ("gleanings-among-the-sheaves", 10),
+        "paragraph": 17,
+    },
+    {
+        "slug": "charles-h-spurgeon-825c2f8b",
+        "text": "How careful God is of His people; how anxious He is concerning them, not only for their life, but for their comfort.",
+        "chapter": ("gleanings-among-the-sheaves", 14),
+        "paragraph": 11,
+    },
+    {
+        "slug": "charles-h-spurgeon-c96dd1a1",
+        "text": "The believer enjoys, in favored seasons, such an intimacy with the Lord Jesus, as fills his heart with an overflowing peace.",
+        "chapter": ("gleanings-among-the-sheaves", 15),
+        "paragraph": 3,
+    },
+    {
+        "slug": "charles-h-spurgeon-1b7df6d3",
+        "text": "If thou wouldst find thy way to God's bright throne, find first thy way to Jesus' cross; if thou wouldst know the way to happiness, tread in that path of misery which Jesus trod.",
+        "chapter": ("gleanings-among-the-sheaves", 16),
+        "paragraph": 11,
+    },
+    {
+        "slug": "charles-h-spurgeon-14b10a83",
+        "text": "You may read the Bible continuously, and yet never learn anything by it, unless it is illuminated by the Spirit; and then the words shine forth like stars.",
+        "chapter": ("gleanings-among-the-sheaves", 17),
+        "paragraph": 1,
+    },
+    {
+        "slug": "charles-h-spurgeon-62f2db13",
+        "text": "Your business is to seek Christ crucified for yourselves, not to take the representation of another man concerning the power of grace to subdue corruption and to sanctify the heart.",
+        "chapter": ("gleanings-among-the-sheaves", 12),
+        "paragraph": 1,
+    },
+    {
+        "slug": "charles-h-spurgeon-0a553264",
+        "text": "The Lord Jesus has led captivity captive, and now sits at the right hand of God, forever making intercession for us.",
+        "chapter": ("gleanings-among-the-sheaves", 9),
+        "paragraph": 5,
     },
 ]
 
@@ -1543,6 +1654,102 @@ AUGUSTINE = [
         "chapter": ("confessions", 10),
         "paragraph": 17,
     },
+    {
+        "slug": "augustine-of-hippo-f80a2bf6",
+        "text": "In these two you have those three graces exemplified: faith believes, hope and love pray.",
+        "chapter": ("enchiridion", 1),
+        "paragraph": 13,
+    },
+    {
+        "slug": "augustine-of-hippo-87986dcb",
+        "text": "The fact that we do not see either what we believe or what we hope for, is all that is common to faith and hope.",
+        "chapter": ("enchiridion", 1),
+        "paragraph": 15,
+    },
+    {
+        "slug": "augustine-of-hippo-78996a5d",
+        "text": "Although, therefore, evil, in so far as it is evil, is not a good; yet the fact that evil as well as good exists, is a good.",
+        "chapter": ("enchiridion", 8),
+        "paragraph": 25,
+    },
+    {
+        "slug": "augustine-of-hippo-a64a90a8",
+        "text": "From what is good, then, evils arose, and except in what is good they do not exist; nor was there any other source from which any evil nature could arise.",
+        "chapter": ("enchiridion", 2),
+        "paragraph": 11,
+    },
+    {
+        "slug": "augustine-of-hippo-f4cae61f",
+        "text": "To me, however, it seems certain that every lie is a sin, though it makes a great difference with what intention and on what subject one lies.",
+        "chapter": ("enchiridion", 2),
+        "paragraph": 19,
+    },
+    {
+        "slug": "augustine-of-hippo-567e0947",
+        "text": "No one, of course, is to be condemned as a liar who says what is false, believing it to be true, because such an one does not consciously deceive, but rather is himself deceived.",
+        "chapter": ("enchiridion", 2),
+        "paragraph": 19,
+    },
+    {
+        "slug": "augustine-of-hippo-1d48b0f6",
+        "text": "After the fall, however, a more abundant exercise of God’s mercy was required, because the will itself had to be freed from the bondage in which it was held by sin and death.",
+        "chapter": ("enchiridion", 9),
+        "paragraph": 19,
+    },
+    {
+        "slug": "augustine-of-hippo-f72c34ba",
+        "text": "As, then, the soul even now finds it impossible to desire unhappiness, so in future it shall be wholly impossible for it to desire sin.",
+        "chapter": ("enchiridion", 9),
+        "paragraph": 17,
+    },
+    {
+        "slug": "augustine-of-hippo-a1a3aac4",
+        "text": "Man, therefore, was thus made upright that, though unable to remain in his uprightness without divine help, he could of his own mere will depart from it.",
+        "chapter": ("enchiridion", 9),
+        "paragraph": 21,
+    },
+    {
+        "slug": "augustine-of-hippo-196b5d19",
+        "text": "No one, then, need hope that after he is dead he shall obtain merit with God which he has neglected to secure here.",
+        "chapter": ("enchiridion", 9),
+        "paragraph": 27,
+    },
+    {
+        "slug": "augustine-of-hippo-111df642",
+        "text": "What goodness of will, what goodness of desire and intention, what good works, had gone before, which made this man worthy to become one person with God?",
+        "chapter": ("enchiridion", 4),
+        "paragraph": 7,
+    },
+    {
+        "slug": "augustine-of-hippo-d1100b98",
+        "text": "The man whom the thunder of this warning does not awaken is not asleep, but dead; and yet so powerful is that voice, that it can awaken even the dead.",
+        "chapter": ("enchiridion", 7),
+        "paragraph": 15,
+    },
+    {
+        "slug": "augustine-of-hippo-daf2b4a0",
+        "text": "For when there is a question as to whether a man is good, one does not ask what he believes, or what he hopes, but what he loves.",
+        "chapter": ("enchiridion", 11),
+        "paragraph": 1,
+    },
+    {
+        "slug": "augustine-of-hippo-e0fb2a79",
+        "text": "We love God now by faith, then we shall love Him through sight.",
+        "chapter": ("enchiridion", 11),
+        "paragraph": 9,
+    },
+    {
+        "slug": "augustine-of-hippo-7df12100",
+        "text": "Of these four different stages the first is before the law, the second is under the law, the third is under grace, and the fourth is in full and perfect peace.",
+        "chapter": ("enchiridion", 11),
+        "paragraph": 3,
+    },
+    {
+        "slug": "augustine-of-hippo-2c5b7319",
+        "text": "Now we love even our neighbor by faith; for we who are ourselves mortal know not the hearts of mortal men.",
+        "chapter": ("enchiridion", 11),
+        "paragraph": 9,
+    },
 ]
 
 JONATHAN_EDWARDS = [
@@ -2173,6 +2380,84 @@ HUDSON_TAYLOR = [
         "chapter": ("separation-and-service", 3),
         "paragraph": 35,
     },
+    {
+        "slug": "hudson-taylor-1f25798f",
+        "text": "How much of prayer there is that begins and ends with the creature, forgetful of the privilege of giving joy to the Creator!",
+        "chapter": ("union-and-communion", 6),
+        "paragraph": 32,
+    },
+    {
+        "slug": "hudson-taylor-fca298ba",
+        "text": "Man's heart is so darkened by the Fall, and by personal sinfulness, that otherwise he would regard sin as a very small matter.",
+        "chapter": ("separation-and-service", 2),
+        "paragraph": 28,
+    },
+    {
+        "slug": "hudson-taylor-d51cda35",
+        "text": "Nearness to God calls for tenderness of conscience, thoughtfulness in service, and implicit obedience.",
+        "chapter": ("separation-and-service", 2),
+        "paragraph": 33,
+    },
+    {
+        "slug": "hudson-taylor-a6c81b90",
+        "text": "The burnt-offering tells us of the perfect and accepted righteousness of Christ, in virtue of which the imperfect believer and his imperfect service are accepted by God.",
+        "chapter": ("separation-and-service", 2),
+        "paragraph": 68,
+    },
+    {
+        "slug": "hudson-taylor-4257638e",
+        "text": "When the Lord blesses His people with peace and plenty, it is His open Heart that moves His loving Hand.",
+        "chapter": ("separation-and-service", 3),
+        "paragraph": 12,
+    },
+    {
+        "slug": "hudson-taylor-292a6824",
+        "text": "The Bible is a supernatural book, a divine revelation: the Holy Spirit is the supernatural, the divine Guide to its meaning.",
+        "chapter": ("separation-and-service", 3),
+        "paragraph": 49,
+    },
+    {
+        "slug": "hudson-taylor-61a35270",
+        "text": "The Holy Spirit is the other Comforter, sent by the Father in Christ's name, that He might abide with the Church for ever.",
+        "chapter": ("separation-and-service", 3),
+        "paragraph": 54,
+    },
+    {
+        "slug": "hudson-taylor-b1a3a6a3",
+        "text": "When sin is put away the Spirit again lifts up His countenance upon us, and peace fills the heart.",
+        "chapter": ("separation-and-service", 3),
+        "paragraph": 56,
+    },
+    {
+        "slug": "hudson-taylor-c92c5138",
+        "text": "God is not hard to please, nor is true human love, for it is a dim reflection of His own.",
+        "chapter": ("separation-and-service", 4),
+        "paragraph": 18,
+    },
+    {
+        "slug": "hudson-taylor-6659df97",
+        "text": "When the Lord Jesus comes again, those, surely, who have stored most in heaven, and have least to leave behind on earth, will render their account with the greatest joy.",
+        "chapter": ("separation-and-service", 4),
+        "paragraph": 27,
+    },
+    {
+        "slug": "hudson-taylor-34852374",
+        "text": "Though we are not our own, it is, alas! possible to live as though we were; devotion to God is still a voluntary thing; hence the differences of attainment among Christians.",
+        "chapter": ("separation-and-service", 2),
+        "paragraph": 5,
+    },
+    {
+        "slug": "hudson-taylor-10b13faf",
+        "text": "Our true self-denial, self-emptying, and giving for Christ's cause practically show our real estimate of the value of the Cross of Christ, our real love for the Christ who was crucified for us.",
+        "chapter": ("separation-and-service", 4),
+        "paragraph": 65,
+    },
+    {
+        "slug": "hudson-taylor-7ac514c2",
+        "text": "Thanks be to God, the illumination of the HOLY GHOST is promised to all who seek for it: what more can we desire?",
+        "chapter": ("union-and-communion", 2),
+        "paragraph": 1,
+    },
 ]
 
 GARETH_EVANS = [
@@ -2334,6 +2619,142 @@ GARETH_EVANS = [
     },
 ]
 
+#: Richard Allen — 6 quotations from his autobiography (the antislavery
+#: address to slaveholders and his address on Christian charity).
+RICHARD_ALLEN = [
+    {
+        "slug": "richard-allen-33f14308",
+        "text": "We wish you to consider, that God himself was the first pleader of the cause of slaves.",
+        "chapter": ("life-experience-gospel-labours", 9),
+        "paragraph": 3,
+    },
+    {
+        "slug": "richard-allen-55587960",
+        "text": "Consider, my brethren, that all we have and are is entrusted to us by Almighty God.",
+        "chapter": ("life-experience-gospel-labours", 11),
+        "paragraph": 16,
+    },
+    {
+        "slug": "richard-allen-79563ce8",
+        "text": "Our blessed Lord has not committed his goods to us as a dead stock, to be boarded up, or to lie unprofitably in our own hands.",
+        "chapter": ("life-experience-gospel-labours", 11),
+        "paragraph": 17,
+    },
+    {
+        "slug": "richard-allen-83c101e1",
+        "text": "In short, the love of this world is a heavy weight upon the soul, which chains her down, and prevents her flight towards heaven.",
+        "chapter": ("life-experience-gospel-labours", 11),
+        "paragraph": 25,
+    },
+    {
+        "slug": "richard-allen-31ab9496",
+        "text": "To be slow and uneasy at almsgiving, argues a strong distrust in providence, either that God cannot or will not make up to us what we thus bestow.",
+        "chapter": ("life-experience-gospel-labours", 11),
+        "paragraph": 28,
+    },
+    {
+        "slug": "richard-allen-009d57ea",
+        "text": "All objections to charitable contributions may well be supposed to arise from covetousness, or an unwillingness to part with the present penny.",
+        "chapter": ("life-experience-gospel-labours", 11),
+        "paragraph": 33,
+    },
+]
+
+#: Amanda Berry Smith — 15 quotations from her Autobiography (faith,
+#: sanctification, prayer, trust, and temperance).
+AMANDA_BERRY_SMITH = [
+    {
+        "slug": "amanda-berry-smith-a27a891a",
+        "text": "In my heart was peace, but I did not know how to exercise faith as I should.",
+        "chapter": ("amanda-smith-autobiography", 4),
+        "paragraph": 12,
+    },
+    {
+        "slug": "amanda-berry-smith-6ba0da7f",
+        "text": "Thank God for real, practical, inright, outright, downright common sense; that is all I think people need on the color line.",
+        "chapter": ("amanda-smith-autobiography", 6),
+        "paragraph": 2,
+    },
+    {
+        "slug": "amanda-berry-smith-d3999568",
+        "text": "What else ought we to do, when we bring our friends, but to sink into the will of God, and put them into His hands, and trust Him?",
+        "chapter": ("amanda-smith-autobiography", 8),
+        "paragraph": 45,
+    },
+    {
+        "slug": "amanda-berry-smith-c5cbc2c8",
+        "text": "How often when we are passing through deep trials we look for human sympathy, and lean on the human more than on God.",
+        "chapter": ("amanda-smith-autobiography", 8),
+        "paragraph": 59,
+    },
+    {
+        "slug": "amanda-berry-smith-3649ad8b",
+        "text": "Learn to know the beauty of love and power and sympathy of Jesus Christ, our Lord and Savior.",
+        "chapter": ("amanda-smith-autobiography", 10),
+        "paragraph": 33,
+    },
+    {
+        "slug": "amanda-berry-smith-e93eed38",
+        "text": "The Gospel of Jesus was so full and practical, and with good, common sense it seemed to cover all my need.",
+        "chapter": ("amanda-smith-autobiography", 10),
+        "paragraph": 33,
+    },
+    {
+        "slug": "amanda-berry-smith-3fe22a05",
+        "text": "How glad I am that God nowhere teaches that men have to go into filth and indolence in order to be holy.",
+        "chapter": ("amanda-smith-autobiography", 24),
+        "paragraph": 18,
+    },
+    {
+        "slug": "amanda-berry-smith-a0c1cb51",
+        "text": "God gives us His Spirit, but we must walk in the light of the Spirit; then we will not fulfill the lust of the flesh, going in our own way.",
+        "chapter": ("amanda-smith-autobiography", 24),
+        "paragraph": 33,
+    },
+    {
+        "slug": "amanda-berry-smith-a6a638e8",
+        "text": "Strong drink does not only destroy the soul and body of men, but robs them of every comfort of life.",
+        "chapter": ("amanda-smith-autobiography", 27),
+        "paragraph": 113,
+    },
+    {
+        "slug": "amanda-berry-smith-f22720ef",
+        "text": "The very best chance for growing in grace, really and successfully, is to get the cleansing and all obstruction to growth out.",
+        "chapter": ("amanda-smith-autobiography", 34),
+        "paragraph": 132,
+    },
+    {
+        "slug": "amanda-berry-smith-6316c853",
+        "text": "How I do thank the Lord when it is my privilege to sing and pray and cheer the weary traveler along the lonesome road.",
+        "chapter": ("amanda-smith-autobiography", 28),
+        "paragraph": 108,
+    },
+    {
+        "slug": "amanda-berry-smith-a8ab3c92",
+        "text": "God was to separate me unto Himself and I must be weaned.",
+        "chapter": ("amanda-smith-autobiography", 13),
+        "paragraph": 23,
+    },
+    {
+        "slug": "amanda-berry-smith-7de9680d",
+        "text": "The burden rolled away; I felt it when it left me, and a flood of light and joy swept through my soul such as I had never known before.",
+        "chapter": ("amanda-smith-autobiography", 6),
+        "paragraph": 48,
+    },
+    {
+        "slug": "amanda-berry-smith-cf826ddb",
+        "text": "God showed me I was a dreadful sinner, but still I wanted to have my own way about it.",
+        "chapter": ("amanda-smith-autobiography", 6),
+        "paragraph": 17,
+    },
+    {
+        "slug": "amanda-berry-smith-afbc34b8",
+        "text": "How I have lived through it I cannot tell, but the blessedness of the love and the peace and power I can never describe.",
+        "chapter": ("amanda-smith-autobiography", 9),
+        "paragraph": 32,
+    },
+]
+
 QUOTES = {
     "charles-h-spurgeon": SPURGEON,
     "thomas-a-kempis": THOMAS_A_KEMPIS,
@@ -2345,4 +2766,6 @@ QUOTES = {
     "george-muller": GEORGE_MULLER,
     "hudson-taylor": HUDSON_TAYLOR,
     "gareth-evans": GARETH_EVANS,
+    "richard-allen": RICHARD_ALLEN,
+    "amanda-berry-smith": AMANDA_BERRY_SMITH,
 }

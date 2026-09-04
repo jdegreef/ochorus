@@ -1,3 +1,26 @@
+// prerender refresh 2026-09-04: eight Hindi sermons — free-grace (#1109),
+// the-power-of-stillness (#1110), christ-all-in-all (#1111),
+// aggressive-christianity (#1112), salvation-by-faith (#1113),
+// the-possibilities-of-faith (#1114), the-golden-key-of-prayer (#1115),
+// eight-i-wills-of-christ (#1116). Rebuilds /hi/sermons, taking the shelf from
+// 4 to 12. `hi` still seeds as DRAFT, so these pages are built but not
+// advertised (no sitemap or hreflang entry) — the touch is made anyway so that
+// taking the language live is a switch in the admin rather than a switch plus a
+// deploy nobody remembers is needed.
+// prerender refresh 2026-09-02 (batch3b): six Luganda Spurgeon/Taylor sermons —
+// blessed-adversity (#1340), sweet-comfort-for-feeble-saints (#1341),
+// comfort-for-the-desponding (#1342), the-sweet-uses-of-adversity (#1343),
+// the-ravens-cry (#1344), christ-precious-to-believers (#1345). Rebuilds /lg/sermons.
+// prerender refresh 2026-09-02: five new sermon editions — aggressive-christianity.es
+// (Booth), blessed-adversity.es (Hudson Taylor), salvation-by-faith.es & .pt
+// (Wesley), the-dying-thief.pt (Moody). Rebuilds the /es and /pt sermon shelves.
+// With these, SPANISH SERMONS ARE COMPLETE at 29/29; Portuguese goes 19 -> 21.
+// No queued jobs for these — es had none open at all and pt only plan jobs, so
+// they were picked from the untranslated gap rather than the queue.
+//
+// prerender refresh 2026-09-02 (batch2): three new sw sermons — blessed-adversity
+// (Hudson Taylor, #867), salvation-by-faith (Wesley, #868), the-dying-thief
+// (Moody, #869). Rebuilds the /sw/sermons shelf.
 // prerender refresh 2026-09-02: five new sermon editions — rest.sw & rest.lg
 // (Moody, jobs #1303/#1216), pauls-first-prayer.lg (Spurgeon, #1215),
 // salvation-by-faith.lg (Wesley, #1214), aggressive-christianity.lg (Booth,

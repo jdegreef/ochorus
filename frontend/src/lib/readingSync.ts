@@ -1,4 +1,5 @@
 import { browser } from '$app/environment';
+import { undo } from './undo.svelte';
 import { apiFetch } from './api';
 import type { PlanState } from './planProgress.svelte';
 import {
@@ -44,6 +45,8 @@ interface ServerProgress {
 	chapter_order: number;
 	paragraph_index: number;
 	updated_at: string;
+	/** The writing device's own clock; null only from a client that sent none. */
+	client_updated_at?: string | null;
 }
 interface ServerMarks {
 	kind: WorkKind;
@@ -166,6 +169,35 @@ class ReadingSync {
 				.then(() => this.#markSynced())
 				.catch(() => {});
 		});
+	}
+
+	/**
+	 * The account's synced position in one work — what another device last
+	 * pushed — or null when there is none, or we are offline or signed out.
+	 * A read, so no debounce; `at` is the writing device's own clock (the
+	 * server's when an old client sent none), comparable to a local record's.
+	 */
+	async fetchProgress(kind: WorkKind, slug: string): Promise<ProgressRecord | null> {
+		if (!this.signedIn || !browser) return null;
+		try {
+			const r = await apiFetch<{
+				chapter_order: number;
+				paragraph_index: number;
+				language: string;
+				updated_at: string;
+				client_updated_at: string | null;
+			}>(`/api/reading/progress/${slug}/${this.#kindQuery(kind)}`);
+			const at = Date.parse(r.client_updated_at ?? r.updated_at);
+			if (!Number.isFinite(at)) return null;
+			return {
+				order: r.chapter_order,
+				paragraph_index: r.paragraph_index,
+				language: r.language,
+				at
+			};
+		} catch {
+			return null;
+		}
 	}
 
 	pushMarks(
@@ -384,6 +416,8 @@ class ReadingSync {
 	/** Cancel in-flight debounced pushes (they'd 401 after sign-out), remove the
 	 * given keys, and tell open views the cache was emptied underneath them. */
 	#wipe(keys: readonly string[]) {
+		// A pending Undo must not resurrect what was just deliberately erased.
+		undo.dismiss();
 		if (!browser) return;
 		for (const timer of this.#timers.values()) clearTimeout(timer);
 		this.#timers.clear();
@@ -402,7 +436,10 @@ class ReadingSync {
 				order: p.chapter_order,
 				paragraph_index: p.paragraph_index,
 				language: p.language,
-				at: Date.parse(p.updated_at) || Date.now()
+				// The writing device's clock, like every other `at` — the server's
+				// receive time is always later, and a local record stamped with it
+				// would out-date every other device's genuine reading.
+				at: Date.parse(p.client_updated_at ?? p.updated_at) || Date.now()
 			};
 		}
 		const marks: MarksStore = {};

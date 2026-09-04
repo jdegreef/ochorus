@@ -267,6 +267,27 @@ def extract_web_sermon(html: str, title: str, body_starts: str = "") -> str:
         body,
         flags=re.I,
     ).strip()
+    # gospeltruth.net appends a fixed trailer AFTER the sermon: a "Return to
+    # <year> Index Page" link, a copyright line, a nav menu, then a
+    # certification-seal table — several elements, so the single-element nav
+    # rules above can't reach past it. Cut from the first of those markers to the
+    # end. None occurs in sermon prose, so it can only match the trailer.
+    body = re.sub(
+        r"<p>\s*(?:<[^>]+>\s*)*(?:Return to [^<]*Index Page"
+        r"|Copyright\b[^<]*Gospel Truth"
+        r"|This file is CERTIFIED BY GOSPEL TRUTH).*$",
+        "",
+        body,
+        flags=re.I | re.S,
+    ).strip()
+    # A bare trailing "TOP" jump link (sermons.martinluther.us and others).
+    body = re.sub(r"<p>\s*TOP\s*</p>\s*$", "", body, flags=re.I).strip()
+    # BibleHub appends its own chrome after a sermon: a "Parallel Verses"
+    # cross-reference block (and ad-slot comment paragraphs). Cut from it to the
+    # end — the phrase is a template label, never sermon prose.
+    body = re.sub(r"(?:<hr/>\s*)?Parallel Verses.*$", "", body, flags=re.I | re.S).strip()
+    # A trailing volume-end marker from a collected edition ("END OF VOL. I.").
+    body = re.sub(r"<p>\s*END OF VOL\.?\s*[IVXLC0-9]*\.?\s*</p>\s*$", "", body, flags=re.I).strip()
     return body
 
 

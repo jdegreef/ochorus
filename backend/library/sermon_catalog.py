@@ -50,6 +50,8 @@ SERMON_AUTHORS: dict[str, AuthorEntry] = {
 
 _CCEL = "https://ccel.org/ccel/spurgeon/"
 _WESLEY = "https://ccel.org/ccel/wesley/sermons/"
+_WHITEFIELD = "https://ccel.org/ccel/whitefield/sermons/"
+_EDWARDS = "https://ccel.org/ccel/edwards/sermons/"
 
 SERMONS: list[SermonEntry] = [
     # --- Assurance & the character of God -----------------------------------
@@ -292,6 +294,41 @@ SERMONS: list[SermonEntry] = [
         scripture_ref="Mark 16:15",
         body_starts="I WAS thinking, while I was reading the lesson",
     ),
+    # Three more from the same 1880 "Aggressive Christianity" volume, so the
+    # first woman on the shelf has more than one address. The verse sits in the
+    # source's Geneva-font masthead block (not a <p>), so a web import keeps it
+    # in scripture_ref and starts the body at `body_starts` — the fixture is
+    # authoritative regardless (see backend/CLAUDE.md; sermon_catalog is
+    # import-time config the fixture supersedes).
+    SermonEntry(
+        "the-worlds-need",
+        "The World's Need",
+        "catherine-booth",
+        "web",
+        "https://www.gospeltruth.net/booth/cath_booth/agressive_christianity/cbooth_9_worldsneed.htm",
+        # Source masthead prints "Matthew xxi. 23", but the words it quotes
+        # ("Son, go work today in my vineyard") are Matthew 21:28.
+        scripture_ref="Matthew 21:28; Luke 14:23",
+        body_starts="WE might have enumerated other texts",
+    ),
+    SermonEntry(
+        "witnessing-for-christ",
+        "Witnessing for Christ",
+        "catherine-booth",
+        "web",
+        "https://www.gospeltruth.net/booth/cath_booth/agressive_christianity/cbooth_7_witnesses.htm",
+        scripture_ref="Acts 1:8; Acts 5:32",
+        body_starts="AGAIN and again the same vocation and commission",
+    ),
+    SermonEntry(
+        "the-holy-ghost",
+        "The Holy Ghost",
+        "catherine-booth",
+        "web",
+        "https://www.gospeltruth.net/booth/cath_booth/agressive_christianity/cbooth_10_holyghost.htm",
+        scripture_ref="Luke 24:49; Acts 1:8",
+        body_starts="FRIENDS who were present at former services",
+    ),
     # John Wesley — the first pre-19th-century sermon in the library, and the
     # opening of the largest untapped seam here: the 44 Standard Sermons are
     # his primary corpus, all public domain on CCEL.
@@ -310,5 +347,271 @@ SERMONS: list[SermonEntry] = [
         # CCEL renders it "Eph. 2:8"; every other sermon on the shelf stores a
         # full book name, and this string is what the reader displays.
         scripture_ref="Ephesians 2:8",
+    ),
+    # Three more Standard Sermons, so Wesley has more than one on the shelf.
+    SermonEntry(
+        "the-almost-christian",
+        "The Almost Christian",
+        "john-wesley",
+        "ccel",
+        _WESLEY + "sermons.v.ii.html",
+        scripture_ref="Acts 26:28",
+        preached_on="1741-07-25",
+    ),
+    # The shipped fixture repairs one CCEL 1872-text slip by hand — "whether
+    # we;' eat" → "whether we eat"; a re-import would reintroduce it, so the
+    # fixture is authoritative here.
+    SermonEntry(
+        "the-circumcision-of-the-heart",
+        "The Circumcision of the Heart",
+        "john-wesley",
+        "ccel",
+        _WESLEY + "sermons.v.xvii.html",
+        scripture_ref="Romans 2:29",
+        preached_on="1733-01-01",
+    ),
+    # CCEL appends Charles Wesley's hymn "Catholic Love" ("added in some
+    # editions") in brackets after the sermon; the shipped fixture drops that
+    # editorial appendix, which extract() does not — so the fixture wins.
+    SermonEntry(
+        "catholic-spirit",
+        "Catholic Spirit",
+        "john-wesley",
+        "ccel",
+        _WESLEY + "sermons.v.xxxix.html",
+        scripture_ref="2 Kings 10:15",
+    ),
+    # --- One famous sermon each for four preachers who had none --------------
+    # These authors already carry a bio (and some a book that is NOT a sermon
+    # collection); a single landmark sermon gives their preaching a home.
+    # Finney's CCEL sermons render via a JS reader (a raw fetch gets only
+    # "loading…"); the same sermon is served as static HTML on gospeltruth.net
+    # (already the source for Catherine Booth's sermon).
+    SermonEntry(
+        "gods-love-for-a-sinning-world",
+        "God's Love for a Sinning World",
+        "charles-finney",
+        "web",
+        "https://www.gospeltruth.net/1853OE/530622_gods_love.htm",
+        scripture_ref="John 3:16",
+        body_starts="Sin is the most expensive thing in the universe",
+    ),
+    SermonEntry(
+        "against-eutropius",
+        "Against Eutropius",
+        "john-chrysostom",
+        "ccel",
+        "https://ccel.org/ccel/schaff/npnf109.xv.iii.html",
+        scripture_ref="Ecclesiastes 1:2",
+    ),
+    # Luther has no standalone-page PD sermon on CCEL, and the Gutenberg Lenker
+    # Postil (28464) sets every sermon AND its subsections at the same <h4>, so
+    # the section importer can't bound one sermon. The Lenker translation is
+    # served one-sermon-per-page (public domain) at sermons.martinluther.us.
+    SermonEntry(
+        "pauls-praise-of-christian-love",
+        "Paul's Praise of Christian Love",
+        "martin-luther",
+        "web",
+        "https://sermons.martinluther.us/sermons33.html",
+        scripture_ref="1 Corinthians 13",
+        body_starts="1. Paul's purpose in this chapter is to silence",
+    ),
+    # Calvin's sermons are on neither CCEL (commentaries only) nor Gutenberg as
+    # a clean single section (the Kleiser anthology, id 11981, repeats the
+    # heading for the biographical note and the sermon). BibleHub carries the
+    # same public-domain Kleiser translation as one page.
+    SermonEntry(
+        "enduring-persecution-for-christ",
+        "Enduring Persecution for Christ",
+        "john-calvin",
+        "web",
+        "https://biblehub.com/sermons/auth/various/calvin_--_enduring_persecution_for_christ.htm",
+        scripture_ref="Hebrews 13:13",
+        body_starts="All the exhortations which can be given us to suffer patiently",
+    ),
+    # --- George Whitefield: six from CCEL's 59-sermon edition ------------------
+    # Whitefield had a bio and a book but no sermon. CCEL's edition differs from
+    # Wesley's: an <h1> title, no footnotes, and the scripture INSIDE the first
+    # paragraph as `<a class="scripRef">Ref</a> — “verse”` — so scripture_ref is
+    # pinned here rather than trusted to the masthead parser. Two sermons (Wisdom,
+    # Intercession) open straight into prose with no heading at all; Intercession's
+    # text is the verse it calls "the text": “Brethren, pray for us” (1 Thess 5:25).
+    SermonEntry(
+        "the-method-of-grace",
+        "The Method of Grace",
+        "george-whitefield",
+        "ccel",
+        _WHITEFIELD + "sermons.lx.html",
+        scripture_ref="Jeremiah 6:14",
+    ),
+    SermonEntry(
+        "marks-of-a-true-conversion",
+        "Marks of a True Conversion",
+        "george-whitefield",
+        "ccel",
+        _WHITEFIELD + "sermons.xxv.html",
+        scripture_ref="Matthew 18:3",
+    ),
+    SermonEntry(
+        "walking-with-god",
+        "Walking with God",
+        "george-whitefield",
+        "ccel",
+        _WHITEFIELD + "sermons.iv.html",
+        scripture_ref="Genesis 5:24",
+    ),
+    SermonEntry(
+        "christ-the-believers-wisdom",
+        "Christ the Believer's Wisdom, Righteousness, Sanctification and Redemption",
+        "george-whitefield",
+        "ccel",
+        _WHITEFIELD + "sermons.xlvi.html",
+        scripture_ref="1 Corinthians 1:30",
+    ),
+    SermonEntry(
+        "the-lord-our-righteousness",
+        "The Lord Our Righteousness",
+        "george-whitefield",
+        "ccel",
+        _WHITEFIELD + "sermons.xvi.html",
+        scripture_ref="Jeremiah 23:6",
+    ),
+    SermonEntry(
+        "intercession-every-christians-duty",
+        "Intercession Every Christian's Duty",
+        "george-whitefield",
+        "ccel",
+        _WHITEFIELD + "sermons.lvi.html",
+        scripture_ref="1 Thessalonians 5:25",
+    ),
+    # --- Jonathan Edwards: five from CCEL's collection --------------------------
+    # Edwards had three books and a bio but no sermon. CCEL's Edwards pages were
+    # transcribed piecemeal and every masthead differs (title as <h1> or <h2>,
+    # "A Sermon / by / Jonathan Edwards" rows, a bracketed <h5> preaching note, and
+    # the scripture in a <blockquote>, a <p>, an <h3> or an <h4>, verse before OR
+    # after the reference) — so scripture_ref and preached_on are pinned here
+    # rather than trusted to the masthead parser. All five are wholly
+    # straight-quoted (a consistent style; QuoteStyleTests only rejects a mix).
+    SermonEntry(
+        "sinners-in-the-hands-of-an-angry-god",
+        "Sinners in the Hands of an Angry God",
+        "jonathan-edwards",
+        "ccel",
+        _EDWARDS + "sermons.sinners.html",
+        scripture_ref="Deuteronomy 32:35",
+        preached_on="1741-07-08",
+    ),
+    SermonEntry(
+        "a-divine-and-supernatural-light",
+        "A Divine and Supernatural Light",
+        "jonathan-edwards",
+        "ccel",
+        _EDWARDS + "sermons.supernatural_light.html",
+        scripture_ref="Matthew 16:17",
+    ),
+    SermonEntry(
+        "god-glorified-in-mans-dependence",
+        "God Glorified in Man's Dependence",
+        "jonathan-edwards",
+        "ccel",
+        # sermons.dependence.html is a wrapper; .1 is an advertisement, .2 the sermon.
+        _EDWARDS + "sermons.dependence.2.html",
+        scripture_ref="1 Corinthians 1:29-31",
+        preached_on="1731-07-08",
+    ),
+    SermonEntry(
+        "the-excellency-of-christ",
+        "The Excellency of Christ",
+        "jonathan-edwards",
+        "ccel",
+        _EDWARDS + "sermons.excellency.html",
+        scripture_ref="Revelation 5:5-6",
+    ),
+    SermonEntry(
+        "safety-fulness-and-sweet-refreshment-in-christ",
+        "Safety, Fulness, and Sweet Refreshment in Christ",
+        "jonathan-edwards",
+        "ccel",
+        _EDWARDS + "sermons.safety.html",
+        scripture_ref="Isaiah 32:2",
+    ),
+    # --- Tier 2: topping up the authors stuck at one or two sermons -----------
+    # Finney: two from CCEL's "Lectures on Revivals of Religion" (a <p class="text">
+    # "Text.—verse—ref." masthead, footnotes) and the 1836 sermon that made him
+    # famous, from gospeltruth (the Booth-shaped page). Refs pinned throughout.
+    SermonEntry(
+        "prevailing-prayer",
+        "Prevailing Prayer",
+        "charles-finney",
+        "ccel",
+        "https://ccel.org/ccel/finney/revivals/revivals.iii.iv.html",
+        scripture_ref="James 5:16",
+    ),
+    SermonEntry(
+        "the-spirit-of-prayer",
+        "The Spirit of Prayer",
+        "charles-finney",
+        "ccel",
+        "https://ccel.org/ccel/finney/revivals/revivals.iii.vi.html",
+        scripture_ref="Romans 8:26-27",
+    ),
+    SermonEntry(
+        "sinners-bound-to-change-their-own-hearts",
+        "Sinners Bound to Change Their Own Hearts",
+        "charles-finney",
+        "web",
+        "https://www.gospeltruth.net/1836SOIS/01sois_sinners_bound.htm",
+        scripture_ref="Ezekiel 18:31",
+        body_starts="These words were addressed to the house of Israel",
+    ),
+    # Luther: two more from the Lenker Postil site (see pauls-praise-of-christian-love).
+    # The Good Friday sermon meditates on the Passion narrative and carries no text.
+    SermonEntry(
+        "the-appearing-of-the-grace-of-god",
+        "The Appearing of the Grace of God",
+        "martin-luther",
+        "web",
+        "https://sermons.martinluther.us/sermons14.html",
+        scripture_ref="Titus 2:11-15",
+        body_starts="1. It is written in the book of Nehemiah",
+    ),
+    SermonEntry(
+        "how-to-contemplate-christs-holy-sufferings",
+        "How to Contemplate Christ's Holy Sufferings",
+        "martin-luther",
+        "web",
+        "https://sermons.martinluther.us/sermons45.html",
+        body_starts="1. In the first place, some reflect",
+    ),
+    # Chrysostom: NPNF vol. 9 on CCEL, like against-eutropius. A treatise-sermon
+    # written from exile; it has no scripture text.
+    SermonEntry(
+        "no-one-can-harm-the-man-who-does-not-injure-himself",
+        "No One Can Harm the Man Who Does Not Injure Himself",
+        "john-chrysostom",
+        "ccel",
+        "https://ccel.org/ccel/schaff/npnf109.xvi.iii.html",
+    ),
+    # Hudson Taylor: two more studies from "A Ribband of Blue" (PG 23438), the
+    # volume blessed-adversity came from; <h3>-delimited, so the section importer
+    # bounds them. The epigraph sits in a <div class="c1"> before the prose.
+    SermonEntry(
+        "under-the-shepherds-care",
+        "Under the Shepherd's Care",
+        "hudson-taylor",
+        "gutenberg",
+        "23438",
+        section="Under the Shepherd's Care.",
+        scripture_ref="1 Peter 2:25",
+    ),
+    SermonEntry(
+        "coming-to-the-king",
+        "Coming to the King",
+        "hudson-taylor",
+        "gutenberg",
+        "23438",
+        section="Coming to the King.",
+        scripture_ref="1 Kings 10:13",
     ),
 ]

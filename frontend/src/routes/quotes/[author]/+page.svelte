@@ -3,7 +3,7 @@
 	import { groupQuotes, quoteHref, workHref } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { hueForBirthYear } from '$lib/eras';
-	import { jsonLd, breadcrumb, hreflangFor, absUrl } from '$lib/seo';
+	import { jsonLd, breadcrumbLd, hreflangFor, absUrl } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 
@@ -25,7 +25,7 @@
 	const canonical = $derived(`${SITE_URL}${path}`);
 	const hreflang = $derived(hreflangFor(path, ['en']));
 
-	const title = $derived(`${page.author.name} — quotes, with sources · Ochorus`);
+	const title = $derived(`${page.author.name} — quotes, with sources — Ochorus`);
 	const description = $derived(
 		`${page.quotes.length} quotations from ${page.author.name}, each one traced to the ` +
 			'book, chapter and paragraph it comes from — and linked to the full text, free to read.'
@@ -39,9 +39,7 @@
 		{ name: 'Quotes', href: '/quotes/' },
 		{ name: page.author.name, href: path }
 	]);
-	const crumbsLd = $derived(
-		jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))))
-	);
+	const crumbsLd = $derived(breadcrumbLd(crumbs));
 
 	// Share card: the author's own portrait when we have one, so a shared quote
 	// page wears the face it is about; otherwise the branded /quotes section card
@@ -130,7 +128,7 @@
      reason is on this page: at 48rem a quotation ran about 95 characters to
      the line, well past the 45-75 an eye tracks comfortably. Narrowing it and
      setting the quotation a step larger (below) lands at roughly 67. -->
-<div class="page-col px-5 py-6">
+<div class="page-col px-5 py-10">
 	<Breadcrumb items={crumbs} />
 
 	<header class="mb-6">

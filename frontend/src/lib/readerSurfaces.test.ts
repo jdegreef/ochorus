@@ -64,3 +64,38 @@ describe('reading surfaces only offer the layout switch where it works', () => {
 		expect(src, 'the layout block should be guarded by {#if layout}').toMatch(/\{#if layout\}/);
 	});
 });
+
+/**
+ * Same rule for the Margins group. Only the chapter reader's article consumes
+ * `--reading-margin` (its `.reading-article` padding); on a sermon or biography
+ * the control would persist a pref and change nothing. And page mode zeroes the
+ * article padding, so the group must also hide there.
+ */
+describe('reading surfaces only offer the Margins group where it works', () => {
+	it('the chapter reader consumes --reading-margin AND passes `margins`', () => {
+		const src = read('routes/books/[slug]/[order]/+page.svelte');
+		expect(src, 'should consume --reading-margin').toMatch(/var\(--reading-margin/);
+		expect(src, 'should pass `margins` to <ReaderControls>').toMatch(
+			/<ReaderControls[^>]*\bmargins\b/
+		);
+	});
+
+	it.each(SURFACES.filter((s) => !s.paged))(
+		'$label does NOT offer a Margins group it cannot honour',
+		({ file }) => {
+			const src = read(file);
+			expect(src, `${file}: does not consume --reading-margin`).not.toMatch(/--reading-margin/);
+			expect(src, `${file}: must not pass \`margins\``).not.toMatch(
+				/<ReaderControls[^>]*\bmargins\b/
+			);
+		}
+	);
+
+	it('ReaderControls hides the Margins group by default and in page mode', () => {
+		const src = read('lib/components/ReaderControls.svelte');
+		expect(src, 'the `margins` prop should default to false').toMatch(/margins = false/);
+		expect(src, 'the group should be guarded by margins && !paged').toMatch(
+			/\{#if margins && !readerPrefs\.paged\}/
+		);
+	});
+});

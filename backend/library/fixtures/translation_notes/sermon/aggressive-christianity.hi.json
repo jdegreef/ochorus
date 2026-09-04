@@ -1,0 +1,123 @@
+{
+ "kind": "sermon",
+ "slug": "aggressive-christianity",
+ "language": "hi",
+ "job_issue": 1112,
+ "pull_request": 1422,
+ "references": [
+  {
+   "reference": "Psalm 119:136",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 26:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 8:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 10:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Kings 20:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 11:37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jude 1:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 24:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 14:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremiah 2:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 21:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 9:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 11:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 3:7",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "1 John 3:8",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Revelation 11:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "Acts 26:18",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "2 Corinthians 5:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 14:23",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Matthew 27:42",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 22
+  }
+ ]
+}

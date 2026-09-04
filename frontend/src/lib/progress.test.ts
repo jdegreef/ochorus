@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { saveProgress, saveScrollAnchor, getProgressRecord } from './progress';
 
 // The account mirror is a no-op in these unit tests — we only assert the local
@@ -28,5 +28,37 @@ describe('bookmark deep-link resume point (review bug #16)', () => {
 		saveProgress('humility', 3, 'en'); // records 42
 		saveProgress('humility', 3, 'en'); // a second open must not clobber it
 		expect(getProgressRecord('humility')?.paragraph_index).toBe(42);
+	});
+});
+
+describe('`at` means when the position last changed', () => {
+	beforeEach(() => {
+		localStorage.clear();
+		vi.useFakeTimers();
+	});
+	afterEach(() => vi.useRealTimers());
+
+	it('a bare re-open of the same spot leaves the record untouched', () => {
+		vi.setSystemTime(1_000_000);
+		saveProgress('humility', 3, 'en');
+		saveScrollAnchor('humility', 3, 12);
+		const before = getProgressRecord('humility');
+		expect(before).toMatchObject({ order: 3, paragraph_index: 12, at: 1_000_000 });
+
+		vi.setSystemTime(2_000_000);
+		saveProgress('humility', 3, 'en'); // opened again, not moved
+		saveScrollAnchor('humility', 3, 12); // the restore lands where it was
+		expect(getProgressRecord('humility')).toEqual(before);
+	});
+
+	it('moving on re-stamps it', () => {
+		vi.setSystemTime(1_000_000);
+		saveProgress('humility', 3, 'en');
+		vi.setSystemTime(2_000_000);
+		saveScrollAnchor('humility', 3, 14);
+		expect(getProgressRecord('humility')?.at).toBe(2_000_000);
+		vi.setSystemTime(3_000_000);
+		saveProgress('humility', 4, 'en');
+		expect(getProgressRecord('humility')).toMatchObject({ order: 4, at: 3_000_000 });
 	});
 });

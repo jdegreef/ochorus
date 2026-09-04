@@ -11,9 +11,11 @@
 		saveScrollAnchor,
 		getProgressRecord
 	} from '$lib/progress';
-	import { readerPrefs } from '$lib/readerPrefs.svelte';
+	import { readerPrefs, MARGIN } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { marks } from '$lib/marks.svelte';
+	import SourceBadge from '$lib/components/SourceBadge.svelte';
+	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import { bookmarks } from '$lib/bookmarks.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
@@ -29,13 +31,18 @@
 	} from '$lib/reading';
 	import { pageOfOffset } from '$lib/pageMath';
 	import { tapTurn, swipeTurn, dampDrag } from '$lib/pageGestures';
+	import { fetchSyncedProgress } from '$lib/progress';
+	import { auth } from '$lib/auth.svelte';
+	import { syncedAhead, type Position } from '$lib/resumeSync';
+	import { paceDelta, paragraphWordCounts, type PaceSample } from '$lib/pace';
+	import { readingPace } from '$lib/readingPace.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import { define } from '$lib/define.svelte';
 	import { scripture } from '$lib/scripture.svelte';
 	import { createReaderText } from '$lib/readerText.svelte';
 	import ReaderOverlays from '$lib/components/ReaderOverlays.svelte';
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
-	import { jsonLd, hreflangFor } from '$lib/seo';
+	import { jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
 	import { localizeHref } from '$lib/href';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import Seo from '$lib/components/Seo.svelte';
@@ -60,6 +67,16 @@
 	const seoPath = $derived(`/books/${slug}/${chapter.order}/`);
 	const canonical = $derived(`${SITE_URL}${localizeHref(seoPath)}`);
 	const hreflang = $derived(hreflangFor(seoPath, chapter.available_languages));
+
+	// One trail feeds both the visible <Breadcrumb> and the JSON-LD (the reader
+	// had a hand-rolled nav Books › Author › Book and no BreadcrumbList at all).
+	const crumbs = $derived([
+		{ name: t('common.home'), href: '/' },
+		{ name: t('nav.books'), href: '/books' },
+		{ name: chapter.book_title, href: `/books/${slug}` },
+		{ name: chapterName(chapter.order, chapter.title), href: `/books/${slug}/${chapter.order}` }
+	]);
+	const crumbsLd = $derived(breadcrumbLd(crumbs));
 	const metaDescription = $derived(
 		chapter.body_html
 			.replace(/<[^>]+>/g, ' ')
@@ -117,6 +134,111 @@
 	let tocOpen = $state(false);
 	let searchOpen = $state(false);
 	let notesOpen = $state(false);
+
+	// The next chapter's opening line, for the "up next" card at the chapter's
+	// end. Captured from the idle prefetch below (which already fetches that
+	// chapter to warm the cache), so it costs no extra request.
+	let nextPreview = $state('');
+
+	/** The first paragraph's text, cheaply: one regex over the head of the HTML,
+	 *  no DOM parse of a whole chapter for a single line. Entities that the
+	 *  sanitizer leaves in prose are unescaped; anything else is rare enough. */
+	function openingLine(html: string): string {
+		const m = /<p\b[^>]*>([\s\S]*?)<\/p>/i.exec(html.slice(0, 8000));
+		return (m?.[1] ?? '')
+			.replace(/<[^>]+>/g, '')
+			.replace(/&amp;/g, '&')
+			.replace(/&quot;/g, '"')
+			.replace(/&#39;/g, "'")
+			.replace(/&nbsp;/g, ' ')
+			.replace(/\s+/g, ' ')
+			.trim()
+			.slice(0, 120);
+	}
+
+	// "Back to where you were": the resume point a ?p= deep-link (a bookmark,
+	// search hit or note) jumped AWAY from. Captured before the jump overwrites
+	// the book's resume record, offered as a pill for a short while, then let go.
+	let returnTo = $state<{ order: number; p: number } | null>(null);
+	let returnTimer: ReturnType<typeof setTimeout> | undefined;
+	// The one arrival that must NOT offer a way back: a jump this page made
+	// itself (the pill, or the synced-position offer). That arrival carries a
+	// ?p= too, and would otherwise read the spot just left as "prior" and offer
+	// the reverse jump — a pill that never goes away. Keyed by target rather
+	// than a boolean because the chapter effect can run more than once while a
+	// navigation settles; only the run that actually lands there consumes it.
+	let ownJumpTarget = '';
+	function jumpTo(to: { order: number; p: number }) {
+		ownJumpTarget = `${to.order}:${to.p}`;
+		const href = chapterHref(to.order);
+		goto(`${href}${href.includes('?') ? '&' : '?'}p=${to.p}`);
+	}
+	function offerReturn(to: { order: number; p: number }) {
+		returnTo = to;
+		clearTimeout(returnTimer);
+		returnTimer = setTimeout(() => (returnTo = null), 12000);
+	}
+	function goBackToPrior() {
+		const to = returnTo;
+		returnTo = null;
+		if (to) jumpTo(to);
+	}
+
+	// "Continue where you left off on your other device": the account's synced
+	// position when it is newer than, and meaningfully ahead of, where this
+	// device is opening (see $lib/resumeSync). One ask per book per page-life:
+	// taken, dismissed, or left alone for a while, it is not asked again — a
+	// fresh pill on every chapter turn would be a nag, and once taken the
+	// reader is where the other device was.
+	let syncOffer = $state<Position | null>(null);
+	let syncTimer: ReturnType<typeof setTimeout> | undefined;
+	const syncDismissed = new Set<string>();
+	// What the chapter effect asks for, answered by the effect below once the
+	// session has settled: on a cold load (a deep link, the PWA icon) the
+	// session resolves AFTER the first chapter opens, and an ask made before
+	// that is answered "signed out". `local` is this device's record as read
+	// before the open touched it.
+	let syncAsk = $state<{
+		slug: string;
+		order: number;
+		language: string;
+		local: ReturnType<typeof getProgressRecord>;
+	} | null>(null);
+	$effect(() => {
+		const ask = syncAsk;
+		if (!ask || !auth.initialized) return;
+		let cancelled = false;
+		fetchSyncedProgress(ask.slug).then((remote) => {
+			if (cancelled) return;
+			const offer = syncedAhead(
+				ask.local && { order: ask.local.order, p: ask.local.paragraph_index, at: ask.local.at },
+				remote && { order: remote.order, p: remote.paragraph_index, at: remote.at },
+				ask.order
+			);
+			if (!offer) return;
+			// One row serves every edition and outlives a re-import: never offer a
+			// chapter this book (as loaded) does not have, and trust the paragraph
+			// only when it was measured in the edition being read here.
+			const chapters = bookForProgress?.chapters;
+			if (chapters && !chapters.some((c) => c.order === offer.order)) return;
+			syncOffer = { ...offer, p: remote?.language === ask.language ? offer.p : 0 };
+			clearTimeout(syncTimer);
+			syncTimer = setTimeout(dismissSyncOffer, 15000);
+		});
+		return () => {
+			cancelled = true;
+		};
+	});
+	function takeSyncOffer() {
+		const to = syncOffer;
+		dismissSyncOffer();
+		if (to) jumpTo(to);
+	}
+	function dismissSyncOffer() {
+		clearTimeout(syncTimer);
+		syncOffer = null;
+		syncDismissed.add(slug);
+	}
 
 	// --- Reading-progress indicators -------------------------------------------
 	// Fraction of the current chapter scrolled past (0..1), updated by the same
@@ -263,8 +385,10 @@
 	 * two-column spread. So the bar was up to 333px WIDER than the text at the
 	 * small end and 640px NARROWER at the large end, matching it at no setting a
 	 * reader can actually pick. Sharing `articleMax` puts its edges on the text's
-	 * edges: the bar's `px-5` equals the pager's own `--pgpad`, so the controls
-	 * line up with the column, not merely with the box.
+	 * edges, and `chromeGutter` puts its padding on the text's gutter: in page
+	 * mode that is the pager's own `--pgpad`, in scroll mode the reader's
+	 * Margins pref (the article's `--reading-margin`) — so the controls line up
+	 * with the column at every setting, not merely with the box.
 	 *
 	 * The floor is for the bar's sake — seven controls plus a title in 435px
 	 * (narrow at 0.8x) is a crush, and unlike the prose the bar doesn't get to
@@ -272,6 +396,10 @@
 	 * wider than the viewport.
 	 */
 	const chromeMax = $derived(`min(max(${articleMax}, 32rem), 100%)`);
+	// The bar's side padding tracks the text's gutter (see the comment above).
+	// Page mode zeroes the article padding and uses --pgpad (1.25rem); scroll
+	// mode uses whatever Margins the reader chose.
+	const chromeGutter = $derived(paged ? '1.25rem' : MARGIN[readerPrefs.margin]);
 
 	// The paged viewport is fixed between the reader chrome and the progress
 	// footer; measure their real heights (the chrome wraps to several rows on
@@ -306,6 +434,7 @@
 	/** Scroll to a fraction of the chapter — drives the draggable scrubber. */
 	function scrubTo(frac: number) {
 		if (!body) return;
+		breakPace(); // a seek, not reading — the settle after it must not be paced
 		const rect = body.getBoundingClientRect();
 		const bodyTop = window.scrollY + rect.top;
 		window.scrollTo({ top: Math.max(0, bodyTop - window.innerHeight + frac * rect.height) });
@@ -386,6 +515,7 @@
 			// force-disabled while listening (`paged` derives on listen.status ===
 			// 'idle'), so a page turn can't happen mid-listen to clobber the resume.
 			saveScrollAnchor(slug, chapter.order, topIndex);
+			samplePace(topIndex);
 			// Paging to the last page = reached the end. `save` is false on the
 			// initial restore, so opening mid-chapter at the last page doesn't fire.
 			if (pageIndex >= pageTotal - 1) markChapterComplete();
@@ -524,7 +654,11 @@
 			schedulePeekHide();
 		}
 	}
-	onDestroy(() => clearTimeout(peekTimer));
+	onDestroy(() => {
+		clearTimeout(peekTimer);
+		clearTimeout(returnTimer);
+		clearTimeout(syncTimer);
+	});
 
 	onMount(() => {
 		readerPrefs.init();
@@ -550,11 +684,46 @@
 		// and stored paragraph 0 — leaving the chapter before scrolling threw the
 		// bookmarked spot away.
 		const pParam = $page.url.searchParams.get('p');
-		const jumpTo = pParam !== null ? Number(pParam) : NaN;
-		if (Number.isFinite(jumpTo) && jumpTo > 0) saveScrollAnchor(s, order, jumpTo);
+		const jumpP = pParam !== null ? Number(pParam) : NaN;
+		// A deep-link jump strands the reader: saveProgress below moves the book's
+		// resume point to the target, so the spot they left is gone. Read it FIRST
+		// and offer a way back (only when it really is somewhere else).
+		clearTimeout(returnTimer);
+		returnTo = null;
+		// (A bare `?p=` is Number('') === 0 — finite, but not a jump.)
+		const deliberateJump = Number.isFinite(jumpP) && pParam !== '';
+		const ownJump = deliberateJump && ownJumpTarget === `${order}:${jumpP}`;
+		// Consumed by its own arrival — or dropped by any plain navigation, so a
+		// jump that never landed (cancelled, redirected) cannot linger to mute a
+		// later genuine deep link to the same spot.
+		if (ownJump || !deliberateJump) ownJumpTarget = '';
+		if (deliberateJump && !ownJump) {
+			const prior = getProgressRecord(s);
+			if (prior && (prior.order !== order || prior.paragraph_index !== jumpP)) {
+				offerReturn({ order: prior.order, p: prior.paragraph_index });
+			}
+		}
+		if (Number.isFinite(jumpP) && jumpP > 0) saveScrollAnchor(s, order, jumpP);
+
+		// Ask the account where it last was (answered by its own effect, once
+		// the session has settled). This device's record is read HERE, before
+		// saveProgress: that keeps `at` when the position is unchanged, but a
+		// deep link moves it. Not after a deliberate jump (a bookmark, a search
+		// hit): the reader chose that spot.
+		clearTimeout(syncTimer);
+		syncOffer = null;
+		syncAsk =
+			!deliberateJump && !syncDismissed.has(s)
+				? { slug: s, order, language, local: getProgressRecord(s) }
+				: null;
 
 		saveProgress(s, order, language);
 		bookmarks.load('book', s);
+		// A new chapter: its paragraph lengths are counted at the first pace
+		// sample (not here — see samplePace), and that sample starts a fresh
+		// pair: the open itself is not reading.
+		paraWords = [];
+		breakPace();
 
 		// A backward chapter turn in page mode asks to land on the last page.
 		const wantLast = $page.url.searchParams.get('pg') === 'last';
@@ -566,8 +735,8 @@
 				measurePages();
 				let target = 0;
 				if (wantLast) target = pageTotal - 1;
-				else if (Number.isFinite(jumpTo) && body?.children[jumpTo]) {
-					target = pageOf(body.children[jumpTo] as HTMLElement);
+				else if (Number.isFinite(jumpP) && body?.children[jumpP]) {
+					target = pageOf(body.children[jumpP] as HTMLElement);
 				} else {
 					const rec = getProgressRecord(s);
 					const idx =
@@ -576,9 +745,9 @@
 					if (idx && body?.children[idx]) target = pageOf(body.children[idx] as HTMLElement);
 				}
 				goToPage(target, false);
-			} else if (Number.isFinite(jumpTo) && body?.children[jumpTo]) {
+			} else if (Number.isFinite(jumpP) && body?.children[jumpP]) {
 				placeAfterLayout(() => {
-					const el = body?.children[jumpTo];
+					const el = body?.children[jumpP];
 					if (!el) return;
 					el.scrollIntoView({ block: 'start' });
 					window.scrollBy(0, -HEADER_OFFSET);
@@ -791,9 +960,28 @@
 							requestIdleCallback: (cb: () => void, opts?: { timeout: number }) => number;
 						}).requestIdleCallback(fn, { timeout: 3000 })
 				: (fn: () => void) => setTimeout(fn, 1500);
+		nextPreview = '';
+		// A slow fetch for THIS chapter's successor must not land after the reader
+		// has turned the page — it would put the chapter they are now reading under
+		// "Next". Same cancel-flag shape as the book fetch above.
+		let cancelled = false;
 		idle(() => {
-			fetch(url).catch(() => {});
+			if (cancelled) return;
+			// The response used to be thrown away; now its opening line feeds the
+			// "up next" card, so this is a read as well as a cache warm. It stays a
+			// raw fetch of the same URL on purpose — that is what makes the service
+			// worker's cache entry the one the navigation will hit; routing it
+			// through apiFetch would change the key and warm nothing.
+			fetch(url)
+				.then((r) => (r.ok ? r.json() : null))
+				.then((ch: { body_html?: string } | null) => {
+					if (!cancelled) nextPreview = openingLine(ch?.body_html ?? '');
+				})
+				.catch(() => {});
 		});
+		return () => {
+			cancelled = true;
+		};
 	});
 
 	// Reading-plan context (?plan=<slug>&day=<n>): show the Day N of M strip and
@@ -859,6 +1047,46 @@
 		}
 	}
 
+	// The reader's pace, fed from the same samples the resume point already
+	// produces — "the top paragraph moved from 4 to 7 in 51 s" (see $lib/pace).
+	// A pair must be two rest points in one stretch of READING, so it is broken
+	// (`lastSample = null`) by anything else that moves the top: a chapter
+	// open, a scrub, read-aloud's playback, the tab going away — a backgrounded
+	// tab's clock keeps running but nobody is reading.
+	let paraWords: number[] = [];
+	let lastSample: PaceSample | null = null;
+	const breakPace = () => {
+		lastSample = null;
+	};
+	function samplePace(p: number) {
+		if (document.visibilityState !== 'visible') {
+			breakPace();
+			return;
+		}
+		// Counted lazily, at the first sample of a chapter: this runs from event
+		// handlers, where reading `body` tracks nothing. In the chapter effect it
+		// made the whole setup re-run on mount, once `bind:this` landed — which
+		// re-read this device's record AFTER the open had touched it and killed
+		// the cross-device offer on exactly the cold load it exists for.
+		if (!paraWords.length && body) paraWords = paragraphWordCounts(body.children);
+		const now = Date.now();
+		if (lastSample) {
+			const d = paceDelta(lastSample, { p, at: now }, paraWords);
+			if (d) readingPace.record(d.words, d.ms);
+		}
+		lastSample = { p, at: now };
+	}
+	$effect(() => {
+		document.addEventListener('visibilitychange', breakPace);
+		return () => document.removeEventListener('visibilitychange', breakPace);
+	});
+	$effect(() => {
+		// Read-aloud moves the top at the voice's pace, not the reader's: a pair
+		// straddling a listen would write the TTS speed into the reading pace.
+		void listen.status;
+		breakPace();
+	});
+
 	// Throttled save of the topmost visible paragraph as the scroll anchor.
 	//
 	// Through `topVisibleIndex()` — the same question the restore's contract is
@@ -877,7 +1105,11 @@
 			// While actively playing, listen.start's onAdvance owns the resume point
 			// (the spoken paragraph); don't overwrite it with the viewport-top one.
 			// While PAUSED we do save — the reader may be scrolling ahead to read.
-			if (listen.status !== 'playing') saveScrollAnchor(slug, chapter.order, topVisibleIndex());
+			if (listen.status !== 'playing') {
+				const top = topVisibleIndex();
+				saveScrollAnchor(slug, chapter.order, top);
+				samplePace(top);
+			}
 			// Scrolled to the bottom of the chapter. markChapterComplete ignores the
 			// post-open settle window, so the restore-scroll landing at a saved
 			// end-of-chapter position doesn't count as finishing.
@@ -942,7 +1174,7 @@
 	{hreflang}
 	ogType="article"
 	ogTitle="{chapterName(chapter.order, chapter.title)} — {chapter.book_title}"
-	structuredData={[chapterLd]}
+	structuredData={[chapterLd, crumbsLd]}
 />
 <svelte:window
 	onscroll={onScroll}
@@ -979,8 +1211,8 @@
 		class:peeking={showPeek}
 	>
 		<div
-			class="mx-auto flex items-center justify-between gap-3 px-5 py-2.5"
-			style="max-width: {chromeMax}"
+			class="mx-auto flex items-center justify-between gap-3 py-2.5"
+			style="max-width: {chromeMax}; padding-inline: {chromeGutter}"
 		>
 			<!--
 				Hidden below `sm`. The controls alone need ~303px of a 360px phone, so
@@ -1069,7 +1301,10 @@
 				{/if}
 				<!-- `layout`: the chapter reader is the one surface that implements
 				     paged mode, so it is the one that offers the switch. -->
-				<ReaderControls layout />
+				<!-- `sample`: the chapter's opening line, so the panel's live preview
+				     restyles the reader's own prose. metaDescription is already the
+				     body's plain text. -->
+				<ReaderControls layout margins sample={metaDescription.slice(0, 90)} />
 				<button
 					class="btn btn-icon btn-ghost"
 					onclick={() => readerUi.toggleFocus()}
@@ -1082,7 +1317,7 @@
 		     above, so give them a compact location line of their own: the article's
 		     own breadcrumb scrolls away, and is hidden entirely in page mode, so
 		     without this the smallest phones lose all sense of where they are. -->
-		<div class="mx-auto px-5 pb-1.5 sm:hidden" style="max-width: {chromeMax}">
+		<div class="mx-auto pb-1.5 sm:hidden" style="max-width: {chromeMax}; padding-inline: {chromeGutter}">
 			<div class="truncate text-micro text-text">{@render locationLabel()}</div>
 		</div>
 	</div>
@@ -1108,7 +1343,7 @@
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events -->
 <article
 	bind:this={articleEl}
-	class="mx-auto reading-article px-5 py-10"
+	class="mx-auto reading-article py-10"
 	class:paged
 	class:focus={readerUi.focus}
 	class:twocol={cols === 2}
@@ -1119,14 +1354,7 @@
 	ontouchcancel={onTouchCancel}
 	use:swipeMove
 >
-	<!-- Breadcrumb -->
-	<nav class="mb-5 flex flex-wrap items-center gap-1.5 text-small text-muted" aria-label={t('a11y.breadcrumb')}>
-		<a href={localizeHref('/books')} class="hover:text-text">{t('nav.books')}</a>
-		<span>›</span>
-		<a href={localizeHref(`/authors/${chapter.author_slug}`)} class="hover:text-text">{chapter.author_name}</a>
-		<span>›</span>
-		<a href={localizeHref(`/books/${slug}`)} class="hover:text-text">{chapter.book_title}</a>
-	</nav>
+	<Breadcrumb items={crumbs} />
 
 	{#if plan && planDay}
 		<div
@@ -1163,6 +1391,7 @@
 				<span class="ms-1 text-accent">· {t('reader.modernEdition')}</span>
 			{/if}
 		</p>
+		<SourceBadge sourceType={chapter.source_type ?? 'public_domain'} class="mb-3" />
 		<h1 bind:this={titleEl} class="text-h1 mb-8" dir="auto" lang={contentLang(language)}>{chapterName(chapter.order, chapter.title)}</h1>
 
 		<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. -->
@@ -1214,18 +1443,37 @@
 			<span class="flex-1"></span>
 		{/if}
 		{#if chapter.next}
+			{@const nextWords = bookForProgress?.chapters.find((c) => c.order === chapter.next?.order)?.word_count}
 			<a
 				href={chapterHref(chapter.next.order)}
 				class="btn btn-primary flex-1 flex-col items-end gap-0.5 text-end"
 				class:celebrate
+				aria-label="{t('reader.next')}: {chapterName(chapter.next.order, chapter.next.title)}"
 			>
 				<span class="eyebrow opacity-75">{t('reader.next')}</span>
 				<span class="text-small">{chapterName(chapter.next.order, chapter.next.title)}</span>
+				<!-- The moment of highest intent: say how long it is, and let its
+				     opening line do the inviting. Both are optional — the time needs
+				     the book fetched, the line needs the prefetch to have landed — so
+				     the line's height is reserved: the button must not grow under a
+				     thumb that is already aiming at it. -->
+				<span class="up-next-meta mt-0.5 block text-micro opacity-75" dir="auto">
+					{#if nextWords}{readingTime(nextWords)}{/if}{#if nextWords && nextPreview}
+						·
+					{/if}{#if nextPreview}<span class="italic">{nextPreview}…</span>{/if}
+				</span>
 			</a>
 		{:else}
 			<a href={localizeHref(`/books/${slug}`)} class="btn btn-ghost flex-1 text-center" class:celebrate>{t('reader.backToContents')}</a>
 		{/if}
 	</nav>
+	<!-- A way to the contents even mid-book: the "back to contents" button above
+	     only appears once the last chapter has nothing to point forward to. -->
+	{#if chapter.next}
+		<p class="mt-3 text-center">
+			<a href={localizeHref(`/books/${slug}`)} class="text-small text-muted hover:text-text">{t('reader.contents')}</a>
+		</p>
+	{/if}
 </article>
 
 <!-- Kindle-style edge page-turn arrows (page mode only). The outer screen edge
@@ -1250,10 +1498,49 @@
 	</button>
 {/if}
 
-<!-- In focus mode the scrubber is hidden, so this hairline stands in for it:
-     immersive should mean calm, not lost. Same indicator the sermon page uses. -->
-{#if readerUi.focus}
+<!-- A hairline of progress along the top. It began as focus mode's stand-in
+     for the hidden scrubber; it now stays on in scroll mode too, so a glance
+     tells you where you are without looking down at the footer. Page mode
+     keeps it to focus only — the fixed chrome bar sits where it would go, and
+     "Page 3 / 9" already says it. -->
+{#if readerUi.focus || !paged}
 	<div class="read-progress" style="transform: scaleX({chapterFrac})" aria-hidden="true"></div>
+{/if}
+
+<!-- Focus mode hides the footer, and with it the scrubber's aria-valuetext —
+     so announce the page here instead (only there: elsewhere it would be said
+     twice). The text re-renders only when currentPage does, so a screen reader
+     hears "Page 4 / 9", not every pixel. -->
+{#if readerUi.focus}
+	<div class="sr-only" role="status" aria-live="polite">
+		{t('progress.page')} {currentPage} / {pageCount}
+	</div>
+{/if}
+
+<!-- Offered after a deep-link jump (bookmark, search hit, note): the spot the
+     reader left, which the jump would otherwise have thrown away. -->
+{#if returnTo}
+	<button class="return-pill" onclick={goBackToPrior}>
+		<Icon name="chevron-left" size={14} />
+		{t('reader.returnPrior')}
+	</button>
+{:else if syncOffer}
+	<!-- The account is further along than this device (another device read on).
+	     Same slot as the return pill; the two never coincide — a deliberate jump
+	     skips the sync ask — but the pill wins if they somehow did. -->
+	<div class="return-pill sync-pill" role="status">
+		<span>{t('reader.syncedAhead')}</span>
+		<button class="sync-cta" onclick={takeSyncOffer}>
+			{#if syncOffer.order !== chapter.order}
+				{t('book.continueCh')} {syncOffer.order}
+			{:else}
+				{t('reader.continueThere')}
+			{/if}
+		</button>
+		<button class="sync-dismiss" onclick={dismissSyncOffer} aria-label={t('pwa.dismiss')}>
+			<Icon name="close" size={14} />
+		</button>
+	</div>
 {/if}
 
 <!-- Reading-progress footer: a draggable scrubber + location, fixed, hidden in
@@ -1269,8 +1556,10 @@
 			value={chapterFrac}
 			oninput={(e) => {
 				const frac = Number(e.currentTarget.value);
-				if (paged) goToPage(Math.round(frac * (pageTotal - 1)));
-				else scrubTo(frac);
+				if (paged) {
+					breakPace(); // a seek: goToPage samples, and this pair must not count
+					goToPage(Math.round(frac * (pageTotal - 1)));
+				} else scrubTo(frac);
 			}}
 			aria-label={t('progress.scrub')}
 			aria-valuetext="{t('progress.page')} {currentPage} / {pageCount}"
@@ -1278,7 +1567,12 @@
 		<div class="progress-meta">
 			<span>{t('progress.page')} {currentPage} / {pageCount}</span>
 			<span class="mx-1.5 opacity-50">·</span>
-			<span>{minsLeft} {t('progress.minLeft')}</span>
+			<span>
+				{minsLeft}
+				{t('progress.minLeft')}{#if readingPace.personalized}<span class="hidden sm:inline"
+						><span class="mx-1.5 opacity-50">·</span>{t('progress.yourPace')}</span
+					>{/if}
+			</span>
 			{#if bookPercent !== null}
 				<span class="mx-1.5 opacity-50">·</span>
 				<span>{bookPercent}% {t('progress.through')}</span>
@@ -1497,6 +1791,10 @@
 	   so the chapter's last line and its "Next chapter" CTA are not underneath
 	   the scrubber. */
 	.reading-article {
+		/* Side gutters come from the reader's Margins pref (readerPrefs emits
+		   --reading-margin on this element); page mode zeroes padding and keeps
+		   its own --pgpad, so this is scroll mode only. */
+		padding-inline: var(--reading-margin, 1.25rem);
 		padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
 	}
 	.progress-foot {
@@ -1525,6 +1823,101 @@
 		cursor: pointer;
 		accent-color: var(--accent);
 		background: transparent;
+	}
+	/* Touch: a range input's whole height is its hit area, so growing it gives
+	   the thumb a ≥44px target without restyling the native thumb (which
+	   `accent-color` would lose under `appearance: none`). */
+	@media (pointer: coarse) {
+		.scrubber {
+			height: 2.75rem;
+		}
+		/* The footer is auto-height, so the taller scrubber makes it ~1.65rem
+		   deeper; scroll mode's bottom clearance is a constant (page mode
+		   measures the footer), so it grows by the same amount here. */
+		.reading-article {
+			padding-bottom: calc(6.2rem + env(safe-area-inset-bottom));
+		}
+	}
+
+	/* Reserve the "Next" card's meta line before its content arrives. */
+	.up-next-meta {
+		min-height: 1.4em;
+	}
+
+	/* "Back to where you were" — a small pill parked above the progress footer,
+	   centred, that a deep-link jump leaves behind for a few seconds. */
+	.return-pill {
+		position: fixed;
+		inset-inline: 0;
+		bottom: calc(3.6rem + env(safe-area-inset-bottom));
+		z-index: 31;
+		margin-inline: auto;
+		width: max-content;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		padding-block: 0.45rem;
+		padding-inline: 0.7rem 0.9rem; /* tighter on the icon side, whichever side that is */
+		border-radius: 9999px;
+		border: 1px solid var(--border);
+		background: color-mix(in srgb, var(--surface) 92%, transparent);
+		color: var(--text);
+		font-size: var(--fs-small);
+		box-shadow: var(--shadow-popover);
+		backdrop-filter: blur(6px);
+		animation: return-in var(--duration-base) ease;
+	}
+	.return-pill:not(.sync-pill):hover {
+		border-color: var(--accent);
+	}
+	/* The synced-position offer wears the pill's chrome with two actions inside. */
+	.sync-pill {
+		gap: 0.6rem;
+		padding-inline: 0.9rem 0.4rem;
+		max-width: calc(100vw - 2rem);
+	}
+	.sync-cta {
+		white-space: nowrap;
+		border-radius: 999px;
+		background: var(--accent);
+		color: var(--accent-contrast);
+		padding: 0.25rem 0.75rem;
+		font-weight: 600;
+		font-size: var(--fs-small);
+	}
+	.sync-cta:hover {
+		filter: brightness(1.05);
+	}
+	.sync-dismiss {
+		display: inline-flex;
+		padding: 0.55rem; /* ~32px beside the CTA: a thumb target, not a mouse one */
+		border-radius: 999px;
+		color: var(--muted);
+	}
+	.sync-dismiss:hover {
+		color: var(--text);
+		background: var(--surface-2);
+	}
+	/* "Back" points the other way in Arabic. */
+	:global([dir='rtl']) .return-pill :global(svg) {
+		transform: scaleX(-1);
+	}
+	@media (pointer: coarse) {
+		.return-pill {
+			/* Above the footer that the taller touch scrubber deepened (see above). */
+			bottom: calc(5.3rem + env(safe-area-inset-bottom));
+		}
+	}
+	@keyframes return-in {
+		from {
+			opacity: 0;
+			transform: translateY(6px);
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.return-pill {
+			animation: none;
+		}
 	}
 
 	/* Text-range marks (<mark> spans) are styled globally in app.css. */

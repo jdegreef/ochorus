@@ -1,0 +1,97 @@
+{
+ "kind": "sermon",
+ "slug": "the-power-of-stillness",
+ "language": "hi",
+ "job_issue": 1110,
+ "pull_request": 1422,
+ "references": [
+  {
+   "reference": "1 Kings 19:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 2:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 4:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 119:165",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 30:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 2:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 14:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 27:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 23:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 3:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 2
+  },
+  {
+   "reference": "Psalm 46:10",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Psalm 91:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 4:10",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "1 Kings 19:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 3:16",
+   "status": "self_rendered"
+  }
+ ]
+}

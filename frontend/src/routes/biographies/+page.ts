@@ -1,4 +1,5 @@
 import { listAuthors, listBooks, type BookSummary } from '$lib/library-public';
+import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
 
@@ -13,7 +14,9 @@ import type { PageLoad } from './$types';
 // re-crawl and bake the translated blurbs instead of the English fallback.
 export const load: PageLoad = async () => {
 	const lang = getLang();
-	const authors = await listAuthors(lang);
+	// The authors are the shelf: a failed fetch is REPORTED so the page can
+	// offer Try again, rather than crashing to the 500 route (it was unguarded).
+	const { items: authors, loadError } = await loadShelf(listAuthors(lang));
 	// Books power the per-writer cover strip; degrade to no strips if unavailable
 	// so the biographies still render.
 	let books: BookSummary[] = [];
@@ -22,7 +25,7 @@ export const load: PageLoad = async () => {
 	} catch {
 		books = [];
 	}
-	return { authors, books };
+	return { authors, books, loadError };
 };
 
 // Biographies book counts are locale-aware (server-side) and prerendered per

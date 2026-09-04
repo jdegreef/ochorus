@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { pwa } from '$lib/pwa.svelte';
 	import { storageHealth } from '$lib/storageHealth.svelte';
+	import { undo } from '$lib/undo.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 
 	const t = i18n.t;
@@ -28,6 +29,18 @@
 		<div class="pwa-toast pwa-update">
 			<span>{t('pwa.updateReady')}</span>
 			<button class="pwa-cta" onclick={() => pwa.applyUpdate()}>{t('pwa.refresh')}</button>
+		</div>
+	{/if}
+
+	<!-- "Removed · Undo" — a removed highlight, note or bookmark, for a few
+	     seconds (see $lib/undo). Same stack, same styles: it is one more short
+	     message that asks for one tap. An `inline` offer is drawn by the modal
+	     that made it instead (the stack's aria-live already announces the rest). -->
+	{#if undo.current && !undo.current.inline}
+		<div class="pwa-toast">
+			<span>{t(undo.current.kind === 'note' ? 'undo.noteCleared' : 'undo.removed')}</span>
+			<button class="pwa-cta" onclick={() => undo.act()}>{t('undo.action')}</button>
+			<button class="pwa-link" onclick={() => undo.dismiss()}>{t('pwa.dismiss')}</button>
 		</div>
 	{/if}
 

@@ -105,6 +105,15 @@ class FixtureIdentifierTests(SimpleTestCase):
             "gareth-evans",
             "hannah-buyinza",
             "simeon-nsibambi",
+            # East African Revival figures with no verified standalone
+            # Wikipedia/Wikidata entity to point at — a wrong identifier is
+            # worse than none, so these stay blank until one is confirmed.
+            # (Their better-documented peers — joe-church, janani-luwum,
+            # yona-kanamuzeyi — carry same_as.)
+            "yosiya-kinuka",
+            "blasio-kigozi",
+            "william-nagenda",
+            "lawrence-barham",
         }
         blank = {a["slug"] for a in fixture_authors() if not a.get("same_as")}
         self.assertEqual(

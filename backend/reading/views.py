@@ -84,6 +84,14 @@ class _ReadingWriteThrottle(ScopedCacheThrottle):
     scope = "reading"
 
 
+class _ReadingReadThrottle(ScopedCacheThrottle):
+    """The same bound for READS of reading state (one per chapter open), on its
+    own budget so they never eat into the write one — but still a ceiling:
+    `_profile()` is a get_or_create, and an unbounded read path is a free loop."""
+
+    scope = "reading-read"
+
+
 def _valid_slug(slug) -> bool:
     """A non-empty slug that fits the SlugField columns (varchar(160))."""
     return isinstance(slug, str) and 0 < len(slug) <= SLUG_MAX
@@ -358,10 +366,32 @@ class StateView(APIView):
 
 
 class ProgressView(APIView):
-    """Upsert the reader's position in one book."""
+    """Read or upsert the reader's position in one book."""
 
     permission_classes = [IsAuthenticated]
     throttle_classes = [_ReadingWriteThrottle]
+
+    def get_throttles(self):
+        # A read happens on every chapter open: its own budget, not the writes'.
+        if self.request.method == "GET":
+            return [_ReadingReadThrottle()]
+        return super().get_throttles()
+
+    def get(self, request, slug):
+        """The account's synced position in one work — what another device last
+        pushed. The reader asks on chapter open to offer "continue where you
+        left off"; before this the only pull was the whole-state merge at
+        sign-in, so a second device never learned the first had moved on."""
+        if not _valid_slug(slug):
+            return Response({"detail": "Invalid slug."}, status=400)
+        kind = _kind_or_none(request.query_params.get("kind"))
+        if kind is None:
+            return Response({"detail": "Unknown kind."}, status=400)
+        profile = _profile(request)
+        obj = ReadingProgress.objects.filter(profile=profile, kind=kind, book_slug=slug).first()
+        if obj is None:
+            return Response({"detail": "No position."}, status=404)
+        return Response(ReadingProgressSerializer(obj).data)
 
     def put(self, request, slug):
         profile = _profile(request)

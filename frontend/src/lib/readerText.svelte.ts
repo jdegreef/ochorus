@@ -28,6 +28,7 @@
  */
 import { onMount } from 'svelte';
 import { marks, type Segment } from '$lib/marks.svelte';
+import { removeMarkUndoable, clearNoteUndoable } from '$lib/undoable';
 import { renderMarks } from '$lib/rangeMarks';
 import { findQueryHits } from '$lib/searchHits';
 import { listen } from '$lib/listen.svelte';
@@ -161,7 +162,7 @@ export class ReaderText {
 	onHighlight = (segments: Segment[], color: string): void => {
 		const existing = marks.groupCovering(segments);
 		if (!existing) marks.add(segments, undefined, color);
-		else if (marks.getColor(existing) === color) marks.remove(existing);
+		else if (marks.getColor(existing) === color) removeMarkUndoable(existing);
 		else marks.setColor(existing, color);
 	};
 
@@ -191,7 +192,9 @@ export class ReaderText {
 
 	saveNote = (): void => {
 		if (this.id) {
-			marks.setNote(this.id, this.draft);
+			// Emptying the field deletes the note — offer a way back for that one.
+			if (!this.draft.trim()) clearNoteUndoable(this.id);
+			else marks.setNote(this.id, this.draft);
 			marks.setColor(this.id, this.color);
 		} else if (this.pending.length && this.draft.trim()) {
 			marks.add(this.pending, this.draft, this.color);
@@ -200,7 +203,7 @@ export class ReaderText {
 	};
 
 	removeMark = (): void => {
-		if (this.id) marks.remove(this.id);
+		if (this.id) removeMarkUndoable(this.id);
 		this.open = false;
 	};
 

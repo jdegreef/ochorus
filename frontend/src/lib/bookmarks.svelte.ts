@@ -9,6 +9,7 @@ import {
 } from './reading-schema';
 import { readJSON, writeJSON } from './persisted';
 import { readingSync } from './readingSync';
+import { undo } from './undo.svelte';
 
 /**
  * Explicit bookmarks — places the reader saved on purpose (a paragraph within a
@@ -47,9 +48,13 @@ class Bookmarks {
 	}
 
 	load(kind: WorkKind, slug: string) {
+		// Another work (not a re-load of this one — the contents drawer re-loads
+		// on every open) makes a pending Undo meaningless.
+		const key = workSlugKey(kind, slug);
+		if (key !== this.#key) undo.dismiss();
 		this.#kind = kind;
 		this.#slug = slug;
-		this.#key = workSlugKey(kind, slug);
+		this.#key = key;
 		this.#hydrate();
 	}
 
@@ -60,6 +65,12 @@ class Bookmarks {
 	/** Re-read after the cache was replaced underneath us (e.g. sign-in sync). */
 	refresh() {
 		if (this.#key) this.#hydrate();
+	}
+
+	/** Identity of the work currently loaded — lets a deferred action (an Undo)
+	 *  check the store hasn't moved on before writing into it. */
+	get key(): string {
+		return this.#key;
 	}
 
 	#persist() {

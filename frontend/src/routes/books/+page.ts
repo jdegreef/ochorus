@@ -1,3 +1,22 @@
+// prerender refresh 2026-09-02 (batch4): purity-of-heart.lg (#1206, William Booth,
+// 10 ch) and soar-like-the-eagle-3.sw (#870, Gareth Evans, 12 ch). Rebuilds the
+// /lg/books and /sw/books shelves and their per-chapter pages.
+// prerender refresh 2026-09-02 (batch3): the-fourfold-gospel.sw (#871), A. B.
+// Simpson's Injili Nne (6 chapters). Rebuilds the /sw/books shelf + chapter pages.
+// prerender refresh 2026-09-02 (batch2): feasting-at-the-table.lg (#1209), the
+// library's newest Luganda book (9 chapters, Ephesians). Rebuilds the /lg/books
+// shelf and its per-chapter pages.
+// prerender refresh 2026-09-02: waiting-on-god.lg (job #1205). ONLY this
+// loader, for the same three reasons the uk edition of this book recorded
+// above. The slug appears in no plan module — grepped plan_seed.py, plans.py,
+// plan_translations.py and seed_plans.py — so seed_plans builds no lg plan row
+// from it and plans/+page.ts has nothing new to bake. The cover needs no touch:
+// waiting-on-god is curated art, one shared painting BookCover draws each
+// edition's title over, so localize_covers.py reported "7 editions already
+// correct" and the lg row carries the same /covers/art/waiting-on-god.jpg. The
+// og twin IS per edition (its title is in the pixels) and ships in this PR as
+// static/covers/lg/waiting-on-god.png.
+//
 // prerender refresh 2026-09-02: tukutendereza.en — a second NEW English
 // original, so /books gains a card and 14 chapter pages need baking. ONLY this
 // loader: no plan module names the slug, it is English-only, and its cover is

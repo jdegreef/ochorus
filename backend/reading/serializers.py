@@ -41,8 +41,11 @@ class ReadingProgressSerializer(serializers.ModelSerializer):
             "chapter_order",
             "paragraph_index",
             "updated_at",
+            # The writing device's own clock. A second device compares it against
+            # its local record to tell "further along elsewhere" from its own past.
+            "client_updated_at",
         ]
-        read_only_fields = ["updated_at"]
+        read_only_fields = ["updated_at", "client_updated_at"]
 
 
 class ChapterMarksSerializer(serializers.ModelSerializer):

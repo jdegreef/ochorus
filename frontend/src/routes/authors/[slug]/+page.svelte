@@ -1,14 +1,16 @@
 <script lang="ts">
 	import Icon from '$lib/components/Icon.svelte';
 	import { type AuthorDetail, type AuthorBio, listAuthors, formatLifespan } from '$lib/library-public';
+	import SourceBadge from '$lib/components/SourceBadge.svelte';
 	import { SITE_URL } from '$lib/config';
 	import { cssString } from '$lib/cssString';
-	import { absUrl, jsonLd, breadcrumb, hreflangAll } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, hreflangAll } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingTime, readingMinutes } from '$lib/reading';
 	import { localizeHref } from '$lib/href';
+	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import { scopedSearchHref } from '$lib/searchState';
-	import { portraitPosition } from '$lib/portraits';
+	import { initials, portraitPosition } from '$lib/portraits';
 	import { listen } from '$lib/listen.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { page } from '$app/stores';
@@ -17,6 +19,7 @@
 	import { BIO_CHAPTER_ORDER } from '$lib/reading-schema';
 	import { bookmarks } from '$lib/bookmarks.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
+	import PersonCard from '$lib/components/PersonCard.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import LifeTimeline from '$lib/components/LifeTimeline.svelte';
@@ -85,9 +88,6 @@
 		chapter: '',
 		url: $page.url.href
 	});
-
-	const initials = (name: string) =>
-		name.split(' ').filter(Boolean).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
 
 	const years = $derived(
 		formatLifespan(author.birth_year, author.death_year, t('common.bornPrefix'))
@@ -198,15 +198,14 @@
 			sameAs: author.same_as?.length ? author.same_as : undefined
 		})
 	);
-	const crumbsLd = $derived(
-		jsonLd(
-			breadcrumb([
-				{ name: t('common.home'), url: '/' },
-				{ name: t('bios.eyebrow'), url: '/biographies' },
-				{ name: author.name, url: `/authors/${author.slug}` }
-			])
-		)
-	);
+	// One trail feeds both the visible <Breadcrumb> and the JSON-LD, so the
+	// on-page path and the structured BreadcrumbList can't drift apart.
+	const crumbs = $derived([
+		{ name: t('common.home'), href: '/' },
+		{ name: t('bios.eyebrow'), href: '/biographies' },
+		{ name: author.name, href: `/authors/${author.slug}` }
+	]);
+	const crumbsLd = $derived(breadcrumbLd(crumbs));
 	// Prayer-callout labels are rendered by CSS ::before content; pass the
 	// localized strings in as custom properties so they follow the locale.
 	// Quoted through cssString: an apostrophe in any translation would close the
@@ -257,14 +256,7 @@
 	     contemporaries — and it is exactly what someone reading eleven minutes
 	     of prose wants out of the way. -->
 	{#if !readerUi.focus}
-	<!-- Breadcrumb -->
-	<nav class="mb-6 flex flex-wrap items-center gap-1.5 text-small text-muted" aria-label={t('a11y.breadcrumb')}>
-		<a href={localizeHref('/')} class="hover:text-text">{t('common.home')}</a>
-		<span>›</span>
-		<a href={localizeHref('/biographies')} class="hover:text-text">{t('bios.eyebrow')}</a>
-		<span>›</span>
-		<span class="text-text">{author.name}</span>
-	</nav>
+	<Breadcrumb items={crumbs} />
 
 	<!-- Wraps on a phone. The action row was already overflowing the viewport by
 	     ~99px with three buttons (it is `shrink-0` beside a name that can be two
@@ -296,6 +288,7 @@
 					{#each summaryBits as bit, i (i)}{#if i > 0}<span class="opacity-50"> · </span>{/if}{bit}{/each}
 				</p>
 			{/if}
+			<SourceBadge sourceType={author.bio_source_type ?? 'public_domain'} class="mt-2" />
 		</div>
 		<div class="ms-auto flex flex-wrap items-center gap-2">
 			<!-- Search this author's works. A reader who has read one Murray book
@@ -451,7 +444,21 @@
 		</section>
 	{/if}
 
-	{#if !author.books.length && !author.sermons.length}
+	<!-- Also appears in: books this person is FOUND IN but did not write
+	     (BookPerson) — an anthology or a life that features them. Book cards, not
+	     person cards, and showAuthor so it's clear whose work it is. -->
+	{#if author.appears_in?.length}
+		<section class="mt-14">
+			<h2 class="mb-4 text-h3">{t('author.appearsIn')}</h2>
+			<div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+				{#each author.appears_in as book (book.slug)}
+					<BookCard {book} showAuthor />
+				{/each}
+			</div>
+		</section>
+	{/if}
+
+	{#if !author.books.length && !author.sermons.length && !author.appears_in?.length}
 		<div class="mt-10"><EmptyState message={t('author.empty')} /></div>
 	{/if}
 
@@ -461,34 +468,7 @@
 			<h2 class="mb-4 text-h3">{t('author.moreLives')}</h2>
 			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
 				{#each contemporaries as c (c.slug)}
-					<a
-						href={localizeHref(`/authors/${c.slug}`)}
-						class="flex items-center gap-3 rounded-card border border-border p-3 hover:border-accent hover:no-underline"
-					>
-						{#if c.photo_url}
-							<img
-								src={c.photo_url}
-								alt="{t('a11y.portraitOf')} {c.name}"
-								loading="lazy"
-								class="h-11 w-11 shrink-0 rounded-full border border-border object-cover"
-								style="filter: grayscale(1); object-position: {portraitPosition(c.slug)}"
-							/>
-						{:else}
-							<span
-								class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-soft text-small font-semibold text-accent"
-							>
-								{initials(c.name)}
-							</span>
-						{/if}
-						<span class="min-w-0">
-							<span class="block truncate text-body font-medium text-text">{c.name}</span>
-							{#if c.birth_year}
-								<span class="block whitespace-nowrap text-small text-muted"
-									>{formatLifespan(c.birth_year, c.death_year, t('common.bornPrefix'))}</span
-								>
-							{/if}
-						</span>
-					</a>
+					<PersonCard person={c} />
 				{/each}
 			</div>
 		</section>

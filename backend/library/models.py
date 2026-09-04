@@ -89,6 +89,13 @@ class Author(models.Model):
     # cards and schema.org ItemList both speak of Person — their works are still
     # reachable from /books and the byline's own author page.
     is_imprint = models.BooleanField(default=False)
+    # A real PERSON who is part of the library through their work but is kept off
+    # the Biographies shelf (e.g. a living contributor who does not want a
+    # biographical presence). Unlike `is_imprint`, this makes no claim that the
+    # byline isn't human — their Person markup and `same_as` stand — it only
+    # withholds the card. Their books/sermons stay on /books and their own author
+    # page stays reachable. Default True: everyone is listed unless withheld.
+    list_in_biographies = models.BooleanField(default=True)
     # Authoritative identifiers for this PERSON — Wikipedia, Wikidata, VIAF —
     # emitted as schema.org `sameAs` in the author page's Person markup.
     #
@@ -564,6 +571,88 @@ class Sermon(models.Model):
             fts.refresh_sermon(self)
 
 
+class ArticleManager(models.Manager):
+    def get_by_natural_key(self, slug, language):
+        return self.get(slug=slug, language=language)
+
+
+class Article(models.Model):
+    """A devotional / theological article — original site writing, NOT a
+    public-domain work and NOT attributed to anyone.
+
+    Articles are the SEO layer: they answer the questions people search
+    ("how to trust God", "what does it mean to abide in Christ") and funnel the
+    reader into the library via the ``related`` links at the end. Unlike a Book
+    or Sermon there is **no author FK** — an article is simply a page on the
+    site, so nothing on it claims a byline.
+
+    Everything else follows the per-language row convention: ``slug`` is the
+    canonical identifier shared across translations, unique per language, with no
+    English fallback. English is the only language today; a future translation is
+    just another row on the same slug.
+    """
+
+    # Canonical, language-agnostic identifier shared across translations.
+    slug = models.SlugField(max_length=180)
+    language = models.CharField(max_length=10, default="en")
+
+    # The on-page headline — the warm, human H1, and the display title
+    # everywhere the article is listed.
+    h1 = models.CharField(max_length=300)
+    # The SEO <title> tag, which leads with the keyword. Blank falls back to h1,
+    # so a title only differs from the headline when it needs to.
+    meta_title = models.CharField(max_length=300, blank=True)
+    # The standfirst: a short summary shown under the H1 and reused as the meta
+    # description. Like Book.description, one field serves the page and the crawl.
+    description = models.TextField(blank=True)
+    # The article body as cleaned, structured HTML. Carries pull-quotes and
+    # internal links, so it is sanitized with the RICH (bio) profile, not the
+    # narrow chapter one — see backend/CLAUDE.md on the two sanitize profiles.
+    body_html = models.TextField()
+
+    # The funnel. A list of soft references to the works this article sends the
+    # reader to, rendered as the "Read next" block:
+    #   [{"type": "book"|"sermon"|"author", "slug": "..."}, ...]
+    # Soft references (not FKs) so they are language-agnostic and survive a
+    # re-import, exactly like TopicBook.book_slug.
+    related = models.JSONField(default=list, blank=True)
+
+    source_url = models.URLField(blank=True)
+
+    sort_order = models.PositiveIntegerField(default=0)
+    is_published = models.BooleanField(default=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    objects = ArticleManager()
+
+    class Meta:
+        ordering = ["sort_order", "h1"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["slug", "language"], name="uniq_article_slug_language"
+            ),
+        ]
+        indexes = [
+            # ArticleListView: filter(language, is_published) then
+            # order_by(sort_order, h1) — same shape and reason as idx_book_shelf.
+            models.Index(
+                fields=["language", "is_published", "sort_order", "h1"],
+                name="idx_article_shelf",
+            ),
+        ]
+
+    def natural_key(self):
+        return (self.slug, self.language)
+
+    # No `dependencies`: unlike Book/Sermon, an article has no author FK to load
+    # first, so it can seed in any order.
+
+    def __str__(self) -> str:
+        return f"{self.h1} ({self.language})"
+
+
 class PlanManager(models.Manager):
     def get_by_natural_key(self, slug, language):
         return self.get(slug=slug, language=language)
@@ -656,6 +745,11 @@ class Quote(models.Model):
     #: Stable identity for the seed: author slug + a hash of the normalised text,
     #: so re-running extraction updates a row rather than duplicating it, and a
     #: reworded quote is a new row rather than a silent edit of an approved one.
+    #: It is also the quote's PERMANENT public address — the per-quote page will
+    #: be served at it — so a text REPAIR must keep this slug (edit the row in
+    #: place), and only a genuinely new quotation earns a fresh hash. The
+    #: extraction skill states the rule; seed_quotes never rewrites the slug (it
+    #: is the match key), and tests_quotes guards the edit-in-place path.
     slug = models.SlugField(max_length=80, unique=True)
     author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name="quotes")
     text = models.TextField()
@@ -835,6 +929,94 @@ class TopicSermon(models.Model):
 
     def __str__(self) -> str:
         return f"{self.topic.slug} ⊃ {self.sermon_slug}"
+
+
+class TopicArticle(models.Model):
+    """Membership of an article in a topic, by canonical ``article_slug``.
+
+    The article companion to ``TopicBook``/``TopicSermon`` — same soft-reference,
+    language-agnostic pattern. This is what makes the funnel bidirectional: a
+    topic page lists the articles about it, and (via ``_topic_chips``) an article
+    shows which topics it belongs to.
+    """
+
+    topic = models.ForeignKey(
+        Topic, on_delete=models.CASCADE, related_name="article_entries"
+    )
+    article_slug = models.SlugField(max_length=180)
+    sort_order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["sort_order", "id"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["topic", "article_slug"], name="uniq_topic_article"
+            ),
+        ]
+        indexes = [
+            # The article counterpart of idx_topicbook_slug: the article detail
+            # serializer asks "which topics is this article on?" by article_slug.
+            models.Index(fields=["article_slug"], name="idx_topicarticle_slug"),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.topic.slug} ⊃ {self.article_slug}"
+
+
+class PersonRole(models.TextChoices):
+    """How a person relates to a book they are named in but did not write.
+
+    A curated distinction, not a derived one — it says why this bio hangs off
+    this work, and lets the page phrase it ("the subject of" vs "mentioned in").
+    """
+
+    FEATURED = "featured", "Featured"      # a central figure of the book
+    SUBJECT = "subject", "Subject"         # the book is largely about them
+    MENTIONED = "mentioned", "Mentioned"   # a notable figure who appears in it
+
+
+class BookPerson(models.Model):
+    """A person FOUND IN a book — a bio the work points at, not its author.
+
+    An anthology or biography names people who have their own author page (a
+    bio), and this links the two so the book can offer "people in this book" and
+    the bio can offer "appears in". It is deliberately NOT ``Book.author``:
+    authorship says who wrote the work, this says who it is about or who walks
+    through it, and a work has one of the first and any number of the second.
+
+    Modelled like ``TopicBook``: a soft ``book_slug`` reference rather than an FK
+    to a per-language ``Book`` row, so ONE row covers every language edition of
+    the work (the person is the same in all of them) and it survives a book
+    re-import. The ``person`` end IS an FK, because an ``Author`` is canonical and
+    language-agnostic already (its prose lives in ``AuthorTranslation``) — the
+    same reason ``Book.author`` is an FK. A person with no bio in the reader's
+    language simply isn't shown there, the usual no-English-fallback rule.
+    """
+
+    book_slug = models.SlugField(max_length=160)
+    person = models.ForeignKey(
+        Author, on_delete=models.CASCADE, related_name="featured_in_books"
+    )
+    role = models.CharField(
+        max_length=20, choices=PersonRole.choices, default=PersonRole.FEATURED
+    )
+    sort_order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["sort_order", "id"]
+        constraints = [
+            # Leads with book_slug, so it also serves BookDetail's "who is in
+            # this book?" lookup (filter by book_slug alone) — no separate
+            # single-column index needed, unlike TopicBook whose unique index
+            # leads with topic_id. The reverse lookup ("what does this person
+            # appear in?") goes through person_id, which the FK indexes for free.
+            models.UniqueConstraint(
+                fields=["book_slug", "person"], name="uniq_book_person"
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.book_slug} ▷ {self.person.slug} ({self.role})"
 
 
 class SearchQueryLog(models.Model):

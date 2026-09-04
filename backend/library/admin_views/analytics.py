@@ -202,12 +202,34 @@ class AdminEngagementView(APIView):
 # Human labels for the reader themes stored on UserProfile.
 THEME_LABELS = {"paper": "Paper (light)", "light": "Light", "dark": "Lamplight (dark)"}
 
+# Human labels for the Supabase auth providers stored on UserProfile.providers.
+# Anything unlisted is title-cased so a new provider still reads sensibly.
+PROVIDER_LABELS = {
+    "email": "Email",
+    "google": "Google",
+    "apple": "Apple",
+    "facebook": "Facebook",
+    "github": "GitHub",
+    "azure": "Microsoft",
+}
+
+
+def _provider_label(code: str) -> str:
+    return PROVIDER_LABELS.get(code, code.replace("_", " ").title())
+
+
+# How many of the most recent sign-ups the admin page lists individually.
+RECENT_SIGNUPS_LIMIT = 25
+
 
 class AdminUsersView(APIView):
     """Account analytics: sign-up growth, locale/theme split, activation.
 
-    Aggregate-only over ``accounts.UserProfile`` (+ a distinct-reader count from
-    ReadingProgress for activation). No emails or identifiers are returned.
+    Mostly aggregate over ``accounts.UserProfile`` (+ a distinct-reader count
+    from ReadingProgress for activation). The ``recent`` list is the exception:
+    it names individual accounts (display name, email, sign-in method) so the
+    founder can see who is actually signing up — admin-only, behind
+    ``IsAdminEmail``, and served to no one else.
     """
 
     permission_classes = [IsAdminEmail]
@@ -237,6 +259,8 @@ class AdminUsersView(APIView):
                     created_at__gte=now - timedelta(days=30)
                 ).count(),
                 "weekly_signups": self._weekly_signups(now),
+                "by_method": self._by_method(),
+                "recent": self._recent(),
                 "by_locale": self._by_locale(),
                 "by_theme": [
                     {
@@ -250,6 +274,57 @@ class AdminUsersView(APIView):
                 ],
             }
         )
+
+    def _by_method(self):
+        """Accounts per sign-in provider.
+
+        A provider is counted for every account that has it, so an account with
+        both email and Google adds to both rows (the totals overlap, on
+        purpose). ``unknown`` collects accounts with nothing recorded yet — a
+        row created before providers were captured, whose owner hasn't signed in
+        since. Shown by the UI only when non-zero.
+        """
+        from collections import Counter
+
+        from accounts.models import UserProfile, split_providers
+
+        counter: Counter[str] = Counter()
+        unknown = 0
+        for providers in UserProfile.objects.values_list("providers", flat=True):
+            codes = split_providers(providers)
+            if codes:
+                counter.update(codes)
+            else:
+                unknown += 1
+
+        out = [
+            {"method": code, "label": _provider_label(code), "count": n}
+            for code, n in counter.most_common()
+        ]
+        if unknown:
+            out.append({"method": "unknown", "label": "Unknown", "count": unknown})
+        return out
+
+    def _recent(self):
+        """The most recent sign-ups, named — see the class docstring on why."""
+        from accounts.models import UserProfile
+
+        rows = UserProfile.objects.order_by("-created_at")[:RECENT_SIGNUPS_LIMIT]
+        return [
+            {
+                "display_name": p.display_name,
+                "email": p.email,
+                # Labeled server-side (like ``by_method``) so the frontend needs
+                # no copy of the provider→label map to keep in sync.
+                "providers": [
+                    {"code": c, "label": _provider_label(c)} for c in p.provider_list
+                ],
+                "locale": p.locale,
+                "joined_at": p.created_at.isoformat(),
+                "last_seen_at": p.last_seen_at.isoformat() if p.last_seen_at else None,
+            }
+            for p in rows
+        ]
 
     def _by_locale(self):
         from django.db.models import Count

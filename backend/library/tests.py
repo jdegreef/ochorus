@@ -121,6 +121,78 @@ class CleanTitleTests(TestCase):
         self.assertEqual(clean_title("The Dignity of Christ"), "The Dignity of Christ")
 
 
+class ResolveTitleTests(SimpleTestCase):
+    """`import_gutenberg.resolve_title` on the numeral-over-title heading shape."""
+
+    def _title(self, html):
+        from .management.commands.import_gutenberg import resolve_title, soup
+
+        return resolve_title(soup(html).find(["h1", "h2", "h3"]))[0]
+
+    def test_bare_numeral_line_over_title_drops_the_numeral(self):
+        # Torrey's "<h2>I<br/>BEGINNING RIGHT</h2>" fuses to "I BEGINNING RIGHT"
+        # under a space join, which no roman-prefix rule can safely strip (it
+        # would also break "I AM THE WAY"). The <br/> is the reliable signal.
+        self.assertEqual(self._title("<h2>I<br/>BEGINNING RIGHT</h2>"), "Beginning Right")
+        self.assertEqual(self._title("<h2>XIII<br/><small>THE DEVIL</small></h2>"), "The Devil")
+
+    def test_chapter_marker_line_over_title_drops_the_marker(self):
+        self.assertEqual(
+            self._title("<h2>CHAPTER VII.<br/><br/>Dealing with the Careless</h2>"),
+            "Dealing with the Careless",
+        )
+
+    def test_trailing_punctuation_outside_the_title_span_keeps_no_space(self):
+        # "<span>…of God</span>?" is a separate text node, so the newline join
+        # would leave "God ?" without the space-before-punct fix.
+        self.assertEqual(
+            self._title(
+                "<h2>I<br/><small><span>Inspiration, or to What Extent Is the "
+                "Bible Inspired of God</span>?</small></h2>"
+            ),
+            "Inspiration, or to What Extent Is the Bible Inspired of God?",
+        )
+
+    def test_leaves_a_single_line_heading_to_the_normal_path(self):
+        # No <br/>: the numeral-borrow path (which reads the NEXT node) still owns
+        # "<h5>I.</h5>", so this branch must not fire on a one-line heading.
+        self.assertEqual(self._title("<h2>Beginning Right</h2>"), "Beginning Right")
+
+    def test_does_not_strip_a_numeral_that_is_the_whole_title(self):
+        # If the remainder is itself just a numeral, fall through untouched rather
+        # than returning an empty title.
+        self.assertEqual(self._title("<h2>I<br/>II</h2>"), "I II")
+
+    def test_splits_on_br_only_not_on_an_inline_pagenum_span(self):
+        # A page-anchor span inside a heading is NOT a <br/>, so it must not become
+        # a phantom line that the branch mistakes for the title. The numeral stays.
+        title = self._title(
+            '<h2>CHAPTER I<span class="pagenum" id="Page_12">[Pg 12]</span></h2>'
+        )
+        self.assertNotEqual(title, "[Pg 12]")  # branch did not fire and eat the numeral
+        self.assertIn("[Pg 12]", title)  # fell through to the old fused path intact
+
+    def test_splits_on_br_only_not_on_a_styled_first_letter(self):
+        # A drop-cap / styled initial that happens to be a roman-numeral letter
+        # (C, I, V, L, …) must not be read as a chapter numeral and stripped.
+        title = self._title('<h2><span class="dropcap">C</span>hrist Our Hope</h2>')
+        self.assertNotEqual(title, "Hrist Our Hope")
+        self.assertIn("hrist Our Hope", title)
+
+    def test_ignores_a_trailing_contents_toc_link(self):
+        # Murray's #29296 sets each chapter heading as a bare "CHAPTER N" with a
+        # "Contents" TOC-return link on the next line; that link is navigation, so
+        # the heading stays a bare counter (the real title comes from corrections),
+        # NOT the word "Contents".
+        self.assertEqual(
+            self._title(
+                '<h2>CHAPTER VI<br/><small class="toclink">'
+                '<a href="#toc">Contents</a></small></h2>'
+            ),
+            "Chapter VI",
+        )
+
+
 class HtmlToTextTests(TestCase):
     def test_strips_tags_and_keeps_block_boundaries(self):
         text = html_to_text("<p>First sentence.</p><p>Second one.</p>")
@@ -234,6 +306,11 @@ class AuthorListTests(TestCase):
         # A house byline with books — not a person, so not on this shelf.
         imprint = Author.objects.create(slug="house", name="House Originals", is_imprint=True)
         Book.objects.create(author=imprint, slug="anthology", language="en", title="Anthology")
+        # A real person with a book, withheld from the shelf by choice.
+        withheld = Author.objects.create(
+            slug="withheld", name="Withheld Writer", list_in_biographies=False
+        )
+        Book.objects.create(author=withheld, slug="withheld-book", language="en", title="A Book")
 
     def slugs(self, lang="en"):
         res = self.client.get(f"/api/library/authors/?language={lang}")
@@ -279,6 +356,25 @@ class AuthorListTests(TestCase):
             if r.get("model") == "library.author" and r["fields"].get("is_imprint")
         }
         self.assertIn("ochorus-originals", imprints)
+
+    def test_person_with_a_book_can_be_withheld_from_the_shelf(self):
+        # A real contributor with a book stays on /books but is kept off the
+        # Biographies shelf when list_in_biographies is False.
+        self.assertNotIn("withheld", self.slugs())
+
+    def test_fixture_withholds_hannah_buyinza(self):
+        # Same fresh-DB reasoning as the imprint flag: the fixture has to carry
+        # list_in_biographies=false, since a rebuild seeds from it after migrate.
+        from library.content_fixtures import load_all_rows
+
+        rows = load_all_rows()
+        withheld = {
+            r["fields"]["slug"]
+            for r in rows
+            if r.get("model") == "library.author"
+            and r["fields"].get("list_in_biographies") is False
+        }
+        self.assertIn("hannah-buyinza", withheld)
 
 
 class SermonTranslationLabelTests(TestCase):
@@ -1360,7 +1456,61 @@ class BookCardPayloadTests(TestCase):
         # is pinned rather than bounded so a reintroduced repeat shows up as a
         # failure with the query list attached. The +1 over the view's 10 is the
         # one constant read the ETag adds (the content revision — not per-row).
-        with self.assertNumQueries(11):
+        # The 12th is the `featured_in_books` prefetch for `appears_in` — one
+        # constant lookup for the "also appears in" section, prefetched in the
+        # view so it stays a single query whether or not the author appears in
+        # anything (an author with appearances pays one more, for the books).
+        with self.assertNumQueries(12):
             self.client.get("/api/library/authors/murray/?language=en")
 
 
+class TranslationBadgeSourceTypeTests(TestCase):
+    """The reader and the author page must badge an unreviewed AI translation —
+    CLAUDE.md: never present one as an original. Both payloads now carry the
+    review state SourceBadge reads: a chapter's `source_type` (from its
+    per-language book) and the author bio's `bio_source_type` (from the
+    AuthorTranslation for the requested language)."""
+
+    def setUp(self):
+        self.client = APIClient()
+        self.author = Author.objects.create(slug="w", name="Writer", bio="EN bio.")
+        for lang, st in (("en", "public_domain"), ("es", "ai_unreviewed")):
+            book = Book.objects.create(
+                author=self.author, slug="bk", language=lang, title="Book",
+                source_type=st,
+            )
+            Chapter.objects.create(book=book, order=1, title="One", body_html="<p>x</p>")
+
+    def test_chapter_source_type_is_this_editions(self):
+        en = self.client.get("/api/library/books/bk/chapters/1/?language=en")
+        self.assertEqual(en.data["source_type"], "public_domain")
+        es = self.client.get("/api/library/books/bk/chapters/1/?language=es")
+        self.assertEqual(es.data["source_type"], "ai_unreviewed")
+
+    def test_bio_source_type_tracks_the_translation_review_state(self):
+        url = "/api/library/authors/w/"
+        # The source-language original is not a translation — no badge.
+        self.assertEqual(
+            self.client.get(url + "?language=en").data["bio_source_type"],
+            "public_domain",
+        )
+        # A translated bio, not yet signed off by a native speaker.
+        tr = AuthorTranslation.objects.create(
+            author=self.author, language="es", bio_html="<p>ES</p>", reviewed=False
+        )
+        self.assertEqual(
+            self.client.get(url + "?language=es").data["bio_source_type"],
+            "ai_unreviewed",
+        )
+        # Approved.
+        tr.reviewed = True
+        tr.save()
+        self.assertEqual(
+            self.client.get(url + "?language=es").data["bio_source_type"],
+            "ai_reviewed",
+        )
+        # A language with no translated prose serves nothing to badge.
+        self.assertEqual(
+            self.client.get(url + "?language=lg").data["bio_source_type"],
+            "public_domain",
+        )

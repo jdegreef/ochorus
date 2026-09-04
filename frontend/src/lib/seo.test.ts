@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { absUrl, jsonLd, breadcrumb, hreflangFor, itemList } from './seo';
+import { absUrl, jsonLd, breadcrumb, breadcrumbLd, hreflangFor, itemList } from './seo';
 import { SITE_URL } from './config';
 
 describe('absUrl', () => {
@@ -136,5 +136,18 @@ describe('breadcrumb', () => {
 			name: 'Humility',
 			item: `${SITE_URL}/books/humility/`
 		});
+	});
+});
+
+describe('breadcrumbLd', () => {
+	it('bridges the Breadcrumb `href` field into the schema `url`', () => {
+		// The one thing the helper adds over breadcrumb(): it reads a Breadcrumb
+		// trail's `href`, not `url`, so a page can feed the same {name, href} array
+		// to both the visible <Breadcrumb> and the head — the field-name mismatch
+		// that the old hand-typed `crumbs.map` shipped wrong with no error.
+		const out = breadcrumbLd([{ name: 'Humility', href: '/books/humility' }]);
+		const inner = out.replace(/^<script[^>]*>/, '').replace(/<\/script>$/, '');
+		const data = JSON.parse(inner.replace(/\\u003c/g, '<'));
+		expect(data.itemListElement[0].item).toBe(`${SITE_URL}/books/humility/`);
 	});
 });

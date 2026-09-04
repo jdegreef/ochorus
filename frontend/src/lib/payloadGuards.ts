@@ -109,3 +109,13 @@ export const SERMON_FIELDS: Record<string, FieldKind> = {
 	body_html: 'string',
 	author_name: 'string'
 };
+
+/** An article is its headline and its prose — without either the page is a
+ *  blank where the writing should be. `related` degrades to an absent "Read
+ *  next" block, so it is deliberately not guarded (see the note above). */
+export const ARTICLE_FIELDS: Record<string, FieldKind> = {
+	slug: 'string',
+	language: 'string',
+	h1: 'string',
+	body_html: 'string'
+};

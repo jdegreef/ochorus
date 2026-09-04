@@ -13,6 +13,7 @@ the Supabase user (``sub`` claim, a UUID) to a Django User + UserProfile.
 from __future__ import annotations
 
 import logging
+from datetime import timedelta
 
 import jwt
 from django.conf import settings
@@ -37,6 +38,33 @@ ASYMMETRIC_ALGORITHMS = ("RS256", "RS384", "RS512", "ES256", "ES384", "ES512")
 # How long a fetched JWK Set is trusted before it is re-fetched. This bounds how
 # long a rotated-out or revoked Supabase signing key stays accepted.
 JWKS_CACHE_SECONDS = 300
+
+# Don't move ``last_seen_at`` (a write) on every authenticated request — only
+# once the recorded value is this stale. The admin's "seen" column is a
+# day-grained signal, so a coarse throttle costs nothing it needs.
+LAST_SEEN_THROTTLE = timedelta(minutes=15)
+
+
+def token_providers(payload) -> list[str]:
+    """The Supabase auth providers a verified token reports, normalised.
+
+    Supabase carries the linked identities in ``app_metadata.providers`` (a
+    list) and the one just used in ``app_metadata.provider`` (a string). We
+    keep the full set — an account that signed up with email and later linked
+    Google should count under both — lower-cased, de-duplicated and sorted so
+    the stored form is stable. Returns ``[]`` when the token says nothing.
+    """
+    meta = payload.get("app_metadata") if isinstance(payload, dict) else None
+    if not isinstance(meta, dict):
+        return []
+    found: set[str] = set()
+    provs = meta.get("providers")
+    if isinstance(provs, list):
+        found.update(p.strip().lower() for p in provs if isinstance(p, str) and p.strip())
+    prov = meta.get("provider")
+    if isinstance(prov, str) and prov.strip():
+        found.add(prov.strip().lower())
+    return sorted(found)
 
 
 def _claim_true(value) -> bool:
@@ -210,10 +238,39 @@ class SupabaseJWTAuthentication(authentication.BaseAuthentication):
             user.save(update_fields=["email"])
 
         # Lazy import to avoid app-loading order issues.
+        from django.utils import timezone
+
         from .models import UserProfile
 
-        UserProfile.objects.get_or_create(
+        providers = ",".join(token_providers(payload))
+        now = timezone.now()
+        profile, created = UserProfile.objects.get_or_create(
             user=user,
-            defaults={"supabase_uid": sub, "email": email},
+            defaults={
+                "supabase_uid": sub,
+                "email": email,
+                "providers": providers,
+                "last_seen_at": now,
+            },
         )
+        if not created:
+            self._touch_profile(profile, providers, now)
         return user
+
+    def _touch_profile(self, profile, providers: str, now) -> None:
+        """Keep ``providers`` current and ``last_seen_at`` fresh, cheaply.
+
+        Runs on every authenticated request, so it writes only when something
+        actually changed: a newly linked provider, or a ``last_seen_at`` older
+        than ``LAST_SEEN_THROTTLE``. A token that reports no providers never
+        clears a value we already learned.
+        """
+        fields = []
+        if providers and providers != profile.providers:
+            profile.providers = providers
+            fields.append("providers")
+        if profile.last_seen_at is None or now - profile.last_seen_at >= LAST_SEEN_THROTTLE:
+            profile.last_seen_at = now
+            fields.append("last_seen_at")
+        if fields:
+            profile.save(update_fields=fields)

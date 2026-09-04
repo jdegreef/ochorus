@@ -98,6 +98,7 @@ services:
         # Single files, not trees: these two are Python seed modules, and a
         # `/**` over a Python package would sweep in __pycache__.
         - backend/library/topic_seed.py
+        - backend/library/book_people_seed.py
         - backend/library/plan_seed.py
         - backend/library/quote_seed.py
         # apply_body_corrections runs on EVERY deploy and rewrites chapter and
@@ -704,3 +705,13 @@ services:
       # them publishes the source.
       - key: PUBLIC_SENTRY_DSN
         sync: false
+      # How long the prebuild waits for ochorus-api to serve THIS commit's
+      # content before prerendering (scripts/await-api-release.mjs). A content
+      # commit deploys both services at once, and the static build reaches this
+      # gate in ~1 min while the API's Docker build + migrate + seed can take
+      # several minutes more — so the script's own 5-min default was timing out
+      # and failing the web build even though the API was merely mid-deploy, not
+      # broken. 15 min gives the API deploy comfortable headroom; waiting costs
+      # only static-build minutes, whereas failing ships nothing.
+      - key: API_RELEASE_TIMEOUT_MS
+        value: "900000"

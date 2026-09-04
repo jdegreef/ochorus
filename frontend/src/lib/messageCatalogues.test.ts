@@ -52,6 +52,20 @@ describe('message catalogues', () => {
 		expect(base.size).toBeGreaterThan(100);
 	});
 
+	it('uses the "— Ochorus" title suffix in every catalogue, never "· Ochorus"', () => {
+		// The browser-title brand suffix is " — Ochorus" (em dash) site-wide. The
+		// suffix lives inside translatable strings (e.g. book_title_tag), so a
+		// per-catalogue "· Ochorus" is invisible until a reader of that language
+		// opens a tab — which is exactly how seven catalogues drifted once.
+		const offenders = catalogueLocales().filter((loc) =>
+			Object.values(load(loc)).some((v) => typeof v === 'string' && v.includes('· Ochorus'))
+		);
+		expect(
+			offenders,
+			`These catalogues carry "· Ochorus"; the site suffix is "— Ochorus" (em dash).`
+		).toEqual([]);
+	});
+
 	for (const locale of ADVERTISED_LOCALES.filter((l) => l !== 'en')) {
 		it(`${locale} is complete — it is advertised, so readers are invited into it`, () => {
 			const missing = [...base].filter((k) => !keysOf(load(locale)).has(k));

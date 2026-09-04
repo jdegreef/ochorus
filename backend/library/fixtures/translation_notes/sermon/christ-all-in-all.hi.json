@@ -1,0 +1,168 @@
+{
+ "kind": "sermon",
+ "slug": "christ-all-in-all",
+ "language": "hi",
+ "job_issue": 1111,
+ "pull_request": 1422,
+ "references": [
+  {
+   "reference": "Colossians 3:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 2:10",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 2:11",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Isaiah 49:24",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "Job 33:24",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 19
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Nehemiah 9:15",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 36
+  },
+  {
+   "reference": "James 1:5",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 60
+  },
+  {
+   "reference": "Job 33:28",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 19
+  },
+  {
+   "reference": "Isaiah 41:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "2 Corinthians 3:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 21:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Malachi 3:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 2:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 8:12",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text"
+  },
+  {
+   "reference": "Acts 4:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 5:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 62
+  },
+  {
+   "reference": "John 3:2",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 63
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 70
+  },
+  {
+   "reference": "Psalm 23:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 3:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 53:4",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 95
+  },
+  {
+   "reference": "Psalm 91:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 23:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 23:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Malachi 4:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 22:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 18:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 49:25",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 18
+  }
+ ]
+}

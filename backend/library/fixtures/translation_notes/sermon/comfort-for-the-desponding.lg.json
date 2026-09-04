@@ -1,0 +1,90 @@
+{
+ "kind": "sermon",
+ "slug": "comfort-for-the-desponding",
+ "language": "lg",
+ "job_issue": 1342,
+ "references": [
+  {
+   "reference": "Job 29:2",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Job 19:25",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 16:23",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Lamentations 3:15",
+   "status": "mined",
+   "block_index": 48,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Jonah 2:2",
+   "status": "mined",
+   "block_index": 50,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Joel 2:31",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Matthew 25:29",
+   "status": "mined",
+   "block_index": 57,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Proverbs 14:4",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "2 Peter 3:1",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Psalm 1:3",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "self_rendered",
+   "block_index": 57
+  }
+ ]
+}

@@ -1,9 +1,12 @@
 <script lang="ts">
 	import Icon from '$lib/components/Icon.svelte';
+	import DrawerShell from '$lib/components/DrawerShell.svelte';
 	import { getBook, type BookDetail } from '$lib/library-public';
 	import { getScrollAnchor } from '$lib/progress';
 	import { marks } from '$lib/marks.svelte';
 	import { bookmarks } from '$lib/bookmarks.svelte';
+	import { removeBookmarkUndoable } from '$lib/undoable';
+	import { undo } from '$lib/undo.svelte';
 	import type { Bookmark } from '$lib/reading-schema';
 	import { chapterLabel, editionLang, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
@@ -30,8 +33,6 @@
 
 	const t = i18n.t;
 	let book = $state<BookDetail | null>(null);
-	let panel = $state<HTMLElement>();
-	let opener: Element | null = null;
 
 	// Carry the reader's edition onto every chapter link (and fetch the matching
 	// TOC titles) so tapping a chapter in the drawer stays in the same edition.
@@ -60,7 +61,6 @@
 
 	$effect(() => {
 		if (!open) return;
-		opener = document.activeElement;
 		bookmarks.load('book', slug);
 		if (fetchedKey !== wantKey) {
 			fetchedKey = wantKey;
@@ -70,41 +70,18 @@
 				// sitting on a failure for the life of the page.
 				.catch(() => ((book = null), (fetchedKey = '')));
 		}
-		// Focus the panel once it renders.
-		queueMicrotask(() => panel?.querySelector<HTMLElement>('a, button')?.focus());
-		return () => {
-			(opener as HTMLElement | null)?.focus?.();
-		};
 	});
 
 	function close() {
 		open = false;
 	}
 
-	function onKeydown(e: KeyboardEvent) {
-		if (!open) return;
-		if (e.key === 'Escape') {
-			e.stopPropagation();
-			close();
-			return;
-		}
-		// Simple focus trap: keep Tab cycling inside the panel.
-		if (e.key === 'Tab' && panel) {
-			const focusables = panel.querySelectorAll<HTMLElement>(
-				'a[href], button:not([disabled])'
-			);
-			if (!focusables.length) return;
-			const first = focusables[0];
-			const last = focusables[focusables.length - 1];
-			if (e.shiftKey && document.activeElement === first) {
-				e.preventDefault();
-				last.focus();
-			} else if (!e.shiftKey && document.activeElement === last) {
-				e.preventDefault();
-				first.focus();
-			}
-		}
-	}
+	// An Undo drawn in here loses its home when the drawer closes — by a link,
+	// the shell's ✕, its scrim or Escape alike — so hand it to the corner toast
+	// rather than throwing it away with the panel.
+	$effect(() => {
+		if (!open) undo.toToast();
+	});
 
 	const visited = (order: number) =>
 		order === currentOrder || getScrollAnchor(slug, order) !== null;
@@ -118,132 +95,94 @@
 		loaded?.chapters.find((c) => c.order === bm.order)?.title || bm.title;
 </script>
 
-<svelte:window onkeydown={onKeydown} />
-
-{#if open}
-	<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
-	<div class="toc-scrim" onclick={close}></div>
-	<div
-		bind:this={panel}
-		class="toc-panel"
-		role="dialog"
-		aria-modal="true"
-		aria-label={t('reader.contents')}
-	>
-		<header class="flex items-center justify-between gap-3 border-b border-border px-5 py-4">
-			<div class="min-w-0">
-				<h2 class="truncate text-h3 text-text">{loaded?.title ?? t('reader.contents')}</h2>
-				{#if loaded}
-					<p class="text-small text-muted">{loaded.author.name}</p>
-				{/if}
-			</div>
-			<button class="btn btn-icon btn-ghost" onclick={close} aria-label={t('a11y.close')}>✕</button>
-		</header>
-
-		<nav class="toc-list" aria-label={t('reader.contents')}>
-			{#if bookmarks.list.length}
-				<div class="bm-section">
-					<p class="bm-heading eyebrow">🔖 {t('reader.bookmarks')}</p>
-					<ul>
-						{#each bookmarks.list as bm (bm.id)}
-							{@const title = titleOf(bm)}
-							<li class="bm-row">
-								<a
-									href={localizeHref(
-										`/books/${slug}/${bm.order}?p=${bm.p}${edition === 'modern' ? '&edition=modern' : ''}`
-									)}
-									class="toc-item min-w-0 flex-1"
-									onclick={close}
-								>
-									<span class="min-w-0 flex-1">
-										<span class="block truncate text-small text-text">{bm.snippet || title}</span>
-										<span class="block text-micro text-muted">{chapterLabel(bm.order, title)}</span>
-									</span>
-								</a>
-								<button
-									class="bm-remove"
-									onclick={() => bookmarks.remove(bm.id)}
-									aria-label={t('reader.bookmark')}><Icon name="close" size={14} /></button
-								>
-							</li>
-						{/each}
-					</ul>
-				</div>
+<DrawerShell bind:open ariaLabel={t('reader.contents')} width="min(22rem, 88vw)">
+	{#snippet titleArea()}
+		<div class="min-w-0">
+			<h2 class="truncate text-h3 text-text">{loaded?.title ?? t('reader.contents')}</h2>
+			{#if loaded}
+				<p class="text-small text-muted">{loaded.author.name}</p>
 			{/if}
-			{#if !loaded}
-				<p class="px-5 py-4 text-small text-muted">…</p>
-			{:else}
-				<ol>
-					{#each loaded.chapters as ch (ch.order)}
-						{@const markCount = marks.countFor(slug, ch.order, 'book', shownLang)}
-						<li>
+		</div>
+	{/snippet}
+
+	<nav class="toc-list" aria-label={t('reader.contents')}>
+		{#if bookmarks.list.length}
+			<div class="bm-section">
+				<p class="bm-heading eyebrow">🔖 {t('reader.bookmarks')}</p>
+				<ul>
+					{#each bookmarks.list as bm (bm.id)}
+						{@const title = titleOf(bm)}
+						<li class="bm-row">
 							<a
-								href={localizeHref(`/books/${slug}/${ch.order}${suffix}`)}
-								class="toc-item"
-								class:current={ch.order === currentOrder}
-								aria-current={ch.order === currentOrder ? 'page' : undefined}
+								href={localizeHref(
+									`/books/${slug}/${bm.order}?p=${bm.p}${edition === 'modern' ? '&edition=modern' : ''}`
+								)}
+								class="toc-item min-w-0 flex-1"
 								onclick={close}
 							>
-								<span
-									class="toc-dot"
-									class:on={visited(ch.order)}
-									aria-hidden="true"
-								></span>
 								<span class="min-w-0 flex-1">
-									<span class="block truncate text-small text-text">
-										{chapterLabel(ch.order, ch.title)}
-									</span>
-									<span class="block text-micro text-muted">
-										{readingTime(ch.word_count)}{#if markCount > 0}
-											· {markCount} {markCount === 1 ? t('reader.markOne') : t('reader.markMany')}{/if}
-									</span>
+									<span class="block truncate text-small text-text">{bm.snippet || title}</span>
+									<span class="block text-micro text-muted">{chapterLabel(bm.order, title)}</span>
 								</span>
 							</a>
+							<button
+								class="bm-remove"
+								onclick={() => removeBookmarkUndoable(bm.id, { inline: true })}
+								aria-label={t('reader.bookmark')}><Icon name="close" size={14} /></button
+							>
 						</li>
 					{/each}
-				</ol>
-			{/if}
-		</nav>
-	</div>
-{/if}
+				</ul>
+			</div>
+		{/if}
+		<!-- The Undo for a bookmark removed just above, drawn INSIDE the dialog:
+		     the shell is aria-modal with a focus trap, so the corner toast that
+		     carries every other Undo is out of a keyboard's and a screen reader's
+		     reach here. Outside the bookmarks block, because removing the last
+		     bookmark makes that block disappear. -->
+		{#if undo.current?.inline}
+			<p class="bm-undo" role="status">
+				<span class="text-small text-muted">{t('undo.removed')}</span>
+				<button class="bm-undo-btn" onclick={() => undo.act()}>{t('undo.action')}</button>
+			</p>
+		{/if}
+		{#if !loaded}
+			<p class="px-5 py-4 text-small text-muted">…</p>
+		{:else}
+			<ol>
+				{#each loaded.chapters as ch (ch.order)}
+					{@const markCount = marks.countFor(slug, ch.order, 'book', shownLang)}
+					<li>
+						<a
+							href={localizeHref(`/books/${slug}/${ch.order}${suffix}`)}
+							class="toc-item"
+							class:current={ch.order === currentOrder}
+							aria-current={ch.order === currentOrder ? 'page' : undefined}
+							onclick={close}
+						>
+							<span
+								class="toc-dot"
+								class:on={visited(ch.order)}
+								aria-hidden="true"
+							></span>
+							<span class="min-w-0 flex-1">
+								<span class="block truncate text-small text-text">
+									{chapterLabel(ch.order, ch.title)}
+								</span>
+								<span class="block text-micro text-muted">
+									{readingTime(ch.word_count)}{#if markCount > 0}
+										· {markCount} {markCount === 1 ? t('reader.markOne') : t('reader.markMany')}{/if}
+								</span>
+							</span>
+						</a>
+					</li>
+				{/each}
+			</ol>
+		{/if}
+	</nav>
+</DrawerShell>
 
 <style>
-	.toc-scrim {
-		position: fixed;
-		inset: 0;
-		z-index: 48;
-		background: rgb(0 0 0 / 0.35);
-	}
-	.toc-panel {
-		position: fixed;
-		top: 0;
-		bottom: 0;
-		/* The drawer belongs at the END of the reading direction, which under
-		   dir="rtl" (Arabic) is the LEFT edge — so it is anchored, bordered and
-		   slid logically. Box-shadow offsets and translateX have no logical
-		   form, so those two are flipped explicitly below; everything else
-		   follows the inline axis on its own. */
-		inset-inline-end: 0;
-		z-index: 49;
-		width: min(22rem, 88vw);
-		display: flex;
-		flex-direction: column;
-		background: var(--surface);
-		border-inline-start: 1px solid var(--border);
-		box-shadow: var(--shadow-drawer);
-		--toc-slide-from: 1.5rem;
-		animation: toc-in var(--duration-fast) ease-out;
-	}
-	:global([dir='rtl']) .toc-panel {
-		box-shadow: 12px 0 40px rgb(0 0 0 / 0.25);
-		--toc-slide-from: -1.5rem;
-	}
-	@keyframes toc-in {
-		from {
-			transform: translateX(var(--toc-slide-from, 1.5rem));
-			opacity: 0;
-		}
-	}
 	.toc-list {
 		flex: 1;
 		overflow-y: auto;
@@ -283,6 +222,21 @@
 	}
 	.bm-remove:hover {
 		color: var(--text);
+	}
+	.bm-undo {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 0.5rem 1.25rem;
+		border-bottom: 1px solid var(--border);
+	}
+	.bm-undo-btn {
+		border-radius: 999px;
+		background: var(--accent);
+		color: var(--accent-contrast);
+		padding: 0.2rem 0.7rem;
+		font-weight: 600;
+		font-size: var(--fs-small);
 	}
 	.toc-item.current {
 		background: color-mix(in srgb, var(--accent) 8%, transparent);

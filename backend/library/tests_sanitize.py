@@ -145,12 +145,17 @@ class StoredContentIsSafeTests(TestCase):
     including a translation PR authored with no human in the loop.
     """
 
-    def test_no_shipped_chapter_or_sermon_body_is_dangerous(self):
+    def test_no_shipped_content_body_is_dangerous(self):
+        # Every per-work fixture the reader renders with {@html}, not an
+        # enumerated books+sermons list: a NEW content type carrying a
+        # ``body_html`` (articles were the first) must be covered the moment its
+        # fixtures land, without anyone remembering to widen this glob. Files
+        # with no ``body_html`` rows (authors.json, plans.json) are scanned and
+        # harmlessly skipped by the guard below — the same "close the class, not
+        # the instance" reasoning tests_rls and the content-source coverage use.
         offenders: list[str] = []
         scanned = 0
-        files = sorted(CONTENT_ROOT.glob("books/*.json")) + sorted(
-            CONTENT_ROOT.glob("sermons/*.json")
-        )
+        files = sorted(CONTENT_ROOT.rglob("*.json"))
         self.assertTrue(files, "no content fixtures found — has the layout moved?")
         for path in files:
             for row in json.loads(path.read_text()):

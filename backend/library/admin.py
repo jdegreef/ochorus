@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib import admin
 
-from .models import Author, Book, Chapter, Plan, PlanDay
+from .models import Author, Book, BookPerson, Chapter, Plan, PlanDay
 from .sanitize import clean_bio_html, clean_fragment
 
 
@@ -38,12 +38,41 @@ class AuthorAdminForm(forms.ModelForm):
         return clean_bio_html(self.cleaned_data.get("bio_html") or "")
 
 
+class BookPersonInline(admin.TabularInline):
+    """The books this person is found IN but did not write (BookPerson).
+
+    Shown on the author page because ``BookPerson`` points at the person by FK;
+    the book end is a soft ``book_slug`` (one row covers every language edition),
+    so there is nothing to inline on ``Book`` — curate a whole book's cast from
+    the standalone ``BookPerson`` admin instead.
+    """
+
+    model = BookPerson
+    fields = ("book_slug", "role", "sort_order")
+    extra = 0
+
+
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
     form = AuthorAdminForm
     list_display = ("name", "slug", "birth_year", "death_year")
     prepopulated_fields = {"slug": ("name",)}
     search_fields = ("name", "slug")
+    inlines = [BookPersonInline]
+
+
+@admin.register(BookPerson)
+class BookPersonAdmin(admin.ModelAdmin):
+    """Attach the bios of people found in a book. ``book_slug`` is the canonical
+    work slug (language-agnostic); ``person`` is their author/bio. The repo's
+    ``book_people_seed.py`` is the source of truth on deploy — edits here are for
+    local curation and get re-asserted from that file."""
+
+    list_display = ("book_slug", "person", "role", "sort_order")
+    list_filter = ("role",)
+    search_fields = ("book_slug", "person__name", "person__slug")
+    autocomplete_fields = ("person",)
+    ordering = ("book_slug", "sort_order")
 
 
 class ChapterInline(admin.TabularInline):

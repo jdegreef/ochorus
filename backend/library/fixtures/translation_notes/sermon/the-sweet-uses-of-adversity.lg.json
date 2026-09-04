@@ -1,0 +1,91 @@
+{
+ "kind": "sermon",
+ "slug": "the-sweet-uses-of-adversity",
+ "language": "lg",
+ "job_issue": 1343,
+ "references": [
+  {
+   "reference": "Job 10:2",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Samuel 24:14",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Job 10:2",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Job 10:1-2",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Job 10:2",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Micah 7:8",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Exodus 4:24",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Corinthians 15:49",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 26:38",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 27:46",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Job 13:15",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 27:46",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  }
+ ]
+}

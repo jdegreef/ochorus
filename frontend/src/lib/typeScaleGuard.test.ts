@@ -73,14 +73,41 @@ describe('type scale', () => {
 		// subheading. Three public pages had drifted there (a topic, a
 		// biographies era, the notebook) alongside the admin surface, which is
 		// English-only, has its own header language, and is exempt.
+		//
+		// The home hero now lives in HomeMarketing.svelte (the logged-out home was
+		// split out of +page.svelte into HomeMarketing / HomeDashboard), so the
+		// exemption follows it there — it is still the one and only home hero.
 		const offenders: string[] = [];
 		for (const file of svelteFiles(SRC)) {
 			const rel = file.replace(SRC, 'src');
-			if (rel.includes('/admin/') || rel.endsWith('src/routes/+page.svelte')) continue;
+			if (
+				rel.includes('/admin/') ||
+				rel.endsWith('src/routes/+page.svelte') ||
+				rel.endsWith('src/lib/components/HomeMarketing.svelte')
+			)
+				continue;
 			const src = readFileSync(file, 'utf-8');
 			// Only markup — PageHeader's doc comment names the class on purpose.
 			for (const line of src.split('\n')) {
 				if (/class=[^>]*\btext-display\b/.test(line)) offenders.push(`${rel}: ${line.trim()}`);
+			}
+		}
+		expect(offenders, offenders.join('\n')).toEqual([]);
+	});
+
+	it('reserves .text-h1 for the page <h1>', () => {
+		// A section heading at page-title size reads as a second page title — the
+		// home shelves (via SectionHeader) and the marketing blocks did exactly
+		// that. `.text-h1` belongs on the page `<h1>`; a section is `.text-h2`, a
+		// prose sub-section `.text-h3`, and a label above a list `.section-label`,
+		// by role (STYLE_GUIDE §5). Admin is exempt like the display check above.
+		const offenders: string[] = [];
+		for (const file of svelteFiles(SRC)) {
+			const rel = file.slice(file.indexOf('src/'));
+			if (rel.includes('/admin/')) continue;
+			const src = readFileSync(file, 'utf-8');
+			for (const line of src.split('\n')) {
+				if (/<h[2-6]\b[^>]*\btext-h1\b/.test(line)) offenders.push(`${rel}: ${line.trim()}`);
 			}
 		}
 		expect(offenders, offenders.join('\n')).toEqual([]);

@@ -7,8 +7,10 @@ from .curated_art import credit
 from .localization import language_from_request
 from .models import (
     SERMON_CARD_DEFER,
+    Article,
     Author,
     Book,
+    BookPerson,
     Chapter,
     Plan,
     PlanDay,
@@ -55,29 +57,41 @@ def _available_languages(model, slug: str) -> list[str]:
     )
 
 
-def book_topic_map(language: str) -> dict[str, list[dict]]:
-    """``book_slug -> [topic chip]`` for every published topic, in one pass.
+def _topic_membership_map(
+    language: str, *, entries_attr: str, slug_attr: str
+) -> dict[str, list[dict]]:
+    """``work_slug -> [topic chip]`` for every published topic, in one pass.
 
-    Built whole rather than per book on purpose: a shelf of forty books would
-    otherwise cost forty topic queries. Views that serialize a known set of
-    books hand this to the serializer through the ``book_topics`` context key;
-    ``BookListSerializer`` builds it on demand when a view hasn't, so the chips
-    are never silently empty just because a caller forgot.
+    The shelf-wide twin of :func:`_topic_chips`: built whole rather than per work
+    on purpose, so a shelf of forty works costs a fixed handful of queries, not
+    forty topic lookups. ``entries_attr`` is the topic's reverse relation to its
+    through-rows (``entries`` for books, ``article_entries`` for articles) and
+    ``slug_attr`` the slug on each row — the only two things that differ between
+    work types. Views that know their set hand the result to the serializer
+    through a context key; the list serializer builds it on demand when a view
+    hasn't, so chips are never silently empty just because a caller forgot.
     """
     mapping: dict[str, list[dict]] = {}
     topics = Topic.objects.filter(is_published=True).prefetch_related(
-        "translations", "entries"
+        "translations", entries_attr
     )
     for topic in topics:
         # Skip shelves with no title in this language — see _topic_chips.
         if not topic.is_translated_into(language):
             continue
         chip = {"slug": topic.slug, "title": topic.title_for(language)}
-        for entry in topic.entries.all():
-            mapping.setdefault(entry.book_slug, []).append(chip)
+        for entry in getattr(topic, entries_attr).all():
+            mapping.setdefault(getattr(entry, slug_attr), []).append(chip)
     for chips in mapping.values():
         chips.sort(key=lambda c: c["title"])
     return mapping
+
+
+def book_topic_map(language: str) -> dict[str, list[dict]]:
+    """``book_slug -> [topic chip]`` for every published topic (see
+    :func:`_topic_membership_map`). ``BookListView`` supplies it as
+    ``book_topics``; ``BookListSerializer`` builds it on demand otherwise."""
+    return _topic_membership_map(language, entries_attr="entries", slug_attr="book_slug")
 
 
 def _topic_chips(language: str, **membership) -> list[dict]:
@@ -101,6 +115,16 @@ def _topic_chips(language: str, **membership) -> list[dict]:
         for t in topics
         if t.is_translated_into(language)
     ]
+
+
+def article_topic_map(language: str) -> dict[str, list[dict]]:
+    """``article_slug -> [topic chip]`` for every published topic (see
+    :func:`_topic_membership_map`) — powers the article index's filter tabs.
+    ``ArticleListView`` supplies it as ``article_topics``; the list serializer
+    builds it on demand otherwise."""
+    return _topic_membership_map(
+        language, entries_attr="article_entries", slug_attr="article_slug"
+    )
 
 
 class LocalizedMixin:
@@ -380,6 +404,153 @@ class SermonDetailSerializer(serializers.ModelSerializer):
         ]
 
 
+def resolve_related(related, language: str) -> list[dict]:
+    """Turn an article's stored ``related`` soft-references into ready-to-render
+    "Read next" cards: ``[{type, slug, title, url}, ...]``.
+
+    Each entry names a ``type`` (book / sermon / author) and a ``slug``; this
+    resolves it to the published row's display title and its reader URL, in the
+    article's language. A reference that doesn't resolve — an unpublished target,
+    or a book/sermon with no row in this language (there is no English fallback)
+    — is dropped rather than shipped as a dead link, and order is preserved.
+
+    Books and sermons are looked up by (slug, language); an author is a single
+    language-agnostic row, so it is looked up by slug alone. One query per type
+    present, not one per reference.
+
+    ``related`` is a hand-authored JSON field with no schema, so a malformed
+    entry (a bare slug string, a non-list) is skipped rather than 500-ing the
+    page. Validated entries are collected once, in order, and reused for both
+    the batched lookup and the final card list.
+    """
+    entries: list[tuple[str, str]] = []  # (kind, slug), in order, validated
+    for item in related if isinstance(related, list) else []:
+        if not isinstance(item, dict):
+            continue
+        slug, kind = item.get("slug"), item.get("type")
+        if slug and kind in ("book", "sermon", "author"):
+            entries.append((kind, slug))
+
+    by_type: dict[str, list[str]] = {}
+    for kind, slug in entries:
+        by_type.setdefault(kind, []).append(slug)
+
+    titles: dict[tuple[str, str], str] = {}
+    if by_type.get("book"):
+        for slug, title in Book.objects.filter(
+            slug__in=by_type["book"], language=language, is_published=True
+        ).values_list("slug", "title"):
+            titles[("book", slug)] = title
+    if by_type.get("sermon"):
+        for slug, title in Sermon.objects.filter(
+            slug__in=by_type["sermon"], language=language, is_published=True
+        ).values_list("slug", "title"):
+            titles[("sermon", slug)] = title
+    if by_type.get("author"):
+        for slug, name in Author.objects.filter(
+            slug__in=by_type["author"]
+        ).values_list("slug", "name"):
+            titles[("author", slug)] = name
+
+    prefix = {"book": "/books/", "sermon": "/sermons/", "author": "/authors/"}
+    cards = []
+    for kind, slug in entries:
+        title = titles.get((kind, slug))
+        if title is None:
+            continue
+        cards.append(
+            {
+                "type": kind,
+                "slug": slug,
+                "title": title,
+                "url": f"{prefix[kind]}{slug}/",
+            }
+        )
+    return cards
+
+
+class ArticleListSerializer(LocalizedMixin, serializers.ModelSerializer):
+    """An article card — enough for the /articles index (no body)."""
+
+    topics = serializers.SerializerMethodField()
+
+    def get_topics(self, obj):
+        """The (published, localized) topics this card belongs to, so the index
+        can offer topic-filter tabs. Mirrors ``BookListSerializer.get_topics``:
+        served from a slug→chips map built once per shelf, passed in as
+        ``article_topics`` context by ``ArticleListView`` or built here on first
+        use and cached on the shared ``many=True`` instance otherwise. Language
+        comes from the reader (context/request) via ``LocalizedMixin``, the same
+        source the batch path uses — never a hardcoded English default."""
+        supplied = self.context.get("article_topics")
+        if supplied is not None:
+            return supplied.get(obj.slug, [])
+        language = self._language()
+        cached_for, cached = getattr(self, "_topic_map", (None, None))
+        if cached_for != language:
+            cached = article_topic_map(language)
+            self._topic_map = (language, cached)
+        return cached.get(obj.slug, [])
+
+    class Meta:
+        model = Article
+        fields = [
+            "slug",
+            "language",
+            "h1",
+            "meta_title",
+            "description",
+            "sort_order",
+            "created_at",
+            # The sitemap's <lastmod> — see BookListSerializer.updated_at. The
+            # seed keeps this honest by only save()-ing a genuinely changed row.
+            "updated_at",
+            # Topic chips — powers the index filter tabs and the detail page's
+            # back-links. Batched by the list view; per-object on detail.
+            "topics",
+        ]
+
+
+class ArticleDetailSerializer(ArticleListSerializer):
+    """A single article with its body and its resolved "Read next" links."""
+
+    body_html = serializers.SerializerMethodField()
+    related = serializers.SerializerMethodField()
+    available_languages = serializers.SerializerMethodField()
+
+    def get_topics(self, obj):
+        """Published topics this article belongs to (localized) — the chips that
+        close the funnel back to the topic pages. A single article needs no
+        batch map, so this overrides the list serializer with a direct query;
+        the topic page already lists the article in return."""
+        return _topic_chips(obj.language, article_entries__article_slug=obj.slug)
+
+    def get_body_html(self, obj):
+        # Wrap Bible references as clickable spans so the reader's scripture
+        # popover works in articles too — the same treatment chapters and
+        # sermons get. Runs at read time, AFTER the stored body was sanitized,
+        # so the annotation's <a class="scripture-ref"> is not re-stripped.
+        from .scripture import annotate_references
+
+        return annotate_references(obj.body_html)
+
+    def get_related(self, obj):
+        return resolve_related(obj.related, obj.language)
+
+    def get_available_languages(self, obj):
+        return _available_languages(Article, obj.slug)
+
+    class Meta(ArticleListSerializer.Meta):
+        # "topics" is already on the list serializer (index tabs); detail just
+        # overrides get_topics with a direct query.
+        fields = ArticleListSerializer.Meta.fields + [
+            "body_html",
+            "related",
+            "source_url",
+            "available_languages",
+        ]
+
+
 class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
     """An author page: bio, dates, their books and their sermons in a language."""
 
@@ -389,6 +560,10 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
     topics = serializers.SerializerMethodField()
     bio = serializers.SerializerMethodField()
     bio_html = serializers.SerializerMethodField()
+    bio_source_type = serializers.SerializerMethodField()
+    # Books this person is FOUND IN but did not write (BookPerson) — the reverse
+    # of BookDetailSerializer.featured_people, so a bio can offer "appears in".
+    appears_in = serializers.SerializerMethodField()
 
     # Present so AuthorDetail honours the AuthorBio contract the list shares;
     # the detail page already has the full sermons array + bio_html, so these
@@ -399,9 +574,9 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
     class Meta:
         model = Author
         fields = [
-            "slug", "name", "bio", "bio_html", "photo_url", "birth_year",
+            "slug", "name", "bio", "bio_html", "bio_source_type", "photo_url", "birth_year",
             "death_year", "book_count", "sermon_count", "has_long_bio",
-            "books", "sermons", "topics",
+            "books", "sermons", "topics", "appears_in",
             # Authoritative identifiers for the Person markup — see the field.
             # Only the DETAIL serializer carries them: a card never emits
             # Person markup, so shipping them on every book row would be bytes
@@ -426,6 +601,25 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
 
     def get_bio_html(self, obj):
         return obj.bio_html_for(self._language())
+
+    def get_bio_source_type(self, obj):
+        """How the bio shown in the requested language got here, so the page can
+        badge an unreviewed AI translation (CLAUDE.md: never present one as an
+        original). Reuses Book.source_type's vocabulary so the frontend shares
+        SourceBadge unchanged: the source-language original is "public_domain"
+        (no badge); a translated bio is "ai_reviewed" once a native speaker signs
+        it off (AuthorTranslation.reviewed), "ai_unreviewed" until then. When the
+        requested language has no translated prose, get_bio_html serves nothing,
+        so there is nothing to badge either."""
+        language = self._language()
+        if not language or language == obj.original_language:
+            return "public_domain"
+        tr = next(
+            (t for t in obj.translations.all() if t.language == language), None
+        )
+        if not tr or not (tr.bio_html or tr.bio):
+            return "public_domain"
+        return "ai_reviewed" if tr.reviewed else "ai_unreviewed"
 
     def get_sermon_count(self, obj):
         return len(self._sermons(obj))
@@ -550,6 +744,42 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
         to the themes their work sits under (cross-navigation into browse)."""
         return self._topic_pass(obj)[0]
 
+    def get_appears_in(self, obj):
+        """The books this person is found IN but did not write (BookPerson) —
+        book cards, each carrying the ``role`` they play, so the bio can link
+        out to those works. Published books in this language only (no English
+        fallback), and a book they actually wrote is left out: it's already in
+        ``books``, and showing it twice would read as a bug.
+
+        Inline (not via ``_cached``): unlike books/sermons/topics, one field
+        reads this set, so there's nothing to share it with."""
+        lang = self._language()
+        # Ordered by the person's curated BookPerson.sort_order (the model's
+        # Meta ordering), so their appearances show in the order a curator set —
+        # the reverse of featured_people honoring the same field.
+        rows = list(obj.featured_in_books.all())
+        if not rows:
+            return []
+        roles = {r.book_slug: r.role for r in rows}
+        order = {r.book_slug: i for i, r in enumerate(rows)}
+        books = (
+            Book.objects.filter(slug__in=roles.keys(), is_published=True, language=lang)
+            .exclude(author=obj)
+            .select_related("author")
+            .prefetch_related("author__translations")
+            .annotate(**BOOK_CARD_ANNOTATIONS)
+        )
+        # Empty book_topics so BookListSerializer doesn't scan the whole topic
+        # set again for this secondary section — the author's own book cards
+        # already paid for one such walk (get_books). No topic chips on the
+        # "appears in" cards is a fair price for not doubling that query.
+        ctx = {**self.context, "book_topics": {}}
+        data = BookListSerializer(books, many=True, context=ctx).data
+        for card in data:
+            card["role"] = roles.get(card["slug"])
+        data.sort(key=lambda c: order.get(c["slug"], 0))
+        return data
+
 
 class ChapterTocSerializer(serializers.ModelSerializer):
     """A chapter's metadata for the table of contents (no body)."""
@@ -592,6 +822,10 @@ class BookDetailSerializer(BookListSerializer):
     # Detail only, and it is the one field here that reads chapter BODIES, so a
     # shelf carrying it would drag 130 books' HTML through the join.
     opening = serializers.SerializerMethodField()
+    # The people found IN this work who have a bio of their own (BookPerson) —
+    # chips linking to their author pages. Localized: only people with a bio in
+    # THIS edition's language are shown, the usual no-English-fallback rule.
+    featured_people = serializers.SerializerMethodField()
 
     def get_author_same_as(self, obj):
         return obj.author.same_as or []
@@ -605,6 +839,38 @@ class BookDetailSerializer(BookListSerializer):
         )
         text, chapter = opening_excerpt(list(chapters))
         return {"text": text, "chapter": chapter} if text else None
+
+    def get_featured_people(self, obj) -> list[dict]:
+        """The bios of people found in this work — {slug, name, photo_url,
+        role}, in ``BookPerson.sort_order``. Language-gated: a person with no
+        bio in this edition's language has nothing to link to here, so they're
+        omitted (like an untranslated topic chip).
+
+        ``role`` is carried for a UI that phrases the relationship ("the subject
+        of", "mentioned in"); the reader doesn't render it yet, so it's the
+        curated data made available, not a live label — see BookPerson."""
+        lang = obj.language
+        rows = (
+            BookPerson.objects.filter(book_slug=obj.slug)
+            .select_related("person")
+            .prefetch_related("person__translations")
+        )
+        out = []
+        for row in rows:
+            person = row.person
+            if not person.has_bio_in(lang):
+                continue
+            out.append(
+                {
+                    "slug": person.slug,
+                    "name": person.name,
+                    "photo_url": person.photo_url,
+                    "birth_year": person.birth_year,
+                    "death_year": person.death_year,
+                    "role": row.role,
+                }
+            )
+        return out
 
     def get_scripture(self, obj) -> list[dict]:
         # English only. The citation index is built from English bodies
@@ -629,6 +895,7 @@ class BookDetailSerializer(BookListSerializer):
             "difficulty", "is_modern_edition", "has_modern_edition",
             "available_languages", "artwork_credit", "author_same_as",
             "alternate_titles", "about_html", "scripture", "opening",
+            "featured_people",
         ]
 
     def get_available_languages(self, obj):
@@ -745,6 +1012,11 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
     book_slug = serializers.CharField(source="book.slug", read_only=True)
     author_name = serializers.CharField(source="book.author.name", read_only=True)
     author_slug = serializers.CharField(source="book.author.slug", read_only=True)
+    # The book's review state, so the reader can badge an unreviewed AI
+    # translation — a whole chapter of one would otherwise read as an original
+    # (CLAUDE.md). Chapters are per-language rows under a per-language Book, so
+    # book.source_type IS this edition's.
+    source_type = serializers.CharField(source="book.source_type", read_only=True)
     # Lets the reader show the Modern English ⇄ Original toggle in place.
     is_modern_edition = serializers.SerializerMethodField()
     has_modern_edition = serializers.SerializerMethodField()
@@ -811,6 +1083,7 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
             "order", "title", "body_html", "word_count",
             "book_title", "book_slug", "author_name", "author_slug",
             "is_modern_edition", "has_modern_edition", "available_languages",
+            "source_type",
             "prev", "next",
             # The scripture index row at the foot of the chapter — see above.
             "scripture_refs",
@@ -1093,12 +1366,30 @@ class TopicListSerializer(LocalizedMixin, serializers.ModelSerializer):
         }
         return [by_slug[s] for s in order if s in by_slug]
 
+    def _articles(self, obj):
+        """Member articles present in the requested language, in curated order.
+        ``articles_in_language`` is attached by the view; fall back to a query."""
+        cached = getattr(obj, "articles_in_language", None)
+        if cached is not None:
+            return cached
+        from .models import Article
+
+        order = [e.article_slug for e in obj.article_entries.all()]
+        by_slug = {
+            a.slug: a
+            for a in Article.objects.filter(
+                slug__in=order, language=self._language(), is_published=True
+            ).defer("body_html")
+        }
+        return [by_slug[s] for s in order if s in by_slug]
+
 
 class TopicDetailSerializer(TopicListSerializer):
     """A topic page — the shelf metadata plus the full list of member books."""
 
     books = serializers.SerializerMethodField()
     sermons = serializers.SerializerMethodField()
+    articles = serializers.SerializerMethodField()
     scripture_ref = serializers.SerializerMethodField()
     scripture_text = serializers.SerializerMethodField()
     available_languages = serializers.SerializerMethodField()
@@ -1110,6 +1401,7 @@ class TopicDetailSerializer(TopicListSerializer):
             "available_languages",
             "books",
             "sermons",
+            "articles",
         ]
 
     def get_available_languages(self, obj):
@@ -1136,3 +1428,8 @@ class TopicDetailSerializer(TopicListSerializer):
 
     def get_sermons(self, obj):
         return SermonListSerializer(self._sermons(obj), many=True, context=self.context).data
+
+    def get_articles(self, obj):
+        return ArticleListSerializer(
+            self._articles(obj), many=True, context=self.context
+        ).data

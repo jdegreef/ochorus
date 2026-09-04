@@ -111,6 +111,34 @@ def resolve_title(heading):
     next node; we fold it into the title and return it as `consumed_node` so the
     caller can omit it from the body (otherwise it duplicates as the first line).
     """
+    # A heading that puts the chapter numeral on its OWN line above the title
+    # ("<h2>I<br/>BEGINNING RIGHT</h2>", "<h2>CHAPTER VII.<br/>…</h2>") fuses under
+    # a space separator to "I BEGINNING RIGHT", which no roman-prefix rule can
+    # safely strip — dropping the leading "I" would also wreck "I AM THE WAY". The
+    # <br/> is the reliable signal: split on it and, when the first line is a bare
+    # numeral / "CHAPTER N" marker, keep only the descriptive remainder.
+    # A heading that puts the chapter numeral on its OWN line above the title
+    # ("<h2>I<br/>BEGINNING RIGHT</h2>", "<h2>CHAPTER VII.<br/>…</h2>") — split it
+    # on the <br/>s ONLY. Splitting on get_text's node boundaries instead would
+    # make a phantom line out of any inline element in the heading (a page-anchor
+    # span, a styled first letter), so the <br/> markup is the reliable signal.
+    lines = [soup(seg).get_text(" ", strip=True)
+             for seg in re.split(r"<br\s*/?>", heading.decode_contents(), flags=re.I)]
+    # A "Contents"/"Table of Contents" TOC-return link often trails the heading on
+    # its own line (<small class="toclink"><a>Contents</a></small>, e.g. Murray's
+    # #29296) — navigation, not the title, so drop it: that keeps a bare "CHAPTER
+    # VI" heading a bare counter (as the old fused path did via clean_title's
+    # trailing-"Contents" strip) rather than mistaking the link for a title.
+    lines = [ln for ln in lines
+             if ln and ln.lower().rstrip(".") not in {"contents", "table of contents"}]
+    if len(lines) >= 2 and _ROMAN_OR_NUM.match(lines[0]):
+        # Trailing punctuation set OUTSIDE the title's span is its own text node
+        # ("<small><span>…of God</span>?</small>"), so the join leaves a space
+        # before it — drop that before cleaning.
+        remainder = re.sub(r"\s+([?!,;:])", r"\1", " ".join(lines[1:]))
+        remainder = clean_title(remainder)
+        if remainder and not _ROMAN_OR_NUM.match(remainder):
+            return remainder, None
     # clean_title now handles ALL-CAPS -> Title Case itself, so headings/siblings
     # need no separate title-casing here.
     title = clean_title(heading.get_text(" ", strip=True))

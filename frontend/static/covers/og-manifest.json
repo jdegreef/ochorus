@@ -4,6 +4,13 @@
 	"markup": "f8b29dbad187b14d8090908923bc12f592389d81fb3dd3a731dffb44ad0faf80",
 	"fonts": "41c38d96baff251262ef9f47c2944a57660f0a2aac0b882b7f1309ed1017cbdf",
 	"twins": {
+		"a-brand-plucked-from-the-fire": {
+			"ground": "cb8466a300a0936259886dc06b1f7b9af2b1930a3e92a712b0a319a81a94e630",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"a-call-to-the-unconverted": {
 			"ground": "689800d8c2cae0fbd40918c9ca62c29bd12198213ea2a027f1e7f0c544be9982",
 			"style": "press",
@@ -438,9 +445,30 @@
 			"art": false,
 			"scrim": 1
 		},
+		"how-to-bring-men-to-christ": {
+			"ground": "c791a5af50aa589a5ed13c2400f03f4fc5e0f91e19cf8af57ee65dbf7007194b",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
+		"how-to-succeed-in-the-christian-life": {
+			"ground": "4f36094f976a13ae6922fedd1510e349ba2c1c392a9760ed7aeea20aebdfff14",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"if": {
 			"ground": "0c65bcb9120c231a9934c71eb12065665162accd56ddffed98cf593540cbb2b0",
 			"style": "devotional",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
+		"journal-of-an-expedition-up-the-niger": {
+			"ground": "e01666420f7301b7df294ded8f55e2150ced01efd63b2493e8ffddcaf27b1330",
+			"style": "revival",
 			"script": "latin",
 			"art": false,
 			"scrim": 1
@@ -472,6 +500,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.3
+		},
+		"lg/feasting-at-the-table": {
+			"ground": "cc7ee2adc9479b3488c09b82f3a1af77a1a8c55aa2df806a4df05abcbca2d169",
+			"style": "house",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8
 		},
 		"lg/godliness": {
 			"ground": "4cb31b3a75b03bc37af1168039c51491e522f747ac27006e966557043d9ea11e",
@@ -521,6 +556,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.45
+		},
+		"lg/purity-of-heart": {
+			"ground": "3575add9f9c00040342b7ce3bcb3ce2f0ebe9085d6e2d240cf644f79c6b32ffd",
+			"style": "revival",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35
 		},
 		"lg/stepping-stones-2": {
 			"ground": "3773397d863ef4a812d5461e684e94f9b92d2f7ee5ce22e1a386d8d60cbc9a98",
@@ -574,6 +616,13 @@
 		"lg/the-way-to-god": {
 			"ground": "8ebe038a4a10f4112d69037d35d908fdf9e09e35c4b5fbc35b0177caba4e7801",
 			"style": "revival",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.6
+		},
+		"lg/waiting-on-god": {
+			"ground": "84626082c3df7eb5d2a5cd11b5d88ad6e267f6b07fcfdafbc281034e8bc0faf7",
+			"style": "devotional",
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6
@@ -795,6 +844,13 @@
 			"art": true,
 			"scrim": 0.5
 		},
+		"religious-experience-and-journal": {
+			"ground": "800899d80dc640861602c80ec647562641b361ad97519abc51c24ddd2b267e4a",
+			"style": "enlightenment",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"revival-lectures": {
 			"ground": "842406cf6789e2fa5426e898a4ab03998bc0395d73e3ce44b25030af0ec886ea",
 			"style": "revival",
@@ -914,6 +970,13 @@
 			"art": true,
 			"scrim": 0.35
 		},
+		"sw/soar-like-the-eagle-3": {
+			"ground": "871f2ff44a8ebe78013b811a4ef6684be3ed3dd8dc67ce78f5e80a7b876ec2c1",
+			"style": "house",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.9
+		},
 		"sw/stepping-stones-2": {
 			"ground": "a76e128fd07329d31d457d2ecfbace09f003d08f7650e567d288eae117a005e5",
 			"style": "house",
@@ -927,6 +990,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.5
+		},
+		"sw/the-fourfold-gospel": {
+			"ground": "976ff3d612d8a48631c31ec06ae934c87a27df53d247074256f3289f651ae593",
+			"style": "revival",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85
 		},
 		"sw/the-inner-chamber": {
 			"ground": "f61e809f09f9599943ecc915b7631473eff9c78e20dbdbf35a0c021d057941a6",
@@ -1005,6 +1075,13 @@
 			"art": true,
 			"scrim": 0.85
 		},
+		"the-fundamental-doctrines-of-the-christian-faith": {
+			"ground": "4a3bacb9c75255ea1ddc45cc312db4b169a84c6c8597dbed9f9818abe38798b8",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"the-gospel-of-healing": {
 			"ground": "1883499ea592265954865f02edbaf0e6c92b980f512ca2405bf0817d4d15f720",
 			"style": "revival",
@@ -1060,6 +1137,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.75
+		},
+		"treatises-of-cyprian": {
+			"ground": "adf0f653b6f737896e056694d6d40586a1be563a3e2454d1e9a08fe57b77deec",
+			"style": "inscriptional",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"true-vine": {
 			"ground": "54b7d63dda3eb100efe8295a4392fe2def46adebd5317bf6a3841589cc727ea7",
@@ -1144,6 +1228,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6
+		},
+		"watchman-nee-a-life": {
+			"ground": "270ba249cf7d9dd78ad7c500a380996b1d07e92668c1322742897bb13d2fdbf9",
+			"style": "house",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"way-into-holiest": {
 			"ground": "a322f7e2c337cadaf64cde66de6c269faa24bc5822b796149fe5578d2348676d",

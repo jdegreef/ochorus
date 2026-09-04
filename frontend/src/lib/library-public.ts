@@ -1,5 +1,6 @@
 import { apiFetch, ApiError } from './api';
 import {
+	ARTICLE_FIELDS,
 	BOOK_FIELDS,
 	CHAPTER_FIELDS,
 	requireFields,
@@ -71,6 +72,25 @@ export interface TopicChip {
 	title: string;
 }
 
+/** How a person relates to a book they are named in but did not write. */
+export type PersonRole = 'featured' | 'subject' | 'mentioned';
+
+/**
+ * A person FOUND IN a book who has a bio of their own — the book detail page
+ * links out to their author page. Language-gated server-side: only people with a
+ * bio in this edition's language appear, so the list is never a dead link.
+ */
+export interface FeaturedPerson {
+	slug: string;
+	name: string;
+	photo_url: string;
+	birth_year: number | null;
+	death_year: number | null;
+	/** Curated relationship to the book. Carried for a UI that phrases it ("the
+	 * subject of", "mentioned in"); the reader doesn't render it yet. */
+	role: PersonRole;
+}
+
 /** Relative reading-difficulty badge, computed server-side; null = unjudged. */
 export type Difficulty = 'accessible' | 'moderate' | 'advanced' | null;
 
@@ -122,6 +142,13 @@ export interface BookDetail extends BookSummary {
 	 * (CC0), so this is courtesy rather than obligation — and provenance a
 	 * reader can check. */
 	artwork_credit: string | null;
+	/**
+	 * People found IN this work who have a bio of their own (not its author) —
+	 * links to their author pages, in curated order. Optional so an API running
+	 * behind this build simply renders no section; already language-gated, so
+	 * every entry is a live link.
+	 */
+	featured_people?: FeaturedPerson[];
 }
 
 export interface ChapterNav {
@@ -138,6 +165,11 @@ export interface Chapter {
 	book_slug: string;
 	author_name: string;
 	author_slug: string;
+	/** This edition's review state, so the reader can badge an unreviewed AI
+	 * translation (chapters are per-language rows under a per-language Book).
+	 * Optional: a chapter page prerendered before the API served the field
+	 * bakes it absent, and an absent value must read as "not translated". */
+	source_type?: SourceType;
 	/** This chapter belongs to the Modern English edition. */
 	is_modern_edition: boolean;
 	/** A Modern English edition of this work exists (offer the toggle). */
@@ -361,12 +393,27 @@ export const formatLifespan = (
 	bornLabel: string
 ): string => (!birth ? '' : death ? `${birth}–${death}` : `${bornLabel} ${birth}`);
 
+/** A book this person is found IN but did not write, with the role they play. */
+export interface AppearsInBook extends BookSummary {
+	role: PersonRole;
+}
+
 export interface AuthorDetail extends AuthorBio {
 	bio_html: string;
+	/** How the bio in the requested language got here — badge an unreviewed AI
+	 * translation. "public_domain" for the source-language original (no badge).
+	 * Optional for the same prerender-before-API reason as Chapter.source_type. */
+	bio_source_type?: SourceType;
 	books: BookSummary[];
 	sermons: SermonSummary[];
 	/** Topical shelves this author appears in (via their books/sermons). */
 	topics: TopicChip[];
+	/**
+	 * Books this person is found IN but did not write (the reverse of a book's
+	 * featured_people) — books they wrote are under `books`. Optional so an API
+	 * running behind this build simply renders no section.
+	 */
+	appears_in?: AppearsInBook[];
 	/** How many REVIEWED quotations this author has; 0 means no quote page. */
 	quote_count?: number;
 	/**
@@ -487,6 +534,63 @@ export const getSermon = async (slug: string, language = 'en') =>
 		`sermon ${slug}`,
 		await localized<Sermon>((l) => `/api/library/sermons/${slug}/?language=${l}`, language),
 		SERMON_FIELDS
+	);
+
+// --- Articles ----------------------------------------------------------------
+// Original devotional/theological writing — no author, no chapters. Per-language
+// rows like everything else (English only for now). See backend Article model.
+
+export interface ArticleSummary {
+	slug: string;
+	language: string;
+	/** The on-page headline / display title (the warm H1). */
+	h1: string;
+	/** SEO <title> text; "" falls back to h1. */
+	meta_title: string;
+	/** Standfirst — shown under the H1 and used as the meta description. */
+	description: string;
+	sort_order: number;
+	created_at: string;
+	/** Last modification (ISO) — the sitemap's `<lastmod>`; see BookSummary. */
+	updated_at?: string;
+	/** Topics this article belongs to (localized chips) — the index builds its
+	 *  filter tabs from these. Empty for an untagged article. */
+	topics: TopicChip[];
+}
+
+/** A resolved "Read next" link the article funnels the reader to. */
+export interface ArticleRelated {
+	type: 'book' | 'sermon' | 'author';
+	slug: string;
+	title: string;
+	/** Reader path, trailing-slashed (e.g. `/books/the-life-of-trust/`). */
+	url: string;
+}
+
+export interface Article extends ArticleSummary {
+	body_html: string;
+	/** The funnel: books / sermons / bios to read next, already resolved to
+	 *  titles + URLs server-side (unresolvable references are dropped). */
+	related: ArticleRelated[];
+	source_url: string;
+	// `topics` (the localized chips linking back to the topic pages — the other
+	// half of the bidirectional funnel) is inherited from ArticleSummary.
+	/** Content locales this article is published in — the only locales an
+	 *  hreflang alternate should point at (per-language rows, no fallback). */
+	available_languages: string[];
+}
+
+export const listArticles = (language = 'en') =>
+	apiFetch<ArticleSummary[]>(`/api/library/articles/?language=${language}`);
+
+// Falls back to English on a 404, like getSermon: an article detail filters by
+// (slug, language), so a language switch or a shared /lg link to an
+// untranslated article degrades to the English original rather than a 404.
+export const getArticle = async (slug: string, language = 'en') =>
+	requireFields<Article>(
+		`article ${slug}`,
+		await localized<Article>((l) => `/api/library/articles/${slug}/?language=${l}`, language),
+		ARTICLE_FIELDS
 	);
 
 export const search = (q: string, language = 'en', scope = '') => {
@@ -639,6 +743,8 @@ export interface TopicDetail extends TopicSummary {
 	available_languages: string[];
 	books: BookSummary[];
 	sermons: SermonSummary[];
+	/** Articles about this topic — the bidirectional funnel back to the essays. */
+	articles: ArticleSummary[];
 }
 
 export const listTopics = (language = 'en') =>

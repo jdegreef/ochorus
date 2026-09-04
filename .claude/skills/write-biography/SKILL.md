@@ -185,8 +185,11 @@ force if every paragraph is a box.
    Verify all four paths before shipping: fresh-DB seed, prod-shaped row,
    idempotent re-run, and a hand-edited value surviving the migration.
 
-   Only a brand-new author arriving with its own books can skip this (seed_books
-   creates it from the fixture, bio and all).
+   Only a brand-new author arriving with its own works can skip this — a new
+   book (`seed_books`) OR a new sermon (`seed_sermons`) creates the author from
+   the fixture, bio and photo_url and all, via `get_or_create`. So a bio that
+   ships alongside the author's first sermons needs NO create-migration
+   (Christmas Evans, 2026-09: bio + portrait + three sermons, zero migrations).
 
    Also fixed 2026-07-26: a `catalog.py` author slug that `authors.json` doesn't
    have used to fork the author on re-import (`charles-spurgeon` vs
@@ -221,6 +224,27 @@ force if every paragraph is a box.
    DJANGO_DEBUG=true uv run python manage.py makemigrations --check --dry-run
    DJANGO_DEBUG=true uv run python manage.py showmigrations library | tail -4
    ```
+   **COMMIT the rename before you force-push.** `git mv 0106_x 0107_x` stages the
+   rename, but if you rebased and then `git push --force-with-lease` WITHOUT an
+   `git commit --amend`, you ship the un-amended rebase commit — still carrying
+   the old `0106_x` name — and CI fails with the identical "multiple leaf nodes"
+   error a second time while your working tree looks correct. `git ls-tree HEAD
+   backend/library/migrations/ | grep <slug>` shows what you're actually pushing;
+   amend, then force-push. (Cost two red CI cycles on the Howells/Hyde batch.)
+
+   **main sometimes already carries TWO unreconciled leaves.** Parallel merges can
+   leave `origin/main` itself with two leaf migrations (seen: `0108_flock_classics`
+   and a `0108_merge_…` that hadn't included it). Don't add a third — give YOUR
+   migration BOTH as `dependencies` (a data migration can list several), which
+   unifies the graph into one leaf without a separate merge migration.
+
+   **A parallel merge can also collide AT merge time, after green CI.** Your PR
+   can pass CI and then go `mergeable: CONFLICTING` because main just added its
+   own merge migration (e.g. `0109_merge_…`) plus more `authors.json` rows. Fix:
+   `git rebase origin/main`; resolve `authors.json` keeping every new row (the
+   three-way recipe below); **renumber your migration past main's new leaf and
+   depend on THAT single leaf** (not the old two); `rebase --continue`; re-verify
+   `makemigrations --check`; force-push. (Both happened on the Women batch, #1398.)
 
 7. **APPEND new rows to `authors.json` — never re-sort it.** The file is in
    creation order, not slug order; sorting turns a 45-line addition into a
@@ -229,21 +253,24 @@ force if every paragraph is a box.
 
    **Expect that append to conflict.** Because the rule is "always append",
    every concurrent session writes to the same last line, so two biography PRs
-   in flight at once collide by construction. Resolve by keeping EVERY new row
-   — take the three-way stages and diff each side against the base rather than
-   picking a side, since "ours" and "theirs" each hold a row the other lacks:
+   in flight at once collide by construction. If YOUR branch only ever appended
+   (the normal case), the whole resolution is **main's file plus your new
+   rows** — take `theirs` (origin/main) entire and add only the slugs it lacks:
    ```python
-   g = lambda st: json.loads(subprocess.run(
-       ['git','show',f':{st}:'+PATH], capture_output=True, text=True).stdout)
-   base, ours, theirs = g(1), g(2), g(3)
-   bslugs = {r['fields']['slug'] for r in base}
-   new_theirs = [r for r in theirs if r['fields']['slug'] not in bslugs]
-   new_ours   = [r for r in ours   if r['fields']['slug'] not in bslugs]
-   merged = base + new_theirs + new_ours     # main's row first: creation order
+   show = lambda ref: json.loads(subprocess.run(
+       ['git','show',f'{ref}:'+PATH], capture_output=True, text=True).stdout)
+   theirs, ours = show('origin/main'), show('HEAD')
+   their_slugs = {r['fields']['slug'] for r in theirs}
+   merged = theirs + [r for r in ours if r['fields']['slug'] not in their_slugs]
    assert len({r['fields']['slug'] for r in merged}) == len(merged)
    ```
-   Main's rows go first, because the file is in creation order and theirs
-   landed first. Then re-dump in the committed format (step 4).
+   **Do NOT rebuild from `base + new_theirs + new_ours`.** That keeps *base's*
+   copy of every existing row — so if main edited rows IN PLACE (2026-09: a
+   `list_in_biographies` field added corpus-wide), the diff-against-base recipe
+   silently reverts those edits, and `AuthorListTests` reddens the build. Taking
+   `theirs` whole preserves main's in-place edits; you only ever add your own new
+   rows. Verify the diff against origin/main is exactly your appended author(s).
+   Then re-dump in the committed format (step 4).
 
 ## The portrait (try for one, same page)
 
@@ -286,6 +313,16 @@ im.save(f"frontend/static/portraits/{slug}.jpg", "JPEG", quality=85, optimize=Tr
 Check the result visually (a contact sheet of several at once is quickest) — the
 API's lead image is occasionally a statue, a book cover, or the wrong person.
 Ship `photo_url` the same way as `bio_html` (step 5 above).
+
+**A public-domain book you are already sourcing is often the cleanest portrait,
+too.** When the sermons/works come from a Gutenberg or archive.org edition, that
+scan usually opens with an engraved frontispiece of the author — same PD status
+as the text, no licence hunt (Christmas Evans, 2026-09: `images/fp.jpg` in PG
+#42340). Such a plate is often *landscape* (a head-and-shoulders half-length),
+which breaks the portrait system's "taller than wide" assumption — so crop it to
+a ~3:4 bust centred on the face before saving, then derive the focal `N` from the
+CROPPED file (`y = (fy − 0.45·a) ÷ (1 − a)`), and eyeball the circle mask once
+(render an ellipse over an object-cover crop) to confirm the face lands well.
 
 **A CC "own work" claim on a lifetime photo is copyfraud — reject it.** For a
 20th-century subject (the era where PD runs out), Commons' only image is often a
@@ -359,6 +396,37 @@ current signatures in `library/ingest.py` before relying on them.)
    monogram. Any new portrait has a `PORTRAIT_POSITION` entry
    (`portraits.test.ts`).
 
+## Removing a bio, or withholding an author from the Biographies shelf
+
+Withdrawing an author's biography (owner's request, etc.) has TWO independent
+levers — know which the ask needs, because clearing the bio alone rarely does
+what people mean by "remove them from biographies":
+
+- **The bio text.** Clear `Author.bio` (and `bio_html`) in `authors.json`, and
+  delete the `<slug>.short.txt` / `<slug>.html` files under
+  `migrations/data/author_bios_<lang>/`. But the seeds only ever FILL, never
+  blank (`author_sync.sync_author` skips an empty fixture bio;
+  `seed_author_translations` leaves a stored value alone for a missing file), so
+  the fixture/file edits reach only a FRESH DB. A **data migration** must clear
+  the live `bio`/`bio_html` and `delete()` the author's `AuthorTranslation`
+  rows on the existing prod DB. Both channels are mandatory — see PR #1389 and
+  migration `0105`, and the general two-channel rule in `backend/CLAUDE.md`.
+- **The Biographies shelf card.** `AuthorListView` lists anyone with **a bio OR
+  a book/sermon** (so a writer with no bio yet isn't invisible), so clearing the
+  bio does NOT remove the card of an author who has a work — it just loses its
+  blurb. To take a real person off the shelf while keeping their work, set
+  `Author.list_in_biographies = False` (default True; the person-level analogue
+  of `is_imprint`, added in PR #1389 / migration `0106`). **Do NOT use
+  `is_imprint` for this** — it asserts the byline is not a person and strips
+  their schema.org `Person` markup and `same_as`. Ship it like `is_imprint`:
+  field + migration flag + fixture flag + `seed_books` create-default + test.
+
+Keeping the book means her author page stays reachable and prerendered (the
+`entries` generator unions authors from `listBooks`), and it correctly drops out
+of the Biographies *sitemap* section — the same accepted state as a book-subject
+author like `simeon-nsibambi`. `prerenderCoverage.test.ts` only forbids
+advertised-but-unbuilt, so built-but-unadvertised is fine.
+
 ## Pitfalls found in practice (2026-07-24, PR #387)
 
 - **Use literal Unicode, never named HTML entities.** The author-page hero
@@ -366,6 +434,14 @@ current signatures in `library/ingest.py` before relying on them.)
   `&mdash;` / `&hellip;` in `bio_html` render RAW on the page ("&lsquo;stepping
   stones&rsquo;"). Write ’ — … £ é directly (the fixture is UTF-8 JSON). Keep
   only `&amp;` `&lt;` `&gt;`.
+- **A cross-link to another Ochorus page inside `bio_html` MUST carry a
+  trailing slash** — `<a href="/authors/john-stott/">`, not `/authors/john-stott`.
+  The frontend built-output guard `frontend/src/lib/href.test.ts` ("contains no
+  bare (non-slash) detail-route links") fails CI on any bare `/authors|books|
+  topics|sermons|plans/<slug>` link. This is a CI-only catch — the backend
+  fixture/sanitize gates pass a bare link happily, so it reddens the build only
+  after you push (cost a rebuild on PR #1405). The slash survives `clean_bio_html`,
+  so just author the link with it and re-settle as usual.
 - **Replacing a NON-empty bio in a migration: anchor on the md5** of the exact
   previous `bio_html` (captured from the committed fixture) instead of pasting
   ~10KB of old prose into the migration. Update only when
@@ -411,5 +487,46 @@ current signatures in `library/ingest.py` before relying on them.)
   end, but it does mean you are working from summaries. Say so in the
   verification file rather than implying you read the source.
 
+
+## Writing a BATCH at once (parallel subagents) — 2026-09-03, PR #1380
+
+Seven East African Revival bios (Joe Church, Kinuka, Kigozi, Nagenda,
+Kanamuzeyi, Luwum, Barham) were written in one pass this way, and it held
+quality:
+
+1. **One research subagent per figure, in parallel.** Brief each to return a
+   structured dossier — life facts with dates+sources, 2–4 vouched verbatim
+   quotes, the prayer moments, and an explicit **THIN/UNVERIFIABLE** section —
+   under a hard "never fabricate; say 'not found by these searches'" rule.
+   Expect `en.wikipedia.org` and `dacb.org` to REFUSE WebFetch; WebSearch
+   summaries of them still come back, so a blocked fetch is not a dead end — but
+   say you're working from summaries.
+2. **Stage shared inputs as FILES**, not giant prompts: one `SPEC.md` (voice +
+   the allowed-tags markup + the literal-Unicode-not-entities trap + the
+   no-invention rule), the full text of an existing bio as the **voice template**
+   (Sabiti's is a good one — same milieu), and one `dossier-<slug>.md` per figure.
+3. **One writer subagent per figure, in parallel**, each told to read
+   SPEC + template + its dossier and write `bio-<slug>.html`, then print
+   `SHORT_BIO / BIRTH_YEAR / DEATH_YEAR`. Leave a year **NULL** when the dossier
+   couldn't verify it — don't guess (Kanamuzeyi's birth and both of Barham's
+   years shipped blank).
+4. **Review every draft against its dossier yourself** — this is not optional;
+   the subagents are disciplined but you own the accuracy. A fast mechanical
+   scan catches the rest: `grep` the drafts for stray HTML entities (only
+   `&amp;` allowed), for any year/word you told them to omit, and for
+   disallowed tags.
+5. **Assemble with a Django-aware script** (`django.setup()` after
+   `sys.path.insert(0, os.getcwd())` from `backend/`): run each bio through
+   `clean_bio_html` to store the SETTLED form, append the rows, dump
+   `indent=2, ensure_ascii=False`. One create-migration covers the whole batch
+   (a `NEW_SLUGS` set, mirroring `0100_erica_sabiti`). Verify BOTH create paths
+   (fresh `seed_if_empty`; migration on a seeded DB with the rows deleted).
+
+Cost: ~7 research + 7 writer agents. The `same_as` decision is per-figure — the
+well-documented ones (Church, Luwum, Kanamuzeyi) got a verified Wikipedia URL;
+the four with no confirmed standalone entity were registered blank in
+`tests_author_entity` rather than given a guessed identifier. Portraits: a whole
+20th-century batch is monograms — lifetime photos are copyfraud-risk, so none
+shipped a face.
 
 _This is a living playbook — append tips and pitfalls as we write more._

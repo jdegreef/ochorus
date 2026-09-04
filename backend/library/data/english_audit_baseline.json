@@ -9,6 +9,9 @@
    "space-before-punct": 8,
    "word-fusion": 2
   },
+  "against-eutropius": {
+   "lost-paragraphing": 1
+  },
   "all-things-for-good": {
    "orphan-close-quote": 3,
    "space-before-punct": 2
@@ -20,6 +23,9 @@
   "baptism-with-the-holy-spirit": {
    "orphan-close-quote": 1,
    "space-before-punct": 5
+  },
+  "catholic-spirit": {
+   "space-before-punct": 2
   },
   "cheque-book": {
    "space-before-punct": 1
@@ -45,9 +51,6 @@
   },
   "essentials-of-prayer": {
    "orphan-close-quote": 1
-  },
-  "feasting-at-the-table": {
-   "orphan-close-quote": 2
   },
   "free-grace": {
    "orphan-close-quote": 1
@@ -75,6 +78,13 @@
   "holy-in-christ": {
    "space-before-punct": 1
   },
+  "how-to-bring-men-to-christ": {
+   "anachronism": 1,
+   "lost-paragraphing": 2
+  },
+  "how-to-succeed-in-the-christian-life": {
+   "anachronism": 2
+  },
   "humility-2": {
    "orphan-close-quote": 2,
    "run-together": 1,
@@ -85,6 +95,10 @@
   },
   "jesus-himself-2": {
    "space-before-punct": 2
+  },
+  "journal-of-an-expedition-up-the-niger": {
+   "lost-paragraphing": 1,
+   "orphan-close-quote": 3
   },
   "let-us-pray-2": {
    "orphan-close-quote": 1,
@@ -115,6 +129,9 @@
   "necessity-of-prayer": {
    "space-before-punct": 4,
    "word-fusion": 1
+  },
+  "no-one-can-harm-the-man-who-does-not-injure-himself": {
+   "lost-paragraphing": 1
   },
   "on-loving-god": {
    "lost-paragraphing": 2
@@ -155,6 +172,10 @@
    "orphan-close-quote": 6,
    "welded-footnote": 75
   },
+  "religious-experience-and-journal": {
+   "anachronism": 5,
+   "lost-paragraphing": 1
+  },
   "revival-lectures": {
    "anachronism": 1,
    "orphan-close-quote": 1,
@@ -192,24 +213,32 @@
    "title-case-vs-body": 1
   },
   "susanna-wesley-clarke": {
-   "hyphen-space": 1
+   "hyphen-space": 1,
+   "word-fusion": 1
   },
   "ten-commandments": {
    "orphan-close-quote": 1,
    "space-before-punct": 8,
    "word-fusion": 1
   },
+  "the-appearing-of-the-grace-of-god": {
+   "space-before-punct": 4
+  },
   "the-body-of-christ-a-reality": {
    "run-together": 1,
    "space-before-punct": 2
   },
   "the-bruised-reed": {
-   "word-fusion": 2
+   "word-fusion": 3
   },
   "the-christians-secret-of-a-happy-life-4": {
    "anachronism": 2,
    "broken-smallcaps": 1,
    "orphan-close-quote": 23
+  },
+  "the-circumcision-of-the-heart": {
+   "orphan-close-quote": 4,
+   "space-before-punct": 4
   },
   "the-fourfold-gospel": {
    "hyphen-space": 1
@@ -241,6 +270,9 @@
    "orphan-close-quote": 2,
    "space-before-punct": 11
   },
+  "the-method-of-grace": {
+   "lost-paragraphing": 1
+  },
   "the-normal-christian-life": {
    "orphan-close-quote": 2
   },
@@ -267,6 +299,10 @@
   "till-he-come": {
    "orphan-close-quote": 4,
    "space-before-punct": 8
+  },
+  "treatises-of-cyprian": {
+   "orphan-close-quote": 6,
+   "word-fusion": 1
   },
   "unfailing-springs": {
    "space-before-punct": 1

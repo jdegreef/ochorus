@@ -66,9 +66,14 @@ DJANGO_DEBUG=true uv run python manage.py audit_english --class anachronism
 DJANGO_DEBUG=true uv run python manage.py audit_english --json /tmp/findings.json
 DJANGO_DEBUG=true uv run python manage.py audit_english --update-baseline
 
-# after adding a rule-based repair, bring the committed fixture in line:
-DJANGO_DEBUG=true uv run python manage.py normalize_english_fixture          # dry run
+# after adding a declared repair, bring the committed fixture in line. THREE
+# steps: normalize fixes body_html only, rederive fixes body_text, and NEITHER
+# touches word_count — a split-word rejoin ("Je rusalem" -> "Jerusalem") drops
+# the token count, so recompute it or the fixture disagrees with itself:
 DJANGO_DEBUG=true uv run python manage.py normalize_english_fixture --write
+DJANGO_DEBUG=true uv run python manage.py rederive_body_text --write
+# then, for the touched .en.json, set word_count = library.text.word_count(body_html)
+# per chapter and re-serialize with library.content_fixtures.render_rows.
 ```
 
 The corpus scan covers **books, sermons and author biographies** — bios come
@@ -208,6 +213,17 @@ Reported, not fixed
   that protects an approver's review state is what stops the seed overwriting
   bodies. So watch the seed output for drift, and remember: body text reaches
   production through `BODY_CORRECTIONS`; metadata needs a migration.
+- **Verifying a split-word sweep with a stranded-LETTER scan, or with the
+  audit.** A pervasive-spacing repair (`feasting-at-the-table`, PRs #1356/#1370)
+  is a hand-built list, and the audit is no safety net: `audit_english` has no
+  split-word class, so it read 0 both before and after while `spirit ual` still
+  shipped. A quick "any lone 1–2 char token left?" scan is no net either — it
+  misses a split into a valid word plus a ≥3-char tail (`spirit`+`ual`,
+  `resurrecti`+`on`, `follow`+`ed`). The only real check is to re-run the FULL
+  detector — the one that flags a two-token pair whose concatenation is a word
+  the corpus knows but whose pieces aren't both words — against the SETTLED
+  fixture after `normalize`/`rederive`, and confirm zero real survivors. Skip
+  that and the list ships one pair short, invisibly, past a green audit.
 - **A `BODY_CORRECTIONS` pair whose `old` is plain prose.** Every declared pair
   is applied to `body_html` AND handed `body_text` by
   `tests_english_audit.test_the_fixture_is_clean`, which requires a no-op on
@@ -237,6 +253,21 @@ Reported, not fixed
   and ask whether the defect is new or newly VISIBLE. The repair is the same
   either way, but what belongs in the commit message — and how hard you should
   look at the edit that "caused" it — are not.
+- **A second `BODY_CORRECTIONS` entry for a slug that already has one.**
+  `BODY_CORRECTIONS` is a dict literal, so two `"slug": {...}` keys don't merge —
+  the LAST one silently wins and the first is dead. `feasting-at-the-table`
+  already carried a 3-pair ch7 drop-cap entry, and a fresh 66-pair entry added
+  above it did nothing until the two were folded into one. `grep -n '"<slug>"'
+  library/corrections.py` before adding; if it's there, MERGE into it. The tell
+  is `normalize_english_fixture` reporting "0 fields" when you expected edits.
+- **A quote-insertion pair anchored at end-of-string is not idempotent.** A pair
+  that only ADDS a mark and whose `old` is a suffix of its `new` (`its power.` ->
+  `its power.”`) re-fires forever — `apply_body_corrections` is run twice by
+  `SettledBodyIdempotenceTests`, giving `power.””`. Anchor the trailing context
+  so `old` can't recur: `its power.</p>` -> `its power.”</p>` (a no-op on the
+  tagless `body_text`, which is fine — `rederive_body_text` carries the mark
+  there from the fixed HTML). A mark inserted mid-string breaks the substring on
+  its own and is already idempotent.
 - **Forgetting the baseline is corpus-wide, so it collides in parallel.**
   `english_audit_baseline.json` is generated from every fixture, so ANY two PRs
   that touch ANY fixture collide on it — and invisibly, because each branch

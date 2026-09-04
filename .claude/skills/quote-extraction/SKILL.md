@@ -22,7 +22,7 @@ command.
 
 ```python
 {
-    "slug": "andrew-murray-3272b680",          # "<author-slug>-<hash>", unique
+    "slug": "andrew-murray-3272b680",          # "<author-slug>-<hash>", unique, PERMANENT (see freeze below)
     "text": "Faith in Jesus is the secret …",  # ONE whole sentence, verbatim
     "chapter": ("holy-in-christ", 19),         # (book-slug, chapter_order) …
     "paragraph": 5,                            # … OR "sermon": "<sermon-slug>"
@@ -31,6 +31,28 @@ command.
 
 `text` must be the **served, whitespace-normalised** sentence, character for
 character (curly `’ “ ”`, em-dashes and all), or the resolution gate fails.
+
+## The slug is frozen: repair text in place, never re-hash an existing row
+
+The `slug` is not only the seed's dedupe key — it is the quotation's **permanent
+public address**. The per-quote-URL plan serves each quotation at
+`/quotes/<author>/<slug>/`, so a slug that moves is a URL that 404s and a lost
+page. Treat every slug already in `quote_seed.py` as immutable.
+
+- **Repairing an existing quotation** — a typo, an OCR slip, a punctuation fix
+  (the `english-qa` channels): edit that row's `text` and **leave its `slug`
+  literal exactly as it is**. `seed_quotes` matches on the slug, so it updates
+  the row in place — same address, approval intact. (Guarded by
+  `test_repairing_text_under_the_same_slug_updates_in_place`.)
+- **Never regenerate slugs for rows that already exist.** Do not re-run the
+  extraction/hash tool over an author to "refresh" their rows — a recomputed
+  hash mints a NEW row, strands the approved original, and (once URLs ship)
+  breaks every inbound link. Run extraction only to ADD genuinely new
+  quotations; hand-edit existing ones.
+- **A fresh hash means a genuinely new quotation** — a different sentence, not a
+  reworked version of one already present. That is the deliberate "reworded ⇒
+  new row, re-gated for review" behaviour (`Quote` slug comment, `seed_quotes`
+  docstring); keep it for new text, don't trigger it for a fix.
 
 ## Method (what the seed docstring describes)
 
@@ -45,6 +67,17 @@ character (curly `’ “ ”`, em-dashes and all), or the resolution gate fails
    sourced card exists to beat. Drop "Holy, holy, holy, Lord God of hosts", "God
    is love; and he that abideth in love …", etc. Also skip prayer-addresses
    ("Lord Jesus, reveal Thyself …") — they are prayers, not maxims.
+2a. **Watch for an editor's voice inside the author's own book.** Many public-
+   domain editions wrap the author's text in editorial framing — an Editor's
+   Preface, an Introduction, connecting summaries, third-person narration — and
+   a sentence lifted from those prints the *editor's* words under the author's
+   name (the same misattribution as a verse-tracking line). *The Life of Trust*
+   is George Müller's narrative from ch. 4 on, but ch. 1–3 are H. L. Wayland's
+   Editor's Preface + Introduction; the tell is third person ("Müller was led
+   to…", "the Author") where the author's own chapters are first person. Check
+   the chapter titles for the editorial boundary, keep the author's voice only,
+   and when unsure print the block's opening words alongside each candidate so
+   you can see whose voice it is before shipping.
 3. **Scoring pass** favours contrast (`not … but`, `yet`, `though`), brevity,
    and a recognisable subject (God, Christ, prayer, faith, grace, holiness …).
 4. **Read the shortlist and choose.** This is judgement, and it is NOT the human
@@ -52,7 +85,14 @@ character (curly `’ “ ”`, em-dashes and all), or the resolution gate fails
    avoid overlapping the author's existing rows.
 
 Target ~20–25 new rows to move an author toward fifty. Mine the **newly added
-books first** — that is where fresh, non-overlapping material is.
+books first** — that is where fresh, non-overlapping material is. But the target
+is a ceiling, not a quota: some source books are structurally thin. A book that is
+a running **exposition of one biblical text** (Taylor's *Union and Communion* on
+the Song of Songs, or a chapter walking the Nazarite vow) carries its sense in
+"the bride" / "the Beloved" / "the Nazarite" and few sentences stand alone as
+maxims — expect a lean harvest (2 of 13 for Taylor came from that book) and don't
+force the count with context-bound lines. Didactic/devotional prose (sermons,
+consecration addresses) yields far more per page; weight the mining toward those.
 
 ## The paragraph-resolution gate (the one that bites)
 
@@ -123,5 +163,35 @@ cites an `is_published=False` work (a dead card link). Then prove the seed:
 ```bash
 uv run python manage.py seed_quotes   # on a fresh seeded DB; confirm the new rows appear
 ```
+
+## Gotchas found in the field
+
+- **A new author widens TWO sets, not one.** `test_the_curated_authors_are_the_reviewed_set`
+  asserts `set(QUOTES) == APPROVED` AND `set(QUOTES) ==` a **hardcoded literal
+  set** in `tests_quotes.py` (a deliberate scope tripwire). Adding an author to
+  `QUOTES` + `APPROVED` still reds until you also add the slug to that literal.
+  *(allen/smith, 2026-09)*
+- **The sentence splitter must break at `." ` (closing quote before the space),
+  or a Scripture quotation fuses into the next sentence and drags forbidden
+  double-quotes into the row.** Allen's "…make them rest from their burthens."
+  We wish you to consider…" merged under a naive `(?<=[.!?])\s+` split, so the
+  clean maxim ("We wish you to consider, that God himself was the first pleader
+  of the cause of slaves.") arrived wrapped in a `"…"` Pharaoh quote and would
+  have failed the no-double-quotes gate. Split on `(?<=[.!?])[”"'’]?\s+`.
+  *(2026-09)*
+- **An autobiography / testimony source is mostly situational narrative, not
+  maxims.** Raw subject-keyword scoring surfaces "the Lord gave me great liberty
+  in speaking that night" a hundred times over. Penalise proper names (any
+  capitalised word outside a God/Christ/Spirit/pronoun whitelist) and
+  occasion markers ("that night", "the meeting", "got the blessing"), and boost
+  gnomic present-tense forms (is/are/must/cannot/whoever/those who) to float the
+  real aphorisms up. Expect a thin yield — Allen's plain narrative gave ~6, and
+  quality-over-quantity is the rule. *(allen/smith, 2026-09)*
+- **Prefer the author's own prose; a sourced card still shouldn't be Scripture
+  the author merely quotes.** These two books quote the KJV constantly ("Greater
+  love hath no man…", "without holiness no man shall see the Lord"); drop those,
+  and drop reprinted devotional formulas (Allen's traditional "Acts of Faith /
+  Hope / Love" are not his composition). The card cites the chapter, so ordinary
+  authorial prose is fine even where the author draws on a tradition. *(2026-09)*
 
 _Living playbook — append gotchas as we find them._

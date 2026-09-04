@@ -7,6 +7,7 @@ natural-key format (no integer pks — see Stage 1 / ``tests_fixture``):
       authors.json                    all Author rows (low churn, shared)
       books/<slug>.<language>.json    one Book row followed by its Chapters
       sermons/<slug>.<language>.json  one Sermon row
+      articles/<slug>.<language>.json one Article row (no author, no chapters)
       plans.json                      Plan rows, each followed by its PlanDays
 
 Why per work: parallel sessions add content constantly; separate files make
@@ -34,6 +35,7 @@ CONTENT_DIR = Path(__file__).resolve().parent / "fixtures" / "content"
 AUTHORS_FILE = CONTENT_DIR / "authors.json"
 BOOKS_DIR = CONTENT_DIR / "books"
 SERMONS_DIR = CONTENT_DIR / "sermons"
+ARTICLES_DIR = CONTENT_DIR / "articles"
 PLANS_FILE = CONTENT_DIR / "plans.json"
 
 
@@ -107,6 +109,16 @@ def content_digest() -> str:
     # 0.1s warm. A probe that slow is a failed deploy, not a slow endpoint. The
     # baked value cannot go stale: the image's content is immutable, and the
     # file is written from that same content during the build.
+    # OBSERVED 2026-09-04 (Tier 2, #1418 -> #1420): the live API, built from
+    # main's tip de849200, reported content_version b8ab6ce906715bef, while a
+    # clean checkout of that same commit digests to ae3ff9ba6b344368 under BOTH
+    # this function (manage.py content_version) and the JS twin
+    # (frontend/scripts/await-api-release.mjs) - and the API's value had moved
+    # from ae3ff9… to b8ab6c… between 13:05 and 13:20 UTC with no new commit.
+    # A frontend-only web build therefore cannot match it and the gate fails
+    # after its timeout, while builds that coincide with an API deploy pass.
+    # Check the API build log's `content_version --write` line for what the
+    # image actually baked, and from which file set.
     if BAKED_DIGEST_FILE.is_file():
         baked = BAKED_DIGEST_FILE.read_text().strip()
         if baked:
@@ -155,6 +167,11 @@ def book_fixture_path(slug: str, language: str) -> Path:
 def sermon_fixture_path(slug: str, language: str) -> Path:
     """The committed fixture file for a sermon edition (may not exist yet)."""
     return SERMONS_DIR / work_filename(slug, language)
+
+
+def article_fixture_path(slug: str, language: str) -> Path:
+    """The committed fixture file for an article edition (may not exist yet)."""
+    return ARTICLES_DIR / work_filename(slug, language)
 
 
 def book_editions() -> list[tuple[Path, str, str, dict]]:
@@ -227,7 +244,9 @@ def ordered_fixture_paths() -> list[Path]:
     paths: list[Path] = []
     if AUTHORS_FILE.exists():
         paths.append(AUTHORS_FILE)
-    for d in (BOOKS_DIR, SERMONS_DIR):
+    # Articles carry no FK, so their position here is free; grouped with the
+    # other per-work directories for a reader of this file.
+    for d in (BOOKS_DIR, SERMONS_DIR, ARTICLES_DIR):
         if d.is_dir():
             paths.extend(sorted(d.glob("*.json")))
     if PLANS_FILE.exists():

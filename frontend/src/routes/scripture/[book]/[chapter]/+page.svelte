@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { ScripturePage } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
-	import { jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
+	import { jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import CitingPassages from '$lib/components/CitingPassages.svelte';
@@ -21,7 +21,7 @@
 	// point search engines at pages that do not exist.
 	const hreflang = $derived(hreflangFor(path, ['en']));
 
-	const title = $derived(`${page.reference} — what the classics say · Ochorus`);
+	const title = $derived(`${page.reference} — what the classics say — Ochorus`);
 	const description = $derived(
 		`${page.citing_count} passage${page.citing_count === 1 ? '' : 's'} from the ` +
 			`Christian classics that treat ${page.reference}, each quoted and linked to its source.`
@@ -32,9 +32,7 @@
 		{ name: 'Scripture', href: '/scripture' },
 		{ name: page.reference, href: path }
 	]);
-	const crumbsLd = $derived(
-		jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))))
-	);
+	const crumbsLd = $derived(breadcrumbLd(crumbs));
 	// Each excerpt is a Quotation tied to the work it came from — the markup
 	// that says these are sourced passages rather than a page of loose text.
 	const quotesLd = $derived(
@@ -62,7 +60,7 @@
 	structuredData={[crumbsLd, quotesLd]}
 />
 
-<div class="page-col px-5 py-6">
+<div class="page-col px-5 py-10">
 	<Breadcrumb items={crumbs} />
 
 	<header class="mb-8">

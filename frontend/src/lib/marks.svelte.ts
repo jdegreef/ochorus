@@ -1,5 +1,6 @@
 import { readingSync } from './readingSync';
 import { readJSON, writeJSON } from './persisted';
+import { undo } from './undo.svelte';
 import {
 	DEFAULT_HIGHLIGHT,
 	MARKS_KEY,
@@ -104,6 +105,9 @@ class Marks {
 	#kind: WorkKind = 'book';
 
 	load(slug: string, order: number, language = 'en', kind: WorkKind = 'book') {
+		// Moving to another chapter (not merely re-loading this one) makes any
+		// pending Undo meaningless — it would restore into text it wasn't made on.
+		if (workKey(kind, slug, order) !== this.key) undo.dismiss();
 		this.#slug = slug;
 		this.#order = order;
 		this.#language = language;
@@ -121,6 +125,12 @@ class Marks {
 	/** Re-read after the cache was replaced underneath us (e.g. sign-in sync). */
 	refresh() {
 		if (this.#slug) this.#hydrate();
+	}
+
+	/** Identity of the chapter currently loaded — lets a deferred action (an
+	 *  Undo) check the store hasn't moved on before writing into it. */
+	get key(): string {
+		return workKey(this.#kind, this.#slug, this.#order);
 	}
 
 	#persist(deletedId?: string) {
@@ -180,6 +190,27 @@ class Marks {
 	remove(id: string) {
 		this.list = this.list.filter((m) => m.id !== id);
 		this.#persist(id);
+	}
+
+	/**
+	 * Put back a group captured before `remove` (an Undo): the same segments,
+	 * note, colour and edition tag, under a fresh id — the old one is a
+	 * tombstone now, and the server applies deletions by id. Segments the reader
+	 * has already re-highlighted are skipped; if that leaves nothing, nothing is
+	 * written.
+	 */
+	restore(group: Mark[]) {
+		const first = group[0];
+		if (!first) return;
+		const id = `${Date.now().toString(36)}:${first.p}:${first.s}`;
+		const existing = new Set(this.list.map(rangeKey));
+		const fresh = group.filter((m) => !existing.has(rangeKey(m))).map((m) => ({ ...m, id }));
+		if (!fresh.length) return;
+		// The note rides on the group's first segment; if that one was the
+		// re-highlighted one, carry it onto the first that does come back.
+		if (first.note && !fresh.some((m) => m.note)) fresh[0].note = first.note;
+		this.list = [...this.list, ...fresh].sort((a, b) => a.p - b.p || a.s - b.s);
+		this.#persist();
 	}
 
 	/** The group id whose segments already cover this exact selection, if any. */

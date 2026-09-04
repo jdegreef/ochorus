@@ -1,0 +1,23 @@
+[
+{
+ "model": "library.article",
+ "fields": {
+  "slug": "how-to-pray-so-god-answers",
+  "language": "en",
+  "h1": "How to Pray So That God Answers: Lessons from George Müller",
+  "meta_title": "How to Pray So That God Answers — George Müller's Method",
+  "description": "George Müller recorded tens of thousands of answers to prayer and never once asked a person for money. Here is how he prayed — and what it still teaches us.",
+  "body_html": "<p>Most of us have prayed for something and quietly wondered whether anyone was listening. George Müller spent sixty years answering that question with his life. He cared for more than ten thousand orphans in Bristol, England, built five large houses to hold them, and paid for all of it without ever appealing to a single person for funds. He asked God, wrote down what he asked, and then recorded the answer when it came. By the end of his life his journals held tens of thousands of specific, dated, answered prayers.</p><p>His point was never that he was unusually holy. It was that God is unusually faithful, and that ordinary believers rarely put that faithfulness to the test. If you want to pray so that God answers, Müller's habits are a good place to begin.</p><h2>He asked God, and no one else</h2><p>Müller made one rule the hinge of everything: he would tell his needs to God alone. When the milk bill was due and there was no money, he did not drop hints to wealthy friends or announce the shortfall from a pulpit. He prayed, and he waited, and again and again the exact sum arrived — sometimes minutes before it was needed. He did this on purpose, so that no one could say the orphans were fed by clever fundraising rather than by a living God.</p><blockquote>The beginning of anxiety is the end of faith, and the beginning of true faith is the end of anxiety.<cite>George Müller</cite></blockquote><p>That single discipline reframes prayer. It stops being a religious way of talking about our plans and becomes an actual request to an actual Father who is able to act.</p><h2>How Müller actually prayed</h2><p>Reading his journals, a few habits recur so often they read like a method:</p><ul><li><strong>He prayed about specific things.</strong> Not \"bless the work,\" but the sum of money, the particular need, the named person. A vague prayer has no visible answer; a specific one does.</li><li><strong>He expected an answer, and looked for it.</strong> Müller prayed as though God meant to reply, then watched for the reply and wrote it down when it came. Gratitude, for him, was a discipline of attention.</li><li><strong>He kept praying when the answer was slow.</strong> He prayed for two friends' conversion for decades; one came to faith shortly before Müller died, the other soon after. Delay was never, to him, the same as refusal.</li><li><strong>He settled his heart before he prayed.</strong> Each morning he sought to get his soul \"happy in the Lord\" — usually by reading Scripture slowly until a verse turned into prayer — before asking for anything at all.</li></ul><h2>Where prayer begins</h2><p>That last habit is the one most of us skip, and Müller thought it was the most important. He came to believe the first business of every day was not to pray for things but to be gladdened by God himself, so that the asking flowed out of trust rather than fear. Prayer that gets answered, in his experience, usually starts there — not with a list, but with a Father worth trusting.</p><p>None of this makes prayer a technique for getting what we want. Müller buried a beloved wife and knew long seasons of hardship. What his life shows is narrower and more hopeful than a formula: that God can be trusted with real needs, that he answers real prayers, and that a life built on asking him is not naive but well-founded.</p>",
+  "related": [
+   {"type": "book", "slug": "the-life-of-trust"},
+   {"type": "book", "slug": "answers-to-prayer"},
+   {"type": "author", "slug": "george-muller"}
+  ],
+  "source_url": "",
+  "sort_order": 0,
+  "is_published": true,
+  "created_at": "2026-09-03T00:00:00Z",
+  "updated_at": "2026-09-03T00:00:00Z"
+ }
+}
+]

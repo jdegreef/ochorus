@@ -81,12 +81,31 @@ export function saveProgress(
 	const paragraph_index =
 		getScrollAnchor(slug, order, kind) ??
 		(prev && prev.order === order ? prev.paragraph_index : 0);
+	// `at` is when the POSITION last changed, not when the book was last
+	// opened. A bare open of the same spot used to re-stamp it "now", which
+	// made this device's untouched place look newer than another device's real
+	// reading — and, pushed on sign-in, overwrote it on the server. The record
+	// is left alone until the reader actually moves.
+	if (prev && prev.order === order && prev.paragraph_index === paragraph_index && prev.language === language) {
+		readingActivity.recordToday();
+		return;
+	}
 	const rec: ProgressRecord = { order, paragraph_index, language, at: Date.now() };
 	map[key] = rec;
 	write(map);
 	readingSync.pushProgress(kind, slug, rec);
 	// Opening/advancing a chapter is the "read today" signal for the streak.
 	readingActivity.recordToday();
+}
+
+/**
+ * The account's synced position in a work — what another device last pushed —
+ * or null when there is none, or the reader is offline or signed out. The
+ * route-facing name for `readingSync.fetchProgress`, so surfaces keep going
+ * through this module for everything progress-shaped.
+ */
+export function fetchSyncedProgress(slug: string, kind: WorkKind = 'book'): Promise<ProgressRecord | null> {
+	return readingSync.fetchProgress(kind, slug);
 }
 
 /**
@@ -131,11 +150,15 @@ export function saveScrollAnchor(
 	}
 	safeSet(ANCHOR_KEY, JSON.stringify(map));
 
-	// Keep the work's resume point in step with where we actually are.
+	// Keep the work's resume point in step with where we actually are — when
+	// it moved. A restore lands on the paragraph the record already names and
+	// fires the same save; that is not reading, and must not re-stamp `at`
+	// (see saveProgress).
 	const progress = read();
 	const rec = progress[workSlugKey(kind, slug)];
-	if (rec && rec.order === order) {
-		rec.paragraph_index = Math.max(0, paragraphIndex);
+	const p = Math.max(0, paragraphIndex);
+	if (rec && rec.order === order && rec.paragraph_index !== p) {
+		rec.paragraph_index = p;
 		rec.at = Date.now();
 		write(progress);
 		readingSync.pushProgress(kind, slug, rec);

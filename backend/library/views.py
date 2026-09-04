@@ -23,6 +23,7 @@ from .languages import entry as language_entry
 from .localization import language_from_request
 from .models import (
     SERMON_CARD_DEFER,
+    Article,
     Author,
     AuthorTranslation,
     Book,
@@ -47,6 +48,8 @@ from .search import (
 )
 from .serializers import (
     BOOK_CARD_ANNOTATIONS,
+    ArticleDetailSerializer,
+    ArticleListSerializer,
     AuthorDetailSerializer,
     AuthorListSerializer,
     BookDetailSerializer,
@@ -58,6 +61,7 @@ from .serializers import (
     SermonListSerializer,
     TopicDetailSerializer,
     TopicListSerializer,
+    article_topic_map,
     book_topic_map,
     plan_book_index,
     plan_chapter_index,
@@ -127,8 +131,12 @@ class AuthorListView(PublicContentCacheMixin, generics.ListAPIView):
             .exclude(bio="", bio_html="")
         )
         own_bio = Q(original_language=lang) & (~Q(bio="") | ~Q(bio_html=""))
+        # `list_in_biographies=False` withholds a real person who has work in the
+        # library but should not appear on this shelf — their books stay on /books
+        # and their own author page stays reachable. `is_imprint` excludes a
+        # non-person byline; this excludes a person by choice.
         return (
-            Author.objects.filter(is_imprint=False)
+            Author.objects.filter(is_imprint=False, list_in_biographies=True)
             .prefetch_related("translations")
             .with_work_counts(lang)
             .filter(Q(num_books__gt=0) | Q(num_sermons__gt=0) | own_bio | translated_bio)
@@ -151,7 +159,13 @@ class AuthorDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
         # asking `obj.quotes.filter(...).count()` added a query to every author
         # page, which `BookCardPayloadTests` budgets and caught.
         return get_object_or_404(
-            Author.objects.prefetch_related("translations").annotate(
+            Author.objects.prefetch_related(
+                "translations",
+                # appears_in reads these (BookPerson rows for this person);
+                # prefetching keeps it out of the serializer as a lazy query and
+                # in the page's fixed budget (BookCardPayloadTests).
+                "featured_in_books",
+            ).annotate(
                 reviewed_quotes=Count(
                     "quotes", filter=Q(quotes__reviewed=True), distinct=True
                 )
@@ -256,6 +270,42 @@ class SermonDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
             slug=self.kwargs["slug"],
             language=_language(self.request),
             is_published=True,
+        )
+
+
+class ArticleListView(PublicContentCacheMixin, generics.ListAPIView):
+    """All published articles for a language, newest curation first."""
+
+    serializer_class = ArticleListSerializer
+
+    def get_queryset(self):
+        # The index needs no bodies — defer body_html so the shelf query stays
+        # small even as articles grow long (they run 1,500–2,000 words each).
+        return (
+            Article.objects.filter(
+                is_published=True, language=_language(self.request)
+            )
+            .defer("body_html")
+            .order_by("sort_order", "h1")
+        )
+
+    def get_serializer_context(self):
+        # Build the slug→chips map ONCE for the shelf, so each card's topics
+        # (the index's filter tabs) cost a fixed handful of queries, not one per
+        # article. Mirrors BookListView. See ArticleListSerializer.get_topics.
+        ctx = super().get_serializer_context()
+        ctx["article_topics"] = article_topic_map(_language(self.request))
+        return ctx
+
+
+class ArticleDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
+    serializer_class = ArticleDetailSerializer
+
+    def get_object(self):
+        return get_object_or_404(
+            Article.objects.filter(is_published=True),
+            slug=self.kwargs["slug"],
+            language=_language(self.request),
         )
 
 
@@ -391,6 +441,24 @@ def _attach_sermons(topics, language):
     return topics
 
 
+def _attach_articles(topics, language):
+    """Attach ``articles_in_language`` (curated-ordered, published member
+    articles in ``language``) to each topic, in two queries total — the article
+    companion to ``_attach_books``."""
+    wanted = {e.article_slug for t in topics for e in t.article_entries.all()}
+    articles = Article.objects.filter(
+        slug__in=wanted, language=language, is_published=True
+    ).defer("body_html")
+    by_slug = {a.slug: a for a in articles}
+    for t in topics:
+        t.articles_in_language = [
+            by_slug[e.article_slug]
+            for e in t.article_entries.all()
+            if e.article_slug in by_slug
+        ]
+    return topics
+
+
 class TopicListView(PublicContentCacheMixin, generics.ListAPIView):
     """Published topical shelves that have at least one member — book OR sermon —
     in the requested language, so a partially-translated library never shows an
@@ -407,18 +475,24 @@ class TopicListView(PublicContentCacheMixin, generics.ListAPIView):
         language = _language(self.request)
         topics = list(
             Topic.objects.filter(is_published=True)
-            .prefetch_related("translations", "entries", "sermon_entries")
+            .prefetch_related("translations", "entries", "sermon_entries", "article_entries")
             .order_by("sort_order", "title")
         )
         _attach_books(topics, language)
         _attach_sermons(topics, language)
-        # A shelf needs both something to hold and a name a reader of this
-        # language can read: an untranslated title would render blank now that
-        # the serializer no longer falls back to English.
+        _attach_articles(topics, language)
+        # A shelf needs both something to hold — a book, sermon, or article in
+        # this language — and a name a reader of this language can read: an
+        # untranslated title would render blank now that the serializer no
+        # longer falls back to English.
         return [
             t
             for t in topics
-            if (t.books_in_language or t.sermons_in_language)
+            if (
+                t.books_in_language
+                or t.sermons_in_language
+                or t.articles_in_language
+            )
             and t.is_translated_into(language)
         ]
 
@@ -436,7 +510,7 @@ class TopicDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
     def get_object(self):
         topic = get_object_or_404(
             Topic.objects.filter(is_published=True).prefetch_related(
-                "translations", "entries", "sermon_entries"
+                "translations", "entries", "sermon_entries", "article_entries"
             ),
             slug=self.kwargs["slug"],
         )
@@ -448,6 +522,7 @@ class TopicDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
             raise Http404("No topic in this language")
         _attach_books([topic], language)
         _attach_sermons([topic], language)
+        _attach_articles([topic], language)
         return topic
 
 

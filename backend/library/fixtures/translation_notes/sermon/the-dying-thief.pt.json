@@ -1,0 +1,108 @@
+{
+ "kind": "sermon",
+ "slug": "the-dying-thief",
+ "language": "pt",
+ "references": [
+  {
+   "reference": "Matthew 27:44",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Luke 23:40",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Proverbs 9:10",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Luke 23:38",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Luke 23:41",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Hebrews 5:6",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Romans 10:10",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Galatians 3:13",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Matthew 3:17",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Luke 23:35",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Luke 23:42",
+   "status": "mined",
+   "source_file": "shipped pt corpus",
+   "block_index": 17
+  },
+  {
+   "reference": "Luke 23:41",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Luke 23:42",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Luke 23:43",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Luke 2:14",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "John 19:30",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Hebrews 9:22",
+   "status": "self_rendered",
+   "block_index": 24
+  }
+ ]
+}

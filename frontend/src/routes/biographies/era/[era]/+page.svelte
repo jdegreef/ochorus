@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { type AuthorBio, type BookSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
-	import { absUrl, jsonLd, breadcrumb, hreflangAll } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, hreflangAll } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { eraOf, eraById } from '$lib/eras';
 	import AuthorBioCard from '$lib/components/AuthorBioCard.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
+	import EmptyState from '$lib/components/EmptyState.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 
 	const t = i18n.t;
@@ -14,6 +15,7 @@
 	let { data } = $props();
 	const era = $derived(eraById(data.eraId)!);
 	const authors = $derived<AuthorBio[]>(data.authors);
+	const loadError = $derived<boolean>(data.loadError);
 	const books = $derived<BookSummary[]>(data.books ?? []);
 
 	// Group the library's books by author slug for the per-writer cover strips.
@@ -47,9 +49,7 @@
 		{ name: t('bios.eyebrow'), href: '/biographies' },
 		{ name: eraName, href: path }
 	]);
-	const crumbsLd = $derived(
-		jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))))
-	);
+	const crumbsLd = $derived(breadcrumbLd(crumbs));
 
 	// CollectionPage whose mainEntity is the era's roster of Person entities —
 	// the same shape as the biographies index, scoped to this era.
@@ -95,15 +95,17 @@
 	<Breadcrumb items={crumbs} />
 	<header class="mb-8">
 		<p class="eyebrow mb-2 text-accent">{t('bios.eyebrow')}</p>
-		<h1 class="text-h1 mb-3 flex flex-wrap items-baseline gap-x-3">
+		<h1 class="text-h1 mb-2 flex flex-wrap items-baseline gap-x-3">
 			{eraName}
 			{#if era.range}<span class="text-h3 font-normal text-muted">{era.range}</span>{/if}
 		</h1>
-		<p class="text-body text-muted">{t('bios.tagline')}</p>
+		<p class="max-w-2xl text-body text-muted">{t('bios.tagline')}</p>
 	</header>
 
-	{#if inEra.length === 0}
-		<p class="py-16 text-center text-body text-muted">{t('bios.noResults')}</p>
+	{#if loadError}
+		<EmptyState message={t('common.loadError')} onRetry />
+	{:else if inEra.length === 0}
+		<EmptyState message={t('bios.noResults')} />
 	{:else}
 		<div class="grid items-start gap-5 md:grid-cols-2">
 			{#each inEra as author (author.slug)}

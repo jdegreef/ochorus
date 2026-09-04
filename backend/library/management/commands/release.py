@@ -46,6 +46,10 @@ class Command(BaseCommand):
         # Upsert fixture sermons into an already-seeded DB (new/updated ones).
         self.stdout.write("→ seed_sermons")
         call_command("seed_sermons")
+        # Upsert fixture articles (original site writing — no author, no
+        # chapters, no derived columns; a plain per-language content row).
+        self.stdout.write("→ seed_articles")
+        call_command("seed_articles")
         # Upsert unreviewed translated author bios from the in-repo data files
         # (AuthorTranslation has no fixture; reviewed rows are approver-owned).
         self.stdout.write("→ seed_author_translations")
@@ -58,6 +62,11 @@ class Command(BaseCommand):
         # Create/refresh the curated topical shelves.
         self.stdout.write("→ seed_topics")
         call_command("seed_topics")
+        # Link books to the bios of people found in them. After seed_topics and
+        # the author-translation seed for symmetry with the other membership
+        # seeds; tolerant of a person whose bio hasn't landed yet.
+        self.stdout.write("→ seed_book_people")
+        call_command("seed_book_people")
         # Curated quotations. After the book and sermon seeds, because a quote
         # is stored against the chapter or sermon it came from and is skipped
         # rather than stored unsourced when that work is not installed yet.
