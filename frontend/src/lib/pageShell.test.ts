@@ -50,6 +50,7 @@ const LEAF_PAGES: { label: string; file: string }[] = [
 	{ label: 'topic', file: 'routes/topics/[slug]/+page.svelte' },
 	{ label: 'plan', file: 'routes/plans/[slug]/+page.svelte' },
 	{ label: 'quotes author', file: 'routes/quotes/[author]/+page.svelte' },
+	{ label: 'article', file: 'routes/articles/[slug]/+page.svelte' },
 	{ label: 'scripture chapter', file: 'routes/scripture/[book]/[chapter]/+page.svelte' },
 	{ label: 'scripture verse', file: 'routes/scripture/[book]/[chapter]/[verse]/+page.svelte' },
 	{ label: 'notebook', file: 'routes/notebook/+page.svelte' },

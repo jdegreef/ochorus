@@ -123,7 +123,7 @@
 		{/if}
 
 		{#if shown.length}
-			<div class="article-list">
+			<div class="flex flex-col gap-3">
 				{#each shown as a (a.slug)}
 					<ArticleCard article={a} />
 				{/each}
@@ -137,11 +137,3 @@
 		<EmptyState message="No articles yet — check back soon." />
 	{/if}
 </div>
-
-<style>
-	.article-list {
-		display: grid;
-		gap: 0.75rem;
-		max-width: 44rem;
-	}
-</style>

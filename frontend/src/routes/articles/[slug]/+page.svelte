@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Article, ArticleRelated } from '$lib/library-public';
+	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { SITE_URL } from '$lib/config';
 	import { localizeHref } from '$lib/href';
 	import { jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
@@ -8,6 +9,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
+	import ReaderControls from '$lib/components/ReaderControls.svelte';
 
 	let { data } = $props();
 	const article = $derived(data.article as Article);
@@ -95,13 +97,20 @@
 <div class="page-col px-5 py-10">
 	<Breadcrumb items={crumbs} />
 
-	<article class="article">
+	<!-- The prose column answers to the reader's text settings (the A a popover:
+	     measure, size, face, leading), exactly as the sermon page and the author
+	     biography do — not to a hand-set 40rem, which no control could move.
+	     readerPrefs is hydrated once by the root layout. -->
+	<article class="mx-auto" style="{readerPrefs.style}; max-width: var(--reading-measure)">
 		<header class="mb-5">
 			<!-- Kind eyebrow (page-design A8): KIND · TIME. The reading time is
 			     localized via readingTime(); the kind word is an English literal,
 			     as are this page's other chrome strings (see F3). -->
 			<p class="eyebrow mb-1 text-muted">Article · {readingTime(article.word_count)}</p>
-			<h1 class="text-h1">{article.h1}</h1>
+			<div class="flex items-start justify-between gap-4">
+				<h1 class="text-h1">{article.h1}</h1>
+				<ReaderControls />
+			</div>
 			{#if article.description}
 				<p class="standfirst">{article.description}</p>
 			{/if}
@@ -176,9 +185,6 @@
 <ScripturePopover />
 
 <style>
-	.article {
-		max-width: 40rem;
-	}
 	.standfirst {
 		margin-top: 0.75rem;
 		font-family: var(--font-display);
@@ -186,12 +192,17 @@
 		line-height: 1.5;
 		color: var(--color-muted);
 	}
-	/* Prose. The body is authored HTML (p / h2 / blockquote / cite / a), so the
-	   article styles it here rather than borrowing the reader's chrome. */
+	/* Prose. The body is authored HTML (p / h2 / blockquote / cite / a). It
+	   consumes the reader's custom properties (set by readerPrefs.style on the
+	   <article>) but keeps its own recipe rather than wearing `.reading`: that
+	   class sizes from 1.18rem and adds a drop cap, both wrong for an SEO
+	   article. Folding this into one shared prose class is page-design A10. */
 	.article-body {
-		font-family: var(--font-display);
-		font-size: var(--fs-body);
-		line-height: 1.7;
+		font-family: var(--reading-font, var(--font-display));
+		font-size: calc(var(--fs-body) * var(--reading-scale, 1));
+		line-height: var(--reading-leading, 1.7);
+		text-align: var(--reading-align, start);
+		hyphens: var(--reading-hyphens, manual);
 		color: var(--color-text);
 	}
 	.article-body :global(p) {
