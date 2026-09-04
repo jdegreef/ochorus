@@ -5,6 +5,10 @@
 // these eight /hi/authors/<slug> pages has to rebuild to pick up the translated
 // bio, its pull-quotes and its prayer callouts. `hi` still seeds as DRAFT, so the
 // pages build without being advertised.
+// prerender refresh 2026-09-04: six Spanish biographies — george-whitefield
+// (#1450), robert-murray-mcheyne (#1451), hudson-taylor (#1452),
+// amanda-berry-smith (#1459), christmas-evans (#1460), martin-luther (#1461).
+// Rebuilds their /es/authors/<slug> pages with the translated bio_html and short bio.
 // prerender refresh 2026-09-02 (batch3): Luganda bios for richard-sibbes (#1338),
 // john-owen (#1339), thomas-a-kempis (#1346), bernard-of-clairvaux (#1347) —
 // rebuilds their /lg/authors/<slug> pages with the translated bio_html.

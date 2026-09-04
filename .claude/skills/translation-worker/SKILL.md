@@ -1944,3 +1944,33 @@ archaic spelling and period punctuation are the text, not defects in it.
   words its source never quotes. Check what each ENGLISH quotes before deciding
   which edition is wrong — the divergence may be in the authors, not the
   translators.
+- **The es Bible in the ebible mirror is `spa_rv` — but it is RV1909 in ARCHAIC
+  orthography, and our shipped es corpus is MODERN Reina-Valera, so do NOT quote
+  from it: mine the corpus** (the 13-work es bios+sermons batch, 2026-09-04). The
+  collection id is `bibles/spa_rv/` (usx; `spa_rvg` is Reina-Valera Gómez 2010,
+  a different text). `meta.json` says RV1909, `license: public` — tempting. But
+  its John 3:16 reads «que ha dado **á** su Hijo... **fué**», Micah 6:8 «pida de
+  ti **Jehová**», while the shipped es corpus reads «ha dado **a** su Hijo... en
+  Él cree» and «qué pide de ti **el Señor**» — modern RV1960-register. This is
+  exactly the "fetch a known verse and diff it against a shipped file" rule the
+  sw notes make: the metadata date is not the text's register. So the es
+  authority is the CORPUS. Align en/es block pairs across the 45 shipped es
+  files (the #515 method) into a ref→wording crib (recovered 525 refs, zero
+  alignment loss); paste those verbatim; render gaps in modern RV register and
+  flag `self_rendered`. Keep `spa_rv` only as a wording GUIDE (which words the RV
+  tradition uses), normalise its orthography, and never mark it `mined`. NB the
+  corpus itself is not uniform — a few older files (`consolation-in-the-furnace.es`)
+  carry archaic `á`; don't "fix" them, and prefer the modern register for new work.
+- **es CONVENTION and BANDS are per content-type — measured 2026-09-04:**
+  **SERMONS mirror** their own English source's quote-mark style (7 of 29 shipped
+  mirror straight, 10 convert curly→«», 12 keep curly — genuinely split, so
+  mirror is the internally-consistent, `QuoteStyleTests`-safe choice per file);
+  **BIOS convert outer quotations to « »** (21 of 25 shipped, whatever the source
+  used; `“ ”` only when nested). Word bands from `word_count` on both sides of the
+  shipped pairs: **es SERMON n=29: 0.928–1.014, mean 0.963**; **es BIO n=25:
+  1.017–1.115, mean 1.062** (bios run just above English). Both distinct from the
+  es BOOK-CHAPTER band (0.947–1.053) already recorded. `QuoteStyleTests` reads
+  `body_html` ONLY, and bios are migration-data files (not fixtures) so it never
+  sees them — a bio's « » + nested `“ ”` is fine. Sermons also carry an editorial
+  `summary` the translator agents don't produce; translate it too and match the
+  body's mark style.

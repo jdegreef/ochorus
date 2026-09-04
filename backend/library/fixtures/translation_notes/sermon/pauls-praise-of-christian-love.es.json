@@ -1,0 +1,164 @@
+{
+ "kind": "sermon",
+ "slug": "pauls-praise-of-christian-love",
+ "language": "es",
+ "job_issue": 1464,
+ "references": [
+  {
+   "reference": "Philippians 2:3-4",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Corinthians 13:1a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Corinthians 13:1b",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "1 Corinthians 13:2a",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "1 Corinthians 13:2b",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "John 6:70b",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "1 Corinthians 13:3a",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "1 Corinthians 13:3",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "1 Corinthians 13:4a",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "1 Corinthians 13:4b",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "1 Corinthians 13:4c",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "1 Corinthians 13:4d",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "1 Corinthians 13:4e",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "1 Corinthians 13:5a",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "1 Corinthians 13:5b",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "1 Corinthians 13:5c",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "1 Corinthians 13:5d",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "1 Corinthians 13:6a",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Proverbs 2:14a",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "1 Corinthians 13:6b",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "1 Corinthians 13:7a",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "1 Corinthians 13:7b",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "1 Corinthians 13:7c",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "1 Corinthians 13:7d",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "1 Corinthians 13:8a",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "1 Corinthians 13:8b",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "1 Corinthians 13:9",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "1 Corinthians 13:10",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "1 Corinthians 13:12a",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "1 Corinthians 13:12b",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "1 Corinthians 13:13",
+   "status": "mined",
+   "source_file": "godliness.es.json",
+   "block_index": 37
+  }
+ ]
+}
