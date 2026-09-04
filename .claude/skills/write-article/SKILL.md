@@ -61,6 +61,11 @@ chapter profile — it strips links/cite). Scripture refs are plain text
 - **Verify every `related` slug resolves.** A dead ref is silently dropped, so the
   Read-next block just goes short. Seed locally and check the detail API returns
   the expected count.
+- **Edit the builder's `body_html` with HTML only.** When expanding a
+  triple-quoted `body_html` string, the replacement text must be plain HTML —
+  never paste `"""` or Python (`.replace(...)`) into it, or you close the string
+  literal early and corrupt the file. Bit this three times in one session; run
+  `python3 -c "import ast; ast.parse(open(f).read())"` after each builder edit.
 
 ## Verify + ship
 
