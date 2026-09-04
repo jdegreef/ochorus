@@ -93,4 +93,4 @@ See also `backend/CLAUDE.md` and `frontend/CLAUDE.md`.
   `ship-content-fix`, `translate-book`, `book-qa`.
 - **in-repo `.claude/skills/`**: `translation-worker`, `book-import`,
   `english-qa`, `contemporize-book`, `write-biography`, `quote-extraction`,
-  `write-article`.
+  `write-article`, `page-design` (page anatomy + the design-consistency backlog).
