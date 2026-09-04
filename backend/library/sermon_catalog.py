@@ -50,6 +50,7 @@ SERMON_AUTHORS: dict[str, AuthorEntry] = {
 
 _CCEL = "https://ccel.org/ccel/spurgeon/"
 _WESLEY = "https://ccel.org/ccel/wesley/sermons/"
+_EDWARDS = "https://ccel.org/ccel/edwards/sermons/"
 
 SERMONS: list[SermonEntry] = [
     # --- Assurance & the character of God -----------------------------------
@@ -427,5 +428,56 @@ SERMONS: list[SermonEntry] = [
         "https://biblehub.com/sermons/auth/various/calvin_--_enduring_persecution_for_christ.htm",
         scripture_ref="Hebrews 13:13",
         body_starts="All the exhortations which can be given us to suffer patiently",
+    ),
+    # --- Jonathan Edwards: five from CCEL's collection --------------------------
+    # Edwards had three books and a bio but no sermon. CCEL's Edwards pages were
+    # transcribed piecemeal and every masthead differs (title as <h1> or <h2>,
+    # "A Sermon / by / Jonathan Edwards" rows, a bracketed <h5> preaching note, and
+    # the scripture in a <blockquote>, a <p>, an <h3> or an <h4>, verse before OR
+    # after the reference) — so scripture_ref and preached_on are pinned here
+    # rather than trusted to the masthead parser. All five are wholly
+    # straight-quoted (a consistent style; QuoteStyleTests only rejects a mix).
+    SermonEntry(
+        "sinners-in-the-hands-of-an-angry-god",
+        "Sinners in the Hands of an Angry God",
+        "jonathan-edwards",
+        "ccel",
+        _EDWARDS + "sermons.sinners.html",
+        scripture_ref="Deuteronomy 32:35",
+        preached_on="1741-07-08",
+    ),
+    SermonEntry(
+        "a-divine-and-supernatural-light",
+        "A Divine and Supernatural Light",
+        "jonathan-edwards",
+        "ccel",
+        _EDWARDS + "sermons.supernatural_light.html",
+        scripture_ref="Matthew 16:17",
+    ),
+    SermonEntry(
+        "god-glorified-in-mans-dependence",
+        "God Glorified in Man's Dependence",
+        "jonathan-edwards",
+        "ccel",
+        # sermons.dependence.html is a wrapper; .1 is an advertisement, .2 the sermon.
+        _EDWARDS + "sermons.dependence.2.html",
+        scripture_ref="1 Corinthians 1:29-31",
+        preached_on="1731-07-08",
+    ),
+    SermonEntry(
+        "the-excellency-of-christ",
+        "The Excellency of Christ",
+        "jonathan-edwards",
+        "ccel",
+        _EDWARDS + "sermons.excellency.html",
+        scripture_ref="Revelation 5:5-6",
+    ),
+    SermonEntry(
+        "safety-fulness-and-sweet-refreshment-in-christ",
+        "Safety, Fulness, and Sweet Refreshment in Christ",
+        "jonathan-edwards",
+        "ccel",
+        _EDWARDS + "sermons.safety.html",
+        scripture_ref="Isaiah 32:2",
     ),
 ]
