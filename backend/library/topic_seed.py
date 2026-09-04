@@ -247,6 +247,7 @@ TOPIC_ARTICLES = {
     "the-way-of-holiness": [
         "what-is-sanctification",
         "how-to-forgive-someone-who-hurt-you",
+        "the-priesthood-of-all-believers",
     ],
 }
 
