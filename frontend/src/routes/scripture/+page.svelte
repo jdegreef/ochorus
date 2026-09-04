@@ -6,10 +6,13 @@
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
+	import { i18n } from '$lib/i18n.svelte';
 
 	// English-only; see the note on the chapter page.
 	let { data } = $props();
 	const pages = $derived<ScripturePageEntry[]>(data.pages);
+	const loadError = $derived<boolean>(data.loadError);
+	const t = i18n.t;
 
 	// Grouped into the books of the Bible, in canonical order, each carrying its
 	// chapter pages. This is what makes the graph navigable rather than a list
@@ -54,24 +57,26 @@
 		tagline="Every Bible reference in the library is indexed. These are the chapters the writers return to — open one to see who preached it, and what they said."
 	/>
 
-	{#if !books.length}
+	{#if loadError}
+		<EmptyState message={t('common.loadError')} onRetry />
+	{:else if !books.length}
 		<EmptyState message="The scripture index is still being built." />
+	{:else}
+		{#each books as book (book.slug)}
+			<section class="book">
+				<h2 class="bname">{book.title}</h2>
+				<ul class="chapters">
+					{#each book.chapters as c (c.chapter)}
+						<li>
+							<a href={`/scripture/${book.slug}/${c.chapter}/`} title={`${c.citing_count} passages`}
+								>{c.chapter}</a
+							>
+						</li>
+					{/each}
+				</ul>
+			</section>
+		{/each}
 	{/if}
-
-	{#each books as book (book.slug)}
-		<section class="book">
-			<h2 class="bname">{book.title}</h2>
-			<ul class="chapters">
-				{#each book.chapters as c (c.chapter)}
-					<li>
-						<a href={`/scripture/${book.slug}/${c.chapter}/`} title={`${c.citing_count} passages`}
-							>{c.chapter}</a
-						>
-					</li>
-				{/each}
-			</ul>
-		</section>
-	{/each}
 </div>
 
 <style>

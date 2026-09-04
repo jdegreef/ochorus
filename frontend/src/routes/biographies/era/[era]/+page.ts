@@ -1,4 +1,5 @@
 import { listAuthors, listBooks, type BookSummary } from '$lib/library-public';
+import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
 import { error } from '@sveltejs/kit';
 import { ERAS, eraById, eraOf } from '$lib/eras';
@@ -25,7 +26,9 @@ export const load: PageLoad = async ({ params }) => {
 	const era = eraById(params.era);
 	if (!era) throw error(404, 'Unknown era');
 	const lang = getLang();
-	const authors = await listAuthors(lang);
+	// A failed author fetch is REPORTED (loadShelf) so the page offers Try again
+	// rather than crashing to the 500 route (this loader was unguarded).
+	const { items: authors, loadError } = await loadShelf(listAuthors(lang));
 	// Books power the per-writer cover strips; degrade to none if unavailable so
 	// the page still renders.
 	let books: BookSummary[] = [];
@@ -34,5 +37,5 @@ export const load: PageLoad = async ({ params }) => {
 	} catch {
 		books = [];
 	}
-	return { eraId: era.id, authors, books };
+	return { eraId: era.id, authors, books, loadError };
 };

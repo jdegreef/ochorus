@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { lang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
-	import { listBooks, listSermons, listPlans } from '$lib/library-public';
+	import { listBooks, listSermons, listPlans, listTopics, listAuthors } from '$lib/library-public';
 
 	/**
 	 * On a minority-language catalog page, gently point the reader to the fuller
@@ -16,7 +16,10 @@
 	 * (UI + content) if they choose. A true UI/reading-language split is a separate
 	 * design decision.
 	 */
-	let { kind, localizedCount }: { kind: 'books' | 'sermons' | 'plans'; localizedCount: number } =
+	let {
+		kind,
+		localizedCount
+	}: { kind: 'books' | 'sermons' | 'plans' | 'topics' | 'authors'; localizedCount: number } =
 		$props();
 
 	const t = i18n.t;
@@ -26,7 +29,13 @@
 	let englishCount = $state<number | null>(null);
 	onMount(async () => {
 		if (lang.current === 'en') return;
-		const fetchers = { books: listBooks, sermons: listSermons, plans: listPlans } as const;
+		const fetchers = {
+			books: listBooks,
+			sermons: listSermons,
+			plans: listPlans,
+			topics: listTopics,
+			authors: listAuthors
+		} as const;
 		try {
 			englishCount = (await fetchers[kind]('en')).length;
 		} catch {

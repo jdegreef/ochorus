@@ -6,11 +6,15 @@
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
+	import EmptyState from '$lib/components/EmptyState.svelte';
+	import { i18n } from '$lib/i18n.svelte';
 
 	// English literals, as on the author pages and /scripture: this index is not
 	// localized because what it lists is not.
 	let { data } = $props();
 	const authors = $derived<QuoteAuthorSummary[]>(data.authors);
+	const loadError = $derived<boolean>(data.loadError);
+	const t = i18n.t;
 
 	const path = '/quotes/';
 	const canonical = `${SITE_URL}${path}`;
@@ -67,6 +71,11 @@
 	<!-- A card per author. The accent bar wears the author's era hue, the same
 	     colour their row carries on the Biographies shelf and their quote page's
 	     groups — one consistent visual key for "when". -->
+	{#if loadError}
+		<EmptyState message={t('common.loadError')} onRetry />
+	{:else if authors.length === 0}
+		<EmptyState message="No quotations here yet." />
+	{:else}
 	<ul class="grid gap-3 sm:grid-cols-2">
 		{#each authors as a (a.slug)}
 			<li>
@@ -87,6 +96,7 @@
 			</li>
 		{/each}
 	</ul>
+	{/if}
 </div>
 
 <style>

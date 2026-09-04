@@ -1,4 +1,5 @@
 import { listQuoteAuthors } from '$lib/library-public';
+import { loadShelf } from '$lib/loadShelf';
 import type { PageLoad } from './$types';
 
 export const prerender = true;
@@ -8,6 +9,7 @@ export const trailingSlash = 'always';
 // lifted from the English works, so there is no translated index to serve. The
 // list comes from the same endpoint the author-page entry generator and the
 // sitemap read, so all three advertise exactly the reviewed set.
-export const load: PageLoad = async () => ({
-	authors: await listQuoteAuthors()
-});
+export const load: PageLoad = async () => {
+	const { items, loadError } = await loadShelf(listQuoteAuthors());
+	return { authors: items, loadError };
+};

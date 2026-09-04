@@ -6,11 +6,15 @@
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
+	import EmptyState from '$lib/components/EmptyState.svelte';
+	import { i18n } from '$lib/i18n.svelte';
 
 	// English literals, as on /quotes and /scripture: this index is not localized
 	// because what it lists is not (articles are English-only for now).
 	let { data } = $props();
 	const articles = $derived<ArticleSummary[]>(data.articles);
+	const loadError = $derived<boolean>(data.loadError);
+	const t = i18n.t;
 
 	const path = '/articles/';
 	const canonical = `${SITE_URL}${path}`;
@@ -55,14 +59,16 @@
 		tagline="Short readings on prayer, faith and the life with God — each one written to send you on to a classic worth reading in full."
 	/>
 
-	{#if articles.length}
+	{#if loadError}
+		<EmptyState message={t('common.loadError')} onRetry />
+	{:else if articles.length}
 		<div class="article-list">
 			{#each articles as a (a.slug)}
 				<ArticleCard article={a} />
 			{/each}
 		</div>
 	{:else}
-		<p class="text-body text-muted">No articles yet — check back soon.</p>
+		<EmptyState message="No articles yet — check back soon." />
 	{/if}
 </div>
 
