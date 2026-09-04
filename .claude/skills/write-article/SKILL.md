@@ -55,6 +55,16 @@ don't hand-wrap refs in the fixture.
 - **`word_count` runs ~1.6× LOWER than your visual estimate.** A body that "feels"
   like 1600 words counts ~1000. Write much fuller than feels right, then verify —
   budget for one or two expansion passes.
+- **Verify the count with the function, not the model — `Article` has no
+  `word_count` column.** It mirrors `Sermon` *minus* the derived columns, so
+  `article.word_count` raises `AttributeError`. Count with
+  `from library.text import word_count; word_count(settled_body)` (a pure regex
+  split, no DB needed — runs off `clean_bio_html` output alone).
+- **Don't use `<q>` for quotations — it's not in the allowlist and vanishes.**
+  `clean_bio_html` silently strips `<q>…</q>`, leaving the quoted Scripture with
+  NO marks at all. Write quotations with literal curly `“ ”` in the body (a
+  direct-speech attribution still goes in `<blockquote><cite>`). If you compose
+  with `<q>` for readability, convert `<q>`→`“` / `</q>`→`”` *before* settling.
 - **Store the SETTLED form.** `clean_bio_html` round-trips HTML entities to unicode
   (`&mdash;`→—, `&rsquo;`→’), so a raw-entity body is not byte-stable. Run each
   body through `clean_bio_html` and write THAT, or the fixture drifts on deploy.
