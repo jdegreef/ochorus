@@ -169,6 +169,14 @@ absent from the palette and from search.
 
 - `<title>`: `{Page} — Ochorus` — em dash with spaces, everywhere. Leaf pages
   `{Title} — {Author} — Ochorus`. Not `· Ochorus`.
+  - **A copy fix to a string that lives in a catalogue must touch all eight
+    `messages/*.json`, not just `en.json`.** The title suffix rides inside
+    translatable keys (`book_title_tag`), so fixing English alone leaves the
+    book reading `— Ochorus` in English and `· Ochorus` in Swahili — invisible
+    until a reader of that language opens the tab. `messageCatalogues.test.ts`
+    now fails any catalogue carrying `· Ochorus`; add the same shape of guard
+    when you normalise the next catalogue-borne label. A value-only edit needs
+    no `sync:catalogues` (that snapshot tracks keys, not values).
 - Counts: `N books · M authors` (middle dot, spaces). Never "Showing N of N".
 - Chrome strings — crumbs, "Home", "Read", "Topics:", plurals — go through
   `t()` / `m.*()` even on an English-only hub; only *content* may be literal.
@@ -197,6 +205,30 @@ each kind, the reader, the 404 and About. The in-app Browser pane cannot scroll
 or hover while hidden — scroll with `window.scrollTo` via `javascript_tool`,
 and expect a blank screenshot right after a JS scroll; read the footer with
 `read_page` instead.
+
+## Converting an existing page onto the system
+
+- **`<svelte:head>` → `<Seo>` is output-equivalent** when the hand-written head
+  is the standard set: `title` (also the `og:title` default), `description`
+  (also `og:description`), `canonical` (also `og:url`), the `hreflang`
+  alternates + x-default, `og:type=website`, `og:image`, `twitter:card`, and the
+  JSON-LD blocks. Map an `{#if x.length}{@html xLd}{/if}` gate to
+  `structuredData={x.length ? [xLd] : []}`. A page that destructured
+  `const { alternates, xDefault } = hreflangAll(...)` for the loop passes the
+  whole object instead: `const hreflang = hreflangAll(...)`. There is **no**
+  shared canonical helper — `${SITE_URL}${localizeHref(path)}` is the repo-wide
+  idiom (16 files); `absUrl()` is wrong here (it omits the locale prefix).
+- **`<header>` → `<PageHeader>`** carries the eyebrow/title/tagline; keep a
+  page hand-rolled only when its `<h1>` is genuinely composite (the era page's
+  name + date-range badge), and then match PageHeader's metrics exactly
+  (`header mb-8`, `h1 text-h1 mb-2`, `tagline max-w-2xl text-body text-muted`).
+- Verifying locally needs the Django API for data, so the browse pages that go
+  through `loadShelf` show their converted head above an EmptyState while the
+  unguarded ones (still on the C1 backlog) hit the error route — both still
+  prove the head/`PageHeader` rendered. Confirm the head with
+  `javascript_tool`: one `<title>`, right canonical/og. On Node 25 the pure
+  file-reading guards run under `npx vitest run --environment node <files>`
+  (the jsdom store suite needs the pinned Node 22 — CI has it).
 
 ## Verify before merge
 
