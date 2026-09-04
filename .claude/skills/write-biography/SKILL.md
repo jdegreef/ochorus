@@ -434,6 +434,14 @@ advertised-but-unbuilt, so built-but-unadvertised is fine.
   `&mdash;` / `&hellip;` in `bio_html` render RAW on the page ("&lsquo;stepping
   stones&rsquo;"). Write ’ — … £ é directly (the fixture is UTF-8 JSON). Keep
   only `&amp;` `&lt;` `&gt;`.
+- **A cross-link to another Ochorus page inside `bio_html` MUST carry a
+  trailing slash** — `<a href="/authors/john-stott/">`, not `/authors/john-stott`.
+  The frontend built-output guard `frontend/src/lib/href.test.ts` ("contains no
+  bare (non-slash) detail-route links") fails CI on any bare `/authors|books|
+  topics|sermons|plans/<slug>` link. This is a CI-only catch — the backend
+  fixture/sanitize gates pass a bare link happily, so it reddens the build only
+  after you push (cost a rebuild on PR #1405). The slash survives `clean_bio_html`,
+  so just author the link with it and re-settle as usual.
 - **Replacing a NON-empty bio in a migration: anchor on the md5** of the exact
   previous `bio_html` (captured from the committed fixture) instead of pasting
   ~10KB of old prose into the migration. Update only when

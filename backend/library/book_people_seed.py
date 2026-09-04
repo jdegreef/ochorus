@@ -101,6 +101,9 @@ BOOK_PEOPLE: list[tuple[str, list[tuple[str, str]]]] = [
             ("jonathan-edwards", "subject"),
             ("john-newton", "subject"),
             ("robert-murray-mcheyne", "subject"),
+            ("a-w-tozer", "subject"),
+            ("dietrich-bonhoeffer", "subject"),
+            ("martyn-lloyd-jones", "subject"),
         ],
     ),
     (
