@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { TopicDetail } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
-	import { absUrl, jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { scopedSearchHref } from '$lib/searchState';
@@ -37,9 +37,7 @@
 		{ name: t('topics.title'), href: '/topics' },
 		{ name: topic.title, href: `/topics/${topic.slug}` }
 	]);
-	const crumbsLd = $derived(
-		jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))))
-	);
+	const crumbsLd = $derived(breadcrumbLd(crumbs));
 	const topicLd = $derived(
 		jsonLd({
 			'@context': 'https://schema.org',
