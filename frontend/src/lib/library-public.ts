@@ -551,13 +551,13 @@ export interface ArticleSummary {
 	description: string;
 	/** Words in the body, derived server-side — feeds `readingTime()`. */
 	word_count: number;
-	/** Topics this article belongs to (localized chips) — the funnel back to the
-	 *  topic pages, and the card's taxonomy. Same shape the book/sermon cards use. */
-	topics: TopicChip[];
 	sort_order: number;
 	created_at: string;
 	/** Last modification (ISO) — the sitemap's `<lastmod>`; see BookSummary. */
 	updated_at?: string;
+	/** Topics this article belongs to (localized chips) — the index builds its
+	 *  filter tabs from these. Empty for an untagged article. */
+	topics: TopicChip[];
 }
 
 /** A resolved "Read next" link the article funnels the reader to. */
@@ -586,6 +586,8 @@ export interface Article extends ArticleSummary {
 	 *  titles + URLs server-side (unresolvable references are dropped). */
 	related: ArticleRelated[];
 	source_url: string;
+	// `topics` (the localized chips linking back to the topic pages — the other
+	// half of the bidirectional funnel) is inherited from ArticleSummary.
 	/** Content locales this article is published in — the only locales an
 	 *  hreflang alternate should point at (per-language rows, no fallback). */
 	available_languages: string[];

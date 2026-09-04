@@ -290,9 +290,9 @@ class ArticleListView(PublicContentCacheMixin, generics.ListAPIView):
         )
 
     def get_serializer_context(self):
-        """Attach an ``article_slug -> [topic chip]`` map so the index's topic
-        chips cost a fixed handful of queries, not one per article (see
-        BookListView)."""
+        # Build the slug→chips map ONCE for the shelf, so each card's topics
+        # (the index's filter tabs) cost a fixed handful of queries, not one per
+        # article. Mirrors BookListView. See ArticleListSerializer.get_topics.
         ctx = super().get_serializer_context()
         ctx["article_topics"] = article_topic_map(_language(self.request))
         return ctx

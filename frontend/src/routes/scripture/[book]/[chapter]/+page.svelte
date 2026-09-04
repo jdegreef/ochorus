@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { ScripturePage } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
-	import { jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
+	import { jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import CitingPassages from '$lib/components/CitingPassages.svelte';
@@ -32,9 +32,7 @@
 		{ name: 'Scripture', href: '/scripture' },
 		{ name: page.reference, href: path }
 	]);
-	const crumbsLd = $derived(
-		jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))))
-	);
+	const crumbsLd = $derived(breadcrumbLd(crumbs));
 	// Each excerpt is a Quotation tied to the work it came from — the markup
 	// that says these are sourced passages rather than a page of loose text.
 	const quotesLd = $derived(

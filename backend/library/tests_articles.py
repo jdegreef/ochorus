@@ -264,3 +264,43 @@ class ArticleTopicLinkageTests(TestCase):
         self.assertEqual(
             res.data["topics"], [{"slug": "prayer", "title": "On Prayer"}]
         )
+
+    def test_list_cards_carry_topic_chips_for_the_index_tabs(self):
+        # The index builds its filter tabs from each card's topics, so the LIST
+        # endpoint must carry them too (batched, not just on detail). A tagged
+        # article gets its chip; an untagged one gets an empty list, never absent.
+        Article.objects.create(
+            slug="untagged", language="en", h1="Untagged",
+            body_html="<p>x</p>", is_published=True,
+        )
+        res = self.client.get(reverse("article-list"), {"language": "en"})
+        self.assertEqual(res.status_code, 200)
+        by_slug = {a["slug"]: a for a in res.data}
+        self.assertEqual(
+            by_slug["how-to-pray"]["topics"],
+            [{"slug": "prayer", "title": "On Prayer"}],
+        )
+        self.assertEqual(by_slug["untagged"]["topics"], [])
+
+    def test_list_topic_queries_do_not_grow_with_the_shelf(self):
+        # The map is built once per shelf (mirrors book_topic_map), so the query
+        # count must be CONSTANT however many articles are on the index — no N+1.
+        from django.db import connection
+        from django.test.utils import CaptureQueriesContext
+
+        from .models import TopicArticle
+
+        with CaptureQueriesContext(connection) as small:
+            self.client.get(reverse("article-list"), {"language": "en"})
+
+        for i in range(10):
+            a = Article.objects.create(
+                slug=f"extra-{i}", language="en", h1=f"Extra {i}",
+                body_html="<p>x</p>", is_published=True,
+            )
+            TopicArticle.objects.create(topic=self.topic, article_slug=a.slug)
+
+        with CaptureQueriesContext(connection) as large:
+            self.client.get(reverse("article-list"), {"language": "en"})
+
+        self.assertEqual(len(small), len(large))

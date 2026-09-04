@@ -15,6 +15,7 @@
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { marks } from '$lib/marks.svelte';
 	import SourceBadge from '$lib/components/SourceBadge.svelte';
+	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import { bookmarks } from '$lib/bookmarks.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
@@ -41,7 +42,7 @@
 	import { createReaderText } from '$lib/readerText.svelte';
 	import ReaderOverlays from '$lib/components/ReaderOverlays.svelte';
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
-	import { jsonLd, hreflangFor } from '$lib/seo';
+	import { jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
 	import { localizeHref } from '$lib/href';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import Seo from '$lib/components/Seo.svelte';
@@ -66,6 +67,16 @@
 	const seoPath = $derived(`/books/${slug}/${chapter.order}/`);
 	const canonical = $derived(`${SITE_URL}${localizeHref(seoPath)}`);
 	const hreflang = $derived(hreflangFor(seoPath, chapter.available_languages));
+
+	// One trail feeds both the visible <Breadcrumb> and the JSON-LD (the reader
+	// had a hand-rolled nav Books › Author › Book and no BreadcrumbList at all).
+	const crumbs = $derived([
+		{ name: t('common.home'), href: '/' },
+		{ name: t('nav.books'), href: '/books' },
+		{ name: chapter.book_title, href: `/books/${slug}` },
+		{ name: chapterName(chapter.order, chapter.title), href: `/books/${slug}/${chapter.order}` }
+	]);
+	const crumbsLd = $derived(breadcrumbLd(crumbs));
 	const metaDescription = $derived(
 		chapter.body_html
 			.replace(/<[^>]+>/g, ' ')
@@ -1163,7 +1174,7 @@
 	{hreflang}
 	ogType="article"
 	ogTitle="{chapterName(chapter.order, chapter.title)} — {chapter.book_title}"
-	structuredData={[chapterLd]}
+	structuredData={[chapterLd, crumbsLd]}
 />
 <svelte:window
 	onscroll={onScroll}
@@ -1343,14 +1354,7 @@
 	ontouchcancel={onTouchCancel}
 	use:swipeMove
 >
-	<!-- Breadcrumb -->
-	<nav class="mb-5 flex flex-wrap items-center gap-1.5 text-small text-muted" aria-label={t('a11y.breadcrumb')}>
-		<a href={localizeHref('/books')} class="hover:text-text">{t('nav.books')}</a>
-		<span>›</span>
-		<a href={localizeHref(`/authors/${chapter.author_slug}`)} class="hover:text-text">{chapter.author_name}</a>
-		<span>›</span>
-		<a href={localizeHref(`/books/${slug}`)} class="hover:text-text">{chapter.book_title}</a>
-	</nav>
+	<Breadcrumb items={crumbs} />
 
 	{#if plan && planDay}
 		<div

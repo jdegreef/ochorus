@@ -3,7 +3,7 @@
 	import { groupQuotes, quoteHref, workHref } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { hueForBirthYear } from '$lib/eras';
-	import { jsonLd, breadcrumb, hreflangFor, absUrl } from '$lib/seo';
+	import { jsonLd, breadcrumbLd, hreflangFor, absUrl } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 
@@ -39,9 +39,7 @@
 		{ name: 'Quotes', href: '/quotes/' },
 		{ name: page.author.name, href: path }
 	]);
-	const crumbsLd = $derived(
-		jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))))
-	);
+	const crumbsLd = $derived(breadcrumbLd(crumbs));
 
 	// Share card: the author's own portrait when we have one, so a shared quote
 	// page wears the face it is about; otherwise the branded /quotes section card

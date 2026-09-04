@@ -20,9 +20,10 @@
 	import { apiFetch } from '$lib/api';
 	import { page } from '$app/stores';
 	import { buildOutline, type OutlineEntry } from '$lib/sermonOutline';
-	import { absUrl, jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { localizeHref } from '$lib/href';
+	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import { portraitPosition } from '$lib/portraits';
 	import Reader from '$lib/components/Reader.svelte';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
@@ -219,15 +220,15 @@
 			publisher: { '@type': 'Organization', name: 'Ochorus' }
 		})
 	);
-	const crumbsLd = $derived(
-		jsonLd(
-			breadcrumb([
-				{ name: t('common.home'), url: '/' },
-				{ name: t('nav.sermons'), url: '/sermons' },
-				{ name: sermon.title, url: `/sermons/${sermon.slug}` }
-			])
-		)
-	);
+	// One trail feeds both the visible <Breadcrumb> and the JSON-LD (they had
+	// drifted: the visible nav went Sermons › Author, the JSON-LD Home › Sermons
+	// › Title). Home › Sermons › Title, the book page's shape.
+	const crumbs = $derived([
+		{ name: t('common.home'), href: '/' },
+		{ name: t('nav.sermons'), href: '/sermons' },
+		{ name: sermon.title, href: `/sermons/${sermon.slug}` }
+	]);
+	const crumbsLd = $derived(breadcrumbLd(crumbs));
 
 	// Selecting text offers copy-quote / share (with attribution), highlight and
 	// note; a single word opens the dictionary — same as the chapter reader.
@@ -379,17 +380,7 @@
 {/if}
 
 <article class="mx-auto px-5 py-10" style="{readerPrefs.style}; max-width: var(--reading-measure)">
-	<!-- Breadcrumb -->
-	<nav
-		class="mb-5 flex flex-wrap items-center gap-1.5 text-small text-muted"
-		aria-label={t('a11y.breadcrumb')}
-	>
-		<a href={localizeHref('/sermons')} class="hover:text-text">{t('nav.sermons')}</a>
-		<span>›</span>
-		<a href={localizeHref(`/authors/${sermon.author_slug}`)} class="hover:text-text"
-			>{sermon.author_name}</a
-		>
-	</nav>
+	<Breadcrumb items={crumbs} />
 
 	<!-- The head sits in its plate (see SermonPlate), except in focus mode,
 	     which strips the page to the prose. -->

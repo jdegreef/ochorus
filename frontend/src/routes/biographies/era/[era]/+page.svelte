@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { type AuthorBio, type BookSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
-	import { absUrl, jsonLd, breadcrumb, hreflangAll } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, hreflangAll } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { eraOf, eraById } from '$lib/eras';
@@ -49,9 +49,7 @@
 		{ name: t('bios.eyebrow'), href: '/biographies' },
 		{ name: eraName, href: path }
 	]);
-	const crumbsLd = $derived(
-		jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))))
-	);
+	const crumbsLd = $derived(breadcrumbLd(crumbs));
 
 	// CollectionPage whose mainEntity is the era's roster of Person entities —
 	// the same shape as the biographies index, scoped to this era.

@@ -2,7 +2,7 @@
 	import type { Article, ArticleRelated } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { localizeHref } from '$lib/href';
-	import { jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
+	import { jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
 	import { scripture } from '$lib/scripture.svelte';
 	import { readingTime } from '$lib/reading';
 	import Seo from '$lib/components/Seo.svelte';
@@ -72,9 +72,7 @@
 		{ name: 'Articles', href: '/articles/' },
 		{ name: article.h1, href: path }
 	]);
-	const crumbsLd = $derived(
-		jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))))
-	);
+	const crumbsLd = $derived(breadcrumbLd(crumbs));
 
 	// The "Read next" label for each funnel target's kind.
 	const KIND_LABEL: Record<ArticleRelated['type'], string> = {

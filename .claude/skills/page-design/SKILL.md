@@ -117,7 +117,11 @@ should not. Keep the BreadcrumbList JSON-LD.
    an unbounded `<ul>` of text links.
 8. **Source line** — `mt-8 text-small text-muted`, no rule above it.
 9. **`<Seo>`** with `ogImage` (the cover twin, a portrait, or the section's
-   `/og/<section>.png`) and both the item's LD and the BreadcrumbList.
+   `/og/<section>.png`) and both the item's LD and the BreadcrumbList. Build the
+   BreadcrumbList with `breadcrumbLd(crumbs)` from `$lib/seo` (feeds off the same
+   `{name, href}` array as the visible `<Breadcrumb>`) — never hand-write
+   `jsonLd(breadcrumb(crumbs.map(...)))`, whose `c.href`→`c.url` retype ships a
+   broken trail with no error.
 
 **Language fallback is one policy.** `localized()` serves English when the
 language has no row; the page must then *say so* ("Not yet available in

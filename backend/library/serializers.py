@@ -60,14 +60,19 @@ def _available_languages(model, slug: str) -> list[str]:
     )
 
 
-def _topic_slug_map(language: str, entries_attr: str, slug_attr: str) -> dict[str, list[dict]]:
+def _topic_membership_map(
+    language: str, *, entries_attr: str, slug_attr: str
+) -> dict[str, list[dict]]:
     """``work_slug -> [topic chip]`` for every published topic, in one pass.
 
-    Built whole rather than per work on purpose: a shelf of forty items would
-    otherwise cost forty topic queries. ``entries_attr`` is the topic's reverse
-    membership relation (``entries`` for books, ``article_entries`` for
-    articles) and ``slug_attr`` the slug field on those entry rows; see the
-    ``book_topic_map`` / ``article_topic_map`` wrappers.
+    The shelf-wide twin of :func:`_topic_chips`: built whole rather than per work
+    on purpose, so a shelf of forty works costs a fixed handful of queries, not
+    forty topic lookups. ``entries_attr`` is the topic's reverse relation to its
+    through-rows (``entries`` for books, ``article_entries`` for articles) and
+    ``slug_attr`` the slug on each row — the only two things that differ between
+    work types. Views that know their set hand the result to the serializer
+    through a context key; the list serializer builds it on demand when a view
+    hasn't, so chips are never silently empty just because a caller forgot.
     """
     mapping: dict[str, list[dict]] = {}
     topics = Topic.objects.filter(is_published=True).prefetch_related(
@@ -86,20 +91,10 @@ def _topic_slug_map(language: str, entries_attr: str, slug_attr: str) -> dict[st
 
 
 def book_topic_map(language: str) -> dict[str, list[dict]]:
-    """``book_slug -> [topic chip]`` for the books shelf. See ``_topic_slug_map``.
-
-    Views that serialize a known set of books hand this to the serializer through
-    the ``book_topics`` context key; ``BookListSerializer`` builds it on demand
-    when a view hasn't, so the chips are never silently empty."""
-    return _topic_slug_map(language, "entries", "book_slug")
-
-
-def article_topic_map(language: str) -> dict[str, list[dict]]:
-    """``article_slug -> [topic chip]`` for the articles index. Its book twin's
-    counterpart (see ``_topic_slug_map``); ``ArticleListView`` hands it to the
-    serializer via the ``article_topics`` context key, and ``ArticleListSerializer``
-    builds it on demand when a view hasn't."""
-    return _topic_slug_map(language, "article_entries", "article_slug")
+    """``book_slug -> [topic chip]`` for every published topic (see
+    :func:`_topic_membership_map`). ``BookListView`` supplies it as
+    ``book_topics``; ``BookListSerializer`` builds it on demand otherwise."""
+    return _topic_membership_map(language, entries_attr="entries", slug_attr="book_slug")
 
 
 def _topic_chips(language: str, **membership) -> list[dict]:
@@ -123,6 +118,16 @@ def _topic_chips(language: str, **membership) -> list[dict]:
         for t in topics
         if t.is_translated_into(language)
     ]
+
+
+def article_topic_map(language: str) -> dict[str, list[dict]]:
+    """``article_slug -> [topic chip]`` for every published topic (see
+    :func:`_topic_membership_map`) — powers the article index's filter tabs.
+    ``ArticleListView`` supplies it as ``article_topics``; the list serializer
+    builds it on demand otherwise."""
+    return _topic_membership_map(
+        language, entries_attr="article_entries", slug_attr="article_slug"
+    )
 
 
 class LocalizedMixin:
@@ -524,22 +529,29 @@ class ArticleListSerializer(LocalizedMixin, serializers.ModelSerializer):
     """An article card — enough for the /articles index (no body).
 
     Carries ``word_count`` (the "N min read" estimate) and ``topics`` (the
-    funnel chips back to the topic pages), so the index card matches the
-    book/sermon shelf cards rather than being a bare title + description.
+    index's filter tabs and the funnel back to the topic pages), so the card
+    matches the book/sermon shelf cards rather than being a bare title.
     """
 
     topics = serializers.SerializerMethodField()
 
     def get_topics(self, obj):
-        """Published topics this article belongs to (localized) — the chips that
-        close the funnel back to the topic pages. Served from a slug→chips map
-        built once per shelf (``article_topics`` context), like BookListSerializer,
-        so topics cost a fixed handful of queries however many cards are shown."""
-        mapping = self.context.get("article_topics")
-        if mapping is None:
-            mapping = article_topic_map(self._language())
-            self.context["article_topics"] = mapping
-        return mapping.get(obj.slug, [])
+        """The (published, localized) topics this card belongs to, so the index
+        can offer topic-filter tabs. Mirrors ``BookListSerializer.get_topics``:
+        served from a slug→chips map built once per shelf, passed in as
+        ``article_topics`` context by ``ArticleListView`` or built here on first
+        use and cached on the shared ``many=True`` instance otherwise. Language
+        comes from the reader (context/request) via ``LocalizedMixin``, the same
+        source the batch path uses — never a hardcoded English default."""
+        supplied = self.context.get("article_topics")
+        if supplied is not None:
+            return supplied.get(obj.slug, [])
+        language = self._language()
+        cached_for, cached = getattr(self, "_topic_map", (None, None))
+        if cached_for != language:
+            cached = article_topic_map(language)
+            self._topic_map = (language, cached)
+        return cached.get(obj.slug, [])
 
     class Meta:
         model = Article
@@ -552,12 +564,14 @@ class ArticleListSerializer(LocalizedMixin, serializers.ModelSerializer):
             # The reading-time source, derived from body_html on save(); the
             # index defers the body but this column loads with the row.
             "word_count",
-            "topics",
             "sort_order",
             "created_at",
             # The sitemap's <lastmod> — see BookListSerializer.updated_at. The
             # seed keeps this honest by only save()-ing a genuinely changed row.
             "updated_at",
+            # Topic chips — the index filter tabs and the detail page's
+            # back-links. Batched by the list view; per-object on detail.
+            "topics",
         ]
 
 
@@ -570,9 +584,10 @@ class ArticleDetailSerializer(ArticleListSerializer):
     available_languages = serializers.SerializerMethodField()
 
     def get_topics(self, obj):
-        """The one article on the page — the batched map would be a whole-corpus
-        query to answer a single-row question, so ask directly (mirrors the
-        book/sermon detail chips; the topic page lists the article in return)."""
+        """Published topics this article belongs to (localized) — the chips that
+        close the funnel back to the topic pages. A single article needs no
+        batch map, so this overrides the list serializer with a direct query;
+        the topic page already lists the article in return."""
         return _topic_chips(obj.language, article_entries__article_slug=obj.slug)
 
     def _rendered(self, obj):
@@ -604,7 +619,9 @@ class ArticleDetailSerializer(ArticleListSerializer):
         return _available_languages(Article, obj.slug)
 
     class Meta(ArticleListSerializer.Meta):
-        # topics + word_count already ride on the list serializer's fields.
+        # topics + word_count already ride on the list serializer's fields;
+        # detail just overrides get_topics with a direct query and adds the body,
+        # its table of contents, the Read-next links and source/languages.
         fields = ArticleListSerializer.Meta.fields + [
             "body_html",
             "toc",

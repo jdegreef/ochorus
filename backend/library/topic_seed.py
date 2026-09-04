@@ -221,22 +221,32 @@ TOPIC_ARTICLES = {
     "prayer": [
         "how-to-pray-so-god-answers",
         "what-is-intercessory-prayer",
+        "the-power-of-persistent-prayer",
+        "how-to-pray-the-psalms",
     ],
     "holy-spirit": [
         "what-is-the-baptism-of-the-holy-spirit",
         "who-is-the-holy-spirit",
         "what-are-the-spiritual-gifts",
+        "what-is-the-fruit-of-the-spirit",
     ],
     "deeper-life": [
         "what-does-it-mean-to-abide-in-christ",
         "the-cost-of-following-jesus",
         "what-is-surrender-to-god",
+        "what-is-biblical-fasting",
     ],
     "grace-and-comfort": [
         "how-to-trust-god-in-suffering",
         "how-to-overcome-fear-and-anxiety-with-faith",
     ],
-    "revival-and-missions": ["what-is-revival-and-how-does-it-begin"],
+    "revival-and-missions": [
+        "what-is-revival-and-how-does-it-begin",
+        "what-is-the-great-commission",
+        "hudson-taylor-trusting-god-for-the-impossible",
+        "amy-carmichael-and-the-cost-of-love",
+        "samuel-crowther-from-captive-to-bishop",
+    ],
     "faith-and-guidance": [
         "how-to-find-gods-will-for-your-life",
         "how-to-hear-gods-voice",
@@ -246,12 +256,18 @@ TOPIC_ARTICLES = {
         "how-to-be-born-again",
         "how-to-have-assurance-of-salvation",
         "what-is-the-gospel",
+        "what-is-justification-by-faith",
     ],
     "the-way-of-holiness": [
         "what-is-sanctification",
         "how-to-forgive-someone-who-hurt-you",
         "how-to-overcome-sin-and-temptation",
         "the-priesthood-of-all-believers",
+        "why-humility-matters",
+    ],
+    "the-preached-word": [
+        "how-to-know-if-god-is-calling-you-to-ministry",
+        "what-makes-a-godly-leader",
     ],
 }
 
