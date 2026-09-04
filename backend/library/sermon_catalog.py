@@ -536,4 +536,82 @@ SERMONS: list[SermonEntry] = [
         _EDWARDS + "sermons.safety.html",
         scripture_ref="Isaiah 32:2",
     ),
+    # --- Tier 2: topping up the authors stuck at one or two sermons -----------
+    # Finney: two from CCEL's "Lectures on Revivals of Religion" (a <p class="text">
+    # "Text.—verse—ref." masthead, footnotes) and the 1836 sermon that made him
+    # famous, from gospeltruth (the Booth-shaped page). Refs pinned throughout.
+    SermonEntry(
+        "prevailing-prayer",
+        "Prevailing Prayer",
+        "charles-finney",
+        "ccel",
+        "https://ccel.org/ccel/finney/revivals/revivals.iii.iv.html",
+        scripture_ref="James 5:16",
+    ),
+    SermonEntry(
+        "the-spirit-of-prayer",
+        "The Spirit of Prayer",
+        "charles-finney",
+        "ccel",
+        "https://ccel.org/ccel/finney/revivals/revivals.iii.vi.html",
+        scripture_ref="Romans 8:26-27",
+    ),
+    SermonEntry(
+        "sinners-bound-to-change-their-own-hearts",
+        "Sinners Bound to Change Their Own Hearts",
+        "charles-finney",
+        "web",
+        "https://www.gospeltruth.net/1836SOIS/01sois_sinners_bound.htm",
+        scripture_ref="Ezekiel 18:31",
+        body_starts="These words were addressed to the house of Israel",
+    ),
+    # Luther: two more from the Lenker Postil site (see pauls-praise-of-christian-love).
+    # The Good Friday sermon meditates on the Passion narrative and carries no text.
+    SermonEntry(
+        "the-appearing-of-the-grace-of-god",
+        "The Appearing of the Grace of God",
+        "martin-luther",
+        "web",
+        "https://sermons.martinluther.us/sermons14.html",
+        scripture_ref="Titus 2:11-15",
+        body_starts="1. It is written in the book of Nehemiah",
+    ),
+    SermonEntry(
+        "how-to-contemplate-christs-holy-sufferings",
+        "How to Contemplate Christ's Holy Sufferings",
+        "martin-luther",
+        "web",
+        "https://sermons.martinluther.us/sermons45.html",
+        body_starts="1. In the first place, some reflect",
+    ),
+    # Chrysostom: NPNF vol. 9 on CCEL, like against-eutropius. A treatise-sermon
+    # written from exile; it has no scripture text.
+    SermonEntry(
+        "no-one-can-harm-the-man-who-does-not-injure-himself",
+        "No One Can Harm the Man Who Does Not Injure Himself",
+        "john-chrysostom",
+        "ccel",
+        "https://ccel.org/ccel/schaff/npnf109.xvi.iii.html",
+    ),
+    # Hudson Taylor: two more studies from "A Ribband of Blue" (PG 23438), the
+    # volume blessed-adversity came from; <h3>-delimited, so the section importer
+    # bounds them. The epigraph sits in a <div class="c1"> before the prose.
+    SermonEntry(
+        "under-the-shepherds-care",
+        "Under the Shepherd's Care",
+        "hudson-taylor",
+        "gutenberg",
+        "23438",
+        section="Under the Shepherd's Care.",
+        scripture_ref="1 Peter 2:25",
+    ),
+    SermonEntry(
+        "coming-to-the-king",
+        "Coming to the King",
+        "hudson-taylor",
+        "gutenberg",
+        "23438",
+        section="Coming to the King.",
+        scripture_ref="1 Kings 10:13",
+    ),
 ]

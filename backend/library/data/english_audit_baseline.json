@@ -130,6 +130,9 @@
    "space-before-punct": 4,
    "word-fusion": 1
   },
+  "no-one-can-harm-the-man-who-does-not-injure-himself": {
+   "lost-paragraphing": 1
+  },
   "on-loving-god": {
    "lost-paragraphing": 2
   },
@@ -217,6 +220,9 @@
    "orphan-close-quote": 1,
    "space-before-punct": 8,
    "word-fusion": 1
+  },
+  "the-appearing-of-the-grace-of-god": {
+   "space-before-punct": 4
   },
   "the-body-of-christ-a-reality": {
    "run-together": 1,

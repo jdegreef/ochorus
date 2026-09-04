@@ -1019,6 +1019,50 @@ all of which this command already does. The steps:
   again, then `DJANGO_DEBUG=true uv run python manage.py makemigrations
   --check --dry-run`; if it names leaves, `makemigrations --merge --no-input`
   and commit the no-op merge migration.
+- **Batch several authors' sermons into ONE PR** when they land together
+  *(Tier 2, #1418, 2026-09-04)*. Every sermon PR touches `og-manifest.json`,
+  and catalog additions all insert at the same tail, so N parallel sermon PRs
+  cost N−1 main-merge + manifest-regen rounds (Tier 1's three PRs did). "Top up
+  five thin authors" is one job; one branch.
+- **Source shapes met in Tier 2** — each round-trips through the importer,
+  so give them catalog entries:
+  - *BibleHub "sermons" by an author are NOT sermons.* `/sermons/auth/calvin/…`
+    pages are ~150-word commentary snippets wrapped in ad scripts. Only the
+    Kleiser anthology pages there (`/sermons/auth/various/…`) are real sermons,
+    and Calvin has exactly one. No other clean PD Calvin standalone was found;
+    the 16th-c. Golding translations are PD but Elizabethan.
+  - *CCEL "Lectures on Revivals" (Finney)*: `<h2>LECTURE n</h2><h3>TITLE</h3>`,
+    then `<p class="text">` = `Text.—verse—<a scripRef>ref</a>.` (strip the
+    `Text.—` lead and the `—ref.` tail; the ref is `James v. 16` style, so pin
+    it), footnotes present, `span.sc` small caps.
+  - *NPNF treatises on CCEL (Chrysostom)*: `span.pb`/`a.page` page numbers,
+    dozens of `sup.Note`/`span.mnote` footnotes, a three-paragraph masthead
+    (A TREATISE / TO PROVE… / ————) before the first numbered paragraph,
+    500-word paragraphs (baseline `lost-paragraphing`), no scripture text.
+  - *Lenker Postil site (sermons.martinluther.us)*: flat `<p><span class="C-2">`
+    lines; a "Content Page" nav line, byline/intro and the caps title before the
+    first numbered paragraph (= `body_starts`); empty `<br>` spacers; ALL-CAPS
+    short lines are section headings (keep as `<h3>`); one page repeats the
+    title after the first heading; a `<a href="#top">TOP</a>` trailer. Spaced
+    ellipses `. . .` are the site's style (baseline `space-before-punct`).
+    Two-thirds of the Postil (61–117) is not on the site.
+  - *gospeltruth Finney pages* end with a `Copyright (c)… Gospel Truth
+    Ministries` paragraph (drop) and carry `[sic.]` editorial markers (drop).
+  - *PG 23438 "A Ribband of Blue" (Taylor)*: `<h3>`-delimited studies, but the
+    epigraph is a `<div class="c1"><em>"verse"</em>--1 Peter ii. 25.</div>`
+    BEFORE the first `<p>`, sometimes preceded by an all-caps subtitle div; the
+    whole book is wrapped in `<div>`s. `extract_gutenberg_section`'s
+    "blockquote the first paragraph if it opens with a quote" would swallow a
+    prose paragraph here — render only `<p>` and `div.c1`, and never skip a
+    `<p>` merely for having a div ancestor.
+- **A sermon may have no scripture text** (Luther's Good Friday Passion
+  meditation, Chrysostom's treatise): leave `scripture_ref` blank rather than
+  invent an anchor. Cards and pages render with the passage line empty.
+- **The worktree guard refuses long chains that mix `uv run` with git, or
+  heredoc-laden `git commit -m "$(cat <<…)"`.** Write the commit message and
+  PR body to files and use `git commit -F <file>` / `gh pr create --body-file
+  <file>`; keep `manage.py` gates in their own command, prefixed with an
+  explicit `cd <worktree>/backend &&`.
 
 When the catalogue lacks a wanted title (e.g. more Spurgeon), source it from
 elsewhere. Preference order — cleaner text first: **CCEL** (`source="ccel"`,
