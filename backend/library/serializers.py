@@ -409,24 +409,33 @@ _HTML_TAG = re.compile(r"<[^>]+>")
 def inject_heading_ids(body_html: str) -> tuple[str, list[dict]]:
     """Give each ``<h2>`` section a stable id and return ``(html, toc)``.
 
-    The stored body carries bare ``<h2>`` headings (the rich sanitize profile
-    keeps no id), so the id is injected here — at read time, after sanitize, the
-    same stage ``annotate_references`` runs — and the returned ``toc`` lists the
-    very ids injected. One pass produces both, so an article page's jump links
-    and the headings they target come from a single source and cannot drift.
-    Ids are slugified from the heading text (unicode preserved so a translated
-    heading keeps a real anchor), with a numeric suffix to keep them unique.
+    The stored body carries bare ``<h2>`` headings — the rich sanitize profile
+    scrubs every attribute save ``class`` on ``<aside>`` / ``href`` on ``<a>``
+    (see sanitize.py), so a heading never arrives with an id or any other
+    attribute, and the bare-tag match below is safe. The id is injected here, at
+    read time, after sanitize — the same stage ``annotate_references`` runs — and
+    the returned ``toc`` lists the very ids injected. One pass produces both, so
+    an article page's jump links and the headings they target come from a single
+    source and cannot drift. Ids are slugified from the heading text (unicode
+    preserved so a translated heading keeps a real anchor).
     """
     toc: list[dict] = []
-    seen: dict[str, int] = {}
+    used: set[str] = set()
 
     def add_id(m: re.Match) -> str:
         inner = m.group(1)
         text = _HTML_TAG.sub("", inner).strip()
         base = slugify(text, allow_unicode=True) or "section"
-        n = seen.get(base, 0)
-        seen[base] = n + 1
-        heading_id = base if not n else f"{base}-{n + 1}"
+        # Uniqueness is checked against every id already assigned, not a
+        # per-base counter: a suffixed id ("section-2") must not collide with the
+        # slug of a differently-worded heading ("Section 2"), or the toc would
+        # carry duplicate keys and the page's keyed {#each} would fail.
+        heading_id = base
+        n = 1
+        while heading_id in used:
+            n += 1
+            heading_id = f"{base}-{n}"
+        used.add(heading_id)
         toc.append({"id": heading_id, "text": text})
         return f'<h2 id="{heading_id}">{inner}</h2>'
 

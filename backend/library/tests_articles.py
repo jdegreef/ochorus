@@ -138,6 +138,26 @@ class ArticleApiTests(TestCase):
         for entry in res.data["toc"]:
             self.assertIn(f'<h2 id="{entry["id"]}">', res.data["body_html"])
 
+    def test_detail_heading_ids_stay_unique_across_slug_collisions(self):
+        # A suffixed id must not collide with the slug of a differently-worded
+        # heading: 'Section' + 'Section 2' + 'Section' must not both resolve to
+        # 'section-2', or the toc carries a duplicate key and the keyed {#each}
+        # on the page fails. Uniqueness is checked against all assigned ids.
+        Article.objects.create(
+            slug="colliding-headings",
+            language="en",
+            h1="Colliding headings",
+            body_html="<h2>Section</h2><p>a</p><h2>Section 2</h2><p>b</p><h2>Section</h2><p>c</p>",
+            is_published=True,
+        )
+        res = self.client.get(
+            reverse("article-detail", args=["colliding-headings"]), {"language": "en"}
+        )
+        self.assertEqual(res.status_code, 200)
+        ids = [entry["id"] for entry in res.data["toc"]]
+        self.assertEqual(ids, ["section", "section-2", "section-3"])
+        self.assertEqual(len(ids), len(set(ids)))  # no duplicate anchor keys
+
     def test_detail_resolves_related_and_drops_unresolvable(self):
         res = self.client.get(
             reverse("article-detail", args=["how-to-pray-so-god-answers"]),
