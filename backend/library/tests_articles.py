@@ -87,6 +87,26 @@ class ArticleApiTests(TestCase):
         self.assertEqual(slugs, ["what-is-faith", "how-to-pray-so-god-answers"])
         self.assertNotIn("body_html", res.data[0])
 
+    def test_detail_annotates_scripture_references(self):
+        # The body's Bible references are wrapped as tappable spans on read (the
+        # same treatment chapters/sermons get), so the reader's scripture popover
+        # works in articles. The stored fixture body stays span-free.
+        Article.objects.create(
+            slug="with-a-verse",
+            language="en",
+            h1="With a verse",
+            body_html="<p>As Paul wrote, John 3:16 is the heart of it.</p>",
+            is_published=True,
+        )
+        res = self.client.get(
+            reverse("article-detail", args=["with-a-verse"]), {"language": "en"}
+        )
+        self.assertEqual(res.status_code, 200)
+        self.assertIn(
+            '<a class="scripture-ref" data-ref="John 3:16">John 3:16</a>',
+            res.data["body_html"],
+        )
+
     def test_detail_resolves_related_and_drops_unresolvable(self):
         res = self.client.get(
             reverse("article-detail", args=["how-to-pray-so-god-answers"]),
