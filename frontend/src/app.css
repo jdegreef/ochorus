@@ -1151,6 +1151,13 @@ nav.appnav .navsearch:hover {
 	letter-spacing: 0.08em;
 }
 
+/* The one step below the eyebrow, for the dense width-constrained cluster §2
+   names (sermon outline/text-card labels). A modifier beside .eyebrow — not a
+   per-component scoped font-size override, which fights the unlayered class. */
+.eyebrow-micro {
+	font-size: var(--fs-micro);
+}
+
 /* ── Shelf cards ───────────────────────────────────────────────────────────
    The Topics page's card — a colour-washed "shelf" band carrying an icon chip
    and a fan of covers, over a plain typographic body — is the best-looking

@@ -306,7 +306,7 @@
 								maxlength="120"
 								autocomplete="name"
 							/>
-							<button class="btn btn-ghost py-1.5" disabled={nameSaving || !nameChanged} onclick={saveName}>
+							<button class="btn btn-sm btn-ghost" disabled={nameSaving || !nameChanged} onclick={saveName}>
 								{nameSaving ? t('settings.saving') : t('settings.save')}
 							</button>
 						</div>
@@ -317,7 +317,7 @@
 						<span class="text-small text-muted">
 							{t('settings.lastSynced')}: <span class="text-text">{relSynced}</span>
 						</span>
-						<button class="btn btn-ghost py-1.5" disabled={syncing} onclick={syncNow}>
+						<button class="btn btn-sm btn-ghost" disabled={syncing} onclick={syncNow}>
 							{syncing ? t('settings.syncing') : t('settings.syncNow')}
 						</button>
 					</div>
@@ -442,7 +442,7 @@
 							bind:value={reminderTime}
 							aria-label={t('settings.reminder')}
 						/>
-						<button class="btn btn-ghost py-1.5 whitespace-nowrap" onclick={addReminder}>
+						<button class="btn btn-sm btn-ghost whitespace-nowrap" onclick={addReminder}>
 							{t('settings.reminderAdd')}
 						</button>
 					</div>
@@ -485,7 +485,7 @@
 								{/each}
 							</select>
 							<button
-								class="btn btn-ghost px-3 py-1.5"
+								class="btn btn-sm btn-ghost"
 								aria-label={t('settings.preview')}
 								title={t('settings.preview')}
 								onclick={() => listen.preview(t('settings.voiceSample'), voiceValue)}
