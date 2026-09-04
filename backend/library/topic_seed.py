@@ -236,7 +236,13 @@ TOPIC_ARTICLES = {
         "how-to-trust-god-in-suffering",
         "how-to-overcome-fear-and-anxiety-with-faith",
     ],
-    "revival-and-missions": ["what-is-revival-and-how-does-it-begin"],
+    "revival-and-missions": [
+        "what-is-revival-and-how-does-it-begin",
+        "what-is-the-great-commission",
+        "hudson-taylor-trusting-god-for-the-impossible",
+        "amy-carmichael-and-the-cost-of-love",
+        "samuel-crowther-from-captive-to-bishop",
+    ],
     "faith-and-guidance": [
         "how-to-find-gods-will-for-your-life",
         "how-to-hear-gods-voice",
