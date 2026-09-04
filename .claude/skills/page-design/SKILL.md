@@ -262,11 +262,11 @@ relevant group.
 
 ### A. Shells, headers, titles
 
-- [ ] **A1** Four hand-rolled `<header>` blocks — `biographies/era/[era]`,
+- [x] **A1** _(shipped #1419 — quotes/scripture/articles on `<PageHeader>` + BROWSE_PAGES; era kept hand-rolled as the composite-title exception; settings/notebook are A9)_ Four hand-rolled `<header>` blocks — `biographies/era/[era]`,
   `quotes`, `scripture`, `articles` — each with different margins; Scripture's
   tagline is `text-small`. → `<PageHeader>` (Topics); add all four to
   `BROWSE_PAGES`.
-- [ ] **A2** Shell padding is `py-10` on 12 pages, `py-6` on 5 (quotes ×2,
+- [x] **A2** _(shipped #1419 — folded into `.page-col px-5 py-10`, guarded)_ Shell padding is `py-10` on 12 pages, `py-6` on 5 (quotes ×2,
   scripture ×3, articles ×2), `py-8` on Biographies; breadcrumb-to-title gap is
   `mt-5` (book), `mt-4` (topic), 0 elsewhere. → `py-10`, no extra gap; or fold
   the padding into `.page-col`.
@@ -274,10 +274,10 @@ relevant group.
   eyebrow; Books/Topics/Plans/Search use the nav word; Quotes/Scripture use a
   descriptive sentence with no eyebrow. `<title>` ≠ `<h1>` on Sermons and
   Biographies. → decide one register, document it in STYLE_GUIDE §5.
-- [ ] **A4** `<title>` suffix: ` — Ochorus` ×39, ` · Ochorus` ×7 (book, quotes,
+- [x] **A4** _(shipped #1419 — all 8 catalogues, guarded)_ `<title>` suffix: ` — Ochorus` ×39, ` · Ochorus` ×7 (book, quotes,
   articles, scripture ×2, era mixes both). → ` — Ochorus`, and put the suffix
   in `Seo.svelte` so nobody types it.
-- [ ] **A5** Five browse pages hand-write `<svelte:head>` (books, biographies,
+- [x] **A5** _(shipped #1419)_ Five browse pages hand-write `<svelte:head>` (books, biographies,
   topics, plans, sermons); five use `<Seo>`. → `<Seo>`.
 - [ ] **A6** Quotes/Scripture/Articles indexes show a `Home › X` breadcrumb;
   the nav'd shelves don't (Biographies removed it, reason on file). → drop the
@@ -327,16 +327,16 @@ relevant group.
 
 ### C. Empty, error, loading
 
-- [ ] **C1** Load failures: Biographies, era and Quotes loaders are unguarded and
+- [x] **C1** _(shipped #1424)_ Load failures: Biographies, era and Quotes loaders are unguarded and
   crash to the error route; Articles and Scripture swallow the error and claim
   the shelf is empty — the exact anti-pattern `loadShelf()` was written to end.
   → `loadShelf` + `EmptyState onRetry` (Topics).
-- [ ] **C2** Eight empty-state renderings. Filtered-to-nothing is a bare
+- [~] **C2** _(partly shipped #1424 — articles/quotes/era on `<EmptyState>`; the drawer/popover `compact` variants + Search's panel remain)_ Eight empty-state renderings. Filtered-to-nothing is a bare
   `<p class="py-16 text-center">` on Books, era and Search; Sermons' EmptyState
   says "try clearing the filters" with no button; Search hand-rolls a copy of
   the EmptyState panel. → `<EmptyState>` with an `action` (Biographies); add a
   `compact` prop for drawers/popovers.
-- [ ] **C3** Zero rows in a language: Books offers "Read the English library",
+- [x] **C3** _(shipped #1424)_ Zero rows in a language: Books offers "Read the English library",
   Plans/Sermons get the nudge, Topics gets a dead-end message, Biographies gets
   nothing. → extend `CatalogLanguageNudge` to `topics`/`authors`; action on all.
 - [ ] **C4** Loading: Search's "Show more" replaces its label with `…` (STYLE_GUIDE
