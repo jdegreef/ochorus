@@ -224,6 +224,7 @@ TOPIC_ARTICLES = {
         "the-power-of-persistent-prayer",
         "how-to-pray-the-psalms",
         "the-morning-watch",
+        "augustines-confessions-guide",
     ],
     "holy-spirit": [
         "what-is-the-baptism-of-the-holy-spirit",
@@ -237,6 +238,8 @@ TOPIC_ARTICLES = {
         "what-is-surrender-to-god",
         "what-is-biblical-fasting",
         "the-morning-watch",
+        "pilgrims-progress-guide",
+        "the-imitation-of-christ-guide",
     ],
     "grace-and-comfort": [
         "how-to-trust-god-in-suffering",
@@ -259,6 +262,9 @@ TOPIC_ARTICLES = {
         "how-to-have-assurance-of-salvation",
         "what-is-the-gospel",
         "what-is-justification-by-faith",
+        "pilgrims-progress-guide",
+        "augustines-confessions-guide",
+        "sinners-in-the-hands-of-an-angry-god-explained",
     ],
     "the-way-of-holiness": [
         "what-is-sanctification",
@@ -266,10 +272,18 @@ TOPIC_ARTICLES = {
         "how-to-overcome-sin-and-temptation",
         "the-priesthood-of-all-believers",
         "why-humility-matters",
+        "the-imitation-of-christ-guide",
+    ],
+    "enduring-classics": [
+        "pilgrims-progress-guide",
+        "the-imitation-of-christ-guide",
+        "augustines-confessions-guide",
+        "sinners-in-the-hands-of-an-angry-god-explained",
     ],
     "the-preached-word": [
         "how-to-know-if-god-is-calling-you-to-ministry",
         "what-makes-a-godly-leader",
+        "sinners-in-the-hands-of-an-angry-god-explained",
     ],
 }
 
