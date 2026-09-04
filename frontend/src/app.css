@@ -1130,6 +1130,15 @@ nav.appnav .navsearch:hover {
 	color: var(--muted);
 }
 
+/* A count beside a label or heading — the chip / tab / result / group counts
+   that had drifted through opacity-60, opacity-70, text-muted and text-eyebrow.
+   Sets only the count-specific bits (tabular figures + muted ink); the call
+   site keeps its own size (text-small on a heading, inherited on a chip). */
+.count {
+	font-variant-numeric: tabular-nums;
+	color: var(--muted);
+}
+
 /* The EYEBROW — the kicker above a page title, a card title, a popover heading.
    Distinct from .section-label above, which labels a block of content within a
    page and is a step larger.

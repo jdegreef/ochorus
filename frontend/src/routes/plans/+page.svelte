@@ -154,7 +154,6 @@
 
 	{#if showLengthFilter}
 		<div class="filter-row mb-6" role="group" aria-label={t('plans.filterLength')}>
-			<span class="me-1 text-small text-muted">{t('plans.filterLength')}</span>
 			{#each BUCKETS as b (b)}
 				{#if b === 'all' || counts[b] > 0}
 					<button
@@ -165,7 +164,7 @@
 						aria-pressed={filters.values.length === b}
 					>
 						{t(`plans.length_${b}`)}
-						<span class="tabular-nums opacity-70">{counts[b]}</span>
+						<span class="count">{counts[b]}</span>
 					</button>
 				{/if}
 			{/each}
