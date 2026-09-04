@@ -16,6 +16,7 @@
 	import { page } from '$app/stores';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
+	import FocusExit from '$lib/components/FocusExit.svelte';
 	import { BIO_CHAPTER_ORDER } from '$lib/reading-schema';
 	import { bookmarks } from '$lib/bookmarks.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
@@ -477,12 +478,7 @@
 </div>
 
 {#if readerUi.focus}
-	<button
-		class="fixed end-4 top-4 z-30 rounded-full border border-border bg-surface/90 px-3 py-1.5 text-small text-muted shadow-md backdrop-blur hover:text-text"
-		onclick={() => readerUi.exitFocus()}>
-		<Icon name="close" size={14} />
-		{t('reader.exitFocus')}</button
-	>
+	<FocusExit />
 {/if}
 
 <!-- Time remaining in the biography. Gated on the prose actually being in
