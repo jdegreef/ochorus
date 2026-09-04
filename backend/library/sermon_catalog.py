@@ -50,6 +50,7 @@ SERMON_AUTHORS: dict[str, AuthorEntry] = {
 
 _CCEL = "https://ccel.org/ccel/spurgeon/"
 _WESLEY = "https://ccel.org/ccel/wesley/sermons/"
+_WHITEFIELD = "https://ccel.org/ccel/whitefield/sermons/"
 
 SERMONS: list[SermonEntry] = [
     # --- Assurance & the character of God -----------------------------------
@@ -427,5 +428,60 @@ SERMONS: list[SermonEntry] = [
         "https://biblehub.com/sermons/auth/various/calvin_--_enduring_persecution_for_christ.htm",
         scripture_ref="Hebrews 13:13",
         body_starts="All the exhortations which can be given us to suffer patiently",
+    ),
+    # --- George Whitefield: six from CCEL's 59-sermon edition ------------------
+    # Whitefield had a bio and a book but no sermon. CCEL's edition differs from
+    # Wesley's: an <h1> title, no footnotes, and the scripture INSIDE the first
+    # paragraph as `<a class="scripRef">Ref</a> — “verse”` — so scripture_ref is
+    # pinned here rather than trusted to the masthead parser. Two sermons (Wisdom,
+    # Intercession) open straight into prose with no heading at all; Intercession's
+    # text is the verse it calls "the text": “Brethren, pray for us” (1 Thess 5:25).
+    SermonEntry(
+        "the-method-of-grace",
+        "The Method of Grace",
+        "george-whitefield",
+        "ccel",
+        _WHITEFIELD + "sermons.lx.html",
+        scripture_ref="Jeremiah 6:14",
+    ),
+    SermonEntry(
+        "marks-of-a-true-conversion",
+        "Marks of a True Conversion",
+        "george-whitefield",
+        "ccel",
+        _WHITEFIELD + "sermons.xxv.html",
+        scripture_ref="Matthew 18:3",
+    ),
+    SermonEntry(
+        "walking-with-god",
+        "Walking with God",
+        "george-whitefield",
+        "ccel",
+        _WHITEFIELD + "sermons.iv.html",
+        scripture_ref="Genesis 5:24",
+    ),
+    SermonEntry(
+        "christ-the-believers-wisdom",
+        "Christ the Believer's Wisdom, Righteousness, Sanctification and Redemption",
+        "george-whitefield",
+        "ccel",
+        _WHITEFIELD + "sermons.xlvi.html",
+        scripture_ref="1 Corinthians 1:30",
+    ),
+    SermonEntry(
+        "the-lord-our-righteousness",
+        "The Lord Our Righteousness",
+        "george-whitefield",
+        "ccel",
+        _WHITEFIELD + "sermons.xvi.html",
+        scripture_ref="Jeremiah 23:6",
+    ),
+    SermonEntry(
+        "intercession-every-christians-duty",
+        "Intercession Every Christian's Duty",
+        "george-whitefield",
+        "ccel",
+        _WHITEFIELD + "sermons.lvi.html",
+        scripture_ref="1 Thessalonians 5:25",
     ),
 ]
