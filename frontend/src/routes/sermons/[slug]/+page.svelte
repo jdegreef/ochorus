@@ -168,9 +168,11 @@
 		if (!book) return;
 		listSermons(getLang())
 			.then((all) => {
-				related = all.filter(
-					(s) => s.slug !== sermon.slug && refBook(s.scripture_ref || '') === book
-				);
+				// Capped: an unbounded related list is what the style guide forbids
+				// (a card/section must bound its members). Six is enough to browse.
+				related = all
+					.filter((s) => s.slug !== sermon.slug && refBook(s.scripture_ref || '') === book)
+					.slice(0, 6);
 			})
 			.catch(() => (related = []));
 	});
