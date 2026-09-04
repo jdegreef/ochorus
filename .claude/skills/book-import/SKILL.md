@@ -975,6 +975,39 @@ all of which this command already does. The steps:
   poison the manifest's `composition` digest (bytes of the two scripts); the
   preload keeps it CI-correct because nothing recomputes composition, only
   re-running does. *(Wesley + Booth second sermons, 2026-09)*
+- **CCEL is not one layout — check each collection before trusting the
+  masthead parser** *(Whitefield / Edwards / M'Cheyne, 2026-09-04)*. Wesley is
+  `<h2>` + `<h3 class="scripRef">`; **Whitefield** is an `<h1>` title with the
+  scripture INSIDE the first `<p>` as `<a class="scripRef">Ref</a> — “verse”`,
+  and some sermons open straight into prose with no heading at all (Intercession's
+  text is the verse it calls "the text"); **Edwards** was transcribed piecemeal —
+  every masthead differs (title `<h1>`/`<h2>`, "A Sermon / by" rows, a bracketed
+  `<h5>` note, the scripture in a `<blockquote>`, `<p>`, `<h3>` or `<h4>`, verse
+  before OR after the ref). The stable rule: the block holding the FIRST
+  `a.scripRef` is the epigraph; **decompose the anchor before taking the verse**
+  (else the ref glues on — audit `run-together`) and strip the ` -- `/` — `
+  separator on whichever side; keep in-body DOCTRINE/APPLICATION/Part One as
+  `<h3>`. Pin `scripture_ref` (and `preached_on`) in the catalog for these.
+- **A hand-built body must be SETTLED or `tests_sanitize`/QA reddens** — three
+  triggers, each hit once: a bare `&` ("&c.") → emit `&amp;`; `<br>` → the
+  sanitizer's `<br/>` (and drop a break dangling at a paragraph edge); NBSP
+  (`&nbsp;` in "I.&nbsp;<i>The fact…") → a plain space.
+- **`QuoteStyleTests` counts DOUBLE quotes only.** Apostrophes don't count, a
+  wholly straight-quoted work passes (all five Edwards pages), and raw-HTML
+  `"` counts include attribute quotes — mcheyne.info looked mixed and wasn't.
+  When it IS mixed, `scripts/normalize_quotes.py <slug>` + `rederive_body_text
+  --write`, then eyeball: it cased the elided `'tis` as an OPENER (`‘tis`) —
+  correct to `’tis` by hand. `hyphen-space` fixes are per word: `with- out` →
+  `without`, but `us- ward`/`dwelling- place` are real KJV-era hyphenations.
+- **M'Cheyne: CCEL has no sermons.** mcheyne.info serves the printed Sermons
+  one per page (WordPress `entry-content`): masthead `<p>` "SERMON XIV Robert
+  Murray M‘Cheyne" (drop), his skeleton heading "Doctrine.—…" (keep; strip the
+  site's welded blurb), the verse `<p>` with an erratic citation tail
+  (`—MICAH vi. 6-8.`, `Hosea -vi., 4.`, `— Jer. xiv. 8,9.` — pin the ref), a
+  trailing date line → `preached_on`, `<br>` poems, and a SITE-WIDE
+  `<p class="footerPoem">` (about Baxter, identical on every page — drop). It
+  sets a closing `”` in opener position after `—`/`-`. Only six sermons exist
+  there (one an abridgement); no catalog entry — fixtures authoritative.
 
 When the catalogue lacks a wanted title (e.g. more Spurgeon), source it from
 elsewhere. Preference order — cleaner text first: **CCEL** (`source="ccel"`,
