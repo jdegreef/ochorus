@@ -232,6 +232,20 @@ force if every paragraph is a box.
    backend/library/migrations/ | grep <slug>` shows what you're actually pushing;
    amend, then force-push. (Cost two red CI cycles on the Howells/Hyde batch.)
 
+   **main sometimes already carries TWO unreconciled leaves.** Parallel merges can
+   leave `origin/main` itself with two leaf migrations (seen: `0108_flock_classics`
+   and a `0108_merge_…` that hadn't included it). Don't add a third — give YOUR
+   migration BOTH as `dependencies` (a data migration can list several), which
+   unifies the graph into one leaf without a separate merge migration.
+
+   **A parallel merge can also collide AT merge time, after green CI.** Your PR
+   can pass CI and then go `mergeable: CONFLICTING` because main just added its
+   own merge migration (e.g. `0109_merge_…`) plus more `authors.json` rows. Fix:
+   `git rebase origin/main`; resolve `authors.json` keeping every new row (the
+   three-way recipe below); **renumber your migration past main's new leaf and
+   depend on THAT single leaf** (not the old two); `rebase --continue`; re-verify
+   `makemigrations --check`; force-push. (Both happened on the Women batch, #1398.)
+
 7. **APPEND new rows to `authors.json` — never re-sort it.** The file is in
    creation order, not slug order; sorting turns a 45-line addition into a
    282-insert/237-delete diff. Append, then write in the committed file's
