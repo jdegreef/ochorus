@@ -20,8 +20,19 @@ from __future__ import annotations
 
 from django.core.management.base import BaseCommand
 
-from library.models import Topic, TopicBook, TopicSermon, TopicTranslation
-from library.topic_seed import TOPIC_SCRIPTURE, TOPIC_SERMONS, TOPICS
+from library.models import (
+    Topic,
+    TopicArticle,
+    TopicBook,
+    TopicSermon,
+    TopicTranslation,
+)
+from library.topic_seed import (
+    TOPIC_ARTICLES,
+    TOPIC_SCRIPTURE,
+    TOPIC_SERMONS,
+    TOPICS,
+)
 from library.topic_translations import topic_scripture, topic_translations
 
 
@@ -65,6 +76,15 @@ class Command(BaseCommand):
                 _, entry_created = TopicSermon.objects.update_or_create(
                     topic=topic,
                     sermon_slug=sermon_slug,
+                    defaults={"sort_order": i},
+                )
+                if entry_created:
+                    added += 1
+            # Upsert article membership the same way (the bidirectional funnel).
+            for i, article_slug in enumerate(TOPIC_ARTICLES.get(slug, [])):
+                _, entry_created = TopicArticle.objects.update_or_create(
+                    topic=topic,
+                    article_slug=article_slug,
                     defaults={"sort_order": i},
                 )
                 if entry_created:

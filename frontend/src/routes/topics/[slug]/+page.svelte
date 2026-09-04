@@ -7,6 +7,7 @@
 	import { scopedSearchHref } from '$lib/searchState';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import SermonCard from '$lib/components/SermonCard.svelte';
+	import ArticleCard from '$lib/components/ArticleCard.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import Emblem from '$lib/components/Emblem.svelte';
@@ -16,6 +17,10 @@
 	let { data } = $props();
 	const t = i18n.t;
 	const topic = $derived<TopicDetail>(data.topic);
+	// `articles` is a newer field than books/sermons; default it so a topic
+	// served by an API instance that predates it (a rolling-deploy skew) renders
+	// without an Articles section rather than throwing.
+	const articles = $derived(topic.articles ?? []);
 	const meta = $derived(topicMeta(topic.slug));
 
 	// Self-referential canonical, and hreflang only for the locales this shelf
@@ -54,6 +59,11 @@
 					name: s.title,
 					author: { '@type': 'Person', name: s.author.name },
 					url: `${SITE_URL}${localizeHref(`/sermons/${s.slug}`)}`
+				})),
+				...articles.slice(0, 60).map((a) => ({
+					'@type': 'Article',
+					name: a.h1,
+					url: `${SITE_URL}${localizeHref(`/articles/${a.slug}/`)}`
 				}))
 			]
 		})
@@ -97,6 +107,10 @@
 					· {topic.sermons.length}
 					{topic.sermons.length === 1 ? t('common.sermonOne') : t('common.sermonMany')}
 				{/if}
+				{#if articles.length}
+					· {articles.length}
+					{articles.length === 1 ? t('common.articleOne') : t('common.articleMany')}
+				{/if}
 			</p>
 			<!-- A topic is a shelf, and a shelf you can't search is a list you have
 			     to read end to end. -->
@@ -110,7 +124,7 @@
 		</div>
 	</header>
 
-	{#if topic.books.length === 0 && topic.sermons.length === 0}
+	{#if topic.books.length === 0 && topic.sermons.length === 0 && articles.length === 0}
 		<EmptyState message={t('topics.empty')} />
 	{/if}
 
@@ -126,11 +140,22 @@
 	{/if}
 
 	{#if topic.sermons.length}
-		<section>
+		<section class="mb-10">
 			<h2 class="section-label">{t('topics.sermons')}</h2>
 			<div class="grid gap-3 sm:grid-cols-2">
 				{#each topic.sermons as sermon (sermon.slug)}
 					<SermonCard {sermon} showAuthor />
+				{/each}
+			</div>
+		</section>
+	{/if}
+
+	{#if articles.length}
+		<section>
+			<h2 class="section-label">{t('topics.articles')}</h2>
+			<div class="grid gap-3 sm:grid-cols-2">
+				{#each articles as article (article.slug)}
+					<ArticleCard {article} />
 				{/each}
 			</div>
 		</section>

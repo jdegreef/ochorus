@@ -213,6 +213,34 @@ TOPIC_SERMONS = {
 }
 
 
+# Article members per topic, by canonical article slug (language-agnostic, like
+# the book and sermon members). This is the bidirectional funnel: an article
+# shows on a topic's shelf, and the topics it lists appear as chips on the
+# article. {topic slug: [ordered article slugs]}
+TOPIC_ARTICLES = {
+    "prayer": [
+        "how-to-pray-so-god-answers",
+        "what-is-intercessory-prayer",
+    ],
+    "holy-spirit": ["what-is-the-baptism-of-the-holy-spirit"],
+    "deeper-life": [
+        "what-does-it-mean-to-abide-in-christ",
+        "the-cost-of-following-jesus",
+    ],
+    "grace-and-comfort": ["how-to-trust-god-in-suffering"],
+    "revival-and-missions": ["what-is-revival-and-how-does-it-begin"],
+    "faith-and-guidance": [
+        "how-to-find-gods-will-for-your-life",
+        "how-to-trust-god-in-suffering",
+    ],
+    "the-gospel-call": [
+        "how-to-be-born-again",
+        "how-to-have-assurance-of-salvation",
+    ],
+    "the-way-of-holiness": ["what-is-sanctification"],
+}
+
+
 # A themed Scripture epigraph per topic (KJV — public domain), shown on the
 # topic page. {slug: (reference, verse text)}
 TOPIC_SCRIPTURE = {

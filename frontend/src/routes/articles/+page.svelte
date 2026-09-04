@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { ArticleSummary } from '$lib/library-public';
+	import ArticleCard from '$lib/components/ArticleCard.svelte';
 	import { SITE_URL } from '$lib/config';
 	import { jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
@@ -57,19 +58,11 @@
 	</header>
 
 	{#if articles.length}
-		<ul class="article-list">
+		<div class="article-list">
 			{#each articles as a (a.slug)}
-				<li>
-					<a class="article-card" href="/articles/{a.slug}/">
-						<h2 class="text-h3">{a.h1}</h2>
-						{#if a.description}
-							<p class="mt-1 text-body text-muted">{a.description}</p>
-						{/if}
-						<span class="read-more">Read →</span>
-					</a>
-				</li>
+				<ArticleCard article={a} />
 			{/each}
-		</ul>
+		</div>
 	{:else}
 		<p class="text-body text-muted">No articles yet — check back soon.</p>
 	{/if}
@@ -80,31 +73,5 @@
 		display: grid;
 		gap: 0.75rem;
 		max-width: 44rem;
-	}
-	.article-card {
-		display: block;
-		padding: 1.1rem 1.25rem;
-		border: 1px solid var(--color-border);
-		border-radius: 0.75rem;
-		background: var(--color-surface);
-		text-decoration: none;
-		color: inherit;
-		transition:
-			border-color 0.15s ease,
-			transform 0.15s ease;
-	}
-	.article-card:hover {
-		border-color: var(--color-accent);
-		transform: translateY(-1px);
-	}
-	.article-card h2 {
-		color: var(--color-text);
-	}
-	.read-more {
-		display: inline-block;
-		margin-top: 0.6rem;
-		font-family: var(--font-sans);
-		font-weight: 600;
-		color: var(--color-accent);
 	}
 </style>

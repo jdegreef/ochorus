@@ -561,6 +561,9 @@ export interface Article extends ArticleSummary {
 	 *  titles + URLs server-side (unresolvable references are dropped). */
 	related: ArticleRelated[];
 	source_url: string;
+	/** Topics this article belongs to (localized chips) — links back to the
+	 *  topic pages that list it (the other half of the bidirectional funnel). */
+	topics: TopicChip[];
 	/** Content locales this article is published in — the only locales an
 	 *  hreflang alternate should point at (per-language rows, no fallback). */
 	available_languages: string[];
@@ -729,6 +732,8 @@ export interface TopicDetail extends TopicSummary {
 	available_languages: string[];
 	books: BookSummary[];
 	sermons: SermonSummary[];
+	/** Articles about this topic — the bidirectional funnel back to the essays. */
+	articles: ArticleSummary[];
 }
 
 export const listTopics = (language = 'en') =>

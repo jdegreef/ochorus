@@ -163,3 +163,47 @@ class ArticleApiTests(TestCase):
             {"language": "fr"},
         )
         self.assertEqual(res.status_code, 404)
+
+
+class ArticleTopicLinkageTests(TestCase):
+    """The bidirectional funnel: a topic lists its articles, and an article
+    lists the topics it belongs to (TopicArticle, both directions)."""
+
+    @classmethod
+    def setUpTestData(cls):
+        from .models import Topic, TopicArticle
+
+        cls.topic = Topic.objects.create(
+            slug="prayer", title="On Prayer", is_published=True
+        )
+        cls.article = Article.objects.create(
+            slug="how-to-pray",
+            language="en",
+            h1="How to Pray",
+            body_html="<p>Prose.</p>",
+            is_published=True,
+        )
+        # An unpublished article and one in another language must not leak onto
+        # the topic's English shelf.
+        Article.objects.create(
+            slug="draft", language="en", h1="Draft", body_html="<p>x</p>",
+            is_published=False,
+        )
+        TopicArticle.objects.create(topic=cls.topic, article_slug="how-to-pray")
+        TopicArticle.objects.create(topic=cls.topic, article_slug="draft")
+
+    def setUp(self):
+        self.client = APIClient()
+
+    def test_topic_detail_lists_its_published_articles(self):
+        res = self.client.get(reverse("topic-detail", args=["prayer"]), {"language": "en"})
+        self.assertEqual(res.status_code, 200)
+        slugs = [a["slug"] for a in res.data["articles"]]
+        self.assertEqual(slugs, ["how-to-pray"])  # unpublished draft excluded
+
+    def test_article_detail_lists_its_topic_chips(self):
+        res = self.client.get(reverse("article-detail", args=["how-to-pray"]), {"language": "en"})
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(
+            res.data["topics"], [{"slug": "prayer", "title": "On Prayer"}]
+        )

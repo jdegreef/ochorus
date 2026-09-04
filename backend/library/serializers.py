@@ -471,7 +471,14 @@ class ArticleDetailSerializer(ArticleListSerializer):
 
     body_html = serializers.SerializerMethodField()
     related = serializers.SerializerMethodField()
+    topics = serializers.SerializerMethodField()
     available_languages = serializers.SerializerMethodField()
+
+    def get_topics(self, obj):
+        """Published topics this article belongs to (localized) — the chips that
+        close the funnel back to the topic pages. Mirrors the book/sermon detail
+        chips; the topic page already lists the article in return."""
+        return _topic_chips(obj.language, article_entries__article_slug=obj.slug)
 
     def get_body_html(self, obj):
         # Wrap Bible references as clickable spans so the reader's scripture
@@ -492,6 +499,7 @@ class ArticleDetailSerializer(ArticleListSerializer):
         fields = ArticleListSerializer.Meta.fields + [
             "body_html",
             "related",
+            "topics",
             "source_url",
             "available_languages",
         ]
@@ -1286,12 +1294,30 @@ class TopicListSerializer(LocalizedMixin, serializers.ModelSerializer):
         }
         return [by_slug[s] for s in order if s in by_slug]
 
+    def _articles(self, obj):
+        """Member articles present in the requested language, in curated order.
+        ``articles_in_language`` is attached by the view; fall back to a query."""
+        cached = getattr(obj, "articles_in_language", None)
+        if cached is not None:
+            return cached
+        from .models import Article
+
+        order = [e.article_slug for e in obj.article_entries.all()]
+        by_slug = {
+            a.slug: a
+            for a in Article.objects.filter(
+                slug__in=order, language=self._language(), is_published=True
+            ).defer("body_html")
+        }
+        return [by_slug[s] for s in order if s in by_slug]
+
 
 class TopicDetailSerializer(TopicListSerializer):
     """A topic page — the shelf metadata plus the full list of member books."""
 
     books = serializers.SerializerMethodField()
     sermons = serializers.SerializerMethodField()
+    articles = serializers.SerializerMethodField()
     scripture_ref = serializers.SerializerMethodField()
     scripture_text = serializers.SerializerMethodField()
     available_languages = serializers.SerializerMethodField()
@@ -1303,6 +1329,7 @@ class TopicDetailSerializer(TopicListSerializer):
             "available_languages",
             "books",
             "sermons",
+            "articles",
         ]
 
     def get_available_languages(self, obj):
@@ -1329,3 +1356,8 @@ class TopicDetailSerializer(TopicListSerializer):
 
     def get_sermons(self, obj):
         return SermonListSerializer(self._sermons(obj), many=True, context=self.context).data
+
+    def get_articles(self, obj):
+        return ArticleListSerializer(
+            self._articles(obj), many=True, context=self.context
+        ).data

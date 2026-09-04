@@ -121,6 +121,20 @@
 				</ul>
 			</aside>
 		{/if}
+
+		{#if article.topics?.length}
+			<nav class="mt-8 flex flex-wrap items-center gap-2" aria-label="Topics">
+				<span class="text-small text-muted">Topics:</span>
+				{#each article.topics as topic (topic.slug)}
+					<a
+						href={localizeHref(`/topics/${topic.slug}`)}
+						class="rounded-full border border-border px-3 py-1 text-small text-muted hover:border-accent hover:text-accent hover:no-underline"
+					>
+						{topic.title}
+					</a>
+				{/each}
+			</nav>
+		{/if}
 	</article>
 </div>
 
