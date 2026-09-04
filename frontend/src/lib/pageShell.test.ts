@@ -26,7 +26,10 @@ const BROWSE_PAGES: { label: string; file: string }[] = [
 	{ label: 'plans', file: 'routes/plans/+page.svelte' },
 	{ label: 'sermons', file: 'routes/sermons/+page.svelte' },
 	{ label: 'biographies', file: 'routes/biographies/+page.svelte' },
-	{ label: 'search', file: 'routes/search/+page.svelte' }
+	{ label: 'search', file: 'routes/search/+page.svelte' },
+	{ label: 'quotes', file: 'routes/quotes/+page.svelte' },
+	{ label: 'scripture index', file: 'routes/scripture/+page.svelte' },
+	{ label: 'articles', file: 'routes/articles/+page.svelte' }
 ];
 
 /**
@@ -46,8 +49,7 @@ const LEAF_PAGES: { label: string; file: string }[] = [
 	{ label: 'era', file: 'routes/biographies/era/[era]/+page.svelte' },
 	{ label: 'topic', file: 'routes/topics/[slug]/+page.svelte' },
 	{ label: 'plan', file: 'routes/plans/[slug]/+page.svelte' },
-	{ label: 'quotes', file: 'routes/quotes/[author]/+page.svelte' },
-	{ label: 'scripture index', file: 'routes/scripture/+page.svelte' },
+	{ label: 'quotes author', file: 'routes/quotes/[author]/+page.svelte' },
 	{ label: 'scripture chapter', file: 'routes/scripture/[book]/[chapter]/+page.svelte' },
 	{ label: 'scripture verse', file: 'routes/scripture/[book]/[chapter]/[verse]/+page.svelte' },
 	{ label: 'notebook', file: 'routes/notebook/+page.svelte' },
@@ -74,6 +76,17 @@ describe('pages use the shared page furniture', () => {
 			`${file}: use <PageHeader> rather than a hand-rolled <h1> block, or the ` +
 				`eyebrow/title/tagline spacing drifts per page (STYLE_GUIDE §5).`
 		).toMatch(/<PageHeader\b/);
+	});
+
+	it.each(BROWSE_PAGES)('$label uses the standard shell padding', ({ file }) => {
+		// The vertical axis is what drifted — shells sat at py-6 / py-8 / py-10, so
+		// the content edge jumped on every navigation. py-10 is the one value.
+		// (Home-section components legitimately use pt-14 and are not browse pages;
+		// the leaf +error keeps its own centred layout, so this is BROWSE-only.)
+		expect(
+			read(file),
+			`${file}: browse shells are "page-col px-5 py-10" (STYLE_GUIDE §3).`
+		).toMatch(/class="page-col px-5 py-10\b/);
 	});
 
 	it.each(SHELL_PAGES)('$label does not re-introduce its own max-w shell', ({ file }) => {

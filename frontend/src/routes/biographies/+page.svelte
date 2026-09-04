@@ -5,6 +5,7 @@
 	import { type AuthorBio, type BookSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumb, hreflangAll } from '$lib/seo';
+	import Seo from '$lib/components/Seo.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { ERAS, eraOf, type EraId } from '$lib/eras';
@@ -237,27 +238,17 @@
 	// correctly omitted them — two contradictory claims, with the wrong one on
 	// the site's most-crawled pages.
 	const hreflang = hreflangAll('/biographies');
+	const canonical = `${SITE_URL}${localizeHref('/biographies')}`;
 </script>
 
-<svelte:head>
-	<title>{t('bios.metaTitle')} — Ochorus</title>
-	<meta name="description" content={t('bios.metaDescription')} />
-	<link rel="canonical" href="{SITE_URL}{localizeHref('/biographies')}" />
-	{#each hreflang.alternates as a (a.loc)}
-		<link rel="alternate" hreflang={a.loc} href={a.href} />
-	{/each}
-	<link rel="alternate" hreflang="x-default" href={hreflang.xDefault} />
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content="{t('bios.metaTitle')} — Ochorus" />
-	<meta property="og:description" content={t('bios.metaDescription')} />
-	<meta property="og:url" content="{SITE_URL}{localizeHref('/biographies')}" />
-	<meta property="og:image" content="{SITE_URL}/og/biographies.png" />
-	<meta name="twitter:card" content="summary_large_image" />
-	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-	{@html peopleLd}
-	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-	{@html crumbsLd}
-</svelte:head>
+<Seo
+	title={`${t('bios.metaTitle')} — Ochorus`}
+	description={t('bios.metaDescription')}
+	{canonical}
+	{hreflang}
+	ogImage={`${SITE_URL}/og/biographies.png`}
+	structuredData={[peopleLd, crumbsLd]}
+/>
 
 <!--
 	`--pinned-offset` is how far down the page the first unobstructed pixel is:
@@ -269,7 +260,7 @@
 	<button class="btn btn-ghost" onclick={clearFilters}>{t('common.clearFilters')}</button>
 {/snippet}
 
-<div class="page-col px-5 py-8" style="--pinned-offset: calc(var(--appnav-h, 0px) + {controlsH}px)">
+<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {controlsH}px)">
 	<!-- No visible breadcrumb: this is a top-level destination already marked
 	     active in the nav, and it was the only one of the six browse pages
 	     carrying a trail. Detail pages (a book, an author) still get one, where

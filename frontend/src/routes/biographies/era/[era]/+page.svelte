@@ -95,11 +95,11 @@
 	<Breadcrumb items={crumbs} />
 	<header class="mb-8">
 		<p class="eyebrow mb-2 text-accent">{t('bios.eyebrow')}</p>
-		<h1 class="text-h1 mb-3 flex flex-wrap items-baseline gap-x-3">
+		<h1 class="text-h1 mb-2 flex flex-wrap items-baseline gap-x-3">
 			{eraName}
 			{#if era.range}<span class="text-h3 font-normal text-muted">{era.range}</span>{/if}
 		</h1>
-		<p class="text-body text-muted">{t('bios.tagline')}</p>
+		<p class="max-w-2xl text-body text-muted">{t('bios.tagline')}</p>
 	</header>
 
 	{#if inEra.length === 0}

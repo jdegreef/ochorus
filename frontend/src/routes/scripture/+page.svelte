@@ -3,6 +3,7 @@
 	import { SITE_URL } from '$lib/config';
 	import { jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
+	import PageHeader from '$lib/components/PageHeader.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 
@@ -31,7 +32,7 @@
 	const path = '/scripture/';
 	const canonical = `${SITE_URL}${path}`;
 	const hreflang = hreflangFor(path, ['en']);
-	const title = 'Scripture in the Christian classics · Ochorus';
+	const title = 'Scripture in the Christian classics — Ochorus';
 	const description = $derived(
 		`Browse ${pages.length - verseCount} chapters of the Bible and see which passages ` +
 			'in the classics treat them — every citation quoted and linked to its source.'
@@ -45,16 +46,13 @@
 
 <Seo {title} {description} {canonical} {hreflang} structuredData={[crumbsLd]} />
 
-<div class="page-col px-5 py-6">
+<div class="page-col px-5 py-10">
 	<Breadcrumb items={crumbs} />
 
-	<header class="mb-8">
-		<h1 class="text-h1">Scripture in the Christian classics</h1>
-		<p class="mt-2 max-w-2xl text-small text-muted">
-			Every Bible reference in the library is indexed. These are the chapters the writers
-			return to — open one to see who preached it, and what they said.
-		</p>
-	</header>
+	<PageHeader
+		title="Scripture in the Christian classics"
+		tagline="Every Bible reference in the library is indexed. These are the chapters the writers return to — open one to see who preached it, and what they said."
+	/>
 
 	{#if !books.length}
 		<EmptyState message="The scripture index is still being built." />

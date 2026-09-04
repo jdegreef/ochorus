@@ -25,7 +25,7 @@
 	const canonical = $derived(`${SITE_URL}${path}`);
 	const hreflang = $derived(hreflangFor(path, ['en']));
 
-	const title = $derived(`${page.author.name} — quotes, with sources · Ochorus`);
+	const title = $derived(`${page.author.name} — quotes, with sources — Ochorus`);
 	const description = $derived(
 		`${page.quotes.length} quotations from ${page.author.name}, each one traced to the ` +
 			'book, chapter and paragraph it comes from — and linked to the full text, free to read.'
@@ -130,7 +130,7 @@
      reason is on this page: at 48rem a quotation ran about 95 characters to
      the line, well past the 45-75 an eye tracks comfortably. Narrowing it and
      setting the quotation a step larger (below) lands at roughly 67. -->
-<div class="page-col px-5 py-6">
+<div class="page-col px-5 py-10">
 	<Breadcrumb items={crumbs} />
 
 	<header class="mb-6">

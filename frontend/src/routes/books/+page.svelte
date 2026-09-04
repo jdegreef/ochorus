@@ -5,6 +5,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import BooksShelf from '$lib/components/BooksShelf.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 
 	const t = i18n.t;
 
@@ -30,25 +31,16 @@
 	// for draft locales while sitemap.xml, the detail pages and the footer all
 	// correctly omitted them — two contradictory claims, with the wrong one on
 	// the site's most-crawled pages.
-	const { alternates, xDefault } = hreflangAll('/books');
+	const hreflang = hreflangAll('/books');
 </script>
 
-<svelte:head>
-	<title>{t('nav.books')} — Ochorus</title>
-	<meta name="description" content={t('books.metaDescription')} />
-	<link rel="canonical" href={canonical} />
-	{#each alternates as a (a.loc)}
-		<link rel="alternate" hreflang={a.loc} href={a.href} />
-	{/each}
-	<link rel="alternate" hreflang="x-default" href={xDefault} />
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content="{t('nav.books')} — Ochorus" />
-	<meta property="og:description" content={t('books.metaDescription')} />
-	<meta property="og:url" content={canonical} />
-	<meta property="og:image" content="{SITE_URL}/og/books.png" />
-	<meta name="twitter:card" content="summary_large_image" />
-	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-	{#if books.length}{@html booksLd}{/if}
-</svelte:head>
+<Seo
+	title={`${t('nav.books')} — Ochorus`}
+	description={t('books.metaDescription')}
+	{canonical}
+	{hreflang}
+	ogImage={`${SITE_URL}/og/books.png`}
+	structuredData={books.length ? [booksLd] : []}
+/>
 
 <BooksShelf books={data.books} loadError={data.loadError} />
