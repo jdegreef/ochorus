@@ -44,8 +44,11 @@ natural-key format (no pk), one `library.article` row. Fields: `slug`, `language
 Build the file with a Python script (triple-quoted `body_html` → `json.dumps`) —
 hand-escaping large HTML into JSON is error-prone. Body HTML uses the **rich/bio**
 sanitize allowlist: `p h2 h3 blockquote em strong ul ol li a cite` (NOT the
-chapter profile — it strips links/cite). Scripture refs are plain text
-("Romans 8:28") — forward-compatible with a future annotate-to-tappable step.
+chapter profile — it strips links/cite). Write Scripture refs as plain text
+("Romans 8:28"): `ArticleDetailSerializer.get_body_html` runs
+`annotate_references` on read, so every ref becomes a tappable `.scripture-ref`
+that opens the verse popover on the article page — you get this for free, so
+don't hand-wrap refs in the fixture.
 
 ## Gotchas (each cost time at least once)
 

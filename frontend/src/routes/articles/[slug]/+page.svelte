@@ -3,11 +3,26 @@
 	import { SITE_URL } from '$lib/config';
 	import { localizeHref } from '$lib/href';
 	import { jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
+	import { scripture } from '$lib/scripture.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
+	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
 
 	let { data } = $props();
 	const article = $derived(data.article as Article);
+
+	// Tap a server-wrapped Bible reference in the body → open the scripture
+	// popover, the same treatment the chapter/sermon readers give. The body's
+	// refs are wrapped as <a class="scripture-ref" data-ref="…"> by the API
+	// (see get_body_html); this is the lightweight equivalent of the reader's
+	// onScriptureClick, since an article page is a plain document, not the Reader.
+	function onBodyClick(e: MouseEvent) {
+		const a = (e.target as HTMLElement).closest?.('a.scripture-ref') as HTMLElement | null;
+		if (!a?.dataset.ref) return;
+		e.preventDefault();
+		const r = a.getBoundingClientRect();
+		scripture.show(a.dataset.ref, r.bottom + window.scrollY, r.left + window.scrollX + r.width / 2);
+	}
 
 	// Self-referential canonical + hreflang — an English canonical on a future
 	// translated article would deindex it. Articles are per-language rows with no
@@ -83,10 +98,13 @@
 			{/if}
 		</header>
 
-		<!-- Server-sanitized HTML (backend bio/rich profile — carries pull-quotes
-		     and internal links); never user input. See frontend/CLAUDE.md. -->
+		<!-- Server-sanitized HTML (backend rich/bio profile — pull-quotes, internal
+		     links, and server-wrapped scripture refs); never user input. The click
+		     delegate opens the scripture popover on a tapped reference (same as the
+		     reader; see onBodyClick). frontend/CLAUDE.md. -->
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-		<div class="article-body" lang={article.language}>{@html article.body_html}</div>
+		<!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
+		<div class="article-body" lang={article.language} onclick={onBodyClick}>{@html article.body_html}</div>
 
 		{#if article.related?.length}
 			<aside class="read-next" aria-labelledby="read-next-heading">
@@ -105,6 +123,9 @@
 		{/if}
 	</article>
 </div>
+
+<!-- The tapped-reference verse popover (self-contained; reads the scripture store). -->
+<ScripturePopover />
 
 <style>
 	.article {
@@ -152,6 +173,18 @@
 	.article-body :global(a) {
 		color: var(--color-accent);
 		text-underline-offset: 2px;
+	}
+	/* Server-wrapped Bible references: a tappable dotted underline in the text
+	   colour, not a loud accent link — matches the reader's .scripture-ref. */
+	.article-body :global(a.scripture-ref) {
+		color: inherit;
+		text-decoration: underline dotted var(--color-accent);
+		text-underline-offset: 0.18em;
+		cursor: pointer;
+	}
+	.article-body :global(a.scripture-ref:hover) {
+		color: var(--color-accent);
+		text-decoration-style: solid;
 	}
 	.article-body :global(blockquote) {
 		margin: 1.4rem 0;

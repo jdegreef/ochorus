@@ -469,8 +469,18 @@ class ArticleListSerializer(serializers.ModelSerializer):
 class ArticleDetailSerializer(ArticleListSerializer):
     """A single article with its body and its resolved "Read next" links."""
 
+    body_html = serializers.SerializerMethodField()
     related = serializers.SerializerMethodField()
     available_languages = serializers.SerializerMethodField()
+
+    def get_body_html(self, obj):
+        # Wrap Bible references as clickable spans so the reader's scripture
+        # popover works in articles too — the same treatment chapters and
+        # sermons get. Runs at read time, AFTER the stored body was sanitized,
+        # so the annotation's <a class="scripture-ref"> is not re-stripped.
+        from .scripture import annotate_references
+
+        return annotate_references(obj.body_html)
 
     def get_related(self, obj):
         return resolve_related(obj.related, obj.language)
