@@ -50,6 +50,10 @@
 			"content": "00e76ef13f69a1b2efe6001c224723e6df0f464764f50f904ac106780cc815c8",
 			"art": "c73954d0939d466964947a1837acd84c16c456b14981fd41a6f81ccd43031317"
 		},
+		"coming-to-the-king": {
+			"content": "4de51580342b2e54e469824122c02956f7bf84972d876b5c39e7f9a8d2d5bfad",
+			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
+		},
 		"compel-them-to-come-in": {
 			"content": "09188f35ab5897f69d8836093622f0a494e36f337bef41c2b50a88a8c2b846e7",
 			"art": "5c149f5c0da6a30482e023aa6c2e912e187548f2ed4e655fc6a23d177ed98d81"
@@ -86,6 +90,10 @@
 			"content": "d4230634a8faf2f7b737e23d7b64f41fe7d9c54f91e4cc3479d8826c3698206e",
 			"art": "dcd6e34961da7638823b089c1d568101b05f96b2492e11c5e54635d650663596"
 		},
+		"how-to-contemplate-christs-holy-sufferings": {
+			"content": "0015c08ce656d2fa9e98c1ce28a75b5f2040d9fff4f6b5f12a58ffee4461b273",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
 		"intercession-every-christians-duty": {
 			"content": "f511c07880dd784d09b3e1fd2dc8d4897d41a97199aee7b01c38e0787bdbd6ea",
 			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
@@ -93,6 +101,10 @@
 		"marks-of-a-true-conversion": {
 			"content": "6d4ca1e84f469b14790f5167a4e369762dceab243b8674ade39d53e2c0d88c33",
 			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
+		},
+		"no-one-can-harm-the-man-who-does-not-injure-himself": {
+			"content": "a1d832ba6ad88c988cc82df7d4b2c7d2b293a7f79984c9b2d3db876965da47c3",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		},
 		"order-and-argument-in-prayer": {
 			"content": "62710b90e588c80fa066287579e8d51e2c25b0c8be02ea98793a8bc31ae54287",
@@ -106,6 +118,10 @@
 			"content": "1ae261744ef5243a8e471b9c34e1da470603165cf053eb80ef9d1743587eed09",
 			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		},
+		"prevailing-prayer": {
+			"content": "8330f321c326748fcf7370712018449aeba2195dd43d7e34225b5520e8359e19",
+			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
+		},
 		"rest": {
 			"content": "2145408f8568cd5babd836a0b7d28273d3e733445d3ed82be65d36aacf95c373",
 			"art": "1d723e0f5819f8b6ef9ddf525e1dd21964afcddd2ddff42a34e8ce895df48d51"
@@ -118,6 +134,10 @@
 			"content": "58df1306c97777612a7876d6d46913c2a3e45911cda27effbe2e093bc3d64642",
 			"art": "a16d3a6126a69f3c1ceb30bc409cb2bf72c3b9b85865b45f4d5c3031f865ab6e"
 		},
+		"sinners-bound-to-change-their-own-hearts": {
+			"content": "305446a428b2ba40dc7debcabe70482f6d1b66c00a544510ed863aafc2805e40",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
 		"sinners-in-the-hands-of-an-angry-god": {
 			"content": "577e856c2e6242d6401460c946d5901efbd5e6109e65d65c096305a53510aad1",
 			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
@@ -129,6 +149,10 @@
 		"the-almost-christian": {
 			"content": "dcf4f69c92fcf72903946eb9aaba1cf59792b828c83123e99906a35b8420c403",
 			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
+		"the-appearing-of-the-grace-of-god": {
+			"content": "5c88fbbd4cacebe9d40fa9dab36e902a3f5b832a9711a3e6d732e360df4508ca",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		},
 		"the-circumcision-of-the-heart": {
 			"content": "debd804716411924f2d799fd38d3c96753b89f33dbf7fc30bad5ba65ac9ff9f8",
@@ -194,6 +218,10 @@
 			"content": "1d8038a312613ab36fc37ef86f055775db36a633f9c28d84c5cbf4174ef4c5c2",
 			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
 		},
+		"the-spirit-of-prayer": {
+			"content": "17ee09c1a557eaf91639787372b89b5fd133d9ecc43f2f14c195d548f8412915",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
 		"the-sweet-uses-of-adversity": {
 			"content": "716df6ad29e427eccd4faf225930cee8e6674c7cb1dd6e9c14490ac12b60e400",
 			"art": "a5189620af47a2f8dfcaab22b93ef11d5dd5306b10885e4546ae1ff7fb95dc55"
@@ -209,6 +237,10 @@
 		"the-worlds-need": {
 			"content": "729f64b7b7c9cdc61b6fa4684a8d0ccec82532b0ef7cae63dbb579a23b11a40a",
 			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
+		},
+		"under-the-shepherds-care": {
+			"content": "f5778a677ea02ed83ded012214c72db8ffe9bf6680eda287649b54dd40b9b375",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		},
 		"unfailing-springs": {
 			"content": "3e26bd5e2962f43039438c73e14041331964ab35365c62a8614512c59f92b377",
