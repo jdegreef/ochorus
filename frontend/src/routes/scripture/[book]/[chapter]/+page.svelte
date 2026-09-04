@@ -21,7 +21,7 @@
 	// point search engines at pages that do not exist.
 	const hreflang = $derived(hreflangFor(path, ['en']));
 
-	const title = $derived(`${page.reference} — what the classics say · Ochorus`);
+	const title = $derived(`${page.reference} — what the classics say — Ochorus`);
 	const description = $derived(
 		`${page.citing_count} passage${page.citing_count === 1 ? '' : 's'} from the ` +
 			`Christian classics that treat ${page.reference}, each quoted and linked to its source.`
@@ -62,7 +62,7 @@
 	structuredData={[crumbsLd, quotesLd]}
 />
 
-<div class="page-col px-5 py-6">
+<div class="page-col px-5 py-10">
 	<Breadcrumb items={crumbs} />
 
 	<header class="mb-8">

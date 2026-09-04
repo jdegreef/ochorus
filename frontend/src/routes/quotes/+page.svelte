@@ -3,6 +3,7 @@
 	import { SITE_URL } from '$lib/config';
 	import { hueForBirthYear } from '$lib/eras';
 	import { jsonLd, breadcrumb, hreflangFor, absUrl } from '$lib/seo';
+	import PageHeader from '$lib/components/PageHeader.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 
@@ -16,7 +17,7 @@
 	const hreflang = hreflangFor(path, ['en']);
 	const total = $derived(authors.reduce((n, a) => n + a.count, 0));
 
-	const title = 'Christian quotes, with their sources · Ochorus';
+	const title = 'Christian quotes, with their sources — Ochorus';
 	const description =
 		'Quotations from the classic Christian writers — Spurgeon, Andrew Murray, ' +
 		'Thomas à Kempis, Augustine, John Wesley, Jonathan Edwards, E. M. Bounds — each ' +
@@ -55,17 +56,13 @@
 	structuredData={[crumbsLd, listLd]}
 />
 
-<div class="page-col px-5 py-6">
+<div class="page-col px-5 py-10">
 	<Breadcrumb items={crumbs} />
 
-	<header class="mb-6">
-		<h1 class="text-h1">Quotes, with their sources</h1>
-		<p class="mt-2 max-w-2xl text-body text-muted">
-			The lines these writers are remembered for — {total} of them so far — each traced to the exact
-			book, chapter and paragraph it comes from, and linked to the full work. What the unsourced
-			quote sites cannot give you is the citation; that is the whole of this.
-		</p>
-	</header>
+	<PageHeader
+		title="Quotes, with their sources"
+		tagline="The lines these writers are remembered for — {total} of them so far — each traced to the exact book, chapter and paragraph it comes from, and linked to the full work. What the unsourced quote sites cannot give you is the citation; that is the whole of this."
+	/>
 
 	<!-- A card per author. The accent bar wears the author's era hue, the same
 	     colour their row carries on the Biographies shelf and their quote page's

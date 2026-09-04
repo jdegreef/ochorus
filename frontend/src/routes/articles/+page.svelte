@@ -3,6 +3,7 @@
 	import ArticleCard from '$lib/components/ArticleCard.svelte';
 	import { SITE_URL } from '$lib/config';
 	import { jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
+	import PageHeader from '$lib/components/PageHeader.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 
@@ -15,7 +16,7 @@
 	const canonical = `${SITE_URL}${path}`;
 	const hreflang = hreflangFor(path, ['en']);
 
-	const title = 'Articles on prayer, faith & the Christian life · Ochorus';
+	const title = 'Articles on prayer, faith & the Christian life — Ochorus';
 	const description =
 		'Short, plain-spoken readings on prayer, faith, grace and the life with God — ' +
 		'each one pointing you to a classic Christian book, sermon or life worth reading in full, ' +
@@ -46,16 +47,13 @@
 
 <Seo {title} {description} {canonical} {hreflang} structuredData={[crumbsLd, listLd]} />
 
-<div class="page-col px-5 py-6">
+<div class="page-col px-5 py-10">
 	<Breadcrumb items={crumbs} />
 
-	<header class="mb-6">
-		<h1 class="text-h1">Articles</h1>
-		<p class="mt-2 max-w-2xl text-body text-muted">
-			Short readings on prayer, faith and the life with God — each one written to send you on to a
-			classic worth reading in full.
-		</p>
-	</header>
+	<PageHeader
+		title="Articles"
+		tagline="Short readings on prayer, faith and the life with God — each one written to send you on to a classic worth reading in full."
+	/>
 
 	{#if articles.length}
 		<div class="article-list">

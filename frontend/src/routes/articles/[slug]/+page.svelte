@@ -40,7 +40,7 @@
 				.trim()
 				.slice(0, 155)
 	);
-	const titleTag = $derived(`${article.meta_title || article.h1} · Ochorus`);
+	const titleTag = $derived(`${article.meta_title || article.h1} — Ochorus`);
 
 	const articleLd = $derived(
 		jsonLd({
@@ -87,7 +87,7 @@
 	structuredData={[articleLd, crumbsLd]}
 />
 
-<div class="page-col px-5 py-6">
+<div class="page-col px-5 py-10">
 	<Breadcrumb items={crumbs} />
 
 	<article class="article">

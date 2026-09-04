@@ -2,6 +2,7 @@
 	import type { TopicSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { itemList, hreflangAll } from '$lib/seo';
+	import Seo from '$lib/components/Seo.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import ShelfCard from '$lib/components/ShelfCard.svelte';
@@ -30,25 +31,17 @@
 	// correctly omitted them — two contradictory claims, with the wrong one on
 	// the site's most-crawled pages.
 	const hreflang = hreflangAll('/topics');
+	const canonical = `${SITE_URL}${localizeHref('/topics')}`;
 </script>
 
-<svelte:head>
-	<title>{t('topics.title')} — Ochorus</title>
-	<meta name="description" content={t('topics.tagline')} />
-	<link rel="canonical" href="{SITE_URL}{localizeHref('/topics')}" />
-	{#each hreflang.alternates as a (a.loc)}
-		<link rel="alternate" hreflang={a.loc} href={a.href} />
-	{/each}
-	<link rel="alternate" hreflang="x-default" href={hreflang.xDefault} />
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content="{t('topics.title')} — Ochorus" />
-	<meta property="og:description" content={t('topics.tagline')} />
-	<meta property="og:url" content="{SITE_URL}{localizeHref('/topics')}" />
-	<meta property="og:image" content="{SITE_URL}/og/topics.png" />
-	<meta name="twitter:card" content="summary_large_image" />
-	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-	{#if topics.length}{@html topicsLd}{/if}
-</svelte:head>
+<Seo
+	title={`${t('topics.title')} — Ochorus`}
+	description={t('topics.tagline')}
+	{canonical}
+	{hreflang}
+	ogImage={`${SITE_URL}/og/topics.png`}
+	structuredData={topics.length ? [topicsLd] : []}
+/>
 
 <div class="page-col px-5 py-10">
 	<PageHeader title={t('topics.title')} tagline={t('topics.tagline')} />

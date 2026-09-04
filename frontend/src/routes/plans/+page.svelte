@@ -10,6 +10,7 @@
 	import { planMeta } from '$lib/emblemNames';
 	import CatalogLanguageNudge from '$lib/components/CatalogLanguageNudge.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 
@@ -64,7 +65,7 @@
 	// for draft locales while sitemap.xml, the detail pages and the footer all
 	// correctly omitted them — two contradictory claims, with the wrong one on
 	// the site's most-crawled pages.
-	const { alternates, xDefault } = hreflangAll('/plans');
+	const hreflang = hreflangAll('/plans');
 
 	// Each plan wears a curated accent + emblem — see planMeta in $lib/emblems.
 
@@ -89,23 +90,14 @@
 	});
 </script>
 
-<svelte:head>
-	<title>{t('plans.title')} — Ochorus</title>
-	<meta name="description" content={t('plans.tagline')} />
-	<link rel="canonical" href={canonical} />
-	{#each alternates as a (a.loc)}
-		<link rel="alternate" hreflang={a.loc} href={a.href} />
-	{/each}
-	<link rel="alternate" hreflang="x-default" href={xDefault} />
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content="{t('plans.title')} — Ochorus" />
-	<meta property="og:description" content={t('plans.tagline')} />
-	<meta property="og:url" content={canonical} />
-	<meta property="og:image" content="{SITE_URL}/og/plans.png" />
-	<meta name="twitter:card" content="summary_large_image" />
-	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-	{#if plans.length}{@html plansLd}{/if}
-</svelte:head>
+<Seo
+	title={`${t('plans.title')} — Ochorus`}
+	description={t('plans.tagline')}
+	{canonical}
+	{hreflang}
+	ogImage={`${SITE_URL}/og/plans.png`}
+	structuredData={plans.length ? [plansLd] : []}
+/>
 
 <div class="page-col px-5 py-10">
 	<PageHeader title={t('plans.title')} tagline={t('plans.tagline')} />

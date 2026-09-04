@@ -79,7 +79,7 @@
 	// "<title> read online free" and "<title> by <author>". Localized, and each
 	// locale's wording is DERIVED from its own reviewed `book_meta_fallback`
 	// rather than newly translated — same vocabulary, "on Ochorus." traded for
-	// the site's "· Ochorus" title suffix.
+	// the site's "— Ochorus" title suffix.
 	//
 	// It runs long — about 73 characters for this book against a ~60 character
 	// display budget — and the ordering is the answer to that: title, author,
