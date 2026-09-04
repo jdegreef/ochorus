@@ -223,6 +223,7 @@ TOPIC_ARTICLES = {
         "what-is-intercessory-prayer",
         "the-power-of-persistent-prayer",
         "how-to-pray-the-psalms",
+        "the-morning-watch",
     ],
     "holy-spirit": [
         "what-is-the-baptism-of-the-holy-spirit",
@@ -235,6 +236,7 @@ TOPIC_ARTICLES = {
         "the-cost-of-following-jesus",
         "what-is-surrender-to-god",
         "what-is-biblical-fasting",
+        "the-morning-watch",
     ],
     "grace-and-comfort": [
         "how-to-trust-god-in-suffering",
