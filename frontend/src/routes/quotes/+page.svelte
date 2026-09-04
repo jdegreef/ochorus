@@ -2,7 +2,7 @@
 	import type { QuoteAuthorSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { hueForBirthYear } from '$lib/eras';
-	import { jsonLd, breadcrumb, hreflangFor, absUrl } from '$lib/seo';
+	import { jsonLd, breadcrumbLd, hreflangFor, absUrl } from '$lib/seo';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
@@ -31,7 +31,7 @@
 		{ name: 'Home', href: '/' },
 		{ name: 'Quotes', href: path }
 	];
-	const crumbsLd = jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))));
+	const crumbsLd = breadcrumbLd(crumbs);
 	// A CollectionPage listing each author page, so the set is one entity to a
 	// crawler rather than four unrelated URLs.
 	const listLd = $derived(

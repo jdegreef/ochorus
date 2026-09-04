@@ -2,7 +2,7 @@
 	import type { ArticleSummary } from '$lib/library-public';
 	import ArticleCard from '$lib/components/ArticleCard.svelte';
 	import { SITE_URL } from '$lib/config';
-	import { jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
+	import { jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
@@ -29,7 +29,7 @@
 		{ name: 'Home', href: '/' },
 		{ name: 'Articles', href: path }
 	];
-	const crumbsLd = jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))));
+	const crumbsLd = breadcrumbLd(crumbs);
 	// A CollectionPage listing each article, so the set reads as one entity to a
 	// crawler rather than a handful of unrelated URLs.
 	const listLd = $derived(

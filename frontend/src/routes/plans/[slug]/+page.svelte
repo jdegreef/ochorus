@@ -4,7 +4,7 @@
 	import { readingMinutes, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { SITE_URL } from '$lib/config';
-	import { absUrl, jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
 	import { localizeHref } from '$lib/href';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
@@ -67,9 +67,7 @@
 		{ name: t('plans.title'), href: '/plans' },
 		{ name: plan.title, href: `/plans/${plan.slug}` }
 	]);
-	const crumbsLd = $derived(
-		jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))))
-	);
+	const crumbsLd = $derived(breadcrumbLd(crumbs));
 
 	const started = $derived(planProgress.isStarted(plan.slug));
 	const next = $derived(planProgress.nextDay(plan.slug, plan.day_count));

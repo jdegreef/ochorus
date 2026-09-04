@@ -4,7 +4,7 @@
 	import SourceBadge from '$lib/components/SourceBadge.svelte';
 	import { SITE_URL } from '$lib/config';
 	import { cssString } from '$lib/cssString';
-	import { absUrl, jsonLd, breadcrumb, hreflangAll } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, hreflangAll } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingTime, readingMinutes } from '$lib/reading';
 	import { localizeHref } from '$lib/href';
@@ -205,9 +205,7 @@
 		{ name: t('bios.eyebrow'), href: '/biographies' },
 		{ name: author.name, href: `/authors/${author.slug}` }
 	]);
-	const crumbsLd = $derived(
-		jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))))
-	);
+	const crumbsLd = $derived(breadcrumbLd(crumbs));
 	// Prayer-callout labels are rendered by CSS ::before content; pass the
 	// localized strings in as custom properties so they follow the locale.
 	// Quoted through cssString: an apostrophe in any translation would close the

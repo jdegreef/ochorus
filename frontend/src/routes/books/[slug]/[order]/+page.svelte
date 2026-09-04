@@ -42,7 +42,7 @@
 	import { createReaderText } from '$lib/readerText.svelte';
 	import ReaderOverlays from '$lib/components/ReaderOverlays.svelte';
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
-	import { jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
+	import { jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
 	import { localizeHref } from '$lib/href';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import Seo from '$lib/components/Seo.svelte';
@@ -76,9 +76,7 @@
 		{ name: chapter.book_title, href: `/books/${slug}` },
 		{ name: chapterName(chapter.order, chapter.title), href: `/books/${slug}/${chapter.order}` }
 	]);
-	const crumbsLd = $derived(
-		jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))))
-	);
+	const crumbsLd = $derived(breadcrumbLd(crumbs));
 	const metaDescription = $derived(
 		chapter.body_html
 			.replace(/<[^>]+>/g, ' ')

@@ -20,7 +20,7 @@
 	import { apiFetch } from '$lib/api';
 	import { page } from '$app/stores';
 	import { buildOutline, type OutlineEntry } from '$lib/sermonOutline';
-	import { absUrl, jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { localizeHref } from '$lib/href';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
@@ -228,9 +228,7 @@
 		{ name: t('nav.sermons'), href: '/sermons' },
 		{ name: sermon.title, href: `/sermons/${sermon.slug}` }
 	]);
-	const crumbsLd = $derived(
-		jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))))
-	);
+	const crumbsLd = $derived(breadcrumbLd(crumbs));
 
 	// Selecting text offers copy-quote / share (with attribution), highlight and
 	// note; a single word opens the dictionary — same as the chapter reader.

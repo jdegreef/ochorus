@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { ScripturePageEntry } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
-	import { jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
+	import { breadcrumbLd, hreflangFor } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
@@ -43,7 +43,7 @@
 		{ name: 'Home', href: '/' },
 		{ name: 'Scripture', href: path }
 	];
-	const crumbsLd = jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))));
+	const crumbsLd = breadcrumbLd(crumbs);
 </script>
 
 <Seo {title} {description} {canonical} {hreflang} structuredData={[crumbsLd]} />
