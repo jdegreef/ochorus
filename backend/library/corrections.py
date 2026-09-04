@@ -848,6 +848,23 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("You can end rest on the bosom", "You can find rest on the bosom"),
         ],
     },
+    "free-grace": {
+        # Two OCR slips found while translating the sermon to Hindi (job #1109).
+        # Both INVERT the sense, which is why they are repaired here rather than
+        # only reported: a faithful rendering makes Spurgeon say the opposite of
+        # what he wrote, and the Hindi edition would have shipped it.
+        #
+        # Both are settled by the editions we already ship, which is the test
+        # this file uses for repairing a source rather than guessing at it:
+        # "immortality" is how es and pt both render it (inmortalidad /
+        # imortalidade), and "trust" is unanimous across ar, es and pt
+        # (الثقة / confiar / confiar). Nothing had to be inferred.
+        "replacements": [
+            ("heirs of light and immorality", "heirs of light and immortality"),
+            ("a proneness to truth in some fancied merit",
+             "a proneness to trust in some fancied merit"),
+        ],
+    },
     "the-key-in-my-hand": {
         # Source defects found while translating the book to Portuguese.
         # The verse-range typo also reached the sw/lg/pt editions, so the
