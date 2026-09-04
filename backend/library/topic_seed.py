@@ -225,10 +225,12 @@ TOPIC_ARTICLES = {
     "holy-spirit": [
         "what-is-the-baptism-of-the-holy-spirit",
         "who-is-the-holy-spirit",
+        "what-are-the-spiritual-gifts",
     ],
     "deeper-life": [
         "what-does-it-mean-to-abide-in-christ",
         "the-cost-of-following-jesus",
+        "what-is-surrender-to-god",
     ],
     "grace-and-comfort": [
         "how-to-trust-god-in-suffering",
@@ -237,6 +239,7 @@ TOPIC_ARTICLES = {
     "revival-and-missions": ["what-is-revival-and-how-does-it-begin"],
     "faith-and-guidance": [
         "how-to-find-gods-will-for-your-life",
+        "how-to-hear-gods-voice",
         "how-to-trust-god-in-suffering",
     ],
     "the-gospel-call": [
@@ -247,6 +250,7 @@ TOPIC_ARTICLES = {
     "the-way-of-holiness": [
         "what-is-sanctification",
         "how-to-forgive-someone-who-hurt-you",
+        "how-to-overcome-sin-and-temptation",
         "the-priesthood-of-all-believers",
     ],
 }
