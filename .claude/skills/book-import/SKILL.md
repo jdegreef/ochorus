@@ -1008,6 +1008,17 @@ all of which this command already does. The steps:
   `<p class="footerPoem">` (about Baxter, identical on every page — drop). It
   sets a closing `”` in opener position after `—`/`-`. Only six sermons exist
   there (one an abridgement); no catalog entry — fixtures authoritative.
+- **A green local suite does not prove CI's `makemigrations --check`.** The
+  test runner only runs `migrate`, which tolerates multiple leaf migrations; CI
+  runs `--check` as well, and it runs it on the PR's synthetic merge with
+  *current* main. So after merging main into a branch, a local
+  `makemigrations --merge` can say "No conflicts detected" while CI fails on
+  two leaves that exist only in head + a main that moved after your fetch
+  (Edwards #1408, 2026-09-04: `0112_flock_moderns…` vs `0113_topicarticle_rls`).
+  Right before pushing a main-merge: `git fetch && git merge origin/main`
+  again, then `DJANGO_DEBUG=true uv run python manage.py makemigrations
+  --check --dry-run`; if it names leaves, `makemigrations --merge --no-input`
+  and commit the no-op merge migration.
 
 When the catalogue lacks a wanted title (e.g. more Spurgeon), source it from
 elsewhere. Preference order — cleaner text first: **CCEL** (`source="ccel"`,
