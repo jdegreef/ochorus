@@ -1,4 +1,5 @@
 import { listScripturePages } from '$lib/library-public';
+import { loadShelf } from '$lib/loadShelf';
 import type { PageLoad } from './$types';
 
 // The hub for the scripture graph, and the reason its pages are not orphans: a
@@ -8,12 +9,9 @@ export const prerender = true;
 export const trailingSlash = 'always';
 
 export const load: PageLoad = async () => {
-	// Degrade to an empty index rather than failing the build: the API can lag a
-	// simultaneous deploy, and a later rebuild picks the pages up. Consistent
-	// with how /topics and /plans treat the same race.
-	try {
-		return { pages: await listScripturePages() };
-	} catch {
-		return { pages: [] };
-	}
+	// A lagging API is REPORTED (loadShelf), not silently baked as an empty
+	// index that reads "still being built": the page shows Try again instead,
+	// and a later rebuild picks the pages up. Same treatment as /topics.
+	const { items, loadError } = await loadShelf(listScripturePages());
+	return { pages: items, loadError };
 };

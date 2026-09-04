@@ -7,6 +7,7 @@
 	import { eraOf, eraById } from '$lib/eras';
 	import AuthorBioCard from '$lib/components/AuthorBioCard.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
+	import EmptyState from '$lib/components/EmptyState.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 
 	const t = i18n.t;
@@ -14,6 +15,7 @@
 	let { data } = $props();
 	const era = $derived(eraById(data.eraId)!);
 	const authors = $derived<AuthorBio[]>(data.authors);
+	const loadError = $derived<boolean>(data.loadError);
 	const books = $derived<BookSummary[]>(data.books ?? []);
 
 	// Group the library's books by author slug for the per-writer cover strips.
@@ -102,8 +104,10 @@
 		<p class="max-w-2xl text-body text-muted">{t('bios.tagline')}</p>
 	</header>
 
-	{#if inEra.length === 0}
-		<p class="py-16 text-center text-body text-muted">{t('bios.noResults')}</p>
+	{#if loadError}
+		<EmptyState message={t('common.loadError')} onRetry />
+	{:else if inEra.length === 0}
+		<EmptyState message={t('bios.noResults')} />
 	{:else}
 		<div class="grid items-start gap-5 md:grid-cols-2">
 			{#each inEra as author (author.slug)}

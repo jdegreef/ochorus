@@ -10,6 +10,7 @@
 	import { localizeHref } from '$lib/href';
 	import { ERAS, eraOf, type EraId } from '$lib/eras';
 	import AuthorBioCard from '$lib/components/AuthorBioCard.svelte';
+	import CatalogLanguageNudge from '$lib/components/CatalogLanguageNudge.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import { urlFilters } from '$lib/urlFilters.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
@@ -19,6 +20,7 @@
 
 	let { data } = $props();
 	const authors = $derived<AuthorBio[]>(data.authors);
+	const loadError = $derived<boolean>(data.loadError);
 	const books = $derived<BookSummary[]>(data.books ?? []);
 
 	// Group the library's books by author slug for the per-writer cover strip.
@@ -370,7 +372,11 @@
 	{/if}
 	</div>
 
-	{#if sorted.length === 0}
+	<CatalogLanguageNudge kind="authors" localizedCount={authors.length} />
+
+	{#if loadError}
+		<EmptyState message={t('common.loadError')} onRetry />
+	{:else if sorted.length === 0}
 		<EmptyState message={t('bios.noResults')} action={isFiltered ? clearFiltersAction : undefined} />
 	{:else if filters.values.sort === 'era'}
 		{#if eraGroups.length > 1}
