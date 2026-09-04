@@ -38,5 +38,25 @@
    "«हर सद्गुण की जड़» is the phrase the Hindi book itself uses for 'the root of every virtue' (humility-2.hi ch01: «हर गुण की जड़», rendered here with सद्गुण to match the English card's 'virtue'), so the card quotes the edition rather than re-rendering the motif. एंड्रयू मरे is the shipped Hindi form of the author's name, the same one the-inner-chamber-month and deeper-life-in-christ use.",
    "Digits: the title spells out बारह rather than using 12, unlike the Spanish and Portuguese cards. Hindi reads a bare numeral in a heading as a count rather than a span of days, and the description carries the number anyway; the Swahili and Luganda entries make the same choice in the description."
   ]
+ },
+ "grace-for-every-sinner": {
+  "title": "परमेश्वर तक का मार्ग: हर पापी के लिये अनुग्रह",
+  "description": "जो सबसे पुराना सुसमाचार है, उस पर एक महीना। रिचर्ड बैक्सटर की उन लोगों के लिये कोमल पुकार जिनका मन अब तक नहीं फिरा, डी. एल. मूडी — परमेश्वर तक का मार्ग, और चार्ल्स स्पर्जन की सब कुछ अनुग्रह से — इसके सबसे सरल मार्गदर्शक कि पापी का उद्धार कैसे होता है, और उसे कैसे जाना जाए।",
+  "note": [
+   "Queue job #1108. The title opens with the shipped edition's own title verbatim — परमेश्वर तक का मार्ग, from the-way-to-god.hi — so the plan card and the book on the shelf agree, as every other language's entry does. सब कुछ अनुग्रह से is likewise the shipped title of all-of-grace.hi.",
+   "seed_plans creates NO row today: a-call-to-the-unconverted has no Hindi edition, and a curated plan needs every source book present. This prose lands DORMANT on purpose, so that whichever book lands last cannot publish an English-titled card in Hindi (#819).",
+   "Names follow the shipped Hindi bios rather than being re-invented: रिचर्ड बैक्सटर (richard-baxter.html, 6 uses), डी. एल. मूडी (8 uses across the corpus), चार्ल्स स्पर्जन (the bio's full form is चार्ल्स हैडन स्पर्जन; the card uses the short form the English does).",
+   "\"the unconverted\" is rendered जिनका मन अब तक नहीं फिरा rather than a noun, keeping the मन फिराना root the corpus settled on for conversion (मन-फिराव, itself settled against the IRV's own मन फिराओ)."
+  ]
+ },
+ "faith-in-the-fire": {
+  "title": "सब प्रकार की शान्ति का परमेश्वर: आग में विश्वास",
+  "description": "उन दिनों के लिये जिनमें प्रार्थना करना कठिन हो जाता है। हन्ना व्हिटॉल स्मिथ — सब प्रकार की शान्ति का परमेश्वर, और गैरेथ इवांस — उसी पर भरोसा जो हमारा कल थामे हुए है: जब जीवन अनिश्चित हो, तब स्थिर शान्ति में पाँच सप्ताह की यात्रा।",
+  "note": [
+   "Queue job #1444. the-god-of-all-comfort has NO Hindi edition, so unlike every other entry in this file the title could not quote a shipped book title. It is taken instead from the verse the title itself quotes — IRV 2 Corinthians 1:3, सब प्रकार की शान्ति का परमेश्वर — fetched byte-for-byte, which is the same wording the hannah-whitall-smith Hindi bio (job #1412, this same PR) independently chose for the book. Whoever translates that book should match this, or change both in one PR.",
+   "The second half echoes the shipped title of he-holds-my-tomorrows.hi, वह मेरा कल थामे हुए है, recast as जो हमारा कल थामे हुए है so the card's clause and the book's title agree.",
+   "seed_plans creates NO row today: he-holds-my-tomorrows.hi is shipped but the-god-of-all-comfort is not, so this curated plan's set is incomplete. Dormant on purpose. NOTE for whoever ships the-god-of-all-comfort in Hindi: that book COMPLETES this plan and will flip a five-week plan live on its deploy — it needs the plans/+page.ts prerender touch in the same PR, the #756 shape.",
+   "हन्ना व्हिटॉल स्मिथ is the form set by her Hindi bio in this same PR — हन्ना is the IRV's own form for Hannah (and runs 400 to 16 against हन्नाह in shipped Hindi content), व्हिटॉल takes its व्ह from the corpus's व्हाइटफ़ील्ड. गैरेथ इवांस is from gareth-evans.html."
+  ]
  }
 }

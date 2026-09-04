@@ -1,3 +1,10 @@
+// prerender refresh 2026-09-04: eight Hindi author biographies — catherine-booth
+// (#1099), john-bunyan (#1100), george-whitefield (#1124), george-muller (#1125),
+// e-m-bounds (#1411), hannah-whitall-smith (#1412), robert-murray-mcheyne (#1439),
+// john-chrysostom (#1440). Author pages are prerendered PER AUTHOR, so each of
+// these eight /hi/authors/<slug> pages has to rebuild to pick up the translated
+// bio, its pull-quotes and its prayer callouts. `hi` still seeds as DRAFT, so the
+// pages build without being advertised.
 // prerender refresh 2026-09-02 (batch3): Luganda bios for richard-sibbes (#1338),
 // john-owen (#1339), thomas-a-kempis (#1346), bernard-of-clairvaux (#1347) —
 // rebuilds their /lg/authors/<slug> pages with the translated bio_html.
