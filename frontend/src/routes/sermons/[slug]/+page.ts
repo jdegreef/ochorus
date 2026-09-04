@@ -6,6 +6,9 @@ import type { EntryGenerator, PageLoad } from './$types';
 // Trailing-slash canonical -> prerenders to sermons/<slug>/index.html, which the
 // static host serves as a directory index (see books/[slug] for the full note).
 export const trailingSlash = 'always';
+// A content-only merge (fixtures + cards) can race the API's seed: the web build
+// prerenders whatever the API holds at build time, so new sermon pages ship as the
+// SPA shell until the next build that touches frontend/. Tier 2 (#1418) did.
 
 // Prerender one page per sermon — the slug list comes from the API at build
 // time. The sermon endpoint may lag on a fresh deploy (api + web build together),

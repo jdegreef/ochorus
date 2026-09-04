@@ -109,6 +109,16 @@ def content_digest() -> str:
     # 0.1s warm. A probe that slow is a failed deploy, not a slow endpoint. The
     # baked value cannot go stale: the image's content is immutable, and the
     # file is written from that same content during the build.
+    # OBSERVED 2026-09-04 (Tier 2, #1418 -> #1420): the live API, built from
+    # main's tip de849200, reported content_version b8ab6ce906715bef, while a
+    # clean checkout of that same commit digests to ae3ff9ba6b344368 under BOTH
+    # this function (manage.py content_version) and the JS twin
+    # (frontend/scripts/await-api-release.mjs) - and the API's value had moved
+    # from ae3ff9… to b8ab6c… between 13:05 and 13:20 UTC with no new commit.
+    # A frontend-only web build therefore cannot match it and the gate fails
+    # after its timeout, while builds that coincide with an API deploy pass.
+    # Check the API build log's `content_version --write` line for what the
+    # image actually baked, and from which file set.
     if BAKED_DIGEST_FILE.is_file():
         baked = BAKED_DIGEST_FILE.read_text().strip()
         if baked:
