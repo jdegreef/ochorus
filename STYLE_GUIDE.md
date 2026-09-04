@@ -121,7 +121,7 @@ with `text-[1.02rem]`-style arbitrary values** — pick the nearest step.
 | `.text-h1` / `--fs-h1` | `1.953rem` | 1.15 | Page title (`<h1>`) |
 | `.text-h2` / `--fs-h2` | `1.563rem` | 1.2 | Section (`<h2>`) |
 | `.text-h3` / `--fs-h3` | `1.25rem` | 1.3 | Sub-section (`<h3>`) |
-| `.text-body` / `--fs-body` | `1rem` | 1.6 | Body |
+| `.text-body` / `--fs-body` | `1rem` | 1.65 | Body |
 | `.text-small` / `--fs-small` | `0.875rem` | 1.5 | Captions, helper text, meta |
 | `.text-eyebrow` / `--fs-eyebrow` | `0.75rem` | 1.4 | Eyebrows / kickers |
 | `.text-micro` / `--fs-micro` | `0.6875rem` | 1.4 | Dense micro-labels only |
@@ -291,7 +291,7 @@ weight 600, a 150ms transition).
 |---|---|---|---|---|---|
 | **Primary** | `.btn .btn-primary` | `--accent-soft` | `--accent` | `--accent-soft-border` | The main action on a view (one per context) |
 | **Default** | `.btn` | `--surface-2` | `--text` | `--border` | Secondary actions |
-| **Ghost** | `.btn .btn-ghost` | transparent | `--muted`/`--text` | transparent | Low-emphasis (dismiss, back) |
+| **Ghost** | `.btn .btn-ghost` | transparent | `--text` | `--border` | Low-emphasis (dismiss, back) |
 
 - **Sizes:** `.btn` is the default; add **`.btn-sm`** for a compact button and
   **`.btn-icon`** for a square icon-only one. Don't hand-roll padding — five
@@ -474,13 +474,31 @@ the call site. Width and margin utilities are fine: the class doesn't set them.
 
 ### Navigation
 Sticky top bar: `--bg/90` with backdrop blur and a hairline bottom border. Wordmark
-left; destinations (About / Books / Biographies / Contact) with active =
-`--text`; right cluster holds search, language picker, theme toggle, account menu.
-Active link carries `aria-current="page"`. Hidden in reader focus mode.
+at the start; six app destinations (Home / Books / Topics / Plans / Sermons /
+Biographies — About and Contact live in the footer, matching Take Root); the end
+cluster holds the search control, quick settings and the account menu (the
+language picker was deliberately removed from the bar). Active link carries
+`aria-current="page"`. Hidden in reader focus mode.
 
 ### Footer
-Compact and identical on every page: wordmark + one-line mission, an "Explore" link
-group, and contact. Hidden in focus mode.
+Identical on every page: wordmark + tagline, an **Explore** group (the six nav
+destinations, then — in English only — Articles, Scripture, Quotes, RSS), an
+**About** group (About / Contact / Legal), the mission block, a language strip
+and the copyright line. Hidden in focus mode.
+
+**Every surface that lists content types lists the same ones in the same
+order** — nav, footer Explore, the command palette's `COMMANDS`, the search
+hit kinds and `sitemap.ts`. The `page-design` skill carries the checklist; a
+content type that is footer-only (as Articles, Scripture and Quotes were) is
+not shipped.
+
+### Page anatomy
+
+Atoms are not enough: pages built from this guide's parts list still ended up
+with four header shapes, three top paddings and two `<title>` suffixes. The
+order of parts on a browse shelf and on a leaf page — and which existing page
+is the **model** to copy for each — lives in **`.claude/skills/page-design`**,
+together with the design-consistency backlog. Read it before adding a route.
 
 ### Reader surfaces (Ochorus-specific)
 - **Reader controls popover** (`ReaderControls`): size / spacing / width / typeface,
@@ -569,64 +587,56 @@ they need a pair of eyes, not a regex.
 
 ## 9. Current compliance (snapshot)
 
-The colour, type, and layout foundations are **shared with Take Root and in place**.
-Known gaps to close (tracked as follow-ups):
+The colour, type, and layout foundations are **shared with Take Root and in place**,
+and most of §8 is enforced in CI. The 2026-09-04 audit (code + live site, all 40
+public routes) found the *atoms* consistent and the *pages* not: the drift has
+moved up a level, from tokens to anatomy. The itemised backlog — 50 findings in
+seven groups, each with file evidence and a model page — is in
+**`.claude/skills/page-design/SKILL.md`**; tick items there as they ship.
 
-- ✅ **Colour tokens, typefaces, type scale, radii** — identical to Take Root.
+- ✅ **Colour tokens, typefaces, type scale, radii tokens** — identical to Take Root.
 - ✅ **Themes, focus rings, nav, footer, reader focus mode** — in place.
-- ✅ **Soft primary button** — `.btn-primary` now uses the soft treatment
-  (accent-soft fill, accent text, `--accent-soft-border`), matching §5 / Take Root.
-- ✅ **`prefers-reduced-motion`** — honoured by a global block that disables
-  transitions/animations under it.
-- ✅ **Icons** — a real inline-SVG line set (`Icon.svelte`), stroke 1.8,
-  `currentColor`. The old Unicode-glyph note is retired.
-- ✅ **One page width** — every browse surface uses `.page-col`, driven by the
-  `pageWidth` store (#718).
-- ✅ **One page header + one title size** — `<PageHeader>` across the browse
-  pages; `.text-display` is the home hero only (#720).
-- ✅ **One filter-control family** — `.filter-row` / `.filter-field` / `.seg` /
-  `.chip`, soft active states (#720).
-- ✅ **One card language** — `.shelf-card` (Topics, Plans, Sermons) and
-  `.book-card`, with levelled heights.
-- ✅ **Contrast** — sepia's `--muted` was under AA (4.42:1 on `--bg`, 3.98:1 on
-  `--surface-2`) and is now `#716048` (5.14 / 5.57 / 4.63). Lamplight and paper
-  were measured at the same time and already passed, so they are unchanged.
-  `--warning` and `--border-strong` were added (see §1) and the OS-theme `dark:`
-  utilities — which keyed on `prefers-color-scheme`, not `[data-theme]`, and put
-  the reader's "remove highlight" at 2.64:1 — now use `--danger`.
-- ✅ **Touch targets, `color-scheme`, focus rings, form-error announcement** —
-  see §6. The three `outline-none` declarations that stripped the global focus
-  ring are gone.
-- ✅ **Type scale** — 52 arbitrary `text-[…rem]` utilities and 36 literal
-  `font-size` declarations are back on the `--fs-*` steps, with `--fs-micro`
-  added for the dense-label cluster. Guarded by `typeScaleGuard.test.ts`.
-- ✅ **One eyebrow** — `.eyebrow` replaces 61 hand-written copies that carried
-  ~11 letter-spacings between them.
-- ✅ **One control family** — `.field` covers all 45 remaining inputs, selects
-  and textareas; `.settings-select` and eight other bespoke shells are gone.
-- ✅ **Button sizes** — `.btn-sm` / `.btn-icon` / `.stat-number` replace five
-  hand-rolled compact paddings, and the 123 `!important` utilities that existed
-  to work around a specificity problem buttons never had (`.btn` is layered) are
-  down to one genuinely load-bearing case, on the unlayered `.book-card`.
-- ✅ **Tokens for shadows, durations and the cover fallback**; radii down from
-  twelve values to four; breakpoints on Tailwind's scale.
+- ✅ **Soft primary button, `.btn-sm` / `.btn-icon`, `prefers-reduced-motion`,
+  inline-SVG icon set, `.eyebrow`, `.field`, duration/shadow tokens** — in place.
+- ✅ **One page width** — `.page-col` on every browse and leaf shell except the
+  `/authors` redirect anchor and the two auth pages (`max-w-[26rem]`).
+- ✅ **Guards** — `pageShell`, `typeScaleGuard`, `colorTokens`, `rtl`,
+  `messageCatalogues`, `readerDirection` run in CI.
+- ✅ **Contrast** — sepia `--muted`, `--warning`, `--border-strong` as in §1.
+- ⚠️ **`<PageHeader>` covers 6 of the 9 browse shelves.** Era, Quotes, Scripture
+  and Articles hand-roll their headers; Settings and Notebook too. (Backlog A1, A9.)
+- ⚠️ **Shell padding and `<title>` suffix are split** — `py-10` ×12 vs `py-6` ×5
+  vs `py-8`; ` — Ochorus` ×39 vs ` · Ochorus` ×7. (A2, A4.)
+- ⚠️ **Three hand-rolled breadcrumbs** (author, sermon, reader), one of which
+  contradicts its own JSON-LD. (A7.)
+- ⚠️ **Empty / error / loading states** — eight empty-state renderings; three
+  loaders crash to the error route and two claim an empty shelf on a failed
+  fetch; one button still loses its label to `…`. (C1–C4.)
+- ⚠️ **Section headings** — an `<h2>` renders at four sizes depending on the
+  page; `<SectionHeader>` is `.text-h1`. (D1, D2.)
+- ⚠️ **`SourceBadge` is missing from the chapter reader and the author bio**, so
+  an unreviewed translation is read without its warning. (D11.)
+- ⚠️ **System classes redefined locally** — Settings re-declares `.seg`;
+  `--radius-chip` is referenced with a fallback but defined nowhere; literal
+  durations and ten radii survive; four Tailwind default sizes slip the guard.
+  (E1–E3, E9.)
+- ⚠️ **Reachability** — Articles, Scripture and Quotes are absent from the
+  command palette and from search. (F1.)
+- ⚠️ **Guard gaps** — `pageShell` omits Home, Articles, the Quotes index and the
+  auth pages; nothing checks durations, radius fallbacks, scoped overrides of
+  system classes, or hard-coded English. (G2.)
 - ⚠️ **Admin still diverges** in places the tokens can't reach — `.text-display`
   page titles and its own table/tile layouts. Worth a pass of its own.
-- ⚠️ **Owed to Take Root.** §1 tokens are meant to stay identical across both
-  repos. The sepia `--muted` retune and the two new tokens have **not** been
-  mirrored into Take Root yet — do that before the sets drift.
+- ⚠️ **Owed to Take Root.** The sepia `--muted` retune and the two newer tokens
+  have **not** been mirrored into Take Root yet — do that before the sets drift.
 - ⚠️ **Class naming** differs slightly from Take Root (`.btn-primary`/`.btn-ghost`
   vs `.primary`/`.ghost`) — harmless, but worth converging if the systems merge.
-- ⚠️ **Detail pages still use `.text-display`** for their titles
-  (`topics/[slug]`, `biographies/era/[era]`), as does `/notebook` and the admin
-  surface. Deliberate for now — a different class of page — but they should get
-  a pass of their own.
 - ⚠️ **Cover art** — roughly half the library's covers are generated
   typographic placeholders rather than artwork. A content problem, not a CSS
   one, but it is the biggest thing holding the shelf back visually.
-- ⚠️ **Partial automated guard.** Type sizes and RTL are now enforced in CI (see
-  §8). Nothing yet stops a new page hand-rolling its own shell or header: a
-  check asserting browse pages use `.page-col` + `<PageHeader>` is the next
-  one to write, and `<PageHeader>` still covers only 5 of 26 pages.
 
-_Last reviewed: 2026-08-19. Update this section as gaps close._
+Retired since the last snapshot: `.text-display` no longer appears on any
+public detail page (the old note about `topics/[slug]`, the era page and
+`/notebook` was stale); a `.page-col` + `<PageHeader>` guard now exists.
+
+_Last reviewed: 2026-09-04. Update this section as gaps close._
