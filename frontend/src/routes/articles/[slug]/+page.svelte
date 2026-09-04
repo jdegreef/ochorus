@@ -102,8 +102,8 @@
 		     links, and server-wrapped scripture refs); never user input. The click
 		     delegate opens the scripture popover on a tapped reference (same as the
 		     reader; see onBodyClick). frontend/CLAUDE.md. -->
-		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		<!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		<div class="article-body" lang={article.language} onclick={onBodyClick}>{@html article.body_html}</div>
 
 		{#if article.related?.length}
