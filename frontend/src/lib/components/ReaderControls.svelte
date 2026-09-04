@@ -153,7 +153,7 @@
 						>{Math.round(readerPrefs.scale * 100)}%</span
 					>
 					<button
-						class="btn btn-sm btn-ghost text-base"
+						class="btn btn-sm btn-ghost text-body"
 						onclick={() => readerPrefs.bumpScale(0.1)}
 						aria-label={t('a11y.largerText')}>A+</button
 					>
