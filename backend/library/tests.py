@@ -1464,3 +1464,53 @@ class BookCardPayloadTests(TestCase):
             self.client.get("/api/library/authors/murray/?language=en")
 
 
+class TranslationBadgeSourceTypeTests(TestCase):
+    """The reader and the author page must badge an unreviewed AI translation —
+    CLAUDE.md: never present one as an original. Both payloads now carry the
+    review state SourceBadge reads: a chapter's `source_type` (from its
+    per-language book) and the author bio's `bio_source_type` (from the
+    AuthorTranslation for the requested language)."""
+
+    def setUp(self):
+        self.client = APIClient()
+        self.author = Author.objects.create(slug="w", name="Writer", bio="EN bio.")
+        for lang, st in (("en", "public_domain"), ("es", "ai_unreviewed")):
+            book = Book.objects.create(
+                author=self.author, slug="bk", language=lang, title="Book",
+                source_type=st,
+            )
+            Chapter.objects.create(book=book, order=1, title="One", body_html="<p>x</p>")
+
+    def test_chapter_source_type_is_this_editions(self):
+        en = self.client.get("/api/library/books/bk/chapters/1/?language=en")
+        self.assertEqual(en.data["source_type"], "public_domain")
+        es = self.client.get("/api/library/books/bk/chapters/1/?language=es")
+        self.assertEqual(es.data["source_type"], "ai_unreviewed")
+
+    def test_bio_source_type_tracks_the_translation_review_state(self):
+        url = "/api/library/authors/w/"
+        # The source-language original is not a translation — no badge.
+        self.assertEqual(
+            self.client.get(url + "?language=en").data["bio_source_type"],
+            "public_domain",
+        )
+        # A translated bio, not yet signed off by a native speaker.
+        tr = AuthorTranslation.objects.create(
+            author=self.author, language="es", bio_html="<p>ES</p>", reviewed=False
+        )
+        self.assertEqual(
+            self.client.get(url + "?language=es").data["bio_source_type"],
+            "ai_unreviewed",
+        )
+        # Approved.
+        tr.reviewed = True
+        tr.save()
+        self.assertEqual(
+            self.client.get(url + "?language=es").data["bio_source_type"],
+            "ai_reviewed",
+        )
+        # A language with no translated prose serves nothing to badge.
+        self.assertEqual(
+            self.client.get(url + "?language=lg").data["bio_source_type"],
+            "public_domain",
+        )

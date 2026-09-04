@@ -165,6 +165,11 @@ export interface Chapter {
 	book_slug: string;
 	author_name: string;
 	author_slug: string;
+	/** This edition's review state, so the reader can badge an unreviewed AI
+	 * translation (chapters are per-language rows under a per-language Book).
+	 * Optional: a chapter page prerendered before the API served the field
+	 * bakes it absent, and an absent value must read as "not translated". */
+	source_type?: SourceType;
 	/** This chapter belongs to the Modern English edition. */
 	is_modern_edition: boolean;
 	/** A Modern English edition of this work exists (offer the toggle). */
@@ -395,6 +400,10 @@ export interface AppearsInBook extends BookSummary {
 
 export interface AuthorDetail extends AuthorBio {
 	bio_html: string;
+	/** How the bio in the requested language got here — badge an unreviewed AI
+	 * translation. "public_domain" for the source-language original (no badge).
+	 * Optional for the same prerender-before-API reason as Chapter.source_type. */
+	bio_source_type?: SourceType;
 	books: BookSummary[];
 	sermons: SermonSummary[];
 	/** Topical shelves this author appears in (via their books/sermons). */

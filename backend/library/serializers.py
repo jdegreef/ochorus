@@ -514,6 +514,7 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
     topics = serializers.SerializerMethodField()
     bio = serializers.SerializerMethodField()
     bio_html = serializers.SerializerMethodField()
+    bio_source_type = serializers.SerializerMethodField()
     # Books this person is FOUND IN but did not write (BookPerson) — the reverse
     # of BookDetailSerializer.featured_people, so a bio can offer "appears in".
     appears_in = serializers.SerializerMethodField()
@@ -527,7 +528,7 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
     class Meta:
         model = Author
         fields = [
-            "slug", "name", "bio", "bio_html", "photo_url", "birth_year",
+            "slug", "name", "bio", "bio_html", "bio_source_type", "photo_url", "birth_year",
             "death_year", "book_count", "sermon_count", "has_long_bio",
             "books", "sermons", "topics", "appears_in",
             # Authoritative identifiers for the Person markup — see the field.
@@ -554,6 +555,25 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
 
     def get_bio_html(self, obj):
         return obj.bio_html_for(self._language())
+
+    def get_bio_source_type(self, obj):
+        """How the bio shown in the requested language got here, so the page can
+        badge an unreviewed AI translation (CLAUDE.md: never present one as an
+        original). Reuses Book.source_type's vocabulary so the frontend shares
+        SourceBadge unchanged: the source-language original is "public_domain"
+        (no badge); a translated bio is "ai_reviewed" once a native speaker signs
+        it off (AuthorTranslation.reviewed), "ai_unreviewed" until then. When the
+        requested language has no translated prose, get_bio_html serves nothing,
+        so there is nothing to badge either."""
+        language = self._language()
+        if not language or language == obj.original_language:
+            return "public_domain"
+        tr = next(
+            (t for t in obj.translations.all() if t.language == language), None
+        )
+        if not tr or not (tr.bio_html or tr.bio):
+            return "public_domain"
+        return "ai_reviewed" if tr.reviewed else "ai_unreviewed"
 
     def get_sermon_count(self, obj):
         return len(self._sermons(obj))
@@ -946,6 +966,11 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
     book_slug = serializers.CharField(source="book.slug", read_only=True)
     author_name = serializers.CharField(source="book.author.name", read_only=True)
     author_slug = serializers.CharField(source="book.author.slug", read_only=True)
+    # The book's review state, so the reader can badge an unreviewed AI
+    # translation — a whole chapter of one would otherwise read as an original
+    # (CLAUDE.md). Chapters are per-language rows under a per-language Book, so
+    # book.source_type IS this edition's.
+    source_type = serializers.CharField(source="book.source_type", read_only=True)
     # Lets the reader show the Modern English ⇄ Original toggle in place.
     is_modern_edition = serializers.SerializerMethodField()
     has_modern_edition = serializers.SerializerMethodField()
@@ -1012,6 +1037,7 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
             "order", "title", "body_html", "word_count",
             "book_title", "book_slug", "author_name", "author_slug",
             "is_modern_edition", "has_modern_edition", "available_languages",
+            "source_type",
             "prev", "next",
             # The scripture index row at the foot of the chapter — see above.
             "scripture_refs",
