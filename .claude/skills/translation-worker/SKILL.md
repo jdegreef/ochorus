@@ -1973,4 +1973,20 @@ archaic spelling and period punctuation are the text, not defects in it.
   `body_html` ONLY, and bios are migration-data files (not fixtures) so it never
   sees them — a bio's « » + nested `“ ”` is fine. Sermons also carry an editorial
   `summary` the translator agents don't produce; translate it too and match the
-  body's mark style.
+  body's mark style. Two build mechanics that cost a round-trip each (2026-09-04):
+  `Sermon` has **no `cover_url`/`pdf_url`** (Book fields — passing them to the
+  constructor throws), and the DB-clone path needs `created_at`/`updated_at` as
+  real `datetime` objects, not `"…Z"` strings (the serializer calls `.isoformat()`).
+- **A bio's `<slug>.short.txt` can already exist on main WITHOUT its `.html` —
+  the bio double-ship check must look at BOTH files, and at `reviewed`** (the es
+  batch, 2026-09-04). Three of the six authors (george-whitefield, hudson-taylor,
+  amanda-berry-smith) had a shipped es SHORT bio (an earlier auto-summary) but no
+  long `bio_html`, so `html✗ short✓` — the `author_bios_<lang>/<slug>.html`
+  half of the double-ship guard reads "not shipped" correctly, but a blind
+  `build_bios` overwrites the existing short.txt. It is safe ONLY because all six
+  es `AuthorTranslation` rows were `reviewed=False` (seed never overwrites a
+  `reviewed=True` row's wording, but the FILE would still change in the diff).
+  Before overwriting, `git cat-file -e origin/main:<short.txt>` and check the
+  DB's `reviewed` flag; keep your fresh short bio (coherent with the long one)
+  when unreviewed, and say in the PR which short bios you refined. whitefield's
+  matched byte-for-byte, so a good translation often reproduces the auto-summary.
