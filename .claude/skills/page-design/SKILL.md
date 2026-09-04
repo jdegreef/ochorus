@@ -184,6 +184,20 @@ backlog G): Tailwind's default `text-lg`/`text-6xl` steps, literal durations,
 undefined `var(--radius-*, …)` fallbacks, scoped redefinition of `.seg`/`.chip`/
 `.field`/`.btn`, and arbitrary `max-w-[…]` on a shell.
 
+## Re-auditing (how the backlog was produced)
+
+Three read-only agents in parallel, one per page kind — browse shelves, leaf
+pages, chrome + utility pages + `app.css` + the guard tests — each asked for a
+**comparison matrix** (shell, header, filters, counts, states, headings, cards,
+related, badge, SEO) and then only the cells that differ *without a stated
+reason in the file*. Grep-verify the headline counts afterwards (`class="page-col…"`,
+`— Ochorus` vs `· Ochorus`, `<PageHeader`, `radius-chip`, `text-(6xl|lg|base)`).
+Pair it with a live-site pass at 1280px: one screenshot per shelf, one leaf of
+each kind, the reader, the 404 and About. The in-app Browser pane cannot scroll
+or hover while hidden — scroll with `window.scrollTo` via `javascript_tool`,
+and expect a blank screenshot right after a JS scroll; read the footer with
+`read_page` instead.
+
 ## Verify before merge
 
 Open the new page **and its two neighbours** (the shelf it hangs off, and a
