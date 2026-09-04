@@ -297,8 +297,9 @@ relevant group.
   (legal, notebook), the nav word (about, contact), or none. → `<PageHeader>`;
   section name or no eyebrow.
 - [ ] **A10** Leaf prose measure is hand-set: `max-w-[40rem]` ×3 on Author,
-  `.article{max-width:40rem}`, `.article-list{max-width:44rem}`, `max-w-xl` on
-  Plan and Book, `max-w-2xl` on Quotes. `.reading-page` on About/Legal is
+  `max-w-xl` on Plan and Book, `max-w-2xl` on Quotes. _(Articles done: the
+  list fills `.page-col` like Sermons; the article prose sits at
+  `--reading-measure` with `<ReaderControls>`, like the sermon/bio.)_ `.reading-page` on About/Legal is
   defined nowhere. → one `.prose-measure` class (or `--reading-measure`).
 - [ ] **A11** Login/Reset use `mx-auto max-w-[26rem]`, invisible to the shell
   guard (regex only matches `max-w-2xl…7xl`). → `.page-col--narrow`; widen the

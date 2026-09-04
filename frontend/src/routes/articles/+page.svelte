@@ -139,9 +139,11 @@
 </div>
 
 <style>
+	/* No inner max-width: the cards fill .page-col, so the list sits at the
+	   same width as the Sermons shelf beside it and follows the quick-settings
+	   Page width stepper. A 44rem cap here used to pin it regardless. */
 	.article-list {
 		display: grid;
 		gap: 0.75rem;
-		max-width: 44rem;
 	}
 </style>

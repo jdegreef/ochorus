@@ -1,5 +1,7 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { Article, ArticleRelated } from '$lib/library-public';
+	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { SITE_URL } from '$lib/config';
 	import { localizeHref } from '$lib/href';
 	import { jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
@@ -8,6 +10,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
+	import ReaderControls from '$lib/components/ReaderControls.svelte';
 
 	let { data } = $props();
 	const article = $derived(data.article as Article);
@@ -17,6 +20,11 @@
 	// page just renders the jump list, never parsing or mutating the body. Shown
 	// only when there are enough sections to be worth it.
 	const showToc = $derived((article.toc?.length ?? 0) >= 3);
+
+	// The prose column answers to the reader's text settings (measure, size,
+	// face, leading), exactly as the sermon page and the author biography do —
+	// not to a hand-set 40rem, which no control could move.
+	onMount(() => readerPrefs.init());
 
 	// Tap a server-wrapped Bible reference in the body → open the scripture
 	// popover, the same treatment the chapter/sermon readers give. The body's
@@ -95,13 +103,18 @@
 <div class="page-col px-5 py-10">
 	<Breadcrumb items={crumbs} />
 
-	<article class="article">
+	<!-- Measure/size/face/leading come from readerPrefs (the A a popover), the
+	     same way the sermon reader and the biography column are governed. -->
+	<article class="article" style="{readerPrefs.style}; max-width: var(--reading-measure)">
 		<header class="mb-5">
 			<!-- Kind eyebrow (page-design A8): KIND · TIME. The reading time is
 			     localized via readingTime(); the kind word is an English literal,
 			     as are this page's other chrome strings (see F3). -->
 			<p class="eyebrow mb-1 text-muted">Article · {readingTime(article.word_count)}</p>
-			<h1 class="text-h1">{article.h1}</h1>
+			<div class="flex items-start justify-between gap-4">
+				<h1 class="text-h1">{article.h1}</h1>
+				<div class="mt-1 shrink-0"><ReaderControls /></div>
+			</div>
 			{#if article.description}
 				<p class="standfirst">{article.description}</p>
 			{/if}
@@ -176,9 +189,6 @@
 <ScripturePopover />
 
 <style>
-	.article {
-		max-width: 40rem;
-	}
 	.standfirst {
 		margin-top: 0.75rem;
 		font-family: var(--font-display);
@@ -189,9 +199,11 @@
 	/* Prose. The body is authored HTML (p / h2 / blockquote / cite / a), so the
 	   article styles it here rather than borrowing the reader's chrome. */
 	.article-body {
-		font-family: var(--font-display);
-		font-size: var(--fs-body);
-		line-height: 1.7;
+		font-family: var(--reading-font, var(--font-display));
+		font-size: calc(var(--fs-body) * var(--reading-scale, 1));
+		line-height: var(--reading-leading, 1.7);
+		text-align: var(--reading-align, start);
+		hyphens: var(--reading-hyphens, manual);
 		color: var(--color-text);
 	}
 	.article-body :global(p) {

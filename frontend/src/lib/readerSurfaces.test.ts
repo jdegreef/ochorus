@@ -29,7 +29,8 @@ const read = (f: string) => readFileSync(join(SRC, f), 'utf8');
 const SURFACES: { label: string; file: string; paged: boolean }[] = [
 	{ label: 'book chapter', file: 'routes/books/[slug]/[order]/+page.svelte', paged: true },
 	{ label: 'sermon', file: 'routes/sermons/[slug]/+page.svelte', paged: false },
-	{ label: 'author biography', file: 'routes/authors/[slug]/+page.svelte', paged: false }
+	{ label: 'author biography', file: 'routes/authors/[slug]/+page.svelte', paged: false },
+	{ label: 'article', file: 'routes/articles/[slug]/+page.svelte', paged: false }
 ];
 
 describe('reading surfaces only offer the layout switch where it works', () => {
