@@ -34,6 +34,10 @@
 			"content": "d9b38520954af1bcff7e077ac903063ff138574454b2863d7457676ec88c3d7c",
 			"art": "26eeae38d3bda240011785cb9319273055a615ae997878ae25cbe2e72eda04f2"
 		},
+		"christ-the-believers-wisdom": {
+			"content": "12874ad5ea346a0df961fda731de8a1a2a5006444c534752af1a8fc41a70925b",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
 		"christs-boundless-compassion": {
 			"content": "004bf5d6b3db17b89625d5584e43b3e45cbac1cd622f5fdc4e1ecc64f72ae368",
 			"art": "00b30d6594ad8c40a94df2b8147d2f3c6a511d1b9be6a843e0fece4e031fd941"
@@ -81,6 +85,14 @@
 		"himself": {
 			"content": "d4230634a8faf2f7b737e23d7b64f41fe7d9c54f91e4cc3479d8826c3698206e",
 			"art": "dcd6e34961da7638823b089c1d568101b05f96b2492e11c5e54635d650663596"
+		},
+		"intercession-every-christians-duty": {
+			"content": "f511c07880dd784d09b3e1fd2dc8d4897d41a97199aee7b01c38e0787bdbd6ea",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
+		"marks-of-a-true-conversion": {
+			"content": "6d4ca1e84f469b14790f5167a4e369762dceab243b8674ade39d53e2c0d88c33",
+			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
 		},
 		"order-and-argument-in-prayer": {
 			"content": "62710b90e588c80fa066287579e8d51e2c25b0c8be02ea98793a8bc31ae54287",
@@ -146,6 +158,14 @@
 			"content": "d665ba1a39187725dc30fbf887d76afbc50eb649e6f56f4b1408383669a7b9f0",
 			"art": "ba9904d62fa0dcf2760da255c1225089715c4948b42c1371b3d50119a6633a98"
 		},
+		"the-lord-our-righteousness": {
+			"content": "a8b19a7caf7313f6a59a477301944906f37f36c86972c0a177cb7128b6c5d74f",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
+		"the-method-of-grace": {
+			"content": "f326971f04c2addff9e56f7c78299d0437ed71ddd673c046082c6e08df61b3ef",
+			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
+		},
 		"the-new-birth": {
 			"content": "194c411eb1a6cf68362c68f2522774e41ea76916346102de2c0ad7b80ccc8291",
 			"art": "7f983adb99ac9b212d6f32f22cafca5d92b9ef318211740be4c932170e762151"
@@ -185,6 +205,10 @@
 		"unfailing-springs": {
 			"content": "3e26bd5e2962f43039438c73e14041331964ab35365c62a8614512c59f92b377",
 			"art": "a119b69171daeb01d17d2651e5f18619184df5898f80387ffc4295c5b18e2537"
+		},
+		"walking-with-god": {
+			"content": "9ac560f6a17d950de4f15943d9b20e622d87dc589f658baca3e528a5acec4772",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		},
 		"witnessing-for-christ": {
 			"content": "ba0ec10ff35f8e703485822b786b2054e43f2c630b6034d4aa1cc92b86942a66",
