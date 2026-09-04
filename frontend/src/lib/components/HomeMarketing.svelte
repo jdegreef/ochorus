@@ -167,7 +167,7 @@
      journey the dashboard delivers once they sign in. Static, so it shows on
      every logged-out visit. -->
 <section class="page-col px-5 pt-14">
-	<h2 class="text-h1 mb-8 text-center">{t('home.howTitle')}</h2>
+	<h2 class="text-h2 mb-8 text-center">{t('home.howTitle')}</h2>
 	<div class="grid gap-8 sm:grid-cols-3">
 		{#each steps as step (step.title)}
 			<div class="text-center">
@@ -190,7 +190,7 @@
 {#if auth.enabled}
 	<section class="mt-14 border-y border-border bg-surface-2">
 		<div class="mx-auto max-w-3xl px-5 py-16 text-center">
-			<h2 class="text-h1 mb-3">{t('home.signupTitle')}</h2>
+			<h2 class="text-h2 mb-3">{t('home.signupTitle')}</h2>
 			<p class="mx-auto mb-6 max-w-xl text-body text-muted">{t('login.syncNote')}</p>
 			<a href="{localizeHref('/login')}?mode=signup" class="btn btn-primary">
 				{t('login.createAccountLink')}
@@ -209,7 +209,7 @@
 <!-- Mission teaser -->
 <section class="mt-14 border-y border-border bg-surface-2">
 	<div class="mx-auto max-w-3xl px-5 py-16 text-center">
-		<h2 class="text-h1 mb-3">{t('home.missionTitle')}</h2>
+		<h2 class="text-h2 mb-3">{t('home.missionTitle')}</h2>
 		<p class="mx-auto max-w-xl text-body text-muted">
 			{t('home.missionText')}
 		</p>

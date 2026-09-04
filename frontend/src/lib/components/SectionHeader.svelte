@@ -28,7 +28,7 @@
 </script>
 
 <div class="mb-6 flex flex-wrap items-end justify-between gap-x-4 gap-y-1">
-	<h2 class="text-h1">{title}</h2>
+	<h2 class="text-h2">{title}</h2>
 	{#if href && linkText}
 		<a {href} class="whitespace-nowrap text-small font-semibold text-accent">{linkText} →</a>
 	{/if}
