@@ -340,13 +340,15 @@
 	     Positioned by this bar rather than by the component's own default: it
 	     lives INSIDE the pinned controls, and follows them open and shut on a
 	     phone. -->
-	<FilterSummary
-		shown={sorted.length}
-		total={authors.length}
-		template={t('bios.showing')}
-		onClear={isFiltered ? clearFilters : undefined}
-		class="mt-1.5 {filtersOpen ? 'flex' : 'hidden'} sm:flex"
-	/>
+	{#if isFiltered}
+		<FilterSummary
+			shown={sorted.length}
+			total={authors.length}
+			template={t('bios.showing')}
+			onClear={clearFilters}
+			class="mt-1.5 {filtersOpen ? 'flex' : 'hidden'} sm:flex"
+		/>
+	{/if}
 
 	<!-- A–Z rail: jump to the first writer under each initial (name sort only). -->
 	{#if filters.values.sort === 'name' && sorted.length > 1}

@@ -200,18 +200,16 @@
 			>
 		</div>
 
-		{#if filtering}
-			<button class="btn btn-ghost py-2" onclick={clearFilters}>{t('sermons.clear')}</button>
-		{/if}
 	</div>
 
-	<!-- No onClear here: this shelf's controls bar already carries a Clear,
-	     right above. Two of them side by side is one too many. -->
+	<!-- One clear affordance, on the FilterSummary — same as Books and
+	     Biographies. (The bespoke in-row "Clear" and sermons.clear are retired.) -->
 	{#if filtering}
 		<FilterSummary
 			shown={filtered.length}
 			total={sermons.length}
 			template={t('sermons.showing')}
+			onClear={clearFilters}
 			class="mb-6"
 		/>
 	{/if}
