@@ -252,12 +252,18 @@ TOPIC_ARTICLES = {
         "how-to-be-born-again",
         "how-to-have-assurance-of-salvation",
         "what-is-the-gospel",
+        "what-is-justification-by-faith",
     ],
     "the-way-of-holiness": [
         "what-is-sanctification",
         "how-to-forgive-someone-who-hurt-you",
         "how-to-overcome-sin-and-temptation",
         "the-priesthood-of-all-believers",
+        "why-humility-matters",
+    ],
+    "the-preached-word": [
+        "how-to-know-if-god-is-calling-you-to-ministry",
+        "what-makes-a-godly-leader",
     ],
 }
 
