@@ -222,12 +222,18 @@ TOPIC_ARTICLES = {
         "how-to-pray-so-god-answers",
         "what-is-intercessory-prayer",
     ],
-    "holy-spirit": ["what-is-the-baptism-of-the-holy-spirit"],
+    "holy-spirit": [
+        "what-is-the-baptism-of-the-holy-spirit",
+        "who-is-the-holy-spirit",
+    ],
     "deeper-life": [
         "what-does-it-mean-to-abide-in-christ",
         "the-cost-of-following-jesus",
     ],
-    "grace-and-comfort": ["how-to-trust-god-in-suffering"],
+    "grace-and-comfort": [
+        "how-to-trust-god-in-suffering",
+        "how-to-overcome-fear-and-anxiety-with-faith",
+    ],
     "revival-and-missions": ["what-is-revival-and-how-does-it-begin"],
     "faith-and-guidance": [
         "how-to-find-gods-will-for-your-life",
@@ -236,8 +242,12 @@ TOPIC_ARTICLES = {
     "the-gospel-call": [
         "how-to-be-born-again",
         "how-to-have-assurance-of-salvation",
+        "what-is-the-gospel",
     ],
-    "the-way-of-holiness": ["what-is-sanctification"],
+    "the-way-of-holiness": [
+        "what-is-sanctification",
+        "how-to-forgive-someone-who-hurt-you",
+    ],
 }
 
 
