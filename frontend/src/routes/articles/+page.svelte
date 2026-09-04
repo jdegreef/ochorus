@@ -8,6 +8,8 @@
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import { i18n } from '$lib/i18n.svelte';
+	import { page } from '$app/stores';
+	import { urlFilters } from '$lib/urlFilters.svelte';
 
 	// English literals, as on /quotes and /scripture: this index is not localized
 	// because what it lists is not (articles are English-only for now).
@@ -15,6 +17,37 @@
 	const articles = $derived<ArticleSummary[]>(data.articles);
 	const loadError = $derived<boolean>(data.loadError);
 	const t = i18n.t;
+
+	// Topic-filter chips, kept in the URL like the books shelf (shareable, and
+	// honouring Back/Forward) — the same `urlFilters` engine, not a private fork.
+	// A prerendered page must not read the query string during setup; urlFilters
+	// handles that, so the bare `/articles/` still serves every card.
+	const filters = urlFilters({
+		defaults: { topic: '' },
+		url: () => $page.url
+	});
+
+	// Distinct topics present on the shelf, alphabetical, each with a count for
+	// its chip badge. `?? []` guards a lagging API that predates the `topics`
+	// field (version skew).
+	type TopicTab = { slug: string; title: string; count: number };
+	const topicTabs = $derived.by<TopicTab[]>(() => {
+		const bySlug = new Map<string, TopicTab>();
+		for (const a of articles) {
+			for (const tc of a.topics ?? []) {
+				const seen = bySlug.get(tc.slug);
+				if (seen) seen.count += 1;
+				else bySlug.set(tc.slug, { slug: tc.slug, title: tc.title, count: 1 });
+			}
+		}
+		return [...bySlug.values()].sort((x, y) => x.title.localeCompare(y.title));
+	});
+
+	const shown = $derived(
+		filters.values.topic
+			? articles.filter((a) => (a.topics ?? []).some((tc) => tc.slug === filters.values.topic))
+			: articles
+	);
 
 	const path = '/articles/';
 	const canonical = `${SITE_URL}${path}`;
@@ -62,11 +95,43 @@
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
 	{:else if articles.length}
-		<div class="article-list">
-			{#each articles as a (a.slug)}
-				<ArticleCard article={a} />
-			{/each}
-		</div>
+		{#if topicTabs.length > 1}
+			<div class="filter-row mb-6" role="group" aria-label="Filter articles by topic">
+				<button
+					type="button"
+					class="chip"
+					class:active={filters.values.topic === ''}
+					aria-pressed={filters.values.topic === ''}
+					onclick={() => (filters.values.topic = '')}
+				>
+					All <span class="tabular-nums opacity-70">{articles.length}</span>
+				</button>
+				{#each topicTabs as tab (tab.slug)}
+					<button
+						type="button"
+						class="chip"
+						class:active={filters.values.topic === tab.slug}
+						aria-pressed={filters.values.topic === tab.slug}
+						onclick={() =>
+							(filters.values.topic = filters.values.topic === tab.slug ? '' : tab.slug)}
+					>
+						{tab.title} <span class="tabular-nums opacity-70">{tab.count}</span>
+					</button>
+				{/each}
+			</div>
+		{/if}
+
+		{#if shown.length}
+			<div class="article-list">
+				{#each shown as a (a.slug)}
+					<ArticleCard article={a} />
+				{/each}
+			</div>
+		{:else}
+			<!-- Reachable only via a stale/hand-edited ?topic= (a live chip always
+			     has ≥1 article) — show a way back rather than a blank page. -->
+			<EmptyState message="No articles under that topic." />
+		{/if}
 	{:else}
 		<EmptyState message="No articles yet — check back soon." />
 	{/if}

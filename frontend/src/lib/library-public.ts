@@ -553,6 +553,9 @@ export interface ArticleSummary {
 	created_at: string;
 	/** Last modification (ISO) — the sitemap's `<lastmod>`; see BookSummary. */
 	updated_at?: string;
+	/** Topics this article belongs to (localized chips) — the index builds its
+	 *  filter tabs from these. Empty for an untagged article. */
+	topics: TopicChip[];
 }
 
 /** A resolved "Read next" link the article funnels the reader to. */
@@ -570,9 +573,8 @@ export interface Article extends ArticleSummary {
 	 *  titles + URLs server-side (unresolvable references are dropped). */
 	related: ArticleRelated[];
 	source_url: string;
-	/** Topics this article belongs to (localized chips) — links back to the
-	 *  topic pages that list it (the other half of the bidirectional funnel). */
-	topics: TopicChip[];
+	// `topics` (the localized chips linking back to the topic pages — the other
+	// half of the bidirectional funnel) is inherited from ArticleSummary.
 	/** Content locales this article is published in — the only locales an
 	 *  hreflang alternate should point at (per-language rows, no fallback). */
 	available_languages: string[];
