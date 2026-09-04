@@ -13,6 +13,8 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
+	import { urlFilters } from '$lib/urlFilters.svelte';
+	import { page } from '$app/stores';
 
 	let { data } = $props();
 	const plans = $derived<PlanSummary[]>(data.plans);
@@ -34,14 +36,22 @@
 	const BUCKETS: LengthBucket[] = ['all', 'short', 'medium', 'long'];
 	const bucketOf = (days: number): Exclude<LengthBucket, 'all'> =>
 		days <= 14 ? 'short' : days <= 30 ? 'medium' : 'long';
-	let lengthFilter = $state<LengthBucket>('all');
+	// Length lives in the URL (shareable/reloadable/Back-able) via $lib/urlFilters,
+	// like the Books and Biographies shelves.
+	const filters = urlFilters({
+		defaults: { length: 'all' as LengthBucket },
+		allowed: { length: BUCKETS },
+		url: () => $page.url
+	});
 	const counts = $derived.by(() => {
 		const c: Record<string, number> = { all: plans.length, short: 0, medium: 0, long: 0 };
 		for (const p of plans) c[bucketOf(p.day_count)]++;
 		return c;
 	});
 	const shownPlans = $derived(
-		lengthFilter === 'all' ? plans : plans.filter((p) => bucketOf(p.day_count) === lengthFilter)
+		filters.values.length === 'all'
+			? plans
+			: plans.filter((p) => bucketOf(p.day_count) === filters.values.length)
 	);
 	// Only offer the filter once there are enough plans (and enough spread) for it
 	// to earn its place; a two-plan list doesn't need filtering.
@@ -150,9 +160,9 @@
 					<button
 						type="button"
 						class="chip"
-						class:active={lengthFilter === b}
-						onclick={() => (lengthFilter = b)}
-						aria-pressed={lengthFilter === b}
+						class:active={filters.values.length === b}
+						onclick={() => (filters.values.length = b)}
+						aria-pressed={filters.values.length === b}
 					>
 						{t(`plans.length_${b}`)}
 						<span class="tabular-nums opacity-70">{counts[b]}</span>

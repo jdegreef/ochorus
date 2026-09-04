@@ -13,6 +13,8 @@
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
+	import { urlFilters } from '$lib/urlFilters.svelte';
+	import { page } from '$app/stores';
 	import { portraitPosition } from '$lib/portraits';
 
 	const t = i18n.t;
@@ -30,8 +32,13 @@
 	);
 
 	// --- Filters ----------------------------------------------------------------
-	let queryText = $state('');
-	let bibleBook = $state('');
+	// The shelf's filters live in the URL (shareable, reloadable, Back-able) via
+	// $lib/urlFilters — the same helper Books and Biographies use. Grouping and
+	// sort stay in localStorage below: they describe the reader, not the shelf.
+	const filters = urlFilters({
+		defaults: { q: '', book: '' },
+		url: () => $page.url
+	});
 
 	/** Canonical position of a sermon's book; undated books sink to the end. */
 	const bookOrder = (s: SermonSummary) => s.scripture_book_order ?? 999;
@@ -49,9 +56,9 @@
 	});
 
 	const filtered = $derived.by(() => {
-		const q = queryText.trim().toLowerCase();
+		const q = filters.values.q.trim().toLowerCase();
 		return sermons.filter((s) => {
-			if (bibleBook && s.scripture_book !== bibleBook) return false;
+			if (filters.values.book && s.scripture_book !== filters.values.book) return false;
 			if (!q) return true;
 			return (
 				s.title.toLowerCase().includes(q) ||
@@ -61,12 +68,11 @@
 		});
 	});
 
-	const filtering = $derived(queryText.trim() !== '' || bibleBook !== '');
+	const filtering = $derived(filters.active);
 	// Clears what narrows the shelf, not how it is arranged — the grouping and
-	// sort are the reader's own preference and survive.
+	// sort are the reader's own preference (localStorage) and survive.
 	function clearFilters() {
-		queryText = '';
-		bibleBook = '';
+		filters.reset();
 	}
 
 	// --- Arrangement (persisted per device, mirroring the Books shelf) ----------
@@ -160,14 +166,14 @@
 	<!-- Filter bar: free text + which book of the Bible the sermon expounds. -->
 	<div class="filter-row mb-8">
 		<input
-			bind:value={queryText}
+			bind:value={filters.values.q}
 			type="search"
 			autocomplete="off"
 			placeholder={t('sermons.filterPlaceholder')}
 			aria-label={t('sermons.filterPlaceholder')}
 			class="filter-field grow"
 		/>
-		<select bind:value={bibleBook} aria-label={t('sermons.allBooks')} class="filter-field">
+		<select bind:value={filters.values.book} aria-label={t('sermons.allBooks')} class="filter-field">
 			<option value="">{t('sermons.allBooks')}</option>
 			{#each bookFacets as b (b.name)}
 				<option value={b.name}>{b.name} ({b.count})</option>
