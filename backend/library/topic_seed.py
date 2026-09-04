@@ -221,16 +221,20 @@ TOPIC_ARTICLES = {
     "prayer": [
         "how-to-pray-so-god-answers",
         "what-is-intercessory-prayer",
+        "the-power-of-persistent-prayer",
+        "how-to-pray-the-psalms",
     ],
     "holy-spirit": [
         "what-is-the-baptism-of-the-holy-spirit",
         "who-is-the-holy-spirit",
         "what-are-the-spiritual-gifts",
+        "what-is-the-fruit-of-the-spirit",
     ],
     "deeper-life": [
         "what-does-it-mean-to-abide-in-christ",
         "the-cost-of-following-jesus",
         "what-is-surrender-to-god",
+        "what-is-biblical-fasting",
     ],
     "grace-and-comfort": [
         "how-to-trust-god-in-suffering",
