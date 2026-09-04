@@ -4,7 +4,6 @@
 	import { jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
-	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 
@@ -50,8 +49,10 @@
 <Seo {title} {description} {canonical} {hreflang} structuredData={[crumbsLd]} />
 
 <div class="page-col px-5 py-10">
-	<Breadcrumb items={crumbs} />
-
+	<!-- No visible breadcrumb: a top-level hub's only trail is Home > <this>
+	     — Home is already the logo, <this> restates the H1 below, so it
+	     carries nothing. The BreadcrumbList JSON-LD stays in the head; the
+	     page's position is true even when we don't draw it. -->
 	<PageHeader
 		title="Scripture in the Christian classics"
 		tagline="Every Bible reference in the library is indexed. These are the chapters the writers return to — open one to see who preached it, and what they said."

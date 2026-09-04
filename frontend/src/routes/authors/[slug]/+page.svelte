@@ -8,6 +8,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingTime, readingMinutes } from '$lib/reading';
 	import { localizeHref } from '$lib/href';
+	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import { scopedSearchHref } from '$lib/searchState';
 	import { initials, portraitPosition } from '$lib/portraits';
 	import { listen } from '$lib/listen.svelte';
@@ -197,14 +198,15 @@
 			sameAs: author.same_as?.length ? author.same_as : undefined
 		})
 	);
+	// One trail feeds both the visible <Breadcrumb> and the JSON-LD, so the
+	// on-page path and the structured BreadcrumbList can't drift apart.
+	const crumbs = $derived([
+		{ name: t('common.home'), href: '/' },
+		{ name: t('bios.eyebrow'), href: '/biographies' },
+		{ name: author.name, href: `/authors/${author.slug}` }
+	]);
 	const crumbsLd = $derived(
-		jsonLd(
-			breadcrumb([
-				{ name: t('common.home'), url: '/' },
-				{ name: t('bios.eyebrow'), url: '/biographies' },
-				{ name: author.name, url: `/authors/${author.slug}` }
-			])
-		)
+		jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))))
 	);
 	// Prayer-callout labels are rendered by CSS ::before content; pass the
 	// localized strings in as custom properties so they follow the locale.
@@ -256,14 +258,7 @@
 	     contemporaries — and it is exactly what someone reading eleven minutes
 	     of prose wants out of the way. -->
 	{#if !readerUi.focus}
-	<!-- Breadcrumb -->
-	<nav class="mb-6 flex flex-wrap items-center gap-1.5 text-small text-muted" aria-label={t('a11y.breadcrumb')}>
-		<a href={localizeHref('/')} class="hover:text-text">{t('common.home')}</a>
-		<span>›</span>
-		<a href={localizeHref('/biographies')} class="hover:text-text">{t('bios.eyebrow')}</a>
-		<span>›</span>
-		<span class="text-text">{author.name}</span>
-	</nav>
+	<Breadcrumb items={crumbs} />
 
 	<!-- Wraps on a phone. The action row was already overflowing the viewport by
 	     ~99px with three buttons (it is `shrink-0` beside a name that can be two

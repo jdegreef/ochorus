@@ -5,7 +5,6 @@
 	import { jsonLd, breadcrumb, hreflangFor } from '$lib/seo';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import Seo from '$lib/components/Seo.svelte';
-	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 
@@ -30,7 +29,7 @@
 		{ name: 'Home', href: '/' },
 		{ name: 'Articles', href: path }
 	];
-	const crumbsLd = $derived(jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href })))));
+	const crumbsLd = jsonLd(breadcrumb(crumbs.map((c) => ({ name: c.name, url: c.href }))));
 	// A CollectionPage listing each article, so the set reads as one entity to a
 	// crawler rather than a handful of unrelated URLs.
 	const listLd = $derived(
@@ -52,8 +51,10 @@
 <Seo {title} {description} {canonical} {hreflang} structuredData={[crumbsLd, listLd]} />
 
 <div class="page-col px-5 py-10">
-	<Breadcrumb items={crumbs} />
-
+	<!-- No visible breadcrumb: a top-level hub's only trail is Home > <this>
+	     — Home is already the logo, <this> restates the H1 below, so it
+	     carries nothing. The BreadcrumbList JSON-LD stays in the head; the
+	     page's position is true even when we don't draw it. -->
 	<PageHeader
 		title="Articles"
 		tagline="Short readings on prayer, faith and the life with God — each one written to send you on to a classic worth reading in full."
