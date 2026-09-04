@@ -12,35 +12,11 @@
 	let { data } = $props();
 	const article = $derived(data.article as Article);
 
-	// A table of contents built from the body's <h2> sections. The stored body
-	// has bare <h2> headings (the rich sanitize profile carries no id), so we
-	// slug each heading, inject that id back into the HTML that gets rendered,
-	// and list the same ids as jump links. Derived from the body string, so it
-	// is computed once at prerender — the anchors work in the static page with
-	// no client JS. Shown only when there are enough sections to be worth it.
-	function slugifyHeading(text: string): string {
-		return (
-			text
-				.toLowerCase()
-				.replace(/[^\p{L}\p{N}]+/gu, '-')
-				.replace(/^-+|-+$/g, '') || 'section'
-		);
-	}
-	const withToc = $derived.by(() => {
-		const toc: { id: string; text: string }[] = [];
-		const seen = new Map<string, number>();
-		const html = (article.body_html || '').replace(/<h2>([\s\S]*?)<\/h2>/g, (_m, inner) => {
-			const text = inner.replace(/<[^>]+>/g, '').trim();
-			let id = slugifyHeading(text);
-			const n = seen.get(id) ?? 0; // de-dupe repeated headings
-			seen.set(id, n + 1);
-			if (n) id = `${id}-${n + 1}`;
-			toc.push({ id, text });
-			return `<h2 id="${id}">${inner}</h2>`;
-		});
-		return { html, toc };
-	});
-	const showToc = $derived(withToc.toc.length >= 3);
+	// The table of contents is resolved server-side (article.toc), and the body
+	// already carries the matching <h2 id> anchors from that same pass — so the
+	// page just renders the jump list, never parsing or mutating the body. Shown
+	// only when there are enough sections to be worth it.
+	const showToc = $derived((article.toc?.length ?? 0) >= 3);
 
 	// Tap a server-wrapped Bible reference in the body → open the scripture
 	// popover, the same treatment the chapter/sermon readers give. The body's
@@ -137,7 +113,7 @@
 			<nav class="toc" aria-labelledby="toc-heading">
 				<p id="toc-heading" class="eyebrow text-muted">On this page</p>
 				<ul>
-					{#each withToc.toc as h (h.id)}
+					{#each article.toc as h (h.id)}
 						<li><a href={`#${h.id}`}>{h.text}</a></li>
 					{/each}
 				</ul>
@@ -145,13 +121,13 @@
 		{/if}
 
 		<!-- Server-sanitized HTML (backend rich/bio profile — pull-quotes, internal
-		     links, and server-wrapped scripture refs); never user input. Headings
-		     carry the ids the TOC links to, injected from the same derived pass.
-		     The click delegate opens the scripture popover on a tapped reference
-		     (same as the reader; see onBodyClick). frontend/CLAUDE.md. -->
+		     links, server-wrapped scripture refs, and the <h2 id> anchors the TOC
+		     links to); never user input. The click delegate opens the scripture
+		     popover on a tapped reference (same as the reader; see onBodyClick).
+		     frontend/CLAUDE.md. -->
 		<!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-		<div class="article-body" lang={article.language} onclick={onBodyClick}>{@html withToc.html}</div>
+		<div class="article-body" lang={article.language} onclick={onBodyClick}>{@html article.body_html}</div>
 
 		{#if article.related?.length}
 			<aside class="read-next" aria-labelledby="read-next-heading">

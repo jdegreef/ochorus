@@ -107,6 +107,37 @@ class ArticleApiTests(TestCase):
             res.data["body_html"],
         )
 
+    def test_detail_builds_toc_and_injects_matching_heading_ids(self):
+        # Each <h2> gets a stable, unique id, and toc lists the same ids — the
+        # page's jump links and the anchors in the body come from one pass, so
+        # they cannot drift. Repeated headings are de-duped with a suffix.
+        Article.objects.create(
+            slug="with-headings",
+            language="en",
+            h1="With headings",
+            body_html=(
+                "<h2>First section</h2><p>a</p>"
+                "<h2>Second <em>section</em></h2><p>b</p>"
+                "<h2>First section</h2><p>c</p>"
+            ),
+            is_published=True,
+        )
+        res = self.client.get(
+            reverse("article-detail", args=["with-headings"]), {"language": "en"}
+        )
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(
+            res.data["toc"],
+            [
+                {"id": "first-section", "text": "First section"},
+                {"id": "second-section", "text": "Second section"},
+                {"id": "first-section-2", "text": "First section"},
+            ],
+        )
+        # Every toc id resolves to a heading anchor actually present in the body.
+        for entry in res.data["toc"]:
+            self.assertIn(f'<h2 id="{entry["id"]}">', res.data["body_html"])
+
     def test_detail_resolves_related_and_drops_unresolvable(self):
         res = self.client.get(
             reverse("article-detail", args=["how-to-pray-so-god-answers"]),

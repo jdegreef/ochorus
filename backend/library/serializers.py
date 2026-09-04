@@ -1,4 +1,7 @@
+import re
+
 from django.db.models import Count, Sum
+from django.utils.text import slugify
 from rest_framework import serializers
 
 from .alternate_titles import alternate_titles
@@ -57,51 +60,46 @@ def _available_languages(model, slug: str) -> list[str]:
     )
 
 
-def book_topic_map(language: str) -> dict[str, list[dict]]:
-    """``book_slug -> [topic chip]`` for every published topic, in one pass.
+def _topic_slug_map(language: str, entries_attr: str, slug_attr: str) -> dict[str, list[dict]]:
+    """``work_slug -> [topic chip]`` for every published topic, in one pass.
 
-    Built whole rather than per book on purpose: a shelf of forty books would
-    otherwise cost forty topic queries. Views that serialize a known set of
-    books hand this to the serializer through the ``book_topics`` context key;
-    ``BookListSerializer`` builds it on demand when a view hasn't, so the chips
-    are never silently empty just because a caller forgot.
+    Built whole rather than per work on purpose: a shelf of forty items would
+    otherwise cost forty topic queries. ``entries_attr`` is the topic's reverse
+    membership relation (``entries`` for books, ``article_entries`` for
+    articles) and ``slug_attr`` the slug field on those entry rows; see the
+    ``book_topic_map`` / ``article_topic_map`` wrappers.
     """
     mapping: dict[str, list[dict]] = {}
     topics = Topic.objects.filter(is_published=True).prefetch_related(
-        "translations", "entries"
+        "translations", entries_attr
     )
     for topic in topics:
         # Skip shelves with no title in this language — see _topic_chips.
         if not topic.is_translated_into(language):
             continue
         chip = {"slug": topic.slug, "title": topic.title_for(language)}
-        for entry in topic.entries.all():
-            mapping.setdefault(entry.book_slug, []).append(chip)
+        for entry in getattr(topic, entries_attr).all():
+            mapping.setdefault(getattr(entry, slug_attr), []).append(chip)
     for chips in mapping.values():
         chips.sort(key=lambda c: c["title"])
     return mapping
+
+
+def book_topic_map(language: str) -> dict[str, list[dict]]:
+    """``book_slug -> [topic chip]`` for the books shelf. See ``_topic_slug_map``.
+
+    Views that serialize a known set of books hand this to the serializer through
+    the ``book_topics`` context key; ``BookListSerializer`` builds it on demand
+    when a view hasn't, so the chips are never silently empty."""
+    return _topic_slug_map(language, "entries", "book_slug")
 
 
 def article_topic_map(language: str) -> dict[str, list[dict]]:
-    """``article_slug -> [topic chip]`` for every published topic, in one pass.
-
-    The article-index twin of ``book_topic_map`` (same reason: an index of
-    articles would otherwise cost one topic query per card). ``ArticleListView``
-    hands it to the serializer through the ``article_topics`` context key, and
-    ``ArticleListSerializer`` builds it on demand when a view hasn't."""
-    mapping: dict[str, list[dict]] = {}
-    topics = Topic.objects.filter(is_published=True).prefetch_related(
-        "translations", "article_entries"
-    )
-    for topic in topics:
-        if not topic.is_translated_into(language):
-            continue
-        chip = {"slug": topic.slug, "title": topic.title_for(language)}
-        for entry in topic.article_entries.all():
-            mapping.setdefault(entry.article_slug, []).append(chip)
-    for chips in mapping.values():
-        chips.sort(key=lambda c: c["title"])
-    return mapping
+    """``article_slug -> [topic chip]`` for the articles index. Its book twin's
+    counterpart (see ``_topic_slug_map``); ``ArticleListView`` hands it to the
+    serializer via the ``article_topics`` context key, and ``ArticleListSerializer``
+    builds it on demand when a view hasn't."""
+    return _topic_slug_map(language, "article_entries", "article_slug")
 
 
 def _topic_chips(language: str, **membership) -> list[dict]:
@@ -404,6 +402,37 @@ class SermonDetailSerializer(serializers.ModelSerializer):
         ]
 
 
+_ARTICLE_H2 = re.compile(r"<h2>([\s\S]*?)</h2>")
+_HTML_TAG = re.compile(r"<[^>]+>")
+
+
+def inject_heading_ids(body_html: str) -> tuple[str, list[dict]]:
+    """Give each ``<h2>`` section a stable id and return ``(html, toc)``.
+
+    The stored body carries bare ``<h2>`` headings (the rich sanitize profile
+    keeps no id), so the id is injected here — at read time, after sanitize, the
+    same stage ``annotate_references`` runs — and the returned ``toc`` lists the
+    very ids injected. One pass produces both, so an article page's jump links
+    and the headings they target come from a single source and cannot drift.
+    Ids are slugified from the heading text (unicode preserved so a translated
+    heading keeps a real anchor), with a numeric suffix to keep them unique.
+    """
+    toc: list[dict] = []
+    seen: dict[str, int] = {}
+
+    def add_id(m: re.Match) -> str:
+        inner = m.group(1)
+        text = _HTML_TAG.sub("", inner).strip()
+        base = slugify(text, allow_unicode=True) or "section"
+        n = seen.get(base, 0)
+        seen[base] = n + 1
+        heading_id = base if not n else f"{base}-{n + 1}"
+        toc.append({"id": heading_id, "text": text})
+        return f'<h2 id="{heading_id}">{inner}</h2>'
+
+    return _ARTICLE_H2.sub(add_id, body_html), toc
+
+
 def resolve_related(related, language: str) -> list[dict]:
     """Turn an article's stored ``related`` soft-references into ready-to-render
     "Read next" cards: ``[{type, slug, title, url, <thumbnail fields>}, ...]``.
@@ -527,6 +556,7 @@ class ArticleDetailSerializer(ArticleListSerializer):
     """A single article with its body and its resolved "Read next" links."""
 
     body_html = serializers.SerializerMethodField()
+    toc = serializers.SerializerMethodField()
     related = serializers.SerializerMethodField()
     available_languages = serializers.SerializerMethodField()
 
@@ -536,14 +566,27 @@ class ArticleDetailSerializer(ArticleListSerializer):
         book/sermon detail chips; the topic page lists the article in return)."""
         return _topic_chips(obj.language, article_entries__article_slug=obj.slug)
 
-    def get_body_html(self, obj):
-        # Wrap Bible references as clickable spans so the reader's scripture
-        # popover works in articles too — the same treatment chapters and
-        # sermons get. Runs at read time, AFTER the stored body was sanitized,
-        # so the annotation's <a class="scripture-ref"> is not re-stripped.
-        from .scripture import annotate_references
+    def _rendered(self, obj):
+        # The read-time body pipeline, run once and cached: annotate Bible
+        # references as clickable spans (the same treatment chapters/sermons
+        # get), then give each <h2> a stable id and collect the table of
+        # contents. Both run AFTER the stored body was sanitized, so neither the
+        # scripture <a> nor the heading id is re-stripped. body_html and toc read
+        # from this one pass, so the page's jump links match the ids in the HTML.
+        cache = self.__dict__.setdefault("_rendered_cache", {})
+        if obj.pk not in cache:
+            from .scripture import annotate_references
 
-        return annotate_references(obj.body_html)
+            cache[obj.pk] = inject_heading_ids(annotate_references(obj.body_html))
+        return cache[obj.pk]
+
+    def get_body_html(self, obj):
+        return self._rendered(obj)[0]
+
+    def get_toc(self, obj):
+        """The article's `<h2>` sections as ``[{id, text}]`` jump targets — the
+        client renders the on-this-page nav from this and never parses the body."""
+        return self._rendered(obj)[1]
 
     def get_related(self, obj):
         return resolve_related(obj.related, obj.language)
@@ -555,6 +598,7 @@ class ArticleDetailSerializer(ArticleListSerializer):
         # topics + word_count already ride on the list serializer's fields.
         fields = ArticleListSerializer.Meta.fields + [
             "body_html",
+            "toc",
             "related",
             "source_url",
             "available_languages",
