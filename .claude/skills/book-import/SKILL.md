@@ -1058,6 +1058,23 @@ all of which this command already does. The steps:
 - **A sermon may have no scripture text** (Luther's Good Friday Passion
   meditation, Chrysostom's treatise): leave `scripture_ref` blank rather than
   invent an anchor. Cards and pages render with the passage line empty.
+- **A content-only sermon merge can ship its new pages as the SPA shell — and
+  a frontend-only rebuild may not fix it** *(Tier 2 #1418 → #1420, 2026-09-04,
+  confirmed)*. The web build prerenders whatever the API returns at build time;
+  the Tier 2 build passed the digest gate yet baked eight 5.7 KB shells and
+  stale author sermon-counts, while the API already served all 65. Render skips
+  the web build unless `frontend/` changes, so a docs/backend-only push cannot
+  rebuild it. And a frontend-ONLY touch risks the gate: the live API's baked
+  `content_version` (b8ab6c…) did not match what a clean checkout of the same
+  commit digests to (ae3ff9… under both `manage.py content_version` and the JS
+  gate run with `RENDER_GIT_COMMIT` set), so a build with no API redeploy could
+  wait its 15-min timeout and fail. What worked, first try: ONE PR touching a
+  file under `backend/` (a comment beside `content_digest()`) AND one under
+  `frontend/` (a note in `sermons/[slug]/+page.ts`) — both services redeploy
+  together, the gate matches, every page prerenders. Verify with trailing-slash
+  URLs: a prerendered sermon is 40–120 KB with a `<title>`; the shell is
+  ~5.7 KB with none. Don't trust a LOCAL gate run to predict Render's: the two
+  digests disagree for the same tree (open question, noted in #1420).
 - **The worktree guard refuses long chains that mix `uv run` with git, or
   heredoc-laden `git commit -m "$(cat <<…)"`.** Write the commit message and
   PR body to files and use `git commit -F <file>` / `gh pr create --body-file
