@@ -33,6 +33,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'athanasius-of-alexandria': '50% 0%', // icon: head at ~20% of a 0.69 plate
 	'augustine-of-hippo': '50% 0%',
 	'bernard-of-clairvaux': '50% 0%', // painting cropped to a bust; face at ~42%, near-square so nearly inert
+	'c-t-studd': '50% 0%', // full-length cricket photo; head high at ~10% of a 0.54 plate
 	'catherine-booth': '50% 0%',
 	'charles-finney': '50% 0%',
 	'charles-h-spurgeon': '50% 0%',
@@ -40,6 +41,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'clement-of-rome': '50% 0%', // mosaic bust; face at ~28% of a 0.80 plate
 	'cyprian-of-carthage': '50% 0%', // icon: bust, face at ~22%
 	'david-brainerd': '50% 0%',
+	'david-livingstone': '50% 3%', // seated Annan photo; face high at ~25% of a 0.82 plate
 	'dwight-l-moody': '50% 5%',
 	'e-m-bounds': '50% 2%', // 1864 photograph; face at ~32% of a 0.72 plate
 	'frederick-brotherton-meyer': '50% 0%',
@@ -63,6 +65,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'lemuel-haynes': '50% 0%',
 	'lottie-moon': '50% 30%', // oval studio photo; face at ~40% of a 0.66 plate
 	'mary-slessor': '50% 3%', // seated photo; head high at ~22% of a 0.67 plate
+	'pandita-ramabai': '50% 20%', // bust photo; face at ~30% of a 0.73 plate
 	'r-a-torrey': '50% 10%',
 	'richard-allen': '50% 37%',
 	'richard-baxter': '50% 18%',
@@ -73,7 +76,8 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'thomas-a-kempis': '50% 0%',
 	'thomas-watson': '50% 0%',
 	'watchman-nee': '50% 32%',
-	'william-booth': '50% 25%'
+	'william-booth': '50% 25%',
+	'william-carey': '50% 18%' // engraved bust; face at ~30% of a 0.67 plate
 };
 
 /**

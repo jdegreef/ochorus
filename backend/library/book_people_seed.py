@@ -50,8 +50,16 @@ BOOK_PEOPLE: list[tuple[str, list[tuple[str, str]]]] = [
     (
         "men-and-women-who-gave-everything-2",
         [
+            ("william-carey", "subject"),
+            ("david-livingstone", "subject"),
             ("catherine-booth", "subject"),
             ("dwight-l-moody", "subject"),
+            ("pandita-ramabai", "subject"),
+            ("c-t-studd", "subject"),
+            ("john-stott", "subject"),
+            ("helen-roseveare", "subject"),
+            ("jim-elliot", "subject"),
+            ("elisabeth-elliot", "subject"),
         ],
     ),
     (
