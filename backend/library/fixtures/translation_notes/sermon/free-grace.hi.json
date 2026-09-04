@@ -1,0 +1,145 @@
+{
+ "kind": "sermon",
+ "slug": "free-grace",
+ "language": "hi",
+ "job_issue": 1109,
+ "pull_request": 1422,
+ "references": [
+  {
+   "reference": "Ezekiel 36:32",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Ezekiel 36:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 1:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 2:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 14:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 9:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hosea 8:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ezekiel 37:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 115:1",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 19
+  },
+  {
+   "reference": "Romans 4:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 13:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 1:18",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ezekiel 33:11",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 9:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 1:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ezekiel 36:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ezekiel 36:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ezekiel 36:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 4:30",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Job 33:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 2:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 1:5",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Revelation 7:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 3:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 5:32",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 29
+  },
+  {
+   "reference": "Revelation 1:5",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 34
+  }
+ ]
+}

@@ -1,3 +1,12 @@
+// prerender refresh 2026-09-04: eight Hindi sermons — free-grace (#1109),
+// the-power-of-stillness (#1110), christ-all-in-all (#1111),
+// aggressive-christianity (#1112), salvation-by-faith (#1113),
+// the-possibilities-of-faith (#1114), the-golden-key-of-prayer (#1115),
+// eight-i-wills-of-christ (#1116). Rebuilds /hi/sermons, taking the shelf from
+// 4 to 12. `hi` still seeds as DRAFT, so these pages are built but not
+// advertised (no sitemap or hreflang entry) — the touch is made anyway so that
+// taking the language live is a switch in the admin rather than a switch plus a
+// deploy nobody remembers is needed.
 // prerender refresh 2026-09-02 (batch3b): six Luganda Spurgeon/Taylor sermons —
 // blessed-adversity (#1340), sweet-comfort-for-feeble-saints (#1341),
 // comfort-for-the-desponding (#1342), the-sweet-uses-of-adversity (#1343),

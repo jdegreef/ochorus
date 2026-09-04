@@ -1,0 +1,170 @@
+{
+ "kind": "sermon",
+ "slug": "eight-i-wills-of-christ",
+ "language": "hi",
+ "job_issue": 1116,
+ "pull_request": 1422,
+ "references": [
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 2
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "John 14:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "Luke 5:13",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text"
+  },
+  {
+   "reference": "Matthew 10:32",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 25
+  },
+  {
+   "reference": "John 14:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 6:40",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 17:24",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 57
+  },
+  {
+   "reference": "Luke 15:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 12:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 12:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 55:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 15:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 61:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 1:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 14:13",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 46
+  },
+  {
+   "reference": "Revelation 1:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 4:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 33:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 4:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 3:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 15:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 15:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 11:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 15:11",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "John 1:17",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Matthew 4:19",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 31
+  },
+  {
+   "reference": "John 12:32",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 31
+  },
+  {
+   "reference": "Daniel 12:3",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 46
+  },
+  {
+   "reference": "Acts 7:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 53
+  },
+  {
+   "reference": "Luke 15:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 22:11",
+   "status": "self_rendered"
+  }
+ ]
+}

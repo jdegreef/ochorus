@@ -1,0 +1,273 @@
+{
+ "kind": "sermon",
+ "slug": "the-golden-key-of-prayer",
+ "language": "hi",
+ "job_issue": 1115,
+ "pull_request": 1422,
+ "references": [
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Jeremiah 1:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 15:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 62:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 26:41",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "James 1:6",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 51
+  },
+  {
+   "reference": "Matthew 11:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 42:8",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 60
+  },
+  {
+   "reference": "Luke 7:47",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 50:15",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 25:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jonah 1:6",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Luke 15:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 55:22",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "Exodus 20:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 55:6",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "James 4:8",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "Colossians 4:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Samuel 5:24",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Psalm 102:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 26
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 29
+  },
+  {
+   "reference": "Hebrews 11:6",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 29
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 26:39",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 36
+  },
+  {
+   "reference": "Luke 22:42",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Daniel 2:17",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 40
+  },
+  {
+   "reference": "Revelation 5:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 2:3",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Hosea 12:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lamentations 3:57",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 118:5",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 49
+  },
+  {
+   "reference": "Psalm 107:6",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 50
+  },
+  {
+   "reference": "2 Kings 4:7",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 50
+  },
+  {
+   "reference": "John 6:21",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 51
+  },
+  {
+   "reference": "Isaiah 53:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 54
+  },
+  {
+   "reference": "Ruth 2:15",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 60
+  },
+  {
+   "reference": "Ruth 2:14",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 60
+  },
+  {
+   "reference": "Genesis 32:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 6:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ezekiel 47:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 20:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 13:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 12:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 5:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Judges 15:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Kings 4:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 5:5",
+   "status": "self_rendered"
+  }
+ ]
+}
