@@ -1,0 +1,15 @@
+{
+ "kind": "bio",
+ "slug": "e-m-bounds",
+ "language": "hi",
+ "job_issue": 1411,
+ "pull_request": null,
+ "note": [
+  "Scripture came from the Indian Revised Version (IRV Hindi, irvhin) — the text `language_seed.py` records for this language — fetched whole from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/hin_irv/usx; the collection serves USX, not USFM). All 66 books, 31,104 verses, on disk for the run, so translators could look up anything that sounded like scripture rather than working from a citation-only crib.",
+  "IMPORTANT for whoever re-uses that parse: in the IRV a `<para style=\"s\">` section heading and a `<para style=\"d\">` acrostic letter can sit INSIDE a verse span, carrying that verse's own vid — so taking everything between `sid` and `eid` appends the heading to the verse. It silently contaminated 29 verses (mostly Psalm 119) until a translator queried Psalm 119:136. Fixed before any of this batch was written, and every output re-scanned: zero contaminated spans shipped.",
+  "A `mined` row here means an exact byte substring of the IRV of at least 45 characters, measured against the finished file — not a translator's claim. A verse the translator re-personed or re-aimed to fit the author's sentence is recorded self_rendered even when it shows a long verbatim span, because shifting the wording makes it ours.",
+  "The `mined` threshold here is 30 characters of exact IRV text, calibrated against this batch's measured spans rather than reused from the sermon runs (which use 45, because sermons quote whole verses where biographies quote short clauses). It is deliberately conservative and UNDERCOUNTS: a handful of genuinely verbatim but very short quotations — 1 Corinthians 4:10 at 20 characters, John 16:24 at 14 — are recorded self_rendered. The translators' own reports list them, and erring this way adds review rather than manufacturing a clean bill of health.",
+  "A biography quotes its SUBJECT far more than it quotes the Bible. Pull-quotes of the person's own words are reported speech and are deliberately NOT recorded as scripture references; several bios in this batch quote no scripture at all, which is the honest answer rather than a gap."
+ ],
+ "references": []
+}

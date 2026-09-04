@@ -1,3 +1,11 @@
+// prerender refresh 2026-09-04: Hindi plan prose completed — grace-for-every-sinner
+// (#1108) and faith-in-the-fire (#1444) added to data/plan_translations/hi.json,
+// which finishes the Hindi set. Both are DORMANT (a curated plan needs every source
+// book in the language, and a-call-to-the-unconverted / the-god-of-all-comfort have
+// no Hindi edition yet), so this touch is not for them — it rebuilds /hi/plans for
+// the three entries that were already shipped but never had their prerender
+// follow-up done: school-of-prayer (#1107), humility-12-days (#1126) and
+// deeper-life-in-christ (#1127). humility-12-days is the live one.
 // prerender refresh 2026-08-28: humility-12-days.hi (job #1103).
 // humility-2 is that plan's ONE source book, so shipping the hi edition
 // publishes the plan for hi and this shelf has a new card to bake. The two
