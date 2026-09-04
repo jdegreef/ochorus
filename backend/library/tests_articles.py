@@ -107,6 +107,57 @@ class ArticleApiTests(TestCase):
             res.data["body_html"],
         )
 
+    def test_detail_builds_toc_and_injects_matching_heading_ids(self):
+        # Each <h2> gets a stable, unique id, and toc lists the same ids — the
+        # page's jump links and the anchors in the body come from one pass, so
+        # they cannot drift. Repeated headings are de-duped with a suffix.
+        Article.objects.create(
+            slug="with-headings",
+            language="en",
+            h1="With headings",
+            body_html=(
+                "<h2>First section</h2><p>a</p>"
+                "<h2>Second <em>section</em></h2><p>b</p>"
+                "<h2>First section</h2><p>c</p>"
+            ),
+            is_published=True,
+        )
+        res = self.client.get(
+            reverse("article-detail", args=["with-headings"]), {"language": "en"}
+        )
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(
+            res.data["toc"],
+            [
+                {"id": "first-section", "text": "First section"},
+                {"id": "second-section", "text": "Second section"},
+                {"id": "first-section-2", "text": "First section"},
+            ],
+        )
+        # Every toc id resolves to a heading anchor actually present in the body.
+        for entry in res.data["toc"]:
+            self.assertIn(f'<h2 id="{entry["id"]}">', res.data["body_html"])
+
+    def test_detail_heading_ids_stay_unique_across_slug_collisions(self):
+        # A suffixed id must not collide with the slug of a differently-worded
+        # heading: 'Section' + 'Section 2' + 'Section' must not both resolve to
+        # 'section-2', or the toc carries a duplicate key and the keyed {#each}
+        # on the page fails. Uniqueness is checked against all assigned ids.
+        Article.objects.create(
+            slug="colliding-headings",
+            language="en",
+            h1="Colliding headings",
+            body_html="<h2>Section</h2><p>a</p><h2>Section 2</h2><p>b</p><h2>Section</h2><p>c</p>",
+            is_published=True,
+        )
+        res = self.client.get(
+            reverse("article-detail", args=["colliding-headings"]), {"language": "en"}
+        )
+        self.assertEqual(res.status_code, 200)
+        ids = [entry["id"] for entry in res.data["toc"]]
+        self.assertEqual(ids, ["section", "section-2", "section-3"])
+        self.assertEqual(len(ids), len(set(ids)))  # no duplicate anchor keys
+
     def test_detail_resolves_related_and_drops_unresolvable(self):
         res = self.client.get(
             reverse("article-detail", args=["how-to-pray-so-god-answers"]),
@@ -117,6 +168,9 @@ class ArticleApiTests(TestCase):
         related = res.data["related"]
         # Only the published book and the author survive; the unpublished and
         # missing books are dropped, and order is preserved.
+        # A book card carries its cover (url + colour), an author their portrait,
+        # so "Read next" renders thumbnails, not bare links (blank here — the
+        # test rows set no cover). Order is preserved.
         self.assertEqual(
             related,
             [
@@ -125,12 +179,15 @@ class ArticleApiTests(TestCase):
                     "slug": "the-life-of-trust",
                     "title": "The Life of Trust",
                     "url": "/books/the-life-of-trust/",
+                    "cover_url": "",
+                    "cover_color": "",
                 },
                 {
                     "type": "author",
                     "slug": "george-muller",
                     "title": "George Müller",
                     "url": "/authors/george-muller/",
+                    "photo_url": "",
                 },
             ],
         )

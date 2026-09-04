@@ -619,6 +619,12 @@ class Article(models.Model):
 
     source_url = models.URLField(blank=True)
 
+    # Reading-time source: the article's word count, derived from body_html on
+    # save() (the same as Chapter/Sermon). Drives the "N min read" estimate on
+    # the index cards and the article-page eyebrow. A save()-bypassing write
+    # (loaddata on a fresh DB) leaves it zero until backfill_word_count fills it.
+    word_count = models.PositiveIntegerField(default=0)
+
     sort_order = models.PositiveIntegerField(default=0)
     is_published = models.BooleanField(default=True)
 
@@ -651,6 +657,17 @@ class Article(models.Model):
 
     def __str__(self) -> str:
         return f"{self.h1} ({self.language})"
+
+    def save(self, *args, **kwargs):
+        # word_count is the only derived column (no body_text / FTS on an
+        # article), so a scoped save() that touches body_html carries it too.
+        from .text import word_count
+
+        self.word_count = word_count(self.body_html)
+        update_fields = kwargs.get("update_fields")
+        if update_fields is not None and "body_html" in update_fields:
+            kwargs["update_fields"] = list(update_fields) + ["word_count"]
+        super().save(*args, **kwargs)
 
 
 class PlanManager(models.Manager):

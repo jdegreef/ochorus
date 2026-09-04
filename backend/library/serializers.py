@@ -1,4 +1,7 @@
+import re
+
 from django.db.models import Count, Sum
+from django.utils.text import slugify
 from rest_framework import serializers
 
 from .alternate_titles import alternate_titles
@@ -404,9 +407,53 @@ class SermonDetailSerializer(serializers.ModelSerializer):
         ]
 
 
+_ARTICLE_H2 = re.compile(r"<h2>([\s\S]*?)</h2>")
+_HTML_TAG = re.compile(r"<[^>]+>")
+
+
+def inject_heading_ids(body_html: str) -> tuple[str, list[dict]]:
+    """Give each ``<h2>`` section a stable id and return ``(html, toc)``.
+
+    The stored body carries bare ``<h2>`` headings — the rich sanitize profile
+    scrubs every attribute save ``class`` on ``<aside>`` / ``href`` on ``<a>``
+    (see sanitize.py), so a heading never arrives with an id or any other
+    attribute, and the bare-tag match below is safe. The id is injected here, at
+    read time, after sanitize — the same stage ``annotate_references`` runs — and
+    the returned ``toc`` lists the very ids injected. One pass produces both, so
+    an article page's jump links and the headings they target come from a single
+    source and cannot drift. Ids are slugified from the heading text (unicode
+    preserved so a translated heading keeps a real anchor).
+    """
+    toc: list[dict] = []
+    used: set[str] = set()
+
+    def add_id(m: re.Match) -> str:
+        inner = m.group(1)
+        text = _HTML_TAG.sub("", inner).strip()
+        base = slugify(text, allow_unicode=True) or "section"
+        # Uniqueness is checked against every id already assigned, not a
+        # per-base counter: a suffixed id ("section-2") must not collide with the
+        # slug of a differently-worded heading ("Section 2"), or the toc would
+        # carry duplicate keys and the page's keyed {#each} would fail.
+        heading_id = base
+        n = 1
+        while heading_id in used:
+            n += 1
+            heading_id = f"{base}-{n}"
+        used.add(heading_id)
+        toc.append({"id": heading_id, "text": text})
+        return f'<h2 id="{heading_id}">{inner}</h2>'
+
+    return _ARTICLE_H2.sub(add_id, body_html), toc
+
+
 def resolve_related(related, language: str) -> list[dict]:
     """Turn an article's stored ``related`` soft-references into ready-to-render
-    "Read next" cards: ``[{type, slug, title, url}, ...]``.
+    "Read next" cards: ``[{type, slug, title, url, <thumbnail fields>}, ...]``.
+
+    A book card also carries ``cover_url`` + ``cover_color`` and an author card
+    ``photo_url``, so the block renders covers and portraits, not bare links; a
+    sermon carries neither (its shelf tile is a drawn emblem, not an image).
 
     Each entry names a ``type`` (book / sermon / author) and a ``slug``; this
     resolves it to the published row's display title and its reader URL, in the
@@ -435,42 +482,56 @@ def resolve_related(related, language: str) -> list[dict]:
     for kind, slug in entries:
         by_type.setdefault(kind, []).append(slug)
 
-    titles: dict[tuple[str, str], str] = {}
+    # (kind, slug) -> the card's display fields, INCLUDING the thumbnail a card
+    # needs to render a real shopfront rather than a text link: a book carries
+    # its cover (url + colour fallback), an author their portrait, a sermon has
+    # neither (its shelf tile is a drawn emblem, not an image) and stays text.
+    found: dict[tuple[str, str], dict] = {}
     if by_type.get("book"):
-        for slug, title in Book.objects.filter(
+        for slug, title, cover_url, cover_color in Book.objects.filter(
             slug__in=by_type["book"], language=language, is_published=True
-        ).values_list("slug", "title"):
-            titles[("book", slug)] = title
+        ).values_list("slug", "title", "cover_url", "cover_color"):
+            found[("book", slug)] = {
+                "title": title,
+                "cover_url": cover_url,
+                "cover_color": cover_color,
+            }
     if by_type.get("sermon"):
         for slug, title in Sermon.objects.filter(
             slug__in=by_type["sermon"], language=language, is_published=True
         ).values_list("slug", "title"):
-            titles[("sermon", slug)] = title
+            found[("sermon", slug)] = {"title": title}
     if by_type.get("author"):
-        for slug, name in Author.objects.filter(
+        for slug, name, photo_url in Author.objects.filter(
             slug__in=by_type["author"]
-        ).values_list("slug", "name"):
-            titles[("author", slug)] = name
+        ).values_list("slug", "name", "photo_url"):
+            found[("author", slug)] = {"title": name, "photo_url": photo_url}
 
     prefix = {"book": "/books/", "sermon": "/sermons/", "author": "/authors/"}
     cards = []
     for kind, slug in entries:
-        title = titles.get((kind, slug))
-        if title is None:
+        data = found.get((kind, slug))
+        if data is None:
             continue
         cards.append(
             {
                 "type": kind,
                 "slug": slug,
-                "title": title,
                 "url": f"{prefix[kind]}{slug}/",
+                # title, then whichever thumbnail fields the type carries.
+                **data,
             }
         )
     return cards
 
 
 class ArticleListSerializer(LocalizedMixin, serializers.ModelSerializer):
-    """An article card — enough for the /articles index (no body)."""
+    """An article card — enough for the /articles index (no body).
+
+    Carries ``word_count`` (the "N min read" estimate) and ``topics`` (the
+    index's filter tabs and the funnel back to the topic pages), so the card
+    matches the book/sermon shelf cards rather than being a bare title.
+    """
 
     topics = serializers.SerializerMethodField()
 
@@ -500,12 +561,15 @@ class ArticleListSerializer(LocalizedMixin, serializers.ModelSerializer):
             "h1",
             "meta_title",
             "description",
+            # The reading-time source, derived from body_html on save(); the
+            # index defers the body but this column loads with the row.
+            "word_count",
             "sort_order",
             "created_at",
             # The sitemap's <lastmod> — see BookListSerializer.updated_at. The
             # seed keeps this honest by only save()-ing a genuinely changed row.
             "updated_at",
-            # Topic chips — powers the index filter tabs and the detail page's
+            # Topic chips — the index filter tabs and the detail page's
             # back-links. Batched by the list view; per-object on detail.
             "topics",
         ]
@@ -515,6 +579,7 @@ class ArticleDetailSerializer(ArticleListSerializer):
     """A single article with its body and its resolved "Read next" links."""
 
     body_html = serializers.SerializerMethodField()
+    toc = serializers.SerializerMethodField()
     related = serializers.SerializerMethodField()
     available_languages = serializers.SerializerMethodField()
 
@@ -525,14 +590,27 @@ class ArticleDetailSerializer(ArticleListSerializer):
         the topic page already lists the article in return."""
         return _topic_chips(obj.language, article_entries__article_slug=obj.slug)
 
-    def get_body_html(self, obj):
-        # Wrap Bible references as clickable spans so the reader's scripture
-        # popover works in articles too — the same treatment chapters and
-        # sermons get. Runs at read time, AFTER the stored body was sanitized,
-        # so the annotation's <a class="scripture-ref"> is not re-stripped.
-        from .scripture import annotate_references
+    def _rendered(self, obj):
+        # The read-time body pipeline, run once and cached: annotate Bible
+        # references as clickable spans (the same treatment chapters/sermons
+        # get), then give each <h2> a stable id and collect the table of
+        # contents. Both run AFTER the stored body was sanitized, so neither the
+        # scripture <a> nor the heading id is re-stripped. body_html and toc read
+        # from this one pass, so the page's jump links match the ids in the HTML.
+        cache = self.__dict__.setdefault("_rendered_cache", {})
+        if obj.pk not in cache:
+            from .scripture import annotate_references
 
-        return annotate_references(obj.body_html)
+            cache[obj.pk] = inject_heading_ids(annotate_references(obj.body_html))
+        return cache[obj.pk]
+
+    def get_body_html(self, obj):
+        return self._rendered(obj)[0]
+
+    def get_toc(self, obj):
+        """The article's `<h2>` sections as ``[{id, text}]`` jump targets — the
+        client renders the on-this-page nav from this and never parses the body."""
+        return self._rendered(obj)[1]
 
     def get_related(self, obj):
         return resolve_related(obj.related, obj.language)
@@ -541,10 +619,12 @@ class ArticleDetailSerializer(ArticleListSerializer):
         return _available_languages(Article, obj.slug)
 
     class Meta(ArticleListSerializer.Meta):
-        # "topics" is already on the list serializer (index tabs); detail just
-        # overrides get_topics with a direct query.
+        # topics + word_count already ride on the list serializer's fields;
+        # detail just overrides get_topics with a direct query and adds the body,
+        # its table of contents, the Read-next links and source/languages.
         fields = ArticleListSerializer.Meta.fields + [
             "body_html",
+            "toc",
             "related",
             "source_url",
             "available_languages",

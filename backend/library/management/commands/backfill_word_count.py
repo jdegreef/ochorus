@@ -1,7 +1,7 @@
-"""Fill word_count for rows that have prose but a zero count (chapters, sermons).
+"""Fill word_count for rows that have prose but a zero count (chapters, sermons, articles).
 
-Chapter.save()/Sermon.save() now derive word_count from body_html, the same as
-body_text — so any row written THROUGH the model is already in step, and what
+Chapter.save()/Sermon.save()/Article.save() now derive word_count from body_html
+— so any row written THROUGH the model is already in step, and what
 is left for this command is the routes that bypass save(): a fixture load
 (loaddata does), a ``queryset.update()``, and a data migration's historical
 model. Those keep whatever count they were given, and one given none keeps zero
@@ -27,15 +27,19 @@ from __future__ import annotations
 from django.core.management.base import BaseCommand
 from django.db.models import Q
 
-from library.models import Chapter, Sermon
+from library.models import Article, Chapter, Sermon
 from library.text import word_count
 
 
 class Command(BaseCommand):
-    help = "Derive word_count from body_html for chapters/sermons showing zero."
+    help = "Derive word_count from body_html for chapters/sermons/articles showing zero."
 
     def handle(self, *args, **opts):
-        for model, label in ((Chapter, "chapters"), (Sermon, "sermons")):
+        for model, label in (
+            (Chapter, "chapters"),
+            (Sermon, "sermons"),
+            (Article, "articles"),
+        ):
             # A genuinely empty body SHOULD count zero, so those are left alone
             # rather than rewritten to the same value on every deploy.
             missing = model.objects.filter(word_count=0).exclude(

@@ -549,6 +549,8 @@ export interface ArticleSummary {
 	meta_title: string;
 	/** Standfirst — shown under the H1 and used as the meta description. */
 	description: string;
+	/** Words in the body, derived server-side — feeds `readingTime()`. */
+	word_count: number;
 	sort_order: number;
 	created_at: string;
 	/** Last modification (ISO) — the sitemap's `<lastmod>`; see BookSummary. */
@@ -565,10 +567,21 @@ export interface ArticleRelated {
 	title: string;
 	/** Reader path, trailing-slashed (e.g. `/books/the-life-of-trust/`). */
 	url: string;
+	/** Thumbnail fields, present per kind so the card renders a cover/portrait,
+	 *  not a bare link: a book carries `cover_url` + `cover_color`, an author
+	 *  `photo_url`; a sermon carries neither (its tile is a drawn emblem). */
+	cover_url?: string;
+	cover_color?: string;
+	photo_url?: string;
 }
 
 export interface Article extends ArticleSummary {
 	body_html: string;
+	/** Table of contents — the body's `<h2>` sections as `{id, text}` jump
+	 *  targets. The ids are already present on the headings in `body_html`
+	 *  (injected server-side in one pass), so the page renders this as an
+	 *  on-this-page nav and never parses the body itself. */
+	toc: { id: string; text: string }[];
 	/** The funnel: books / sermons / bios to read next, already resolved to
 	 *  titles + URLs server-side (unresolvable references are dropped). */
 	related: ArticleRelated[];
