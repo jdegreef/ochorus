@@ -432,6 +432,24 @@ def _attach_sermons(topics, language):
     return topics
 
 
+def _attach_articles(topics, language):
+    """Attach ``articles_in_language`` (curated-ordered, published member
+    articles in ``language``) to each topic, in two queries total — the article
+    companion to ``_attach_books``."""
+    wanted = {e.article_slug for t in topics for e in t.article_entries.all()}
+    articles = Article.objects.filter(
+        slug__in=wanted, language=language, is_published=True
+    ).defer("body_html")
+    by_slug = {a.slug: a for a in articles}
+    for t in topics:
+        t.articles_in_language = [
+            by_slug[e.article_slug]
+            for e in t.article_entries.all()
+            if e.article_slug in by_slug
+        ]
+    return topics
+
+
 class TopicListView(PublicContentCacheMixin, generics.ListAPIView):
     """Published topical shelves that have at least one member — book OR sermon —
     in the requested language, so a partially-translated library never shows an
@@ -448,18 +466,24 @@ class TopicListView(PublicContentCacheMixin, generics.ListAPIView):
         language = _language(self.request)
         topics = list(
             Topic.objects.filter(is_published=True)
-            .prefetch_related("translations", "entries", "sermon_entries")
+            .prefetch_related("translations", "entries", "sermon_entries", "article_entries")
             .order_by("sort_order", "title")
         )
         _attach_books(topics, language)
         _attach_sermons(topics, language)
-        # A shelf needs both something to hold and a name a reader of this
-        # language can read: an untranslated title would render blank now that
-        # the serializer no longer falls back to English.
+        _attach_articles(topics, language)
+        # A shelf needs both something to hold — a book, sermon, or article in
+        # this language — and a name a reader of this language can read: an
+        # untranslated title would render blank now that the serializer no
+        # longer falls back to English.
         return [
             t
             for t in topics
-            if (t.books_in_language or t.sermons_in_language)
+            if (
+                t.books_in_language
+                or t.sermons_in_language
+                or t.articles_in_language
+            )
             and t.is_translated_into(language)
         ]
 
@@ -477,7 +501,7 @@ class TopicDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
     def get_object(self):
         topic = get_object_or_404(
             Topic.objects.filter(is_published=True).prefetch_related(
-                "translations", "entries", "sermon_entries"
+                "translations", "entries", "sermon_entries", "article_entries"
             ),
             slug=self.kwargs["slug"],
         )
@@ -489,6 +513,7 @@ class TopicDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
             raise Http404("No topic in this language")
         _attach_books([topic], language)
         _attach_sermons([topic], language)
+        _attach_articles([topic], language)
         return topic
 
 
