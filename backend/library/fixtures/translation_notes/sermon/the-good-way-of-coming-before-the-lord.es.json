@@ -10,7 +10,7 @@
    "block_index": 0
   },
   {
-   "reference": "Micah 6:6a (echo)",
+   "reference": "Micah 6:6a",
    "status": "self_rendered",
    "block_index": 2
   },
@@ -40,7 +40,7 @@
    "block_index": 3
   },
   {
-   "reference": "Isaiah 6:1-3,5",
+   "reference": "Isaiah 6:1-3",
    "status": "self_rendered",
    "block_index": 6
   },
@@ -50,7 +50,7 @@
    "block_index": 6
   },
   {
-   "reference": "Micah 6:6-7 (echo)",
+   "reference": "Micah 6:6-7",
    "status": "self_rendered",
    "block_index": 6
   },
@@ -70,7 +70,7 @@
    "block_index": 7
   },
   {
-   "reference": "Micah 6:8a (echo)",
+   "reference": "Micah 6:8a",
    "status": "self_rendered",
    "block_index": 8
   },
@@ -90,7 +90,7 @@
    "block_index": 12
   },
   {
-   "reference": "Micah 6:8b (echo)",
+   "reference": "Micah 6:8b",
    "status": "self_rendered",
    "block_index": 14
   },
@@ -110,7 +110,12 @@
    "block_index": 16
   },
   {
-   "reference": "Psalm 92:15 / Deut 32:4",
+   "reference": "Psalm 92:15",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Deut 32:4",
    "status": "self_rendered",
    "block_index": 16
   },

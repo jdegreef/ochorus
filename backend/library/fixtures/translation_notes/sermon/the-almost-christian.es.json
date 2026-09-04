@@ -30,7 +30,7 @@
    "block_index": 8
   },
   {
-   "reference": "Tobit 4:15 (neg. golden rule)",
+   "reference": "Tobit 4:15",
    "status": "self_rendered",
    "block_index": 8
   },
@@ -60,7 +60,7 @@
    "block_index": 10
   },
   {
-   "reference": "Matt 6:2 / 6:5b",
+   "reference": "Matt 6:2",
    "status": "self_rendered",
    "block_index": 17
   },
@@ -80,7 +80,12 @@
    "block_index": 21
   },
   {
-   "reference": "Mark 12:30 (‖ Matt 22:37)",
+   "reference": "Mark 12:30",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Matt 22:37",
    "status": "self_rendered",
    "block_index": 23
   },
@@ -115,7 +120,7 @@
    "block_index": 23
   },
   {
-   "reference": "1 Cor 13:4c",
+   "reference": "1 Cor 13:4",
    "status": "self_rendered",
    "block_index": 23
   },
@@ -125,7 +130,17 @@
    "block_index": 23
   },
   {
-   "reference": "Mark 12:31 (‖ Matt 22:39 / Lev 19:18)",
+   "reference": "Mark 12:31",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Matt 22:39",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Lev 19:18",
    "status": "self_rendered",
    "block_index": 24
   },
@@ -140,7 +155,7 @@
    "block_index": 24
   },
   {
-   "reference": "1 Cor 13:4–7 (+ 9:22)",
+   "reference": "1 Cor 13:4–7",
    "status": "self_rendered",
    "block_index": 24
   },
@@ -160,7 +175,7 @@
    "block_index": 25
   },
   {
-   "reference": "John 3:36a + 5:24b",
+   "reference": "John 3:36a",
    "status": "self_rendered",
    "block_index": 25
   },
@@ -230,7 +245,7 @@
    "block_index": 32
   },
   {
-   "reference": "**Exod 34:6–7**",
+   "reference": "Exod 34:6–7",
    "status": "self_rendered",
    "block_index": 32
   },
@@ -250,7 +265,7 @@
    "block_index": 32
   },
   {
-   "reference": "John 21:17c",
+   "reference": "John 21:17",
    "status": "self_rendered",
    "block_index": 32
   },

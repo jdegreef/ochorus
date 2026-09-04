@@ -35,7 +35,12 @@
    "block_index": 3
   },
   {
-   "reference": "Galatians 3:10 / Deut 27:26",
+   "reference": "Galatians 3:10",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Deut 27:26",
    "status": "self_rendered",
    "block_index": 3
   },
@@ -75,7 +80,12 @@
    "block_index": 9
   },
   {
-   "reference": "Mark 16:7 / John 20:17",
+   "reference": "Mark 16:7",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "John 20:17",
    "status": "self_rendered",
    "block_index": 9
   },

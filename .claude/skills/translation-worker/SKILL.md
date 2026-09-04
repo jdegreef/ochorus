@@ -1990,3 +1990,20 @@ archaic spelling and period punctuation are the text, not defects in it.
   DB's `reviewed` flag; keep your fresh short bio (coherent with the long one)
   when unreviewed, and say in the PR which short bios you refined. whitefield's
   matched byte-for-byte, so a good translation often reproduces the auto-summary.
+- **A notes `reference` over 64 chars passes local SQLite and FAILS Postgres CI —
+  sanitize the reference to a bare `Book C:V`** (the es batch, 2026-09-04).
+  `TranslationNote.reference` is `varchar(64)`; **SQLite ignores varchar length,
+  Postgres enforces it**, so `manage.py test library` was green locally and the
+  CI job "Backend — tests (Postgres, the production search path)" failed with
+  `django.db.utils.DataError: value too long for type character varying(64)` in
+  `ShippedNotesTests` (which seeds ALL notes). Cause: a translator's report put a
+  descriptive, multi-verse string in the reference column —
+  `Matthew 9:13 / Luke 5:32 ("came not to call the righteous…")` (87 chars). When
+  deriving notes, extract the canonical citation(s) with a regex, split a
+  compound reference into separate rows, drop the quoted gloss, and cap at 64 —
+  don't pass the report cell through verbatim. The general lesson: **SQLite is
+  not a faithful proxy for the Postgres CI on column-length (or other DB-level)
+  constraints** — before shipping, check every string field of every new row
+  against its model `max_length` (Sermon.scripture_ref is 160, title 300,
+  slug 180; TranslationNote.reference 64, source_file 200), since the local suite
+  will not.

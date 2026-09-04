@@ -50,7 +50,7 @@
    "block_index": 4
   },
   {
-   "reference": "Daniel 5:25,27",
+   "reference": "Daniel 5:25",
    "status": "self_rendered",
    "block_index": 4
   },
@@ -100,7 +100,12 @@
    "block_index": 6
   },
   {
-   "reference": "Job 4:8 / Hosea 10:13",
+   "reference": "Job 4:8",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Hosea 10:13",
    "status": "self_rendered",
    "block_index": 6
   },
