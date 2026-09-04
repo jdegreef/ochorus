@@ -3,10 +3,10 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 /**
- * The three long-form reading surfaces must not offer controls they don't honour.
+ * The long-form reading surfaces must not offer controls they don't honour.
  *
- * Ochorus reads long prose in three places — book chapters, sermons and author
- * biographies — and all three mount <ReaderControls>. But paged (page-turn)
+ * Ochorus reads long prose in four places — book chapters, sermons, author
+ * biographies and articles — and all four mount <ReaderControls>. But paged (page-turn)
  * mode is implemented ONLY in the chapter reader: it needs a fixed viewport,
  * page measuring, turning and a scrubber, none of which lives in <Reader>,
  * which deliberately owns the prose rather than the container.
