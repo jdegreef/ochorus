@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import type { SermonSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
-	import { itemList, hreflangAll } from '$lib/seo';
+	import { collectionPage, breadcrumbLd, hreflangAll } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
@@ -23,13 +23,27 @@
 	const sermons = $derived<SermonSummary[]>(data.sermons);
 	const loadError = $derived<boolean>(data.loadError);
 
-	// schema.org ItemList of the sermon shelf — an ordered roster for crawlers.
+	// Self-referential canonical: each localized copy of this prerendered page
+	// points at ITSELF, not the English URL (which would deindex translations).
+	const canonical = `${SITE_URL}${localizeHref('/sermons')}`;
+
+	// The shelf as a CollectionPage carrying its own ordered ItemList — a crawler
+	// sees the works (not an opaque grid), hung off the page entity rather than a
+	// floating list. `url` is the canonical so the two never disagree.
 	const sermonsLd = $derived(
-		itemList(
-			t('nav.sermons'),
-			sermons.map((s) => ({ name: s.title, url: localizeHref(`/sermons/${s.slug}`) }))
-		)
+		collectionPage({
+			name: t('nav.sermons'),
+			description: t('sermons.metaDescription'),
+			url: canonical,
+			items: sermons.map((s) => ({ name: s.title, url: localizeHref(`/sermons/${s.slug}`) }))
+		})
 	);
+	// Home › Sermons — this shelf's place in the hierarchy, as a BreadcrumbList.
+	// The same breadcrumbLd() the sermon detail pages feed their trail through.
+	const crumbsLd = breadcrumbLd([
+		{ name: t('common.home'), href: '/' },
+		{ name: t('nav.sermons'), href: '/sermons' }
+	]);
 
 	// --- Filters ----------------------------------------------------------------
 	// The shelf's filters live in the URL (shareable, reloadable, Back-able) via
@@ -138,16 +152,17 @@
 	// correctly omitted them — two contradictory claims, with the wrong one on
 	// the site's most-crawled pages.
 	const hreflang = hreflangAll('/sermons');
-	const canonical = `${SITE_URL}${localizeHref('/sermons')}`;
 </script>
 
 <Seo
-	title={`${t('nav.sermons')} — Ochorus`}
+	title={`${t('sermons.metaTitle')} — Ochorus`}
 	description={t('sermons.metaDescription')}
 	{canonical}
 	{hreflang}
 	ogImage={`${SITE_URL}/og/sermons.png`}
-	structuredData={sermons.length ? [sermonsLd] : []}
+	ogImageWidth={1200}
+	ogImageHeight={630}
+	structuredData={sermons.length ? [sermonsLd, crumbsLd] : [crumbsLd]}
 />
 
 <div class="page-col px-5 py-10">

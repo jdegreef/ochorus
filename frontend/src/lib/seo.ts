@@ -80,16 +80,15 @@ export function jsonLd(data: unknown): string {
 }
 
 /**
- * A schema.org ItemList as a ready-to-inject JSON-LD script — the structured
- * counterpart of a browse/shelf page, so search engines see an ordered roster
- * of the works instead of an opaque grid. `items` are {name, url} in display
- * order; urls are made absolute. Mirrors the biographies page's people list.
+ * The raw schema.org ItemList object for a shelf's works — the ordered roster of
+ * {name, url} pairs, urls made absolute. The shared body of the standalone
+ * itemList() script and the CollectionPage's `mainEntity`, so a ListItem's shape
+ * is authored once. `name` is omitted when embedded (the CollectionPage names it).
  */
-export function itemList(name: string, items: { name: string; url: string }[]): string {
-	return jsonLd({
-		'@context': 'https://schema.org',
+function itemListObject(items: { name: string; url: string }[], name?: string) {
+	return {
 		'@type': 'ItemList',
-		name,
+		...(name ? { name } : {}),
 		numberOfItems: items.length,
 		itemListElement: items.map((it, i) => ({
 			'@type': 'ListItem',
@@ -97,6 +96,41 @@ export function itemList(name: string, items: { name: string; url: string }[]): 
 			name: it.name,
 			url: absUrl(it.url)
 		}))
+	};
+}
+
+/**
+ * A schema.org ItemList as a ready-to-inject JSON-LD script — the structured
+ * counterpart of a browse/shelf page, so search engines see an ordered roster
+ * of the works instead of an opaque grid. `items` are {name, url} in display
+ * order; urls are made absolute. Mirrors the biographies page's people list.
+ */
+export function itemList(name: string, items: { name: string; url: string }[]): string {
+	return jsonLd({ '@context': 'https://schema.org', ...itemListObject(items, name) });
+}
+
+/**
+ * A schema.org CollectionPage as a ready-to-inject JSON-LD script — the shelf
+ * page itself as an entity, carrying the ItemList of its works as `mainEntity`
+ * rather than leaving the list to float as its own top-level graph. `url` is a
+ * full URL (the page's canonical, so the two never disagree); item urls are the
+ * same {name, url} display-order pairs itemList() takes, made absolute.
+ */
+export function collectionPage(opts: {
+	name: string;
+	description: string;
+	url: string;
+	items: { name: string; url: string }[];
+}): string {
+	const { name, description, url, items } = opts;
+	return jsonLd({
+		'@context': 'https://schema.org',
+		'@type': 'CollectionPage',
+		name,
+		description,
+		url: absUrl(url),
+		isAccessibleForFree: true,
+		mainEntity: itemListObject(items)
 	});
 }
 

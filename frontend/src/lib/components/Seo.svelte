@@ -15,6 +15,8 @@
 		ogType = 'website',
 		ogTitle = title,
 		ogImage = '',
+		ogImageWidth,
+		ogImageHeight,
 		structuredData = []
 	}: {
 		/** The full <title> text (routes append " — Ochorus" themselves). */
@@ -28,6 +30,11 @@
 		ogTitle?: string;
 		/** Absolute raster image URL for social cards; omit when the page has none. */
 		ogImage?: string;
+		/** og:image pixel dimensions — pass both when the image size is known so
+		 *  scrapers can lay the card out without fetching the file first. Only the
+		 *  house 1200×630 OG rasters carry these; omit for anything else. */
+		ogImageWidth?: number;
+		ogImageHeight?: number;
 		/** Ready-to-inject <script type="application/ld+json"> strings — build them
 		 *  with jsonLd() so `<` is escaped before it reaches {@html}. */
 		structuredData?: string[];
@@ -46,7 +53,16 @@
 	<meta property="og:title" content={ogTitle} />
 	<meta property="og:description" content={description} />
 	<meta property="og:url" content={canonical} />
-	{#if ogImage}<meta property="og:image" content={ogImage} />{/if}
+	{#if ogImage}
+		<meta property="og:image" content={ogImage} />
+		{#if ogImageWidth && ogImageHeight}
+			<meta property="og:image:width" content={String(ogImageWidth)} />
+			<meta property="og:image:height" content={String(ogImageHeight)} />
+		{/if}
+		<!-- Explicit twitter:image rather than leaning on the og:image fallback:
+		     stated, it's the value some scrapers key on. -->
+		<meta name="twitter:image" content={ogImage} />
+	{/if}
 	<meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
 	{#each structuredData as ld, i (i)}
 		<!-- Server-built, entity-escaped JSON-LD (see seo.ts jsonLd()); never user input. -->
