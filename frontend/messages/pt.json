@@ -381,6 +381,7 @@
   "author_heading_sermons": "Sermões de %name%",
   "book_meta_fallback": "%title% de %name% — leitura gratuita no Ochorus.",
   "book_title_tag": "%title% de %name% — leitura gratuita online — Ochorus",
+  "chapter_title_tag": "%chapter% — %title% de %name% — Ochorus",
   "book_other_titles": "Outros títulos",
   "book_about_work": "Sobre este livro",
   "book_scripture_treats": "Passagens que este livro trata",

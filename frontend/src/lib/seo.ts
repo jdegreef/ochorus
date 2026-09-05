@@ -80,6 +80,33 @@ export function jsonLd(data: unknown): string {
 }
 
 /**
+ * A meta-description-sized slice of prose.
+ *
+ * Search engines and social scrapers truncate `<meta name="description">` and
+ * `og:description` around 155–160 characters, so shipping 250–300 (the book and
+ * chapter pages did) only fed the SERP a mid-word cut. This ends at a sentence
+ * boundary when one falls in the back half of the budget — the cleanest read —
+ * and otherwise at the last whole word with an ellipsis. Whitespace is
+ * collapsed, and text already within budget is returned untouched, so it is
+ * safe to wrap a short fallback string in it too.
+ */
+export function truncateMeta(text: string, max = 160): string {
+	const clean = (text ?? '').replace(/\s+/g, ' ').trim();
+	if (clean.length <= max) return clean;
+	const slice = clean.slice(0, max);
+	const sentence = Math.max(
+		slice.lastIndexOf('. '),
+		slice.lastIndexOf('! '),
+		slice.lastIndexOf('? ')
+	);
+	// Only honour a sentence end in the back half; an early one would throw away
+	// most of the budget.
+	if (sentence >= max * 0.6) return slice.slice(0, sentence + 1).trim();
+	const word = slice.lastIndexOf(' ');
+	return (word > 0 ? slice.slice(0, word) : slice).trim() + '…';
+}
+
+/**
  * The raw schema.org ItemList object for a shelf's works — the ordered roster of
  * {name, url} pairs, urls made absolute. The shared body of the standalone
  * itemList() script and the CollectionPage's `mainEntity`, so a ListItem's shape

@@ -43,7 +43,7 @@
 	import { createReaderText } from '$lib/readerText.svelte';
 	import ReaderOverlays from '$lib/components/ReaderOverlays.svelte';
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
-	import { jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
+	import { jsonLd, breadcrumbLd, hreflangFor, truncateMeta } from '$lib/seo';
 	import { localizeHref } from '$lib/href';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import Seo from '$lib/components/Seo.svelte';
@@ -89,9 +89,18 @@
 			.replace(/&gt;/g, '>')
 			.replace(/&nbsp;/g, ' ')
 			.replace(/&amp;/g, '&')
-			.replace(/\s+/g, ' ')
-			.trim()
-			.slice(0, 250)
+	);
+	// Trimmed to a SERP-sized slice at a sentence/word boundary — the raw 250
+	// char cut fed search snippets a mid-word truncation.
+	const metaText = $derived(truncateMeta(metaDescription));
+	// The <title> names the chapter, then the book AND its author — people search
+	// "<author> <book> chapter 1", and the author was missing. Localized via
+	// chapter_title_tag (mirrors book_title_tag), so each locale's "by" is right.
+	const titleTag = $derived(
+		t('chapter.titleTag')
+			.replace('%chapter%', chapterName(chapter.order, chapter.title))
+			.replace('%title%', chapter.book_title)
+			.replace('%name%', chapter.author_name)
 	);
 	const chapterLd = $derived(
 		jsonLd({
@@ -107,7 +116,17 @@
 			},
 			url: canonical,
 			isAccessibleForFree: true,
-			inLanguage: getLang()
+			inLanguage: getLang(),
+			// The chapter's own measure and its author as an entity (not just a name
+			// buried in isPartOf), plus the publisher — so the chapter node stands on
+			// its own in the graph rather than being an unsized fragment of the book.
+			wordCount: chapter.word_count || undefined,
+			author: {
+				'@type': 'Person',
+				name: chapter.author_name,
+				url: `${SITE_URL}${localizeHref(`/authors/${chapter.author_slug}/`)}`
+			},
+			publisher: { '@type': 'Organization', name: 'Ochorus' }
 		})
 	);
 
@@ -1169,12 +1188,11 @@
 </script>
 
 <Seo
-	title="{chapterName(chapter.order, chapter.title)} — {chapter.book_title} — Ochorus"
-	description={metaDescription}
+	title={titleTag}
+	description={metaText}
 	{canonical}
 	{hreflang}
 	ogType="article"
-	ogTitle="{chapterName(chapter.order, chapter.title)} — {chapter.book_title}"
 	structuredData={[chapterLd, crumbsLd]}
 />
 <svelte:window
