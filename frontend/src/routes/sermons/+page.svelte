@@ -23,6 +23,10 @@
 	const sermons = $derived<SermonSummary[]>(data.sermons);
 	const loadError = $derived<boolean>(data.loadError);
 
+	// How much is on the shelf, for the header counts line — over the WHOLE shelf,
+	// not the current filter (it describes the library, like the Books header).
+	const preacherCount = $derived(new Set(sermons.map((s) => s.author.slug)).size);
+
 	// Self-referential canonical: each localized copy of this prerendered page
 	// points at ITSELF, not the English URL (which would deindex translations).
 	const canonical = `${SITE_URL}${localizeHref('/sermons')}`;
@@ -166,7 +170,21 @@
 />
 
 <div class="page-col px-5 py-10">
-	<PageHeader eyebrow={t('nav.sermons')} title={t('sermons.title')} tagline={t('sermons.tagline')} />
+	<PageHeader
+		eyebrow={t('nav.sermons')}
+		title={t('sermons.title')}
+		tagline={t('sermons.tagline')}
+		meta={sermons.length ? sermonCounts : undefined}
+	/>
+	<!-- "N sermons · M preachers" — the same counts line the Books shelf carries,
+	     using authors as the second count (the writers behind the sermons). -->
+	{#snippet sermonCounts()}
+		{sermons.length}
+		{sermons.length === 1 ? t('common.sermonOne') : t('common.sermonMany')}
+		<span class="opacity-50">·</span>
+		{preacherCount}
+		{preacherCount === 1 ? t('common.authorOne') : t('common.authorMany')}
+	{/snippet}
 
 	<CatalogLanguageNudge kind="sermons" localizedCount={sermons.length} />
 
