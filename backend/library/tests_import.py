@@ -1128,6 +1128,32 @@ class CcelVolumeFurnitureTests(TestCase):
         self.assertNotIn("Men of Prayer Needed", out)
         self.assertIn("Study universal holiness", out)
 
+    def test_clean_title_strips_an_anf_chapter_argument_prefix(self):
+        # ANF heads each chapter "Chapter I.—<argument>", abutting the em-dash
+        # with no space; the reader prints the number itself, so the prefix must
+        # go or it renders "1. Chapter I.—…". A real "Chapter Summary" (no
+        # counter) is left alone.
+        from library.ingest import clean_title
+
+        self.assertEqual(clean_title("Chapter I.—The salutation"), "The salutation")
+        self.assertEqual(clean_title("Chapter XLIII.—Moses of old"), "Moses of old")
+        self.assertEqual(clean_title("Chapter Summary"), "Chapter Summary")
+
+    def test_an_anf_argument_heading_is_dropped_against_its_full_title(self):
+        # The body repeats its "Chapter I.—<argument>" heading. The importer
+        # passes the FULL argument title (before summary_titles shortens the
+        # STORED title), and _compared sets aside the heading's "chapter i" the
+        # way clean_title strips it from the title — so the two match and the
+        # heading goes. Without either half the argument leaks before the prose.
+        out = self._body(
+            "<div id='theText'><h2>Chapter I.—The salutation. Praise of the Corinthians.</h2>"
+            "<p>The Church of God which sojourns at Rome.</p></div>",
+            "The salutation. Praise of the Corinthians.",
+        )
+        self.assertNotIn("Chapter I", out)
+        self.assertNotIn("salutation", out)
+        self.assertIn("The Church of God which sojourns at Rome", out)
+
     def test_a_heading_that_is_not_the_title_survives_its_leading_number(self):
         # The leading number must not make any heading disposable — only one
         # that restates the chapter's own title.
