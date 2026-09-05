@@ -226,6 +226,7 @@ TOPIC_ARTICLES = {
         "the-morning-watch",
         "augustines-confessions-guide",
         "how-to-pray-for-revival",
+        "george-mueller-and-the-god-who-answers-prayer",
     ],
     "holy-spirit": [
         "what-is-the-baptism-of-the-holy-spirit",
@@ -246,6 +247,12 @@ TOPIC_ARTICLES = {
         "what-is-the-kingdom-of-god",
         "how-to-read-the-bible-for-beginners",
         "how-to-wait-on-god",
+        "how-to-grow-in-your-faith",
+        "how-to-be-content",
+        "how-to-walk-in-humility",
+        "how-to-memorize-scripture",
+        "absolute-surrender-guide",
+        "the-christians-secret-of-a-happy-life-guide",
     ],
     "grace-and-comfort": [
         "how-to-trust-god-in-suffering",
@@ -256,6 +263,10 @@ TOPIC_ARTICLES = {
         "what-is-the-love-of-god",
         "how-to-overcome-doubt",
         "how-to-find-comfort-in-grief-and-loss",
+        "how-to-be-content",
+        "how-to-deal-with-guilt-and-shame",
+        "john-newton-from-slave-trader-to-amazing-grace",
+        "corrie-ten-boom-forgiveness-in-the-darkness",
     ],
     "revival-and-missions": [
         "what-is-revival-and-how-does-it-begin",
@@ -269,6 +280,8 @@ TOPIC_ARTICLES = {
         "personal-revival-reviving-a-cold-heart",
         "revival-and-repentance-breaking-up-the-fallow-ground",
         "how-to-share-your-faith",
+        "the-life-and-diary-of-david-brainerd-guide",
+        "william-carey-father-of-modern-missions",
     ],
     "faith-and-guidance": [
         "how-to-find-gods-will-for-your-life",
@@ -278,6 +291,8 @@ TOPIC_ARTICLES = {
         "how-to-read-the-bible-for-beginners",
         "how-to-overcome-doubt",
         "how-to-wait-on-god",
+        "how-to-grow-in-your-faith",
+        "george-mueller-and-the-god-who-answers-prayer",
     ],
     "the-gospel-call": [
         "how-to-be-born-again",
@@ -293,6 +308,12 @@ TOPIC_ARTICLES = {
         "what-is-the-trinity",
         "what-is-the-kingdom-of-god",
         "how-to-share-your-faith",
+        "how-to-deal-with-guilt-and-shame",
+        "grace-abounding-guide",
+        "on-the-incarnation-guide",
+        "charles-spurgeon-the-prince-of-preachers",
+        "john-newton-from-slave-trader-to-amazing-grace",
+        "william-carey-father-of-modern-missions",
     ],
     "the-way-of-holiness": [
         "what-is-sanctification",
@@ -303,6 +324,9 @@ TOPIC_ARTICLES = {
         "the-imitation-of-christ-guide",
         "revival-and-repentance-breaking-up-the-fallow-ground",
         "what-is-repentance",
+        "how-to-walk-in-humility",
+        "how-to-memorize-scripture",
+        "corrie-ten-boom-forgiveness-in-the-darkness",
     ],
     "enduring-classics": [
         "pilgrims-progress-guide",
@@ -310,12 +334,18 @@ TOPIC_ARTICLES = {
         "augustines-confessions-guide",
         "sinners-in-the-hands-of-an-angry-god-explained",
         "what-is-the-trinity",
+        "absolute-surrender-guide",
+        "the-christians-secret-of-a-happy-life-guide",
+        "the-life-and-diary-of-david-brainerd-guide",
+        "grace-abounding-guide",
+        "on-the-incarnation-guide",
     ],
     "the-preached-word": [
         "how-to-know-if-god-is-calling-you-to-ministry",
         "what-makes-a-godly-leader",
         "sinners-in-the-hands-of-an-angry-god-explained",
         "what-is-the-church",
+        "charles-spurgeon-the-prince-of-preachers",
     ],
 }
 
