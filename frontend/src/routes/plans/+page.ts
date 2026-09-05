@@ -1,3 +1,10 @@
+// prerender refresh 2026-09-05 (grace/power complete in pt): the three new pt books
+// finish two curated plans. a-call-to-the-unconverted + all-of-grace complete
+// grace-for-every-sinner (O Caminho para Deus, 35 days; the-way-to-god was already
+// pt); the-person-and-work-of-the-holy-spirit completes power-from-on-high (Poder do
+// Alto, 27 days; baptism-with-the-holy-spirit was already pt). The pt prose already
+// lived in plan_translations/pt.json, so seed_plans now creates both (slug, pt) rows
+// and /pt/plans re-crawls to bake the two new cards.
 // prerender refresh 2026-09-05: Luganda plan prose added — deeper-life-in-christ
 // (#1212) in data/plan_translations/lg.json. DORMANT (its source books
 // the-masters-indwelling / union-and-communion are not yet in Luganda).

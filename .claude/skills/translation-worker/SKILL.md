@@ -2051,3 +2051,53 @@ archaic spelling and period punctuation are the text, not defects in it.
   span-replace + re-derive, not a re-translation. Same shape as #515; the fix is
   "match the wording the language already uses, or fix the older work if the new one
   is right", and which is right is decided by the language's own Bible.
+- **`pythonbible.get_references(text)` RAISES on a malformed citation (`ValueError:
+  invalid literal for int()`), and it takes the whole chapter's crib to zero** —
+  wrap it per chapter in try/except → `[]` when building cribs (2026-09-05, hit on
+  a-call-to-the-unconverted / the-person-and-work; one bad `Book :` in the prose
+  killed detection for the entire chapter otherwise). The translators still flag
+  every quotation, so a chapter that loses its detected crib degrades to
+  self_rendered rather than losing scripture — but only if the builder survives the
+  raise instead of aborting the run.
+- **In a T–V language (pt/es/…), an EVANGELISTIC book that addresses the reader
+  directly will drift in FORMALITY across fan-out chapters — você vs tu vs vós —
+  and it is a per-book reconciliation, distinct from divine-name casing** (pt
+  grace/power batch, 2026-09-05: Spurgeon's *All of Grace*, 20 chapters). English
+  "you" is register-neutral, so each translator picks a Portuguese address
+  independently: 17 of 20 chapters landed on **você**, one on **tu**, one on
+  **vós** — each internally consistent, each passing its own tag/quote/ratio
+  gate, but the book as a whole reads in three registers. Baxter's *A Call*
+  (same batch) did NOT drift because its brief pinned the register up front and
+  every chapter's report confirmed it — so **state the reader-address register
+  in the brief for any book that preaches at the reader** (Moody, Spurgeon,
+  Baxter, Finney…), the way you state the quote style. To detect it after the
+  fact, count `\bvocê`, tu-possessives (`teu|tua|contigo`) and vós-forms
+  (`vós|vosso|-ai` verbs) per chapter over the tag-stripped body; the outliers
+  stand out by an order of magnitude. To fix it, dispatch one reconciliation
+  agent per outlier chapter to convert the reader-directed address to the
+  majority register — **tu/vós survive ONLY inside quoted scripture and direct
+  prayers to God** (porbrbsl's own register), which the agent must preserve, and
+  the ordered tag sequence must stay byte-identical (it is a pronoun/verb-form
+  edit, not a structural one). Two agents fixed this book; re-validate afterwards.
+- **The verse-consistency ratchet has TWO exits, and a batch usually needs both**
+  (pt grace/power batch, 2026-09-05: 6 references flagged at once). It is a
+  shrink-only baseline in `library/data/verse_consistency_baseline.json`; a new or
+  widened divergence fails `test_no_new_or_widened_divergence`. `manage.py
+  audit_verse_consistency --language pt` prints every rendering. For each flag,
+  decide which exit: (1) **REAL divergence** — same clause, your new book is
+  porbrbsl and an older `ai_unreviewed` work is an inferior rendering: surgically
+  replace the older work's quoted span with porbrbsl (re-derive body_text +
+  word_count, re-render canonically), and the two converge to one rendering — this
+  is where 4 of the 6 went. Note `_diverges` EXCLUDES containment, so making the
+  older span a substring of yours (or identical) is enough; you do not have to
+  match the quote's full extent. (2) **GENUINE different clause/extent** — the two
+  works quote different PARTS of the verse (Atos 9:5: "kick against the pricks"
+  [KJV/Baxter, actually critical-text 26:14] vs "who art thou?"; Efésios 1:21: a
+  short welded "exaltou Jesus…domínio" vs the full verse): these cannot be
+  reconciled without falsifying a quotation, so pin them with `manage.py
+  audit_verse_consistency --update-baseline` and JUSTIFY each grown count in the
+  commit (the diff should touch only the references you intend — 2 lines here).
+  Fix the REAL ones first, then `--update-baseline`, so the baseline grows by
+  exactly the genuine cases and nothing accidental. `test_baseline_shrinks_only`
+  is the other guard: a reference you reconciled that was previously pinned must be
+  re-pinned DOWN by the same `--update-baseline`, or it fails for loosening.

@@ -816,6 +816,20 @@
 			"art": true,
 			"scrim": 0.45
 		},
+		"pt/a-call-to-the-unconverted": {
+			"ground": "dad4dd6b6f8244224cedc3b9e5864c187b55d8e59211d6181448237f31297b25",
+			"style": "press",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7
+		},
+		"pt/all-of-grace": {
+			"ground": "21179941fa311850e8b8cf29e4c28f959cb0b3c05ff869161d44a551d263ea4e",
+			"style": "revival",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7
+		},
 		"pt/baptism-with-the-holy-spirit": {
 			"ground": "c3c7eb75b165428995460d77ad651bd299f9dbeab08596e7e2dfd068dbcd597b",
 			"style": "revival",
@@ -906,6 +920,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.55
+		},
+		"pt/the-person-and-work-of-the-holy-spirit": {
+			"ground": "a9a099b95f1b159f65c56f8fcbeeb176fde48708b793db86829ea0e148460290",
+			"style": "revival",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.9
 		},
 		"pt/the-unselfishness-of-god": {
 			"ground": "79910f0fe5615fc77c65418d3147f7ee2ac1577de608478af34b80eebb49fd4f",

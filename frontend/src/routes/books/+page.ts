@@ -8,6 +8,12 @@
 // only curated plan they touch is power-from-on-high, whose second source book
 // (the-person-and-work-of-the-holy-spirit) still has no Hindi edition. Whoever ships
 // that book completes the plan and owes the plans touch in the same PR.
+// prerender refresh 2026-09-05 (grace/power plans complete): three new Portuguese
+// books — Baxter's Um Chamado aos Não Convertidos (a-call-to-the-unconverted, 6 ch),
+// Spurgeon's Tudo pela Graça (all-of-grace, 20 ch) and Torrey's A Pessoa e Obra do
+// Espírito Santo (the-person-and-work-of-the-holy-spirit, 22 ch). Rebuilds /pt/books.
+// All three back curated plans whose pt prose already shipped, so plans/+page.ts is
+// refreshed in the same PR — grace-for-every-sinner and power-from-on-high go live.
 // prerender refresh 2026-09-05: the first Hindi book since the ten-book batch —
 // prayer-the-pulse-of-life (#1118), Hannah Buyinza, 12 chapters. Rebuilds
 // /hi/books so the shelf card carries the translated title and its localized
