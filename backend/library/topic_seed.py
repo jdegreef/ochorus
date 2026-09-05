@@ -306,7 +306,6 @@ TOPIC_ARTICLES = {
         "how-to-deal-with-guilt-and-shame",
         "grace-abounding-guide",
         "on-the-incarnation-guide",
-        "on-the-incarnation-guide",
     ],
     "the-way-of-holiness": [
         "what-is-sanctification",
@@ -335,7 +334,6 @@ TOPIC_ARTICLES = {
         "religious-affections-guide",
         "mortification-of-sin-guide",
         "the-bruised-reed-guide",
-        "on-the-incarnation-guide",
     ],
     "the-preached-word": [
         "how-to-know-if-god-is-calling-you-to-ministry",
