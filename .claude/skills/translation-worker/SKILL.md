@@ -2007,3 +2007,47 @@ archaic spelling and period punctuation are the text, not defects in it.
   against its model `max_length` (Sermon.scripture_ref is 160, title 300,
   slug 180; TranslationNote.reference 64, source_file 200), since the local suite
   will not.
+- **pt BOOKS MIRROR their English source's marks and register — the opposite of
+  es/uk books, which convert** (three-book pt batch, 2026-09-05:
+  prevailing-prayer / the-masters-indwelling / union-and-communion, 34 ch). Three
+  measured facts, each settled by counting the shipped pt corpus, not guessed:
+  (1) **band** — over all 264 shipped pt book chapters, p05 0.923 / p95 1.032 /
+  mean 0.980, i.e. Portuguese runs ~1:1 (this batch landed 0.902–1.005); (2)
+  **quote style** — 12 of 14 shipped pt books keep their source's marks
+  (curly→curly), so pt joins sw-sermons / hi-bios as a MIRROR (language × type),
+  never the « » CONVERT that es and uk books use — measure your own source (all
+  three here were curly-only → curly pt); (3) **divine names** — pt mirrors the
+  source's small-caps as uppercase (godliness 7→7, the-inner-chamber 26→25), so a
+  Taylor/Murray book whose English prints reverent LORD/CHRIST/KING ships
+  SENHOR/CRISTO/REI **uppercase**. Fan-out drifts on (3): 2 of 10 union chapters
+  downcased them and needed a casing-only reconciliation agent (align each PT
+  divine word to the position of an ALL-CAPS English one; change case only, assert
+  the tag sequence is byte-identical). **porbrbsl** (Bíblia Livre, PD Almeida) is
+  the pt Bible and IS reachable from James's Mac — `fetch_verse_text('porbrbsl', …)`
+  answers — but Moody's *Prevailing Prayer* quotes scripture with almost no
+  `Book C:V` citations, so `pythonbible` finds ~nothing and the per-chapter crib
+  comes back empty; brief the translators to flag every quotation
+  `Book C:V @ blockN | self` and record those `self_rendered` in the notes.
+- **A body that opens by RESTATING its title trips RestatedChapterHeadingTests,
+  and stripping the heading from the TRANSLATION alone then fails the
+  block-for-block markup gate** (union-and-communion ch01, 2026-09-05). The
+  English opened `<h2>FORWARD</h2>` under the (corrected) title "Foreword" — an
+  OCR typo, so `strip_restated_heading` did NOT flag the English (FORWARD ≠
+  Foreword), but the faithful pt "PREFÁCIO" matched "Prefácio" and did. Two gates
+  now pull opposite ways: the restated guard wants the pt heading gone,
+  `tests_translation_markup` wants pt to match en block-for-block (en keeps its
+  `<h2>`). Resolve by stripping the redundant heading from BOTH en and pt (re-derive
+  `body_text` + `word_count` for each), so the editions stay parallel AND neither
+  restates. Do NOT pin it in `KNOWN_CHAPTER_GAPS` — that set is explicitly for
+  divergences "awaiting re-translation", which an intentional strip is not.
+- **The verse-consistency ratchet catches a NEW translation quoting a verse the
+  language already renders another way — fix the older `ai_unreviewed` work to the
+  authoritative Bible in the same PR** (2026-09-05). Shipping union-and-communion.pt
+  made João 15:11 diverge (0→2 pt renderings): my edition used porbrbsl verbatim
+  ("…a minha alegria permaneça em vocês…") while the shipped the-key-in-my-hand.pt
+  used an older Almeida form ("…o meu gozo esteja em vós…"). `audit_verse_consistency
+  --language pt` prints both; porbrbsl is the library's pt Bible, so mine was right
+  and the older (still `ai_unreviewed`) work was aligned to it — a surgical
+  span-replace + re-derive, not a re-translation. Same shape as #515; the fix is
+  "match the wording the language already uses, or fix the older work if the new one
+  is right", and which is right is decided by the language's own Bible.
