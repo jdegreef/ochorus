@@ -16,6 +16,21 @@ sibling) and the `articles-section` memory.
 Everything below assumes a worktree off `origin/main` and `backend/` with
 `DJANGO_DEBUG=true uv run`.
 
+## No biographies in /articles (a person's life story goes on the author page)
+
+A biography of a person — a "who was X" / person-and-theme life story — belongs
+in the **biography section**, on that person's **author page** (`/authors/<slug>`,
+written with [[write-biography]]), **never as an article**. Articles are about
+*topics, questions, and works* (what is grace, how to pray, a guide to a book),
+not about *people's lives*. Eight biography-articles were once written this way
+and had to be retired (PRs #1547/#1549) because they duplicated the author-page
+bios and split search authority. If someone asks for an article about a person,
+write or improve their author-page biography instead, and — if the topic
+warrants an article — write it around the *theme* (e.g. "how to trust God for
+provision"), funnelling to that author's page and works rather than retelling
+their life. `tests_fixture.NoBiographyArticlesTests` locks out the retired slugs;
+keep new person-lives out of `/articles` entirely.
+
 ## What a good article is
 
 - **1500–2000 words.** Verified, not eyeballed (see the word-count gotcha).

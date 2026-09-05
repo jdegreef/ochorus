@@ -41,6 +41,7 @@ from django.conf import settings
 from django.test import SimpleTestCase
 
 from library.content_fixtures import (
+    ARTICLES_DIR,
     AUTHORS_FILE,
     BOOKS_DIR,
     PLANS_FILE,
@@ -2841,4 +2842,42 @@ class ReleaseProseSourceCoverageTests(SimpleTestCase):
             stale,
             [],
             f"NOT_READER_PROSE names modules the release chain no longer reaches: {stale}",
+        )
+
+
+class NoBiographyArticlesTests(SimpleTestCase):
+    """Biographies belong on author pages, never in /articles.
+
+    A person's life story is written with the ``write-biography`` skill and
+    rendered on ``/authors/<slug>``; articles are about topics, questions and
+    works, not people's lives. Eight biography-articles were once written and
+    had to be retired (migrations 0118/0119, PRs #1547/#1549) because they
+    duplicated the author-page bios and split search authority. This guard keeps
+    those exact slugs from creeping back as article fixtures. New person-lives
+    must not be added as articles at all — see the write-article skill.
+    """
+
+    RETIRED = frozenset({
+        "george-mueller-and-the-god-who-answers-prayer",
+        "charles-spurgeon-the-prince-of-preachers",
+        "john-newton-from-slave-trader-to-amazing-grace",
+        "william-carey-father-of-modern-missions",
+        "corrie-ten-boom-forgiveness-in-the-darkness",
+        "hudson-taylor-trusting-god-for-the-impossible",
+        "amy-carmichael-and-the-cost-of-love",
+        "samuel-crowther-from-captive-to-bishop",
+    })
+
+    def test_retired_biography_articles_do_not_return(self):
+        present = sorted(
+            p.name
+            for slug in self.RETIRED
+            for p in ARTICLES_DIR.glob(f"{slug}.*.json")
+        )
+        self.assertEqual(
+            present,
+            [],
+            "Biographies belong on the author page, not in /articles — these "
+            "retired biography-article fixtures must not be re-added: "
+            f"{present}",
         )

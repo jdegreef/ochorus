@@ -254,6 +254,9 @@ TOPIC_ARTICLES = {
         "how-to-memorize-scripture",
         "absolute-surrender-guide",
         "the-christians-secret-of-a-happy-life-guide",
+        "what-is-worship",
+        "how-to-find-rest-for-your-soul",
+        "what-is-spiritual-warfare",
     ],
     "grace-and-comfort": [
         "how-to-trust-god-in-suffering",
@@ -266,6 +269,8 @@ TOPIC_ARTICLES = {
         "how-to-find-comfort-in-grief-and-loss",
         "how-to-be-content",
         "how-to-deal-with-guilt-and-shame",
+        "how-to-find-rest-for-your-soul",
+        "what-does-the-bible-say-about-the-end-times",
     ],
     "revival-and-missions": [
         "what-is-revival-and-how-does-it-begin",
@@ -305,6 +310,8 @@ TOPIC_ARTICLES = {
         "how-to-deal-with-guilt-and-shame",
         "grace-abounding-guide",
         "on-the-incarnation-guide",
+        "what-does-the-bible-say-about-the-end-times",
+        "what-is-baptism",
     ],
     "the-way-of-holiness": [
         "what-is-sanctification",
@@ -317,6 +324,11 @@ TOPIC_ARTICLES = {
         "what-is-repentance",
         "how-to-walk-in-humility",
         "how-to-memorize-scripture",
+        "what-is-worship",
+        "how-to-overcome-anger",
+        "how-to-honor-god-with-your-money",
+        "what-is-spiritual-warfare",
+        "how-to-love-your-enemies",
     ],
     "enduring-classics": [
         "pilgrims-progress-guide",
