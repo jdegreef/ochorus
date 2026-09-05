@@ -1,5 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { absUrl, jsonLd, breadcrumb, breadcrumbLd, hreflangFor, itemList } from './seo';
+import {
+	absUrl,
+	jsonLd,
+	breadcrumb,
+	breadcrumbLd,
+	collectionPage,
+	hreflangFor,
+	itemList
+} from './seo';
 import { SITE_URL } from './config';
 
 describe('absUrl', () => {
@@ -118,6 +126,37 @@ describe('itemList', () => {
 		const out = itemList('Empty', []);
 		expect(out.startsWith('<script type="application/ld+json">')).toBe(true);
 		expect(out.endsWith('</script>')).toBe(true);
+	});
+});
+
+describe('collectionPage', () => {
+	it('wraps the works as an ItemList hung off the page entity', () => {
+		const out = collectionPage({
+			name: 'Sermons',
+			description: 'Classic Christian sermons.',
+			url: `${SITE_URL}/sermons`,
+			items: [
+				{ name: 'Christ All in All', url: '/sermons/christ-all-in-all' },
+				{ name: 'Himself', url: '/sermons/himself' }
+			]
+		});
+		const inner = out.replace(/^<script[^>]*>/, '').replace(/<\/script>$/, '');
+		const data = JSON.parse(inner.replace(/\\u003c/g, '<'));
+		expect(data['@type']).toBe('CollectionPage');
+		// url is an already-absolute canonical — passed through, not double-slashed.
+		expect(data.url).toBe(`${SITE_URL}/sermons`);
+		expect(data.isAccessibleForFree).toBe(true);
+		// The list lives as mainEntity, not a floating top-level graph, and its
+		// items reuse itemList()'s positioned-ListItem shape with absolute URLs.
+		expect(data.mainEntity['@type']).toBe('ItemList');
+		expect(data.mainEntity.numberOfItems).toBe(2);
+		expect(data.mainEntity.itemListElement[0]).toMatchObject({
+			position: 1,
+			name: 'Christ All in All',
+			url: `${SITE_URL}/sermons/christ-all-in-all/`
+		});
+		// The embedded list carries no name of its own — the CollectionPage names it.
+		expect(data.mainEntity.name).toBeUndefined();
 	});
 });
 
