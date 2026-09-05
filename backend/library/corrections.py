@@ -652,10 +652,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # key on. Nothing is invented but that one word.
         #
         # NOT `source_fixes`: the parentheses are what the extractor made of a
-        # link, not what Murray printed. `normalize_english_fixture` is
-        # English-only, so the hi fixture was settled by hand in the same
-        # commit; `apply_body_corrections` visits every language's stored rows
-        # on every deploy, so production repairs both.
+        # link, not what Murray printed. The hi fixture was settled by hand in
+        # the same commit — see the translation-fixture failure mode in the
+        # `english-qa` skill for why nothing in the repo does that for you.
         "replacements": [
             ('<h3>Transcriber’s Notes</h3><p>Minor errors and inconsistencies in punctuation and hyphenation have been silently corrected.</p> <p>On page , the heading “What the Health that Jesus Offers.” is as in the original text.</p> <p>As explained in the section on , on each daily page in the tract “Pray Without Ceasing”, several lines are ruled to leave room for “SPECIAL PETITIONS”. These are hidden on screen in this version, but can be displayed by following the instructions in the file header. The ruled lines will be displayed if the text is printed.</p>', ""),
             ("May God discover this to us. ()", "May God discover this to us. (Note A.)"),
