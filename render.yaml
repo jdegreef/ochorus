@@ -206,6 +206,23 @@ services:
       - path: /*
         name: Permissions-Policy
         value: "geolocation=(), camera=(), microphone=(), payment=(), usb=()"
+      # Everything ships `max-age=0, s-maxage=300` today, which is right for HTML
+      # (a prerendered page must revalidate so a redeploy is seen) but wasteful
+      # for the build's own assets: files under /_app/immutable/ carry a content
+      # hash in their name (Vite/SvelteKit renames them whenever their bytes
+      # change), so the browser can hold them forever with no staleness risk.
+      # Lighthouse reported "0 resources with an efficient cache policy" — this
+      # is the fix, and it cuts the JS/CSS re-fetch off every repeat visit and
+      # every SPA navigation. A more specific path wins over /* on Render, so
+      # this overrides the blanket rule for these files only.
+      #
+      # NOT extended to /covers, /portraits, /og: those names are STABLE (slug
+      # based, not hashed), so a redrawn cover reuses its URL — `immutable` would
+      # pin the old image in browsers that saw it. Giving them a moderate
+      # max-age is a separate call with a staleness cost; left as is for now.
+      - path: /_app/immutable/*
+        name: Cache-Control
+        value: "public, max-age=31536000, immutable"
 
     routes:
       # Legacy WordPress URLs (ochorus.com was a WordPress site before this app
