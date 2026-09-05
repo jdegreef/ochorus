@@ -2101,3 +2101,18 @@ archaic spelling and period punctuation are the text, not defects in it.
   exactly the genuine cases and nothing accidental. `test_baseline_shrinks_only`
   is the other guard: a reference you reconciled that was previously pinned must be
   re-pinned DOWN by the same `--update-baseline`, or it fails for loosening.
+- **Fan-out agents that write a GENERICALLY-NAMED helper script into the shared
+  scratchpad clobber each other — tell them to name it per-slug or not at all**
+  (pt author-bio batch, 2026-09-05). Two of twelve concurrent bio agents
+  independently created `<scratchpad>/build.py` to assemble their output JSON;
+  running in one shared dir, a later agent's `build.py` overwrote an earlier
+  one's, and athanasius's FIRST execution ran another author's script and wrote
+  chrysostom/owen content into `out/athanasius.json`. It self-healed only because
+  that agent re-ran from a uniquely-named script and re-verified — nothing forced
+  it to. The output files themselves were slug-scoped and safe (`out/<slug>.json`);
+  it was the transient HELPER that collided. Two cheap defenses: in the brief, say
+  "if you write a helper script, name it `<slug>.py`, never a generic name," and
+  after the batch run an IDENTITY check (each `out/<slug>.json`'s content actually
+  belongs to that slug — a distinctive name token from the input appears in the
+  output, allowing for localized forms) before shipping, not just a tag/ratio
+  check. A tag-count-and-ratio-clean file can still be the WRONG author.
