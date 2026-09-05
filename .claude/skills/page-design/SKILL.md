@@ -81,8 +81,9 @@ In this order, and nothing else at the top level:
     (em dash). Description falls back to a localized string, never empty.
 
 **No visible breadcrumb** on a top-level shelf. Biographies removed its trail
-with the reason on file; Quotes, Scripture and Articles still carry one and
-should not. Keep the BreadcrumbList JSON-LD.
+first, with the reason on file; Quotes, Scripture and Articles followed in
+#1430, so none of the shelves shows one now. Keep the BreadcrumbList JSON-LD —
+build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
 
 ## Anatomy of a leaf page
 
@@ -283,10 +284,10 @@ relevant group.
   in `Seo.svelte` so nobody types it.
 - [x] **A5** _(shipped #1419)_ Five browse pages hand-write `<svelte:head>` (books, biographies,
   topics, plans, sermons); five use `<Seo>`. → `<Seo>`.
-- [ ] **A6** Quotes/Scripture/Articles indexes show a `Home › X` breadcrumb;
+- [x] **A6** _(shipped #1430 — visible trail dropped from the three index hubs, JSON-LD kept)_ Quotes/Scripture/Articles indexes show a `Home › X` breadcrumb;
   the nav'd shelves don't (Biographies removed it, reason on file). → drop the
   visible trail, keep JSON-LD.
-- [ ] **A7** Author, Sermon and Reader hand-roll their breadcrumb `<nav>` with
+- [x] **A7** _(shipped #1430 — one `crumbs` array feeds both `<Breadcrumb>` and the head on Author/Sermon/Reader; JSON-LD side then folded into `breadcrumbLd(crumbs)` in #1431)_ Author, Sermon and Reader hand-roll their breadcrumb `<nav>` with
   three different trails (with/without Home, with/without the current item);
   Sermon's visible trail contradicts its BreadcrumbList. → `<Breadcrumb>` with
   one `crumbs` array feeding both (Book).
@@ -474,6 +475,6 @@ relevant group.
    visible jump per line changed.
 2. **C1 + C2 + C3** — the only items that strand a reader.
 3. **B1 + B2 + B3** — one `urlFilters` call and a `FilterSummary` each.
-4. **A7 + A8 + D11 + D12** — leaf heads, and the unreviewed-translation gap.
+4. **A8 + D12** — leaf heads, and the unreviewed-translation gap (A7 shipped #1430; D11 shipped #1427).
 5. **D1 + D2** — heading sizes; touches many files, best as its own PR.
 6. **G2** — the guards, so none of the above regresses.
