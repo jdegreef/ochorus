@@ -266,6 +266,7 @@ TOPIC_ARTICLES = {
         "how-to-find-comfort-in-grief-and-loss",
         "how-to-be-content",
         "how-to-deal-with-guilt-and-shame",
+        "the-bruised-reed-guide",
     ],
     "revival-and-missions": [
         "what-is-revival-and-how-does-it-begin",
@@ -305,6 +306,7 @@ TOPIC_ARTICLES = {
         "how-to-deal-with-guilt-and-shame",
         "grace-abounding-guide",
         "on-the-incarnation-guide",
+        "on-the-incarnation-guide",
     ],
     "the-way-of-holiness": [
         "what-is-sanctification",
@@ -317,6 +319,7 @@ TOPIC_ARTICLES = {
         "what-is-repentance",
         "how-to-walk-in-humility",
         "how-to-memorize-scripture",
+        "mortification-of-sin-guide",
     ],
     "enduring-classics": [
         "pilgrims-progress-guide",
@@ -329,12 +332,17 @@ TOPIC_ARTICLES = {
         "the-life-and-diary-of-david-brainerd-guide",
         "grace-abounding-guide",
         "on-the-incarnation-guide",
+        "religious-affections-guide",
+        "mortification-of-sin-guide",
+        "the-bruised-reed-guide",
+        "on-the-incarnation-guide",
     ],
     "the-preached-word": [
         "how-to-know-if-god-is-calling-you-to-ministry",
         "what-makes-a-godly-leader",
         "sinners-in-the-hands-of-an-angry-god-explained",
         "what-is-the-church",
+        "religious-affections-guide",
     ],
 }
 
