@@ -476,6 +476,32 @@ dropped; chapters under 120 words are dropped as stubs.
     is untouched (I didn't re-import it), so prod is unchanged; a deliberate
     re-import + a `0092`-style strip-restated-headings migration would ship that
     cleanup as its own change. *(2026-09)*
+  - **A work in TWO RECENSIONS printed on the SAME leaf pages cannot be split by
+    stem — find a single-recension source instead.** Ignatius's genuine seven
+    epistles exist in a shorter (authentic) and longer (interpolated) recension,
+    and CCEL's ANF `schaff/anf01` prints BOTH on every chapter leaf, one after
+    the other, with no per-block label — so any `part=anf01.v.…` scope doubles
+    every chapter (the shorter is always the first `<p>`, but "keep the first
+    `<p>`" is fragile: some chapters are single-block, and a multi-paragraph
+    shorter would truncate). The clean fix was a different PD translation:
+    **CCEL `lightfoot/fathers`** (J. B. Lightfoot's *Apostolic Fathers*, d. 1889)
+    gives the genuine seven as one clean single-recension page each
+    (`fathers.ii.iii`–`fathers.ii.ix`), imported one-chapter-per-epistle with a
+    `build_<name>` command. Note Lightfoot renders καθολικὴ (Smyrn. 8) as
+    "universal Church," not "catholic" — match whatever the chosen translation
+    says when you quote it elsewhere (e.g. in a bio or life chapter).
+    *(epistles-of-ignatius, 2026-09)*
+  - **A build command that mixes FETCHED text with ORIGINAL prose must commit the
+    original in the repo, not read it from `/tmp`.** *The Epistles of Ignatius*
+    opens with five hand-written "life story" chapters; the first cut read them
+    from the `/tmp` scratch dir the writer wrote to, so the build aborted on any
+    fresh checkout and the only surviving copy of that original prose was the
+    generated fixture (caught in code review). Commit editorial source beside the
+    command (`library/management/commands/data/<slug>/…`, read via
+    `Path(__file__).resolve().parent / "data" / …`) — the same rule the Gleanings
+    / Enchiridion builds follow by holding their editorial content as module
+    constants. Fetched public-domain text can come off the wire; anything you
+    wrote yourself has to be in the repo. *(epistles-of-ignatius, 2026-09)*
   - **Fixing the bodies of an ALREADY-SHIPPED book needs a data migration, not
     just a fixture edit.** `seed_books` never re-syncs the chapters of a book it
     has already created (chapter `order` is a public contract), so a re-chapterize
