@@ -280,6 +280,12 @@ DERIVED_GROUND: dict[str, Ground] = {
     "the-key-in-my-hand": Ground(0.26, 0.60, 0.02, 1.05,
         source="3e1a5e8c26072334f96a3a1039808ab24d0e749aad148613c23948c987fb1b62",
     ),
+    # A dusk seascape: the band between the lower title rule (~0.57) and the
+    # Ochorus wordmark on the water (~0.88) is pure sunset over sea — sky
+    # gradient into the sun's glow, no words. Full-bleed photo, so inset 0.02.
+    "the-masters-indwelling": Ground(0.58, 0.83, 0.02, 1.12, sky=0.30,
+        source="389d6f2248dd21120d79be7def954bebe8ed895a93b0517eefa45e6ee8715949",
+    ),
     "the-person-and-work-of-the-holy-spirit": Ground(0.41, 0.82, 0.10, 1.00,
         source="854342772afb4da0ac470fdc3b92b253794051942e82bde23a3681388c7bab60",
     ),

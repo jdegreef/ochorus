@@ -809,6 +809,13 @@
 			"art": true,
 			"scrim": 0.95
 		},
+		"pt/prevailing-prayer": {
+			"ground": "7672468beebb80662d9da397bc75076d9bf870c75ab8b94cc7c89931719b7281",
+			"style": "revival",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.45
+		},
 		"pt/stepping-stones-2": {
 			"ground": "3d85ea47242de1c603f2dbbf4e0fed26aff1daa162b96a44e7b5e60f21424ad1",
 			"style": "house",
@@ -830,6 +837,13 @@
 			"art": true,
 			"scrim": 0.95
 		},
+		"pt/the-masters-indwelling": {
+			"ground": "3120b4c1f6ed0656875b51920e7e37cc8975b1aa612daedecb222d2314d69dfd",
+			"style": "devotional",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.55
+		},
 		"pt/the-unselfishness-of-god": {
 			"ground": "79910f0fe5615fc77c65418d3147f7ee2ac1577de608478af34b80eebb49fd4f",
 			"style": "devotional",
@@ -843,6 +857,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6
+		},
+		"pt/union-and-communion": {
+			"ground": "3f8ea44819a8f7cb408f2cec2a25f4641488ef74731807b40e963e7c13246500",
+			"style": "revival",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85
 		},
 		"pt/waiting-on-god": {
 			"ground": "07d55db958da7679e0574d8eba397252b1fec242057972760e2b1d35f8f5816d",
