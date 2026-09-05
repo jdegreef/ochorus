@@ -245,6 +245,8 @@ TOPIC_ARTICLES = {
     "grace-and-comfort": [
         "how-to-trust-god-in-suffering",
         "how-to-overcome-fear-and-anxiety-with-faith",
+        "what-is-grace",
+        "what-is-faith",
     ],
     "revival-and-missions": [
         "what-is-revival-and-how-does-it-begin",
@@ -262,6 +264,7 @@ TOPIC_ARTICLES = {
         "how-to-find-gods-will-for-your-life",
         "how-to-hear-gods-voice",
         "how-to-trust-god-in-suffering",
+        "what-is-faith",
     ],
     "the-gospel-call": [
         "how-to-be-born-again",
@@ -271,6 +274,10 @@ TOPIC_ARTICLES = {
         "pilgrims-progress-guide",
         "augustines-confessions-guide",
         "sinners-in-the-hands-of-an-angry-god-explained",
+        "what-is-grace",
+        "what-is-repentance",
+        "why-did-jesus-die",
+        "what-is-the-trinity",
     ],
     "the-way-of-holiness": [
         "what-is-sanctification",
@@ -280,12 +287,14 @@ TOPIC_ARTICLES = {
         "why-humility-matters",
         "the-imitation-of-christ-guide",
         "revival-and-repentance-breaking-up-the-fallow-ground",
+        "what-is-repentance",
     ],
     "enduring-classics": [
         "pilgrims-progress-guide",
         "the-imitation-of-christ-guide",
         "augustines-confessions-guide",
         "sinners-in-the-hands-of-an-angry-god-explained",
+        "what-is-the-trinity",
     ],
     "the-preached-word": [
         "how-to-know-if-god-is-calling-you-to-ministry",
