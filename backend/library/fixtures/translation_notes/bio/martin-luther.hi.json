@@ -1,0 +1,32 @@
+{
+ "kind": "bio",
+ "slug": "martin-luther",
+ "language": "hi",
+ "job_issue": 1442,
+ "pull_request": null,
+ "note": [
+  "Scripture came from the Indian Revised Version (IRV Hindi, irvhin) — the text `language_seed.py` records for this language — fetched whole from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/hin_irv/usx; that collection serves USX, not USFM). All 66 books, 31,104 verses on disk for the run, so translators could look up anything that sounded like scripture instead of working from a citation-only crib.",
+  "Parser note for anyone re-using that extraction: in the IRV a `<para style=\"s\"` section heading and a `<para style=\"d\"` acrostic letter can sit INSIDE a verse span carrying that verse's own vid, so taking everything between `sid` and `eid` appends the heading to the verse. It contaminated 29 verses (mostly Psalm 119) before it was found and fixed; every output since has been re-scanned clean.",
+  "A `mined` row means an exact byte substring of the IRV measured against the finished file, not a translator's claim. A verse the translator re-personed or re-aimed to fit the author's argument is recorded self_rendered even where it shows a long verbatim span, because changing the wording makes it ours."
+ ],
+ "references": [
+  {
+   "reference": "Psalm 46:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 3:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 1:17",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 1:16",
+   "status": "self_rendered"
+  }
+ ]
+}

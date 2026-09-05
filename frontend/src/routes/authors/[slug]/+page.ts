@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-05: three Hindi author biographies —
+// christmas-evans (#1441), martin-luther (#1442), athanasius-of-alexandria
+// (#1443). Author pages are prerendered PER AUTHOR, so each of these three
+// /hi/authors/<slug> pages must rebuild for the translated bio and its prayer
+// callouts. This clears the Hindi bio queue; the shelf goes 21 -> 24.
 // prerender refresh 2026-09-04: eight Hindi author biographies — catherine-booth
 // (#1099), john-bunyan (#1100), george-whitefield (#1124), george-muller (#1125),
 // e-m-bounds (#1411), hannah-whitall-smith (#1412), robert-murray-mcheyne (#1439),

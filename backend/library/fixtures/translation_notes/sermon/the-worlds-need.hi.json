@@ -1,0 +1,128 @@
+{
+ "kind": "sermon",
+ "slug": "the-worlds-need",
+ "language": "hi",
+ "job_issue": 1448,
+ "pull_request": null,
+ "note": [
+  "Scripture came from the Indian Revised Version (IRV Hindi, irvhin) — the text `language_seed.py` records for this language — fetched whole from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/hin_irv/usx; that collection serves USX, not USFM). All 66 books, 31,104 verses on disk for the run, so translators could look up anything that sounded like scripture instead of working from a citation-only crib.",
+  "Parser note for anyone re-using that extraction: in the IRV a `<para style=\"s\"` section heading and a `<para style=\"d\"` acrostic letter can sit INSIDE a verse span carrying that verse's own vid, so taking everything between `sid` and `eid` appends the heading to the verse. It contaminated 29 verses (mostly Psalm 119) before it was found and fixed; every output since has been re-scanned clean.",
+  "A `mined` row means an exact byte substring of the IRV measured against the finished file, not a translator's claim. A verse the translator re-personed or re-aimed to fit the author's argument is recorded self_rendered even where it shows a long verbatim span, because changing the wording makes it ours."
+ ],
+ "references": [
+  {
+   "reference": "Ephesians 6:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 8:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 2:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 12:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 4:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 8:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 16:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothy 4:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 9:36",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 2:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 21:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 8:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremiah 2:2",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Jeremiah 2:3",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "John 2:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 69:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jude 1:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 1:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 10:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 10:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 20:28",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 19
+  },
+  {
+   "reference": "Philippians 2:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 53:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 2:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 9:62",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 82:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 14:23",
+   "status": "self_rendered"
+  }
+ ]
+}

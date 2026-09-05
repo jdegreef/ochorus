@@ -1,0 +1,148 @@
+{
+ "kind": "sermon",
+ "slug": "christ-precious-to-believers",
+ "language": "hi",
+ "job_issue": 1117,
+ "pull_request": null,
+ "note": [
+  "Scripture came from the Indian Revised Version (IRV Hindi, irvhin) — the text `language_seed.py` records for this language — fetched whole from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/hin_irv/usx; that collection serves USX, not USFM). All 66 books, 31,104 verses on disk for the run, so translators could look up anything that sounded like scripture instead of working from a citation-only crib.",
+  "Parser note for anyone re-using that extraction: in the IRV a `<para style=\"s\"` section heading and a `<para style=\"d\"` acrostic letter can sit INSIDE a verse span carrying that verse's own vid, so taking everything between `sid` and `eid` appends the heading to the verse. It contaminated 29 verses (mostly Psalm 119) before it was found and fixed; every output since has been re-scanned clean.",
+  "A `mined` row means an exact byte substring of the IRV measured against the finished file, not a translator's claim. A verse the translator re-personed or re-aimed to fit the author's argument is recorded self_rendered even where it shows a long verbatim span, because changing the wording makes it ours."
+ ],
+ "references": [
+  {
+   "reference": "1 Peter 2:7",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 10:37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 20:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 11:36",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 7:47",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 41:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 46:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 4:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 5:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 22:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 1:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 21:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 2:4",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "John 11:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 23:4",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "Psalm 119:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Numbers 23:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 2:6",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "Isaiah 32:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 40:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zechariah 3:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Acts 26:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 25:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 3:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Kings 10:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Leviticus 25:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 6:14",
+   "status": "self_rendered"
+  }
+ ]
+}
