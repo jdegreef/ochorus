@@ -447,6 +447,35 @@ dropped; chapters under 120 words are dropped as stubs.
     had a bio+portrait, so no authors.json/migration — `seed_books` creates the
     book on the existing author. `build_cyprian_treatises` is the model.
     *(treatises-of-cyprian, 2026-09)*
+  - **A SINGLE work out of a Schaff volume whose chapters are the leaves imports
+    FLAT (no `group_parts`, no build command) — but its ANF "Chapter N.—<argument>"
+    titles need three things to agree.** 1 Clement is `schaff/anf01`,
+    `part="ii.ii"` (the chapter-level stem `anf01.ii.ii.<roman>`, I–LIX = 59
+    chapters; the editors' Introductory Notice at `.ii.i` is gated out as front
+    matter). Set **`summary_titles=True`** so each argument ("Chapter I.—The
+    salutation. Praise of the Corinthians before the breaking forth of schism…")
+    reduces to a readable lead clause ("The salutation"). Getting there fixed a
+    latent break in shared logic, so it will "just work" now but know why: (1)
+    `clean_title` only stripped a `Chapter N.` prefix when a SPACE followed the
+    separator — ANF abuts the em-dash (`.—`), so `_CHAPTER_PREFIX` now also
+    accepts a period/colon-then-dash; (2) once the title loses its `Chapter N.—`,
+    `restates_title._compared` must set aside the SAME `chapter <counter>` word so
+    the body's restated heading still matches the stripped title (extended
+    `_LEAD_COUNTER`), or the argument heading leaks into the chapter body; (3)
+    `_section_body`/`extract_body` must get the FULL clean title, so the loop
+    summarises AFTER computing the body, not before. All three verified corpus-
+    safe (re-import the sensitive CCEL books + `on-the-incarnation`, byte-diff vs
+    committed fixtures — 0 changes except the deliberate one below). `summary_title`'s
+    length cap can end a long single-clause argument mid-phrase ("…in it from",
+    "…the priestly") — fix those few with `corrections.chapter_titles` (flat
+    import, so order-keyed titles still reach them). *(first-epistle-of-clement,
+    2026-09)*
+  - **That same fix improves `on-the-incarnation` (the other `summary_titles`
+    book) on its NEXT re-import** — the loop now strips the 56 restated
+    `§1. Introductory.—…` argument headings it used to keep. Its shipped fixture
+    is untouched (I didn't re-import it), so prod is unchanged; a deliberate
+    re-import + a `0092`-style strip-restated-headings migration would ship that
+    cleanup as its own change. *(2026-09)*
   - **Fixing the bodies of an ALREADY-SHIPPED book needs a data migration, not
     just a fixture edit.** `seed_books` never re-syncs the chapters of a book it
     has already created (chapter `order` is a public contract), so a re-chapterize
@@ -1196,6 +1225,37 @@ The whole book is ONE page; hazards worth knowing before reusing it:
     (no manual column bookkeeping), and it no-ops on the already-fixed fixture.
     Confirm `stale.replace(old, "") == fixed_fixture_body` exactly so prod and
     fresh installs converge.
+
+**A manuscript `.docx` the user hands you (an original biography/work, no
+importer).** No source URL, no catalog entry — parse the file and build the
+Book directly, then finish like any new book. What bit this loop:
+  - **Parse OUTSIDE the uv venv.** `python-docx` isn't installed in the backend
+    venv; run a system `python3` script that walks `doc.paragraphs` → a JSON
+    intermediate, then `loaddata`-style build it in the Django shell (`shell <
+    build.py`). Keep the docx parser and the ORM step in separate scripts.
+  - python-docx `p.style.name` is `"Heading 1"` / `"Heading 2"` (WITH a space),
+    not the `Heading1` styleId you'd see in raw `document.xml`. Map Heading1 →
+    chapter boundary, Heading2 → `<h2>`, Heading3 → `<h3>`, Normal → `<p>`.
+  - `html.escape(text)` defaults to `quote=True` and turns every apostrophe into
+    `&#x27;` — pass `quote=False` so only `& < >` escape. Preserve real emphasis
+    by reading `run.italic`/`run.bold` → `<em>`/`<strong>`; also convert any
+    literal `*markdown*` italics the author left in.
+  - Drop the title page + "Contents" chapter and a trailing "End of manuscript".
+    Strip the reader-doubled "Chapter N — " from titles, but KEEP "Appendix A:"
+    / "Introduction:" labels (the reader's number reads fine before them).
+  - Then the standard new-book finish: `generate_covers`, write the fixture with
+    the serializer (§"Write its fixture file yourself"), `normalize_quotes.py`
+    (a no-op here — the source was already curly-double-quoted), `npm run
+    og:covers`, `tests_fixture`. *(watchman-nee-a-life, 21ch from a .docx, 2026-09)*
+
+**A biography ABOUT a person is filed under that person as the author**, with
+the real author/description in the `subtitle` — NOT under `ochorus-originals`
+and NOT crediting the subject as if they wrote it. Precedent: `susanna-wesley-
+clarke` (Eliza Clarke's life of Susanna Wesley) sits on the `susanna-wesley`
+author page, subtitle "A Biography by Eliza Clarke". So "make this a book for
+X" → author `X`, subtitle carries the descriptive line. (Contrast the
+`ochorus-originals` bio *collections* — many subjects in one volume — which are
+their own author with per-chapter subject links.) *(watchman-nee-a-life, 2026-09)*
 
 ## Two kinds of fix
 
