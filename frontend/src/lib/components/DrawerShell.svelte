@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Icon from '$lib/components/Icon.svelte';
 	import type { Snippet } from 'svelte';
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { i18n } from '$lib/i18n.svelte';
@@ -89,7 +90,7 @@
 					<h2 class="text-h3 text-text">{title}</h2>
 				{/if}
 				<button class="btn btn-icon btn-ghost" onclick={close} aria-label={t('a11y.close')}
-					>✕</button
+					><Icon name="close" /></button
 				>
 			</div>
 			{#if headerExtra}

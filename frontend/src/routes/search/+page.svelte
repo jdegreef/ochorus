@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Icon from '$lib/components/Icon.svelte';
 	import { coverSrcset } from '$lib/coverArt';
 	import { onMount } from 'svelte';
 	import {
@@ -663,7 +664,7 @@
 				title={t('search.forget')}
 				onclick={() => onForget(term)}
 			>
-				✕
+				<Icon name="close" size={14} />
 			</button>
 		{/if}
 	</span>

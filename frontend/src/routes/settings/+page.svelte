@@ -490,7 +490,7 @@
 								title={t('settings.preview')}
 								onclick={() => listen.preview(t('settings.voiceSample'), voiceValue)}
 							>
-								▶
+								<Icon name="play" size={14} />
 							</button>
 						</div>
 					{:else}

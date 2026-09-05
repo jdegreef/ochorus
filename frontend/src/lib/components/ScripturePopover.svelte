@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Icon from '$lib/components/Icon.svelte';
 	import { scripture } from '$lib/scripture.svelte';
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { i18n } from '$lib/i18n.svelte';
@@ -27,7 +28,7 @@
 	>
 		<div class="flex items-baseline justify-between gap-3">
 			<span class="scripture-ref-title">{scripture.result?.reference ?? scripture.ref}</span>
-			<button class="scripture-close" onclick={() => scripture.close()} aria-label={t('a11y.close')}>✕</button>
+			<button class="scripture-close" onclick={() => scripture.close()} aria-label={t('a11y.close')}><Icon name="close" size={14} /></button>
 		</div>
 
 		{#if scripture.loading}
