@@ -389,6 +389,13 @@
 			"art": true,
 			"scrim": 0.7
 		},
+		"hi/baptism-with-the-holy-spirit": {
+			"ground": "d697cb65e02626c9bda4961b02124088330a827650dc6ff19f26e1dbe7001839",
+			"style": "revival",
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.85
+		},
 		"hi/clothed-with-strength-and-dignity": {
 			"ground": "a37e2b937513601c765bfc2e1c2159590c1cebbaa38a3a6c3bd4db0193a88297",
 			"style": "house",
@@ -402,6 +409,13 @@
 			"script": "devanagari",
 			"art": false,
 			"scrim": 1
+		},
+		"hi/godliness": {
+			"ground": "b72ec1d040a6969ecfe8b18f80e0ae3eff7014ca28644597d364c715c4942439",
+			"style": "revival",
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.3
 		},
 		"hi/he-holds-my-tomorrows": {
 			"ground": "ef7c6add906c870155399b927acfff42b6e2df2a1300168ff70f733c8e4e6c47",
@@ -424,6 +438,13 @@
 			"art": true,
 			"scrim": 0.65
 		},
+		"hi/ministry-of-intercession": {
+			"ground": "1e29b5a4a80f3281255397f4eb72a757d676a0d442a653e5c80e6849c023d237",
+			"style": "devotional",
+			"script": "devanagari",
+			"art": false,
+			"scrim": 1
+		},
 		"hi/prayer-the-pulse-of-life": {
 			"ground": "5e42f8c18c6752e175c3aedda526c0a27d8bcdefbd0c242d7472eade812af0d7",
 			"style": "house",
@@ -431,12 +452,33 @@
 			"art": true,
 			"scrim": 0.95
 		},
+		"hi/stepping-stones-2": {
+			"ground": "1e722543e5cea5e9c45607f4c04c58dba6092b1a43963711413936198a2140c2",
+			"style": "house",
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.7
+		},
 		"hi/the-inner-chamber": {
 			"ground": "ab87508dcc75a253086b0a2fd380975eb0de8bff35bdc9fb0804777e4aaf106e",
 			"style": "devotional",
 			"script": "devanagari",
 			"art": true,
 			"scrim": 0.3
+		},
+		"hi/the-key-in-my-hand": {
+			"ground": "359bb517fb7e8b2553af2d79df521de67a349eb6f64530c0d3396091c7aa34b2",
+			"style": "house",
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.95
+		},
+		"hi/the-unselfishness-of-god": {
+			"ground": "a60bc7c0d3fcf3a90f08797ded6d62b7c3bb106eb7d30cb514d1cdeaf029c265",
+			"style": "devotional",
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.95
 		},
 		"hi/the-way-to-god": {
 			"ground": "236ff3c574cbe11b6f00c4d617553bd04f91035124ced88c0785570c75164edc",

@@ -1,0 +1,601 @@
+{
+ "kind": "book",
+ "slug": "baptism-with-the-holy-spirit",
+ "language": "hi",
+ "job_issue": 1105,
+ "pull_request": null,
+ "note": [
+  "Scripture came from the Indian Revised Version (IRV Hindi, irvhin), fetched whole from the ebible mirror (gracious-tech/fetch_collection, bibles/hin_irv/usx) — all 66 books, 31,104 verses on disk, so translators looked verses up rather than working from a citation-only crib.",
+  "A `mined` row is an exact byte substring of the IRV of at least 45 characters, measured against the finished chapter — not a translator's claim. A verse whose person, number or wording the translator bent to fit the author's argument is recorded self_rendered even where a long verbatim span survives.",
+  "This book was translated by several agents working different chapter ranges in parallel, then reconciled: conventions were settled by measuring the shipped hi corpus and the IRV rather than by majority vote among the ranges. An orthography sweep normalised anusvara to conjunct forms, protecting every word form the IRV itself spells with anusvara so pasted verses keep the Bible's own spelling."
+ ],
+ "references": [
+  {
+   "reference": "Acts 1:5",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 2:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 1:4",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 33
+  },
+  {
+   "reference": "Luke 24:49",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 33
+  },
+  {
+   "reference": "Acts 10:44",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 10:45",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 10:47",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 11:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 11:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 19:2",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "Acts 19:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 15:3",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "James 1:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 1:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 13:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 13:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 8:15",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Acts 8:16",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 96
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 16
+  },
+  {
+   "reference": "Acts 4:31",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 93
+  },
+  {
+   "reference": "Acts 4:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 3:16",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 5:16",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "Acts 2:44",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:45",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:46",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 12:4",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "1 Corinthians 12:7",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 110
+  },
+  {
+   "reference": "1 Corinthians 12:8",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "1 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "1 Corinthians 12:10",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "1 Corinthians 12:11",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 12:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 12:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 12:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 10:38",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 36
+  },
+  {
+   "reference": "Luke 3:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 3:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 4:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 4:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 4:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:39",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 45
+  },
+  {
+   "reference": "Acts 2:33",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 46
+  },
+  {
+   "reference": "John 7:38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 7:39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 2:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 24:48",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:38",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 103
+  },
+  {
+   "reference": "Acts 2:37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:41",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 4:8",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 122
+  },
+  {
+   "reference": "Acts 9:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 9:20",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 112
+  },
+  {
+   "reference": "Acts 9:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 9:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 2:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 4:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothy 1:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Judges 16:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Judges 16:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Numbers 6:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Numbers 6:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samuel 11:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samuel 13:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samuel 14:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samuel 14:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samuel 14:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samuel 14:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 32:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 51:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 51:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 51:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 5:17",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 143
+  },
+  {
+   "reference": "1 Corinthians 9:27",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 143
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothy 2:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 6:10",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 148
+  },
+  {
+   "reference": "1 Peter 5:5",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 153
+  },
+  {
+   "reference": "2 Corinthians 12:7",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 154
+  },
+  {
+   "reference": "Numbers 20:10",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 155
+  },
+  {
+   "reference": "Numbers 20:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Numbers 20:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 5:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 1:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 1:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Joshua 1:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 10:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 10:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothy 4:7",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 164
+  },
+  {
+   "reference": "2 Timothy 4:8",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 164
+  },
+  {
+   "reference": "John 17:4",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 164
+  },
+  {
+   "reference": "1 Peter 2:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 4:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 6:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 1:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 3:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 19:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 13:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 44:3",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 79
+  },
+  {
+   "reference": "Acts 8:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 97
+  },
+  {
+   "reference": "Acts 2:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 5:32",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 69
+  },
+  {
+   "reference": "Acts 8:18",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 84
+  },
+  {
+   "reference": "Matthew 3:17",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 67
+  },
+  {
+   "reference": "Luke 11:9",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 77
+  },
+  {
+   "reference": "Luke 11:13",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 77
+  },
+  {
+   "reference": "Romans 8:9",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 91
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 76
+  },
+  {
+   "reference": "Romans 14:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 84:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Leviticus 9:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 1:5",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 97
+  },
+  {
+   "reference": "James 1:6",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 98
+  },
+  {
+   "reference": "1 John 5:14",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 101
+  },
+  {
+   "reference": "John 3:36",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 106
+  },
+  {
+   "reference": "Hebrews 3:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 4:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 17:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Judges 14:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 12:15",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 151
+  },
+  {
+   "reference": "1 Samuel 13:9",
+   "status": "self_rendered"
+  }
+ ]
+}

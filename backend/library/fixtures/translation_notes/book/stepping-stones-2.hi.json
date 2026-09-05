@@ -1,0 +1,218 @@
+{
+ "kind": "book",
+ "slug": "stepping-stones-2",
+ "language": "hi",
+ "job_issue": 1119,
+ "pull_request": null,
+ "note": [
+  "Scripture came from the Indian Revised Version (IRV Hindi, irvhin), fetched whole from the ebible mirror (gracious-tech/fetch_collection, bibles/hin_irv/usx) — all 66 books, 31,104 verses on disk, so translators looked verses up rather than working from a citation-only crib.",
+  "A `mined` row is an exact byte substring of the IRV of at least 45 characters, measured against the finished chapter — not a translator's claim. A verse whose person, number or wording the translator bent to fit the author's argument is recorded self_rendered even where a long verbatim span survives.",
+  "This book was translated by several agents working different chapter ranges in parallel, then reconciled: conventions were settled by measuring the shipped hi corpus and the IRV rather than by majority vote among the ranges. An orthography sweep normalised anusvara to conjunct forms, protecting every word form the IRV itself spells with anusvara so pasted verses keep the Bible's own spelling."
+ ],
+ "references": [
+  {
+   "reference": "Psalm 37:23",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Psalm 37:24",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 280
+  },
+  {
+   "reference": "Hebrews 11:2",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 281
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 22:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 15:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 7:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 5:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:29",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 240
+  },
+  {
+   "reference": "Isaiah 55:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 7:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 11:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 10:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 266
+  },
+  {
+   "reference": "Matthew 16:17",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 267
+  },
+  {
+   "reference": "1 John 2:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 2:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 269
+  },
+  {
+   "reference": "Galatians 5:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 1:3",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 270
+  },
+  {
+   "reference": "Galatians 5:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 7:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 12:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 12:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 42:1",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 276
+  },
+  {
+   "reference": "Hebrews 2:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 10:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 2:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 20:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 1:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 1:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 25:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 12:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 3:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Leviticus 16:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 25:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 9:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 9:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 6:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 20:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 16:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ezekiel 37:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 103:5",
+   "status": "self_rendered"
+  }
+ ]
+}

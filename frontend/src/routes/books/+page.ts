@@ -1,3 +1,13 @@
+// prerender refresh 2026-09-05: the LAST six Hindi books — baptism-with-the-holy-spirit
+// (#1105), the-key-in-my-hand (#1413), ministry-of-intercession (#1414), godliness
+// (#1106), stepping-stones-2 (#1119), the-unselfishness-of-god (#1104). 125 chapters,
+// 277,708 Hindi words. Rebuilds /hi/books so each card carries its translated title
+// and its localized cover; this CLEARS the Hindi translation queue entirely.
+//
+// No plans/+page.ts touch is owed: seed_plans creates no NEW row from these six. The
+// only curated plan they touch is power-from-on-high, whose second source book
+// (the-person-and-work-of-the-holy-spirit) still has no Hindi edition. Whoever ships
+// that book completes the plan and owes the plans touch in the same PR.
 // prerender refresh 2026-09-05: the first Hindi book since the ten-book batch —
 // prayer-the-pulse-of-life (#1118), Hannah Buyinza, 12 chapters. Rebuilds
 // /hi/books so the shelf card carries the translated title and its localized
