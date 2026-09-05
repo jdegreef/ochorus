@@ -513,10 +513,13 @@ class Command(BaseCommand):
                     if is_front_matter(leaf_title):
                         continue
                     leaf_title = clean_title(leaf_title)
-                    if entry.summary_titles:
-                        leaf_title = summary_title(leaf_title)
+                    # Match the body's restated heading against the FULL title —
+                    # summarising it first (below) would leave the heading with
+                    # no title to match, so it would leak into the chapter body.
                     # Only a volume import carries the volume's page furniture.
                     body = self._section_body(url, leaf_title, entry.title, bool(entry.part))
+                    if entry.summary_titles:
+                        leaf_title = summary_title(leaf_title)
                     if is_contents_body(body):
                         continue
                     if not body:

@@ -347,6 +347,13 @@
 			"art": false,
 			"scrim": 1
 		},
+		"first-epistle-of-clement": {
+			"ground": "978ec2807ebaa7d1c3799ccb135d69f10c100b5303bbd47a94838204a5abf72b",
+			"style": "inscriptional",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"freedom-of-the-will": {
 			"ground": "4ea3b353acb149bbd8daf7c9bef83437620e1cd2a5acddd1c3d12c35016e92a2",
 			"style": "enlightenment",
