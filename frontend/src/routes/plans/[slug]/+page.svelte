@@ -121,7 +121,9 @@
 				{next} {t('plans.of')} {plan.day_count}
 			</a>
 		{:else}
-			<p class="btn btn-ghost pointer-events-none inline-block">✓ {t('plans.finished')}</p>
+			<!-- A status line, not a control: a finished plan has no action, so it
+			     must not wear a button's chrome (it read as a disabled button). -->
+			<p class="text-small font-medium text-muted">✓ {t('plans.finished')}</p>
 		{/if}
 		<FavoriteButton kind="plan" slug={plan.slug} />
 	</div>
