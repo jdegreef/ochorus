@@ -100,12 +100,12 @@
 
 	<div class="flex items-start justify-between gap-4">
 		<div class="min-w-0 flex-1">
-			<h1 class="text-h1 mb-2">{plan.title}</h1>
-			<p class="mb-3 max-w-xl text-body text-muted">{plan.description}</p>
-			<p class="mb-6 text-small text-muted">
-				{plan.day_count} {t('plans.days')}{#if plan.total_words}
-					<span class="opacity-60"> · </span>{readingTime(plan.total_words)}{/if}
+			<p class="eyebrow mb-1 text-muted">
+				{t('search.typePlan')} · {plan.day_count} {t('plans.days')}{#if plan.total_words} ·
+					{readingTime(plan.total_words)}{/if}
 			</p>
+			<h1 class="text-h1 mb-2">{plan.title}</h1>
+			<p class="mb-6 max-w-xl text-body text-muted">{plan.description}</p>
 		</div>
 		{#if plan.covers.length}
 			<div class="hidden shrink-0 pt-1 sm:block">
