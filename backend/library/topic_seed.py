@@ -142,6 +142,7 @@ TOPICS = [
         [
             "confessions",
             "treatises-of-cyprian",
+            "first-epistle-of-clement",
             "pilgrims-progress",
             "the-imitation-of-christ",
             "freedom-of-the-will",

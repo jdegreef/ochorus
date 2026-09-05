@@ -170,6 +170,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "prized by the Reformers after him."
         ),
     ),
+    "clement-of-rome": AuthorEntry(
+        slug="clement-of-rome",
+        name="Clement of Rome",
+        birth_year=35,
+        death_year=99,
+        bio=(
+            "First-century leader of the church at Rome and one of the "
+            "Apostolic Fathers, whose letter to the Corinthians is the earliest "
+            "surviving Christian writing outside the New Testament."
+        ),
+    ),
     "jeanne-guyon": AuthorEntry(
         slug="jeanne-guyon",
         name="Jeanne Guyon",
@@ -488,6 +499,15 @@ BOOKS: list[BookEntry] = [
               part="A LITTLE WORK BY ST. BERNARD",
               part_end="FRAGMENT BY ST. BERNARD",
               subtitle="De Diligendo Deo", cover_color="#7a1f2b"),
+    # One work (1 Clement) out of the multi-work ANF01 volume: chapters live at
+    # anf01.ii.ii.<roman> (I-LIX), the editors' Introductory Notice at .ii.i is
+    # gated out as front matter. 59 chapters — the ANF/Roberts-Donaldson text is
+    # Codex Alexandrinus (pre-Bryennios), the honest public-domain edition.
+    BookEntry("first-epistle-of-clement",
+              "The First Epistle of Clement to the Corinthians",
+              "clement-of-rome", "ccel", "schaff/anf01", part="ii.ii",
+              subtitle="The Church of Rome to the Church of Corinth",
+              cover_color="#734b2e", summary_titles=True),
     BookEntry("a-short-and-easy-method-of-prayer", "A Short and Easy Method of Prayer",
               "jeanne-guyon", "gutenberg", "24989",
               subtitle="Translated by A. W. Marston", cover_color="#4c1d6b"),

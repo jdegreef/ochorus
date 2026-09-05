@@ -43,7 +43,12 @@ from library.text import text_of, word_count  # noqa: F401
 # separator) — the reader already shows the chapter number, so it reads as
 # "1. Chapter One. The Morning Hour". Stripped only when a descriptive title
 # follows (a bare "Chapter 3" is left alone — there's nothing else to show).
-_CHAPTER_PREFIX = re.compile(r"^\s*chapter\s+\S[^.:—–]*?\s*[.:—–]\s+", re.I)
+# The separator after the counter is either a `.`/`:`/dash FOLLOWED BY SPACE
+# ("Chapter One. The Morning Hour"), or — the Schaff/ANF argument form — a
+# period/colon ABUTTING an em/en-dash with no space ("Chapter I.—The salutation").
+_CHAPTER_PREFIX = re.compile(
+    r"^\s*chapter\s+\S[^.:—–]*?\s*(?:[.:]\s*[—–]|[.:—–]\s+)\s*", re.I
+)
 # The same redundancy without the word "Chapter": a CCEL TOC often numbers its
 # own entries ("1. Men of Prayer Needed"), and the reader prepends the order
 # itself, so it renders "1. 1. Men of Prayer Needed". Digits only — a
@@ -311,7 +316,13 @@ def normalize_words(text: str) -> str:
 # "<h2>III. ABRAHAM, THE MAN OF PRAYER</h2>", and thirty-five of `way-into-holiest`
 # open "<h2>II. THE DIGNITY OF CHRIST</h2>", above prose the reader already sees
 # titled. Strict, for the reason `_ROMAN_STRICT` gives.
-_LEAD_COUNTER = re.compile(rf"^(?:\d{{1,3}}|{_ROMAN_STRICT})\s+")
+# A bare leading counter ("3 ", "iv "), or a "chapter 3 " / "chapter iv "
+# word-prefix — the ANF/NPNF argument heads ("Chapter I.—The salutation…").
+# Setting the latter aside keeps `restates_title` in step with `clean_title`,
+# which now strips that same "Chapter N.—" prefix off the title itself; without
+# it the body's restated heading no longer matches the stripped title and leaks
+# into the chapter. `_NUMBERED_BOOKS` still guards the strip (below).
+_LEAD_COUNTER = re.compile(rf"^(?:chapter\s+)?(?:\d{{1,3}}|{_ROMAN_STRICT})\s+")
 
 
 def _compared(text: str) -> str:
