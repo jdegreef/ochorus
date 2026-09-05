@@ -86,6 +86,24 @@ don't hand-wrap refs in the fixture.
   literal early and corrupt the file. Bit this three times in one session; run
   `python3 -c "import ast; ast.parse(open(f).read())"` after each builder edit.
 
+- **Guide-style articles run LONG, not short.** The 1.6×-lower rule above holds
+  for devotional "what is X" pieces; a reader's guide to a book (plot walk-through
+  + symbols + how-to-read) came out at 2,350 counted words on the first pass and
+  needed three trim rounds to land under 2,000. Budget a trim pass for guides.
+- **Quote only what is on the site, in the site's translation.** For a guide to a
+  classic, the safe quotations are the ones you can find verbatim in the work's
+  own fixture (`books/<slug>.en.json`) — the Ochorus *Imitation* is Croft–Bolton,
+  the *Confessions* is Pusey, so a line remembered from another translation will
+  not match the text the reader clicks through to. Grep the fixture first.
+- **Book guides have a home topic: `enduring-classics`.** Its blurb already names
+  Augustine, Bunyan and à Kempis. Tag guides there AND to their doctrinal topic.
+  Append new slugs at the END of each `TOPIC_ARTICLES` list — order is display
+  order on the topic page.
+- **`cd` inside a compound Bash command moves the shell for the rest of the
+  session.** Run builders and `manage.py` with absolute paths or a leading
+  `cd /abs/path/backend &&` every time; the "No module named django" that follows
+  a stray `cd` is the cwd, not the venv.
+
 ## Verify + ship
 
 ```bash
