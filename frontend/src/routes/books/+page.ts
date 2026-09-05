@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-05 (lg batch): the-fourfold-gospel.lg (#1211, A. B.
+// Simpson, 6 ch). Rebuilds the /lg/books shelf and its per-chapter pages.
 // prerender refresh 2026-09-05 (lg batch): soar-like-the-eagle-3.lg (#1208, Gareth
 // Evans, 12 ch). Rebuilds the /lg/books shelf and its per-chapter pages.
 // prerender refresh 2026-09-02 (batch4): purity-of-heart.lg (#1206, William Booth,

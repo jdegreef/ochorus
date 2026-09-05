@@ -585,6 +585,13 @@
 			"art": true,
 			"scrim": 0.5
 		},
+		"lg/the-fourfold-gospel": {
+			"ground": "5778f6e505366ac3b4b2093eafb48796c420ae4d20ec817653f07a22b5f7e3d8",
+			"style": "revival",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85
+		},
 		"lg/the-god-of-all-comfort": {
 			"ground": "a58744f9eb1da94c3ecf3a923ff03801491e24864ee988dd6fcc72c42902cf6b",
 			"style": "devotional",
