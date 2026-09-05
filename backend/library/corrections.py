@@ -159,6 +159,18 @@ CORRECTIONS: dict[str, dict] = {
             32: 'Holiness and Heaven',
         },
     },
+    "first-epistle-of-clement": {
+        # summary_titles reduces each ANF "argument" to its lead clause; four
+        # long single-clause arguments have no early break, so the cap fell on a
+        # word boundary and left the title ending mid-phrase ("…in it from",
+        # "…the priestly", "…in the", "…peace has"). Concise, faithful titles.
+        "chapter_titles": {
+            3: 'The sad state of the church after sedition arose from envy',
+            43: 'Moses stilled the contention concerning the priestly dignity',
+            47: 'Your recent discord is worse than that in the times of Paul',
+            59: 'The Corinthians exhorted to send back word that peace is restored',
+        },
+    },
     "ministry-of-intercession": {
         # This edition prints chapter titles only in the Contents (chapter
         # bodies open with a bare "CHAPTER N" then the scripture epigraph), so
