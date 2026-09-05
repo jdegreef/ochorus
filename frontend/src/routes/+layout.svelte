@@ -9,6 +9,7 @@
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import { browser } from '$app/environment';
+	import { API_BASE_URL } from '$lib/config';
 	import { lang } from '$lib/lang.svelte';
 	import { footerLocales } from '$lib/footerLocales';
 	import { bibleCredit, creditParts } from '$lib/bibleCredit';
@@ -138,9 +139,22 @@
 	// (and is tested there): the locale the reader is ACTUALLY IN is always
 	// listed, advertised or not.
 	const footerLangs = $derived(footerLocales(lang.available, lang.current));
+
+	// The API is a separate origin in production (api.ochorus.com). Prerendered
+	// pages bake their content, but the personal blocks (Continue reading,
+	// Today's reading) and every SPA navigation fetch from it, so warming DNS +
+	// TLS up front shaves the first API round-trip. `crossorigin` because those
+	// fetches are cross-origin CORS; empty API_BASE_URL means same-origin, where
+	// a preconnect would be pointless.
+	const apiOrigin = API_BASE_URL && /^https?:\/\//.test(API_BASE_URL)
+		? new URL(API_BASE_URL).origin
+		: '';
 </script>
 
 <svelte:head>
+	{#if apiOrigin}
+		<link rel="preconnect" href={apiOrigin} crossorigin="anonymous" />
+	{/if}
 	<link rel="preload" href={frauncesLatin} as="font" type="font/woff2" crossorigin="anonymous" />
 	<link rel="preload" href={hankenLatin} as="font" type="font/woff2" crossorigin="anonymous" />
 	<!-- Feed autodiscovery: browsers and readers surface the "new works" Atom feed. -->

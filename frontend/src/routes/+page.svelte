@@ -74,7 +74,15 @@
 	<meta property="og:title" content="Ochorus — {t('home.heroTitle')}" />
 	<meta property="og:description" content={t('home.metaDescription')} />
 	<meta property="og:url" content="{SITE_URL}{localizeHref('/')}" />
-	<meta name="twitter:card" content="summary" />
+	<!-- The site's most-linked page had a bare text card. The 1200×630 house
+	     default gives it (and every share of the bare domain) a real image.
+	     This page hand-rolls its head rather than using Seo.svelte, so the
+	     default set there does not reach it. -->
+	<meta property="og:image" content="{SITE_URL}/og/default.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:image" content="{SITE_URL}/og/default.png" />
+	<meta name="twitter:card" content="summary_large_image" />
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html siteLd}
 </svelte:head>

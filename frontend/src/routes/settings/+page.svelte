@@ -255,7 +255,11 @@
 	});
 </script>
 
-<svelte:head><title>{t('settings.title')} — Ochorus</title></svelte:head>
+<svelte:head><title>{t('settings.title')} — Ochorus</title>
+	<!-- A private, client-only utility page (ssr=false). robots.txt Disallows
+	     /settings; this is the backstop for crawlers that reach it via a link
+	     or ignore robots.txt, matching /login, /notebook and /reset-password. -->
+	<meta name="robots" content="noindex" /></svelte:head>
 
 <div class="page-col px-5 py-10">
 	<header class="mb-8">
