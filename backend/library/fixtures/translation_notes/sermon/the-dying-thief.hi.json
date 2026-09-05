@@ -1,0 +1,128 @@
+{
+ "kind": "sermon",
+ "slug": "the-dying-thief",
+ "language": "hi",
+ "job_issue": 1445,
+ "pull_request": null,
+ "note": [
+  "Scripture came from the Indian Revised Version (IRV Hindi, irvhin) — the text `language_seed.py` records for this language — fetched whole from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/hin_irv/usx; that collection serves USX, not USFM). All 66 books, 31,104 verses on disk for the run, so translators could look up anything that sounded like scripture instead of working from a citation-only crib.",
+  "Parser note for anyone re-using that extraction: in the IRV a `<para style=\"s\"` section heading and a `<para style=\"d\"` acrostic letter can sit INSIDE a verse span carrying that verse's own vid, so taking everything between `sid` and `eid` appends the heading to the verse. It contaminated 29 verses (mostly Psalm 119) before it was found and fixed; every output since has been re-scanned clean.",
+  "A `mined` row means an exact byte substring of the IRV measured against the finished file, not a translator's claim. A verse the translator re-personed or re-aimed to fit the author's argument is recorded self_rendered even where it shows a long verbatim span, because changing the wording makes it ours."
+ ],
+ "references": [
+  {
+   "reference": "Luke 23:41",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Luke 23:42",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 23:40",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 23:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 27:44",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Proverbs 9:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 19:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Hebrews 5:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 3:13",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 16
+  },
+  {
+   "reference": "Matthew 3:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 26:39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 23:43",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 5:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Revelation 15:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 2:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 19:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 9:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 10:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Kings 6:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:41",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 4:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 23:45",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Joel 2:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:20",
+   "status": "self_rendered"
+  }
+ ]
+}

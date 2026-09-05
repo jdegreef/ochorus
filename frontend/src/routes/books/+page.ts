@@ -1,3 +1,10 @@
+// prerender refresh 2026-09-05: the first Hindi book since the ten-book batch —
+// prayer-the-pulse-of-life (#1118), Hannah Buyinza, 12 chapters. Rebuilds
+// /hi/books so the shelf card carries the translated title and its localized
+// cover. NOTE this book is one of three source books of the `school-of-prayer`
+// curated plan; the other two (lord-teach-us-to-pray-2, prevailing-prayer) have
+// no Hindi edition, so seed_plans still creates no row and no plans touch is
+// owed here — whoever ships the LAST of the three owes plans/+page.ts.
 // prerender refresh 2026-09-05 (lg batch): days-of-heaven-upon-earth.lg (#1210,
 // A. B. Simpson, 12 ch) — completes the four-book Luganda batch. Rebuilds the
 // /lg/books shelf and its per-chapter pages.

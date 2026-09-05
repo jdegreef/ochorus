@@ -1,0 +1,70 @@
+{
+ "kind": "bio",
+ "slug": "athanasius-of-alexandria",
+ "language": "hi",
+ "job_issue": 1443,
+ "pull_request": null,
+ "note": [
+  "Scripture came from the Indian Revised Version (IRV Hindi, irvhin) — the text `language_seed.py` records for this language — fetched whole from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/hin_irv/usx; that collection serves USX, not USFM). All 66 books, 31,104 verses on disk for the run, so translators could look up anything that sounded like scripture instead of working from a citation-only crib.",
+  "Parser note for anyone re-using that extraction: in the IRV a `<para style=\"s\"` section heading and a `<para style=\"d\"` acrostic letter can sit INSIDE a verse span carrying that verse's own vid, so taking everything between `sid` and `eid` appends the heading to the verse. It contaminated 29 verses (mostly Psalm 119) before it was found and fixed; every output since has been re-scanned clean.",
+  "A `mined` row means an exact byte substring of the IRV measured against the finished file, not a translator's claim. A verse the translator re-personed or re-aimed to fit the author's argument is recorded self_rendered even where it shows a long verbatim span, because changing the wording makes it ours."
+ ],
+ "references": [
+  {
+   "reference": "Isaiah 12:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Deuteronomy 4:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 22:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 136:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 6:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 19:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 1:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 3:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 20:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 27:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Titus 1:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 1:1",
+   "status": "self_rendered"
+  }
+ ]
+}

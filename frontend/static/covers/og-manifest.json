@@ -417,6 +417,13 @@
 			"art": true,
 			"scrim": 0.65
 		},
+		"hi/prayer-the-pulse-of-life": {
+			"ground": "5e42f8c18c6752e175c3aedda526c0a27d8bcdefbd0c242d7472eade812af0d7",
+			"style": "house",
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.95
+		},
 		"hi/the-inner-chamber": {
 			"ground": "ab87508dcc75a253086b0a2fd380975eb0de8bff35bdc9fb0804777e4aaf106e",
 			"style": "devotional",

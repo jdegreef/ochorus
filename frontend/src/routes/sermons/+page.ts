@@ -1,3 +1,9 @@
+// prerender refresh 2026-09-05: six Hindi sermons — christ-precious-to-believers
+// (#1117), the-dying-thief (#1445), against-eutropius (#1446),
+// enduring-persecution-for-christ (#1447), the-worlds-need (#1448),
+// gods-love-for-a-sinning-world (#1449). Rebuilds /hi/sermons, taking the shelf
+// from 12 to 18 and CLEARING the Hindi sermon queue. `hi` seeds as DRAFT, so the
+// pages build without being advertised.
 // prerender refresh 2026-09-04: seven Spanish sermons — fall-and-recovery-of-man
 // (#1462), gods-love-for-a-sinning-world (#1463), pauls-praise-of-christian-love
 // (#1464), the-almost-christian (#1465), the-method-of-grace (#1466),

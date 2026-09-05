@@ -1,0 +1,110 @@
+{
+ "kind": "sermon",
+ "slug": "enduring-persecution-for-christ",
+ "language": "hi",
+ "job_issue": 1447,
+ "pull_request": null,
+ "note": [
+  "Scripture came from the Indian Revised Version (IRV Hindi, irvhin) — the text `language_seed.py` records for this language — fetched whole from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/hin_irv/usx; that collection serves USX, not USFM). All 66 books, 31,104 verses on disk for the run, so translators could look up anything that sounded like scripture instead of working from a citation-only crib.",
+  "Parser note for anyone re-using that extraction: in the IRV a `<para style=\"s\"` section heading and a `<para style=\"d\"` acrostic letter can sit INSIDE a verse span carrying that verse's own vid, so taking everything between `sid` and `eid` appends the heading to the verse. It contaminated 29 verses (mostly Psalm 119) before it was found and fixed; every output since has been re-scanned clean.",
+  "A `mined` row means an exact byte substring of the IRV measured against the finished file, not a translator's claim. A verse the translator re-personed or re-aimed to fit the author's argument is recorded self_rendered even where it shows a long verbatim span, because changing the wording makes it ours."
+ ],
+ "references": [
+  {
+   "reference": "1 Thessalonians 3:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 5:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 4:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 1:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 21:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 10:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 12:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 10:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 129:1",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 25
+  },
+  {
+   "reference": "Romans 7:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 44:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 125:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 3:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 7:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 4:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 8:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 21:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 3:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 116:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 9:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zechariah 2:8",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 41
+  }
+ ]
+}
