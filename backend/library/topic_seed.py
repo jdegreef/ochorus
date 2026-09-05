@@ -225,6 +225,7 @@ TOPIC_ARTICLES = {
         "how-to-pray-the-psalms",
         "the-morning-watch",
         "augustines-confessions-guide",
+        "how-to-pray-for-revival",
     ],
     "holy-spirit": [
         "what-is-the-baptism-of-the-holy-spirit",
@@ -251,6 +252,11 @@ TOPIC_ARTICLES = {
         "hudson-taylor-trusting-god-for-the-impossible",
         "amy-carmichael-and-the-cost-of-love",
         "samuel-crowther-from-captive-to-bishop",
+        "how-to-pray-for-revival",
+        "the-marks-of-a-true-revival",
+        "what-was-the-great-awakening",
+        "personal-revival-reviving-a-cold-heart",
+        "revival-and-repentance-breaking-up-the-fallow-ground",
     ],
     "faith-and-guidance": [
         "how-to-find-gods-will-for-your-life",
@@ -273,6 +279,7 @@ TOPIC_ARTICLES = {
         "the-priesthood-of-all-believers",
         "why-humility-matters",
         "the-imitation-of-christ-guide",
+        "revival-and-repentance-breaking-up-the-fallow-ground",
     ],
     "enduring-classics": [
         "pilgrims-progress-guide",
