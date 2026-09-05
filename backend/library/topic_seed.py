@@ -270,9 +270,6 @@ TOPIC_ARTICLES = {
     "revival-and-missions": [
         "what-is-revival-and-how-does-it-begin",
         "what-is-the-great-commission",
-        "hudson-taylor-trusting-god-for-the-impossible",
-        "amy-carmichael-and-the-cost-of-love",
-        "samuel-crowther-from-captive-to-bishop",
         "how-to-pray-for-revival",
         "the-marks-of-a-true-revival",
         "what-was-the-great-awakening",
