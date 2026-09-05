@@ -126,6 +126,14 @@ import type { PageLoad } from './$types';
  * prose — Unyenyekevu kwa Siku 12. "The root of every virtue" is «mzizi wa kila
  * wema», taken verbatim from the Swahili edition of the book the plan sends
  * readers to, so the card and the book agree. /sw/plans re-crawls again.
+ *
+ * Prerender refresh 2026-09-05 (issues #926/#928): three new Portuguese books
+ * complete two curated plans. prevailing-prayer finishes school-of-prayer
+ * (Uma Escola de Oração) — its three source books are now all in pt; and
+ * the-masters-indwelling + union-and-communion finish deeper-life-in-christ
+ * (A Vida Mais Profunda: Cristo em Vós). The pt prose already lived in
+ * plan_translations/pt.json, so seed_plans now creates both (slug, pt) rows and
+ * /pt/plans re-crawls to bake the two new cards.
  */
 export const load: PageLoad = async () => {
 	const { items, loadError } = await loadShelf(listPlans(getLang()));

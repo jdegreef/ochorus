@@ -389,6 +389,14 @@ import type { PageLoad } from './$types';
  * Verified by running seed_plans on a clean database — it built the plan for
  * ar/en/es/lg and skipped uk. Whoever ships that second book DOES owe the
  * plans touch, because it completes the set.
+ *
+ * Prerender refresh 2026-09-05 (issues #926/#927/#928, the plan side-effect):
+ * three new Portuguese editions — D. L. Moody's A Oração Prevalecente
+ * (Prevailing Prayer, 11 ch), Andrew Murray's A Habitação do Mestre (The
+ * Master's Indwelling, 13 ch) and Hudson Taylor's União e Comunhão (Union and
+ * Communion, 10 ch). All three back curated reading plans whose pt prose had
+ * already shipped, so plans/+page.ts is refreshed in the same PR — the two
+ * plans go live the moment these books do.
  */
 export const load: PageLoad = async () => {
 	const { items, loadError } = await loadShelf(listBooks(getLang()));

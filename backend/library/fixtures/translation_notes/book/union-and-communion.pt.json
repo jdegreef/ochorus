@@ -1,0 +1,393 @@
+{
+    "kind": "book",
+    "slug": "union-and-communion",
+    "language": "pt",
+    "job_issue": null,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Acts 8:31",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Romans 7:4",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "1 Corinthians 15:28",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "John 17:3",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+        },
+        {
+            "reference": "Isaiah 54:5",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "John 3:29",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Ecclesiastes 1:2",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "John 4:13-14",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "James 1:5",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 6:13",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 1:1",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "John 15:11",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+        },
+        {
+            "reference": "1 John 1:1",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "1 John 1:2",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "1 John 1:4",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Isaiah 53:2",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 1:2",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Job 23:3",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 1:4",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 1:5",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Psalms 31:20",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Matthew 7:3-5",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "John 21:15-17",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Matthew 25:40",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "1 John 5:19",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "2 Corinthians 3:18",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Matthew 3:16",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "John 12:32",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Hebrews 13:8",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Hebrews 13:5",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "John 15:4",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Hebrews 2:1",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+        },
+        {
+            "reference": "Matthew 28:20",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Psalms 45:10",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Psalms 45:11",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "1 John 5:21",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "1 John 2:15",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "James 4:4",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "2 Corinthians 6:14",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "2 Corinthians 6:15",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "2 Corinthians 6:17",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "2 Corinthians 6:18",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 2:8",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 2:9",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 2:10",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 2:11",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 2:12",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 2:13",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 2:14",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 2:15",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 2:16",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 2:17",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 3:1",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 3:2",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 3:3",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 3:4",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Galatians 4:26",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 3:5",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Psalms 84:1",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Psalms 84:2",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Psalms 84:4",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Psalms 84:10",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Psalms 84:11",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Psalms 84:12",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Psalms 45:12",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Matthew 28:19",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Matthew 28:18",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Psalms 23:4",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 4:12",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Revelation 3:20",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "John 5:17",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 4:8",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Revelation 1:16",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Revelation 1:17",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 5:11",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 7:5",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 5:2",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Revelation 22:20",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Isaiah 1:6",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Ephesians 6:15",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Revelation 7:9",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "1 John 4:18",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Philippians 3:8",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 3:6",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "John 8:58",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Psalms 118:27",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 8:6",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Romans 8:35-39",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 8:7",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Song of Solomon 8:10",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Deuteronomy 33:23",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Revelation 7:16-17",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Revelation 14:4",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Luke 21:36",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+        },
+        {
+            "reference": "Hebrews 9:28",
+            "status": "self_rendered"
+        }
+    ]
+}
