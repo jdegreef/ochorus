@@ -1,3 +1,9 @@
+// prerender refresh 2026-09-05: twelve Portuguese author biographies —
+// watchman-nee, athanasius-of-alexandria, john-chrysostom, robert-murray-mcheyne,
+// martin-luther, thomas-a-kempis, samuel-ajayi-crowther, richard-sibbes, john-owen,
+// jeanne-guyon, john-calvin, christmas-evans. Author pages are prerendered PER
+// AUTHOR, so each /pt/authors/<slug> page must rebuild for the translated bio and
+// its <blockquote> pull-quotes and prayer callouts.
 // prerender refresh 2026-09-05: three Hindi author biographies —
 // christmas-evans (#1441), martin-luther (#1442), athanasius-of-alexandria
 // (#1443). Author pages are prerendered PER AUTHOR, so each of these three
