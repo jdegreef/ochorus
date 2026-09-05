@@ -207,6 +207,13 @@
 		</div>
 
 		<div class="flex-1">
+			<p class="eyebrow mb-1 text-muted">
+				{t('search.typeBook')} · {book.chapter_count}
+				{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')} · {readingTime(
+					totalWords
+				)}{#if book.difficulty}&nbsp;·
+					<span title={t('reader.difficulty')}>{t(`reader.difficulty_${book.difficulty}`)}</span>{/if}
+			</p>
 			<h1 class="text-h1" dir="auto">{book.title}</h1>
 			{#if book.subtitle}<p class="mt-1 text-h3 text-muted">{book.subtitle}</p>{/if}
 			<!-- The names this work is also published under. Shown, not merely marked
@@ -300,13 +307,6 @@
 						</a>
 					{/if}
 				{/if}
-				<span class="text-small text-muted">
-					{book.chapter_count}
-					{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')} · {readingTime(
-						totalWords
-					)}{#if book.difficulty}&nbsp;·
-						<span title={t('reader.difficulty')}>{t(`reader.difficulty_${book.difficulty}`)}</span>{/if}
-				</span>
 			</div>
 		</div>
 	</header>
