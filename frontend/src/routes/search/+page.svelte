@@ -1191,9 +1191,14 @@
 										type="button"
 										class="btn btn-ghost btn-sm"
 										disabled={typeLoading}
+										aria-busy={typeLoading ? 'true' : undefined}
 										onclick={() => loadType(g.type, { append: true })}
 									>
-										{typeLoading ? '…' : t('search.showMore')}
+										<!-- Keep the label; never swap it for "…", which leaves the
+										     button announcing as "…, dimmed, button" (STYLE_GUIDE §6).
+										     Spinner + aria-busy, the login/reset pattern. -->
+										{#if typeLoading}<span class="btn-spinner" aria-hidden="true"></span>{/if}
+										{t('search.showMore')}
 									</button>
 								{/if}
 							</div>
