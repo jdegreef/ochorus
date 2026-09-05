@@ -494,12 +494,26 @@
 			"art": true,
 			"scrim": 0.85
 		},
+		"lg/cheque-book": {
+			"ground": "3aa8c4c6d180399ae25c173fba9175067830b80d1f64edaddccf390667118a6e",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"lg/clothed-with-strength-and-dignity": {
 			"ground": "10e69218f80f6e0ebbdcd1fb8a725c558609985f4402cc5f6e03ccda13bff370",
 			"style": "house",
 			"script": "latin",
 			"art": true,
 			"scrim": 0.3
+		},
+		"lg/days-of-heaven-upon-earth": {
+			"ground": "e64b4c6a38d280286950d44744bab86eb033c5e72c4d1b39d2fc0ba546994048",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"lg/feasting-at-the-table": {
 			"ground": "cc7ee2adc9479b3488c09b82f3a1af77a1a8c55aa2df806a4df05abcbca2d169",
@@ -564,6 +578,13 @@
 			"art": true,
 			"scrim": 0.35
 		},
+		"lg/soar-like-the-eagle-3": {
+			"ground": "e06ed7a87aeb4c226a384304f77c026ebbbaffa166b2b4820079a3249436a136",
+			"style": "house",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.9
+		},
 		"lg/stepping-stones-2": {
 			"ground": "3773397d863ef4a812d5461e684e94f9b92d2f7ee5ce22e1a386d8d60cbc9a98",
 			"style": "house",
@@ -577,6 +598,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.5
+		},
+		"lg/the-fourfold-gospel": {
+			"ground": "5778f6e505366ac3b4b2093eafb48796c420ae4d20ec817653f07a22b5f7e3d8",
+			"style": "revival",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85
 		},
 		"lg/the-god-of-all-comfort": {
 			"ground": "a58744f9eb1da94c3ecf3a923ff03801491e24864ee988dd6fcc72c42902cf6b",

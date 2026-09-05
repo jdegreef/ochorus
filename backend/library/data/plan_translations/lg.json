@@ -1,4 +1,12 @@
 {
+  "deeper-life-in-christ": {
+    "title": "Obulamu obw'Omunda Ennyo: Kristo mu Mmwe",
+    "description": "Si kufuba kusinga, wabula Omuntu: ekyama ky'obulamu obw'omunda ennyo ye Kristo yennyini abeera munda mu ffe. Andrew Murray atandika n'ekyewuunyo kya Yesu Yennyini, n'oluvannyuma abikkula obulamu bwa Kristo abeera munda, ne Hudson Taylor amaliriza mu kuwummula kw'okwegatta n'okussa ekimu n'Omwagalwa.",
+    "note": [
+      "Job #1212. Vocabulary is taken from the shipped Luganda corpus rather than rendered fresh: «Kristo … abeera mu mmwe» is Colossians 1:27 as the OLCB reads it, «obulamu obw'omunda» is the settled term for the inner/deeper life (humility-2.lg, the-inner-chamber.lg), and «okwegatta» / «okussa ekimu» are the corpus's union / communion. «Yesu Yennyini» is deliberate — it is the shipped lg title of jesus-himself-2, the first book this plan opens, so the card and the book agree.",
+      "This row cannot appear yet: seed_plans creates a plan only in a language where EVERY source book is published in it, and two of the three (the-masters-indwelling, union-and-communion) are still English-only. The prose is correct and waiting; the card goes live with whichever of those books lands second."
+    ]
+  },
   "faith-in-the-fire": {
     "title": "Katonda ow'Okubudaabuda Kwonna: Okukkiriza mu Muliro",
     "description": "Ku nnaku ezo ezisinga okuzibuwalira okusaba. Hannah Whitall Smith ku Katonda ow'okubudaabuda kwonna, ne Gareth Evans ku kwesiga oyo akwata ennaku zaffe ez'omu maaso — olugendo lwa wiiki ttaano okutuuka mu mirembe eginywevu ng'obulamu tebukakafu."
