@@ -52,7 +52,9 @@ EPISTLES = [
     ("The Epistle to Polycarp", "fathers.ii.ix"),
 ]
 
-# Filled from the life-chapter writer's report.
+# The five life chapters are original Ochorus prose, committed beside this
+# command (NOT fetched) so the build is reproducible — the ANF/CCEL epistles
+# come off the wire, but this content lives only here and in the fixture.
 LIFE = [
     (1, "Antioch and the God-Bearer"),
     (2, "Condemned to the Beasts"),
@@ -60,7 +62,7 @@ LIFE = [
     (4, "The Heart of His Letters"),
     (5, "The Wheat of God"),
 ]
-LIFE_DIR = Path("/tmp/ignatius")
+LIFE_DIR = Path(__file__).resolve().parent / "data" / "ignatius"
 
 DESCRIPTION = (
     "The seven letters of Ignatius of Antioch — written around AD 108 as he was "
