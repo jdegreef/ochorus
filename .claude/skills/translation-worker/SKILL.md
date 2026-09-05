@@ -1944,3 +1944,66 @@ archaic spelling and period punctuation are the text, not defects in it.
   words its source never quotes. Check what each ENGLISH quotes before deciding
   which edition is wrong — the divergence may be in the authors, not the
   translators.
+- **The es Bible in the ebible mirror is `spa_rv` — but it is RV1909 in ARCHAIC
+  orthography, and our shipped es corpus is MODERN Reina-Valera, so do NOT quote
+  from it: mine the corpus** (the 13-work es bios+sermons batch, 2026-09-04). The
+  collection id is `bibles/spa_rv/` (usx; `spa_rvg` is Reina-Valera Gómez 2010,
+  a different text). `meta.json` says RV1909, `license: public` — tempting. But
+  its John 3:16 reads «que ha dado **á** su Hijo... **fué**», Micah 6:8 «pida de
+  ti **Jehová**», while the shipped es corpus reads «ha dado **a** su Hijo... en
+  Él cree» and «qué pide de ti **el Señor**» — modern RV1960-register. This is
+  exactly the "fetch a known verse and diff it against a shipped file" rule the
+  sw notes make: the metadata date is not the text's register. So the es
+  authority is the CORPUS. Align en/es block pairs across the 45 shipped es
+  files (the #515 method) into a ref→wording crib (recovered 525 refs, zero
+  alignment loss); paste those verbatim; render gaps in modern RV register and
+  flag `self_rendered`. Keep `spa_rv` only as a wording GUIDE (which words the RV
+  tradition uses), normalise its orthography, and never mark it `mined`. NB the
+  corpus itself is not uniform — a few older files (`consolation-in-the-furnace.es`)
+  carry archaic `á`; don't "fix" them, and prefer the modern register for new work.
+- **es CONVENTION and BANDS are per content-type — measured 2026-09-04:**
+  **SERMONS mirror** their own English source's quote-mark style (7 of 29 shipped
+  mirror straight, 10 convert curly→«», 12 keep curly — genuinely split, so
+  mirror is the internally-consistent, `QuoteStyleTests`-safe choice per file);
+  **BIOS convert outer quotations to « »** (21 of 25 shipped, whatever the source
+  used; `“ ”` only when nested). Word bands from `word_count` on both sides of the
+  shipped pairs: **es SERMON n=29: 0.928–1.014, mean 0.963**; **es BIO n=25:
+  1.017–1.115, mean 1.062** (bios run just above English). Both distinct from the
+  es BOOK-CHAPTER band (0.947–1.053) already recorded. `QuoteStyleTests` reads
+  `body_html` ONLY, and bios are migration-data files (not fixtures) so it never
+  sees them — a bio's « » + nested `“ ”` is fine. Sermons also carry an editorial
+  `summary` the translator agents don't produce; translate it too and match the
+  body's mark style. Two build mechanics that cost a round-trip each (2026-09-04):
+  `Sermon` has **no `cover_url`/`pdf_url`** (Book fields — passing them to the
+  constructor throws), and the DB-clone path needs `created_at`/`updated_at` as
+  real `datetime` objects, not `"…Z"` strings (the serializer calls `.isoformat()`).
+- **A bio's `<slug>.short.txt` can already exist on main WITHOUT its `.html` —
+  the bio double-ship check must look at BOTH files, and at `reviewed`** (the es
+  batch, 2026-09-04). Three of the six authors (george-whitefield, hudson-taylor,
+  amanda-berry-smith) had a shipped es SHORT bio (an earlier auto-summary) but no
+  long `bio_html`, so `html✗ short✓` — the `author_bios_<lang>/<slug>.html`
+  half of the double-ship guard reads "not shipped" correctly, but a blind
+  `build_bios` overwrites the existing short.txt. It is safe ONLY because all six
+  es `AuthorTranslation` rows were `reviewed=False` (seed never overwrites a
+  `reviewed=True` row's wording, but the FILE would still change in the diff).
+  Before overwriting, `git cat-file -e origin/main:<short.txt>` and check the
+  DB's `reviewed` flag; keep your fresh short bio (coherent with the long one)
+  when unreviewed, and say in the PR which short bios you refined. whitefield's
+  matched byte-for-byte, so a good translation often reproduces the auto-summary.
+- **A notes `reference` over 64 chars passes local SQLite and FAILS Postgres CI —
+  sanitize the reference to a bare `Book C:V`** (the es batch, 2026-09-04).
+  `TranslationNote.reference` is `varchar(64)`; **SQLite ignores varchar length,
+  Postgres enforces it**, so `manage.py test library` was green locally and the
+  CI job "Backend — tests (Postgres, the production search path)" failed with
+  `django.db.utils.DataError: value too long for type character varying(64)` in
+  `ShippedNotesTests` (which seeds ALL notes). Cause: a translator's report put a
+  descriptive, multi-verse string in the reference column —
+  `Matthew 9:13 / Luke 5:32 ("came not to call the righteous…")` (87 chars). When
+  deriving notes, extract the canonical citation(s) with a regex, split a
+  compound reference into separate rows, drop the quoted gloss, and cap at 64 —
+  don't pass the report cell through verbatim. The general lesson: **SQLite is
+  not a faithful proxy for the Postgres CI on column-length (or other DB-level)
+  constraints** — before shipping, check every string field of every new row
+  against its model `max_length` (Sermon.scripture_ref is 160, title 300,
+  slug 180; TranslationNote.reference 64, source_file 200), since the local suite
+  will not.

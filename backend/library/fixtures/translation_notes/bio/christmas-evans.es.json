@@ -1,0 +1,18 @@
+{
+ "kind": "bio",
+ "slug": "christmas-evans",
+ "language": "es",
+ "job_issue": 1460,
+ "references": [
+  {
+   "reference": "Hebrews 4:12b",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "1 Timothy 6:8a",
+   "status": "self_rendered",
+   "block_index": 16
+  }
+ ]
+}

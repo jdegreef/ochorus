@@ -1,0 +1,288 @@
+{
+ "kind": "sermon",
+ "slug": "the-almost-christian",
+ "language": "es",
+ "job_issue": 1465,
+ "references": [
+  {
+   "reference": "Acts 26:28",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Eph 4:30",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Eph 4:29",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Eph 5:4",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Eph 5:18",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Tobit 4:15",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Eccl 9:10",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Rom 12:11",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Gal 6:10",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Zech 13:1",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Matt 6:2",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "2 Cor 7:4",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "2 Cor 12:13",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "1 Tim 6:12",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Mark 12:30",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Matt 22:37",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Luke 1:47",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "1 Thess 5:18",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Isa 26:8b",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Ps 73:25",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Gal 6:14b",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "1 John 2:16",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "1 Cor 13:4",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "1 John 4:16b",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Mark 12:31",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Matt 22:39",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Lev 19:18",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Luke 10:29",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Eph 5:2b",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "1 Cor 13:4–7",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "1 John 5:1",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "John 1:12",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "1 John 5:4b",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "John 3:36a",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Acts 15:9",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "2 Cor 7:1",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Prov 15:11",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Col 3:17",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "1 Pet 2:5",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Rom 5:5",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "1 John 4:21",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Gal 2:20b",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Micah 7:19b",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Col 2:14",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Eph 1:7",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Rom 8:16",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Exod 33:19",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Exod 34:6–7",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Rom 5:6b",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "John 20:28b",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Luke 18:1b",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "John 21:17",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Rom 3:24",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Rom 5:1",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Rom 5:2b",
+   "status": "self_rendered",
+   "block_index": 33
+  }
+ ]
+}

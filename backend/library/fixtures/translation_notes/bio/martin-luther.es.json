@@ -1,0 +1,13 @@
+{
+ "kind": "bio",
+ "slug": "martin-luther",
+ "language": "es",
+ "job_issue": 1461,
+ "references": [
+  {
+   "reference": "Romans 1:17b",
+   "status": "self_rendered",
+   "block_index": 7
+  }
+ ]
+}

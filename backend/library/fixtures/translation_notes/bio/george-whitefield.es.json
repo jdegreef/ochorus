@@ -1,0 +1,23 @@
+{
+ "kind": "bio",
+ "slug": "george-whitefield",
+ "language": "es",
+ "job_issue": 1450,
+ "references": [
+  {
+   "reference": "Matthew 9:13",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Luke 5:32",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "John 3:7",
+   "status": "self_rendered",
+   "block_index": 18
+  }
+ ]
+}

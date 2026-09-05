@@ -1,0 +1,93 @@
+{
+ "kind": "sermon",
+ "slug": "gods-love-for-a-sinning-world",
+ "language": "es",
+ "job_issue": 1463,
+ "references": [
+  {
+   "reference": "Jude 1:6",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "John 3:16a",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "John 3:16b",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "John 3:16",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Hebrews 2:11",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Romans 10:10a",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Matthew 21:38",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Luke 20:14",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "John 19:15",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Job 21:14",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "2 Corinthians 8:9",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Jeremiah 44:4",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Colossians 1:24",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Matthew 26:15",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "Galatians 6:17",
+   "status": "self_rendered",
+   "block_index": 62
+  },
+  {
+   "reference": "Isaiah 6:8",
+   "status": "self_rendered",
+   "block_index": 62
+  }
+ ]
+}

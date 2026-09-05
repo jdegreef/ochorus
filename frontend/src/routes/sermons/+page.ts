@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-04: seven Spanish sermons — fall-and-recovery-of-man
+// (#1462), gods-love-for-a-sinning-world (#1463), pauls-praise-of-christian-love
+// (#1464), the-almost-christian (#1465), the-method-of-grace (#1466),
+// sinners-in-the-hands-of-an-angry-god (#1467), the-good-way-of-coming-before-the-lord
+// (#1468). Rebuilds /es/sermons with the translated titles.
 // prerender refresh 2026-09-04: eight Hindi sermons — free-grace (#1109),
 // the-power-of-stillness (#1110), christ-all-in-all (#1111),
 // aggressive-christianity (#1112), salvation-by-faith (#1113),
