@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Icon from '$lib/components/Icon.svelte';
 	import { onMount } from 'svelte';
 	import { isTranslated, type BookSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
@@ -310,13 +311,13 @@
 					class:active={view === 'grid'}
 					onclick={() => setView('grid')}
 					aria-label={t('books.viewGrid')}
-					aria-pressed={view === 'grid'}>▦</button
+					aria-pressed={view === 'grid'}><Icon name="grid" /></button
 				>
 				<button
 					class:active={view === 'list'}
 					onclick={() => setView('list')}
 					aria-label={t('books.viewList')}
-					aria-pressed={view === 'list'}>☰</button
+					aria-pressed={view === 'list'}><Icon name="list" /></button
 				>
 			</div>
 		</div>

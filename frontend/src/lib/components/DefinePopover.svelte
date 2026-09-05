@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Icon from '$lib/components/Icon.svelte';
 	import { define } from '$lib/define.svelte';
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { i18n } from '$lib/i18n.svelte';
@@ -30,7 +31,7 @@
 			{#if define.result?.phonetic}
 				<span class="text-small text-muted">{define.result.phonetic}</span>
 			{/if}
-			<button class="define-close" onclick={() => define.close()} aria-label={t('a11y.close')}>✕</button>
+			<button class="define-close" onclick={() => define.close()} aria-label={t('a11y.close')}><Icon name="close" size={14} /></button>
 		</div>
 
 		{#if define.loading}
