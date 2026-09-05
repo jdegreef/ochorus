@@ -5,7 +5,7 @@
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { chapterName, readingMinutes, readingTime } from '$lib/reading';
 	import { SITE_URL } from '$lib/config';
-	import { absUrl, jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, hreflangFor, truncateMeta } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { scopedSearchHref } from '$lib/searchState';
@@ -66,13 +66,16 @@
 	// so a work without a description was shipping an English <meta description>
 	// and og:description at its /sw, /ar, … URL. Mirrors author.metaFallback.
 	const description = $derived(
-		(
+		truncateMeta(
 			book.description ||
-			t('book.metaFallback')
-				.replace('%title%', book.title)
-				.replace('%name%', book.author.name)
-		).slice(0, 300)
+				t('book.metaFallback').replace('%title%', book.title).replace('%name%', book.author.name)
+		)
 	);
+	// The same work's other-language editions, reused from the hreflang set
+	// (already the intersection of available_languages with advertised locales,
+	// as absolute URLs) for the Book-level translation links below.
+	const enEdition = $derived(hreflang.alternates.find((a) => a.loc === 'en'));
+	const siblingEditions = $derived(hreflang.alternates.filter((a) => a.loc !== book.language));
 	// The <title> carries the words people actually type. It was
 	// "{title} — {author} — Ochorus", which names the book and says nothing about
 	// what you can do with it; the query patterns this page competes for are
@@ -169,7 +172,31 @@
 				actionStatus: 'https://schema.org/PotentialActionStatus'
 			},
 			datePublished: book.publication_year ? String(book.publication_year) : undefined,
-			publisher: { '@type': 'Organization', name: 'Ochorus' }
+			publisher: { '@type': 'Organization', name: 'Ochorus' },
+			// The chapters as an explicit, ordered part-list — the book→chapter
+			// edges the page renders as a table of contents but never declared to a
+			// machine. Each is a resolvable URL with its own length.
+			hasPart: book.chapters?.length
+				? book.chapters.map((c) => ({
+						'@type': 'Chapter',
+						name: chapterName(c.order, c.title),
+						position: c.order,
+						url: absUrl(localizeHref(`/books/${book.slug}/${c.order}/`)),
+						...(c.word_count ? { wordCount: c.word_count } : {})
+					}))
+				: undefined,
+			// The same work in other languages, as a Book-level relationship.
+			// hreflang tells crawlers the URLs are alternates; this states the
+			// translation fact for the entity graph. English is treated as the
+			// original: it lists its translations, a translation points back at it.
+			translationOfWork:
+				book.language !== 'en' && enEdition
+					? { '@type': 'Book', inLanguage: 'en', url: enEdition.href }
+					: undefined,
+			workTranslation:
+				book.language === 'en' && siblingEditions.length
+					? siblingEditions.map((a) => ({ '@type': 'Book', inLanguage: a.loc, url: a.href }))
+					: undefined
 		})
 	);
 	// One crumb trail feeds both the visible <Breadcrumb> and the JSON-LD, so the

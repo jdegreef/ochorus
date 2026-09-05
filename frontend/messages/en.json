@@ -381,6 +381,7 @@
   "author_heading_sermons": "%name% Sermons",
   "book_meta_fallback": "%title% by %name% — free to read on Ochorus.",
   "book_title_tag": "%title% by %name% — read free online — Ochorus",
+  "chapter_title_tag": "%chapter% — %title% by %name% — Ochorus",
   "book_other_titles": "Other titles",
   "book_about_work": "About this book",
   "book_scripture_treats": "Scripture this book treats",
