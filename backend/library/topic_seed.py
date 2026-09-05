@@ -228,7 +228,6 @@ TOPIC_ARTICLES = {
         "the-morning-watch",
         "augustines-confessions-guide",
         "how-to-pray-for-revival",
-        "george-mueller-and-the-god-who-answers-prayer",
     ],
     "holy-spirit": [
         "what-is-the-baptism-of-the-holy-spirit",
@@ -267,8 +266,6 @@ TOPIC_ARTICLES = {
         "how-to-find-comfort-in-grief-and-loss",
         "how-to-be-content",
         "how-to-deal-with-guilt-and-shame",
-        "john-newton-from-slave-trader-to-amazing-grace",
-        "corrie-ten-boom-forgiveness-in-the-darkness",
     ],
     "revival-and-missions": [
         "what-is-revival-and-how-does-it-begin",
@@ -283,7 +280,6 @@ TOPIC_ARTICLES = {
         "revival-and-repentance-breaking-up-the-fallow-ground",
         "how-to-share-your-faith",
         "the-life-and-diary-of-david-brainerd-guide",
-        "william-carey-father-of-modern-missions",
     ],
     "faith-and-guidance": [
         "how-to-find-gods-will-for-your-life",
@@ -294,7 +290,6 @@ TOPIC_ARTICLES = {
         "how-to-overcome-doubt",
         "how-to-wait-on-god",
         "how-to-grow-in-your-faith",
-        "george-mueller-and-the-god-who-answers-prayer",
     ],
     "the-gospel-call": [
         "how-to-be-born-again",
@@ -313,9 +308,6 @@ TOPIC_ARTICLES = {
         "how-to-deal-with-guilt-and-shame",
         "grace-abounding-guide",
         "on-the-incarnation-guide",
-        "charles-spurgeon-the-prince-of-preachers",
-        "john-newton-from-slave-trader-to-amazing-grace",
-        "william-carey-father-of-modern-missions",
     ],
     "the-way-of-holiness": [
         "what-is-sanctification",
@@ -328,7 +320,6 @@ TOPIC_ARTICLES = {
         "what-is-repentance",
         "how-to-walk-in-humility",
         "how-to-memorize-scripture",
-        "corrie-ten-boom-forgiveness-in-the-darkness",
     ],
     "enduring-classics": [
         "pilgrims-progress-guide",
@@ -347,7 +338,6 @@ TOPIC_ARTICLES = {
         "what-makes-a-godly-leader",
         "sinners-in-the-hands-of-an-angry-god-explained",
         "what-is-the-church",
-        "charles-spurgeon-the-prince-of-preachers",
     ],
 }
 
