@@ -276,3 +276,14 @@ Reported, not fixed
   #1189/#1190 left main red on 2026-08-28. If you re-pin, fetch first and
   re-pin again right before merge; if main is already red on
   `tests_english_audit`, check whether a fix is already open before writing one.
+- **A `replacements` pair containing a straight `"` fails the dead-pair gate,
+  even when the fix is correct** (the seven-sermon es cleanup, 2026-09-05).
+  `test_no_replacement_pair_is_dead` builds its corpus with `json.dumps`, so a
+  stored straight double-quote reads back **JSON-escaped** (`\"`); a pair whose
+  `old`/`new` carries a literal `"` then matches neither the raw text (already
+  settled) nor the escaped corpus, and is flagged dead. Curly `“ ”` are not
+  escaped by `json.dumps`, so they are fine — this bites only straight-quoted
+  works (the pauls-praise sermon here). Anchor such a pair on the words BESIDE
+  the quote, keeping the `"` out of the pair entirely (`it to be able to
+  apprehend` -> `is to be able to apprehend`, not `"know mysteries" it…`). The
+  fix still applies correctly to `body_html`; you have only moved the anchor.

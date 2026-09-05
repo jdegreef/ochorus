@@ -528,6 +528,69 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 # `apply_body_corrections`, plus a data migration for prod).
 
 BODY_CORRECTIONS: dict[str, dict] = {
+    # Seven classic sermons were translated into Spanish (#1462-#1468); reading
+    # every sentence surfaced OCR/extraction slips in the ENGLISH source that no
+    # detector class catches (each produces a valid-looking short word). Only
+    # letter-level extraction damage with a single possible reading is repaired
+    # here; grammar/style and damaged passages that need the source edition are
+    # reported, not touched.
+    "the-good-way-of-coming-before-the-lord": {
+        "replacements": [
+            # Zech 3:4 quotation: "clothe the" -> "clothe thee".
+            ("clothe the with change of raiment", "clothe thee with change of raiment"),
+            # "no far" -> "no fear".
+            ("There is no far but the", "There is no fear but the"),
+            # Matt 20:26 echo: "It shall no be" -> "It shall not be".
+            ("It shall no be so among you", "It shall not be so among you"),
+            # "amide" -> "amid".
+            ("amide the billows", "amid the billows"),
+        ],
+    },
+    "the-method-of-grace": {
+        "replacements": [
+            ("we cannot pt up a prayer", "we cannot put up a prayer"),
+            ("you had o righteousness of your own", "you had no righteousness of your own"),
+            ("have got o peace with God", "have got no peace with God"),
+            ("How did Chris speak", "How did Christ speak"),
+            ("you must keep u a tender", "you must keep up a tender"),
+            # Ps 119:165: "love they law" -> "love thy law".
+            ("that love they law", "that love thy law"),
+            ("a matte of great importance", "a matter of great importance"),
+            ("pray sometimes none times a-day", "pray sometimes nine times a-day"),
+            # 2 Cor 7:5: "without were fightings" — "sightings" -> "fightings".
+            ("what sightings may be without", "what fightings may be without"),
+        ],
+    },
+    "pauls-praise-of-christian-love": {
+        "replacements": [
+            # Doubled period on a section number; markup-anchored so it is a
+            # no-op on the tagless body_text.
+            ("<p>2.. We see", "<p>2. We see"),
+            ("service of others.To these", "service of others. To these"),
+            # "it to be able" -> "is to be able", anchored on the words after the
+            # source's straight quote (a quote char reads JSON-escaped in the
+            # dead-pair check's corpus, so keep it out of the pair).
+            ("it to be able to apprehend", "is to be able to apprehend"),
+            ("6. Note bow forcibly", "6. Note how forcibly"),
+            ("written concern ing the things", "written concerning the things"),
+            # "old fence" -> "old offence" (the sentence is about an injury).
+            ("hunt up an old fence to find the injury", "hunt up an old offence to find the injury"),
+            # "abides fore" -> "abides forever" (truncation).
+            ("which abides fore, all else", "which abides forever, all else"),
+        ],
+    },
+    "fall-and-recovery-of-man": {
+        "replacements": [
+            # "wrath and rain" -> "wrath and ruin" (cf. "wrath and ruin" earlier).
+            ("wrath and rain. Justice", "wrath and ruin. Justice"),
+            # Eph 2:9: "least any man should boast" -> "lest".
+            ("not of works, least any man should boast", "not of works, lest any man should boast"),
+            # Wesley's hymn: "Pascal Lamb" -> "Paschal Lamb".
+            ("“Pascal Lamb by God appointed", "“Paschal Lamb by God appointed"),
+            # Rom 5:15 re-quote opens with a stray, never-closed single quote.
+            ("“‘For if, through the offence", "“For if, through the offence"),
+        ],
+    },
     "life-experience-gospel-labours": {
         # A stray space before the period after a middle initial in the AME
         # supplement's petition ("Joseph B . McKean"). Faithful-looking but a
