@@ -19,7 +19,7 @@
 	ogImage="{SITE_URL}/og/default.png"
 />
 
-<div class="mx-auto max-w-2xl px-5 py-12">
+<div class="reading-page">
 	<p class="eyebrow mb-2 text-accent">Ochorus</p>
 	<h1 class="text-h1 mb-3">{t('legal.title')}</h1>
 	<!-- Two documents on one page: the footer link says "Privacy & Terms", so a
@@ -29,7 +29,7 @@
 		<a href="#terms">{t('legal.termsHeading')}</a>
 	</nav>
 
-	<div class="reading-page space-y-5 text-body text-muted">
+	<div class="space-y-5 text-body text-muted">
 		<p>{t('legal.intro')}</p>
 
 		<h2 id="privacy" class="text-h2 text-text pt-2 scroll-mt-24">{t('legal.privacyHeading')}</h2>

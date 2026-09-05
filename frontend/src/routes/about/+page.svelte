@@ -19,11 +19,11 @@
 	ogImage="{SITE_URL}/og/default.png"
 />
 
-<div class="mx-auto max-w-2xl px-5 py-12">
+<div class="reading-page">
 	<p class="eyebrow mb-2 text-accent">{t('nav.about')}</p>
 	<h1 class="text-h1 mb-8">{t('about.title')}</h1>
 
-	<div class="reading-page space-y-5 text-body text-muted">
+	<div class="space-y-5 text-body text-muted">
 		<h2 class="text-h2 text-text">{t('about.heading')}</h2>
 		<p>{t('about.p1')}</p>
 		<p>{t('about.p2')}</p>
