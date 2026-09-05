@@ -336,7 +336,7 @@
 		aria-label={t('sermon.outline')}
 		use:focusTrap={{ onEscape: () => (outlineOpen = false) }}
 	>
-		<p class="outline-title eyebrow">{t('sermon.outline')}</p>
+		<p class="outline-title eyebrow eyebrow-micro">{t('sermon.outline')}</p>
 		<ul>
 			{#each outline as s (s.id)}
 				<li>
@@ -357,7 +357,7 @@
      the section you're reading. The top-bar toggle takes over below 1200px. -->
 {#if outline.length >= 2 && !readerUi.focus}
 	<nav class="outline-rail" aria-label={t('sermon.outline')}>
-		<p class="outline-rail-title eyebrow">{t('sermon.outline')}</p>
+		<p class="outline-rail-title eyebrow eyebrow-micro">{t('sermon.outline')}</p>
 		<ul>
 			{#each outline as s (s.id)}
 				<li>
@@ -426,13 +426,13 @@
 	<!-- Preaching text: the reference, and its verse(s) when available -->
 	{#if sermon.scripture_ref}
 		<div class="text-card">
-			<p class="text-card-eyebrow eyebrow">{t('sermon.text')}</p>
+			<p class="text-card-eyebrow eyebrow eyebrow-micro">{t('sermon.text')}</p>
 			<p class="text-card-ref">{sermon.scripture_ref}</p>
 			{#if preachingText?.verses?.length}
 				<p class="text-card-verse">
 					{#each preachingText.verses as v (v.number)}{v.text}{' '}{/each}
 				</p>
-				<p class="text-card-version eyebrow">{preachingText.version}</p>
+				<p class="text-card-version eyebrow eyebrow-micro">{preachingText.version}</p>
 			{/if}
 		</div>
 	{/if}
@@ -579,7 +579,6 @@
 		background: var(--accent-soft);
 	}
 	.text-card-eyebrow {
-		font-size: var(--fs-micro);
 		color: var(--accent);
 	}
 	.text-card-ref {
@@ -597,7 +596,6 @@
 	}
 	.text-card-version {
 		margin-top: 0.45rem;
-		font-size: var(--fs-micro);
 		color: var(--muted);
 	}
 
@@ -623,7 +621,6 @@
 	}
 	.outline-title {
 		padding: 0.35rem 0.6rem;
-		font-size: var(--fs-micro);
 		color: var(--muted);
 	}
 	.outline-item {
@@ -670,7 +667,6 @@
 	}
 	.outline-rail-title {
 		padding: 0 0.6rem 0.4rem;
-		font-size: var(--fs-micro);
 		color: var(--muted);
 	}
 	.outline-rail-item {
