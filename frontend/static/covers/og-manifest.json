@@ -508,6 +508,13 @@
 			"art": true,
 			"scrim": 0.3
 		},
+		"lg/days-of-heaven-upon-earth": {
+			"ground": "e64b4c6a38d280286950d44744bab86eb033c5e72c4d1b39d2fc0ba546994048",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"lg/feasting-at-the-table": {
 			"ground": "cc7ee2adc9479b3488c09b82f3a1af77a1a8c55aa2df806a4df05abcbca2d169",
 			"style": "house",

@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-05 (lg batch): days-of-heaven-upon-earth.lg (#1210,
+// A. B. Simpson, 12 ch) — completes the four-book Luganda batch. Rebuilds the
+// /lg/books shelf and its per-chapter pages.
 // prerender refresh 2026-09-05 (lg batch): cheque-book.lg (#1207, C. H. Spurgeon,
 // 13 ch); plus audit-repair rebuilds of soar-like-the-eagle-3.lg and
 // the-fourfold-gospel.lg. Rebuilds the /lg/books shelf and its per-chapter pages.
