@@ -241,12 +241,21 @@ TOPIC_ARTICLES = {
         "the-morning-watch",
         "pilgrims-progress-guide",
         "the-imitation-of-christ-guide",
+        "what-is-the-lords-supper",
+        "what-is-the-church",
+        "what-is-the-kingdom-of-god",
+        "how-to-read-the-bible-for-beginners",
+        "how-to-wait-on-god",
     ],
     "grace-and-comfort": [
         "how-to-trust-god-in-suffering",
         "how-to-overcome-fear-and-anxiety-with-faith",
         "what-is-grace",
         "what-is-faith",
+        "what-does-the-bible-say-about-heaven",
+        "what-is-the-love-of-god",
+        "how-to-overcome-doubt",
+        "how-to-find-comfort-in-grief-and-loss",
     ],
     "revival-and-missions": [
         "what-is-revival-and-how-does-it-begin",
@@ -259,12 +268,16 @@ TOPIC_ARTICLES = {
         "what-was-the-great-awakening",
         "personal-revival-reviving-a-cold-heart",
         "revival-and-repentance-breaking-up-the-fallow-ground",
+        "how-to-share-your-faith",
     ],
     "faith-and-guidance": [
         "how-to-find-gods-will-for-your-life",
         "how-to-hear-gods-voice",
         "how-to-trust-god-in-suffering",
         "what-is-faith",
+        "how-to-read-the-bible-for-beginners",
+        "how-to-overcome-doubt",
+        "how-to-wait-on-god",
     ],
     "the-gospel-call": [
         "how-to-be-born-again",
@@ -278,6 +291,8 @@ TOPIC_ARTICLES = {
         "what-is-repentance",
         "why-did-jesus-die",
         "what-is-the-trinity",
+        "what-is-the-kingdom-of-god",
+        "how-to-share-your-faith",
     ],
     "the-way-of-holiness": [
         "what-is-sanctification",
@@ -300,6 +315,7 @@ TOPIC_ARTICLES = {
         "how-to-know-if-god-is-calling-you-to-ministry",
         "what-makes-a-godly-leader",
         "sinners-in-the-hands-of-an-angry-god-explained",
+        "what-is-the-church",
     ],
 }
 
