@@ -32,7 +32,11 @@ export function GET() {
 		'Disallow: /*/feed/',
 		'',
 		`Sitemap: ${SITE_URL}/sitemap.xml`,
-		`Feed: ${SITE_URL}/feed.xml`,
+		// The Atom feed is discovered via the <link rel="alternate"> in the app
+		// shell, not here: `Feed:` is not a robots.txt directive, so a validator
+		// (and Lighthouse) flags the file as invalid, which risks the whole file
+		// being distrusted. Leave it as a comment for a human reader only.
+		`# Feed: ${SITE_URL}/feed.xml`,
 		''
 	].join('\n');
 	return new Response(body, { headers: { 'content-type': 'text/plain' } });

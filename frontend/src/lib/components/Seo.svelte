@@ -1,5 +1,13 @@
 <script lang="ts">
 	import type { Hreflang } from '$lib/seo';
+	import { SITE_URL } from '$lib/config';
+
+	// Site-wide social-card fallback. Pages with their own art (a book cover, a
+	// portrait, a sermon's og twin) pass `ogImage`; everything else — the home
+	// page, chapter pages, the utility/list pages without a bespoke card — shared
+	// a bare text card before this, so a link to the site's most-linked pages
+	// previewed as nothing. The 1200×630 default lives in /static/og.
+	const DEFAULT_OG = `${SITE_URL}/og/default.png`;
 
 	// Central <head> for a prerendered public page: title, description, canonical,
 	// hreflang alternates + x-default, Open Graph / Twitter cards, and any JSON-LD
@@ -28,7 +36,7 @@
 		ogType?: string;
 		/** og:title — defaults to the page title when a route doesn't override it. */
 		ogTitle?: string;
-		/** Absolute raster image URL for social cards; omit when the page has none. */
+		/** Absolute raster image URL for social cards; omit to use the site default. */
 		ogImage?: string;
 		/** og:image pixel dimensions — pass both when the image size is known so
 		 *  scrapers can lay the card out without fetching the file first. Only the
@@ -39,6 +47,13 @@
 		 *  with jsonLd() so `<` is escaped before it reaches {@html}. */
 		structuredData?: string[];
 	} = $props();
+
+	// Resolve the card image once. The default is a 1200×630 house raster, so it
+	// carries the same dimension hints the bespoke OG rasters do; a caller's own
+	// image only advertises dimensions when it passed them.
+	const card = $derived(ogImage || DEFAULT_OG);
+	const cardWidth = $derived(ogImage ? ogImageWidth : 1200);
+	const cardHeight = $derived(ogImage ? ogImageHeight : 630);
 </script>
 
 <svelte:head>
@@ -53,17 +68,15 @@
 	<meta property="og:title" content={ogTitle} />
 	<meta property="og:description" content={description} />
 	<meta property="og:url" content={canonical} />
-	{#if ogImage}
-		<meta property="og:image" content={ogImage} />
-		{#if ogImageWidth && ogImageHeight}
-			<meta property="og:image:width" content={String(ogImageWidth)} />
-			<meta property="og:image:height" content={String(ogImageHeight)} />
-		{/if}
-		<!-- Explicit twitter:image rather than leaning on the og:image fallback:
-		     stated, it's the value some scrapers key on. -->
-		<meta name="twitter:image" content={ogImage} />
+	<meta property="og:image" content={card} />
+	{#if cardWidth && cardHeight}
+		<meta property="og:image:width" content={String(cardWidth)} />
+		<meta property="og:image:height" content={String(cardHeight)} />
 	{/if}
-	<meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+	<!-- Explicit twitter:image rather than leaning on the og:image fallback:
+	     stated, it's the value some scrapers key on. -->
+	<meta name="twitter:image" content={card} />
+	<meta name="twitter:card" content="summary_large_image" />
 	{#each structuredData as ld, i (i)}
 		<!-- Server-built, entity-escaped JSON-LD (see seo.ts jsonLd()); never user input. -->
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
