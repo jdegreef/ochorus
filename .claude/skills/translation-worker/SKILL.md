@@ -2079,3 +2079,25 @@ archaic spelling and period punctuation are the text, not defects in it.
   prayers to God** (porbrbsl's own register), which the agent must preserve, and
   the ordered tag sequence must stay byte-identical (it is a pronoun/verb-form
   edit, not a structural one). Two agents fixed this book; re-validate afterwards.
+- **The verse-consistency ratchet has TWO exits, and a batch usually needs both**
+  (pt grace/power batch, 2026-09-05: 6 references flagged at once). It is a
+  shrink-only baseline in `library/data/verse_consistency_baseline.json`; a new or
+  widened divergence fails `test_no_new_or_widened_divergence`. `manage.py
+  audit_verse_consistency --language pt` prints every rendering. For each flag,
+  decide which exit: (1) **REAL divergence** — same clause, your new book is
+  porbrbsl and an older `ai_unreviewed` work is an inferior rendering: surgically
+  replace the older work's quoted span with porbrbsl (re-derive body_text +
+  word_count, re-render canonically), and the two converge to one rendering — this
+  is where 4 of the 6 went. Note `_diverges` EXCLUDES containment, so making the
+  older span a substring of yours (or identical) is enough; you do not have to
+  match the quote's full extent. (2) **GENUINE different clause/extent** — the two
+  works quote different PARTS of the verse (Atos 9:5: "kick against the pricks"
+  [KJV/Baxter, actually critical-text 26:14] vs "who art thou?"; Efésios 1:21: a
+  short welded "exaltou Jesus…domínio" vs the full verse): these cannot be
+  reconciled without falsifying a quotation, so pin them with `manage.py
+  audit_verse_consistency --update-baseline` and JUSTIFY each grown count in the
+  commit (the diff should touch only the references you intend — 2 lines here).
+  Fix the REAL ones first, then `--update-baseline`, so the baseline grows by
+  exactly the genuine cases and nothing accidental. `test_baseline_shrinks_only`
+  is the other guard: a reference you reconciled that was previously pinned must be
+  re-pinned DOWN by the same `--update-baseline`, or it fails for loosening.
