@@ -146,6 +146,29 @@ describe('render.yaml routing rules', () => {
 		expect(broken).toEqual([]);
 	});
 
+	it('redirects retired biography articles to author pages that exist', () => {
+		// The eight retired biography articles (migrations 0118/0119) 301 to the
+		// person's author page. That page has to be real, or the 301 lands in the
+		// not-found shell — worse than the soft 404 it replaced. authors.json is
+		// the identity source of truth (a bio-only author with no book still has a
+		// row there), so a slug typo or rename is caught here.
+		const AUTHORS = join(REPO, 'backend', 'library', 'fixtures', 'content', 'authors.json');
+		const known = new Set<string>(
+			JSON.parse(readFileSync(AUTHORS, 'utf-8'))
+				.filter((row: { model: string }) => row.model === 'library.author')
+				.map((row: { fields: { slug: string } }) => row.fields.slug)
+		);
+		const targets = all.filter((r) => r.source.startsWith('/articles/'));
+		expect(targets.length).toBe(16);
+		const broken = targets
+			.filter((r) => {
+				const m = /^\/authors\/([^/]+)\/$/.exec(r.destination);
+				return !m || !known.has(m[1]);
+			})
+			.map((r) => `${r.source} -> ${r.destination} (line ${r.line})`);
+		expect(broken).toEqual([]);
+	});
+
 	it('keeps the SPA catch-all last', () => {
 		// It matches everything. Any rule after it is unreachable.
 		const idx = all.findIndex((r) => r.source === '/*');

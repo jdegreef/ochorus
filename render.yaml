@@ -415,6 +415,59 @@ services:
         # the filename — `renderRoutes.test.ts` fails on a destination that no
         # longer exists in static/, which is what caught this.
         destination: /covers/art/the-normal-christian-life.jpg
+      # Retired biography ARTICLES (migrations 0118/0119). Biographies live
+      # only in the biography section now, so each retired /articles/<slug>
+      # 301s to that person's author page — the equivalent, fuller content.
+      # Both slash forms are listed, matching the WordPress-redirect block above;
+      # these come before the SPA catch-all. Guarded by renderRoutes.test.ts.
+      - type: redirect
+        source: /articles/george-mueller-and-the-god-who-answers-prayer
+        destination: /authors/george-muller/
+      - type: redirect
+        source: /articles/george-mueller-and-the-god-who-answers-prayer/
+        destination: /authors/george-muller/
+      - type: redirect
+        source: /articles/charles-spurgeon-the-prince-of-preachers
+        destination: /authors/charles-h-spurgeon/
+      - type: redirect
+        source: /articles/charles-spurgeon-the-prince-of-preachers/
+        destination: /authors/charles-h-spurgeon/
+      - type: redirect
+        source: /articles/john-newton-from-slave-trader-to-amazing-grace
+        destination: /authors/john-newton/
+      - type: redirect
+        source: /articles/john-newton-from-slave-trader-to-amazing-grace/
+        destination: /authors/john-newton/
+      - type: redirect
+        source: /articles/william-carey-father-of-modern-missions
+        destination: /authors/william-carey/
+      - type: redirect
+        source: /articles/william-carey-father-of-modern-missions/
+        destination: /authors/william-carey/
+      - type: redirect
+        source: /articles/corrie-ten-boom-forgiveness-in-the-darkness
+        destination: /authors/corrie-ten-boom/
+      - type: redirect
+        source: /articles/corrie-ten-boom-forgiveness-in-the-darkness/
+        destination: /authors/corrie-ten-boom/
+      - type: redirect
+        source: /articles/hudson-taylor-trusting-god-for-the-impossible
+        destination: /authors/hudson-taylor/
+      - type: redirect
+        source: /articles/hudson-taylor-trusting-god-for-the-impossible/
+        destination: /authors/hudson-taylor/
+      - type: redirect
+        source: /articles/amy-carmichael-and-the-cost-of-love
+        destination: /authors/amy-carmichael/
+      - type: redirect
+        source: /articles/amy-carmichael-and-the-cost-of-love/
+        destination: /authors/amy-carmichael/
+      - type: redirect
+        source: /articles/samuel-crowther-from-captive-to-bishop
+        destination: /authors/samuel-ajayi-crowther/
+      - type: redirect
+        source: /articles/samuel-crowther-from-captive-to-bishop/
+        destination: /authors/samuel-ajayi-crowther/
       # INDEX pages: Render doesn't auto-map extensionless URLs to their .html
       # files, so map each one here.
       #
