@@ -770,8 +770,16 @@ dropped; chapters under 120 words are dropped as stubs.
   ("call fromheaven", "religion isthat" — both present in CCEL's own text) and
   pin the rest with `audit_english --update-baseline`.
 
-### Two working-practice traps this loop hit
+### Working-practice traps this loop hit
 
+- **Edit a tracked skill file (or any repo file) in the WORKTREE you commit from,
+  not the main checkout.** Appending these very notes to
+  `~/dev/ochorus/.claude/skills/book-import/SKILL.md` (the main checkout, on some
+  unrelated stale branch) while the book work lived in a worktree stranded every
+  edit uncommitted there — it never entered the PR and would have been lost. Each
+  worktree has its OWN copy of tracked files. Edit the worktree's copy and commit
+  it into the book's PR; if you've already edited the wrong one, `git diff` it,
+  `git apply` the patch in the worktree, and `git checkout` the main copy clean.
 - **`git stash` on a CLEAN tree is a no-op, so a following `git stash pop` pops
   somebody ELSE's stash.** Stashing to compare against `main` is a natural move
   during a review; if everything is already committed there is nothing to stash,
