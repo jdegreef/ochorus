@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-05: twelve more Portuguese author biographies —
+// richard-allen, julia-foote, jarena-lee, ignatius-of-antioch, cyprian-of-carthage,
+// clement-of-rome, bernard-of-clairvaux, william-law, william-carey, teresa-of-avila,
+// yosiya-kinuka, yona-kanamuzeyi. Author pages are prerendered PER AUTHOR, so each
+// /pt/authors/<slug> page must rebuild for the translated bio and its callouts.
 // prerender refresh 2026-09-05: twelve Portuguese author biographies —
 // watchman-nee, athanasius-of-alexandria, john-chrysostom, robert-murray-mcheyne,
 // martin-luther, thomas-a-kempis, samuel-ajayi-crowther, richard-sibbes, john-owen,
