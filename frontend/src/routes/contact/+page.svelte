@@ -19,7 +19,7 @@
 	ogImage="{SITE_URL}/og/default.png"
 />
 
-<div class="mx-auto max-w-2xl px-5 py-12">
+<div class="reading-page">
 	<p class="eyebrow mb-2 text-accent">{t('nav.contact')}</p>
 	<h1 class="text-h1 mb-6">{t('contact.heading')}</h1>
 

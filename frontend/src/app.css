@@ -1785,6 +1785,18 @@ nav.appnav .navsearch:hover {
 	margin-inline-start: 50%;
 	transform: translateX(-50%);
 }
+
+/* The three static prose pages (About / Contact / Legal) are a page of text,
+   not a shell around content, so they keep their own reading measure rather
+   than .page-col's width. One class instead of three hand-rolled
+   `mx-auto max-w-2xl px-5 py-12` shells — and it was referenced (About, Legal)
+   before it was ever defined, so it did nothing. */
+.reading-page {
+	max-inline-size: 42rem;
+	margin-inline: auto;
+	padding-block: 3rem;
+	padding-inline: 1.25rem;
+}
 [dir='rtl'] .page-col {
 	transform: translateX(50%);
 }
