@@ -494,6 +494,13 @@
 			"art": true,
 			"scrim": 0.85
 		},
+		"lg/cheque-book": {
+			"ground": "3aa8c4c6d180399ae25c173fba9175067830b80d1f64edaddccf390667118a6e",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"lg/clothed-with-strength-and-dignity": {
 			"ground": "10e69218f80f6e0ebbdcd1fb8a725c558609985f4402cc5f6e03ccda13bff370",
 			"style": "house",

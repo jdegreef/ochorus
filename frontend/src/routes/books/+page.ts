@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-05 (lg batch): cheque-book.lg (#1207, C. H. Spurgeon,
+// 13 ch); plus audit-repair rebuilds of soar-like-the-eagle-3.lg and
+// the-fourfold-gospel.lg. Rebuilds the /lg/books shelf and its per-chapter pages.
 // prerender refresh 2026-09-05 (lg batch): the-fourfold-gospel.lg (#1211, A. B.
 // Simpson, 6 ch). Rebuilds the /lg/books shelf and its per-chapter pages.
 // prerender refresh 2026-09-05 (lg batch): soar-like-the-eagle-3.lg (#1208, Gareth
