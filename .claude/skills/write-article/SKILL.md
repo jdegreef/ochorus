@@ -101,10 +101,12 @@ don't hand-wrap refs in the fixture.
   literal early and corrupt the file. Bit this three times in one session; run
   `python3 -c "import ast; ast.parse(open(f).read())"` after each builder edit.
 
-- **Guide-style articles run LONG, not short.** The 1.6×-lower rule above holds
-  for devotional "what is X" pieces; a reader's guide to a book (plot walk-through
-  + symbols + how-to-read) came out at 2,350 counted words on the first pass and
-  needed three trim rounds to land under 2,000. Budget a trim pass for guides.
+- **Guide-style articles need a length-ADJUST pass either way — verify, don't eyeball.**
+  A narrative-heavy guide (Pilgrim's Progress: plot walk-through + symbols) came
+  out at 2,350 counted words and needed three trim rounds; expository guides in
+  the same batch (Religious Affections, On the Incarnation) came out UNDER the
+  1,500 floor and needed expansion. The variable is how much plot/quotation you
+  carry. Budget one adjust pass in whichever direction the first `word_count` shows.
 - **Quote only what is on the site, in the site's translation.** For a guide to a
   classic, the safe quotations are the ones you can find verbatim in the work's
   own fixture (`books/<slug>.en.json`) — the Ochorus *Imitation* is Croft–Bolton,

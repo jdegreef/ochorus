@@ -271,6 +271,7 @@ TOPIC_ARTICLES = {
         "how-to-deal-with-guilt-and-shame",
         "how-to-find-rest-for-your-soul",
         "what-does-the-bible-say-about-the-end-times",
+        "the-bruised-reed-guide",
     ],
     "revival-and-missions": [
         "what-is-revival-and-how-does-it-begin",
@@ -329,6 +330,7 @@ TOPIC_ARTICLES = {
         "how-to-honor-god-with-your-money",
         "what-is-spiritual-warfare",
         "how-to-love-your-enemies",
+        "mortification-of-sin-guide",
     ],
     "enduring-classics": [
         "pilgrims-progress-guide",
@@ -341,12 +343,16 @@ TOPIC_ARTICLES = {
         "the-life-and-diary-of-david-brainerd-guide",
         "grace-abounding-guide",
         "on-the-incarnation-guide",
+        "religious-affections-guide",
+        "mortification-of-sin-guide",
+        "the-bruised-reed-guide",
     ],
     "the-preached-word": [
         "how-to-know-if-god-is-calling-you-to-ministry",
         "what-makes-a-godly-leader",
         "sinners-in-the-hands-of-an-angry-god-explained",
         "what-is-the-church",
+        "religious-affections-guide",
     ],
 }
 
