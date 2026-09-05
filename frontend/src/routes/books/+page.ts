@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-05 (lg batch): soar-like-the-eagle-3.lg (#1208, Gareth
+// Evans, 12 ch). Rebuilds the /lg/books shelf and its per-chapter pages.
 // prerender refresh 2026-09-02 (batch4): purity-of-heart.lg (#1206, William Booth,
 // 10 ch) and soar-like-the-eagle-3.sw (#870, Gareth Evans, 12 ch). Rebuilds the
 // /lg/books and /sw/books shelves and their per-chapter pages.

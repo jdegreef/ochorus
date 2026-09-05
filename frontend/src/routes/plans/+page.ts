@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-05: Luganda plan prose added — deeper-life-in-christ
+// (#1212) in data/plan_translations/lg.json. DORMANT (its source books
+// the-masters-indwelling / union-and-communion are not yet in Luganda).
 // prerender refresh 2026-09-04: Hindi plan prose completed — grace-for-every-sinner
 // (#1108) and faith-in-the-fire (#1444) added to data/plan_translations/hi.json,
 // which finishes the Hindi set. Both are DORMANT (a curated plan needs every source
