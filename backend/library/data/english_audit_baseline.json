@@ -9,6 +9,9 @@
    "space-before-punct": 8,
    "word-fusion": 2
   },
+  "a-serious-call": {
+   "space-before-punct": 9
+  },
   "against-eutropius": {
    "lost-paragraphing": 1
   },
