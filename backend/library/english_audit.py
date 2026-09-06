@@ -197,7 +197,7 @@ SPACE_BEFORE_PUNCT = re.compile(r"\S\s+[,.;:!?](?:\s|$)")
 # THE SELECTOR IS NOW FIXED — the deferral this comment used to record has been
 # discharged. `sanitize._is_pg_navigation` decides on the link's TEXT, so a
 # cross-reference keeps its words and only navigation is dropped, and
-# `scripts/audit_pginternal.py` is the measurement that made the narrowing safe
+# `scripts/audit_keep_predicates.py` is the measurement that made the narrowing safe
 # ("what does unwrapping let back in?", answered over every Gutenberg work).
 # This class stays, and stays a SYMPTOM test: it catches the damage already on
 # the shelf in rows that are never re-imported, and it keeps detecting the

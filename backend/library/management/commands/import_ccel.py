@@ -396,9 +396,11 @@ def extract_body(
     #     and that one duplicate survived the import that dropped the other 55.
     #
     # The sanitizer's own drop pass, not a hand-picked subset of it: that policy
-    # is the one that grows (pagenum, navbar, the footnote classes twice, and
-    # now a text-qualified rule that is NOT in `DROP_SELECTORS` at all), and a
+    # is the one that grows (pagenum, navbar, the footnote classes twice), and a
     # copy here would go on reading furniture the sanitizer had learned to drop.
+    # Two of its selectors are qualified by `KEEP_PREDICATES`, so iterating
+    # `DROP_SELECTORS` alone would also over-drop where a transcriber's markup
+    # is ambiguous — `tests_sanitize` fails the build if this rots back.
     drop_furniture(content)
     for el in list(content.find_all(["h1", "h2", "h3", "h4", "h5"], recursive=True))[
         :MAX_LEADING_BLOCKS

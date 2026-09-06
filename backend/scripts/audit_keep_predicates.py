@@ -1,10 +1,18 @@
 #!/usr/bin/env python3
 """Re-clean every Gutenberg-sourced work and diff the two sanitizers.
 
-Project Gutenberg puts ``class="pginternal"`` on every internal link, so the
-sanitizer's old blanket drop selector deleted the author's own cross-references
-along with the navigation — text included. `library/sanitize.py` now decides by
-the link's TEXT, and this is the corpus-wide check on that predicate.
+Two of `sanitize.DROP_SELECTORS` are substring class matches written against ONE
+transcriber's vocabulary that also match another's legitimate prose, so each is
+qualified by a `KEEP_PREDICATES` entry. This is the corpus-wide check on those
+predicates: for each, what does NOT dropping the matches let back in?
+
+    pginternal  Gutenberg puts `class="pginternal"` on every internal link, so
+                the blanket selector deleted the author's own cross-references
+                along with the navigation — text included.
+    note        `[class*=note i]` was written for CCEL's footnote apparatus and
+                also matched Gutenberg's own `class="note"`, which marks
+                content: `holy-in-christ`'s endnote headings, and the scripture
+                text of four Edwards sermons.
 
 It is not a spot-check: for every Gutenberg book and sermon the catalogs name it
 runs the REAL extraction (``import_gutenberg.extract_chapters`` /
@@ -24,8 +32,9 @@ parity with translations that `library/tests_translation_markup.py` enforces.
 
 Sources are cached under --cache so re-runs don't re-hit gutenberg.org.
 
-    uv run python scripts/audit_pginternal.py
-    uv run python scripts/audit_pginternal.py --only ministry-of-intercession
+    uv run python scripts/audit_keep_predicates.py
+    uv run python scripts/audit_keep_predicates.py --rule note
+    uv run python scripts/audit_keep_predicates.py --only ministry-of-intercession
 """
 
 from __future__ import annotations
@@ -38,6 +47,7 @@ import os
 import sys
 from functools import cache
 from pathlib import Path
+from unittest import mock
 
 import django
 
@@ -58,40 +68,49 @@ from library.management.commands.import_gutenberg import (  # noqa: E402
 from library.management.commands.import_sermons import (  # noqa: E402
     extract_gutenberg_section,
 )
+from library.sanitize import NOTE_SELECTOR, PGINTERNAL_SELECTOR  # noqa: E402
 from library.sermon_catalog import SERMONS  # noqa: E402
 from library.text import text_of  # noqa: E402
 
-# The shape the old blanket drop selector produced, and the shape it destroyed.
-_PROBE = '<p>x<a class="pginternal" href="#n">Note A.</a>y</p>'
+# Each rule: the selector its predicate qualifies, and a fragment the predicate
+# is known to RESCUE — cleaning that fragment with the predicate disabled must
+# differ, or the harness is not testing what it claims to.
+RULES = {
+    "pginternal": (
+        PGINTERNAL_SELECTOR,
+        '<p>x<a class="pginternal" href="#n">Note A.</a>y</p>',
+    ),
+    "note": (
+        NOTE_SELECTOR,
+        '<h4 class="note">Holiness as Proprietorship.</h4>',
+    ),
+}
 
 
 @contextlib.contextmanager
-def blanket_drop():
-    """Restore the OLD behaviour: every `pginternal` element decomposed.
+def unqualified(rule: str):
+    """Restore the OLD behaviour: the rule's selector drops every match.
 
-    This reaches in and replaces a private predicate, so it is only as durable
-    as that name. Inline the predicate or rename it and the patch becomes a
-    no-op — and a no-op here does not fail, it reports every work UNCHANGED,
-    which reads as good news. So the seam is checked on the way in: the probe is
-    cleaned both ways and the run stops unless patching actually changed the
-    result. Compared against the live unpatched output rather than a literal, so
+    This reaches into a private registry, so it is only as durable as that name.
+    Move the predicate elsewhere and the patch becomes a no-op — and a no-op
+    here does not fail, it reports every work UNCHANGED, which reads as good
+    news. So the seam is checked on the way in: the rule's probe is cleaned both
+    ways and the run stops unless disabling the predicate actually changed the
+    result. Compared against the live qualified output rather than a literal, so
     an unrelated change to how the sanitizer spaces its output cannot fake a
     broken harness.
     """
-    unpatched = sanitize.clean_fragment(_PROBE)
-    real = sanitize._is_pg_navigation
-    sanitize._is_pg_navigation = lambda el: True
-    try:
-        if sanitize.clean_fragment(_PROBE) == unpatched:
+    selector, probe = RULES[rule]
+    qualified = sanitize.clean_fragment(probe)
+    with mock.patch.dict(sanitize.KEEP_PREDICATES):
+        sanitize.KEEP_PREDICATES.pop(selector, None)
+        if sanitize.clean_fragment(probe) == qualified:
             raise SystemExit(
-                "audit harness is broken: patching sanitize._is_pg_navigation no "
-                "longer changes cleaning, so every work would report 'unchanged'. "
-                "Re-point blanket_drop at whatever now decides a pginternal "
-                "element's fate."
+                f"audit harness is broken: removing the {selector} keep-predicate "
+                "no longer changes cleaning, so every work would report "
+                "'unchanged'. Re-point RULES at whatever now qualifies it."
             )
         yield
-    finally:
-        sanitize._is_pg_navigation = real
 
 
 def works() -> list[tuple[str, str, str, str]]:
@@ -176,6 +195,9 @@ def shipped_text(kind: str, slug: str) -> str | None:
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--rule", choices=sorted(RULES), action="append",
+                    help="measure only this keep-predicate (repeatable; "
+                         "default: every one)")
     ap.add_argument("--only", action="append", default=[],
                     help="limit to these slugs (repeatable)")
     ap.add_argument("--cache", type=Path,
@@ -188,21 +210,30 @@ def main() -> int:
         print("no matching Gutenberg works", file=sys.stderr)
         return 2
 
+    # Every rule by default: the file's whole claim is "for each predicate, what
+    # does not-dropping let back in?", and a default that measured one of two
+    # would answer half of it to anyone who ran the script bare.
+    return max(audit_rule(rule, selected, args.cache)
+               for rule in (args.rule or sorted(RULES)))
+
+
+def audit_rule(rule: str, selected: list, cache: Path) -> int:
     failures: list[str] = []
     changed = 0
     missing: list[str] = []
 
-    print(f"re-cleaning {len(selected)} Gutenberg-sourced works "
-          "(old blanket drop vs new predicate)\n")
+    print(f"\n{'=' * 72}\nrule {rule!r}: re-cleaning {len(selected)} "
+          f"Gutenberg-sourced works — {RULES[rule][0]} with vs without its "
+          f"keep-predicate\n{'=' * 72}\n")
     for kind, slug, book_id, section in selected:
         try:
-            html = source_html(book_id, args.cache)
+            html = source_html(book_id, cache)
         except Exception as exc:  # network / mirror trouble, not a finding
             failures.append(f"{slug} (#{book_id}): {exc}")
             print(f"  !! {slug:<44} #{book_id}  fetch failed: {exc}")
             continue
 
-        with blanket_drop():
+        with unqualified(rule):
             old = extract(kind, html, section)
         new = extract(kind, html, section)
 

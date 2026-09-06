@@ -717,14 +717,15 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # The same dropped-anchor defect as `ministry-of-intercession` above,
         # from the same transcriber (Project Gutenberg; this book is #26990)
         # and the same selector:
-        # `sanitize.DROP_SELECTORS` CARRIED `"[class*=pginternal]"`, and `_clean`
+        # `sanitize.DROP_SELECTORS` carries `"[class*=pginternal]"`, and `_clean`
         # DECOMPOSES the drop-selectors before it unwraps everything else — so a
         # plain `<a>` survived as its text and a *Gutenberg* one was deleted
         # whole. Gutenberg puts that class on every internal link, so what a
         # reader got is the punctuation around a reference with the reference
-        # gone. FIXED at the selector since (`sanitize._is_pg_navigation` now
-        # decides on the link's text); these pairs stay because shipped rows are
-        # never re-imported — see `restore_note_headings` for why.
+        # gone. The selector is QUALIFIED now — `sanitize.KEEP_PREDICATES` keeps
+        # a link whose text is a word — so no future import loses one; these
+        # pairs stay because shipped rows are never re-imported (see
+        # `restore_note_headings` for why).
         #
         # ch10's closing recapitulation lost six book-internal cross-references
         # at once and shipped six bare `()`:
@@ -755,12 +756,24 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # link, not what Murray printed. English-only edition, so nothing to
         # settle by hand in a translation.
         #
-        # STILL UNREPAIRED, and deliberately: ch33 (Notes) lost all seven of its
-        # `NOTE A.`–`NOTE G.` headings and every footnote block that pointed at
-        # them, to a DIFFERENT selector. The fix for that one is to the
-        # sanitizer and reaches every CCEL work, so it is not a string pair
-        # here — `english_audit.STRAY_PARENS` carries the mechanism, and the
-        # `english-qa` skill the scope.
+        # ch33 (Notes) lost all seven of its `NOTE A.`–`NOTE G.` headings to a
+        # DIFFERENT selector: `[class*=note i]`, written for CCEL's footnote
+        # apparatus, also matched Gutenberg's own `class="note"`. That selector
+        # is FIXED at the source now (`sanitize._is_gutenberg_note_content`), so
+        # no future import loses them — but these rows are never re-imported, so
+        # ch33 on the shelf is still seven bare `<hr/>`s with no headings.
+        #
+        # Repairing THOSE is `note_headings` on this same key, the mechanism
+        # `ministry-of-intercession` uses for byte-identical damage from the
+        # sibling selector — not more `replacements` pairs, because a pure
+        # insertion re-fires on every deploy (see `restore_note_headings`).
+        # Deliberately left for that change: it has to settle the ordered-tag
+        # parity `tests_translation_markup` enforces against this book's
+        # translations, which is not this key's business.
+        #
+        # The footnote BLOCKS that pointed at them stay dropped, by design: the
+        # markers referencing them are dropped too, so restoring the blocks
+        # alone would orphan the note text mid-chapter.
         "replacements": [
             ("deep Restfulness ()", "deep Restfulness (ch. 3)"),
             ("humble Reverence ()", "humble Reverence (ch. 4)"),
@@ -2350,13 +2363,13 @@ def restore_paragraph_breaks(body_html: str, seams: Sequence[tuple[str, str]]) -
 def restore_note_headings(body_html: str, headings: Sequence[tuple[str, str]]) -> str:
     """Put back a heading the sanitizer deleted, before the block it titles.
 
-    `sanitize.DROP_SELECTORS` CARRIED `[class*=pginternal]`, and `_clean`
+    `sanitize.DROP_SELECTORS` carries `[class*=pginternal]`, and `_clean`
     DECOMPOSES the drop-selectors before it unwraps everything else. A Gutenberg
     heading whose only child is its anchor was therefore emptied, and the
     empty-block regex a few lines down then removed the heading itself. Six of
     them went that way in `ministry-of-intercession` ch18.
 
-    The selector is fixed — `sanitize._is_pg_navigation` now keeps a link that
+    The selector is QUALIFIED now — `sanitize.KEEP_PREDICATES` keeps a link that
     carries a word — so no FUTURE import loses a heading this way. This stays
     for the rows already on the shelf, which are never re-imported:
     `ingest.upsert_book` deletes and recreates every chapter, and restoring

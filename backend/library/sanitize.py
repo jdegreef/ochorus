@@ -61,6 +61,12 @@ BIO_ASIDE_CLASSES = {"prayer", "prayer answered"}
 # `javascript:`, `data:`, `vbscript:` — is what this list exists to exclude.
 BIO_URL_SCHEMES = {"https", "http"}
 
+# The two selectors qualified by KEEP_PREDICATES, named because each string is
+# needed in two places and a typo between them would silently un-qualify the
+# rule rather than fail.
+NOTE_SELECTOR = "[class*=note i]"
+PGINTERNAL_SELECTOR = "[class*=pginternal]"
+
 # Elements removed wholesale (chrome, page furniture, footnote machinery).
 DROP_SELECTORS = [
     "script", "style", "nav", "header", "footer", "form", "button",
@@ -75,9 +81,11 @@ DROP_SELECTORS = [
     # `i` = case-insensitive — a case-sensitive `[class*=footnote]` missed the
     # capitalised classes entirely and inlined note text into the prose
     # ("desires knowledge 2 Aristotle, Metaphysics, i. 1. ; but"), while the
-    # markers left bare digits mid-sentence.
-    "[class*=note i]",
+    # markers left bare digits mid-sentence. Qualified — see KEEP_PREDICATES.
+    NOTE_SELECTOR,
     "[class*=pg-boilerplate]",
+    # Qualified too — see KEEP_PREDICATES.
+    PGINTERNAL_SELECTOR,
     # Gutenberg's transcriber-correction markup ships the corrected word TWICE —
     # `<span class="htmlonly">view.</span><span class="epubonly"><a
     # class="pginternal">view.</a></span>` — one copy per output format. The web
@@ -87,7 +95,7 @@ DROP_SELECTORS = [
     #
     # DROPPING is safe only because the twin always survives: this rule deletes
     # text, so a source that emitted the `epubonly` copy ALONE would lose it.
-    # `scripts/audit_pginternal.py` measured the corpus — PG #65066 is the only
+    # `scripts/audit_keep_predicates.py` measured the corpus — PG #65066 is the only
     # source using this markup, and its 49 `epubonly` spans are 49 `htmlonly`
     # pairs, none unpaired. Exact class, not a substring: this diff exists
     # because substring class matching over-matches, and `epubonly` needs no
@@ -115,7 +123,7 @@ _PG_NAV_TEXT = re.compile(r"^(?:table\s+of\s+)?contents\.?$", re.I)
 # ("°"), with or without brackets and a trailing period. The apparatus these
 # point at does not survive the import, so keeping one leaves an orphan digit
 # mid-sentence — which is what the drop selector was right about.
-# `scripts/audit_pginternal.py` measured them: nineteen `[1]`…`[19]` markers in
+# `scripts/audit_keep_predicates.py` measured them: nineteen `[1]`…`[19]` markers in
 # `the-life-of-trust`, five bare letters in `separation-and-service`, seven `°`
 # in `selected-sermons-edwards`. Note the anchors on both ends of the pattern —
 # a real cross-reference ("Note A.", "ch. 3", "p. xxix") carries a word, and is
@@ -128,6 +136,56 @@ _PG_MARK_TEXT = re.compile(
         ) \s* [\])]? \.? $""",
     re.X,
 )
+
+
+# Gutenberg's OWN use of `class="note"` — the exact token, lowercase, and the
+# one value in either transcriber's vocabulary that marks CONTENT rather than
+# apparatus. `NoteSelectorTests.CCEL_APPARATUS` / `.PG_CHROME` hold the measured
+# vocabularies (they fail the build; a comment cannot), and
+# `scripts/audit_keep_predicates.py --rule note` is the corpus measurement.
+#
+# What the bare token carries: `holy-in-christ`'s seven `NOTE A.`–`NOTE G.`
+# endnote headings and their subheadings, and — the one nobody had noticed —
+# the SCRIPTURE TEXT of four Edwards sermons, so every one of them opened
+# mid-argument with no text at all.
+def _class_tokens(el: Tag) -> list[str]:
+    """`class` as a token list, however the parser spelled it.
+
+    BeautifulSoup gives a token list for parsed HTML but a bare string for a
+    `class` set programmatically (and for the xml parser) — `_scrub_attrs` has
+    always guarded that, and a predicate that forgets silently drops content.
+    """
+    raw = el.get("class") or []
+    return raw if isinstance(raw, list) else str(raw).split()
+
+
+def _is_gutenberg_note_content(el: Tag) -> bool:
+    """True for an element the note selector matches but must NOT drop.
+
+    Two conditions, and both are load-bearing:
+
+    * the bare lowercase token `note` is present and NO OTHER token is itself
+      note-ish. Token membership, not whole-attribute equality — Gutenberg
+      combines a semantic token with a layout one (`footnote pgbrk` is in the
+      measured vocabulary), so `class="note pgbrk"` is the same content as
+      `class="note"` and equality would go on deleting it. The second half
+      keeps `note footnote` on the apparatus side, and CCEL's capitalised
+      `Note`/`NoteRef`/`Footnote` and lowercase `mnote` never match at all.
+    * the element is not a bare MARK. Gutenberg also spells a footnote marker
+      `<sup class="note">1</sup>`, and `sup` is allowlisted, so keeping one
+      leaves an orphan digit mid-sentence with its note body dropped — the
+      identical failure `_is_pg_navigation` exists to prevent, so it shares the
+      same test.
+    """
+    tokens = _class_tokens(el)
+    if "note" not in tokens or any("note" in t.lower() for t in tokens if t != "note"):
+        return False
+    return not _PG_MARK_TEXT.match(el.get_text(" ", strip=True))
+
+
+def _is_pg_cross_reference(el: Tag) -> bool:
+    """The keep half of :func:`_is_pg_navigation` — prose, not chrome."""
+    return not _is_pg_navigation(el)
 
 
 def _is_pg_navigation(el: Tag) -> bool:
@@ -186,23 +244,48 @@ def _scrub_attrs(tag: Tag, *, allow_bio_attrs: bool) -> None:
     tag.attrs = kept
 
 
+# A drop selector whose match is not, by itself, proof of furniture: the
+# predicate says which matches to KEEP, and everything else it matches is
+# decomposed as before.
+#
+# Two selectors need one, for the same reason — each is a substring match
+# written against ONE transcriber's class vocabulary, and each also matches
+# another transcriber's legitimate prose. Both were found by measuring the
+# corpus (`scripts/audit_keep_predicates.py`), not by reading the selector, and
+# both had been silently deleting text for as long as they had existed. A third
+# substring selector in the list above is a candidate for the same treatment the
+# day someone measures it.
+KEEP_PREDICATES = {
+    NOTE_SELECTOR: _is_gutenberg_note_content,
+    PGINTERNAL_SELECTOR: _is_pg_cross_reference,
+}
+
+
 def drop_furniture(node: Tag) -> None:
     """Remove page furniture from `node`, in place — the whole drop policy.
 
     The importers run this pre-pass too (`import_ccel`, `build_ignatius`,
     `build_serious_call`), and they must get the SAME policy the sanitizer
-    applies, which is why they call this rather than iterating `DROP_SELECTORS`:
-    the list is no longer the whole of it. Most rules drop an element on its
-    selector alone; the Gutenberg internal link is qualified by its text, and a
-    borrower that walked the list would silently skip that rule.
+    applies, which is why they call this rather than iterating `DROP_SELECTORS`
+    themselves — `tests_sanitize` fails the build if one rots back to a bare
+    loop.
+
+    One rule the callers can't see: where a selector matches both a wrapper and
+    something inside it, the wrapper is decomposed first and takes the inner
+    element with it, so an ancestor's drop beats a descendant's keep.
     """
     for sel in DROP_SELECTORS:
+        keep = KEEP_PREDICATES.get(sel)
         for el in node.select(sel):
-            el.decompose()
-    # Gutenberg's internal links, kept or dropped on what they say — see
-    # `_is_pg_navigation`.
-    for el in node.select("[class*=pginternal]"):
-        if _is_pg_navigation(el):
+            # `select` snapshots the tree, and one selector routinely matches
+            # both a wrapper and what it wraps — CCEL's `div.footnotes` holds a
+            # `span.mnote`, and both answer the note selector. Decomposing the
+            # wrapper takes the descendant with it, leaving a decomposed tag in
+            # this list; asking one anything raises. So an ancestor's drop wins
+            # over a descendant's keep — right for apparatus, and the whole of
+            # the contract (see the docstring).
+            if el.decomposed or (keep is not None and keep(el)):
+                continue
             el.decompose()
 
 
