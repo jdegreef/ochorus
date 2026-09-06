@@ -20,9 +20,14 @@
 	]);
 </script>
 
+<!-- A zero total is real information but shouldn't shout as loudly as a "70":
+     dim the whole tile so the numbers that carry momentum lead the eye. -->
 <div class="grid grid-cols-3 gap-3 sm:grid-cols-6">
 	{#each tiles as tile (tile.label)}
-		<div class="rounded-card border border-border bg-surface-2 px-3 py-4 text-center">
+		<div
+			class="rounded-card border border-border bg-surface-2 px-3 py-4 text-center"
+			class:opacity-60={tile.value === 0}
+		>
 			<div class="font-display text-h2 font-semibold text-text">{tile.value}</div>
 			<div class="mt-0.5 text-eyebrow text-muted">{tile.label}</div>
 		</div>

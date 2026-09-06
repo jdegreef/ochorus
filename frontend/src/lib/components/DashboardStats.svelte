@@ -67,11 +67,13 @@
 
 {#if days.length}
 	<section class="page-col px-5 pt-14">
-		<div class="space-y-5">
+		<!-- One panel, not three loose widgets: streak, totals and calendar read as
+		     a single "your reading" section. The panel carries the border, so the
+		     inner blocks sit on the page ground (surface-2 tiles keep their contrast
+		     against it) and are separated by hairlines rather than each floating. -->
+		<div class="space-y-5 rounded-card border border-border p-5 sm:p-6">
 			<!-- Streak + weekly goal -->
-			<div
-				class="flex flex-col gap-4 rounded-card border border-border bg-surface-2 px-5 py-4 sm:flex-row sm:items-center sm:gap-6"
-			>
+			<div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
 				<div class="flex items-center gap-3">
 					<span class="text-gold"><Icon name="flame" size={28} /></span>
 					<div class="leading-tight">
@@ -109,13 +111,17 @@
 				</div>
 			</div>
 
+			<div class="h-px bg-border"></div>
+
 			<!-- Totals -->
 			<StatTiles stats={s} />
 
-			<!-- Reading calendar -->
+			<div class="h-px bg-border"></div>
+
+			<!-- Reading calendar — a full year, stretched across the whole column. -->
 			<div>
 				<h3 class="text-h3 mb-2">{t('settings.heatmapTitle')}</h3>
-				<ReadingHeatmap {days} {today} locale={lang.current} />
+				<ReadingHeatmap {days} {today} locale={lang.current} weeks={52} />
 			</div>
 
 			<!-- Into the notebook, when there's something in it -->

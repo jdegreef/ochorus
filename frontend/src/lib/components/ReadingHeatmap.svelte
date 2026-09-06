@@ -15,16 +15,23 @@
 	const t = i18n.t;
 	const grid = $derived(buildHeatmap(days, today, weeks, locale));
 
+	// Month label keyed by its starting column, for O(1) lookup while rendering.
+	const monthByCol = $derived(new Map(grid.monthLabels.map((mo) => [mo.col, mo.label])));
+
 	// Mon / Wed / Fri row labels for orientation (rows 1, 3, 5; row 0 = Sunday).
-	const rowLabels = $derived(
-		[1, 3, 5].map((r) => ({
-			r,
-			label: new Date(grid.weeks[0][r].iso + 'T00:00:00Z').toLocaleDateString(locale, {
-				weekday: 'short',
-				timeZone: 'UTC'
-			})
-		}))
-	);
+	const rowLabel = $derived.by(() => {
+		const map = new Map<number, string>();
+		for (const r of [1, 3, 5]) {
+			map.set(
+				r,
+				new Date(grid.weeks[0][r].iso + 'T00:00:00Z').toLocaleDateString(locale, {
+					weekday: 'short',
+					timeZone: 'UTC'
+				})
+			);
+		}
+		return map;
+	});
 
 	const readCount = $derived(days.filter((d) => d <= today).length);
 
@@ -37,68 +44,58 @@
 	}
 </script>
 
-<!-- The grid can be wider than the panel on small screens; let it scroll on its
-     own rather than pushing the page sideways. --cell/--gap keep the month row,
-     weekday column, and day cells aligned to one geometry. -->
+<!-- One CSS grid drives the whole calendar so the month row, weekday column and
+     day cells stay aligned to a single geometry. The week columns grow to fill
+     the width (1fr) but never shrink below --min-cell; below that the grid
+     scrolls on its own rather than pushing the page sideways. Cells are square
+     via aspect-ratio, so they scale with the column. -->
 <div
-	class="overflow-x-auto"
-	style="--cell: 0.72rem; --gap: 3px; --wd: 2rem"
+	class="w-full overflow-x-auto"
 	role="img"
 	aria-label="{t('settings.heatmapTitle')}: {readCount} {t('settings.streakDaysRead')}"
 >
-	<div class="inline-block">
-		<!-- Month labels, aligned over their starting column. -->
-		<div class="flex" style="gap: var(--gap); padding-inline-start: calc(var(--wd) + var(--gap))">
-			{#each grid.weeks as _, w (w)}
-				{@const m = grid.monthLabels.find((x) => x.col === w)}
-				<div class="text-micro leading-none text-muted" style="width: var(--cell)">
-					{m ? m.label : ''}
-				</div>
-			{/each}
-		</div>
-
-		<!-- Weekday column + week columns. -->
-		<div class="mt-1 flex" style="gap: var(--gap)">
-			<div class="flex flex-col" style="gap: var(--gap); width: var(--wd)">
-				{#each Array(7) as _, r (r)}
-					{@const rl = rowLabels.find((x) => x.r === r)}
-					<div
-						class="text-micro leading-none text-muted"
-						style="height: var(--cell); line-height: var(--cell)"
-					>
-						{rl ? rl.label : ''}
-					</div>
-				{/each}
+	<div
+		class="grid items-center"
+		style="--gap: 3px; --wd: 2rem; --min-cell: 0.72rem; gap: var(--gap);
+		       grid-template-columns: var(--wd) repeat({weeks}, minmax(var(--min-cell), 1fr))"
+	>
+		<!-- Month labels row: a spacer over the weekday column, then one cell per
+		     week, labelled only where a month begins. -->
+		<div></div>
+		{#each grid.weeks as _, w (w)}
+			<div class="whitespace-nowrap text-micro leading-none text-muted">
+				{monthByCol.get(w) ?? ''}
 			</div>
+		{/each}
 
+		<!-- Seven weekday rows: the label in column one, then a cell per week. -->
+		{#each Array(7) as _, r (r)}
+			<div class="whitespace-nowrap text-micro leading-none text-muted">{rowLabel.get(r) ?? ''}</div>
 			{#each grid.weeks as col, w (w)}
-				<div class="flex flex-col" style="gap: var(--gap)">
-					{#each col as cell (cell.iso)}
-						{#if cell.future}
-							<div style="width: var(--cell); height: var(--cell)" aria-hidden="true"></div>
-						{:else}
-							<div
-								class="rounded-[2px] {cell.read ? 'bg-gold' : 'bg-surface-2'}"
-								style="width: var(--cell); height: var(--cell)"
-								title={cellTitle(cell.iso, cell.read)}
-								aria-hidden="true"
-							></div>
-						{/if}
-					{/each}
-				</div>
+				{@const cell = col[r]}
+				{#if cell.future}
+					<div style="aspect-ratio: 1" aria-hidden="true"></div>
+				{:else}
+					<div
+						class="rounded-[2px] {cell.read ? 'bg-gold' : 'bg-surface-2'}"
+						style="aspect-ratio: 1"
+						title={cellTitle(cell.iso, cell.read)}
+						aria-hidden="true"
+					></div>
+				{/if}
 			{/each}
-		</div>
+		{/each}
+	</div>
 
-		<!-- Legend -->
-		<div class="mt-2 flex items-center gap-1.5 text-micro text-muted">
-			<span class="inline-block rounded-[2px] bg-surface-2" style="width: 0.66rem; height: 0.66rem"
-			></span>
-			<span>{t('settings.heatmapNone')}</span>
-			<span
-				class="ms-2 inline-block rounded-[2px] bg-gold"
-				style="width: 0.66rem; height: 0.66rem"
-			></span>
-			<span>{t('settings.heatmapRead')}</span>
-		</div>
+	<!-- Legend -->
+	<div class="mt-2 flex items-center gap-1.5 text-micro text-muted">
+		<span class="inline-block rounded-[2px] bg-surface-2" style="width: 0.66rem; height: 0.66rem"
+		></span>
+		<span>{t('settings.heatmapNone')}</span>
+		<span
+			class="ms-2 inline-block rounded-[2px] bg-gold"
+			style="width: 0.66rem; height: 0.66rem"
+		></span>
+		<span>{t('settings.heatmapRead')}</span>
 	</div>
 </div>
