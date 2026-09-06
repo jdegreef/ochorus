@@ -534,6 +534,40 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 # `apply_body_corrections`, plus a data migration for prod).
 
 BODY_CORRECTIONS: dict[str, dict] = {
+    "way-into-holiest": {
+        "replacements": [
+            # Ch.1 (Preface): a modern digitiser's note was appended after Meyer's
+            # own "F.B. MEYER." sign-off — it speaks of making the text "readable
+            # to the computer audience" and gives an e-mail address. Not Meyer's
+            # words; excise it and keep his sign-off. (Once `cars?` was dropped
+            # from english_audit.py this was the corpus's only real anachronism.)
+            (
+                '<p>F.B. MEYER.</p> <p>Editors note.</p> <p>I have endeavored to '
+                'remain true to the original manuscript as was delivered to me. I '
+                'did, however, make some punctuation correction so as to make it '
+                'more readable to the computer audience. Namely, I replaced a few '
+                'hyphens where I saw them confusing the text. I also corrected a '
+                'couple of obvious errors found in the original printing. If these '
+                'changes cause any confusion I, alone, take full responsibility; '
+                'please e-mail me at rlarryh@teleport.com and I will make any '
+                'corrections necessary. </p> <p>Larry Hendrickson</p>',
+                '<p>F.B. MEYER.</p>',
+            ),
+            # Ch.1: two spaces lost in extraction, inside Meyer's actual preface.
+            ("or designationof church", "or designation of church"),
+            ("the Authorshipof the", "the Authorship of the"),
+            # Ch.20: Hosea 1:9's name lost its hyphen (glossed "Not my people").
+            # Unique token, so keep the surrounding straight quotes out of the
+            # pair (a literal `"` would trip the dead-pair gate).
+            ("LoAmmi", "Lo-ammi"),
+            # Ch.24: OCR b->h in the hymn "Once for all" ("brother, believe it!").
+            ("all, hrother, believe it!", "all, brother, believe it!"),
+            # Ch.26: the compound "fellow-Christians" kept a spurious space after
+            # its hyphen. The line-break rejoin leaves a capitalised resumption
+            # alone; here a human can see it is a real compound, not a dash.
+            ("fellow- Christians", "fellow-Christians"),
+        ],
+    },
     # Seven classic sermons were translated into Spanish (#1462-#1468); reading
     # every sentence surfaced OCR/extraction slips in the ENGLISH source that no
     # detector class catches (each produces a valid-looking short word). Only
