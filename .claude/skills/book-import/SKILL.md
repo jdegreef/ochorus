@@ -1023,6 +1023,18 @@ that continues the last one has no standalone reference to give. Check the lengt
 distribution too — existing sermons run ~1,000–8,300 words, so a 57k-word "set of
 addresses" is a book by size alone. *(Taylor sermon sourcing, 2026-08)*
 
+**A famous "sermon" title can be a BOOK CHAPTER — check length AND book-catalog
+overlap before shipping it on the sermon shelf.** Ryle's "Assurance" is one of
+his best-known pieces, but on CCEL it is chapter VII of *Holiness*
+(`ryle/holiness.iii.vi.html`) and imports at ~15,600 words — twice the shelf's
+longest, and a straight duplicate the day someone adds *Holiness* as a book. The
+same title often exists as a genuinely standalone TRACT: gracegems carried Ryle's
+1,880-word *Faith and Assurance*, which covers the theme, stands on its own, and
+can't collide with a future book. Two habits: (1) if an imported sermon lands far
+above ~8,300 words, suspect a book chapter and look for the standalone tract; (2)
+before shipping a book-chapter-as-sermon, ask whether that book is a plausible
+future book-catalog entry — if so, prefer the tract. *(Ryle, PR B, 2026-09.)*
+
 **Adding a STANDALONE sermon — use `import_sermons`, don't hand-roll the
 extractor.** A single sermon on the sermon shelf (not sermons compiled into a
 book) has a maintained end-to-end path; a whole session was once spent
