@@ -164,6 +164,30 @@ cites an `is_published=False` work (a dead card link). Then prove the seed:
 uv run python manage.py seed_quotes   # on a fresh seeded DB; confirm the new rows appear
 ```
 
+## Filing quotes under themes (the "Quotes on Prayer" pages)
+
+Quotes also power topic pages — `/quotes/topics/<theme>/` ("Quotes on Prayer",
+all authors) and `/quotes/<author>/<theme>/` ("Andrew Murray Quotes on Prayer").
+The theme vocabulary is `QUOTE_TOPICS` in `quote_seed.py` (a **separate** table
+from the work-topic `Topic`; 20 devotional themes, each with a KJV epigraph).
+Membership is `TOPIC_MEMBERS` in the same file — `{theme_slug: [quote_slug, …]}`,
+grouped by theme with the sentence echoed in a trailing comment — inverted onto
+`Quote.topics` by `seed_quotes`.
+
+- **When you grow an author, file the new rows too.** Add their slugs under the
+  relevant themes in `TOPIC_MEMBERS`. A quote may sit under several themes.
+- **Tags are re-asserted every deploy (NOT create-only like `reviewed`),** so a
+  re-tag ships — edit freely.
+- **Both slug halves are gated.** A theme slug not in `QUOTE_TOPICS`, or a quote
+  slug no row carries, fails `tests_quotes` (`QuoteTopicSeedTests`). No dangling
+  tags.
+- **Pages build only above a threshold** (theme ≥ 8 reviewed, author-theme ≥ 4,
+  and an author-theme page only when its theme also clears 8 — constants in
+  `views.py`). So a thinly-tagged theme simply has no page yet; tag deeper to
+  open it. This is the anti-doorway guard — don't lower it to force a page live.
+- Tagging can start keyword-assisted (a lexicon per theme over the quote text),
+  but it's curation: trim to strong signal, cap ~2 themes per quote.
+
 ## Gotchas found in the field
 
 - **A new author widens TWO sets, not one.** `test_the_curated_authors_are_the_reviewed_set`
