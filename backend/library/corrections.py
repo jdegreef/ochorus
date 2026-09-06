@@ -37,6 +37,26 @@ EXCLUDED_SLUGS: set[str] = {
 }
 
 CORRECTIONS: dict[str, dict] = {
+    "the-secret-of-guidance": {
+        # CCEL's TOC sets these titles in Title Case with a roman-numeral prefix
+        # ("III. The Secret Of Christ's Indwelling"). clean_title's roman strip is
+        # ALL-CAPS-gated (so it keeps Murray's mixed-case "I. Humility"), so the
+        # numerals survive here and the reader — which prints the chapter number
+        # itself — would double them ("3. III. …"). Give the clean titles, also
+        # normalising CCEL's capitalised "Of/To/With". Meyer's period spelling
+        # "Fulness" is kept as-is (not "Fullness").
+        "chapter_titles": {
+            1: "The Secret of Guidance",
+            2: "Where Am I Wrong?",
+            3: "The Secret of Christ’s Indwelling",
+            4: "Fact! Faith! Feeling!",
+            5: "Why Sign the Pledge?",
+            6: "Burdens, and What to Do with Them",
+            7: "How to Bear Sorrow",
+            8: "In the Secret of His Presence",
+            9: "The Fulness of the Spirit",
+        },
+    },
     "life-experience-gospel-labours": {
         # A compilation: the autobiography ("LIFE, &c."), the AME African
         # Supplement, three devotional Acts, the 1793 yellow-fever Narrative, and
