@@ -95,8 +95,12 @@ def noop(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
+    # Depends on both current leaves, so this is the single tip (no separate
+    # merge migration needed). Ordered after 0121_recase_chapter_titles, which
+    # recases the paraphrase's stored titles just before this replaces them.
     dependencies = [
-        ("library", "0120_repair_intercession_luke_reference"),
+        ("library", "0121_recase_chapter_titles"),
+        ("library", "0122_quotetopic_rls"),
     ]
 
     operations = [
