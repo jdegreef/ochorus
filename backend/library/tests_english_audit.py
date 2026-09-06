@@ -775,16 +775,16 @@ class EnglishAuditContractTests(SimpleTestCase):
 class NoteHeadingRestorationTests(SimpleTestCase):
     """`restore_note_headings` — the sanitizer's OTHER victim.
 
-    `[class*=pginternal]` WAS a blanket DROP selector, so `_clean` decomposed a
-    Gutenberg anchor whole rather than unwrapping it to its text. A heading whose
-    only child is that anchor was emptied, and the empty-block regex then deleted
-    the heading. `ministry-of-intercession` ch18 lost all six of its note
-    headings that way, in the same import that left five bare `()` in the
-    chapters pointing at them.
+    `[class*=pginternal]` was an UNQUALIFIED drop selector, so `_clean`
+    decomposed a Gutenberg anchor whole rather than unwrapping it to its text. A
+    heading whose only child is that anchor was emptied, and the empty-block
+    regex then deleted the heading. `ministry-of-intercession` ch18 lost all six
+    of its note headings that way, in the same import that left five bare `()`
+    in the chapters pointing at them.
 
-    The selector is fixed (`sanitize._is_pg_navigation`), so no future import
-    loses a heading this way; these rows are the ones already shipped, and they
-    are never re-imported.
+    It carries a keep-predicate now (`sanitize.KEEP_PREDICATES`), so no future
+    import loses a heading this way; these rows are the ones already shipped,
+    and they are never re-imported.
     """
 
     HEADINGS = (("<p>Just this day", "<h4>NOTE A, Chap. VI. p. 73</h4>"),)

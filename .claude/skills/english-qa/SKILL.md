@@ -354,9 +354,18 @@ Reported, not fixed
   `note` in a class, including Gutenberg's own `<h3 class="note">NOTE A.</h3>`
   and `<div class="footnote">`. That is how `holy-in-christ` ch33 lost all seven
   of its `NOTE A.`–`NOTE G.` headings and every footnote block pointing at them,
-  leaving seven bare `<hr/>`s where the notes divide. Still unrepaired: the fix
-  is to the selector and reaches every CCEL work, so it wants its own change and
-  a corpus-wide measurement of what a narrower selector would let back in.
+  leaving seven bare `<hr/>`s where the notes divide — and, unnoticed until the
+  corpus was measured, the SCRIPTURE TEXT of four Edwards sermons (`p.note`), so
+  each opened mid-argument with no text.
+  **The selector is FIXED** — `sanitize.KEEP_PREDICATES` keeps the exact
+  lowercase token `note`, which is the one value neither transcriber's
+  vocabulary shares, and `scripts/audit_keep_predicates.py --rule note` is the
+  corpus-wide measurement (2 of 36 works change; CCEL untouched). The footnote
+  BLOCKS stay dropped by design: their markers are dropped too, so restoring the
+  blocks alone would orphan the note text.
+  **The shipped rows are still damaged** and are never re-imported — repair them
+  with `note_headings` on the book's `corrections.py` key, as
+  `ministry-of-intercession` does.
   ```bash
   grep -c ' ()' backend/library/fixtures/content/books/*.json
   ```

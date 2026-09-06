@@ -189,7 +189,7 @@ class GutenbergInternalLinkTests(TestCase):
 
         Gutenberg spells a footnote marker as an internal link too, and its note
         body does not survive the import, so a kept marker is an orphan digit
-        mid-sentence. `scripts/audit_pginternal.py` measured the exposure:
+        mid-sentence. `scripts/audit_keep_predicates.py` measured the exposure:
         nineteen `[1]`…`[19]` in `the-life-of-trust`, five bare letters in
         `separation-and-service`.
         """
@@ -231,6 +231,198 @@ class GutenbergInternalLinkTests(TestCase):
             '<a class="pginternal" href="#toc">Contents</a></small></h2>'
         )
         self.assertEqual(out, "<h2>CHAPTER VI</h2>")
+
+
+class NoteSelectorTests(TestCase):
+    """`[class*=note i]` was the second selector matching two vocabularies.
+
+    Written for CCEL's footnote apparatus, it also substring-matched Gutenberg's
+    own `class="note"` — which Gutenberg uses for CONTENT. It had been deleting
+    `holy-in-christ`'s seven `NOTE A.`–`NOTE G.` endnote headings (leaving ch33
+    as 42 KB of prose with bare `<hr/>`s and no headings at all) and, unnoticed
+    until the corpus was measured, the SCRIPTURE TEXT of four Edwards sermons,
+    so each opened mid-argument with no text.
+
+    The two vocabularies never collide on one class value, which is what makes
+    the fix a rule rather than a guess — so both halves are pinned here from the
+    measured corpus. If a transcriber ever does collide, this is what fails.
+    """
+
+    # Measured over the CCEL corpus: 576 matched elements, 8 shapes, all of them
+    # genuine footnote apparatus that must keep being dropped.
+    CCEL_APPARATUS = (
+        "NoteRef", "Footnote", "Note", "mnote",
+        "footer_note", "footnotes", "footnotes-hr",
+    )
+    # `footnotes` is in the CCEL tuple above and deliberately not repeated here.
+    # Gutenberg's own chrome — transcriber's notes and footnote blocks. Dropped
+    # as before: the markers pointing into them are dropped too, so keeping the
+    # blocks would orphan the note text.
+    PG_CHROME = (
+        "tnote", "tnotes", "trans_note", "transnote", "notebox",
+        "footnote", "footnote pgbrk", "footnotes",
+    )
+
+    def test_ccel_footnote_apparatus_is_still_dropped(self):
+        for value in self.CCEL_APPARATUS:
+            with self.subTest(value=value):
+                out = clean_fragment(f'<p>prose<span class="{value}">x</span></p>')
+                self.assertEqual(out, "<p>prose</p>")
+
+    def test_gutenberg_note_chrome_is_still_dropped(self):
+        for value in self.PG_CHROME:
+            with self.subTest(value=value):
+                out = clean_fragment(f'<p>prose</p><div class="{value}">x</div>')
+                self.assertEqual(out, "<p>prose</p>")
+
+    def test_gutenbergs_own_note_headings_survive(self):
+        """`holy-in-christ` ch33 — a heading and its subheading, both kept."""
+        out = clean_fragment(
+            '<h3 class="note"><a id="note_A">NOTE A.</a></h3>'
+            '<h4 class="note">Holiness as Proprietorship.</h4>'
+            "<p>The word rendered holy.</p>"
+        )
+        self.assertEqual(
+            out,
+            "<h3>NOTE A.</h3><h4>Holiness as Proprietorship.</h4>"
+            "<p>The word rendered holy.</p>",
+        )
+
+    def test_a_sermons_scripture_text_survives(self):
+        """`selected-sermons-edwards` sets each sermon's TEXT as `p.note`."""
+        out = clean_fragment(
+            '<p class="note">1 Cor. i. 29-31.—That no flesh should glory in his '
+            "presence.</p><p>Those Christians to whom the apostle wrote.</p>"
+        )
+        self.assertIn("That no flesh should glory in his presence.", out)
+
+    def test_a_wrapper_and_its_nested_match_do_not_crash(self):
+        """One selector matches a wrapper AND what it wraps.
+
+        CCEL's `div.footnotes` holds a `span.mnote`; both answer
+        `[class*=note i]`, and `select` hands back both. Decomposing the wrapper
+        detaches the inner one, and a decomposed tag has no `attrs` — so a
+        keep-predicate that asks it anything raises `AttributeError`. The
+        unconditional `decompose()` this replaced never had to care. Found by
+        running the corpus, not by reading the code.
+        """
+        out = clean_fragment(
+            "<p>prose</p>"
+            '<div class="footnotes">'
+            '<span class="mnote">3 Literally, "is greatly blasphemed."</span>'
+            '<div class="footer_note">4 A second note.</div>'
+            "</div>"
+        )
+        self.assertEqual(out, "<p>prose</p>")
+
+    def test_a_layout_token_beside_the_semantic_one_still_counts_as_content(self):
+        """Token membership, not whole-attribute equality.
+
+        Gutenberg combines a semantic token with a layout one — `footnote pgbrk`
+        is in the measured vocabulary — so `class="note pgbrk"` is the same
+        content as `class="note"`. Comparing the whole attribute went on
+        deleting these.
+        """
+        for value in ("note pgbrk", "note c009", "pgbrk note"):
+            with self.subTest(value=value):
+                out = clean_fragment(f'<h3 class="{value}">NOTE A.</h3><p>b</p>')
+                self.assertEqual(out, "<h3>NOTE A.</h3><p>b</p>")
+
+    def test_a_second_note_ish_token_puts_it_back_on_the_apparatus_side(self):
+        for value in ("note footnote", "note mnote", "notes", "note-ref"):
+            with self.subTest(value=value):
+                out = clean_fragment(f'<p>prose</p><h4 class="{value}">x</h4>')
+                self.assertEqual(out, "<p>prose</p>")
+
+    def test_a_note_classed_footnote_marker_is_still_a_marker(self):
+        """Gutenberg spells a marker `<sup class="note">1</sup>` too.
+
+        `sup` is allowlisted, so keeping one leaves an orphan digit mid-sentence
+        with its note body dropped — the identical failure `_is_pg_navigation`
+        prevents on the sibling selector, so both predicates share the test.
+        """
+        for marker in ('<sup class="note">1</sup>',
+                       '<a class="note" href="#f1">[1]</a>',
+                       '<sup class="note">°</sup>'):
+            with self.subTest(marker=marker):
+                out = clean_fragment(f"<p>a work of faith{marker} and labour</p>")
+                self.assertEqual(out, "<p>a work of faith and labour</p>")
+
+    def test_class_given_as_a_string_is_read_as_tokens(self):
+        """A programmatically-set `class` is a str, not a token list.
+
+        `_scrub_attrs` has always guarded that; a predicate that forgets drops
+        the content it was written to keep.
+        """
+        from bs4 import BeautifulSoup
+
+        from library.sanitize import clean_html
+
+        doc = BeautifulSoup("<div><h3>NOTE A.</h3></div>", "lxml").div
+        doc.h3["class"] = "note"  # a string, the way bs4 stores an assignment
+        self.assertEqual(clean_html(doc), "<h3>NOTE A.</h3>")
+
+    def test_an_ancestors_drop_beats_a_descendants_keep(self):
+        """The whole of the keep contract, stated as a test.
+
+        One selector matches a wrapper and what it wraps; the wrapper goes
+        first, taking the keep-candidate with it. Right for apparatus — a
+        Gutenberg `p.note` inside CCEL's `div.footnotes` is apparatus — but it
+        is the shape a future ambiguous wrapper would fail in, so it is pinned
+        rather than left to be rediscovered.
+        """
+        out = clean_fragment(
+            '<div class="footnotes"><p class="note">inside apparatus</p></div>'
+            "<p>prose</p>"
+        )
+        self.assertEqual(out, "<p>prose</p>")
+
+
+class KeepPredicateRegistryTests(TestCase):
+    """Every qualified selector must still BE a drop selector.
+
+    `drop_furniture` looks its predicate up by selector string, so a predicate
+    registered under a selector that is not in `DROP_SELECTORS` is dead code
+    that silently qualifies nothing — and the element it was meant to rescue
+    goes on being deleted. A typo in either list is invisible without this.
+    """
+
+    def test_every_keep_predicate_qualifies_a_live_drop_selector(self):
+        from library.sanitize import DROP_SELECTORS, KEEP_PREDICATES
+
+        self.assertEqual(
+            sorted(set(KEEP_PREDICATES) - set(DROP_SELECTORS)),
+            [],
+            "a keep-predicate is registered under a selector that is not in "
+            "DROP_SELECTORS, so it never runs",
+        )
+
+    def test_no_module_outside_the_sanitizer_iterates_the_bare_list(self):
+        """The importers must borrow the PASS, not the list.
+
+        `import_ccel`, `build_ignatius` and `build_serious_call` each run this
+        pre-pass, and two selectors are only correct when their keep-predicate
+        runs with them — a bare `for sel in DROP_SELECTORS` loop over-drops
+        exactly where a transcriber's markup is ambiguous, which is how a
+        Gutenberg heading gets deleted by a CCEL rule. The previous version of
+        this test asserted the difference on a fragment and so could not have
+        caught an importer rotting back; this reads the modules.
+        """
+        import library
+
+        root = Path(library.__file__).resolve().parent
+        offenders = [
+            str(path.relative_to(root))
+            for path in sorted(root.rglob("*.py"))
+            if path.name not in {"sanitize.py", "ingest.py", "tests_sanitize.py"}
+            and re.search(r"for\s+\w+\s+in\s+DROP_SELECTORS", path.read_text())
+        ]
+        self.assertEqual(
+            offenders,
+            [],
+            "these iterate DROP_SELECTORS directly and so skip KEEP_PREDICATES; "
+            "call sanitize.drop_furniture() instead",
+        )
 
 
 class StoredContentIsSafeTests(TestCase):
