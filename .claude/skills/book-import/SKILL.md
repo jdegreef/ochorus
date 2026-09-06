@@ -1060,6 +1060,17 @@ all of which this command already does. The steps:
   poison the manifest's `composition` digest (bytes of the two scripts); the
   preload keeps it CI-correct because nothing recomputes composition, only
   re-running does. *(Wesley + Booth second sermons, 2026-09)*
+- **A CCEL discourse collection can number its sermons "Sermon I…N" with NO
+  descriptive titles — map each leaf to its TEXT by the first `scripRef`, not the
+  TOC** *(John Newton's Messiah: Fifty Expository Discourses, `newton/messiah1-2`,
+  2026-09-06)*. The TOC lists only "Sermon I" … "Sermon L", so you can't pick by
+  title. Grep each leaf's FIRST `class="scripRef"` — that anchor is the discourse's
+  text (later scripRefs are back-references to the previous sermon, so first-only):
+  `curl -s <leaf> | grep -oE 'class="scripRef"[^>]*>[^<]+' | head -1`. Sermon I is
+  `messiah1.iii.html` (i/ii are Title Page/Preface), so Sermon N = the (N+2)th leaf.
+  Such a collection — many self-contained discourses each on its own text — is a
+  rich, clean standalone-sermon source; the Newton refs parsed as full book names,
+  so no `scripture_ref` pinning was needed.
 - **A CCEL "sermon" leaf can be an ADDRESS split across `.i`/`.ii` sub-pages —
   it imports as the intro only** *(Torrey Revival Addresses, 2026-09-05)*. The
   parent page `revival.v.x.html` ("The Way of Salvation Made as Plain as Day")
