@@ -25,6 +25,24 @@ from .opening import opening_excerpt
 from .scripture import book_of
 from .scripture_graph import treated_passages
 
+
+def _link_scripture(body_html: str) -> str:
+    """Annotate a body's Bible references AND link the ones that have a page.
+
+    One place so chapters, sermons and articles treat citations alike: every
+    reference becomes the reader's popover anchor, and those whose Bible chapter
+    cleared the scripture-graph floor also carry an ``href`` to the reverse-index
+    page — a real internal link a crawler follows, where before there were
+    thousands of hrefless anchors. Kept here (not in scripture.py) because the
+    resolver lives in scripture_graph, which imports scripture.
+    """
+    from .scripture import annotate_references, reference_candidates
+    from .scripture_graph import scripture_links
+
+    return annotate_references(
+        body_html, links=scripture_links(reference_candidates(body_html))
+    )
+
 #: The annotations every book card needs. ``BookListSerializer`` reads
 #: ``num_chapters`` and ``total_words`` off the instance; a queryset missing
 #: either ships a card with that key absent rather than failing, so apply these
@@ -311,11 +329,10 @@ class SermonDetailSerializer(serializers.ModelSerializer):
         return difficulty(obj.body_text)
 
     def get_body_html(self, obj):
-        # Wrap Bible references as clickable spans, so the reader's scripture
-        # popover works in sermons too (same treatment chapters get).
-        from .scripture import annotate_references
-
-        return annotate_references(obj.body_html)
+        # Wrap Bible references as clickable spans (the reader's scripture
+        # popover) and link the ones with a scripture page (a crawlable
+        # internal link), the same treatment chapters get.
+        return _link_scripture(obj.body_html)
 
     scripture_refs = serializers.SerializerMethodField()
 
@@ -599,9 +616,7 @@ class ArticleDetailSerializer(ArticleListSerializer):
         # from this one pass, so the page's jump links match the ids in the HTML.
         cache = self.__dict__.setdefault("_rendered_cache", {})
         if obj.pk not in cache:
-            from .scripture import annotate_references
-
-            cache[obj.pk] = inject_heading_ids(annotate_references(obj.body_html))
+            cache[obj.pk] = inject_heading_ids(_link_scripture(obj.body_html))
         return cache[obj.pk]
 
     def get_body_html(self, obj):
@@ -1143,9 +1158,7 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
         return _available_languages(Book, obj.book.slug)
 
     def get_body_html(self, obj):
-        from .scripture import annotate_references
-
-        return annotate_references(obj.body_html)
+        return _link_scripture(obj.body_html)
 
     def get_is_modern_edition(self, obj):
         return obj.book.language == MODERN_LANGUAGE

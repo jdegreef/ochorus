@@ -69,11 +69,21 @@ def _first_reference(text: str):
     return refs[0] if refs else None
 
 
-def annotate_references(html: str) -> str:
+def annotate_references(html: str, links: dict[str, str] | None = None) -> str:
     """Wrap valid Bible references in tappable anchors, in text only.
 
     Splits on tags so attribute values are never touched, and skips text inside
     an existing ``<a>`` so references already linked aren't double-wrapped.
+
+    ``links`` maps a raw reference candidate (the ``data-ref`` value) to the URL
+    of its scripture page, for candidates that have one. When given, a matching
+    anchor also carries an ``href`` — a real, crawlable link to the reverse
+    index — while the ``data-ref`` and ``class`` keep the reader's popover
+    working (its click handler calls ``preventDefault``). Candidates absent from
+    the map stay popover-only, as before. Build the map from
+    :func:`reference_candidates` + ``scripture_graph.scripture_links`` so a link
+    is emitted only where the page was actually built (never a 404); scripture.py
+    stays free of the graph/DB layer, which imports it.
     """
     if not html or not _HAS_DIGIT.search(html):
         return html
@@ -89,18 +99,56 @@ def annotate_references(html: str) -> str:
             continue
         if anchor_depth or not _HAS_DIGIT.search(part):
             continue
-        parts[i] = _wrap_text(part)
+        parts[i] = _wrap_text(part, links)
     return "".join(parts)
 
 
-def _wrap_text(text: str) -> str:
+def _wrap_text(text: str, links: dict[str, str] | None = None) -> str:
     def repl(match: re.Match) -> str:
         candidate = match.group(1)
         if _first_reference(candidate) is None:
             return candidate
-        return f'<a class="scripture-ref" data-ref="{candidate}">{candidate}</a>'
+        href = links.get(candidate) if links else None
+        href_attr = f' href="{href}"' if href else ""
+        return (
+            f'<a class="scripture-ref"{href_attr} data-ref="{candidate}">'
+            f"{candidate}</a>"
+        )
 
     return _CANDIDATE.sub(repl, text)
+
+
+def reference_candidates(html: str) -> list[str]:
+    """The distinct RAW reference candidates in text, first-appearance order.
+
+    The very spans :func:`annotate_references` would wrap — the raw matched text
+    that becomes ``data-ref`` — so a caller can resolve them to page URLs and
+    feed the result back in as ``links``. Skips text inside an existing ``<a>``
+    and validates with pythonbible, exactly as the wrapper does, so the two can
+    never disagree about what is a reference.
+    """
+    if not html or not _HAS_DIGIT.search(html):
+        return []
+    out: list[str] = []
+    seen: set[str] = set()
+    anchor_depth = 0
+    for i, part in enumerate(_TAG_SPLIT.split(html)):
+        if i % 2 == 1:  # a tag
+            tag = part[:3].lower()
+            if tag.startswith("<a") and not part.lower().startswith("<area"):
+                anchor_depth += 1
+            elif tag == "</a":
+                anchor_depth = max(0, anchor_depth - 1)
+            continue
+        if anchor_depth or not _HAS_DIGIT.search(part):
+            continue
+        for match in _CANDIDATE.finditer(part):
+            candidate = match.group(1)
+            if candidate in seen or _first_reference(candidate) is None:
+                continue
+            seen.add(candidate)
+            out.append(candidate)
+    return out
 
 
 def cited_references(html: str, limit: int = 8) -> list[str]:
