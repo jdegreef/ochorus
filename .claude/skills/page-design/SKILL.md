@@ -267,6 +267,14 @@ and expect a blank screenshot right after a JS scroll; read the footer with
   `javascript_tool`: one `<title>`, right canonical/og. On Node 25 the pure
   file-reading guards run under `npx vitest run --environment node <files>`
   (the jsdom store suite needs the pinned Node 22 — CI has it).
+- **A fresh worktree has no `frontend/node_modules`.** Do a real
+  `npm install --prefer-offline --no-audit --no-fund` in the worktree (~6s warm,
+  and it compiles paraglide) — do NOT symlink the main checkout's `node_modules`,
+  which breaks rolldown's realpath resolution (`Could not resolve 'node:module'`
+  / `Tsconfig not found`) and fails every vitest/config load. `npm run check`
+  then still errors once on `config.ts` (`$env/static/public has no exported
+  member PUBLIC_API_BASE_URL`) until you `cp` the main checkout's
+  `frontend/.env` in; that one error is env-only, not your diff.
 
 ## Verify before merge
 
