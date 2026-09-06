@@ -65,12 +65,34 @@
 	// represented only by sermons.
 	const worksCount = (a: AuthorBio) => a.book_count + a.sermon_count;
 
+	// The "Full life" badge/chip only carry information when they actually SPLIT
+	// the roster. In English nearly every writer now has a full bio (~98%), so the
+	// badge is on almost every card and the chip removes almost no one — noise, not
+	// signal. In a translated locale far fewer bios are translated, so it still
+	// discriminates. `has_long_bio` is per-language, so this self-tunes per locale:
+	// show the control only when the share of long bios sits in a middle band.
+	const FULL_LIFE_SHOW_MIN = 0.05;
+	const FULL_LIFE_SHOW_MAX = 0.85;
+	const longBioShare = $derived(
+		authors.length ? authors.filter((a) => a.has_long_bio).length / authors.length : 0
+	);
+	const showFullLife = $derived(
+		longBioShare >= FULL_LIFE_SHOW_MIN && longBioShare <= FULL_LIFE_SHOW_MAX
+	);
+
+	// A stale ?full=1 from a shared link must not linger once the chip that sets it
+	// is hidden — it would otherwise drive the filter summary and the active-count
+	// badge with no visible control to clear it.
+	$effect(() => {
+		if (!showFullLife && filters.values.full) filters.values.full = '';
+	});
+
 	const filtered = $derived.by(() => {
 		const q = filters.values.q.trim().toLowerCase();
 		return authors.filter((a) => {
 			if (filters.values.filter === 'library' && worksCount(a) === 0) return false;
 			if (filters.values.filter === 'bio' && worksCount(a) > 0) return false;
-			if (filters.values.full === '1' && !a.has_long_bio) return false;
+			if (showFullLife && filters.values.full === '1' && !a.has_long_bio) return false;
 			if (!q) return true;
 			return a.name.toLowerCase().includes(q) || (a.bio ?? '').toLowerCase().includes(q);
 		});
@@ -87,7 +109,7 @@
 	const activeCount = $derived(
 		(filters.values.q.trim() !== '' ? 1 : 0) +
 		(filters.values.filter !== 'all' ? 1 : 0) +
-		(filters.values.full ? 1 : 0)
+		(showFullLife && filters.values.full ? 1 : 0)
 	);
 
 	// Count summary + whether any narrowing is active (sort doesn't count).
@@ -315,14 +337,18 @@
 		</div>
 
 		<!-- Orthogonal to the library/bio segments: narrows to writers with a
-		     full-length biography (the "Full life" badge). -->
-		<button
-			class="chip sm:block"
-			class:hidden={!filtersOpen}
-			class:active={filters.values.full === '1'}
-			onclick={() => (filters.values.full = filters.values.full ? '' : '1')}
-			aria-pressed={filters.values.full === '1'}>{t('bios.fullLife')}</button
-		>
+		     full-length biography (the "Full life" badge). Shown only when it
+		     actually splits the roster (see showFullLife) — in English almost every
+		     writer has a full bio, so the chip would remove almost no one. -->
+		{#if showFullLife}
+			<button
+				class="chip sm:block"
+				class:hidden={!filtersOpen}
+				class:active={filters.values.full === '1'}
+				onclick={() => (filters.values.full = filters.values.full ? '' : '1')}
+				aria-pressed={filters.values.full === '1'}>{t('bios.fullLife')}</button
+			>
+		{/if}
 
 		<select
 			bind:value={filters.values.sort}
@@ -434,7 +460,7 @@
 				</h2>
 				<div class="space-y-4">
 					{#each g.authors as author (author.slug)}
-						<AuthorBioCard {author} shelf={booksByAuthor.get(author.slug) ?? []} />
+						<AuthorBioCard {author} {showFullLife} shelf={booksByAuthor.get(author.slug) ?? []} />
 					{/each}
 				</div>
 			</section>
@@ -442,7 +468,7 @@
 	{:else}
 		<div class="space-y-4">
 			{#each paged as author (author.slug)}
-				<AuthorBioCard {author} shelf={booksByAuthor.get(author.slug) ?? []} />
+				<AuthorBioCard {author} {showFullLife} shelf={booksByAuthor.get(author.slug) ?? []} />
 			{/each}
 		</div>
 		{#if remaining > 0}

@@ -29,6 +29,15 @@
 		return m;
 	});
 
+	// The "Full life" badge only carries information when full bios actually split
+	// the roster — judged over the WHOLE locale, not this era's slice, so a card's
+	// badge doesn't flicker between era pages. Mirrors the biographies index.
+	const showFullLife = $derived.by(() => {
+		if (!authors.length) return false;
+		const share = authors.filter((a) => a.has_long_bio).length / authors.length;
+		return share >= 0.05 && share <= 0.85;
+	});
+
 	// Writers in this era, earliest-born first (undated sink to the end) — the
 	// same order the index uses inside an era group.
 	const inEra = $derived(
@@ -109,7 +118,7 @@
 	{:else}
 		<div class="grid items-start gap-5 md:grid-cols-2">
 			{#each inEra as author (author.slug)}
-				<AuthorBioCard {author} shelf={booksByAuthor.get(author.slug) ?? []} />
+				<AuthorBioCard {author} {showFullLife} shelf={booksByAuthor.get(author.slug) ?? []} />
 			{/each}
 		</div>
 	{/if}
