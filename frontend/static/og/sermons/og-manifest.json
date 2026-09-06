@@ -70,9 +70,21 @@
 			"content": "6a18896e765d694195f5cea44bdc22ce28d5aaaf7c427458db595e42e5c204bd",
 			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
 		},
+		"every-mans-need-of-a-refuge": {
+			"content": "c5e2e7fc86b18998b0e0b5f8e75fc25cd3616c5df891c202c283ef20101062ca",
+			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
+		},
+		"faith": {
+			"content": "12fb50637609b006c937f8dca4d0e17749da084b62968fab98d1857aa62eb2b9",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
 		"fall-and-recovery-of-man": {
 			"content": "67aa2a52a0d92f064decc26ee1da94b87555af50ecd68ea8fb4d14af85a3daa0",
 			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
+		"filled-with-the-spirit": {
+			"content": "a67347bebfa22de74c5fd4c4e38376daafb7561d1241df8ac3c35bb51102dd47",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		},
 		"free-grace": {
 			"content": "43fd7561c1c80c780f2a0faeb520d2d3e1f183ec0ed7696343f7135fff2fec39",
@@ -98,13 +110,25 @@
 			"content": "f511c07880dd784d09b3e1fd2dc8d4897d41a97199aee7b01c38e0787bdbd6ea",
 			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
 		},
+		"justification-by-grace": {
+			"content": "dee6874492ed668860c7765f137424405a467947a8190c5f285e50a871c5c2e1",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
 		"marks-of-a-true-conversion": {
 			"content": "6d4ca1e84f469b14790f5167a4e369762dceab243b8674ade39d53e2c0d88c33",
 			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
 		},
+		"naaman-the-syrian": {
+			"content": "c865b2279b0d86e24358c6044e5ef61726d16736af00018eac15cce691c7c2e6",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
 		"no-one-can-harm-the-man-who-does-not-injure-himself": {
 			"content": "a1d832ba6ad88c988cc82df7d4b2c7d2b293a7f79984c9b2d3db876965da47c3",
 			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
+		"one-word-gospel": {
+			"content": "2cbf4e2128dc1a839aa9bc4cb2a191388b1ce91b3cba16ac2c7ae07f7a855c59",
+			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
 		},
 		"order-and-argument-in-prayer": {
 			"content": "62710b90e588c80fa066287579e8d51e2c25b0c8be02ea98793a8bc31ae54287",
@@ -142,6 +166,10 @@
 			"content": "577e856c2e6242d6401460c946d5901efbd5e6109e65d65c096305a53510aad1",
 			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
 		},
+		"songs-in-the-night": {
+			"content": "b691d2ff544cd67b06dde0568e7f15c5c07ad85ddb99fd7d0f9e6ef8325aa201",
+			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
+		},
 		"sweet-comfort-for-feeble-saints": {
 			"content": "31822ce7059517b4cd9b2ee165884a4d1d19f0ba4f0ec0fe1fe2f472e9e735f8",
 			"art": "4270f12a471bb934910276f57736f7b7e1a1f479f1d0ca7fab15dfb5f9970830"
@@ -156,6 +184,10 @@
 		},
 		"the-circumcision-of-the-heart": {
 			"content": "debd804716411924f2d799fd38d3c96753b89f33dbf7fc30bad5ba65ac9ff9f8",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
+		"the-death-of-self": {
+			"content": "1fffbe166970dfb151e716ceadec910d12a0a3a0a4371b143c19b43ac34170fd",
 			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		},
 		"the-dying-thief": {
@@ -173,6 +205,10 @@
 		"the-good-way-of-coming-before-the-lord": {
 			"content": "60e150e6d4a8ee22a5be98ee37d617dfce2d34575a777a7daa77d6e52513a5b7",
 			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
+		"the-greatest-sentence-ever-written": {
+			"content": "39250c0b9a699ba89ccb8289b497ce15a80775c60c89f1dd29ab2da9a532e3bd",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
 		},
 		"the-holy-ghost": {
 			"content": "c8a212a00453bbd403977e1139f5384fe7310ec320df944bfedc08caa5d64ed7",
@@ -217,6 +253,18 @@
 		"the-resurrection-of-jesus": {
 			"content": "1d8038a312613ab36fc37ef86f055775db36a633f9c28d84c5cbf4174ef4c5c2",
 			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
+		},
+		"the-right-kind-of-faith": {
+			"content": "df3cb57a423182a27e18a8b09059daa7b49ec84eb9f953f5df66c60ac7d526fc",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
+		"the-shameful-sufferer": {
+			"content": "c4920478df3841636ce1bbb71391dc4c6d0f034f782ef88a4f6c888fc99e575b",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
+		"the-sinners-friend": {
+			"content": "3fe438adcf4ed3a0cb382ee1a40c30b10ff33c936e0a1f12b649328124ffdca0",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		},
 		"the-spirit-of-prayer": {
 			"content": "17ee09c1a557eaf91639787372b89b5fd133d9ecc43f2f14c195d548f8412915",
