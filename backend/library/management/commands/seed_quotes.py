@@ -25,15 +25,21 @@ from __future__ import annotations
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
-from library.models import Author, Chapter, Quote, Sermon
-from library.quote_seed import APPROVED, QUOTES
+from library.models import Author, Chapter, Quote, QuoteTopic, Sermon
+from library.quote_seed import APPROVED, QUOTE_TOPICS, QUOTES, TOPIC_MEMBERS
 
 
 class Command(BaseCommand):
-    help = "Upsert curated quotations (idempotent; `reviewed` is create-only)."
+    help = "Upsert curated quotations and their theme tags (idempotent)."
 
     @transaction.atomic
     def handle(self, *args, **opts):
+        # The theme vocabulary first, so a quote's tags can resolve to rows. Its
+        # prose (title/blurb/epigraph) is curation, not workflow-owned, so unlike
+        # `reviewed` it is re-asserted every deploy — a wording fix ships.
+        topics = self._seed_topics()
+        tags_for = self._invert_tags(topics)
+
         created = updated = skipped = 0
         for author_slug, quotes in QUOTES.items():
             author = Author.objects.filter(slug=author_slug).first()
@@ -53,27 +59,58 @@ class Command(BaseCommand):
                 field, obj = source
                 row = Quote.objects.filter(slug=q["slug"]).first()
                 if row is None:
-                    Quote.objects.create(
+                    row = Quote.objects.create(
                         slug=q["slug"], author=author, text=q["text"],
                         paragraph=q["paragraph"],
                         reviewed=author_slug in APPROVED,
                         **{field: obj},
                     )
                     created += 1
-                    continue
-                changed = []
-                for name, value in (("text", q["text"]), ("paragraph", q["paragraph"]),
-                                    (field, obj), ("author", author)):
-                    if getattr(row, name) != value:
-                        setattr(row, name, value)
-                        changed.append(name)
-                if changed:
-                    row.save(update_fields=changed)
-                    updated += 1
+                else:
+                    changed = []
+                    for name, value in (("text", q["text"]), ("paragraph", q["paragraph"]),
+                                        (field, obj), ("author", author)):
+                        if getattr(row, name) != value:
+                            setattr(row, name, value)
+                            changed.append(name)
+                    if changed:
+                        row.save(update_fields=changed)
+                        updated += 1
+                # Theme tags are re-asserted on every row every deploy (not
+                # create-only): filing is curation, and a re-tag should ship.
+                row.topics.set(tags_for.get(q["slug"], []))
         msg = f"Quotes: {created} created, {updated} updated"
         if skipped:
             msg += f", {skipped} skipped (source not installed)"
         self.stdout.write(self.style.SUCCESS(msg + "."))
+
+    def _seed_topics(self):
+        """Upsert the theme vocabulary; return {slug: QuoteTopic}."""
+        out = {}
+        for i, (slug, title, blurb, ref, txt) in enumerate(QUOTE_TOPICS):
+            obj, _ = QuoteTopic.objects.update_or_create(
+                slug=slug,
+                defaults={
+                    "title": title, "blurb": blurb,
+                    "scripture_ref": ref, "scripture_text": txt, "sort_order": i,
+                },
+            )
+            out[slug] = obj
+        return out
+
+    @staticmethod
+    def _invert_tags(topics):
+        """{quote slug: [QuoteTopic]} from the topic-grouped TOPIC_MEMBERS."""
+        from collections import defaultdict
+
+        out = defaultdict(list)
+        for topic_slug, quote_slugs in TOPIC_MEMBERS.items():
+            topic = topics.get(topic_slug)
+            if topic is None:
+                continue
+            for qslug in quote_slugs:
+                out[qslug].append(topic)
+        return out
 
     def _source(self, author, q):
         if "sermon" in q:

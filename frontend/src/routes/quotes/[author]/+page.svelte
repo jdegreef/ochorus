@@ -1,11 +1,12 @@
 <script lang="ts">
-	import type { Quote, QuotePage } from '$lib/library-public';
-	import { groupQuotes, quoteHref, workHref } from '$lib/library-public';
+	import type { QuotePage } from '$lib/library-public';
+	import { groupQuotes, onPhrase, authorTopicHref, citeChapter, quoteCollectionLd } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { hueForBirthYear } from '$lib/eras';
 	import { jsonLd, breadcrumbLd, hreflangFor, absUrl } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
+	import QuoteCard from '$lib/components/QuoteCard.svelte';
 
 	// English-only, and written in English literals for the same reason the
 	// scripture pages are: these quotations are lifted from the English works and
@@ -49,77 +50,21 @@
 		page.author.photo_url ? absUrl(page.author.photo_url) : absUrl('/og/quotes.png')
 	);
 
-	// One @id per author, shared with the /authors bio page's Person node (which
-	// carries the same url): that is what lets a crawler fuse "the person quoted
-	// here" with "the person whose life is here" into one entity. `creator`, not
-	// `spokenByCharacter` — the latter is for a fictional character speaking a
-	// line, whereas these are the writer's own words.
-	const authorUrl = $derived(`${SITE_URL}/authors/${page.author.slug}/`);
-	const person = $derived({
-		'@type': 'Person',
-		'@id': authorUrl,
-		name: page.author.name,
-		url: authorUrl
-	});
-	// An ItemList, not CollectionPage.hasPart: the quotations arrive in reading
-	// order and the ListItem positions preserve it, where hasPart is an unordered
-	// set. `about` names the whole collection's subject as the author entity.
+	// A CollectionPage → ItemList of Quotations, shared with the author-theme
+	// page. The `creator` @id matches the /authors Person node, fusing the quotes
+	// with the life into one entity (see quoteCollectionLd).
 	const quotesLd = $derived(
-		jsonLd({
-			'@context': 'https://schema.org',
-			'@type': 'CollectionPage',
-			name: `Quotations from ${page.author.name}`,
-			description,
-			url: canonical,
-			about: person,
-			mainEntity: {
-				'@type': 'ItemList',
-				numberOfItems: page.quotes.length,
-				itemListElement: page.quotes.map((q, i) => ({
-					'@type': 'ListItem',
-					position: i + 1,
-					item: {
-						'@type': 'Quotation',
-						text: q.text,
-						creator: { '@id': authorUrl },
-						isPartOf: {
-							'@type': q.source.kind === 'sermon' ? 'CreativeWork' : 'Book',
-							name: q.source.work,
-							url: absUrl(workHref(q))
-						},
-						url: `${SITE_URL}${quoteHref(q)}`
-					}
-				}))
-			}
-		})
+		jsonLd(
+			quoteCollectionLd({
+				name: `Quotations from ${page.author.name}`,
+				description,
+				url: canonical,
+				authorSlug: page.author.slug,
+				authorName: page.author.name,
+				quotes: page.quotes
+			})
+		)
 	);
-
-	/** Inside a book group the work is the heading, so the card need not repeat
-	 *  it. The sermons group is mixed, so there the sermon names itself. */
-	const cite = (q: Quote) =>
-		q.source.kind === 'sermon'
-			? `${q.source.work} ¶${q.paragraph}`
-			: `Chapter ${q.source.order} ¶${q.paragraph}`;
-
-	// Copy the quotation WITH its citation. The attribution travelling with the
-	// text is the whole point of this page — stripping it is how the aggregators
-	// ended up publishing Spurgeon's words under nobody's name.
-	let copied = $state('');
-	let timer: ReturnType<typeof setTimeout>;
-	async function copy(q: Quote) {
-		const cited = `"${q.text}"\n— ${page.author.name}, ${q.source.work}` +
-			(q.source.order === null ? '' : `, chapter ${q.source.order}`) +
-			`\n${SITE_URL}${quoteHref(q)}`;
-		try {
-			await navigator.clipboard.writeText(cited);
-			copied = q.slug;
-			clearTimeout(timer);
-			timer = setTimeout(() => (copied = ''), 2000);
-		} catch {
-			// A denied clipboard permission is not worth an error state; the text
-			// is on the page and selectable either way.
-		}
-	}
 </script>
 
 <Seo {title} {description} {canonical} {hreflang} {ogImage} structuredData={[crumbsLd, quotesLd]} />
@@ -138,6 +83,20 @@
 			any of them into the full text — free, and without an account.
 		</p>
 	</header>
+
+	<!-- By theme: the author's deepest subjects, each its own page ("… on
+	     Prayer"). Only themes with enough of their quotations to stand on their
+	     own appear, so a chip never leads to a thin page. -->
+	{#if page.topics.length > 0}
+		<nav class="chips" aria-label="Quotes by topic">
+			{#each page.topics as t (t.slug)}
+				<a href={authorTopicHref(page.author.slug, t.slug)}>
+					on {onPhrase(t.title)}
+					<span class="n">{t.count}</span>
+				</a>
+			{/each}
+		</nav>
+	{/if}
 
 	<!-- Jump row: sixty cards is a long scroll, and the works are the one
 	     structure a reader can predict. Same pattern as /scripture. -->
@@ -162,21 +121,7 @@
 
 			<ol class="quotes">
 				{#each g.quotes as q (q.slug)}
-					<li class="quote">
-						<blockquote>{q.text}</blockquote>
-						<div class="foot">
-							<!-- The citation IS the product: an unsourced card is what the
-							     aggregators already publish. It links to the paragraph, not
-							     just the chapter, using the reader's own `?p=` jump. -->
-							<a class="cite eyebrow" href={quoteHref(q)}>{cite(q)}</a>
-							<!-- Text, not a glyph: the icon set has no copy mark, and
-							     extending a curated set for a minor affordance is not
-							     worth it when the word says it exactly. -->
-							<button class="copy" onclick={() => copy(q)}>
-								{copied === q.slug ? 'Copied' : 'Copy'}
-							</button>
-						</div>
-					</li>
+					<QuoteCard quote={q} authorName={page.author.name} cite={citeChapter(q)} />
 				{/each}
 			</ol>
 		</section>
@@ -235,57 +180,32 @@
 		display: grid;
 		gap: 0.75rem;
 	}
-	.quote {
-		padding: 1.1rem 1.3rem;
-		border: 1px solid var(--color-border);
-		border-radius: var(--radius-card);
-		/* No hue wash. At 4% it was invisible against the surface, and the
-		   heading's rule (55%) and the jump chip (8%) already carry the group's
-		   colour — a tint nobody can see is dead CSS, not design. */
-		background: var(--color-surface);
-	}
-	.quote blockquote {
-		margin: 0;
-		font-family: var(--font-display, Georgia, serif);
-		/* A step up from body: this is the content of the card, and at body size
-		   it was the smallest type on a page whose h1 is 1.953rem. A token from
-		   the scale, not an invented size (STYLE_GUIDE §2). */
-		font-size: var(--fs-h3);
-		/* Looser than the 1.3 the scale gives --fs-h3, because that leading is
-		   for headings and this is reading prose. */
-		line-height: 1.45;
-		color: var(--color-text);
-	}
-	.foot {
+
+	/* Theme chips: the author's deepest subjects, sitting under the intro. Quiet
+	   pills in the accent, not the era hue — they are navigation, not a group. */
+	.chips {
 		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 1rem;
-		margin-top: 0.7rem;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+		margin-bottom: 2rem;
 	}
-	.cite {
-		color: var(--color-muted);
+	.chips a {
+		display: inline-flex;
+		align-items: baseline;
+		gap: 0.4rem;
+		padding: 0.25rem 0.7rem;
+		border-radius: 999px;
+		border: 1px solid color-mix(in srgb, var(--color-accent) 25%, var(--color-border));
+		background: color-mix(in srgb, var(--color-accent) 6%, var(--color-surface));
+		font-size: var(--fs-small);
+		color: var(--color-text);
 		text-decoration: none;
 	}
-	.cite:hover {
-		color: var(--color-accent);
-		text-decoration: underline;
+	.chips a:hover {
+		background: color-mix(in srgb, var(--color-accent) 14%, var(--color-surface));
 	}
-	/* Quiet until wanted: the quotation is the content, this is an affordance. */
-	.copy {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.3rem;
-		padding: 0.2rem 0.5rem;
-		border: 0;
-		border-radius: var(--radius-sm);
-		background: transparent;
+	.chips .n {
 		font-size: var(--fs-small);
 		color: var(--color-muted);
-		cursor: pointer;
-	}
-	.copy:hover {
-		background: var(--color-surface-2);
-		color: var(--color-text);
 	}
 </style>
