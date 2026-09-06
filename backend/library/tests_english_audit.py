@@ -223,6 +223,14 @@ class EnglishAuditPrecisionTests(SimpleTestCase):
         for latin in ("solet", "nomen"):
             self.assertNotIn("word-fusion", _findings(f"<p>tristis abire {latin} est</p>"))
 
+    def test_word_fusion_spares_the_agent_noun_washer(self):
+        """`washer` is `was`+`her` by the oracle but an ordinary English word;
+        it is named in FUSION_EXEMPT, like the Latin above."""
+        self.assertNotIn(
+            "word-fusion",
+            _findings("<p>she was a beautiful washer and ironer</p>"),
+        )
+
     def test_dropcap_only_when_the_remainder_is_a_common_word(self):
         self.assertEqual(_findings("<p>Ithink it is so</p>").get("dropcap-fused"), 1)
         for ordinary in ("Indian", "Inquire", "Ireland", "Increase"):
@@ -233,12 +241,26 @@ class EnglishAuditPrecisionTests(SimpleTestCase):
             )
 
     def test_anachronism_only_against_an_author_who_could_not_have_written_it(self):
-        modern = "<p>He drove his car to the meeting</p>"
-        # Andrew Murray died in 1917; cars in his mouth mean the import invented
-        # text (this is exactly the humility-2 ch04 defect).
+        modern = "<p>He answered it by e-mail</p>"
+        # Andrew Murray died in 1917; e-mail in his mouth means the import
+        # invented text — the same shape as the humility-2 ch04 defect, and what
+        # caught the real way-into-holiest transcriber note. One trigger, so the
+        # count proves the PD gate rather than which triggers happen to survive.
         self.assertEqual(_findings(modern, is_pd=True).get("anachronism"), 1)
-        # A living author may write about cars.
+        # A living author may write about e-mail.
         self.assertNotIn("anachronism", _findings(modern, is_pd=False))
+
+    def test_anachronism_does_not_fire_on_the_period_word_car(self):
+        # `cars?` was removed: in a pre-automobile corpus every "car" is a
+        # railroad car, streetcar, balloon car or biblical chariot — 41 false /
+        # 0 true across the corpus. See the ANACHRONISM comment for the history.
+        for period in (
+            "<p>I took the cars to Rochester</p>",          # railroad
+            "<p>on the Sixth avenue cars</p>",              # streetcar
+            "<p>King Solomon made himself a car of state</p>",  # Song of Songs 3:9
+            "<p>the great juggernaut car of India</p>",     # temple chariot
+        ):
+            self.assertNotIn("anachronism", _findings(period, is_pd=True), period)
 
     def test_orphan_quote_is_a_close_with_nothing_open(self):
         # A long quotation opens every paragraph and closes only the last, so an
