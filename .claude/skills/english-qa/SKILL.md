@@ -275,6 +275,16 @@ Reported, not fixed
   above it did nothing until the two were folded into one. `grep -n '"<slug>"'
   library/corrections.py` before adding; if it's there, MERGE into it. The tell
   is `normalize_english_fixture` reporting "0 fields" when you expected edits.
+  **And the entry `grep` finds may be the WRONG dict.** `CORRECTIONS` (metadata:
+  `chapter_titles`, importer-only) and `BODY_CORRECTIONS` (body, deploy chain) are
+  keyed independently, so `grep '"<slug>"'` can land you on a `chapter_titles`
+  entry and tempt you to add your body `replacements` there — where nothing reads
+  them. `apply_body_corrections` only walks `BODY_CORRECTIONS`, so the pairs are
+  dead with the SAME "0 fields" tell. `way-into-holiest` had a `CORRECTIONS`
+  `chapter_titles` entry and NO `BODY_CORRECTIONS` one; the fix was a fresh
+  `BODY_CORRECTIONS` entry, not a merge. Confirm which dict the match is in, and
+  before running the three settle commands, verify the pairs bite:
+  `apply_body_corrections(slug, order, body) != body` in a shell.
 - **A quote-insertion pair anchored at end-of-string is not idempotent.** A pair
   that only ADDS a mark and whose `old` is a suffix of its `new` (`its power.` ->
   `its power.”`) re-fires forever — `apply_body_corrections` is run twice by
