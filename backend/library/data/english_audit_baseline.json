@@ -192,7 +192,6 @@
    "lost-paragraphing": 2,
    "orphan-close-quote": 17,
    "space-before-punct": 15,
-   "stray-parens": 1,
    "welded-footnote": 5
   },
   "sermons-on-several-occasions": {
@@ -206,8 +205,7 @@
   },
   "spurgeon-on-prayer": {
    "lost-paragraphing": 1,
-   "orphan-close-quote": 4,
-   "stray-parens": 1
+   "orphan-close-quote": 4
   },
   "stepping-stones-2": {
    "hyphen-space": 2,

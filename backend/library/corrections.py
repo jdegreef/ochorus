@@ -882,10 +882,46 @@ BODY_CORRECTIONS: dict[str, dict] = {
         #   1 can say   ch9  "O Lord, 1 can say no more" — a digit-1 misread of
         #               the pronoun "I" inside a quoted prayer.
         #   Yet ,       ch11 "Yet , doubtless" — a stray space before the comma.
+        #   ()h         ch9  "and ()h may divine grace make it so with us!" —
+        #               a capital O whose bowl broke in two under the scanner,
+        #               which is the `stray-parens` finding pinned for this
+        #               work. The letter is what the source lost, not our
+        #               cleaning: CCEL's own page for the sermon (`spurgeon/
+        #               sermons06/sermons06.xxix_1.html`, No. 328, "True
+        #               Prayer—True Power!") carries the same "()h", and so
+        #               does archive.spurgeon.org's copy of the same lineage.
+        #               Two transcriptions OUTSIDE that lineage supply the
+        #               letter and agree on the word: spurgeon.org's Spurgeon
+        #               Library reads "and Oh may divine grace make it so with
+        #               us!—there should be mingled a realising expectation",
+        #               character-for-character ours apart from the O, and
+        #               spurgeongems.org's retype of the printed New Park
+        #               Street Pulpit vol. 6 (chs328.pdf, p. 1) reads "and oh,
+        #               may divine grace make it so with us!". The
+        #               Spurgeon-Library reading is the one adopted, because it
+        #               matches this text everywhere else including the absent
+        #               comma; the repair restores one letter and nothing more.
         "replacements": [
             ("Brothers and Sis- ters", "Brothers and Sisters"),
             ("O Lord, 1 can say no more", "O Lord, I can say no more"),
             ("Yet , doubtless", "Yet, doubtless"),
+            ("and ()h may divine grace", "and Oh may divine grace"),
+        ],
+    },
+    "selected-sermons-whitefield": {
+        # ch41 "Saul's Conversion", one `stray-parens` finding: an aside opens
+        # with "(that I may draw towards a conclusion" and then closes with a
+        # SECOND opening paren — "conclusion()" where "conclusion)" belongs.
+        # CCEL's own page has it (`whitefield/sermons/sermons.xliii.html`), so
+        # the flipped bracket came in with the transcription rather than out of
+        # our sanitizer, and the printed edition settles what it should be:
+        # *Sermons on Important Subjects* (London: Fisher, Son & Jackson,
+        # 1830), Sermon XLI, p. 480 — archive.org `sermonsonimport00whitgoog`
+        # — reads "And therefore (that I may draw towards a conclusion) let the
+        # ministers and disciples of Christ learn from Saul". English-only
+        # work, so nothing has propagated.
+        "replacements": [
+            ("draw towards a conclusion() let", "draw towards a conclusion) let"),
         ],
     },
     "all-of-grace": {
