@@ -270,6 +270,35 @@ Reported, not fixed
   tagless `body_text`, which is fine — `rederive_body_text` carries the mark
   there from the fixed HTML). A mark inserted mid-string breaks the substring on
   its own and is already idempotent.
+
+  **That anchor trick runs out, and then you need a GUARD.** Any pure insertion
+  has `old` inside `new`, so the rule is general, not a quirk of quote marks —
+  and consuming the preceding context only works when there IS preceding
+  context. Restoring `ministry-of-intercession` ch18's six deleted `<h4>`
+  headings, five could anchor on the `</p> <p>` seam ahead of them and the
+  sixth could not, because it opens the chapter. Hence `note_headings`, a
+  fourth `BODY_CORRECTIONS` key beside `replacements`, `paragraph_breaks` and
+  `dropcap_letters`: `restore_note_headings` takes `(anchor, heading)` and skips
+  a body that already carries the heading. Guarding on the OUTPUT is idempotent
+  wherever the insertion lands, needs no anchor gymnastics, and reads as what it
+  means. Anchor each on its `<p>` so it cannot touch `body_text`, and add the
+  key to `test_no_replacement_pair_is_dead` or nothing will notice when the
+  paragraph it titles is edited out from under it.
+- **A STRUCTURAL repair must land in every edition at once.**
+  `tests_translation_markup` pins a translation's ordered TAG SEQUENCE against
+  its English, so adding six headings to the English alone fails it — and that
+  gate, not taste, is why a repair to shipped text has to be tag-neutral unless
+  you do every language in the same commit. Check the editions
+  run in lockstep before you promise it: `ministry-of-intercession` ch18 has the
+  six notes at the same paragraph indices in en and hi, which is what made the
+  headings restorable at all. Diff `re.findall(r'<(/?\w+)', body_html)` per
+  chapter across the editions as your own check — the test only tells you
+  afterwards, and only that something moved. And spell the restored element with
+  the tag the SOURCE used, not the one that merely looks right: the guard is a
+  string match, so a heading declared `<h3>` where Gutenberg had `<h4>` fails to
+  recognise its own repair once the importer stops eating it, and a re-import
+  then carries BOTH. Declared with the source's tag, the correction disarms
+  itself the day the root cause is fixed.
 - **Forgetting the baseline is corpus-wide, so it collides in parallel.**
   `english_audit_baseline.json` is generated from every fixture, so ANY two PRs
   that touch ANY fixture collide on it — and invisibly, because each branch
@@ -328,10 +357,10 @@ Reported, not fixed
   the same book-internal cross-references (`(<a class="pginternal">ch. 3</a>)`),
   still unrepaired. **The shipped text still has to be repaired by string pair,
   even after the selector is fixed**: a re-import runs `upsert_book`, which
-  deletes and recreates every chapter and re-runs the title heuristics, and
-  restoring the `<h4>`s in English alone would break the ordered-tag parity with
-  the translations that `tests_translation_markup` enforces. So the repair must
-  be tag-neutral — text inside blocks that already exist.
+  deletes and recreates every chapter and re-runs the title heuristics. Restore
+  the headings too — `note_headings`, in every edition at once (see the
+  structural-repair rule below); an earlier draft of this bullet said the repair
+  had to be tag-neutral, and that was only true of a repair to ONE edition.
 - **Verifying a citation needs the scan, but not `_djvu.xml`.** The XML is for
   paragraphing, where indent coordinates are the oracle. To settle whether a
   wrong reference is the author's or ours, `_djvu.txt` is enough and far

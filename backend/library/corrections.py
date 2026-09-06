@@ -523,6 +523,12 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 #     paragraph into the one before it, and the break is put back between these
 #     two exact strings ("…their own experience." / "Alas!"). Not a
 #     `replacements` pair; `restore_paragraph_breaks` says why.
+#   note_headings: [(anchor, heading)] — the sanitizer DELETED a heading (see
+#     `restore_note_headings`), and it goes back before the block it titles,
+#     identified by that block's opening. Not a `replacements` pair either, and
+#     for a different reason than the seams above: `restore_note_headings` says
+#     why. Spell the heading with the tag the SOURCE used, so the guard
+#     recognises a body that already has it.
 #
 # Applied on every import AND backfillable over stored rows (management command
 # `apply_body_corrections`, plus a data migration for prod).
@@ -669,6 +675,42 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("जानी जा सकती है। ()", "जानी जा सकती है। (टिप्पणी D.)"),
             ("सौंप देने की प्रार्थना। )", "सौंप देने की प्रार्थना। (टिप्पणी E.)"),
             ("ढूँढ़ता है। ()", "ढूँढ़ता है। (टिप्पणी F.)"),
+            # ch13 opens "In my name—repeated six times over." where the other
+            # twelve sites in the chapter, and the epigraph two lines above,
+            # read "In My Name". The 1898 printing sets the chapter opening in
+            # display capitals ("IN MY NAME — repeated six times over"), which
+            # carries no lowercase evidence either way; Gutenberg's transcriber
+            # down-cased it. Anchored on the `<p>` so it cannot touch body_text.
+            ("<p>In my name—repeated six times over.",
+             "<p>In My Name—repeated six times over."),
+        ],
+        # The other half of the `pginternal` damage: ch18's six note HEADINGS
+        # (`restore_note_headings` has the mechanism, and why this is not a
+        # `replacements` pair). Restored verbatim from the 1898 printing, print
+        # page numbers included: what was lost is the whole heading, and
+        # trimming it would be an edit rather than a repair. `<h4>` because that
+        # is the tag the source used AND this book's own for a mid-chapter
+        # heading — its `<h3>` is the repeated "A PLEA FOR MORE PRAYER" banner.
+        #
+        # BOTH editions, at the same six paragraphs. They run in lockstep, and
+        # `tests_translation_markup` pins a translation's ordered tag sequence
+        # against its English, so six headings in one edition alone would fail
+        # it. The hi wording is that edition's own: it already writes "अध्याय 7
+        # की टिप्पणी" for the print's "the note to chap. vii.", so both nouns
+        # and the arabic numerals come from its usage.
+        "note_headings": [
+            ("<p>Just this day I have been ", "<h4>NOTE A, Chap. VI. p. 73</h4>"),
+            ("<p>आज ही मैं भारत से आई हुई ए", "<h4>टिप्पणी A, अध्याय 6. पृ. 73</h4>"),
+            ("<p>Let me tell here a story t", "<h4>NOTE B, Chap. VII. p. 89</h4>"),
+            ("<p>मैं यहाँ एक कहानी सुनाता ह", "<h4>टिप्पणी B, अध्याय 7. पृ. 89</h4>"),
+            ("<p>Just yesterday again—three", "<h4>NOTE C, Chap. IX. p. 111</h4>"),
+            ("<p>कल ही फिर—अध्याय 7 की टिप्", "<h4>टिप्पणी C, अध्याय 9. पृ. 111</h4>"),
+            ("<p>Let me once again refer my", "<h4>NOTE D, Chap. X. p. 123</h4>"),
+            ("<p>मैं अपने पाठकों को एक बार ", "<h4>टिप्पणी D, अध्याय 10. पृ. 123</h4>"),
+            ("<p>There is a question, the d", "<h4>NOTE E, Chap. XI. p. 136</h4>"),
+            ("<p>एक प्रश्न है, सबसे गहरा, ज", "<h4>टिप्पणी E, अध्याय 11. पृ. 136</h4>"),
+            ("<p>I have more than once spok", "<h4>NOTE F, Chap. XIV. p. 177</h4>"),
+            ("<p>मैं एक से अधिक बार मसीहियो", "<h4>टिप्पणी F, अध्याय 14. पृ. 177</h4>"),
         ],
     },
     "essentials-of-prayer": {
@@ -819,6 +861,17 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("religion isthat", "religion is that"),
         ],
     },
+    "selected-sermons-whitefield": {
+        # ch41 ("Saul's Conversion") prints "(that I may draw towards a
+        # conclusion()" — a doubled paren where the parenthesis should simply
+        # close. The defect is CCEL's, and CCEL is this book's lineage: its own
+        # page carries the identical "conclusion()", while Blue Letter Bible's
+        # independent transcription reads "conclusion)". English-only; the book
+        # has no translations to sweep.
+        "replacements": [
+            ("a conclusion()", "a conclusion)"),
+        ],
+    },
     "spurgeon-on-prayer": {
         # CCEL transcription slips in the printed Pulpit text, each unambiguous
         # from context (verified in the sermon, not introduced by our cleaning):
@@ -831,6 +884,14 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("Brothers and Sis- ters", "Brothers and Sisters"),
             ("O Lord, 1 can say no more", "O Lord, I can say no more"),
             ("Yet , doubtless", "Yet, doubtless"),
+            #   ()h        ch9  "and ()h may divine grace make it so with us!"
+            #               — the capital O of "Oh" lost to a paren pair. Blue
+            #               Letter Bible and the Spurgeon Library both read
+            #               "and Oh may divine grace"; the modernised Answers
+            #               in Genesis reprint lowercases it, and the two MTP
+            #               transcriptions win. Unrelated to the `pginternal`
+            #               anchor drop — this book is not from Gutenberg.
+            ("and ()h may divine grace", "and Oh may divine grace"),
         ],
     },
     "all-of-grace": {
@@ -2175,6 +2236,36 @@ def restore_paragraph_breaks(body_html: str, seams: Sequence[tuple[str, str]]) -
     return body_html
 
 
+def restore_note_headings(body_html: str, headings: Sequence[tuple[str, str]]) -> str:
+    """Put back a heading the sanitizer deleted, before the block it titles.
+
+    `sanitize.DROP_SELECTORS` carries `[class*=pginternal]`, and `_clean`
+    DECOMPOSES the drop-selectors before it unwraps everything else. A Gutenberg
+    heading whose only child is its anchor is therefore emptied, and the
+    empty-block regex a few lines down then removes the heading itself. Six of
+    them went that way in `ministry-of-intercession` ch18.
+
+    Idempotent by GUARD rather than by anchor, and that is the whole reason this
+    is not a `replacements` pair. A pure INSERTION has `old` as a substring of
+    `new`, so it re-fires every time it runs — `SettledBodyIdempotenceTests`
+    applies every correction twice precisely to catch that. The trick the other
+    keys use, consuming the preceding `</p> ` boundary so the match cannot
+    recur, is unavailable to a heading that OPENS a chapter: there is nothing in
+    front of it. Checking whether the heading is already there works in both
+    positions and reads as what it means.
+
+    `body_html` ONLY. Each anchor carries its `<p>`, so nothing here can match
+    the derived, tagless `body_text` — which is what keeps block tags out of a
+    field that must never hold any. `Chapter.save()` re-derives that field from
+    the HTML this has already fixed.
+    """
+    for anchor, heading in headings:
+        if heading in body_html or anchor not in body_html:
+            continue
+        body_html = body_html.replace(anchor, f"{heading} {anchor}", 1)
+    return body_html
+
+
 def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
     """Apply a work's body corrections to one chapter's HTML. Idempotent.
 
@@ -2203,6 +2294,7 @@ def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
         for old, new in entry.get("replacements", []):
             body_html = body_html.replace(old, new)
         body_html = restore_paragraph_breaks(body_html, entry.get("paragraph_breaks", ()))
+        body_html = restore_note_headings(body_html, entry.get("note_headings", ()))
         if entry.get("strip_transcription_footnotes"):
             body_html = strip_transcription_footnotes(body_html)
     body_html = rejoin_linebreak_hyphens(body_html)
