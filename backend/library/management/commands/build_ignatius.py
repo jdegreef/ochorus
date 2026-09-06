@@ -28,7 +28,7 @@ from django.db.models import Max
 
 from library import english_audit
 from library.corrections import settled_chapter_body
-from library.ingest import DROP_SELECTORS, clean_fragment, clean_html, word_count
+from library.ingest import clean_fragment, clean_html, drop_furniture, word_count
 from library.management.commands.import_ccel import fetch, soup
 from library.models import Author, Book, Chapter
 
@@ -95,9 +95,7 @@ def _epistle_body(stem: str) -> str:
     if node is None:
         raise CommandError(f"{stem}: no content node")
     content = node.select_one("[class*=book-content]") or node
-    for selector in DROP_SELECTORS:
-        for furniture in content.select(selector):
-            furniture.decompose()
+    drop_furniture(content)
     for h in content.find_all(["h1", "h2", "h3", "h4"]):
         t = h.get_text(" ", strip=True)
         if _SECTION_HEAD.match(t) or "EPISTLE OF IGNATIUS" in t.upper() or t.lower() == "contents":

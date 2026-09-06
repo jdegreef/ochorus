@@ -30,7 +30,7 @@ from library.ingest import (
     soup,
     upsert_book,
 )
-from library.sanitize import DROP_SELECTORS
+from library.sanitize import drop_furniture
 
 CCEL_BASE = "https://ccel.org/ccel/"
 # summary_title: a sentence terminator followed by a dash, a space, or the end
@@ -395,12 +395,11 @@ def extract_body(
     #     "…Sermon 5 5 (The last sermon which Whitefield preached in London…)",
     #     and that one duplicate survived the import that dropped the other 55.
     #
-    # `DROP_SELECTORS` itself, not a hand-picked subset of it: that list is the
-    # one that grows (pagenum, navbar, and the footnote classes twice), and a
+    # The sanitizer's own drop pass, not a hand-picked subset of it: that policy
+    # is the one that grows (pagenum, navbar, the footnote classes twice, and
+    # now a text-qualified rule that is NOT in `DROP_SELECTORS` at all), and a
     # copy here would go on reading furniture the sanitizer had learned to drop.
-    for selector in DROP_SELECTORS:
-        for furniture in content.select(selector):
-            furniture.decompose()
+    drop_furniture(content)
     for el in list(content.find_all(["h1", "h2", "h3", "h4", "h5"], recursive=True))[
         :MAX_LEADING_BLOCKS
     ]:

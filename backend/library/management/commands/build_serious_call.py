@@ -24,10 +24,10 @@ from django.db.models import Max
 from library import english_audit
 from library.corrections import settled_chapter_body
 from library.ingest import (
-    DROP_SELECTORS,
     clean_fragment,
     clean_html,
     clean_title,
+    drop_furniture,
     normalize_words,
     restates_title,
     word_count,
@@ -92,9 +92,7 @@ def _chapter_body(url: str, title: str) -> str:
     if node is None:
         raise CommandError(f"{url}: no content node")
     content = node.select_one("[class*=book-content]") or node
-    for selector in DROP_SELECTORS:
-        for furniture in content.select(selector):
-            furniture.decompose()
+    drop_furniture(content)
     for el in list(content.find_all(["h1", "h2", "h3", "h4", "h5", "p"], recursive=True)):
         if _is_frontblock(el, title):
             el.decompose()

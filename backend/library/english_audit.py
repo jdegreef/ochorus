@@ -190,14 +190,18 @@ SPACE_BEFORE_PUNCT = re.compile(r"\S\s+[,.;:!?](?:\s|$)")
 # An empty parenthesis pair: a cross-reference whose ANCHOR TEXT the sanitizer
 # deleted, leaving only the punctuation the author wrote around it. Gutenberg
 # spells every internal link `<a href="#nt.A" class="pginternal">Note A.</a>`,
-# and `sanitize.DROP_SELECTORS`'s `"[class*=pginternal]"` decomposes it whole
-# rather than unwrapping it to its text, so `(Note A.)` reaches the reader as
-# `()`. Seventeen English works name Gutenberg as their source, and every one
-# of them is exposed to it. (Deferred rather than fixed at the selector: that
-# change reaches all seventeen at once and needs a measurement of what
-# unwrapping lets back in — Gutenberg puts the same class on every TOC and
-# page-number link — so it is its own change. This class detects the symptom
-# meanwhile, and keeps detecting it if the selector is ever narrowed wrong.)
+# and `sanitize.DROP_SELECTORS`'s `"[class*=pginternal]"` decomposed it whole
+# rather than unwrapping it to its text, so `(Note A.)` reached the reader as
+# `()`. Every English work naming Gutenberg as its source was exposed to it.
+#
+# THE SELECTOR IS NOW FIXED — the deferral this comment used to record has been
+# discharged. `sanitize._is_pg_navigation` decides on the link's TEXT, so a
+# cross-reference keeps its words and only navigation is dropped, and
+# `scripts/audit_pginternal.py` is the measurement that made the narrowing safe
+# ("what does unwrapping let back in?", answered over every Gutenberg work).
+# This class stays, and stays a SYMPTOM test: it catches the damage already on
+# the shelf in rows that are never re-imported, and it keeps detecting the
+# defect if the predicate is ever narrowed wrong.
 #
 # A DROPPED ANCHOR IS NOT THE ONLY CAUSE, and the pattern is deliberately a
 # symptom test rather than a cause test. Two of the eight sites were plain
