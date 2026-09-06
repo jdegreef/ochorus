@@ -69,6 +69,11 @@
 		tagline="The lines these writers are remembered for — {total} of them so far — each traced to the exact book, chapter and paragraph it comes from, and linked to the full work. What the unsourced quote sites cannot give you is the citation; that is the whole of this."
 	/>
 
+	<!-- The other way in: by theme rather than by writer. -->
+	<p class="mb-6">
+		<a class="browse" href="/quotes/topics/">Browse quotes by topic →</a>
+	</p>
+
 	<!-- A card per author. The accent bar wears the author's era hue, the same
 	     colour their row carries on the Biographies shelf and their quote page's
 	     groups — one consistent visual key for "when". -->
@@ -103,6 +108,14 @@
 <style>
 	/* --hue is the era's hex (eras.ts); every use goes through color-mix, never
 	   raw, the same rule the author quote page states. */
+	.browse {
+		color: var(--color-accent);
+		text-decoration: none;
+		font-size: var(--fs-small);
+	}
+	.browse:hover {
+		text-decoration: underline;
+	}
 	.era-bar {
 		width: 0.375rem;
 		align-self: stretch;

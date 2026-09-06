@@ -780,6 +780,15 @@ class Quote(models.Model):
     )
     paragraph = models.PositiveIntegerField()
     reviewed = models.BooleanField(default=False)
+    # The devotional themes this sentence is filed under — what powers the
+    # "Quotes on Prayer" and "Andrew Murray Quotes on Prayer" pages. A quote may
+    # sit under several themes; the tags are curated in `quote_seed.py` where the
+    # sentence is visible, and (unlike `reviewed`) re-asserted every deploy, so a
+    # re-tag ships. Public pages still filter on `reviewed`, so a tagged-but-
+    # unreviewed quote reaches no reader.
+    topics = models.ManyToManyField(
+        "QuoteTopic", related_name="quotes", blank=True
+    )
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -790,6 +799,45 @@ class Quote(models.Model):
 
     def __str__(self) -> str:
         return f"{self.author.slug}: {self.text[:48]}"
+
+
+class QuoteTopic(models.Model):
+    """A devotional theme a quotation can be filed under — e.g. "Prayer".
+
+    DELIBERATELY A SEPARATE VOCABULARY from ``Topic`` (the shelves of works).
+    A quote theme is finer and more numerous than a book shelf, and the two
+    audiences differ: ``Topic`` is "which books are about prayer", this is
+    "the memorable lines on prayer". Reusing ``Topic`` would either strand
+    themes that hold no books as empty rows on the ``/topics`` browse, or force
+    every theme to double as a book shelf. Membership is a plain M2M from
+    ``Quote`` (``Quote.topics``), tagged in ``quote_seed.py``.
+
+    English-only in practice, exactly as the quotes are: the sentences are lifted
+    from English works and every citation names an English chapter. ``title`` is
+    the standalone label ("Prayer", "The Holy Spirit"); the page composes
+    "Quotes on …" from it, lowercasing a leading article for the running form.
+    """
+
+    slug = models.SlugField(max_length=80, unique=True)
+    title = models.CharField(max_length=120)
+    # A one-line description shown on the topic page and its index card, and used
+    # as the page's meta description.
+    blurb = models.TextField(blank=True)
+    # A themed Scripture epigraph shown on the topic page — the same furniture
+    # the work-topic pages carry (public-domain wording).
+    scripture_ref = models.CharField(max_length=120, blank=True)
+    scripture_text = models.TextField(blank=True)
+    sort_order = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["sort_order", "title"]
+
+    def natural_key(self):
+        return (self.slug,)
+
+    def __str__(self) -> str:
+        return self.title
 
 
 class Topic(models.Model):

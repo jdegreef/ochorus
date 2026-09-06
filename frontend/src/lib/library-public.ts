@@ -1,4 +1,6 @@
 import { apiFetch, ApiError } from './api';
+import { SITE_URL } from './config';
+import { absUrl } from './seo';
 import {
 	ARTICLE_FIELDS,
 	BOOK_FIELDS,
@@ -870,8 +872,17 @@ export interface Quote {
 	source: QuoteSource;
 }
 
+/** A theme the author has enough quotes on to earn a page — a chip on the author page. */
+export interface QuoteTopicChip {
+	slug: string;
+	title: string;
+	count: number;
+}
+
 export interface QuotePage {
 	author: { slug: string; name: string; photo_url: string; birth_year: number | null };
+	/** The themes this author has a deep-enough page on ("on Prayer" chips). */
+	topics: QuoteTopicChip[];
 	/**
 	 * In READING ORDER — books before sermons, then each work from its first
 	 * chapter to its last. Consecutive quotations therefore share a work, which
@@ -960,3 +971,138 @@ export const quoteHref = (q: Quote): string =>
  */
 export const workHref = (q: Quote): string =>
 	q.source.kind === 'sermon' ? `/sermons/${q.source.slug}/` : `/books/${q.source.slug}/`;
+
+// --- Quote themes -------------------------------------------------------------
+// "Quotes on Prayer" (every author) and "Andrew Murray Quotes on Prayer" (one).
+// A SEPARATE vocabulary from the work-topic shelves under /topics: this files
+// the memorable LINES on a theme, not the books about it. English-only, like the
+// quotes themselves. Pages are built only above a quote-count threshold (the
+// server applies it), so a thin theme simply has no page until it is tagged
+// deeper — the doorway shape a quote page must never take (see quote_seed.py).
+
+/** The standalone label ("The Holy Spirit") lowered for the running "Quotes on …" form. */
+export const onPhrase = (title: string): string => title.replace(/^(The|A|An) /, (m) => m.toLowerCase());
+
+/**
+ * A full citation for a quote where the work is NOT already the heading — the
+ * theme pages mix works under one author, so the card must name the work.
+ */
+export const citeLine = (q: Quote): string =>
+	q.source.kind === 'sermon'
+		? `${q.source.work} ¶${q.paragraph}`
+		: `${q.source.work}, ch. ${q.source.order} ¶${q.paragraph}`;
+
+/**
+ * The shorter citation for pages that GROUP by work, so the work is already the
+ * heading and the card need only name the chapter/paragraph. Used by the author
+ * page and the author-theme page.
+ */
+export const citeChapter = (q: Quote): string =>
+	q.source.kind === 'sermon'
+		? `${q.source.work} ¶${q.paragraph}`
+		: `Chapter ${q.source.order} ¶${q.paragraph}`;
+
+export const quoteTopicHref = (slug: string): string => `/quotes/topics/${slug}/`;
+export const authorTopicHref = (author: string, topic: string): string =>
+	`/quotes/${author}/${topic}/`;
+
+/** One card on the /quotes/topics index. */
+export interface QuoteTopicSummary {
+	slug: string;
+	title: string;
+	blurb: string;
+	count: number;
+}
+
+/** The theme's own furniture — heading, blurb and Scripture epigraph. */
+export interface QuoteTopicBrief {
+	slug: string;
+	title: string;
+	blurb: string;
+	scripture_ref: string;
+	scripture_text: string;
+}
+
+/** One author's run of quotes on a theme, on the "Quotes on X" page. */
+export interface QuoteAuthorGroup {
+	author: { slug: string; name: string; birth_year: number | null };
+	count: number;
+	/** Whether this author has their own "<Author> Quotes on X" page to link to. */
+	has_page: boolean;
+	quotes: Quote[];
+}
+
+/** "Quotes on X" — the theme across every author. */
+export interface QuoteTopicPage {
+	topic: QuoteTopicBrief;
+	/** Grouped by author, alphabetical; each links to that author's own theme page. */
+	authors: QuoteAuthorGroup[];
+}
+
+/** "<Author> Quotes on X" — one author, one theme, in reading order. */
+export interface QuoteAuthorTopicPage {
+	author: { slug: string; name: string; photo_url: string; birth_year: number | null };
+	topic: QuoteTopicBrief;
+	quotes: Quote[];
+}
+
+/** Themes deep enough to earn a page — the /quotes/topics index and its prerender list. */
+export const listQuoteTopics = () => apiFetch<QuoteTopicSummary[]>('/api/library/quote-topics/');
+
+export const getQuoteTopicPage = (topic: string) =>
+	apiFetch<QuoteTopicPage>(`/api/library/quote-topics/${topic}/`);
+
+/** Every (author, theme) pair deep enough to earn a page — the prerender list. */
+export const listQuoteTopicPages = () =>
+	apiFetch<{ author: string; topic: string }[]>('/api/library/quote-topics/pages/');
+
+export const getQuoteAuthorTopicPage = (author: string, topic: string) =>
+	apiFetch<QuoteAuthorTopicPage>(`/api/library/quotes/${author}/${topic}/`);
+
+/**
+ * The `CollectionPage` → `ItemList` of `Quotation`s that both single-author
+ * quote pages carry (the author page, and the author-theme page). Each quote is
+ * a `Quotation` whose `creator` shares the author's `@id` with their /authors
+ * Person node — that shared id is what fuses "the person quoted here" with "the
+ * person whose life is here" into one entity — and whose `isPartOf` names the
+ * work it was sourced from. Returns the object; the caller wraps it in `jsonLd`.
+ */
+export function quoteCollectionLd(opts: {
+	name: string;
+	description: string;
+	/** Canonical URL of the page carrying the list. */
+	url: string;
+	authorSlug: string;
+	authorName: string;
+	/** In the order the page shows them; positions preserve it. */
+	quotes: Quote[];
+}) {
+	const authorUrl = `${SITE_URL}/authors/${opts.authorSlug}/`;
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'CollectionPage',
+		name: opts.name,
+		description: opts.description,
+		url: opts.url,
+		about: { '@type': 'Person', '@id': authorUrl, name: opts.authorName, url: authorUrl },
+		mainEntity: {
+			'@type': 'ItemList',
+			numberOfItems: opts.quotes.length,
+			itemListElement: opts.quotes.map((q, i) => ({
+				'@type': 'ListItem',
+				position: i + 1,
+				item: {
+					'@type': 'Quotation',
+					text: q.text,
+					creator: { '@id': authorUrl },
+					isPartOf: {
+						'@type': q.source.kind === 'sermon' ? 'CreativeWork' : 'Book',
+						name: q.source.work,
+						url: absUrl(workHref(q))
+					},
+					url: `${SITE_URL}${quoteHref(q)}`
+				}
+			}))
+		}
+	};
+}
