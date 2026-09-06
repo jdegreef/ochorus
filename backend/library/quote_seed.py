@@ -1823,13 +1823,13 @@ JONATHAN_EDWARDS = [
         "slug": "jonathan-edwards-20cf3293",
         "text": "There is not only a rational belief that God is holy and that holiness is a good thing, but there is a sense of the loveliness of God’s holiness.",
         "chapter": ("selected-sermons-edwards", 3),
-        "paragraph": 27,
+        "paragraph": 28,
     },
     {
         "slug": "jonathan-edwards-f9dba01f",
         "text": "Faith abases men and exalts God, it gives all the glory of redemption to God alone.",
         "chapter": ("selected-sermons-edwards", 2),
-        "paragraph": 54,
+        "paragraph": 55,
     },
     {
         "slug": "jonathan-edwards-f3a4122f",
@@ -1841,7 +1841,7 @@ JONATHAN_EDWARDS = [
         "slug": "jonathan-edwards-707150e7",
         "text": "Holiness and happiness are in the fruit, here and hereafter, because God dwells in them, and they in God.",
         "chapter": ("selected-sermons-edwards", 2),
-        "paragraph": 41,
+        "paragraph": 42,
     },
     {
         "slug": "jonathan-edwards-278945d4",
@@ -1853,31 +1853,31 @@ JONATHAN_EDWARDS = [
         "slug": "jonathan-edwards-053525a7",
         "text": "It is God that gives us faith whereby we close with Christ.",
         "chapter": ("selected-sermons-edwards", 2),
-        "paragraph": 7,
+        "paragraph": 8,
     },
     {
         "slug": "jonathan-edwards-961af03e",
         "text": "The Spirit of God may act upon a creature, and yet not in acting communicate himself.",
         "chapter": ("selected-sermons-edwards", 3),
-        "paragraph": 19,
+        "paragraph": 20,
     },
     {
         "slug": "jonathan-edwards-0334dcf6",
         "text": "We may often observe it, that the Holy Spirit who indited the Scriptures, often takes notice of little things, minute occurrences, that do but remotely relate to Jesus Christ.",
         "chapter": ("selected-sermons-edwards", 4),
-        "paragraph": 1,
+        "paragraph": 2,
     },
     {
         "slug": "jonathan-edwards-b7680c47",
         "text": "Many that others worship and serve as gods are cruel beings, spirits that seek the ruin of souls; but this is a God that delighteth in mercy; his grace is infinite and endures forever.",
         "chapter": ("selected-sermons-edwards", 4),
-        "paragraph": 11,
+        "paragraph": 12,
     },
     {
         "slug": "jonathan-edwards-27f6a365",
         "text": "He does not merely rationally believe that God is glorious, but he has a sense of the gloriousness of God in his heart.",
         "chapter": ("selected-sermons-edwards", 3),
-        "paragraph": 27,
+        "paragraph": 28,
     },
 ]
 

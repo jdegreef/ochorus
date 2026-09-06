@@ -523,12 +523,12 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 #     paragraph into the one before it, and the break is put back between these
 #     two exact strings ("…their own experience." / "Alas!"). Not a
 #     `replacements` pair; `restore_paragraph_breaks` says why.
-#   note_headings: [(anchor, heading)] — the sanitizer DELETED a heading (see
-#     `restore_note_headings`), and it goes back before the block it titles,
-#     identified by that block's opening. Not a `replacements` pair either, and
-#     for a different reason than the seams above: `restore_note_headings` says
-#     why. Spell the heading with the tag the SOURCE used, so the guard
-#     recognises a body that already has it.
+#   restored_blocks: [(anchor, block)] — the sanitizer DELETED a whole block
+#     (see `restore_dropped_blocks`), and it goes back in front of the block
+#     that followed it, identified by that block's opening. Not a
+#     `replacements` pair either, and for a different reason than the seams
+#     above: `restore_dropped_blocks` says why. Spell the block with the tag the
+#     SOURCE used, so the guard recognises a body that already has it.
 #
 # Applied on every import AND backfillable over stored rows (management command
 # `apply_body_corrections`, plus a data migration for prod).
@@ -685,7 +685,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
              "<p>In My Name—repeated six times over."),
         ],
         # The other half of the `pginternal` damage: ch18's six note HEADINGS
-        # (`restore_note_headings` has the mechanism, and why this is not a
+        # (`restore_dropped_blocks` has the mechanism, and why this is not a
         # `replacements` pair). Restored verbatim from the 1898 printing, print
         # page numbers included: what was lost is the whole heading, and
         # trimming it would be an edit rather than a repair. `<h4>` because that
@@ -698,7 +698,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # it. The hi wording is that edition's own: it already writes "अध्याय 7
         # की टिप्पणी" for the print's "the note to chap. vii.", so both nouns
         # and the arabic numerals come from its usage.
-        "note_headings": [
+        "restored_blocks": [
             ("<p>Just this day I have been ", "<h4>NOTE A, Chap. VI. p. 73</h4>"),
             ("<p>आज ही मैं भारत से आई हुई ए", "<h4>टिप्पणी A, अध्याय 6. पृ. 73</h4>"),
             ("<p>Let me tell here a story t", "<h4>NOTE B, Chap. VII. p. 89</h4>"),
@@ -725,7 +725,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # gone. The selector is QUALIFIED now — `sanitize.KEEP_PREDICATES` keeps
         # a link whose text is a word — so no future import loses one; these
         # pairs stay because shipped rows are never re-imported (see
-        # `restore_note_headings` for why).
+        # `restore_dropped_blocks` for why).
         #
         # ch10's closing recapitulation lost six book-internal cross-references
         # at once and shipped six bare `()`:
@@ -763,10 +763,10 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # no future import loses them — but these rows are never re-imported, so
         # ch33 on the shelf is still seven bare `<hr/>`s with no headings.
         #
-        # Repairing THOSE is `note_headings` on this same key, the mechanism
+        # Repairing THOSE is `restored_blocks` on this same key, the mechanism
         # `ministry-of-intercession` uses for byte-identical damage from the
         # sibling selector — not more `replacements` pairs, because a pure
-        # insertion re-fires on every deploy (see `restore_note_headings`).
+        # insertion re-fires on every deploy (see `restore_dropped_blocks`).
         # Deliberately left for that change: it has to settle the ordered-tag
         # parity `tests_translation_markup` enforces against this book's
         # translations, which is not this key's business.
@@ -782,6 +782,70 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("simple Obedience ()", "simple Obedience (ch. 7)"),
             ("the Divine Indwelling ()", "the Divine Indwelling (ch. 8)"),
             ("His Glory and Majesty (see ‘’)", "His Glory and Majesty (see ‘Sixth Day’)"),
+        ],
+    },
+    "selected-sermons-edwards": {
+        # Four sermons shipped with NO TEXT. Edwards sets each sermon's
+        # scripture as its opening line, and this edition marks it
+        # `<p class="note">` — which `sanitize.DROP_SELECTORS`'s
+        # `"[class*=note i]"`, written for CCEL's footnote apparatus, matched
+        # and decomposed whole. So ch2, ch3, ch4 and ch8 open mid-argument
+        # ("Those Christians to whom the apostle directed this epistle…") with
+        # nothing saying which apostle or which epistle. The selector is
+        # QUALIFIED now (`sanitize.KEEP_PREDICATES`), so no future import loses
+        # one; these are the rows already on the shelf, which are never
+        # re-imported.
+        #
+        # The book is its own witness that a text belongs there: ch5, ch6 and
+        # ch7 still carry theirs ("John xiv. 2.—In my Father's house are many
+        # mansions."), because this edition marks THOSE `<p class="center">` —
+        # which is not a drop selector, so they were never touched. That is the
+        # only difference between the four that lost their text and the three
+        # that kept it. Nothing is invented: each of the four is the source's
+        # own paragraph, restored verbatim, and each is the text the sermon
+        # then expounds.
+        #
+        # The anchor is the `<p><br/>` that opens each damaged chapter: the
+        # spacer left behind where the text used to be, which is why these
+        # chapters begin with a blank line. Restored as its own `<p>` and left
+        # in front of that spacer, which reproduces ch5-7 exactly — there too
+        # the text is its own paragraph followed by `<p><br/>`.
+        #
+        # English-only edition, so there is no translation to keep in lockstep.
+        #
+        # `quote_seed` anchors a quote by its 0-indexed BLOCK position, so
+        # inserting a paragraph shifts every quote below it: eight Edwards
+        # anchors in these four chapters moved by one, in the same commit.
+        # `tests_quotes` is what catches that, and it is the reason a body
+        # repair is never only a body repair.
+        "restored_blocks": [
+            (
+                "<p><br/>Those Christians to whom the apostle",
+                "<p>1 Cor. i. 29-31.—That no flesh should glory in his presence. "
+                "But of him are ye in Christ Jesus, who of God is made unto us "
+                "wisdom, and righteousness, and sanctification, and redemption: "
+                "that according as it is written, He that glorieth, let him glory "
+                "in the Lord.</p>",
+            ),
+            (
+                "<p><br/>Christ says these words to Peter",
+                "<p>Matt. xvi.—And Jesus answered and said unto him, Blessed art "
+                "thou, Simon Barjona: for flesh and blood hath not revealed it "
+                "unto thee, but my Father which is in heaven.</p>",
+            ),
+            (
+                "<p><br/>The historical things in this book of Ruth",
+                "<p>Ruth i. 16.—And Ruth said, Intreat me not to leave thee, or to "
+                "return from following after thee: for whither thou goest, I will "
+                "go; and where thou lodgest, I will lodge: thy people shall be my "
+                "people, and thy God my God.</p>",
+            ),
+            (
+                "<p><br/>The apostle, in the preceding part of the chapter",
+                "<p>2 Cor. i. 14.—As also you have acknowledged us in part, that "
+                "we are your rejoicing, even as ye also are ours in the day of the "
+                "Lord Jesus.</p>",
+            ),
         ],
     },
     "essentials-of-prayer": {
@@ -2360,8 +2424,13 @@ def restore_paragraph_breaks(body_html: str, seams: Sequence[tuple[str, str]]) -
     return body_html
 
 
-def restore_note_headings(body_html: str, headings: Sequence[tuple[str, str]]) -> str:
-    """Put back a heading the sanitizer deleted, before the block it titles.
+def restore_dropped_blocks(body_html: str, blocks: Sequence[tuple[str, str]]) -> str:
+    """Put back a block the sanitizer deleted, before the block that followed it.
+
+    Named for the shape, not the first case: it restores a `<h4>` note heading in
+    `ministry-of-intercession` and a `<p>` sermon TEXT in
+    `selected-sermons-edwards`, both deleted by an over-matching drop selector,
+    both opening their chapter.
 
     `sanitize.DROP_SELECTORS` carries `[class*=pginternal]`, and `_clean`
     DECOMPOSES the drop-selectors before it unwraps everything else. A Gutenberg
@@ -2390,10 +2459,10 @@ def restore_note_headings(body_html: str, headings: Sequence[tuple[str, str]]) -
     field that must never hold any. `Chapter.save()` re-derives that field from
     the HTML this has already fixed.
     """
-    for anchor, heading in headings:
-        if heading in body_html or anchor not in body_html:
+    for anchor, block in blocks:
+        if block in body_html or anchor not in body_html:
             continue
-        body_html = body_html.replace(anchor, f"{heading} {anchor}", 1)
+        body_html = body_html.replace(anchor, f"{block} {anchor}", 1)
     return body_html
 
 
@@ -2425,7 +2494,7 @@ def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
         for old, new in entry.get("replacements", []):
             body_html = body_html.replace(old, new)
         body_html = restore_paragraph_breaks(body_html, entry.get("paragraph_breaks", ()))
-        body_html = restore_note_headings(body_html, entry.get("note_headings", ()))
+        body_html = restore_dropped_blocks(body_html, entry.get("restored_blocks", ()))
         if entry.get("strip_transcription_footnotes"):
             body_html = strip_transcription_footnotes(body_html)
     body_html = rejoin_linebreak_hyphens(body_html)

@@ -18,7 +18,9 @@ Two jobs:
 
 from __future__ import annotations
 
+import json
 from functools import lru_cache
+from pathlib import Path
 
 from django.test import SimpleTestCase
 
@@ -668,7 +670,7 @@ class CorrectionsHygieneTests(SimpleTestCase):
                 # still present afterwards) and the heading itself (applied).
                 # Dead means BOTH are gone: the paragraph this titles was
                 # edited or renumbered out from under the entry.
-                *entry.get("note_headings", ()),
+                *entry.get("restored_blocks", ()),
             )
             if old not in corpus and new not in corpus
         ]
@@ -772,8 +774,105 @@ class EnglishAuditContractTests(SimpleTestCase):
         self.assertEqual(emitted - known, set(), "unclassified finding class(es)")
 
 
-class NoteHeadingRestorationTests(SimpleTestCase):
-    """`restore_note_headings` — the sanitizer's OTHER victim.
+class EdwardsSermonTextTests(SimpleTestCase):
+    """Four sermons shipped with no scripture text at all.
+
+    Edwards opens each sermon with the verse he expounds, and this edition marks
+    it `<p class="note">` — which `[class*=note i]`, written for CCEL's footnote
+    apparatus, matched and decomposed whole. ch2/3/4/8 opened mid-argument
+    ("Those Christians to whom the apostle directed this epistle…") with nothing
+    saying which apostle or which epistle.
+
+    The book is its own witness that a text belongs there: ch5/6/7 still carry
+    theirs, because this edition marks THOSE `<p class="center">` — not a drop
+    selector, so they were never touched. This asserts both halves — the four
+    restored, the three untouched — and, separately, that the CORRECTION is what
+    puts the text back. Asserting only the settled fixture would pass with the
+    correction deleted, while the live rows (repaired by `apply_body_corrections`
+    on every deploy, since `seed_books` never rewrites an existing body) went
+    quietly back to opening mid-argument.
+    """
+
+    REPAIRED = {
+        2: "1 Cor. i. 29-31.—That no flesh should glory in his presence.",
+        3: "Matt. xvi.—And Jesus answered and said unto him, Blessed art thou",
+        4: "Ruth i. 16.—And Ruth said, Intreat me not to leave thee",
+        8: "2 Cor. i. 14.—As also you have acknowledged us in part",
+    }
+    # Never damaged, so never repaired: the source set these in a plain <p>.
+    UNTOUCHED = {
+        5: "John xiv. 2.—In my Father’s house are many mansions.",
+        6: "Deuteronomy xxxii. 35.—Their foot shall slide in due time.",
+        7: "Ezek. xix. 12.—Her strong rods were broken and withered.",
+    }
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        path = (Path(__file__).resolve().parent / "fixtures" / "content" /
+                "books" / "selected-sermons-edwards.en.json")
+        cls.bodies = {
+            (r["fields"].get("order")): r["fields"]["body_html"]
+            for r in json.loads(path.read_text())
+            if (r.get("fields") or {}).get("body_html")
+        }
+
+    def test_every_sermon_opens_with_its_text(self):
+        """The FIRST block, not merely somewhere in the body.
+
+        Block 0 is what the quote anchors in `quote_seed` are counted from, so
+        "opens with" has to mean the opening — `assertIn` would pass on a text
+        that had drifted down the chapter and taken every anchor with it. This
+        also subsumes the old separate check that the repaired chapters no
+        longer start on the `<p><br/>` spacer the deleted text left behind.
+        """
+        for order, opening in {**self.REPAIRED, **self.UNTOUCHED}.items():
+            with self.subTest(chapter=order):
+                self.assertTrue(
+                    self.bodies[order].startswith(f"<p>{opening}"),
+                    f"ch{order} does not open with its text: "
+                    f"{self.bodies[order][:80]!r}",
+                )
+
+    def test_the_correction_is_what_restores_the_text(self):
+        """Strip the text back out and the correction must put it back.
+
+        The other tests read the settled fixture, which already contains the
+        text — they pass with the correction deleted. Production does not: those
+        rows are damaged and `apply_body_corrections` is the only thing that
+        repairs them, so this is the test that fails if the entry is dropped or
+        mis-keyed.
+        """
+        for order, opening in self.REPAIRED.items():
+            with self.subTest(chapter=order):
+                settled = self.bodies[order]
+                block_end = settled.index("</p>") + len("</p> ")
+                damaged = settled[block_end:]
+                self.assertFalse(damaged.startswith(f"<p>{opening}"))
+                self.assertEqual(
+                    corrections.settled_chapter_body(
+                        "selected-sermons-edwards", order, damaged),
+                    settled,
+                )
+
+    def test_the_correction_is_a_no_op_on_the_settled_fixture(self):
+        """The fixture ships settled, so the guard must recognise its own work.
+
+        If it did not, every deploy would insert a second copy of the text —
+        which is exactly why this is `restored_blocks` and not a `replacements`
+        pair.
+        """
+        for order, body in self.bodies.items():
+            with self.subTest(chapter=order):
+                self.assertEqual(
+                    corrections.settled_chapter_body(
+                        "selected-sermons-edwards", order, body),
+                    body,
+                )
+
+
+class DroppedBlockRestorationTests(SimpleTestCase):
+    """`restore_dropped_blocks` — the sanitizer's OTHER victim.
 
     `[class*=pginternal]` was an UNQUALIFIED drop selector, so `_clean`
     decomposed a Gutenberg anchor whole rather than unwrapping it to its text. A
@@ -790,7 +889,7 @@ class NoteHeadingRestorationTests(SimpleTestCase):
     HEADINGS = (("<p>Just this day", "<h4>NOTE A, Chap. VI. p. 73</h4>"),)
 
     def _restore(self, html):
-        return corrections.restore_note_headings(html, self.HEADINGS)
+        return corrections.restore_dropped_blocks(html, self.HEADINGS)
 
     def test_inserts_the_heading_before_its_block(self):
         self.assertEqual(

@@ -276,10 +276,12 @@ Reported, not fixed
   and consuming the preceding context only works when there IS preceding
   context. Restoring `ministry-of-intercession` ch18's six deleted `<h4>`
   headings, five could anchor on the `</p> <p>` seam ahead of them and the
-  sixth could not, because it opens the chapter. Hence `note_headings`, a
+  sixth could not, because it opens the chapter. Hence `restored_blocks`, a
   fourth `BODY_CORRECTIONS` key beside `replacements`, `paragraph_breaks` and
-  `dropcap_letters`: `restore_note_headings` takes `(anchor, heading)` and skips
-  a body that already carries the heading. Guarding on the OUTPUT is idempotent
+  `dropcap_letters`: `restore_dropped_blocks` takes `(anchor, block)` and skips
+  a body that already carries the block. It restores a `<h4>` note heading in
+  `ministry-of-intercession` and a `<p>` sermon TEXT in
+  `selected-sermons-edwards` — hence the general name. Guarding on the OUTPUT is idempotent
   wherever the insertion lands, needs no anchor gymnastics, and reads as what it
   means. Anchor each on its `<p>` so it cannot touch `body_text`, and add the
   key to `test_no_replacement_pair_is_dead` or nothing will notice when the
@@ -363,9 +365,17 @@ Reported, not fixed
   corpus-wide measurement (2 of 36 works change; CCEL untouched). The footnote
   BLOCKS stay dropped by design: their markers are dropped too, so restoring the
   blocks alone would orphan the note text.
-  **The shipped rows are still damaged** and are never re-imported — repair them
-  with `note_headings` on the book's `corrections.py` key, as
-  `ministry-of-intercession` does.
+  Shipped rows are never re-imported, so each needs its own repair with
+  `restored_blocks` on the book's `corrections.py` key, as
+  `ministry-of-intercession` does. **Edwards is DONE** — the four sermon texts
+  were restored that way (PR #1575), and the pattern there is worth copying:
+  the correction restores the block, the fixture ships the settled form written
+  with `content_fixtures.render_rows`, and a test strips the block back out and
+  asserts the correction replaces it (asserting the settled fixture alone passes
+  with the correction deleted, while the live rows silently revert).
+  **`holy-in-christ` ch33's seven `NOTE A.`–`NOTE G.` headings are still
+  damaged.** Watch `quote_seed` when repairing: it anchors a quote by 0-indexed
+  BLOCK position, so inserting a paragraph shifts every anchor below it.
   ```bash
   grep -c ' ()' backend/library/fixtures/content/books/*.json
   ```
@@ -380,7 +390,7 @@ Reported, not fixed
   **The shipped text still has to be repaired by string pair,
   even after the selector is fixed**: a re-import runs `upsert_book`, which
   deletes and recreates every chapter and re-runs the title heuristics. Restore
-  the headings too — `note_headings`, in every edition at once (see the
+  the headings too — `restored_blocks`, in every edition at once (see the
   structural-repair rule below); an earlier draft of this bullet said the repair
   had to be tag-neutral, and that was only true of a repair to ONE edition.
 - **A restored cross-reference needs TWO questions answered, not one.** "What
