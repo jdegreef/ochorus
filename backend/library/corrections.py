@@ -717,11 +717,14 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # The same dropped-anchor defect as `ministry-of-intercession` above,
         # from the same transcriber (Project Gutenberg; this book is #26990)
         # and the same selector:
-        # `sanitize.DROP_SELECTORS` carries `"[class*=pginternal]"`, and `_clean`
+        # `sanitize.DROP_SELECTORS` CARRIED `"[class*=pginternal]"`, and `_clean`
         # DECOMPOSES the drop-selectors before it unwraps everything else — so a
-        # plain `<a>` survives as its text and a *Gutenberg* one is deleted whole.
-        # Gutenberg puts that class on every internal link, so what a reader gets
-        # is the punctuation around a reference with the reference gone.
+        # plain `<a>` survived as its text and a *Gutenberg* one was deleted
+        # whole. Gutenberg puts that class on every internal link, so what a
+        # reader got is the punctuation around a reference with the reference
+        # gone. FIXED at the selector since (`sanitize._is_pg_navigation` now
+        # decides on the link's text); these pairs stay because shipped rows are
+        # never re-imported — see `restore_note_headings` for why.
         #
         # ch10's closing recapitulation lost six book-internal cross-references
         # at once and shipped six bare `()`:
@@ -2347,11 +2350,18 @@ def restore_paragraph_breaks(body_html: str, seams: Sequence[tuple[str, str]]) -
 def restore_note_headings(body_html: str, headings: Sequence[tuple[str, str]]) -> str:
     """Put back a heading the sanitizer deleted, before the block it titles.
 
-    `sanitize.DROP_SELECTORS` carries `[class*=pginternal]`, and `_clean`
+    `sanitize.DROP_SELECTORS` CARRIED `[class*=pginternal]`, and `_clean`
     DECOMPOSES the drop-selectors before it unwraps everything else. A Gutenberg
-    heading whose only child is its anchor is therefore emptied, and the
-    empty-block regex a few lines down then removes the heading itself. Six of
+    heading whose only child is its anchor was therefore emptied, and the
+    empty-block regex a few lines down then removed the heading itself. Six of
     them went that way in `ministry-of-intercession` ch18.
+
+    The selector is fixed — `sanitize._is_pg_navigation` now keeps a link that
+    carries a word — so no FUTURE import loses a heading this way. This stays
+    for the rows already on the shelf, which are never re-imported:
+    `ingest.upsert_book` deletes and recreates every chapter, and restoring
+    markup in English alone would break the ordered-tag parity with the
+    translations that `tests_translation_markup` enforces.
 
     Idempotent by GUARD rather than by anchor, and that is the whole reason this
     is not a `replacements` pair. A pure INSERTION has `old` as a substring of

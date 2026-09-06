@@ -137,6 +137,102 @@ class BiographyMarkupSurvivesTests(TestCase):
             self.assertNotIn(tag, stripped)
 
 
+class GutenbergInternalLinkTests(TestCase):
+    """`class="pginternal"` is not evidence about what a link IS.
+
+    Project Gutenberg puts it on every internal link — TOC page numbers, the
+    "Contents" return links, and the author's own cross-references alike — so
+    the drop selector that once matched it deleted prose. `<a>` is outside the
+    chapter allowlist, so a cross-reference must lose its TAG and keep its TEXT,
+    exactly as any other anchor does; navigation must lose both.
+
+    Three kinds wear the class in PG #29296 (`ministry-of-intercession`): the
+    "Contents" toclinks beside each chapter heading, the table of contents' page
+    numbers, and Murray's own cross-references. The third kind is what this
+    pins — six of them shipped as bare `()` and six more as headings that
+    vanished entirely (decompose emptied the `<h4>`, then the empty-block rule
+    swept it away), and `corrections.py` still carries the string pairs that
+    repaired them.
+    """
+
+    def test_cross_reference_keeps_its_text_like_any_other_anchor(self):
+        marked = '<p>May God discover this to us. (<a class="pginternal" href="#nt.A">Note A.</a>)</p>'
+        plain = '<p>May God discover this to us. (<a href="#nt.A">Note A.</a>)</p>'
+        self.assertEqual(clean_fragment(marked), clean_fragment(plain))
+        self.assertEqual(
+            clean_fragment(marked),
+            "<p>May God discover this to us. (Note A.)</p>",
+        )
+
+    def test_a_heading_that_is_only_a_cross_reference_survives(self):
+        """The second symptom: an emptied block was then swept as an empty one."""
+        out = clean_fragment(
+            '<h4><a class="pginternal" href="#nt.A">NOTE A, Chap. VI. p. 73</a></h4>'
+            "<p>The word of God.</p>"
+        )
+        self.assertEqual(out, "<h4>NOTE A, Chap. VI. p. 73</h4><p>The word of God.</p>")
+
+    def test_navigation_links_lose_their_text_too(self):
+        for nav in (
+            '<a class="pginternal" href="#toc">Contents</a>',
+            '<a class="pginternal" href="#toc">Table of Contents</a>',
+            '<a class="pginternal" href="#toc">CONTENTS.</a>',
+            '<a class="pginternal" href="#pg73">73</a>',  # a TOC page number
+            '<a class="pginternal" id="nt.A"></a>',  # a bare anchor target
+        ):
+            with self.subTest(nav=nav):
+                self.assertEqual(clean_fragment(f"<p>before{nav}after</p>"),
+                                 "<p>beforeafter</p>")
+
+    def test_bare_footnote_markers_are_still_dropped(self):
+        """The other half of the predicate — what must NOT start leaking.
+
+        Gutenberg spells a footnote marker as an internal link too, and its note
+        body does not survive the import, so a kept marker is an orphan digit
+        mid-sentence. `scripts/audit_pginternal.py` measured the exposure:
+        nineteen `[1]`…`[19]` in `the-life-of-trust`, five bare letters in
+        `separation-and-service`.
+        """
+        for marker in ("[1]", "[19]", "(3)", "A", "d", "I", "7.", "°", "*", "†"):
+            with self.subTest(marker=marker):
+                out = clean_fragment(
+                    f'<p>a work of faith<a class="pginternal" href="#Footnote_1">'
+                    f"{marker}</a> and prayer.</p>"
+                )
+                self.assertEqual(out, "<p>a work of faith and prayer.</p>")
+
+    def test_a_transcribers_corrected_word_stays_in_the_sentence(self):
+        """`the-life-of-trust` wraps the corrected word itself in the anchor."""
+        out = clean_fragment(
+            '<p>at the <a class="pginternal" href="#corrections">commencement</a> '
+            "of the work</p>"
+        )
+        self.assertEqual(out, "<p>at the commencement of the work</p>")
+
+    def test_the_epub_twin_of_a_corrected_word_does_not_double_it(self):
+        """PG #65066 ships each transcriber correction once per output format.
+
+        The blanket drop deleted the epub twin as a side effect of its class;
+        the drop selector now removes it for the right reason, so Brainerd's
+        diary does not read "means I had in view.view.".
+        """
+        out = clean_fragment(
+            "<p>means I had in "
+            '<span class="htmlonly"><ins class="correction">view.</ins></span>'
+            '<span class="epubonly"><a class="pginternal" href="#c_16.1">'
+            '<ins class="correction">view.</ins></a></span></p>'
+        )
+        self.assertEqual(out, "<p>means I had in view.</p>")
+
+    def test_a_chapter_heading_that_is_only_a_toclink_still_goes(self):
+        """Nothing above resurrects the "Contents" chrome beside each heading."""
+        out = clean_fragment(
+            '<h2>CHAPTER VI<small class="toclink">'
+            '<a class="pginternal" href="#toc">Contents</a></small></h2>'
+        )
+        self.assertEqual(out, "<h2>CHAPTER VI</h2>")
+
+
 class StoredContentIsSafeTests(TestCase):
     """Scan what is actually shipped, not what the write paths promise.
 

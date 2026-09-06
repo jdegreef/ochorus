@@ -77,9 +77,74 @@ DROP_SELECTORS = [
     # ("desires knowledge 2 Aristotle, Metaphysics, i. 1. ; but"), while the
     # markers left bare digits mid-sentence.
     "[class*=note i]",
-    "[class*=pg-boilerplate]", "[class*=pginternal]",
+    "[class*=pg-boilerplate]",
+    # Gutenberg's transcriber-correction markup ships the corrected word TWICE —
+    # `<span class="htmlonly">view.</span><span class="epubonly"><a
+    # class="pginternal">view.</a></span>` — one copy per output format. The web
+    # reader wants the htmlonly copy, so the epub twin must go, or Brainerd's
+    # diary reads "means I had in view.view.". The blanket pginternal drop hid
+    # this by deleting the twin for the wrong reason.
+    #
+    # DROPPING is safe only because the twin always survives: this rule deletes
+    # text, so a source that emitted the `epubonly` copy ALONE would lose it.
+    # `scripts/audit_pginternal.py` measured the corpus — PG #65066 is the only
+    # source using this markup, and its 49 `epubonly` spans are 49 `htmlonly`
+    # pairs, none unpaired. Exact class, not a substring: this diff exists
+    # because substring class matching over-matches, and `epubonly` needs no
+    # slack.
+    ".epubonly",
     "[id*=navbar]", "[id*=toc]",
 ]
+
+# Project Gutenberg puts `class="pginternal"` on EVERY internal link, so the
+# class says nothing about what the link IS. Three kinds wear it: the TOC's page
+# numbers, the "Contents" return links beside each chapter heading, and the
+# author's own cross-references — Murray's "(Note A.)" pointing at his endnotes.
+# A blanket drop selector deleted all three *with their text*, which is how
+# `ministry-of-intercession` lost six `(Note A.)`…`(Note F.)` references to bare
+# `()` and, where the anchor was a heading's only child, all six of its
+# `NOTE A, Chap. VI.` headings (decompose emptied the <h4>, then the empty-block
+# rule below swept it away). Those shipped rows were repaired by hand in #1561
+# and #1562; this is the root cause, so it stops happening to the next import.
+# Decide by the link's TEXT instead: navigation has none worth keeping, a
+# cross-reference is prose.
+# "Contents" / "Table of Contents", with or without a trailing period.
+_PG_NAV_TEXT = re.compile(r"^(?:table\s+of\s+)?contents\.?$", re.I)
+# A whole link that is only a mark: a table-of-contents page number ("73"), or a
+# footnote marker — a bracketed number ("[1]"), a bare letter ("A") or a symbol
+# ("°"), with or without brackets and a trailing period. The apparatus these
+# point at does not survive the import, so keeping one leaves an orphan digit
+# mid-sentence — which is what the drop selector was right about.
+# `scripts/audit_pginternal.py` measured them: nineteen `[1]`…`[19]` markers in
+# `the-life-of-trust`, five bare letters in `separation-and-service`, seven `°`
+# in `selected-sermons-edwards`. Note the anchors on both ends of the pattern —
+# a real cross-reference ("Note A.", "ch. 3", "p. xxix") carries a word, and is
+# prose.
+_PG_MARK_TEXT = re.compile(
+    r"""^ [\[(]? \s*        # an optional opening bracket
+        (?: \d+             # a page or footnote number: 73, 1, 19
+          | [^\W\d_]        # exactly one letter: A, d, I
+          | [^\w\s]{1,2}    # one or two symbols: °, *, †
+        ) \s* [\])]? \.? $""",
+    re.X,
+)
+
+
+def _is_pg_navigation(el: Tag) -> bool:
+    """True for a `pginternal` element that is chrome rather than prose.
+
+    A bare page number or footnote marker, a "Contents" nav word, or no text at
+    all. Anything else is the author's own cross-reference — or, in
+    `the-life-of-trust`, a transcriber's corrected word sitting in the middle of
+    Müller's sentence — and keeps its text.
+
+    The empty case changes nothing for an `<a>`, which is outside both allowlists
+    and unwraps to its (empty) text anyway. It is here for the tag that is IN
+    one: an empty `<sup class="pginternal">` would otherwise survive as markup.
+    """
+    text = el.get_text(" ", strip=True)
+    return not text or bool(_PG_MARK_TEXT.match(text) or _PG_NAV_TEXT.match(text))
+
 
 _PAGE_MARKER = re.compile(r"\[p\s*[ivxlcdm0-9]+\s*\]", re.I)
 _WS = re.compile(r"\s+")
@@ -121,10 +186,28 @@ def _scrub_attrs(tag: Tag, *, allow_bio_attrs: bool) -> None:
     tag.attrs = kept
 
 
-def _clean(node: Tag, *, allowed: set[str], allow_bio_attrs: bool) -> str:
+def drop_furniture(node: Tag) -> None:
+    """Remove page furniture from `node`, in place — the whole drop policy.
+
+    The importers run this pre-pass too (`import_ccel`, `build_ignatius`,
+    `build_serious_call`), and they must get the SAME policy the sanitizer
+    applies, which is why they call this rather than iterating `DROP_SELECTORS`:
+    the list is no longer the whole of it. Most rules drop an element on its
+    selector alone; the Gutenberg internal link is qualified by its text, and a
+    borrower that walked the list would silently skip that rule.
+    """
     for sel in DROP_SELECTORS:
         for el in node.select(sel):
             el.decompose()
+    # Gutenberg's internal links, kept or dropped on what they say — see
+    # `_is_pg_navigation`.
+    for el in node.select("[class*=pginternal]"):
+        if _is_pg_navigation(el):
+            el.decompose()
+
+
+def _clean(node: Tag, *, allowed: set[str], allow_bio_attrs: bool) -> str:
+    drop_furniture(node)
     for tag in node.find_all(True):
         if tag.name not in allowed:
             tag.unwrap()

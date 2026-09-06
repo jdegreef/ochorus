@@ -25,6 +25,7 @@ from library.sanitize import (  # noqa: F401
     DROP_SELECTORS,
     clean_fragment,
     clean_html,
+    drop_furniture,
 )
 
 # Same again for the word-count pair, which moved to library/text.py to sit
