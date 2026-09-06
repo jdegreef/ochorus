@@ -157,7 +157,7 @@
 				{:else}
 					{g.work}
 				{/if}
-				<span class="count">{g.quotes.length}</span>
+				<span class="count text-small font-normal">{g.quotes.length}</span>
 			</h2>
 
 			<ol class="quotes">
@@ -226,12 +226,7 @@
 	.work a:hover {
 		text-decoration: underline;
 	}
-	.count {
-		font-size: var(--fs-small);
-		font-weight: 400;
-		font-variant-numeric: tabular-nums;
-		color: var(--color-muted);
-	}
+
 
 	.quotes {
 		list-style: none;
