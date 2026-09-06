@@ -53,6 +53,7 @@ _WESLEY = "https://ccel.org/ccel/wesley/sermons/"
 _WHITEFIELD = "https://ccel.org/ccel/whitefield/sermons/"
 _EDWARDS = "https://ccel.org/ccel/edwards/sermons/"
 _NEWTON = "https://ccel.org/ccel/newton/"
+_MACLAREN = "https://ccel.org/ccel/maclaren/"
 
 SERMONS: list[SermonEntry] = [
     # --- Assurance & the character of God -----------------------------------
@@ -765,5 +766,63 @@ SERMONS: list[SermonEntry] = [
         "john-newton",
         "ccel",
         _NEWTON + "messiah2/messiah2.xxv.html",
+    ),
+    # J. C. Ryle — the first sermons on his shelf (new author with bio+portrait).
+    # Three of his plain-spoken evangelical tracts (prayer, the new birth,
+    # assurance) — his best-known voice, from gracegems' clean transcriptions.
+    SermonEntry(
+        "do-you-pray",
+        "Do You Pray?",
+        "j-c-ryle",
+        "web",
+        "https://gracegems.org/Ryle/a_call_to_prayer.htm",
+        scripture_ref="Luke 18:1",
+        body_starts="I have a question to offer you",
+    ),
+    SermonEntry(
+        "are-you-born-again",
+        "Are You Born Again?",
+        "j-c-ryle",
+        "web",
+        "https://gracegems.org/SERMONS/born_again.htm",
+        scripture_ref="John 3:3",
+        body_starts="This is one of the most important questions in religion",
+    ),
+    SermonEntry(
+        "faith-and-assurance",
+        "Faith and Assurance",
+        "j-c-ryle",
+        "web",
+        "https://gracegems.org/Ryle/faith_and_assurance.htm",
+        body_starts="Reader, If you are a thoughtless, careless man",
+    ),
+    # Alexander Maclaren — the first sermons on his shelf (new author with
+    # bio+portrait). Single-leaf expositions from his "Expositions of Holy
+    # Scripture" on CCEL, each a full expository sermon on its text (grace,
+    # faith, and quiet trust). CCEL's scripRef is abbreviated/ALL-CAPS, so pin
+    # the full form the shelf uses.
+    SermonEntry(
+        "grace-and-truth",
+        "Grace and Truth",
+        "alexander-maclaren",
+        "ccel",
+        _MACLAREN + "john1/john1.ii.vi.html",
+        scripture_ref="John 1:17",
+    ),
+    SermonEntry(
+        "the-power-of-feeble-faith",
+        "The Power of Feeble Faith",
+        "alexander-maclaren",
+        "ccel",
+        _MACLAREN + "mark/mark.ii.xxv.html",
+        scripture_ref="Mark 5:25-28",
+    ),
+    SermonEntry(
+        "the-secret-of-tranquillity",
+        "The Secret of Tranquillity",
+        "alexander-maclaren",
+        "ccel",
+        _MACLAREN + "psalms/psalms.ii.xxix.html",
+        scripture_ref="Psalm 37:4-7",
     ),
 ]
