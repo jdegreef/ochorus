@@ -26,6 +26,8 @@ import {
 	listBooks,
 	listPlans,
 	listQuoteAuthors,
+	listQuoteTopics,
+	listQuoteTopicPages,
 	listScripturePages,
 	listSermons,
 	listTopics
@@ -174,6 +176,10 @@ async function build(): Promise<SitemapData> {
 	// entry generator builds from, so the sitemap cannot advertise a quote page
 	// the review gate has not opened.
 	const quoteAuthors = await listQuoteAuthors().catch(() => []);
+	// The theme pages, from the same lists their route entry generators read:
+	// themes deep enough to earn a page, and the (author, theme) pairs likewise.
+	const quoteTopics = await listQuoteTopics().catch(() => []);
+	const quoteTopicPages = await listQuoteTopicPages().catch(() => []);
 
 	// Emission uses only the advertised locales; `perLocale` (all UI locales)
 	// stays available for the drift check below.
@@ -240,6 +246,9 @@ async function build(): Promise<SitemapData> {
 	// and for the same reason: the quotations are lifted from the English works.
 	// Trailing slash, because it prerenders as /quotes/index.html.
 	if (quoteAuthors.length) pages.push({ byLocale: new Map([['en', '/quotes/']]) });
+	// The quotes-by-topic index, English-only for the same reason. Only when a
+	// theme has actually earned a page, so the hub is never advertised empty.
+	if (quoteTopics.length) pages.push({ byLocale: new Map([['en', '/quotes/topics/']]) });
 
 	// Articles: original English writing, no translations yet — the index and
 	// each article, English-only. `updated_at` is a trustworthy <lastmod> here
@@ -322,9 +331,19 @@ async function build(): Promise<SitemapData> {
 	// Quote pages carry ONE locale, like the scripture graph and for the same
 	// reason: the quotations are lifted from the English works and every citation
 	// names an English chapter.
-	const quotes: Entry[] = quoteAuthors.map((a) => ({
-		byLocale: new Map([['en', `/quotes/${a.slug}/`]] as [string, string][])
-	}));
+	const quotes: Entry[] = [
+		...quoteAuthors.map((a) => ({
+			byLocale: new Map([['en', `/quotes/${a.slug}/`]] as [string, string][])
+		})),
+		// "Quotes on X" — one per theme deep enough to have earned a page.
+		...quoteTopics.map((tp) => ({
+			byLocale: new Map([['en', `/quotes/topics/${tp.slug}/`]] as [string, string][])
+		})),
+		// "<Author> Quotes on X" — one per (author, theme) pair over the threshold.
+		...quoteTopicPages.map((p) => ({
+			byLocale: new Map([['en', `/quotes/${p.author}/${p.topic}/`]] as [string, string][])
+		}))
+	];
 
 	// Chapter pages (prerendered): one entry per (work, chapter), again listing
 	// only the locales whose edition actually has that chapter.

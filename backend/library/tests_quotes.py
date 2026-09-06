@@ -13,8 +13,14 @@ from django.core.management import call_command
 from django.test import SimpleTestCase, TestCase
 from rest_framework.test import APIClient
 
-from .models import Author, Book, Chapter, Quote, Sermon
-from .quote_seed import APPROVED, QUOTES
+from .models import Author, Book, Chapter, Quote, QuoteTopic, Sermon
+from .quote_seed import (
+    APPROVED,
+    QUOTE_TOPIC_SLUGS,
+    QUOTE_TOPICS,
+    QUOTES,
+    TOPIC_MEMBERS,
+)
 
 
 class SeedDataTests(SimpleTestCase):
@@ -88,6 +94,39 @@ class SeedDataTests(SimpleTestCase):
                 "amanda-berry-smith",
             },
         )
+
+
+class QuoteTopicSeedTests(SimpleTestCase):
+    """Shape of the theme vocabulary and the tags, before any database."""
+
+    def test_the_vocabulary_is_wellformed(self):
+        slugs = [slug for slug, *_ in QUOTE_TOPICS]
+        self.assertEqual(len(slugs), len(set(slugs)), "duplicate topic slug")
+        for slug, title, blurb, ref, txt in QUOTE_TOPICS:
+            with self.subTest(slug=slug):
+                self.assertRegex(slug, r"^[a-z0-9-]+$")
+                self.assertTrue(title.strip())
+                self.assertTrue(blurb.strip())
+                # The epigraph is the topic page's furniture; both halves or
+                # neither, never a reference with no words under it.
+                self.assertEqual(bool(ref.strip()), bool(txt.strip()))
+
+    def test_every_tag_names_a_known_topic(self):
+        for topic_slug in TOPIC_MEMBERS:
+            with self.subTest(topic=topic_slug):
+                self.assertIn(topic_slug, QUOTE_TOPIC_SLUGS)
+
+    def test_every_tagged_quote_slug_exists(self):
+        known = {q["slug"] for quotes in QUOTES.values() for q in quotes}
+        for topic_slug, quote_slugs in TOPIC_MEMBERS.items():
+            # A tag pointing at a slug no quote carries would silently file
+            # nothing — the seed would skip it and the theme would be short a
+            # line nobody could find.
+            self.assertEqual(len(quote_slugs), len(set(quote_slugs)),
+                             f"{topic_slug}: a quote is listed twice")
+            for qslug in quote_slugs:
+                with self.subTest(topic=topic_slug, quote=qslug):
+                    self.assertIn(qslug, known)
 
 
 class QuoteResolutionTests(SimpleTestCase):
@@ -314,6 +353,163 @@ class SeedCommandTests(TestCase):
         for q in Quote.objects.select_related("chapter", "sermon"):
             with self.subTest(slug=q.slug):
                 self.assertTrue(q.chapter_id or q.sermon_id)
+
+    def test_seed_plants_the_whole_topic_vocabulary(self):
+        call_command("seed_quotes", verbosity=0)
+        self.assertEqual(QuoteTopic.objects.count(), len(QUOTE_TOPICS))
+
+    def test_tags_are_applied(self):
+        # At least one Spurgeon quote citing all-of-grace is filed under a theme;
+        # the seed should have set the M2M from TOPIC_MEMBERS.
+        call_command("seed_quotes", verbosity=0)
+        self.assertTrue(
+            Quote.objects.filter(topics__isnull=False).exists(),
+            "no quote came out tagged — the tag inversion is not wired",
+        )
+
+    def test_tags_are_reasserted_not_create_only(self):
+        # Unlike `reviewed`, filing is curation: a re-tag must ship. Clearing the
+        # members and re-seeding must therefore strip the tags back off.
+        from unittest import mock
+
+        call_command("seed_quotes", verbosity=0)
+        self.assertTrue(Quote.objects.filter(topics__isnull=False).exists())
+        with mock.patch(
+            "library.management.commands.seed_quotes.TOPIC_MEMBERS", {}
+        ):
+            call_command("seed_quotes", verbosity=0)
+        self.assertFalse(Quote.objects.filter(topics__isnull=False).exists())
+
+    def test_topic_prose_updates_on_reseed(self):
+        # The blurb/epigraph live here (a declared content root), so a wording
+        # fix must reach the row on the next deploy — update_or_create, not
+        # create-only.
+        import copy
+        from unittest import mock
+
+        call_command("seed_quotes", verbosity=0)
+        patched = copy.deepcopy(QUOTE_TOPICS)
+        slug = patched[0][0]
+        patched[0] = (slug, patched[0][1], "A rewritten blurb.", "", "")
+        with mock.patch(
+            "library.management.commands.seed_quotes.QUOTE_TOPICS", patched
+        ):
+            call_command("seed_quotes", verbosity=0)
+        self.assertEqual(QuoteTopic.objects.get(slug=slug).blurb, "A rewritten blurb.")
+
+
+class QuoteTopicApiTests(TestCase):
+    """The theme pages: "Quotes on X" and "<Author> Quotes on X"."""
+
+    def setUp(self):
+        self.client = APIClient()
+        self.murray = Author.objects.create(slug="andrew-murray", name="Andrew Murray")
+        self.spurgeon = Author.objects.create(slug="charles-h-spurgeon", name="C. H. Spurgeon")
+        book = Book.objects.create(
+            author=self.murray, slug="with-christ", language="en", title="With Christ"
+        )
+        self.ch = Chapter.objects.create(
+            book=book, order=1, title="One", body_html="<p>a</p><p>b</p>"
+        )
+        self.prayer = QuoteTopic.objects.create(slug="prayer", title="Prayer", blurb="On prayer.")
+        self.faith = QuoteTopic.objects.create(slug="faith", title="Faith", blurb="On faith.")
+        # Eight reviewed Murray quotes on prayer — clears both thresholds.
+        for i in range(8):
+            q = Quote.objects.create(
+                slug=f"andrew-murray-p{i}", author=self.murray,
+                text=f"A sentence on prayer number {i} that is long enough.",
+                chapter=self.ch, paragraph=i + 1, reviewed=True,
+            )
+            q.topics.add(self.prayer)
+        # One unreviewed prayer quote — must never leak.
+        hidden = Quote.objects.create(
+            slug="andrew-murray-hidden", author=self.murray,
+            text="An unreviewed sentence on prayer that must stay hidden.",
+            chapter=self.ch, paragraph=20, reviewed=False,
+        )
+        hidden.topics.add(self.prayer)
+
+    def test_topic_page_groups_reviewed_quotes_by_author(self):
+        res = self.client.get("/api/library/quote-topics/prayer/")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["topic"]["title"], "Prayer")
+        self.assertEqual(len(res.data["authors"]), 1)
+        group = res.data["authors"][0]
+        self.assertEqual(group["author"]["slug"], "andrew-murray")
+        self.assertEqual(group["count"], 8)
+        slugs = [q["slug"] for q in group["quotes"]]
+        self.assertNotIn("andrew-murray-hidden", slugs)
+
+    def test_author_topic_page(self):
+        res = self.client.get("/api/library/quotes/andrew-murray/prayer/")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["author"]["name"], "Andrew Murray")
+        self.assertEqual(res.data["topic"]["slug"], "prayer")
+        self.assertEqual(len(res.data["quotes"]), 8)
+
+    def test_topic_index_lists_only_topics_over_the_threshold(self):
+        data = self.client.get("/api/library/quote-topics/").data
+        by_slug = {r["slug"]: r for r in data}
+        self.assertIn("prayer", by_slug)
+        self.assertEqual(by_slug["prayer"]["count"], 8)
+        # faith has no reviewed quotes; below the bar, so it is not advertised.
+        self.assertNotIn("faith", by_slug)
+
+    def test_pages_list_gives_author_topic_pairs_over_the_threshold(self):
+        pairs = self.client.get("/api/library/quote-topics/pages/").data
+        self.assertIn({"author": "andrew-murray", "topic": "prayer"}, pairs)
+
+    def test_a_pair_below_the_threshold_is_not_a_page(self):
+        # Three reviewed Spurgeon quotes on faith — under QUOTE_AUTHOR_TOPIC_MIN.
+        for i in range(3):
+            q = Quote.objects.create(
+                slug=f"charles-h-spurgeon-f{i}", author=self.spurgeon,
+                text=f"A sentence on faith number {i} that is long enough.",
+                chapter=self.ch, paragraph=i + 1, reviewed=True,
+            )
+            q.topics.add(self.faith)
+        pairs = self.client.get("/api/library/quote-topics/pages/").data
+        self.assertNotIn({"author": "charles-h-spurgeon", "topic": "faith"}, pairs)
+        # But the page itself still serves if reached directly (>= 1).
+        res = self.client.get("/api/library/quotes/charles-h-spurgeon/faith/")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(len(res.data["quotes"]), 3)
+
+    def test_a_pair_whose_theme_has_no_page_is_not_a_page(self):
+        # Five reviewed Spurgeon quotes on faith: the pair clears 4, but faith's
+        # total (5) misses the theme threshold (8), so no "Quotes on Faith" page
+        # is built. The pair must NOT be advertised either — otherwise the
+        # author-theme page's "More quotes on Faith" link would be an orphan.
+        for i in range(5):
+            q = Quote.objects.create(
+                slug=f"charles-h-spurgeon-f{i}", author=self.spurgeon,
+                text=f"A sentence on faith number {i} that is long enough.",
+                chapter=self.ch, paragraph=i + 1, reviewed=True,
+            )
+            q.topics.add(self.faith)
+        self.assertNotIn(
+            "faith", {r["slug"] for r in self.client.get("/api/library/quote-topics/").data}
+        )
+        pairs = self.client.get("/api/library/quote-topics/pages/").data
+        self.assertNotIn({"author": "charles-h-spurgeon", "topic": "faith"}, pairs)
+
+    def test_unknown_topic_and_pair_are_404(self):
+        self.assertEqual(self.client.get("/api/library/quote-topics/nope/").status_code, 404)
+        self.assertEqual(
+            self.client.get("/api/library/quotes/andrew-murray/nope/").status_code, 404
+        )
+        self.assertEqual(
+            self.client.get("/api/library/quotes/nobody/prayer/").status_code, 404
+        )
+
+    def test_the_author_page_offers_its_topic_chips(self):
+        # The author quote page carries the themes deep enough to link, so it can
+        # show "on Prayer" without a second request.
+        data = self.client.get("/api/library/quotes/andrew-murray/").data
+        chips = {t["slug"]: t for t in data["topics"]}
+        self.assertIn("prayer", chips)
+        self.assertEqual(chips["prayer"]["count"], 8)
+        self.assertNotIn("faith", chips)
 
 
 class QuotePageApiTests(TestCase):

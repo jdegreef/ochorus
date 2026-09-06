@@ -485,6 +485,29 @@ class FileCoherenceTests(SimpleTestCase):
                 f"{path.name}: file name doesn't match its sermon row",
             )
 
+    def test_english_chapter_titles_are_title_cased(self):
+        """No English chapter title left with a capitalised little word — "The
+        Glory Of The Creature". migration 0121 corrected the corpus and this
+        keeps a re-import or a new book from reintroducing the pattern. Mirrors
+        recase_title exactly, so the fixture and the backfill cannot drift."""
+        from library.titlecase import recase_title
+
+        offenders = []
+        for path, rows in self.files.items():
+            if path.parent != BOOKS_DIR or not path.name.endswith(".en.json"):
+                continue
+            for r in rows:
+                if r["model"] != "library.chapter":
+                    continue
+                title = (r["fields"].get("title") or "").strip()
+                if title and recase_title(title) != title:
+                    offenders.append(f"{path.name} ch{r['fields']['order']}: {title!r}")
+        self.assertEqual(
+            offenders, [],
+            "English chapter titles still in raw Title Case (run recase_title):\n"
+            + "\n".join(offenders),
+        )
+
 
 class AuthorBioDataIntegrityTests(SimpleTestCase):
     """The translated author bios (migrations/data/author_bios_<lang>/) are

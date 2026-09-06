@@ -13,7 +13,11 @@ from .views import (
     PlanListView,
     PopularSearchesView,
     QuoteAuthorsView,
+    QuoteAuthorTopicView,
     QuotePageView,
+    QuoteTopicDetailView,
+    QuoteTopicPagesView,
+    QuoteTopicsView,
     ScriptureGraphView,
     ScripturePagesView,
     ScriptureView,
@@ -35,7 +39,19 @@ urlpatterns = [
     path("popular-searches/", PopularSearchesView.as_view(), name="popular-searches"),
     path("search-click/", SearchClickView.as_view(), name="search-click"),
     path("quotes/", QuoteAuthorsView.as_view(), name="quote-authors"),
+    # The theme vocabulary lives under its own prefix so a theme slug can never
+    # be mistaken for an author under quotes/<author>/. "pages" before <topic>,
+    # like scripture/pages/ — it is one segment, they are the build's page list.
+    path("quote-topics/", QuoteTopicsView.as_view(), name="quote-topic-list"),
+    path("quote-topics/pages/", QuoteTopicPagesView.as_view(), name="quote-topic-pages"),
+    path("quote-topics/<slug:topic>/", QuoteTopicDetailView.as_view(), name="quote-topic-detail"),
     path("quotes/<slug:author>/", QuotePageView.as_view(), name="quote-page"),
+    # Three segments, so it cannot collide with the two-segment author page.
+    path(
+        "quotes/<slug:author>/<slug:topic>/",
+        QuoteAuthorTopicView.as_view(),
+        name="quote-author-topic",
+    ),
     path("scripture/", ScriptureView.as_view(), name="scripture"),
     # Before the <book> patterns: "pages" is one segment, they are two or three,
     # so these cannot actually collide — the order is for a reader of this file.

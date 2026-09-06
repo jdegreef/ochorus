@@ -96,6 +96,183 @@ APPROVED = frozenset(
     }
 )
 
+#: The devotional themes a quotation can be filed under — the vocabulary behind
+#: the "Quotes on Prayer" pages (one row per author-theme underneath, e.g.
+#: "Andrew Murray Quotes on Prayer"). A SEPARATE vocabulary from the work-topic
+#: shelves in `topic_seed.py`: a quote theme is finer and more numerous than a
+#: book shelf, and reusing `Topic` would strand themes that hold no books as
+#: empty rows on `/topics`. Membership is `TOPIC_MEMBERS` below.
+#:
+#: `title` is the standalone label ("Prayer", "The Holy Spirit"); the page
+#: composes "Quotes on …" from it. The Scripture epigraph is public-domain (KJV)
+#: wording, the same furniture the work-topic pages carry. `sort_order` is the
+#: list order here.
+#:
+#: (slug, title, blurb, scripture_ref, scripture_text)
+QUOTE_TOPICS = [
+    (
+        "prayer",
+        "Prayer",
+        "The classic writers on the life of prayer — the secret place, "
+        "persevering intercession, and prayer that prevails.",
+        "1 Thessalonians 5:17",
+        "Pray without ceasing.",
+    ),
+    (
+        "faith",
+        "Faith",
+        "Lines on believing God — resting on his promises, and walking by "
+        "faith and not by sight.",
+        "Hebrews 11:1",
+        "Now faith is the substance of things hoped for, the evidence of things not seen.",
+    ),
+    (
+        "grace",
+        "Grace",
+        "The free favour of God to the undeserving — grace to save, and grace "
+        "to keep.",
+        "2 Corinthians 12:9",
+        "My grace is sufficient for thee: for my strength is made perfect in weakness.",
+    ),
+    (
+        "holy-spirit",
+        "The Holy Spirit",
+        "The Spirit's indwelling, filling and power — the promised presence for "
+        "the Christian life.",
+        "Acts 1:8",
+        "But ye shall receive power, after that the Holy Ghost is come upon you.",
+    ),
+    (
+        "love-of-god",
+        "The Love of God",
+        "The love that sought us first, and the love it kindles in return.",
+        "1 John 4:10",
+        "Herein is love, not that we loved God, but that he loved us.",
+    ),
+    (
+        "humility",
+        "Humility",
+        "The lowliness that makes room for grace — dying to self, and taking the "
+        "lowest place.",
+        "1 Peter 5:5",
+        "God resisteth the proud, and giveth grace unto the humble.",
+    ),
+    (
+        "suffering",
+        "Suffering & Trials",
+        "Comfort and counsel for the hard road — affliction, sorrow, and the "
+        "glory it works.",
+        "2 Corinthians 4:17",
+        "For our light affliction, which is but for a moment, worketh for us a far "
+        "more exceeding and eternal weight of glory.",
+    ),
+    (
+        "holiness",
+        "Holiness",
+        "The pursuit of a clean heart and a set-apart life — sanctification, and "
+        "the beauty of holiness.",
+        "Hebrews 12:14",
+        "Follow peace with all men, and holiness, without which no man shall see the Lord.",
+    ),
+    (
+        "the-cross",
+        "The Cross of Christ",
+        "The atoning death of Jesus — the blood that cleanses, and the glory of "
+        "the cross.",
+        "Galatians 6:14",
+        "But God forbid that I should glory, save in the cross of our Lord Jesus Christ.",
+    ),
+    (
+        "trusting-god",
+        "Trusting God",
+        "Resting in the providence and faithfulness of God when the way is dark.",
+        "Proverbs 3:5",
+        "Trust in the LORD with all thine heart; and lean not unto thine own understanding.",
+    ),
+    (
+        "joy",
+        "Joy",
+        "The gladness that is not built on circumstances — joy in the Lord, and "
+        "the joy set before us.",
+        "Nehemiah 8:10",
+        "The joy of the LORD is your strength.",
+    ),
+    (
+        "hope",
+        "Hope",
+        "The anchor of the soul — hope that does not disappoint, and looks beyond "
+        "the grave.",
+        "Hebrews 6:19",
+        "Which hope we have as an anchor of the soul, both sure and stedfast.",
+    ),
+    (
+        "peace",
+        "Peace",
+        "Peace with God, and the peace of God — the quiet mind stayed on him.",
+        "Isaiah 26:3",
+        "Thou wilt keep him in perfect peace, whose mind is stayed on thee.",
+    ),
+    (
+        "repentance",
+        "Repentance",
+        "The turning of the heart from sin to God — godly sorrow, and the "
+        "contrite spirit he will not despise.",
+        "Psalm 51:17",
+        "A broken and a contrite heart, O God, thou wilt not despise.",
+    ),
+    (
+        "scripture",
+        "The Word of God",
+        "The Bible as lamp and food — reading, loving and living by the Word.",
+        "Psalm 119:105",
+        "Thy word is a lamp unto my feet, and a light unto my path.",
+    ),
+    (
+        "salvation",
+        "Salvation & the Gospel",
+        "The good news of Christ crucified and risen — saved by grace through "
+        "faith, the gift of God.",
+        "Ephesians 2:8",
+        "For by grace are ye saved through faith; and that not of yourselves: it is "
+        "the gift of God.",
+    ),
+    (
+        "heaven",
+        "Heaven & Eternity",
+        "The hope of glory — the Father's house, the life to come, and living in "
+        "view of eternity.",
+        "John 14:2",
+        "In my Father's house are many mansions: … I go to prepare a place for you.",
+    ),
+    (
+        "surrender",
+        "Surrender & Obedience",
+        "The consecrated life — presenting ourselves to God, and following where "
+        "he leads.",
+        "Romans 12:1",
+        "I beseech you therefore, brethren, … that ye present your bodies a living sacrifice.",
+    ),
+    (
+        "sin-and-temptation",
+        "Sin & Temptation",
+        "Honest words on the sin that entangles, and the God who is faithful in "
+        "the hour of temptation.",
+        "1 Corinthians 10:13",
+        "There hath no temptation taken you but such as is common to man: but God is faithful.",
+    ),
+    (
+        "contentment",
+        "Contentment",
+        "The rare and learned art of being content — godliness with contentment "
+        "is great gain.",
+        "Philippians 4:11",
+        "I have learned, in whatsoever state I am, therewith to be content.",
+    ),
+]
+
+#: The slug set, for validation (a tag must name a topic that exists here).
+QUOTE_TOPIC_SLUGS = frozenset(slug for slug, *_ in QUOTE_TOPICS)
+
 #: (author slug, quotations). Source is a ("book-slug", chapter_order) pair or a
 #: sermon slug — exactly one of the two.
 SPURGEON = [
@@ -2768,4 +2945,518 @@ QUOTES = {
     "gareth-evans": GARETH_EVANS,
     "richard-allen": RICHARD_ALLEN,
     "amanda-berry-smith": AMANDA_BERRY_SMITH,
+}
+
+
+#: Which quotations are filed under each theme — what powers the "Quotes on
+#: Prayer" pages and their per-author children. Grouped BY topic (with the
+#: sentence echoed in a trailing comment) so a reviewer sees a whole theme at
+#: once; `seed_quotes` inverts it onto `Quote.topics`.
+#:
+#: This is a KEYWORD-ASSISTED FIRST PASS, not a hand-read of every line: a
+#: lexicon per theme shortlisted candidates and a person trims. Filing is lower-
+#: stakes than the quotation itself (a well-sourced line under a loosely-related
+#: theme is imperfect curation, not a misquotation), and the pages still show
+#: only REVIEWED quotes. Refine a theme with the quote-extraction skill; the PR
+#: review is the sign-off, as it is for the quotes themselves. Re-asserted every
+#: deploy (NOT create-only) — a re-tag ships.
+
+TOPIC_MEMBERS = {
+    "prayer": [  # Prayer
+        "charles-h-spurgeon-ddf56c92",  # Jesus is exalted on high, that through the virtue of His int
+        "charles-h-spurgeon-e96bbdf6",  # God give us to be much in the holy art of arguing with God i
+        "charles-h-spurgeon-813295f9",  # The Lord give you large mouths in prayer, great potency, not
+        "charles-h-spurgeon-22f0858c",  # One prayer coming from the soul is better than a myriad cold
+        "charles-h-spurgeon-f259f382",  # God’s Spirit is teaching you how to wrestle and agonize in p
+        "charles-h-spurgeon-4b7afe02",  # The prayer that this morning you offered, Christ is now offe
+        "charles-h-spurgeon-0a553264",  # The Lord Jesus has led captivity captive, and now sits at th
+        "andrew-murray-7bc3e383",  # The knowledge of God's Father love is the first and simplest
+        "andrew-murray-4e3ad077",  # Let us beware of the prayer for forgiveness becoming a forma
+        "andrew-murray-7f00de09",  # Christ’s life and work, His suffering and death—it was all p
+        "andrew-murray-ceef792c",  # It is the life abiding wholly in Christ that can pray the ef
+        "andrew-murray-be6e77d9",  # Intercession is the most perfect form of prayer: it is the p
+        "andrew-murray-75191679",  # Throughout Scripture, in the life of every saint, of God’s o
+        "andrew-murray-13b9ac31",  # It is the branch-life, existing solely for the Vine, that wi
+        "andrew-murray-def0eaf2",  # The life of abiding and obedience, of love and joy, of clean
+        "andrew-murray-716ef8a0",  # To be a branch means not only bearing fruit on earth, but po
+        "e-m-bounds-b174257b",  # Christ holds Himself ready to supply exactly, and fully, all
+        "e-m-bounds-6b8891e3",  # Nothing distinguishes the children of God so clearly and str
+        "e-m-bounds-49d3b925",  # Nothing is too hard for prayer because nothing is too hard f
+        "e-m-bounds-52b568c0",  # The story of every great Christian achievement is the histor
+        "e-m-bounds-6e68a441",  # No person is a soul-winner who is not an adept in the minist
+        "e-m-bounds-1f61d2a7",  # The closet cannot be made holy to God when the life has not 
+        "e-m-bounds-456fba5b",  # Prayer is mighty in its operations, and God never disappoint
+        "e-m-bounds-b26355f0",  # Every revival of which we have any record has been bathed in
+        "e-m-bounds-38b0ca28",  # Faith in Christ is the basis of all working, and of all pray
+        "e-m-bounds-d44f9cee",  # To see God, to know God, and to live for God -- these form t
+        "e-m-bounds-ab7864b0",  # The difficulty in prayer is not with faith, but with obedien
+        "e-m-bounds-7894b850",  # No man can pray -- really pray -- who does not obey.
+        "e-m-bounds-ca009ef5",  # The will must be surrendered to God as a primary condition o
+        "e-m-bounds-aac43fc2",  # Prayer is not simply to get things from God, but to make tho
+        "e-m-bounds-054f2705",  # The number and efficiency of the labourers in God’s vineyard
+        "e-m-bounds-01f9f8d8",  # Prayer is not a mere form of words; it is not just calling u
+        "e-m-bounds-af08081e",  # The one prominent characteristic of the experience into whic
+        "e-m-bounds-da0bf2bc",  # To do God's will without demur, is the joy as it is the priv
+        "e-m-bounds-2b2db6e0",  # The Christian soldier is to pray at all seasons, and under a
+        "e-m-bounds-aaca3882",  # The entire life of a Christian soldier -- its being, intenti
+        "e-m-bounds-019df67e",  # God is so concerned that men pray that He has promised to an
+        "e-m-bounds-5c98ee06",  # Prayer is the seeking of God’s great and greatest good, whic
+        "e-m-bounds-fa8348c7",  # Prayer is the child’s request, not to the winds nor to the w
+        "e-m-bounds-81aa80b3",  # Prayer is God’s plan to supply man’s great and continuous ne
+        "e-m-bounds-31dfd977",  # God has everything to do with prayer, as well as everything 
+        "e-m-bounds-cac9217a",  # God’s Gospel has always waited more on prayer than on anythi
+        "e-m-bounds-eaa3a1c9",  # Prayer is the only element in which the Holy Spirit can live
+        "e-m-bounds-b95b2a8f",  # Jesus Christ was always a busy man with His work, but never 
+        "e-m-bounds-3aad54a5",  # Prayer does not interpret God’s providences, but it does jus
+        "e-m-bounds-7b379a07",  # Prayer without fervour is as a sun without light or heat, or
+        "e-m-bounds-20b5210a",  # God can afford to commit Himself in prayer to those who have
+        "e-m-bounds-1ce791ff",  # Prayer holds earth to heaven and brings heaven in close cont
+        "e-m-bounds-3de95408",  # Prayer is intended for all men, because all men need God and
+        "e-m-bounds-552c19f1",  # Prayer so prepares the heart that it softens under the disci
+        "e-m-bounds-55b9917c",  # The prayer life is the direct fruit of entire consecration t
+        "e-m-bounds-4d0e283e",  # God wants consecrated men because they can pray and will pra
+        "e-m-bounds-ec80b3c8",  # Prayer promotes the spirit of devotion, while devotion is fa
+        "e-m-bounds-ad66c674",  # Prayer is natural and almost spontaneous when compassion is 
+        "e-m-bounds-132bf8cd",  # The prayer is made to God and the issue is with God.
+        "e-m-bounds-541d3401",  # God’s people were always safe when their princes were prince
+        "e-m-bounds-f89a467a",  # Nothing is clearer than that prayer has its only worth and s
+        "e-m-bounds-bb90e88c",  # Prayer breaks all bars, dissolves all chains, opens all pris
+        "e-m-bounds-d8c4a388",  # Prayer unites with the purposes of God and lays itself out t
+        "e-m-bounds-d3d581c6",  # Prayer makes the man; prayer makes the preacher; prayer make
+        "e-m-bounds-d4c5d477",  # Prayer puts the preacher’s heart into the preacher’s sermon;
+        "e-m-bounds-d464b8c2",  # God’s true preachers have been distinguished by one great fe
+        "e-m-bounds-b99a6740",  # Prayer which is felt as a mighty force is the mediate or imm
+        "john-wesley-8c6200bd",  # Prayer is the lifting up of the heart to God: All words of p
+        "john-wesley-27045827",  # Every new victory which a soul gains is the effect of a new 
+        "john-wesley-14ab445e",  # Every action of a Christian that is good, is sanctified by t
+        "george-muller-5ff82d10",  # When God gives a spirit of prayer, how easy then to pray!
+        "george-muller-19668d74",  # If, after prayer, I feel persuaded that I should, I fix upon
+        "george-muller-48c5690b",  # Frequently, too, a fresh answer to prayer, obtained in this 
+        "george-muller-9ef0f4c9",  # A hearty desire for the conversion of sinners, and earnest p
+        "george-muller-708ce87e",  # The lying too long in bed not merely keeps us from giving th
+        "george-muller-ebf7ed77",  # How good is the Lord to have thus appeared for us, in answer
+        "hudson-taylor-1f25798f",  # How much of prayer there is that begins and ends with the cr
+        "gareth-evans-eece1b59",  # The last prayer of Jesus for all who would come to believe H
+        "amanda-berry-smith-6316c853",  # How I do thank the Lord when it is my privilege to sing and 
+    ],
+    "faith": [  # Faith
+        "charles-h-spurgeon-94833965",  # The righteousness of faith is not the moral excellence of fa
+        "charles-h-spurgeon-91fc01a4",  # The Lord's salvation can come to us though we have only fait
+        "charles-h-spurgeon-a4fd540c",  # Faith which refuses to obey the commands of the Saviour is a
+        "charles-h-spurgeon-5096795d",  # Faith is as much the gift of God as is the Saviour upon whom
+        "charles-h-spurgeon-1f40aadf",  # Christ and the believing sinner are in the same boat: unless
+        "charles-h-spurgeon-3b972466",  # Faith saves us because it makes us cling to Christ Jesus, an
+        "charles-h-spurgeon-f7378bd5",  # Come by faith to Jesus, for without him you perish for ever.
+        "charles-h-spurgeon-158e253e",  # Faith is the linen which binds the plaster of Christ's recon
+        "charles-h-spurgeon-b0f71ee3",  # Come to Jesus, by quitting every other hope, by thinking of 
+        "charles-h-spurgeon-cd259808",  # Our faithful God will never run back from His word, nor will
+        "charles-h-spurgeon-cb6b8059",  # Not for confession, nor for reformation, but in connection w
+        "charles-h-spurgeon-3eea1a98",  # Believe in the Lord Jesus Christ, and you, even you, will be
+        "charles-h-spurgeon-92fc517e",  # Whether faith is large or small, whether you can do much or 
+        "charles-h-spurgeon-c84751da",  # Salvation does not come from the preacher’s authority, but t
+        "charles-h-spurgeon-d0fcbb43",  # Christ Jesus is the only escape for a sinner pursued by the 
+        "charles-h-spurgeon-c3773b2e",  # Our first business has not to do with faith, but with Christ
+        "charles-h-spurgeon-7faf8f59",  # Christ in the heart, means Christ believed in, Christ belove
+        "charles-h-spurgeon-ab484f68",  # Little faith will get very great mercies, but great faith st
+        "charles-h-spurgeon-36a701d9",  # Faith was Peter's life-buoy—it kept him up; but unbelief sen
+        "charles-h-spurgeon-f28139b1",  # Believers are not only to be with Christ, and to behold His 
+        "charles-h-spurgeon-57735f38",  # We are saved by faith, and not by feeling; yet there is a re
+        "charles-h-spurgeon-f90f1753",  # Little-faith was bought with the blood of Christ; ay, and he
+        "charles-h-spurgeon-c96dd1a1",  # The believer enjoys, in favored seasons, such an intimacy wi
+        "thomas-a-kempis-b2579c20",  # Faith is required of you, and a sincere life, not a lofty in
+        "thomas-a-kempis-8e7b6b00",  # Jesus Christ must be loved alone with a special love for He 
+        "andrew-murray-d02a0de2",  # Faith seeks the glory that comes from God, and it only comes
+        "andrew-murray-1b021ab8",  # Every believer has the right and calling, to stand in direct
+        "andrew-murray-3e731043",  # The part of faith is always to lay hold on just that which a
+        "andrew-murray-74ee7679",  # The only means by which this unseen enemy can be conquered i
+        "andrew-murray-2097ba81",  # Christ longs to reveal Himself, but He cannot on account of 
+        "andrew-murray-3272b680",  # Faith in Jesus is the secret of a holy life: all holy conduc
+        "andrew-murray-77a4141f",  # It is the New Life that is the holy life: the full apprehens
+        "andrew-murray-71f58011",  # In the beginning of the faith-life, faith is struggling; but
+        "andrew-murray-3450b45b",  # Blessed the man who is not staggered by God’s delay, or sile
+        "andrew-murray-d736c7c7",  # It was by obedience Christ as Vine honored the Father as Hus
+        "e-m-bounds-3b245347",  # Faith does the impossible because it brings God to undertake
+        "e-m-bounds-b174257b",  # Christ holds Himself ready to supply exactly, and fully, all
+        "e-m-bounds-38b0ca28",  # Faith in Christ is the basis of all working, and of all pray
+        "e-m-bounds-170e43be",  # Faith is not an aimless act of the soul, but a looking to Go
+        "e-m-bounds-cc849a69",  # Faith is not believing just anything; it is believing God, r
+        "e-m-bounds-ab7864b0",  # The difficulty in prayer is not with faith, but with obedien
+        "e-m-bounds-af08081e",  # The one prominent characteristic of the experience into whic
+        "augustine-of-hippo-f80a2bf6",  # In these two you have those three graces exemplified: faith 
+        "augustine-of-hippo-87986dcb",  # The fact that we do not see either what we believe or what w
+        "augustine-of-hippo-567e0947",  # No one, of course, is to be condemned as a liar who says wha
+        "augustine-of-hippo-daf2b4a0",  # For when there is a question as to whether a man is good, on
+        "augustine-of-hippo-e0fb2a79",  # We love God now by faith, then we shall love Him through sig
+        "augustine-of-hippo-2c5b7319",  # Now we love even our neighbor by faith; for we who are ourse
+        "jonathan-edwards-20cf3293",  # There is not only a rational belief that God is holy and tha
+        "jonathan-edwards-f9dba01f",  # Faith abases men and exalts God, it gives all the glory of r
+        "jonathan-edwards-053525a7",  # It is God that gives us faith whereby we close with Christ.
+        "jonathan-edwards-27f6a365",  # He does not merely rationally believe that God is glorious, 
+        "john-wesley-60c79eda",  # Faith is the condition, and the only condition, of sanctific
+        "john-wesley-b8fe8d3c",  # The root of all religion is faith, without which it is impos
+        "john-wesley-0d8ca0c2",  # The pure love of our neighbour, springing from the love of G
+        "john-wesley-69cc6ec9",  # God gives this faith; in that moment we are accepted of God;
+        "john-wesley-697ed3cb",  # Reason, however cultivated and improved, cannot produce the 
+        "john-wesley-baa7a7a5",  # The foundation is faith, purifying the heart; the end love, 
+        "john-wesley-740b7c0e",  # Believe in the Lord Jesus; and thou, even thou, art reconcil
+        "george-muller-5fa461a5",  # Wherever God has given faith, it is given, among other reaso
+        "george-muller-6e80ebdf",  # Not to believe Him is to make Him both a liar and a perjurer
+        "george-muller-a1e19e7a",  # The answer is, believe in the Lord Jesus, trust in Him, depe
+        "george-muller-65f3b573",  # Faith has to do with the word of God,—rests upon the written
+        "george-muller-76e31dd8",  # As the increase of faith is a good gift, it must come from G
+        "george-muller-ded699a3",  # In all simplicity have we to tell out our heart before God, 
+        "hudson-taylor-5e3c78b3",  # As the Spirit reveals Christ, so does Christ bestow the Spir
+        "hudson-taylor-6fa59319",  # Many a believer to whom Christ has left peace, knows little 
+        "hudson-taylor-a6c81b90",  # The burnt-offering tells us of the perfect and accepted righ
+        "gareth-evans-acd8fcf2",  # God has not called us to be famous or successful; He has cal
+        "gareth-evans-250ffc80",  # Faith does not deliver us from the chisel or hammer of the D
+        "gareth-evans-8f7e4023",  # The faith that pleases God is not evidenced in the obedience
+        "gareth-evans-0b4a12e9",  # Faith is an attribute of the heart and is evidenced in obedi
+        "gareth-evans-c9e0110e",  # Faith does not need a man to understand and believe; it need
+        "gareth-evans-6a4f8972",  # Jesus pointed out to them that it was faith they needed, not
+        "gareth-evans-eece1b59",  # The last prayer of Jesus for all who would come to believe H
+        "gareth-evans-cd926d0d",  # The end of the journey for all who walk in faith, is that th
+        "amanda-berry-smith-a27a891a",  # In my heart was peace, but I did not know how to exercise fa
+    ],
+    "grace": [  # Grace
+        "charles-h-spurgeon-e83563c7",  # Jesus has nothing which He will not use for a sinner's salva
+        "charles-h-spurgeon-c918a184",  # The Lord may not give gold, but He will give grace: He may n
+        "charles-h-spurgeon-c3d3a367",  # Let us be humble that we may not need to be humbled, but may
+        "charles-h-spurgeon-2734034c",  # We view our God no more as Baal, our tyrant lord and mighty 
+        "charles-h-spurgeon-ca2d8572",  # Look on the drops of grace, and remember that they distil fr
+        "charles-h-spurgeon-a11d6733",  # Christ’s word of grace is very near you, it is on your tongu
+        "charles-h-spurgeon-3abc20c9",  # Let a man truly know the grace of our Lord Jesus Christ, and
+        "charles-h-spurgeon-2daf7b58",  # You will never perceive God in nature, until you have learne
+        "charles-h-spurgeon-d25d6079",  # Grace is always grace, but it never seems so gracious as whe
+        "charles-h-spurgeon-f0f5f775",  # The Christian's life is one of daily dependence on the grace
+        "charles-h-spurgeon-e48554af",  # If we have grown in grace, it is absolutely certain that we 
+        "charles-h-spurgeon-62f2db13",  # Your business is to seek Christ crucified for yourselves, no
+        "thomas-a-kempis-d0edf151",  # God does well in giving the grace of consolation, but man do
+        "thomas-a-kempis-90b0ce53",  # The man who lives without Jesus is the poorest of the poor, 
+        "thomas-a-kempis-9a6d1484",  # Grace does not consider what is useful and advantageous to h
+        "thomas-a-kempis-75fd349d",  # Grace brings all things back to God in Whom they have their 
+        "thomas-a-kempis-dc7909dc",  # Grace is always given to him who is duly grateful, and what 
+        "andrew-murray-53a45df8",  # Ever stand before God, in Christ; ever wait for all grace fr
+        "augustine-of-hippo-c210876c",  # To Thy grace I ascribe it, and to Thy mercy, that Thou hast 
+        "augustine-of-hippo-f80a2bf6",  # In these two you have those three graces exemplified: faith 
+        "augustine-of-hippo-7df12100",  # Of these four different stages the first is before the law, 
+        "jonathan-edwards-1a52dfe1",  # God has revealed no certain connection between salvation, an
+        "jonathan-edwards-b7680c47",  # Many that others worship and serve as gods are cruel beings,
+        "john-wesley-9a985cd4",  # Let not the thought of receiving more grace to-morrow, make 
+        "george-muller-a471336a",  # Truly, we are poorer than ever; but through grace my eyes lo
+        "george-muller-74de7829",  # It is certain that we children of God are so abundantly bles
+        "hudson-taylor-38d234ec",  # To the soul really rescued by grace, no bribe to forsake GOD
+        "hudson-taylor-b7ada31d",  # Grace has made her like the palm-tree, the emblem alike of u
+        "hudson-taylor-fab4ab06",  # How wondrous the grace that has made the bride of CHRIST to 
+        "amanda-berry-smith-f22720ef",  # The very best chance for growing in grace, really and succes
+    ],
+    "holy-spirit": [  # The Holy Spirit
+        "charles-h-spurgeon-c1353dff",  # The Holy Ghost Himself cannot better glorify the Lord Jesus 
+        "charles-h-spurgeon-d59a45ab",  # There never yet was a heavenly thought, a hallowed deed, or 
+        "charles-h-spurgeon-c3eec6ac",  # Let us ever remember that Christ on the cross is of no value
+        "andrew-murray-c28b985e",  # God alone, who gave us the Holy Spirit, can restore the Holy
+        "andrew-murray-3279a07e",  # The Holy Spirit is the life of the heavenly Vine, and what y
+        "e-m-bounds-eaa3a1c9",  # Prayer is the only element in which the Holy Spirit can live
+        "jonathan-edwards-961af03e",  # The Spirit of God may act upon a creature, and yet not in ac
+        "jonathan-edwards-0334dcf6",  # We may often observe it, that the Holy Spirit who indited th
+        "hudson-taylor-6fa59319",  # Many a believer to whom Christ has left peace, knows little 
+        "hudson-taylor-292a6824",  # The Bible is a supernatural book, a divine revelation: the H
+        "hudson-taylor-61a35270",  # The Holy Spirit is the other Comforter, sent by the Father i
+        "hudson-taylor-7ac514c2",  # Thanks be to God, the illumination of the HOLY GHOST is prom
+    ],
+    "love-of-god": [  # The Love of God
+        "charles-h-spurgeon-8b8e88db",  # We are not going to talk about law, and duty, and punishment
+        "charles-h-spurgeon-c84751da",  # Salvation does not come from the preacher’s authority, but t
+        "charles-h-spurgeon-d6d84bd3",  # Beloved, the Lord’s workers have sauce with their bread: not
+        "charles-h-spurgeon-7faf8f59",  # Christ in the heart, means Christ believed in, Christ belove
+        "charles-h-spurgeon-cfdd6903",  # The love of Christ casts not out the love of relatives, but 
+        "charles-h-spurgeon-8e8ecc65",  # It is the distinguishing mark of God's people that they know
+        "charles-h-spurgeon-31ec3990",  # God's people are often chastened, and the Lord's hand lieth 
+        "charles-h-spurgeon-e48554af",  # If we have grown in grace, it is absolutely certain that we 
+        "thomas-a-kempis-65308598",  # Love is never self-seeking, for in whatever a person seeks h
+        "thomas-a-kempis-553acf8a",  # Let all things be loved for the sake of Jesus, but Jesus for
+        "thomas-a-kempis-7acdee79",  # Love tends upward; it will not be held down by anything low.
+        "thomas-a-kempis-4a380367",  # Let me love You more than myself, and let me not love myself
+        "thomas-a-kempis-be6f13f2",  # The wise lover regards not so much the gift of Him Who loves
+        "thomas-a-kempis-69ad2257",  # Place all your trust in God; let Him be your fear and your l
+        "thomas-a-kempis-8e7b6b00",  # Jesus Christ must be loved alone with a special love for He 
+        "andrew-murray-7bc3e383",  # The knowledge of God's Father love is the first and simplest
+        "andrew-murray-29a39898",  # Chastisement is bringing your heart into unity with God’s Wi
+        "andrew-murray-ba80b140",  # The spirit of separation is the spirit of self-sacrifice, of
+        "andrew-murray-c38b33cb",  # If the love of God is in your heart you will love your broth
+        "e-m-bounds-bef0ccaf",  # Love of ease, spiritual indolence, religious slothfulness, a
+        "augustine-of-hippo-71005631",  # Too late loved I Thee, O Thou Beauty of ancient days, yet ev
+        "augustine-of-hippo-2be5d987",  # I will now call to mind my past foulness, and the carnal cor
+        "augustine-of-hippo-42c3e683",  # Not with doubting, but with assured consciousness, do I love
+        "augustine-of-hippo-cd00fc05",  # What then do I love, when I love my God? who is He above the
+        "augustine-of-hippo-e0fb2a79",  # We love God now by faith, then we shall love Him through sig
+        "augustine-of-hippo-2c5b7319",  # Now we love even our neighbor by faith; for we who are ourse
+        "jonathan-edwards-f0750291",  # The saint's affections begin with God; and self-love has a h
+        "jonathan-edwards-7617f48e",  # The saints desire the sincere milk of the word, not so much 
+        "john-wesley-cf00ad11",  # Love has purified his heart from envy, malice, wrath, and ev
+        "john-wesley-185b43a1",  # Nothing is higher than this, but Christian love; the love of
+        "john-wesley-c2096cd8",  # We might have loved God the Creator, God the Preserver, God 
+        "john-wesley-6cc20b2f",  # If we love Him, we cannot but love one another, as Christ lo
+        "john-wesley-664808a5",  # It is love excluding sin; love filling the heart, taking up 
+        "john-wesley-cf8b3317",  # No suffering, but that of Christ, has any power to expiate s
+        "john-wesley-9142f92d",  # We have by nature, not only no love, but no fear of God.
+        "john-wesley-e2deb11e",  # What we love we delight in: But no man has naturally any del
+        "john-wesley-baa7a7a5",  # The foundation is faith, purifying the heart; the end love, 
+        "george-muller-46c0a31e",  # The Lord has indeed manifested his tender care of and his gr
+        "george-muller-b28e4625",  # The desires of my heart were, to retain the beloved daughter
+        "hudson-taylor-cad7f3ed",  # Despite all the unworthy fears of our poor hearts, Divine lo
+        "hudson-taylor-38d234ec",  # To the soul really rescued by grace, no bribe to forsake GOD
+        "hudson-taylor-042ae2a5",  # The love that has made her what she is, and now takes deligh
+        "hudson-taylor-fab4ab06",  # How wondrous the grace that has made the bride of CHRIST to 
+        "hudson-taylor-07ddeeeb",  # The world can never be to her what it once was; the betrothe
+        "hudson-taylor-a1356158",  # We do not estimate our love-gifts by their intrinsic value, 
+        "hudson-taylor-09cb8768",  # The Brightness of His Father's glory, the Sun of Righteousne
+        "hudson-taylor-4257638e",  # When the Lord blesses His people with peace and plenty, it i
+        "hudson-taylor-c92c5138",  # God is not hard to please, nor is true human love, for it is
+        "hudson-taylor-10b13faf",  # Our true self-denial, self-emptying, and giving for Christ's
+        "gareth-evans-7bf997cc",  # The only thing He requires of you is your love, and that can
+        "gareth-evans-8f7e4023",  # The faith that pleases God is not evidenced in the obedience
+        "gareth-evans-7f44b4a6",  # The child does not experience the love whose fruit is securi
+        "richard-allen-83c101e1",  # In short, the love of this world is a heavy weight upon the 
+        "amanda-berry-smith-3649ad8b",  # Learn to know the beauty of love and power and sympathy of J
+        "amanda-berry-smith-afbc34b8",  # How I have lived through it I cannot tell, but the blessedne
+    ],
+    "humility": [  # Humility
+        "charles-h-spurgeon-c3d3a367",  # Let us be humble that we may not need to be humbled, but may
+        "thomas-a-kempis-dc7909dc",  # Grace is always given to him who is duly grateful, and what 
+        "thomas-a-kempis-8ea5438f",  # The humble live in continuous peace, while in the hearts of 
+        "andrew-murray-544f0576",  # Pride and self are all of man, till man has all from Christ.
+        "andrew-murray-32b8b61a",  # Nothing can be our redemption but the restoration of the los
+        "andrew-murray-ba743e80",  # The truth is this, pride may die in you or nothing of heaven
+        "andrew-murray-307dbdae",  # Humility before God is nothing if not proved in humility bef
+        "jonathan-edwards-4daf7d38",  # The deceitfulness of the heart of man appears in no one thin
+    ],
+    "suffering": [  # Suffering & Trials
+        "charles-h-spurgeon-116882b5",  # The Lord's mercy often rides to the door of our hearts on th
+        "charles-h-spurgeon-31ec3990",  # God's people are often chastened, and the Lord's hand lieth 
+        "thomas-a-kempis-aa58e7e7",  # Nothing is more acceptable to God, nothing more helpful for 
+        "thomas-a-kempis-4aef1a9f",  # To glory in adversity is not hard for the man who loves, for
+        "thomas-a-kempis-73cdb0bb",  # No one understands the passion of Christ so thoroughly or he
+        "thomas-a-kempis-35828f2d",  # No man is fit to enjoy heaven unless he has resigned himself
+        "andrew-murray-7f00de09",  # Christ’s life and work, His suffering and death—it was all p
+        "john-wesley-69cc6ec9",  # God gives this faith; in that moment we are accepted of God;
+        "george-muller-6e95f222",  # Do but stand still in the hour of trial, and you will see th
+        "george-muller-4202e1fe",  # Do but stand still in the hour of trial, and you will see th
+        "george-muller-caed9faa",  # From my inmost soul I do ascribe it to God alone that he has
+        "amanda-berry-smith-c5cbc2c8",  # How often when we are passing through deep trials we look fo
+    ],
+    "holiness": [  # Holiness
+        "charles-h-spurgeon-cfdd6903",  # The love of Christ casts not out the love of relatives, but 
+        "charles-h-spurgeon-4bdec927",  # Our court-dress in heaven, and our garment of sanctification
+        "charles-h-spurgeon-62f2db13",  # Your business is to seek Christ crucified for yourselves, no
+        "andrew-murray-3272b680",  # Faith in Jesus is the secret of a holy life: all holy conduc
+        "andrew-murray-7866a702",  # Let obedience, the listening to and the doing the will of Go
+        "andrew-murray-77a4141f",  # It is the New Life that is the holy life: the full apprehens
+        "jonathan-edwards-5d08473b",  # The true beauty and loveliness of all intelligent beings doe
+        "jonathan-edwards-7617f48e",  # The saints desire the sincere milk of the word, not so much 
+        "jonathan-edwards-20cf3293",  # There is not only a rational belief that God is holy and tha
+        "jonathan-edwards-707150e7",  # Holiness and happiness are in the fruit, here and hereafter,
+        "john-wesley-60c79eda",  # Faith is the condition, and the only condition, of sanctific
+        "john-wesley-14ab445e",  # Every action of a Christian that is good, is sanctified by t
+        "gareth-evans-5df533df",  # God knows the heart of man and will only reveal Himself to t
+    ],
+    "the-cross": [  # The Cross of Christ
+        "charles-h-spurgeon-1fe6c2ed",  # The Lord cannot read our pardon written in the blood of His 
+        "charles-h-spurgeon-cb6b8059",  # Not for confession, nor for reformation, but in connection w
+        "charles-h-spurgeon-68366e72",  # Come, my soul, pluck up courage, and put down thy feet in th
+        "charles-h-spurgeon-18e34bba",  # There are some sciences that may be learned by the head, but
+        "charles-h-spurgeon-f34cdb2a",  # Though they know a little about Christ on Calvary, they know
+        "charles-h-spurgeon-c3eec6ac",  # Let us ever remember that Christ on the cross is of no value
+        "charles-h-spurgeon-f90f1753",  # Little-faith was bought with the blood of Christ; ay, and he
+        "charles-h-spurgeon-1b7df6d3",  # If thou wouldst find thy way to God's bright throne, find fi
+        "thomas-a-kempis-4aef1a9f",  # To glory in adversity is not hard for the man who loves, for
+        "hudson-taylor-10b13faf",  # Our true self-denial, self-emptying, and giving for Christ's
+        "gareth-evans-cf0d0a61",  # The only way man can approach God is through the shed blood 
+        "gareth-evans-12a18c7e",  # To those who have placed their trust in the finished work of
+    ],
+    "trusting-god": [  # Trusting God
+        "charles-h-spurgeon-63de5d24",  # Trust not thyself nor any born of woman, beyond due bounds; 
+        "thomas-a-kempis-62c7429e",  # To trust in You above all things is the strongest comfort of
+        "thomas-a-kempis-69ad2257",  # Place all your trust in God; let Him be your fear and your l
+        "thomas-a-kempis-574029fa",  # The one often errs, the other trusts in God and is not decei
+        "e-m-bounds-456fba5b",  # Prayer is mighty in its operations, and God never disappoint
+        "e-m-bounds-cc849a69",  # Faith is not believing just anything; it is believing God, r
+        "jonathan-edwards-27f6a365",  # He does not merely rationally believe that God is glorious, 
+        "george-muller-6e95f222",  # Do but stand still in the hour of trial, and you will see th
+        "george-muller-da2889c3",  # How great is the blessing which the soul obtains by trusting
+        "george-muller-51145329",  # Ask God also to enlighten you not merely concerning your sta
+        "george-muller-4202e1fe",  # Do but stand still in the hour of trial, and you will see th
+        "george-muller-708ce87e",  # The lying too long in bed not merely keeps us from giving th
+        "george-muller-caed9faa",  # From my inmost soul I do ascribe it to God alone that he has
+        "gareth-evans-12a18c7e",  # To those who have placed their trust in the finished work of
+        "richard-allen-31ab9496",  # To be slow and uneasy at almsgiving, argues a strong distrus
+        "amanda-berry-smith-d3999568",  # What else ought we to do, when we bring our friends, but to 
+    ],
+    "joy": [  # Joy
+        "charles-h-spurgeon-d6d84bd3",  # Beloved, the Lord’s workers have sauce with their bread: not
+        "charles-h-spurgeon-4389b884",  # He who delights in the possession of the Lord Jesus hath all
+        "thomas-a-kempis-8a6df7db",  # God alone, the eternal and infinite, satisfies all, bringing
+        "thomas-a-kempis-7ab2c082",  # Christ will come to you offering His consolation, if you pre
+        "andrew-murray-bdffda15",  # Man was to have the joy of receiving every moment out of the
+        "andrew-murray-cdf11ae9",  # The rest, the silence, the stillness, and the patient waitin
+        "andrew-murray-7866a702",  # Let obedience, the listening to and the doing the will of Go
+        "andrew-murray-def0eaf2",  # The life of abiding and obedience, of love and joy, of clean
+        "e-m-bounds-da0bf2bc",  # To do God's will without demur, is the joy as it is the priv
+        "augustine-of-hippo-01e56d20",  # Thou awakest us to delight in Thy praise; for Thou madest us
+        "jonathan-edwards-35c8dd47",  # The former rejoices in himself; self is the first foundation
+        "jonathan-edwards-b7680c47",  # Many that others worship and serve as gods are cruel beings,
+        "john-wesley-e2deb11e",  # What we love we delight in: But no man has naturally any del
+        "george-muller-0ddfdb70",  # A flow of joy came into my soul whilst realising thus the un
+        "george-muller-48c5690b",  # Frequently, too, a fresh answer to prayer, obtained in this 
+        "hudson-taylor-042ae2a5",  # The love that has made her what she is, and now takes deligh
+        "hudson-taylor-d4f6ede5",  # The little one's heart is full; and the mother's heart is al
+        "hudson-taylor-1f25798f",  # How much of prayer there is that begins and ends with the cr
+        "hudson-taylor-6659df97",  # When the Lord Jesus comes again, those, surely, who have sto
+        "amanda-berry-smith-3fe22a05",  # How glad I am that God nowhere teaches that men have to go i
+        "amanda-berry-smith-7de9680d",  # The burden rolled away; I felt it when it left me, and a flo
+    ],
+    "hope": [  # Hope
+        "charles-h-spurgeon-b0f71ee3",  # Come to Jesus, by quitting every other hope, by thinking of 
+        "augustine-of-hippo-87986dcb",  # The fact that we do not see either what we believe or what w
+        "augustine-of-hippo-196b5d19",  # No one, then, need hope that after he is dead he shall obtai
+        "augustine-of-hippo-daf2b4a0",  # For when there is a question as to whether a man is good, on
+        "john-wesley-9fddda8a",  # The righteousness of Christ is the whole and sole foundation
+        "john-wesley-0d8ca0c2",  # The pure love of our neighbour, springing from the love of G
+        "john-wesley-697ed3cb",  # Reason, however cultivated and improved, cannot produce the 
+    ],
+    "peace": [  # Peace
+        "charles-h-spurgeon-010273ba",  # Unless the heart be kept peaceable, the life will not be hap
+        "charles-h-spurgeon-c96dd1a1",  # The believer enjoys, in favored seasons, such an intimacy wi
+        "thomas-a-kempis-8ea5438f",  # The humble live in continuous peace, while in the hearts of 
+        "augustine-of-hippo-ae703f88",  # When out of their order, they are restless; restored to orde
+        "augustine-of-hippo-7df12100",  # Of these four different stages the first is before the law, 
+        "john-wesley-17ad2058",  # We know everyone who has peace with God, through Jesus Chris
+        "hudson-taylor-4257638e",  # When the Lord blesses His people with peace and plenty, it i
+        "hudson-taylor-b1a3a6a3",  # When sin is put away the Spirit again lifts up His countenan
+        "amanda-berry-smith-a27a891a",  # In my heart was peace, but I did not know how to exercise fa
+        "amanda-berry-smith-afbc34b8",  # How I have lived through it I cannot tell, but the blessedne
+    ],
+    "repentance": [  # Repentance
+        "charles-h-spurgeon-ddf56c92",  # Jesus is exalted on high, that through the virtue of His int
+        "thomas-a-kempis-6ff5eb6f",  # No man deserves the consolation of heaven unless he persiste
+    ],
+    "scripture": [  # The Word of God
+        "charles-h-spurgeon-14b10a83",  # You may read the Bible continuously, and yet never learn any
+        "andrew-murray-622d4639",  # The word is nothing if it is not kept, obeyed, or done.
+        "andrew-murray-25892082",  # The effect of the word on the heart is in most cases not imm
+        "andrew-murray-75191679",  # Throughout Scripture, in the life of every saint, of God’s o
+        "jonathan-edwards-0334dcf6",  # We may often observe it, that the Holy Spirit who indited th
+        "george-muller-65f3b573",  # Faith has to do with the word of God,—rests upon the written
+        "hudson-taylor-292a6824",  # The Bible is a supernatural book, a divine revelation: the H
+        "gareth-evans-b4cd492e",  # To every weapon of Satan they have an answer in the Word of 
+    ],
+    "salvation": [  # Salvation & the Gospel
+        "charles-h-spurgeon-91fc01a4",  # The Lord's salvation can come to us though we have only fait
+        "charles-h-spurgeon-cb3665e4",  # Jesus Christ is to them a Saviour strong and mighty, a Rock 
+        "charles-h-spurgeon-a4fd540c",  # Faith which refuses to obey the commands of the Saviour is a
+        "charles-h-spurgeon-e60e0d86",  # You need not, therefore, despair: that which is necessary to
+        "charles-h-spurgeon-e83563c7",  # Jesus has nothing which He will not use for a sinner's salva
+        "charles-h-spurgeon-5096795d",  # Faith is as much the gift of God as is the Saviour upon whom
+        "charles-h-spurgeon-d22c535f",  # Our awakenings are not to help the Saviour, but to help us t
+        "charles-h-spurgeon-499c8b72",  # Salvation is not by our knowing our own ruin, but by fully g
+        "charles-h-spurgeon-38eab6a5",  # Trust Christ, and by that trust you grasp salvation and eter
+        "charles-h-spurgeon-3eea1a98",  # Believe in the Lord Jesus Christ, and you, even you, will be
+        "charles-h-spurgeon-92fc517e",  # Whether faith is large or small, whether you can do much or 
+        "charles-h-spurgeon-b11a33f8",  # Come utterly ruined and undone, for in Jesus Christ there is
+        "charles-h-spurgeon-5fcb15f8",  # The gospel is not a scheme of giving to God, but of receivin
+        "charles-h-spurgeon-57735f38",  # We are saved by faith, and not by feeling; yet there is a re
+        "charles-h-spurgeon-0c53a2aa",  # As the Lord hath but one family, written in one register, re
+        "thomas-a-kempis-e5643ba2",  # The present is very precious; these are the days of salvatio
+        "andrew-murray-32b8b61a",  # Nothing can be our redemption but the restoration of the los
+        "e-m-bounds-cac9217a",  # God’s Gospel has always waited more on prayer than on anythi
+        "e-m-bounds-3aad54a5",  # Prayer does not interpret God’s providences, but it does jus
+        "augustine-of-hippo-f39c2fe5",  # The Way, the Saviour Himself, well pleased me, but as yet I 
+        "jonathan-edwards-1a52dfe1",  # God has revealed no certain connection between salvation, an
+        "jonathan-edwards-f9dba01f",  # Faith abases men and exalts God, it gives all the glory of r
+        "john-wesley-c2096cd8",  # We might have loved God the Creator, God the Preserver, God 
+        "george-muller-a1e19e7a",  # The answer is, believe in the Lord Jesus, trust in Him, depe
+        "george-muller-7716c8c8",  # Jesus came not to save painted but real sinners; but he has 
+        "hudson-taylor-e1f8b629",  # The good works of the unsaved may indeed benefit their fello
+        "hudson-taylor-dac18fb3",  # It was one of the objects of our Saviour's mission to reveal
+        "gareth-evans-cd926d0d",  # The end of the journey for all who walk in faith, is that th
+        "amanda-berry-smith-3649ad8b",  # Learn to know the beauty of love and power and sympathy of J
+        "amanda-berry-smith-e93eed38",  # The Gospel of Jesus was so full and practical, and with good
+    ],
+    "heaven": [  # Heaven & Eternity
+        "charles-h-spurgeon-8b8e88db",  # We are not going to talk about law, and duty, and punishment
+        "charles-h-spurgeon-38eab6a5",  # Trust Christ, and by that trust you grasp salvation and eter
+        "charles-h-spurgeon-d59a45ab",  # There never yet was a heavenly thought, a hallowed deed, or 
+        "charles-h-spurgeon-4bdec927",  # Our court-dress in heaven, and our garment of sanctification
+        "thomas-a-kempis-35828f2d",  # No man is fit to enjoy heaven unless he has resigned himself
+        "thomas-a-kempis-6ff5eb6f",  # No man deserves the consolation of heaven unless he persiste
+        "andrew-murray-ba743e80",  # The truth is this, pride may die in you or nothing of heaven
+        "andrew-murray-ee7711d2",  # God is a spirit: He is the Everlasting and Unchangeable One;
+        "andrew-murray-3279a07e",  # The Holy Spirit is the life of the heavenly Vine, and what y
+        "andrew-murray-9222df6d",  # Let us seek to understand that the life of the branch is a l
+        "andrew-murray-716ef8a0",  # To be a branch means not only bearing fruit on earth, but po
+        "e-m-bounds-056461e2",  # Nothing short of being red hot for God, can keep the glow of
+        "e-m-bounds-1ce791ff",  # Prayer holds earth to heaven and brings heaven in close cont
+        "augustine-of-hippo-b4abaa5a",  # Nothing then of Thy Word doth give place or replace, because
+        "jonathan-edwards-32a16695",  # The kingdom of heaven is not to be taken but by violence.
+        "jonathan-edwards-f3a4122f",  # None that will come to Christ, let his condition be what it 
+        "john-wesley-b0fcf5f2",  # The way to hell has nothing singular in it; but the way to h
+        "john-wesley-cf8b3317",  # No suffering, but that of Christ, has any power to expiate s
+        "john-wesley-a998de10",  # Many indeed think of being happy with God in heaven; but the
+        "hudson-taylor-6659df97",  # When the Lord Jesus comes again, those, surely, who have sto
+        "gareth-evans-12ac9d3d",  # The eagle does not rest until it sees its offspring rise to 
+        "richard-allen-83c101e1",  # In short, the love of this world is a heavy weight upon the 
+    ],
+    "surrender": [  # Surrender & Obedience
+        "thomas-a-kempis-23ece4d7",  # No man commands safely unless he has learned well how to obe
+        "andrew-murray-b4a4d4f8",  # God only asks of us to yield, to consent, to wait upon Him, 
+        "andrew-murray-622d4639",  # The word is nothing if it is not kept, obeyed, or done.
+        "andrew-murray-ba80b140",  # The spirit of separation is the spirit of self-sacrifice, of
+        "andrew-murray-d736c7c7",  # It was by obedience Christ as Vine honored the Father as Hus
+        "andrew-murray-53a45df8",  # Ever stand before God, in Christ; ever wait for all grace fr
+        "e-m-bounds-7894b850",  # No man can pray -- really pray -- who does not obey.
+        "e-m-bounds-ca009ef5",  # The will must be surrendered to God as a primary condition o
+        "e-m-bounds-55b9917c",  # The prayer life is the direct fruit of entire consecration t
+        "e-m-bounds-4d0e283e",  # God wants consecrated men because they can pray and will pra
+        "augustine-of-hippo-6e758fea",  # The mind commands the body, and it obeys instantly; the mind
+        "john-wesley-b2f0969f",  # A man may be in God’s favour though he feel sin; but not if 
+        "hudson-taylor-d7a46992",  # It may be that we have separated ourselves to carry out our 
+        "hudson-taylor-d51cda35",  # Nearness to God calls for tenderness of conscience, thoughtf
+        "gareth-evans-0b4a12e9",  # Faith is an attribute of the heart and is evidenced in obedi
+        "gareth-evans-c9e0110e",  # Faith does not need a man to understand and believe; it need
+    ],
+    "sin-and-temptation": [  # Sin & Temptation
+        "charles-h-spurgeon-bda51fda",  # Our Lord Jesus did not die for imaginary sins, but His heart
+        "charles-h-spurgeon-af63b79e",  # Jesus Christ, made sin for me, was what I saw, and that sigh
+        "charles-h-spurgeon-76d1edd6",  # Jesus did not die for our righteousness, but He died for our
+        "charles-h-spurgeon-1f40aadf",  # Christ and the believing sinner are in the same boat: unless
+        "charles-h-spurgeon-158e253e",  # Faith is the linen which binds the plaster of Christ's recon
+        "charles-h-spurgeon-96d23369",  # God will not lead you into temptation, but you may lead your
+        "charles-h-spurgeon-b8b46bcf",  # Not only does God bear with sin, but in the person of his So
+        "charles-h-spurgeon-3f56a9f6",  # The Lord Jesus was unto us a covering for sin, and so a cove
+        "charles-h-spurgeon-d0fcbb43",  # Christ Jesus is the only escape for a sinner pursued by the 
+        "charles-h-spurgeon-52ff0174",  # Jesus identified Himself with His people, and therefore thei
+        "charles-h-spurgeon-f5498610",  # Our Lord Jesus did not handle sin with the golden tongs, but
+        "charles-h-spurgeon-756e08e3",  # Not one sin is to be spared, but against the whole is to be 
+        "charles-h-spurgeon-49d53581",  # Do you think that we are forever to be the drudges and the s
+        "andrew-murray-e8346b82",  # A man does not get converted without having the conviction o
+        "augustine-of-hippo-c210876c",  # To Thy grace I ascribe it, and to Thy mercy, that Thou hast 
+        "augustine-of-hippo-f4cae61f",  # To me, however, it seems certain that every lie is a sin, th
+        "augustine-of-hippo-1d48b0f6",  # After the fall, however, a more abundant exercise of God’s m
+        "augustine-of-hippo-f72c34ba",  # As, then, the soul even now finds it impossible to desire un
+        "jonathan-edwards-257aca58",  # The subtlety of Satan appears in its height, in his managing
+        "john-wesley-b2f0969f",  # A man may be in God’s favour though he feel sin; but not if 
+        "john-wesley-17ad2058",  # We know everyone who has peace with God, through Jesus Chris
+        "john-wesley-664808a5",  # It is love excluding sin; love filling the heart, taking up 
+        "george-muller-ef40c1e4",  # God sent Him, that He might bear the punishment, due to us g
+        "george-muller-9ef0f4c9",  # A hearty desire for the conversion of sinners, and earnest p
+        "george-muller-7716c8c8",  # Jesus came not to save painted but real sinners; but he has 
+        "hudson-taylor-2d3e6a96",  # The sin of neglected communion may be forgiven, and yet the 
+        "hudson-taylor-fca298ba",  # Man's heart is so darkened by the Fall, and by personal sinf
+        "hudson-taylor-b1a3a6a3",  # When sin is put away the Spirit again lifts up His countenan
+        "amanda-berry-smith-cf826ddb",  # God showed me I was a dreadful sinner, but still I wanted to
+    ],
+    "contentment": [  # Contentment
+        "thomas-a-kempis-1e51f540",  # The man who is at perfect ease is never suspicious, but the 
+        "george-muller-b28e4625",  # The desires of my heart were, to retain the beloved daughter
+    ],
 }
