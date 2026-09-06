@@ -14,6 +14,10 @@
 			"content": "7d8815a036751c3892785ea0b0eb2ca895397a20eda07d5c1e4d256c8c4b8d5a",
 			"art": "763d491efd44377e13af092f384c6ba95a99dd8d00e0374d28ec4073bd34415b"
 		},
+		"are-you-born-again": {
+			"content": "c1ad1e6faa3a6d54fe4a7e8415368c5aad52d638c781d869e4ab65c4553a8b47",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
 		"behold-the-lamb-of-god": {
 			"content": "2ff18541e46336ab7664685da67a3276c833ed130a299e46294f11c5d8d8455f",
 			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
@@ -74,6 +78,10 @@
 			"content": "2a1f8e5ae5b099088ca7194e3d676df877820e01b842704906a2abde59c7fbc3",
 			"art": "59a648b205bcd69349ac2c7b73e1871bf61d1df3eb0f6526d7ad5b36a5f52c00"
 		},
+		"do-you-pray": {
+			"content": "6aff1b578ab1189b0149b8ca7276e18683c63eeef5a625f02a363d0fee93cb86",
+			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
+		},
 		"eight-i-wills-of-christ": {
 			"content": "cc612b61c76927eda890fb4ffcb2c3c86f51e9dab17597d049dcef36f9eaaa7a",
 			"art": "3175d2986277c75d2a51a5a0dd8fcaec29866d2c10a2b0ff4912669bbf7b3866"
@@ -88,6 +96,10 @@
 		},
 		"faith": {
 			"content": "12fb50637609b006c937f8dca4d0e17749da084b62968fab98d1857aa62eb2b9",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
+		"faith-and-assurance": {
+			"content": "363cb5533a8d97f6155bfb89688b1cbdffca7ece5acba7219e2e240e913d98be",
 			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
 		},
 		"fall-and-recovery-of-man": {
@@ -109,6 +121,10 @@
 		"gods-love-for-a-sinning-world": {
 			"content": "70fe1737f086909220693c05277e8bdcb9ef95bfa9f18be8cb4e3f01478e8e43",
 			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
+		},
+		"grace-and-truth": {
+			"content": "09246ae4ce03f3f896ba04cb5bdeb8aa838b33248f4933a3cb5d7bce4bebf9ef",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
 		},
 		"himself": {
 			"content": "d4230634a8faf2f7b737e23d7b64f41fe7d9c54f91e4cc3479d8826c3698206e",
@@ -258,6 +274,10 @@
 			"content": "ff3fde67b2f1c52c92a42f87d9f39e3944f944be7696f11f6a441f9ec4369c78",
 			"art": "af26715eb516d9d3dfa4eaf059fa32fdec5979b33c5fdeb585d025fe9ae58d0b"
 		},
+		"the-power-of-feeble-faith": {
+			"content": "19e2f982921b82ccff92c67d377d6cfa235ac0cce6cd600f89f1b7ebf035927e",
+			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
+		},
 		"the-power-of-stillness": {
 			"content": "be5554ad84e7507be315befc120b482fdb889c7a56e7e4a1f20834fee1031979",
 			"art": "75c125cec37af1c81f6c9c3603658309afba2fc879a952a2f4a6bd4002e76253"
@@ -273,6 +293,10 @@
 		"the-right-kind-of-faith": {
 			"content": "df3cb57a423182a27e18a8b09059daa7b49ec84eb9f953f5df66c60ac7d526fc",
 			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
+		"the-secret-of-tranquillity": {
+			"content": "4b8211af294f58355838aa23f28d4ccdda245ddf170044a6de748733221f2c67",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		},
 		"the-shameful-sufferer": {
 			"content": "c4920478df3841636ce1bbb71391dc4c6d0f034f782ef88a4f6c888fc99e575b",

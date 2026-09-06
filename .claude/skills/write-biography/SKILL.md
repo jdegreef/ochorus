@@ -337,6 +337,21 @@ holder (a ministry, estate, or archive), which is the founder's call to pursue,
 not something to fake with a mislicensed upload. (Kivengere / Nsibambi both
 stayed monograms this way — Nsibambi has no free image at all.)
 
+**But read the `Credit` field before you reject — a CC tag over a provably
+pre-1929 source is copyfraud the OTHER way, and the source may be usable.** A
+19th-century subject (Alexander Maclaren, d. 1910) can have Commons images tagged
+`CC BY-SA 4.0` with `DateTimeOriginal` 2019, where the uploader's own `Credit`
+says the picture is from an 1889 publication (*Manchester Faces and Places*). The
+underlying work is then unambiguously US-PD by publication year, and a faithful
+reproduction of a PD 2D work earns no new copyright — so the CC tag is legally
+ineffective and the image IS usable (this is the `{{PD-Art}}` case). The
+DIFFERENCE from Kivengere is the source date: Kivengere's underlying photo is a
+possibly-copyrighted 20th-c. image; Maclaren's is a named 1889 print. Default to
+the monogram AND surface the finding to the founder ("a genuine 1889 PD portrait
+exists, only under a copyfraud CC tag — add it, or not?") rather than silently
+dropping a famous face — the publication-date-vs-uploader-tag call is theirs, not
+one to make unilaterally. *(Maclaren shipped a monogram + a flagged note, 2026-09.)*
+
 **If the environment can't reach the image (blocked egress, no Commons access),
 that is not "no portrait exists" — it's "couldn't fetch it here."** Don't
 silently ship a monogram for someone with an obvious public-domain likeness.
