@@ -292,6 +292,61 @@ class EnglishAuditPrecisionTests(SimpleTestCase):
             _findings("<blockquote><p>ends here.</p><p>Starts there.</p></blockquote>"),
         )
 
+    def test_stray_parens_needs_the_pair_to_be_EMPTY(self):
+        """A cross-reference whose anchor text the sanitizer deleted.
+
+        EMPTINESS is the test, and it is the whole reason the class is exact —
+        see `STRAY_PARENS` for the cause, the corpus measurement, and why the
+        neighbouring unbalanced-paren idea was rejected. What this pins is the
+        line between the two: an empty pair is the defect, a pair carrying
+        anything at all is the author's prose.
+        """
+        # The defect, six of them in one sentence of `holy-in-christ` ch10.
+        self.assertEqual(
+            _findings("<p>deep Restfulness (), humble Reverence ()</p>").get("stray-parens"), 2
+        )
+        # Same defect with the space the extractor sometimes leaves behind.
+        self.assertEqual(
+            _findings("<p>known by us in their power. ( )</p>").get("stray-parens"), 1
+        )
+        # The convention: a parenthesis with content, however short, is prose.
+        for kept in ("(ch. 3)", "(a)", "(Note A.)", "(see Luke iv.)"):
+            self.assertNotIn(
+                "stray-parens",
+                _findings(f"<p>deep Restfulness {kept}, and so on</p>"),
+                f"{kept} carries a reference",
+            )
+
+    def test_stray_parens_does_not_claim_the_defects_it_cannot_see(self):
+        """The three shapes it is blind to, pinned so a clean report is read
+        for exactly what it says.
+
+        All three are the same sanitizer damage wearing a shape an emptiness
+        test cannot match, and each was found by reading a shipped work rather
+        than by a scanner. Widening the pattern to reach any of them is what
+        would cost the class the precision it is being added for.
+        """
+        # 1. A lone unmatched `)` — `ministry-of-intercession` ch13, where
+        #    Gutenberg's own transcription dropped the opening paren. Only a
+        #    balance check sees this, and balance measures 57 rows.
+        self.assertNotIn("stray-parens", _findings("<p>of His spirit to the Father. )</p>"))
+
+        # 2. Quote marks left between the parentheses — `holy-in-christ`
+        #    ch12, where Gutenberg had
+        #    `(see ‘<a class="pginternal">Sixth Day</a>’)`.
+        self.assertNotIn(
+            "stray-parens", _findings("<p>His Glory and Majesty (see ‘’). And here</p>")
+        )
+
+        # 3. A dropped HEADING — `holy-in-christ` ch33 as it ships, where the
+        #    heading was deleted outright and only its rule survived. There is
+        #    no punctuation left for ANY text-level check to catch, which is
+        #    why the assertion below is about the class and not about this
+        #    snippet: see STRAY_PARENS for the two selectors that do this.
+        self.assertNotIn(
+            "stray-parens", _findings("<hr/> <p>In a little book—Holiness, as</p>")
+        )
+
     def test_misspelling_needs_word_boundaries(self):
         """The trap the corrections table already warned about.
 
@@ -682,6 +737,14 @@ class EnglishAuditContractTests(SimpleTestCase):
                 "misspelling",
                 "orphan-close-quote",
                 "run-together",
+                # Neither. The DETECTION is exact — an empty parenthesis pair
+                # is never prose — but the repair is not: only the source can
+                # say what the anchor said, and it may be a note letter
+                # (`(Note A.)`), a chapter reference (`(ch. 3)`) or a page.
+                # `holy-in-christ` ch10 needed the Gutenberg HTML read for the
+                # targets AND two archive.org printings compared to settle
+                # whether the references were the author's at all.
+                "stray-parens",
                 "title-case-vs-body",
                 # Neither: the scanner can spot that a word LOOKS like two
                 # glued together, but only a reader can say where the seam
