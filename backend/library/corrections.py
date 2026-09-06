@@ -634,8 +634,41 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # A Gutenberg <h3>Transcriber's Notes</h3> block (formatting notes, not
         # Murray) trailed the final Notes chapter; the two space-before-punct
         # findings were its stripped page refs. Remove the whole block.
+        #
+        # The twelve pairs after it repair the other half of that same import.
+        # Gutenberg spells each cross-reference to the endnotes as a link —
+        # `(<a href="#nt.A">Note A.</a>)` — and the extractor kept the
+        # parentheses and dropped the anchor's text, leaving a reader five bare
+        # `()` and, in ch13, a lone `)` (Gutenberg's own transcription drops
+        # that one's opening paren; the 1898 Nisbet printing has it). All six
+        # read `(Note A.)` … `(Note F.)` in the print, in chapter order, and
+        # the notes they point at are all still here as ch18. Found by the
+        # Hindi translator of chapters 11-13, who mirrored them faithfully —
+        # which is correct of a translator, and is what makes them fixable.
+        #
+        # The hi pairs are the same repair in that edition's OWN vocabulary:
+        # its ch18 is titled टिप्पणियाँ, so a single note is टिप्पणी. The note
+        # LETTER stays Latin — it keys an endnote list that has nothing else to
+        # key on. Nothing is invented but that one word.
+        #
+        # NOT `source_fixes`: the parentheses are what the extractor made of a
+        # link, not what Murray printed. The hi fixture was settled by hand in
+        # the same commit — see the translation-fixture failure mode in the
+        # `english-qa` skill for why nothing in the repo does that for you.
         "replacements": [
             ('<h3>Transcriber’s Notes</h3><p>Minor errors and inconsistencies in punctuation and hyphenation have been silently corrected.</p> <p>On page , the heading “What the Health that Jesus Offers.” is as in the original text.</p> <p>As explained in the section on , on each daily page in the tract “Pray Without Ceasing”, several lines are ruled to leave room for “SPECIAL PETITIONS”. These are hidden on screen in this version, but can be displayed by following the instructions in the file header. The ruled lines will be displayed if the text is printed.</p>', ""),
+            ("May God discover this to us. ()", "May God discover this to us. (Note A.)"),
+            ("makes us reign in life. ()", "makes us reign in life. (Note B.)"),
+            ("He will delight to give.” ()", "He will delight to give.” (Note C.)"),
+            ("known by us in their power. ()", "known by us in their power. (Note D.)"),
+            ("of His spirit to the Father. )", "of His spirit to the Father. (Note E.)"),
+            ("Gods seeks intercessors. ()", "Gods seeks intercessors. (Note F.)"),
+            ("प्रकट करे। ()", "प्रकट करे। (टिप्पणी A.)"),
+            ("बढ़नेवाला। ()", "बढ़नेवाला। (टिप्पणी B.)"),
+            ("प्रसन्न होगा।” ()", "प्रसन्न होगा।” (टिप्पणी C.)"),
+            ("जानी जा सकती है। ()", "जानी जा सकती है। (टिप्पणी D.)"),
+            ("सौंप देने की प्रार्थना। )", "सौंप देने की प्रार्थना। (टिप्पणी E.)"),
+            ("ढूँढ़ता है। ()", "ढूँढ़ता है। (टिप्पणी F.)"),
         ],
     },
     "essentials-of-prayer": {

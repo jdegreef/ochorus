@@ -249,6 +249,37 @@ def fix_enoch_references(body_html: str) -> str:
     return _ROMANS_6.sub("6:9-11)", body_html)
 
 
+# `The Ministry of Intercession` ch13 ("In the Name of Christ") walks Luke's
+# record of Christ at prayer, and introduces the first announcement of His death
+# — "after He had elicited from Peter the confession that He was the Christ" —
+# with "(Luke ix. 15), 'And it came to pass that He was praying alone.'" Luke
+# 9:15 is the seating of the five thousand ("And they did so, and made them all
+# sit down"); the words quoted are Luke 9:18, which is exactly the verse before
+# Peter's confession, so the sentence's own argument settles it.
+#
+# The error is MURRAY'S, not ours: the 1898 Nisbet printing reads "(Luke ix.
+# 15)" (archive.org `ministryofinterc00murruoft`, p. 135), and Gutenberg's
+# transcription carries it forward. Hence source_fixes rather than
+# BODY_CORRECTIONS. Its two neighbours in the same paragraph — ix. 28 for the
+# Transfiguration and xi. 1 for "Lord, teach us to pray" — are both correct, so
+# nothing here suggests a systematic renumbering.
+#
+# The Hindi translator reproduced it as "(लूका 9:15)" — faithfully, and that is
+# what makes it repairable here. Each edition prints the citation in its own
+# form (English roman-and-space, Hindi arabic-and-colon), so both are listed;
+# any other edition no-ops. Idempotent: "15" is not a substring of the output.
+INTERCESSION_LUKE_918 = [
+    ("(Luke ix. 15)", "(Luke ix. 18)"),
+    ("(लूका 9:15)", "(लूका 9:18)"),
+]
+
+
+def fix_praying_alone_reference(body_html: str) -> str:
+    for bad, good in INTERCESSION_LUKE_918:
+        body_html = body_html.replace(bad, good)
+    return body_html
+
+
 # (slug, chapter order) -> repairs, applied in order.
 SOURCE_FIXES = {
     ("humility-2", 9): [fix_name_of_dog],
@@ -262,6 +293,7 @@ SOURCE_FIXES = {
     ("the-inner-chamber", 23): [fix_treasure_in_a_field],
     ("he-holds-my-tomorrows", 7): [fix_judas_objection],
     ("he-holds-my-tomorrows", 8): [fix_enoch_references],
+    ("ministry-of-intercession", 13): [fix_praying_alone_reference],
 }
 
 

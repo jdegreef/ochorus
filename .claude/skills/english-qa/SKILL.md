@@ -67,14 +67,16 @@ DJANGO_DEBUG=true uv run python manage.py audit_english --json /tmp/findings.jso
 DJANGO_DEBUG=true uv run python manage.py audit_english --update-baseline
 
 # after adding a declared repair, bring the committed fixture in line. THREE
-# steps: normalize fixes body_html only, rederive fixes body_text, and NEITHER
-# touches word_count — a split-word rejoin ("Je rusalem" -> "Jerusalem") drops
-# the token count, so recompute it or the fixture disagrees with itself:
+# steps, in this order: normalize fixes body_html ONLY, and the other two
+# re-derive from it. Skip either and the fixture disagrees with itself — a
+# split-word rejoin ("Je rusalem" -> "Jerusalem") drops the token count:
 DJANGO_DEBUG=true uv run python manage.py normalize_english_fixture --write
 DJANGO_DEBUG=true uv run python manage.py rederive_body_text --write
-# then, for the touched .en.json, set word_count = library.text.word_count(body_html)
-# per chapter and re-serialize with library.content_fixtures.render_rows.
+DJANGO_DEBUG=true uv run python manage.py rederive_word_count --write
 ```
+
+Only the FIRST of those three is English-only, and nothing settles a
+translation's fixture for you — see the failure mode at the end.
 
 The corpus scan covers **books, sermons and author biographies** — bios come
 out of `authors.json`, and are exempt from the anachronism check because we
@@ -287,3 +289,78 @@ Reported, not fixed
   the quote, keeping the `"` out of the pair entirely (`it to be able to
   apprehend` -> `is to be able to apprehend`, not `"know mysteries" it…`). The
   fix still applies correctly to `body_html`; you have only moved the anchor.
+- **A pair written for a TRANSLATION leaves that fixture stale, silently.**
+  `apply_body_corrections` is keyed by slug alone, so its command visits every
+  language's stored rows and production repairs them all. Nothing does that to
+  the committed file: `normalize_english_fixture` globs `*.en.json`, and so does
+  `tests_english_audit.test_the_fixture_is_clean` — so a non-English pair is
+  applied nowhere in the repo and no gate says a word. Settle that fixture by
+  hand in the same commit (apply `apply_body_corrections` per chapter, write
+  with `content_fixtures.render_rows`), then let `rederive_body_text` and
+  `rederive_word_count` — which ARE every-language — catch the derived columns.
+  Check first that the corrections are a no-op on that language apart from your
+  own pairs: the hyphen rejoin and `strip_footnote_markers` are rules, they run
+  on every body, and neither was written against Devanagari or Arabic.
+- **A defect class the audit cannot see: DROPPED ANCHOR TEXT — and its cause is
+  ONE SELECTOR.** `ministry-of-intercession` shipped five bare `()` and one lone
+  `)` where Gutenberg had `(<a href="#nt.A" class="pginternal">Note A.</a>)`,
+  six cross-references to endnotes the book still carries. Not OCR, and not the
+  importer: `sanitize.DROP_SELECTORS` carries `"[class*=pginternal]"`, and
+  `_clean` **decomposes** the drop-selectors before it unwraps everything else —
+  so a non-allowlisted `<a>` normally survives as its text, but a *Gutenberg*
+  one is deleted whole. Gutenberg puts `class="pginternal"` on every internal
+  link, so this reaches all 23 Gutenberg-sourced books. Check it in one line:
+  ```python
+  clean_fragment('<p>x (<a class="pginternal" href="#n">Note A.</a>)</p>')
+  # '<p>x ()</p>'      — without the class: '<p>x (Note A.)</p>'
+  ```
+  The SAME line eats the `<h4>` heading each reference points AT: the heading's
+  only child is that anchor, so decompose empties it and `_clean`'s empty-block
+  regex then deletes the heading itself. One cause, two symptoms — and the grep
+  below sees only the first, so if a work has an endnote or glossary chapter,
+  read its opening lines too.
+  ```bash
+  grep -c ' ()' backend/library/fixtures/content/books/*.json
+  ```
+  Corpus-wide that is 8 sites in 3 works and every one is real, so a bare-`()`
+  check would be exact; an unbalanced-paren check would NOT (57 rows, mostly
+  period prose). Six of the eight are `holy-in-christ` ch10 — the same selector,
+  the same book-internal cross-references (`(<a class="pginternal">ch. 3</a>)`),
+  still unrepaired. **The shipped text still has to be repaired by string pair,
+  even after the selector is fixed**: a re-import runs `upsert_book`, which
+  deletes and recreates every chapter and re-runs the title heuristics, and
+  restoring the `<h4>`s in English alone would break the ordered-tag parity with
+  the translations that `tests_translation_markup` enforces. So the repair must
+  be tag-neutral — text inside blocks that already exist.
+- **Verifying a citation needs the scan, but not `_djvu.xml`.** The XML is for
+  paragraphing, where indent coordinates are the oracle. To settle whether a
+  wrong reference is the author's or ours, `_djvu.txt` is enough and far
+  cheaper — and it is the difference between `BODY_CORRECTIONS` and
+  `source_fixes` + a migration. `ministry-of-intercession` ch13 cites Luke ix.
+  15 for a quotation of Luke 9:18; the 1898 printing (archive.org
+  `ministryofinterc00murruoft`, p. 135) has the error, so it is Murray's, and
+  Gutenberg only carried it forward. Find the scan by identifier with
+  `archive.org/advancedsearch.php?q=title:(...) AND creator:(...)`, then take
+  the OLDEST printing — a 1982 reprint is usually borrow-only, with no text.
+- **A `source_fixes` migration: copy 0069, NOT 0066/0075.** Those two each wrote
+  `re.sub(r"<[^>]+>", " ", html)` inline to rebuild `body_text`, because a
+  historical model runs no `save()` hook — and that sub is subtly wrong twice
+  over: it spaces EVERY tag (so an inline `<em>` before a comma yields "power .
+  Our"), and it never unescapes. `backfill_body_text` only fills an EMPTY
+  `body_text`, so the drift NEVER self-corrects; 0084 says so in its own
+  docstring and 0085/0094 exist to clean up after them. Two ways out, and the
+  second is better for a reference swap:
+  - re-derive with the canonical helpers — `text.html_to_text(fixed)` and
+    `text.word_count(fixed)`, what `save()` actually calls (0084, 0103);
+  - or **apply the same replacement to `body_text` directly** (0069), which
+    cannot drift at all because it touches only the characters you meant. A
+    citation survives tag-stripping intact, so the pair matches; and a reference
+    swap is one token for one token, so `word_count` needs no write. Do NULL
+    `search_vector` either way, or search keeps matching the old reference.
+
+  The cheap proof that you got it right, before you push — reconstruct the
+  pre-fix row from `git show origin/main:<fixture>`, run it through
+  `apply_source_fixes` then `settled_chapter_body` then `html_to_text` /
+  `word_count`, and assert all three columns equal the committed fixture and
+  that a second pass is a no-op. That is the whole deploy path in ten lines, per
+  language, and it is what turns "the tests pass" into "production converges".
