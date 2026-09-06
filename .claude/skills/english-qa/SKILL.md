@@ -342,3 +342,25 @@ Reported, not fixed
   Gutenberg only carried it forward. Find the scan by identifier with
   `archive.org/advancedsearch.php?q=title:(...) AND creator:(...)`, then take
   the OLDEST printing — a 1982 reprint is usually borrow-only, with no text.
+- **A `source_fixes` migration: copy 0069, NOT 0066/0075.** Those two each wrote
+  `re.sub(r"<[^>]+>", " ", html)` inline to rebuild `body_text`, because a
+  historical model runs no `save()` hook — and that sub is subtly wrong twice
+  over: it spaces EVERY tag (so an inline `<em>` before a comma yields "power .
+  Our"), and it never unescapes. `backfill_body_text` only fills an EMPTY
+  `body_text`, so the drift NEVER self-corrects; 0084 says so in its own
+  docstring and 0085/0094 exist to clean up after them. Two ways out, and the
+  second is better for a reference swap:
+  - re-derive with the canonical helpers — `text.html_to_text(fixed)` and
+    `text.word_count(fixed)`, what `save()` actually calls (0084, 0103);
+  - or **apply the same replacement to `body_text` directly** (0069), which
+    cannot drift at all because it touches only the characters you meant. A
+    citation survives tag-stripping intact, so the pair matches; and a reference
+    swap is one token for one token, so `word_count` needs no write. Do NULL
+    `search_vector` either way, or search keeps matching the old reference.
+
+  The cheap proof that you got it right, before you push — reconstruct the
+  pre-fix row from `git show origin/main:<fixture>`, run it through
+  `apply_source_fixes` then `settled_chapter_body` then `html_to_text` /
+  `word_count`, and assert all three columns equal the committed fixture and
+  that a second pass is a no-op. That is the whole deploy path in ten lines, per
+  language, and it is what turns "the tests pass" into "production converges".
