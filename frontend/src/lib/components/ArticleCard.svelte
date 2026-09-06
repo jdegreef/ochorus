@@ -26,10 +26,16 @@
 		background: var(--color-surface);
 		text-decoration: none;
 		color: inherit;
-		transition: border-color var(--duration-fast) ease;
+		transition:
+			border-color var(--duration-fast) ease,
+			background var(--duration-fast) ease;
 	}
+	/* Row card, so it TINTS rather than lifts — the same border→accent +
+	   bg→surface-2 as .sermon-card, so the two row families hover alike
+	   (page-design H1). */
 	.article-card:hover {
 		border-color: var(--color-accent);
+		background: var(--color-surface-2);
 	}
 	.article-card h2 {
 		color: var(--color-text);

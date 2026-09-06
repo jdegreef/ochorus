@@ -742,7 +742,7 @@
 				{#each topics as tp (tp.slug)}
 					<a
 						href={localizeHref(`/topics/${tp.slug}`)}
-						class="rounded-full border border-border px-3 py-1 text-small text-text hover:border-accent hover:text-accent hover:no-underline"
+						class="tag"
 					>
 						{tp.title}
 					</a>

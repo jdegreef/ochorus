@@ -380,7 +380,7 @@
 			{#each book.topics as topic (topic.slug)}
 				<a
 					href={localizeHref(`/topics/${topic.slug}`)}
-					class="rounded-full border border-border px-3 py-1 text-small text-muted hover:border-accent hover:text-accent hover:no-underline"
+					class="tag"
 				>
 					{topic.title}
 				</a>
@@ -438,7 +438,7 @@
 						? `/scripture/${entry.page.book}/${entry.page.chapter}/` +
 							(entry.page.verse ? `${entry.page.verse}/` : '')
 						: localizeHref(`/search?q=${encodeURIComponent(entry.reference)}`)}
-					class="rounded-full border border-border px-3 py-1 text-small text-muted hover:border-accent hover:text-accent hover:no-underline"
+					class="tag"
 				>
 					{entry.reference}
 				</a>
