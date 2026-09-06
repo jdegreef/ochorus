@@ -305,6 +305,29 @@ def pages_for(refs: list[str]) -> dict[str, dict | None]:
             out[ref] = None
     return out
 
+def scripture_links(candidates: list[str]) -> dict[str, str]:
+    """Map each linkable reference candidate to its scripture-page URL.
+
+    ``candidates`` are raw reference strings — the ``data-ref`` values
+    ``scripture.reference_candidates`` collects from a body. Reuses
+    :func:`pages_for` (the one floor-respecting resolver, one query) so an
+    inline link is emitted only where the page was actually built, never a 404.
+    Only the candidates that resolve appear in the result; the rest keep their
+    popover-only anchor. The URL shape mirrors the chapter/book pages' chips:
+    ``/scripture/<book>/<chapter>/`` with a trailing ``<verse>/`` for a verse
+    page.
+    """
+    out: dict[str, str] = {}
+    for ref, page in pages_for(candidates).items():
+        if not page:
+            continue
+        url = f"/scripture/{page['book']}/{page['chapter']}/"
+        if page.get("verse"):
+            url += f"{page['verse']}/"
+        out[ref] = url
+    return out
+
+
 #: How many of a BOOK's own chapters must treat a passage before the book page
 #: lists it. Two, not the corpus's three: this is a different question. The
 #: corpus floors ask "do enough independent voices treat this to deserve a
