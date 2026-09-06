@@ -27,6 +27,7 @@ const sermon = (title: string, p: number): Quote => ({
 
 const page = (quotes: Quote[]): QuotePage => ({
 	author: { slug: 'w', name: 'A Writer', photo_url: '', birth_year: 1834 },
+	topics: [],
 	quotes
 });
 

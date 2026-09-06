@@ -2290,6 +2290,68 @@ BODY_CORRECTIONS.setdefault("waiting-on-god", {}).setdefault("replacements", [])
     ("<p> 'I SPOKE of an army", "<p> I SPOKE of an army")
 )
 
+# OCR/extraction slips found while translating three works to Portuguese
+# (batch 2). Each is a mechanical defect whose correct reading is forced by
+# grammar or the surrounding text and confirmed against a canonical edition
+# (Gutenberg #65115 for Bounds; spurgeon.org for "Christ Crucified"). The
+# Portuguese editions render the corrected reading (fix-forward).
+BODY_CORRECTIONS.setdefault("power-through-prayer", {}).setdefault("replacements", []).extend([
+    # ch01: "in dependent" is a split of "independent" (a king's bearing is
+    # independent, not dependent).
+    ("royal, in dependent bearing", "royal, independent bearing"),
+    # ch04: William Carey's Serampore Brotherhood; "Carrey" is an OCR doubling.
+    ("Carrey’s Brotherhood", "Carey’s Brotherhood"),
+    # ch07: Lancelot Andrewes — ch08 already spells it "Andrewes"; canonical agrees.
+    ("Bishop Andrews", "Bishop Andrewes"),
+    # ch11 (Edwards quotation): "distingushed" -> "distinguished".
+    ("distingushed talents", "distinguished talents"),
+    # ch11: canonical "neither arrested nor straitened" (narrowed), paired with
+    # the channel being "broadened"; "straightened" inverts the image.
+    ("neither arrested nor straightened", "neither arrested nor straitened"),
+    # ch12 (Cecil epigraph): missing auxiliary "be" in the passive.
+    ("heart will not borne home", "heart will not be borne home"),
+    # ch13: closing quote after "Give me thy heart!" mangled to the glyph "Ý".
+    ("thy heart!Ý is", "thy heart!” is"),
+    # ch14: two em-dashes flattened to "?" and one to a stray apostrophe.
+    ("and retain?the art", "and retain—the art"),
+    ("an audience?he has", "an audience—he has"),
+    ("such a thing’but there", "such a thing—but there"),
+    # ch15: "he"->"be"; and in the verse couplet "silt"->"sin" (next line: "for sin").
+    ("need to he refreshed", "need to be refreshed"),
+    ("death to silt", "death to sin"),
+    # ch16: canonical "pungent, penetrating heart-breaking force".
+    ("pungent, perpetrating", "pungent, penetrating"),
+    # ch16: canonical "the holy of holies".
+    ("holy of holiest", "holy of holies"),
+    # ch18: "an" -> "in".
+    ("occupied an the spiritual life", "occupied in the spiritual life"),
+])
+BODY_CORRECTIONS.setdefault("the-almost-christian", {}).setdefault("replacements", []).extend([
+    # subject "he" governs both verbs: "acts and speaks".
+    ("all things act and speaks", "all things acts and speaks"),
+    # three stray full stops mid-sentence (lowercase word after each confirms
+    # the sentence continues); the second is inside a quotation of John 1:12.
+    ("in general. the giving", "in general, the giving"),
+    ("the sons of God. even to them", "the sons of God, even to them"),
+    ("words and works. your business", "words and works, your business"),
+    # NOTE (not corrected here): the sermon also has many sentence-initial "he/
+    # his" left lowercase after a full stop — a pervasive capitalization artifact
+    # better handled by a dedicated normalization pass than by fragile string
+    # pairs. Flagged for the english-qa sweep.
+])
+BODY_CORRECTIONS.setdefault("christ-crucified", {}).setdefault("replacements", []).extend([
+    # doubled genitive; parallel clause reads "his father's name was Joseph".
+    ("his mothers’s name", "his mother’s name"),
+    # canonical "work out its own conclusions" ("word" is a d/k OCR slip).
+    ("to word out its own", "to work out its own"),
+    # a "Greek" would call exclusive truth bigotry; "begot" is a slip for "bigot".
+    ("I was a begot", "I was a bigot"),
+    # canonical "accoutred as ye are" (the swim-in-armour image from Julius Caesar).
+    ("plunge in, accounted as ye are", "plunge in, accoutred as ye are"),
+    # John 20:16: standard transliteration "Rabboni".
+    ("him “Rabonni.”", "him “Rabboni.”"),
+])
+
 
 _LG_DOUBLED_VERB: dict[str, list[tuple[str, str]]] = {
     "all-of-grace": [
