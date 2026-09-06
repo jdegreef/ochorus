@@ -563,6 +563,22 @@
 		cursor: pointer;
 		transition: background var(--duration-fast) ease, border-color var(--duration-fast) ease, color var(--duration-fast) ease;
 	}
+	/* A disabled button must LOOK disabled. There was no :disabled rule, so a
+	   Save/Sync/Export or resend button sat at full opacity with a normal cursor
+	   and just did nothing on click — indistinguishable from an enabled one. The
+	   `pointer-events` guard also stops the hover border firing on a dead control.
+	   (`<a class="btn">` can't be :disabled, so this only touches real buttons.) */
+	.btn:disabled {
+		cursor: default;
+		pointer-events: none;
+	}
+	/* …but a WORKING button (disabled only to block a double-submit while it
+	   spins) must still read as working, not greyed-out — the label + .btn-spinner
+	   pattern (STYLE_GUIDE §6) is deliberate. It marks itself `aria-busy`, so only
+	   the inertly-disabled state fades. */
+	.btn:disabled:not([aria-busy='true']) {
+		opacity: 0.5;
+	}
 	/* Primary is soft, not bold: a brand-tinted button, never a solid indigo
 	   block (see STYLE_GUIDE §5). Matches Take Root. */
 	.btn-primary {
@@ -1336,7 +1352,7 @@ nav.appnav .navsearch:hover {
 
    WHICH classes are unlayered matters, and the split is not obvious:
      - UNLAYERED (a utility loses, so use a modifier): .book-card, .book-grid,
-       .shelf-card, .sermon-row, .filter-field, .field, .seg, .chip,
+       .shelf-card, .sermon-row, .filter-field, .field, .seg, .chip, .tag,
        .section-label, .eyebrow, .reading, .widthctl, nav.appnav, .account-*,
        .prefs-*.
      - IN `@layer components` (a utility WINS, no `!` needed): .btn and its
@@ -1666,6 +1682,29 @@ nav.appnav .navsearch:hover {
 	border-color: var(--accent-soft-border);
 	color: var(--accent);
 	font-weight: 600;
+}
+
+/* Related-tag pill — a navigational LINK pill: a book's topics, "more by this
+   author", the related sermons. Distinct from .chip, which is a filter toggle
+   that stays put; a .tag is an anchor that goes somewhere. It was hand-rolled
+   ~8 times as `rounded-full border border-border px-3 py-1 …` that drifted on
+   text colour (text / muted) and whether it carried a surface fill
+   (page-design J1). One recipe now. */
+.tag {
+	display: inline-block;
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	background: var(--surface);
+	padding: 0.25rem 0.75rem;
+	font-size: var(--fs-small);
+	line-height: 1.4;
+	color: var(--text);
+	white-space: nowrap;
+}
+.tag:hover {
+	border-color: var(--accent);
+	color: var(--accent);
+	text-decoration: none;
 }
 
 /* Narrower / wider stepper (prefs menu), styled as a joined button pair. */

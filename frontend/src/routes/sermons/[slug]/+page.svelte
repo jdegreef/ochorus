@@ -478,7 +478,7 @@
 			{#each sermon.scripture_refs as ref (ref)}
 				<a
 					href={localizeHref(`/search?q=${encodeURIComponent(ref)}`)}
-					class="rounded-full border border-border px-3 py-1 text-small text-text hover:border-accent hover:text-accent hover:no-underline"
+					class="tag"
 				>
 					{ref}
 				</a>
