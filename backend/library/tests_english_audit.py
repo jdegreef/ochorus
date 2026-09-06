@@ -22,7 +22,7 @@ from functools import lru_cache
 
 from django.test import SimpleTestCase
 
-from library import english_audit
+from library import corrections, english_audit
 from library.corrections import rejoin_linebreak_hyphens as rejoin
 from library.english_audit import Record, audit_records, counts
 
@@ -608,6 +608,12 @@ class CorrectionsHygieneTests(SimpleTestCase):
                     (f"{tail} {head}", f"{tail}{PARAGRAPH_BREAK}{head}")
                     for tail, head in entry.get("paragraph_breaks", ())
                 ),
+                # A declared note heading has the same two states, spelled
+                # as the anchor it is inserted before (not yet applied — and
+                # still present afterwards) and the heading itself (applied).
+                # Dead means BOTH are gone: the paragraph this titles was
+                # edited or renumbered out from under the entry.
+                *entry.get("note_headings", ()),
             )
             if old not in corpus and new not in corpus
         ]
@@ -701,3 +707,59 @@ class EnglishAuditContractTests(SimpleTestCase):
         )
         emitted = {label for classes in _corpus().values() for label in classes}
         self.assertEqual(emitted - known, set(), "unclassified finding class(es)")
+
+
+class NoteHeadingRestorationTests(SimpleTestCase):
+    """`restore_note_headings` — the sanitizer's OTHER victim.
+
+    `[class*=pginternal]` is a DROP selector, so `_clean` decomposes a Gutenberg
+    anchor whole rather than unwrapping it to its text. A heading whose only
+    child is that anchor is emptied, and the empty-block regex then deletes the
+    heading. `ministry-of-intercession` ch18 lost all six of its note headings
+    that way, in the same import that left five bare `()` in the chapters
+    pointing at them.
+    """
+
+    HEADINGS = (("<p>Just this day", "<h3>NOTE A, Chap. VI. p. 73</h3>"),)
+
+    def _restore(self, html):
+        return corrections.restore_note_headings(html, self.HEADINGS)
+
+    def test_inserts_the_heading_before_its_block(self):
+        self.assertEqual(
+            self._restore("<p>Just this day I met her.</p>"),
+            "<h3>NOTE A, Chap. VI. p. 73</h3> <p>Just this day I met her.</p>",
+        )
+
+    def test_is_idempotent(self):
+        """The property a `replacements` pair could not have here.
+
+        A pure insertion's `old` is a substring of its `new`, so as a pair this
+        would add a second heading on every run — and the deploy applies
+        corrections on top of already-corrected rows, forever.
+        """
+        once = self._restore("<p>Just this day I met her.</p>")
+        self.assertEqual(self._restore(once), once)
+
+    def test_leaves_a_body_that_already_has_the_heading_alone(self):
+        """Including one where the anchor moved under an edited heading."""
+        settled = "<h2>Notes</h2> <h3>NOTE A, Chap. VI. p. 73</h3> <p>Just this day I met her.</p>"
+        self.assertEqual(self._restore(settled), settled)
+
+    def test_no_op_when_the_anchor_is_absent(self):
+        """Every entry is applied to every chapter of its slug, in every
+        language, so five of any six anchors miss on any given body."""
+        other = "<p>A different chapter entirely.</p>"
+        self.assertEqual(self._restore(other), other)
+
+    def test_no_op_on_a_stripped_body(self):
+        """Anchors carry their `<p>`, which `body_text` never holds — that is
+        what keeps block tags out of the tagless field."""
+        text = "Just this day I met her."
+        self.assertEqual(self._restore(text), text)
+
+    def test_inserts_only_the_first_occurrence(self):
+        """A heading titles ONE block. If an anchor were ever ambiguous the
+        repair must not scatter copies through the chapter."""
+        doubled = "<p>Just this day I met her.</p> <p>Just this day I met her.</p>"
+        self.assertEqual(self._restore(doubled).count("<h3>"), 1)
