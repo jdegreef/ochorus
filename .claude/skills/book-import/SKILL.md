@@ -549,6 +549,32 @@ dropped; chapters under 120 words are dropped as stubs.
   `clean_title` gained an ALL-CAPS→Title-Case pass (gated on *every* letter being
   uppercase, so mixed-case titles like "D. L. Moody" are untouched) plus a
   roman-numeral-prefix strip guarded to never eat personal initials. *(2026-07)*
+- **A CCEL TOC set in TITLE CASE keeps its roman prefix — that book needs a
+  per-book `chapter_titles`.** The roman-prefix strip (and the "Of/To/With"
+  downcasing) is deliberately ALL-CAPS-gated, because a mixed-case numeral can be
+  part of the name (Murray's "I. Humility", "II. Timothy"), so a Title-Case TOC
+  like Meyer's *guidance* ("III. The Secret Of Christ's Indwelling") sails through
+  with the numeral intact — and the reader prints the chapter number itself, so it
+  renders doubled ("3. III. …"). No general `clean_title` change can tell the
+  redundant numeral from Murray's referential one; supply a `CORRECTIONS`
+  `chapter_titles` for all N chapters (clean text, "Of/To/With" downcased, period
+  spellings like "Fulness" kept). Since #1572 the titles you write must satisfy
+  `titlecase.recase_title(t) == t` or `tests_fixture` reds — the little-word rule
+  and the ALL-CAPS `is_title_case` gate are the same one. *(the-secret-of-guidance,
+  2026-09)*
+- **Re-importing to REPLACE a book stored as a damaged AI paraphrase** (a modern
+  rewrite shipped in place of the PD original, ch. count often off because it
+  dropped chapters — see the english-qa skill for how one is caught): add a CCEL
+  `BookEntry`, `import_ccel <slug>`, then finish like any re-chapterization. Two
+  things a re-import PRESERVES for free via `upsert_book` (it refreshes only
+  title/subtitle/source_url/cover_color): a **designed/frozen cover** (`cover_url`
+  is left alone, so the registered `.jpg` stays — nothing to redraw), and
+  `description`/`publication_year`. But `publication_year` can be absent on the
+  dev row (the seed didn't set it) — set it back before you serialize, and fix any
+  stale "Contents:" footer in the description while you are there. Because the
+  chapter COUNT changed, ship the chapters with a delete-and-recreate migration
+  (0009/0123 shape), not just the fixture — `seed_books` never rewrites an existing
+  book's chapters. *(the-secret-of-guidance 8→9 ch, 2026-09)*
 - **Order matters: `is_front_matter` must run on the RAW title, before
   `clean_title`.** `clean_title` strips a trailing "Contents", so a TOC section
   titled "Contents" cleans to `""`, slips past `is_front_matter`, and leaks in as
