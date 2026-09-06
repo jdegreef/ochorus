@@ -100,6 +100,14 @@ def _chapter_body(url: str, title: str) -> str:
             el.decompose()
         else:
             break
+    # Self-check: if CCEL ever re-flows these pages so the front-block strip
+    # above misses (a reworded restated title, a new wrapper), the body would
+    # open with the chapter title or "Chapter N" instead of Law's prose. Fail
+    # the build loudly rather than ship a chapter that repeats its own heading.
+    lead = normalize_words(content.get_text(" ", strip=True)[:200])
+    tnorm = normalize_words(title)
+    if lead.startswith("chapter ") or (tnorm and lead.startswith(tnorm[:60])):
+        raise CommandError(f"front-block leaked into the body of {title!r} — check _chapter_body")
     return clean_html(node)
 
 
