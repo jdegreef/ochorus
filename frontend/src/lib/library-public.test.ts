@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { getSermon, getPlan, getBook } from './library-public';
+import { getSermon, getPlan, getBook, fullLifeDiscriminates, type AuthorBio } from './library-public';
 
 /**
  * The localized() English-fallback contract: a detail fetch for a language the
@@ -75,5 +75,38 @@ describe('localized detail fallback', () => {
 		vi.stubGlobal('fetch', mockFetchByLanguage(['en'], bookPayload('English Book')));
 		const book = await getBook('b', 'sw');
 		expect((book as { title: string }).title).toBe('English Book');
+	});
+});
+
+/**
+ * The "Full life" badge/filter self-suppress when they no longer split the
+ * roster (see fullLifeDiscriminates): near-universal (English ~98%) or near-
+ * absent, they are noise. Pins the middle band and its inclusive edges.
+ */
+describe('fullLifeDiscriminates', () => {
+	const roster = (share: number, n = 100): AuthorBio[] =>
+		Array.from({ length: n }, (_, i) => ({ has_long_bio: i < Math.round(share * n) }) as AuthorBio);
+
+	it('hides when almost every writer has a full bio (English case)', () => {
+		expect(fullLifeDiscriminates(roster(0.98))).toBe(false);
+	});
+
+	it('hides when almost no one does', () => {
+		expect(fullLifeDiscriminates(roster(0.0))).toBe(false);
+	});
+
+	it('shows in the middle band (a partly-translated locale)', () => {
+		expect(fullLifeDiscriminates(roster(0.5))).toBe(true);
+	});
+
+	it('is inclusive at both edges of the band', () => {
+		expect(fullLifeDiscriminates(roster(0.05))).toBe(true);
+		expect(fullLifeDiscriminates(roster(0.85))).toBe(true);
+		expect(fullLifeDiscriminates(roster(0.04))).toBe(false);
+		expect(fullLifeDiscriminates(roster(0.86))).toBe(false);
+	});
+
+	it('hides for an empty roster rather than dividing by zero', () => {
+		expect(fullLifeDiscriminates([])).toBe(false);
 	});
 });

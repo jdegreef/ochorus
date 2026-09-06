@@ -393,6 +393,21 @@ export const formatLifespan = (
 	bornLabel: string
 ): string => (!birth ? '' : death ? `${birth}–${death}` : `${bornLabel} ${birth}`);
 
+/** Whether the "Full life" badge/filter still discriminates the roster: the
+ * share of writers with a full-length bio sits in a middle band. Below it the
+ * badge is on almost no card; above it on almost every card (English is ~98%) —
+ * either way it is noise, not signal. `has_long_bio` is per-language, so this
+ * self-tunes per locale. Judge it over the WHOLE locale roster, not a slice, so
+ * a card's badge doesn't flicker between the index and an era page.
+ *
+ * Shared because the biographies index and the per-era pages both need it, and
+ * the band literals must live in exactly one place. */
+export const fullLifeDiscriminates = (authors: AuthorBio[]): boolean => {
+	if (!authors.length) return false;
+	const share = authors.filter((a) => a.has_long_bio).length / authors.length;
+	return share >= 0.05 && share <= 0.85;
+};
+
 /** A book this person is found IN but did not write, with the role they play. */
 export interface AppearsInBook extends BookSummary {
 	role: PersonRole;

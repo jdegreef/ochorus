@@ -2,7 +2,7 @@
 	import { onMount, tick } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { type AuthorBio, type BookSummary } from '$lib/library-public';
+	import { fullLifeDiscriminates, type AuthorBio, type BookSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumbLd, hreflangAll } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
@@ -66,19 +66,10 @@
 	const worksCount = (a: AuthorBio) => a.book_count + a.sermon_count;
 
 	// The "Full life" badge/chip only carry information when they actually SPLIT
-	// the roster. In English nearly every writer now has a full bio (~98%), so the
-	// badge is on almost every card and the chip removes almost no one — noise, not
-	// signal. In a translated locale far fewer bios are translated, so it still
-	// discriminates. `has_long_bio` is per-language, so this self-tunes per locale:
-	// show the control only when the share of long bios sits in a middle band.
-	const FULL_LIFE_SHOW_MIN = 0.05;
-	const FULL_LIFE_SHOW_MAX = 0.85;
-	const longBioShare = $derived(
-		authors.length ? authors.filter((a) => a.has_long_bio).length / authors.length : 0
-	);
-	const showFullLife = $derived(
-		longBioShare >= FULL_LIFE_SHOW_MIN && longBioShare <= FULL_LIFE_SHOW_MAX
-	);
+	// the roster — in English almost every writer now has a full bio, so they
+	// would be noise. Self-tunes per locale; the rule lives in library-public.ts
+	// so the index and the era pages agree.
+	const showFullLife = $derived(fullLifeDiscriminates(authors));
 
 	// A stale ?full=1 from a shared link must not linger once the chip that sets it
 	// is hidden — it would otherwise drive the filter summary and the active-count

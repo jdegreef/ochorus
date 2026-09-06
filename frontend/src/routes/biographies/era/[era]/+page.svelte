@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { type AuthorBio, type BookSummary } from '$lib/library-public';
+	import { fullLifeDiscriminates, type AuthorBio, type BookSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumbLd, hreflangAll } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
@@ -29,14 +29,9 @@
 		return m;
 	});
 
-	// The "Full life" badge only carries information when full bios actually split
-	// the roster — judged over the WHOLE locale, not this era's slice, so a card's
-	// badge doesn't flicker between era pages. Mirrors the biographies index.
-	const showFullLife = $derived.by(() => {
-		if (!authors.length) return false;
-		const share = authors.filter((a) => a.has_long_bio).length / authors.length;
-		return share >= 0.05 && share <= 0.85;
-	});
+	// Only show the "Full life" badge when it still discriminates — judged over the
+	// whole locale roster (not this era slice), matching the biographies index.
+	const showFullLife = $derived(fullLifeDiscriminates(authors));
 
 	// Writers in this era, earliest-born first (undated sink to the end) — the
 	// same order the index uses inside an era group.
