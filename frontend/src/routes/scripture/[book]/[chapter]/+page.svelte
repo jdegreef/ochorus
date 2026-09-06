@@ -92,7 +92,7 @@
 								<span class="vtext">{v.text}</span>
 							</span>
 						{/if}
-						<span class="count">{v.citing_count}</span>
+						<span class="count text-small">{v.citing_count}</span>
 					</li>
 				{/each}
 			</ul>
@@ -151,9 +151,5 @@
 		line-height: 1.55;
 	}
 	/* How many chapters treat this verse — the reason it earned its own page. */
-	.count {
-		font-size: var(--fs-small);
-		font-variant-numeric: tabular-nums;
-		color: var(--color-muted);
-	}
+
 </style>
