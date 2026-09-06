@@ -32,6 +32,13 @@
 			"art": false,
 			"scrim": 1
 		},
+		"a-serious-call": {
+			"ground": "4f01eab7166112682128eb186abcc66ad3c3003e2b8d57a2733ba87682b48d6b",
+			"style": "enlightenment",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"a-short-and-easy-method-of-prayer": {
 			"ground": "d6b8f71d8325be736feb6e3aca9d6df1f45a9168a6ab776058e9636cbce17cb1",
 			"style": "devotional",
