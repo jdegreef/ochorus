@@ -523,6 +523,12 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 #     paragraph into the one before it, and the break is put back between these
 #     two exact strings ("…their own experience." / "Alas!"). Not a
 #     `replacements` pair; `restore_paragraph_breaks` says why.
+#   note_headings: [(anchor, heading)] — the sanitizer DELETED a heading (see
+#     `restore_note_headings`), and it goes back before the block it titles,
+#     identified by that block's opening. Not a `replacements` pair either, and
+#     for a different reason than the seams above: `restore_note_headings` says
+#     why. Spell the heading with the tag the SOURCE used, so the guard
+#     recognises a body that already has it.
 #
 # Applied on every import AND backfillable over stored rows (management command
 # `apply_body_corrections`, plus a data migration for prod).
@@ -678,39 +684,33 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("<p>In my name—repeated six times over.",
              "<p>In My Name—repeated six times over."),
         ],
-        # The other half of the `pginternal` damage: ch18's six note HEADINGS.
-        # Each was an `<h4>` whose only child was the anchor, so decomposing it
-        # emptied the heading and `_clean`'s empty-block regex then deleted the
-        # heading itself — which is why a `grep ()` cannot see this half.
-        # Restored verbatim from the 1898 printing (and Gutenberg), print page
-        # numbers included: what was lost is the whole heading, and trimming it
-        # would be an edit rather than a repair.
+        # The other half of the `pginternal` damage: ch18's six note HEADINGS
+        # (`restore_note_headings` has the mechanism, and why this is not a
+        # `replacements` pair). Restored verbatim from the 1898 printing, print
+        # page numbers included: what was lost is the whole heading, and
+        # trimming it would be an edit rather than a repair. `<h4>` because that
+        # is the tag the source used AND this book's own for a mid-chapter
+        # heading — its `<h3>` is the repeated "A PLEA FOR MORE PRAYER" banner.
         #
-        # BOTH editions, at the same six paragraphs — they run in lockstep, and
+        # BOTH editions, at the same six paragraphs. They run in lockstep, and
         # `tests_translation_markup` pins a translation's ordered tag sequence
-        # against its English, so six `<h3>` in one edition alone would fail it.
-        # The hi wording is that edition's own: it already writes "अध्याय 7 की
-        # टिप्पणी" for the print's "the note to chap. vii.", so both nouns and
-        # the arabic numerals come from its usage.
-        #
-        # Its OWN key, not `replacements`, because this is a pure INSERTION:
-        # `old` would be a substring of `new`, which re-fires forever under
-        # `SettledBodyIdempotenceTests`. The usual escape — consuming the
-        # preceding `</p> ` boundary — is unavailable to Note A, which opens
-        # the chapter. So `restore_note_headings` guards on the heading instead.
+        # against its English, so six headings in one edition alone would fail
+        # it. The hi wording is that edition's own: it already writes "अध्याय 7
+        # की टिप्पणी" for the print's "the note to chap. vii.", so both nouns
+        # and the arabic numerals come from its usage.
         "note_headings": [
-            ("<p>Just this day I have been ", "<h3>NOTE A, Chap. VI. p. 73</h3>"),
-            ("<p>आज ही मैं भारत से आई हुई ए", "<h3>टिप्पणी A, अध्याय 6. पृ. 73</h3>"),
-            ("<p>Let me tell here a story t", "<h3>NOTE B, Chap. VII. p. 89</h3>"),
-            ("<p>मैं यहाँ एक कहानी सुनाता ह", "<h3>टिप्पणी B, अध्याय 7. पृ. 89</h3>"),
-            ("<p>Just yesterday again—three", "<h3>NOTE C, Chap. IX. p. 111</h3>"),
-            ("<p>कल ही फिर—अध्याय 7 की टिप्", "<h3>टिप्पणी C, अध्याय 9. पृ. 111</h3>"),
-            ("<p>Let me once again refer my", "<h3>NOTE D, Chap. X. p. 123</h3>"),
-            ("<p>मैं अपने पाठकों को एक बार ", "<h3>टिप्पणी D, अध्याय 10. पृ. 123</h3>"),
-            ("<p>There is a question, the d", "<h3>NOTE E, Chap. XI. p. 136</h3>"),
-            ("<p>एक प्रश्न है, सबसे गहरा, ज", "<h3>टिप्पणी E, अध्याय 11. पृ. 136</h3>"),
-            ("<p>I have more than once spok", "<h3>NOTE F, Chap. XIV. p. 177</h3>"),
-            ("<p>मैं एक से अधिक बार मसीहियो", "<h3>टिप्पणी F, अध्याय 14. पृ. 177</h3>"),
+            ("<p>Just this day I have been ", "<h4>NOTE A, Chap. VI. p. 73</h4>"),
+            ("<p>आज ही मैं भारत से आई हुई ए", "<h4>टिप्पणी A, अध्याय 6. पृ. 73</h4>"),
+            ("<p>Let me tell here a story t", "<h4>NOTE B, Chap. VII. p. 89</h4>"),
+            ("<p>मैं यहाँ एक कहानी सुनाता ह", "<h4>टिप्पणी B, अध्याय 7. पृ. 89</h4>"),
+            ("<p>Just yesterday again—three", "<h4>NOTE C, Chap. IX. p. 111</h4>"),
+            ("<p>कल ही फिर—अध्याय 7 की टिप्", "<h4>टिप्पणी C, अध्याय 9. पृ. 111</h4>"),
+            ("<p>Let me once again refer my", "<h4>NOTE D, Chap. X. p. 123</h4>"),
+            ("<p>मैं अपने पाठकों को एक बार ", "<h4>टिप्पणी D, अध्याय 10. पृ. 123</h4>"),
+            ("<p>There is a question, the d", "<h4>NOTE E, Chap. XI. p. 136</h4>"),
+            ("<p>एक प्रश्न है, सबसे गहरा, ज", "<h4>टिप्पणी E, अध्याय 11. पृ. 136</h4>"),
+            ("<p>I have more than once spok", "<h4>NOTE F, Chap. XIV. p. 177</h4>"),
+            ("<p>मैं एक से अधिक बार मसीहियो", "<h4>टिप्पणी F, अध्याय 14. पृ. 177</h4>"),
         ],
     },
     "essentials-of-prayer": {

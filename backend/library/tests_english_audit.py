@@ -720,7 +720,7 @@ class NoteHeadingRestorationTests(SimpleTestCase):
     pointing at them.
     """
 
-    HEADINGS = (("<p>Just this day", "<h3>NOTE A, Chap. VI. p. 73</h3>"),)
+    HEADINGS = (("<p>Just this day", "<h4>NOTE A, Chap. VI. p. 73</h4>"),)
 
     def _restore(self, html):
         return corrections.restore_note_headings(html, self.HEADINGS)
@@ -728,7 +728,7 @@ class NoteHeadingRestorationTests(SimpleTestCase):
     def test_inserts_the_heading_before_its_block(self):
         self.assertEqual(
             self._restore("<p>Just this day I met her.</p>"),
-            "<h3>NOTE A, Chap. VI. p. 73</h3> <p>Just this day I met her.</p>",
+            "<h4>NOTE A, Chap. VI. p. 73</h4> <p>Just this day I met her.</p>",
         )
 
     def test_is_idempotent(self):
@@ -741,10 +741,19 @@ class NoteHeadingRestorationTests(SimpleTestCase):
         once = self._restore("<p>Just this day I met her.</p>")
         self.assertEqual(self._restore(once), once)
 
-    def test_leaves_a_body_that_already_has_the_heading_alone(self):
-        """Including one where the anchor moved under an edited heading."""
-        settled = "<h2>Notes</h2> <h3>NOTE A, Chap. VI. p. 73</h3> <p>Just this day I met her.</p>"
-        self.assertEqual(self._restore(settled), settled)
+    def test_disarms_itself_once_the_sanitizer_stops_eating_the_heading(self):
+        """The reason the heading is declared with the tag the SOURCE used.
+
+        `[class*=pginternal]` is what deletes these; when that selector is
+        fixed, a re-import brings Gutenberg's own `<h4>` back. The guard then
+        recognises it and this correction quietly becomes a no-op. Declared as
+        `<h3>` it would not match, and a re-imported English edition would carry
+        BOTH headings — failing `tests_translation_markup` against a Hindi
+        edition that, being a translation rather than a re-import, gained
+        nothing.
+        """
+        reimported = "<h4>NOTE A, Chap. VI. p. 73</h4> <p>Just this day I met her.</p>"
+        self.assertEqual(self._restore(reimported), reimported)
 
     def test_no_op_when_the_anchor_is_absent(self):
         """Every entry is applied to every chapter of its slug, in every
@@ -762,4 +771,4 @@ class NoteHeadingRestorationTests(SimpleTestCase):
         """A heading titles ONE block. If an anchor were ever ambiguous the
         repair must not scatter copies through the chapter."""
         doubled = "<p>Just this day I met her.</p> <p>Just this day I met her.</p>"
-        self.assertEqual(self._restore(doubled).count("<h3>"), 1)
+        self.assertEqual(self._restore(doubled).count("<h4>"), 1)
