@@ -204,12 +204,31 @@ absent from the palette and from search.
 
 ## Guards to extend when a page ships
 
-`lib/pageShell.test.ts` — add the route to `BROWSE_PAGES` (shell + PageHeader)
-or `LEAF_PAGES` (shell). `lib/typeScaleGuard.test.ts`, `colorTokens.test.ts`
-and `rtl.test.ts` scan every `.svelte` automatically. Gaps still open (see
-backlog G): Tailwind's default `text-lg`/`text-6xl` steps, literal durations,
-undefined `var(--radius-*, …)` fallbacks, scoped redefinition of `.seg`/`.chip`/
-`.field`/`.btn`, and arbitrary `max-w-[…]` on a shell.
+Add a new route to `lib/pageShell.test.ts` — `BROWSE_PAGES` (shell + PageHeader
++ the `page-col px-5 py-10` padding) or `LEAF_PAGES` (shell only). **Five
+source-text guards now scan every `.svelte` (admin exempt) — EXTEND them, don't
+re-add:**
+
+- `pageShell.test.ts` — `.page-col`, `<PageHeader>` on browse, the `py-10` shell
+  padding, and no `mx-auto max-w-{2xl…7xl}` shell.
+- `typeScaleGuard.test.ts` — no `text-[…]`; no scoped literal `font-size`;
+  `.text-display` = home hero only; `.text-h1` = the page `<h1>` only, never an
+  `<h2>`–`<h6>`; and no Tailwind default size (`text-base`/`-lg`/`-xl`/`-6xl`…).
+- `typeScaleGuard.test.ts` also forbids `var(--radius-*, …)` fallbacks (a
+  fallback fires only on a MISSING token, so it hid the never-defined
+  `--radius-chip`).
+- `systemClasses.test.ts` — no scoped `<style>` redefinition of `.btn`/`.field`/
+  `.seg`/`.chip`/`.eyebrow`/`.section-label`/`.count`/`.page-col`; add a modifier
+  in `app.css` instead (`.btn-sm`, `.eyebrow-micro`). Exempts admin +
+  `settings/+page.svelte` (its `.seg` is the E1 deferral — remove the exemption
+  when E1 lands).
+- `colorTokens.test.ts` (no raw hex) and `rtl.test.ts` (physical properties).
+
+Still unguarded (deliberately or on the backlog): literal *transition* durations
+— the remaining literals (a one-shot celebration keyframe, the spinner period,
+the reduced-motion override) are non-transition timings that belong OFF the
+three `--duration-*` tokens, so a duration guard would false-positive; and
+hard-coded English on the English-only hubs (F3).
 
 ## Re-auditing (how the backlog was produced)
 
@@ -461,7 +480,11 @@ relevant group.
   1.65); §5 describes a nav (About/Books/Biographies/Contact + language picker)
   and a three-block footer that no longer exist; §9 counts are stale.
   → **fixed in the same PR as this skill** (guide §5/§9 rewritten).
-- [ ] **G2** Guard gaps: `pageShell` omits Home, Articles ×2, the Quotes index
+- [~] **G2** _(mostly shipped 2026-09-05: the four routes added; a
+  `systemClasses.test.ts`; typeScaleGuard extended to Tailwind default sizes and
+  `var(--radius-*,)` fallbacks; a `.text-h1`-reservation and a `py-10` shell-padding
+  guard. LEFT: literal durations — deliberately not guarded, see above — and
+  solid `bg-accent`.)_ Guard gaps: `pageShell` omits Home, Articles ×2, the Quotes index
   and the auth pages, and its `max-w` regex misses `max-w-xl`/`max-w-[…]`;
   `typeScaleGuard` misses Tailwind's default steps; nothing checks literal
   durations, undefined `--radius-*` fallbacks, scoped redefinition of `.seg`/
