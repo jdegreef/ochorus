@@ -1060,6 +1060,21 @@ all of which this command already does. The steps:
   poison the manifest's `composition` digest (bytes of the two scripts); the
   preload keeps it CI-correct because nothing recomputes composition, only
   re-running does. *(Wesley + Booth second sermons, 2026-09)*
+- **A CCEL "sermon" leaf can be an ADDRESS split across `.i`/`.ii` sub-pages —
+  it imports as the intro only** *(Torrey Revival Addresses, 2026-09-05)*. The
+  parent page `revival.v.x.html` ("The Way of Salvation Made as Plain as Day")
+  looks like one sermon but is a 347-word intro; its argument lives in
+  `revival.v.x.i.html` / `.ii.html`, so `import_sermons` silently ships a
+  truncated stub (`import_sermons` extracts ONE page — it does not follow
+  children the way the book importer's `toc_sections` does). Before choosing a
+  CCEL sermon, grep the collection TOC for child leaves of the target and pick a
+  SINGLE-LEAF address (kids=0). In Torrey's `revival` half the addresses split
+  (v.i, v.vi, v.vii, v.ix, v.x, v.xii, v.xiii, v.xvii); the single leaves
+  (v.ii–v.v, v.viii, v.xi, v.xiv–v.xvi) carry their whole text. Signal to catch
+  it after the fact: a word count far below the shelf's ~1,000-word floor.
+  Also: a parsed CCEL scripRef can be ABBREVIATED ("Rom. 3:24") where the rest
+  of the shelf writes the book in full ("Romans 3:24") — pin `scripture_ref` in
+  the catalog so a re-import can't drift the fixture.
 - **CCEL is not one layout — check each collection before trusting the
   masthead parser** *(Whitefield / Edwards / M'Cheyne, 2026-09-04)*. Wesley is
   `<h2>` + `<h3 class="scripRef">`; **Whitefield** is an `<h1>` title with the

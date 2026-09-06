@@ -55,6 +55,9 @@
   "essentials-of-prayer": {
    "orphan-close-quote": 1
   },
+  "filled-with-the-spirit": {
+   "space-before-punct": 1
+  },
   "first-epistle-of-clement": {
    "lost-paragraphing": 1
   },
@@ -105,6 +108,9 @@
   "journal-of-an-expedition-up-the-niger": {
    "lost-paragraphing": 1,
    "orphan-close-quote": 3
+  },
+  "justification-by-grace": {
+   "orphan-close-quote": 1
   },
   "let-us-pray-2": {
    "orphan-close-quote": 1,
@@ -292,9 +298,18 @@
   "the-power-of-stillness": {
    "space-before-punct": 1
   },
+  "the-right-kind-of-faith": {
+   "anachronism": 3
+  },
   "the-secret-of-guidance": {
    "orphan-close-quote": 8,
    "space-before-punct": 5
+  },
+  "the-shameful-sufferer": {
+   "orphan-close-quote": 1
+  },
+  "the-sinners-friend": {
+   "space-before-punct": 2
   },
   "the-unselfishness-of-god": {
    "anachronism": 2

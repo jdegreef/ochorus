@@ -614,4 +614,115 @@ SERMONS: list[SermonEntry] = [
         section="Coming to the King.",
         scripture_ref="1 Kings 10:13",
     ),
+    # --- Tier 3: backbone additions for thin-but-famous preachers ------------
+    # Spurgeon — five more from the New Park Street / Metropolitan Tabernacle
+    # Pulpit on CCEL (assurance, grace, comfort, warm gospel appeal).
+    SermonEntry(
+        "faith",
+        "Faith",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons03/sermons03.i.html",
+    ),
+    SermonEntry(
+        "justification-by-grace",
+        "Justification by Grace",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons03/sermons03.xx.html",
+        # CCEL's scripRef abbreviates the book ("Rom. 3:24"); pin the full
+        # form the rest of the shelf uses so a re-import can't drift it.
+        scripture_ref="Romans 3:24",
+    ),
+    SermonEntry(
+        "the-shameful-sufferer",
+        "The Shameful Sufferer",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons05/sermons05.xiii.html",
+    ),
+    SermonEntry(
+        "the-sinners-friend",
+        "The Sinner's Friend",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons10/sermons10.viii.html",
+    ),
+    SermonEntry(
+        "songs-in-the-night",
+        "Songs in the Night",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons44/sermons44.ix.html",
+    ),
+    # D. L. Moody — three more warm gospel addresses from "Wondrous Love"
+    # (PG 33520), the volume his earlier addresses came from.
+    SermonEntry(
+        "naaman-the-syrian",
+        "Naaman the Syrian",
+        "dwight-l-moody",
+        "gutenberg",
+        "33520",
+        section="NAAMAN THE SYRIAN",
+        scripture_ref="2 Kings 5",
+    ),
+    SermonEntry(
+        "the-right-kind-of-faith",
+        "The Right Kind of Faith",
+        "dwight-l-moody",
+        "gutenberg",
+        "33520",
+        section="THE RIGHT KIND OF FAITH",
+        scripture_ref="Acts 16:30",
+    ),
+    SermonEntry(
+        "one-word-gospel",
+        'One Word—"Gospel"',
+        "dwight-l-moody",
+        "gutenberg",
+        "33520",
+        section='ONE WORD—"GOSPEL"',
+        scripture_ref="1 Corinthians 15:1",
+    ),
+    # A. B. Simpson — two more deeper-life addresses from "The Larger Life",
+    # the Alliance-studies source his other addresses came from.
+    SermonEntry(
+        "filled-with-the-spirit",
+        "Filled with the Spirit",
+        "a-b-simpson",
+        "web",
+        "https://online.ambrose.edu/alliancestudies/simpson/larglif5.htm",
+        scripture_ref="Ephesians 5:18",
+        body_starts="The emphatic word in both these verses",
+    ),
+    SermonEntry(
+        "the-death-of-self",
+        "The Death of Self",
+        "a-b-simpson",
+        "web",
+        "https://online.ambrose.edu/alliancestudies/simpson/larglif9.htm",
+        scripture_ref="Galatians 2:20",
+        body_starts="The story of Abraham, Ishmael and Isaac",
+    ),
+    # R. A. Torrey — the first sermons on his shelf, from "Revival Addresses"
+    # on CCEL. Both are single-leaf addresses: several of the collection's
+    # addresses (Refuges of Lies, The Way of Salvation Made as Plain as Day)
+    # split their argument across two or three sub-pages, so a single import
+    # would catch only the intro — these two carry their whole text on one leaf.
+    SermonEntry(
+        "the-greatest-sentence-ever-written",
+        "The Greatest Sentence That Was Ever Written",
+        "r-a-torrey",
+        "ccel",
+        "https://ccel.org/ccel/torrey/revival.v.ii.html",
+        scripture_ref="1 John 4:8",
+    ),
+    SermonEntry(
+        "every-mans-need-of-a-refuge",
+        "Every Man's Need of a Refuge",
+        "r-a-torrey",
+        "ccel",
+        "https://ccel.org/ccel/torrey/revival.v.v.html",
+        scripture_ref="Isaiah 32:2",
+    ),
 ]
