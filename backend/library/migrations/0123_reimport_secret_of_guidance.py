@@ -74,18 +74,22 @@ def reimport_chapters(apps, schema_editor):
         key=lambda f: f["order"],
     )
 
-    book.chapters.all().delete()
-    Chapter.objects.bulk_create(
-        Chapter(
-            book=book,
-            order=f["order"],
-            title=f["title"],
-            body_html=(body := settled_chapter_body(SLUG, f["order"], f["body_html"])),
-            body_text=html_to_text(body),
-            word_count=word_count(body),
+    new_chapters = []
+    for f in chapters:
+        body = settled_chapter_body(SLUG, f["order"], f["body_html"])
+        new_chapters.append(
+            Chapter(
+                book=book,
+                order=f["order"],
+                title=f["title"],
+                body_html=body,
+                body_text=html_to_text(body),
+                word_count=word_count(body),
+            )
         )
-        for f in chapters
-    )
+
+    book.chapters.all().delete()
+    Chapter.objects.bulk_create(new_chapters)
 
 
 def noop(apps, schema_editor):
