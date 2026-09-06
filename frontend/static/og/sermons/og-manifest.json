@@ -14,6 +14,10 @@
 			"content": "7d8815a036751c3892785ea0b0eb2ca895397a20eda07d5c1e4d256c8c4b8d5a",
 			"art": "763d491efd44377e13af092f384c6ba95a99dd8d00e0374d28ec4073bd34415b"
 		},
+		"behold-the-lamb-of-god": {
+			"content": "2ff18541e46336ab7664685da67a3276c833ed130a299e46294f11c5d8d8455f",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
 		"blessed-adversity": {
 			"content": "a7f700f3b1b3c3a4c1001375e3d3f7c5cf96bd049902bbde9e1e15b81fb87fba",
 			"art": "9cd00f892ca0891ecc1333a269dd432483319497e9fc151fa1507428773014e7"
@@ -46,9 +50,17 @@
 			"content": "525c7d21f1540b4dcdccbfd38f9da22664eb16205bf693582796093be81334bb",
 			"art": "07a898b49e515c22a838175d827658eb25f356608c4728914d41638d3a2a986c"
 		},
+		"come-unto-him": {
+			"content": "5563046e2469d0e44a382e891fc27ca5db14b9154d621e1eb8c237614462285d",
+			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
+		},
 		"comfort-for-the-desponding": {
 			"content": "00e76ef13f69a1b2efe6001c224723e6df0f464764f50f904ac106780cc815c8",
 			"art": "c73954d0939d466964947a1837acd84c16c456b14981fd41a6f81ccd43031317"
+		},
+		"comfort-ye-my-people": {
+			"content": "b3c7fefe815db7aa3ab11488be2e519f1f9415ec80032c5021e64baf78a2dea6",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
 		},
 		"coming-to-the-king": {
 			"content": "4de51580342b2e54e469824122c02956f7bf84972d876b5c39e7f9a8d2d5bfad",
@@ -105,6 +117,10 @@
 		"how-to-contemplate-christs-holy-sufferings": {
 			"content": "0015c08ce656d2fa9e98c1ce28a75b5f2040d9fff4f6b5f12a58ffee4461b273",
 			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
+		"if-god-be-for-us": {
+			"content": "ad602cda7043c4a405ecf89b627212116b84f69e66fa345285038a0fd24dbacb",
+			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
 		},
 		"intercession-every-christians-duty": {
 			"content": "f511c07880dd784d09b3e1fd2dc8d4897d41a97199aee7b01c38e0787bdbd6ea",
@@ -309,6 +325,10 @@
 		"witnessing-for-christ": {
 			"content": "ba0ec10ff35f8e703485822b786b2054e43f2c630b6034d4aa1cc92b86942a66",
 			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
+		"worthy-is-the-lamb": {
+			"content": "fcf7170f1b8b0efdee3b24a9f8ee132eda19d4cd59c63db2ec21ca0ae6bc6ade",
+			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
 		}
 	}
 }

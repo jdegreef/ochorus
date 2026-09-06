@@ -52,6 +52,7 @@ _CCEL = "https://ccel.org/ccel/spurgeon/"
 _WESLEY = "https://ccel.org/ccel/wesley/sermons/"
 _WHITEFIELD = "https://ccel.org/ccel/whitefield/sermons/"
 _EDWARDS = "https://ccel.org/ccel/edwards/sermons/"
+_NEWTON = "https://ccel.org/ccel/newton/"
 
 SERMONS: list[SermonEntry] = [
     # --- Assurance & the character of God -----------------------------------
@@ -724,5 +725,45 @@ SERMONS: list[SermonEntry] = [
         "ccel",
         "https://ccel.org/ccel/torrey/revival.v.v.html",
         scripture_ref="Isaiah 32:2",
+    ),
+    # John Newton — his first sermons on the shelf (he was a bio-only author):
+    # five of the fifty "Messiah" discourses (1786, CCEL newton/messiah1-2),
+    # preached on the scripture passages of Handel's oratorio. Chosen to trace
+    # its arc — Advent comfort, gospel invitation, the Lamb, assurance, the
+    # closing doxology. Each is a self-contained discourse on its own text.
+    SermonEntry(
+        "comfort-ye-my-people",
+        "Comfort Ye My People",
+        "john-newton",
+        "ccel",
+        _NEWTON + "messiah1/messiah1.iii.html",
+    ),
+    SermonEntry(
+        "come-unto-him",
+        "Come Unto Him",
+        "john-newton",
+        "ccel",
+        _NEWTON + "messiah1/messiah1.xvi.html",
+    ),
+    SermonEntry(
+        "behold-the-lamb-of-god",
+        "Behold the Lamb of God",
+        "john-newton",
+        "ccel",
+        _NEWTON + "messiah1/messiah1.xviii.html",
+    ),
+    SermonEntry(
+        "if-god-be-for-us",
+        "If God Be for Us",
+        "john-newton",
+        "ccel",
+        _NEWTON + "messiah2/messiah2.xxi.html",
+    ),
+    SermonEntry(
+        "worthy-is-the-lamb",
+        "Worthy Is the Lamb",
+        "john-newton",
+        "ccel",
+        _NEWTON + "messiah2/messiah2.xxv.html",
     ),
 ]
