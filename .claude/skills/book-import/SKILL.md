@@ -502,6 +502,28 @@ dropped; chapters under 120 words are dropped as stubs.
     / Enchiridion builds follow by holding their editorial content as module
     constants. Fetched public-domain text can come off the wire; anything you
     wrote yourself has to be in the repo. *(epistles-of-ignatius, 2026-09)*
+  - **A CCEL edition can open every chapter with a front-block `extract_body`
+    can't clear, and carry editorial appendices `is_front_matter` doesn't drop —
+    a `build_<name>` with a title filter + a custom leading-strip is the answer.**
+    William Law's *A Serious Call* (`law/serious_call`) has both: (1) the TOC
+    lists 24 "Chapter I."…"Chapter XXIV." leaves plus three editorial
+    **Appendices** (Methuen/Everyman intros, an e-text note), an index and
+    acknowledgements — none of them the author, and none caught by
+    `is_front_matter` (they are neither Contents/Title/Index nor a part divider),
+    so a plain `import_ccel` keeps them. Filter to the leaves whose title begins
+    "Chapter". (2) Each chapter page opens with the **book title split across two
+    `<h2>`s** ("A SERIOUS CALL TO" / "A DEVOUT AND HOLY LIFE"), an
+    `<h3>CHAPTER N</h3>`, and the **chapter title restated as a `<p>`, not a
+    heading** — `extract_body` strips none of it (a split title never restates the
+    whole `book_title`, a title-in-a-`<p>` isn't a heading, and its loop *breaks*
+    at the first heading that doesn't match). Write a `_chapter_body` that soups
+    the node, drops `DROP_SELECTORS` furniture, then decomposes leading blocks
+    while each is empty / `_is_ordinal_heading` / `restates_title(_, title)` / a
+    normalized substring of the book title, up to the first real prose block.
+    **Add a build-time self-check** — assert the finished body's text does NOT
+    open with the chapter title or "chapter n" — so a future CCEL re-flow fails
+    the build loudly instead of silently shipping a chapter that repeats its own
+    heading. `build_serious_call` is the model. *(a-serious-call, 2026-09)*
   - **Fixing the bodies of an ALREADY-SHIPPED book needs a data migration, not
     just a fixture edit.** `seed_books` never re-syncs the chapters of a book it
     has already created (chapter `order` is a public contract), so a re-chapterize
