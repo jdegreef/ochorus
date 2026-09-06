@@ -14,6 +14,10 @@
 	// English, so it says so plainly.
 	let { data } = $props();
 	const page = $derived<ScripturePage>(data.page);
+	// Adjacent qualifying chapter pages, in canonical Bible order (computed in
+	// +page.ts) — walk the reverse index without returning to the hub.
+	const prev = $derived(data.prev);
+	const next = $derived(data.next);
 
 	const path = $derived(`/scripture/${page.book.slug}/${page.chapter}/`);
 	const canonical = $derived(`${SITE_URL}${path}`);
@@ -110,6 +114,29 @@
 			</p>
 		{/if}
 	</section>
+
+	<!-- Walk the reverse index in canonical order. English-only copy, like the
+	     rest of this page (see the note in the script). -->
+	{#if prev || next}
+		<nav class="mt-12 flex items-stretch justify-between gap-3 border-t border-border pt-6">
+			{#if prev}
+				<a href={prev.href} class="btn btn-ghost flex-1 flex-col items-start gap-0.5 text-start">
+					<span class="eyebrow text-muted">Previous</span>
+					<span class="text-small">{prev.label}</span>
+				</a>
+			{:else}
+				<span class="flex-1"></span>
+			{/if}
+			{#if next}
+				<a href={next.href} class="btn btn-ghost flex-1 flex-col items-end gap-0.5 text-end">
+					<span class="eyebrow text-muted">Next</span>
+					<span class="text-small">{next.label}</span>
+				</a>
+			{:else}
+				<span class="flex-1"></span>
+			{/if}
+		</nav>
+	{/if}
 </div>
 
 <style>

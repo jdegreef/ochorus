@@ -19,6 +19,27 @@ export const entries: EntryGenerator = async () => {
 	}
 };
 
-export const load: PageLoad = async ({ params }) => ({
-	page: await orNotFound(() => getScripturePage(params.book, Number(params.chapter)))
-});
+// Prev/next among the CHAPTER pages, in canonical Bible order — so a reader (and
+// a crawler) can walk the reverse index instead of returning to the hub each
+// time. Neighbours are the adjacent QUALIFYING pages (not chapter ± 1, which may
+// never have been built), read from the same list the entry generator uses.
+type ScriptureNav = { href: string; label: string } | null;
+
+export const load: PageLoad = async ({ params }) => {
+	const chapter = Number(params.chapter);
+	const [page, all] = await Promise.all([
+		orNotFound(() => getScripturePage(params.book, chapter)),
+		listScripturePages().catch(() => [])
+	]);
+	const chapters = all
+		.filter((p) => p.verse === null)
+		.sort((a, b) => a.book_order - b.book_order || a.chapter - b.chapter);
+	const i = chapters.findIndex((p) => p.book === params.book && p.chapter === chapter);
+	const nav = (p: (typeof chapters)[number] | undefined): ScriptureNav =>
+		p ? { href: `/scripture/${p.book}/${p.chapter}/`, label: `${p.book_title} ${p.chapter}` } : null;
+	return {
+		page,
+		prev: i > 0 ? nav(chapters[i - 1]) : null,
+		next: i >= 0 && i < chapters.length - 1 ? nav(chapters[i + 1]) : null
+	};
+};
