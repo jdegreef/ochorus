@@ -923,8 +923,47 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # page carries the identical "conclusion()", while Blue Letter Bible's
         # independent transcription reads "conclusion)". English-only; the book
         # has no translations to sweep.
+        #
+        # Three more CCEL slips in the SAME ch41 block, each settled against the
+        # printed edition this text descends from — *Sermons on Important
+        # Subjects* (London: Fisher, Son & Jackson, 1830), Sermon XLI, p. 480;
+        # archive.org `sermonsonimport00whitgoog`. CCEL's page carries all three,
+        # so none of them is ours:
+        #
+        #   Lord' seat   a dropped possessive s. The print reads "Though the
+        #                Lord's seat is in heaven, yet he has respect to his
+        #                saints"; "the Lord' seat" is not a reading, it is a
+        #                lost character.
+        #   rags         "so the rags of men and devils will increase also" —
+        #                the print reads "so, the rage of men and devils will
+        #                increase also", which is the sentence's own argument:
+        #                it follows "the enmity which is in the hearts of
+        #                natural men against Christ, will not suffer them to be
+        #                quiet long".
+        #   open quote   Whitefield quotes himself and the OPENING mark was
+        #                lost, leaving a bare close. The print sets the
+        #                quotation open after "if I may speak my own
+        #                experience," and closes it at "for the sake of Jesus
+        #                Christ." Restoring the opener balances the close that
+        #                is already stored; nothing else in the block moves,
+        #                and the insertion is mid-string, so `old` cannot recur
+        #                and the pair is idempotent.
+        #
+        #                NOTE this is invisible to `orphan-close-quote`, and
+        #                the class count for this book is unchanged by it (17
+        #                before and after). `_orphan_quotes` carries a running
+        #                depth across a chapter's blocks, deliberately, because
+        #                a long quotation opens every paragraph and closes only
+        #                the last; an earlier unclosed quotation in ch41 was
+        #                holding depth above zero, so this block's extra close
+        #                never read as orphaned. The repair rests on the print,
+        #                not on a finding — do not expect the baseline to move.
         "replacements": [
             ("a conclusion()", "a conclusion)"),
+            ("Though the Lord' seat", "Though the Lord's seat"),
+            ("so the rags of men and devils", "so the rage of men and devils"),
+            ("my own experience, I never enjoy",
+             "my own experience, \u201cI never enjoy"),
         ],
     },
     "spurgeon-on-prayer": {
@@ -947,6 +986,20 @@ BODY_CORRECTIONS: dict[str, dict] = {
             #               transcriptions win. Unrelated to the `pginternal`
             #               anchor drop — this book is not from Gutenberg.
             ("and ()h may divine grace", "and Oh may divine grace"),
+            #   hut.       ch9  "the will of his poor hut. favoured
+            #               creature-man" — an h/b misread plus a spurious full
+            #               stop, the same CCEL-lineage `hut`/`but` slip the
+            #               `english-qa` skill records elsewhere. "hut" is a
+            #               non-word here and the sentence needs the concessive.
+            #               The Spurgeon Library carries the identical "poor
+            #               hut.", so it is not an independent witness; two
+            #               outside that lineage agree on the reading —
+            #               spurgeongems.org's retype of the printed New Park
+            #               Street Pulpit (No. 328) and Blue Letter Bible both
+            #               have "his poor but favo(u)red creature-man". Only
+            #               the two damaged characters are touched; the British
+            #               "favoured" this text prints is left alone.
+            ("his poor hut. favoured", "his poor but favoured"),
         ],
     },
     "all-of-grace": {
