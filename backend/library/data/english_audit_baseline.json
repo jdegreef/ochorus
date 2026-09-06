@@ -19,10 +19,6 @@
    "orphan-close-quote": 3,
    "space-before-punct": 2
   },
-  "amanda-smith-autobiography": {
-   "anachronism": 18,
-   "word-fusion": 1
-  },
   "baptism-with-the-holy-spirit": {
    "orphan-close-quote": 1,
    "space-before-punct": 5
@@ -38,9 +34,6 @@
   },
   "come-thou-into-the-ark": {
    "space-before-punct": 2
-  },
-  "days-of-heaven-upon-earth": {
-   "anachronism": 2
   },
   "divine-healing": {
    "orphan-close-quote": 3,
@@ -68,9 +61,6 @@
    "orphan-close-quote": 5,
    "space-before-punct": 3
   },
-  "gleanings-among-the-sheaves": {
-   "anachronism": 1
-  },
   "godliness": {
    "space-before-punct": 9
   },
@@ -88,11 +78,7 @@
    "space-before-punct": 1
   },
   "how-to-bring-men-to-christ": {
-   "anachronism": 1,
    "lost-paragraphing": 2
-  },
-  "how-to-succeed-in-the-christian-life": {
-   "anachronism": 2
   },
   "humility-2": {
    "orphan-close-quote": 2,
@@ -169,9 +155,6 @@
    "space-before-punct": 2,
    "word-fusion": 1
   },
-  "prayer-and-praying-men": {
-   "anachronism": 1
-  },
   "prayer-the-pulse-of-life": {
    "hyphen-space": 1,
    "space-before-punct": 4
@@ -185,11 +168,9 @@
    "welded-footnote": 75
   },
   "religious-experience-and-journal": {
-   "anachronism": 5,
    "lost-paragraphing": 1
   },
   "revival-lectures": {
-   "anachronism": 1,
    "orphan-close-quote": 1,
    "space-before-punct": 1
   },
@@ -244,7 +225,6 @@
    "word-fusion": 3
   },
   "the-christians-secret-of-a-happy-life-4": {
-   "anachronism": 2,
    "broken-smallcaps": 1,
    "orphan-close-quote": 23
   },
@@ -289,7 +269,6 @@
    "orphan-close-quote": 2
   },
   "the-person-and-work-of-the-holy-spirit": {
-   "anachronism": 1,
    "orphan-close-quote": 4
   },
   "the-possibilities-of-faith": {
@@ -300,9 +279,6 @@
   },
   "the-power-of-stillness": {
    "space-before-punct": 1
-  },
-  "the-right-kind-of-faith": {
-   "anachronism": 3
   },
   "the-secret-of-guidance": {
    "orphan-close-quote": 8,
@@ -316,9 +292,6 @@
   },
   "the-sinners-friend": {
    "space-before-punct": 2
-  },
-  "the-unselfishness-of-god": {
-   "anachronism": 2
   },
   "the-way-to-god": {
    "space-before-punct": 12
@@ -335,13 +308,8 @@
    "space-before-punct": 1
   },
   "union-and-communion": {
-   "anachronism": 2,
    "orphan-close-quote": 1,
    "space-before-punct": 9
-  },
-  "way-into-holiest": {
-   "anachronism": 2,
-   "hyphen-space": 1
   },
   "women-who-moved-heaven-2": {
    "space-before-punct": 1

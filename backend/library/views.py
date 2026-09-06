@@ -798,6 +798,72 @@ class SearchClickView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+# --- Quotes: shared payload helpers -------------------------------------------
+# One implementation of "sort into reading order" and "shape a card", used by the
+# author page, the theme pages and the author-theme pages, so a citation never
+# drifts between them.
+
+
+def _quote_reading_order(q):
+    """Books before sermons, then through each work in its own order.
+
+    Ordering used to be by `slug`, which is a hash of the text — so the
+    sequence was arbitrary and a reader scrolling sixty cards could not
+    predict what came next. Reading order does three things instead: the
+    page walks each work from its first chapter to its last, the citation
+    becomes the page's structure rather than a footnote under each card,
+    and consecutive quotations share a work, which is what lets the page
+    GROUP them. That grouping is what earns the colour: the house rule is
+    that a list's hue tracks whatever it is grouped by (STYLE_GUIDE §5), so
+    an ungrouped list has no claim to one.
+
+    Books first because they are the substantial works; sermons are one
+    group of their own at the foot, since six sermons carrying nine
+    quotations between them would otherwise be six groups of one or two.
+    """
+    if q.sermon_id:
+        return (1, q.sermon.title, 0, q.paragraph)
+    return (0, q.chapter.book.title, q.chapter.order, q.paragraph)
+
+
+def _quote_payload(q):
+    # The citation is the product. A card without a source is the thing the
+    # aggregators already publish, and the reason they cannot be trusted.
+    if q.sermon_id:
+        source = {
+            "kind": "sermon",
+            "slug": q.sermon.slug,
+            "title": q.sermon.title,
+            "work": q.sermon.title,
+            "order": None,
+            # Sermons carry no cover colour; the page tints their group from
+            # the author's era instead, which is what the sermons index does.
+            "cover_color": "",
+        }
+    else:
+        source = {
+            "kind": "chapter",
+            "slug": q.chapter.book.slug,
+            "title": q.chapter.title,
+            "work": q.chapter.book.title,
+            "order": q.chapter.order,
+            # The work's own hue, for the group heading. Sent because the
+            # page groups BY work — see `_quote_reading_order`.
+            "cover_color": q.chapter.book.cover_color,
+        }
+    return {"slug": q.slug, "text": q.text, "paragraph": q.paragraph, "source": source}
+
+
+#: A "Quotes on X" theme page needs this many reviewed quotations before it is
+#: built, and an "<Author> Quotes on X" page this many. A quote page has no
+#: primary text under it, so a thin one is the doorway shape search engines judge
+#: a whole domain by (see quote_seed.py). The entry generators and the sitemap
+#: apply these, so a page below the bar is never advertised — it simply waits for
+#: the theme to be tagged deeper.
+QUOTE_TOPIC_MIN = 8
+QUOTE_AUTHOR_TOPIC_MIN = 4
+
+
 class QuotePageView(APIView):
     """An author's reviewed quotations, each with the citation that sources it.
 
@@ -819,10 +885,13 @@ class QuotePageView(APIView):
             Quote.objects.filter(author=writer, reviewed=True).select_related(
                 "chapter__book", "sermon"
             ),
-            key=self._reading_order,
+            key=_quote_reading_order,
         )
         if not rows:
             raise Http404("No published quotes for this author.")
+        # The themes this author has enough quotations on to earn a page, so the
+        # author page can offer the "on Prayer" chips without a second request.
+        topics = self._author_topics(writer)
         return Response(
             {
                 "author": {
@@ -834,58 +903,192 @@ class QuotePageView(APIView):
                     # row wears on the sermons index.
                     "birth_year": writer.birth_year,
                 },
-                "quotes": [self._quote(q) for q in rows],
+                "topics": topics,
+                "quotes": [_quote_payload(q) for q in rows],
             }
         )
 
     @staticmethod
-    def _reading_order(q):
-        """Books before sermons, then through each work in its own order.
+    def _author_topics(writer):
+        from .models import QuoteTopic
 
-        Ordering used to be by `slug`, which is a hash of the text — so the
-        sequence was arbitrary and a reader scrolling sixty cards could not
-        predict what came next. Reading order does three things instead: the
-        page walks each work from its first chapter to its last, the citation
-        becomes the page's structure rather than a footnote under each card,
-        and consecutive quotations share a work, which is what lets the page
-        GROUP them. That grouping is what earns the colour: the house rule is
-        that a list's hue tracks whatever it is grouped by (STYLE_GUIDE §5), so
-        an ungrouped list has no claim to one.
+        # Same shape as QuoteAuthorsView: annotate a filtered count, then filter
+        # on it — no join-level filter on the queryset, so no double-counting.
+        rows = (
+            QuoteTopic.objects.annotate(
+                n=Count("quotes", filter=Q(quotes__author=writer, quotes__reviewed=True))
+            )
+            .filter(n__gte=QUOTE_AUTHOR_TOPIC_MIN)
+            .order_by("sort_order", "title")
+            .values("slug", "title", "n")
+        )
+        return [{"slug": r["slug"], "title": r["title"], "count": r["n"]} for r in rows]
 
-        Books first because they are the substantial works; sermons are one
-        group of their own at the foot, since six sermons carrying nine
-        quotations between them would otherwise be six groups of one or two.
-        """
-        if q.sermon_id:
-            return (1, q.sermon.title, 0, q.paragraph)
-        return (0, q.chapter.book.title, q.chapter.order, q.paragraph)
 
-    def _quote(self, q):
-        # The citation is the product. A card without a source is the thing the
-        # aggregators already publish, and the reason they cannot be trusted.
-        if q.sermon_id:
-            source = {
-                "kind": "sermon",
-                "slug": q.sermon.slug,
-                "title": q.sermon.title,
-                "work": q.sermon.title,
-                "order": None,
-                # Sermons carry no cover colour; the page tints their group from
-                # the author's era instead, which is what the sermons index does.
-                "cover_color": "",
+class QuoteTopicDetailView(APIView):
+    """A theme's reviewed quotations across every author — "Quotes on Prayer".
+
+    Grouped by author (each group heads a link to that author's own theme page),
+    and REVIEWED ONLY, the same gate the author page carries. 404 when the theme
+    is unknown or holds nothing reviewed, so no empty page is ever built.
+    """
+
+    def get(self, request, topic):
+        from collections import defaultdict
+
+        from .models import Quote, QuoteTopic
+
+        t = QuoteTopic.objects.filter(slug=topic).first()
+        if t is None:
+            raise Http404("No such topic.")
+        rows = list(
+            Quote.objects.filter(reviewed=True, topics=t).select_related(
+                "author", "chapter__book", "sermon"
+            )
+        )
+        if not rows:
+            raise Http404("No published quotes on this topic.")
+        by_author = defaultdict(list)
+        for q in rows:
+            by_author[q.author].append(q)
+        authors = []
+        for writer in sorted(by_author, key=lambda a: a.name.lower()):
+            quotes = sorted(by_author[writer], key=_quote_reading_order)
+            authors.append(
+                {
+                    "author": {
+                        "slug": writer.slug,
+                        "name": writer.name,
+                        "birth_year": writer.birth_year,
+                    },
+                    "count": len(quotes),
+                    # Whether this author has enough on the theme to have earned
+                    # their own "<Author> Quotes on X" page — the same bar the
+                    # prerender list uses, so the heading only links to a page
+                    # that was actually built (not the SPA fallback).
+                    "has_page": len(quotes) >= QUOTE_AUTHOR_TOPIC_MIN,
+                    "quotes": [_quote_payload(q) for q in quotes],
+                }
+            )
+        return Response({"topic": _topic_brief(t), "authors": authors})
+
+
+class QuoteAuthorTopicView(APIView):
+    """One author's reviewed quotations on one theme — "Andrew Murray Quotes on Prayer".
+
+    Reading order within the author, the same shape as the author page. 404 when
+    the author or theme is unknown or the pair holds nothing reviewed.
+    """
+
+    def get(self, request, author, topic):
+        from .models import Author, Quote, QuoteTopic
+
+        writer = Author.objects.filter(slug=author).first()
+        if writer is None:
+            raise Http404("No such author.")
+        t = QuoteTopic.objects.filter(slug=topic).first()
+        if t is None:
+            raise Http404("No such topic.")
+        rows = sorted(
+            Quote.objects.filter(author=writer, reviewed=True, topics=t).select_related(
+                "chapter__book", "sermon"
+            ),
+            key=_quote_reading_order,
+        )
+        if not rows:
+            raise Http404("No published quotes for this author on this topic.")
+        return Response(
+            {
+                "author": {
+                    "slug": writer.slug,
+                    "name": writer.name,
+                    "photo_url": writer.photo_url,
+                    "birth_year": writer.birth_year,
+                },
+                "topic": _topic_brief(t),
+                "quotes": [_quote_payload(q) for q in rows],
             }
-        else:
-            source = {
-                "kind": "chapter",
-                "slug": q.chapter.book.slug,
-                "title": q.chapter.title,
-                "work": q.chapter.book.title,
-                "order": q.chapter.order,
-                # The work's own hue, for the group heading. Sent because the
-                # page groups BY work — see `_reading_order`.
-                "cover_color": q.chapter.book.cover_color,
-            }
-        return {"slug": q.slug, "text": q.text, "paragraph": q.paragraph, "source": source}
+        )
+
+
+def _topic_brief(t):
+    return {
+        "slug": t.slug,
+        "title": t.title,
+        "blurb": t.blurb,
+        "scripture_ref": t.scripture_ref,
+        "scripture_text": t.scripture_text,
+    }
+
+
+class QuoteTopicsView(APIView):
+    """Themes with enough reviewed quotations to earn a page — the build's list.
+
+    Read by the /quotes/topics index page, its prerender entry generator and the
+    sitemap, so none can advertise a theme page the review gate and the depth
+    threshold have not opened.
+    """
+
+    def get(self, request):
+        from django.db.models import Count, Q
+
+        from .models import QuoteTopic
+
+        rows = (
+            QuoteTopic.objects.annotate(
+                n=Count("quotes", filter=Q(quotes__reviewed=True), distinct=True)
+            )
+            .filter(n__gte=QUOTE_TOPIC_MIN)
+            .order_by("sort_order", "title")
+            .values("slug", "title", "blurb", "n")
+        )
+        return Response(
+            [
+                {"slug": r["slug"], "title": r["title"],
+                 "blurb": r["blurb"], "count": r["n"]}
+                for r in rows
+            ]
+        )
+
+
+class QuoteTopicPagesView(APIView):
+    """Every (author, theme) pair deep enough to earn a page — the build's list.
+
+    The author-theme companion to QuoteTopicsView: read by that page's prerender
+    entry generator and the sitemap, so both build exactly the pairs the detail
+    view will serve.
+    """
+
+    def get(self, request):
+        from django.db.models import Count, Q
+
+        from .models import Quote, QuoteTopic
+
+        # A pair only earns a page when its THEME also has a page — otherwise the
+        # author-theme page's parent "Quotes on X" link would point at a theme
+        # that was never built (a topic carried almost entirely by one author:
+        # its pair clears 4 but the theme total misses 8). Restricting to themes
+        # over QUOTE_TOPIC_MIN keeps the theme → author-theme mesh whole.
+        qualifying = set(
+            QuoteTopic.objects.annotate(
+                n=Count("quotes", filter=Q(quotes__reviewed=True), distinct=True)
+            )
+            .filter(n__gte=QUOTE_TOPIC_MIN)
+            .values_list("slug", flat=True)
+        )
+        rows = (
+            Quote.objects.filter(reviewed=True, topics__isnull=False)
+            .values("author__slug", "topics__slug")
+            .annotate(n=Count("id"))
+            .filter(n__gte=QUOTE_AUTHOR_TOPIC_MIN)
+        )
+        return Response(
+            [
+                {"author": r["author__slug"], "topic": r["topics__slug"]}
+                for r in rows
+                if r["topics__slug"] in qualifying
+            ]
+        )
 
 
 class QuoteAuthorsView(APIView):
