@@ -671,6 +671,61 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("ढूँढ़ता है। ()", "ढूँढ़ता है। (टिप्पणी F.)"),
         ],
     },
+    "holy-in-christ": {
+        # The same dropped-anchor defect as `ministry-of-intercession` above,
+        # from the same transcriber (Project Gutenberg; this book is #26990)
+        # and the same selector:
+        # `sanitize.DROP_SELECTORS` carries `"[class*=pginternal]"`, and `_clean`
+        # DECOMPOSES the drop-selectors before it unwraps everything else — so a
+        # plain `<a>` survives as its text and a *Gutenberg* one is deleted whole.
+        # Gutenberg puts that class on every internal link, so what a reader gets
+        # is the punctuation around a reference with the reference gone.
+        #
+        # ch10's closing recapitulation lost six book-internal cross-references
+        # at once and shipped six bare `()`:
+        #
+        #   deep Restfulness (<a href="#day_3" class="pginternal">ch. 3</a>),
+        #
+        # Each target was read off the Gutenberg HTML rather than inferred from
+        # position, and each `#day_N` anchor was followed to the heading it
+        # names: day_3 "Third Day"/Holiness and Creation ... day_8 "Eighth
+        # Day"/Holiness and Indwelling, which is also what the sentence's own
+        # terms say (Restfulness ↔ Creation, the Divine Indwelling ↔ Indwelling).
+        #
+        # The references are Murray's publisher's, not Gutenberg's: the Revell
+        # printing that #26990 was keyed from (archive.org
+        # `holyinchristthou00murruoft`, p. 88) prints "(ch. 3)" … "(ch. 8)" in
+        # exactly this order. Worth checking, because two other scans of the
+        # same work carry the sentence with NO references at all
+        # (`holyinchristthou00murr`, 1887; `holyinchristtho00murrgoog`, 1888)
+        # — so "restore what Gutenberg had" and "restore what the author
+        # printed" are genuinely two questions here, and it is only this
+        # printing that makes them one answer.
+        #
+        # The seventh pair is the same selector in ch12: Gutenberg's
+        # `(see ‘<a class="pginternal">Sixth Day</a>’)` left `(see ‘’)`, which
+        # both printings above spell "(see 'Sixth Day')".
+        #
+        # NOT `source_fixes`: the parentheses are what the extractor made of a
+        # link, not what Murray printed. English-only edition, so nothing to
+        # settle by hand in a translation.
+        #
+        # STILL UNREPAIRED, and deliberately: ch33 (Notes) lost all seven of its
+        # `NOTE A.`–`NOTE G.` headings and every footnote block that pointed at
+        # them, to a DIFFERENT selector. The fix for that one is to the
+        # sanitizer and reaches every CCEL work, so it is not a string pair
+        # here — `english_audit.STRAY_PARENS` carries the mechanism, and the
+        # `english-qa` skill the scope.
+        "replacements": [
+            ("deep Restfulness ()", "deep Restfulness (ch. 3)"),
+            ("humble Reverence ()", "humble Reverence (ch. 4)"),
+            ("entire Surrender ()", "entire Surrender (ch. 5)"),
+            ("joyful Adoration ()", "joyful Adoration (ch. 6)"),
+            ("simple Obedience ()", "simple Obedience (ch. 7)"),
+            ("the Divine Indwelling ()", "the Divine Indwelling (ch. 8)"),
+            ("His Glory and Majesty (see ‘’)", "His Glory and Majesty (see ‘Sixth Day’)"),
+        ],
+    },
     "essentials-of-prayer": {
         # A quoted hymn line broke across a line and rejoined with a space
         # before the comma ("He has said He will , If we but trust"). Restore

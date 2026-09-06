@@ -309,29 +309,54 @@ Reported, not fixed
   `_clean` **decomposes** the drop-selectors before it unwraps everything else —
   so a non-allowlisted `<a>` normally survives as its text, but a *Gutenberg*
   one is deleted whole. Gutenberg puts `class="pginternal"` on every internal
-  link, so this reaches all 23 Gutenberg-sourced books. Check it in one line:
+  link, so this reaches every one of the 17 English works that name Gutenberg
+  as their source. Check it in one line:
   ```python
   clean_fragment('<p>x (<a class="pginternal" href="#n">Note A.</a>)</p>')
   # '<p>x ()</p>'      — without the class: '<p>x (Note A.)</p>'
   ```
   The SAME line eats the `<h4>` heading each reference points AT: the heading's
   only child is that anchor, so decompose empties it and `_clean`'s empty-block
-  regex then deletes the heading itself. One cause, two symptoms — and the grep
-  below sees only the first, so if a work has an endnote or glossary chapter,
-  read its opening lines too.
+  regex then deletes the heading itself. One cause, two symptoms — and neither
+  the grep below nor `stray-parens` sees the second, so if a work has an endnote
+  or glossary chapter, read its opening lines too. **A SECOND selector does the
+  same thing to a heading, and it is not Gutenberg-specific**: `"[class*=note i]"`
+  was written for CCEL's footnote apparatus and substring-matches anything with
+  `note` in a class, including Gutenberg's own `<h3 class="note">NOTE A.</h3>`
+  and `<div class="footnote">`. That is how `holy-in-christ` ch33 lost all seven
+  of its `NOTE A.`–`NOTE G.` headings and every footnote block pointing at them,
+  leaving seven bare `<hr/>`s where the notes divide. Still unrepaired: the fix
+  is to the selector and reaches every CCEL work, so it wants its own change and
+  a corpus-wide measurement of what a narrower selector would let back in.
   ```bash
   grep -c ' ()' backend/library/fixtures/content/books/*.json
   ```
-  Corpus-wide that is 8 sites in 3 works and every one is real, so a bare-`()`
-  check would be exact; an unbalanced-paren check would NOT (57 rows, mostly
-  period prose). Six of the eight are `holy-in-christ` ch10 — the same selector,
-  the same book-internal cross-references (`(<a class="pginternal">ch. 3</a>)`),
-  still unrepaired. **The shipped text still has to be repaired by string pair,
+  Corpus-wide that was 8 sites in 3 works and every one real, so the bare-`()`
+  shape is now the `stray-parens` audit class (exact, and cheaper than this
+  grep); an unbalanced-paren check would NOT be (57 rows, mostly period prose),
+  and that is why there isn't one. Six of the eight were `holy-in-christ` ch10 —
+  the same selector, the same book-internal cross-references
+  (`(<a class="pginternal">ch. 3</a>)`) — repaired 2026-09-05 along with a
+  seventh that both the grep and the check miss: ch12's
+  `(see ‘<a>Sixth Day</a>’)` shipped as `(see ‘’)`, which is not an EMPTY pair.
+  **The shipped text still has to be repaired by string pair,
   even after the selector is fixed**: a re-import runs `upsert_book`, which
   deletes and recreates every chapter and re-runs the title heuristics, and
   restoring the `<h4>`s in English alone would break the ordered-tag parity with
   the translations that `tests_translation_markup` enforces. So the repair must
   be tag-neutral — text inside blocks that already exist.
+- **A restored cross-reference needs TWO questions answered, not one.** "What
+  did the anchor say" is the Gutenberg HTML's to answer; "did the author print a
+  reference here at all" is only the scan's, and for `holy-in-christ` ch10 the
+  printings disagree. Two 1887/1888 scans (`holyinchristthou00murr`,
+  `holyinchristtho00murrgoog`) run the sentence with NO references — "deep
+  Restfulness, humble Reverence, entire Surrender" — while the Revell printing
+  Gutenberg was keyed from (`holyinchristthou00murruoft`, p. 88) prints
+  "(ch. 3)" … "(ch. 8)". Had only the first two existed, restoring the anchors
+  would have put a later editor's apparatus into Murray's prose and called it a
+  repair. Match the scan to the transcription before trusting either: the page
+  numbers line up (Gutenberg's `pgmark` against the scan's running header) and
+  that is the cheapest way to tell which printing you are reading.
 - **Verifying a citation needs the scan, but not `_djvu.xml`.** The XML is for
   paragraphing, where indent coordinates are the oracle. To settle whether a
   wrong reference is the author's or ours, `_djvu.txt` is enough and far

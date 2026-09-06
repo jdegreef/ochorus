@@ -187,6 +187,61 @@ COMMON_MIN = 20
 FUSED_MAX = 2
 SPACE_BEFORE_PUNCT = re.compile(r"\S\s+[,.;:!?](?:\s|$)")
 
+# An empty parenthesis pair: a cross-reference whose ANCHOR TEXT the sanitizer
+# deleted, leaving only the punctuation the author wrote around it. Gutenberg
+# spells every internal link `<a href="#nt.A" class="pginternal">Note A.</a>`,
+# and `sanitize.DROP_SELECTORS`'s `"[class*=pginternal]"` decomposes it whole
+# rather than unwrapping it to its text, so `(Note A.)` reaches the reader as
+# `()`. Seventeen English works name Gutenberg as their source, and every one
+# of them is exposed to it. (Deferred rather than fixed at the selector: that
+# change reaches all seventeen at once and needs a measurement of what
+# unwrapping lets back in — Gutenberg puts the same class on every TOC and
+# page-number link — so it is its own change. This class detects the symptom
+# meanwhile, and keeps detecting it if the selector is ever narrowed wrong.)
+#
+# A DROPPED ANCHOR IS NOT THE ONLY CAUSE, and the pattern is deliberately a
+# symptom test rather than a cause test. The two sites this class currently
+# pins are plain transcription damage: `selected-sermons-whitefield` ch41 has
+# "(that I may draw towards a conclusion()" for "…conclusion)", and
+# `spurgeon-on-prayer` ch09 has "and ()h may divine grace" for "and Oh may".
+# Neither names Gutenberg as its source. Do not narrow the regex toward the
+# anchor story — an empty pair is wrong however it got there.
+#
+# The one way this class could go false is a source that PARENTHESISES its
+# footnote markers: `corrections.strip_footnote_markers` removes a lone
+# `<sup>4</sup>`, so `(<sup>4</sup>)` would settle to `()` and read as this
+# defect. Measured at zero — the corpus has no parenthesised `<sup>` in any
+# language, and `text()` manufactures no empty pair anywhere — so it is a
+# vector, not a finding. Re-measure it if a work ever imports with one.
+#
+# The test that makes this precise is that the pair must be EMPTY. Measured
+# over the whole committed corpus — books, sermons and biographies, every
+# language — that is 8 hits across 3 works and every one is a real defect,
+# which is the best precision of any class in this module. A parenthesis
+# carrying anything at all is spared, and that is the whole rule. The
+# neighbouring idea, an UNBALANCED-paren check, was measured too and is
+# exactly what this module exists not to be — 57 rows, mostly period prose
+# using a parenthesis across a sentence boundary.
+#
+# Three things it will NOT find, recorded so nobody reads a clean report as
+# more than it is:
+#
+#   * a LONE unmatched `)`, which is the same defect where the source's own
+#     transcription dropped the opening paren (`ministry-of-intercession` ch13:
+#     "of His spirit to the Father. )"). Balance is what the unbalanced check
+#     measures, and it does not clear the precision bar.
+#   * quote marks left between the parentheses — `holy-in-christ` ch12 shipped
+#     `(see ‘’)` where Gutenberg had `(see ‘<a class="pginternal">Sixth
+#     Day</a>’)`. The pair is not empty, so this is the same defect one
+#     character out of reach.
+#   * a dropped HEADING — what the same sanitizer pass does to the other end
+#     of a cross-reference, by two separate routes (`holy-in-christ` ch33 lost
+#     all seven of its endnote headings this way; the `english-qa` skill has
+#     the mechanisms). Nothing survives to match, and `text()` has no tags to
+#     notice an absence with either, so no text-level check can ever find it —
+#     read the opening lines of a work's endnote chapter instead.
+STRAY_PARENS = re.compile(r"\(\s*\)")
+
 # --- lost paragraphing -----------------------------------------------------
 #
 # A chapter whose blocks average this many words has not lost A paragraph
@@ -376,6 +431,8 @@ def _check_block(t: str, is_pd: bool, counts: Counter[str]) -> Iterator[tuple[st
         yield "hyphen-space", excerpt(t, m.start())
     for m in RUN_TOGETHER.finditer(t):
         yield "run-together", excerpt(t, m.start())
+    for m in STRAY_PARENS.finditer(t):
+        yield "stray-parens", excerpt(t, m.start())
     yield from _word_fusion(t, counts)
     for m in MISSPELLED.finditer(t):
         yield "misspelling", excerpt(t, m.start())
