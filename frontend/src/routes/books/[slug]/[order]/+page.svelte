@@ -1488,6 +1488,17 @@
 			<a href={localizeHref(`/books/${slug}`)} class="text-small text-muted hover:text-text">{t('reader.contents')}</a>
 		</p>
 	{/if}
+	<!-- Colophon: a crawlable link out to the book and its author from every
+	     chapter — the site's largest page type, which otherwise linked only to
+	     its own contents and the next chapter (a dead end for the author graph).
+	     A middot, not a localized "by", so no message-catalogue key is needed. -->
+	<p class="mt-8 text-center text-small text-muted">
+		<a href={localizeHref(`/books/${slug}`)} class="hover:text-text">{chapter.book_title}</a>
+		<span aria-hidden="true"> · </span>
+		<a href={localizeHref(`/authors/${chapter.author_slug}`)} class="hover:text-text"
+			>{chapter.author_name}</a
+		>
+	</p>
 </article>
 
 <!-- Kindle-style edge page-turn arrows (page mode only). The outer screen edge
