@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { type AuthorBio, type BookSummary } from '$lib/library-public';
+	import { fullLifeDiscriminates, type AuthorBio, type BookSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumbLd, hreflangAll } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
@@ -28,6 +28,10 @@
 		}
 		return m;
 	});
+
+	// Only show the "Full life" badge when it still discriminates — judged over the
+	// whole locale roster (not this era slice), matching the biographies index.
+	const showFullLife = $derived(fullLifeDiscriminates(authors));
 
 	// Writers in this era, earliest-born first (undated sink to the end) — the
 	// same order the index uses inside an era group.
@@ -109,7 +113,7 @@
 	{:else}
 		<div class="grid items-start gap-5 md:grid-cols-2">
 			{#each inEra as author (author.slug)}
-				<AuthorBioCard {author} shelf={booksByAuthor.get(author.slug) ?? []} />
+				<AuthorBioCard {author} {showFullLife} shelf={booksByAuthor.get(author.slug) ?? []} />
 			{/each}
 		</div>
 	{/if}

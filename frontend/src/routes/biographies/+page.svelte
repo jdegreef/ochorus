@@ -2,7 +2,7 @@
 	import { onMount, tick } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { type AuthorBio, type BookSummary } from '$lib/library-public';
+	import { fullLifeDiscriminates, type AuthorBio, type BookSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumbLd, hreflangAll } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
@@ -65,12 +65,25 @@
 	// represented only by sermons.
 	const worksCount = (a: AuthorBio) => a.book_count + a.sermon_count;
 
+	// The "Full life" badge/chip only carry information when they actually SPLIT
+	// the roster — in English almost every writer now has a full bio, so they
+	// would be noise. Self-tunes per locale; the rule lives in library-public.ts
+	// so the index and the era pages agree.
+	const showFullLife = $derived(fullLifeDiscriminates(authors));
+
+	// A stale ?full=1 from a shared link must not linger once the chip that sets it
+	// is hidden — it would otherwise drive the filter summary and the active-count
+	// badge with no visible control to clear it.
+	$effect(() => {
+		if (!showFullLife && filters.values.full) filters.values.full = '';
+	});
+
 	const filtered = $derived.by(() => {
 		const q = filters.values.q.trim().toLowerCase();
 		return authors.filter((a) => {
 			if (filters.values.filter === 'library' && worksCount(a) === 0) return false;
 			if (filters.values.filter === 'bio' && worksCount(a) > 0) return false;
-			if (filters.values.full === '1' && !a.has_long_bio) return false;
+			if (showFullLife && filters.values.full === '1' && !a.has_long_bio) return false;
 			if (!q) return true;
 			return a.name.toLowerCase().includes(q) || (a.bio ?? '').toLowerCase().includes(q);
 		});
@@ -87,7 +100,7 @@
 	const activeCount = $derived(
 		(filters.values.q.trim() !== '' ? 1 : 0) +
 		(filters.values.filter !== 'all' ? 1 : 0) +
-		(filters.values.full ? 1 : 0)
+		(showFullLife && filters.values.full ? 1 : 0)
 	);
 
 	// Count summary + whether any narrowing is active (sort doesn't count).
@@ -315,14 +328,18 @@
 		</div>
 
 		<!-- Orthogonal to the library/bio segments: narrows to writers with a
-		     full-length biography (the "Full life" badge). -->
-		<button
-			class="chip sm:block"
-			class:hidden={!filtersOpen}
-			class:active={filters.values.full === '1'}
-			onclick={() => (filters.values.full = filters.values.full ? '' : '1')}
-			aria-pressed={filters.values.full === '1'}>{t('bios.fullLife')}</button
-		>
+		     full-length biography (the "Full life" badge). Shown only when it
+		     actually splits the roster (see showFullLife) — in English almost every
+		     writer has a full bio, so the chip would remove almost no one. -->
+		{#if showFullLife}
+			<button
+				class="chip sm:block"
+				class:hidden={!filtersOpen}
+				class:active={filters.values.full === '1'}
+				onclick={() => (filters.values.full = filters.values.full ? '' : '1')}
+				aria-pressed={filters.values.full === '1'}>{t('bios.fullLife')}</button
+			>
+		{/if}
 
 		<select
 			bind:value={filters.values.sort}
@@ -434,7 +451,7 @@
 				</h2>
 				<div class="space-y-4">
 					{#each g.authors as author (author.slug)}
-						<AuthorBioCard {author} shelf={booksByAuthor.get(author.slug) ?? []} />
+						<AuthorBioCard {author} {showFullLife} shelf={booksByAuthor.get(author.slug) ?? []} />
 					{/each}
 				</div>
 			</section>
@@ -442,7 +459,7 @@
 	{:else}
 		<div class="space-y-4">
 			{#each paged as author (author.slug)}
-				<AuthorBioCard {author} shelf={booksByAuthor.get(author.slug) ?? []} />
+				<AuthorBioCard {author} {showFullLife} shelf={booksByAuthor.get(author.slug) ?? []} />
 			{/each}
 		</div>
 		{#if remaining > 0}

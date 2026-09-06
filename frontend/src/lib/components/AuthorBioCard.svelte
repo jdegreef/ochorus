@@ -9,8 +9,14 @@
 	// works/CTA line, the mini-bio, and a scrollable strip of their books.
 	// Shared by the biographies index and the per-era landing pages. `shelf` is
 	// the writer's books (the caller groups the library's books by author).
+	// `showFullLife` lets the caller suppress the badge when it no longer
+	// discriminates (see the biographies index) — defaults on for other callers.
 	const t = i18n.t;
-	let { author, shelf = [] }: { author: AuthorBio; shelf?: BookSummary[] } = $props();
+	let {
+		author,
+		shelf = [],
+		showFullLife = true
+	}: { author: AuthorBio; shelf?: BookSummary[]; showFullLife?: boolean } = $props();
 
 	// Five covers fit the text column without a scrollbar; beyond that a "+N"
 	// tile carries the rest to the author page.
@@ -74,7 +80,7 @@
 				     dates and badge inline after it left them stranded raggedly at the
 				     end. Give them their own row on mobile; keep the old inline flow
 				     from sm up, where the name fits on one line. -->
-				{#if author.birth_year || author.has_long_bio}
+				{#if author.birth_year || (author.has_long_bio && showFullLife)}
 					<span class="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-1 sm:mt-0 sm:inline">
 						{#if author.birth_year}
 							<!-- nowrap: the dates were breaking after the en-dash ("1843–" / "1919"). -->
@@ -82,7 +88,7 @@
 								>{formatLifespan(author.birth_year, author.death_year, t('common.bornPrefix'))}</span
 							>
 						{/if}
-						{#if author.has_long_bio}
+						{#if author.has_long_bio && showFullLife}
 							<!-- Same nowrap rule as the dates: the badge was splitting into
 							     "FULL" / "LIFE" across two lines on a phone. -->
 							<span
