@@ -1436,7 +1436,7 @@
 						? `/scripture/${entry.page.book}/${entry.page.chapter}/` +
 							(entry.page.verse ? `${entry.page.verse}/` : '')
 						: localizeHref(`/search?q=${encodeURIComponent(entry.ref)}`)}
-					class="rounded-full border border-border px-3 py-1 text-small text-text hover:border-accent hover:text-accent hover:no-underline"
+					class="tag"
 				>
 					{entry.ref}
 				</a>

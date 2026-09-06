@@ -28,7 +28,7 @@
 	{#if pwa.updateReady}
 		<div class="pwa-toast pwa-update">
 			<span>{t('pwa.updateReady')}</span>
-			<button class="pwa-cta" onclick={() => pwa.applyUpdate()}>{t('pwa.refresh')}</button>
+			<button class="btn btn-sm btn-primary" onclick={() => pwa.applyUpdate()}>{t('pwa.refresh')}</button>
 		</div>
 	{/if}
 
@@ -39,7 +39,7 @@
 	{#if undo.current && !undo.current.inline}
 		<div class="pwa-toast">
 			<span>{t(undo.current.kind === 'note' ? 'undo.noteCleared' : 'undo.removed')}</span>
-			<button class="pwa-cta" onclick={() => undo.act()}>{t('undo.action')}</button>
+			<button class="btn btn-sm btn-primary" onclick={() => undo.act()}>{t('undo.action')}</button>
 			<button class="pwa-link" onclick={() => undo.dismiss()}>{t('pwa.dismiss')}</button>
 		</div>
 	{/if}
@@ -97,18 +97,5 @@
 		color: var(--muted);
 		text-decoration: underline;
 		font-size: var(--fs-small);
-	}
-	.pwa-cta {
-		border-radius: 999px;
-		background: var(--accent);
-		/* Theme-aware foreground: white fails contrast on the light-lavender dark
-		   accent (~2.5:1); --accent-contrast is dark there, white in light mode. */
-		color: var(--accent-contrast);
-		padding: 0.25rem 0.75rem;
-		font-weight: 600;
-		font-size: var(--fs-small);
-	}
-	.pwa-cta:hover {
-		filter: brightness(1.05);
 	}
 </style>

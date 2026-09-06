@@ -501,3 +501,138 @@ relevant group.
 4. **A8 + D12** — leaf heads, and the unreviewed-translation gap (A7 shipped #1430; D11 shipped #1427).
 5. **D1 + D2** — heading sizes; touches many files, best as its own PR.
 6. **G2** — the guards, so none of the above regresses.
+
+---
+
+## Backlog — second pass, 2026-09-05
+
+A finer-grained pass over interaction/state and spacing/color/microcopy, run as
+two read-only agents after the A–G sprint closed. These sit *beneath* the
+structural items above: the pages now share an anatomy, so what's left is the
+atom-level drift the shape guards don't yet see. Several sharpen an open A–G
+item (cross-referenced with `cf.`); the rest are new. Same rules: tick and date
+on merge, most reader-visible first within a group. Two agents independently
+surfaced H2/I2/J1/K2/K5 — a good signal those are real, not noise.
+
+### H. Cards & hover (cf. D3)
+
+- [~] **H1** _(row-card halves shipped 2026-09-05: `.article-card` and
+  `AuthorBioCard` now tint bg→surface-2 on hover like `.sermon-card`, so the
+  hue-less row cards hover alike; grid cards keep the lift. LEFT: the
+  documented two-recipe rule itself and any remaining stragglers under D3.)_
+  Content cards hover in five languages: `.book-card`/`.shelf-card`
+  and the sermon-of-week plate **lift**; `.sermon-row`, `.sermon-card`,
+  `.article-card`, `.author-card` variously tint border/bg or do nothing. → two
+  recipes only — grid card lifts, row card tints (this is the concrete form of D3).
+- [ ] **H2** Card interior padding is five values across five families
+  (`.book-card` 0.6rem, `.sermon-card` 0.85rem, `.shelf-card-body` 0.9rem,
+  `.article-card` 1.1rem, `AuthorBioCard` p-5) — none on a shared band. → snap
+  to `p-4`/`p-5`.
+- [ ] **H3** `AuthorBioCard` is laid out two ways: one-per-row `space-y-4` on
+  `/biographies` vs a two-up `grid items-start` on `era/[era]` — which also
+  breaks §5's "a card grid must never set `items-start`". → era copies the
+  index's `space-y-4`.
+
+### I. Buttons & controls
+
+- [x] **I1** _(shipped 2026-09-05 — `.btn:disabled` added; a working button that
+  marks itself `aria-busy` keeps full opacity so the §6 spinner state still reads
+  as working; guarded in `systemClasses.test.ts`)_ No `.btn:disabled` rule exists, so disabled Save/Sync/Export
+  (settings), admin reloads and login resend render at full opacity with a normal
+  cursor. → `.btn:disabled{opacity:.5;cursor:default;pointer-events:none}`.
+- [x] **I2** _(shipped 2026-09-05 — the public `PwaToasts` update/undo CTA →
+  `.btn btn-sm btn-primary`; `.pwa-cta` + its `filter:brightness` hover (I6)
+  deleted. The admin language trio is exempt; the plan completed-day is a
+  selected-state checkbox marker, not a CTA — left solid on purpose)_ Solid `bg-accent` CTAs violate §5's soft-primary rule: `PwaToasts`
+  install toast (public), the plan completed-day marker, the admin language trio.
+  → `.btn.btn-primary` (cf. E6, G2's "solid `bg-accent`").
+- [ ] **I3** The busy-button pattern is split: spinner + kept label + `aria-busy`
+  (login/reset/search) vs label swapped to a gerund with no spinner
+  (`LanguageSettingsCard` "Saving…", admin "Refreshing…"). → the spinner pattern
+  (cf. C4).
+- [ ] **I4** `.google-btn` re-implements `.btn` with the default surface fill and
+  no Google brand colour — not even the sanctioned vendor exception. →
+  `class="btn w-full"` + the glyph (cf. E6).
+- [ ] **I5** Disabled opacity disagrees where it is set at all: 0.4 (`.widthctl`),
+  0.5 (`.google-btn`), 0.5 (a call site). → one value via I1.
+- [x] **I6** _(shipped 2026-09-05 with I2 — `.pwa-cta:hover` removed)_ `.pwa-cta:hover` uses `filter:brightness(1.05)` — a hover used
+  nowhere else. → fold into `.btn-primary` (rides with I2).
+
+### J. Pills & badges
+
+- [x] **J1** _(shipped 2026-09-05 — one `.tag` class in `app.css`; 9 hand-rolled
+  copies across 8 files swapped; added to the `systemClasses` owned set.
+  `TopicChips` keeps its own larger px-4/py-2 treatment on purpose)_ A "tag/related" nav pill is hand-rolled ~9 times (search, book ×2,
+  sermon, author, article, reader, favorites, `TopicChips`) drifting on text
+  colour, fill and padding. → one `.tag`/`.pill-link` class (this is the concrete
+  form of D9).
+- [ ] **J2** Two pill hover languages: `.chip:hover` → bg surface-2 (no accent)
+  vs the nav pills → border+text-accent (no bg). → one pill hover.
+- [ ] **J3** Notebook's colour filter active state skips the accent-soft fill
+  every other selected filter gets (border+text-accent only). → render as
+  `.chip.active`.
+- [ ] **J4** Two accent-soft eyebrow badges, different padding: bio count px-1.5
+  vs "FULL LIFE" px-2 py-0.5. → a shared `.badge-soft`.
+- [ ] **J5** The saved-heart is red (`FavoriteButton` `--danger`) in one place and
+  indigo (`text-accent`, sermon page) in another. → one token for "saved" (cf. D7).
+
+### K. Colour & radius
+
+- [ ] **K1** Blockquote/pull-quote left-rule uses four colours + two widths
+  (`.reading` accent-soft, `.bio` gold, `.article-body` solid accent, the book
+  "about" figure a 2px border) where §1 says gold. → one `.pullquote`.
+- [ ] **K2** Two token vocabularies in scoped CSS: `--color-*` (12 files) vs bare
+  `--*` (25 files). → bare tokens (this is E4, re-counted).
+- [ ] **K3** The "·" middot separator is drawn at opacity-40/50/60 + bare
+  `text-muted`, with varying margins. → one `.sep` helper.
+- [ ] **K4** Secondary text is `text-muted` vs `text-muted/60` vs `/70` vs
+  `opacity-*` interchangeably. → `text-muted` (or `.count` for figures).
+- [ ] **K5** "Full-round" is written three ways: `rounded-full`, `999px`,
+  `9999px`. → one (`--radius-pill`).
+- [ ] **K6** `ArticleCard` + the article page use off-scale radii `0.75rem`,
+  `0.5rem`, `0.25rem`. → tokens (cf. D4, E2).
+
+### L. Spacing rhythm
+
+- [ ] **L1** Leaf-page section separators range `mt-8`→`mt-16` for the same
+  "next titled section" role (book mixes 8/12, author 14/16, sermon 12); the
+  identical prev/next nav is `mt-14` on the reader, `mt-12` on the sermon. → one
+  band value.
+- [ ] **L2** Bordered-footer padding drifts `pt-5`/`pt-6`/`pt-8`. → one `pt-6`.
+- [ ] **L3** Anchor scroll-offset is computed four ways; only two track the
+  sticky bar (`calc(var(--pinned-offset)…)` vs hard-coded `scroll-mt-20` on
+  sermons/books, `scroll-margin-top:5rem`, `scroll-mt-24`). → the `--pinned-offset`
+  calc (cf. B6, §3).
+
+### M. Duplication (forms, dividers, rows)
+
+- [ ] **M1** The password-reveal control is copy-pasted between `login` and
+  `reset-password` (the reset copy comments "Mirrors /login's"). → a
+  `PasswordField.svelte` (cf. E6).
+- [ ] **M2** `.mail-badge` is declared twice (the first copy dead) and
+  triplicated, and is shape-identical to `.emblem-chip`. → delete the dead block;
+  make it an `.emblem-chip` variant (cf. E6, E8).
+- [ ] **M3** "Label between two hairlines" divider is built two ways: `.or-divider`
+  (`--border`) vs the error page's `bg-gold/30` spans. → one divider helper.
+- [ ] **M4** The search field has three chromes; two bypass `.field` and its
+  `--border-strong` edge (CommandPalette, home hero use a `--border` hairline).
+  → base both on `.field` (cf. E6).
+- [ ] **M5** Settings re-implements the prefs row: `.setting-row`/`.setting-label`
+  duplicate `app.css`'s `.prefs-row`/`.prefs-label` with drifted padding. →
+  promote one shared class.
+
+### N. Loading & state
+
+- [ ] **N1** Seven bare "…" loading placeholders with no skeleton/spinner/
+  `role=status` (notebook, settings, ScripturePopover, DefinePopover, NotesDrawer,
+  TocDrawer, CommandPalette) while a skeleton pattern and `.btn-spinner` already
+  exist. → one shared loading affordance (this is the drawer/popover half of C4).
+
+### Second-pass order
+
+1. ~~**I1 + I2 + H1 + J1** — the batch-of-four~~ _(shipped 2026-09-05: disabled
+   buttons, public solid CTA, the two hue-less row-card hovers, the tag pill;
+   `systemClasses.test.ts` extended with `tag` + a `.btn:disabled` assertion.)_
+2. Everything else is lower-visibility cleanup — pull from it opportunistically,
+   not as a push. K3 (`.sep`) and K4 (secondary text) touch the most files and
+   are best folded into whatever leaf-page work comes next.

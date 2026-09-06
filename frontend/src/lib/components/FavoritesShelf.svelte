@@ -92,7 +92,7 @@
 					{#each g.entries as e (e.slug)}
 						<a
 							href={localizeHref(HREF[e.kind](e.slug))}
-							class="rounded-full border border-border bg-surface px-3 py-1 text-small text-text hover:border-accent hover:text-accent hover:no-underline"
+							class="tag"
 						>
 							♥ {titleOf(e)}
 						</a>

@@ -34,7 +34,7 @@ function svelteFiles(dir: string, out: string[] = []): string[] {
 
 /** The shared classes app.css owns. `(?![\w-])` so `.count` doesn't match
  *  `.counter` and `.eyebrow` doesn't match `.eyebrow-micro`. */
-const SYSTEM = ['btn', 'field', 'seg', 'chip', 'eyebrow', 'section-label', 'count', 'page-col'];
+const SYSTEM = ['btn', 'field', 'seg', 'chip', 'tag', 'eyebrow', 'section-label', 'count', 'page-col'];
 const RULE = new RegExp(`^\\s*\\.(?:${SYSTEM.join('|')})(?![\\w-])`);
 
 describe('system classes are not redefined in scoped CSS', () => {
@@ -55,5 +55,13 @@ describe('system classes are not redefined in scoped CSS', () => {
 			}
 		}
 		expect(offenders, offenders.join('\n')).toEqual([]);
+	});
+
+	// A disabled .btn must read as disabled. There was no rule at all, so a
+	// dimmed-nothing button sat at full opacity with a live cursor (audit I1). If
+	// this rule is ever dropped the affordance silently vanishes site-wide.
+	it('app.css gives .btn a :disabled affordance', () => {
+		const css = readFileSync(join(SRC, 'app.css'), 'utf8');
+		expect(css, '.btn:disabled must be defined in app.css').toMatch(/\.btn:disabled\s*\{/);
 	});
 });
