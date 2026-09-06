@@ -98,7 +98,7 @@ rewriting a public-domain author.
 | --- | --- | --- |
 | `broken-smallcaps` | **Auto-fix.** Add the literal pair to `BODY_CORRECTIONS` | The repair is forced: the pieces rejoin into exactly one real word ("L ORD" → "LORD"). Seven of the eight live instances are inside scripture quotations |
 | `dropcap-fused` | Fix after reading the block | "Ithink" → "I think" is usually right, but confirm it isn't a genuine word the check's tail-list missed |
-| `anachronism` | **Read the original edition.** Never guess | This is how invented text shows up. The author may also be quoting someone, or the check may be firing on "car" inside a place name |
+| `anachronism` | **Read the original edition.** Never guess | This is how invented text shows up (a modern transcriber's note is the common shape — `way-into-holiest` ch01 carries "readable to the computer audience … e-mail me at rlarryh@teleport.com"). The author may also be quoting someone. **`car`/`cars` no longer fires** — it scored 41 false / 0 true corpus-wide (railroad cars, streetcars, balloon cars, biblical chariots), so the trigger was removed; don't re-add it (see the `ANACHRONISM` comment in `english_audit.py`) |
 | `misspelling` | Fix if it's a name or place; leave period spellings | Moody's "Heratii" is wrong two sentences after he spells Horatii correctly. But a 17th-century spelling is not a misspelling |
 | `orphan-close-quote` | Read the passage | A close with nothing open usually means an attribution broke mid-sentence — the surrounding text is the real defect |
 | `run-together` | Fix — a missing space after a full stop | Mechanical, but confirm it isn't an ellipsis or an abbreviation |
@@ -243,6 +243,19 @@ Reported, not fixed
   fused drop cap. Every check in `english_audit.py` carries a test in
   `tests_english_audit.py` that separates the defect from the convention. A
   check without one will re-flood the report and the report will stop being read.
+- **"Fixing" a book when the DETECTOR is what's wrong.** When a whole book or a
+  whole class lights up, suspect the trigger before the text and measure its
+  corpus-wide precision first — `audit_english --class <cls> --json`, then eyeball
+  the trigger word in every hit. `amanda-smith-autobiography` audited as 18
+  anachronisms and was clean: `cars?` fired on railroad cars, streetcars, balloon
+  cars and biblical chariots, scoring **41 false / 0 true across the whole corpus**
+  (an author before ~1905 cannot mean a motor-car except in invented text). The
+  repair was to DELETE the trigger and re-pin, not to touch a single book. A
+  trigger near 0% precision isn't triaging — it trains the reader to skim the
+  class — so removing it is the fix; if the real defect it once guarded still
+  matters, replace it with a narrower check that has its own precision test
+  (`cars?` guarded invented COMMODITY LISTS, not the word — that shape wants its
+  own detector). Shipped in #1609.
 - **Reading GROWTH as a new defect without checking.** The ratchet says a work
   that grew has a new defect — usually true, but a neighbouring edit can tip a
   PRE-EXISTING chapter over a threshold without touching its prose.

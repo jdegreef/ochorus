@@ -109,8 +109,22 @@ class Finding:
 # alternation under re.I was 32% of a whole-corpus scan (1.56s of 4.9s), and
 # `str.lower()` is a C loop (0.68s). Offsets survive because no block in the
 # corpus changes length when lowercased, and `excerpt` reads the original text.
+#
+# `cars?` was here and was REMOVED: across the whole PD corpus it scored 41 false
+# / 0 true. In a library that predates the automobile, "car" is a railroad car
+# ("took the cars", "baggage car"), a streetcar/tram ("the Sixth avenue cars"),
+# a balloon's car, or a biblical/poetic chariot ("car of state", Song of Songs
+# 3:9; "juggernaut car") — never a motor-car except in invented text. It was
+# added for the humility-2 "land, cars, and lots of businesses" incident, but the
+# tell there was a modern COMMODITY LIST, not the word; a token with 0% precision
+# stops triaging and just trains the reader to skim the class. The defence that
+# remains: the surviving triggers below (which is what caught the real
+# way-into-holiest "computer audience … e-mail me" transcriber note) plus the
+# human read-pass the english-qa skill mandates for every anachronism. Do not
+# re-add a bare `cars?`; if invented-commodity detection is wanted back, build a
+# comma-list-of-modern-goods check with its own precision test instead.
 ANACHRONISM = re.compile(
-    r"\b(cars?|automobiles?|internet|online|websites?|e-?mails?|smartphones?|"
+    r"\b(automobiles?|internet|online|websites?|e-?mails?|smartphones?|"
     r"computers?|television|tv|social media|podcasts?|credit cards?|ceos?)\b"
 )
 
@@ -178,8 +192,13 @@ FUSION_HEADS = frozenset({
 #: ("cujus nomen perennius quam monumentum"). A foreign quotation is the one
 #: thing an English word oracle cannot judge, so they are named here rather
 #: than reasoned about.
+#: `washer` is `was`+`her` by the head/tail oracle, but it is an ordinary
+#: English agent noun — Amanda Smith's mother was "a beautiful washer and
+#: ironer". Named here for the same reason as the others: the oracle cannot tell
+#: a real `-er` agent noun on a function-word head from a lost space.
 FUSION_EXEMPT = frozenset({
     "anothers", "nomad", "nomen", "noway", "noways", "solet", "sounder",
+    "washer",
 })
 #: A tail must reach this many uses across the English library to count as a word.
 COMMON_MIN = 20
