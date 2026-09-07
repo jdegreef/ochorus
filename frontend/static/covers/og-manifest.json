@@ -1524,10 +1524,10 @@
 			"scrim": 0.6
 		},
 		"watchman-nee-a-life": {
-			"ground": "270ba249cf7d9dd78ad7c500a380996b1d07e92668c1322742897bb13d2fdbf9",
+			"ground": "f30ea137235a5c8b437bb14f76b35401fe9beead579df070d556d3bf84414386",
 			"style": "house",
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1
 		},
 		"way-into-holiest": {
