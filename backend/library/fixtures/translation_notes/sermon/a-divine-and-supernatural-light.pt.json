@@ -1,0 +1,50 @@
+{
+  "kind": "sermon",
+  "slug": "a-divine-and-supernatural-light",
+  "language": "pt",
+  "job_issue": null,
+  "pull_request": 1636,
+  "references": [
+    {
+      "reference": "Exodus 28:3",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "1 John 3:6",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 14:19",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 17:3",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Psalm 119:18",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Psalm 25:14",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 6:40",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 17:6",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 12:44",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Luke 12:56",
+      "status": "self_rendered"
+    }
+  ],
+  "note": "Keyless in-session translation: all listed references are self_rendered, using the authoritative Bíblia Livre (porbrbsl) wording where supplied. Verify against the Portuguese Bible during native review."
+}

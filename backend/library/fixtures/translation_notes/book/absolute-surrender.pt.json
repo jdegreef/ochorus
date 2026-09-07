@@ -1,0 +1,102 @@
+{
+  "kind": "book",
+  "slug": "absolute-surrender",
+  "language": "pt",
+  "job_issue": null,
+  "pull_request": 1636,
+  "references": [
+    {
+      "reference": "Mark 9:23",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Mark 9:24",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "1 John 4:8",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 3:16",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 13:35",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 13:34",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "1 John 4:12",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "1 John 4:20",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Acts 13:1",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 14:17",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Luke 22:61",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 13:36",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Luke 5:4",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Mark 14:29",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Luke 22:33",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 21:17",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Acts 5:29",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Luke 18:27",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Philippians 2:13",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 7:24",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "1 Peter 1:5",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 15:5",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 15:8",
+      "status": "self_rendered"
+    }
+  ],
+  "note": "Keyless in-session translation: all listed references are self_rendered, using the authoritative Bíblia Livre (porbrbsl) wording where supplied. Verify against the Portuguese Bible during native review."
+}
