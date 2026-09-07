@@ -722,23 +722,8 @@ BODY_CORRECTIONS: dict[str, dict] = {
     "absolute-surrender": {
         # The CCEL text is uniformly curly; one opening double quote slipped
         # through the importer's straight->curly pass. Curl it (QuoteStyleTests).
-        #
-        # ch03 opens with an <h2> restating its own title ("SEPARATED UNTO THE
-        # HOLY GHOST" against the title "Separated unto the Holy Spirit"), so the
-        # reader prints the title twice. `strip_restated_headings` misses it \u2014
-        # its title rule sees "Ghost" != "Spirit" \u2014 but it is the same
-        # restatement (all-of-grace precedent), and Spanish collapses both to
-        # "Esp\u00edritu Santo", so the es edition's <h2> is an exact restatement the
-        # fixture gate rejects. Drop the heading in every edition; markup-anchored
-        # so it is a no-op on body_text.
         "replacements": [
             ('unto him, "Thus saith', 'unto him, \u201cThus saith'),
-            ("<h2>SEPARATED UNTO THE HOLY GHOST</h2> ", ""),
-            # Same restated ch03 heading in the Portuguese edition (Portuguese
-            # also collapses Ghost/Spirit to "Espírito Santo", so its <h2>
-            # exactly restates the pt title); dropped to match the trimmed en
-            # so the editions stay markup-coherent.
-            ("<h2>POSTOS À PARTE PARA O ESPÍRITO SANTO</h2> ", ""),
         ],
     },
     "ministry-of-intercession": {
