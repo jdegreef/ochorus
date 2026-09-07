@@ -7,17 +7,43 @@
  * nothing all still produce a valid-looking sitemap, and Search Console would
  * be weeks reporting the damage.
  */
-import { describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ADVERTISED_LOCALES } from './advertised-locales';
 import {
 	loc,
+	resetSitemapData,
 	sectionEntries,
 	sectionLocale,
 	sections,
+	sitemapData,
 	urlXml,
 	urlsetXml
 } from './sitemap';
 import type { Entry, SitemapData } from './sitemap';
+
+// `build()` reads the live catalogue; drive it with an empty API surface so the
+// only rows it sees are the scripture ones this suite cares about. Hoisted by
+// vitest, so it governs `sitemapData()` everywhere in this file — harmless to
+// the pure-function tests above, which never call it.
+vi.mock('$lib/library-public', () => {
+	const empty = async () => [];
+	return {
+		listArticles: empty,
+		listAuthors: empty,
+		listBooks: empty,
+		listPlans: empty,
+		listQuoteAuthors: empty,
+		listQuoteTopics: empty,
+		listQuoteTopicPages: empty,
+		listSermons: empty,
+		listTopics: empty,
+		listScripturePages: async () => [
+			{ book: 'romans', chapter: 8, verse: null },
+			{ book: 'romans', chapter: 8, verse: 28 },
+			{ book: 'genesis', chapter: 1, verse: 26 }
+		]
+	};
+});
 
 const entry = (byLocale: Record<string, string>, lastmod?: string): Entry => ({
 	byLocale: new Map(Object.entries(byLocale)),
@@ -120,5 +146,25 @@ describe('sections', () => {
 		// that reached none would vanish from the sitemap without any error.
 		const d = data({ pages: [entry({ en: '/topics/prayer/' })] });
 		expect(sectionEntries(d, 'pages')).toHaveLength(1);
+	});
+});
+
+describe('build() scripture entries', () => {
+	// The verse-level trim lives in build(), which the injected-data tests above
+	// never touch — so it needs a test that actually runs build(). Re-advertising
+	// the ~557 thin verse pages is exactly the kind of change that would pass
+	// every other check and only surface as a fresh "Discovered – currently not
+	// indexed" pile in Search Console weeks later.
+	beforeEach(() => resetSitemapData());
+
+	it('advertises the hub and chapter-level pages but not verse-level ones', async () => {
+		const { scripture } = await sitemapData();
+		const urls = scripture.map((e) => e.byLocale.get('en'));
+		expect(urls).toContain('/scripture/');
+		expect(urls).toContain('/scripture/romans/8/');
+		// Verse pages stay prerendered and crawlable (their own route entry
+		// generator + the chapter page's verse links) — just not advertised here.
+		expect(urls).not.toContain('/scripture/romans/8/28/');
+		expect(urls).not.toContain('/scripture/genesis/1/26/');
 	});
 });
