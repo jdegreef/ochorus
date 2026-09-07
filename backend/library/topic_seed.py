@@ -41,6 +41,7 @@ TOPICS = [
             "prevailing-prayer",
             "answers-to-prayer",
             "men-of-prayer-2",
+            "possibilities-of-prayer",
             "prayer-the-pulse-of-life",
             "cheque-book",
         ],
