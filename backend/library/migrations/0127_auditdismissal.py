@@ -23,7 +23,7 @@ def disable_rls(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('library', '0125_merge_two_0124_leaves'),
+        ('library', '0126_trim_wicket_gate_catalogue'),
     ]
 
     operations = [
