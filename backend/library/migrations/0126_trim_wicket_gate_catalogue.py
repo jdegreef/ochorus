@@ -55,5 +55,5 @@ def noop(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-    dependencies = [("library", "0120_repair_intercession_luke_reference")]
+    dependencies = [("library", "0125_merge_two_0124_leaves")]
     operations = [migrations.RunPython(trim, noop)]
