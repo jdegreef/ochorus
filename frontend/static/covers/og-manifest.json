@@ -145,11 +145,11 @@
 			"scrim": 0.6
 		},
 		"ar/power-through-prayer": {
-			"ground": "18c5afcc4dde714eb2348156ad1f688ea574b35f7e6e35193527ce27bafc02e0",
-			"style": "revival",
+			"ground": "e04c38459dc7643bdd19628cbd9fb4fb149672d267063e1a0494303afd8b44a8",
+			"style": "devotional",
 			"script": "arabic",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.75
 		},
 		"ar/prayer-the-pulse-of-life": {
 			"ground": "02de18cb1bd999fc8e6b030d12c36d647da0f5c6860d703ecf91cccddd8df9c8",
@@ -320,11 +320,11 @@
 			"scrim": 0.65
 		},
 		"es/power-through-prayer": {
-			"ground": "27f9b28288e619aaa52e81537bb71dd08111eb23faffa18f16ae6e1a50f287dc",
-			"style": "revival",
+			"ground": "07fee117fcded2bd8af7d47f18714c8064baf4e5515f593ac4b332be1ecd76b7",
+			"style": "devotional",
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.75
 		},
 		"es/prayer-the-pulse-of-life": {
 			"ground": "07ff36d5465ef33f20173862088a794684cb65b8315b612c52de71e270d3676a",
@@ -397,11 +397,11 @@
 			"scrim": 0.6
 		},
 		"essentials-of-prayer": {
-			"ground": "f78b2607d20ea32b17e11e5fb4379abb8eeb156ab113bf355568fc7a033ec263",
-			"style": "revival",
+			"ground": "a3a08b7bec07326fc082f318a9e802f90c63c4db8741bf81482c6c748df952d2",
+			"style": "devotional",
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.8
 		},
 		"first-epistle-of-clement": {
 			"ground": "978ec2807ebaa7d1c3799ccb135d69f10c100b5303bbd47a94838204a5abf72b",
@@ -803,11 +803,11 @@
 			"scrim": 1
 		},
 		"necessity-of-prayer": {
-			"ground": "d844ea2f137f4bfa1d5a83fe0d9e2a1a2c15055e7d077c661107212e90576c19",
-			"style": "revival",
+			"ground": "4453c77330141789ef73c7211ec8bf6011cceacf05b45f5b8bafe0af09f10e23",
+			"style": "devotional",
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.75
 		},
 		"on-loving-god": {
 			"ground": "9ecfa141d89b51f8acfd11fe581faee75b90b5d758c88eb365c0ec058a4340f7",
@@ -846,24 +846,24 @@
 		},
 		"possibilities-of-prayer": {
 			"ground": "07fd9527eed259906c15e46f63a9afdfd352d53ec36fba831abbc9923049ca93",
-			"style": "revival",
+			"style": "devotional",
 			"script": "latin",
 			"art": false,
 			"scrim": 1
 		},
 		"power-through-prayer": {
-			"ground": "8479431a9a178feab19a83728054c8e6a389ea0cbc630908e02a51ca109f134a",
-			"style": "revival",
+			"ground": "a36c72e5986a60d4832a04bd8371181c6bfe960055ee11cfe775c158ce5be6e9",
+			"style": "devotional",
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.75
 		},
 		"prayer-and-praying-men": {
-			"ground": "5cc495c62a3feff95d3f78ce5fc3fc3783e4dd76a0089a84cb3d21c2a3245318",
-			"style": "revival",
+			"ground": "908bbf1a6b4d414810ed49d0d2164df6edb094b0a882d3a5285c898d968e64fc",
+			"style": "devotional",
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.8
 		},
 		"prevailing-prayer": {
 			"ground": "ab6be6abcbd4950e2d71be21c9d06de9b5e739d14d3415a41ed852a1389a2188",
@@ -892,6 +892,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7
+		},
+		"pt/all-things-for-good": {
+			"ground": "767a664b42a31f560158f39b7714037e7f125852b2b30893774334ce5df37c4b",
+			"style": "press",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85
 		},
 		"pt/baptism-with-the-holy-spirit": {
 			"ground": "c3c7eb75b165428995460d77ad651bd299f9dbeab08596e7e2dfd068dbcd597b",
@@ -943,11 +950,11 @@
 			"scrim": 0.6
 		},
 		"pt/power-through-prayer": {
-			"ground": "a9ff1d56e7ca9d36f78d80a9785a453accc244a4053b644952185427da8e32ed",
-			"style": "revival",
+			"ground": "697f92b1607f5bc979926efdcb7fcdca8b5fd89e78bb08617f001043cedbe71a",
+			"style": "devotional",
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.75
 		},
 		"pt/prayer-the-pulse-of-life": {
 			"ground": "c30d5a2e43720ff023e27178fbe750b0f787860c1ef010c52bc8f4b5dc593635",
@@ -1027,18 +1034,18 @@
 			"scrim": 0.6
 		},
 		"purpose-in-prayer": {
-			"ground": "dfa244b7d8aab7d51a6688b7dde8bc430a9a32b648aec3062bf17d6adb379b81",
-			"style": "revival",
+			"ground": "cf1fe597f3e8784fd5a8e00decb46f098482a184d1fc56cb1d23cedd3e3684ee",
+			"style": "devotional",
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.65
 		},
 		"reality-of-prayer": {
-			"ground": "3d2667f90139353f2c09b74a6d34cb14706df45d63c13659e261614f683bf8c1",
-			"style": "revival",
+			"ground": "3ff7e009de2d59ab5a76e18ec46a5100eaaf0141c4d00598d254897c97e0cca9",
+			"style": "devotional",
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.8
 		},
 		"religious-affections": {
 			"ground": "f08da596078f54e62ce2185d38705028382066fe51e4fc47d6bd74151b2399d8",
@@ -1130,6 +1137,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.3
+		},
+		"sw/divine-healing": {
+			"ground": "687d09bde421adcf1dfc9bfcdd013ce6e4382989a21b4f68d648ca6247ce6f9b",
+			"style": "devotional",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.45
 		},
 		"sw/godliness": {
 			"ground": "f8dd5c32fc99eab6102d7c8dabb08e2cd8fd8307ad4bfd74806f01f0925444b8",
@@ -1466,20 +1480,6 @@
 			"script": "latin",
 			"art": false,
 			"scrim": 1
-		},
-		"sw/divine-healing": {
-			"ground": "687d09bde421adcf1dfc9bfcdd013ce6e4382989a21b4f68d648ca6247ce6f9b",
-			"style": "devotional",
-			"script": "latin",
-			"art": true,
-			"scrim": 0.45
-		},
-		"pt/all-things-for-good": {
-			"ground": "767a664b42a31f560158f39b7714037e7f125852b2b30893774334ce5df37c4b",
-			"style": "press",
-			"script": "latin",
-			"art": true,
-			"scrim": 0.85
 		}
 	}
 }
