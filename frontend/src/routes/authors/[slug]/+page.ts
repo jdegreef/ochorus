@@ -298,6 +298,13 @@ export const entries: EntryGenerator = async () => {
 // direction handling is needed; each /uk/authors/<slug> re-crawls and bakes
 // the translated bio. Note uk seeds as status=draft, so these pages only
 // matter once the language is launched from the admin.
+//
+// Prerender refresh 2026-09-07: migration 0127 adds 13 portraits — the same
+// photo_url content-race as 0027 above. The baked pages must re-prerender
+// AFTER the API migration lands so the portrait, its og:image and the credit
+// line appear (Gregory the Great, Monica of Hippo, Luther, Calvin, Teresa of
+// Ávila, Billy Graham, Corrie ten Boom, William Law, Alexander Maclaren,
+// Bonhoeffer, John Stott, Timothy Keller, Loren Cunningham).
 export const load: PageLoad = async ({ params }) => {
 	// The RESOLVED language, not the requested one: getAuthor falls back to
 	// English on a 404, and the reader labels the bio's prose with this.

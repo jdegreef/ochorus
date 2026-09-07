@@ -669,7 +669,13 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
     class Meta:
         model = Author
         fields = [
-            "slug", "name", "bio", "bio_html", "bio_source_type", "photo_url", "birth_year",
+            "slug", "name", "bio", "bio_html", "bio_source_type", "photo_url",
+            # Portrait credit — only the detail page renders it (a card shows the
+            # thumbnail without a caption, which the CC licences allow because
+            # every card links here, so the credit is one click from any
+            # thumbnail). A non-linking reuse of a portrait (an OG/share image,
+            # an email digest) would have to carry the credit with it.
+            "photo_attribution", "photo_source_url", "birth_year",
             "death_year", "book_count", "sermon_count", "has_long_bio",
             "books", "sermons", "topics", "appears_in",
             # Authoritative identifiers for the Person markup — see the field.
