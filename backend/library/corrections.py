@@ -2420,6 +2420,52 @@ BODY_CORRECTIONS.setdefault("waiting-on-god", {}).setdefault("replacements", [])
 )
 
 # OCR/extraction slips found while translating three works to Portuguese
+# (batch 3). Each has one unambiguous reading, confirmed byte-exact in the
+# source and against a canonical edition; the sense is forced by grammar or by
+# the scripture the author is quoting. NOTE: several online reproductions
+# (biblebb.com) share the same OCR lineage as our fixture, so the evidence is
+# the quoted scripture / sense, not a cleaner edition. The pt editions render
+# the corrected readings (fix-forward).
+BODY_CORRECTIONS.setdefault("absolute-surrender", {}).setdefault("replacements", []).extend([
+    # ch06: quoted words are Romans 8:2 (introduced as "the second verse"); the
+    # printed "(Rom. 8:12)" contradicts it.
+    ("(Rom. 8:12)", "(Rom. 8:2)"),
+    # ch08: intrusive "need" — canonical "why do you not believe...".
+    ("do you not need believe", "do you not believe"),
+    # ch08: a graft "strikes" (takes root); "stroke" is no horticultural term.
+    ("time to stroke", "time to strike"),
+    # ch09: reversed closing quote after "nothing." (opening curly used to close).
+    ("<i>nothing.</i>“", "<i>nothing.</i>”"),
+])
+BODY_CORRECTIONS.setdefault("marks-of-a-true-conversion", {}).setdefault("replacements", []).extend([
+    # Ps 73:4 quotation: "no bands in their death" (KJV); "hands" is OCR.
+    ("any hands in their death", "any bands in their death"),
+    # idiom "now and then"; "not and then" does not parse.
+    ("is not and then good-natured", "is now and then good-natured"),
+    # "the guilt of Adam's sin" (imputed guilt); "guild" is meaningless.
+    ("the guild of Adam", "the guilt of Adam"),
+    # "done it before" — "lit" is a dropped-letter OCR.
+    ("have not done lit before", "have not done it before"),
+    # "be bold with your Father" (Abba, Father — boldness in prayer); "gold" OCR.
+    ("be gold with your Father", "be bold with your Father"),
+    # John 11:25: "the resurrection and the life"; "the live" is OCR.
+    ("resurrection and the live", "resurrection and the life"),
+    # "to see and know" — "se" is a dropped letter.
+    ("thee to se and know", "thee to see and know"),
+])
+BODY_CORRECTIONS.setdefault("a-divine-and-supernatural-light", {}).setdefault("replacements", []).extend([
+    # "concerned" — "concemed" is the classic rn->m scan error; not a word.
+    ("are concemed and made use", "are concerned and made use"),
+    # two dittographies (a clause printed twice); keep one copy. Canonical reads
+    # each once. A verbatim clause-doubling is a mechanical artifact, never
+    # authorial, so these are safe even though the online lineage shares them.
+    ("when the light of the sun is cast upon them; so that the mind can better judge of them. As he that beholds the objects on the face of the earth, when the light of the sun is cast upon them,",
+     "when the light of the sun is cast upon them,"),
+    ("as the wise and prudent; and they are often hid from these things, as the wise and prudent; and they are often hid from these when",
+     "as the wise and prudent; and they are often hid from these when"),
+])
+
+# OCR/extraction slips found while translating three works to Portuguese
 # (batch 2). Each is a mechanical defect whose correct reading is forced by
 # grammar or the surrounding text and confirmed against a canonical edition
 # (Gutenberg #65115 for Bounds; spurgeon.org for "Christ Crucified"). The
