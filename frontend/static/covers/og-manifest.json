@@ -1417,6 +1417,13 @@
 			"script": "latin",
 			"art": false,
 			"scrim": 1
+		},
+		"sw/divine-healing": {
+			"ground": "687d09bde421adcf1dfc9bfcdd013ce6e4382989a21b4f68d648ca6247ce6f9b",
+			"style": "devotional",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.45
 		}
 	}
 }

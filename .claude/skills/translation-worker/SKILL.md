@@ -2143,3 +2143,29 @@ archaic spelling and period punctuation are the text, not defects in it.
   all-of-grace 0.815 — a dedication HYMN (ministry ch01) rode at 1.00, the
   expected proper-noun/verse-density effect, not a defect. Re-derive rather than
   copy; it is a dict comprehension over the fixture field.
+- **The sw corpus crib GROWS as your own prior batches merge — re-mine fresh each
+  job** (divine-healing #1316, 2026-09-06). After the three-book sw batch (#1638)
+  merged, the mined sw crib went 546→892 refs; Murray's just-shipped
+  `ministry-of-intercession.sw` lifted crib coverage of Murray's `divine-healing`
+  verses (106 citation-occurrences with a SUV candidate). So "coverage is thin" is a
+  starting state, not a ceiling — rebuild `corpus_crib.json` from ALL shipped
+  `*.sw.json` at the start of every sw job. divine-healing's band n=32: 0.729–0.854,
+  mean 0.799 — below the sw corpus mean because it is the most quotation-dense book
+  (es ran 0.62–0.76), verified complete by tag parity, not padded. James 5:15 (theme
+  verse, quoted 10×) and Acts 10:38 were the reconciliation hotspots: unify the shared
+  clause onto the SUV base so short/fuller/full forms NEST (ratchet excludes
+  containment), then PIN only genuinely-disjoint remainders (Murray's "[au kutamponya]"
+  gloss; his two disjoint halves of Acts 10:38).
+- **A book can become CURATED (shared painting) AFTER you branch — CI tests the merge,
+  so re-check cover tier on rebase** (divine-healing #1316). PR #1701 added the five
+  Murray plate books (incl. divine-healing, ministry-of-intercession) to
+  `library/curated_art.py` CURATED with a real `/covers/art/<slug>.jpg` ground while
+  this job was mid-flight. The local suite passed (older main: work not yet curated, so
+  localize_covers drew a per-language plate), but the merge failed
+  `CoverAssetTests.test_curated_editions_share_one_painting` — a curated edition MUST
+  point at the shared painting, not a `/covers/<lang>/<slug>.svg` plate. Fix: rebase,
+  re-run `localize_covers` (it now repoints to `/covers/art/<slug>.jpg`), delete the
+  committed plate `.svg`/`.png`, and regenerate the og twin. Watch scope: `og:covers`
+  will also redraw twins for OTHER books #1701 curated (their manifest scrims were left
+  at 1 though `art_scrim.py` has the measured value) — restore all covers to main and
+  splice in ONLY your `twins/<lang>/<slug>` entry, so the PR touches one edition.

@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-06: NEW Swahili book divine-healing (#1316, 32 ch) —
+// completes the Swahili book queue. Rebuilds /sw/books so the card carries its
+// translated title and shared painting cover. No plans/+page.ts touch owed
+// (divine-healing backs no LAUNCH_PLANS/CURATED_PLANS entry).
 // prerender refresh 2026-09-06: three NEW Swahili books — cheque-book (#1301),
 // ministry-of-intercession (#1315), all-of-grace (#1317). 51 chapters. Rebuilds
 // /sw/books so each card carries its translated title and localized cover.
