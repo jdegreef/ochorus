@@ -1,0 +1,28 @@
+{
+ "kind": "bio",
+ "slug": "john-newton",
+ "language": "sw",
+ "job_issue": 1716,
+ "references": [
+  {
+   "reference": "1 Chronicles",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "John",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Mark",
+   "status": "self_rendered",
+   "block_index": 35
+  }
+ ]
+}

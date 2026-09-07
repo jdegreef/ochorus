@@ -1,0 +1,23 @@
+{
+ "kind": "bio",
+ "slug": "john-chrysostom",
+ "language": "sw",
+ "job_issue": 1718,
+ "references": [
+  {
+   "reference": "Isaiah",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "John",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Numbers",
+   "status": "self_rendered",
+   "block_index": 11
+  }
+ ]
+}

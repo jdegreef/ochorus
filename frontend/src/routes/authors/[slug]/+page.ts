@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-07: first Swahili author bios — john-newton (#1716),
+// robert-murray-mcheyne (#1717), john-chrysostom (#1718). Rebuilds the localized
+// /sw author pages with the translated bios + prayer callouts.
 // prerender refresh 2026-09-05: twelve more Portuguese author biographies —
 // richard-allen, julia-foote, jarena-lee, ignatius-of-antioch, cyprian-of-carthage,
 // clement-of-rome, bernard-of-clairvaux, william-law, william-carey, teresa-of-avila,
