@@ -4,11 +4,20 @@ name: CI
 # tests + migration check pass and the frontend type-checks and builds. Add this
 # workflow as a required status check in the repo's branch-protection settings so
 # it actually gates merges (autoDeploy ships main to production).
+#
+# `merge_group` runs this same gate on the merge queue's temporary branch — the PR
+# merged onto the CURRENT main (and any PRs ahead of it in the queue). That is what
+# finally closes the divergent-migration-leaf race (the 0121->0125 cascade of
+# 2026-09-06): a PR whose migration was cut off a now-stale leaf produces two leaf
+# nodes on the real merge, so `makemigrations --check` fails HERE and the queue
+# ejects it — instead of breaking main and the deploy after it lands. Requires
+# "Require merge queue" on the main branch-protection rule to actually take effect.
 
 on:
   pull_request:
   push:
     branches: [main]
+  merge_group:
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -20,8 +29,9 @@ concurrency:
   # drift and the unkeyed {#each} it carried went unreported, and every branch
   # cut from main failed `makemigrations --check` and `eslint` for two days.
   # The failure was eventually visible on #974's run — nothing had reported on
-  # #973's own.
-  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+  # #973's own. A merge_group run has the same stakes as main: cancel it and the
+  # queue gets no verdict and stalls — so only PR runs are superseded.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   test-and-build:
