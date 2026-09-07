@@ -364,8 +364,15 @@ export interface AdminCoverageRow {
 	cells: Record<string, SourceType | 'present'>;
 }
 
+// A matrix column. `queueable` is true only for languages the translation-jobs
+// queue accepts (a registered non-English target) — a column can exist for a
+// stray content language the registry never adopted, which can't be queued.
+export interface AdminCoverageLanguage extends Language {
+	queueable: boolean;
+}
+
 export interface AdminCoverage {
-	languages: Language[];
+	languages: AdminCoverageLanguage[];
 	books: AdminCoverageRow[];
 	sermons: AdminCoverageRow[];
 	plans: AdminCoverageRow[];
