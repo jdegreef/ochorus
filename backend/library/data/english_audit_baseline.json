@@ -35,9 +35,6 @@
   "come-thou-into-the-ark": {
    "space-before-punct": 2
   },
-  "compel-them-to-come-in": {
-   "orphan-close-quote": 1
-  },
   "divine-healing": {
    "orphan-close-quote": 3,
    "space-before-punct": 11
@@ -242,7 +239,6 @@
    "space-before-punct": 2
   },
   "the-gospel-of-healing": {
-   "lost-paragraphing": 4,
    "space-before-punct": 13
   },
   "the-imitation-of-christ": {

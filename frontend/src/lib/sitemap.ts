@@ -258,6 +258,15 @@ async function build(): Promise<SitemapData> {
 	for (const a of articles) {
 		pages.push({ byLocale: new Map([['en', `/articles/${a.slug}/`]]), lastmod: a.updated_at });
 	}
+	// A crawlable shelf per topic (`/articles/<topic>/`) — the same segment as an
+	// article, prerendered by the [slug] entry generator, disambiguated in load.
+	// The set is the union of the topic chips on the articles, exactly what
+	// entries() emits, so advertised and built stay in step (prerenderCoverage).
+	const articleTopics = new Set<string>();
+	for (const a of articles) for (const tc of a.topics ?? []) articleTopics.add(tc.slug);
+	for (const slug of articleTopics) {
+		pages.push({ byLocale: new Map([['en', `/articles/${slug}/`]]) });
+	}
 
 	// Author pages prerender for every locale (the bio falls back to English).
 	const authorSlugs = new Set<string>(authors.map((a) => a.slug));
@@ -316,16 +325,35 @@ async function build(): Promise<SitemapData> {
 	// Scripture pages carry ONE locale, not the advertised set: citations parse
 	// only against English book names, so there is no localized version of these
 	// and claiming one would be a false alternate.
+	//
+	// VERSE-LEVEL pages (/scripture/<book>/<ch>/<verse>/) are deliberately NOT
+	// advertised here — only the hub and the chapter-level pages are. They are
+	// the thinnest tier of the graph and the largest removable slice of the
+	// sitemap (~557 of ~1,197 scripture URLs, ~8% of the whole index), and
+	// Search Console was reporting a large "Discovered – currently not indexed"
+	// pile: Google finding sitemap URLs it then declines to spend crawl budget
+	// fetching. Dropping the thinnest tier from the advertised set concentrates
+	// that budget on the chapters, books and chapter-level scripture pages the
+	// site actually wants ranked.
+	//
+	// This does NOT hide or deindex the verse pages. They still prerender (their
+	// own route entry generator builds them, keyed on `verse !== null`) and stay
+	// crawlable through the "verses these writers stop at" links on each
+	// chapter-level page — so Google reaches and may still index the ones it
+	// judges worthwhile. We simply stop *promising* them in the sitemap. Fully
+	// reversible: restore the `.filter` to advertise them again.
+	//
+	// The prerender-coverage guard enforces sitemap ⊆ prerendered, so shrinking
+	// the advertised set (never growing it past what is built) keeps it green.
 	const scripture: Entry[] = [
 		{ byLocale: new Map([['en', '/scripture/']]) },
-		...scripturePages.map((p) => ({
-			byLocale: new Map([
-				[
-					'en',
-					`/scripture/${p.book}/${p.chapter}/` + (p.verse === null ? '' : `${p.verse}/`)
-				] as [string, string]
-			])
-		}))
+		...scripturePages
+			.filter((p) => p.verse === null)
+			.map((p) => ({
+				byLocale: new Map([
+					['en', `/scripture/${p.book}/${p.chapter}/`] as [string, string]
+				])
+			}))
 	];
 
 	// Quote pages carry ONE locale, like the scripture graph and for the same

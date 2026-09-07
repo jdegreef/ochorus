@@ -1,3 +1,9 @@
+// prerender refresh 2026-09-06: three NEW Swahili books — cheque-book (#1301),
+// ministry-of-intercession (#1315), all-of-grace (#1317). 51 chapters. Rebuilds
+// /sw/books so each card carries its translated title and localized cover.
+// No plans/+page.ts touch owed: all-of-grace backs the curated plan
+// grace-for-every-sinner, whose third source book (a-call-to-the-unconverted)
+// has no Swahili edition yet, so seed_plans creates no new sw plan row here.
 // prerender refresh 2026-09-05: the LAST six Hindi books — baptism-with-the-holy-spirit
 // (#1105), the-key-in-my-hand (#1413), ministry-of-intercession (#1414), godliness
 // (#1106), stepping-stones-2 (#1119), the-unselfishness-of-god (#1104). 125 chapters,
