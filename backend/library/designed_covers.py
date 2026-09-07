@@ -286,6 +286,15 @@ DERIVED_GROUND: dict[str, Ground] = {
     "the-masters-indwelling": Ground(0.58, 0.83, 0.02, 1.12, sky=0.30,
         source="389d6f2248dd21120d79be7def954bebe8ed895a93b0517eefa45e6ee8715949",
     ),
+    # The title and byline fill the top and middle over two jumping figures; the
+    # words-free picture is the band BELOW the title (~0.56) and above the Ochorus
+    # mark at the foot (~0.86) — wet sand, the sunset's reflection and the lower
+    # silhouettes. inset 0.05 clears the cover's white hairline frame; the band is
+    # a silhouette against a sunset, so a shallow sky extension (0.22) keeps the
+    # figures from blurring up into the sky, and a slight lift carries white type.
+    "the-christians-secret-of-a-happy-life-4": Ground(0.56, 0.82, 0.06, 1.15, sky=0.22,
+        source="d9b9836cb2eaa1cd8d669cb3f2fc880ed884c0ab020e13afb7fde2e6ea2685e5",
+    ),
     "the-person-and-work-of-the-holy-spirit": Ground(0.41, 0.82, 0.10, 1.00,
         source="854342772afb4da0ac470fdc3b92b253794051942e82bde23a3681388c7bab60",
     ),
