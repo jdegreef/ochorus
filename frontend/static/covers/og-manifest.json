@@ -51,7 +51,7 @@
 			"style": "devotional",
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.95
 		},
 		"all-of-grace": {
 			"ground": "25d18c1f3133cdd46d916757dc58d064dd8cda9ff6adce9f7edf269c234762d4",
@@ -831,11 +831,11 @@
 			"scrim": 0.7
 		},
 		"pt/absolute-surrender": {
-			"ground": "72bd95a3dc97dd347ef825bc4ad931708828a46c4ba48c2cf8a2984b856406bd",
+			"ground": "53736338307423f5bf749f2a3ce62366c7f2f6909b42426959e319fcdc8aef66",
 			"style": "devotional",
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.95
 		},
 		"pt/all-of-grace": {
 			"ground": "21179941fa311850e8b8cf29e4c28f959cb0b3c05ff869161d44a551d263ea4e",
