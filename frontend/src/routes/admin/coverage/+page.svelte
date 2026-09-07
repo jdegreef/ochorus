@@ -40,18 +40,19 @@
 		bios: 'bio'
 	};
 
-	const rows = $derived<AdminCoverageRow[]>(cov ? cov[tab] : []);
+	// `?? []` guards the deploy window where the SPA carries a new tab before the
+	// API's payload does: a missing `cov[tab]` must render empty, not throw.
+	const rows = $derived<AdminCoverageRow[]>(cov?.[tab] ?? []);
 	const langs = $derived(cov?.languages ?? []);
 	// Books link to their admin detail page; sermons/plans/bios (no admin detail
 	// yet) link to their live pages — a biography row is an author.
-	const rowHref = (slug: string) =>
-		tab === 'books'
-			? `/admin/books/${slug}`
-			: tab === 'sermons'
-				? `/sermons/${slug}`
-				: tab === 'bios'
-					? `/authors/${slug}`
-					: `/plans/${slug}`;
+	const ROW_HREF_BASE: Record<Tab, string> = {
+		books: '/admin/books',
+		sermons: '/sermons',
+		plans: '/plans',
+		bios: '/authors'
+	};
+	const rowHref = (slug: string) => `${ROW_HREF_BASE[tab]}/${slug}`;
 
 	// Per-language totals for the active matrix (how many works exist in each).
 	const totals = $derived(
@@ -211,7 +212,7 @@
 							: 'border-border text-muted hover:text-text'}"
 						onclick={() => (tab = t.key)}
 					>
-						{t.label} ({d[t.key].length})
+						{t.label} ({d[t.key]?.length ?? 0})
 					</button>
 				{/each}
 			</div>
