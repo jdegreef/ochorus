@@ -225,6 +225,45 @@ CURATED: dict[str, Artwork] = {
         "Nee's whole argument is that what the New Testament describes is not "
         "the exceptional Christian life but the normal one.",
     ),
+    # ── Batch 3 · Andrew Murray's plate books ──────────────────────────────
+    # Murray held a devotional style and a handful of hand-made covers, but five
+    # of his works wore a flat coloured plate — the shelf's one place a reader
+    # looks first said they were the lesser editions. These give them the same
+    # painted ground his designed covers carry. Two of his own century's Dutch
+    # painters — van Gogh (a Reformed pastor's son) — because Murray was a Dutch
+    # Reformed minister of the Cape, and the shelf should sound like his world.
+    "divine-healing": Artwork(
+        "met", 437518, "Théodore Rousseau", "A River in a Meadow", "ca. 1840",
+        "Still, restorative water under an open sky — healing as something the "
+        "body is returned to rather than seized. Barbizon, Murray's own century.",
+    ),
+    "ministry-of-intercession": Artwork(
+        "met", 438490, "Emanuel de Witte", "Interior of the Oude Kerk, Delft", "probably 1650",
+        "A Dutch Reformed church interior, columns receding into light and a few "
+        "figures at prayer below — Murray's own tradition, and the book is a plea "
+        "for more of exactly what is happening in it.",
+        focus=0.4,
+    ),
+    "holy-in-christ": Artwork(
+        "met", 436535, "Vincent van Gogh", "Wheat Field with Cypresses", "1889",
+        "Field and trees straining up toward a radiant sky — holiness as a life "
+        "drawn into the light rather than scrubbed of fault. Van Gogh, a Reformed "
+        "pastor's son, and Murray's exact decade.",
+        focus=0.6,
+    ),
+    "true-vine": Artwork(
+        "met", 435809, "Pieter Bruegel the Elder", "The Harvesters", "1565",
+        "The harvest laid in under a great tree — \"that ye bear much fruit\" "
+        "(John 15), which the book meditates on for a month. The definitive "
+        "painting of a harvest brought in.",
+        focus=0.45,
+    ),
+    "absolute-surrender": Artwork(
+        "met", 437980, "Vincent van Gogh", "Cypresses", "1889",
+        "A single cypress rising like green flame into a churning sky — the self "
+        "wholly given up, taken up. Van Gogh again, one year on, for the book of "
+        "Murray's that asks for everything.",
+    ),
 }
 
 
