@@ -12,8 +12,20 @@
 	import { localizeHref } from '$lib/href';
 	import { locales } from '$lib/paraglide/runtime';
 
-	const auditRes = adminResource(getAdminAudit, 'Something went wrong running the audit.');
+	// '' = all editions. Filtering is server-side (accurate per-language totals
+	// even when a check is capped), so a change re-fetches via the resource key.
+	let language = $state('');
+	const auditRes = adminResource(
+		() => getAdminAudit(language),
+		'Something went wrong running the audit.',
+		() => language
+	);
 	const audit = $derived(auditRes.data);
+
+	// Names ride along with the audit (registry-sourced), so a language an admin
+	// added without a deploy reads as itself; the code is the fallback while the
+	// payload is still loading. Mirrors the review queue.
+	const languageName = (code: string) => audit?.language_names?.[code] ?? code.toUpperCase();
 
 	// Accepting a finding is a write, so serialise it against the re-run it
 	// triggers and against a second click. `lastUndo` keeps the most recent
@@ -130,9 +142,25 @@
 			<p class="mt-2 text-body text-muted">Quality and integrity checks across the library. Heuristics are advisory — read the chapter before fixing.</p>
 		</div>
 		{#if audit}
-			<button class="btn btn-ghost" onclick={auditRes.load} disabled={auditRes.loading}
-				>{auditRes.loading ? 'Re-running…' : 'Re-run'}</button
-			>
+			<div class="flex items-center gap-2">
+				{#if audit.languages.length > 1}
+					<label class="sr-only" for="audit-language">Filter by language</label>
+					<select
+						id="audit-language"
+						class="field text-small"
+						bind:value={language}
+						disabled={auditRes.loading}
+					>
+						<option value="">All languages</option>
+						{#each audit.languages as code (code)}
+							<option value={code}>{languageName(code)}</option>
+						{/each}
+					</select>
+				{/if}
+				<button class="btn btn-ghost" onclick={auditRes.load} disabled={auditRes.loading}
+					>{auditRes.loading ? 'Re-running…' : 'Re-run'}</button
+				>
+			</div>
 		{/if}
 	</header>
 

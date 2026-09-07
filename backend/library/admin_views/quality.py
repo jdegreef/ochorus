@@ -760,6 +760,11 @@ def _ref_of(check: str, finding: dict) -> str:
     return finding["title"] if check == "duplicate_titles" else str(finding["order"])
 
 
+def _only(items: list, language: str) -> list:
+    """The findings for one edition. Every finding carries its ``language``."""
+    return [f for f in items if f["language"] == language]
+
+
 def _present(check: str, items: list, dismissed: set) -> dict:
     """Cap a quality check's findings after removing accepted ones, and report
     how many were hidden so the check still reads as examined, not empty."""
@@ -902,23 +907,55 @@ class AdminAuditView(APIView):
 
     def get(self, request):
         raw, per_book = self._scan_chapters()
+        dup_raw = self._duplicate_titles(per_book["titles"])
+        # empty_chapters is a structural defect (integrity), not an advisory
+        # heuristic — capped like the rest of integrity, never dismissible.
+        integrity_raw = {
+            "empty_books": self._empty_books(),
+            "empty_chapters": raw["empty_chapters"],
+            "order_gaps": self._order_gaps(per_book["orders"]),
+            "broken_plan_days": self._broken_plan_days(),
+        }
+
+        # The languages that have any finding, computed on the FULL result so the
+        # picker is the same whichever language is selected — filtering to one
+        # edition must not empty the menu you'd switch back through. Names come
+        # from the language registry (the runtime source), like the review queue,
+        # so an edition an admin added without a frontend deploy still reads as
+        # itself rather than a bare code.
+        languages = self._languages(raw, dup_raw, integrity_raw)
+        language_names = {code: language_entry(code)["name"] for code in languages}
+
+        # Filter to one edition BEFORE capping, so a capped check (e.g. 344
+        # mid-sentence splits across editions) reports its true per-language
+        # count, not whatever survived the first 100 rows.
+        language = (request.query_params.get("language") or "").strip()
+        if language:
+            raw = {k: _only(v, language) for k, v in raw.items()}
+            dup_raw = _only(dup_raw, language)
+            integrity_raw = {k: _only(v, language) for k, v in integrity_raw.items()}
+
         dismissed = self._dismissed()
         quality = {
             check: _present(check, raw[check], dismissed)
             for check in QUALITY_CHAPTER_CHECKS
         }
-        quality["duplicate_titles"] = _present(
-            "duplicate_titles", self._duplicate_titles(per_book["titles"]), dismissed
+        quality["duplicate_titles"] = _present("duplicate_titles", dup_raw, dismissed)
+        integrity = {k: _capped(v) for k, v in integrity_raw.items()}
+        return Response(
+            {
+                "quality": quality,
+                "integrity": integrity,
+                "languages": languages,
+                "language_names": language_names,
+                "language": language,
+            }
         )
-        # empty_chapters is a structural defect (integrity), not an advisory
-        # heuristic — capped like the rest of integrity, never dismissible.
-        integrity = {
-            "empty_books": _capped(self._empty_books()),
-            "empty_chapters": _capped(raw["empty_chapters"]),
-            "order_gaps": _capped(self._order_gaps(per_book["orders"])),
-            "broken_plan_days": _capped(self._broken_plan_days()),
-        }
-        return Response({"quality": quality, "integrity": integrity})
+
+    @staticmethod
+    def _languages(raw: dict, dup_raw: list, integrity_raw: dict) -> list[str]:
+        lists = (*raw.values(), *integrity_raw.values(), dup_raw)
+        return sorted({f["language"] for lst in lists for f in lst})
 
     @staticmethod
     def _dismissed() -> set:
