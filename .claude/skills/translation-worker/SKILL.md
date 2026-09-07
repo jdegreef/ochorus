@@ -2179,3 +2179,30 @@ archaic spelling and period punctuation are the text, not defects in it.
   will also redraw twins for OTHER books #1701 curated (their manifest scrims were left
   at 1 though `art_scrim.py` has the measured value) — restore all covers to main and
   splice in ONLY your `twins/<lang>/<slug>` entry, so the PR touches one edition.
+- **CLOCK-TIME reckoning is a per-language reconciliation dimension — pin it in the
+  brief for any work that cites hours** (sw books batch, 2026-09-07, power-through-prayer
+  / E. M. Bounds). Swahili traditional time runs six hours off the international clock
+  (saa moja asubuhi = 7am, saa kumi usiku ≈ 4am), so "four in the morning" has two
+  defensible renderings — CONVERTED (`saa kumi`, mathematically correct reckoning) or
+  KEEP-THE-NUMBER (`saa nne`, matches the author's printed digit, the common modern
+  written-Swahili convention). Fan-out split exactly here: one range-agent converted
+  ("four till eight" → `saa kumi hata saa mbili`), another kept the number ("eleven or
+  twelve o'clock" → `saa kumi na moja au saa kumi na mbili`) — a real within-book
+  inconsistency that no structural gate sees. DISTINGUISH clock times from DURATIONS
+  first: most `saa` hits are durations (`saa nyingi` = many hours, `saa tano kila siku`
+  = five hours daily) and are correct untouched; only the clock references need a
+  convention. Settle it in the brief ("keep the author's printed hour number; translate
+  only the word 'o'clock'"), reconcile the outliers against the English, and FLAG the
+  choice for the native reviewer — it is a localization judgment, not a defect. Generalises
+  to any language with a non-international clock idiom.
+- **A RANGE-AGENT that dies to a 429 leaves a PARTIAL range on disk — refill by
+  CHAPTER, not by re-running the whole agent** (sw books batch, 2026-09-07). Range-agents
+  (3-4 short chapters each, "do it YOURSELF sequentially, no delegation") are the right
+  tool for a many-short-chapter book — 61 chapters of three books fit one 16-agent wave
+  under the 20-cap, vs 61 per-chapter agents. But the rate-limit salvage rule sharpens:
+  a per-chapter agent that 429s is all-or-nothing; a RANGE agent may have written ch09
+  and ch10 and died before ch11/ch12. So `ls out/<slug>/` and diff against the expected
+  chapter set — re-dispatch only the MISSING chapters (a small range-agent), never the
+  whole original range, or you overwrite good work. Also: a range-agent that reports "OK"
+  for all four can still have written none of the files (the check-the-file rule applies
+  to the whole range at once) — true-vine ch01-04 reported OK with zero files on disk.
