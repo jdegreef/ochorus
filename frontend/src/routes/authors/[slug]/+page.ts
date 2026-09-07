@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-07: French author bio — charles-h-spurgeon (#1815).
+// Author pages are prerendered PER AUTHOR, so /fr/authors/charles-h-spurgeon must
+// rebuild for the translated bio and its pull-quotes and prayer callouts.
 // prerender refresh 2026-09-07: first Swahili author bios — john-newton (#1716),
 // robert-murray-mcheyne (#1717), john-chrysostom (#1718). Rebuilds the localized
 // /sw author pages with the translated bios + prayer callouts.
