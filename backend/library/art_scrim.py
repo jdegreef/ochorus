@@ -76,4 +76,5 @@ ART_SCRIM: dict[str, float] = {
     "union-and-communion": 0.85,
     "waiting-on-god": 0.60,
     "watchman-nee-a-life": 0.80,
+    "women-who-moved-heaven-2": 0.30,
 }

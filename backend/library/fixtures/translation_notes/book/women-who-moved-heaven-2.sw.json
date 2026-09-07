@@ -1,0 +1,367 @@
+{
+ "kind": "book",
+ "slug": "women-who-moved-heaven-2",
+ "language": "sw",
+ "job_issue": 1787,
+ "references": [
+  {
+   "reference": "1 John",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 John 5:14",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 Peter",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 Timothy",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "1 Timothy 2:1",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 3:17",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "2 Corinthians 5:14",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "2 Corinthians 5:7",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Acts 16:1-40",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Acts 16:13",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Acts 1:14",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Acts 2:42",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Colossians",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Colossians 4:2",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Hebrews",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Hebrews 11:33",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Isaiah",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Isaiah 41:10",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Isaiah 6:8",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "James",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "Jeremiah 29:11",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Jeremiah 29:13",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Joel",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Joel 2:28",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "John",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "John 12:24",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "John 15:15",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "John 16:23",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Joshua 1:9",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Joshua 24:15",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Lamentations",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Lamentations 2:19",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Luke",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Luke 10:2",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Mark 9:23",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 18:19",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 18:20",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 4:16",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "lord-teach-us-to-pray-2.sw.json"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 9:37",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Philippians",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Philippians 4:11",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Proverbs",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Proverbs 22:6",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Proverbs 3:5",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "the-inner-chamber.sw.json"
+  },
+  {
+   "reference": "Psalms 119:147",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Psalms 121:1",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Psalms 126:5",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Psalms 23:4",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Psalms 46:10",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Psalms 56:8",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "Romans 10:14",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Romans 1:16",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 8:28",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Romans 8:38",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Zechariah",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Zechariah 4:6",
+   "status": "self_rendered",
+   "block_index": 7
+  }
+ ]
+}
