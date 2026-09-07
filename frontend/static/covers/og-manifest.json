@@ -114,7 +114,7 @@
 			"style": "devotional",
 			"script": "arabic",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.45
 		},
 		"ar/godliness": {
 			"ground": "024e77389ba1cf97a0b0a196422cc237c010461521fcd05a0f7d457af0b43d4a",
@@ -247,7 +247,7 @@
 			"style": "devotional",
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.45
 		},
 		"enchiridion": {
 			"ground": "7c033bdbcff6c3f21f1e7c95ea21c88d30ead18eb59cf95e58a75c449fff631c",
@@ -264,11 +264,11 @@
 			"scrim": 1
 		},
 		"es/absolute-surrender": {
-			"ground": "9d2a5f02f7417396f8c0df3757e4077c0927a288053cd7d8302ad52d49a90014",
+			"ground": "f13df3518a6dbf80aec789a4cc3a4617e7d40b704b6ce274f7bf068edf24a300",
 			"style": "devotional",
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.95
 		},
 		"es/all-of-grace": {
 			"ground": "4c27f99f956f15bd728a240afab3cfd7f3848f91e5b7d2a67399ffe15db61411",
@@ -464,7 +464,7 @@
 			"style": "devotional",
 			"script": "devanagari",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.45
 		},
 		"hi/godliness": {
 			"ground": "b72ec1d040a6969ecfe8b18f80e0ae3eff7014ca28644597d364c715c4942439",
@@ -499,7 +499,7 @@
 			"style": "devotional",
 			"script": "devanagari",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.75
 		},
 		"hi/prayer-the-pulse-of-life": {
 			"ground": "5e42f8c18c6752e175c3aedda526c0a27d8bcdefbd0c242d7472eade812af0d7",
@@ -793,7 +793,7 @@
 			"style": "devotional",
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.75
 		},
 		"mortification-of-sin": {
 			"ground": "81ab25ff3ce6cc4a67630451dbdaf9cbc6982f338d4aa2e22d03663043df9bbd",
@@ -905,7 +905,7 @@
 			"style": "devotional",
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.45
 		},
 		"pt/godliness": {
 			"ground": "222d108dde31cac64a15af4a17b73d314aed70e731961c38902504ee76576695",
@@ -1164,7 +1164,7 @@
 			"style": "devotional",
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.75
 		},
 		"sw/prayer-the-pulse-of-life": {
 			"ground": "6b9f5ca7685a1b7114298f2faf67d94f19d8ce4699d7532802f945db9cf5fa70",
@@ -1367,7 +1367,7 @@
 			"style": "devotional",
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.85
 		},
 		"tukutendereza": {
 			"ground": "153daf8655f1057a61a8c46d62ddc21980a1b613d0450ce91d777c2507dd957d",

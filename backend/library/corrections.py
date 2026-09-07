@@ -734,6 +734,11 @@ BODY_CORRECTIONS: dict[str, dict] = {
         "replacements": [
             ('unto him, "Thus saith', 'unto him, \u201cThus saith'),
             ("<h2>SEPARATED UNTO THE HOLY GHOST</h2> ", ""),
+            # Same restated ch03 heading in the Portuguese edition (Portuguese
+            # also collapses Ghost/Spirit to "Espírito Santo", so its <h2>
+            # exactly restates the pt title); dropped to match the trimmed en
+            # so the editions stay markup-coherent.
+            ("<h2>POSTOS À PARTE PARA O ESPÍRITO SANTO</h2> ", ""),
         ],
     },
     "ministry-of-intercession": {
