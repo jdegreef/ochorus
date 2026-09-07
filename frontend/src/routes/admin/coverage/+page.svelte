@@ -22,21 +22,36 @@
 	);
 	const cov = $derived(coverage.data);
 
-	type Tab = 'books' | 'sermons' | 'plans';
+	type Tab = 'books' | 'sermons' | 'plans' | 'bios';
 	let tab = $state<Tab>('books');
 
 	const TABS: { key: Tab; label: string }[] = [
 		{ key: 'books', label: 'Books' },
 		{ key: 'sermons', label: 'Sermons' },
-		{ key: 'plans', label: 'Plans' }
+		{ key: 'plans', label: 'Plans' },
+		{ key: 'bios', label: 'Biographies' }
 	];
+
+	// Each tab is one job type (the queue's singular names).
+	const JOB_TYPE: Record<Tab, TranslationJobType> = {
+		books: 'book',
+		sermons: 'sermon',
+		plans: 'plan',
+		bios: 'bio'
+	};
 
 	const rows = $derived<AdminCoverageRow[]>(cov ? cov[tab] : []);
 	const langs = $derived(cov?.languages ?? []);
-	// Books link to their admin detail page; sermons/plans (no admin detail yet)
-	// link to their live pages.
+	// Books link to their admin detail page; sermons/plans/bios (no admin detail
+	// yet) link to their live pages — a biography row is an author.
 	const rowHref = (slug: string) =>
-		tab === 'books' ? `/admin/books/${slug}` : tab === 'sermons' ? `/sermons/${slug}` : `/plans/${slug}`;
+		tab === 'books'
+			? `/admin/books/${slug}`
+			: tab === 'sermons'
+				? `/sermons/${slug}`
+				: tab === 'bios'
+					? `/authors/${slug}`
+					: `/plans/${slug}`;
 
 	// Per-language totals for the active matrix (how many works exist in each).
 	const totals = $derived(
@@ -66,9 +81,7 @@
 	// also queue every gap along it at once, behind a count confirmation.
 	//
 	// The matrix tab maps 1:1 onto a job type (plural → singular).
-	const jobType = $derived<TranslationJobType>(
-		tab === 'books' ? 'book' : tab === 'sermons' ? 'sermon' : 'plan'
-	);
+	const jobType = $derived<TranslationJobType>(JOB_TYPE[tab]);
 
 	let jobs = $state<AdminTranslationJob[]>([]);
 	// null = the jobs GET failed (unknown): keep the buttons and let POST surface
@@ -207,9 +220,12 @@
 			<div class="mb-3 flex flex-wrap gap-x-4 gap-y-1 text-small text-muted">
 				{#if tab === 'books'}
 					<span><span class="text-text">PD</span> public domain</span>
+				{/if}
+				{#if tab === 'books' || tab === 'bios'}
 					<span><span class="text-accent">AI✓</span> reviewed</span>
 					<span><span class="text-warning">AI·</span> unreviewed</span>
-				{:else}
+				{/if}
+				{#if tab !== 'books'}
 					<span><span class="text-accent">●</span> present</span>
 				{/if}
 				<span><span class="text-muted">·</span> missing</span>

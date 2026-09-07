@@ -376,6 +376,9 @@ export interface AdminCoverage {
 	books: AdminCoverageRow[];
 	sermons: AdminCoverageRow[];
 	plans: AdminCoverageRow[];
+	// Row = author; the English cell is the original Author.bio_html, translated
+	// cells carry ai_reviewed / ai_unreviewed.
+	bios: AdminCoverageRow[];
 }
 
 export const getAdminCoverage = () => apiFetch<AdminCoverage>('/api/admin/coverage/');
