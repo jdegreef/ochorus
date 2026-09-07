@@ -2419,6 +2419,49 @@ BODY_CORRECTIONS.setdefault("waiting-on-god", {}).setdefault("replacements", [])
     ("<p> 'I SPOKE of an army", "<p> I SPOKE of an army")
 )
 
+# OCR/extraction slips found while translating Watson's book to Portuguese (batch 4). Watson's text is scripture-dense and heavily OCR-damaged; each fix is forced by the KJV verse quoted or by grammar/citation. Two orphan close-quotes clear audit findings (baseline re-pinned).
+BODY_CORRECTIONS.setdefault('all-things-for-good', {}).setdefault("replacements", []).extend([
+    ('The certainly of the privilege', 'The certainty of the privilege'),
+    ('(2 Cor. v. l)', '(2 Cor. v. 1)'),
+    ('hearts of Gods people', 'hearts of God’s people'),
+    ('mercies of God world for good', 'mercies of God work for good'),
+    ('servant lob shall pray', 'servant Job shall pray'),
+    ('(Matt. xiii. 38 42)', '(Matt. xiii. 38-42)'),
+    ('Almighty hath addicted me', 'Almighty hath afflicted me'),
+    ('these good pips', 'these good figs'),
+    ('scum boils up ñ much', 'scum boils up — much'),
+    ('saints in addiction', 'saints in affliction'),
+    ('sorrow shall he turned', 'sorrow shall be turned'),
+    ('we should riot be judged', 'we should not be judged'),
+    ('(Dan. xii. 31)', '(Dan. xii. 3)'),
+    ('ointment which kids', 'ointment which kills'),
+    ('(Job xiii. 10)', '(Job xlii. 10)'),
+    ('thou hast addicted me', 'thou hast afflicted me'),
+    ('(Thess. v. 18)', '(1 Thess. v. 18)'),
+    ('(Psalm xlviii. 141)', '(Psalm xlviii. 14)'),
+    ('love our Ford Jesus', 'love our Lord Jesus'),
+    ('His gospel. which is the rod', 'His gospel, which is the rod'),
+    ('it is rot lawful', 'it is not lawful'),
+    ('God hath nor called', 'God hath not called'),
+    ('do to he saved', 'do to be saved'),
+    ('(Psalm cv. 2)', '(Psalm cx. 2)'),
+    ('shall co operate', 'shall co-operate'),
+    ('(2 Pet. i. 10).We make', '(2 Pet. i. 10). We make'),
+    ('</i>l <i>thank', '</i> <i>thank'),
+    ('obedience.” </b>', 'obedience. </b>'),
+    ('appearing.” </b>', 'appearing. </b>'),
+])
+
+# OCR slips in Whitefield's sermon found while translating to Portuguese (batch 4); includes Luther's Latin 'articulus stantis aut cadentis ecclesiae' garbled by the scanner.
+BODY_CORRECTIONS.setdefault('the-lord-our-righteousness', {}).setdefault("replacements", []).extend([
+    ('Arians of Socinians', 'Arians or Socinians'),
+    ('Artienlus statntis out cedentis Eichlesin,', 'Articulus stantis aut cadentis Ecclesiae,'),
+    ('he never dies, he never will', 'he never does, he never will'),
+    ('Stoddard or Northampton', 'Stoddard of Northampton'),
+    ('God an in inducing', 'God as an inducing'),
+    ('further to affirming', 'further to affirm'),
+])
+
 # OCR/extraction slips found while translating three works to Portuguese
 # (batch 3). Each has one unambiguous reading, confirmed byte-exact in the
 # source and against a canonical edition; the sense is forced by grammar or by
