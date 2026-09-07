@@ -334,6 +334,40 @@ class AdminTranslationJobsTests(TestCase):
         gh.post.assert_not_called()
 
     @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_post_duplicate_is_caught_past_the_first_page(self):
+        """The guard has to read the whole queue, not the first hundred of it.
+
+        `direction: asc` makes page one the OLDEST hundred open jobs, so once
+        the queue passed 100 the newest job — the one a second press is about
+        to re-file — was the one the guard could not see. On 2026-09-06 that
+        put 31 issues on the board for 17 distinct jobs.
+        """
+        from unittest.mock import MagicMock, patch
+
+        full_page = [
+            self._issue(f"[translation] book:filler-{i} -> lg", number=1000 + i)
+            for i in range(100)
+        ]
+        existing = self._issue("[translation] book:humility -> lg", number=2000)
+        pages = [full_page, [existing]]
+        with patch("library.admin_views.jobs.requests") as gh:
+            gh.get.side_effect = [
+                MagicMock(json=lambda page=page: page, raise_for_status=lambda: None)
+                for page in pages
+            ]
+            res = self.client.post(
+                "/api/admin/translation-jobs/",
+                {"type": "book", "slug": "humility", "language": "lg"},
+                format="json",
+            )
+        self.assertEqual(res.status_code, 200)
+        self.assertFalse(res.data["created"])
+        self.assertEqual(res.data["job"]["number"], 2000)
+        # Both pages read, and nothing filed.
+        self.assertEqual(gh.get.call_count, 2)
+        gh.post.assert_not_called()
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
     def test_get_lists_jobs_with_state(self):
         from unittest.mock import MagicMock, patch
 
