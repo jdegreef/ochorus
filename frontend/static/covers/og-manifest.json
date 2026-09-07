@@ -263,6 +263,13 @@
 			"art": false,
 			"scrim": 1
 		},
+		"es/a-short-and-easy-method-of-prayer": {
+			"ground": "3167a5ac966460ce86d91ddce01dabf90506193f4660f06341a7cbb679c66a1b",
+			"style": "devotional",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"es/all-of-grace": {
 			"ground": "4c27f99f956f15bd728a240afab3cfd7f3848f91e5b7d2a67399ffe15db61411",
 			"style": "revival",
@@ -353,6 +360,20 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.35
+		},
+		"es/separation-and-service": {
+			"ground": "cad64c13ac360a3b5749bf0557546ac4becda2489677b7d1e938965901dc4eb8",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
+		"es/the-fourfold-gospel": {
+			"ground": "543d1ab7c043ae66c6374ec5cdf3ff6d0e88f653b180980aa101b9aaa2be35f7",
+			"style": "revival",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85
 		},
 		"es/the-inner-chamber": {
 			"ground": "336703e5a3b031ffc4533590d4d4a6024e164a09540a43bc18546d77db4c3e7d",

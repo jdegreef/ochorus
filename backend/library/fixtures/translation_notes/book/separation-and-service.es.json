@@ -1,0 +1,11 @@
+{
+  "kind": "book",
+  "slug": "separation-and-service",
+  "language": "es",
+  "job_issue": null,
+  "pull_request": null,
+  "note": [
+    "AI translation via the keyless pipeline path (engine glossary + Reina-Valera). These authors quote Scripture woven into their prose without explicit Book C:V citations, so the verses were rendered by the model in Reina-Valera wording (self_rendered) and every one should be checked by a native reviewer. This list covers any explicit citations present in the es text; uncited woven allusions are not individually enumerated."
+  ],
+  "references": []
+}
