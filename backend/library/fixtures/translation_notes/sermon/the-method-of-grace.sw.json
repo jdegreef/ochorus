@@ -1,0 +1,28 @@
+{
+ "kind": "sermon",
+ "slug": "the-method-of-grace",
+ "language": "sw",
+ "job_issue": 1730,
+ "references": [
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Jeremiah",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Job",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Mark",
+   "status": "self_rendered",
+   "block_index": 4
+  }
+ ]
+}

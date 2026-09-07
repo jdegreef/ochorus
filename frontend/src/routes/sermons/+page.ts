@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-07: three more Swahili sermons — the-almost-christian (#1728),
+// fall-and-recovery-of-man (#1729), the-method-of-grace (#1730). Rebuilds /sw/sermons.
 // prerender refresh 2026-09-07: three NEW Swahili sermons — the-ravens-cry (#1725),
 // gods-love-for-a-sinning-world (#1726), pauls-praise-of-christian-love (#1727).
 // Rebuilds /sw/sermons so each card carries its translated title.
