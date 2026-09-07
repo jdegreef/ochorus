@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { downloadFile } from '$lib/dataExport';
@@ -24,7 +25,29 @@
 		type ParsedTarget
 	} from '$lib/adminActivity';
 
-	const activity = adminResource(getAdminActivity, 'Something went wrong loading activity.');
+	// One object's history when ?target= is present; the whole log otherwise.
+	const target = $derived($page.url.searchParams.get('target') ?? '');
+
+	// The rows on screen and the cursor for the next older page. Seeded from each
+	// fresh base load (a Refresh, or a change of target) and then grown in place
+	// by "Load older". The resource's onLoad is the reset point — it runs after
+	// the resource's own supersession check, so a stale load can't wipe the rows
+	// a newer page accumulated.
+	let rows = $state<AdminActionRow[]>([]);
+	let cursor = $state<number | null>(null);
+	let loadingOlder = $state(false);
+	let olderError = $state<string | null>(null);
+
+	const activity = adminResource(
+		() => getAdminActivity({ target: target || undefined }),
+		'Something went wrong loading activity.',
+		() => target,
+		(result) => {
+			rows = result.actions;
+			cursor = result.next_cursor;
+			olderError = null;
+		}
+	);
 	const data = $derived(activity.data);
 
 	// One reference instant per render — every "ago" on the page agrees, and the
@@ -61,7 +84,27 @@
 	let activeActor = $state('');
 	let searchEl = $state<HTMLInputElement | null>(null);
 
-	const rows = $derived(data?.actions ?? []);
+	async function loadOlder() {
+		if (cursor == null || loadingOlder) return;
+		loadingOlder = true;
+		olderError = null;
+		// The scope this page belongs to. A base reload (a Refresh, or navigating
+		// to another target) reseeds rows/cursor while this is in flight; if that
+		// happened, drop this page rather than append it to a different query's.
+		const scope = target;
+		try {
+			const res = await getAdminActivity({ before: cursor, target: scope || undefined });
+			if (scope !== target) return;
+			rows = [...rows, ...res.actions];
+			cursor = res.next_cursor;
+		} catch (e) {
+			if (scope !== target) return;
+			olderError = e instanceof Error ? e.message : 'Could not load older activity.';
+		} finally {
+			loadingOlder = false;
+		}
+	}
+
 	// Blank actors (only a DEBUG tokenless request) are dropped: their empty value
 	// would collide with the "All admins" sentinel and can't be filtered on anyway.
 	const actors = $derived([...new Set(rows.map((r) => r.actor))].filter(Boolean));
@@ -149,13 +192,27 @@
 		{/if}
 	</header>
 
+	{#if target}
+		<div class="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-card border border-accent-soft-border bg-accent-soft px-4 py-3">
+			<p class="text-body text-text">
+				History for <span class="font-semibold">{targetName(target)}</span>
+				<span class="text-small text-muted">· {target}</span>
+			</p>
+			<a href="/admin/activity" class="btn btn-ghost">← All activity</a>
+		</div>
+	{/if}
+
 	<AdminGate resource={activity} errorTitle="Couldn't load activity">
 		{#snippet children(d)}
 			{#if d.actions.length === 0}
 				<div class="rounded-card border border-border bg-surface p-8 text-center">
-					<p class="text-h3">Nothing recorded yet</p>
+					<p class="text-h3">{target ? 'No history for this target' : 'Nothing recorded yet'}</p>
 					<p class="mt-1 text-body text-muted">
-						Creating a language, publishing a document or deciding a review will show up here.
+						{#if target}
+							Nothing has been changed here through the admin yet.
+						{:else}
+							Creating a language, publishing a document or deciding a review will show up here.
+						{/if}
 					</p>
 				</div>
 			{:else}
@@ -221,12 +278,9 @@
 
 				<p class="mb-3 text-small text-muted">
 					{#if isFiltered}
-						{filtered.length} matching · {rows.length} loaded{#if d.total > d.actions.length}
-							of {d.total}{/if}
-					{:else if d.total > d.actions.length}
-						Showing the most recent {d.actions.length} of {d.total}.
+						{filtered.length} matching · {rows.length} loaded of {d.total}
 					{:else}
-						{d.actions.length} action{d.actions.length === 1 ? '' : 's'}.
+						Showing {rows.length} of {d.total} action{d.total === 1 ? '' : 's'}.
 					{/if}
 				</p>
 
@@ -266,6 +320,16 @@
 													<span class="font-medium text-text">{displayName(t)}</span>
 												{/if}
 												<span class="shrink-0 rounded-full border px-2.5 py-0.5 text-small font-semibold {pillTone(meta.loud)}">{a.label}</span>
+												{#if !target && t.kind !== 'other'}
+													<a
+														href="/admin/activity?target={encodeURIComponent(a.target)}"
+														title="Show this target's history"
+														aria-label="Show this target's history"
+														class="shrink-0 text-muted hover:text-accent"
+													>
+														<svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 8v4l2.5 2.5" /></svg>
+													</a>
+												{/if}
 											</div>
 											<div class="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-small text-muted">
 												<span class="inline-flex items-center gap-1.5">
@@ -295,6 +359,15 @@
 							</ul>
 						</section>
 					{/each}
+				{/if}
+
+				{#if cursor != null}
+					<div class="mt-4 flex flex-col items-center gap-2">
+						<button class="btn btn-ghost" onclick={loadOlder} disabled={loadingOlder}>
+							{loadingOlder ? 'Loading…' : 'Load older'}
+						</button>
+						{#if olderError}<p class="text-small text-danger">{olderError}</p>{/if}
+					</div>
 				{/if}
 			{/if}
 		{/snippet}

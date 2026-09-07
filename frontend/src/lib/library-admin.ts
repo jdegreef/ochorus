@@ -820,9 +820,22 @@ export interface AdminActionRow {
 }
 
 export interface AdminActivity {
-	total: number;
+	/** The full count — a first-page figure; null on a `before` (load-older) page. */
+	total: number | null;
 	limit: number;
+	/** The id to pass as `before` for the next older page, or null when at the end. */
+	next_cursor: number | null;
 	actions: AdminActionRow[];
 }
 
-export const getAdminActivity = () => apiFetch<AdminActivity>('/api/admin/activity/');
+/**
+ * A page of admin actions, newest first. `target` narrows to one object's whole
+ * history; `before` is a `next_cursor` from a prior page, to load older rows.
+ */
+export const getAdminActivity = (opts: { before?: number | null; target?: string } = {}) => {
+	const params = new URLSearchParams();
+	if (opts.before != null) params.set('before', String(opts.before));
+	if (opts.target) params.set('target', opts.target);
+	const qs = params.toString();
+	return apiFetch<AdminActivity>(`/api/admin/activity/${qs ? `?${qs}` : ''}`);
+};
