@@ -59,6 +59,7 @@ const data = (over: Partial<SitemapData> = {}): SitemapData => ({
 	sermons: [],
 	scripture: [],
 	quotes: [],
+	articles: [],
 	chapters: [],
 	...over
 });
@@ -146,6 +147,16 @@ describe('sections', () => {
 		// that reached none would vanish from the sitemap without any error.
 		const d = data({ pages: [entry({ en: '/topics/prayer/' })] });
 		expect(sectionEntries(d, 'pages')).toHaveLength(1);
+	});
+
+	it('gives the articles their own section, carrying only English', () => {
+		// The Articles hub, each article and each topic shelf get their own child
+		// (not folded into pages) so Search Console reports them on their own line.
+		// English only, like the quotes and scripture shelves.
+		const d = data({ articles: [entry({ en: '/articles/prayer/' })] });
+		expect(sections()).toContain('articles');
+		expect(sectionEntries(d, 'articles')).toHaveLength(1);
+		expect(urlXml(d.articles[0])).not.toContain('hreflang="sw"');
 	});
 });
 

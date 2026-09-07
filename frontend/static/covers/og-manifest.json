@@ -47,10 +47,10 @@
 			"scrim": 1
 		},
 		"absolute-surrender": {
-			"ground": "982288344fa5dedd67d66b698ab5c885b8d616570b74a5833d19215533b775f5",
+			"ground": "0d0bae9493e4aa971d41f42b362110787f97cf65000fda96cdaff8e5f5beeb3f",
 			"style": "devotional",
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1
 		},
 		"all-of-grace": {
@@ -96,10 +96,10 @@
 			"scrim": 0.3
 		},
 		"ar/divine-healing": {
-			"ground": "df7e372251849663a0cd5b9d359bb0b556b268895a0e002fabc3264372e32728",
+			"ground": "a4de311c632ba5129bdc21772259eed1a83825f793a401761e69b1cf5d8ef484",
 			"style": "devotional",
 			"script": "arabic",
-			"art": false,
+			"art": true,
 			"scrim": 1
 		},
 		"ar/godliness": {
@@ -222,10 +222,10 @@
 			"scrim": 1
 		},
 		"divine-healing": {
-			"ground": "85d2fe0f41c5e9a4318d3ebf48446b6599308a24ec922a3d79d59b3ba6da35c7",
+			"ground": "af714b6b1c4dd06581012c8a91eaf12ec964f029929dfed0a9327d179b0a45b2",
 			"style": "devotional",
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1
 		},
 		"enchiridion": {
@@ -425,10 +425,10 @@
 			"scrim": 0.3
 		},
 		"hi/divine-healing": {
-			"ground": "22af3da48a705422bf771715fb06e941ee1487c46b6f1731dd56cfeb39eeb1f2",
+			"ground": "b4a55c076d68456f5a23110c93c75a2c872c5445b0e0a8228910f6594ce7dd62",
 			"style": "devotional",
 			"script": "devanagari",
-			"art": false,
+			"art": true,
 			"scrim": 1
 		},
 		"hi/godliness": {
@@ -460,10 +460,10 @@
 			"scrim": 0.65
 		},
 		"hi/ministry-of-intercession": {
-			"ground": "1e29b5a4a80f3281255397f4eb72a757d676a0d442a653e5c80e6849c023d237",
+			"ground": "ea6803622e2cd17da98b1d994a4ab8a92aaea70d7aaa7830ac92af0061a73a40",
 			"style": "devotional",
 			"script": "devanagari",
-			"art": false,
+			"art": true,
 			"scrim": 1
 		},
 		"hi/prayer-the-pulse-of-life": {
@@ -516,10 +516,10 @@
 			"scrim": 0.6
 		},
 		"holy-in-christ": {
-			"ground": "534fe06a744aab7ea045b1225fd92df566fee50902a5f5c1269376f822911d11",
+			"ground": "25e3f970266c7bccd9a7035ca1d534d54c4abeba99b7b6d57c028277bd7904d4",
 			"style": "devotional",
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1
 		},
 		"how-to-bring-men-to-christ": {
@@ -754,10 +754,10 @@
 			"scrim": 1
 		},
 		"ministry-of-intercession": {
-			"ground": "27e7b8bc1e354b0e4643c0024cc47d117b6352ac750b1546e3482008b6df99ba",
+			"ground": "c29b4e95738f0b032d0f2181c4a32596814abd3bee59c86d7d3f189401531b4f",
 			"style": "devotional",
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1
 		},
 		"mortification-of-sin": {
@@ -837,6 +837,13 @@
 			"art": true,
 			"scrim": 0.7
 		},
+		"pt/absolute-surrender": {
+			"ground": "72bd95a3dc97dd347ef825bc4ad931708828a46c4ba48c2cf8a2984b856406bd",
+			"style": "devotional",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"pt/all-of-grace": {
 			"ground": "21179941fa311850e8b8cf29e4c28f959cb0b3c05ff869161d44a551d263ea4e",
 			"style": "revival",
@@ -859,10 +866,10 @@
 			"scrim": 0.3
 		},
 		"pt/divine-healing": {
-			"ground": "56f6fdd4b74661be99e55fc14d67824438cd65c01ef1cf3f212825d92d40aeb1",
+			"ground": "698dfb5eaa879941c66e889fe2e09d02e1b96cc0c47ce6d444e4aeb88abe0ab5",
 			"style": "devotional",
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1
 		},
 		"pt/godliness": {
@@ -892,6 +899,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6
+		},
+		"pt/power-through-prayer": {
+			"ground": "a9ff1d56e7ca9d36f78d80a9785a453accc244a4053b644952185427da8e32ed",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"pt/prayer-the-pulse-of-life": {
 			"ground": "c30d5a2e43720ff023e27178fbe750b0f787860c1ef010c52bc8f4b5dc593635",
@@ -1111,10 +1125,10 @@
 			"scrim": 0.6
 		},
 		"sw/ministry-of-intercession": {
-			"ground": "48077b1d450da10f4f87660f39b1910250ba39006bbeae4bbf63bf404b9378b5",
+			"ground": "13694bae434a8d024e0917d9423260dc4f263b243c4d0e3f9f08d3c175ff8ad1",
 			"style": "devotional",
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1
 		},
 		"sw/prayer-the-pulse-of-life": {
@@ -1314,10 +1328,10 @@
 			"scrim": 1
 		},
 		"true-vine": {
-			"ground": "54b7d63dda3eb100efe8295a4392fe2def46adebd5317bf6a3841589cc727ea7",
+			"ground": "b8987481ff307df3baddfe5b48c80b98b1d70e39ef4cb39cba9326f66cb360ce",
 			"style": "devotional",
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1
 		},
 		"tukutendereza": {
