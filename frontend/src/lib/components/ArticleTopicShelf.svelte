@@ -2,7 +2,6 @@
 	import type { ArticleSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { breadcrumbLd, hreflangFor } from '$lib/seo';
-	import PageHeader from '$lib/components/PageHeader.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import ArticleShelf from '$lib/components/ArticleShelf.svelte';
@@ -55,6 +54,25 @@
 
 <div class="page-col px-5 py-10">
 	<Breadcrumb items={crumbs} />
-	<PageHeader title={seo.h1} tagline={seo.blurb} />
+	<!-- Not <PageHeader>: its tagline is hard-capped at max-w-2xl (shared across
+	     Books/Topics/…), and this shelf's standfirst is its own 80–130-word intro
+	     (seo.intro) with a reading measure tuned for a paragraph, not a one-liner.
+	     The H1 mirrors PageHeader's classes so the two headers still match.
+	     seo.blurb stays the meta description only (see <Seo> above). -->
+	<header class="mb-8">
+		<h1 class="text-h1 mb-3">{seo.h1}</h1>
+		<p class="article-topic-intro text-body text-muted">{seo.intro}</p>
+	</header>
 	<ArticleShelf {articles} activeTopic={slug} />
 </div>
+
+<style>
+	/* The standfirst is an 80–130-word paragraph, so it keeps a reading measure
+	   (~75 characters) rather than spanning the full content column — long lines
+	   at page-col width are hard to track back to the next line. It sits a touch
+	   wider than PageHeader's max-w-2xl (42rem) tagline, matching its longer copy. */
+	.article-topic-intro {
+		max-inline-size: 46rem;
+		text-wrap: pretty;
+	}
+</style>

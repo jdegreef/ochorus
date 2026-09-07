@@ -2629,6 +2629,57 @@ BODY_CORRECTIONS.setdefault("purpose-in-prayer", {}).setdefault("replacements", 
     ("for his .ministry, that", "for his ministry, that"),
     ("praying warmed into. life a new life", "praying warmed into life a new life"),
 ])
+# OCR slips found while translating batch 6 (E. M. Bounds's prayer books).
+BODY_CORRECTIONS.setdefault("reality-of-prayer", {}).setdefault("replacements", []).extend([
+    # "words" -> "worlds" (parallel to "conserves all interests"): "touches all worlds".
+    ("touches all words, conserves", "touches all worlds, conserves"),
+    # "and" -> "are": "God's great and most precious gifts are conditioned on asking".
+    ("gifts and conditioned on asking", "gifts are conditioned on asking"),
+    # "preadventure" -> "peradventure".
+    ("preadventure", "peradventure"),
+])
+BODY_CORRECTIONS.setdefault("prayer-and-praying-men", {}).setdefault("replacements", []).extend([
+    # "Betelguese" -> "Betelgeuse".
+    ("Betelguese", "Betelgeuse"),
+    # "pats" -> "puts".
+    ("prayer pats God into", "prayer puts God into"),
+    # dittography: "from heaven falls from heaven".
+    ("No fire from heaven falls from heaven", "No fire falls from heaven"),
+    # transposition (1 Kings 17:18): "What have I to do with thee".
+    ("What have I do to with thee", "What have I to do with thee"),
+    # missing space.
+    ("a mere vaporing ofintellectual", "a mere vaporing of intellectual"),
+    # stray period.
+    ("The united prayer. of the praying king", "The united prayer of the praying king"),
+    # "hopelessly" -> "hopeless".
+    ("nothing is hopelessly to God", "nothing is hopeless to God"),
+    # "be" -> "he".
+    ("where be really had the life", "where he really had the life"),
+    # biblical name: "Eleazer" -> "Eleazar".
+    ("whose son Eleazer was appointed", "whose son Eleazar was appointed"),
+    # missing space.
+    ("the prayers ofan illiterate", "the prayers of an illiterate"),
+    # lowercase sentence start after a period.
+    ("business of praying. it gives us", "business of praying. It gives us"),
+    # "authentative" -> "authoritative".
+    ("directory and authentative", "directory and authoritative"),
+    # "wess" -> "west".
+    ("getting wess out of Manchester", "getting west out of Manchester"),
+    # "Thee" -> "Three".
+    ("Thee days was he without sight", "Three days was he without sight"),
+    # "wrok" -> "work".
+    ("Paul work his wrok", "Paul work his work"),
+    # scripture (Acts 16:26): "every one's bands were loosed".
+    ("every one’s ban was loosed", "every one’s bands were loosed"),
+    # "prefunctory" -> "perfunctory".
+    ("in a routine, prefunctory manner", "in a routine, perfunctory manner"),
+    # biblical name (Acts 13:1): "Manean" -> "Manaen".
+    ("of Cyrene, and Manean, which", "of Cyrene, and Manaen, which"),
+    # "tetrach" -> "tetrarch".
+    ("Herod the tetrach", "Herod the tetrarch"),
+    # "though" -> "through".
+    ("salvation though your prayer", "salvation through your prayer"),
+])
 
 
 _LG_DOUBLED_VERB: dict[str, list[tuple[str, str]]] = {
