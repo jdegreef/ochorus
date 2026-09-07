@@ -64,6 +64,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'true-vine': 0.85,
 	'union-and-communion': 0.85,
 	'waiting-on-god': 0.60,
+	'watchman-nee-a-life': 0.80,
 };
 
 /** How far to scale the scrim over one work's painting. */

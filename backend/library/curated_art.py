@@ -299,6 +299,18 @@ CURATED: dict[str, Artwork] = {
         "A vast country under an enormous sky — the wide world the praying men of "
         "the book carried, seen at the scale their intercession reached for.",
     ),
+    # ── Batch 5 · Watchman Nee (biography) ─────────────────────────────────
+    # The one place the shelf leaves Europe, and on purpose: the book is the life
+    # of a CHINESE servant of Christ who spent twenty years in prison, so it wears
+    # a Chinese landscape the way Murray's intercession book wears a Dutch Reformed
+    # church — the subject's own world. Kuncan was a monk who painted through the
+    # Ming collapse; his dusk mountains carry endurance and vision at once.
+    "watchman-nee-a-life": Artwork(
+        "met", 39557, "Kuncan", "Wooded Mountains at Dusk", "1666",
+        "Towering peaks going into the dark — a life of suffering and spiritual "
+        "vision, in the idiom of the country Nee never left.",
+        focus=0.3,
+    ),
 }
 
 
