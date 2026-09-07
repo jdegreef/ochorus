@@ -95,6 +95,13 @@
 			"art": true,
 			"scrim": 0.7
 		},
+		"ar/all-things-for-good": {
+			"ground": "cfb0fcd4338ec01dd6d9d2fafddea6b242318a44ce991c882256f65a46e79609",
+			"style": "press",
+			"script": "arabic",
+			"art": true,
+			"scrim": 0.85
+		},
 		"ar/baptism-with-the-holy-spirit": {
 			"ground": "f3517f80debc53e0c4b004a6725bc0c96640214170412d88cf906ba1d563824e",
 			"style": "revival",
@@ -161,6 +168,13 @@
 		"ar/prevailing-prayer": {
 			"ground": "a4bbdea7aa9fe9dccf80b7e0d359cb454e8b40f0d84763584ef1ed7d1cd022ac",
 			"style": "revival",
+			"script": "arabic",
+			"art": true,
+			"scrim": 0.45
+		},
+		"ar/the-christians-secret-of-a-happy-life-4": {
+			"ground": "6162c6864a9d095720f7695166bc7fb204d1191a2af40338e15f2f9745ce8b21",
+			"style": "devotional",
 			"script": "arabic",
 			"art": true,
 			"scrim": 0.45

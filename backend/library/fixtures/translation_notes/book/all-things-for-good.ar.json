@@ -1,0 +1,61 @@
+{
+  "kind": "book",
+  "slug": "all-things-for-good",
+  "language": "ar",
+  "job_issue": null,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Romans 8:28",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Jeremiah 24:5",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 7:25",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Genesis 50:20",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Philippians 1:12",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Hebrews 12:6",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "James 1:2-4",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "2 Corinthians 4:17",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Psalm 119:71",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Job 23:10",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "1 Peter 1:7",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Matthew 13:38-42",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 8:29",
+      "status": "self_rendered"
+    }
+  ]
+}
