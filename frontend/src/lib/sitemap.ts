@@ -258,6 +258,15 @@ async function build(): Promise<SitemapData> {
 	for (const a of articles) {
 		pages.push({ byLocale: new Map([['en', `/articles/${a.slug}/`]]), lastmod: a.updated_at });
 	}
+	// A crawlable shelf per topic (`/articles/<topic>/`) — the same segment as an
+	// article, prerendered by the [slug] entry generator, disambiguated in load.
+	// The set is the union of the topic chips on the articles, exactly what
+	// entries() emits, so advertised and built stay in step (prerenderCoverage).
+	const articleTopics = new Set<string>();
+	for (const a of articles) for (const tc of a.topics ?? []) articleTopics.add(tc.slug);
+	for (const slug of articleTopics) {
+		pages.push({ byLocale: new Map([['en', `/articles/${slug}/`]]) });
+	}
 
 	// Author pages prerender for every locale (the bio falls back to English).
 	const authorSlugs = new Set<string>(authors.map((a) => a.slug));

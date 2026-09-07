@@ -29,7 +29,10 @@ const BROWSE_PAGES: { label: string; file: string }[] = [
 	{ label: 'search', file: 'routes/search/+page.svelte' },
 	{ label: 'quotes', file: 'routes/quotes/+page.svelte' },
 	{ label: 'scripture index', file: 'routes/scripture/+page.svelte' },
-	{ label: 'articles', file: 'routes/articles/+page.svelte' }
+	{ label: 'articles', file: 'routes/articles/+page.svelte' },
+	// The /articles/<topic>/ shelf shares the [slug] route with the article
+	// reader; its content lives in a component, like BooksShelf above.
+	{ label: 'articles topic', file: 'lib/components/ArticleTopicShelf.svelte' }
 ];
 
 /**
@@ -50,7 +53,9 @@ const LEAF_PAGES: { label: string; file: string }[] = [
 	{ label: 'topic', file: 'routes/topics/[slug]/+page.svelte' },
 	{ label: 'plan', file: 'routes/plans/[slug]/+page.svelte' },
 	{ label: 'quotes author', file: 'routes/quotes/[author]/+page.svelte' },
-	{ label: 'article', file: 'routes/articles/[slug]/+page.svelte' },
+	// The [slug] route is a thin switch (article reader vs topic shelf); the
+	// reader's shell lives in its component, so the invariant is checked there.
+	{ label: 'article', file: 'lib/components/ArticleDetail.svelte' },
 	{ label: 'scripture chapter', file: 'routes/scripture/[book]/[chapter]/+page.svelte' },
 	{ label: 'scripture verse', file: 'routes/scripture/[book]/[chapter]/[verse]/+page.svelte' },
 	{ label: 'notebook', file: 'routes/notebook/+page.svelte' },
