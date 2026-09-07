@@ -1,0 +1,39 @@
+{
+ "kind": "sermon",
+ "slug": "the-new-birth",
+ "language": "sw",
+ "job_issue": 1732,
+ "references": [
+  {
+   "reference": "John",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "baptism-with-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "John 3:14",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "John 3:15",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "John 3:3",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Song of Songs",
+   "status": "self_rendered",
+   "block_index": 23
+  }
+ ]
+}
