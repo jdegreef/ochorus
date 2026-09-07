@@ -129,7 +129,7 @@
 
 	<AdminGate resource={auditRes} errorTitle="Couldn't run the audit" loadingText="Running audit…">
 		{#snippet children(a)}
-			<p class="mb-2 text-body {totalFindings ? 'text-warning' : 'text-muted'}">
+			<p class="{lastUndo ? 'mb-2' : 'mb-8'} text-body {totalFindings ? 'text-warning' : 'text-muted'}">
 				{#if totalFindings}<strong>{integrityTotal}</strong> integrity {integrityTotal === 1 ? 'issue' : 'issues'} · <strong>{qualityTotal}</strong> quality {qualityTotal === 1 ? 'flag' : 'flags'}{:else}No findings — the library looks clean. 🎉{/if}
 			</p>
 			{#if lastUndo}
@@ -142,8 +142,6 @@
 						onclick={undoDismiss}>Undo</button
 					>
 				</p>
-			{:else}
-				<div class="mb-8"></div>
 			{/if}
 
 			<!-- "Accept as known" — only shown on advisory quality findings (an

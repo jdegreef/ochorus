@@ -914,7 +914,7 @@ class AdminAuditView(APIView):
         # heuristic — capped like the rest of integrity, never dismissible.
         integrity = {
             "empty_books": _capped(self._empty_books()),
-            "empty_chapters": _capped(raw["_empty_chapters"]),
+            "empty_chapters": _capped(raw["empty_chapters"]),
             "order_gaps": _capped(self._order_gaps(per_book["orders"])),
             "broken_plan_days": _capped(self._broken_plan_days()),
         }
@@ -923,12 +923,9 @@ class AdminAuditView(APIView):
     @staticmethod
     def _dismissed() -> set:
         """Every accepted finding, as (check, book, language, ref) fingerprints."""
-        return {
-            (d.check_key, d.book, d.language, d.ref)
-            for d in AuditDismissal.objects.values_list(
-                "check_key", "book", "language", "ref", named=True
-            )
-        }
+        return set(
+            AuditDismissal.objects.values_list("check_key", "book", "language", "ref")
+        )
 
     def _scan_chapters(self):
         maxima = {
@@ -998,7 +995,9 @@ class AdminAuditView(APIView):
             "fragmented": fragmented,
             "missing_dropcap": dropcap,
             "mid_sentence_splits": mid_split,
-            "_empty_chapters": empty,
+            # Not a quality check — lifted into integrity by get(). Kept here
+            # because it falls out of the same single chapter scan.
+            "empty_chapters": empty,
         }
         return raw, {"titles": titles, "orders": orders}
 
@@ -1094,25 +1093,40 @@ class AdminAuditDismissView(AdminAudited, APIView):
             else AdminAction.Action.AUDIT_DISMISS
         )
 
-    def audit_entry(self, request, response):
-        src = request.query_params if request.method == "DELETE" else request.data
-        check = (src.get("check") or "").strip()
-        book = (src.get("book") or "").strip()
-        language = (src.get("language") or "").strip()
-        return f"{check}:{book}:{language}", {"ref": (str(src.get("ref") or "")).strip()}
+    @staticmethod
+    def _src(request):
+        """Where the target sits: the body on POST, the query string on DELETE
+        (matching undoReview / undoVerse)."""
+        return request.query_params if request.method == "DELETE" else request.data
 
     @staticmethod
-    def _fingerprint(src) -> tuple[str, str, str, str] | None:
-        check = (src.get("check") or "").strip()
-        book = (src.get("book") or "").strip()
-        language = (src.get("language") or "").strip()
-        # A chapter order arrives as a number; a duplicate title as text. Both
-        # become the one string `ref`.
+    def _parse(src) -> tuple[str, str, str, str]:
+        """The four identity fields as trimmed strings. A chapter order arrives
+        as a number and a duplicate title as text; both become the one `ref`."""
         ref = src.get("ref")
-        ref = "" if ref is None else str(ref).strip()
+        return (
+            (src.get("check") or "").strip(),
+            (src.get("book") or "").strip(),
+            (src.get("language") or "").strip(),
+            "" if ref is None else str(ref).strip(),
+        )
+
+    def _fingerprint(self, src) -> tuple[str, str, str, str] | None:
+        check, book, language, ref = self._parse(src)
         if check not in DISMISSIBLE_CHECKS or not (book and language and ref):
             return None
         return check, book, language, ref
+
+    def audit_entry(self, request, response):
+        check, book, language, ref = self._parse(self._src(request))
+        return f"{check}:{book}:{language}", {"ref": ref}
+
+    @staticmethod
+    def _ok(check, book, language, ref, **extra):
+        return {
+            "ok": True, "check": check, "book": book,
+            "language": language, "ref": ref, **extra,
+        }
 
     def post(self, request):
         fp = self._fingerprint(request.data)
@@ -1134,8 +1148,7 @@ class AdminAuditDismissView(AdminAudited, APIView):
             defaults={"note": note, "reviewer": getattr(request.user, "email", "") or ""},
         )
         return Response(
-            {"ok": True, "created": created, "check": check, "book": book,
-             "language": language, "ref": ref},
+            self._ok(check, book, language, ref, created=created),
             status=201 if created else 200,
         )
 
@@ -1151,8 +1164,4 @@ class AdminAuditDismissView(AdminAudited, APIView):
         ).delete()
         if not deleted:
             return Response({"detail": "No such dismissal to undo."}, status=404)
-        return Response(
-            {"ok": True, "check": check, "book": book, "language": language, "ref": ref}
-        )
-
-
+        return Response(self._ok(check, book, language, ref))

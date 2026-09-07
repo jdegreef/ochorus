@@ -1336,7 +1336,10 @@ class AuditDismissal(models.Model):
 
     #: The quality check key (e.g. ``giant_chapters``), matching the audit payload.
     #: Named ``check_key`` because ``check`` shadows ``Model.check()`` (E020); the
-    #: API exposes it as ``check``.
+    #: API exposes it as ``check``. A bare CharField rather than TextChoices on
+    #: purpose: the check catalogue is the shape of the audit payload, which lives
+    #: in the view (``DISMISSIBLE_CHECKS``), and every write is validated against
+    #: it there — so the enum has no second home to keep in sync on the model.
     check_key = models.CharField(max_length=40)
     #: Natural key of the flagged edition — a book is a per-language ROW sharing a
     #: slug, so language is part of the identity, not decoration.
