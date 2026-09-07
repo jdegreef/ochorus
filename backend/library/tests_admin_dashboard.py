@@ -484,6 +484,34 @@ class AdminAuditMultiLanguageTests(TestCase):
         self.assertEqual(mine[0]["language"], "es")
         self.assertEqual(mine[0]["missing"], [2])
 
+    @override_settings(DEBUG=True)
+    def test_languages_lists_every_edition_with_a_finding(self):
+        res = self.client.get("/api/admin/audit/")
+        # ch1 of en/es/pt each trips mid_sentence_splits.
+        self.assertEqual(res.data["languages"], ["en", "es", "pt"])
+        self.assertEqual(res.data["language"], "")
+
+    @override_settings(DEBUG=True)
+    def test_language_filter_narrows_findings_to_one_edition(self):
+        res = self.client.get("/api/admin/audit/?language=es")
+        self.assertEqual(res.data["language"], "es")
+        splits = res.data["quality"]["mid_sentence_splits"]
+        self.assertEqual(splits["total"], 1, "only the Spanish split")
+        self.assertEqual({f["language"] for f in splits["items"]}, {"es"})
+
+    @override_settings(DEBUG=True)
+    def test_language_menu_is_stable_under_a_filter(self):
+        """Filtering to one edition must not empty the picker you switch through."""
+        res = self.client.get("/api/admin/audit/?language=es")
+        self.assertEqual(res.data["languages"], ["en", "es", "pt"])
+
+    @override_settings(DEBUG=True)
+    def test_unknown_language_yields_no_findings(self):
+        res = self.client.get("/api/admin/audit/?language=zz")
+        self.assertEqual(res.data["quality"]["mid_sentence_splits"]["total"], 0)
+        # The menu still offers the real editions.
+        self.assertEqual(res.data["languages"], ["en", "es", "pt"])
+
 
 @override_settings(DEBUG=True)
 class AdminAuditDismissTests(TestCase):

@@ -597,9 +597,18 @@ export interface AdminAudit {
 		order_gaps: Capped<{ book: string; language: string; missing: number[]; count: number }>;
 		broken_plan_days: Capped<{ plan: string; language: string; day: number; book: string; order: number }>;
 	};
+	/** Content languages that have any finding — computed over the unfiltered
+	 *  result, so the picker is stable whatever `language` is selected. */
+	languages: string[];
+	/** The edition this response is filtered to, or '' for all. */
+	language: string;
 }
 
-export const getAdminAudit = () => apiFetch<AdminAudit>('/api/admin/audit/');
+/** @param language a content-language code to filter to, or '' for all editions. */
+export const getAdminAudit = (language = '') =>
+	apiFetch<AdminAudit>(
+		`/api/admin/audit/${language ? `?language=${encodeURIComponent(language)}` : ''}`
+	);
 
 /** Identifies one dismissible quality finding: the check plus the finding's
  *  natural key. `ref` is the chapter order (chapter-shaped checks) or the

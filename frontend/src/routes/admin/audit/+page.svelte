@@ -10,9 +10,17 @@
 		type AuditDismissTarget
 	} from '$lib/library-admin';
 	import { localizeHref } from '$lib/href';
+	import { localeName } from '$lib/lang.svelte';
 	import { locales } from '$lib/paraglide/runtime';
 
-	const auditRes = adminResource(getAdminAudit, 'Something went wrong running the audit.');
+	// '' = all editions. Filtering is server-side (accurate per-language totals
+	// even when a check is capped), so a change re-fetches via the resource key.
+	let language = $state('');
+	const auditRes = adminResource(
+		() => getAdminAudit(language),
+		'Something went wrong running the audit.',
+		() => language
+	);
 	const audit = $derived(auditRes.data);
 
 	// Accepting a finding is a write, so serialise it against the re-run it
@@ -130,9 +138,25 @@
 			<p class="mt-2 text-body text-muted">Quality and integrity checks across the library. Heuristics are advisory — read the chapter before fixing.</p>
 		</div>
 		{#if audit}
-			<button class="btn btn-ghost" onclick={auditRes.load} disabled={auditRes.loading}
-				>{auditRes.loading ? 'Re-running…' : 'Re-run'}</button
-			>
+			<div class="flex items-center gap-2">
+				{#if audit.languages.length > 1 || language}
+					<label class="sr-only" for="audit-language">Filter by language</label>
+					<select
+						id="audit-language"
+						class="rounded-card border border-border bg-surface px-3 py-2 text-small text-text"
+						bind:value={language}
+						disabled={auditRes.loading}
+					>
+						<option value="">All languages</option>
+						{#each audit.languages as code (code)}
+							<option value={code}>{localeName(code)}</option>
+						{/each}
+					</select>
+				{/if}
+				<button class="btn btn-ghost" onclick={auditRes.load} disabled={auditRes.loading}
+					>{auditRes.loading ? 'Re-running…' : 'Re-run'}</button
+				>
+			</div>
 		{/if}
 	</header>
 
