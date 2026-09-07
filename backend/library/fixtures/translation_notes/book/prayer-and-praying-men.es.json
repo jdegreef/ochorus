@@ -1,0 +1,11 @@
+{
+  "kind": "book",
+  "slug": "prayer-and-praying-men",
+  "language": "es",
+  "job_issue": null,
+  "pull_request": null,
+  "note": [
+    "AI translation via the keyless pipeline path (engine glossary + Reina-Valera). Bounds weaves Scripture into his prose largely without explicit citation, so verses were rendered by the model in Reina-Valera wording (self_rendered) and every one should be checked by a native reviewer. This lists explicit citations present in the es text; uncited woven allusions are not enumerated."
+  ],
+  "references": []
+}

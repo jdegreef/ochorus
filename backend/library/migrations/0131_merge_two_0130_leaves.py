@@ -7,7 +7,6 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('library', '0130_merge_20260907_2020'),
-        ('library', '0130_merge_two_0129_leaves'),
     ]
 
     operations = [
