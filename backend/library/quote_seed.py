@@ -46,7 +46,8 @@ from __future__ import annotations
 #: charles-h-spurgeon    — approved 2026-08-28, sixty;
 #:                         and 2026-09-02, twenty more from Gleanings Among the Sheaves;
 #:                         and 2026-09-03, seventeen more from Gleanings — ninety-seven.
-#: thomas-a-kempis       — approved 2026-08-30, thirty-six.
+#: thomas-a-kempis       — approved 2026-08-30, thirty-six;
+#:                          eighteen more 2026-09-07 (fifty-four).
 #: andrew-murray         — approved 2026-08-30, twenty-seven;
 #:                         and 2026-09-02, twenty-three more (the four new books).
 #: e-m-bounds            — approved 2026-08-30, twenty-eight;
@@ -1076,6 +1077,114 @@ THOMAS_A_KEMPIS = [
         "text": "Jesus Christ must be loved alone with a special love for He alone, of all friends, is good and faithful.",
         "chapter": ("the-imitation-of-christ", 34),
         "paragraph": 5,
+    },
+    {
+        "slug": "thomas-a-kempis-9de70a18",
+        "text": "Whatever is not God is nothing and must be accounted as nothing.",
+        "chapter": ("the-imitation-of-christ", 69),
+        "paragraph": 3,
+    },
+    {
+        "slug": "thomas-a-kempis-85bd98b1",
+        "text": "Seek true peace, not on earth but in heaven; not in men or in other creatures but in God alone.",
+        "chapter": ("the-imitation-of-christ", 73),
+        "paragraph": 3,
+    },
+    {
+        "slug": "thomas-a-kempis-6f280cbb",
+        "text": "Affection for creatures is deceitful and inconstant, but the love of Jesus is true and enduring.",
+        "chapter": ("the-imitation-of-christ", 33),
+        "paragraph": 1,
+    },
+    {
+        "slug": "thomas-a-kempis-043d2543",
+        "text": "No man rejoices safely unless he has within him the testimony of a good conscience.",
+        "chapter": ("the-imitation-of-christ", 21),
+        "paragraph": 2,
+    },
+    {
+        "slug": "thomas-a-kempis-32dc0a68",
+        "text": "Man’s happiness does not consist in the possession of abundant goods; a very little is enough.",
+        "chapter": ("the-imitation-of-christ", 23),
+        "paragraph": 1,
+    },
+    {
+        "slug": "thomas-a-kempis-77d5e620",
+        "text": "A man’s true progress consists in denying himself, and the man who has denied himself is truly free and secure.",
+        "chapter": ("the-imitation-of-christ", 77),
+        "paragraph": 6,
+    },
+    {
+        "slug": "thomas-a-kempis-21a0bdf5",
+        "text": "One who is in love flies, runs, and rejoices; he is free, not bound.",
+        "chapter": ("the-imitation-of-christ", 43),
+        "paragraph": 5,
+    },
+    {
+        "slug": "thomas-a-kempis-1383b3ad",
+        "text": "All men desire peace but all do not care for the things that go to make true peace.",
+        "chapter": ("the-imitation-of-christ", 63),
+        "paragraph": 2,
+    },
+    {
+        "slug": "thomas-a-kempis-ce999abc",
+        "text": "Many words do not satisfy the soul; but a good life eases the mind and a clean conscience inspires great trust in God.",
+        "chapter": ("the-imitation-of-christ", 3),
+        "paragraph": 3,
+    },
+    {
+        "slug": "thomas-a-kempis-c07353e9",
+        "text": "Do not think yourself better than others lest, perhaps, you be accounted worse before God Who knows what is in man.",
+        "chapter": ("the-imitation-of-christ", 8),
+        "paragraph": 3,
+    },
+    {
+        "slug": "thomas-a-kempis-e72afb6e",
+        "text": "To walk with God interiorly, to be free from any external affection—this is the state of the inward man.",
+        "chapter": ("the-imitation-of-christ", 32),
+        "paragraph": 8,
+    },
+    {
+        "slug": "thomas-a-kempis-79341ddc",
+        "text": "The whole world will not make him proud whom truth has subjected to itself.",
+        "chapter": ("the-imitation-of-christ", 52),
+        "paragraph": 5,
+    },
+    {
+        "slug": "thomas-a-kempis-47fd3784",
+        "text": "Happy is the man who can throw off the weight of every care and recollect himself in holy contrition.",
+        "chapter": ("the-imitation-of-christ", 22),
+        "paragraph": 2,
+    },
+    {
+        "slug": "thomas-a-kempis-bd12b144",
+        "text": "A spiritual man quickly recollects himself because he has never wasted his attention upon externals.",
+        "chapter": ("the-imitation-of-christ", 27),
+        "paragraph": 13,
+    },
+    {
+        "slug": "thomas-a-kempis-f4303a94",
+        "text": "Just men depend on the grace of God rather than on their own wisdom in keeping their resolutions.",
+        "chapter": ("the-imitation-of-christ", 20),
+        "paragraph": 3,
+    },
+    {
+        "slug": "thomas-a-kempis-72fe1814",
+        "text": "Not every desire is from the Holy Spirit, even though it may seem right and good.",
+        "chapter": ("the-imitation-of-christ", 53),
+        "paragraph": 2,
+    },
+    {
+        "slug": "thomas-a-kempis-a34c6521",
+        "text": "True peace of heart, then, is found in resisting passions, not in satisfying them.",
+        "chapter": ("the-imitation-of-christ", 7),
+        "paragraph": 1,
+    },
+    {
+        "slug": "thomas-a-kempis-5e7c6a28",
+        "text": "Humble knowledge of self is a surer path to God than the ardent pursuit of learning.",
+        "chapter": ("the-imitation-of-christ", 4),
+        "paragraph": 7,
     },
 ]
 
@@ -3149,6 +3258,7 @@ TOPIC_MEMBERS = {
         "hudson-taylor-b7ada31d",  # Grace has made her like the palm-tree, the emblem alike of u
         "hudson-taylor-fab4ab06",  # How wondrous the grace that has made the bride of CHRIST to 
         "amanda-berry-smith-f22720ef",  # The very best chance for growing in grace, really and succes
+        "thomas-a-kempis-f4303a94",  # Just men depend on the grace of God rather than on their
     ],
     "holy-spirit": [  # The Holy Spirit
         "charles-h-spurgeon-c1353dff",  # The Holy Ghost Himself cannot better glorify the Lord Jesus 
@@ -3163,6 +3273,7 @@ TOPIC_MEMBERS = {
         "hudson-taylor-292a6824",  # The Bible is a supernatural book, a divine revelation: the H
         "hudson-taylor-61a35270",  # The Holy Spirit is the other Comforter, sent by the Father i
         "hudson-taylor-7ac514c2",  # Thanks be to God, the illumination of the HOLY GHOST is prom
+        "thomas-a-kempis-72fe1814",  # Not every desire is from the Holy Spirit, even though it
     ],
     "love-of-god": [  # The Love of God
         "charles-h-spurgeon-8b8e88db",  # We are not going to talk about law, and duty, and punishment
@@ -3220,6 +3331,8 @@ TOPIC_MEMBERS = {
         "richard-allen-83c101e1",  # In short, the love of this world is a heavy weight upon the 
         "amanda-berry-smith-3649ad8b",  # Learn to know the beauty of love and power and sympathy of J
         "amanda-berry-smith-afbc34b8",  # How I have lived through it I cannot tell, but the blessedne
+        "thomas-a-kempis-6f280cbb",  # Affection for creatures is deceitful and inconstant, but
+        "thomas-a-kempis-21a0bdf5",  # One who is in love flies, runs, and rejoices; he is free,
     ],
     "humility": [  # Humility
         "charles-h-spurgeon-c3d3a367",  # Let us be humble that we may not need to be humbled, but may
@@ -3230,6 +3343,9 @@ TOPIC_MEMBERS = {
         "andrew-murray-ba743e80",  # The truth is this, pride may die in you or nothing of heaven
         "andrew-murray-307dbdae",  # Humility before God is nothing if not proved in humility bef
         "jonathan-edwards-4daf7d38",  # The deceitfulness of the heart of man appears in no one thin
+        "thomas-a-kempis-c07353e9",  # Do not think yourself better than others lest, perhaps, y
+        "thomas-a-kempis-79341ddc",  # The whole world will not make him proud whom truth has su
+        "thomas-a-kempis-5e7c6a28",  # Humble knowledge of self is a surer path to God than the
     ],
     "suffering": [  # Suffering & Trials
         "charles-h-spurgeon-116882b5",  # The Lord's mercy often rides to the door of our hearts on th
@@ -3259,6 +3375,9 @@ TOPIC_MEMBERS = {
         "john-wesley-60c79eda",  # Faith is the condition, and the only condition, of sanctific
         "john-wesley-14ab445e",  # Every action of a Christian that is good, is sanctified by t
         "gareth-evans-5df533df",  # God knows the heart of man and will only reveal Himself to t
+        "thomas-a-kempis-043d2543",  # No man rejoices safely unless he has within him the testi
+        "thomas-a-kempis-e72afb6e",  # To walk with God interiorly, to be free from any external
+        "thomas-a-kempis-bd12b144",  # A spiritual man quickly recollects himself because he has
     ],
     "the-cross": [  # The Cross of Christ
         "charles-h-spurgeon-1fe6c2ed",  # The Lord cannot read our pardon written in the blood of His 
@@ -3273,6 +3392,7 @@ TOPIC_MEMBERS = {
         "hudson-taylor-10b13faf",  # Our true self-denial, self-emptying, and giving for Christ's
         "gareth-evans-cf0d0a61",  # The only way man can approach God is through the shed blood 
         "gareth-evans-12a18c7e",  # To those who have placed their trust in the finished work of
+        "thomas-a-kempis-77d5e620",  # A man’s true progress consists in denying himself, and th
     ],
     "trusting-god": [  # Trusting God
         "charles-h-spurgeon-63de5d24",  # Trust not thyself nor any born of woman, beyond due bounds; 
@@ -3291,6 +3411,9 @@ TOPIC_MEMBERS = {
         "gareth-evans-12a18c7e",  # To those who have placed their trust in the finished work of
         "richard-allen-31ab9496",  # To be slow and uneasy at almsgiving, argues a strong distrus
         "amanda-berry-smith-d3999568",  # What else ought we to do, when we bring our friends, but to 
+        "thomas-a-kempis-85bd98b1",  # Seek true peace, not on earth but in heaven; not in men o
+        "thomas-a-kempis-ce999abc",  # Many words do not satisfy the soul; but a good life eases
+        "thomas-a-kempis-f4303a94",  # Just men depend on the grace of God rather than on their
     ],
     "joy": [  # Joy
         "charles-h-spurgeon-d6d84bd3",  # Beloved, the Lord’s workers have sauce with their bread: not
@@ -3314,6 +3437,7 @@ TOPIC_MEMBERS = {
         "hudson-taylor-6659df97",  # When the Lord Jesus comes again, those, surely, who have sto
         "amanda-berry-smith-3fe22a05",  # How glad I am that God nowhere teaches that men have to go i
         "amanda-berry-smith-7de9680d",  # The burden rolled away; I felt it when it left me, and a flo
+        "thomas-a-kempis-21a0bdf5",  # One who is in love flies, runs, and rejoices; he is free,
     ],
     "hope": [  # Hope
         "charles-h-spurgeon-b0f71ee3",  # Come to Jesus, by quitting every other hope, by thinking of 
@@ -3335,10 +3459,15 @@ TOPIC_MEMBERS = {
         "hudson-taylor-b1a3a6a3",  # When sin is put away the Spirit again lifts up His countenan
         "amanda-berry-smith-a27a891a",  # In my heart was peace, but I did not know how to exercise fa
         "amanda-berry-smith-afbc34b8",  # How I have lived through it I cannot tell, but the blessedne
+        "thomas-a-kempis-85bd98b1",  # Seek true peace, not on earth but in heaven; not in men o
+        "thomas-a-kempis-1383b3ad",  # All men desire peace but all do not care for the things t
+        "thomas-a-kempis-47fd3784",  # Happy is the man who can throw off the weight of every ca
+        "thomas-a-kempis-a34c6521",  # True peace of heart, then, is found in resisting passions
     ],
     "repentance": [  # Repentance
         "charles-h-spurgeon-ddf56c92",  # Jesus is exalted on high, that through the virtue of His int
         "thomas-a-kempis-6ff5eb6f",  # No man deserves the consolation of heaven unless he persiste
+        "thomas-a-kempis-47fd3784",  # Happy is the man who can throw off the weight of every ca
     ],
     "scripture": [  # The Word of God
         "charles-h-spurgeon-14b10a83",  # You may read the Bible continuously, and yet never learn any
@@ -3423,6 +3552,9 @@ TOPIC_MEMBERS = {
         "hudson-taylor-d51cda35",  # Nearness to God calls for tenderness of conscience, thoughtf
         "gareth-evans-0b4a12e9",  # Faith is an attribute of the heart and is evidenced in obedi
         "gareth-evans-c9e0110e",  # Faith does not need a man to understand and believe; it need
+        "thomas-a-kempis-9de70a18",  # Whatever is not God is nothing and must be accounted as n
+        "thomas-a-kempis-77d5e620",  # A man’s true progress consists in denying himself, and th
+        "thomas-a-kempis-e72afb6e",  # To walk with God interiorly, to be free from any external
     ],
     "sin-and-temptation": [  # Sin & Temptation
         "charles-h-spurgeon-bda51fda",  # Our Lord Jesus did not die for imaginary sins, but His heart
@@ -3454,9 +3586,13 @@ TOPIC_MEMBERS = {
         "hudson-taylor-fca298ba",  # Man's heart is so darkened by the Fall, and by personal sinf
         "hudson-taylor-b1a3a6a3",  # When sin is put away the Spirit again lifts up His countenan
         "amanda-berry-smith-cf826ddb",  # God showed me I was a dreadful sinner, but still I wanted to
+        "thomas-a-kempis-a34c6521",  # True peace of heart, then, is found in resisting passions
     ],
     "contentment": [  # Contentment
         "thomas-a-kempis-1e51f540",  # The man who is at perfect ease is never suspicious, but the 
         "george-muller-b28e4625",  # The desires of my heart were, to retain the beloved daughter
+        "thomas-a-kempis-9de70a18",  # Whatever is not God is nothing and must be accounted as n
+        "thomas-a-kempis-6f280cbb",  # Affection for creatures is deceitful and inconstant, but
+        "thomas-a-kempis-32dc0a68",  # Man’s happiness does not consist in the possession of abu
     ],
 }
