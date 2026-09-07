@@ -233,14 +233,14 @@
 			"style": "revival",
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.55
 		},
 		"cheque-book": {
 			"ground": "01421c300d0debed099d1d2e3966137ece5b7487ed2361aca7828df570abf0bb",
 			"style": "revival",
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.5
 		},
 		"confessions": {
 			"ground": "65b37fbd511d6d02b343619c9c3cd7e029ec286c7dbf5eaa6c8c295010ed9abd",
@@ -296,7 +296,7 @@
 			"style": "revival",
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.55
 		},
 		"es/baptism-with-the-holy-spirit": {
 			"ground": "65465dc87da4c2b395458f0dfe6337d4a6e99539bec9063df5e6c3ff7dec8cea",
@@ -311,6 +311,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.3
+		},
+		"es/essentials-of-prayer": {
+			"ground": "706179fb754c8fd90d47cd17780cd9892c98d1bed0f206f4449a0fce88e526b4",
+			"style": "devotional",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8
 		},
 		"es/godliness": {
 			"ground": "fa4d2e1e76f39e08d80eba07d3ec53e097f54ccb9bb9e96edf60d8037898af95",
@@ -354,6 +361,13 @@
 			"art": false,
 			"scrim": 1
 		},
+		"es/necessity-of-prayer": {
+			"ground": "3df1bade5a5b97226ca4291390c2dc77ecd451f13fc040a9e3b56ad5ff8723f4",
+			"style": "devotional",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75
+		},
 		"es/on-loving-god": {
 			"ground": "952574f091e116f04969447e250ac8a577f3b2ec45588363b82dc118008fdadf",
 			"style": "inscriptional",
@@ -388,6 +402,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.35
+		},
+		"es/purpose-in-prayer": {
+			"ground": "0fd71bd67fe1dacae09a3df53954524f8c9a5deebe03537530a38f85377ac8ae",
+			"style": "devotional",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.65
 		},
 		"es/separation-and-service": {
 			"ground": "cad64c13ac360a3b5749bf0557546ac4becda2489677b7d1e938965901dc4eb8",
@@ -492,7 +513,7 @@
 			"style": "revival",
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.75
 		},
 		"grace-abounding": {
 			"ground": "b9a29734b5a2d4efd0ad4c60c44def4907123af14a7a74c0da07cc4a1c4d718a",
@@ -681,7 +702,7 @@
 			"style": "revival",
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.5
 		},
 		"lg/clothed-with-strength-and-dignity": {
 			"ground": "10e69218f80f6e0ebbdcd1fb8a725c558609985f4402cc5f6e03ccda13bff370",
@@ -1171,7 +1192,7 @@
 			"style": "revival",
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.8
 		},
 		"susanna-wesley-clarke": {
 			"ground": "128d56f11dc172aa9e958354d12cc265121c9a6d20abb0fc375f97d7c1c7c166",
@@ -1199,7 +1220,7 @@
 			"style": "revival",
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.5
 		},
 		"sw/clothed-with-strength-and-dignity": {
 			"ground": "ba9a83614a219bfb49b56247dcb7f9db9042af3333b487cc6b7afa02f809efd2",
