@@ -2597,6 +2597,14 @@ BODY_CORRECTIONS.setdefault("a-short-and-easy-method-of-prayer", {}).setdefault(
     # section heading lowercased "god" -> "God".
     ("Mysteries—god Gives Them", "Mysteries—God Gives Them"),
 ])
+# OCR slips found while translating batch 4 (Richard Allen's autobiography).
+BODY_CORRECTIONS.setdefault("life-experience-gospel-labours", {}).setdefault("replacements", []).extend([
+    # Philadelphia's Lombard Street (spelled correctly elsewhere in the text).
+    ("near Lobard street", "near Lombard street"),
+    # "photograph" is impossible in an 1833 text; OCR for "paragraph" (a
+    # paragraph in Carey's 2d edition).
+    ("censorious photograph,", "censorious paragraph,"),
+])
 
 
 _LG_DOUBLED_VERB: dict[str, list[tuple[str, str]]] = {
