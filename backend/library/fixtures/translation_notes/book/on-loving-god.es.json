@@ -1,0 +1,11 @@
+{
+  "kind": "book",
+  "slug": "on-loving-god",
+  "language": "es",
+  "job_issue": null,
+  "pull_request": null,
+  "note": [
+    "AI translation via the keyless pipeline path (engine glossary + Reina-Valera). Verses with an explicit Book C:V citation were supplied from the authoritative Reina-Valera (1858/1862) text where detected; verses woven in without a citation were rendered by the model in RV wording. Every reference is marked self_rendered so a native reviewer checks all of them. This lists the explicit citations in the es text; uncited woven allusions are not individually enumerated and should also be checked."
+  ],
+  "references": []
+}
