@@ -1,0 +1,11 @@
+{
+  "kind": "book",
+  "slug": "life-experience-gospel-labours",
+  "language": "es",
+  "job_issue": null,
+  "pull_request": null,
+  "note": [
+    "AI translation via the keyless pipeline path (engine glossary + Reina-Valera). Scripture with an explicit citation was supplied from the authoritative Reina-Valera (1858/1862) text where detected (how-to-succeed carried many); the rest was rendered by the model in RV wording. Every reference is marked self_rendered so a native reviewer checks all of them. Woven allusions without a citation are not individually enumerated."
+  ],
+  "references": []
+}

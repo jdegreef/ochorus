@@ -1,0 +1,462 @@
+{
+  "kind": "book",
+  "slug": "how-to-succeed-in-the-christian-life",
+  "language": "es",
+  "job_issue": null,
+  "pull_request": null,
+  "note": [
+    "AI translation via the keyless pipeline path (engine glossary + Reina-Valera). Scripture with an explicit citation was supplied from the authoritative Reina-Valera (1858/1862) text where detected (how-to-succeed carried many); the rest was rendered by the model in RV wording. Every reference is marked self_rendered so a native reviewer checks all of them. Woven allusions without a citation are not individually enumerated."
+  ],
+  "references": [
+    {
+      "reference": "Juan 3:16",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 2
+    },
+    {
+      "reference": "Juan 3:18",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 2
+    },
+    {
+      "reference": "1 Juan 1:5",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 4
+    },
+    {
+      "reference": "2 Cor. 5:21",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 4
+    },
+    {
+      "reference": "Gál. 3:13",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 4
+    },
+    {
+      "reference": "1 Ped. 2:24",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 4
+    },
+    {
+      "reference": "Is. 53:6",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 4
+    },
+    {
+      "reference": "Mat. 28:18",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 5
+    },
+    {
+      "reference": "Juan 8:36",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 5
+    },
+    {
+      "reference": "Juan 7:17",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 9
+    },
+    {
+      "reference": "1 Juan 3:22",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 9
+    },
+    {
+      "reference": "Hechos 5:32",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 9
+    },
+    {
+      "reference": "Lucas 6:46",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 10
+    },
+    {
+      "reference": "Mat. 12:34",
+      "status": "self_rendered",
+      "chapter_order": 2,
+      "block_index": 1
+    },
+    {
+      "reference": "Lucas 7:48",
+      "status": "self_rendered",
+      "chapter_order": 3,
+      "block_index": 6
+    },
+    {
+      "reference": "Hechos 13:39",
+      "status": "self_rendered",
+      "chapter_order": 3,
+      "block_index": 6
+    },
+    {
+      "reference": "Hechos 19:20",
+      "status": "self_rendered",
+      "chapter_order": 4,
+      "block_index": 1
+    },
+    {
+      "reference": "Heb. 12:1-3",
+      "status": "self_rendered",
+      "chapter_order": 5,
+      "block_index": 1
+    },
+    {
+      "reference": "Gál. 3:13",
+      "status": "self_rendered",
+      "chapter_order": 5,
+      "block_index": 2
+    },
+    {
+      "reference": "2 Cor. 5:21",
+      "status": "self_rendered",
+      "chapter_order": 5,
+      "block_index": 2
+    },
+    {
+      "reference": "Is. 53:6",
+      "status": "self_rendered",
+      "chapter_order": 5,
+      "block_index": 3
+    },
+    {
+      "reference": "Heb. 7:25",
+      "status": "self_rendered",
+      "chapter_order": 5,
+      "block_index": 4
+    },
+    {
+      "reference": "1 Juan 1:9",
+      "status": "self_rendered",
+      "chapter_order": 5,
+      "block_index": 5
+    },
+    {
+      "reference": "1 Juan 2:6",
+      "status": "self_rendered",
+      "chapter_order": 5,
+      "block_index": 6
+    },
+    {
+      "reference": "Juan 21:22",
+      "status": "self_rendered",
+      "chapter_order": 5,
+      "block_index": 7
+    },
+    {
+      "reference": "Prov. 4:18",
+      "status": "self_rendered",
+      "chapter_order": 5,
+      "block_index": 8
+    },
+    {
+      "reference": "Juan 8:12",
+      "status": "self_rendered",
+      "chapter_order": 5,
+      "block_index": 8
+    },
+    {
+      "reference": "Mat. 16: 18",
+      "status": "self_rendered",
+      "chapter_order": 6,
+      "block_index": 1
+    },
+    {
+      "reference": "2 Cor. 6: 14-18",
+      "status": "self_rendered",
+      "chapter_order": 6,
+      "block_index": 3
+    },
+    {
+      "reference": "Hechos 20: 29-32",
+      "status": "self_rendered",
+      "chapter_order": 7,
+      "block_index": 2
+    },
+    {
+      "reference": "Hechos 17: 11",
+      "status": "self_rendered",
+      "chapter_order": 7,
+      "block_index": 4
+    },
+    {
+      "reference": "Sal. 1: 2",
+      "status": "self_rendered",
+      "chapter_order": 7,
+      "block_index": 31
+    },
+    {
+      "reference": "1 Tes. 2: 13",
+      "status": "self_rendered",
+      "chapter_order": 7,
+      "block_index": 33
+    },
+    {
+      "reference": "Fil. 4: 19",
+      "status": "self_rendered",
+      "chapter_order": 7,
+      "block_index": 36
+    },
+    {
+      "reference": "Sant. 1: 22",
+      "status": "self_rendered",
+      "chapter_order": 7,
+      "block_index": 37
+    },
+    {
+      "reference": "Mat. 6: 22-24",
+      "status": "self_rendered",
+      "chapter_order": 7,
+      "block_index": 37
+    },
+    {
+      "reference": "Sal. 119: 18",
+      "status": "self_rendered",
+      "chapter_order": 7,
+      "block_index": 40
+    },
+    {
+      "reference": "Jer. 15: 16",
+      "status": "self_rendered",
+      "chapter_order": 7,
+      "block_index": 42
+    },
+    {
+      "reference": "Sal. 85: 8",
+      "status": "self_rendered",
+      "chapter_order": 7,
+      "block_index": 42
+    },
+    {
+      "reference": "1 Juan 2: 14",
+      "status": "self_rendered",
+      "chapter_order": 7,
+      "block_index": 42
+    },
+    {
+      "reference": "Juan 15: 7",
+      "status": "self_rendered",
+      "chapter_order": 7,
+      "block_index": 42
+    },
+    {
+      "reference": "Sal. 55: 17",
+      "status": "self_rendered",
+      "chapter_order": 9,
+      "block_index": 2
+    },
+    {
+      "reference": "Dan. 6: 10",
+      "status": "self_rendered",
+      "chapter_order": 9,
+      "block_index": 2
+    },
+    {
+      "reference": "Mat. 6: 6",
+      "status": "self_rendered",
+      "chapter_order": 9,
+      "block_index": 2
+    },
+    {
+      "reference": "Lucas 22: 40",
+      "status": "self_rendered",
+      "chapter_order": 9,
+      "block_index": 4
+    },
+    {
+      "reference": "1 Juan 1: 9",
+      "status": "self_rendered",
+      "chapter_order": 9,
+      "block_index": 8
+    },
+    {
+      "reference": "1 Tes. 5: 17",
+      "status": "self_rendered",
+      "chapter_order": 9,
+      "block_index": 9
+    },
+    {
+      "reference": "Sant. 1: 5",
+      "status": "self_rendered",
+      "chapter_order": 9,
+      "block_index": 10
+    },
+    {
+      "reference": "Is. 40: 31",
+      "status": "self_rendered",
+      "chapter_order": 9,
+      "block_index": 10
+    },
+    {
+      "reference": "Lucas 11: 13",
+      "status": "self_rendered",
+      "chapter_order": 9,
+      "block_index": 10
+    },
+    {
+      "reference": "Hechos 2: 1-4",
+      "status": "self_rendered",
+      "chapter_order": 9,
+      "block_index": 10
+    },
+    {
+      "reference": "Mat. 4: 19",
+      "status": "self_rendered",
+      "chapter_order": 10,
+      "block_index": 1
+    },
+    {
+      "reference": "Juan 15: 11",
+      "status": "self_rendered",
+      "chapter_order": 10,
+      "block_index": 1
+    },
+    {
+      "reference": "Mat. 9: 37",
+      "status": "self_rendered",
+      "chapter_order": 10,
+      "block_index": 6
+    },
+    {
+      "reference": "Mat. 9: 38",
+      "status": "self_rendered",
+      "chapter_order": 10,
+      "block_index": 6
+    },
+    {
+      "reference": "1 Jn. 1:5",
+      "status": "self_rendered",
+      "chapter_order": 11,
+      "block_index": 2
+    },
+    {
+      "reference": "Prov. 11:25",
+      "status": "self_rendered",
+      "chapter_order": 11,
+      "block_index": 4
+    },
+    {
+      "reference": "Gál. 6:10",
+      "status": "self_rendered",
+      "chapter_order": 11,
+      "block_index": 4
+    },
+    {
+      "reference": "Mat. 12:16-19",
+      "status": "self_rendered",
+      "chapter_order": 13,
+      "block_index": 1
+    },
+    {
+      "reference": "1 Cor. 10:31",
+      "status": "self_rendered",
+      "chapter_order": 13,
+      "block_index": 3
+    },
+    {
+      "reference": "2 Tim. 3:12",
+      "status": "self_rendered",
+      "chapter_order": 14,
+      "block_index": 1
+    },
+    {
+      "reference": "Mar. 4:17",
+      "status": "self_rendered",
+      "chapter_order": 14,
+      "block_index": 1
+    },
+    {
+      "reference": "Mat. 5:10-12",
+      "status": "self_rendered",
+      "chapter_order": 14,
+      "block_index": 2
+    },
+    {
+      "reference": "1 Ped. 4:12-14",
+      "status": "self_rendered",
+      "chapter_order": 14,
+      "block_index": 2
+    },
+    {
+      "reference": "Mat. 5:44",
+      "status": "self_rendered",
+      "chapter_order": 14,
+      "block_index": 3
+    },
+    {
+      "reference": "2 Tim. 2:12",
+      "status": "self_rendered",
+      "chapter_order": 14,
+      "block_index": 4
+    },
+    {
+      "reference": "Hech. 14:22",
+      "status": "self_rendered",
+      "chapter_order": 14,
+      "block_index": 4
+    },
+    {
+      "reference": "Rom. 8:18",
+      "status": "self_rendered",
+      "chapter_order": 14,
+      "block_index": 4
+    },
+    {
+      "reference": "2 Cor. 4:17",
+      "status": "self_rendered",
+      "chapter_order": 14,
+      "block_index": 4
+    },
+    {
+      "reference": "2 Cor. 4:18",
+      "status": "self_rendered",
+      "chapter_order": 14,
+      "block_index": 4
+    },
+    {
+      "reference": "Hech. 5:40-42",
+      "status": "self_rendered",
+      "chapter_order": 14,
+      "block_index": 4
+    },
+    {
+      "reference": "1 Jn. 1:9",
+      "status": "self_rendered",
+      "chapter_order": 15,
+      "block_index": 3
+    },
+    {
+      "reference": "1 Jn. 1:5",
+      "status": "self_rendered",
+      "chapter_order": 15,
+      "block_index": 10
+    },
+    {
+      "reference": "Fil. 4:4",
+      "status": "self_rendered",
+      "chapter_order": 15,
+      "block_index": 15
+    },
+    {
+      "reference": "Stg. 1:5-7",
+      "status": "self_rendered",
+      "chapter_order": 15,
+      "block_index": 15
+    }
+  ]
+}
