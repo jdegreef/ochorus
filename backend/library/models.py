@@ -1317,6 +1317,53 @@ class ReviewOutcome(models.Model):
         return f"{self.kind}:{self.slug} [{self.language}] {self.outcome}"
 
 
+class AuditDismissal(models.Model):
+    """An admin's acknowledgement that one advisory quality finding is accepted
+    as-is — the content audit's "known-accepted list", made durable and undoable.
+
+    The quality checks are heuristics with false positives: a legitimately short
+    foreword trips ``tiny_chapters``, a chapter that ends on a scripture
+    reference trips ``mid_sentence_splits``, a deliberate refrain trips
+    ``duplicate_titles``. Without somewhere to record "a human looked and this is
+    fine", every re-run re-lists the same accepted findings and the page trains
+    its reader to ignore it. This table subtracts them and keeps a count so the
+    check still shows the acceptance was a decision, not an oversight.
+
+    Integrity findings are real structural defects and are deliberately NOT
+    dismissible — they are fixed, not accepted (the dismiss endpoint rejects any
+    check that is not a quality key).
+    """
+
+    #: The quality check key (e.g. ``giant_chapters``), matching the audit payload.
+    #: Named ``check_key`` because ``check`` shadows ``Model.check()`` (E020); the
+    #: API exposes it as ``check``.
+    check_key = models.CharField(max_length=40)
+    #: Natural key of the flagged edition — a book is a per-language ROW sharing a
+    #: slug, so language is part of the identity, not decoration.
+    book = models.SlugField(max_length=200)
+    language = models.CharField(max_length=10)
+    #: The tail of the finding's identity: the chapter ``order`` for chapter-shaped
+    #: checks, or the duplicated title for ``duplicate_titles``. Stringified so one
+    #: column serves every check shape without a nullable-int/​nullable-text pair.
+    ref = models.CharField(max_length=255)
+    note = models.TextField(blank=True)
+    reviewer = models.EmailField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["check_key", "book", "language", "ref"],
+                name="uniq_audit_dismissal",
+            ),
+        ]
+        indexes = [models.Index(fields=["check_key"])]
+
+    def __str__(self) -> str:
+        return f"{self.check_key}:{self.book} [{self.language}] {self.ref}"
+
+
 class TranslationNote(models.Model):
     """One scripture reference in one translation, and where its wording came from.
 
@@ -1460,6 +1507,8 @@ class AdminAction(models.Model):
         CONTENT_PUBLISH = "content.publish", "Document published"
         REVIEW_DECIDE = "review.decide", "Review decision recorded"
         REVIEW_UNDO = "review.undo", "Review decision undone"
+        AUDIT_DISMISS = "audit.dismiss", "Audit finding accepted as known"
+        AUDIT_RESTORE = "audit.restore", "Audit finding acceptance undone"
 
     action = models.CharField(max_length=32, choices=Action.choices)
     #: Who, by email — the identity `IsAdminEmail` gates on. Blank only when a

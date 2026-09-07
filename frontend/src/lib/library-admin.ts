@@ -563,6 +563,10 @@ export const getReviewDetail = (t: ReviewTarget & { chapter?: number }) => {
 export interface Capped<T> {
 	total: number;
 	items: T[];
+	/** Findings a reviewer has accepted as known and removed from `total` — set
+	 *  only on the dismissible quality checks. Shown so an emptied check still
+	 *  reads as examined, not overlooked. */
+	dismissed?: number;
 }
 
 export interface AuditChapterFinding {
@@ -596,6 +600,34 @@ export interface AdminAudit {
 }
 
 export const getAdminAudit = () => apiFetch<AdminAudit>('/api/admin/audit/');
+
+/** Identifies one dismissible quality finding: the check plus the finding's
+ *  natural key. `ref` is the chapter order (chapter-shaped checks) or the
+ *  duplicated title (duplicate_titles) — the same tail the API keys on. */
+export interface AuditDismissTarget {
+	check: string;
+	book: string;
+	language: string;
+	ref: string;
+}
+
+/** Accept one advisory quality finding as known — it drops out of the audit. */
+export const dismissAuditFinding = (t: AuditDismissTarget & { note?: string }) =>
+	apiFetch<{ ok: boolean; created: boolean }>('/api/admin/audit/dismiss/', {
+		method: 'POST',
+		body: JSON.stringify(t)
+	});
+
+/** Undo an acceptance, returning the finding to the audit. */
+export const undoAuditDismissal = (t: AuditDismissTarget) => {
+	const q = new URLSearchParams({
+		check: t.check,
+		book: t.book,
+		language: t.language,
+		ref: t.ref
+	});
+	return apiFetch<{ ok: boolean }>(`/api/admin/audit/dismiss/?${q}`, { method: 'DELETE' });
+};
 
 // Reading-engagement analytics (aggregate-only).
 

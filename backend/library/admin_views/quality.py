@@ -17,6 +17,7 @@ from ..audit import AdminAudited
 from ..languages import entry as language_entry
 from ..models import (
     AdminAction,
+    AuditDismissal,
     Author,
     AuthorTranslation,
     Book,
@@ -736,6 +737,43 @@ def _capped(items: list) -> dict:
     return {"total": len(items), "items": items[:AUDIT_LIMIT]}
 
 
+# The advisory quality checks, and the tail of each finding's identity (its
+# `ref`). Chapter-shaped checks are keyed by chapter order; duplicate_titles by
+# the offending title. This is the single source of truth for "what is
+# dismissible" — the audit view filters by it and the dismiss endpoint validates
+# against it, so the two cannot disagree about which findings can be accepted.
+QUALITY_CHAPTER_CHECKS = (
+    "generic_titles",
+    "tiny_chapters",
+    "giant_chapters",
+    "fragmented",
+    "missing_dropcap",
+    "mid_sentence_splits",
+)
+DISMISSIBLE_CHECKS = frozenset(QUALITY_CHAPTER_CHECKS + ("duplicate_titles",))
+
+
+def _ref_of(check: str, finding: dict) -> str:
+    """The dismissal `ref` for one finding — its identity within (check, book,
+    language). A stringified chapter order for chapter checks; the title for
+    duplicate_titles."""
+    return finding["title"] if check == "duplicate_titles" else str(finding["order"])
+
+
+def _present(check: str, items: list, dismissed: set) -> dict:
+    """Cap a quality check's findings after removing accepted ones, and report
+    how many were hidden so the check still reads as examined, not empty."""
+    kept = [
+        f for f in items
+        if (check, f["book"], f["language"], _ref_of(check, f)) not in dismissed
+    ]
+    return {
+        "total": len(kept),
+        "items": kept[:AUDIT_LIMIT],
+        "dismissed": len(items) - len(kept),
+    }
+
+
 class AdminVerseReviewView(AdminAudited, APIView):
     """Settle ONE flagged quotation.
 
@@ -863,15 +901,34 @@ class AdminAuditView(APIView):
     permission_classes = [IsAdminEmail]
 
     def get(self, request):
-        quality, per_book = self._scan_chapters()
-        quality["duplicate_titles"] = self._duplicate_titles(per_book["titles"])
+        raw, per_book = self._scan_chapters()
+        dismissed = self._dismissed()
+        quality = {
+            check: _present(check, raw[check], dismissed)
+            for check in QUALITY_CHAPTER_CHECKS
+        }
+        quality["duplicate_titles"] = _present(
+            "duplicate_titles", self._duplicate_titles(per_book["titles"]), dismissed
+        )
+        # empty_chapters is a structural defect (integrity), not an advisory
+        # heuristic — capped like the rest of integrity, never dismissible.
         integrity = {
             "empty_books": _capped(self._empty_books()),
-            "empty_chapters": quality.pop("_empty_chapters"),
+            "empty_chapters": _capped(raw["_empty_chapters"]),
             "order_gaps": _capped(self._order_gaps(per_book["orders"])),
             "broken_plan_days": _capped(self._broken_plan_days()),
         }
         return Response({"quality": quality, "integrity": integrity})
+
+    @staticmethod
+    def _dismissed() -> set:
+        """Every accepted finding, as (check, book, language, ref) fingerprints."""
+        return {
+            (d.check_key, d.book, d.language, d.ref)
+            for d in AuditDismissal.objects.values_list(
+                "check_key", "book", "language", "ref", named=True
+            )
+        }
 
     def _scan_chapters(self):
         maxima = {
@@ -931,18 +988,21 @@ class AdminAuditView(APIView):
             if order < maxima.get(c["book_id"], order) and not body.endswith(TERMINAL_PUNCT):
                 mid_split.append(finding(ends=body[-40:]))
 
-        quality = {
-            "generic_titles": _capped(generic),
-            "tiny_chapters": _capped(tiny),
-            "giant_chapters": _capped(giant),
-            "fragmented": _capped(fragmented),
-            "missing_dropcap": _capped(dropcap),
-            "mid_sentence_splits": _capped(mid_split),
-            "_empty_chapters": _capped(empty),
+        # Raw (uncapped) lists — the caller filters out accepted findings before
+        # capping, so capping here would drop rows the reviewer has NOT accepted
+        # whenever a check ran past 100.
+        raw = {
+            "generic_titles": generic,
+            "tiny_chapters": tiny,
+            "giant_chapters": giant,
+            "fragmented": fragmented,
+            "missing_dropcap": dropcap,
+            "mid_sentence_splits": mid_split,
+            "_empty_chapters": empty,
         }
-        return quality, {"titles": titles, "orders": orders}
+        return raw, {"titles": titles, "orders": orders}
 
-    def _duplicate_titles(self, titles_by_book: dict) -> dict:
+    def _duplicate_titles(self, titles_by_book: dict) -> list[dict]:
         out = []
         for (slug, language), titles in titles_by_book.items():
             seen: dict[str, int] = {}
@@ -955,7 +1015,7 @@ class AdminAuditView(APIView):
                         {"book": slug, "language": language, "title": title, "count": n}
                     )
         out.sort(key=lambda r: (-r["count"], r["book"], r["language"]))
-        return _capped(out)
+        return out
 
     def _empty_books(self) -> list[dict]:
         books = (
@@ -1009,5 +1069,90 @@ class AdminAuditView(APIView):
                 )
         out.sort(key=lambda r: (r["plan"], r["day"]))
         return out
+
+
+class AdminAuditDismissView(AdminAudited, APIView):
+    """Accept — or un-accept — one advisory quality finding.
+
+    The audit's quality checks are heuristics with false positives, so a page
+    that re-lists the same accepted findings on every run trains its reader to
+    ignore it. POST records that a human looked and this one is fine (it drops
+    out of the audit and is counted under the check's ``dismissed`` tally);
+    DELETE puts it back. See :class:`~library.models.AuditDismissal`.
+
+    Integrity findings are structural defects and are NOT dismissible — the
+    check must be one of ``DISMISSIBLE_CHECKS`` or the write is refused, so a
+    real broken plan day or missing chapter can never be quietly accepted away.
+    """
+
+    permission_classes = [IsAdminEmail]
+
+    def audit_action_for(self, request):
+        return (
+            AdminAction.Action.AUDIT_RESTORE
+            if request.method == "DELETE"
+            else AdminAction.Action.AUDIT_DISMISS
+        )
+
+    def audit_entry(self, request, response):
+        src = request.query_params if request.method == "DELETE" else request.data
+        check = (src.get("check") or "").strip()
+        book = (src.get("book") or "").strip()
+        language = (src.get("language") or "").strip()
+        return f"{check}:{book}:{language}", {"ref": (str(src.get("ref") or "")).strip()}
+
+    @staticmethod
+    def _fingerprint(src) -> tuple[str, str, str, str] | None:
+        check = (src.get("check") or "").strip()
+        book = (src.get("book") or "").strip()
+        language = (src.get("language") or "").strip()
+        # A chapter order arrives as a number; a duplicate title as text. Both
+        # become the one string `ref`.
+        ref = src.get("ref")
+        ref = "" if ref is None else str(ref).strip()
+        if check not in DISMISSIBLE_CHECKS or not (book and language and ref):
+            return None
+        return check, book, language, ref
+
+    def post(self, request):
+        fp = self._fingerprint(request.data)
+        if fp is None:
+            return Response(
+                {
+                    "detail": "check (a quality check), book, language and ref are "
+                    "required; integrity findings are fixed, not dismissed."
+                },
+                status=400,
+            )
+        check, book, language, ref = fp
+        note = (request.data.get("note") or "").strip()
+        _, created = AuditDismissal.objects.update_or_create(
+            check_key=check,
+            book=book,
+            language=language,
+            ref=ref,
+            defaults={"note": note, "reviewer": getattr(request.user, "email", "") or ""},
+        )
+        return Response(
+            {"ok": True, "created": created, "check": check, "book": book,
+             "language": language, "ref": ref},
+            status=201 if created else 200,
+        )
+
+    def delete(self, request):
+        fp = self._fingerprint(request.query_params)
+        if fp is None:
+            return Response(
+                {"detail": "check, book, language and ref are required."}, status=400
+            )
+        check, book, language, ref = fp
+        deleted, _ = AuditDismissal.objects.filter(
+            check_key=check, book=book, language=language, ref=ref
+        ).delete()
+        if not deleted:
+            return Response({"detail": "No such dismissal to undo."}, status=404)
+        return Response(
+            {"ok": True, "check": check, "book": book, "language": language, "ref": ref}
+        )
 
 

@@ -11,6 +11,8 @@ from rest_framework.test import APIClient
 from common.testing import body_of
 
 from .models import (
+    AdminAction,
+    AuditDismissal,
     Author,
     AuthorTranslation,
     Book,
@@ -481,6 +483,111 @@ class AdminAuditMultiLanguageTests(TestCase):
         self.assertEqual(len(mine), 1, "the Spanish gap must be reported")
         self.assertEqual(mine[0]["language"], "es")
         self.assertEqual(mine[0]["missing"], [2])
+
+
+@override_settings(DEBUG=True)
+class AdminAuditDismissTests(TestCase):
+    """Accepting an advisory quality finding removes it and stays undoable."""
+
+    def setUp(self):
+        self.client = APIClient()
+        author = Author.objects.create(slug="am", name="Andrew Murray")
+        book = Book.objects.create(
+            author=author, slug="humility", language="en", title="Humility"
+        )
+        # Two giant chapters (> GIANT_MIN words) — an advisory quality finding.
+        big = "<p>" + ("word " * 9000) + "</p>"
+        Chapter.objects.create(book=book, order=1, title="One", body_html=big)
+        Chapter.objects.create(book=book, order=2, title="Two", body_html=big)
+
+    def _giants(self):
+        res = self.client.get("/api/admin/audit/")
+        return res.data["quality"]["giant_chapters"]
+
+    def test_dismiss_removes_finding_and_counts_it(self):
+        self.assertEqual(self._giants()["total"], 2)
+        res = self.client.post(
+            "/api/admin/audit/dismiss/",
+            {"check": "giant_chapters", "book": "humility", "language": "en",
+             "ref": "1", "note": "a legitimately long chapter"},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 201)
+        self.assertTrue(res.data["created"])
+        giants = self._giants()
+        self.assertEqual(giants["total"], 1, "the accepted finding is gone")
+        self.assertEqual(giants["dismissed"], 1, "and counted")
+        self.assertEqual([f["order"] for f in giants["items"]], [2])
+
+    def test_dismiss_is_idempotent(self):
+        body = {"check": "giant_chapters", "book": "humility", "language": "en", "ref": "1"}
+        first = self.client.post("/api/admin/audit/dismiss/", body, format="json")
+        second = self.client.post("/api/admin/audit/dismiss/", body, format="json")
+        self.assertEqual(first.status_code, 201)
+        self.assertEqual(second.status_code, 200)
+        self.assertFalse(second.data["created"])
+        self.assertEqual(AuditDismissal.objects.count(), 1)
+
+    def test_undo_restores_the_finding(self):
+        body = {"check": "giant_chapters", "book": "humility", "language": "en", "ref": "1"}
+        self.client.post("/api/admin/audit/dismiss/", body, format="json")
+        self.assertEqual(self._giants()["total"], 1)
+        # Undo carries its target in the query string (like undoReview).
+        res = self.client.delete(
+            "/api/admin/audit/dismiss/?check=giant_chapters&book=humility&language=en&ref=1"
+        )
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(self._giants()["total"], 2, "the finding is back")
+        self.assertEqual(self._giants()["dismissed"], 0)
+
+    def test_undo_of_nothing_is_404(self):
+        res = self.client.delete(
+            "/api/admin/audit/dismiss/?check=giant_chapters&book=humility&language=en&ref=9"
+        )
+        self.assertEqual(res.status_code, 404)
+
+    def test_integrity_checks_are_not_dismissible(self):
+        for check in ("empty_chapters", "empty_books", "order_gaps", "broken_plan_days"):
+            res = self.client.post(
+                "/api/admin/audit/dismiss/",
+                {"check": check, "book": "humility", "language": "en", "ref": "1"},
+                format="json",
+            )
+            self.assertEqual(res.status_code, 400, f"{check} must be refused")
+        self.assertEqual(AuditDismissal.objects.count(), 0)
+
+    def test_duplicate_titles_dismissed_by_title(self):
+        book = Book.objects.get(slug="humility", language="en")
+        Chapter.objects.create(book=book, order=3, title="One", body_html="<p>Short.</p>")
+        res = self.client.get("/api/admin/audit/")
+        self.assertEqual(res.data["quality"]["duplicate_titles"]["total"], 1)
+        self.client.post(
+            "/api/admin/audit/dismiss/",
+            {"check": "duplicate_titles", "book": "humility", "language": "en", "ref": "One"},
+            format="json",
+        )
+        res = self.client.get("/api/admin/audit/")
+        self.assertEqual(res.data["quality"]["duplicate_titles"]["total"], 0)
+        self.assertEqual(res.data["quality"]["duplicate_titles"]["dismissed"], 1)
+
+    def test_dismiss_is_recorded_as_an_admin_action(self):
+        self.client.post(
+            "/api/admin/audit/dismiss/",
+            {"check": "giant_chapters", "book": "humility", "language": "en", "ref": "1"},
+            format="json",
+        )
+        action = AdminAction.objects.latest("at")
+        self.assertEqual(action.action, AdminAction.Action.AUDIT_DISMISS)
+        self.assertEqual(action.target, "giant_chapters:humility:en")
+
+    @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
+    def test_requires_admin(self):
+        res = self.client.post(
+            "/api/admin/audit/dismiss/",
+            {"check": "giant_chapters", "book": "humility", "language": "en", "ref": "1"},
+            format="json",
+        )
+        self.assertIn(res.status_code, (401, 403))
 
 
 class AdminEngagementTests(TestCase):
