@@ -1,12 +1,59 @@
 <script lang="ts">
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
-	import { getAdminAudit, type AdminAudit, type AuditChapterFinding } from '$lib/library-admin';
+	import {
+		getAdminAudit,
+		dismissAuditFinding,
+		undoAuditDismissal,
+		type AdminAudit,
+		type AuditChapterFinding,
+		type AuditDismissTarget
+	} from '$lib/library-admin';
 	import { localizeHref } from '$lib/href';
 	import { locales } from '$lib/paraglide/runtime';
 
 	const auditRes = adminResource(getAdminAudit, 'Something went wrong running the audit.');
 	const audit = $derived(auditRes.data);
+
+	// Accepting a finding is a write, so serialise it against the re-run it
+	// triggers and against a second click. `lastUndo` keeps the most recent
+	// acceptance reversible without a separate screen — the reviewer's own
+	// misfire is the case undo exists for.
+	let busy = $state(false);
+	let lastUndo = $state<{ target: AuditDismissTarget; label: string } | null>(null);
+	// A failed write must say so — otherwise the row stays on screen and the
+	// admin reads "nothing happened" as "accepted".
+	let actionError = $state<string | null>(null);
+
+	async function dismiss(target: AuditDismissTarget, label: string) {
+		if (busy) return;
+		busy = true;
+		actionError = null;
+		try {
+			await dismissAuditFinding(target);
+			lastUndo = { target, label };
+			await auditRes.load();
+		} catch (e) {
+			actionError = e instanceof Error ? e.message : "Couldn't accept that finding.";
+		} finally {
+			busy = false;
+		}
+	}
+
+	async function undoDismiss() {
+		if (busy || !lastUndo) return;
+		busy = true;
+		actionError = null;
+		try {
+			await undoAuditDismissal(lastUndo.target);
+			lastUndo = null;
+			await auditRes.load();
+		} catch (e) {
+			actionError = e instanceof Error ? e.message : "Couldn't undo that.";
+		} finally {
+			busy = false;
+		}
+	}
 
 	// Quality checks are advisory book-qa heuristics, ordered by reader impact.
 	const QUALITY: { key: keyof AdminAudit['quality']; label: string; desc: string }[] = [
@@ -91,13 +138,40 @@
 
 	<AdminGate resource={auditRes} errorTitle="Couldn't run the audit" loadingText="Running audit…">
 		{#snippet children(a)}
-			<p class="mb-8 text-body {totalFindings ? 'text-warning' : 'text-muted'}">
+			<p class="{lastUndo || actionError ? 'mb-2' : 'mb-8'} text-body {totalFindings ? 'text-warning' : 'text-muted'}">
 				{#if totalFindings}<strong>{integrityTotal}</strong> integrity {integrityTotal === 1 ? 'issue' : 'issues'} · <strong>{qualityTotal}</strong> quality {qualityTotal === 1 ? 'flag' : 'flags'}{:else}No findings — the library looks clean. 🎉{/if}
 			</p>
+			{#if actionError}
+				<p class="mb-8 text-small text-warning">{actionError}</p>
+			{:else if lastUndo}
+				<p class="mb-8 flex items-baseline gap-2 text-small text-muted">
+					Accepted <span class="text-text">{lastUndo.label}</span>.
+					<button
+						type="button"
+						class="text-accent hover:underline disabled:opacity-50"
+						disabled={busy}
+						onclick={undoDismiss}>Undo</button
+					>
+				</p>
+			{/if}
+
+			<!-- "Accept as known" — only shown on advisory quality findings (an
+			     integrity defect is fixed, not accepted, so those rows pass no
+			     checkKey). Removes the finding and files it under the check's count. -->
+			{#snippet acceptBtn(target: AuditDismissTarget, label: string)}
+				<button
+					type="button"
+					class="shrink-0 text-small text-muted hover:text-accent disabled:opacity-50"
+					title="Accept as known — remove this from the audit"
+					disabled={busy}
+					onclick={() => dismiss(target, label)}>accept</button
+				>
+			{/snippet}
 
 			<!-- One chapter row, used everywhere findings are chapter-shaped. When a
-			     book is grouped, `bare` drops the repeated slug and shows only /order. -->
-			{#snippet chapterItem(f: AuditChapterFinding, bare = false)}
+			     book is grouped, `bare` drops the repeated slug and shows only /order.
+			     `checkKey` (present only for dismissible quality checks) adds Accept. -->
+			{#snippet chapterItem(f: AuditChapterFinding, bare = false, checkKey?: string)}
 				<li class="flex items-baseline justify-between gap-3 py-1.5">
 					<a
 						href={editionHref(`/books/${f.book}/${f.order}`, f.language)}
@@ -106,7 +180,10 @@
 						{#if bare}<span class="text-muted">/{f.order}</span>{:else}<span class="text-muted">{f.book}/{f.order}</span> <span class="text-micro text-muted">{f.language}</span>{/if}
 						— {f.title || '(untitled)'}
 					</a>
-					{#if evidence(f)}<span class="shrink-0 text-small text-muted">{evidence(f)}</span>{/if}
+					<span class="flex shrink-0 items-baseline gap-2">
+						{#if evidence(f)}<span class="text-small text-muted">{evidence(f)}</span>{/if}
+						{#if checkKey}{@render acceptBtn({ check: checkKey, book: f.book, language: f.language, ref: String(f.order) }, `${f.book}/${f.order}`)}{/if}
+					</span>
 				</li>
 			{/snippet}
 
@@ -119,11 +196,11 @@
 
 			<!-- Chapter findings grouped by edition: a lone hit renders flat, a book
 			     with several collapses under its own sub-heading. -->
-			{#snippet chapterList(items: AuditChapterFinding[], total: number = items.length)}
+			{#snippet chapterList(items: AuditChapterFinding[], total: number = items.length, checkKey?: string)}
 				<ul class="mt-1">
 					{#each byBook(items) as g (g.book + ':' + g.language)}
 						{#if g.items.length === 1}
-							{@render chapterItem(g.items[0])}
+							{@render chapterItem(g.items[0], false, checkKey)}
 						{:else}
 							<li class="py-1.5">
 								<a href={editionHref(`/books/${g.book}`, g.language)} class="text-body text-text hover:text-accent">
@@ -132,7 +209,7 @@
 								<span class="text-small text-muted">· {g.items.length} chapters</span>
 								<ul class="ml-4 border-l border-border pl-3">
 									{#each g.items as f (findingKey(f))}
-										{@render chapterItem(f, true)}
+										{@render chapterItem(f, true, checkKey)}
 									{/each}
 								</ul>
 							</li>
@@ -145,13 +222,17 @@
 			<!-- A collapsible check. Header is always visible (label + count); the
 			     body renders only when opened. `open` lets integrity bugs default
 			     to expanded while advisory quality checks stay folded. -->
-			{#snippet check(label: string, desc: string, total: number, open: boolean, body: import('svelte').Snippet)}
+			{#snippet check(label: string, desc: string, total: number, open: boolean, body: import('svelte').Snippet, dismissed = 0)}
 				<details class="group border-b border-border py-2" {open}>
 					<summary class="flex cursor-pointer list-none items-baseline justify-between gap-3">
 						<span class="text-body font-semibold text-text">
 							<span class="mr-1 inline-block text-muted transition-transform group-open:rotate-90">›</span>{label}
 						</span>
-						<span class="shrink-0 text-small {total ? 'text-warning' : 'text-muted'}">{total || 'clear'}</span>
+						<span class="shrink-0 text-small">
+							{#if dismissed}<span class="text-muted">{dismissed} accepted · </span>{/if}<span
+								class={total ? 'text-warning' : 'text-muted'}>{total || 'clear'}</span
+							>
+						</span>
 					</summary>
 					{#if desc}<p class="ml-4 mt-1 text-small text-muted">{desc}</p>{/if}
 					{#if total}<div class="ml-4">{@render body()}</div>{/if}
@@ -219,19 +300,22 @@
 									{#each a.quality.duplicate_titles.items as f (f.book + ':' + f.language + ':' + f.title)}
 										<li class="flex items-baseline justify-between gap-3 py-1.5">
 											<a href={editionHref(`/books/${f.book}`, f.language)} class="min-w-0 truncate text-body text-text hover:text-accent"><span class="text-muted">{f.book}</span> <span class="text-micro text-muted">{f.language}</span> — “{f.title}”</a>
-											<span class="shrink-0 text-small text-muted">×{f.count}</span>
+											<span class="flex shrink-0 items-baseline gap-2">
+												<span class="text-small text-muted">×{f.count}</span>
+												{@render acceptBtn({ check: 'duplicate_titles', book: f.book, language: f.language, ref: f.title }, `${f.book} “${f.title}”`)}
+											</span>
 										</li>
 									{/each}
 								</ul>
 								{@render moreLine(a.quality.duplicate_titles.items.length, a.quality.duplicate_titles.total)}
 							{/snippet}
-							{@render check(q.label, q.desc, c.total, false, dupTitles)}
+							{@render check(q.label, q.desc, c.total, false, dupTitles, c.dismissed)}
 						{:else}
 							{@const items = c.items as AuditChapterFinding[]}
 							{#snippet chapters()}
-								{@render chapterList(items, c.total)}
+								{@render chapterList(items, c.total, q.key)}
 							{/snippet}
-							{@render check(q.label, q.desc, c.total, false, chapters)}
+							{@render check(q.label, q.desc, c.total, false, chapters, c.dismissed)}
 						{/if}
 					{/each}
 				</section>
