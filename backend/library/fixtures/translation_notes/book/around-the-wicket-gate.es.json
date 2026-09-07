@@ -1,0 +1,42 @@
+{
+  "kind": "book",
+  "slug": "around-the-wicket-gate",
+  "language": "es",
+  "job_issue": null,
+  "pull_request": 1703,
+  "note": [
+    "AI translation via the keyless pipeline path (engine glossary + Reina-Valera). Scripture with an explicit Book C:V citation was supplied to the model from the authoritative Reina-Valera (1858/1862) text where a reference was detected; verses Bounds and Spurgeon weave into their prose without a citation were rendered by the model in RV wording. Every reference is marked self_rendered so a native reviewer verifies all of them — the conservative choice for keyless output. This list covers the explicit citations in the es text; uncited woven allusions are not individually enumerated and should also be checked."
+  ],
+  "references": [
+    {
+      "reference": "Ro. 5:6",
+      "status": "self_rendered",
+      "chapter_order": 7,
+      "block_index": 1
+    },
+    {
+      "reference": "1 P. 2:24",
+      "status": "self_rendered",
+      "chapter_order": 7,
+      "block_index": 1
+    },
+    {
+      "reference": "Is. 53:6",
+      "status": "self_rendered",
+      "chapter_order": 7,
+      "block_index": 1
+    },
+    {
+      "reference": "1 P. 3:18",
+      "status": "self_rendered",
+      "chapter_order": 7,
+      "block_index": 1
+    },
+    {
+      "reference": "Is. 53:5",
+      "status": "self_rendered",
+      "chapter_order": 7,
+      "block_index": 2
+    }
+  ]
+}

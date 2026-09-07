@@ -1,0 +1,318 @@
+{
+  "kind": "book",
+  "slug": "absolute-surrender",
+  "language": "es",
+  "job_issue": null,
+  "pull_request": 1703,
+  "note": [
+    "AI translation via the keyless pipeline path (engine glossary + Reina-Valera). Scripture with an explicit Book C:V citation was supplied to the model from the authoritative Reina-Valera (1858/1862) text where a reference was detected; verses Bounds and Spurgeon weave into their prose without a citation were rendered by the model in RV wording. Every reference is marked self_rendered so a native reviewer verifies all of them — the conservative choice for keyless output. This list covers the explicit citations in the es text; uncited woven allusions are not individually enumerated and should also be checked."
+  ],
+  "references": [
+    {
+      "reference": "1 R. 20:1-4",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 1
+    },
+    {
+      "reference": "Fil. 2:13",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 14
+    },
+    {
+      "reference": "Éx. 9:16",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 16
+    },
+    {
+      "reference": "Mr. 9:23",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 25
+    },
+    {
+      "reference": "Mr. 9:24",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 27
+    },
+    {
+      "reference": "Heb. 9:14",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 29
+    },
+    {
+      "reference": "1 Co. 2:9",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 45
+    },
+    {
+      "reference": "Ro. 7:18",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 55
+    },
+    {
+      "reference": "Ro. 13:10",
+      "status": "self_rendered",
+      "chapter_order": 2,
+      "block_index": 7
+    },
+    {
+      "reference": "1 Jn. 4:8",
+      "status": "self_rendered",
+      "chapter_order": 2,
+      "block_index": 11
+    },
+    {
+      "reference": "Jn. 3:16",
+      "status": "self_rendered",
+      "chapter_order": 2,
+      "block_index": 19
+    },
+    {
+      "reference": "Jn. 13:35",
+      "status": "self_rendered",
+      "chapter_order": 2,
+      "block_index": 22
+    },
+    {
+      "reference": "Ro. 5:5",
+      "status": "self_rendered",
+      "chapter_order": 2,
+      "block_index": 29
+    },
+    {
+      "reference": "Jn. 13:34",
+      "status": "self_rendered",
+      "chapter_order": 2,
+      "block_index": 41
+    },
+    {
+      "reference": "Jn. 13:34",
+      "status": "self_rendered",
+      "chapter_order": 2,
+      "block_index": 42
+    },
+    {
+      "reference": "Col. 3:12",
+      "status": "self_rendered",
+      "chapter_order": 2,
+      "block_index": 43
+    },
+    {
+      "reference": "1 Jn. 4:12",
+      "status": "self_rendered",
+      "chapter_order": 2,
+      "block_index": 44
+    },
+    {
+      "reference": "1 Jn. 4:20",
+      "status": "self_rendered",
+      "chapter_order": 2,
+      "block_index": 44
+    },
+    {
+      "reference": "Hch. 13:1-4",
+      "status": "self_rendered",
+      "chapter_order": 3,
+      "block_index": 3
+    },
+    {
+      "reference": "Jn. 14:17",
+      "status": "self_rendered",
+      "chapter_order": 3,
+      "block_index": 30
+    },
+    {
+      "reference": "1 Co. 2:12",
+      "status": "self_rendered",
+      "chapter_order": 3,
+      "block_index": 30
+    },
+    {
+      "reference": "Gá. 3:3",
+      "status": "self_rendered",
+      "chapter_order": 3,
+      "block_index": 42
+    },
+    {
+      "reference": "Juan 13:36",
+      "status": "self_rendered",
+      "chapter_order": 4,
+      "block_index": 2
+    },
+    {
+      "reference": "Mateo 19:27",
+      "status": "self_rendered",
+      "chapter_order": 4,
+      "block_index": 6
+    },
+    {
+      "reference": "Mateo 14:28",
+      "status": "self_rendered",
+      "chapter_order": 4,
+      "block_index": 7
+    },
+    {
+      "reference": "Mateo 16:22-23",
+      "status": "self_rendered",
+      "chapter_order": 4,
+      "block_index": 11
+    },
+    {
+      "reference": "Mateo 16:24",
+      "status": "self_rendered",
+      "chapter_order": 4,
+      "block_index": 13
+    },
+    {
+      "reference": "Juan 21:17",
+      "status": "self_rendered",
+      "chapter_order": 4,
+      "block_index": 25
+    },
+    {
+      "reference": "1 Pedro 4:14",
+      "status": "self_rendered",
+      "chapter_order": 4,
+      "block_index": 28
+    },
+    {
+      "reference": "1 Pedro 2:21",
+      "status": "self_rendered",
+      "chapter_order": 4,
+      "block_index": 29
+    },
+    {
+      "reference": "Hechos 5:29",
+      "status": "self_rendered",
+      "chapter_order": 4,
+      "block_index": 29
+    },
+    {
+      "reference": "1 Pedro 5:5",
+      "status": "self_rendered",
+      "chapter_order": 4,
+      "block_index": 30
+    },
+    {
+      "reference": "Lucas 18:27",
+      "status": "self_rendered",
+      "chapter_order": 5,
+      "block_index": 1
+    },
+    {
+      "reference": "Rom. 8:12",
+      "status": "self_rendered",
+      "chapter_order": 6,
+      "block_index": 2
+    },
+    {
+      "reference": "Rom. 7:17",
+      "status": "self_rendered",
+      "chapter_order": 6,
+      "block_index": 8
+    },
+    {
+      "reference": "Rom. 7:22",
+      "status": "self_rendered",
+      "chapter_order": 6,
+      "block_index": 8
+    },
+    {
+      "reference": "Rom. 7:18",
+      "status": "self_rendered",
+      "chapter_order": 6,
+      "block_index": 11
+    },
+    {
+      "reference": "Rom. 7:6-25",
+      "status": "self_rendered",
+      "chapter_order": 6,
+      "block_index": 14
+    },
+    {
+      "reference": "Rom. 7:14",
+      "status": "self_rendered",
+      "chapter_order": 6,
+      "block_index": 15
+    },
+    {
+      "reference": "Rom. 7:23",
+      "status": "self_rendered",
+      "chapter_order": 6,
+      "block_index": 15
+    },
+    {
+      "reference": "Rom. 7:24",
+      "status": "self_rendered",
+      "chapter_order": 6,
+      "block_index": 15
+    },
+    {
+      "reference": "Rom. 8:13",
+      "status": "self_rendered",
+      "chapter_order": 6,
+      "block_index": 28
+    },
+    {
+      "reference": "Rom. 14:17",
+      "status": "self_rendered",
+      "chapter_order": 6,
+      "block_index": 34
+    },
+    {
+      "reference": "Gál. 6:13",
+      "status": "self_rendered",
+      "chapter_order": 7,
+      "block_index": 23
+    },
+    {
+      "reference": "Juan 13:34",
+      "status": "self_rendered",
+      "chapter_order": 8,
+      "block_index": 24
+    },
+    {
+      "reference": "Ef. 3:20",
+      "status": "self_rendered",
+      "chapter_order": 8,
+      "block_index": 32
+    },
+    {
+      "reference": "Isa. 27:3",
+      "status": "self_rendered",
+      "chapter_order": 8,
+      "block_index": 38
+    },
+    {
+      "reference": "Fil. 2:13",
+      "status": "self_rendered",
+      "chapter_order": 8,
+      "block_index": 39
+    },
+    {
+      "reference": "Rom. 5:5",
+      "status": "self_rendered",
+      "chapter_order": 9,
+      "block_index": 28
+    },
+    {
+      "reference": "2 Cor. 5:14",
+      "status": "self_rendered",
+      "chapter_order": 9,
+      "block_index": 28
+    },
+    {
+      "reference": "Juan 15:8",
+      "status": "self_rendered",
+      "chapter_order": 9,
+      "block_index": 31
+    }
+  ]
+}
