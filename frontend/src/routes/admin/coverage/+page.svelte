@@ -78,7 +78,13 @@
 	let queueError = $state<string | null>(null);
 	// A bulk enqueue awaiting the user's confirmation (the flooding guard): filing
 	// N jobs means N worker sessions, so a row/column press asks before it fires.
-	let pendingBulk = $state<{ label: string; targets: { slug: string; lang: string }[] } | null>(null);
+	// The job type is captured here, at stage time, so switching tabs while the
+	// confirmation is up can't file the targets under the new tab's type.
+	let pendingBulk = $state<{
+		label: string;
+		type: TranslationJobType;
+		targets: { slug: string; lang: string }[];
+	} | null>(null);
 	// Live progress while a confirmed bulk runs (jobs are filed one at a time).
 	let bulkProgress = $state<{ done: number; total: number } | null>(null);
 	// Any queue POST in flight — disables every enqueue control so two runs can't
@@ -138,17 +144,18 @@
 	// works into a language) for confirmation. No-op when there's nothing to queue.
 	function bulkRow(r: AdminCoverageRow) {
 		const targets = langs.filter((l) => isGap(l, r)).map((l) => ({ slug: r.slug, lang: l.code }));
-		if (targets.length) pendingBulk = { label: `“${r.title}” into every missing language`, targets };
+		if (targets.length)
+			pendingBulk = { label: `“${r.title}” into every missing language`, type: jobType, targets };
 	}
 	function bulkCol(l: AdminCoverageLanguage) {
 		const targets = rows.filter((r) => isGap(l, r)).map((r) => ({ slug: r.slug, lang: l.code }));
-		if (targets.length) pendingBulk = { label: `every missing work into ${l.name}`, targets };
+		if (targets.length)
+			pendingBulk = { label: `every missing work into ${l.name}`, type: jobType, targets };
 	}
 
 	async function runBulk() {
 		if (!pendingBulk) return;
-		const { targets } = pendingBulk;
-		const type = jobType; // pin the type for the whole run
+		const { targets, type } = pendingBulk; // type pinned at stage time
 		pendingBulk = null;
 		queueError = null;
 		bulkProgress = { done: 0, total: targets.length };
@@ -164,7 +171,9 @@
 		}
 		bulkProgress = null;
 		if (failed) {
-			queueError = `Queued ${targets.length - failed} of ${targets.length}; ${failed} failed${firstErr ? ` — ${firstErr}` : ''}.`;
+			// Don't surface the generic 'failed' sentinel — only a real backend detail.
+			const detail = firstErr && firstErr !== 'failed' ? ` — ${firstErr}` : '';
+			queueError = `Queued ${targets.length - failed} of ${targets.length}; ${failed} failed${detail}.`;
 		}
 	}
 </script>

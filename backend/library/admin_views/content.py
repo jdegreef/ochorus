@@ -15,6 +15,7 @@ from rest_framework.views import APIView
 
 from accounts.permissions import IsAdminEmail
 
+from ..languages import known_codes
 from ..models import (
     Author,
     AuthorTranslation,
@@ -26,7 +27,6 @@ from ..models import (
     Topic,
     TopicTranslation,
 )
-from ..languages import known_codes
 from ..views import _language_entry
 from .languages import language_settings
 
