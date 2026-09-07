@@ -474,6 +474,26 @@
 			</div>
 		</section>
 	{/if}
+
+	<!-- Portrait credit. Rendered only when the portrait is a Creative Commons
+	     image whose licence requires attribution; a public-domain portrait
+	     leaves `photo_attribution` blank and shows nothing here. Sits with the
+	     page context (hidden in focus mode), a quiet colophon beneath the works. -->
+	{#if author.photo_attribution}
+		<p class="mt-12 border-t border-border pt-4 text-micro text-muted">
+			{t('author.portraitCredit')}:
+			{#if author.photo_source_url}
+				<a
+					href={author.photo_source_url}
+					class="hover:text-accent hover:underline"
+					target="_blank"
+					rel="noreferrer">{author.photo_attribution}</a
+				>
+			{:else}
+				{author.photo_attribution}
+			{/if}
+		</p>
+	{/if}
 	{/if}
 </div>
 

@@ -440,6 +440,16 @@ export interface AuthorDetail extends AuthorBio {
 	 * simply omits the property rather than breaking the markup.
 	 */
 	same_as?: string[];
+	/**
+	 * Visible credit for the portrait, shown as a colophon on this page. Set only
+	 * when the portrait is a Creative Commons image whose licence requires
+	 * attribution; blank/absent for a public-domain portrait or none at all.
+	 * Optional so an API behind this build simply renders no credit line.
+	 */
+	photo_attribution?: string;
+	/** The portrait's source page (Wikimedia Commons File:), used as the credit
+	 * link. Optional for the same prerender-before-API reason. */
+	photo_source_url?: string;
 }
 
 /**

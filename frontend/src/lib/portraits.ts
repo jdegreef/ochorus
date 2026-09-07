@@ -26,6 +26,7 @@
  */
 export const PORTRAIT_POSITION: Record<string, string> = {
 	'a-b-simpson': '50% 50%', // square source — the crop takes the whole plate
+	'alexander-maclaren': '50% 0%', // 1889 bust photo; face high at ~22% of a 0.75 plate
 	'amanda-berry-smith': '50% 0%',
 	'amy-carmichael': '50% 0%',
 	'andrew-murray': '50% 2%',
@@ -33,15 +34,18 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'athanasius-of-alexandria': '50% 0%', // icon: head at ~20% of a 0.69 plate
 	'augustine-of-hippo': '50% 0%',
 	'bernard-of-clairvaux': '50% 0%', // painting cropped to a bust; face at ~42%, near-square so nearly inert
+	'billy-graham': '50% 0%', // 1966 press photo; face high at ~23% of a 0.80 plate
 	'c-t-studd': '50% 0%', // full-length cricket photo; head high at ~10% of a 0.54 plate
 	'catherine-booth': '50% 0%',
 	'charles-finney': '50% 0%',
 	'charles-h-spurgeon': '50% 0%',
 	'christmas-evans': '50% 25%', // 1859 engraved frontispiece; face at ~40% of a 0.75 plate
 	'clement-of-rome': '50% 0%', // mosaic bust; face at ~28% of a 0.80 plate
+	'corrie-ten-boom': '50% 0%', // 1921 photo, hat; face at ~27% of a 0.63 plate
 	'cyprian-of-carthage': '50% 0%', // icon: bust, face at ~22%
 	'david-brainerd': '50% 0%',
 	'david-livingstone': '50% 3%', // seated Annan photo; face high at ~25% of a 0.82 plate
+	'dietrich-bonhoeffer': '50% 0%', // 1939 standing figure; head high at ~15% of a 0.63 plate
 	'dwight-l-moody': '50% 5%',
 	'e-m-bounds': '50% 2%', // 1864 photograph; face at ~32% of a 0.72 plate
 	'frederick-brotherton-meyer': '50% 0%',
@@ -49,6 +53,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'george-herbert': '50% 8%', // engraving; face at ~35% of a 0.80 plate
 	'george-muller': '50% 37%',
 	'george-whitefield': '50% 0%',
+	'gregory-the-great': '50% 0%', // Goya painting, seated; face high at ~13% of a 0.57 plate
 	'hannah-whitall-smith': '50% 0%',
 	'hudson-taylor': '50% 20%',
 	'ignatius-of-antioch': '50% 0%', // fresco: head at ~17% of a 0.72 plate
@@ -56,16 +61,21 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'jarena-lee': '50% 0%', // 1849 lithograph: seated figure, face at ~18% of a 0.73 plate
 	'jeanne-guyon': '50% 58%',
 	'john-bunyan': '50% 0%',
+	'john-calvin': '50% 0%', // c.1550 capped portrait; face at ~29% of a 0.72 plate
 	'john-cassian': '50% 0%', // icon: standing figure, head at ~20% of a 0.70 plate
 	'john-chrysostom': '50% 0%', // mosaic: standing figure, head at ~11%
 	'john-newton': '50% 27%', // portrait; face at ~40% of a 0.72 plate
 	'john-owen': '50% 0%', // Greenhill portrait; face at ~31% of a 0.81 plate
+	'john-stott': '50% 0%', // photograph, bust; face at ~25% of a 0.73 plate
 	'john-wesley': '50% 0%',
 	'jonathan-edwards': '50% 0%',
 	'julia-foote': '50% 0%', // studio photo: standing figure, face at ~22% of a 0.62 plate
 	'lemuel-haynes': '50% 0%',
+	'loren-cunningham': '50% 0%', // cropped from a group photo; face at ~22% of a 0.61 plate
 	'lottie-moon': '50% 30%', // oval studio photo; face at ~40% of a 0.66 plate
+	'martin-luther': '50% 0%', // Cranach 1517 half-length; face at ~23% of a 0.64 plate
 	'mary-slessor': '50% 3%', // seated photo; head high at ~22% of a 0.67 plate
+	'monica-of-hippo': '50% 0%', // Gozzoli fresco, tall niche; head high at ~18% of a 0.42 plate
 	'pandita-ramabai': '50% 20%', // bust photo; face at ~30% of a 0.73 plate
 	'r-a-torrey': '50% 10%',
 	'richard-allen': '50% 37%',
@@ -74,11 +84,14 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'robert-murray-mcheyne': '50% 2%', // engraving; side profile, head high at ~32% of a 0.78 plate
 	'samuel-ajayi-crowther': '50% 45%',
 	'susanna-wesley': '50% 21%',
+	'teresa-of-avila': '50% 0%', // cropped to the bust; face at ~25% of a 0.58 plate
 	'thomas-a-kempis': '50% 0%',
 	'thomas-watson': '50% 0%',
+	'timothy-keller': '50% 0%', // speaking pose; face high at ~19% of a 0.73 plate
 	'watchman-nee': '50% 32%',
 	'william-booth': '50% 25%',
-	'william-carey': '50% 18%' // engraved bust; face at ~30% of a 0.67 plate
+	'william-carey': '50% 18%', // engraved bust; face at ~30% of a 0.67 plate
+	'william-law': '50% 16%' // cropped oval engraving; face at ~33% of a 0.58 plate
 };
 
 /**

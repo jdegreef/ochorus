@@ -78,9 +78,20 @@ class Author(models.Model):
     # <blockquote>s, and <aside class="prayer"> callouts). Rendered on the author
     # page above their books. Written via the `write-biography` skill.
     bio_html = models.TextField(blank=True)
-    # Public-domain portrait (self-hosted under /portraits/, B&W-processed).
-    # Blank for contemporary authors — the UI falls back to an initials avatar.
+    # Self-hosted portrait (under /portraits/, B&W-processed). Every one is
+    # verified free-to-use before it ships: a public-domain artwork/photo, or a
+    # Creative Commons image whose credit is carried in `photo_attribution`.
+    # Blank for authors with no genuinely free image (most contemporary ones) —
+    # the UI falls back to an initials avatar rather than host a copyrighted
+    # photo. See `library/migrations/0127_*` for the sourcing receipts.
     photo_url = models.URLField(blank=True)
+    # Visible credit for the portrait, shown on the author page. Required by the
+    # licence for a CC image ("<creator>, <licence>, via Wikimedia Commons");
+    # left blank for a public-domain portrait, where no attribution is due.
+    photo_attribution = models.TextField(blank=True)
+    # The portrait's source page (the Wikimedia Commons File: page), used as the
+    # href for the credit line so a reader can check the provenance and licence.
+    photo_source_url = models.URLField(blank=True)
     birth_year = models.IntegerField(null=True, blank=True)
     death_year = models.IntegerField(null=True, blank=True)
     original_language = models.CharField(max_length=10, default="en")

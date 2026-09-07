@@ -22,6 +22,10 @@ export const entries: EntryGenerator = async () => {
 // Prerendered per locale, baking whatever bios the API returns for getLang() at
 // build time — same content-race as the biographies index: a bio translation
 // must be live on the API before the web build to bake the localized text.
+//
+// Prerender refresh 2026-09-07: migration 0127's 13 new portraits bake into
+// these era shelves too (each card's photo_url and schema.org image). Force a
+// rebuild AFTER the API migration lands so the era pages show them.
 export const load: PageLoad = async ({ params }) => {
 	const era = eraById(params.era);
 	if (!era) throw error(404, 'Unknown era');

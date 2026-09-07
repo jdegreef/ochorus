@@ -12,6 +12,11 @@ import type { PageLoad } from './$types';
 // live with a complete set of localized mini-bios — every non-imprint author now
 // has a short bio translated into es/lg/sw, so the /es|/lg|/sw biographies pages
 // re-crawl and bake the translated blurbs instead of the English fallback.
+//
+// Prerender refresh 2026-09-07: migration 0127 gives 13 authors a portrait, and
+// this shelf bakes each card's photo_url (and its schema.org image). Force a
+// rebuild AFTER the API migration lands so the cards show the new portraits
+// instead of the initials avatar.
 export const load: PageLoad = async () => {
 	const lang = getLang();
 	// The authors are the shelf: a failed fetch is REPORTED so the page can
