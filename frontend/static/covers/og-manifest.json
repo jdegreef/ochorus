@@ -375,12 +375,26 @@
 			"art": false,
 			"scrim": 1
 		},
+		"es/possibilities-of-prayer": {
+			"ground": "50ce22e211c86362e7ffb980386ee95891b81923eb524d89a6e0b134d0d9a0b8",
+			"style": "devotional",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"es/power-through-prayer": {
 			"ground": "07fee117fcded2bd8af7d47f18714c8064baf4e5515f593ac4b332be1ecd76b7",
 			"style": "devotional",
 			"script": "latin",
 			"art": true,
 			"scrim": 0.75
+		},
+		"es/prayer-and-praying-men": {
+			"ground": "bc805bb1ed89244944db01a0ebebf71c7c7e634816f5a2b08691626de6073c1f",
+			"style": "devotional",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8
 		},
 		"es/prayer-the-pulse-of-life": {
 			"ground": "07ff36d5465ef33f20173862088a794684cb65b8315b612c52de71e270d3676a",
@@ -409,6 +423,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65
+		},
+		"es/reality-of-prayer": {
+			"ground": "9804e6b4963da55045d6cb3c082d2e1b57a178d8dee21ccef7f048a64ea85cc2",
+			"style": "devotional",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8
 		},
 		"es/separation-and-service": {
 			"ground": "cad64c13ac360a3b5749bf0557546ac4becda2489677b7d1e938965901dc4eb8",

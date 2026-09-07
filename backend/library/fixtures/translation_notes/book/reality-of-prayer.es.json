@@ -1,0 +1,48 @@
+{
+  "kind": "book",
+  "slug": "reality-of-prayer",
+  "language": "es",
+  "job_issue": null,
+  "pull_request": null,
+  "note": [
+    "AI translation via the keyless pipeline path (engine glossary + Reina-Valera). Bounds weaves Scripture into his prose largely without explicit citation, so verses were rendered by the model in Reina-Valera wording (self_rendered) and every one should be checked by a native reviewer. This lists explicit citations present in the es text; uncited woven allusions are not enumerated."
+  ],
+  "references": [
+    {
+      "reference": "Hebreos 5:7",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 5
+    },
+    {
+      "reference": "Santiago 1:5",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 6
+    },
+    {
+      "reference": "1 Ti. 2:1",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 13
+    },
+    {
+      "reference": "Mt. 5:23",
+      "status": "self_rendered",
+      "chapter_order": 1,
+      "block_index": 19
+    },
+    {
+      "reference": "1 Ti. 1:8",
+      "status": "self_rendered",
+      "chapter_order": 2,
+      "block_index": 24
+    },
+    {
+      "reference": "Fil. 4:6",
+      "status": "self_rendered",
+      "chapter_order": 3,
+      "block_index": 19
+    }
+  ]
+}
