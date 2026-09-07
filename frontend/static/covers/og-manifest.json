@@ -1040,12 +1040,26 @@
 			"art": false,
 			"scrim": 1
 		},
+		"sw/all-of-grace": {
+			"ground": "50b3863a8086ecc3146d50d119c78a125f34a52703f79f835154b448d9241c76",
+			"style": "revival",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7
+		},
 		"sw/baptism-with-the-holy-spirit": {
 			"ground": "0595bacb3a26d2ac35107f6f9ecbd218d0ceabafcb5027c8e2144dbb21b82dce",
 			"style": "revival",
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85
+		},
+		"sw/cheque-book": {
+			"ground": "82ad6eaf2039290786fe55e046258299195afe2fb2c7f2503727f38eaf1fc320",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"sw/clothed-with-strength-and-dignity": {
 			"ground": "ba9a83614a219bfb49b56247dcb7f9db9042af3333b487cc6b7afa02f809efd2",
@@ -1088,6 +1102,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6
+		},
+		"sw/ministry-of-intercession": {
+			"ground": "48077b1d450da10f4f87660f39b1910250ba39006bbeae4bbf63bf404b9378b5",
+			"style": "devotional",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"sw/prayer-the-pulse-of-life": {
 			"ground": "6b9f5ca7685a1b7114298f2faf67d94f19d8ce4699d7532802f945db9cf5fa70",
