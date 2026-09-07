@@ -114,7 +114,7 @@
 			"style": "devotional",
 			"script": "arabic",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.45
 		},
 		"ar/godliness": {
 			"ground": "024e77389ba1cf97a0b0a196422cc237c010461521fcd05a0f7d457af0b43d4a",
@@ -247,7 +247,7 @@
 			"style": "devotional",
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.45
 		},
 		"enchiridion": {
 			"ground": "7c033bdbcff6c3f21f1e7c95ea21c88d30ead18eb59cf95e58a75c449fff631c",
@@ -269,6 +269,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7
+		},
+		"es/around-the-wicket-gate": {
+			"ground": "36b4729d59ec703500f371598a62e53074f997baa5f2ad36f150fcef82939db3",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"es/baptism-with-the-holy-spirit": {
 			"ground": "65465dc87da4c2b395458f0dfe6337d4a6e99539bec9063df5e6c3ff7dec8cea",
@@ -311,6 +318,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65
+		},
+		"es/power-through-prayer": {
+			"ground": "27f9b28288e619aaa52e81537bb71dd08111eb23faffa18f16ae6e1a50f287dc",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"es/prayer-the-pulse-of-life": {
 			"ground": "07ff36d5465ef33f20173862088a794684cb65b8315b612c52de71e270d3676a",
@@ -450,7 +464,7 @@
 			"style": "devotional",
 			"script": "devanagari",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.45
 		},
 		"hi/godliness": {
 			"ground": "b72ec1d040a6969ecfe8b18f80e0ae3eff7014ca28644597d364c715c4942439",
@@ -485,7 +499,7 @@
 			"style": "devotional",
 			"script": "devanagari",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.75
 		},
 		"hi/prayer-the-pulse-of-life": {
 			"ground": "5e42f8c18c6752e175c3aedda526c0a27d8bcdefbd0c242d7472eade812af0d7",
@@ -779,7 +793,7 @@
 			"style": "devotional",
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.75
 		},
 		"mortification-of-sin": {
 			"ground": "81ab25ff3ce6cc4a67630451dbdaf9cbc6982f338d4aa2e22d03663043df9bbd",
@@ -898,7 +912,7 @@
 			"style": "devotional",
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.45
 		},
 		"pt/godliness": {
 			"ground": "222d108dde31cac64a15af4a17b73d314aed70e731961c38902504ee76576695",
@@ -1157,7 +1171,7 @@
 			"style": "devotional",
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.75
 		},
 		"sw/prayer-the-pulse-of-life": {
 			"ground": "6b9f5ca7685a1b7114298f2faf67d94f19d8ce4699d7532802f945db9cf5fa70",
@@ -1360,7 +1374,7 @@
 			"style": "devotional",
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.85
 		},
 		"tukutendereza": {
 			"ground": "153daf8655f1057a61a8c46d62ddc21980a1b613d0450ce91d777c2507dd957d",

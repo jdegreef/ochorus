@@ -494,3 +494,24 @@ Reported, not fixed
   `word_count`, and assert all three columns equal the committed fixture and
   that a second pass is a no-op. That is the whole deploy path in ten lines, per
   language, and it is what turns "the tests pass" into "production converges".
+- **A defect class the audit CANNOT see: the stored "English" is a modern AI
+  PARAPHRASE, not the author's public-domain text** (2026-09-06). Some books
+  stored `source_type=public_domain` were run through a modernization pass that
+  swapped the KJV the author quoted for a modern (ESV) version, and at worst
+  SILENTLY DELETED author sentences. `the-secret-of-guidance` (Meyer) shipped the
+  meta-artifact "Not possible to remove the adverb." 4× (ch06, ch07×3), each
+  replacing a real Meyer sentence; also garbled Job 23, and 8 chapters where the
+  genuine has 9. `audit_english` sees NONE of this — a smooth deletion or a
+  reworded sentence leaves no flag, and modern scripture is valid text. Detect
+  with a KJV-archaism density scan (thee|thou|thy|unto|shalt|hath|saith|cometh…)
+  per 10k words: genuine 19th-c classics run 15–190; the altered cluster runs
+  1.5–4.5 (modern-authored bios/compilations are legitimately ~0). Confirm by
+  diffing one scripture quote against the KJV, or a chapter against the
+  CCEL/Gutenberg genuine text. **Repair is a genuine RE-IMPORT** (`book-import` /
+  `import_ccel`), NOT `BODY_CORRECTIONS` string pairs — a paraphrase that left a
+  fingerprint on 4 deletions has likely deleted others invisibly, so patching
+  can't restore what's gone. This matters most before translating: the altered
+  English propagates into every translation (already reached es for `humility-2`
+  and `the-inner-chamber`). Confirmed altered: secret-of-guidance (damaged),
+  god-of-all-comfort, humility-2, the-inner-chamber; full catalog is a backlog
+  (see memory `modernized-scripture-in-pd-classics`).
