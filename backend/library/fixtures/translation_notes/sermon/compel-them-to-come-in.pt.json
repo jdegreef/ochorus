@@ -1,0 +1,14 @@
+{
+  "kind": "sermon",
+  "slug": "compel-them-to-come-in",
+  "language": "pt",
+  "job_issue": null,
+  "pull_request": 1610,
+  "references": [
+    {
+      "reference": "Luke 14:23",
+      "status": "self_rendered"
+    }
+  ],
+  "note": "Keyless in-session translation: every quoted verse was rendered by the translator (self_rendered), using the authoritative Bíblia Livre (porbrbsl) wording where a verse was supplied. This work weaves much scripture without explicit Book C:V citations; those woven quotations are not enumerated here and should be checked against the Portuguese Bible during native review."
+}
