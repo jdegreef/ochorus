@@ -1,0 +1,127 @@
+{
+  "kind": "book",
+  "slug": "all-of-grace",
+  "language": "ar",
+  "job_issue": null,
+  "pull_request": 1739,
+  "references": [
+    {
+      "reference": "Romans 8:30",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Romans 8:33",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Micah 7:18",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Romans 3:21-26",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Ezekiel 36:26",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Ezekiel 11:19",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Ephesians 2:8",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Mark 16:16",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Romans 5:6",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Acts 5:30-31",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 4:14",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 10:8",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 1:12",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "2 Corinthians 5:7",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Zechariah 12:10",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Matthew 11:28",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 3:3",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 3:14-15",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 3:18",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 3:8",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Psalm 103:3",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 7:24",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "1 John 1:9",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ezekiel 18:20",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Matthew 27:25",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 1:11",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Psalm 81:11",
+      "status": "self_rendered"
+    }
+  ]
+}

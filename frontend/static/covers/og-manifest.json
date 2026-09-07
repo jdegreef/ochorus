@@ -51,7 +51,7 @@
 			"style": "devotional",
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.95
 		},
 		"all-of-grace": {
 			"ground": "25d18c1f3133cdd46d916757dc58d064dd8cda9ff6adce9f7edf269c234762d4",
@@ -80,6 +80,20 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.55
+		},
+		"ar/absolute-surrender": {
+			"ground": "d74f9791b65faeced3a606d2fd13cc677a548e333097f93fc58ad95058699252",
+			"style": "devotional",
+			"script": "arabic",
+			"art": true,
+			"scrim": 0.95
+		},
+		"ar/all-of-grace": {
+			"ground": "1290f6609886d2ba303fded94b0d22d95ceca6a64251f81799a4b1fb6041383a",
+			"style": "revival",
+			"script": "arabic",
+			"art": true,
+			"scrim": 0.7
 		},
 		"ar/baptism-with-the-holy-spirit": {
 			"ground": "f3517f80debc53e0c4b004a6725bc0c96640214170412d88cf906ba1d563824e",
@@ -129,6 +143,13 @@
 			"script": "arabic",
 			"art": true,
 			"scrim": 0.6
+		},
+		"ar/power-through-prayer": {
+			"ground": "18c5afcc4dde714eb2348156ad1f688ea574b35f7e6e35193527ce27bafc02e0",
+			"style": "revival",
+			"script": "arabic",
+			"art": false,
+			"scrim": 1
 		},
 		"ar/prayer-the-pulse-of-life": {
 			"ground": "02de18cb1bd999fc8e6b030d12c36d647da0f5c6860d703ecf91cccddd8df9c8",
@@ -831,11 +852,11 @@
 			"scrim": 0.7
 		},
 		"pt/absolute-surrender": {
-			"ground": "72bd95a3dc97dd347ef825bc4ad931708828a46c4ba48c2cf8a2984b856406bd",
+			"ground": "53736338307423f5bf749f2a3ce62366c7f2f6909b42426959e319fcdc8aef66",
 			"style": "devotional",
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.95
 		},
 		"pt/all-of-grace": {
 			"ground": "21179941fa311850e8b8cf29e4c28f959cb0b3c05ff869161d44a551d263ea4e",
