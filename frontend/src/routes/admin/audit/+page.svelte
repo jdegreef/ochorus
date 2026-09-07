@@ -110,6 +110,13 @@
 				</li>
 			{/snippet}
 
+			<!-- The server caps every list at AUDIT_LIMIT but still reports the true
+			     total, so any list can be truncated — say so, or an admin reads 100
+			     rows as "all of them". -->
+			{#snippet moreLine(shown: number, total: number)}
+				{#if shown < total}<p class="mt-1 text-small text-muted">…and {total - shown} more</p>{/if}
+			{/snippet}
+
 			<!-- Chapter findings grouped by edition: a lone hit renders flat, a book
 			     with several collapses under its own sub-heading. -->
 			{#snippet chapterList(items: AuditChapterFinding[], total: number = items.length)}
@@ -132,7 +139,7 @@
 						{/if}
 					{/each}
 				</ul>
-				{#if items.length < total}<p class="mt-1 text-small text-muted">…and {total - items.length} more</p>{/if}
+				{@render moreLine(items.length, total)}
 			{/snippet}
 
 			<!-- A collapsible check. Header is always visible (label + count); the
@@ -169,6 +176,7 @@
 								</li>
 							{/each}
 						</ul>
+						{@render moreLine(a.integrity.broken_plan_days.items.length, a.integrity.broken_plan_days.total)}
 					{/snippet}
 					{@render check('Broken plan days', 'A plan day points at a missing chapter', a.integrity.broken_plan_days.total, a.integrity.broken_plan_days.total > 0, planDays)}
 
@@ -178,6 +186,7 @@
 								<li class="py-1.5 text-body"><a href={editionHref(`/books/${b.book}`, b.language)} class="text-text hover:text-accent">{b.title}</a> <span class="text-small text-muted">{b.author} · {b.language}</span></li>
 							{/each}
 						</ul>
+						{@render moreLine(a.integrity.empty_books.items.length, a.integrity.empty_books.total)}
 					{/snippet}
 					{@render check('Books with no chapters', '', a.integrity.empty_books.total, a.integrity.empty_books.total > 0, emptyBooks)}
 
@@ -192,6 +201,7 @@
 								<li class="py-1.5 text-body"><a href={editionHref(`/books/${g.book}`, g.language)} class="text-text hover:text-accent">{g.book}</a> <span class="text-small text-muted">{g.language} · missing {g.missing.join(', ')} of {g.count}</span></li>
 							{/each}
 						</ul>
+						{@render moreLine(a.integrity.order_gaps.items.length, a.integrity.order_gaps.total)}
 					{/snippet}
 					{@render check('Chapter-order gaps', 'Missing chapter numbers', a.integrity.order_gaps.total, a.integrity.order_gaps.total > 0, orderGaps)}
 				</section>
@@ -213,6 +223,7 @@
 										</li>
 									{/each}
 								</ul>
+								{@render moreLine(a.quality.duplicate_titles.items.length, a.quality.duplicate_titles.total)}
 							{/snippet}
 							{@render check(q.label, q.desc, c.total, false, dupTitles)}
 						{:else}
