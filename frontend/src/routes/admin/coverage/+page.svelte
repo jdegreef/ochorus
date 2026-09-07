@@ -11,7 +11,14 @@
 		type TranslationJobType
 	} from '$lib/library-admin';
 
-	const coverage = adminResource(getAdminCoverage, 'Something went wrong loading coverage.');
+	// Load the open translation queue right after coverage — via onLoad, so it
+	// waits for auth to settle and re-runs on every (authenticated) refresh, the
+	// way adminResource already sequences a page's dependent fetches. Firing it
+	// from a bare $effect instead would race the Supabase session restore: the
+	// pre-auth GET 403s and, with no auth dependency, never re-runs.
+	const coverage = adminResource(getAdminCoverage, 'Something went wrong loading coverage.', () =>
+		void loadJobs()
+	);
 	const cov = $derived(coverage.data);
 
 	type Tab = 'books' | 'sermons' | 'plans';
@@ -78,15 +85,13 @@
 		}
 	}
 
-	// Load the open queue once alongside the matrix. Both endpoints are admin-only,
-	// so if the user isn't authorised the matrix never renders and neither do these.
-	$effect(() => {
-		void loadJobs();
-	});
-
 	const jobKey = (slug: string, lang: string) => `${jobType}:${slug}:${lang}`;
-	const jobFor = (slug: string, lang: string) =>
-		jobs.find((j) => j.type === jobType && j.slug === slug && j.language === lang);
+	// Index the open jobs by `type:slug:lang` so each of the matrix's many cells
+	// is an O(1) lookup rather than a linear scan of the whole queue.
+	const jobIndex = $derived(
+		new Map(jobs.map((j) => [`${j.type}:${j.slug}:${j.language}`, j]))
+	);
+	const jobFor = (slug: string, lang: string) => jobIndex.get(jobKey(slug, lang));
 
 	async function queue(slug: string, lang: string) {
 		queueError = null;
