@@ -158,16 +158,50 @@ def _issue_to_job(issue: dict) -> dict | None:
     }
 
 
+# GitHub caps an issues page at 100, so one request is one page of the queue.
+_PAGE_SIZE = 100
+# A stop, not a limit: 2000 open jobs means something upstream is wrong, and a
+# loop that keeps asking is worse than a short answer.
+_MAX_PAGES = 20
+
+
 def _list_open_jobs() -> list[dict]:
-    """Open job issues, oldest first. Raises requests.RequestException upstream."""
-    r = requests.get(
-        f"{GITHUB_API}/repos/{settings.GITHUB_TRANSLATION_REPO}/issues",
-        headers=_headers(),
-        params={"state": "open", "labels": LABEL, "per_page": 100, "direction": "asc"},
-        timeout=15,
-    )
-    r.raise_for_status()
-    return [job for issue in r.json() if (job := _issue_to_job(issue))]
+    """EVERY open job issue, oldest first. Raises requests.RequestException upstream.
+
+    Every page, not the first one. This read backs the duplicate-press guard in
+    ``post`` below, and while it fetched a single page that guard silently went
+    blind the moment the queue passed a hundred: ``direction: asc`` makes page
+    one the hundred OLDEST open jobs, so the newest job — the one a second press
+    is actually about to re-file — was precisely the one outside the window.
+    On 2026-09-06 the queue stood at 107 before the evening's filing began, and
+    31 issues were filed for 17 distinct jobs; ``book:absolute-surrender -> es``
+    got three. The guard's logic was right the whole time; it was reading a
+    truncated queue.
+
+    The GET path shares this, so the dashboard's own queue was short by the same
+    jobs it was hiding from the guard.
+    """
+    jobs: list[dict] = []
+    for page in range(1, _MAX_PAGES + 1):
+        r = requests.get(
+            f"{GITHUB_API}/repos/{settings.GITHUB_TRANSLATION_REPO}/issues",
+            headers=_headers(),
+            params={
+                "state": "open",
+                "labels": LABEL,
+                "per_page": _PAGE_SIZE,
+                "direction": "asc",
+                "page": page,
+            },
+            timeout=15,
+        )
+        r.raise_for_status()
+        batch = r.json()
+        jobs.extend(job for issue in batch if (job := _issue_to_job(issue)))
+        # A short page is the last page — no Link-header parsing needed.
+        if len(batch) < _PAGE_SIZE:
+            break
+    return jobs
 
 
 class AdminTranslationJobsView(AdminAudited, APIView):
