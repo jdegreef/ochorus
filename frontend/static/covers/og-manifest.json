@@ -263,13 +263,6 @@
 			"art": false,
 			"scrim": 1
 		},
-		"es/absolute-surrender": {
-			"ground": "f13df3518a6dbf80aec789a4cc3a4617e7d40b704b6ce274f7bf068edf24a300",
-			"style": "devotional",
-			"script": "latin",
-			"art": true,
-			"scrim": 0.95
-		},
 		"es/all-of-grace": {
 			"ground": "4c27f99f956f15bd728a240afab3cfd7f3848f91e5b7d2a67399ffe15db61411",
 			"style": "revival",
