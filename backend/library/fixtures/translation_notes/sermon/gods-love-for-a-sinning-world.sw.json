@@ -1,0 +1,23 @@
+{
+ "kind": "sermon",
+ "slug": "gods-love-for-a-sinning-world",
+ "language": "sw",
+ "job_issue": 1726,
+ "references": [
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Song of Songs",
+   "status": "self_rendered",
+   "block_index": 57
+  }
+ ]
+}
