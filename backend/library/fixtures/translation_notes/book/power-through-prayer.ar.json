@@ -1,0 +1,61 @@
+{
+  "kind": "book",
+  "slug": "power-through-prayer",
+  "language": "ar",
+  "job_issue": null,
+  "pull_request": 1739,
+  "references": [
+    {
+      "reference": "John 1:6",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Isaiah 9:6",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "2 Chronicles 16:9",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "2 Corinthians 2:16",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "2 Corinthians 3:5-6",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Exodus 28:36",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Isaiah 6:1",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Hebrews 5:7",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "James 5:16",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Hebrews 4:12",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 11:35",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Psalm 126:6",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "1 John 2:20",
+      "status": "self_rendered"
+    }
+  ]
+}
