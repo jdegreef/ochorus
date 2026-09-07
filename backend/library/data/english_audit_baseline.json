@@ -284,8 +284,8 @@
    "space-before-punct": 1
   },
   "the-secret-of-guidance": {
-   "orphan-close-quote": 8,
-   "space-before-punct": 5
+   "space-before-punct": 12,
+   "word-fusion": 1
   },
   "the-secret-of-tranquillity": {
    "space-before-punct": 2
