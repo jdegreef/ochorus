@@ -725,6 +725,42 @@ dropped; chapters under 120 words are dropped as stubs.
   running headers + page numbers + markers, NOT prose). Verse/hymn reflows to
   prose paragraphs — words preserved, line breaks flattened (acceptable).
   *(a-brand-plucked-from-the-fire, 2026-09)*
+- **An Archive scan whose chapters are headed by a BARE ROMAN NUMERAL (no
+  "CHAPTER" word) → build_<name> that detects heads structurally, because the
+  running header IS the chapter title.** Bounds's *Possibilities of Prayer*
+  (`possibilitiesofp0000boun`) heads each chapter with a lone "I"/"II"/… line
+  above an ALL-CAPS title, and repeats that title as the running header on every
+  page — so the title alone can't mark a chapter (it appears 10× a chapter), and
+  `import_archive._CHAPTER` matches only the word "CHAPTER", finding nothing. A
+  head is therefore *a short roman-ish line whose next real line is an ALL-CAPS
+  title that is NOT the running book-title header* (exclude a title containing
+  the book name or led by a page number); split on those in DOCUMENT ORDER and
+  apply the Contents titles, because the numerals are mis-scanned (`Ill` for III,
+  a stray `V.`) and `_roman` would mis-order them. Four things earned here:
+  - **The end-of-line hyphen is `¬` (U+00AC), not ASCII `-`**, so
+    `import_archive._HYPHEN_EOL` never fires and "reason¬"/"able" reflows to
+    "reason- able". Normalise a trailing `¬` to `-` per line before the reflow's
+    hyphen-join (one line: `if line.endswith("¬"): line = line[:-1] + "-"`).
+  - **A "(Continued)" chapter's title line is mixed-case**, so a plain
+    `letters.isupper()` head-test drops chapters III/V/VI/XI/XII (16→11). Strip a
+    trailing `\([^)]*\)` parenthetical before the caps test, and drop that same
+    title line (and a lone "(Continued)" fragment) from the epigraph.
+  - **The drop-cap prose opener is small-caps** ("WITHOUT the", "THE ministry")
+    and is the reliable epigraph/prose boundary — title-case its first word;
+    chapter I's ornamental cap mis-scanned to "P^HE" (→ "The"), a one-entry
+    special case. Everything above it (minus headers) is the italic epigraph.
+  - **Normalise straight↔curly quotes IN the build** with
+    `library.quote_marks.convert_work(bodies, f"{slug}.en.json")` (the same
+    context-sensitive logic migration 0084 uses), NOT the post-hoc
+    `normalize_quotes.py` script — a build-command book is regenerated, so baking
+    the conversion in keeps it idempotent and passes `QuoteStyleTests`. Note a
+    LONG multi-verse Scripture quotation legitimately opens a `“` on every verse
+    and closes only once, so an open>close imbalance is faithful, not a defect
+    (`orphan-close-quote` only flags close-without-open). **PD gate: judge by the
+    work's FIRST publication year (1923), never the Archive item's reprint date**
+    (this scan is a 1979/1991 Baker reprint of the 1923 Revell text).
+  *(possibilities-of-prayer, 2026-09; the whole HFP-triage sourcing note is why
+  Weapon of Prayer — 1931, PD only in 2027 — was NOT the one imported.)*
 - **A Victorian edition's quotation marks OCR as guillemets `« »`.** The Patmore
   Bernard scanned every quote as `«`/`»` (22 of them) — a mark that never occurs
   legitimately in English, so map the pair to curly quotes in `corrections.py`

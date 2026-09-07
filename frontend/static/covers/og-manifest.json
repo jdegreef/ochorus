@@ -802,6 +802,13 @@
 			"art": false,
 			"scrim": 1
 		},
+		"possibilities-of-prayer": {
+			"ground": "07fd9527eed259906c15e46f63a9afdfd352d53ec36fba831abbc9923049ca93",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"power-through-prayer": {
 			"ground": "8479431a9a178feab19a83728054c8e6a389ea0cbc630908e02a51ca109f134a",
 			"style": "revival",
