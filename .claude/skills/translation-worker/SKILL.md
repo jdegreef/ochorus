@@ -2116,3 +2116,30 @@ archaic spelling and period punctuation are the text, not defects in it.
   belongs to that slug — a distinctive name token from the input appears in the
   output, allowing for localized forms) before shipping, not just a tag/ratio
   check. A tag-count-and-ratio-clean file can still be the WRONG author.
+- **For Swahili, the DECLARED `swhonen` Bible (Take Root API) is a DIFFERENT
+  EDITION from the shipped sw corpus — do NOT paste it; mine the corpus**
+  (jobs #1301/#1315/#1317, 2026-09-06, three books). Earlier sw entries said
+  "the corpus follows the Swahili Union tradition, which `language_seed.py`
+  records as `swhonen`", implying the API text and the corpus are the same. On
+  James's Mac the API is reachable and `fetch_verse_text('swhonen', …)` answers —
+  but its text is NOT what the 20 shipped sw books quote. Measured 0/38 exact
+  and 4/38 containment on a sample of verses the corpus renders: swhonen is a
+  modern/revised edition (Ps 23:3 "hun**ihuisha** nafsi yangu", John 14:6 "njia
+  na kweli na uzima") while the corpus is the classic **Swahili Union Version**
+  (Ps 23:3 "hun**iburudisha** nafsi yangu", John 14:6 "njia, na kweli, na uzima").
+  Pasting swhonen would read as a different Bible than the surrounding library
+  and risk `tests_verse_consistency` failures. So the standing "mine the corpus"
+  rule holds for sw *even though the API now answers* — reachability is not the
+  test; **tradition match is** (`fetch a known verse and diff it against a shipped
+  *.sw.json` before trusting any source, exactly as the ebible-mirror entries
+  say). Corpus-mining + self-render-in-SUV-register (flag unverified) shipped 51
+  chapters with the verse ratchet clean and zero new divergences. Coverage is
+  thin (cheque-book 8% of refs in the corpus crib, ministry 22%, all-of-grace
+  60%), so most scripture ships `self_rendered` — the honest state for a language
+  with no reachable full PD SUV text.
+- **The sw BOOK-CHAPTER band, re-derived n=329: p05 0.777, p50 0.841, p95 0.912,
+  mean 0.841** (2026-09-06, from `word_count` on both sides of every shipped
+  pair). This batch of three landed cheque-book mean 0.814, ministry 0.858,
+  all-of-grace 0.815 — a dedication HYMN (ministry ch01) rode at 1.00, the
+  expected proper-noun/verse-density effect, not a defect. Re-derive rather than
+  copy; it is a dict comprehension over the fixture field.

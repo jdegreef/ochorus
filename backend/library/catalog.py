@@ -485,6 +485,10 @@ BOOKS: list[BookEntry] = [
     BookEntry("way-into-holiest", "The Way Into the Holiest", "frederick-brotherton-meyer",
               "ccel", "meyer/into_holiest",
               subtitle="Expositions of the Epistle to the Hebrews", cover_color="#1971c2"),
+    # Re-imported from Meyer's genuine PD text after shipping as a damaged AI
+    # paraphrase (see migration 0121 for the why). Keeps its designed cover.
+    BookEntry("the-secret-of-guidance", "The Secret of Guidance", "frederick-brotherton-meyer",
+              "ccel", "meyer/guidance"),
     BookEntry("susanna-wesley-clarke", "Susanna Wesley", "susanna-wesley",
               "archive", "susannawesley00clariala",
               subtitle="A Biography by Eliza Clarke", cover_color="#6d4482"),

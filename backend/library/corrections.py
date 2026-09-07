@@ -37,6 +37,26 @@ EXCLUDED_SLUGS: set[str] = {
 }
 
 CORRECTIONS: dict[str, dict] = {
+    "the-secret-of-guidance": {
+        # CCEL's TOC sets these titles in Title Case with a roman-numeral prefix
+        # ("III. The Secret Of Christ's Indwelling"). clean_title's roman strip is
+        # ALL-CAPS-gated (so it keeps Murray's mixed-case "I. Humility"), so the
+        # numerals survive here and the reader — which prints the chapter number
+        # itself — would double them ("3. III. …"). Give the clean titles, also
+        # normalising CCEL's capitalised "Of/To/With". Meyer's period spelling
+        # "Fulness" is kept as-is (not "Fullness").
+        "chapter_titles": {
+            1: "The Secret of Guidance",
+            2: "Where Am I Wrong?",
+            3: "The Secret of Christ’s Indwelling",
+            4: "Fact! Faith! Feeling!",
+            5: "Why Sign the Pledge?",
+            6: "Burdens, and What to Do with Them",
+            7: "How to Bear Sorrow",
+            8: "In the Secret of His Presence",
+            9: "The Fulness of the Spirit",
+        },
+    },
     "life-experience-gospel-labours": {
         # A compilation: the autobiography ("LIFE, &c."), the AME African
         # Supplement, three devotional Acts, the 1793 yellow-fever Narrative, and
@@ -1414,10 +1434,103 @@ BODY_CORRECTIONS: dict[str, dict] = {
         ],
     },
     "the-gospel-of-healing": {
-        # The same digit-zero defect as divine-healing, in the same quotation
-        # of Psalm 103. Found while fixing that book; the two were extracted
-        # from the same kind of scan.
-        "replacements": [("Bless the Lord, 0 my soul", "Bless the Lord, O my soul")],
+        # ch01-04 are A. B. Simpson's numbered scriptural arguments (a scripture
+        # list, practical directions, objections, principles), set with a hanging
+        # indent + gap-separated sub-paragraphs that the PDF import welded into 2-4
+        # blocks of 1,000-2,300 words (the corpus's worst lost-paragraphing). Breaks
+        # restored from the source CMA PDF's own line coordinates: numbered items
+        # out-dent to x0=108, prose sits at x0=90, continuation at 126, and further
+        # paragraph breaks show as a blank-line vertical gap. Existing block boundaries
+        # are left as-is (additive only). The deeper line-level importer fix is deferred
+        # to its own PR; see the english-qa skill.
+        "replacements": [
+            # Pre-existing: digit-zero for the letter O in the Psalm 103 quotation.
+            ("Bless the Lord, 0 my soul", "Bless the Lord, O my soul"),
+        ],
+        "paragraph_breaks": [
+            # chapter 1
+            ('any of the ordinances of the Gospel.', '2. Psa. cv. 37.'),
+            ('too shall see the promise fulfilled.', '3. Job i. and ii. The story of'),
+            ('and humility-he is healed.', '4. Ps. ciii. 2, 3.'),
+            ('sin; and both must be healed together.', '5. II. Chron. xvi. 12, 13.'),
+            ('And Asa slept with his fathers.&quot;', '6. Isaiah liii. 4, 5.'),
+            ('with His stripes we are healed.&quot;', 'This the great Evangelical'),
+            ('Blessed and glorious Burden Bearer.', 'Thus the ancient prophet beholds'),
+            ('of shame and agony, the Dying Lamb.', '7. Matthew viii. 17.'),
+            ('whole.&quot; He is still the same.', 'Now, this was the work of His'),
+            ('as much as on the Lamb of Calvary.', 'It would take entirely too long'),
+            ('this blessed power to die with Him?', '8. John xiv. 12.'),
+            ('in the most unmistakable terms.', '9. Mark xvi. 15-18.'),
+            ('saints? We turn with deep interest to', '10. James v. 14.'),
+            ('they shall be forgiven him.&quot;', 'Now, let us notice first who'),
+            ('the oversight of the flock of Christ.', 'Again, observe to whom this'),
+            ('to continue till the end of the age.', 'Again, notice the time at which'),
+            ('the ends of the world are come.&quot;', 'Again, observe the nature of the'),
+            ('breathing into it His vital energy.', 'Again, observe that this is a'),
+            ('childlike confidence; He will fulfill.', 'And once more, we must not'),
+            ('may be claimed together in His name.', '11. III. John 2.'),
+            ('will be even as our soul prospereth.', '12. Eph. v. 30.'),
+            ('is ours, and it is all sufficient.', '13. Rom. viii. 11.'),
+            ('us we shall experience the same works.', '14. II Cor. iv. 10, 11.'),
+            ('all his gifts, is renewed day by day.', '15. Finally, as a voice that has'),
+            # chapter 2
+            ('of THE WORD OF GOD in this matter.', 'This is the only sure foundation'),
+            ('and rested in the Word of God.', '2. Be fully assured of the WILL'),
+            ('of the WILL OF GOD TO HEAL YOU.', 'Most persons are ready enough to'),
+            ('despot, and an inexorable destiny.', '3. Be careful that you are'),
+            ('that you are yourself RIGHT WITH GOD.', 'If your sickness has come to you'),
+            ('and your body washed with pure water.', 'It is quite vain for us to try'),
+            ('another, that ye may be healed.&quot;', 'Often our sickness is but a'),
+            ('to the soul that seeketh Him.&quot;', 'The writer would illustrate this'),
+            ('and has not been seriously ill since.', '4. Having become fully persuaded'),
+            ('to His word that you have received it.', '5. ACT YOUR FAITH.'),
+            ('it bringeth forth much fruit.&quot;', '6. BE PREPARED FOR TRIALS OF'),
+            ('did, to the faith of the resurrection.', 'But, be the symptoms what they'),
+            ('man is renewed day by day.&quot;', '7. USE YOUR NEW STRENGTH AND'),
+            ('prosper even as our soul prospereth.', 'Nor is it enough for us to use'),
+            ('shall keep it unto life eternal.&quot;', 'Thus let us claim, and keep and'),
+            # chapter 3
+            ('body, we have the same life and power.', 'What made the Apostles more'),
+            ('he do because I go to My Father.&quot;', 'And, indeed, so long as the'),
+            ('of time should be intensely alive.', '2. The same results as are'),
+            ('as well as the spiritual world.', '3. The miracles of Christ and'),
+            ('according to His own will.&quot;', 'There is also a current'),
+            ('&quot;His heart is still the same:-', 'Kinsman, Friend and Elder'),
+            ('to me, Living One of Bethany.&quot;', '4. A common objection is urged'),
+            ('labors, both in India and Africa.', '5. Perhaps no objection is more'),
+            ('strong heart, to bear and overcome.', '6. It is objected that it is'),
+            ('we thus most effectually glorify God.', '7. We are told that there are'),
+            ('personal sketches is most wonderful.', 'There are still cases of'),
+            ('man&quot; be &quot;a liar.&quot;', '8. But we are told, if these'),
+            ('corn that cometh in its season.&quot;', '9. We are asked by some, did not'),
+            ('further, this much at least is clear:', 'First, that God has not'),
+            ('that God has not prescribed medicine.', 'Secondly, He has prescribed'),
+            ('actually commanded and enjoined it.', 'And thirdly, all the provisions'),
+            ('too hard for the Lord.&quot;', '10. We will only refer in'),
+            ('besides leading to other evils.', 'The same objection might be'),
+            ('a living God and a returning Master.', 'Extravagances, perversions, and'),
+            # chapter 4
+            ('and not by mere natural treatment.', 'And again, on the supposition'),
+            ('God and the Gospel of His Redemption.', '2. If the disease be the result'),
+            ('upon, as secure as the Rock of Ages.', '4. But redemption finds its'),
+            ('&quot;Far as the curse is found.&quot;', 'But, again, it is most'),
+            ('through the blood of His Cross.', '5. But there is something higher'),
+            ('Jesus manifested in our mortal flesh.', '6. It follows from this, that it'),
+            ('through Christ that strengtheneth us.', '7. It follows from this that the'),
+            ('the very Temple of the Holy Ghost.', '8. The great agent in bringing'),
+            ('His Spirit that dwelleth in us.', '9. This new life must come, like'),
+            ('OF MERIT OR RESPECT OF PERSONS.', 'Everything that comes through'),
+            ('Let no other trust intrude.&quot;', 'If healing is to be sought by'),
+            ('persons, and within the reach of all.', '10. The simple condition of this'),
+            ('and all the blessings of the Gospel.', '11. Is there any principle'),
+            ('simple and obedient child of God.', '12. The order of God'),
+            ('regulated by certain fixed principles.', 'A. He works from within'),
+            ('life, he can begin to heal the body.', 'B. There is a constant parallel'),
+            ('of the Lord&#x27;s own life in us.', 'C. Hence, also, healing will'),
+            ('great end in all His workings in us.', '13. The Limitations of Healing'),
+            ('are also fixed by certain principles.', 'A. It is not the immortal life.'),
+            ('and the natural life a hundredfold.', 'B. The next limitation has'),
+        ],
     },
     "godliness": {
         # ch01: "may be styled an Antinomian faith" — the sentence needs the

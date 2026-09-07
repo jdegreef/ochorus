@@ -113,6 +113,32 @@ Do not choose the breaks by block length. **Read them off a scan of the edition
 the text is a transcription of** — the compositor's first-line indent is the
 oracle, and it survives into archive.org's OCR coordinates.
 
+**When the book was imported from a PDF, that PDF is the oracle — not a random
+archive.org scan.** `the-gospel-of-healing` (book #3, PR #1633, the corpus's
+worst case: four Simpson chapters welded into 2-4 blocks of 1-2k words) was keyed
+from the CMA PDF, and the archive.org scan is a DIFFERENT edition — its chapters
+run in a different order (Principles before Objections) and would map breaks onto
+the wrong prose. The source PDF is the same edition our text came from, so the
+mapping is exact. Use PyMuPDF (`fitz`) on it and take the per-line left-x0 and
+top-y0. **Two signals, and x0 alone finds only half the breaks:** (a) an x0
+DEPARTURE from the page's modal body x0 — a numbered/hanging-indent item
+out-dents (here to 108, body at 126, full-margin prose at 90); (b) a blank-line
+VERTICAL GAP (~2x the median line gap) at the SAME x0 — the sub-paragraphs and
+lettered sub-points (A./B./C.) inside a long item. Detect per page (margins drift
+recto/verso). Skip a line that starts with a quote (displayed verse) and
+LEAVE existing block boundaries alone — a gap-check tells a real paragraph
+(gap≈2x median) from a spurious mid-paragraph split, and additive-only is the
+rule. Two more traps this book hit, both worth internalising:
+- **A seam applies BOOK-WIDE.** `apply_body_corrections` runs a slug's whole
+  `paragraph_breaks` list against EVERY chapter, so a `(tail, head)` unique
+  within its own chapter can still fire in another. Verify each pair matches
+  once across the WHOLE book, and diff the other chapters' `<p>` counts
+  before/after — extra breaks only LOWER the mean, so the audit never catches a
+  leak.
+- **`grep '"<slug>"'` the WHOLE of `corrections.py` first** (both dicts). This
+  book already had a one-pair `BODY_CORRECTIONS` entry; a fresh second key made
+  the paragraph_breaks silently dead (last key wins) until merged in.
+
 1. **Check upstream first — the defect is usually not ours.** CCEL's own page
    for `the-reformed-pastor` ch04 carries the same 19 blocks with the same word
    counts, so nothing was lost on import and no importer change would help.
