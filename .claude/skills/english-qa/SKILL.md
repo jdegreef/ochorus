@@ -358,6 +358,14 @@ Reported, not fixed
   #1189/#1190 left main red on 2026-08-28. If you re-pin, fetch first and
   re-pin again right before merge; if main is already red on
   `tests_english_audit`, check whether a fix is already open before writing one.
+  **Resolving the conflict: take the UNION of both sides' removals.** When your
+  branch and main each cleared a *different* work's finding, git shows the two
+  entries as an either/or hunk — but each side legitimately deleted its own, so
+  keep NEITHER (drop both blocks), not one. Confirm against the merge-base (both
+  entries were present there) and prove the resolution by running the ratchet:
+  `python manage.py test library.tests_english_audit.EnglishAuditRatchetTests`
+  — it is a `SimpleTestCase` that rescans the fixtures (no DB), so a green run
+  means the resolved baseline matches the corpus work-for-work (PR #1611).
 - **A `replacements` pair containing a straight `"` fails the dead-pair gate,
   even when the fix is correct** (the seven-sermon es cleanup, 2026-09-05).
   `test_no_replacement_pair_is_dead` builds its corpus with `json.dumps`, so a
