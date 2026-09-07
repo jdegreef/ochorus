@@ -1424,6 +1424,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.45
+		},
+		"pt/all-things-for-good": {
+			"ground": "767a664b42a31f560158f39b7714037e7f125852b2b30893774334ce5df37c4b",
+			"style": "press",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85
 		}
 	}
 }
