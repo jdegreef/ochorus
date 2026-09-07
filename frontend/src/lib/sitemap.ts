@@ -97,6 +97,11 @@ export interface SitemapData {
 	scripture: Entry[];
 	/** Quote pages. English only, and only where a person approved them. */
 	quotes: Entry[];
+	/** The Articles hub, each article, and each topic-filtered shelf. English
+	 *  only (original site writing, no translations yet). Its OWN child rather
+	 *  than folded into `pages` so Search Console reports article indexing on its
+	 *  own line — the whole reason the index is split per type. */
+	articles: Entry[];
 	authors: Entry[];
 	books: Entry[];
 	sermons: Entry[];
@@ -120,6 +125,7 @@ export const sections = (): string[] => [
 	'authors',
 	'scripture',
 	'quotes',
+	'articles',
 	'pages'
 ];
 
@@ -139,6 +145,7 @@ export function sectionEntries(data: SitemapData, section: string): Entry[] | nu
 	if (section === 'authors') return data.authors;
 	if (section === 'scripture') return data.scripture;
 	if (section === 'quotes') return data.quotes;
+	if (section === 'articles') return data.articles;
 	if (section === 'pages') return data.pages;
 	return null;
 }
@@ -250,13 +257,19 @@ async function build(): Promise<SitemapData> {
 	// theme has actually earned a page, so the hub is never advertised empty.
 	if (quoteTopics.length) pages.push({ byLocale: new Map([['en', '/quotes/topics/']]) });
 
-	// Articles: original English writing, no translations yet — the index and
-	// each article, English-only. `updated_at` is a trustworthy <lastmod> here
-	// (seed_articles diffs before saving, so auto_now doesn't re-stamp every row
-	// on every deploy), the same reasoning as books/sermons below.
-	if (articles.length) pages.push({ byLocale: new Map([['en', '/articles/']]) });
+	// Articles: original English writing, no translations yet — the hub, each
+	// article, and each topic-filtered shelf. Its OWN sitemap child (see
+	// `articleEntries` below and the `articles` section), not folded into `pages`,
+	// so Search Console reports article indexing separately. `updated_at` is a
+	// trustworthy <lastmod> here (seed_articles diffs before saving, so auto_now
+	// doesn't re-stamp every row on every deploy), the same reasoning as books.
+	const articleEntries: Entry[] = [];
+	if (articles.length) articleEntries.push({ byLocale: new Map([['en', '/articles/']]) });
 	for (const a of articles) {
-		pages.push({ byLocale: new Map([['en', `/articles/${a.slug}/`]]), lastmod: a.updated_at });
+		articleEntries.push({
+			byLocale: new Map([['en', `/articles/${a.slug}/`]]),
+			lastmod: a.updated_at
+		});
 	}
 	// A crawlable shelf per topic (`/articles/<topic>/`) — the same segment as an
 	// article, prerendered by the [slug] entry generator, disambiguated in load.
@@ -265,7 +278,7 @@ async function build(): Promise<SitemapData> {
 	const articleTopics = new Set<string>();
 	for (const a of articles) for (const tc of a.topics ?? []) articleTopics.add(tc.slug);
 	for (const slug of articleTopics) {
-		pages.push({ byLocale: new Map([['en', `/articles/${slug}/`]]) });
+		articleEntries.push({ byLocale: new Map([['en', `/articles/${slug}/`]]) });
 	}
 
 	// Author pages prerender for every locale (the bio falls back to English).
@@ -394,6 +407,7 @@ async function build(): Promise<SitemapData> {
 		sermons,
 		scripture,
 		quotes,
+		articles: articleEntries,
 		chapters: [...byChapter.values()]
 	};
 }
