@@ -333,6 +333,13 @@
 			"art": true,
 			"scrim": 0.9
 		},
+		"es/the-secret-of-guidance": {
+			"ground": "39e8d47739a60600064801e53d1f768b7581cb53ae79e1bb8f34c7b47bd4939e",
+			"style": "devotional",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.6
+		},
 		"es/the-unselfishness-of-god": {
 			"ground": "690fca3ab95f66162b4d1cabb073b7948ef104f6d7f3c77a76da3876ae47b60d",
 			"style": "devotional",

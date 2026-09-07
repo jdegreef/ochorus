@@ -289,6 +289,15 @@ DERIVED_GROUND: dict[str, Ground] = {
     "the-person-and-work-of-the-holy-spirit": Ground(0.41, 0.82, 0.10, 1.00,
         source="854342772afb4da0ac470fdc3b92b253794051942e82bde23a3681388c7bab60",
     ),
+    # The staircase and title fill the middle; the words-free picture is the
+    # luminous band ABOVE the title — the radiant gate, the cross and the sunlit
+    # clouds — from just inside the frame (~0.05) to just above "The Secret of"
+    # (~0.26). The band is very bright (a central light-shaft), so lift 0.5 pulls
+    # the sky down to a teal-gold dusk that carries white type (scrim 0.60); the
+    # top is cloud, so a shallow sky extension.
+    "the-secret-of-guidance": Ground(0.05, 0.26, 0.10, 0.5, sky=0.28,
+        source="a990801a9928f654ed2da0760f6d7c0a64d974e24d72d3ff9485fc05ac4ddfc6",
+    ),
     "the-unselfishness-of-god": Ground(0.44, 0.80, 0.09, 1.15, sky=0.15,
         source="da76ca7d2a047bac2463d0ab58af54f40d987ce0bf5127001d102d553f8f4078",
     ),

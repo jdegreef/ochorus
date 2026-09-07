@@ -46,6 +46,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'the-normal-christian-life': 0.55,
 	'the-person-and-work-of-the-holy-spirit': 0.90,
 	'the-reformed-pastor': 0.70,
+	'the-secret-of-guidance': 0.60,
 	'the-unselfishness-of-god': 0.95,
 	'the-way-to-god': 0.60,
 	'till-he-come': 0.75,
