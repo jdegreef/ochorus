@@ -1,0 +1,11 @@
+{
+  "kind": "book",
+  "slug": "necessity-of-prayer",
+  "language": "es",
+  "job_issue": null,
+  "pull_request": null,
+  "note": [
+    "AI translation via the keyless pipeline path (engine glossary + Reina-Valera). Bounds weaves Scripture into his prose mostly without explicit citations, so those verses were rendered by the model in Reina-Valera wording (self_rendered) and every one should be checked by a native reviewer. This lists explicit citations present in the es text; uncited woven allusions are not enumerated."
+  ],
+  "references": []
+}
