@@ -263,12 +263,26 @@
 			"art": false,
 			"scrim": 1
 		},
+		"es/absolute-surrender": {
+			"ground": "9d2a5f02f7417396f8c0df3757e4077c0927a288053cd7d8302ad52d49a90014",
+			"style": "devotional",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"es/all-of-grace": {
 			"ground": "4c27f99f956f15bd728a240afab3cfd7f3848f91e5b7d2a67399ffe15db61411",
 			"style": "revival",
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7
+		},
+		"es/around-the-wicket-gate": {
+			"ground": "36b4729d59ec703500f371598a62e53074f997baa5f2ad36f150fcef82939db3",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"es/baptism-with-the-holy-spirit": {
 			"ground": "65465dc87da4c2b395458f0dfe6337d4a6e99539bec9063df5e6c3ff7dec8cea",
@@ -311,6 +325,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65
+		},
+		"es/power-through-prayer": {
+			"ground": "27f9b28288e619aaa52e81537bb71dd08111eb23faffa18f16ae6e1a50f287dc",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"es/prayer-the-pulse-of-life": {
 			"ground": "07ff36d5465ef33f20173862088a794684cb65b8315b612c52de71e270d3676a",
