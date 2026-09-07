@@ -2605,6 +2605,30 @@ BODY_CORRECTIONS.setdefault("life-experience-gospel-labours", {}).setdefault("re
     # paragraph in Carey's 2d edition).
     ("censorious photograph,", "censorious paragraph,"),
 ])
+# OCR slips found while translating batch 5 (E. M. Bounds's prayer books).
+BODY_CORRECTIONS.setdefault("essentials-of-prayer", {}).setdefault("replacements", []).extend([
+    # Stray scan page-markers left mid-line inside two hymn stanzas.
+    ("breasts [Pg 104]<br/>", "breasts<br/>"),
+    ("give, [Pg 58]<br/>", "give,<br/>"),
+])
+BODY_CORRECTIONS.setdefault("purpose-in-prayer", {}).setdefault("replacements", []).extend([
+    # "sifts" -> "gifts" (s/g misread): "They are God's gifts."
+    ("God’s sifts", "God’s gifts"),
+    # "abot" -> "about".
+    ("hedge abot a single night", "hedge about a single night"),
+    # "(f" -> "if" (paren for the ascender of i).
+    ("but (f the prayer", "but if the prayer"),
+    # "tune" -> "time": "At another time he puts on record".
+    ("At another tune he puts on record", "At another time he puts on record"),
+    # "theme" -> "them" (Exodus 32:10, "that I may destroy them").
+    ("that I may destroy theme—But Moses", "that I may destroy them—But Moses"),
+    # "St. Patti" -> "St. Paul".
+    ("epistle of St. Patti is", "epistle of St. Paul is"),
+    # Stray leading periods from OCR joins.
+    ("much .longer than we do", "much longer than we do"),
+    ("for his .ministry, that", "for his ministry, that"),
+    ("praying warmed into. life a new life", "praying warmed into life a new life"),
+])
 
 
 _LG_DOUBLED_VERB: dict[str, list[tuple[str, str]]] = {
