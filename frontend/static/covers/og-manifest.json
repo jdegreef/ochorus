@@ -326,6 +326,13 @@
 			"art": true,
 			"scrim": 0.55
 		},
+		"es/how-to-succeed-in-the-christian-life": {
+			"ground": "ec3ec815f469a352b96df3ba6405a949b2e10e2d6eb536a6a958dbe6ea01c200",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"es/humility-2": {
 			"ground": "d6046be6ce4cb2267982a0dc9b4bd8de643b29595e2d5707d62de5e4cef767ba",
 			"style": "devotional",
@@ -339,6 +346,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65
+		},
+		"es/life-experience-gospel-labours": {
+			"ground": "8d5a2c6559dddb96cc255580c15a10988a008c158937726e6755e045c11adb3e",
+			"style": "enlightenment",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"es/on-loving-god": {
 			"ground": "952574f091e116f04969447e250ac8a577f3b2ec45588363b82dc118008fdadf",
@@ -1528,7 +1542,7 @@
 			"style": "house",
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.8
 		},
 		"way-into-holiest": {
 			"ground": "a322f7e2c337cadaf64cde66de6c269faa24bc5822b796149fe5578d2348676d",
