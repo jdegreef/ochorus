@@ -1,14 +1,15 @@
 <script lang="ts">
 	import type { ArticleSummary } from '$lib/library-public';
-	import ArticleCard from '$lib/components/ArticleCard.svelte';
 	import { SITE_URL } from '$lib/config';
-	import { jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
+	import { breadcrumbLd, hreflangFor } from '$lib/seo';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
+	import ArticleShelf from '$lib/components/ArticleShelf.svelte';
+	import { articleHasTopic, articleCollectionLd } from '$lib/articleTopics';
 	import { i18n } from '$lib/i18n.svelte';
 	import { page } from '$app/stores';
-	import { urlFilters } from '$lib/urlFilters.svelte';
+	import { goto } from '$app/navigation';
 
 	// English literals, as on /quotes and /scripture: this index is not localized
 	// because what it lists is not (articles are English-only for now).
@@ -17,36 +18,18 @@
 	const loadError = $derived<boolean>(data.loadError);
 	const t = i18n.t;
 
-	// Topic-filter chips, kept in the URL like the books shelf (shareable, and
-	// honouring Back/Forward) — the same `urlFilters` engine, not a private fork.
-	// A prerendered page must not read the query string during setup; urlFilters
-	// handles that, so the bare `/articles/` still serves every card.
-	const filters = urlFilters({
-		defaults: { topic: '' },
-		url: () => $page.url
+	// The topic filter is now a real path — the chips in <ArticleShelf> link to
+	// `/articles/<slug>/`. Old shared links carrying the retired `?topic=<slug>`
+	// query are forwarded to the clean URL so they don't silently show "All".
+	// An $effect only runs in the browser, so this never touches the query string
+	// during prerender (which SvelteKit forbids, and which the bare /articles must
+	// not depend on anyway).
+	$effect(() => {
+		const wanted = $page.url.searchParams.get('topic');
+		if (!wanted) return;
+		const known = articles.some((a) => articleHasTopic(a, wanted));
+		goto(known ? `/articles/${wanted}/` : '/articles/', { replaceState: true });
 	});
-
-	// Distinct topics present on the shelf, alphabetical, each with a count for
-	// its chip badge. `?? []` guards a lagging API that predates the `topics`
-	// field (version skew).
-	type TopicTab = { slug: string; title: string; count: number };
-	const topicTabs = $derived.by<TopicTab[]>(() => {
-		const bySlug = new Map<string, TopicTab>();
-		for (const a of articles) {
-			for (const tc of a.topics ?? []) {
-				const seen = bySlug.get(tc.slug);
-				if (seen) seen.count += 1;
-				else bySlug.set(tc.slug, { slug: tc.slug, title: tc.title, count: 1 });
-			}
-		}
-		return [...bySlug.values()].sort((x, y) => x.title.localeCompare(y.title));
-	});
-
-	const shown = $derived(
-		filters.values.topic
-			? articles.filter((a) => (a.topics ?? []).some((tc) => tc.slug === filters.values.topic))
-			: articles
-	);
 
 	const path = '/articles/';
 	const canonical = `${SITE_URL}${path}`;
@@ -65,20 +48,7 @@
 	const crumbsLd = breadcrumbLd(crumbs);
 	// A CollectionPage listing each article, so the set reads as one entity to a
 	// crawler rather than a handful of unrelated URLs.
-	const listLd = $derived(
-		jsonLd({
-			'@context': 'https://schema.org',
-			'@type': 'CollectionPage',
-			name: 'Articles',
-			description,
-			url: canonical,
-			hasPart: articles.map((a) => ({
-				'@type': 'Article',
-				headline: a.h1,
-				url: `${SITE_URL}/articles/${a.slug}/`
-			}))
-		})
-	);
+	const listLd = $derived(articleCollectionLd('Articles', description, canonical, articles));
 </script>
 
 <Seo {title} {description} {canonical} {hreflang} structuredData={[crumbsLd, listLd]} />
@@ -96,43 +66,7 @@
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
 	{:else if articles.length}
-		{#if topicTabs.length > 1}
-			<div class="filter-row mb-6" role="group" aria-label="Filter articles by topic">
-				<button
-					type="button"
-					class="chip"
-					class:active={filters.values.topic === ''}
-					aria-pressed={filters.values.topic === ''}
-					onclick={() => (filters.values.topic = '')}
-				>
-					All <span class="count">{articles.length}</span>
-				</button>
-				{#each topicTabs as tab (tab.slug)}
-					<button
-						type="button"
-						class="chip"
-						class:active={filters.values.topic === tab.slug}
-						aria-pressed={filters.values.topic === tab.slug}
-						onclick={() =>
-							(filters.values.topic = filters.values.topic === tab.slug ? '' : tab.slug)}
-					>
-						{tab.title} <span class="count">{tab.count}</span>
-					</button>
-				{/each}
-			</div>
-		{/if}
-
-		{#if shown.length}
-			<div class="flex flex-col gap-3">
-				{#each shown as a (a.slug)}
-					<ArticleCard article={a} />
-				{/each}
-			</div>
-		{:else}
-			<!-- Reachable only via a stale/hand-edited ?topic= (a live chip always
-			     has ≥1 article) — show a way back rather than a blank page. -->
-			<EmptyState message="No articles under that topic." />
-		{/if}
+		<ArticleShelf {articles} activeTopic="" />
 	{:else}
 		<EmptyState message="No articles yet — check back soon." />
 	{/if}

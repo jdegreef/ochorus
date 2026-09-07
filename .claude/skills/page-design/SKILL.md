@@ -176,7 +176,11 @@ lists content types, **in the same order** everywhere:
 - [ ] footer **Explore** group (same file)
 - [ ] `COMMANDS` in `lib/components/CommandPalette.svelte`
 - [ ] `SearchHit` kinds in `lib/library-public.ts` + the search page's facet rail
-- [ ] `lib/sitemap.ts` static pages (nav order) and a sitemap section
+- [ ] `lib/sitemap.ts` static pages (nav order) and a sitemap section — for a
+      prerendered URL *family* (e.g. a topic-filtered shelf), the route's
+      `entries()` and the sitemap section must advertise the **same** set, or
+      `prerenderCoverage.test.ts` fails on the URL that was advertised but never
+      built
 - [ ] `CatalogLanguageNudge`'s `kind` union
 - [ ] a `/og/<section>.png` card for pages without their own image
 - [ ] the guard lists in `lib/pageShell.test.ts` (`BROWSE_PAGES` / `LEAF_PAGES`)
@@ -205,9 +209,13 @@ absent from the palette and from search.
 ## Guards to extend when a page ships
 
 Add a new route to `lib/pageShell.test.ts` — `BROWSE_PAGES` (shell + PageHeader
-+ the `page-col px-5 py-10` padding) or `LEAF_PAGES` (shell only). **Five
-source-text guards now scan every `.svelte` (admin exempt) — EXTEND them, don't
-re-add:**
++ the `page-col px-5 py-10` padding) or `LEAF_PAGES` (shell only). **When a page
+delegates its shell to a component** (as `books` points at `BooksShelf.svelte`,
+and `articles` at `ArticleDetail`/`ArticleTopicShelf`), point the guard entry at
+the **component** file, not the thin `+page.svelte` — the guard greps that file
+for `.page-col`/`<PageHeader>`, so a router that only `{#if}`-switches between
+components carries neither. **Five source-text guards now scan every `.svelte`
+(admin exempt) — EXTEND them, don't re-add:**
 
 - `pageShell.test.ts` — `.page-col`, `<PageHeader>` on browse, the `py-10` shell
   padding, and no `mx-auto max-w-{2xl…7xl}` shell.
