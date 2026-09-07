@@ -392,6 +392,16 @@ that matter:
   it. Ship the complete list every time.
 - One file per translation, like the content fixture — parallel jobs never
   collide, and a note can be corrected without touching the text.
+- **A work that cites no scripture still ships a notes file — `references: []`.**
+  The coverage gate (`test_every_new_translation_ships_its_notes`) is satisfied by
+  the FILE existing at the right path with a valid `references` list; an empty
+  list is valid. But before you write one, CONFIRM the English source cites none
+  either — count parenthetical `(Book C:V)` citations in both editions (the
+  `verse_consistency` PAIR form; e.g. `grep -c` or `verse_consistency.scan()` over
+  the body). Zero in the EN too means the work's own style, and `[]` is honest;
+  zero in a translation whose EN has some means the translation DROPPED its
+  citations — a real defect to fix, not paper over with an empty file.
+  (the-secret-of-guidance.es, #1737: 0 in both en and es.)
 
 Write it as you go rather than reconstructing it at the end: the moment you
 decide a verse cannot be mined is the moment you know it, and it is exactly the
