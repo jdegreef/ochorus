@@ -109,10 +109,13 @@ export const AUTHOR_STYLE: Record<string, CoverStyleId> = {
 	// Carmichael wrote manuals for the closet, not addresses for the hall, and
 	// they hold more of this library than anyone — Murray alone has seven
 	// editions — so this is where one face for the whole era would be felt most.
+	// Bounds joins them: born 1835 his era default is `revival`, a display face
+	// for the hall, but his whole shelf is prayer manuals for the closet.
 	'andrew-murray': 'devotional',
 	'frederick-brotherton-meyer': 'devotional',
 	'hannah-whitall-smith': 'devotional',
-	'amy-carmichael': 'devotional'
+	'amy-carmichael': 'devotional',
+	'e-m-bounds': 'devotional'
 };
 
 /**

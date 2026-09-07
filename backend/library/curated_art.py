@@ -264,6 +264,41 @@ CURATED: dict[str, Artwork] = {
         "wholly given up, taken up. Van Gogh again, one year on, for the book of "
         "Murray's that asks for everything.",
     ),
+    # ── Batch 4 · E. M. Bounds's prayer books ──────────────────────────────
+    # Bounds wrote nothing but prayer — six plate-covered works, one subject. Six
+    # DIFFERENT Western landscape painters, one facet of prayer each, so the shelf
+    # reads as one author without six interchangeable "praying interior" scenes.
+    "power-through-prayer": Artwork(
+        "met", 437683, "Alfred Sisley", "Sahurs Meadows in Morning Sun", "1894",
+        "Morning light flooding a meadow — Bounds' thesis is that a man's power "
+        "is not worked up but received at first light, in the closet before dawn.",
+    ),
+    "purpose-in-prayer": Artwork(
+        "met", 437586, "Salomon van Ruysdael", "A Country Road", "1648",
+        "A road set toward somewhere out of frame — prayer with an aim, the book's "
+        "argument that asking is meant to arrive.",
+    ),
+    "necessity-of-prayer": Artwork(
+        "met", 439344, "Johan Christian Dahl", "Two Men before a Waterfall at Sunset", "1823",
+        "Water that must fall — a source that does not choose whether to give. "
+        "Prayer as the thing without which nothing else runs.",
+        focus=0.32,
+    ),
+    "essentials-of-prayer": Artwork(
+        "met", 435979, "Camille Corot", "A Pond in Picardy", "ca. 1867",
+        "Corot pared a landscape to a still pond and a few trees — the essential "
+        "and nothing spare, which is the book on the one thing prayer cannot omit.",
+    ),
+    "reality-of-prayer": Artwork(
+        "met", 438624, "Joseph Bidauld", "Lake Fucino and the Abruzzi Mountains", "ca. 1789",
+        "Solid mountains held in still water — prayer as substance and not "
+        "sentiment, as real as the rock it is reflected in.",
+    ),
+    "prayer-and-praying-men": Artwork(
+        "met", 436831, "Philips Koninck", "An Extensive Wooded Landscape", "1670s",
+        "A vast country under an enormous sky — the wide world the praying men of "
+        "the book carried, seen at the scale their intercession reached for.",
+    ),
 }
 
 
