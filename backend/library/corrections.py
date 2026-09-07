@@ -619,6 +619,42 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("pray sometimes none times a-day", "pray sometimes nine times a-day"),
             # 2 Cor 7:5: "without were fightings" — "sightings" -> "fightings".
             ("what sightings may be without", "what fightings may be without"),
+            # More OCR slips found while translating the sermon to Portuguese
+            # (batch 1). Each is a one- or two-letter mechanical error that
+            # breaks the grammar; the correct reading is forced by the sentence
+            # and confirmed against the canonical text (biblebb.com/gw058, the
+            # Glasgow 1741 sermon).
+            ("unbelief of you heart", "unbelief of your heart"),
+            ("otherwise believer in Christ", "otherwise believe in Christ"),
+            # "could not bear the sight of Christ ... how will they [bear] the
+            # sight of him" — a sight cannot be heard.
+            ("they hear the sight of him", "they bear the sight of him"),
+            # Comparison "such a man as Caesar"; the printed tradition (biblebb
+            # included) carries the "a Caesar" slip, but the grammar is decisive.
+            ("such a man a Caesar", "such a man as Caesar"),
+            # NOT corrected, on purpose (documented so a later pass doesn't
+            # "fix" them): "I am not talking of a matter of great importance",
+            # "say the psalmist", and "say of his disciples" all stand in the
+            # canonical text — the received wording, not extraction damage. The
+            # Portuguese edition renders them faithfully.
+        ],
+    },
+    "sinners-in-the-hands-of-an-angry-god": {
+        # OCR slip found while translating the sermon to Portuguese (batch 1):
+        # "generality" (a noun) cannot fill the adverbial slot before "persons
+        # ... are passed over"; the canonical Edwards text reads "generally".
+        "replacements": [
+            ("how generality persons", "how generally persons"),
+        ],
+    },
+    "compel-them-to-come-in": {
+        # Typography slip found while translating the sermon to Portuguese
+        # (batch 1): the quotation that opens the Hezekiah citation (Isa 38:1,
+        # "Set thine house in order...") begins with a CLOSING curly quote. The
+        # paragraph's marks don't balance otherwise (14 “ vs 16 ”), and every
+        # other quotation in the sermon opens correctly.
+        "replacements": [
+            ("invitation is, ”", "invitation is, “"),
         ],
     },
     "pauls-praise-of-christian-love": {
