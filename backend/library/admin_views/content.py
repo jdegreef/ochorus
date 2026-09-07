@@ -15,6 +15,7 @@ from rest_framework.views import APIView
 
 from accounts.permissions import IsAdminEmail
 
+from ..languages import known_codes
 from ..models import (
     Author,
     AuthorTranslation,
@@ -532,9 +533,18 @@ class AdminCoverageView(APIView):
 
     def get(self, request):
         codes = self._language_codes()
+        # A column is only a translation target when it's a registered language
+        # (a Book/Sermon can carry a language code the translation registry never
+        # adopted — e.g. an early bulk import). `queueable` mirrors exactly what
+        # the translation-jobs POST accepts (`language != "en" and in known_codes`),
+        # so the admin UI only offers the queue where a job would actually be filed.
+        registry = known_codes()
         return Response(
             {
-                "languages": [_language_entry(c) for c in codes],
+                "languages": [
+                    {**_language_entry(c), "queueable": c != "en" and c in registry}
+                    for c in codes
+                ],
                 "books": self._book_rows(),
                 "sermons": self._sermon_rows(),
                 "plans": self._plan_rows(),

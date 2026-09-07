@@ -7,6 +7,7 @@
 		getAdminTranslationJobs,
 		createAdminTranslationJob,
 		type AdminCoverageRow,
+		type AdminCoverageLanguage,
 		type AdminTranslationJob,
 		type TranslationJobType
 	} from '$lib/library-admin';
@@ -61,7 +62,8 @@
 	// Each missing cell (a work not yet in a language) becomes a click target that
 	// files a translation job — the same GitHub-issue queue the per-language pages
 	// use (POST /api/admin/translation-jobs/). A cell with an open job shows its
-	// state instead of the button and links to the issue.
+	// state instead of the button and links to the issue. A row / column header can
+	// also queue every gap along it at once, behind a count confirmation.
 	//
 	// The matrix tab maps 1:1 onto a job type (plural → singular).
 	const jobType = $derived<TranslationJobType>(
@@ -72,8 +74,22 @@
 	// null = the jobs GET failed (unknown): keep the buttons and let POST surface
 	// the real error; false = the queue isn't configured (no token) → no buttons.
 	let jobsConfigured = $state<boolean | null>(null);
-	let queueing = $state<string | null>(null); // "type:slug:lang" while POSTing
+	let queueing = $state<string | null>(null); // "type:slug:lang" while POSTing one
 	let queueError = $state<string | null>(null);
+	// A bulk enqueue awaiting the user's confirmation (the flooding guard): filing
+	// N jobs means N worker sessions, so a row/column press asks before it fires.
+	// The job type is captured here, at stage time, so switching tabs while the
+	// confirmation is up can't file the targets under the new tab's type.
+	let pendingBulk = $state<{
+		label: string;
+		type: TranslationJobType;
+		targets: { slug: string; lang: string }[];
+	} | null>(null);
+	// Live progress while a confirmed bulk runs (jobs are filed one at a time).
+	let bulkProgress = $state<{ done: number; total: number } | null>(null);
+	// Any queue POST in flight — disables every enqueue control so two runs can't
+	// overlap and trip the API's per-caller throttle.
+	const busy = $derived(queueing !== null || bulkProgress !== null);
 
 	async function loadJobs() {
 		try {
@@ -92,20 +108,72 @@
 		new Map(jobs.map((j) => [`${j.type}:${j.slug}:${j.language}`, j]))
 	);
 	const jobFor = (slug: string, lang: string) => jobIndex.get(jobKey(slug, lang));
+	// A cell is a queueable gap when the language is a translation target, the work
+	// has no row in it, and no job is already open. Shared by the buttons, the bulk
+	// counts, and the bulk target lists — so a non-queueable column (a stray content
+	// language) never offers a button that the POST would only reject.
+	const isGap = (l: AdminCoverageLanguage, r: AdminCoverageRow) =>
+		l.queueable && !r.cells[l.code] && !jobFor(r.slug, l.code);
+	// Missing-and-unqueued count per language column, for the header's "queue all".
+	const colGaps = $derived(
+		langs.map((l) => rows.reduce((n, r) => n + (isGap(l, r) ? 1 : 0), 0))
+	);
+
+	// File one job; returns null on success or a message to show. Type is passed in
+	// (not read from jobType) so a bulk run is unaffected by a mid-run tab switch.
+	async function enqueueOne(type: TranslationJobType, slug: string, lang: string): Promise<string | null> {
+		try {
+			const res = await createAdminTranslationJob({ type, slug, language: lang });
+			if (!jobs.some((j) => j.url === res.job.url)) jobs = [...jobs, res.job];
+			return null;
+		} catch (e) {
+			const body = e instanceof ApiError ? (e.body as { detail?: string } | null) : null;
+			return body?.detail ?? (e instanceof Error ? e.message : 'failed');
+		}
+	}
 
 	async function queue(slug: string, lang: string) {
 		queueError = null;
 		queueing = jobKey(slug, lang);
-		try {
-			const res = await createAdminTranslationJob({ type: jobType, slug, language: lang });
-			if (!jobs.some((j) => j.url === res.job.url)) jobs = [...jobs, res.job];
-		} catch (e) {
-			const body = e instanceof ApiError ? (e.body as { detail?: string } | null) : null;
-			queueError =
-				body?.detail ??
-				(e instanceof Error ? e.message : "Couldn't queue the translation — try again.");
-		} finally {
-			queueing = null;
+		const err = await enqueueOne(jobType, slug, lang);
+		if (err) queueError = err === 'failed' ? "Couldn't queue the translation — try again." : err;
+		queueing = null;
+	}
+
+	// Stage a row (a work into all its missing languages) or a column (all missing
+	// works into a language) for confirmation. No-op when there's nothing to queue.
+	function bulkRow(r: AdminCoverageRow) {
+		const targets = langs.filter((l) => isGap(l, r)).map((l) => ({ slug: r.slug, lang: l.code }));
+		if (targets.length)
+			pendingBulk = { label: `“${r.title}” into every missing language`, type: jobType, targets };
+	}
+	function bulkCol(l: AdminCoverageLanguage) {
+		const targets = rows.filter((r) => isGap(l, r)).map((r) => ({ slug: r.slug, lang: l.code }));
+		if (targets.length)
+			pendingBulk = { label: `every missing work into ${l.name}`, type: jobType, targets };
+	}
+
+	async function runBulk() {
+		if (!pendingBulk) return;
+		const { targets, type } = pendingBulk; // type pinned at stage time
+		pendingBulk = null;
+		queueError = null;
+		bulkProgress = { done: 0, total: targets.length };
+		let failed = 0;
+		let firstErr: string | null = null;
+		for (const t of targets) {
+			const err = await enqueueOne(type, t.slug, t.lang);
+			if (err) {
+				failed++;
+				firstErr ??= err;
+			}
+			bulkProgress = { done: bulkProgress.done + 1, total: targets.length };
+		}
+		bulkProgress = null;
+		if (failed) {
+			// Don't surface the generic 'failed' sentinel — only a real backend detail.
+			const detail = firstErr && firstErr !== 'failed' ? ` — ${firstErr}` : '';
+			queueError = `Queued ${targets.length - failed} of ${targets.length}; ${failed} failed${detail}.`;
 		}
 	}
 </script>
@@ -148,9 +216,26 @@
 				{#if jobsConfigured !== false}
 					<span><span class="text-accent">◷</span> queued</span>
 					<span><span class="text-warning">◐</span> translating</span>
-					<span class="text-muted">— click a gap to queue a translation</span>
+					<span class="text-muted">— click a gap, or a row / column “+N”, to queue</span>
 				{/if}
 			</div>
+
+			{#if pendingBulk}
+				<div class="mb-3 flex flex-wrap items-center gap-3 rounded-card border border-accent-soft-border bg-accent-soft px-4 py-2.5 text-small text-accent" role="alertdialog">
+					<span>
+						Queue {pendingBulk.targets.length} translation{pendingBulk.targets.length === 1 ? '' : 's'}
+						— {pendingBulk.label}? Each files a job a worker processes one at a time.
+					</span>
+					<span class="ml-auto flex gap-2">
+						<button class="btn btn-sm btn-primary" onclick={runBulk}>Queue all</button>
+						<button class="btn btn-sm btn-ghost" onclick={() => (pendingBulk = null)}>Cancel</button>
+					</span>
+				</div>
+			{:else if bulkProgress}
+				<div class="mb-3 rounded-card border border-border bg-surface-2 px-4 py-2 text-small text-muted" role="status">
+					Queueing… {bulkProgress.done}/{bulkProgress.total}
+				</div>
+			{/if}
 
 			{#if queueError}
 				<div class="mb-3 rounded-card border border-warning/40 bg-warning/5 px-4 py-2 text-small text-warning" role="alert">
@@ -163,19 +248,40 @@
 					<thead>
 						<tr class="border-b border-border text-small text-muted">
 							<th class="sticky left-0 z-10 bg-surface px-4 py-3 text-left font-semibold">Work</th>
-							{#each langs as l (l.code)}
-								<th class="px-3 py-3 text-center font-semibold" title={l.name}>
+							{#each langs as l, i (l.code)}
+								<th class="px-3 py-3 text-center font-semibold align-top" title={l.name}>
 									<a href="/admin/languages/{l.code}" class="text-muted hover:text-accent">{l.code}</a>
+									{#if jobsConfigured !== false && l.queueable && colGaps[i] > 0}
+										<button
+											type="button"
+											class="mt-0.5 block w-full text-micro font-semibold text-muted transition-colors hover:text-accent disabled:opacity-40 disabled:hover:text-muted"
+											disabled={busy}
+											title={`Queue all ${colGaps[i]} missing ${l.name} translations`}
+											aria-label={`Queue all ${colGaps[i]} missing ${l.name} translations`}
+											onclick={() => bulkCol(l)}
+										>+{colGaps[i]}</button>
+									{/if}
 								</th>
 							{/each}
 						</tr>
 					</thead>
 					<tbody>
 						{#each rows as r (r.slug)}
-							<tr class="border-b border-border last:border-0 hover:bg-surface-2">
+							{@const rowGaps = langs.reduce((n, l) => n + (isGap(l, r) ? 1 : 0), 0)}
+							<tr class="group/row border-b border-border last:border-0 hover:bg-surface-2">
 								<td class="sticky left-0 z-10 bg-surface px-4 py-2.5">
 									<a href={rowHref(r.slug)} class="block max-w-[16rem] truncate font-medium text-text hover:text-accent">{r.title}</a>
 									{#if r.author}<span class="block max-w-[16rem] truncate text-small text-muted">{r.author}</span>{/if}
+									{#if jobsConfigured !== false && rowGaps > 0}
+										<button
+											type="button"
+											class="mt-1 text-micro font-semibold text-muted opacity-0 transition group-hover/row:opacity-100 hover:text-accent focus:opacity-100 disabled:opacity-40"
+											disabled={busy}
+											title={`Queue all ${rowGaps} missing translations of ${r.title}`}
+											aria-label={`Queue all ${rowGaps} missing translations of ${r.title}`}
+											onclick={() => bulkRow(r)}
+										>Queue all {rowGaps}</button>
+									{/if}
 								</td>
 								{#each langs as l (l.code)}
 									{@const v = r.cells[l.code]}
@@ -196,22 +302,24 @@
 											>
 												{job.state === 'in_progress' ? '◐' : '◷'}
 											</a>
-										{:else if jobsConfigured === false}
+										{:else if jobsConfigured === false || !l.queueable}
 											<span
 												class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small text-muted"
-												title="Set GITHUB_TRANSLATION_TOKEN on the API to enable the queue"
+												title={jobsConfigured === false
+													? 'Set GITHUB_TRANSLATION_TOKEN on the API to enable the queue'
+													: `${l.name} isn't a translation target — nothing to queue`}
 											>·</span>
 										{:else}
-											{@const busy = queueing === jobKey(r.slug, l.code)}
+											{@const spot = queueing === jobKey(r.slug, l.code)}
 											<button
 												type="button"
 												class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small text-muted transition-colors hover:bg-accent-soft hover:text-accent disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-muted"
-												disabled={queueing !== null}
+												disabled={busy}
 												title={`Queue a ${l.name} translation of ${r.title}`}
 												aria-label={`Queue a ${l.name} translation of ${r.title}`}
 												onclick={() => queue(r.slug, l.code)}
 											>
-												{#if busy}
+												{#if spot}
 													<span>…</span>
 												{:else}
 													<span class="group-hover:hidden">·</span>

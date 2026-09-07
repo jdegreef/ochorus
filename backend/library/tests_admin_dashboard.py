@@ -223,6 +223,9 @@ class AdminCoverageTests(TestCase):
         Book.objects.create(author=author, slug="abide", language="en", title="Abide", sort_order=1)
         Sermon.objects.create(author=author, slug="grace", language="en", title="Grace", body_html="<p>g</p>")
         Plan.objects.create(slug="p1", language="es", title="Plan Uno")
+        # A content row in a code the translation registry never adopted: it is a
+        # matrix column, but the queue can't accept it (see test_marks_queueable).
+        Book.objects.create(author=author, slug="humility", language="zz", title="Humility zz", sort_order=0)
 
     @override_settings(DEBUG=True)
     def test_matrix_shape_and_cells(self):
@@ -232,7 +235,7 @@ class AdminCoverageTests(TestCase):
         # Columns are the union of all content languages, English first.
         codes = [lang["code"] for lang in res.data["languages"]]
         self.assertEqual(codes[0], "en")
-        self.assertEqual(set(codes), {"en", "sw", "es"})
+        self.assertEqual(set(codes), {"en", "sw", "es", "zz"})
 
         books = {b["slug"]: b for b in res.data["books"]}
         # Canonical title comes from the English row; cells carry source_type.
@@ -245,6 +248,17 @@ class AdminCoverageTests(TestCase):
 
         self.assertEqual(res.data["sermons"][0]["cells"], {"en": "present"})
         self.assertEqual(res.data["plans"][0]["cells"], {"es": "present"})
+
+    @override_settings(DEBUG=True)
+    def test_marks_queueable(self):
+        # queueable == the translation-jobs POST would accept the language:
+        # a registered non-English target, never English, never a stray code.
+        res = self.client.get("/api/admin/coverage/")
+        queueable = {lang["code"]: lang["queueable"] for lang in res.data["languages"]}
+        self.assertFalse(queueable["en"])  # the source language
+        self.assertTrue(queueable["sw"])  # registered target
+        self.assertTrue(queueable["es"])  # registered target
+        self.assertFalse(queueable["zz"])  # content exists, but not a known code
 
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
     def test_requires_admin(self):
