@@ -2578,6 +2578,26 @@ BODY_CORRECTIONS.setdefault("true-vine", {}).setdefault("replacements", []).exte
     ("The branch has no cure;", "The branch has no care;"),
 ])
 
+# OCR/extraction slips found while translating batch 3 to Spanish. All are
+# unambiguous letter/dittography damage with a single reading.
+BODY_CORRECTIONS.setdefault("separation-and-service", {}).setdefault("replacements", []).extend([
+    # "know th Master's" -> "know the Master's".
+    ("know th Master's", "know the Master's"),
+])
+BODY_CORRECTIONS.setdefault("the-fourfold-gospel", {}).setdefault("replacements", []).extend([
+    # "lie will lead" -> "He will lead" (l/H, ie/e misread).
+    ("and lie will lead you", "and He will lead you"),
+    # doubled word.
+    ("crowd until until they", "crowd until they"),
+    # dittography: "material idea of the material idea of the millennial".
+    ("material idea of the material idea of the millennial",
+     "material idea of the millennial"),
+])
+BODY_CORRECTIONS.setdefault("a-short-and-easy-method-of-prayer", {}).setdefault("replacements", []).extend([
+    # section heading lowercased "god" -> "God".
+    ("Mysteries—god Gives Them", "Mysteries—God Gives Them"),
+])
+
 
 _LG_DOUBLED_VERB: dict[str, list[tuple[str, str]]] = {
     "all-of-grace": [
