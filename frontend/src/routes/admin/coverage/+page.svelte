@@ -254,7 +254,7 @@
 									{#if jobsConfigured !== false && l.queueable && colGaps[i] > 0}
 										<button
 											type="button"
-											class="mt-0.5 block w-full text-[0.65rem] font-semibold text-muted transition-colors hover:text-accent disabled:opacity-40 disabled:hover:text-muted"
+											class="mt-0.5 block w-full text-micro font-semibold text-muted transition-colors hover:text-accent disabled:opacity-40 disabled:hover:text-muted"
 											disabled={busy}
 											title={`Queue all ${colGaps[i]} missing ${l.name} translations`}
 											aria-label={`Queue all ${colGaps[i]} missing ${l.name} translations`}
@@ -275,7 +275,7 @@
 									{#if jobsConfigured !== false && rowGaps > 0}
 										<button
 											type="button"
-											class="mt-1 text-[0.7rem] font-semibold text-muted opacity-0 transition group-hover/row:opacity-100 hover:text-accent focus:opacity-100 disabled:opacity-40"
+											class="mt-1 text-micro font-semibold text-muted opacity-0 transition group-hover/row:opacity-100 hover:text-accent focus:opacity-100 disabled:opacity-40"
 											disabled={busy}
 											title={`Queue all ${rowGaps} missing translations of ${r.title}`}
 											aria-label={`Queue all ${rowGaps} missing translations of ${r.title}`}
