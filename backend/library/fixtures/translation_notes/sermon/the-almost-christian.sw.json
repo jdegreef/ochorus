@@ -1,0 +1,13 @@
+{
+ "kind": "sermon",
+ "slug": "the-almost-christian",
+ "language": "sw",
+ "job_issue": 1728,
+ "references": [
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 8
+  }
+ ]
+}

@@ -1,0 +1,33 @@
+{
+ "kind": "sermon",
+ "slug": "fall-and-recovery-of-man",
+ "language": "sw",
+ "job_issue": 1729,
+ "references": [
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Daniel",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Mark",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Song of Songs",
+   "status": "self_rendered",
+   "block_index": 12
+  }
+ ]
+}
