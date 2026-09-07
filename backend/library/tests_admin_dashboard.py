@@ -490,6 +490,9 @@ class AdminAuditMultiLanguageTests(TestCase):
         # ch1 of en/es/pt each trips mid_sentence_splits.
         self.assertEqual(res.data["languages"], ["en", "es", "pt"])
         self.assertEqual(res.data["language"], "")
+        # Registry-sourced display names ride along for the picker.
+        self.assertEqual(res.data["language_names"]["en"], "English")
+        self.assertEqual(set(res.data["language_names"]), {"en", "es", "pt"})
 
     @override_settings(DEBUG=True)
     def test_language_filter_narrows_findings_to_one_edition(self):

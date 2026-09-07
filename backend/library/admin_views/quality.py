@@ -919,8 +919,12 @@ class AdminAuditView(APIView):
 
         # The languages that have any finding, computed on the FULL result so the
         # picker is the same whichever language is selected — filtering to one
-        # edition must not empty the menu you'd switch back through.
+        # edition must not empty the menu you'd switch back through. Names come
+        # from the language registry (the runtime source), like the review queue,
+        # so an edition an admin added without a frontend deploy still reads as
+        # itself rather than a bare code.
         languages = self._languages(raw, dup_raw, integrity_raw)
+        language_names = {code: language_entry(code)["name"] for code in languages}
 
         # Filter to one edition BEFORE capping, so a capped check (e.g. 344
         # mid-sentence splits across editions) reports its true per-language
@@ -943,18 +947,15 @@ class AdminAuditView(APIView):
                 "quality": quality,
                 "integrity": integrity,
                 "languages": languages,
+                "language_names": language_names,
                 "language": language,
             }
         )
 
     @staticmethod
     def _languages(raw: dict, dup_raw: list, integrity_raw: dict) -> list[str]:
-        langs: set[str] = set()
-        for group in (raw.values(), integrity_raw.values()):
-            for findings in group:
-                langs.update(f["language"] for f in findings)
-        langs.update(f["language"] for f in dup_raw)
-        return sorted(langs)
+        lists = (*raw.values(), *integrity_raw.values(), dup_raw)
+        return sorted({f["language"] for lst in lists for f in lst})
 
     @staticmethod
     def _dismissed() -> set:

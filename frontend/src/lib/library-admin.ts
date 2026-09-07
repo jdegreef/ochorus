@@ -600,6 +600,9 @@ export interface AdminAudit {
 	/** Content languages that have any finding — computed over the unfiltered
 	 *  result, so the picker is stable whatever `language` is selected. */
 	languages: string[];
+	/** Registry-sourced display names for `languages`, so an edition an admin
+	 *  added without a frontend deploy still reads as itself, not a bare code. */
+	language_names: Record<string, string>;
 	/** The edition this response is filtered to, or '' for all. */
 	language: string;
 }

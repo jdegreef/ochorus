@@ -10,7 +10,6 @@
 		type AuditDismissTarget
 	} from '$lib/library-admin';
 	import { localizeHref } from '$lib/href';
-	import { localeName } from '$lib/lang.svelte';
 	import { locales } from '$lib/paraglide/runtime';
 
 	// '' = all editions. Filtering is server-side (accurate per-language totals
@@ -22,6 +21,11 @@
 		() => language
 	);
 	const audit = $derived(auditRes.data);
+
+	// Names ride along with the audit (registry-sourced), so a language an admin
+	// added without a deploy reads as itself; the code is the fallback while the
+	// payload is still loading. Mirrors the review queue.
+	const languageName = (code: string) => audit?.language_names?.[code] ?? code.toUpperCase();
 
 	// Accepting a finding is a write, so serialise it against the re-run it
 	// triggers and against a second click. `lastUndo` keeps the most recent
@@ -139,17 +143,17 @@
 		</div>
 		{#if audit}
 			<div class="flex items-center gap-2">
-				{#if audit.languages.length > 1 || language}
+				{#if audit.languages.length > 1}
 					<label class="sr-only" for="audit-language">Filter by language</label>
 					<select
 						id="audit-language"
-						class="rounded-card border border-border bg-surface px-3 py-2 text-small text-text"
+						class="field text-small"
 						bind:value={language}
 						disabled={auditRes.loading}
 					>
 						<option value="">All languages</option>
 						{#each audit.languages as code (code)}
-							<option value={code}>{localeName(code)}</option>
+							<option value={code}>{languageName(code)}</option>
 						{/each}
 					</select>
 				{/if}
