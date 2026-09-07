@@ -83,6 +83,13 @@
 	// an $effect that writes state is a $derived in disguise (frontend/CLAUDE.md).
 	let loadedUrl = $state('');
 	let failedUrl = $state('');
+	// The loaded cover's intrinsic aspect, and the url it was measured for. A
+	// designed cover composed narrower (or wider) than 3:4 is matted below so
+	// `object-cover` cannot crop its baked-in byline and mark; that decision is
+	// keyed by url for the same reason `loaded`/`failed` are — SvelteKit reuses
+	// one BookCover across books, and a ratio measured for A must not mat B.
+	let ratioUrl = $state('');
+	let ratio = $state(0);
 	const loaded = $derived(loadedUrl === book.cover_url);
 	const failed = $derived(failedUrl === book.cover_url);
 
@@ -92,6 +99,19 @@
 	const isArt = $derived(isArtCover(book.cover_url));
 	const isPlate = $derived(isPlateCover(book.cover_url));
 	const overFile = $derived(isArt || isPlate);
+	// A designed raster: a cover file that is neither a painting nor a plate
+	// ground, so its words are IN the pixels and nothing is drawn over it.
+	const isDesigned = $derived(!!book.cover_url && !overFile);
+	// A designed cover is composed at the artwork's OWN aspect, not always 3:4:
+	// the byline sits near the top edge and the Ochorus mark near the foot, and
+	// `object-cover` on an off-3:4 file scales it to fill the card and crops
+	// exactly those. So one that isn't 3:4 is CONTAINED whole (no crop) and the
+	// 3:4 remainder filled by a blurred, dimmed copy of itself — a soft mat that
+	// reads as intentional. One already 3:4 fills the card as it always has and
+	// gets no mat; the grounds above are drawn at 3:4 to be covered, never here.
+	const needsMat = $derived(
+		isDesigned && ratioUrl === book.cover_url && Math.abs(ratio - 3 / 4) > 0.01
+	);
 	const srcset = $derived(coverSrcset(book.cover_url));
 	const label = $derived(`${t('a11y.coverOf')} ${book.title}`);
 
@@ -169,12 +189,40 @@
 			fetchpriority={priority ? 'high' : undefined}
 			width={priority ? 300 : undefined}
 			height={priority ? 400 : undefined}
-			onload={() => (loadedUrl = book.cover_url)}
+			onload={(e) => {
+				loadedUrl = book.cover_url;
+				const img = e.currentTarget as HTMLImageElement;
+				if (img.naturalHeight) {
+					ratio = img.naturalWidth / img.naturalHeight;
+					ratioUrl = book.cover_url;
+				}
+			}}
 			onerror={() => (failedUrl = book.cover_url)}
-			class="absolute inset-0 h-full w-full object-cover transition-opacity duration-[var(--duration-base)]"
+			class="absolute inset-0 h-full w-full {needsMat
+				? 'object-contain'
+				: 'object-cover'} transition-opacity duration-[var(--duration-base)]"
 			class:opacity-0={!loaded && !priority}
 			class:opacity-100={loaded || priority}
 		/>
+		{#if needsMat}
+			<!-- The mat: the same cover, cover-filled, blurred and dimmed, behind the
+			     contained one so the off-3:4 remainder is a soft continuation of the
+			     art rather than a bare bar. `-z-10` puts it behind the foreground the
+			     contained image lets show through; `scale-110` hides the blur's
+			     transparent bleed at the edges. Decorative — the foreground `<img>`
+			     already carries the label — and after it in the DOM so the real cover
+			     stays `querySelector('img')`. -->
+			<img
+				src={book.cover_url}
+				srcset={srcset || undefined}
+				alt=""
+				aria-hidden="true"
+				loading={priority ? 'eager' : 'lazy'}
+				class="absolute inset-0 -z-10 h-full w-full scale-110 object-cover blur-xl brightness-[.82]"
+				class:opacity-0={!loaded && !priority}
+				class:opacity-100={loaded || priority}
+			/>
+		{/if}
 		{#if overFile}
 			<!-- The ground carries no words, so the cover's type is drawn here —
 			     one shared image, a title per language. -->
