@@ -311,6 +311,30 @@ CURATED: dict[str, Artwork] = {
         "vision, in the idiom of the country Nee never left.",
         focus=0.3,
     ),
+    # ── Batch 6 · C. H. Spurgeon's plate books ─────────────────────────────
+    # Spurgeon's covers are set in the `revival` display face his century printed
+    # in; the grounds are that century's landscape painting, one to each book's
+    # own subject.
+    "around-the-wicket-gate": Artwork(
+        "met", 436557, "Jan van Goyen", "The Pelkus Gate near Utrecht", "1646",
+        "A low gate on the water, the way through standing open — the book is a "
+        "friendly talk with seekers at exactly this threshold.",
+    ),
+    "cheque-book": Artwork(
+        "met", 439844, "Joseph Anton Koch", "Heroic Landscape with Rainbow", "1824",
+        "The bow set in the cloud — the promise a reader draws on daily. Spurgeon's "
+        "title makes God's word a cheque book of the bank of faith; here is the bond.",
+    ),
+    "gleanings-among-the-sheaves": Artwork(
+        "met", 437097, "Jean-François Millet", "Haystacks: Autumn", "ca. 1874",
+        "The field after the reaping, gathered into stacks — short readings gleaned "
+        "from the harvest, by the painter of the gleaners.",
+    ),
+    "spurgeon-on-prayer": Artwork(
+        "met", 437975, "Andreas Achenbach", "Sunset after a Storm on the Coast of Sicily", "1853",
+        "A sea still heaving as the storm clears — mighty power spent and answered, "
+        "which is what the twelve sermons are about.",
+    ),
 }
 
 

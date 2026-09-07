@@ -229,17 +229,17 @@
 			"scrim": 0.6
 		},
 		"around-the-wicket-gate": {
-			"ground": "d0dffec0b0d0fafbfa67d420586e8d5bd48dc8fa96091357e0c6737926ce6a55",
+			"ground": "1711699f1128891de30e5ec7bcc7841e3af5edc7f1e31d0e155435d26ceee6f0",
 			"style": "revival",
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1
 		},
 		"cheque-book": {
-			"ground": "f73eebbb63067fc07332959d55cb5edb0cf3c01e241b1e796c3e106b946e1607",
+			"ground": "01421c300d0debed099d1d2e3966137ece5b7487ed2361aca7828df570abf0bb",
 			"style": "revival",
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1
 		},
 		"confessions": {
@@ -292,10 +292,10 @@
 			"scrim": 0.7
 		},
 		"es/around-the-wicket-gate": {
-			"ground": "36b4729d59ec703500f371598a62e53074f997baa5f2ad36f150fcef82939db3",
+			"ground": "1c9faf7bb2996d919e4087f97d30a1dfdb584281eabde021c62b64c518bcef46",
 			"style": "revival",
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1
 		},
 		"es/baptism-with-the-holy-spirit": {
@@ -488,10 +488,10 @@
 			"scrim": 0.95
 		},
 		"gleanings-among-the-sheaves": {
-			"ground": "4d159092144091f8213712cc67f408e7ea6beda437b6e17abf22acebd34af3cf",
+			"ground": "2a7832dd2947dbbab338cf7ee15a680886f36c65879ee78bf4e6665628488e77",
 			"style": "revival",
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1
 		},
 		"grace-abounding": {
@@ -677,10 +677,10 @@
 			"scrim": 0.85
 		},
 		"lg/cheque-book": {
-			"ground": "3aa8c4c6d180399ae25c173fba9175067830b80d1f64edaddccf390667118a6e",
+			"ground": "e9b4a668853c1f90838c65521d39530be463728259b51ab14bef84907a9171c4",
 			"style": "revival",
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1
 		},
 		"lg/clothed-with-strength-and-dignity": {
@@ -1167,10 +1167,10 @@
 			"scrim": 1
 		},
 		"spurgeon-on-prayer": {
-			"ground": "1339b88bb7440cfbeb7d96e105e49a8748615485163526f83ad291d5e6552fb5",
+			"ground": "ca182666c92fe4b62928fa74cacacdf3495b0906d51a09507a0a5b96b32dc06f",
 			"style": "revival",
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1
 		},
 		"susanna-wesley-clarke": {
@@ -1195,10 +1195,10 @@
 			"scrim": 0.85
 		},
 		"sw/cheque-book": {
-			"ground": "82ad6eaf2039290786fe55e046258299195afe2fb2c7f2503727f38eaf1fc320",
+			"ground": "0833bf4d3686764b58c07d24a0456e8b730a2e50746e64a5d24424e95da739fe",
 			"style": "revival",
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1
 		},
 		"sw/clothed-with-strength-and-dignity": {
