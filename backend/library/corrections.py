@@ -2570,6 +2570,14 @@ BODY_CORRECTIONS.setdefault("christ-crucified", {}).setdefault("replacements", [
     ("him “Rabonni.”", "him “Rabboni.”"),
 ])
 
+# Found while translating True Vine to Spanish (batch 2): ch04's "The branch has
+# no cure" is an OCR slip for "no care" — the sentence's point is that the branch
+# is free of anxiety because "the vine provides all; it has but to yield itself
+# and receive". A cure/care r/u misread; the context is decisive.
+BODY_CORRECTIONS.setdefault("true-vine", {}).setdefault("replacements", []).extend([
+    ("The branch has no cure;", "The branch has no care;"),
+])
+
 
 _LG_DOUBLED_VERB: dict[str, list[tuple[str, str]]] = {
     "all-of-grace": [
