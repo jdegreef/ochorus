@@ -663,12 +663,13 @@ class CorrectionsHygieneTests(SimpleTestCase):
                     (f"{tail} {head}", f"{tail}{PARAGRAPH_BREAK}{head}")
                     for tail, head in entry.get("paragraph_breaks", ())
                 ),
-                # A declared note heading has the same two states, spelled
-                # as the anchor it is inserted before (not yet applied — and
-                # still present afterwards) and the heading itself (applied).
-                # Dead means BOTH are gone: the paragraph this titles was
-                # edited or renumbered out from under the entry.
+                # A declared note heading (or scripture epigraph) has the same
+                # two states, spelled as the anchor it is inserted before (not
+                # yet applied — and still present afterwards) and the block
+                # itself (applied). Dead means BOTH are gone: the paragraph this
+                # precedes was edited or renumbered out from under the entry.
                 *entry.get("note_headings", ()),
+                *entry.get("epigraphs", ()),
             )
             if old not in corpus and new not in corpus
         ]
@@ -773,7 +774,7 @@ class EnglishAuditContractTests(SimpleTestCase):
 
 
 class NoteHeadingRestorationTests(SimpleTestCase):
-    """`restore_note_headings` — the sanitizer's OTHER victim.
+    """`restore_dropped_lead_block` — the sanitizer's OTHER victim.
 
     `[class*=pginternal]` was an UNQUALIFIED drop selector, so `_clean`
     decomposed a Gutenberg anchor whole rather than unwrapping it to its text. A
@@ -790,7 +791,7 @@ class NoteHeadingRestorationTests(SimpleTestCase):
     HEADINGS = (("<p>Just this day", "<h4>NOTE A, Chap. VI. p. 73</h4>"),)
 
     def _restore(self, html):
-        return corrections.restore_note_headings(html, self.HEADINGS)
+        return corrections.restore_dropped_lead_block(html, self.HEADINGS)
 
     def test_inserts_the_heading_before_its_block(self):
         self.assertEqual(
@@ -839,3 +840,37 @@ class NoteHeadingRestorationTests(SimpleTestCase):
         repair must not scatter copies through the chapter."""
         doubled = "<p>Just this day I met her.</p> <p>Just this day I met her.</p>"
         self.assertEqual(self._restore(doubled).count("<h4>"), 1)
+
+
+class EpigraphRestorationTests(SimpleTestCase):
+    """The `epigraphs` key — a sermon's opening scripture the note-selector ate.
+
+    Same guarded helper as the headings above, exercised through the REAL
+    `selected-sermons-edwards` entry so the contract that a verse comes back as
+    a `<p>` before the body's `<p><br/>` (matching the sermons that kept theirs)
+    is pinned to the shipped data, not a fixture of the test's own.
+    """
+
+    ENTRY = corrections.BODY_CORRECTIONS["selected-sermons-edwards"]["epigraphs"]
+
+    def _restore(self, html):
+        return corrections.restore_dropped_lead_block(html, self.ENTRY)
+
+    def test_prepends_the_verse_before_the_body_opening(self):
+        anchor, block = self.ENTRY[1]  # "A Divine and Supernatural Light"
+        self.assertTrue(block.startswith("<p>Matt. xvi.—"))
+        restored = self._restore(f"{anchor} upon occasion of his professing.</p>")
+        # Verse first, then the body — the survived-sermon shape "…</p> <p><br/>…".
+        self.assertTrue(restored.startswith(f"{block} <p><br/>Christ says these words"))
+
+    def test_is_idempotent(self):
+        anchor, _ = self.ENTRY[0]
+        once = self._restore(f"{anchor} dwelt in a part of the world.</p>")
+        self.assertEqual(self._restore(once), once)
+
+    def test_no_op_when_the_verse_is_already_present(self):
+        """After a future re-import Gutenberg's own `class="note"` verse is kept,
+        so the guard must recognise it and not add a second copy."""
+        anchor, block = self.ENTRY[2]  # Ruth
+        reimported = f"{block} {anchor} seem to be inserted.</p>"
+        self.assertEqual(self._restore(reimported), reimported)

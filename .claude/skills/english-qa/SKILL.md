@@ -278,12 +278,24 @@ Reported, not fixed
   headings, five could anchor on the `</p> <p>` seam ahead of them and the
   sixth could not, because it opens the chapter. Hence `note_headings`, a
   fourth `BODY_CORRECTIONS` key beside `replacements`, `paragraph_breaks` and
-  `dropcap_letters`: `restore_note_headings` takes `(anchor, heading)` and skips
-  a body that already carries the heading. Guarding on the OUTPUT is idempotent
-  wherever the insertion lands, needs no anchor gymnastics, and reads as what it
-  means. Anchor each on its `<p>` so it cannot touch `body_text`, and add the
-  key to `test_no_replacement_pair_is_dead` or nothing will notice when the
-  paragraph it titles is edited out from under it.
+  `dropcap_letters`: `restore_dropped_lead_block` takes `(anchor, block)` and
+  skips a body that already carries the block. Guarding on the OUTPUT is
+  idempotent wherever the insertion lands, needs no anchor gymnastics, and reads
+  as what it means. Anchor each on its `<p>` so it cannot touch `body_text`, and
+  add the key to `test_no_replacement_pair_is_dead` or nothing will notice when
+  the
+  paragraph it titles is edited out from under it. The SAME helper and the SAME
+  guard restore a sermon's opening SCRIPTURE epigraph the `[class*=note i]`
+  selector ate — the `epigraphs` key on `selected-sermons-edwards`, where four
+  sermons opened mid-argument with the verse gone (PR #1777). One key per
+  content type (heading vs verse), one helper; both feed
+  `restore_dropped_lead_block`. Find such damage with
+  `scripts/audit_keep_predicates.py --rule note` — it re-extracts each
+  Gutenberg source with the fixed sanitizer and flags every run "MISSING from
+  the shipped body". (To measure a drop-selector that has NO keep-predicate yet,
+  make it keep-all and diff against the current output; all eight unpredicated
+  ones came back furniture-only in #1777 — `pagenum`/`pageno` drop only page
+  markers, the rest nothing.)
 - **A STRUCTURAL repair must land in every edition at once.**
   `tests_translation_markup` pins a translation's ordered TAG SEQUENCE against
   its English, so adding six headings to the English alone fails it — and that
@@ -354,18 +366,9 @@ Reported, not fixed
   `note` in a class, including Gutenberg's own `<h3 class="note">NOTE A.</h3>`
   and `<div class="footnote">`. That is how `holy-in-christ` ch33 lost all seven
   of its `NOTE A.`–`NOTE G.` headings and every footnote block pointing at them,
-  leaving seven bare `<hr/>`s where the notes divide — and, unnoticed until the
-  corpus was measured, the SCRIPTURE TEXT of four Edwards sermons (`p.note`), so
-  each opened mid-argument with no text.
-  **The selector is FIXED** — `sanitize.KEEP_PREDICATES` keeps the exact
-  lowercase token `note`, which is the one value neither transcriber's
-  vocabulary shares, and `scripts/audit_keep_predicates.py --rule note` is the
-  corpus-wide measurement (2 of 36 works change; CCEL untouched). The footnote
-  BLOCKS stay dropped by design: their markers are dropped too, so restoring the
-  blocks alone would orphan the note text.
-  **The shipped rows are still damaged** and are never re-imported — repair them
-  with `note_headings` on the book's `corrections.py` key, as
-  `ministry-of-intercession` does.
+  leaving seven bare `<hr/>`s where the notes divide. Still unrepaired: the fix
+  is to the selector and reaches every CCEL work, so it wants its own change and
+  a corpus-wide measurement of what a narrower selector would let back in.
   ```bash
   grep -c ' ()' backend/library/fixtures/content/books/*.json
   ```
