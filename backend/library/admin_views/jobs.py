@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import os
 import re
+import time
 
 import requests
 from django.conf import settings
@@ -158,16 +159,68 @@ def _issue_to_job(issue: dict) -> dict | None:
     }
 
 
+# GitHub caps an issues page at 100, so one request is one page of the queue.
+_PAGE_SIZE = 100
+_MAX_PAGES = 20
+_PAGE_TIMEOUT = 10
+# Both bounds have to fit inside gunicorn's `--timeout 120` (see the Dockerfile):
+# a worker killed mid-read can't answer the 502 the handlers below are written
+# to give. 20 pages at 10s each is 200s, so the wall clock is the real bound and
+# the page count is the backstop.
+_READ_DEADLINE = 60
+
+
+class QueueTooLongToRead(Exception):
+    """The open queue could not be read to the end — so it must not be judged.
+
+    Raised rather than returning what was fetched, because a partial queue is
+    the very bug this read exists to prevent: the guard scans it, finds no
+    match, and files a duplicate. Failing closed turns a silent wrong answer
+    into a 503 that names the condition.
+    """
+
+
 def _list_open_jobs() -> list[dict]:
-    """Open job issues, oldest first. Raises requests.RequestException upstream."""
-    r = requests.get(
-        f"{GITHUB_API}/repos/{settings.GITHUB_TRANSLATION_REPO}/issues",
-        headers=_headers(),
-        params={"state": "open", "labels": LABEL, "per_page": 100, "direction": "asc"},
-        timeout=15,
-    )
-    r.raise_for_status()
-    return [job for issue in r.json() if (job := _issue_to_job(issue))]
+    """EVERY open job issue, oldest first.
+
+    This read backs the duplicate-press guard in ``post`` below, and while it
+    fetched a single page that guard silently went blind the moment the queue
+    passed a hundred: ``direction: asc`` makes page one the hundred OLDEST open
+    jobs, so the newest job — the one a second press is actually about to
+    re-file — was precisely the one outside the window. On 2026-09-06 the queue
+    stood at 107 before the evening's filing began, and 31 issues were filed for
+    17 distinct jobs; ``book:absolute-surrender -> es`` got three. The guard's
+    logic was right the whole time; it was reading a truncated queue. The GET
+    path shares this read, so the dashboard was short by the same jobs.
+
+    Raises ``requests.RequestException`` (GitHub unreachable) or
+    ``QueueTooLongToRead`` (reached a bound with pages still to come) upstream —
+    never a short list, which is how the original bug read.
+    """
+    deadline = time.monotonic() + _READ_DEADLINE
+    jobs: list[dict] = []
+    for page in range(1, _MAX_PAGES + 1):
+        r = requests.get(
+            f"{GITHUB_API}/repos/{settings.GITHUB_TRANSLATION_REPO}/issues",
+            headers=_headers(),
+            params={
+                "state": "open",
+                "labels": LABEL,
+                "per_page": _PAGE_SIZE,
+                "direction": "asc",
+                "page": page,
+            },
+            timeout=_PAGE_TIMEOUT,
+        )
+        r.raise_for_status()
+        batch = r.json()
+        jobs.extend(job for issue in batch if (job := _issue_to_job(issue)))
+        # A short page is the last page — no Link-header parsing needed.
+        if len(batch) < _PAGE_SIZE:
+            return jobs
+        if time.monotonic() > deadline:
+            raise QueueTooLongToRead(f"still reading after {_READ_DEADLINE}s")
+    raise QueueTooLongToRead(f"more than {_MAX_PAGES * _PAGE_SIZE} open jobs")
 
 
 class AdminTranslationJobsView(AdminAudited, APIView):
@@ -193,6 +246,11 @@ class AdminTranslationJobsView(AdminAudited, APIView):
             return Response({"configured": False, "jobs": []})
         try:
             jobs = _list_open_jobs()
+        except QueueTooLongToRead as exc:
+            return Response(
+                {"detail": f"The translation queue is too long to read ({exc})."},
+                status=status.HTTP_503_SERVICE_UNAVAILABLE,
+            )
         except requests.RequestException:
             return Response(
                 {"detail": "GitHub is unreachable — try again shortly."},
@@ -267,6 +325,17 @@ class AdminTranslationJobsView(AdminAudited, APIView):
                 timeout=15,
             )
             r.raise_for_status()
+        except QueueTooLongToRead as exc:
+            # Nothing was filed: the guard could not read the queue to the end,
+            # so it cannot say this job is absent. Refusing is the safe answer —
+            # filing anyway is exactly how the duplicates got there.
+            return Response(
+                {
+                    "detail": f"The translation queue is too long to check ({exc}), so "
+                    "the duplicate guard can't run. Work the queue down first."
+                },
+                status=status.HTTP_503_SERVICE_UNAVAILABLE,
+            )
         except requests.RequestException:
             return Response(
                 {"detail": "couldn't reach GitHub to file the job — try again shortly."},

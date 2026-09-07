@@ -19,6 +19,7 @@ from django.core.management import call_command
 from django.test import TestCase, override_settings
 from rest_framework.test import APIClient
 
+from .admin_views import jobs as jobs_module
 from .languages import config as language_config
 from .models import (
     Author,
@@ -331,6 +332,69 @@ class AdminTranslationJobsTests(TestCase):
             )
         self.assertEqual(res.status_code, 200)
         self.assertFalse(res.data["created"])
+        gh.post.assert_not_called()
+
+    @classmethod
+    def _full_page(cls):
+        """A page GitHub would follow with another — exactly `_PAGE_SIZE` issues.
+
+        Size is read from the module rather than hardcoded: the loop treats a
+        short page as the last one, so a page that is not `_PAGE_SIZE` long
+        ends the walk and these tests would silently stop testing paging.
+        """
+        return [
+            cls._issue(f"[translation] book:filler-{i} -> lg", number=1000 + i)
+            for i in range(jobs_module._PAGE_SIZE)
+        ]
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_post_duplicate_is_caught_past_the_first_page(self):
+        """The guard has to read the whole queue, not the first hundred of it.
+
+        See ``_list_open_jobs`` for the 2026-09-06 incident this pins.
+        """
+        from unittest.mock import MagicMock, patch
+
+        full_page = self._full_page()
+        existing = self._issue("[translation] book:humility -> lg", number=2000)
+        with patch("library.admin_views.jobs.requests") as gh:
+            gh.get.side_effect = [
+                MagicMock(json=lambda: full_page, raise_for_status=lambda: None),
+                MagicMock(json=lambda: [existing], raise_for_status=lambda: None),
+            ]
+            res = self.client.post(
+                "/api/admin/translation-jobs/",
+                {"type": "book", "slug": "humility", "language": "lg"},
+                format="json",
+            )
+        self.assertEqual(res.status_code, 200)
+        self.assertFalse(res.data["created"])
+        self.assertEqual(res.data["job"]["number"], 2000)
+        gh.post.assert_not_called()
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_post_refuses_rather_than_file_on_an_unreadable_queue(self):
+        """A queue too long to read to the end must not be judged absent.
+
+        Returning the pages that did arrive is how the original bug read: the
+        guard scans a short list, finds no match, and files a duplicate. So
+        every page coming back FULL — never a last page — has to fail closed.
+        """
+        from unittest.mock import MagicMock, patch
+
+        full_page = self._full_page()
+        with patch("library.admin_views.jobs.requests") as gh:
+            gh.get.return_value = MagicMock(
+                json=lambda: full_page, raise_for_status=lambda: None
+            )
+            res = self.client.post(
+                "/api/admin/translation-jobs/",
+                {"type": "book", "slug": "humility", "language": "lg"},
+                format="json",
+            )
+        self.assertEqual(res.status_code, 503)
+        # Bounded, and nothing filed on a guard that could not run.
+        self.assertEqual(gh.get.call_count, jobs_module._MAX_PAGES)
         gh.post.assert_not_called()
 
     @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
