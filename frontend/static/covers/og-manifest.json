@@ -319,6 +319,13 @@
 			"art": true,
 			"scrim": 0.65
 		},
+		"es/on-loving-god": {
+			"ground": "952574f091e116f04969447e250ac8a577f3b2ec45588363b82dc118008fdadf",
+			"style": "inscriptional",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"es/power-through-prayer": {
 			"ground": "27f9b28288e619aaa52e81537bb71dd08111eb23faffa18f16ae6e1a50f287dc",
 			"style": "revival",
@@ -388,6 +395,20 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6
+		},
+		"es/true-vine": {
+			"ground": "12707a4313939e946d4f132f09ee3e1946db2fcfab8555a0f40dc3ee5a3584f1",
+			"style": "devotional",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85
+		},
+		"es/union-and-communion": {
+			"ground": "4f1f6ff65d4511cf388f1a10b5e9b21c9598716f0d06f9c5fcf6382b2190dcdf",
+			"style": "revival",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85
 		},
 		"es/waiting-on-god": {
 			"ground": "46edd6e8c1044dc7480179add60a2403c72ddd960c89fa6dc2f07e9e0099e1a9",
@@ -893,6 +914,13 @@
 			"art": true,
 			"scrim": 0.7
 		},
+		"pt/all-things-for-good": {
+			"ground": "767a664b42a31f560158f39b7714037e7f125852b2b30893774334ce5df37c4b",
+			"style": "press",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85
+		},
 		"pt/baptism-with-the-holy-spirit": {
 			"ground": "c3c7eb75b165428995460d77ad651bd299f9dbeab08596e7e2dfd068dbcd597b",
 			"style": "revival",
@@ -1130,6 +1158,13 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.3
+		},
+		"sw/divine-healing": {
+			"ground": "687d09bde421adcf1dfc9bfcdd013ce6e4382989a21b4f68d648ca6247ce6f9b",
+			"style": "devotional",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.45
 		},
 		"sw/godliness": {
 			"ground": "f8dd5c32fc99eab6102d7c8dabb08e2cd8fd8307ad4bfd74806f01f0925444b8",
@@ -1466,20 +1501,6 @@
 			"script": "latin",
 			"art": false,
 			"scrim": 1
-		},
-		"sw/divine-healing": {
-			"ground": "687d09bde421adcf1dfc9bfcdd013ce6e4382989a21b4f68d648ca6247ce6f9b",
-			"style": "devotional",
-			"script": "latin",
-			"art": true,
-			"scrim": 0.45
-		},
-		"pt/all-things-for-good": {
-			"ground": "767a664b42a31f560158f39b7714037e7f125852b2b30893774334ce5df37c4b",
-			"style": "press",
-			"script": "latin",
-			"art": true,
-			"scrim": 0.85
 		}
 	}
 }
