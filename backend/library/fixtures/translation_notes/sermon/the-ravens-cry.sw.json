@@ -1,0 +1,28 @@
+{
+ "kind": "sermon",
+ "slug": "the-ravens-cry",
+ "language": "sw",
+ "job_issue": 1725,
+ "references": [
+  {
+   "reference": "Esther",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "John",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Mark",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Psalms 147:9",
+   "status": "self_rendered",
+   "block_index": 0
+  }
+ ]
+}
