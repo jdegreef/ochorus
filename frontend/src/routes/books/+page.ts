@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-07: three NEW Swahili books — feasting-at-the-table (#1723),
+// true-vine (#1724), power-through-prayer (#1751). 61 chapters. Rebuilds /sw/books.
 // prerender refresh 2026-09-06: NEW Swahili book divine-healing (#1316, 32 ch) —
 // completes the Swahili book queue. Rebuilds /sw/books so the card carries its
 // translated title and shared painting cover. No plans/+page.ts touch owed

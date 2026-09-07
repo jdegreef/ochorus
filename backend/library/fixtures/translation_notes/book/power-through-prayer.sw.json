@@ -1,0 +1,68 @@
+{
+ "kind": "book",
+ "slug": "power-through-prayer",
+ "language": "sw",
+ "job_issue": 1751,
+ "references": [
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Colossians",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Daniel",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "James",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "John",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Mark",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Numbers",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Philemon",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Philippians",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Song of Songs",
+   "status": "self_rendered",
+   "block_index": 3
+  }
+ ]
+}

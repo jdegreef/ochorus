@@ -1550,6 +1550,27 @@
 			"script": "latin",
 			"art": false,
 			"scrim": 1
+		},
+		"sw/feasting-at-the-table": {
+			"ground": "f61b586fba60709a32c02d807625cc8f5193860501758abd9a17ec92af560a51",
+			"style": "house",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8
+		},
+		"sw/true-vine": {
+			"ground": "b21a2d190081d450028f966856d1b99f90382b464512156ff1a739954a354ca0",
+			"style": "devotional",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85
+		},
+		"sw/power-through-prayer": {
+			"ground": "00a4043c9fbe2104b4ce4d782e80296b4e40b399974728afd08c5f9be3bc91a4",
+			"style": "devotional",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75
 		}
 	}
 }
