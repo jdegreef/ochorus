@@ -1,0 +1,137 @@
+{
+ "kind": "book",
+ "slug": "true-vine",
+ "language": "sw",
+ "job_issue": 1724,
+ "references": [
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Colossians 1:10",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Isaiah",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Jeremiah 17:7",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Jeremiah 17:8",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "John 15:1",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "John 15:10",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "John 15:11",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "the-key-in-my-hand.sw.json"
+  },
+  {
+   "reference": "John 15:12",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "John 15:13",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "John 15:14",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "John 15:15",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "John 15:16",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "John 15:2",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "John 15:3",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "John 15:4",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "John 15:6",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "John 15:7",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "John 15:8",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "John 15:9",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Mark",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Numbers",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Psalms 1:3",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 5
+  }
+ ]
+}
