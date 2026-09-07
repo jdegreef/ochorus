@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
                 ('check_key', models.CharField(max_length=40)),
                 ('book', models.SlugField(max_length=200)),
                 ('language', models.CharField(max_length=10)),
-                ('ref', models.CharField(max_length=255)),
+                ('ref', models.CharField(max_length=300)),
                 ('note', models.TextField(blank=True)),
                 ('reviewer', models.EmailField(blank=True, max_length=254)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),

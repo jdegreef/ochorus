@@ -1348,7 +1348,10 @@ class AuditDismissal(models.Model):
     #: The tail of the finding's identity: the chapter ``order`` for chapter-shaped
     #: checks, or the duplicated title for ``duplicate_titles``. Stringified so one
     #: column serves every check shape without a nullable-int/​nullable-text pair.
-    ref = models.CharField(max_length=255)
+    #: Sized to the largest thing it can hold — a title (``Chapter.title`` /
+    #: ``Book.title`` are max_length=300) — so accepting a long duplicate title
+    #: can't overflow the column.
+    ref = models.CharField(max_length=300)
     note = models.TextField(blank=True)
     reviewer = models.EmailField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)

@@ -21,14 +21,20 @@
 	// misfire is the case undo exists for.
 	let busy = $state(false);
 	let lastUndo = $state<{ target: AuditDismissTarget; label: string } | null>(null);
+	// A failed write must say so — otherwise the row stays on screen and the
+	// admin reads "nothing happened" as "accepted".
+	let actionError = $state<string | null>(null);
 
 	async function dismiss(target: AuditDismissTarget, label: string) {
 		if (busy) return;
 		busy = true;
+		actionError = null;
 		try {
 			await dismissAuditFinding(target);
 			lastUndo = { target, label };
 			await auditRes.load();
+		} catch (e) {
+			actionError = e instanceof Error ? e.message : "Couldn't accept that finding.";
 		} finally {
 			busy = false;
 		}
@@ -37,10 +43,13 @@
 	async function undoDismiss() {
 		if (busy || !lastUndo) return;
 		busy = true;
+		actionError = null;
 		try {
 			await undoAuditDismissal(lastUndo.target);
 			lastUndo = null;
 			await auditRes.load();
+		} catch (e) {
+			actionError = e instanceof Error ? e.message : "Couldn't undo that.";
 		} finally {
 			busy = false;
 		}
@@ -129,10 +138,12 @@
 
 	<AdminGate resource={auditRes} errorTitle="Couldn't run the audit" loadingText="Running audit…">
 		{#snippet children(a)}
-			<p class="{lastUndo ? 'mb-2' : 'mb-8'} text-body {totalFindings ? 'text-warning' : 'text-muted'}">
+			<p class="{lastUndo || actionError ? 'mb-2' : 'mb-8'} text-body {totalFindings ? 'text-warning' : 'text-muted'}">
 				{#if totalFindings}<strong>{integrityTotal}</strong> integrity {integrityTotal === 1 ? 'issue' : 'issues'} · <strong>{qualityTotal}</strong> quality {qualityTotal === 1 ? 'flag' : 'flags'}{:else}No findings — the library looks clean. 🎉{/if}
 			</p>
-			{#if lastUndo}
+			{#if actionError}
+				<p class="mb-8 text-small text-warning">{actionError}</p>
+			{:else if lastUndo}
 				<p class="mb-8 flex items-baseline gap-2 text-small text-muted">
 					Accepted <span class="text-text">{lastUndo.label}</span>.
 					<button

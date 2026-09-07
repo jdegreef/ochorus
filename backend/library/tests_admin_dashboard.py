@@ -580,6 +580,28 @@ class AdminAuditDismissTests(TestCase):
         self.assertEqual(action.action, AdminAction.Action.AUDIT_DISMISS)
         self.assertEqual(action.target, "giant_chapters:humility:en")
 
+    def test_ref_column_holds_any_title(self):
+        """A duplicate_titles ref IS the chapter title, so the column must be at
+        least as wide as Chapter.title — else accepting a long duplicate 500s on
+        Postgres (SQLite would silently truncate)."""
+        title_max = Chapter._meta.get_field("title").max_length
+        ref_max = AuditDismissal._meta.get_field("ref").max_length
+        self.assertGreaterEqual(ref_max, title_max)
+
+    def test_dismiss_a_long_duplicate_title(self):
+        book = Book.objects.get(slug="humility", language="en")
+        long_title = "A" * 280  # within Chapter.title (300), over the old ref (255)
+        Chapter.objects.create(book=book, order=3, title=long_title, body_html="<p>x.</p>")
+        Chapter.objects.create(book=book, order=4, title=long_title, body_html="<p>y.</p>")
+        res = self.client.post(
+            "/api/admin/audit/dismiss/",
+            {"check": "duplicate_titles", "book": "humility", "language": "en", "ref": long_title},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 201)
+        dupes = self.client.get("/api/admin/audit/").data["quality"]["duplicate_titles"]
+        self.assertEqual([d for d in dupes["items"] if d["title"] == long_title], [])
+
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
     def test_requires_admin(self):
         res = self.client.post(
