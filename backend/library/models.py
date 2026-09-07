@@ -1536,6 +1536,9 @@ class AdminAction(models.Model):
         indexes = [
             models.Index(fields=["-at"], name="idx_adminaction_at"),
             models.Index(fields=["action", "-at"], name="idx_adminaction_action"),
+            # One object's whole history: the activity screen can filter to a
+            # single target, and this keyset-paginates it by descending id.
+            models.Index(fields=["target", "-id"], name="idx_adminaction_target"),
         ]
 
     def __str__(self) -> str:
