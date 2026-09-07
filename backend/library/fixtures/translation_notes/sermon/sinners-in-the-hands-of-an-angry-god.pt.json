@@ -1,0 +1,34 @@
+{
+  "kind": "sermon",
+  "slug": "sinners-in-the-hands-of-an-angry-god",
+  "language": "pt",
+  "job_issue": null,
+  "pull_request": 1610,
+  "references": [
+    {
+      "reference": "Psalm 73:18",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Luke 13:7",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 3:18",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 8:23",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Luke 11:21",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Luke 12:4",
+      "status": "self_rendered"
+    }
+  ],
+  "note": "Keyless in-session translation: every quoted verse was rendered by the translator (self_rendered), using the authoritative Bíblia Livre (porbrbsl) wording where a verse was supplied. This work weaves much scripture without explicit Book C:V citations; those woven quotations are not enumerated here and should be checked against the Portuguese Bible during native review."
+}
