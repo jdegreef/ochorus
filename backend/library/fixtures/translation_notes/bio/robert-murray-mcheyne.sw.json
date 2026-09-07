@@ -1,0 +1,23 @@
+{
+ "kind": "bio",
+ "slug": "robert-murray-mcheyne",
+ "language": "sw",
+ "job_issue": 1717,
+ "references": [
+  {
+   "reference": "Numbers",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Psalms",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 31
+  }
+ ]
+}
