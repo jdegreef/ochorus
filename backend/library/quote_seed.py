@@ -65,7 +65,8 @@ from __future__ import annotations
 #:                         and 2026-09-02, sixteen more (The Life of Trust) — thirty-one.
 #: hudson-taylor         — approved 2026-08-30, ten;
 #:                         and 2026-09-02, ten more (Separation and Service);
-#:                         and 2026-09-03, thirteen more (Union and Communion, Separation and Service) — thirty-three.
+#:                         and 2026-09-03, thirteen more (Union and Communion, Separation and Service) — thirty-three;
+#:                         and 2026-09-08, thirteen more (A Retrospect + four sermons) — forty-six.
 #: gareth-evans          — approved 2026-08-30, twenty-two;
 #:                          four more 2026-08-31 (twenty-six).
 #: richard-allen         — approved 2026-09-02, six (The Life, Experience, and
@@ -2835,6 +2836,84 @@ HUDSON_TAYLOR = [
         "chapter": ("union-and-communion", 2),
         "paragraph": 1,
     },
+    {
+        "slug": "hudson-taylor-59c25747",
+        "text": "The GOD of the Bible is a GOD who punishes sin, and cannot pardon without atonement.",
+        "sermon": "under-the-shepherds-care",
+        "paragraph": 1,
+    },
+    {
+        "slug": "hudson-taylor-f8d18af3",
+        "text": "Oh, it is sweet to live thus directly dependent upon the Lord, who never fails us!",
+        "chapter": ("a-retrospect", 16),
+        "paragraph": 6,
+    },
+    {
+        "slug": "hudson-taylor-9e37f8aa",
+        "text": "Sometimes we have trials which we cannot put into prayer; the LORD knows the secrets of our heart.",
+        "sermon": "under-the-shepherds-care",
+        "paragraph": 12,
+    },
+    {
+        "slug": "hudson-taylor-d8fd45a2",
+        "text": "If we are faithful to God in little things, we shall gain experience and strength that will be helpful to us in the more serious trials of life.",
+        "chapter": ("a-retrospect", 3),
+        "paragraph": 11,
+    },
+    {
+        "slug": "hudson-taylor-4d77cbd9",
+        "text": "The peace, which we can neither make nor keep, will itself, as a garrison, keep and protect us, and the cares and worries will strive to enter in vain.",
+        "sermon": "blessed-adversity",
+        "paragraph": 9,
+    },
+    {
+        "slug": "hudson-taylor-a0b9c9a7",
+        "text": "The habit of coming in faith to Him is incompatible with unmet hunger and thirst.",
+        "sermon": "unfailing-springs",
+        "paragraph": 12,
+    },
+    {
+        "slug": "hudson-taylor-8f87ae30",
+        "text": "GOD'S overflow more than supplies the lack of individual capacity.",
+        "sermon": "unfailing-springs",
+        "paragraph": 13,
+    },
+    {
+        "slug": "hudson-taylor-cdcd2da5",
+        "text": "If the whole resources of the Church of God were well utilised, how much more might be accomplished!",
+        "chapter": ("a-retrospect", 2),
+        "paragraph": 12,
+    },
+    {
+        "slug": "hudson-taylor-a2017a32",
+        "text": "To many minds there is the greatest shrinking from appearing peculiar; but God would often have His people unmistakably peculiar.",
+        "chapter": ("separation-and-service", 2),
+        "paragraph": 15,
+    },
+    {
+        "slug": "hudson-taylor-2dd2dd38",
+        "text": "Where there is fitness for the work, the way will probably be made plain after a time of patient waiting.",
+        "chapter": ("separation-and-service", 2),
+        "paragraph": 22,
+    },
+    {
+        "slug": "hudson-taylor-68ec7c26",
+        "text": "Our love to GOD is secured by GOD’S love to us.",
+        "chapter": ("union-and-communion", 9),
+        "paragraph": 33,
+    },
+    {
+        "slug": "hudson-taylor-a5415bca",
+        "text": "We have to take our choice: we cannot enjoy both the world and CHRIST.",
+        "chapter": ("union-and-communion", 5),
+        "paragraph": 15,
+    },
+    {
+        "slug": "hudson-taylor-5ac0c4d8",
+        "text": "Where that blessing is not enjoyed, there is always something unreal or defective in the consecration.",
+        "chapter": ("separation-and-service", 3),
+        "paragraph": 4,
+    },
 ]
 
 GARETH_EVANS = [
@@ -3241,6 +3320,7 @@ TOPIC_MEMBERS = {
         "augustine-of-hippo-1699c301",  # Thou light of my heart, Thou bread of my inmost soul, T
         "augustine-of-hippo-c006d51a",  # I call upon Thee, O my God, my mercy, Who createdst me,
         "augustine-of-hippo-4db0559b",  # O let the Light, the Truth, the Light of my heart, not
+        "hudson-taylor-9e37f8aa",  # Sometimes we have trials which we cannot put into praye
     ],
     "faith": [  # Faith
         "charles-h-spurgeon-94833965",  # The righteousness of faith is not the moral excellence of fa
@@ -3320,6 +3400,7 @@ TOPIC_MEMBERS = {
         "gareth-evans-eece1b59",  # The last prayer of Jesus for all who would come to believe H
         "gareth-evans-cd926d0d",  # The end of the journey for all who walk in faith, is that th
         "amanda-berry-smith-a27a891a",  # In my heart was peace, but I did not know how to exercise fa
+        "hudson-taylor-a0b9c9a7",  # The habit of coming in faith to Him is incompatible wit
     ],
     "grace": [  # Grace
         "charles-h-spurgeon-e83563c7",  # Jesus has nothing which He will not use for a sinner's salva
@@ -3356,6 +3437,7 @@ TOPIC_MEMBERS = {
         "augustine-of-hippo-c006d51a",  # I call upon Thee, O my God, my mercy, Who createdst me,
         "augustine-of-hippo-e35729b7",  # Let them then be turned, and seek Thee; because not as
         "augustine-of-hippo-c2f65106",  # Thou didst rescue my tongue, whence Thou hadst before r
+        "hudson-taylor-8f87ae30",  # GOD'S overflow more than supplies the lack of individua
     ],
     "holy-spirit": [  # The Holy Spirit
         "charles-h-spurgeon-c1353dff",  # The Holy Ghost Himself cannot better glorify the Lord Jesus 
@@ -3436,6 +3518,7 @@ TOPIC_MEMBERS = {
         "augustine-of-hippo-cb389651",  # Luxury affects to be called plenty and abundance; but T
         "augustine-of-hippo-d10a086f",  # O Thou Good omnipotent, who so carest for every one of
         "augustine-of-hippo-88c4ad24",  # I sought what I might love, in love with loving, and sa
+        "hudson-taylor-68ec7c26",  # Our love to GOD is secured by GOD’S love to us.
     ],
     "humility": [  # Humility
         "charles-h-spurgeon-c3d3a367",  # Let us be humble that we may not need to be humbled, but may
@@ -3463,6 +3546,7 @@ TOPIC_MEMBERS = {
         "george-muller-4202e1fe",  # Do but stand still in the hour of trial, and you will see th
         "george-muller-caed9faa",  # From my inmost soul I do ascribe it to God alone that he has
         "amanda-berry-smith-c5cbc2c8",  # How often when we are passing through deep trials we look fo
+        "hudson-taylor-9e37f8aa",  # Sometimes we have trials which we cannot put into praye
     ],
     "holiness": [  # Holiness
         "charles-h-spurgeon-cfdd6903",  # The love of Christ casts not out the love of relatives, but 
@@ -3481,6 +3565,10 @@ TOPIC_MEMBERS = {
         "thomas-a-kempis-043d2543",  # No man rejoices safely unless he has within him the testi
         "thomas-a-kempis-e72afb6e",  # To walk with God interiorly, to be free from any external
         "thomas-a-kempis-bd12b144",  # A spiritual man quickly recollects himself because he has
+        "hudson-taylor-d8fd45a2",  # If we are faithful to God in little things, we shall ga
+        "hudson-taylor-a2017a32",  # To many minds there is the greatest shrinking from appe
+        "hudson-taylor-a5415bca",  # We have to take our choice: we cannot enjoy both the wo
+        "hudson-taylor-5ac0c4d8",  # Where that blessing is not enjoyed, there is always som
     ],
     "the-cross": [  # The Cross of Christ
         "charles-h-spurgeon-1fe6c2ed",  # The Lord cannot read our pardon written in the blood of His 
@@ -3496,6 +3584,7 @@ TOPIC_MEMBERS = {
         "gareth-evans-cf0d0a61",  # The only way man can approach God is through the shed blood 
         "gareth-evans-12a18c7e",  # To those who have placed their trust in the finished work of
         "thomas-a-kempis-77d5e620",  # A man’s true progress consists in denying himself, and th
+        "hudson-taylor-59c25747",  # The GOD of the Bible is a GOD who punishes sin, and can
     ],
     "trusting-god": [  # Trusting God
         "charles-h-spurgeon-63de5d24",  # Trust not thyself nor any born of woman, beyond due bounds; 
@@ -3518,6 +3607,8 @@ TOPIC_MEMBERS = {
         "thomas-a-kempis-ce999abc",  # Many words do not satisfy the soul; but a good life eases
         "thomas-a-kempis-f4303a94",  # Just men depend on the grace of God rather than on their
         "augustine-of-hippo-d10a086f",  # O Thou Good omnipotent, who so carest for every one of
+        "hudson-taylor-f8d18af3",  # Oh, it is sweet to live thus directly dependent upon th
+        "hudson-taylor-2dd2dd38",  # Where there is fitness for the work, the way will proba
     ],
     "joy": [  # Joy
         "charles-h-spurgeon-d6d84bd3",  # Beloved, the Lord’s workers have sauce with their bread: not
@@ -3569,6 +3660,7 @@ TOPIC_MEMBERS = {
         "thomas-a-kempis-47fd3784",  # Happy is the man who can throw off the weight of every ca
         "thomas-a-kempis-a34c6521",  # True peace of heart, then, is found in resisting passions
         "augustine-of-hippo-109ebfbc",  # The Word itself calleth thee to return: and there is th
+        "hudson-taylor-4d77cbd9",  # The peace, which we can neither make nor keep, will its
     ],
     "repentance": [  # Repentance
         "charles-h-spurgeon-ddf56c92",  # Jesus is exalted on high, that through the virtue of His int
@@ -3621,6 +3713,7 @@ TOPIC_MEMBERS = {
         "amanda-berry-smith-e93eed38",  # The Gospel of Jesus was so full and practical, and with good
         "augustine-of-hippo-c2f65106",  # Thou didst rescue my tongue, whence Thou hadst before r
         "augustine-of-hippo-6534752e",  # Let me not be mine own life; from myself I lived ill, d
+        "hudson-taylor-59c25747",  # The GOD of the Bible is a GOD who punishes sin, and can
     ],
     "heaven": [  # Heaven & Eternity
         "charles-h-spurgeon-8b8e88db",  # We are not going to talk about law, and duty, and punishment
@@ -3668,6 +3761,8 @@ TOPIC_MEMBERS = {
         "thomas-a-kempis-e72afb6e",  # To walk with God interiorly, to be free from any external
         "augustine-of-hippo-5176d739",  # Let not these occupy my soul; let God rather occupy it,
         "augustine-of-hippo-6534752e",  # Let me not be mine own life; from myself I lived ill, d
+        "hudson-taylor-a5415bca",  # We have to take our choice: we cannot enjoy both the wo
+        "hudson-taylor-5ac0c4d8",  # Where that blessing is not enjoyed, there is always som
     ],
     "sin-and-temptation": [  # Sin & Temptation
         "charles-h-spurgeon-bda51fda",  # Our Lord Jesus did not die for imaginary sins, but His heart
@@ -3709,5 +3804,6 @@ TOPIC_MEMBERS = {
         "thomas-a-kempis-32dc0a68",  # Man’s happiness does not consist in the possession of abu
         "augustine-of-hippo-5176d739",  # Let not these occupy my soul; let God rather occupy it,
         "augustine-of-hippo-cb389651",  # Luxury affects to be called plenty and abundance; but T
+        "hudson-taylor-a0b9c9a7",  # The habit of coming in faith to Him is incompatible wit
     ],
 }
