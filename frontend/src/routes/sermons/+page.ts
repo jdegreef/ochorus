@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-07: French sermons (batch 2) — himself (#1818),
+// unfailing-springs (#1819). Rebuilds /fr/sermons so each card carries its
 // prerender refresh 2026-09-07: French sermons (batch 5, final) — pauls-praise-of-christian-love
 // (#1824), enduring-persecution-for-christ (#1825). Clears the French sermon queue.
 // Rebuilds /fr/sermons so each card carries its translated title.
