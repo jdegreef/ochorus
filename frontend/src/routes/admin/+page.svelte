@@ -27,11 +27,21 @@
 	}
 
 	// Internal tool: copy is English-only (not run through Paraglide).
-	const dashboard = adminResource(getAdminStats, 'Something went wrong loading the dashboard.');
+	// `loadedAt` is stamped by onLoad (only on a non-superseded payload), so the
+	// header can say how fresh the figures are — a snapshot is easy to misread as
+	// live.
+	let loadedAt = $state<Date | null>(null);
+	const dashboard = adminResource(
+		getAdminStats,
+		'Something went wrong loading the dashboard.',
+		undefined,
+		() => (loadedAt = new Date())
+	);
 	const stats = $derived(dashboard.data);
 
 	const nf = new Intl.NumberFormat('en');
 	const fmt = (n: number | null | undefined) => nf.format(n ?? 0);
+	const timeFmt = (d: Date) => d.toLocaleTimeString('en', { hour: '2-digit', minute: '2-digit' });
 	const dateFmt = (iso: string) =>
 		new Date(iso).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' });
 
@@ -102,6 +112,11 @@
 		</div>
 		{#if stats}
 			<div class="flex flex-wrap items-center gap-2">
+				{#if loadedAt}
+					<span class="mr-1 text-small text-muted" title={loadedAt.toLocaleString('en')}
+						>Updated {timeFmt(loadedAt)}</span
+					>
+				{/if}
 				<button class="btn btn-sm btn-ghost" onclick={() => exportInventory('csv')} disabled={!!exporting}>
 					{exporting === 'csv' ? 'Exporting…' : 'Export CSV'}
 				</button>
