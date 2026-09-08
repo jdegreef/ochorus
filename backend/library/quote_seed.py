@@ -54,7 +54,8 @@ from __future__ import annotations
 #:                          twenty-seven more 2026-09-02 (fifty-five).
 #: augustine-of-hippo    — approved 2026-08-30, thirteen;
 #:                         and 2026-09-02, six more (Confessions);
-#:                         and 2026-09-02, sixteen more (The Enchiridion) — thirty-five.
+#:                         and 2026-09-02, sixteen more (The Enchiridion) — thirty-five;
+#:                         and 2026-09-08, fifteen more (Confessions) — fifty.
 #: jonathan-edwards      — approved 2026-08-30, eleven;
 #:                         and 2026-09-02, ten more (Selected Sermons).
 #: john-wesley           — approved 2026-08-30, eighteen;
@@ -2036,6 +2037,96 @@ AUGUSTINE = [
         "chapter": ("enchiridion", 11),
         "paragraph": 9,
     },
+    {
+        "slug": "augustine-of-hippo-b15cdf51",
+        "text": "Surely unhappy is he who knoweth all these, and knoweth not Thee: but happy whoso knoweth Thee, though he know not these.",
+        "chapter": ("confessions", 5),
+        "paragraph": 10,
+    },
+    {
+        "slug": "augustine-of-hippo-bd88fc3a",
+        "text": "Surely vain are all men who are ignorant of God, and could not out of the good things which are seen, find out Him who is good.",
+        "chapter": ("confessions", 8),
+        "paragraph": 2,
+    },
+    {
+        "slug": "augustine-of-hippo-1699c301",
+        "text": "Thou light of my heart, Thou bread of my inmost soul, Thou Power who givest vigour to my mind, who quickenest my thoughts, I loved Thee not.",
+        "chapter": ("confessions", 1),
+        "paragraph": 33,
+    },
+    {
+        "slug": "augustine-of-hippo-5176d739",
+        "text": "Let not these occupy my soul; let God rather occupy it, who made these things, very good indeed, yet is He my good, not they.",
+        "chapter": ("confessions", 10),
+        "paragraph": 84,
+    },
+    {
+        "slug": "augustine-of-hippo-c006d51a",
+        "text": "I call upon Thee, O my God, my mercy, Who createdst me, and forgottest not me, forgetting Thee.",
+        "chapter": ("confessions", 13),
+        "paragraph": 1,
+    },
+    {
+        "slug": "augustine-of-hippo-2fc36ce4",
+        "text": "Be not foolish, O my soul, nor become deaf in the ear of thine heart with the tumult of thy folly.",
+        "chapter": ("confessions", 4),
+        "paragraph": 26,
+    },
+    {
+        "slug": "augustine-of-hippo-109ebfbc",
+        "text": "The Word itself calleth thee to return: and there is the place of rest imperturbable, where love is not forsaken, if itself forsaketh not.",
+        "chapter": ("confessions", 4),
+        "paragraph": 27,
+    },
+    {
+        "slug": "augustine-of-hippo-e35729b7",
+        "text": "Let them then be turned, and seek Thee; because not as they have forsaken their Creator, hast Thou forsaken Thy creation.",
+        "chapter": ("confessions", 5),
+        "paragraph": 3,
+    },
+    {
+        "slug": "augustine-of-hippo-c2f65106",
+        "text": "Thou didst rescue my tongue, whence Thou hadst before rescued my heart.",
+        "chapter": ("confessions", 9),
+        "paragraph": 10,
+    },
+    {
+        "slug": "augustine-of-hippo-6534752e",
+        "text": "Let me not be mine own life; from myself I lived ill, death was I to myself; and I revive in Thee.",
+        "chapter": ("confessions", 12),
+        "paragraph": 19,
+    },
+    {
+        "slug": "augustine-of-hippo-cb389651",
+        "text": "Luxury affects to be called plenty and abundance; but Thou art the fulness and never-failing plenteousness of incorruptible pleasures.",
+        "chapter": ("confessions", 2),
+        "paragraph": 18,
+    },
+    {
+        "slug": "augustine-of-hippo-d10a086f",
+        "text": "O Thou Good omnipotent, who so carest for every one of us, as if Thou caredst for him only; and so for all, as if they were but one!",
+        "chapter": ("confessions", 3),
+        "paragraph": 29,
+    },
+    {
+        "slug": "augustine-of-hippo-88c4ad24",
+        "text": "I sought what I might love, in love with loving, and safety I hated, and a way without snares.",
+        "chapter": ("confessions", 3),
+        "paragraph": 1,
+    },
+    {
+        "slug": "augustine-of-hippo-22d8524d",
+        "text": "When, then, we believe that good is about to come, this is nothing else but to hope for it.",
+        "chapter": ("enchiridion", 1),
+        "paragraph": 15,
+    },
+    {
+        "slug": "augustine-of-hippo-4db0559b",
+        "text": "O let the Light, the Truth, the Light of my heart, not mine own darkness, speak unto me.",
+        "chapter": ("confessions", 12),
+        "paragraph": 19,
+    },
 ]
 
 JONATHAN_EDWARDS = [
@@ -3147,6 +3238,9 @@ TOPIC_MEMBERS = {
         "hudson-taylor-1f25798f",  # How much of prayer there is that begins and ends with the cr
         "gareth-evans-eece1b59",  # The last prayer of Jesus for all who would come to believe H
         "amanda-berry-smith-6316c853",  # How I do thank the Lord when it is my privilege to sing and 
+        "augustine-of-hippo-1699c301",  # Thou light of my heart, Thou bread of my inmost soul, T
+        "augustine-of-hippo-c006d51a",  # I call upon Thee, O my God, my mercy, Who createdst me,
+        "augustine-of-hippo-4db0559b",  # O let the Light, the Truth, the Light of my heart, not
     ],
     "faith": [  # Faith
         "charles-h-spurgeon-94833965",  # The righteousness of faith is not the moral excellence of fa
@@ -3259,6 +3353,9 @@ TOPIC_MEMBERS = {
         "hudson-taylor-fab4ab06",  # How wondrous the grace that has made the bride of CHRIST to 
         "amanda-berry-smith-f22720ef",  # The very best chance for growing in grace, really and succes
         "thomas-a-kempis-f4303a94",  # Just men depend on the grace of God rather than on their
+        "augustine-of-hippo-c006d51a",  # I call upon Thee, O my God, my mercy, Who createdst me,
+        "augustine-of-hippo-e35729b7",  # Let them then be turned, and seek Thee; because not as
+        "augustine-of-hippo-c2f65106",  # Thou didst rescue my tongue, whence Thou hadst before r
     ],
     "holy-spirit": [  # The Holy Spirit
         "charles-h-spurgeon-c1353dff",  # The Holy Ghost Himself cannot better glorify the Lord Jesus 
@@ -3333,6 +3430,12 @@ TOPIC_MEMBERS = {
         "amanda-berry-smith-afbc34b8",  # How I have lived through it I cannot tell, but the blessedne
         "thomas-a-kempis-6f280cbb",  # Affection for creatures is deceitful and inconstant, but
         "thomas-a-kempis-21a0bdf5",  # One who is in love flies, runs, and rejoices; he is free,
+        "augustine-of-hippo-b15cdf51",  # Surely unhappy is he who knoweth all these, and knoweth
+        "augustine-of-hippo-bd88fc3a",  # Surely vain are all men who are ignorant of God, and co
+        "augustine-of-hippo-1699c301",  # Thou light of my heart, Thou bread of my inmost soul, T
+        "augustine-of-hippo-cb389651",  # Luxury affects to be called plenty and abundance; but T
+        "augustine-of-hippo-d10a086f",  # O Thou Good omnipotent, who so carest for every one of
+        "augustine-of-hippo-88c4ad24",  # I sought what I might love, in love with loving, and sa
     ],
     "humility": [  # Humility
         "charles-h-spurgeon-c3d3a367",  # Let us be humble that we may not need to be humbled, but may
@@ -3414,6 +3517,7 @@ TOPIC_MEMBERS = {
         "thomas-a-kempis-85bd98b1",  # Seek true peace, not on earth but in heaven; not in men o
         "thomas-a-kempis-ce999abc",  # Many words do not satisfy the soul; but a good life eases
         "thomas-a-kempis-f4303a94",  # Just men depend on the grace of God rather than on their
+        "augustine-of-hippo-d10a086f",  # O Thou Good omnipotent, who so carest for every one of
     ],
     "joy": [  # Joy
         "charles-h-spurgeon-d6d84bd3",  # Beloved, the Lord’s workers have sauce with their bread: not
@@ -3447,6 +3551,7 @@ TOPIC_MEMBERS = {
         "john-wesley-9fddda8a",  # The righteousness of Christ is the whole and sole foundation
         "john-wesley-0d8ca0c2",  # The pure love of our neighbour, springing from the love of G
         "john-wesley-697ed3cb",  # Reason, however cultivated and improved, cannot produce the 
+        "augustine-of-hippo-22d8524d",  # When, then, we believe that good is about to come, this
     ],
     "peace": [  # Peace
         "charles-h-spurgeon-010273ba",  # Unless the heart be kept peaceable, the life will not be hap
@@ -3463,11 +3568,15 @@ TOPIC_MEMBERS = {
         "thomas-a-kempis-1383b3ad",  # All men desire peace but all do not care for the things t
         "thomas-a-kempis-47fd3784",  # Happy is the man who can throw off the weight of every ca
         "thomas-a-kempis-a34c6521",  # True peace of heart, then, is found in resisting passions
+        "augustine-of-hippo-109ebfbc",  # The Word itself calleth thee to return: and there is th
     ],
     "repentance": [  # Repentance
         "charles-h-spurgeon-ddf56c92",  # Jesus is exalted on high, that through the virtue of His int
         "thomas-a-kempis-6ff5eb6f",  # No man deserves the consolation of heaven unless he persiste
         "thomas-a-kempis-47fd3784",  # Happy is the man who can throw off the weight of every ca
+        "augustine-of-hippo-2fc36ce4",  # Be not foolish, O my soul, nor become deaf in the ear o
+        "augustine-of-hippo-109ebfbc",  # The Word itself calleth thee to return: and there is th
+        "augustine-of-hippo-e35729b7",  # Let them then be turned, and seek Thee; because not as
     ],
     "scripture": [  # The Word of God
         "charles-h-spurgeon-14b10a83",  # You may read the Bible continuously, and yet never learn any
@@ -3510,6 +3619,8 @@ TOPIC_MEMBERS = {
         "gareth-evans-cd926d0d",  # The end of the journey for all who walk in faith, is that th
         "amanda-berry-smith-3649ad8b",  # Learn to know the beauty of love and power and sympathy of J
         "amanda-berry-smith-e93eed38",  # The Gospel of Jesus was so full and practical, and with good
+        "augustine-of-hippo-c2f65106",  # Thou didst rescue my tongue, whence Thou hadst before r
+        "augustine-of-hippo-6534752e",  # Let me not be mine own life; from myself I lived ill, d
     ],
     "heaven": [  # Heaven & Eternity
         "charles-h-spurgeon-8b8e88db",  # We are not going to talk about law, and duty, and punishment
@@ -3555,6 +3666,8 @@ TOPIC_MEMBERS = {
         "thomas-a-kempis-9de70a18",  # Whatever is not God is nothing and must be accounted as n
         "thomas-a-kempis-77d5e620",  # A man’s true progress consists in denying himself, and th
         "thomas-a-kempis-e72afb6e",  # To walk with God interiorly, to be free from any external
+        "augustine-of-hippo-5176d739",  # Let not these occupy my soul; let God rather occupy it,
+        "augustine-of-hippo-6534752e",  # Let me not be mine own life; from myself I lived ill, d
     ],
     "sin-and-temptation": [  # Sin & Temptation
         "charles-h-spurgeon-bda51fda",  # Our Lord Jesus did not die for imaginary sins, but His heart
@@ -3594,5 +3707,7 @@ TOPIC_MEMBERS = {
         "thomas-a-kempis-9de70a18",  # Whatever is not God is nothing and must be accounted as n
         "thomas-a-kempis-6f280cbb",  # Affection for creatures is deceitful and inconstant, but
         "thomas-a-kempis-32dc0a68",  # Man’s happiness does not consist in the possession of abu
+        "augustine-of-hippo-5176d739",  # Let not these occupy my soul; let God rather occupy it,
+        "augustine-of-hippo-cb389651",  # Luxury affects to be called plenty and abundance; but T
     ],
 }
