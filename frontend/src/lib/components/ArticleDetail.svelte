@@ -64,7 +64,9 @@
 			isAccessibleForFree: true,
 			datePublished: article.created_at || undefined,
 			dateModified: article.updated_at || undefined,
-			// No author — an article carries no byline (see the backend model).
+			// There is no per-article author FK (see the backend model); the house
+			// name stands as the organizational author, mirroring the publisher.
+			author: { '@type': 'Organization', name: 'Ochorus' },
 			publisher: { '@type': 'Organization', name: 'Ochorus' }
 		})
 	);
@@ -105,10 +107,11 @@
 	     readerPrefs is hydrated once by the root layout. -->
 	<article class="mx-auto" style="{readerPrefs.style}; max-width: var(--reading-measure)">
 		<header class="mb-5">
-			<!-- Kind eyebrow (page-design A8): KIND · TIME. The reading time is
-			     localized via readingTime(); the kind word is an English literal,
-			     as are this page's other chrome strings (see F3). -->
-			<p class="eyebrow mb-1 text-muted">Article · {readingTime(article.word_count)}</p>
+			<!-- Kind eyebrow (page-design A8): KIND · BYLINE · TIME. Ochorus is the
+			     house byline for every article (there is no per-article author — see
+			     the backend model), so it is an English literal like the kind word,
+			     not article data. The reading time is localized via readingTime(). -->
+			<p class="eyebrow mb-1 text-muted">Article · Ochorus · {readingTime(article.word_count)}</p>
 			<div class="flex items-start justify-between gap-4">
 				<h1 class="text-h1">{article.h1}</h1>
 				<ReaderControls />
