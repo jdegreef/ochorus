@@ -1033,6 +1033,13 @@
 			"art": true,
 			"scrim": 0.45
 		},
+		"pt/gleanings-among-the-sheaves": {
+			"ground": "faff5c2c2ea1a2855af9a50f49b2cbfb760524820994711194fcdb57252c6b45",
+			"style": "revival",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75
+		},
 		"pt/godliness": {
 			"ground": "222d108dde31cac64a15af4a17b73d314aed70e731961c38902504ee76576695",
 			"style": "revival",
