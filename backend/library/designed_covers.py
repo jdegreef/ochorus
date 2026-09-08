@@ -310,6 +310,13 @@ DERIVED_GROUND: dict[str, Ground] = {
     "the-unselfishness-of-god": Ground(0.44, 0.80, 0.09, 1.15, sky=0.15,
         source="da76ca7d2a047bac2463d0ab58af54f40d987ce0bf5127001d102d553f8f4078",
     ),
+    # The title, byline and subtitle fill the top half over a darkened worship
+    # scene; the words-free picture is the band BELOW the subtitle (~0.58) and
+    # above the Ochorus wordmark at the foot (~0.88) — the praying women with
+    # hands raised. Indoor scene, so no sky extension.
+    "women-who-moved-heaven-2": Ground(0.60, 0.87, 0.08, 1.20,
+        source="471f2e18290bd563bab4220c6664aea4adebbcc06e1c07749f9843ef805cad0f",
+    ),
 }
 
 #: ``DESIGNED`` re-indexed by slug — the key every OTHER cover registry uses

@@ -2419,6 +2419,14 @@ BODY_CORRECTIONS.setdefault("waiting-on-god", {}).setdefault("replacements", [])
     ("<p> 'I SPOKE of an army", "<p> I SPOKE of an army")
 )
 
+# OCR slip found while translating the sermon to Portuguese (batch 5): the
+# opening hymn line (Spurgeon quotes a couplet) begins with a drop-cap "OH"
+# and a closing quote after "praise?" but no opening quote — clears the
+# audit's orphan-close-quote (baseline re-pinned).
+BODY_CORRECTIONS.setdefault("the-shameful-sufferer", {}).setdefault("replacements", []).append(
+    ("<p>OH what shall I do", "<p>“OH what shall I do")
+)
+
 # OCR/extraction slips found while translating Watson's book to Portuguese (batch 4). Watson's text is scripture-dense and heavily OCR-damaged; each fix is forced by the KJV verse quoted or by grammar/citation. Two orphan close-quotes clear audit findings (baseline re-pinned).
 BODY_CORRECTIONS.setdefault('all-things-for-good', {}).setdefault("replacements", []).extend([
     ('The certainly of the privilege', 'The certainty of the privilege'),

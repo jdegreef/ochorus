@@ -1,0 +1,20 @@
+{
+ "kind": "bio",
+ "slug": "john-wesley",
+ "language": "fr",
+ "job_issue": 1806,
+ "references": [
+  {
+   "reference": "Zechariah 3:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "self_rendered"
+  }
+ ]
+}

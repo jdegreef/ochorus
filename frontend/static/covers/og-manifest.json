@@ -1613,6 +1613,27 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.75
+		},
+		"sw/women-who-moved-heaven-2": {
+			"ground": "9025d1ea25113562a8cd8f636b61229829042ee0656eae8fde2bd309b2a0e1ed",
+			"style": "house",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3
+		},
+		"sw/gleanings-among-the-sheaves": {
+			"ground": "966b049ba53b9d3dab4bd18c4bfbdf356bc994d651f31a4b18067bac4b818565",
+			"style": "revival",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75
+		},
+		"sw/the-gospel-of-healing": {
+			"ground": "a5dae69e8af98ea62405dbf29663bfa73f5e157c533c3b26e018b57bddd517b6",
+			"style": "revival",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		}
 	}
 }

@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-07: first French author bios — john-wesley (#1806),
+// george-whitefield (#1807), hudson-taylor (#1808). Author pages are prerendered
+// PER AUTHOR, so each /fr/authors/<slug> page must rebuild for the translated bio
+// and its <blockquote> pull-quotes and prayer callouts.
 // prerender refresh 2026-09-07: French author bios (batch 2) — r-a-torrey (#1809),
 // e-m-bounds (#1810), jonathan-edwards (#1811). Author pages are prerendered PER
 // AUTHOR, so each /fr/authors/<slug> page must rebuild for the translated bio and
