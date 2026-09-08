@@ -116,6 +116,25 @@
 	</header>
 
 	<AdminGate resource={dashboard} errorTitle="Couldn't load the dashboard">
+		{#snippet loading()}
+			<!-- Mirrors the real layout (attention chips + 8 stat tiles) so the first
+			     paint has shape instead of a bare "Loading…" on empty cream. -->
+			<div class="mb-10 flex flex-wrap gap-2" aria-hidden="true">
+				{#each Array(3) as _, i (i)}
+					<div class="h-7 w-40 animate-pulse rounded-full bg-surface-2"></div>
+				{/each}
+			</div>
+			<div class="grid grid-cols-2 gap-4 sm:grid-cols-4" aria-hidden="true">
+				{#each Array(8) as _, i (i)}
+					<div class="rounded-card border border-border bg-surface p-5">
+						<div class="h-8 w-20 animate-pulse rounded bg-surface-2"></div>
+						<div class="mt-3 h-3 w-16 animate-pulse rounded bg-surface-2"></div>
+						<div class="mt-2 h-3 w-24 animate-pulse rounded bg-surface-2"></div>
+					</div>
+				{/each}
+			</div>
+			<span class="sr-only">Loading the dashboard…</span>
+		{/snippet}
 		{#snippet children(s)}
 			<!-- Attention flags -->
 			{#if flags.length}
