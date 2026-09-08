@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-07: French author bio — charles-h-spurgeon (#1815).
+// Author pages are prerendered PER AUTHOR, so /fr/authors/charles-h-spurgeon must
+// rebuild for the translated bio and its pull-quotes and prayer callouts.
 // prerender refresh 2026-09-07: first French author bios — john-wesley (#1806),
 // george-whitefield (#1807), hudson-taylor (#1808). Author pages are prerendered
 // PER AUTHOR, so each /fr/authors/<slug> page must rebuild for the translated bio

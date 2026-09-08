@@ -366,6 +366,18 @@ Reported, not fixed
   `python manage.py test library.tests_english_audit.EnglishAuditRatchetTests`
   — it is a `SimpleTestCase` that rescans the fixtures (no DB), so a green run
   means the resolved baseline matches the corpus work-for-work (PR #1611).
+- **A translation/re-import PR can re-serialize a whole `*.en.json` and collide
+  with your targeted fixes — do NOT hand-merge it** (2026-09-07: PT batch #1861
+  re-serialized all of `gleanings-among-the-sheaves.en.json` — 305/306 lines —
+  while en-fix #1862 changed 15 lines; `git merge` produced one huge asymmetric
+  conflict spanning every chapter). A raw JSON three-way merge here silently
+  drops fixes or mangles bodies. Resolve by REBUILDING, not by editing markers:
+  take main's version of the file (`git checkout origin/main -- <file>`), re-run
+  your declared repairs through `normalize_english_fixture --write` +
+  `rederive_body_text --write` + `rederive_word_count --write` so the fixes land
+  on the current serialization AND the derived columns re-derive, then re-pin the
+  baseline. Because the fix lives in `BODY_CORRECTIONS` (not hand-typed into the
+  fixture), rebuilding is lossless — that is the whole point of declaring it there.
 - **A `replacements` pair containing a straight `"` fails the dead-pair gate,
   even when the fix is correct** (the seven-sermon es cleanup, 2026-09-05).
   `test_no_replacement_pair_is_dead` builds its corpus with `json.dumps`, so a
