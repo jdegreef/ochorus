@@ -66,7 +66,8 @@ from __future__ import annotations
 #: hudson-taylor         — approved 2026-08-30, ten;
 #:                         and 2026-09-02, ten more (Separation and Service);
 #:                         and 2026-09-03, thirteen more (Union and Communion, Separation and Service) — thirty-three;
-#:                         and 2026-09-08, thirteen more (A Retrospect + four sermons) — forty-six.
+#:                         and 2026-09-08, thirteen more (A Retrospect + four sermons) — forty-six;
+#:                         and 2026-09-08, six more (A Ribband of Blue studies) — fifty-two.
 #: gareth-evans          — approved 2026-08-30, twenty-two;
 #:                          four more 2026-08-31 (twenty-six).
 #: richard-allen         — approved 2026-09-02, six (The Life, Experience, and
@@ -2914,6 +2915,42 @@ HUDSON_TAYLOR = [
         "chapter": ("separation-and-service", 3),
         "paragraph": 4,
     },
+    {
+        "slug": "hudson-taylor-d414362d",
+        "text": "Dangers seen sometimes appal us, or appal those who love us: but they are not more real than many we never dream of.",
+        "sermon": "all-sufficiency",
+        "paragraph": 3,
+    },
+    {
+        "slug": "hudson-taylor-938e0682",
+        "text": "We are not to think that our holiest service is free from sin, or can be accepted save through JESUS CHRIST our LORD.",
+        "sermon": "a-ribband-of-blue",
+        "paragraph": 6,
+    },
+    {
+        "slug": "hudson-taylor-14428932",
+        "text": "Self-will is unmingled folly, and can only end in injury and loss.",
+        "sermon": "all-sufficiency",
+        "paragraph": 2,
+    },
+    {
+        "slug": "hudson-taylor-a1d67b37",
+        "text": "Self-denial surely means something far greater than some slight insignificant lessening of our self-indulgences!",
+        "sermon": "self-denial-versus-self-assertion",
+        "paragraph": 2,
+    },
+    {
+        "slug": "hudson-taylor-6356623c",
+        "text": "Every true minister of GOD, every true missionary, every true Sunday-school teacher and Christian worker is a faith-worker.",
+        "sermon": "a-full-reward",
+        "paragraph": 7,
+    },
+    {
+        "slug": "hudson-taylor-b6346059",
+        "text": "The child of GOD has no need of the counsel of the ungodly; if he love and study GOD'S Word it will make him wiser than all such counsellors.",
+        "sermon": "blessed-prosperity",
+        "paragraph": 7,
+    },
 ]
 
 GARETH_EVANS = [
@@ -3401,6 +3438,7 @@ TOPIC_MEMBERS = {
         "gareth-evans-cd926d0d",  # The end of the journey for all who walk in faith, is that th
         "amanda-berry-smith-a27a891a",  # In my heart was peace, but I did not know how to exercise fa
         "hudson-taylor-a0b9c9a7",  # The habit of coming in faith to Him is incompatible wit
+        "hudson-taylor-6356623c",  # Every true minister of GOD, every true missionary, ever
     ],
     "grace": [  # Grace
         "charles-h-spurgeon-e83563c7",  # Jesus has nothing which He will not use for a sinner's salva
@@ -3438,6 +3476,7 @@ TOPIC_MEMBERS = {
         "augustine-of-hippo-e35729b7",  # Let them then be turned, and seek Thee; because not as
         "augustine-of-hippo-c2f65106",  # Thou didst rescue my tongue, whence Thou hadst before r
         "hudson-taylor-8f87ae30",  # GOD'S overflow more than supplies the lack of individua
+        "hudson-taylor-938e0682",  # We are not to think that our holiest service is free fr
     ],
     "holy-spirit": [  # The Holy Spirit
         "charles-h-spurgeon-c1353dff",  # The Holy Ghost Himself cannot better glorify the Lord Jesus 
@@ -3569,6 +3608,7 @@ TOPIC_MEMBERS = {
         "hudson-taylor-a2017a32",  # To many minds there is the greatest shrinking from appe
         "hudson-taylor-a5415bca",  # We have to take our choice: we cannot enjoy both the wo
         "hudson-taylor-5ac0c4d8",  # Where that blessing is not enjoyed, there is always som
+        "hudson-taylor-938e0682",  # We are not to think that our holiest service is free fr
     ],
     "the-cross": [  # The Cross of Christ
         "charles-h-spurgeon-1fe6c2ed",  # The Lord cannot read our pardon written in the blood of His 
@@ -3585,6 +3625,7 @@ TOPIC_MEMBERS = {
         "gareth-evans-12a18c7e",  # To those who have placed their trust in the finished work of
         "thomas-a-kempis-77d5e620",  # A man’s true progress consists in denying himself, and th
         "hudson-taylor-59c25747",  # The GOD of the Bible is a GOD who punishes sin, and can
+        "hudson-taylor-a1d67b37",  # Self-denial surely means something far greater than som
     ],
     "trusting-god": [  # Trusting God
         "charles-h-spurgeon-63de5d24",  # Trust not thyself nor any born of woman, beyond due bounds; 
@@ -3609,6 +3650,7 @@ TOPIC_MEMBERS = {
         "augustine-of-hippo-d10a086f",  # O Thou Good omnipotent, who so carest for every one of
         "hudson-taylor-f8d18af3",  # Oh, it is sweet to live thus directly dependent upon th
         "hudson-taylor-2dd2dd38",  # Where there is fitness for the work, the way will proba
+        "hudson-taylor-d414362d",  # Dangers seen sometimes appal us, or appal those who lov
     ],
     "joy": [  # Joy
         "charles-h-spurgeon-d6d84bd3",  # Beloved, the Lord’s workers have sauce with their bread: not
@@ -3661,6 +3703,7 @@ TOPIC_MEMBERS = {
         "thomas-a-kempis-a34c6521",  # True peace of heart, then, is found in resisting passions
         "augustine-of-hippo-109ebfbc",  # The Word itself calleth thee to return: and there is th
         "hudson-taylor-4d77cbd9",  # The peace, which we can neither make nor keep, will its
+        "hudson-taylor-d414362d",  # Dangers seen sometimes appal us, or appal those who lov
     ],
     "repentance": [  # Repentance
         "charles-h-spurgeon-ddf56c92",  # Jesus is exalted on high, that through the virtue of His int
@@ -3679,6 +3722,7 @@ TOPIC_MEMBERS = {
         "george-muller-65f3b573",  # Faith has to do with the word of God,—rests upon the written
         "hudson-taylor-292a6824",  # The Bible is a supernatural book, a divine revelation: the H
         "gareth-evans-b4cd492e",  # To every weapon of Satan they have an answer in the Word of 
+        "hudson-taylor-b6346059",  # The child of GOD has no need of the counsel of the ungo
     ],
     "salvation": [  # Salvation & the Gospel
         "charles-h-spurgeon-91fc01a4",  # The Lord's salvation can come to us though we have only fait
@@ -3763,6 +3807,8 @@ TOPIC_MEMBERS = {
         "augustine-of-hippo-6534752e",  # Let me not be mine own life; from myself I lived ill, d
         "hudson-taylor-a5415bca",  # We have to take our choice: we cannot enjoy both the wo
         "hudson-taylor-5ac0c4d8",  # Where that blessing is not enjoyed, there is always som
+        "hudson-taylor-14428932",  # Self-will is unmingled folly, and can only end in injur
+        "hudson-taylor-a1d67b37",  # Self-denial surely means something far greater than som
     ],
     "sin-and-temptation": [  # Sin & Temptation
         "charles-h-spurgeon-bda51fda",  # Our Lord Jesus did not die for imaginary sins, but His heart
