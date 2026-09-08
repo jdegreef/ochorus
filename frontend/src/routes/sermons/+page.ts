@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-07: French sermons (batch 4) — gods-love-for-a-sinning-world (#1822),
+// against-eutropius (#1823). Rebuilds /fr/sermons so each card carries its translated title.
 // prerender refresh 2026-09-07: French sermons (batch 3) — aggressive-christianity (#1820),
 // salvation-by-faith (#1821). Rebuilds /fr/sermons so each card carries its translated title.
 // prerender refresh 2026-09-07: French sermons (batch 2) — himself (#1818),

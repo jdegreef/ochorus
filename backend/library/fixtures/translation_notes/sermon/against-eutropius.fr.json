@@ -1,0 +1,36 @@
+{
+ "kind": "sermon",
+ "slug": "against-eutropius",
+ "language": "fr",
+ "job_issue": 1823,
+ "references": [
+  {
+   "reference": "Ecclesiastes 1:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 40:6-7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 37:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 102:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 6:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hosea 6:6",
+   "status": "self_rendered"
+  }
+ ]
+}
