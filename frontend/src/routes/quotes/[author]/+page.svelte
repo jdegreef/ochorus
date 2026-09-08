@@ -190,8 +190,6 @@
 		gap: 0.75rem;
 	}
 
-	/* Theme chips: the author's deepest subjects, sitting under the intro. Quiet
-	   pills in the accent, not the era hue — they are navigation, not a group. */
 	/* Byline link to the author's page. Accent colour; underline on hover is
 	   inherited from the global `a` rule (app.css §links). */
 	.byline {
@@ -199,6 +197,8 @@
 		font-weight: 500;
 	}
 
+	/* Theme chips: the author's deepest subjects, sitting under the intro. Quiet
+	   pills in the accent, not the era hue — they are navigation, not a group. */
 	.chips {
 		display: flex;
 		flex-wrap: wrap;
