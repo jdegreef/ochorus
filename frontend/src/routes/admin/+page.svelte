@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import { apiFetchRaw } from '$lib/api';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
@@ -175,7 +176,16 @@
 						</thead>
 						<tbody>
 							{#each s.languages as l (l.code)}
-								<tr class="border-b border-border last:border-0 hover:bg-surface-2">
+								<!-- Whole-row click is a mouse convenience; the language name is a
+								     real anchor, so keyboard / AT users have the same destination
+								     and clicks on the name still navigate normally. -->
+								<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
+								<tr
+									class="cursor-pointer border-b border-border last:border-0 hover:bg-surface-2"
+									onclick={(e) => {
+										if (!(e.target as HTMLElement).closest('a')) goto(`/admin/languages/${l.code}`);
+									}}
+								>
 									<td class="px-4 py-3">
 										<a href="/admin/languages/{l.code}" class="font-semibold text-accent hover:underline">{l.name}</a>
 										<span class="text-small text-muted">· {l.code}</span>
