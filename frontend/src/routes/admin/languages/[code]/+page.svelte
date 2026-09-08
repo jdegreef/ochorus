@@ -215,7 +215,9 @@
 		topics: view === 'suggested' ? [] : (detail?.topics ?? []),
 		todoPlans: suggested(detail?.todo.plans ?? []),
 		todoBios: suggested(detail?.todo.bios ?? []),
-		todoTopics: suggested(detail?.todo.topics ?? [])
+		todoTopics: suggested(detail?.todo.topics ?? []),
+		articles: present(detail?.articles ?? []),
+		todoArticles: suggested(detail?.todo.articles ?? [])
 	});
 	// Under "suggested" an empty translated list is the point, not a gap.
 	const emptyLabel = $derived(
@@ -293,7 +295,8 @@
 						<strong class="text-text">{fmt(d.books.length)}</strong>/{fmt(d.english_counts.books)} books ·
 						<strong class="text-text">{fmt(d.sermons.length)}</strong>/{fmt(d.english_counts.sermons)} sermons ·
 						<strong class="text-text">{fmt(d.plans.length)}</strong>/{fmt(d.english_counts.plans)} plans ·
-						<strong class="text-text">{fmt(d.bios.length)}</strong>/{fmt(d.english_counts.bios)} long-form bios translated
+						<strong class="text-text">{fmt(d.bios.length)}</strong>/{fmt(d.english_counts.bios)} long-form bios ·
+						<strong class="text-text">{fmt(d.articles.length)}</strong>/{fmt(d.english_counts.articles)} articles translated
 					</p>
 				{/if}
 				{#if !d.is_source}
@@ -693,6 +696,46 @@
 											<a href="/topics/{t.slug}" class="text-accent hover:underline">{t.title}</a>
 										</span>
 										{@render queueControl('topic', t.slug)}
+									</li>
+								{/each}
+							</ul>
+						</div>
+					{/if}
+				</section>
+
+				<!-- Articles. Authorless SEO/devotional pages; like sermons, a single
+				     body per language. A translated row ships ai_unreviewed until a
+				     native speaker approves it. -->
+				<section class="rounded-card border border-border bg-surface p-5">
+					<h2 class="text-h3 mb-3">Articles <span class="text-muted">({fmt(shown.articles.length)})</span></h2>
+					{#if shown.articles.length}
+						<ul class="space-y-2">
+							{#each shown.articles as a (a.slug)}
+								<li class="flex items-start justify-between gap-3">
+									<a href="/articles/{a.slug}" class="min-w-0 font-medium text-text hover:text-accent">
+										<span class="block truncate">{a.title}</span>
+										<span class="text-small text-muted">{fmt(a.word_count)} words{#if !a.is_published} · <span class="text-warning">unpublished</span>{/if}</span>
+									</a>
+									<span class="shrink-0 text-small text-muted" title={a.source_type}>{SOURCE_BADGE[a.source_type]}</span>
+								</li>
+							{/each}
+						</ul>
+					{:else if emptyLabel}
+						<p class="text-body text-muted">{emptyLabel}</p>
+					{/if}
+					{#if shown.todoArticles.length}
+						<div class="mt-4 border-t border-border pt-3">
+							<p class="section-label">Next to work on</p>
+							{#if queueError}
+								<p class="mb-2 text-small text-warning">{queueError}</p>
+							{/if}
+							<ul class="space-y-1.5">
+								{#each shown.todoArticles as a (a.slug)}
+									<li class="flex items-center justify-between gap-3 text-body">
+										<span class="min-w-0 truncate">
+											<a href="/articles/{a.slug}" class="text-accent hover:underline">{a.title}</a>
+										</span>
+										{@render queueControl('article', a.slug)}
 									</li>
 								{/each}
 							</ul>

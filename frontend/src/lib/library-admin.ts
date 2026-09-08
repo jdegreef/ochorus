@@ -105,6 +105,16 @@ export interface AdminLangBio {
 	reviewed: boolean;
 }
 
+/** Like a sermon, but authorless; carries source_type so the row can badge an
+ *  unreviewed AI translation. */
+export interface AdminLangArticle {
+	slug: string;
+	title: string;
+	word_count: number;
+	source_type: SourceType;
+	is_published: boolean;
+}
+
 export interface AdminLangTodo {
 	books: { slug: string; title: string; author: string }[];
 	sermons: { slug: string; title: string; author: string }[];
@@ -117,6 +127,8 @@ export interface AdminLangTodo {
 	 * English fallback), so this is a completeness checklist, not a ranked queue.
 	 */
 	topics: { slug: string; title: string }[];
+	/** English articles not yet in this language, highest sort_order first. */
+	articles: { slug: string; title: string }[];
 }
 
 export interface AdminLanguageDetail {
@@ -124,13 +136,14 @@ export interface AdminLanguageDetail {
 	/** Null for a code that has content but no registry row (e.g. en-modern). */
 	settings: LanguageSettings | null;
 	is_source: boolean;
-	english_counts: { books: number; sermons: number; plans: number; bios: number };
+	english_counts: { books: number; sermons: number; plans: number; bios: number; articles: number };
 	books: AdminLangBook[];
 	sermons: AdminLangSermon[];
 	plans: AdminLangPlan[];
 	bios: AdminLangBio[];
 	/** Shelves that exist in this language — i.e. that have a title here. */
 	topics: { slug: string; title: string }[];
+	articles: AdminLangArticle[];
 	todo: AdminLangTodo;
 }
 
@@ -324,7 +337,7 @@ export const updateAdminLanguageSettings = (
 // State is derived — queued = open issue, in_progress = claimed by a worker;
 // a finished job's item simply leaves the todo list once its translation ships.
 
-export type TranslationJobType = 'book' | 'sermon' | 'plan' | 'bio' | 'topic';
+export type TranslationJobType = 'book' | 'sermon' | 'plan' | 'bio' | 'topic' | 'article';
 
 export interface AdminTranslationJob {
 	type: TranslationJobType;

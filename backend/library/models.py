@@ -628,6 +628,17 @@ class Article(models.Model):
     # re-import, exactly like TopicBook.book_slug.
     related = models.JSONField(default=list, blank=True)
 
+    # Provenance / translation status — shares Book's vocabulary (as Sermon does)
+    # so a machine translation carries the same "awaiting native review" trust
+    # badge and the approve command can flip it. English originals stay
+    # public_domain by default; a translated row ships ai_unreviewed until a
+    # native speaker signs it off. See backend/CLAUDE.md on never presenting an
+    # unreviewed translation as an original.
+    source_type = models.CharField(
+        max_length=20,
+        choices=Book.SourceType.choices,
+        default=Book.SourceType.PUBLIC_DOMAIN,
+    )
     source_url = models.URLField(blank=True)
 
     # Reading-time source: the article's word count, derived from body_html on

@@ -43,6 +43,7 @@ three of them gives none of them one.
    | Your job | Blocked by a live claim on |
    | --- | --- |
    | `sermon` | the **same slug AND language** (i.e. the same job) |
+   | `article` | the **same slug AND language** (i.e. the same job) — one new `content/articles/<slug>.<lang>.json`, authorless |
    | `book` | the same slug AND language — **plus a `plan` job in your language** if your slug backs a plan (see below) |
    | `bio` | the **same slug AND language** (i.e. the same job) — short bios are per-slug `<slug>.short.txt` files now |
    | `plan` | any `plan` job in the **same language** — one shared `data/plan_translations/<lang>.json` — **and a `book` job in that language whose slug backs a plan** |
@@ -64,9 +65,10 @@ three of them gives none of them one.
    a Swahili one cannot collide at all. What remains is genuine: two jobs
    writing the same language's file.
 
-   This is a gate on the DELIVERY TARGET, not on the queue. Books and sermons
-   each ship **one new file** (`content/books/<slug>.<lang>.json`,
-   `content/sermons/<slug>.<lang>.json`) that no other job touches — the
+   This is a gate on the DELIVERY TARGET, not on the queue. Books, sermons and
+   articles each ship **one new file** (`content/books/<slug>.<lang>.json`,
+   `content/sermons/<slug>.<lang>.json`, `content/articles/<slug>.<lang>.json`)
+   that no other job touches — the
    natural-key fixture was designed for exactly this, and the repo CLAUDE.md
    says so: "parallel sessions cannot collide". The types that still serialise
    are the ones whose delivery vehicle is a shared file, and they are marked
@@ -322,6 +324,49 @@ pinning full per-language coverage, so a partial block fails CI.
   `frontend/src/routes/topics/[slug]/+page.ts` so the localized static page
   rebuilds.
 
+**Article** — a devotional / SEO article: original site writing, **authorless**,
+a single body. The simplest fixture type — like a sermon, but with no author, no
+`scripture_ref`, no cover.
+- Source: the English `Article` (`slug`, language `en`) — translate `h1`,
+  `meta_title` (its SEO twin; if blank in the source, leave blank), `description`
+  (the standfirst), and `body_html`.
+- **Preserve the body markup 1:1**: `<p> <h2> <blockquote> <cite> <em> <strong>
+  <ul> <ol> <li> <a>` (the rich/bio sanitize profile). Keep every `<h2>` — they
+  are the on-page table of contents (ids are re-derived server-side). Keep `<a
+  href>` targets unchanged.
+- **`related` is not yours to translate.** It is a list of soft references
+  (`[{"type","slug"}]`) that resolve to that language's book/sermon/author rows
+  at read time, exactly like a plan's days — copy it **verbatim**. Copy
+  `source_url` and `sort_order` from the English file too. Do **not** author
+  `word_count` (derived by `Article.save()`).
+- **Scripture is not yours to write.** Articles quote scripture inline in
+  `<blockquote>…<cite>Reference (VERSION)</cite></blockquote>`. Each quoted verse
+  must come from that language's public-domain Bible (e.g. Reina-Valera for `es`)
+  — never a re-translation of the English quotation — with the reference's book
+  name localized and the version label updated. If you cannot source a verse in
+  the target language, note it for the reviewer rather than inventing one.
+- Ship: write **one new file** `backend/library/fixtures/content/articles/<slug>.<lang>.json`
+  holding the single translated `library.article` row, natural-key format (**no
+  `pk`**, no author FK — `natural_key` is just `(slug, language)`). Set
+  **`source_type: "ai_unreviewed"`**. Same canonical fixture formatting as the
+  book/sermon files above (records at column 0, `indent=1`, trailing newline);
+  serialize with Django's serializer, never hand-write JSON. `seed_articles`
+  upserts it on deploy.
+- Review badge: the row ships `ai_unreviewed` and wears the "awaiting native
+  review" badge on the article page until a native speaker runs
+  `manage.py approve_article_translation <slug> --language <lang>` (flips it to
+  `ai_reviewed` and persists into the fixture — `source_type` is create-only in
+  the seed).
+- Verify: `manage.py seed_articles` upserts the `(slug, <lang>)` row;
+  `/api/library/articles/<slug>/?language=<lang>` returns 200 with
+  `source_type` `ai_unreviewed`; `manage.py test library.tests_articles
+  library.tests_fixture library.tests_sanitize`.
+- **Prerender refresh: none.** Unlike books/sermons, the localized `/xx/articles`
+  index is deliberately English-only for now (see `articles/+page.ts`), so there
+  is no per-locale shelf to rebake — the translation is reachable at its
+  localized detail URL `/<lang>/articles/<slug>/` and via its `available_languages`
+  hreflang alternates. (When the localized index ships, add its `+page.ts` here.)
+
 ## Emit the review notes — every job, no exceptions
 
 A translation's scripture provenance is worked out while you translate and is
@@ -518,7 +563,8 @@ archaic spelling and period punctuation are the text, not defects in it.
 - The double-ship guard is now structural: the target already existing means
   the job already shipped — before starting, check the type's delivery target
   on fresh `origin/main`: `content/books/<slug>.<lang>.json` (book) /
-  `content/sermons/<slug>.<lang>.json` (sermon) / a `<slug>` key in
+  `content/sermons/<slug>.<lang>.json` (sermon) /
+  `content/articles/<slug>.<lang>.json` (article) / a `<slug>` key in
   `data/plan_translations/<lang>.json` (plan) / `author_bios_<lang>/<slug>.html`
   (bio) / a `<slug>` key in
   `data/topic_translations/<lang>.json` (topic). CI's duplicate-identity / fixture checks are the backstop for

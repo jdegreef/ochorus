@@ -578,6 +578,10 @@ class ArticleListSerializer(LocalizedMixin, serializers.ModelSerializer):
             "h1",
             "meta_title",
             "description",
+            # Review state, so the reader can badge an unreviewed AI translation
+            # (CLAUDE.md: never present one as an original). Shares Book's
+            # vocabulary; an English original is "public_domain" (no badge).
+            "source_type",
             # The reading-time source, derived from body_html on save(); the
             # index defers the body but this column loads with the row.
             "word_count",

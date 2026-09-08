@@ -20,7 +20,7 @@ from django.core.management import call_command
 from django.core.management.base import CommandError
 from django.test import TestCase
 
-from .models import Author, Book, Sermon
+from .models import Article, Author, Book, Sermon
 
 
 class ApproveCommandBaseTests(TestCase):
@@ -39,6 +39,16 @@ class ApproveCommandBaseTests(TestCase):
             slug="humility",
             language="sw",
             title="Sermon",
+            source_type=Book.SourceType.AI_UNREVIEWED,
+        )
+        # An article shares the vocabulary but not the shape: no author, and its
+        # display title lives on ``h1`` (title_field), which is the one thing the
+        # shared base has to read off a different attribute.
+        cls.article = Article.objects.create(
+            slug="what-is-grace",
+            language="sw",
+            h1="Neema Ni Nini?",
+            body_html="<p>Neema ni upendeleo usiostahili.</p>",
             source_type=Book.SourceType.AI_UNREVIEWED,
         )
 
@@ -61,12 +71,28 @@ class ApproveCommandBaseTests(TestCase):
         self.assertEqual(self.sermon.source_type, Book.SourceType.AI_REVIEWED)
         self.assertEqual(self.book.source_type, Book.SourceType.AI_UNREVIEWED)
 
+    def test_approving_an_article_reads_its_title_off_h1(self):
+        """An article has no ``title``; the shared base reads ``title_field``
+        (``h1``), so the flip and its success message both work."""
+        out = StringIO()
+        call_command(
+            "approve_article_translation",
+            "what-is-grace",
+            language="sw",
+            no_fixture=True,
+            stdout=out,
+        )
+        self.article.refresh_from_db()
+        self.assertEqual(self.article.source_type, Book.SourceType.AI_REVIEWED)
+        self.assertIn("Neema Ni Nini?", out.getvalue())
+
     # -- refusals name the right thing ----------------------------------------
 
     def test_a_missing_work_is_named_by_its_own_noun(self):
         for command, noun in (
             ("approve_translation", "book"),
             ("approve_sermon_translation", "sermon"),
+            ("approve_article_translation", "article"),
         ):
             with self.subTest(command=command):
                 with self.assertRaises(CommandError) as caught:
