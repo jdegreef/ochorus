@@ -82,6 +82,15 @@
 			{page.quotes.length} quotations, each traced to the exact paragraph it comes from. Follow
 			any of them into the full text — free, and without an account.
 		</p>
+		<!-- The page is titled after a person but, until now, never linked to them:
+		     the byline sends a reader from the quotations to the life, books and
+		     sermons behind them. Every quote author is sourced from a book or sermon,
+		     so an /authors page always exists to receive it. -->
+		<p class="mt-3 text-small">
+			<a class="byline" href={`/authors/${page.author.slug}/`}
+				>Read {page.author.name}’s biography, books and sermons →</a
+			>
+		</p>
 	</header>
 
 	<!-- By theme: the author's deepest subjects, each its own page ("… on
@@ -183,6 +192,13 @@
 
 	/* Theme chips: the author's deepest subjects, sitting under the intro. Quiet
 	   pills in the accent, not the era hue — they are navigation, not a group. */
+	/* Byline link to the author's page. Accent colour; underline on hover is
+	   inherited from the global `a` rule (app.css §links). */
+	.byline {
+		color: var(--color-accent);
+		font-weight: 500;
+	}
+
 	.chips {
 		display: flex;
 		flex-wrap: wrap;
